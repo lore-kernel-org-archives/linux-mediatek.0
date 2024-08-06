@@ -4,66 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A97AC52D70
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Aug 2024 20:29:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3988FC52D6F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Aug 2024 20:47:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qLTG1GkMAEhu4pL+Pp1NOwzWgvHbdqjr6aO5TTuvjCE=; b=Ios1L85EyTqCq7ZrTmnId3yg/v
-	e0a1gHw+OaVK+2bIzlJPSTaGMvjZxjDRA4zQ8rVGKAPVf/VLnW0OzDACTZgYyxDEqaaYMZArNcTLj
-	eVJwP2EW7iTbk/ByinKp6ld+6aTLWtMmFaYba/F5ZveBXRZQwdC2mqxrX1SwanAKaSZhHtpuXliJm
-	iFSJB9/ZsUwEOJFWvgrTjTx59qF/Ucre4iveugTG/mAti0WrYeRxaf6+GIz9gisNDpnl4K4lCIyQY
-	3GWlNMVW+x630Qj5woVMKE+Z6GMTQ4x5C/A7hDu/+zN/jf2RwSfpm0VOfzYG/nSOuLTHxWUm1jh4X
-	m5ZtAkbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=R0doI7EW+trTelLfpGjOE+WMVt0A28mMUQkrPupUb1M=; b=GcQY6RPiBhVk6yDrJc2jmGuYTZ
+	OZefYdXVwl38g0zfDqG3ZH4uUfSCAQLs6NhW6IPCjMgTG3k5lF7sSUP9odnF0A9Evisu64MSTT1J2
+	4B8qMGa/QNTolEV2eNSB4OXepvYL4useHCZ1ZI09tOhs2L8zGbz4n0pltC0zL/3tPCWuuvNrW4Xg3
+	BCLu8EAR/aCfjH6r8X6p6O3vDH2RmBewLwz/Il6bQ0tSH4d4k2PC1I5+m1Jnrwlj4/HWX1OhQZYQv
+	BPhgULbZza2lJqk3DMekPXQXNkR26it84TtDvdii2ka9Y97qcojHRWZuDJTJt/LwsPpOgRojLWWFv
+	Rswcd4UA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbQo3-00000002oSK-17AH;
-	Tue, 06 Aug 2024 20:29:19 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sbR5p-00000002sCF-3Xqw;
+	Tue, 06 Aug 2024 20:47:41 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbQnk-00000002oEe-12bl
-	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Aug 2024 20:29:01 +0000
+	id 1sbR4A-00000002rg9-0Xk6;
+	Tue, 06 Aug 2024 20:45:59 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 44F1560F86;
-	Tue,  6 Aug 2024 20:28:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ECA41C32786;
-	Tue,  6 Aug 2024 20:28:58 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5188360F08;
+	Tue,  6 Aug 2024 20:45:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 51B28C32786;
+	Tue,  6 Aug 2024 20:45:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1722976139;
-	bh=+L1mds7XdZNr2tLDXx7FUINDaM3YND1xEBDwsLW6GKA=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=eJ3Gu0zpS8fS/uM5YLvs+JxVtosZFExcaB9DjfT/JAiZk3HVAtXYV03oWCpIrbVWt
-	 Du3fTltzirTeiPRYZSG6X5ZSrtUB4D0p7Mh/6UoJHLM0UdG9WV89BzmmNocL8f/dbd
-	 2x+BguWfDXKrSxlZJoaL2QSYThIt43WHHqdaiwsafvvCaXGbG03B+q6B0gwbyC+PuE
-	 jmfHMhoJEu9/r7HopPf2zHKQnO0ACeobrhK41ZJvboVthM1zDiIzJeDjgWjIJ9jVO7
-	 NHhZxpIW3E67a5/N2GX7+N2YuASj2RNCATBLwsijz/2ykNBMgk92s4PA5QP3bkkROF
-	 IyeD9nX24Bw8A==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EB60239EF94A;
-	Tue,  6 Aug 2024 20:28:58 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1722977157;
+	bh=DQ4di4g7iT1eApSTupyvEh0ZQhuK2NwMcj4qW+uji00=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=CXdthX0/9BmWfLQLLyK8FHps/5SL/MitMI5ZU2/k2UJPP7Vb793LFABCFx3S8JaaA
+	 clOCQXWoc1bf6oLMyZbFX8ZQ0u1DlSKXZfOFYH/AnS9/xjYcop84lFTFbqHLpnxbAi
+	 kB6oUUD3pZa75qLvrmtAv/XfPL8B74dlWP3uMHojQ3XE4Ghjjq31VrSK6h7Xq5ToTE
+	 d8wX19mCQkWRr5/RWtLP90xi13qX/LDeGXtk4pKrCoKnTnptHU987a1BTq5ANnm+UR
+	 Yrm5deHrXNkyzvgki0SX1ew7mmsJSkSw1mbyo0FBsEO8bU/Hp1hnIZlr/BgO7ciqvW
+	 aus+7x4I/hKlQ==
+Date: Tue, 6 Aug 2024 21:45:50 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	Bear Wang <bear.wang@mediatek.com>,
+	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
+	Sen Chu <sen.chu@mediatek.com>,
+	Jason-ch Chen <Jason-ch.Chen@mediatek.com>,
+	Chris-qj chen <chris-qj.chen@mediatek.com>,
+	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	Chen-Yu Tsai <wenst@chromium.org>
+Subject: Re: [PATCH] dt-bindings: regulator: mediatek,mt6397-regulator:
+ convert to YAML
+Message-ID: <7186e664-ef52-4552-b91d-d6ad358eed4e@sirena.org.uk>
+References: <20240806122507.2766-1-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH 1/2] Bluetooth: btusb: Add new VID/PID 0489/e139 for MT7925
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <172297613766.1692635.8217339619604849343.git-patchwork-notify@kernel.org>
-Date: Tue, 06 Aug 2024 20:28:57 +0000
-References: <20240715061508.14077-1-jiande.lu@mediatek.com>
-In-Reply-To: <20240715061508.14077-1-jiande.lu@mediatek.com>
-To: Jiande Lu <jiande.lu@mediatek.com>
-Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
- sean.wang@mediatek.com, chris.lu@mediatek.com, deren.Wu@mediatek.com,
- aaron.hou@mediatek.com, steve.lee@mediatek.com,
- linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="pJ/AckYPDty924kc"
+Content-Disposition: inline
+In-Reply-To: <20240806122507.2766-1-macpaul.lin@mediatek.com>
+X-Cookie: She's genuinely bogus.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240806_132900_411828_71762B17 
-X-CRM114-Status: UNSURE (   6.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240806_134558_310891_98A038C3 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,68 +85,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
 
-This series was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+--pJ/AckYPDty924kc
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On Mon, 15 Jul 2024 14:15:07 +0800 you wrote:
-> Add VID 0489 & PID e139 for Mediatek MT7925 USB Bluetooth chip.
-> The information in /sys/kernel/debug/usb/devices about the Bluetooth
-> device is listed as the below
-> 
-> T:  Bus=07 Lev=01 Prnt=01 Port=10 Cnt=02 Dev#=  2 Spd=480  MxCh= 0
-> D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-> P:  Vendor=0489 ProdID=e139 Rev= 1.00
-> S:  Manufacturer=MediaTek Inc.
-> S:  Product=Wireless_Device
-> S:  SerialNumber=000000000
-> C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-> A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-> I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-> E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-> I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-> I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-> I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-> I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-> I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-> I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-> I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-> I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-> E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
-> E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
-> 
-> [...]
+On Tue, Aug 06, 2024 at 08:25:07PM +0800, Macpaul Lin wrote:
+> Convert the MediaTek MT6397 regulator bindings to DT schema.
 
-Here is the summary with links:
-  - [1/2] Bluetooth: btusb: Add new VID/PID 0489/e139 for MT7925
-    (no matching commit)
-  - [2/2] Bluetooth: btusb: Add new VID/PID 13d3/3604 for MT7925
-    https://git.kernel.org/bluetooth/bluetooth-next/c/bd0b4dae74b0
+As documented in submitting-patches.rst please send patches to the=20
+maintainers for the code you would like to change.  The normal kernel
+workflow is that people apply patches from their inboxes, if they aren't
+copied they are likely to not see the patch at all and it is much more
+difficult to apply patches.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+--pJ/AckYPDty924kc
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
 
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmayi30ACgkQJNaLcl1U
+h9AKDgf+IWMZpBQCI8bs1vbOgAI2X4JErCQSfq1xCOp+2JAccBEB+IMftlvfNWz3
+Jhmh02Z2WWfM5ykM2VQR1cfvuksln0n3ZTgpQnI8iPZffqSrMO0XR65afdsTfdG4
+9XIr+JYZYVLO74BOunvm5/e5j29r7NIdiiMeQ/cncS+blZK/GpT5lAzZRfo7tdeB
+9/Lo05f/twaWXY/loZv5hAl9TjXFrr51pG7AOX2Y5HfL7kPpoaHu/Tup9WAt23JE
+bF2PsG80Wdp+bZVgrK/dZsYlsxMENlUmbSuEnIhsKgM2iKbWrOpbtdc7iNqaMpf0
+iwRLxZh8ajeC8D1FY2UJ8xS2Wykbpg==
+=W0Cr
+-----END PGP SIGNATURE-----
+
+--pJ/AckYPDty924kc--
 
