@@ -4,69 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE2DBC52D6F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Aug 2024 09:45:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 154BAC52D6F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Aug 2024 09:48:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LUy6mtPdj2DuYs9x688gR5X6TBdY76K1VdtXWohu5IE=; b=k/+Z5+DzYlvH+bqQZUuTzAxbP5
-	GDyCvS5C6WOis05jtIYaiJKND+w9Nxq9I4bOM4VFIjCjV4+thksUotNTm9N6yRbZC/toIUYDGvcqw
-	FV80wx3gvjNJOvXvyMiBIjQf0Zeix/4nEt429kfGtkW6hUXhvBpn7AMDHoDIZmuLYTeuPWX6uqHoS
-	FzGMGPNXjgsADDoTudWhhQWnj8JN/MZIH1/EBrXGGBk5D/o7GS/NtlXLxAzmnTneBTxmqkvnoO3Y7
-	BdibwuunS8tXk/bTJb8TMhh9CBbDcRqvxfjwBg5GDLpxQh23IxS1LRo+3Y3A/pu7wnjuXlLcnqJ4C
-	9FkwstUQ==;
+	bh=GD6UfvEC97KIOXebIuAdSZtO5uJ9zS4OySQ69BroWWE=; b=n3ZjBOMErocGMVB1Bq42M4Okjk
+	5hBIStZnaN7NfOmcZC9bjVIXFS15TvqNIYPXzyLja/j0A+pkLhIVXxro8OIhRm1H18caVx3xKCmy8
+	Q+vZjCMPO3JFFzWcLbQNQ9AZs5ZvKvfJC5TEK8lLPRHAnz+GlAUggIKc9OnkeomrKzB0QiIETrPe3
+	/cusjHdGWA1zY6FvSWvW+p00geQxEyGK+sMlpr9JirCmXbqdybNwGgsrIBPIUtJghJvwwnW7dvwJk
+	zhVid7r2Eih+/2MiZO40tiNTAGqqzI41CPh/C4ebmFVJ6Kr/Gq1KHceDU2T9WWv6zd9FUkl6T7R8l
+	/0ZULDaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbGlO-000000018Up-3nBE;
-	Tue, 06 Aug 2024 09:45:54 +0000
+	id 1sbGo7-000000018ta-3GxW;
+	Tue, 06 Aug 2024 09:48:43 +0000
 Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbGlK-000000018Tw-2t4P;
-	Tue, 06 Aug 2024 09:45:52 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1722937543; cv=none; 
+	id 1sbGo4-000000018t1-3Hti;
+	Tue, 06 Aug 2024 09:48:42 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1722937716; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=ZctF7vNs94TXVz4Rm9jy4hDUQ6a9qtayt2LgYT34yiS/1s7P+6KtR+88tM6MR8Q6uOUMFrwBMXGdmMtff5tCKlFihNZEkdkzxMHH3LnLQ2j1SPvk64azZCpppCE2xlfEhWPj97fEnBRI9xH6kRVf8qJa1hVCZxJW+/eWOtD05W0=
+	b=eTRyLMgnJDJ7dunwP9cq0OaMk0Kmu34D9i95rhbTYrubDVQWQFS6qgnJ2yX4vFpuArtH/TcdBUamrepDklk7/XfpfI+PvGBC2vFF/g/bT3m+LAGwMsGyX3H7A4FeioV4VVCDr2dJn6fNmEbnoD94IEFbrHGW50/ErC3EhpkaLFo=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1722937543; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=LUy6mtPdj2DuYs9x688gR5X6TBdY76K1VdtXWohu5IE=; 
-	b=fCIMPjgS6J2yLdEv2js4Od7DDY+d8uBVAtqhGq6Jr9dvmffbLIsmiDHOZllRT6utXbfyt3IiA7WuR4IW+XFmvDyLPYB+TyeBNrd+19unKP9E5wTRsG1aq+nFceIsb28/pVCOoFqOtu76QJle3RmQUjWnka7y+xB+V3PqMcpDxBI=
+	t=1722937716; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=GD6UfvEC97KIOXebIuAdSZtO5uJ9zS4OySQ69BroWWE=; 
+	b=WsXNK+A2p4HobHfRJZMNprnn4NGoYK7jhdVcGLaZBV23xa7NwCHOrJRZ7zdk3t9ntafVy5UfCP1fCiUAUoCtozcHsl7aWBbdnL0si6QuseVtdxmrXeOpYWvLGpjg+uRpbB0+wMeMngyYOGQd+ZRvhyHPc+kQIDhPTm+xVTktS3I=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=angelogioacchino.delregno@collabora.com;
 	dmarc=pass header.from=<angelogioacchino.delregno@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1722937543;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1722937716;
 	s=zohomail; d=collabora.com;
 	i=angelogioacchino.delregno@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=LUy6mtPdj2DuYs9x688gR5X6TBdY76K1VdtXWohu5IE=;
-	b=Scpag60OL0XahnB2muQd3E/rU96vhvtYY1iR7o9njCbXKIA9hINwanTBHwjfN33o
-	r64sS4zlRrzUXRy1JZx3PtHFetxql1+snioKSKj6gXx0VwwqqO33Imk8KEdh8oasREf
-	lvyx6t3uDOyBFwmuFRR1MzlnU/cTcZBCVNadzGVM=
-Received: by mx.zohomail.com with SMTPS id 1722937543110540.4230663378206;
-	Tue, 6 Aug 2024 02:45:43 -0700 (PDT)
+	bh=GD6UfvEC97KIOXebIuAdSZtO5uJ9zS4OySQ69BroWWE=;
+	b=YmRoAwQselZS8RKt9U4ejDe0TdSc1YP400EhtrGgI/a5YDaEVuZoJz8Jd6XYUREi
+	XqjzmRAeThu1LoyqUKGn37NKj2Fry1k1hd8L8jtRjRGluzmCRfs12Z0xa2LpdplqGiJ
+	ZEytU6EB2vE6cN6u+tjE2G5iZ1PhfD/jdCLUwI5g=
+Received: by mx.zohomail.com with SMTPS id 1722937715671111.35593195710089;
+	Tue, 6 Aug 2024 02:48:35 -0700 (PDT)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: qii.wang@mediatek.com
-Cc: andi.shyti@kernel.org,
+To: linux-pci@vger.kernel.org
+Cc: ryder.lee@mediatek.com,
+	jianjun.wang@mediatek.com,
+	lpieralisi@kernel.org,
+	kw@linux.com,
+	robh@kernel.org,
+	bhelgaas@google.com,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	linux-i2c@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH] i2c: mt65xx: Avoid double initialization of restart_flag in isr
-Date: Tue,  6 Aug 2024 11:45:37 +0200
-Message-ID: <20240806094537.90747-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 0/2] PCI: mediatek-gen3: Support limiting link speed and width
+Date: Tue,  6 Aug 2024 11:48:14 +0200
+Message-ID: <20240806094816.92137-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240806_024550_810443_06F02940 
-X-CRM114-Status: GOOD (  10.37  )
+X-CRM114-CacheID: sfid-20240806_024840_890947_39C17637 
+X-CRM114-Status: UNSURE (   8.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,38 +86,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In the mtk_i2c_irq() handler, variable restart_flag is initialized
-to zero and then reassigned with I2C_RS_TRANSFER if and only if
-auto_restart is enabled.
+This series adds support for limiting the PCI-Express link speed
+(or PCIe gen restriction) and link width (number of lanes) in the
+pcie-mediatek-gen3 driver.
 
-Avoid a double initialization of this variable by transferring the
-auto_restart check to the restart_flag declaration.
+The maximum supported pcie gen is read from the controller itself,
+so defining a max gen through platform data for each SoC is avoided.
 
-This commit brings no functional changes.
+Both are done by adding support for the standard devicetree properties
+`max-link-speed` and `num-lanes`.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/i2c/busses/i2c-mt65xx.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+Please note that changing the bindings is not required, as those do
+already allow specifying those properties for this controller.
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index a8b5719c3372..e0ba653dec2d 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -1306,12 +1306,9 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
- static irqreturn_t mtk_i2c_irq(int irqno, void *dev_id)
- {
- 	struct mtk_i2c *i2c = dev_id;
--	u16 restart_flag = 0;
-+	u16 restart_flag = i2c->auto_restart ? I2C_RS_TRANSFER : 0;
- 	u16 intr_stat;
- 
--	if (i2c->auto_restart)
--		restart_flag = I2C_RS_TRANSFER;
--
- 	intr_stat = mtk_i2c_readw(i2c, OFFSET_INTR_STAT);
- 	mtk_i2c_writew(i2c, intr_stat, OFFSET_INTR_STAT);
- 
+AngeloGioacchino Del Regno (2):
+  PCI: mediatek-gen3: Add support for setting max-link-speed limit
+  PCI: mediatek-gen3: Add support for restricting link width
+
+ drivers/pci/controller/pcie-mediatek-gen3.c | 76 ++++++++++++++++++++-
+ 1 file changed, 74 insertions(+), 2 deletions(-)
+
 -- 
 2.45.2
 
