@@ -4,74 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E00EC52D71
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Aug 2024 17:54:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1080BC52D6F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Aug 2024 19:39:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vm9Xz4ftCLuaGhJmR6WJfQfgd+gvJMEYvlVmMqFEz7Y=; b=sM+iGQpGbVyP1bKrHUprIzrXEc
-	HtUN9lcJlt86/l5oYe4GWwBIu/dpPMAIyTDfsfW3DPbH1aoMStE3e3ypiorS7bAYoMpAJfPl+G6qQ
-	ctrxGD3ZnkZm0j/yji9Ep2+x/Nk/CRAJ8eKICDwD537mUGVAc/n+NdlEKg3QVpdKpVqoK7hivodGq
-	RKZaIOwIkN1k9Bi5xJtL7N6eNBFJN7MbQhuYw8Cv9urn09H/ampzSzaZx+JVUtxqWpdknXIsNH6ZU
-	cygrFr+GMiVV1A9WbHC+mg8RdKqp/1e26bvxvfmObGn1BWjTyNx4P1QgPO61iIush6/vp6GGHAvva
-	7iwgxzsw==;
+	bh=kDrs6vNUxdTCaWcmtCe09iGOF9uzwOM2loOME1McZEk=; b=nU6L1HfmSzJWKV2Jy1cKy2Rsd5
+	PKBnYC3wIYrpuetekvYnI7wgnIPLPO6dTLde+e9MObznp7Y3FiI1HwgDtOs1j/jubpscvvyTBxo0B
+	R6npTB/arbEPwTp2T/2JqKGirO7co7oGM8u1I9AZYcQIEgB8+5hw90kIAzhRkWd/sswcW/bquy4G0
+	7iF7/YgVPHcPhjTCgF2cLTOqlimUryiMdni2bsX9yVgsA4lc6+XYVSqKsyx5hAbOcmgVW+G+8EeHi
+	OHOSf/xGow5owjC6Hc8K1cINKnGKWv/5fPHSFHk8bhKWtNA7WDAOWg3i8zoCpePpeOtEMJwWJ4JON
+	1a+kYVTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbONm-00000002YAk-3qAY;
-	Tue, 06 Aug 2024 17:54:02 +0000
-Received: from sender4-op-o14.zoho.com ([136.143.188.14])
+	id 1sbQ1m-00000002jB6-2NAR;
+	Tue, 06 Aug 2024 19:39:26 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbONk-00000002YAC-06N8;
-	Tue, 06 Aug 2024 17:54:01 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1722966823; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=RW/feBkNoOFbYSnx+5hvtNPGlVfQQvtVDl9tFw0Fah6EvYgz511EHhEHscHvnaLTtz+zbWIWVt9iNmsGZPMcAn93rgyyDP232uyZNMaa/Bg1IfkOMVe3ytRN+QYjiePZzJo8mWdJMOzqSmvGKC2ngJPbz+nmH1mWK0ps10XTrzI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1722966823; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=vm9Xz4ftCLuaGhJmR6WJfQfgd+gvJMEYvlVmMqFEz7Y=; 
-	b=Y57yztyrpnHEgaiI957zxWEVItfIBo3uSQwmXJIlaOCupjy2tykJOAqXy1udOmAIQrO3jg2k4J8K4+y4IPG2ndz994vm7xgyN23ORAJRNksUQQ8fCY3rqI613njLvZ3oySPkg9HjyFw1xNCSSr/7yavdTdYOiM5B4EStqWj0Ydo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=helen.koike@collabora.com;
-	dmarc=pass header.from=<helen.koike@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1722966823;
-	s=zohomail; d=collabora.com; i=helen.koike@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=vm9Xz4ftCLuaGhJmR6WJfQfgd+gvJMEYvlVmMqFEz7Y=;
-	b=Et73oSQCEDClSg3IU+CRumgmoyIfQI+37BPGnN7QIpXl61qVPOCKlmSpq1bxFUhz
-	jXy+QcAU87MjJosY+veiMd0aOmKN/ApQrSGt83IkpJx6jyrbiMdK0CZU27V/BVv6IiO
-	OAz03sv/087ek79F/0DHc4WEjP9oTIIAXw/4tg2s=
-Received: by mx.zohomail.com with SMTPS id 1722966822122477.7651221308056;
-	Tue, 6 Aug 2024 10:53:42 -0700 (PDT)
-Message-ID: <83921779-808f-487d-a6fc-5a853024791a@collabora.com>
-Date: Tue, 6 Aug 2024 14:53:33 -0300
+	id 1sbQ1j-00000002j9e-1ZCu
+	for linux-mediatek@lists.infradead.org;
+	Tue, 06 Aug 2024 19:39:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id B0E02CE0ED1;
+	Tue,  6 Aug 2024 19:39:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AFCDAC32786;
+	Tue,  6 Aug 2024 19:39:19 +0000 (UTC)
+Date: Tue, 6 Aug 2024 15:40:08 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
+Cc: Masami Hiramatsu <mhiramat@kernel.org>, Mathieu Desnoyers
+ <mathieu.desnoyers@efficios.com>, <linux-kernel@vger.kernel.org>,
+ <linux-trace-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <bobule.chang@mediatek.com>, <eric-yc.wu@mediatek.com>,
+ <wsd_upstream@mediatek.com>, Cheng-Jui Wang <cheng-jui.wang@mediatek.com>,
+ Tom Zanussi <zanussi@kernel.org>
+Subject: Re: [PATCH RESEND] tracing: Fix overflow in get_free_elt()
+Message-ID: <20240806154008.502b6c7d@gandalf.local.home>
+In-Reply-To: <20240805055922.6277-1-Tze-nan.Wu@mediatek.com>
+References: <20240805055922.6277-1-Tze-nan.Wu@mediatek.com>
+X-Mailer: Claws Mail 3.20.0git84 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 0/6] drm/ci: Add support for GPU and display testing
-To: Daniel Stone <daniel@fooishbar.org>,
- Vignesh Raman <vignesh.raman@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
- airlied@gmail.com, daniel@ffwll.ch, robdclark@gmail.com,
- guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
- deborah.brouwer@collabora.com, dmitry.baryshkov@linaro.org,
- mcanal@igalia.com, melissa.srw@gmail.com,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- virtualization@lists.linux.dev, linux-kernel@vger.kernel.org
-References: <20240730021545.912271-1-vignesh.raman@collabora.com>
- <CAPj87rOYVCG2A10ruyYan9y6NmMY0fUM6Z5-9ht7dEp_THYmNw@mail.gmail.com>
-Content-Language: en-US
-From: Helen Koike <helen.koike@collabora.com>
-In-Reply-To: <CAPj87rOYVCG2A10ruyYan9y6NmMY0fUM6Z5-9ht7dEp_THYmNw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240806_105400_166580_0EC02858 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20240806_123923_814379_C8012186 
+X-CRM114-Status: GOOD (  26.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,40 +66,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, 5 Aug 2024 13:59:22 +0800
+Tze-nan Wu <Tze-nan.Wu@mediatek.com> wrote:
 
-
-On 05/08/2024 10:11, Daniel Stone wrote:
-> Hi Vignesh,
+> "tracing_map->next_elt" in get_free_elt() is at risk of overflowing.
 > 
-> On Tue, 30 Jul 2024 at 03:16, Vignesh Raman <vignesh.raman@collabora.com> wrote:
->> Some ARM SOCs have a separate display controller and GPU, each with
->> different drivers. For mediatek mt8173, the GPU driver is powervr,
->> and the display driver is mediatek. In the case of mediatek mt8183,
->> the GPU driver is panfrost, and the display driver is mediatek.
->> With rockchip rk3288/rk3399, the GPU driver is panfrost, while the
->> display driver is rockchip. For amlogic meson G12B (A311D) SOC, the
->> GPU driver is panfrost, and the display driver is meson.
->>
->> IGT tests run various tests with different xfails and can test both
->> GPU devices and KMS/display devices. Currently, in drm-ci for MediaTek,
->> Rockchip, and Amlogic Meson platforms, only the GPU driver is tested.
->> This leads to incomplete coverage since the display is never tested on
->> these platforms. This commit series adds support in drm-ci to run tests
->> for both GPU and display drivers for MediaTek mt8173/mt8183, Rockchip
->> rk3288/rk3399, and Amlogic Meson G12B (A311D) platforms.
->>
->> Update the expectations file, and skip driver-specific tests and
->> tools_test on non-intel platforms.
+> Once it overflows, new elements can still be inserted into the tracing_map
+> even though the maximum number of elements (`max_elts`) has been reached.
+> Continuing to insert elements after the overflow could result in the
+> tracing_map containing "tracing_map->max_size" elements, leaving no empty
+> entries.
+> If any attempt is made to insert an element into a full tracing_map using
+> `__tracing_map_insert()`, it will cause an infinite loop with preemption
+> disabled, leading to a CPU hang problem.
 > 
-> Thanks, series looks sensible and is:
-> Reviewed-by: Daniel Stone <daniels@collabora.com>
+> Fix this by preventing any further increments to "tracing_map->next_elt"
+> once it reaches "tracing_map->max_elt".
 > 
-> Cheers,
-> Daniel
+> Co-developed-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
+> Signed-off-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
+> Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
+> ---
+> We have encountered this issue internally after enabling the
+> throttle_rss_stat feature provided by Perfetto in background for more than
+> two days, during which `rss_stat` tracepoint was invoked over 2^32 times.
+> After tracing_map->next_elt overflow, new elements can continue to be 
+> inserted to the tracing_map belong to `rss_stat`.
+> Then the CPU could hang inside the while dead loop in function
+> `__tracing_map_insert()` by calling it after the tracing_map left no empty
+> entry.
+> 
+> Call trace during hang:
+>   __tracing_map_insert()
+>   tracing_map_insert()
+>   event_hist_trigger()
+>   event_triggers_call()
+>   __event_trigger_test_discard()
+>   trace_event_buffer_commit()
+>   trace_event_raw_event_rss_stat()
+>   __traceiter_rss_stat()
+>   trace_rss_stat()
+>   mm_trace_rss_stat()
+>   inc_mm_counter()
+>   do_swap_page()
+> 
+> throttle_rss_stat is literally a synthetic event triggered by `rss_stat`
+> with condition:
+>  1. $echo "rss_stat_throttled unsigned int mm_id unsigned int curr int
+>     member long size" >> /sys/kernel/tracing/synthetic_events
+>  2. $echo
+>     'hist:keys=mm_id,member:bucket=size/0x80000:onchange($bucket).rss_stat_
+>     throttled(mm_id,curr,member,size)' >
+>     /sys/kernel/tracing/events/kmem/rss_stat/trigger
+> 
+> The hang issue could also be reproduced easily by calling a customize
+> trace event `myevent(u64 mycount)` for more than 2^32+(map_size-max_elts)
+> times during its histogram enabled with the key set to variable "mycount".
+> While we call `myevent` with different argument "mycount" everytime.
+> 
+> BTW, I added Cheng-jui to Co-developed because we have a lot of discussions
+> during debugging this.
+> ---
+>  kernel/trace/tracing_map.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/kernel/trace/tracing_map.c b/kernel/trace/tracing_map.c
+> index a4dcf0f24352..3a56e7c8aa4f 100644
+> --- a/kernel/trace/tracing_map.c
+> +++ b/kernel/trace/tracing_map.c
+> @@ -454,7 +454,7 @@ static struct tracing_map_elt *get_free_elt(struct tracing_map *map)
+>  	struct tracing_map_elt *elt = NULL;
+>  	int idx;
+>  
+> -	idx = atomic_inc_return(&map->next_elt);
+> +	idx = atomic_fetch_add_unless(&map->next_elt, 1, map->max_elts);
 
+I guess we need to add (with a comment):
 
-Applied to drm-misc-next
+	idx--;
 
-Thanks
-Helen
+>  	if (idx < map->max_elts) {
+
+Otherwise the max elements will be off by one.
+
+>  		elt = *(TRACING_MAP_ELT(map->elts, idx));
+
+And the index will skip position zero.
+
+-- Steve
+
+>  		if (map->ops && map->ops->elt_init)
+> @@ -699,7 +699,7 @@ void tracing_map_clear(struct tracing_map *map)
+>  {
+>  	unsigned int i;
+>  
+> -	atomic_set(&map->next_elt, -1);
+> +	atomic_set(&map->next_elt, 0);
+>  	atomic64_set(&map->hits, 0);
+>  	atomic64_set(&map->drops, 0);
+>  
+> @@ -783,7 +783,7 @@ struct tracing_map *tracing_map_create(unsigned int map_bits,
+>  
+>  	map->map_bits = map_bits;
+>  	map->max_elts = (1 << map_bits);
+> -	atomic_set(&map->next_elt, -1);
+> +	atomic_set(&map->next_elt, 0);
+>  
+>  	map->map_size = (1 << (map_bits + 1));
+>  	map->ops = ops;
+
 
