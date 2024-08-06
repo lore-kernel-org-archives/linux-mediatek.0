@@ -4,80 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15E24C49EA1
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Aug 2024 04:37:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 387C3C3DA64
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Aug 2024 05:08:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TjQAjmGk1n7ajuQcs+KaJPCMDM2UdVWblEx6MXLoPhk=; b=RLlOGK+wg12SmSbEKSTCgR1gQM
-	IsHxpA3RlCqEfzOcUCTpvk98nFdfYM1w/wT3admNBH3bP6avrm1w7nPils08lbmcATHm/Oq1dLEcp
-	WGBlnI4Bdz7u6Cl4oJD4/Zzgl6VUIgcisPOoOluPYDv0sGQaz2qJo3Iu8ghiRWV5MAbx8uRPKxO8r
-	g6oadI6mtd+o/XarWIhCnImGl4kVsChaMUSgAKHp3PshzpXXekpO+ssgn9N4yCc6WxbQRBHPQuynM
-	7iAtI9gyqIOwl9r6/KlDjYdDq6ZghVZpJt1AuGqfUpRkoe9pflu46HA4ZeFba/m2oIaS2PWRqra5e
-	ADMXHLvQ==;
+	bh=XCDSMY7BT7wntpsqPsFrSxhoevgzeOq2oCwZ5SgFJUo=; b=uEWs1p4S4aokX7D8TfhgUxmZxB
+	s53dDY7vs3b0dt5qSkNGHxILs32qR60ScZN9vPY/mpnzja2L3USUj7uE/HFUaQmgsqVgLNLYQfBwv
+	ULpwqRM8TE/Y8/t0lyWUxk9z/Sa5xSY1mmuDJsUdcZFXSACkJHD2b4H7gVmkFx33/ebgAeH65FP5p
+	j6OV6kI1xy14gGSWEcSjkyjYyY18PPqS08vf8RgRaH2gF55W7yhzV2kBbmXivH39PZCpp0ly/zVcV
+	VmNswb0jbaBsEpuYdlJeXhJTBDcFi8W4KdfG9+whMb8JQlKd3MlS7vheBsPHAHeUrm2YfbmhYZmbs
+	2GOLIF8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbBwx-00000000U5G-1e4x;
-	Tue, 06 Aug 2024 04:37:31 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1sbCQU-00000000Y17-3CML;
+	Tue, 06 Aug 2024 05:08:02 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbBwQ-00000000U0t-2G9n
+	id 1sbCP0-00000000Xf8-2ls9
 	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Aug 2024 04:37:00 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-52f04b3cb33so494660e87.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 05 Aug 2024 21:36:57 -0700 (PDT)
+	Tue, 06 Aug 2024 05:06:32 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-52fc4388a64so178383e87.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Aug 2024 22:06:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1722919016; x=1723523816; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1722920787; x=1723525587; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=TjQAjmGk1n7ajuQcs+KaJPCMDM2UdVWblEx6MXLoPhk=;
-        b=V0ZG3p0+zfs9Dg/YB7fvuYc/6c433sfUjrN7WioJ4BmdyizaJJMADaAfd59lPc7j3Q
-         rPNQmJTl/5Ab/aaYqA4Ar509BEMRseBtMOAK+x2A33Buw4IiuYYkcjVR3wnZ7yXXq5IJ
-         iZeRQlaY7EwkPR2PszFSYP+hcR0AweTLRkwWg=
+        bh=XCDSMY7BT7wntpsqPsFrSxhoevgzeOq2oCwZ5SgFJUo=;
+        b=TOBPwHp7lMdluCEjKoN8LssV2g/8fVrMV1wdSBx4cPw/1pV4zxLm1UxpEvMf3V9tu/
+         vpJiNyLMSSy7X0Lz9r5nZdM6MrJauoDne85EI0TtIY2Huk56IuJHu0UAOm0Nor7BQN6T
+         hBczk1+jy4b/rcOUVhc1jt0KeGIVeK1ZwTNjs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722919016; x=1723523816;
+        d=1e100.net; s=20230601; t=1722920787; x=1723525587;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=TjQAjmGk1n7ajuQcs+KaJPCMDM2UdVWblEx6MXLoPhk=;
-        b=uYVIPW6oMmAJtlwTzsLOjktVvBcxXRFAEhgQtIOBq/5TH/NjYNK5V/bw+0IRhE5EjT
-         vCBc/OxcHya4cjpPiuLOrmepmSyTnCFDfYIT6L+kvRMUPzmcXJPFep+BGdHQcX5HacG1
-         58zv5E9S8iwsuC/Bmh4ZKIOP5/y/NBxsiqVYoJ+CKvzCPtvZZN6tqt3UUsoeQJqMiCqO
-         hNgnf70fSa8dNEVHeO/3iFUnBvL4s4yebLErf2KaIhtbBv0nnzC/ng5Os/nhepjNLfV8
-         dd92QJSVPOYt1J/HNxPIoUujovlR9gX53EHD/KnUyO4ooy6sHg+yqbqrQNWly/G75ABU
-         ec/Q==
-X-Forwarded-Encrypted: i=1; AJvYcCXWWMQkY93jpKmerE8gikmJRiRsSUD7wrtBv1XhqPCULDM39W5ioQDFCWoO5qjqa0GWLHFgUhqvqjAzpBRB90jRPWP6L/Bq/Zs0Zg5VQ/ab2ygI
-X-Gm-Message-State: AOJu0YwD5Xw3yc+DvtqFR+2CDy8qySJO8eEa2wOsNRbcvea8sgic5sNA
-	CZIgKZlRyP/F04qaItBIJ8B/9LV0DTf4mfFnUAgpwvbaTdLucr03pqimHRqexqV2RzVIXfxkj43
-	Cm0ysJTKvluYzQtZvgiTtexB2SiuucB1XOWPv
-X-Google-Smtp-Source: AGHT+IH6osN8AiHIsz3iGxVmsYDHTrZXNZkckgohptXBOcaV4KXsXzyqgFu5HOFrpie8oXsv/eCahc96/S2ayEDpeWY=
-X-Received: by 2002:a05:6512:2308:b0:52c:9ae0:beed with SMTP id
- 2adb3069b0e04-530bb3bc202mr11441300e87.52.1722919015831; Mon, 05 Aug 2024
- 21:36:55 -0700 (PDT)
+        bh=XCDSMY7BT7wntpsqPsFrSxhoevgzeOq2oCwZ5SgFJUo=;
+        b=QI6u9bSw66+xyyM8PDNHLonhPfy+eWyoVEvgy1v/pT1ewTcprRbAjW3UXf4Fn//Duy
+         LZbs4j8Vje8v2pIM3AoSopsc4HLK/SKNW3lCkNmT/fEa+r/a2lfbtnZIqxdS80ODDjXR
+         bAro1JsNVPa6WwDItyhXoR5ocR4s5YuH6S08XBh14BfACVCV3UTSm0eJcbMJ0/2zCZlD
+         malzPWz2/fBNRzk2rlOnG+49BJma9ZpnOZ9ZjiiUxm+cRYvtXt/Z7X/QcFcf4CvNyELN
+         +hn2muEnDcKEIM1Rg9dnvbVn9i6T9Y8CRb1P0nBVmKGbNok6Y1N0nwRF5+XdGFHykuQr
+         IYVg==
+X-Forwarded-Encrypted: i=1; AJvYcCXhIfs4vRYPZzXa9zVmSA/Bu90XtftVUMQW3TwNWub4HDT6RigMrqrXo73bPsUeGuY1l8kTpdHGnkWusVrURG+yFVS39HjBTM8d2v9LE+DsIxmI
+X-Gm-Message-State: AOJu0Yz08ofEPYsQi2fONVnv7mrIXrt+gVDjC9h/PsDI9zpOmLAf9rXa
+	K+agi8A1ywCvHd3uPckbRxPG+79UysjwBEOXrL4GzRwFJMfC8f53/km2baPDWPEovksza7m4fcc
+	=
+X-Google-Smtp-Source: AGHT+IGA1UVsMahv3VgFM0Zl7+IKxtd04HeWOhdOOjhZdanJpn1GyocoCj/kK491nk6MhuyWFlSTEQ==
+X-Received: by 2002:a05:6512:b01:b0:52f:31:c2a3 with SMTP id 2adb3069b0e04-530bb36b73cmr10547581e87.12.1722920787021;
+        Mon, 05 Aug 2024 22:06:27 -0700 (PDT)
+Received: from mail-ej1-f54.google.com (mail-ej1-f54.google.com. [209.85.218.54])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5b83b82c210sm5563268a12.62.2024.08.05.22.06.26
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 05 Aug 2024 22:06:26 -0700 (PDT)
+Received: by mail-ej1-f54.google.com with SMTP id a640c23a62f3a-a7ab5fc975dso5513666b.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Aug 2024 22:06:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCVA64I2TkC+Uug10WIbIP63oxWyRdouzrBnrg+vrrwyB1NHKnnjehIJ4xxbDYKnRSQpqYjc7xJxW/dg2GOPzRttov+KtvCRB2+iQWPwda71ScGu
+X-Received: by 2002:a17:907:d29:b0:a7a:c812:36bb with SMTP id
+ a640c23a62f3a-a7dc4da6efdmr1175852766b.8.1722920786049; Mon, 05 Aug 2024
+ 22:06:26 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240805065051.3129354-1-treapking@chromium.org> <8e089dc0-9342-480f-ac8a-93b5bfe1241e@collabora.com>
-In-Reply-To: <8e089dc0-9342-480f-ac8a-93b5bfe1241e@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 6 Aug 2024 12:36:44 +0800
-Message-ID: <CAGXv+5GnkhyT+nKq7j50G+Lpm720wLX3Jqfa5QWP6p29yUKq7Q@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8183: Remove clock from mfg_async
- power domain
+References: <20240731-jacuzzi_dt-v3-0-1c4314e8962f@chromium.org> <172243932855.488108.1466847928167694223.b4-ty@collabora.com>
+In-Reply-To: <172243932855.488108.1466847928167694223.b4-ty@collabora.com>
+From: Hsin-Te Yuan <yuanhsinte@chromium.org>
+Date: Tue, 6 Aug 2024 13:05:49 +0800
+X-Gmail-Original-Message-ID: <CAHc4DNLwUAzrE-1-7oH2DHR6fvz4x9ZVaKbjUo6rOy3-kjUadQ@mail.gmail.com>
+Message-ID: <CAHc4DNLwUAzrE-1-7oH2DHR6fvz4x9ZVaKbjUo6rOy3-kjUadQ@mail.gmail.com>
+Subject: Re: [PATCH v3 0/2] Add kukui-jacuzzi-cerise and kukui-jacuzzi-stern
+ DT and dt-binding
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Pin-yen Lin <treapking@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Rob Herring <robh@kernel.org>, Kiwi Liu <kiwi.liu@mediatek.corp-partner.google.com>, 
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
-	Enric Balletbo i Serra <eballetbo@kernel.org>, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Hsin-Te Yuan <yuanhsinte@chromium.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Hsin-Te Yuan <yuanhsinte@chromium.org>, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240805_213658_615090_BCBB6C04 
-X-CRM114-Status: GOOD (  16.00  )
+X-CRM114-CacheID: sfid-20240805_220630_785019_5953C074 
+X-CRM114-Status: GOOD (  13.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,110 +102,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 5, 2024 at 7:46=E2=80=AFPM AngeloGioacchino Del Regno
+On Wed, Jul 31, 2024 at 11:22=E2=80=AFPM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> Il 05/08/24 08:50, Pin-yen Lin ha scritto:
-> > This clock dependency introduced a mutual dependency between mfg_async
-> > power domain and mt8183-mfgcfg clock, and Mediatek has confirmed that
-> > this dependency is not needed. Remove this to avoid potential deadlock.
+> On Wed, 31 Jul 2024 10:47:24 +0000, Hsin-Te Yuan wrote:
+> > Cerise is known as ASUS Chromebook CZ1.
+> > Stern is known as ASUS Chromebook Flip CZ1.
 > >
+> > They are almost identical. The only difference is that Cerise is a
+> > clamshell device without touchscreen and Stern is a convertible device.
+> >
+> >
+> > [...]
 >
-> Uhm, have you tested this upstream with Panfrost, or only downstream with=
- the
-> proprietary Mali stack?
-
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
-
-With glmark2-es2-drm on linux-next-20240805:
-
-# glmark2-es2-drm
-Warning: DRM_CAP_ASYNC_PAGE_FLIP not supported, falling back to
-'mailbox' mode for SwapInterval(0).
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D
-    glmark2 2023.01
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D
-    OpenGL Information
-    GL_VENDOR:      Panfrost
-    GL_RENDERER:    Mali-G72 (Panfrost)
-    GL_VERSION:     OpenGL ES 3.1 Mesa 22.3.6
-    Surface Config: buf=3D32 r=3D8 g=3D8 b=3D8 a=3D8 depth=3D24 stencil=3D0=
- samples=3D0
-    Surface Size:   1366x768 fullscreen
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D
-[build] use-vbo=3Dfalse: FPS: 134 FrameTime: 7.485 ms
-[build] use-vbo=3Dtrue: FPS: 391 FrameTime: 2.559 ms
-[texture] texture-filter=3Dnearest: FPS: 378 FrameTime: 2.652 ms
-[texture] texture-filter=3Dlinear: FPS: 329 FrameTime: 3.046 ms
-[texture] texture-filter=3Dmipmap: FPS: 369 FrameTime: 2.717 ms
-[shading] shading=3Dgouraud: FPS: 367 FrameTime: 2.731 ms
-[shading] shading=3Dblinn-phong-inf: FPS: 372 FrameTime: 2.690 ms
-[shading] shading=3Dphong: FPS: 342 FrameTime: 2.930 ms
-[shading] shading=3Dcel: FPS: 338 FrameTime: 2.964 ms
-[bump] bump-render=3Dhigh-poly: FPS: 336 FrameTime: 2.978 ms
-[bump] bump-render=3Dnormals: FPS: 376 FrameTime: 2.663 ms
-[bump] bump-render=3Dheight: FPS: 328 FrameTime: 3.052 ms
-[effect2d] kernel=3D0,1,0;1,-4,1;0,1,0;: FPS: 316 FrameTime: 3.169 ms
-[effect2d] kernel=3D1,1,1,1,1;1,1,1,1,1;1,1,1,1,1;: FPS: 118 FrameTime: 8.5=
-11 ms
-[pulsar] light=3Dfalse:quads=3D5:texture=3Dfalse: FPS: 372 FrameTime: 2.692=
- ms
-[desktop] blur-radius=3D5:effect=3Dblur:passes=3D1:separable=3Dtrue:windows=
-=3D4:
-FPS: 51 FrameTime: 19.764 ms
-[desktop] effect=3Dshadow:windows=3D4: FPS: 191 FrameTime: 5.254 ms
-[buffer] columns=3D200:interleave=3Dfalse:update-dispersion=3D0.9:update-fr=
-action=3D0.5:update-method=3Dmap:
-FPS: 49 FrameTime: 20.746 ms
-[buffer] columns=3D200:interleave=3Dfalse:update-dispersion=3D0.9:update-fr=
-action=3D0.5:update-method=3Dsubdata:
-FPS: 49 FrameTime: 20.437 ms
-[buffer] columns=3D200:interleave=3Dtrue:update-dispersion=3D0.9:update-fra=
-ction=3D0.5:update-method=3Dmap:
-FPS: 53 FrameTime: 18.997 ms
-[ideas] speed=3Dduration: FPS: 117 FrameTime: 8.554 ms
-[jellyfish] <default>: FPS: 282 FrameTime: 3.559 ms
-...
-
-
-Thanks
-ChenYu
-
-> Regards,
+> Applied to v6.11-next/dts64, thanks!
+>
+> [1/2] arm64: dts: mt8183: Add kukui-jacuzzi-cerise series boards
+>       commit: 4ba6d1539fdd709ea8e8478c37b014e663cd6894
+> [2/2] dt-bindings: arm64: mediatek: Add kukui-jacuzzi-cerise board
+>       commit: ac90896833b52ff58c81727f57ed3cf9ffb9db86
+>
+> Cheers,
 > Angelo
 >
-> > Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-> > Fixes: 37fb78b9aeb7 ("arm64: dts: mediatek: Add mt8183 power domains co=
-ntroller")
-> >
-> > ---
-> >
-> >   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 --
-> >   1 file changed, 2 deletions(-)
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot=
-/dts/mediatek/mt8183.dtsi
-> > index fbf145639b8c..267378fa46c0 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > @@ -872,8 +872,6 @@ power-domain@MT8183_POWER_DOMAIN_CONN {
-> >
-> >                               mfg_async: power-domain@MT8183_POWER_DOMA=
-IN_MFG_ASYNC {
-> >                                       reg =3D <MT8183_POWER_DOMAIN_MFG_=
-ASYNC>;
-> > -                                     clocks =3D <&topckgen CLK_TOP_MUX=
-_MFG>;
-> > -                                     clock-names =3D "mfg";
-> >                                       #address-cells =3D <1>;
-> >                                       #size-cells =3D <0>;
-> >                                       #power-domain-cells =3D <1>;
 >
->
+I'm sorry that I just found out these two devices will not be
+launched. I sincerely apologize for any inconvenience this may cause
+and for taking up your valuable time. I kindly request that you
+consider dropping this patch series.
+
+Sincerely,
+Hsin-Te
 
