@@ -4,90 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 387C3C3DA64
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Aug 2024 05:08:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89368C3DA64
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Aug 2024 07:28:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XCDSMY7BT7wntpsqPsFrSxhoevgzeOq2oCwZ5SgFJUo=; b=uEWs1p4S4aokX7D8TfhgUxmZxB
-	s53dDY7vs3b0dt5qSkNGHxILs32qR60ScZN9vPY/mpnzja2L3USUj7uE/HFUaQmgsqVgLNLYQfBwv
-	ULpwqRM8TE/Y8/t0lyWUxk9z/Sa5xSY1mmuDJsUdcZFXSACkJHD2b4H7gVmkFx33/ebgAeH65FP5p
-	j6OV6kI1xy14gGSWEcSjkyjYyY18PPqS08vf8RgRaH2gF55W7yhzV2kBbmXivH39PZCpp0ly/zVcV
-	VmNswb0jbaBsEpuYdlJeXhJTBDcFi8W4KdfG9+whMb8JQlKd3MlS7vheBsPHAHeUrm2YfbmhYZmbs
-	2GOLIF8g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=bd8GlhW9froM6GOA2YyMMX+R5JWkQRdHXG8ufSuKDZk=; b=FJhzWagWrdsF6I7IDymtO/qqKc
+	Cf9+f8/B7Y9qgUj/+TVrRGuTM1HYjkiYHaysAqTfMWEY0GWarB0tml3SizYf8BPZrTrNBOQp1mZAc
+	nS87s1fWBcgrXPNnsYGBoU5dukn5wBMTD2uahQhe1wouEKsLv5EH/ZOYVO23kcZWXTgCo2Nx+90S6
+	gbyhMPI/LqlR5lwwumYns49ZZDgG6oaUYZPe6HdS8EB5n47mZCJLIrxYPwh6T9ZQ/74bAdM6FIXbs
+	EgSSQ4UQfqv5BriWHtRV4PK7emtwxlu5YMwTtyViVE43RXMCUu2BCBLVmOl+8L985oWVFzX16/mLU
+	CixV24uA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbCQU-00000000Y17-3CML;
-	Tue, 06 Aug 2024 05:08:02 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1sbEcM-00000000mwq-2eei;
+	Tue, 06 Aug 2024 07:28:26 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbCP0-00000000Xf8-2ls9
-	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Aug 2024 05:06:32 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-52fc4388a64so178383e87.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 05 Aug 2024 22:06:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1722920787; x=1723525587; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=XCDSMY7BT7wntpsqPsFrSxhoevgzeOq2oCwZ5SgFJUo=;
-        b=TOBPwHp7lMdluCEjKoN8LssV2g/8fVrMV1wdSBx4cPw/1pV4zxLm1UxpEvMf3V9tu/
-         vpJiNyLMSSy7X0Lz9r5nZdM6MrJauoDne85EI0TtIY2Huk56IuJHu0UAOm0Nor7BQN6T
-         hBczk1+jy4b/rcOUVhc1jt0KeGIVeK1ZwTNjs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722920787; x=1723525587;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=XCDSMY7BT7wntpsqPsFrSxhoevgzeOq2oCwZ5SgFJUo=;
-        b=QI6u9bSw66+xyyM8PDNHLonhPfy+eWyoVEvgy1v/pT1ewTcprRbAjW3UXf4Fn//Duy
-         LZbs4j8Vje8v2pIM3AoSopsc4HLK/SKNW3lCkNmT/fEa+r/a2lfbtnZIqxdS80ODDjXR
-         bAro1JsNVPa6WwDItyhXoR5ocR4s5YuH6S08XBh14BfACVCV3UTSm0eJcbMJ0/2zCZlD
-         malzPWz2/fBNRzk2rlOnG+49BJma9ZpnOZ9ZjiiUxm+cRYvtXt/Z7X/QcFcf4CvNyELN
-         +hn2muEnDcKEIM1Rg9dnvbVn9i6T9Y8CRb1P0nBVmKGbNok6Y1N0nwRF5+XdGFHykuQr
-         IYVg==
-X-Forwarded-Encrypted: i=1; AJvYcCXhIfs4vRYPZzXa9zVmSA/Bu90XtftVUMQW3TwNWub4HDT6RigMrqrXo73bPsUeGuY1l8kTpdHGnkWusVrURG+yFVS39HjBTM8d2v9LE+DsIxmI
-X-Gm-Message-State: AOJu0Yz08ofEPYsQi2fONVnv7mrIXrt+gVDjC9h/PsDI9zpOmLAf9rXa
-	K+agi8A1ywCvHd3uPckbRxPG+79UysjwBEOXrL4GzRwFJMfC8f53/km2baPDWPEovksza7m4fcc
-	=
-X-Google-Smtp-Source: AGHT+IGA1UVsMahv3VgFM0Zl7+IKxtd04HeWOhdOOjhZdanJpn1GyocoCj/kK491nk6MhuyWFlSTEQ==
-X-Received: by 2002:a05:6512:b01:b0:52f:31:c2a3 with SMTP id 2adb3069b0e04-530bb36b73cmr10547581e87.12.1722920787021;
-        Mon, 05 Aug 2024 22:06:27 -0700 (PDT)
-Received: from mail-ej1-f54.google.com (mail-ej1-f54.google.com. [209.85.218.54])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5b83b82c210sm5563268a12.62.2024.08.05.22.06.26
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Aug 2024 22:06:26 -0700 (PDT)
-Received: by mail-ej1-f54.google.com with SMTP id a640c23a62f3a-a7ab5fc975dso5513666b.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 05 Aug 2024 22:06:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVA64I2TkC+Uug10WIbIP63oxWyRdouzrBnrg+vrrwyB1NHKnnjehIJ4xxbDYKnRSQpqYjc7xJxW/dg2GOPzRttov+KtvCRB2+iQWPwda71ScGu
-X-Received: by 2002:a17:907:d29:b0:a7a:c812:36bb with SMTP id
- a640c23a62f3a-a7dc4da6efdmr1175852766b.8.1722920786049; Mon, 05 Aug 2024
- 22:06:26 -0700 (PDT)
+	id 1sbEcK-00000000mwA-0pIP;
+	Tue, 06 Aug 2024 07:28:25 +0000
+X-UUID: 7230bea853c511efa6c87f6b4542ff6b-20240806
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=bd8GlhW9froM6GOA2YyMMX+R5JWkQRdHXG8ufSuKDZk=;
+	b=S7lo9+CcEvbtzQeRMFP90ClQE05B2DplLGO+YHRUL8nvyWUKJvhyejiClqcIzd6kmCQJHD0F2XQlVO6AOy+n7KZ+y5vgo5forAQrx4uXCAB2WUw6P7zcD3mpJ2/KGdEVXaQ6F0fn63JGjE57gb3amP3BxZiJWQYiwBxWB16rK8g=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:e332fdc7-b951-4d98-a195-ed4f4ef48bce,IP:0,U
+	RL:0,TC:0,Content:0,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:6dc6a47,CLOUDID:28b488df-dee0-4117-97b9-64374874b616,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:5,IP:nil,UR
+	L:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,S
+	PR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 7230bea853c511efa6c87f6b4542ff6b-20240806
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <chaotian.jing@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1717992893; Tue, 06 Aug 2024 00:28:16 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 6 Aug 2024 15:28:13 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 6 Aug 2024 15:28:12 +0800
+From: Chaotian Jing <chaotian.jing@mediatek.com>
+To: <James.Bottomley@HansenPartnership.com>, <martin.petersen@oracle.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <linux-scsi@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>, Chaotian
+ Jing <chaotian.jing@mediatek.com>
+Subject: [PATCH] scsi: fix the return value of scsi_logical_block_count
+Date: Tue, 6 Aug 2024 15:26:34 +0800
+Message-ID: <20240806072714.29756-1-chaotian.jing@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-References: <20240731-jacuzzi_dt-v3-0-1c4314e8962f@chromium.org> <172243932855.488108.1466847928167694223.b4-ty@collabora.com>
-In-Reply-To: <172243932855.488108.1466847928167694223.b4-ty@collabora.com>
-From: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Date: Tue, 6 Aug 2024 13:05:49 +0800
-X-Gmail-Original-Message-ID: <CAHc4DNLwUAzrE-1-7oH2DHR6fvz4x9ZVaKbjUo6rOy3-kjUadQ@mail.gmail.com>
-Message-ID: <CAHc4DNLwUAzrE-1-7oH2DHR6fvz4x9ZVaKbjUo6rOy3-kjUadQ@mail.gmail.com>
-Subject: Re: [PATCH v3 0/2] Add kukui-jacuzzi-cerise and kukui-jacuzzi-stern
- DT and dt-binding
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Hsin-Te Yuan <yuanhsinte@chromium.org>, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240805_220630_785019_5953C074 
-X-CRM114-Status: GOOD (  13.91  )
+X-CRM114-CacheID: sfid-20240806_002824_263339_1774E367 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,35 +85,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 31, 2024 at 11:22=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> On Wed, 31 Jul 2024 10:47:24 +0000, Hsin-Te Yuan wrote:
-> > Cerise is known as ASUS Chromebook CZ1.
-> > Stern is known as ASUS Chromebook Flip CZ1.
-> >
-> > They are almost identical. The only difference is that Cerise is a
-> > clamshell device without touchscreen and Stern is a convertible device.
-> >
-> >
-> > [...]
->
-> Applied to v6.11-next/dts64, thanks!
->
-> [1/2] arm64: dts: mt8183: Add kukui-jacuzzi-cerise series boards
->       commit: 4ba6d1539fdd709ea8e8478c37b014e663cd6894
-> [2/2] dt-bindings: arm64: mediatek: Add kukui-jacuzzi-cerise board
->       commit: ac90896833b52ff58c81727f57ed3cf9ffb9db86
->
-> Cheers,
-> Angelo
->
->
-I'm sorry that I just found out these two devices will not be
-launched. I sincerely apologize for any inconvenience this may cause
-and for taking up your valuable time. I kindly request that you
-consider dropping this patch series.
+scsi_logical_block_count() should return the block count of scsi device,
+but the original code has a wrong implement.
 
-Sincerely,
-Hsin-Te
+Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+---
+ include/scsi/scsi_cmnd.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/scsi/scsi_cmnd.h b/include/scsi/scsi_cmnd.h
+index 45c40d200154..f0be0caa295a 100644
+--- a/include/scsi/scsi_cmnd.h
++++ b/include/scsi/scsi_cmnd.h
+@@ -236,7 +236,7 @@ static inline unsigned int scsi_logical_block_count(struct scsi_cmnd *scmd)
+ {
+ 	unsigned int shift = ilog2(scmd->device->sector_size) - SECTOR_SHIFT;
+ 
+-	return blk_rq_bytes(scsi_cmd_to_rq(scmd)) >> shift;
++	return blk_rq_sectors(scsi_cmd_to_rq(scmd)) >> shift;
+ }
+ 
+ /*
+-- 
+2.46.0
+
 
