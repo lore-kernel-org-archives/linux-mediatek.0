@@ -4,87 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 890FEC3DA64
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Aug 2024 11:23:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB306C52D6F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Aug 2024 11:37:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7xWKLX+TQ8lgw1qTY76UXfpS0ItWUagRIMGYR7j8nrY=; b=wo1I3T6X2UPAQHKiZ6CUimMLG5
-	KgMmurrBw92HNk++e5O4d55rZmqNuphZXBDPCUAKTfzuaTrNL7r64EMzjPnAC8FB3nhxAsqnDxSss
-	kNd2d+IJ5h/FHkhPlS5HjxXH22pXzDWLL6lfakbEK1vLqMs+cDIpLM3gZ2venr/saHN73vMdvzmF1
-	A31pW7RNpqIKXq1kuXOhdZyeyAN/XycjbsqBprphmH0NX6wecvH9+SMe9HEjZFSQNrQ7+qAOHrBLs
-	XL7wrPnbQDe++NVq8DpCgFt+eEoCp4TFK5XzOpNA9jQDRFMBkF8HmQQC/ZOihoYErS4MXhgOT9nXN
-	mD10WvkQ==;
+	bh=S0SiEONYRpxrZtR0HPzp22zIJEvfV4+9ZJaxARbtylc=; b=FU7681UTllbNXSWG4qYTHSkUTd
+	Yqohwm36/29QmF1ViMAwPlJtLNIlMFd8m1Q7pWyx5hDtsReNoGDAFMMUowh/VYDBSJ90+FAqg/xtY
+	Ww3tHzkNlWDtJp0pEj4wBe//Lpv2D+5fPJqB+DPLPKg1gdUrCaXua62iOls8eQlO+xU7193TSrNAj
+	pU9GHTLEQI/WEWs4s84P/GX1hwSllCYIDn28gDQAhU8+kM7mhvBI5VK3swTK5a/MJPCjrNM1UEIEU
+	/L1qSHk2FcPsDJeZyRUrtzgVVya2Hgq9bDjLc285dJR0pd8MOYrQm4PubPHy+/FVPpl2Wud3kyZMX
+	rjZiuuRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbIHN-00000001KcZ-3rfJ;
-	Tue, 06 Aug 2024 11:23:01 +0000
-Received: from mout.web.de ([212.227.15.14])
+	id 1sbIVp-00000001Mm8-0IQ8;
+	Tue, 06 Aug 2024 11:37:57 +0000
+Received: from szxga03-in.huawei.com ([45.249.212.189])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbIHK-00000001Kc4-1yP6
-	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Aug 2024 11:23:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1722943365; x=1723548165; i=spasswolf@web.de;
-	bh=7xWKLX+TQ8lgw1qTY76UXfpS0ItWUagRIMGYR7j8nrY=;
-	h=X-UI-Sender-Class:Message-ID:Subject:From:To:Cc:Date:In-Reply-To:
-	 References:Content-Type:MIME-Version:Content-Transfer-Encoding:cc:
-	 content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=oJ7lbiCQc8pp1b5aoHbiDawLLoSmZ/4NRU24YOu//mlFlPu5HZf8A44TjHiRtmSD
-	 vlRUru4S/FhFQCX031vBWBMPFDKhvVO8hTyrxjz5yGUrOvOLWnePGqEaJYb0HdY/A
-	 de5qxC/TZxnwhIh8DKwtCAefKxfpbsbY9pi2T//Twi89cQRAdy6gKXV/MD9u9uJRo
-	 lF6qPVtu5dJw5+0XiXxaymbXz6dOywwld68UvnxrsdKCfqXgVkLVuDI1suDUet7ti
-	 MXcAI7HY7VbKtAignyKAN6d86FOc2qxXa23BC9ikc671ffKAUOQv4oguw7WTzS/5l
-	 FaV5bcnygQ7J8rrfmw==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.0.101] ([84.119.92.193]) by smtp.web.de (mrweb006
- [213.165.67.108]) with ESMTPSA (Nemesis) id 1MW9vi-1shTF1381q-00TRL5; Tue, 06
- Aug 2024 13:22:45 +0200
-Message-ID: <e32ab97963e850b4425e4f5c45d2c502d50be480.camel@web.de>
-Subject: Re: patch 46/47 causes NULL pointer deref on mt7921
-From: Bert Karwatzki <spasswolf@web.de>
-To: Kalle Valo <kvalo@kernel.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@kernel.org>, 
-	deren.wu@mediatek.com, linux-mediatek@lists.infradead.org, 
-	linux-wireless@vger.kernel.org, lorenzo.bianconi@redhat.com, 
-	mingyen.hsieh@mediatek.com, sean.wang@mediatek.com, spasswolf@web.de
-Date: Tue, 06 Aug 2024 13:22:44 +0200
-In-Reply-To: <87frrqkkpm.fsf@kernel.org>
-References: <20240711175156.4465-1-spasswolf@web.de>
-		<CAGp9LzoXMoAW6dVZjTf-JcD_wiU4yXpGwkLaVyWXTkaV2MOKwg@mail.gmail.com>
-		<adb192a59c44aa8708e80df30a6a47816a03e50f.camel@web.de>
-		<4e943a62736f955af5d9cd1aff7e2b9c084c8885.camel@web.de>
-		<2599b886-9c63-4989-a08a-7feab28f7c49@nbd.name>
-		<65621cad9a22df881745e9333a5c3696bdbb8df3.camel@web.de>
-	 <87frrqkkpm.fsf@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.53.2-1 
+	id 1sbIVj-00000001MiF-4AwW;
+	Tue, 06 Aug 2024 11:37:54 +0000
+Received: from mail.maildlp.com (unknown [172.19.162.254])
+	by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4WdWQD3tK9zQpC4;
+	Tue,  6 Aug 2024 19:33:08 +0800 (CST)
+Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
+	by mail.maildlp.com (Postfix) with ESMTPS id 28868180102;
+	Tue,  6 Aug 2024 19:37:34 +0800 (CST)
+Received: from [10.67.120.129] (10.67.120.129) by
+ dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.11; Tue, 6 Aug 2024 19:37:33 +0800
+Message-ID: <ca6be29e-ab53-4673-9624-90d41616a154@huawei.com>
+Date: Tue, 6 Aug 2024 19:37:33 +0800
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:gST20yxtMJVjZRb11EdUOk2IEKYFhTO57N0EUKBUyGeDUI8NoW0
- wvSBytxsHX1ICmU+gvfiSzHVyCjnomfNq1p4E+mlmANuBZSiLboPiq2ToVR02/AufM0sMXA
- 1XJHuLJrHBP6yJ5dglSKjxNabxTEYuuVRZNzf98G/iukd5aSBvA+Cc3KrH6heiSiKyUkM1C
- Aot2CB2bOSF6TTDBBcw8w==
-UI-OutboundReport: notjunk:1;M01:P0:+iF3Prgvv1c=;22pWPW0OQuMK05MtcLjq5NR1DE5
- 5zZ8yKMecNVP8n1//Bytt+79dpEyF2kxoxb8a+IJVk7eRv3ZWMZfrsOxic7uxV87CDs7RCsOY
- lsdrKAL8I/Tw33lycmVltHG88tl9s4WVa1+hfOKRcrDytEFWg3DO6ErrYZ5lFaLARNSZf2qfN
- UwZKeEkbbDViU2FSSQOBgbggDLRMl3AvqXe6/LHCEHIvRKhcN1yDPpiKDT2YRUi1hWcJ+WKPh
- 6Kv5BXCs0iuxqC8tZu7qmiubxOQsTwGhrJLywJvJqFg9YulTuizItEpLokCr3P6yNlOGdMpim
- jdndWeW30vREqb+ckALCh2O9PCX6oNf7VtSiqKZylvpQ609LhE7AQF2SP2LjOpb/6qpg7v2UD
- UbyXb19tGV2blBENG8ohRTQj+H66yu5U/E8/mRA9xtZNdbP+qaYaZomNZrNcvck7LsiGvR+y+
- 6uxDm+h16q+AlD5VIsMCVrveECGikMlstxjKKSr+zCNv81RboRVJmFnePn7GiFmyM4uFa7vlr
- WPA3szF1f4SytsoEi6hbdJeesDtTnlpzGM64STy0/Fh67mm2+jNUn+tka1hy8Yz4gQm+E2tTn
- 2f3P/Tk0yw52hxNt/2fwoPz/BEcnbvEDoDVeYFZkLJ1f7c4tGTxyudBHyBVG0kPVA0iPjNvjj
- vGVmKudLrKswRJUlxepEEojgdbBrR0G4lPuMcHy2xFSY7C8VicPCSy2FyQwtUmO+HxOE3EN6R
- Df1WW002jO3doGu59R4Ga+uIZUpviT+UeN0L1ZkQms1mMkpmaIDF2Bl0tqGns3Aw2ZzaVLMSo
- qmbXvLtw1tLnCCpfmiXswTrw==
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v12 04/14] mm: page_frag: add '_va' suffix to
+ page_frag API
+To: Alexander Duyck <alexander.duyck@gmail.com>, Yunsheng Lin
+	<yunshenglin0825@gmail.com>
+CC: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>,
+	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Subbaraya Sundeep
+	<sbhatta@marvell.com>, Jeroen de Borst <jeroendb@google.com>, Praveen
+ Kaligineedi <pkaligineedi@google.com>, Shailend Chand <shailend@google.com>,
+	Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+	Przemek Kitszel <przemyslaw.kitszel@intel.com>, Sunil Goutham
+	<sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, hariprasad
+	<hkelam@marvell.com>, Felix Fietkau <nbd@nbd.name>, Sean Wang
+	<sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
+ Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith
+ Busch <kbusch@kernel.org>, Jens Axboe <axboe@kernel.dk>, Christoph Hellwig
+	<hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>, Chaitanya Kulkarni
+	<kch@nvidia.com>, "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang
+	<jasowang@redhat.com>, =?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>,
+	Andrew Morton <akpm@linux-foundation.org>, Alexei Starovoitov
+	<ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard
+ Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, Andrii
+ Nakryiko <andrii@kernel.org>, Martin KaFai Lau <martin.lau@linux.dev>, Eduard
+ Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>, Yonghong Song
+	<yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, Stanislav Fomichev
+	<sdf@fomichev.me>, Hao Luo <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>,
+	David Howells <dhowells@redhat.com>, Marc Dionne <marc.dionne@auristor.com>,
+	Chuck Lever <chuck.lever@oracle.com>, Jeff Layton <jlayton@kernel.org>, Neil
+ Brown <neilb@suse.de>, Olga Kornievskaia <kolga@netapp.com>, Dai Ngo
+	<Dai.Ngo@oracle.com>, Tom Talpey <tom@talpey.com>, Trond Myklebust
+	<trondmy@kernel.org>, Anna Schumaker <anna@kernel.org>,
+	<intel-wired-lan@lists.osuosl.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-nvme@lists.infradead.org>,
+	<kvm@vger.kernel.org>, <virtualization@lists.linux.dev>,
+	<linux-mm@kvack.org>, <bpf@vger.kernel.org>, <linux-afs@lists.infradead.org>,
+	<linux-nfs@vger.kernel.org>
+References: <20240731124505.2903877-1-linyunsheng@huawei.com>
+ <20240731124505.2903877-5-linyunsheng@huawei.com>
+ <CAKgT0UcqdeSJdjZ_FfwyCnT927TwOkE4zchHLOkrBEmhGzex9g@mail.gmail.com>
+ <22fda86c-d688-42e7-99e8-e2f8fcf1a5ba@huawei.com>
+ <CAKgT0UcuGj8wvC87=A+hkarRupfhjGM0BPzLUT2AJc8Ovg_TFg@mail.gmail.com>
+ <877efebe-f316-4192-aada-dd2657b74125@huawei.com>
+ <CAKgT0UfUkqR2TJQt6cSEdANNxQEOkjGqpPXhaXmrrxB0KwXmEQ@mail.gmail.com>
+ <2a29ce61-7136-4b9b-9940-504228b10cba@gmail.com>
+ <CAKgT0Uc6yw4u5Tjw1i0cV=C_ph+A5w0b_mtQMXmnBfKN_vvaDA@mail.gmail.com>
+Content-Language: en-US
+From: Yunsheng Lin <linyunsheng@huawei.com>
+In-Reply-To: <CAKgT0Uc6yw4u5Tjw1i0cV=C_ph+A5w0b_mtQMXmnBfKN_vvaDA@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.67.120.129]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ dggpemf200006.china.huawei.com (7.185.36.61)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240806_042258_911328_734365FB 
-X-CRM114-Status: GOOD (  22.75  )
+X-CRM114-CacheID: sfid-20240806_043752_370121_D4B42699 
+X-CRM114-Status: GOOD (  47.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,59 +110,188 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, dem 31.07.2024 um 11:51 +0300 schrieb Kalle Valo:
-> Bert Karwatzki <spasswolf@web.de> writes:
->
-> > Am Mittwoch, dem 17.07.2024 um 17:25 +0200 schrieb Felix Fietkau:
-> >
-> > > On 17.07.24 16:38, Bert Karwatzki wrote:
-> > >
-> > > > So mvif->phy can be NULL at the start of mt7921_ipv6_addr_change. =
-The early
-> > > > return in that case avoids the NULL pointer and mvif->phy has its =
-usual value
-> > > > again on the next call to mt7921_ipv6_addr_change so Wifi is worki=
-ng again. I
-> > > > don't know how this could happen but perhaps you have an idea.
-> > >
-> > > This change should fix it: https://nbd.name/p/0747f54f
-> > > Please test.
-> >
-> > The BUG is still present in linux-6.11-rc1.
->
-> I'm not sure what's the status with this. There's one mt76 patch going
-> to v6.11-rc2:
->
-> https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless.git/co=
-mmit/?id=3D6557a28f3e3a54cff4f0dcdd1dfa649b26557ab3
->
-> But that looks to be a fix for a different problem, right? Felix, are
-> you planning to submit that 0747f54f as a proper patch? I could then
-> take it to wireless tree.
->
-The Bug is still present in linux-6.11-rc2 and linux-next-20240806. Also t=
-he
-mvif->phy NULL check in the original patch is not neccessary (and feels a =
-little
-out of place as mvif->phy is not needed anymore). This patch is sufficient=
- to
-fix the NULL pointer dereference:
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 1bab93d049df..23b228804289 100644
-=2D-- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -1183,7 +1183,7 @@ static void mt7921_ipv6_addr_change(struct ieee80211=
-_hw
-*hw,
-                                    struct inet6_dev *idev)
- {
-        struct mt792x_vif *mvif =3D (struct mt792x_vif *)vif->drv_priv;
--       struct mt792x_dev *dev =3D mvif->phy->dev;
-+       struct mt792x_dev *dev =3D mt792x_hw_dev(hw);
-        struct inet6_ifaddr *ifa;
-        struct in6_addr ns_addrs[IEEE80211_BSS_ARP_ADDR_LIST_LEN];
-        struct sk_buff *skb;
+On 2024/8/6 8:52, Alexander Duyck wrote:
+> On Sun, Aug 4, 2024 at 10:00 AM Yunsheng Lin <yunshenglin0825@gmail.com> wrote:
+>>
+>> On 8/3/2024 1:00 AM, Alexander Duyck wrote:
+>>
+>>>>
+>>>>>
+>>>>> As far as your API extension and naming maybe you should look like
+>>>>> something like bio_vec and borrow the naming from that since that is
+>>>>> essentially what you are passing back and forth is essentially that
+>>>>> instead of a page frag which is normally a virtual address.
+>>>>
+>>>> I thought about adding something like bio_vec before, but I am not sure
+>>>> what you have in mind is somthing like I considered before?
+>>>> Let's say that we reuse bio_vec like something below for the new APIs:
+>>>>
+>>>> struct bio_vec {
+>>>>          struct page     *bv_page;
+>>>>          void            *va;
+>>>>          unsigned int    bv_len;
+>>>>          unsigned int    bv_offset;
+>>>> };
+>>>
+>>> I wasn't suggesting changing the bio_vec. I was suggesting that be
+>>> what you pass as a pointer reference instead of the offset. Basically
+>>> your use case is mostly just for populating bio_vec style structures
+>>> anyway.
+>>
+>> I wasn't trying/going to reuse/change bio_vec for page_frag, I was just
+>> having a hard time coming with a good new name for it.
+>> The best one I came up with is pfrag_vec, but I am not sure about the
+>> 'vec' as the "vec" portion of the name would suggest, iovec structures
+>> tend to come in arrays, mentioned in the below article:
+>> https://lwn.net/Articles/625077/
+>>
+>> Anther one is page_frag, which is currently in use.
+>>
+>> Or any better one in your mind?
+> 
+> I was suggesting using bio_vec, not some new structure. The general
+> idea is that almost all the values you are using are exposed by that
+> structure already in the case of the page based calls you were adding,
+> so it makes sense to use what is there rather than reinventing the
+> wheel.
 
-Bert Karwatzki
+Through a quick look, there seems to be at least three structs which have
+similar values: struct bio_vec & struct skb_frag & struct page_frag.
+
+As your above agrument about using bio_vec, it seems it is ok to use any
+one of them as each one of them seems to have almost all the values we
+are using?
+
+Personally, my preference over them: 'struct page_frag' > 'struct skb_frag'
+> 'struct bio_vec', as the naming of 'struct page_frag' seems to best match
+the page_frag API, 'struct skb_frag' is the second preference because we
+mostly need to fill skb frag anyway, and 'struct bio_vec' is the last
+preference because it just happen to have almost all the values needed.
+
+Is there any specific reason other than the above "almost all the values you
+are using are exposed by that structure already " that you prefer bio_vec?
+
+> 
+>>>
+>>>> It seems we have the below options for the new API:
+>>>>
+>>>> option 1, it seems like a better option from API naming point of view, but
+>>>> it needs to return a bio_vec pointer to the caller, it seems we need to have
+>>>> extra space for the pointer, I am not sure how we can avoid the memory waste
+>>>> for sk_page_frag() case in patch 12:
+>>>> struct bio_vec *page_frag_alloc_bio(struct page_frag_cache *nc,
+>>>>                                      unsigned int fragsz, gfp_t gfp_mask);
+>>>>
+>>>> option 2, it need both the caller and callee to have a its own local space
+>>>> for 'struct bio_vec ', I am not sure if passing the content instead of
+>>>> the pointer of a struct through the function returning is the common pattern
+>>>> and if it has any performance impact yet:
+>>>> struct bio_vec page_frag_alloc_bio(struct page_frag_cache *nc,
+>>>>                                     unsigned int fragsz, gfp_t gfp_mask);
+>>>>
+>>>> option 3, the caller passes the pointer of 'struct bio_vec ' to the callee,
+>>>> and page_frag_alloc_bio() fills in the data, I am not sure what is the point
+>>>> of indirect using 'struct bio_vec ' instead of passing 'va' & 'fragsz' &
+>>>> 'offset' through pointers directly:
+>>>> bool page_frag_alloc_bio(struct page_frag_cache *nc,
+>>>>                           unsigned int fragsz, gfp_t gfp_mask, struct bio_vec *bio);
+>>>>
+>>>> If one of the above option is something in your mind? Yes, please be more specific
+>>>> about which one is the prefer option, and why it is the prefer option than the one
+>>>> introduced in this patchset?
+>>>>
+>>>> If no, please be more specific what that is in your mind?
+>>>
+>>> Option 3 is more or less what I had in mind. Basically you would
+>>> return an int to indicate any errors and you would be populating a
+>>> bio_vec during your allocation. In addition you would use the bio_vec
+>>
+>> Actually using this new bio_vec style structures does not seem to solve
+>> the APIs naming issue this patch is trying to solve as my understanding,
+>> as the new struct is only about passing one pointer or multi-pointers
+>> from API naming perspective. It is part of the API naming, but not all
+>> of it.
+> 
+> I have no idea what you are talking about. The issue was you were
+> splitting things page_frag_alloc_va and page_frag_alloc_pg. Now it
+> would be page_frag_alloc and page_frag_alloc_bio or maybe
+> page_frag_fill_bio which would better explain what you are doing with
+> this function.
+
+There are three types of API as proposed in this patchset instead of
+two types of API:
+1. page_frag_alloc_va() returns [va].
+2. page_frag_alloc_pg() returns [page, offset].
+3. page_frag_alloc() returns [va] & [page, offset].
+
+You seemed to miss that we need a third naming for the type 3 API.
+Do you see type 3 API as a valid API? if yes, what naming are you
+suggesting for it? if no, why it is not a valid API?
+
+> 
+>>> as a tracker of the actual fragsz so when you commit you are
+>>> committing with the fragsz as it was determined at the time of putting
+>>> the bio_vec together so you can theoretically catch things like if the
+>>> underlying offset had somehow changed from the time you setup the
+>>
+>> I think we might need a stronger argument than the above to use the new
+>> *vec thing other than the above debugging feature.
+>>
+>> I looked throught the bio_vec related info, and come along somewhat not
+>> really related, but really helpful "What’s all this get us" section:
+>> https://docs.kernel.org/block/biovecs.html
+>>
+>> So the question seems to be: what is this new struct for page_frag get
+>> us?
+>>
+>> Generally, I am argeed with the new struct thing if it does bring us
+>> something other than the above debugging feature. Otherwise we should
+>> avoid introducing a new thing which is hard to argue about its existent.
+> 
+> I don't want a new structure. I just want you to use the bio_vec for
+> spots where you are needing to use a page because you are populating a
+> bio_vec.
+> 
+>>> allocation. It would fit well into your probe routines since they are
+>>> all essentially passing the page, offset, and fragsz throughout the
+>>> code.
+>>
+>> For the current probe routines, the 'va' need to be passed, do you
+>> expect the 'va' to be passed by function return, double pointer, or
+>> new the *_vec pointer?
+> 
+> I would suggest doing so via the *_vec pointer. The problem as I see
+
+As your above suggestion, I can safely assume *_ve is 'struct bio_vec',
+right?
+
+I am really confused here, you just clarified that you wasn't suggesting
+changing the bio_vec, and now you are suggesting passing 'va' via the
+'struct bio_vec' pointer?  How is it possible with current definition of
+'struct bio_vec'?
+
+struct bio_vec {
+	struct page	*bv_page;
+	unsigned int	bv_len;
+	unsigned int	bv_offset;
+};
+
+Or am I mising something obvious here?
+
+> it is that the existing code is exposing too much of the internals and
+> setting up the possibility for a system to get corrupted really
+
+If most of the page_frag API callers doesn't access 'struct bio_vec'
+directly and use something like bvec_iter_* API to do the accessing,
+then I am agreed with the above argument.
+
+But right now, most of the page_frag API callers are accessing 'va'
+directly to do the memcpy'ing, and accessing 'page & off & len' directly
+to do skb frag filling, so I am not really sure what's the point of
+indirection using the 'struct bio_vec' here.
+
+And adding 'struct bio_vec' for page_frag and accessing the value of it
+directly may be against of the design choice of 'struct bio_vec', as
+there seems to be no inline helper defined to access the value of
+'struct bio_vec' directly in bvec.h
 
