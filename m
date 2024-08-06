@@ -4,54 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1080BC52D6F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Aug 2024 19:39:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B30E0C52D6F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Aug 2024 20:28:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kDrs6vNUxdTCaWcmtCe09iGOF9uzwOM2loOME1McZEk=; b=nU6L1HfmSzJWKV2Jy1cKy2Rsd5
-	PKBnYC3wIYrpuetekvYnI7wgnIPLPO6dTLde+e9MObznp7Y3FiI1HwgDtOs1j/jubpscvvyTBxo0B
-	R6npTB/arbEPwTp2T/2JqKGirO7co7oGM8u1I9AZYcQIEgB8+5hw90kIAzhRkWd/sswcW/bquy4G0
-	7iF7/YgVPHcPhjTCgF2cLTOqlimUryiMdni2bsX9yVgsA4lc6+XYVSqKsyx5hAbOcmgVW+G+8EeHi
-	OHOSf/xGow5owjC6Hc8K1cINKnGKWv/5fPHSFHk8bhKWtNA7WDAOWg3i8zoCpePpeOtEMJwWJ4JON
-	1a+kYVTw==;
+	bh=ZAayS2LzlPl1w21HSU4UVAO4yzNnSSWguqeGtb88ugw=; b=S1SFMwjow2HwJmn/cO2mGjCEcp
+	2NmfpsxYHIZlLzbbnDA6pIH0UKOvTHXO1EiFMudZMcdMVugc3VDS1TkEnz2DMMyVjthqxUPbicLy3
+	Yo9Z5S+w7b7mIE2Qz/4Lq+FXCU4U3gBt50azNoxEd2XE5EszuRJ9DujbBPxHrJkxLQ3x5LISo0Rym
+	7m4AbfETwFVP6rM9rGkBbqbX19KAMhXdbjviruoyFYmeqJHn0I+qGQG1hP9OB/ouEmXg3H6GvoKeF
+	S3YRPRGD6NSmH4JII9xcOQwE6eHie4J2gHszzlK0zJUHSp8BMSUkF92VvoSrMjJ2AdLVp5cGQ5gzS
+	1pqlqhQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbQ1m-00000002jB6-2NAR;
-	Tue, 06 Aug 2024 19:39:26 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sbQnR-00000002o5n-10An;
+	Tue, 06 Aug 2024 20:28:41 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbQ1j-00000002j9e-1ZCu
-	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Aug 2024 19:39:25 +0000
+	id 1sbQmr-00000002npm-24Cd;
+	Tue, 06 Aug 2024 20:28:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id B0E02CE0ED1;
-	Tue,  6 Aug 2024 19:39:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AFCDAC32786;
-	Tue,  6 Aug 2024 19:39:19 +0000 (UTC)
-Date: Tue, 6 Aug 2024 15:40:08 -0400
-From: Steven Rostedt <rostedt@goodmis.org>
-To: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
-Cc: Masami Hiramatsu <mhiramat@kernel.org>, Mathieu Desnoyers
- <mathieu.desnoyers@efficios.com>, <linux-kernel@vger.kernel.org>,
- <linux-trace-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <bobule.chang@mediatek.com>, <eric-yc.wu@mediatek.com>,
- <wsd_upstream@mediatek.com>, Cheng-Jui Wang <cheng-jui.wang@mediatek.com>,
- Tom Zanussi <zanussi@kernel.org>
-Subject: Re: [PATCH RESEND] tracing: Fix overflow in get_free_elt()
-Message-ID: <20240806154008.502b6c7d@gandalf.local.home>
-In-Reply-To: <20240805055922.6277-1-Tze-nan.Wu@mediatek.com>
-References: <20240805055922.6277-1-Tze-nan.Wu@mediatek.com>
-X-Mailer: Claws Mail 3.20.0git84 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 64758610A4;
+	Tue,  6 Aug 2024 20:28:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34760C32786;
+	Tue,  6 Aug 2024 20:28:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1722976084;
+	bh=ZDK2VIjGyasQEBAujexaEDG0pqWNc67yY+RUFkv9r8Q=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=vNUmJn/WmTUY4BM5CUfu8ziqUcNTR6cHYb2qpCJk7Ha9S5wJetD5eVAGVc5jLaFJ9
+	 3ZuMun5c6P3yLcl0xRmQjDxezEjVNBXsJ3Be6nD9c9M5QeodbUcaE4B8rTwgG7P3eH
+	 buWU3A46BuWoCRqodME3tSZSmrCJpAVzKyO/vQ5LDnRzKk7TIDieEMMlyVHfMtMOEk
+	 kqaBi+9SSkE3EyigXE8q21UHZFCEgsJrFhZgVcoFPqY6bqwOqFC3REIx2zx1dEiz87
+	 /uoaIa3ya0iBCi56TFROSzc4jLzyO+1ZZFyHFxZJNRuh2z8RhYVqBwM04kyFFr5o/B
+	 VPembsN1WEopg==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33F153824F34;
+	Tue,  6 Aug 2024 20:28:04 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next] net: airoha: honor reset return value in
+ airoha_hw_init()
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <172297608275.1692635.2332592411478238343.git-patchwork-notify@kernel.org>
+Date: Tue, 06 Aug 2024 20:28:02 +0000
+References: <f49dc04a87653e0155f4fab3e3eb584785c8ad6a.1722699555.git.lorenzo@kernel.org>
+In-Reply-To: <f49dc04a87653e0155f4fab3e3eb584785c8ad6a.1722699555.git.lorenzo@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: netdev@vger.kernel.org, nbd@nbd.name, sean.wang@mediatek.com,
+ Mark-MC.Lee@mediatek.com, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, lorenzo.bianconi83@gmai.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240806_123923_814379_C8012186 
-X-CRM114-Status: GOOD (  26.91  )
+X-CRM114-CacheID: sfid-20240806_132805_620084_5098C6CC 
+X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,113 +77,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 5 Aug 2024 13:59:22 +0800
-Tze-nan Wu <Tze-nan.Wu@mediatek.com> wrote:
+Hello:
 
-> "tracing_map->next_elt" in get_free_elt() is at risk of overflowing.
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Sat,  3 Aug 2024 17:50:50 +0200 you wrote:
+> Take into account return value from reset_control_bulk_assert and
+> reset_control_bulk_deassert routines in airoha_hw_init().
 > 
-> Once it overflows, new elements can still be inserted into the tracing_map
-> even though the maximum number of elements (`max_elts`) has been reached.
-> Continuing to insert elements after the overflow could result in the
-> tracing_map containing "tracing_map->max_size" elements, leaving no empty
-> entries.
-> If any attempt is made to insert an element into a full tracing_map using
-> `__tracing_map_insert()`, it will cause an infinite loop with preemption
-> disabled, leading to a CPU hang problem.
-> 
-> Fix this by preventing any further increments to "tracing_map->next_elt"
-> once it reaches "tracing_map->max_elt".
-> 
-> Co-developed-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
-> Signed-off-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
-> Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > ---
-> We have encountered this issue internally after enabling the
-> throttle_rss_stat feature provided by Perfetto in background for more than
-> two days, during which `rss_stat` tracepoint was invoked over 2^32 times.
-> After tracing_map->next_elt overflow, new elements can continue to be 
-> inserted to the tracing_map belong to `rss_stat`.
-> Then the CPU could hang inside the while dead loop in function
-> `__tracing_map_insert()` by calling it after the tracing_map left no empty
-> entry.
-> 
-> Call trace during hang:
->   __tracing_map_insert()
->   tracing_map_insert()
->   event_hist_trigger()
->   event_triggers_call()
->   __event_trigger_test_discard()
->   trace_event_buffer_commit()
->   trace_event_raw_event_rss_stat()
->   __traceiter_rss_stat()
->   trace_rss_stat()
->   mm_trace_rss_stat()
->   inc_mm_counter()
->   do_swap_page()
-> 
-> throttle_rss_stat is literally a synthetic event triggered by `rss_stat`
-> with condition:
->  1. $echo "rss_stat_throttled unsigned int mm_id unsigned int curr int
->     member long size" >> /sys/kernel/tracing/synthetic_events
->  2. $echo
->     'hist:keys=mm_id,member:bucket=size/0x80000:onchange($bucket).rss_stat_
->     throttled(mm_id,curr,member,size)' >
->     /sys/kernel/tracing/events/kmem/rss_stat/trigger
-> 
-> The hang issue could also be reproduced easily by calling a customize
-> trace event `myevent(u64 mycount)` for more than 2^32+(map_size-max_elts)
-> times during its histogram enabled with the key set to variable "mycount".
-> While we call `myevent` with different argument "mycount" everytime.
-> 
-> BTW, I added Cheng-jui to Co-developed because we have a lot of discussions
-> during debugging this.
-> ---
->  kernel/trace/tracing_map.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/kernel/trace/tracing_map.c b/kernel/trace/tracing_map.c
-> index a4dcf0f24352..3a56e7c8aa4f 100644
-> --- a/kernel/trace/tracing_map.c
-> +++ b/kernel/trace/tracing_map.c
-> @@ -454,7 +454,7 @@ static struct tracing_map_elt *get_free_elt(struct tracing_map *map)
->  	struct tracing_map_elt *elt = NULL;
->  	int idx;
->  
-> -	idx = atomic_inc_return(&map->next_elt);
-> +	idx = atomic_fetch_add_unless(&map->next_elt, 1, map->max_elts);
+>  drivers/net/ethernet/mediatek/airoha_eth.c | 16 ++++++++++++----
+>  1 file changed, 12 insertions(+), 4 deletions(-)
 
-I guess we need to add (with a comment):
+Here is the summary with links:
+  - [net-next] net: airoha: honor reset return value in airoha_hw_init()
+    https://git.kernel.org/netdev/net-next/c/63a796b4988c
 
-	idx--;
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
->  	if (idx < map->max_elts) {
-
-Otherwise the max elements will be off by one.
-
->  		elt = *(TRACING_MAP_ELT(map->elts, idx));
-
-And the index will skip position zero.
-
--- Steve
-
->  		if (map->ops && map->ops->elt_init)
-> @@ -699,7 +699,7 @@ void tracing_map_clear(struct tracing_map *map)
->  {
->  	unsigned int i;
->  
-> -	atomic_set(&map->next_elt, -1);
-> +	atomic_set(&map->next_elt, 0);
->  	atomic64_set(&map->hits, 0);
->  	atomic64_set(&map->drops, 0);
->  
-> @@ -783,7 +783,7 @@ struct tracing_map *tracing_map_create(unsigned int map_bits,
->  
->  	map->map_bits = map_bits;
->  	map->max_elts = (1 << map_bits);
-> -	atomic_set(&map->next_elt, -1);
-> +	atomic_set(&map->next_elt, 0);
->  
->  	map->map_size = (1 << (map_bits + 1));
->  	map->ops = ops;
 
 
