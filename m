@@ -4,67 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41D04C52D73
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Aug 2024 17:25:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F087C3DA7F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Aug 2024 20:03:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hbD18wpdDV3KchTLv7sj/3wb4UnZsJ7riubip8+IJwk=; b=YQgaKCEM9ExCvRj7gNILKuw8uX
-	+OlbUZs8POaptEJ4YB3uPAQp8ri1iA1mb0YQjsdMiN7+IcWAuXXo7M89TuwkfG/MdOpC4OA4yEyxs
-	G8MKeLlWJazYGdFujCMBiycEHDC/gCUkRUd5tlPQG0Xvs2Kg3WhSGHcYVJKi/3uLpsL4Ij45+A3U2
-	W7fauCey7bF+nMfZ9GONUsc17EwYVLALYlHsqRBTzATBJKGeHglhjQwpyZaHnQ+obR0qTi2AWpLpt
-	nWIWTWvKgs/m21bF3MVb0dlUSxEiEO0YUl0m7RiTl2oeFTNjuvVyrNhPAqL++joBfsTLoyHJX1iR0
-	NfZWqXNQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xWZLjmHVUaFbudn6mhIyw0Tt+L18x2TkIcL6QcrIeDk=; b=lj4cyNv0+XLogI3Rqk50/dvvW7
+	BVMyQp8oFCcmCNYocGrI3NLOzm+1jA7KwFjdIUpNwsHUHGhJ1UsGzcM8dQX/WEgSqCtohmY5rfyaB
+	1IwkUVsUs2v8VM4L7JtxpIcPKDcRIBBBkTSoEB8Ci1GYUiFMspbnSA0n9QLEzEutw4bGQt8CIJo1T
+	jLoMygmVYJ0vbfWEp5u8C2RadSslo87AhHiWqWV7zl1SUP7bv6viwfIyydq0ITC6oenpvVUdDJfyN
+	XUismyd97X+KN4fujJsWuo8aX0ksBPR0+rneixXphKtYGPihuLg8WmVu0eg/OeKNM6Ezn4LgTZzM3
+	NSWtP42g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbkPp-00000005of4-3I6f;
-	Wed, 07 Aug 2024 17:25:37 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sbmsY-000000068U4-15ub;
+	Wed, 07 Aug 2024 20:03:26 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbkOn-00000005oU3-1dY9;
-	Wed, 07 Aug 2024 17:24:34 +0000
+	id 1sbmrx-000000068Jh-0lg6;
+	Wed, 07 Aug 2024 20:02:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 1DA49CE0D85;
-	Wed,  7 Aug 2024 17:24:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88FDAC32781;
-	Wed,  7 Aug 2024 17:24:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723051470;
-	bh=hbD18wpdDV3KchTLv7sj/3wb4UnZsJ7riubip8+IJwk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=nw4pgZTefnO7avtCPMVQstyX97iC462m7FD5w1dXh1fkQ/9mPKlLNNubZx+ZfUJQm
-	 qOo5lAf28VGGdcDSymjMKCjtZ6neqLnoUc7K5WqomruIBbvguNyDJFerncqQMljwoJ
-	 WjFthV3FTjv7bpxyp6maMFk2m05chP1pj7KfdLA4bcjzbdSyDbpS/oB4KuGuzhwLaI
-	 I7AdlivDTr9CYDb3T3kyak8ECjTX17QqCJLAsFsqJ3485alabUTCAuDPnUCMUrMnZA
-	 atW0HBtQnXcf6YP5McBSV13XHPqQeYv5og5UXvj4mjujnGK/6HbUBOnsw40FEeE/2J
-	 yixW1fYez22+g==
-Date: Wed, 7 Aug 2024 18:24:25 +0100
-From: Conor Dooley <conor@kernel.org>
-To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Stephen Boyd <sboyd@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chun-Jie Chen <chun-jie.chen@mediatek.com>,
-	Bartosz Golaszewski <brgl@bgdev.pl>, linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 0/3] dt-bindings: Convert and move Mediatek clock syscons
-Message-ID: <20240807-affair-dad-33a8762606c6@spud>
-References: <20240807-dt-mediatek-clk-v1-0-e8d568abfd48@kernel.org>
+	by sin.source.kernel.org (Postfix) with ESMTP id ED668CE1268;
+	Wed,  7 Aug 2024 20:02:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E624C32781;
+	Wed,  7 Aug 2024 20:02:42 +0000 (UTC)
+Date: Wed, 7 Aug 2024 16:02:41 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: Liju-clr Chen <liju-clr.chen@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ Masami Hiramatsu <mhiramat@kernel.org>, Mathieu Desnoyers
+ <mathieu.desnoyers@efficios.com>, Richard Cochran
+ <richardcochran@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Yingshiuan Pan <Yingshiuan.Pan@mediatek.com>, Ze-yu Wang
+ <Ze-yu.Wang@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-doc@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-trace-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, Shawn Hsiao
+ <shawn.hsiao@mediatek.com>, PeiLun Suei <PeiLun.Suei@mediatek.com>,
+ Chi-shen Yeh <Chi-shen.Yeh@mediatek.com>, Kevenny Hsieh
+ <Kevenny.Hsieh@mediatek.com>
+Subject: Re: [PATCH v12 20/24] virt: geniezone: Add tracing support for hyp
+ call and vcpu exit_reason
+Message-ID: <20240807160241.2370ae9b@gandalf.local.home>
+In-Reply-To: <20240730082436.9151-21-liju-clr.chen@mediatek.com>
+References: <20240730082436.9151-1-liju-clr.chen@mediatek.com>
+	<20240730082436.9151-21-liju-clr.chen@mediatek.com>
+X-Mailer: Claws Mail 3.20.0git84 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="REeeJpUvoCaayRRY"
-Content-Disposition: inline
-In-Reply-To: <20240807-dt-mediatek-clk-v1-0-e8d568abfd48@kernel.org>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240807_102433_625714_5E706051 
-X-CRM114-Status: GOOD (  10.58  )
+X-CRM114-CacheID: sfid-20240807_130249_423027_6525AA95 
+X-CRM114-Status: GOOD (  15.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,33 +77,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, 30 Jul 2024 16:24:32 +0800
+Liju-clr Chen <liju-clr.chen@mediatek.com> wrote:
 
---REeeJpUvoCaayRRY
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Aug 07, 2024 at 10:58:52AM -0600, Rob Herring (Arm) wrote:
-> This series converts all the Mediatek syscon bindings which are clock=20
-> controllers to DT schema format moving them to 'clock' directory. The=20
-> existing schemas in arm/mediatek/ which are clock and reset controllers=
-=20
-> are also moved to 'clock' directory.
+> From: Liju Chen <liju-clr.chen@mediatek.com>
 >=20
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+> Add tracepoints for hypervisor calls and VCPU exit reasons in GenieZone
+> driver. It aids performance debugging by providing more information
+> about hypervisor operations and VCPU behavior.
+>=20
+> Command Usage:
+> echo geniezone:* >> /sys/kernel/tracing/set_event
+> echo 1 > /sys/kernel/tracing/tracing_on
+> echo 0 > /sys/kernel/tracing/tracing_on
+> cat /sys/kernel/tracing/trace
+>=20
+> For example:
+> crosvm_vcpu0-4874    [007] .....    94.757349: mtk_hypcall_enter: id=3D0x=
+fb001005
+> crosvm_vcpu0-4874    [007] .....    94.760902: mtk_hypcall_leave: id=3D0x=
+fb001005 invalid=3D0
+> crosvm_vcpu0-4874    [007] .....    94.760902: mtk_vcpu_exit: vcpu exit_r=
+eason=3DIRQ(0x92920003)
+>=20
+> This example tracks a hypervisor function call by an ID (`0xbb001005`)
+> from initiation to termination, which is supported (invalid=3D0). A vCPU
+> exit is triggered by an Interrupt Request (IRQ) (exit reason: 0x92920003).
+>=20
+> /* VM exit reason */
+> enum {
+> 	GZVM_EXIT_UNKNOWN =3D 0x92920000,
+> 	GZVM_EXIT_MMIO =3D 0x92920001,
+> 	GZVM_EXIT_HYPERCALL =3D 0x92920002,
+> 	GZVM_EXIT_IRQ =3D 0x92920003,
+> 	GZVM_EXIT_EXCEPTION =3D 0x92920004,
+> 	GZVM_EXIT_DEBUG =3D 0x92920005,
+> 	GZVM_EXIT_FAIL_ENTRY =3D 0x92920006,
+> 	GZVM_EXIT_INTERNAL_ERROR =3D 0x92920007,
+> 	GZVM_EXIT_SYSTEM_EVENT =3D 0x92920008,
+> 	GZVM_EXIT_SHUTDOWN =3D 0x92920009,
+> 	GZVM_EXIT_GZ =3D 0x9292000a,
+> };
+>=20
+> Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
+> Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+=46rom a tracing POV, I don't see any issues with this patch.
 
---REeeJpUvoCaayRRY
-Content-Type: application/pgp-signature; name="signature.asc"
+Reviewed-by: Steven Rostedt (Google) <rostedt@goodmis.org>
 
------BEGIN PGP SIGNATURE-----
+-- Steve
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZrOtyQAKCRB4tDGHoIJi
-0gT7AP9dwMq7I7wZCotZ1n+Gjx12a1KtqSo4cnqfp4j75rBYDQEA/xBDTFpSj9qX
-KmtHZQWDrYgsoR4KuFTOZ+ZG29l9awc=
-=Jukv
------END PGP SIGNATURE-----
 
---REeeJpUvoCaayRRY--
+> ---
+>  arch/arm64/geniezone/vm.c          |  4 ++
+>  drivers/virt/geniezone/gzvm_vcpu.c |  3 ++
+>  include/trace/events/geniezone.h   | 84 ++++++++++++++++++++++++++++++
+>  3 files changed, 91 insertions(+)
+>  create mode 100644 include/trace/events/geniezone.h
+
 
