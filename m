@@ -4,73 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6076CC52D73
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Aug 2024 16:52:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F375FC3DA7F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Aug 2024 16:59:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6dJTfmCaQH/epAduChi8xwoktHuAwN3wVsejcEpvwnM=; b=dWKVRTnDpWGzst8YPtdKmpgEkT
-	08UjNnthIdAvrv6x67UICiVQA7T/GA9p5QeSmqeupegxsfDrymMT1u9CfOqjjKwNbHB6mg8rOovMi
-	lFb2jBCTqt8UNpAHiclgesrv3DGY5PNkTHVE8nHrUBGQZmL8IwzKswpbxgINZMtXbzAe4nK/d/tUJ
-	yM/ZJAq2j6sJRGCfbEEFkt995OiOa3c6djL/Ym5Fge8iqgrdgnlg94PWZ3nnAYZUkrquXv3qzNtws
-	GyJXmRcrJpNPmGMCGAiH4DvTwyw3UYfqIlVQnJEna8lq3ZOYj1Ugey1kAYMmL6FZXSEkatAsRLcM5
-	v4dhPcdQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=9Hv+QuR3hzdkyIxFQPItdFYXvjKJYSHWt11XpxPYkqA=; b=zrWpsgH983UDNo
+	yoS5tLODuzTILwgUIFEOT/XvC3qztGE+lF34OTanerlCm2Q7BMzS/zSmhBSTshy8velvRnM4DCF8P
+	n6pHj6QtfE3zCp5zSTA7A3ghuuqxVnF+mLAHNw9xjm7u5F1P5MYL1wKQmtROkXQ0H0nblyAASOF1p
+	n9wJxUkssahS2ixUOF7qgoPMWaQgf86tbx2mAcgkCaWgQK0a5RAdicpviZRi24Q4q3i+Y2hF0mt7F
+	cdlKxN8Z08bSQak3Oa79n+tTXfGWnYUChn38kejrh/NoCFOf2W+pqjXfhEK1xcaFPN/fAH1QSWzsU
+	TIUbKE5oVb2k0rFrz2Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbjtl-00000005kVw-01gN;
-	Wed, 07 Aug 2024 16:52:29 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sbk0k-00000005lFP-1opj;
+	Wed, 07 Aug 2024 16:59:42 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbjtB-00000005kKS-0s02;
-	Wed, 07 Aug 2024 16:51:54 +0000
+	id 1sbk0B-00000005l8z-0uky;
+	Wed, 07 Aug 2024 16:59:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 24043CE0F99;
-	Wed,  7 Aug 2024 16:51:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6ECCAC32781;
-	Wed,  7 Aug 2024 16:51:46 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 3AB9F61203;
+	Wed,  7 Aug 2024 16:59:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 905B9C32781;
+	Wed,  7 Aug 2024 16:59:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723049510;
-	bh=6dJTfmCaQH/epAduChi8xwoktHuAwN3wVsejcEpvwnM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=c94AEnm1qcyepy0DA0Rfla6DAsg4n1jhEeg8qAJ5vW2rNajHgyHWJwLAjORmeOMfw
-	 7m/Iz31lnm8hyAIcDM1hfrKt6A/+69tXQX2g3HSMNwwaBerNuukDVhqWShKtdS1lEs
-	 CDlujBo6gmnH4D3Hm0otg7Hxnn2f0jeeRKR771D4uLlj2ban06ozu3rB1nN/l7yWQn
-	 pSTUgP5vJjkemsUy9rBZxBUBMDv/kMZDrIcdwuPrKZS7Z2kowUkw9yWCEVPzjvEtaR
-	 NKVa8V390mULJ6M16RIWPax9uQBejrpgE4+FbSIXtksNm3X4UXzbFEyUK7ZkLDgYiP
-	 OsiAONdhym/RA==
-Date: Wed, 7 Aug 2024 17:51:44 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Bear Wang <bear.wang@mediatek.com>,
-	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
-	Sen Chu <sen.chu@mediatek.com>,
-	Jason-ch Chen <Jason-ch.Chen@mediatek.com>,
-	Chris-qj chen <chris-qj.chen@mediatek.com>,
-	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	Chen-Yu Tsai <wenst@chromium.org>
-Subject: Re: [PATCH v2] dt-bindings: regulator: mediatek,mt6397-regulator:
- convert to YAML
-Message-ID: <20240807-magnolia-oboe-9e8e960390c8@spud>
-References: <20240807091738.18387-1-macpaul.lin@mediatek.com>
+	s=k20201202; t=1723049945;
+	bh=dPEdhycVTOguP7QecWh2DLLxhHRJ4mnqR6lRY3q91o8=;
+	h=From:Subject:Date:To:Cc:From;
+	b=CspDVK3wd+jRFcuLGCeShKTTd8tY+e04zAx8Y9cxjm7jKJMSUg44wQnhtjROu6/Y6
+	 /D7lNY6r1PqQoRzZhLG6nWmSmy/Pqu4rZhF6WRn3ODgnQ0QRxg+QKPfDQUrfugKl7u
+	 K9Tlb8IFGi/MtHxGpaGUEf+YXaq55OCAKF3y2pKTNyhNwZwwSi+xgmwZ8yCTjOXAJX
+	 la1s0001V4ghioc4GvSuw5l+apgiVWv05qwX5vTvSI/SN1ltea01Uk6UsY8wl5kfML
+	 /RMzhwCRCPBb5pTesnTLCey0BLJNLuNQXNWbsu2nIMEgm05+vj5rE2TRxGuqCNxrWn
+	 7/rBQq/sct6aQ==
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Subject: [PATCH 0/3] dt-bindings: Convert and move Mediatek clock syscons
+Date: Wed, 07 Aug 2024 10:58:52 -0600
+Message-Id: <20240807-dt-mediatek-clk-v1-0-e8d568abfd48@kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="7E3aEdg7zXxKTcFJ"
-Content-Disposition: inline
-In-Reply-To: <20240807091738.18387-1-macpaul.lin@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAMyns2YC/x3MQQqAIBBA0avIrBtQiYquEi0GHWuoLDQiiO6et
+ HyL/x/InIQz9OqBxJdk2WOBqRS4meLEKL4YrLa17nSL/sSNvdDJC7p1wc4EarhtApGDUh2Jg9z
+ /cRjf9wNnlYZBYQAAAA==
+To: Stephen Boyd <sboyd@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>, 
+ Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+X-Mailer: b4 0.15-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240807_095153_448891_6D50C0FD 
-X-CRM114-Status: GOOD (  10.21  )
+X-CRM114-CacheID: sfid-20240807_095907_376483_154B128D 
+X-CRM114-Status: UNSURE (   7.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,34 +80,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This series converts all the Mediatek syscon bindings which are clock 
+controllers to DT schema format moving them to 'clock' directory. The 
+existing schemas in arm/mediatek/ which are clock and reset controllers 
+are also moved to 'clock' directory.
 
---7E3aEdg7zXxKTcFJ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+---
+Rob Herring (Arm) (3):
+      dt-bindings: clock: mediatek,apmixedsys: Fix "mediatek,mt6779-apmixed" compatible
+      dt-bindings: Move Mediatek clock controllers to "clock" directory
+      dt-bindings: clock: mediatek: Convert MediaTek clock syscons to schema
 
-On Wed, Aug 07, 2024 at 05:17:38PM +0800, Macpaul Lin wrote:
-> Convert the MediaTek MT6397 regulator bindings to DT schema.
->=20
-> Signed-off-by: Sen Chu <sen.chu@mediatek.com>
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+ .../bindings/arm/mediatek/mediatek,bdpsys.txt      | 24 ------
+ .../bindings/arm/mediatek/mediatek,camsys.txt      | 24 ------
+ .../bindings/arm/mediatek/mediatek,imgsys.txt      | 30 -------
+ .../bindings/arm/mediatek/mediatek,ipesys.txt      | 22 -----
+ .../bindings/arm/mediatek/mediatek,ipu.txt         | 43 ----------
+ .../bindings/arm/mediatek/mediatek,jpgdecsys.txt   | 22 -----
+ .../bindings/arm/mediatek/mediatek,mcucfg.txt      | 23 ------
+ .../bindings/arm/mediatek/mediatek,mfgcfg.txt      | 25 ------
+ .../bindings/arm/mediatek/mediatek,mipi0a.txt      | 28 -------
+ .../bindings/arm/mediatek/mediatek,vcodecsys.txt   | 27 -------
+ .../bindings/arm/mediatek/mediatek,vdecsys.txt     | 29 -------
+ .../bindings/arm/mediatek/mediatek,vencltsys.txt   | 22 -----
+ .../bindings/arm/mediatek/mediatek,vencsys.txt     | 26 ------
+ .../bindings/clock/mediatek,apmixedsys.yaml        |  2 +-
+ .../{arm/mediatek => clock}/mediatek,infracfg.yaml |  2 +-
+ .../mediatek => clock}/mediatek,mt8186-clock.yaml  |  2 +-
+ .../mediatek,mt8186-sys-clock.yaml                 |  2 +-
+ .../mediatek => clock}/mediatek,mt8192-clock.yaml  |  2 +-
+ .../mediatek,mt8192-sys-clock.yaml                 |  2 +-
+ .../mediatek => clock}/mediatek,mt8195-clock.yaml  |  2 +-
+ .../mediatek,mt8195-sys-clock.yaml                 |  2 +-
+ .../{arm/mediatek => clock}/mediatek,pericfg.yaml  |  2 +-
+ .../devicetree/bindings/clock/mediatek,syscon.yaml | 93 ++++++++++++++++++++++
+ 23 files changed, 102 insertions(+), 354 deletions(-)
+---
+base-commit: 8400291e289ee6b2bf9779ff1c83a291501f017b
+change-id: 20240807-dt-mediatek-clk-81fa6e76faac
 
-An ack, not a review, because I didn't verify the regex.
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Best regards,
+-- 
+Rob Herring (Arm) <robh@kernel.org>
 
-Cheers,
-Conor.
-
---7E3aEdg7zXxKTcFJ
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZrOmIAAKCRB4tDGHoIJi
-0ncGAQDFsDxp44VjZJxJhmVJVIxzpmhH0HGlbIs7Gb4nF+GptgEAlU8xS2U8ajFv
-iWSuq2RK14cHc+RkiPuqmmByh77f8gY=
-=RHlF
------END PGP SIGNATURE-----
-
---7E3aEdg7zXxKTcFJ--
 
