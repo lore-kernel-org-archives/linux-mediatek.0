@@ -4,82 +4,198 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AA88C52D6F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Aug 2024 08:36:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DB5FC52D6F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Aug 2024 08:48:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qE31DCp4yHPnBShoWFTBjcGkXm/pncTxOzRx1NDfCOU=; b=kpqczII9kANNQJV3HUAGaZneWB
-	q58uu+fgzlqEVaRV9oq6oFAJL4QYmPaV966DKoizTdrLDSlW1XnOKpz3hFV+zVEU4eeMvDzrZlP8C
-	Bc69Flquaa1zc/sAliU0Rt6sBRXIDYCWdcSXZFpQIybQrJbHwxCS55NphhYNU1ZS96OyI8YUXSGfS
-	3F8ga7woe/Vqj1hoMbMOtmX++/VRp4rFGUKECEf1VCiSgW65z3YOsgzjDa67LP91bLbJVfaZbk/3u
-	I/bXcHA4W2CA25ZlIcMfN5l+9/wJsfKuTe9d1xBlY1BTkTrxwX6E+M83Mnes0gzM+ciKZcwbKcNSO
-	Hi9dpIKg==;
+	bh=yNtE28OL3dd10LMq+nX/6Ri0yMhZHv/xIPlDf2TnpNo=; b=i91jatsU49F6Tq6nW9MbiLwCh5
+	HDx4rKITLv4+OZAidF6NKXwOIUW7USNB7tM8zpU3OKo8jWzWl/BT0+CFu2WYWAlweuRQIrR6yxJoS
+	nwwvoW3Nin+1W7XUp/pUNjfOBYtFmKcO2PGBv/i0H1W27CvBql294j3UbXaG0WJhKPyswgZtCcp5W
+	VYqI8UivM4uT3H+CAm5ddXCzOZsLKJgnOHUqFsgX4ZCXfYzPk65rExoXA/WMmKLze3qlo88QI5JY0
+	3wk2ZhG/NWV7IF90mf3VWiCNLvX42fqmCCXIxZGyYkXelbChhC1wjcwvWXi7kJ9u+at5WinUezB1E
+	hjGlEkrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbc9L-00000004ObK-1yo6;
-	Wed, 07 Aug 2024 08:36:03 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sbcLb-00000004Qjp-2FCm;
+	Wed, 07 Aug 2024 08:48:43 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbc8n-00000004OTG-3BJ8;
-	Wed, 07 Aug 2024 08:35:31 +0000
-X-UUID: fe8a31ea549711ef955bff358274dad2-20240807
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=qE31DCp4yHPnBShoWFTBjcGkXm/pncTxOzRx1NDfCOU=;
-	b=ZRz9eYSgdl3XAndogrBU29KsiP9jXwcEC5yfu5YwKQGHt/wi9pXUL5JMK5nL6j4W9N/1L84dFOi+OSB65SPLw2ed9f9hdc6nAi/0cZYlcznRdREfnRdSz3bo0dC/EgKjlS6SirVeM+pPNhUsOcTlkQu4N8f/ulefD11ytxBt1dM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:6c8a4f8e-206a-4eda-990d-5aa56def2531,IP:0,U
-	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6dc6a47,CLOUDID:6c1e4cc1-acff-4a0f-9582-14bcdf4ed7e0,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:1|19,IP:nil
-	,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
-	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: fe8a31ea549711ef955bff358274dad2-20240807
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1408333497; Wed, 07 Aug 2024 01:35:25 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 7 Aug 2024 16:24:49 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 7 Aug 2024 16:24:49 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Sebastian Fricke <sebastian.fricke@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>,
-	Daniel Almeida <daniel.almeida@collabora.com>
-CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
-	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei
- Dong <yunfei.dong@mediatek.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v4 3/7] media: mediatek: vcodec: flush decoder before stream off
-Date: Wed, 7 Aug 2024 16:24:33 +0800
-Message-ID: <20240807082444.21280-4-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20240807082444.21280-1-yunfei.dong@mediatek.com>
-References: <20240807082444.21280-1-yunfei.dong@mediatek.com>
+	id 1sbcL3-00000004Qcw-13rX;
+	Wed, 07 Aug 2024 08:48:10 +0000
+Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4776BT0g014269;
+	Wed, 7 Aug 2024 08:48:04 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=
+	message-id:date:subject:to:cc:references:from:in-reply-to
+	:content-type:content-transfer-encoding:mime-version; s=
+	corp-2023-11-20; bh=yNtE28OL3dd10LMq+nX/6Ri0yMhZHv/xIPlDf2TnpNo=; b=
+	WJ8UWW9W5slmUVudoMQyi0afKZd7KHKAnspAkQtTKGwiHdoFwptxKZgZB7IZjPze
+	16fmC6+SMyaUW4oLS8guyheg4KzntsScAb+QKafpXdTD7N0EPhsZIY4Rdh43srRJ
+	vFGhW2wZABjDkRqhbQv24r/4MMNSuVhC2QyMwPLFlNHw8tzTCHbRB/Iw48zSM1JI
+	zSklxYfC3lXOpZ2zz+xPLrsDAKuxvkkRYNPVOwVb4XWBneZzDcZFj4SQNr9Gl5w4
+	fvrDKQd2VGTY32Nfe3Ntd/hy9MYZ7gzezewQE5lguRNyFwtJa6XxJUpl7xzSttZt
+	gRIHmlDDkB16Q/vcTm1sHQ==
+Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 40sd3uq2tr-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 07 Aug 2024 08:48:03 +0000 (GMT)
+Received: from pps.filterd (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.19/8.17.1.19) with ESMTP id 4776qmAI027317;
+	Wed, 7 Aug 2024 08:48:02 GMT
+Received: from nam10-dm6-obe.outbound.protection.outlook.com (mail-dm6nam10lp2101.outbound.protection.outlook.com [104.47.58.101])
+	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 40sb0g1f40-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 07 Aug 2024 08:48:02 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=m3EsIa+ZH6iYtlCB3AHVcWTdOchZdzitiZU3YizgHu3zyRaoB7lbWNPf8TW4PnZ1QWtSAmWJFi72qmHmtHfWcB6Zvo4ouz+TQPs+CThzm9gABREyaWvAIS5TGzvTrEC+RzaRCV9A7d0gT/fRkDJgkoBK+kPk1taKv5CkKflZMWwmn+ihI+D/DSI3aA+WV2arn/jOslqrbU4fQT7cCGKkmYgi9O7e0mqjEehmFTbigyWNlkeyWPExUjeWICKHdj0JAQ/Gm0G6NrhF0UpVQVVmiC0Y5/bT1SRpLnJYSzvfJnmzexAtnDms5wuzaz8CDZie3OUZI7POz89zI9ftcf/qcQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=yNtE28OL3dd10LMq+nX/6Ri0yMhZHv/xIPlDf2TnpNo=;
+ b=X0u2YoVHEZft6h6Nh/Pb9KsQFGGpkg3yrelWACR0eZcSge0nKFnJTrjmjZtvC/xRrZRM9LgJKXuqcAOaxCdsOiCattobVyhyeR0NJ9vuMs99AlCwvvrzKecnvrLVZHco/2xNTxJAtfjI3GAgNeiwRDQEx/POeBTeKI9GbG/KwREnaRmbQa4gVmo1MzvlLUgnyUXV1+2R3Ju4nwsI/q7zpHQx6k/2+EKkTL5w5YQiUpnZgRBFpnm0clOAdaLvyqOu703tPifH/yp8cCL4RWN2yrg/ArzlLTUixtYfyJOAuclR4BIJ4eA5n5iRIVDyw6YCc31/wmNgElluvzhMPXYJmQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=yNtE28OL3dd10LMq+nX/6Ri0yMhZHv/xIPlDf2TnpNo=;
+ b=ZErXw7n5KJjCnbhpnVSpug6cvg+BT3z2QckXGPN4wEhdl9BLXM1eZQNkRgwRoILKRF2TIbCRpEtTITl7fWfLGWAHuXJ+QettXbKXoafCv5bOMzqrVeZoYssrCY0M+nUTDypaDa4vVB8a1WMbSW2MXHWiWJjLpcp6P7YeX99fSXU=
+Received: from DM6PR10MB4313.namprd10.prod.outlook.com (2603:10b6:5:212::20)
+ by SJ0PR10MB4624.namprd10.prod.outlook.com (2603:10b6:a03:2de::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7828.21; Wed, 7 Aug
+ 2024 08:48:00 +0000
+Received: from DM6PR10MB4313.namprd10.prod.outlook.com
+ ([fe80::4f45:f4ab:121:e088]) by DM6PR10MB4313.namprd10.prod.outlook.com
+ ([fe80::4f45:f4ab:121:e088%7]) with mapi id 15.20.7828.023; Wed, 7 Aug 2024
+ 08:47:59 +0000
+Message-ID: <9c475f0e-d550-4ff7-9d6c-94dfc300908a@oracle.com>
+Date: Wed, 7 Aug 2024 09:47:55 +0100
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] scsi: fix the return value of scsi_logical_block_count
+To: Chaotian Jing <chaotian.jing@mediatek.com>,
+        James.Bottomley@HansenPartnership.com, martin.petersen@oracle.com
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+References: <20240806072714.29756-1-chaotian.jing@mediatek.com>
+Content-Language: en-US
+From: John Garry <john.g.garry@oracle.com>
+Organization: Oracle Corporation
+In-Reply-To: <20240806072714.29756-1-chaotian.jing@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: LO2P265CA0394.GBRP265.PROD.OUTLOOK.COM
+ (2603:10a6:600:f::22) To DM6PR10MB4313.namprd10.prod.outlook.com
+ (2603:10b6:5:212::20)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM6PR10MB4313:EE_|SJ0PR10MB4624:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7ee0a6e4-2461-4012-2ed6-08dcb6bda405
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|1800799024|366016;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?Q0dRN0ZxbmtxYUdNdU5uNENyOWljb3FrKzh0V3pmNzRwWFlBS3ZPV3RYNm9C?=
+ =?utf-8?B?WTM1OWFHSTNYOG1adW9kLzdkRkhDTGFCY0ZXVW9vV2ExVWIzcnJWQmx1ZUtm?=
+ =?utf-8?B?RTRMWmlvUytKbEl1MkxxU2hMZEJ3aWFhMGV6NWJrb3ppMVk3Z3c4VUlVMWRV?=
+ =?utf-8?B?N1owaVc2RkljckhBU25iVnVzVEJxMFNVaW40L2Z6LzJuT3pvM1hZVy9Zaklk?=
+ =?utf-8?B?RlY0Um9GT0ZCNG1CaHMrWEpIeVF2VzRPQ0VwaC9HNnhrWW95RFE1SWJtczZr?=
+ =?utf-8?B?NUZVbE1teHhmeTR0RXJ1bEhQS2NzdHV1dnp5dUtqMXM1aXI2Z0JhU1VYYWhp?=
+ =?utf-8?B?RjU2c0ZNOStlZ3RFL3FHeXZZN1ZzYU9QRFNJajc5QlVPWGVrTHkwZnZXY3R2?=
+ =?utf-8?B?TExDd0MzYVJRRENFcUFvd0tzckxaQWdPRHA3elFIZloxMHRPa09CSWdNTjlL?=
+ =?utf-8?B?QmM5ckpLOE1mYnNZSEsydENxaEFiNmUrNEMvUzlzSXNUdUc1eVVMenFOL1lQ?=
+ =?utf-8?B?dDJMUGdzQTloM2N5MWl4aXZtaTZTRnNBSlFjZC9uOU1KaVNJM0tFeWsvbklD?=
+ =?utf-8?B?MFZZanh0VWE0eEhJcUlZMStTU1NaTlZycXUxNTJiOTR6L01uU0pxRVZnNGN6?=
+ =?utf-8?B?bEFlejVwTmFXd2RyVWJoZ0JBbmlyTXJtaGFzSGpSWG94M2huanJ3UlRzdDRH?=
+ =?utf-8?B?UGlkTTJnY3hrc3BtMFRiQXRBZFZDYUROblU1dDVkaHlQYThva29wSDJsdXZ2?=
+ =?utf-8?B?Y01QdkxzSEpUdXhzTjBmYWxPNXNDS1FqWi94NFhvRXhzRTlwSVQ0YWk4ZGhJ?=
+ =?utf-8?B?N1E4MFQ1ZmM3bjU5QTluT2QrQUMzMDdWVVJ6MnQrZlRkNmFrcWl3ZnByY1Jq?=
+ =?utf-8?B?bTJXdG8yV1poZEZub1VaN3FQTFBXd2xOYnhibVdUaWdYMGtUcnErWDNYVEdm?=
+ =?utf-8?B?aGhYSnNtaXp5RHc3NWxjdDJRcDlML0RkMWZwbHkxYmRFOWF3UUVxYUY1TEUx?=
+ =?utf-8?B?dmxlZEREbEtuVWtTWlBEcGNubmpBdzg5SHFZWGhVV1pCYy9XQUFxemdSVlRI?=
+ =?utf-8?B?dStuY2FhVWxybGtGRTRMSHMrYlgxc2JmNCt6V1Nlb2p4cWs1NE13SnhaVWZS?=
+ =?utf-8?B?VzVqSDhUYWVOMHZ6QjNXOGZuVVF4eEhkZ1BCa2VqbWJQdmF6NitCc0FCdmZE?=
+ =?utf-8?B?WkpWTy9tNTlINGMyRlJKVFZiZVBqZEZMaWZkaUQ3Z1B2YjFRM1B3Z05rN3lw?=
+ =?utf-8?B?Szllamx1eU1mMTlTWkYwS0hVYTFjdkNPU1YwLzJiYitRd2E4VXFtY2V1aUxX?=
+ =?utf-8?B?Tm56N1JzZlA4YVNYREgyOEplaTd2dFB6Y3krZTl2dmFxTlV0K3FsL0pmcWxp?=
+ =?utf-8?B?dG90czJraUEycXZHNVZ0cW9OMmxjdDN4VHlJMlh5YlV3T2RhWjFTN3NUVEh2?=
+ =?utf-8?B?aXhSRFZOOS9TcFhFNFI3ajVreFpjMXpFR085VythcE9wUHNHejRhUXRSK0cv?=
+ =?utf-8?B?eUV4Mko2RTZpUVlVamRwSzdkMVlYY0xCeGV0bXVQQ3ErN0JQQ1AvMEhScUVC?=
+ =?utf-8?B?eTBRM3RaSVBxbWh5dXdzTzVzL2lhSEtkc3J3VjJnMmtzUVVrVEJsV2xQNVph?=
+ =?utf-8?B?WGJmSVkyS2FYMkNOZXRnRUJJeTVVWWowd3RQN1ltRm16ZEdvN2ljS0RNdzV4?=
+ =?utf-8?B?YXA0eGxrRUNPeDI5bVFyTEVwK3Nocm9oU09BUHRCUjZiaXAvaW9YUk9WejEr?=
+ =?utf-8?B?OUI2M2Q5OGorbno5NkhreFkvNmp3MnFlWDhvbEdOY3FDSllReGtqR1NtUG1R?=
+ =?utf-8?B?OXhtanRJclBLTG04cUxFdz09?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM6PR10MB4313.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(1800799024)(366016);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?WEx5SFJlWEh2OTNjRU9HNVFyNGxlR3E1Ky81TFhhdHRabnU3TjFtZHlBV3lo?=
+ =?utf-8?B?VE5wT1Bxc2tIYzB4UTdDaDdiR0pNODlmUUhrS2w1Vzg4SDBZQXl2K01XSXZE?=
+ =?utf-8?B?K2ZxR0hzbDMyQlRaOGRkd3E0ZXZ2SWtXdWExQ3pYbHBoYTN4V2ZwTjJYZThi?=
+ =?utf-8?B?RS9icjdGdWlCRG9TUEpJTUNIbEgwN2N4QVdEU1lhMkx2UStKQ0JvckhudThM?=
+ =?utf-8?B?aWtmR01Ec0dEb2JZa2M5RUNWUGV1WVk5UnBMQ2pmZ0UrakpsTStLd3RQa2ZD?=
+ =?utf-8?B?NTBPMWpUdTJ4dkl6UDBTVmF5Zy8yVkJpVE1jTEFBb3d4cEpYRDMwc1lUVCs0?=
+ =?utf-8?B?MlU3UmRTaHE0a0ZCQXU4ZnkxN05RSGp3a0ZBb0dSL1pUb3VLZ2RVcEFzVkoz?=
+ =?utf-8?B?UXVMM1V0eUZhTFB5OG9CMjFTeDlCTlljcGJ6M2dxWVp3dkNDVHVtbVdsUlRp?=
+ =?utf-8?B?VUFpYW9HSzg1NTE1WkZBNVY3MnYvN0twZnF0cktzMHhUN1NNc05jdkNrOVlO?=
+ =?utf-8?B?dXNhRVJ4S2x3Z3ZSaGU4SFA5YTg3cjRUV2ZzbGJYblU5TWNES3U4aVZMK3l1?=
+ =?utf-8?B?WC8rTnFtNHZ3SStaSUtKZE92VzdHOEM0dFQvUWVQZlExTnFQUUl1QThZSUVo?=
+ =?utf-8?B?L0hpRmNrNnE2cjliVEdNRCtkUng0OE8vNTdYMVdHVVZxYjlnN296QkZPT2ZV?=
+ =?utf-8?B?cFNTRTIyRVAyOVNrZ3JqUGF3c1VURmtVdGswV3FkM01paXdIWHo2L0Zjbk4w?=
+ =?utf-8?B?TmVVVXJtTlBNWWtmZzMxQkxseCtlOVRWUHM5Q1Q4YS9QZkRmcXJmaG16aTBy?=
+ =?utf-8?B?dmFDd203SVNHVlNTb2wxN0dwSDdSb1VpT3o4UHVIbFlvb0Q0bTRUZGJPRjdi?=
+ =?utf-8?B?SkF2Rkg2N01zNDZockd3R0Z5b3pENVYrc1JDMXMvN0tadDRvc2tMc3V3MXVZ?=
+ =?utf-8?B?U1RNWW55TlR0SDQ3V29ic1pEWEFva0p6THdqd0UxdEZtVlBUUHEyU2kyRnlI?=
+ =?utf-8?B?WEEzaTNNK1VxR1VNRkJVampYbGhLTmZPTG5ndEpJRWUxaG1hSDAwekdnNWV2?=
+ =?utf-8?B?ei9iY29kbWVtcG1aSHpiTHVrSFRGMitGRko4bjhqOXpKMXBET2Y2ZkhzL0l0?=
+ =?utf-8?B?cXREam1USHkzZ280NEFzZFlFVFVHZnMzUWwyV2RqVGZhQ0NsNmpiL1Q2MVRv?=
+ =?utf-8?B?NzR2ZG9VTGowcUlCN2RDYTdDY0Npa2ZFMU9TazBLdC90bTd6WHMycjVka01M?=
+ =?utf-8?B?RFhqQ20wMlROQVNnSDg3UGxoNTRmc1BOOU9oTERhaGh2NGFLTVlBZ2dSTko4?=
+ =?utf-8?B?TnhHNGRXdE1kdHl3dlpIbXNsRjJ3Z1FYd2FiLzhORkdXZ21oSjlrdWNLWEtY?=
+ =?utf-8?B?dllXZHl1L3U3OTRRK1F0VE9YRks2Z2lxclFlaHIzRXRQcHhlalRDdzdLeVJM?=
+ =?utf-8?B?c2tOa2laUHJFRFZObndvWmJTSU9CUUpBN0dsTkJIRTlHdzJmMWVKQ0t2Y0RW?=
+ =?utf-8?B?VEpFZzAyYVVrVmJRd2hzSVlQaHFFeHI5KzZxVW9kSk9CT3hoa3U0VzJrTStj?=
+ =?utf-8?B?UjR1TWN0NXRkTDA5SU1VUXNGK1FFSHFEQlp4TzFEMEZtZ3YyQUtmbXg5Ykla?=
+ =?utf-8?B?Ymx2OHV4Yk1pSzZVMU1zMFhtdkM4VVVYaVBBdEVTZ1VEZGFpRHBkbEM4RGp2?=
+ =?utf-8?B?ZHNQdVdjRm9IRGYvNGZqU0VTSXprRzM3bEMwNGovODNIa0dldTdtWlpaelNq?=
+ =?utf-8?B?VXFKWmRadzFiOGJMendYSlo4V2xhUkJSTzFyUHZIRGQ1TFRTQWJpRDhLb2Y4?=
+ =?utf-8?B?dUpNeElQd1VpL3ZmM1NBMW5BOWVLSjhnUXlBSXNCbGRnc1RKUkwwL0d4OUVj?=
+ =?utf-8?B?aTNLdVEvbmhRUER5RmJMMGxxM1ZIcmZVT0lpcmZWR2ozVVVXQzc2Umxkc3ZV?=
+ =?utf-8?B?dWNSTkUvL1hsNUhPRjZ3cjViR1lxNk9lM1d0ckxuTFBhVGtVam96TGN3MWpV?=
+ =?utf-8?B?dUdIQjFyaU1Pc0F0TnVrUkJyN1pZZWI3L2MzRWRHN0c4alZZM3laUXc3dE1o?=
+ =?utf-8?B?S2ZHOVBDWDAyQTNuV0M3LzdWK2ZrbmNqNFYyVHgzbklzVzZYRTBjNlBXR3FL?=
+ =?utf-8?Q?4UhKN0+W0hO0StbcRoByOj19A?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: Y0H2tnAv6uQtb9XSbP7w+eKIl5RqwWRU98dR9lKPfP/X79pVfPnbSEEweUtkXwkpVo/rv0IBQkaGHYjgms1oGZokLNHChgh/BJ3TlFkLAg45/RIqpIeMsEJW6xCyyONenjtSMYF7Jln3u1/S+caeKj6RomBBMC1YNHRVQtvD+Xr44iiPA35bLdP5hEX7rkm4EhF3Wv+cWv3HMfLm2UE6vjm/8PgQ4ouVmGOOTmhbcf8Cf7mdvYRc4dgwPDDab+b23LFTUesrQ4+GBaPGRVDOkbLX8t5sZyqfc72llMit9z9dYxzcHeH3P7vJPAb+gPyg90dt4ilP+8ZC37R9sDhFgNSrpks8V0BmRuykoEzAB/L1bkLlu8O/bNp1bOSlBP0MwQ2SbwJ3Vdgy6jrw6uWyxC5wMzwx3z2Dx291227Itd5nL6op7MnFdJxT+EhWcgQdrZxDmZhhTVO9Aq5/5wjIcN49u6zs9odkoBlHduNlRdRVvrLp5pp54A8l4mDKDmM54UaJo2PUpxouSgE38sd0GWQPqfSE07kAJZRhyxBCncw/as+80da+jHq8kUmD6Xrj7dTJG1qJxf9SbCgyP5h3tzg1Kn7YowqUHwG0TbySxb0=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7ee0a6e4-2461-4012-2ed6-08dcb6bda405
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR10MB4313.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Aug 2024 08:47:59.8716
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: qKttB1hMKjCMnKm5AVNpqQuZBme0i5nSt1PT6/1hqm6aLzZsSNl18xowszBctYQdGPoDWvOpt1rIJ0OtsrI1yA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR10MB4624
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
+ definitions=2024-08-07_05,2024-08-06_01,2024-05-17_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 suspectscore=0 adultscore=0
+ phishscore=0 bulkscore=0 malwarescore=0 mlxscore=0 mlxlogscore=999
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2407110000
+ definitions=main-2408070060
+X-Proofpoint-ORIG-GUID: 5_1cj99jZ1J5DIsTVdkLCRxIH1nJYqBa
+X-Proofpoint-GUID: 5_1cj99jZ1J5DIsTVdkLCRxIH1nJYqBa
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240807_013529_810950_0905870F 
-X-CRM114-Status: GOOD (  14.29  )
+X-CRM114-CacheID: sfid-20240807_014809_334608_A7270B1F 
+X-CRM114-Status: GOOD (  20.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,82 +210,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Flush decoder will reset the driver to flush status. If lat or core
-work queue in active before flush when stream off, will lead to get
-dst buffer NULL or buff done with one non-existent source buffer.
+On 06/08/2024 08:26, Chaotian Jing wrote:
+> scsi_logical_block_count() should return the block count of scsi device,
 
-Flush decoder when stream off no matter output or capture queue
-calling stream off firstly.
+scsi command, not scsi device
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  | 45 ++++++++++---------
- 1 file changed, 23 insertions(+), 22 deletions(-)
+> but the original code has a wrong implement.
+> 
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> ---
+>   include/scsi/scsi_cmnd.h | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/include/scsi/scsi_cmnd.h b/include/scsi/scsi_cmnd.h
+> index 45c40d200154..f0be0caa295a 100644
+> --- a/include/scsi/scsi_cmnd.h
+> +++ b/include/scsi/scsi_cmnd.h
+> @@ -236,7 +236,7 @@ static inline unsigned int scsi_logical_block_count(struct scsi_cmnd *scmd)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-index 7080ca3e18b0..fc4ee1fb7cd1 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-@@ -882,6 +882,29 @@ void vb2ops_vdec_stop_streaming(struct vb2_queue *q)
- 	mtk_v4l2_vdec_dbg(3, ctx, "[%d] (%d) state=(%x) ctx->decoded_frame_cnt=%d",
- 			  ctx->id, q->type, ctx->state, ctx->decoded_frame_cnt);
- 
-+	if (ctx->state >= MTK_STATE_HEADER && ctx->state != MTK_STATE_FLUSH) {
-+		/*
-+		 * The resolution hasn't been changed when STREAMOFF is called.
-+		 * Update the picinfo here with previous resolution if VIDIOC_G_FMT
-+		 * is called.
-+		 */
-+		ctx->picinfo = ctx->last_decoded_picinfo;
-+
-+		mtk_v4l2_vdec_dbg(2, ctx,
-+				  "[%d]-> new(%d,%d), old(%d,%d), real(%d,%d)",
-+				  ctx->id, ctx->last_decoded_picinfo.pic_w,
-+				  ctx->last_decoded_picinfo.pic_h,
-+				  ctx->picinfo.pic_w, ctx->picinfo.pic_h,
-+				  ctx->last_decoded_picinfo.buf_w,
-+				  ctx->last_decoded_picinfo.buf_h);
-+
-+		ret = ctx->dev->vdec_pdata->flush_decoder(ctx);
-+		if (ret)
-+			mtk_v4l2_vdec_err(ctx, "DecodeFinal failed, ret=%d", ret);
-+
-+		ctx->state = MTK_STATE_FLUSH;
-+	}
-+
- 	if (q->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
- 		while ((src_buf = v4l2_m2m_src_buf_remove(ctx->m2m_ctx))) {
- 			if (src_buf != &ctx->empty_flush_buf.vb) {
-@@ -894,28 +917,6 @@ void vb2ops_vdec_stop_streaming(struct vb2_queue *q)
- 			}
- 		}
- 
--		if (ctx->state >= MTK_STATE_HEADER) {
--			/*
--			 * The resolution hasn't been changed when STREAMOFF is called.
--			 * Update the picinfo here with previous resolution if VIDIOC_G_FMT
--			 * is called.
--			 */
--			ctx->picinfo = ctx->last_decoded_picinfo;
--
--			mtk_v4l2_vdec_dbg(2, ctx,
--					  "[%d]-> new(%d,%d), old(%d,%d), real(%d,%d)",
--					  ctx->id, ctx->last_decoded_picinfo.pic_w,
--					  ctx->last_decoded_picinfo.pic_h,
--					  ctx->picinfo.pic_w, ctx->picinfo.pic_h,
--					  ctx->last_decoded_picinfo.buf_w,
--					  ctx->last_decoded_picinfo.buf_h);
--
--			ret = ctx->dev->vdec_pdata->flush_decoder(ctx);
--			if (ret)
--				mtk_v4l2_vdec_err(ctx, "DecodeFinal failed, ret=%d", ret);
--		}
--
--		ctx->state = MTK_STATE_FLUSH;
- 		return;
- 	}
- 
--- 
-2.46.0
+I find it questionable why we have this in the core code, since it's 
+only used in error handling logs for one driver. And obviously no one 
+was paying attention to it.
+
+>   {
+>   	unsigned int shift = ilog2(scmd->device->sector_size) - SECTOR_SHIFT;
+>   
+> -	return blk_rq_bytes(scsi_cmd_to_rq(scmd)) >> shift;
+> +	return blk_rq_sectors(scsi_cmd_to_rq(scmd)) >> shift;
+
+blk_rq_sectors() converts from bytes to linux sectors, and then we shift 
+it by diff in linux sectors and LBS.
+
+To me, if this were used in fastpath - which it isn't - the following 
+seems better:
+
+return blk_rq_bytes(scsi_cmd_to_rq(scmd)) / scmd->device->sector_size;
+
+>   }
+>   
+>   /*
 
 
