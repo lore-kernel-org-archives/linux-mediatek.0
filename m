@@ -4,65 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F087C3DA7F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Aug 2024 20:03:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75CE8C3DA7F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Aug 2024 22:05:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xWZLjmHVUaFbudn6mhIyw0Tt+L18x2TkIcL6QcrIeDk=; b=lj4cyNv0+XLogI3Rqk50/dvvW7
-	BVMyQp8oFCcmCNYocGrI3NLOzm+1jA7KwFjdIUpNwsHUHGhJ1UsGzcM8dQX/WEgSqCtohmY5rfyaB
-	1IwkUVsUs2v8VM4L7JtxpIcPKDcRIBBBkTSoEB8Ci1GYUiFMspbnSA0n9QLEzEutw4bGQt8CIJo1T
-	jLoMygmVYJ0vbfWEp5u8C2RadSslo87AhHiWqWV7zl1SUP7bv6viwfIyydq0ITC6oenpvVUdDJfyN
-	XUismyd97X+KN4fujJsWuo8aX0ksBPR0+rneixXphKtYGPihuLg8WmVu0eg/OeKNM6Ezn4LgTZzM3
-	NSWtP42g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Aun0C9qV6YJNK0y8IYWDwu6TzoJxNI1uGH6VUWDp41s=; b=whbj45wvoU9HSPVhTddFAtv/Ku
+	fTi7Em8E6W0Id6FO6Silg4wVizu94wZoCUY8EOu4/4W36i102J59jPP6NSs9fr7DHC2gyGi0kx/j0
+	R6MVirIVyq2U7+J7dyVx8cGE8r23EE0kSPP0VbEjzERu7bRx87gZYteruohMFYUUDd4bWE7cwaQGN
+	FjOMXybkivPyOdpT3RSC5f7cjlyeUExsGt3uJtDwSCH7KzPojTnIKhWNeFwffHli5GmNuov9mb80v
+	95dfv1ieur7M0k68M49IVrPAuKy+3ExLOsvcENDl6pW6Dsc/prVAqBs4Fx5UXCyca0ypTQyOAJvjK
+	e+lnQj+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbmsY-000000068U4-15ub;
-	Wed, 07 Aug 2024 20:03:26 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sbomS-00000006PHK-2K1O;
+	Wed, 07 Aug 2024 22:05:16 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbmrx-000000068Jh-0lg6;
-	Wed, 07 Aug 2024 20:02:51 +0000
+	id 1sbols-00000006P8d-0Yvb;
+	Wed, 07 Aug 2024 22:04:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id ED668CE1268;
-	Wed,  7 Aug 2024 20:02:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E624C32781;
-	Wed,  7 Aug 2024 20:02:42 +0000 (UTC)
-Date: Wed, 7 Aug 2024 16:02:41 -0400
-From: Steven Rostedt <rostedt@goodmis.org>
-To: Liju-clr Chen <liju-clr.chen@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Masami Hiramatsu <mhiramat@kernel.org>, Mathieu Desnoyers
- <mathieu.desnoyers@efficios.com>, Richard Cochran
- <richardcochran@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Yingshiuan Pan <Yingshiuan.Pan@mediatek.com>, Ze-yu Wang
- <Ze-yu.Wang@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-doc@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-trace-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, Shawn Hsiao
- <shawn.hsiao@mediatek.com>, PeiLun Suei <PeiLun.Suei@mediatek.com>,
- Chi-shen Yeh <Chi-shen.Yeh@mediatek.com>, Kevenny Hsieh
- <Kevenny.Hsieh@mediatek.com>
-Subject: Re: [PATCH v12 20/24] virt: geniezone: Add tracing support for hyp
- call and vcpu exit_reason
-Message-ID: <20240807160241.2370ae9b@gandalf.local.home>
-In-Reply-To: <20240730082436.9151-21-liju-clr.chen@mediatek.com>
-References: <20240730082436.9151-1-liju-clr.chen@mediatek.com>
-	<20240730082436.9151-21-liju-clr.chen@mediatek.com>
-X-Mailer: Claws Mail 3.20.0git84 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6F535612A4;
+	Wed,  7 Aug 2024 22:04:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 499CCC32781;
+	Wed,  7 Aug 2024 22:04:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1723068279;
+	bh=Aun0C9qV6YJNK0y8IYWDwu6TzoJxNI1uGH6VUWDp41s=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=WD8LeQVAow1IdNnHwQBI+fkkL63wGuHbzaEJ0nXnuhL+yy7RdNJjlGaTdYy4rDM1R
+	 +dNgRJc4cW/QXP0gSUmvZYylu3Z6H/IVZalPLGCHMJ+tB/kTSKVtgquyvedXjsFyzx
+	 mb8AHYz2gq/QMPpaGRQ1bix2fJhe4Sw/AyzgM2W6LLenZRRZLCBlweMY4e30RytCO0
+	 JApEm+f7IHD2QrdD54FF6vi/2WxjNjofsfHBcfqDpDfmRYzHrAGutIFHXf4+sR3j8w
+	 hRWKrpGPD+sq7dpcFG79TxV1R7StPrMVCrl4I7ZqlccwSJXcjEScMp/7ZBuAVYl8LE
+	 fQHKhO0lJT+YA==
+Date: Wed, 7 Aug 2024 23:04:31 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Bear Wang <bear.wang@mediatek.com>,
+	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
+	Sen Chu <sen.chu@mediatek.com>,
+	Jason-ch Chen <Jason-ch.Chen@mediatek.com>,
+	Chris-qj chen <chris-qj.chen@mediatek.com>,
+	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	Chen-Yu Tsai <wenst@chromium.org>
+Subject: Re: [PATCH v2] dt-bindings: regulator: mediatek,mt6397-regulator:
+ convert to YAML
+Message-ID: <ZrPvb_bT2ty-1V6-@finisterre.sirena.org.uk>
+References: <20240807091738.18387-1-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="lDZc6TitRszOoInN"
+Content-Disposition: inline
+In-Reply-To: <20240807091738.18387-1-macpaul.lin@mediatek.com>
+X-Cookie: Your love life will be... interesting.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240807_130249_423027_6525AA95 
-X-CRM114-Status: GOOD (  15.84  )
+X-CRM114-CacheID: sfid-20240807_150440_260126_04E253B6 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,63 +85,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 30 Jul 2024 16:24:32 +0800
-Liju-clr Chen <liju-clr.chen@mediatek.com> wrote:
 
-> From: Liju Chen <liju-clr.chen@mediatek.com>
->=20
-> Add tracepoints for hypervisor calls and VCPU exit reasons in GenieZone
-> driver. It aids performance debugging by providing more information
-> about hypervisor operations and VCPU behavior.
->=20
-> Command Usage:
-> echo geniezone:* >> /sys/kernel/tracing/set_event
-> echo 1 > /sys/kernel/tracing/tracing_on
-> echo 0 > /sys/kernel/tracing/tracing_on
-> cat /sys/kernel/tracing/trace
->=20
-> For example:
-> crosvm_vcpu0-4874    [007] .....    94.757349: mtk_hypcall_enter: id=3D0x=
-fb001005
-> crosvm_vcpu0-4874    [007] .....    94.760902: mtk_hypcall_leave: id=3D0x=
-fb001005 invalid=3D0
-> crosvm_vcpu0-4874    [007] .....    94.760902: mtk_vcpu_exit: vcpu exit_r=
-eason=3DIRQ(0x92920003)
->=20
-> This example tracks a hypervisor function call by an ID (`0xbb001005`)
-> from initiation to termination, which is supported (invalid=3D0). A vCPU
-> exit is triggered by an Interrupt Request (IRQ) (exit reason: 0x92920003).
->=20
-> /* VM exit reason */
-> enum {
-> 	GZVM_EXIT_UNKNOWN =3D 0x92920000,
-> 	GZVM_EXIT_MMIO =3D 0x92920001,
-> 	GZVM_EXIT_HYPERCALL =3D 0x92920002,
-> 	GZVM_EXIT_IRQ =3D 0x92920003,
-> 	GZVM_EXIT_EXCEPTION =3D 0x92920004,
-> 	GZVM_EXIT_DEBUG =3D 0x92920005,
-> 	GZVM_EXIT_FAIL_ENTRY =3D 0x92920006,
-> 	GZVM_EXIT_INTERNAL_ERROR =3D 0x92920007,
-> 	GZVM_EXIT_SYSTEM_EVENT =3D 0x92920008,
-> 	GZVM_EXIT_SHUTDOWN =3D 0x92920009,
-> 	GZVM_EXIT_GZ =3D 0x9292000a,
-> };
->=20
-> Signed-off-by: Yi-De Wu <yi-de.wu@mediatek.com>
-> Signed-off-by: Liju Chen <liju-clr.chen@mediatek.com>
+--lDZc6TitRszOoInN
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-=46rom a tracing POV, I don't see any issues with this patch.
+On Wed, Aug 07, 2024 at 05:17:38PM +0800, Macpaul Lin wrote:
+> Convert the MediaTek MT6397 regulator bindings to DT schema.
 
-Reviewed-by: Steven Rostedt (Google) <rostedt@goodmis.org>
+Please submit patches using subject lines reflecting the style for the
+subsystem, this makes it easier for people to identify relevant patches.
+Look at what existing commits in the area you're changing are doing and
+make sure your subject lines visually resemble what they're doing.
+There's no need to resubmit to fix this alone.
 
--- Steve
+--lDZc6TitRszOoInN
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
 
-> ---
->  arch/arm64/geniezone/vm.c          |  4 ++
->  drivers/virt/geniezone/gzvm_vcpu.c |  3 ++
->  include/trace/events/geniezone.h   | 84 ++++++++++++++++++++++++++++++
->  3 files changed, 91 insertions(+)
->  create mode 100644 include/trace/events/geniezone.h
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmaz728ACgkQJNaLcl1U
+h9D9XQf/eyGOxW1JkZAZL8CPVJKE1FXgdauk+Ue+UfyKHYdK6d+eRgfwjidtCKbE
+XDGKNI6EvMUzOR6n6VAYFSwJUOUcM5ErhW0JQbIWMlCWNbTxrMFvJAP8cx5LiNR2
+Ioms1PcpbZb+UTBQR4iR+W3KVBGeSvmIyhfkO4u0NtVT3TNPaofupAQJDx9esf3Z
+L5S5VLcR5P3hJ1bcugw1lhJNx4LF3a0bNunfJWRcKS0hQIkiSTjeRM7qcqMrIGfI
+vxLuBoP0+dW7G2JWdVZhWkjzDzAAyMvYlODNeHJjyrwyqwn9S8cQrEI0R3YALYs1
+r0GXGFxti79tGxYpqb3pwMJgZ6+lKA==
+=AjE1
+-----END PGP SIGNATURE-----
 
+--lDZc6TitRszOoInN--
 
