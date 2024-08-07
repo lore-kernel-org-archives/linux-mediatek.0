@@ -4,198 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DB5FC52D6F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Aug 2024 08:48:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29553C52D6F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Aug 2024 09:19:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yNtE28OL3dd10LMq+nX/6Ri0yMhZHv/xIPlDf2TnpNo=; b=i91jatsU49F6Tq6nW9MbiLwCh5
-	HDx4rKITLv4+OZAidF6NKXwOIUW7USNB7tM8zpU3OKo8jWzWl/BT0+CFu2WYWAlweuRQIrR6yxJoS
-	nwwvoW3Nin+1W7XUp/pUNjfOBYtFmKcO2PGBv/i0H1W27CvBql294j3UbXaG0WJhKPyswgZtCcp5W
-	VYqI8UivM4uT3H+CAm5ddXCzOZsLKJgnOHUqFsgX4ZCXfYzPk65rExoXA/WMmKLze3qlo88QI5JY0
-	3wk2ZhG/NWV7IF90mf3VWiCNLvX42fqmCCXIxZGyYkXelbChhC1wjcwvWXi7kJ9u+at5WinUezB1E
-	hjGlEkrQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4adnKWsx8j+xY9XsC5ULWsr2arXgZtlYtnwhVJWPCIA=; b=4XXipEuMUI3J+YtxcIEBLoQ6Lc
+	q4l27hmxUBtz3boMzoeIHEHgaF9UMnF39tbEyoU5m8cMH2Xp3M398G0iYm/GFovmyzcB0qsVtGdNC
+	tCc4Xm6Ei4EO6OtUTQxdWKSd66FXzEosPJM/sHxI4/ZcWj57AkdQ9l9CCehg07W2+2HGo8Rd8hBzI
+	5jRAEJkmwzetGgwQ86X2WfNWNjF6UcGVcKe6KWaEgap4d/sNmfbwjA70QmFHETYRNRGiL285vXfvf
+	MRsNoNR1Cq1umx1/wUOPe8P7z2g+C4ig+RbAP6Tp4tQSlXidB086A6F7BSr4gPDflADKVvN7Lf9+6
+	MJY/wZ8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbcLb-00000004Qjp-2FCm;
-	Wed, 07 Aug 2024 08:48:43 +0000
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+	id 1sbcpn-00000004Wce-2v8c;
+	Wed, 07 Aug 2024 09:19:55 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sbcL3-00000004Qcw-13rX;
-	Wed, 07 Aug 2024 08:48:10 +0000
-Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4776BT0g014269;
-	Wed, 7 Aug 2024 08:48:04 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=
-	message-id:date:subject:to:cc:references:from:in-reply-to
-	:content-type:content-transfer-encoding:mime-version; s=
-	corp-2023-11-20; bh=yNtE28OL3dd10LMq+nX/6Ri0yMhZHv/xIPlDf2TnpNo=; b=
-	WJ8UWW9W5slmUVudoMQyi0afKZd7KHKAnspAkQtTKGwiHdoFwptxKZgZB7IZjPze
-	16fmC6+SMyaUW4oLS8guyheg4KzntsScAb+QKafpXdTD7N0EPhsZIY4Rdh43srRJ
-	vFGhW2wZABjDkRqhbQv24r/4MMNSuVhC2QyMwPLFlNHw8tzTCHbRB/Iw48zSM1JI
-	zSklxYfC3lXOpZ2zz+xPLrsDAKuxvkkRYNPVOwVb4XWBneZzDcZFj4SQNr9Gl5w4
-	fvrDKQd2VGTY32Nfe3Ntd/hy9MYZ7gzezewQE5lguRNyFwtJa6XxJUpl7xzSttZt
-	gRIHmlDDkB16Q/vcTm1sHQ==
-Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 40sd3uq2tr-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 07 Aug 2024 08:48:03 +0000 (GMT)
-Received: from pps.filterd (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.19/8.17.1.19) with ESMTP id 4776qmAI027317;
-	Wed, 7 Aug 2024 08:48:02 GMT
-Received: from nam10-dm6-obe.outbound.protection.outlook.com (mail-dm6nam10lp2101.outbound.protection.outlook.com [104.47.58.101])
-	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 40sb0g1f40-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 07 Aug 2024 08:48:02 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=m3EsIa+ZH6iYtlCB3AHVcWTdOchZdzitiZU3YizgHu3zyRaoB7lbWNPf8TW4PnZ1QWtSAmWJFi72qmHmtHfWcB6Zvo4ouz+TQPs+CThzm9gABREyaWvAIS5TGzvTrEC+RzaRCV9A7d0gT/fRkDJgkoBK+kPk1taKv5CkKflZMWwmn+ihI+D/DSI3aA+WV2arn/jOslqrbU4fQT7cCGKkmYgi9O7e0mqjEehmFTbigyWNlkeyWPExUjeWICKHdj0JAQ/Gm0G6NrhF0UpVQVVmiC0Y5/bT1SRpLnJYSzvfJnmzexAtnDms5wuzaz8CDZie3OUZI7POz89zI9ftcf/qcQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=yNtE28OL3dd10LMq+nX/6Ri0yMhZHv/xIPlDf2TnpNo=;
- b=X0u2YoVHEZft6h6Nh/Pb9KsQFGGpkg3yrelWACR0eZcSge0nKFnJTrjmjZtvC/xRrZRM9LgJKXuqcAOaxCdsOiCattobVyhyeR0NJ9vuMs99AlCwvvrzKecnvrLVZHco/2xNTxJAtfjI3GAgNeiwRDQEx/POeBTeKI9GbG/KwREnaRmbQa4gVmo1MzvlLUgnyUXV1+2R3Ju4nwsI/q7zpHQx6k/2+EKkTL5w5YQiUpnZgRBFpnm0clOAdaLvyqOu703tPifH/yp8cCL4RWN2yrg/ArzlLTUixtYfyJOAuclR4BIJ4eA5n5iRIVDyw6YCc31/wmNgElluvzhMPXYJmQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=yNtE28OL3dd10LMq+nX/6Ri0yMhZHv/xIPlDf2TnpNo=;
- b=ZErXw7n5KJjCnbhpnVSpug6cvg+BT3z2QckXGPN4wEhdl9BLXM1eZQNkRgwRoILKRF2TIbCRpEtTITl7fWfLGWAHuXJ+QettXbKXoafCv5bOMzqrVeZoYssrCY0M+nUTDypaDa4vVB8a1WMbSW2MXHWiWJjLpcp6P7YeX99fSXU=
-Received: from DM6PR10MB4313.namprd10.prod.outlook.com (2603:10b6:5:212::20)
- by SJ0PR10MB4624.namprd10.prod.outlook.com (2603:10b6:a03:2de::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7828.21; Wed, 7 Aug
- 2024 08:48:00 +0000
-Received: from DM6PR10MB4313.namprd10.prod.outlook.com
- ([fe80::4f45:f4ab:121:e088]) by DM6PR10MB4313.namprd10.prod.outlook.com
- ([fe80::4f45:f4ab:121:e088%7]) with mapi id 15.20.7828.023; Wed, 7 Aug 2024
- 08:47:59 +0000
-Message-ID: <9c475f0e-d550-4ff7-9d6c-94dfc300908a@oracle.com>
-Date: Wed, 7 Aug 2024 09:47:55 +0100
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] scsi: fix the return value of scsi_logical_block_count
-To: Chaotian Jing <chaotian.jing@mediatek.com>,
-        James.Bottomley@HansenPartnership.com, martin.petersen@oracle.com
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
-References: <20240806072714.29756-1-chaotian.jing@mediatek.com>
-Content-Language: en-US
-From: John Garry <john.g.garry@oracle.com>
-Organization: Oracle Corporation
-In-Reply-To: <20240806072714.29756-1-chaotian.jing@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: LO2P265CA0394.GBRP265.PROD.OUTLOOK.COM
- (2603:10a6:600:f::22) To DM6PR10MB4313.namprd10.prod.outlook.com
- (2603:10b6:5:212::20)
+	id 1sbco2-00000004W0M-3UJs;
+	Wed, 07 Aug 2024 09:18:08 +0000
+X-UUID: f132c510549d11efa6c87f6b4542ff6b-20240807
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=4adnKWsx8j+xY9XsC5ULWsr2arXgZtlYtnwhVJWPCIA=;
+	b=bOv9wSodG3YYF2vR5w9T9N7sqAGUswVch66rAt/Jp6MbzfG0aWISS1alZIxWIfPhrc+brqigOXYhutFTat3hequ2nFtqyOPEnMynAdlLfBIxo1lSqifq8cW6mD7TIj3Wzoh4gAo1yyIRWm9JJYADF4JLUwl79sulAQsmf4+T1IU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:88f32be4-faef-4074-9ef5-adf4fc355a30,IP:0,U
+	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:6dc6a47,CLOUDID:f44147fe-77bb-433c-b174-ffb8012693b0,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: f132c510549d11efa6c87f6b4542ff6b-20240807
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1919303750; Wed, 07 Aug 2024 02:18:00 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 7 Aug 2024 17:17:57 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 7 Aug 2024 17:17:57 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, Liam Girdwood
+	<lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Rob Herring
+	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+	<conor+dt@kernel.org>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, Sen
+ Chu <sen.chu@mediatek.com>, Jason-ch Chen <Jason-ch.Chen@mediatek.com>,
+	Chris-qj chen <chris-qj.chen@mediatek.com>, MediaTek Chromebook Upstream
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>, Chen-Yu
+ Tsai <wenst@chromium.org>
+Subject: [PATCH v2] dt-bindings: regulator: mediatek,mt6397-regulator: convert to YAML
+Date: Wed, 7 Aug 2024 17:17:38 +0800
+Message-ID: <20240807091738.18387-1-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM6PR10MB4313:EE_|SJ0PR10MB4624:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7ee0a6e4-2461-4012-2ed6-08dcb6bda405
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|1800799024|366016;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?Q0dRN0ZxbmtxYUdNdU5uNENyOWljb3FrKzh0V3pmNzRwWFlBS3ZPV3RYNm9C?=
- =?utf-8?B?WTM1OWFHSTNYOG1adW9kLzdkRkhDTGFCY0ZXVW9vV2ExVWIzcnJWQmx1ZUtm?=
- =?utf-8?B?RTRMWmlvUytKbEl1MkxxU2hMZEJ3aWFhMGV6NWJrb3ppMVk3Z3c4VUlVMWRV?=
- =?utf-8?B?N1owaVc2RkljckhBU25iVnVzVEJxMFNVaW40L2Z6LzJuT3pvM1hZVy9Zaklk?=
- =?utf-8?B?RlY0Um9GT0ZCNG1CaHMrWEpIeVF2VzRPQ0VwaC9HNnhrWW95RFE1SWJtczZr?=
- =?utf-8?B?NUZVbE1teHhmeTR0RXJ1bEhQS2NzdHV1dnp5dUtqMXM1aXI2Z0JhU1VYYWhp?=
- =?utf-8?B?RjU2c0ZNOStlZ3RFL3FHeXZZN1ZzYU9QRFNJajc5QlVPWGVrTHkwZnZXY3R2?=
- =?utf-8?B?TExDd0MzYVJRRENFcUFvd0tzckxaQWdPRHA3elFIZloxMHRPa09CSWdNTjlL?=
- =?utf-8?B?QmM5ckpLOE1mYnNZSEsydENxaEFiNmUrNEMvUzlzSXNUdUc1eVVMenFOL1lQ?=
- =?utf-8?B?dDJMUGdzQTloM2N5MWl4aXZtaTZTRnNBSlFjZC9uOU1KaVNJM0tFeWsvbklD?=
- =?utf-8?B?MFZZanh0VWE0eEhJcUlZMStTU1NaTlZycXUxNTJiOTR6L01uU0pxRVZnNGN6?=
- =?utf-8?B?bEFlejVwTmFXd2RyVWJoZ0JBbmlyTXJtaGFzSGpSWG94M2huanJ3UlRzdDRH?=
- =?utf-8?B?UGlkTTJnY3hrc3BtMFRiQXRBZFZDYUROblU1dDVkaHlQYThva29wSDJsdXZ2?=
- =?utf-8?B?Y01QdkxzSEpUdXhzTjBmYWxPNXNDS1FqWi94NFhvRXhzRTlwSVQ0YWk4ZGhJ?=
- =?utf-8?B?N1E4MFQ1ZmM3bjU5QTluT2QrQUMzMDdWVVJ6MnQrZlRkNmFrcWl3ZnByY1Jq?=
- =?utf-8?B?bTJXdG8yV1poZEZub1VaN3FQTFBXd2xOYnhibVdUaWdYMGtUcnErWDNYVEdm?=
- =?utf-8?B?aGhYSnNtaXp5RHc3NWxjdDJRcDlML0RkMWZwbHkxYmRFOWF3UUVxYUY1TEUx?=
- =?utf-8?B?dmxlZEREbEtuVWtTWlBEcGNubmpBdzg5SHFZWGhVV1pCYy9XQUFxemdSVlRI?=
- =?utf-8?B?dStuY2FhVWxybGtGRTRMSHMrYlgxc2JmNCt6V1Nlb2p4cWs1NE13SnhaVWZS?=
- =?utf-8?B?VzVqSDhUYWVOMHZ6QjNXOGZuVVF4eEhkZ1BCa2VqbWJQdmF6NitCc0FCdmZE?=
- =?utf-8?B?WkpWTy9tNTlINGMyRlJKVFZiZVBqZEZMaWZkaUQ3Z1B2YjFRM1B3Z05rN3lw?=
- =?utf-8?B?Szllamx1eU1mMTlTWkYwS0hVYTFjdkNPU1YwLzJiYitRd2E4VXFtY2V1aUxX?=
- =?utf-8?B?Tm56N1JzZlA4YVNYREgyOEplaTd2dFB6Y3krZTl2dmFxTlV0K3FsL0pmcWxp?=
- =?utf-8?B?dG90czJraUEycXZHNVZ0cW9OMmxjdDN4VHlJMlh5YlV3T2RhWjFTN3NUVEh2?=
- =?utf-8?B?aXhSRFZOOS9TcFhFNFI3ajVreFpjMXpFR085VythcE9wUHNHejRhUXRSK0cv?=
- =?utf-8?B?eUV4Mko2RTZpUVlVamRwSzdkMVlYY0xCeGV0bXVQQ3ErN0JQQ1AvMEhScUVC?=
- =?utf-8?B?eTBRM3RaSVBxbWh5dXdzTzVzL2lhSEtkc3J3VjJnMmtzUVVrVEJsV2xQNVph?=
- =?utf-8?B?WGJmSVkyS2FYMkNOZXRnRUJJeTVVWWowd3RQN1ltRm16ZEdvN2ljS0RNdzV4?=
- =?utf-8?B?YXA0eGxrRUNPeDI5bVFyTEVwK3Nocm9oU09BUHRCUjZiaXAvaW9YUk9WejEr?=
- =?utf-8?B?OUI2M2Q5OGorbno5NkhreFkvNmp3MnFlWDhvbEdOY3FDSllReGtqR1NtUG1R?=
- =?utf-8?B?OXhtanRJclBLTG04cUxFdz09?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM6PR10MB4313.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(1800799024)(366016);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?WEx5SFJlWEh2OTNjRU9HNVFyNGxlR3E1Ky81TFhhdHRabnU3TjFtZHlBV3lo?=
- =?utf-8?B?VE5wT1Bxc2tIYzB4UTdDaDdiR0pNODlmUUhrS2w1Vzg4SDBZQXl2K01XSXZE?=
- =?utf-8?B?K2ZxR0hzbDMyQlRaOGRkd3E0ZXZ2SWtXdWExQ3pYbHBoYTN4V2ZwTjJYZThi?=
- =?utf-8?B?RS9icjdGdWlCRG9TUEpJTUNIbEgwN2N4QVdEU1lhMkx2UStKQ0JvckhudThM?=
- =?utf-8?B?aWtmR01Ec0dEb2JZa2M5RUNWUGV1WVk5UnBMQ2pmZ0UrakpsTStLd3RQa2ZD?=
- =?utf-8?B?NTBPMWpUdTJ4dkl6UDBTVmF5Zy8yVkJpVE1jTEFBb3d4cEpYRDMwc1lUVCs0?=
- =?utf-8?B?MlU3UmRTaHE0a0ZCQXU4ZnkxN05RSGp3a0ZBb0dSL1pUb3VLZ2RVcEFzVkoz?=
- =?utf-8?B?UXVMM1V0eUZhTFB5OG9CMjFTeDlCTlljcGJ6M2dxWVp3dkNDVHVtbVdsUlRp?=
- =?utf-8?B?VUFpYW9HSzg1NTE1WkZBNVY3MnYvN0twZnF0cktzMHhUN1NNc05jdkNrOVlO?=
- =?utf-8?B?dXNhRVJ4S2x3Z3ZSaGU4SFA5YTg3cjRUV2ZzbGJYblU5TWNES3U4aVZMK3l1?=
- =?utf-8?B?WC8rTnFtNHZ3SStaSUtKZE92VzdHOEM0dFQvUWVQZlExTnFQUUl1QThZSUVo?=
- =?utf-8?B?L0hpRmNrNnE2cjliVEdNRCtkUng0OE8vNTdYMVdHVVZxYjlnN296QkZPT2ZV?=
- =?utf-8?B?cFNTRTIyRVAyOVNrZ3JqUGF3c1VURmtVdGswV3FkM01paXdIWHo2L0Zjbk4w?=
- =?utf-8?B?TmVVVXJtTlBNWWtmZzMxQkxseCtlOVRWUHM5Q1Q4YS9QZkRmcXJmaG16aTBy?=
- =?utf-8?B?dmFDd203SVNHVlNTb2wxN0dwSDdSb1VpT3o4UHVIbFlvb0Q0bTRUZGJPRjdi?=
- =?utf-8?B?SkF2Rkg2N01zNDZockd3R0Z5b3pENVYrc1JDMXMvN0tadDRvc2tMc3V3MXVZ?=
- =?utf-8?B?U1RNWW55TlR0SDQ3V29ic1pEWEFva0p6THdqd0UxdEZtVlBUUHEyU2kyRnlI?=
- =?utf-8?B?WEEzaTNNK1VxR1VNRkJVampYbGhLTmZPTG5ndEpJRWUxaG1hSDAwekdnNWV2?=
- =?utf-8?B?ei9iY29kbWVtcG1aSHpiTHVrSFRGMitGRko4bjhqOXpKMXBET2Y2ZkhzL0l0?=
- =?utf-8?B?cXREam1USHkzZ280NEFzZFlFVFVHZnMzUWwyV2RqVGZhQ0NsNmpiL1Q2MVRv?=
- =?utf-8?B?NzR2ZG9VTGowcUlCN2RDYTdDY0Npa2ZFMU9TazBLdC90bTd6WHMycjVka01M?=
- =?utf-8?B?RFhqQ20wMlROQVNnSDg3UGxoNTRmc1BOOU9oTERhaGh2NGFLTVlBZ2dSTko4?=
- =?utf-8?B?TnhHNGRXdE1kdHl3dlpIbXNsRjJ3Z1FYd2FiLzhORkdXZ21oSjlrdWNLWEtY?=
- =?utf-8?B?dllXZHl1L3U3OTRRK1F0VE9YRks2Z2lxclFlaHIzRXRQcHhlalRDdzdLeVJM?=
- =?utf-8?B?c2tOa2laUHJFRFZObndvWmJTSU9CUUpBN0dsTkJIRTlHdzJmMWVKQ0t2Y0RW?=
- =?utf-8?B?VEpFZzAyYVVrVmJRd2hzSVlQaHFFeHI5KzZxVW9kSk9CT3hoa3U0VzJrTStj?=
- =?utf-8?B?UjR1TWN0NXRkTDA5SU1VUXNGK1FFSHFEQlp4TzFEMEZtZ3YyQUtmbXg5Ykla?=
- =?utf-8?B?Ymx2OHV4Yk1pSzZVMU1zMFhtdkM4VVVYaVBBdEVTZ1VEZGFpRHBkbEM4RGp2?=
- =?utf-8?B?ZHNQdVdjRm9IRGYvNGZqU0VTSXprRzM3bEMwNGovODNIa0dldTdtWlpaelNq?=
- =?utf-8?B?VXFKWmRadzFiOGJMendYSlo4V2xhUkJSTzFyUHZIRGQ1TFRTQWJpRDhLb2Y4?=
- =?utf-8?B?dUpNeElQd1VpL3ZmM1NBMW5BOWVLSjhnUXlBSXNCbGRnc1RKUkwwL0d4OUVj?=
- =?utf-8?B?aTNLdVEvbmhRUER5RmJMMGxxM1ZIcmZVT0lpcmZWR2ozVVVXQzc2Umxkc3ZV?=
- =?utf-8?B?dWNSTkUvL1hsNUhPRjZ3cjViR1lxNk9lM1d0ckxuTFBhVGtVam96TGN3MWpV?=
- =?utf-8?B?dUdIQjFyaU1Pc0F0TnVrUkJyN1pZZWI3L2MzRWRHN0c4alZZM3laUXc3dE1o?=
- =?utf-8?B?S2ZHOVBDWDAyQTNuV0M3LzdWK2ZrbmNqNFYyVHgzbklzVzZYRTBjNlBXR3FL?=
- =?utf-8?Q?4UhKN0+W0hO0StbcRoByOj19A?=
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: Y0H2tnAv6uQtb9XSbP7w+eKIl5RqwWRU98dR9lKPfP/X79pVfPnbSEEweUtkXwkpVo/rv0IBQkaGHYjgms1oGZokLNHChgh/BJ3TlFkLAg45/RIqpIeMsEJW6xCyyONenjtSMYF7Jln3u1/S+caeKj6RomBBMC1YNHRVQtvD+Xr44iiPA35bLdP5hEX7rkm4EhF3Wv+cWv3HMfLm2UE6vjm/8PgQ4ouVmGOOTmhbcf8Cf7mdvYRc4dgwPDDab+b23LFTUesrQ4+GBaPGRVDOkbLX8t5sZyqfc72llMit9z9dYxzcHeH3P7vJPAb+gPyg90dt4ilP+8ZC37R9sDhFgNSrpks8V0BmRuykoEzAB/L1bkLlu8O/bNp1bOSlBP0MwQ2SbwJ3Vdgy6jrw6uWyxC5wMzwx3z2Dx291227Itd5nL6op7MnFdJxT+EhWcgQdrZxDmZhhTVO9Aq5/5wjIcN49u6zs9odkoBlHduNlRdRVvrLp5pp54A8l4mDKDmM54UaJo2PUpxouSgE38sd0GWQPqfSE07kAJZRhyxBCncw/as+80da+jHq8kUmD6Xrj7dTJG1qJxf9SbCgyP5h3tzg1Kn7YowqUHwG0TbySxb0=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7ee0a6e4-2461-4012-2ed6-08dcb6bda405
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR10MB4313.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Aug 2024 08:47:59.8716
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: qKttB1hMKjCMnKm5AVNpqQuZBme0i5nSt1PT6/1hqm6aLzZsSNl18xowszBctYQdGPoDWvOpt1rIJ0OtsrI1yA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR10MB4624
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
- definitions=2024-08-07_05,2024-08-06_01,2024-05-17_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 suspectscore=0 adultscore=0
- phishscore=0 bulkscore=0 malwarescore=0 mlxscore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2407110000
- definitions=main-2408070060
-X-Proofpoint-ORIG-GUID: 5_1cj99jZ1J5DIsTVdkLCRxIH1nJYqBa
-X-Proofpoint-GUID: 5_1cj99jZ1J5DIsTVdkLCRxIH1nJYqBa
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240807_014809_334608_A7270B1F 
-X-CRM114-Status: GOOD (  20.42  )
+X-CRM114-CacheID: sfid-20240807_021806_914448_DD573614 
+X-CRM114-Status: GOOD (  16.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -210,44 +92,496 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06/08/2024 08:26, Chaotian Jing wrote:
-> scsi_logical_block_count() should return the block count of scsi device,
+Convert the MediaTek MT6397 regulator bindings to DT schema.
 
-scsi command, not scsi device
+Signed-off-by: Sen Chu <sen.chu@mediatek.com>
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+---
+ .../regulator/mediatek,mt6397-regulator.yaml  | 238 ++++++++++++++++++
+ .../bindings/regulator/mt6397-regulator.txt   | 220 ----------------
+ 2 files changed, 238 insertions(+), 220 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6397-regulator.yaml
+ delete mode 100644 Documentation/devicetree/bindings/regulator/mt6397-regulator.txt
 
-> but the original code has a wrong implement.
-> 
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> ---
->   include/scsi/scsi_cmnd.h | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/include/scsi/scsi_cmnd.h b/include/scsi/scsi_cmnd.h
-> index 45c40d200154..f0be0caa295a 100644
-> --- a/include/scsi/scsi_cmnd.h
-> +++ b/include/scsi/scsi_cmnd.h
-> @@ -236,7 +236,7 @@ static inline unsigned int scsi_logical_block_count(struct scsi_cmnd *scmd)
+Changes for v2:
+ - Remove unnecessary regulator-compatibles.
+ - Drop the top node of the parent device.
+   Since the parent device is still in txt format,
+   we are not moving this example to the parent device schema.
+ - Use 4 spaces for indentation in the example.
+ - Replace the old name in the example with the generic name "mt6397_regulators: regulators".
 
-I find it questionable why we have this in the core code, since it's 
-only used in error handling logs for one driver. And obviously no one 
-was paying attention to it.
-
->   {
->   	unsigned int shift = ilog2(scmd->device->sector_size) - SECTOR_SHIFT;
->   
-> -	return blk_rq_bytes(scsi_cmd_to_rq(scmd)) >> shift;
-> +	return blk_rq_sectors(scsi_cmd_to_rq(scmd)) >> shift;
-
-blk_rq_sectors() converts from bytes to linux sectors, and then we shift 
-it by diff in linux sectors and LBS.
-
-To me, if this were used in fastpath - which it isn't - the following 
-seems better:
-
-return blk_rq_bytes(scsi_cmd_to_rq(scmd)) / scmd->device->sector_size;
-
->   }
->   
->   /*
+diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6397-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6397-regulator.yaml
+new file mode 100644
+index 0000000..50db678
+--- /dev/null
++++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6397-regulator.yaml
+@@ -0,0 +1,238 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/regulator/mediatek,mt6397-regulator.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT6397 Regulator
++
++maintainers:
++  - Sen Chu <sen.chu@mediatek.com>
++  - Macpaul Lin <macpaul.lin@mediatek.com>
++
++description:
++  Regulator node of the PMIC. This node should under the PMIC's device node.
++  All voltage regulators provided by the PMIC are described as sub-nodes of
++  this node.
++
++properties:
++  compatible:
++    items:
++      - const: mediatek,mt6397-regulator
++
++patternProperties:
++  "^(buck_)?v(core|drm|gpu|io18|pca(7|15)|sramca(7|15))$":
++    description: Buck regulators
++    type: object
++    $ref: regulator.yaml#
++    properties:
++      regulator-allowed-modes:
++        description: |
++          BUCK regulators can set regulator-initial-mode and regulator-allowed-modes to
++          values specified in dt-bindings/regulator/mediatek,mt6397-regulator.h
++        items:
++          enum: [0, 1]
++    unevaluatedProperties: false
++
++  "^(ldo_)?v(tcxo|(a|io)28)$":
++    description: LDOs with fixed 2.8V output and 0~100/10mV tuning
++    type: object
++    $ref: regulator.yaml#
++    properties:
++      regulator-allowed-modes: false
++    unevaluatedProperties: false
++
++  "^(ldo_)?vusb$":
++    description: LDOs with fixed 3.0V output and 0~100/10mV tuning
++    type: object
++    $ref: regulator.yaml#
++    properties:
++      regulator-allowed-modes: false
++    unevaluatedProperties: false
++
++  "^(ldo_)?v(cama|emc3v3|gp[123456]|ibr|mc|mch)$":
++    description: LDOs with variable output and 0~100/10mV tuning
++    type: object
++    $ref: regulator.yaml#
++    properties:
++      regulator-allowed-modes: false
++    unevaluatedProperties: false
++
++required:
++  - compatible
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++
++    mt6397_regulators: regulators {
++        compatible = "mediatek,mt6397-regulator";
++
++        mt6397_vpca15_reg: buck_vpca15 {
++            regulator-name = "vpca15";
++            regulator-min-microvolt = < 850000>;
++            regulator-max-microvolt = <1350000>;
++            regulator-ramp-delay = <12500>;
++            regulator-enable-ramp-delay = <200>;
++        };
++
++        mt6397_vpca7_reg: buck_vpca7 {
++            regulator-name = "vpca7";
++            regulator-min-microvolt = < 850000>;
++            regulator-max-microvolt = <1350000>;
++            regulator-ramp-delay = <12500>;
++            regulator-enable-ramp-delay = <115>;
++        };
++
++        mt6397_vsramca15_reg: buck_vsramca15 {
++            regulator-name = "vsramca15";
++            regulator-min-microvolt = < 850000>;
++            regulator-max-microvolt = <1350000>;
++            regulator-ramp-delay = <12500>;
++            regulator-enable-ramp-delay = <115>;
++        };
++
++        mt6397_vsramca7_reg: buck_vsramca7 {
++            regulator-name = "vsramca7";
++            regulator-min-microvolt = < 850000>;
++            regulator-max-microvolt = <1350000>;
++            regulator-ramp-delay = <12500>;
++            regulator-enable-ramp-delay = <115>;
++        };
++
++        mt6397_vcore_reg: buck_vcore {
++            regulator-name = "vcore";
++            regulator-min-microvolt = < 850000>;
++            regulator-max-microvolt = <1350000>;
++            regulator-ramp-delay = <12500>;
++            regulator-enable-ramp-delay = <115>;
++        };
++
++        mt6397_vgpu_reg: buck_vgpu {
++            regulator-name = "vgpu";
++            regulator-min-microvolt = < 700000>;
++            regulator-max-microvolt = <1350000>;
++            regulator-ramp-delay = <12500>;
++            regulator-enable-ramp-delay = <115>;
++        };
++
++        mt6397_vdrm_reg: buck_vdrm {
++            regulator-name = "vdrm";
++            regulator-min-microvolt = < 800000>;
++            regulator-max-microvolt = <1400000>;
++            regulator-ramp-delay = <12500>;
++            regulator-enable-ramp-delay = <500>;
++        };
++
++        mt6397_vio18_reg: buck_vio18 {
++            regulator-name = "vio18";
++            regulator-min-microvolt = <1500000>;
++            regulator-max-microvolt = <2120000>;
++            regulator-ramp-delay = <12500>;
++            regulator-enable-ramp-delay = <500>;
++        };
++
++        mt6397_vtcxo_reg: ldo_vtcxo {
++            regulator-name = "vtcxo";
++            regulator-min-microvolt = <2800000>;
++            regulator-max-microvolt = <2800000>;
++            regulator-enable-ramp-delay = <90>;
++        };
++
++        mt6397_va28_reg: ldo_va28 {
++            regulator-name = "va28";
++            /* fixed output 2.8 V */
++            regulator-enable-ramp-delay = <218>;
++        };
++
++        mt6397_vcama_reg: ldo_vcama {
++            regulator-name = "vcama";
++            regulator-min-microvolt = <1500000>;
++            regulator-max-microvolt = <2800000>;
++            regulator-enable-ramp-delay = <218>;
++        };
++
++        mt6397_vio28_reg: ldo_vio28 {
++            regulator-name = "vio28";
++            /* fixed output 2.8 V */
++            regulator-enable-ramp-delay = <240>;
++        };
++
++        mt6397_usb_reg: ldo_vusb {
++            regulator-name = "vusb";
++            /* fixed output 3.3 V */
++            regulator-enable-ramp-delay = <218>;
++        };
++
++        mt6397_vmc_reg: ldo_vmc {
++            regulator-name = "vmc";
++            regulator-min-microvolt = <1800000>;
++            regulator-max-microvolt = <3300000>;
++            regulator-enable-ramp-delay = <218>;
++        };
++
++        mt6397_vmch_reg: ldo_vmch {
++            regulator-name = "vmch";
++            regulator-min-microvolt = <3000000>;
++            regulator-max-microvolt = <3300000>;
++            regulator-enable-ramp-delay = <218>;
++        };
++
++        mt6397_vemc_3v3_reg: ldo_vemc3v3 {
++            regulator-name = "vemc_3v3";
++            regulator-min-microvolt = <3000000>;
++            regulator-max-microvolt = <3300000>;
++            regulator-enable-ramp-delay = <218>;
++        };
++
++        mt6397_vgp1_reg: ldo_vgp1 {
++            regulator-name = "vcamd";
++            regulator-min-microvolt = <1220000>;
++            regulator-max-microvolt = <3300000>;
++            regulator-enable-ramp-delay = <240>;
++        };
++
++        mt6397_vgp2_reg: ldo_vgp2 {
++            regulator-name = "vcamio";
++            regulator-min-microvolt = <1000000>;
++            regulator-max-microvolt = <3300000>;
++            regulator-enable-ramp-delay = <218>;
++        };
++
++        mt6397_vgp3_reg: ldo_vgp3 {
++            regulator-name = "vcamaf";
++            regulator-min-microvolt = <1200000>;
++            regulator-max-microvolt = <3300000>;
++            regulator-enable-ramp-delay = <218>;
++        };
++
++        mt6397_vgp4_reg: ldo_vgp4 {
++            regulator-name = "vgp4";
++            regulator-min-microvolt = <1200000>;
++            regulator-max-microvolt = <3300000>;
++            regulator-enable-ramp-delay = <218>;
++        };
++
++        mt6397_vgp5_reg: ldo_vgp5 {
++            regulator-name = "vgp5";
++            regulator-min-microvolt = <1200000>;
++            regulator-max-microvolt = <3000000>;
++            regulator-enable-ramp-delay = <218>;
++        };
++
++        mt6397_vgp6_reg: ldo_vgp6 {
++            regulator-name = "vgp6";
++            regulator-min-microvolt = <1200000>;
++            regulator-max-microvolt = <3300000>;
++            regulator-enable-ramp-delay = <218>;
++        };
++
++        mt6397_vibr_reg: ldo_vibr {
++            regulator-name = "vibr";
++            regulator-min-microvolt = <1200000>;
++            regulator-max-microvolt = <3300000>;
++            regulator-enable-ramp-delay = <218>;
++        };
++    };
+diff --git a/Documentation/devicetree/bindings/regulator/mt6397-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6397-regulator.txt
+deleted file mode 100644
+index c080086..0000000
+--- a/Documentation/devicetree/bindings/regulator/mt6397-regulator.txt
++++ /dev/null
+@@ -1,220 +0,0 @@
+-Mediatek MT6397 Regulator
+-
+-Required properties:
+-- compatible: "mediatek,mt6397-regulator"
+-- mt6397regulator: List of regulators provided by this controller. It is named
+-  according to its regulator type, buck_<name> and ldo_<name>.
+-  The definition for each of these nodes is defined using the standard binding
+-  for regulators at Documentation/devicetree/bindings/regulator/regulator.txt.
+-
+-The valid names for regulators are::
+-BUCK:
+-  buck_vpca15, buck_vpca7, buck_vsramca15, buck_vsramca7, buck_vcore, buck_vgpu,
+-  buck_vdrm, buck_vio18
+-LDO:
+-  ldo_vtcxo, ldo_va28, ldo_vcama, ldo_vio28, ldo_vusb, ldo_vmc, ldo_vmch,
+-  ldo_vemc3v3, ldo_vgp1, ldo_vgp2, ldo_vgp3, ldo_vgp4, ldo_vgp5, ldo_vgp6,
+-  ldo_vibr
+-
+-BUCK regulators can set regulator-initial-mode and regulator-allowed-modes to
+-values specified in dt-bindings/regulator/mediatek,mt6397-regulator.h
+-
+-Example:
+-	pmic {
+-		compatible = "mediatek,mt6397";
+-
+-		mt6397regulator: mt6397regulator {
+-			compatible = "mediatek,mt6397-regulator";
+-
+-			mt6397_vpca15_reg: buck_vpca15 {
+-				regulator-compatible = "buck_vpca15";
+-				regulator-name = "vpca15";
+-				regulator-min-microvolt = < 850000>;
+-				regulator-max-microvolt = <1350000>;
+-				regulator-ramp-delay = <12500>;
+-				regulator-enable-ramp-delay = <200>;
+-			};
+-
+-			mt6397_vpca7_reg: buck_vpca7 {
+-				regulator-compatible = "buck_vpca7";
+-				regulator-name = "vpca7";
+-				regulator-min-microvolt = < 850000>;
+-				regulator-max-microvolt = <1350000>;
+-				regulator-ramp-delay = <12500>;
+-				regulator-enable-ramp-delay = <115>;
+-			};
+-
+-			mt6397_vsramca15_reg: buck_vsramca15 {
+-				regulator-compatible = "buck_vsramca15";
+-				regulator-name = "vsramca15";
+-				regulator-min-microvolt = < 850000>;
+-				regulator-max-microvolt = <1350000>;
+-				regulator-ramp-delay = <12500>;
+-				regulator-enable-ramp-delay = <115>;
+-
+-			};
+-
+-			mt6397_vsramca7_reg: buck_vsramca7 {
+-				regulator-compatible = "buck_vsramca7";
+-				regulator-name = "vsramca7";
+-				regulator-min-microvolt = < 850000>;
+-				regulator-max-microvolt = <1350000>;
+-				regulator-ramp-delay = <12500>;
+-				regulator-enable-ramp-delay = <115>;
+-
+-			};
+-
+-			mt6397_vcore_reg: buck_vcore {
+-				regulator-compatible = "buck_vcore";
+-				regulator-name = "vcore";
+-				regulator-min-microvolt = < 850000>;
+-				regulator-max-microvolt = <1350000>;
+-				regulator-ramp-delay = <12500>;
+-				regulator-enable-ramp-delay = <115>;
+-			};
+-
+-			mt6397_vgpu_reg: buck_vgpu {
+-				regulator-compatible = "buck_vgpu";
+-				regulator-name = "vgpu";
+-				regulator-min-microvolt = < 700000>;
+-				regulator-max-microvolt = <1350000>;
+-				regulator-ramp-delay = <12500>;
+-				regulator-enable-ramp-delay = <115>;
+-			};
+-
+-			mt6397_vdrm_reg: buck_vdrm {
+-				regulator-compatible = "buck_vdrm";
+-				regulator-name = "vdrm";
+-				regulator-min-microvolt = < 800000>;
+-				regulator-max-microvolt = <1400000>;
+-				regulator-ramp-delay = <12500>;
+-				regulator-enable-ramp-delay = <500>;
+-			};
+-
+-			mt6397_vio18_reg: buck_vio18 {
+-				regulator-compatible = "buck_vio18";
+-				regulator-name = "vio18";
+-				regulator-min-microvolt = <1500000>;
+-				regulator-max-microvolt = <2120000>;
+-				regulator-ramp-delay = <12500>;
+-				regulator-enable-ramp-delay = <500>;
+-			};
+-
+-			mt6397_vtcxo_reg: ldo_vtcxo {
+-				regulator-compatible = "ldo_vtcxo";
+-				regulator-name = "vtcxo";
+-				regulator-min-microvolt = <2800000>;
+-				regulator-max-microvolt = <2800000>;
+-				regulator-enable-ramp-delay = <90>;
+-			};
+-
+-			mt6397_va28_reg: ldo_va28 {
+-				regulator-compatible = "ldo_va28";
+-				regulator-name = "va28";
+-				/* fixed output 2.8 V */
+-				regulator-enable-ramp-delay = <218>;
+-			};
+-
+-			mt6397_vcama_reg: ldo_vcama {
+-				regulator-compatible = "ldo_vcama";
+-				regulator-name = "vcama";
+-				regulator-min-microvolt = <1500000>;
+-				regulator-max-microvolt = <2800000>;
+-				regulator-enable-ramp-delay = <218>;
+-			};
+-
+-			mt6397_vio28_reg: ldo_vio28 {
+-				regulator-compatible = "ldo_vio28";
+-				regulator-name = "vio28";
+-				/* fixed output 2.8 V */
+-				regulator-enable-ramp-delay = <240>;
+-			};
+-
+-			mt6397_usb_reg: ldo_vusb {
+-				regulator-compatible = "ldo_vusb";
+-				regulator-name = "vusb";
+-				/* fixed output 3.3 V */
+-				regulator-enable-ramp-delay = <218>;
+-			};
+-
+-			mt6397_vmc_reg: ldo_vmc {
+-				regulator-compatible = "ldo_vmc";
+-				regulator-name = "vmc";
+-				regulator-min-microvolt = <1800000>;
+-				regulator-max-microvolt = <3300000>;
+-				regulator-enable-ramp-delay = <218>;
+-			};
+-
+-			mt6397_vmch_reg: ldo_vmch {
+-				regulator-compatible = "ldo_vmch";
+-				regulator-name = "vmch";
+-				regulator-min-microvolt = <3000000>;
+-				regulator-max-microvolt = <3300000>;
+-				regulator-enable-ramp-delay = <218>;
+-			};
+-
+-			mt6397_vemc_3v3_reg: ldo_vemc3v3 {
+-				regulator-compatible = "ldo_vemc3v3";
+-				regulator-name = "vemc_3v3";
+-				regulator-min-microvolt = <3000000>;
+-				regulator-max-microvolt = <3300000>;
+-				regulator-enable-ramp-delay = <218>;
+-			};
+-
+-			mt6397_vgp1_reg: ldo_vgp1 {
+-				regulator-compatible = "ldo_vgp1";
+-				regulator-name = "vcamd";
+-				regulator-min-microvolt = <1220000>;
+-				regulator-max-microvolt = <3300000>;
+-				regulator-enable-ramp-delay = <240>;
+-			};
+-
+-			mt6397_vgp2_reg: ldo_vgp2 {
+-				egulator-compatible = "ldo_vgp2";
+-				regulator-name = "vcamio";
+-				regulator-min-microvolt = <1000000>;
+-				regulator-max-microvolt = <3300000>;
+-				regulator-enable-ramp-delay = <218>;
+-			};
+-
+-			mt6397_vgp3_reg: ldo_vgp3 {
+-				regulator-compatible = "ldo_vgp3";
+-				regulator-name = "vcamaf";
+-				regulator-min-microvolt = <1200000>;
+-				regulator-max-microvolt = <3300000>;
+-				regulator-enable-ramp-delay = <218>;
+-			};
+-
+-			mt6397_vgp4_reg: ldo_vgp4 {
+-				regulator-compatible = "ldo_vgp4";
+-				regulator-name = "vgp4";
+-				regulator-min-microvolt = <1200000>;
+-				regulator-max-microvolt = <3300000>;
+-				regulator-enable-ramp-delay = <218>;
+-			};
+-
+-			mt6397_vgp5_reg: ldo_vgp5 {
+-				regulator-compatible = "ldo_vgp5";
+-				regulator-name = "vgp5";
+-				regulator-min-microvolt = <1200000>;
+-				regulator-max-microvolt = <3000000>;
+-				regulator-enable-ramp-delay = <218>;
+-			};
+-
+-			mt6397_vgp6_reg: ldo_vgp6 {
+-				regulator-compatible = "ldo_vgp6";
+-				regulator-name = "vgp6";
+-				regulator-min-microvolt = <1200000>;
+-				regulator-max-microvolt = <3300000>;
+-				regulator-enable-ramp-delay = <218>;
+-			};
+-
+-			mt6397_vibr_reg: ldo_vibr {
+-				regulator-compatible = "ldo_vibr";
+-				regulator-name = "vibr";
+-				regulator-min-microvolt = <1200000>;
+-				regulator-max-microvolt = <3300000>;
+-				regulator-enable-ramp-delay = <218>;
+-			};
+-		};
+-	};
+-- 
+2.18.0
 
 
