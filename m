@@ -4,85 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26E74C52D73
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Aug 2024 23:08:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 356A0C3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Aug 2024 23:27:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vOPv+SCLxJAFXVGSHG/CCekpFZIt+uTGeWFDZdU6gCE=; b=dzvjt+Zqn9mIBF429bLrN6eCv8
-	B56ZRp0cYaDXj9xcK+L2HpS75w0hJBuYN+qcaIBqb/8/0CuN1eetDFF35JavMHRlL3YJyaDFwfPLJ
-	bAXU/IwdjX6B+ek9BWIURdoBrXh8d7WNHHxpu8YJLvLg0PCc/eUekhqj8jpuD2TH/DAPFzpWcheCx
-	LXjlQdaJ7Dys7IdHr2TyMlEwQ0hqFh8Z9INwm/dPJifKoIaYFYOxqIDKqSw3mN4Aw+UqpEqZ85oL5
-	DJsflbHGmQCO7OfqkPk6D5Vs3vl9HCvXMxqfbRIQelVoslcGyRiHUy71T2TEweW7WnNVypESAO79I
-	ZVsRjPmA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=VfUT4xTcC3SPu/QyTlrZ88bPNK/AOccXwvQbWbA5nC8=; b=UaDdceFidlvpc2ZXlimQJuI51C
+	d5hwt54wEPiCTKmWzh2mKP0lrvDguwvYa/Vcri5/RA2TySoLt3GVGVdcEh1wPw6YhvOEOq8m8w1ix
+	VB9iqVZVBhwtfQNtQKxbtLKkVi3pCfqsSH/X71c+f2WYgzDZ44r4Eq4kwLbPZqkrYNq+k/FmBuCwm
+	gM2LzKqUIccMLT+6wocst6prGLeUxt3ulrpgJY69yOPErLwxZ5toA1lVau0n+UvuKE9GWYJLsbnBD
+	qtFXaZUdsRCadEgPxoh/TWoXU0r1zQYHm+iLUAwpIc3aa3qmcQDSWhHBkK78qayNhaYxI51dbbhKW
+	LaHjdKNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scCFY-00000009gf0-3yd0;
-	Thu, 08 Aug 2024 23:08:52 +0000
-Received: from mgamail.intel.com ([192.198.163.19])
+	id 1scCXh-00000009iej-38IB;
+	Thu, 08 Aug 2024 23:27:37 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scCFV-00000009gda-1ZDV;
-	Thu, 08 Aug 2024 23:08:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1723158530; x=1754694530;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=T7KdUeo7zRdu2V4NwX3BnZOQDuovZf6qEZiSGn3VOz8=;
-  b=TEx6SiZhlW/400qx+Uuuhse/ilhhaToV/ofdXxjcq68bzapkbIjv5LUq
-   /dp+koFWVr51WyFtTQ5aO+5AKoMVZQluGPwHChYmXIx7mjTDbrpKZudKB
-   ZcHz2BtVm9YbRyX0MFvNeW2NMP73MXw0B+pOiS3ENP0YJtmq0LkLceain
-   v97vvidhw2JRCPzELX9RR4elEg/bs2jbMj7WMEnsM62xPug6p7qczJGH4
-   6A6ueld4b/r3rNgbtC2C1aHmg8nfoi6PMG82GtnEmozIfF2BVTIwmg9hu
-   sqgiwa/refQ5EUzoirB0vhN0yTcQMiuMQANUuj8pDBNaZgqWOPKtZ/3Cw
-   w==;
-X-CSE-ConnectionGUID: hYuptwBTTFaQoxITJU9FTQ==
-X-CSE-MsgGUID: u/i0OSFUQ8OvBVCPeuBdtQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11158"; a="20977167"
-X-IronPort-AV: E=Sophos;i="6.09,274,1716274800"; 
-   d="scan'208";a="20977167"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Aug 2024 16:08:46 -0700
-X-CSE-ConnectionGUID: yiARJAgUSQ6iMi70uo66VQ==
-X-CSE-MsgGUID: X00cbstkRRO3ElG4P2oYeQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,274,1716274800"; 
-   d="scan'208";a="62015850"
-Received: from unknown (HELO b6bf6c95bbab) ([10.239.97.151])
-  by fmviesa004.fm.intel.com with ESMTP; 08 Aug 2024 16:08:41 -0700
-Received: from kbuild by b6bf6c95bbab with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1scCFK-0006bW-1v;
-	Thu, 08 Aug 2024 23:08:38 +0000
-Date: Fri, 9 Aug 2024 07:08:16 +0800
-From: kernel test robot <lkp@intel.com>
-To: Jinjian Song <jinjian.song@fibocom.com>,
-	chandrashekar.devegowda@intel.com,
-	chiranjeevi.rapolu@linux.intel.com, haijun.liu@mediatek.com,
-	m.chetan.kumar@linux.intel.com, ricardo.martinez@linux.intel.com,
-	loic.poulain@linaro.org, ryazanov.s.a@gmail.com,
-	johannes@sipsolutions.net, davem@davemloft.net, edumazet@google.com,
-	kuba@kernel.org, pabeni@redhat.com
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
-	linux-doc@vger.kernel.org, angelogioacchino.delregno@collabora.com,
-	linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com,
-	corbet@lwn.net, linux-mediatek@lists.infradead.org,
-	danielwinkler@google.com, korneld@google.com,
-	Jinjian Song <jinjian.song@fibocom.com>
-Subject: Re: [net-next v1] net: wwan: t7xx: PCIe reset rescan
-Message-ID: <202408090610.w01C56AC-lkp@intel.com>
-References: <20240808111801.8514-1-jinjian.song@fibocom.com>
+	id 1scCXf-00000009idS-1yE6;
+	Thu, 08 Aug 2024 23:27:36 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1723159648; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=n5KwzOmKYXYMQBN4FW0HFDpL6KqNWC3quxcOsviWFEgC3T3s2RStDRhLEDwyQpMpSN2rMwWuOk2l+51414qNnjCk4IUjc5SShezs5UgIVfVOseu01kMyFNQP1gBaI6oYEf8qAoPGEu1cJHu17537AxVhkJT+M26NUCtWnkOKX+Q=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1723159648; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=VfUT4xTcC3SPu/QyTlrZ88bPNK/AOccXwvQbWbA5nC8=; 
+	b=cGFqaa3VhgDL3rxx1Vhy65Eq+/c/TlUdC8KqjsguYpJ7d4puoLFhlr4ydshPwNtjuyCafkDEinB55aeCO1yRA/M/8NbwZxi8EkGsmQDpJM+BRdR+Wbp+ILFfcezvmRIndfYUKYU9y3COS7YhIDEz2/OT3abwTR0AEd6auYpeIfg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nfraprado@collabora.com;
+	dmarc=pass header.from=<nfraprado@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1723159648;
+	s=zohomail; d=collabora.com; i=nfraprado@collabora.com;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
+	bh=VfUT4xTcC3SPu/QyTlrZ88bPNK/AOccXwvQbWbA5nC8=;
+	b=FOMp9dCncPDoh7fkLBg9sw3kYawN2Ntq0BiqXPI/qTXi5RoHJ6scj2FUf2zMv6WE
+	jj23RrVhWT//SlCQJsXHWkxsapEtJUOIbznlLSd0A27e7yMqxsQMDSII5zd0KME7vZE
+	QS/4pZTiz/BKUJNGChx0qy2yL46KiPgrWVW6eR8c=
+Received: by mx.zohomail.com with SMTPS id 1723159646349956.1886049601594;
+	Thu, 8 Aug 2024 16:27:26 -0700 (PDT)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Date: Thu, 08 Aug 2024 19:27:09 -0400
+Subject: [PATCH] pinctrl: mediatek: common-v2: Fix broken bias-disable for
+ PULL_PU_PD_RSEL_TYPE
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240808111801.8514-1-jinjian.song@fibocom.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20240808-mtk-rsel-bias-disable-fix-v1-1-1b4e85bf596c@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAExUtWYC/x2MSQqAMAwAvyI5G6hLi/gV8dDaqMGVRkQo/t3ic
+ QZmIggFJoE2ixDoZuFjT1DkGQyz3SdC9omhVGWtGtXgdi0YhFZ0bAU9i3Ur4cgPeqWNHmqqtHG
+ Q+jNQ0v+769/3AxUTspdrAAAA
+To: Sean Wang <sean.wang@kernel.org>, 
+ Linus Walleij <linus.walleij@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kernel@collabora.com, linux-mediatek@lists.infradead.org, 
+ linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+X-Mailer: b4 0.14.1
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240808_160849_448037_EA7FAEE6 
-X-CRM114-Status: GOOD (  10.41  )
+X-CRM114-CacheID: sfid-20240808_162735_606533_0E89844F 
+X-CRM114-Status: GOOD (  16.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,83 +84,178 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jinjian,
+Despite its name, commit fed74d75277d ("pinctrl: mediatek: common-v2:
+Fix bias-disable for PULL_PU_PD_RSEL_TYPE") actually broke bias-disable
+for PULL_PU_PD_RSEL_TYPE.
 
-kernel test robot noticed the following build warnings:
+mtk_pinconf_bias_set_combo() tries every bias method supported by the
+pin until one succeeds. For PULL_PU_PD_RSEL_TYPE pins, before the
+breaking commit, mtk_pinconf_bias_set_rsel() would be called first to
+try and set the RSEL value (as well as PU and PD), and if that failed,
+the only other valid option was that bias-disable was specified, which
+would then be handled by calling mtk_pinconf_bias_set_pu_pd() and
+disabling both PU and PD.
 
-[auto build test WARNING on net-next/main]
+The breaking commit misunderstood this logic and added an early "return
+0" in mtk_pinconf_bias_set_rsel(). The result was that in the
+bias-disable case, the bias was left unchanged, since by returning
+success, mtk_pinconf_bias_set_combo() no longer tried calling
+mtk_pinconf_bias_set_pu_pd() to disable the bias.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Jinjian-Song/net-wwan-t7xx-PCIe-reset-rescan/20240808-192313
-base:   net-next/main
-patch link:    https://lore.kernel.org/r/20240808111801.8514-1-jinjian.song%40fibocom.com
-patch subject: [net-next v1] net: wwan: t7xx: PCIe reset rescan
-config: i386-buildonly-randconfig-004-20240809 (https://download.01.org/0day-ci/archive/20240809/202408090610.w01C56AC-lkp@intel.com/config)
-compiler: clang version 18.1.5 (https://github.com/llvm/llvm-project 617a15a9eac96088ae5e9134248d8236e34b91b1)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240809/202408090610.w01C56AC-lkp@intel.com/reproduce)
+Since the logic for configuring bias-disable on PULL_PU_PD_RSEL_TYPE
+pins required mtk_pinconf_bias_set_rsel() to fail first, in that case,
+an error was printed to the log, eg:
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202408090610.w01C56AC-lkp@intel.com/
+  mt8195-pinctrl 10005000.pinctrl: Not support rsel value 0 Ohm for pin = 29 (GPIO29)
 
-All warnings (new ones prefixed by >>):
+This is what the breaking commit actually got rid of, and likely part of
+the reason why that commit was thought to be fixing functionality, while
+in reality it was breaking it.
 
->> drivers/net/wwan/t7xx/t7xx_modem_ops.c:204:13: warning: variable 'ret' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
-     204 |         } else if (type == PLDR) {
-         |                    ^~~~~~~~~~~~
-   drivers/net/wwan/t7xx/t7xx_modem_ops.c:215:9: note: uninitialized use occurs here
-     215 |         return ret;
-         |                ^~~
-   drivers/net/wwan/t7xx/t7xx_modem_ops.c:204:9: note: remove the 'if' if its condition is always true
-     204 |         } else if (type == PLDR) {
-         |                ^~~~~~~~~~~~~~~~~
-     205 |                 ret = t7xx_acpi_reset(t7xx_dev, "MRST._RST");
-     206 |         } else if (type == FASTBOOT) {
-         |           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     207 |                 t7xx_host_event_notify(t7xx_dev, FASTBOOT_DL_NOTIFY);
-         |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     208 |                 t7xx_mhccif_h2d_swint_trigger(t7xx_dev, H2D_CH_DEVICE_RESET);
-         |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     209 |                 msleep(FASTBOOT_RESET_DELAY_MS);
-         |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     210 |         }
-         |         ~
-   drivers/net/wwan/t7xx/t7xx_modem_ops.c:196:9: note: initialize the variable 'ret' to silence this warning
-     196 |         int ret;
-         |                ^
-         |                 = 0
-   1 warning generated.
+Instead of simply reverting that commit, restore the functionality but
+in a way that avoids the error from being printed and makes the code
+less confusing:
+* Return 0 explicitly if a bias method was successful
+* Introduce an extra function mtk_pinconf_bias_set_pu_pd_rsel() that
+  calls both mtk_pinconf_bias_set_rsel() (only if needed) and
+  mtk_pinconf_bias_set_pu_pd()
+  * And analogously for the corresponding getters
 
+Fixes: fed74d75277d ("pinctrl: mediatek: common-v2: Fix bias-disable for PULL_PU_PD_RSEL_TYPE")
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 55 +++++++++++++-----------
+ 1 file changed, 29 insertions(+), 26 deletions(-)
 
-vim +204 drivers/net/wwan/t7xx/t7xx_modem_ops.c
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+index b7921b59eb7b..54301fbba524 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+@@ -709,32 +709,35 @@ static int mtk_pinconf_bias_set_rsel(struct mtk_pinctrl *hw,
+ {
+ 	int err, rsel_val;
+ 
+-	if (!pullup && arg == MTK_DISABLE)
+-		return 0;
+-
+ 	if (hw->rsel_si_unit) {
+ 		/* find pin rsel_index from pin_rsel array*/
+ 		err = mtk_hw_pin_rsel_lookup(hw, desc, pullup, arg, &rsel_val);
+ 		if (err)
+-			goto out;
++			return err;
+ 	} else {
+-		if (arg < MTK_PULL_SET_RSEL_000 ||
+-		    arg > MTK_PULL_SET_RSEL_111) {
+-			err = -EINVAL;
+-			goto out;
+-		}
++		if (arg < MTK_PULL_SET_RSEL_000 || arg > MTK_PULL_SET_RSEL_111)
++			return -EINVAL;
+ 
+ 		rsel_val = arg - MTK_PULL_SET_RSEL_000;
+ 	}
+ 
+-	err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_RSEL, rsel_val);
+-	if (err)
+-		goto out;
++	return mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_RSEL, rsel_val);
++}
+ 
+-	err = mtk_pinconf_bias_set_pu_pd(hw, desc, pullup, MTK_ENABLE);
++static int mtk_pinconf_bias_set_pu_pd_rsel(struct mtk_pinctrl *hw,
++					   const struct mtk_pin_desc *desc,
++					   u32 pullup, u32 arg)
++{
++	u32 enable = arg == MTK_DISABLE ? MTK_DISABLE : MTK_ENABLE;
++	int err;
+ 
+-out:
+-	return err;
++	if (arg != MTK_DISABLE) {
++		err = mtk_pinconf_bias_set_rsel(hw, desc, pullup, arg);
++		if (err)
++			return err;
++	}
++
++	return mtk_pinconf_bias_set_pu_pd(hw, desc, pullup, enable);
+ }
+ 
+ int mtk_pinconf_bias_set_combo(struct mtk_pinctrl *hw,
+@@ -750,22 +753,22 @@ int mtk_pinconf_bias_set_combo(struct mtk_pinctrl *hw,
+ 		try_all_type = MTK_PULL_TYPE_MASK;
+ 
+ 	if (try_all_type & MTK_PULL_RSEL_TYPE) {
+-		err = mtk_pinconf_bias_set_rsel(hw, desc, pullup, arg);
++		err = mtk_pinconf_bias_set_pu_pd_rsel(hw, desc, pullup, arg);
+ 		if (!err)
+-			return err;
++			return 0;
+ 	}
+ 
+ 	if (try_all_type & MTK_PULL_PU_PD_TYPE) {
+ 		err = mtk_pinconf_bias_set_pu_pd(hw, desc, pullup, arg);
+ 		if (!err)
+-			return err;
++			return 0;
+ 	}
+ 
+ 	if (try_all_type & MTK_PULL_PULLSEL_TYPE) {
+ 		err = mtk_pinconf_bias_set_pullsel_pullen(hw, desc,
+ 							  pullup, arg);
+ 		if (!err)
+-			return err;
++			return 0;
+ 	}
+ 
+ 	if (try_all_type & MTK_PULL_PUPD_R1R0_TYPE)
+@@ -803,9 +806,9 @@ static int mtk_rsel_get_si_unit(struct mtk_pinctrl *hw,
+ 	return 0;
+ }
+ 
+-static int mtk_pinconf_bias_get_rsel(struct mtk_pinctrl *hw,
+-				     const struct mtk_pin_desc *desc,
+-				     u32 *pullup, u32 *enable)
++static int mtk_pinconf_bias_get_pu_pd_rsel(struct mtk_pinctrl *hw,
++					   const struct mtk_pin_desc *desc,
++					   u32 *pullup, u32 *enable)
+ {
+ 	int pu, pd, rsel, err;
+ 
+@@ -939,22 +942,22 @@ int mtk_pinconf_bias_get_combo(struct mtk_pinctrl *hw,
+ 		try_all_type = MTK_PULL_TYPE_MASK;
+ 
+ 	if (try_all_type & MTK_PULL_RSEL_TYPE) {
+-		err = mtk_pinconf_bias_get_rsel(hw, desc, pullup, enable);
++		err = mtk_pinconf_bias_get_pu_pd_rsel(hw, desc, pullup, enable);
+ 		if (!err)
+-			return err;
++			return 0;
+ 	}
+ 
+ 	if (try_all_type & MTK_PULL_PU_PD_TYPE) {
+ 		err = mtk_pinconf_bias_get_pu_pd(hw, desc, pullup, enable);
+ 		if (!err)
+-			return err;
++			return 0;
+ 	}
+ 
+ 	if (try_all_type & MTK_PULL_PULLSEL_TYPE) {
+ 		err = mtk_pinconf_bias_get_pullsel_pullen(hw, desc,
+ 							  pullup, enable);
+ 		if (!err)
+-			return err;
++			return 0;
+ 	}
+ 
+ 	if (try_all_type & MTK_PULL_PUPD_R1R0_TYPE)
 
-   193	
-   194	int t7xx_reset_device(struct t7xx_pci_dev *t7xx_dev, enum reset_type type)
-   195	{
-   196		int ret;
-   197	
-   198		pci_save_state(t7xx_dev->pdev);
-   199		t7xx_pci_reprobe_early(t7xx_dev);
-   200		t7xx_mode_update(t7xx_dev, T7XX_RESET);
-   201	
-   202		if (type == FLDR) {
-   203			ret = t7xx_acpi_reset(t7xx_dev, "_RST");
- > 204		} else if (type == PLDR) {
-   205			ret = t7xx_acpi_reset(t7xx_dev, "MRST._RST");
-   206		} else if (type == FASTBOOT) {
-   207			t7xx_host_event_notify(t7xx_dev, FASTBOOT_DL_NOTIFY);
-   208			t7xx_mhccif_h2d_swint_trigger(t7xx_dev, H2D_CH_DEVICE_RESET);
-   209			msleep(FASTBOOT_RESET_DELAY_MS);
-   210		}
-   211	
-   212		pci_restore_state(t7xx_dev->pdev);
-   213		t7xx_pci_reprobe(t7xx_dev, true);
-   214	
-   215		return ret;
-   216	}
-   217	
+---
+base-commit: de9c2c66ad8e787abec7c9d7eff4f8c3cdd28aed
+change-id: 20240808-mtk-rsel-bias-disable-fix-d0565c4e356b
 
+Best regards,
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
 
