@@ -4,83 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 488DCC3DA7F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Aug 2024 11:08:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F311C3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Aug 2024 12:39:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=7WjGa1PXf2QdLqPrY3XfFGhbeSFb6g3387jwXF6umc8=; b=Atrk/5ZoowVh5UBf0az8zGGV3d
-	7fKS78CsdexKbpDQ4I4zfpJm4Uxd8dRkutFnyPQAzvCTe7SQmG7TU3TIr3CiM0CJ5XPmbEF7XdWsJ
-	orq0mzXuD+qEPCKPGQlSyFXO9VrANZCmsX7H7BF68WkA/U8wezM/oJJUUV7knjJXkebvveaLgIlot
-	CFKM8IBsBGv0RmimufmK+kyi/S5rr11YleDHecVUrJTMVe/4mI4OHSWCzOfyOw96Bc3EeqVsAa0yU
-	dh09TskY85gCEFVXHjYM3yVmdKXODXDP4/aYXgLvVi8JBhpd4/2jjCaGa8+4eB3h+0/IeoKbzi9Tb
-	mmMIX8bw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=x8CC5Hli2VvYPqemvO/qI3GDNvN29YYbcLL0ZYScO44=; b=AGWDqew78VhhtLaAS5rRfsPGlX
+	VbRW+bGb9z0jxfNz7AdoZys7KUpz3cXTheXF2CI+dKRdWx1p15m+DzMuBVuvAttfGEv3ZOVq1PQQg
+	EuNPU6/1UsCcNOsc5Pzdl7E5FhDgfxk9lQuHOF0i5Xd1dacUrzzogkbOWR20u0K818BhOGaM82UAr
+	jyu1yIppL64rmHR63IUXCyq8EHd4GqL3oqVH5tcfWYSMrTAxZxrKQt7KbycITf1FrkDCtX1jZ1e5g
+	Xo39VoZVpr+AIPb8axq3B1yxyUHqWbDaL59RwMd4CB8396BLZ/LEVkjYcLmIP5smzBjdGTBa6IB4o
+	gfZ7ulYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scjxD-0000000E2j8-2BQO;
-	Sat, 10 Aug 2024 11:08:11 +0000
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+	id 1sclNy-0000000E94H-0exH;
+	Sat, 10 Aug 2024 12:39:54 +0000
+Received: from sender4-op-o15.zoho.com ([136.143.188.15])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1scjwc-0000000E2fU-3zc6;
-	Sat, 10 Aug 2024 11:07:36 +0000
-Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-1fc5296e214so28539005ad.0;
-        Sat, 10 Aug 2024 04:07:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1723288053; x=1723892853; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=7WjGa1PXf2QdLqPrY3XfFGhbeSFb6g3387jwXF6umc8=;
-        b=hIWFG++Roxvl/xJB3x/BO0Plb+0dwHqt36hH3K7yg7wN48k7lvaf+DNR0nnNylKdiP
-         cHC++GyVYTfDA6txAHluqMHMJjjIxEF6XlLF3lcsGI0VmH9vWOswOI4cGgVNeTY+LBQQ
-         8y27HugrRBV6IBqxz6hwRndGmhbvb9qzRVvwJeXSFytWI5/oi8w1Bj39EUhNioZaovIS
-         NUDKW/t1He7UdRsGdf1NL6MjkhyLwd/OsYX7oeozPPsarX8mesv4KRXH+Rs+Rzc2ZFM9
-         gY77cqFYLkfF8bei2Y9EOIn76kbYntGzBvDOXFZPV7351n1lHAOIa5Sr66txsmkWvybd
-         M+sw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723288053; x=1723892853;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=7WjGa1PXf2QdLqPrY3XfFGhbeSFb6g3387jwXF6umc8=;
-        b=SSlhVnEMQHdvoJ1q1B71Jp4o1mOm+Sl/5HlvGpUjHxQ2syTihmU7jUvSJBA8ca/x7I
-         SoOIiWcTnM1GwloIdnhOxNevDK9y+6Sb4T54HchHVbpHB++gLf/tIFipyESB+RR+FwKg
-         5/T6osfCO9ZTkT2jUPrpjQDcKGmXD9A8/iyzxNa3JdAmvUOq3jrPLe6mGPS9OszasXW1
-         7ArkfXTmeI/yywLH2IOpCMhrYT+KWRwjUocyxF++ozXdXae0QEMYOxEFzgahiBlIKEOx
-         rIdkME3OE00To8ugEZp8JpzBK4VTpcuQxZyGu5eOcZawDlmLTjRPV3A+JwhOK9gPxHv+
-         lV+w==
-X-Forwarded-Encrypted: i=1; AJvYcCU6C2XpaWnuNYAuU3gQ+A7vdJ0Urd8Da7KRbU3CC/n9nF9nJbV/0pDNfleedYJRxsgq0WDkF3R+cI3bhGSI7UxE/ihohxuluzVposq72e29lkxd5AGIBL5ExuhkPvAKCxvNySqfb6FN1qhzxuORL7f++G49EV36+lY=
-X-Gm-Message-State: AOJu0YxbUpg+faaO5IBl46cMQ2wBg4W3kaeT/kEdLpePshVDo3Ng8y8Z
-	Tdlcx/QfWvGN1k+2M0Gydc1uwmJioJ1GbnNZDlnFwLVh4+4j24At
-X-Google-Smtp-Source: AGHT+IHolzyz9S8pd+GOOcW+1R0bING8PpCkunpPTukviWMZPY/lvqyK2Uo385BypufhWs90tL9WEg==
-X-Received: by 2002:a17:902:f689:b0:1fc:5879:1d08 with SMTP id d9443c01a7336-200ae550755mr57229755ad.32.1723288053298;
-        Sat, 10 Aug 2024 04:07:33 -0700 (PDT)
-Received: from ubuntu.worldlink.com.np ([27.34.65.255])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-200bb9038fesm10002735ad.114.2024.08.10.04.07.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 10 Aug 2024 04:07:32 -0700 (PDT)
-From: Dipendra Khadka <kdipendra88@gmail.com>
-To: chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de,
-	airlied@linux.ie,
-	daniel@ffwll.ch,
-	matthias.bgg@gmail.com
-Cc: Dipendra Khadka <kdipendra88@gmail.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: drivers: gpu: drm: mediatek: Fix warning: Using plain integer as NULL pointer in mtk_drm_gem.c
-Date: Sat, 10 Aug 2024 11:07:23 +0000
-Message-ID: <20240810110724.174338-1-kdipendra88@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1sclNt-0000000E92l-2S2m;
+	Sat, 10 Aug 2024 12:39:51 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1723293583; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=QyH4Jwd6Yg/lZk16RtIbLj59ifl+n7IAOWwawevdrzZkyGl1vf/HWs8oVam+J1/Y0O9e5YBfwYWfvvAsltY382lXRV1NeSnrAtEkXrxfxvWwt18aV3Mud78OTpOAcijmaiCbUuOrRI/Oe/nhTRmVVJGjQj/gH3Zstv0u/vwhVuc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1723293583; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=x8CC5Hli2VvYPqemvO/qI3GDNvN29YYbcLL0ZYScO44=; 
+	b=QlNoixQi4+N3pIHjUYAGhfZjBJsdQPo6yr08em3TTlsZGUDf6S0X7Ap91R3mcMV0/9Zs2/rBKMpKiBg+ctmqM/99FWzCsGhRv2TAsx791VA32X2UqTIFKzLO62E4IgT6Mje6Av2o4zR90sYPS3nw7WvY7tHqRHo7ZvVsBxEeths=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=icenowy.me;
+	spf=pass  smtp.mailfrom=uwu@icenowy.me;
+	dmarc=pass header.from=<uwu@icenowy.me>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1723293583;
+	s=zmail2; d=icenowy.me; i=uwu@icenowy.me;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=x8CC5Hli2VvYPqemvO/qI3GDNvN29YYbcLL0ZYScO44=;
+	b=dnrTkd9SWhYGrJ+/Tk3ZPwexyIF2n15RKjCfxksh12KUze0cwI75TaqgT/t7W/td
+	dvZ8NsNXuqDXbGA9rbMbUANzHfYttZl1YMtwK8TVRNPMGp5M8cbMMRQEHwHemP80poD
+	ioKw+dOSz8vJVFaHEVfskxE34ya9ZK8JFHMjpjggv9klLmLCb9v4kFC61JLAeSF4Fr8
+	fI8qQCNhCKRnmWYvVkGrRq2SlDEQ/rfPnEEk2wG0p4C9xpVu0Gf9XSc3nA57sfHXiJG
+	znOxFqKoVNOcx1efLcfJX8OgeB4dhR4xSbuwuy8tae7KUHJd32r2rh9FKKz1279d/rJ
+	J439K7+2HA==
+Received: by mx.zohomail.com with SMTPS id 1723293581631329.92947824948465;
+	Sat, 10 Aug 2024 05:39:41 -0700 (PDT)
+Message-ID: <77dc97aa009ae6eb54c616ac03cd85817836f0cf.camel@icenowy.me>
+Subject: Re: [PATCH 4/6] drm/imagination: Add compatible string entry for
+ Series6XT
+From: Icenowy Zheng <uwu@icenowy.me>
+To: Frank Binns <Frank.Binns@imgtec.com>, "matthias.bgg@gmail.com"
+ <matthias.bgg@gmail.com>, "tzimmermann@suse.de" <tzimmermann@suse.de>, Matt
+ Coster <Matt.Coster@imgtec.com>, "sboyd@kernel.org" <sboyd@kernel.org>,
+ "robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org"
+ <krzk+dt@kernel.org>,  "maarten.lankhorst@linux.intel.com"
+ <maarten.lankhorst@linux.intel.com>, "wenst@chromium.org"
+ <wenst@chromium.org>,  "mripard@kernel.org" <mripard@kernel.org>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>, 
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>
+Cc: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "airlied@gmail.com" <airlied@gmail.com>, 
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "daniel@ffwll.ch" <daniel@ffwll.ch>,  "linux-clk@vger.kernel.org"
+ <linux-clk@vger.kernel.org>
+Date: Sat, 10 Aug 2024 20:39:31 +0800
+In-Reply-To: <efdacd820d13368816973f57c4a817e039ec4a2d.camel@imgtec.com>
+References: <20240530083513.4135052-1-wenst@chromium.org>
+	 <20240530083513.4135052-5-wenst@chromium.org>
+	 <efdacd820d13368816973f57c4a817e039ec4a2d.camel@imgtec.com>
+Organization: Anthon Open-Source Community
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.44.4 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
+X-ZohoMail-Owner: <77dc97aa009ae6eb54c616ac03cd85817836f0cf.camel@icenowy.me>+zmo_0_
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240810_040735_016790_2E682573 
-X-CRM114-Status: GOOD (  10.19  )
+X-CRM114-CacheID: sfid-20240810_053949_700034_7F9D9495 
+X-CRM114-Status: GOOD (  25.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,32 +101,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-sparse reported following warking:
+=E5=9C=A8 2024-05-31=E6=98=9F=E6=9C=9F=E4=BA=94=E7=9A=84 11:18 +0000=EF=BC=
+=8CFrank Binns=E5=86=99=E9=81=93=EF=BC=9A
+> On Thu, 2024-05-30 at 16:35 +0800, Chen-Yu Tsai wrote:
+> > The MediaTek MT8173 comes with a PowerVR Rogue GX6250, which is
+> > part
+> > of the Series6XT, another variation of the Rogue family of GPUs.
+> >=20
+> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> > ---
+> > =C2=A0drivers/gpu/drm/imagination/pvr_drv.c | 1 +
+> > =C2=A01 file changed, 1 insertion(+)
+> >=20
+> > diff --git a/drivers/gpu/drm/imagination/pvr_drv.c
+> > b/drivers/gpu/drm/imagination/pvr_drv.c
+> > index 5c3b2d58d766..3d1a933c8303 100644
+> > --- a/drivers/gpu/drm/imagination/pvr_drv.c
+> > +++ b/drivers/gpu/drm/imagination/pvr_drv.c
+> > @@ -1475,6 +1475,7 @@ pvr_remove(struct platform_device *plat_dev)
+> > =C2=A0
+> > =C2=A0static const struct of_device_id dt_match[] =3D {
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0{ .compatible =3D "img,=
+img-axe", .data =3D NULL },
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0{ .compatible =3D "img,power=
+vr-6xt", .data =3D NULL },
+>=20
+> I assume that by adding this to the list of supported devices we're
+> essentially
+> freezing the existing uapi. This concerns me, as we've not yet
+> started running
+> Vulkan conformance on any Series6XT GPUs and there's a chance we may
+> need to
+> make some tweaks.
 
-'''
-drivers/gpu/drm/mediatek/mtk_drm_gem.c:290:27: warning: Using plain integer as NULL pointer
-'''
+Is there anything in the Series 6 XT GPUs that will affect conformance
+test and need new ABI to drive? Well I think the GX6250 GPU has TLA
+despite AXE (and BXE) has none, but what TLA does seems to be for
+transfer jobs, which we already support by using fragment pipeline?
 
-This patch changes integer 0 to NULL.
+In addition, if we add bits to the ABI, we can recognize the new ABI by
+raising the version number returned by the DRM driver.
 
-Signed-off-by: Dipendra Khadka <kdipendra88@gmail.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_gem.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+And, if my understand is right, I think we're keeping the command
+stream the same among different GPUs, so if the FWIF is changed, it's
+quite possible that every GPU, not only S6XT but also AXE will be
+affected too.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-index f8fd8b98c30e..885ce6ac7bad 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-@@ -287,6 +287,6 @@ void mtk_drm_gem_prime_vunmap(struct drm_gem_object *obj, void *vaddr)
- 		return;
- 
- 	vunmap(vaddr);
--	mtk_gem->kvaddr = 0;
-+	mtk_gem->kvaddr = NULL;
- 	kfree(mtk_gem->pages);
- }
--- 
-2.43.0
+>=20
+> I'm not really sure what the accepted approach is to hardware
+> enablement /
+> experimental support. I'm not sure if it's sufficient to hide support
+> behind a
+> Kconfig option and/or module parameter or whether we just have to
+> hold this
+> patch back for the time being.
+>=20
+> Thanks
+> Frank
+>=20
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0{}
+> > =C2=A0};
+> > =C2=A0MODULE_DEVICE_TABLE(of, dt_match);
 
 
