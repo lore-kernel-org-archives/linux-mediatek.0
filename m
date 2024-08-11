@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E799CC52D7B
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Aug 2024 18:20:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54CD9C3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Aug 2024 18:20:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gHTvHF3MuIrehZRyYr5ZNOACu8Umul1Ou6KdEhJmaog=; b=QNarHG9PPT8AONSBEMGYkc5iIR
-	V+jyJ426oqyuWVxdpp/eX0OF+iX0k5Qu8Utcnqc9jK5qzM/mTGI/H+/cY2KChTwhJdSVUCDAD0ZCR
-	ndfb87Y5eyMJ9uNpYauqW9z/k2VbwydkzN6ZgG/fUeZytJSoyDkl5S96BfJn1fAStHAlobX/QOksi
-	+HYPZ4WX89g3pfIWSxT37iRRIV3TqXZNkLL4kClAm2GaxMx0+ySZ/KPhoELRYlVb9CUswY6R/1O7V
-	IVgNhAo8TpBGIQo3iPnQHMgEQUvCF0Xn/AS24cLzmnxwOqvR88V+Q0z37fh5Q1N++ecNqfi1eqDyE
-	o+7uz8gw==;
+	bh=4I1MOs4RlICrHo6+3Xh5oqbsEAM8Ad9zumEnWMGczaU=; b=Flob+b5EWDI5hThv/UlJRQzRyy
+	eSU9Bpb2lXkxnoda2sfZXSEN+EoZ/Qg27Ca/IoAtzo1wp8dQemoGUt4yGtpdYw/fLsIl5MRh8OMti
+	dQffk3XfjdGHeVsVlNpA5vS8HhFdOm7FOY02W7WDXAKwFYAnsJET0cqzJ7lmk2DzxjEWIoxWUvmRu
+	9Z2iIn7J8v0bUq3Q0sAV719Gii/F+BTO44VvUy1rPQKNQs0A0YjF0QspIALNiuRjk/0IXXbZ5pqS1
+	HTEhKpBp5YdkooS9Zh69yN+Z1yZWAsODuamUno9M7NaGO+/KSCvXy11u7vjNDSS2fnIH1P35MWu5r
+	4P0D7YPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdDAz-0000000FwSA-2gyh;
-	Sun, 11 Aug 2024 18:20:21 +0000
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+	id 1sdDAz-0000000FwSX-4B2M;
+	Sun, 11 Aug 2024 18:20:22 +0000
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdD8B-0000000FvSb-3s3m
+	id 1sdD8D-0000000FvTY-02OE
 	for linux-mediatek@lists.infradead.org;
-	Sun, 11 Aug 2024 18:17:29 +0000
-Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-5b8c2a6117aso1484345a12.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 11 Aug 2024 11:17:27 -0700 (PDT)
+	Sun, 11 Aug 2024 18:17:30 +0000
+Received: by mail-lj1-x236.google.com with SMTP id 38308e7fff4ca-2f149845fbaso38579241fa.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 11 Aug 2024 11:17:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1723400246; x=1724005046; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1723400247; x=1724005047; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=gHTvHF3MuIrehZRyYr5ZNOACu8Umul1Ou6KdEhJmaog=;
-        b=PVu+hPpa/ccpZ1KqfBRE3Apz1wYMswm8IWHlNjtWatFUQx2/l7DIquE/FoTT+3DgT3
-         W26GIJNZzXkp52GOsbuls3ZnhkcO5RA+wZRfv0h7Zc/fM/aoRlEIUi2JwVJ/VBLE250v
-         SJM5VfcWM+VDkkJOCH6ZN8MXOQa05O/lFq3ABU4fTCiDcvKX8e9f+JcGAhLieaV7JBs7
-         xjJN1oAnEHu/YAxG+FTAr2+/1KMgEE0jPuju/PYNiNH+YaOot7H2i3g7lT/lJwhGCwXZ
-         UoSbN9CWPLN7xOxIwSUpFKF5Q4k/m0zk41Kf4kt8tJIKQQcph1QnG/PtamsoARdNkmOu
-         XSLw==
+        bh=4I1MOs4RlICrHo6+3Xh5oqbsEAM8Ad9zumEnWMGczaU=;
+        b=pWJwhzY38gO7ekNFpdKpI+NPqJqG3Ug6DpuiLrFk+f+qtHxqx6knK57i9kh3G5JYou
+         tM+1B9e8PHIJq/XQs3uf9bbHptKG5e4Sxr7jjw4qE3ywnop4qFagJvErz+i03FmvV8xA
+         XbOPbQHFfju75LcDwB6Cg1VRua41YYJ0GSphg1GGDasa26Gw+I0Ws5gQa8HnkS7trbZI
+         11BaL6x/VuJullrisWdA+fd/zyyFNLqnKgDonlOamvT+3mh1S/nr9f9xc/DGPFGTuKGN
+         A1RlgaNApURuPNv19bGNcyMLqpXMwU/y3Q5EMD215Nbwa1ot7MccZ3m8CKgJavwfhJfs
+         JEng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723400246; x=1724005046;
+        d=1e100.net; s=20230601; t=1723400247; x=1724005047;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=gHTvHF3MuIrehZRyYr5ZNOACu8Umul1Ou6KdEhJmaog=;
-        b=UldZchX05djc95fVJcGTR+blaycauMgS7CmiN0k5Q0YtLZnXHmbga3ESpF5nnTEkgG
-         RbFua/Ulwi3SHgNmfUmifhEjn81w4lWMflSJD4YcxJmzhjTh8N2RQGLXmN+1vgq7Czhy
-         BUfAoQDgf3RRLO2Fyvluz1W5zUhoOzEbN/sYuiVfh2s/BrETAGIL5UAlHkO8C71/5RwR
-         uPqxVNhiv0ksTot8LcAzjwj8ENjmQk6iTbuGp9KoAfGvXokTW5bKx+H7NY2XIqc1knhU
-         x3d34QJQZlXmiJRkct/ieUDNwpYZJY+48HYEzgfTjJlLAp0hDGSzlg1Pk6ijoouSx50J
-         Rw1Q==
-X-Forwarded-Encrypted: i=1; AJvYcCXnOo9uJHt5b60tDqZs7vLATwwiFPzbVoj9t5R46sXc/a07edvPfx9uOytVsjm0i+1F4YA6uOIMgvc0thegkkWuPjOO5WfYHO4R46yrFprCFfB9
-X-Gm-Message-State: AOJu0YysXUV5IJs2415UxucUwhJ7Ks8S1Y9DwRUHFgw/LGByhRZY7jf3
-	BUSQuzSxcAgzyGxc1m5ZCtsOa7EIl/0TY9lC8NwlJCS1DqjKwkhFqoipY+XH5bI=
-X-Google-Smtp-Source: AGHT+IEmj+sNFihQ08rrfGWG3a26LT65ynSemEMCSGFHc+3kbvAO24eNC8gMDj/QsltK+PB9TZrL9w==
-X-Received: by 2002:a05:6402:1d4d:b0:5af:5342:c5c0 with SMTP id 4fb4d7f45d1cf-5bd0a61c193mr6401870a12.23.1723400245584;
-        Sun, 11 Aug 2024 11:17:25 -0700 (PDT)
+        bh=4I1MOs4RlICrHo6+3Xh5oqbsEAM8Ad9zumEnWMGczaU=;
+        b=LQpp+ADrKSHlcB+SYihdjiRoMoys5YJDSkwZMCRtISbfFjiBDe4vR7hQVaNUcl6voz
+         JC5YhP7QJRIgO03xEiyG8azFsDzuCs9UNmfKntD3jSVwvS+3pFIFrxkmwwPFot90KH6Z
+         J1xXwWefOdTwx8IsNVDGdx+x/c2wi6IW5EHafGvjBU1gU9hlKdXXTWqf6ppDVWLgR4jm
+         ijOiBnqyWscZxU2cXG+DisYHpPu4SxsipJJ93bAKN23t7+a6FEg4dvQCYes9IjkRmBq8
+         2xnADrzDutBnIzWbT+ZVrKl04O7BmswMx3zDM2KCrP5v88vCYR2bWRqXySMu4Yef4w2E
+         2cDg==
+X-Forwarded-Encrypted: i=1; AJvYcCUyU/6Pp28Q/FYX86zTA1W9hdM77D10St+eKhKY7UoUbqGmLXyt6KHsjdBmWYrUObffFke7IM5eESYZKYANtYuJGVbnkazhnnAbWWPPjd147lF7
+X-Gm-Message-State: AOJu0Yze3JDR7sIg8uJx57ktQVas0jYPI8hkpSeWnRsoL9kFfsPmQjou
+	GNpRzZKok9eqcTq2+KMM199ei++I4auD+dopEGu9AseOK/Ae6QmXk3WRlRJ0UZA=
+X-Google-Smtp-Source: AGHT+IGZk8tSp6TCMLyX7Nh8mlsOe+NTSYoLKUIveF7rdM/yJGip844M6WYN5Bdk4so7A4B+EQy7Tg==
+X-Received: by 2002:a2e:b4b6:0:b0:2ee:8ea4:d649 with SMTP id 38308e7fff4ca-2f1a6d0d517mr51105321fa.16.1723400247459;
+        Sun, 11 Aug 2024 11:17:27 -0700 (PDT)
 Received: from [127.0.1.1] ([178.197.219.137])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5bd1a6032c1sm1610593a12.92.2024.08.11.11.17.23
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5bd1a6032c1sm1610593a12.92.2024.08.11.11.17.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 11 Aug 2024 11:17:25 -0700 (PDT)
+        Sun, 11 Aug 2024 11:17:26 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Sun, 11 Aug 2024 20:17:07 +0200
-Subject: [PATCH 4/6] dt-bindings: gnss: reference
+Date: Sun, 11 Aug 2024 20:17:08 +0200
+Subject: [PATCH 5/6] dt-bindings: bluetooth: reference
  serial-peripheral-props.yaml
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240811-dt-bindings-serial-peripheral-props-v1-4-1dba258b7492@linaro.org>
+Message-Id: <20240811-dt-bindings-serial-peripheral-props-v1-5-1dba258b7492@linaro.org>
 References: <20240811-dt-bindings-serial-peripheral-props-v1-0-1dba258b7492@linaro.org>
 In-Reply-To: <20240811-dt-bindings-serial-peripheral-props-v1-0-1dba258b7492@linaro.org>
 To: Rob Herring <robh@kernel.org>, 
@@ -91,26 +91,26 @@ Cc: linux-serial@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-sound@vger.kernel.org, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.14.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3362;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4621;
  i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=mvi7UVUD9P+O/9ZF6mKgCskHov/XbgcktorvQahRWR4=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmuQAph8zdk2rT4gjVTPNarYAGEQtTiGQ+tPDnk
- z+uS96hib+JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZrkAKQAKCRDBN2bmhouD
- 123oD/sHJtccDxWIKerFfLfEW5rsmWD8qOVMuFTY5l84PnocCY4R8F48r/EZSn68llNA+9ZmLq7
- 9y4ttt7gyZ1Um1LtQGOU8iMx/qOwFZlok9n7T6s6SNEWutgQ85Xl9pxuwl5nhGZfjbRxmryrU+c
- Nbb/X57g466nS9vp5O+if35f1HiFvdexj49/cl8NRRhrz/o5rvzThuoTToV7luXIV29oZNzH5qj
- RPaQGmcInaS3hUxQLNrWSHvzUct8ekruhnD2WjqupAhLCeyHqy0yT0mthXLNwcCl8DWpHr+eCqF
- x9r5jHVkh64bqoaU4qV97KLjsUmLS45x+MLOERasuGMtosuSTgRbOgTwTeo3SxCBTppolrEU5c4
- WhioFU3jjWEFUE6EywTduzyjPM0ouHpjcpq+Vt+e6OC2YpD9VJ8uGgm3vHx7tCxd4dOg5Vwojb3
- Opv7ut5m9kkttwlw5eTtVdHGnM5aUQYUcfottSPuu9X8pbalTs1G2ao64JI+pMXQhr83YYIQie/
- IsQivDNOtCtYjJBQz0ReqTca1rXa9u/cyxjVCKnoe3ayenxbNDodPnH0cqBFjoqINN369zhGZ/r
- WW0wPHp7Jk3MNChrIcW0xpivPckAHrPgdsROnoCBU7UGO4EgsRbyY18FTfCmP3l9W6JQ45/LM7c
- Howv8GVMJJo3Mhw==
+ bh=ODWT4GHR30t+QnDSZHKStQSpKmwtKvyvXE4vBLxh1WI=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmuQAqOJOTxfm6MHExpo3dgYQ9SqbgDR4o/cpL6
+ 8ITUCeJOmaJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZrkAKgAKCRDBN2bmhouD
+ 1x0NEACAsDcv6D6/XYWk4Es7HPPW2CKoBfs2JObs/84LP24gWNYTG4vPD2kbpM8IEJAuwI2LUI6
+ 3+tUxQ80u2pm2yVqcooaCI9qGdr1MGrtbP74+dct5wdWzdu5B2eJO83Zu2YCClBQ5zdR/8SErcP
+ 5nNCKtK8GeOkcupUkK+IrP98Ahc4DwsR4oAP7kUzIMxD3i6sRFFCGHluLtn6MrgqDGqV6tDwucQ
+ RyiE4kurOOLkY8+pMJZtzhAfS+i6JIqLgAEK7HJzod7wypE+i5Cd5zYpxSV2CTQ28MMZXdNx7ta
+ bV8g0oByZxi2yOZdiTxOKVJQAC7kDT/WCkheov0k4mCdJ6vog4lj9EqHANJ7IqHAb7QcBK8uFRf
+ Lx2UmPT9ZEjGUobHioIYbprCTADQLnsAQkvLAnoIiEZ9NjDIzDJcumx5/Cov5sfIl5OBwHLGMnx
+ 1R/C05mFXKulqUk6XuXRl/EQ4McsS1QlaA72sJo/ra+E3cXDSu42JuTzYZExbxLuGxEuwwAzcuH
+ SD3EVCLnEXLRMbYRzaHsqhYnAF6HyShOi6zwXF8TRsN1nK+xBTbWUzq5HwzBZ9lAjfE+2Y+tPn2
+ 0Pl5cIPKBKY88wpKY1bQipWt4sQAKkJJmSnGDfAIIrTws2/S9aWvEsh8zxSQNNcnmvMbj02+C95
+ ZnmGsbT4r2kWqMw==
 X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240811_111727_982887_887058E2 
-X-CRM114-Status: GOOD (  12.65  )
+X-CRM114-CacheID: sfid-20240811_111729_132887_BCA35FE4 
+X-CRM114-Status: GOOD (  12.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,10 +125,9 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The "current-speed" property is not a common property for all GNSS
-devices, but only to these connected with serial.  Drop the property
-from the common GNSS properties schema and instead reference common
-serial properties schema (for children of UART controllers).
+Reference common serial properties schema (for children of UART
+controllers) to bring common definition of "current-speed" and
+"max-speed" properties.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
@@ -137,77 +136,132 @@ Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 This patch should probably go via Rob's Devicetree tree.  It depends on
 the serial patch adding serial-peripheral-props.yaml.
 ---
- Documentation/devicetree/bindings/gnss/brcm,bcm4751.yaml  | 1 +
- Documentation/devicetree/bindings/gnss/gnss-common.yaml   | 5 -----
- Documentation/devicetree/bindings/gnss/mediatek.yaml      | 1 +
- Documentation/devicetree/bindings/gnss/sirfstar.yaml      | 1 +
- Documentation/devicetree/bindings/gnss/u-blox,neo-6m.yaml | 1 +
- 5 files changed, 4 insertions(+), 5 deletions(-)
+ .../bindings/net/bluetooth/brcm,bluetooth.yaml     | 31 +++++++++++-----------
+ .../bindings/net/bluetooth/marvell,88w8897.yaml    |  4 +--
+ .../bindings/net/bluetooth/qualcomm-bluetooth.yaml |  4 +--
+ .../bindings/net/bluetooth/realtek,bluetooth.yaml  |  3 +++
+ .../bindings/net/bluetooth/ti,bluetooth.yaml       |  3 +++
+ 5 files changed, 25 insertions(+), 20 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/gnss/brcm,bcm4751.yaml b/Documentation/devicetree/bindings/gnss/brcm,bcm4751.yaml
-index c21549e0fba6..089166089498 100644
---- a/Documentation/devicetree/bindings/gnss/brcm,bcm4751.yaml
-+++ b/Documentation/devicetree/bindings/gnss/brcm,bcm4751.yaml
-@@ -18,6 +18,7 @@ description:
+diff --git a/Documentation/devicetree/bindings/net/bluetooth/brcm,bluetooth.yaml b/Documentation/devicetree/bindings/net/bluetooth/brcm,bluetooth.yaml
+index e49e4146736f..3c410cadff23 100644
+--- a/Documentation/devicetree/bindings/net/bluetooth/brcm,bluetooth.yaml
++++ b/Documentation/devicetree/bindings/net/bluetooth/brcm,bluetooth.yaml
+@@ -119,29 +119,28 @@ properties:
+     items:
+       - const: host-wakeup
  
- allOf:
-   - $ref: gnss-common.yaml#
-+  - $ref: /schemas/serial/serial-peripheral-props.yaml#
- 
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/gnss/gnss-common.yaml b/Documentation/devicetree/bindings/gnss/gnss-common.yaml
-index 963b926e30a7..d4430d2d6855 100644
---- a/Documentation/devicetree/bindings/gnss/gnss-common.yaml
-+++ b/Documentation/devicetree/bindings/gnss/gnss-common.yaml
-@@ -35,11 +35,6 @@ properties:
-       GPIO line, this is used.
-     maxItems: 1
- 
--  current-speed:
--    description: The baudrate in bits per second of the device as it comes
--      online, current active speed.
--    $ref: /schemas/types.yaml#/definitions/uint32
+-  max-speed: true
+-  current-speed: true
 -
- additionalProperties: true
+ required:
+   - compatible
+ 
+ dependencies:
+   brcm,requires-autobaud-mode: [ shutdown-gpios ]
+ 
+-if:
+-  not:
+-    properties:
+-      compatible:
+-        contains:
+-          enum:
+-            - brcm,bcm20702a1
+-            - brcm,bcm4329-bt
+-            - brcm,bcm4330-bt
+-then:
+-  properties:
+-    reset-gpios: false
++allOf:
++  - $ref: /schemas/serial/serial-peripheral-props.yaml#
++  - if:
++      not:
++        properties:
++          compatible:
++            contains:
++              enum:
++                - brcm,bcm20702a1
++                - brcm,bcm4329-bt
++                - brcm,bcm4330-bt
++    then:
++      properties:
++        reset-gpios: false
+ 
+-additionalProperties: false
++unevaluatedProperties: false
  
  examples:
-diff --git a/Documentation/devicetree/bindings/gnss/mediatek.yaml b/Documentation/devicetree/bindings/gnss/mediatek.yaml
-index c0eb35beb2ef..2b9e5be4ebf3 100644
---- a/Documentation/devicetree/bindings/gnss/mediatek.yaml
-+++ b/Documentation/devicetree/bindings/gnss/mediatek.yaml
-@@ -15,6 +15,7 @@ description:
+   - |
+diff --git a/Documentation/devicetree/bindings/net/bluetooth/marvell,88w8897.yaml b/Documentation/devicetree/bindings/net/bluetooth/marvell,88w8897.yaml
+index 60b90cd62013..2fc36874deb7 100644
+--- a/Documentation/devicetree/bindings/net/bluetooth/marvell,88w8897.yaml
++++ b/Documentation/devicetree/bindings/net/bluetooth/marvell,88w8897.yaml
+@@ -19,13 +19,13 @@ properties:
+       - mrvl,88w8897
+       - mrvl,88w8997
+ 
+-  max-speed:
+-    description: see Documentation/devicetree/bindings/serial/serial.yaml
++  max-speed: true
+ 
+ required:
+   - compatible
  
  allOf:
-   - $ref: gnss-common.yaml#
 +  - $ref: /schemas/serial/serial-peripheral-props.yaml#
+   - if:
+       properties:
+         compatible:
+diff --git a/Documentation/devicetree/bindings/net/bluetooth/qualcomm-bluetooth.yaml b/Documentation/devicetree/bindings/net/bluetooth/qualcomm-bluetooth.yaml
+index 68c5ed111417..67f95e60ed3a 100644
+--- a/Documentation/devicetree/bindings/net/bluetooth/qualcomm-bluetooth.yaml
++++ b/Documentation/devicetree/bindings/net/bluetooth/qualcomm-bluetooth.yaml
+@@ -98,8 +98,7 @@ properties:
+   vddwlmx-supply:
+     description: VDD_WLMX supply regulator handle
  
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/gnss/sirfstar.yaml b/Documentation/devicetree/bindings/gnss/sirfstar.yaml
-index 0bbe684d82e1..7e5da89a5ad7 100644
---- a/Documentation/devicetree/bindings/gnss/sirfstar.yaml
-+++ b/Documentation/devicetree/bindings/gnss/sirfstar.yaml
-@@ -21,6 +21,7 @@ description:
+-  max-speed:
+-    description: see Documentation/devicetree/bindings/serial/serial.yaml
++  max-speed: true
+ 
+   firmware-name:
+     description: specify the name of nvm firmware to load
+@@ -118,6 +117,7 @@ additionalProperties: false
  
  allOf:
-   - $ref: gnss-common.yaml#
+   - $ref: bluetooth-controller.yaml#
 +  - $ref: /schemas/serial/serial-peripheral-props.yaml#
+   - if:
+       properties:
+         compatible:
+diff --git a/Documentation/devicetree/bindings/net/bluetooth/realtek,bluetooth.yaml b/Documentation/devicetree/bindings/net/bluetooth/realtek,bluetooth.yaml
+index 993c607eaa49..7d567122bac9 100644
+--- a/Documentation/devicetree/bindings/net/bluetooth/realtek,bluetooth.yaml
++++ b/Documentation/devicetree/bindings/net/bluetooth/realtek,bluetooth.yaml
+@@ -46,6 +46,9 @@ properties:
+ required:
+   - compatible
  
- properties:
-   compatible:
-diff --git a/Documentation/devicetree/bindings/gnss/u-blox,neo-6m.yaml b/Documentation/devicetree/bindings/gnss/u-blox,neo-6m.yaml
-index cd80668182b6..7d4b6d49e5ee 100644
---- a/Documentation/devicetree/bindings/gnss/u-blox,neo-6m.yaml
-+++ b/Documentation/devicetree/bindings/gnss/u-blox,neo-6m.yaml
-@@ -8,6 +8,7 @@ title: U-blox GNSS Receiver
- 
- allOf:
-   - $ref: gnss-common.yaml#
++allOf:
 +  - $ref: /schemas/serial/serial-peripheral-props.yaml#
++
+ additionalProperties: false
  
- maintainers:
-   - Johan Hovold <johan@kernel.org>
+ examples:
+diff --git a/Documentation/devicetree/bindings/net/bluetooth/ti,bluetooth.yaml b/Documentation/devicetree/bindings/net/bluetooth/ti,bluetooth.yaml
+index 1f507ddccc3c..290abc22e18a 100644
+--- a/Documentation/devicetree/bindings/net/bluetooth/ti,bluetooth.yaml
++++ b/Documentation/devicetree/bindings/net/bluetooth/ti,bluetooth.yaml
+@@ -74,6 +74,9 @@ properties:
+ required:
+   - compatible
+ 
++allOf:
++  - $ref: /schemas/serial/serial-peripheral-props.yaml#
++
+ additionalProperties: false
+ 
+ examples:
 
 -- 
 2.43.0
