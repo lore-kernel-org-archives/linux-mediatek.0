@@ -4,91 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40240C3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Aug 2024 18:50:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C07AC3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Aug 2024 21:08:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+q3yH2GVKTI88q3BAmiWkMTGDbrf/3EozEWfMZeP1ec=; b=Tr0UH34RgkxoLTGhu7KPxoTMKI
-	oAnBlC2YJq/T8aeori6UvcSqf/6vJUDBsLf+20GXEjny9LfnPDDxyUVKb+b8T760R8BdIMVXDBnKn
-	sH1NpVRIvGHfWxx2sSnLbQPdyYvhI48WK31KPHTuhj8ei+ImTl4FsAaRVRD539XHwJhD3zMdaPlQz
-	FQqRy+QS1r8T3jmos5Qu2Do56Cg8A6/Mea3as7rouk0IyoweExKl0/gw8f7b+2JA1V+Ib8Qro0ycs
-	YmWk+WnZFMkb12ScHsX2UyF1W4d0lv+DEwNVxvdBX4OyZuwA/G2uyol2QCfAHLXgfXzy3jzXLCleb
-	2ZCM6dOQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1pHq2xg2As6wjrHENfqy/iVYOIKvu44IywW4Fd96BZ0=; b=MDswPkYsC5Ml820j9+DVUX165O
+	gV+uiH1rVwuEOv2iDj54DvsvOe/dKwJgRCUvCY/XzGUBqvhHUyyZnv4RghaYeUcYIbKRUC8qitujF
+	fiPQN1vhr4lHf470ZACh9Rle4/wCNAv3Fb8C+ag63a5QsHjnnYFmuQDGJJXftInytn0Nk2AC7xf42
+	VNhUa6GPlBf5q24AZNNqBIWLjV75CIDnaF7bbFek9M/k2Dwb+AOHmaGhtRxCcbWsoiC76y63E7DOk
+	Q/8oC/AM1mm3mTrKc0a+Ixx7WhOwLzP+0bbiVO2ffcAx4L2GSNsvQ6lF/MV57zlSOWLvJgLMypDYt
+	Z0jceZhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdDeT-0000000G124-2TqC;
-	Sun, 11 Aug 2024 18:50:49 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1sdFng-0000000GGXo-3azG;
+	Sun, 11 Aug 2024 21:08:29 +0000
+Received: from mgamail.intel.com ([192.198.163.9])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdDdr-0000000G0v4-3XFF;
-	Sun, 11 Aug 2024 18:50:13 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-429c4a4c6a8so14664315e9.0;
-        Sun, 11 Aug 2024 11:50:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1723402209; x=1724007009; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=+q3yH2GVKTI88q3BAmiWkMTGDbrf/3EozEWfMZeP1ec=;
-        b=F0p+nt7xo7ay/DmGzZKg4nNDWZvIGCSVx86SrQof/kIETfHBgPkSmXwLL3CwcVEOR5
-         Xzv1lmCT+e63xp/D56LbfX+o6IUlDUtfZsKLyUK0/SKFA4QWo70WqUcxOBufgOkEiJ1B
-         js1cu7Ejmu3ezpXDEWxcu30IB3ZexBrbbxVIKi1qr4e49jjdWx12bWVgde8Nlmys8Ps9
-         g7QIn/IlVfkJ3STaaVSlnd/D4chZ/SGbcr4oG1Lu0AbrpopY7vQPOXu3SGGFY9wZ1mMH
-         MOE16Bp145M+rsdA5kbuQw4rC+ewgEObRobZQ9Jenc2zabgW8YI2oE4CZw7IIH/HlxXv
-         xzdg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723402209; x=1724007009;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=+q3yH2GVKTI88q3BAmiWkMTGDbrf/3EozEWfMZeP1ec=;
-        b=cskjW1Wwi9VhFSnrWSqF1ppvFbBHxbiZs4ON6RiNpgAxDv2yjpHw8QJPQD0o/jG/b2
-         MJLrPI1xgZpKE7OJGFfMCdDAoQbnhkMd7FtL/0VKZ1xnnRo8eqCKiKeiSm/A9KYskEOj
-         a0J9xHsjkJ89Uqf9x5HmqrExb2zBGEUZ5kraNePyzTwSWfS8VeCkXDBw5vIlx1C/kBIx
-         osTywih+yxaBI2joPDq6lAb6DqJpM3EKqyffSBs1lUmMCIXd1HeGdPFl1ZNJUQFTlOjf
-         KU5QDROOZlSDgOOCEByACuvoK92NgsqJO0yJCJ5qLnJV37L9mPUkmoaB90gVBZN4wiUv
-         pxFQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUGDJmeyvAgZiEEh0+6Ppy4KclOSlcPy3F6NyN9TxZFl6gE0mI3vQ6DOW6WVljoN6mw72jXnmWsyT2y7sVI98lT03NVHFNmJV3rwXp5bFp6WEI3SLm6Qf6X0OBOnZxBRAg13niQF7P3UVqwlb6laGmccuRWdiB7mi4=
-X-Gm-Message-State: AOJu0Yy0InAw2J6TuzSryqLfT2jTsiRkdkuVpTepMtcB4w0Sq1MUbGvg
-	KAXANtjE7tkjzKIIBM2KEHomUuEy3m6FBUy8k3Nw4UOf8AZ8K+bu
-X-Google-Smtp-Source: AGHT+IH9FjXsU3WtmkAc/rzXtJFMjqHYnqwh8bqjz1y9HWu7myVmeb6vI9Hl9TlvZKwTXMnYMroIbQ==
-X-Received: by 2002:a5d:60c5:0:b0:360:7c4b:58c3 with SMTP id ffacd0b85a97d-36d603555f9mr5650727f8f.54.1723402208958;
-        Sun, 11 Aug 2024 11:50:08 -0700 (PDT)
-Received: from yifee.lan ([176.230.105.233])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36e4e51ea8dsm5539929f8f.87.2024.08.11.11.50.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 11 Aug 2024 11:50:08 -0700 (PDT)
-From: Elad Yifee <eladwf@gmail.com>
-To: 
-Cc: eladwf@gmail.com,
-	daniel@makrotopia.org,
-	Felix Fietkau <nbd@nbd.name>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chen Lin <chen45464546@163.com>,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net] net: ethernet: mtk_eth_soc: fix memory leak in LRO rings release
-Date: Sun, 11 Aug 2024 21:49:45 +0300
-Message-ID: <20240811184949.2799-1-eladwf@gmail.com>
-X-Mailer: git-send-email 2.45.2
+	id 1sdFnd-0000000GGWk-1b8b;
+	Sun, 11 Aug 2024 21:08:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1723410505; x=1754946505;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=wXLKPzbEa11hhq5BdV+rbj8l5onvf1E/U18pBjpIGPk=;
+  b=WsQMkFDomSkJxaqrYoczjai73fp63k/8e4suc4bMlu6csaXzOn3dpZsz
+   fxs+Xrlh3BRkF7Z2jh/v8ASfaOsydmCYkQzxPFS8xPGlOAhqtWFP9lYc8
+   fIU7Dk++55imoswPDm+7ZnJTkEdvkNAdbUsmj25kPwzmTu3OuqDA4Veur
+   yKs8DXO/fJRB6LrHear0ljMji1Sx28H0koZAasUCGqJevjLhGyuxq5mKf
+   +sTD5jGffPsbFNUTTKloiDeNQGoauvKnmfr6E50cA8NZPGzlqQSzzA9Yy
+   TexWAtp2tpQ2kKZfrSiRRyopKXzDOL/fVnyRNaYlqlur1ZQ2N9y7saxUg
+   Q==;
+X-CSE-ConnectionGUID: zCFBbrAzSr6tRzyztoynZQ==
+X-CSE-MsgGUID: vSX2jXPiRwyOZ6jp14Om6w==
+X-IronPort-AV: E=McAfee;i="6700,10204,11161"; a="32187021"
+X-IronPort-AV: E=Sophos;i="6.09,281,1716274800"; 
+   d="scan'208";a="32187021"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Aug 2024 14:08:14 -0700
+X-CSE-ConnectionGUID: 2Di+hvVgSdGtNTQ7QBcckw==
+X-CSE-MsgGUID: 4lOjyr8lRVOE+JjEbUHbww==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,281,1716274800"; 
+   d="scan'208";a="57729849"
+Received: from unknown (HELO b6bf6c95bbab) ([10.239.97.151])
+  by fmviesa007.fm.intel.com with ESMTP; 11 Aug 2024 14:08:10 -0700
+Received: from kbuild by b6bf6c95bbab with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1sdFnM-000B8X-0Z;
+	Sun, 11 Aug 2024 21:08:08 +0000
+Date: Mon, 12 Aug 2024 05:08:01 +0800
+From: kernel test robot <lkp@intel.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>, linux-gpio@vger.kernel.org
+Cc: oe-kbuild-all@lists.linux.dev, linus.walleij@linaro.org,
+	sean.wang@kernel.org, linux-mediatek@lists.infradead.org,
+	lorenzo.bianconi83@gmail.com, krzk+dt@kernel.org, robh@kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	upstream@airoha.com, angelogioacchino.delregno@collabora.com,
+	benjamin.larsson@genexis.eu, conor+dt@kernel.org,
+	ansuelsmth@gmail.com
+Subject: Re: [PATCH 2/2] pinctrl: airoha: Add support for EN7581 SoC
+Message-ID: <202408120430.3N4wwLLo-lkp@intel.com>
+References: <c69c4a9b8e57eebdde0521731b8cd9f92ed4891b.1723392444.git.lorenzo@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <c69c4a9b8e57eebdde0521731b8cd9f92ed4891b.1723392444.git.lorenzo@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240811_115011_905301_BB9F5526 
-X-CRM114-Status: GOOD (  10.97  )
+X-CRM114-CacheID: sfid-20240811_140825_703930_1724A072 
+X-CRM114-Status: GOOD (  13.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,61 +91,171 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For LRO we allocate more than one page, yet 'skb_free_frag' is used
-to free the buffer, which only frees a single page.
-Fix it by using 'free_pages' instead.
+Hi Lorenzo,
 
-Fixes: 2f2c0d2919a1 ("net: ethernet: mtk_eth_soc: fix misuse of mem alloc interface netdev[napi]_alloc_frag")
- 
-Signed-off-by: Elad Yifee <eladwf@gmail.com>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+kernel test robot noticed the following build warnings:
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 16ca427cf4c3..bac6d0c48d21 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1762,8 +1762,10 @@ static void mtk_rx_put_buff(struct mtk_rx_ring *ring, void *data, bool napi)
- 	if (ring->page_pool)
- 		page_pool_put_full_page(ring->page_pool,
- 					virt_to_head_page(data), napi);
--	else
-+	else if (ring->frag_size <= PAGE_SIZE)
- 		skb_free_frag(data);
-+	else
-+		free_pages(data, get_order(mtk_max_frag_size(ring->frag_size)));
- }
- 
- static int mtk_xdp_frame_map(struct mtk_eth *eth, struct net_device *dev,
-@@ -2132,7 +2134,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 				ring->buf_size, DMA_FROM_DEVICE);
- 			if (unlikely(dma_mapping_error(eth->dma_dev,
- 						       dma_addr))) {
--				skb_free_frag(new_data);
-+				mtk_rx_put_buff(ring, new_data, true);
- 				netdev->stats.rx_dropped++;
- 				goto release_desc;
- 			}
-@@ -2146,7 +2148,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 			skb = build_skb(data, ring->frag_size);
- 			if (unlikely(!skb)) {
- 				netdev->stats.rx_dropped++;
--				skb_free_frag(data);
-+				mtk_rx_put_buff(ring, data, true);
- 				goto skip_rx;
- 			}
- 
-@@ -2691,7 +2693,7 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
- 				ring->buf_size, DMA_FROM_DEVICE);
- 			if (unlikely(dma_mapping_error(eth->dma_dev,
- 						       dma_addr))) {
--				skb_free_frag(data);
-+				mtk_rx_put_buff(ring, data, false);
- 				return -ENOMEM;
- 			}
- 		}
+[auto build test WARNING on linusw-pinctrl/devel]
+[also build test WARNING on linusw-pinctrl/for-next linus/master v6.11-rc2 next-20240809]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Lorenzo-Bianconi/dt-bindings-pinctrl-airoha-Add-EN7581-pinctrl-controller/20240812-001436
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git devel
+patch link:    https://lore.kernel.org/r/c69c4a9b8e57eebdde0521731b8cd9f92ed4891b.1723392444.git.lorenzo%40kernel.org
+patch subject: [PATCH 2/2] pinctrl: airoha: Add support for EN7581 SoC
+config: m68k-allmodconfig (https://download.01.org/0day-ci/archive/20240812/202408120430.3N4wwLLo-lkp@intel.com/config)
+compiler: m68k-linux-gcc (GCC) 14.1.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240812/202408120430.3N4wwLLo-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202408120430.3N4wwLLo-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+    1922 | static const struct airoha_pinctrl_func airoha_pinctrl_funcs[] = {
+         |                                                                  ^
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+>> drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
+   In file included from include/linux/printk.h:574,
+                    from include/asm-generic/bug.h:22,
+                    from arch/m68k/include/asm/bug.h:32,
+                    from include/linux/bug.h:5,
+                    from include/linux/thread_info.h:13,
+                    from include/asm-generic/preempt.h:5,
+                    from ./arch/m68k/include/generated/asm/preempt.h:1,
+                    from include/linux/preempt.h:79,
+                    from include/linux/spinlock.h:56,
+                    from include/linux/irq.h:14,
+                    from include/linux/irqchip/chained_irq.h:10,
+                    from include/linux/gpio/driver.h:8,
+                    from drivers/pinctrl/mediatek/pinctrl-airoha.c:9:
+   drivers/pinctrl/mediatek/pinctrl-airoha.c: In function 'airoha_pinmux_set_mux':
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:2279:21: error: 'struct function_desc' has no member named 'name'
+    2279 |                 desc->name, grp->grp.name);
+         |                     ^~
+   include/linux/dynamic_debug.h:224:29: note: in definition of macro '__dynamic_func_call_cls'
+     224 |                 func(&id, ##__VA_ARGS__);                       \
+         |                             ^~~~~~~~~~~
+   include/linux/dynamic_debug.h:250:9: note: in expansion of macro '_dynamic_func_call_cls'
+     250 |         _dynamic_func_call_cls(_DPRINTK_CLASS_DFLT, fmt, func, ##__VA_ARGS__)
+         |         ^~~~~~~~~~~~~~~~~~~~~~
+   include/linux/dynamic_debug.h:273:9: note: in expansion of macro '_dynamic_func_call'
+     273 |         _dynamic_func_call(fmt, __dynamic_dev_dbg,              \
+         |         ^~~~~~~~~~~~~~~~~~
+   include/linux/dev_printk.h:165:9: note: in expansion of macro 'dynamic_dev_dbg'
+     165 |         dynamic_dev_dbg(dev, dev_fmt(fmt), ##__VA_ARGS__)
+         |         ^~~~~~~~~~~~~~~
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:2278:9: note: in expansion of macro 'dev_dbg'
+    2278 |         dev_dbg(pctrl_dev->dev, "enable function %s group %s\n",
+         |         ^~~~~~~
+   drivers/pinctrl/mediatek/pinctrl-airoha.c: In function 'airoha_pinctrl_get_conf':
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:2359:38: error: implicit declaration of function '__bf_shf' [-Wimplicit-function-declaration]
+    2359 |         *val = (*val & reg->mask) >> __bf_shf(reg->mask);
+         |                                      ^~~~~~~~
+   drivers/pinctrl/mediatek/pinctrl-airoha.c: In function 'airoha_pinctrl_probe':
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:2946:61: error: 'const struct function_desc' has no member named 'name'
+    2946 |                                                   func->desc.name,
+         |                                                             ^
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:2947:61: error: 'const struct function_desc' has no member named 'group_names'
+    2947 |                                                   func->desc.group_names,
+         |                                                             ^
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:2948:61: error: 'const struct function_desc' has no member named 'num_group_names'
+    2948 |                                                   func->desc.num_group_names,
+         |                                                             ^
+   In file included from include/linux/device.h:15,
+                    from include/linux/platform_device.h:13,
+                    from drivers/pinctrl/mediatek/pinctrl-airoha.c:22:
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:2952:43: error: 'const struct function_desc' has no member named 'name'
+    2952 |                                 func->desc.name);
+         |                                           ^
+   include/linux/dev_printk.h:110:37: note: in definition of macro 'dev_printk_index_wrap'
+     110 |                 _p_func(dev, fmt, ##__VA_ARGS__);                       \
+         |                                     ^~~~~~~~~~~
+   drivers/pinctrl/mediatek/pinctrl-airoha.c:2951:25: note: in expansion of macro 'dev_err'
+    2951 |                         dev_err(&pdev->dev, "Failed to register function %s\n",
+         |                         ^~~~~~~
+
+
+vim +1922 drivers/pinctrl/mediatek/pinctrl-airoha.c
+
+  1921	
+> 1922	static const struct airoha_pinctrl_func airoha_pinctrl_funcs[] = {
+  1923		PINCTRL_FUNC_DESC(pon),
+  1924		PINCTRL_FUNC_DESC(tod_1pps),
+  1925		PINCTRL_FUNC_DESC(sipo),
+  1926		PINCTRL_FUNC_DESC(mdio),
+  1927		PINCTRL_FUNC_DESC(uart),
+  1928		PINCTRL_FUNC_DESC(i2c),
+  1929		PINCTRL_FUNC_DESC(jtag),
+  1930		PINCTRL_FUNC_DESC(pcm),
+  1931		PINCTRL_FUNC_DESC(spi),
+  1932		PINCTRL_FUNC_DESC(pcm_spi),
+  1933		PINCTRL_FUNC_DESC(i2s),
+  1934		PINCTRL_FUNC_DESC(emmc),
+  1935		PINCTRL_FUNC_DESC(pnand),
+  1936		PINCTRL_FUNC_DESC(pcie_reset),
+  1937		PINCTRL_FUNC_DESC(pwm),
+  1938		PINCTRL_FUNC_DESC(phy1_led0),
+  1939		PINCTRL_FUNC_DESC(phy2_led0),
+  1940		PINCTRL_FUNC_DESC(phy3_led0),
+  1941		PINCTRL_FUNC_DESC(phy4_led0),
+  1942		PINCTRL_FUNC_DESC(phy1_led1),
+  1943		PINCTRL_FUNC_DESC(phy2_led1),
+  1944		PINCTRL_FUNC_DESC(phy3_led1),
+  1945		PINCTRL_FUNC_DESC(phy4_led1),
+  1946	};
+  1947	
+
 -- 
-2.45.2
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
