@@ -4,113 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17709C3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Aug 2024 18:21:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40240C3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Aug 2024 18:50:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JvbZ+8SyXPbkfWIxq8fFFxIwmoC4vttG1Fog7o3RX+I=; b=4C9pVdbpC3YseVxe6eEIStkZ4A
-	i85eeYqelLeoxGuFjzm/aP6ymuWLqje41ngSZtx1eT+R3FESTld4andy35D5BHTppikhW46q0Zs8E
-	5zdyX3VUGrAPz28D1Zi4kQbDIxHzVoUOhV20QF3h99BP4iUCOms6bQ8Vj9ziJfF7LEvpHZClBmjQs
-	2j4zkbewesYP7EQhzG+O28Zbqr6auBc2Z3pdYywJxVObB9BvZ1IQvADc3fs8KazsfOyLT31uPGQkQ
-	w9Cj8YAEOLpLP9vIUKYg9h4ETFVgP6RqKWROPAvsHg3gkbQbo/kBG8tHqoKYJSy0WdSXbIvmSkqwR
-	vLjTIW0A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+q3yH2GVKTI88q3BAmiWkMTGDbrf/3EozEWfMZeP1ec=; b=Tr0UH34RgkxoLTGhu7KPxoTMKI
+	oAnBlC2YJq/T8aeori6UvcSqf/6vJUDBsLf+20GXEjny9LfnPDDxyUVKb+b8T760R8BdIMVXDBnKn
+	sH1NpVRIvGHfWxx2sSnLbQPdyYvhI48WK31KPHTuhj8ei+ImTl4FsAaRVRD539XHwJhD3zMdaPlQz
+	FQqRy+QS1r8T3jmos5Qu2Do56Cg8A6/Mea3as7rouk0IyoweExKl0/gw8f7b+2JA1V+Ib8Qro0ycs
+	YmWk+WnZFMkb12ScHsX2UyF1W4d0lv+DEwNVxvdBX4OyZuwA/G2uyol2QCfAHLXgfXzy3jzXLCleb
+	2ZCM6dOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdDBn-0000000Fwdx-3HTQ;
-	Sun, 11 Aug 2024 18:21:11 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1sdDeT-0000000G124-2TqC;
+	Sun, 11 Aug 2024 18:50:49 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdD8F-0000000FvUG-2our
-	for linux-mediatek@lists.infradead.org;
-	Sun, 11 Aug 2024 18:17:33 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-5b391c8abd7so4229072a12.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 11 Aug 2024 11:17:31 -0700 (PDT)
+	id 1sdDdr-0000000G0v4-3XFF;
+	Sun, 11 Aug 2024 18:50:13 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-429c4a4c6a8so14664315e9.0;
+        Sun, 11 Aug 2024 11:50:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1723400250; x=1724005050; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=JvbZ+8SyXPbkfWIxq8fFFxIwmoC4vttG1Fog7o3RX+I=;
-        b=OE95aN6F4Xm3ASrG0yvyg5st1EuiCuA1B4x98ybfaJp2AA9tzTIaxBFu0/LCvHFd49
-         fmwifFHC7jWl2LxbsWXLH2yfR4/ai3PSNR9U+lyCMPHeHiyZngX8id/Qpgt/XJJw+99e
-         6h3lBmY6X597ixhLUCB7XWawNBHb2VrGgSlzfybxe3kanH3pYdziI95wpWECx9SZ4P0F
-         82OJydqj/tf7603YmPncxHObyb/IQN85DkCbKNcSv65a9yv31dSlYvhWbmncl6/MFqxj
-         A+e486seZO1Ajvugce3ekD/1mUIlrRxoPdlo+CHgu645vKXqA+EhNfiCsY7UvLlxqg79
-         TCRQ==
+        d=gmail.com; s=20230601; t=1723402209; x=1724007009; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=+q3yH2GVKTI88q3BAmiWkMTGDbrf/3EozEWfMZeP1ec=;
+        b=F0p+nt7xo7ay/DmGzZKg4nNDWZvIGCSVx86SrQof/kIETfHBgPkSmXwLL3CwcVEOR5
+         Xzv1lmCT+e63xp/D56LbfX+o6IUlDUtfZsKLyUK0/SKFA4QWo70WqUcxOBufgOkEiJ1B
+         js1cu7Ejmu3ezpXDEWxcu30IB3ZexBrbbxVIKi1qr4e49jjdWx12bWVgde8Nlmys8Ps9
+         g7QIn/IlVfkJ3STaaVSlnd/D4chZ/SGbcr4oG1Lu0AbrpopY7vQPOXu3SGGFY9wZ1mMH
+         MOE16Bp145M+rsdA5kbuQw4rC+ewgEObRobZQ9Jenc2zabgW8YI2oE4CZw7IIH/HlxXv
+         xzdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723400250; x=1724005050;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=JvbZ+8SyXPbkfWIxq8fFFxIwmoC4vttG1Fog7o3RX+I=;
-        b=jt4L38s13Wh2iYqwUsIOOyRQGQhZc7QoyEuQEHxB6Tp4IeiVn2Sb7MQGtFslBsKPAx
-         hmF3GPboCopXMfKZpt2tfJHAFIeRo16+5uZeyv8sEDNgmCfPPe2t/1juFxqClgcQdZnl
-         bG5U2P2iIMW7OWIKTtBtqBwB5UZE7fXitWBIg0IFVMWQQckPk79gNeU8pn6NtGkns4pj
-         ASzcOReLiEboTNC0TjPGNMqC8X6+k4eRjCPntxmGs+ofTEvvRHbKX8XTft/Ws82rMJHq
-         VQLWdnRqqqqMgBwhsG8nR6x1rXciDNrIgJFtku/rl7WC//3ccpoNLusvSt8XQCU32U5o
-         NCXA==
-X-Forwarded-Encrypted: i=1; AJvYcCW7CuFDTYZpk5YgnhiEt9ZPWI2GbCFMVkW+Jpm0Lmw30DurgskgZQMaOOxh0VAf0SgE/5wkY9WsDui/XFQTsYHph1QIB+fF7SVmxoLJiChr/4f4
-X-Gm-Message-State: AOJu0YyVvxVehONsPOFnJtVf/u/reoBd6atYiJrWHD26CuoKGn6s/C3t
-	vGeN4uAu/+KqkPxw9Ib/mB1hFFSWq4JGjLtxcZd0Qi4GoZDRhaRfFU6A/9WaOXs=
-X-Google-Smtp-Source: AGHT+IF845o0XSP5n/BwrlmriZw7Zb6P6jQ3BpfatLkLOENLMyaMOLi7UlDJBP7b5+N/eNUzZ5p81w==
-X-Received: by 2002:a05:6402:458f:b0:5a1:c40a:3a81 with SMTP id 4fb4d7f45d1cf-5bd0a6603a2mr3481173a12.35.1723400249713;
-        Sun, 11 Aug 2024 11:17:29 -0700 (PDT)
-Received: from [127.0.1.1] ([178.197.219.137])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5bd1a6032c1sm1610593a12.92.2024.08.11.11.17.27
+        d=1e100.net; s=20230601; t=1723402209; x=1724007009;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=+q3yH2GVKTI88q3BAmiWkMTGDbrf/3EozEWfMZeP1ec=;
+        b=cskjW1Wwi9VhFSnrWSqF1ppvFbBHxbiZs4ON6RiNpgAxDv2yjpHw8QJPQD0o/jG/b2
+         MJLrPI1xgZpKE7OJGFfMCdDAoQbnhkMd7FtL/0VKZ1xnnRo8eqCKiKeiSm/A9KYskEOj
+         a0J9xHsjkJ89Uqf9x5HmqrExb2zBGEUZ5kraNePyzTwSWfS8VeCkXDBw5vIlx1C/kBIx
+         osTywih+yxaBI2joPDq6lAb6DqJpM3EKqyffSBs1lUmMCIXd1HeGdPFl1ZNJUQFTlOjf
+         KU5QDROOZlSDgOOCEByACuvoK92NgsqJO0yJCJ5qLnJV37L9mPUkmoaB90gVBZN4wiUv
+         pxFQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUGDJmeyvAgZiEEh0+6Ppy4KclOSlcPy3F6NyN9TxZFl6gE0mI3vQ6DOW6WVljoN6mw72jXnmWsyT2y7sVI98lT03NVHFNmJV3rwXp5bFp6WEI3SLm6Qf6X0OBOnZxBRAg13niQF7P3UVqwlb6laGmccuRWdiB7mi4=
+X-Gm-Message-State: AOJu0Yy0InAw2J6TuzSryqLfT2jTsiRkdkuVpTepMtcB4w0Sq1MUbGvg
+	KAXANtjE7tkjzKIIBM2KEHomUuEy3m6FBUy8k3Nw4UOf8AZ8K+bu
+X-Google-Smtp-Source: AGHT+IH9FjXsU3WtmkAc/rzXtJFMjqHYnqwh8bqjz1y9HWu7myVmeb6vI9Hl9TlvZKwTXMnYMroIbQ==
+X-Received: by 2002:a5d:60c5:0:b0:360:7c4b:58c3 with SMTP id ffacd0b85a97d-36d603555f9mr5650727f8f.54.1723402208958;
+        Sun, 11 Aug 2024 11:50:08 -0700 (PDT)
+Received: from yifee.lan ([176.230.105.233])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36e4e51ea8dsm5539929f8f.87.2024.08.11.11.50.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 11 Aug 2024 11:17:29 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Sun, 11 Aug 2024 20:17:09 +0200
-Subject: [PATCH 6/6] ASoC: dt-bindings: serial-midi: reference
- serial-peripheral-props.yaml
+        Sun, 11 Aug 2024 11:50:08 -0700 (PDT)
+From: Elad Yifee <eladwf@gmail.com>
+To: 
+Cc: eladwf@gmail.com,
+	daniel@makrotopia.org,
+	Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chen Lin <chen45464546@163.com>,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net] net: ethernet: mtk_eth_soc: fix memory leak in LRO rings release
+Date: Sun, 11 Aug 2024 21:49:45 +0300
+Message-ID: <20240811184949.2799-1-eladwf@gmail.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240811-dt-bindings-serial-peripheral-props-v1-6-1dba258b7492@linaro.org>
-References: <20240811-dt-bindings-serial-peripheral-props-v1-0-1dba258b7492@linaro.org>
-In-Reply-To: <20240811-dt-bindings-serial-peripheral-props-v1-0-1dba258b7492@linaro.org>
-To: Rob Herring <robh@kernel.org>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Jiri Slaby <jirislaby@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Marcel Holtmann <marcel@holtmann.org>, 
- Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Linus Walleij <linus.walleij@linaro.org>, Johan Hovold <johan@kernel.org>, 
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Daniel Kaehn <kaehndan@gmail.com>
-Cc: linux-serial@vger.kernel.org, linux-kernel@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-bluetooth@vger.kernel.org, 
- netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-sound@vger.kernel.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-X-Mailer: b4 0.14.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1136;
- i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=i+lTvqxiMRXFw4pW4fXIUgAA4bXjhigtS13EAIn2h9I=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmuQArOhpNatW52wzJpXmws0fDjOokzOoUe8LaC
- lsqDe/iqmyJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZrkAKwAKCRDBN2bmhouD
- 10kpD/9SOhRnOR0/feUFtJ3/1bim82Fw4+7IumOZPA7eiWKJANvWp2lMdImnWInzmSwBhyQreJX
- CcZOcbd29+X1YgRQFNNxf6PkQ444aPBNpCmUggJxXS1hYJZF6HWHMIQtlr3FelO4SHIF4QJdMEh
- exRB43qX03biWL0S+zQcNW9/WOmyfmOqJkzjrW3yohC2VGvgqpMw98+8+wpX4EIE34vvu3Hk9ta
- Dgh9Ho9WU79eqWzdn7C8aawEviq3Hbn7o7SRJX43kVaAy0KHVYOLTrWQQrVd22AVwBxm2JFtEB0
- 752kvhWQRzIlOL5PEvcbg0sxnIMtixrhBPw/JZfOrnzdSJ3R5BCn1D5p1GCTPzCjBY+xJBFUDjQ
- SaTdfn+xLdc6HYz1XPQgRyypy5RTUxaqAYe9Nd5dGGgKmm1ihWw5W4W8o/C7Ko3cTAR/GJsBxOI
- PDixnjajQVDH9z6sgoDoifPyYwrLxfvWMhzWjZATVFw7x3f03Z6SIjKq/+6ScEuYaVp6qfMbKpb
- Rgo0ayBhAXShHODYAWm3U8uXrSTWMY+b1EaCNxbxB/ZSk1pmOkbcxl50h7/CfqDMq8Mrv4xMobm
- t3YbsVbWF6YCTxKpBDShzvOXWpp5ULhSQ/Y2dLnrqsQStlcfK/ZVJaPQyinHcyCcJG0LUhlfuxN
- b7/go1JyGYOp9xA==
-X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
- fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240811_111731_756798_107B3FD3 
-X-CRM114-Status: GOOD (  11.60  )
+X-CRM114-CacheID: sfid-20240811_115011_905301_BB9F5526 
+X-CRM114-Status: GOOD (  10.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,36 +103,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reference common serial properties schema (for children of UART
-controllers) to bring common definition of "current-speed" and
-"max-speed" properties.
+For LRO we allocate more than one page, yet 'skb_free_frag' is used
+to free the buffer, which only frees a single page.
+Fix it by using 'free_pages' instead.
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
----
-
-This patch should probably go via Rob's Devicetree tree.  It depends on
-the serial patch adding serial-peripheral-props.yaml.
----
- Documentation/devicetree/bindings/sound/serial-midi.yaml | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/sound/serial-midi.yaml b/Documentation/devicetree/bindings/sound/serial-midi.yaml
-index f6a807329a5a..3b2f6dd5bffa 100644
---- a/Documentation/devicetree/bindings/sound/serial-midi.yaml
-+++ b/Documentation/devicetree/bindings/sound/serial-midi.yaml
-@@ -22,6 +22,9 @@ description:
-   configure the clocks of the parent serial device so that a requested baud of 38.4 kBaud
-   results in the standard MIDI baud rate, and set the 'current-speed' property to 38400 (default)
+Fixes: 2f2c0d2919a1 ("net: ethernet: mtk_eth_soc: fix misuse of mem alloc interface netdev[napi]_alloc_frag")
  
-+allOf:
-+  - $ref: /schemas/serial/serial-peripheral-props.yaml#
-+
- properties:
-   compatible:
-     const: serial-midi
+Signed-off-by: Elad Yifee <eladwf@gmail.com>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 16ca427cf4c3..bac6d0c48d21 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -1762,8 +1762,10 @@ static void mtk_rx_put_buff(struct mtk_rx_ring *ring, void *data, bool napi)
+ 	if (ring->page_pool)
+ 		page_pool_put_full_page(ring->page_pool,
+ 					virt_to_head_page(data), napi);
+-	else
++	else if (ring->frag_size <= PAGE_SIZE)
+ 		skb_free_frag(data);
++	else
++		free_pages(data, get_order(mtk_max_frag_size(ring->frag_size)));
+ }
+ 
+ static int mtk_xdp_frame_map(struct mtk_eth *eth, struct net_device *dev,
+@@ -2132,7 +2134,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 				ring->buf_size, DMA_FROM_DEVICE);
+ 			if (unlikely(dma_mapping_error(eth->dma_dev,
+ 						       dma_addr))) {
+-				skb_free_frag(new_data);
++				mtk_rx_put_buff(ring, new_data, true);
+ 				netdev->stats.rx_dropped++;
+ 				goto release_desc;
+ 			}
+@@ -2146,7 +2148,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 			skb = build_skb(data, ring->frag_size);
+ 			if (unlikely(!skb)) {
+ 				netdev->stats.rx_dropped++;
+-				skb_free_frag(data);
++				mtk_rx_put_buff(ring, data, true);
+ 				goto skip_rx;
+ 			}
+ 
+@@ -2691,7 +2693,7 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
+ 				ring->buf_size, DMA_FROM_DEVICE);
+ 			if (unlikely(dma_mapping_error(eth->dma_dev,
+ 						       dma_addr))) {
+-				skb_free_frag(data);
++				mtk_rx_put_buff(ring, data, false);
+ 				return -ENOMEM;
+ 			}
+ 		}
 -- 
-2.43.0
+2.45.2
 
 
