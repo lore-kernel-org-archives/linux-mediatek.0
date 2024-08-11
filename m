@@ -4,74 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 979CCC3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Aug 2024 18:17:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D222CC52D7B
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Aug 2024 18:18:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=YwPrNBUvnU4mbdftoy187GtvdUrZHe6TFCVGlwNgbXc=; b=HDrp/F/SsBmjOi
-	lZphz92F4k5xIjowduqIv7doFkQ09xcwIdIxREXhG9F8sKIl94mVisFKUk+OrMPbC7OtM8LxQLlCb
-	m0twh0lr7+WKn4ids6pMhTLiQ9i+8bV8HFYTa70Z065z8j9Xr1wsHsjg0pfHFDdDwirU+Xph374/i
-	nV+h8LjvFNibVTlnG1JANuNXrCocs4e+l4ME8xwsze3BESvf6ZvDn26c1oeUxmjhsgfce8CqHbnvq
-	/oHs1Trn/euQwUTKiMpOusSQBAeKkej2+cs1V5yzSUOR2Hb1b1IT97a2zWRqM3cc7IO9bLOl8IDOr
-	eAoT0pXh7jI3cxGqaurw==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IeggRLrefKS4NRHp55eXF+21fQVTmgaEKucAb/25uG8=; b=rJLNpxEvEV898VBp6spvCtBAnu
+	3jdVBYZdzIYi5FCNfMTRszct7VLVZ362jHESot1AwpWWyUSbsDQPVAgqv2idkmdnNPUMLdNM2erKv
+	P+5md9cHbzJ7iOI46WIx9w1vf79hE2hOEKwSCk1JyQaqJEgWOBhCgGwL5N3/iYL9AFaSjvl+9SBJN
+	d9UDT8KSjoJ0ELIlqF15GhOlCsUrlZ1jrx/cNrGtYbDdfCC+qIz6TNdiWyHzMrQ7Ph5xZL3f4ja0M
+	LfEZ+/S/uToAK6i3VM6DxlrD67b2NGZZWjouutaSBOafkGSl4NMz49Np6n1XtJBNjWDu64xb51Dh+
+	fyWL9khw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdD87-0000000FvQp-3mwI;
-	Sun, 11 Aug 2024 18:17:24 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+	id 1sdD8j-0000000Fve2-257N;
+	Sun, 11 Aug 2024 18:18:01 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdD85-0000000FvOc-06eW
+	id 1sdD86-0000000FvOq-1khH
 	for linux-mediatek@lists.infradead.org;
-	Sun, 11 Aug 2024 18:17:22 +0000
-Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-2f149845d81so41498041fa.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 11 Aug 2024 11:17:20 -0700 (PDT)
+	Sun, 11 Aug 2024 18:17:24 +0000
+Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-52f024f468bso4219971e87.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 11 Aug 2024 11:17:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1723400239; x=1724005039; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=YwPrNBUvnU4mbdftoy187GtvdUrZHe6TFCVGlwNgbXc=;
-        b=fznkvShcr9r68OlXsrOGdqXpPIvxgHy6flNUO2b8By19lo/VD5gFAChJKTpOIeHqhh
-         icDSy+gvLrLBrBlpLbYCNFgThVURQsJAjQDFFwYXxbj08zb9IYK5bKoZRhb/Y92C6JyV
-         CpcILiOF8AFGVRTY6H6Gai+aTBDJB+cEo0cnYjGCpJff3Gv0iMF8j3pwQBk9oyhAxvp8
-         q3+pTaSF0H4qjsLok5spx6hzfIAGcB5Uo8PIWDc+r5qZ1w6NCD62zrQ18aFnqkalJRm8
-         I/FkMiRTKDuaEWK4nvWwZFjZO+wU9v6BEsZwKZH0m6lIfpHKkYP6so+srNP2In4qcxZh
-         LXyw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723400239; x=1724005039;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=linaro.org; s=google; t=1723400240; x=1724005040; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=YwPrNBUvnU4mbdftoy187GtvdUrZHe6TFCVGlwNgbXc=;
-        b=e+H7wKLHdUzG3XbjLaPN3sp5aeOCp9s2G8dgdmpwGfbW+3puTXAzbExLjcoBR+RCR0
-         aFcSpyopiGZ+Iy3bTMgEjrqb9XK5Ln0ZVa9vQywDK21OMMUtBlnD17hzMJ7nS7c2ztgI
-         x4hIwRltNHmqKkCBJlUfqKvbtIzVM22FRtPwn9O80obgWmX3XCLDU6/UqkQGa3EljomP
-         e9iL3MP/v192RjPIofHFXLGgu0+0+YF+8XeDW2d9V/A8WljHS96CKuhtAetn4OuZnqJF
-         kl6Duf2Sl1lnIYHG09nBvgBZYur+Ii26Ldz+d1gQprs39z/oDNsNtaGZl09RuTxO4fOF
-         tQyg==
-X-Forwarded-Encrypted: i=1; AJvYcCVMWKTHgvaJ/6kA9ZFn5PTIYtIlUjvyZoFpFjomgGcvs0H1QcGwSu5H1URol9JAyfepGJcjUp8Z8ucxBr1m9TQDjQ5qVQKTF0RckJQkCH5tXuoA
-X-Gm-Message-State: AOJu0YyIwTrBZEgtXnz9bWUng57uzRVi5UrGWCWYa3KeImob6PD0scfN
-	V9y6bD9okQw3V9hHkOg9VvaetfIEXi7jD59y+i+UXEHI31Vg3tF2mLZowrZG+/0=
-X-Google-Smtp-Source: AGHT+IGL8dYrPpIhxDmqwnFdq5fwLCKAJWl59JNXZWtvR62sQOT8VXO5t1ROG/0yftq11lxeIELW0Q==
-X-Received: by 2002:a2e:88c2:0:b0:2f1:5c89:c875 with SMTP id 38308e7fff4ca-2f1a6c687d4mr43015351fa.26.1723400238328;
-        Sun, 11 Aug 2024 11:17:18 -0700 (PDT)
+        bh=IeggRLrefKS4NRHp55eXF+21fQVTmgaEKucAb/25uG8=;
+        b=ziHTBI2xuyZdq07RI4bMFKJ2Ugcx9g9H+kBmulHRrY7svDJJJ0AY0yZEt0qY8i2JGp
+         G0WXLEsZySIvNkZ2C9mpxg5QgyiyJY+eJTQ0e0+s8UC8wHNd804zre/tvmB3Bq8T2G0h
+         bEwsg6m5TQWGcDorzmGttFWmIAf2bU07cS73kghWPg/w4tNePo7uEWQBibSF6et2x28B
+         B6VdOv56QNsUS10b4yaZw5LUFS4STl59zNNnCnDkjuQAbCbjml5c4vEvkQ8Nn7btwNnu
+         aU/oTDGuI/QAsA1r974rijeqkR7KFW/Nd8bLlier2tLtZ3UBsNfCHG8Sc7fk9XRrzfo5
+         iU8w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1723400240; x=1724005040;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=IeggRLrefKS4NRHp55eXF+21fQVTmgaEKucAb/25uG8=;
+        b=Wa4mzUgSS7SNaYGWxfnWEbKY10QBRfLsFiY68lKMkSm1C+xMZi2YLlME4oSZsPn0iS
+         P/5FKmb1nqt4+BE2OZWCgqSHBY6U8UhM3x/mRkZq897dbWBegpxOQKaITMrVkKQ4u7EC
+         Nt3/oZkTZ5IP0iDwAmZktiew5LFFq2matOJ/GBxxKFNEFQz4vRP39+N/44kzh+9PA0Nu
+         +jjb7CYQUys5+vxx2WJakdCR9KCdoZ3inDiaSUQIo6HSsIsxmcZNaWM+uX3zxuKQyNDp
+         7PVzeBO0S3dUAXCuVtGtZPcamiwzZtOilw3NAgBr8LZ+7WICwSLokIetpn9BfofqfKVE
+         bHvw==
+X-Forwarded-Encrypted: i=1; AJvYcCXZMQ/0nvWl8IraQP0aLaWWwgUTHmy5vZCDswAYFaVgYhpaDDc4KNknshw/aADcBq1ja5vm3TmjGNfMZ2ijY2lH2tTOR01A09gXm1k1a/cTdXao
+X-Gm-Message-State: AOJu0YzTslCr7rSDrtc6J3Iuxi5fIm5jGHgbs+YNJPgZLrs19DrXs6U+
+	roO2o4s+Z1K9DbHwnQC2gXfstPR60b0bt3FBSuhNURWPr9BYkWNUl/WCPySCXU7RXFjS99K8+UT
+	e
+X-Google-Smtp-Source: AGHT+IGo96lPHtsUXjiRmEnFORtSb+OG6u30XA7cbQkXT2T8/BFuRGLG4MYUDVs7QheieToXGlwKTg==
+X-Received: by 2002:a05:6512:110d:b0:52e:f2a6:8e1a with SMTP id 2adb3069b0e04-530ee9d0b5bmr5672768e87.29.1723400240286;
+        Sun, 11 Aug 2024 11:17:20 -0700 (PDT)
 Received: from [127.0.1.1] ([178.197.219.137])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5bd1a6032c1sm1610593a12.92.2024.08.11.11.17.16
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5bd1a6032c1sm1610593a12.92.2024.08.11.11.17.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 11 Aug 2024 11:17:17 -0700 (PDT)
+        Sun, 11 Aug 2024 11:17:19 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 0/6] dt-bindings: add serial-peripheral-props.yaml
-Date: Sun, 11 Aug 2024 20:17:03 +0200
-Message-Id: <20240811-dt-bindings-serial-peripheral-props-v1-0-1dba258b7492@linaro.org>
+Date: Sun, 11 Aug 2024 20:17:04 +0200
+Subject: [PATCH 1/6] dt-bindings: serial: add missing
+ "additionalProperties" on child nodes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAB8AuWYC/x2NQQqAMAwEvyI5G2iLYPUr4kFt1IDUkogI4t+tn
- nbnMLs3KAmTQlvcIHSy8h4z2LKAaR3iQsghMzjjKuOtxXDgyDFwXBQ/d9gw5UgryVdlT4qVbcj
- P3pOrDeSlJDTz9b90/fO8b4n4MnUAAAA=
+Message-Id: <20240811-dt-bindings-serial-peripheral-props-v1-1-1dba258b7492@linaro.org>
+References: <20240811-dt-bindings-serial-peripheral-props-v1-0-1dba258b7492@linaro.org>
+In-Reply-To: <20240811-dt-bindings-serial-peripheral-props-v1-0-1dba258b7492@linaro.org>
 To: Rob Herring <robh@kernel.org>, 
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
  Jiri Slaby <jirislaby@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -90,26 +92,26 @@ Cc: linux-serial@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-sound@vger.kernel.org, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.14.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2242;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1057;
  i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=QEqX6jTyd8mtDAP045rVWWxtAM7yNW08id9PkOM91fs=;
- b=kA0DAAoBwTdm5oaLg9cByyZiAGa5ACKhowuFQWEQGWLBZ65ihEcm7sWDm5sILJ0QDnLhNFcNn
- okCMwQAAQoAHRYhBN3SYig9ERsjO264qME3ZuaGi4PXBQJmuQAiAAoJEME3ZuaGi4PXOQQP/Rf3
- 0FQ0xAoCgS7Rg5Leu6TCRvJx00s5hvLY/OatLg1j6RJ09EPW4CjZCHUkNAsii1fmw6D36YOIxGn
- yANtN0FjOqIRKi86b/M/Ew+30nEv9+heFkhedxy5+qeKfgB37PVf4e1xJ+YzAjp+GEcCioB4akh
- qF0Q71VKHz8pCuK+0r18ceZ4ltmTvUWDlRPz/U0gIsv/ey/X+AeDwLUJH+/3OurVOzt/l759wH+
- k9vny+3L2RAnKnYCJ78J9h9cZHns7SCJzjLYXahWfyKIHWAhkKq9n1dw4YcBuTBIvMRy5zDRFNx
- YrhPRKGeCtFT3dwngVMuRLm7pzBWJ49NPLnT3oh3olQ+xyW6lx8fSyMRPBbM11cam2MlRbLfQe2
- Ckj4G2tML2zwirNyyxMFh/runDKcakRCwTmx/+1ixutFkxKWHisMKz8hYuR6Tfi/g3PBvYzxhqo
- //11FD/jMibRLb2pdBuj8ZnU4En6gKb4zn3UkXR0d0+dozzXGe6MUwGRrepM2nMAJCsc/ss4G1U
- 9nzaAN5EC7bfkVBiTUswgxlr6FLmQCfdZfRP7spBixaxXYXmTc3CHC3oajHfeaTzBIEJhKG4hbH
- QdW7lvHeGcMv43NdDPCaitsgL9WiDAevkhH90YumKd9T+i528h/dtRnT8NFyoZ5LBM2snf73M4y
- 2qY7d
+ bh=o1Pg+WYSU+1aP3K7rSMBYgVoWMnaQYMrTTQy4scWqrU=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmuQAnOXoFWzTi2CdjfGUgn4ZzAkWR4980rKV/3
+ sazBXuxtKyJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZrkAJwAKCRDBN2bmhouD
+ 17SED/4rdw923+Og8fvQ6box0oI2553Pq0Sy01E56fmyMW37SSXn72uzCc9LccCaq9xWSZsUpHa
+ fGKKaRzDCArQZlxv+37ArKnHQZudrzWpvF5hU+PvVS0BwhaFdmcnay3X8u4D7HjbtY1zPl74MYE
+ 1vRbFIUvuomlKIgnkGtyqnS/qxhaKBSQhoo7QSy/c+1c7fYcBV1TWDfcN62O0mLPjfxxV2N3wMS
+ IQsPCaUDtnDA4QxaORdzjUMrOVv0EsSdrlpn3cQBzG8GMyXM1bl9h5B5RU2lEa7dbiB1CdzuP5e
+ Db1y2CN4fVQ77UFUoNz+YIfkmAKYkzLm6wcYRz9kxPiWu/ES6e0LhDOJl0EOQsixs4Yb3SF5oou
+ MMemYJSH84VgCdaiQZNh/HpJq7awc5PDpD9NAxYNMvFE/UqWL70OGKBNNhuNRHtCQs96M2ibMNi
+ IlmSDrBR6KXRWEnQJ8QJKXLoY0NL8wMR65VencMz1CZ5uV3N4PWs/UW0iPRJ4HTHYKn3HyJtsJb
+ uY8ebPIDItug1xo4oUts4fmciO/Q4JKhli8C6ouFJvAfD2Fzc4RmphNm1Rc7jLwhUGtNfW4dbX7
+ IVTs0ibDN/ne8F1QHDvrBcwq/2d+TGFLdn6+20WnjvTwRKkHqlDRnIQrtUXpaRkrPQLKlA8kXpn
+ meevMgUeFiHveug==
 X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240811_111721_273081_EA48058C 
-X-CRM114-Status: GOOD (  10.45  )
+X-CRM114-CacheID: sfid-20240811_111722_496915_544C4E21 
+X-CRM114-Status: GOOD (  11.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,55 +126,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+All nodes need an explicit additionalProperties or unevaluatedProperties
+unless a $ref has one that's false.  Add missing additionalProperties
+for serial-attached devices.
 
-Add serial-peripheral-props.yaml for devices being connected over
-serial/UART.
-
-Maybe the schema should be rather called serial-common-props.yaml? Or
-serial-device-common-props.yaml?
-
-Dependencies/merging - Devicetree tree?
-=======================================
-Entire patchset should be taken via one tree, preferably Rob's
-Devicetree because of context/hunk dependencies and dependency on
-introduced serial-peripheral-props.yaml file.
-
-Best regards,
-Krzysztof
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 ---
-Krzysztof Kozlowski (6):
-      dt-bindings: serial: add missing "additionalProperties" on child nodes
-      dt-bindings: serial: add common properties schema for UART children
-      dt-bindings: bluetooth: move Bluetooth bindings to dedicated directory
-      dt-bindings: gnss: reference serial-peripheral-props.yaml
-      dt-bindings: bluetooth: reference serial-peripheral-props.yaml
-      ASoC: dt-bindings: serial-midi: reference serial-peripheral-props.yaml
 
- .../devicetree/bindings/gnss/brcm,bcm4751.yaml     |  1 +
- .../devicetree/bindings/gnss/gnss-common.yaml      |  5 ---
- .../devicetree/bindings/gnss/mediatek.yaml         |  1 +
- .../devicetree/bindings/gnss/sirfstar.yaml         |  1 +
- .../devicetree/bindings/gnss/u-blox,neo-6m.yaml    |  1 +
- .../brcm,bluetooth.yaml}                           | 33 +++++++++--------
- .../marvell,88w8897.yaml}                          |  6 ++--
- .../mediatek,bluetooth.txt}                        |  0
- .../nokia,h4p-bluetooth.txt}                       |  0
- .../bindings/net/bluetooth/qualcomm-bluetooth.yaml |  4 +--
- .../realtek,bluetooth.yaml}                        |  5 ++-
- .../bindings/net/{ => bluetooth}/ti,bluetooth.yaml |  5 ++-
- .../bindings/serial/serial-peripheral-props.yaml   | 41 ++++++++++++++++++++++
- .../devicetree/bindings/serial/serial.yaml         | 24 ++-----------
- .../devicetree/bindings/sound/serial-midi.yaml     |  3 ++
- MAINTAINERS                                        |  2 +-
- 16 files changed, 80 insertions(+), 52 deletions(-)
+This patch should probably go via Rob's Devicetree tree.
+The context of the next patch depends on this one.
 ---
-base-commit: 8626c4826dd708e05ba457c44493d575d75d375c
-change-id: 20240811-dt-bindings-serial-peripheral-props-419e8f88e270
+ Documentation/devicetree/bindings/serial/serial.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-Best regards,
+diff --git a/Documentation/devicetree/bindings/serial/serial.yaml b/Documentation/devicetree/bindings/serial/serial.yaml
+index ffc9198ae214..40e05dd37826 100644
+--- a/Documentation/devicetree/bindings/serial/serial.yaml
++++ b/Documentation/devicetree/bindings/serial/serial.yaml
+@@ -92,6 +92,7 @@ patternProperties:
+     if:
+       type: object
+     then:
++      additionalProperties: true
+       description:
+         Serial attached devices shall be a child node of the host UART device
+         the slave device is attached to. It is expected that the attached
+
 -- 
-Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+2.43.0
 
 
