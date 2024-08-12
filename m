@@ -4,79 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8665C3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Aug 2024 22:00:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAEF9C3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Aug 2024 01:23:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GxmeitX7k+pt7LKwKyE06pRMsoPEIMJt4SA3Awi0vTM=; b=hCZWStax0DBSMmXv3LcrFnvGIk
-	bP0QR26HslJlCP4vYKivyDrd3Y1YeSoOIhmqnWfYjzjSf1g/ey01vuq/8/NzbRbpTIzIcbuxq+v1o
-	wgtm86nmsF54WmS53Ym7MxWNMX172GWuNX5JnKlRWXHxJbBT9EvXUXkq2RbCiGYYTWF/B1GSVb0ku
-	JYzV1lTz6wt7NhTNACY4rm0UDGNB6icu7X5wDcybPyDrL8f+FiNuMpj2nOmiNaCppF1rDOSuXrQ9q
-	RpR02GUUTM28zkQe8bAOzcJVjABlPuSkuW8gvROGUTbsq8qQI0nR1k9WGwrD0zfcZw+hjg9nATjBw
-	Y7wrDdHw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=A5fSNqHi9NEqILrnhCWCR3tGDVIu+LDzvUUnKDBNWDM=; b=XgSFth9BTZutViSub8YjNz9nwy
+	3cDA/vhGLKoW2177DBYNgH6TBKl5iMl3VRb2iDacvMWYMc2FNddXtLX8aHTMcPye1gIWSACt/beLN
+	gg4K7AUqYY9+VSb5WR1y8SMc/D6wmEGQak0PbL//621lf1A25wmn021AUZnH1HP1PPYg9liSWlygL
+	ts/J1P0o0U721TtNW9IVVGb3Dwehttk1VBmll3OSmAN57xKExoxj528qeAivL9jYSIISPZSvDntnh
+	zd4DdKmIlzIUDf+nRNLii84Itz63u1qsf6h/8cPRLJ3lTfVQaYyL6+UY3qTpugNtfrAHmd1r0qYuf
+	pExE33eA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdGbx-0000000GOGO-0aT5;
-	Sun, 11 Aug 2024 22:00:25 +0000
-Received: from mgamail.intel.com ([198.175.65.17])
+	id 1sdJm3-0000000GdOP-1BuI;
+	Mon, 12 Aug 2024 01:23:03 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdGbt-0000000GOFj-0Sml;
-	Sun, 11 Aug 2024 22:00:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1723413621; x=1754949621;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=5dDFPzlso+518BsD7FxakDrzbMJ7pRsaOi+q4gwwmpE=;
-  b=hU7n1VD8WHWHPM0FjHTBqbqDL7V8s5NIhVILe6+eXN1N/5P1myEwsoWl
-   aQV9MxeIQZpGzarD+CdsKT6seVD9k29ooYyqoZ0333fBp23lKLXGAoagd
-   8x6jB77fEQTGwSNQVoqza6NHdxk3J4MWRUp0Y7bS0NFPlWDIw7Chwh4+K
-   56lZmiasmMe8Egnr7SNvbFzZbMu/7bAUCZwDayVFE+1hWGgX8+0DHvjrJ
-   ULBGdz1CgLw7o6ECHyxUjiQQgHl6Lzfiw+Dxy2KVkp4FH/DDkK4RR2/FZ
-   CU77kbA6qYtEGGWdL2ImuV65Pazt2f861JuYVhcMg4QLPGBAJ5/d/ZFRq
-   w==;
-X-CSE-ConnectionGUID: nHEg4PNnSmCq0Eo25Rfxiw==
-X-CSE-MsgGUID: 0xWwb7VyRPiRXofSRB3HRg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11161"; a="21641744"
-X-IronPort-AV: E=Sophos;i="6.09,282,1716274800"; 
-   d="scan'208";a="21641744"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Aug 2024 15:00:21 -0700
-X-CSE-ConnectionGUID: iZ2rRz0tSVeF4n5itSEQOQ==
-X-CSE-MsgGUID: CwV2PbkuSD+rWCyJZAoQPQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,282,1716274800"; 
-   d="scan'208";a="58040030"
-Received: from unknown (HELO b6bf6c95bbab) ([10.239.97.151])
-  by fmviesa008.fm.intel.com with ESMTP; 11 Aug 2024 15:00:16 -0700
-Received: from kbuild by b6bf6c95bbab with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1sdGbm-000BAx-16;
-	Sun, 11 Aug 2024 22:00:14 +0000
-Date: Mon, 12 Aug 2024 05:59:27 +0800
-From: kernel test robot <lkp@intel.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>, linux-gpio@vger.kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, linus.walleij@linaro.org,
-	sean.wang@kernel.org, linux-mediatek@lists.infradead.org,
-	lorenzo.bianconi83@gmail.com, krzk+dt@kernel.org, robh@kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	upstream@airoha.com, angelogioacchino.delregno@collabora.com,
-	benjamin.larsson@genexis.eu, conor+dt@kernel.org,
-	ansuelsmth@gmail.com
-Subject: Re: [PATCH 2/2] pinctrl: airoha: Add support for EN7581 SoC
-Message-ID: <202408120527.crbqc6PI-lkp@intel.com>
-References: <c69c4a9b8e57eebdde0521731b8cd9f92ed4891b.1723392444.git.lorenzo@kernel.org>
+	id 1sdJlT-0000000GdMZ-1VSf;
+	Mon, 12 Aug 2024 01:22:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Message-ID:References:In-Reply-To:Subject:Cc:To:From:Date:MIME-Version:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=A5fSNqHi9NEqILrnhCWCR3tGDVIu+LDzvUUnKDBNWDM=; b=A/nmvgqUPcIaMxD3Uv+G6cpYcL
+	CYeo++M2AxH+lS/hD/sJ7cOqoz6eJuhrvRbSryADq/3PobzEOZsMHdm2F9/8Cx5VuC3BqfMuBpqI7
+	TaND4ABi1a1NSULAHiedVIlWVRqRWs2H79eEF41MHgFWnc8DW9s6OQh03oIatioooZbJz7iiNYMmg
+	a9oLMXgMfOUiNKWrGhEV+c+M/BAabyl/aekF4XOqEfsVEUxqWwC8+JK5yheHHK1ZiMG3FhYrAQqoP
+	IBGJ64k5UYMA5zCjoT87uUlYF1jfyzkq59voKYu4Yx7NOVV/Z3Ax56exXL5h7x3Y9zUKrMYddybM7
+	lN6Atnog==;
+Received: from mail.manjaro.org ([116.203.91.91])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sdJlK-00000007RZR-48tW;
+	Mon, 12 Aug 2024 01:22:22 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <c69c4a9b8e57eebdde0521731b8cd9f92ed4891b.1723392444.git.lorenzo@kernel.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1723425725;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=A5fSNqHi9NEqILrnhCWCR3tGDVIu+LDzvUUnKDBNWDM=;
+	b=UvNEosSziXo3OIwb8LAWlDOA7gMZRS0gU8LGeBcoAttZl8r13bUVa0J0DAz810IsP4hqEK
+	ihDRwja9yYXx4BqV2Ol0YvRngaUi+hKQB4bEbHrDCxi3c+mBPStcfxHSTYB658B1OJIKEb
+	tqYlNfa0ZrU7b+g97LC1AXT8UjobuoFh1K/wb4OmZ/hhcfCBZGWF6eX9rSpe6H7D0qOCDy
+	YiMlyOGClyet/g00T4Gv/eUub8YLeYVuo3KicN+GEKgux7eYUTjwPO7eD6STdcLnpODw8C
+	v+o1nX5JGpcGzfQrvnBSTyXWB9mQP5uVRCPZcBlU4AacFq9k8m+cJtnHwIBr2A==
+Date: Mon, 12 Aug 2024 03:22:05 +0200
+From: Dragan Simic <dsimic@manjaro.org>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria
+ <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Icenowy Zheng
+ <uwu@icenowy.me>, Mark Brown <broonie@kernel.org>, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, =?UTF-8?Q?N=C3=ADcolas_F=2E_R=2E_A=2E_Pra?=
+ =?UTF-8?Q?do?= <nfraprado@collabora.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Hsin-Te Yuan
+ <yuanhsinte@chromium.org>
+Subject: Re: [PATCH v2] thermal/of: support thermal zones w/o trips subnode
+In-Reply-To: <20240809070822.2835371-1-wenst@chromium.org>
+References: <20240809070822.2835371-1-wenst@chromium.org>
+Message-ID: <b00273d65dfc4b48cca474784184c62b@manjaro.org>
+X-Sender: dsimic@manjaro.org
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=dsimic@manjaro.org smtp.mailfrom=dsimic@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240811_150021_250419_E18FB2B8 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20240812_022220_812620_924C5E89 
+X-CRM114-Status: GOOD (  24.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,250 +92,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Lorenzo,
+Hello Chen-Yu,
 
-kernel test robot noticed the following build errors:
+Thanks for the patch.  Please see one comment below.
 
-[auto build test ERROR on linusw-pinctrl/devel]
-[also build test ERROR on linusw-pinctrl/for-next linus/master v6.11-rc2 next-20240809]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+On 2024-08-09 09:08, Chen-Yu Tsai wrote:
+> From: Icenowy Zheng <uwu@icenowy.me>
+> 
+> Although the current device tree binding of thermal zones require the
+> trips subnode, the binding in kernel v5.15 does not require it, and 
+> many
+> device trees shipped with the kernel, for example,
+> allwinner/sun50i-a64.dtsi and mediatek/mt8183-kukui.dtsi in ARM64, 
+> still
+> comply to the old binding and contain no trips subnode.
+> 
+> Allow the code to successfully register thermal zones w/o trips subnode
+> for DT binding compatibility now.
+> 
+> Furtherly, the inconsistency between DTs and bindings should be 
+> resolved
+> by either adding empty trips subnode or dropping the trips subnode
+> requirement.
+> 
+> Fixes: d0c75fa2c17f ("thermal/of: Initialize trip points separately")
+> Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
+> Reviewed-by: Mark Brown <broonie@kernel.org>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+> Resurrecting this patch specifically for MediaTek MT8183 Kukui devices.
+> 
+> Changes since v1:
+> - set *ntrips at beginning of thermal_of_trips_init()
+> - Keep goto out_of_node_put in of_get_child_count(trips) == 0 branch
+> - Check return value of thermal_of_trips_init(), if it is -ENXIO, print
+>   warning and clear |trips| pointer
+> - Drop |mask| change, as the variable was removed
+> 
+> I kept Mark's reviewed-by since the changes are more stylish than
+> functional.
+> ---
+>  drivers/thermal/thermal_of.c | 19 ++++++++++++-------
+>  1 file changed, 12 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/thermal/thermal_of.c 
+> b/drivers/thermal/thermal_of.c
+> index aa34b6e82e26..f237e74c92fc 100644
+> --- a/drivers/thermal/thermal_of.c
+> +++ b/drivers/thermal/thermal_of.c
+> @@ -128,16 +128,17 @@ static struct thermal_trip
+> *thermal_of_trips_init(struct device_node *np, int *n
+>  	struct device_node *trips, *trip;
+>  	int ret, count;
+> 
+> +	*ntrips = 0;
+>  	trips = of_get_child_by_name(np, "trips");
+>  	if (!trips) {
+> -		pr_err("Failed to find 'trips' node\n");
+> -		return ERR_PTR(-EINVAL);
+> +		pr_debug("Failed to find 'trips' node\n");
+> +		return ERR_PTR(-ENXIO);
+>  	}
+> 
+>  	count = of_get_child_count(trips);
+>  	if (!count) {
+> -		pr_err("No trip point defined\n");
+> -		ret = -EINVAL;
+> +		pr_debug("No trip point defined\n");
+> +		ret = -ENXIO;
+>  		goto out_of_node_put;
+>  	}
+> 
+> @@ -162,7 +163,6 @@ static struct thermal_trip
+> *thermal_of_trips_init(struct device_node *np, int *n
+> 
+>  out_kfree:
+>  	kfree(tt);
+> -	*ntrips = 0;
+>  out_of_node_put:
+>  	of_node_put(trips);
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Lorenzo-Bianconi/dt-bindings-pinctrl-airoha-Add-EN7581-pinctrl-controller/20240812-001436
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git devel
-patch link:    https://lore.kernel.org/r/c69c4a9b8e57eebdde0521731b8cd9f92ed4891b.1723392444.git.lorenzo%40kernel.org
-patch subject: [PATCH 2/2] pinctrl: airoha: Add support for EN7581 SoC
-config: alpha-allyesconfig (https://download.01.org/0day-ci/archive/20240812/202408120527.crbqc6PI-lkp@intel.com/config)
-compiler: alpha-linux-gcc (GCC) 13.3.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240812/202408120527.crbqc6PI-lkp@intel.com/reproduce)
+It might be a bit cleaner to keep the "*ntrips = 0" assignment
+in the error handling path(s) only, with the positions of the goto
+labels adjusted a bit, and then assign -ENXIO to "ret" and jump
+to the right label when of_get_child_by_name(np, "trips") fails,
+instead of returning from there.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202408120527.crbqc6PI-lkp@intel.com/
+If it's unclear what I'm talking about, please let me know and
+I'll send back the proposed hunk.
 
-All errors (new ones prefixed by >>):
-
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-    1922 | static const struct airoha_pinctrl_func airoha_pinctrl_funcs[] = {
-         |                                                                  ^
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:1922:66: warning: missing braces around initializer [-Wmissing-braces]
-   In file included from include/linux/printk.h:574,
-                    from include/asm-generic/bug.h:22,
-                    from arch/alpha/include/asm/bug.h:23,
-                    from include/linux/bug.h:5,
-                    from include/linux/thread_info.h:13,
-                    from include/asm-generic/preempt.h:5,
-                    from ./arch/alpha/include/generated/asm/preempt.h:1,
-                    from include/linux/preempt.h:79,
-                    from include/linux/spinlock.h:56,
-                    from include/linux/irq.h:14,
-                    from include/linux/irqchip/chained_irq.h:10,
-                    from include/linux/gpio/driver.h:8,
-                    from drivers/pinctrl/mediatek/pinctrl-airoha.c:9:
-   drivers/pinctrl/mediatek/pinctrl-airoha.c: In function 'airoha_pinmux_set_mux':
->> drivers/pinctrl/mediatek/pinctrl-airoha.c:2279:21: error: 'struct function_desc' has no member named 'name'
-    2279 |                 desc->name, grp->grp.name);
-         |                     ^~
-   include/linux/dynamic_debug.h:224:29: note: in definition of macro '__dynamic_func_call_cls'
-     224 |                 func(&id, ##__VA_ARGS__);                       \
-         |                             ^~~~~~~~~~~
-   include/linux/dynamic_debug.h:250:9: note: in expansion of macro '_dynamic_func_call_cls'
-     250 |         _dynamic_func_call_cls(_DPRINTK_CLASS_DFLT, fmt, func, ##__VA_ARGS__)
-         |         ^~~~~~~~~~~~~~~~~~~~~~
-   include/linux/dynamic_debug.h:273:9: note: in expansion of macro '_dynamic_func_call'
-     273 |         _dynamic_func_call(fmt, __dynamic_dev_dbg,              \
-         |         ^~~~~~~~~~~~~~~~~~
-   include/linux/dev_printk.h:165:9: note: in expansion of macro 'dynamic_dev_dbg'
-     165 |         dynamic_dev_dbg(dev, dev_fmt(fmt), ##__VA_ARGS__)
-         |         ^~~~~~~~~~~~~~~
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:2278:9: note: in expansion of macro 'dev_dbg'
-    2278 |         dev_dbg(pctrl_dev->dev, "enable function %s group %s\n",
-         |         ^~~~~~~
-   drivers/pinctrl/mediatek/pinctrl-airoha.c: In function 'airoha_pinctrl_get_conf':
->> drivers/pinctrl/mediatek/pinctrl-airoha.c:2359:38: error: implicit declaration of function '__bf_shf' [-Werror=implicit-function-declaration]
-    2359 |         *val = (*val & reg->mask) >> __bf_shf(reg->mask);
-         |                                      ^~~~~~~~
-   drivers/pinctrl/mediatek/pinctrl-airoha.c: In function 'airoha_pinctrl_probe':
->> drivers/pinctrl/mediatek/pinctrl-airoha.c:2946:61: error: 'const struct function_desc' has no member named 'name'
-    2946 |                                                   func->desc.name,
-         |                                                             ^
->> drivers/pinctrl/mediatek/pinctrl-airoha.c:2947:61: error: 'const struct function_desc' has no member named 'group_names'
-    2947 |                                                   func->desc.group_names,
-         |                                                             ^
->> drivers/pinctrl/mediatek/pinctrl-airoha.c:2948:61: error: 'const struct function_desc' has no member named 'num_group_names'
-    2948 |                                                   func->desc.num_group_names,
-         |                                                             ^
-   In file included from include/linux/device.h:15,
-                    from include/linux/platform_device.h:13,
-                    from drivers/pinctrl/mediatek/pinctrl-airoha.c:22:
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:2952:43: error: 'const struct function_desc' has no member named 'name'
-    2952 |                                 func->desc.name);
-         |                                           ^
-   include/linux/dev_printk.h:110:37: note: in definition of macro 'dev_printk_index_wrap'
-     110 |                 _p_func(dev, fmt, ##__VA_ARGS__);                       \
-         |                                     ^~~~~~~~~~~
-   drivers/pinctrl/mediatek/pinctrl-airoha.c:2951:25: note: in expansion of macro 'dev_err'
-    2951 |                         dev_err(&pdev->dev, "Failed to register function %s\n",
-         |                         ^~~~~~~
-   cc1: some warnings being treated as errors
-
-
-vim +2279 drivers/pinctrl/mediatek/pinctrl-airoha.c
-
-  2259	
-  2260	static int airoha_pinmux_set_mux(struct pinctrl_dev *pctrl_dev,
-  2261					 unsigned int selector,
-  2262					 unsigned int group)
-  2263	{
-  2264		struct airoha_pinctrl *pinctrl = pinctrl_dev_get_drvdata(pctrl_dev);
-  2265		const struct airoha_pinctrl_func *func;
-  2266		struct function_desc *desc;
-  2267		struct group_desc *grp;
-  2268		int i;
-  2269	
-  2270		desc = pinmux_generic_get_function(pctrl_dev, selector);
-  2271		if (!desc)
-  2272			return -EINVAL;
-  2273	
-  2274		grp = pinctrl_generic_get_group(pctrl_dev, group);
-  2275		if (!grp)
-  2276			return -EINVAL;
-  2277	
-  2278		dev_dbg(pctrl_dev->dev, "enable function %s group %s\n",
-> 2279			desc->name, grp->grp.name);
-  2280	
-  2281		func = desc->data;
-  2282		for (i = 0; i < func->group_size; i++) {
-  2283			const struct airoha_pinctrl_func_group *group;
-  2284			int j;
-  2285	
-  2286			group = &func->groups[i];
-  2287			if (strcmp(group->name, grp->grp.name))
-  2288				continue;
-  2289	
-  2290			for (j = 0; j < group->regmap_size; j++) {
-  2291				void __iomem *base;
-  2292	
-  2293				base = pinctrl->regs.mux[group->regmap[j].mux];
-  2294				airoha_pinctrl_rmw(pinctrl,
-  2295						   base + group->regmap[j].offset,
-  2296						   group->regmap[j].mask,
-  2297						   group->regmap[j].val);
-  2298			}
-  2299			return 0;
-  2300		}
-  2301	
-  2302		return -EINVAL;
-  2303	}
-  2304	
-  2305	static int airoha_pinmux_gpio_set_direction(struct pinctrl_dev *pctrl_dev,
-  2306						    struct pinctrl_gpio_range *range,
-  2307						    unsigned int pin, bool input)
-  2308	{
-  2309		struct airoha_pinctrl *pinctrl = pinctrl_dev_get_drvdata(pctrl_dev);
-  2310		int gpio = pin - range->pin_base;
-  2311	
-  2312		airoha_pinctrl_gpio_set_direction(pinctrl, gpio, input);
-  2313	
-  2314		return 0;
-  2315	}
-  2316	
-  2317	static int airoha_pinctrl_get_gpio_from_pin(struct pinctrl_dev *pctrl_dev,
-  2318						    int pin)
-  2319	{
-  2320		struct pinctrl_gpio_range *range;
-  2321		int gpio;
-  2322	
-  2323		range = pinctrl_find_gpio_range_from_pin_nolock(pctrl_dev, pin);
-  2324		if (!range)
-  2325			return -EINVAL;
-  2326	
-  2327		gpio = pin - range->pin_base;
-  2328		if (gpio < 0)
-  2329			return -EINVAL;
-  2330	
-  2331		return gpio;
-  2332	}
-  2333	
-  2334	static const struct airoha_pinctrl_reg *
-  2335	airoha_pinctrl_get_conf_reg(const struct airoha_pinctrl_conf *conf,
-  2336				    int conf_size, int pin)
-  2337	{
-  2338		int i;
-  2339	
-  2340		for (i = 0; i < conf_size; i++) {
-  2341			if (conf[i].pin == pin)
-  2342				return &conf[i].reg;
-  2343		}
-  2344	
-  2345		return NULL;
-  2346	}
-  2347	
-  2348	static int airoha_pinctrl_get_conf(void __iomem *base,
-  2349					   const struct airoha_pinctrl_conf *conf,
-  2350					   int conf_size, int pin, u32 *val)
-  2351	{
-  2352		const struct airoha_pinctrl_reg *reg;
-  2353	
-  2354		reg = airoha_pinctrl_get_conf_reg(conf, conf_size, pin);
-  2355		if (!reg)
-  2356			return -EINVAL;
-  2357	
-  2358		*val = readl(base + reg->offset);
-> 2359		*val = (*val & reg->mask) >> __bf_shf(reg->mask);
-  2360	
-  2361		return 0;
-  2362	}
-  2363	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+> @@ -490,8 +490,13 @@ static struct thermal_zone_device
+> *thermal_of_zone_register(struct device_node *
+> 
+>  	trips = thermal_of_trips_init(np, &ntrips);
+>  	if (IS_ERR(trips)) {
+> -		pr_err("Failed to find trip points for %pOFn id=%d\n", sensor, id);
+> -		return ERR_CAST(trips);
+> +		if (PTR_ERR(trips) != -ENXIO) {
+> +			pr_err("Failed to find trip points for %pOFn id=%d\n", sensor, id);
+> +			return ERR_CAST(trips);
+> +		}
+> +
+> +		pr_warn("Failed to find trip points for %pOFn id=%d\n", sensor, id);
+> +		trips = NULL;
+>  	}
+> 
+>  	ret = thermal_of_monitor_init(np, &delay, &pdelay);
 
