@@ -4,84 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C478C52D7C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Aug 2024 04:24:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3A18C3DA7F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Aug 2024 04:47:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u9J5b2BcNeGCesNN7Tm4gY7EeEkTiSkwOKc5myjsVrI=; b=rEJj1iJVzG9L/pFgufdmcH6UO6
-	0jZVqN05FuXr4QVR+QnbcRMsRtJBJV0TaQ9z7dfYX7GpEBogqPReagytgwSZ45XYpQkilZXzeOz26
-	PTK+lTS3+HGTuhVF63umzQDvupCDbqo40rF9CoNdWJTXS8M3Gu65b0KPZtV/3RjPiPSMOZfVHf0ei
-	6Wi38AmvHCl10JOHTcxgehoCYZWNY84kIqsNNVWKTcTo3lswYbnxQuYyxYqhHytWtYGooWufz9ibe
-	urxK6/hRfOHPZ3X839rkgi2ePIF55/+yr1JpZiSeZmfvNIXPP3onkcp/rWo9dyB6AvhjRpwcIcDHH
-	zWtcwyRw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3G+OVT+hP++ys+x3EBjqw7D7jl0ngZBCPSiqjU8F9Uk=; b=npeOwq3zoi6X7080PTVrcqrh9s
+	BzfwDmbjK6Y7NweZ42bExvk75dJv35XYvhFyAoEJdz4s9p7WyK4JghCLSr+Jqz/CXgNRnrTEv8skk
+	ftLgt6f+qYmgSMC64z66zYhDjZgGeXu49qrGa/rw+8evWbdDRjWFmsKfnaaEHwbsZOMC+GT4gQLNc
+	IIFwbu0in8GDqQC2wGiTOJHcZAsCIL+exC3JaOtmoD0PZLYN155fdMWrry2QakZ7wdrenb8i79uj4
+	s4Gn2CiChVc6T1lDUzLx/W9wV/j+jx4SPTw8l1+aYp0vWJgoVPAt7guKHXMriqLKlU7ARO1su0Ctx
+	Ly/lu7EQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdMbc-0000000Gqhr-21QF;
-	Mon, 12 Aug 2024 04:24:28 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1sdMxr-0000000Gsk9-1m8z;
+	Mon, 12 Aug 2024 04:47:27 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdMaz-0000000GqZC-2GQP;
-	Mon, 12 Aug 2024 04:23:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1723436630; x=1754972630;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=ToASbl6WYvykfcZHGtIUGtGq6btyZKGTzfSTgNkgSIE=;
-  b=ZnO12FyxhPTajbMGpDV8BWcWiDwZRd0jec+qDUwBSkbZ8FAbsoVikgD1
-   SVo3W8e2pzTTwlR7XRe5HGJ54hYmjbP1Lp5qHRYSsvcHzoIQ0YqFPO5g2
-   erAZUIvWsR2ECNO6lfPSzIO3XYS3vFJ0q/s9GHt/G1UeD3MPIIyh0BB2j
-   BS6yYOhj+1XUGGHZETZWg7iqJ0y8CdHKG/3wCuc3yqySEK/pXSkOQ5j/h
-   H04JkNBrhevj1k66hkBS1YMOA3CocaspWiREDNKBXXdur8zdGlNYuVMUh
-   kw9AZMO7u646mRL9Ufq7O37rYSU/FYLAIkZ+Ma0N1TB8g0ZejC2vlozxG
-   Q==;
-X-CSE-ConnectionGUID: DbDyizU/RfCqlFwmj82nXQ==
-X-CSE-MsgGUID: jmwVCl2GT7m9/iXGrI2AMg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11161"; a="44047064"
-X-IronPort-AV: E=Sophos;i="6.09,282,1716274800"; 
-   d="scan'208";a="44047064"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Aug 2024 21:23:49 -0700
-X-CSE-ConnectionGUID: 8SKmKoEjQAeQS/gSImkEAg==
-X-CSE-MsgGUID: 4c6qJc1OTyemFB2BBK65XQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,282,1716274800"; 
-   d="scan'208";a="58858682"
-Received: from unknown (HELO b6bf6c95bbab) ([10.239.97.151])
-  by orviesa008.jf.intel.com with ESMTP; 11 Aug 2024 21:23:44 -0700
-Received: from kbuild by b6bf6c95bbab with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1sdMas-000BNm-0m;
-	Mon, 12 Aug 2024 04:23:42 +0000
-Date: Mon, 12 Aug 2024 12:23:41 +0800
-From: kernel test robot <lkp@intel.com>
-To: Elad Yifee <eladwf@gmail.com>
-Cc: oe-kbuild-all@lists.linux.dev, eladwf@gmail.com, daniel@makrotopia.org,
-	Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chen Lin <chen45464546@163.com>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: fix memory leak in LRO
- rings release
-Message-ID: <202408121146.9ulfLUnP-lkp@intel.com>
-References: <20240811184949.2799-1-eladwf@gmail.com>
+	id 1sdMxF-0000000GsgW-23q1
+	for linux-mediatek@lists.infradead.org;
+	Mon, 12 Aug 2024 04:46:51 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-52efdf02d13so6564897e87.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 11 Aug 2024 21:46:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1723438007; x=1724042807; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3G+OVT+hP++ys+x3EBjqw7D7jl0ngZBCPSiqjU8F9Uk=;
+        b=Hidl0GUXSz21pC8ufaz364WoHX4NfAjWZThPWnXpd9wX4ShKkpGCkVdbxUL6vkp0Y5
+         0EgJ751NxuHuDP2Q/LXrPxpp50mnxo4ParGTKd9WahiW+Jwek3nUhgf0osoCK1UK8NGc
+         qqeYfZ7HxKCv01eUIVm2KZXGD6U9SwZJaxAiA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1723438007; x=1724042807;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=3G+OVT+hP++ys+x3EBjqw7D7jl0ngZBCPSiqjU8F9Uk=;
+        b=vzyNKR8W6JOJcI9R+klCoI+Moxl+KCMdRbrZ9OnOKQ4RliEadzDv9NJMZqOHYzcfSt
+         AtHPuZPR/ZWKFsRXjGFs0/VvJLho6gShTA+4wMEdbiRfPJhNoZrJMoPGO4voNU7h4HTZ
+         OV5c/vtMzDRxGsUVu6kWXVLtmbIXLL9dRd10tvARq87GKtwCoooNVrtGH0F5TJmY75KL
+         hfI3eXztYAFRKCxZFUNF5w5eTcnsIkw6KPlRic6L4JVsL6IBxeDInLKnsVTQN5zf0bCM
+         KzjLVhCWomPf4c9jvcDTh0oa66K8RcdAEcu0EuNnFa3Ky7ipwIqwNUK9dOs/vF5kgYQn
+         JlPg==
+X-Forwarded-Encrypted: i=1; AJvYcCV06aMgt995U9H2HLXE+xGMkbWvFdK1/Azim1sZdLPotocODoFVBSOV5m0hoKRZ3Y+ijZW8vYwUpJMoH1wOHg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzAOQ7/KqP9ZFGQJnd24IpzWV/6gPyMne50aqd4tDzyyiWm9fpR
+	XfNdIpvWLPKp82iIk6rU5E3tT7oCtqZZ+yBjXr1XilOncbe3h+m8Pj4OTNfGwHt4OAogtvluiug
+	FM1FeRSS92NurWsT48HCdYB2AJuB0SEYIpIQO
+X-Google-Smtp-Source: AGHT+IFnVSMXIzgUCR1aKIEo7IibT84nijwPU1DhYfZ4h5IkgDw15sl0S/evUMey6uGzCvBZZi5Hhqwz6o3olaA2hhM=
+X-Received: by 2002:a05:6512:124d:b0:52e:933f:f1fa with SMTP id
+ 2adb3069b0e04-530eea2a4cbmr6484083e87.61.1723438006644; Sun, 11 Aug 2024
+ 21:46:46 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240811184949.2799-1-eladwf@gmail.com>
+References: <20240809070822.2835371-1-wenst@chromium.org> <b00273d65dfc4b48cca474784184c62b@manjaro.org>
+In-Reply-To: <b00273d65dfc4b48cca474784184c62b@manjaro.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 12 Aug 2024 12:46:35 +0800
+Message-ID: <CAGXv+5ERoH=jQGzo=mo2K-r3Meh2-5Kgvjf9Eh7bfNgcQYfWoA@mail.gmail.com>
+Subject: Re: [PATCH v2] thermal/of: support thermal zones w/o trips subnode
+To: Dragan Simic <dsimic@manjaro.org>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria <amitk@kernel.org>, 
+	Zhang Rui <rui.zhang@intel.com>, Icenowy Zheng <uwu@icenowy.me>, Mark Brown <broonie@kernel.org>, 
+	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, 
+	Hsin-Te Yuan <yuanhsinte@chromium.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240811_212349_691294_03692B53 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20240811_214649_573700_34F93919 
+X-CRM114-Status: GOOD (  31.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,62 +93,125 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Elad,
+On Mon, Aug 12, 2024 at 9:22=E2=80=AFAM Dragan Simic <dsimic@manjaro.org> w=
+rote:
+>
+> Hello Chen-Yu,
+>
+> Thanks for the patch.  Please see one comment below.
+>
+> On 2024-08-09 09:08, Chen-Yu Tsai wrote:
+> > From: Icenowy Zheng <uwu@icenowy.me>
+> >
+> > Although the current device tree binding of thermal zones require the
+> > trips subnode, the binding in kernel v5.15 does not require it, and
+> > many
+> > device trees shipped with the kernel, for example,
+> > allwinner/sun50i-a64.dtsi and mediatek/mt8183-kukui.dtsi in ARM64,
+> > still
+> > comply to the old binding and contain no trips subnode.
+> >
+> > Allow the code to successfully register thermal zones w/o trips subnode
+> > for DT binding compatibility now.
+> >
+> > Furtherly, the inconsistency between DTs and bindings should be
+> > resolved
+> > by either adding empty trips subnode or dropping the trips subnode
+> > requirement.
+> >
+> > Fixes: d0c75fa2c17f ("thermal/of: Initialize trip points separately")
+> > Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
+> > Reviewed-by: Mark Brown <broonie@kernel.org>
+> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> > ---
+> > Resurrecting this patch specifically for MediaTek MT8183 Kukui devices.
+> >
+> > Changes since v1:
+> > - set *ntrips at beginning of thermal_of_trips_init()
+> > - Keep goto out_of_node_put in of_get_child_count(trips) =3D=3D 0 branc=
+h
+> > - Check return value of thermal_of_trips_init(), if it is -ENXIO, print
+> >   warning and clear |trips| pointer
+> > - Drop |mask| change, as the variable was removed
+> >
+> > I kept Mark's reviewed-by since the changes are more stylish than
+> > functional.
+> > ---
+> >  drivers/thermal/thermal_of.c | 19 ++++++++++++-------
+> >  1 file changed, 12 insertions(+), 7 deletions(-)
+> >
+> > diff --git a/drivers/thermal/thermal_of.c
+> > b/drivers/thermal/thermal_of.c
+> > index aa34b6e82e26..f237e74c92fc 100644
+> > --- a/drivers/thermal/thermal_of.c
+> > +++ b/drivers/thermal/thermal_of.c
+> > @@ -128,16 +128,17 @@ static struct thermal_trip
+> > *thermal_of_trips_init(struct device_node *np, int *n
+> >       struct device_node *trips, *trip;
+> >       int ret, count;
+> >
+> > +     *ntrips =3D 0;
+> >       trips =3D of_get_child_by_name(np, "trips");
+> >       if (!trips) {
+> > -             pr_err("Failed to find 'trips' node\n");
+> > -             return ERR_PTR(-EINVAL);
+> > +             pr_debug("Failed to find 'trips' node\n");
+> > +             return ERR_PTR(-ENXIO);
+> >       }
+> >
+> >       count =3D of_get_child_count(trips);
+> >       if (!count) {
+> > -             pr_err("No trip point defined\n");
+> > -             ret =3D -EINVAL;
+> > +             pr_debug("No trip point defined\n");
+> > +             ret =3D -ENXIO;
+> >               goto out_of_node_put;
+> >       }
+> >
+> > @@ -162,7 +163,6 @@ static struct thermal_trip
+> > *thermal_of_trips_init(struct device_node *np, int *n
+> >
+> >  out_kfree:
+> >       kfree(tt);
+> > -     *ntrips =3D 0;
+> >  out_of_node_put:
+> >       of_node_put(trips);
+>
+> It might be a bit cleaner to keep the "*ntrips =3D 0" assignment
+> in the error handling path(s) only, with the positions of the goto
+> labels adjusted a bit, and then assign -ENXIO to "ret" and jump
+> to the right label when of_get_child_by_name(np, "trips") fails,
+> instead of returning from there.
+>
+> If it's unclear what I'm talking about, please let me know and
+> I'll send back the proposed hunk.
 
-kernel test robot noticed the following build warnings:
+I think I understand: move "*ntrips =3D 0" to after of_node_put() in the
+error path, and have the "!trips" branch jump to "out_of_node_put" as
+well. That works since of_node_put() checks the pointer first.
 
-[auto build test WARNING on net/main]
+I'll wait a bit and see if there are any more comments.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Elad-Yifee/net-ethernet-mtk_eth_soc-fix-memory-leak-in-LRO-rings-release/20240812-025108
-base:   net/main
-patch link:    https://lore.kernel.org/r/20240811184949.2799-1-eladwf%40gmail.com
-patch subject: [PATCH net] net: ethernet: mtk_eth_soc: fix memory leak in LRO rings release
-config: i386-allmodconfig (https://download.01.org/0day-ci/archive/20240812/202408121146.9ulfLUnP-lkp@intel.com/config)
-compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240812/202408121146.9ulfLUnP-lkp@intel.com/reproduce)
+ChenYu
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202408121146.9ulfLUnP-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/net/ethernet/mediatek/mtk_eth_soc.c: In function 'mtk_rx_put_buff':
->> drivers/net/ethernet/mediatek/mtk_eth_soc.c:1768:28: warning: passing argument 1 of 'free_pages' makes integer from pointer without a cast [-Wint-conversion]
-    1768 |                 free_pages(data, get_order(mtk_max_frag_size(ring->frag_size)));
-         |                            ^~~~
-         |                            |
-         |                            void *
-   In file included from include/linux/xarray.h:16,
-                    from include/linux/radix-tree.h:21,
-                    from include/linux/idr.h:15,
-                    from include/linux/kernfs.h:12,
-                    from include/linux/sysfs.h:16,
-                    from include/linux/kobject.h:20,
-                    from include/linux/of.h:18,
-                    from drivers/net/ethernet/mediatek/mtk_eth_soc.c:9:
-   include/linux/gfp.h:372:38: note: expected 'long unsigned int' but argument is of type 'void *'
-     372 | extern void free_pages(unsigned long addr, unsigned int order);
-         |                        ~~~~~~~~~~~~~~^~~~
-
-
-vim +/free_pages +1768 drivers/net/ethernet/mediatek/mtk_eth_soc.c
-
-  1759	
-  1760	static void mtk_rx_put_buff(struct mtk_rx_ring *ring, void *data, bool napi)
-  1761	{
-  1762		if (ring->page_pool)
-  1763			page_pool_put_full_page(ring->page_pool,
-  1764						virt_to_head_page(data), napi);
-  1765		else if (ring->frag_size <= PAGE_SIZE)
-  1766			skb_free_frag(data);
-  1767		else
-> 1768			free_pages(data, get_order(mtk_max_frag_size(ring->frag_size)));
-  1769	}
-  1770	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+> > @@ -490,8 +490,13 @@ static struct thermal_zone_device
+> > *thermal_of_zone_register(struct device_node *
+> >
+> >       trips =3D thermal_of_trips_init(np, &ntrips);
+> >       if (IS_ERR(trips)) {
+> > -             pr_err("Failed to find trip points for %pOFn id=3D%d\n", =
+sensor, id);
+> > -             return ERR_CAST(trips);
+> > +             if (PTR_ERR(trips) !=3D -ENXIO) {
+> > +                     pr_err("Failed to find trip points for %pOFn id=
+=3D%d\n", sensor, id);
+> > +                     return ERR_CAST(trips);
+> > +             }
+> > +
+> > +             pr_warn("Failed to find trip points for %pOFn id=3D%d\n",=
+ sensor, id);
+> > +             trips =3D NULL;
+> >       }
+> >
+> >       ret =3D thermal_of_monitor_init(np, &delay, &pdelay);
 
