@@ -4,54 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 205B6C52D7C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Aug 2024 12:12:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E76E3C52D7C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Aug 2024 12:13:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=QPeEGo1seh8+5FQ6msDUCQJPeQLJt9qdn8t1lvthTLI=; b=BCQAvTOMsOE2VZ
-	aHFBfksNxXDHVZ6sjGi1FKssRXo5zitwQZqVyQkmKhYB183nU9JRST4jCIHC2sGfTMzucqnzFmi4C
-	WkT0FTK2+uUZLCG5FSwW2kqBBbzozAdtcg7ryPsqa5pWzSyQK3vHoilFAjS1qU82Eofv7jXNb1z/N
-	3pEqEykZ9eMNpOSOlmnCORGNs4cxhx2hwGca61+yL0c4FggcPuFcOMjmCbhZ5A7o4+aSkP+0mcSuJ
-	4xOnpU9l02rqwlGePJvyUojyCVbExBXBUxT9oAv+5KaV8G7cAJ0uRLhtMgYJn7wGmRhaX1W3L+w+a
-	1mGSAuh/VtXlagBObf3w==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ihN0Y1Pxk7Ms6yk1pQW+EMoxHJ1Y74UH7hIRmtsRAlk=; b=FUx+PxAnjCShsp68cI6E4TITvS
+	w+gXhaVtuOWVcCWQ5U9wzNFNsm0WofGKsAeCiT1QMGRd2mdh7awmr55IdRWmtz0BOYIo6+z1R9Txi
+	fv5jYaFoch627orrfh69OtjwZ+C0BYMLHOBcd2geqp3Iv/cex+n2FI1PYCTBcDirxnW6jD0f9dPHz
+	zPTWW1Cj9/3MqvaWPKl/w2gCQZs+7X7AhZbjJvFd0ekKwv/EaRiMSKSPHO5J6t/tikhBMyJsM2ByN
+	A0Gsz0c6cxuezJdbY/gjR6JOnxPZPsjGSYddI1uLkab3CE3AbCuTlkd8nEOqpcM5+lIAyhOqdEIxt
+	LAHZy+7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdTuu-00000000EXy-0qdH;
-	Mon, 12 Aug 2024 12:12:52 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sdTvT-00000000EkW-2kRy;
+	Mon, 12 Aug 2024 12:13:27 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdTuF-00000000EKk-1la2;
-	Mon, 12 Aug 2024 12:12:12 +0000
+	id 1sdTuL-00000000EM9-1zYy;
+	Mon, 12 Aug 2024 12:12:19 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B492B61003;
+	by sin.source.kernel.org (Postfix) with ESMTP id C6961CE0E0D;
+	Mon, 12 Aug 2024 12:12:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D65CFC32782;
 	Mon, 12 Aug 2024 12:12:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75FECC32782;
-	Mon, 12 Aug 2024 12:12:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723464730;
-	bh=qk49YrVSofC+BVzHm+Bp5DXAljOe2s9DkkPbzEpVrcw=;
-	h=From:Subject:Date:To:Cc:From;
-	b=nR0JxCIvZJldbDSANbm7pjQ2vtDxP/pUsoxenEW1sYbA9ZM/TIuxVNpzR5T541zW2
-	 ElLbzeO736JcC7/k++Y1iunzxlWmy19UGlo9pwYSCX96upLnjvdF3BbCMSMMRPEV2B
-	 KCug5r+n7NzYYqwNgNOa+Wc6O6sK4m5U59L3bzQP5Xkxf0Y7w6EUDr3Nwx+eodk4A0
-	 qlMr+c+2cSjqiV3fVH2cgH22uleIIOubglo0ftuYq5wIrrD7HYDA4Pmq5Tw6eiP4JV
-	 FZbFuVnRajVt+PEkDLxDMJv2t0asApMS5Dppf2NoPkwgBtpFA6Lx4b9OA/OP/RN+t/
-	 gKmN/U5eMroHg==
+	s=k20201202; t=1723464734;
+	bh=feMZ11amsOB5MfZgo8CW/vk5lh85VqxPxLLtSo9jxdA=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=tgZS0vd2E/r60+JfFvuAq+1P0K0KF3X9jMjOvMu84AUncArQ4UWB6TmYk95FDQ+p9
+	 To8wc/6GzDVxex1ZNSyn90kXE8XVM35zel2l4oayqWpzJo8BMu8M8lEejxQSfpV8Ce
+	 G1WCdmA9RGSbmy8mX+tYEja9avN1o/YDeriSLvaC5EV7qxNFvj5aBFDpUOF+qqP5S0
+	 QzTU5rRf3uBSXZP+/GwCByy22Te7xkMzf/dIoybccO32uBEuASi+9ZYHuZThPpK3EW
+	 3RRlD9Q7KDaLwkkV5jxmMcB8nv2vjFyF86xLtU7vRrzK0Sc5iISWkrM6//uFNYxNcf
+	 AyEu5vG0dMmQA==
 From: Simon Horman <horms@kernel.org>
-Subject: [PATCH net-next 0/3] ipv6: Add ipv6_addr_{cpu_to_be32,be32_to_cpu}
+Date: Mon, 12 Aug 2024 13:11:55 +0100
+Subject: [PATCH net-next 1/3] ipv6: Add ipv6_addr_{cpu_to_be32,be32_to_cpu}
  helpers
-Date: Mon, 12 Aug 2024 13:11:54 +0100
-Message-Id: <20240812-ipv6_addr-helpers-v1-0-aab5d1f35c40@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAr8uWYC/x3MQQqEMBAF0atIr22IIYh6lWEQnfxog8TQERHEu
- xtm+RZVN2WoINNQ3aQ4JcseC5q6ot86xQUsvpissc50jWVJZztO3iuv2BI0c+i72fUuzAYtlS4
- pglz/54ciDo64Dvo+zwuPJ57tbQAAAA==
+Message-Id: <20240812-ipv6_addr-helpers-v1-1-aab5d1f35c40@kernel.org>
+References: <20240812-ipv6_addr-helpers-v1-0-aab5d1f35c40@kernel.org>
+In-Reply-To: <20240812-ipv6_addr-helpers-v1-0-aab5d1f35c40@kernel.org>
 To: Andrew Lunn <andrew@lunn.ch>
 Cc: "David S. Miller" <davem@davemloft.net>, 
  David Ahern <dsahern@kernel.org>, Eric Dumazet <edumazet@google.com>, 
@@ -66,8 +65,8 @@ Cc: "David S. Miller" <davem@davemloft.net>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-Mailer: b4 0.14.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240812_051211_573961_3F6B4C7B 
-X-CRM114-Status: UNSURE (   7.01  )
+X-CRM114-CacheID: sfid-20240812_051217_737497_172E4495 
+X-CRM114-Status: UNSURE (   8.94  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,25 +82,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Add helper to convert an ipv6 addr, expressed as an array
+of words, from cpy to big-endian byte order.
 
-This series adds and uses some new helpers,
-ipv6_addr_{cpu_to_be32,be32_to_cpu}, which are intended to assist in
-byte order manipulation of IPv6 addresses stored as as arrays.
+No functional change intended.
+Compile tested only.
 
+Suggested-by: Andrew Lunn <andrew@lunn.ch>
+Link: https://lore.kernel.org/netdev/c7684349-535c-45a4-9a74-d47479a50020@lunn.ch/
+Signed-off-by: Simon Horman <horms@kernel.org>
 ---
-Simon Horman (3):
-      ipv6: Add ipv6_addr_{cpu_to_be32,be32_to_cpu} helpers
-      net: ethernet: mtk_eth_soc: Use ipv6_addr_{cpu_to_be32,be32_to_cpu} helpers
-      net: hns3: Use ipv6_addr_{cpu_to_be32,be32_to_cpu} helpers
+ include/net/ipv6.h | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
- .../ethernet/hisilicon/hns3/hns3pf/hclge_main.c    | 79 +++++++++++-----------
- .../ethernet/hisilicon/hns3/hns3pf/hclge_main.h    |  8 ++-
- drivers/net/ethernet/mediatek/mtk_ppe.c            | 10 +--
- drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c    |  9 +--
- include/net/ipv6.h                                 | 12 ++++
- 5 files changed, 66 insertions(+), 52 deletions(-)
+diff --git a/include/net/ipv6.h b/include/net/ipv6.h
+index 88a8e554f7a1..e7113855a10f 100644
+--- a/include/net/ipv6.h
++++ b/include/net/ipv6.h
+@@ -1365,4 +1365,16 @@ static inline void ip6_sock_set_recvpktinfo(struct sock *sk)
+ 	release_sock(sk);
+ }
+ 
++#define IPV6_ADDR_WORDS 4
++
++static inline void ipv6_addr_cpu_to_be32(__be32 *dst, const u32 *src)
++{
++	cpu_to_be32_array(dst, src, IPV6_ADDR_WORDS);
++}
++
++static inline void ipv6_addr_be32_to_cpu(u32 *dst, const __be32 *src)
++{
++	be32_to_cpu_array(dst, src, IPV6_ADDR_WORDS);
++}
++
+ #endif /* _NET_IPV6_H */
 
-base-commit: c4e82c025b3f2561823b4ba7c5f112a2005f442b
+-- 
+2.43.0
 
 
