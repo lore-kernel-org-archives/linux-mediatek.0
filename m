@@ -4,181 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85393C3DA7F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Aug 2024 01:53:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17103C52D7C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Aug 2024 02:24:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Date:References:Message-ID:In-Reply-To:From:Subject:Cc:To:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ck6pb1o+rkJ4JJCPNmdPljUT3FgxrPbXCuEz5nWku7A=; b=ahkLqeDfplRI8kNFpOOkggWNuI
-	EB8YEl/t2JRznYVWyZVDH/GJpqAcreXjH42I9gAJzN6sW6b45OxvVhIh4cKVc5qBNcCyZRBVJEnmZ
-	3UGdAYUUa3uZ4yEhj9QfmYbcEr2uRVdWK3rSbASTmaHFazonjK0LDP5YCmnvWoMwtPtV8cqe9n344
-	FJ1RdttgAsC+uHjfFUsZsCLrX+z98mFZQ1jwkGtit/n4VM5K6jMfmD8HeXtqzeHzORkxbMZXjBoTG
-	IDhYfc6pMkhOzqXI8H66CpcNA35uKLVNJsHuTuUlnWtKv6qENKCzT34xS9goFAlXeqbPt2Sef70yW
-	CZ0AJbbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NYx9FHNUjfdW5MSmPrzW9lgHzLnEs6Sa+hTWUNOhjL8=; b=sO7D8Qdh4kV84anZCGvQrfSGVL
+	5Lw1ELdHujbmcWT4fd8f12vuiQqNQSYnpv+CZMkMJ3LMQ2Xbu51IEaI99V1xLqaNv8pstlKiudu1P
+	0szzEXeOVqodETF/Ov/jL2yDFtjhUKi89R4j1h+p5hwf0MOKvn1BSP9jyBGH9r2cgmRYvfEOUXcna
+	tbW95CA9Nee0jkqvZaRShsxTqaekPPw26d+fr54sMODMMNnt0+ZctPaJOrUMDOuAS9Ak22rm5MPra
+	g3Ar+9hbiVDVujtglh8KBTXddZ7LfcDrSHxHpeRkactyClpAHrKQcOhJmAB7DP48ButHqeYzG4ZbX
+	MTkBPIgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdgjO-0000000221y-09q2;
-	Tue, 13 Aug 2024 01:53:50 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1sdhCe-000000025oj-08rq;
+	Tue, 13 Aug 2024 02:24:04 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdgik-000000021wd-3Kxb;
-	Tue, 13 Aug 2024 01:53:13 +0000
-Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 47D1oX2K011577;
-	Tue, 13 Aug 2024 01:53:02 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=to
-	:cc:subject:from:in-reply-to:message-id:references:date
-	:content-type:mime-version; s=corp-2023-11-20; bh=ck6pb1o+rkJ4JJ
-	CPNmdPljUT3FgxrPbXCuEz5nWku7A=; b=nZPA6pdcAq9YUKMAzRu1Mh12aMHqyv
-	Du7G1ZAFiPA9ala9nd/W0eaO2rBvNO0w03YBETUk9XOtA659s7UILsiZAKOqsRWs
-	FaThBEZ4+H6ALOceEmG5YXBBzCmsoIpLQBEy9I7R66xSQHu1N5W8ZOQ7TP/ua9Ij
-	RlORCTKkWxUgDKuXLMdi70o6EfDIZ0P+RJ7DjagIMBPmkgcbwGBeSKUGHEIDSIqQ
-	fL7SF+9G1E4R8t3/wQtFtvgWl8A3jvqRxW+oy2+6U5FR+uw3HOlwFe6NNvEw5flh
-	y8wzbbpdHz9kxn3OXSabIwhPR12uggJKoYuDE525/WnYf+DvQHx/yvxw==
-Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 40x08cn1pq-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 13 Aug 2024 01:53:01 +0000 (GMT)
-Received: from pps.filterd (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.17.1.19/8.17.1.19) with ESMTP id 47CNNNnu000660;
-	Tue, 13 Aug 2024 01:53:00 GMT
-Received: from nam10-dm6-obe.outbound.protection.outlook.com (mail-dm6nam10lp2100.outbound.protection.outlook.com [104.47.58.100])
-	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 40wxn7vsdm-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 13 Aug 2024 01:53:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=BGgO8no7A8vpdzUMGgoK2IX45NGJzkL2itEBkd4Gwa3B7huFfOK7JXmdo0KUjT/iRDfyIR1SYKgRqNrBrieqxwCFLDNX2Ws4chhfVRQ9kqNGjLEhWo12p4+kBir5jzLYk0dIigXvYX6mn4zuelM6H/J/dJmXk5UiB+i3vmEvZoqot5d2fUZUBjduX4ATT8Q7T2gyJzH/ilyVdhz+rkGXn5XDrnXUHN/0Bj82ppa94z01NQdgbsrITKQRPOTepdkLlMnRvpndI9EBKvqA1IzO/OodZ1WxmVw8v0mY8Jec+wiVsY0oY2PkQk8bg/w3ZI0UNjbZ/aSwBWSgb+EG7l3DJw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ck6pb1o+rkJ4JJCPNmdPljUT3FgxrPbXCuEz5nWku7A=;
- b=Q0qvbAG+1WZX4LG6DR0+gQcjy38BQv2mta5yfCp88RUyEbGr8KKdAIUYydrjEzM90ydQal2ULM/aG4lMRKxW9sBwTnfgR6oDrvo4HlKWJipWnFNDC4lR7r0g+73E7to1xXStfEWZWMa/YLE87WsZBnite1V3fhYbhiPJaQo3U4fud6QFOYhDMVgj4P/4BVKdCx7hpGSnr1ZOmnE6gptZ5j2I8nozqyV/TB9sDzdxnKZHRnQpHBHvC2o2ac8FrA2wjKLE0+51na77VqWT9D1AVQkXnyhskB+JO4oV6ShaNfMCUVg2fZlS/i3WgBWdpaF4kPnDnsgxLFWGnKqT/8RHPg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ck6pb1o+rkJ4JJCPNmdPljUT3FgxrPbXCuEz5nWku7A=;
- b=MPwPF5pgX9h6y9Bti9S8GqVun3WADkiCbnBp68NXdXZLJMNWm8muyOkOYIvtleP3q9IFPC4J9z+KuhkwYzXrPSsJoz+ATmclQ44+McZN4DwovZmJhesoJUrYqDwDW6ATedabNwfRfHmZ0Ou5VjF9IhPvJdqjIo1FuBF3HFkFRv8=
-Received: from PH0PR10MB4759.namprd10.prod.outlook.com (2603:10b6:510:3d::12)
- by CYYPR10MB7569.namprd10.prod.outlook.com (2603:10b6:930:bb::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7875.8; Tue, 13 Aug
- 2024 01:52:57 +0000
-Received: from PH0PR10MB4759.namprd10.prod.outlook.com
- ([fe80::5c74:6a24:843e:e8f7]) by PH0PR10MB4759.namprd10.prod.outlook.com
- ([fe80::5c74:6a24:843e:e8f7%4]) with mapi id 15.20.7875.015; Tue, 13 Aug 2024
- 01:52:57 +0000
-To: Chaotian Jing <chaotian.jing@mediatek.com>
-Cc: <James.Bottomley@HansenPartnership.com>, <martin.petersen@oracle.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,
-        <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
-        <stable@vger.kernel.org>, Bart Van Assche <bvanassche@acm.org>
-Subject: Re: [PATCH] scsi: fix the return value of scsi_logical_block_count
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-In-Reply-To: <20240807005907.12380-1-chaotian.jing@mediatek.com> (Chaotian
-	Jing's message of "Wed, 7 Aug 2024 08:57:59 +0800")
-Organization: Oracle Corporation
-Message-ID: <yq1ttfpw5zs.fsf@ca-mkp.ca.oracle.com>
-References: <20240807005907.12380-1-chaotian.jing@mediatek.com>
-Date: Mon, 12 Aug 2024 21:52:52 -0400
-Content-Type: text/plain
-X-ClientProxiedBy: LNXP265CA0067.GBRP265.PROD.OUTLOOK.COM
- (2603:10a6:600:5d::31) To PH0PR10MB4759.namprd10.prod.outlook.com
- (2603:10b6:510:3d::12)
+	id 1sdhC2-000000025ju-0HX5;
+	Tue, 13 Aug 2024 02:23:27 +0000
+X-UUID: 0287ae8a591b11ef955bff358274dad2-20240812
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=NYx9FHNUjfdW5MSmPrzW9lgHzLnEs6Sa+hTWUNOhjL8=;
+	b=JsRtZ8RM5RU2L+hVu029VFEdq+kggNpM5vJCEA10ErIrBFef+e1iFZqkbAsHblfc1VieVI7CFr8yskhMoWWIWDbPJn+bripxKuSm+r+GwSrLYoSoMSOryQRjESE6nsNnUdXB1uWfN9mZVFANAxVYKaPhliJ+5us8I9e/V3gr/KU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:f3f0c24e-b000-4429-8ed8-9a24ec5aa256,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-30
+X-CID-META: VersionHash:6dc6a47,CLOUDID:3aab7dfe-77bb-433c-b174-ffb8012693b0,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
+	L:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
+	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 0287ae8a591b11ef955bff358274dad2-20240812
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <shuijing.li@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 315196741; Mon, 12 Aug 2024 19:23:21 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 13 Aug 2024 10:23:16 +0800
+Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 13 Aug 2024 10:23:16 +0800
+From: Shuijing Li <shuijing.li@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <jitao.shi@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Shuijing Li
+	<shuijing.li@mediatek.com>
+Subject: [PATCH v6] drm/mediatek: dsi: Add dsi per-frame lp code for mt8188
+Date: Tue, 13 Aug 2024 10:22:51 +0800
+Message-ID: <20240813022315.18502-1-shuijing.li@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR10MB4759:EE_|CYYPR10MB7569:EE_
-X-MS-Office365-Filtering-Correlation-Id: 182500f2-62d8-453a-f3a8-08dcbb3aa79c
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|7416014|1800799024|376014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?wwGHzY1g/mog5Dn4yt9lTXmxbxb6J4SJWtrQLCsnlFrl10Xlm6WFMyWyBSAj?=
- =?us-ascii?Q?aX0+ubATg+ciLxU8Uc9wh6CAqdKFPo9tH7dJvwvpwdgWvcem6mMiGNsB1tR1?=
- =?us-ascii?Q?BMTHLiHFzH9gO5YaqkzUFYT5dgnFdcNltGyU/ONIXKmW13/iVrlNsvgax1vy?=
- =?us-ascii?Q?EkX/vgleItCVam1R0HOJpmzZ1IqquuJsL5aYVMTpIa6P6unHHOwGWj19dXWC?=
- =?us-ascii?Q?yoG5zClM9U8NxafF622mrnrTqprMZbCDyieEiTFzQqzz36Qo+slVWqHzjR1O?=
- =?us-ascii?Q?8Cj1E63RBtdL1SVN+v+CO8j7xWpIRiRXFvp2YkpzD4KVoiNUf25x2YltwuXU?=
- =?us-ascii?Q?XC/8+ovC9HqlKenPHLAA85ekvFhL4BC4Y1C3IRVFv+1bs9PTYO+/INp70x1k?=
- =?us-ascii?Q?Eqo8jU6ba4uE+6mjhd3OZ6CwjdnYSaaec5pYfJ56eAhMEcqXRHxQ6FYP9SS+?=
- =?us-ascii?Q?UgVOyPmfaMqMT5PBbRk3aq7Pa14T0fZCFKC2PftFRSLaPb5NblTti26jDqUS?=
- =?us-ascii?Q?bQyaYtODvZgQ13jKFg+tpwArx81L7TB7DjXous7mDshlsLo34g7JOTkmuxgr?=
- =?us-ascii?Q?3uZlKCH6sHiCtlevBeReL27y6jhail4B3mNULrIgNIlc+F6S7Izc6piYr4M9?=
- =?us-ascii?Q?q1WMWW3CfQ/cQCo4v/MxumoOZisVsNyOrUYBGIqi+ztiibOw7OzCNo6hokAz?=
- =?us-ascii?Q?KVaXibVoTkF0xfoAxNWA6IRdzruIOG3nJvJ3pCwL+Z1zreCzbgpQz5SBVADa?=
- =?us-ascii?Q?azotMPWT+4jAbQ2gb641/8P8dyTDjUrFc1nYLQWhoJuFj2NsNtV5aTc/m04L?=
- =?us-ascii?Q?XvVW91Jjyx3uCdSCeNwhvMMQ4wqcFGM0bVH70SzlzCGURDOv9VCZnmqWyQih?=
- =?us-ascii?Q?w2O9rn0y9/2kRxkjUdYbM/unzU2SzRbkM9esrabKtC/Fs/GBthIBriug1lA0?=
- =?us-ascii?Q?lM8U2cgRIYUP3NesxQ8XGyI8Yb4w0JY0i8FuVFJ5hga1d+UmddHgZDtShKTN?=
- =?us-ascii?Q?nPqlHEdOueWyvcY0jtxMhEzivNTLyh40kravaPQjwiVsglmgXfg/W4HmzVQJ?=
- =?us-ascii?Q?UEMr4+l/wheTNisDSqW9STVuiyl9bA/PcJP0AIg4ll83eUfOm85rtC2DpvUP?=
- =?us-ascii?Q?p8+7DdvR5OzLyFIt1i8omgF0P5MbCbDCF54vimnErVhvpQ4Cce7fcAqAiiaB?=
- =?us-ascii?Q?hd+h6CJl56t0wGuVMsS+49u2nss77JbF85XK6H4UIVilhem2s+qrLhzpB7hO?=
- =?us-ascii?Q?9+Qc91jnf77r8s69+s3K+aGB6e99tH2G5NNfkYIyaBZkox6uu28d9fCPPDtp?=
- =?us-ascii?Q?xTHACVdVR6zlW4i881Y1dcOYiyN2fveTjE8irX7C+EPCdA=3D=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR10MB4759.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(1800799024)(376014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?QhUMMcj1GwyTD97vlhzAm6K3/G/z4Ee3id4JoAgB+AQCvkHfg3Jgh2hC4muY?=
- =?us-ascii?Q?LAwUl/8J/UhAJZ6ZSCGSkIg3Kaa/1eYWb/hByeQ4L4qiRG37VOwsM2XShSGs?=
- =?us-ascii?Q?i7ziG2tLaaLarmSQk0OAEkmSJwyr7tAgiFoT/xQvoi7WOZXtkxbHjL82D0hR?=
- =?us-ascii?Q?5smVtcBO/xfLMj9U5smPPYlJnacS43VtCrIOwei2GqZO6k1etK6e+y9qSQpl?=
- =?us-ascii?Q?zN/f60s0mhzbXP4zm0v+K/xaAkh5EJCUKJ+LkE8pNmDNNDNMAdtgKvGU3KyE?=
- =?us-ascii?Q?vU8S7OtmHWMn5fAoSEFwpU76S223WUm/KkBUzgd2VjWtC+5h7iBWIcbz8cvw?=
- =?us-ascii?Q?700EAk8NU+Fa3wYt+WJEr9h456oc0XHryrGY88HQ8UnYh3x3w5fTVOh1MFoo?=
- =?us-ascii?Q?NC0SPCbRXz/kC+YMHIK6VOEJoQuOo0Ixh8CaRK5OhNJp7qu6eQJkwvUK/EDY?=
- =?us-ascii?Q?tcdYZ46A0eaPWEhCfZ5ZbGYuANm3fk4CPMvV4Z2zppF8hkKxrfvXsRSFofcK?=
- =?us-ascii?Q?PJow+VliBKIG1UEahU5nfVB3zNCkz996BwBJGQt0NAoE0MlnjJMozRnESA/t?=
- =?us-ascii?Q?BmLrRM7lD4Fb094NxVj1eFuPAsNMB23rqyexKAt9u2yMJSoUzXDy7dT+l5/C?=
- =?us-ascii?Q?whF6Ind+EqcdVaCSIGpgO2TQnEcdAnqgXTLwYBRSfpMpYCwCqKFY9B1ydV9X?=
- =?us-ascii?Q?gzEVOlTIsdXDb41Bsk6s7skFG2VoZ+v8+tI5fAfmSVBvf3FzD0Gpouxbxo49?=
- =?us-ascii?Q?Web+V2XXDC6duXje6wD42XfaCukXn401o3LD9Rr5R7Cv+u4YUohVI6lEiQrV?=
- =?us-ascii?Q?a7Q8kvNZqK9YHwzPdqMFtpttD84l/MDdGKgNSK04erZOotYFNingL4oMhVCT?=
- =?us-ascii?Q?Sy3Kvb6sEJOhs8cktWU9pDlBq98pzVjUOy0SKlTHTPOIVcX017nr0g/wvJco?=
- =?us-ascii?Q?92TaSyC5smbxprXtY/T1Pg1zBEw2D1jA7vNl0mcyf/0amg/0feTGWC1vsQ2T?=
- =?us-ascii?Q?rrQwIO+JW3wO+qeAVRQpwaEjHeFw4/Z820Aeoi7FIUdSSHFEw1K5Anyqt9Ok?=
- =?us-ascii?Q?8wuLtmSa5jaG08s/vpX3ZMARqSMJBBh4lmWGxf0Ei/AGhUxpyeK7daPb6/7H?=
- =?us-ascii?Q?nzmXGHrhaOh38stWtSOW7r4u+Y7DaH9GiAxeK2scge19MV/9M7EiWZcLHONB?=
- =?us-ascii?Q?WBm4IY/HqjocwY2LXjr4jK/3B5CT11xGqVgxo/nSVUeNuH7nRjPqRHPXDrQq?=
- =?us-ascii?Q?GdpXnu1DcDvOH5n7N7CgoZ8lHPf4TDr1s+4Id/W/HziNBdILLgmy2CH8P8xt?=
- =?us-ascii?Q?knWjMvnPq8ql52YLKzt3w+sO7v0S0zVzj6Z6fNX9KT71ImimYk+h+OyNk2/4?=
- =?us-ascii?Q?PNnwKOsCg8SAkyYy45YGXVhgxJm/2YTT7lIAZoK4ig19ICxnnXKN49xbPun9?=
- =?us-ascii?Q?Eiww/kkuIqRF0nYMuloKIXTPHKFsg2yGUOVv6/MmNPJm+aDToOpmkVA/o6hp?=
- =?us-ascii?Q?A0nDUfFAxBc8mOnP3KlLbt+eQ3EKH5lhjOBiMvZKj/Uq9esWu/BzwEL2DJxr?=
- =?us-ascii?Q?wGDlTJGMBICbxXo+vOEz/PFTtzeaIKwb25kHV0mF1nX7Fw3x9pqZyi0EHtBP?=
- =?us-ascii?Q?3A=3D=3D?=
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: SS2VxXWdq3EgrGXGGYhwcM7XcFdHVMXUURN51Tl9KamhXb73Us079bzygjmzm0n/Loqtr3XlX8jxsAH8ugVnn85Unu8dShjuRbhWVWpQPj75jCQmRksApDutyYmMsrgfqjNF6r+J3zJ9OCCIppc2bL4gJkEJ6ONUx5RF0qKlDSojPIgaL1wBxWeOkNwkNjUACKEURdNx66sb2PVuPatsOWiY6mVKZU1xWxcubKpdoA3Znc+bsLoDMzZoBM6RMPcgTXeO7x5szJBNjrTrxfo9vqg7oJH/s4axns/lPGlNljIrBIKMGuAwu653Po9UR0JZwo0hozfobvxUg7/vRJkC5V/rROvd4GYgZblqoSo++Wt+TZcBtExOTe4q4QYHq2u7wNMT20gLOoXnsVRUC86R9SbY1KGixU6Z5Hmi6Fbo+5xvrYTu3lP9hCCZx33uWQJgNrDKzaBylWwVYolUuUQo/yYaq2LjgE/6w2K1QDcsZsyKZYahpw8i4PNZHogbOzjaaolCEpa28pIjrLRQsw/Dvj+PtmU5IiAvO7oFrbMt6ytvzv0OZJ6rDpfQGgTxcwHzgk8E2ls0mXgvA2eCVV/rsWKd5LvQ4xuH2vwyacq5HLI=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 182500f2-62d8-453a-f3a8-08dcbb3aa79c
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB4759.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Aug 2024 01:52:57.5098
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: X+8EMmK2AfeP0v5noyePK4wb1UxKC7mEOkcxCt+rd4IGrk/mgNCppPwy9FSBIGiRKVDxV69qtpEKHojosfEVX1gOBe82Cu93ahyKUMpPmwU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CYYPR10MB7569
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
- definitions=2024-08-12_12,2024-08-12_02,2024-05-17_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0 malwarescore=0
- mlxlogscore=793 bulkscore=0 phishscore=0 mlxscore=0 spamscore=0
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2407110000 definitions=main-2408130010
-X-Proofpoint-ORIG-GUID: PVjiE6OfXQWv8gt6hdO1y43-FrFa9qR6
-X-Proofpoint-GUID: PVjiE6OfXQWv8gt6hdO1y43-FrFa9qR6
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--4.069000-8.000000
+X-TMASE-MatchedRID: RzvPREWj2HcwKP61E4rxu1VN8laWo90M5TpDO1WKs2mYQOVjVNfbbpOu
+	v4LVY2bFO+NwyBVe+HBIT4SOZxkibrGaAH5r9EhkhK8o4aoss8q+1Vx7rDn4r/k3SjZMcZFk9BQ
+	FWu9qPYZckfCAECj1GiN8DuhwooinL0W1btd8e57LtNJZxvPj1hG8SlV3e9LV31GU/N5W5BBb53
+	SJ0uOmmjFeXjrzLWaDf4eyKeT1hq1nPzp+oCPs8yNHByyOpYYC5TbwqVVpF+PvPjzagmh01OYHE
+	PaPco6bUjpSbEFN/xydZVUStkfgGWsV28ESZOe8kPoFsM336M7JV9WzHT2T5WI4wQ1Yq/d0GOmx
+	KvkU9Nj3cuxjGnQlwIAy6p60ZV628dnCdmtX28KtIWznhjjBtfoLR4+zsDTtqFhHt/jREakEjL6
+	3fz0OrKfIQlX7lQr797qzTR8oUxAiJh4QFUH9xlZca9RSYo/b
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--4.069000-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 7DEBCE6D96BEFE86668EA096D1ACAFA397E01EDBCD3E3B8451EC47FDE7BB8E552000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240812_185311_062829_BDF651E1 
-X-CRM114-Status: GOOD (  10.49  )
+X-CRM114-CacheID: sfid-20240812_192326_147891_90E6BDD3 
+X-CRM114-Status: GOOD (  16.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -193,20 +100,225 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Adding the per-frame lp function of mt8188, which can keep HFP in HS and
+reduce the time required for each line to enter and exit low power.
+Per Frame LP:
+  |<----------One Active Frame-------->|
+--______________________________________----___________________
+  ^HSA+HBP^^RGB^^HFP^^HSA+HBP^^RGB^^HFP^    ^HSA+HBP^^RGB^^HFP^
 
-Chaotian,
+Per Line LP:
+  |<---------------One Active Frame----------->|
+--______________--______________--______________----______________
+  ^HSA+HBP^^RGB^  ^HSA+HBP^^RGB^  ^HSA+HBP^^RGB^    ^HSA+HBP^^RGB^
 
-> @@ -236,7 +236,7 @@ static inline unsigned int scsi_logical_block_count(struct scsi_cmnd *scmd)
->  {
->  	unsigned int shift = ilog2(scmd->device->sector_size) - SECTOR_SHIFT;
->  
-> -	return blk_rq_bytes(scsi_cmd_to_rq(scmd)) >> shift;
-> +	return blk_rq_sectors(scsi_cmd_to_rq(scmd)) >> shift;
->  }
+Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
+---
+Changes in v6:
+Simplify the code per suggestion from previous thread:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20240812070341.26053-1-shuijing.li@mediatek.com/
+Changes in v5:
+Fix code style issue and add per-line-lp function to be symmetrical with per-frame-lp.
+per suggestion from previous thread:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20240801081144.22372-1-shuijing.li@mediatek.com/
+Changes in v4:
+Drop the code related to bllp_en and bllp_wc, adjust ps_wc to dsi->vm.hactive *
+dsi_buf_bpp.
+Changes in v3:
+Use function in bitfield.h and get value from phy timing, per suggestion
+from previous thread:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20240424091639.22759-1-shuijing.li@mediatek.com/
+Changes in v2:
+Use bitfield macros and add new function for per prame lp and improve
+the format, per suggestion from previous thread:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20240314094238.3315-1-shuijing.li@mediatek.com/
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 158 +++++++++++++++++++++++++----
+ 1 file changed, 139 insertions(+), 19 deletions(-)
 
-There's no point in shifting twice by converting to sectors first.
-Please just remove the SECTOR_SHIFT subtraction.
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index b6e3c011a12d..940fc99cc87d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -88,12 +88,15 @@
+ #define DSI_HSA_WC		0x50
+ #define DSI_HBP_WC		0x54
+ #define DSI_HFP_WC		0x58
++#define HFP_HS_VB_PS_WC	GENMASK(30, 16)
++#define HFP_HS_EN		BIT(31)
+ 
+ #define DSI_CMDQ_SIZE		0x60
+ #define CMDQ_SIZE			0x3f
+ #define CMDQ_SIZE_SEL		BIT(15)
+ 
+ #define DSI_HSTX_CKL_WC		0x64
++#define HSTX_CKL_WC			GENMASK(15, 2)
+ 
+ #define DSI_RX_DATA0		0x74
+ #define DSI_RX_DATA1		0x78
+@@ -187,6 +190,7 @@ struct mtk_dsi_driver_data {
+ 	bool has_shadow_ctl;
+ 	bool has_size_ctl;
+ 	bool cmdq_long_packet_ctl;
++	bool support_per_frame_lp;
+ };
+ 
+ struct mtk_dsi {
+@@ -426,7 +430,92 @@ static void mtk_dsi_ps_control(struct mtk_dsi *dsi, bool config_vact)
+ 	writel(ps_val, dsi->regs + DSI_PSCTRL);
+ }
+ 
+-static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
++static void mtk_dsi_config_vdo_timing_per_frame_lp(struct mtk_dsi *dsi)
++{
++	u32 horizontal_sync_active_byte;
++	u32 horizontal_backporch_byte;
++	u32 horizontal_frontporch_byte;
++	u32 hfp_byte_adjust, v_active_adjust;
++	u32 cklp_wc_min_adjust, cklp_wc_max_adjust;
++	u32 dsi_tmp_buf_bpp;
++	unsigned int lpx, da_hs_exit, da_hs_prep, da_hs_trail;
++	unsigned int da_hs_zero, ps_wc, hs_vb_ps_wc;
++	u32 v_active_roundup, hstx_cklp_wc;
++	u32 hstx_cklp_wc_max, hstx_cklp_wc_min;
++	struct videomode *vm = &dsi->vm;
++
++	if (dsi->format == MIPI_DSI_FMT_RGB565)
++		dsi_tmp_buf_bpp = 2;
++	else
++		dsi_tmp_buf_bpp = 3;
++
++	da_hs_trail = dsi->phy_timing.da_hs_trail;
++	ps_wc = dsi->vm.hactive * dsi_tmp_buf_bpp;
++
++	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE) {
++		horizontal_sync_active_byte =
++			vm->hsync_len * dsi_tmp_buf_bpp - 10;
++		horizontal_backporch_byte =
++			vm->hback_porch * dsi_tmp_buf_bpp - 10;
++		hfp_byte_adjust = 12;
++		v_active_adjust = 32 + horizontal_sync_active_byte;
++		cklp_wc_min_adjust = 12 + 2 + 4 + horizontal_sync_active_byte;
++		cklp_wc_max_adjust = 20 + 6 + 4 + horizontal_sync_active_byte;
++	} else {
++		horizontal_sync_active_byte = vm->hsync_len * dsi_tmp_buf_bpp - 4;
++		horizontal_backporch_byte = (vm->hback_porch + vm->hsync_len) *
++			dsi_tmp_buf_bpp - 10;
++		cklp_wc_min_adjust = 4;
++		cklp_wc_max_adjust = 12 + 4 + 4;
++		if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST) {
++			hfp_byte_adjust = 18;
++			v_active_adjust = 28;
++		} else {
++			hfp_byte_adjust = 12;
++			v_active_adjust = 22;
++		}
++	}
++	horizontal_frontporch_byte = vm->hfront_porch * dsi_tmp_buf_bpp - hfp_byte_adjust;
++	v_active_roundup = (v_active_adjust + horizontal_backporch_byte + ps_wc +
++		horizontal_frontporch_byte) % dsi->lanes;
++	if (v_active_roundup)
++		horizontal_backporch_byte += dsi->lanes - v_active_roundup;
++	hstx_cklp_wc_min = (DIV_ROUND_UP(cklp_wc_min_adjust, dsi->lanes) + da_hs_trail + 1)
++		* dsi->lanes / 6 - 1;
++	hstx_cklp_wc_max = (DIV_ROUND_UP((cklp_wc_max_adjust + horizontal_backporch_byte +
++		ps_wc), dsi->lanes) + da_hs_trail + 1) * dsi->lanes / 6 - 1;
++
++	hstx_cklp_wc = FIELD_GET(HSTX_CKL_WC, readl(dsi->regs + DSI_HSTX_CKL_WC));
++
++	if (hstx_cklp_wc <= hstx_cklp_wc_min || hstx_cklp_wc >= hstx_cklp_wc_max) {
++		hstx_cklp_wc = ((hstx_cklp_wc_min + hstx_cklp_wc_max) / 2);
++
++		/* Check if the new setting is valid */
++		if (hstx_cklp_wc <= hstx_cklp_wc_min ||	hstx_cklp_wc >= hstx_cklp_wc_max)
++			DRM_WARN("Wrong setting of hstx_ckl_wc\n");
++
++		hstx_cklp_wc = FIELD_PREP(HSTX_CKL_WC, hstx_cklp_wc);
++		writel(hstx_cklp_wc, dsi->regs + DSI_HSTX_CKL_WC);
++	}
++
++	lpx = dsi->phy_timing.lpx;
++	da_hs_exit = dsi->phy_timing.da_hs_exit;
++	da_hs_prep = dsi->phy_timing.da_hs_prepare;
++	da_hs_zero = dsi->phy_timing.da_hs_zero;
++
++	hs_vb_ps_wc = ps_wc -
++		(lpx + da_hs_exit + da_hs_prep + da_hs_zero + 2)
++		* dsi->lanes;
++	horizontal_frontporch_byte = FIELD_PREP(HFP_HS_EN, 1) |
++		FIELD_PREP(HFP_HS_VB_PS_WC, hs_vb_ps_wc) |
++		horizontal_frontporch_byte;
++
++	writel(horizontal_sync_active_byte, dsi->regs + DSI_HSA_WC);
++	writel(horizontal_backporch_byte, dsi->regs + DSI_HBP_WC);
++	writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
++}
++
++static void mtk_dsi_config_vdo_timing_per_line_lp(struct mtk_dsi *dsi)
+ {
+ 	u32 horizontal_sync_active_byte;
+ 	u32 horizontal_backporch_byte;
+@@ -436,7 +525,6 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
+ 	u32 dsi_tmp_buf_bpp, data_phy_cycles;
+ 	u32 delta;
+ 	struct mtk_phy_timing *timing = &dsi->phy_timing;
+-
+ 	struct videomode *vm = &dsi->vm;
+ 
+ 	if (dsi->format == MIPI_DSI_FMT_RGB565)
+@@ -444,16 +532,6 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
+ 	else
+ 		dsi_tmp_buf_bpp = 3;
+ 
+-	writel(vm->vsync_len, dsi->regs + DSI_VSA_NL);
+-	writel(vm->vback_porch, dsi->regs + DSI_VBP_NL);
+-	writel(vm->vfront_porch, dsi->regs + DSI_VFP_NL);
+-	writel(vm->vactive, dsi->regs + DSI_VACT_NL);
+-
+-	if (dsi->driver_data->has_size_ctl)
+-		writel(FIELD_PREP(DSI_HEIGHT, vm->vactive) |
+-		       FIELD_PREP(DSI_WIDTH, vm->hactive),
+-		       dsi->regs + DSI_SIZE_CON);
+-
+ 	horizontal_sync_active_byte = (vm->hsync_len * dsi_tmp_buf_bpp - 10);
+ 
+ 	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE)
+@@ -499,6 +577,26 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
+ 	writel(horizontal_sync_active_byte, dsi->regs + DSI_HSA_WC);
+ 	writel(horizontal_backporch_byte, dsi->regs + DSI_HBP_WC);
+ 	writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
++}
++
++static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
++{
++	struct videomode *vm = &dsi->vm;
++
++	writel(vm->vsync_len, dsi->regs + DSI_VSA_NL);
++	writel(vm->vback_porch, dsi->regs + DSI_VBP_NL);
++	writel(vm->vfront_porch, dsi->regs + DSI_VFP_NL);
++	writel(vm->vactive, dsi->regs + DSI_VACT_NL);
++
++	if (dsi->driver_data->has_size_ctl)
++		writel(FIELD_PREP(DSI_HEIGHT, vm->vactive) |
++			FIELD_PREP(DSI_WIDTH, vm->hactive),
++			dsi->regs + DSI_SIZE_CON);
++
++	if (dsi->driver_data->support_per_frame_lp)
++		mtk_dsi_config_vdo_timing_per_frame_lp(dsi);
++	else
++		mtk_dsi_config_vdo_timing_per_line_lp(dsi);
+ 
+ 	mtk_dsi_ps_control(dsi, false);
+ }
+@@ -1197,6 +1295,7 @@ static const struct mtk_dsi_driver_data mt8188_dsi_driver_data = {
+ 	.has_shadow_ctl = true,
+ 	.has_size_ctl = true,
+ 	.cmdq_long_packet_ctl = true,
++	.support_per_frame_lp = true,
+ };
+ 
+ static const struct of_device_id mtk_dsi_of_match[] = {
 -- 
-Martin K. Petersen	Oracle Linux Engineering
+2.45.2
+
 
