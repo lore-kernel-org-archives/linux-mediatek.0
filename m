@@ -4,82 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D8A6C52D7B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Aug 2024 08:13:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CC0AC52D7C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Aug 2024 09:04:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=jFrBrIEhRH5fr64Lmwlk1FGGgzIMKQ4ijTse+z7ETwE=; b=xQBghifrIFm1AhKY+OALG23bD2
-	TYPAIm0Vokpi3SpW2MyiakH/9cR31P4FqBHQB4t0b4YLv5rUz2QCqYPeyfYXm0K0NEcjMXI2rN9V/
-	hw8V+mnbWCjLrXmoZEjCXIM0aTXMKichfFBHHBe881NSJrkbcWO9hjps4R5EY1F2Gx9KLsPt/KkTC
-	VvyZbjMR7NVI+3ATAl6g5SK4O63jYZR/l6hM2I5n8YbUN5lDx++QViHxNeSwe8Ir/Vb8h6p3lfPJG
-	MIIaRkvr3Qb9DJE12xzIogcPZ8PSEBEPd0bSOLggCv7Rt23kP2cb11GA/C7YyY6Hp5SbXZI/Z3hyo
-	cIZs//6g==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ve4jbSU7S9ExZbxJjtrrBtClvd5I5lhR/E8IhWEXAFc=; b=EnvmcbNE5AC14/cVhL3aUt7Dq0
+	AgLN7AKXd3KSZXXCVCt8czBXQHFdD9l+TrO6/qdTq52XohChPDupzlQ2mWegJFk3Xh+MTW4z50F5u
+	S/D/G/CsPNc3owL7J0MtqfCHpInyaAYNRlR2coZ5CvSVU3/JbRmqtqeNBr3nmRC4r8lVYdhbz/Sae
+	ue9dK20sAHxCJ26S+iDvqYNPs5rWJCg/Pzty0qcA8j7qwk+dMhMWPseihraZ8muYkPydcApPlPf2t
+	NPDrFMfdYODBbN6tRBHTUiltC2J26h3kOTzjunXAL0XgbZpZklCiAex9iEqDmhZlSIE3A7aVWO1zs
+	2AX82J0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdmez-00000002qln-304Z;
-	Tue, 13 Aug 2024 08:13:41 +0000
-Received: from smtp84.cstnet.cn ([159.226.251.84] helo=cstnet.cn)
+	id 1sdnSa-000000034NR-2u2K;
+	Tue, 13 Aug 2024 09:04:56 +0000
+Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdmeL-00000002qdi-0wsA;
-	Tue, 13 Aug 2024 08:13:03 +0000
-Received: from icess-ProLiant-DL380-Gen10.. (unknown [183.174.60.14])
-	by APP-05 (Coremail) with SMTP id zQCowACXQEB7Fbtm6tXnBQ--.58923S2;
-	Tue, 13 Aug 2024 16:12:50 +0800 (CST)
-From: Ma Ke <make24@iscas.ac.cn>
-To: nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	kvalo@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	chui-hao.chiu@mediatek.com,
-	howard-yh.hsu@mediatek.com,
-	StanleyYP.Wang@mediatek.com,
-	benjamin-jw.lin@mediatek.com,
-	allen.ye@mediatek.com,
-	chank.chen@mediatek.com,
-	meichia.chiu@mediatek.com,
-	Bo.Jiao@mediatek.com
-Cc: linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Ma Ke <make24@iscas.ac.cn>,
-	stable@vger.kernel.org
-Subject: [PATCH] wifi: mt76: mt7996: fix NULL pointer dereference in mt7996_mcu_sta_bfer_he
-Date: Tue, 13 Aug 2024 16:12:42 +0800
-Message-Id: <20240813081242.3991814-1-make24@iscas.ac.cn>
-X-Mailer: git-send-email 2.25.1
+	id 1sdnRc-0000000343i-0LRV
+	for linux-mediatek@lists.infradead.org;
+	Tue, 13 Aug 2024 09:03:57 +0000
+Received: by mail-lj1-x22a.google.com with SMTP id 38308e7fff4ca-2f16d2f2b68so73139841fa.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 13 Aug 2024 02:03:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1723539834; x=1724144634; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Ve4jbSU7S9ExZbxJjtrrBtClvd5I5lhR/E8IhWEXAFc=;
+        b=lYUTFhFh1AvSZw5Y5kqDZILXJaPI9NX1YttplICY1djJtEfpnCbDDErhfNjMenEwCd
+         R0HAAhgTCkHCZDm9Vy92su0nIOTGXJ0CSCmioOUFXoA94LVVbmpKfiydpTfb173x6EDZ
+         r1etWhlzp4YMneFIolp8sTcbjrW4RE+1SWSU4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1723539834; x=1724144634;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Ve4jbSU7S9ExZbxJjtrrBtClvd5I5lhR/E8IhWEXAFc=;
+        b=iLN+i9myr2mOsMeijMVGLdnWX+1+Tiw5VSo9Q+g7cIr4jtPcA+uErAxJMlKBh3ck9r
+         HNp/LGoNsj1XD1uU7g1T4StLGh+2Fuj4HFUule0QpdXd7I8e+uNcLfJc6oN+oG8V3dT7
+         5M/Ew7Ac9s1uWXsDd1GlN45XTdlnOuNYXwxPaumwtqZFc2L7nfd32xeiz/zYRKJN7GVq
+         Cjf4SiW41CvgaBxEd9ZMdMa1QeapZmSw/pM1n2q9yIkGuiNVbgCX0sjdYICHvnyX/Z0O
+         OGqI/yHYWemcURBV3NcaC5xobkc2V6HnITeyS3/56SajrJT9c5kDhErD8zC4vn7XQK6L
+         PF/w==
+X-Forwarded-Encrypted: i=1; AJvYcCVxQNm55IyyQTwOsH2rbTF5qeKGQblVX8RbKSk74z4462PSsOjWmWaGEEp7wCRRvPlxe+Wmc7/4sy8XQqQydveSdCJXTZGpJ0SdCEfQmOBFsDM1
+X-Gm-Message-State: AOJu0YyDeDaw9hHqWOAbFtCWLxM+tmV8C8IGkHamnyO0sDuS33QFxSn7
+	67KjXtPdm0oPEsJSpc4Qzpwqo2L1oGvHJ6R0Zs44KgYJvV+WQ/kqPk00GoW6ktos2fD5vIZiX+l
+	xKFsPkPW61Z3JQ0klxDcbP1okSIdeLxkszP3e
+X-Google-Smtp-Source: AGHT+IG7NaoKLkQNmaW+Q8ybfg+2Fkm3g2gdZmqPP65jKw5bs2Y5MuNgZOgxthLiif5iORngSqZhzj93hj3oIkVu1A0=
+X-Received: by 2002:a2e:3c14:0:b0:2f0:27da:6864 with SMTP id
+ 38308e7fff4ca-2f2b7150009mr22309211fa.17.1723539833287; Tue, 13 Aug 2024
+ 02:03:53 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: zQCowACXQEB7Fbtm6tXnBQ--.58923S2
-X-Coremail-Antispam: 1UD129KBjvdXoWruw4DZw1UtrWxKF1xJr13Jwb_yoWDXrXE9r
-	n29FnIqw48Kw48Kr429wnxuryay3ykZF97Gay5tayfta97J3yUZF1IvFn3Ar13uFn7ZF1U
-	J3ZrJFy0y395WjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUIcSsGvfJTRUUUbfAFF20E14v26ryj6rWUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
-	6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
-	A2z4x0Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr0_
-	Cr1l84ACjcxK6I8E87Iv67AKxVWxJr0_GcWl84ACjcxK6I8E87Iv6xkF7I0E14v26rxl6s
-	0DM2vYz4IE04k24VAvwVAKI4IrM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI
-	64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r1j6r18McIj6I8E87Iv67AKxVWUJVW8Jw
-	Am72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAG
-	YxC7M4IIrI8v6xkF7I0E8cxan2IY04v7MxkF7I0En4kS14v26r4a6rW5MxAIw28IcxkI7V
-	AKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCj
-	r7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVW8ZVWrXwCIc40Y0x0EwIxGrwCI42IY6x
-	IIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAI
-	w20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x
-	0267AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7sRiSfO3UUUUU==
-X-Originating-IP: [183.174.60.14]
-X-CM-SenderInfo: ppdnvj2u6l2u1dvotugofq/
+References: <20240809135627.544429-1-jakiela@google.com>
+In-Reply-To: <20240809135627.544429-1-jakiela@google.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 13 Aug 2024 17:03:42 +0800
+Message-ID: <CAGXv+5FpYxyANqp+uMoJP4my7e_yjSS7eFOodG-UuGG6eHCj-A@mail.gmail.com>
+Subject: Re: [PATCH] ASoC: SOF: mediatek: Add missing board compatible
+To: =?UTF-8?Q?Albert_Jakie=C5=82a?= <jakiela@google.com>
+Cc: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, 
+	Bard Liao <yung-chuan.liao@linux.intel.com>, 
+	Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>, 
+	Kai Vehmanen <kai.vehmanen@linux.intel.com>, Mark Brown <broonie@kernel.org>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
+	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>, Trevor Wu <trevor.wu@mediatek.com>, 
+	sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240813_011301_656497_BF67278D 
-X-CRM114-Status: UNSURE (   7.35  )
+X-CRM114-CacheID: sfid-20240813_020356_195878_F00C6005 
+X-CRM114-Status: UNSURE (   7.67  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,33 +100,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix the NULL pointer dereference in mt7996_mcu_sta_bfer_he
-routine adding an sta interface to the mt7996 driver.
+On Fri, Aug 9, 2024 at 9:57=E2=80=AFPM Albert Jakie=C5=82a <jakiela@google.=
+com> wrote:
+>
+> Add Google Dojo compatible.
+>
+> Signed-off-by: Albert Jakie=C5=82a <jakiela@google.com>
 
-Found by code review.
-
-Cc: stable@vger.kernel.org
-Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
-Signed-off-by: Ma Ke <make24@iscas.ac.cn>
----
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index 2e4fa9f48dfb..cba28d8d5562 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -1544,6 +1544,9 @@ mt7996_mcu_sta_bfer_he(struct ieee80211_sta *sta, struct ieee80211_vif *vif,
- 	u8 nss_mcs = mt7996_mcu_get_sta_nss(mcs_map);
- 	u8 snd_dim, sts;
- 
-+	if (!vc)
-+		return;
-+
- 	bf->tx_mode = MT_PHY_TYPE_HE_SU;
- 
- 	mt7996_mcu_sta_sounding_rate(bf);
--- 
-2.25.1
-
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
