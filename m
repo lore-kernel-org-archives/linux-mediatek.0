@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75571C52D7B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Aug 2024 11:23:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5ADDC52D7C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Aug 2024 11:27:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D8BuanT6kTDObWmw14IGIL3aXbtSys/I8WUyxFjEqWg=; b=LGt1ipY13YRKHdNbpXAe+aINX5
-	RNTQp1lOmQgnHLGIQ61aPejWzhmBjCx5YlsBCtTIDzA/kpK/MLe2tzmxuJu8hV3WD38U1KLK8SV+D
-	dS2TlPD4utKV/vtgzIRtHNe6qZfSpw0M4cvnpTDUl0TbfHUAq6ZALnMEpU5ORyJZ+wNKviKWgGq7S
-	C36UZCYtnjx791C/2N1rO/p0KtHlkTxL0wDmiKYx2h1AED5oywYpgIXeZeOhcevYppMZbgz+0LCGm
-	tTa81T6cCJ4c0H4Keh4ed7MIBOR4B224BWcdrXygBWLgYyTy0kI65agjeIzTlohsI7v73JAvQ38J3
-	xRkK+EqQ==;
+	bh=k9pwxAKGW2OWYTbxMNvMtVLAWsYkSfMxvvZYhJ1gXNY=; b=ut8i4zEjCZ4UqlYok1vOl1LAjb
+	yZ2ComZyWkuA7gySMyqZKeoELlYeMEkG8K3NGTzF783Mjq0awwVWxwFasEzbW40Xk6W5voGoWWfeH
+	RtBHVRfJurEJmpTafWv7DxpQjR+Mnt2yWm7Wyfok0wI7yHwH2jqYnJ8Gr6wtJoRPRuCpyKoM+W9xK
+	xVG8Gx7z2QNeemL7sV1Vmlp6Cf+x4XqQi+KFm2TvpekQifLG9q90U37MdWyWUTktVdikGJv5c9CqL
+	fcspwAbpL1DHN0dhzXBagmzWf2riC+EYmmWS7NzPUDQLd9nYHuGrAF29DjFmBLis1XWoLyq473HQm
+	ibKK0Jew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdpcQ-00000003V5O-4C7W;
-	Tue, 13 Aug 2024 11:23:15 +0000
-Received: from mgamail.intel.com ([192.198.163.18])
+	id 1sdpgI-00000003Vdb-1VfZ;
+	Tue, 13 Aug 2024 11:27:14 +0000
+Received: from mgamail.intel.com ([198.175.65.11])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sdpbg-00000003Uv9-26CL;
-	Tue, 13 Aug 2024 11:22:30 +0000
+	id 1sdpfe-00000003VWN-183p;
+	Tue, 13 Aug 2024 11:26:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1723548148; x=1755084148;
+  t=1723548395; x=1755084395;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=mEePcR8nadTN2WwOSCJ4XUGSlm4GH5pq61cZ2MGoSgc=;
-  b=kna32EFk+rB/2LoK8jQXVVpdU9fh4KdL1iguwdxlfcCCRlgH6Qn5f5nu
-   Tg3p/byEYrUo8ynCut8XNEFCVM3+ZhknRCprVrSBk4GqRzHJa1Q6Itj4y
-   Y16FFwTlWwZO4XwYlIDcpOglwWFNLdGfKJrrDAdLcSmkJ4G6t26ykHPd5
-   e0YPiMNxdKgl8eGkNA3Zd/gxw2q55JJnxXFBcQaxdBNSJ/KPd2pH2TqgY
-   XG/+CCbaJYA/Qwd3VZpBRQe1UnNk2rkew9oTZcMI6lyxnnvCkfe0cGbks
-   D5+FD2DaVb0USqVtrmooaaJczfeJs6PGI9HfIwvOmwKAPooYeRzJRohp8
-   A==;
-X-CSE-ConnectionGUID: qBMK6qiOQ3yRb7l+c6vKfQ==
-X-CSE-MsgGUID: wHNnr+QcQHypaTks+nV7Lg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11162"; a="21263353"
+  bh=mCsx0QXngc1tRJLyEc7vROSqNAJTKyqG25u/E86hHu8=;
+  b=A0y2yP8eWHf5QkzG+x9nb9TkFGRjX1ylu/qEfjiwxGs+FShGAExayb1F
+   Jn+Mz7YvIWdZjZHLYCz4ef/VLsEqtCmZLq+s1fwVdQUC0r580yhWP/MFe
+   bkYig0x5xFm8vOTEm3URRqAaf3WcqG3APfkho45asTNnpjpnYy0sMk3hn
+   xHzF/rMvAA/q7q3hHenRfiI8736UQtDUf90lz5VVwMsF9Ta+XDLXZap9v
+   QBl+JJELSty9/72AIaN0ge5kICqLpXrIac5ekBHzooZHt8uyubbwOgfLQ
+   pLyx4QLM0neSkKeSUlZPODKHgAqHXFF9n8nZO9Chc379ZFOtVzz9WyA3H
+   Q==;
+X-CSE-ConnectionGUID: lffqVoA/QYOJaAwya6GvFQ==
+X-CSE-MsgGUID: QWMeLaISRnmiarJY9fBEWA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11162"; a="32278830"
 X-IronPort-AV: E=Sophos;i="6.09,285,1716274800"; 
-   d="scan'208";a="21263353"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2024 04:22:28 -0700
-X-CSE-ConnectionGUID: iM9QhMsrRlC/RmA8aYMD7A==
-X-CSE-MsgGUID: LwyBf4ceQ4W+RavON2Bbug==
+   d="scan'208";a="32278830"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2024 04:26:33 -0700
+X-CSE-ConnectionGUID: zbbaIvIxQReJCsjUmDVR/Q==
+X-CSE-MsgGUID: Wra6aVTQRlm5QHzdFegvsw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.09,285,1716274800"; 
-   d="scan'208";a="58573160"
+   d="scan'208";a="63319144"
 Received: from smile.fi.intel.com ([10.237.72.54])
-  by orviesa009.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2024 04:22:24 -0700
+  by fmviesa004.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2024 04:26:30 -0700
 Received: from andy by smile.fi.intel.com with local (Exim 4.98)
 	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1sdpbY-0000000EhrZ-2ZRZ;
-	Tue, 13 Aug 2024 14:22:20 +0300
-Date: Tue, 13 Aug 2024 14:22:20 +0300
+	id 1sdpfW-0000000EhwO-00u9;
+	Tue, 13 Aug 2024 14:26:26 +0300
+Date: Tue, 13 Aug 2024 14:26:25 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
@@ -72,19 +72,18 @@ Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
 	Douglas Anderson <dianders@chromium.org>,
 	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
 	linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v4 2/6] regulator: Add regulator_of_get_optional() for
- pure DT regulator lookup
-Message-ID: <ZrtB7NPmnqF5ya2A@smile.fi.intel.com>
+Subject: Re: [PATCH v4 3/6] i2c: Introduce OF component probe function
+Message-ID: <ZrtC4Q4N_3x2KTNb@smile.fi.intel.com>
 References: <20240808095931.2649657-1-wenst@chromium.org>
- <20240808095931.2649657-3-wenst@chromium.org>
+ <20240808095931.2649657-4-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240808095931.2649657-3-wenst@chromium.org>
+In-Reply-To: <20240808095931.2649657-4-wenst@chromium.org>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240813_042228_574156_83A5044F 
-X-CRM114-Status: GOOD (  20.09  )
+X-CRM114-CacheID: sfid-20240813_042634_386971_F66490BC 
+X-CRM114-Status: GOOD (  27.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,77 +98,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 08, 2024 at 05:59:25PM +0800, Chen-Yu Tsai wrote:
-> The to-be-introduced I2C component prober needs to enable regulator
-> supplies (and toggle GPIO pins) for the various components it intends
-> to probe. To support this, a new "pure DT lookup" method for getting
-> regulator supplies is needed, since the device normally requesting
-> the supply won't get created until after the component is probed to
-> be available.
+On Thu, Aug 08, 2024 at 05:59:26PM +0800, Chen-Yu Tsai wrote:
+> Some devices are designed and manufactured with some components having
+> multiple drop-in replacement options. These components are often
+> connected to the mainboard via ribbon cables, having the same signals
+> and pin assignments across all options. These may include the display
+> panel and touchscreen on laptops and tablets, and the trackpad on
+> laptops. Sometimes which component option is used in a particular device
+> can be detected by some firmware provided identifier, other times that
+> information is not available, and the kernel has to try to probe each
+> device.
 > 
-> This adds a new regulator_of_get_optional() for this purpose. The
-> underlying code that support the existing regulator_get*() functions
-> are extended to support this specific case.
+> This change attempts to make the "probe each device" case cleaner. The
+> current approach is to have all options added and enabled in the device
+> tree. The kernel would then bind each device and run each driver's probe
+> function. This works, but has been broken before due to the introduction
+> of asynchronous probing, causing multiple instances requesting "shared"
+> resources, such as pinmuxes, GPIO pins, interrupt lines, at the same
+> time, with only one instance succeeding. Work arounds for these include
+> moving the pinmux to the parent I2C controller, using GPIO hogs or
+> pinmux settings to keep the GPIO pins in some fixed configuration, and
+> requesting the interrupt line very late. Such configurations can be seen
+> on the MT8183 Krane Chromebook tablets, and the Qualcomm sc8280xp-based
+> Lenovo Thinkpad 13S.
+> 
+> Instead of this delicate dance between drivers and device tree quirks,
+> this change introduces a simple I2C component probe. function For a
+> given class of devices on the same I2C bus, it will go through all of
+> them, doing a simple I2C read transfer and see which one of them responds.
+> It will then enable the device that responds.
+> 
+> This requires some minor modifications in the existing device tree. The
+> status for all the device nodes for the component options must be set
+> to "failed-needs-probe". This makes it clear that some mechanism is
+> needed to enable one of them, and also prevents the prober and device
+> drivers running at the same time.
 
 ...
 
->  /**
->   * regulator_dev_lookup - lookup a regulator device.
->   * @dev: device for regulator "consumer".
-> + * @node: device node for regulator supply lookup.
-> + *        Falls back to dev->of_node if NULL.
+> +int i2c_of_probe_component(struct device *dev, const char *type)
 
-Please, avoid using dereferences in the comments. Use plain language:
-"Falls back to the OF node of the @dev, if NULL." or alike.
-
->   * @supply: Supply name or regulator ID.
-
->   */
+Use respective scoped variants and remove the related of_node_put() calls.
 
 ...
 
->  static struct regulator_dev *regulator_dev_lookup(struct device *dev,
-> +						  struct device_node *node,
+> +		ocs = kzalloc(sizeof(*ocs), GFP_KERNEL);
 
-This function has no of_ prefix in its name. If you want to make it for all,
-please use fwnode instead. Otherwise I would expect a new one with of_ prefix.
-(But I really prefer just agnostic, i.e. fwnode, approach!)
+Use __free()
 
->  						  const char *supply)
->  {
-> +	bool pure_dt_lookup = false;
+> +		if (!ocs) {
+> +			ret = -ENOMEM;
+> +			goto err_put_node;
+> +		}
 
-Redundant assignment.
-
-> +	pure_dt_lookup = (node && !dev);
->  
-> +	/* Pure DT lookup should use given supply name directly */
-> +	if (!pure_dt_lookup)
-> +		regulator_supply_alias(&dev, &supply);
-> +
-> +	if (!node && dev && dev->of_node)
-
-The dev->of_node is redundant and with the above...
-
-> +		node = dev->of_node;
-
-...this becomes as simple as
-
-	if (!node && dev)
-
-> +	/* Pure DT lookup stops here. */
-> +	if (pure_dt_lookup)
-> +		return ERR_PTR(-ENODEV);
-
-Looking at this pure_dt_lookup and the above (somehow inverted) case I would
-rather use (node && !dev) or (!node && dev) explicitly everywhere.
-
-...
-
-> +struct regulator *_regulator_get(struct device *dev, struct device_node *node,
-> +				 const char *id, enum regulator_get_type get_type)
-
-Again, no of_ prefix and function becomes OF-specific...
+> +err_free_ocs:
+> +	kfree(ocs);
 
 -- 
 With Best Regards,
