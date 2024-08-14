@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25371C3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Aug 2024 13:42:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D945AC52D7B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Aug 2024 13:54:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RROH81GztSUclOcN12aLztcNK8PhtfjksjOFiy7bHSg=; b=sosEq+elgtNsjD6hbT5gR8NMoq
-	FrYQUt59cKKMEe0XWVrrq1mYE5knq/I0iIG/Bq/rAqV4X0Xql9TWwFU0Ln9LVfEcwILOcYbLlRM1y
-	2uGT7afi38z9Vm9yTnTosOJWC/J88F9YJ/WM1Qqc8ZT6dyTWGlxO0UkHdMDCyuELhuL5RwTEyRBWI
-	T7O6T2GWokSf4bpBVTl2B4Te+i5jYo8P6H04WqpxTzJammMIhpf48SRkQ1ajssVvmKkqxuw1w/bGj
-	GUnyGKmNRdxh9zAzVdd1lEspa3vP9UooPF6zk8GO4qR9mUdf8nJWCyxqS/aeRhjXDgk5rZ01JmfCw
-	pn75Yw1g==;
+	bh=gKaQIEEeg47lQwefNjsJzio/ktNqgN3Gi0cUkSve3hg=; b=StpKpMkp9Og6lq2atVOBGHa9co
+	VNgO37kWF7o1O3Aahoh89DMGiBnaLIzfUy5PxJ7sJNThgwOyZvNIQ+MWPcpQg8VZs2Q0AU680eMgX
+	hzdUY1evgLSN+q3vmp6C7pQDz2+0yv8fmWSyY/AMzcwfUKJOAr3HRGmc2YFZRe7yxq2P/os2+wtcX
+	SZviclUu9iXwEbkk+eLJ7KPp130JvtFnZHdVXdgwgitN1XnE1aSmrPT/rImrvQwPImgHsJXJjLL1C
+	eKwBYPP13d9wvqUN93XqJOLxTEIitYIk/iuPpriZWDbIfgHEV99hNf+4UllbwZOk/jY+8oEYETcWa
+	sG+9yfDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seEGx-000000078IV-12N1;
-	Wed, 14 Aug 2024 13:42:43 +0000
-Received: from mgamail.intel.com ([192.198.163.9])
+	id 1seESd-00000007AZ9-2O4Y;
+	Wed, 14 Aug 2024 13:54:47 +0000
+Received: from mgamail.intel.com ([192.198.163.14])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seEGI-000000078CN-1BM0;
-	Wed, 14 Aug 2024 13:42:05 +0000
+	id 1seER4-00000007A60-0FeX;
+	Wed, 14 Aug 2024 13:53:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1723642922; x=1755178922;
+  t=1723643590; x=1755179590;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:content-transfer-encoding:in-reply-to;
-  bh=hqcfXdtGQKVWLTvbdhM5pBJQQzUtmGdgqcjPbawdyX8=;
-  b=K5XlGbwXmqAw6ZT2boG0SKeWbEndaXsn6Y4yWPo+kLQpRsSmEsBsgvoh
-   K82E5ZphnM68/L24OTwQXuoZBJQZU1IHdzgJLq6TISkoty6jyxE3qYpeG
-   E9SZ6VRKUmRhHXlGOr07ElWJALy1WBwatjPz2alrp0sY0XrwoL+/q5p58
-   RYK0cylH3Ctfzm/nTGsxoR9ZM73Szm2cRpedTElkEFFi3preVpNIMw6/b
-   W4P6dukPQgmVhzLArhW/qJE5OtV/zyhH6w2NTkAo129hTUEs8Q/oDxBgZ
-   /a2ZijQ7Ud6RzxK273wf9MFglqrYuuwABsVLwtKhcBfvU/dX05Q9lnT9P
-   A==;
-X-CSE-ConnectionGUID: MDY8eAONRJ6SwZld7HKiaw==
-X-CSE-MsgGUID: tzM+0ThcSUyavqsIgxY+VA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11164"; a="32536642"
+  bh=sXDg6SJ866AaNtAk2Tp+FQv+cJ3dVaRfO0uMyWTSizM=;
+  b=LBXZavRuN/Clknov31BXS/vhDRnJkwoQYV6YME382TaXupz4JSLilSsb
+   XzQwqqZnud5P9O+cxFgmPxw3pRdRIxExnNA2TZ9/XShjlcLV2fj6aLbOO
+   y5RjtKMaw494WPrWtUpam8Nu2SU3rtf1yGJu4gut8kCgwgaxiuXtAPYtf
+   dV+5yKxi6nGTlDW3F74VTYHGBLCX/IWzJ+BvD643bvmzLoKgEGt5J+vnA
+   xzrfAjEZR19YJvYWK+/+2UKXI1siDRi6HgaR1Gnwwb/J34HPjA/64ONmZ
+   ipaShrqrCAYrrZhBRxFfUYcJxfp1lf8kxRo6C4VNuc8q/+mwPOzxQ5AGV
+   w==;
+X-CSE-ConnectionGUID: FnDjOaxhTsqvRaBcRUsLnQ==
+X-CSE-MsgGUID: zk1H3/1uS2+Mj2FNljuRmA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11164"; a="22028619"
 X-IronPort-AV: E=Sophos;i="6.10,146,1719903600"; 
-   d="scan'208";a="32536642"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
-  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2024 06:41:58 -0700
-X-CSE-ConnectionGUID: BVNQACSMRPqinWY3Kn6FPQ==
-X-CSE-MsgGUID: /UK/S/1HTIe2pQFmOaearg==
+   d="scan'208";a="22028619"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2024 06:53:09 -0700
+X-CSE-ConnectionGUID: GZjAjcOBS/2tvWYCAMukvQ==
+X-CSE-MsgGUID: DprzkeJOTT65SAJzcEe9iA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.10,146,1719903600"; 
-   d="scan'208";a="89818646"
+   d="scan'208";a="58898765"
 Received: from smile.fi.intel.com ([10.237.72.54])
-  by fmviesa001.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2024 06:41:55 -0700
+  by orviesa010.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2024 06:53:05 -0700
 Received: from andy by smile.fi.intel.com with local (Exim 4.98)
 	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1seEG8-0000000FC4y-17jJ;
-	Wed, 14 Aug 2024 16:41:52 +0300
-Date: Wed, 14 Aug 2024 16:41:52 +0300
+	id 1seEQv-0000000FCFz-3dM9;
+	Wed, 14 Aug 2024 16:53:01 +0300
+Date: Wed, 14 Aug 2024 16:53:01 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
@@ -72,22 +72,21 @@ Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
 	Douglas Anderson <dianders@chromium.org>,
 	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
 	linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v4 5/6] platform/chrome: Introduce device tree hardware
- prober
-Message-ID: <Zry0ILkU4VrL3Mms@smile.fi.intel.com>
+Subject: Re: [PATCH v4 4/6] i2c: of-prober: Add GPIO and regulator support
+Message-ID: <Zry2vbJ-BT4mI0eO@smile.fi.intel.com>
 References: <20240808095931.2649657-1-wenst@chromium.org>
- <20240808095931.2649657-6-wenst@chromium.org>
- <ZrtHhcNMiyHmKbal@smile.fi.intel.com>
- <CAGXv+5EgqdziyheOt7wzkbe036fqPcw_UpSHiMsB3W_nTB3NWQ@mail.gmail.com>
+ <20240808095931.2649657-5-wenst@chromium.org>
+ <ZrtGXfKE6BwupPPA@smile.fi.intel.com>
+ <CAGXv+5E+D8oXr7nh67HEPermJYoRp+Xf+oqSefOiUoCpyoKYUQ@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5EgqdziyheOt7wzkbe036fqPcw_UpSHiMsB3W_nTB3NWQ@mail.gmail.com>
+In-Reply-To: <CAGXv+5E+D8oXr7nh67HEPermJYoRp+Xf+oqSefOiUoCpyoKYUQ@mail.gmail.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240814_064203_960460_4240580D 
-X-CRM114-Status: GOOD (  20.00  )
+X-CRM114-CacheID: sfid-20240814_065310_163047_09CD48DF 
+X-CRM114-Status: GOOD (  37.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,37 +101,141 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 14, 2024 at 06:10:03PM +0800, Chen-Yu Tsai wrote:
-> On Tue, Aug 13, 2024 at 7:46 PM Andy Shevchenko
+On Wed, Aug 14, 2024 at 07:34:00PM +0800, Chen-Yu Tsai wrote:
+> On Tue, Aug 13, 2024 at 7:41 PM Andy Shevchenko
 > <andriy.shevchenko@linux.intel.com> wrote:
-> > On Thu, Aug 08, 2024 at 05:59:28PM +0800, Chen-Yu Tsai wrote:
+> > On Thu, Aug 08, 2024 at 05:59:27PM +0800, Chen-Yu Tsai wrote:
 
 ...
 
-> > > +static void chromeos_of_hw_prober_driver_exit(void)
-> > > +{
-> > > +     if (!chromeos_of_hw_prober_pdev)
-> > > +             return;
+> > > This adds GPIO and regulator management to the I2C OF component prober.
+
+> > Can this be two patches?
+> 
+> You mean one for GPIOs and one for regulators right? Sure.
+
+Yes.
+
+...
+
+> > > +#define RESOURCE_MAX 8
 > >
-> > First of all, this is dup for the next call, second, when may this conditional
-> > be true?
+> > Badly (broadly) named constant. Is it not the same that defines arguments in
+> > the OF phandle lookup? Can you use that instead?
 > 
-> When the module is loaded on a machine that doesn't match any entry,
-> neither the driver nor the device are registered. Hence the check.
+> I'm not sure what you are referring to. This is how many unique instances
+> of a given resource (GPIOs or regulators) the prober will track.
 > 
-> Or maybe the proper way to handle it is to return -ENODEV or something?
-> I'll work towards that.
+> MAX_TRACKED_RESOURCES maybe?
 
-The rule of thumb is the _exit() is called when your _init() finished with
-success. This conditional seems confusing and likely reveals the logic issue
-in _init(). Yes, _init() needs to return an error when there is no devices are
-registered or expected to be registered. If there are devices that may appear
-later on, this should be split to pure device driver and board file that
-instantiate device for the known cases.
+Better, but still ambiguous. We have a namespace approach, something like
+I2C_PROBER_... I have checked the existing constant and it's not what you
+want, so forget about that part, only name of the definition is questionable.
 
-> > > +     platform_device_unregister(chromeos_of_hw_prober_pdev);
-> > > +     platform_driver_unregister(&chromeos_of_hw_prober_driver);
-> > > +}
+...
+
+> > > +#define REGULATOR_SUFFIX "-supply"
+> >
+> > Name is bad, also move '-' to the code, it's not part of the suffix, it's a
+> > separator AFAICT.
+> 
+> OF_REGULATOR_SUPPLY_SUFFIX then?
+> 
+> Also, "supply" is not a valid property. It is always "X-supply".
+> Having the '-' directly in the string makes things simpler, albeit
+> making the name slightly off.
+
+Let's use proper SUFFIX and separator separately.
+
+#define I2C_PROBER_..._SUFFIX "supply"
+
+(or alike)
+
+...
+
+> > > +     p = strstr(prop->name, REGULATOR_SUFFIX);
+> >
+> > strstr()?! Are you sure it will have no side effects on some interesting names?
+> >
+> > > +     if (!p)
+> > > +             return 0;
+> >
+> > > +     if (strcmp(p, REGULATOR_SUFFIX))
+> > > +             return 0;
+> >
+> > Ah, you do it this way...
+> >
+> > What about
+> 
+> About? (feels like an unfinished comment)
+
+Yes, sorry for that. Since you found a better alternative, no need to finish
+this part :-)
+
+> Looking around, it seems I could just rename and export "is_supply_name()"
+> from drivers/regulator/of_regulator.c .
+
+Even better!
+
+Something similar most likely can be done with GPIO (if not, we are always open
+to the ideas how to deduplicate the code).
+
+...
+
+> > > +#define GPIO_SUFFIX "-gpio"
+> >
+> > Bad define name, and why not "gpios"?
+> 
+> "-gpio" in strstr() would match against both "foo-gpio" and "foo-gpios".
+> More like laziness.
+
+And opens can of worms with whatever ending of the property name.
+Again, let's have something that GPIO library provides for everybody.
+
+...
+
+> > > +     ret = of_parse_phandle_with_args_map(node, prop->name, "gpio", 0, &phargs);
+> > > +     if (ret)
+> > > +             return ret;
+
+(1)
+
+> > > +     gpiod = fwnode_gpiod_get_index(fwnode, con_id, 0, GPIOD_ASIS, "i2c-of-prober");
+> > > +     if (IS_ERR(gpiod)) {
+> > > +             of_node_put(phargs.np);
+> > > +             return PTR_ERR(gpiod);
+> > > +     }
+> >
+> > Try not to mix fwnode and OF specifics. You may rely on fwnode for GPIO completely.
+> 
+> Well, fwnode doesn't give a way to identify GPIOs without requesting them.
+> 
+> Instead I think I could first request GPIOs exclusively, and if that fails
+> try non-exclusive and see if that GPIO descriptor matches any known one.
+> If not then something in the DT is broken and it should error out. Then
+> the phandle parsing code could be dropped.
+
+What I meant, the, e.g., (1) can be rewritten using fwnode API, but if you know
+better way of doing things, then go for it.
+
+> > > +     if (data->gpiods_num == ARRAY_SIZE(data->gpiods)) {
+> > > +             of_node_put(phargs.np);
+> > > +             gpiod_put(gpiod);
+> > > +             return -ENOMEM;
+> > > +     }
+
+...
+
+> > > +     for (int i = data->regulators_num; i >= 0; i--)
+> > > +             regulator_put(data->regulators[i]);
+> >
+> > Bulk regulators?
+> 
+> Bulk regulators API uses its own data structure which is not just an
+> array. So unlike gpiod_*_array() it can't be used in this case.
+
+But it sounds like a bulk regulator case...
+Whatever, it's Mark's area and he might suggest something better.
 
 -- 
 With Best Regards,
