@@ -4,66 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9C6BC52D7B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Aug 2024 11:55:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB2E5C52D7B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Aug 2024 12:06:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fDFi8G/gvWG/uLs8nFSLe/kVh6W8heQhwstyIMvduTw=; b=oECxwk689h8ZIarE8PjSDfR73b
-	xaJ/6JLkXrzNGsoae1ucU9dgqOHwCwaIUIQn5EXoHJYiSL3v8PvG0T1jVakTD79SPE06fZJEm72yF
-	TW7zijjBGXmdPOyZdDuOAqQNYB2ZqqaF7P5c0DzvRTO7xHx6w4BBnO/QU+ccB5wLE5wso1jWLSjuY
-	LLSI6n6G4v0xBur1aUarLLzdoEr1fprQNE/vzzYbwxPMi6Mtr6VolD9yUJTwbU8Lc57Zk2JCKSk+0
-	uVXpEJty7fTOFsHvg574c8J0EzamOP9glMsE0bavpVITlYU3iwAT39ooS8MHQaf0jY375o98stjZE
-	WA0H98pg==;
+	bh=PWDlhuspqMZQSVfqkB5uwLLhc99x2hTs9thqw7rojvM=; b=e6Qoxu2G8kx8yXml+ediiVWtmm
+	3fiH6E7XmJVrlvxH1mGiR7HBpbiJ5NPnSTrPZHSg2FAT957FQ/Zzw2Qzi6UNC0E4YraaVOV88pwCJ
+	ivUTXpHOy+1fF8OhznsvC9GIimrrrJy1Cf269X3qBFpx/xO8D7vyKn3w0IgWpTSw6PYVAw4yA58gE
+	GZjOUcjv1p+0xFwVIAmomydhlZQItcRAjAZ/tY/Wu6hP2/zSnj5RPSi3WXoojrRGjqfnY2m5MRAtk
+	Z+a5+2i6YQ5bB9bOKsegJjFbeIbJktkV+/RyjBqrtCL0/Y+noeSbMgT34uutOK8IA+8hsPb3iZS63
+	6zfSoa7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seCbe-00000006qji-0tGq;
-	Wed, 14 Aug 2024 11:55:58 +0000
-Received: from szxga04-in.huawei.com ([45.249.212.190])
+	id 1seClc-00000006sCL-2ACV;
+	Wed, 14 Aug 2024 12:06:16 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seCay-00000006qYr-3r9I;
-	Wed, 14 Aug 2024 11:55:19 +0000
-Received: from mail.maildlp.com (unknown [172.19.88.163])
-	by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4WkRQH04FVz2CmlL;
-	Wed, 14 Aug 2024 19:50:15 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
-	by mail.maildlp.com (Postfix) with ESMTPS id 13E4F180019;
-	Wed, 14 Aug 2024 19:55:07 +0800 (CST)
-Received: from [10.67.120.129] (10.67.120.129) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Wed, 14 Aug 2024 19:55:06 +0800
-Message-ID: <302315e8-9c0d-433a-a6fd-24b46645179e@huawei.com>
-Date: Wed, 14 Aug 2024 19:55:06 +0800
+	id 1seCky-00000006s4m-24Qh;
+	Wed, 14 Aug 2024 12:05:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 32688619F9;
+	Wed, 14 Aug 2024 12:05:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 18C53C32786;
+	Wed, 14 Aug 2024 12:05:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1723637134;
+	bh=Tt46dLTivc8ro1PclaaecN0IJCdF1hcNl8PaGQssZAQ=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=eIbmEZ+axeTJhSQW9d3VUCCmVSeahAi91uWQRIbKyHZ8xXIvkmMpI18KWX5kL1NDb
+	 6wM3zeIS6FiOHrW+Li4YZr7qwVs9BnlQd6BPDeMdoKfX3LS8tF7xwyNBrCgEuhieUu
+	 EPEIVVuZNtuab2nSrL2aCSIiJGk3I1KwmBioLHdlKx/rGribjazojeLltziaslWZOC
+	 367Tw/PpFdfUYuCDO6MMwBFY6/CR58y3W9Qm3Zjwo48AZ0ev0UOozkerxgh93Gskvz
+	 KmvAasXTprdah0Couo9zGZ+++wJ3vh6Fjn7vIYdF9wZ7Ir18Eog/HwsBxlw277W6Go
+	 5fLRYcdnhBp/A==
+From: Mark Brown <broonie@kernel.org>
+To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, 
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, 
+ Bard Liao <yung-chuan.liao@linux.intel.com>, 
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, 
+ Daniel Baluta <daniel.baluta@nxp.com>, 
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
+ =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>, 
+ Trevor Wu <trevor.wu@mediatek.com>, 
+ =?utf-8?q?Albert_Jakie=C5=82a?= <jakiela@google.com>
+Cc: sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20240809135627.544429-1-jakiela@google.com>
+References: <20240809135627.544429-1-jakiela@google.com>
+Subject: Re: [PATCH] ASoC: SOF: mediatek: Add missing board compatible
+Message-Id: <172363713082.176839.8410056147508796370.b4-ty@kernel.org>
+Date: Wed, 14 Aug 2024 13:05:30 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v13 00/14] Replace page_frag with page_frag_cache
- for sk_page_frag()
-To: Alexander Duyck <alexander.duyck@gmail.com>
-CC: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>,
-	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Alexei Starovoitov
-	<ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard
- Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <bpf@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-References: <20240808123714.462740-1-linyunsheng@huawei.com>
- <4aba9fae-563d-4a4e-8336-44e24551d9f9@huawei.com>
- <CAKgT0UezjgRX9QUWkee_p8KVQQa1va12k2CaGJeOYrr5LGg4YQ@mail.gmail.com>
-Content-Language: en-US
-From: Yunsheng Lin <linyunsheng@huawei.com>
-In-Reply-To: <CAKgT0UezjgRX9QUWkee_p8KVQQa1va12k2CaGJeOYrr5LGg4YQ@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.67.120.129]
-X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
- dggpemf200006.china.huawei.com (7.185.36.61)
+X-Mailer: b4 0.15-dev-37811
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240814_045517_610007_F67BA16A 
-X-CRM114-Status: GOOD (  21.76  )
+X-CRM114-CacheID: sfid-20240814_050536_598208_1F7D5403 
+X-CRM114-Status: UNSURE (   9.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,60 +87,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2024/8/13 23:11, Alexander Duyck wrote:
-> On Tue, Aug 13, 2024 at 4:30 AM Yunsheng Lin <linyunsheng@huawei.com> wrote:
->>
->> On 2024/8/8 20:37, Yunsheng Lin wrote:
->>
->> ...
->>
->>>
->>> CC: Alexander Duyck <alexander.duyck@gmail.com>
->>>
->>> 1. https://lore.kernel.org/all/20240228093013.8263-1-linyunsheng@huawei.com/
->>>
->>> Change log:
->>> V13:
->>>    1. Move page_frag_test from mm/ to tools/testing/selftest/mm
->>>    2. Use ptr_ring to replace ptr_pool for page_frag_test.c
->>>    3. Retest based on the new testing ko, which shows a big different
->>>       result than using ptr_pool.
->>
->> Hi, Davem & Jakub & Paolo
->>     It seems the state of this patchset is changed to 'Deferred' in the
->> patchwork, as the info regarding the state in 'Documentation/process/
->> maintainer-netdev.rst':
->>
->> Deferred           patch needs to be reposted later, usually due to dependency
->>                    or because it was posted for a closed tree
->>
->> Obviously it was not the a closed tree reason here, I guess it was the dependency
->> reason casuing the 'Deferred' here? I am not sure if I understand what sort of
->> dependency this patchset is running into? It would be good to mention what need
->> to be done avoid the kind of dependency too.
->>
->>
->> Hi, Alexander
->>     The v13 mainly address your comments about the page_fage_test module.
->> It seems the your main comment about this patchset is about the new API
->> naming now, and it seems there was no feedback in previous version for
->> about a week:
->>
->> https://lore.kernel.org/all/ca6be29e-ab53-4673-9624-90d41616a154@huawei.com/
->>
->> If there is still disagreement about the new API naming or other things, it
->> would be good to continue the discussion, so that we can have better
->> understanding of each other's main concern and better idea might come up too,
->> like the discussion about new layout for 'struct page_frag_cache' and the
->> new refactoring in patch 8.
+On Fri, 09 Aug 2024 13:56:27 +0000, Albert Jakieła wrote:
+> Add Google Dojo compatible.
 > 
-> Sorry for not getting to this sooner. I have been travelling for the
-> last week and a half. I just got home on Sunday and I am suffering
-> from a pretty bad bout of jet lag as I am overcoming a 12.5 hour time
-> change. The earliest I can probably get to this for review would be
-> tomorrow morning (8/14 in the AM PDT) as my calendar has me fully
-> booked with meetings most of today.
+> 
 
-Thanks for the clarifying.
-Appreciating for the time and effort of reviewing.
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: SOF: mediatek: Add missing board compatible
+      commit: c0196faaa927321a63e680427e075734ee656e42
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
