@@ -4,83 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0913BC3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Aug 2024 11:34:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9C6BC52D7B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Aug 2024 11:55:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3DTUWciiXGejaw0SJ9gyrR/Zy7kjgf0cevdFLxvX7Go=; b=NGkRHo7c05xKJQs2/AApjW3Kac
-	QyiIWt+NNnS/9xGxnlqr+finWpowrfK+RqZQ2xMm5Hax7qj6+olsKewjTZN1ww6aydhzeclsdsaaW
-	7E5goq816CN6x8hxrone2nemsbpgUOgjK+XoNwX4L/wxNGLGKkCUFAWs3iEt4P3Tr8aRKSfSfdhhr
-	nCQ7Rdq/CBk69zZ50des2fspTUlGmy+4M3xU7IC3wKdSXaAymGlFOgtx2kS4ZUeA8kWYT/w0sv7SU
-	q0DvFZXsq3F5mzqlSM5RiJZlug9yKyVi0+2gzh4uvgisJMFD2ZlFQShcEaQE6q/zNRD6NQlcB8qnu
-	iAkowUzA==;
+	bh=fDFi8G/gvWG/uLs8nFSLe/kVh6W8heQhwstyIMvduTw=; b=oECxwk689h8ZIarE8PjSDfR73b
+	xaJ/6JLkXrzNGsoae1ucU9dgqOHwCwaIUIQn5EXoHJYiSL3v8PvG0T1jVakTD79SPE06fZJEm72yF
+	TW7zijjBGXmdPOyZdDuOAqQNYB2ZqqaF7P5c0DzvRTO7xHx6w4BBnO/QU+ccB5wLE5wso1jWLSjuY
+	LLSI6n6G4v0xBur1aUarLLzdoEr1fprQNE/vzzYbwxPMi6Mtr6VolD9yUJTwbU8Lc57Zk2JCKSk+0
+	uVXpEJty7fTOFsHvg574c8J0EzamOP9glMsE0bavpVITlYU3iwAT39ooS8MHQaf0jY375o98stjZE
+	WA0H98pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seCGf-00000006mqP-2jTB;
-	Wed, 14 Aug 2024 11:34:17 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1seCbe-00000006qji-0tGq;
+	Wed, 14 Aug 2024 11:55:58 +0000
+Received: from szxga04-in.huawei.com ([45.249.212.190])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seCGd-00000006mpG-0dYa
-	for linux-mediatek@lists.infradead.org;
-	Wed, 14 Aug 2024 11:34:16 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-5314c6dbaa5so6277061e87.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 14 Aug 2024 04:34:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1723635253; x=1724240053; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=3DTUWciiXGejaw0SJ9gyrR/Zy7kjgf0cevdFLxvX7Go=;
-        b=l4RaB+nz/Zx7JYQ5Z1lzJ8b5ffLAPTmDZGq/16E/OupMzBL6WCRo0CHl54wgSXWugt
-         s+qIxzJLwjIRLadHtMakMck5rIEy/eKBOkbLoW7xxWiRDx1N/sWP1zdbhKWabHL3Z0ni
-         PEoU60QmkL8RYE4Gagn4lxMNOZtQgDXX7Soc8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723635253; x=1724240053;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=3DTUWciiXGejaw0SJ9gyrR/Zy7kjgf0cevdFLxvX7Go=;
-        b=TRh1kw25ZoH5ST1efYKfCJfsRzpDzm2trib8ly+3p9stHT+eyaLwORokJTo8sjgltJ
-         0igjFlcve7cw+h/GfUHCRR+RJlvjYOL1yzUzRNFvrISN9QGjkKsVRXsPtDNJSkGgkbU4
-         4e+iv1/eY1JqkmxGaT+YBG0OGGD+RHIrhqHzz6SkwYpekiXNHxc0D203Nljh+p/sRQdz
-         lAn4cHaGsggYHO3XcOGLm5BUKjK/23kDsn1ZpF65rX/8tTVYwMMvGPf7j0kVTFAL3Yju
-         qaIe5seP1jH6jB3NOPzntoRc5zx9ogcdFE9wI+ZGjaVrHBiEMErSk3eodnb/7qblD3fc
-         vcZw==
-X-Forwarded-Encrypted: i=1; AJvYcCXSLSeUg0ATlMLaibnq+2+ydis5liEnjV0FM+ZuzcqfkKIOw9Mm+570SwTl06wA9AJ3pQHkonmGlC3lGLaryEU5xeaKUKVzaqtMLq7Bh3HDYxHc
-X-Gm-Message-State: AOJu0YzLma66ADga7IOdqpUEiXSse5w5+0s3cvy4sDsmB73XXQfnkLBx
-	1PgQtcclVGxQg7KmgwNx+oMxDNGrBsa14gW0TC8YeFIG7C/Ple019hzIWbLwi5Eow+w3PVR6jip
-	h7vv8S4WacN1BeAYznSR0Ykj0r8to0m0KkmZ8
-X-Google-Smtp-Source: AGHT+IGHtXOtyqmjiFmwFzO2IEhU3/HxlXhAqlpIluKBQ4NDerwSVovxb3/0a9iK1QAVUU2JdcZsQmbSEH2aKWMVJ7E=
-X-Received: by 2002:a05:6512:1396:b0:52c:e03d:dfd7 with SMTP id
- 2adb3069b0e04-532edbe9ab4mr1855931e87.39.1723635253262; Wed, 14 Aug 2024
- 04:34:13 -0700 (PDT)
+	id 1seCay-00000006qYr-3r9I;
+	Wed, 14 Aug 2024 11:55:19 +0000
+Received: from mail.maildlp.com (unknown [172.19.88.163])
+	by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4WkRQH04FVz2CmlL;
+	Wed, 14 Aug 2024 19:50:15 +0800 (CST)
+Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
+	by mail.maildlp.com (Postfix) with ESMTPS id 13E4F180019;
+	Wed, 14 Aug 2024 19:55:07 +0800 (CST)
+Received: from [10.67.120.129] (10.67.120.129) by
+ dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.11; Wed, 14 Aug 2024 19:55:06 +0800
+Message-ID: <302315e8-9c0d-433a-a6fd-24b46645179e@huawei.com>
+Date: Wed, 14 Aug 2024 19:55:06 +0800
 MIME-Version: 1.0
-References: <20240808095931.2649657-1-wenst@chromium.org> <20240808095931.2649657-5-wenst@chromium.org>
- <ZrtGXfKE6BwupPPA@smile.fi.intel.com>
-In-Reply-To: <ZrtGXfKE6BwupPPA@smile.fi.intel.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 14 Aug 2024 19:34:00 +0800
-Message-ID: <CAGXv+5E+D8oXr7nh67HEPermJYoRp+Xf+oqSefOiUoCpyoKYUQ@mail.gmail.com>
-Subject: Re: [PATCH v4 4/6] i2c: of-prober: Add GPIO and regulator support
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
-	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
-	Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
-	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, 
-	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>, linux-i2c@vger.kernel.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v13 00/14] Replace page_frag with page_frag_cache
+ for sk_page_frag()
+To: Alexander Duyck <alexander.duyck@gmail.com>
+CC: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>,
+	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Alexei Starovoitov
+	<ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard
+ Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <bpf@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+References: <20240808123714.462740-1-linyunsheng@huawei.com>
+ <4aba9fae-563d-4a4e-8336-44e24551d9f9@huawei.com>
+ <CAKgT0UezjgRX9QUWkee_p8KVQQa1va12k2CaGJeOYrr5LGg4YQ@mail.gmail.com>
+Content-Language: en-US
+From: Yunsheng Lin <linyunsheng@huawei.com>
+In-Reply-To: <CAKgT0UezjgRX9QUWkee_p8KVQQa1va12k2CaGJeOYrr5LGg4YQ@mail.gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.67.120.129]
+X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+ dggpemf200006.china.huawei.com (7.185.36.61)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240814_043415_250959_1B404C12 
-X-CRM114-Status: GOOD (  44.15  )
+X-CRM114-CacheID: sfid-20240814_045517_610007_F67BA16A 
+X-CRM114-Status: GOOD (  21.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,234 +78,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 13, 2024 at 7:41=E2=80=AFPM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
->
-> On Thu, Aug 08, 2024 at 05:59:27PM +0800, Chen-Yu Tsai wrote:
-> > This adds GPIO and regulator management to the I2C OF component prober.
->
-> Can this be two patches?
+On 2024/8/13 23:11, Alexander Duyck wrote:
+> On Tue, Aug 13, 2024 at 4:30 AM Yunsheng Lin <linyunsheng@huawei.com> wrote:
+>>
+>> On 2024/8/8 20:37, Yunsheng Lin wrote:
+>>
+>> ...
+>>
+>>>
+>>> CC: Alexander Duyck <alexander.duyck@gmail.com>
+>>>
+>>> 1. https://lore.kernel.org/all/20240228093013.8263-1-linyunsheng@huawei.com/
+>>>
+>>> Change log:
+>>> V13:
+>>>    1. Move page_frag_test from mm/ to tools/testing/selftest/mm
+>>>    2. Use ptr_ring to replace ptr_pool for page_frag_test.c
+>>>    3. Retest based on the new testing ko, which shows a big different
+>>>       result than using ptr_pool.
+>>
+>> Hi, Davem & Jakub & Paolo
+>>     It seems the state of this patchset is changed to 'Deferred' in the
+>> patchwork, as the info regarding the state in 'Documentation/process/
+>> maintainer-netdev.rst':
+>>
+>> Deferred           patch needs to be reposted later, usually due to dependency
+>>                    or because it was posted for a closed tree
+>>
+>> Obviously it was not the a closed tree reason here, I guess it was the dependency
+>> reason casuing the 'Deferred' here? I am not sure if I understand what sort of
+>> dependency this patchset is running into? It would be good to mention what need
+>> to be done avoid the kind of dependency too.
+>>
+>>
+>> Hi, Alexander
+>>     The v13 mainly address your comments about the page_fage_test module.
+>> It seems the your main comment about this patchset is about the new API
+>> naming now, and it seems there was no feedback in previous version for
+>> about a week:
+>>
+>> https://lore.kernel.org/all/ca6be29e-ab53-4673-9624-90d41616a154@huawei.com/
+>>
+>> If there is still disagreement about the new API naming or other things, it
+>> would be good to continue the discussion, so that we can have better
+>> understanding of each other's main concern and better idea might come up too,
+>> like the discussion about new layout for 'struct page_frag_cache' and the
+>> new refactoring in patch 8.
+> 
+> Sorry for not getting to this sooner. I have been travelling for the
+> last week and a half. I just got home on Sunday and I am suffering
+> from a pretty bad bout of jet lag as I am overcoming a 12.5 hour time
+> change. The earliest I can probably get to this for review would be
+> tomorrow morning (8/14 in the AM PDT) as my calendar has me fully
+> booked with meetings most of today.
 
-You mean one for GPIOs and one for regulators right? Sure.
-
-> > Components that the prober intends to probe likely require their
-> > regulator supplies be enabled, and GPIOs be toggled to enable them or
-> > bring them out of reset before they will respond to probe attempts.
-> >
-> > Without specific knowledge of each component's resource names or
-> > power sequencing requirements, the prober can only enable the
-> > regulator supplies all at once, and toggle the GPIOs all at once.
-> > Luckily, reset pins tend to be active low, while enable pins tend to
-> > be active high, so setting the raw status of all GPIO pins to high
-> > should work. The wait time before and after resources are enabled
-> > are collected from existing drivers and device trees.
-> >
-> > The prober collects resources from all possible components and enables
-> > them together, instead of enabling resources and probing each component
-> > one by one. The latter approach does not provide any boot time benefits
-> > over simply enabling each component and letting each driver probe
-> > sequentially.
-> >
-> > The prober will also deduplicate the resources, since on a component
-> > swap out or co-layout design, the resources are always the same.
-> > While duplicate regulator supplies won't cause much issue, shared
-> > GPIOs don't work reliably, especially with other drivers. For the
-> > same reason, the prober will release the GPIOs before the successfully
-> > probed component is actually enabled.
->
-> ...
->
-> > +/*
-> > + * While 8 seems like a small number, especially when probing many com=
-ponent
-> > + * options, in practice all the options will have the same resources. =
-The
-> > + * code getting the resources below does deduplication to avoid confli=
-cts.
-> > + */
-> > +#define RESOURCE_MAX 8
->
-> Badly (broadly) named constant. Is it not the same that defines arguments=
- in
-> the OF phandle lookup? Can you use that instead?
-
-I'm not sure what you are referring to. This is how many unique instances
-of a given resource (GPIOs or regulators) the prober will track.
-
-MAX_TRACKED_RESOURCES maybe?
-
-> ...
->
-> > +#define REGULATOR_SUFFIX "-supply"
->
-> Name is bad, also move '-' to the code, it's not part of the suffix, it's=
- a
-> separator AFAICT.
-
-OF_REGULATOR_SUPPLY_SUFFIX then?
-
-Also, "supply" is not a valid property. It is always "X-supply".
-Having the '-' directly in the string makes things simpler, albeit
-making the name slightly off.
-
-> ...
->
-> > +     p =3D strstr(prop->name, REGULATOR_SUFFIX);
->
-> strstr()?! Are you sure it will have no side effects on some interesting =
-names?
->
-> > +     if (!p)
-> > +             return 0;
->
-> > +     if (strcmp(p, REGULATOR_SUFFIX))
-> > +             return 0;
->
-> Ah, you do it this way...
->
-> What about
-
-About? (feels like an unfinished comment)
-
-Looking around, it seems I could just rename and export "is_supply_name()"
-from drivers/regulator/of_regulator.c .
-
-> > +
-> > +     strscpy(con, prop->name, p - prop->name + 1);
-> > +     regulator =3D regulator_of_get_optional(node, con);
-> > +     /* DT lookup should never return -ENODEV */
-> > +     if (IS_ERR(regulator))
-> > +             return PTR_ERR(regulator);
->
-> ...
->
-> > +     for (int i =3D 0; i < data->regulators_num; i++)
->
-> Why signed?
-
-No real reason, other than being the same as the for loops in the
-free functions.
-
-> > +             if (regulator_is_equal(regulator, data->regulators[i])) {
-> > +                     regulator_put(regulator);
-> > +                     regulator =3D NULL;
-> > +                     break;
-> > +             }
->
-> ...
->
-> > +#define GPIO_SUFFIX "-gpio"
->
-> Bad define name, and why not "gpios"?
-
-"-gpio" in strstr() would match against both "foo-gpio" and "foo-gpios".
-More like laziness.
-
-> ...
->
-> > +     p =3D strstr(prop->name, GPIO_SUFFIX);
-> > +     if (p) {
-> > +             strscpy(con, prop->name, p - prop->name + 1);
-> > +             con_id =3D con;
-> > +     } else if (strcmp(prop->name, "gpio") && strcmp(prop->name, "gpio=
-s")) {
-> > +             return 0;
->
-> We have an array of these suffixes, please use it. If required make it ex=
-ported
-> to the others.
-
-OK. I'll rewrite this section with that then.
-
-> > +     }
->
-> ...
->
-> > +     ret =3D of_parse_phandle_with_args_map(node, prop->name, "gpio", =
-0, &phargs);
-> > +     if (ret)
-> > +             return ret;
->
-> > +     gpiod =3D fwnode_gpiod_get_index(fwnode, con_id, 0, GPIOD_ASIS, "=
-i2c-of-prober");
-> > +     if (IS_ERR(gpiod)) {
-> > +             of_node_put(phargs.np);
-> > +             return PTR_ERR(gpiod);
-> > +     }
->
-> Try not to mix fwnode and OF specifics. You may rely on fwnode for GPIO c=
-ompletely.
-
-Well, fwnode doesn't give a way to identify GPIOs without requesting them.
-
-Instead I think I could first request GPIOs exclusively, and if that fails
-try non-exclusive and see if that GPIO descriptor matches any known one.
-If not then something in the DT is broken and it should error out. Then
-the phandle parsing code could be dropped.
-
-> > +     if (data->gpiods_num =3D=3D ARRAY_SIZE(data->gpiods)) {
-> > +             of_node_put(phargs.np);
-> > +             gpiod_put(gpiod);
-> > +             return -ENOMEM;
-> > +     }
->
-> ...
->
-> > +     for (int i =3D data->gpiods_num - 1; i >=3D 0; i--)
-> > +             gpiod_put(data->gpiods[i]);
->
-> This sounds like reinvention of gpiod_*_array() call.
-
-Indeed. Will switch to gpiod_put_array() with some slight tweaks.
-
-> ...
->
-> > +     for (int i =3D data->regulators_num; i >=3D 0; i--)
-> > +             regulator_put(data->regulators[i]);
->
-> Bulk regulators?
-
-Bulk regulators API uses its own data structure which is not just an
-array. So unlike gpiod_*_array() it can't be used in this case.
-
-> ...
->
-> > +     for_each_child_of_node_scoped(i2c_node, node) {
->
-> Eventually _scoped(), but...
->
-> > +             u32 addr;
-> > +
-> > +             if (!of_node_name_prefix(node, type))
-> > +                     continue;
-> > +             if (of_property_read_u32(node, "reg", &addr))
-> > +                     continue;
-> > +
-> > +             dev_dbg(dev, "Requesting resources for %pOF\n", node);
-> > +             ret =3D i2c_of_probe_get_res(dev, node, &data);
-> > +             if (ret) {
->
-> > +                     of_node_put(i2c_node);
->
-> ...huh?!
-
-Oops. This and the next "of_node_put(i2c_node)" should be
-"i2c_put_adapter(i2c)" instead.
-
-
-Thank you for the review. More stuff to try.
-
-
-Regards
-ChenYu
-
-> > +                     return ret;
-> > +             }
-> > +     }
->
-> --
-> With Best Regards,
-> Andy Shevchenko
->
->
+Thanks for the clarifying.
+Appreciating for the time and effort of reviewing.
 
