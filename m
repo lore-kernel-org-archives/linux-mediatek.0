@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10315C52D7F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Aug 2024 04:46:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EEBDC3DA7F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Aug 2024 09:55:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1T1veMt9WGefVzxV61hQN46s0M2ozLoU6sDsGtd5rg0=; b=yXoqglN5zO4pmqmV5lfRkpkCSm
-	M+5uNm1C/MEG6urQDWbCSp9AOTaC8F/VOw5zL8Z3UhiHgz6S3ZrBo7Mx2b8lcbokwaioWrMwuhuWo
-	kk87RwI01Pbj7Ne4kFHJZ0zPN0FxNvsxtYlKqBxLqG7/H2SUNrQ7+9KT/xM1ipr0XTtvajeNCalYJ
-	5z1lZOLE5XZxTMY6jGr2kO6/MseHnDQFWzo2VsV7fKk5KuE+b/IDgdMemZqAJLX2rbkFfi1xsudW7
-	cfmg0fMO1PUQIF7eTVe5cVBygEZ2IsDf+S9UN3hQ7J54wEhjnIEG9EcWnpe1Z8fd8v6l035nru8A0
-	pmnOBnWw==;
+	bh=m5h80tcGsfqjYM1UFpSbRtoNZZUnUPL2z1uKz9S/Kkk=; b=GHWDQ1aZvEVO132zD4Mc+6oKy6
+	2wSVf5MV3PFXpXnla4xOxC2N1Fei3mWR3+OhlkvBHFeHMGtM6bQm3OYwpPTBTp+pUqfrwEkcuraQn
+	w7+YHScVjlmrQwC1rhwHSIPEiC3Xpvv3sjZFzc2xDRHfyrlNY/G1CXRzDlxhJ6IPphcEvJFmoaTSO
+	WO1/1v66l5gza+pcawVGWmEPeW/pcwQC0hIFtdb1ibJl1f9yb+mVr/7muT3+imUlb5w6sllDgextn
+	c7RaJCE5UC/SRqfsAbyEPEx55ANCIUaoTmFmxweKG6+iIb9gxDji4VVtbHuBVz0Y4cUyPYpyibqvD
+	HSVaBR9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seSN7-000000090jh-49O2;
-	Thu, 15 Aug 2024 04:46:01 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1seXCf-00000009WXW-1Vlr;
+	Thu, 15 Aug 2024 09:55:33 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seSMT-000000090ey-3IGG
+	id 1seXCb-00000009WWC-0rrn
 	for linux-mediatek@lists.infradead.org;
-	Thu, 15 Aug 2024 04:45:23 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-52f04c29588so748617e87.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 14 Aug 2024 21:45:21 -0700 (PDT)
+	Thu, 15 Aug 2024 09:55:31 +0000
+Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-5314c6dbaa5so983937e87.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 15 Aug 2024 02:55:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1723697119; x=1724301919; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1723715727; x=1724320527; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=1T1veMt9WGefVzxV61hQN46s0M2ozLoU6sDsGtd5rg0=;
-        b=lfEmnjsuqVr6MlvI9EqJ9ZPJ2JS1aSx7h/1i7wCJpBb0srfxRbTzqpU8/OALnCnz7k
-         TmJRBddGNzw6YliiheqTsW3DPQBeVeC8VpWVmVcdHfa09plMC4T4y3jmR5/kS5W46a4D
-         4mzgA7cuUxYyOGXagXKZUwqPLwOZu7RxHPVKk=
+        bh=m5h80tcGsfqjYM1UFpSbRtoNZZUnUPL2z1uKz9S/Kkk=;
+        b=JUyjLsLxNNMBKiYm6IOUnnx9xJl3JOpcBzO7P4wgcYp0mDIhcfB25/P9uIWFV9oK17
+         qDGDfpa6NrZGDFW1qtWpP8yN5jfFJ78rXd7dLrGGxSIhMv93jDcL/zEKe90Nhr3aI51t
+         HaYXJuvjKB5+Fa3bczOZZh1rJWLo4aOg2fnm4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723697119; x=1724301919;
+        d=1e100.net; s=20230601; t=1723715727; x=1724320527;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=1T1veMt9WGefVzxV61hQN46s0M2ozLoU6sDsGtd5rg0=;
-        b=jbfOaf5ebPjLrJ87QniuuyI8ojwYBqameTXUE1eGFdyB5UYYIZUoJFg2fQJjxOBeGR
-         aWHSENqnveMG97eAqCXrk4WyaobC2iySbCQzCsvevMyFIuOOv+m4/TMjGtdaxUAOfxW3
-         vNIuXziHv0o9fjB/KJLmauvIJoYgdxYtg9G8JDMvz132C3JGyIZxoQNFk3/FEUAtKims
-         V0lEYGvg9nC7lZyJqmqXVa7iVbR34+y7NXSvGZ6Dbshjk1OsPGFqVJswfFkaTXsoP2TI
-         IlkK/ASJc2/wVaMqavslxbv66LtrtyhL3xdhWsPRW2wQalkPMCvT6QtVbUPnp/6rXvxZ
-         pl9w==
-X-Forwarded-Encrypted: i=1; AJvYcCVqUyIAEor9T7rCbNBbjm+b5YNI7o5hv1izGLkAV+uC+dNuCwTlLvUTeZdz+ToDkFDj9ctt6mewWum3CcMozRZCCmwslGtnCCGjhOjXMUG0LFN8
-X-Gm-Message-State: AOJu0YzaCJvz7dOrmEeEiylVPZJlzP+3P9dcysCLGJF4ZfS7tL9NsIPk
-	J1n3sIuaq+zukE7RUTQifoCYf0mVP5dO+QsNU5ueo+f27KPqzTkzCjE3fHekhgmyqcPfA8kMmPn
-	e8d9JTRsBB9OyNh/UPhHpbSXfRELMuK57oDzl
-X-Google-Smtp-Source: AGHT+IE0yv+XOrbSGJIzzzRVJje3yinlPEAf+QPJIrtQzzafv5gyr4BXZK+TLc3EfZzK62nIdXUHueYK0wWEpSky5y0=
-X-Received: by 2002:a05:6512:3b2b:b0:52c:fd46:bf07 with SMTP id
- 2adb3069b0e04-532edbbe468mr2990731e87.49.1723697119152; Wed, 14 Aug 2024
- 21:45:19 -0700 (PDT)
+        bh=m5h80tcGsfqjYM1UFpSbRtoNZZUnUPL2z1uKz9S/Kkk=;
+        b=QyG/Bf0NWYcI9Kn5nMvW/9Cm9hv5TBDQAjXNeUZxx9pBD5fVSH9KjEtX3AOANRJgRz
+         F/MdE0Eo8W/DKzOUdL+ryzxA2CVr+KLFNZ+IG77E9X/faGwbtAHFxqAuvl77DcG8+kVv
+         bpyD2TN0R2eqHQYT8C65g2vcehY1ectui/AxLZSPEo7I4NjBSb2ypdHiyt/ixxhcy42u
+         YoteUzd5Dpi+0cPqzdFRlNPbEoi8E4XrjbbTG7wrT8mdrOFbls2cRpkfW9NJFIG3hce/
+         SsAB6JxH3h/9lx7/7C8yTwBY2tvUYIQ7Tb7rCKbhBItgx//aH8/QtHC1JJyh6jbOkOU5
+         lBBQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWOaHRErOfv/M7plwscaJr9glOtBc4aCAk6DwV09rZcfV7UjhIPIMYYdJ1Jw6loFVpIy/KC4F7iLGoslkjuGqFIlf0iT1ioCn8tU82iNy5zNz/M
+X-Gm-Message-State: AOJu0YxejEBhlis2eUO8Ki7AKfiuq/1CMroKyVm23pZpDUgZtlL/SKZW
+	L0CwkkMpMrz8b9W+eb/xzTOhTMIf4yuHEnUOnngqISRr3SFFQMd+tnd3JrORm+903CfzLV/IoEV
+	Ei65tyj6slAK9SepsRl9f6jzTIJ93Az3OsKVf
+X-Google-Smtp-Source: AGHT+IHk5D9Axhf7aH2jIvdVPiigXA+7hFBYb9TbjKDhBcQ8ihLDumNSY3TL20N3WQe0JURETR/Gp6xRXUf3bXq00mc=
+X-Received: by 2002:a05:6512:2351:b0:52c:a0b8:4dc0 with SMTP id
+ 2adb3069b0e04-532edbc076amr3321287e87.28.1723715726777; Thu, 15 Aug 2024
+ 02:55:26 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240809070822.2835371-1-wenst@chromium.org> <b00273d65dfc4b48cca474784184c62b@manjaro.org>
- <CAGXv+5ERoH=jQGzo=mo2K-r3Meh2-5Kgvjf9Eh7bfNgcQYfWoA@mail.gmail.com>
-In-Reply-To: <CAGXv+5ERoH=jQGzo=mo2K-r3Meh2-5Kgvjf9Eh7bfNgcQYfWoA@mail.gmail.com>
+References: <20240808095931.2649657-1-wenst@chromium.org> <20240808095931.2649657-4-wenst@chromium.org>
+ <ZrtC4Q4N_3x2KTNb@smile.fi.intel.com>
+In-Reply-To: <ZrtC4Q4N_3x2KTNb@smile.fi.intel.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 15 Aug 2024 12:45:07 +0800
-Message-ID: <CAGXv+5GQixa389nudKk=U3Rh2jN8VuWQGKb9rsixhvj3KGFQDg@mail.gmail.com>
-Subject: Re: [PATCH v2] thermal/of: support thermal zones w/o trips subnode
-To: Dragan Simic <dsimic@manjaro.org>
-Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria <amitk@kernel.org>, 
-	Zhang Rui <rui.zhang@intel.com>, Icenowy Zheng <uwu@icenowy.me>, Mark Brown <broonie@kernel.org>, 
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, 
-	Hsin-Te Yuan <yuanhsinte@chromium.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Date: Thu, 15 Aug 2024 17:55:15 +0800
+Message-ID: <CAGXv+5GfCcft4+no1dTVRa3Sx7XbiufjSqJb4UPRc9yZv3b+rQ@mail.gmail.com>
+Subject: Re: [PATCH v4 3/6] i2c: Introduce OF component probe function
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
+	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
+	Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
+	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, 
+	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>, linux-i2c@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240814_214521_879169_BEED781F 
-X-CRM114-Status: GOOD (  34.74  )
+X-CRM114-CacheID: sfid-20240815_025529_298581_30D14C30 
+X-CRM114-Status: GOOD (  38.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,137 +95,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 12, 2024 at 12:46=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> =
-wrote:
+On Tue, Aug 13, 2024 at 7:26=E2=80=AFPM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
 >
-> On Mon, Aug 12, 2024 at 9:22=E2=80=AFAM Dragan Simic <dsimic@manjaro.org>=
- wrote:
+> On Thu, Aug 08, 2024 at 05:59:26PM +0800, Chen-Yu Tsai wrote:
+> > Some devices are designed and manufactured with some components having
+> > multiple drop-in replacement options. These components are often
+> > connected to the mainboard via ribbon cables, having the same signals
+> > and pin assignments across all options. These may include the display
+> > panel and touchscreen on laptops and tablets, and the trackpad on
+> > laptops. Sometimes which component option is used in a particular devic=
+e
+> > can be detected by some firmware provided identifier, other times that
+> > information is not available, and the kernel has to try to probe each
+> > device.
 > >
-> > Hello Chen-Yu,
+> > This change attempts to make the "probe each device" case cleaner. The
+> > current approach is to have all options added and enabled in the device
+> > tree. The kernel would then bind each device and run each driver's prob=
+e
+> > function. This works, but has been broken before due to the introductio=
+n
+> > of asynchronous probing, causing multiple instances requesting "shared"
+> > resources, such as pinmuxes, GPIO pins, interrupt lines, at the same
+> > time, with only one instance succeeding. Work arounds for these include
+> > moving the pinmux to the parent I2C controller, using GPIO hogs or
+> > pinmux settings to keep the GPIO pins in some fixed configuration, and
+> > requesting the interrupt line very late. Such configurations can be see=
+n
+> > on the MT8183 Krane Chromebook tablets, and the Qualcomm sc8280xp-based
+> > Lenovo Thinkpad 13S.
 > >
-> > Thanks for the patch.  Please see one comment below.
+> > Instead of this delicate dance between drivers and device tree quirks,
+> > this change introduces a simple I2C component probe. function For a
+> > given class of devices on the same I2C bus, it will go through all of
+> > them, doing a simple I2C read transfer and see which one of them respon=
+ds.
+> > It will then enable the device that responds.
 > >
-> > On 2024-08-09 09:08, Chen-Yu Tsai wrote:
-> > > From: Icenowy Zheng <uwu@icenowy.me>
-> > >
-> > > Although the current device tree binding of thermal zones require the
-> > > trips subnode, the binding in kernel v5.15 does not require it, and
-> > > many
-> > > device trees shipped with the kernel, for example,
-> > > allwinner/sun50i-a64.dtsi and mediatek/mt8183-kukui.dtsi in ARM64,
-> > > still
-> > > comply to the old binding and contain no trips subnode.
-> > >
-> > > Allow the code to successfully register thermal zones w/o trips subno=
-de
-> > > for DT binding compatibility now.
-> > >
-> > > Furtherly, the inconsistency between DTs and bindings should be
-> > > resolved
-> > > by either adding empty trips subnode or dropping the trips subnode
-> > > requirement.
-> > >
-> > > Fixes: d0c75fa2c17f ("thermal/of: Initialize trip points separately")
-> > > Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
-> > > Reviewed-by: Mark Brown <broonie@kernel.org>
-> > > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > > ---
-> > > Resurrecting this patch specifically for MediaTek MT8183 Kukui device=
-s.
-> > >
-> > > Changes since v1:
-> > > - set *ntrips at beginning of thermal_of_trips_init()
-> > > - Keep goto out_of_node_put in of_get_child_count(trips) =3D=3D 0 bra=
-nch
-> > > - Check return value of thermal_of_trips_init(), if it is -ENXIO, pri=
-nt
-> > >   warning and clear |trips| pointer
-> > > - Drop |mask| change, as the variable was removed
-> > >
-> > > I kept Mark's reviewed-by since the changes are more stylish than
-> > > functional.
-> > > ---
-> > >  drivers/thermal/thermal_of.c | 19 ++++++++++++-------
-> > >  1 file changed, 12 insertions(+), 7 deletions(-)
-> > >
-> > > diff --git a/drivers/thermal/thermal_of.c
-> > > b/drivers/thermal/thermal_of.c
-> > > index aa34b6e82e26..f237e74c92fc 100644
-> > > --- a/drivers/thermal/thermal_of.c
-> > > +++ b/drivers/thermal/thermal_of.c
-> > > @@ -128,16 +128,17 @@ static struct thermal_trip
-> > > *thermal_of_trips_init(struct device_node *np, int *n
-> > >       struct device_node *trips, *trip;
-> > >       int ret, count;
-> > >
-> > > +     *ntrips =3D 0;
-> > >       trips =3D of_get_child_by_name(np, "trips");
-> > >       if (!trips) {
-> > > -             pr_err("Failed to find 'trips' node\n");
-> > > -             return ERR_PTR(-EINVAL);
-> > > +             pr_debug("Failed to find 'trips' node\n");
-> > > +             return ERR_PTR(-ENXIO);
-> > >       }
-> > >
-> > >       count =3D of_get_child_count(trips);
-> > >       if (!count) {
-> > > -             pr_err("No trip point defined\n");
-> > > -             ret =3D -EINVAL;
-> > > +             pr_debug("No trip point defined\n");
-> > > +             ret =3D -ENXIO;
-> > >               goto out_of_node_put;
-> > >       }
-> > >
-> > > @@ -162,7 +163,6 @@ static struct thermal_trip
-> > > *thermal_of_trips_init(struct device_node *np, int *n
-> > >
-> > >  out_kfree:
-> > >       kfree(tt);
-> > > -     *ntrips =3D 0;
-> > >  out_of_node_put:
-> > >       of_node_put(trips);
-> >
-> > It might be a bit cleaner to keep the "*ntrips =3D 0" assignment
-> > in the error handling path(s) only, with the positions of the goto
-> > labels adjusted a bit, and then assign -ENXIO to "ret" and jump
-> > to the right label when of_get_child_by_name(np, "trips") fails,
-> > instead of returning from there.
-> >
-> > If it's unclear what I'm talking about, please let me know and
-> > I'll send back the proposed hunk.
+> > This requires some minor modifications in the existing device tree. The
+> > status for all the device nodes for the component options must be set
+> > to "failed-needs-probe". This makes it clear that some mechanism is
+> > needed to enable one of them, and also prevents the prober and device
+> > drivers running at the same time.
 >
-> I think I understand: move "*ntrips =3D 0" to after of_node_put() in the
-> error path, and have the "!trips" branch jump to "out_of_node_put" as
-> well. That works since of_node_put() checks the pointer first.
+> ...
 >
-> I'll wait a bit and see if there are any more comments.
+> > +int i2c_of_probe_component(struct device *dev, const char *type)
+>
+> Use respective scoped variants and remove the related of_node_put() calls=
+.
 
-Actually, Krzysztof (+CC) is cleaning up this function using scoped
-variables. So it might actually make more sense to move "*ntrips =3D 0"
-to the top once the error path is completely removed.
+Ack. Will also try splitting and reworking the code so they have
+tighter scopes.
+
+> ...
+>
+> > +             ocs =3D kzalloc(sizeof(*ocs), GFP_KERNEL);
+>
+> Use __free()
+
+This ends up only a bit better than with gotos once this small section
+is split out into a helper function.
+
+AFAIK ocs, or at least the underlying properties, have to be left around
+once the changeset is applied as they are now part of the dynamic live
+tree. And that's fine since once applied, nothing is going to un-apply
+it. OTOH in the error path it needs extra cleanup if any actions were
+added.
+
+So I end up with the following to silence the "must check return value"
+warning on success, and cleanup on error:
+
+ret =3D of_changeset_apply(ocs);
+if (!ret) {
+        void *ptr __always_unused =3D no_free_ptr(ocs);
+} else {
+        of_changeset_destroy(ocs);
+}
+
+In my case it might actually be safe to do of_changeset_destroy(ocs) and
+free it regardless, but I'm not really confident.
+
 
 ChenYu
 
-> ChenYu
+
+
+> > +             if (!ocs) {
+> > +                     ret =3D -ENOMEM;
+> > +                     goto err_put_node;
+> > +             }
 >
-> > > @@ -490,8 +490,13 @@ static struct thermal_zone_device
-> > > *thermal_of_zone_register(struct device_node *
-> > >
-> > >       trips =3D thermal_of_trips_init(np, &ntrips);
-> > >       if (IS_ERR(trips)) {
-> > > -             pr_err("Failed to find trip points for %pOFn id=3D%d\n"=
-, sensor, id);
-> > > -             return ERR_CAST(trips);
-> > > +             if (PTR_ERR(trips) !=3D -ENXIO) {
-> > > +                     pr_err("Failed to find trip points for %pOFn id=
-=3D%d\n", sensor, id);
-> > > +                     return ERR_CAST(trips);
-> > > +             }
-> > > +
-> > > +             pr_warn("Failed to find trip points for %pOFn id=3D%d\n=
-", sensor, id);
-> > > +             trips =3D NULL;
-> > >       }
-> > >
-> > >       ret =3D thermal_of_monitor_init(np, &delay, &pdelay);
+> > +err_free_ocs:
+> > +     kfree(ocs);
+>
+> --
+> With Best Regards,
+> Andy Shevchenko
+>
+>
 
