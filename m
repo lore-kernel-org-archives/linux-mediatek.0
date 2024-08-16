@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D10A1C3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Aug 2024 15:41:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8D45C531DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Aug 2024 15:42:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=d4o6NVK+5RxP9AE82dc0tQeAqHho4Q+RR5k5EOL8qCE=; b=gq6xe78TQFwSCEDGARWCV6Sdg3
-	ur5hLIb8aiWzNQ85AJZHlu34+1kxTeCHPfeUt1GCswF8jM6QfmkgsJQnNmU0HZBwhhTqGpIrHU4TP
-	Pt8LlXvBENtYk184cQUV4FxKme8WCLpHZLTIyzKdu0VSlYm/P3dyqzvquhUQUIXptqPzufDHfkSmz
-	a9CVCPujrAO0RjSG8s6wJ0bFZF9AzpS4rBFFFeSLxT+qFDRZ64ouY9MJ6nb4M+6RHk+YsSR2x4HXT
-	wSkiviRgfJ2KYQqSQ4Bddf1tCRpyc+pO2VGzgwC2AhWCnUJWSRm+ba6KnyQi40bx9O8J0Jz3uptKO
-	bvBFY0BA==;
+	bh=i72cl2LG6rsfBE9NuFNe0vCjzQLf8lqqkLVcJWffpKE=; b=SIf4ST4C9EVbJ7UaRwgB8Iw6cL
+	4YXh7oAZPmoavH3/t3lLbDI5epbngAYKL0AMMo88bvIL7l3S3/096fG0nmU5yml3MfKxfqaVtDJvu
+	si/zi3E2tjdFIrGzeQc7WN7frQeANh8Od/IMBnknAC/MeojuyZslDq1D2DLAzy5TnGj2cONHaf9SA
+	OffyWpwhFX41w6A4fTz47Mi4KNatz8WmpWWQdf8bNgPrf2JqiAt2aBD0MH9KxgPyqIGT8gmn/gNiU
+	4eWpNRWi5czYYx1Nctkkl4MKmuGtWeJCTz4m7/iuVH9gCLBlKGSi/Nv4nHqKYIS4Fc3+1JhydKKt5
+	olv88Ojw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sez5B-0000000DR7f-2CFN;
-	Fri, 16 Aug 2024 15:41:41 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1sez5m-0000000DREp-2UtS;
+	Fri, 16 Aug 2024 15:42:18 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seyw7-0000000DOkB-1WYC
+	id 1seyw8-0000000DOky-2KBK
 	for linux-mediatek@lists.infradead.org;
-	Fri, 16 Aug 2024 15:32:20 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-52efd530a4eso3409263e87.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 16 Aug 2024 08:32:19 -0700 (PDT)
+	Fri, 16 Aug 2024 15:32:22 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-37196229343so437365f8f.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 16 Aug 2024 08:32:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1723822338; x=1724427138; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1723822339; x=1724427139; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=d4o6NVK+5RxP9AE82dc0tQeAqHho4Q+RR5k5EOL8qCE=;
-        b=zdNSQZPq+sg7oSjKetLbyXH+I98NHd0t2llUatFbrQvlwq9B/XN/IOdzrudTIHLXTs
-         P+3ghVK357MIdImRhnFk/FHSJqxbw7s/Tk8HDZQzYm85vYB1SvRWcshpUldMO4SONS2e
-         ALk/bLoERBb7Et0dBBVCrUbtVCkGc9TymEU30pyKLjb3MylyANoXQVgERFomSrO1gCfK
-         v1oiB0hgbuqBIV9CAB8SgMfgrcqfRP2kSK7bIgPHcKcsEUzu1bYXG0j+4Lru/WMlGsgt
-         s3Rk698cpvZGHOikMHFk74shbhYGwbEchXSuZVW4+0YW17tznQmincoeQ+N0sh6D26gU
-         xPfg==
+        bh=i72cl2LG6rsfBE9NuFNe0vCjzQLf8lqqkLVcJWffpKE=;
+        b=WD8adzXUIk/khadRaCUzhmKiEK8Ge8gzlE3758odUdMK+4yBubiCfpxxtLE07G/2T4
+         IAbZQmzwTulptu7/w4JyHEV7SEK7B14x1yh/ESjmRC+Yax1DFkPEcOmWUi4QldCg7Pky
+         avJf0rftgIKfqRj7qajjSDyoRN/STsbAqXGuRIb1dsaCKPz7M/qNw/RnLKulRHVwzcAZ
+         mmT6e8OyNDkcBNsSxyELtPSx/X/3l9MtFjRnRiJz0Sn3lm1vRGMloP3wQdIfmY0Y+pJT
+         +ZTa9s1Y6/Tdy6Gd5MeaYprkUfBANGcsyp1Jmkacz9p6G6jLBA0kSYpqCcLqbgIGoyep
+         nkmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723822338; x=1724427138;
+        d=1e100.net; s=20230601; t=1723822339; x=1724427139;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=d4o6NVK+5RxP9AE82dc0tQeAqHho4Q+RR5k5EOL8qCE=;
-        b=PFjYfKmtcZ+QtnDGrAuJpr91QVpafmGLEDOSnfA55S69rNWWnmrRgs2QueZWJuJNgs
-         3MVlyUru06AYp8VJjfLwKYjRcectdfO8YtXewtFIdr4OokSbPiL/7CPO1aOdFmlws7ae
-         /MRszkj8hsrEQDDdTmbgDk0wo/J6vfZxBZkK0YpIJJW2A5JKgj+WpWGBb6iiT4KguT5X
-         D6RNrBunn2rP1MWZ8hiGVZHdD8z0qja8u2dVWaR20bFvdVWkxq1wTHBMU05O/FzC/RJD
-         bioS5Ptpw/780mx0KIKnuRGPQEDtQ6zwor7cK+SU6jHEw3bvQuKSxtXtlFpq5SblLcHp
-         FfOQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWB4QtJtPb1Yk2oQhDP/rRkYTa4gWcHimrwOGhKVh9OlWa9J9MNyu2PHiCeP/50INOeLPpxsY53UR8ZD2icQsoF3mzFdZ/R2e0GWYbghToZL7wA
-X-Gm-Message-State: AOJu0YwrcgNYDOjvmyjMR76qQmggGx5cfM+85BECo+Moe2dSzK8QRZab
-	+ZiuHlcwW5w1bqBP5tEZG35zLSB/5TFLHJeso4GhFbwtzFGkNR7y/+xopDErK/U=
-X-Google-Smtp-Source: AGHT+IET/CjplVHoqhJT1dgGbpnM7bOR/IOJJFLcUpaq7hdaaWtUXfMeQ9ArJ1WuxrwkKCsQRRpLyg==
-X-Received: by 2002:a05:6512:3d1e:b0:533:d7d:a34e with SMTP id 2adb3069b0e04-5331c695987mr2342012e87.7.1723822337538;
-        Fri, 16 Aug 2024 08:32:17 -0700 (PDT)
+        bh=i72cl2LG6rsfBE9NuFNe0vCjzQLf8lqqkLVcJWffpKE=;
+        b=t0GHRDr79LHysGzkyQpzLZWfidawzw1eCuxzJBLau783N7mPCsHZANpvIeHQ/K6Ko8
+         Q7mglTv9QWOhuuYYvITxcq3T9Cp9lZxcngHqpQ6v6ghyWxk6ZH8aRnack8K7mHIiTxjR
+         FSDFKe0RdDamgti8XCLHv7/5Rm/5oiA4WOJJvvdNWq/6d85mxSa6xjQKCgKDUZh9y9kR
+         paUIpHeL1wNlKl3PB/C+dP5tchpE7MnlkDNBjL+6WH2/cQ/M+JdV0vfURDKOd3f3C1+R
+         MtZYomVSExMk5s42zFdj3vV66SZOy1VqNgsFZ98l/SZcFdrDo2hKNdxbJPwsncfxl/F+
+         +zqw==
+X-Forwarded-Encrypted: i=1; AJvYcCWnrEsP0oPjjmFGZY4piISPoKxWrSLGQyzgDSba7bV5/C5Z8kbo6OMNW0uxRCebudq9nVEZrskyI9mniz/kh2++PJU1rImLOx11xfTkMDBc/MLY
+X-Gm-Message-State: AOJu0Yx5HWU/trtCtwYMUrYDk1c5435rPCD0JB39v2KZp5xPdlXtsYL9
+	j+/ZDIjmTM5dFDBSwp3BGRe4ioqrLdxsEuWkYe/XsBHvc8LyxsFgcoJWGbUNyvAMFsaO5EGx/4d
+	O
+X-Google-Smtp-Source: AGHT+IED0WYx0TreQX2OrKap07J96mSpWj6wWPju1D8qe2yhsCsW41zGu895F7DsFQ1Mn543/zW+Kg==
+X-Received: by 2002:a5d:4b02:0:b0:371:82ec:206f with SMTP id ffacd0b85a97d-371943293cdmr1861574f8f.16.1723822338955;
+        Fri, 16 Aug 2024 08:32:18 -0700 (PDT)
 Received: from [127.0.1.1] ([178.197.215.209])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-371898497f0sm3853661f8f.39.2024.08.16.08.32.16
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-371898497f0sm3853661f8f.39.2024.08.16.08.32.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 16 Aug 2024 08:32:17 -0700 (PDT)
+        Fri, 16 Aug 2024 08:32:18 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Fri, 16 Aug 2024 17:31:48 +0200
-Subject: [PATCH 16/17] leds: turris-omnia: Simplify with scoped for each OF
+Date: Fri, 16 Aug 2024 17:31:49 +0200
+Subject: [PATCH 17/17] leds: qcom-lpg: Simplify with scoped for each OF
  child loop
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240816-cleanup-h-of-node-put-var-v1-16-1d0292802470@linaro.org>
+Message-Id: <20240816-cleanup-h-of-node-put-var-v1-17-1d0292802470@linaro.org>
 References: <20240816-cleanup-h-of-node-put-var-v1-0-1d0292802470@linaro.org>
 In-Reply-To: <20240816-cleanup-h-of-node-put-var-v1-0-1d0292802470@linaro.org>
 To: Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>, 
@@ -85,26 +86,26 @@ Cc: linux-leds@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.14.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1244;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1848;
  i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=HqurU8v6FoUuPIeHjxpMhqt9yfUTtSWFQuHadg1beqc=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmv3Dn/4FodrZqZy9l8ymKC3RzvyZz5qUjuY2CL
- I8dXCHswfSJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZr9w5wAKCRDBN2bmhouD
- 1/k9D/9UMNk7RM3WQGHAruhcdLJVhguE7sJuyHNKcv0JiIT7rLqrxgI0kl0TXtijoBLQifUtmXZ
- n35/z2TOA0jMGVqDPqGfeNVLVubMwH2nrI2Ni5HcdxRIcVmOI5Qx8hGIAXD8y0+OJYkM+e9+MMW
- 09hTenPhrVmvb8M7YhycHH1JSDV9cQj5pWdYrcf9X259N9O2dQzVfpdI4UA9GtQqSNLEkbuW9Hp
- y74zqYk3zBvM3xAlvg43roVpp4MqjH45PtJ11CNOOpMNAVh4KO+73Sx7Y/Zxhc/iHv18ky49WfS
- lGjmWX7aYivBbwfKDQrc1uuJsio9CXHKui9IFVREXod3XAW8dFzQmBJhlmrhp2ppVcf3wqOCd/g
- v2zH8BG+SM+ulHja62+nlUfuD6B6vDBpNLRKLkHC0jKuhUb2yXe4OFT17v8Vwkzs6/t0vCbKIoW
- idbzDQf82L1WtL+yWv/brsico0O/8/FBiODTt15BMAZ4wYOG5YrOem6kGbv8kSxea9vP+S7vpdO
- 9JpanPlCJQ8Z4xlCm3uumDcswywrJ9FhFvqonNLpVQfBwk6gcMt7q1GkAsIB0P6LjEgEHgdm3qD
- ZGlGjHkSWXHGIFYWFg5IYbAYfEzX3nOZJAkkSKxMA+DQOjYqzxql8WnOoHOeUfh0p5rdk1Os5pI
- C3oB8c3EPtY7V/g==
+ bh=evm4/Qf1Gix0CG1zjk2y90RZHb2Oo+FXRI+CwqZngfA=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmv3DojUfs6j9ghjY8rYQZeR83/DBn5C5vGVai7
+ SH1nEKJD1aJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZr9w6AAKCRDBN2bmhouD
+ 12UID/4yUfw9u/p7xohuwxORPZDDT+wUHcCCjyoUV2diG+Nd0Oqzcv35eu6NeZNl7BNB3X0EQoQ
+ VQn8BrW9aEHJFgdQC2UPhVqwKnqyy2th/AJfD9MDAa63IdWIdTPI4ZAUqhAMFTHyj4QCIM+Cewp
+ 6LSA+M0GHdFwqqZXKWRyINxmfNb+nD1yOcUJSn1p4mQVAlwWCr5tXZEmhFh/pvurGumxCqeHGt4
+ EEPK8uuEV/ZrxuMoKFKYaZxEmbrQkvfISkoql4+54GXtQ4u7qmSdTqCSESVW8wrX19GteWzW34w
+ /3rW7iV14tptFvALyHd80HwsDP/FpK1oa9PDUI4ukf8VXk4DMcTg0/DlK553j0gew5RgjMZszdh
+ D6o0hFLVuvoe4M/wRvnYDb2c/HvPKNwKG2yLIkft3ezelGstcfsyprKU6Wvg9ui2s4MSiYcfIpb
+ RkiasvWRnhtsxaMbCeE0GbtB8xTkCUJufOlMHca6MY6/0upIL7buM+iZ2gQD03zfpWZChYZ9xRT
+ noGcSiHIFcHWGBT7QU3Aac96iJHkrY4pfr8vq2oE3o8DZhpegNlm58HqHDk0kl89GIR+JuccPSF
+ ZN/CyNtXDJP5V8DPnd4ZHC6QzRAeZYyQ3PrXV/BluuDVR+gcWQ4G60i6McsRcpRxELK+EFjjgst
+ yLwTWCItNdg6GjA==
 X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240816_083219_434278_3EA80841 
-X-CRM114-Status: GOOD (  12.45  )
+X-CRM114-CacheID: sfid-20240816_083220_603963_5A21B902 
+X-CRM114-Status: GOOD (  13.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,37 +125,59 @@ device nodes to make code a bit simpler.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- drivers/leds/leds-turris-omnia.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+ drivers/leds/rgb/leds-qcom-lpg.c | 14 ++++----------
+ 1 file changed, 4 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/leds/leds-turris-omnia.c b/drivers/leds/leds-turris-omnia.c
-index 39f740be058f..1ef942b5cefa 100644
---- a/drivers/leds/leds-turris-omnia.c
-+++ b/drivers/leds/leds-turris-omnia.c
-@@ -452,7 +452,7 @@ static int omnia_mcu_get_features(const struct i2c_client *client)
- static int omnia_leds_probe(struct i2c_client *client)
+diff --git a/drivers/leds/rgb/leds-qcom-lpg.c b/drivers/leds/rgb/leds-qcom-lpg.c
+index e74b2ceed1c2..f3c9ef2bfa57 100644
+--- a/drivers/leds/rgb/leds-qcom-lpg.c
++++ b/drivers/leds/rgb/leds-qcom-lpg.c
+@@ -1368,7 +1368,6 @@ static int lpg_add_led(struct lpg *lpg, struct device_node *np)
  {
- 	struct device *dev = &client->dev;
--	struct device_node *np = dev_of_node(dev), *child;
-+	struct device_node *np = dev_of_node(dev);
- 	struct omnia_leds *leds;
- 	struct omnia_led *led;
- 	int ret, count;
-@@ -497,12 +497,10 @@ static int omnia_leds_probe(struct i2c_client *client)
- 	}
+ 	struct led_init_data init_data = {};
+ 	struct led_classdev *cdev;
+-	struct device_node *child;
+ 	struct mc_subled *info;
+ 	struct lpg_led *led;
+ 	const char *state;
+@@ -1399,12 +1398,10 @@ static int lpg_add_led(struct lpg *lpg, struct device_node *np)
+ 		if (!info)
+ 			return -ENOMEM;
+ 		i = 0;
+-		for_each_available_child_of_node(np, child) {
++		for_each_available_child_of_node_scoped(np, child) {
+ 			ret = lpg_parse_channel(lpg, child, &led->channels[i]);
+-			if (ret < 0) {
+-				of_node_put(child);
++			if (ret < 0)
+ 				return ret;
+-			}
  
- 	led = &leds->leds[0];
--	for_each_available_child_of_node(np, child) {
-+	for_each_available_child_of_node_scoped(np, child) {
- 		ret = omnia_led_register(client, led, child);
--		if (ret < 0) {
--			of_node_put(child);
-+		if (ret < 0)
+ 			info[i].color_index = led->channels[i]->color;
+ 			info[i].intensity = 0;
+@@ -1600,7 +1597,6 @@ static int lpg_init_sdam(struct lpg *lpg)
+ 
+ static int lpg_probe(struct platform_device *pdev)
+ {
+-	struct device_node *np;
+ 	struct lpg *lpg;
+ 	int ret;
+ 	int i;
+@@ -1640,12 +1636,10 @@ static int lpg_probe(struct platform_device *pdev)
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	for_each_available_child_of_node(pdev->dev.of_node, np) {
++	for_each_available_child_of_node_scoped(pdev->dev.of_node, np) {
+ 		ret = lpg_add_led(lpg, np);
+-		if (ret) {
+-			of_node_put(np);
++		if (ret)
  			return ret;
 -		}
- 
- 		led += ret;
  	}
+ 
+ 	for (i = 0; i < lpg->num_channels; i++)
 
 -- 
 2.43.0
