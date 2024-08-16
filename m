@@ -4,88 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58C23C5320D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Aug 2024 15:38:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98757C531DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Aug 2024 15:39:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ExS3Adk0ysbxVxPe6mSqv52zzn6f2EvdipX95Ynjg4g=; b=FaJaxpiVQmW8reUZkXa36A0uNc
-	SJY2vS0qfTRYhrX7M2xFxzxfHPqaSxL3nRAOxFe9iHgvY7VdhyVLu+MjwLXWWK+loFyZanbFEus2l
-	PuDAftuV6hRfUN7fF3uwaUw96dekWNfJMJgt4PyTia0XI63OCs4BDCrsVEqxdrz2Un2ZBrC7VRGb/
-	4XFTkctdXhdMrcdr+ceE/AsbgHClH6qpVkmiO1Qm1Tbk0/ivy5Aracr3gM44AFo0wTBE1QvWb+i4O
-	jFz/gXlqj60ZIwFWuUytBVe4p8WhQ0us3b4+p81aLC3eS+yGkgzbu4qmMzr4o2xlUt05/n21utWgr
-	SxgdoYIw==;
+	bh=LOl1ZqBXdbAJXZzTI3BlQ8z/3fBsZwwoZ15vO5UkJdk=; b=GVKgmjjkY0JWNVUeaRpfX+PTBu
+	oT9SwIXwvBcOzxWuPz0mMYugG7NgF0uxFxeGNE6pP2BEBZUyppkX8eOQuOlmNNUsZLVT53jqy+JV9
+	zqlLWtQpjJdqaf3B5R1rOcljk7Q3H75Mlxls5fnxswJVN2rQwCIO6imhNxjfoelwN+Ig2Y8gLcdDt
+	jOujmITkc6+/EWUAu5nJJt035ZRkcrLFJ8Qogy5YtBud8R51+hfcJWKww4LSrKbmRaF5MUsUl3pl7
+	Yn0kv8270OKNYToNHjIi5BdfoliTj4SUcz1/DFG41aVdf1ed3FirErrBJKZGCwE318OAA7uhQIyMy
+	CDA2TOkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sez23-0000000DQPX-0AAb;
-	Fri, 16 Aug 2024 15:38:27 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seyw4-0000000DOiM-1ERL
-	for linux-mediatek@bombadil.infradead.org;
-	Fri, 16 Aug 2024 15:32:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=ExS3Adk0ysbxVxPe6mSqv52zzn6f2EvdipX95Ynjg4g=; b=htWOcm5KlMhSDcKPDjg51vr4JY
-	NtSNLvYCe6nIt9gzDx4aIzIVLgQXyb8XNBNMSob67Gx5XWH7f51BEpt6fS4VHKRqQspYxeQMsNl3Z
-	HjtjqbOU5nsjrDNMWEI7c1zl8FfMEzcr4cMZy1dMB6uaMM2prFJd19+5j7HxSjZLPEyhcu4P+Bs9i
-	IAuEEgBQinDIDHz/1EddEfo2rscJMGLlI78ai5np0imd5T0F3H9WIaG5kFqZjdKo9MJU68sE1ozRy
-	WxhYnhRC/+bs1LnlvvLPG5NSYaI+eEdX/APmXGxn8+1P2tQDq76Env11BvZNx0qsFNu8MEgE1eUP2
-	xoWjaOHg==;
+	id 1sez3J-0000000DQk3-1GDt;
+	Fri, 16 Aug 2024 15:39:45 +0000
 Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seyw1-00000008hXD-0n3y
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1seyw4-0000000DOiL-0xb1
 	for linux-mediatek@lists.infradead.org;
-	Fri, 16 Aug 2024 15:32:15 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-4281ca54fd3so15393315e9.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 16 Aug 2024 08:32:11 -0700 (PDT)
+	Fri, 16 Aug 2024 15:32:17 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-428fb103724so16744805e9.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 16 Aug 2024 08:32:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1723822331; x=1724427131; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1723822335; x=1724427135; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=ExS3Adk0ysbxVxPe6mSqv52zzn6f2EvdipX95Ynjg4g=;
-        b=xjPo6As4gsZN/yRikJk5YUj/+iAj0NbDgSKzArmNtgWJDaytukx5FNOpZcNpOsFq0h
-         fkCXK5Zi228Cr1MUXDWoOUr3XZ0njMKTR3nSQ2egwns8NTXZMHxj1wbmoP/bXxzDbhdb
-         Wzc6dQP0QkUedkxoDBxpOYEcn+6dk/KZl0ZtBCKeHsckOXlUGiUDuKPKPxohjhasbxfN
-         slo8NQf/x/MEwWk68ArzlJUpIR+kV/ZjCOxYJ5B0YcXwLNyasGKb0ORvhFrcpEYBQUWD
-         UY0H9j5qL0sh12fYzFivOoy8rt0TNz941Qr3XxKgSrFEfwMv0OA7k5Pjw2GoPGTN4Jfj
-         PDxg==
+        bh=LOl1ZqBXdbAJXZzTI3BlQ8z/3fBsZwwoZ15vO5UkJdk=;
+        b=pg28X4LiUv7OiCvf60UuaGKL03tawqVuUNNWjqOWKHj6t59PiyFxkGXjdykr7I3P9n
+         +OcQo/xDmffd+Z7d1lZyHAjiejz5xxpq7iFe3gRqc0NVMaJy7LzbFmcdnGAaQ6vIuGw5
+         FNWthxc7K3NUc/kXgDa4EFTzPTBNAQp4qoC64+v7aaE3sf2vB/FEb8OllKJHp2GpKmsP
+         pCY5uLRGlNh8xiZ2IG4fxDSBW+nFeG43LRzlbsNX1xMNEX0bXnV4B6SMR0CTyfLoMY83
+         YBOoW2A4ISy5Z7AnnWBouZoxApjJoUmFS5Db0zRXaUEaDEal1TSYaOGh3uMmaGylJ7u3
+         +5/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723822331; x=1724427131;
+        d=1e100.net; s=20230601; t=1723822335; x=1724427135;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ExS3Adk0ysbxVxPe6mSqv52zzn6f2EvdipX95Ynjg4g=;
-        b=EcDwVo1FRYJ1Gcy1NerYFG6nohLH5fPG8UFQajFjVPwD4luJRnhRnfot53GbLFjxS9
-         hPMR5eIUjlIpvdFzuuzMF8BsZD9LtVwjbqXIZrBbApu9YMbGyOkB9JUcWrZABHni/iIy
-         DXG//Ei5GzVgaO8cI4iSyIZr55zQ+yr/Z5GbqeSk6TMC9hOes1vSIDI1L6iaq/5eETax
-         yzZLPZ0CsW8WQoB4GCIfowpnTCyJFjXU3XLL2Em5dKvuwxNPonO2Xf0Mhg297zxS98Co
-         PDF+z5+biSvuJLKekIbmLWaFecIV6+ee47BWxbCjhPzjqWgrM9QQUfj25/bjw8qvfi3R
-         uY9A==
-X-Forwarded-Encrypted: i=1; AJvYcCUCrqyAfsKzsdOFRnxbrJNpOAT4tnWBsCycoZBYlD5zNofSG1KJhZrR5DTJpXYcJYtd129YKXkJdt336ShF7d/+yncllFDoO5VuwE7W05m1y8YM
-X-Gm-Message-State: AOJu0YzuyTz+1j8aeZOJp0tvSOYDDW3UL9rXDpFUHLkDbRRHa55LqXBo
-	w0L/18MTO+JnkLwy57Q5BV3FOykRdkeX8K5hW9i26GTtTF9H277blTkcR9nFb8k=
-X-Google-Smtp-Source: AGHT+IGY3LRWMur+RIX2EsOyWFfYB56XC96QTNt2jgmYdeU0Jid4hrYTxjzYfgcQsMTsb6CsL+XrrA==
-X-Received: by 2002:a05:600c:358b:b0:426:68f2:4d7b with SMTP id 5b1f17b1804b1-429ed78562fmr22527545e9.3.1723822330645;
-        Fri, 16 Aug 2024 08:32:10 -0700 (PDT)
+        bh=LOl1ZqBXdbAJXZzTI3BlQ8z/3fBsZwwoZ15vO5UkJdk=;
+        b=qmrSGcX74guuqg1z9Rl4aML+SBdii4Zb/lUnCM1/g5UKqDOw+I9OEYMxQAmHGkisGx
+         CnGywDLRQkJNQHGT15S4FnsKv8PYUpOMZHCc70p4F8QldgXcsdEpisGPkTS6PAH9+QwF
+         EGky3gmUn7T6zASMhaE5Dl/WS6MaxFY8/2UYRTxT05wn2Ozyk/87Ij4LOhkcYqxUoQIC
+         U5h05rjP5/zsHXFXEIdXXwEd6tpyOD2KE+KWu9R3fDr/Rrt8RSpKfq/eE+iS8uRMGZNq
+         t5pJOsmBnAYxKQVjemjZqxJE/maW/w2pR06rAZQzL9bsVoMBEGJ+Dm69X37GCbE/OkFP
+         SF7A==
+X-Forwarded-Encrypted: i=1; AJvYcCXnJet+vp17mJYj98mOdiyuyOlSZSr3Nhh+puMbTdF9HZDHwR4guHevrnaQ+lhZSrl1N3w9IimqkpxSFI0B5ER5Ng4BxGY7P4Rzjp1QZ8mRRRT3
+X-Gm-Message-State: AOJu0Yza1Bjo1sHQeG16gaVr/jVywO30sb8Yheeau8OGnkMcQm7JO3b+
+	T2DK4qB7mxvLhxLohcKJDfPjUUhj/PewDXv9bmOQn6ibkUHieuHQR0sAKOJ4wdyxjBwlUJhywap
+	u
+X-Google-Smtp-Source: AGHT+IEFjSH4WqobBhV+up3oZ7ztZRwBuC3HgNzLRXaYpTTRLatXBwsIRxgmIFfySIZM1KogU0AXTQ==
+X-Received: by 2002:a05:600c:450c:b0:424:8743:86b4 with SMTP id 5b1f17b1804b1-429e232b8a0mr50953985e9.6.1723822334803;
+        Fri, 16 Aug 2024 08:32:14 -0700 (PDT)
 Received: from [127.0.1.1] ([178.197.215.209])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-371898497f0sm3853661f8f.39.2024.08.16.08.32.09
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-371898497f0sm3853661f8f.39.2024.08.16.08.32.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 16 Aug 2024 08:32:10 -0700 (PDT)
+        Fri, 16 Aug 2024 08:32:14 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Fri, 16 Aug 2024 17:31:43 +0200
-Subject: [PATCH 11/17] leds: mc13783: Use scoped device node handling to
- simplify error paths
+Date: Fri, 16 Aug 2024 17:31:46 +0200
+Subject: [PATCH 14/17] leds: pca9532: Simplify with scoped for each OF
+ child loop
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240816-cleanup-h-of-node-put-var-v1-11-1d0292802470@linaro.org>
+Message-Id: <20240816-cleanup-h-of-node-put-var-v1-14-1d0292802470@linaro.org>
 References: <20240816-cleanup-h-of-node-put-var-v1-0-1d0292802470@linaro.org>
 In-Reply-To: <20240816-cleanup-h-of-node-put-var-v1-0-1d0292802470@linaro.org>
 To: Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>, 
@@ -100,26 +86,26 @@ Cc: linux-leds@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.14.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2357;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1474;
  i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=lKaguPS9XCpAsm5c5uDkmtZO7d+eB+Wkab1pNRXTP9U=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmv3Di/6NaLLFot+D5dfegT8i/v6A5joRiEW89N
- jDAhq5CjM2JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZr9w4gAKCRDBN2bmhouD
- 1+8tEACVczd8uQcgqQnn1chR1D9ZHwx5vpecvoE+zaIxLcF5I+90rwhxxDn8jJIGBDIEB4D9lEY
- 8VArDs5hWgYidus4DO8QPVMc724Na7iEO7XzHXA0vlYqglosEqKSCnk4YhLj9qeh3+5O3s9AvHO
- R33hSdaUSKRYUo3TbrUsZEGXIeFOzwtCuHLsZ7q5n1zPLKNnM3zoWIwsYsAhBbyKKJG2C0DiGSQ
- 2C2cIy6FWj+wnvnOugue2gimQjVJfyuQN9DzLZ8XGwrti2/8VvZRNUjkfCI2rAJxr9kwhYzVzr/
- MpKyOM/P4/YzNG8obVj+CwBkV+W8vCB0nXinpOgz7ZP9U7h5exRrnzfkT8OYQkEMN2K1KF5XpST
- DCGPitYNCxFLKDO3lSHmtS/5Uinxi5W9s9bcES7OcytdUjcqNr4rFP8F6AXsJZZEnBu9LTX2vnJ
- CyxeqAjuuhSzLaQqA75FgTeeQ1Q7SpHfyvewqraZVxTQRKdeuJJvXZo/aKCdvfZtzuo5bYGaBeC
- OiRKTvWBCZtlOIob7/WKFTNmtZyltasnmpOPnHBdyojcJynwE1/+XZ/AzSPpVBnvmulZACpMAT0
- 3YFovAp4Rms2RRR8qDQXBvLFJMeuUkgoSK2KBHBiUy0eo/yRQDOxKD6WC52EALjbTb/BLwiLhox
- wdc6cj6rorb2j6Q==
+ bh=3ARnnx7uT2kjUKO/lBdUAxqqDcV1RDRByaeh6p9QzVk=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmv3Dl9NwZPB/MApEGkh1nDqgHmMiX/P3/AIqpm
+ RoLHvTk8y6JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZr9w5QAKCRDBN2bmhouD
+ 19g0D/wMAqWjPIbSHETSNRfB9R/1HlUm5xI5ndiN59Zcgwr/clBCSt48gRDMuFGS05K/kNaSvRO
+ 8IbtYru6I5aMaoGCHU1KgbcevPw39TynUzLejaKERSJ2zXJ8UQ+qvh80ce/3XMYlfCBf9b19psi
+ xRyJnm70aht0YnafXUBRfWvp6Im9/I7y1YV+tXBnLIKXrWLznSUDTHXSs7EKODOjnqt4mFNJfew
+ qMZ4Lu9SFU+kG99RWVs4R96XWtdI5gtCmt9yjriDw5/cD9GE4Ad7Wjk+juXE5HvEjl/hZ0OnokN
+ 3HsBKw9y+68dZIwQVVDmPPZJb50/DGJstWUwxOti9yfDxKYMCkW/+dZf1/LxZYvuxb/0WOvODM5
+ PNeM2bx/y0m/cOQY6GAYpu8UgoAbMWzQxufvxjUN52w+IQjQ7w3epmoZLycDyPEFvVQ9+Nz7kOQ
+ I3QvW+PFDLC+htKn3wV0X1Adnhj3CWolfRDdVQ5m/UMB2EwDZy+VOthEx7pNzC5wcmFzTXoL6Sx
+ 4D/8ee8LHgG/8I5MiNA6wVgqUJCu/NJE1DY6XJ1JuVTbs8qyCiLVW8bJ/yo4ecJgPpBBhPTGdfE
+ Ld2si21avus1XNVlYHHao2BVVh3XLSmqiMvmaWBGvQw3Y2J0/nbyOBAcRN0BUWe6W+N0RGJ2O2a
+ fZZYbzRJlMQmwbQ==
 X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240816_163213_317649_8CB446D0 
-X-CRM114-Status: GOOD (  14.31  )
+X-CRM114-CacheID: sfid-20240816_083216_324664_089D60A3 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,82 +120,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Obtain the device node reference with scoped/cleanup.h to reduce error
-handling and make the code a bit simpler.
+Use scoped for_each_available_child_of_node_scoped() when iterating over
+device nodes to make code a bit simpler.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- drivers/leds/leds-mc13783.c | 24 +++++++++++-------------
- 1 file changed, 11 insertions(+), 13 deletions(-)
+ drivers/leds/leds-pca9532.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/leds/leds-mc13783.c b/drivers/leds/leds-mc13783.c
-index bbd1d359bba4..da99d114bfb2 100644
---- a/drivers/leds/leds-mc13783.c
-+++ b/drivers/leds/leds-mc13783.c
-@@ -12,6 +12,7 @@
-  *      Eric Miao <eric.miao@marvell.com>
-  */
- 
-+#include <linux/cleanup.h>
- #include <linux/module.h>
- #include <linux/kernel.h>
- #include <linux/platform_device.h>
-@@ -113,7 +114,7 @@ static struct mc13xxx_leds_platform_data __init *mc13xxx_led_probe_dt(
+diff --git a/drivers/leds/leds-pca9532.c b/drivers/leds/leds-pca9532.c
+index 9f3fac66a11c..338ddada3de9 100644
+--- a/drivers/leds/leds-pca9532.c
++++ b/drivers/leds/leds-pca9532.c
+@@ -506,7 +506,6 @@ static struct pca9532_platform_data *
+ pca9532_of_populate_pdata(struct device *dev, struct device_node *np)
  {
- 	struct mc13xxx_leds *leds = platform_get_drvdata(pdev);
- 	struct mc13xxx_leds_platform_data *pdata;
--	struct device_node *parent, *child;
-+	struct device_node *child;
- 	struct device *dev = &pdev->dev;
- 	int i = 0, ret = -ENODATA;
+ 	struct pca9532_platform_data *pdata;
+-	struct device_node *child;
+ 	int devid, maxleds;
+ 	int i = 0;
+ 	const char *state;
+@@ -525,7 +524,7 @@ pca9532_of_populate_pdata(struct device *dev, struct device_node *np)
+ 	of_property_read_u8_array(np, "nxp,psc", &pdata->psc[PCA9532_PWM_ID_0],
+ 				  ARRAY_SIZE(pdata->psc));
  
-@@ -121,24 +122,23 @@ static struct mc13xxx_leds_platform_data __init *mc13xxx_led_probe_dt(
- 	if (!pdata)
- 		return ERR_PTR(-ENOMEM);
- 
--	parent = of_get_child_by_name(dev_of_node(dev->parent), "leds");
-+	struct device_node *parent __free(device_node) =
-+		of_get_child_by_name(dev_of_node(dev->parent), "leds");
- 	if (!parent)
--		goto out_node_put;
-+		return ERR_PTR(-ENODATA);
- 
- 	ret = of_property_read_u32_array(parent, "led-control",
- 					 pdata->led_control,
- 					 leds->devtype->num_regs);
- 	if (ret)
--		goto out_node_put;
-+		return ERR_PTR(ret);
- 
- 	pdata->num_leds = of_get_available_child_count(parent);
- 
- 	pdata->led = devm_kcalloc(dev, pdata->num_leds, sizeof(*pdata->led),
- 				  GFP_KERNEL);
--	if (!pdata->led) {
--		ret = -ENOMEM;
--		goto out_node_put;
--	}
-+	if (!pdata->led)
-+		return ERR_PTR(-ENOMEM);
- 
- 	for_each_available_child_of_node(parent, child) {
- 		const char *str;
-@@ -158,12 +158,10 @@ static struct mc13xxx_leds_platform_data __init *mc13xxx_led_probe_dt(
+-	for_each_available_child_of_node(np, child) {
++	for_each_available_child_of_node_scoped(np, child) {
+ 		if (of_property_read_string(child, "label",
+ 					    &pdata->leds[i].name))
+ 			pdata->leds[i].name = child->name;
+@@ -538,10 +537,8 @@ pca9532_of_populate_pdata(struct device *dev, struct device_node *np)
+ 			else if (!strcmp(state, "keep"))
+ 				pdata->leds[i].state = PCA9532_KEEP;
+ 		}
+-		if (++i >= maxleds) {
+-			of_node_put(child);
++		if (++i >= maxleds)
+ 			break;
+-		}
  	}
  
- 	pdata->num_leds = i;
--	ret = i > 0 ? 0 : -ENODATA;
-+	if (i <= 0)
-+		return ERR_PTR(-ENODATA);
- 
--out_node_put:
--	of_node_put(parent);
--
--	return ret ? ERR_PTR(ret) : pdata;
-+	return pdata;
- }
- #else
- static inline struct mc13xxx_leds_platform_data __init *mc13xxx_led_probe_dt(
+ 	return pdata;
 
 -- 
 2.43.0
