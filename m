@@ -4,73 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 623BDC3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Aug 2024 09:48:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81C47C531DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Aug 2024 09:53:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zaAas9QhOPswdEwX29L981sav0R3IkIAazBDWezta+g=; b=NXOl1FxQrEBaFKepaPrYRmczUi
-	3hyq4dgFIqyTduP9hWLUMRY7nHSpBgstV0IKidIMoVN7RS7ksLWGW1PLbUkALouzqhD7Z17uMjxW8
-	tXJbHUFz989fKek2ejoKDFEDn3roNhYkR3HgyWOaOOhSjqe0xF/JQPUo8lLepkO6jnstGm9SIsqmU
-	ZIl6zOxcDFAacrI9WLlrIYNV+nbP4/Ftyd/z5G7i47dJn5nfcRZtWsjcotmwgU+/Ff/FMzzrQnhbG
-	WTcflRxotjVPJH2IiERDUoep2mVN290s94t8hnTC1EQ5NnHIiaU5A6cfxxZUpOzJHolUaP6RKPQv/
-	pDYr7Xuw==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=24jn+2XjF5n77zOBbC+cxREac59bDjesd7lQidAAOVI=; b=rOVBYlRbX3UN0JCkv28Q/xQFti
+	+p7ar/b4CrLmxZOzPFAg5bNg2uBnjYMLWeJqDLyXe9Su06OcJjSGnYZT/o2TjPOYCn7MsMeUuQSbw
+	751v4KzBWymvbK9iL72GDEsmh/n4wUeq19KE4lkSVRrAvuodAr/pq1b5BPjFWON/rBNPg9pnwnoyB
+	mekMZYLEWgiOyreEASVDwVKRPZnRrv2m9Z+Uc+23CdDLxSzcucNGAJWIYXPMiaCty7ujv/RkF04Bn
+	dZ1l+9sXxGgfmlJYhXUvlQoW7mg2SpmcbYe1RUIhYTiaXpHv8xzx2f2wPcssP2OPCyROEjBf6gZdb
+	D3sINsmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1setZQ-0000000CTuh-1BnS;
-	Fri, 16 Aug 2024 09:48:32 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1setdt-0000000CV4x-45aG;
+	Fri, 16 Aug 2024 09:53:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1setZN-0000000CTsv-1Li7
+	id 1setbB-0000000CUMQ-2vDs
 	for linux-mediatek@lists.infradead.org;
-	Fri, 16 Aug 2024 09:48:30 +0000
-X-UUID: ac81d82a5bb411efb3adad29d29602c1-20240816
+	Fri, 16 Aug 2024 09:50:22 +0000
+X-UUID: f1b1f6505bb411efba0aef63c0775dbf-20240816
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=zaAas9QhOPswdEwX29L981sav0R3IkIAazBDWezta+g=;
-	b=p8vY1IrhcbMc4vSBkiuXLAaLdm+exomUiIgTifTEik4UFC6NsmRVcsvPGK6i+H71a/CnfN+8bHB4CtodJYJA6MJZF3whFF9RtJdvU6i1f62j0ylCqRV1m83qAiXiEV1Vi3gMNRLvLyaBp5sDmEsZt/+IAoVcepnMDfldAi+phpQ=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=24jn+2XjF5n77zOBbC+cxREac59bDjesd7lQidAAOVI=;
+	b=l10yip0cehYerwrvZ44LdvIAoJCOG7twyFa1/iUimXvULgvH6vHIVtZ3rEBBd4u7cqone3Yo7r16y/Y6V/Ko/KkVgIW5eK8qUU7NlxLzSOTBJFESc2X92HInP0nHsZFum7pD9RiSC3CqfxuHvTpEaYTKDmUqbHfV5XGVAO2UNFw=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:5ddf35d5-1ed2-4ac9-936c-8d4da48f7eb3,IP:0,U
+X-CID-O-INFO: VERSION:1.1.41,REQID:e5b0aadc-7b89-4d65-9c66-25ab4efb1a7e,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:475ab1fe-77bb-433c-b174-ffb8012693b0,B
+X-CID-META: VersionHash:6dc6a47,CLOUDID:2dad403f-6019-4002-9080-12f7f4711092,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: ac81d82a5bb411efb3adad29d29602c1-20240816
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+X-UUID: f1b1f6505bb411efba0aef63c0775dbf-20240816
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
 	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2092611162; Fri, 16 Aug 2024 02:48:21 -0700
+	with ESMTP id 880803309; Fri, 16 Aug 2024 02:50:17 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
  MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 16 Aug 2024 02:48:19 -0700
+ 15.2.1118.26; Fri, 16 Aug 2024 02:50:15 -0700
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 16 Aug 2024 17:48:19 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 16 Aug 2024 17:50:15 +0800
 From: Shayne Chen <shayne.chen@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
 	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
 	<evelyn.tsai@mediatek.com>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Peter Chiu
-	<chui-hao.chiu@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH 01/12] wifi: mt76: mt7996: use hweight16 to get correct tx antenna
-Date: Fri, 16 Aug 2024 17:46:25 +0800
-Message-ID: <20240816094635.2391-1-shayne.chen@mediatek.com>
+	<linux-mediatek@lists.infradead.org>, Howard Hsu
+	<howard-yh.hsu@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH 07/12] wifi: mt76: mt7996: set correct beamformee SS capability
+Date: Fri, 16 Aug 2024 17:46:30 +0800
+Message-ID: <20240816094635.2391-6-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240816094635.2391-1-shayne.chen@mediatek.com>
+References: <20240816094635.2391-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240816_024829_401979_52CD2D10 
-X-CRM114-Status: GOOD (  11.47  )
+X-CRM114-CacheID: sfid-20240816_025021_773209_369B52D1 
+X-CRM114-Status: GOOD (  11.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,33 +87,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Chiu <chui-hao.chiu@mediatek.com>
+From: Howard Hsu <howard-yh.hsu@mediatek.com>
 
-The chainmask is u16 so using hweight8 cannot get correct tx_ant.
-Without this patch, the tx_ant of band 2 would be -1 and lead to the
-following issue:
-BUG: KASAN: stack-out-of-bounds in mt7996_mcu_add_sta+0x12e0/0x16e0 [mt7996e]
+According to IEEE P802.11be/D6.0 Table 9-417n, beamformee SS field stands
+for the maximum number of spatial streams that the STA can receive in an
+EHT sounding NDP minus 1, and the minimum value of this field is 3.
 
-Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+This value indicates the decoding capability of a beamformee, which is
+independent of current antenna settings. Correct the value for mt7996
+and mt7992 chipsets based on their HW capability.
+
+Signed-off-by: Howard Hsu <howard-yh.hsu@mediatek.com>
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../net/wireless/mediatek/mt76/mt7996/init.c  | 23 ++++++++++++++-----
+ 1 file changed, 17 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index 2e4fa9f48dfb..e68724e54013 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -1653,7 +1653,7 @@ mt7996_mcu_sta_bfer_tlv(struct mt7996_dev *dev, struct sk_buff *skb,
- {
- 	struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
- 	struct mt7996_phy *phy = mvif->phy;
--	int tx_ant = hweight8(phy->mt76->chainmask) - 1;
-+	int tx_ant = hweight16(phy->mt76->chainmask) - 1;
- 	struct sta_rec_bf *bf;
- 	struct tlv *tlv;
- 	static const u8 matrix[4][4] = {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+index 7e7e42b54c2e..5e96973226bb 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+@@ -942,8 +942,12 @@ void mt7996_set_stream_vht_txbf_caps(struct mt7996_phy *phy)
+ 	cap = &phy->mt76->sband_5g.sband.vht_cap.cap;
+ 
+ 	*cap |= IEEE80211_VHT_CAP_SU_BEAMFORMEE_CAPABLE |
+-		IEEE80211_VHT_CAP_MU_BEAMFORMEE_CAPABLE |
+-		FIELD_PREP(IEEE80211_VHT_CAP_BEAMFORMEE_STS_MASK, sts - 1);
++		IEEE80211_VHT_CAP_MU_BEAMFORMEE_CAPABLE;
++
++	if (is_mt7996(phy->mt76->dev))
++		*cap |= FIELD_PREP(IEEE80211_VHT_CAP_BEAMFORMEE_STS_MASK, 3);
++	else
++		*cap |= FIELD_PREP(IEEE80211_VHT_CAP_BEAMFORMEE_STS_MASK, 4);
+ 
+ 	*cap &= ~(IEEE80211_VHT_CAP_SOUNDING_DIMENSIONS_MASK |
+ 		  IEEE80211_VHT_CAP_SU_BEAMFORMER_CAPABLE |
+@@ -988,9 +992,15 @@ mt7996_set_stream_he_txbf_caps(struct mt7996_phy *phy,
+ 	    IEEE80211_HE_PHY_CAP2_UL_MU_PARTIAL_MU_MIMO;
+ 	elem->phy_cap_info[2] |= c;
+ 
+-	c = IEEE80211_HE_PHY_CAP4_SU_BEAMFORMEE |
+-	    IEEE80211_HE_PHY_CAP4_BEAMFORMEE_MAX_STS_UNDER_80MHZ_4 |
+-	    IEEE80211_HE_PHY_CAP4_BEAMFORMEE_MAX_STS_ABOVE_80MHZ_4;
++	c = IEEE80211_HE_PHY_CAP4_SU_BEAMFORMEE;
++
++	if (is_mt7996(phy->mt76->dev))
++		c |= IEEE80211_HE_PHY_CAP4_BEAMFORMEE_MAX_STS_UNDER_80MHZ_4 |
++		     IEEE80211_HE_PHY_CAP4_BEAMFORMEE_MAX_STS_ABOVE_80MHZ_4;
++	else
++		c |= IEEE80211_HE_PHY_CAP4_BEAMFORMEE_MAX_STS_UNDER_80MHZ_5 |
++		     IEEE80211_HE_PHY_CAP4_BEAMFORMEE_MAX_STS_ABOVE_80MHZ_5;
++
+ 	elem->phy_cap_info[4] |= c;
+ 
+ 	/* do not support NG16 due to spec D4.0 changes subcarrier idx */
+@@ -1187,7 +1197,8 @@ mt7996_init_eht_caps(struct mt7996_phy *phy, enum nl80211_band band,
+ 		IEEE80211_EHT_PHY_CAP0_SU_BEAMFORMER |
+ 		IEEE80211_EHT_PHY_CAP0_SU_BEAMFORMEE;
+ 
+-	val = max_t(u8, sts - 1, 3);
++	/* Set the maximum capability regardless of the antenna configuration. */
++	val = is_mt7992(phy->mt76->dev) ? 4 : 3;
+ 	eht_cap_elem->phy_cap_info[0] |=
+ 		u8_encode_bits(u8_get_bits(val, BIT(0)),
+ 			       IEEE80211_EHT_PHY_CAP0_BEAMFORMEE_SS_80MHZ_MASK);
 -- 
 2.39.2
 
