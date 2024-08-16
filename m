@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEABEC3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Aug 2024 18:11:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20765C3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Aug 2024 22:53:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=at27fxPVrZ2xoDsFjO9aY5nVRNvXzDngs4EF5t73+LE=; b=AbU3Qv9+PQ/roDgGqdoCwKOrdb
-	6qoFmhSufuU9v238wTwvJCNu0BLEQ6tKs2f+dZoBGWvw07DFDI5gofHa946vZet3IUK+/TWQOuiH3
-	5oGIQO3LZr2jVK13I4aRZNWenbxGHww72fjb5j6NzC+AsZpIESIGlCd1f4daIBlasBKp9LxMmdkWN
-	duzaPgwXnoSY8nnW9+hrNoXsGmCex7e3WetIWGzFcO5ZxUSJu38C4VeBTcsVrFXHMkKh0W5Hv1Mdw
-	C409ZRwjONuCY6PqgCmTNvbboOIMoVNVxeWztX4MxuxJ/rOXyAxEREi2VvWBiexLRE7hDgGzVE2th
-	25gZBZrw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GEwjeeO4+xsKSb63X8/1ZAmB/dAdMZgdy0JQ19w3CXc=; b=wmQs5VLqzHi71c0rLvLnxc6ALd
+	frjTL9wz1Gblkxacbr1Uwa643qUKR6nUaVbBciUv8zoKmGkOhVXHFQ+MK0Uf8PdskzAJMNTmKi/P7
+	toop2vCdi3qSrw6gDfywFWaOSu7p+9m4kmF8lW+WA/qpdS7s/6oBzqEs3DotAdO0DzyGfGnYkXLqt
+	BiDWSmHhzi78B4SBNggM4iCLbJPBMHa2Z40YvbL8awgY7BQ80BSI1V6QN9ZyxQOhZrX41eNidqDU7
+	RUcWlLuvW2aJKb39qFKVG4mtYvsnnV9gssowWbaf6kkQizZl9AOw2DeK9TQ6qkeJw5i8/FfYf0MKs
+	22+eEPBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sf1Q3-0000000Dnmo-2JAc;
-	Fri, 16 Aug 2024 18:11:23 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sf5pG-0000000EF7J-2zBC;
+	Fri, 16 Aug 2024 22:53:42 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sf1PM-0000000DnbM-36Qf;
-	Fri, 16 Aug 2024 18:10:42 +0000
+	id 1sf5oa-0000000EF50-2EWY;
+	Fri, 16 Aug 2024 22:53:02 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id ACFB76224B;
-	Fri, 16 Aug 2024 18:10:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7118DC32782;
-	Fri, 16 Aug 2024 18:10:39 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id B1A8ACE1DAC;
+	Fri, 16 Aug 2024 22:52:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC7BCC32782;
+	Fri, 16 Aug 2024 22:52:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723831839;
-	bh=zVSWKO5JPnWSE1h3k2VU/7U4V5+RPNpKwGivKePi7Gc=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=CuP/0Xi6vX4U6E6tp+w9+9Dg0wi6ahKiXoXN+o45b9ib6vZXa97dLrSTPjNR9IHsN
-	 8fZdjWxa3ccMh/I7uSmwjQ3T6nC78E2ugltTVnj55GZX2CA7bPIzyOY+OmAl4ewEWm
-	 07RwRlYmE7awiiG5VnYcYms7XNqEqbH7qNykSYzs73xwLLzKnqGNnFob7zSG4qtNMV
-	 QUyaMVDe2q3seV93IkjZGISEbGmJkQUsRi9et+CRoTT+ZOWDz5LfN/sBI9tP7jkpLE
-	 qB/BrQilacCpUcFlGlXI2syedHw+829WXhK1a5Zvcoh7IEFtVhsEIKVV/M2imxdAU2
-	 F90rqy7cBNKow==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EB1D938232A9;
-	Fri, 16 Aug 2024 18:10:39 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1723848777;
+	bh=8DDeC1Xe7fCa3QZwCHDRLsEPNaCzKydJaYmyPNmvTCs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=iGbZuz/YjNrLSltqIoaEoV1mBiKn9M1Dw8zMz1Xvme5i6npcryIJQVZw6CtogXpm9
+	 jOMy77y6DWB9SKRozIpKqWWAICb5e7QR2cQQmyv8MOBiNrKj+Ka1yhLMa8+kVXnRsf
+	 A/c+i+84JCeDGMuX8CWvJSanoWCsEQISjZ9v0rTE4lnagXMD04qFNmlRYDXq2f0Lw8
+	 7RlxKGwZ/Y4u2Do5f55+fd+9xCyzEtUDmzyu5DjB4A6xnKVBVGQWSXMJop2eHJHneY
+	 EXcjlogrCnGedNqSrwpC7oAEy8h778MSkQjx7rBjFl2+jQ7qn7+Em5Uc6TjY2u+oTd
+	 EGuynJmfAQRdQ==
+Date: Fri, 16 Aug 2024 16:52:57 -0600
+From: Rob Herring <robh@kernel.org>
+To: Benjamin Larsson <benjamin.larsson@genexis.eu>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>, linux-gpio@vger.kernel.org,
+	linus.walleij@linaro.org, sean.wang@kernel.org,
+	linux-mediatek@lists.infradead.org, lorenzo.bianconi83@gmail.com,
+	krzk+dt@kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
+	angelogioacchino.delregno@collabora.com, conor+dt@kernel.org,
+	ansuelsmth@gmail.com
+Subject: Re: [PATCH 1/2] dt-bindings: pinctrl: airoha: Add EN7581 pinctrl
+ controller
+Message-ID: <20240816225257.GA2411475-robh@kernel.org>
+References: <cover.1723392444.git.lorenzo@kernel.org>
+ <0d537e88b64847bc4e49756b249b2efdcf489b92.1723392444.git.lorenzo@kernel.org>
+ <22144671-fc7c-4cb2-8bb6-ee7d3fbfcb0e@kernel.org>
+ <c8a74be4-be63-477d-9460-1d5ef5e3d84a@genexis.eu>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v2 0/3] ipv6: Add
- ipv6_addr_{cpu_to_be32,be32_to_cpu} helpers
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <172383183868.3593066.6873916327349164311.git-patchwork-notify@kernel.org>
-Date: Fri, 16 Aug 2024 18:10:38 +0000
-References: <20240813-ipv6_addr-helpers-v2-0-5c974f8cca3e@kernel.org>
-In-Reply-To: <20240813-ipv6_addr-helpers-v2-0-5c974f8cca3e@kernel.org>
-To: Simon Horman <horms@kernel.org>
-Cc: andrew@lunn.ch, davem@davemloft.net, dsahern@kernel.org,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, nbd@nbd.name,
- sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, lorenzo@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- yisen.zhuang@huawei.com, salil.mehta@huawei.com, shaojijie@huawei.com,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <c8a74be4-be63-477d-9460-1d5ef5e3d84a@genexis.eu>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240816_111040_938717_0BD46C2D 
-X-CRM114-Status: UNSURE (   9.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240816_155300_769121_85BF04DF 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,33 +80,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This series was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Tue, 13 Aug 2024 14:33:46 +0100 you wrote:
-> Hi,
+On Tue, Aug 13, 2024 at 10:06:41AM +0200, Benjamin Larsson wrote:
+> On 2024-08-12 08:48, Krzysztof Kozlowski wrote:
+> > > +      pio: pinctrl@1fa20214 {
+> > > +        compatible = "airoha,en7581-pinctrl";
+> > > +        reg = <0x0 0x1fa20214 0x0 0x30>,
+> > > +              <0x0 0x1fa2027c 0x0 0x8>,
+> > > +              <0x0 0x1fbf0234 0x0 0x4>,
+> > > +              <0x0 0x1fbf0268 0x0 0x4>,
+> > > +              <0x0 0x1fa2001c 0x0 0x50>,
+> > > +              <0x0 0x1fa2018c 0x0 0x4>,
+> > > +              <0x0 0x1fbf0204 0x0 0x4>,
+> > > +              <0x0 0x1fbf0270 0x0 0x4>,
+> > > +              <0x0 0x1fbf0200 0x0 0x4>,
+> > > +              <0x0 0x1fbf0220 0x0 0x4>,
+> > > +              <0x0 0x1fbf0260 0x0 0x4>,
+> > > +              <0x0 0x1fbf0264 0x0 0x4>,
+> > > +              <0x0 0x1fbf0214 0x0 0x4>,
+> > > +              <0x0 0x1fbf0278 0x0 0x4>,
+> > > +              <0x0 0x1fbf0208 0x0 0x4>,
+> > > +              <0x0 0x1fbf027c 0x0 0x4>,
+> > > +              <0x0 0x1fbf0210 0x0 0x4>,
+> > > +              <0x0 0x1fbf028c 0x0 0x4>,
+> > > +              <0x0 0x1fbf0290 0x0 0x4>,
+> > > +              <0x0 0x1fbf0294 0x0 0x4>,
+> > > +              <0x0 0x1fbf020c 0x0 0x4>,
+> > > +              <0x0 0x1fbf0280 0x0 0x4>,
+> > > +              <0x0 0x1fbf0284 0x0 0x4>,
+> > > +              <0x0 0x1fbf0288 0x0 0x4>;
+> > Why are you mapping individual registers? At least half of these are
+> > continuous.
 > 
-> This series adds and uses some new helpers,
-> ipv6_addr_{cpu_to_be32,be32_to_cpu}, which are intended to assist in
-> byte order manipulation of IPv6 addresses stored as as arrays.
+> Hi, this is by design because of the register placement in the gpio block
+> and the fact that the pwm functionality is intermixed in there also. As
+> example the following registers are all GPIOCTRL:
 > 
+> <0x0 0x1fbf0200 0x0 0x4>,
+> <0x0 0x1fbf0220 0x0 0x4>,
+> <0x0 0x1fbf0260 0x0 0x4>,
+> <0x0 0x1fbf0264 0x0 0x4>,
 > 
-> [...]
+> To simplify the driver code logic the complexity is moved to the dts because
+> of that.
 
-Here is the summary with links:
-  - [net-next,v2,1/3] ipv6: Add ipv6_addr_{cpu_to_be32,be32_to_cpu} helpers
-    https://git.kernel.org/netdev/net-next/c/f40a455d01f8
-  - [net-next,v2,2/3] net: ethernet: mtk_eth_soc: Use ipv6_addr_{cpu_to_be32,be32_to_cpu} helpers
-    https://git.kernel.org/netdev/net-next/c/b908c722133e
-  - [net-next,v2,3/3] net: hns3: Use ipv6_addr_{cpu_to_be32,be32_to_cpu} helpers
-    https://git.kernel.org/netdev/net-next/c/c7be6e70d20c
+DT to OS is an ABI. Don't put the complexity there. The driver is easy 
+to change.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+Lot's of h/w blocks are just bit soup. This is not special. If a few 
+regions is helpful, then that would be fine.
 
-
+Rob
 
