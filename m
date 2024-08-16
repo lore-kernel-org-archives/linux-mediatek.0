@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05F7EC3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Aug 2024 15:31:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D60FDC3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Aug 2024 15:33:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=MHQ6C9YAPTB9bZgAEs3xu71MVSTPq6FS5mdvsNvOcFw=; b=UGSfeNp8AuB0po
-	cs4L7Edxg8JjAfdkk3mvSes1r5xytWBWluQVSdaoKbj1BaBrMPrBE8dumgvY6HugFWOEG22u5yZou
-	dzxVshSvaKi3bVYkk7XHADxLK4w8a//hHM5zk6hD6MDwKXuuLuywyu0nF7mZMsmeKYOS8oCMxYoKM
-	gAx23TvBYcIibd/ZVliI4TsfJKG30N1LrPalhAWcA36UiVvOhoAsKoNjqN8NXjZSnbVRVvxsRTpFQ
-	ai5vUT67XLQh9yBsKrgUNqWvZJuPI9cJIS/oY/PkYDD7lDvuRKqtnnPVKHj41k9JASGqp3aabdWJM
-	02DDLgKS+WJXOo1gnSMQ==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Bs19CWciVe69z8rsWTOPtucmozrfgqJROhrJ589EkVY=; b=sFLI71iV2KF7U+kXyxzukIoDbQ
+	MRLozSdcZX+m1Ohq1lgVpsPmSl64fv736zh8kwtpmFRxWZr3/bX/SWXZclogqI6/go/U1XQLQSCww
+	8Fd/+GjL8SnL5s28ARKEJebC0bZufLN7a67BGSNsbMZvJ0ZkWsGBR3NvuHKhr+qstxSLpEuDBTDM3
+	fOIpbqU3GthOuWJRLESLA1Xd+m76PG/03uzIP9h439RDcRQQV0jd8b49F377SqrIyN0D7hxPgxF+6
+	cc8P1UH7h4bY2mkRkeWITeQiLfQaIj4f/RajyzHZJMdb1N5w6a92L+wadPpBL4QMP9bteoIz9yd1Z
+	RNAorkbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seyvl-0000000DOWg-3s5a;
-	Fri, 16 Aug 2024 15:31:57 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1seyx8-0000000DP7B-253I;
+	Fri, 16 Aug 2024 15:33:22 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seyvj-0000000DOVe-3Vg8
+	id 1seyvm-0000000DOW6-0X0M
 	for linux-mediatek@lists.infradead.org;
-	Fri, 16 Aug 2024 15:31:57 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-428085a3ad1so16722175e9.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 16 Aug 2024 08:31:55 -0700 (PDT)
+	Fri, 16 Aug 2024 15:31:59 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-428085a3ad1so16722465e9.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 16 Aug 2024 08:31:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1723822314; x=1724427114; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=MHQ6C9YAPTB9bZgAEs3xu71MVSTPq6FS5mdvsNvOcFw=;
-        b=ZhEaw1+keeNnqrsjz2ci4XWhUtnx8PhDCVRqltCCWSKWCpxIBtNE6rsqz84DsHDmHI
-         n0KZp/PZyqH219j21LmRr8G8nW+tUsH3EByNYlHNb97e/f5EFVBgllU+6WGXK49q8G7z
-         qe4/KoIFKobkxWX7wx9rCm832VaN7z0qP3nW7CPcwbmBKVSTU9H2xDHc34SxqZQg/gPh
-         dnJm9N56BUMjo64esQcGkPgFERpjysXpFM6w+DOZHZIDB4RE+XLMEi6Dw5ASgFq1FTHs
-         hVa6mX5tEATWJ0MIdvmqFCRB9wL0ZF8/l5+FkUmLA848SXf2Qlx6Eug2XpQWQoECsOI+
-         2L2Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723822314; x=1724427114;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=linaro.org; s=google; t=1723822316; x=1724427116; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=MHQ6C9YAPTB9bZgAEs3xu71MVSTPq6FS5mdvsNvOcFw=;
-        b=XVybn8jLuJ0ZUg4cF8SxqCWq8qig3gYUdsg+xeQ0oAFry6OeJHabjweJAyTRNaqNkm
-         wia5pHwieK4pemTnbx/gR5lopzEZleB8M57Sz2t5GdfYi4UGwgEgwnP4iV96C5E+UN5K
-         G30d65zqTzpJrG//5P9YeuUUDazrHESTo9oPSRXYWEXI6aSkH5iF9Evv9MV+OTOJIcpJ
-         rUOf9mpQAYcRR/YeqgMh1mvnJ2fIpTrWYW1E9p0yYcuT6PVx2uPtYjKEfSl+VB58+ZqI
-         G3nOg5L0TizbZnjp+okmhEQcUCIKyyfTweGH7foaBNdoESWPXjygUK18wuZYaGekYl+z
-         DmNg==
-X-Forwarded-Encrypted: i=1; AJvYcCV+wDyE21sKaT9HzHAndlgILlSsfxeFwXXvyX+Cd4rnfsURALg/EEwSJ7bSTXXs4W8URldSuSBTTNScYBP6dpyIVafD7mc0OPikzDDmGo+lwaFJ
-X-Gm-Message-State: AOJu0Yx4pNe/FOZzPdEQG3LmnbvLatPokKeg0mJyFrNmwTauLE+cDBXt
-	cJt6tekOwXzTgpyGcYOFskt9keddgZvJprm4+nEzNbrUJxW7ZqXJj2zw2R7gbPQ=
-X-Google-Smtp-Source: AGHT+IEJXIL/v689+CCwET62EtuJhvPdXX0bjxeXiDpExl+dQXshRR93P6h1RVyaR5NPA9hqYGuwQQ==
-X-Received: by 2002:adf:f80e:0:b0:371:82ec:206e with SMTP id ffacd0b85a97d-37194314e2cmr2149706f8f.5.1723822314242;
-        Fri, 16 Aug 2024 08:31:54 -0700 (PDT)
+        bh=Bs19CWciVe69z8rsWTOPtucmozrfgqJROhrJ589EkVY=;
+        b=AkkkoqfeqT1ERqsnPnQR1OtDFgHglGT10JPdyuCz0vnVa5Xlm3d7fCsEjJmict0xYH
+         6Ww+KuGhY4uuoOeFnoqjsYnM6bNldi86o84yn3dchICD6RYxRGJ+5ixAA76KeTcsdQum
+         N9HSae++2ZiorMSECFUEacUbb9Q1IPuljHL2Z6BxHjqR++orRGAr7jTOpktThL7Lnkl+
+         YSv/ZUDMWxdclJVRYp4kQNGtdbF6oTdcWn6AM1Ekl3Vgk1ctL0aWFSB/vv1NIvWax9cp
+         pKuVLX5iw6f1FUWGpnAgcwgcbOewXpa/1XyYYteGa89X6ncY4R4MWKLPnDxA75eZMJym
+         S14A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1723822316; x=1724427116;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Bs19CWciVe69z8rsWTOPtucmozrfgqJROhrJ589EkVY=;
+        b=GsiBIUfuIGyD+UTsuYXxxxhn11s4N9sCiH+QBYeXz6rDxDDwEXPAiMMhle2x9c5XWO
+         3sIJzzzxlyd/ZSsEDVtwGyzNfnEtIY/ZkMLkyEGiP/VsZQq69VRDZKH78G5hRZAPapDQ
+         a86BSwzPmzxwThyKFjhnbs4b96fczgL8AT51/uau8S/9yd/NbtMemDT66MrTAvasjHHS
+         DRnQ0Y6c7uNf7iekWlMVInuayljk/C1qRUxzMKxm7R/DDOP4UwAiYIHEzIXn1PdEpVDl
+         T3m2ZJwnv7MquqO5Bwc62IQd1Rg2nvAS7XFvq0TwLXTh/iEis/uNKeAqtuebbBbICmWK
+         YJjg==
+X-Forwarded-Encrypted: i=1; AJvYcCVXdJMb542HgD5TlNQsuBa+QqkYoUmmvzu5+3vjomROWN+hH/COOYKTHLrHw9eKx+40of2SyTJqaLfrSaDLdIITl2egpn3WJHa/ZCjA7XSH0PUx
+X-Gm-Message-State: AOJu0YwAu/2keuQ/wHTsOL9xZC4yz07t1DLGUu34i/EhzaEb/f9Rca12
+	SYzaIhU7zHZ+g+J6W37CSTbAZ+Zj78OOVWs7scESH4TS5tzygMIZmlGQzwigYtk=
+X-Google-Smtp-Source: AGHT+IGR3dEEF3paPLhCSZQYsm1dXDhlnka2LZPKsFs9HlMVLbvtSAJs2IkTJafZE9YHaH92MT5WjA==
+X-Received: by 2002:a05:600c:4fd1:b0:426:6353:4b7c with SMTP id 5b1f17b1804b1-429ed7855f7mr22773225e9.8.1723822315663;
+        Fri, 16 Aug 2024 08:31:55 -0700 (PDT)
 Received: from [127.0.1.1] ([178.197.215.209])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-371898497f0sm3853661f8f.39.2024.08.16.08.31.53
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-371898497f0sm3853661f8f.39.2024.08.16.08.31.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 16 Aug 2024 08:31:53 -0700 (PDT)
+        Fri, 16 Aug 2024 08:31:55 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 00/17] leds: Use scoped device node handling to simplify
- error paths
-Date: Fri, 16 Aug 2024 17:31:32 +0200
-Message-Id: <20240816-cleanup-h-of-node-put-var-v1-0-1d0292802470@linaro.org>
+Date: Fri, 16 Aug 2024 17:31:33 +0200
+Subject: [PATCH 01/17] leds: aat1290: Use scoped device node handling to
+ simplify error paths
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIANRwv2YC/x3MQQrDIBBG4auEWXdARUrpVUoWQ/ytA0VFk1AIu
- Xsky2/x3kEdTdHpPR3UsGvXkgfsY6IlSf6CNQyTM86bl33y8oPkrXLiEjmXAK7byrs0hvcuuiB
- WYGn0tSHq/35/5vO8ADzhSsRrAAAA
+Message-Id: <20240816-cleanup-h-of-node-put-var-v1-1-1d0292802470@linaro.org>
+References: <20240816-cleanup-h-of-node-put-var-v1-0-1d0292802470@linaro.org>
+In-Reply-To: <20240816-cleanup-h-of-node-put-var-v1-0-1d0292802470@linaro.org>
 To: Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>, 
  Sean Wang <sean.wang@mediatek.com>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -85,27 +85,26 @@ Cc: linux-leds@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.14.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2458;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2066;
  i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=vPETBZPAFSUrChmKOPA1zhCE04APeQPcK73ZidPqOh0=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmv3DWkLz00DPYD8biGX01dG1yR9zLzcUK7/uv6
- 6afN8fm09yJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZr9w1gAKCRDBN2bmhouD
- 197FEACbc85PRN3+9lFao/L3mAVNDQNRS/WrqRBp38LHkAnWKc7LRgi5nYg5KB1EFA5h8jdqAip
- wQu5JfN0Uq6UVg2pni9gYeAd+u0b2ixjIpXBbU0aCIc2KHYzvRI+9pOqdi/2DAU75yq6uqTdkJz
- A1jyUxXiCXUbuA+O00JBPquyPzDSdxAi2jFBr87A1F8FhkSNlVWJNC8FRrYBsFgHPM/ERUA5cvr
- H2U9FWuVB0OoxIrFXoxu4JjXrg8kXvY0k6gp7B88QA8GdoLD9QGNWVDdB2/NB1pBxZJX8Pf3+N/
- 7L9qQCYj0SqGuPxCDYrbOUt/ntOfqWSw5I4uAwl6jMtgoIhe5VFJnhMujghF8e0UqW32nr2kk+i
- Psdzb61R1XKtHmsE5h5/CUp+EU5mm0K1NolzVKiPfu3P7IBVeOzWHxnWScFcpyrQqSEfY4Dsdjx
- eZKnmL2+dYljL/kl5mpO6jS3ltK/EOv85b2MzeRq4kgO7r9636O2Rxepa+QvKRcgq9tImKDuDst
- YCj14VVhOERncMmEmSoBrqGVTKuMKLBPYaeG+CAyd6fObIt3srxCVN0e6JPBB3+pPibLOU/Icay
- ybDu8w6Go/RZ4uzbeWWhTJpkof0ZfxuBxuqvQvwR+aNNZi6VrmD53WIbbNqiBqP6OjWp1PQnUbG
- 0Lkw1H+khOJc1Zg==
+ bh=a1YGQS8jzBzLcYjwPx4kf8irSYV8QsT8hVGiKzaSR0k=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmv3DZOpqtaUv4QAkOdHVd+6wkSZBmNTro/fzvY
+ CO/ZnU/HP+JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZr9w2QAKCRDBN2bmhouD
+ 18eeD/44UH0sp3C6aYfp1LBephrs+liKt3nfnjZdWSJ0v/TieMbxVM6d4zS9ydJ5ky9FnYwB/bn
+ /67+vER0yxMdbgcdPdnq+7RJo3bpW2eqChHfkD1gR59G6Ochw7Zhoue60ljd9KsBK2RPJ9+7Dd+
+ Bk0oHl3jNMvbjNIfNBaqvnSCmvazbnZi2n1JrGvRuuhOSF6/oY0hlzCzYJj6U3J5JLoUHo/RvEv
+ xIDgNvQXD1Ul8c2AhudnTWUCCXGpw5bwLleLXZNh6r77KiudcrQ+wHjc+3AyB5100d/IDZV9pLz
+ T5KFT9Qqgr1UnhKUPqvmz/9zaqtUAp1yqWgIyE6dCiKKs5ll1ljE/4lx04RwwH7gIhPAUDp19um
+ 23NJqm8wECy/46SyyMgwAsCkV2PlLcjsTWknCQUnZKJlQawsbb/R6DYLt0NlwpkK5q+B5uh4cl7
+ kq4UnvALsghb7p84K1nYZ43IKYhaeH0AvYe7Q0nL3rFlNOTwi0+nCoCC8v9EleQ4sNat1X3RRxR
+ Bu8JX6oRfVsvIDPeQ1hzmdLHAmva4nLqWQQ3yEu8cwGljT1m2fYTuEzrn7BQnFKV/xC5rID1TqV
+ vbAdvyBu4MsxqHL8865ARm42fwwkprl2/gxxZdxmhDNYDD0KmvvJ3WQ0qiDzJATfz6/2/NPYVWP
+ V56tjRRvGbYMRoQ==
 X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240816_083155_955641_DFB93706 
-X-CRM114-Status: UNSURE (   6.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240816_083158_197663_D0867D59 
+X-CRM114-Status: GOOD (  12.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,57 +119,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Obtain the device node reference with scoped/cleanup.h to reduce error
+handling and make the code a bit simpler.
 
-Make code a bit smaller/simpler, with less of_node_put() thanks to
-cleanup.h.
-
-Best regards,
-Krzysztof
-
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
-Krzysztof Kozlowski (17):
-      leds: aat1290: Use scoped device node handling to simplify error paths
-      leds: ktd2692: Use scoped device node handling to simplify error paths
-      leds: max77693: add missing of_node_get for probe duration
-      leds: max77693: Simplify with scoped for each OF child loop
-      leds: 88pm860x: Simplify with scoped for each OF child loop
-      leds: aw2013: Simplify with scoped for each OF child loop
-      leds: bcm6328: Simplify with scoped for each OF child loop
-      leds: bcm6358: Simplify with scoped for each OF child loop
-      leds: is31fl32xx: Simplify with scoped for each OF child loop
-      leds: lp55xx: Simplify with scoped for each OF child loop
-      leds: mc13783: Use scoped device node handling to simplify error paths
-      leds: mt6323: Simplify with scoped for each OF child loop
-      leds: netxbig: Simplify with scoped for each OF child loop
-      leds: pca9532: Simplify with scoped for each OF child loop
-      leds: sc27xx: Simplify with scoped for each OF child loop
-      leds: turris-omnia: Simplify with scoped for each OF child loop
-      leds: qcom-lpg: Simplify with scoped for each OF child loop
+ drivers/leds/flash/leds-aat1290.c | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
 
- drivers/leds/flash/leds-aat1290.c  | 14 ++++++--------
- drivers/leds/flash/leds-ktd2692.c  | 15 +++++++--------
- drivers/leds/flash/leds-max77693.c | 20 ++++++++++----------
- drivers/leds/leds-88pm860x.c       |  5 ++---
- drivers/leds/leds-aw2013.c         |  8 +++-----
- drivers/leds/leds-bcm6328.c        |  7 ++-----
- drivers/leds/leds-bcm6358.c        |  7 ++-----
- drivers/leds/leds-is31fl32xx.c     | 14 ++++----------
- drivers/leds/leds-lp55xx-common.c  |  7 ++-----
- drivers/leds/leds-mc13783.c        | 24 +++++++++++-------------
- drivers/leds/leds-mt6323.c         | 22 +++++++---------------
- drivers/leds/leds-netxbig.c        | 19 ++++++++-----------
- drivers/leds/leds-pca9532.c        |  7 ++-----
- drivers/leds/leds-sc27xx-bltc.c    | 12 ++++--------
- drivers/leds/leds-turris-omnia.c   |  8 +++-----
- drivers/leds/rgb/leds-qcom-lpg.c   | 14 ++++----------
- 16 files changed, 77 insertions(+), 126 deletions(-)
----
-base-commit: 2d9e88b1a66c6b9a76fb16141ad3c6fb59334c5a
-change-id: 20240816-cleanup-h-of-node-put-var-e442f2da1ae1
+diff --git a/drivers/leds/flash/leds-aat1290.c b/drivers/leds/flash/leds-aat1290.c
+index e8f9dd293592..c7b6a1f01288 100644
+--- a/drivers/leds/flash/leds-aat1290.c
++++ b/drivers/leds/flash/leds-aat1290.c
+@@ -7,6 +7,7 @@
+  *	Author: Jacek Anaszewski <j.anaszewski@samsung.com>
+  */
+ 
++#include <linux/cleanup.h>
+ #include <linux/delay.h>
+ #include <linux/gpio/consumer.h>
+ #include <linux/led-class-flash.h>
+@@ -215,7 +216,6 @@ static int aat1290_led_parse_dt(struct aat1290_led *led,
+ 			struct device_node **sub_node)
+ {
+ 	struct device *dev = &led->pdev->dev;
+-	struct device_node *child_node;
+ #if IS_ENABLED(CONFIG_V4L2_FLASH_LED_CLASS)
+ 	struct pinctrl *pinctrl;
+ #endif
+@@ -246,7 +246,8 @@ static int aat1290_led_parse_dt(struct aat1290_led *led,
+ 	}
+ #endif
+ 
+-	child_node = of_get_next_available_child(dev_of_node(dev), NULL);
++	struct device_node *child_node __free(device_node) =
++		of_get_next_available_child(dev_of_node(dev), NULL);
+ 	if (!child_node) {
+ 		dev_err(dev, "No DT child node found for connected LED.\n");
+ 		return -EINVAL;
+@@ -267,7 +268,7 @@ static int aat1290_led_parse_dt(struct aat1290_led *led,
+ 	if (ret < 0) {
+ 		dev_err(dev,
+ 			"flash-max-microamp DT property missing\n");
+-		goto err_parse_dt;
++		return ret;
+ 	}
+ 
+ 	ret = of_property_read_u32(child_node, "flash-max-timeout-us",
+@@ -275,15 +276,12 @@ static int aat1290_led_parse_dt(struct aat1290_led *led,
+ 	if (ret < 0) {
+ 		dev_err(dev,
+ 			"flash-max-timeout-us DT property missing\n");
+-		goto err_parse_dt;
++		return ret;
+ 	}
+ 
+ 	*sub_node = child_node;
+ 
+-err_parse_dt:
+-	of_node_put(child_node);
+-
+-	return ret;
++	return 0;
+ }
+ 
+ static void aat1290_led_validate_mm_current(struct aat1290_led *led,
 
-Best regards,
 -- 
-Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+2.43.0
 
 
