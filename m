@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54E79C3DA4A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B59F1C531DE
 	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Aug 2024 10:01:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,43 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3ac/CoJAvnZ57l4lpWdjj1Y8Wm4d7QoaRRF8O7x0jEo=; b=H3WyAX9NrLIFJ1A0phjE+7MGcQ
-	bPqEwwuADUDCm226y9TUjfm3iVL5j6HGBO0MZU+Ij8irlrwB1K8EH5aQb6U2smRN0naQlPS+rGPoF
-	slGnl6eq/I4ra9sVe4FH5iMB06kevymQkvRcYgcZJLRbcflaiSYtGdkkLzYpwyMYSwMmrUhJzuupM
-	aX9q81nUkvV5hQKycj2MQAuqwDGB4n5yYo5j3YQD1dhlVwqXPlAHmKHz5cgdSMlh92ws+5gYyzYQq
-	8Zhv1A59WuDEx2ZGFrpGgQ2cNXqawluTntpMnnl9ft4o66Vc/HUcCtbFj5kB8PrLrhISmWbNqizhB
-	C/MhXlJQ==;
+	bh=DHtJQXl9I4VE1DNLkw9ZHfypQqZaoP+abQZ/1/h9Hwg=; b=YHfVoAHOAHr2Av2nzqlNUVw4on
+	VlZqYmfDYaMXx9IXYe8DpMvf61dbHxCL7UpQ1i9unpyc+jpAwNPfR+NQnrC1oujYex0XqsME3TIJb
+	C8E9OJOAmRJ/WEcn8DIhzDcyeJBoMtm8XNdXktP2Z6GQxg7VdW+UmXh8aTxg0875wGCZ5hSL33tKv
+	3s68sxhfoCSbeqVWUlTgUccVybi8XCo7VNlybl/iH2iLR9jh3/ZYRZz/wFhzLZAmzVZ3lXQThZIvg
+	Hg1WwBpgRq7AlIcQwYRFy2iMXI3GqWgwJmwpl5DdBthLN0zMHpp0nQGguqT5a7PxUPpmLfL86tZWO
+	SSzhhHrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1setm2-0000000CWoe-422k;
-	Fri, 16 Aug 2024 10:01:34 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1setm3-0000000CWot-1gLr;
+	Fri, 16 Aug 2024 10:01:35 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1setl5-0000000CWVa-1w8J
+	id 1setlT-0000000CWcZ-3gMr
 	for linux-mediatek@lists.infradead.org;
-	Fri, 16 Aug 2024 10:00:36 +0000
-X-UUID: 5bab49de5bb611efb3adad29d29602c1-20240816
+	Fri, 16 Aug 2024 10:01:01 +0000
+X-UUID: 6c2163845bb611efba0aef63c0775dbf-20240816
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=3ac/CoJAvnZ57l4lpWdjj1Y8Wm4d7QoaRRF8O7x0jEo=;
-	b=mMvdUXzAgWy7imQRkUQ7vNCyQlcCMz0y5+wLVKct4RF04Jwk6HOsUJx/HTs9kOjYu+3as6sQQPP6n/S1i6ULDfiZBbETv60pe2aTHI47FPuFmo07IU/1iMKTkhjLvpq4H7LanXXme74IMlFm73OAZ9InHnjFowjbRFltCv0auec=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=DHtJQXl9I4VE1DNLkw9ZHfypQqZaoP+abQZ/1/h9Hwg=;
+	b=MhQxnBrIH5c+hO5pQoniUloaJD0vwy2hoiAvhJTwPjY/DicV5akHtGtIytDnWBdRvRdH42/4b743xhDxjJYLsn+oNqu1fxOILM9d2iUaPEnE7lRZ+eVUrS5b+ujdBPPxEh1vlQJQz8jZgsVYongFpxqkUdMne5TA21DhBMTnVaw=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:a7eba663-b714-4e84-bccf-44b08dbfaddb,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6dc6a47,CLOUDID:2fcf403f-6019-4002-9080-12f7f4711092,B
+X-CID-O-INFO: VERSION:1.1.41,REQID:9a3f2825-251d-4469-8c8c-23d8e341a7b4,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:c8d1403f-6019-4002-9080-12f7f4711092,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 5bab49de5bb611efb3adad29d29602c1-20240816
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 6c2163845bb611efba0aef63c0775dbf-20240816
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 784432995; Fri, 16 Aug 2024 03:00:25 -0700
+	with ESMTP id 341190840; Fri, 16 Aug 2024 03:00:52 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Fri, 16 Aug 2024 17:50:15 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -59,33 +59,20 @@ To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
 	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
 	<evelyn.tsai@mediatek.com>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Peter Chiu
-	<chui-hao.chiu@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH 05/12] wifi: mt76: mt7996: advertize beacon_int_min_gcd
-Date: Fri, 16 Aug 2024 17:46:28 +0800
-Message-ID: <20240816094635.2391-4-shayne.chen@mediatek.com>
+	<linux-mediatek@lists.infradead.org>, Howard Hsu
+	<howard-yh.hsu@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH 08/12] wifi: mt76: mt7996: fix EHT beamforming capability check
+Date: Fri, 16 Aug 2024 17:46:31 +0800
+Message-ID: <20240816094635.2391-7-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240816094635.2391-1-shayne.chen@mediatek.com>
 References: <20240816094635.2391-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--4.436600-8.000000
-X-TMASE-MatchedRID: hJoPGlKDQFkVAKRaMHqjDj+qcn/TbYs0Xs5nqGvDCfOFAnvBzkQqV/9T
-	oIqmlx19ThbvLLI8RvNI3Y0ZCr7oV+a9R6LXDub0ngIgpj8eDcBpkajQR5gb3savT21DsLD/UEh
-	Wy9W70AHCttcwYNipXxf2ukFm4ENtlNViJYwGR5xLkSe5Uzq3PwzUb5WmzuH2dr83lAQ2WkSqne
-	Bcz+h3ZtKryvPV5ZMDiumysd8Ts3NrUlhyhVbKc6Uwz4WJNe+7dmtRsRmKkASJZPT2ZDPuzPD2Q
-	fzMDLjho65UufHcDvg=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--4.436600-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 395214C32238876138A90FB0F373515F65F97686783533E8248EBBD7D12D06B62000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240816_030035_529205_3A899D0E 
-X-CRM114-Status: UNSURE (   8.01  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240816_030059_955697_3B7590D1 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,29 +87,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Chiu <chui-hao.chiu@mediatek.com>
+From: Howard Hsu <howard-yh.hsu@mediatek.com>
 
-Advertize beacon_int_min_gcd as 100 to allow setting different beacon
-intervals on different interfaces.
+If a VIF acts as a beamformer, it should check peer's beamformee
+capability, and vice versa.
 
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Fixes: ba01944adee9 ("wifi: mt76: mt7996: add EHT beamforming support")
+Signed-off-by: Howard Hsu <howard-yh.hsu@mediatek.com>
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7996/init.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index 283df84f1b43..4d6157e49b16 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -42,6 +42,7 @@ static const struct ieee80211_iface_combination if_comb[] = {
- 				       BIT(NL80211_CHAN_WIDTH_40) |
- 				       BIT(NL80211_CHAN_WIDTH_80) |
- 				       BIT(NL80211_CHAN_WIDTH_160),
-+		.beacon_int_min_gcd = 100,
- 	}
- };
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index e68724e54013..daef014954d0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -1429,10 +1429,10 @@ mt7996_is_ebf_supported(struct mt7996_phy *phy, struct ieee80211_vif *vif,
  
+ 		if (bfee)
+ 			return vif->bss_conf.eht_su_beamformee &&
+-			       EHT_PHY(CAP0_SU_BEAMFORMEE, pe->phy_cap_info[0]);
++			       EHT_PHY(CAP0_SU_BEAMFORMER, pe->phy_cap_info[0]);
+ 		else
+ 			return vif->bss_conf.eht_su_beamformer &&
+-			       EHT_PHY(CAP0_SU_BEAMFORMER, pe->phy_cap_info[0]);
++			       EHT_PHY(CAP0_SU_BEAMFORMEE, pe->phy_cap_info[0]);
+ 	}
+ 
+ 	if (sta->deflink.he_cap.has_he) {
 -- 
 2.39.2
 
