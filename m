@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9058C5320E
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69FABC531DF
 	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Aug 2024 09:53:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,78 +12,80 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0P8Q5aPYJ95Nkv+yhaexcDyfyP79mJeFOtrPENogz6Q=; b=shvaWiE9xJPqOazqNyL8AZUSTv
-	yyvgCJGGtQN2yz+INVU6sbQghfY4A8Y/DXotOK9u478wZUjc7ZcBi44s7h9d5H2Hwd1Npi6thE7Az
-	po9CJH0GQTBj+DkJ1aXYB+C32r4yBCBiUegsbUW07tIkq1UW32ipzg2orAzA7NZTAlGLv55MhunBG
-	iwfjsH0Q0Cco6gA0bbZq6L4BDl85oeesWBJ+Y2ABUXUAQuAzrI2ky82VDubbzK5HLvuS53QdfoOvY
-	7NvblLS8HsUnvRtAmzUbO6UsARQhzrGy9PdqhCn79Ww4ZHnbbAswKbWhuRlPuJu4bWrXHghzdOMlu
-	CXJWUxdg==;
+	bh=lAqw9ka0nn0S859j6xPD1mbCrC9FnM9RnqTZHXq9OMA=; b=O2qGXSCokl+snl6mLFaWX3qXia
+	yGnm432aYG6olYFOeZY0hNXyNeNNuURMa3Yj/1nRgoLAO8cuRkblHjxltKBG2P+kh3hLD3JaqIkxt
+	Oc/mP2y1kNLv/36RcEyZ2Bd6Vkr0moW2JAUbxxRni3gkwNi9mfRHxQlbUN/OGgsRTY5K+F3hApnIp
+	/iJNoURjeoz6DLlz0tVhezIx8Hg8792lZnr0rRKNZhE+kQVr770NhcUy+eMeHzihbYjFPNkT2b6QP
+	tr4qYK/la9778O8b7FCrDQAXzkQiLHjVCoW0+GATP/4KFt+hGkZ8tbZBEr6KArD7ElA5nBQr+VrjD
+	Lp6fKrSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1setdv-0000000CV6J-1WNF;
-	Fri, 16 Aug 2024 09:53:11 +0000
+	id 1setdu-0000000CV5u-3sec;
+	Fri, 16 Aug 2024 09:53:10 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1setbH-0000000CUOC-43qi
+	id 1setbG-0000000CUNY-3pUb
 	for linux-mediatek@lists.infradead.org;
-	Fri, 16 Aug 2024 09:50:30 +0000
-X-UUID: f5e34cc45bb411efba0aef63c0775dbf-20240816
+	Fri, 16 Aug 2024 09:50:28 +0000
+X-UUID: f58cf0365bb411efba0aef63c0775dbf-20240816
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=0P8Q5aPYJ95Nkv+yhaexcDyfyP79mJeFOtrPENogz6Q=;
-	b=EqyWnft0RiMIsj3XBm14MaK/F1noCLqhD9XdKVqYF19pyD4LmWuVqsimDzxBmzCMYRcWkvPO4TRuNgNhpVfD4FSlLTNYoCpWrgynR1+gcpJ6HKfqusR69gMByuuyth31wHYgB8TvQ7XmY7pVFDv1+Dn5fFtpXx5Mzez8SKXODlM=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=lAqw9ka0nn0S859j6xPD1mbCrC9FnM9RnqTZHXq9OMA=;
+	b=alaWVQsPBGOQSHI4mERnIwSRiLV7pmj77t0PBIv8ME7Imkj+AkdzUc7FXXrZiUXHDoQR2bdqv8+tlPGZBVR4GYg1eYUucqYR20lGanPP8DaBF5NjetNrDMzH/CbQRpQZpq2woiTg9RXDYS15O98IV1EbluY7YpILFCenEGtXqok=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:70309889-5b3e-40a4-b803-68d049dddc34,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:c360b1fe-77bb-433c-b174-ffb8012693b0,B
+X-CID-O-INFO: VERSION:1.1.41,REQID:328c7dbe-077a-489d-b908-d12b0969607b,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:6dc6a47,CLOUDID:c260b1fe-77bb-433c-b174-ffb8012693b0,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: f5e34cc45bb411efba0aef63c0775dbf-20240816
+X-UUID: f58cf0365bb411efba0aef63c0775dbf-20240816
 Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
 	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1846995436; Fri, 16 Aug 2024 02:50:24 -0700
+	with ESMTP id 1512834150; Fri, 16 Aug 2024 02:50:24 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 16 Aug 2024 17:50:16 +0800
+ 15.2.1118.26; Fri, 16 Aug 2024 17:49:59 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 16 Aug 2024 17:50:16 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 16 Aug 2024 17:49:59 +0800
 From: Shayne Chen <shayne.chen@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
 	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
 	<evelyn.tsai@mediatek.com>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Michael-CY Lee
-	<michael-cy.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH 12/12] wifi: mt76: mt7996: set IEEE80211_KEY_FLAG_GENERATE_MMIE for other ciphers
-Date: Fri, 16 Aug 2024 17:46:35 +0800
-Message-ID: <20240816094635.2391-11-shayne.chen@mediatek.com>
+	<linux-mediatek@lists.infradead.org>, Peter Chiu
+	<chui-hao.chiu@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH 02/12] wifi: mt76: mt7996: fix traffic delay when switching back to working channel
+Date: Fri, 16 Aug 2024 17:46:26 +0800
+Message-ID: <20240816094635.2391-2-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240816094635.2391-1-shayne.chen@mediatek.com>
 References: <20240816094635.2391-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--6.424400-8.000000
-X-TMASE-MatchedRID: 72n23NsrtG5Dn01oiZfuY4Q6iEG+7EHnVNyumldWne3fc2Xd6VJ+yjFa
-	TRf5dTetdwvRxvSoxhzX3CBAz92EpWNvKIW9g24opvwZ9GmdwDNMkOX0UoduuQqiCYa6w8tvxjf
-	J+i+nbHSPvzCryM/S54Ay6p60ZV62fJ5/bZ6npdjKayT/BQTiGkbHfwjbIquItEKd2FZKuTfUvi
-	hDc8zGGPsVh7XWXFhv56vXtoWyuGHAvpLE+mvX8g==
+X-TM-AS-Result: No-10-3.692600-8.000000
+X-TMASE-MatchedRID: eim6YYjnci0VAKRaMHqjDkf49ONH0RaSzSnbR3NwN1x+YFLISofIH9x+
+	57h9IgNOg9nZBGeTizrSB/GPHxZWljEV1fJb8/5dbc297PAGtWYO2nfS7LtDc+WADIjXHIobKT3
+	PsaLyojRvW4oU3XnAkBruuR1H7YPj9tiEgCVL0jh05zsoB1UKTn0tCKdnhB589yM15V5aWpj6C0
+	ePs7A07QDtYjZXhssCCwQwd9u+WCA1aQxNd787cwJtzLNqef0oGXx8LLVfIc2urR6T5OLxsw5uA
+	YA3tXk4AzCuQBzc7hvBPtF8G90o2ywJhKn2m7AVSZrfNhP3sgUBh9AgBSEFrJm+YJspVvj2xkvr
+	HlT8euIiT2wjObmjrMC+ksT6a9fy
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--6.424400-8.000000
+X-TMASE-Result: 10-3.692600-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 854B1E48823A03FE6D506702CAEB90D599A40A29D76B55F8503079D1F7322EDF2000:8
+X-TM-SNTS-SMTP: 395AA2904F97960DC682A8E0FAB40F3B8E5CC53415AF45723FE01D3B5E872BE42000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240816_025028_039511_A9916768 
-X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-CacheID: sfid-20240816_025027_318212_F5B9B6B6 
+X-CRM114-Status: UNSURE (   9.00  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,42 +101,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Michael-CY Lee <michael-cy.lee@mediatek.com>
+From: Peter Chiu <chui-hao.chiu@mediatek.com>
 
-When beacon protection is enabled, FW checks MMIE tag & length in the
-beacon for every cipher mode. To pass the check, driver needs to set the
-key flag IEEE80211_KEY_GENERATE_MMIE to let mac80211 generate and
-initialize MMIE.
+During scanning, UNI_CHANNEL_RX_PATH tag is necessary for the firmware to
+properly stop and resume MAC TX queue. Without this tag, HW needs more time
+to resume traffic when switching back to working channel.
 
-Signed-off-by: Michael-CY Lee <michael-cy.lee@mediatek.com>
+Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
+Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7996/main.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index 1ab2fb292266..d43bd5c2432e 100644
+index bce082038219..f3f78e11a65f 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -364,14 +364,14 @@ static int mt7996_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
- 	case WLAN_CIPHER_SUITE_SMS4:
- 		break;
- 	case WLAN_CIPHER_SUITE_AES_CMAC:
--		wcid_keyidx = &wcid->hw_key_idx2;
--		key->flags |= IEEE80211_KEY_FLAG_GENERATE_MMIE;
--		fallthrough;
- 	case WLAN_CIPHER_SUITE_BIP_CMAC_256:
- 	case WLAN_CIPHER_SUITE_BIP_GMAC_128:
- 	case WLAN_CIPHER_SUITE_BIP_GMAC_256:
--		if (key->keyidx == 6 || key->keyidx == 7)
-+		if (key->keyidx == 6 || key->keyidx == 7) {
-+			wcid_keyidx = &wcid->hw_key_idx2;
-+			key->flags |= IEEE80211_KEY_FLAG_GENERATE_MMIE;
- 			break;
-+		}
- 		fallthrough;
- 	case WLAN_CIPHER_SUITE_WEP40:
- 	case WLAN_CIPHER_SUITE_WEP104:
+@@ -307,6 +307,10 @@ int mt7996_set_channel(struct mt7996_phy *phy)
+ 	if (ret)
+ 		goto out;
+ 
++	ret = mt7996_mcu_set_chan_info(phy, UNI_CHANNEL_RX_PATH);
++	if (ret)
++		goto out;
++
+ 	ret = mt7996_dfs_init_radar_detector(phy);
+ 	mt7996_mac_cca_stats_reset(phy);
+ 
 -- 
 2.39.2
 
