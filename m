@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E9BCC3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Aug 2024 04:03:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 623BDC3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Aug 2024 09:48:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Hm9RkZoG1ER1oXNh7yUPZZVN27VQKQBvHKAhbCWqwGI=; b=XchRAfJr9UWsC/gRf5obdJMxQf
-	iWmdZKjplja5cpzLE59kN7kZFug2ja7Xv+IcmxthZVNcpwFabqkdbyHqFUMmosUHuD9smDdXmmfWJ
-	BGz+O6rcY1V6eefkQ8/PVVZpGeY2T/j9mhkve/EaZz5eoLU0mqpyMBMeVdNrVGlv1ExLr9l4n4lXu
-	X8mQIIR9VXw3m5JSSKhi/74iWIeMlzsPml0m6XitjxOjeBqVCMihlpzvJrV7C7Yy/y/1RwrARHKg0
-	F1QgT4m7zgc3NFfLeR+QDQZGarY5c02TdToDr9HVywTsHRRaU6ZkWItFyeN9Sak9arfHx7c1MoqTT
-	YbeHBGLg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zaAas9QhOPswdEwX29L981sav0R3IkIAazBDWezta+g=; b=NXOl1FxQrEBaFKepaPrYRmczUi
+	3hyq4dgFIqyTduP9hWLUMRY7nHSpBgstV0IKidIMoVN7RS7ksLWGW1PLbUkALouzqhD7Z17uMjxW8
+	tXJbHUFz989fKek2ejoKDFEDn3roNhYkR3HgyWOaOOhSjqe0xF/JQPUo8lLepkO6jnstGm9SIsqmU
+	ZIl6zOxcDFAacrI9WLlrIYNV+nbP4/Ftyd/z5G7i47dJn5nfcRZtWsjcotmwgU+/Ff/FMzzrQnhbG
+	WTcflRxotjVPJH2IiERDUoep2mVN290s94t8hnTC1EQ5NnHIiaU5A6cfxxZUpOzJHolUaP6RKPQv/
+	pDYr7Xuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seoBq-0000000Bi3Y-2Mll;
-	Fri, 16 Aug 2024 04:03:50 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1setZQ-0000000CTuh-1BnS;
+	Fri, 16 Aug 2024 09:48:32 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1seoBA-0000000Bhu3-1UYN;
-	Fri, 16 Aug 2024 04:03:10 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5287D620A6;
-	Fri, 16 Aug 2024 04:03:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0967AC4AF0B;
-	Fri, 16 Aug 2024 04:03:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723780987;
-	bh=4GAZmM/9DtLX0KB1XpogjgnI+I82wrlfm93YsGzxfUE=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=on5KeV0PxSGfPznPYYdE3sSbG/h09J6k5lCwbFnFCEc01E5MhV5C61w17T8qpqe3t
-	 bFFnR9OXSGtUXdi0CwKFVH3OYb22qSYqczfWCxYN2tindoi7O2UkYOtdrPe5rMOYCn
-	 2OUpibCt3w05PEuHYCN7H8je0qBbyvWbkhQPJlxzbWRa51PeYzjWFWboA1h8pPRBN0
-	 e/8J4DTW8NIi3mKTYlV30b6te+PgPtSMgw8RB7nUlF2G9qfnPRe3orkmdk7iUQASqE
-	 Tdq/AhabJP5BBBg08+nXL9d+XZwLYnGvKqNinguAX9FpTfwuhNHFr+zq4BX42yo1tv
-	 81YAIk4MGpg5A==
-Received: by mail-pg1-f170.google.com with SMTP id 41be03b00d2f7-7c1f480593bso1246525a12.0;
-        Thu, 15 Aug 2024 21:03:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCWiEp5dC7HTxupP0AZ/plFxFIvH8ZEqg5Jc9P44Y5J5sUpd/WsGkNn2fq2fzwvf0WqLa97SjfaPrEWNDjP9/bRshPKgSjj63wmuRdyOYKwd8qqvkJSR2B/h+KIDdkVS3gkCR5WatYoQtM+j5o/XauCMeX+oxl67L54=
-X-Gm-Message-State: AOJu0Yyu+4KaFx3kpxId+12lnUWlFa6LXUKG0lPCbKgpaLOzW3HIPkLe
-	fBMAjX+KOW/mcnnuuNmW0mxQ+VmQt7TGT4+saZouMvcdM/COQD0tWIFVLcpOkcXwmWPTGrrN4Ce
-	u08ZneanITPsLnjgha/1FOuYqTA==
-X-Google-Smtp-Source: AGHT+IEOGuaBfZk2Mttwbtdt3blKF/XU9pCPPCi7eO6Mh8VFFnf3M2v3Xsh5ll49RERqc+5RGbfiKUdsPEq0KZMsMrY=
-X-Received: by 2002:a17:90a:6fa3:b0:2c9:7616:dec7 with SMTP id
- 98e67ed59e1d1-2d3dfc2b2dbmr1932025a91.6.1723780986477; Thu, 15 Aug 2024
- 21:03:06 -0700 (PDT)
+	id 1setZN-0000000CTsv-1Li7
+	for linux-mediatek@lists.infradead.org;
+	Fri, 16 Aug 2024 09:48:30 +0000
+X-UUID: ac81d82a5bb411efb3adad29d29602c1-20240816
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=zaAas9QhOPswdEwX29L981sav0R3IkIAazBDWezta+g=;
+	b=p8vY1IrhcbMc4vSBkiuXLAaLdm+exomUiIgTifTEik4UFC6NsmRVcsvPGK6i+H71a/CnfN+8bHB4CtodJYJA6MJZF3whFF9RtJdvU6i1f62j0ylCqRV1m83qAiXiEV1Vi3gMNRLvLyaBp5sDmEsZt/+IAoVcepnMDfldAi+phpQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:5ddf35d5-1ed2-4ac9-936c-8d4da48f7eb3,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:475ab1fe-77bb-433c-b174-ffb8012693b0,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: ac81d82a5bb411efb3adad29d29602c1-20240816
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <shayne.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2092611162; Fri, 16 Aug 2024 02:48:21 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 16 Aug 2024 02:48:19 -0700
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 16 Aug 2024 17:48:19 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Peter Chiu
+	<chui-hao.chiu@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH 01/12] wifi: mt76: mt7996: use hweight16 to get correct tx antenna
+Date: Fri, 16 Aug 2024 17:46:25 +0800
+Message-ID: <20240816094635.2391-1-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20240703103308.10198-1-jason-jh.lin@mediatek.com>
-In-Reply-To: <20240703103308.10198-1-jason-jh.lin@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Fri, 16 Aug 2024 12:03:18 +0800
-X-Gmail-Original-Message-ID: <CAAOTY__xOVgdF1iEtcbXrmnM40og8XJGZ+-5K02q58XbYY3GGQ@mail.gmail.com>
-Message-ID: <CAAOTY__xOVgdF1iEtcbXrmnM40og8XJGZ+-5K02q58XbYY3GGQ@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: Fix missing configuration flags in mtk_crtc_ddp_config()
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, Singo Chang <singo.chang@mediatek.com>, 
-	Nancy Lin <nancy.lin@mediatek.com>, Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	Jeffrey Kardatzke <jkardatzke@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240815_210308_515182_49BCEEC7 
-X-CRM114-Status: GOOD (  19.94  )
+X-CRM114-CacheID: sfid-20240816_024829_401979_52CD2D10 
+X-CRM114-Status: GOOD (  11.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,133 +85,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Jason:
+From: Peter Chiu <chui-hao.chiu@mediatek.com>
 
-Jason-JH.Lin <jason-jh.lin@mediatek.com> =E6=96=BC 2024=E5=B9=B47=E6=9C=883=
-=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=886:33=E5=AF=AB=E9=81=93=EF=BC=
-=9A
->
-> In mtk_crtc_ddp_config(), mtk_crtc will use some configuration flags to
-> generate instructions to cmdq_handle, such as:
->   state->pending_config
->   mtk_crtc->pending_planes
->   plane_state->pending.config
->   mtk_crtc->pending_async_planes
->   plane_state->pending.async_config
->
-> These configuration flags may be set to false when a GCE IRQ comes callin=
-g
-> ddp_cmdq_cb(). This may result in missing prepare instructions,
-> especially if mtk_crtc_update_config() with the flase need_vblank (no nee=
-d
-> to wait for vblank) cases.
->
-> Therefore, use the mtk_crtc->config_updating flag set at the beginning of
-> mtk_crtc_update_config() to ensure that these configuration flags won't b=
-e
-> changed when the mtk_crtc_ddp_config() is preparing instructions.
->
-> Fixes: 7f82d9c43879 ("drm/mediatek: Clear pending flag when cmdq packet i=
-s done")
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_crtc.c | 34 +++++++++++++++--------------
->  1 file changed, 18 insertions(+), 16 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediat=
-ek/mtk_crtc.c
-> index 6f34f573e127..bc3bf0c3edd9 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
-> @@ -314,30 +314,32 @@ static void ddp_cmdq_cb(struct mbox_client *cl, voi=
-d *mssg)
->
->         state =3D to_mtk_crtc_state(mtk_crtc->base.state);
->
-> -       state->pending_config =3D false;
-> +       if (!mtk_crtc->config_updating) {
-> +               state->pending_config =3D false;
+The chainmask is u16 so using hweight8 cannot get correct tx_ant.
+Without this patch, the tx_ant of band 2 would be -1 and lead to the
+following issue:
+BUG: KASAN: stack-out-of-bounds in mt7996_mcu_add_sta+0x12e0/0x16e0 [mt7996e]
 
-I think if mtk_crtc->config_updating =3D=3D true, the whole clear job
-could be skipped.
-And use spin_lock to protect the clear job in irq.
+Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
+Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-/*
-spin_lock():
-if (mtk_crtc->config_updating) {
-        spin_unlock();
-        goto out;
-}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 2e4fa9f48dfb..e68724e54013 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -1653,7 +1653,7 @@ mt7996_mcu_sta_bfer_tlv(struct mt7996_dev *dev, struct sk_buff *skb,
+ {
+ 	struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
+ 	struct mt7996_phy *phy = mvif->phy;
+-	int tx_ant = hweight8(phy->mt76->chainmask) - 1;
++	int tx_ant = hweight16(phy->mt76->chainmask) - 1;
+ 	struct sta_rec_bf *bf;
+ 	struct tlv *tlv;
+ 	static const u8 matrix[4][4] = {
+-- 
+2.39.2
 
-/* clear job */
-
-spin_unlock();
-*/
-out:
-
-In mtk_crtc_config_update(), use spin_lock to protect mtk_crtc->config_upda=
-ting:
-
-spin_lock();
-mtk_crtc->config_updating =3D true;
-spin_unlock();
-...
-spin_lock();
-mtk_crtc->config_updating =3D false;
-spin_unlock();
-
-Regards,
-Chun-Kuang.
-
-
->
-> -       if (mtk_crtc->pending_planes) {
-> -               for (i =3D 0; i < mtk_crtc->layer_nr; i++) {
-> -                       struct drm_plane *plane =3D &mtk_crtc->planes[i];
-> -                       struct mtk_plane_state *plane_state;
-> +               if (mtk_crtc->pending_planes) {
-> +                       for (i =3D 0; i < mtk_crtc->layer_nr; i++) {
-> +                               struct drm_plane *plane =3D &mtk_crtc->pl=
-anes[i];
-> +                               struct mtk_plane_state *plane_state;
->
-> -                       plane_state =3D to_mtk_plane_state(plane->state);
-> +                               plane_state =3D to_mtk_plane_state(plane-=
->state);
->
-> -                       plane_state->pending.config =3D false;
-> +                               plane_state->pending.config =3D false;
-> +                       }
-> +                       mtk_crtc->pending_planes =3D false;
->                 }
-> -               mtk_crtc->pending_planes =3D false;
-> -       }
->
-> -       if (mtk_crtc->pending_async_planes) {
-> -               for (i =3D 0; i < mtk_crtc->layer_nr; i++) {
-> -                       struct drm_plane *plane =3D &mtk_crtc->planes[i];
-> -                       struct mtk_plane_state *plane_state;
-> +               if (mtk_crtc->pending_async_planes) {
-> +                       for (i =3D 0; i < mtk_crtc->layer_nr; i++) {
-> +                               struct drm_plane *plane =3D &mtk_crtc->pl=
-anes[i];
-> +                               struct mtk_plane_state *plane_state;
->
-> -                       plane_state =3D to_mtk_plane_state(plane->state);
-> +                               plane_state =3D to_mtk_plane_state(plane-=
->state);
->
-> -                       plane_state->pending.async_config =3D false;
-> +                               plane_state->pending.async_config =3D fal=
-se;
-> +                       }
-> +                       mtk_crtc->pending_async_planes =3D false;
->                 }
-> -               mtk_crtc->pending_async_planes =3D false;
->         }
->
->         mtk_crtc->cmdq_vblank_cnt =3D 0;
-> --
-> 2.18.0
->
 
