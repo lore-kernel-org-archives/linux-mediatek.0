@@ -4,88 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62701C52D7D
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Aug 2024 07:35:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A4A6C52D7D
+	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Aug 2024 08:05:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=oDxP565M3e/1/ATaMhgsl2oGGX16jXdrhb9ibx6pOK8=; b=IskuziU/YDnwrs/u4qZYZv+pv6
-	FHR7K7KgyHCyPTnuAKGRSJv2YrVOQ4wUvoapGenbtnT+DaJBx/rDTYlYC6O3JZfJeFejANjXfoI2R
-	K8cN+HskpqjXkpq5QGJA/QJKqgyG1Q4iyE0WOrmNl+a0h2MAx4QjCOWKY1rBtJq2bhVFr5h0isb6a
-	u5AbwwusB7MUwpmDLDEG+vry0ITVP5Wte9fJ1q6JKXkwIihiioM27Qq6MKuxdkpGW0pLSaqEweHZf
-	bKPHBDGsfgxAPotjbplksSnJenDiTGQW2XMmu1nnMHOXeYdCb+EON/69s7C4p1t13gYnjYGS1Ab3n
-	Z2ujLFeQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=e+7T7ni2pkJssSlH2qzWCRsqGknRGzhjFVUXtBxor2g=; b=ixfX89oMSKSVLuF3ao5XAPkKEt
+	JcsutP+VvyX5abBHGmqN5Ay6208hmieIJWrbXgZmDWVlrjxf22ZRraKDPPh2As8VR3nyoB5yMiWHQ
+	D5WjX+QK9wuvnj7J8UhJqB6Z6TyFOdnrrdqs9SaDX2h+322+skOQDmapixUVxMkKLgWRbKtNV1f/h
+	G92wO1gN3yjPv+s3kp5kPFMbw03e84ZjgWVL7UInPgJOeoO2nZ6WICiwb8asIHeNKPibY/X/o8XA1
+	UONDjqC+MnPm8v0FFUai9gNMJvppf3LAKG8fwfvONPu42yqfEww57pG3AGg8NYRDsznjWmxIg/dc2
+	ntCAWmDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfDy7-0000000Eqvb-1oNY;
-	Sat, 17 Aug 2024 07:35:23 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sfER7-0000000EtKy-2Oap;
+	Sat, 17 Aug 2024 08:05:21 +0000
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfDy4-0000000Equf-263f;
-	Sat, 17 Aug 2024 07:35:21 +0000
-X-UUID: 3b1698445c6b11efb3adad29d29602c1-20240817
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=oDxP565M3e/1/ATaMhgsl2oGGX16jXdrhb9ibx6pOK8=;
-	b=PYCTwhFiTcPigEHwtY04nvBNAaq6uTdHIbLvJJExzeXdFr7Xffz8HwGeJVOB7UJir497OeAEtAhs6vbFZPar6MC0yUDQx96YyUoXjpH/DgyG+GSX5Xe7+sqO4K0lHLJtBz8gWonjL3OUNNYta3Pe5RjkqMSCTrB/+rQF1mRCABg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:1bb46120-b763-4c09-8274-8c5c550f6278,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6dc6a47,CLOUDID:3d227fbe-d7af-4351-93aa-42531abf0c7b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 3b1698445c6b11efb3adad29d29602c1-20240817
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <zhi.mao@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 607625372; Sat, 17 Aug 2024 00:35:09 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 17 Aug 2024 15:35:05 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 17 Aug 2024 15:35:04 +0800
-From: Zhi Mao <zhi.mao@mediatek.com>
-To: Sakari Ailus <sakari.ailus@linux.intel.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<shengnan.wang@mediatek.com>, <yaya.chang@mediatek.com>,
-	<teddy.chen@mediatek.com>, <yunkec@chromium.org>, <10572168@qq.com>, Zhi Mao
-	<zhi.mao@mediatek.com>
-Subject: [PATCH] media: i2c: improve suspend/resume switch performance for GT9769 VCM driver
-Date: Sat, 17 Aug 2024 15:34:02 +0800
-Message-ID: <20240817073452.21627-1-zhi.mao@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	id 1sfEQN-0000000EtG9-3iwm;
+	Sat, 17 Aug 2024 08:04:39 +0000
+Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-1fd9e6189d5so24591745ad.3;
+        Sat, 17 Aug 2024 01:04:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1723881874; x=1724486674; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=e+7T7ni2pkJssSlH2qzWCRsqGknRGzhjFVUXtBxor2g=;
+        b=k8yuk/lNSalpE3bmSXN0rCtUtHp8zVQwuMCVhE6icTtenbHlstPkvhkAa0w1dhIU9S
+         XepBQ07adPkwq6f4V/c4yAcGJ6/ZPIjBO0xDSy8sdp3NwbB2Xomo74Xmav49VXSa1QKA
+         5ju+/BPmM4KGRyRtvGOvygn7M4g0Q1lik/UdogOHJqIe370eJZTB10pqcSq5B2lzYVlV
+         sW4kPfhXobHXn27iXs7rn7bShysbyJmmAiuhJFOTHBnMmpvU2Kymg74+pSnI7+0Gn6bQ
+         a/5mitiF6wversutQ4pkg8+9SOQHlwcUCcddglRXpD8//jVn7vng4gKpG17D+TU+Xmqi
+         BjBw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1723881874; x=1724486674;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=e+7T7ni2pkJssSlH2qzWCRsqGknRGzhjFVUXtBxor2g=;
+        b=grWOjrIXG37hP9ZbWrilIeZNIHEzVX32sP0RFMxZohplt9SuejEHmSqt4W9Y1I6K+C
+         hTHtgU/5MCE8KmB3RfpSZFbKoI0na0zMMvyoJup6CQM/KEkQUviuQpxwg+9RPdhPc/cm
+         38597NktNieh647dOvlepV3ipfwXnJjFM1m1zvXP11ONwUFWy6khOzpxlRzh2pF5UEKu
+         cmYJ5IDVa+dAQxqL6W6YjKYUE6ZK1Qiv25Arjeiw6ookuRilsVpwzBRu41hKFApcUVfR
+         mL7ebaD98mc5CXVBeK/x4n4pspDKHiYDKuGSvae3uiyUB82bbz98hYGYMmdMd98ZUDTs
+         bpPA==
+X-Forwarded-Encrypted: i=1; AJvYcCXdYyr/0yDEznBZ0lEwCeqTpr6rNqrBMVRmHoq5kKS3krnDs/xG1g7iKE487C4JozZik11IcuQtp67pbleyzXrbqOOnLwsBOUOrKM4OQDyi4Duc0WU6TLlXUsB+iYbbnrA69yVxl5aPGaZA882EGaR7sBKQ/5CiuOrrcmhLKjWHmlLhy0iUUK9G6jqghzULAB5R649yzJ9+1cb7QO5aqbO5uN3N8QlMZK2SjTVt+x1OKTnDuNd/v/clZ0q6kRJ6um/b
+X-Gm-Message-State: AOJu0Yzb0JE9y55B1mn7u9yKKSPZnjEeWROqC3pGd2GltE96pc7ZLDCx
+	cO2npHctAZPsE7VWQTGBK/VPot0y+PtZu2Ptq9mCUr8KBw1GoLC1
+X-Google-Smtp-Source: AGHT+IGWVqrOTKL3I1DalArbYYaBbGAIh5PnYTrZarWCeNfIXmIxyW2mUuqAeqa4pIVotFEVqALnvQ==
+X-Received: by 2002:a17:902:ce91:b0:1ff:5049:7353 with SMTP id d9443c01a7336-20203e84428mr64218625ad.19.1723881873892;
+        Sat, 17 Aug 2024 01:04:33 -0700 (PDT)
+Received: from localhost.localdomain ([2409:40c1:1031:6067:f4e3:ef39:b58b:607e])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-201f03a4c33sm35314115ad.284.2024.08.17.01.04.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 17 Aug 2024 01:04:33 -0700 (PDT)
+From: Amit Vadhavana <av2082000@gmail.com>
+To: dmaengine@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	ricardo@marliere.net
+Cc: av2082000@gmail.com,
+	linux-kernel-mentees@lists.linux.dev,
+	skhan@linuxfoundation.org,
+	vkoul@kernel.org,
+	olivierdautricourt@gmail.com,
+	sr@denx.de,
+	ludovic.desroches@microchip.com,
+	florian.fainelli@broadcom.com,
+	bcm-kernel-feedback-list@broadcom.com,
+	rjui@broadcom.com,
+	sbranden@broadcom.com,
+	wangzhou1@hisilicon.com,
+	haijie1@huawei.com,
+	fenghua.yu@intel.com,
+	dave.jiang@intel.com,
+	zhoubinbin@loongson.cn,
+	sean.wang@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	afaerber@suse.de,
+	manivannan.sadhasivam@linaro.org,
+	Basavaraj.Natikar@amd.com,
+	linus.walleij@linaro.org,
+	ldewangan@nvidia.com,
+	jonathanh@nvidia.com,
+	thierry.reding@gmail.com,
+	laurent.pinchart@ideasonboard.com,
+	michal.simek@amd.com,
+	Frank.Li@nxp.com,
+	n.shubin@yadro.com,
+	yajun.deng@linux.dev,
+	quic_jjohnson@quicinc.com,
+	lizetao1@huawei.com,
+	pliem@maxlinear.com,
+	konrad.dybcio@linaro.org,
+	kees@kernel.org,
+	gustavoars@kernel.org,
+	bryan.odonoghue@linaro.org,
+	linux@treblig.org,
+	dan.carpenter@linaro.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-actions@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-tegra@vger.kernel.org
+Subject: [PATCH V2] dmaengine: Fix spelling mistakes
+Date: Sat, 17 Aug 2024 13:34:08 +0530
+Message-Id: <20240817080408.8010-1-av2082000@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--5.895800-8.000000
-X-TMASE-MatchedRID: Oc3lNZcRIY7R/1qlpYxoUlVN8laWo90MWjWsWQUWzVpcKZwALwMGs8CS
-	2AMm1nQCXj+G1I2Cld9RCqldf11uXwClEgKLW3itBDoR8w7C9OZWjiXAsVR2K0+OfsT6fdpn+Vi
-	hXqn9xLFMJgsbV0+Bf+pAvk4T8Agrbn83JMqUbr0MH4SsGvRsA7zWODqZvEk5ol3uZzZ1GLfXvK
-	BONfUNb+krhuwxhcex326LyHbpKCPsIv/PxUkglXV7tdtvoibaMVx/3ZYby79fXk0kfCOnbt5NR
-	zJ0gz5HsNV8m2Omj9WAMuqetGVetnyef22ep6XYymsk/wUE4hqfigt155p8oY9tUqB3K1zQw//t
-	taiU0fabfUda0wkrLX3dHoIymspUwL6SxPpr1/I=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--5.895800-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 19799DA5C2E152BDCCA6451577318065D2A4DDD1ED7AB9367165EB13BC04EB7D2000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240817_003520_557244_F1CFBB0E 
-X-CRM114-Status: GOOD (  16.49  )
+X-CRM114-CacheID: sfid-20240817_010435_976345_171D652D 
+X-CRM114-Status: GOOD (  27.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,135 +134,619 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-GT9769 VCM power-on default setting is PD=0,
-so it is not necessary to set again in dw9768_init function,
-and it also has no requirement of setting PD=1
-before power-off in dw9768_release function.
-For GT9769 VCM, PD mode control will add extra time
-when switching between suspend and resume.
-e.g. chrome camera AP can switch between video and photo mode,
-the behavior corresponding to VCM is suspend and resume,
-it will cause camera preview is not smooth.
+Correct spelling mistakes in the DMA engine to improve readability
+and clarity without altering functionality.
 
-Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
+Signed-off-by: Amit Vadhavana <av2082000@gmail.com>
+Reviewed-by: Kees Cook <kees@kernel.org>
 ---
- drivers/media/i2c/dw9768.c | 65 ++++++++++++++++++++++++--------------
- 1 file changed, 42 insertions(+), 23 deletions(-)
+V1: https://lore.kernel.org/all/20240810184333.34859-1-av2082000@gmail.com 
+V1 -> V2:
+- Write the commit description in imperative mode.
+---
+ drivers/dma/acpi-dma.c                  | 4 ++--
+ drivers/dma/altera-msgdma.c             | 4 ++--
+ drivers/dma/amba-pl08x.c                | 2 +-
+ drivers/dma/at_hdmac.c                  | 6 +++---
+ drivers/dma/bcm-sba-raid.c              | 4 ++--
+ drivers/dma/bcm2835-dma.c               | 2 +-
+ drivers/dma/ep93xx_dma.c                | 4 ++--
+ drivers/dma/fsl-dpaa2-qdma/dpaa2-qdma.h | 6 +++---
+ drivers/dma/hisi_dma.c                  | 2 +-
+ drivers/dma/idma64.c                    | 4 ++--
+ drivers/dma/idxd/submit.c               | 2 +-
+ drivers/dma/ioat/init.c                 | 2 +-
+ drivers/dma/lgm/lgm-dma.c               | 2 +-
+ drivers/dma/ls2x-apb-dma.c              | 4 ++--
+ drivers/dma/mediatek/mtk-cqdma.c        | 4 ++--
+ drivers/dma/mediatek/mtk-hsdma.c        | 2 +-
+ drivers/dma/mv_xor.c                    | 4 ++--
+ drivers/dma/mv_xor.h                    | 2 +-
+ drivers/dma/mv_xor_v2.c                 | 2 +-
+ drivers/dma/nbpfaxi.c                   | 2 +-
+ drivers/dma/of-dma.c                    | 4 ++--
+ drivers/dma/owl-dma.c                   | 2 +-
+ drivers/dma/ppc4xx/adma.c               | 2 +-
+ drivers/dma/ppc4xx/dma.h                | 2 +-
+ drivers/dma/ptdma/ptdma.h               | 2 +-
+ drivers/dma/qcom/bam_dma.c              | 4 ++--
+ drivers/dma/qcom/gpi.c                  | 2 +-
+ drivers/dma/qcom/qcom_adm.c             | 2 +-
+ drivers/dma/sh/shdmac.c                 | 2 +-
+ drivers/dma/ste_dma40.h                 | 2 +-
+ drivers/dma/ste_dma40_ll.h              | 2 +-
+ drivers/dma/tegra20-apb-dma.c           | 2 +-
+ drivers/dma/xgene-dma.c                 | 2 +-
+ drivers/dma/xilinx/xilinx_dpdma.c       | 4 ++--
+ 34 files changed, 49 insertions(+), 49 deletions(-)
 
-diff --git a/drivers/media/i2c/dw9768.c b/drivers/media/i2c/dw9768.c
-index 18ef2b35c9aa..88d96165a805 100644
---- a/drivers/media/i2c/dw9768.c
-+++ b/drivers/media/i2c/dw9768.c
-@@ -97,12 +97,17 @@ static const char * const dw9768_supply_names[] = {
- 	"vdd",	/* Digital core power */
- };
+diff --git a/drivers/dma/acpi-dma.c b/drivers/dma/acpi-dma.c
+index 5906eae26e2a..a58a1600dd65 100644
+--- a/drivers/dma/acpi-dma.c
++++ b/drivers/dma/acpi-dma.c
+@@ -112,7 +112,7 @@ static int acpi_dma_parse_resource_group(const struct acpi_csrt_group *grp,
+ }
  
-+struct dw9768_vcm_data {
-+	bool pd_mode_ctrl;
-+};
-+
- /* dw9768 device structure */
- struct dw9768 {
- 	struct regulator_bulk_data supplies[ARRAY_SIZE(dw9768_supply_names)];
- 	struct v4l2_ctrl_handler ctrls;
- 	struct v4l2_ctrl *focus;
- 	struct v4l2_subdev sd;
-+	const struct dw9768_vcm_data *data;
+ /**
+- * acpi_dma_parse_csrt - parse CSRT to exctract additional DMA resources
++ * acpi_dma_parse_csrt - parse CSRT to extract additional DMA resources
+  * @adev:	ACPI device to match with
+  * @adma:	struct acpi_dma of the given DMA controller
+  *
+@@ -305,7 +305,7 @@ EXPORT_SYMBOL_GPL(devm_acpi_dma_controller_free);
+  * found.
+  *
+  * Return:
+- * 0, if no information is avaiable, -1 on mismatch, and 1 otherwise.
++ * 0, if no information is available, -1 on mismatch, and 1 otherwise.
+  */
+ static int acpi_dma_update_dma_spec(struct acpi_dma *adma,
+ 		struct acpi_dma_spec *dma_spec)
+diff --git a/drivers/dma/altera-msgdma.c b/drivers/dma/altera-msgdma.c
+index 0968176f323d..e6a6566b309e 100644
+--- a/drivers/dma/altera-msgdma.c
++++ b/drivers/dma/altera-msgdma.c
+@@ -153,7 +153,7 @@ struct msgdma_extended_desc {
+ /**
+  * struct msgdma_sw_desc - implements a sw descriptor
+  * @async_tx: support for the async_tx api
+- * @hw_desc: assosiated HW descriptor
++ * @hw_desc: associated HW descriptor
+  * @node: node to move from the free list to the tx list
+  * @tx_list: transmit list node
+  */
+@@ -511,7 +511,7 @@ static void msgdma_copy_one(struct msgdma_device *mdev,
+ 	 * of the DMA controller. The descriptor will get flushed to the
+ 	 * FIFO, once the last word (control word) is written. Since we
+ 	 * are not 100% sure that memcpy() writes all word in the "correct"
+-	 * oder (address from low to high) on all architectures, we make
++	 * order (address from low to high) on all architectures, we make
+ 	 * sure this control word is written last by single coding it and
+ 	 * adding some write-barriers here.
+ 	 */
+diff --git a/drivers/dma/amba-pl08x.c b/drivers/dma/amba-pl08x.c
+index 73a5cfb4da8a..38cdbca59485 100644
+--- a/drivers/dma/amba-pl08x.c
++++ b/drivers/dma/amba-pl08x.c
+@@ -2,7 +2,7 @@
+ /*
+  * Copyright (c) 2006 ARM Ltd.
+  * Copyright (c) 2010 ST-Ericsson SA
+- * Copyirght (c) 2017 Linaro Ltd.
++ * Copyright (c) 2017 Linaro Ltd.
+  *
+  * Author: Peter Pearse <peter.pearse@arm.com>
+  * Author: Linus Walleij <linus.walleij@linaro.org>
+diff --git a/drivers/dma/at_hdmac.c b/drivers/dma/at_hdmac.c
+index 40052d1bd0b5..baebddc740b0 100644
+--- a/drivers/dma/at_hdmac.c
++++ b/drivers/dma/at_hdmac.c
+@@ -339,7 +339,7 @@ static inline u8 convert_buswidth(enum dma_slave_buswidth addr_width)
+  * @regs: memory mapped register base
+  * @clk: dma controller clock
+  * @save_imr: interrupt mask register that is saved on suspend/resume cycle
+- * @all_chan_mask: all channels availlable in a mask
++ * @all_chan_mask: all channels available in a mask
+  * @lli_pool: hw lli table
+  * @memset_pool: hw memset pool
+  * @chan: channels table to store at_dma_chan structures
+@@ -668,7 +668,7 @@ static inline u32 atc_calc_bytes_left(u32 current_len, u32 ctrla)
+  * CTRLA is read in turn, next the DSCR is read a second time. If the two
+  * consecutive read values of the DSCR are the same then we assume both refers
+  * to the very same LLI as well as the CTRLA value read inbetween does. For
+- * cyclic tranfers, the assumption is that a full loop is "not so fast". If the
++ * cyclic transfers, the assumption is that a full loop is "not so fast". If the
+  * two DSCR values are different, we read again the CTRLA then the DSCR till two
+  * consecutive read values from DSCR are equal or till the maximum trials is
+  * reach. This algorithm is very unlikely not to find a stable value for DSCR.
+@@ -700,7 +700,7 @@ static int atc_get_llis_residue(struct at_dma_chan *atchan,
+ 			break;
  
- 	u32 aac_mode;
- 	u32 aac_timing;
-@@ -221,18 +226,20 @@ static int dw9768_init(struct dw9768 *dw9768)
- 	struct i2c_client *client = v4l2_get_subdevdata(&dw9768->sd);
- 	int ret, val;
+ 		/*
+-		 * DSCR has changed inside the DMA controller, so the previouly
++		 * DSCR has changed inside the DMA controller, so the previously
+ 		 * read value of CTRLA may refer to an already processed
+ 		 * descriptor hence could be outdated. We need to update ctrla
+ 		 * to match the current descriptor.
+diff --git a/drivers/dma/bcm-sba-raid.c b/drivers/dma/bcm-sba-raid.c
+index fbaacb4c19b2..cfa6e1167a1f 100644
+--- a/drivers/dma/bcm-sba-raid.c
++++ b/drivers/dma/bcm-sba-raid.c
+@@ -15,7 +15,7 @@
+  * number of hardware rings over one or more SBA hardware devices. By
+  * design, the internal buffer size of SBA hardware device is limited
+  * but all offload operations supported by SBA can be broken down into
+- * multiple small size requests and executed parallely on multiple SBA
++ * multiple small size requests and executed parallelly on multiple SBA
+  * hardware devices for achieving high through-put.
+  *
+  * The Broadcom SBA RAID driver does not require any register programming
+@@ -135,7 +135,7 @@ struct sba_device {
+ 	u32 max_xor_srcs;
+ 	u32 max_resp_pool_size;
+ 	u32 max_cmds_pool_size;
+-	/* Maibox client and Mailbox channels */
++	/* Mailbox client and Mailbox channels */
+ 	struct mbox_client client;
+ 	struct mbox_chan *mchan;
+ 	struct device *mbox_dev;
+diff --git a/drivers/dma/bcm2835-dma.c b/drivers/dma/bcm2835-dma.c
+index 9d74fe97452e..e1b92b4d7b05 100644
+--- a/drivers/dma/bcm2835-dma.c
++++ b/drivers/dma/bcm2835-dma.c
+@@ -369,7 +369,7 @@ static struct bcm2835_desc *bcm2835_dma_create_cb_chain(
+ 	/* the last frame requires extra flags */
+ 	d->cb_list[d->frames - 1].cb->info |= finalextrainfo;
  
--	/* Reset DW9768_RING_PD_CONTROL_REG to default status 0x00 */
--	ret = i2c_smbus_write_byte_data(client, DW9768_RING_PD_CONTROL_REG,
--					DW9768_PD_MODE_OFF);
--	if (ret < 0)
--		return ret;
--
--	/*
--	 * DW9769 requires waiting delay time of t_OPR
--	 * after PD reset takes place.
--	 */
--	usleep_range(DW9768_T_OPR_US, DW9768_T_OPR_US + 100);
-+	if (dw9768->data->pd_mode_ctrl) {
-+		/* Reset DW9768_RING_PD_CONTROL_REG to default status 0x00 */
-+		ret = i2c_smbus_write_byte_data(client,
-+						DW9768_RING_PD_CONTROL_REG,
-+						DW9768_PD_MODE_OFF);
-+		if (ret < 0)
-+			return ret;
+-	/* detect a size missmatch */
++	/* detect a size mismatch */
+ 	if (buf_len && (d->size != buf_len))
+ 		goto error_cb;
  
-+		/*
-+		 * DW9769 requires waiting delay time of t_OPR
-+		 * after PD reset takes place.
-+		 */
-+		usleep_range(DW9768_T_OPR_US, DW9768_T_OPR_US + 100);
-+	}
- 	/* Set DW9768_RING_PD_CONTROL_REG to DW9768_AAC_MODE_EN(0x01) */
- 	ret = i2c_smbus_write_byte_data(client, DW9768_RING_PD_CONTROL_REG,
- 					DW9768_AAC_MODE_EN);
-@@ -294,17 +301,19 @@ static int dw9768_release(struct dw9768 *dw9768)
- 			     dw9768->move_delay_us + 1000);
+diff --git a/drivers/dma/ep93xx_dma.c b/drivers/dma/ep93xx_dma.c
+index d6c60635e90d..4ee337e78c23 100644
+--- a/drivers/dma/ep93xx_dma.c
++++ b/drivers/dma/ep93xx_dma.c
+@@ -841,7 +841,7 @@ static dma_cookie_t ep93xx_dma_tx_submit(struct dma_async_tx_descriptor *tx)
+ 	desc = container_of(tx, struct ep93xx_dma_desc, txd);
+ 
+ 	/*
+-	 * If nothing is currently prosessed, we push this descriptor
++	 * If nothing is currently processed, we push this descriptor
+ 	 * directly to the hardware. Otherwise we put the descriptor
+ 	 * to the pending queue.
+ 	 */
+@@ -1025,7 +1025,7 @@ ep93xx_dma_prep_dma_memcpy(struct dma_chan *chan, dma_addr_t dest,
+  * @chan: channel
+  * @sgl: list of buffers to transfer
+  * @sg_len: number of entries in @sgl
+- * @dir: direction of tha DMA transfer
++ * @dir: direction of the DMA transfer
+  * @flags: flags for the descriptor
+  * @context: operation context (ignored)
+  *
+diff --git a/drivers/dma/fsl-dpaa2-qdma/dpaa2-qdma.h b/drivers/dma/fsl-dpaa2-qdma/dpaa2-qdma.h
+index 2c80077cb7c0..36c284a3d184 100644
+--- a/drivers/dma/fsl-dpaa2-qdma/dpaa2-qdma.h
++++ b/drivers/dma/fsl-dpaa2-qdma/dpaa2-qdma.h
+@@ -12,8 +12,8 @@ struct dpaa2_qdma_sd_d {
+ 	u32 rsv:32;
+ 	union {
+ 		struct {
+-			u32 ssd:12; /* souce stride distance */
+-			u32 sss:12; /* souce stride size */
++			u32 ssd:12; /* source stride distance */
++			u32 sss:12; /* source stride size */
+ 			u32 rsv1:8;
+ 		} sdf;
+ 		struct {
+@@ -48,7 +48,7 @@ struct dpaa2_qdma_sd_d {
+ #define QDMA_SER_DISABLE	(8) /* no notification */
+ #define QDMA_SER_CTX		BIT(8) /* notification by FQD_CTX[fqid] */
+ #define QDMA_SER_DEST		(2 << 8) /* notification by destination desc */
+-#define QDMA_SER_BOTH		(3 << 8) /* soruce and dest notification */
++#define QDMA_SER_BOTH		(3 << 8) /* source and dest notification */
+ #define QDMA_FD_SPF_ENALBE	BIT(30) /* source prefetch enable */
+ 
+ #define QMAN_FD_VA_ENABLE	BIT(14) /* Address used is virtual address */
+diff --git a/drivers/dma/hisi_dma.c b/drivers/dma/hisi_dma.c
+index 4c47bff81064..25a4134be36b 100644
+--- a/drivers/dma/hisi_dma.c
++++ b/drivers/dma/hisi_dma.c
+@@ -677,7 +677,7 @@ static void hisi_dma_init_hw_qp(struct hisi_dma_dev *hdma_dev, u32 index)
+ 		writel_relaxed(tmp, addr);
+ 
+ 		/*
+-		 * 0 - dma should process FLR whith CPU.
++		 * 0 - dma should process FLR with CPU.
+ 		 * 1 - dma not process FLR, only cpu process FLR.
+ 		 */
+ 		addr = q_base + HISI_DMA_HIP09_DMA_FLR_DISABLE +
+diff --git a/drivers/dma/idma64.c b/drivers/dma/idma64.c
+index e3505e56784b..2192b7136c2a 100644
+--- a/drivers/dma/idma64.c
++++ b/drivers/dma/idma64.c
+@@ -290,7 +290,7 @@ static void idma64_desc_fill(struct idma64_chan *idma64c,
+ 		desc->length += hw->len;
+ 	} while (i);
+ 
+-	/* Trigger an interrupt after the last block is transfered */
++	/* Trigger an interrupt after the last block is transferred */
+ 	lli->ctllo |= IDMA64C_CTLL_INT_EN;
+ 
+ 	/* Disable LLP transfer in the last block */
+@@ -364,7 +364,7 @@ static size_t idma64_active_desc_size(struct idma64_chan *idma64c)
+ 	if (!i)
+ 		return bytes;
+ 
+-	/* The current chunk is not fully transfered yet */
++	/* The current chunk is not fully transferred yet */
+ 	bytes += desc->hw[--i].len;
+ 
+ 	return bytes - IDMA64C_CTLH_BLOCK_TS(ctlhi);
+diff --git a/drivers/dma/idxd/submit.c b/drivers/dma/idxd/submit.c
+index 817a564413b0..94eca25ae9b9 100644
+--- a/drivers/dma/idxd/submit.c
++++ b/drivers/dma/idxd/submit.c
+@@ -134,7 +134,7 @@ static void llist_abort_desc(struct idxd_wq *wq, struct idxd_irq_entry *ie,
+ 	 * completing the descriptor will return desc to allocator and
+ 	 * the desc can be acquired by a different process and the
+ 	 * desc->list can be modified.  Delete desc from list so the
+-	 * list trasversing does not get corrupted by the other process.
++	 * list traversing does not get corrupted by the other process.
+ 	 */
+ 	list_for_each_entry_safe(d, t, &flist, list) {
+ 		list_del_init(&d->list);
+diff --git a/drivers/dma/ioat/init.c b/drivers/dma/ioat/init.c
+index 7b502b60b38b..cc9ddd6c325b 100644
+--- a/drivers/dma/ioat/init.c
++++ b/drivers/dma/ioat/init.c
+@@ -905,7 +905,7 @@ static int ioat_xor_val_self_test(struct ioatdma_device *ioat_dma)
+ 
+ 	op = IOAT_OP_XOR_VAL;
+ 
+-	/* validate the sources with the destintation page */
++	/* validate the sources with the destination page */
+ 	for (i = 0; i < IOAT_NUM_SRC_TEST; i++)
+ 		xor_val_srcs[i] = xor_srcs[i];
+ 	xor_val_srcs[i] = dest;
+diff --git a/drivers/dma/lgm/lgm-dma.c b/drivers/dma/lgm/lgm-dma.c
+index 4117c7b67e9c..8173c3f1075a 100644
+--- a/drivers/dma/lgm/lgm-dma.c
++++ b/drivers/dma/lgm/lgm-dma.c
+@@ -107,7 +107,7 @@
+  * If header mode is set in DMA descriptor,
+  *   If bit 30 is disabled, HDR_LEN must be configured according to channel
+  *     requirement.
+- *   If bit 30 is enabled(checksum with heade mode), HDR_LEN has no need to
++ *   If bit 30 is enabled(checksum with header mode), HDR_LEN has no need to
+  *     be configured. It will enable check sum for switch
+  * If header mode is not set in DMA descriptor,
+  *   This register setting doesn't matter
+diff --git a/drivers/dma/ls2x-apb-dma.c b/drivers/dma/ls2x-apb-dma.c
+index a49913f3ed3f..9652e8666722 100644
+--- a/drivers/dma/ls2x-apb-dma.c
++++ b/drivers/dma/ls2x-apb-dma.c
+@@ -33,11 +33,11 @@
+ #define LDMA_STOP		BIT(4) /* DMA stop operation */
+ #define LDMA_CONFIG_MASK	GENMASK(4, 0) /* DMA controller config bits mask */
+ 
+-/* Bitfields in ndesc_addr field of HW decriptor */
++/* Bitfields in ndesc_addr field of HW descriptor */
+ #define LDMA_DESC_EN		BIT(0) /*1: The next descriptor is valid */
+ #define LDMA_DESC_ADDR_LOW	GENMASK(31, 1)
+ 
+-/* Bitfields in cmd field of HW decriptor */
++/* Bitfields in cmd field of HW descriptor */
+ #define LDMA_INT		BIT(1) /* Enable DMA interrupts */
+ #define LDMA_DATA_DIRECTION	BIT(12) /* 1: write to device, 0: read from device */
+ 
+diff --git a/drivers/dma/mediatek/mtk-cqdma.c b/drivers/dma/mediatek/mtk-cqdma.c
+index 529100c5b9f5..b69eabf12a24 100644
+--- a/drivers/dma/mediatek/mtk-cqdma.c
++++ b/drivers/dma/mediatek/mtk-cqdma.c
+@@ -518,7 +518,7 @@ mtk_cqdma_prep_dma_memcpy(struct dma_chan *c, dma_addr_t dest,
+ 		/* setup dma channel */
+ 		cvd[i]->ch = c;
+ 
+-		/* setup sourece, destination, and length */
++		/* setup source, destination, and length */
+ 		tlen = (len > MTK_CQDMA_MAX_LEN) ? MTK_CQDMA_MAX_LEN : len;
+ 		cvd[i]->len = tlen;
+ 		cvd[i]->src = src;
+@@ -617,7 +617,7 @@ static int mtk_cqdma_alloc_chan_resources(struct dma_chan *c)
+ 	u32 i, min_refcnt = U32_MAX, refcnt;
+ 	unsigned long flags;
+ 
+-	/* allocate PC with the minimun refcount */
++	/* allocate PC with the minimum refcount */
+ 	for (i = 0; i < cqdma->dma_channels; ++i) {
+ 		refcnt = refcount_read(&cqdma->pc[i]->refcnt);
+ 		if (refcnt < min_refcnt) {
+diff --git a/drivers/dma/mediatek/mtk-hsdma.c b/drivers/dma/mediatek/mtk-hsdma.c
+index 36ff11e909ea..58c7961ab9ad 100644
+--- a/drivers/dma/mediatek/mtk-hsdma.c
++++ b/drivers/dma/mediatek/mtk-hsdma.c
+@@ -226,7 +226,7 @@ struct mtk_hsdma_soc {
+  * @pc_refcnt:		     Track how many VCs are using the PC
+  * @lock:		     Lock protect agaisting multiple VCs access PC
+  * @soc:		     The pointer to area holding differences among
+- *			     vaious platform
++ *			     various platform
+  */
+ struct mtk_hsdma_device {
+ 	struct dma_device ddev;
+diff --git a/drivers/dma/mv_xor.c b/drivers/dma/mv_xor.c
+index bcd3b623ac6c..43efce77bb57 100644
+--- a/drivers/dma/mv_xor.c
++++ b/drivers/dma/mv_xor.c
+@@ -414,7 +414,7 @@ mv_xor_tx_submit(struct dma_async_tx_descriptor *tx)
+ 		if (!mv_chan_is_busy(mv_chan)) {
+ 			u32 current_desc = mv_chan_get_current_desc(mv_chan);
+ 			/*
+-			 * and the curren desc is the end of the chain before
++			 * and the current desc is the end of the chain before
+ 			 * the append, then we need to start the channel
+ 			 */
+ 			if (current_desc == old_chain_tail->async_tx.phys)
+@@ -1074,7 +1074,7 @@ mv_xor_channel_add(struct mv_xor_device *xordev,
+ 	if (!mv_chan->dma_desc_pool_virt)
+ 		return ERR_PTR(-ENOMEM);
+ 
+-	/* discover transaction capabilites from the platform data */
++	/* discover transaction capabilities from the platform data */
+ 	dma_dev->cap_mask = cap_mask;
+ 
+ 	INIT_LIST_HEAD(&dma_dev->channels);
+diff --git a/drivers/dma/mv_xor.h b/drivers/dma/mv_xor.h
+index d86086b05b0e..c87cefd38a07 100644
+--- a/drivers/dma/mv_xor.h
++++ b/drivers/dma/mv_xor.h
+@@ -99,7 +99,7 @@ struct mv_xor_device {
+  * @common: common dmaengine channel object members
+  * @slots_allocated: records the actual size of the descriptor slot pool
+  * @irq_tasklet: bottom half where mv_xor_slot_cleanup runs
+- * @op_in_desc: new mode of driver, each op is writen to descriptor.
++ * @op_in_desc: new mode of driver, each op is written to descriptor.
+  */
+ struct mv_xor_chan {
+ 	int			pending;
+diff --git a/drivers/dma/mv_xor_v2.c b/drivers/dma/mv_xor_v2.c
+index 97ebc791a30b..c8c67f4d982c 100644
+--- a/drivers/dma/mv_xor_v2.c
++++ b/drivers/dma/mv_xor_v2.c
+@@ -175,7 +175,7 @@ struct mv_xor_v2_device {
+  * struct mv_xor_v2_sw_desc - implements a xor SW descriptor
+  * @idx: descriptor index
+  * @async_tx: support for the async_tx api
+- * @hw_desc: assosiated HW descriptor
++ * @hw_desc: associated HW descriptor
+  * @free_list: node of the free SW descriprots list
+ */
+ struct mv_xor_v2_sw_desc {
+diff --git a/drivers/dma/nbpfaxi.c b/drivers/dma/nbpfaxi.c
+index c08916339aa7..3b011a91d48e 100644
+--- a/drivers/dma/nbpfaxi.c
++++ b/drivers/dma/nbpfaxi.c
+@@ -897,7 +897,7 @@ static int nbpf_config(struct dma_chan *dchan,
+ 	/*
+ 	 * We could check config->slave_id to match chan->terminal here,
+ 	 * but with DT they would be coming from the same source, so
+-	 * such a check would be superflous
++	 * such a check would be superfluous
+ 	 */
+ 
+ 	chan->slave_dst_addr = config->dst_addr;
+diff --git a/drivers/dma/of-dma.c b/drivers/dma/of-dma.c
+index e588fff9f21d..423442e55d36 100644
+--- a/drivers/dma/of-dma.c
++++ b/drivers/dma/of-dma.c
+@@ -26,7 +26,7 @@ static DEFINE_MUTEX(of_dma_lock);
+  *
+  * Finds a DMA controller with matching device node and number for dma cells
+  * in a list of registered DMA controllers. If a match is found a valid pointer
+- * to the DMA data stored is retuned. A NULL pointer is returned if no match is
++ * to the DMA data stored is returned. A NULL pointer is returned if no match is
+  * found.
+  */
+ static struct of_dma *of_dma_find_controller(const struct of_phandle_args *dma_spec)
+@@ -342,7 +342,7 @@ EXPORT_SYMBOL_GPL(of_dma_simple_xlate);
+  *
+  * This function can be used as the of xlate callback for DMA driver which wants
+  * to match the channel based on the channel id. When using this xlate function
+- * the #dma-cells propety of the DMA controller dt node needs to be set to 1.
++ * the #dma-cells property of the DMA controller dt node needs to be set to 1.
+  * The data parameter of of_dma_controller_register must be a pointer to the
+  * dma_device struct the function should match upon.
+  *
+diff --git a/drivers/dma/owl-dma.c b/drivers/dma/owl-dma.c
+index e001f4f7aa64..aa436f9e3571 100644
+--- a/drivers/dma/owl-dma.c
++++ b/drivers/dma/owl-dma.c
+@@ -1156,7 +1156,7 @@ static int owl_dma_probe(struct platform_device *pdev)
  	}
  
--	ret = i2c_smbus_write_byte_data(client, DW9768_RING_PD_CONTROL_REG,
--					DW9768_PD_MODE_EN);
--	if (ret < 0)
--		return ret;
--
--	/*
--	 * DW9769 requires waiting delay time of t_OPR
--	 * after PD reset takes place.
--	 */
--	usleep_range(DW9768_T_OPR_US, DW9768_T_OPR_US + 100);
-+	if (dw9768->data->pd_mode_ctrl) {
-+		ret = i2c_smbus_write_byte_data(client,
-+						DW9768_RING_PD_CONTROL_REG,
-+						DW9768_PD_MODE_EN);
-+		if (ret < 0)
-+			return ret;
+ 	/*
+-	 * Eventhough the DMA controller is capable of generating 4
++	 * Even though the DMA controller is capable of generating 4
+ 	 * IRQ's for DMA priority feature, we only use 1 IRQ for
+ 	 * simplification.
+ 	 */
+diff --git a/drivers/dma/ppc4xx/adma.c b/drivers/dma/ppc4xx/adma.c
+index bbb60a970dab..7b78759ac734 100644
+--- a/drivers/dma/ppc4xx/adma.c
++++ b/drivers/dma/ppc4xx/adma.c
+@@ -9,7 +9,7 @@
+  */
  
-+		/*
-+		 * DW9769 requires waiting delay time of t_OPR
-+		 * after PD reset takes place.
-+		 */
-+		usleep_range(DW9768_T_OPR_US, DW9768_T_OPR_US + 100);
-+	}
- 	return 0;
+ /*
+- * This driver supports the asynchrounous DMA copy and RAID engines available
++ * This driver supports the asynchronous DMA copy and RAID engines available
+  * on the AMCC PPC440SPe Processors.
+  * Based on the Intel Xscale(R) family of I/O Processors (IOP 32x, 33x, 134x)
+  * ADMA driver written by D.Williams.
+diff --git a/drivers/dma/ppc4xx/dma.h b/drivers/dma/ppc4xx/dma.h
+index 1ff4be23db0f..b5725481bfa6 100644
+--- a/drivers/dma/ppc4xx/dma.h
++++ b/drivers/dma/ppc4xx/dma.h
+@@ -14,7 +14,7 @@
+ 
+ /* Number of elements in the array with statical CDBs */
+ #define	MAX_STAT_DMA_CDBS	16
+-/* Number of DMA engines available on the contoller */
++/* Number of DMA engines available on the controller */
+ #define DMA_ENGINES_NUM		2
+ 
+ /* Maximum h/w supported number of destinations */
+diff --git a/drivers/dma/ptdma/ptdma.h b/drivers/dma/ptdma/ptdma.h
+index 21b4bf895200..39bc37268235 100644
+--- a/drivers/dma/ptdma/ptdma.h
++++ b/drivers/dma/ptdma/ptdma.h
+@@ -192,7 +192,7 @@ struct pt_cmd_queue {
+ 	/* Queue dma pool */
+ 	struct dma_pool *dma_pool;
+ 
+-	/* Queue base address (not neccessarily aligned)*/
++	/* Queue base address (not necessarily aligned)*/
+ 	struct ptdma_desc *qbase;
+ 
+ 	/* Aligned queue start address (per requirement) */
+diff --git a/drivers/dma/qcom/bam_dma.c b/drivers/dma/qcom/bam_dma.c
+index 5e7d332731e0..2d7550b8e03e 100644
+--- a/drivers/dma/qcom/bam_dma.c
++++ b/drivers/dma/qcom/bam_dma.c
+@@ -440,7 +440,7 @@ static void bam_reset(struct bam_device *bdev)
+ 	val |= BAM_EN;
+ 	writel_relaxed(val, bam_addr(bdev, 0, BAM_CTRL));
+ 
+-	/* set descriptor threshhold, start with 4 bytes */
++	/* set descriptor threshold, start with 4 bytes */
+ 	writel_relaxed(DEFAULT_CNT_THRSHLD,
+ 			bam_addr(bdev, 0, BAM_DESC_CNT_TRSHLD));
+ 
+@@ -667,7 +667,7 @@ static struct dma_async_tx_descriptor *bam_prep_slave_sg(struct dma_chan *chan,
+ 	for_each_sg(sgl, sg, sg_len, i)
+ 		num_alloc += DIV_ROUND_UP(sg_dma_len(sg), BAM_FIFO_SIZE);
+ 
+-	/* allocate enough room to accomodate the number of entries */
++	/* allocate enough room to accommodate the number of entries */
+ 	async_desc = kzalloc(struct_size(async_desc, desc, num_alloc),
+ 			     GFP_NOWAIT);
+ 
+diff --git a/drivers/dma/qcom/gpi.c b/drivers/dma/qcom/gpi.c
+index e6ebd688d746..52a7c8f2498f 100644
+--- a/drivers/dma/qcom/gpi.c
++++ b/drivers/dma/qcom/gpi.c
+@@ -1856,7 +1856,7 @@ static void gpi_issue_pending(struct dma_chan *chan)
+ 
+ 	read_lock_irqsave(&gpii->pm_lock, pm_lock_flags);
+ 
+-	/* move all submitted discriptors to issued list */
++	/* move all submitted descriptors to issued list */
+ 	spin_lock_irqsave(&gchan->vc.lock, flags);
+ 	if (vchan_issue_pending(&gchan->vc))
+ 		vd = list_last_entry(&gchan->vc.desc_issued,
+diff --git a/drivers/dma/qcom/qcom_adm.c b/drivers/dma/qcom/qcom_adm.c
+index 53f4273b657c..c1db398adc84 100644
+--- a/drivers/dma/qcom/qcom_adm.c
++++ b/drivers/dma/qcom/qcom_adm.c
+@@ -650,7 +650,7 @@ static enum dma_status adm_tx_status(struct dma_chan *chan, dma_cookie_t cookie,
+ 	/*
+ 	 * residue is either the full length if it is in the issued list, or 0
+ 	 * if it is in progress.  We have no reliable way of determining
+-	 * anything inbetween
++	 * anything in between
+ 	 */
+ 	dma_set_residue(txstate, residue);
+ 
+diff --git a/drivers/dma/sh/shdmac.c b/drivers/dma/sh/shdmac.c
+index 7cc9eb2217e8..8ead0a1fd237 100644
+--- a/drivers/dma/sh/shdmac.c
++++ b/drivers/dma/sh/shdmac.c
+@@ -318,7 +318,7 @@ static void sh_dmae_setup_xfer(struct shdma_chan *schan,
  }
  
-@@ -440,6 +449,8 @@ static int dw9768_probe(struct i2c_client *client)
- 						      dw9768->clock_presc,
- 						      dw9768->aac_timing);
+ /*
+- * Find a slave channel configuration from the contoller list by either a slave
++ * Find a slave channel configuration from the controller list by either a slave
+  * ID in the non-DT case, or by a MID/RID value in the DT case
+  */
+ static const struct sh_dmae_slave_config *dmae_find_slave(
+diff --git a/drivers/dma/ste_dma40.h b/drivers/dma/ste_dma40.h
+index c697bfe16a01..a90c786acc1f 100644
+--- a/drivers/dma/ste_dma40.h
++++ b/drivers/dma/ste_dma40.h
+@@ -4,7 +4,7 @@
+ #define STE_DMA40_H
  
-+	dw9768->data = device_get_match_data(dev);
-+
- 	for (i = 0; i < ARRAY_SIZE(dw9768_supply_names); i++)
- 		dw9768->supplies[i].supply = dw9768_supply_names[i];
+ /*
+- * Maxium size for a single dma descriptor
++ * Maximum size for a single dma descriptor
+  * Size is limited to 16 bits.
+  * Size is in the units of addr-widths (1,2,4,8 bytes)
+  * Larger transfers will be split up to multiple linked desc
+diff --git a/drivers/dma/ste_dma40_ll.h b/drivers/dma/ste_dma40_ll.h
+index c504e855eb02..2e30e9a94a1e 100644
+--- a/drivers/dma/ste_dma40_ll.h
++++ b/drivers/dma/ste_dma40_ll.h
+@@ -369,7 +369,7 @@ struct d40_phy_lli_bidir {
+  * @lcsp02: Either maps to register lcsp0 if src or lcsp2 if dst.
+  * @lcsp13: Either maps to register lcsp1 if src or lcsp3 if dst.
+  *
+- * This struct must be 8 bytes aligned since it will be accessed directy by
++ * This struct must be 8 bytes aligned since it will be accessed directly by
+  * the DMA. Never add any none hw mapped registers to this struct.
+  */
  
-@@ -525,9 +536,17 @@ static void dw9768_remove(struct i2c_client *client)
- 	pm_runtime_disable(dev);
- }
+diff --git a/drivers/dma/tegra20-apb-dma.c b/drivers/dma/tegra20-apb-dma.c
+index ac69778827f2..7d1acda2d72b 100644
+--- a/drivers/dma/tegra20-apb-dma.c
++++ b/drivers/dma/tegra20-apb-dma.c
+@@ -463,7 +463,7 @@ static void tegra_dma_configure_for_next(struct tegra_dma_channel *tdc,
  
-+static const struct dw9768_vcm_data dw9768_data = {
-+	.pd_mode_ctrl = true,
-+};
-+
-+static const struct dw9768_vcm_data gt9769_data = {
-+	.pd_mode_ctrl = false,
-+};
-+
- static const struct of_device_id dw9768_of_table[] = {
--	{ .compatible = "dongwoon,dw9768" },
--	{ .compatible = "giantec,gt9769" },
-+	{ .compatible = "dongwoon,dw9768", .data = &dw9768_data },
-+	{ .compatible = "giantec,gt9769", .data = &gt9769_data },
- 	{}
- };
- MODULE_DEVICE_TABLE(of, dw9768_of_table);
+ 	/*
+ 	 * If interrupt is pending then do nothing as the ISR will handle
+-	 * the programing for new request.
++	 * the programming for new request.
+ 	 */
+ 	if (status & TEGRA_APBDMA_STATUS_ISE_EOC) {
+ 		dev_err(tdc2dev(tdc),
+diff --git a/drivers/dma/xgene-dma.c b/drivers/dma/xgene-dma.c
+index fd4397adeb79..275848a9c450 100644
+--- a/drivers/dma/xgene-dma.c
++++ b/drivers/dma/xgene-dma.c
+@@ -1742,7 +1742,7 @@ static int xgene_dma_probe(struct platform_device *pdev)
+ 	/* Initialize DMA channels software state */
+ 	xgene_dma_init_channels(pdma);
+ 
+-	/* Configue DMA rings */
++	/* Configure DMA rings */
+ 	ret = xgene_dma_init_rings(pdma);
+ 	if (ret)
+ 		goto err_clk_enable;
+diff --git a/drivers/dma/xilinx/xilinx_dpdma.c b/drivers/dma/xilinx/xilinx_dpdma.c
+index 36bd4825d389..c26ebced866c 100644
+--- a/drivers/dma/xilinx/xilinx_dpdma.c
++++ b/drivers/dma/xilinx/xilinx_dpdma.c
+@@ -149,7 +149,7 @@ struct xilinx_dpdma_chan;
+  * @addr_ext: upper 16 bit of 48 bit address (next_desc and src_addr)
+  * @next_desc: next descriptor 32 bit address
+  * @src_addr: payload source address (1st page, 32 LSB)
+- * @addr_ext_23: payload source address (3nd and 3rd pages, 16 LSBs)
++ * @addr_ext_23: payload source address (2nd and 3rd pages, 16 LSBs)
+  * @addr_ext_45: payload source address (4th and 5th pages, 16 LSBs)
+  * @src_addr2: payload source address (2nd page, 32 LSB)
+  * @src_addr3: payload source address (3rd page, 32 LSB)
+@@ -210,7 +210,7 @@ struct xilinx_dpdma_tx_desc {
+  * @vchan: virtual DMA channel
+  * @reg: register base address
+  * @id: channel ID
+- * @wait_to_stop: queue to wait for outstanding transacitons before stopping
++ * @wait_to_stop: queue to wait for outstanding transactions before stopping
+  * @running: true if the channel is running
+  * @first_frame: flag for the first frame of stream
+  * @video_group: flag if multi-channel operation is needed for video channels
 -- 
-2.46.0
+2.25.1
 
 
