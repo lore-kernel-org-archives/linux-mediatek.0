@@ -4,83 +4,172 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE110C52D7D
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Aug 2024 17:08:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F9B4C5320E
+	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Aug 2024 20:46:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=d+1eDU6pL8mMJapdvQIZCpIdrVaFZMCR1Rwjbr7DrUQ=; b=0Y6KlxMp+Z7k2sl43rZmUI8Qa+
-	A851sSL1kqJUGXHrg7mdGdxANqijAL/Lh1fYVvIo+roTvwBp/xaTCPSGqZ5Y58fiR9hfY73N0RA7Z
-	CiHx/0+QAZUmRS2XeeY0OUn2QuHQUIS57bEkbOt417cgR9lm/sq9xmkMjgOgjeKUts7umYldnoxcJ
-	IEE8+k7x4UhZGX16EIfYEQyD/ZcCWrUfb3PFE0ZOv4IfVBuRr9dXLuP9OBydIWvZFICSVT8fe1C0R
-	FSGh2QmUKQLqPnWdIbVPFniZRf6dlpnlIKeRd2wpc4niZr1REFmHGs1XXgnT6aEiG2C4Oh5hrMlIu
-	TUuHMbxw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9tNrGTMG+9Br7iCypM297NV5/Z8qO16vb395VLCtwgI=; b=ftzQchpQwVL8DYA3zYcQvnVL7+
+	tolHQDRTJPGUhcOHuViA2JoGXIBSrdbwxEJVZ7lbhqi3a9P/3WU8FN+IECVLDWsXq63bAJUKcE2Ij
+	YgUhMNdJ6318B1kjLZJq3LXJYRoMTPD7JDNfQL8QDiMsZJC3WkSFYP1c0tFgFPohtPa6iNmTXf7pL
+	qaTroYvEuWePKqxlrcs8KZOyKj9ycFwd8HqUVAHz7mrjCKottWwOQ4HEaNZmiuz4NtjTbKfalXopR
+	BCFcrx/sExcwtliBddbiroWfHdUjggZw/sp88nMawdtrIVoi1fK4o9kFjbJILvB8s3xfgSq8h1I3z
+	jYngOe0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfMum-0000000FWCV-3Eh8;
-	Sat, 17 Aug 2024 17:08:32 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1sfQJg-0000000FjCf-1Qj0;
+	Sat, 17 Aug 2024 20:46:28 +0000
+Received: from mail-db8eur05on2070e.outbound.protection.outlook.com ([2a01:111:f400:7e1a::70e] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfMui-0000000FWBh-41ca
-	for linux-mediatek@lists.infradead.org;
-	Sat, 17 Aug 2024 17:08:30 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-36d2a601c31so1644594f8f.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 17 Aug 2024 10:08:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=toblux-com.20230601.gappssmtp.com; s=20230601; t=1723914506; x=1724519306; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=d+1eDU6pL8mMJapdvQIZCpIdrVaFZMCR1Rwjbr7DrUQ=;
-        b=eap03+kpf1LgqVcK4o1SOr1Z+18YebLjgIa1f4HxbWtb3mrLmzODs6EdqJBDQPbj29
-         XvACW0p1IrxwW4sKgEvVzOcP/pQqJYHUqtYH0zB5Tjryh0zT65A/ipV3IBMcZntuP6KS
-         v63QIdhu9YxLPi5W1J4ZYChoN0k+Jr95KT/4LkoQ1p0ey8LtGpPG/EwY4TbP3F8+Ctga
-         dHgkYGOTQsAuR0hFpgy69LAefZn9fFO/NCXwFlAvKIRcrLfW/mrDxELzM+m1Vw3d2NHM
-         JO5ervpBCihbcGRYu2OP6HDCzlOs00HNumhaf7M0NjbPjrRitr6HNoO1IcvnRf80dFs/
-         WVJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723914506; x=1724519306;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=d+1eDU6pL8mMJapdvQIZCpIdrVaFZMCR1Rwjbr7DrUQ=;
-        b=BtwaxqlOb6sraFhec8O0/mpNW4Sc+EJzxasRrURY2PCRS3jnJTxYsSRbhAMUL1nQXV
-         Zg9YmjE6Av5p2Fb03oX5Xh4nbQgHTNxhV/pnkurulpCsolNsNzGM8Pn0qU3BcECH68M8
-         XJUjuMV3SBISltxu4uMSn/EnidYIb0n2PKQ8JuGfNMcDh0mlZOYegqmX+5b2hk70FDiY
-         2XzBviSXUnlwPUxa3cvpmow98uPD0jwV2rzM5HNi3pNjXv4o4gGVw1aT4FsIIOYStHGc
-         G8PLIz3PuRjiYzTtSH6HlcsXpDe1bCgrCuvV7QgZA8DEwyovPD3P2yoK2LCZU6ETx4jK
-         SbCQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWLKAgNAJpOOa+xZSj9dqvwdv0nzr+4kXLuB6hC4XWNHNFRIw35pPZMhfnIyaD8O+1rfJ5tk8iphzradLLHRw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YweP72Y+o/KG+9zOekBK9wL9BSMI6KCob0wnJSaG5zgw/R+ZlSa
-	Zz3/K1Z0KhhBOo3vij0f6arFzOoW9fPiL4xcGqZ/MJcPQqtjgRKqmcbnP63RSZY=
-X-Google-Smtp-Source: AGHT+IE6b+7jzq7Estkt2Ds0gB54QWf9sQi+i/YVKv8R3zFoXTCBoiPafqZq06a1W6N57RJaY3yq9w==
-X-Received: by 2002:a5d:4486:0:b0:371:8484:57d7 with SMTP id ffacd0b85a97d-3719444b7e0mr3926720f8f.15.1723914505446;
-        Sat, 17 Aug 2024 10:08:25 -0700 (PDT)
-Received: from fedora.fritz.box (aftr-62-216-208-163.dynamic.mnet-online.de. [62.216.208.163])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-371898aa229sm6256167f8f.88.2024.08.17.10.08.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 17 Aug 2024 10:08:24 -0700 (PDT)
-From: Thorsten Blum <thorsten.blum@toblux.com>
-To: chaotian.jing@mediatek.com,
-	ulf.hansson@linaro.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: linux-mmc@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Thorsten Blum <thorsten.blum@toblux.com>
-Subject: [PATCH v2] mmc: mtk-sd: Improve data type in msdc_timeout_cal()
-Date: Sat, 17 Aug 2024 19:07:26 +0200
-Message-ID: <20240817170726.350339-2-thorsten.blum@toblux.com>
-X-Mailer: git-send-email 2.46.0
-MIME-Version: 1.0
+	id 1sfQJc-0000000FjC1-2y8V;
+	Sat, 17 Aug 2024 20:46:26 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=DLXYGNBOJWVoiiBlSR/R8BYitDxFwlxcybctN1L4HQ2L2afT+K3oNdEBo08sp1eEGrll4JUtO2X/16wEVD3DBCWDcBprwSaKLawoDFBQTN/3bVAVYNH0MefbD3QLZrIxZGNSCg9JKeQQuGc+RVEY95k/+pMOFmm5Ib+GTDZzy+mO/xKF970LoJvEm5TYxuT0NJdLJGpuK6EYFHFS2PfWhKrOM9uKH5MaOFCCQ1hzfFmUJkysDfnUXU/AaEXFSb4uhlBxnZ+dFwK/qAyM+rn4kz/sYU1ZZ+9SXcWRs4PMhNCEA0tIsezxuPRj7wgtiI1/87+u9ZaqbayUojpW0k63Kg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=9tNrGTMG+9Br7iCypM297NV5/Z8qO16vb395VLCtwgI=;
+ b=tRGbtljYaO91YkRUjpgKmJO94eKLJCvnv6BDnHKs16M1IpxgbAZoNSZIz9rNKdEikDRfkqQlA7BZWDVHGb6ZtX1sr0csfSg1888eriQ0Ap//qrNzPm2DguaTpBV+jgftFOidytpRDgyYZrfMJUuakD0XtgIROSL19PGaQyQSMTYTuUklLvuEjqP9A3bCZln5eb7UElgJa56fWb+/p4ZgkbBQgegc3GCP/vWs8SCLd1Kwe1Y5acYOhBA8tkM2bCXanRuPT0fWcjhkLRJKgukB+RgMpCP5m6QDSWt3NGz6fK8ME2vgpKnlxNFyeVsnywaQiwxM2Bcz/qxsjJ6i9utHow==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=genexis.eu;
+ dkim=pass header.d=genexis.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=genexis.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=9tNrGTMG+9Br7iCypM297NV5/Z8qO16vb395VLCtwgI=;
+ b=emidydAnOR62SZjTpiPTLy0Ne21CR+FZtDk1fA4HbTUdsroPjy3IHkZw2uZIsX9Joe0pQZ+nAVAoc7wScry1tcVkwb3mFqVlxLrosr5uU8f0tzXPDxwKuyEGUJJH3eyhQnw+MsRVV+HJPSvQcCBovoHHEB+YhyROLa10fvPygo4=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=genexis.eu;
+Received: from AM9PR08MB6034.eurprd08.prod.outlook.com (2603:10a6:20b:2db::18)
+ by AM7PR08MB5351.eurprd08.prod.outlook.com (2603:10a6:20b:dc::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7897.12; Sat, 17 Aug
+ 2024 20:46:12 +0000
+Received: from AM9PR08MB6034.eurprd08.prod.outlook.com
+ ([fe80::9ead:b6bc:10eb:ef35]) by AM9PR08MB6034.eurprd08.prod.outlook.com
+ ([fe80::9ead:b6bc:10eb:ef35%4]) with mapi id 15.20.7897.010; Sat, 17 Aug 2024
+ 20:46:12 +0000
+Message-ID: <1d223ae5-cd2c-4883-b293-bb182e90222b@genexis.eu>
+Date: Sat, 17 Aug 2024 22:46:10 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] dt-bindings: pinctrl: airoha: Add EN7581 pinctrl
+ controller
+To: Rob Herring <robh@kernel.org>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, linux-gpio@vger.kernel.org,
+ linus.walleij@linaro.org, sean.wang@kernel.org,
+ linux-mediatek@lists.infradead.org, lorenzo.bianconi83@gmail.com,
+ krzk+dt@kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
+ angelogioacchino.delregno@collabora.com, conor+dt@kernel.org,
+ ansuelsmth@gmail.com
+References: <cover.1723392444.git.lorenzo@kernel.org>
+ <0d537e88b64847bc4e49756b249b2efdcf489b92.1723392444.git.lorenzo@kernel.org>
+ <22144671-fc7c-4cb2-8bb6-ee7d3fbfcb0e@kernel.org>
+ <c8a74be4-be63-477d-9460-1d5ef5e3d84a@genexis.eu>
+ <20240816225257.GA2411475-robh@kernel.org>
+Content-Language: en-US
+From: Benjamin Larsson <benjamin.larsson@genexis.eu>
+In-Reply-To: <20240816225257.GA2411475-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: GV3PEPF00002BA9.SWEP280.PROD.OUTLOOK.COM
+ (2603:10a6:144:1:0:6:0:e) To AM9PR08MB6034.eurprd08.prod.outlook.com
+ (2603:10a6:20b:2db::18)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM9PR08MB6034:EE_|AM7PR08MB5351:EE_
+X-MS-Office365-Filtering-Correlation-Id: 01635f51-7df5-4401-7474-08dcbefda16a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014|7416014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?U0h3OU1wYnE3M3JQckdjRFZGQW51Zzlac3Y2cTEvZU9DbjIxcHFoK1VjMGpQ?=
+ =?utf-8?B?SGVQa2FuWFM3QStpNjFLQ2ZOTWZheVhVU2ZvNm5lMC9UNUlOWDZRTEVpYkR4?=
+ =?utf-8?B?L3VUVVE0c1dQTU0zVkovMlh2YmNaV3NhRFVxL1pYUVZWdFNzMGNPNnVxUGht?=
+ =?utf-8?B?ZjlaYkFDckxITzZFajlrTHBITC9XcFlpcjFMZG9wc2g4L09oN0JkcUtKQkw5?=
+ =?utf-8?B?SjlUa0NsM2lPazV0Z0ZkUlZRdVJNS3RTbWFuYjN3TXY0L2hoYWowNituNEZD?=
+ =?utf-8?B?TGU0REFyRTF4cTl2Nk5pTXBxVGdxY2w2ZjRRdktNL3h4b0RDanlCT2dIbFV5?=
+ =?utf-8?B?aXpCdmJ1NnZ4VGZ3VVhqUlJYS2RwM2Y2NUxsSU5UNVNjT1RMRWV6Z2FlZmxp?=
+ =?utf-8?B?Uk9HejhVUUtteGZnQkZVdVVLbG13ek5pSG1OYm1NTnQxVzQrK05EZHhocjU5?=
+ =?utf-8?B?Mk54VVVkbGt6eUw3VVd4U0EweWFXMDdXQklmOENqZXpOZk9qbHRnWDM1SjR4?=
+ =?utf-8?B?eXl5M3VBMUdOLzY2a0h1YXhZbFZFK2s5L0NpRmRpcjdCUEFBZUF4K3g0RFlp?=
+ =?utf-8?B?cXFEM3dJNTAxWUhqS2pqaEk5ejNGSE9kS1VRSWdJVkVOYnRjeU5OZURTUjVY?=
+ =?utf-8?B?aWh5ODRIaHpHM0x6WmFYWktPZTVGcVJNSnVzQVJWb0JRdXFMZDh2UDIwNEV6?=
+ =?utf-8?B?Nmx2bUE0MHJHT3dYNW41V2JFQkxFWEtUWVpGYTlubjhYalRlVHAwNkNRcTAw?=
+ =?utf-8?B?U1lNaUFWNFJZU25velVzTG1YbnYxbGlWcVI5dXJUOW5hZTI2alBOMVpsaTAx?=
+ =?utf-8?B?Z01Sa2drZzQrcWV4UEs0UEhuQjIxRVprUU1adEFlcXYyTjhzazZUNVVLTDFR?=
+ =?utf-8?B?NlNvbEEramFkMC9pbzlzRHBoRnprU0QwcVoxNHhZZkVXVDE1Y2ZJbHpGU3dp?=
+ =?utf-8?B?Z3h3Qk1jUVYzUFI1eVFTaGs1OGdNeFMzZ3NMQU5RL3F3WjFPem5lZnR3SzJ5?=
+ =?utf-8?B?T0dWSWRETTZXaWp1SHVFaVpXS2pZcjJ3cFFLYzhkT2ZCMHk2U0JaeUwydHpT?=
+ =?utf-8?B?ZEUrMEhQc1FIU0dxZWlheFNHR0I5L2hEUHFjTGZEeXJ5OUtMbHpoM0FwRXkr?=
+ =?utf-8?B?R0JBa1BMK2k0NmFjdUxQUnJPeXZpS0hXeTF1bHNLT2dLeGpVZkthUWViWGtw?=
+ =?utf-8?B?TCtPZ3JnTysrUlBoMHJZa2hvSmpmRDIrY1VhcTZLbkduNlV6RkZOV213T3NR?=
+ =?utf-8?B?aTFPall1RDBYa1lJRlpvZ3NIaHRtSXRQVmtUMFpXS1NsUUVjbHE1SGFBYWo3?=
+ =?utf-8?B?NzB6MnBJL2I5ZzlBVTZsem01WllEcmcyK0dlaXMxa1BTZHJRU2pGS2xsbnVv?=
+ =?utf-8?B?SnJ3RndqTUJXSDRqUnpSTWxGck5yVGYwNUhhSkhhNVc5RU82TzFzMjg1Q0FQ?=
+ =?utf-8?B?RHBxVy8wWmR3SmRnazNLZ2Y3b0NnYUNNMVQzME9DNUdWU09wTlVyQjBQdVlw?=
+ =?utf-8?B?d2hYLzdzOGtOU01tcEpWd2tCRVJPbnJhYjRERzVJYWwvZmpVWVNiV0hYVUJt?=
+ =?utf-8?B?R1dYSTVEcXBuOUU2YVJIb1hTRVp1L0Jib2M0WC9EVHNreUgvajdQZUVBM204?=
+ =?utf-8?B?eXd6SkhYZVBibkNMTlIyczhlVURnbG9yamZBZmI4R05FVlk3OWRmbHB3M3Ju?=
+ =?utf-8?B?SFFseUJzdGVzc0RGQVZ4TXVUZnJWdVdrd1JSYW0zWmVTa3BzVzdSSzRYeUJk?=
+ =?utf-8?B?bzZoN3MyTjRPR0RYZDMrY2pOVS9jRTlnQkRaaFRtWTkvWmxYSGljQjZ5MGQ3?=
+ =?utf-8?B?WDRZWUMvYzhhVVJTRE4rdz09?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR08MB6034.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(7416014);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?emlXZVlsbEFmQW1Mdm4rRnh0QmdySlVNQVY4UkdiM1F4OXk2aE1BbW1FVFhY?=
+ =?utf-8?B?cTFRSHJsWm1HZXMwVDg3eWFQbkZZdWQraWlxYlRJb0FsQ1BRc1ZRdFltSW5n?=
+ =?utf-8?B?T3l6VGIyZ2pOZnUyWXZuem9SRnNqK0hxTzhDa3BTclltdnlhL3FvaU43c0cr?=
+ =?utf-8?B?ZWJadTh5bEJhQXJKVmxrakxQdFlxaE9PQXVkZS9XNEltUDlMdkRERTRCaDJ5?=
+ =?utf-8?B?dVBQMWZiZVlwaS81aDMySXJ4SXROdXJ0NUpZVHFIYzRFK2tWa0ptdmppMDFm?=
+ =?utf-8?B?VktBVlFKV2tOOEgxK0ZwM2lSZlVyRjMyWnJNOXJwUW83eHZ6eWlLUTNNUjRE?=
+ =?utf-8?B?TzJtekVOVW5selhQWlRhUkZCQVErWU50ZGhHZGQwV1BPTUFEaW9XV3JVVjBI?=
+ =?utf-8?B?b3JHWmtJQStuR1VlN05IU2ZGU2dOeU5kSVVIWnBDUy9rc0tBRTlRYTZsZHJN?=
+ =?utf-8?B?T3JWUk1scGEvZERuaENFYzFlVGFBNFZqZDk1WlY2aUYwVjVKWGo3T3pBUWh2?=
+ =?utf-8?B?UmN4NVBjNEN5dmttbmtIU0xGS3Y1c2ZGa0ZXdGFIUTRsSnJ2aXRMN2cvWkJ6?=
+ =?utf-8?B?djc5aDB4Sjk5NUU5bFNqRlRLYjB5MStNaHlsYXo0YVJOaVp4VEllclJZQkV2?=
+ =?utf-8?B?K09HY2sxM2U2MUc4d1pXNzIxekt6ZWRuOXlRa2QzMlU1MGEzWDF0ZnpGcmRF?=
+ =?utf-8?B?YThPUG1aMFVIamFkM1JBdCtRQW1NdFpwVHFNUFU2cDV5R0NVVVJYU3FtRTVi?=
+ =?utf-8?B?RzV0ekNISHRYTENJcC8xajFCeXZtQWV0bHBaSGRiYlBHWWxhQm5KeGlhNGgr?=
+ =?utf-8?B?RldhcGxDMTd1anlxWVdxazVlSXJ3cnVBMTZyMzh4Y293cllSWmZ1SFA1QllX?=
+ =?utf-8?B?b0Y4eTNrR1FrbnRGV1Z6Rk9wSkpZamhWbUNkbGxtK0dYcU1iRW81aW4xY3BP?=
+ =?utf-8?B?SFJwLzJuYm45NlZOb045allKLzRWWG52dm1scWdxajBTRnZ6Qy8zcXBEcCs0?=
+ =?utf-8?B?S0dlQjF1ckk0WHJLeXNXUmtsaEppcTBIdFV6OXR2djMwYTh5blNxTTR4K29a?=
+ =?utf-8?B?dWZjcVM4NlhRUnh5ZzUyYXlROTkxeUxPeUZkbnlWUVVmQ2JEQ2VUQ1BiRHNq?=
+ =?utf-8?B?TjRhekIzcEt0SDg1dFVETi9RaXJMazhtSXZlV3JNRjNGQmZrNmovSDdhcm1W?=
+ =?utf-8?B?bmtmN0ZEUWU1RnFkT0Rob0F1cU1VeU1wMUdCbXJhc1psekpGTkQvdU5sUHZl?=
+ =?utf-8?B?M1RUWXZhODNDaWNNU09KMDJ0dHZFMndvVDJXL2lZQ2x3T2FSQXBXZUJrLzBB?=
+ =?utf-8?B?K2FnMU5vcDd5aHRxMytpbDI4UmltOGhpZzRZSlU0dm83WlY0OGdCdHc5TTNP?=
+ =?utf-8?B?NDk2MHZmN3ppeVlMRUlkNGNTL253OW1lRmVINURDWmt2bXAraTRwQjdtcUlJ?=
+ =?utf-8?B?VEd2WHZxNStncHdGTVpFSDEvZTBRUG9JRS83VDRMcGNVL2FYUmh5aE43NXJj?=
+ =?utf-8?B?Vm9ZcWEzVHVWdHRnRXB6bHYvNHEvZnEvLytMc3Z0MjJGUURpcmc0bjYzVjg4?=
+ =?utf-8?B?Vk5GckRwK0ZqZUpUMWljamlnQnc3RWd2aVNOTlZ3N2NicGdyUlJialBVaXNy?=
+ =?utf-8?B?cVJSaWFxNGFKc2hxaHRNMEpFYXJzU0dQODZQSmsyWGJaYm9UQXRjd3pjZ3l0?=
+ =?utf-8?B?cjlLbkNSeEUwVjlLdGVtMmh5S3g2M2oyd0UyZnB0SmlCeElINElFNkx0WVJi?=
+ =?utf-8?B?YmgwcU84c1RJT2RrNyt6K1pqWWI1ekdUREVCWnJma2trV3d3TU1BM0pKcHQ4?=
+ =?utf-8?B?UEZWZm1IWVkyZnlwbm1rRUNBNXFGSHM5bUNyYW41WGpMQ2ExNlY5YjhEY2gy?=
+ =?utf-8?B?SndJeW03YjlKSGtsUXBzQS9PeThDcHh1V0NVQ0tad0Q2R2dtR2g3eFoxaWNH?=
+ =?utf-8?B?ZDc4MXh4cjlqRTZMK1FxUmF3a2ZiYU1EbWxxMEVUaXZvbStkblVFbXZ2VUwy?=
+ =?utf-8?B?OCtXbmFyZWtZcDNqUkhMdm14RDhjd3pobmNBaU9EYXVJV05SWFdwdmZ5aXow?=
+ =?utf-8?B?T1BCcEVMRnhHMFdrYTlXK2V1c1c2UWhtR0ZnVFpSV0x0Vll3WnY3Znk1bVhT?=
+ =?utf-8?B?V3hzRDZXS09Oc0VLT0hpWWVwZmp1Y1JZZGdRQnhkUFdKbkFsMjEvc2hmdzFR?=
+ =?utf-8?B?WXc9PQ==?=
+X-OriginatorOrg: genexis.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: 01635f51-7df5-4401-7474-08dcbefda16a
+X-MS-Exchange-CrossTenant-AuthSource: AM9PR08MB6034.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Aug 2024 20:46:12.5804
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: o+KtyJYo7OX1VsabDl4AtkLWw9oyQJdwP3HuT8rZOz9ShdeQSN4xpK7+wrj7wvC0Wo+DENcmbSIO+OjC73hqL277fD44zlmIaesxRV8PbCg=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM7PR08MB5351
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240817_100829_145306_B380EC31 
-X-CRM114-Status: GOOD (  12.46  )
+X-CRM114-CacheID: sfid-20240817_134625_068623_9C94DB03 
+X-CRM114-Status: GOOD (  14.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,69 +184,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The local variable clk_ns uses at most 32 bits and can be a u32.
+On 17/08/2024 00:52, Rob Herring wrote:
+>> Hi, this is by design because of the register placement in the gpio block
+>> and the fact that the pwm functionality is intermixed in there also. As
+>> example the following registers are all GPIOCTRL:
+>>
+>> <0x0 0x1fbf0200 0x0 0x4>,
+>> <0x0 0x1fbf0220 0x0 0x4>,
+>> <0x0 0x1fbf0260 0x0 0x4>,
+>> <0x0 0x1fbf0264 0x0 0x4>,
+>>
+>> To simplify the driver code logic the complexity is moved to the dts because
+>> of that.
+> DT to OS is an ABI. Don't put the complexity there. The driver is easy
+> to change.
+>
+> Lot's of h/w blocks are just bit soup. This is not special. If a few
+> regions is helpful, then that would be fine.
+>
+> Rob
 
-Replace the 64-by-32 do_div() division with a standard divison.
+Hi, the pwm functionality is to blame.
 
-Since do_div() casts the divisor to u32 anyway, changing the data type
-of clk_ns to u32 also removes the following Coccinelle/coccicheck
-warning reported by do_div.cocci:
+The following is the logic that populates the direction registers 
+(GPIOCTRL).
 
-  WARNING: do_div() does a 64-by-32 division, please consider using div64_u64 instead
+     for (i = 0; i < ARRAY_SIZE(pinctrl->gpiochip.dir); i++) {
+         ptr = devm_platform_ioremap_resource(pdev, index++);
+         if (IS_ERR(ptr))
+             return dev_err_probe(dev, PTR_ERR(ptr),
+                          "failed to map gpio dir regs\n");
 
-Use max_t(u32,,) to simplify the code and improve its readability.
+         pinctrl->gpiochip.dir[i] = ptr;
+     }
 
-Signed-off-by: Thorsten Blum <thorsten.blum@toblux.com>
----
-Changes in v2:
-- Address kernel test robot feedback and replace do_div() with a
-  standard division
-- Link to v1: https://lore.kernel.org/linux-kernel/20240815234602.59684-1-thorsten.blum@toblux.com/
----
- drivers/mmc/host/mtk-sd.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index a94835b8ab93..950c60102bdf 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -795,14 +795,13 @@ static void msdc_unprepare_data(struct msdc_host *host, struct mmc_data *data)
- static u64 msdc_timeout_cal(struct msdc_host *host, u64 ns, u64 clks)
- {
- 	struct mmc_host *mmc = mmc_from_priv(host);
--	u64 timeout, clk_ns;
--	u32 mode = 0;
-+	u64 timeout;
-+	u32 clk_ns, mode = 0;
- 
- 	if (mmc->actual_clock == 0) {
- 		timeout = 0;
- 	} else {
--		clk_ns  = 1000000000ULL;
--		do_div(clk_ns, mmc->actual_clock);
-+		clk_ns = 1000000000U / mmc->actual_clock;
- 		timeout = ns + clk_ns - 1;
- 		do_div(timeout, clk_ns);
- 		timeout += clks;
-@@ -831,7 +830,7 @@ static void msdc_set_timeout(struct msdc_host *host, u64 ns, u64 clks)
- 
- 	timeout = msdc_timeout_cal(host, ns, clks);
- 	sdr_set_field(host->base + SDC_CFG, SDC_CFG_DTOC,
--		      (u32)(timeout > 255 ? 255 : timeout));
-+		      max_t(u32, timeout, 255));
- }
- 
- static void msdc_set_busy_timeout(struct msdc_host *host, u64 ns, u64 clks)
-@@ -840,7 +839,7 @@ static void msdc_set_busy_timeout(struct msdc_host *host, u64 ns, u64 clks)
- 
- 	timeout = msdc_timeout_cal(host, ns, clks);
- 	sdr_set_field(host->base + SDC_CFG, SDC_CFG_WRDTOC,
--		      (u32)(timeout > 8191 ? 8191 : timeout));
-+		      max_t(u32, timeout, 8191));
- }
- 
- static void msdc_gate_clock(struct msdc_host *host)
--- 
-2.46.0
+As example in between 0x1fbf0200, 0x1fbf0220 and 0x1fbf0260 we have pwm 
+related registers.
+
+The gpio block could if I count it correctly be split into 8+ regions. 
+The dts list contain 18 rows related to the gpio block. So the savings 
+would be ca 10 rows but a register mapping list in the driver would be 
+needed instead.
+
+Is that savings worth the addition of a register lookup table ?
+
+MvH
+
+Benjamin Larsson
 
 
