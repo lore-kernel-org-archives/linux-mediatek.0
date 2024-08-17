@@ -4,93 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA5E1C52D7F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Aug 2024 08:42:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEE97C52D7D
+	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Aug 2024 09:08:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9eMsJxTM2zOmRS6+tqFj/KXfj/XkuR+C/+5c8VgCc3Y=; b=vZRZk3vvU4bTdA2T/CmYyanA/m
-	DS+dUcRHjCIT3HnvhepzOvJtxmiQ/5tSbuaNBZk2km+FM3S9NWFE07Y9fVwf0Ni6fkBdvKZS8TMcW
-	oaWmau18mbN/KURTh8X7Q7ccdDptr8LgwvVxgst9f2G9ViE2eoqmQCGIaTVlpakfKLarLYONoAK0O
-	FFPjWcVad9crmo9S1+9B5miPlyZVZSJu2+sX80Q0VClKK+Wpo5JN/1UapeFmCOyP0sXLVmqNwv8Ab
-	N7gY+UjFtHLaijVuxRF2CQ64vywGBRW9zkMrvfu9SLu8gXxIJCGBhrhrCvwAB4dYoXYIVdyZQ/73S
-	WoacKwFw==;
+	bh=kGF9YJkO5A7YVtlAJixymINWnO2oLXUTJ5Rdb0OiTlc=; b=rYWkDh8vjoElx6u5hloqeIlFqB
+	ExiHuVdm1wFhSOrfdZRD7cHOg/aZXAh6L74umdHTKhyE1A5zBVDoBTdDgiCwICjvgU920siOhJ/6r
+	uW9+WeY3RZq8mMHnnYwXoudje6qqhuMfL9ab9VhFivSx2e7qPR3OMX4BzkeSHOugec5N3j4U6ctQc
+	98W4QF960qjMyu5C70S+/YTdMih7A/FxUQ73GiluaAF2g8PJWZZDgCNtMMwUeDGaL7sWwPBGJy8v9
+	fitJl+fXMTP5F6RLwvr/MGjIWc5v730/ne1pvFD+bSka/WX3JTT0bm4wKuf/Pd19iB4+hJeKbn4mG
+	S10HJ88A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfF1Q-0000000EwJe-2q9r;
-	Sat, 17 Aug 2024 08:42:52 +0000
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+	id 1sfFQV-0000000Eyap-188P;
+	Sat, 17 Aug 2024 09:08:47 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfF0k-0000000EwCs-3Sa3;
-	Sat, 17 Aug 2024 08:42:12 +0000
-Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-6b0c5b1adfaso16668707b3.0;
-        Sat, 17 Aug 2024 01:42:09 -0700 (PDT)
+	id 1sfFPo-0000000EySd-35OS
+	for linux-mediatek@lists.infradead.org;
+	Sat, 17 Aug 2024 09:08:07 +0000
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-428141be2ddso19044875e9.2
+        for <linux-mediatek@lists.infradead.org>; Sat, 17 Aug 2024 02:08:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1723884128; x=1724488928; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=9eMsJxTM2zOmRS6+tqFj/KXfj/XkuR+C/+5c8VgCc3Y=;
-        b=VilfOA7p/yc81SCbAtmxIqBbFyRlEAYoD6H+5894Ve3y1JsJ19ub3gJuo+QhQHJjv7
-         KL8TJZLWui/dFvKr4X257TUDHPabLm8Ft5n9r7U77ueQSVYU55vDj9EuVD/0ueS81Wtc
-         rPd4pGjMrL/FX50P5tjpqDKwWh1nT6clLkZD+rQ66uI9BfCtalYyX5KXGHQF44RcWnuL
-         knIiDS/VMaQ2I5wyMCHaeSykKRbgv/50tOj9a99QmuCGTwbeDg3Gzd0fn0vLMqoBus4V
-         XJmkE762TQ4ivwpStCpeYWNkTBmP8IbTiN176iGt+8gYYUXFFiZA34i+c9CKhm27gc2U
-         X0Hg==
+        d=linaro.org; s=google; t=1723885682; x=1724490482; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=kGF9YJkO5A7YVtlAJixymINWnO2oLXUTJ5Rdb0OiTlc=;
+        b=MNrR0Pfx8+fGngYHh10hg8PO+2Ceh9RZjWv8gxnJxFu51k71mrcfnHGHno4Ng6VSqy
+         drEYBzDkG1pcjFOYpa5xS8BH+x3abXUONlg2RuU1fG5em1NalHgJe7OUUdh/68dSGUUH
+         jzFuxd6Cvu+LF9HWuEMIjj5NeqW2AXK6iPyhUhBwY50cqx6Nq5P/SOOM3jG4Mjje+zGI
+         spvQlnq8mBZRBiIEcIp0bWtVsiXVS+UrGtut/r2//AZtAgs755Fg0hBfEipMkdq9hr/V
+         yeWOUMGA4Yy3jyfFUOismEoAUB5g+Jbyq45loViyU89EYm2tQPdwzsMxuzP7py8NRoHj
+         NKsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723884128; x=1724488928;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=9eMsJxTM2zOmRS6+tqFj/KXfj/XkuR+C/+5c8VgCc3Y=;
-        b=TbYYxK1hxc/YJCsStkRfZWtlBSS/s+dyDnZ4jQvnhM4nsmFvDrvGQIjduywjKSUpEj
-         nRa0C029TaCSLHr7WupFldR0McacgP7xuZZNNYX28ZMq3FyDKLrmoTu3Eja5VCTIV25U
-         c2MHUEWFO1i7ZRquGxVRFYEHfcQhziNsiopsZ3mp+VG7jjUftO/EFxzT+FwI09UjzE+h
-         EUPY/i0EFkwld9XXS8dhaaE27IwjHBXhXoIwtfEl4kGaTmBVNgi6EUWilmZNt7tSFtqA
-         ZDroh6D9oMA+B5Z+mBN60QvBNlVrILEsWzBBC73AceHUB0raenubdvcjOZ5zqD7d+zjS
-         lAog==
-X-Forwarded-Encrypted: i=1; AJvYcCUNeU/qBVuP8AbsRmBFCQoCbAw6l7McPb7GBtg6IzEsK3FAl2MY/4hKMyGBVm+0qt2VESC5/NdxHFd2yoWXr7e7jlOTin0BqRIDRtH7SvYFYesjAp5OTVPk/N4Zv4SFaqTGqm2QLY6JiDSnKp+2GwJl8aEgS4ROlDSTjrlFaJGzGjiZVHXKQBMfXkL6u1DIaMkFzszqHo9Nq31cxyG+8qDR0tKjtNXtCYQh3pkTmBgLqyCVUVDOe84NK+jHstazrEyw
-X-Gm-Message-State: AOJu0YyHY382Ma0PGLAPPyzwBf44MP5PVzRHgLnoF4vfKMQ4wCmVc8pB
-	zNW2ICLrLZgjC3OfWYm35W3uWTYSWZOSbsaRbKiDhQ35wQc3GgGs4A0c/Dlnd38vrunE0fu2oVa
-	zfFz7cN/PHmhy/qmOTdcVa2kIGcg=
-X-Google-Smtp-Source: AGHT+IH/bN7m+GREt6zV/O8rtGprxJFVfkBD2hfqkVRmLL3zNnCApsctC6ZVhzVCMOnM1LN6O5ppOC8r090pASW/sGE=
-X-Received: by 2002:a05:690c:4:b0:646:5f0b:e54 with SMTP id
- 00721157ae682-6b1b9b5ae86mr67136927b3.8.1723884128092; Sat, 17 Aug 2024
- 01:42:08 -0700 (PDT)
-MIME-Version: 1.0
-References: <20240817080408.8010-1-av2082000@gmail.com> <b155a6e9-9fe1-4990-8ba7-e1ff24cca041@stanley.mountain>
-In-Reply-To: <b155a6e9-9fe1-4990-8ba7-e1ff24cca041@stanley.mountain>
-From: Amit Vadhavana <av2082000@gmail.com>
-Date: Sat, 17 Aug 2024 14:11:57 +0530
-Message-ID: <CAPMW_rLPN1uLNR=j+A7U03AHX5m_LSpd1EnQoCpXixX+0e4ApQ@mail.gmail.com>
+        d=1e100.net; s=20230601; t=1723885682; x=1724490482;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kGF9YJkO5A7YVtlAJixymINWnO2oLXUTJ5Rdb0OiTlc=;
+        b=CTb6jYAqSV1fV/BOfvpvw4p5Zg2aWQ7jlyR4wPFnCKXLeAl0cwJuaBjY0Mh+2YCtU0
+         ZPzmteHQY0WeD8KvH9os70wktAbpQLiKJwmS1hVG/A7O160lPnEznZ90b0Msxra9oDcV
+         TTHvYZBi7ft/eG6VbbEPzNjvp+cl9ls4+wL96Ldy3wpL5ow/m/cylaF47O/uhXwz9Biy
+         E8MW/Fj+1mCrmGfqTrNSC52EmMwqBGEZQrPEVLmlwaYDAvtStZCwE1HrYKWBq7SfARYd
+         Yyvc4MTMrAoVjGOhKviAOSohyHrbl5ezKj3H44wCIf52JNlzgxDZk+qvbI0L2TzXv4LE
+         BlXw==
+X-Forwarded-Encrypted: i=1; AJvYcCWOzzGSu8pmwrFbbtg1xxtPJHEwCR52HZfEYMsyxZSUGU7QW5tgdejEGC1nIjjIOY1214aCJkMv/FZOW0Dw5aGN88o9tKmoI7pUT2kYDGVo+8w1
+X-Gm-Message-State: AOJu0YztTbEkYNbhBl3htQSd94C6Wos1hRRRku2OFlc1C0uaCwuPUYVk
+	PFDLES8JjqpCCQfkoa7ZsamdlNTs6m2mv9OOwwfOPUkxRAbbarrDuQqN6P37fpM=
+X-Google-Smtp-Source: AGHT+IFqPK78U4SliOQYt4MFyXyezxY5YXxZuEpRIOtN+fnxyD4VwFBOGWGb/VPGGTvD3eHpkc3FQw==
+X-Received: by 2002:a05:600c:3145:b0:426:62c5:4741 with SMTP id 5b1f17b1804b1-429ed7870afmr31694215e9.2.1723885682237;
+        Sat, 17 Aug 2024 02:08:02 -0700 (PDT)
+Received: from localhost ([196.207.164.177])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-429ded7cfbasm97704135e9.45.2024.08.17.02.08.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 17 Aug 2024 02:08:01 -0700 (PDT)
+Date: Sat, 17 Aug 2024 12:07:54 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Amit Vadhavana <av2082000@gmail.com>
+Cc: dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org,
+	ricardo@marliere.net, linux-kernel-mentees@lists.linux.dev,
+	skhan@linuxfoundation.org, vkoul@kernel.org,
+	olivierdautricourt@gmail.com, sr@denx.de,
+	ludovic.desroches@microchip.com, florian.fainelli@broadcom.com,
+	bcm-kernel-feedback-list@broadcom.com, rjui@broadcom.com,
+	sbranden@broadcom.com, wangzhou1@hisilicon.com, haijie1@huawei.com,
+	fenghua.yu@intel.com, dave.jiang@intel.com, zhoubinbin@loongson.cn,
+	sean.wang@mediatek.com, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, afaerber@suse.de,
+	manivannan.sadhasivam@linaro.org, Basavaraj.Natikar@amd.com,
+	linus.walleij@linaro.org, ldewangan@nvidia.com,
+	jonathanh@nvidia.com, thierry.reding@gmail.com,
+	laurent.pinchart@ideasonboard.com, michal.simek@amd.com,
+	Frank.Li@nxp.com, n.shubin@yadro.com, yajun.deng@linux.dev,
+	quic_jjohnson@quicinc.com, lizetao1@huawei.com, pliem@maxlinear.com,
+	konrad.dybcio@linaro.org, kees@kernel.org, gustavoars@kernel.org,
+	bryan.odonoghue@linaro.org, linux@treblig.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-actions@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-tegra@vger.kernel.org
 Subject: Re: [PATCH V2] dmaengine: Fix spelling mistakes
-To: Dan Carpenter <dan.carpenter@linaro.org>
-Cc: dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	ricardo@marliere.net, linux-kernel-mentees@lists.linux.dev, 
-	skhan@linuxfoundation.org, vkoul@kernel.org, olivierdautricourt@gmail.com, 
-	sr@denx.de, ludovic.desroches@microchip.com, florian.fainelli@broadcom.com, 
-	bcm-kernel-feedback-list@broadcom.com, rjui@broadcom.com, 
-	sbranden@broadcom.com, wangzhou1@hisilicon.com, haijie1@huawei.com, 
-	fenghua.yu@intel.com, dave.jiang@intel.com, zhoubinbin@loongson.cn, 
-	sean.wang@mediatek.com, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, afaerber@suse.de, 
-	manivannan.sadhasivam@linaro.org, Basavaraj.Natikar@amd.com, 
-	linus.walleij@linaro.org, ldewangan@nvidia.com, jonathanh@nvidia.com, 
-	thierry.reding@gmail.com, laurent.pinchart@ideasonboard.com, 
-	michal.simek@amd.com, Frank.Li@nxp.com, n.shubin@yadro.com, 
-	yajun.deng@linux.dev, quic_jjohnson@quicinc.com, lizetao1@huawei.com, 
-	pliem@maxlinear.com, konrad.dybcio@linaro.org, kees@kernel.org, 
-	gustavoars@kernel.org, bryan.odonoghue@linaro.org, linux@treblig.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-actions@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Message-ID: <070cc3e2-d0db-4d50-9a64-6a16d88b30df@stanley.mountain>
+References: <20240817080408.8010-1-av2082000@gmail.com>
+ <b155a6e9-9fe1-4990-8ba7-e1ff24cca041@stanley.mountain>
+ <CAPMW_rLPN1uLNR=j+A7U03AHX5m_LSpd1EnQoCpXixX+0e4ApQ@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAPMW_rLPN1uLNR=j+A7U03AHX5m_LSpd1EnQoCpXixX+0e4ApQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240817_014210_889357_E6CFCA25 
-X-CRM114-Status: UNSURE (   8.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240817_020804_792692_1EE4F98F 
+X-CRM114-Status: GOOD (  10.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,27 +114,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 17 Aug 2024 at 13:55, Dan Carpenter <dan.carpenter@linaro.org> wrote:
->
-> On Sat, Aug 17, 2024 at 01:34:08PM +0530, Amit Vadhavana wrote:
-> > Correct spelling mistakes in the DMA engine to improve readability
-> > and clarity without altering functionality.
+On Sat, Aug 17, 2024 at 02:11:57PM +0530, Amit Vadhavana wrote:
+> On Sat, 17 Aug 2024 at 13:55, Dan Carpenter <dan.carpenter@linaro.org> wrote:
 > >
-> > Signed-off-by: Amit Vadhavana <av2082000@gmail.com>
-> > Reviewed-by: Kees Cook <kees@kernel.org>
-> > ---
-> > V1: https://lore.kernel.org/all/20240810184333.34859-1-av2082000@gmail.com
-> > V1 -> V2:
-> > - Write the commit description in imperative mode.
->
-> Why?  Did someone ask for that?
-No, I received a review comment on my other document patch.
-So, make similar changes in response.
->
-> regards,
-> dan carpenter
+> > On Sat, Aug 17, 2024 at 01:34:08PM +0530, Amit Vadhavana wrote:
+> > > Correct spelling mistakes in the DMA engine to improve readability
+> > > and clarity without altering functionality.
+> > >
+> > > Signed-off-by: Amit Vadhavana <av2082000@gmail.com>
+> > > Reviewed-by: Kees Cook <kees@kernel.org>
+> > > ---
+> > > V1: https://lore.kernel.org/all/20240810184333.34859-1-av2082000@gmail.com
+> > > V1 -> V2:
+> > > - Write the commit description in imperative mode.
+> >
+> > Why?  Did someone ask for that?
+> No, I received a review comment on my other document patch.
+> So, make similar changes in response.
 
-Thanks,
-Amit v
->
+Ah.  Okay.  I was worried someone was sending private reviews.
+
+(There wasn't any real need to resend this but also resending is fine).
+
+regards,
+dan carpenter
+
 
