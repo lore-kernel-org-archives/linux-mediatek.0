@@ -4,79 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 083C3C5320E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Aug 2024 16:06:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58CFBC5320E
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Aug 2024 16:16:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9uf9ybAkd2LS8fUBYd8Lu828Q3AdDP0nqtGsXfOMW14=; b=TeskyVE6Zti0jaikhbnD3TJhVT
-	PtuXIsR9KP8VLuvk9IZiFH//5wBr/HKhoKNTqyKPlSKOrlKc7z5IK/STJosw+aNLiU+3t53xYh9f2
-	+5JR+i3w0WIukY1UpvCECJnwdhHaxj8PcQEOzVZKpSOKD4hwxixZfuCXYLyPqhEnouvvpVS9H2cOb
-	Q42YHy4gTAcX4Z0C/gtlqD+vqdEh1e2UVVti0qePAhSkUDIX2vdTMWtBC82gD9uh0LB5C/pdeyODH
-	YGOibwpYM92MbKk/1AScsFCfR0fPrZRS23Tdd9ONGTAVlOQFWwmbHmrbuCOCC8/VgXE3v6AIuFeuV
-	nrtgnDtQ==;
+	bh=1AThE0SLDGkQvLlSlHQo1h7WbaqnTOZL8rXuJvU321U=; b=ZnAcH3Rg8A69Y2FnzK+kA/4H3C
+	L/06hd3Nmfy7VhCi5GxPi2OdrOnuexDfHhZS/fa7KRtEs7sxm3sE9xtBTbff0a+7hYyiTSCju0Cbj
+	5JFNvjbYbWqijwkiKcbEr+HTaFnNCcfbdL9Mp3kZqH5MlDd3752Mo5b2zTu03DzdLLPib5AwRrP+N
+	BnltmRJ5twlxJ1rpIMD2k93b1RntUYLzYzozRVkA8/01zJZSM5OeE7Aif2Jw+zh/qEF5G3XqaEYo6
+	Pp0+9NI1+i1bmMq5HKGD18jigNaZ/1W3wovx8Z+BGH1vNsWUd5Bpz7ikNJ/EtTNBOQ9XfE5jv5GDg
+	h9XChUWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfiPz-0000000GnT1-1Int;
-	Sun, 18 Aug 2024 16:06:11 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1sfiZZ-0000000Go7N-3fM3;
+	Sun, 18 Aug 2024 16:16:05 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfiPu-0000000GnRf-05io;
-	Sun, 18 Aug 2024 16:06:10 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-4281ca54fd3so27267875e9.2;
-        Sun, 18 Aug 2024 09:06:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1723997164; x=1724601964; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=9uf9ybAkd2LS8fUBYd8Lu828Q3AdDP0nqtGsXfOMW14=;
-        b=CzSXEftbI3si2kOWudbaa2NRo5TetJKsbgcQVCUYoiqqetO5u0XglLjOqwlCS251k5
-         Mzap78dZVR1U/CGyZ1qXqlRQiOknAAwek+VC2qS1d0L0Us39p/bj9GuLRGIbTyzSJgYX
-         Q1hLcSzj8lJ2xQxE14cq2KcU7oTCwKvBIAUfbRxUnJ6UDy8QAdjGzBxu71OQkPCTXi2R
-         8mxm6YD69UzgA4OMTQbotWJHWedPWSUHGtMRRNNOzkSYleLgmVBU0kVpZR/kFCsNkbEX
-         lYyLcZYxMXGWEA41S5y7529xJ82FL3ZN4bcOUSda+sHKsyQjZdls1RDY+fsm67/FTF50
-         3//g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723997164; x=1724601964;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=9uf9ybAkd2LS8fUBYd8Lu828Q3AdDP0nqtGsXfOMW14=;
-        b=HZBFpt3sCekkL7Q+qfMgOp++R74pJp2XUlL/jiBnN8EZbwjknkIGtpfyvxftXEkI69
-         Y4UrYdvCjBKZnwFK+pOk46HqGBIiqJIEpCIWU68rqWsCQHXoQf0j1Sxg7NtQWwG9m4GE
-         cckw8mmvaxlkx1QcJ9qf58gX6kYcw7X9/WSZfotGMlz74mV646DRGJQZOg5i464RRKP3
-         ClBeCj9gQj1lSrsziv01WYgkHKKCaiDG67Nb0TNGPN0F70oy26XPXQUHi4RGkh0GyTpo
-         1qUohcrFPpkWmIhTYNq7B1td2IzDiGfjpsZQBE5/uaItuq86REpUX2yR90jzTvRoBbkP
-         6rag==
-X-Forwarded-Encrypted: i=1; AJvYcCXqodNaxCHgYJZe6nKUe3FBV2f1q1YI/yPryGpOpIkXoS28IUn8bN1GCg0psoUp/P3eS2W6alJUZifiMl2FjH4PpSyXWhzC3i5A8F7D3RzH3yEIBvigzYJI2FFphY+nOvm0kxKlWYwIzJ7zbNgSZ7+5Qm1EWQRGkmM=
-X-Gm-Message-State: AOJu0Yxwz1PnOs5DiyHbtiYaM3bBLDa5sEYxtpNU9zp4KBhZj7A8T8RK
-	Cq9SSW3JKCZD2aZbiwJ67/xtz1bM6SM01Yrp3TpYhIyf8IADc9VO
-X-Google-Smtp-Source: AGHT+IGgPlNsfcN1LNMf0WwO+CHJcYD87ZYBeRC5EFBOgLJ+FKLc4rIeKV5tr9T9gyTFiIB+WuPWOg==
-X-Received: by 2002:a05:600c:3c9e:b0:428:1e8c:ff75 with SMTP id 5b1f17b1804b1-429ed7e2306mr53474745e9.35.1723997163447;
-        Sun, 18 Aug 2024 09:06:03 -0700 (PDT)
-Received: from Ansuel-XPS. (host-79-47-255-50.retail.telecomitalia.it. [79.47.255.50])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-371898ac074sm8334097f8f.106.2024.08.18.09.06.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 18 Aug 2024 09:06:01 -0700 (PDT)
-Message-ID: <66c21be9.5d0a0220.2350c8.75dd@mx.google.com>
-X-Google-Original-Message-ID: <ZsIWToQY5P-vaXzP@Ansuel-XPS.>
-Date: Sun, 18 Aug 2024 17:42:06 +0200
-From: Christian Marangi <ansuelsmth@gmail.com>
+	id 1sfiYs-0000000Go5o-463n;
+	Sun, 18 Aug 2024 16:15:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id E6765CE02C4;
+	Sun, 18 Aug 2024 16:15:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 54975C32786;
+	Sun, 18 Aug 2024 16:15:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1723997719;
+	bh=VaBQwb9qR9sQO1ub1AxgD10xLLE6+nsUX8RQUgYGtwg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=MJ87jq3QfH2iZQMNlJeQN6m1IbKHc921iGXlSLS5iVteQgeTGN0ssu+wbKTGdgqQe
+	 iPymZCd2P/8jwSdTexD7e+gScdBPvQ1iNGyWuluKn7Pf5XQL406RMapzPDpv6f3fsm
+	 WVuzuTFN1XLwmzyCPvD+Y98xkBzKrd+5dLRpAPFX7nGeVQqiv6O6v2t9A7bl/pqoRs
+	 3ahr/xZpzlcJdyO2D16X1JogoIMIX/9bLNU9vu1jDc1ySktJUci1GxyySqX/Os6kT1
+	 ZaheY1aiRbf37oblab6I//uRdrueMwY9lakzTHXvx9hsyiNBSkee8VIWENbyZL0K/F
+	 eL4qxOtac/0Cw==
+Date: Sun, 18 Aug 2024 18:15:14 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: Andrew Lunn <andrew@lunn.ch>
 Cc: Benjamin Larsson <benjamin.larsson@genexis.eu>,
 	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Lorenzo Bianconi <lorenzo@kernel.org>, linux-gpio@vger.kernel.org,
+	Krzysztof Kozlowski <krzk@kernel.org>, linux-gpio@vger.kernel.org,
 	linus.walleij@linaro.org, sean.wang@kernel.org,
 	linux-mediatek@lists.infradead.org, lorenzo.bianconi83@gmail.com,
 	krzk+dt@kernel.org, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
-	angelogioacchino.delregno@collabora.com, conor+dt@kernel.org
+	angelogioacchino.delregno@collabora.com, conor+dt@kernel.org,
+	ansuelsmth@gmail.com
 Subject: Re: [PATCH 1/2] dt-bindings: pinctrl: airoha: Add EN7581 pinctrl
  controller
+Message-ID: <ZsIeEitpV9MehqVh@lore-rh-laptop>
 References: <cover.1723392444.git.lorenzo@kernel.org>
  <0d537e88b64847bc4e49756b249b2efdcf489b92.1723392444.git.lorenzo@kernel.org>
  <22144671-fc7c-4cb2-8bb6-ee7d3fbfcb0e@kernel.org>
@@ -87,12 +66,13 @@ References: <cover.1723392444.git.lorenzo@kernel.org>
  <3a52e550-1bb1-40fc-b7dd-b454d7c97f97@genexis.eu>
  <19793afa-dc62-421f-ba09-8ca2815ae4a2@lunn.ch>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="KIOrQBlvqenJie0W"
 Content-Disposition: inline
 In-Reply-To: <19793afa-dc62-421f-ba09-8ca2815ae4a2@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240818_090606_085542_5F586DA1 
-X-CRM114-Status: GOOD (  23.14  )
+X-CRM114-CacheID: sfid-20240818_091523_388767_6ECE34B6 
+X-CRM114-Status: GOOD (  26.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,7 +87,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Aug 18, 2024 at 06:02:28PM +0200, Andrew Lunn wrote:
+
+--KIOrQBlvqenJie0W
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Aug 18, Andrew Lunn wrote:
 > On Sun, Aug 18, 2024 at 02:48:05PM +0200, Benjamin Larsson wrote:
 > > On 17/08/2024 23:39, Andrew Lunn wrote:
 > > > How messy are the GPIO and PWM registers? Are there N blocks of
@@ -116,31 +102,38 @@ On Sun, Aug 18, 2024 at 06:02:28PM +0200, Andrew Lunn wrote:
 > > > GPIO controller? One block of PWM registers give you all you need for
 > > > one PWM controller? Or are the registers for one GPIO controller
 > > > scattered all over the place?
-> > > 
+> > >=20
 > > > Could you point at a public datasheet?
-> > > 
+> > >=20
 > > >        Andrew
-> > > 
+> > >=20
 > > Hi, per my understanding there is no public datasheet/register reference
 > > manual.
-> > 
-> > But here is the division of regions of the registers in the gpio block and
+> >=20
+> > But here is the division of regions of the registers in the gpio block =
+and
 > > how it is currently divided between the drivers (according to my current
 > > understanding).
-> > 
+> >=20
 > > 1FBF0200, gpio/pinctrl
 > > 1FBF0204, gpio/pinctrl
 > > 1FBF0208, gpio/pinctrl
 > > 1FBF020C, gpio/pinctrl
 > > 1FBF0210, gpio/pinctrl
 > > 1FBF0214, gpio/pinctrl
-> 
+>=20
 > A typical SoC has multiple instances of a GPIO controller. Each GPIO
 > controller typically has 4 or 5 registers: In, Out, Direction,
 > Interrupt Enable, Interrupt Status. If these 4 or 5 registers are
 > contiguous, you could have one DT node per controller, rather than one
 > node for all GPIO controllers.
-> 
+
+it is the same for en7581 pinctrl too. I think we can squash most of the
+gpio/irq registers into "bigger" io-regions (just keeping a couple of holes
+for pwm and leds). It is just a matter of moving the logic from the dts to
+the driver. I am currently working on it. I will post v2 soon.
+
+>=20
 > If the hardware designer has really messed up and fully interleaved
 > GPIO and PWM, it might be better to have an MFD. The MFD node has a
 > single reg covering the entire range. The MFD would then map the whole
@@ -148,13 +141,26 @@ On Sun, Aug 18, 2024 at 06:02:28PM +0200, Andrew Lunn wrote:
 > knowledge of what registers are where. Given how badly the hardware is
 > designed, it is unlikely it will get reused in the future, so there is
 > no point putting lots of stuff into DT. Hard code it.
->
 
-Problem is that the MFD will also affect other stuff like watchdog...
-thermal sensor/monitor, clocks... They really messed and put in that
-range all kind of stuff so we would end up in a very big mapped range
-and lots of child for the MFD.
+I am not sure it is possible/feasible to implement a MFD device here since
+the mapped region is huge and sparse.
 
--- 
-	Ansuel
+Regards,
+Lorenzo
+
+>=20
+> 	Andrew
+
+--KIOrQBlvqenJie0W
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZsIeDwAKCRA6cBh0uS2t
+rG8WAQCOM9FfsuIqInox4vNa4pce4vCRLHiG1gGyr+t084DqmQD/WAORMouBNGcP
+YxNJu753I5NPJOvDkIQck7p8t+PNKQE=
+=cvb3
+-----END PGP SIGNATURE-----
+
+--KIOrQBlvqenJie0W--
 
