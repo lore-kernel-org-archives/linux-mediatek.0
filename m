@@ -4,70 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52759C52D7C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Aug 2024 14:23:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DB86C5321D
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Aug 2024 14:23:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lkaVp9/7b85zta0lkJW69+zAX7pFAzGLa6k+mD2zv68=; b=zOpZzGY3Y109aKuBnm4tnuS4qc
-	LD7p/Juav8E2jvZ/HyDQz3HIweLcuCCsyBEJ+QhAfMxRxsHOrzb8KYXP2k0cJ0oqUF1k64RuB5NsB
-	umEk5PHfLmccJDoFAk/Nl3m88Nw8hv4RCSlkhU9i+eJRImaU4RJIuQ3JSsnEMUX3X77P/L/uMQTiN
-	SMcE3Hy89Rf/KkwApDVIFq8rdsGTZppR3BJ7EUmunXrqGeET4GCBwYxOwgqPOsZxT2GhaqLkk/rd+
-	fmhhKKYz638qE3JEdwd7RXZBXzvbFhscBCgIpc3nLZpVDHmhDjvNP/n/UAZE8iqzplzbdAVPydwia
-	hGq1fuVA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=84N+5XgwWf1nwoq814fYSNnKDtDJw7Qd1tBkSaBztTo=; b=JEAeZyEbcsNrgRteV8feY23dvt
+	eDL5LCTeDkw/NIHNDT5XO3TgFckZlOQ5EFYDoV17gHrJfA+EUPIOMq5uPZ269gsuS1uTAD9GBDnbh
+	SC8ubzCJGLe6UCi1XZ88NUXLaM96g4APqE8NkwQglvfR9m19aFxmR6uqTIFoJAkgfTxEBrxsxeyvv
+	70sOfEC3TqyEC/020IPxNYGlkKWwuzqehfym6jLIiwbele4sg8vGASivijZDmKtAgLeTCQNAraguo
+	7ZSmWofLZbrakNQmc6sd4V3wTzsFvRlSZvIauGq2GsETW2d4BgyzbgCHV8LhL/FKXiWQ1VjlWXyvp
+	JcSjx6lQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfgo9-0000000Ggk1-49mP;
-	Sun, 18 Aug 2024 14:23:01 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sfgp2-0000000Ggpv-31Mf;
+	Sun, 18 Aug 2024 14:23:56 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfgnT-0000000GghU-13g8;
-	Sun, 18 Aug 2024 14:22:21 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 27144CE016A;
-	Sun, 18 Aug 2024 14:22:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5FB2BC32786;
-	Sun, 18 Aug 2024 14:22:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1723990936;
-	bh=bS8ze1d0ffQtXAWwdn7UmuJx/sv0gAVsbFsxPJ/9qWY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=pMyeaN6K0vCXdW3b0EH79I/mIztfWQTpDdTc5VASsqSnCn2xrY1DKct9HJ6o2WEv0
-	 tRaT+ih1+YeoklkXoaRxK1NRbX+ZU8H9Y2yl6DDitLFiQHc6byM8QdCMNEMFNwW0jS
-	 VooXAVt52TBsttcw5xHOiXE29u85iIF5P+9nuqvbcyzRHgtxo9hCdsnXVntAQV6uRf
-	 SFUuvjpM7LBEVwY9BSwzqkJ06Q2NZ472yunGidodW8oPGoz89xHtLKEMkCABMz35dZ
-	 f2+UL5dkFSs8xFp/I/ditoN2guTc3p5uDEfNyDENgBuoxlAm0O+QM3k2TLocn0QEyx
-	 WbLcOd8nO8pEA==
-Date: Sun, 18 Aug 2024 16:22:10 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Benjamin Larsson <benjamin.larsson@genexis.eu>,
-	Krzysztof Kozlowski <krzk@kernel.org>, linux-gpio@vger.kernel.org,
-	linus.walleij@linaro.org, sean.wang@kernel.org,
-	linux-mediatek@lists.infradead.org, lorenzo.bianconi83@gmail.com,
-	krzk+dt@kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
-	angelogioacchino.delregno@collabora.com, conor+dt@kernel.org,
-	ansuelsmth@gmail.com
-Subject: Re: [PATCH 1/2] dt-bindings: pinctrl: airoha: Add EN7581 pinctrl
- controller
-Message-ID: <ZsIDkg0qWb9tXNqt@lore-rh-laptop>
-References: <cover.1723392444.git.lorenzo@kernel.org>
- <0d537e88b64847bc4e49756b249b2efdcf489b92.1723392444.git.lorenzo@kernel.org>
- <22144671-fc7c-4cb2-8bb6-ee7d3fbfcb0e@kernel.org>
- <c8a74be4-be63-477d-9460-1d5ef5e3d84a@genexis.eu>
- <20240816225257.GA2411475-robh@kernel.org>
+	id 1sfgp0-0000000Ggp5-0Vq0
+	for linux-mediatek@lists.infradead.org;
+	Sun, 18 Aug 2024 14:23:55 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-a7d2a9a23d9so396255466b.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 18 Aug 2024 07:23:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=toblux-com.20230601.gappssmtp.com; s=20230601; t=1723991032; x=1724595832; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=84N+5XgwWf1nwoq814fYSNnKDtDJw7Qd1tBkSaBztTo=;
+        b=TZIkX7te292Zt+RxFvqXgsa4L1HouyjNn+ypfx6/mmQX597PB4u4xmDsBTKzF5e4vx
+         I/MA0tKUeGsCWQ+cnVtVZq79N2AJJF2t4PA6nuDhY6eIwY1jpEA+zmf0aB9qDx4IycoN
+         4rMV03/rLCNOHeb5gpRIwdjW38k5hGXEZXazkHgXpDv7j73MkwppzqxEvxA/gDDKqH4r
+         MSYwxzza0Jmgyz314UFGr94HXlEDGNRoKrV/Gunqg8nSHP6cexATSId90Wj4ytWaleBk
+         y87Kqx4nZs2o/Ze4kXdDF0/bc9UIWOX6rPqR65ffp5H7OCvu49Gw9EPmrFCJhOSCJ3mQ
+         KTmg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1723991032; x=1724595832;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=84N+5XgwWf1nwoq814fYSNnKDtDJw7Qd1tBkSaBztTo=;
+        b=iC2QKYFtTAUmtN6askeSawOD2mLzGCGGDvAhpewm/2CNNdtgLJwVh8r+VBIkhKMbv0
+         xA0WyGKHHCoS+mgHUN1YrShf1QVinJx1ax6NYA9HghBqIpV+9c82r1Vslfp8d4yUbM3w
+         mF+4Guo57WchKWPOrr3Re0Znmdxqb6yXguo2WtAuHsPI5t//rveHs91V38BK6K1YaNEG
+         uOnsWKeCrunkgAij8rQiryVJkhAmhYSc3g7N752xDnwktmwdR5AEzNSpPfuY6u/FByI7
+         iDGogIyqiQg7oQNv9gUxI54ebutiAUklXHFBmoJjVQmtC7K2EQKxFjo8/GQUjdGvrowP
+         J17Q==
+X-Forwarded-Encrypted: i=1; AJvYcCXJFzsgRglv2eJWLOC/LCsLYxBl9HN2sM3IhaYu/iqfWmXgjpF+x9C6ZgWi/vfWAwq5dCQvlKHv0uNMDMs7LpZGvzVs1p3EWlcxZNmhdGFICGdS
+X-Gm-Message-State: AOJu0YwBU70pXSbb8I0ly3PC/r/vSL189utaKLrn5i+v4zMDGLFeexZN
+	nnHvH3KcQWtO0KUbWyaIKg3eX1MUDZNeJoHr/wjsIhspv06Hdzw6j+fICTvHE68=
+X-Google-Smtp-Source: AGHT+IGf2pCDxIA75jH/7/L+NTnSfTLwTcnLAynOVUmTnc/INCAsrC+TWCaYgIwOf2GFYNoBXz2Lfw==
+X-Received: by 2002:a17:907:f1dc:b0:a7a:a89e:e230 with SMTP id a640c23a62f3a-a839295469fmr583647666b.30.1723991032263;
+        Sun, 18 Aug 2024 07:23:52 -0700 (PDT)
+Received: from fedora.fritz.box (aftr-62-216-208-163.dynamic.mnet-online.de. [62.216.208.163])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a83838d023dsm519702566b.64.2024.08.18.07.23.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 18 Aug 2024 07:23:51 -0700 (PDT)
+From: Thorsten Blum <thorsten.blum@toblux.com>
+To: chaotian.jing@mediatek.com,
+	ulf.hansson@linaro.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: linux-mmc@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Thorsten Blum <thorsten.blum@toblux.com>
+Subject: [PATCH v3] mmc: mtk-sd: Improve data type in msdc_timeout_cal()
+Date: Sun, 18 Aug 2024 16:23:01 +0200
+Message-ID: <20240818142300.64156-2-thorsten.blum@toblux.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="slFC9PSxrwsRPZ5Z"
-Content-Disposition: inline
-In-Reply-To: <20240816225257.GA2411475-robh@kernel.org>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240818_072220_150901_F20D7F75 
-X-CRM114-Status: GOOD (  17.42  )
+X-CRM114-CacheID: sfid-20240818_072354_187230_91221319 
+X-CRM114-Status: GOOD (  13.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,82 +95,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The local variable clk_ns uses at most 32 bits and can be a u32.
 
---slFC9PSxrwsRPZ5Z
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Replace the 64-by-32 do_div() division with a standard divison.
 
-> On Tue, Aug 13, 2024 at 10:06:41AM +0200, Benjamin Larsson wrote:
-> > On 2024-08-12 08:48, Krzysztof Kozlowski wrote:
-> > > > +      pio: pinctrl@1fa20214 {
-> > > > +        compatible =3D "airoha,en7581-pinctrl";
-> > > > +        reg =3D <0x0 0x1fa20214 0x0 0x30>,
-> > > > +              <0x0 0x1fa2027c 0x0 0x8>,
-> > > > +              <0x0 0x1fbf0234 0x0 0x4>,
-> > > > +              <0x0 0x1fbf0268 0x0 0x4>,
-> > > > +              <0x0 0x1fa2001c 0x0 0x50>,
-> > > > +              <0x0 0x1fa2018c 0x0 0x4>,
-> > > > +              <0x0 0x1fbf0204 0x0 0x4>,
-> > > > +              <0x0 0x1fbf0270 0x0 0x4>,
-> > > > +              <0x0 0x1fbf0200 0x0 0x4>,
-> > > > +              <0x0 0x1fbf0220 0x0 0x4>,
-> > > > +              <0x0 0x1fbf0260 0x0 0x4>,
-> > > > +              <0x0 0x1fbf0264 0x0 0x4>,
-> > > > +              <0x0 0x1fbf0214 0x0 0x4>,
-> > > > +              <0x0 0x1fbf0278 0x0 0x4>,
-> > > > +              <0x0 0x1fbf0208 0x0 0x4>,
-> > > > +              <0x0 0x1fbf027c 0x0 0x4>,
-> > > > +              <0x0 0x1fbf0210 0x0 0x4>,
-> > > > +              <0x0 0x1fbf028c 0x0 0x4>,
-> > > > +              <0x0 0x1fbf0290 0x0 0x4>,
-> > > > +              <0x0 0x1fbf0294 0x0 0x4>,
-> > > > +              <0x0 0x1fbf020c 0x0 0x4>,
-> > > > +              <0x0 0x1fbf0280 0x0 0x4>,
-> > > > +              <0x0 0x1fbf0284 0x0 0x4>,
-> > > > +              <0x0 0x1fbf0288 0x0 0x4>;
-> > > Why are you mapping individual registers? At least half of these are
-> > > continuous.
-> >=20
-> > Hi, this is by design because of the register placement in the gpio blo=
-ck
-> > and the fact that the pwm functionality is intermixed in there also. As
-> > example the following registers are all GPIOCTRL:
-> >=20
-> > <0x0 0x1fbf0200 0x0 0x4>,
-> > <0x0 0x1fbf0220 0x0 0x4>,
-> > <0x0 0x1fbf0260 0x0 0x4>,
-> > <0x0 0x1fbf0264 0x0 0x4>,
-> >=20
-> > To simplify the driver code logic the complexity is moved to the dts be=
-cause
-> > of that.
->=20
-> DT to OS is an ABI. Don't put the complexity there. The driver is easy=20
-> to change.
->=20
-> Lot's of h/w blocks are just bit soup. This is not special. If a few=20
-> regions is helpful, then that would be fine.
+Since do_div() casts the divisor to u32 anyway, changing the data type
+of clk_ns to u32 also removes the following Coccinelle/coccicheck
+warning reported by do_div.cocci:
 
-ack, I guess we can try to move the complexity in the driver, at least for
-gpio-irq controllers, merging regs whenever possible. I will work on it.
+  WARNING: do_div() does a 64-by-32 division, please consider using div64_u64 instead
 
-Regards,
-Lorenzo
+Use min_t(u32,,) to simplify the code and improve its readability.
 
->=20
-> Rob
+Signed-off-by: Thorsten Blum <thorsten.blum@toblux.com>
+---
+Changes in v2:
+- Address kernel test robot feedback and replace do_div() with a
+ standard division
+- Link to v1: https://lore.kernel.org/linux-kernel/20240815234602.59684-1-thorsten.blum@toblux.com/
 
---slFC9PSxrwsRPZ5Z
-Content-Type: application/pgp-signature; name="signature.asc"
+Changes in v3:
+- Use min_t() instead of max_t()
+- Link to v2: https://lore.kernel.org/linux-kernel/20240817170726.350339-2-thorsten.blum@toblux.com/
+---
+ drivers/mmc/host/mtk-sd.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
 
------BEGIN PGP SIGNATURE-----
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index a94835b8ab93..edeab9a4a83b 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -795,14 +795,13 @@ static void msdc_unprepare_data(struct msdc_host *host, struct mmc_data *data)
+ static u64 msdc_timeout_cal(struct msdc_host *host, u64 ns, u64 clks)
+ {
+ 	struct mmc_host *mmc = mmc_from_priv(host);
+-	u64 timeout, clk_ns;
+-	u32 mode = 0;
++	u64 timeout;
++	u32 clk_ns, mode = 0;
+ 
+ 	if (mmc->actual_clock == 0) {
+ 		timeout = 0;
+ 	} else {
+-		clk_ns  = 1000000000ULL;
+-		do_div(clk_ns, mmc->actual_clock);
++		clk_ns = 1000000000U / mmc->actual_clock;
+ 		timeout = ns + clk_ns - 1;
+ 		do_div(timeout, clk_ns);
+ 		timeout += clks;
+@@ -831,7 +830,7 @@ static void msdc_set_timeout(struct msdc_host *host, u64 ns, u64 clks)
+ 
+ 	timeout = msdc_timeout_cal(host, ns, clks);
+ 	sdr_set_field(host->base + SDC_CFG, SDC_CFG_DTOC,
+-		      (u32)(timeout > 255 ? 255 : timeout));
++		      min_t(u32, timeout, 255));
+ }
+ 
+ static void msdc_set_busy_timeout(struct msdc_host *host, u64 ns, u64 clks)
+@@ -840,7 +839,7 @@ static void msdc_set_busy_timeout(struct msdc_host *host, u64 ns, u64 clks)
+ 
+ 	timeout = msdc_timeout_cal(host, ns, clks);
+ 	sdr_set_field(host->base + SDC_CFG, SDC_CFG_WRDTOC,
+-		      (u32)(timeout > 8191 ? 8191 : timeout));
++		      min_t(u32, timeout, 8191));
+ }
+ 
+ static void msdc_gate_clock(struct msdc_host *host)
+-- 
+2.46.0
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZsIDjwAKCRA6cBh0uS2t
-rKwDAPwLD5UGwPDlmvE5WXgaS68NnJV73UgsZQXE/EfO79rNjgEAyvez/nIMzjtu
-hVwwFHOPnVs4z/vLiJ+SiZsG/lMGdQM=
-=jtGx
------END PGP SIGNATURE-----
-
---slFC9PSxrwsRPZ5Z--
 
