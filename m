@@ -4,69 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 702ACC3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Aug 2024 07:44:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFB26C52D7C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Aug 2024 08:43:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:
-	Subject:To:From:Message-Id:Date:Content-Type:Reply-To:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZOpBNrOI92TQ4ZWPkl1Is98B6yTzoIz6bUl81y4zhEA=; b=0mQAfuT1JXM4+TtD2Gh1dhIix7
-	1uIPU8DSSaxFbeLaG4cwMX0+6fO0Hl2dhFUddFbhhWu+5LSioFHLXbuPHd4GK78ow8IkZ0u65Rd2w
-	NRRteY6Qm/idqz2Pls3sRGso4/Ug/r3aA+HQT1DHmNQL/ohH2xFWSG1isBLuTI5lX+xnqpdaH5t2M
-	14Ir499q5hFOISLBdT9uk4M8NavjnX6RDgkhUWwzoEAoPHoWjLzyTRc7bWJnyNNh8jrUhztRazBfQ
-	8qsQtpkZGyTqoC/dlEKQckRdmwvNSbw5M5+LIRPIEpVemrmlBFOw2t8ujCTK7R+Aits4gaimnZ/gu
-	JlkULS7A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Ei/MZnWMSf5WRtVHkVpfjkH2hPuZFQGSKj5kRjWhNkE=; b=o1lXO7Xv/4hbznze7M1Jbs+kyJ
+	VGLsXjsauGnpG0vMHF43gxqNbvzfeMr+aOB1f2iCO2DzuIZmk856vSqZZ4O1oJz71bp/Ao4i1RqmC
+	78bVrhX8wvDgxXppK/uL22xK3kF5DVeFbKQnwY4sdw6ubl3SiJW2ZL6uL3ew/UgOSlO9JVL5tEWm9
+	eQcsSBqY62XuNBiHOMpT2r0yMsZ92rzRqXz/XpcVEk8A8sxacmBkDBRVZC3qUj9ox4iQbKodm9Ztm
+	8S6ne/H+b2iHIfak2p59cuiBPPyVKMfBBDw+YfSWc9ISHYGrZnr00/4ILHt1dw99h5n6wsMAdcWuQ
+	KqHQFkLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfx48-00000000gA2-2iqa;
-	Mon, 19 Aug 2024 07:44:36 +0000
-Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
+	id 1sfxzC-00000000oYk-1A5d;
+	Mon, 19 Aug 2024 08:43:34 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfx3S-00000000g4o-0b59;
-	Mon, 19 Aug 2024 07:43:55 +0000
-Received: from localhost (unknown [213.135.10.150])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.3ffe.de (Postfix) with ESMTPSA id 47F465E;
-	Mon, 19 Aug 2024 09:43:42 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
-	t=1724053422;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:content-type:content-type:in-reply-to:in-reply-to:
-	 references:references; bh=ZOpBNrOI92TQ4ZWPkl1Is98B6yTzoIz6bUl81y4zhEA=;
-	b=q/QX5wAeJOuGxW1q3+OqRP/H2LXUNKUUsK5i99wGbcsHcWd2b+91UQQU7YKylBjWf3OG0P
-	cDe/Jp+dxaDN8XYh6B9f069LqIWZh5em36kmqSb/QeSEW8eOx9/dASIjV8xXIby/nClq9k
-	5WWF6LLibrcoztsUVig7CJzeXVJgqXnD3o7i+iZjitlkn0nxl64QMdmbnRKxa/Gdkz9GSc
-	v+ZvCWzIuRdaw4L1nL5v+qBVCaZoyevct5dp8a/WVpOrWERc67LNDbBVNZ/FFDrtJaNAaf
-	gz7TVZwQNApVIXn/7Z9DwgTXZ6VB7XQYvUtd9NjMfDHEN2MVDq6SqCVXhOEUUg==
-Content-Type: multipart/signed;
- boundary=324b8864c0f2f3444bbff5e9243c444c17712f463423f9f78bbd8be049ba;
- micalg=pgp-sha384; protocol="application/pgp-signature"
-Date: Mon, 19 Aug 2024 09:43:40 +0200
-Message-Id: <D3JPXJBLA5IH.2FIM5TL0SQ6QB@walle.cc>
-From: "Michael Walle" <michael@walle.cc>
-To: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
- <chunkuang.hu@kernel.org>, <ck.hu@mediatek.com>
-Subject: Re: [PATCH v8 0/3] drm/mediatek: Add support for OF graphs
-Cc: <robh@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
- <conor+dt@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
- <daniel@ffwll.ch>, <maarten.lankhorst@linux.intel.com>,
- <mripard@kernel.org>, <tzimmermann@suse.de>, <matthias.bgg@gmail.com>,
- <shawn.sung@mediatek.com>, <yu-chang.lee@mediatek.com>,
- <jitao.shi@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
- <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <wenst@chromium.org>,
- <kernel@collabora.com>, <sui.jingfeng@linux.dev>
-X-Mailer: aerc 0.16.0
-References: <20240618101726.110416-1-angelogioacchino.delregno@collabora.com> <d84f1469-e82a-42de-94a0-8ee0da0cba02@collabora.com> <eef10e9f-dac5-4a05-a79c-f8026f27f051@collabora.com>
-In-Reply-To: <eef10e9f-dac5-4a05-a79c-f8026f27f051@collabora.com>
+	id 1sfxyL-00000000oFs-32fK;
+	Mon, 19 Aug 2024 08:42:43 +0000
+X-UUID: d69c242e5e0411efba0aef63c0775dbf-20240819
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Ei/MZnWMSf5WRtVHkVpfjkH2hPuZFQGSKj5kRjWhNkE=;
+	b=oIj0YSW9KpY3E+aC5y5tAK5bGTZd5OML4Q3xSA8pEG2XAylg1PYkmV8bSWBJC6vhxPrtqbLWteOOdcMEfJpjDBFyeCIAQ6LWL5DAkDHsvT4SBajJswgesydEIvwDPQMFT0I5m9RQMm5uQap89PAruQ3h3EtJb9qh6gRB6BjR6tA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:3f6e57ab-8551-4ace-9cd8-29d9e9229eb2,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:2bb793be-d7af-4351-93aa-42531abf0c7b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: d69c242e5e0411efba0aef63c0775dbf-20240819
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <tze-nan.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1617872194; Mon, 19 Aug 2024 01:27:14 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 19 Aug 2024 01:27:11 -0700
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 19 Aug 2024 16:27:11 +0800
+From: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
+To: <netdev@vger.kernel.org>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+	<pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: <bobule.chang@mediatek.com>, <wsd_upstream@mediatek.com>, Tze-nan Wu
+	<Tze-nan.Wu@mediatek.com>, Yanghui Li <yanghui.li@mediatek.com>, Cheng-Jui
+ Wang <cheng-jui.wang@mediatek.com>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<bpf@vger.kernel.org>
+Subject: [PATCH] net/socket: Acquire cgroup_lock in do_sock_getsockopt
+Date: Mon, 19 Aug 2024 16:25:12 +0800
+Message-ID: <20240819082513.27176-1-Tze-nan.Wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+MIME-Version: 1.0
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240819_004354_359770_34D75088 
-X-CRM114-Status: GOOD (  18.71  )
+X-CRM114-CacheID: sfid-20240819_014241_778479_594D7185 
+X-CRM114-Status: GOOD (  17.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,71 +86,116 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---324b8864c0f2f3444bbff5e9243c444c17712f463423f9f78bbd8be049ba
-Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
+The return value from `cgroup_bpf_enabled(CGROUP_GETSOCKOPT)` can change
+between the invocations of `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN` and
+`BPF_CGROUP_RUN_PROG_GETSOCKOPT`.
 
-Hi,
+If `cgroup_bpf_enabled(CGROUP_GETSOCKOPT)` changes from "false" to
+"true"
+between the invocations of `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN` and
+`BPF_CGROUP_RUN_PROG_GETSOCKOPT`,
+`BPF_CGROUP_RUN_PROG_GETSOCKOPT` will receive an -EFAULT from
+`__cgroup_bpf_run_filter_getsockopt(max_optlen=0)` due to `get_user()`
+had not reached in `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN`.
 
-On Thu Jul 4, 2024 at 10:29 AM CEST, AngeloGioacchino Del Regno wrote:
-> Il 19/06/24 12:56, AngeloGioacchino Del Regno ha scritto:
-> > Il 18/06/24 12:17, AngeloGioacchino Del Regno ha scritto:
-> >> Changes in v8:
-> >> =C2=A0 - Rebased on next-20240617
-> >> =C2=A0 - Changed to allow probing a VDO with no available display outp=
-uts
-> >>
-> >=20
-> > Hello CK,
-> >=20
-> > At the time of writing, this series was well reviewed and tested by mul=
-tiple people
-> > on multiple SoCs and boards.
-> >=20
-> > We've got a bunch of series that are waiting for this to get upstreamed=
-, including
-> > the addition of support for MT8365-EVK (already on mailing lists), MT83=
-95 Radxa
-> > NIO 12L, MT8395 Kontron SBC i1200 (not on mailing lists yet, waiting fo=
-r this to
-> > get merged), other than some other conversion commits for other MediaTe=
-k DTs from
-> > myself.
-> >=20
-> > As for the MT8195/NIO12L commits, I'm planning to send them on the list=
-s tomorrow,
-> > along with some code to properly support devicetree overlays (DTBO) gen=
-eration for
-> > MediaTek boards.
-> >=20
-> > Alexandre tested it on MT8365-EVK;
-> > Michael tested on Kontron SBC-i1200;
-> > I tested on Radxa NIO-12L, Cherry Tomato Chromebook, MT6795 Sony Xperia
-> > M5 (dsi video panel) smartphone and MT8192 Asurada Chromebook.
-> >=20
-> > So, is there anything else to address on this, or can we proceed?
-> >=20
->
-> Gentle ping
+Scenario shown as below:
 
-Any news here? Angelo, maybe you can just resend the patches?
-Because there is already a new kernel release, I'm not sure how this
-is handled.
+           `process A`                      `process B`
+           -----------                      ------------
+  BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN
+                                            enable CGROUP_GETSOCKOPT
+  BPF_CGROUP_RUN_PROG_GETSOCKOPT (-EFAULT)
 
--michael
+Prevent `cgroup_bpf_enabled(CGROUP_GETSOCKOPT)` change between
+`BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN` and `BPF_CGROUP_RUN_PROG_GETSOCKOPT`
+by acquiring cgroup_lock.
 
---324b8864c0f2f3444bbff5e9243c444c17712f463423f9f78bbd8be049ba
-Content-Type: application/pgp-signature; name="signature.asc"
+Co-developed-by: Yanghui Li <yanghui.li@mediatek.com>
+Signed-off-by: Yanghui Li <yanghui.li@mediatek.com>
+Co-developed-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
+Signed-off-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
+Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
 
------BEGIN PGP SIGNATURE-----
+---
 
-iKcEABMJAC8WIQTIVZIcOo5wfU/AngkSJzzuPgIf+AUCZsL3rBEcbWljaGFlbEB3
-YWxsZS5jYwAKCRASJzzuPgIf+FUbAYDwODh5ZmA5CgDyBJFBWhdWhPocmMAeADIf
-YIj7wM7SyDI0yrNuwDwDHkWqsgqP6zUBf3DRKglqYDugQsOqPOiPOacc7FY1jJNE
-JTe4vU6fiHuUR6s+hkfsCPvpec2A98PhmA==
-=v4Vj
------END PGP SIGNATURE-----
+We have encountered this issue by observing that process A could sometimes
+get an -EFAULT from getsockopt() during our device boot-up, while another
+process B triggers the race condition by enabling CGROUP_GETSOCKOPT
+through bpf syscall at the same time.
 
---324b8864c0f2f3444bbff5e9243c444c17712f463423f9f78bbd8be049ba--
+The race condition is shown below:
+
+           `process A`                        `process B`
+           -----------                        ------------
+  BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN
+         
+                                              bpf syscall 
+                                        (CGROUP_GETSOCKOPT enabled)
+
+  BPF_CGROUP_RUN_PROG_GETSOCKOPT
+  -> __cgroup_bpf_run_filter_getsockopt
+    (-EFAULT)
+
+__cgroup_bpf_run_filter_getsockopt return -EFAULT at the line shown below:
+	if (optval && (ctx.optlen > max_optlen || ctx.optlen < 0)) {
+		if (orig_optlen > PAGE_SIZE && ctx.optlen >= 0) {
+			pr_info_once("bpf getsockopt: ignoring program buffer with optlen=%d (max_optlen=%d)\n",
+				     ctx.optlen, max_optlen);
+			ret = retval;
+			goto out;
+		}
+		ret = -EFAULT; <== return EFAULT here
+		goto out;
+	}
+
+This patch should fix the race but not sure if it introduces any potential
+side effects or regression.
+
+And we wondering if this is a real issue in do_sock_getsockopt or if
+getsockopt() is designed to expect such race conditions.
+Should the userspace caller always anticipate an -EFAULT from getsockopt()
+if another process enables CGROUP_GETSOCKOPT at the same time?
+
+Any comment will be appreciated!
+
+BTW, I added Chengjui and Yanghui to Co-developed due to we have several
+discussions on this issue. And we both spend some time on this issue.
+
+---
+ net/socket.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/net/socket.c b/net/socket.c
+index fcbdd5bc47ac..e0b2b16fd238 100644
+--- a/net/socket.c
++++ b/net/socket.c
+@@ -2370,8 +2370,10 @@ int do_sock_getsockopt(struct socket *sock, bool compat, int level,
+ 	if (err)
+ 		return err;
+ 
+-	if (!compat)
++	if (!compat) {
++		cgroup_lock();
+ 		max_optlen = BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen);
++	}
+ 
+ 	ops = READ_ONCE(sock->ops);
+ 	if (level == SOL_SOCKET) {
+@@ -2387,10 +2389,12 @@ int do_sock_getsockopt(struct socket *sock, bool compat, int level,
+ 				      optlen.user);
+ 	}
+ 
+-	if (!compat)
++	if (!compat) {
+ 		err = BPF_CGROUP_RUN_PROG_GETSOCKOPT(sock->sk, level, optname,
+ 						     optval, optlen, max_optlen,
+ 						     err);
++		cgroup_unlock();
++	}
+ 
+ 	return err;
+ }
+-- 
+2.45.2
+
 
