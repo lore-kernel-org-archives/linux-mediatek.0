@@ -4,74 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFB26C52D7C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Aug 2024 08:43:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C35AC52D7C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Aug 2024 08:56:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Ei/MZnWMSf5WRtVHkVpfjkH2hPuZFQGSKj5kRjWhNkE=; b=o1lXO7Xv/4hbznze7M1Jbs+kyJ
-	VGLsXjsauGnpG0vMHF43gxqNbvzfeMr+aOB1f2iCO2DzuIZmk856vSqZZ4O1oJz71bp/Ao4i1RqmC
-	78bVrhX8wvDgxXppK/uL22xK3kF5DVeFbKQnwY4sdw6ubl3SiJW2ZL6uL3ew/UgOSlO9JVL5tEWm9
-	eQcsSBqY62XuNBiHOMpT2r0yMsZ92rzRqXz/XpcVEk8A8sxacmBkDBRVZC3qUj9ox4iQbKodm9Ztm
-	8S6ne/H+b2iHIfak2p59cuiBPPyVKMfBBDw+YfSWc9ISHYGrZnr00/4ILHt1dw99h5n6wsMAdcWuQ
-	KqHQFkLg==;
+	bh=jFrBrIEhRH5fr64Lmwlk1FGGgzIMKQ4ijTse+z7ETwE=; b=yqui6aHaYECa4M/DAImLsHE3b+
+	8+u9h2et85Qh1UJEnmOhn04XJs3vC8f+NbRZ98jextb2L+0J3vcinH0LytRL5Cu5NL+LWq4aUdA9I
+	YEgEySq6bAzPR/LVCqgbIXSFgSf1BU7SVfrgmrYmUOXqu6PUXPBMy3amtq7r/QyNPuV+A8TDmL/Zr
+	oFip6pdTXCEyqX5NtRjfjk1RXwfMa0cn4HvTvXVdpn8VKEavxK8d6c+uRVL1lemJ7wxb0LHgFRTP0
+	2moszqVohsIxBoL218Ki5W1HZEZ0lgvxzlHQ1pkRSl8L4ewhTj89rcnSwUqooLfoDRK0oatb0HEhk
+	sQkYZywg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfxzC-00000000oYk-1A5d;
-	Mon, 19 Aug 2024 08:43:34 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sfyBC-00000000qpl-0IFi;
+	Mon, 19 Aug 2024 08:55:58 +0000
+Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfxyL-00000000oFs-32fK;
-	Mon, 19 Aug 2024 08:42:43 +0000
-X-UUID: d69c242e5e0411efba0aef63c0775dbf-20240819
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Ei/MZnWMSf5WRtVHkVpfjkH2hPuZFQGSKj5kRjWhNkE=;
-	b=oIj0YSW9KpY3E+aC5y5tAK5bGTZd5OML4Q3xSA8pEG2XAylg1PYkmV8bSWBJC6vhxPrtqbLWteOOdcMEfJpjDBFyeCIAQ6LWL5DAkDHsvT4SBajJswgesydEIvwDPQMFT0I5m9RQMm5uQap89PAruQ3h3EtJb9qh6gRB6BjR6tA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:3f6e57ab-8551-4ace-9cd8-29d9e9229eb2,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:2bb793be-d7af-4351-93aa-42531abf0c7b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: d69c242e5e0411efba0aef63c0775dbf-20240819
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <tze-nan.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1617872194; Mon, 19 Aug 2024 01:27:14 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 19 Aug 2024 01:27:11 -0700
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 19 Aug 2024 16:27:11 +0800
-From: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
-To: <netdev@vger.kernel.org>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
-	<pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <bobule.chang@mediatek.com>, <wsd_upstream@mediatek.com>, Tze-nan Wu
-	<Tze-nan.Wu@mediatek.com>, Yanghui Li <yanghui.li@mediatek.com>, Cheng-Jui
- Wang <cheng-jui.wang@mediatek.com>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<bpf@vger.kernel.org>
-Subject: [PATCH] net/socket: Acquire cgroup_lock in do_sock_getsockopt
-Date: Mon, 19 Aug 2024 16:25:12 +0800
-Message-ID: <20240819082513.27176-1-Tze-nan.Wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1sfyAT-00000000qkH-42w0;
+	Mon, 19 Aug 2024 08:55:16 +0000
+Received: from icess-ProLiant-DL380-Gen10.. (unknown [183.174.60.14])
+	by APP-03 (Coremail) with SMTP id rQCowAA3XQBaCMNmOqISCA--.43879S2;
+	Mon, 19 Aug 2024 16:55:00 +0800 (CST)
+From: Ma Ke <make24@iscas.ac.cn>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	kvalo@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	chui-hao.chiu@mediatek.com,
+	howard-yh.hsu@mediatek.com,
+	StanleyYP.Wang@mediatek.com,
+	benjamin-jw.lin@mediatek.com,
+	allen.ye@mediatek.com,
+	chank.chen@mediatek.com,
+	meichia.chiu@mediatek.com,
+	Bo.Jiao@mediatek.com,
+	evelyn.tsai@mediatek.com,
+	Money.Wang@mediatek.com,
+	akpm@linux-foundation.org
+Cc: linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Ma Ke <make24@iscas.ac.cn>,
+	stable@vger.kernel.org
+Subject: [PATCH RESEND] wifi: mt76: mt7996: fix NULL pointer dereference in mt7996_mcu_sta_bfer_he
+Date: Mon, 19 Aug 2024 16:54:49 +0800
+Message-Id: <20240819085449.1013279-1-make24@iscas.ac.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: rQCowAA3XQBaCMNmOqISCA--.43879S2
+X-Coremail-Antispam: 1UD129KBjvdXoWruw4DZw1UtrWxKF1xJr13Jwb_yoWDXrXE9r
+	n29FnIqw48Kw48Kr429wnxuryay3ykZF97Gay5tayfta97J3yUZF1IvFn3Ar13uFn7ZF1U
+	J3ZrJFy0y395WjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUIcSsGvfJTRUUUbS8FF20E14v26ryj6rWUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
+	6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
+	A2z4x0Y4vE2Ix0cI8IcVAFwI0_Xr0_Ar1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Cr0_
+	Gr1UM28EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwVC2z280aVCY1x0267AKxVW0oV
+	Cq3wAac4AC62xK8xCEY4vEwIxC4wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC
+	0VAKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUGVWUXwAv7VC2z280aVAFwI0_Jr0_Gr
+	1lOx8S6xCaFVCjc4AY6r1j6r4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IE
+	rcIFxwACI402YVCY1x02628vn2kIc2xKxwCY1x0262kKe7AKxVW8ZVWrXwCF04k20xvY0x
+	0EwIxGrwCFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E
+	7480Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_GFv_WrylIxkGc2Ij64vIr41lIxAIcV
+	C0I7IYx2IY67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF
+	04k26cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7
+	CjxVAFwI0_Gr0_Gr1UYxBIdaVFxhVjvjDU0xZFpf9x0pRNAwsUUUUU=
+X-Originating-IP: [183.174.60.14]
+X-CM-SenderInfo: ppdnvj2u6l2u1dvotugofq/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240819_014241_778479_594D7185 
-X-CRM114-Status: GOOD (  17.15  )
+X-CRM114-CacheID: sfid-20240819_015514_393160_B41C95EA 
+X-CRM114-Status: UNSURE (   7.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,116 +98,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The return value from `cgroup_bpf_enabled(CGROUP_GETSOCKOPT)` can change
-between the invocations of `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN` and
-`BPF_CGROUP_RUN_PROG_GETSOCKOPT`.
+Fix the NULL pointer dereference in mt7996_mcu_sta_bfer_he
+routine adding an sta interface to the mt7996 driver.
 
-If `cgroup_bpf_enabled(CGROUP_GETSOCKOPT)` changes from "false" to
-"true"
-between the invocations of `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN` and
-`BPF_CGROUP_RUN_PROG_GETSOCKOPT`,
-`BPF_CGROUP_RUN_PROG_GETSOCKOPT` will receive an -EFAULT from
-`__cgroup_bpf_run_filter_getsockopt(max_optlen=0)` due to `get_user()`
-had not reached in `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN`.
+Found by code review.
 
-Scenario shown as below:
-
-           `process A`                      `process B`
-           -----------                      ------------
-  BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN
-                                            enable CGROUP_GETSOCKOPT
-  BPF_CGROUP_RUN_PROG_GETSOCKOPT (-EFAULT)
-
-Prevent `cgroup_bpf_enabled(CGROUP_GETSOCKOPT)` change between
-`BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN` and `BPF_CGROUP_RUN_PROG_GETSOCKOPT`
-by acquiring cgroup_lock.
-
-Co-developed-by: Yanghui Li <yanghui.li@mediatek.com>
-Signed-off-by: Yanghui Li <yanghui.li@mediatek.com>
-Co-developed-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
-Signed-off-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
-Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
-
+Cc: stable@vger.kernel.org
+Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
+Signed-off-by: Ma Ke <make24@iscas.ac.cn>
 ---
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-We have encountered this issue by observing that process A could sometimes
-get an -EFAULT from getsockopt() during our device boot-up, while another
-process B triggers the race condition by enabling CGROUP_GETSOCKOPT
-through bpf syscall at the same time.
-
-The race condition is shown below:
-
-           `process A`                        `process B`
-           -----------                        ------------
-  BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN
-         
-                                              bpf syscall 
-                                        (CGROUP_GETSOCKOPT enabled)
-
-  BPF_CGROUP_RUN_PROG_GETSOCKOPT
-  -> __cgroup_bpf_run_filter_getsockopt
-    (-EFAULT)
-
-__cgroup_bpf_run_filter_getsockopt return -EFAULT at the line shown below:
-	if (optval && (ctx.optlen > max_optlen || ctx.optlen < 0)) {
-		if (orig_optlen > PAGE_SIZE && ctx.optlen >= 0) {
-			pr_info_once("bpf getsockopt: ignoring program buffer with optlen=%d (max_optlen=%d)\n",
-				     ctx.optlen, max_optlen);
-			ret = retval;
-			goto out;
-		}
-		ret = -EFAULT; <== return EFAULT here
-		goto out;
-	}
-
-This patch should fix the race but not sure if it introduces any potential
-side effects or regression.
-
-And we wondering if this is a real issue in do_sock_getsockopt or if
-getsockopt() is designed to expect such race conditions.
-Should the userspace caller always anticipate an -EFAULT from getsockopt()
-if another process enables CGROUP_GETSOCKOPT at the same time?
-
-Any comment will be appreciated!
-
-BTW, I added Chengjui and Yanghui to Co-developed due to we have several
-discussions on this issue. And we both spend some time on this issue.
-
----
- net/socket.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
-
-diff --git a/net/socket.c b/net/socket.c
-index fcbdd5bc47ac..e0b2b16fd238 100644
---- a/net/socket.c
-+++ b/net/socket.c
-@@ -2370,8 +2370,10 @@ int do_sock_getsockopt(struct socket *sock, bool compat, int level,
- 	if (err)
- 		return err;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 2e4fa9f48dfb..cba28d8d5562 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -1544,6 +1544,9 @@ mt7996_mcu_sta_bfer_he(struct ieee80211_sta *sta, struct ieee80211_vif *vif,
+ 	u8 nss_mcs = mt7996_mcu_get_sta_nss(mcs_map);
+ 	u8 snd_dim, sts;
  
--	if (!compat)
-+	if (!compat) {
-+		cgroup_lock();
- 		max_optlen = BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen);
-+	}
++	if (!vc)
++		return;
++
+ 	bf->tx_mode = MT_PHY_TYPE_HE_SU;
  
- 	ops = READ_ONCE(sock->ops);
- 	if (level == SOL_SOCKET) {
-@@ -2387,10 +2389,12 @@ int do_sock_getsockopt(struct socket *sock, bool compat, int level,
- 				      optlen.user);
- 	}
- 
--	if (!compat)
-+	if (!compat) {
- 		err = BPF_CGROUP_RUN_PROG_GETSOCKOPT(sock->sk, level, optname,
- 						     optval, optlen, max_optlen,
- 						     err);
-+		cgroup_unlock();
-+	}
- 
- 	return err;
- }
+ 	mt7996_mcu_sta_sounding_rate(bf);
 -- 
-2.45.2
+2.25.1
 
 
