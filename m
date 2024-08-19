@@ -4,74 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5528C52D7C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Aug 2024 06:14:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 702ACC3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Aug 2024 07:44:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QE567wxaZYFj8kwiVIzL4/viZ/NIGTuq9+uq6fgydvM=; b=iuFSnGE5LSM43AF+x+s+2lTO5L
-	I4YVrDuoinpGnDfq7pdnrQeSdRJlKWh/mb514FqTotzkYkE3PIBWjRQsoSxK2cgXcukDMn2ojn3mM
-	W4SPUyFYVyEAAHbGK6NLYiZoNeGGyXtQa5sJ4l6ju2PMUdumzomK7iXkcrctQjJxFesNaRqrxAO9s
-	SBQfipKOqia9wPszM7br3R9fF7faLPe4bg5P61pgDp7K8ev2hbiq/M9X5Lqko7FOvgEKHr1TuoyZ7
-	l4bBfl8+dNvNGHX5TQuT51Zhxrfr0lRm+2P2QRiHvjwXm4DcrBLU1VyQEOi90SnxknpE9Yin6RId0
-	77MZbHZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:
+	Subject:To:From:Message-Id:Date:Content-Type:Reply-To:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZOpBNrOI92TQ4ZWPkl1Is98B6yTzoIz6bUl81y4zhEA=; b=0mQAfuT1JXM4+TtD2Gh1dhIix7
+	1uIPU8DSSaxFbeLaG4cwMX0+6fO0Hl2dhFUddFbhhWu+5LSioFHLXbuPHd4GK78ow8IkZ0u65Rd2w
+	NRRteY6Qm/idqz2Pls3sRGso4/Ug/r3aA+HQT1DHmNQL/ohH2xFWSG1isBLuTI5lX+xnqpdaH5t2M
+	14Ir499q5hFOISLBdT9uk4M8NavjnX6RDgkhUWwzoEAoPHoWjLzyTRc7bWJnyNNh8jrUhztRazBfQ
+	8qsQtpkZGyTqoC/dlEKQckRdmwvNSbw5M5+LIRPIEpVemrmlBFOw2t8ujCTK7R+Aits4gaimnZ/gu
+	JlkULS7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfvew-00000000V7l-138M;
-	Mon, 19 Aug 2024 06:14:30 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sfx48-00000000gA2-2iqa;
+	Mon, 19 Aug 2024 07:44:36 +0000
+Received: from 0001.3ffe.de ([2a01:4f8:c0c:9d57::1] helo=mail.3ffe.de)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfveF-00000000Uyp-05ZB;
-	Mon, 19 Aug 2024 06:13:48 +0000
-X-UUID: 2cdce9d05df211efb3adad29d29602c1-20240818
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=QE567wxaZYFj8kwiVIzL4/viZ/NIGTuq9+uq6fgydvM=;
-	b=uD7w1lydlSP/2HaaHdgw5Rl/slz44EK04KenunCh3Km88rbcdGskt9hh2mKcHbTtaUPF/lVNcyTWWYMTMU6prjB4Z994snwtJ8vcyFeydw1HkfXT/7mHgcQ4b6/VmXj09EQNgZQ+V8DYS4hA9xjE2+tt88sY3iJflwu7x6IIimc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:f0395a75-813b-4c5c-8ecf-55983467efc6,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:2d7191be-d7af-4351-93aa-42531abf0c7b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 2cdce9d05df211efb3adad29d29602c1-20240818
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <shuijing.li@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 123250170; Sun, 18 Aug 2024 23:13:38 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 19 Aug 2024 14:13:35 +0800
-Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 19 Aug 2024 14:13:35 +0800
-From: Shuijing Li <shuijing.li@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
-	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <jitao.shi@mediatek.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Shuijing Li
-	<shuijing.li@mediatek.com>
-Subject: [PATCH v7] drm/mediatek: dsi: Add dsi per-frame lp code for mt8188
-Date: Mon, 19 Aug 2024 14:12:51 +0800
-Message-ID: <20240819061333.26069-1-shuijing.li@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+	id 1sfx3S-00000000g4o-0b59;
+	Mon, 19 Aug 2024 07:43:55 +0000
+Received: from localhost (unknown [213.135.10.150])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.3ffe.de (Postfix) with ESMTPSA id 47F465E;
+	Mon, 19 Aug 2024 09:43:42 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc; s=mail2022082101;
+	t=1724053422;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:content-type:content-type:in-reply-to:in-reply-to:
+	 references:references; bh=ZOpBNrOI92TQ4ZWPkl1Is98B6yTzoIz6bUl81y4zhEA=;
+	b=q/QX5wAeJOuGxW1q3+OqRP/H2LXUNKUUsK5i99wGbcsHcWd2b+91UQQU7YKylBjWf3OG0P
+	cDe/Jp+dxaDN8XYh6B9f069LqIWZh5em36kmqSb/QeSEW8eOx9/dASIjV8xXIby/nClq9k
+	5WWF6LLibrcoztsUVig7CJzeXVJgqXnD3o7i+iZjitlkn0nxl64QMdmbnRKxa/Gdkz9GSc
+	v+ZvCWzIuRdaw4L1nL5v+qBVCaZoyevct5dp8a/WVpOrWERc67LNDbBVNZ/FFDrtJaNAaf
+	gz7TVZwQNApVIXn/7Z9DwgTXZ6VB7XQYvUtd9NjMfDHEN2MVDq6SqCVXhOEUUg==
+Content-Type: multipart/signed;
+ boundary=324b8864c0f2f3444bbff5e9243c444c17712f463423f9f78bbd8be049ba;
+ micalg=pgp-sha384; protocol="application/pgp-signature"
+Date: Mon, 19 Aug 2024 09:43:40 +0200
+Message-Id: <D3JPXJBLA5IH.2FIM5TL0SQ6QB@walle.cc>
+From: "Michael Walle" <michael@walle.cc>
+To: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ <chunkuang.hu@kernel.org>, <ck.hu@mediatek.com>
+Subject: Re: [PATCH v8 0/3] drm/mediatek: Add support for OF graphs
+Cc: <robh@kernel.org>, <krzysztof.kozlowski+dt@linaro.org>,
+ <conor+dt@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+ <daniel@ffwll.ch>, <maarten.lankhorst@linux.intel.com>,
+ <mripard@kernel.org>, <tzimmermann@suse.de>, <matthias.bgg@gmail.com>,
+ <shawn.sung@mediatek.com>, <yu-chang.lee@mediatek.com>,
+ <jitao.shi@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+ <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <wenst@chromium.org>,
+ <kernel@collabora.com>, <sui.jingfeng@linux.dev>
+X-Mailer: aerc 0.16.0
+References: <20240618101726.110416-1-angelogioacchino.delregno@collabora.com> <d84f1469-e82a-42de-94a0-8ee0da0cba02@collabora.com> <eef10e9f-dac5-4a05-a79c-f8026f27f051@collabora.com>
+In-Reply-To: <eef10e9f-dac5-4a05-a79c-f8026f27f051@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240818_231347_095254_D5C67B43 
-X-CRM114-Status: GOOD (  16.16  )
+X-CRM114-CacheID: sfid-20240819_004354_359770_34D75088 
+X-CRM114-Status: GOOD (  18.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,215 +81,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adding the per-frame lp function of mt8188, which can keep HFP in HS and
-reduce the time required for each line to enter and exit low power.
-Per Frame LP:
-  |<----------One Active Frame-------->|
---______________________________________----___________________
-  ^HSA+HBP^^RGB^^HFP^^HSA+HBP^^RGB^^HFP^    ^HSA+HBP^^RGB^^HFP^
+--324b8864c0f2f3444bbff5e9243c444c17712f463423f9f78bbd8be049ba
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-Per Line LP:
-  |<---------------One Active Frame----------->|
---______________--______________--______________----______________
-  ^HSA+HBP^^RGB^  ^HSA+HBP^^RGB^  ^HSA+HBP^^RGB^    ^HSA+HBP^^RGB^
+Hi,
 
-Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
----
-Changes in v7:
-Fix code style and simplify the code per suggestion from previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20240813022315.18502-1-shuijing.li@mediatek.com/
-Changes in v6:
-Simplify the code per suggestion from previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20240812070341.26053-1-shuijing.li@mediatek.com/
-Changes in v5:
-Fix code style issue and add per-line-lp function to be symmetrical with per-frame-lp.
-per suggestion from previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20240801081144.22372-1-shuijing.li@mediatek.com/
-Changes in v4:
-Drop the code related to bllp_en and bllp_wc, adjust ps_wc to dsi->vm.hactive *
-dsi_buf_bpp.
-Changes in v3:
-Use function in bitfield.h and get value from phy timing, per suggestion
-from previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20240424091639.22759-1-shuijing.li@mediatek.com/
-Changes in v2:
-Use bitfield macros and add new function for per prame lp and improve
-the format, per suggestion from previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20240314094238.3315-1-shuijing.li@mediatek.com/
----
- drivers/gpu/drm/mediatek/mtk_dsi.c | 110 +++++++++++++++++++++++++----
- 1 file changed, 98 insertions(+), 12 deletions(-)
+On Thu Jul 4, 2024 at 10:29 AM CEST, AngeloGioacchino Del Regno wrote:
+> Il 19/06/24 12:56, AngeloGioacchino Del Regno ha scritto:
+> > Il 18/06/24 12:17, AngeloGioacchino Del Regno ha scritto:
+> >> Changes in v8:
+> >> =C2=A0 - Rebased on next-20240617
+> >> =C2=A0 - Changed to allow probing a VDO with no available display outp=
+uts
+> >>
+> >=20
+> > Hello CK,
+> >=20
+> > At the time of writing, this series was well reviewed and tested by mul=
+tiple people
+> > on multiple SoCs and boards.
+> >=20
+> > We've got a bunch of series that are waiting for this to get upstreamed=
+, including
+> > the addition of support for MT8365-EVK (already on mailing lists), MT83=
+95 Radxa
+> > NIO 12L, MT8395 Kontron SBC i1200 (not on mailing lists yet, waiting fo=
+r this to
+> > get merged), other than some other conversion commits for other MediaTe=
+k DTs from
+> > myself.
+> >=20
+> > As for the MT8195/NIO12L commits, I'm planning to send them on the list=
+s tomorrow,
+> > along with some code to properly support devicetree overlays (DTBO) gen=
+eration for
+> > MediaTek boards.
+> >=20
+> > Alexandre tested it on MT8365-EVK;
+> > Michael tested on Kontron SBC-i1200;
+> > I tested on Radxa NIO-12L, Cherry Tomato Chromebook, MT6795 Sony Xperia
+> > M5 (dsi video panel) smartphone and MT8192 Asurada Chromebook.
+> >=20
+> > So, is there anything else to address on this, or can we proceed?
+> >=20
+>
+> Gentle ping
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index b6e3c011a12d..58518f3257a8 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -88,12 +88,15 @@
- #define DSI_HSA_WC		0x50
- #define DSI_HBP_WC		0x54
- #define DSI_HFP_WC		0x58
-+#define HFP_HS_VB_PS_WC		GENMASK(30, 16)
-+#define HFP_HS_EN			BIT(31)
- 
- #define DSI_CMDQ_SIZE		0x60
- #define CMDQ_SIZE			0x3f
- #define CMDQ_SIZE_SEL		BIT(15)
- 
- #define DSI_HSTX_CKL_WC		0x64
-+#define HSTX_CKL_WC			GENMASK(15, 2)
- 
- #define DSI_RX_DATA0		0x74
- #define DSI_RX_DATA1		0x78
-@@ -187,6 +190,7 @@ struct mtk_dsi_driver_data {
- 	bool has_shadow_ctl;
- 	bool has_size_ctl;
- 	bool cmdq_long_packet_ctl;
-+	bool support_per_frame_lp;
- };
- 
- struct mtk_dsi {
-@@ -426,7 +430,79 @@ static void mtk_dsi_ps_control(struct mtk_dsi *dsi, bool config_vact)
- 	writel(ps_val, dsi->regs + DSI_PSCTRL);
- }
- 
--static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
-+static void mtk_dsi_config_vdo_timing_per_frame_lp(struct mtk_dsi *dsi)
-+{
-+	u32 horizontal_sync_active_byte;
-+	u32 horizontal_backporch_byte;
-+	u32 horizontal_frontporch_byte;
-+	u32 hfp_byte_adjust, v_active_adjust;
-+	u32 cklp_wc_min_adjust, cklp_wc_max_adjust;
-+	u32 dsi_tmp_buf_bpp;
-+	unsigned int da_hs_trail;
-+	unsigned int ps_wc, hs_vb_ps_wc;
-+	u32 v_active_roundup, hstx_cklp_wc;
-+	u32 hstx_cklp_wc_max, hstx_cklp_wc_min;
-+	struct videomode *vm = &dsi->vm;
-+
-+	if (dsi->format == MIPI_DSI_FMT_RGB565)
-+		dsi_tmp_buf_bpp = 2;
-+	else
-+		dsi_tmp_buf_bpp = 3;
-+
-+	da_hs_trail = dsi->phy_timing.da_hs_trail;
-+	ps_wc = vm->hactive * dsi_tmp_buf_bpp;
-+
-+	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE) {
-+		horizontal_sync_active_byte =
-+			vm->hsync_len * dsi_tmp_buf_bpp - 10;
-+		horizontal_backporch_byte =
-+			vm->hback_porch * dsi_tmp_buf_bpp - 10;
-+		hfp_byte_adjust = 12;
-+		v_active_adjust = 32 + horizontal_sync_active_byte;
-+		cklp_wc_min_adjust = 12 + 2 + 4 + horizontal_sync_active_byte;
-+		cklp_wc_max_adjust = 20 + 6 + 4 + horizontal_sync_active_byte;
-+	} else {
-+		horizontal_sync_active_byte = vm->hsync_len * dsi_tmp_buf_bpp - 4;
-+		horizontal_backporch_byte = (vm->hback_porch + vm->hsync_len) *
-+			dsi_tmp_buf_bpp - 10;
-+		cklp_wc_min_adjust = 4;
-+		cklp_wc_max_adjust = 12 + 4 + 4;
-+		if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST) {
-+			hfp_byte_adjust = 18;
-+			v_active_adjust = 28;
-+		} else {
-+			hfp_byte_adjust = 12;
-+			v_active_adjust = 22;
-+		}
-+	}
-+	horizontal_frontporch_byte = vm->hfront_porch * dsi_tmp_buf_bpp - hfp_byte_adjust;
-+	v_active_roundup = (v_active_adjust + horizontal_backporch_byte + ps_wc +
-+			   horizontal_frontporch_byte) % dsi->lanes;
-+	if (v_active_roundup)
-+		horizontal_backporch_byte += dsi->lanes - v_active_roundup;
-+	hstx_cklp_wc_min = (DIV_ROUND_UP(cklp_wc_min_adjust, dsi->lanes) + da_hs_trail + 1)
-+			   * dsi->lanes / 6 - 1;
-+	hstx_cklp_wc_max = (DIV_ROUND_UP((cklp_wc_max_adjust + horizontal_backporch_byte +
-+			   ps_wc), dsi->lanes) + da_hs_trail + 1) * dsi->lanes / 6 - 1;
-+
-+	hstx_cklp_wc = FIELD_GET(HSTX_CKL_WC, readl(dsi->regs + DSI_HSTX_CKL_WC));
-+
-+	if (hstx_cklp_wc <= hstx_cklp_wc_min || hstx_cklp_wc >= hstx_cklp_wc_max) {
-+		hstx_cklp_wc = FIELD_PREP(HSTX_CKL_WC, (hstx_cklp_wc_min + hstx_cklp_wc_max) / 2);
-+		writel(hstx_cklp_wc, dsi->regs + DSI_HSTX_CKL_WC);
-+	}
-+
-+	hs_vb_ps_wc = ps_wc - (dsi->phy_timing.lpx + dsi->phy_timing.da_hs_exit +
-+		      dsi->phy_timing.da_hs_prepare + dsi->phy_timing.da_hs_zero + 2) * dsi->lanes;
-+	horizontal_frontporch_byte |= FIELD_PREP(HFP_HS_EN, 1) |
-+				      FIELD_PREP(HFP_HS_VB_PS_WC, hs_vb_ps_wc);
-+
-+	writel(horizontal_sync_active_byte, dsi->regs + DSI_HSA_WC);
-+	writel(horizontal_backporch_byte, dsi->regs + DSI_HBP_WC);
-+	writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
-+}
-+
-+static void mtk_dsi_config_vdo_timing_per_line_lp(struct mtk_dsi *dsi)
- {
- 	u32 horizontal_sync_active_byte;
- 	u32 horizontal_backporch_byte;
-@@ -436,7 +512,6 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
- 	u32 dsi_tmp_buf_bpp, data_phy_cycles;
- 	u32 delta;
- 	struct mtk_phy_timing *timing = &dsi->phy_timing;
--
- 	struct videomode *vm = &dsi->vm;
- 
- 	if (dsi->format == MIPI_DSI_FMT_RGB565)
-@@ -444,16 +519,6 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
- 	else
- 		dsi_tmp_buf_bpp = 3;
- 
--	writel(vm->vsync_len, dsi->regs + DSI_VSA_NL);
--	writel(vm->vback_porch, dsi->regs + DSI_VBP_NL);
--	writel(vm->vfront_porch, dsi->regs + DSI_VFP_NL);
--	writel(vm->vactive, dsi->regs + DSI_VACT_NL);
--
--	if (dsi->driver_data->has_size_ctl)
--		writel(FIELD_PREP(DSI_HEIGHT, vm->vactive) |
--		       FIELD_PREP(DSI_WIDTH, vm->hactive),
--		       dsi->regs + DSI_SIZE_CON);
--
- 	horizontal_sync_active_byte = (vm->hsync_len * dsi_tmp_buf_bpp - 10);
- 
- 	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE)
-@@ -499,6 +564,26 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
- 	writel(horizontal_sync_active_byte, dsi->regs + DSI_HSA_WC);
- 	writel(horizontal_backporch_byte, dsi->regs + DSI_HBP_WC);
- 	writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
-+}
-+
-+static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
-+{
-+	struct videomode *vm = &dsi->vm;
-+
-+	writel(vm->vsync_len, dsi->regs + DSI_VSA_NL);
-+	writel(vm->vback_porch, dsi->regs + DSI_VBP_NL);
-+	writel(vm->vfront_porch, dsi->regs + DSI_VFP_NL);
-+	writel(vm->vactive, dsi->regs + DSI_VACT_NL);
-+
-+	if (dsi->driver_data->has_size_ctl)
-+		writel(FIELD_PREP(DSI_HEIGHT, vm->vactive) |
-+			FIELD_PREP(DSI_WIDTH, vm->hactive),
-+			dsi->regs + DSI_SIZE_CON);
-+
-+	if (dsi->driver_data->support_per_frame_lp)
-+		mtk_dsi_config_vdo_timing_per_frame_lp(dsi);
-+	else
-+		mtk_dsi_config_vdo_timing_per_line_lp(dsi);
- 
- 	mtk_dsi_ps_control(dsi, false);
- }
-@@ -1197,6 +1282,7 @@ static const struct mtk_dsi_driver_data mt8188_dsi_driver_data = {
- 	.has_shadow_ctl = true,
- 	.has_size_ctl = true,
- 	.cmdq_long_packet_ctl = true,
-+	.support_per_frame_lp = true,
- };
- 
- static const struct of_device_id mtk_dsi_of_match[] = {
--- 
-2.45.2
+Any news here? Angelo, maybe you can just resend the patches?
+Because there is already a new kernel release, I'm not sure how this
+is handled.
 
+-michael
+
+--324b8864c0f2f3444bbff5e9243c444c17712f463423f9f78bbd8be049ba
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iKcEABMJAC8WIQTIVZIcOo5wfU/AngkSJzzuPgIf+AUCZsL3rBEcbWljaGFlbEB3
+YWxsZS5jYwAKCRASJzzuPgIf+FUbAYDwODh5ZmA5CgDyBJFBWhdWhPocmMAeADIf
+YIj7wM7SyDI0yrNuwDwDHkWqsgqP6zUBf3DRKglqYDugQsOqPOiPOacc7FY1jJNE
+JTe4vU6fiHuUR6s+hkfsCPvpec2A98PhmA==
+=v4Vj
+-----END PGP SIGNATURE-----
+
+--324b8864c0f2f3444bbff5e9243c444c17712f463423f9f78bbd8be049ba--
 
