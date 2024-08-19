@@ -4,86 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C35AC52D7C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Aug 2024 08:56:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4D3FC3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Aug 2024 09:13:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=jFrBrIEhRH5fr64Lmwlk1FGGgzIMKQ4ijTse+z7ETwE=; b=yqui6aHaYECa4M/DAImLsHE3b+
-	8+u9h2et85Qh1UJEnmOhn04XJs3vC8f+NbRZ98jextb2L+0J3vcinH0LytRL5Cu5NL+LWq4aUdA9I
-	YEgEySq6bAzPR/LVCqgbIXSFgSf1BU7SVfrgmrYmUOXqu6PUXPBMy3amtq7r/QyNPuV+A8TDmL/Zr
-	oFip6pdTXCEyqX5NtRjfjk1RXwfMa0cn4HvTvXVdpn8VKEavxK8d6c+uRVL1lemJ7wxb0LHgFRTP0
-	2moszqVohsIxBoL218Ki5W1HZEZ0lgvxzlHQ1pkRSl8L4ewhTj89rcnSwUqooLfoDRK0oatb0HEhk
-	sQkYZywg==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XIMsl1ookSA1DyUgN8UuW8SMlUC0glIxT4g4JKXaVdU=; b=ETChyblaI9W9XPU3fMbKzYK2D8
+	oUmeJX7aqtKNykVKiPjecPxRs2V/mf1mADltGDRqNcoKn/z6FwgdJsXAwU0QaZGzlqeLEOWpgTgRS
+	iWuEghQdi/9wqs+ahIC3EWRIdYuTRQ/NY4t2IkrBrGO5YGALOxGTcjTPzNuonbF1wCUMU34BIo2eA
+	PluX6u4iE02aLurdSL6HAUM5O9AogMV7JNVvYMkHZuyAvTYmWKsj51VF0IPT9W6u7EhTNANiAVgae
+	BRXfJlXAQRq2GrC8vFzLXBtAsEpuffQTaM6fOQO9JOTdDBOQugXaa8+14TytpP7Qx/cVUyS/Zfd27
+	U0aHvy/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfyBC-00000000qpl-0IFi;
-	Mon, 19 Aug 2024 08:55:58 +0000
-Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
+	id 1sfySZ-00000000uf8-1y4Z;
+	Mon, 19 Aug 2024 09:13:55 +0000
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sfyAT-00000000qkH-42w0;
-	Mon, 19 Aug 2024 08:55:16 +0000
-Received: from icess-ProLiant-DL380-Gen10.. (unknown [183.174.60.14])
-	by APP-03 (Coremail) with SMTP id rQCowAA3XQBaCMNmOqISCA--.43879S2;
-	Mon, 19 Aug 2024 16:55:00 +0800 (CST)
-From: Ma Ke <make24@iscas.ac.cn>
-To: nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	kvalo@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	chui-hao.chiu@mediatek.com,
-	howard-yh.hsu@mediatek.com,
-	StanleyYP.Wang@mediatek.com,
-	benjamin-jw.lin@mediatek.com,
-	allen.ye@mediatek.com,
-	chank.chen@mediatek.com,
-	meichia.chiu@mediatek.com,
-	Bo.Jiao@mediatek.com,
-	evelyn.tsai@mediatek.com,
-	Money.Wang@mediatek.com,
-	akpm@linux-foundation.org
-Cc: linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Ma Ke <make24@iscas.ac.cn>,
-	stable@vger.kernel.org
-Subject: [PATCH RESEND] wifi: mt76: mt7996: fix NULL pointer dereference in mt7996_mcu_sta_bfer_he
-Date: Mon, 19 Aug 2024 16:54:49 +0800
-Message-Id: <20240819085449.1013279-1-make24@iscas.ac.cn>
-X-Mailer: git-send-email 2.25.1
+	id 1sfySV-00000000uZx-0Oks
+	for linux-mediatek@lists.infradead.org;
+	Mon, 19 Aug 2024 09:13:52 +0000
+Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-2f3e071eb64so6081201fa.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 19 Aug 2024 02:13:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1724058825; x=1724663625; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=XIMsl1ookSA1DyUgN8UuW8SMlUC0glIxT4g4JKXaVdU=;
+        b=4QbSrAvhPB+djUWacowSJHZsKwAIDOJgHjQXByGdwiFkARQ1Ayn0YuLl99CF77bmQY
+         x4ZAgRHcVja0ZzjMtP4GLq9lU/96LoNykegwPJTmMWpwMEWqvpcM6dqjZBsd9j4uo6mj
+         hIO8tzxHV9+deD5sPcR26uzc08c4tJhb/C1M3irUkXjCBNzubU4+A5jJHzJOmPoZedN4
+         nHtzKiwRdu8xMGHWZjRd4BPPuNp2l0gjsrSpLh1lhSf77cSHXRnwNZmXyJSeRyReRfX2
+         orjDRD5vxX9s9SXQw/eFGbPAh5+KTWxC/EePJX6UMBLQkIYcty+89Hemm3VQRoP31ujR
+         5OcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1724058825; x=1724663625;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=XIMsl1ookSA1DyUgN8UuW8SMlUC0glIxT4g4JKXaVdU=;
+        b=Ey5ze9+i8P4mBKXDetWVeTcCCVW1c7JTuKa9z6gFd7ZZbM8BUaWgBMxXmGv9WorubE
+         5SQPMd9Dlzyg64LPl6xGvvOD/6E1eHJdXNS22RRPw+odtSYMRWP5kRgmQLq6w6fcb0Fh
+         fCVzGYmRNueSJBFPfYc7XdwEuOhz8pW2RLCr8XgkTWKtmg+nVSURDOml1NH3dZJLEquY
+         ckfTalejm/XqzcFOpKDrAx2Ql3lQY+ibRuiGzwBuhLoxym1EnIMYmHbf+6BAtkZ4fmGR
+         BKQbmmLn8mHCszjeKwrwHaA3iYqPG5IvWrtz/uCoOrI4+icUjzdWufSWgNVikCZ8IMUc
+         FAQQ==
+X-Forwarded-Encrypted: i=1; AJvYcCX80a6vx8wic5YYHW8lPAq5GtPXkl/H3FQas0mvft+kBluwe621a/C+bXAYdYJGUh7TvmcR5DPY4uOpB9g+lGdJZ0YJlbfgzhgg572jP89zGtN9
+X-Gm-Message-State: AOJu0YywJocibMxemiNkq8dOM806XyigiA9obilGKJPFdM5jsN+EJ4XD
+	Dmofby6+fIIbhQorO4/O90v8IbaLxfpcrX43F9WQtkVS2qyLEfOG5TFhczakk+JwYWePXU8GncK
+	9geBo9HuugclGlUbkdxPhdXmal58ABP4H0Acd
+X-Google-Smtp-Source: AGHT+IFOZG4WMA3ByLVTlGA87b7bgPZg8l2Jlfvs7m1bi8xHPKgfIE9xY9QB2B3aIl9fWxotTq3p7F1FeB2f8sINkIQ=
+X-Received: by 2002:a2e:742:0:b0:2ef:2677:7b74 with SMTP id
+ 38308e7fff4ca-2f3be5f02eemr74527771fa.41.1724058824221; Mon, 19 Aug 2024
+ 02:13:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: rQCowAA3XQBaCMNmOqISCA--.43879S2
-X-Coremail-Antispam: 1UD129KBjvdXoWruw4DZw1UtrWxKF1xJr13Jwb_yoWDXrXE9r
-	n29FnIqw48Kw48Kr429wnxuryay3ykZF97Gay5tayfta97J3yUZF1IvFn3Ar13uFn7ZF1U
-	J3ZrJFy0y395WjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUIcSsGvfJTRUUUbS8FF20E14v26ryj6rWUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
-	6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
-	A2z4x0Y4vE2Ix0cI8IcVAFwI0_Xr0_Ar1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Cr0_
-	Gr1UM28EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwVC2z280aVCY1x0267AKxVW0oV
-	Cq3wAac4AC62xK8xCEY4vEwIxC4wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC
-	0VAKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUGVWUXwAv7VC2z280aVAFwI0_Jr0_Gr
-	1lOx8S6xCaFVCjc4AY6r1j6r4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IE
-	rcIFxwACI402YVCY1x02628vn2kIc2xKxwCY1x0262kKe7AKxVW8ZVWrXwCF04k20xvY0x
-	0EwIxGrwCFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E
-	7480Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_GFv_WrylIxkGc2Ij64vIr41lIxAIcV
-	C0I7IYx2IY67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF
-	04k26cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7
-	CjxVAFwI0_Gr0_Gr1UYxBIdaVFxhVjvjDU0xZFpf9x0pRNAwsUUUUU=
-X-Originating-IP: [183.174.60.14]
-X-CM-SenderInfo: ppdnvj2u6l2u1dvotugofq/
+References: <20240819082513.27176-1-Tze-nan.Wu@mediatek.com>
+In-Reply-To: <20240819082513.27176-1-Tze-nan.Wu@mediatek.com>
+From: Eric Dumazet <edumazet@google.com>
+Date: Mon, 19 Aug 2024 11:13:33 +0200
+Message-ID: <CANn89iJ04bbS4iaB8dpgbtZTWF_JVt1JawwxFah16zN1aj3HWw@mail.gmail.com>
+Subject: Re: [PATCH] net/socket: Acquire cgroup_lock in do_sock_getsockopt
+To: Tze-nan Wu <Tze-nan.Wu@mediatek.com>, Stanislav Fomichev <sdf@fomichev.me>
+Cc: netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, bobule.chang@mediatek.com, 
+	wsd_upstream@mediatek.com, Yanghui Li <yanghui.li@mediatek.com>, 
+	Cheng-Jui Wang <cheng-jui.wang@mediatek.com>, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	bpf@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240819_015514_393160_B41C95EA 
-X-CRM114-Status: UNSURE (   7.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240819_021351_177267_34A3DE78 
+X-CRM114-Status: GOOD (  31.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,33 +96,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix the NULL pointer dereference in mt7996_mcu_sta_bfer_he
-routine adding an sta interface to the mt7996 driver.
+On Mon, Aug 19, 2024 at 10:27=E2=80=AFAM Tze-nan Wu <Tze-nan.Wu@mediatek.co=
+m> wrote:
+>
+> The return value from `cgroup_bpf_enabled(CGROUP_GETSOCKOPT)` can change
+> between the invocations of `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN` and
+> `BPF_CGROUP_RUN_PROG_GETSOCKOPT`.
+>
+> If `cgroup_bpf_enabled(CGROUP_GETSOCKOPT)` changes from "false" to
+> "true"
+> between the invocations of `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN` and
+> `BPF_CGROUP_RUN_PROG_GETSOCKOPT`,
+> `BPF_CGROUP_RUN_PROG_GETSOCKOPT` will receive an -EFAULT from
+> `__cgroup_bpf_run_filter_getsockopt(max_optlen=3D0)` due to `get_user()`
+> had not reached in `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN`.
+>
+> Scenario shown as below:
+>
+>            `process A`                      `process B`
+>            -----------                      ------------
+>   BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN
+>                                             enable CGROUP_GETSOCKOPT
+>   BPF_CGROUP_RUN_PROG_GETSOCKOPT (-EFAULT)
+>
+> Prevent `cgroup_bpf_enabled(CGROUP_GETSOCKOPT)` change between
+> `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN` and `BPF_CGROUP_RUN_PROG_GETSOCKOPT`
+> by acquiring cgroup_lock.
+>
+> Co-developed-by: Yanghui Li <yanghui.li@mediatek.com>
+> Signed-off-by: Yanghui Li <yanghui.li@mediatek.com>
+> Co-developed-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
+> Signed-off-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
+> Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
+>
+> ---
+>
+> We have encountered this issue by observing that process A could sometime=
+s
+> get an -EFAULT from getsockopt() during our device boot-up, while another
+> process B triggers the race condition by enabling CGROUP_GETSOCKOPT
+> through bpf syscall at the same time.
+>
+> The race condition is shown below:
+>
+>            `process A`                        `process B`
+>            -----------                        ------------
+>   BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN
+>
+>                                               bpf syscall
+>                                         (CGROUP_GETSOCKOPT enabled)
+>
+>   BPF_CGROUP_RUN_PROG_GETSOCKOPT
+>   -> __cgroup_bpf_run_filter_getsockopt
+>     (-EFAULT)
+>
+> __cgroup_bpf_run_filter_getsockopt return -EFAULT at the line shown below=
+:
+>         if (optval && (ctx.optlen > max_optlen || ctx.optlen < 0)) {
+>                 if (orig_optlen > PAGE_SIZE && ctx.optlen >=3D 0) {
+>                         pr_info_once("bpf getsockopt: ignoring program bu=
+ffer with optlen=3D%d (max_optlen=3D%d)\n",
+>                                      ctx.optlen, max_optlen);
+>                         ret =3D retval;
+>                         goto out;
+>                 }
+>                 ret =3D -EFAULT; <=3D=3D return EFAULT here
+>                 goto out;
+>         }
+>
+> This patch should fix the race but not sure if it introduces any potentia=
+l
+> side effects or regression.
+>
+> And we wondering if this is a real issue in do_sock_getsockopt or if
+> getsockopt() is designed to expect such race conditions.
+> Should the userspace caller always anticipate an -EFAULT from getsockopt(=
+)
+> if another process enables CGROUP_GETSOCKOPT at the same time?
+>
+> Any comment will be appreciated!
+>
+> BTW, I added Chengjui and Yanghui to Co-developed due to we have several
+> discussions on this issue. And we both spend some time on this issue.
+>
+> ---
+>  net/socket.c | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
+>
+> diff --git a/net/socket.c b/net/socket.c
+> index fcbdd5bc47ac..e0b2b16fd238 100644
+> --- a/net/socket.c
+> +++ b/net/socket.c
+> @@ -2370,8 +2370,10 @@ int do_sock_getsockopt(struct socket *sock, bool c=
+ompat, int level,
+>         if (err)
+>                 return err;
+>
+> -       if (!compat)
+> +       if (!compat) {
+> +               cgroup_lock();
+>                 max_optlen =3D BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen);
+> +       }
+>
 
-Found by code review.
+Acquiring cgroup_lock mutex in socket getsockopt() fast path ?
 
-Cc: stable@vger.kernel.org
-Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
-Signed-off-by: Ma Ke <make24@iscas.ac.cn>
----
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 3 +++
- 1 file changed, 3 insertions(+)
+There is no way we can accept such a patch, please come up with a
+reasonable patch.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index 2e4fa9f48dfb..cba28d8d5562 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -1544,6 +1544,9 @@ mt7996_mcu_sta_bfer_he(struct ieee80211_sta *sta, struct ieee80211_vif *vif,
- 	u8 nss_mcs = mt7996_mcu_get_sta_nss(mcs_map);
- 	u8 snd_dim, sts;
- 
-+	if (!vc)
-+		return;
-+
- 	bf->tx_mode = MT_PHY_TYPE_HE_SU;
- 
- 	mt7996_mcu_sta_sounding_rate(bf);
--- 
-2.25.1
-
+cgroup_bpf_enabled() should probably be used once.
 
