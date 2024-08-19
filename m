@@ -4,108 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 018A1C52D7C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Aug 2024 15:55:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 305A5C3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Aug 2024 15:58:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sIOAt7qcIh7yk+Ak6kXM6rwImTNnnUyR1orHAIYs4r4=; b=4hzrdy7CgZ34j5THt9V+9J1tPk
-	cY5N2Vjq9bGlwb6lReYUiFBpcElPR41YBYjq1rW6Oz/SyDxg5qUPEDrzRS2R562mlJE0aeTXruvoP
-	EPGfN3Ay8f+kU7/2Ilb+IIG+8JslIzYLAl3Xd4Boeqq0eHUxcSRW8oqtjbUO2IS4ijnQC6FXHpye9
-	f2L4wGSup3EaBSqS6m5Ef102LXNclchDhHYjCkxNrTiFCTmykhEF/7r88IQ3qKxOaH6Eik9cwsGFk
-	nZmEdJ3CQymlAK+FFG/ENK9zK8U1UjaOaVO0zCvdS7FA+vH0bXqkk7djiMJUGrQjtMCfiSvH8xJV6
-	iEt1iRTw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0+OIEN25NHHHr0CCl7NuFmNlsvu4aPfi+XVI+Vm7J+s=; b=Mlr9xgtXI2PIZF43ZhsKMV/yJf
+	Po2SxIwNYL1MqYVhlXAwKOnFmo/NDCvsN2XU5+3RYgdcrs8TwEvCoR/NWX5aB9aU3ZJTwQrzGNk4E
+	x2+AiQ/yh3NGxmUb4A8bnQ3knZN6MsJ1D8gp8S3MKd/xxOKVOmYpu5gg2cd4hFvQlGayxG0Rd9lI7
+	Uw87rQ00KWWCqTe8oI6sVowMGuMJcFrQkl61/s3OeTtmf9V9T2HSdt2vdIFlowFtdU+IpRJguc9oh
+	WymPLRPNYGBmFTFoulKEaFfqjZFbTax5HU+d7Bz2fci6P3sNyZ7QwKCww2XGwfiHBxtPI6ye4B7CD
+	qnIW8vow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sg4j4-0000000220H-1tmM;
-	Mon, 19 Aug 2024 15:55:22 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1sg4mM-000000022rs-3cxE;
+	Mon, 19 Aug 2024 15:58:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sg4it-000000021w6-2udB;
-	Mon, 19 Aug 2024 15:55:13 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-371a92d8c90so1260000f8f.3;
-        Mon, 19 Aug 2024 08:55:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1724082909; x=1724687709; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=sIOAt7qcIh7yk+Ak6kXM6rwImTNnnUyR1orHAIYs4r4=;
-        b=OgL+jUsyq/546NC9P7vpv8RVQyaf7abEX+Daa1l3Rt8mZqVqqewEzuYCYm8o2Dl3eG
-         V/FNaIP0V48i5ex4ulYCZOZTqUxYdcea8TdQAI/abEJ3GtP3PjYdtIA/ATUXZhk96Ode
-         I49X1CcAZxQ4d6beifMXIApYYHlfh5RBcBtm8Q2VbZqQgfVqvxv7HLiE+7p0JSnxd8d7
-         R+iwt5XjFRyx5GpfImv3aOFf9wPW61g1HGcnFTTDMiX9Ks5KhdcUuMv8ZQonFyB2HTbh
-         Zazf3+lut7yvl7KBdwtnqxObBHiwIX7YHcxHq8bu1bEFix7t0kYlVRInkfr3O+qnjHio
-         N14w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724082909; x=1724687709;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=sIOAt7qcIh7yk+Ak6kXM6rwImTNnnUyR1orHAIYs4r4=;
-        b=vXtW5WmZJhW+obSgbtacDvT5L/BR9YrkJRmpvzOgt70Fw9HzILIARenOF2Eswt08Xp
-         66CwY9zkwPiJD31a2AGPBJkyTPF+TI7abp3hDWFelY9NKTWfb68IzfTE9FUvrVqt8rS1
-         H3pPlQvisCunJcdG2/8lGtnZi91x334YbDPuOcGTFKQHLAwapF6vEWKl08x7+K0rgvKa
-         65hp1MeQ0NMKsOrvsof5eoXjiz6vAramDvl9evCW3g6DNNWXqY01KsO5YeNruRi6BPYE
-         TDzg3GMYt7dMoEmxpaiPzuTsGwZGSfD655zJdVFII3T0CXljc+3Tj80I6jmIyN9HAovx
-         ZShw==
-X-Forwarded-Encrypted: i=1; AJvYcCUYNri6j+qNd4zZsEWXwi2P+gr1YAkXUo5i9kH4kIHmrRPKMEJJeeqdB+Fxnj/ElTFJp5VN6eF9o9+R8sLlzihefjDJIX/WBXVAPj15GPkqSLgnxBHOC5g7jhdgPKphfZwro40AVTID6m/qXzml3vy91TXESEwfg4vpbDXoweAHnLvPiqZRKBHx9LG5dxqDeaHXgwNqOVsa+Url0JCEafvKTwMv0ZNREbDAMNtoxpGDJlBhq+XJXzQ=
-X-Gm-Message-State: AOJu0YxHjbQpKvnBsfmg8xJVm5bvnCTtDuRWK1VkbH+mTlMU+O2yR0R2
-	HP5QPphuwSLf3GzTDGMP8Ybu9QiFfm1ef+J5z/nrxlCepH4ATj3A6yC/Bf7jKNO5RrCuqVcx4Pw
-	koEZSmoj6pxR1mCW7y9N6J4jcJNY=
-X-Google-Smtp-Source: AGHT+IH+5SdMMmvczHHbCQS3d2lV+42NHIBp97s6EuIfp9v1lsrp5Tb1uRlaaTz2L+/Rjsor4cGm4qQ4+md5bQzOvmo=
-X-Received: by 2002:a05:6000:1006:b0:371:8eaf:3c49 with SMTP id
- ffacd0b85a97d-371946a32a9mr7016301f8f.40.1724082909035; Mon, 19 Aug 2024
- 08:55:09 -0700 (PDT)
+	id 1sg4la-000000022da-3bs6
+	for linux-mediatek@lists.infradead.org;
+	Mon, 19 Aug 2024 15:58:00 +0000
+X-UUID: cc8e9c7a5e4311efb3adad29d29602c1-20240819
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=0+OIEN25NHHHr0CCl7NuFmNlsvu4aPfi+XVI+Vm7J+s=;
+	b=e1Leuocss2Yp6NI/Ftq1ewrNASEPaLk78cN4lxmOcqaCK5Jx3IuNE9RlQoBPB4/RInB8PgC/MSmBkUELFY5WoHeuhYrPGWyoU2hLJsnkoppRyYrJ+dQmTTaAu8T4Cgl2XBHoEBg0lL4fYJNKa9thXd9sx2eBRHkwEiZUkzCOhT0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:f94cbee3-1de4-464e-889c-1805cc9d3d91,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:6dc6a47,CLOUDID:1f3498be-d7af-4351-93aa-42531abf0c7b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: cc8e9c7a5e4311efb3adad29d29602c1-20240819
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <tze-nan.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 496095645; Mon, 19 Aug 2024 08:57:55 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 19 Aug 2024 08:57:53 -0700
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 19 Aug 2024 23:57:53 +0800
+From: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
+To: <netdev@vger.kernel.org>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+	<pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Stanislav Fomichev <sdf@fomichev.me>
+CC: <bobule.chang@mediatek.com>, <wsd_upstream@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Tze-nan
+ Wu <Tze-nan.Wu@mediatek.com>, Yanghui Li <yanghui.li@mediatek.com>, Cheng-Jui
+ Wang <cheng-jui.wang@mediatek.com>
+Subject: [PATCH v2] net/socket: Check cgroup_bpf_enabled() only once in  do_sock_getsockopt
+Date: Mon, 19 Aug 2024 23:56:27 +0800
+Message-ID: <20240819155627.1367-1-Tze-nan.Wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20240808123714.462740-1-linyunsheng@huawei.com>
- <20240808123714.462740-5-linyunsheng@huawei.com> <d1a23116d054e2ebb00067227f0cffecefe33e11.camel@gmail.com>
- <676a2a15-d390-48a7-a8d7-6e491c89e200@huawei.com> <CAKgT0Uct5ptfs9ZEoe-9u-fOVz4HLf+5MS-YidKV+xELCBHKNw@mail.gmail.com>
- <3e069c81-a728-4d72-a5bb-3be00d182107@huawei.com>
-In-Reply-To: <3e069c81-a728-4d72-a5bb-3be00d182107@huawei.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Mon, 19 Aug 2024 08:54:32 -0700
-Message-ID: <CAKgT0UcDDFeMqD_eRe1-2Og0GEEFyNP90E9SDxDjskdgtMe0Uw@mail.gmail.com>
-Subject: Re: [PATCH net-next v13 04/14] mm: page_frag: add '_va' suffix to
- page_frag API
-To: Yunsheng Lin <linyunsheng@huawei.com>
-Cc: davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com, 
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	Subbaraya Sundeep <sbhatta@marvell.com>, Chuck Lever <chuck.lever@oracle.com>, 
-	Sagi Grimberg <sagi@grimberg.me>, Jeroen de Borst <jeroendb@google.com>, 
-	Praveen Kaligineedi <pkaligineedi@google.com>, Shailend Chand <shailend@google.com>, 
-	Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, 
-	Przemek Kitszel <przemyslaw.kitszel@intel.com>, Sunil Goutham <sgoutham@marvell.com>, 
-	Geetha sowjanya <gakula@marvell.com>, hariprasad <hkelam@marvell.com>, Felix Fietkau <nbd@nbd.name>, 
-	Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith Busch <kbusch@kernel.org>, 
-	Jens Axboe <axboe@kernel.dk>, Christoph Hellwig <hch@lst.de>, Chaitanya Kulkarni <kch@nvidia.com>, 
-	"Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>, 
-	=?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>, 
-	Andrew Morton <akpm@linux-foundation.org>, Alexei Starovoitov <ast@kernel.org>, 
-	Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, 
-	John Fastabend <john.fastabend@gmail.com>, Andrii Nakryiko <andrii@kernel.org>, 
-	Martin KaFai Lau <martin.lau@linux.dev>, Eduard Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>, 
-	Yonghong Song <yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, 
-	Stanislav Fomichev <sdf@fomichev.me>, Hao Luo <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>, 
-	David Howells <dhowells@redhat.com>, Marc Dionne <marc.dionne@auristor.com>, 
-	Jeff Layton <jlayton@kernel.org>, Neil Brown <neilb@suse.de>, Olga Kornievskaia <kolga@netapp.com>, 
-	Dai Ngo <Dai.Ngo@oracle.com>, Tom Talpey <tom@talpey.com>, 
-	Trond Myklebust <trondmy@kernel.org>, Anna Schumaker <anna@kernel.org>, Shuah Khan <shuah@kernel.org>, 
-	intel-wired-lan@lists.osuosl.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-nvme@lists.infradead.org, 
-	kvm@vger.kernel.org, virtualization@lists.linux.dev, linux-mm@kvack.org, 
-	bpf@vger.kernel.org, linux-afs@lists.infradead.org, linux-nfs@vger.kernel.org, 
-	linux-kselftest@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240819_085511_772286_F620FA7E 
-X-CRM114-Status: GOOD (  43.31  )
+X-CRM114-CacheID: sfid-20240819_085758_930640_5A00B178 
+X-CRM114-Status: GOOD (  16.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,123 +87,149 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 16, 2024 at 4:55=E2=80=AFAM Yunsheng Lin <linyunsheng@huawei.co=
-m> wrote:
->
-> On 2024/8/15 23:00, Alexander Duyck wrote:
-> > On Wed, Aug 14, 2024 at 8:00=E2=80=AFPM Yunsheng Lin <linyunsheng@huawe=
-i.com> wrote:
-> >>
-> >> On 2024/8/14 23:49, Alexander H Duyck wrote:
-> >>> On Thu, 2024-08-08 at 20:37 +0800, Yunsheng Lin wrote:
-> >>>> Currently the page_frag API is returning 'virtual address'
-> >>>> or 'va' when allocing and expecting 'virtual address' or
-> >>>> 'va' as input when freeing.
-> >>>>
-> >>>> As we are about to support new use cases that the caller
-> >>>> need to deal with 'struct page' or need to deal with both
-> >>>> 'va' and 'struct page'. In order to differentiate the API
-> >>>> handling between 'va' and 'struct page', add '_va' suffix
-> >>>> to the corresponding API mirroring the page_pool_alloc_va()
-> >>>> API of the page_pool. So that callers expecting to deal with
-> >>>> va, page or both va and page may call page_frag_alloc_va*,
-> >>>> page_frag_alloc_pg*, or page_frag_alloc* API accordingly.
-> >>>>
-> >>>> CC: Alexander Duyck <alexander.duyck@gmail.com>
-> >>>> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
-> >>>> Reviewed-by: Subbaraya Sundeep <sbhatta@marvell.com>
-> >>>> Acked-by: Chuck Lever <chuck.lever@oracle.com>
-> >>>> Acked-by: Sagi Grimberg <sagi@grimberg.me>
-> >>>> ---
-> >>>>  drivers/net/ethernet/google/gve/gve_rx.c      |  4 ++--
-> >>>>  drivers/net/ethernet/intel/ice/ice_txrx.c     |  2 +-
-> >>>>  drivers/net/ethernet/intel/ice/ice_txrx.h     |  2 +-
-> >>>>  drivers/net/ethernet/intel/ice/ice_txrx_lib.c |  2 +-
-> >>>>  .../net/ethernet/intel/ixgbevf/ixgbevf_main.c |  4 ++--
-> >>>>  .../marvell/octeontx2/nic/otx2_common.c       |  2 +-
-> >>>>  drivers/net/ethernet/mediatek/mtk_wed_wo.c    |  4 ++--
-> >>>>  drivers/nvme/host/tcp.c                       |  8 +++----
-> >>>>  drivers/nvme/target/tcp.c                     | 22 +++++++++-------=
+The return value from `cgroup_bpf_enabled(CGROUP_GETSOCKOPT)` can change
+between the invocations of `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN` and
+`BPF_CGROUP_RUN_PROG_GETSOCKOPT`.
+
+If `cgroup_bpf_enabled(CGROUP_GETSOCKOPT)` changes from "false" to
+"true" between the invocations of `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN` and
+`BPF_CGROUP_RUN_PROG_GETSOCKOPT`, `BPF_CGROUP_RUN_PROG_GETSOCKOPT` will
+receive an -EFAULT from `__cgroup_bpf_run_filter_getsockopt(max_optlen=0)`
+due to `get_user()` was not reached in `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN`.
+
+Scenario shown as below:
+
+           `process A`                      `process B`
+           -----------                      ------------
+  BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN
+                                            enable CGROUP_GETSOCKOPT
+  BPF_CGROUP_RUN_PROG_GETSOCKOPT (-EFAULT)
+
+To prevent this, invoke `cgroup_bpf_enabled()` only once and cache the
+result in a newly added local variable `enabled`.
+Both `BPF_CGROUP_*` macros in `do_sock_getsockopt` will then check their
+condition using the same `enabled` variable as the condition variable,
+instead of using the return values from `cgroup_bpf_enabled` called by
+themselves as the condition variable(which could yield different results).
+This ensures that either both `BPF_CGROUP_*` macros pass the condition
+or neither does.
+
+Co-developed-by: Yanghui Li <yanghui.li@mediatek.com>
+Signed-off-by: Yanghui Li <yanghui.li@mediatek.com>
+Co-developed-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
+Signed-off-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
+Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
 ---
-> >>>>  drivers/vhost/net.c                           |  6 ++---
-> >>>>  include/linux/page_frag_cache.h               | 21 +++++++++-------=
---
-> >>>>  include/linux/skbuff.h                        |  2 +-
-> >>>>  kernel/bpf/cpumap.c                           |  2 +-
-> >>>>  mm/page_frag_cache.c                          | 12 +++++-----
-> >>>>  net/core/skbuff.c                             | 16 +++++++-------
-> >>>>  net/core/xdp.c                                |  2 +-
-> >>>>  net/rxrpc/txbuf.c                             | 15 +++++++------
-> >>>>  net/sunrpc/svcsock.c                          |  6 ++---
-> >>>>  .../selftests/mm/page_frag/page_frag_test.c   | 13 ++++++-----
-> >>>>  19 files changed, 75 insertions(+), 70 deletions(-)
-> >>>>
-> >>>
-> >>> I still say no to this patch. It is an unnecessary name change and ad=
-ds
-> >>> no value. If you insist on this patch I will reject the set every tim=
-e.
-> >>>
-> >>> The fact is it is polluting the git history and just makes things
-> >>> harder to maintain without adding any value as you aren't changing wh=
-at
-> >>> the function does and there is no need for this. In addition it just
-> >>
-> >> I guess I have to disagree with the above 'no need for this' part for
-> >> now, as mentioned in [1]:
-> >>
-> >> "There are three types of API as proposed in this patchset instead of
-> >> two types of API:
-> >> 1. page_frag_alloc_va() returns [va].
-> >> 2. page_frag_alloc_pg() returns [page, offset].
-> >> 3. page_frag_alloc() returns [va] & [page, offset].
-> >>
-> >> You seemed to miss that we need a third naming for the type 3 API.
-> >> Do you see type 3 API as a valid API? if yes, what naming are you
-> >> suggesting for it? if no, why it is not a valid API?"
-> >
-> > I didn't. I just don't see the point in pushing out the existing API
-> > to support that. In reality 2 and 3 are redundant. You probably only
-> > need 3. Like I mentioned earlier you can essentially just pass a
->
-> If the caller just expect [page, offset], do you expect the caller also
-> type 3 API, which return both [va] and [page, offset]?
->
-> I am not sure if I understand why you think 2 and 3 are redundant here?
-> If you think 2 and 3 are redundant here, aren't 1 and 3 also redundant
-> as the similar agrument?
 
-The big difference is the need to return page and offset. Basically to
-support returning page and offset you need to pass at least one value
-as a pointer so you can store the return there.
+Chagnes from v1 to v2: https://lore.kernel.org/all/20240819082513.27176-1-Tze-nan.Wu@mediatek.com/
+  Instead of using cgroup_lock in the fastpath, invoke cgroup_bpf_enabled
+  only once and cache the value in the variable `enabled`. `BPF_CGROUP_*`
+  macros in do_sock_getsockopt can then both check their condition with
+  the same variable, ensuring that either they both passing the condition
+  or both do not.
 
-The reason why 3 is just a redundant form of 2 is that you will
-normally just be converting from a va to a page and offset so the va
-should already be easily accessible.
+Appreciate for reviewing this!
+This patch should make cgroup_bpf_enabled() only using once,
+but not sure if "BPF_CGROUP_*" is modifiable?(not familiar with code here)
 
-> > page_frag via pointer to the function. With that you could also look
-> > at just returning a virtual address as well if you insist on having
-> > something that returns all of the above. No point in having 2 and 3 be
-> > seperate functions.
->
-> Let's be more specific about what are your suggestion here: which way
-> is the prefer way to return the virtual address. It seems there are two
-> options:
->
-> 1. Return the virtual address by function returning as below:
-> void *page_frag_alloc_bio(struct page_frag_cache *nc, struct bio_vec *bio=
-);
->
-> 2. Return the virtual address by double pointer as below:
-> int page_frag_alloc_bio(struct page_frag_cache *nc, struct bio_vec *bio,
->                         void **va);
+If it's not, then maybe I can come up another patch like below one:
+	+++ b/net/socket.c
+	  	int max_optlen __maybe_unused;
+	 	const struct proto_ops *ops;
+	 	int err;
+	+	bool enabled;
+	
+	 	err = security_socket_getsockopt(sock, level, optname);
+	 	if (err)
+	 		return err;
+	
+	-	if (!compat)
+	+	enabled = cgroup_bpf_enabled(CGROUP_GETSOCKOPT);
+	+   if (!compat && enabled)
+			max_optlen = BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen);
 
-I was thinking more of option 1. Basically this is a superset of
-page_frag_alloc_va that is also returning the page and offset via a
-page frag. However instead of bio_vec I would be good with "struct
-page_frag *" being the value passed to the function to play the role
-of container. Basically the big difference between 1 and 2/3 if I am
-not mistaken is the fact that for 1 you pass the size, whereas with
-2/3 you are peeling off the page frag from the larger page frag cache
-after the fact via a commit type action.
+But this will cause do_sock_getsockopt calling cgroup_bpf_enabled up to
+three times , Wondering which approach will be more acceptable?
+
+---
+ include/linux/bpf-cgroup.h | 13 ++++++-------
+ net/socket.c               |  9 ++++++---
+ 2 files changed, 12 insertions(+), 10 deletions(-)
+
+diff --git a/include/linux/bpf-cgroup.h b/include/linux/bpf-cgroup.h
+index fb3c3e7181e6..251632d52fa9 100644
+--- a/include/linux/bpf-cgroup.h
++++ b/include/linux/bpf-cgroup.h
+@@ -390,20 +390,19 @@ static inline bool cgroup_bpf_sock_enabled(struct sock *sk,
+ 	__ret;								       \
+ })
+ 
+-#define BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen)			       \
++#define BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen, enabled)			       \
+ ({									       \
+ 	int __ret = 0;							       \
+-	if (cgroup_bpf_enabled(CGROUP_GETSOCKOPT))			       \
++	if (enabled)			       \
+ 		copy_from_sockptr(&__ret, optlen, sizeof(int));		       \
+ 	__ret;								       \
+ })
+ 
+ #define BPF_CGROUP_RUN_PROG_GETSOCKOPT(sock, level, optname, optval, optlen,   \
+-				       max_optlen, retval)		       \
++				       max_optlen, retval, enabled)		       \
+ ({									       \
+ 	int __ret = retval;						       \
+-	if (cgroup_bpf_enabled(CGROUP_GETSOCKOPT) &&			       \
+-	    cgroup_bpf_sock_enabled(sock, CGROUP_GETSOCKOPT))		       \
++	if (enabled && cgroup_bpf_sock_enabled(sock, CGROUP_GETSOCKOPT))		    \
+ 		if (!(sock)->sk_prot->bpf_bypass_getsockopt ||		       \
+ 		    !INDIRECT_CALL_INET_1((sock)->sk_prot->bpf_bypass_getsockopt, \
+ 					tcp_bpf_bypass_getsockopt,	       \
+@@ -518,9 +517,9 @@ static inline int bpf_percpu_cgroup_storage_update(struct bpf_map *map,
+ #define BPF_CGROUP_RUN_PROG_SOCK_OPS(sock_ops) ({ 0; })
+ #define BPF_CGROUP_RUN_PROG_DEVICE_CGROUP(atype, major, minor, access) ({ 0; })
+ #define BPF_CGROUP_RUN_PROG_SYSCTL(head,table,write,buf,count,pos) ({ 0; })
+-#define BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen) ({ 0; })
++#define BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen, enabled) ({ 0; })
+ #define BPF_CGROUP_RUN_PROG_GETSOCKOPT(sock, level, optname, optval, \
+-				       optlen, max_optlen, retval) ({ retval; })
++				       optlen, max_optlen, retval, enabled) ({ retval; })
+ #define BPF_CGROUP_RUN_PROG_GETSOCKOPT_KERN(sock, level, optname, optval, \
+ 					    optlen, retval) ({ retval; })
+ #define BPF_CGROUP_RUN_PROG_SETSOCKOPT(sock, level, optname, optval, optlen, \
+diff --git a/net/socket.c b/net/socket.c
+index fcbdd5bc47ac..5336a2755bb4 100644
+--- a/net/socket.c
++++ b/net/socket.c
+@@ -2365,13 +2365,16 @@ int do_sock_getsockopt(struct socket *sock, bool compat, int level,
+ 	int max_optlen __maybe_unused;
+ 	const struct proto_ops *ops;
+ 	int err;
++	bool enabled;
+ 
+ 	err = security_socket_getsockopt(sock, level, optname);
+ 	if (err)
+ 		return err;
+ 
+-	if (!compat)
+-		max_optlen = BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen);
++	if (!compat) {
++		enabled = cgroup_bpf_enabled(CGROUP_GETSOCKOPT);
++		max_optlen = BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen, enabled);
++	}
+ 
+ 	ops = READ_ONCE(sock->ops);
+ 	if (level == SOL_SOCKET) {
+@@ -2390,7 +2393,7 @@ int do_sock_getsockopt(struct socket *sock, bool compat, int level,
+ 	if (!compat)
+ 		err = BPF_CGROUP_RUN_PROG_GETSOCKOPT(sock->sk, level, optname,
+ 						     optval, optlen, max_optlen,
+-						     err);
++						     err, enabled);
+ 
+ 	return err;
+ }
+-- 
+2.45.2
+
 
