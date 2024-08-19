@@ -4,69 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC5F1C52D7C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Aug 2024 19:19:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B37B1C52D7C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Aug 2024 01:53:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:From:Subject
-	:Message-ID:In-Reply-To:Date:MIME-Version:Reply-To:Cc:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=xOn7k/gf92spm8LI+iLgdIYChmze6niofBQwCBXRuGE=; b=CSqQk/F1mzNkZk
-	3gfqf3z5dSKhqAAF30EBKCEMNl+NYknkcgwej3tyRwoidKanAy5f8dV/LIlYXoY5CnDuZAsAjvY0u
-	WSsFg3DsEFBzuhJ2glEmBOO7bZ9gINhIu1yJyrmIUOf1jA6z/OwgkrEyEuLEFMrifAO7IcZ3UZBaR
-	o5ICZ7nH8oDy+2Zdt023qj8tKtb5ZeBOXSsfWXrAvrTDniJNxx44ercsZT/eY/bTXVC5c5DVQlqRh
-	FjU8l6MaU+6XI6cw2RVT/mXbUJk2UwuH5VDO4svVd1C9QrmEOyzDBookXS0ygl4c2vLqZB1IbRqfk
-	VcM3ChHWhGVadfyjj8nA==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9lXFEKYRP6cX54am0HUFt00DDuPh2zJC7xV1hZiNIZY=; b=3Y2oATh3ZhbnzX09+DXjPsIpq4
+	caubbAZAVdCM1s7tUQiaBztwPYzuCgWkZ8eRfVCfpcWC389UY1+LQV24rsb8dFVl3tQqaTWv9pCyX
+	lxMaxB2/AmUq4fMNt/brd3aHFrJvV0Mf3fCvzZ7WwwtNTSKewDNM61f0WnTnYkMAXn6PTydEIPDSf
+	tvaqIfKf88ruEOsIxR5aujwWDoybP24Ge394R1L/E9IBHjTqR7uHOZTMYzF8xv841wrkiifzIqNAe
+	sUmWNKruXgbmtfyNv0v2YFLDhPf1djXlLp1kV1aT4QnjbtkgpZ/nXj2aEBntYXIjS8dn2hV42IEIZ
+	TY5UoqiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sflRP-0000000H77F-3Yyt;
-	Sun, 18 Aug 2024 19:19:51 +0000
-Received: from mail-il1-f197.google.com ([209.85.166.197])
+	id 1sfrah-000000005X2-1Ljr;
+	Mon, 19 Aug 2024 01:53:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sflQd-0000000H6uI-42qx
+	id 1sfrae-000000005WS-1i6h
 	for linux-mediatek@lists.infradead.org;
-	Sun, 18 Aug 2024 19:19:05 +0000
-Received: by mail-il1-f197.google.com with SMTP id e9e14a558f8ab-39d10b6da2dso36223485ab.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 18 Aug 2024 12:19:03 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724008742; x=1724613542;
-        h=to:from:subject:message-id:in-reply-to:date:mime-version
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=xOn7k/gf92spm8LI+iLgdIYChmze6niofBQwCBXRuGE=;
-        b=C7h9l54taOjOddIIdpSFR+LSwL4DBaKONviCpRGRZjY//E4QkBIYEWjBlEQAhTZo+A
-         VuEMf+WzdESzK0lNhVXbl6t+XaMxBc6mYK9fgevwgunqTAEtQUFhKMPeirSWMhno5MP3
-         BOa7yVoGHsRbi5zzYsnho6ltlv51vmEVZCJYkn2zt1tXEAK+bBBD3osRalZ6DzkzaFvI
-         eF46ERE6rh0cASpZgDSUs9cipRF3jWsUsU6Y44MK49VyA/hI5K/iGyP5ks/UCDEu9Gno
-         DCw2TR0RLvHbgnWxEkM+asVInlYKAPRDHjmGRVISGn/kUOi3LBZs0Jwb9F2H+pwUI1GS
-         TUqw==
-X-Forwarded-Encrypted: i=1; AJvYcCVPN0b1+ivkExj/9ERt0/SvmAbZRVjSevr6vcRSLn7H4NdbDj5JIj+2NreDT5ZPUw7fqiezyio74G4cKByPGhraQzqfCk085MsEvkqRbE5Ii7Xb
-X-Gm-Message-State: AOJu0Yz+V9FH6Cl3OFnol6ICieOfg/K7BjQ1aOH0AQOOuIgZuKe+2Ls7
-	Qmiik/APB9cbkOx8uR4tDd1xx7w1lgDpdqgwB1p3wCcW4LlKOHvPTGNWE/q1KpmCasN/kJdsNqh
-	wWh/EcNZakAmdENtUhoy8a4zWTPkkFGFdYqHeKEW6BQAJU0zyLwGrigY=
-X-Google-Smtp-Source: AGHT+IEet1fM8+b3ovFLzqGlZdbvkZDwMB2WRcSgR9DQgyJRsVgqllfm0eD++outR/I0JQiH4ZYqp+gTlF5cvJ7CXE5gZrbqTXyY
+	Mon, 19 Aug 2024 01:53:49 +0000
+X-UUID: db234fc25dcd11efb3adad29d29602c1-20240818
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=9lXFEKYRP6cX54am0HUFt00DDuPh2zJC7xV1hZiNIZY=;
+	b=FaauE4Z2+TjAjjGuMOPHeTrdt1D1RbWa+6EGSRnKczLvLJQhXOftLajoMi8Y/Or1HujJ7tii8Qq2hjVCiz9qOBb+p3gG/wD9JNUb1WMV3f5pZyzlRgaVUdm9YYzIaXrkG/qsBB7eiep7QIuLwQzZ9qbSgyYeWE5Zof71TduPrtw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:b4d0f6b7-9dca-4e5d-b26f-191b0c0d07cf,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:e585a55b-248b-45cb-bde8-d789f49f4e1e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: db234fc25dcd11efb3adad29d29602c1-20240818
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <mingyen.hsieh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 4869879; Sun, 18 Aug 2024 18:53:39 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 19 Aug 2024 09:53:36 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 19 Aug 2024 09:53:36 +0800
+From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
+	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Michael.Lo@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
+	<km.lin@mediatek.com>, <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>,
+	<posh.sun@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>
+Subject: [PATCH 2/2] wifi: mt76: mt7925: replace chan config with extend txpower config for clc
+Date: Mon, 19 Aug 2024 09:53:34 +0800
+Message-ID: <20240819015334.14580-2-mingyen.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240819015334.14580-1-mingyen.hsieh@mediatek.com>
+References: <20240819015334.14580-1-mingyen.hsieh@mediatek.com>
 MIME-Version: 1.0
-X-Received: by 2002:a05:6e02:170e:b0:39a:eb4d:23c5 with SMTP id
- e9e14a558f8ab-39d26c36cfamr8712765ab.0.1724008742349; Sun, 18 Aug 2024
- 12:19:02 -0700 (PDT)
-Date: Sun, 18 Aug 2024 12:19:02 -0700
-In-Reply-To: <000000000000612f290618eee3e5@google.com>
-X-Google-Appengine-App-Id: s~syzkaller
-X-Google-Appengine-App-Id-Alias: syzkaller
-Message-ID: <000000000000ad7bab061ffa109d@google.com>
-Subject: Re: [syzbot] [wireless?] WARNING in cfg80211_bss_color_notify
-From: syzbot <syzbot+d073f255508305ccb3fd@syzkaller.appspotmail.com>
-To: angelogioacchino.delregno@collabora.com, davem@davemloft.net, 
-	edumazet@google.com, johannes.berg@intel.com, johannes@sipsolutions.net, 
-	kuba@kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-wireless@vger.kernel.org, matthias.bgg@gmail.com, 
-	michael-cy.lee@mediatek.com, netdev@vger.kernel.org, pabeni@redhat.com, 
-	syzkaller-bugs@googlegroups.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--1.076600-8.000000
+X-TMASE-MatchedRID: EJLkrvRJ8yw0Z9sXcK7F6SmjEOrcO6AyTJDl9FKHbrnBz2A0dX3336PF
+	jJEFr+olKE0Je8DR/D4NXwNUB3oA790H8LFZNFG7MGpgBNI6BaMAmqpN/LW/FDsL6l6VX2Q6YfM
+	MqExvS6ooATlh54i3zaT85cjPvuTpPy8ILgLs3TgHwrRMBVxcR6V3yIRdB6FsUv+hgGJf01iAhO
+	caQrQ0U1GyRcoeF18qmKP0zzpTAeGwod8xOMKmvMCBO+zxAW5pftwZ3X11IV0=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--1.076600-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 9ED05BC689255F93E55A654E4361CF77CD3BFF8DE060F7051FE9EA8C806E78452000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240818_121904_025086_81A0B809 
-X-CRM114-Status: UNSURE (   3.69  )
+X-CRM114-CacheID: sfid-20240818_185348_480426_4240FA80 
+X-CRM114-Status: UNSURE (   9.77  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,25 +101,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-syzbot suspects this issue was fixed by commit:
+From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-commit 4044b23781104801f70c4a4ec3ca090730a161c5
-Author: Michael-CY Lee <michael-cy.lee@mediatek.com>
-Date:   Fri Jul 5 07:43:46 2024 +0000
+Since MT792x_CLC_CHAN is currently not in use, we have added an
+extension for setting txpower to replace it.
 
-    wifi: mac80211: do not check BSS color collision in certain cases
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt792x.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-bisection log:  https://syzkaller.appspot.com/x/bisect.txt?x=130f62dd980000
-start commit:   f6f25eebe05f Merge branch 'wangxun-fixes'
-git tree:       net
-kernel config:  https://syzkaller.appspot.com/x/.config?x=bddb81daac38d475
-dashboard link: https://syzkaller.appspot.com/bug?extid=d073f255508305ccb3fd
-syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=10f9ec92980000
-C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=1595fa84980000
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
+index 7fa74d59cc48..ab12616ec2b8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
+@@ -68,7 +68,7 @@ struct mt792x_fw_features {
+ 
+ enum {
+ 	MT792x_CLC_POWER,
+-	MT792x_CLC_CHAN,
++	MT792x_CLC_POWER_EXT,
+ 	MT792x_CLC_MAX_NUM,
+ };
+ 
+-- 
+2.18.0
 
-If the result looks correct, please mark the issue as fixed by replying with:
-
-#syz fix: wifi: mac80211: do not check BSS color collision in certain cases
-
-For information about bisection process see: https://goo.gl/tpsmEJ#bisection
 
