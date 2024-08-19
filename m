@@ -4,68 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0018C3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Aug 2024 11:11:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E634FC3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Aug 2024 12:15:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4aTFlpXKurASa7thKvuwt90BLNVvPLIqquwM+xGZzHc=; b=y7cukmbDYX/j/4qrUwwLKF+wUr
-	Tsv7iU4q2AZZUe1m9w5UPsD3UEzIygu/dkERD5FnC9gm3z4T+LH0ew+Ne/fmDxnciPOAS1JJV9qrW
-	vVkanNwihTr3QwnCEsVE31F1YVdOhpTodowGkEPtqvKQQapOLc57l4tuBY9mrHItg1ReT3M+qfEI7
-	UTbU5QGJoeNPxzsfwBxw3LEx8gX2g+iQfs6BV3wXT6+300k+ZhZNTMOO7BJtoLV3xLmCrA86MZkrd
-	xUh8q6+OzNm8OAFEM7JAmrz4WAdcIdZETRopEIvvRih8qsHfoukTRzEdKz7yD0asYlJzdBr22teqt
-	GWaQYUzg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kb1adcHc3E8U+gSdouMJyc+8B8S5nqfJYg6YgFfK1Po=; b=lfzM8DoYoFJm7cEP0ZXpNyAXsg
+	04VHKbeEU6szxXB4fcqSlonBkjnR40P3x33TjWuJwQ2dlBQfxgpvcbvCG099rbreWwmuYJknwUkp4
+	NkzBS7OtMRfQrv71sQ+nBioTeXSML4bfA0eBqMPMRGSMIrZRWASjXBniiSgwvjGNFLNzQfo6nxI1q
+	xUyJUGI0CjGicKOhOtiJX8Apj/l+hQDl7g29vb3uMWa1EjvZKG7XQx9G4E5cfIl6/CF+JUnt7Jr+2
+	Sbg/XVhemmcGWw3zvAeSdNCrldVvt9Gr+WwgjLfTVziTOxyq9FA1I0ZWJb2X2n564Mvz+GxDqfl2y
+	aBqI9yHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sg0Ik-00000001Btq-34kE;
-	Mon, 19 Aug 2024 11:11:54 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sg1IC-00000001OYg-3v3D;
+	Mon, 19 Aug 2024 12:15:25 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sg0HA-00000001BRo-2cRz;
-	Mon, 19 Aug 2024 11:10:19 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id B33B1CE0A52;
-	Mon, 19 Aug 2024 11:10:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 702C9C4AF0C;
-	Mon, 19 Aug 2024 11:10:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724065813;
-	bh=hRlfP4Eb88D8IgNcliWrTMZtueZ9Wxlg1wLUE+yG/qs=;
-	h=From:Date:Subject:To:Cc:From;
-	b=fse6Iscoa6Y+WAZDq1+OL18a97PafMlO/bNnJz5KwKgpzMj04Ftd93IN8nk0M5152
-	 KuckX0h6cQQaVO3BVm12uTtGZ7UGkW7gOJ8SX0YKp8ohfeZAnasHnB+QdykoVTSuyv
-	 bQYe+idGS3bDXpycj1HFtr4ghNaxyONjA7O+5PLi+wcc6NTV8Zjt7l96X++IiMA15J
-	 QUHNI8sp9nfHmWr3UlDaKMskgLUwx0ZxX4QlL/FDXlSXOzzco03nyFdcpkAHs5mCuq
-	 tLAaBKCcCBZMriE+fMJl/D8SQM8btuV5oTDpF+s8gdHbr2S4nepZIoYoSWSX1uv/Oa
-	 EqJwQCgV8Mjdw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 19 Aug 2024 13:10:09 +0200
-Subject: [PATCH net-next] net: airoha: configure hw mac address according
- to the port id
+	id 1sg1Ar-00000001Mbh-3Obp
+	for linux-mediatek@lists.infradead.org;
+	Mon, 19 Aug 2024 12:07:52 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-20227ba378eso11400385ad.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 19 Aug 2024 05:07:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1724069268; x=1724674068; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=kb1adcHc3E8U+gSdouMJyc+8B8S5nqfJYg6YgFfK1Po=;
+        b=LCxJi79LnANgZXC6d0QpfJQNeoc5InEHKokSWojNk1XElD1Q3sYJL7FQPAxwzRNQyn
+         QpKaJCLhF3Sq8i26rmcCTtXvpm1itU4Tr4FOkFcxQZyr8W9ID3GgklQleFwEheOK/vUu
+         k8HPPOu91obsbGV6cuzhncM+IbPjofzd2GyLU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1724069268; x=1724674068;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=kb1adcHc3E8U+gSdouMJyc+8B8S5nqfJYg6YgFfK1Po=;
+        b=dcpIQkxf4rZ67LDDomYPra1hiPhu6tF9isIptd1xHLConhCn++WIE03p2YfJLOzOMN
+         N+0ay9OtOmKLom8GueuAujXUlHJmc+aRhmczt5+/21ZtLZjf5jeGJAjahMQSMFw7wRmb
+         ow5FYAY8xjy0x94B6/fq3LZHno3UX6ALmSzq1cCUiTj7xXMh1l0bc9N9y8u9+c9RNDEl
+         s9epIYOh2rXO+OdQl7Olnec69cTBN/2Bo+G2M94s3dJCd/jKE7xXrgBEFTyo4drUoRsr
+         K3FLZ0HoO/DR+ncjp1S/q7R+dU1Kjj33RIMan9t5nhwuwrIGWkElSnhCPFGZ3K0DnRT2
+         VQAg==
+X-Forwarded-Encrypted: i=1; AJvYcCU4ZqwyP8bLyplx1KvAMaH+gnc/RNVl7EUr+3u472xnUNV8dMbjApNjsDS8oIvF2ZRuysTNk3rK8fIQLzmf8JBGovvuPsh40dccSFcXINIvXe7I
+X-Gm-Message-State: AOJu0YynJD/sS2OyC+aAvOkCQl5/PMQOrcTopZbP7yo9TxoGci0lFTHL
+	UVCDLy0PqWcRcbqmwAXt5eBUCu6izHZ2Swq1kuJOS9QoRBtGRmyu5FGHEiiqLg==
+X-Google-Smtp-Source: AGHT+IEruytxR9BL+HNBSd/NfoQ9M+d1X+XJ4kW9Kd3kJNr04j3cPKnLo1htQAN7DL5PhvB2Vt1A0Q==
+X-Received: by 2002:a17:902:f690:b0:202:47ca:fa1d with SMTP id d9443c01a7336-20247cafdd4mr34834745ad.50.1724069267993;
+        Mon, 19 Aug 2024 05:07:47 -0700 (PDT)
+Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:923a:77c1:913c:bcb8])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-201f02fab02sm61802005ad.48.2024.08.19.05.07.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 19 Aug 2024 05:07:47 -0700 (PDT)
+From: Pin-yen Lin <treapking@chromium.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS),
+	Pi-Hsun Shih <pihsun@chromium.org>,
+	Jitao Shi <jitao.shi@mediatek.com>,
+	Fabien Parent <fparent@baylibre.com>,
+	Pin-yen Lin <treapking@chromium.org>
+Subject: [RESEND PATCH v2 1/2] arm64: dts: mt8183: add dpi node to mt8183
+Date: Mon, 19 Aug 2024 20:05:55 +0800
+Message-ID: <20240819120735.1508789-1-treapking@chromium.org>
+X-Mailer: git-send-email 2.46.0.184.g6999bdac58-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240819-airoha-eth-wan-mac-addr-v1-1-e8d7c13b3182@kernel.org>
-X-B4-Tracking: v=1; b=H4sIABAow2YC/0WNQQ6CMBBFr0Jm7SRtQSxcxbAY6NR2YcEB0YRwd
- xtYuHwv+e9vMLNEnqEtNhBe4xzHlEFfChgCpQdjdJnBKFMpqxukKGMg5CXghxI+aUByTlBVddm
- b3tmGCPJ6Evbxe5Tv3cnCr3c+WE7577fFUb+pK/pRsEatsZ88Ulk17AdlnbftaqDb9x/j83/Ps
- AAAAA==
-To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
- Mark Lee <Mark-MC.Lee@mediatek.com>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- lorenzo.bianconi83@gmail.com, Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240819_041017_196883_15252BAF 
-X-CRM114-Status: GOOD (  12.06  )
+X-CRM114-CacheID: sfid-20240819_050750_029096_25AEEDBB 
+X-CRM114-Status: UNSURE (   9.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,94 +97,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-GDM1 port on EN7581 SoC is connected to the lan dsa switch.
-GDM{2,3,4} can be used as wan port connected to an external
-phy module. Configure hw mac address registers according to the port id.
+From: Pi-Hsun Shih <pihsun@chromium.org>
 
+Add dpi node to mt8183.
+
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Signed-off-by: Pin-yen Lin <treapking@chromium.org>
 ---
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/mediatek/airoha_eth.c | 33 +++++++++++++++++++++++-------
- 1 file changed, 26 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/airoha_eth.c b/drivers/net/ethernet/mediatek/airoha_eth.c
-index 1fb46db0c1e9..4914565c2fac 100644
---- a/drivers/net/ethernet/mediatek/airoha_eth.c
-+++ b/drivers/net/ethernet/mediatek/airoha_eth.c
-@@ -67,6 +67,10 @@
- #define FE_RST_GDM3_MBI_ARB_MASK	BIT(2)
- #define FE_RST_CORE_MASK		BIT(0)
- 
-+#define REG_FE_WAN_MAC_H		0x0030
-+#define REG_FE_WAN_MAC_LMIN		0x0034
-+#define REG_FE_WAN_MAC_LMAX		0x0038
-+
- #define REG_FE_LAN_MAC_H		0x0040
- #define REG_FE_LAN_MAC_LMIN		0x0044
- #define REG_FE_LAN_MAC_LMAX		0x0048
-@@ -900,16 +904,31 @@ static void airoha_qdma_irq_disable(struct airoha_qdma *qdma, int index,
- 	airoha_qdma_set_irqmask(qdma, index, mask, 0);
- }
- 
--static void airoha_set_macaddr(struct airoha_eth *eth, const u8 *addr)
-+static bool airhoa_is_lan_gdm_port(struct airoha_gdm_port *port)
- {
--	u32 val;
-+	/* GDM1 port on EN7581 SoC is connected to the lan dsa switch.
-+	 * GDM{2,3,4} can be used as wan port connected to an external
-+	 * phy module.
-+	 */
-+	return port->id == 1;
-+}
-+
-+static void airoha_set_macaddr(struct airoha_gdm_port *port, const u8 *addr)
-+{
-+	bool is_lan_port = airhoa_is_lan_gdm_port(port);
-+	struct airoha_eth *eth = port->qdma->eth;
-+	u32 val, reg;
- 
- 	val = (addr[0] << 16) | (addr[1] << 8) | addr[2];
--	airoha_fe_wr(eth, REG_FE_LAN_MAC_H, val);
-+	reg = is_lan_port ? REG_FE_LAN_MAC_H : REG_FE_WAN_MAC_H;
-+	airoha_fe_wr(eth, reg, val);
- 
- 	val = (addr[3] << 16) | (addr[4] << 8) | addr[5];
--	airoha_fe_wr(eth, REG_FE_LAN_MAC_LMIN, val);
--	airoha_fe_wr(eth, REG_FE_LAN_MAC_LMAX, val);
-+	reg = is_lan_port ? REG_FE_LAN_MAC_LMIN : REG_FE_WAN_MAC_LMIN;
-+	airoha_fe_wr(eth, reg, val);
-+
-+	reg = is_lan_port ? REG_FE_LAN_MAC_LMAX : REG_FE_WAN_MAC_LMAX;
-+	airoha_fe_wr(eth, reg, val);
- }
- 
- static void airoha_set_gdm_port_fwd_cfg(struct airoha_eth *eth, u32 addr,
-@@ -2340,7 +2359,7 @@ static int airoha_dev_set_macaddr(struct net_device *dev, void *p)
- 	if (err)
- 		return err;
- 
--	airoha_set_macaddr(port->qdma->eth, dev->dev_addr);
-+	airoha_set_macaddr(port, dev->dev_addr);
- 
- 	return 0;
- }
-@@ -2349,7 +2368,7 @@ static int airoha_dev_init(struct net_device *dev)
- {
- 	struct airoha_gdm_port *port = netdev_priv(dev);
- 
--	airoha_set_macaddr(port->qdma->eth, dev->dev_addr);
-+	airoha_set_macaddr(port, dev->dev_addr);
- 
- 	return 0;
- }
+(no changes since v1)
 
----
-base-commit: a99ef548bba01435f19137cf1670861be1c1ee4b
-change-id: 20240819-airoha-eth-wan-mac-addr-0463b2bd89aa
-prerequisite-change-id: 20240705-for-6-11-bpf-a349efc08df8:v2
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-Best regards,
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 267378fa46c0..266441e999f2 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1836,6 +1836,17 @@ dsi0: dsi@14014000 {
+ 			phy-names = "dphy";
+ 		};
+ 
++		dpi0: dpi@14015000 {
++			compatible = "mediatek,mt8183-dpi";
++			reg = <0 0x14015000 0 0x1000>;
++			interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
++			clocks = <&mmsys CLK_MM_DPI_IF>,
++				 <&mmsys CLK_MM_DPI_MM>,
++				 <&apmixedsys CLK_APMIXED_TVDPLL>;
++			clock-names = "pixel", "engine", "pll";
++		};
++
+ 		mutex: mutex@14016000 {
+ 			compatible = "mediatek,mt8183-disp-mutex";
+ 			reg = <0 0x14016000 0 0x1000>;
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.46.0.184.g6999bdac58-goog
 
 
