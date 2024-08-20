@@ -4,107 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6B52C3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Aug 2024 12:41:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C7AFC3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Aug 2024 13:07:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2GiAEYRdB7PJpGxHcpn0pum5egqfLEPF/T6zWzFBrpA=; b=WfMNOBJZ2GDr1JKbVc92dAa9UA
-	CBdtMD6HIi9SnHCEmIeLs0CE7e/5aObRXFv5r0y6xXKrdxxLDszhO2YbZ5pEvDB2CUAaSxRPwqU/6
-	P5Wya1ZvmAqQ70m5c9xdIIJb/q6C+LiPD4Ha1ypniC4rGNeBFXqpqWBuDnPE57dM9vig+Ce0iy2pi
-	YB+Ek1e8kwAqxzSuwXBOLTFPJcanp80oTS4EIDp2ueKhiLV9i5HVHIvmVF36o50NCU2Erm8j9Kgng
-	gX0FmgiZ2jY+iPiwwOuMyPXcw8gIDmlvkY/cA9qPozFCKcUjLNItnmtj00sP5F21DnjyUNEWITB60
-	Uxhvdbdw==;
+	bh=yDKc/6xoYjtFNkM4oka/cWTFsDfETxi1OyIqvH0kI1g=; b=yAfQ6C3FbUNH/dukRwhWhHwz0S
+	daGgYCyjaOQEevDvIZx4Hmk/iAXUbBhA+GHb1YTaPE3yxm54ht19Kz4rLlxIuAv+A9o65I8ElNpBu
+	mML4d992LjCYtW7qqZZDm3hdIf1iSpKzB2yuzKD0O6KdewyslzFv7tHDL82pp7u9G6/FyJjjEGWRy
+	9tQHUmDOND4Ylfd1vh8B5Jc9MXiNkmVhFK1gwq84CBSYGNtth8bS1Oinv6/nzShdcKGpZNBKDcI1Q
+	OwLjMwn8daMz7DT9CwyrF8yPqujbxpYiVCL5mZZGoxLFFLdfBRIZ8VMZZU6DHedpFkPjhDUZS6SFM
+	N6pZe2gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgOAl-00000005EzL-0syd;
-	Tue, 20 Aug 2024 12:41:15 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sgOaO-00000005IZd-2dhz;
+	Tue, 20 Aug 2024 13:07:44 +0000
+Received: from szxga01-in.huawei.com ([45.249.212.187])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgOA2-00000005Eu6-2P4n;
-	Tue, 20 Aug 2024 12:40:32 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 8E2BACE094C;
-	Tue, 20 Aug 2024 12:40:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B941DC4AF10;
-	Tue, 20 Aug 2024 12:40:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724157627;
-	bh=P16LczguY7fSUQubDRhmxrffuz90bCCespjlFyzAckQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=M8YR08yls7HTzqfISvHa09GqocL6t1nQEYPdEa75Jaiwwv16YkpdbBhrcTpLJAvaY
-	 8CJEjeF9OhQqghlcQYgI994NqSnAS25fF1Izju04aZR43ycEgYQo8pQatX9npuo0RZ
-	 VgPxGjNJPZDI/Whqb0B+bxS3R+PU98kRer3AfKH+8Ag7p0jM4RP+hiIS0YFoA29QbB
-	 01uJaQ9wi3jdb+11KmaqvS5ELV3rLDDEj4l/RwjArF13/hbSFi3RTy6cCx/s53UFoJ
-	 q9Piz4sUtlKp2zHBvfibaWT5MOyKvupI2IXyOT9Hom0vYWCJNAt0I2xHz8EMqoQUsc
-	 lgcaUEUP6qt0Q==
-Message-ID: <101f33d8-9bb9-4722-9a6a-718394246b70@kernel.org>
-Date: Tue, 20 Aug 2024 14:40:21 +0200
+	id 1sgOaK-00000005IXD-07FD;
+	Tue, 20 Aug 2024 13:07:42 +0000
+Received: from mail.maildlp.com (unknown [172.19.88.105])
+	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Wp8rD3W5wzyR2p;
+	Tue, 20 Aug 2024 21:07:08 +0800 (CST)
+Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
+	by mail.maildlp.com (Postfix) with ESMTPS id 1EF6B140138;
+	Tue, 20 Aug 2024 21:07:30 +0800 (CST)
+Received: from [10.67.120.129] (10.67.120.129) by
+ dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.11; Tue, 20 Aug 2024 21:07:29 +0800
+Message-ID: <98ceade3-8d60-45bf-a419-ff3982a96101@huawei.com>
+Date: Tue, 20 Aug 2024 21:07:29 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] memory: mtk-smi: Simplify using devm_clk_get_enabled()
-To: Rong Qianfeng <rongqianfeng@vivo.com>, Yong Wu <yong.wu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-Cc: opensource.kernel@vivo.com
-References: <20240820123426.48694-1-rongqianfeng@vivo.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH net-next v13 04/14] mm: page_frag: add '_va' suffix to
+ page_frag API
+To: Alexander Duyck <alexander.duyck@gmail.com>
+CC: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>,
+	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Subbaraya Sundeep
+	<sbhatta@marvell.com>, Chuck Lever <chuck.lever@oracle.com>, Sagi Grimberg
+	<sagi@grimberg.me>, Jeroen de Borst <jeroendb@google.com>, Praveen
+ Kaligineedi <pkaligineedi@google.com>, Shailend Chand <shailend@google.com>,
+	Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+	Przemek Kitszel <przemyslaw.kitszel@intel.com>, Sunil Goutham
+	<sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, hariprasad
+	<hkelam@marvell.com>, Felix Fietkau <nbd@nbd.name>, Sean Wang
+	<sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
+ Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith
+ Busch <kbusch@kernel.org>, Jens Axboe <axboe@kernel.dk>, Christoph Hellwig
+	<hch@lst.de>, Chaitanya Kulkarni <kch@nvidia.com>, "Michael S. Tsirkin"
+	<mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+	=?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>, Andrew Morton
+	<akpm@linux-foundation.org>, Alexei Starovoitov <ast@kernel.org>, Daniel
+ Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
+	John Fastabend <john.fastabend@gmail.com>, Andrii Nakryiko
+	<andrii@kernel.org>, Martin KaFai Lau <martin.lau@linux.dev>, Eduard
+ Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>, Yonghong Song
+	<yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, Stanislav Fomichev
+	<sdf@fomichev.me>, Hao Luo <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>,
+	David Howells <dhowells@redhat.com>, Marc Dionne <marc.dionne@auristor.com>,
+	Jeff Layton <jlayton@kernel.org>, Neil Brown <neilb@suse.de>, Olga
+ Kornievskaia <kolga@netapp.com>, Dai Ngo <Dai.Ngo@oracle.com>, Tom Talpey
+	<tom@talpey.com>, Trond Myklebust <trondmy@kernel.org>, Anna Schumaker
+	<anna@kernel.org>, Shuah Khan <shuah@kernel.org>,
+	<intel-wired-lan@lists.osuosl.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-nvme@lists.infradead.org>,
+	<kvm@vger.kernel.org>, <virtualization@lists.linux.dev>,
+	<linux-mm@kvack.org>, <bpf@vger.kernel.org>, <linux-afs@lists.infradead.org>,
+	<linux-nfs@vger.kernel.org>, <linux-kselftest@vger.kernel.org>
+References: <20240808123714.462740-1-linyunsheng@huawei.com>
+ <20240808123714.462740-5-linyunsheng@huawei.com>
+ <d1a23116d054e2ebb00067227f0cffecefe33e11.camel@gmail.com>
+ <676a2a15-d390-48a7-a8d7-6e491c89e200@huawei.com>
+ <CAKgT0Uct5ptfs9ZEoe-9u-fOVz4HLf+5MS-YidKV+xELCBHKNw@mail.gmail.com>
+ <3e069c81-a728-4d72-a5bb-3be00d182107@huawei.com>
+ <CAKgT0UcDDFeMqD_eRe1-2Og0GEEFyNP90E9SDxDjskdgtMe0Uw@mail.gmail.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240820123426.48694-1-rongqianfeng@vivo.com>
-Content-Type: text/plain; charset=UTF-8
+From: Yunsheng Lin <linyunsheng@huawei.com>
+In-Reply-To: <CAKgT0UcDDFeMqD_eRe1-2Og0GEEFyNP90E9SDxDjskdgtMe0Uw@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.67.120.129]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ dggpemf200006.china.huawei.com (7.185.36.61)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240820_054030_999468_A4D27A4A 
-X-CRM114-Status: UNSURE (   6.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240820_060740_618796_CD89D358 
+X-CRM114-Status: GOOD (  30.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,21 +108,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20/08/2024 14:34, Rong Qianfeng wrote:
-> devm_clk_get_enabled() will call devm_clk_get() + clk_prepare_enable()
-> and the clock will automatically be disabled, unprepared and freed when
-> the device is unbound from the bus. 
+On 2024/8/19 23:54, Alexander Duyck wrote:
 
-That's obvious, drop. You do not have to explain basic APIs. Instead say
-what is being simplified here.
+...
 
-> So simplify mtk_smi_common_probe()
-> accordingly.
+>>>>
+>>>> "There are three types of API as proposed in this patchset instead of
+>>>> two types of API:
+>>>> 1. page_frag_alloc_va() returns [va].
+>>>> 2. page_frag_alloc_pg() returns [page, offset].
+>>>> 3. page_frag_alloc() returns [va] & [page, offset].
+>>>>
+>>>> You seemed to miss that we need a third naming for the type 3 API.
+>>>> Do you see type 3 API as a valid API? if yes, what naming are you
+>>>> suggesting for it? if no, why it is not a valid API?"
+>>>
+>>> I didn't. I just don't see the point in pushing out the existing API
+>>> to support that. In reality 2 and 3 are redundant. You probably only
+>>> need 3. Like I mentioned earlier you can essentially just pass a
+>>
+>> If the caller just expect [page, offset], do you expect the caller also
+>> type 3 API, which return both [va] and [page, offset]?
+>>
+>> I am not sure if I understand why you think 2 and 3 are redundant here?
+>> If you think 2 and 3 are redundant here, aren't 1 and 3 also redundant
+>> as the similar agrument?
+> 
+> The big difference is the need to return page and offset. Basically to
+> support returning page and offset you need to pass at least one value
+> as a pointer so you can store the return there.
+> 
+> The reason why 3 is just a redundant form of 2 is that you will
+> normally just be converting from a va to a page and offset so the va
+> should already be easily accessible.
 
-Also explain that you fix bug of missing unprepare in unbind and add
-Fixes+CC stable tags.
+I am assuming that by 'easily accessible', you meant the 'va' can be
+calculated as below, right?
 
-Best regards,
-Krzysztof
+va = encoded_page_address(encoded_va) +
+		(page_frag_cache_page_size(encoded_va) - remaining);
+
+I guess it is easily accessible, but it is not without some overhead
+to calculate the 'va' here.
+
+> 
+>>> page_frag via pointer to the function. With that you could also look
+>>> at just returning a virtual address as well if you insist on having
+>>> something that returns all of the above. No point in having 2 and 3 be
+>>> seperate functions.
+>>
+>> Let's be more specific about what are your suggestion here: which way
+>> is the prefer way to return the virtual address. It seems there are two
+>> options:
+>>
+>> 1. Return the virtual address by function returning as below:
+>> void *page_frag_alloc_bio(struct page_frag_cache *nc, struct bio_vec *bio);
+>>
+>> 2. Return the virtual address by double pointer as below:
+>> int page_frag_alloc_bio(struct page_frag_cache *nc, struct bio_vec *bio,
+>>                         void **va);
+> 
+> I was thinking more of option 1. Basically this is a superset of
+> page_frag_alloc_va that is also returning the page and offset via a
+> page frag. However instead of bio_vec I would be good with "struct
+> page_frag *" being the value passed to the function to play the role
+> of container. Basically the big difference between 1 and 2/3 if I am
+> not mistaken is the fact that for 1 you pass the size, whereas with
+> 2/3 you are peeling off the page frag from the larger page frag cache
+
+Let's be clear here: The callers just expecting [page, offset] also need
+to call type 3 API, which return both [va] and [page, offset]? and it
+is ok to ignore the overhead of calculating the 'va' for those kinds
+of callers just because we don't want to do the renaming for a existing
+API and can't come up with good naming for that?
+
+> after the fact via a commit type action.
+
+Just be clear here, there is no commit type action for some subtype of
+type 2/3 API.
+
+For example, for type 2 API in this patchset, it has below subtypes:
+
+subtype 1: it does not need a commit type action, it just return
+           [page, offset] instead of page_frag_alloc_va() returning [va],
+           and it does not return the allocated fragsz back to the caller
+           as page_frag_alloc_va() does not too:
+struct page *page_frag_alloc_pg(struct page_frag_cache *nc,
+                                unsigned int *offset, unsigned int fragsz,
+                                gfp_t gfp)
+
+subtype 2: it does need a commit type action, and @fragsz is returned to
+           the caller and caller used that to commit how much fragsz to
+           commit.
+struct page *page_frag_alloc_pg_prepare(struct page_frag_cache *nc,
+                                        unsigned int *offset,
+                                        unsigned int *fragsz, gfp_t gfp)
+
+Do you see subtype 1 as valid API? If no, why?
+If yes, do you also expect the caller to use "struct page_frag *" as the
+container? If yes, what is the caller expected to do with the size field in
+"struct page_frag *" from API perspective? Just ignore it?
 
 
