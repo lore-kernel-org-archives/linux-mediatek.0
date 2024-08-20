@@ -2,56 +2,56 @@ Return-Path: <linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.in
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5154C531DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Aug 2024 09:44:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA471C3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Aug 2024 12:03:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Vg3zms0Tizzwi9KvI0i8GUDSkVaytsdsY5uFVOwVvBE=; b=q4WTS375watzsy5GsBI+NCGT4D
-	Ub/WsOfXickGBbbdXD0+ofd4bt0528mvY3IP/xJYMvjS0aK7fX8PpJVWKgl/Ks57SuCGVWOChccAM
-	R+3RCtkyRhkCs6K0XAxGUPIWdvQ2sbCjOnlrbiW9uQGZDBtDtbH3iQR1Lsu5hAi9JinEVKob0mWp+
-	C7vQcf1TSKGYCB3B7BzU7OYlCNSdFCSmkKUH5lzrJBpy/4LejTi3MWD8Rz91CjpSJsRuV8MJr9Haf
-	Sd46F7mVVpKGzjQOSn3TGOsrwNV+aGetepEC83LF9RzIDszms7kQvDv1xP0rJuU9GjHZ6PQmF9irg
-	kLsBNU3g==;
+	bh=Vg3zms0Tizzwi9KvI0i8GUDSkVaytsdsY5uFVOwVvBE=; b=3tVyhzBowtEcRTjgRa9ERkaUH0
+	9yuYdQwTvQCdMxxa/2/slM57vqkVkBCY/djgQlxnDUUuA3Icwm49OreY0tIBzHJy+zS4DSxhQMu4u
+	SDu+vdi4iHpDq8swu5Wmjd+fqVNZ0M1XrHZHnCnkS7h8UkZ5NQTRUs2Hnw1bOEudQs+NogXgp4vXO
+	iJsY3GppWPeaJai+IiNJ7Kc5tkaNO1AvqDkLXmgmCNfAeQVtTiTYvg8itDEhvv9gMJVk4oSryFWVL
+	pJMgZltf61wK/68IKEMx4Nv5loDr86sKXFbq4tWsODeMyquBB5Jk1zC6dYiXg0aHdeCpGwUCIE9RW
+	Vldj7Yqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgLPe-00000004dr0-3v4a;
-	Tue, 20 Aug 2024 09:44:27 +0000
+	id 1sgNa5-00000005701-3j0A;
+	Tue, 20 Aug 2024 12:03:22 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgLMf-00000004csR-1MzL
+	id 1sgNa0-000000056yt-3jkD
 	for linux-mediatek@lists.infradead.org;
-	Tue, 20 Aug 2024 09:41:25 +0000
-X-UUID: 52e2ee9a5ed811efba0aef63c0775dbf-20240820
+	Tue, 20 Aug 2024 12:03:19 +0000
+X-UUID: 2874bb205eec11efba0aef63c0775dbf-20240820
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
 	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Vg3zms0Tizzwi9KvI0i8GUDSkVaytsdsY5uFVOwVvBE=;
-	b=nnyv6aSBjtVe9FkKqg6tA6I1xKu+gzhEV7Rsqz3CAAH26Cg6rkFlWikPlobv/hrp15KVrIRrQ5IxnNrEYias+uBkaOMa7NEgwDUqxuRe82yXKckrhUQuBoyfj2FRDdGJu5KJk8zWRgKd0yG4nW+pCB7scgrFMLDzdjywcThj3AE=;
+	b=WEKGdq7v5k/u/QnWImuwU4FsnMz+YxgGlwwg4DbsvTIAjlzNLgCj0faeSR2n3+bLrmBMehibLamFZxeNq2Wk5p9Q3tg3gZIJp855098JDldltQFHvnOG1MwU8EoErfv2QwDqj/bKlt7/Cwj11Fm6B2eq4fq8ffid5UP+fOUQQNI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:051d5700-8ebb-4340-90b0-200eea52db61,IP:0,U
+X-CID-O-INFO: VERSION:1.1.41,REQID:84512ae7-ef53-4869-b263-dcf5ac2ece3d,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:1f3ce3ce-7921-4900-88a1-3aef019a55ce,B
+X-CID-META: VersionHash:6dc6a47,CLOUDID:ca0fa6be-d7af-4351-93aa-42531abf0c7b,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:1,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,OSH
 X-CID-BAS: 2,OSH,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 52e2ee9a5ed811efba0aef63c0775dbf-20240820
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+X-UUID: 2874bb205eec11efba0aef63c0775dbf-20240820
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 380564577; Tue, 20 Aug 2024 02:41:06 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+	with ESMTP id 2046276919; Tue, 20 Aug 2024 05:03:05 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 20 Aug 2024 17:40:34 +0800
+ 15.2.1118.26; Tue, 20 Aug 2024 05:02:24 -0700
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 20 Aug 2024 17:40:34 +0800
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 20 Aug 2024 20:02:24 +0800
 From: Shayne Chen <shayne.chen@mediatek.com>
 To: Josh Boyer <jwboyer@kernel.org>
 CC: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
@@ -60,22 +60,14 @@ CC: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
 	linux-mediatek <linux-mediatek@lists.infradead.org>, Shayne Chen
 	<shayne.chen@mediatek.com>
 Subject: [PATCH] linux-firmware: update firmware for MT7996
-Date: Tue, 20 Aug 2024 17:39:52 +0800
-Message-ID: <20240820093953.17129-1-shayne.chen@mediatek.com>
+Date: Tue, 20 Aug 2024 20:01:18 +0800
+Message-ID: <20240820120118.19438-1-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10-0.000000-8.000000
-X-TMASE-MatchedRID: WFT1aIEoxGU=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10-0.000000-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: D6E8BA8FBE1DAC3214ED8FD8CFD0C27DF4EBB98F503801C903082B2BDDA7B77E2000:8
 X-MTK: N
-X-Spam-Note: CRM114 run bypassed due to message size (7958489 bytes)
-X-Spam-Note: SpamAssassin run bypassed due to message size (7958489 bytes)
+X-Spam-Note: CRM114 run bypassed due to message size (7958118 bytes)
+X-Spam-Note: SpamAssassin run bypassed due to message size (7958118 bytes)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
