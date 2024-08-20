@@ -4,215 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B132C531DF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Aug 2024 10:34:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1258BC5472D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Aug 2024 10:55:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DCwsrooLzbYnDkffITuvgoSKfvv8gn7avc+z5+Rq72M=; b=auTHAewRO8t0rfhAX8TzsEvtuX
-	rV3HDT0ais7sj/4tG+nJvS7PfuU0oQNGYcOUFNiDFtLFIfy7r0RgpxDMohIeMJoTbTMHO9e1xEYAO
-	DRfMKoxew9gfBXjKSagIdlcG+NX4vNNi3rf0ja9pR/8pSnMaPQNZwvd0peJmRLrRG2vvjetHRf8qx
-	xe5VIcmcPg1rNgz+6ZJccLMvSR6X9/fU+L8gVFj8TvOulLrlwdPHco8ceQukRBg/GjJLc+qZuucct
-	/E2suavlgBEltuNDULeh6iuC5QV50j/tbk4rMWFr3MevGASVzJVC5/gAFr8vVx+PFHKO2XezlH4E4
-	OAUw7jLA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xGemp3/J4+ZRAtrBZReELh9mp4/tveOz4AeZNo7+1xw=; b=H49IXvGzg3NphaEQMLqeZWomiE
+	PQgh7EH4xnSbQarMf3hMsKuVcD1x1jokhQuSCP9RSLa63sqSMH4pSo1ctBgYDFhGpzE2n6fiVSHUC
+	KrG3OM22xu/f3mPfCTCBaHX+wZ3j3inh20qLYUaVaUEE0ZN11wE8qBIuP66oBZpVTUP06HWXz9hN6
+	F4pQVRezdTr0G9LsPxeI9SQyjPbDzoARO2SWtKPhmnzD5RB71XUNtKA0I2vFsnM1opZbpsuEpPeEZ
+	VIi5KmoPBxp3xD2JectneBdiGOvb5Qq1ZQCS07enTl0CnxQ3y5MIEcHVD5m1+cndIPwYU0dgxYtPF
+	0+UZvqIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgMBj-00000004pAb-3hHV;
-	Tue, 20 Aug 2024 10:34:07 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sgMW0-00000004uln-0SNW;
+	Tue, 20 Aug 2024 10:55:04 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgMBg-00000004p9E-3WC5
+	id 1sgMOs-00000004sjg-1bKq
 	for linux-mediatek@lists.infradead.org;
-	Tue, 20 Aug 2024 10:34:06 +0000
-X-UUID: b626021a5edf11efba0aef63c0775dbf-20240820
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=DCwsrooLzbYnDkffITuvgoSKfvv8gn7avc+z5+Rq72M=;
-	b=C4WLyaRb2dQ7L2+TNYY4y7i0d2F8b7lafclaa/nbUqb4xGvA5JtjSIuzKiFM1KEbQwRe79J8F4ZeLlnv08oS5Musxr3vCrhKHAC5EVKDhr8QLtScg2Xm0w/pYaWmLvLPjzGlJ2NMagpb3gV1cEIKI7w4B/R9bhSHgo600UKUJjA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:ffa99d1d-53d8-40f9-b2f1-13f088c28b0b,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:043aa5be-d7af-4351-93aa-42531abf0c7b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1|-5,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: b626021a5edf11efba0aef63c0775dbf-20240820
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <shayne.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 988169395; Tue, 20 Aug 2024 03:33:59 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 20 Aug 2024 18:23:55 +0800
-Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 20 Aug 2024 18:23:54 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=FIcQLbOgySc7TcS/et3EsePxe9V+pIflFitDha2BP47pix/Cyjyysl/x4eFUO3kRhvd70Uff6QkCNl0wVgy7MgCShP4dAEG1OWuN9P5+lAjBMEcT+5WgIAIxNuSHKPrUndRSdE9xHGG38o34BFI9g5fmpTggHUc14qCBUdbaE6woh/W78vz/4XT/68w0ZsYazGRpZ2dKoCodrZfUCMT6FfZ+qBAL8EkJq2C8nLkRgJMeRjZ/mIevUjrNfXgBcjzcvTZWjYqskTNi88ZowVwnXXplvLOjCrJRLZyZgELf9RbrHVZv4m5zCVb5pLYAXLCn2EG/R5+X0EQjXMGujplBFA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=DCwsrooLzbYnDkffITuvgoSKfvv8gn7avc+z5+Rq72M=;
- b=HV+RT5VKf4U2csVaqaIF/owDj/bPPEjfzc7hhq4EHvUekZlDSiV9SF4JFGka4OEJ3rYLX9bl0ojybM1CaH2EN7isuK3eQKj/d22zlYRo0jL5am/IAVGkDtRcnCdqMJ4DHZoL8VXkJeVWXBCKOzh6exEvjCn/0CffiGPEcWvj1ej4StKQ41HeJOiVWdkjTxXzo1Fe+qPHDqiH557375WQk5jhXT6su9gE5W1Fm3nx2FeJatYsVE8KEtp8uqrpbPtn6OEtyZevuoCO/MkL5mxxjkC3iQucNqC1G3pTde2tpjbiitrCEf1MuqKIwJ8lk1PGPTvg5McaU0AV7lH3Zl2Ltg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	Tue, 20 Aug 2024 10:47:44 +0000
+Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-a7aac70e30dso573519066b.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 20 Aug 2024 03:47:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=DCwsrooLzbYnDkffITuvgoSKfvv8gn7avc+z5+Rq72M=;
- b=OnfvYfBszHi3VSYBTGgP9Wq/CXE6VI22BrkesDxOK9MdxNLH5ugS2gIyGZSMJJlJDrni/GSyAEXrI80SyyigkaUMWUFqMNNqV6Z8tsPYwD2nSzcYDIAJ1iWL+Ck+CuE3u8RTs11EuoUXWXjYzQpZcP7LF83usNX2xYy/qsXj6KY=
-Received: from SEZPR03MB6468.apcprd03.prod.outlook.com (2603:1096:101:47::9)
- by SG2PR03MB6503.apcprd03.prod.outlook.com (2603:1096:4:1c7::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7849.20; Tue, 20 Aug
- 2024 10:23:53 +0000
-Received: from SEZPR03MB6468.apcprd03.prod.outlook.com
- ([fe80::8dd9:7dc2:9bac:818a]) by SEZPR03MB6468.apcprd03.prod.outlook.com
- ([fe80::8dd9:7dc2:9bac:818a%4]) with mapi id 15.20.7875.019; Tue, 20 Aug 2024
- 10:23:52 +0000
-From: =?utf-8?B?U2hheW5lIENoZW4gKOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>
-To: "greearb@candelatech.com" <greearb@candelatech.com>, "nbd@nbd.name"
-	<nbd@nbd.name>
-CC: "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	=?utf-8?B?RXZlbHluIFRzYWkgKOiUoeePiumIuik=?= <Evelyn.Tsai@mediatek.com>,
-	"lorenzo@kernel.org" <lorenzo@kernel.org>, Ryder Lee
-	<Ryder.Lee@mediatek.com>, =?utf-8?B?SG93YXJkLVlIIEhzdSAo6Kix6IKy6LGqKQ==?=
-	<Howard-YH.Hsu@mediatek.com>
-Subject: Re: [PATCH 07/12] wifi: mt76: mt7996: set correct beamformee SS
- capability
-Thread-Topic: [PATCH 07/12] wifi: mt76: mt7996: set correct beamformee SS
- capability
-Thread-Index: AQHa78G2JzMvEngnSkGepf6EsgLnhrIupw4AgAFPiIA=
-Date: Tue, 20 Aug 2024 10:23:52 +0000
-Message-ID: <8f1b465a51fc66a13fd01c49266a4b5cc934f5eb.camel@mediatek.com>
-References: <20240816094635.2391-1-shayne.chen@mediatek.com>
-	 <20240816094635.2391-6-shayne.chen@mediatek.com>
-	 <9e60638a-d85f-4c35-9370-8b42e96d1526@candelatech.com>
-In-Reply-To: <9e60638a-d85f-4c35-9370-8b42e96d1526@candelatech.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SEZPR03MB6468:EE_|SG2PR03MB6503:EE_
-x-ms-office365-filtering-correlation-id: 08ffa900-4de6-4bbf-747e-08dcc1023092
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|376014|366016|1800799024|38070700018;
-x-microsoft-antispam-message-info: =?utf-8?B?R2hheHprK1RzRmprcUxiQXBScUtwZEhBYTRiYTdNdWFsT3BZSkxDOGJRZVVp?=
- =?utf-8?B?RDduSUoyY01ZZ0xaMXo0WElHMUxsREY5elFSQ295TDlnblJMcFBTaW5pbDdC?=
- =?utf-8?B?cEFpa3BPQnU2Wk42WXlueHBWa1BFWUFIK3FTclMrNjh6U21LWlVhdHVNT3VU?=
- =?utf-8?B?OXRoalE3SmJhUUc0Q2hsdTd0aFkwOFA2VkI1akdtUU04RGdNOWVVS0tYQkhs?=
- =?utf-8?B?T3dQV0RWY2Rid3dOWS96UTJQVnZDTHNueWlKVkV0YVJTeVNEUExPZHZ1NmVo?=
- =?utf-8?B?UXJPVisvVWsyalhvZ2ZRRHNCQk5nUGJtd1JuQllrY1NkOTY0bTlhWkFLSVZ1?=
- =?utf-8?B?dHptZm96NWk5WE93OU02dlNEVElndnNZRkY1amp2dkZaVFFoVW0yS3B6VkYx?=
- =?utf-8?B?c0FVclNtR2hPQVErQUo5NXk4dElpcjlKblF5Mzh0dnEvcjhKcnJGWTY1cTBr?=
- =?utf-8?B?OW5HWHR1RkNBTnFXL1dzeTIvMjI0b3BldVNhRzJObmJ6WEV5UFNxL3BIWjVI?=
- =?utf-8?B?WldnbDVRYjdaN2VubjVhVG1sNkxkMmJMUkpsbnNlb0R0dXk2a2xqY1NiMjhM?=
- =?utf-8?B?Qyt3dWMvZlhVU0RrNVZPVEh0N1ZENktPVVB1UnVoTU1zeTl1b25Wc0hOcm1r?=
- =?utf-8?B?aXBwUXM3MDFzUkd5Y3JlYzN4NTBkeGt3NnQxVjhOUHZRYVY2ZU5YbXlIZWx5?=
- =?utf-8?B?MW9oQkdpMGdFbHpsWFBneGhXNEpleUVMSldhcGNvTXhVQ0U3M0dwbFk3VUdm?=
- =?utf-8?B?bzhsZ2lvUyt5dStaaEEzTDNOMWU2dnJZZkpEYTFPRGE2c3JOUEI2cFF0SEUw?=
- =?utf-8?B?ZXplcUdlZjRseEJTUTU3dUo2NHZsTGRHc1NoTURQWlR2T01Wck83bTVQSTdm?=
- =?utf-8?B?dDgxZDFxOWlQVDUrMnVqWTRkVjNxbXFmbmRabG5pL0R5VzJnTDcrY202T0k2?=
- =?utf-8?B?UXlld2YxUC9vK2txODRQVHBUTUZwRmtQbUNtQUZONWVoaXM4UFFrVnZGTGps?=
- =?utf-8?B?ZFdIK3RDUm5xdmV0Z01kZUFFdmR1YWUrYmdVN25lazk5ellVanRhZ0NOMEhG?=
- =?utf-8?B?OXl3c2lOVGFRR1A4UmZKUUkzKzAxQng5Z1FWR2xJMjA2YUVlV3JMTmc5TXAy?=
- =?utf-8?B?NTllWUp2YTlOcklvRVhtd1JGcEVPK2dtZ20rUERkcFhLcmtCUUY1VFhmVTZ2?=
- =?utf-8?B?UUwzUlI3T1J3TGVWcjFYZ2tRZ0NDaXlLMDh0enhpN0hNQlZHK1hZM0dQcUsz?=
- =?utf-8?B?YVV5OVFoTElYYWVtd01mcHlpcWRNNkM2WVduL3l4NDY0RlFXVGZpVHVtUmlL?=
- =?utf-8?B?UzhKODNzekExUllsZGwzMWxUN1dnT1hKeU9aakNOazhvOFBTZlJSWGRtMUJB?=
- =?utf-8?B?TkZEaWdEVm1RaGcrdkQxUFNPVE5Vd0JLZUo2UEZmN2hRY2F1cW8yRWlQRWlu?=
- =?utf-8?B?cHhjb1VtcWFUR1M1d3VFQnZQWjBzL1JCMVg4emphMzJ5RGlmOVB0aTBEbHov?=
- =?utf-8?B?cEo4R3pWS0pwWVVFYjZZTVhwdHpyemxKRjlSODJneDB0Y1JaYVArQkFKRS9C?=
- =?utf-8?B?VTBoSDJ3NGErNFhOeG43R0ZMaFpZMUFHMmE4U1NldXkzL294WVhRSVV4VU4x?=
- =?utf-8?B?OGpmaHIxa0JZb0tOUTRZL0l3M1FISzZNRGNxVHpZYTFOejdZRUpjT1NCa3dX?=
- =?utf-8?B?N0lrVjVUVVBzNmN1QkZNcHZMaTNJVFdIYnh0U2FSRDBpNnZDci95bjY2YVpN?=
- =?utf-8?B?NEhlYld1Yk54S05DOHZ3TUhDUUhhY0dPeWY4ZW5uZUZhQ0tBdC9jU1ZiUVhR?=
- =?utf-8?B?VGlIVW9sUk1CaFFqc0czckFLN2ppYWg2dFFLMHlMbUxpZHErdzVPT2JlVWlB?=
- =?utf-8?B?WEhaYk5WbktWZXBZUDlpSUo2NEMySUVxcWFYN09yV1p1cHc9PQ==?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR03MB6468.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(366016)(1800799024)(38070700018);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Y0RiUjJJSnZaT3RMNXd4c3lyU2pUTnNsYVQ2c3lTN3RZWWU4djRsSHozNHpC?=
- =?utf-8?B?VWVmWmlnaFdZajcyc1FLR3BSNDVQRWNtL0tpaVJiTkM3NXJDM082RXBwOElq?=
- =?utf-8?B?ZmtmR1dqUm8zSGtWS3lkSEZlaFF3Q3g4ejhlQWtvVjRLYkExWTZLbTc4RTFK?=
- =?utf-8?B?bCtGNTJkSkZVUG56RlJHTk5taE5RWEpQZVJidWVMRkx2RVFiMWx1NUNDRW9R?=
- =?utf-8?B?UFpxRmJvTkYxSGxaNzgzNmpzbnJYaXhGTE96Tk5zY25ZMG9ycm5NMWVuSTg2?=
- =?utf-8?B?OTNXSm5sWXIvbjBDa05xTVQ2RjhCSUxNaTlSclF5T1lrSWlMdlRaVVpEd1RU?=
- =?utf-8?B?UENZcVlXeVpudlU1eXhxYStYbTBFOURUYmhERWdXNUtBS1lWTFJVL0ZkMkRU?=
- =?utf-8?B?VzFMRWMzUUY2TERMQ1lLYUJvbU1uY3dWMisrMHp3SVkxTlA2OW5QR21yZzhv?=
- =?utf-8?B?M0cwallqeE5ZdEtvNGNqU2grelN2MjhxdWZ1b3NSNUxJRXNtTGVZYUEvTTZJ?=
- =?utf-8?B?M0Z3WDlMM3llSkEzdkZLOG5sRTAvTlR3TjV4Ly9DaXNCTGVTQU41SE1pYzBL?=
- =?utf-8?B?N2ZqOHZGUFoyRDRkTWRvUUdrVUxTQU80by8wVkhOVGFkbmc0NkREYUJ2cWk5?=
- =?utf-8?B?OHFTZ1kvdS83MHNoeHE1TVN6UHhYdm1HVlZWc3FSZ0tJeDBDSGVSOXAvZ3h1?=
- =?utf-8?B?RVd5SlBzYStrdDBsS2RlbVMvUXZsTmZuWlEzalRveTRNVDhHVXE5VjRHNnpx?=
- =?utf-8?B?bmNLUG1IU21zTTdKbnUwUHc0K3BmRkxiclk3Ymx1bkV5QlVIQTgrcEFidDlo?=
- =?utf-8?B?d2RMR3JPUm5iOExzZ2dPcnduZVhlWWRLU2RyYjVFbzVqWWxLbFJISGo5ZFha?=
- =?utf-8?B?Rk0vOHdWRDEybzlxdzZzclE3ZGVxdnBTYWpUb2w3dSsrS0JnL0xPa3F2R20v?=
- =?utf-8?B?Zjh6RzVUSExURG5pSkRGR3JuQnJqd1QwdncrR2NDcGh4WkVHY2dYT0NuVUh1?=
- =?utf-8?B?MW5kYVMwc2FQb0xCWWNOSTBPQ1lmUnRCL3VHTERlOVdidlRUZmczRENrczcv?=
- =?utf-8?B?NXJUa2RIN3NSTC9pc0JmUHo1UzlZRk9pQVE1Z1Z2Q3pMbTFiNVhDN3R3OFNY?=
- =?utf-8?B?TGRrVWNzQXRQU2oyWkJhdEZydDhJMVFpM0pJeCtSZ1dSOXJLWlRuM0xPVHRx?=
- =?utf-8?B?Z3YyWVdGSDArMGcxaHFnOFVtVGlPU1pwYnU0Y1FoZjhldzdHOFQ1SnZDVVUr?=
- =?utf-8?B?YlJOcHJJRFh4Q21ZU1J6QXVXOEFpVlB1c2xxMWcraGs0RGhRMi8zK01ZTUVM?=
- =?utf-8?B?MExWT091eExKSzZGOWZtYjFyaTM0UndMek9PK3IvdVI2clZjcUFRNW5xV2d2?=
- =?utf-8?B?bmpMa1l2WnNOR096bGsvU3dWa2t0aFhBSCtibk0rVGExVjVsTXFQTWpSSFl6?=
- =?utf-8?B?eVpsTjB3bGswdCsvM1BwUE9jZkNsU1ljQTN6anNlSnR5VHZvSmVBRmJqTXBm?=
- =?utf-8?B?TGFZQSs1QmVvRG5DamhQQWIxQWc0RXRNZ0JiemZWeU1vbnVWTGNnU0JrTHJE?=
- =?utf-8?B?RGxxeHY1b1ZqbmY2SUI3SGtzS3VLNlhMUTF3MCtEUlRyemNiVTFHZjB3VEph?=
- =?utf-8?B?cTVkcytQeWczUlB0NHNOVHppSGlVcTdDNS9uM1RQeWxqQnFzUDdPK3Q0QUI2?=
- =?utf-8?B?MEdxOUkvd0JhdStQUkU0aDByRXorMEw3TDYwbUpXcDNKMTVvRjV4NDdOWXNW?=
- =?utf-8?B?WGQ2WG9YUVVlM0VUWEI1czE3UURKVFZzdGpzUWE5NThwNytUeXJPSXlaTnJZ?=
- =?utf-8?B?RTI4a05pc3ExYVQvaExON21Jemd0bllyOTlzUDNtVDE5SHdiQXpPUUoweFNm?=
- =?utf-8?B?N0d6Tll2OExzbGlUdHorTVdsNlNJT3BUN29LSm8xWlRzSXB4UWR3VnhURTBU?=
- =?utf-8?B?bWp2WCtJTE0wTWMzN204YjV0Q3o1M2VlWjd1YzFaNGgvVGM0Y3VrdTQvYU51?=
- =?utf-8?B?T09HcVVOSElyTVZ2ZnpQVmZKZkM1ZWwrV09KbS8vQWtxS2RGNkdLVjVyNUow?=
- =?utf-8?B?bU4yUTJ4TWNBcnZLTEd3OFNnWkdtb0w1RUk1b0pPdWtQSUZQaS8yWmF4RERi?=
- =?utf-8?B?ME9OcGlWYnVlVi8rUkZyN0pjZVBtM1pMOVE5N3lKWnkrRDI0b2ZNZFUzb3NC?=
- =?utf-8?B?Unc9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <2744D28E8C2C1148BB032159F2C98BBB@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=chromium.org; s=google; t=1724150860; x=1724755660; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xGemp3/J4+ZRAtrBZReELh9mp4/tveOz4AeZNo7+1xw=;
+        b=J3N61fDjZSfzxfeJivhZMta/yREiGItHcDvslCp1auIcDSOXM8R5hgWBsrfYohErNI
+         A7SYk1M8d6x+NgUN8xi1MBTgDxiyq5+ikym1aXSh8+XPbG5mCOPVIDgIIDfH510gLDvA
+         klxZsZvbeKdwtiPu1rwcKtM+DOt1+kqVfyAOY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1724150860; x=1724755660;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=xGemp3/J4+ZRAtrBZReELh9mp4/tveOz4AeZNo7+1xw=;
+        b=eA3OMN86FB5hwkhpOP+5K6SOVKOF12ZzHXWZ/6bfpb86Su2CfXmAaLMbEKA0jTjIaU
+         eoUIY739Gy1iMNC4pbxMHcfIuOrsaleLfhW0eMQivdAWR40E/huv/ByMEv7JbqreiQb5
+         UjepV5T6XHBa9b8M/j8/GvwrI89dgT+1020aoqqcrc2mEyxf+BGLAyNZNsP+k0MzoNYy
+         lPXoNL+FuRGZUpq3skdpRWZRGAA51sLYHx10b/IbFtVpguIlAIh7nvTJ/sPxypPmlYqt
+         KjlyujWZDDrywFMgcsmOjWe03zyXE0Uf/w9CRH210ffA1xAljcA8EPiHpq/oRWgxaFK8
+         SjUg==
+X-Forwarded-Encrypted: i=1; AJvYcCXZFfYphHKYreB/hACv/dZkqRCyCvydLRecLgxGVeliUQGkgrNCIjE4u4+jQB7/7kCpnaZ8ozoBDcxXT2oAt1h5BGfB2GZr3Is9QgAnMA3ESKGw
+X-Gm-Message-State: AOJu0YwW04urIbRzi/NlkUuamsth9ws+Rdae3sHhrrCXy1A/CM41276H
+	0FAa3vcs4l5fSyNlpQtPbLXHyAlracM24ob8B4owTPNct9doHP14zi7tXyEXn1He2lwNhAZd86q
+	dFA==
+X-Google-Smtp-Source: AGHT+IHTlHb7aEFQux9vGcun+WmaeLkPQejMOq5KzH/WVmv5qhoufPKzVU85O9fhFxe3ZbWH6i1J8w==
+X-Received: by 2002:a17:906:cae0:b0:a7d:c9c6:a692 with SMTP id a640c23a62f3a-a83929f1282mr1056049466b.51.1724150859877;
+        Tue, 20 Aug 2024 03:47:39 -0700 (PDT)
+Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com. [209.85.128.51])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a838396d375sm743970766b.221.2024.08.20.03.47.39
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 20 Aug 2024 03:47:39 -0700 (PDT)
+Received: by mail-wm1-f51.google.com with SMTP id 5b1f17b1804b1-42808071810so42877895e9.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 20 Aug 2024 03:47:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCVnP4AXrs/BmCToYGJ7hY1TA5vUeRT9HaTloecRWYxDqP6l6+rbt0ihDKfzjJOOKRi67DtNI3YXOzGQ2nyjaezCheRWntJB8ugylfFWLB7amhCD
+X-Received: by 2002:a17:907:e249:b0:a7a:ab8a:38a with SMTP id
+ a640c23a62f3a-a839292ffbdmr1077908166b.27.1724150480979; Tue, 20 Aug 2024
+ 03:41:20 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SEZPR03MB6468.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 08ffa900-4de6-4bbf-747e-08dcc1023092
-X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Aug 2024 10:23:52.8129
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: IjtYL61xamHwzWzr0fvP5TkF/WiH1efBkB3daQhQDoiS0/sxiyOqrljRA18gyQV1rUYd4ZmXvYtCMoBFMt7yRdOmHMRWqY97FLLSX5V/pF4=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2PR03MB6503
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--19.498300-8.000000
-X-TMASE-MatchedRID: c/HXCguHooHUL3YCMmnG4t7SWiiWSV/1jLOy13Cgb4/n0eNPmPPe5KWz
-	WoIRiV9DM/Se/q/gEyf5MiS7M8c1eGmXMi7Ntyo2drnuu4cCcfF+Mk6ACsw4JiifyPcCvG3TPMA
-	rurUD4iIv91sk+WpIXXLjeUJjImc4hsiwtTFTO4bAJnGRMfFxyZE+3DCX3uibAOrNpiFyN5DvH2
-	neBQK1q83WN4NNppkR4gEgi0p+wtcrYPqmZqtV/86RKnOYsI58vtVce6w5+K+CsBeCv8CM/b/fk
-	bxklHWAgkXrwSgutx8fZdczzDm/ukL9tcyTZdAsgxsfzkNRlfLdB/CxWTRRu4BQLWahPl6cftwZ
-	3X11IV0=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--19.498300-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 7C434EF06C792AD68751217FAA3E21DB09669EFBBB9627113D09E2EE2E0651F62000:8
-X-MTK: N
+References: <20240809-auxadc_thermal-v11-1-af36cc74f3a3@chromium.org> <66f3361b-00f8-4527-aaa8-d1c302c8ea26@linaro.org>
+In-Reply-To: <66f3361b-00f8-4527-aaa8-d1c302c8ea26@linaro.org>
+From: Hsin-Te Yuan <yuanhsinte@chromium.org>
+Date: Tue, 20 Aug 2024 18:40:44 +0800
+X-Gmail-Original-Message-ID: <CAHc4DNLsNUE+dk3+Xz97MO9gnyK5ZwUdXxEQiKz0vEzgWe4mQQ@mail.gmail.com>
+Message-ID: <CAHc4DNLsNUE+dk3+Xz97MO9gnyK5ZwUdXxEQiKz0vEzgWe4mQQ@mail.gmail.com>
+Subject: Re: [PATCH v11] thermal/drivers/mediatek: add another get_temp ops
+ for thermal sensors
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: Hsin-Te Yuan <yuanhsinte@chromium.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pm@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, James Lo <james.lo@mediatek.com>, 
+	Michael Kao <michael.kao@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
+	Ben Tseng <ben.tseng@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240820_033404_918548_B1207091 
-X-CRM114-Status: GOOD (  18.49  )
+X-CRM114-CacheID: sfid-20240820_034742_460495_51711BA8 
+X-CRM114-Status: GOOD (  51.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -227,31 +105,302 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDI0LTA4LTE5IGF0IDA3OjIyIC0wNzAwLCBCZW4gR3JlZWFyIHdyb3RlOg0KPiAg
-CSANCj4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90IGNsaWNrIGxpbmtzIG9yIG9wZW4g
-YXR0YWNobWVudHMgdW50aWwNCj4geW91IGhhdmUgdmVyaWZpZWQgdGhlIHNlbmRlciBvciB0aGUg
-Y29udGVudC4NCj4gIE9uIDgvMTYvMjQgMDI6NDYsIFNoYXluZSBDaGVuIHdyb3RlOg0KPiA+IEZy
-b206IEhvd2FyZCBIc3UgPGhvd2FyZC15aC5oc3VAbWVkaWF0ZWsuY29tPg0KPiA+IA0KPiA+IEFj
-Y29yZGluZyB0byBJRUVFIFA4MDIuMTFiZS9ENi4wIFRhYmxlIDktNDE3biwgYmVhbWZvcm1lZSBT
-UyBmaWVsZA0KPiBzdGFuZHMNCj4gPiBmb3IgdGhlIG1heGltdW0gbnVtYmVyIG9mIHNwYXRpYWwg
-c3RyZWFtcyB0aGF0IHRoZSBTVEEgY2FuIHJlY2VpdmUNCj4gaW4gYW4NCj4gPiBFSFQgc291bmRp
-bmcgTkRQIG1pbnVzIDEsIGFuZCB0aGUgbWluaW11bSB2YWx1ZSBvZiB0aGlzIGZpZWxkIGlzIDMu
-DQo+ID4gDQo+ID4gVGhpcyB2YWx1ZSBpbmRpY2F0ZXMgdGhlIGRlY29kaW5nIGNhcGFiaWxpdHkg
-b2YgYSBiZWFtZm9ybWVlLCB3aGljaA0KPiBpcw0KPiA+IGluZGVwZW5kZW50IG9mIGN1cnJlbnQg
-YW50ZW5uYSBzZXR0aW5ncy4gQ29ycmVjdCB0aGUgdmFsdWUgZm9yDQo+IG10Nzk5Ng0KPiA+IGFu
-ZCBtdDc5OTIgY2hpcHNldHMgYmFzZWQgb24gdGhlaXIgSFcgY2FwYWJpbGl0eS4NCj4gDQo+IEkg
-dGhvdWdodCB0aGF0IGlmIHVzZXIgc2V0cyBhIHNwZWNpZmljIG51bWJlciBvZiBhbnRlbm5hcywg
-dGhlIGNvZGUNCj4gc2hvdWxkDQo+IGFjdCBhcyBpZiB0aGF0IHdlcmUgdGhlIG51bWJlciBvZiBw
-aHlzaWNhbCBhbnRlbm5hcywgc28gdGhpcyBjaGFuZ2UNCj4gc2VlbXMNCj4gd3JvbmcgdG8gbWUu
-DQo+IA0KV2UgdXNlZCB0byB0aGluayB0aGF0IHRoaXMgZmllbGQgZGVwZW5kcyBvbiB0aGUgYW50
-ZW5uYXMuIEhvd2V2ZXIsIHdlDQpzZWUgdGhhdCBJRUVFIHNwZWMgZGVmaW5lcyB0aGUgbWluaW11
-bSB2YWx1ZSBvZiB0aGlzIGZpZWxkIGlzIDMsIHNvIHdlDQp0aGluayB3aGF0IHRoZSBmaWVsZCBt
-ZWFucyBpcyB0aGUgIk1BWCBIVyBkZWNvZGluZyBjYXBhYmlsaXR5Iiwgbm8NCm1hdHRlciBob3cg
-bWFueSBhbnRlbm5hcyB0aGF0IHVzZXIgY3VycmVudGx5IGNvbmZpZ3VyZWQuDQoNCkZvciBleGFt
-cGxlLCBpZiB1c2VyIGNvbmZpZ3VyZXMgYSBiZWFtZm9ybWVlIHdpdGggb25seSAxIGFudGVubmEs
-IGl0IGlzDQpzdGlsbCBhYmxlZCB0byBkZWNvZGUgYSAiKFJYKS0xeDQtKFRYKSIgbWF0cml4IGZy
-b20gYSBiZWFtZm9ybWVyLiANCg0KPiBXaGF0IHVzZS1jYXNlIGlzIHRoaXMgcGF0Y2ggYXR0ZW1w
-dGluZyB0byBmaXg/DQo+IA0KV2UgZmFjZWQgaXNzdWVzIHdoZW4gZG9pbmcgc29tZSBCRiBwZXJm
-b3JtYW5jZSBhbmQgY2VydCB0ZXN0cy4NCg0KVGhhbmtzLA0KU2hheW5lDQoNCj4gVGhhbmtzLA0K
-PiBCZW4NCj4gDQo=
+On Mon, Aug 19, 2024 at 6:33=E2=80=AFPM Daniel Lezcano
+<daniel.lezcano@linaro.org> wrote:
+>
+> On 09/08/2024 10:44, Hsin-Te Yuan wrote:
+> > From: James Lo <james.lo@mediatek.com>
+> >
+> > Provide thermal zone to read thermal sensor
+> > in the SoC. We can read all the thermal sensors
+> > value in the SoC by the node /sys/class/thermal/
+>
+> Please elaborate a bit more the description to stick to the changes.
+>
+> What is the difference between MT8183 Kukui devices and older ones, for
+> instance ?
+>
+> > Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+> > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> > Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
+> > Signed-off-by: James Lo <james.lo@mediatek.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> > Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+> > ---
+> > Resurrecting this patch specifically for MediaTek MT8183 Kukui devices.
+> >
+> > Changes in V11:
+> >      - Rebase on kernel v6.11-rc2
+> >      - Use mtk_thermal_temp_is_valid in mtk_read_sensor_temp just like
+> >        mtk_thermal_bank_temperature
+> >      - Change the error handling of devm_thermal_of_zone_register retur=
+n
+> >        value
+> >      - link to V10: https://lore.kernel.org/lkml/20220519101044.16765-1=
+-james.lo@mediatek.com/
+> >
+> > Changes in V10:
+> >      - Rebase to kernel-v5.18-rc7
+> >      - Resend
+> >
+> > Changes in V9:
+> >      - Rebase to kernel-v5.14-rc1
+> >      - Bind raw_to_mcelsius_v1 or raw_to_mcelsius_v2 to compatible
+> >        data of struct mtk_thermal_data
+> >      - Remove duplicate struct 'mtk_thermal_bank'
+> >      - Remove unnecessary if condition check
+> >      - Return error if any thermal zone fail to register
+> >
+> > Changes in V8:
+> >      - Rebase to kernel-v5.13-rc1
+> >      - Resend
+> >
+> > Changes in v7:
+> >      - Fix build error in v6.
+> >
+> > Changes in v6:
+> >      - Rebase to kernel-5.11-rc1.
+> >      - [1/3]
+> >          - add interrupts property.
+> >      - [2/3]
+> >          - add the Tested-by in the commit message.
+> >      - [3/3]
+> >          - use the mt->conf->msr[id] instead of conf->msr[id] in the
+> >            _get_sensor_temp and mtk_thermal_bank_temperature.
+> >          - remove the redundant space in _get_sensor_temp and
+> >            mtk_read_sensor_temp.
+> >          - change kmalloc to dev_kmalloc in mtk_thermal_probe.
+> >
+> > Changes in v5:
+> >      - Rebase to kernel-5.9-rc1.
+> >      - Revise the title of cover letter.
+> >      - Drop "[v4,7/7] thermal: mediatek: use spinlock to protect PTPCOR=
+ESEL"
+> >      - [2/2]
+> >          -  Add the judgement to the version of raw_to_mcelsius.
+> >
+> > Changes in v4:
+> >      - Rebase to kernel-5.6-rc1.
+> >      - [1/7]
+> >          - Squash thermal zone settings in the dtsi from [v3,5/8]
+> >            arm64: dts: mt8183: Increase polling frequency for CPU therm=
+al zone.
+> >          - Remove the property of interrupts and mediatek,hw-reset-temp=
+.
+> >      - [2/7]
+> >          - Correct commit message.
+> >      - [4/7]
+> >          - Change the target temperature to the 80C and change the comm=
+it message.
+> >      - [6/7]
+> >          - Adjust newline alignment.
+> >          - Fix the judgement on the return value of registering thermal=
+ zone.
+> >
+> > Changes in v3:
+> >      - Rebase to kernel-5.5-rc1.
+> >      - [1/8]
+> >          - Update sustainable power of cpu, tzts1~5 and tztsABB.
+> >      - [7/8]
+> >          - Bypass the failure that non cpu_thermal sensor is not find i=
+n thermal-zones
+> >            in dts, which is normal for mt8173, so prompt a warning here=
+ instead of
+> >            failing.
+> >
+> >      Return -EAGAIN instead of -EACCESS on the first read of sensor tha=
+t
+> >          often are bogus values. This can avoid following warning on bo=
+ot:
+> >
+> >            thermal thermal_zone6: failed to read out thermal zone (-13)
+> >
+> > Changes in v2:
+> >      - [1/8]
+> >          - Add the sustainable-power,trips,cooling-maps to the tzts1~tz=
+tsABB.
+> >      - [4/8]
+> >          - Add the min opp of cpu throttle.
+> > ---
+> >
+> > ---
+> >   drivers/thermal/mediatek/auxadc_thermal.c | 71 ++++++++++++++++++++++=
++++++----
+> >   1 file changed, 63 insertions(+), 8 deletions(-)
+> >
+> > diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/therma=
+l/mediatek/auxadc_thermal.c
+> > index 9ee2e7283435..8b50d560bbf9 100644
+> > --- a/drivers/thermal/mediatek/auxadc_thermal.c
+> > +++ b/drivers/thermal/mediatek/auxadc_thermal.c
+> > @@ -847,7 +847,8 @@ static int mtk_thermal_bank_temperature(struct mtk_=
+thermal_bank *bank)
+> >
+> >   static int mtk_read_temp(struct thermal_zone_device *tz, int *tempera=
+ture)
+> >   {
+> > -     struct mtk_thermal *mt =3D thermal_zone_device_priv(tz);
+> > +     struct mtk_thermal_bank *bank =3D thermal_zone_device_priv(tz);
+> > +     struct mtk_thermal *mt =3D bank->mt;
+>
+> Where is used this variable ?
+>
+This is used by the for loop in this function.
+> >       int i;
+> >       int tempmax =3D INT_MIN;
+> >
+> > @@ -866,10 +867,46 @@ static int mtk_read_temp(struct thermal_zone_devi=
+ce *tz, int *temperature)
+> >       return 0;
+> >   }
+> >
+> > +static int mtk_read_sensor_temp(struct thermal_zone_device *tz, int *t=
+emperature)
+> > +{
+> > +     struct mtk_thermal_bank *bank =3D thermal_zone_device_priv(tz);
+> > +     struct mtk_thermal *mt =3D bank->mt;
+> > +     const struct mtk_thermal_data *conf =3D mt->conf;
+> > +     int id =3D bank->id - 1;
+> > +     int temp =3D INT_MIN;
+> > +     u32 raw;
+> > +
+> > +     if (id < 0)
+> > +             return  -EACCES;
+>
+> This test should not be done here:
+>
+> 1. EACCES is permission denied
+>
+> 2. The bank id should be checked at init time
+>
+> > +
+> > +     raw =3D readl(mt->thermal_base + conf->msr[id]);
+> > +
+> > +     temp =3D mt->raw_to_mcelsius(mt, id, raw);
+> > +
+> > +     /*
+> > +      * The first read of a sensor often contains very high bogus
+> > +      * temperature value. Filter these out so that the system does
+> > +      * not immediately shut down.
+> > +      */
+> > +
+> > +     if (!mtk_thermal_temp_is_valid(temp)) {
+>
+> unlikely(!mtk_thermal_temp_is_valid(temp)) ?
+>
+> > +             temp =3D THERMAL_TEMP_INVALID;
+>
+> What is the point of assigning this value and return just after ?
+>
+I'll remove this line.
+> > +             return -EAGAIN;
+> > +     }
+> > +
+> > +     *temperature =3D temp;
+> > +
+> > +     return 0;
+> > +}
+> > +
+> >   static const struct thermal_zone_device_ops mtk_thermal_ops =3D {
+> >       .get_temp =3D mtk_read_temp,
+> >   };
+> >
+> > +static const struct thermal_zone_device_ops mtk_thermal_sensor_ops =3D=
+ {
+> > +     .get_temp =3D mtk_read_sensor_temp,
+> > +};
+> > +
+> >   static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
+> >                                 u32 apmixed_phys_base, u32 auxadc_phys_=
+base,
+> >                                 int ctrl_id)
+> > @@ -1199,6 +1236,7 @@ static int mtk_thermal_probe(struct platform_devi=
+ce *pdev)
+> >       u64 auxadc_phys_base, apmixed_phys_base;
+> >       struct thermal_zone_device *tzdev;
+> >       void __iomem *apmixed_base, *auxadc_base;
+> > +     struct mtk_thermal_bank *tz;
+> >
+> >       mt =3D devm_kzalloc(&pdev->dev, sizeof(*mt), GFP_KERNEL);
+> >       if (!mt)
+> > @@ -1285,14 +1323,31 @@ static int mtk_thermal_probe(struct platform_de=
+vice *pdev)
+> >                       mtk_thermal_init_bank(mt, i, apmixed_phys_base,
+> >                                             auxadc_phys_base, ctrl_id);
+> >
+> > -     tzdev =3D devm_thermal_of_zone_register(&pdev->dev, 0, mt,
+> > -                                           &mtk_thermal_ops);
+> > -     if (IS_ERR(tzdev))
+> > -             return PTR_ERR(tzdev);
+> > +     for (i =3D 0; i < mt->conf->num_sensors + 1; i++) {
+>
+> Why "num_sensors + 1" ?
+>
+Because we have the one with id 0 which represents the max of all the
+temperature and num_sensors real sensors.
+> > +             tz =3D devm_kmalloc(&pdev->dev, sizeof(*tz), GFP_KERNEL);
+> > +             if (!tz)
+> > +                     return -ENOMEM;
+> > +
+> > +             tz->mt =3D mt;
+> > +             tz->id =3D i;
+> > +
+> > +             tzdev =3D devm_thermal_of_zone_register(&pdev->dev, i,
+> > +                             tz, (i =3D=3D 0) ?
+> > +                             &mtk_thermal_ops : &mtk_thermal_sensor_op=
+s);
+>
+> Don't you want to keep the init routine and depending on the platform
+> add the loop with the extra sensors ? That may help to make the code
+> cleaner instead of doing tests like (i =3D=3D 0) ? &mtk_thermal_ops :
+> &mtk_thermal_sensor_ops
+>
+How about moving the registration with i =3D 0 out of this loop.
+Although some platforms don't use those extra sensors, they can read
+the temperature from these extra sensors by simply adding thermal
+zones in devicetree.
+> > +             if (IS_ERR(tzdev)) {
+> > +                     if (PTR_ERR(tzdev) =3D=3D -ENODEV) {
+> > +                             dev_warn(&pdev->dev, "can't find thermal =
+sensor %d\n", i);
+> > +                             continue;
+> > +                     }
+> > +                     if (PTR_ERR(tzdev) !=3D -EACCES)
+>
+> The id correctness should be checked in this loop, not rely on a EACCES
+> returned by a implicit call to thermal_zone_get_temp()
+>
+Since we use the for loop here, checking the id correctness looks
+meaningless. I'll change to return error directly and remove the id
+correctness checking from mtk_read_sensor_temp.
+> > +                             return PTR_ERR(tzdev);
+> > +             }
+> >
+> > -     ret =3D devm_thermal_add_hwmon_sysfs(&pdev->dev, tzdev);
+> > -     if (ret)
+> > -             dev_warn(&pdev->dev, "error in thermal_add_hwmon_sysfs");
+> > +             ret =3D devm_thermal_add_hwmon_sysfs(&pdev->dev, tzdev);
+> > +             if (ret)
+> > +                     dev_warn(&pdev->dev, "error in thermal_add_hwmon_=
+sysfs: %d\n", ret);
+> > +     }
+> >
+> >       return 0;
+> >   }
+> >
+> > ---
+> > base-commit: ee9a43b7cfe2d8a3520335fea7d8ce71b8cabd9d
+> > change-id: 20240809-auxadc_thermal-9be338ec8b1c
+> >
+> > Best regards,
+>
+>
+> --
+> <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software for AR=
+M SoCs
+>
+> Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+> <http://twitter.com/#!/linaroorg> Twitter |
+> <http://www.linaro.org/linaro-blog/> Blog
 
