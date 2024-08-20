@@ -4,82 +4,215 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E783FC3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Aug 2024 09:51:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B132C531DF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Aug 2024 10:34:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=qcpbxZTpMQHjU70kP0bCyCvXXCDagI/iPE2XuZLBzN4=; b=y3K02Z4hqLPEn6JlOfnaoCufYK
-	hs46a+kbWGO9SYg4XII6pLlA5Gud7n4PvIJ4HPc+lzA2f5h4jSu8wv6j/GEMNy4wbHZZWM7+1Q3d+
-	B20Lr+YXgRoMkkyDMCHDT+MCGTrwRJLxWk/kItmZ/Rgcxvaf+b1SNnWy6fCJXx/cYtTD1wOwpMraY
-	6u/kXIIjzOvO0q4RnjZNhnuR+tLb4BjEQnESpWcXwG7pntyVkAQEhlX0j2t95237U1GIlT1VPzrVR
-	43b8EV4yAPBOVsWv3cec74hsS2xYMg4p6F7yBEebQF/eGzUmk8RGsT0FYrctnaASnTlu9JmogggfN
-	Yh1cK3aw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DCwsrooLzbYnDkffITuvgoSKfvv8gn7avc+z5+Rq72M=; b=auTHAewRO8t0rfhAX8TzsEvtuX
+	rV3HDT0ais7sj/4tG+nJvS7PfuU0oQNGYcOUFNiDFtLFIfy7r0RgpxDMohIeMJoTbTMHO9e1xEYAO
+	DRfMKoxew9gfBXjKSagIdlcG+NX4vNNi3rf0ja9pR/8pSnMaPQNZwvd0peJmRLrRG2vvjetHRf8qx
+	xe5VIcmcPg1rNgz+6ZJccLMvSR6X9/fU+L8gVFj8TvOulLrlwdPHco8ceQukRBg/GjJLc+qZuucct
+	/E2suavlgBEltuNDULeh6iuC5QV50j/tbk4rMWFr3MevGASVzJVC5/gAFr8vVx+PFHKO2XezlH4E4
+	OAUw7jLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgLWB-00000004faF-1scX;
-	Tue, 20 Aug 2024 09:51:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sgMBj-00000004pAb-3hHV;
+	Tue, 20 Aug 2024 10:34:07 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgLVT-00000004fQU-1gWr;
-	Tue, 20 Aug 2024 09:50:28 +0000
-X-UUID: 9df125ea5ed911efb3adad29d29602c1-20240820
+	id 1sgMBg-00000004p9E-3WC5
+	for linux-mediatek@lists.infradead.org;
+	Tue, 20 Aug 2024 10:34:06 +0000
+X-UUID: b626021a5edf11efba0aef63c0775dbf-20240820
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=qcpbxZTpMQHjU70kP0bCyCvXXCDagI/iPE2XuZLBzN4=;
-	b=ctfNXpTBw9OzUN0384X6CE1puJzxQLCOzWNGv90u3uSmx2pVLW+ba2XTWUGKUP/kTHeh8PLLfKUYrFJENKOIcCCgoMZvptlSPWJ/yddud5KXqhYU/NmKWKJYyNSmVYdH9QjqnYxmtcj1GPXpK/72H73HVF5JPhIhPEGbegZqdTM=;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=DCwsrooLzbYnDkffITuvgoSKfvv8gn7avc+z5+Rq72M=;
+	b=C4WLyaRb2dQ7L2+TNYY4y7i0d2F8b7lafclaa/nbUqb4xGvA5JtjSIuzKiFM1KEbQwRe79J8F4ZeLlnv08oS5Musxr3vCrhKHAC5EVKDhr8QLtScg2Xm0w/pYaWmLvLPjzGlJ2NMagpb3gV1cEIKI7w4B/R9bhSHgo600UKUJjA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:14c34abe-5894-4d94-8321-8c3ad3cbca92,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6dc6a47,CLOUDID:60afa4be-d7af-4351-93aa-42531abf0c7b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+X-CID-O-INFO: VERSION:1.1.41,REQID:ffa99d1d-53d8-40f9-b2f1-13f088c28b0b,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:043aa5be-d7af-4351-93aa-42531abf0c7b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1|-5,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 9df125ea5ed911efb3adad29d29602c1-20240820
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <tze-nan.wu@mediatek.com>)
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: b626021a5edf11efba0aef63c0775dbf-20240820
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 692251934; Tue, 20 Aug 2024 02:50:22 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+	with ESMTP id 988169395; Tue, 20 Aug 2024 03:33:59 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 20 Aug 2024 17:29:47 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 20 Aug 2024 17:29:47 +0800
-From: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
-To: <netdev@vger.kernel.org>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Kuniyuki Iwashima <kuniyu@amazon.com>, Jakub
- Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Stanislav Fomichev
-	<sdf@fomichev.me>
-CC: <bobule.chang@mediatek.com>, <wsd_upstream@mediatek.com>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Tze-nan
- Wu <Tze-nan.Wu@mediatek.com>, Yanghui Li <yanghui.li@mediatek.com>, Cheng-Jui
- Wang <cheng-jui.wang@mediatek.com>, Alexei Starovoitov <ast@kernel.org>,
-	Daniel Borkmann <daniel@iogearbox.net>, John Fastabend
-	<john.fastabend@gmail.com>, Andrii Nakryiko <andrii@kernel.org>, Martin KaFai
- Lau <martin.lau@linux.dev>, Eduard Zingerman <eddyz87@gmail.com>, Song Liu
-	<song@kernel.org>, Yonghong Song <yonghong.song@linux.dev>, KP Singh
-	<kpsingh@kernel.org>, Hao Luo <haoluo@google.com>, Jiri Olsa
-	<jolsa@kernel.org>, <bpf@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>
-Subject: [PATCH v3] net/socket: Check cgroup_bpf_enabled() only once in do_sock_getsockopt()
-Date: Tue, 20 Aug 2024 17:29:42 +0800
-Message-ID: <20240820092942.16654-1-Tze-nan.Wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ 15.2.1118.26; Tue, 20 Aug 2024 18:23:55 +0800
+Received: from APC01-PSA-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 20 Aug 2024 18:23:54 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=FIcQLbOgySc7TcS/et3EsePxe9V+pIflFitDha2BP47pix/Cyjyysl/x4eFUO3kRhvd70Uff6QkCNl0wVgy7MgCShP4dAEG1OWuN9P5+lAjBMEcT+5WgIAIxNuSHKPrUndRSdE9xHGG38o34BFI9g5fmpTggHUc14qCBUdbaE6woh/W78vz/4XT/68w0ZsYazGRpZ2dKoCodrZfUCMT6FfZ+qBAL8EkJq2C8nLkRgJMeRjZ/mIevUjrNfXgBcjzcvTZWjYqskTNi88ZowVwnXXplvLOjCrJRLZyZgELf9RbrHVZv4m5zCVb5pLYAXLCn2EG/R5+X0EQjXMGujplBFA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=DCwsrooLzbYnDkffITuvgoSKfvv8gn7avc+z5+Rq72M=;
+ b=HV+RT5VKf4U2csVaqaIF/owDj/bPPEjfzc7hhq4EHvUekZlDSiV9SF4JFGka4OEJ3rYLX9bl0ojybM1CaH2EN7isuK3eQKj/d22zlYRo0jL5am/IAVGkDtRcnCdqMJ4DHZoL8VXkJeVWXBCKOzh6exEvjCn/0CffiGPEcWvj1ej4StKQ41HeJOiVWdkjTxXzo1Fe+qPHDqiH557375WQk5jhXT6su9gE5W1Fm3nx2FeJatYsVE8KEtp8uqrpbPtn6OEtyZevuoCO/MkL5mxxjkC3iQucNqC1G3pTde2tpjbiitrCEf1MuqKIwJ8lk1PGPTvg5McaU0AV7lH3Zl2Ltg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=DCwsrooLzbYnDkffITuvgoSKfvv8gn7avc+z5+Rq72M=;
+ b=OnfvYfBszHi3VSYBTGgP9Wq/CXE6VI22BrkesDxOK9MdxNLH5ugS2gIyGZSMJJlJDrni/GSyAEXrI80SyyigkaUMWUFqMNNqV6Z8tsPYwD2nSzcYDIAJ1iWL+Ck+CuE3u8RTs11EuoUXWXjYzQpZcP7LF83usNX2xYy/qsXj6KY=
+Received: from SEZPR03MB6468.apcprd03.prod.outlook.com (2603:1096:101:47::9)
+ by SG2PR03MB6503.apcprd03.prod.outlook.com (2603:1096:4:1c7::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7849.20; Tue, 20 Aug
+ 2024 10:23:53 +0000
+Received: from SEZPR03MB6468.apcprd03.prod.outlook.com
+ ([fe80::8dd9:7dc2:9bac:818a]) by SEZPR03MB6468.apcprd03.prod.outlook.com
+ ([fe80::8dd9:7dc2:9bac:818a%4]) with mapi id 15.20.7875.019; Tue, 20 Aug 2024
+ 10:23:52 +0000
+From: =?utf-8?B?U2hheW5lIENoZW4gKOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>
+To: "greearb@candelatech.com" <greearb@candelatech.com>, "nbd@nbd.name"
+	<nbd@nbd.name>
+CC: "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	=?utf-8?B?RXZlbHluIFRzYWkgKOiUoeePiumIuik=?= <Evelyn.Tsai@mediatek.com>,
+	"lorenzo@kernel.org" <lorenzo@kernel.org>, Ryder Lee
+	<Ryder.Lee@mediatek.com>, =?utf-8?B?SG93YXJkLVlIIEhzdSAo6Kix6IKy6LGqKQ==?=
+	<Howard-YH.Hsu@mediatek.com>
+Subject: Re: [PATCH 07/12] wifi: mt76: mt7996: set correct beamformee SS
+ capability
+Thread-Topic: [PATCH 07/12] wifi: mt76: mt7996: set correct beamformee SS
+ capability
+Thread-Index: AQHa78G2JzMvEngnSkGepf6EsgLnhrIupw4AgAFPiIA=
+Date: Tue, 20 Aug 2024 10:23:52 +0000
+Message-ID: <8f1b465a51fc66a13fd01c49266a4b5cc934f5eb.camel@mediatek.com>
+References: <20240816094635.2391-1-shayne.chen@mediatek.com>
+	 <20240816094635.2391-6-shayne.chen@mediatek.com>
+	 <9e60638a-d85f-4c35-9370-8b42e96d1526@candelatech.com>
+In-Reply-To: <9e60638a-d85f-4c35-9370-8b42e96d1526@candelatech.com>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEZPR03MB6468:EE_|SG2PR03MB6503:EE_
+x-ms-office365-filtering-correlation-id: 08ffa900-4de6-4bbf-747e-08dcc1023092
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|376014|366016|1800799024|38070700018;
+x-microsoft-antispam-message-info: =?utf-8?B?R2hheHprK1RzRmprcUxiQXBScUtwZEhBYTRiYTdNdWFsT3BZSkxDOGJRZVVp?=
+ =?utf-8?B?RDduSUoyY01ZZ0xaMXo0WElHMUxsREY5elFSQ295TDlnblJMcFBTaW5pbDdC?=
+ =?utf-8?B?cEFpa3BPQnU2Wk42WXlueHBWa1BFWUFIK3FTclMrNjh6U21LWlVhdHVNT3VU?=
+ =?utf-8?B?OXRoalE3SmJhUUc0Q2hsdTd0aFkwOFA2VkI1akdtUU04RGdNOWVVS0tYQkhs?=
+ =?utf-8?B?T3dQV0RWY2Rid3dOWS96UTJQVnZDTHNueWlKVkV0YVJTeVNEUExPZHZ1NmVo?=
+ =?utf-8?B?UXJPVisvVWsyalhvZ2ZRRHNCQk5nUGJtd1JuQllrY1NkOTY0bTlhWkFLSVZ1?=
+ =?utf-8?B?dHptZm96NWk5WE93OU02dlNEVElndnNZRkY1amp2dkZaVFFoVW0yS3B6VkYx?=
+ =?utf-8?B?c0FVclNtR2hPQVErQUo5NXk4dElpcjlKblF5Mzh0dnEvcjhKcnJGWTY1cTBr?=
+ =?utf-8?B?OW5HWHR1RkNBTnFXL1dzeTIvMjI0b3BldVNhRzJObmJ6WEV5UFNxL3BIWjVI?=
+ =?utf-8?B?WldnbDVRYjdaN2VubjVhVG1sNkxkMmJMUkpsbnNlb0R0dXk2a2xqY1NiMjhM?=
+ =?utf-8?B?Qyt3dWMvZlhVU0RrNVZPVEh0N1ZENktPVVB1UnVoTU1zeTl1b25Wc0hOcm1r?=
+ =?utf-8?B?aXBwUXM3MDFzUkd5Y3JlYzN4NTBkeGt3NnQxVjhOUHZRYVY2ZU5YbXlIZWx5?=
+ =?utf-8?B?MW9oQkdpMGdFbHpsWFBneGhXNEpleUVMSldhcGNvTXhVQ0U3M0dwbFk3VUdm?=
+ =?utf-8?B?bzhsZ2lvUyt5dStaaEEzTDNOMWU2dnJZZkpEYTFPRGE2c3JOUEI2cFF0SEUw?=
+ =?utf-8?B?ZXplcUdlZjRseEJTUTU3dUo2NHZsTGRHc1NoTURQWlR2T01Wck83bTVQSTdm?=
+ =?utf-8?B?dDgxZDFxOWlQVDUrMnVqWTRkVjNxbXFmbmRabG5pL0R5VzJnTDcrY202T0k2?=
+ =?utf-8?B?UXlld2YxUC9vK2txODRQVHBUTUZwRmtQbUNtQUZONWVoaXM4UFFrVnZGTGps?=
+ =?utf-8?B?ZFdIK3RDUm5xdmV0Z01kZUFFdmR1YWUrYmdVN25lazk5ellVanRhZ0NOMEhG?=
+ =?utf-8?B?OXl3c2lOVGFRR1A4UmZKUUkzKzAxQng5Z1FWR2xJMjA2YUVlV3JMTmc5TXAy?=
+ =?utf-8?B?NTllWUp2YTlOcklvRVhtd1JGcEVPK2dtZ20rUERkcFhLcmtCUUY1VFhmVTZ2?=
+ =?utf-8?B?UUwzUlI3T1J3TGVWcjFYZ2tRZ0NDaXlLMDh0enhpN0hNQlZHK1hZM0dQcUsz?=
+ =?utf-8?B?YVV5OVFoTElYYWVtd01mcHlpcWRNNkM2WVduL3l4NDY0RlFXVGZpVHVtUmlL?=
+ =?utf-8?B?UzhKODNzekExUllsZGwzMWxUN1dnT1hKeU9aakNOazhvOFBTZlJSWGRtMUJB?=
+ =?utf-8?B?TkZEaWdEVm1RaGcrdkQxUFNPVE5Vd0JLZUo2UEZmN2hRY2F1cW8yRWlQRWlu?=
+ =?utf-8?B?cHhjb1VtcWFUR1M1d3VFQnZQWjBzL1JCMVg4emphMzJ5RGlmOVB0aTBEbHov?=
+ =?utf-8?B?cEo4R3pWS0pwWVVFYjZZTVhwdHpyemxKRjlSODJneDB0Y1JaYVArQkFKRS9C?=
+ =?utf-8?B?VTBoSDJ3NGErNFhOeG43R0ZMaFpZMUFHMmE4U1NldXkzL294WVhRSVV4VU4x?=
+ =?utf-8?B?OGpmaHIxa0JZb0tOUTRZL0l3M1FISzZNRGNxVHpZYTFOejdZRUpjT1NCa3dX?=
+ =?utf-8?B?N0lrVjVUVVBzNmN1QkZNcHZMaTNJVFdIYnh0U2FSRDBpNnZDci95bjY2YVpN?=
+ =?utf-8?B?NEhlYld1Yk54S05DOHZ3TUhDUUhhY0dPeWY4ZW5uZUZhQ0tBdC9jU1ZiUVhR?=
+ =?utf-8?B?VGlIVW9sUk1CaFFqc0czckFLN2ppYWg2dFFLMHlMbUxpZHErdzVPT2JlVWlB?=
+ =?utf-8?B?WEhaYk5WbktWZXBZUDlpSUo2NEMySUVxcWFYN09yV1p1cHc9PQ==?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR03MB6468.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(366016)(1800799024)(38070700018);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Y0RiUjJJSnZaT3RMNXd4c3lyU2pUTnNsYVQ2c3lTN3RZWWU4djRsSHozNHpC?=
+ =?utf-8?B?VWVmWmlnaFdZajcyc1FLR3BSNDVQRWNtL0tpaVJiTkM3NXJDM082RXBwOElq?=
+ =?utf-8?B?ZmtmR1dqUm8zSGtWS3lkSEZlaFF3Q3g4ejhlQWtvVjRLYkExWTZLbTc4RTFK?=
+ =?utf-8?B?bCtGNTJkSkZVUG56RlJHTk5taE5RWEpQZVJidWVMRkx2RVFiMWx1NUNDRW9R?=
+ =?utf-8?B?UFpxRmJvTkYxSGxaNzgzNmpzbnJYaXhGTE96Tk5zY25ZMG9ycm5NMWVuSTg2?=
+ =?utf-8?B?OTNXSm5sWXIvbjBDa05xTVQ2RjhCSUxNaTlSclF5T1lrSWlMdlRaVVpEd1RU?=
+ =?utf-8?B?UENZcVlXeVpudlU1eXhxYStYbTBFOURUYmhERWdXNUtBS1lWTFJVL0ZkMkRU?=
+ =?utf-8?B?VzFMRWMzUUY2TERMQ1lLYUJvbU1uY3dWMisrMHp3SVkxTlA2OW5QR21yZzhv?=
+ =?utf-8?B?M0cwallqeE5ZdEtvNGNqU2grelN2MjhxdWZ1b3NSNUxJRXNtTGVZYUEvTTZJ?=
+ =?utf-8?B?M0Z3WDlMM3llSkEzdkZLOG5sRTAvTlR3TjV4Ly9DaXNCTGVTQU41SE1pYzBL?=
+ =?utf-8?B?N2ZqOHZGUFoyRDRkTWRvUUdrVUxTQU80by8wVkhOVGFkbmc0NkREYUJ2cWk5?=
+ =?utf-8?B?OHFTZ1kvdS83MHNoeHE1TVN6UHhYdm1HVlZWc3FSZ0tJeDBDSGVSOXAvZ3h1?=
+ =?utf-8?B?RVd5SlBzYStrdDBsS2RlbVMvUXZsTmZuWlEzalRveTRNVDhHVXE5VjRHNnpx?=
+ =?utf-8?B?bmNLUG1IU21zTTdKbnUwUHc0K3BmRkxiclk3Ymx1bkV5QlVIQTgrcEFidDlo?=
+ =?utf-8?B?d2RMR3JPUm5iOExzZ2dPcnduZVhlWWRLU2RyYjVFbzVqWWxLbFJISGo5ZFha?=
+ =?utf-8?B?Rk0vOHdWRDEybzlxdzZzclE3ZGVxdnBTYWpUb2w3dSsrS0JnL0xPa3F2R20v?=
+ =?utf-8?B?Zjh6RzVUSExURG5pSkRGR3JuQnJqd1QwdncrR2NDcGh4WkVHY2dYT0NuVUh1?=
+ =?utf-8?B?MW5kYVMwc2FQb0xCWWNOSTBPQ1lmUnRCL3VHTERlOVdidlRUZmczRENrczcv?=
+ =?utf-8?B?NXJUa2RIN3NSTC9pc0JmUHo1UzlZRk9pQVE1Z1Z2Q3pMbTFiNVhDN3R3OFNY?=
+ =?utf-8?B?TGRrVWNzQXRQU2oyWkJhdEZydDhJMVFpM0pJeCtSZ1dSOXJLWlRuM0xPVHRx?=
+ =?utf-8?B?Z3YyWVdGSDArMGcxaHFnOFVtVGlPU1pwYnU0Y1FoZjhldzdHOFQ1SnZDVVUr?=
+ =?utf-8?B?YlJOcHJJRFh4Q21ZU1J6QXVXOEFpVlB1c2xxMWcraGs0RGhRMi8zK01ZTUVM?=
+ =?utf-8?B?MExWT091eExKSzZGOWZtYjFyaTM0UndMek9PK3IvdVI2clZjcUFRNW5xV2d2?=
+ =?utf-8?B?bmpMa1l2WnNOR096bGsvU3dWa2t0aFhBSCtibk0rVGExVjVsTXFQTWpSSFl6?=
+ =?utf-8?B?eVpsTjB3bGswdCsvM1BwUE9jZkNsU1ljQTN6anNlSnR5VHZvSmVBRmJqTXBm?=
+ =?utf-8?B?TGFZQSs1QmVvRG5DamhQQWIxQWc0RXRNZ0JiemZWeU1vbnVWTGNnU0JrTHJE?=
+ =?utf-8?B?RGxxeHY1b1ZqbmY2SUI3SGtzS3VLNlhMUTF3MCtEUlRyemNiVTFHZjB3VEph?=
+ =?utf-8?B?cTVkcytQeWczUlB0NHNOVHppSGlVcTdDNS9uM1RQeWxqQnFzUDdPK3Q0QUI2?=
+ =?utf-8?B?MEdxOUkvd0JhdStQUkU0aDByRXorMEw3TDYwbUpXcDNKMTVvRjV4NDdOWXNW?=
+ =?utf-8?B?WGQ2WG9YUVVlM0VUWEI1czE3UURKVFZzdGpzUWE5NThwNytUeXJPSXlaTnJZ?=
+ =?utf-8?B?RTI4a05pc3ExYVQvaExON21Jemd0bllyOTlzUDNtVDE5SHdiQXpPUUoweFNm?=
+ =?utf-8?B?N0d6Tll2OExzbGlUdHorTVdsNlNJT3BUN29LSm8xWlRzSXB4UWR3VnhURTBU?=
+ =?utf-8?B?bWp2WCtJTE0wTWMzN204YjV0Q3o1M2VlWjd1YzFaNGgvVGM0Y3VrdTQvYU51?=
+ =?utf-8?B?T09HcVVOSElyTVZ2ZnpQVmZKZkM1ZWwrV09KbS8vQWtxS2RGNkdLVjVyNUow?=
+ =?utf-8?B?bU4yUTJ4TWNBcnZLTEd3OFNnWkdtb0w1RUk1b0pPdWtQSUZQaS8yWmF4RERi?=
+ =?utf-8?B?ME9OcGlWYnVlVi8rUkZyN0pjZVBtM1pMOVE5N3lKWnkrRDI0b2ZNZFUzb3NC?=
+ =?utf-8?B?Unc9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <2744D28E8C2C1148BB032159F2C98BBB@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR03MB6468.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 08ffa900-4de6-4bbf-747e-08dcc1023092
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Aug 2024 10:23:52.8129
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: IjtYL61xamHwzWzr0fvP5TkF/WiH1efBkB3daQhQDoiS0/sxiyOqrljRA18gyQV1rUYd4ZmXvYtCMoBFMt7yRdOmHMRWqY97FLLSX5V/pF4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2PR03MB6503
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--19.498300-8.000000
+X-TMASE-MatchedRID: c/HXCguHooHUL3YCMmnG4t7SWiiWSV/1jLOy13Cgb4/n0eNPmPPe5KWz
+	WoIRiV9DM/Se/q/gEyf5MiS7M8c1eGmXMi7Ntyo2drnuu4cCcfF+Mk6ACsw4JiifyPcCvG3TPMA
+	rurUD4iIv91sk+WpIXXLjeUJjImc4hsiwtTFTO4bAJnGRMfFxyZE+3DCX3uibAOrNpiFyN5DvH2
+	neBQK1q83WN4NNppkR4gEgi0p+wtcrYPqmZqtV/86RKnOYsI58vtVce6w5+K+CsBeCv8CM/b/fk
+	bxklHWAgkXrwSgutx8fZdczzDm/ukL9tcyTZdAsgxsfzkNRlfLdB/CxWTRRu4BQLWahPl6cftwZ
+	3X11IV0=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--19.498300-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 7C434EF06C792AD68751217FAA3E21DB09669EFBBB9627113D09E2EE2E0651F62000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240820_025027_452584_8381F4D7 
-X-CRM114-Status: GOOD (  14.80  )
+X-CRM114-CacheID: sfid-20240820_033404_918548_B1207091 
+X-CRM114-Status: GOOD (  18.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,130 +227,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The return value from `cgroup_bpf_enabled(CGROUP_GETSOCKOPT)` can change
-between the invocations of `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN` and
-`BPF_CGROUP_RUN_PROG_GETSOCKOPT`.
-
-If `cgroup_bpf_enabled(CGROUP_GETSOCKOPT)` changes from "false" to
-"true" between the invocations of `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN` and
-`BPF_CGROUP_RUN_PROG_GETSOCKOPT`, `BPF_CGROUP_RUN_PROG_GETSOCKOPT` will
-receive an -EFAULT from `__cgroup_bpf_run_filter_getsockopt(max_optlen=0)`
-due to `get_user()` was not reached in `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN`.
-
-Scenario shown as below:
-
-           `process A`                      `process B`
-           -----------                      ------------
-  BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN
-                                            enable CGROUP_GETSOCKOPT
-  BPF_CGROUP_RUN_PROG_GETSOCKOPT (-EFAULT)
-
-To prevent this, invoke `cgroup_bpf_enabled()` only once and cache the
-result in a newly added local variable `enabled`.
-Both `BPF_CGROUP_*` macros in `do_sock_getsockopt` will then check their
-condition using the same `enabled` variable as the condition variable,
-instead of using the return values from `cgroup_bpf_enabled` called by
-themselves as the condition variable(which could yield different results).
-This ensures that either both `BPF_CGROUP_*` macros pass the condition
-or neither does.
-
-Co-developed-by: Yanghui Li <yanghui.li@mediatek.com>
-Signed-off-by: Yanghui Li <yanghui.li@mediatek.com>
-Co-developed-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
-Signed-off-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
-Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
----
-
-Chagnes from v1 to v2: https://lore.kernel.org/all/20240819082513.27176-1-Tze-nan.Wu@mediatek.com/
-  Instead of using cgroup_lock in the fastpath, invoke cgroup_bpf_enabled
-  only once and cache the value in the newly added variable `enabled`.
-  `BPF_CGROUP_*` macros in do_sock_getsockopt can then both check their
-  condition with the new variable `enable`, ensuring that either they both
-  passing the condition or both do not.
-
-Chagnes from v2 to v3: https://lore.kernel.org/all/20240819155627.1367-1-Tze-nan.Wu@mediatek.com/
-  Hide cgroup_bpf_enabled in the macro, and some modifications to adapt
-  the coding style.
-
----
- include/linux/bpf-cgroup.h | 15 ++++++++-------
- net/socket.c               |  5 +++--
- 2 files changed, 11 insertions(+), 9 deletions(-)
-
-diff --git a/include/linux/bpf-cgroup.h b/include/linux/bpf-cgroup.h
-index fb3c3e7181e6..5afa2ac76aae 100644
---- a/include/linux/bpf-cgroup.h
-+++ b/include/linux/bpf-cgroup.h
-@@ -390,20 +390,20 @@ static inline bool cgroup_bpf_sock_enabled(struct sock *sk,
- 	__ret;								       \
- })
- 
--#define BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen)			       \
-+#define BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen, enabled)		       \
- ({									       \
- 	int __ret = 0;							       \
--	if (cgroup_bpf_enabled(CGROUP_GETSOCKOPT))			       \
-+	enabled = cgroup_bpf_enabled(CGROUP_GETSOCKOPT);		       \
-+	if (enabled)							       \
- 		copy_from_sockptr(&__ret, optlen, sizeof(int));		       \
- 	__ret;								       \
- })
- 
- #define BPF_CGROUP_RUN_PROG_GETSOCKOPT(sock, level, optname, optval, optlen,   \
--				       max_optlen, retval)		       \
-+				       max_optlen, retval, enabled)	       \
- ({									       \
- 	int __ret = retval;						       \
--	if (cgroup_bpf_enabled(CGROUP_GETSOCKOPT) &&			       \
--	    cgroup_bpf_sock_enabled(sock, CGROUP_GETSOCKOPT))		       \
-+	if (enabled && cgroup_bpf_sock_enabled(sock, CGROUP_GETSOCKOPT))       \
- 		if (!(sock)->sk_prot->bpf_bypass_getsockopt ||		       \
- 		    !INDIRECT_CALL_INET_1((sock)->sk_prot->bpf_bypass_getsockopt, \
- 					tcp_bpf_bypass_getsockopt,	       \
-@@ -518,9 +518,10 @@ static inline int bpf_percpu_cgroup_storage_update(struct bpf_map *map,
- #define BPF_CGROUP_RUN_PROG_SOCK_OPS(sock_ops) ({ 0; })
- #define BPF_CGROUP_RUN_PROG_DEVICE_CGROUP(atype, major, minor, access) ({ 0; })
- #define BPF_CGROUP_RUN_PROG_SYSCTL(head,table,write,buf,count,pos) ({ 0; })
--#define BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen) ({ 0; })
-+#define BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen, enabled) ({ 0; })
- #define BPF_CGROUP_RUN_PROG_GETSOCKOPT(sock, level, optname, optval, \
--				       optlen, max_optlen, retval) ({ retval; })
-+				       optlen, max_optlen, retval, \
-+				       enabled) ({ retval; })
- #define BPF_CGROUP_RUN_PROG_GETSOCKOPT_KERN(sock, level, optname, optval, \
- 					    optlen, retval) ({ retval; })
- #define BPF_CGROUP_RUN_PROG_SETSOCKOPT(sock, level, optname, optval, optlen, \
-diff --git a/net/socket.c b/net/socket.c
-index fcbdd5bc47ac..0b465dc8a789 100644
---- a/net/socket.c
-+++ b/net/socket.c
-@@ -2363,6 +2363,7 @@ int do_sock_getsockopt(struct socket *sock, bool compat, int level,
- 		       int optname, sockptr_t optval, sockptr_t optlen)
- {
- 	int max_optlen __maybe_unused;
-+	bool enabled __maybe_unused;
- 	const struct proto_ops *ops;
- 	int err;
- 
-@@ -2371,7 +2372,7 @@ int do_sock_getsockopt(struct socket *sock, bool compat, int level,
- 		return err;
- 
- 	if (!compat)
--		max_optlen = BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen);
-+		max_optlen = BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen, enabled);
- 
- 	ops = READ_ONCE(sock->ops);
- 	if (level == SOL_SOCKET) {
-@@ -2390,7 +2391,7 @@ int do_sock_getsockopt(struct socket *sock, bool compat, int level,
- 	if (!compat)
- 		err = BPF_CGROUP_RUN_PROG_GETSOCKOPT(sock->sk, level, optname,
- 						     optval, optlen, max_optlen,
--						     err);
-+						     err, enabled);
- 
- 	return err;
- }
--- 
-2.45.2
-
+T24gTW9uLCAyMDI0LTA4LTE5IGF0IDA3OjIyIC0wNzAwLCBCZW4gR3JlZWFyIHdyb3RlOg0KPiAg
+CSANCj4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90IGNsaWNrIGxpbmtzIG9yIG9wZW4g
+YXR0YWNobWVudHMgdW50aWwNCj4geW91IGhhdmUgdmVyaWZpZWQgdGhlIHNlbmRlciBvciB0aGUg
+Y29udGVudC4NCj4gIE9uIDgvMTYvMjQgMDI6NDYsIFNoYXluZSBDaGVuIHdyb3RlOg0KPiA+IEZy
+b206IEhvd2FyZCBIc3UgPGhvd2FyZC15aC5oc3VAbWVkaWF0ZWsuY29tPg0KPiA+IA0KPiA+IEFj
+Y29yZGluZyB0byBJRUVFIFA4MDIuMTFiZS9ENi4wIFRhYmxlIDktNDE3biwgYmVhbWZvcm1lZSBT
+UyBmaWVsZA0KPiBzdGFuZHMNCj4gPiBmb3IgdGhlIG1heGltdW0gbnVtYmVyIG9mIHNwYXRpYWwg
+c3RyZWFtcyB0aGF0IHRoZSBTVEEgY2FuIHJlY2VpdmUNCj4gaW4gYW4NCj4gPiBFSFQgc291bmRp
+bmcgTkRQIG1pbnVzIDEsIGFuZCB0aGUgbWluaW11bSB2YWx1ZSBvZiB0aGlzIGZpZWxkIGlzIDMu
+DQo+ID4gDQo+ID4gVGhpcyB2YWx1ZSBpbmRpY2F0ZXMgdGhlIGRlY29kaW5nIGNhcGFiaWxpdHkg
+b2YgYSBiZWFtZm9ybWVlLCB3aGljaA0KPiBpcw0KPiA+IGluZGVwZW5kZW50IG9mIGN1cnJlbnQg
+YW50ZW5uYSBzZXR0aW5ncy4gQ29ycmVjdCB0aGUgdmFsdWUgZm9yDQo+IG10Nzk5Ng0KPiA+IGFu
+ZCBtdDc5OTIgY2hpcHNldHMgYmFzZWQgb24gdGhlaXIgSFcgY2FwYWJpbGl0eS4NCj4gDQo+IEkg
+dGhvdWdodCB0aGF0IGlmIHVzZXIgc2V0cyBhIHNwZWNpZmljIG51bWJlciBvZiBhbnRlbm5hcywg
+dGhlIGNvZGUNCj4gc2hvdWxkDQo+IGFjdCBhcyBpZiB0aGF0IHdlcmUgdGhlIG51bWJlciBvZiBw
+aHlzaWNhbCBhbnRlbm5hcywgc28gdGhpcyBjaGFuZ2UNCj4gc2VlbXMNCj4gd3JvbmcgdG8gbWUu
+DQo+IA0KV2UgdXNlZCB0byB0aGluayB0aGF0IHRoaXMgZmllbGQgZGVwZW5kcyBvbiB0aGUgYW50
+ZW5uYXMuIEhvd2V2ZXIsIHdlDQpzZWUgdGhhdCBJRUVFIHNwZWMgZGVmaW5lcyB0aGUgbWluaW11
+bSB2YWx1ZSBvZiB0aGlzIGZpZWxkIGlzIDMsIHNvIHdlDQp0aGluayB3aGF0IHRoZSBmaWVsZCBt
+ZWFucyBpcyB0aGUgIk1BWCBIVyBkZWNvZGluZyBjYXBhYmlsaXR5Iiwgbm8NCm1hdHRlciBob3cg
+bWFueSBhbnRlbm5hcyB0aGF0IHVzZXIgY3VycmVudGx5IGNvbmZpZ3VyZWQuDQoNCkZvciBleGFt
+cGxlLCBpZiB1c2VyIGNvbmZpZ3VyZXMgYSBiZWFtZm9ybWVlIHdpdGggb25seSAxIGFudGVubmEs
+IGl0IGlzDQpzdGlsbCBhYmxlZCB0byBkZWNvZGUgYSAiKFJYKS0xeDQtKFRYKSIgbWF0cml4IGZy
+b20gYSBiZWFtZm9ybWVyLiANCg0KPiBXaGF0IHVzZS1jYXNlIGlzIHRoaXMgcGF0Y2ggYXR0ZW1w
+dGluZyB0byBmaXg/DQo+IA0KV2UgZmFjZWQgaXNzdWVzIHdoZW4gZG9pbmcgc29tZSBCRiBwZXJm
+b3JtYW5jZSBhbmQgY2VydCB0ZXN0cy4NCg0KVGhhbmtzLA0KU2hheW5lDQoNCj4gVGhhbmtzLA0K
+PiBCZW4NCj4gDQo=
 
