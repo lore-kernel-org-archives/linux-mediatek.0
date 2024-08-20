@@ -4,96 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C7AFC3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Aug 2024 13:07:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C984EC531DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Aug 2024 14:02:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yDKc/6xoYjtFNkM4oka/cWTFsDfETxi1OyIqvH0kI1g=; b=yAfQ6C3FbUNH/dukRwhWhHwz0S
-	daGgYCyjaOQEevDvIZx4Hmk/iAXUbBhA+GHb1YTaPE3yxm54ht19Kz4rLlxIuAv+A9o65I8ElNpBu
-	mML4d992LjCYtW7qqZZDm3hdIf1iSpKzB2yuzKD0O6KdewyslzFv7tHDL82pp7u9G6/FyJjjEGWRy
-	9tQHUmDOND4Ylfd1vh8B5Jc9MXiNkmVhFK1gwq84CBSYGNtth8bS1Oinv6/nzShdcKGpZNBKDcI1Q
-	OwLjMwn8daMz7DT9CwyrF8yPqujbxpYiVCL5mZZGoxLFFLdfBRIZ8VMZZU6DHedpFkPjhDUZS6SFM
-	N6pZe2gg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=MMpGYWqxYFvsJZFB/aitMBHjApRYA3U/nib/hXoTY+o=; b=1gAKHlWFpHCzZN
+	45K6SYLfByq0+i9gK0ACLMvVVUJFMx1on3wmh4kv5EnmU5DpsbVJxNBHUv+vyRXfdpPrIxOfkEmEg
+	Eje0a75wQcyDrmqf2DCZRbMjo3pauhvQTVUKFs5nkZXomhKHxFz6LkGH6XNOVSkJXHHlLerFsoCRG
+	eJhI2/FkMV1qDIWL+omkc3njDgDU/Z0NknX2ldob5zZfUh6Ahnf90NyVJ3canx95fO6iJ+0s17r09
+	UShybzEBE7Oky9ERLh3Mjjj8Hx/6/uAqLo4sEYq7F1GJPunv+N2fPyv3AHc75w+H+w3vozePQQ20Q
+	dpRNTllAYPIvu+akvDBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgOaO-00000005IZd-2dhz;
-	Tue, 20 Aug 2024 13:07:44 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1sgPRJ-00000005SRw-1QpC;
+	Tue, 20 Aug 2024 14:02:25 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgOaK-00000005IXD-07FD;
-	Tue, 20 Aug 2024 13:07:42 +0000
-Received: from mail.maildlp.com (unknown [172.19.88.105])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Wp8rD3W5wzyR2p;
-	Tue, 20 Aug 2024 21:07:08 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
-	by mail.maildlp.com (Postfix) with ESMTPS id 1EF6B140138;
-	Tue, 20 Aug 2024 21:07:30 +0800 (CST)
-Received: from [10.67.120.129] (10.67.120.129) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Tue, 20 Aug 2024 21:07:29 +0800
-Message-ID: <98ceade3-8d60-45bf-a419-ff3982a96101@huawei.com>
-Date: Tue, 20 Aug 2024 21:07:29 +0800
+	id 1sgPQa-00000005SKg-1agk;
+	Tue, 20 Aug 2024 14:01:42 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id D2AB360BBD;
+	Tue, 20 Aug 2024 14:01:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37F1EC4AF0C;
+	Tue, 20 Aug 2024 14:01:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1724162495;
+	bh=tMDVgSdrmUt0o/yr0SfdNlxwNnAf8+M9He9ObnMuKnc=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=QtlTyHdwklxJiNDl1CkBntI64OwQmmIL/QJE+S3XpXS94qiUgxFWHwmyx7NREFN8f
+	 fn/3zqHETJtME/zWnFx/z2IMXN4x0fcyg8iDF2cSDA056DwAU1pVjquIqLi2bV3Knp
+	 ZFxCUIeFaxW4//jkoo22CwWmfhcDpNG+6Yiq+Y4DDmQRG1TAzIxjKdBOIsq0Bdap0p
+	 YLyOGEr8w3P9xW7H5MNW9Z02FwROUpCkvycnQGJdh6uU38f1ZmxdsravoLIUJPM3Vf
+	 iocd0Gv9qhHk7/ZYb7wY97K2gb1XN2f13WLE2MtZzTug6sYqV+NF+uzGt74Yk0JoLV
+	 wArz/EvMvMuFA==
+Date: Tue, 20 Aug 2024 09:01:33 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-pci@vger.kernel.org, ryder.lee@mediatek.com,
+	jianjun.wang@mediatek.com, lpieralisi@kernel.org, kw@linux.com,
+	robh@kernel.org, bhelgaas@google.com,
+	linux-mediatek@lists.infradead.org, lorenzo.bianconi83@gmail.com,
+	linux-arm-kernel@lists.infradead.org,
+	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org,
+	nbd@nbd.name, dd@embedd.com, upstream@airoha.com,
+	angelogioacchino.delregno@collabora.com
+Subject: Re: [PATCH v4 0/4] Add Airoha EN7581 PCIe support
+Message-ID: <20240820140133.GA207494@bhelgaas>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v13 04/14] mm: page_frag: add '_va' suffix to
- page_frag API
-To: Alexander Duyck <alexander.duyck@gmail.com>
-CC: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>,
-	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Subbaraya Sundeep
-	<sbhatta@marvell.com>, Chuck Lever <chuck.lever@oracle.com>, Sagi Grimberg
-	<sagi@grimberg.me>, Jeroen de Borst <jeroendb@google.com>, Praveen
- Kaligineedi <pkaligineedi@google.com>, Shailend Chand <shailend@google.com>,
-	Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
-	Przemek Kitszel <przemyslaw.kitszel@intel.com>, Sunil Goutham
-	<sgoutham@marvell.com>, Geetha sowjanya <gakula@marvell.com>, hariprasad
-	<hkelam@marvell.com>, Felix Fietkau <nbd@nbd.name>, Sean Wang
-	<sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo
- Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Keith
- Busch <kbusch@kernel.org>, Jens Axboe <axboe@kernel.dk>, Christoph Hellwig
-	<hch@lst.de>, Chaitanya Kulkarni <kch@nvidia.com>, "Michael S. Tsirkin"
-	<mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	=?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>, Andrew Morton
-	<akpm@linux-foundation.org>, Alexei Starovoitov <ast@kernel.org>, Daniel
- Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
-	John Fastabend <john.fastabend@gmail.com>, Andrii Nakryiko
-	<andrii@kernel.org>, Martin KaFai Lau <martin.lau@linux.dev>, Eduard
- Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>, Yonghong Song
-	<yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, Stanislav Fomichev
-	<sdf@fomichev.me>, Hao Luo <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>,
-	David Howells <dhowells@redhat.com>, Marc Dionne <marc.dionne@auristor.com>,
-	Jeff Layton <jlayton@kernel.org>, Neil Brown <neilb@suse.de>, Olga
- Kornievskaia <kolga@netapp.com>, Dai Ngo <Dai.Ngo@oracle.com>, Tom Talpey
-	<tom@talpey.com>, Trond Myklebust <trondmy@kernel.org>, Anna Schumaker
-	<anna@kernel.org>, Shuah Khan <shuah@kernel.org>,
-	<intel-wired-lan@lists.osuosl.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-nvme@lists.infradead.org>,
-	<kvm@vger.kernel.org>, <virtualization@lists.linux.dev>,
-	<linux-mm@kvack.org>, <bpf@vger.kernel.org>, <linux-afs@lists.infradead.org>,
-	<linux-nfs@vger.kernel.org>, <linux-kselftest@vger.kernel.org>
-References: <20240808123714.462740-1-linyunsheng@huawei.com>
- <20240808123714.462740-5-linyunsheng@huawei.com>
- <d1a23116d054e2ebb00067227f0cffecefe33e11.camel@gmail.com>
- <676a2a15-d390-48a7-a8d7-6e491c89e200@huawei.com>
- <CAKgT0Uct5ptfs9ZEoe-9u-fOVz4HLf+5MS-YidKV+xELCBHKNw@mail.gmail.com>
- <3e069c81-a728-4d72-a5bb-3be00d182107@huawei.com>
- <CAKgT0UcDDFeMqD_eRe1-2Og0GEEFyNP90E9SDxDjskdgtMe0Uw@mail.gmail.com>
-Content-Language: en-US
-From: Yunsheng Lin <linyunsheng@huawei.com>
-In-Reply-To: <CAKgT0UcDDFeMqD_eRe1-2Og0GEEFyNP90E9SDxDjskdgtMe0Uw@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.67.120.129]
-X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
- dggpemf200006.china.huawei.com (7.185.36.61)
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZsRX-Hrn2fCITK4P@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240820_060740_618796_CD89D358 
-X-CRM114-Status: GOOD (  30.95  )
+X-CRM114-CacheID: sfid-20240820_070141_315672_3038FAF1 
+X-CRM114-Status: GOOD (  15.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,105 +75,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2024/8/19 23:54, Alexander Duyck wrote:
-
-...
-
->>>>
->>>> "There are three types of API as proposed in this patchset instead of
->>>> two types of API:
->>>> 1. page_frag_alloc_va() returns [va].
->>>> 2. page_frag_alloc_pg() returns [page, offset].
->>>> 3. page_frag_alloc() returns [va] & [page, offset].
->>>>
->>>> You seemed to miss that we need a third naming for the type 3 API.
->>>> Do you see type 3 API as a valid API? if yes, what naming are you
->>>> suggesting for it? if no, why it is not a valid API?"
->>>
->>> I didn't. I just don't see the point in pushing out the existing API
->>> to support that. In reality 2 and 3 are redundant. You probably only
->>> need 3. Like I mentioned earlier you can essentially just pass a
->>
->> If the caller just expect [page, offset], do you expect the caller also
->> type 3 API, which return both [va] and [page, offset]?
->>
->> I am not sure if I understand why you think 2 and 3 are redundant here?
->> If you think 2 and 3 are redundant here, aren't 1 and 3 also redundant
->> as the similar agrument?
+On Tue, Aug 20, 2024 at 10:46:48AM +0200, Lorenzo Bianconi wrote:
+> > Introduce support for EN7581 SoC to mediatek-gen3 PCIe driver
+> > 
+> > Changes since v3:
+> > - move phy initialization delay in pcie-phy driver
+> > - rename en7581 PCIe reset delay
+> > - fix compilation warning
+> > Changes since v2:
+> > - fix dt-bindings clock definitions
+> > - fix mtk_pcie_of_match ordering
+> > - add register definitions
+> > - move pcie-phy registers configuration in pcie-phy driver
+> > Changes since v1:
+> > - remove register magic values
+> > - remove delay magic values
+> > - cosmetics
+> > - fix dts binding for clock/reset
+> > 
+> > Lorenzo Bianconi (4):
+> >   dt-bindings: PCI: mediatek-gen3: add support for Airoha EN7581
+> >   PCI: mediatek-gen3: Add mtk_gen3_pcie_pdata data structure
+> >   PCI: mediatek-gen3: Rely on reset_bulk APIs for PHY reset lines
+> >   PCI: mediatek-gen3: Add Airoha EN7581 support
+> > 
+> >  .../bindings/pci/mediatek-pcie-gen3.yaml      |  68 ++++++-
+> >  drivers/pci/controller/Kconfig                |   2 +-
+> >  drivers/pci/controller/pcie-mediatek-gen3.c   | 180 ++++++++++++++++--
+> >  3 files changed, 229 insertions(+), 21 deletions(-)
+> > 
+> > -- 
+> > 2.45.2
+> > 
 > 
-> The big difference is the need to return page and offset. Basically to
-> support returning page and offset you need to pass at least one value
-> as a pointer so you can store the return there.
+> Hi all,
 > 
-> The reason why 3 is just a redundant form of 2 is that you will
-> normally just be converting from a va to a page and offset so the va
-> should already be easily accessible.
+> any update about this series? Am I supposed to do something? Thanks in advance.
 
-I am assuming that by 'easily accessible', you meant the 'va' can be
-calculated as below, right?
+No need to do anything, I think Krzysztof will likely pick this up
+when he has a minute.
 
-va = encoded_page_address(encoded_va) +
-		(page_frag_cache_page_size(encoded_va) - remaining);
-
-I guess it is easily accessible, but it is not without some overhead
-to calculate the 'va' here.
-
-> 
->>> page_frag via pointer to the function. With that you could also look
->>> at just returning a virtual address as well if you insist on having
->>> something that returns all of the above. No point in having 2 and 3 be
->>> seperate functions.
->>
->> Let's be more specific about what are your suggestion here: which way
->> is the prefer way to return the virtual address. It seems there are two
->> options:
->>
->> 1. Return the virtual address by function returning as below:
->> void *page_frag_alloc_bio(struct page_frag_cache *nc, struct bio_vec *bio);
->>
->> 2. Return the virtual address by double pointer as below:
->> int page_frag_alloc_bio(struct page_frag_cache *nc, struct bio_vec *bio,
->>                         void **va);
-> 
-> I was thinking more of option 1. Basically this is a superset of
-> page_frag_alloc_va that is also returning the page and offset via a
-> page frag. However instead of bio_vec I would be good with "struct
-> page_frag *" being the value passed to the function to play the role
-> of container. Basically the big difference between 1 and 2/3 if I am
-> not mistaken is the fact that for 1 you pass the size, whereas with
-> 2/3 you are peeling off the page frag from the larger page frag cache
-
-Let's be clear here: The callers just expecting [page, offset] also need
-to call type 3 API, which return both [va] and [page, offset]? and it
-is ok to ignore the overhead of calculating the 'va' for those kinds
-of callers just because we don't want to do the renaming for a existing
-API and can't come up with good naming for that?
-
-> after the fact via a commit type action.
-
-Just be clear here, there is no commit type action for some subtype of
-type 2/3 API.
-
-For example, for type 2 API in this patchset, it has below subtypes:
-
-subtype 1: it does not need a commit type action, it just return
-           [page, offset] instead of page_frag_alloc_va() returning [va],
-           and it does not return the allocated fragsz back to the caller
-           as page_frag_alloc_va() does not too:
-struct page *page_frag_alloc_pg(struct page_frag_cache *nc,
-                                unsigned int *offset, unsigned int fragsz,
-                                gfp_t gfp)
-
-subtype 2: it does need a commit type action, and @fragsz is returned to
-           the caller and caller used that to commit how much fragsz to
-           commit.
-struct page *page_frag_alloc_pg_prepare(struct page_frag_cache *nc,
-                                        unsigned int *offset,
-                                        unsigned int *fragsz, gfp_t gfp)
-
-Do you see subtype 1 as valid API? If no, why?
-If yes, do you also expect the caller to use "struct page_frag *" as the
-container? If yes, what is the caller expected to do with the size field in
-"struct page_frag *" from API perspective? Just ignore it?
-
+Bjorn
 
