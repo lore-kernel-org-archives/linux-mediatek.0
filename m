@@ -4,160 +4,204 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0B71C3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Aug 2024 18:35:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 470BBC3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Aug 2024 21:44:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=WHsIsnpHLTZMjr4DFBCAChPWg03c27YcgWCNEghQi5g=; b=0fXGXzTXgUcq4Cu+o4Vb+xEZ3b
-	0fJaBz2G2kE83JTZsNEkQbweFp6Myqb5iM3XmkXKZXIvjOWwzoILQQB+0p3lhtznCvMUdz29WkRuV
-	bdrUpi4Vo4LV+LIC5XFgMUl9Xn9gj44B/QFPawG7Wpqen/X+UfCXK0uyo/nqLILkljcptNlfYumL0
-	eQea0c0O3w3IEdt/LjhppVU3A0I/IYCg2QzODjiAOkmQrGIL3S7xPwi8n07kE7OvRqbbkPMiKbPcm
-	5Po+jUaudE0NP+xwgZS+IVGZEBFshSdkld4mLWjCF/ow9Moq1VegB2tszNgrrCexv+9oiJ6swVtI+
-	P6Mrdzgw==;
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vWKqqSlE21JHegU6nmvPBCH6AAIBk1+2CcADaSGeYHU=; b=nXJftgYQekL74O0t0f9gFc8BCD
+	wgQfPCdYwQ0z4y5iYd/XmSlM7ZyhQwRqeCR1NE3BVLapR/Y/WhhuvtM/mZXfeKamfzNSkWtzz10ZK
+	6NP0jcxfbMCdp5s19A/Cts2T1GWvXFB7u6A4fWqZeKxHtp/QWtH2QwVyzM6VGWyO/alisxf2zbnct
+	pk8e7tOjhThaWFputtj2Odof4r1R0tTxgHEP/CcngTPA1j4NBM5w42RwaeYakXXmdvONecNqax/20
+	D9WZZFC7svggTM9ViSX6ai6/j+g6ASfdmiv2WWiiFyoQAKkTn8ES9450aypekeUJMqm+DgH/80udy
+	LDrrz5TQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgThl-00000006Kki-1WXB;
-	Tue, 20 Aug 2024 18:35:41 +0000
-Received: from mail-cwxgbr01on2125.outbound.protection.outlook.com ([40.107.121.125] helo=GBR01-CWX-obe.outbound.protection.outlook.com)
+	id 1sgWdz-00000006iET-1bAl;
+	Tue, 20 Aug 2024 21:43:59 +0000
+Received: from mgamail.intel.com ([192.198.163.13])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgThi-00000006Kig-4BQL
-	for linux-mediatek@lists.infradead.org;
-	Tue, 20 Aug 2024 18:35:40 +0000
+	id 1sgWdG-00000006iAg-1yPZ;
+	Tue, 20 Aug 2024 21:43:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1724190195; x=1755726195;
+  h=message-id:date:subject:to:cc:references:from:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=d+0z8B4ddpp8m2FiRRoltOOU1O5TwV9/oRcha2EQ+Us=;
+  b=ZqkooD8PMIiywKOKq9kDirYe1Kz6QsSOK8FjGAQFF2p9K4nWxBh2wf+j
+   1A8HRVCTzf/mSw5njmwASXO6tjIgG/7C3GEDvGetSBAmraYe6muJq9hG+
+   M7CCVKgi9zP0nfT4P6JI/SQZ+gwNu7MORxSz6HukZ2jFnN6ovxmYchXVf
+   fQ/yomFV9szJdUQFfH5YDFrS9xOOhu5+I85O/JWT+7iZjbHBrAue11BtN
+   XUFJZNvA6+UzdTt9VSy/VNymsED250V+vrmI+jb4DLzfkecA94ObvzUp8
+   DfppCnFYapBuN63ne371L7YE/6vcdWV/U0/nipw6EkXMQKp6SRAJ1Wm4/
+   w==;
+X-CSE-ConnectionGUID: BR63KOD9R1Wl7Wm4HF5UXA==
+X-CSE-MsgGUID: xVTs2aHaRJq3EWTyS7unDQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11170"; a="25420179"
+X-IronPort-AV: E=Sophos;i="6.10,162,1719903600"; 
+   d="scan'208";a="25420179"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Aug 2024 14:43:12 -0700
+X-CSE-ConnectionGUID: Hd2hR8wfRqm4/c7J+EW9DA==
+X-CSE-MsgGUID: kP+tOAsgQvWZJY6fI8a+gw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,162,1719903600"; 
+   d="scan'208";a="61188897"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+  by orviesa006.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384; 20 Aug 2024 14:43:11 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Tue, 20 Aug 2024 14:43:10 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Tue, 20 Aug 2024 14:43:10 -0700
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.40) by
+ edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 20 Aug 2024 14:43:10 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=LNQWAhPzlCxMIGO8NxzhVovuMU5X9hFhXx3lr6ZVtObKD2ZoROSLxEQ+14fcQdU68gl5Km9ZtOAjY8Q9MhxSRClG+SXWreIOrSq+9epI+34wDiEk3YkvJJfzlFOnt6TBdW/z3aTXJrzPd3zgwEC3bdI79327Hml7C5EW3nAeXJcf7mO4VitNeu7Ji8/6SlYLr1dhbTknGO3HRS0GN81v5/MGmFuGwbF8cxJQkSqJ43bymqDevbXc9E2d7Bgo5zpZbDzbmyL16lL/XOtDwMRRu50PxRVpJE51nrlAob1o3n/FLqpQQyJWBGJPf43++oQiBQTqbCJ7dHsGD4fj3/oAAA==
+ b=g4Gslf0ENoouL0b8EYXNvQuTA3WZ6JTHxcdyYvVU1BCbrtGECuh40/J8fCevN4Wdn5M6+I4XAKjH0ab+0/pF+cdx6C/T0SXnR2jPMQnEJMDVPyONPwJky9oxCdBuF6Qjg1e+UdFjQw6Meb1u6wNuQDhuk1DvEfolvnMvPARLzaCwN86Pw0ma1fEckPNdv1mXmAJt7br5jDX/xr69mP8eu5cWyY9DHfpXf1LgAnDDUlddhuxzzLOAbKCUE0uMbz8WOrHo7PnAdTw3r4y6BGZ77XoHbql0LJYXz+G8yczhIger93gAHo6xjq/BDjZrw75FVckOQIn6P44aIJjmess+bw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=WHsIsnpHLTZMjr4DFBCAChPWg03c27YcgWCNEghQi5g=;
- b=c2HUV+zfFYbNVI22mmiHoBoGHRhP5qz8PIf/QxW7mBNnGnN+uBigLwbH/ksflvVzdERGGunGi9M3FCzTKX7CJRqwBMDF0qWhpZjHDtnCgm2hpbSE5PfzpzKu89mI+RA1eEnjtogXgW8fKZAIw1kG7/s4+gjU7k9MFNMs4E6k1j3ADHi8saYWJm8idlMrjn9y72diakQFv7pohKaSR7oBWJWxgNPY9ZaTz+6AeTDAf62vpVNoacLB11EpH6xPk+ZkrdKtoyPjkTZQuDUaxTDfWcERTYryrZgCS6BZJTveA/YxHkmE+4/Q9tRhWbqrWlTf9FG/9Hlhk706kA+qu0TZDQ==
+ bh=vWKqqSlE21JHegU6nmvPBCH6AAIBk1+2CcADaSGeYHU=;
+ b=BgHBcqwHx0+JEYrPFvkAZSOHipDUipqkUvIG+odiluBXJBcNJWEP6P9Q83dvqV3/SI2UO4pSkewheytbbFN6qenqMWsyEmKIyHXt7Tzb9tRQ39GaYsQ79tTUltdHN6v2Xu1SXWOMb30+Ue/JfkXN82SF2m09OmELKYnpsozxtEAerfU7aUrLq+Lfcgj1T3sNsM+4Sn4hp1AAicQTdwRcbpyje9c9YN5PciZUdpDB17f3Hi8z4Jlf5J54oP0SgnQ/WbcuuJI74N+1p/E8XyALJ57sLk4/HuS15ugBfYuGpp0cuWBka7KwPah2YS8cJspHju9IiZbf/tx3B124pORj8Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mdpsys.co.uk; dmarc=pass action=none header.from=mdpsys.co.uk;
- dkim=pass header.d=mdpsys.co.uk; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mdpsys.onmicrosoft.com; s=selector1-mdpsys-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=WHsIsnpHLTZMjr4DFBCAChPWg03c27YcgWCNEghQi5g=;
- b=Bp2RrGgBl9MbfAvH7x4hc4llcxDDSVHw4OEB9ln3lfsQUs/7uAMmIdqP4mAKItRZzZF3nLzbkm1rteCUWF0q2RgkZua21LhlonWsPTFggVSHwZPZz8UZGkpR+yywW9ObBJNVtd+DTmb3/WupGwnj07qA8+5+LMw7X4lYIkZHUPw=
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
 Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mdpsys.co.uk;
-Received: from CWXP123MB2965.GBRP123.PROD.OUTLOOK.COM (2603:10a6:400:41::11)
- by CWLP123MB2993.GBRP123.PROD.OUTLOOK.COM (2603:10a6:400:5c::16) with
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
+ by IA1PR11MB7726.namprd11.prod.outlook.com (2603:10b6:208:3f4::20) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7897.16; Tue, 20 Aug
- 2024 18:35:26 +0000
-Received: from CWXP123MB2965.GBRP123.PROD.OUTLOOK.COM
- ([fe80::1b52:590c:54ee:d122]) by CWXP123MB2965.GBRP123.PROD.OUTLOOK.COM
- ([fe80::1b52:590c:54ee:d122%7]) with mapi id 15.20.7897.014; Tue, 20 Aug 2024
- 18:35:26 +0000
-Date: Tue, 20 Aug 2024 19:35:24 +0100
-From: Marc Payne <marc.payne@mdpsys.co.uk>
-To: Hao Qin <hao.qin@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
-	Chris Lu <chris.lu@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, regressions@lists.linux.dev
-Subject: [REGRESSION] [BISECTED] btusb: driver fails to initialize MT7921AUN
- on v6.11-rc4
-Message-ID: <ZsTh7Jyug7MbZsLE@mdpsys.co.uk>
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-X-ClientProxiedBy: LO4P123CA0434.GBRP123.PROD.OUTLOOK.COM
- (2603:10a6:600:1a9::7) To CWXP123MB2965.GBRP123.PROD.OUTLOOK.COM
- (2603:10a6:400:41::11)
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7875.21; Tue, 20 Aug
+ 2024 21:43:07 +0000
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::7de8:e1b1:a3b:b8a8]) by CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::7de8:e1b1:a3b:b8a8%2]) with mapi id 15.20.7875.023; Tue, 20 Aug 2024
+ 21:43:07 +0000
+Message-ID: <5eeea66c-97c2-414b-8c14-ed8182adc238@intel.com>
+Date: Tue, 20 Aug 2024 14:43:06 -0700
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next] net: airoha: configure hw mac address according
+ to the port id
+To: Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>, "Sean
+ Wang" <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, "David
+ S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
+ Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <netdev@vger.kernel.org>,
+	<lorenzo.bianconi83@gmail.com>
+References: <20240819-airoha-eth-wan-mac-addr-v1-1-e8d7c13b3182@kernel.org>
+Content-Language: en-US
+From: Jacob Keller <jacob.e.keller@intel.com>
+In-Reply-To: <20240819-airoha-eth-wan-mac-addr-v1-1-e8d7c13b3182@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: MW2PR16CA0040.namprd16.prod.outlook.com
+ (2603:10b6:907:1::17) To CO1PR11MB5089.namprd11.prod.outlook.com
+ (2603:10b6:303:9b::16)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CWXP123MB2965:EE_|CWLP123MB2993:EE_
-X-MS-Office365-Filtering-Correlation-Id: 1d1acf74-c0fc-4479-437d-08dcc146dc1b
+X-MS-TrafficTypeDiagnostic: CO1PR11MB5089:EE_|IA1PR11MB7726:EE_
+X-MS-Office365-Filtering-Correlation-Id: 18ca79ba-00cd-4bad-89c5-08dcc1611454
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?QlpIbXBqenQ1eFlvMjh5czdwREtuK2VrYnJWeDQxdVh5TGYwZDhZMVVPZGFC?=
- =?utf-8?B?Wm50MlJDYlNBZ3l5T0phZXFFVys1bUlCZSs1czcrRG1idkZabFJJR2svMTJ3?=
- =?utf-8?B?a0hEZEdEK2tuemhDUC9YVC9OOWpCcjdVRXRQQTlvUVB1bUJHZlVXNHNiSmlh?=
- =?utf-8?B?bk1LaWVaUENuYXM2L0pUcWxKMnJ2VHlKaDZ3b3RNZVRlVzJ6L0h2a2cxaytq?=
- =?utf-8?B?bkpSUEpZekJ0WHAvWVRBYjRGaDFhRGZIaEU5VksrQVRNb1U2b2VyTU1ZUUtv?=
- =?utf-8?B?VS9JNzhFaXlJV0FrdGd5SHVSVXpNKzdFYnVwdHpLOHF6K3lxMnF1Sjg5OXow?=
- =?utf-8?B?ZnZvT0ZrOEtmUEphMHdKaHhxNk16cXQvN25qUGIrWEtVUGliUU9zbFF4UWl1?=
- =?utf-8?B?bWFTRTBUbDU3NzVhVmo1bjFEWlkzb0wzWEhCNUplSGxqS3gzRUNiZ01Yd1Nt?=
- =?utf-8?B?eTIrUHFZQVg3aHQxQW1CdUFWc0hDeGhTNitzQyt0RzFjNXV4M1Y3RUZPL01i?=
- =?utf-8?B?M3RiYjBMS20xaFcybGpGLzJTRjljV0FKOTBFOGJOL0F1ZmhkQjlwN2lTOEl2?=
- =?utf-8?B?enVrdDh6ZjNpbEZTa1hPdVVsbm1rTHFhaDBxeHFsaFNpalZ0cFVTNHRCL2RM?=
- =?utf-8?B?QlZmMW9UeDZtV3hOOW83MGdIZGZibEdvV1YrbTNGV2RvMVRzcHVOUHpnc0JZ?=
- =?utf-8?B?Qlh1Q0QvQ2hVYU0rNmdVRFcyVExaTHlUS2pPRS9HMCtaRENkM3dETCtXMEtv?=
- =?utf-8?B?WTYxeEhtOUJBcDBUc3psYm80cG82NEs3VkVEdWpVYVRhSUQzT2VyVi9IaXVM?=
- =?utf-8?B?NzUvRkZQYmlRQzYvWG9tTWJoUE1rNk5vT0FGOU9kTi9YbDhuREt3b0tJeXRj?=
- =?utf-8?B?ZFZEc0dXeFJmYk45US9zVWtwdkJZVzFrSmMwSW1YSEtZNGtad1BNVklBVWpq?=
- =?utf-8?B?aSs0bmtSaWtrU1BUQzYwdDFhSHhXZ3FXejhpNmplTDBZMWhxVzBPd0paSnA1?=
- =?utf-8?B?dDRIMFJZNXFKc3JQQ0tDbWdGa2k5RXN4Q2FvSFlsSXNiWWwyVXk5dzE3cm13?=
- =?utf-8?B?NHIrRTY4MXV5T1dPVUhaT01PQm5Ea1Rvazloa2lRUnhKeFlYeTk3KytQbysv?=
- =?utf-8?B?VmxTRkR2V3VILzZPeUpDV2tBRXMwOFh5cFdnT2JQWWI1VXBNZmROTlV3RnUy?=
- =?utf-8?B?OGFZSGEyWUlRdDJkd3Y0VmdXY3hyeWFveElqV1JLREgyYnBxNmt2R2pwWEZi?=
- =?utf-8?B?Zy9acW8rRlRFTmF1b0lJV215eHFRckxkMTdOZjcwQitjd05JT3dvV0RIc2Na?=
- =?utf-8?B?V2w5eE1JeVphOGpybXVNWDF2UGszVEZBKzUyQ1JaM0dhUTNDNHBwd3ZiR0t5?=
- =?utf-8?B?Q1ZsRisxck1CNzM3RDMxazJad1FlRnhtd2RIWldMQVpRTFN5czQrdEVlR3VT?=
- =?utf-8?B?Sms2NlFxSTkxWlF4KzdqNExJa0xjRWRKalV4a3AwU1RITTU3akpwb2hyWDg1?=
- =?utf-8?B?UXY3OVJUOEY3SmNudklaL2hFb3gzSC9NN2liYjMwcGFER0tyelpyZzNhRlUw?=
- =?utf-8?B?MnAxNmlzZ3pOMTdUaFA0SytCczhOZTNGVGlLV0UwbjAwYTMwMTJXMEluOFBO?=
- =?utf-8?B?RVhGcHNIREtWNWovU3N6aUd5YnhTWFp6ZnJ2bzkxRlhKYmlHU3lxQkZKellB?=
- =?utf-8?B?WHFEZGtTVW9Wd0QxcHE5eHplZVJVL0VMdk5FczlVYmsvMzM0dnM5d2F1eDlY?=
- =?utf-8?B?ZG8wME5jZmxSL25rQmhtYjVURTU4ZDA3cDJXaitHZ0ZDS1lvaGU1eGRVVVNv?=
- =?utf-8?B?Mm1JZ3kzOTVOOFF2ZTRkUT09?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CWXP123MB2965.GBRP123.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014);DIR:OUT;SFP:1102;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014|7416014|921020;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?Zmw5ZG9RV25PTU5FdVQzVWpDR1gvWUFJV0ZFU2pESXFIRmptcEhVNm1CWFYr?=
+ =?utf-8?B?Wk1jUUk2ei8rUEYzY0htV2IwbXV0dkppM0U0Z1FYdVQ1UXJrNWFVdlo1UnR3?=
+ =?utf-8?B?ZW1xaFpDSmNRV2hCbE9yT3poQ2ZQWTlSc3FQM0I0SHNHNUJScFNHMCtmdnJp?=
+ =?utf-8?B?Rzl0R0txcE01dmVadVIyVmhUSlZNN3hvcDdpbzhxMjVCZlI4bkRTZ1M0RnEy?=
+ =?utf-8?B?OW1YKzhlN1RzNjJ2MGtqZ21IZDE3TzlmTldHbkQ3V2NmSzQzRHRIZUJIZzVM?=
+ =?utf-8?B?R202STZHSytQNm1zVnZBMmhKUnlBcnNKaU9ETWJUaEd3UnVYOVIwaUM0TWl6?=
+ =?utf-8?B?eWpLMUhEa1FpVnRjZnJsZS9TK2svNUt1bDFhTlBXWUl1ampQbFF2ZU9IbStm?=
+ =?utf-8?B?YU52a2dZOVp4VGRqU0NlUXJPdGMweng0N2hpT1QxSGRDdTJiQng4TzBtNnZs?=
+ =?utf-8?B?S1V6dW5mQ3ZpWGhyWDZKYXJzeWZodTk5bERpMThvQkZxc01KN2lQajRrV00x?=
+ =?utf-8?B?VlJ5Q1hXbytPYnMyUXhiWmdiYlVod0crbXVsVWsydk1sS0dJOTBNdDJ4YVd0?=
+ =?utf-8?B?dmxPSy9nZ1haK1JCK2xXQ1lLbUhOTS9Tc0VZcmdad3NKazgycmFObUNtRmVo?=
+ =?utf-8?B?UDFtR3k4YTQwMkZtUFBmanZmR2J2TnYzYkNpb2dCMGlBNnRhQm8zbUZoeTMr?=
+ =?utf-8?B?dkZyaURjb01VV0ZienNGQWpJMTlvbS9iWE5vc3kwWkd4OFlTM0pDQ3Y3MDl1?=
+ =?utf-8?B?RzdMVEUyQlpQQmlaQm5oUG11ajZ3eE9aZEdyUWRweVBhREtoVGkzZzFHZENE?=
+ =?utf-8?B?WTVPcXZ2MGRLSS84WGRzOWp6REJEdVZIQmFqYlpnR29rVTdSS2loRWFRRyt2?=
+ =?utf-8?B?Unk4UGptdXBBcUlac3d2dVNkdlVxWVk3TVoxZFpkSVRIUjY3K0VkSkdiUXB0?=
+ =?utf-8?B?Z1hHbkhGc3NTdk5ic2p6QnI2RTVGSlUwUUtJTk5kV0pwYndiZ2VyekVjQzRL?=
+ =?utf-8?B?MFNtckNFU3hFaWNtZDNIQm9UZm9NRXNUTmxONk4xd1pVb3JJVEdFWE5tVU1y?=
+ =?utf-8?B?YVNxK2RBUUVKUEJzZzlhQnNMQStMUVNxOTI0VzMwejg2aTkrbUFtN2VtbUsv?=
+ =?utf-8?B?WmhSWjNPUjZjT0hVekIyazRsdVRDOGhWQ1hHdXF1RGJ1Wi9BelFaVE82RlVu?=
+ =?utf-8?B?eHQzVUo0VTBhMU9KRWxEbEhSb2JuTVFKYzFuSEx1eDZ0aEJXdzQ1TWdVd2VL?=
+ =?utf-8?B?VzJWaGRzVnZJNGF6NXVxVkNkNnVBSEpxNERYcHdQKzV2dUFIc1ljWjJpN0hJ?=
+ =?utf-8?B?ekljd3RPNXdEdzluVVJaM1BEaG5hNTNXd2RPVS95UnhNN1JPOExyQ2hNTkZM?=
+ =?utf-8?B?eWZxeHQvVlhVUEhDWXFqOWcyU2tlYnFqRmtJYThhUXhsd014dllYY2o1UDVQ?=
+ =?utf-8?B?QzVlTXhTYUR1TEZ4cEZqSGN3eWpJSHByaDBpeUFuR1JnUkVPS0w1UnFBUXFi?=
+ =?utf-8?B?MEFEUU43Qmh4Q0hZUGpDSSt0RFpCSXUxaFlXSHJLUERmYWNnbjZEajlLZ3J6?=
+ =?utf-8?B?Y2h3dVcwTzUwd0pVeURza1kvQlk5UU5tZkpHNTBXYnV6UFY5N2JoVmVaNjM0?=
+ =?utf-8?B?WS9aSzFoOUFEemp6NEJHcjlLU1hFNHJmWnpMWld5LzdPUkx3ZThYNGRCWEhQ?=
+ =?utf-8?B?VUJOS2d0M1hLZjhPMCs1ZDBma2hHYXRlWlhBZldyWncvVjFaS1pOMVhIWHVI?=
+ =?utf-8?B?VjlqTjRhSTVzOXlBY2ZocTR2b3puZmVkVU9rWjBpNElXeDJrbk5yOVhqNWJr?=
+ =?utf-8?B?ekt4RzA1WE9iQlBaakcrNnJlaEhIQWNQRXZpS2doTThHeEh2RVJrVXdFd2hO?=
+ =?utf-8?Q?7yoQaKOS4AtRT?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CO1PR11MB5089.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(7416014)(921020);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?eU4wRnhyaS8ySVY5Ri9rQU1XRVBVa25zYnRuY29GWXg1SnFZUXUvWW9yb0Ji?=
- =?utf-8?B?dmE5cDBJMnl6blMwOGFDQkllTW54emVUT0tDMWQ3RU1JazIxM0RrTVNvdmF4?=
- =?utf-8?B?d3EzcmhBODN6WFpjUkpWbWo4NDZIS2dNeWpVaDVKekNGaGxTZy84VVd6YVRE?=
- =?utf-8?B?bkdJSmNyV2cwUkJMcWdveHNCdVZNR3Rxei9EKzBTS3lGRk1IVTV6blhFODlw?=
- =?utf-8?B?UGRpem1ETFpCMTUzWXhYNEU1SEt1TExlT1QwVXNFSW10USt5VGRjU25TTVE1?=
- =?utf-8?B?T0ZOb1lzV0lNRUptL1RwbkZhb2J2OU1NWm1hTHFETXZBdDcxcm4rRGxsRmpa?=
- =?utf-8?B?L1luMkw3VWF1ZlpzV3dTRVpweWZUN1hBOVdubkxMR21GWFowdlJvOVdWUGlQ?=
- =?utf-8?B?Z2lRalF2Y20vMk1vdlM0Qld6RytndnM4M2hmb2pDM3c0aEN3a0g0SnpHeEVk?=
- =?utf-8?B?V1g5d0FTVlJqLytscVpsamVlalZmSmpHT0pnWkJFOGlUZEFUaE14VmR2NWU3?=
- =?utf-8?B?cHFiellreERBNStQWWdmdXhHSDJJQTRCRHpkSTUwa0twL3h4Y1RqTTYrd0g3?=
- =?utf-8?B?aFdNQU83MktiV1V6UURPbE5idDRWWmRqTmZVMmZkWlVzMWJXdE9nUXlNZStC?=
- =?utf-8?B?a2dINWVGTEZTVG9rZUR0NlVOWUx6Um1QVUNvWEhRVUdBRFcwMVJscTN0RGk4?=
- =?utf-8?B?R2tEd0pKb3gvbVFkUkRPdStsNDBNYnJtNUZITFRVaUhMc1dQZGowQWRTbWov?=
- =?utf-8?B?WE9VTTMyVGlaRVNLV3Jxbjcwb2ZadlN3aVRwcEJKc0FTdnRSLy9kZUJDOUx0?=
- =?utf-8?B?T293bks4N24xdFR1a2lBck1TV0R6dUdJTHlFSzlLd1pZekJGSWF4WlhmdXJq?=
- =?utf-8?B?SEQ0KzNLSHZPOVdrTDU2eDNTUEJEVjI1djM5UTI1WW1GcmJtd3B1R1kvTXd2?=
- =?utf-8?B?Rktpdmpra1plendKTjZYc2pYbGl0Qjd4ZjR6YXIxUU1rSk5JaUptUUJoanRX?=
- =?utf-8?B?ZlR6UDNZSCthN0c1UThTdUp4UTB4ZFJoY3RxalcvUGN6YyswU0tRVXpwWmZm?=
- =?utf-8?B?WkszOUNKbEhUN1BWcmZRRHVSUXhYT0doMVBpK01RSGtUN0RkSkIxKys1WTR0?=
- =?utf-8?B?UTF4SmRHOXRLTXI4aldxc3BSUXVOc3RqSW5Fb1JTYWpoT0cxUTlQNGFtbHM3?=
- =?utf-8?B?R091MGdPYmgwR3RjME1vY1k1Y0RMY2FDem1jMFJpK09mWnFPUEEvazd6d3VT?=
- =?utf-8?B?bUM4UGpKZlFTMk5NT0ltbmptUjlRM0dMSlBraElGQlFTVUVIM1FiT2ZkVzZM?=
- =?utf-8?B?SStzL3ROaFdrODNCUkk3Y2x6QjVVeXhlWStYQXlPWkdlNnR6cnVCVGNTZWha?=
- =?utf-8?B?SWVkZytyVWh6RFNWK2twS0l4K2d4emxHR0VHOG9xMVlBV0QzZG4rWmlIUDBC?=
- =?utf-8?B?bjFnQzJhNk5wMFlUUGdkRDgzZWJGWjZqdVJoYjNOQTFDV1JDYU92RElmR3RU?=
- =?utf-8?B?Wks2KzFlQTdHbTl1NHV1MkJaWDdqcUZib1AxdXRtR1dWNDVTd2lkZUwwYTJ4?=
- =?utf-8?B?MFB6UDd5VllpNUhsVUViNmhlTHZid2RSb1dGUjRaaXBaRFpPZlNtVElYZHdu?=
- =?utf-8?B?bG5MUHpyZzF2R1lpNXhBNm92NWpVNVBWSjhTTWFLQ0I4ZFVuOWI4dmovL1Zk?=
- =?utf-8?B?ZGR2U1lnZlZiM1F1bFZlMHV4a2N6ZUZRd1RVUUFPWmN4dk5YWWMwOHVTQ1dF?=
- =?utf-8?B?MEdNSHVTRXBFZ28yZ2FsV0RKdm1HS0d1NlFidVp0cE12a0N5NUg1Y1NML1hG?=
- =?utf-8?B?c1B6b2JQOHVZbllzNU1VVEROUDhQWFkyaXh6RURsVFJleDY0TU8zajB3SXdN?=
- =?utf-8?B?OGhGYUtTZ0Z4TnRpdTVWUHNycFk0Zi9MUW9EZ2E2a1NaMFdWaUg0eXNmNUJI?=
- =?utf-8?B?NTd5N3JTKzFXQ0hRRkh0YkRzbzBycEtCUmlJK0JxWXBIenUyTll4QXJnUFNT?=
- =?utf-8?B?VHdFbnBEeU5ZZEhPTnJJY1dhaDRxM29YNXByeVhISllobjI5N293Nlg0OUdK?=
- =?utf-8?B?MzZLV1VCUkhXdC9jcURMWFVZMng1Y1IxRGRscmVtbFM2Y29CL1JQQUxTVjgv?=
- =?utf-8?Q?Z4VAGSXVVly2UxTugAigwEdyi?=
-X-OriginatorOrg: mdpsys.co.uk
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1d1acf74-c0fc-4479-437d-08dcc146dc1b
-X-MS-Exchange-CrossTenant-AuthSource: CWXP123MB2965.GBRP123.PROD.OUTLOOK.COM
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?MVZ4S2VzRzRrVHdLZ2I1cnRTdGdJUTltWm5pNWtha0NJV1J5NHFTR1BFbmV4?=
+ =?utf-8?B?Zzc1V1JrcitzYWx5K2hBamNVN0xFVUxQakYzY21vRmdUNUJTL2tVN3RsYXpZ?=
+ =?utf-8?B?bjgrZm12dnJ4bVJKdStSeE96eFU0NERpYzl6RTBEVVE1U0t3bHl1MVBHT3Nk?=
+ =?utf-8?B?TUlRcU1icmJyOHl2Y00ySFlYY21VWm1NeW14aXB4c2NvTm55SjNydzd3RXhZ?=
+ =?utf-8?B?T2VRa0J4a2VxZXNpRG1Qd2lLK3poVzROSHZ4UENwekpXVkJtdWZ0am52bU9y?=
+ =?utf-8?B?L1BIVk84KzVrVzFsS3VubkVHVGsvdWE4Z1AzSEpuYmxETGNHWEdQUDJYbHhj?=
+ =?utf-8?B?WnFHVng0NDVqK1hWOWpBNW9BOXR6b3ZEVy80VEljL3NjTkdTVWFSY3luUmNF?=
+ =?utf-8?B?WTd3N0pTdFg3Q0VKMlk2ODlDdVIzRDJ4ZmJ4VEVjOEJYWHRCRndPYWhSbW4z?=
+ =?utf-8?B?bjcrV1JPZTRWTXlLUHhPTlhPQysxMnM2UlpvUEpSSXRHTDl4cVJuWXp5RG9C?=
+ =?utf-8?B?L3FqbStVb2JjZUZHdHBrZlFkeWcwRExZWkZhUEtSUmdmODExOFhjZzU2eW1Z?=
+ =?utf-8?B?dUN4NjBHZzQ0MzF1MExOUVhIOHRkT1N2L09Cblk0NnJ5ekZlWDJVT3dpUUx3?=
+ =?utf-8?B?SkFCdEpFWTlodmxaMVVVelg5bFhWYzkvMjYra1YvYzU2SGtZYkdwNWdWcXJo?=
+ =?utf-8?B?NEtjRHUzUlFRTHVnc2NSRVgvb2R1THNLaTdpSVJYN1h5bktLUzc0b1dTd2J6?=
+ =?utf-8?B?SGRoK3owaHMwSEVDeWluNlUwb0xzNm1PcnFXWXVCbzN6NmhLUk82bm1GNHI1?=
+ =?utf-8?B?dEZTV0ZQOXhoWUkrKzBkZ0Y4eUN3bjFOZ1MrbC9TK2hRTHJ4RldCdzZ2Y2Y2?=
+ =?utf-8?B?WXNEUEQ5ZUY1NnBHTkhDUUZiS1cvWFZkZjFLYnRNbW0vcUZQT3lsTmh2Zm1O?=
+ =?utf-8?B?WUt6amdpU2Fzb3U0ZERHdzhLOHE1RzJ3b1ZlZWcxM3ovS1FBbVpEMCtKSFY4?=
+ =?utf-8?B?UGo1dTJZVGhCcG15ZTNnODVRWktDZFVEZlQ5Vm9mbEdCSEpUZTBBV0gwNmtK?=
+ =?utf-8?B?L1JvTytqT2U3M2RGOUpGaGU5WnhIMnpuSk5yc1NTYUtmMjF0QWdURU1lRFBo?=
+ =?utf-8?B?ck43WTJlbkJvQ0twYXZGTXl0TGNEL1FsZnBGVEg4MjFtbUZIdytOTVJNekdx?=
+ =?utf-8?B?UVJPcFp4UnU3UmtYb3JZU1ZpYnIrNjNjVjV0QkZvblFPelloQTZmcUloNFo0?=
+ =?utf-8?B?YTgzUUxmN2djMHpNbmhZYnRTYTU3SkZJWmp1dnZEYXo1TW04N1FLV2lMcSt1?=
+ =?utf-8?B?UUFMRjg4blAvcGxZNlJpS3NJUHArcERlb0pudnhtQy9WVWNJb0tYbWN1eTRu?=
+ =?utf-8?B?a3UxeUdpc3kzWWt5azhQQmVOeXNJdmQxNVErUy9NalRiRXpYUnJIZWNkMUEz?=
+ =?utf-8?B?MmNtRWg3K283UWFjTVduUlJ0LzFJTzFLODd2YXludUN5ZjdRU29rR0hwbmlW?=
+ =?utf-8?B?QWFhbTJ2QmlUb2QyN2YwQmVEMUhheHFGazNWOGFqWlcwVlFqellFc1RHUkND?=
+ =?utf-8?B?aTF0cGVrWU5iVDVvMHRMU01ZTTBuU1hVZmVlTUY4THg2YTEvaGNFQUFJYkQy?=
+ =?utf-8?B?bUJDRS9WWnluK1N4N041WGpzcEFsREs4bHZ5cEVRNjVaUHpXeG9XNXJqeFp6?=
+ =?utf-8?B?N3pqTDdQdktlUnpMbzg5S3oyWG1pcVplc2tCZFlUZVBRY0pheTF5RjN0Y1JE?=
+ =?utf-8?B?NkpPYWkvN25OSGZaQ3NQamw0REZGbDJQT2s3VUtSeUdBSzN0amNtbzEvU280?=
+ =?utf-8?B?cUhOYVpzQ0UvT3EvVGxnNEJrR01FUmtmSjgvZVFOTXRBY3k1L2E4ckVnYlVv?=
+ =?utf-8?B?YVRhdTJBSDNWZ1I3ZmxhdXVsY25WOVhETlVaQnZjQ3MvR3lNbjVQT1VJbzVU?=
+ =?utf-8?B?c2dsQnBZUDUrWUlBeVdEUlJvbG9CcXpQV0FCcTk3d0lXeWRVWlowK1RjNC9K?=
+ =?utf-8?B?SmpmcHgxd3c5UURJNHpBVmF1UmtZRXE3M3pkRkp6cit1TmhaQVkrWXJlRncx?=
+ =?utf-8?B?SGFEOG9Bdlp6ckMwcXRuV1FvMEN1YlhRdXpEaUFpWHA2dzRZZDJ4UTlSbDVK?=
+ =?utf-8?B?V09iUnJSMnpXa1k0azZzZDZRVm83dWJNK25QUXAwS21SeTdGNktlUFBoYXRT?=
+ =?utf-8?B?eGc9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 18ca79ba-00cd-4bad-89c5-08dcc1611454
+X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Aug 2024 18:35:26.6694
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Aug 2024 21:43:07.7570
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 07eb37f3-62d1-4b5c-a7c4-ed2a24dbebc2
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: S5PUnH4Y4WAODb21ltNQKLXv3hHipUKbxk8OjdIhWKKTrquT5B/UIgYa+NhPF0WI45VQt7EKbbzk5UTWXI0m6w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CWLP123MB2993
+X-MS-Exchange-CrossTenant-UserPrincipalName: 016pTHjaGcDtXxmx40qbFZ8kutTZ3O/gh3D0nIC7RHj30nyRV/RYOyl3CelUPXYh7y5e5+wemnuLVXR1nnMP8a1LJRMuJUWproDEB90Ov+Y=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB7726
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240820_113539_219974_4380D414 
-X-CRM114-Status: GOOD (  10.06  )
+X-CRM114-CacheID: sfid-20240820_144314_562374_9F477611 
+X-CRM114-Status: UNSURE (   7.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -172,203 +216,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
-
-I'm testing v6.11-rc4 and the btusb driver fails to properly initialize my
-MT7921AUN-based Alfa Networks AWUS036AXML:
-
-[   63.896319] usb 4-3.1.2: new SuperSpeed USB device number 4 using xhci_h=
-cd
-[   63.915436] usb 4-3.1.2: New USB device found, idVendor=3D0e8d, idProduc=
-t=3D7961, bcdDevice=3D 1.00
-[   63.915450] usb 4-3.1.2: New USB device strings: Mfr=3D6, Product=3D7, S=
-erialNumber=3D8
-[   63.915455] usb 4-3.1.2: Product: Wireless_Device
-[   63.915459] usb 4-3.1.2: Manufacturer: MediaTek Inc.
-[   63.915461] usb 4-3.1.2: SerialNumber: 000000000
-[   69.146856] Bluetooth: hci1: Failed to write uhw reg(-110)
-[   69.149213] Bluetooth: hci1: HW/SW Version: 0x008a008a, Build Time: 2024=
-0716151445
-[   78.530621] usb 4-3.1.2: Failed to suspend device, error -110
-[   88.553074] Bluetooth: hci1: Execution of wmt command timed out
-[   88.553097] Bluetooth: hci1: Failed to send wmt patch dwnld (-110)
-[   88.553186] Bluetooth: hci1: Failed to set up firmware (-110)
-[   88.553193] Bluetooth: hci1: HCI Enhanced Setup Synchronous Connection c=
-ommand is advertised, but not supported.
-[   90.899462] usb 4-3.1.2: Failed to suspend device, error -110
-
-I have bisected the issue down to the following commit:
-
-    ccfc8948d7e4 ("Bluetooth: btusb: mediatek: reset the controller before =
-downloading the fw")
-
-The commit does not revert cleanly due to refactoring in subsequent commits=
- but
-removing the relevant ten lines of code allows the driver to initialize the
-device correctly, albeit with some failures and 'Mediatek coredump' errors
-followed by an additional reset. Interestingly, after the reset the device =
-is
-now showing as hci2 rather than hci1, suggesting an HCI device registration
-issue... Bluetooth devices are able to pair and connect as expected:
-
-[   77.765047] usb 4-3.1.2: new SuperSpeed USB device number 4 using xhci_h=
-cd
-[   77.785044] usb 4-3.1.2: New USB device found, idVendor=3D0e8d, idProduc=
-t=3D7961, bcdDevice=3D 1.00
-[   77.785063] usb 4-3.1.2: New USB device strings: Mfr=3D6, Product=3D7, S=
-erialNumber=3D8
-[   77.785069] usb 4-3.1.2: Product: Wireless_Device
-[   77.785073] usb 4-3.1.2: Manufacturer: MediaTek Inc.
-[   77.785077] usb 4-3.1.2: SerialNumber: 000000000
-[   77.807685] Bluetooth: hci1: HW/SW Version: 0x008a008a, Build Time: 2024=
-0716151445
-[   80.570163] Bluetooth: hci1: Device setup in 2710186 usecs
-[   80.570173] Bluetooth: hci1: HCI Enhanced Setup Synchronous Connection c=
-ommand is advertised, but not supported.
-[   81.871516] Bluetooth: hci1: Mediatek coredump end
-[   82.734805] Bluetooth: hci1: Opcode 0x0c03 failed: -110
-[   82.754807] Bluetooth: hci1: Mediatek coredump end
-[   84.868215] Bluetooth: hci1: Failed to read MSFT supported features (-11=
-0)
-[   87.001566] Bluetooth: hci1: AOSP get vendor capabilities (-110)
-[   92.292375] usb 4-3.1.2: reset SuperSpeed USB device number 4 using xhci=
-_hcd
-[   92.385619] usb 4-3.1.2: reset SuperSpeed USB device number 4 using xhci=
-_hcd
-[   92.406786] Bluetooth: hci2: HW/SW Version: 0x008a008a, Build Time: 2024=
-0716151445
-[   94.920337] Bluetooth: hci2: Device setup in 2455839 usecs
-[   94.920343] Bluetooth: hci2: HCI Enhanced Setup Synchronous Connection c=
-ommand is advertised, but not supported.
-[   94.994480] Bluetooth: hci2: AOSP extensions version v1.00
-[   94.994494] Bluetooth: hci2: AOSP quality report is supported
-[   94.995001] Bluetooth: MGMT ver 1.23
-
-However, when disconnecting the AWUS036AXML device I get an Oops in
-the hci_unregister_dev function, again indicating an issue with HCI registr=
-ation
-which was not present in the 6.10 kernel versions:
-
-[ 1210.222351] usb 4-3.1.2: USB disconnect, device number 4
-[ 1210.271146] Oops: general protection fault, probably for non-canonical a=
-ddress 0xdead000000000122: 0000 [#1] PREEMPT SMP NOPTI
-[ 1210.271166] CPU: 2 UID: 0 PID: 2275 Comm: kworker/2:1 Not tainted 6.11.0=
--rc4-dirty #67 a319890a1bc323fc297a70bfc980897913c059f7
-[ 1210.271178] Hardware name: Intel(R) Client Systems NUC12WSHi7/NUC12WSBi7=
-, BIOS WSADL357.0088.2023.0505.1623 05/05/2023
-[ 1210.271183] Workqueue: usb_hub_wq hub_event
-[ 1210.271200] RIP: 0010:hci_unregister_dev+0x45/0x1f0 [bluetooth]
-[ 1210.271292] Code: 89 ef e8 0e c4 ca dc f0 80 8b e9 0e 00 00 08 48 89 ef =
-e8 6e b1 ca dc 48 c7 c7 68 70 44 c1 e8 82 12 cb dc 48 8b 43 08 48 8b 13 <48=
-> 3b 18 0f 85 35 c8 06 00 48 3b 5a 08 0f 85 2b c8 06 00 48 89 42
-[ 1210.271297] RSP: 0018:ffffbb3b0661bb98 EFLAGS: 00010246
-[ 1210.271305] RAX: dead000000000122 RBX: ffff97bc8f92e000 RCX: 00000000000=
-00000
-[ 1210.271310] RDX: dead000000000100 RSI: ffff97bc8ba8b610 RDI: ffffffffc14=
-47068
-[ 1210.271314] RBP: ffff97bc8f92e4d0 R08: ffff97bc8424b5c0 R09: 00000000802=
-a0026
-[ 1210.271318] R10: 00000000802a0026 R11: 0000000000000001 R12: ffff97bc8f9=
-2e000
-[ 1210.271323] R13: ffffffffc12ff278 R14: ffffffffc12ff278 R15: ffff97bcf25=
-acc50
-[ 1210.271327] FS:  0000000000000000(0000) GS:ffff97cbd7300000(0000) knlGS:=
-0000000000000000
-[ 1210.271332] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[ 1210.271337] CR2: 0000285c01b10000 CR3: 00000003d6e22000 CR4: 0000000000f=
-50ef0
-[ 1210.271342] PKRU: 55555554
-[ 1210.271346] Call Trace:
-[ 1210.271352]  <TASK>
-[ 1210.271359]  ? __die_body.cold+0x19/0x27
-[ 1210.271371]  ? die_addr+0x3c/0x60
-[ 1210.271378]  ? exc_general_protection+0x17d/0x400
-[ 1210.271391]  ? asm_exc_general_protection+0x26/0x30
-[ 1210.271403]  ? hci_unregister_dev+0x45/0x1f0 [bluetooth ffdb4fb65cead032=
-fbb8f4718e5d0aa7b94d492f]
-[ 1210.271479]  ? hci_unregister_dev+0x3e/0x1f0 [bluetooth ffdb4fb65cead032=
-fbb8f4718e5d0aa7b94d492f]
-[ 1210.271551]  btusb_disconnect+0x67/0x170 [btusb ce322bda915639979ec31f72=
-a2b85eb752188d36]
-[ 1210.271563]  usb_unbind_interface+0x90/0x290
-[ 1210.271576]  device_release_driver_internal+0x19c/0x200
-[ 1210.271589]  bus_remove_device+0xc6/0x130
-[ 1210.271599]  device_del+0x161/0x3e0
-[ 1210.271608]  ? kobject_put+0xa0/0x1d0
-[ 1210.271617]  usb_disable_device+0x104/0x220
-[ 1210.271627]  usb_disconnect+0xe6/0x2e0
-[ 1210.271637]  hub_event+0x7f9/0x19d0
-[ 1210.271648]  ? __schedule+0x3dd/0x1520
-[ 1210.271656]  process_one_work+0x17b/0x330
-[ 1210.271667]  worker_thread+0x2d2/0x400
-[ 1210.271676]  ? __pfx_worker_thread+0x10/0x10
-[ 1210.271684]  kthread+0xcf/0x100
-[ 1210.271695]  ? __pfx_kthread+0x10/0x10
-[ 1210.271705]  ret_from_fork+0x31/0x50
-[ 1210.271711]  ? __pfx_kthread+0x10/0x10
-[ 1210.271720]  ret_from_fork_asm+0x1a/0x30
-[ 1210.271732]  </TASK>
-[ 1210.271735] Modules linked in: mt792x_usb mt7921_common mt792x_lib mt76_=
-connac_lib mt76_usb mt76 ccm option usb_wwan rndis_host uhid cmac algif_has=
-h algif_skcipher af_alg bnep vfat fat cdc_ether usbnet intel_rapl_msr intel=
-_rapl_common intel_uncore_frequency intel_uncore_frequency_common snd_sof_p=
-ci_intel_tgl snd_sof_pci_intel_cnl iwlmvm snd_sof_intel_hda_generic soundwi=
-re_intel soundwire_cadence snd_sof_intel_hda_common x86_pkg_temp_thermal in=
-tel_powerclamp snd_sof_intel_hda_mlink snd_sof_intel_hda coretemp snd_sof_p=
-ci snd_sof_xtensa_dsp kvm_intel snd_sof r8152 mii snd_sof_utils mac80211 li=
-bphy snd_soc_hdac_hda kvm snd_soc_acpi_intel_match soundwire_generic_alloca=
-tion snd_soc_acpi soundwire_bus snd_soc_avs snd_hda_codec_hdmi snd_soc_hda_=
-codec snd_hda_ext_core snd_hda_codec_realtek snd_soc_core snd_hda_codec_gen=
-eric snd_hda_scodec_component crct10dif_pclmul crc32_pclmul polyval_clmulni=
- snd_compress polyval_generic ac97_bus libarc4 ghash_clmulni_intel snd_pcm_=
-dmaengine sha512_ssse3 sha256_ssse3 snd_hda_intel sha1_ssse3
-[ 1210.271851]  aesni_intel btusb snd_intel_dspcfg snd_intel_sdw_acpi gf128=
-mul iwlwifi snd_hda_codec btrtl crypto_simd cryptd btintel tps6598x btbcm t=
-ypec snd_hda_core btmtk rapl cfg80211 roles mei_pxp mei_hdcp snd_hwdep inte=
-l_cstate ee1004 bluetooth igc snd_pcm spi_nor intel_uncore ov13858 mei_me s=
-nd_timer thunderbolt v4l2_fwnode snd ptp mei i2c_i801 v4l2_async wdat_wdt m=
-td pcspkr intel_lpss_pci wmi_bmof pps_core i2c_smbus intel_lpss videodev so=
-undcore i2c_mux rfkill idma64 intel_pmc_core mousedev igen6_edac joydev ser=
-ial_multi_instantiate intel_vsec mc pmt_telemetry acpi_pad acpi_tad pinctrl=
-_tigerlake pmt_class mac_hid i2c_dev dm_mod sg crypto_user loop nfnetlink i=
-p_tables x_tables ext4 crc32c_generic crc16 mbcache jbd2 xe drm_ttm_helper =
-gpu_sched drm_suballoc_helper drm_gpuvm drm_exec i915 hid_generic usbhid i2=
-c_algo_bit drm_buddy ttm intel_gtt nvme drm_display_helper nvme_core video =
-spi_intel_pci cec xhci_pci crc32c_intel nvme_auth spi_intel xhci_pci_renesa=
-s wmi
-[ 1210.271992] ---[ end trace 0000000000000000 ]---
-[ 1210.271996] RIP: 0010:hci_unregister_dev+0x45/0x1f0 [bluetooth]
-[ 1210.272061] Code: 89 ef e8 0e c4 ca dc f0 80 8b e9 0e 00 00 08 48 89 ef =
-e8 6e b1 ca dc 48 c7 c7 68 70 44 c1 e8 82 12 cb dc 48 8b 43 08 48 8b 13 <48=
-> 3b 18 0f 85 35 c8 06 00 48 3b 5a 08 0f 85 2b c8 06 00 48 89 42
-[ 1210.272066] RSP: 0018:ffffbb3b0661bb98 EFLAGS: 00010246
-[ 1210.272071] RAX: dead000000000122 RBX: ffff97bc8f92e000 RCX: 00000000000=
-00000
-[ 1210.272075] RDX: dead000000000100 RSI: ffff97bc8ba8b610 RDI: ffffffffc14=
-47068
-[ 1210.272078] RBP: ffff97bc8f92e4d0 R08: ffff97bc8424b5c0 R09: 00000000802=
-a0026
-[ 1210.272082] R10: 00000000802a0026 R11: 0000000000000001 R12: ffff97bc8f9=
-2e000
-[ 1210.272085] R13: ffffffffc12ff278 R14: ffffffffc12ff278 R15: ffff97bcf25=
-acc50
-[ 1210.272088] FS:  0000000000000000(0000) GS:ffff97cbd7300000(0000) knlGS:=
-0000000000000000
-[ 1210.272092] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[ 1210.272096] CR2: 0000285c01b10000 CR3: 00000003d6e22000 CR4: 0000000000f=
-50ef0
-[ 1210.272099] PKRU: 55555554
-[ 1210.272102] note: kworker/2:1[2275] exited with preempt_count 1
 
 
-The kworker exiting obviously means that the kernel no longer responds to e=
-vents
-on any of the USB ports...
+On 8/19/2024 4:10 AM, Lorenzo Bianconi wrote:
+> GDM1 port on EN7581 SoC is connected to the lan dsa switch.
+> GDM{2,3,4} can be used as wan port connected to an external
+> phy module. Configure hw mac address registers according to the port id.
+> 
+> ---
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
 
-I hope you can track down the issue, let me know if you need any additional
-details.
-
-Regards,
-
-Marc
+Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
 
