@@ -4,70 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBD87C3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Aug 2024 22:41:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9F09C3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Aug 2024 23:46:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7zy3ki0wOeMnX5B65JZFVnODIZGgSlOs4ivJOBWhHes=; b=ADEwID9xi5npl+b1SWlzEGfXQS
-	6TbRvduvS8Ap3ue/3JYNZHH20C1GBLyPiNm3LYHnmg4mQ+T/Sfa5tTmINvZor8+YMBgRnYRNpDFGK
-	sbQUbfG7xxI8I7MXcMS4maVq6yHn2BypGKRtBT2MhGtF0Q/M2/gNech7K1yYqgYbCYuYSRJNQKVBP
-	FMQDkuuRJXyRdANymI7EFI9C6fheU6/WTOtBxq/pRg7x5TZtbRZq4kq8l8NoVjR+BOilei/3mIq45
-	04LnvDNzbZygN65NwFXqaHlLl1p6CmCbgKvNQa/Ys+LXNzmyFl7yhzOPOa7UgOO4fT8uWvXoqIhqx
-	2xgctqPg==;
+	bh=jOMk6nKdU/OadJM5Jw+DEbKFriLlwrQLkyoJvB74aPU=; b=LmrPVQqJ5EaVqzqDpcv3oHuSN1
+	SSBdSUKDPx16meLjYOvToc9lOcd+2ySF69q9KOQNuBiGgCrj1nLn5cmjcm4Vl9dLqU7FiVUDn+a4i
+	e9mLSBwc+si133wAGDOBRd21X6ljl/R/JFlMjIAXeTIY1QimoLHnMj6Uv25Cz3g6xVCRPgIJhxpO0
+	FxYBagRH9He3ab/x6N+CFrDQJKgzogdYdtbykCcHnN6MDiy3w1KdWoRd1tZDs2XswlECWEMQgVTM4
+	wiA30oBkfdMcmLycS1rMg+9FNsUOyIcp83sCajWBZjcVMQw8WfmNIVr4JRWTbo6NJ+SL/ge/dw2ZW
+	wxoFQmjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgXXS-00000006pqZ-1sTs;
-	Tue, 20 Aug 2024 22:41:18 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sgYYF-00000006ygh-07T7;
+	Tue, 20 Aug 2024 23:46:11 +0000
+Received: from out-189.mta1.migadu.com ([2001:41d0:203:375::bd])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgXWj-00000006pgf-0aKO;
-	Tue, 20 Aug 2024 22:40:34 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CC59860DE2;
-	Tue, 20 Aug 2024 22:40:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74888C4AF09;
-	Tue, 20 Aug 2024 22:40:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724193631;
-	bh=Z2W8i0+0KtSrExfZq0x4rSOeJ1fGjcgaUp6rqgGlQi8=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=Zif5NnJEKiX1L45h590kjBXasecw2a9F+fYvoXTpMtZ7Jtn7mljcwoOX8g4shLp1J
-	 E6EJW+GtRVG2ohvMnOzrsUpb3Ys7NLCRQLTWCFnAw1DyZFMqRvOWQCemvRgX/qlkFT
-	 8fdvtHncCXi6W98SWPy+1LYjhwDbpcF25ZuaNUwkr6KQLPMFNyWSHT9wJaSLVqMXvn
-	 5WjvIOa4jo/HgsRf3w15fzwcZx/+E2ivOxliJnxJZOj8aNm6y/+fGTTuI+kuqQ8UzO
-	 iYLHb9K843Adjd0JRMvlTeyeFswNuBZ06EbN/LMcT9Pmu2Xn03Sj4XBb1XDg5bwM0s
-	 Gpp6ywERsBFZQ==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 342ED3804CAE;
-	Tue, 20 Aug 2024 22:40:31 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1sgYXV-00000006yUt-11XI
+	for linux-mediatek@lists.infradead.org;
+	Tue, 20 Aug 2024 23:45:27 +0000
+Message-ID: <026dc2a7-7f43-43a3-b138-3a4fedf41a5f@linux.dev>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1724197521;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=jOMk6nKdU/OadJM5Jw+DEbKFriLlwrQLkyoJvB74aPU=;
+	b=X94LOzhvuUUoTZgkLED1+PiitTkGsST+HZTDpWuzpeOQsXTT6ZRaisAB7H3hrXL4qQoXWU
+	DD8twRI/XnTQbiw2ooE5Fn/mO4A9pZwCxzsxqe+h4YHFHMsrI4SudfCt6PL+/1t6H6BEK1
+	ltR4LozCn02uw5ZUxyOD+9Ug/Xdpe+Q=
+Date: Tue, 20 Aug 2024 16:45:12 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next 1/4] dt-bindings: net: mediatek,net: narrow
- interrupts per variants
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <172419363004.1257878.11782803911296798283.git-patchwork-notify@kernel.org>
-Date: Tue, 20 Aug 2024 22:40:30 +0000
-References: <20240818172905.121829-1-krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20240818172905.121829-1-krzysztof.kozlowski@linaro.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- s.shtylyov@omp.ru, hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- geert+renesas@glider.be, magnus.damm@gmail.com, lorenzo@kernel.org,
- nbd@nbd.name, sergei.shtylyov@gmail.com, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v3] net/socket: Check cgroup_bpf_enabled() only once in
+ do_sock_getsockopt()
+To: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
+Cc: Stanislav Fomichev <sdf@fomichev.me>, netdev@vger.kernel.org,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Kuniyuki Iwashima <kuniyu@amazon.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ bobule.chang@mediatek.com, wsd_upstream@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Yanghui Li <yanghui.li@mediatek.com>,
+ Cheng-Jui Wang <cheng-jui.wang@mediatek.com>,
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Andrii Nakryiko <andrii@kernel.org>, Eduard Zingerman <eddyz87@gmail.com>,
+ Song Liu <song@kernel.org>, Yonghong Song <yonghong.song@linux.dev>,
+ KP Singh <kpsingh@kernel.org>, Hao Luo <haoluo@google.com>,
+ Jiri Olsa <jolsa@kernel.org>, bpf@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20240820092942.16654-1-Tze-nan.Wu@mediatek.com>
+Content-Language: en-US
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Martin KaFai Lau <martin.lau@linux.dev>
+In-Reply-To: <20240820092942.16654-1-Tze-nan.Wu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240820_154033_251266_EBB7FA2E 
-X-CRM114-Status: UNSURE (   8.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240820_164525_451039_0E953D14 
+X-CRM114-Status: GOOD (  12.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,35 +84,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This series was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Sun, 18 Aug 2024 19:29:02 +0200 you wrote:
-> Each variable-length property like interrupts must have fixed
-> constraints on number of items for given variant in binding.  The
-> clauses in "if:then:" block should define both limits: upper and lower.
+On 8/20/24 2:29 AM, Tze-nan Wu wrote:
+> The return value from `cgroup_bpf_enabled(CGROUP_GETSOCKOPT)` can change
+> between the invocations of `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN` and
+> `BPF_CGROUP_RUN_PROG_GETSOCKOPT`.
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
->  Documentation/devicetree/bindings/net/mediatek,net.yaml | 3 +++
->  1 file changed, 3 insertions(+)
+> If `cgroup_bpf_enabled(CGROUP_GETSOCKOPT)` changes from "false" to
+> "true" between the invocations of `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN` and
+> `BPF_CGROUP_RUN_PROG_GETSOCKOPT`, `BPF_CGROUP_RUN_PROG_GETSOCKOPT` will
+> receive an -EFAULT from `__cgroup_bpf_run_filter_getsockopt(max_optlen=0)`
+> due to `get_user()` was not reached in `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN`.
+> 
+> Scenario shown as below:
+> 
+>             `process A`                      `process B`
+>             -----------                      ------------
+>    BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN
+>                                              enable CGROUP_GETSOCKOPT
+>    BPF_CGROUP_RUN_PROG_GETSOCKOPT (-EFAULT)
+> 
+> To prevent this, invoke `cgroup_bpf_enabled()` only once and cache the
+> result in a newly added local variable `enabled`.
+> Both `BPF_CGROUP_*` macros in `do_sock_getsockopt` will then check their
+> condition using the same `enabled` variable as the condition variable,
+> instead of using the return values from `cgroup_bpf_enabled` called by
+> themselves as the condition variable(which could yield different results).
+> This ensures that either both `BPF_CGROUP_*` macros pass the condition
+> or neither does.
+> 
+> Co-developed-by: Yanghui Li <yanghui.li@mediatek.com>
+> Signed-off-by: Yanghui Li <yanghui.li@mediatek.com>
+> Co-developed-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
+> Signed-off-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
+> Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
 
-Here is the summary with links:
-  - [net-next,1/4] dt-bindings: net: mediatek,net: narrow interrupts per variants
-    https://git.kernel.org/netdev/net-next/c/55da77dec1be
-  - [net-next,2/4] dt-bindings: net: mediatek,net: add top-level constraints
-    https://git.kernel.org/netdev/net-next/c/06ab21c3cb6e
-  - [net-next,3/4] dt-bindings: net: renesas,etheravb: add top-level constraints
-    https://git.kernel.org/netdev/net-next/c/70d16e13368c
-  - [net-next,4/4] dt-bindings: net: socionext,uniphier-ave4: add top-level constraints
-    https://git.kernel.org/netdev/net-next/c/2862c9349d5d
+Please tag bpf in the subject and add a Fixes tag.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+[cc: Stanislav]
 
+pw-bot: cr
 
 
