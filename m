@@ -4,64 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86935C5320E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Aug 2024 22:34:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBD87C3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Aug 2024 22:41:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iCX66b07Eva+Uh7XkDrg4iSCZkJv0pYAjVS5PsR5X9s=; b=b3u0cVtiRLDTZS1RTn8iWl2Jj8
-	nx9IJ3IIKQT3zcTOg5Z3fMkWDmLgxgqfR+kLAnRJKcKpluc3cgtGbm/s2+Jq+5jUOpwZKYpfY3g5p
-	5mJNbuUKUicMSB1VLS88RIvb56alR2gzbxDhUtPRVf185yaiw9zq3wsSI99x02aQdpOO+SvlNYuIt
-	NLR/mzfYoz/FPb4JmqY+aIW6AoCoPDsxB7KB4AeeMGHCUFgAHJn4L6bDwBzm3uoL9EBF/zodpfCar
-	HF7fe6rjsgENXGVN4iZDr9bXNm+DpK4gvTMKeVHXFeDXhZUlxkBLTWXiApMGCcrQgujjkc7GymWzn
-	RSHdc84A==;
+	bh=7zy3ki0wOeMnX5B65JZFVnODIZGgSlOs4ivJOBWhHes=; b=ADEwID9xi5npl+b1SWlzEGfXQS
+	6TbRvduvS8Ap3ue/3JYNZHH20C1GBLyPiNm3LYHnmg4mQ+T/Sfa5tTmINvZor8+YMBgRnYRNpDFGK
+	sbQUbfG7xxI8I7MXcMS4maVq6yHn2BypGKRtBT2MhGtF0Q/M2/gNech7K1yYqgYbCYuYSRJNQKVBP
+	FMQDkuuRJXyRdANymI7EFI9C6fheU6/WTOtBxq/pRg7x5TZtbRZq4kq8l8NoVjR+BOilei/3mIq45
+	04LnvDNzbZygN65NwFXqaHlLl1p6CmCbgKvNQa/Ys+LXNzmyFl7yhzOPOa7UgOO4fT8uWvXoqIhqx
+	2xgctqPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgXQz-00000006p49-48I2;
-	Tue, 20 Aug 2024 22:34:37 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sgXXS-00000006pqZ-1sTs;
+	Tue, 20 Aug 2024 22:41:18 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgXQG-00000006oyX-0yK8;
-	Tue, 20 Aug 2024 22:33:53 +0000
+	id 1sgXWj-00000006pgf-0aKO;
+	Tue, 20 Aug 2024 22:40:34 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 1F24760DE5;
-	Tue, 20 Aug 2024 22:33:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3BEDEC4AF0E;
-	Tue, 20 Aug 2024 22:33:50 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id CC59860DE2;
+	Tue, 20 Aug 2024 22:40:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74888C4AF09;
+	Tue, 20 Aug 2024 22:40:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724193230;
-	bh=BHbIllKtNuVtHh9Ant8S7H/WA47lkz/44JR0SauUQ50=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=PZ5E5JErUL76xOjwN2veBuDu13SoBwujHPxvXeX3hYYVLDlaCjRkD544yZKTyY+UE
-	 8sS37eUM0fBOY/oZ8PpTwzdfCLzphIuyCdXIICWlWGx9KrOuIMp+4jYKWFJHVft8tv
-	 QqbsqlR1T7dKIoF3LwKlQze08dWchIhLrPac7jU81A9i7fPgDVxf2fZJPNB6zZ+ad/
-	 wW8ndqpQ5hSGJ4/uTmW7BhPrEUJ07cMICE+RNnFh3uWnij4ohH5yTE6tc+lifcnnLs
-	 I8yDI8bgaQxeaIrhhf5XDqkJGoB/iYC9E5h+KNNo0ytRx8Uvyz7tXPBQx0FTr6cL6T
-	 2b8xf7qVoECGw==
-Date: Tue, 20 Aug 2024 15:33:49 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, Mark
- Lee <Mark-MC.Lee@mediatek.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, lorenzo.bianconi83@gmail.com
-Subject: Re: [PATCH net-next] net: airoha: configure hw mac address
- according to the port id
-Message-ID: <20240820153349.2accb2fe@kernel.org>
-In-Reply-To: <20240819-airoha-eth-wan-mac-addr-v1-1-e8d7c13b3182@kernel.org>
-References: <20240819-airoha-eth-wan-mac-addr-v1-1-e8d7c13b3182@kernel.org>
+	s=k20201202; t=1724193631;
+	bh=Z2W8i0+0KtSrExfZq0x4rSOeJ1fGjcgaUp6rqgGlQi8=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=Zif5NnJEKiX1L45h590kjBXasecw2a9F+fYvoXTpMtZ7Jtn7mljcwoOX8g4shLp1J
+	 E6EJW+GtRVG2ohvMnOzrsUpb3Ys7NLCRQLTWCFnAw1DyZFMqRvOWQCemvRgX/qlkFT
+	 8fdvtHncCXi6W98SWPy+1LYjhwDbpcF25ZuaNUwkr6KQLPMFNyWSHT9wJaSLVqMXvn
+	 5WjvIOa4jo/HgsRf3w15fzwcZx/+E2ivOxliJnxJZOj8aNm6y/+fGTTuI+kuqQ8UzO
+	 iYLHb9K843Adjd0JRMvlTeyeFswNuBZ06EbN/LMcT9Pmu2Xn03Sj4XBb1XDg5bwM0s
+	 Gpp6ywERsBFZQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 342ED3804CAE;
+	Tue, 20 Aug 2024 22:40:31 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next 1/4] dt-bindings: net: mediatek,net: narrow
+ interrupts per variants
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <172419363004.1257878.11782803911296798283.git-patchwork-notify@kernel.org>
+Date: Tue, 20 Aug 2024 22:40:30 +0000
+References: <20240818172905.121829-1-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20240818172905.121829-1-krzysztof.kozlowski@linaro.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ s.shtylyov@omp.ru, hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ geert+renesas@glider.be, magnus.damm@gmail.com, lorenzo@kernel.org,
+ nbd@nbd.name, sergei.shtylyov@gmail.com, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240820_153352_374507_1314BE03 
-X-CRM114-Status: GOOD (  13.77  )
+X-CRM114-CacheID: sfid-20240820_154033_251266_EBB7FA2E 
+X-CRM114-Status: UNSURE (   8.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,45 +82,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 19 Aug 2024 13:10:09 +0200 Lorenzo Bianconi wrote:
-> GDM1 port on EN7581 SoC is connected to the lan dsa switch.
-> GDM{2,3,4} can be used as wan port connected to an external
-> phy module. Configure hw mac address registers according to the port id.
+Hello:
+
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Sun, 18 Aug 2024 19:29:02 +0200 you wrote:
+> Each variable-length property like interrupts must have fixed
+> constraints on number of items for given variant in binding.  The
+> clauses in "if:then:" block should define both limits: upper and lower.
 > 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > ---
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+>  Documentation/devicetree/bindings/net/mediatek,net.yaml | 3 +++
+>  1 file changed, 3 insertions(+)
 
-nit: sign-off under ---
+Here is the summary with links:
+  - [net-next,1/4] dt-bindings: net: mediatek,net: narrow interrupts per variants
+    https://git.kernel.org/netdev/net-next/c/55da77dec1be
+  - [net-next,2/4] dt-bindings: net: mediatek,net: add top-level constraints
+    https://git.kernel.org/netdev/net-next/c/06ab21c3cb6e
+  - [net-next,3/4] dt-bindings: net: renesas,etheravb: add top-level constraints
+    https://git.kernel.org/netdev/net-next/c/70d16e13368c
+  - [net-next,4/4] dt-bindings: net: socionext,uniphier-ave4: add top-level constraints
+    https://git.kernel.org/netdev/net-next/c/2862c9349d5d
 
->  drivers/net/ethernet/mediatek/airoha_eth.c | 33 +++++++++++++++++++++++-------
->  1 file changed, 26 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/airoha_eth.c b/drivers/net/ethernet/mediatek/airoha_eth.c
-> index 1fb46db0c1e9..4914565c2fac 100644
-> --- a/drivers/net/ethernet/mediatek/airoha_eth.c
-> +++ b/drivers/net/ethernet/mediatek/airoha_eth.c
-> @@ -67,6 +67,10 @@
->  #define FE_RST_GDM3_MBI_ARB_MASK	BIT(2)
->  #define FE_RST_CORE_MASK		BIT(0)
->  
-> +#define REG_FE_WAN_MAC_H		0x0030
-> +#define REG_FE_WAN_MAC_LMIN		0x0034
-> +#define REG_FE_WAN_MAC_LMAX		0x0038
-> +
->  #define REG_FE_LAN_MAC_H		0x0040
->  #define REG_FE_LAN_MAC_LMIN		0x0044
->  #define REG_FE_LAN_MAC_LMAX		0x0048
-
-Isn't it better to define the base address and offsets?
-
-#define REG_FE_MAC_BASE_WAN	0x0030
-#define REG_FE_MAC_BASE_LAN	0x0040
-#define REG_FE_MAC_OFF_H		0x00
-#define REG_FE_MAC_OFF_LMIN		0x04
-#define REG_FE_MAC_OFF_LMAX		0x08
-
-Then you only need to select the base and the rest of the code won't
-have conditionals (marginally improving readability)
+You are awesome, thank you!
 -- 
-pw-bot: cr
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
