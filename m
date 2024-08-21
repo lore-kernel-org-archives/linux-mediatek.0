@@ -4,82 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 511B7C52D6F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Aug 2024 09:33:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15E60C52D7C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Aug 2024 10:03:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=7E84GIHXbOx7jBLbf+I8NSxdpVEuRrIuEkSs5jTJbGg=; b=UN7My75OEyhOcoUysfI6jCycCm
-	NdZ0ynjBqZI0kEqTL4Og1aPZuYz9QtJYZFzBZOWzyy4C0M2GhByB2X/tdW0b+GVSt5nmhmMHORT1X
-	WsLNEBbkMfNv5n5YIZRSq6sfoCW0LNTAJrsuV15Rf7ViDvMdiK2LsmJlGXWLPfWPeb6JPetumZCFx
-	WU3WaQgEsiyhpitYunZjhuQPNuFGSLr1ow4OIkEd4ypxa9euA08RJyn7JrRK19L2sYMalGEyRXsmE
-	PSZt535sPJAvLJbnTNXoOhMU859klbMtw1DEMLe+UE5NfdvrAZbUT9/9LeU51XFu0TN+ZrN/2mhYp
-	z7KWJt7w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Pd9R2BtSpz2B9c9jyjlMoM0npRj2Rg5g58n45MgqLc4=; b=luGl5oMdMNxWO+BHAMDAqDkPl7
+	oZae5Rp9lSJPf2kRafa930m4fKlth5twPnSoqpK+Xsyq3D0G2HWMu5vsC5B+VWoVHMuEG7cwhfPq5
+	nVkqy1OPPU6HbbOeQOEu2l13NJ3cZIN7FfgN5OZDYfFpZc9iBbcakXM1nYB7bsRDUpU2IDhQ3A+y/
+	7dxCAb5bJX7o6OHx/r/Xq6qO94E5llEV2DVZOMsDWwCYBOtyPiWHtQuvTGitcGcE0jhsCMn8NKCwB
+	Wej8BNxip3MAveBXUFAGoM+SOSImHTv8+yzixz2p/Ils+yNa6GKlKMvwgNZC+hoi+jg/N728wXD8w
+	lW/8GhfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sghix-00000008GUR-4788;
-	Wed, 21 Aug 2024 09:33:51 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sgiBL-00000008LEb-2OaL;
+	Wed, 21 Aug 2024 10:03:11 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sghgI-00000008FpX-443N;
-	Wed, 21 Aug 2024 09:31:09 +0000
-X-UUID: 163ab3ce5fa011efba0aef63c0775dbf-20240821
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=7E84GIHXbOx7jBLbf+I8NSxdpVEuRrIuEkSs5jTJbGg=;
-	b=dY4mfA5SAWAH1wA7HHE+KmF880YigIByq+AX4F1np4lfA3bpf+gSbf11fNcfx215c6vJxHdoC8uv5eFPA1j4MzA+/WvrYxq4SBAm2wdgYZ1Zs+gVr/fFwRu++q6EjAEXG/cl6etgXNI089BuaSd2jEO6qso88nUFKgUh2NeMn+U=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:8a9925d9-1204-4662-b156-299c19851b64,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6dc6a47,CLOUDID:09f1b3be-d7af-4351-93aa-42531abf0c7b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 163ab3ce5fa011efba0aef63c0775dbf-20240821
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
-	(envelope-from <tze-nan.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 401815040; Wed, 21 Aug 2024 02:31:04 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 21 Aug 2024 02:30:31 -0700
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 21 Aug 2024 17:30:31 +0800
-From: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
-To: <netdev@vger.kernel.org>, <bpf@vger.kernel.org>, "David S. Miller"
-	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
-	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Stanislav Fomichev
-	<sdf@fomichev.me>
-CC: <bobule.chang@mediatek.com>, <wsd_upstream@mediatek.com>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	Kuniyuki Iwashima <kuniyu@amazon.com>, Tze-nan Wu <Tze-nan.Wu@mediatek.com>,
-	Yanghui Li <yanghui.li@mediatek.com>, Cheng-Jui Wang
-	<cheng-jui.wang@mediatek.com>, Alexei Starovoitov <ast@kernel.org>, Daniel
- Borkmann <daniel@iogearbox.net>, John Fastabend <john.fastabend@gmail.com>,
-	Andrii Nakryiko <andrii@kernel.org>, Martin KaFai Lau <martin.lau@linux.dev>,
-	Eduard Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>, Yonghong
- Song <yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, Hao Luo
-	<haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>
-Subject: [PATCH net v4] bpf, net: Check cgroup_bpf_enabled() only once in do_sock_getsockopt()
-Date: Wed, 21 Aug 2024 17:30:16 +0800
-Message-ID: <20240821093016.2533-1-Tze-nan.Wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1sghtN-00000008Hv2-2tjJ
+	for linux-mediatek@lists.infradead.org;
+	Wed, 21 Aug 2024 09:44:39 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-53349ee42a9so455762e87.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 21 Aug 2024 02:44:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1724233476; x=1724838276; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Pd9R2BtSpz2B9c9jyjlMoM0npRj2Rg5g58n45MgqLc4=;
+        b=WpZqFMCvYqIJLFeJ5UnDuz7aCidkoi2ca1mxQKoaC2Bi3nr4iXun0REmda6TfeoUID
+         DaRECpBCXS2a8EvDUCurdsEvfBPWQuFKWZ33A7jZMbaptJzrsWvADmEclTj2DvL6BSmS
+         3439ecYeq1Lb7y+T/GiEWhC7zK8g3IHpDyBG4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1724233476; x=1724838276;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Pd9R2BtSpz2B9c9jyjlMoM0npRj2Rg5g58n45MgqLc4=;
+        b=N/E+0tazgRUMD7aIR+Gygbp4ybewkCwK+NfJtvHB+2eZFPLyO9TvxjMhchKwz0aGwO
+         djG/IHxDJq9l8jkETXpfl0+0tL5D13Mzc4FE1ZtVUus4pvSWZmhiCrZJKSyAgwWgXBIh
+         OW+XtSNxGdahMENLGTCvBYPRxqDmpQchARmXfhez883oa9QlRnDPVmon9jere9Dnv2He
+         1AU+LuMvKSqHtBmtsYIBsWDj95vgw3VoqZJf7b7fvv+8UtTamAiqaCblBER0hhWN0yW4
+         fTSRI0YwM+dH65sd5Xx/UR0lmSZn0RZbLXhpc3ylL5B1mT30AXeBAXZGvN4GbMd5FmZ+
+         lmUQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXoRl/dADzT3IfAmMQ+1RD9LO4CFWKmYWXjWYXA/VcD2UnGJLwZrMoowSw4jUao23UMdq+ih6VXmlXTlRvHJg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzBo0DS7gArZsSZk/L+dkYz0u/xDqwGV3usWgeC7CWQq19Emb9L
+	IvwCHhVtu25UI9cNcjYybgbB2QlOQOGK0NaV4zBBbcbJsMPsPyjnFfQqNCUHmglcvnsk+D4nTKw
+	MmcO0vVOyGC1n779FuYeWgxbHz+dfb092c29f
+X-Google-Smtp-Source: AGHT+IHhY6dI3RqHwGr9l8gj12r4VFfwNQxKcBk/M2NGqz66PkHLDfNBVqtGhQPRqhnQgZBfqJS7KlhG99qWQPbELiI=
+X-Received: by 2002:a05:6512:ea0:b0:533:88d:48ca with SMTP id
+ 2adb3069b0e04-53348596bc7mr1065694e87.55.1724233475599; Wed, 21 Aug 2024
+ 02:44:35 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
+References: <20240808095931.2649657-1-wenst@chromium.org> <20240808095931.2649657-5-wenst@chromium.org>
+ <ZrtGXfKE6BwupPPA@smile.fi.intel.com> <CAGXv+5E+D8oXr7nh67HEPermJYoRp+Xf+oqSefOiUoCpyoKYUQ@mail.gmail.com>
+ <Zry2vbJ-BT4mI0eO@smile.fi.intel.com>
+In-Reply-To: <Zry2vbJ-BT4mI0eO@smile.fi.intel.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 21 Aug 2024 17:44:24 +0800
+Message-ID: <CAGXv+5HiZo=rbkrzmMf20fNeobuDYhNtv29Hjcp0WCte4y0SJA@mail.gmail.com>
+Subject: Re: [PATCH v4 4/6] i2c: of-prober: Add GPIO and regulator support
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
+	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
+	Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
+	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, 
+	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>, linux-i2c@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240821_023107_261343_BFACDF22 
-X-CRM114-Status: GOOD (  16.46  )
+X-CRM114-CacheID: sfid-20240821_024437_794541_BD48F99A 
+X-CRM114-Status: GOOD (  44.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,134 +96,179 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The return value from `cgroup_bpf_enabled(CGROUP_GETSOCKOPT)` can change
-between the invocations of `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN` and
-`BPF_CGROUP_RUN_PROG_GETSOCKOPT`.
+On Wed, Aug 14, 2024 at 9:53=E2=80=AFPM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+>
+> On Wed, Aug 14, 2024 at 07:34:00PM +0800, Chen-Yu Tsai wrote:
+> > On Tue, Aug 13, 2024 at 7:41=E2=80=AFPM Andy Shevchenko
+> > <andriy.shevchenko@linux.intel.com> wrote:
+> > > On Thu, Aug 08, 2024 at 05:59:27PM +0800, Chen-Yu Tsai wrote:
+>
+> ...
+>
+> > > > This adds GPIO and regulator management to the I2C OF component pro=
+ber.
+>
+> > > Can this be two patches?
+> >
+> > You mean one for GPIOs and one for regulators right? Sure.
+>
+> Yes.
+>
+> ...
+>
+> > > > +#define RESOURCE_MAX 8
+> > >
+> > > Badly (broadly) named constant. Is it not the same that defines argum=
+ents in
+> > > the OF phandle lookup? Can you use that instead?
+> >
+> > I'm not sure what you are referring to. This is how many unique instanc=
+es
+> > of a given resource (GPIOs or regulators) the prober will track.
+> >
+> > MAX_TRACKED_RESOURCES maybe?
+>
+> Better, but still ambiguous. We have a namespace approach, something like
+> I2C_PROBER_... I have checked the existing constant and it's not what you
+> want, so forget about that part, only name of the definition is questiona=
+ble.
+>
+> ...
+>
+> > > > +#define REGULATOR_SUFFIX "-supply"
+> > >
+> > > Name is bad, also move '-' to the code, it's not part of the suffix, =
+it's a
+> > > separator AFAICT.
+> >
+> > OF_REGULATOR_SUPPLY_SUFFIX then?
+> >
+> > Also, "supply" is not a valid property. It is always "X-supply".
+> > Having the '-' directly in the string makes things simpler, albeit
+> > making the name slightly off.
+>
+> Let's use proper SUFFIX and separator separately.
+>
+> #define I2C_PROBER_..._SUFFIX "supply"
+>
+> (or alike)
+>
+> ...
+>
+> > > > +     p =3D strstr(prop->name, REGULATOR_SUFFIX);
+> > >
+> > > strstr()?! Are you sure it will have no side effects on some interest=
+ing names?
+> > >
+> > > > +     if (!p)
+> > > > +             return 0;
+> > >
+> > > > +     if (strcmp(p, REGULATOR_SUFFIX))
+> > > > +             return 0;
+> > >
+> > > Ah, you do it this way...
+> > >
+> > > What about
+> >
+> > About? (feels like an unfinished comment)
+>
+> Yes, sorry for that. Since you found a better alternative, no need to fin=
+ish
+> this part :-)
+>
+> > Looking around, it seems I could just rename and export "is_supply_name=
+()"
+> > from drivers/regulator/of_regulator.c .
+>
+> Even better!
+>
+> Something similar most likely can be done with GPIO (if not, we are alway=
+s open
+> to the ideas how to deduplicate the code).
+>
+> ...
 
-If `cgroup_bpf_enabled(CGROUP_GETSOCKOPT)` changes from "false" to
-"true" between the invocations of `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN` and
-`BPF_CGROUP_RUN_PROG_GETSOCKOPT`, `BPF_CGROUP_RUN_PROG_GETSOCKOPT` will
-receive an -EFAULT from `__cgroup_bpf_run_filter_getsockopt(max_optlen=0)`
-due to `get_user()` was not reached in `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN`.
+I ended up reworking around of_regulator_bulk_get_all(). See below.
 
-Scenario shown as below:
+> > > > +#define GPIO_SUFFIX "-gpio"
+> > >
+> > > Bad define name, and why not "gpios"?
+> >
+> > "-gpio" in strstr() would match against both "foo-gpio" and "foo-gpios"=
+.
+> > More like laziness.
+>
+> And opens can of worms with whatever ending of the property name.
+> Again, let's have something that GPIO library provides for everybody.
 
-           `process A`                      `process B`
-           -----------                      ------------
-  BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN
-                                            enable CGROUP_GETSOCKOPT
-  BPF_CGROUP_RUN_PROG_GETSOCKOPT (-EFAULT)
+Ack.
 
-To prevent this, invoke `cgroup_bpf_enabled()` only once and cache the
-result in a newly added local variable `enabled`.
-Both `BPF_CGROUP_*` macros in `do_sock_getsockopt` will then check their
-condition using the same `enabled` variable as the condition variable,
-instead of using the return values from `cgroup_bpf_enabled` called by
-themselves as the condition variable(which could yield different results).
-This ensures that either both `BPF_CGROUP_*` macros pass the condition
-or neither does.
+> ...
+>
+> > > > +     ret =3D of_parse_phandle_with_args_map(node, prop->name, "gpi=
+o", 0, &phargs);
+> > > > +     if (ret)
+> > > > +             return ret;
+>
+> (1)
+>
+> > > > +     gpiod =3D fwnode_gpiod_get_index(fwnode, con_id, 0, GPIOD_ASI=
+S, "i2c-of-prober");
+> > > > +     if (IS_ERR(gpiod)) {
+> > > > +             of_node_put(phargs.np);
+> > > > +             return PTR_ERR(gpiod);
+> > > > +     }
+> > >
+> > > Try not to mix fwnode and OF specifics. You may rely on fwnode for GP=
+IO completely.
+> >
+> > Well, fwnode doesn't give a way to identify GPIOs without requesting th=
+em.
+> >
+> > Instead I think I could first request GPIOs exclusively, and if that fa=
+ils
+> > try non-exclusive and see if that GPIO descriptor matches any known one=
+.
+> > If not then something in the DT is broken and it should error out. Then
+> > the phandle parsing code could be dropped.
+>
+> What I meant, the, e.g., (1) can be rewritten using fwnode API, but if yo=
+u know
+> better way of doing things, then go for it.
+>
+> > > > +     if (data->gpiods_num =3D=3D ARRAY_SIZE(data->gpiods)) {
+> > > > +             of_node_put(phargs.np);
+> > > > +             gpiod_put(gpiod);
+> > > > +             return -ENOMEM;
+> > > > +     }
 
-Fixes: 0d01da6afc54 ("bpf: implement getsockopt and setsockopt hooks")
-Co-developed-by: Yanghui Li <yanghui.li@mediatek.com>
-Signed-off-by: Yanghui Li <yanghui.li@mediatek.com>
-Co-developed-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
-Signed-off-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
-Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
----
+After reworking around |struct gpio_descs|, i.e. gpio_*_array() APIs,
+this ended up being the only bit that actually used the _array variant
+with gpiod_put_array(). The other bits remained for-loop-based.
 
-Chagnes from v1 to v2: https://lore.kernel.org/all/20240819082513.27176-1-Tze-nan.Wu@mediatek.com/
-  Instead of using cgroup_lock in the fastpath, invoke cgroup_bpf_enabled
-  only once and cache the value in the newly added variable `enabled`.
-  `BPF_CGROUP_*` macros in do_sock_getsockopt can then both check their
-  condition with the new variable `enable`, ensuring that either they both
-  passing the condition or both do not.
+> ...
+>
+> > > > +     for (int i =3D data->regulators_num; i >=3D 0; i--)
+> > > > +             regulator_put(data->regulators[i]);
+> > >
+> > > Bulk regulators?
+> >
+> > Bulk regulators API uses its own data structure which is not just an
+> > array. So unlike gpiod_*_array() it can't be used in this case.
+>
+> But it sounds like a bulk regulator case...
+> Whatever, it's Mark's area and he might suggest something better.
 
-Chagnes from v2 to v3: https://lore.kernel.org/all/20240819155627.1367-1-Tze-nan.Wu@mediatek.com/
-  Hide cgroup_bpf_enabled in the macro, and some modifications to adapt
-  the coding style.
+There's of_regulator_bulk_get_all(), which has had no users since it was
+merged. It gets all supplies under one device node and gives a handle for
+the bulk regulator API. After reworking it to do lookups directly from
+DT, all the regulator stuff can be converted to the bulk regulator API.
+There's no deduplication anymore, though it's not a huge problem given
+that regulators are reference counted.
 
-Chagnes from v3 to v4: https://lore.kernel.org/all/20240820092942.16654-1-Tze-nan.Wu@mediatek.com/
-  Add bpf tag to subject, and Fixes tag in body.
+I'll do one last pass over the code and send out a new version tomorrow.
 
----
- include/linux/bpf-cgroup.h | 15 ++++++++-------
- net/socket.c               |  5 +++--
- 2 files changed, 11 insertions(+), 9 deletions(-)
-
-diff --git a/include/linux/bpf-cgroup.h b/include/linux/bpf-cgroup.h
-index fb3c3e7181e6..5afa2ac76aae 100644
---- a/include/linux/bpf-cgroup.h
-+++ b/include/linux/bpf-cgroup.h
-@@ -390,20 +390,20 @@ static inline bool cgroup_bpf_sock_enabled(struct sock *sk,
- 	__ret;								       \
- })
- 
--#define BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen)			       \
-+#define BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen, enabled)		       \
- ({									       \
- 	int __ret = 0;							       \
--	if (cgroup_bpf_enabled(CGROUP_GETSOCKOPT))			       \
-+	enabled = cgroup_bpf_enabled(CGROUP_GETSOCKOPT);		       \
-+	if (enabled)							       \
- 		copy_from_sockptr(&__ret, optlen, sizeof(int));		       \
- 	__ret;								       \
- })
- 
- #define BPF_CGROUP_RUN_PROG_GETSOCKOPT(sock, level, optname, optval, optlen,   \
--				       max_optlen, retval)		       \
-+				       max_optlen, retval, enabled)	       \
- ({									       \
- 	int __ret = retval;						       \
--	if (cgroup_bpf_enabled(CGROUP_GETSOCKOPT) &&			       \
--	    cgroup_bpf_sock_enabled(sock, CGROUP_GETSOCKOPT))		       \
-+	if (enabled && cgroup_bpf_sock_enabled(sock, CGROUP_GETSOCKOPT))       \
- 		if (!(sock)->sk_prot->bpf_bypass_getsockopt ||		       \
- 		    !INDIRECT_CALL_INET_1((sock)->sk_prot->bpf_bypass_getsockopt, \
- 					tcp_bpf_bypass_getsockopt,	       \
-@@ -518,9 +518,10 @@ static inline int bpf_percpu_cgroup_storage_update(struct bpf_map *map,
- #define BPF_CGROUP_RUN_PROG_SOCK_OPS(sock_ops) ({ 0; })
- #define BPF_CGROUP_RUN_PROG_DEVICE_CGROUP(atype, major, minor, access) ({ 0; })
- #define BPF_CGROUP_RUN_PROG_SYSCTL(head,table,write,buf,count,pos) ({ 0; })
--#define BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen) ({ 0; })
-+#define BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen, enabled) ({ 0; })
- #define BPF_CGROUP_RUN_PROG_GETSOCKOPT(sock, level, optname, optval, \
--				       optlen, max_optlen, retval) ({ retval; })
-+				       optlen, max_optlen, retval, \
-+				       enabled) ({ retval; })
- #define BPF_CGROUP_RUN_PROG_GETSOCKOPT_KERN(sock, level, optname, optval, \
- 					    optlen, retval) ({ retval; })
- #define BPF_CGROUP_RUN_PROG_SETSOCKOPT(sock, level, optname, optval, optlen, \
-diff --git a/net/socket.c b/net/socket.c
-index fcbdd5bc47ac..0b465dc8a789 100644
---- a/net/socket.c
-+++ b/net/socket.c
-@@ -2363,6 +2363,7 @@ int do_sock_getsockopt(struct socket *sock, bool compat, int level,
- 		       int optname, sockptr_t optval, sockptr_t optlen)
- {
- 	int max_optlen __maybe_unused;
-+	bool enabled __maybe_unused;
- 	const struct proto_ops *ops;
- 	int err;
- 
-@@ -2371,7 +2372,7 @@ int do_sock_getsockopt(struct socket *sock, bool compat, int level,
- 		return err;
- 
- 	if (!compat)
--		max_optlen = BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen);
-+		max_optlen = BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN(optlen, enabled);
- 
- 	ops = READ_ONCE(sock->ops);
- 	if (level == SOL_SOCKET) {
-@@ -2390,7 +2391,7 @@ int do_sock_getsockopt(struct socket *sock, bool compat, int level,
- 	if (!compat)
- 		err = BPF_CGROUP_RUN_PROG_GETSOCKOPT(sock->sk, level, optname,
- 						     optval, optlen, max_optlen,
--						     err);
-+						     err, enabled);
- 
- 	return err;
- }
--- 
-2.45.2
-
+Thanks
+ChenYu
 
