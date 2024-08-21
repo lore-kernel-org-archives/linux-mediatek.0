@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C502C52D6F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Aug 2024 08:55:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D933CC52D7C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Aug 2024 08:57:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=svRdTzKms/ILbPP3aT+084JmlYmUogDkUtzA4d3fnFE=; b=dPce0pm9TaBQbkZfORn9lraiQ4
-	ltaw8ewA5EUINyanI0iM2TwHTwIYD0Q4pMTT/sGerE1kP0JCbQzEjZL9eOUOC+acnp3Ax7kjlK+q2
-	xU3by6RTkcWYDSnNK2dCNLuEQa02u0rjPBMHz7qQuN0OWCBJrbh++lZwj8vgJf/oTAYFidpbfPpMu
-	jhPyhl7iPL4ISDyA74xo0xbv8Do4dcGM1MqYsNWan3tfKbCXoGFpUyWszHamCpL9u3vuiSnDnH5rt
-	WDzF8HwZKi9CfWFxaSH6Z55akZ6YEXQV/QDiPxJhXNWPE4amZcoBDuYGyp9RDwWOuLA+sdeXZUSac
-	FdpMA5Ig==;
+	bh=yyNF0qSld+zcclkyxbXRI0relbuehO7Bcqt8Qy1IJ0s=; b=YoA80KrsRuOP3ly4NgG+W8hiiO
+	KrfZ/YuGi2ZtrK/fTbuKPD/44WykwGxBTx0TvA8aLcXKeVcd/WbVDEg6YUfKzpQ/ev6TL/GImDmW/
+	z5fWDYHIjFFovDKEtCbAs1+g8NLMk4A6lDC6lv+wvC8HIZR/HBCmyWVfP4lUPD27miJ2TbwYSk6XT
+	baOJxEbcAuTA+2cAuMyADgYsnxMTqIgWYgCyr4L8zI/Hkb46k3vK8FlCkYhSyQBOSBbuiqrnQ5yQn
+	9IFIXYuawAOSP2F+ypJe4N6pJmmKJ1PKhAE+aFsy3EAE7+roiBq95P2+EKJw0YSiwCuqhU7reOr8t
+	WSU+8M3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgh7k-00000008AHC-33Yj;
-	Wed, 21 Aug 2024 08:55:24 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1sgh9P-00000008AdW-2WFr;
+	Wed, 21 Aug 2024 08:57:07 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgh6X-000000089nr-3TKb;
-	Wed, 21 Aug 2024 08:54:11 +0000
+	id 1sgh8M-00000008AQs-3Evy;
+	Wed, 21 Aug 2024 08:56:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 1EA2DA410F5;
-	Wed, 21 Aug 2024 08:54:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B97FAC32782;
-	Wed, 21 Aug 2024 08:54:02 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 1E558A4116D;
+	Wed, 21 Aug 2024 08:55:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AB305C32782;
+	Wed, 21 Aug 2024 08:55:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724230447;
-	bh=Y+eJljn9xBsa8R24aSF2p1FC43PzKpXyMx19kU3l9T8=;
+	s=k20201202; t=1724230561;
+	bh=BKWK/MIr7vovdnFd09Ogcsd1XHNLtj7+YWELK1bYOvo=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ctXqYmIlus/wkj6Ecc0/o9UtDdD9Fm5FOvK5y0VA15wZ3yHGVK3f3SPFY64ZwCfRD
-	 /z9k2F0WROeY9eahWsz+f7u7M6QHbIyOAmuTprLftA2x0dunHmgVfz2l22uf0DCsi8
-	 oGucBnpXgDE/Ts/45wGw3gENBLKGsE/nXmg43eOwHQGZ3sacZHx35D14o05WDWrHJR
-	 sF62BrB8KEaIpgYTgbxRAwAFZ3SEsy5+86wkjRqlfQUb5E77ShQz81ob77jWUNTzLc
-	 M1ZPtuqUhonUKtMRIYNmmAld++j+uQGSgL7qPRnJygDB3H1Yc80YmIkjqat10cPhYu
-	 Xc6SzyoWG/1Dg==
-Message-ID: <ef942c52-9a07-4f32-92b8-cd96021ac451@kernel.org>
-Date: Wed, 21 Aug 2024 10:54:00 +0200
+	b=Uc6YNO8GsFYtYyRSgRKVPMKezIl7MwSF/x0g5jixCwxcSI0agxtLk2U9Ce2hpT3l1
+	 WNsfF90X22S0F6cjgqlkbb6osSnUOtTnn1bLOG/yLSYoOsRaW4PS6Mf6WYyaAzi1sm
+	 DR/Ij4Z+kpE/Rq+rZKbw8NXGFUwLOizonbfCo5ctNgxWv0ZAM1Uk3PS3R5bdKrDV+k
+	 AVM7WG+4GlTB1OLVXkIk/C4qQ7yiLrLvWOweZROYcb/NBbLPLHgT3OIA6BOzEfKBcc
+	 Gk6j2xxSDZ1FGUFva8qHGBIWC4fuob5jFwHrc5JWXmO2mpm1+H5VxSitWJ7w6NMzFl
+	 l2b7EY52NBe7A==
+Message-ID: <3b31bf46-c5c0-41c9-bb4d-3ba9f64a5d1c@kernel.org>
+Date: Wed, 21 Aug 2024 10:55:54 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/4] dt-bindings: memory: mediatek: Add mt8188 SMI reset
- control binding
+Subject: Re: [PATCH 2/4] dt-bindings: memory: mediatek: Add smi-sub-common
+ property for reset
 To: "friday.yang" <friday.yang@mediatek.com>, Rob Herring <robh@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>,
@@ -56,7 +56,7 @@ Cc: Yong Wu <yong.wu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20240821082845.11792-1-friday.yang@mediatek.com>
- <20240821082845.11792-2-friday.yang@mediatek.com>
+ <20240821082845.11792-3-friday.yang@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -102,12 +102,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240821082845.11792-2-friday.yang@mediatek.com>
+In-Reply-To: <20240821082845.11792-3-friday.yang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240821_015410_365789_7C73767F 
-X-CRM114-Status: GOOD (  17.96  )
+X-CRM114-CacheID: sfid-20240821_015602_972180_B33BCCD5 
+X-CRM114-Status: GOOD (  18.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,93 +123,97 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 21/08/2024 10:26, friday.yang wrote:
-> To support SMI clamp and reset operation in genpd callback, add
-> SMI LARB reset register offset and mask related information in
-> the bindings. Add index in mt8188-resets.h to query the register
-> offset and mask in the SMI reset control driver.
+> On the MediaTek platform, some SMI LARBs are directly linked to SMI
+> common. While some SMI LARBs are linked to SMI sub common, then SMI
+> sub common is linked to SMI common. Add 'mediatek,smi-sub-comm' and
+> 'mediatek,smi-sub-comm-in-portid' properties here. The SMI reset
+> driver could query which port of the SMI sub common the current LARB
+> is linked to through the two properties. The hardware block diagram
+> could be described as below.
+> 
+>              SMI Common(Smart Multimedia Interface Common)
+>                  |
+>          +----------------+-------
+>          |                |
+>          |                |
+>          |                |
+>          |                |
+>          |                |
+>        larb0       SMI Sub Common
+>                    |      |     |
+>                   larb1  larb2 larb3
 > 
 > Signed-off-by: friday.yang <friday.yang@mediatek.com>
-
-User proper full name instead of login.
-
-
-Please use subject prefixes matching the subsystem. You can get them for
-example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
-your patch is touching. For bindings, the preferred subjects are
-explained here:
-https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patches.html#i-for-patch-submitters
-
 > ---
->  .../bindings/reset/mediatek,smi-reset.yaml    | 46 +++++++++++++++++++
->  include/dt-bindings/reset/mt8188-resets.h     | 11 +++++
->  2 files changed, 57 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/reset/mediatek,smi-reset.yaml
+>  .../mediatek,smi-common.yaml                  |  2 ++
+>  .../memory-controllers/mediatek,smi-larb.yaml | 22 +++++++++++++++++++
+>  2 files changed, 24 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/reset/mediatek,smi-reset.yaml b/Documentation/devicetree/bindings/reset/mediatek,smi-reset.yaml
-> new file mode 100644
-> index 000000000000..66ac121d2396
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/reset/mediatek,smi-reset.yaml
-> @@ -0,0 +1,46 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +# Copyright (c) 2024 MediaTek Inc.
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/reset/mediatek,smi-reset.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek SMI Reset Controller
-> +
-> +maintainers:
-> +  - Friday Yang <friday.yang@mediatek.com>
-> +
-> +description: |
-> +  This reset controller node is used to perform reset management
-> +  of SMI larbs on MediaTek platform. It is used to implement various
-> +  reset functions required when SMI larbs apply clamp operation.
-> +
-> +  For list of all valid reset indices see
-> +    <dt-bindings/reset/mt8188-resets.h> for MT8188.
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,smi-reset-mt8188
-
-Wrong placement of soc. It's mediatek,mt8189-whatever
-
-> +
-> +  "#reset-cells":
-> +    const: 1
-> +
-> +  mediatek,larb-rst-syscon:
+> diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+> index 2f36ac23604c..4392d349878c 100644
+> --- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+> +++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+> @@ -39,6 +39,7 @@ properties:
+>            - mediatek,mt8186-smi-common
+>            - mediatek,mt8188-smi-common-vdo
+>            - mediatek,mt8188-smi-common-vpp
+> +          - mediatek,mt8188-smi-sub-common
+>            - mediatek,mt8192-smi-common
+>            - mediatek,mt8195-smi-common-vdo
+>            - mediatek,mt8195-smi-common-vpp
+> @@ -107,6 +108,7 @@ allOf:
+>          compatible:
+>            contains:
+>              enum:
+> +              - mediatek,mt8188-smi-sub-common
+>                - mediatek,mt8195-smi-sub-common
+>      then:
+>        required:
+> diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+> index 2381660b324c..5f162bb360db 100644
+> --- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+> +++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+> @@ -69,6 +69,16 @@ properties:
+>      description: the hardware id of this larb. It's only required when this
+>        hardware id is not consecutive from its M4U point of view.
+>  
+> +  mediatek,smi-sub-comm:
 > +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: phandle of the SMI larb's reset controller syscon.
+> +    description: a phandle of smi_sub_common that the larb is linked to.
 
-Explain what is it used for.
+Why do you have to smi phandle properties per each node?
 
 > +
-> +required:
-> +  - compatible
-> +  - "#reset-cells"
-> +  - mediatek,larb-rst-syscon
+> +  mediatek,smi-sub-comm-in-portid:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    minimum: 0
+> +    maximum: 7
+> +    description: which port of smi_sub_common that the larb is linked to.
+
+Merge it into phandle.
+
 > +
-> +additionalProperties: false
+>  required:
+>    - compatible
+>    - reg
+> @@ -125,6 +135,18 @@ allOf:
+>        required:
+>          - mediatek,larb-id
+>  
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - mediatek,mt8188-smi-larb
 > +
-> +examples:
-> +  - |
-> +    imgsys1_dip_top_rst: reset-controller {
+> +    then:
+> +      required:
+> +        - mediatek,smi-sub-comm
+> +        - mediatek,smi-sub-comm-in-portid
+> +
 
-Drop label
-
-> +          compatible = "mediatek,smi-reset-mt8188";
-
-Use 4 spaces for example indentation.
-
-> +          #reset-cells = <1>;
-> +          mediatek,larb-rst-syscon = <&imgsys1_dip_top>;
-> +    };
-
+and add it to the example (since you claim it is valid for every device).
 
 Best regards,
 Krzysztof
