@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E401C52D7C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Aug 2024 08:34:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10D4CC52D6F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Aug 2024 08:34:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Pc+Rz7xF47G2RXFpWaQh/P3XdvswivOO3LEEm6zKyxU=; b=3If5UuiR/0l6dFp8c/jWRl0BrQ
-	goQ2k/2c054pZ56GGyv7L/0XpwL6Y44Dykf8zIPb7v+zwVbJZRIph4thzPcODnwTJFBZXWaSD+LaP
-	kQ0WPjinJ0TF5OvElmU1yM2Asg0x77CJFMcNnyIqrjCt08DHL3R7PF5UwwGJNPqwVl0PoJxZBeR+M
-	3xi61eSstXrWKgk8lGek/hK0w2eFkZvGdOSvO1GGOujAU59m69eQBeIb2OxG8nezmGvKDSb/8tkpX
-	uUi3khU3o8uuVgC914PDj3PRku2HKoPFOZondO6rCWwm49QVm4A0zPvbDzoxofIo2os1/INGQCZKg
-	WKLqY2pQ==;
+	bh=jRroNHsS4kq/bMO8WRnvcohyyXmbFWhG9LUftxAm+Co=; b=fFNz4NXxLgw06stDaRfMyrTIjU
+	/XojgsrR5svfJSRIOAVSWuAjp7nzxnULfwGV0g56J0239cVV7kPKEFG9isRTvfswF09/KfXmyLQtB
+	/A2t86Ar7Zz0bXDHswHeZtkwku0SZGkFk4JERD8DF3QrUsBTVED3/VVNePcsE0zEAo6JxheQfmNLX
+	SvRaJfD2UboQ0BBs5fnncVQhTrROBQAvALtX15TfWl1yueMWG9rFHL5mt4z9fs47yjFBjLKin9bqy
+	DHQQUOCJSumSa2WDQFfb7kvgKLmGTaGFRh/z6b1O5GZBG7cI803KUrZKy1IN7iyh6Esc1FSlZSgcn
+	ExMQcE4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sggng-000000085mM-0IYR;
-	Wed, 21 Aug 2024 08:34:40 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sggnp-000000085sC-3g1x;
+	Wed, 21 Aug 2024 08:34:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sggiT-000000084Bp-1pND;
-	Wed, 21 Aug 2024 08:29:18 +0000
-X-UUID: 6eef1f685f9711efba0aef63c0775dbf-20240821
+	id 1sggio-000000084IN-3RAJ;
+	Wed, 21 Aug 2024 08:29:40 +0000
+X-UUID: 7e3a168a5f9711efb3adad29d29602c1-20240821
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Pc+Rz7xF47G2RXFpWaQh/P3XdvswivOO3LEEm6zKyxU=;
-	b=EfvKedzN14xOkmSpecoqfrvoCJ6vCND9+U+cczeLf0ts47k2MnKz4s+GX+qg/GTO7lQKz3Y/c0oKSmaJ5rGb6bwW+5j26uZd4xAlgl6BK/mxT4k98ffY+aZ7jP0ROBdHuJEzayANPh75oYTDhbv7H2CkX8ljlkGUneqqXNKTzp4=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=jRroNHsS4kq/bMO8WRnvcohyyXmbFWhG9LUftxAm+Co=;
+	b=WnKNyyQL5bEzDIVBV1CCGSwCdZnYj/+jk/sGMHwvN+6PODF/kDxmO0cCGyUK8PzYxRC+K21tGyjiXbHKX0L378L9mKZ4en/l8WDXZoKr2Fl+/eIFD5+FNO5PscF84ndDVTOC26v96enXo0dtUeVc45TgH/JrWKAg4XY8KuIQWz4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:6d124627-5011-48c2-8562-8c6dc1d23b2e,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:f2e2ca5b-248b-45cb-bde8-d789f49f4e1e,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 6eef1f685f9711efba0aef63c0775dbf-20240821
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+X-CID-O-INFO: VERSION:1.1.41,REQID:4a2a67ac-8cb6-46b2-af3e-e2428cbc7d8e,IP:0,U
+	RL:25,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:5
+X-CID-META: VersionHash:6dc6a47,CLOUDID:6fe4ca5b-248b-45cb-bde8-d789f49f4e1e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 7e3a168a5f9711efb3adad29d29602c1-20240821
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
 	(envelope-from <friday.yang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 298753173; Wed, 21 Aug 2024 01:29:07 -0700
+	with ESMTP id 448165403; Wed, 21 Aug 2024 01:29:33 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 21 Aug 2024 16:29:03 +0800
+ 15.2.1118.26; Wed, 21 Aug 2024 16:28:55 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 21 Aug 2024 16:29:03 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 21 Aug 2024 16:28:54 +0800
 From: friday.yang <friday.yang@mediatek.com>
 To: Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
@@ -63,9 +63,9 @@ CC: Yong Wu <yong.wu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
 	<linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 3/4] memory: mtk-smi: mt8188: Add SMI clamp function
-Date: Wed, 21 Aug 2024 16:26:51 +0800
-Message-ID: <20240821082845.11792-4-friday.yang@mediatek.com>
+Subject: [PATCH 1/4] dt-bindings: memory: mediatek: Add mt8188 SMI reset control binding
+Date: Wed, 21 Aug 2024 16:26:49 +0800
+Message-ID: <20240821082845.11792-2-friday.yang@mediatek.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20240821082845.11792-1-friday.yang@mediatek.com>
 References: <20240821082845.11792-1-friday.yang@mediatek.com>
@@ -73,21 +73,20 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--0.482200-8.000000
-X-TMASE-MatchedRID: qyOEDd16wS2E9zgVMk3pXnTnOygHVQpO87QrIQgH3y1F/5XzBv3ecmb6
-	PphVtfZggq4Vy91HEnbNnEpSSaVatI+TOcasruGo4pdq9sdj8LVPZ8WbDkfxU1fgf8AdlMAqlwW
-	f7/4SyDuPtZzz7myNFIHWmfha3tGBOFS6mDjLiboXrP0cYcrA27BH/AqZyGLZatnKjjjc99k5tO
-	klY41M4eLzNWBegCW2wgn7iDBesS3CttcwYNipX/m+9AxIOjOGV/HftdBdiQBmannclipmDvTQG
-	tuG7oobdoCwYb5UuHGw2l5oOHJT1I0Udt0diqcc5rOA98Lef1exB7i0mR6aGEKo4D0joJpIoydM
-	lEjRcid9fBQSbWi4PMsNjEULX/uuMIFAPLUElJzAvpLE+mvX8g==
+X-TM-AS-Result: No-10--8.829500-8.000000
+X-TMASE-MatchedRID: R3B6Edw+gpAxFdXyW/P+XcnUT+eskUQPLEOkDuO6MI8km/L/MIL+8pM5
+	rPAxB6p1lTJXKqh1ne1M8qdoCvOVvms/tFw6ZTQWuIwLnB3Aqp2WHGENdT+VP5uc2X2zst+xDrG
+	3Q1PIT6iJh4lfRksIUHAdyhB0oDzs9mia1kFQhdCQ+GmkZu94cv+UEb65dgmQ+5+93dPb6/eAzY
+	IjHF+VJeLzNWBegCW2U9w4XVXDWCYLbigRnpKlKTpcQTtiHDgWQxitkXat1SEypeIkTB5qDJNG+
+	ExD2vU/Pay9KaxQKp7x9BkkBFqz7g==
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--0.482200-8.000000
+X-TMASE-Result: 10--8.829500-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 449FE31E0D714008FC2534D99ACA70D873FDFA9471BBBD59F946CA86430E3BD92000:8
+X-TM-SNTS-SMTP: BBD090C5ECD942BC4A586DC9F9181C138D2C8BE75586C512F0FFFF14353E0B132000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240821_012917_528647_A94B5302 
-X-CRM114-Status: GOOD (  22.92  )
+X-CRM114-CacheID: sfid-20240821_012938_931109_30F12C55 
+X-CRM114-Status: GOOD (  15.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,250 +101,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to avoid handling glitch signal when MTCMOS on/off, SMI need
-clamp and reset operation. Parse power reset settings for LARBs which
-need to reset. Register genpd callback for SMI LARBs and apply reset
-operations in the callback.
+To support SMI clamp and reset operation in genpd callback, add
+SMI LARB reset register offset and mask related information in
+the bindings. Add index in mt8188-resets.h to query the register
+offset and mask in the SMI reset control driver.
 
 Signed-off-by: friday.yang <friday.yang@mediatek.com>
 ---
- drivers/memory/mtk-smi.c | 148 ++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 146 insertions(+), 2 deletions(-)
+ .../bindings/reset/mediatek,smi-reset.yaml    | 46 +++++++++++++++++++
+ include/dt-bindings/reset/mt8188-resets.h     | 11 +++++
+ 2 files changed, 57 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/reset/mediatek,smi-reset.yaml
 
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index fbe52ecc0eca..1ccd62a17b1d 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -10,11 +10,16 @@
- #include <linux/err.h>
- #include <linux/io.h>
- #include <linux/iopoll.h>
-+#include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_platform.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_domain.h>
- #include <linux/pm_runtime.h>
-+#include <linux/regmap.h>
-+#include <linux/reset.h>
-+#include <linux/reset-controller.h>
- #include <linux/soc/mediatek/mtk_sip_svc.h>
- #include <soc/mediatek/smi.h>
- #include <dt-bindings/memory/mt2701-larb-port.h>
-@@ -36,6 +41,13 @@
- #define SMI_DCM				0x300
- #define SMI_DUMMY			0x444
+diff --git a/Documentation/devicetree/bindings/reset/mediatek,smi-reset.yaml b/Documentation/devicetree/bindings/reset/mediatek,smi-reset.yaml
+new file mode 100644
+index 000000000000..66ac121d2396
+--- /dev/null
++++ b/Documentation/devicetree/bindings/reset/mediatek,smi-reset.yaml
+@@ -0,0 +1,46 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++# Copyright (c) 2024 MediaTek Inc.
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/reset/mediatek,smi-reset.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek SMI Reset Controller
++
++maintainers:
++  - Friday Yang <friday.yang@mediatek.com>
++
++description: |
++  This reset controller node is used to perform reset management
++  of SMI larbs on MediaTek platform. It is used to implement various
++  reset functions required when SMI larbs apply clamp operation.
++
++  For list of all valid reset indices see
++    <dt-bindings/reset/mt8188-resets.h> for MT8188.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,smi-reset-mt8188
++
++  "#reset-cells":
++    const: 1
++
++  mediatek,larb-rst-syscon:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: phandle of the SMI larb's reset controller syscon.
++
++required:
++  - compatible
++  - "#reset-cells"
++  - mediatek,larb-rst-syscon
++
++additionalProperties: false
++
++examples:
++  - |
++    imgsys1_dip_top_rst: reset-controller {
++          compatible = "mediatek,smi-reset-mt8188";
++          #reset-cells = <1>;
++          mediatek,larb-rst-syscon = <&imgsys1_dip_top>;
++    };
+diff --git a/include/dt-bindings/reset/mt8188-resets.h b/include/dt-bindings/reset/mt8188-resets.h
+index 5a58c54e7d20..387a4beac688 100644
+--- a/include/dt-bindings/reset/mt8188-resets.h
++++ b/include/dt-bindings/reset/mt8188-resets.h
+@@ -113,4 +113,15 @@
+ #define MT8188_VDO1_RST_HDR_GFX_FE1_DL_ASYNC	52
+ #define MT8188_VDO1_RST_HDR_VDO_BE_DL_ASYNC	53
  
-+#define SMI_COMMON_CLAMP_EN		0x3c0
-+#define SMI_COMMON_CLAMP_EN_SET		0x3c4
-+#define SMI_COMMON_CLAMP_EN_CLR		0x3c8
-+#define SMI_COMMON_CLAMP_MASK(inport)	BIT(inport)
++#define MT8188_SMI_RST_LARB10			0
++#define MT8188_SMI_RST_LARB11A			1
++#define MT8188_SMI_RST_LARB11C			2
++#define MT8188_SMI_RST_LARB12			3
++#define MT8188_SMI_RST_LARB11B			4
++#define MT8188_SMI_RST_LARB15			5
++#define MT8188_SMI_RST_LARB16B			6
++#define MT8188_SMI_RST_LARB17B			7
++#define MT8188_SMI_RST_LARB16A			8
++#define MT8188_SMI_RST_LARB17A			9
 +
-+#define SMI_SUB_COMM_INPORT_NR		(8)
-+
- /* SMI LARB */
- #define SMI_LARB_SLP_CON                0xc
- #define SLP_PROT_EN                     BIT(0)
-@@ -150,6 +162,7 @@ struct mtk_smi {
- };
- 
- struct mtk_smi_larb { /* larb: local arbiter */
-+	struct device			*dev;
- 	struct mtk_smi			smi;
- 	void __iomem			*base;
- 	struct device			*smi_common_dev; /* common or sub-common dev */
-@@ -157,6 +170,10 @@ struct mtk_smi_larb { /* larb: local arbiter */
- 	int				larbid;
- 	u32				*mmu;
- 	unsigned char			*bank;
-+	struct regmap			*sub_comm_syscon;
-+	int				sub_comm_inport;
-+	struct notifier_block		nb;
-+	struct reset_control		*rst_con;
- };
- 
- static int
-@@ -472,6 +489,60 @@ static void mtk_smi_larb_sleep_ctrl_disable(struct mtk_smi_larb *larb)
- 	writel_relaxed(0, larb->base + SMI_LARB_SLP_CON);
- }
- 
-+static int mtk_smi_larb_clamp_protect_enable(struct device *dev)
-+{
-+	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
-+	int ret;
-+
-+	/* sub_comm_syscon could be NULL if larb directly linked to SMI common */
-+	if (!larb->sub_comm_syscon)
-+		return -EINVAL;
-+
-+	ret = regmap_write(larb->sub_comm_syscon, SMI_COMMON_CLAMP_EN_SET,
-+			   SMI_COMMON_CLAMP_MASK(larb->sub_comm_inport));
-+	if (ret)
-+		dev_err(dev, "Unable to enable clamp, inport %d, ret %d\n",
-+			larb->sub_comm_inport, ret);
-+
-+	return ret;
-+}
-+
-+static int mtk_smi_larb_clamp_protect_disble(struct device *dev)
-+{
-+	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
-+	int ret;
-+
-+	/* sub_comm_syscon could be NULL if larb directly linked to SMI common */
-+	if (!larb->sub_comm_syscon)
-+		return -EINVAL;
-+
-+	ret = regmap_write(larb->sub_comm_syscon, SMI_COMMON_CLAMP_EN_CLR,
-+			   SMI_COMMON_CLAMP_MASK(larb->sub_comm_inport));
-+	if (ret)
-+		dev_err(dev, "Unable to disable clamp, inport %d, ret %d\n",
-+			larb->sub_comm_inport, ret);
-+
-+	return ret;
-+}
-+
-+static int mtk_smi_genpd_callback(struct notifier_block *nb,
-+				  unsigned long flags, void *data)
-+{
-+	struct mtk_smi_larb *larb = container_of(nb, struct mtk_smi_larb, nb);
-+	struct device *dev = larb->dev;
-+
-+	if (flags == GENPD_NOTIFY_PRE_ON || flags == GENPD_NOTIFY_PRE_OFF) {
-+		/* disable related SMI sub-common port */
-+		mtk_smi_larb_clamp_protect_enable(dev);
-+	} else if (flags == GENPD_NOTIFY_ON) {
-+		/* enable related SMI sub-common port */
-+		reset_control_reset(larb->rst_con);
-+		mtk_smi_larb_clamp_protect_disble(dev);
-+	}
-+
-+	return NOTIFY_OK;
-+}
-+
- static int mtk_smi_device_link_common(struct device *dev, struct device **com_dev)
- {
- 	struct platform_device *smi_com_pdev;
-@@ -528,6 +599,59 @@ static int mtk_smi_dts_clk_init(struct device *dev, struct mtk_smi *smi,
- 	return ret;
- }
- 
-+static int mtk_smi_larb_parse_clamp_info(struct mtk_smi_larb *larb)
-+{
-+	struct device *dev = larb->dev;
-+	struct device_node *smi_node;
-+	int ret;
-+
-+	/* smi_node could be NULL if larb directly linked to SMI common */
-+	smi_node = of_parse_phandle(dev->of_node, "mediatek,smi-sub-comm", 0);
-+	if (!smi_node)
-+		return 0;
-+
-+	larb->sub_comm_syscon = device_node_to_regmap(smi_node);
-+	of_node_put(smi_node);
-+	ret = of_property_read_u32(dev->of_node,
-+				   "mediatek,smi-sub-comm-in-portid",
-+				   &larb->sub_comm_inport);
-+
-+	if (IS_ERR(larb->sub_comm_syscon) || ret ||
-+	    larb->sub_comm_inport >= SMI_SUB_COMM_INPORT_NR) {
-+		larb->sub_comm_syscon = NULL;
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_smi_larb_parse_reset_info(struct mtk_smi_larb *larb)
-+{
-+	struct device_node *reset_node;
-+	struct device *dev = larb->dev;
-+	int ret;
-+
-+	/* only larb with "resets" need to get reset setting */
-+	reset_node = of_parse_phandle(dev->of_node, "resets", 0);
-+	if (!reset_node)
-+		return 0;
-+	of_node_put(reset_node);
-+
-+	larb->rst_con = devm_reset_control_get(dev, "larb_rst");
-+	if (IS_ERR(larb->rst_con))
-+		return dev_err_probe(dev, PTR_ERR(larb->rst_con),
-+				     "cannot get larb reset controller\n");
-+
-+	larb->nb.notifier_call = mtk_smi_genpd_callback;
-+	ret = dev_pm_genpd_add_notifier(dev, &larb->nb);
-+	if (ret) {
-+		dev_err(dev, "Failed to add genpd callback %d\n", ret);
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
- static int mtk_smi_larb_probe(struct platform_device *pdev)
- {
- 	struct mtk_smi_larb *larb;
-@@ -538,6 +662,7 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
- 	if (!larb)
- 		return -ENOMEM;
- 
-+	larb->dev = dev;
- 	larb->larb_gen = of_device_get_match_data(dev);
- 	larb->base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(larb->base))
-@@ -554,15 +679,29 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
- 	if (ret < 0)
- 		return ret;
- 
--	pm_runtime_enable(dev);
-+	/* find sub common to clamp larb for ISP software reset */
-+	ret = mtk_smi_larb_parse_clamp_info(larb);
-+	if (ret) {
-+		dev_err(dev, "Failed to get clamp setting for larb\n");
-+		goto err_pm_disable;
-+	}
-+
-+	ret = mtk_smi_larb_parse_reset_info(larb);
-+	if (ret) {
-+		dev_err(dev, "Failed to get power setting for larb\n");
-+		goto err_pm_disable;
-+	}
-+
- 	platform_set_drvdata(pdev, larb);
- 	ret = component_add(dev, &mtk_smi_larb_component_ops);
- 	if (ret)
- 		goto err_pm_disable;
-+
-+	pm_runtime_enable(dev);
-+
- 	return 0;
- 
- err_pm_disable:
--	pm_runtime_disable(dev);
- 	device_link_remove(dev, larb->smi_common_dev);
- 	return ret;
- }
-@@ -686,6 +825,10 @@ static const struct mtk_smi_common_plat mtk_smi_common_mt8188_vpp = {
- 	.init     = mtk_smi_common_mt8195_init,
- };
- 
-+static const struct mtk_smi_common_plat mtk_smi_sub_common_mt8188 = {
-+	.type     = MTK_SMI_GEN2_SUB_COMM,
-+};
-+
- static const struct mtk_smi_common_plat mtk_smi_common_mt8192 = {
- 	.type     = MTK_SMI_GEN2,
- 	.has_gals = true,
-@@ -729,6 +872,7 @@ static const struct of_device_id mtk_smi_common_of_ids[] = {
- 	{.compatible = "mediatek,mt8186-smi-common", .data = &mtk_smi_common_mt8186},
- 	{.compatible = "mediatek,mt8188-smi-common-vdo", .data = &mtk_smi_common_mt8188_vdo},
- 	{.compatible = "mediatek,mt8188-smi-common-vpp", .data = &mtk_smi_common_mt8188_vpp},
-+	{.compatible = "mediatek,mt8188-smi-sub-common", .data = &mtk_smi_sub_common_mt8188},
- 	{.compatible = "mediatek,mt8192-smi-common", .data = &mtk_smi_common_mt8192},
- 	{.compatible = "mediatek,mt8195-smi-common-vdo", .data = &mtk_smi_common_mt8195_vdo},
- 	{.compatible = "mediatek,mt8195-smi-common-vpp", .data = &mtk_smi_common_mt8195_vpp},
+ #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8188 */
 -- 
 2.46.0
 
