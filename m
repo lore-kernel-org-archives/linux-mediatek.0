@@ -4,114 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F415C52D6F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Aug 2024 06:49:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 966B3C531DC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Aug 2024 07:31:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZAoJi0O6imfYfWOufMiB/4ojWIcqkFKmjoRErHnCiFQ=; b=pqYDWgpa9WGuFerrjwNXuK0ph5
-	dRd7bJWsFxsEnZr/XupJfYET7h0R2XVo7EnQQt7LwVlvay6BF3Apo2EJJO/LG93+7Ly/N2p4fajid
-	jFs7OCQAr/bnhEw2WyMSnMhYHL48iURtJBqNoijv0hju8TL/8hfi3gL5GV1q7XOepiNRCAz+zOUh7
-	e5pPyIQT4b4a9nWA8vpQZvyckeL6/S/fG4HZSDTT4c7pkg9gpFwE+W742EvfcDAVI3bz7XvAHXUqy
-	9ayHm+Uu0e9/hixJIr6bDdiq5S46Mi+JrdXzga0Jwtc3VwJRK5Jlx/+JkgZrEPELooyNOZFHu6+Gj
-	wCUic1Pg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=V+cGqTEzljDAxYgLfuTlsCaAW9mimr8aq/bikzjBwWs=; b=u4+kOl/+afvjsMoH96nQBdG+HC
+	c8IkcC2m/IPgZcTorncaqCKdCf5wrHDRZMJd/ZFF1zuTBcu2Wl0MavGQacytwDgie9m5a5fO5BPTd
+	qyAhrgDWqSgiV3vMB++WrrEPTuOflI8R4YENyRpVNG5iORqTWyYLE+Fv4uHfRsS2Mvl5PMNDdwKAl
+	iFtUmlXw+aC1OVieMbpPC2uD+IOMGTt9Ho6fY5ufLVViAhAnSwyzQbURC8CvkL7OqFShi7sLnMz7N
+	BQFLQ/KU6RaNqqNp1hsSDeVlnWtOb1QGmwUvLmHbuqvpXhl5B7L9gpHZJDnW8TI6VgxIPlZ523kvS
+	WqJ66OiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgfA3-00000007mHP-2Kkh;
-	Wed, 21 Aug 2024 06:49:39 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sgfos-00000007vLQ-07ES;
+	Wed, 21 Aug 2024 07:31:50 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sgf9I-00000007m4G-33bj;
-	Wed, 21 Aug 2024 06:48:54 +0000
+	id 1sgfo9-00000007vDS-2XUK;
+	Wed, 21 Aug 2024 07:31:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E0A4B60F84;
-	Wed, 21 Aug 2024 06:48:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C5CEC4AF0C;
-	Wed, 21 Aug 2024 06:48:44 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 23EAEA410DE;
+	Wed, 21 Aug 2024 07:30:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF817C32786;
+	Wed, 21 Aug 2024 07:31:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724222931;
-	bh=0/KRyANKUF8eJpm9kpyavQgXgai9aYL+fCertJIqr7A=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Kv7Cd3JKq6c1V2apdJ0WfzxUgnZumresEw8/aSUIg+xFI93gQXKxOZ9S+DJEq43N7
-	 jaVwPmoJRg8XfUCbPcJl92NCdBFQgqqKbPOEiL8d4MUJmT/XnNIs5urKXi6YHOgra9
-	 fXbjt7CsadCL/9eRHTNjp11lP36meTb6dqiker5J0QGuj+vg5vbdPVGbpTx2GiB1ed
-	 G4EU8GN/4/s3h9TF5AdUXSQaPUMHrAII3VFGmxpVhmHufegOsfue/c8uSsjq6wui4y
-	 f1t/KJ+j5SsaYmCROzj9rsSiGvXE8solwfXJkHhVKh3ZU6bth/vRh/jKfw5YjT6n2Y
-	 HQELQN2gc8bqA==
-Message-ID: <c8ed627e-42fd-4cd9-b9e4-a97177ef3ef0@kernel.org>
-Date: Wed, 21 Aug 2024 08:48:41 +0200
+	s=k20201202; t=1724225464;
+	bh=e7dYysvJxqrEQeB1fTSrqO1cw5Vz4LQ15wNULOJH7fE=;
+	h=From:Date:Subject:To:Cc:From;
+	b=EAXrAUoQ78LnnKL4hp34i4yntiyRZRR/d/q18wj5Eu/WOGDwUGyMgMYyuIvOILAAQ
+	 Tkyjx0nHrMj6wm+ekLS9KRpNGbQRlF3iRdwjaxq2GwMMo0bD7MHcQb/1h4LhJdmBWG
+	 L6d0jo7DWKhKnewDuujJGZmmR2qjC8OiH2Cs4FYGdgyF8NVS3g4zpzQpmv+4TsrlxX
+	 gfw/SdhoSEeFs7KwV9R0njuF9SVfMOUGglv16iDlpjUh2cXCAB0l2RwitlaZ6BFZSy
+	 9q9sH1Hv2WHAwaCtiklX9nUz2oxr6N5FyU4hyv+9PUCf5levsuTH1Gsp+UJvBTuPp2
+	 PHafTF2b/QxAA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Wed, 21 Aug 2024 09:30:14 +0200
+Subject: [PATCH net-next v2] net: airoha: configure hw mac address
+ according to the port id
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] dt-bindings: display: mediatek: dpi: Add power
- domains
-To: Rohit Agarwal <rohiagar@chromium.org>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
- daniel@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org,
- tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, ck.hu@mediatek.com,
- jitao.shi@mediatek.com, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20240820080659.2136906-1-rohiagar@chromium.org>
- <20240820080659.2136906-2-rohiagar@chromium.org>
- <b5wtwpkwgg3tbwya6zllmymaaf2qvnyfbspkynr2ruzncej2ql@qloslxfinvos>
- <1899ea6f-b734-4748-aa00-d7049d553994@chromium.org>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <1899ea6f-b734-4748-aa00-d7049d553994@chromium.org>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+Message-Id: <20240821-airoha-eth-wan-mac-addr-v2-1-8706d0cd6cd5@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAIWXxWYC/4WOwQ6CMBBEf4X07Jq2IBRP/ofxsNAtNCrVBVFj+
+ HcLHDx6fJPMm/mInthTL/bJRzCNvvehi6A3iahb7BoCbyMLLXUmjSoBPYcWgYYWntjBFWtAaxl
+ klqeVrqwpEUVs35icfy3m42llpvsjDgxr+PPHudleyB24wJCDUlDdHGCaleRqaawz+1GLWdP6f
+ gj8Xv6OavH8vTYqUEDGFrVKq1QZfTgTd3TZBm7EaZqmL/MzGjUGAQAA
+To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
+ Mark Lee <Mark-MC.Lee@mediatek.com>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ lorenzo.bianconi83@gmail.com, Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240820_234852_909600_FB82E090 
-X-CRM114-Status: UNSURE (   9.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240821_003105_803832_05770E60 
+X-CRM114-Status: GOOD (  12.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,21 +80,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20/08/2024 14:18, Rohit Agarwal wrote:
-> 
-> On 20/08/24 4:40 PM, Krzysztof Kozlowski wrote:
->> On Tue, Aug 20, 2024 at 08:06:57AM +0000, Rohit Agarwal wrote:
->>> Add power domain binding to the mediatek DPI controller.
->> Why? Who needs it? Why all devices suddenly have it (IOW, why is it not
->> constrained anyhow per variant)?
->>
-> Ok, my intent was to introduce only for this particular variant.
-> Let me constrain it to this particular compatible.
+GDM1 port on EN7581 SoC is connected to the lan dsa switch.
+GDM{2,3,4} can be used as wan port connected to an external
+phy module. Configure hw mac address registers according to the port id.
 
-Then add property in top-level properties and in if:then: disallow it
-for older devices.
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+Changes in v2:
+- improve code readability adding reg offset for {LAN,WAN}_LMIN and
+  {LAN,WAN}_LMAX regs
+- fix signed-off-by tag
+- Link to v1: https://lore.kernel.org/r/20240819-airoha-eth-wan-mac-addr-v1-1-e8d7c13b3182@kernel.org
+---
+ drivers/net/ethernet/mediatek/airoha_eth.c | 32 +++++++++++++++++++++---------
+ 1 file changed, 23 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/net/ethernet/mediatek/airoha_eth.c b/drivers/net/ethernet/mediatek/airoha_eth.c
+index 1fb46db0c1e9..0c012efca3b0 100644
+--- a/drivers/net/ethernet/mediatek/airoha_eth.c
++++ b/drivers/net/ethernet/mediatek/airoha_eth.c
+@@ -67,9 +67,11 @@
+ #define FE_RST_GDM3_MBI_ARB_MASK	BIT(2)
+ #define FE_RST_CORE_MASK		BIT(0)
+ 
++#define REG_FE_WAN_MAC_H		0x0030
+ #define REG_FE_LAN_MAC_H		0x0040
+-#define REG_FE_LAN_MAC_LMIN		0x0044
+-#define REG_FE_LAN_MAC_LMAX		0x0048
++
++#define REG_FE_MAC_LMIN(_n)		((_n) + 0x04)
++#define REG_FE_MAC_LMAX(_n)		((_n) + 0x08)
+ 
+ #define REG_FE_CDM1_OQ_MAP0		0x0050
+ #define REG_FE_CDM1_OQ_MAP1		0x0054
+@@ -900,16 +902,28 @@ static void airoha_qdma_irq_disable(struct airoha_qdma *qdma, int index,
+ 	airoha_qdma_set_irqmask(qdma, index, mask, 0);
+ }
+ 
+-static void airoha_set_macaddr(struct airoha_eth *eth, const u8 *addr)
++static bool airhoa_is_lan_gdm_port(struct airoha_gdm_port *port)
+ {
+-	u32 val;
++	/* GDM1 port on EN7581 SoC is connected to the lan dsa switch.
++	 * GDM{2,3,4} can be used as wan port connected to an external
++	 * phy module.
++	 */
++	return port->id == 1;
++}
++
++static void airoha_set_macaddr(struct airoha_gdm_port *port, const u8 *addr)
++{
++	struct airoha_eth *eth = port->qdma->eth;
++	u32 val, reg;
+ 
++	reg = airhoa_is_lan_gdm_port(port) ? REG_FE_LAN_MAC_H
++					   : REG_FE_WAN_MAC_H;
+ 	val = (addr[0] << 16) | (addr[1] << 8) | addr[2];
+-	airoha_fe_wr(eth, REG_FE_LAN_MAC_H, val);
++	airoha_fe_wr(eth, reg, val);
+ 
+ 	val = (addr[3] << 16) | (addr[4] << 8) | addr[5];
+-	airoha_fe_wr(eth, REG_FE_LAN_MAC_LMIN, val);
+-	airoha_fe_wr(eth, REG_FE_LAN_MAC_LMAX, val);
++	airoha_fe_wr(eth, REG_FE_MAC_LMIN(reg), val);
++	airoha_fe_wr(eth, REG_FE_MAC_LMAX(reg), val);
+ }
+ 
+ static void airoha_set_gdm_port_fwd_cfg(struct airoha_eth *eth, u32 addr,
+@@ -2340,7 +2354,7 @@ static int airoha_dev_set_macaddr(struct net_device *dev, void *p)
+ 	if (err)
+ 		return err;
+ 
+-	airoha_set_macaddr(port->qdma->eth, dev->dev_addr);
++	airoha_set_macaddr(port, dev->dev_addr);
+ 
+ 	return 0;
+ }
+@@ -2349,7 +2363,7 @@ static int airoha_dev_init(struct net_device *dev)
+ {
+ 	struct airoha_gdm_port *port = netdev_priv(dev);
+ 
+-	airoha_set_macaddr(port->qdma->eth, dev->dev_addr);
++	airoha_set_macaddr(port, dev->dev_addr);
+ 
+ 	return 0;
+ }
+
+---
+base-commit: a99ef548bba01435f19137cf1670861be1c1ee4b
+change-id: 20240819-airoha-eth-wan-mac-addr-0463b2bd89aa
+prerequisite-change-id: 20240705-for-6-11-bpf-a349efc08df8:v2
 
 Best regards,
-Krzysztof
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
