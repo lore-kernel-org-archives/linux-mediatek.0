@@ -4,59 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04E25C52D7C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Aug 2024 09:30:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F657C52D6F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Aug 2024 09:31:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0QFsj4JnR81VfLbGeHMbjSUQN35DQWhO6hNQf3vHJvk=; b=GOnuIPcmWaKH2mB+MomeIAy8De
-	9CSpHn4lAG9BpRWI2KexWb4A2ujhTVhj+v1nCHDC05NLjkJM1Srkb06b13gkkHf51tRqhJej6wyND
-	MksRMWUPmKy9n82RGM+MxTTx8A13t7I4c4JIktxy6mOgAC7/9Lx2OI0RqPXYztpeK8rVsdHK168aG
-	qy7tIWcGIoXjp5SM55Lw24lRVuPH30wiOMQTI3eI+QlN0Fc9AEVaKqltqQkysxmyU5Y+z+X5OUcz0
-	BM57jr8HYhpmX46mEqHly2BRBGcL8kcLWfg1nECN5JtVnkauK7/V4Q/eoWvGam+zjGKWCL9AqoQZQ
-	JexD+gDQ==;
+	bh=wovJjEd7rsQwFkKVcVCibJ3p3R7MTOff+btYp0JugBg=; b=1gZGOY0YSmGWx2OEFoYAoi6B1G
+	ODo0Ro8kI1skIsS9oGY+XycKLj8foAXDRAhgRrcuP2xD/4EVYGutaGjxOfq8swCTqYWy8ae4m9QGI
+	I2mSSOZJVrOnlGUpjGrXwpamIWA4k3ne3AmcmUkeg5Pssim5e686akZQAjbSLnCZK0fWjMOIJULgH
+	xIBTT1f52Pc7KTuLt43++vppEjwJ1qCv9HlwYN+LjUc6RHzuR2+KfNi/tmdsxzHRiBGfPpbhW2OAL
+	5gTl38Gw37KRGap4AcN5ettuHHrnTVHU09WImizrNtolPovY7wIkwlRlg+VBh0zMLcXb5D86QeZ2l
+	FjATiKiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sghfu-00000008Fgn-2KJp;
-	Wed, 21 Aug 2024 09:30:42 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1sghgw-00000008G1g-0YCx;
+	Wed, 21 Aug 2024 09:31:46 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sghdm-00000008F84-0acs;
-	Wed, 21 Aug 2024 09:28:31 +0000
+	id 1sghf9-00000008FRY-3aY2;
+	Wed, 21 Aug 2024 09:29:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id C8E1CCE0E20;
-	Wed, 21 Aug 2024 09:28:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DDE8AC32782;
-	Wed, 21 Aug 2024 09:28:20 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTP id 0DA83CE0DFF;
+	Wed, 21 Aug 2024 09:29:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1126BC32782;
+	Wed, 21 Aug 2024 09:29:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724232506;
-	bh=ItVGHob9yaezB9AMwEPoRTuUCqFh3psdSDoQ8c5xl8c=;
+	s=k20201202; t=1724232592;
+	bh=57xa6s32Ejckrcu1ZZVs/ds7fUKs3ZrLwFJ2FrfXvls=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Ah8ubr/KkxgT5x/UknGoDrfE8Q/2nshNR61RNCmxHkHC5w9vnxA9QPNAd4w47x+cd
-	 f1Q2SvG89keJ9Ofm/2s0mcK2aDGm+5rs3uj8cE0HK03nCkawHgvgBAEypbh8viFOCP
-	 GvFt3b/+G7nN9RhYdT7oPNu2aGjJgGlCOHk7pw+eqXOxjBkMENjpbCziRr7UkOjMZK
-	 yesCs0F+RT775yxwqVeGDlZATTPeseyzEsYAMnG0wst6Du8PS73dQ4PlXIt5jhpYKa
-	 lA2L3hBMgZvdAVjFfHzEOClQ9z7YWrEnUhJMUwlceYWzWCZnzXFO9peKCAN5W9EkEf
-	 hCaYAFlKmO1Jg==
-Message-ID: <1160a651-b758-4aa2-ab13-599df8518914@kernel.org>
-Date: Wed, 21 Aug 2024 11:28:17 +0200
+	b=orW9uc8fl36zfMBG8j0teAt8NbpEKaG0RmFlThTOR6XYt20Ar8Sv7rgZu0q1ijTVy
+	 Oje0PirkTYTWeVHhoGUUj9YLbiR7nSyvpdeVc6YbYNxZEhcQ3e65YEmDPGRANEiFH0
+	 I4GPMvmbAMnpZx01r3+zbbpqvTgy4P0NhIZrHdIKpMUAIK1edjCR1e3MwCOUuyWQWi
+	 o08ujnfvkCjiJz9vM0yde/rYppwH300gV5su95dbg+90m1bR1N0Yk7fYGZg7UrGbrU
+	 eeno57rr6WKyLBJvz/qx57ByVAb0tV6a8eDhBmXSFWXTWJadgBx2XClm/tuWp5ax84
+	 +cw/tBdu4pC/A==
+Message-ID: <415a27c7-dfdf-4cc5-9aaa-1681dd32ddcb@kernel.org>
+Date: Wed, 21 Aug 2024 11:29:42 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/4] dt-bindings: memory: mediatek: Add mt8188 SMI reset
- control binding
-To: "friday.yang" <friday.yang@mediatek.com>, Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Yong Wu <yong.wu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20240821082845.11792-1-friday.yang@mediatek.com>
- <20240821082845.11792-2-friday.yang@mediatek.com>
+Subject: Re: [PATCH v2 1/3] dt-bindings: display: mediatek: dpi: Add power
+ domains
+To: Rohit Agarwal <rohiagar@chromium.org>, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ ck.hu@mediatek.com, jitao.shi@mediatek.com
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20240821092659.1226250-1-rohiagar@chromium.org>
+ <20240821092659.1226250-2-rohiagar@chromium.org>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -102,13 +103,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240821082845.11792-2-friday.yang@mediatek.com>
+In-Reply-To: <20240821092659.1226250-2-rohiagar@chromium.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240821_022830_605200_BE9B9384 
-X-CRM114-Status: UNSURE (   7.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240821_022956_278515_D4FAE78F 
+X-CRM114-Status: GOOD (  13.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,21 +123,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 21/08/2024 10:26, friday.yang wrote:
-> To support SMI clamp and reset operation in genpd callback, add
-> SMI LARB reset register offset and mask related information in
-> the bindings. Add index in mt8188-resets.h to query the register
-> offset and mask in the SMI reset control driver.
+On 21/08/2024 11:26, Rohit Agarwal wrote:
+> Add power domain binding to the mediatek DPI controller
+> for MT8186.
+> Also, add power domain binding for other SoCs like
+> MT6795 and MT8173 that already had power domain property.
 > 
-> Signed-off-by: friday.yang <friday.yang@mediatek.com>
+> Signed-off-by: Rohit Agarwal <rohiagar@chromium.org>
 > ---
->  .../bindings/reset/mediatek,smi-reset.yaml    | 46 +++++++++++++++++++
->  include/dt-bindings/reset/mt8188-resets.h     | 11 +++++
+>  .../display/mediatek/mediatek,dpi.yaml        | 19 +++++++++++++++++++
+>  1 file changed, 19 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> index 5ca7679d5427..864b781fdcea 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> @@ -62,6 +62,8 @@ properties:
+>        - const: default
+>        - const: sleep
+>  
+> +  power-domains: true
 
-Also, your patches did not reach DT patchwork, so something is odd.
-Maybe they got flagged as spam? Please investigate with your IT
-department. In case it keeps missing patchwork, they won't be tested by
-automation and I will generally ignore them (not apply). :(
+Missing maxItems. I don't get why did you change this...
+
+> +
+>    port:
+>      $ref: /schemas/graph.yaml#/properties/port
+>      description:
+> @@ -76,6 +78,23 @@ required:
+>    - clock-names
+>    - port
+>  
+> +allOf:
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - mediatek,mt6795-dpi
+> +              - mediatek,mt8173-dpi
+> +              - mediatek,mt8186-dpi
+> +    then:
+> +      properties:
+> +        power-domains:
+> +          maxItems: 1
+
+This part can be dropped. Just disallow it for other devices.
+
 
 Best regards,
 Krzysztof
