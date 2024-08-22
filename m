@@ -4,94 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0823C5321D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Aug 2024 09:27:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90F1EC5320E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Aug 2024 09:43:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b0ZXsCUO90vlD45ZJO1I+QT/1oidv8iaRsna2l2Dubk=; b=KvcAWzeo8TdbRbB5hFfrS3mmSI
-	vjUy5Pycm8t36iSuYp5MTzSuHo90cZb9CUYfTUxtVni3iG5MRFiTlpEu7fg3e6ZKg0MzupBlE7KZy
-	GtvI6LIVWPBo52TNqfKATq7RWZHQEgO+4RBmoa/K/xSba+XWk9KJuJd2HLfBCHLS68RHII385MrNM
-	EheryGDtOPvivCVuTBf5dQa9sp7RGAmAYYg/oCCUl5Z0aqOlDEmRQ4eOU3ZKIv5Z2DdBfzJdnj0SX
-	TZy/aeyVP+ueT2BZeQjf5tIhextJQi8DnaToEglzPR0EWyX9X6OBnUUX4fawIRIaoe4ZiiF/2xt1E
-	U1AEYQLg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=6bTHirNf9CFD/Kz2CCOlz6K7mshiDJucIS06ffScgr4=; b=eZqF7hQXBA0BHe
+	A03VRZvbWqH2G+c4WO+onSumfmEQh9WaETY2vdkiNPAEbY//MJMfuv8HVNCUfeuJBjcjoXAHTdOqf
+	rOfTfPefRg+o7M0DULEWtjmzrn43qoHO8mTVhdtAc6ANDErGvCYajggRo9PnQXUwDKFxYBM3u8pvi
+	FJ8W6noDSyDT9ZcK87eV3j5ccmS7MYlTEUQim2dzRDMMb3r20ya6NfZVTaKIYh1A+Ceb/IgumASfI
+	PS4XFYJKGZ+JogJ35QRo7bs+EvxgV10MZWM3ASJtM07WaWLT88P/X4A6LePD5AaXH8B2dPrM5hOKS
+	oLo57K/eWYKNOlgwdTIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sh46E-0000000CEE7-2feQ;
-	Thu, 22 Aug 2024 09:27:22 +0000
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+	id 1sh4Ld-0000000CIKO-0RWR;
+	Thu, 22 Aug 2024 09:43:17 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sh401-0000000CCM2-3BLQ
-	for linux-mediatek@lists.infradead.org;
-	Thu, 22 Aug 2024 09:20:59 +0000
-Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-714226888dfso520038b3a.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 22 Aug 2024 02:20:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1724318457; x=1724923257; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=b0ZXsCUO90vlD45ZJO1I+QT/1oidv8iaRsna2l2Dubk=;
-        b=RdIvhLFqJPF1SPTkNNAyUJzNVHa29xpvQSbDG/4PaagEnfgRHrJmRAthiCiofr1SlK
-         +MyL8siS7/MEgrkYwxAQTcMEzqWtrNMVLtj0qZKSTRsTjsoH1X6u3TtCxBeGjtUyXjfK
-         5ith9xfFSHm6smsccHeafrIyWVA1zDAvOMBFA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724318457; x=1724923257;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=b0ZXsCUO90vlD45ZJO1I+QT/1oidv8iaRsna2l2Dubk=;
-        b=SsmfpXJJwm6H83SAYd0kaG3CaO75DPjjxhSzab97nXrvOvLOhU1cP38l4xu/bCvUqa
-         KLgunQFXdoBVplEDVHubfrBubeN1ANhV7dggOuyjuZi1oG73IxmgqzqM0bdjEEdbuirS
-         TBTY73LASiqm8rFWiYaJuX/9IqCATmvkLrgchcy5oZIYjkPiAhtBs0lnMUxY+U1is6uu
-         2fLe1v28nnp9OyBIbZc9Cc3xhEbBlQ0h8nGjs0Y8IqHPL2ycn/gZs0zMwkNSVMKS0ts2
-         riqqTlKQQHjuANSd2Ou7DrAGQoj98Z7I/hh0wSdH7m5zxRh7JhC9m00Aqi/cH0iPpqKO
-         LLEQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXDONHJ9yDs4ZHvukOCpPdJUxjDuD0Wctb2AuvZ4qKUIwGA5TpUYycclCWMnP/RKDSzn/taTvXM8NXGBGv5eQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz4Y3MhFKWEhRuYvIs1UnqspSnGLlNEQ7YnigiQtbNiFiAq9itx
-	GsFg3b8FWTbu+mUP/fZLZFwRYkwk+zsFRiDeCAcSAmHmARWO1+oMI086N12udQ==
-X-Google-Smtp-Source: AGHT+IGopbbojtmE4fS/IUOg0cpO0JEZHF2VnB3L6eDK3aI3tJHchVj0lRN1Md7MFI5PPKTGcEf3AQ==
-X-Received: by 2002:a05:6a20:2d26:b0:1c6:fb07:381e with SMTP id adf61e73a8af0-1cad8180a2amr6660606637.44.1724318456919;
-        Thu, 22 Aug 2024 02:20:56 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:8470:6a67:8877:ce2c])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71434335e69sm951398b3a.194.2024.08.22.02.20.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Aug 2024 02:20:56 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Rob Herring <robh@kernel.org>,
-	Saravana Kannan <saravanak@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wolfram Sang <wsa@kernel.org>,
-	Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	Mark Brown <broonie@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	chrome-platform@lists.linux.dev,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Douglas Anderson <dianders@chromium.org>,
-	Johan Hovold <johan@kernel.org>,
-	Jiri Kosina <jikos@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	linux-i2c@vger.kernel.org
-Subject: [PATCH v5 10/10] arm64: dts: mediatek: mt8173-elm-hana: Mark touchscreens and trackpads as fail
-Date: Thu, 22 Aug 2024 17:20:03 +0800
-Message-ID: <20240822092006.3134096-11-wenst@chromium.org>
-X-Mailer: git-send-email 2.46.0.184.g6999bdac58-goog
-In-Reply-To: <20240822092006.3134096-1-wenst@chromium.org>
-References: <20240822092006.3134096-1-wenst@chromium.org>
+	id 1sh4Jv-0000000CHk4-04Cz;
+	Thu, 22 Aug 2024 09:41:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id B7C84A400F2;
+	Thu, 22 Aug 2024 09:41:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A7884C4AF0C;
+	Thu, 22 Aug 2024 09:41:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1724319689;
+	bh=SKjq0zl1AD3TiA8BotE+oEROoOlk7o+58wKeW4muaVs=;
+	h=From:Subject:Date:To:Cc:From;
+	b=O3RqG3FiLdw4loGbbg6kIvjj+HdMDMbo1sO+h9qRYZmvP5TM0M76yFWQ+IU0/30Uz
+	 qTGzMmA+ivNjje949iZWk62Grxw7+JZd4mZr3f8cq1bmulxpl5Je4cn+GFI3Kxqw/t
+	 SugcmBQUVi7Fy68BFEibo6PX2LCZG65F626BL7W1up9DX2DlmQtTZQnfiKvQ+P38pm
+	 G8HcHYEdaeEnhVKNKbFZMVXASv9DT+ng0eUzy+C7Wchl1O1hxFbFB3mp3QFZX60DVl
+	 XtnQvf4Z87DhPsbucHEZczveADHhzXh8AzfwpxCc0iXlO5aQ4mEMAJUUzLuyT2TQFM
+	 RS4RA9UotANcQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH v2 0/2] Add pinctrl support to EN7581 SoC
+Date: Thu, 22 Aug 2024 11:40:51 +0200
+Message-Id: <20240822-en7581-pinctrl-v2-0-ba1559173a7f@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAKMHx2YC/0WPwW7DIBBEfyXiXCxYLwZy6n9UORi8OKguuGs3i
+ hLl30vTSj2+w8y8uYuNONMmjoe7YLrkLdfSAF4OIp7HMpPMU2MBClA57SQVa5yWay5x50XqkDQ
+ obTCQEi20MqV8fRa+nRonrh9yPzONzxo1md6Sc2FAhzZEJPTWDAHQB6A0xYTOBw+dttD3HhCxm
+ /PeLZWp3OrrO3Ghpas8/40xfX416f138d+5XfgxtsrIVFkOUmsZ1iTHHj2lqNyU3PEC4vR4fAM
+ 0H0o4BAEAAA==
+To: Lorenzo Bianconi <lorenzo@kernel.org>, 
+ Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ upstream@airoha.com, benjamin.larsson@genexis.eu, ansuelsmth@gmail.com
+X-Mailer: b4 0.14.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240822_022057_935213_D774B311 
-X-CRM114-Status: GOOD (  14.82  )
+X-CRM114-CacheID: sfid-20240822_024131_166708_6EBF94C3 
+X-CRM114-Status: GOOD (  10.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,93 +80,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Instead of having them all available, mark them all as "fail-needs-probe"
-and have the implementation try to probe which one is present.
+Introduce pinctrl driver for EN7581 SoC. Current EN7581 pinctrl driver
+supports the following functionalities:
+- pin multiplexing
+- pin pull-up, pull-down, open-drain, current strength,
+  {input,output}_enable, output_{low,high}
+- gpio controller
+- irq controller
 
-Also remove the shared resource workaround by moving the pinctrl entry
-for the trackpad interrupt line back into the individual trackpad nodes.
-
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
-Changes since v4:
-- Rebased
+Changes in v2:
+- Fix compilation errors
+- Collapse some register mappings for gpio and irq controllers
+- update dt-bindings according to new register mapping
+- fix some dt-bindings errors
+- Link to v1: https://lore.kernel.org/all/cover.1723392444.git.lorenzo@kernel.org/
 
-Changes since v3:
-- Also remove second source workaround, i.e. move the interrupt line
-  pinctrl entry from the i2c node back to the components.
-
-Changes since v2:
-- Drop class from status
 ---
- arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi | 13 +++++++++++++
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi      |  4 ++--
- 2 files changed, 15 insertions(+), 2 deletions(-)
+Lorenzo Bianconi (2):
+      dt-bindings: pinctrl: airoha: Add EN7581 pinctrl controller
+      pinctrl: airoha: Add support for EN7581 SoC
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
-index 8d1cbc92bce3..251e084bf7de 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
-@@ -14,6 +14,7 @@ touchscreen2: touchscreen@34 {
- 		compatible = "melfas,mip4_ts";
- 		reg = <0x34>;
- 		interrupts-extended = <&pio 88 IRQ_TYPE_LEVEL_LOW>;
-+		status = "fail-needs-probe";
- 	};
- 
- 	/*
-@@ -26,6 +27,7 @@ touchscreen3: touchscreen@20 {
- 		reg = <0x20>;
- 		hid-descr-addr = <0x0020>;
- 		interrupts-extended = <&pio 88 IRQ_TYPE_LEVEL_LOW>;
-+		status = "fail-needs-probe";
- 	};
- 
- 	/* Lenovo Ideapad C330 uses G2Touch touchscreen as a 2nd source touchscreen */
-@@ -47,9 +49,12 @@ &i2c4 {
- 	trackpad2: trackpad@2c {
- 		compatible = "hid-over-i2c";
- 		interrupts-extended = <&pio 117 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&trackpad_irq>;
- 		reg = <0x2c>;
- 		hid-descr-addr = <0x0020>;
- 		wakeup-source;
-+		status = "fail-needs-probe";
- 	};
- };
- 
-@@ -74,3 +79,11 @@ pins_wp {
- 		};
- 	};
- };
-+
-+&touchscreen {
-+	status = "fail-needs-probe";
-+};
-+
-+&trackpad {
-+	status = "fail-needs-probe";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index b4d85147b77b..eee64461421f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -358,12 +358,12 @@ touchscreen: touchscreen@10 {
- &i2c4 {
- 	clock-frequency = <400000>;
- 	status = "okay";
--	pinctrl-names = "default";
--	pinctrl-0 = <&trackpad_irq>;
- 
- 	trackpad: trackpad@15 {
- 		compatible = "elan,ekth3000";
- 		interrupts-extended = <&pio 117 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&trackpad_irq>;
- 		reg = <0x15>;
- 		vcc-supply = <&mt6397_vgp6_reg>;
- 		wakeup-source;
+ .../bindings/pinctrl/airoha,en7581-pinctrl.yaml    |  454 +++
+ MAINTAINERS                                        |    7 +
+ drivers/pinctrl/mediatek/Kconfig                   |   16 +-
+ drivers/pinctrl/mediatek/Makefile                  |    1 +
+ drivers/pinctrl/mediatek/pinctrl-airoha.c          | 3031 ++++++++++++++++++++
+ 5 files changed, 3508 insertions(+), 1 deletion(-)
+---
+base-commit: defaf1a2113a22b00dfa1abc0fd2014820eaf065
+change-id: 20240818-en7581-pinctrl-1bf120154be0
+prerequisite-change-id: 20240705-for-6-11-bpf-a349efc08df8:v2
+
+Best regards,
 -- 
-2.46.0.184.g6999bdac58-goog
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
