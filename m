@@ -4,70 +4,170 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A98F4C3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Aug 2024 19:03:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A425EC5320E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Aug 2024 20:51:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rzDslElypG3jvVYuOsBF3AeB10Zs4LqRhhgYDVRZ+T0=; b=nfj5vli0wVy0J97LxDNIN28Eur
-	+RVeUCme5OH3owrEXuY9biovQegmsY0S9pGp9++nFGy7AnRo9dfhjpWly8S+YkXjKYizv+9GSrK13
-	2VPfJ+n7Y1iIwthBZmxmRoseC2OO2hVX3QtwN/hTLFjHomQ3ffdhHYw9s16+MkBvdtgEoVJ5UECH+
-	F2v486Zw5LfCKHUQCRkv5rVCvRV5oDtdfRfpfZ5+2y472H2B5vzD8cVQLqQ2M4muWtS03/cf1UFsI
-	1FxAM1nzoORPbvMKv00ru1/cJwdoIUcLaXlIcdEyQcaCyNhAL7MaHvr0rNim+7E6ssR4XtOr2YK4v
-	e/pkOhcA==;
+	bh=gnimm2Orc5XqI8G0JhmSVw8O8mx1XbIDYsg7nPt6/44=; b=Jj0oLgAWsz0bHEq0RaG6qnELnA
+	io+B8sA91vrup5OVJ2F3vPjPomsbmGyMuqH4NNllQOjam5LTwnniVtegQT9BKT8G30LDPkGrjxbkh
+	LFs2KUxi5kgPVab0Rum6I16ORH1o7K3CoiGOGnTP2ci4tuU7GepOVPjZbtWUhmzxE8REnWLZG5KFh
+	uxZKWI2SH+f9iPJu6XXHfzbZHAzMIFGovoJqKzbHWlI+HXcJ2CL+ZxzRdQEyUsh3saLJwbeyZ2ty6
+	3E4iHqeiK0d/2GkMDjDaADFwsP0C3+AtJqZKx3rzdSHJYbWbO6tXeibA/3ZbhhtQy1fAwgJJ4KlSL
+	YXeAzETA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shD5p-0000000E2AD-2895;
-	Thu, 22 Aug 2024 19:03:33 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1shEm1-0000000EHw0-2BLC;
+	Thu, 22 Aug 2024 20:51:13 +0000
+Received: from mail-vi1eur05on20707.outbound.protection.outlook.com ([2a01:111:f403:2613::707] helo=EUR05-VI1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shD53-0000000E22I-43Bx;
-	Thu, 22 Aug 2024 19:02:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 29BD7CE0FE6;
-	Thu, 22 Aug 2024 19:02:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD4C2C32782;
-	Thu, 22 Aug 2024 19:02:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724353363;
-	bh=xkJxuhgb78n4FuOPdIwcmBi1eA/Yu0psL+bwoB8zMA4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=t9bADXjhnhFV9D6FC7d7Oi2kbTHMS/q2RGBnT9miyH5POy5PnigNWky8RoFcgQAYl
-	 K5IZ0zonP123H8Qt0k08l5k71aPOfRWXbAV6z0zqGi5wwmSlxq8lU5r8G7VrDgxodr
-	 h9nsHwJWs1S74Z94y27or9ExB0VM5JYK8GbdacOQpPRM1gB3Pl1Q1KjzKHMCeYGI99
-	 eWFleMcUDJS4IFArGb3Sn+jwUKkw/fZeL50V0mbGloBi5E/2wd9FOKOFqwFQJ0tMVu
-	 09iYREQP2HP9yK/Ia34b/rdngLyAS3rVAS0r3yqYskdSHDQJEVS7bKXr/QygBECsGM
-	 ciB6LN4o7mF6Q==
-Date: Thu, 22 Aug 2024 21:02:39 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Conor Dooley <conor@kernel.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	upstream@airoha.com, benjamin.larsson@genexis.eu,
-	ansuelsmth@gmail.com
+	id 1shEly-0000000EHun-3cHi;
+	Thu, 22 Aug 2024 20:51:12 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=bSN4xGqDEi6YrATydorlM1W2z3XUYTvsD1UWOseEIsbfzGSveZwhVRBYQS3Y9P9f5vK3dIn5EI24FaH61mrD3c32C5kzuT6j2r2yAm+sFbP37T6xCatlFXwetiK1eeNV4bEtBCtx5K+pDz1dSbo1k8WTrghE+N9LMQzpan4f05Mp6KJE2GSnhD3Aurk/stkK7G89JgDO+U8bJWMsLi5gCACUasXSzG0cJetuuIKaqBvk9AIOqjkhpHc/VeRNXRlBYXn4erak5hq8hvAUT9zeNobu71XtRhbVuQhWNhPTRpCTRcSlr63/QDsEJYuOMIMVQcfdqInVrVsFq5Jy4QBe9g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=gnimm2Orc5XqI8G0JhmSVw8O8mx1XbIDYsg7nPt6/44=;
+ b=ZkS2H23wx/+3AmyJmTnyXmMbTXcfy6SgdGSyJJY0X9o6lzEXqSs+OjDBWZZkwrf1f2jnOWbMSJ0qvpzIs69tOW16++yvOoYWgiFyr2q0PPnSHAyvj7kgVLdV2IpcLryWCx2WHfhuDVbZD1knW+U/ba+T8YEjMtRNkDDKyw4xg56WVAMy66NnqLzlL9COWfFqHLbJBOC+EhZBynZZTfHE+Ibqgm6W0cBdgKzxO8yJ9KBVMhSc6sxCvBgnfDFbUj1pqHOXnbGaLJbZmL0XZQtyqbGxUD5w4xCa4hWoSyT8SljXZEo/WxAJqT84U6c4001bMFUVVh6rEc1xxO8qrx7ABA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=genexis.eu;
+ dkim=pass header.d=genexis.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=genexis.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=gnimm2Orc5XqI8G0JhmSVw8O8mx1XbIDYsg7nPt6/44=;
+ b=b/6WWldQ3sG0UBOltLcqx41bihCVcL6A6KHPBIHHXW1FcMYTh/sf/ZABAqmMBtSBqNahc3B3gMN6VAxN0czZmfkpRdhPNRejtCoid/oX5eZ03m3SBEhpwcr5Zjerac0D4CWD/jKLnh96E/zt4nhFqsrqnMpgftaINJdl5oDwyP4=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=genexis.eu;
+Received: from AM9PR08MB6034.eurprd08.prod.outlook.com (2603:10a6:20b:2db::18)
+ by AS1PR08MB7610.eurprd08.prod.outlook.com (2603:10a6:20b:475::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7897.16; Thu, 22 Aug
+ 2024 20:50:55 +0000
+Received: from AM9PR08MB6034.eurprd08.prod.outlook.com
+ ([fe80::9ead:b6bc:10eb:ef35]) by AM9PR08MB6034.eurprd08.prod.outlook.com
+ ([fe80::9ead:b6bc:10eb:ef35%4]) with mapi id 15.20.7897.014; Thu, 22 Aug 2024
+ 20:50:55 +0000
+Message-ID: <aef3188d-5aaf-4f6d-addf-60066065ef9b@genexis.eu>
+Date: Thu, 22 Aug 2024 22:50:52 +0200
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 1/2] dt-bindings: pinctrl: airoha: Add EN7581 pinctrl
  controller
-Message-ID: <ZseLT2roso_L7UG4@lore-desk>
+To: Conor Dooley <conor@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ upstream@airoha.com, ansuelsmth@gmail.com
 References: <20240822-en7581-pinctrl-v2-0-ba1559173a7f@kernel.org>
  <20240822-en7581-pinctrl-v2-1-ba1559173a7f@kernel.org>
  <20240822-taste-deceptive-03d0ad56ae2e@spud>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="diazt744lIJbkc3n"
-Content-Disposition: inline
+Content-Language: en-US
+From: Benjamin Larsson <benjamin.larsson@genexis.eu>
 In-Reply-To: <20240822-taste-deceptive-03d0ad56ae2e@spud>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: GVX0EPF00014AFD.SWEP280.PROD.OUTLOOK.COM
+ (2603:10a6:158:401::312) To AM9PR08MB6034.eurprd08.prod.outlook.com
+ (2603:10a6:20b:2db::18)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM9PR08MB6034:EE_|AS1PR08MB7610:EE_
+X-MS-Office365-Filtering-Correlation-Id: c91f7fb2-01b9-41a6-0ee0-08dcc2ec1ddc
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|7416014|366016;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?cjB5dmh0Z2psRUo2d0xuaHN6MnF3K3lEdmtLYy9KK200RkZYNE9oclNGK0lK?=
+ =?utf-8?B?a2pYRnVxdjlMdnJRamRBWklybVRzcUJNaG05SmJzU3k3VTlnbjhzbkQ0MkZv?=
+ =?utf-8?B?K3BIWllTaFFaVU04djdOTzl6UC83bHNwVjAwOVBib0hxUlhQVDZhSEUyQjM0?=
+ =?utf-8?B?aUZadXpCWjVjY2dHVEpSeStEYjlVTXp3TTVXTXNEZXQ5aXB6R2VKVkY3Mmkr?=
+ =?utf-8?B?cUM2NzVXUTV1dThpY0N2aS9HTFZPMEJzNmticzd3aWZyNkgvbDNSRFZid25F?=
+ =?utf-8?B?ZTk0RFJON2V3VkM4Q0Q0QlVRa0RDVmx4bE9QbWJjNUlHb2xkWEtyVHNRY092?=
+ =?utf-8?B?NzZhYWRPOWJtT2N1dDZYeXFpMXJWRkJpQzlRMWJoc2E3RmxMSGZ4UTVkckVj?=
+ =?utf-8?B?Sit4ck5NNVZIM0dzU0tmUnVkck1BY3J1V24zS2dtK3l5SW5NRlVYWE96Z0hw?=
+ =?utf-8?B?QjVtV3FGZjJDZFRJK3ZoWmw5bnJBRzFvVC9sWHdZUTBLbWwvYlA0MDBVVXQ0?=
+ =?utf-8?B?L0VpbGRYdGJoakRWajlUemw3RjlCeXRldmNBK2VCV3VWWXNLcThIVFc4cDBw?=
+ =?utf-8?B?VjgzenRMaUR5cHNBamMwcUo2WGZ0djFZL0dtajhkby80Q2cwd0h4Y0dweGtJ?=
+ =?utf-8?B?TFIwY3ZmdGx2SHBNamg5ckFkYnBpeUhFdVZKWDNDWWZvYW5EWWN6TktmeEt0?=
+ =?utf-8?B?N1BzeUxaUFlCLzQ1UTJJQ0JOcXlTWTB5N2pEZTJIRm4raGNrQUE3TzJQWnR5?=
+ =?utf-8?B?a3lXT05COGVBYkZMV2g1YjVyaTFJMGlvbkNMMmZFeXR1TWtQK1BMWnVYVUE1?=
+ =?utf-8?B?TVRrWDlCcC9qUElVcG4zM1E1ZFBYSXRYNHB6cHJUdlRibTEvbDV1a3QzMHB5?=
+ =?utf-8?B?VDVmY0xMSVovMS9PR1QxTFRpRSszL0ZTS1VsOUhoQ2FSMVczTDFFcTZRSWQ2?=
+ =?utf-8?B?UUFhOGRzMTVwY1hxbjV6MklHU2ZENURPWXFWbHlEb09oRGJLMCtDYWtpUitK?=
+ =?utf-8?B?RFEwb1lUSzVIRVp4QkhOVTdWUjFJS1VmOXI0THNNTnVDREc3N212TU44QnF5?=
+ =?utf-8?B?M01ndkZZdTQ2TTBUMlFzcnhYU2V3dkVNODI3a0JiUjkraXlKNFRnY1FpekNP?=
+ =?utf-8?B?Ylp3MnJ1Wk5nRWdPeXcrd0hXeHcyZWhpSlI3ZFd6MWlzZkpGS0N1RDZ5TUJx?=
+ =?utf-8?B?MEU3WVJkaGZXNGFRWXd5eGVSTVlEVzgyVTBuQjlrdmMvVmFEejZaVS9tQjJL?=
+ =?utf-8?B?MXdqaUo1V1pTTy9LOWZsZDdFSFF1MHBaYU1oQk05OGdDMFc4NFM0SitLN05z?=
+ =?utf-8?B?VGdXdnVBMzZhamxsRStidTZTQ09pMGMva2gxRHEwaEUwd2lCYitqN1pkZzVC?=
+ =?utf-8?B?UXpBOHVhZWtzWFFoOE9Jd05aOU41VEtrN1RqSW1lUlFEa3FRTEpsWTVQM3hF?=
+ =?utf-8?B?anVVL1djQjVkejZSU1FRS3FRM1kzM0tIcmtkVU4yOEtvc25nWWZiWWhTNEZ4?=
+ =?utf-8?B?aEkxL21aMldraGlheFZicmd1QUwvdWRKVW1WVElXb0pwMlRWVnFsMFhxenN2?=
+ =?utf-8?B?Z0VSWjRpWUhMVHJTd0dFVTNZL0ZhVHJyL2tGc2gxNGhQOVRUelduTW4wSVZI?=
+ =?utf-8?B?MzdONXh5eWJNc2dCSjNENTJqUzhLYlhsU3ViMXVSLzU1YjlUL3ZkZWFnYnpQ?=
+ =?utf-8?B?ZkpNbzl6OWcvTHY0Ny9iUUQwcjhVWkhzMEhiZDY2ZUJyWGJjUkNkTUVQWkl0?=
+ =?utf-8?B?UDRRVDl5VmpKcEZQUnhWbER0bFlORHk5TnFpczBwZVpOb1dFNTFDN1VvYzhK?=
+ =?utf-8?B?aDJBdnpxZXB5YlltK2V5QT09?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR08MB6034.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(7416014)(366016);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?MmhZMndCRCsyeENFZCs1bEJSdnF5dENEeGEydjA1WnZwbVNyT1FKbXJwU3lG?=
+ =?utf-8?B?YmY5UUlhZmU4L21GdUt4NStSYTlkQTdxZlRSQXY4ajBwYStsR2VXTWo5MnN0?=
+ =?utf-8?B?NStlVU9GVm5FTzBtWUgvbHZYWEt6T1QvdUxpRHR6cStsUW0vb2VtakFxdENS?=
+ =?utf-8?B?bHVJZE5RN1ZYMTA2SDhFUVpNSEZWekVRem1IWTJCYXNKOEV2aFIyaWZ0WDFk?=
+ =?utf-8?B?dEZmUWdqMDY5T0RKSnVaN3IzVXFwaXFWdDdyZEtyOEJmQ051U2dYWGI4UTJC?=
+ =?utf-8?B?Z3JyOW10MENZTG04Z0FKZDlhRHZaekdORGhPQ1pJeDQ1RE42QzNSTnkyVHFz?=
+ =?utf-8?B?cHRTbXBxRFl6Nm05U2tta0VXdUpYZ1F1RjhhRURaVURuMExuKzloc0tHZ3Ns?=
+ =?utf-8?B?cUROVk1ZZ2owTUU5RGV5QzdJUk5LV0JtY1ZwYTJCTEFlZGFVZUlTZXFyQjZ5?=
+ =?utf-8?B?TW5ZNXg2cUpwNnY5Y0RYZlRGanFEZTlKd2x6dmNYNkxJNXphbGl3Q0Z2K2NV?=
+ =?utf-8?B?bHBaaUpSbnJYRUt4Y1ZFMXBiZFlUY0x2SHR2ZnJNUjZwWG9sSnpIY29vOHVs?=
+ =?utf-8?B?MjdnZ2FrWTFVcWs4SklSTmRHLy9OZTMzN3NTZDBVMXJNb3JKdHJtSXhrOWM5?=
+ =?utf-8?B?TE9yRVZUbEhJVHlzZm9nWlZnY2FiMGtsOEtNMzI2QmY2cmhDYzZDQXh5RVdi?=
+ =?utf-8?B?V1RyR0t2Z0VDcjBELzhNZ1h3RVdTWHlkY0tHZldsNUdHbDZBaEpKZ25DN2hN?=
+ =?utf-8?B?cHVINkZGdmFyZFUrVnF6UXViYTNQd3QvRXFBbktXcHo4Qm4xS1Vwd3VESG84?=
+ =?utf-8?B?UHZMSlYxamdtZUpzRHRGQXM4UGFydS9YdlRuSzY2QmV2YkdOakQ2ZlF1K2JI?=
+ =?utf-8?B?L2lkalNqYVZmeG05dzY1THl4cXdBbmkwYTdsakliZVE0eFVsUnd2M2hWK1FE?=
+ =?utf-8?B?cDJYc3p1RUU0R21xa0wwL25uRVBoN3VVZzV6YWErVUtIQW84RnFUc1dPcmxS?=
+ =?utf-8?B?eGdKZkY0UGpaWDI3aXFkRC82UGpwT2NwOUZYK3A4ZkhLNVQ5Z3NrYXJqWkRn?=
+ =?utf-8?B?Q1JTelF6b3NlTmhvSndtTisvcS81YnEwMlpSaGNZdXU0cm1uT2JrWGtCNE1C?=
+ =?utf-8?B?a2pGb1NMdkRDWFNpY2ZRYTk1VndIeHptTkt2cFFmVk81U0FjUjFmYlRWYjd5?=
+ =?utf-8?B?WW5vcVNhUEZBNUg2LzFxMUpWaHgyeU1LRHpjR0kvK2RQOVJHQVo4N3B0dkZl?=
+ =?utf-8?B?aC9FM0RzRkJDZ1B0Njh5VWVuQVkyVTdpZU05WnZkdk1kZnRQYUJ0MWVWRVlu?=
+ =?utf-8?B?L2gycGRuZUo0UG50c3hTNy9kU2Y0cDNLOGdRc0NmRzVlZlQ3UFZIWkdoQnky?=
+ =?utf-8?B?cmVVNlVEQ0FwRlJ3TTl3cDBTcUlMQWlqSDB4N2xDV2tYaFN2OUMrZ2NKZk1N?=
+ =?utf-8?B?dnROR0U1bEtrd0ZqUkZaVjJDTHp5dUo4MjE3OU1EWkg0TEdYVEVCQWRsTFUy?=
+ =?utf-8?B?S0F1cFVQVit5RXRJK0dvMy9JN0VQUndwWkowbmgyUWJaQ0FjUzRCNnB5ck1k?=
+ =?utf-8?B?Q1U0OFNoeEVvcGhlcW5zayt0Z05jUHh2T1Y4ZFBMSXlraFBPMEM1QktnMG5k?=
+ =?utf-8?B?NVIrTGROZ1dXTHJNU0xNbFIwaU82bndDY3BjZDlwSHNyUy9OaFFVeC9kSHU2?=
+ =?utf-8?B?VDZvNzZzd1dlZ2cvcGJmc2RkcFlTdG03VFlSTmxZUERMK2Via25ab05JS0tk?=
+ =?utf-8?B?Y2IyeTgybHoweW91dmpZRjI4dUEvQUM0cVA4MTFpTWZ3bFhMWlFjQ0s5T0Zy?=
+ =?utf-8?B?SXRFWWF2L0cxS3J4UTh6VkF3ZzFHc3lldmRPZ1NGKzFUdmhER3M0WHdML1VT?=
+ =?utf-8?B?T0hxSXFLL2JRZUFiQkNITC9KN2NSWElTZHdRNHBGZStlT05PNkVKdWhJKzFO?=
+ =?utf-8?B?WUJydlUrdGYveUdKZnNVWFpHaXplTm9NNDROYkMvOWp6WGp4ZnF1Z0U1bnlX?=
+ =?utf-8?B?aGtydTV3NVljWGx0Vlp6MWtlaWZ3OUxBWlZzOEVTTTBmcGpaUkJEc1FqUzZF?=
+ =?utf-8?B?MzlDRVpZMVJLVGJZbWEvOFZSQUFmcll5TlR0L0EyZm5VdHJOemJ6emxyV2pp?=
+ =?utf-8?B?dG0rOG9pQ2J2SjA1cE1ORW04V1p3elhYajZPVlpETHNjUFhGOStFbkQ4UC9t?=
+ =?utf-8?B?RVE9PQ==?=
+X-OriginatorOrg: genexis.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: c91f7fb2-01b9-41a6-0ee0-08dcc2ec1ddc
+X-MS-Exchange-CrossTenant-AuthSource: AM9PR08MB6034.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Aug 2024 20:50:55.0530
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: jrQk4+0XewCch1HKxaZOFxRupL5kEsvPP+QVohsfCjsq+1Qfitt4EffOzJ6FF6pdZ1jzpUmvyvlA7iiciISa2eKJ62gBPiZO0Ks4fsJLtqg=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS1PR08MB7610
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240822_120246_377567_F332BE81 
-X-CRM114-Status: GOOD (  23.35  )
+X-CRM114-CacheID: sfid-20240822_135111_240121_8001B63C 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,126 +182,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 22/08/2024 18:06, Conor Dooley wrote:
 
---diazt744lIJbkc3n
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Aug 22, Conor Dooley wrote:
-> On Thu, Aug 22, 2024 at 11:40:52AM +0200, Lorenzo Bianconi wrote:
-> > Introduce device-tree binding documentation for Airoha EN7581 pinctrl
-> > controller.
-> >=20
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > +  reg:
-> > +    items:
-> > +      - description: IOMUX base address
-> > +      - description: LED IOMUX base address
-> > +      - description: GPIO flash mode base address
-> > +      - description: GPIO flash mode extended base address
-> > +      - description: IO pin configuration base address
-> > +      - description: PCIE reset open-drain base address
-> > +      - description: GPIO bank0 register base address
-> > +      - description: GPIO bank0 second control register base address
-> > +      - description: GPIO bank1 second control register base address
-> > +      - description: GPIO bank1 register base address
->=20
-> > +      pinctrl@1fa20214 {
-> > +        compatible =3D "airoha,en7581-pinctrl";
-> > +        reg =3D <0x0 0x1fa20214 0x0 0x30>,
-> > +              <0x0 0x1fa2027c 0x0 0x8>,
-> > +              <0x0 0x1fbf0234 0x0 0x4>,
-> > +              <0x0 0x1fbf0268 0x0 0x4>,
-> > +              <0x0 0x1fa2001c 0x0 0x50>,
-> > +              <0x0 0x1fa2018c 0x0 0x4>,
-> > +              <0x0 0x1fbf0200 0x0 0x18>,
-> > +              <0x0 0x1fbf0220 0x0 0x4>,
-> > +              <0x0 0x1fbf0260 0x0 0x8>,
-> > +              <0x0 0x1fbf0270 0x0 0x28>;
-> > +        reg-names =3D "iomux", "led-iomux",
-> > +                    "gpio-flash-mode", "gpio-flash-mode-ext",
-> > +                    "ioconf", "pcie-rst-od",
-> > +                    "gpio-bank0", "gpio-ctrl1",
-> > +                    "gpio-ctrl2", "gpio-bank1";
->=20
+Hi.
+
 > before looking at v1:
 > I would really like to see an explanation for why this is a correct
 > model of the hardware as part of the commit message. To me this screams
 > syscon/MFD and instead of describing this as a child of a syscon and
 > using regmap to access it you're doing whatever this is...
->=20
-> after looking at v1:
-> AFAICT the PWM driver does not currently exist in mainline, so I am now
-> doubly of the opinion that this needs to be an MFD and a wee bit annoyed
-> that you didn't include any rationale in your cover letter or w/e for
-> not going with an MFD given there was discussion on the topic in v1.
 
-based on the reply from Rob I was thinking it is fine to just reduce the nu=
-mber
-of IO mappings, sorry for that.
+Can you post a link to a good example dts that uses syscon/MFD ?
 
->=20
-> Thanks,
-> Conor.
+It is not only pinctrl, pwm and gpio that are entangled in each other. A 
+good example would help with developing a proper implementation.
 
-clock, pinctrl and pwm controllers need to map 3 main memory areas:
-- chip-scu: <0x0 0x1fa20000 0x0 0x384>
-  it is used by the clock driver for fixed freq clock configuration,
-  by the pinctrl driver for io-muxing (and by the future pon drivers)
-- scu: <0x1fb00020 0x0 0x94c>
-  it is used by the clock/rst driver
-- gpio: <0x1fbf0200 0x0 0xbc>
-  it is used by the pinctrl driver to implement gpio/irq controller and
-  by the pwm driver.
+MvH
 
-I guess we can model chip_scu as single syscon node used by clock and pinct=
-rl
-while pwm can be a child of the pinctrl node. Something like:
+Benjamin Larsson
 
-=2E..
-
-chip_scu: chip-scu@1fa20000 {
-	compatible =3D "airoha,en7581-chip-scu", "syscon";
-	reg =3D <0x0 0x1fa20000 0x0 0x384>;
-};
-
-scuclk: clock-controller@1fb00020 {
-	compatible =3D "airoha,en7581-scu";
-	reg =3D <0x1fb00020 0x0 0x94c>;
-	airoha,chip-scu =3D <&chip_scu>;
-	...
-};
-
-pio: pinctrl@1fbf0200 {
-	compatible =3D "airoha,en7581-pinctrl", "simple-mfd", "syscon";
-	reg =3D <0x1fbf0200 0x0 0xbc>;
-	airoha,chip-scu =3D <&chip_scu>;
-	....
-
-	pwm {
-		compatible =3D "airoha,en7581-pwm";
-		...
-	};
-};
-
-=2E..
-
-Does it work for you?
-
-Regards,
-Lorenzo
-
---diazt744lIJbkc3n
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZseLTwAKCRA6cBh0uS2t
-rGKnAQCZ+o4MIMWsRuzvGOZSrG1NdV6hktrlDyjEJQ5C2jFzYAEAu4nxBgW+EpZW
-RRqyuyYxUDBvOoQ4vFB7hMODbQlKmQo=
-=1h0o
------END PGP SIGNATURE-----
-
---diazt744lIJbkc3n--
 
