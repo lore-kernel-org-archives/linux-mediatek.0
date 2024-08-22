@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C729BC5320E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Aug 2024 09:23:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE5C4C5321D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Aug 2024 09:24:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BDc0gYFzE7XGjhJ2AhN6DupFbhnHtplhsjKD3gx9Rh0=; b=bQhTcxs12TWLSwELsJzRpjXfwH
-	rGPuO3Wby7xTDsbji0u+jJN6JQpQKwjB7wjYkfBM2TmmuyHPgGTH4mJMqEGfmfXV8f8MGQ9OTgvnS
-	zbVmTL/jkvZW3sQy5NydaQ8s/Q4ZwwIHH+85/7RIA3OqBjnsUWedbbvBqXdU74aaHbcKTQwZGpABz
-	MSXp2IWtIDCLqT9TQM6VSLu7jZ4JvRR6yylPixyiDDHYE62/8ZjeudLOjxhPwJZvOX+jjl2TwmeOs
-	BZm3WOfaoUWPT0CV+yoVOIr8HAaefvzXHysAvRHhBLR1+GHcvg0PZkLM8cAQqV37A0oBz/xr2gt1C
-	9RXVifmw==;
+	bh=OGdOo23OjShZKKUPhP64Sm0t2nst66j12GqHlKAMLTI=; b=ipi5FnHP12vXPhHWtIiobC5DjP
+	gaqRQF5jg7ZVnpEn586HpOcpGHCkggGQ04yd3UqrSsxC3qe4LMF8GEXb2nxD84JGTs5R7Ynfaf2qA
+	z9IoVZc6o5p3HyVT9NIVeIevNeQvVVqxqW8xZbedtE6gFJqwn9BGZIDw47FmY7XZQKjGhbKdnFnLa
+	HaxiWUjLz+xUoQiKyC3IZSLMagBe5oQAk21pgIfS+C4a1lE+w1w4AuwM4751Ss8WF9k+TU6y0g7iu
+	j35PHetp0bam+imJK5xF415sMs2Rx3PN8U4lnLabb2WWJ6Ue8ezvWtP4q4CFlURHNXkHzJzawTNVx
+	6cOyWVOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sh42S-0000000CD3n-1Wu4;
-	Thu, 22 Aug 2024 09:23:28 +0000
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+	id 1sh43t-0000000CDYM-1uwJ;
+	Thu, 22 Aug 2024 09:24:57 +0000
+Received: from mail-oo1-xc2c.google.com ([2607:f8b0:4864:20::c2c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sh3zg-0000000CCCK-0dVC
+	id 1sh3zk-0000000CCEA-1l0l
 	for linux-mediatek@lists.infradead.org;
-	Thu, 22 Aug 2024 09:20:37 +0000
-Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-7142448aaf9so403370b3a.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 22 Aug 2024 02:20:36 -0700 (PDT)
+	Thu, 22 Aug 2024 09:20:41 +0000
+Received: by mail-oo1-xc2c.google.com with SMTP id 006d021491bc7-5d5bb03fe42so350635eaf.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 22 Aug 2024 02:20:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1724318435; x=1724923235; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1724318439; x=1724923239; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=BDc0gYFzE7XGjhJ2AhN6DupFbhnHtplhsjKD3gx9Rh0=;
-        b=TAgFQJlqgVPpkVCDSyjj45l5xSOrUjwCdiypbV8UFVwjj0VLLx3flglb66GmSKGChr
-         GqngwKlQsLbmCDH3OQkRXsWlVK7W40bqx81tDyZR3rMk625nKdn1QXweGuXuH67aTnoG
-         530R/IRsRL/KUegc8RzxuYwUJkicnOTRBd/eY=
+        bh=OGdOo23OjShZKKUPhP64Sm0t2nst66j12GqHlKAMLTI=;
+        b=EqlqYN0yIjMMgOGbJ4IklhMZLKLU3b2nUicuMrcYFOr3VsR57qHeiTbOS9TK/JSzp2
+         fZ0ZT1m6G0+T3ayeZkV3YYtyt3jJJx2FZYFGMFW3Twvv73nORVgO7IefVhvbpVwXhmVb
+         xBtugEmyq5D1XEFA5+sL0NKUWBikWvBcUJKTA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724318435; x=1724923235;
+        d=1e100.net; s=20230601; t=1724318439; x=1724923239;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=BDc0gYFzE7XGjhJ2AhN6DupFbhnHtplhsjKD3gx9Rh0=;
-        b=q9EaRxG/Ypv/MLkujxTwzu25z2xapFpAduh68/WXiU+jTNF6BjZaQJSHxjieBV/nfr
-         eKCaJyNYn1+tpMbPmF8+dPQlkQRpyV4G0C7il77mlua2rp8ckhVUSBYrPFICjO2v73Kc
-         lBb1IMlDM5Ggpkcdp2gSi2f2iWwGjYr3+m4MAnLMJynrfw3tdNQmOxdwkeZ2ckRtRWuM
-         R1NinKzw4oQrYmeAChACsgQVmmcYH6KOHiH3Labe5ExMYD0ZBMLo3bgCDKT5Nvo1Qx93
-         XAI84ni7puBBLr+0OHmJn1DLAtdsyzJjv4e/5LpbNy7AVYYdCDde0W5aY52dCQpSjLBn
-         PRLA==
-X-Forwarded-Encrypted: i=1; AJvYcCVjDT4u5xvqLsgaYeoAYXzh+wvsOuAoTeX0yXxG/QKFCfhrvzgBXi0DoUOUeyPYGhtX/rbDOlSwTFZ28WOZqw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzkvw1WCMUX7K0kR1DYgFSIApc/zBuAaMP8o9wsTLqutZ8Dpxlp
-	8FJDuSKodkzPIZUrCIax7bjdqCE0JoktTLC2ahjp0XEpmwZj2jE+WZcMDtx6/A==
-X-Google-Smtp-Source: AGHT+IGFjvk3XcfXwOVUDAxxMj2xSqe1AU1grF2L8qM1UCDTpX9001BmMqg32GNyYPTfbXCI1q3+QQ==
-X-Received: by 2002:a05:6a21:8804:b0:1c0:ef24:4124 with SMTP id adf61e73a8af0-1cae51ad139mr3146210637.6.1724318435415;
-        Thu, 22 Aug 2024 02:20:35 -0700 (PDT)
+        bh=OGdOo23OjShZKKUPhP64Sm0t2nst66j12GqHlKAMLTI=;
+        b=FETTeYwFHWiAVMS8sH5xNmm2BANYam2CqxLjs5aAUyzNx7YAeNpctuP/f34Ia8p3wv
+         9Avlphw4Jd9WDlkE7WiGJ+fwX3nu6yXj7xEWd6C/9Va/aMg+0FJji+C9rSXfwajCprP7
+         L1mIBa03qlayJF7tmgi26c4ZslhzBtlwVIX6YRBKM2GlZtHLs6q463eW0/JkMWa3lUfl
+         JAmOKLPzm+snQvETxfaXAxd7/4+XgAqGQ1sK8JjUQ5w66o9UDuQX1twCXDW6wgnYP43N
+         4yy9Kcy8siy7vAC+nT15myVKxPSBxwdpfkwzN9yLv7pBCvq4nw15utN+weVQ9HVWRkc0
+         NBHA==
+X-Forwarded-Encrypted: i=1; AJvYcCWjNZY2RzWj06A21u7qSmChtUeelpWADM1mk8XBeOms09a/ZmcZeFe18G9XiStUaPEoEIrg1wsadg9Si3qe0w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YySxBnJO9oGdpuydqrrYW7OsQMBeZCFJrdtwdeRxnSpd5Zb1ouZ
+	giAMivl1HWOKSKwBM1GLhE2eKm5KsYXjrRy5Q0yQgaRnGHTo2nMIfPrE4TSdwPaXxykLFoIXgoo
+	=
+X-Google-Smtp-Source: AGHT+IGg4vXGxgKXD8IY1cy882/n6HazEz1G403uPDeFfsv+SBpWVZIvn3E7WqFDu7Zn4wJDa5xJAA==
+X-Received: by 2002:a05:6358:2624:b0:1af:3b39:8183 with SMTP id e5c5f4694b2df-1b59fce12c4mr581766055d.20.1724318439044;
+        Thu, 22 Aug 2024 02:20:39 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:8470:6a67:8877:ce2c])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71434335e69sm951398b3a.194.2024.08.22.02.20.32
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71434335e69sm951398b3a.194.2024.08.22.02.20.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Aug 2024 02:20:35 -0700 (PDT)
+        Thu, 22 Aug 2024 02:20:38 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Rob Herring <robh@kernel.org>,
 	Saravana Kannan <saravanak@google.com>,
@@ -81,17 +82,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	Jiri Kosina <jikos@kernel.org>,
 	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
 	linux-i2c@vger.kernel.org
-Subject: [PATCH v5 04/10] regulator: Do pure DT regulator lookup in of_regulator_bulk_get_all()
-Date: Thu, 22 Aug 2024 17:19:57 +0800
-Message-ID: <20240822092006.3134096-5-wenst@chromium.org>
+Subject: [PATCH v5 05/10] gpiolib: Add gpio_property_name_length()
+Date: Thu, 22 Aug 2024 17:19:58 +0800
+Message-ID: <20240822092006.3134096-6-wenst@chromium.org>
 X-Mailer: git-send-email 2.46.0.184.g6999bdac58-goog
 In-Reply-To: <20240822092006.3134096-1-wenst@chromium.org>
 References: <20240822092006.3134096-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240822_022036_218814_E6CB50FB 
-X-CRM114-Status: GOOD (  26.29  )
+X-CRM114-CacheID: sfid-20240822_022040_479745_66C1E02C 
+X-CRM114-Status: GOOD (  21.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,188 +107,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The to-be-introduced I2C component prober needs to enable regulator
-supplies (and toggle GPIO pins) for the various components it intends
-to probe. To support this, a new "pure DT lookup" method for getting
-regulator supplies is needed, since the device normally requesting
-the supply won't get created until after the component is probed to
-be available.
+The I2C device tree component prober needs to get and toggle GPIO lines
+for the components it intends to probe. These components may not use the
+same name for their GPIO lines, so the prober must go through the device
+tree, check each property to see it is a GPIO property, and get the GPIO
+line.
 
-Convert the existing of_regulator_bulk_get_all() for this purpose.
-This function has no in-tree users, as the original patch [1] that
-used it was never landed. This patch changes the function ABI, but
-it is straightforward to convert users.
-
-The underlying code that supports the existing regulator_get*()
-functions has been reworked in previous patches to support this
-specific case. An internal OF-specific version of regulator_get(),
-of_regulator_get_optional(), is added for this.
-
-[1] https://lore.kernel.org/all/20231220203537.83479-2-jernej.skrabec@gmail.com/
+Instead of duplicating the GPIO suffixes, or exporting them to the
+prober to do pattern matching, simply add and export a new function that
+does the pattern matching and returns the length of the GPIO name. The
+caller can then use that to copy out the name if it needs to.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+
 ---
 Changes since v4:
-- Was "regulator: Add regulator_of_get_optional() for pure DT" in v4
-- Restore platform-agnostic regulator consumer code to original state
-- Move OF-specific regulator code to of_regulator.c (separate patch)
-- Split _regulator_get() into three parts for reuse (separate patch)
-- Add OF-specific _of_regulator_get() function
-- Rename regulator_of_get_optional() to of_regulator_get_optional() for
-  consistency
-- Make of_regulator_get_optional() static, as it is only used internally
-- Convert of_regulator_bulk_get_all()
-Changes since v3:
-- New patch
----
- drivers/regulator/core.c         |  2 +-
- drivers/regulator/internal.h     |  2 ++
- drivers/regulator/of_regulator.c | 54 +++++++++++++++++++++++++++-----
- 3 files changed, 49 insertions(+), 9 deletions(-)
+- new patch
 
-diff --git a/drivers/regulator/core.c b/drivers/regulator/core.c
-index 4d1c640cc030..d70302e30731 100644
---- a/drivers/regulator/core.c
-+++ b/drivers/regulator/core.c
-@@ -1950,7 +1950,7 @@ static struct regulator_dev *regulator_dev_lookup(struct device *dev,
- 
- 	/* first do a dt based lookup */
- 	if (dev && dev->of_node) {
--		r = of_regulator_dev_lookup(dev, supply);
-+		r = of_regulator_dev_lookup(dev, dev->of_node, supply);
- 		if (!IS_ERR(r))
- 			return r;
- 		if (PTR_ERR(r) == -EPROBE_DEFER)
-diff --git a/drivers/regulator/internal.h b/drivers/regulator/internal.h
-index 3718459fb0c5..44680ce3587b 100644
---- a/drivers/regulator/internal.h
-+++ b/drivers/regulator/internal.h
-@@ -67,6 +67,7 @@ static inline struct regulator_dev *dev_to_rdev(struct device *dev)
- 
- #ifdef CONFIG_OF
- struct regulator_dev *of_regulator_dev_lookup(struct device *dev,
-+					      struct device_node *np,
- 					      const char *supply);
- struct regulator_init_data *regulator_of_get_init_data(struct device *dev,
- 			         const struct regulator_desc *desc,
-@@ -82,6 +83,7 @@ bool of_check_coupling_data(struct regulator_dev *rdev);
- 
- #else
- static inline struct regulator_dev *of_regulator_dev_lookup(struct device *dev,
-+							    struct device_node *np,
- 							    const char *supply)
- {
- 	return -ENODEV;
-diff --git a/drivers/regulator/of_regulator.c b/drivers/regulator/of_regulator.c
-index d924f5c1de59..67a5882a917e 100644
---- a/drivers/regulator/of_regulator.c
-+++ b/drivers/regulator/of_regulator.c
-@@ -587,22 +587,24 @@ static struct device_node *of_get_child_regulator(struct device_node *parent,
- 
- /**
-  * of_get_regulator - get a regulator device node based on supply name
-- * @dev: Device pointer for the consumer (of regulator) device
-+ * @dev: Device pointer for dev_printk messages
-+ * @node: Device node pointer for supply property lookup
-  * @supply: regulator supply name
-  *
-  * Extract the regulator device node corresponding to the supply name.
-  * returns the device node corresponding to the regulator if found, else
-  * returns NULL.
-  */
--static struct device_node *of_get_regulator(struct device *dev, const char *supply)
-+static struct device_node *of_get_regulator(struct device *dev, struct device_node *node,
-+					    const char *supply)
- {
- 	struct device_node *regnode = NULL;
- 	char prop_name[64]; /* 64 is max size of property name */
- 
--	dev_dbg(dev, "Looking up %s-supply from device tree\n", supply);
-+	dev_dbg(dev, "Looking up %s-supply from device node %pOF\n", supply, node);
- 
- 	snprintf(prop_name, 64, "%s-supply", supply);
--	regnode = of_parse_phandle(dev->of_node, prop_name, 0);
-+	regnode = of_parse_phandle(node, prop_name, 0);
- 
- 	if (!regnode) {
- 		regnode = of_get_child_regulator(dev->of_node, prop_name);
-@@ -626,7 +628,8 @@ static struct regulator_dev *of_find_regulator_by_node(struct device_node *np)
+Depends on commit 4b91188dced8 ("gpiolib: Replace gpio_suffix_count
+with NULL-terminated array").
+---
+ drivers/gpio/gpiolib.c        | 44 +++++++++++++++++++++++++++++++++++
+ include/linux/gpio/consumer.h |  2 ++
+ 2 files changed, 46 insertions(+)
+
+diff --git a/drivers/gpio/gpiolib.c b/drivers/gpio/gpiolib.c
+index 3903d0a75304..e4228ef6f131 100644
+--- a/drivers/gpio/gpiolib.c
++++ b/drivers/gpio/gpiolib.c
+@@ -4295,6 +4295,50 @@ struct gpio_desc *fwnode_gpiod_get_index(struct fwnode_handle *fwnode,
  }
+ EXPORT_SYMBOL_GPL(fwnode_gpiod_get_index);
  
- /** of_regulator_dev_lookup - lookup a regulator device with device tree only
-- * @dev: Device pointer for regulator supply lookup.
-+ * @dev: Device pointer for dev_printk messages.
-+ * @node: Device node pointer for regulator supply lookup.
-  * @supply: Supply name or regulator ID.
-  *
-  * If successful, returns a struct regulator_dev that corresponds to the name
-@@ -636,13 +639,13 @@ static struct regulator_dev *of_find_regulator_by_node(struct device_node *np)
-  * -ENODEV if lookup fails permanently, -EPROBE_DEFER if lookup could succeed
-  * in the future.
-  */
--struct regulator_dev *of_regulator_dev_lookup(struct device *dev,
-+struct regulator_dev *of_regulator_dev_lookup(struct device *dev, struct device_node *np,
- 					      const char *supply)
- {
- 	struct regulator_dev *r;
- 	struct device_node *node;
- 
--	node = of_get_regulator(dev, supply);
-+	node = of_get_regulator(dev, np, supply);
- 	if (node) {
- 		r = of_find_regulator_by_node(node);
- 		of_node_put(node);
-@@ -659,6 +662,41 @@ struct regulator_dev *of_regulator_dev_lookup(struct device *dev,
- 	return ERR_PTR(-ENODEV);
- }
- 
-+static struct regulator *_of_regulator_get(struct device *dev, struct device_node *node,
-+					   const char *id, enum regulator_get_type get_type)
-+{
-+	struct regulator_dev *r;
-+	int ret;
-+
-+	ret = _regulator_get_common_check(dev, id, get_type);
-+	if (ret)
-+		return ERR_PTR(ret);
-+
-+	r = of_regulator_dev_lookup(dev, node, id);
-+	return _regulator_get_common(r, dev, id, get_type);
-+}
-+
 +/**
-+ * of_regulator_get_optional - get optional regulator via device tree lookup
-+ * @dev: device used for dev_printk messages
-+ * @node: device node for regulator "consumer"
-+ * @id: Supply name
++ * gpio_property_name_length - Returns the GPIO name length from a property name
++ * @str:	string to check
 + *
-+ * Returns a struct regulator corresponding to the regulator producer,
-+ * or IS_ERR() condition containing errno.
++ * This function checks if the given name matches the GPIO property patterns, and
++ * returns the length of the name of the GPIO. The pattern is "*-<GPIO suffix>"
++ * or just "<GPIO suffix>".
 + *
-+ * This is intended for use by consumers that want to get a regulator
-+ * supply directly from a device node, and can and want to deal with
-+ * absence of such supplies. This will _not_ consider supply aliases.
-+ * See regulator_dev_lookup().
++ * Returns:
++ * The length of the string before '-' if it matches "*-<GPIO suffix>", or
++ * 0 if no name part, just the suffix, or
++ * -EINVAL if the string doesn't match the pattern.
 + */
-+static struct regulator *of_regulator_get_optional(struct device *dev,
-+						   struct device_node *node,
-+						   const char *id)
++int gpio_property_name_length(const char *str)
 +{
-+	return _of_regulator_get(NULL, node, id, OPTIONAL_GET);
-+}
++	size_t len;
 +
- /*
-  * Returns number of regulators coupled with rdev.
-  */
-@@ -875,7 +913,7 @@ int of_regulator_bulk_get_all(struct device *dev, struct device_node *np,
- 		} else {
- 			memcpy(name, prop->name, i);
- 			name[i] = '\0';
--			tmp = regulator_get(dev, name);
-+			tmp = of_regulator_get_optional(dev, np, name);
- 			if (IS_ERR(tmp)) {
- 				ret = PTR_ERR(tmp);
- 				goto error;
++	len = strlen(str);
++
++	/* string need to be at minimum len(gpio) */
++	if (len < 4)
++		return -EINVAL;
++
++	/* Check for no-name case: "gpio" / "gpios" */
++	for (const char *const *p = gpio_suffixes; *p; p++)
++		if (!strcmp(str, *p))
++			return 0;
++
++	for (size_t i = len - 4; i > 0; i--) {
++		/* find right-most '-' and check if remainder matches suffix */
++		if (str[i] != '-')
++			continue;
++
++		for (const char *const *p = gpio_suffixes; *p; p++)
++			if (!strcmp(str + i + 1, *p))
++				return i;
++
++		return -EINVAL;
++	}
++
++	return -EINVAL;
++}
++EXPORT_SYMBOL_GPL(gpio_property_name_length);
++
+ /**
+  * gpiod_count - return the number of GPIOs associated with a device / function
+  *		or -ENOENT if no GPIO has been assigned to the requested function
+diff --git a/include/linux/gpio/consumer.h b/include/linux/gpio/consumer.h
+index db2dfbae8edb..ce3a5f86a037 100644
+--- a/include/linux/gpio/consumer.h
++++ b/include/linux/gpio/consumer.h
+@@ -56,6 +56,8 @@ enum gpiod_flags {
+ 
+ #ifdef CONFIG_GPIOLIB
+ 
++int gpio_property_name_length(const char *name);
++
+ /* Return the number of GPIOs associated with a device / function */
+ int gpiod_count(struct device *dev, const char *con_id);
+ 
 -- 
 2.46.0.184.g6999bdac58-goog
 
