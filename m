@@ -4,78 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 205E0C52D7C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 14:05:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1641FC531DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 14:15:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BEMVwz5nnQ7Xs43B82q/jvwAQGy/9H92XKTIqJTpiqU=; b=pmk5KY1nVRmzf+kWNj4iFKESXC
-	MqR1g5PoNXMDdCTarO3l/nivfzJOk3sJWpHLVTOoiJGrRCGub1by9G0TELsyu/gJ3sc/6g/K89WSq
-	kuvZ+yszRC/L2Gqu33xflESctN1HqQyh02m5FvJf2WpJJUpFGhJg+/asW8JPmRa1lucjvP00IjNgI
-	JDV7P2Zh1z4olYXcziElpBmTI8YxCy7t5Fx6GXEq9RcbtbfzpsjKdbS3S4fPcffiUEC3/Wlxkvt/e
-	AQ25g2jNcS2yoIWF5ElGJQPHRd1+iYxWp2XmMjV67Yv3/3UJuBYJ6Nj/8aWuUrzSQ9STRnws6aHt+
-	X2bwt7SA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YLkCm+92u6sWHnBCcW3QFsk7uF4UMVlkDcI9nxI0grU=; b=WAP/cYrbrrDLi90XiYHvjqgwMv
+	IkqNBkrHATBcngZEr8l6MrbE/WChSF630kTEQS89Y12sU+g7vGBVD+chKjWR8IkLJUnes/usBLqwG
+	4ZvCv+OzUJEIABqD2v+/fyJDsUTg4UDuxW2kFkaj8rJFuIcBtVLoGV0tyoMqdg4pPtWCy7IbucYs9
+	Fbgg9XgYucO4VkahEQvu8C/07MwotbySUkVhpYLLpuxgFH5mCARr9wmbbU34ZW3aKt/I4xd34RVlp
+	dSJKAUulzmxTDJQqDH5ddwHXog5Qzfaytc3aP9cYD9dZaVMGd0TO5AL40eoVfbQO3BJdDKaT01Qh6
+	4Orq6TkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shUuS-0000000H04u-3NDl;
-	Fri, 23 Aug 2024 14:05:00 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1shV4G-0000000H312-0yyI;
+	Fri, 23 Aug 2024 14:15:08 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shUtP-0000000Gzfv-0arx;
-	Fri, 23 Aug 2024 14:03:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 52592CE10E3;
-	Fri, 23 Aug 2024 14:03:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74F65C32786;
-	Fri, 23 Aug 2024 14:03:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724421832;
-	bh=Lw3xV5CQbRpHj7Suwhvn/ROZHULgNHJAEmyajtD6PGE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=TYWnl5YwwCBIArKeuw5YgI16un7qi9Ghfxz+P1bUe5Bfop9Jl5R9xnMAqGKFmf/Ys
-	 f0FKm9hYcRE/b0nveJtd+S6FtYaqmo6KOUI5QGNratyPuyau4vmAMPlSCe8UMu4oOf
-	 nOkCq48j5ebGp74SasoUiAVU3MQq7dVbbKH6lCB25wJUNeKXLZfwr6w992vSh4kwZ6
-	 UbBc1cffpBCKW/Z6GOhd/CPykQkx9i+1Ho7P1IGF4EXVU2ZjVsms6qV8Sl4KeuQ2Zm
-	 0QZB52ajVHpSuA8todpWFr5vHiz/quvFj9VDXWAUPK/hCHCTn2AgqwOfOerYw8Ol6u
-	 bJHUu77c56izw==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Bert Karwatzki <spasswolf@web.de>,
-	Felix Fietkau <nbd@nbd.name>,
-	Kalle Valo <kvalo@kernel.org>,
-	Sasha Levin <sashal@kernel.org>,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	sean.wang@mediatek.com,
-	deren.wu@mediatek.com,
-	mingyen.hsieh@mediatek.com,
-	johannes.berg@intel.com,
-	emmanuel.grumbach@intel.com,
-	hao.zhang@mediatek.com,
-	leon.yen@mediatek.com,
-	linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 15/20] wifi: mt76: mt7921: fix NULL pointer access in mt7921_ipv6_addr_change
-Date: Fri, 23 Aug 2024 10:02:29 -0400
-Message-ID: <20240823140309.1974696-15-sashal@kernel.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240823140309.1974696-1-sashal@kernel.org>
-References: <20240823140309.1974696-1-sashal@kernel.org>
+	id 1shV4D-0000000H2zl-1HFM;
+	Fri, 23 Aug 2024 14:15:06 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1724422501; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=JjceiZWJtI1fUL/OB+7hTt7iC8BUQNhc3tvezrUvZZ3oaUgItn9OBy7AaAVd+AGJKT70OoDiV7v9duLGsx0lJv8pg5UbbDh38Uh6wShDEqgv62HHrHSKQdlmPG8zRnoLmousu0EOwoNj271pMHwF/zjmj4FtIa+BzzL9mWKT8NY=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1724422501; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=YLkCm+92u6sWHnBCcW3QFsk7uF4UMVlkDcI9nxI0grU=; 
+	b=eombKDlK304bsE3d8P+splbUGc2VGtVHlDx3EruzstDrlNRm2u5kSC6vmi4s0iuynwzbPc7X51i1Blk20wnD7KazKMzI9nL7gv7V798/056ZKa0pptTOjfE9UOfnlnKizqMBh6m0iszRMYzqC3kLgWFAC2oRFoR6aWf+ThS8phw=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.fricke@collabora.com;
+	dmarc=pass header.from=<sebastian.fricke@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724422501;
+	s=zohomail; d=collabora.com; i=sebastian.fricke@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=YLkCm+92u6sWHnBCcW3QFsk7uF4UMVlkDcI9nxI0grU=;
+	b=gAPC+rd2nZXJL/rx/VP2x5RKOgJcdggFEJH0Pl18qgfPE6McP+f5AzEjZN+1V8U/
+	h45r+M+V0sSg4AbA+S+si5DKxTxNCa/XusJKo4yXMbchJGBwfUB6G5lEV135ASCOnwD
+	P9VNNtX5GO63Ssql8BGCibswpbwqEZku2MC+0QrQ=
+Received: by mx.zohomail.com with SMTPS id 1724422500162588.6716232629527;
+	Fri, 23 Aug 2024 07:15:00 -0700 (PDT)
+Date: Fri, 23 Aug 2024 16:14:54 +0200
+From: Sebastian Fricke <sebastian.fricke@collabora.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: =?utf-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4=?= Prado <nfraprado@collabora.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Nathan Hebert <nhebert@chromium.org>,
+	Daniel Almeida <daniel.almeida@collabora.com>,
+	Hsin-Yi Wang <hsinyi@chromium.org>,
+	Fritz Koenig <frkoenig@chromium.org>,
+	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v4 5/7] media: mediatek: vcodec: store source vb2 buffer
+Message-ID: <20240823141454.vvtbkkj5qm4pmpfr@basti-XPS-13-9310>
+References: <20240807082444.21280-1-yunfei.dong@mediatek.com>
+ <20240807082444.21280-6-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.6.47
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Disposition: inline
+In-Reply-To: <20240807082444.21280-6-yunfei.dong@mediatek.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_070355_380844_842CCF44 
-X-CRM114-Status: GOOD (  11.61  )
+X-CRM114-CacheID: sfid-20240823_071505_416371_AE65A618 
+X-CRM114-Status: GOOD (  21.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,36 +89,123 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bert Karwatzki <spasswolf@web.de>
+Hey Yunfei,
 
-[ Upstream commit 479ffee68d59c599f8aed8fa2dcc8e13e7bd13c3 ]
+On 07.08.2024 16:24, Yunfei Dong wrote:
+>Store the current vb2 buffer when lat need to decode again.
+>Then lat work can get the same vb2 buffer directly next time.
 
-When disabling wifi mt7921_ipv6_addr_change() is called as a notifier.
-At this point mvif->phy is already NULL so we cannot use it here.
+I would reword this with:
 
-Signed-off-by: Bert Karwatzki <spasswolf@web.de>
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
-Signed-off-by: Kalle Valo <kvalo@kernel.org>
-Link: https://patch.msgid.link/20240812104542.80760-1-spasswolf@web.de
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Store the current source buffer in the specific data for the IC. When
+the LAT needs to retry a decode it can pick that buffer directly.
+
 ---
- drivers/net/wireless/mediatek/mt76/mt7921/main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index d8851cb5f400b..da17a29a4ce57 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -1095,7 +1095,7 @@ static void mt7921_ipv6_addr_change(struct ieee80211_hw *hw,
- 				    struct inet6_dev *idev)
- {
- 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
--	struct mt792x_dev *dev = mvif->phy->dev;
-+	struct mt792x_dev *dev = mt792x_hw_dev(hw);
- 	struct inet6_ifaddr *ifa;
- 	struct in6_addr ns_addrs[IEEE80211_BSS_ARP_ADDR_LIST_LEN];
- 	struct sk_buff *skb;
--- 
-2.43.0
+Additionally, this is not a good commit description as you just say what
+you do, but you don't say WHY this needs to happen, why is it necessary?
+What does it improve, is this a preparation patch for another, a fix for
+something or an improvement of performance?
 
+
+more below...
+
+>
+>Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+>---
+> .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h      |  2 ++
+> .../vcodec/decoder/mtk_vcodec_dec_stateless.c         | 11 ++++++++---
+> 2 files changed, 10 insertions(+), 3 deletions(-)
+>
+>diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+>index 1fabe8c5b7a4..0817be73f8e0 100644
+>--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+>+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+>@@ -155,6 +155,7 @@ struct mtk_vcodec_dec_pdata {
+>  * @last_decoded_picinfo: pic information get from latest decode
+>  * @empty_flush_buf: a fake size-0 capture buffer that indicates flush. Used
+>  *		     for stateful decoder.
+>+ * @last_vb2_v4l2_src: the backup of current source buffer.
+
+I think last is confusing in this context especially as there is for
+example in the m2m_ctx:
+  * @last_src_buf: indicate the last source buffer for draining
+  * @next_buf_last: next capture queud buffer will be tagged as last
+or:
+  * v4l2_m2m_last_buf() - return last buffer from the list of ready buffers
+
+I think a better name would be:
+
+  * @cur_src_buf: current source buffer with the bitstream data for the latest decode
+
+>  * @is_flushing: set to true if flushing is in progress.
+>  *
+>  * @current_codec: current set input codec, in V4L2 pixel format
+>@@ -201,6 +202,7 @@ struct mtk_vcodec_dec_ctx {
+> 	struct work_struct decode_work;
+> 	struct vdec_pic_info last_decoded_picinfo;
+> 	struct v4l2_m2m_buffer empty_flush_buf;
+>+	struct vb2_v4l2_buffer *last_vb2_v4l2_src;
+
+Likewise here:
+
+struct vb2_v4l2_buffer *cur_src_buf;
+
+> 	bool is_flushing;
+>
+> 	u32 current_codec;
+>diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+>index 2a7e4fe24ed3..8aa379872ddc 100644
+>--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+>+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+>@@ -320,7 +320,7 @@ static void mtk_vdec_worker(struct work_struct *work)
+> 	struct mtk_vcodec_dec_ctx *ctx =
+> 		container_of(work, struct mtk_vcodec_dec_ctx, decode_work);
+> 	struct mtk_vcodec_dec_dev *dev = ctx->dev;
+>-	struct vb2_v4l2_buffer *vb2_v4l2_src;
+>+	struct vb2_v4l2_buffer *vb2_v4l2_src = ctx->last_vb2_v4l2_src;
+
+And here:
+
+struct vb2_v4l2_buffer *vb2_v4l2_src = ctx->cur_src_buf;
+
+> 	struct vb2_buffer *vb2_src;
+> 	struct mtk_vcodec_mem *bs_src;
+> 	struct mtk_video_dec_buf *dec_buf_src;
+>@@ -329,7 +329,7 @@ static void mtk_vdec_worker(struct work_struct *work)
+> 	bool res_chg = false;
+> 	int ret;
+>
+>-	vb2_v4l2_src = v4l2_m2m_next_src_buf(ctx->m2m_ctx);
+>+	vb2_v4l2_src = vb2_v4l2_src ? vb2_v4l2_src : v4l2_m2m_next_src_buf(ctx->m2m_ctx);
+
+Please add a comment above this line that explains why this search can
+be made, explaining why this buffer is still valid in this call and when
+we pick the next source buffer.
+
+Regards,
+Sebastian Fricke
+
+> 	if (!vb2_v4l2_src) {
+> 		v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
+> 		mtk_v4l2_vdec_dbg(1, ctx, "[%d] no available source buffer", ctx->id);
+>@@ -383,8 +383,13 @@ static void mtk_vdec_worker(struct work_struct *work)
+> 			v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
+> 		v4l2_m2m_buf_done_and_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx, state);
+> 	} else {
+>-		if (ret != -EAGAIN)
+>+		if (ret != -EAGAIN) {
+> 			v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
+>+			ctx->last_vb2_v4l2_src = NULL;
+>+		} else {
+>+			ctx->last_vb2_v4l2_src = vb2_v4l2_src;
+>+		}
+>+
+> 		v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
+> 	}
+> }
+>-- 
+>2.46.0
+>
+>
 
