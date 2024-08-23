@@ -4,117 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A48FC531DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 08:08:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88682C52D7C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 08:46:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=15f+b3ir248yJBPLFwNXMmDHb0AYqmrWqEK1jk7P7pA=; b=kEuCibYSqKa2iC6XO64iotLwaV
-	OSFLZiMkU0rE6ZskzzqLVPIjaO17yaxeQ2QFLMvECdHKXKuToB5ez31rnZvi/lMTclsctyB14eLBp
-	N8coYsTUxnJIWk5OowTegH9q14gIuqtmAPIt71WNd0at4GzIs4/deufcywsl1VoP8O9esC/uCfdBX
-	V5ecJws6vcFo8y+ggnxONJIWlAI/InIeVFjN7bUh2iARHqmLqEq3AC43XAW/LTJBeVhmA3+pm7xJN
-	MbThkWviL+a3PJ7difShAbJe6Da9O3b2qbD5I8u+KINv5YGNqY8GoNdg6fDNu3GfMrxyFlE3oEGpX
-	4SDUNYcQ==;
+	bh=giON8Q4LjGFF8ELEjzDZqXiqE5K5VOG4OBV3cUf5KM0=; b=RO4DV2688PPxQC+q+4rIK0n7+c
+	M5D4bsXIV6jtdQAkiSvSRHAU6U1qkQPkCLSSTChNhYGD4LwtRbY/uFuq8Vp6v1Fw2fJYTj+v9EIQt
+	1BHiLD1akFs6BuJVArbqswqZPi6z7Wz60rNPfdbzYza5oHXOFSIUlw7uOQXznBInAVCBfS/mR2kv4
+	cEJsaZA3+1/bUhVw+79NVxguLgMwkqaFzNtXtRcsOiK0Su2GEytloJMveY3bYdIWNsSNnhN0adAiH
+	zJ8MIiBFP0jGoe3Ml2E0zcao7HuTRuInA/lmJc1x4g3y4L+gxwpRyMyMCSr8/Y5ycLpyj84S6fmDZ
+	LUnsK/pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shPLH-0000000FmI4-3Rm4;
-	Fri, 23 Aug 2024 08:08:19 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1shPvt-0000000Fwfo-0EAZ;
+	Fri, 23 Aug 2024 08:46:09 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shPIe-0000000Fl9L-2Cyc;
-	Fri, 23 Aug 2024 08:05:38 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id DA6CC60C2D;
-	Fri, 23 Aug 2024 08:05:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6599DC32786;
-	Fri, 23 Aug 2024 08:05:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724400335;
-	bh=3DBW+FV0Qyml7NyCLmwz2xf7cfhi6345pH4If8jgZIo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=kQfKR5IBSmLGWLQDQGiDmbz7OBXpnBl0PHBONjiUkC1GQkZ54cBY+9SyNI2ZXF5U4
-	 WuW9N+V6qBQ/Mzqo6FpoIAZX9zQdOPozG0UgzJhyhMP64Q4AqZ8FXDE5GmciBUIzN4
-	 bCkCKYtr6r+a98zPVUZCP6nNsXxCKb38kVD8ucaPHrbf/db/8YsC14SS7CJl86uCMe
-	 JRcMyTy1gJMTMfsZ8tLWoXmQy8Rv9+SVWDNyKezGZXlvQm0pHl7VzYPflfYKHMD8k+
-	 CA679AVZpAjH7zN9oIvn+eOs3fjlNtfIQ2XNBuCnFcd3pWTIOgpE1FM8y4MXFMiPYt
-	 Ihu8dvFaHNCDg==
-Message-ID: <e3f2f022-aacc-41ed-8d29-b341c903ae9c@kernel.org>
-Date: Fri, 23 Aug 2024 10:05:29 +0200
+	id 1shPqj-0000000FvIY-0tqn
+	for linux-mediatek@lists.infradead.org;
+	Fri, 23 Aug 2024 08:40:51 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-533461323cdso2006749e87.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 23 Aug 2024 01:40:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1724402447; x=1725007247; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=giON8Q4LjGFF8ELEjzDZqXiqE5K5VOG4OBV3cUf5KM0=;
+        b=ZwUo6BeXAJqs4cSwTJzgN4qSt1c0/b902ZKseYnoF/ppwhlNFSuccOHDPAnF3klKR8
+         n6rHVJX5yY5YylXtCcW4CAf9w7R0iWwIBbws8IWXeHyOftDi5Zqw3mvPqX2XDNqki4do
+         3BZYqdUTv3d8lDmGaJe0EDizEfRVGEykw27Rk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1724402447; x=1725007247;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=giON8Q4LjGFF8ELEjzDZqXiqE5K5VOG4OBV3cUf5KM0=;
+        b=s+MC6rHBpVmPrTPF52Q8ni3hhOh4WB4kDfBODCQWRX/GbM3uWNzM1rZMGlr8CLG5aZ
+         vU1miXubnhRaNJjPJlhiTRAPZsMc2Pg9ihTwWQqjKK4N5p6mr9u3etSUg0iJkrqWAUcw
+         ZECkFJlO2F4TycvozHP2/M7ECANn3y9HkFw1NhdZUj34SNFuUEwFNGGVSDI0i+faDcN0
+         4ELC0+MnlcSnCkZsW/R73yUy8M6yr16Px/8wYQKNYDOoFdizBs5SFkW0r5ocM8tt71ws
+         G22Dn29M+rs5Xb59+wdL+WWlwG65eCChXFrC0pHyNMBn53W9YMoH6SOlrTiSwbB3j1Cp
+         R2eA==
+X-Forwarded-Encrypted: i=1; AJvYcCUW0rrRjNo9ltv8QZfGoIFCgfrQot7EiN1IXahQj0OdGlY8LaTUfcjgq58OCuWB/jymzxmFm03Yo+eZ9OlQPA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwDIDAj/x4A8a28nayx6G8ZCqNhqLfJ9li8Auvbla8GWR7+TJbk
+	4/mlKgSv4W5m7+IkVcH3wdxhXUP8uzUd6j6AXjKeRer1tW1ClrY75Hy1V7Ohk3NpgGs86f6Wr9D
+	0lGPvhb7ouo69jj3xwxpBswqURwU+l4dFuwol
+X-Google-Smtp-Source: AGHT+IFnhIjmtVb9vM0UayOlpRV8Kz6kcZZB1TNIceqcnBHabmU8gzY4wCKbVc+Nrlh5/jdYTbjbi55KO9/vc0BqWDo=
+X-Received: by 2002:a05:6512:b01:b0:52e:9fd3:f0ca with SMTP id
+ 2adb3069b0e04-5343883a3a8mr1006281e87.33.1724402447359; Fri, 23 Aug 2024
+ 01:40:47 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dt-bindings: mfd: mediatek: mt6397: Convert to DT schema
- format
-To: Macpaul Lin <macpaul.lin@mediatek.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>
-Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
- Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>,
- Jason-ch Chen <Jason-ch.Chen@mediatek.com>,
- Chris-qj chen <chris-qj.chen@mediatek.com>,
- MediaTek Chromebook Upstream
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- Alexandre Mergnat <amergnat@baylibre.com>, Chen-Yu Tsai <wenst@chromium.org>
-References: <20240808105722.7222-1-macpaul.lin@mediatek.com>
- <2d89c86b-28b4-439f-824b-1d0560ff36bd@kernel.org>
- <fb1d3c99-c524-adfa-94b7-822801b98034@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <fb1d3c99-c524-adfa-94b7-822801b98034@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20240822092006.3134096-1-wenst@chromium.org> <20240822092006.3134096-7-wenst@chromium.org>
+ <ZsdE0PxKnGRjzChl@smile.fi.intel.com>
+In-Reply-To: <ZsdE0PxKnGRjzChl@smile.fi.intel.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 23 Aug 2024 16:40:36 +0800
+Message-ID: <CAGXv+5HtjWi60OnMrjR3fnO3T=7uyMazr1aKBFjuPmWuE9NK6g@mail.gmail.com>
+Subject: Re: [PATCH v5 06/10] i2c: Introduce OF component probe function
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
+	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
+	Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
+	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, 
+	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>, linux-i2c@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_010536_738947_A3821190 
-X-CRM114-Status: GOOD (  35.46  )
+X-CRM114-CacheID: sfid-20240823_014049_416285_BE67B224 
+X-CRM114-Status: GOOD (  37.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,238 +95,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23/08/2024 08:44, Macpaul Lin wrote:
-> 
-> On 8/8/24 20:04, Krzysztof Kozlowski wrote:
->> 	
->>
->> External email : Please do not click links or open attachments until you 
->> have verified the sender or the content.
->>
->> On 08/08/2024 12:57, Macpaul Lin wrote:
->>> Convert the mfd: mediatek: mt6397 binding to DT schema format.
->>>
->>> New updates in this conversion:
->>>  - Align generic names of DT schema "audio-codec" and "regulators".
->>>  - mt6397-regulators: Replace the "txt" reference with newly added DT
->>>    schema.
->>>
->>> Signed-off-by: Sen Chu <sen.chu@mediatek.com>
->>> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
->>> ---
->>>  .../bindings/mfd/mediatek,mt6397.yaml         | 202 ++++++++++++++++++
->>>  .../devicetree/bindings/mfd/mt6397.txt        | 110 ----------
->>
->> You are doing conversions in odd order... and ignore my comments. The
->> example from your regulator binding is supposed to be here - I wrote it
->> last time.
->>
->> Due to doing changes totally unsynchronized, this CANNOT be merged
->> without unnecessary maintainer coordination, because of dependency.
->>
->> Sorry, that's not how it works for MFD devices.
->>
->> Perform conversion of entire device in ONE patchset.
-> 
-> Okay, will collect the conversion of mt6323-regulator.txt and 
-> rtc-mt6397.txt in the next version.
-> 
->>>  2 files changed, 202 insertions(+), 110 deletions(-)
->>>  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
->>>  delete mode 100644 Documentation/devicetree/bindings/mfd/mt6397.txt
->>>
->>> Changes for v1:
->>>  - This patch depends on conversion of mediatek,mt6397-regulator.yaml
->>>    [1] https://lore.kernel.org/lkml/20240807091738.18387-1-macpaul.lin@mediatek.com/T/
-> 
-> [snip]
-> 
->>> +$id: http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
->>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->>> +
->>> +title: MediaTek MT6397/MT6323 Multifunction Device
->>> +
->>> +maintainers:
->>> +  - Sen Chu <sen.chu@mediatek.com>
->>> +  - Macpaul Lin <macpaul.lin@mediatek.com>
->>> +
->>> +description: |
->>> +  MT6397/MT6323 is a multifunction device with the following sub modules:
->>
->> MFD is Linuxism, avoid it.
-> 
-> Will replace MFD with "power management system chip with sub-modules" 
-> something like this in next version.
-> 
->>> +  - Regulator
->>> +  - RTC
->>> +  - Audio codec
->>> +  - GPIO
->>> +  - Clock
->>> +  - LED
->>> +  - Keys
->>> +  - Power controller
->>> +
->>> +  It is interfaced to host controller using SPI interface by a proprietary hardware
->>> +  called PMIC wrapper or pwrap. MT6397/MT6323 MFD is a child device of pwrap.
->>> +  See the following for pwarp node definitions:
->>> +  ../soc/mediatek/mediatek,pwrap.yaml
->>
->> Drop, instead add proper ref or compatible in parent node.
-> 
-> I'm confused here. I've checked mediatek,mt6357.yaml as a reference
-> .
-> It uses the similar method here.
->      "See the following for pwarp node definitions:"
->      "Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml"
+On Thu, Aug 22, 2024 at 10:02=E2=80=AFPM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+>
+> On Thu, Aug 22, 2024 at 05:19:59PM +0800, Chen-Yu Tsai wrote:
+> > Some devices are designed and manufactured with some components having
+> > multiple drop-in replacement options. These components are often
+> > connected to the mainboard via ribbon cables, having the same signals
+> > and pin assignments across all options. These may include the display
+> > panel and touchscreen on laptops and tablets, and the trackpad on
+> > laptops. Sometimes which component option is used in a particular devic=
+e
+> > can be detected by some firmware provided identifier, other times that
+> > information is not available, and the kernel has to try to probe each
+> > device.
+> >
+> > This change attempts to make the "probe each device" case cleaner. The
+> > current approach is to have all options added and enabled in the device
+> > tree. The kernel would then bind each device and run each driver's prob=
+e
+> > function. This works, but has been broken before due to the introductio=
+n
+> > of asynchronous probing, causing multiple instances requesting "shared"
+> > resources, such as pinmuxes, GPIO pins, interrupt lines, at the same
+> > time, with only one instance succeeding. Work arounds for these include
+> > moving the pinmux to the parent I2C controller, using GPIO hogs or
+> > pinmux settings to keep the GPIO pins in some fixed configuration, and
+> > requesting the interrupt line very late. Such configurations can be see=
+n
+> > on the MT8183 Krane Chromebook tablets, and the Qualcomm sc8280xp-based
+> > Lenovo Thinkpad 13S.
+> >
+> > Instead of this delicate dance between drivers and device tree quirks,
+> > this change introduces a simple I2C component probe. function For a
+> > given class of devices on the same I2C bus, it will go through all of
+> > them, doing a simple I2C read transfer and see which one of them respon=
+ds.
+> > It will then enable the device that responds.
+> >
+> > This requires some minor modifications in the existing device tree. The
+> > status for all the device nodes for the component options must be set
+> > to "failed-needs-probe". This makes it clear that some mechanism is
+> > needed to enable one of them, and also prevents the prober and device
+> > drivers running at the same time.
+>
+> ...
+>
+> > --- a/drivers/i2c/Makefile
+> > +++ b/drivers/i2c/Makefile
+> > @@ -9,6 +9,7 @@ i2c-core-objs                         :=3D i2c-core-bas=
+e.o i2c-core-smbus.o
+> >  i2c-core-$(CONFIG_ACPI)              +=3D i2c-core-acpi.o
+> >  i2c-core-$(CONFIG_I2C_SLAVE)         +=3D i2c-core-slave.o
+> >  i2c-core-$(CONFIG_OF)                +=3D i2c-core-of.o
+> > +i2c-core-$(CONFIG_OF_DYNAMIC)        +=3D i2c-core-of-prober.o
+>
+> Seems like all the above (except ACPI) have the same issue, i.e. TABs/spa=
+ces
+> mixture.
 
-What exactly is confusing? The other example is wrong. It's not a
-schema, but free form text. Write schema so it would be applied and
-would validate the DTS.
+I was lazy and just copied the previous line. I'll fix the new line for now=
+.
 
-> 
-> If "$ref: /schemas/soc/mediatek/mediatek,pwrap.yaml" is added here,
-> dt_bindings_check will complain the following errors and more.
-> 
-> Documentation/devicetree/bindings/mfd/mediatek,mt6397.example.dtb: pmic: 
-> compatible: 'oneOf' conditional failed, one must be fixed:
->          ['mediatek,mt6397'] is too short
->          'mediatek,mt6397' is not one of ['mediatek,mt2701-pwrap', 
-> 'mediatek,mt6765-pwrap', 'mediatek,mt6779-pwrap', 
-> 'mediatek,mt6795-pwrap', 'mediatek,mt6797-pwrap', 
-> 'mediatek,mt6873-pwrap', 'mediatek,mt7622-pwrap', 
-> 'mediatek,mt8135-pwrap', 'mediatek,mt8173-pwrap', 
-> 'mediatek,mt8183-pwrap', 'mediatek,mt8186-pwrap', 
-> 'mediatek,mt8195-pwrap', 'mediatek,mt8365-pwrap', 'mediatek,mt8516-pwrap']
->          'mediatek,mt6397' is not one of ['mediatek,mt8186-pwrap', 
-> 'mediatek,mt8195-pwrap']
->          'mediatek,mt6397' is not one of ['mediatek,mt8188-pwrap']
->          from schema $id: 
-> http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
-> 
-> Which also conflicts with the comments in the examples..
+> ...
+>
+> > +     ret =3D of_changeset_apply(ocs);
+> > +     if (!ret) {
+>
+> Why not positive conditional?
 
-So investigate and fix this, instead of hiding the problem.
-
->  >> +    pwrap {
->  >
->  > Drop
-> 
-> Please help to check if a $ref or a compatible of pwrap should be added 
-> here.
-
-Where did you add the $ref? The child node should have it, not parent,
-obviously. Just look at one of many other examples having children.
-
-...
-
->>
->>> +              - const: mediatek,mt6358-rtc
->>> +
->>> +  regulators:
->>> +    type: object
->>> +    oneOf:
->>> +      - $ref: /schemas/regulator/mediatek,mt6358-regulator.yaml
->>> +      - $ref: /schemas/regulator/mediatek,mt6397-regulator.yaml
->>
->> And how is it supposed to be tested?
-> 
-> The dt_bindings_check didn't complain eny thing about these.
-
-Really? Then checkout the maintainer tree, apply this patch and test
-again. You know, it is impossible for us to apply a patch on top of
-linux-next...
+No real reason. I suppose having the error condition come first is more
+common. Not sure if it makes any difference in this case though?
 
 
-> Of course I've included the conversion patch of 
-> mediatek,mt6397-regulator.yaml.
+Thanks
+ChenYu
 
 
-> 
->>> +    unevaluatedProperties: false
->>> +    description:
->>> +      Regulators
->>> +      For mt6323, see ../regulator/mt6323-regulator.txt
->>
->> Drop, useless.
-> Should I convert it to DT schema and add to $ref above together?
-
-Or just use compatibles. There are also examples of this - in MFD
-devices, Qcom display.
-
-> 
->>
->>> +    properties:
->>> +      compatible:
->>> +        oneOf:
->>> +          - enum:
->>> +              - mediatek,mt6323-regulator
->>> +              - mediatek,mt6358-regulator
->>> +              - mediatek,mt6397-regulator
->>> +          - items:
->>> +              - enum:
->>> +                  - mediatek,mt6366-regulator # Regulator MT6366
->>> +              - const: mediatek,mt6358-regulator
->>> +
->>> +  audio-codec:
->>> +    type: object
->>> +    unevaluatedProperties: false
->>
->> This does not make sense. You do not have any ref here.
-> 
-> The dt_bindings_check will complain error here.
-> Will replace it with "additionalProperties: false".
-> 
-> 
->>> +    description:
->>> +      Audio codec
->>> +    properties:
->>> +      compatible:
->>> +        oneOf:
->>> +          - enum:
->>> +              - mediatek,mt6397-codec
->>> +              - mediatek,mt6358-sound
->>> +          - items:
->>> +              - enum:
->>> +                  - mediatek,mt6366-sound # Codec MT6366
->>> +              - const: mediatek,mt6358-sound
->>
->> This wasn't in the old binding. Commit msg also does not explain why you
->> are doing changes from conversion.
-> 
-> Will update new added item into commit message in next version.
-> 
->>> +
->>> +  clk:
->>> +    type: object
->>> +    unevaluatedProperties: false
->>
->> Again, no, it does not work like this. See example schema for
->> explanation of this.
-> 
-> Will replace it with "additionalProperties: false".
-> 
->> Convert all children - entire device. Then either use ref or
->> additionalProperties: true. See Qualcomm mdss bindings for example.
-
-Oh, look here, I even mentioned Qualcomm to use as an example...
-
-> 
-> There is no more children available for the clock node of this PMIC.
-> This is a clock buffer node. However, there are no sub nodes or any
-> public document explain these clock buffer in public domain.
-> What I've got is the compatible string in the driver.
-
-Then I don't know what you want to express here.
-
-> 
->>> +    description:
->>> +      Clock
->>
->> Your descriptions are useless. You just said "clk" node is "clock". Really?
-> 
-> Will improve it in next version.
-Best regards,
-Krzysztof
-
+> > +             /*
+> > +              * ocs is intentionally kept around as it needs to
+> > +              * exist as long as the change is applied.
+> > +              */
+> > +             void *ptr __always_unused =3D no_free_ptr(ocs);
+> > +     } else {
+> > +             /* ocs needs to be explicitly cleaned up before being fre=
+ed. */
+> > +             of_changeset_destroy(ocs);
+> > +     }
+>
+> --
+> With Best Regards,
+> Andy Shevchenko
+>
+>
 
