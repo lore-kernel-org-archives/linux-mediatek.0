@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE4FAC52D7C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 06:51:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAD5BC531DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 06:55:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TB2ZVz2m724zZx6Ujp8dGDELTqfijkJibPZvF/Zp9rA=; b=WOERudAyNoIXzvf4r/YBu1VrKu
-	JxoWCYNIrZHcmvjK8YcR+mgaTVmhOHcZKifHtsMD8ee+gDRqUCKtqyJyfN682c0LrTvYB+r0ttDvz
-	JtpWVhCHO73jv0EvcL/K0T/F5e5PSuHsElyZ0uXDJg0Hft8xj7eblR05CXSGwoowuBZygOqhYgd7d
-	wzZSs+5279GswoLT6mQ55EUgUUI910vBJ6YL8PY6OnXtobmz7+yHADYjBhYcqwtlU481UDaKmFe31
-	P4mFSI37ZQVupvsPKSNhkD7SskY1KKiwatc/5M47g6F4B3EySxASIVL+oB/5Nzfo7B85QtICOT3p5
-	G3UG1GRA==;
+	bh=DYlhEmPtRTYor0AL9cAnJrQT3p974t5Lzi77Eaz87M4=; b=CkuIJmhRBKiV/spquORUS8nBFc
+	1rYCXIh3g214fbiRktyOa38L4Zl/xLDFDvXxvK/MRBlZQgBap8y5r3r98vuvP4e3TUNsyc7sXSRpR
+	nj9lHeSukNGv8S2WNkZnevMUOoQhF33g062skZ3hRsns/2UqRyTieJzObE5EBM4jIqFcly1sXBnd8
+	K/6XgPO8odCCgaoWbI0kb+QS1448MuLFhHh2G42rzj+N5aU7mSjEWYvM0EYGSTNjkN0ICDpyh7KTx
+	3RNbfkTPbAGoghrTboPUMFSISPh2+GHyMmzNrnyBF23qOaREIRV/+6BhB5E7NmGLqRMaeMGu5CZan
+	FRiJgN9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shO8S-0000000FWom-2eKy;
-	Fri, 23 Aug 2024 06:51:00 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1shOCj-0000000FXW3-0wwz;
+	Fri, 23 Aug 2024 06:55:25 +0000
+Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shO7g-0000000FWdu-44Yb
+	id 1shOBx-0000000FXPC-2OGC
 	for linux-mediatek@lists.infradead.org;
-	Fri, 23 Aug 2024 06:50:14 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-5342109d726so672433e87.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 22 Aug 2024 23:50:12 -0700 (PDT)
+	Fri, 23 Aug 2024 06:54:39 +0000
+Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-2f4f8742138so1375631fa.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 22 Aug 2024 23:54:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1724395811; x=1725000611; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1724396075; x=1725000875; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=TB2ZVz2m724zZx6Ujp8dGDELTqfijkJibPZvF/Zp9rA=;
-        b=CoF7IPigaosmuMJrCxMMK1np95wNEQ52smBIetFv8mGkfD5xdwKFomqG+VeuG/d9XC
-         PVpK4oqRBqHmd8N/hkA7T5F4dKS6aFSInkanDslxNO4pQqfnH8BcCaN5Dwy6EYfLTacf
-         0NRsy+y7Srzd9qfsTM3GL77ku5KCCCcwYWRn0=
+        bh=DYlhEmPtRTYor0AL9cAnJrQT3p974t5Lzi77Eaz87M4=;
+        b=P92uRh/lbWltX/Wwrw8bdgbYwaehTxpqdCYJWFQEUzUOwHyeAn770I/SQrTsUgZ3hs
+         Rep/O9vqWJB0t1A0aiXTjhme2vxv5+LlYxe5CaOa5HUNsDg5pb6+BwFZNNm/twu3UC8D
+         htbe5ycSc4vQuPRk5ZKLps/ZA/wG5nuhMUZIU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724395811; x=1725000611;
+        d=1e100.net; s=20230601; t=1724396075; x=1725000875;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=TB2ZVz2m724zZx6Ujp8dGDELTqfijkJibPZvF/Zp9rA=;
-        b=sphAWHLHEBQIB2hgfYJ3hGa0StwCV2lKFB9C3g5rsZgTDeGppYVVZIDqPqJIvmR2xE
-         cqepmjnhJsrl6XPVypuXwFxnNxbUW1Nc+m8mVMPfS4EiGbAMYk2X8D7P7ySxB7MR8V6i
-         XQk14LdvNLLOkbcF9CNc1rU/2hVb+N2P2HUjL2UB7h9CEqpDljc0oAf5pgAw/ooo7VN2
-         7PSk4I22oRvZY+Gavpe31s4lfmN7X6yVn2XSH8YCinLa5H9ivIgU8lYRrENNwoYBEfbr
-         t1EcIF5EvMjbK7KXPmNJIxtjHUjix3ZzCxAccSb//OmDX5gfz57wy+H3qukmH23R2cGb
-         OxGQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVafzpF5AAUVcZMwU/D3MBx8bPGfdiGAqtMcgaVmbkdnqUn4xn/ANPezqWqUbcYcWD2XdvbOoeF1L46CmFyoA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwS87Tqr+BCRlZnFGvc6nFkJjhOVniGwit4y3mzXGrEabzYXZ44
-	5C1BGN7znFnr9s6Ki+lVcinKBQbObn65P0Ydxlk7HMVwegTgOK01IIbkuSE/MCQv2oQaVMMInOR
-	dLncdnVLz/YBYuFThxoErF57ylMOo7kkAQOVK
-X-Google-Smtp-Source: AGHT+IGa3g4OYj5kLrZwDfDw6Q/Usbiq0edBIdEx656twbCcRzHHZoU+PFE0vnmEsF1p09zxCx1iToHq1XRcOx6R0cA=
-X-Received: by 2002:a05:6512:3052:b0:533:4613:21be with SMTP id
- 2adb3069b0e04-5334ca861e8mr1890209e87.18.1724395810568; Thu, 22 Aug 2024
- 23:50:10 -0700 (PDT)
+        bh=DYlhEmPtRTYor0AL9cAnJrQT3p974t5Lzi77Eaz87M4=;
+        b=aIcDAcJVZgB5hbXRGyk9Qpa1RLapvSGLsAs99P/FRDL7sfGMY6aPHs3IYd7UVX/hK6
+         DzpCgRaEwqQLVYG4Ag0mwOSEHpLMCX+e+LMPrwqI+FU0yJF2dQVEIxIgB1zJHeAHbrss
+         NwRCZ5RSZ0EfxEz9fi/9aA2k9NBSkaB0Ldh42awJsi6sdtBJ+yPwTuweTocW9C8S028J
+         JPwAERubCsI1Vj+jxFwZ9xhrwCDxuVf2eTdrcHX7C3xKDcNQARtq291BTrgS2QR7GXwD
+         7b9UWYQkWehkKVPZirE43KcUi/XfqkrKnJQ0eD3lV8pU348hFLfULY06b3v0B8n780ga
+         Dd+w==
+X-Forwarded-Encrypted: i=1; AJvYcCXs6ndlTYXxraw/gqKxd28kO1iHzOBKGVtiDHH6XmjNF6ZLqITQ0Ye/eE7DPU8ZyUi2Uz1McKUg7R8s9vWEWA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzuee8rGRwRJNPWSEyKzGBzMiA1jg6Mkc3Jv/+MkFUROCg54sHo
+	dPay/HIfWZTitfPs96vPRc/aTC1Rf08lUb4HA+ySPJhZ1ARnZZoW3hxbsmAyu8rUAMG//qqIXfN
+	UkmtNaTPUnSjM5FPJIgDskFBMvaJjv9HLgGq8
+X-Google-Smtp-Source: AGHT+IGDC0WWTfFgI9QnQzvX49/NewGmGwj3Cz1KMtz32yMSQX3nF9dwL9fql5Pr3fEZyw3lnpJjTa3uuZm7Vkpw1m4=
+X-Received: by 2002:a05:6512:3b82:b0:52f:154:661b with SMTP id
+ 2adb3069b0e04-534387681c5mr853124e87.11.1724396075319; Thu, 22 Aug 2024
+ 23:54:35 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240822092006.3134096-1-wenst@chromium.org> <20240822092006.3134096-3-wenst@chromium.org>
- <ZsdBddTDuvNasHNq@smile.fi.intel.com>
-In-Reply-To: <ZsdBddTDuvNasHNq@smile.fi.intel.com>
+References: <20240822092006.3134096-1-wenst@chromium.org> <20240822092006.3134096-4-wenst@chromium.org>
+ <ZsdB1vsEe0atW88_@smile.fi.intel.com>
+In-Reply-To: <ZsdB1vsEe0atW88_@smile.fi.intel.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 23 Aug 2024 14:49:59 +0800
-Message-ID: <CAGXv+5FjwxGQgV6SdLfTeNRYbpcgwkEnCWvaZiWh4rs3bhs-2A@mail.gmail.com>
-Subject: Re: [PATCH v5 02/10] regulator: Move OF-specific regulator lookup
- code to of_regulator.c
+Date: Fri, 23 Aug 2024 14:54:24 +0800
+Message-ID: <CAGXv+5Ew1tQKmuKckovfHCgH-ja0qSmqJWOk2qowQC4k_1tvYQ@mail.gmail.com>
+Subject: Re: [PATCH v5 03/10] regulator: Split up _regulator_get()
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -80,8 +79,8 @@ Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240822_235013_066950_7F922E55 
-X-CRM114-Status: GOOD (  25.23  )
+X-CRM114-CacheID: sfid-20240822_235437_613792_A4B530DC 
+X-CRM114-Status: GOOD (  16.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,72 +95,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 22, 2024 at 9:47=E2=80=AFPM Andy Shevchenko
+On Thu, Aug 22, 2024 at 9:49=E2=80=AFPM Andy Shevchenko
 <andriy.shevchenko@linux.intel.com> wrote:
 >
-> On Thu, Aug 22, 2024 at 05:19:55PM +0800, Chen-Yu Tsai wrote:
-> > There's still a bit of OF-specific code in the regulator device lookup
-> > function.
+> On Thu, Aug 22, 2024 at 05:19:56PM +0800, Chen-Yu Tsai wrote:
+> > _regulator_get() contains a lot of common code doing checks prior to th=
+e
+> > regulator lookup and housekeeping work after the lookup. Almost all the
+> > code could be shared with a OF-specific variant of _regulator_get().
 > >
-> > Move those bits of code over to of_regulator.c, and create a new
-> > function of_regulator_dev_lookup() to encapsulate the code moved out of
-> > regulator_dev_lookup().
-> >
-> > Also mark of_find_regulator_by_node() as static, since there are no
-> > other users in other compile units.
-> >
-> > There are no functional changes.
->
-> ...
+> > Split out the common parts so that they can be reused. The OF-specific
+> > version of _regulator_get() will be added in a subsequent patch.
+> > No functional changes were made.
 >
 > > +/**
-> > + * of_get_child_regulator - get a child regulator device node
-> > + * based on supply name
-> > + * @parent: Parent device node
-> > + * @prop_name: Combination regulator supply name and "-supply"
+> > + * _regulator_get_common - Common code for regulator requests
+> > + * @rdev: regulator device pointer as returned by *regulator_dev_looku=
+p()
+> > + *       Its reference count is expected to have been incremented.
+> > + * @dev: device used for dev_printk messages
+> > + * @id: Supply name or regulator ID
+> > + * @get_type: enum regulator_get_type value corresponding to type of r=
+equest
 > > + *
-> > + * Traverse all child nodes.
-> > + * Extract the child regulator device node corresponding to the supply=
- name.
-> > + * returns the device node corresponding to the regulator if found, el=
-se
-> > + * returns NULL.
+> > + * Returns a struct regulator corresponding to @rdev,
+> > + * or IS_ERR() condition containing errno.
+> > + *
+> > + * This function should be chained with *regulator_dev_lookup() functi=
+ons.
 >
-> At the same time you may fix kernel-doc warnings (no "Return" section) in=
- these
-> three (on your wish you may fix others in a separate change, but it's not
-> related to this series).
+> kernel-doc will warn here: No "Return" section.
 
-As you said some other functions are missing it as well, so I'll do a
-patch separate from this series to fix them all.
+Will fix.
 
-> > + */
->
-> ...
->
-> > +/** of_regulator_dev_lookup - lookup a regulator device with device tr=
-ee only
->
-> Something went wrong with the indentation.
-
-Will fix, and also add a "Return" section.
-
-
-Thanks
 ChenYu
 
-> > + * @dev: Device pointer for regulator supply lookup.
-> > + * @supply: Supply name or regulator ID.
-> > + *
-> > + * If successful, returns a struct regulator_dev that corresponds to t=
-he name
-> > + * @supply and with the embedded struct device refcount incremented by=
- one.
-> > + * The refcount must be dropped by calling put_device().
-> > + * On failure one of the following ERR-PTR-encoded values is returned:
-> > + * -ENODEV if lookup fails permanently, -EPROBE_DEFER if lookup could =
-succeed
-> > + * in the future.
 > > + */
 >
 > --
