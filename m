@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1641FC531DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 14:15:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEAD3C52D7C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 15:24:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YLkCm+92u6sWHnBCcW3QFsk7uF4UMVlkDcI9nxI0grU=; b=WAP/cYrbrrDLi90XiYHvjqgwMv
-	IkqNBkrHATBcngZEr8l6MrbE/WChSF630kTEQS89Y12sU+g7vGBVD+chKjWR8IkLJUnes/usBLqwG
-	4ZvCv+OzUJEIABqD2v+/fyJDsUTg4UDuxW2kFkaj8rJFuIcBtVLoGV0tyoMqdg4pPtWCy7IbucYs9
-	Fbgg9XgYucO4VkahEQvu8C/07MwotbySUkVhpYLLpuxgFH5mCARr9wmbbU34ZW3aKt/I4xd34RVlp
-	dSJKAUulzmxTDJQqDH5ddwHXog5Qzfaytc3aP9cYD9dZaVMGd0TO5AL40eoVfbQO3BJdDKaT01Qh6
-	4Orq6TkQ==;
+	bh=P1cL9EeZ4+4EpZOIxL5FlEKqQ7oajrUqL8HBJ40Wupw=; b=IhHTMyNiiFsV4f/xasv2a5XMxA
+	v5nmyEjvhBuCh7nJL5KK5OkX8da855/wvr1N25JLHRSjJgR56H5jBp42XZx8DiiH0+fXlUAmgbN08
+	rTE0aDscj8LbSgvo55sakhIiPeccXae0HlfxNR7VvrQojG4MAdbTrgM27TwC2ODW0Hg1dTRZecUEq
+	Cw/O2xzeLBr2IykKuJRwM429NKqPi5I30Oo0N07ymBZ7ZsOiRzq2Z/VfSob71HkBFlF+3zjavsgbd
+	N+y57dl1dzVPkqWNyj/aFBBll1Vj0cztvaz1GpnAejw9B6Lilc8wY43jVBfr4s5rixrnThqgmP+3z
+	jo4LnVAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shV4G-0000000H312-0yyI;
-	Fri, 23 Aug 2024 14:15:08 +0000
+	id 1shW8w-0000000HHrd-3aVY;
+	Fri, 23 Aug 2024 15:24:02 +0000
 Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shV4D-0000000H2zl-1HFM;
-	Fri, 23 Aug 2024 14:15:06 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1724422501; cv=none; 
+	id 1shW8i-0000000HHnm-3iNu;
+	Fri, 23 Aug 2024 15:23:50 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1724426625; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=JjceiZWJtI1fUL/OB+7hTt7iC8BUQNhc3tvezrUvZZ3oaUgItn9OBy7AaAVd+AGJKT70OoDiV7v9duLGsx0lJv8pg5UbbDh38Uh6wShDEqgv62HHrHSKQdlmPG8zRnoLmousu0EOwoNj271pMHwF/zjmj4FtIa+BzzL9mWKT8NY=
+	b=YY61u2QHEh3TyX+mPY4Akk3f68nTPIaSz9fOYvcxGEVOzn271buw29BZN8C1ra8zE7cxbwxLLNIkkNDMXFwO2PrcDSkzuro3fYYE2nCI8WTN24ciXYP81+1nadfQ0Ux0JV0hh3cSaShyOJX1vYnnQhrrNbeMQU3q7JHCaijDS+U=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1724422501; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=YLkCm+92u6sWHnBCcW3QFsk7uF4UMVlkDcI9nxI0grU=; 
-	b=eombKDlK304bsE3d8P+splbUGc2VGtVHlDx3EruzstDrlNRm2u5kSC6vmi4s0iuynwzbPc7X51i1Blk20wnD7KazKMzI9nL7gv7V798/056ZKa0pptTOjfE9UOfnlnKizqMBh6m0iszRMYzqC3kLgWFAC2oRFoR6aWf+ThS8phw=
+	t=1724426625; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=P1cL9EeZ4+4EpZOIxL5FlEKqQ7oajrUqL8HBJ40Wupw=; 
+	b=cHQ9lr75NVT2jt7GsCDKXQADoqxVgqLn3HR8I2VhWxm9AbCiKn+Y/Hc+Jtz9bIKZe8DXP5jlOobNMQNksLfqK9S6qlxwT8rqxHXPmvkctm1Yr7s6bsongP7CTYPQOK6cyX2UWfvh/Kid+wJYep9C3iDNXapxiEV9VyeTdbLJ3nk=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=sebastian.fricke@collabora.com;
 	dmarc=pass header.from=<sebastian.fricke@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724422501;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724426625;
 	s=zohomail; d=collabora.com; i=sebastian.fricke@collabora.com;
 	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=YLkCm+92u6sWHnBCcW3QFsk7uF4UMVlkDcI9nxI0grU=;
-	b=gAPC+rd2nZXJL/rx/VP2x5RKOgJcdggFEJH0Pl18qgfPE6McP+f5AzEjZN+1V8U/
-	h45r+M+V0sSg4AbA+S+si5DKxTxNCa/XusJKo4yXMbchJGBwfUB6G5lEV135ASCOnwD
-	P9VNNtX5GO63Ssql8BGCibswpbwqEZku2MC+0QrQ=
-Received: by mx.zohomail.com with SMTPS id 1724422500162588.6716232629527;
-	Fri, 23 Aug 2024 07:15:00 -0700 (PDT)
-Date: Fri, 23 Aug 2024 16:14:54 +0200
+	bh=P1cL9EeZ4+4EpZOIxL5FlEKqQ7oajrUqL8HBJ40Wupw=;
+	b=fbJDTmRzLXEIIPjhgcxLVu290CQcBX/tPN52Nbrx3/q27PyRC9zkhPSbQTVzIP1I
+	bqfYAkhqxf6NUiiESl/HaqgkRjcM/mt4PrTXJfQAOayPmXpN9FIIYf2wu0ENwQ4wl/Y
+	mBIj+Xy1u0RmuEWkpoQVg3nfrZvFif1NjDQBlYdc=
+Received: by mx.zohomail.com with SMTPS id 1724426623925742.9251945533158;
+	Fri, 23 Aug 2024 08:23:43 -0700 (PDT)
+Date: Fri, 23 Aug 2024 17:23:38 +0200
 From: Sebastian Fricke <sebastian.fricke@collabora.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>
 Cc: =?utf-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4=?= Prado <nfraprado@collabora.com>,
@@ -63,18 +63,19 @@ Cc: =?utf-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4=?= Prado <nfraprado@collabora.com>,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v4 5/7] media: mediatek: vcodec: store source vb2 buffer
-Message-ID: <20240823141454.vvtbkkj5qm4pmpfr@basti-XPS-13-9310>
+Subject: Re: [PATCH v4 6/7] media: mediatek: vcodec: replace
+ v4l2_m2m_next_src_buf with v4l2_m2m_src_buf_remove
+Message-ID: <20240823152338.n7i7cnvolvke2hqp@basti-XPS-13-9310>
 References: <20240807082444.21280-1-yunfei.dong@mediatek.com>
- <20240807082444.21280-6-yunfei.dong@mediatek.com>
+ <20240807082444.21280-7-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Disposition: inline
-In-Reply-To: <20240807082444.21280-6-yunfei.dong@mediatek.com>
+In-Reply-To: <20240807082444.21280-7-yunfei.dong@mediatek.com>
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_071505_416371_AE65A618 
-X-CRM114-Status: GOOD (  21.09  )
+X-CRM114-CacheID: sfid-20240823_082348_976614_35A368D3 
+X-CRM114-Status: GOOD (  21.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,118 +93,109 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Hey Yunfei,
 
 On 07.08.2024 16:24, Yunfei Dong wrote:
->Store the current vb2 buffer when lat need to decode again.
->Then lat work can get the same vb2 buffer directly next time.
+>There isn't lock to protect source buffer when get next src buffer,
+>if the source buffer is removed for some unknown reason before lat
+>work queue execute done, will lead to remove source buffer or buffer
+>done error.
 
-I would reword this with:
+This is really hard to understand, can try wording this a bit clearer?
+Stuff like: if the source buffer is removed ... will lead to remove
+source buffer, just leaves me scratching my head.
+And there is a spinlock in the m2m framework in `v4l2_m2m_next_buf` so I
+suppose you mean something else when you say that there is no lock to
+protect the source buffer?
 
-Store the current source buffer in the specific data for the IC. When
-the LAT needs to retry a decode it can pick that buffer directly.
-
----
-
-Additionally, this is not a good commit description as you just say what
-you do, but you don't say WHY this needs to happen, why is it necessary?
-What does it improve, is this a preparation patch for another, a fix for
-something or an improvement of performance?
-
-
-more below...
+You might not know all reasons but for this commit description you
+should at least know one reason. Please highlight a case how this can
+happen, so that you can justify the change.
 
 >
 >Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 >---
-> .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h      |  2 ++
-> .../vcodec/decoder/mtk_vcodec_dec_stateless.c         | 11 ++++++++---
-> 2 files changed, 10 insertions(+), 3 deletions(-)
+> .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 30 +++++++++++++------
+> 1 file changed, 21 insertions(+), 9 deletions(-)
 >
->diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
->index 1fabe8c5b7a4..0817be73f8e0 100644
->--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
->+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
->@@ -155,6 +155,7 @@ struct mtk_vcodec_dec_pdata {
->  * @last_decoded_picinfo: pic information get from latest decode
->  * @empty_flush_buf: a fake size-0 capture buffer that indicates flush. Used
->  *		     for stateful decoder.
->+ * @last_vb2_v4l2_src: the backup of current source buffer.
-
-I think last is confusing in this context especially as there is for
-example in the m2m_ctx:
-  * @last_src_buf: indicate the last source buffer for draining
-  * @next_buf_last: next capture queud buffer will be tagged as last
-or:
-  * v4l2_m2m_last_buf() - return last buffer from the list of ready buffers
-
-I think a better name would be:
-
-  * @cur_src_buf: current source buffer with the bitstream data for the latest decode
-
->  * @is_flushing: set to true if flushing is in progress.
->  *
->  * @current_codec: current set input codec, in V4L2 pixel format
->@@ -201,6 +202,7 @@ struct mtk_vcodec_dec_ctx {
-> 	struct work_struct decode_work;
-> 	struct vdec_pic_info last_decoded_picinfo;
-> 	struct v4l2_m2m_buffer empty_flush_buf;
->+	struct vb2_v4l2_buffer *last_vb2_v4l2_src;
-
-Likewise here:
-
-struct vb2_v4l2_buffer *cur_src_buf;
-
-> 	bool is_flushing;
->
-> 	u32 current_codec;
 >diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
->index 2a7e4fe24ed3..8aa379872ddc 100644
+>index 8aa379872ddc..3dba3549000a 100644
 >--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
 >+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
->@@ -320,7 +320,7 @@ static void mtk_vdec_worker(struct work_struct *work)
-> 	struct mtk_vcodec_dec_ctx *ctx =
+>@@ -321,6 +321,7 @@ static void mtk_vdec_worker(struct work_struct *work)
 > 		container_of(work, struct mtk_vcodec_dec_ctx, decode_work);
 > 	struct mtk_vcodec_dec_dev *dev = ctx->dev;
->-	struct vb2_v4l2_buffer *vb2_v4l2_src;
->+	struct vb2_v4l2_buffer *vb2_v4l2_src = ctx->last_vb2_v4l2_src;
-
-And here:
-
-struct vb2_v4l2_buffer *vb2_v4l2_src = ctx->cur_src_buf;
-
+> 	struct vb2_v4l2_buffer *vb2_v4l2_src = ctx->last_vb2_v4l2_src;
+>+	struct vb2_v4l2_buffer *vb2_v4l2_dst;
 > 	struct vb2_buffer *vb2_src;
 > 	struct mtk_vcodec_mem *bs_src;
 > 	struct mtk_video_dec_buf *dec_buf_src;
->@@ -329,7 +329,7 @@ static void mtk_vdec_worker(struct work_struct *work)
+>@@ -329,7 +330,7 @@ static void mtk_vdec_worker(struct work_struct *work)
 > 	bool res_chg = false;
 > 	int ret;
 >
->-	vb2_v4l2_src = v4l2_m2m_next_src_buf(ctx->m2m_ctx);
->+	vb2_v4l2_src = vb2_v4l2_src ? vb2_v4l2_src : v4l2_m2m_next_src_buf(ctx->m2m_ctx);
+>-	vb2_v4l2_src = vb2_v4l2_src ? vb2_v4l2_src : v4l2_m2m_next_src_buf(ctx->m2m_ctx);
+>+	vb2_v4l2_src = vb2_v4l2_src ? vb2_v4l2_src : v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
+> 	if (!vb2_v4l2_src) {
+> 		v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
+> 		mtk_v4l2_vdec_dbg(1, ctx, "[%d] no available source buffer", ctx->id);
+>@@ -381,17 +382,28 @@ static void mtk_vdec_worker(struct work_struct *work)
+> 	    ctx->current_codec == V4L2_PIX_FMT_VP8_FRAME) {
+> 		if (src_buf_req)
+> 			v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
+>-		v4l2_m2m_buf_done_and_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx, state);
+>-	} else {
+>-		if (ret != -EAGAIN) {
+>-			v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
+>-			ctx->last_vb2_v4l2_src = NULL;
+>-		} else {
+>-			ctx->last_vb2_v4l2_src = vb2_v4l2_src;
+>-		}
+>+		vb2_v4l2_dst = v4l2_m2m_dst_buf_remove(ctx->m2m_ctx);
+>+		v4l2_m2m_buf_done(vb2_v4l2_dst, state);
+>+		v4l2_m2m_buf_done(vb2_v4l2_src, state);
 
-Please add a comment above this line that explains why this search can
-be made, explaining why this buffer is still valid in this call and when
-we pick the next source buffer.
+This is another case where you just remove again completely what you
+have added in the previous patch.
+
+>
+> 		v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
+>+		return;
+> 	}
+>+
+>+	/* If each codec return -EAGAIN to decode again, need to backup current source
+>+	 * buffer, then the driver will get this buffer next time.
+
+I would reword this like:
+
+	/* Store the current source buffer for the next attempt to decode,
+    * if this decode returned -EAGAIN */
+
+>+	 *
+>+	 * If each codec decode error, must to set buffer done with error status for
+>+	 * this buffer have been removed from ready list.
+>+	 */
+>+	ctx->last_vb2_v4l2_src = (ret != -EAGAIN) ? NULL : vb2_v4l2_src;
+
+Okay and here you add the same thing again as in the previous patch but
+differently, this collection of commits feels more and more to me like a
+work in progress. Please make sure in the future that each commit does
+one job and does it completely.
+It is not only confussing but also makes it hard to read the changes as
+the bigger picture is missing in these tiny commits.
+
+Please try to combine the patches where possible.
 
 Regards,
 Sebastian Fricke
 
-> 	if (!vb2_v4l2_src) {
-> 		v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
-> 		mtk_v4l2_vdec_dbg(1, ctx, "[%d] no available source buffer", ctx->id);
->@@ -383,8 +383,13 @@ static void mtk_vdec_worker(struct work_struct *work)
-> 			v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
-> 		v4l2_m2m_buf_done_and_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx, state);
-> 	} else {
->-		if (ret != -EAGAIN)
->+		if (ret != -EAGAIN) {
-> 			v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
->+			ctx->last_vb2_v4l2_src = NULL;
->+		} else {
->+			ctx->last_vb2_v4l2_src = vb2_v4l2_src;
->+		}
+>+	if (ret && ret != -EAGAIN) {
+>+		if (src_buf_req)
+>+			v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
+>+		v4l2_m2m_buf_done(vb2_v4l2_src, state);
+>+	}
 >+
-> 		v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
-> 	}
+>+	v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
 > }
+>
+> static void vb2ops_vdec_stateless_buf_queue(struct vb2_buffer *vb)
 >-- 
 >2.46.0
 >
