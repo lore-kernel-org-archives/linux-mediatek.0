@@ -4,58 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57E56C52D7C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 14:02:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FA53C52D7C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 14:03:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=2buiGMeTLw8HjLSI+F+yr2JIk87pbMCEy24zw5cgsOQ=; b=R+rkG2r54Xw8JF
-	MpUFQsURvbj+NnOhn7y3EdDTsG7Z7nlaEvHC4a/hzak9MJkoRCXdJAgPYimU4cfUDDShr+kl310I1
-	z9JOiRbJS+V3MU2+nODLt2bjapw/w5CFE9K9iBaupzCZKHd8UTn+Uzfsq53/Ls4p6UyiwTbMoumdT
-	UoXlapAs+uCL75HdAbjGY/vhOgayIQ0AenVOUVEvcYFkie8IQ6cN2NOVxqyHJ4U9BFBpo+WH/ZaTi
-	AIri89qgRD5QDFtOE5lxSHfRJ1XxJ1KGaYjL0mcZvJ6oAQ/HPDRd1Lzpc011UDRsxq6ImJSb2SFCE
-	C1acpIrW5zYfh6HjY1iw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QYcbLoEJLzMR/koL3CSmXdZhUdn7WEUX3IHhLDRpKRA=; b=kYYtZQEUUyP+iccBsQpjqcPmz/
+	D5R9e0w3u01Qihy21UPKAPxe/eHeVw/t99Q2jQIeVWiLpszaNiSUxxDr3Xngx8/19+LoEDE8kSdPY
+	+T6Kumk2Sdt9lwt087k/BSgd4dmyqape6eCb+1lMxN9fr/b9IWPZBVLMefr8Y6H7Sj5GMfyUPhGUp
+	cxuYbkN+GtBvoSki7h0kp/fLkULL5oBkt7wZ+ackk73oAgytzUYPdBBnO+Ov6N22oPYAiX1NSELA1
+	duUTMokwGaAGLvMBV8gXkPy8cMQn2FQRL99/xz2FXWUA35xd03CsBDYU18uCYf29zff+1viQ2klPt
+	ULNrOF1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shUro-0000000Gz4A-3ZHP;
-	Fri, 23 Aug 2024 14:02:16 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1shUsY-0000000GzLe-2lpb;
+	Fri, 23 Aug 2024 14:03:02 +0000
+Received: from mgamail.intel.com ([192.198.163.18])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shUr1-0000000Gyke-39Tf;
-	Fri, 23 Aug 2024 14:01:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 68A6ECE09D0;
-	Fri, 23 Aug 2024 14:01:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF39BC32786;
-	Fri, 23 Aug 2024 14:01:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724421684;
-	bh=v2GAa73zU3iAPH4GtRJqLTx0Fal/h2Cne66iizWEres=;
-	h=From:To:Cc:Subject:Date:From;
-	b=sEY6Lmg2697Gb5W7EOVk2j2o0tsWUniwfwvn//pp5zFQeEYbEcC3E+sp1V33Vedrk
-	 tSnjRASP4DASHj0tacdzJUu5Iq4hDy1HXgRPddNnPQshtAGNabDL5W3iHBzSUnZal5
-	 BlgyPyEpifi9FwXgV0IOgT2wZYyTwmHYuYbjxpW4S+TA6ERV7w1aoPOwAnjfyXth+C
-	 8NsRgzAm9ojH0SY0Hc8zOiImIoXq1oPSHgaFzBTv9NAjPWdQmYr07dDCaZk7FTSUzw
-	 qS6atd4+QPVYn54+hacIaCKOr14P1xkFtXCuk0ewdu+l9rzuQfMKTTbPLncdMLaHRP
-	 EIu20ucH+Hm6Q==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 6.10 01/24] drm/mediatek: Set sensible cursor width/height values to fix crash
-Date: Fri, 23 Aug 2024 10:00:23 -0400
-Message-ID: <20240823140121.1974012-1-sashal@kernel.org>
-X-Mailer: git-send-email 2.43.0
+	id 1shUrG-0000000Gyq7-2WEP;
+	Fri, 23 Aug 2024 14:01:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1724421703; x=1755957703;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=3yHP9wBn0SJcAbqYl8E8vpjlCd39wZV+iP+REGMWKgE=;
+  b=cslIqk2qTFG8B3n0epjJnj6y3+sZ6UoCHB4BXDwqoJ5tDG3Y+XvxlhYV
+   1smhuXBDHWNHAbM1jy8J20EV0lhB6iG9nwb5JT/9D0Yt+CabQzALGs/bY
+   BTJ2c0KF549lw2VOcERxNad8RfeDvbYRBiti5BCp/ImZ7YVupTycacV5j
+   6VfbNQtiaeWsNaPhvgtXkuKr8l3htbfrUNRTUF/SShip/jnC4x5UpdJKU
+   n/EPiOUfBMLpsFn+L3iUPGezPfzlPKERy4OECHet3u3MoRaqK+UEUKLxl
+   VO9H7zOJTLn5shfrt2eiRINk6e3Q3V4iWvXT3lAZ65tGjIn2wIaeM7Tow
+   Q==;
+X-CSE-ConnectionGUID: q+QIlE2VTVWp+34dw69ung==
+X-CSE-MsgGUID: 53zt7meyQyKN0dOpmIJYCw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11172"; a="22412169"
+X-IronPort-AV: E=Sophos;i="6.10,170,1719903600"; 
+   d="scan'208";a="22412169"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Aug 2024 07:01:41 -0700
+X-CSE-ConnectionGUID: gY6ksg/lRlC/GHXXERowJA==
+X-CSE-MsgGUID: DSzI+E0EQtK7ef5AaKdSkA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,170,1719903600"; 
+   d="scan'208";a="66726448"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by orviesa005.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Aug 2024 07:01:36 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.98)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1shUqs-00000000oRR-3UOF;
+	Fri, 23 Aug 2024 17:01:18 +0300
+Date: Fri, 23 Aug 2024 17:00:32 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wolfram Sang <wsa@kernel.org>, Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>, Mark Brown <broonie@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Douglas Anderson <dianders@chromium.org>,
+	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
+	linux-i2c@vger.kernel.org
+Subject: Re: [PATCH v5 08/10] i2c: of-prober: Add GPIO support
+Message-ID: <ZsiWALpt1IpTHsKg@smile.fi.intel.com>
+References: <20240822092006.3134096-1-wenst@chromium.org>
+ <20240822092006.3134096-9-wenst@chromium.org>
+ <ZsdJOUe44hiGur-s@smile.fi.intel.com>
+ <CAGXv+5G7h08Pvd24_6LoUB_8w_Cd0RntRSjNdn_FjrRH1ZF5oQ@mail.gmail.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.10.6
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAGXv+5G7h08Pvd24_6LoUB_8w_Cd0RntRSjNdn_FjrRH1ZF5oQ@mail.gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_070127_989324_DAE5865D 
-X-CRM114-Status: GOOD (  12.27  )
+X-CRM114-CacheID: sfid-20240823_070142_714046_1A7FB1E9 
+X-CRM114-Status: GOOD (  30.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,55 +98,96 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Daniel Stone <daniels@collabora.com>, dri-devel@lists.freedesktop.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, p.zabel@pengutronix.de, CK Hu <ck.hu@mediatek.com>, daniel@ffwll.ch, airlied@gmail.com, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On Fri, Aug 23, 2024 at 06:32:16PM +0800, Chen-Yu Tsai wrote:
+> On Thu, Aug 22, 2024 at 10:20 PM Andy Shevchenko
+> <andriy.shevchenko@linux.intel.com> wrote:
+> > On Thu, Aug 22, 2024 at 05:20:01PM +0800, Chen-Yu Tsai wrote:
 
-[ Upstream commit 042b8711a0beafb2c3b888bebe3c300ab4c817fa ]
+...
 
-Hardware-speaking, there is no feature-reduced cursor specific
-plane, so this driver reserves the last all Overlay plane as a
-Cursor plane, but sets the maximum cursor width/height to the
-maximum value that the full overlay plane can use.
+> > > +     if (!data->gpiods)
+> > > +             return 0;
+> >
+> > If it comes a new code (something else besides GPIOs and regulators) this
+> > will be a (small) impediment. Better to have a helper for each case and do
+> >
+> >         ret = ..._gpiods();
+> >         if (ret)
+> >                 ...
+> >
+> > Same for regulators and anything else in the future, if any.
+> 
+> I'm not sure I follow. Do you mean wrap each individual type in a wrapper
+> and call those here, like the following?
+> 
+>     i2c_of_probe_enable_res(...)
+>     {
+>         ret = i2c_of_probe_enable_regulators(...)
+>         if (ret)
+>               return ret;
+> 
+>         ret = i2c_of_probe_enable_gpios(...)
+>         if (ret)
+>               goto error_disable_regulators;
+> 
+>         ...
+>     }
 
-While this could be ok, it raises issues with common userspace
-using libdrm (especially Mutter, but other compositors too) which
-will crash upon performing allocations and/or using said cursor
-plane.
+Yes.
 
-Reduce the maximum width/height for the cursor to 512x512 pixels,
-value taken from IGT's maximum cursor size test, which succeeds.
+...
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Fei Shao <fshao@chromium.org>
-Tested-by: Fei Shao <fshao@chromium.org>
-Reviewed-by: Daniel Stone <daniels@collabora.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Link: https://patchwork.kernel.org/project/dri-devel/patch/20240718082410.204459-1-angelogioacchino.delregno@collabora.com/
-Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> > > +             /*
+> > > +              * reset GPIOs normally have opposite polarity compared to
+> >
+> > "reset"
+> >
+> > > +              * enable GPIOs. Instead of parsing the flags again, simply
+> >
+> > "enable"
+> >
+> > > +              * set the raw value to high.
+> >
+> > This is quite a fragile assumption. Yes, it would work in 98% cases, but will
+> > break if it's not true somewhere else.
+> 
+> Well, this seems to be the de facto standard. Or it would have to remember
+> what each GPIO descriptor's name is, and try to classify those into either
+> "enable" or "reset", and set their respective logical values to 1 or 0.
+> And then you run into a peripheral with a broken binding that has its
+> "reset" GPIO inverted, i.e. it's driver behavior needs to follow the
+> "enable" GPIO style. The class of devices this prober targets are
+> consumer electronics (laptops, tablets, phones) that at least have gone
+> through some component selection where the options won't have conflicting
+> requirements.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 56f409ad7f390..ab2bace792e46 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -539,8 +539,8 @@ static int mtk_drm_kms_init(struct drm_device *drm)
- 	}
- 
- 	/* IGT will check if the cursor size is configured */
--	drm->mode_config.cursor_width = drm->mode_config.max_width;
--	drm->mode_config.cursor_height = drm->mode_config.max_height;
-+	drm->mode_config.cursor_width = 512;
-+	drm->mode_config.cursor_height = 512;
- 
- 	/* Use OVL device for all DMA memory allocations */
- 	crtc = drm_crtc_from_index(drm, 0);
+I'm talking from real life example(s) :-)
+
+Recently I looked at the OV7251 sensor driver that expects "enable" GPIO while
+all users supply "reset"-as-"enable" with the exact trouble I described.
+Yet it's pure software / ABI issue in that case, but who knows what PCB
+engineers may come up with.
+
+> And if the polarities of the possible components don't line up, then this
+> probe structure can't really do anything. One would need something that
+> power sequences each component separately and probes it. I would really
+> like to avoid that if possible, as it makes the boot time (to peripheral
+> available) dependent on which component you have and how far down the
+> list it is. We have Chromebooks that have 4 touchscreen components
+> introduced over the years. In that case something more like Doug's
+> original proposal would work better: something that forces mutual
+> exclusivity among a class of devices.
+
+Maybe. I just pointed out the potential problem.
+
+> > > +              */
+
 -- 
-2.43.0
+With Best Regards,
+Andy Shevchenko
+
 
 
