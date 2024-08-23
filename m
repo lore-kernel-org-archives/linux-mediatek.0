@@ -4,77 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10C69C531DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 15:49:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA8BBC531DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 16:07:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jjRlTDki3GkTErS0Ge0MuLopk0eojhlCbmXkL45WmuQ=; b=Oe+AO+x3fDxTs8pVvBylq19yZB
-	xe+++DPcITPGNcnE3Qdn8aTUIz7XuPezjc7iswFhlJC/R+QcZ2w91En0Ci32kWK+t3/+6Xz7LhugR
-	efZCSQqfnwg4W9nhS/x5GTdJuOZ1N8tx+o42fD7XCpO1B24f8l85j6nGCRP8GwdIWOEjjksBbM10u
-	aMMu2ajokw9pEhVdIT/p1qteaP/v5vib6hUX2DDBfUPjxM7imo032g3H/5VKd0xuxLdZO/j+IcCC2
-	TcZitKqTztN/vZpeOjiiej1iatlLKkzt0MXDd1BRO0Cb93w5WrcB7+uaOt3K8ZRN3oVHiQFeRMLSf
-	BBJ+UNlQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9OCNvj/wx5yxOsb2/+mcktbpA3DNvcmR3VULCO7umQ0=; b=4EJ+aP5GTdvoRD5c2YDQAEj4YI
+	7VVzua+/EmEIQM6MTJUV3vF0eVyOcH6eRqHPzJMdUhQrJlTtldbADFRmiBHNNgDpoc43UhtH6/yfg
+	e9LwSO0yaUajLrk8081QURzC8aEWyTAkhqfPVF3DLrTSi+7ARVB99x84jpZq/nsJ5xzTo3801p/c9
+	sQGjG0myEOsbeJiTNuKyD2Ur/vB4JL9dgT7LLTFjjbwiz5C4BT65Z+De3jigHth2LiN5xGDOMK9hx
+	3IJAl47rBUXHZyNWJVjXecLLlG6qBg9qAKVlQzUNdT9cmi4pRF6wnlg7V57tIJ/504cUPruaYLbSG
+	TC443yrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shWXO-0000000HOQl-2NgY;
-	Fri, 23 Aug 2024 15:49:18 +0000
-Received: from sender3-op-o17.zoho.com ([136.143.184.17])
+	id 1shWpO-0000000HTAn-1eG5;
+	Fri, 23 Aug 2024 16:07:54 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shWTl-0000000HN3K-18uJ;
-	Fri, 23 Aug 2024 15:45:34 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1724427930; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ZpWRIXfx5JAWcNDBsiSv5hE91EAiPNui/gKAuJZKKA5w94+WDufEL/6AgUh7oavRIguleCu+x0/bio5oiDe/WGLW3pH1/p5VQZQnv00KDmcGgpm5WUPoXeRAa71adpdFOfLewqzDc023l9Z4CFylaGXytzdsZFWfZW2vyn/ifRY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1724427930; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=jjRlTDki3GkTErS0Ge0MuLopk0eojhlCbmXkL45WmuQ=; 
-	b=Xv6xEqOSLx9VHjLCOb9OW3yiC8NHjTkq/xyIkjMuRIaJU0o9XeSK05arJCIJhDuzO8ZlMcLIGuPbjBLuDnJj4g/Cn73VFX9K/GCkyvtytPSCgc5FZwG1a3gHSqQIvEFJybwYmTYlkeV/UyVaLJm5AajIHMUwRLX5ctHzxV+mMSg=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.fricke@collabora.com;
-	dmarc=pass header.from=<sebastian.fricke@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724427930;
-	s=zohomail; d=collabora.com; i=sebastian.fricke@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=jjRlTDki3GkTErS0Ge0MuLopk0eojhlCbmXkL45WmuQ=;
-	b=HfrO7R0+qzI9ALPjs4zyDBXi0KETzRfCfuVdVVksD43xuiO/KM4hAti+yxXZef9d
-	9xGB0yAzY3APNfmRPxxLpHQqwngodEuQW287/xHtIYSkt8PwtPia+J8EXIQzSiCZuK3
-	hs0inY0Z8J4JSeTc5AVlvO5FUf6NmH/wmNYLncUs=
-Received: by mx.zohomail.com with SMTPS id 1724427929068728.6124036633798;
-	Fri, 23 Aug 2024 08:45:29 -0700 (PDT)
-Date: Fri, 23 Aug 2024 17:45:23 +0200
-From: Sebastian Fricke <sebastian.fricke@collabora.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: =?utf-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4=?= Prado <nfraprado@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Nathan Hebert <nhebert@chromium.org>,
-	Daniel Almeida <daniel.almeida@collabora.com>,
-	Hsin-Yi Wang <hsinyi@chromium.org>,
-	Fritz Koenig <frkoenig@chromium.org>,
-	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v4 0/7] media: mediatek: vcodec: fix
- v4l2_ctrl_request_complete fail
-Message-ID: <20240823154523.fucqvc4cnqk5jrlg@basti-XPS-13-9310>
-References: <20240807082444.21280-1-yunfei.dong@mediatek.com>
+	id 1shWpM-0000000HT9b-21cq
+	for linux-mediatek@lists.infradead.org;
+	Fri, 23 Aug 2024 16:07:53 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-5334b0e1a8eso2721083e87.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 23 Aug 2024 09:07:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1724429271; x=1725034071; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=9OCNvj/wx5yxOsb2/+mcktbpA3DNvcmR3VULCO7umQ0=;
+        b=wE3Oi/X9uI8BsKM3ePqGO2v8XkAIFKjxUN/nPSiiYTWL3P6GvRKHS8P+XN0z6ZDVqk
+         rdlhyAWBNnlGqcWQZ/VvPbuXM2sfJKJWODz+Vu4topEGewlM3rHmgBuec2QIbsWA/8f+
+         C6OMrQZ9TdLYeJzjp3kg/LXzJQMyvQ7YX9WzsbjGEMt4hdM+0WwLoV0Thjrhj+FVBqZl
+         SYj6z/yJbGDFVsFhRx3P4/bbgtnjfNUNnsKF7eDHF2bhHEKZhF/PlDuqR+HbS1ZFi8Bh
+         9INJOJhDyAwBqzlSibJVQPbJhzL5Ct8puJ9cmF4Avy6RzFHUV0x/KZkJKEXM42lbghBm
+         5HkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1724429271; x=1725034071;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=9OCNvj/wx5yxOsb2/+mcktbpA3DNvcmR3VULCO7umQ0=;
+        b=YbzXcTeLTi3H+0cBtPvsDv47XWzqWpDNHNh6tm1RB3mb3GnZNIktFzJPBBZqkdthjD
+         4Vx/Fmb4OCAuGcIgUTo9Gt2h7y55kkqwPTD8zT51no9HNjM0QQPTCSjDwEtg4hkH4TDx
+         JyQEwAOop2bEo4NIhWWg8Kfgny7VLlnigFHsYgZJ/Uy8Dq/mjH1CRiy+yHFi/Vg7kJjz
+         zzVwsXimI6wJl78kTwnzOatvQ5oStd0pjV3g5k07dr/1wnOdtKx53GYhab9F5VEx7cj7
+         5p2nivvWsftSyEfaLZzbuHFTVSQy7qiPP5U86QlHPjexQbJnLcoC+MTSh61RSZO6qTgi
+         pzsw==
+X-Forwarded-Encrypted: i=1; AJvYcCUzoYIhFs3jQNxG4ftpRr82sEV4lhdq1LhMk3jxDHM+fqLWu3xZ6Xymt5a5q8wWiz2UR7+ghNaaQ1AlYUdfgg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzWqnl8AHgK3oZ37DbAX36y79mUGRl1fGnmLT+Swri2cbpKS0MR
+	k9AbXt4JX/t/p3J18NzEMzXNq+8+dIs3+CZKwnbalIlqGotZGLN1Azmlyz/ou3kN9DOFJ+9KUih
+	+XWuOK4peMR2KvYjhCfpyCuGe52OlN2eXpy9I/g==
+X-Google-Smtp-Source: AGHT+IGUI0PY8Ux0OZKUd+jbtCpSnv5I/wL6SIyMbObq48C6tOrwmIkWL6by381sXMMlDTaIRU35sAsSSqAQhXmpqJI=
+X-Received: by 2002:a05:6512:3c9a:b0:52e:999b:7c01 with SMTP id
+ 2adb3069b0e04-534387bbf66mr2088604e87.48.1724429270252; Fri, 23 Aug 2024
+ 09:07:50 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Disposition: inline
-In-Reply-To: <20240807082444.21280-1-yunfei.dong@mediatek.com>
-X-ZohoMailClient: External
+References: <20240808-mtk-rsel-bias-disable-fix-v1-1-1b4e85bf596c@collabora.com>
+In-Reply-To: <20240808-mtk-rsel-bias-disable-fix-v1-1-1b4e85bf596c@collabora.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Fri, 23 Aug 2024 18:07:39 +0200
+Message-ID: <CACRpkdZy9F-oh0sT+YhvgzoSrKQL78gK46wRbQ6d6jHYS5nzfA@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: mediatek: common-v2: Fix broken bias-disable for PULL_PU_PD_RSEL_TYPE
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kernel@collabora.com, 
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_084533_380358_9B9D3C56 
-X-CRM114-Status: GOOD (  11.00  )
+X-CRM114-CacheID: sfid-20240823_090752_545345_6FC7F953 
+X-CRM114-Status: GOOD (  19.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,76 +92,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hey Yunfei,
+On Fri, Aug 9, 2024 at 1:27=E2=80=AFAM N=C3=ADcolas F. R. A. Prado
+<nfraprado@collabora.com> wrote:
 
-given this new series by Hans:
-https://patchwork.linuxtv.org/project/linux-media/list/?series=13427
+> Despite its name, commit fed74d75277d ("pinctrl: mediatek: common-v2:
+> Fix bias-disable for PULL_PU_PD_RSEL_TYPE") actually broke bias-disable
+> for PULL_PU_PD_RSEL_TYPE.
+>
+> mtk_pinconf_bias_set_combo() tries every bias method supported by the
+> pin until one succeeds. For PULL_PU_PD_RSEL_TYPE pins, before the
+> breaking commit, mtk_pinconf_bias_set_rsel() would be called first to
+> try and set the RSEL value (as well as PU and PD), and if that failed,
+> the only other valid option was that bias-disable was specified, which
+> would then be handled by calling mtk_pinconf_bias_set_pu_pd() and
+> disabling both PU and PD.
+>
+> The breaking commit misunderstood this logic and added an early "return
+> 0" in mtk_pinconf_bias_set_rsel(). The result was that in the
+> bias-disable case, the bias was left unchanged, since by returning
+> success, mtk_pinconf_bias_set_combo() no longer tried calling
+> mtk_pinconf_bias_set_pu_pd() to disable the bias.
+>
+> Since the logic for configuring bias-disable on PULL_PU_PD_RSEL_TYPE
+> pins required mtk_pinconf_bias_set_rsel() to fail first, in that case,
+> an error was printed to the log, eg:
+>
+>   mt8195-pinctrl 10005000.pinctrl: Not support rsel value 0 Ohm for pin =
+=3D 29 (GPIO29)
+>
+> This is what the breaking commit actually got rid of, and likely part of
+> the reason why that commit was thought to be fixing functionality, while
+> in reality it was breaking it.
+>
+> Instead of simply reverting that commit, restore the functionality but
+> in a way that avoids the error from being printed and makes the code
+> less confusing:
+> * Return 0 explicitly if a bias method was successful
+> * Introduce an extra function mtk_pinconf_bias_set_pu_pd_rsel() that
+>   calls both mtk_pinconf_bias_set_rsel() (only if needed) and
+>   mtk_pinconf_bias_set_pu_pd()
+>   * And analogously for the corresponding getters
+>
+> Fixes: fed74d75277d ("pinctrl: mediatek: common-v2: Fix bias-disable for =
+PULL_PU_PD_RSEL_TYPE")
+> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
 
-we might actually be able to find a more performant solution of the
-problem, I'll work on that a bit and give you feedback.
+Patch applied for fixes.
 
-Regards,
-Sebastian
-
-On 07.08.2024 16:24, Yunfei Dong wrote:
->v4l2_m2m_buf_done is called in lat work queue, v4l2_ctrl_request_complete
->is called in core queue. The request status of output queue will be set to
->MEDIA_REQUEST_STATE_COMPLETE when v4l2_m2m_buf_done is called, leading to
->output queue request complete fail. Must move v4l2_ctrl_request_complete
->in front of v4l2_m2m_buf_done.
->
->Patch 1 setting request complete before buffer done
->Patch 2 change flush decode order when stream off
->Patch 3 flush decoder before stream off
->Patch 4 using input information to get vb2 buffer
->Patch 5 store source vb2 buffer
->Patch 6 replace v4l2_m2m_next_src_buf with v4l2_m2m_src_buf_remove
->Patch 7 remove media request checking
->
->---
->compared with v3:
->- fix flush decoder issue when userspace stream off capture queue firstly
->- fluster test result same with v3
->
->compared with v2:
->- add patch 5/6/7 to fix decode again issue
->- add fluster test result with mt8195 platform(same with no changed):
->  1> ./fluster.py run -d GStreamer-VP8-V4L2SL-Gst1.0 -j1 -t 90
->     VP8-TEST-VECTORS 59/61
->  2> ./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0 -j1 -t 90
->     VP9-TEST-VECTORS 276/305
->  3> ./fluster.py run -d GStreamer-AV1-V4L2SL-Gst1.0 -j1 -t 90
->     AV1-TEST-VECTORS 237/239
->  4> ./fluster.py run -d GStreamer-H.264-V4L2SL-Gst1.0 -j1 -t 90
->     JVT-AVC_V1       95/135
->  5> ./fluster.py run -d GStreamer-H.265-V4L2SL-Gst1.0 -j1 -t 90
->     JCT-VC-HEVC_V1   142/147
->
->compared with v1:
->- add patch 2/3/4 to fix timing issue.
->---
->Yunfei Dong (7):
->  media: mediatek: vcodec: setting request complete before buffer done
->  media: mediatek: vcodec: change flush decode order when stream off
->  media: mediatek: vcodec: flush decoder before stream off
->  media: mediatek: vcodec: using input information to get vb2 buffer
->  media: mediatek: vcodec: store source vb2 buffer
->  media: mediatek: vcodec: replace v4l2_m2m_next_src_buf with
->    v4l2_m2m_src_buf_remove
->  media: mediatek: vcodec: remove media request checking
->
-> .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  | 44 ++++++++---------
-> .../vcodec/decoder/mtk_vcodec_dec_drv.h       |  4 +-
-> .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 48 ++++++++++++++-----
-> .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c | 18 +++----
-> .../decoder/vdec/vdec_h264_req_multi_if.c     |  4 +-
-> .../decoder/vdec/vdec_hevc_req_multi_if.c     |  4 +-
-> .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c | 19 ++++----
-> .../mediatek/vcodec/decoder/vdec_msg_queue.h  |  4 +-
-> 8 files changed, 85 insertions(+), 60 deletions(-)
->
->-- 
->2.46.0
->
->
+Thanks!
+Linus Walleij
 
