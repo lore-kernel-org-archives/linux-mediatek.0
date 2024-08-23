@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5454C531DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 13:44:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BBA7C52D7C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 13:47:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w/QbT98lLaFEOcv7uxacjapivJDRbKOmgwmp5EptZOw=; b=o5vn0Akhu2iE4LhwftjO0Wt7l8
-	V122k9VC5FojjYH4yNJiM43YUNV0Qi6qjK+jomJKSiJufNfHpDMLTF6GT1vv8aoWfBb1Vq4Xl3jFv
-	oiJOSmTjIOrnHlhBkarlSgZ6ikXcUTdh0WCU923bpWLa6mfDFeWNRDjShTy5wjpmgY2lBbG/pLizq
-	34ec7xK4qdWAaxacsKxL0J3wstBOPrnHPrT81EEUhXZl4Md1es95vMafGgsVEbfYT3cXntPcsSr/v
-	QdapiAeC4Bv6r6Uwgtk/uahsHvF8qZ731e4CTftXJeEGML9a3RxXiTSuYaiaUPcjRjGFoThhsf8rM
-	kG5sRAyw==;
+	bh=jMOQ8tyTvY6Y9KXnBUUvnuEqtz33/151pP1+klm/Eaw=; b=5E2cT9i4YR6DkpXtT6BDWUa/pu
+	uRcaEm1r7apnoBGzUAgrWRFAPXDjdLgdW4hedwRQ0/Ll8PFUaxfnJkMoaMoS2stjeDoN/PXnvGP3f
+	Xd9zMKshWjGA4+BqW9vjlhp36KSEldtzmJnf7SezGZwzy0A/C6h3aCKJQwMCS+dw/5OT8FgvUr44R
+	YvJnDfviMWImTnbA0edB6awPuxelG0JsvoKWbVHJ+vdrtJd9KQ/JI1B7KG6YgSVz7cvymHRLJ3dnc
+	2E50lPJMUZir0iJAIEUH+H7olQc68yGJJY7V3U+KXTB8a2KYSMAeVQGNBTwC3fKFNOBJylXVaLkhF
+	444JzA3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shUat-0000000GvdA-3a4K;
-	Fri, 23 Aug 2024 13:44:47 +0000
-Received: from mgamail.intel.com ([198.175.65.10])
+	id 1shUdQ-0000000Gw1G-10rW;
+	Fri, 23 Aug 2024 13:47:24 +0000
+Received: from mgamail.intel.com ([198.175.65.11])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shUZe-0000000GvM5-28E6;
-	Fri, 23 Aug 2024 13:43:31 +0000
+	id 1shUcd-0000000GvuL-0zK9;
+	Fri, 23 Aug 2024 13:46:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1724420610; x=1755956610;
+  t=1724420795; x=1755956795;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:content-transfer-encoding:in-reply-to;
-  bh=ib4sJFch59+GHVbbNODHxykPpCp6swAnQhqC1AHvoNM=;
-  b=RvKoed14wIVS7WWbe2RILh/yRicWZ0WL0A0AW+JtRxsAgrgaGMyF9dl4
-   vzwOcfjh1GHgL65wPAffcZDDaZpeUCNol5EOiq0FVE9ISLml8wEtaTrBR
-   CcriEG7eMwWEiI7WR8QIUeYmN0XY4PMFMQMLj+HPvFZYn3QcH9mhRtnvz
-   aKdtqZ1A5Q7I8OmwUaz25InCGlCDFTtmUbxRhdLSSseujcf6yNlOF5U32
-   h2AHepGNGEj5ze+lj/WtaaxyhOGlAymFzbm3FzH2F05QozLXGSoNCraMZ
-   Z3dS9f3AveHvYs6Xx/nUadlBZKP+V/Y7o/eFNUmMblU3VfkGXBzMoAGlw
-   A==;
-X-CSE-ConnectionGUID: jmm7IlkMTWCK9DYl44XVPA==
-X-CSE-MsgGUID: bNPMwXlnTmaugudtI8n0fA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11172"; a="40352808"
+  bh=oj4nyYMV4gB+mypoya7w5RGqytEUERznSMy5TvYxR6Y=;
+  b=HeVtSMUNgveKSRtG1UIa0YX8ECUoUU1synEkhOMgpPi+Cce43Fzaddux
+   OUT66GJiGP2QDO4bvTsebq51rpIpd7yBt5hQGUoSmdZ7cnsYRbHp+1Kdf
+   gvX1wPV/8682yzQolWgIdCQjs8m9Zp4fGWp2wcJenorFwRhs3QLJ6AlX7
+   CNa/pNyvnQuRdGlHmbRN1Qj5VQ//qoZkgEyrv3D63FFizTMZj/flad/zi
+   miSYkkLS06Vx01Ah9mAwTLWXKYhyntkn5Sk15VsBSWytk5tFaXa/+6xmJ
+   k5LoQQykhjkcBvtKsiVeKtsxKvdwb/ubZ9QOeINgp5i3fgyxh7ZLPwwoS
+   Q==;
+X-CSE-ConnectionGUID: 16yeh2wNQF+wXD4+MmmpVQ==
+X-CSE-MsgGUID: HRgEJbqCQHWHg/Fm2Okfig==
+X-IronPort-AV: E=McAfee;i="6700,10204,11172"; a="33456388"
 X-IronPort-AV: E=Sophos;i="6.10,170,1719903600"; 
-   d="scan'208";a="40352808"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
-  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Aug 2024 06:43:29 -0700
-X-CSE-ConnectionGUID: S+vBFfveTkGCT/5A9bwGUw==
-X-CSE-MsgGUID: IoLQjP50Q9K73aFOWBIlnw==
+   d="scan'208";a="33456388"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Aug 2024 06:46:34 -0700
+X-CSE-ConnectionGUID: WWhL323KQ3WR5KbQYnhSwA==
+X-CSE-MsgGUID: rYcEtennSpqHFKRmjZnPvA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.10,170,1719903600"; 
-   d="scan'208";a="84980367"
+   d="scan'208";a="66729372"
 Received: from smile.fi.intel.com ([10.237.72.54])
-  by fmviesa002.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Aug 2024 06:43:25 -0700
+  by orviesa004.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Aug 2024 06:46:30 -0700
 Received: from andy by smile.fi.intel.com with local (Exim 4.98)
 	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1shUZW-00000000oAz-2JFe;
-	Fri, 23 Aug 2024 16:43:22 +0300
-Date: Fri, 23 Aug 2024 16:43:22 +0300
+	id 1shUcV-00000000oDe-2JZj;
+	Fri, 23 Aug 2024 16:46:27 +0300
+Date: Fri, 23 Aug 2024 16:46:27 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
@@ -72,22 +72,21 @@ Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
 	Douglas Anderson <dianders@chromium.org>,
 	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
 	linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v5 02/10] regulator: Move OF-specific regulator lookup
- code to of_regulator.c
-Message-ID: <ZsiR-kizxnvZufgR@smile.fi.intel.com>
+Subject: Re: [PATCH v5 05/10] gpiolib: Add gpio_property_name_length()
+Message-ID: <ZsiSs-OrZRrDBplk@smile.fi.intel.com>
 References: <20240822092006.3134096-1-wenst@chromium.org>
- <20240822092006.3134096-3-wenst@chromium.org>
- <ZsdBddTDuvNasHNq@smile.fi.intel.com>
- <CAGXv+5FjwxGQgV6SdLfTeNRYbpcgwkEnCWvaZiWh4rs3bhs-2A@mail.gmail.com>
+ <20240822092006.3134096-6-wenst@chromium.org>
+ <ZsdNA2b9CDRrtno2@smile.fi.intel.com>
+ <CAGXv+5H0eGEjQU8qbKjua5qfbL2FaX2bMSyQg0PMVQrFfaiR8g@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5FjwxGQgV6SdLfTeNRYbpcgwkEnCWvaZiWh4rs3bhs-2A@mail.gmail.com>
+In-Reply-To: <CAGXv+5H0eGEjQU8qbKjua5qfbL2FaX2bMSyQg0PMVQrFfaiR8g@mail.gmail.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_064330_615184_5D843F3C 
-X-CRM114-Status: GOOD (  22.50  )
+X-CRM114-CacheID: sfid-20240823_064635_349328_352F19AF 
+X-CRM114-Status: GOOD (  20.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,58 +101,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 23, 2024 at 02:49:59PM +0800, Chen-Yu Tsai wrote:
-> On Thu, Aug 22, 2024 at 9:47 PM Andy Shevchenko
+On Fri, Aug 23, 2024 at 03:50:55PM +0800, Chen-Yu Tsai wrote:
+> On Thu, Aug 22, 2024 at 10:37 PM Andy Shevchenko
 > <andriy.shevchenko@linux.intel.com> wrote:
-> > On Thu, Aug 22, 2024 at 05:19:55PM +0800, Chen-Yu Tsai wrote:
+> > On Thu, Aug 22, 2024 at 05:19:58PM +0800, Chen-Yu Tsai wrote:
 
 ...
 
-> > > +/**
-> > > + * of_get_child_regulator - get a child regulator device node
-> > > + * based on supply name
-> > > + * @parent: Parent device node
-> > > + * @prop_name: Combination regulator supply name and "-supply"
-> > > + *
-> > > + * Traverse all child nodes.
-> > > + * Extract the child regulator device node corresponding to the supply name.
-> > > + * returns the device node corresponding to the regulator if found, else
-> > > + * returns NULL.
+> > > +     len = strlen(str);
 > >
-> > At the same time you may fix kernel-doc warnings (no "Return" section) in these
-> > three (on your wish you may fix others in a separate change, but it's not
-> > related to this series).
+> > If it has a thousands characters...?
 > 
-> As you said some other functions are missing it as well, so I'll do a
-> patch separate from this series to fix them all.
+> Shouldn't matter much? I suppose using strrchr() as you suggested
+> requires one less pass.
 
-But you need to fix them in this patch series. We do not add patches with known
-issues, which are really easy to fix beforehand.
-
-(And below seems you indirectly agrees on that)
-
-> > > + */
+Yes, this is the point.
 
 ...
 
-> > > +/** of_regulator_dev_lookup - lookup a regulator device with device tree only
+> > This can be combined with the above
 > >
-> > Something went wrong with the indentation.
+> >         for (const char *const *p = gpio_suffixes; *p; p++) {
+> >                 /*
+> >                  * Find right-most '-' and check if remainder matches suffix.
+> >                  * If no separator found, check for no-name cases.
+> >                  */
+> >                 dash = strrchr(propname, '-');
 > 
-> Will fix, and also add a "Return" section.
+> I believe this line could be moved out of the for-loop. Otherwise it
+> looks much more concise compared to my version. I'll omit the comment
+> though, as it is just rehashing the kerneldoc description, and now
+> that the function is so short, it shouldn't be hard to read.
 
-Thank you!
+Agree. And I put comment inside the loop, while it should be outside. But then,
+as you said, the function becomes so little that kernel-doc above does the job,
+hence no comment in the code needed.
 
-> > > + * @dev: Device pointer for regulator supply lookup.
-> > > + * @supply: Supply name or regulator ID.
-> > > + *
-> > > + * If successful, returns a struct regulator_dev that corresponds to the name
-> > > + * @supply and with the embedded struct device refcount incremented by one.
-> > > + * The refcount must be dropped by calling put_device().
-> > > + * On failure one of the following ERR-PTR-encoded values is returned:
-> > > + * -ENODEV if lookup fails permanently, -EPROBE_DEFER if lookup could succeed
-> > > + * in the future.
-> > > + */
+> I'll add you as "Suggested-by".
+
+Fine with me.
+
+> >                 if (!strcmp(dash ? dash + 1 : propname, *p))
+> >                         return i;
+> >         }
 
 -- 
 With Best Regards,
