@@ -4,80 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA8BBC531DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 16:07:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16044C52D7C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 16:12:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9OCNvj/wx5yxOsb2/+mcktbpA3DNvcmR3VULCO7umQ0=; b=4EJ+aP5GTdvoRD5c2YDQAEj4YI
-	7VVzua+/EmEIQM6MTJUV3vF0eVyOcH6eRqHPzJMdUhQrJlTtldbADFRmiBHNNgDpoc43UhtH6/yfg
-	e9LwSO0yaUajLrk8081QURzC8aEWyTAkhqfPVF3DLrTSi+7ARVB99x84jpZq/nsJ5xzTo3801p/c9
-	sQGjG0myEOsbeJiTNuKyD2Ur/vB4JL9dgT7LLTFjjbwiz5C4BT65Z+De3jigHth2LiN5xGDOMK9hx
-	3IJAl47rBUXHZyNWJVjXecLLlG6qBg9qAKVlQzUNdT9cmi4pRF6wnlg7V57tIJ/504cUPruaYLbSG
-	TC443yrQ==;
+	bh=LUtJ+oLA4esiCwHxzR1PJ9WRsZLpLW+urZuZZ82HGUY=; b=cZgJEaHPbXsPeEZ3G9fy1H4U9t
+	hkTwfJuWbXzha1mAlEG7Qf2NI5WzjuanqjfDwRH5UQGzsvJa/eHqDOTzYSQziPZuLaovrIw6CtJ4I
+	jRKJOTJSNc1QkVgtc6xNZYPpX5N5shF1lumhTVycolfWz+4q1Yc9pinED9jOSru8PrKsZHsoghJ+O
+	VoekwxUaHewF+LANFiTDTQJ3bo+e83DQY62qR26gkRT0IgLNVWFjKWMCFADvbuMnU82hmMwyg0lnG
+	COPvqD6VYiCd1yR1WzJncOOjSx9EAGu3gE2kSoVXlo3vMth0GRu+quiGgi+P5x6aO+4kuzDB5DfaJ
+	b9BcTeDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shWpO-0000000HTAn-1eG5;
-	Fri, 23 Aug 2024 16:07:54 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1shWu5-0000000HURQ-33cM;
+	Fri, 23 Aug 2024 16:12:45 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shWpM-0000000HT9b-21cq
+	id 1shWtX-0000000HUDq-1zqx
 	for linux-mediatek@lists.infradead.org;
-	Fri, 23 Aug 2024 16:07:53 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-5334b0e1a8eso2721083e87.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 23 Aug 2024 09:07:52 -0700 (PDT)
+	Fri, 23 Aug 2024 16:12:12 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-5334c018913so2002631e87.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 23 Aug 2024 09:12:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1724429271; x=1725034071; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1724429530; x=1725034330; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=9OCNvj/wx5yxOsb2/+mcktbpA3DNvcmR3VULCO7umQ0=;
-        b=wE3Oi/X9uI8BsKM3ePqGO2v8XkAIFKjxUN/nPSiiYTWL3P6GvRKHS8P+XN0z6ZDVqk
-         rdlhyAWBNnlGqcWQZ/VvPbuXM2sfJKJWODz+Vu4topEGewlM3rHmgBuec2QIbsWA/8f+
-         C6OMrQZ9TdLYeJzjp3kg/LXzJQMyvQ7YX9WzsbjGEMt4hdM+0WwLoV0Thjrhj+FVBqZl
-         SYj6z/yJbGDFVsFhRx3P4/bbgtnjfNUNnsKF7eDHF2bhHEKZhF/PlDuqR+HbS1ZFi8Bh
-         9INJOJhDyAwBqzlSibJVQPbJhzL5Ct8puJ9cmF4Avy6RzFHUV0x/KZkJKEXM42lbghBm
-         5HkA==
+        bh=LUtJ+oLA4esiCwHxzR1PJ9WRsZLpLW+urZuZZ82HGUY=;
+        b=Y+io/K+o62CS/Nmj608q1z9Ck6zzlfM0HrY7wm5tExjo73Vz1zzmFJccpGtd/5Hjrc
+         ghaKCES33Z10VZavxlc56+AlyXqg3OH9aBBZOnihydRe0/7YUXe3XE6CQTH4SvtKrR5F
+         XOS1Mt1XVCETpYLDl+GPvwl1tM4W008Xcdv77/Am3SsCQkFgSWEO/+PIHL4TcRCFU3CZ
+         BQaPz+hRqch4aTRvf2qhZNYuMs32kOoxwpqkX1yXV4lOszKVi/cMpiUhQ51/nWr4os4O
+         +NaZ58DUJ5JXV6IFWDin2PMEoINxUjMs/JB9YfDCCz6r6itKp4dnfjG6SOZ5GBPZdDWV
+         rU7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724429271; x=1725034071;
+        d=1e100.net; s=20230601; t=1724429530; x=1725034330;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=9OCNvj/wx5yxOsb2/+mcktbpA3DNvcmR3VULCO7umQ0=;
-        b=YbzXcTeLTi3H+0cBtPvsDv47XWzqWpDNHNh6tm1RB3mb3GnZNIktFzJPBBZqkdthjD
-         4Vx/Fmb4OCAuGcIgUTo9Gt2h7y55kkqwPTD8zT51no9HNjM0QQPTCSjDwEtg4hkH4TDx
-         JyQEwAOop2bEo4NIhWWg8Kfgny7VLlnigFHsYgZJ/Uy8Dq/mjH1CRiy+yHFi/Vg7kJjz
-         zzVwsXimI6wJl78kTwnzOatvQ5oStd0pjV3g5k07dr/1wnOdtKx53GYhab9F5VEx7cj7
-         5p2nivvWsftSyEfaLZzbuHFTVSQy7qiPP5U86QlHPjexQbJnLcoC+MTSh61RSZO6qTgi
-         pzsw==
-X-Forwarded-Encrypted: i=1; AJvYcCUzoYIhFs3jQNxG4ftpRr82sEV4lhdq1LhMk3jxDHM+fqLWu3xZ6Xymt5a5q8wWiz2UR7+ghNaaQ1AlYUdfgg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzWqnl8AHgK3oZ37DbAX36y79mUGRl1fGnmLT+Swri2cbpKS0MR
-	k9AbXt4JX/t/p3J18NzEMzXNq+8+dIs3+CZKwnbalIlqGotZGLN1Azmlyz/ou3kN9DOFJ+9KUih
-	+XWuOK4peMR2KvYjhCfpyCuGe52OlN2eXpy9I/g==
-X-Google-Smtp-Source: AGHT+IGUI0PY8Ux0OZKUd+jbtCpSnv5I/wL6SIyMbObq48C6tOrwmIkWL6by381sXMMlDTaIRU35sAsSSqAQhXmpqJI=
-X-Received: by 2002:a05:6512:3c9a:b0:52e:999b:7c01 with SMTP id
- 2adb3069b0e04-534387bbf66mr2088604e87.48.1724429270252; Fri, 23 Aug 2024
- 09:07:50 -0700 (PDT)
+        bh=LUtJ+oLA4esiCwHxzR1PJ9WRsZLpLW+urZuZZ82HGUY=;
+        b=QJoiF2QEag7Y6CdwPXoIJARHO/soQa9yr+Q7R2b7l9q1Z4SSMqyI/X2pSs7GoeLpbN
+         CyY/AdiQuXXJXYpYoJT5wGA+ZXEijBsnc4n0uUg7dq+TTGsLEmjh8SZJOQMv00ULVMhF
+         OIiCbRrDwWDWpUhfExrq/jQoQjxciJmxXTFFu4RrSGoNY+dEpUdN+RW86cuPAw5anBbo
+         J9MrYuZCg9qQBPsdfpaygeO7E1iWISQuGhnPCtUBBNm2bzDHUuEqODksKPp2DTNv1XBN
+         oq8Rxq4ELalOnO4+zyTveU9uH73RrHaSx8gylhSn4yf7eQv733LafaxdiTfzne7y9szT
+         WONg==
+X-Forwarded-Encrypted: i=1; AJvYcCUS6Hh2jfczcZOlZ+7X3ZYXBoJZi+StqMp8K6L0YiDMv+Ms3Ts13t4ECXV8mOoBe5RTYKMIbq8/kuaE68uS4g==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxwq9YZOPSfFcl4505imK034L2Pneu5tHITfKdfeF0FXCBMD45A
+	FAPkEb7pnN2GgKKMVnKtGXwQiMGZAHgK5tfaY60XIz2gadLXc0KMOXWoQdhRpmhejstQwCwsihv
+	sP1mIZSskXIAb5XLZPRsbi4ODcY+IaQ6qTQiu8A==
+X-Google-Smtp-Source: AGHT+IGGfa4J6/rrOmhK+K2Ol6XZFt8xdTBfsTGvDz88zJF2GE3+F2dUfKvoePIHG1HbHuE9HLf0FWj4ywInoY22pyo=
+X-Received: by 2002:a05:6512:234b:b0:530:ae99:c7fa with SMTP id
+ 2adb3069b0e04-5343882e2e1mr2006824e87.10.1724429529236; Fri, 23 Aug 2024
+ 09:12:09 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240808-mtk-rsel-bias-disable-fix-v1-1-1b4e85bf596c@collabora.com>
-In-Reply-To: <20240808-mtk-rsel-bias-disable-fix-v1-1-1b4e85bf596c@collabora.com>
+References: <20240811-dt-bindings-serial-peripheral-props-v1-0-1dba258b7492@linaro.org>
+ <20240811-dt-bindings-serial-peripheral-props-v1-3-1dba258b7492@linaro.org>
+In-Reply-To: <20240811-dt-bindings-serial-peripheral-props-v1-3-1dba258b7492@linaro.org>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 23 Aug 2024 18:07:39 +0200
-Message-ID: <CACRpkdZy9F-oh0sT+YhvgzoSrKQL78gK46wRbQ6d6jHYS5nzfA@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: mediatek: common-v2: Fix broken bias-disable for PULL_PU_PD_RSEL_TYPE
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kernel@collabora.com, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Date: Fri, 23 Aug 2024 18:11:57 +0200
+Message-ID: <CACRpkdYyZRVC-AYfpTG1f6sqrqAg0pCWxzUr7eXYtnM3jacMfA@mail.gmail.com>
+Subject: Re: [PATCH 3/6] dt-bindings: bluetooth: move Bluetooth bindings to
+ dedicated directory
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Rob Herring <robh@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Jiri Slaby <jirislaby@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Marcel Holtmann <marcel@holtmann.org>, 
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>, "David S. Miller" <davem@davemloft.net>, 
+	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Johan Hovold <johan@kernel.org>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Daniel Kaehn <kaehndan@gmail.com>, linux-serial@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-bluetooth@vger.kernel.org, netdev@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-sound@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_090752_545345_6FC7F953 
-X-CRM114-Status: GOOD (  19.48  )
+X-CRM114-CacheID: sfid-20240823_091211_534458_BFBE7A9F 
+X-CRM114-Status: UNSURE (   9.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,53 +104,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 9, 2024 at 1:27=E2=80=AFAM N=C3=ADcolas F. R. A. Prado
-<nfraprado@collabora.com> wrote:
+On Sun, Aug 11, 2024 at 8:17=E2=80=AFPM Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
 
-> Despite its name, commit fed74d75277d ("pinctrl: mediatek: common-v2:
-> Fix bias-disable for PULL_PU_PD_RSEL_TYPE") actually broke bias-disable
-> for PULL_PU_PD_RSEL_TYPE.
+> Some Bluetooth devices bindings are in net/ and some are in
+> net/bluetooth/, so bring some consistency by putting everything in
+> net/bluetooth.  Rename few bindings to match preferred naming
+> style: "vendor,device".
 >
-> mtk_pinconf_bias_set_combo() tries every bias method supported by the
-> pin until one succeeds. For PULL_PU_PD_RSEL_TYPE pins, before the
-> breaking commit, mtk_pinconf_bias_set_rsel() would be called first to
-> try and set the RSEL value (as well as PU and PD), and if that failed,
-> the only other valid option was that bias-disable was specified, which
-> would then be handled by calling mtk_pinconf_bias_set_pu_pd() and
-> disabling both PU and PD.
->
-> The breaking commit misunderstood this logic and added an early "return
-> 0" in mtk_pinconf_bias_set_rsel(). The result was that in the
-> bias-disable case, the bias was left unchanged, since by returning
-> success, mtk_pinconf_bias_set_combo() no longer tried calling
-> mtk_pinconf_bias_set_pu_pd() to disable the bias.
->
-> Since the logic for configuring bias-disable on PULL_PU_PD_RSEL_TYPE
-> pins required mtk_pinconf_bias_set_rsel() to fail first, in that case,
-> an error was printed to the log, eg:
->
->   mt8195-pinctrl 10005000.pinctrl: Not support rsel value 0 Ohm for pin =
-=3D 29 (GPIO29)
->
-> This is what the breaking commit actually got rid of, and likely part of
-> the reason why that commit was thought to be fixing functionality, while
-> in reality it was breaking it.
->
-> Instead of simply reverting that commit, restore the functionality but
-> in a way that avoids the error from being printed and makes the code
-> less confusing:
-> * Return 0 explicitly if a bias method was successful
-> * Introduce an extra function mtk_pinconf_bias_set_pu_pd_rsel() that
->   calls both mtk_pinconf_bias_set_rsel() (only if needed) and
->   mtk_pinconf_bias_set_pu_pd()
->   * And analogously for the corresponding getters
->
-> Fixes: fed74d75277d ("pinctrl: mediatek: common-v2: Fix bias-disable for =
-PULL_PU_PD_RSEL_TYPE")
-> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Patch applied for fixes.
+Excellent, thanks for cleaning this up.
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 
-Thanks!
+Yours,
 Linus Walleij
 
