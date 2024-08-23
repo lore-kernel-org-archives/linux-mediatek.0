@@ -4,85 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF875C52D7C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 06:46:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE4FAC52D7C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 06:51:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5eHemwOI+4ZXjPX43cRCwVZx1/cN4d16XHD5Mx9w6kk=; b=o3UMifcBjrqzdmArKP6YQ6aiO2
-	JSRL7uLTERos146HjST2NfXDArOydJkQ7SprWuzK+j2SybsG9FemXGvjntwQtj8y7BJl8DLLWjkDc
-	wOGa+JCMe4AE81MVeyAZekUPqyy+mwvZ2RH9HFLrW0GJE8yCp00/+x+Tl/SP8ne1HHj1w3LXEPcKj
-	K6AvDalsax7AGM9A7ALzYu6w6S1n/3gAZME/ry4fhVDp6ivCV52i+Tbhgbb+if90LqOciD8fKmmSA
-	noMr5fQL7KyFjyRoI8T2y4/59stnIddbT63pWZwUHBx6WpqYVvqluss97P++fUOX7htuMkB19/9Qe
-	Areo1Nsw==;
+	bh=TB2ZVz2m724zZx6Ujp8dGDELTqfijkJibPZvF/Zp9rA=; b=WOERudAyNoIXzvf4r/YBu1VrKu
+	JxoWCYNIrZHcmvjK8YcR+mgaTVmhOHcZKifHtsMD8ee+gDRqUCKtqyJyfN682c0LrTvYB+r0ttDvz
+	JtpWVhCHO73jv0EvcL/K0T/F5e5PSuHsElyZ0uXDJg0Hft8xj7eblR05CXSGwoowuBZygOqhYgd7d
+	wzZSs+5279GswoLT6mQ55EUgUUI910vBJ6YL8PY6OnXtobmz7+yHADYjBhYcqwtlU481UDaKmFe31
+	P4mFSI37ZQVupvsPKSNhkD7SskY1KKiwatc/5M47g6F4B3EySxASIVL+oB/5Nzfo7B85QtICOT3p5
+	G3UG1GRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shO4M-0000000FW69-2FH0;
-	Fri, 23 Aug 2024 06:46:46 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1shO8S-0000000FWom-2eKy;
+	Fri, 23 Aug 2024 06:51:00 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shO3L-0000000FVfG-0qbG;
-	Fri, 23 Aug 2024 06:45:45 +0000
-X-UUID: 4dbf2b46611b11efb3adad29d29602c1-20240822
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=5eHemwOI+4ZXjPX43cRCwVZx1/cN4d16XHD5Mx9w6kk=;
-	b=Lj3nebQlByUc4BW1aDzyKrk0q+W+/8XCOACxLSGwiDGNV0vmwncHTyqi+r0zyKufoDT/S9on0WNqhDdaIqsrU/zAeYYuk9dRJ5qTrFSava7ibAsR4nPGJFtg/jJnGyObddZaxgEB+384lKUmxJzBPtQHruVq4EwlbjbuZTWl6ao=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:307e018e-10bc-49eb-9dad-a41786687c9d,IP:0,U
-	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:25
-X-CID-META: VersionHash:6dc6a47,CLOUDID:36beac14-737d-40b3-9394-11d4ad6e91a1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|-5,EDM:-3,IP:ni
-	l,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
-	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 4dbf2b46611b11efb3adad29d29602c1-20240822
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1052106225; Thu, 22 Aug 2024 23:45:36 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 22 Aug 2024 23:45:00 -0700
-Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
- Transport; Fri, 23 Aug 2024 14:44:59 +0800
-Message-ID: <fb1d3c99-c524-adfa-94b7-822801b98034@mediatek.com>
-Date: Fri, 23 Aug 2024 14:44:57 +0800
+	id 1shO7g-0000000FWdu-44Yb
+	for linux-mediatek@lists.infradead.org;
+	Fri, 23 Aug 2024 06:50:14 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-5342109d726so672433e87.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 22 Aug 2024 23:50:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1724395811; x=1725000611; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=TB2ZVz2m724zZx6Ujp8dGDELTqfijkJibPZvF/Zp9rA=;
+        b=CoF7IPigaosmuMJrCxMMK1np95wNEQ52smBIetFv8mGkfD5xdwKFomqG+VeuG/d9XC
+         PVpK4oqRBqHmd8N/hkA7T5F4dKS6aFSInkanDslxNO4pQqfnH8BcCaN5Dwy6EYfLTacf
+         0NRsy+y7Srzd9qfsTM3GL77ku5KCCCcwYWRn0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1724395811; x=1725000611;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=TB2ZVz2m724zZx6Ujp8dGDELTqfijkJibPZvF/Zp9rA=;
+        b=sphAWHLHEBQIB2hgfYJ3hGa0StwCV2lKFB9C3g5rsZgTDeGppYVVZIDqPqJIvmR2xE
+         cqepmjnhJsrl6XPVypuXwFxnNxbUW1Nc+m8mVMPfS4EiGbAMYk2X8D7P7ySxB7MR8V6i
+         XQk14LdvNLLOkbcF9CNc1rU/2hVb+N2P2HUjL2UB7h9CEqpDljc0oAf5pgAw/ooo7VN2
+         7PSk4I22oRvZY+Gavpe31s4lfmN7X6yVn2XSH8YCinLa5H9ivIgU8lYRrENNwoYBEfbr
+         t1EcIF5EvMjbK7KXPmNJIxtjHUjix3ZzCxAccSb//OmDX5gfz57wy+H3qukmH23R2cGb
+         OxGQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVafzpF5AAUVcZMwU/D3MBx8bPGfdiGAqtMcgaVmbkdnqUn4xn/ANPezqWqUbcYcWD2XdvbOoeF1L46CmFyoA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwS87Tqr+BCRlZnFGvc6nFkJjhOVniGwit4y3mzXGrEabzYXZ44
+	5C1BGN7znFnr9s6Ki+lVcinKBQbObn65P0Ydxlk7HMVwegTgOK01IIbkuSE/MCQv2oQaVMMInOR
+	dLncdnVLz/YBYuFThxoErF57ylMOo7kkAQOVK
+X-Google-Smtp-Source: AGHT+IGa3g4OYj5kLrZwDfDw6Q/Usbiq0edBIdEx656twbCcRzHHZoU+PFE0vnmEsF1p09zxCx1iToHq1XRcOx6R0cA=
+X-Received: by 2002:a05:6512:3052:b0:533:4613:21be with SMTP id
+ 2adb3069b0e04-5334ca861e8mr1890209e87.18.1724395810568; Thu, 22 Aug 2024
+ 23:50:10 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH] dt-bindings: mfd: mediatek: mt6397: Convert to DT schema
- format
-Content-Language: en-US
-To: Krzysztof Kozlowski <krzk@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
-	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Lee Jones
-	<lee@kernel.org>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>, Jason-ch
- Chen <Jason-ch.Chen@mediatek.com>, Chris-qj chen
-	<chris-qj.chen@mediatek.com>, MediaTek Chromebook Upstream
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>, Alexandre
- Mergnat <amergnat@baylibre.com>, Chen-Yu Tsai <wenst@chromium.org>
-References: <20240808105722.7222-1-macpaul.lin@mediatek.com>
- <2d89c86b-28b4-439f-824b-1d0560ff36bd@kernel.org>
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-In-Reply-To: <2d89c86b-28b4-439f-824b-1d0560ff36bd@kernel.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20240822092006.3134096-1-wenst@chromium.org> <20240822092006.3134096-3-wenst@chromium.org>
+ <ZsdBddTDuvNasHNq@smile.fi.intel.com>
+In-Reply-To: <ZsdBddTDuvNasHNq@smile.fi.intel.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 23 Aug 2024 14:49:59 +0800
+Message-ID: <CAGXv+5FjwxGQgV6SdLfTeNRYbpcgwkEnCWvaZiWh4rs3bhs-2A@mail.gmail.com>
+Subject: Re: [PATCH v5 02/10] regulator: Move OF-specific regulator lookup
+ code to of_regulator.c
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
+	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
+	Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
+	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, 
+	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>, linux-i2c@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240822_234543_278555_D1FA3586 
-X-CRM114-Status: GOOD (  35.86  )
+X-CRM114-CacheID: sfid-20240822_235013_066950_7F922E55 
+X-CRM114-Status: GOOD (  25.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,355 +96,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Aug 22, 2024 at 9:47=E2=80=AFPM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+>
+> On Thu, Aug 22, 2024 at 05:19:55PM +0800, Chen-Yu Tsai wrote:
+> > There's still a bit of OF-specific code in the regulator device lookup
+> > function.
+> >
+> > Move those bits of code over to of_regulator.c, and create a new
+> > function of_regulator_dev_lookup() to encapsulate the code moved out of
+> > regulator_dev_lookup().
+> >
+> > Also mark of_find_regulator_by_node() as static, since there are no
+> > other users in other compile units.
+> >
+> > There are no functional changes.
+>
+> ...
+>
+> > +/**
+> > + * of_get_child_regulator - get a child regulator device node
+> > + * based on supply name
+> > + * @parent: Parent device node
+> > + * @prop_name: Combination regulator supply name and "-supply"
+> > + *
+> > + * Traverse all child nodes.
+> > + * Extract the child regulator device node corresponding to the supply=
+ name.
+> > + * returns the device node corresponding to the regulator if found, el=
+se
+> > + * returns NULL.
+>
+> At the same time you may fix kernel-doc warnings (no "Return" section) in=
+ these
+> three (on your wish you may fix others in a separate change, but it's not
+> related to this series).
 
-On 8/8/24 20:04, Krzysztof Kozlowski wrote:
-> 	
-> 
-> External email : Please do not click links or open attachments until you 
-> have verified the sender or the content.
-> 
-> On 08/08/2024 12:57, Macpaul Lin wrote:
->> Convert the mfd: mediatek: mt6397 binding to DT schema format.
->> 
->> New updates in this conversion:
->>  - Align generic names of DT schema "audio-codec" and "regulators".
->>  - mt6397-regulators: Replace the "txt" reference with newly added DT
->>    schema.
->> 
->> Signed-off-by: Sen Chu <sen.chu@mediatek.com>
->> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
->> ---
->>  .../bindings/mfd/mediatek,mt6397.yaml         | 202 ++++++++++++++++++
->>  .../devicetree/bindings/mfd/mt6397.txt        | 110 ----------
-> 
-> You are doing conversions in odd order... and ignore my comments. The
-> example from your regulator binding is supposed to be here - I wrote it
-> last time.
-> 
-> Due to doing changes totally unsynchronized, this CANNOT be merged
-> without unnecessary maintainer coordination, because of dependency.
-> 
-> Sorry, that's not how it works for MFD devices.
-> 
-> Perform conversion of entire device in ONE patchset.
+As you said some other functions are missing it as well, so I'll do a
+patch separate from this series to fix them all.
 
-Okay, will collect the conversion of mt6323-regulator.txt and 
-rtc-mt6397.txt in the next version.
+> > + */
+>
+> ...
+>
+> > +/** of_regulator_dev_lookup - lookup a regulator device with device tr=
+ee only
+>
+> Something went wrong with the indentation.
 
->>  2 files changed, 202 insertions(+), 110 deletions(-)
->>  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
->>  delete mode 100644 Documentation/devicetree/bindings/mfd/mt6397.txt
->> 
->> Changes for v1:
->>  - This patch depends on conversion of mediatek,mt6397-regulator.yaml
->>    [1] https://lore.kernel.org/lkml/20240807091738.18387-1-macpaul.lin@mediatek.com/T/
-
-[snip]
-
->> +$id: http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
->> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->> +
->> +title: MediaTek MT6397/MT6323 Multifunction Device
->> +
->> +maintainers:
->> +  - Sen Chu <sen.chu@mediatek.com>
->> +  - Macpaul Lin <macpaul.lin@mediatek.com>
->> +
->> +description: |
->> +  MT6397/MT6323 is a multifunction device with the following sub modules:
-> 
-> MFD is Linuxism, avoid it.
-
-Will replace MFD with "power management system chip with sub-modules" 
-something like this in next version.
-
->> +  - Regulator
->> +  - RTC
->> +  - Audio codec
->> +  - GPIO
->> +  - Clock
->> +  - LED
->> +  - Keys
->> +  - Power controller
->> +
->> +  It is interfaced to host controller using SPI interface by a proprietary hardware
->> +  called PMIC wrapper or pwrap. MT6397/MT6323 MFD is a child device of pwrap.
->> +  See the following for pwarp node definitions:
->> +  ../soc/mediatek/mediatek,pwrap.yaml
-> 
-> Drop, instead add proper ref or compatible in parent node.
-
-I'm confused here. I've checked mediatek,mt6357.yaml as a reference
-.
-It uses the similar method here.
-     "See the following for pwarp node definitions:"
-     "Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml"
-
-If "$ref: /schemas/soc/mediatek/mediatek,pwrap.yaml" is added here,
-dt_bindings_check will complain the following errors and more.
-
-Documentation/devicetree/bindings/mfd/mediatek,mt6397.example.dtb: pmic: 
-compatible: 'oneOf' conditional failed, one must be fixed:
-         ['mediatek,mt6397'] is too short
-         'mediatek,mt6397' is not one of ['mediatek,mt2701-pwrap', 
-'mediatek,mt6765-pwrap', 'mediatek,mt6779-pwrap', 
-'mediatek,mt6795-pwrap', 'mediatek,mt6797-pwrap', 
-'mediatek,mt6873-pwrap', 'mediatek,mt7622-pwrap', 
-'mediatek,mt8135-pwrap', 'mediatek,mt8173-pwrap', 
-'mediatek,mt8183-pwrap', 'mediatek,mt8186-pwrap', 
-'mediatek,mt8195-pwrap', 'mediatek,mt8365-pwrap', 'mediatek,mt8516-pwrap']
-         'mediatek,mt6397' is not one of ['mediatek,mt8186-pwrap', 
-'mediatek,mt8195-pwrap']
-         'mediatek,mt6397' is not one of ['mediatek,mt8188-pwrap']
-         from schema $id: 
-http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
-
-Which also conflicts with the comments in the examples..
- >> +    pwrap {
- >
- > Drop
-
-Please help to check if a $ref or a compatible of pwrap should be added 
-here.
-
->> +
->> +  This document describes the binding for MFD device and its sub module.
-> 
-> Drop
-
-Will fix it in next version.
-
->> +
->> +properties:
->> +  compatible:
->> +    oneOf:
->> +      - enum:
->> +          - mediatek,mt6323
->> +          - mediatek,mt6331 # "mediatek,mt6331" for PMIC MT6331 and MT6332.
->> +          - mediatek,mt6357
->> +          - mediatek,mt6358
->> +          - mediatek,mt6359
->> +          - mediatek,mt6397
->> +      - items:
->> +          - enum:
->> +              - mediatek,mt6366 # "mediatek,mt6366", "mediatek,mt6358" for PMIC MT6366
-> 
-> Drop comment, it is obvious. Don't repeat constraints in free form text.
-
-Will fix it in next version.
-
-> 
->> +          - const: mediatek,mt6358
->> +
->> +  interrupts:
->> +    maxItems: 1
->> +
->> +  interrupt-controller: true
->> +
->> +  "#interrupt-cells":
->> +    const: 2
->> +
->> +  rtc:
->> +    type: object
->> +    unevaluatedProperties: false
->> +    description:
->> +      Real Time Clock (RTC)
->> +      See ../rtc/rtc-mt6397.txt
-> 
-> No, convert the binding.
-
-Will convert it rtc-mt6397.txt and put it into
-"mfd/mediatek,mt6397.yaml" together.
-
-> 
->> +    properties:
->> +      compatible:
->> +        oneOf:
->> +          - enum:
->> +              - mediatek,mt6323-rtc
->> +              - mediatek,mt6331-rtc
->> +              - mediatek,mt6358-rtc
->> +              - mediatek,mt6397-rtc
->> +          - items:
->> +              - enum:
->> +                  - mediatek,mt6366-rtc # RTC MT6366
-> 
-> Drop all such comments.
-> 
->> +              - const: mediatek,mt6358-rtc
->> +
->> +  regulators:
->> +    type: object
->> +    oneOf:
->> +      - $ref: /schemas/regulator/mediatek,mt6358-regulator.yaml
->> +      - $ref: /schemas/regulator/mediatek,mt6397-regulator.yaml
-> 
-> And how is it supposed to be tested?
-
-The dt_bindings_check didn't complain eny thing about these.
-Of course I've included the conversion patch of 
-mediatek,mt6397-regulator.yaml.
-
->> +    unevaluatedProperties: false
->> +    description:
->> +      Regulators
->> +      For mt6323, see ../regulator/mt6323-regulator.txt
-> 
-> Drop, useless.
-Should I convert it to DT schema and add to $ref above together?
-
-> 
->> +    properties:
->> +      compatible:
->> +        oneOf:
->> +          - enum:
->> +              - mediatek,mt6323-regulator
->> +              - mediatek,mt6358-regulator
->> +              - mediatek,mt6397-regulator
->> +          - items:
->> +              - enum:
->> +                  - mediatek,mt6366-regulator # Regulator MT6366
->> +              - const: mediatek,mt6358-regulator
->> +
->> +  audio-codec:
->> +    type: object
->> +    unevaluatedProperties: false
-> 
-> This does not make sense. You do not have any ref here.
-
-The dt_bindings_check will complain error here.
-Will replace it with "additionalProperties: false".
+Will fix, and also add a "Return" section.
 
 
->> +    description:
->> +      Audio codec
->> +    properties:
->> +      compatible:
->> +        oneOf:
->> +          - enum:
->> +              - mediatek,mt6397-codec
->> +              - mediatek,mt6358-sound
->> +          - items:
->> +              - enum:
->> +                  - mediatek,mt6366-sound # Codec MT6366
->> +              - const: mediatek,mt6358-sound
-> 
-> This wasn't in the old binding. Commit msg also does not explain why you
-> are doing changes from conversion.
+Thanks
+ChenYu
 
-Will update new added item into commit message in next version.
-
->> +
->> +  clk:
->> +    type: object
->> +    unevaluatedProperties: false
-> 
-> Again, no, it does not work like this. See example schema for
-> explanation of this.
-
-Will replace it with "additionalProperties: false".
-
-> Convert all children - entire device. Then either use ref or
-> additionalProperties: true. See Qualcomm mdss bindings for example.
-
-There is no more children available for the clock node of this PMIC.
-This is a clock buffer node. However, there are no sub nodes or any
-public document explain these clock buffer in public domain.
-What I've got is the compatible string in the driver.
-
->> +    description:
->> +      Clock
-> 
-> Your descriptions are useless. You just said "clk" node is "clock". Really?
-
-Will improve it in next version.
-
->> +    properties:
->> +      compatible:
->> +        const: mediatek,mt6397-clk
->> +
->> +  led:
->> +    type: object
->> +    unevaluatedProperties: false
->> +    description:
->> +      LED
->> +      See ../leds/leds-mt6323.txt for more information
-> 
-> No
-
-Will convert "leds-mt6323.txt" and move it together with 
-"mfd/mediatek,mt6397.yaml"
-
->> +    properties:
->> +      compatible:
->> +        const: mediatek,mt6323-led
->> +
->> +  keys:
->> +    type: object
->> +    $ref: /schemas/input/mediatek,pmic-keys.yaml
->> +    unevaluatedProperties: false
->> +    description: Keys
-> 
-> Keys are keys? Could keys be anything else?
-
-Will fix it in the next version.
-
->> +
->> +additionalProperties: false
->> +
->> +examples:
->> +  - |
->> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
->> +
->> +    pwrap {
-> 
-> Drop
-
-Will fix it in the next version.
-
->> +        pmic {
->> +            compatible = "mediatek,mt6397";
->> +            interrupts-extended = <&pio 222 IRQ_TYPE_LEVEL_HIGH>;
->> +            interrupt-controller;
->> +            #interrupt-cells = <2>;
->> +
->> +            mt6397_codec: audio-codec {
->> +                compatible = "mediatek,mt6397-codec";
->> +            };
->> +
->> +            mt6397_regulators: regulators {
->> +                compatible = "mediatek,mt6397-regulator";
->> +
->> +                mt6397_vpca15_reg: buck_vpca15 {
->> +                    regulator-name = "vpca15";
->> +                    regulator-min-microvolt = <850000>;
->> +                    regulator-max-microvolt = <1400000>;
->> +                    regulator-ramp-delay = <12500>;
->> +                    regulator-always-on;
->> +                };
->> +
->> +                mt6397_vgp4_reg: ldo_vgp4 {
->> +                    regulator-name = "vgp4";
->> +                    regulator-min-microvolt = <1200000>;
->> +                    regulator-max-microvolt = <3300000>;
->> +                    regulator-enable-ramp-delay = <218>;
->> +                };
->> +            };
-> 
-> Incomplete.
-> 
-> The parent device example is supposed to be 100% complete.
-
-Will complete the example with MT6397 and MT6323 as reference in the 
-next version.
-
-> Best regards,
-> Krzysztof
-
-Thanks for the review and still some questions listed above.
-Please help to clarify the correction method for the questions.
-
-Best regards,
-Macpaul Lin
-
+> > + * @dev: Device pointer for regulator supply lookup.
+> > + * @supply: Supply name or regulator ID.
+> > + *
+> > + * If successful, returns a struct regulator_dev that corresponds to t=
+he name
+> > + * @supply and with the embedded struct device refcount incremented by=
+ one.
+> > + * The refcount must be dropped by calling put_device().
+> > + * On failure one of the following ERR-PTR-encoded values is returned:
+> > + * -ENODEV if lookup fails permanently, -EPROBE_DEFER if lookup could =
+succeed
+> > + * in the future.
+> > + */
+>
+> --
+> With Best Regards,
+> Andy Shevchenko
+>
+>
 
