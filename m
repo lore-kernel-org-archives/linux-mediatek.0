@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0086C531DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 07:06:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89083C531DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Aug 2024 07:51:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NSqREulePxg8CKTf5awNX/HJBRiZ4QLVJ8cgBAYKHIo=; b=sPsTYnPDRjYAfOZLCerrOXG5Li
-	Vp9lVlf5GfWUuukw9pOde1chx1C6a8r18U+qQt21Kz7D4bdMLhfuR0mQPXhM9apWutBRQiTaPtztR
-	BmESx0+EQ56Bd5f4rNYxwwWet9HI4Zpo2BY5CL4H47DmRdFgaH8+sirszTICkb0b5Rp2j0musQ4W8
-	Gu7l+V7XqTINkcpwlgPOLp9U485vI0ur+6SIt/bj/YYu95OPTUCKxKUZJGiNQISAuTPWl11CEtAgS
-	c88NUijJpWJlK8Q5B5PK2c6GTDZjUou3nS0IhcFJKIQeHcvGkTUuXDgiH03Hjr6HR96gpzNHY4ZUH
-	XXFG3hoQ==;
+	bh=uVFI/kAx4GZJG5dq3c75HD5Ktn0yw4zArYMGtwgACRE=; b=RMb1LyPkKO/tFTdtNxA/FJGeNb
+	eFATstESkPle8zvs6ILfp9hIYSJLl0dIskc2ngdzdOe5JWAqcL3IhNbPCBJ6/KRHffI5Uy8LCUcYk
+	8OGaR7uYTJ10jqLTFmMKCnwPM5GaxfSHfb+zXNR0ubbOSCFYgn5Yu7peYdntkGUFQWnSKjuHCq93H
+	HXj1M7+qF4lwvex4WnaQwXxoNpXN03YXyq4DplyYs8hftDkhiJ1COXVDmETEMML4Mj34/R4CFVXd8
+	Cqhqj9PTFCRyQKG7wrfTci74df7Qi8n38lx2GgcU0SohomAH53IhJfshZCo7lx6tGnlrFoonTigPX
+	3Cnj5kbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shONL-0000000FZZ2-00ot;
-	Fri, 23 Aug 2024 07:06:23 +0000
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+	id 1shP58-0000000FiXF-3goN;
+	Fri, 23 Aug 2024 07:51:38 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shOMZ-0000000FZSI-2kyE
+	id 1shP4f-0000000FiQQ-1uK2
 	for linux-mediatek@lists.infradead.org;
-	Fri, 23 Aug 2024 07:05:37 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-5334adf7249so2120501e87.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 23 Aug 2024 00:05:35 -0700 (PDT)
+	Fri, 23 Aug 2024 07:51:10 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-533461323cdso1958198e87.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 23 Aug 2024 00:51:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1724396733; x=1725001533; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1724399467; x=1725004267; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=NSqREulePxg8CKTf5awNX/HJBRiZ4QLVJ8cgBAYKHIo=;
-        b=c8hRIZJWzPi+CjrEpf6Kl67S1sQJRfe3L4HMdWtU2mMKpCGk2g1c0SXMjal1PJg2bK
-         EB+1IiZU/XfUnVQNpktVINNQ/SOh1eeEt6HVu9touTnyd32FNSLGRpaCOyvU20yFu1DM
-         A4AaiWY1llVe5OKLM2Wv6pyMpFkZm+sogN/m0=
+        bh=uVFI/kAx4GZJG5dq3c75HD5Ktn0yw4zArYMGtwgACRE=;
+        b=GLHNjuNQnwAPvQ4lWdWtUKOhE7wYt/Ajd8EUbl3OYE5Be4CzpXcBWap0CTqizdYSY4
+         SHiaCdxR/XOaHc28e6ZTb1JOfrrcWFC0MDG+iwOTTt+iFf+vVqBNfEHk8TqEDTn/bCR9
+         5NJ7Hlmo78ncLPQFCl82gOBxhmM2mRmtCsHlY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724396733; x=1725001533;
+        d=1e100.net; s=20230601; t=1724399467; x=1725004267;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=NSqREulePxg8CKTf5awNX/HJBRiZ4QLVJ8cgBAYKHIo=;
-        b=Tj+w+Odw5nfK3vrK9avlkve5IQq0xuaSqMIdy0x/aDSsx/tqNAoAzksKqqkVvSoQbw
-         HP84KxiHuu6FEK1V0wAhf3k+yhLuZbfRCmo42W36R1PWVe6sF3qJJ3/ZACD+0vCw0cDP
-         G/s8si7fsJfVQ7kaQT5jVE1tXKiO0T/UhZcLcOFU+c2QBdbQuJPOq7ZuD7vvQiEj7CHS
-         dGPh9YuZQaWTMT1oMwwhnX3VRDTVkvv36GXjPDhbkCmIeK3U530aRlH/wu+2Fs7uiLQ+
-         TDRBDMWAmRL0smu4xWa92q5C1uyDUrb+o4oCQLkzrYdPhd/tiRGvsgg76Yb2OuAejLDk
-         dTvQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU+zgbsFrscF8589IT0+t1ih3pOUbRUDUIEloBZ9Y5iGVcRGxhjK3iqfRh/e2cGHGQK+SnJMzGHFfxNGPvMKg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy823CK4SnKWSQdSP/zceG2nPWfETzpR93H2AsArqNlYRcLfahi
-	8pqsaqkyAu1SJJ7rwhIZEpMob/Pz0Sope7USGxbYCHQdTT/mxFhyfkt5PqVu5Q4kK5cPxU5PGaB
-	qJ0OH8EnaSOSAa/aHRxUjIygzH06tonJj21nC
-X-Google-Smtp-Source: AGHT+IGNtTDEfjRQCAU7zqH2LB9KdSvjRzwWhHcPb4xis4wVU2lVsZpgq0JMxBRDIb+KkRoJXAdbfiGPaOxPwtfJ6oc=
-X-Received: by 2002:a05:6512:695:b0:530:b871:eb9a with SMTP id
- 2adb3069b0e04-534387baca6mr662910e87.47.1724396733400; Fri, 23 Aug 2024
- 00:05:33 -0700 (PDT)
+        bh=uVFI/kAx4GZJG5dq3c75HD5Ktn0yw4zArYMGtwgACRE=;
+        b=bQ+dPWZxYglzIQaoX4dwv2A0KPMyLnw+cwpOcqENsiYge0EuH9NMQIVr0m2zUucr1E
+         EteRz2Kky2JiBPo0tGQDJxjdJdiHfDoOqPe98dUfAaBCv+j3eD3Rh6bBut+MTyYojL7m
+         bNxeFMImGvJ3Mi8ZXAG3LGZOkwCToDE6EEUSlIl3EL+Ql3GOA37xznOko0zxS9a8d6pV
+         BeESbCAMvNEaHGzosV3kdxIoKYDh1slxS6x9BKQ7uP5VrAO84nRq2+JzZkzx3hn9uQxh
+         DrlZHMvtdoLjAJykHhbc6cbWQB3OZA2sFdtPakg8GQUKWAhEX9ErVCZnGcvaZOa4WhZI
+         OXRQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUHmSUUdlFd1aFA93Fl4MWgr1Atlk63cgotqwvZ2odm6A3fINdtmfOu7ftSFiBPutY0Pl1VKCrt0z0VWoTmag==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzcmN1l/dGnzyBMA3Z3+Iep9H7F7g2IKZVxqs991X7Lzqk/BvR4
+	nQYWl+Fo12hALcUqduVENc4FS/NNBfTs3cuc2Ck7CRrc1/BT3Cx0sECMjQf+mNO56Afb8ogc24q
+	Ckxz74vwhH1EblfSBHL4eXEn1lK4pUVL2qMmg
+X-Google-Smtp-Source: AGHT+IGwq8qrwQzH9MhG9+f2TAUzL+lDTX48ZdahHSVAEA0ONPP07O3k9tJzluNvWAvmzLEjq7LhXUIOSOn/Kv6k6WU=
+X-Received: by 2002:a05:6512:3087:b0:52c:dc25:d706 with SMTP id
+ 2adb3069b0e04-53438868deemr943389e87.52.1724399466989; Fri, 23 Aug 2024
+ 00:51:06 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240822092006.3134096-1-wenst@chromium.org> <20240822092006.3134096-5-wenst@chromium.org>
- <ZsdC8wkgsdsMJuAL@smile.fi.intel.com>
-In-Reply-To: <ZsdC8wkgsdsMJuAL@smile.fi.intel.com>
+References: <20240822092006.3134096-1-wenst@chromium.org> <20240822092006.3134096-6-wenst@chromium.org>
+ <ZsdNA2b9CDRrtno2@smile.fi.intel.com>
+In-Reply-To: <ZsdNA2b9CDRrtno2@smile.fi.intel.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 23 Aug 2024 15:05:22 +0800
-Message-ID: <CAGXv+5H3RvWFTg6dnMR6QBG-gLnv29fEC_5icdHE7Tjfy7fvxA@mail.gmail.com>
-Subject: Re: [PATCH v5 04/10] regulator: Do pure DT regulator lookup in of_regulator_bulk_get_all()
+Date: Fri, 23 Aug 2024 15:50:55 +0800
+Message-ID: <CAGXv+5H0eGEjQU8qbKjua5qfbL2FaX2bMSyQg0PMVQrFfaiR8g@mail.gmail.com>
+Subject: Re: [PATCH v5 05/10] gpiolib: Add gpio_property_name_length()
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -79,8 +79,8 @@ Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240823_000535_753375_B0D1E8FB 
-X-CRM114-Status: GOOD (  33.04  )
+X-CRM114-CacheID: sfid-20240823_005109_535754_708612E5 
+X-CRM114-Status: GOOD (  33.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,131 +95,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 22, 2024 at 9:54=E2=80=AFPM Andy Shevchenko
+On Thu, Aug 22, 2024 at 10:37=E2=80=AFPM Andy Shevchenko
 <andriy.shevchenko@linux.intel.com> wrote:
 >
-> On Thu, Aug 22, 2024 at 05:19:57PM +0800, Chen-Yu Tsai wrote:
-> > The to-be-introduced I2C component prober needs to enable regulator
-> > supplies (and toggle GPIO pins) for the various components it intends
-> > to probe. To support this, a new "pure DT lookup" method for getting
-> > regulator supplies is needed, since the device normally requesting
-> > the supply won't get created until after the component is probed to
-> > be available.
+> On Thu, Aug 22, 2024 at 05:19:58PM +0800, Chen-Yu Tsai wrote:
+> > The I2C device tree component prober needs to get and toggle GPIO lines
+> > for the components it intends to probe. These components may not use th=
+e
+> > same name for their GPIO lines, so the prober must go through the devic=
+e
+> > tree, check each property to see it is a GPIO property, and get the GPI=
+O
+> > line.
 > >
-> > Convert the existing of_regulator_bulk_get_all() for this purpose.
-> > This function has no in-tree users, as the original patch [1] that
-> > used it was never landed. This patch changes the function ABI, but
-> > it is straightforward to convert users.
-> >
-> > The underlying code that supports the existing regulator_get*()
-> > functions has been reworked in previous patches to support this
-> > specific case. An internal OF-specific version of regulator_get(),
-> > of_regulator_get_optional(), is added for this.
->
-> > [1] https://lore.kernel.org/all/20231220203537.83479-2-jernej.skrabec@g=
-mail.com/
->
-> Make it Link tag
->
-> Link: https://lore.kernel.org/all/20231220203537.83479-2-jernej.skrabec@g=
-mail.com/ [1]
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
->
-> ...
->
-> >       /* first do a dt based lookup */
-> >       if (dev && dev->of_node) {
->
->         if (dev_of_node())
->
-
-Not part of the original change, but I don't see why not.
-
-> > -             r =3D of_regulator_dev_lookup(dev, supply);
-> > +             r =3D of_regulator_dev_lookup(dev, dev->of_node, supply);
->
->         dev_of_node()
-
-Ack.
-
-> >               if (!IS_ERR(r))
-> >                       return r;
-> >               if (PTR_ERR(r) =3D=3D -EPROBE_DEFER)
->
-> ...
->
-> >  /**
-> >   * of_get_regulator - get a regulator device node based on supply name
-> > - * @dev: Device pointer for the consumer (of regulator) device
-> > + * @dev: Device pointer for dev_printk messages
->
-> dev_printk()
-
-Ack.
-
-> > + * @node: Device node pointer for supply property lookup
-> >   * @supply: regulator supply name
-> >   *
-> >   * Extract the regulator device node corresponding to the supply name.
-> >   * returns the device node corresponding to the regulator if found, el=
-se
-> >   * returns NULL.
-> >   */
->
-> ...
->
-> >  /** of_regulator_dev_lookup - lookup a regulator device with device tr=
-ee only
-> > - * @dev: Device pointer for regulator supply lookup.
-> > + * @dev: Device pointer for dev_printk messages.
->
-> Ditto.
-
-Ack.
-
-> > + * @node: Device node pointer for regulator supply lookup.
-> >   * @supply: Supply name or regulator ID.
-> >   *
-> >   * If successful, returns a struct regulator_dev that corresponds to t=
-he name
-> > @@ -636,13 +639,13 @@ static struct regulator_dev *of_find_regulator_by=
-_node(struct device_node *np)
-> >   * -ENODEV if lookup fails permanently, -EPROBE_DEFER if lookup could =
-succeed
-> >   * in the future.
-> >   */
+> > Instead of duplicating the GPIO suffixes, or exporting them to the
+> > prober to do pattern matching, simply add and export a new function tha=
+t
+> > does the pattern matching and returns the length of the GPIO name. The
+> > caller can then use that to copy out the name if it needs to.
 >
 > ...
 >
 > > +/**
-> > + * of_regulator_get_optional - get optional regulator via device tree =
-lookup
-> > + * @dev: device used for dev_printk messages
+> > + * gpio_property_name_length - Returns the GPIO name length from a pro=
+perty name
+> > + * @str:     string to check
 >
-> Ditto.
+> It's property name, so, I would name this 'propname'.
 
 Ack.
 
-> > + * @node: device node for regulator "consumer"
-> > + * @id: Supply name
+> > + * This function checks if the given name matches the GPIO property pa=
+tterns, and
+> > + * returns the length of the name of the GPIO. The pattern is "*-<GPIO=
+ suffix>"
+> > + * or just "<GPIO suffix>".
 > > + *
-> > + * Returns a struct regulator corresponding to the regulator producer,
-> > + * or IS_ERR() condition containing errno.
-> > + *
-> > + * This is intended for use by consumers that want to get a regulator
-> > + * supply directly from a device node, and can and want to deal with
-> > + * absence of such supplies. This will _not_ consider supply aliases.
-> > + * See regulator_dev_lookup().
+> > + * Returns:
+> > + * The length of the string before '-' if it matches "*-<GPIO suffix>"=
+, or
 >
-> Fix kernel-doc warning.
+> What about "x-y-gpios"? It's unclear what will be the behaviour.
+
+I thought it was implied that the '-' mentioned here is the one before the
+suffix. I made it more explicit.
+
+> > + * 0 if no name part, just the suffix, or
+> > + * -EINVAL if the string doesn't match the pattern.
+> > + */
+> > +int gpio_property_name_length(const char *str)
+>
+> gpio_get_... ?
 
 Ack.
+
+> > +{
+> > +     size_t len;
+> > +
+> > +     len =3D strlen(str);
+>
+> If it has a thousands characters...?
+
+Shouldn't matter much? I suppose using strrchr() as you suggested
+requires one less pass.
+
+> > +     /* string need to be at minimum len(gpio) */
+> > +     if (len < 4)
+> > +             return -EINVAL;
+>
+> Do we really need it here? See below as well.
+>
+> > +     /* Check for no-name case: "gpio" / "gpios" */
+> > +     for (const char *const *p =3D gpio_suffixes; *p; p++)
+> > +             if (!strcmp(str, *p))
+> > +                     return 0;
+>
+> > +     for (size_t i =3D len - 4; i > 0; i--) {
+> > +             /* find right-most '-' and check if remainder matches suf=
+fix */
+> > +             if (str[i] !=3D '-')
+> > +                     continue;
+> > +
+> > +             for (const char *const *p =3D gpio_suffixes; *p; p++)
+> > +                     if (!strcmp(str + i + 1, *p))
+> > +                             return i;
+> > +
+> > +             return -EINVAL;
+> > +     }
+>
+> This can be combined with the above
+>
+>         for (const char *const *p =3D gpio_suffixes; *p; p++) {
+>                 /*
+>                  * Find right-most '-' and check if remainder matches suf=
+fix.
+>                  * If no separator found, check for no-name cases.
+>                  */
+>                 dash =3D strrchr(propname, '-');
+
+I believe this line could be moved out of the for-loop. Otherwise it
+looks much more concise compared to my version. I'll omit the comment
+though, as it is just rehashing the kerneldoc description, and now
+that the function is so short, it shouldn't be hard to read.
+
+I'll add you as "Suggested-by".
 
 
 Thanks
 ChenYu
 
-> > + */
+>                 if (!strcmp(dash ? dash + 1 : propname, *p))
+>                         return i;
+>         }
+>
+> > +     return -EINVAL;
+> > +}
 >
 > --
 > With Best Regards,
