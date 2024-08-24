@@ -4,53 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2345BC5472C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Aug 2024 03:53:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E3E0C5472C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Aug 2024 13:27:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8u46N2ek3lDTNuy7GNNzR/9GqigGRJG1lEMuJMk0DyM=; b=mLolQSmrxGLKEzicUA5LuctV/c
-	qp0mrP9mH3Ren7TeLCM02tx15kNRJnqRrYaBBUE3CNkbTjgmrMKF8zov6BPCBF/0jl/Dco93+XO51
-	Vn+94iGeSvUXheSLHhX0pM77JUbAkUKigiPGc5h/ZG+6joQdkRCqVHGMSMP3MSPsY5eBlpCGiNnzq
-	gOnH/QvQjB3yMQT3t1Ws11sNyLvNSpHWxTNsaQvK+fg9OkFrlABOr9E1T2cEw5V+L8xk4CXqg45/j
-	g/bu5iIaclKhxN9tw/8cK3wLWkv4Z7oQljX78f68X7YMgp4hH5zaTh4xGH2wyJ65ITQ03kQ3QXdI2
-	LPZcaKBw==;
+	bh=114707c9TBN2Gihi0FV0kqjlbdnW0JCr+A5nsEfjtVU=; b=l4+b9fffVPcqLsokSiZ8iQR3O2
+	dl2Gtg6azNnhfVB1YKPmVkwtr8Z7r1v514K+cAfq6DO6AMYV/YhXTIfnPmgnpo0THO7WIV/wlC1la
+	GQ0eVrB77FGpI2siWxEWLkzEakkWGMIKHh23tFPiEeT+jOWwnBYQY/FriRhD18MrNWWWonwcuH67t
+	uOQqduVNY9Dt4uV8vu/3Yl2OgHAhNsyB//jTT7BTkhOD6z73X0jYVa7u83cVHWBzQz1QlC3/Em2bO
+	WNJImn3fOl2xk/60Rt+dKlUZmICCSFhGMrYgdxn/7oV9z/fNhoOH1wZ1h8vTqs54aOy4u/5dxiSkZ
+	DacB9+6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shhq4-00000001O0D-3Snn;
-	Sat, 24 Aug 2024 03:53:20 +0000
-Received: from 2a02-8389-2341-5b80-7457-864c-9b77-b751.cable.dynamic.v6.surfer.at ([2a02:8389:2341:5b80:7457:864c:9b77:b751] helo=localhost)
-	by bombadil.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shhmU-00000001N1U-3KzC;
-	Sat, 24 Aug 2024 03:49:39 +0000
-From: Christoph Hellwig <hch@lst.de>
-To: iommu@lists.linux.dev
-Cc: "Martin K. Petersen" <martin.petersen@oracle.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	linux-scsi@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	dmaengine@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-media@vger.kernel.org,
-	linux-mmc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-hyperv@vger.kernel.org,
-	netdev@vger.kernel.org
-Subject: [PATCH 4/4] dma-mapping: don't return errors from dma_set_max_seg_size
-Date: Sat, 24 Aug 2024 05:49:15 +0200
-Message-ID: <20240824034925.1163244-5-hch@lst.de>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240824034925.1163244-1-hch@lst.de>
-References: <20240824034925.1163244-1-hch@lst.de>
+	id 1shqnV-00000002H0u-0YrS;
+	Sat, 24 Aug 2024 13:27:17 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1shqmi-00000002Gtm-1h5V;
+	Sat, 24 Aug 2024 13:26:30 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-37196681d3bso1625524f8f.3;
+        Sat, 24 Aug 2024 06:26:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1724505986; x=1725110786; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=114707c9TBN2Gihi0FV0kqjlbdnW0JCr+A5nsEfjtVU=;
+        b=VwA2kt3lUgbVOFeKk4L7a27HvSgGe9wAjRHXvtqQBt7VLOveD6KLdDhTI1eIxY4nol
+         2tKG7NHi8HmN7WWby9/pnSDgYZbco0aruiGk5N41SOicMoexelNSBYoTF4yfj4vMyg2b
+         N+uMIOS33IOHGizRpt219MTTOpzT10CtCa6WsVex6FbfWfYNXTsWQxJWrabpI/Ez/RYU
+         e4E+HxWwJaWIQAJOwb+8DB6Wl1odXF1kPAA0Am6g+loLr6cPvX4W5sRK6lY0ZdQhre07
+         IsotpR4/mVst50yvAt6lso7BN+baXsbwMOT3UMOf6dI3yvaUag6BV00FJep3yo8OaRBv
+         Micg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1724505986; x=1725110786;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=114707c9TBN2Gihi0FV0kqjlbdnW0JCr+A5nsEfjtVU=;
+        b=Ch5amHuVXt4l3xP4FjxRrgaL7xd4j/nj8zwfhvtCsB1xbmCmYwVsk9VWEcGgI7rCiE
+         nNn8xh5Zk/88FHsYl0P078ec2Pd/j5RggjE0q+vrNINwpgYbac7Y7msYZBPrTRTFcuCQ
+         frRtVtlWkCeGoig2zuotM4h9XHh24w/b9hIMpL34SlI01lF0iFtmzWIjxmFJqrCzw8qQ
+         6zx3bTE8tuWYk134sny8NYEN4tjMLZPsPTt39oGzsD1J9rhafnIBwTZATuo63vhbpvZw
+         2h+SKqYe/nXDX6hOuzZ9RzYX2ucfHVdsfqtpKjw787uVtV5WFsVX1BDpx5667Peysln3
+         ucIQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUcnSt7ifr6PkQ476WrtOMkh4ubTok0bpr1QxDN/hZRKxmpMTutkkT8M55SuI8EkpQywQBEMYKMOwtjNRLxRV12@lists.infradead.org, AJvYcCWmikVqhDlH2s3AwXCKUkiKW82q3eHq2ReaQFeHYT5IMDdx4ceKEvsJp5xsIi8gAcVtrzxZBuwHgVDP6KLO4J8=@lists.infradead.org
+X-Gm-Message-State: AOJu0YykaXDMJiG1CXc1xVA67iBbF+xcFCmynF+g1EJaM2SYOJ86eP5D
+	TIXSqujhIheDyKqwaGtuPrHIepu3ltchqQGqE603C+4KobzrENu6
+X-Google-Smtp-Source: AGHT+IE97apoWLf+5ctckXkuIwyLEMMq8DzL8/wLznw24XrTkTZaFOgnINabsJwGyILMQnQ7VupSOQ==
+X-Received: by 2002:a5d:6905:0:b0:373:b44:675 with SMTP id ffacd0b85a97d-3731189b12amr3706013f8f.20.1724505985477;
+        Sat, 24 Aug 2024 06:26:25 -0700 (PDT)
+Received: from [192.168.0.10] ([178.233.24.52])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42ac514e269sm95104245e9.2.2024.08.24.06.26.23
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 24 Aug 2024 06:26:24 -0700 (PDT)
+Message-ID: <f11001d4-fac1-490d-988c-01c6b4b588db@gmail.com>
+Date: Sat, 24 Aug 2024 16:26:22 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8186-corsola: Disable DPI display
+ interface
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Stephen Boyd <swboyd@chromium.org>, Pin-yen Lin <treapking@chromium.org>,
+ stable@vger.kernel.org
+References: <20240821042836.2631815-1-wenst@chromium.org>
+ <00aaa8ff-1344-48dd-b0cb-5e8f4518ff6b@notapiano>
+From: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+Content-Language: en-US, tr, en-GB
+In-Reply-To: <00aaa8ff-1344-48dd-b0cb-5e8f4518ff6b@notapiano>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20240824_062628_471276_912DE338 
+X-CRM114-Status: GOOD (  15.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,243 +100,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A NULL dev->dma_parms indicates either a bus that is not DMA capable or
-grave bug in the implementation of the bus code.
+Hi,
 
-There isn't much the driver can do in terms of error handling for either
-case, so just warn and continue as DMA operations will fail anyway.
+On 2024-08-22 18:25 +03:00, Nícolas F. R. A. Prado wrote:
+> On Wed, Aug 21, 2024 at 12:28:34PM +0800, Chen-Yu Tsai wrote:
+>> The DPI display interface feeds the external display pipeline. However
+>> the pipeline representation is currently incomplete. Efforts are still
+>> under way to come up with a way to represent the "creative" repurposing
+>> of the DP bridge chip's internal output mux, which is meant to support
+>> USB type-C orientation changes, to output to one of two type-C ports.
+>>
+>> Until that is finalized, the external display can't be fully described,
+>> and thus won't work. Even worse, the half complete graph potentially
+>> confuses the OS, breaking the internal display as well.
+>>
+>> Disable the external display interface across the whole Corsola family
+>> until the DP / USB Type-C muxing graph binding is ready.
+>>
+>> Reported-by: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+>> Closes: https://lore.kernel.org/linux-mediatek/38a703a9-6efb-456a-a248-1dd3687e526d@gmail.com/
+>> Fixes: 8855d01fb81f ("arm64: dts: mediatek: Add MT8186 Krabby platform based Tentacruel / Tentacool")
+>> Cc: <stable@vger.kernel.org>
+>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> 
+> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> 
+> Would be good to have Alper verify that with this change the internal display
+> works again in their specific setup, although this change seems reasonable to me
+> either way.
 
-Signed-off-by: Christoph Hellwig <hch@lst.de>
-Reviewed-by: Robin Murphy <robin.murphy@arm.com>
----
- drivers/accel/qaic/qaic_drv.c                         |  4 +---
- drivers/dma/idma64.c                                  |  4 +---
- drivers/dma/pl330.c                                   |  5 +----
- drivers/dma/qcom/bam_dma.c                            |  6 +-----
- drivers/dma/sh/rcar-dmac.c                            |  4 +---
- drivers/dma/ste_dma40.c                               |  6 +-----
- drivers/gpu/drm/mediatek/mtk_drm_drv.c                |  6 +-----
- drivers/media/common/videobuf2/videobuf2-dma-contig.c |  3 +--
- drivers/media/pci/intel/ipu6/ipu6.c                   |  4 +---
- drivers/mmc/host/mmci_stm32_sdmmc.c                   |  3 ++-
- drivers/net/ethernet/microsoft/mana/gdma_main.c       |  6 +-----
- drivers/scsi/lpfc/lpfc_init.c                         |  7 +------
- include/linux/dma-mapping.h                           | 10 ++++------
- 13 files changed, 17 insertions(+), 51 deletions(-)
+Tested-by: Alper Nebi Yasak <alpernebiyasak@gmail.com>
 
-diff --git a/drivers/accel/qaic/qaic_drv.c b/drivers/accel/qaic/qaic_drv.c
-index 580b29ed190217..bf10156c334e71 100644
---- a/drivers/accel/qaic/qaic_drv.c
-+++ b/drivers/accel/qaic/qaic_drv.c
-@@ -447,9 +447,7 @@ static int init_pci(struct qaic_device *qdev, struct pci_dev *pdev)
- 	ret = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(64));
- 	if (ret)
- 		return ret;
--	ret = dma_set_max_seg_size(&pdev->dev, UINT_MAX);
--	if (ret)
--		return ret;
-+	dma_set_max_seg_size(&pdev->dev, UINT_MAX);
- 
- 	qdev->bar_0 = devm_ioremap_resource(&pdev->dev, &pdev->resource[0]);
- 	if (IS_ERR(qdev->bar_0))
-diff --git a/drivers/dma/idma64.c b/drivers/dma/idma64.c
-index e3505e56784b1a..1398814d8fbb63 100644
---- a/drivers/dma/idma64.c
-+++ b/drivers/dma/idma64.c
-@@ -598,9 +598,7 @@ static int idma64_probe(struct idma64_chip *chip)
- 
- 	idma64->dma.dev = chip->sysdev;
- 
--	ret = dma_set_max_seg_size(idma64->dma.dev, IDMA64C_CTLH_BLOCK_TS_MASK);
--	if (ret)
--		return ret;
-+	dma_set_max_seg_size(idma64->dma.dev, IDMA64C_CTLH_BLOCK_TS_MASK);
- 
- 	ret = dma_async_device_register(&idma64->dma);
- 	if (ret)
-diff --git a/drivers/dma/pl330.c b/drivers/dma/pl330.c
-index 60c4de8dac1d2a..82a9fe88ad54c9 100644
---- a/drivers/dma/pl330.c
-+++ b/drivers/dma/pl330.c
-@@ -3163,10 +3163,7 @@ pl330_probe(struct amba_device *adev, const struct amba_id *id)
- 	 * This is the limit for transfers with a buswidth of 1, larger
- 	 * buswidths will have larger limits.
- 	 */
--	ret = dma_set_max_seg_size(&adev->dev, 1900800);
--	if (ret)
--		dev_err(&adev->dev, "unable to set the seg size\n");
--
-+	dma_set_max_seg_size(&adev->dev, 1900800);
- 
- 	init_pl330_debugfs(pl330);
- 	dev_info(&adev->dev,
-diff --git a/drivers/dma/qcom/bam_dma.c b/drivers/dma/qcom/bam_dma.c
-index 5e7d332731e0c1..368ffaa4003789 100644
---- a/drivers/dma/qcom/bam_dma.c
-+++ b/drivers/dma/qcom/bam_dma.c
-@@ -1325,11 +1325,7 @@ static int bam_dma_probe(struct platform_device *pdev)
- 
- 	/* set max dma segment size */
- 	bdev->common.dev = bdev->dev;
--	ret = dma_set_max_seg_size(bdev->common.dev, BAM_FIFO_SIZE);
--	if (ret) {
--		dev_err(bdev->dev, "cannot set maximum segment size\n");
--		goto err_bam_channel_exit;
--	}
-+	dma_set_max_seg_size(bdev->common.dev, BAM_FIFO_SIZE);
- 
- 	platform_set_drvdata(pdev, bdev);
- 
-diff --git a/drivers/dma/sh/rcar-dmac.c b/drivers/dma/sh/rcar-dmac.c
-index 40482cb73d798a..1094a2f821649c 100644
---- a/drivers/dma/sh/rcar-dmac.c
-+++ b/drivers/dma/sh/rcar-dmac.c
-@@ -1868,9 +1868,7 @@ static int rcar_dmac_probe(struct platform_device *pdev)
- 
- 	dmac->dev = &pdev->dev;
- 	platform_set_drvdata(pdev, dmac);
--	ret = dma_set_max_seg_size(dmac->dev, RCAR_DMATCR_MASK);
--	if (ret)
--		return ret;
-+	dma_set_max_seg_size(dmac->dev, RCAR_DMATCR_MASK);
- 
- 	ret = dma_set_mask_and_coherent(dmac->dev, DMA_BIT_MASK(40));
- 	if (ret)
-diff --git a/drivers/dma/ste_dma40.c b/drivers/dma/ste_dma40.c
-index 2c489299148eee..d52e1685aed53f 100644
---- a/drivers/dma/ste_dma40.c
-+++ b/drivers/dma/ste_dma40.c
-@@ -3632,11 +3632,7 @@ static int __init d40_probe(struct platform_device *pdev)
- 	if (ret)
- 		goto destroy_cache;
- 
--	ret = dma_set_max_seg_size(base->dev, STEDMA40_MAX_SEG_SIZE);
--	if (ret) {
--		d40_err(dev, "Failed to set dma max seg size\n");
--		goto destroy_cache;
--	}
-+	dma_set_max_seg_size(base->dev, STEDMA40_MAX_SEG_SIZE);
- 
- 	d40_hw_init(base);
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 77b50c56c124ce..3e807195a0d03a 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -559,11 +559,7 @@ static int mtk_drm_kms_init(struct drm_device *drm)
- 	 * Configure the DMA segment size to make sure we get contiguous IOVA
- 	 * when importing PRIME buffers.
- 	 */
--	ret = dma_set_max_seg_size(dma_dev, UINT_MAX);
--	if (ret) {
--		dev_err(dma_dev, "Failed to set DMA segment size\n");
--		goto err_component_unbind;
--	}
-+	dma_set_max_seg_size(dma_dev, UINT_MAX);
- 
- 	ret = drm_vblank_init(drm, MAX_CRTC);
- 	if (ret < 0)
-diff --git a/drivers/media/common/videobuf2/videobuf2-dma-contig.c b/drivers/media/common/videobuf2/videobuf2-dma-contig.c
-index 3d4fd4ef53107c..bb0b7fa67b539a 100644
---- a/drivers/media/common/videobuf2/videobuf2-dma-contig.c
-+++ b/drivers/media/common/videobuf2/videobuf2-dma-contig.c
-@@ -854,8 +854,7 @@ int vb2_dma_contig_set_max_seg_size(struct device *dev, unsigned int size)
- 		return -ENODEV;
- 	}
- 	if (dma_get_max_seg_size(dev) < size)
--		return dma_set_max_seg_size(dev, size);
--
-+		dma_set_max_seg_size(dev, size);
- 	return 0;
- }
- EXPORT_SYMBOL_GPL(vb2_dma_contig_set_max_seg_size);
-diff --git a/drivers/media/pci/intel/ipu6/ipu6.c b/drivers/media/pci/intel/ipu6/ipu6.c
-index bbd646378ab3ed..83e70c692d957f 100644
---- a/drivers/media/pci/intel/ipu6/ipu6.c
-+++ b/drivers/media/pci/intel/ipu6/ipu6.c
-@@ -576,9 +576,7 @@ static int ipu6_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 	if (ret)
- 		return dev_err_probe(dev, ret, "Failed to set DMA mask\n");
- 
--	ret = dma_set_max_seg_size(dev, UINT_MAX);
--	if (ret)
--		return dev_err_probe(dev, ret, "Failed to set max_seg_size\n");
-+	dma_set_max_seg_size(dev, UINT_MAX);
- 
- 	ret = ipu6_pci_config_setup(pdev, isp->hw_ver);
- 	if (ret)
-diff --git a/drivers/mmc/host/mmci_stm32_sdmmc.c b/drivers/mmc/host/mmci_stm32_sdmmc.c
-index f5da7f9baa52d4..9dc51859c2e51e 100644
---- a/drivers/mmc/host/mmci_stm32_sdmmc.c
-+++ b/drivers/mmc/host/mmci_stm32_sdmmc.c
-@@ -213,7 +213,8 @@ static int sdmmc_idma_setup(struct mmci_host *host)
- 		host->mmc->max_seg_size = host->mmc->max_req_size;
- 	}
- 
--	return dma_set_max_seg_size(dev, host->mmc->max_seg_size);
-+	dma_set_max_seg_size(dev, host->mmc->max_seg_size);
-+	return 0;
- }
- 
- static int sdmmc_idma_start(struct mmci_host *host, unsigned int *datactrl)
-diff --git a/drivers/net/ethernet/microsoft/mana/gdma_main.c b/drivers/net/ethernet/microsoft/mana/gdma_main.c
-index ddb8f68d80a206..ca4ed58f1206dd 100644
---- a/drivers/net/ethernet/microsoft/mana/gdma_main.c
-+++ b/drivers/net/ethernet/microsoft/mana/gdma_main.c
-@@ -1496,11 +1496,7 @@ static int mana_gd_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	if (err)
- 		goto release_region;
- 
--	err = dma_set_max_seg_size(&pdev->dev, UINT_MAX);
--	if (err) {
--		dev_err(&pdev->dev, "Failed to set dma device segment size\n");
--		goto release_region;
--	}
-+	dma_set_max_seg_size(&pdev->dev, UINT_MAX);
- 
- 	err = -ENOMEM;
- 	gc = vzalloc(sizeof(*gc));
-diff --git a/drivers/scsi/lpfc/lpfc_init.c b/drivers/scsi/lpfc/lpfc_init.c
-index e1dfa96c2a553a..50620918becd59 100644
---- a/drivers/scsi/lpfc/lpfc_init.c
-+++ b/drivers/scsi/lpfc/lpfc_init.c
-@@ -13861,12 +13861,7 @@ lpfc_get_sli4_parameters(struct lpfc_hba *phba, LPFC_MBOXQ_t *mboxq)
- 	if (sli4_params->sge_supp_len > LPFC_MAX_SGE_SIZE)
- 		sli4_params->sge_supp_len = LPFC_MAX_SGE_SIZE;
- 
--	rc = dma_set_max_seg_size(&phba->pcidev->dev, sli4_params->sge_supp_len);
--	if (unlikely(rc)) {
--		lpfc_printf_log(phba, KERN_INFO, LOG_INIT,
--				"6400 Can't set dma maximum segment size\n");
--		return rc;
--	}
-+	dma_set_max_seg_size(&phba->pcidev->dev, sli4_params->sge_supp_len);
- 
- 	/*
- 	 * Check whether the adapter supports an embedded copy of the
-diff --git a/include/linux/dma-mapping.h b/include/linux/dma-mapping.h
-index 6bd1333dbacb9b..1524da363734af 100644
---- a/include/linux/dma-mapping.h
-+++ b/include/linux/dma-mapping.h
-@@ -524,13 +524,11 @@ static inline unsigned int dma_get_max_seg_size(struct device *dev)
- 	return SZ_64K;
- }
- 
--static inline int dma_set_max_seg_size(struct device *dev, unsigned int size)
-+static inline void dma_set_max_seg_size(struct device *dev, unsigned int size)
- {
--	if (dev->dma_parms) {
--		dev->dma_parms->max_segment_size = size;
--		return 0;
--	}
--	return -EIO;
-+	if (WARN_ON_ONCE(!dev->dma_parms))
-+		return;
-+	dev->dma_parms->max_segment_size = size;
- }
- 
- static inline unsigned long dma_get_seg_boundary(struct device *dev)
--- 
-2.43.0
+Fixes that linked issue I had with internal display on my magneton. And
+apparently I don't even need a custom kernel for it, I managed to get
+the display working on Debian's v6.11-rc4 build with this dts change
+(and `softdep mediatek-drm pre: mtk-iommu mt6358-regulator` iirc).
 
+Thanks!
 
