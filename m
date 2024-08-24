@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CF4AC5472C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Aug 2024 03:51:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6E66C5472C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Aug 2024 03:51:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hfCFH7RPHdPA6U8oxZwM/RzFKw4srQhejXrAt6uaIy8=; b=g2BILz2zEUrsqr5kjT06hPnrji
-	TQxUb888pWrT4ZgvWsivQPWXKt/BRSlkHPS3z/1OQo21/g3FoxaVIAzq0PtBw4n7qvo7GYOhNDwdr
-	Zcri2uJxmyhsPUMELgcZRIt1cVwpSvumlPzmTLJ/dEnFEjxbxTu+BrduMEJt2VwsBY4XP4GQyTt66
-	k/2sZ1r54dhjQHc48P+Cn7LNoXM5Yqi7SCYDR2mBeXOZNdppUO01Et7KvEhgHzOks8zUGwWMoIarG
-	kEbKl9nt4YxjkbB5ZY6RltyztUqDchm0ZkmmYjp/q1Rn7d3EBTd2FLXUNulLON2wAdcYFm1nVNb6r
-	PErsGGZg==;
+	bh=D9jVhl7oJxULjz2/rXwXfEOWQLpDc7NeMcx1BhhLUUk=; b=Xdb74dTnBuyJcXzyTTTzV4JdC2
+	1qvv3k2uAUkfNPcA045YXjp29wfb2pdcy8KMC1ZfY8EAC//T5DMeoeyRK0Lmazc4kzx+8wT7yu36e
+	dyrvAnQK0RoAeDVZW5tSFQgqYRuuBwB/X2hUs0m4rsXXhyO0Er5n488+Px+595ghqfjBvbII5rVAD
+	kACvUutsfXvynTUt00SY2VR6yAORFTq7Zg5DuSuvajs+VD1cxhz0sEODqsX7/VUvvFIZz+PS0UEcf
+	Lyax/aQ09XuiTwOZoIG5L6RSgEUQgWyqxVyQQrPNlwdaD5KLbD1VmwTt/4T3bOZOjoML9MvGWwi9P
+	vsUlAm/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shhnr-00000001NOT-0Odd;
-	Sat, 24 Aug 2024 03:51:03 +0000
+	id 1shhob-00000001Nce-1LrJ;
+	Sat, 24 Aug 2024 03:51:49 +0000
 Received: from 2a02-8389-2341-5b80-7457-864c-9b77-b751.cable.dynamic.v6.surfer.at ([2a02:8389:2341:5b80:7457:864c:9b77:b751] helo=localhost)
 	by bombadil.infradead.org with esmtpsa (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1shhmM-00000001N07-2TWU;
-	Sat, 24 Aug 2024 03:49:31 +0000
+	id 1shhmP-00000001N0f-2L3A;
+	Sat, 24 Aug 2024 03:49:34 +0000
 From: Christoph Hellwig <hch@lst.de>
 To: iommu@lists.linux.dev
 Cc: "Martin K. Petersen" <martin.petersen@oracle.com>,
@@ -43,9 +43,9 @@ Cc: "Martin K. Petersen" <martin.petersen@oracle.com>,
 	linux-stm32@st-md-mailman.stormreply.com,
 	linux-hyperv@vger.kernel.org,
 	netdev@vger.kernel.org
-Subject: [PATCH 1/4] scsi: check that busses support the DMA API before setting dma parameters
-Date: Sat, 24 Aug 2024 05:49:12 +0200
-Message-ID: <20240824034925.1163244-2-hch@lst.de>
+Subject: [PATCH 2/4] dma-mapping: don't return errors from dma_set_min_align_mask
+Date: Sat, 24 Aug 2024 05:49:13 +0200
+Message-ID: <20240824034925.1163244-3-hch@lst.de>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240824034925.1163244-1-hch@lst.de>
 References: <20240824034925.1163244-1-hch@lst.de>
@@ -65,38 +65,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-We'll start throwing warnings soon when dma_set_seg_boundary and
-dma_set_max_seg_size are called on devices for buses that don't fully
-support the DMA API.  Prepare for that by making the calls in the SCSI
-midlayer conditional.
+A NULL dev->dma_parms indicates either a bus that is not DMA capable or
+grave bug in the implementation of the bus code.
+
+There isn't much the driver can do in terms of error handling for either
+case, so just warn and continue as DMA operations will fail anyway.
 
 Signed-off-by: Christoph Hellwig <hch@lst.de>
+Reviewed-by: Robin Murphy <robin.murphy@arm.com>
 ---
- drivers/scsi/scsi_lib.c | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
+ include/linux/dma-mapping.h | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/scsi/scsi_lib.c b/drivers/scsi/scsi_lib.c
-index 3958a6d14bf457..7f0394c4492033 100644
---- a/drivers/scsi/scsi_lib.c
-+++ b/drivers/scsi/scsi_lib.c
-@@ -1988,8 +1988,15 @@ void scsi_init_limits(struct Scsi_Host *shost, struct queue_limits *lim)
- 	if (shost->no_highmem)
- 		lim->features |= BLK_FEAT_BOUNCE_HIGH;
- 
--	dma_set_seg_boundary(dev, shost->dma_boundary);
--	dma_set_max_seg_size(dev, shost->max_segment_size);
-+	/*
-+	 * Propagate the DMA formation properties to the dma-mapping layer as
-+	 * a courtesy service to the LLDDs.  This needs to check that the buses
-+	 * actually support the DMA API first, though.
-+	 */
-+	if (dev->dma_parms) {
-+		dma_set_seg_boundary(dev, shost->dma_boundary);
-+		dma_set_max_seg_size(dev, shost->max_segment_size);
-+	}
+diff --git a/include/linux/dma-mapping.h b/include/linux/dma-mapping.h
+index f693aafe221f2c..cfd6bafec3f944 100644
+--- a/include/linux/dma-mapping.h
++++ b/include/linux/dma-mapping.h
+@@ -575,13 +575,12 @@ static inline unsigned int dma_get_min_align_mask(struct device *dev)
+ 	return 0;
  }
- EXPORT_SYMBOL_GPL(scsi_init_limits);
  
+-static inline int dma_set_min_align_mask(struct device *dev,
++static inline void dma_set_min_align_mask(struct device *dev,
+ 		unsigned int min_align_mask)
+ {
+ 	if (WARN_ON_ONCE(!dev->dma_parms))
+-		return -EIO;
++		return;
+ 	dev->dma_parms->min_align_mask = min_align_mask;
+-	return 0;
+ }
+ 
+ #ifndef dma_get_cache_alignment
 -- 
 2.43.0
 
