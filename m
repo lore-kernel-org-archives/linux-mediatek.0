@@ -4,88 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC501C5321E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Aug 2024 13:21:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03C42C5321E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Aug 2024 15:53:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lwiSi/AMi5bCuUd7/iaGkc1OETinoYSm5HUDMFtEDMI=; b=zMqiuX9Nnasf1qLdt+iAvzYvi0
-	0+9aTzrYNEnE13JWM85pcawZ15T5QEWeY46TzRtu+b9wm6+c3AMqk+c1bSrv04w8gwakdmLsRo6jF
-	ZxyLoaUdggquinayUYwwbfiK5sO4vJmlnZijNqozZ0JRky0we7yJGP/wzuSkgiW9veB7HJYbqO7n4
-	SL/dWlUXkk9gLyCTQEK8eNGamvhXs+eTf1CTDXshkkyS8A0ar9eCm4k17G+BwIf/7OHjwTUBquEZT
-	bVwaLwSArukItP/hEcGXHyi9aIs05hH7zVrM5lQy5CTfrjFA95hwRjXIVcC4/os/PoD5qAmFPMBIU
-	Lh5SkTFg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PRU0+c0CHEt4VPCU4Vn3s4mL4zloi3iJUzYHX1hL90s=; b=jPz6P9TpVRMM7HKwmlAKtDv3L2
+	sGbfKesVsdVrN3aq3HHuSEN7UAShAlunZdTCI1CGEDsqCc+Q3CB7QSo4Y9wnbBeeG5NsMtd+KtPXz
+	5N6hjyIsXAY1wHCwxFX5vg0kE1vQtuM6bciaUGWAmYmZD40AyfAflSfe8h/KuIGoUViiFpWeksnBo
+	jmt8cLwco6vow0oC1x7iHp+h3r1Jx359mKv9UKqStElXOL+NDELgiEMqqdWANoQ8/IXcI4LLRN9/i
+	P/T3dz0CTCQ1CC9gf68tJNeBFZQCdW2zLps+oRU3QEmtFE+DJHfEP6S435xLp/vTubbB3okOUCvk0
+	0dpGmilg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siZeW-00000007U6v-3lbg;
-	Mon, 26 Aug 2024 13:21:00 +0000
-Received: from mgamail.intel.com ([192.198.163.15])
+	id 1sic2K-00000007tbm-0T1w;
+	Mon, 26 Aug 2024 15:53:44 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siZdi-00000007Tsr-0mhG;
-	Mon, 26 Aug 2024 13:20:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1724678410; x=1756214410;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=E3jqWk0quNbd2DIIwzH2hsPPy6kfLMiKIT4k5BaQN9I=;
-  b=fLQasExfKGsnG0T/yHgv8KAo+9KixDrHRM2ORMvn4YstVPY46vqz359F
-   cAneung9Oe6wk0M0DKWGMmzTsJtNuNH4NCGK7Trut84dosi9rj3KZ03tR
-   W96HW35ihhYuvRnKWztRgrIfi6GkjkbM+kaBCXzH+61NRLeGRj/4tNIeY
-   jO8MX3i1Q2zknQIp3/Kpd9MhTq/QrSmDWo1FBGFtUYicYOICJiUhWGjHj
-   Rgpj9O8HaU1kMy5IoIP4cFXO8W/L40cFXLdCl3KaNFPrK4u3i52TMYT00
-   svXJnIylTfBy2MOq+bSNmEEMbd3U/TIRdLqdhu2egvXQdvwbdNv6Civt9
-   g==;
-X-CSE-ConnectionGUID: 5twvcQj5SI2WBTEzH+nXVw==
-X-CSE-MsgGUID: 4adT0U4vQ1+mJCQechWNxA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11176"; a="23266507"
-X-IronPort-AV: E=Sophos;i="6.10,177,1719903600"; 
-   d="scan'208";a="23266507"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Aug 2024 06:20:10 -0700
-X-CSE-ConnectionGUID: pEF2z3PSSqO4UPPXQmj/yQ==
-X-CSE-MsgGUID: J7nWDYN7R/mm5vWIQnhyiQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,177,1719903600"; 
-   d="scan'208";a="93233605"
-Received: from lkp-server01.sh.intel.com (HELO 9a732dc145d3) ([10.239.97.150])
-  by orviesa002.jf.intel.com with ESMTP; 26 Aug 2024 06:20:05 -0700
-Received: from kbuild by 9a732dc145d3 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1siZdb-000H6x-0H;
-	Mon, 26 Aug 2024 13:20:03 +0000
-Date: Mon, 26 Aug 2024 21:19:15 +0800
-From: kernel test robot <lkp@intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh@kernel.org>,
-	Saravana Kannan <saravanak@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wolfram Sang <wsa-dev@sang-engineering.com>,
-	Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, Mark Brown <broonie@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	Chen-Yu Tsai <wenst@chromium.org>, chrome-platform@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Douglas Anderson <dianders@chromium.org>,
-	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v5 02/10] regulator: Move OF-specific regulator lookup
- code to of_regulator.c
-Message-ID: <202408262013.YYc4obi2-lkp@intel.com>
-References: <20240822092006.3134096-3-wenst@chromium.org>
+	id 1sic19-00000007tPz-0a41;
+	Mon, 26 Aug 2024 15:52:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 1EE98A41437;
+	Mon, 26 Aug 2024 15:52:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42C43C52FC6;
+	Mon, 26 Aug 2024 15:45:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1724687124;
+	bh=CfjXIIFwVytbq3DboLG6ZBWEAA+dSeHjisriqW8r0BE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=htMdAFLsy/VWzrv7KZVdB83Fj8TsnzeXUCuS9+1biIW6Kz7P8Dh4rwbfWNSqJJqre
+	 Q1MZP6OCv9ymTfXGiisyVBc+61y6NAxzsv6wDxYFf5QOVk3E6F1SdlnZlTgnLyvLUk
+	 xGhaNHFVHg41UQPJVCIlCt9x7T8c8vEm6euiuW1Ji+u2wjGKZj5Z1k6YJKd8iilFou
+	 5mWQxV/v0ThrpnBGxODG0RJYZn8GV2MSa4PwDuybSumLl0NoB9uxXYUWMGxjeBCins
+	 b3mdgVqy03FfugQveIMy1T9NJUxZZFqEhPXLI8ecrU6Pea4SGSpIWZOmz7VUrzxLkd
+	 hGAtk1fD1/VbQ==
+Message-ID: <39a2971d-8776-4e5f-8d72-ae447ea88362@kernel.org>
+Date: Mon, 26 Aug 2024 17:45:16 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240822092006.3134096-3-wenst@chromium.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] dt-bindings: mfd: mediatek,mt6357: Fixup reference to
+ pwrap node
+To: Macpaul Lin <macpaul.lin@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
+ Alexandre Mergnat <amergnat@baylibre.com>, Flora Fu <flora.fu@mediatek.com>
+Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+ Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>,
+ Chris-qj chen <chris-qj.chen@mediatek.com>,
+ MediaTek Chromebook Upstream
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ Chen-Yu Tsai <wenst@chromium.org>
+References: <20240826065415.19641-1-macpaul.lin@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240826065415.19641-1-macpaul.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_062010_265952_68202BEF 
-X-CRM114-Status: GOOD (  12.82  )
+X-CRM114-CacheID: sfid-20240826_085231_308935_516635EB 
+X-CRM114-Status: GOOD (  21.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,50 +127,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chen-Yu,
+On 26/08/2024 08:54, Macpaul Lin wrote:
+> The mt6357 is a subnode of pwrap node. Previously, the documentation
+> only included a note in the description of mt6357. This change adds the
+> appropriate $ref for pwrap to ensure clarity and correctness.
 
-kernel test robot noticed the following build errors:
+Heh? The schema described mt6357, not pwrap. Why are you changing it?
 
-[auto build test ERROR on broonie-regulator/for-next]
-[also build test ERROR on robh/for-next wsa/i2c/for-next linus/master v6.11-rc5 next-20240826]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+> 
+>   $ref: /schemas/soc/mediatek/mediatek,pwrap.yaml
+> 
+> Additionally, the indentation for the pmic section has been adjusted
+> to match the corresponding structure.
+> 
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> ---
+>  .../bindings/mfd/mediatek,mt6357.yaml         | 124 +++++++++---------
+>  1 file changed, 65 insertions(+), 59 deletions(-)
+> 
+> Changes for v1:
+>  - This patch has been made based on linux-next/master branch.
+> 
+> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
+> index b67fbe0..5f4f540 100644
+> --- a/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
+> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
+> @@ -22,69 +22,75 @@ description: |
+>  
+>    It is interfaced to host controller using SPI interface by a proprietary hardware
+>    called PMIC wrapper or pwrap. This MFD is a child device of pwrap.
+> -  See the following for pwrap node definitions:
+> -  Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
+>  
+>  properties:
+> -  compatible:
+> -    const: mediatek,mt6357
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Chen-Yu-Tsai/of-dynamic-Add-of_changeset_update_prop_string/20240826-105737
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
-patch link:    https://lore.kernel.org/r/20240822092006.3134096-3-wenst%40chromium.org
-patch subject: [PATCH v5 02/10] regulator: Move OF-specific regulator lookup code to of_regulator.c
-config: i386-buildonly-randconfig-003-20240826 (https://download.01.org/0day-ci/archive/20240826/202408262013.YYc4obi2-lkp@intel.com/config)
-compiler: clang version 18.1.5 (https://github.com/llvm/llvm-project 617a15a9eac96088ae5e9134248d8236e34b91b1)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240826/202408262013.YYc4obi2-lkp@intel.com/reproduce)
+How does this schema is being selected without compatible?
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202408262013.YYc4obi2-lkp@intel.com/
+> -
+> -  interrupts:
+> -    maxItems: 1
+> -
+> -  interrupt-controller: true
+> -
+> -  "#interrupt-cells":
+> -    const: 2
+> -
+> -  mediatek,hp-pull-down:
+> -    description:
+> -      Earphone driver positive output stage short to
+> -      the audio reference ground.
+> -    type: boolean
+> -
+> -  mediatek,micbias0-microvolt:
+> -    description: Selects MIC Bias 0 output voltage.
+> -    enum: [1700000, 1800000, 1900000, 2000000,
+> -           2100000, 2500000, 2600000, 2700000]
+> -    default: 1700000
+> -
+> -  mediatek,micbias1-microvolt:
+> -    description: Selects MIC Bias 1 output voltage.
+> -    enum: [1700000, 1800000, 1900000, 2000000,
+> -           2100000, 2500000, 2600000, 2700000]
+> -    default: 1700000
+> -
+> -  regulators:
+> -    type: object
+> -    $ref: /schemas/regulator/mediatek,mt6357-regulator.yaml
+> -    unevaluatedProperties: false
+> -    description:
+> -      List of MT6357 BUCKs and LDOs regulators.
+> -
+> -  rtc:
+> +  pwrap:
 
-All errors (new ones prefixed by >>):
+With the diff it is tricky to say what you are doing, but it feels
+wrong. I don't understand the rationale, the problem being fixed here,
+and considering unusual diff, this just looks wrong approach.
 
-   In file included from drivers/regulator/devres.c:15:
->> drivers/regulator/internal.h:87:9: error: incompatible integer to pointer conversion returning 'int' from a function with result type 'struct regulator_dev *' [-Wint-conversion]
-      87 |         return -ENODEV;
-         |                ^~~~~~~
-   1 error generated.
+Bindings do not work like that - you do not reference the parent inside
+the child. There is nowhere example for that, so I have no clue how did
+you come up with it.
 
+Best regards,
+Krzysztof
 
-vim +87 drivers/regulator/internal.h
-
-    82	
-    83	#else
-    84	static inline struct regulator_dev *of_regulator_dev_lookup(struct device *dev,
-    85								    const char *supply)
-    86	{
-  > 87		return -ENODEV;
-    88	}
-    89	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
