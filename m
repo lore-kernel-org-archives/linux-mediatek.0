@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39FE8C54731
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9EECC5321D
 	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Aug 2024 10:14:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,80 +12,80 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w76jNQAWt6bAp+W3zUZ22TllXAAFoaq8C3LjT25NtVg=; b=mr2D9TGDyZldSEv2W9Vd9HfdNY
-	oo5KUUt7gBto0GI5lsuambOXUPXtXYndoCPSLn0Pqbjie6fwj7V7HGIS6iaHXgqrzxHSY5jPnoTQ7
-	Y4zxSjUu94dVJKtSeLqGwBNUXaQFwDrfOJZthKvSk8CVbGvMgsnLlIvAX1lXo/6wFOAA5sUY/FN2z
-	Bght+Oxj1Q689i8XERgASAiWqX0y3exmUap0RF8TW6mM2edJhJSBOd+r9oYa2EAdE6L+X1C2JBs8c
-	JpZJmF+9PNGKrRZtmZsjgzfaRPGikWCBaH2gfUldGvTXRNERnnKk70mEFkWoxOEUsSKTEts0kExXT
-	hJsSGiWg==;
+	bh=LJH7gzL1aTMd1FSl3D4skxiHp7HFb4KrCiWKLzsaldQ=; b=Ia0NyofE607UUo72tQG1qwsujY
+	vceejCPlezalSzoOKCyaHdZw0gB2RR8LopgJa8tKDAdKR30/rxmpYRoKnQJXos+G4hMbg9obP38Fd
+	OqDjiP/iSrUl2qlq08bXK3doQH5gGAACzY7FGwI0wd6q41u00hTUffwuziUvME4Xr828N6zlvOlIX
+	qWwBbWg+yi7SUvT7BdAWOaXHKMW32U6Fvn10ga5oGL70PJfi7X8RvLgjIyo5A6ASv7q0X8VFzopVT
+	iBQgzNEDbJ4zefhdUzHbXhFU4NJgytfE4CoeTXVQrqbw7ptfBErJskN/hM+SzPGo/fcjddr+NJhP0
+	EpjKmzFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siWkP-00000006sXn-2udl;
-	Mon, 26 Aug 2024 10:14:53 +0000
+	id 1siWkQ-00000006sYG-0tyN;
+	Mon, 26 Aug 2024 10:14:54 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siWda-00000006qjJ-3Ln1
+	id 1siWda-00000006qjM-3LLx
 	for linux-mediatek@bombadil.infradead.org;
 	Mon, 26 Aug 2024 10:07:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=w76jNQAWt6bAp+W3zUZ22TllXAAFoaq8C3LjT25NtVg=; b=U7y7PTR63llOE3O6J/EAnGiqVL
-	M7q+PN/MBh9wOqa+hs6WqF0FPlFT0g1PSip6PDzpaTUje7dzCH6c3Z4PszmQ/LdBHI6DFk59gh5OD
-	WwA9KTNpqHDUUB7f9LG7KY22pqtjle1zy/c3g3LKyO6/sGwjVb/1Win/Ru26aiqRzAbT3fw/Cr/uW
-	1CXfwQOGY27QzyhgZxE3O1kT+tMdgruGVPvxbuGUBQh+lenNbDDRfFnrJ62C+iCzprLGahjYM0Xsp
-	9soMet+tDV7Waiggc8Zbpbd1TCvd52WQhuPvlleoasFZwAX+rzHuasvgl+I0b0me2X2+vMkOeoOul
-	zZvQzx6w==;
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	bh=LJH7gzL1aTMd1FSl3D4skxiHp7HFb4KrCiWKLzsaldQ=; b=aQrxcWZphI1AsJ0QOXbRoXdhu/
+	HKaKWdXML55UdWA+u1kG+Za79/swCHCPls2sLwlGGv2Uo0Tutu6blQu4XpsXfqsLVKd5dtOhV+akp
+	40ryvZKFzDsJ/M8PK0nowtUJQvRAekznossFz4hpkULLDLpxyEr4K7jJJTJJLUq409Wx95qStFwyz
+	J1ZH4TFSwASD/w6dge1nNh60j8yv/tgrAfrhvhe+RJlhmtxX2tvC9+fJpVCgSGY2Z1OyGTpyXyHpK
+	VYV072a9E86GYS3QG60T1IVfZ+W0sQ32O2DDRAyB8jXyQU0pMnExSeVef1QuFUn402LG4EoK/P9th
+	FbSJK90g==;
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siWdV-0000000Ad9l-1nIX
+	id 1siWdV-0000000AdAM-3AgG
 	for linux-mediatek@lists.infradead.org;
-	Mon, 26 Aug 2024 10:07:49 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-42802e90140so1842015e9.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 26 Aug 2024 03:07:44 -0700 (PDT)
+	Mon, 26 Aug 2024 10:07:48 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-42802ddfaa6so4597065e9.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 26 Aug 2024 03:07:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1724666863; x=1725271663; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1724666864; x=1725271664; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=w76jNQAWt6bAp+W3zUZ22TllXAAFoaq8C3LjT25NtVg=;
-        b=MmoYJxw5AEtQVRFNe61sLwWL9esePIYl8Dv/guf49TOXrKtT+/EFLBBqAUKMAFriWh
-         M0iGWFeMWJTsZPbxmpOMUysKisqIvLgAbSeuDX1OfkyselV7gn5lsswuxzA2B6STNcVT
-         R2GudTSpT8eHe1lau4uoT+7q/QQPnNGghW7sz59R/saAYchipPHraxcxf60fBMhkTDcZ
-         gNbuXC/KAOsEP0TCRzCVsPv+R03PW4vec7voijxayzBfwZBTrRY8f/OcBnsE2JD5+OBD
-         CsuuDojMd3DD78pLHklEukzwArVI3eKDX38kZqRx0oweQrA5NREvR1cj/SWH8ur9KDi1
-         31/Q==
+        bh=LJH7gzL1aTMd1FSl3D4skxiHp7HFb4KrCiWKLzsaldQ=;
+        b=OGg7FZ29TeF7LXJf+T+CZ4uiX4tQSVYB2Y+ZrJ91d+dlqG2n1erf3vV2Ijt0kMcsuN
+         6CXOdRAPXASwJbTPrWDdfjL6TIVasD/AwjRCYXDDzeSNeNz5dv7LbZ4uThUNE3kEpqd/
+         lnFn0EZCJIcqtlmI5aDboIKihCy6RW798SKPkktKeIDonb9TcLzEfw99z+2Itjqb9Ez4
+         gLDr9PGwKKNmmXRs3jlE4FZak9QRFFwP7Ts56TCYPt3A/xm8bq34/jAWwDE1RDI7O0K0
+         GYJKqIO2QGnuXPgt3NxJTSYkuqGsF/K6fggsFxEbw2YEU13ScFjcgjjSboJ3g/uRaPFF
+         SV4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724666863; x=1725271663;
+        d=1e100.net; s=20230601; t=1724666864; x=1725271664;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=w76jNQAWt6bAp+W3zUZ22TllXAAFoaq8C3LjT25NtVg=;
-        b=QrqEMlFpg+Aq/2fjC1joZ+hX3vj7U4HJu2zGWlP1wdPNvyTpSA1usomSQ33c39KrNK
-         uYg42LJ8RpVPMhkYVEwGzT3r6SC3D7VIyaGGR2MRImq1TeriBdqxW3V25IPWq4kj7/7R
-         7Zw4Cjhq1C/VBU1whf7DKD/e4g0UOm4+1/djZtnVuzXOxB4Q9GA0zO03X+X8pUNO2m/q
-         4eADDKKXaT3A1ZSUDdJTo5D0+q4xhdF1Fe9aVEYcbxOwRpKgcf3A7PKAUiJe0IOPZ/Zj
-         1xIdXbX3jaDKeJIvgl3NZGREofKEqxcEOxW0AGpkVphORs+0SSpM5yBBaplPqyDMHCEO
-         G9Yw==
-X-Forwarded-Encrypted: i=1; AJvYcCVwVjznFkLeYS80/VOz55ssK1pq/m12NBhVbmTK88xvmsXb4UxIGPvBYHNqrmoD7feac39bNoYOgIUNnUNPaA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwrPl8BToQK9ZDg1zJkI61xmqggyNtGYItMzZHv2mmp6FSwj5mc
-	fjjnIdub4lNfChv3wfynZ2tF/Yc/6/CbjgQ9QYBgsHaviMzzm6PMiiLd3E/qcKM=
-X-Google-Smtp-Source: AGHT+IExT3kmRSceNRiJcXglO6EQr+JgRlwbktOceZAKBgocM3t4FdK6T71lQ8U1bTjnR+v/YdTdjA==
-X-Received: by 2002:a05:600c:1d22:b0:426:6fc0:5910 with SMTP id 5b1f17b1804b1-42acc8d4dabmr44531595e9.1.1724666862755;
-        Mon, 26 Aug 2024 03:07:42 -0700 (PDT)
+        bh=LJH7gzL1aTMd1FSl3D4skxiHp7HFb4KrCiWKLzsaldQ=;
+        b=QhmFBJh5gRxsEkQO642x/nHOyZPOvKLEiASPHD2gcOkPN7FAfU9hmqCrFd8HNGwWrG
+         LEXU/MTb0z77dMufLWheEWNB9oCPoWbeHFNYTX7IpFOFDrZFv8Pm2JiNjvoM4gHYI+nM
+         Ms71MVEbQuSMtF1x06aB9Q2VhF9K/cYpLHROwkrg31qwgrRJ3l7JqaNEdzQ+Bnq3HifJ
+         yNR5oWMYqmxitFf/0mJ0ZyDIxpBteHYGwQWo/jkOO4QQ7GXXJO1YgmTWcz8qgdRcesnP
+         FpClzpSTFCANoL/J6Y2G+unthsbGDzYYahcWBcqRAeko60F90q+FGJtqQYCvmljzgsfa
+         Y/Xg==
+X-Forwarded-Encrypted: i=1; AJvYcCXOAyQoi7u1Ziljf0MeuZa7rCY6MftoT23zieFLtnt/I9Dp993to58Sp48A+R5zS0g9n8zySambu/ATkymi0w==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywavp2st6y1Pc1yNHeACQW5jfp2+Ih5/2l/yEMrGNiuS5xizxwi
+	10ZzKlnB+5UC6qUtm9SfHVY2ltasMvRwgM0dd+4lpkb1c+kcUvpe5zDeQ3TVhdg=
+X-Google-Smtp-Source: AGHT+IE7gdrYrwOwPxXE//4QC856859teFRpRbc14X0LTKkOSDn4Vd45gs5Ik+WW2PRPGPps93azfw==
+X-Received: by 2002:a5d:6d05:0:b0:367:9495:9016 with SMTP id ffacd0b85a97d-373118e9996mr3690028f8f.6.1724666864363;
+        Mon, 26 Aug 2024 03:07:44 -0700 (PDT)
 Received: from [127.0.1.1] ([178.197.222.82])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37308110009sm10324821f8f.18.2024.08.26.03.07.41
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37308110009sm10324821f8f.18.2024.08.26.03.07.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Aug 2024 03:07:42 -0700 (PDT)
+        Mon, 26 Aug 2024 03:07:43 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Mon, 26 Aug 2024 12:07:23 +0200
-Subject: [PATCH 07/11] phy: qcom: qmp-pcie-msm8996: Simplify with scoped
- for each OF child loop
+Date: Mon, 26 Aug 2024 12:07:24 +0200
+Subject: [PATCH 08/11] phy: ti: am654-serdes: Use scoped device node
+ handling to simplify error paths
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240826-phy-of-node-scope-v1-7-5b4d82582644@linaro.org>
+Message-Id: <20240826-phy-of-node-scope-v1-8-5b4d82582644@linaro.org>
 References: <20240826-phy-of-node-scope-v1-0-5b4d82582644@linaro.org>
 In-Reply-To: <20240826-phy-of-node-scope-v1-0-5b4d82582644@linaro.org>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -100,26 +100,26 @@ Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-arm-msm@vger.kernel.org, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.14.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1922;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3499;
  i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=XFJ5tns8gjfvYAtdDyTfcLoPh02DwDwXoBQWVHMfwN4=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmzFPe01E0Dq3KWujpfT2EVykCertsjntcsXBD7
- +xUsNUHtVaJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZsxT3gAKCRDBN2bmhouD
- 14N3D/47LpfmUaVHVAo6X4RPv0WAxp15k+koHvm3j2dUhTy7ZzV4EXYQECCOfFGsB+CPzxwJwc5
- Lg5d7XwJxs9h5sfcDWf5rvgrpSoPqbgPEgMt3ofDnhmXcpelT+lJwgZ9DxZdGMx46xMNr0PIA63
- 1RHnEPF5iJQlH1zjQVUaiUtIoq9H5DtH3i3uF2msnwsgYRl/r11LxSlaBb37HgmubTH0EYr/3aV
- UyG65tricVuY4f7q9XjgSI86CCCoPjiclzQoYKo2Uwrw6e8/kbt6F2TfGwyadrvLyuWdwca9UhY
- NwnzS5Dfc+jtMIm1MG9dX+2Xog9uutXkTRBVyN/JAPUw4COYFxLwvoGdRNFtaK57V96PZF8TduH
- jB74iPXTm5PWTrZQlbhZlAuVbYzjVWL8F6cI62QbCjiJVaZXzJyHlVTCDKTL4a+qKhtQitydsGi
- YymvzTC0L9jX7NsoATfnvbDN5A04ldqhv7gyRHIghP4YZjWk5FGQU4KZC7j3Trdm2SH6aCR6T7G
- jIww5t/cBdwRPzapjcCNHE89Qks4EXKfW8NXS5TysLeSU0okvPw3A9eqJH/YyBqLPBWkmEu06zw
- gciV7L+UwHo++g8M73hfXlCa8sLYeYOySlvoUr+GWhJoZ1IHIl1LMpwU8WGjxFU02xUhUganhfm
- 6E0aoiBNZ6ogpTw==
+ bh=q84FqGekrYD8KTQs5gy+VU5Crg5qXmyLk1XObeFSfeo=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBmzFPftx77rNEmy2lKEvE6nmjyeiGM/8vxfHVk3
+ 1Qxt9hxkm6JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZsxT3wAKCRDBN2bmhouD
+ 17VdEACDE8+ajTSInapKgMwIRqo7PrspygrbulFRV7MG7gYQuFB9ZYxJChAIKilDS3tY/vSm+mm
+ zka8Y2ZfUndSHX5z1j9a0k9HqItYyRBcF15JckSJS39yViVxdnO2So3JwRhp9ohH5RcBNLCgWXi
+ oAXJD/xxYm8NoZluxZwpKr/P+e1DxZ/iTxE36qxsdmc0i5K1Lyv2MrhIccKiE5GNghuU21Qlmon
+ pjYkvu95DSOsN4sCjuZ6mLJcHSJqSBMd+nTvI7o5AzdlCw32ewr/agT640du/9fH193lr4/juHX
+ 7I9KUOrV85awMCb205jQ9OkoqUV6T6Z6UjBzZgmfXUjW/AF/fIv4rwgpzTPwQq7FHLWhwmlSmMj
+ O5s0De/VhSO0k8dVIg3Yj8JfcgA1eQ0JiMQFWsD358pPj/Cyx5IPK+rGGImuSWRwtuNVhQg2mDB
+ tE2t9r3u+tYrCEA2qG8TnKtaj6PXKYOnFKzf01e3TWiDxsfmOE8Zrwrqbt2ctFhMNWRiUBPq14v
+ UEnylJsz6b9bx/vDX3iMxSKEspCoL2hXH/uh3PTBa0BxgKi/Wc34u84+oxNf9A2BetAzxMFu3E+
+ e1Ixc5zUX13AWl2KIQKnaC3M6hN8dT8k/BSTRE2enP0v6cWf41IzSjaNnlu4SyqhTbjuV7gKNdX
+ eHb/19T7Mf/oiQg==
 X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_110745_558976_E9D949C9 
-X-CRM114-Status: GOOD (  13.05  )
+X-CRM114-CacheID: sfid-20240826_110746_188446_231CAC07 
+X-CRM114-Status: GOOD (  14.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,62 +134,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use scoped for_each_available_child_of_node_scoped() when iterating over
-device nodes to make code a bit simpler.
+Obtain the device node reference with scoped/cleanup.h to reduce error
+handling and make the code a bit simpler.
+
+Unlike in other typical of_node_get+syscon_node_to_regmap cases, the
+reference cannot be dropped immediately after syscon_node_to_regmap(),
+because further part of probe() uses it.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- drivers/phy/qualcomm/phy-qcom-qmp-pcie-msm8996.c | 11 +++--------
- 1 file changed, 3 insertions(+), 8 deletions(-)
+ drivers/phy/ti/phy-am654-serdes.c | 50 +++++++++++++--------------------------
+ 1 file changed, 17 insertions(+), 33 deletions(-)
 
-diff --git a/drivers/phy/qualcomm/phy-qcom-qmp-pcie-msm8996.c b/drivers/phy/qualcomm/phy-qcom-qmp-pcie-msm8996.c
-index 5f89e3a3e54f..a7c65cfe31df 100644
---- a/drivers/phy/qualcomm/phy-qcom-qmp-pcie-msm8996.c
-+++ b/drivers/phy/qualcomm/phy-qcom-qmp-pcie-msm8996.c
-@@ -725,7 +725,6 @@ static int qmp_pcie_msm8996_probe(struct platform_device *pdev)
- {
- 	struct qcom_qmp *qmp;
- 	struct device *dev = &pdev->dev;
--	struct device_node *child;
- 	struct phy_provider *phy_provider;
- 	void __iomem *serdes;
- 	const struct qmp_phy_cfg *cfg = NULL;
-@@ -773,13 +772,13 @@ static int qmp_pcie_msm8996_probe(struct platform_device *pdev)
- 		return -ENOMEM;
+diff --git a/drivers/phy/ti/phy-am654-serdes.c b/drivers/phy/ti/phy-am654-serdes.c
+index 673449607c02..3bf3aff4b1c7 100644
+--- a/drivers/phy/ti/phy-am654-serdes.c
++++ b/drivers/phy/ti/phy-am654-serdes.c
+@@ -7,6 +7,7 @@
+  */
  
- 	id = 0;
--	for_each_available_child_of_node(dev->of_node, child) {
-+	for_each_available_child_of_node_scoped(dev->of_node, child) {
- 		/* Create per-lane phy */
- 		ret = qmp_pcie_msm8996_create(dev, child, id, serdes, cfg);
- 		if (ret) {
- 			dev_err(dev, "failed to create lane%d phy, %d\n",
- 				id, ret);
--			goto err_node_put;
-+			return ret;
- 		}
+ #include <dt-bindings/phy/phy.h>
++#include <linux/cleanup.h>
+ #include <linux/clk.h>
+ #include <linux/clk-provider.h>
+ #include <linux/delay.h>
+@@ -644,7 +645,6 @@ static int serdes_am654_clk_register(struct serdes_am654 *am654_phy,
+ 	struct device_node *node = am654_phy->of_node;
+ 	struct device *dev = am654_phy->dev;
+ 	struct serdes_am654_clk_mux *mux;
+-	struct device_node *regmap_node;
+ 	const char **parent_names;
+ 	struct clk_init_data *init;
+ 	unsigned int num_parents;
+@@ -652,7 +652,6 @@ static int serdes_am654_clk_register(struct serdes_am654 *am654_phy,
+ 	const __be32 *addr;
+ 	unsigned int reg;
+ 	struct clk *clk;
+-	int ret = 0;
  
- 		/*
-@@ -790,7 +789,7 @@ static int qmp_pcie_msm8996_probe(struct platform_device *pdev)
- 		if (ret) {
- 			dev_err(qmp->dev,
- 				"failed to register pipe clock source\n");
--			goto err_node_put;
-+			return ret;
- 		}
+ 	mux = devm_kzalloc(dev, sizeof(*mux), GFP_KERNEL);
+ 	if (!mux)
+@@ -660,41 +659,30 @@ static int serdes_am654_clk_register(struct serdes_am654 *am654_phy,
  
- 		id++;
-@@ -799,10 +798,6 @@ static int qmp_pcie_msm8996_probe(struct platform_device *pdev)
- 	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
+ 	init = &mux->clk_data;
  
- 	return PTR_ERR_OR_ZERO(phy_provider);
--
--err_node_put:
--	of_node_put(child);
+-	regmap_node = of_parse_phandle(node, "ti,serdes-clk", 0);
+-	if (!regmap_node) {
+-		dev_err(dev, "Fail to get serdes-clk node\n");
+-		ret = -ENODEV;
+-		goto out_put_node;
+-	}
++	struct device_node *regmap_node __free(device_node) =
++		of_parse_phandle(node, "ti,serdes-clk", 0);
++	if (!regmap_node)
++		return dev_err_probe(dev, -ENODEV, "Fail to get serdes-clk node\n");
+ 
+ 	regmap = syscon_node_to_regmap(regmap_node->parent);
+-	if (IS_ERR(regmap)) {
+-		dev_err(dev, "Fail to get Syscon regmap\n");
+-		ret = PTR_ERR(regmap);
+-		goto out_put_node;
+-	}
++	if (IS_ERR(regmap))
++		return dev_err_probe(dev, PTR_ERR(regmap),
++				     "Fail to get Syscon regmap\n");
+ 
+ 	num_parents = of_clk_get_parent_count(node);
+-	if (num_parents < 2) {
+-		dev_err(dev, "SERDES clock must have parents\n");
+-		ret = -EINVAL;
+-		goto out_put_node;
+-	}
++	if (num_parents < 2)
++		return dev_err_probe(dev, -EINVAL, "SERDES clock must have parents\n");
+ 
+ 	parent_names = devm_kzalloc(dev, (sizeof(char *) * num_parents),
+ 				    GFP_KERNEL);
+-	if (!parent_names) {
+-		ret = -ENOMEM;
+-		goto out_put_node;
+-	}
++	if (!parent_names)
++		return -ENOMEM;
+ 
+ 	of_clk_parent_fill(node, parent_names, num_parents);
+ 
+ 	addr = of_get_address(regmap_node, 0, NULL, NULL);
+-	if (!addr) {
+-		ret = -EINVAL;
+-		goto out_put_node;
+-	}
++	if (!addr)
++		return -EINVAL;
+ 
+ 	reg = be32_to_cpu(*addr);
+ 
+@@ -710,16 +698,12 @@ static int serdes_am654_clk_register(struct serdes_am654 *am654_phy,
+ 	mux->hw.init = init;
+ 
+ 	clk = devm_clk_register(dev, &mux->hw);
+-	if (IS_ERR(clk)) {
+-		ret = PTR_ERR(clk);
+-		goto out_put_node;
+-	}
++	if (IS_ERR(clk))
++		return PTR_ERR(clk);
+ 
+ 	am654_phy->clks[clock_num] = clk;
+ 
+-out_put_node:
+-	of_node_put(regmap_node);
 -	return ret;
++	return 0;
  }
  
- static struct platform_driver qmp_pcie_msm8996_driver = {
+ static const struct of_device_id serdes_am654_id_table[] = {
 
 -- 
 2.43.0
