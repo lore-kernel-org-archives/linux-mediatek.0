@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B08C3C5321D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Aug 2024 11:36:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8368C5321E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Aug 2024 12:04:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3WuBkNkQq7ncBHhLfidrPpVIWONY2++qBbCcAKeFG0A=; b=CjBptboX0rQYg4smEGqMhV3MCk
-	j37SdEpRSo/IN4SZAnL+aGId0Q8PD7IOrenUq+JrpMJV+9DxBTt+L45p+KnwtMQsJMeG8e/AlOYpG
-	hxNa2KxKxb1PLGBQLFcsdfwfFlHSHMMt4DLRDL3/izoOQ5ERZKcOys0tIXH5e7YLYKeH4Ww/c2w1N
-	RlKwDZpc2dZSgBziy92q6rkSoQHUo5qOAmT3wsRbgKjLRipGjhEYdGG1/1guu4hRjWfEhDytnkuET
-	RdxdxpTEmifLde8anRGaDMEMkonuVCG+UJskiGijs+dJDLnKj5WJv4trQ8yMLbfWIz7frgfj1NH8d
-	nb2HTxaQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oTtYynZLm2SbFEN9z92QLFpQbSCk9t7wWnmClZpFWoE=; b=VVr6twqG3UfNlZZcPtrbi223bV
+	NshTs+XhIq4JA4Ja8906ogrJOLxfz6WKwfWBh9snGn2SV/+Vi2ZJ/5xFR7cSlfwwGKbXUMQyzAW2J
+	+eJeJmjGueNB3iSA34aUegzQKN0OoGsL9R44Jffr8e5Q+z/69zjcX/bxxQM05yz2FduqXTMM/Dr63
+	CNbDo4pL9E1Lz3ROhG38cYC18/YOP8ug3mOIWY19qIzdUmCJPQMqQR6I/q6FIujg+ec1vcjOfhxll
+	m+RVogo09FSc0FH2Tsg1QZHhC9LZpVYIkS/ThWR8RO27V7Fl3aRCGz8A5Jc2XWkJZnI3x9IyXrC43
+	A5DGGA0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siY1k-00000007AAF-14at;
-	Mon, 26 Aug 2024 11:36:52 +0000
-Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
+	id 1siYRy-00000007EAd-36Ev;
+	Mon, 26 Aug 2024 12:03:58 +0000
+Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siY1g-00000007A91-2KC9
+	id 1siYRu-00000007E8f-0YBC
 	for linux-mediatek@lists.infradead.org;
-	Mon, 26 Aug 2024 11:36:50 +0000
-Received: by mail-yb1-xb2a.google.com with SMTP id 3f1490d57ef6-e02c4983bfaso4361622276.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 26 Aug 2024 04:36:48 -0700 (PDT)
+	Mon, 26 Aug 2024 12:03:57 +0000
+Received: by mail-oa1-x34.google.com with SMTP id 586e51a60fabf-270298a3b6eso3242184fac.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 26 Aug 2024 05:03:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1724672206; x=1725277006; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=3WuBkNkQq7ncBHhLfidrPpVIWONY2++qBbCcAKeFG0A=;
-        b=XDux7uKz6iETttqf2N0IqwR35PNl/LpSl47ng97sixq7ctMpclX/21BXiSRf4kSxSF
-         EBTseyJndnGFd/HII3Nmtd0v2JVMeRp4Q1PhKmLy9xMdwSJ8DxVCOsy+aWjq0D8FDsnF
-         IVOntkYPUJE7o5xopVvGqWOBFyQPN2TFI8CHDOhiBvyje+L6olZxN0MEGiiJHS+kXvYZ
-         aoJUExctOJY5a+1AvKbiXrgY8rtUbU0IYZJllI4Y687HzziSil8UhkmhGIBkSpXB/aZ8
-         sKYaEmq1WvF+9n2PvZHEWwu0p0vfV0580PIa/E76oaiQhyOsSNr7S21vIpOpE7NOraiD
-         EpGw==
+        d=noa-labs.com; s=google; t=1724673832; x=1725278632; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=oTtYynZLm2SbFEN9z92QLFpQbSCk9t7wWnmClZpFWoE=;
+        b=F9SkOuwTTdEqYu2aOHCPnsFPRbvvE2mlJuDooNxU1DNvpR2nPQoRWvc9u10Bx8GN5d
+         +lCiPxGyYyMvxAsIEKlNcbk1M1Y1BUhHYjzJpmd/y8VPr4cThTo7Di7AogOejjrDviLh
+         H579m1c0hstupYQy0Bfkat+SFmdpYnCb0CyZQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724672206; x=1725277006;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=3WuBkNkQq7ncBHhLfidrPpVIWONY2++qBbCcAKeFG0A=;
-        b=I7LqFQL3ARFfXgM3Mszyb4iJDK1WloD/vf4snp+/UnfH9Ff1BadbGqZx1Ie2XoYWmt
-         C2ttx8/Xzqu4DCqhRpcbgWwfi5Hy7wTNpjsGPxvBv4EdgsbwYI2WFcU1tPjMI6m82aCt
-         lyiYYottPskUAnH824lLqr5uxbEVzmuoPXD67U9rbiFAtzWbipNhQfqbz4b7VaiHBobF
-         +iSDE16zx44Hn8LWxlH1MKRnT/hX2GvGa50NVBm1FRmPsl8E6gYVnUtvp5jCPLiv6wDE
-         K6CjKCCPIxyJ9OZqZPFjeYOd/RfdSbwx/a2xNdyZGN9xtK4vmATaFFxgVbsHsMatlRnd
-         clzQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWODIh1D2/j70+HdqTBytOrdgLCWlf4mgSB1PioJ/gbaHBllPbvQZAuyj+PPyobSEhnnyHR0ZzBOJUjOOj82Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyUdGI8fYxKaglXax0irj5EXs5Eq2bM45ZCryE9aFXZ1WURwFom
-	HDf2GdriKQq4nXiO5mi3WEHCatEA5E8mO19h8C9mBx56bR0Abiwmy6FI9gaj0qE8IDNADwjn1N0
-	sBoDewmm8DDKI2o50QiM6zf6FdrIaSSo1Lv+VLA==
-X-Google-Smtp-Source: AGHT+IFTmCOXbkWFVjFKxNQjfliOW8Z+x4s+zXNlqgxkRfvBAgPO0UAeheCBnSP89lF7epHbxvk3ur82nxWQLLc8Og4=
-X-Received: by 2002:a05:6902:1a46:b0:e0b:4045:ada0 with SMTP id
- 3f1490d57ef6-e17a83d45d4mr9340283276.23.1724672206061; Mon, 26 Aug 2024
- 04:36:46 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1724673832; x=1725278632;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=oTtYynZLm2SbFEN9z92QLFpQbSCk9t7wWnmClZpFWoE=;
+        b=U4AyiRyoTQXm78+V7x85dGDnme2X9aLbB9w03PuEz+uOVuMzBYtiR4w5JUUxMJTvmx
+         iTWOY0ovw0EJg1XF50P2QY/XLjuVnmkrxK6ewUwE7tDkHCqXTWNaSgVc5i95ty3Z6QCc
+         jPsZI4fmGxqg5u8vKcxp67ByHzaMoZOY7sjPhjd6T4ZkUdpjtt5i4NPoSsJDXTIqMs/o
+         8Rm8qrOBULVX56Lj6nX5CUVFxkcYQqCd2QVVQuOlZnDPYTuh7xekuOnJ6fPxG6sfAU84
+         qFq2Wwy/xF8QLhcKgQ8+sdhFzVJbwo20su73UHKG4osKeX23uJiw+n4gntpsRuM+HT5J
+         cjrA==
+X-Forwarded-Encrypted: i=1; AJvYcCXONzTzLKqr3ITd6bDdo30RIf1JHj+C8NPnNQMBcboe0LGJCYjoQxDbytTeSxbSkkMfTfIfzQ3kNtV9CfNXkA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxI17DpwMKsLvAmAchUdzK6wXwlcgNBgIGK9SkUmQOl2lRW5pdW
+	w/BSojJ0Jn195rZFLKBMbILBAWZtsDssqefddzXMT2yVGh+CXHFok4M/6PXNoLj+z1TF5IKpwBV
+	TzIV3TerMmv6mbjeqnd9nDUbWdgPjVDeqBe3Q5ALdJNDjZaIJ1tTEyVJV
+X-Google-Smtp-Source: AGHT+IFrNumdULsnEPR04kBNU8XMjX8bG9XSVfDlwM/zGpHmPKGcSfOV8lPe2vGJr0OSfW68l7jPhnVF9tH+ZD4Q1Vc=
+X-Received: by 2002:a05:6870:d0c7:b0:260:f9ee:9700 with SMTP id
+ 586e51a60fabf-273e652019emr11521313fac.30.1724673831904; Mon, 26 Aug 2024
+ 05:03:51 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240824034925.1163244-1-hch@lst.de> <20240824034925.1163244-5-hch@lst.de>
-In-Reply-To: <20240824034925.1163244-5-hch@lst.de>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 26 Aug 2024 13:36:09 +0200
-Message-ID: <CAPDyKFrnP5uZ8H3CL5P7bwjRnPwNPDF-U7amm1fwGeob63GYmw@mail.gmail.com>
-Subject: Re: [PATCH 4/4] dma-mapping: don't return errors from dma_set_max_seg_size
-To: Christoph Hellwig <hch@lst.de>
-Cc: iommu@lists.linux.dev, "Martin K. Petersen" <martin.petersen@oracle.com>, 
-	Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, 
-	linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org, 
-	linux-mmc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
-	linux-hyperv@vger.kernel.org, netdev@vger.kernel.org
+References: <20240821110856.22552-1-pavel@noa-labs.com> <2b7a1c4ee1d6e78f166d545b31f4fd3fbd252e26.camel@mediatek.com>
+ <CAG-pW8EgBE4RwhcFtMXEuFtG56JJSyvOjG5+q71zG6pJyo05hg@mail.gmail.com> <CABBYNZJL6qkOPE6UuKz+=03KTUNF4091iR=1j4e2P+Wf2c+oWg@mail.gmail.com>
+In-Reply-To: <CABBYNZJL6qkOPE6UuKz+=03KTUNF4091iR=1j4e2P+Wf2c+oWg@mail.gmail.com>
+From: Pavel Nikulin <pavel@noa-labs.com>
+Date: Mon, 26 Aug 2024 16:03:44 +0400
+Message-ID: <CAG-pW8HB=jE-g1b5cy1AnwkmzHP_ckw0HtM+r_Lfsu8eOZpzkw@mail.gmail.com>
+Subject: Re: [PATCH] Bluetooth: btusb: Add Realtek MT7925 support ID 0x13d3:0x3608
+To: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
+Cc: =?UTF-8?B?Q2hyaXMgTHUgKOmZuOeomuazkyk=?= <Chris.Lu@mediatek.com>, 
+	"marcel@holtmann.org" <marcel@holtmann.org>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	=?UTF-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?= <Deren.Wu@mediatek.com>, 
+	"linux-bluetooth@vger.kernel.org" <linux-bluetooth@vger.kernel.org>, 
+	"johan.hedberg@gmail.com" <johan.hedberg@gmail.com>, =?UTF-8?B?U3RldmUgTGVlICjmnY7oppboqqAp?= <steve.lee@mediatek.com>, 
+	Sean Wang <Sean.Wang@mediatek.com>, =?UTF-8?B?QWFyb24gSG91ICjkvq/kv4rku7Ap?= <Aaron.Hou@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_043648_647373_1326D170 
-X-CRM114-Status: GOOD (  25.78  )
+X-CRM114-CacheID: sfid-20240826_050354_219848_8E789D82 
+X-CRM114-Status: GOOD (  35.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,252 +94,164 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 24 Aug 2024 at 05:51, Christoph Hellwig <hch@lst.de> wrote:
->
-> A NULL dev->dma_parms indicates either a bus that is not DMA capable or
-> grave bug in the implementation of the bus code.
->
-> There isn't much the driver can do in terms of error handling for either
-> case, so just warn and continue as DMA operations will fail anyway.
->
-> Signed-off-by: Christoph Hellwig <hch@lst.de>
-> Reviewed-by: Robin Murphy <robin.murphy@arm.com>
-> ---
->  drivers/accel/qaic/qaic_drv.c                         |  4 +---
->  drivers/dma/idma64.c                                  |  4 +---
->  drivers/dma/pl330.c                                   |  5 +----
->  drivers/dma/qcom/bam_dma.c                            |  6 +-----
->  drivers/dma/sh/rcar-dmac.c                            |  4 +---
->  drivers/dma/ste_dma40.c                               |  6 +-----
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c                |  6 +-----
->  drivers/media/common/videobuf2/videobuf2-dma-contig.c |  3 +--
->  drivers/media/pci/intel/ipu6/ipu6.c                   |  4 +---
->  drivers/mmc/host/mmci_stm32_sdmmc.c                   |  3 ++-
->  drivers/net/ethernet/microsoft/mana/gdma_main.c       |  6 +-----
->  drivers/scsi/lpfc/lpfc_init.c                         |  7 +------
->  include/linux/dma-mapping.h                           | 10 ++++------
->  13 files changed, 17 insertions(+), 51 deletions(-)
+Yes, just replace realtek with mediatek, and indicate that it fixes
+https://bugzilla.kernel.org/show_bug.cgi?id=3D219182
 
-Acked-by: Ulf Hansson <ulf.hansson@linaro.org> # For MMC
 
-Kind regards
-Uffe
+Pavel Nikulin
+Senior Engineer
++971 52 386 6738
+pavel@noa-labs.com
 
+
+
+On Fri, Aug 23, 2024 at 1:42=E2=80=AFAM Luiz Augusto von Dentz
+<luiz.dentz@gmail.com> wrote:
 >
-> diff --git a/drivers/accel/qaic/qaic_drv.c b/drivers/accel/qaic/qaic_drv.c
-> index 580b29ed190217..bf10156c334e71 100644
-> --- a/drivers/accel/qaic/qaic_drv.c
-> +++ b/drivers/accel/qaic/qaic_drv.c
-> @@ -447,9 +447,7 @@ static int init_pci(struct qaic_device *qdev, struct pci_dev *pdev)
->         ret = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(64));
->         if (ret)
->                 return ret;
-> -       ret = dma_set_max_seg_size(&pdev->dev, UINT_MAX);
-> -       if (ret)
-> -               return ret;
-> +       dma_set_max_seg_size(&pdev->dev, UINT_MAX);
+> Hi Pavel,
 >
->         qdev->bar_0 = devm_ioremap_resource(&pdev->dev, &pdev->resource[0]);
->         if (IS_ERR(qdev->bar_0))
-> diff --git a/drivers/dma/idma64.c b/drivers/dma/idma64.c
-> index e3505e56784b1a..1398814d8fbb63 100644
-> --- a/drivers/dma/idma64.c
-> +++ b/drivers/dma/idma64.c
-> @@ -598,9 +598,7 @@ static int idma64_probe(struct idma64_chip *chip)
+> On Thu, Aug 22, 2024 at 5:09=E2=80=AFPM Pavel Nikulin <pavel@noa-labs.com=
+> wrote:
+> >
+> > Oh my, how I missed that.
+> >
+> > I think a commit can be undone, and the same patch with a correct
+> > commit message submitted again. Somebody with access will have to
+> > revert it.
 >
->         idma64->dma.dev = chip->sysdev;
+> I will do that once I rebase for the next pull request, it is just a
+> matter of doing s/Realtek/Mediatek?
 >
-> -       ret = dma_set_max_seg_size(idma64->dma.dev, IDMA64C_CTLH_BLOCK_TS_MASK);
-> -       if (ret)
-> -               return ret;
-> +       dma_set_max_seg_size(idma64->dma.dev, IDMA64C_CTLH_BLOCK_TS_MASK);
+> >
+> > Pavel Nikulin
+> > Senior Engineer
+> > +971 52 386 6738
+> > pavel@noa-labs.com
+> >
+> >
+> >
+> > On Thu, Aug 22, 2024 at 9:54=E2=80=AFAM Chris Lu (=E9=99=B8=E7=A8=9A=E6=
+=B3=93) <Chris.Lu@mediatek.com> wrote:
+> > >
+> > > Hi Luiz and Pavel,
+> > >
+> > > I think these is something wrong to the title and content of this
+> > > patch. MT7925 is an connectivity IC from Mediatek rather than Realtek=
+.
+> > >
+> > > Although this patch has been accpeted and merged to the next tree, I'=
+m
+> > > wondering if the typo can still be fixed? I'm afraid that such error
+> > > could cause some misunderstanding to users.
+> > >
+> > > Thanks a lot!
+> > >
+> > > BRs,
+> > > Chris
+> > >
+> > > On Wed, 2024-08-21 at 15:08 +0400, Pavel Nikulin wrote:
+> > > > Add the support ID (0x13d3, 0x3608) to usb_device_id table for
+> > > > Realtek MT7925B14L found on AW-EM637 WiFi+BT modules in 2024 Asus
+> > > > laptops.
+> > > >
+> > > > The device info from /sys/kernel/debug/usb/devices as below.
+> > > >
+> > > > T:  Bus=3D03 Lev=3D01 Prnt=3D01 Port=3D00 Cnt=3D01 Dev#=3D  2 Spd=
+=3D480  MxCh=3D 0
+> > > > D:  Ver=3D 2.10 Cls=3Def(misc ) Sub=3D02 Prot=3D01 MxPS=3D64 #Cfgs=
+=3D  1
+> > > > P:  Vendor=3D13d3 ProdID=3D3608 Rev=3D 1.00
+> > > > S:  Manufacturer=3DMediaTek Inc.
+> > > > S:  Product=3DWireless_Device
+> > > > S:  SerialNumber=3D000000000
+> > > > C:* #Ifs=3D 3 Cfg#=3D 1 Atr=3De0 MxPwr=3D100mA
+> > > > A:  FirstIf#=3D 0 IfCount=3D 3 Cls=3De0(wlcon) Sub=3D01 Prot=3D01
+> > > > I:* If#=3D 0 Alt=3D 0 #EPs=3D 3 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 =
+Driver=3Dbtusb
+> > > > E:  Ad=3D81(I) Atr=3D03(Int.) MxPS=3D  16 Ivl=3D125us
+> > > > E:  Ad=3D82(I) Atr=3D02(Bulk) MxPS=3D 512 Ivl=3D0ms
+> > > > E:  Ad=3D02(O) Atr=3D02(Bulk) MxPS=3D 512 Ivl=3D0ms
+> > > > I:* If#=3D 1 Alt=3D 0 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 =
+Driver=3Dbtusb
+> > > > E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D   0 Ivl=3D1ms
+> > > > E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D   0 Ivl=3D1ms
+> > > > I:  If#=3D 1 Alt=3D 1 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 =
+Driver=3Dbtusb
+> > > > E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D   9 Ivl=3D1ms
+> > > > E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D   9 Ivl=3D1ms
+> > > > I:  If#=3D 1 Alt=3D 2 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 =
+Driver=3Dbtusb
+> > > > E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  17 Ivl=3D1ms
+> > > > E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  17 Ivl=3D1ms
+> > > > I:  If#=3D 1 Alt=3D 3 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 =
+Driver=3Dbtusb
+> > > > E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  25 Ivl=3D1ms
+> > > > E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  25 Ivl=3D1ms
+> > > > I:  If#=3D 1 Alt=3D 4 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 =
+Driver=3Dbtusb
+> > > > E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  33 Ivl=3D1ms
+> > > > E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  33 Ivl=3D1ms
+> > > > I:  If#=3D 1 Alt=3D 5 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 =
+Driver=3Dbtusb
+> > > > E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  49 Ivl=3D1ms
+> > > > E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  49 Ivl=3D1ms
+> > > > I:  If#=3D 1 Alt=3D 6 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 =
+Driver=3Dbtusb
+> > > > E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  63 Ivl=3D1ms
+> > > > E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  63 Ivl=3D1ms
+> > > > I:  If#=3D 2 Alt=3D 0 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 =
+Driver=3Dbtusb
+> > > > E:  Ad=3D8a(I) Atr=3D03(Int.) MxPS=3D  64 Ivl=3D125us
+> > > > E:  Ad=3D0a(O) Atr=3D03(Int.) MxPS=3D  64 Ivl=3D125us
+> > > > I:* If#=3D 2 Alt=3D 1 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 =
+Driver=3Dbtusb
+> > > > E:  Ad=3D8a(I) Atr=3D03(Int.) MxPS=3D 512 Ivl=3D125us
+> > > > E:  Ad=3D0a(O) Atr=3D03(Int.) MxPS=3D 512 Ivl=3D125us
+> > > >
+> > > > Signed-off-by: Pavel Nikulin <pavel@noa-labs.com>
+> > > > ---
+> > > >  drivers/bluetooth/btusb.c | 2 ++
+> > > >  1 file changed, 2 insertions(+)
+> > > >
+> > > > diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+> > > > index bb698ca98..df0d2e4ab 100644
+> > > > --- a/drivers/bluetooth/btusb.c
+> > > > +++ b/drivers/bluetooth/btusb.c
+> > > > @@ -627,6 +627,8 @@ static const struct usb_device_id quirks_table[=
+]
+> > > > =3D {
+> > > >       BTUSB_WIDEBAND_SPE
+> > > > ECH },
+> > > >  { USB_DEVICE(0x13d3, 0x3604), .driver_info =3D BTUSB_MEDIATEK |
+> > > >       BTUSB_WIDEBAND_SPE
+> > > > ECH },
+> > > > +{ USB_DEVICE(0x13d3, 0x3608), .driver_info =3D BTUSB_MEDIATEK |
+> > > > +     BTUSB_WIDEBAND_SPE
+> > > > ECH },
+> > > >
+> > > >  /* Additional Realtek 8723AE Bluetooth devices */
+> > > >  { USB_DEVICE(0x0930, 0x021d), .driver_info =3D BTUSB_REALTEK },
+> > >
+> > > ************* MEDIATEK Confidentiality Notice ********************
+> > > The information contained in this e-mail message (including any
+> > > attachments) may be confidential, proprietary, privileged, or otherwi=
+se
+> > > exempt from disclosure under applicable laws. It is intended to be
+> > > conveyed only to the designated recipient(s). Any use, dissemination,
+> > > distribution, printing, retaining or copying of this e-mail (includin=
+g its
+> > > attachments) by unintended recipient(s) is strictly prohibited and ma=
+y
+> > > be unlawful. If you are not an intended recipient of this e-mail, or =
+believe
+> > > that you have received this e-mail in error, please notify the sender
+> > > immediately (by replying to this e-mail), delete any and all copies o=
+f
+> > > this e-mail (including any attachments) from your system, and do not
+> > > disclose the content of this e-mail to any other person. Thank you!
 >
->         ret = dma_async_device_register(&idma64->dma);
->         if (ret)
-> diff --git a/drivers/dma/pl330.c b/drivers/dma/pl330.c
-> index 60c4de8dac1d2a..82a9fe88ad54c9 100644
-> --- a/drivers/dma/pl330.c
-> +++ b/drivers/dma/pl330.c
-> @@ -3163,10 +3163,7 @@ pl330_probe(struct amba_device *adev, const struct amba_id *id)
->          * This is the limit for transfers with a buswidth of 1, larger
->          * buswidths will have larger limits.
->          */
-> -       ret = dma_set_max_seg_size(&adev->dev, 1900800);
-> -       if (ret)
-> -               dev_err(&adev->dev, "unable to set the seg size\n");
-> -
-> +       dma_set_max_seg_size(&adev->dev, 1900800);
 >
->         init_pl330_debugfs(pl330);
->         dev_info(&adev->dev,
-> diff --git a/drivers/dma/qcom/bam_dma.c b/drivers/dma/qcom/bam_dma.c
-> index 5e7d332731e0c1..368ffaa4003789 100644
-> --- a/drivers/dma/qcom/bam_dma.c
-> +++ b/drivers/dma/qcom/bam_dma.c
-> @@ -1325,11 +1325,7 @@ static int bam_dma_probe(struct platform_device *pdev)
 >
->         /* set max dma segment size */
->         bdev->common.dev = bdev->dev;
-> -       ret = dma_set_max_seg_size(bdev->common.dev, BAM_FIFO_SIZE);
-> -       if (ret) {
-> -               dev_err(bdev->dev, "cannot set maximum segment size\n");
-> -               goto err_bam_channel_exit;
-> -       }
-> +       dma_set_max_seg_size(bdev->common.dev, BAM_FIFO_SIZE);
->
->         platform_set_drvdata(pdev, bdev);
->
-> diff --git a/drivers/dma/sh/rcar-dmac.c b/drivers/dma/sh/rcar-dmac.c
-> index 40482cb73d798a..1094a2f821649c 100644
-> --- a/drivers/dma/sh/rcar-dmac.c
-> +++ b/drivers/dma/sh/rcar-dmac.c
-> @@ -1868,9 +1868,7 @@ static int rcar_dmac_probe(struct platform_device *pdev)
->
->         dmac->dev = &pdev->dev;
->         platform_set_drvdata(pdev, dmac);
-> -       ret = dma_set_max_seg_size(dmac->dev, RCAR_DMATCR_MASK);
-> -       if (ret)
-> -               return ret;
-> +       dma_set_max_seg_size(dmac->dev, RCAR_DMATCR_MASK);
->
->         ret = dma_set_mask_and_coherent(dmac->dev, DMA_BIT_MASK(40));
->         if (ret)
-> diff --git a/drivers/dma/ste_dma40.c b/drivers/dma/ste_dma40.c
-> index 2c489299148eee..d52e1685aed53f 100644
-> --- a/drivers/dma/ste_dma40.c
-> +++ b/drivers/dma/ste_dma40.c
-> @@ -3632,11 +3632,7 @@ static int __init d40_probe(struct platform_device *pdev)
->         if (ret)
->                 goto destroy_cache;
->
-> -       ret = dma_set_max_seg_size(base->dev, STEDMA40_MAX_SEG_SIZE);
-> -       if (ret) {
-> -               d40_err(dev, "Failed to set dma max seg size\n");
-> -               goto destroy_cache;
-> -       }
-> +       dma_set_max_seg_size(base->dev, STEDMA40_MAX_SEG_SIZE);
->
->         d40_hw_init(base);
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index 77b50c56c124ce..3e807195a0d03a 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -559,11 +559,7 @@ static int mtk_drm_kms_init(struct drm_device *drm)
->          * Configure the DMA segment size to make sure we get contiguous IOVA
->          * when importing PRIME buffers.
->          */
-> -       ret = dma_set_max_seg_size(dma_dev, UINT_MAX);
-> -       if (ret) {
-> -               dev_err(dma_dev, "Failed to set DMA segment size\n");
-> -               goto err_component_unbind;
-> -       }
-> +       dma_set_max_seg_size(dma_dev, UINT_MAX);
->
->         ret = drm_vblank_init(drm, MAX_CRTC);
->         if (ret < 0)
-> diff --git a/drivers/media/common/videobuf2/videobuf2-dma-contig.c b/drivers/media/common/videobuf2/videobuf2-dma-contig.c
-> index 3d4fd4ef53107c..bb0b7fa67b539a 100644
-> --- a/drivers/media/common/videobuf2/videobuf2-dma-contig.c
-> +++ b/drivers/media/common/videobuf2/videobuf2-dma-contig.c
-> @@ -854,8 +854,7 @@ int vb2_dma_contig_set_max_seg_size(struct device *dev, unsigned int size)
->                 return -ENODEV;
->         }
->         if (dma_get_max_seg_size(dev) < size)
-> -               return dma_set_max_seg_size(dev, size);
-> -
-> +               dma_set_max_seg_size(dev, size);
->         return 0;
->  }
->  EXPORT_SYMBOL_GPL(vb2_dma_contig_set_max_seg_size);
-> diff --git a/drivers/media/pci/intel/ipu6/ipu6.c b/drivers/media/pci/intel/ipu6/ipu6.c
-> index bbd646378ab3ed..83e70c692d957f 100644
-> --- a/drivers/media/pci/intel/ipu6/ipu6.c
-> +++ b/drivers/media/pci/intel/ipu6/ipu6.c
-> @@ -576,9 +576,7 @@ static int ipu6_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
->         if (ret)
->                 return dev_err_probe(dev, ret, "Failed to set DMA mask\n");
->
-> -       ret = dma_set_max_seg_size(dev, UINT_MAX);
-> -       if (ret)
-> -               return dev_err_probe(dev, ret, "Failed to set max_seg_size\n");
-> +       dma_set_max_seg_size(dev, UINT_MAX);
->
->         ret = ipu6_pci_config_setup(pdev, isp->hw_ver);
->         if (ret)
-> diff --git a/drivers/mmc/host/mmci_stm32_sdmmc.c b/drivers/mmc/host/mmci_stm32_sdmmc.c
-> index f5da7f9baa52d4..9dc51859c2e51e 100644
-> --- a/drivers/mmc/host/mmci_stm32_sdmmc.c
-> +++ b/drivers/mmc/host/mmci_stm32_sdmmc.c
-> @@ -213,7 +213,8 @@ static int sdmmc_idma_setup(struct mmci_host *host)
->                 host->mmc->max_seg_size = host->mmc->max_req_size;
->         }
->
-> -       return dma_set_max_seg_size(dev, host->mmc->max_seg_size);
-> +       dma_set_max_seg_size(dev, host->mmc->max_seg_size);
-> +       return 0;
->  }
->
->  static int sdmmc_idma_start(struct mmci_host *host, unsigned int *datactrl)
-> diff --git a/drivers/net/ethernet/microsoft/mana/gdma_main.c b/drivers/net/ethernet/microsoft/mana/gdma_main.c
-> index ddb8f68d80a206..ca4ed58f1206dd 100644
-> --- a/drivers/net/ethernet/microsoft/mana/gdma_main.c
-> +++ b/drivers/net/ethernet/microsoft/mana/gdma_main.c
-> @@ -1496,11 +1496,7 @@ static int mana_gd_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->         if (err)
->                 goto release_region;
->
-> -       err = dma_set_max_seg_size(&pdev->dev, UINT_MAX);
-> -       if (err) {
-> -               dev_err(&pdev->dev, "Failed to set dma device segment size\n");
-> -               goto release_region;
-> -       }
-> +       dma_set_max_seg_size(&pdev->dev, UINT_MAX);
->
->         err = -ENOMEM;
->         gc = vzalloc(sizeof(*gc));
-> diff --git a/drivers/scsi/lpfc/lpfc_init.c b/drivers/scsi/lpfc/lpfc_init.c
-> index e1dfa96c2a553a..50620918becd59 100644
-> --- a/drivers/scsi/lpfc/lpfc_init.c
-> +++ b/drivers/scsi/lpfc/lpfc_init.c
-> @@ -13861,12 +13861,7 @@ lpfc_get_sli4_parameters(struct lpfc_hba *phba, LPFC_MBOXQ_t *mboxq)
->         if (sli4_params->sge_supp_len > LPFC_MAX_SGE_SIZE)
->                 sli4_params->sge_supp_len = LPFC_MAX_SGE_SIZE;
->
-> -       rc = dma_set_max_seg_size(&phba->pcidev->dev, sli4_params->sge_supp_len);
-> -       if (unlikely(rc)) {
-> -               lpfc_printf_log(phba, KERN_INFO, LOG_INIT,
-> -                               "6400 Can't set dma maximum segment size\n");
-> -               return rc;
-> -       }
-> +       dma_set_max_seg_size(&phba->pcidev->dev, sli4_params->sge_supp_len);
->
->         /*
->          * Check whether the adapter supports an embedded copy of the
-> diff --git a/include/linux/dma-mapping.h b/include/linux/dma-mapping.h
-> index 6bd1333dbacb9b..1524da363734af 100644
-> --- a/include/linux/dma-mapping.h
-> +++ b/include/linux/dma-mapping.h
-> @@ -524,13 +524,11 @@ static inline unsigned int dma_get_max_seg_size(struct device *dev)
->         return SZ_64K;
->  }
->
-> -static inline int dma_set_max_seg_size(struct device *dev, unsigned int size)
-> +static inline void dma_set_max_seg_size(struct device *dev, unsigned int size)
->  {
-> -       if (dev->dma_parms) {
-> -               dev->dma_parms->max_segment_size = size;
-> -               return 0;
-> -       }
-> -       return -EIO;
-> +       if (WARN_ON_ONCE(!dev->dma_parms))
-> +               return;
-> +       dev->dma_parms->max_segment_size = size;
->  }
->
->  static inline unsigned long dma_get_seg_boundary(struct device *dev)
 > --
-> 2.43.0
->
->
+> Luiz Augusto von Dentz
 
