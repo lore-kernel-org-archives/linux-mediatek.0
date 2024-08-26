@@ -4,78 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03FB1C5321E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Aug 2024 12:57:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC501C5321E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Aug 2024 13:21:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9BYw2+PNBdGdDjbQ+UWrqOv1nJdDc6CghbJ5ezwK4rk=; b=2PsUdOkVDRi0CSYTnBH3nGs3xP
-	X1gXvrZWCYxaKnBxyt3MsgZLq7xXYLXNCZgQM73wvh8YU0AJ1UpMrWy33OgnAWG9SmohcDnJPViWy
-	05hpZFBaLIYsRGwMNweY8Kw9AEb/AamdYMKJ1uBR7QjomXsEf5yv2JY+/+Bs5fhWAv+zQbEs2m4js
-	QqSfH30D5vO4aLkoWRYeUc8FMYUxcbR/xWTFVSctBlhevQxiduhLnoJEHCJ3PYG+GJ7k0WUnLN1ow
-	a0ocN51hSNIFs4gycKwcCEEWOLCGng9Jy16ydMpBSv8W8RSrMMMeIU8QyMdaXXRATnTX3xgh6iChd
-	U/UBvlXA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lwiSi/AMi5bCuUd7/iaGkc1OETinoYSm5HUDMFtEDMI=; b=zMqiuX9Nnasf1qLdt+iAvzYvi0
+	0+9aTzrYNEnE13JWM85pcawZ15T5QEWeY46TzRtu+b9wm6+c3AMqk+c1bSrv04w8gwakdmLsRo6jF
+	ZxyLoaUdggquinayUYwwbfiK5sO4vJmlnZijNqozZ0JRky0we7yJGP/wzuSkgiW9veB7HJYbqO7n4
+	SL/dWlUXkk9gLyCTQEK8eNGamvhXs+eTf1CTDXshkkyS8A0ar9eCm4k17G+BwIf/7OHjwTUBquEZT
+	bVwaLwSArukItP/hEcGXHyi9aIs05hH7zVrM5lQy5CTfrjFA95hwRjXIVcC4/os/PoD5qAmFPMBIU
+	Lh5SkTFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siZHS-00000007QNy-2AVg;
-	Mon, 26 Aug 2024 12:57:10 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1siZeW-00000007U6v-3lbg;
+	Mon, 26 Aug 2024 13:21:00 +0000
+Received: from mgamail.intel.com ([192.198.163.15])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siZGe-00000007Q8k-056X;
-	Mon, 26 Aug 2024 12:56:21 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.252])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4WsrJ9268SzyR3h;
-	Mon, 26 Aug 2024 20:55:37 +0800 (CST)
-Received: from kwepemh500013.china.huawei.com (unknown [7.202.181.146])
-	by mail.maildlp.com (Postfix) with ESMTPS id 79DC01800A5;
-	Mon, 26 Aug 2024 20:56:05 +0800 (CST)
-Received: from [10.67.109.254] (10.67.109.254) by
- kwepemh500013.china.huawei.com (7.202.181.146) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Mon, 26 Aug 2024 20:56:03 +0800
-Message-ID: <061c39b9-c2fb-34e8-5848-dc2d2d9ca5eb@huawei.com>
-Date: Mon, 26 Aug 2024 20:56:02 +0800
+	id 1siZdi-00000007Tsr-0mhG;
+	Mon, 26 Aug 2024 13:20:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1724678410; x=1756214410;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=E3jqWk0quNbd2DIIwzH2hsPPy6kfLMiKIT4k5BaQN9I=;
+  b=fLQasExfKGsnG0T/yHgv8KAo+9KixDrHRM2ORMvn4YstVPY46vqz359F
+   cAneung9Oe6wk0M0DKWGMmzTsJtNuNH4NCGK7Trut84dosi9rj3KZ03tR
+   W96HW35ihhYuvRnKWztRgrIfi6GkjkbM+kaBCXzH+61NRLeGRj/4tNIeY
+   jO8MX3i1Q2zknQIp3/Kpd9MhTq/QrSmDWo1FBGFtUYicYOICJiUhWGjHj
+   Rgpj9O8HaU1kMy5IoIP4cFXO8W/L40cFXLdCl3KaNFPrK4u3i52TMYT00
+   svXJnIylTfBy2MOq+bSNmEEMbd3U/TIRdLqdhu2egvXQdvwbdNv6Civt9
+   g==;
+X-CSE-ConnectionGUID: 5twvcQj5SI2WBTEzH+nXVw==
+X-CSE-MsgGUID: 4adT0U4vQ1+mJCQechWNxA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11176"; a="23266507"
+X-IronPort-AV: E=Sophos;i="6.10,177,1719903600"; 
+   d="scan'208";a="23266507"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Aug 2024 06:20:10 -0700
+X-CSE-ConnectionGUID: pEF2z3PSSqO4UPPXQmj/yQ==
+X-CSE-MsgGUID: J7nWDYN7R/mm5vWIQnhyiQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,177,1719903600"; 
+   d="scan'208";a="93233605"
+Received: from lkp-server01.sh.intel.com (HELO 9a732dc145d3) ([10.239.97.150])
+  by orviesa002.jf.intel.com with ESMTP; 26 Aug 2024 06:20:05 -0700
+Received: from kbuild by 9a732dc145d3 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1siZdb-000H6x-0H;
+	Mon, 26 Aug 2024 13:20:03 +0000
+Date: Mon, 26 Aug 2024 21:19:15 +0800
+From: kernel test robot <lkp@intel.com>
+To: Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh@kernel.org>,
+	Saravana Kannan <saravanak@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wolfram Sang <wsa-dev@sang-engineering.com>,
+	Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>, Mark Brown <broonie@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	Chen-Yu Tsai <wenst@chromium.org>, chrome-platform@lists.linux.dev,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Douglas Anderson <dianders@chromium.org>,
+	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	linux-i2c@vger.kernel.org
+Subject: Re: [PATCH v5 02/10] regulator: Move OF-specific regulator lookup
+ code to of_regulator.c
+Message-ID: <202408262013.YYc4obi2-lkp@intel.com>
+References: <20240822092006.3134096-3-wenst@chromium.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH -next RESEND 00/10] mtd: Use
- for_each_child_of_node_scoped()
-Content-Language: en-US
-To: Miquel Raynal <miquel.raynal@bootlin.com>, Krzysztof Kozlowski
-	<krzk@kernel.org>
-CC: <michal.simek@amd.com>, <richard@nod.at>, <vigneshr@ti.com>,
-	<liang.yang@amlogic.com>, <neil.armstrong@linaro.org>,
-	<khilman@baylibre.com>, <jbrunet@baylibre.com>,
-	<martin.blumenstingl@googlemail.com>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <heiko@sntech.de>,
-	<mcoquelin.stm32@gmail.com>, <alexandre.torgue@foss.st.com>, <wens@csie.org>,
-	<jernej.skrabec@gmail.com>, <samuel@sholland.org>, <kees@kernel.org>,
-	<gustavoars@kernel.org>, <linux@treblig.org>, <robh@kernel.org>,
-	<u.kleine-koenig@pengutronix.de>, <erick.archer@gmx.com>,
-	<christophe.jaillet@wanadoo.fr>, <val@packett.cool>,
-	<christophe.kerello@foss.st.com>, <linux-mtd@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-amlogic@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>, <jic23@kernel.org>
-References: <20240826094328.2991664-1-ruanjinjie@huawei.com>
- <20240826115213.389acaef@xps-13>
- <f7430f87-88d2-4c08-bc1e-6bb3da4e332c@kernel.org>
- <20240826144917.2c4e202d@xps-13>
-From: Jinjie Ruan <ruanjinjie@huawei.com>
-In-Reply-To: <20240826144917.2c4e202d@xps-13>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.67.109.254]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- kwepemh500013.china.huawei.com (7.202.181.146)
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240822092006.3134096-3-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_055620_336705_9D65EE14 
-X-CRM114-Status: UNSURE (   8.01  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240826_062010_265952_68202BEF 
+X-CRM114-Status: GOOD (  12.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,34 +100,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Chen-Yu,
+
+kernel test robot noticed the following build errors:
+
+[auto build test ERROR on broonie-regulator/for-next]
+[also build test ERROR on robh/for-next wsa/i2c/for-next linus/master v6.11-rc5 next-20240826]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Chen-Yu-Tsai/of-dynamic-Add-of_changeset_update_prop_string/20240826-105737
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+patch link:    https://lore.kernel.org/r/20240822092006.3134096-3-wenst%40chromium.org
+patch subject: [PATCH v5 02/10] regulator: Move OF-specific regulator lookup code to of_regulator.c
+config: i386-buildonly-randconfig-003-20240826 (https://download.01.org/0day-ci/archive/20240826/202408262013.YYc4obi2-lkp@intel.com/config)
+compiler: clang version 18.1.5 (https://github.com/llvm/llvm-project 617a15a9eac96088ae5e9134248d8236e34b91b1)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240826/202408262013.YYc4obi2-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202408262013.YYc4obi2-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   In file included from drivers/regulator/devres.c:15:
+>> drivers/regulator/internal.h:87:9: error: incompatible integer to pointer conversion returning 'int' from a function with result type 'struct regulator_dev *' [-Wint-conversion]
+      87 |         return -ENODEV;
+         |                ^~~~~~~
+   1 error generated.
 
 
-On 2024/8/26 20:49, Miquel Raynal wrote:
-> Hi Krzysztof,
-> 
-> krzk@kernel.org wrote on Mon, 26 Aug 2024 12:19:07 +0200:
-> 
->> On 26/08/2024 11:52, Miquel Raynal wrote:
->>> Hi Jinjie,
->>>
->>> ruanjinjie@huawei.com wrote on Mon, 26 Aug 2024 17:43:18 +0800:
->>>   
->>>> Use scoped for_each_available_child_of_node_scoped() when iterating over
->>>> device nodes to make code a bit simpler.  
->>>
->>> Why is this a resend ? Did I miss a previous iteration?  
->>
->> You were not cc-ed on previous iteration. I asked for proper split
->> between subsystems and sending to maintainers, thus this resend.
-> 
-> Ok. Makes sense, and the patchset looks fine.
-> 
-> Jinjie, please always include a changelog when you send new versions,
-> and explanations for a RESEND.
+vim +87 drivers/regulator/internal.h
 
-Ok, thanks for the advice.
+    82	
+    83	#else
+    84	static inline struct regulator_dev *of_regulator_dev_lookup(struct device *dev,
+    85								    const char *supply)
+    86	{
+  > 87		return -ENODEV;
+    88	}
+    89	
 
-> 
-> Thanks,
-> Miquèl
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
