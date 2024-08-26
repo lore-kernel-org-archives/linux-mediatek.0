@@ -4,76 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 943A3C5321D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Aug 2024 09:53:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF88FC5321D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Aug 2024 09:56:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lQulIFQ3MSaYELsasLXuNGLySXXrhci4b3aPunJJ4Vc=; b=J0gdbrYnRoAp1Gcoo0f3PtnImp
-	+gTlfqytQtrfV3itlSr3BoONYUmc6a7Eg1EI0cGrOwSuf3tAZic5qXqKVRbR3NkLmjdATai9fQTEX
-	QmoOMrZj8U7NHwWqjpyRsDPhNZAviiPGUaMIscNUWiCUi6re5KVQk7QFF4L59tXVdAZl2bydYOr9K
-	BwLJ6SGY67rRuD6PC8cVGvSraUDkII42E7y7vsUv6khI1GkSrSa3Pka6F7TjDrDu9+yJO1BvDTdbt
-	iqIVSZ7eohDMhUPXV6YRnnZHqduEHbYQjFHFJ08JqOQ+2Y6uwJVZKsui98f0ORDUDL6KRkbgMGwZj
-	YkDHO22w==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=g0XgUog2liDYfBWASHzEgYu+2UJJVMFjoHG5OyBdkL4=; b=YfRfzLW7dhaS2ssO6rnjaZgzHr
+	MNB1rOEr9xXpS86thOEDP+s4aam7lv3O+pQ8zhQWukfqzUxBYI9vdBS766XAAyu0pGkSKNskG2ypU
+	rEBPTOx5iYPIv8i0N4COD6h4jGkGyL2LNIEdwYOpF2mSWDjKzAPT/rw2qbuKqMOS1HN5HbOy+NyMs
+	XN1oZBpy0suV3bLTP1g/4FuGcB0ZPgRwVxp+4a/1MD0CX0yDWrVvzng5vlteUDP/+Xeui816y5wRf
+	cl1e5PJ+NsqCVf71BJfpnk4ZyMfDE8MQpNKTQCs4gokWf52qjO20/K8q0wVKK0lyiuS+j3jfWw1tI
+	X2HPzdvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siWQ5-00000006n7Y-2vBR;
-	Mon, 26 Aug 2024 09:53:54 +0000
-Received: from relay6-d.mail.gandi.net ([2001:4b98:dc4:8::226])
+	id 1siWSM-00000006nf4-2DWj;
+	Mon, 26 Aug 2024 09:56:14 +0000
+Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siWOZ-00000006mfW-2m4N;
-	Mon, 26 Aug 2024 09:52:21 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 9D811C0003;
-	Mon, 26 Aug 2024 09:52:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1724665937;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=lQulIFQ3MSaYELsasLXuNGLySXXrhci4b3aPunJJ4Vc=;
-	b=EODnI/Hqi2gf0HbwFYGycKIX5kvmTtlkTXDO4Ou41WtUREytRJW+uzyzbbje/qpzCVBu79
-	fSZNUNx2Pxbz8rCB1K+3cs0Z8CNQ6fLkHIwW5Bf6JR/H+u0kujeYra4gUVJGr+fZL4LuHr
-	dFci05mgwwLcdxWD/Qzu8SeLe/SSFqSkzp30cRWgijaUwcA6Z1Qe0BrxDoge9GG6wuyzFj
-	yQiNVtFwqBXdgnAeUce96v1BjYId0+uglxNfMH0LbemPRVBVRY17gS0V5iTNfRUltLRJu5
-	r1jGtikL/0Eu0CG3oeVC7zp0fWlE96seULFGTb96CUMnB+71d1pjwhU6ZMy6kg==
-Date: Mon, 26 Aug 2024 11:52:13 +0200
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Jinjie Ruan <ruanjinjie@huawei.com>
-Cc: <michal.simek@amd.com>, <richard@nod.at>, <vigneshr@ti.com>,
- <liang.yang@amlogic.com>, <neil.armstrong@linaro.org>,
- <khilman@baylibre.com>, <jbrunet@baylibre.com>,
- <martin.blumenstingl@googlemail.com>, <matthias.bgg@gmail.com>,
- <angelogioacchino.delregno@collabora.com>, <heiko@sntech.de>,
- <mcoquelin.stm32@gmail.com>, <alexandre.torgue@foss.st.com>,
- <wens@csie.org>, <jernej.skrabec@gmail.com>, <samuel@sholland.org>,
- <kees@kernel.org>, <gustavoars@kernel.org>, <linux@treblig.org>,
- <robh@kernel.org>, <u.kleine-koenig@pengutronix.de>,
- <erick.archer@gmx.com>, <christophe.jaillet@wanadoo.fr>,
- <val@packett.cool>, <christophe.kerello@foss.st.com>,
- <linux-mtd@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-amlogic@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
- <linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
- <linux-stm32@st-md-mailman.stormreply.com>, <krzk@kernel.org>,
- <jic23@kernel.org>
-Subject: Re: [PATCH -next RESEND 00/10] mtd: Use
- for_each_child_of_node_scoped()
-Message-ID: <20240826115213.389acaef@xps-13>
-In-Reply-To: <20240826094328.2991664-1-ruanjinjie@huawei.com>
-References: <20240826094328.2991664-1-ruanjinjie@huawei.com>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.2.0 (GTK 3.24.41; x86_64-pc-linux-gnu)
+	id 1siWS7-00000006ncm-1jC7;
+	Mon, 26 Aug 2024 09:56:02 +0000
+Received: from icess-ProLiant-DL380-Gen10.. (unknown [183.174.60.14])
+	by APP-01 (Coremail) with SMTP id qwCowACnr0sYUcxmptCfCg--.39812S2;
+	Mon, 26 Aug 2024 17:55:46 +0800 (CST)
+From: Ma Ke <make24@iscas.ac.cn>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	kvalo@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	mingyen.hsieh@mediatek.com,
+	deren.wu@mediatek.com,
+	make24@iscas.ac.cn,
+	ruanjinjie@huawei.com,
+	greearb@candelatech.com
+Cc: linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	stable@vger.kernel.org
+Subject: [PATCH] wifi: mt76: mt7921: Check devm_kasprintf() returned value
+Date: Mon, 26 Aug 2024 17:55:35 +0800
+Message-Id: <20240826095535.2603538-1-make24@iscas.ac.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-GND-Sasl: miquel.raynal@bootlin.com
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: qwCowACnr0sYUcxmptCfCg--.39812S2
+X-Coremail-Antispam: 1UD129KBjvdXoWrKFW7ZFW5Ww13Zw4xXFWxCrg_yoWDAFbEgr
+	409rn7XryrGFn8Kr42yry3CrW2kaykZr18XFsxtrWrJrWxGrWUur93Zrn8J392k397uryU
+	urn0kFy8uws8ZjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUIcSsGvfJTRUUUbfAFF20E14v26ryj6rWUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
+	6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
+	A2z4x0Y4vE2Ix0cI8IcVAFwI0_JFI_Gr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr0_
+	Cr1l84ACjcxK6I8E87Iv67AKxVWxJr0_GcWl84ACjcxK6I8E87Iv6xkF7I0E14v26rxl6s
+	0DM2vYz4IE04k24VAvwVAKI4IrM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI
+	64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r1j6r18McIj6I8E87Iv67AKxVWUJVW8Jw
+	Am72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAG
+	YxC7M4IIrI8v6xkF7I0E8cxan2IY04v7MxkF7I0En4kS14v26r4a6rW5MxAIw28IcxkI7V
+	AKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCj
+	r7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVW8ZVWrXwCIc40Y0x0EwIxGrwCI42IY6x
+	IIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAI
+	w20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x
+	0267AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7sRiSfO3UUUUU==
+X-Originating-IP: [183.174.60.14]
+X-CM-SenderInfo: ppdnvj2u6l2u1dvotugofq/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_025219_907419_979E1654 
-X-CRM114-Status: UNSURE (   5.41  )
+X-CRM114-CacheID: sfid-20240826_025559_832783_55CBC508 
+X-CRM114-Status: UNSURE (   7.45  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,15 +91,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jinjie,
+devm_kasprintf() can return a NULL pointer on failure but this returned
+value is not checked. Fix this lack and check the returned value.
 
-ruanjinjie@huawei.com wrote on Mon, 26 Aug 2024 17:43:18 +0800:
+Found by code review.
 
-> Use scoped for_each_available_child_of_node_scoped() when iterating over
-> device nodes to make code a bit simpler.
+Cc: stable@vger.kernel.org
+Fixes: 6ae39b7c7ed4 ("wifi: mt76: mt7921: Support temp sensor")
+Signed-off-by: Ma Ke <make24@iscas.ac.cn>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/init.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Why is this a resend ? Did I miss a previous iteration?
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index ef0c721d26e3..5ab395d9d93e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -52,6 +52,8 @@ static int mt7921_thermal_init(struct mt792x_phy *phy)
+ 
+ 	name = devm_kasprintf(&wiphy->dev, GFP_KERNEL, "mt7921_%s",
+ 			      wiphy_name(wiphy));
++	if (!name)
++		return -ENOMEM;
+ 
+ 	hwmon = devm_hwmon_device_register_with_groups(&wiphy->dev, name, phy,
+ 						       mt7921_hwmon_groups);
+-- 
+2.25.1
 
-Thanks,
-Miqu=C3=A8l
 
