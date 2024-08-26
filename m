@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22BACC5321E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Aug 2024 09:42:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 824C1C5321E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Aug 2024 09:43:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=77rJALj9GKrUlBi07Er187jj3x20F7qRBIWlokNanas=; b=DPsdED++ZSWMpaCfspnQ81InvW
-	BXReXRJg4JuvWS/V7CQGHY/igkv1+Kr3oxnTWREO/o5Bm5C7AUM1aEU+3JkewArEGTEp1CuS75TN1
-	AV+Ivs3qa6jCfKNUzfs3ekxiD2mIp9OO30GCfk1V/oZ6bo6JHq6Yr4qaOg6aQSo6F1IBTbTU1lx5f
-	Um94gVs31ueoBsx9fu6mUMwK2gUs/vG5okUlXDJzE5qpLi7Jlicgu+xo65G5MZiJvzMV7r+/lYpm8
-	RVpKG8wsBGj4FOfQOer74lDt4JnosE6KBqSMqyimRy1bKKix7gjxS8aIjTlv3csZoUOJUHDC1L1+W
-	w1C7OaTw==;
+	bh=/xUdVvd3xQxZQFdWghz5HHBX/9htaESBWK0Cto2y/v0=; b=BjRVuZpQr2P7H82/D7+o65bMlr
+	DJRD0J3KS5liIdt0SYxoZmOHQZFcyTmTkJ9LzjG44G5QqgVZno9FKaJV2bq1Ik/sjumwc/uEX0oEW
+	oOShI5CuJNBXwVDg/xXXlKn3ViU2oafWlYW83u73qqTG2TDI0s2a5k8s/n58dolJrjUEGoExmrzKF
+	+FLPHtAXn4AWpqZdfSAezdkaFEI8Gp+ALrBtVKWSPzlOgYApOJyEzW4gsjXyyRXI8iPQEaN8ZrMgb
+	Xg2sjsSf34fJ2zDy1cq8KMWglm8+/IpXVLYI+pQ/NZPtdBWl6NwaEL6N9QpfQgkvtP3LK2J0lFRIT
+	L9bUEbFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siWFC-00000006jHj-3Nkr;
-	Mon, 26 Aug 2024 09:42:38 +0000
-Received: from szxga08-in.huawei.com ([45.249.212.255])
+	id 1siWG3-00000006jcF-0fU7;
+	Mon, 26 Aug 2024 09:43:31 +0000
+Received: from szxga05-in.huawei.com ([45.249.212.191])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siW8u-00000006hAr-2Nwh;
-	Mon, 26 Aug 2024 09:36:10 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.48])
-	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4Wsls16bY9z14HGC;
-	Mon, 26 Aug 2024 17:35:17 +0800 (CST)
+	id 1siW8u-00000006hAt-2Ogt;
+	Mon, 26 Aug 2024 09:36:11 +0000
+Received: from mail.maildlp.com (unknown [172.19.162.112])
+	by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Wslsh577Jz1j7Gv;
+	Mon, 26 Aug 2024 17:35:52 +0800 (CST)
 Received: from kwepemh500013.china.huawei.com (unknown [7.202.181.146])
-	by mail.maildlp.com (Postfix) with ESMTPS id 5CBDB180064;
-	Mon, 26 Aug 2024 17:36:03 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 2FFC4140120;
+	Mon, 26 Aug 2024 17:36:01 +0800 (CST)
 Received: from huawei.com (10.90.53.73) by kwepemh500013.china.huawei.com
  (7.202.181.146) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Mon, 26 Aug
- 2024 17:36:02 +0800
+ 2024 17:35:59 +0800
 From: Jinjie Ruan <ruanjinjie@huawei.com>
 To: <miquel.raynal@bootlin.com>, <michal.simek@amd.com>, <richard@nod.at>,
 	<vigneshr@ti.com>, <liang.yang@amlogic.com>, <neil.armstrong@linaro.org>,
@@ -53,9 +53,9 @@ To: <miquel.raynal@bootlin.com>, <michal.simek@amd.com>, <richard@nod.at>,
 	<linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
 	<linux-stm32@st-md-mailman.stormreply.com>, <krzk@kernel.org>,
 	<jic23@kernel.org>
-Subject: [PATCH -next RESEND 06/10] mtd: rawnand: meson: Use for_each_child_of_node_scoped()
-Date: Mon, 26 Aug 2024 17:43:24 +0800
-Message-ID: <20240826094328.2991664-7-ruanjinjie@huawei.com>
+Subject: [PATCH -next RESEND 04/10] mtd: rawnand: marvell: drm/rockchip: Use for_each_child_of_node_scoped()
+Date: Mon, 26 Aug 2024 17:43:22 +0800
+Message-ID: <20240826094328.2991664-5-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240826094328.2991664-1-ruanjinjie@huawei.com>
 References: <20240826094328.2991664-1-ruanjinjie@huawei.com>
@@ -66,8 +66,8 @@ X-Originating-IP: [10.90.53.73]
 X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
  kwepemh500013.china.huawei.com (7.202.181.146)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_023608_922985_B20AD2DF 
-X-CRM114-Status: UNSURE (   8.41  )
+X-CRM114-CacheID: sfid-20240826_023608_972890_58627277 
+X-CRM114-Status: UNSURE (   8.95  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,29 +88,45 @@ from the loop.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 ---
- drivers/mtd/nand/raw/meson_nand.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/mtd/nand/raw/marvell_nand.c | 12 +++---------
+ 1 file changed, 3 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/meson_nand.c b/drivers/mtd/nand/raw/meson_nand.c
-index 9eb5470344d0..8806a06462ac 100644
---- a/drivers/mtd/nand/raw/meson_nand.c
-+++ b/drivers/mtd/nand/raw/meson_nand.c
-@@ -1495,14 +1495,12 @@ static int meson_nfc_nand_chips_init(struct device *dev,
- 				     struct meson_nfc *nfc)
+diff --git a/drivers/mtd/nand/raw/marvell_nand.c b/drivers/mtd/nand/raw/marvell_nand.c
+index 5b0f5a9cef81..26648b72e691 100644
+--- a/drivers/mtd/nand/raw/marvell_nand.c
++++ b/drivers/mtd/nand/raw/marvell_nand.c
+@@ -2771,7 +2771,6 @@ static void marvell_nand_chips_cleanup(struct marvell_nfc *nfc)
+ static int marvell_nand_chips_init(struct device *dev, struct marvell_nfc *nfc)
  {
  	struct device_node *np = dev->of_node;
 -	struct device_node *nand_np;
+ 	int max_cs = nfc->caps->max_cs_nb;
+ 	int nchips;
  	int ret;
+@@ -2798,20 +2797,15 @@ static int marvell_nand_chips_init(struct device *dev, struct marvell_nfc *nfc)
+ 		return ret;
+ 	}
  
 -	for_each_child_of_node(np, nand_np) {
 +	for_each_child_of_node_scoped(np, nand_np) {
- 		ret = meson_nfc_nand_chip_init(dev, nfc, nand_np);
+ 		ret = marvell_nand_chip_init(dev, nfc, nand_np);
  		if (ret) {
- 			meson_nfc_nand_chip_cleanup(nfc);
 -			of_node_put(nand_np);
- 			return ret;
+-			goto cleanup_chips;
++			marvell_nand_chips_cleanup(nfc);
++			return ret;
  		}
  	}
+ 
+ 	return 0;
+-
+-cleanup_chips:
+-	marvell_nand_chips_cleanup(nfc);
+-
+-	return ret;
+ }
+ 
+ static int marvell_nfc_init_dma(struct marvell_nfc *nfc)
 -- 
 2.34.1
 
