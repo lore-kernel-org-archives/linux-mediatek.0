@@ -4,70 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B2A6C5321D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Aug 2024 09:47:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 943A3C5321D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Aug 2024 09:53:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hE/taGS9toIvLJuuC2Lx7yWgLnvHHqU3kkxs0UUjqs8=; b=N7QXNG0GUsTxYNmoDjgAe0zL5q
-	Xl2WnhdQ+YtzMVkw8BPGNVdTU5xyKwEYn6AWvsJwGbP26GeBaK0KbhZjnuvRX7rh6/iXMsR3NT0+I
-	M4vjAKUG/UjyhdOpd6NBZc3LIFiuhe3mhMyS460yeNTketaOr/mJId6jbT+0G4obkx2cYtMEW0pWp
-	tN0T5B4pQ+rXEVZ/ZVRr2tDBe/S6D+eVj3AivHj22ojdJjoa3cT712OiBDj8EpVBfJ/ewPgCrnf6E
-	vd2sXXSrMN80E/6browCSjDpK8d64H/RP8+L3QOCE4+O/0ITSHUScplMdf+9Ih/WaPuTlwsj8N2G/
-	uhUIAxbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lQulIFQ3MSaYELsasLXuNGLySXXrhci4b3aPunJJ4Vc=; b=J0gdbrYnRoAp1Gcoo0f3PtnImp
+	+gTlfqytQtrfV3itlSr3BoONYUmc6a7Eg1EI0cGrOwSuf3tAZic5qXqKVRbR3NkLmjdATai9fQTEX
+	QmoOMrZj8U7NHwWqjpyRsDPhNZAviiPGUaMIscNUWiCUi6re5KVQk7QFF4L59tXVdAZl2bydYOr9K
+	BwLJ6SGY67rRuD6PC8cVGvSraUDkII42E7y7vsUv6khI1GkSrSa3Pka6F7TjDrDu9+yJO1BvDTdbt
+	iqIVSZ7eohDMhUPXV6YRnnZHqduEHbYQjFHFJ08JqOQ+2Y6uwJVZKsui98f0ORDUDL6KRkbgMGwZj
+	YkDHO22w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siWK3-00000006kua-31Uw;
-	Mon, 26 Aug 2024 09:47:39 +0000
-Received: from szxga03-in.huawei.com ([45.249.212.189])
+	id 1siWQ5-00000006n7Y-2vBR;
+	Mon, 26 Aug 2024 09:53:54 +0000
+Received: from relay6-d.mail.gandi.net ([2001:4b98:dc4:8::226])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siW8w-00000006hC0-1riB;
-	Mon, 26 Aug 2024 09:36:13 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.48])
-	by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4WslmS25bqz69MC;
-	Mon, 26 Aug 2024 17:31:20 +0800 (CST)
-Received: from kwepemh500013.china.huawei.com (unknown [7.202.181.146])
-	by mail.maildlp.com (Postfix) with ESMTPS id C4D7A180064;
-	Mon, 26 Aug 2024 17:36:07 +0800 (CST)
-Received: from huawei.com (10.90.53.73) by kwepemh500013.china.huawei.com
- (7.202.181.146) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Mon, 26 Aug
- 2024 17:36:06 +0800
-From: Jinjie Ruan <ruanjinjie@huawei.com>
-To: <miquel.raynal@bootlin.com>, <michal.simek@amd.com>, <richard@nod.at>,
-	<vigneshr@ti.com>, <liang.yang@amlogic.com>, <neil.armstrong@linaro.org>,
-	<khilman@baylibre.com>, <jbrunet@baylibre.com>,
-	<martin.blumenstingl@googlemail.com>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <heiko@sntech.de>,
-	<mcoquelin.stm32@gmail.com>, <alexandre.torgue@foss.st.com>, <wens@csie.org>,
-	<jernej.skrabec@gmail.com>, <samuel@sholland.org>, <kees@kernel.org>,
-	<ruanjinjie@huawei.com>, <gustavoars@kernel.org>, <linux@treblig.org>,
-	<robh@kernel.org>, <u.kleine-koenig@pengutronix.de>, <erick.archer@gmx.com>,
-	<christophe.jaillet@wanadoo.fr>, <val@packett.cool>,
-	<christophe.kerello@foss.st.com>, <linux-mtd@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-amlogic@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>, <krzk@kernel.org>,
-	<jic23@kernel.org>
-Subject: [PATCH -next RESEND 10/10] mtd: rawnand: sunxi: Use for_each_child_of_node_scoped()
-Date: Mon, 26 Aug 2024 17:43:28 +0800
-Message-ID: <20240826094328.2991664-11-ruanjinjie@huawei.com>
-X-Mailer: git-send-email 2.34.1
+	id 1siWOZ-00000006mfW-2m4N;
+	Mon, 26 Aug 2024 09:52:21 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 9D811C0003;
+	Mon, 26 Aug 2024 09:52:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1724665937;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=lQulIFQ3MSaYELsasLXuNGLySXXrhci4b3aPunJJ4Vc=;
+	b=EODnI/Hqi2gf0HbwFYGycKIX5kvmTtlkTXDO4Ou41WtUREytRJW+uzyzbbje/qpzCVBu79
+	fSZNUNx2Pxbz8rCB1K+3cs0Z8CNQ6fLkHIwW5Bf6JR/H+u0kujeYra4gUVJGr+fZL4LuHr
+	dFci05mgwwLcdxWD/Qzu8SeLe/SSFqSkzp30cRWgijaUwcA6Z1Qe0BrxDoge9GG6wuyzFj
+	yQiNVtFwqBXdgnAeUce96v1BjYId0+uglxNfMH0LbemPRVBVRY17gS0V5iTNfRUltLRJu5
+	r1jGtikL/0Eu0CG3oeVC7zp0fWlE96seULFGTb96CUMnB+71d1pjwhU6ZMy6kg==
+Date: Mon, 26 Aug 2024 11:52:13 +0200
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Jinjie Ruan <ruanjinjie@huawei.com>
+Cc: <michal.simek@amd.com>, <richard@nod.at>, <vigneshr@ti.com>,
+ <liang.yang@amlogic.com>, <neil.armstrong@linaro.org>,
+ <khilman@baylibre.com>, <jbrunet@baylibre.com>,
+ <martin.blumenstingl@googlemail.com>, <matthias.bgg@gmail.com>,
+ <angelogioacchino.delregno@collabora.com>, <heiko@sntech.de>,
+ <mcoquelin.stm32@gmail.com>, <alexandre.torgue@foss.st.com>,
+ <wens@csie.org>, <jernej.skrabec@gmail.com>, <samuel@sholland.org>,
+ <kees@kernel.org>, <gustavoars@kernel.org>, <linux@treblig.org>,
+ <robh@kernel.org>, <u.kleine-koenig@pengutronix.de>,
+ <erick.archer@gmx.com>, <christophe.jaillet@wanadoo.fr>,
+ <val@packett.cool>, <christophe.kerello@foss.st.com>,
+ <linux-mtd@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-amlogic@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+ <linux-stm32@st-md-mailman.stormreply.com>, <krzk@kernel.org>,
+ <jic23@kernel.org>
+Subject: Re: [PATCH -next RESEND 00/10] mtd: Use
+ for_each_child_of_node_scoped()
+Message-ID: <20240826115213.389acaef@xps-13>
 In-Reply-To: <20240826094328.2991664-1-ruanjinjie@huawei.com>
 References: <20240826094328.2991664-1-ruanjinjie@huawei.com>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.2.0 (GTK 3.24.41; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.90.53.73]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- kwepemh500013.china.huawei.com (7.202.181.146)
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-GND-Sasl: miquel.raynal@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_023610_818488_F06A238F 
-X-CRM114-Status: UNSURE (   8.52  )
+X-CRM114-CacheID: sfid-20240826_025219_907419_979E1654 
+X-CRM114-Status: UNSURE (   5.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,34 +89,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Avoids the need for manual cleanup of_node_put() in early exits
-from the loop.
+Hi Jinjie,
 
-Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
----
- drivers/mtd/nand/raw/sunxi_nand.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ruanjinjie@huawei.com wrote on Mon, 26 Aug 2024 17:43:18 +0800:
 
-diff --git a/drivers/mtd/nand/raw/sunxi_nand.c b/drivers/mtd/nand/raw/sunxi_nand.c
-index 4ec17c8bce5a..c28634e20abf 100644
---- a/drivers/mtd/nand/raw/sunxi_nand.c
-+++ b/drivers/mtd/nand/raw/sunxi_nand.c
-@@ -2025,13 +2025,11 @@ static int sunxi_nand_chip_init(struct device *dev, struct sunxi_nfc *nfc,
- static int sunxi_nand_chips_init(struct device *dev, struct sunxi_nfc *nfc)
- {
- 	struct device_node *np = dev->of_node;
--	struct device_node *nand_np;
- 	int ret;
- 
--	for_each_child_of_node(np, nand_np) {
-+	for_each_child_of_node_scoped(np, nand_np) {
- 		ret = sunxi_nand_chip_init(dev, nfc, nand_np);
- 		if (ret) {
--			of_node_put(nand_np);
- 			sunxi_nand_chips_cleanup(nfc);
- 			return ret;
- 		}
--- 
-2.34.1
+> Use scoped for_each_available_child_of_node_scoped() when iterating over
+> device nodes to make code a bit simpler.
 
+Why is this a resend ? Did I miss a previous iteration?
+
+Thanks,
+Miqu=C3=A8l
 
