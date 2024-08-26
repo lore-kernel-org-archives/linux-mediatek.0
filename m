@@ -4,115 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03C42C5321E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Aug 2024 15:53:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CD2CC5321E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Aug 2024 15:58:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PRU0+c0CHEt4VPCU4Vn3s4mL4zloi3iJUzYHX1hL90s=; b=jPz6P9TpVRMM7HKwmlAKtDv3L2
-	sGbfKesVsdVrN3aq3HHuSEN7UAShAlunZdTCI1CGEDsqCc+Q3CB7QSo4Y9wnbBeeG5NsMtd+KtPXz
-	5N6hjyIsXAY1wHCwxFX5vg0kE1vQtuM6bciaUGWAmYmZD40AyfAflSfe8h/KuIGoUViiFpWeksnBo
-	jmt8cLwco6vow0oC1x7iHp+h3r1Jx359mKv9UKqStElXOL+NDELgiEMqqdWANoQ8/IXcI4LLRN9/i
-	P/T3dz0CTCQ1CC9gf68tJNeBFZQCdW2zLps+oRU3QEmtFE+DJHfEP6S435xLp/vTubbB3okOUCvk0
-	0dpGmilg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mtFjvgg+SrffOQ8cx3VsMVfhGFAWzrsVzMgAYKKw5zE=; b=s5gpXuCYtE/fO7xMFF2sVpEzwd
+	SRYLiyVJ66MAbzNjbNuc4oEsErTC8nBVDnd0jFCsYHEhwqaRwNtJ/RD4tGMPVPRRlbm4oPvr+WbGw
+	JalHpthYWLdVoGAYiJb3ZjjkDB3wWFo6YiCHz56lWwMXe1OODe2PezqUwP+cbOUl7L8nA0CAqrVD0
+	YIq/Tm5ALomR0tplKOZ9rkVegUJfweCArHDht/p45TU1C7OcBgP/LBz/kj1aNxqUqOgIzt6jVUqLG
+	uDR4qUrY1tnsxMz5ngR0aKEUDnDjaWRh9g+8Qn0JrMTYVY5KvbN5CSr8qIjNtzGhwqFq00ezJLRCD
+	nOeIqJ9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sic2K-00000007tbm-0T1w;
-	Mon, 26 Aug 2024 15:53:44 +0000
+	id 1sic6r-00000007uXk-31vS;
+	Mon, 26 Aug 2024 15:58:25 +0000
 Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sic19-00000007tPz-0a41;
-	Mon, 26 Aug 2024 15:52:32 +0000
+	id 1sic62-00000007uNQ-2AfK;
+	Mon, 26 Aug 2024 15:57:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 1EE98A41437;
-	Mon, 26 Aug 2024 15:52:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42C43C52FC6;
-	Mon, 26 Aug 2024 15:45:18 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 26098A41478;
+	Mon, 26 Aug 2024 15:57:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF966C4FF57;
+	Mon, 26 Aug 2024 15:50:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724687124;
-	bh=CfjXIIFwVytbq3DboLG6ZBWEAA+dSeHjisriqW8r0BE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=htMdAFLsy/VWzrv7KZVdB83Fj8TsnzeXUCuS9+1biIW6Kz7P8Dh4rwbfWNSqJJqre
-	 Q1MZP6OCv9ymTfXGiisyVBc+61y6NAxzsv6wDxYFf5QOVk3E6F1SdlnZlTgnLyvLUk
-	 xGhaNHFVHg41UQPJVCIlCt9x7T8c8vEm6euiuW1Ji+u2wjGKZj5Z1k6YJKd8iilFou
-	 5mWQxV/v0ThrpnBGxODG0RJYZn8GV2MSa4PwDuybSumLl0NoB9uxXYUWMGxjeBCins
-	 b3mdgVqy03FfugQveIMy1T9NJUxZZFqEhPXLI8ecrU6Pea4SGSpIWZOmz7VUrzxLkd
-	 hGAtk1fD1/VbQ==
-Message-ID: <39a2971d-8776-4e5f-8d72-ae447ea88362@kernel.org>
-Date: Mon, 26 Aug 2024 17:45:16 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	s=k20201202; t=1724687438;
+	bh=ktxTLHI62m07O4aByHNtqdVU4NHYWDBoMv9Kczki3Rs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=r0de/vYF8OEWJOWzCY7dYubWPfWUHk5m6z1Z/5T2AqlxcRxn39H+cl2W+d9TSlRqT
+	 V1Kt+welB3O3YMFUfE4Au9oon6Nlx40aZUi3skZF8XIZr/YiBRcq/Opoz0QM6xRk8h
+	 N0HCiuhDBPzTWKadM/uUYZwV3SH3ejXLpKq7wFqqYfTxql28ALtynebpplP323aJkZ
+	 znopSFVVGtjJgpO3q2VbkH0IXhY0v7jau3yv87nMGFZITaMC5LfEfheFQLS9y018aY
+	 1w+VoxyjJDFtzMoK4qiFLIg81MmjB/ADouNjejhsAl0mY2Lt6oDafHRXr9IrBYQTCz
+	 yo0yQ5W0PfH7A==
+Date: Mon, 26 Aug 2024 16:50:32 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Flora Fu <flora.fu@mediatek.com>,
+	Bear Wang <bear.wang@mediatek.com>,
+	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
+	Sen Chu <sen.chu@mediatek.com>,
+	Chris-qj chen <chris-qj.chen@mediatek.com>,
+	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	Chen-Yu Tsai <wenst@chromium.org>
 Subject: Re: [PATCH] dt-bindings: mfd: mediatek,mt6357: Fixup reference to
  pwrap node
-To: Macpaul Lin <macpaul.lin@mediatek.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
- Alexandre Mergnat <amergnat@baylibre.com>, Flora Fu <flora.fu@mediatek.com>
-Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
- Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>,
- Chris-qj chen <chris-qj.chen@mediatek.com>,
- MediaTek Chromebook Upstream
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- Chen-Yu Tsai <wenst@chromium.org>
+Message-ID: <20240826-slurp-earphone-0d5173923ae8@spud>
 References: <20240826065415.19641-1-macpaul.lin@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
- cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
- JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
- gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
- J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
- NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
- BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
- vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
- Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
- TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
- S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
- FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJgPO8PBQkUX63hAAoJEBuTQ307
- QWKbBn8P+QFxwl7pDsAKR1InemMAmuykCHl+XgC0LDqrsWhAH5TYeTVXGSyDsuZjHvj+FRP+
- gZaEIYSw2Yf0e91U9HXo3RYhEwSmxUQ4Fjhc9qAwGKVPQf6YuQ5yy6pzI8brcKmHHOGrB3tP
- /MODPt81M1zpograAC2WTDzkICfHKj8LpXp45PylD99J9q0Y+gb04CG5/wXs+1hJy/dz0tYy
- iua4nCuSRbxnSHKBS5vvjosWWjWQXsRKd+zzXp6kfRHHpzJkhRwF6ArXi4XnQ+REnoTfM5Fk
- VmVmSQ3yFKKePEzoIriT1b2sXO0g5QXOAvFqB65LZjXG9jGJoVG6ZJrUV1MVK8vamKoVbUEe
- 0NlLl/tX96HLowHHoKhxEsbFzGzKiFLh7hyboTpy2whdonkDxpnv/H8wE9M3VW/fPgnL2nPe
- xaBLqyHxy9hA9JrZvxg3IQ61x7rtBWBUQPmEaK0azW+l3ysiNpBhISkZrsW3ZUdknWu87nh6
- eTB7mR7xBcVxnomxWwJI4B0wuMwCPdgbV6YDUKCuSgRMUEiVry10xd9KLypR9Vfyn1AhROrq
- AubRPVeJBf9zR5UW1trJNfwVt3XmbHX50HCcHdEdCKiT9O+FiEcahIaWh9lihvO0ci0TtVGZ
- MCEtaCE80Q3Ma9RdHYB3uVF930jwquplFLNF+IBCn5JRzsFNBFVDXDQBEADNkrQYSREUL4D3
- Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
- MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
- OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
- GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
- 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
- YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
- 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
- BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
- JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
- 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
- YpsFAmA872oFCRRflLYACgkQG5NDfTtBYpvScw/9GrqBrVLuJoJ52qBBKUBDo4E+5fU1bjt0
- Gv0nh/hNJuecuRY6aemU6HOPNc2t8QHMSvwbSF+Vp9ZkOvrM36yUOufctoqON+wXrliEY0J4
- ksR89ZILRRAold9Mh0YDqEJc1HmuxYLJ7lnbLYH1oui8bLbMBM8S2Uo9RKqV2GROLi44enVt
- vdrDvo+CxKj2K+d4cleCNiz5qbTxPUW/cgkwG0lJc4I4sso7l4XMDKn95c7JtNsuzqKvhEVS
- oic5by3fbUnuI0cemeizF4QdtX2uQxrP7RwHFBd+YUia7zCcz0//rv6FZmAxWZGy5arNl6Vm
- lQqNo7/Poh8WWfRS+xegBxc6hBXahpyUKphAKYkah+m+I0QToCfnGKnPqyYIMDEHCS/RfqA5
- t8F+O56+oyLBAeWX7XcmyM6TGeVfb+OZVMJnZzK0s2VYAuI0Rl87FBFYgULdgqKV7R7WHzwD
- uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
- 7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
- 5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="50OsiPZgodBAcn76"
+Content-Disposition: inline
 In-Reply-To: <20240826065415.19641-1-macpaul.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_085231_308935_516635EB 
-X-CRM114-Status: GOOD (  21.22  )
+X-CRM114-CacheID: sfid-20240826_085734_691608_F5F8E775 
+X-CRM114-Status: GOOD (  23.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,44 +85,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 26/08/2024 08:54, Macpaul Lin wrote:
+
+--50OsiPZgodBAcn76
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Aug 26, 2024 at 02:54:15PM +0800, Macpaul Lin wrote:
 > The mt6357 is a subnode of pwrap node. Previously, the documentation
 > only included a note in the description of mt6357. This change adds the
 > appropriate $ref for pwrap to ensure clarity and correctness.
 
-Heh? The schema described mt6357, not pwrap. Why are you changing it?
+I think this change is wrong and the existing binding is fine.
+Adding the ref overcomplicates the binding completely, and stating that
+this is a child node of another device is sufficient.
 
-> 
+Instead, if anything, the pwrap binding should have a ref to /this/
+binding.
+
+Thanks,
+Conor.
+
+>=20
 >   $ref: /schemas/soc/mediatek/mediatek,pwrap.yaml
-> 
+>=20
 > Additionally, the indentation for the pmic section has been adjusted
 > to match the corresponding structure.
-> 
+>=20
 > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 > ---
 >  .../bindings/mfd/mediatek,mt6357.yaml         | 124 +++++++++---------
 >  1 file changed, 65 insertions(+), 59 deletions(-)
-> 
+>=20
 > Changes for v1:
 >  - This patch has been made based on linux-next/master branch.
-> 
-> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
+>=20
+> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml b=
+/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
 > index b67fbe0..5f4f540 100644
 > --- a/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
 > +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml
 > @@ -22,69 +22,75 @@ description: |
->  
->    It is interfaced to host controller using SPI interface by a proprietary hardware
+> =20
+>    It is interfaced to host controller using SPI interface by a proprieta=
+ry hardware
 >    called PMIC wrapper or pwrap. This MFD is a child device of pwrap.
 > -  See the following for pwrap node definitions:
 > -  Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
->  
+> =20
 >  properties:
 > -  compatible:
 > -    const: mediatek,mt6357
-
-How does this schema is being selected without compatible?
-
 > -
 > -  interrupts:
 > -    maxItems: 1
@@ -201,16 +172,110 @@ How does this schema is being selected without compatible?
 > -
 > -  rtc:
 > +  pwrap:
+>      type: object
+> -    $ref: /schemas/rtc/rtc.yaml#
+> -    unevaluatedProperties: false
+> -    description:
+> -      MT6357 Real Time Clock.
+> +    $ref: /schemas/soc/mediatek/mediatek,pwrap.yaml
+>      properties:
+> -      compatible:
+> -        const: mediatek,mt6357-rtc
+> -      start-year: true
+> -    required:
+> -      - compatible
+> -
+> -  keys:
+> -    type: object
+> -    $ref: /schemas/input/mediatek,pmic-keys.yaml
+> -    unevaluatedProperties: false
+> -    description:
+> -      MT6357 power and home keys.
+> -
+> -required:
+> -  - compatible
+> -  - regulators
+> +      pmic:
+> +        type: object
+> +        additionalProperties: false
+> +        properties:
+> +          compatible:
+> +            const: mediatek,mt6357
+> +
+> +          interrupts:
+> +            maxItems: 1
+> +
+> +          interrupt-controller: true
+> +
+> +          "#interrupt-cells":
+> +            const: 2
+> +
+> +          mediatek,hp-pull-down:
+> +            description:
+> +              Earphone driver positive output stage short to
+> +              the audio reference ground.
+> +            type: boolean
+> +
+> +          mediatek,micbias0-microvolt:
+> +            description: Selects MIC Bias 0 output voltage.
+> +            enum: [1700000, 1800000, 1900000, 2000000,
+> +                   2100000, 2500000, 2600000, 2700000]
+> +            default: 1700000
+> +
+> +          mediatek,micbias1-microvolt:
+> +            description: Selects MIC Bias 1 output voltage.
+> +            enum: [1700000, 1800000, 1900000, 2000000,
+> +                   2100000, 2500000, 2600000, 2700000]
+> +            default: 1700000
+> +
+> +          regulators:
+> +            type: object
+> +            $ref: /schemas/regulator/mediatek,mt6357-regulator.yaml
+> +            unevaluatedProperties: false
+> +            description:
+> +              List of MT6357 BUCKs and LDOs regulators.
+> +
+> +          rtc:
+> +            type: object
+> +            $ref: /schemas/rtc/rtc.yaml#
+> +            unevaluatedProperties: false
+> +            description:
+> +              MT6357 Real Time Clock.
+> +            properties:
+> +              compatible:
+> +                const: mediatek,mt6357-rtc
+> +              start-year: true
+> +            required:
+> +              - compatible
+> +
+> +          keys:
+> +            type: object
+> +            $ref: /schemas/input/mediatek,pmic-keys.yaml
+> +            unevaluatedProperties: false
+> +            description:
+> +              MT6357 power and home keys.
+> +
+> +        required:
+> +          - compatible
+> +          - regulators
+> =20
+>  additionalProperties: false
+> =20
+> --=20
+> 2.45.2
+>=20
+>=20
 
-With the diff it is tricky to say what you are doing, but it feels
-wrong. I don't understand the rationale, the problem being fixed here,
-and considering unusual diff, this just looks wrong approach.
+--50OsiPZgodBAcn76
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Bindings do not work like that - you do not reference the parent inside
-the child. There is nowhere example for that, so I have no clue how did
-you come up with it.
+-----BEGIN PGP SIGNATURE-----
 
-Best regards,
-Krzysztof
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZsykSAAKCRB4tDGHoIJi
+0gYAAQCGfMBFaDP6ivfMJJBwfUboQER1rC8YTMNL4nNMsiTnyQD/baclX5aCHVJi
+8ubJmmeyqBJRPWK/Nw5vmepd5ePRKwg=
+=JZUq
+-----END PGP SIGNATURE-----
 
+--50OsiPZgodBAcn76--
 
