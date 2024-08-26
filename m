@@ -4,74 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B7F3C5321D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Aug 2024 06:50:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3260DC5321E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Aug 2024 06:55:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Jywz5mOWgU6WNvfbwYrlvZc1NoCCk1aB4yuwINTE8rg=; b=l7c4TjyUZRmg5h6j90nqP9qRuX
-	gHLpN8UdrIzUefVmc1Ac0I3lAvu3/YQ3B3jOG7djAZFdcQIc5CpexFOCdCCVSR8CBkxF8ImJ95voK
-	5HmGEAqbyc4N9hh10V979vLLRqvMb+nF6PZBrq5TIJ8o5pRmYxMMvlLEm6wYvpVJCJPpau/Nc2wK5
-	8Z8RJjYDHNuQZAhkziaoxsqYc1St3DVXPrP3hXN/KVGsBJAd1N08T2RvwC6h6vA8jsMfqBpI759IO
-	YtclKiaMZ8xzluyBN/J2INtbRVUjSzCUe31z42f39FdYdQ/OWFRmDYujUUf15o5AXGAgOnjura3n+
-	70Bx5P+g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+iGhqdq8Nm6zibPdgyg1lBX8pBlA7d0Q+MAWA1vQXy0=; b=VuFbdGeP9YsVY3hYsTDc8IO2He
+	/88tBIiuonviuF3zdbICt5eFNV+16ZngNPUPHyVa8E2jv6/6HWMU3s4Uy9DjzHbT2K4sLYmB5jyoZ
+	GFFmuo75R2sTzIvTQZlhP5ybCjf7N7CJWc16mMjCDGTiGbjc6GJXQ3vakGja7kUtdMIpsP3Z8SWY5
+	EFLXdCqfGUIc+/s9AtE7i7eMBeH2AKBGi80yesMlxzVnqZr2Dnz2lgDuOzsH+nxcdiTUj94D+iJvv
+	7Gc/uydbdY0VQXEh4zeBxBsjAb4+N/5/4+04MI5a9lsWG25Hskl7KZIYrmGkY5yElgs8V5ygErz8g
+	oCpJMXTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siTYH-000000067Fq-1Yob;
-	Mon, 26 Aug 2024 06:50:09 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1siTdR-000000068JP-2vvP;
+	Mon, 26 Aug 2024 06:55:29 +0000
+Received: from smtp-relay-internal-1.canonical.com ([185.125.188.123])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siTHg-000000062uB-0U7x;
-	Mon, 26 Aug 2024 06:33:01 +0000
-X-UUID: e2b2fcec637211efba0aef63c0775dbf-20240825
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Jywz5mOWgU6WNvfbwYrlvZc1NoCCk1aB4yuwINTE8rg=;
-	b=qBvrLMhfJLkRPoTodiafp31kNegr5FORlTC2MH+pDL3/gp1nLShr+Ud3hPKJSZ1MjVTYeJ1tlDK/j9tl1XCH1XQxRXlDaSmJqbKEdTMnYJHNwWmBVb27XU0rOrtMst8HyFtTSnUbHEOWoI7U0CwllY+KApK8geWtOcWoWzwTcTU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:92f166a3-38ab-4c13-800b-9313f783cd3c,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6dc6a47,CLOUDID:86ceca14-737d-40b3-9394-11d4ad6e91a1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: e2b2fcec637211efba0aef63c0775dbf-20240825
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <shuijing.li@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 947750401; Sun, 25 Aug 2024 23:17:35 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 26 Aug 2024 14:06:59 +0800
-Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 26 Aug 2024 14:06:59 +0800
-From: Shuijing Li <shuijing.li@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
-	<daniel@ffwll.ch>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <jitao.shi@mediatek.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Shuijing Li
-	<shuijing.li@mediatek.com>
-Subject: [PATCH v8] drm/mediatek: dsi: Add dsi per-frame lp code for mt8188
-Date: Mon, 26 Aug 2024 14:06:20 +0800
-Message-ID: <20240826060654.24038-1-shuijing.li@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1siTQI-000000065ob-13tM
+	for linux-mediatek@lists.infradead.org;
+	Mon, 26 Aug 2024 06:41:56 +0000
+Received: from mail-pf1-f198.google.com (mail-pf1-f198.google.com [209.85.210.198])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id 1C7F13F285
+	for <linux-mediatek@lists.infradead.org>; Mon, 26 Aug 2024 06:41:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+	s=20210705; t=1724654511;
+	bh=+iGhqdq8Nm6zibPdgyg1lBX8pBlA7d0Q+MAWA1vQXy0=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type;
+	b=b4hRgfIzB/mDIrfYtHj/G34XG7dmLkxh4yORHqlvGPDzoE9P0g+mPEQe3ySx5gUDn
+	 b6VcKp+1O6+tFgzcFITOYQlMS/xApUM1pZINLHXtmvuMb+1D5Z92arJp0fzXTX8YpF
+	 hDvYFWN924lfG0APugTqHtELGDVQDfQS9R7RS367DQPTWId3tIcCB9MBa9kLZdXvd/
+	 7jhJ7ZJ2OLZK0xIlvqQEFmYcNgabPcGgP8K+XtgEIwbzjEDHAqSmVrS4LCKrE5+TpP
+	 /tOd7txN48cDFrC3zjbAAiuRv6GUAVMXYWCw3TtYRfylOQfV+7QLMq6sY9G/WPqlWn
+	 kK9rC5bOCSHmQ==
+Received: by mail-pf1-f198.google.com with SMTP id d2e1a72fcca58-7141ab07fddso3362271b3a.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 25 Aug 2024 23:41:51 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1724654509; x=1725259309;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=+iGhqdq8Nm6zibPdgyg1lBX8pBlA7d0Q+MAWA1vQXy0=;
+        b=K0CMBOoWGroZjonMBVgBM5Vb9RFAZ9QyTi7z5NOyeDxWFOFIdv/3NHDGt3DSHtGkrt
+         ufbant6ZtuXZAhxEkRxxYi9y2GnpXF5ks8GNSYtXrH9PH/QmGwhdVgGP7zI89+oLvZNV
+         7FuiWr1jFg5WU7TGmsiQAVEfeSk0lWw7lhSH4eCnbXf4SiUg4qyU98ZAku6+PMxD8Ydd
+         YteneBAujSIqKS0l7VmZBUMC59VomY01ef9vVLMNvN5Ijkp1ak20ak58iTiDvZK9DSvb
+         Dsi1iqToYpHIyEg/LhSmnsfgUEXMyjTT2Y36jShN8FiKOok2jW4AA2Mf75F8t7nT66vC
+         67fQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVQD5k30L122qPJIUpEmG8j7/MvmDDqYJjbmJMakw0PvjvM+nfFe7D+g/m4mYFLdoyXggNR4hzT6HecxSRibA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyKCpBNW3BilQycpdmK05M6cggEhdCnlRiLin8JVt6/P8LKb/oq
+	mxzzYZG84yxG1AM70XzvIQwvhU1CSxr8/muu5meDchhs1e2DE5kf7wa5G1g5rzVEVUJsrKyB093
+	IqYHiw0ISiRMFMkOg5d3HVgU2M+DAVAOqysK0Hvk94LPexDIxqkhLn3XJy+eqoq5/EsPAN9spua
+	aW5E7JblXTkg==
+X-Received: by 2002:a05:6a00:3cd1:b0:706:700c:7864 with SMTP id d2e1a72fcca58-714457368a3mr8681942b3a.4.1724654509389;
+        Sun, 25 Aug 2024 23:41:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG5927KxkvcimyRd0Hf6bimnbLUHMBkrmoZO83HLCrfQIBH6ObNVYTI30V7dd/ecJKIUo9InQ==
+X-Received: by 2002:a05:6a00:3cd1:b0:706:700c:7864 with SMTP id d2e1a72fcca58-714457368a3mr8681926b3a.4.1724654508934;
+        Sun, 25 Aug 2024 23:41:48 -0700 (PDT)
+Received: from [127.0.0.1] ([103.172.41.203])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-714343404b0sm6467253b3a.220.2024.08.25.23.41.45
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 25 Aug 2024 23:41:48 -0700 (PDT)
+Message-ID: <2914fb9f-da8e-4415-ba8b-e12d3792712b@canonical.com>
+Date: Mon, 26 Aug 2024 14:41:42 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hwrng: mtk - Add remove function
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: sean.wang@mediatek.com, olivia@selenic.com, herbert@gondor.apana.org.au,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ linux-crypto@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240826014419.5151-1-guoqing.jiang@canonical.com>
+ <CAGXv+5G6AToabUmvPvcHQZaU-A6b-Y82ErUGxBVDojK5gMBz+w@mail.gmail.com>
+Content-Language: en-US
+From: Guoqing Jiang <guoqing.jiang@canonical.com>
+In-Reply-To: <CAGXv+5G6AToabUmvPvcHQZaU-A6b-Y82ErUGxBVDojK5gMBz+w@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240825_233300_175712_80755FED 
-X-CRM114-Status: GOOD (  16.26  )
+X-CRM114-CacheID: sfid-20240825_234154_653111_D6A5BCC1 
+X-CRM114-Status: GOOD (  17.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,214 +106,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adding the per-frame lp function of mt8188, which can keep HFP in HS and
-reduce the time required for each line to enter and exit low power.
-Per Frame LP:
-  |<----------One Active Frame-------->|
---______________________________________----___________________
-  ^HSA+HBP^^RGB^^HFP^^HSA+HBP^^RGB^^HFP^    ^HSA+HBP^^RGB^^HFP^
 
-Per Line LP:
-  |<---------------One Active Frame----------->|
---______________--______________--______________----______________
-  ^HSA+HBP^^RGB^  ^HSA+HBP^^RGB^  ^HSA+HBP^^RGB^    ^HSA+HBP^^RGB^
 
-Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
----
-Changes in v8:
-Directly write value into DSI_HSTX_CKL_WC without check per suggestion from previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20240819061333.26069-1-shuijing.li@mediatek.com/
-Changes in v7:
-Fix code style and simplify the code per suggestion from previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20240813022315.18502-1-shuijing.li@mediatek.com/
-Changes in v6:
-Simplify the code per suggestion from previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20240812070341.26053-1-shuijing.li@mediatek.com/
-Changes in v5:
-Fix code style issue and add per-line-lp function to be symmetrical with per-frame-lp.
-per suggestion from previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20240801081144.22372-1-shuijing.li@mediatek.com/
-Changes in v4:
-Drop the code related to bllp_en and bllp_wc, adjust ps_wc to dsi->vm.hactive *
-dsi_buf_bpp.
-Changes in v3:
-Use function in bitfield.h and get value from phy timing, per suggestion
-from previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20240424091639.22759-1-shuijing.li@mediatek.com/
-Changes in v2:
-Use bitfield macros and add new function for per prame lp and improve
-the format, per suggestion from previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20240314094238.3315-1-shuijing.li@mediatek.com/
----
- drivers/gpu/drm/mediatek/mtk_dsi.c | 106 +++++++++++++++++++++++++----
- 1 file changed, 94 insertions(+), 12 deletions(-)
+On 8/26/24 13:17, Chen-Yu Tsai wrote:
+> On Mon, Aug 26, 2024 at 9:45 AM Guoqing Jiang
+> <guoqing.jiang@canonical.com> wrote:
+>> Add mtk_rng_remove function which calles pm_runtime relevant funcs
+>> and unregister hwrng to paired with mtk_rng_probe.
+>>
+>> And without remove function, pm_runtime complains below when reload
+>> the driver.
+>>
+>> mtk_rng 1020f000.rng: Unbalanced pm_runtime_enable!
+>>
+>> Signed-off-by: Guoqing Jiang <guoqing.jiang@canonical.com>
+>> ---
+>>   drivers/char/hw_random/mtk-rng.c | 10 ++++++++++
+>>   1 file changed, 10 insertions(+)
+>>
+>> diff --git a/drivers/char/hw_random/mtk-rng.c b/drivers/char/hw_random/mtk-rng.c
+>> index 302e201b51c2..1b6aa9406b11 100644
+>> --- a/drivers/char/hw_random/mtk-rng.c
+>> +++ b/drivers/char/hw_random/mtk-rng.c
+>> @@ -149,6 +149,15 @@ static int mtk_rng_probe(struct platform_device *pdev)
+>>          return 0;
+>>   }
+>>
+>> +static void mtk_rng_remove(struct platform_device *pdev)
+>> +{
+>> +        struct mtk_rng *priv = platform_get_drvdata(pdev);
+>> +
+>> +       pm_runtime_disable(&pdev->dev);
+> Instead maybe just replace pm_runtime_enable() with devm_pm_runtime_enable()
+> in the probe function?
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index b6e3c011a12d..eeec641cab60 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -88,12 +88,15 @@
- #define DSI_HSA_WC		0x50
- #define DSI_HBP_WC		0x54
- #define DSI_HFP_WC		0x58
-+#define HFP_HS_VB_PS_WC		GENMASK(30, 16)
-+#define HFP_HS_EN			BIT(31)
- 
- #define DSI_CMDQ_SIZE		0x60
- #define CMDQ_SIZE			0x3f
- #define CMDQ_SIZE_SEL		BIT(15)
- 
- #define DSI_HSTX_CKL_WC		0x64
-+#define HSTX_CKL_WC			GENMASK(15, 2)
- 
- #define DSI_RX_DATA0		0x74
- #define DSI_RX_DATA1		0x78
-@@ -187,6 +190,7 @@ struct mtk_dsi_driver_data {
- 	bool has_shadow_ctl;
- 	bool has_size_ctl;
- 	bool cmdq_long_packet_ctl;
-+	bool support_per_frame_lp;
- };
- 
- struct mtk_dsi {
-@@ -426,7 +430,75 @@ static void mtk_dsi_ps_control(struct mtk_dsi *dsi, bool config_vact)
- 	writel(ps_val, dsi->regs + DSI_PSCTRL);
- }
- 
--static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
-+static void mtk_dsi_config_vdo_timing_per_frame_lp(struct mtk_dsi *dsi)
-+{
-+	u32 horizontal_sync_active_byte;
-+	u32 horizontal_backporch_byte;
-+	u32 horizontal_frontporch_byte;
-+	u32 hfp_byte_adjust, v_active_adjust;
-+	u32 cklp_wc_min_adjust, cklp_wc_max_adjust;
-+	u32 dsi_tmp_buf_bpp;
-+	unsigned int da_hs_trail;
-+	unsigned int ps_wc, hs_vb_ps_wc;
-+	u32 v_active_roundup, hstx_cklp_wc;
-+	u32 hstx_cklp_wc_max, hstx_cklp_wc_min;
-+	struct videomode *vm = &dsi->vm;
-+
-+	if (dsi->format == MIPI_DSI_FMT_RGB565)
-+		dsi_tmp_buf_bpp = 2;
-+	else
-+		dsi_tmp_buf_bpp = 3;
-+
-+	da_hs_trail = dsi->phy_timing.da_hs_trail;
-+	ps_wc = vm->hactive * dsi_tmp_buf_bpp;
-+
-+	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE) {
-+		horizontal_sync_active_byte =
-+			vm->hsync_len * dsi_tmp_buf_bpp - 10;
-+		horizontal_backporch_byte =
-+			vm->hback_porch * dsi_tmp_buf_bpp - 10;
-+		hfp_byte_adjust = 12;
-+		v_active_adjust = 32 + horizontal_sync_active_byte;
-+		cklp_wc_min_adjust = 12 + 2 + 4 + horizontal_sync_active_byte;
-+		cklp_wc_max_adjust = 20 + 6 + 4 + horizontal_sync_active_byte;
-+	} else {
-+		horizontal_sync_active_byte = vm->hsync_len * dsi_tmp_buf_bpp - 4;
-+		horizontal_backporch_byte = (vm->hback_porch + vm->hsync_len) *
-+			dsi_tmp_buf_bpp - 10;
-+		cklp_wc_min_adjust = 4;
-+		cklp_wc_max_adjust = 12 + 4 + 4;
-+		if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST) {
-+			hfp_byte_adjust = 18;
-+			v_active_adjust = 28;
-+		} else {
-+			hfp_byte_adjust = 12;
-+			v_active_adjust = 22;
-+		}
-+	}
-+	horizontal_frontporch_byte = vm->hfront_porch * dsi_tmp_buf_bpp - hfp_byte_adjust;
-+	v_active_roundup = (v_active_adjust + horizontal_backporch_byte + ps_wc +
-+			   horizontal_frontporch_byte) % dsi->lanes;
-+	if (v_active_roundup)
-+		horizontal_backporch_byte += dsi->lanes - v_active_roundup;
-+	hstx_cklp_wc_min = (DIV_ROUND_UP(cklp_wc_min_adjust, dsi->lanes) + da_hs_trail + 1)
-+			   * dsi->lanes / 6 - 1;
-+	hstx_cklp_wc_max = (DIV_ROUND_UP((cklp_wc_max_adjust + horizontal_backporch_byte +
-+			   ps_wc), dsi->lanes) + da_hs_trail + 1) * dsi->lanes / 6 - 1;
-+
-+	hstx_cklp_wc = FIELD_PREP(HSTX_CKL_WC, (hstx_cklp_wc_min + hstx_cklp_wc_max) / 2);
-+	writel(hstx_cklp_wc, dsi->regs + DSI_HSTX_CKL_WC);
-+
-+	hs_vb_ps_wc = ps_wc - (dsi->phy_timing.lpx + dsi->phy_timing.da_hs_exit +
-+		      dsi->phy_timing.da_hs_prepare + dsi->phy_timing.da_hs_zero + 2) * dsi->lanes;
-+	horizontal_frontporch_byte |= FIELD_PREP(HFP_HS_EN, 1) |
-+				      FIELD_PREP(HFP_HS_VB_PS_WC, hs_vb_ps_wc);
-+
-+	writel(horizontal_sync_active_byte, dsi->regs + DSI_HSA_WC);
-+	writel(horizontal_backporch_byte, dsi->regs + DSI_HBP_WC);
-+	writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
-+}
-+
-+static void mtk_dsi_config_vdo_timing_per_line_lp(struct mtk_dsi *dsi)
- {
- 	u32 horizontal_sync_active_byte;
- 	u32 horizontal_backporch_byte;
-@@ -436,7 +508,6 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
- 	u32 dsi_tmp_buf_bpp, data_phy_cycles;
- 	u32 delta;
- 	struct mtk_phy_timing *timing = &dsi->phy_timing;
--
- 	struct videomode *vm = &dsi->vm;
- 
- 	if (dsi->format == MIPI_DSI_FMT_RGB565)
-@@ -444,16 +515,6 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
- 	else
- 		dsi_tmp_buf_bpp = 3;
- 
--	writel(vm->vsync_len, dsi->regs + DSI_VSA_NL);
--	writel(vm->vback_porch, dsi->regs + DSI_VBP_NL);
--	writel(vm->vfront_porch, dsi->regs + DSI_VFP_NL);
--	writel(vm->vactive, dsi->regs + DSI_VACT_NL);
--
--	if (dsi->driver_data->has_size_ctl)
--		writel(FIELD_PREP(DSI_HEIGHT, vm->vactive) |
--		       FIELD_PREP(DSI_WIDTH, vm->hactive),
--		       dsi->regs + DSI_SIZE_CON);
--
- 	horizontal_sync_active_byte = (vm->hsync_len * dsi_tmp_buf_bpp - 10);
- 
- 	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE)
-@@ -499,6 +560,26 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
- 	writel(horizontal_sync_active_byte, dsi->regs + DSI_HSA_WC);
- 	writel(horizontal_backporch_byte, dsi->regs + DSI_HBP_WC);
- 	writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
-+}
-+
-+static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
-+{
-+	struct videomode *vm = &dsi->vm;
-+
-+	writel(vm->vsync_len, dsi->regs + DSI_VSA_NL);
-+	writel(vm->vback_porch, dsi->regs + DSI_VBP_NL);
-+	writel(vm->vfront_porch, dsi->regs + DSI_VFP_NL);
-+	writel(vm->vactive, dsi->regs + DSI_VACT_NL);
-+
-+	if (dsi->driver_data->has_size_ctl)
-+		writel(FIELD_PREP(DSI_HEIGHT, vm->vactive) |
-+			FIELD_PREP(DSI_WIDTH, vm->hactive),
-+			dsi->regs + DSI_SIZE_CON);
-+
-+	if (dsi->driver_data->support_per_frame_lp)
-+		mtk_dsi_config_vdo_timing_per_frame_lp(dsi);
-+	else
-+		mtk_dsi_config_vdo_timing_per_line_lp(dsi);
- 
- 	mtk_dsi_ps_control(dsi, false);
- }
-@@ -1197,6 +1278,7 @@ static const struct mtk_dsi_driver_data mt8188_dsi_driver_data = {
- 	.has_shadow_ctl = true,
- 	.has_size_ctl = true,
- 	.cmdq_long_packet_ctl = true,
-+	.support_per_frame_lp = true,
- };
- 
- static const struct of_device_id mtk_dsi_of_match[] = {
--- 
-2.45.2
+Good point, will try it though it seems the function was not called by 
+any hwrng driver so far.
+
+>> +       pm_runtime_set_suspended(&pdev->dev);
+> Not sure if this is needed? I'm not super familiar with runtime PM.
+>
+>> +       devm_hwrng_unregister(&pdev->dev, &priv->rng);
+> The fact that it is already devm_* means that you shouldn't need to
+> call it.
+
+Okay, will remove the unnecessary calls.
+
+Thanks,
+Guoqing
+
 
 
