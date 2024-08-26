@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88952C5472C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Aug 2024 12:09:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0CEEC5321D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Aug 2024 12:10:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Pnxcr1RctVyekh7fp6Zs7PBfow/ZAKboL2Wz6q4mWTQ=; b=0hzL4q7I7HJI3/NFhPvdRj1JSl
-	H6ci26qAepP+kEZwlrB7VDOFC6GGtiE3GFUMOFU/QafDBWODYM0XqGesgKhqQOsBU+a41u5Zg6rdc
-	gdlkTs/fLRupY8cs7BVEodY5JEGlLR6wIvhfo2vEVPDuG5Q+sBdVAy9Syh7mAxIFmLjGUk6Ir8yOE
-	/QN/76yL/RaqrsJPUy6HzzOKlEnqTbA74lXXPYJPXtxjuzWwLgJZ79KGsWS1Lm0CBoSktDbV4HbMg
-	x63vFPptkbhGqsKFuarEQq1PS0MxitiZwJ96vpNvO+W1GIFHCtacKgUAaha7JdCpAWFYSM1btb4pF
-	WS//fMSw==;
+	bh=M5qyV0V8w2ikVnVyHBWh5QpGl7/llaDY3xiKOiW7ZhY=; b=BpEGP8c1A/9UIUWVFbMa0ntol5
+	g0oNTjIf+M2dIlsrOlGJb+RTOuyAmZ16pu7dAVujttIt6+AsCQds4cB4B8mPlPy5G+HobIG1EFNCf
+	UOHllncP8KwNIRhxsCtpvQlnIlts45WeTsJvm67vvGI+ocjhySOILaOVfY71AGVGITMWIXOGQzQT+
+	o1fA9JfzrcWoifRfgtALh3GRAyCFpdcTOWlIR604safTdeOzoLIRVnGeXt/Jb7vWu4/dUg15k2hhE
+	xtUfgt/fVBuKj85y6YPWfVQy6G9QS79GzfRtRPIMZ4nYtZrlKm7z68vMLjejwkrqRK7PICVvAFMXl
+	EtItiXlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siYXc-00000007FyD-475z;
-	Mon, 26 Aug 2024 12:09:48 +0000
+	id 1siYYP-00000007GGQ-1lwU;
+	Mon, 26 Aug 2024 12:10:37 +0000
 Received: from mgamail.intel.com ([192.198.163.9])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siYVG-00000007F8Q-3U13;
-	Mon, 26 Aug 2024 12:07:24 +0000
+	id 1siYVI-00000007F8Q-2PbR;
+	Mon, 26 Aug 2024 12:07:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1724674043; x=1756210043;
+  t=1724674044; x=1756210044;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=mwEtZJB0/hwPWU7zAWoSj7zbloELyiZsdOdbKj+WPu4=;
-  b=bJR3I5f6xPJdnmg/h0Cmn6OcRy76leF5L7XfgOiXOxViQKU8h7TSY4o4
-   pQRYDydZ53xH4w9rb6vJPQIK7J04xtVgWps/3AMe0PNQ3tXm7PwGMW5jA
-   gLVIhoMzhdJaePKJwxr6fDIPQFSlEZ6Bq4KSzPAhnvmQBaoGgNjenC31z
-   +ZWFkj/ChZGaibrD45edphLu5HbdtYhIypijVGmiKI3iBbqR3Hsy+fE79
-   MzE7RdBReJCAEzMxRHf9/P48iNkUH+rRnO3MYpkJUYtc5OfLhqEMci5m0
-   zRVAJOLumuKGhAzh4aA3H3Bru593OY11OpWjfYbyfAQqUW/2RYuZD52wg
+  bh=Q6zAaais8yQO7/lj2YLHErYNNLiGQAdftv65IYjCPsw=;
+  b=kJIIlvU8PzR143AkOxvE2uv8dYwSYCsYz7sHmKq6X9It+R5A2dNjAtK+
+   CnpNMEfMXoANWprVZFfwgoiI8IcasU/6u4tEJLdjOVTI6NGmI4i7rTGkq
+   pxKjD5hbAOjb5lummTE8uAy3MWxcJ4cm9eFU81y1Rko6/m44H17dIqMxk
+   A/xA0KQF7USuhlNuDneIKtlMQwUY0YdOwd1oqQtHd/yu3bzz4ZcXi/Vw8
+   NgEgganE+G9uwcRMHy5MaBrPUKpWMSmrkyKmqvjLvitQwNhVkBK24XjmE
+   J/3MH7kuikklfIQLFLl9vn8OSpD+kp+kyaAWs5ARKr9WYsSLOG5H9Sv2i
    w==;
-X-CSE-ConnectionGUID: Lo4b/MbBS56f/Ll4840dKQ==
-X-CSE-MsgGUID: xQNcXnxER4iDmkZbSnLcsg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11175"; a="33754867"
+X-CSE-ConnectionGUID: tRxiFq7rQ3SkYJXX1V3Hpw==
+X-CSE-MsgGUID: 4LmUUbhHSyigFXJyUPk/Lg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11175"; a="33754876"
 X-IronPort-AV: E=Sophos;i="6.10,177,1719903600"; 
-   d="scan'208";a="33754867"
+   d="scan'208";a="33754876"
 Received: from orviesa007.jf.intel.com ([10.64.159.147])
   by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Aug 2024 05:07:05 -0700
-X-CSE-ConnectionGUID: ckZdX9P5RgCXpckOG7uxZg==
-X-CSE-MsgGUID: O99tV9lITNWVQNIBeo6yJg==
+X-CSE-ConnectionGUID: Yra7qN0AQKaieBzWERPjtA==
+X-CSE-MsgGUID: WsjGkh2XSXCcq71a+8i8ZQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.10,177,1719903600"; 
-   d="scan'208";a="63010403"
+   d="scan'208";a="63010400"
 Received: from lkp-server01.sh.intel.com (HELO 9a732dc145d3) ([10.239.97.150])
   by orviesa007.jf.intel.com with ESMTP; 26 Aug 2024 05:07:01 -0700
 Received: from kbuild by 9a732dc145d3 with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1siYUs-000H11-0v;
+	id 1siYUs-000H0x-0n;
 	Mon, 26 Aug 2024 12:06:58 +0000
-Date: Mon, 26 Aug 2024 20:06:50 +0800
+Date: Mon, 26 Aug 2024 20:06:51 +0800
 From: kernel test robot <lkp@intel.com>
 To: Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh@kernel.org>,
 	Saravana Kannan <saravanak@google.com>,
@@ -77,15 +77,15 @@ Cc: oe-kbuild-all@lists.linux.dev, Chen-Yu Tsai <wenst@chromium.org>,
 	linux-i2c@vger.kernel.org
 Subject: Re: [PATCH v5 02/10] regulator: Move OF-specific regulator lookup
  code to of_regulator.c
-Message-ID: <202408261940.R6VmGtGO-lkp@intel.com>
+Message-ID: <202408261956.PHxQEruO-lkp@intel.com>
 References: <20240822092006.3134096-3-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20240822092006.3134096-3-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240826_050722_910196_3B1A0107 
-X-CRM114-Status: GOOD (  13.67  )
+X-CRM114-CacheID: sfid-20240826_050724_655744_EB54FD78 
+X-CRM114-Status: GOOD (  12.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,10 +102,10 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Chen-Yu,
 
-kernel test robot noticed the following build warnings:
+kernel test robot noticed the following build errors:
 
-[auto build test WARNING on broonie-regulator/for-next]
-[also build test WARNING on robh/for-next wsa/i2c/for-next linus/master v6.11-rc5 next-20240823]
+[auto build test ERROR on broonie-regulator/for-next]
+[also build test ERROR on robh/for-next wsa/i2c/for-next linus/master v6.11-rc5 next-20240823]
 [If your patch is applied to the wrong git tree, kindly drop us a note.
 And when submitting patch, we suggest to use '--base' as documented in
 https://git-scm.com/docs/git-format-patch#_base_tree_information]
@@ -114,20 +114,20 @@ url:    https://github.com/intel-lab-lkp/linux/commits/Chen-Yu-Tsai/of-dynamic-A
 base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
 patch link:    https://lore.kernel.org/r/20240822092006.3134096-3-wenst%40chromium.org
 patch subject: [PATCH v5 02/10] regulator: Move OF-specific regulator lookup code to of_regulator.c
-config: i386-randconfig-005-20240826 (https://download.01.org/0day-ci/archive/20240826/202408261940.R6VmGtGO-lkp@intel.com/config)
-compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240826/202408261940.R6VmGtGO-lkp@intel.com/reproduce)
+config: parisc-randconfig-002-20240826 (https://download.01.org/0day-ci/archive/20240826/202408261956.PHxQEruO-lkp@intel.com/config)
+compiler: hppa-linux-gcc (GCC) 14.1.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240826/202408261956.PHxQEruO-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202408261940.R6VmGtGO-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202408261956.PHxQEruO-lkp@intel.com/
 
-All warnings (new ones prefixed by >>):
+All errors (new ones prefixed by >>):
 
    In file included from drivers/regulator/helpers.c:17:
    drivers/regulator/internal.h: In function 'of_regulator_dev_lookup':
->> drivers/regulator/internal.h:87:16: warning: returning 'int' from a function with return type 'struct regulator_dev *' makes pointer from integer without a cast [-Wint-conversion]
+>> drivers/regulator/internal.h:87:16: error: returning 'int' from a function with return type 'struct regulator_dev *' makes pointer from integer without a cast [-Wint-conversion]
       87 |         return -ENODEV;
          |                ^
 
