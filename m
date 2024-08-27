@@ -4,66 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B442C54731
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Aug 2024 21:31:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C0FAC54735
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Aug 2024 22:04:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Fr+3qWu+CHCAF/U9dZkOPk1TOcW+T2CbT3HvHDSqRa8=; b=X+zALtfEmGJibZs6y/s1dhOMQE
-	1e/+S6QBBf3pjYeKiHlpQWewvIL1h7QC7ynBuWwNLCzkJIFNiE49WM/bw7/F6Dki9mZ6SwlElbf/x
-	36jrR+mB1wQIf0IhioBtfXJz2+UePbfMHVkVpUCxic3gIHEL5LzZp727wOwvwdHBClLXkXSSqDaHS
-	Xxrezjg6WIfR/PU2CIIIBC1KGJxpA1jpKSGEU1n7xzLzdeoTPdXcXEbhyJk3eOeVEhXC7y+4/u0Uz
-	5wX65Oz5B6DIuv3CD7zImDo+FnWs4y88rjVDp4cEHPJMKy7Lp8y13i4eUKSwixfj+BwlSjLlk1BPs
-	HsqqtGZA==;
+	bh=VZgyQZttbFN6Mpv5C6Zqi3PHF1KkrD2jrO7egIws/+I=; b=avADwOUKSpSTuffrRpwf7r4NQp
+	Oyl5e2A0apRzzLx9B+VXlPZOSiKyrbJ3l3qlBlIZ4p5FGh5fQTt9sSSMGnasaPtqRiRZ8vWF6IVHK
+	4TPd0nk5bwKwSC1o1u5sWdrCv9BfEOVu82RUU1MvYkLawH40yjTlezi0aL2Ua38ZwDMWkZts+Ajc5
+	+gseucV5x5J3yY27AgkrByWWAO3+Ue/nhYQ3sdO5kGsSDqFWKo+XTc24PSM6eBivFSArRwiYIGszo
+	/zfGUc2AhwcP+CTzIcKVXTzFF6yspguYy2hlhLyofbWha7Vs7TeMn+4WBH2OH+laqhW055fy3gQhl
+	SGaf2qIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sj3mm-0000000Cths-1vrr;
-	Tue, 27 Aug 2024 21:31:32 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1sj4J8-0000000Cysq-2MHS;
+	Tue, 27 Aug 2024 22:04:58 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sj3lw-0000000CtSg-15VS;
-	Tue, 27 Aug 2024 21:30:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 92EEDA43148;
-	Tue, 27 Aug 2024 21:30:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1D513C4AF16;
-	Tue, 27 Aug 2024 21:30:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724794238;
-	bh=UF5oNncSFvh5U+Vjqi3Hnl24mcbFhjSedPb+WcU/Gm8=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=F1ZOdqDgh9eaByDkMTogAgtVkUPaLms3uPDn4TdjdAdZOh9rgT5jsKiOijCAWRQkA
-	 Wbz4kCjX4Jql6YYuteW496b9Qk6T3VwJg2GdmeOwKEuN15G/mKVKMcicX/6DphU9ml
-	 8pdx/H/pmYSBZ9YyFuorkvtuEMFQy4K0WngwyICuGiN705hepCO5SlRsZkbsXqMhZC
-	 Mg9XDg2PB0juHMifWw0u0Sbj4bMc3a52mJWn5BP9NRuAb6paawIYZq3CuYRWjZ9jLl
-	 R6Bn+jbdY5EPOeY6FFw9iXFpkqNk+ZabwjRPMAf3Kqtdw4cHtqvOWnpFozZND4BuDt
-	 6xMqFxn8PatNQ==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 70E5E3822D6D;
-	Tue, 27 Aug 2024 21:30:39 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1sj4J6-0000000CyrS-0zFG;
+	Tue, 27 Aug 2024 22:04:57 +0000
+Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-371ba7e46easo3503551f8f.0;
+        Tue, 27 Aug 2024 15:04:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1724796294; x=1725401094; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=VZgyQZttbFN6Mpv5C6Zqi3PHF1KkrD2jrO7egIws/+I=;
+        b=l0SVfxEC2mqU/y6uJhmirzJTdNoIaUFiQNaSuRb8kwow4NM0STdUh5Y9GREt6LcSm5
+         u0QxmC1hcw54OZt5QgnJXowntoovou6Vf6WXJfVWs6Ytcq6eefPd1J8T9OJkVRocld7D
+         fFWNhJoqHmTDkPiZ2UsWm3vy+6XTSDJ+WYzrdFvRGJ1jXr0SexZ3FWRbf8Y7QfnxpX2G
+         5PpIhczYFYuudMU9K5D0Da0ZMeIXlG2jRgF0LsZn7codDUp6ae1hsR9M3E97y3iZqWiO
+         AiOnQAOcFvOfqdHdnAnv5kb/A9q7iRPfqKxBCQGY1QHnDQ0aKo0NJuPLOUlwZnpjYgQx
+         lpPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1724796294; x=1725401094;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=VZgyQZttbFN6Mpv5C6Zqi3PHF1KkrD2jrO7egIws/+I=;
+        b=ZFhooBA/rsAOI179FPWLAhOvTbg40duv68O1BAZjwKC0uB6G8bTlWlBjZ5jrrF0kCx
+         JFmhu+iUJeywaOw/+hzN+IskESwqqBS5tolxyXsUG7nkj4LjpxTQjtruer9WXH7tk6Ae
+         wIbLgX99IWC0RiK2VdJSzdNMuPR7Qlk63SRATyejrfzGtj9CMIVhdNkGIbs4IYMjE3nq
+         Ss9TKJfV6doQAgNDxuuxBKFgzVYGr/AMUrtZJtR3Ou42pmteI1c8N4zZHMhUlsXEnQWT
+         A+p1Xr1wSjvlcQhBfyeILuu1eK7V7LtleMOHDGpyyHUjNi2FkyLy049AqvPE3IUeMKFr
+         FyuQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXDdouDZNq+G8HPBvkywSwv3KancXtltHBPyaS+uq/txH2kFsvGiaXe4s/59TX+x0VAuigeMQyYbE9MnoHN@lists.infradead.org, AJvYcCXIR+g8SWxOgx8aRXSo1K8JZuyjFNbuP0fH+14JoM3C8KAzEYpe0mzv1n1vZ4FauuztKiezhreWPwYcxtLGnFs=@lists.infradead.org, AJvYcCXuojC6YVNUZroh2UkVhHdfPZCTehWSJixSfPigS18OTy7SkdW6b9CWnR5u2wVd8UWyztM8+pdCjT4B+sJFAA8=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzBR+1Smy+/b3uAR2oPpaa6zBqOExGF0gss0v2ZvNHmeZ5Tt7/L
+	tLOolmn6s5eaP5gTr8eRagVNauU8IpowCgo+x+mnwXV6NKd8n9d+jBbnfsUHxSJublAAW+n0F8g
+	ldWR1dUWMvoB3w2L8ZKZsoYe5Wz/B9Q==
+X-Google-Smtp-Source: AGHT+IHWk+OQ6gg8FUjgV2v4vECfE0Fa9RJ/6lK2GykuDqzWb1DzW5pw5cVNOpUVhtAQtCWvfc0gKwWGbXHqNy0EXDs=
+X-Received: by 2002:a05:6000:8d:b0:368:747c:5a04 with SMTP id
+ ffacd0b85a97d-3731185ad48mr7748341f8f.25.1724796293984; Tue, 27 Aug 2024
+ 15:04:53 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH -next 0/3] net: fix module autoloading
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <172479423799.767553.16922286999565364785.git-patchwork-notify@kernel.org>
-Date: Tue, 27 Aug 2024 21:30:37 +0000
-References: <20240826091858.369910-1-liaochen4@huawei.com>
-In-Reply-To: <20240826091858.369910-1-liaochen4@huawei.com>
-To: Liao Chen <liaochen4@huawei.com>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- chris.snook@gmail.com, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, lorenzo@kernel.org, nbd@nbd.name,
- sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com
+References: <20240820070818.1124403-1-vignesh.raman@collabora.com>
+In-Reply-To: <20240820070818.1124403-1-vignesh.raman@collabora.com>
+From: Rob Clark <robdclark@gmail.com>
+Date: Tue, 27 Aug 2024 15:04:42 -0700
+Message-ID: <CAF6AEGu-T4=3jPRcnq3BFBtfb_yhmWE2b8EgxgTm5Q0bqSv04Q@mail.gmail.com>
+Subject: Re: [PATCH v1] drm/ci: increase timeout for all jobs
+To: Vignesh Raman <vignesh.raman@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com, 
+	helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch, 
+	guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com, 
+	deborah.brouwer@collabora.com, linux-mediatek@lists.infradead.org, 
+	linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
+	intel-gfx@lists.freedesktop.org, virtualization@lists.linux.dev, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240827_143040_389924_81A3E128 
-X-CRM114-Status: UNSURE (   9.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240827_150456_293533_5AC7075E 
+X-CRM114-Status: GOOD (  14.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,37 +95,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+On Tue, Aug 20, 2024 at 12:09=E2=80=AFAM Vignesh Raman
+<vignesh.raman@collabora.com> wrote:
+>
+> Set the timeout of all drm-ci jobs to 1h30m since
+> some jobs takes more than 1 hour to complete.
+>
+> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 
-This series was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+Acked-by: Rob Clark <robdclark@gmail.com>
 
-On Mon, 26 Aug 2024 09:18:55 +0000 you wrote:
-> Hi all,
-> 
-> This patchset aims to enable autoloading of some net modules.
-> By registering MDT, the kernel is allowed to automatically bind
-> modules to devices that match the specified compatible strings.
-> 
-> Liao Chen (3):
->   net: dm9051: fix module autoloading
->   net: ag71xx: fix module autoloading
->   net: airoha: fix module autoloading
-> 
-> [...]
-
-Here is the summary with links:
-  - [-next,1/3] net: dm9051: fix module autoloading
-    https://git.kernel.org/netdev/net-next/c/2e25147a6560
-  - [-next,2/3] net: ag71xx: fix module autoloading
-    https://git.kernel.org/netdev/net-next/c/c76afed1bace
-  - [-next,3/3] net: airoha: fix module autoloading
-    https://git.kernel.org/netdev/net-next/c/7d2bd8ac9d24
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+> ---
+>  drivers/gpu/drm/ci/test.yml | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
+> index b6f428cdaf94..09d8447840e9 100644
+> --- a/drivers/gpu/drm/ci/test.yml
+> +++ b/drivers/gpu/drm/ci/test.yml
+> @@ -10,6 +10,7 @@
+>  .lava-test:
+>    extends:
+>      - .test-rules
+> +  timeout: "1h30m"
+>    script:
+>      # Note: Build dir (and thus install) may be dirty due to GIT_STRATEG=
+Y
+>      - rm -rf install
+> @@ -71,6 +72,7 @@
+>      - .baremetal-test-arm64
+>      - .use-debian/baremetal_arm64_test
+>      - .test-rules
+> +  timeout: "1h30m"
+>    variables:
+>      FDO_CI_CONCURRENT: 10
+>      HWCI_TEST_SCRIPT: "/install/igt_runner.sh"
+> @@ -215,7 +217,6 @@ panfrost:rk3399:
+>    extends:
+>      - .lava-igt:x86_64
+>    stage: i915
+> -  timeout: "1h30m"
+>    variables:
+>      DRIVER_NAME: i915
+>      DTB: ""
+> @@ -414,6 +415,7 @@ panfrost:g12b:
+>
+>  virtio_gpu:none:
+>    stage: software-driver
+> +  timeout: "1h30m"
+>    variables:
+>      CROSVM_GALLIUM_DRIVER: llvmpipe
+>      DRIVER_NAME: virtio_gpu
+> @@ -436,6 +438,7 @@ virtio_gpu:none:
+>
+>  vkms:none:
+>    stage: software-driver
+> +  timeout: "1h30m"
+>    variables:
+>      DRIVER_NAME: vkms
+>      GPU_VERSION: none
+> --
+> 2.43.0
+>
 
