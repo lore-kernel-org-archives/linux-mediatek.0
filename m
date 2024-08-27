@@ -4,78 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8173C54736
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Aug 2024 20:28:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B26E6C54731
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Aug 2024 21:14:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:References:In-Reply-To:Message-ID:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vSjUVm1BVHx+k1tFoVAnnPQhkPlOOk9eSfEVMqyqIEY=; b=E+ia7LR20BbXMU+r+Xz3j+bVdq
-	A8M0NOlmueKjSMNmA+0ZWScQ+w9GySfkfke1ipUXLPbdSlriN7lO2YpK7BbyfTtDkmbWvzErFhcw/
-	+ujFprQTVB6bnU/2PlZett6HTHEYjNBPhiAETZaf8b72Ar68K+Q2h3tJQ2IfEllA3uzptpxBMfhds
-	HLGXjPuWiRFE0CBgW/GGohJ01Eiy3q60JkWBuSlC4oajwx2tU+T/etCtrifq4r3WiNjHFQP0VkOQc
-	p6emJzaW27y0/25kMlRna75yXuShgR612/gCiuciBvM28eTAOMOQ0eYXc4pHX/MH+NlU1flwqqZTI
-	uAzH+OOg==;
+	bh=xfqXOZc+766507kklCUwhhyqL2MZM2kjb/gAvpx7HV4=; b=LCwKFKJo9QY2wiFMs0o5gZfBKt
+	B6ril/tw5PZlaJHexirWIPEZj+mOT3t2h1GVw+6AxqVoqVZMPf+UlLse+uYMM5zTEXwRRArOtKiZk
+	nBsJ/TTryrj9WcS63mwjFwvHeQLMP9unh9w4VXTDQu+iybDaepeAP34QeDqwSL5bpV+lpa2e7Hgp9
+	VqvGtmBtjdt7Lju/5kzr0U4IgRDGH55ois6sEaXgqzaagcS3co2VL7SeasakEuaDD9T09X3rAKMfp
+	ewRWO4JxDvnWt2egCKlNW48AhD1FkTaE+wwz30xU0/IYTQXaH56D5UyI5imjTvBStT5sbvQQAnIep
+	+0gNQo1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sj2nQ-0000000CjvO-3mue;
-	Tue, 27 Aug 2024 20:28:08 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1sj3Vs-0000000CqCA-2mie;
+	Tue, 27 Aug 2024 21:14:04 +0000
+Received: from mout.web.de ([212.227.15.4])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sj2nO-0000000CjuX-0AIa;
-	Tue, 27 Aug 2024 20:28:07 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1724790480; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Aya30ztD33wDitnB3E5Gn+IYVWfddnFNtZwWR4Z/GYc/NTc4LqyK/XEhTgm7ailY6rJKItNYBd/VB14kTXRNB5birLM3a7WFCPi5rZYvBpdJVssJwFlmyfJI9uQ7q/ztXjQwKCMFKKbSA0bxO7So7c6xWW07RuSK2A1R08jXkDo=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1724790480; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=vSjUVm1BVHx+k1tFoVAnnPQhkPlOOk9eSfEVMqyqIEY=; 
-	b=Etx//QWRTu3HlBQryriesvrIEINJornZf9rpjNIxM3SwhFaOuf+jX95Yis3yJTCJU63WAKIyTX8pLw2oy9YGJrvoDytcl94RrdY4Ycb1kIthriVX2KmlipBO9sbxLaJxhL570HOW9lR/56evwrN7yFpc8LO2jWjrXcGe1BWGn0s=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=helen.koike@collabora.com;
-	dmarc=pass header.from=<helen.koike@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1724790480;
-	s=zohomail; d=collabora.com; i=helen.koike@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Message-ID:In-Reply-To:References:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=vSjUVm1BVHx+k1tFoVAnnPQhkPlOOk9eSfEVMqyqIEY=;
-	b=hI48h1WDy87pOMX099fASJTZhXMXCO9sEwV9KBM6EfWRIvETtevOgQMj6/okJmfE
-	wXivfv2WtL0RIFAFVAtZ8qayYLD6kLZigOMut2jyKU4CPY+WcdBRNKSKftx+kUhhanY
-	HUs/4BwTFTMWQg9V8bYsxQvUQP4+pIx5NxK33DVQ=
-Received: from mail.zoho.com by mx.zohomail.com
-	with SMTP id 1724790478227916.9458842035166; Tue, 27 Aug 2024 13:27:58 -0700 (PDT)
-Date: Tue, 27 Aug 2024 17:27:58 -0300
-From: Helen Mae Koike Fornazier <helen.koike@collabora.com>
-To: "Vignesh Raman" <vignesh.raman@collabora.com>
-Cc: "dri-devel" <dri-devel@lists.freedesktop.org>,
-	"daniels" <daniels@collabora.com>, "airlied" <airlied@gmail.com>,
-	"daniel" <daniel@ffwll.ch>, "robdclark" <robdclark@gmail.com>,
-	"guilherme.gallo" <guilherme.gallo@collabora.com>,
-	"sergi.blanch.torne" <sergi.blanch.torne@collabora.com>,
-	"deborah.brouwer" <deborah.brouwer@collabora.com>,
-	"linux-mediatek" <linux-mediatek@lists.infradead.org>,
-	"linux-amlogic" <linux-amlogic@lists.infradead.org>,
-	"linux-rockchip" <linux-rockchip@lists.infradead.org>,
-	"amd-gfx" <amd-gfx@lists.freedesktop.org>,
-	"linux-arm-msm" <linux-arm-msm@vger.kernel.org>,
-	"intel-gfx" <intel-gfx@lists.freedesktop.org>,
-	"virtualization" <virtualization@lists.linux.dev>,
-	"linux-kernel" <linux-kernel@vger.kernel.org>
-Message-ID: <1919586153a.1236d9a3a2810380.346109493548527669@collabora.com>
-In-Reply-To: <20240820070818.1124403-1-vignesh.raman@collabora.com>
-References: <20240820070818.1124403-1-vignesh.raman@collabora.com>
-Subject: Re: [PATCH v1] drm/ci: increase timeout for all jobs
-MIME-Version: 1.0
+	id 1sj3VD-0000000Cq7X-0WL6
+	for linux-mediatek@lists.infradead.org;
+	Tue, 27 Aug 2024 21:14:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1724793192; x=1725397992; i=spasswolf@web.de;
+	bh=xfqXOZc+766507kklCUwhhyqL2MZM2kjb/gAvpx7HV4=;
+	h=X-UI-Sender-Class:Message-ID:Subject:From:To:Cc:Date:In-Reply-To:
+	 References:Content-Type:MIME-Version:Content-Transfer-Encoding:cc:
+	 content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=PnSPCpc5vFdtsbHk92t3rVA0tHpEvIh0ymfBnmtJKNImgWoTZJxgEzSWqz5s2Bo+
+	 ZiR4ry2evesxZwKf9Vj5hjOyNCvjSeD3wVkcxOUaQvsHNPBXRRJYgzm/VQCgbVVlI
+	 H10LlUoAkV4pOU/8hE7RZyetwIv0iYrQZdIcmRzJX+Ln3EETQ3ewx4my/S/wsullq
+	 lvC7QJHzTTyRvGitxpM2Kp5WjoahXbLIrFozmF5BoOP45iZFQrDEdcXf/fdLa1J1H
+	 FsP6z4buQn1JB6I2DOlevarm91V3rnFYHJEUzoU2pjEe80CLHp6VApqfhZHeyOoon
+	 +VFco17WQc0WWtiSiA==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.0.101] ([84.119.92.193]) by smtp.web.de (mrweb006
+ [213.165.67.108]) with ESMTPSA (Nemesis) id 1N2SL5-1rxbJ244fH-012twG; Tue, 27
+ Aug 2024 23:13:12 +0200
+Message-ID: <51e80bde6e3f3256ecdea2e5260463341e65578e.camel@web.de>
+Subject: Re: [PATCH] wifi: mt76: mt7921: fix null pointer access in
+ mt792x_mac_link_bss_remove
+From: Bert Karwatzki <spasswolf@web.de>
+To: Mike Lothian <mike@fireburn.co.uk>
+Cc: Linux regressions mailing list <regressions@lists.linux.dev>, 
+	sean.wang@kernel.org, nbd@nbd.name, lorenzo.bianconi@redhat.com, 
+	sean.wang@mediatek.com, deren.wu@mediatek.com, mingyen.hsieh@mediatek.com, 
+	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	spasswolf@web.de
+Date: Tue, 27 Aug 2024 23:13:10 +0200
+In-Reply-To: <CAHbf0-EBHERbxPGakY4-1jTQWqGqua3F0OYZjxcakdemJ5Soqw@mail.gmail.com>
+References: <20240718234633.12737-1-sean.wang@kernel.org>
+	 <0124ff39-7d63-49f8-bacd-3a40ce37ec4d@leemhuis.info>
+	 <CAHbf0-Hn=ZyYpk7bS1yLK7K3ZpfWKgt3-t=c9Nhdj3Ov3H84mQ@mail.gmail.com>
+	 <f7197c55d059cc8ddbf6c3def16dc414c5ec0b42.camel@web.de>
+	 <CAHbf0-EBHERbxPGakY4-1jTQWqGqua3F0OYZjxcakdemJ5Soqw@mail.gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Importance: Medium
-User-Agent: Zoho Mail
-X-Mailer: Zoho Mail
+User-Agent: Evolution 3.53.2-1 
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:kqpKExKkptcgwCeoH0RfHXQVHBIgSoraFMqhlrftXDuJxwCi6p2
+ QxcVUgX+JOqboen9F0mJQ6mfr4XrICbPczwJLxZ5tzVh2FA6K3FAJj30UfAJLV8xC1bJRb6
+ 1kGpZCq3h1HjKq99N3F3O/Ewde4NpVXyJB6FoBEab+UykZjCiLeA12XlxPqYPuAkDJzmEb/
+ ualTiaHRtu6JEtSlr8zMg==
+UI-OutboundReport: notjunk:1;M01:P0:itHwOWHJ/RQ=;Bul3gZQlJXvufanW94AO28rOGQA
+ f4+MZWkUx5YdZoYifN3KwOvTtNCyKtSYLi7eRR2DNvixcWRwxT2eFOzp1OIljC0Ueyxh/d4hb
+ nsNtkuRj/dhYyt8FqfWjuBmHChz8ybHS3CFniRAG0G6UAsb/YAtpB8SPRhD5Fco5I9CS1Js0e
+ +1KF0pO1MBtWfYQN5jkghSdUgYUGNHaILcE73qEXwTavMzbbNs6e58wiQbGz+s5d+Conhwo91
+ kWijMyD5EmDm2ItI6gkXxOkqFlTVSk0hKqVZWVOpM35x5+NY762Q4feYQvAgqDde5K5lTOy9e
+ or2EMExz9C3JCND6ZBM73ytukgusc7J7j31fXk3pJe0X/1PyA4ZDpzLlLxPsbtBh4ni2GFiNW
+ TqMRdX9jh86J72C0k4JxLddddZybACpYim0lgWqymg8KMl+NuEO/DxNO15AjXhoMVKHV7bSpg
+ CALpuvnG+cibn7VCpgfl/t7B1B9RxovqQ4zl0VCuG0Xt/BYxo5vLRFFtCyNeAGonAEMor9jn2
+ wwLh4cRllKHW5VNifEaIXKndHXHeTnOmEIVK9BeQxy+RpjJNmcIy6ALE8nYAbjOHPb02B7vZh
+ 9p1UEIbL+gpRyGCFL1pJs5YQesgwX6mh36djIzAWdn2a4WzIgxS35Y158cER+Af6HtpUrm7EV
+ mslRJnMAAzSPXgZw7qZ9NBH7nrW7sP+OpzKVR+fSywiMS6moZqEmDNNpgfd+BgHW0coEWxjoF
+ S/WIuDGTXXH+PGvo2A3P6YViE7IpN3leKnGx3eIebV7N6Hj8WqOwg/+f/7PGwFvCC+ONsLUPS
+ TowuWs+SYBUx6edF/HQl2klg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240827_132806_189334_CC326A0B 
-X-CRM114-Status: GOOD (  14.43  )
+X-CRM114-CacheID: sfid-20240827_141323_702894_870112A4 
+X-CRM114-Status: GOOD (  25.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,72 +99,233 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Am Dienstag, dem 27.08.2024 um 17:30 +0100 schrieb Mike Lothian:
+> Hi
+>
+> This fix hasn't made it upstream yet, has it fallen through the cracks?
+>
+> Cheers
+>
+> Mike
+>
+> On Thu, 1 Aug 2024 at 17:58, Bert Karwatzki <spasswolf@web.de> wrote:
+> >
+> > Am Donnerstag, dem 01.08.2024 um 13:38 +0100 schrieb Mike Lothian:
+> > > I also saw the following after I restarted my router on two machines=
+ -
+> > > they both have this fix applied already:
+> > >
+> > > Aug 01 08:59:33 quark kernel: BUG: kernel NULL pointer dereference,
+> > > address: 0000000000000008
+> > > Aug 01 08:59:33 quark kernel: #PF: supervisor read access in kernel =
+mode
+> > > Aug 01 08:59:33 quark kernel: #PF: error_code(0x0000) - not-present =
+page
+> > > Aug 01 08:59:33 quark kernel: PGD 0 P4D 0
+> > > Aug 01 08:59:33 quark kernel: Oops: Oops: 0000 [#1] PREEMPT SMP
+> > > Aug 01 08:59:33 quark kernel: CPU: 13 UID: 0 PID: 468 Comm:
+> > > NetworkManager Not tainted 6.11.0-rc1-tip+ #3200
+> > > 9c927d6f3c59d826d15d8e39c195392d1d16b8a8
+> > > Aug 01 08:59:33 quark kernel: Hardware name: Micro Computer (HK) Tec=
+h
+> > > Limited EliteMini Series/HPBSD, BIOS 1.02 03/28/2024
+> > > Aug 01 08:59:33 quark kernel: RIP: 0010:mt7921_ipv6_addr_change
+> > > Aug 01 08:59:33 quark kernel: Code: 41 57 41 56 41 54 53 48 83 e4 f0
+> > > 48 83 ec 50 48 8b 86 70 09 00 00 0f b6 8e 90 04 00 00 4c 8d ba 68 02
+> > > 00 00 49 89 d6 4c 89 ff <48> 8b 58 08 88 4c 24 04 66 c7 44 24 05 00 =
+00
+> > > c6 44 24 07 00 66 c7
+> > > Aug 01 08:59:33 quark kernel: RSP: 0018:ffffc900069373b0 EFLAGS: 000=
+10282
+> > > Aug 01 08:59:33 quark kernel: RAX: 0000000000000000 RBX:
+> > > ffff888106740920 RCX: 0000000000000000
+> > > Aug 01 08:59:33 quark kernel: RDX: ffff888106854800 RSI:
+> > > ffff88810bb35ca0 RDI: ffff888106854a68
+> > > Aug 01 08:59:33 quark kernel: RBP: ffffc90006937420 R08:
+> > > 0000000000000000 R09: ffff888104c98200
+> > > Aug 01 08:59:33 quark kernel: R10: ffffffff7fff0000 R11:
+> > > 0000000000000020 R12: 0000000000000002
+> > > Aug 01 08:59:33 quark kernel: R13: 0000000000000000 R14:
+> > > ffff888106854800 R15: ffff888106854a68
+> > > Aug 01 08:59:33 quark kernel: FS:  00007f4265049400(0000)
+> > > GS:ffff888c2df40000(0000) knlGS:0000000000000000
+> > > Aug 01 08:59:33 quark kernel: CS:  0010 DS: 0000 ES: 0000 CR0: 00000=
+00080050033
+> > > Aug 01 08:59:33 quark kernel: CR2: 0000000000000008 CR3:
+> > > 0000000117250000 CR4: 0000000000350ef0
+> > > Aug 01 08:59:33 quark kernel: Call Trace:
+> > > Aug 01 08:59:33 quark kernel:  <TASK>
+> > > Aug 01 08:59:33 quark kernel:  ? __die_body+0x66/0xb0
+> > > Aug 01 08:59:33 quark kernel:  ? page_fault_oops+0x39a/0x410
+> > > Aug 01 08:59:33 quark kernel:  ? exc_page_fault+0x59/0xa0
+> > > Aug 01 08:59:33 quark kernel:  ? asm_exc_page_fault+0x22/0x30
+> > > Aug 01 08:59:33 quark kernel:  ? mt7921_ipv6_addr_change
+> > > Aug 01 08:59:33 quark kernel:  ? __try_to_del_timer_sync
+> > > Aug 01 08:59:33 quark kernel:  ieee80211_ifa6_changed+0x68/0x120
+> > > Aug 01 08:59:33 quark kernel:  atomic_notifier_call_chain+0x45/0xc0
+> > > Aug 01 08:59:33 quark kernel:  addrconf_ifdown+0x521/0x7d0
+> > > Aug 01 08:59:33 quark kernel:  addrconf_notify+0x1ed/0x4a0
+> > > Aug 01 08:59:33 quark kernel:  raw_notifier_call_chain+0x45/0xb0
+> > > Aug 01 08:59:33 quark kernel:  __dev_notify_flags+0xf4/0x200
+> > > Aug 01 08:59:33 quark kernel:  dev_change_flags+0x49/0x50
+> > > Aug 01 08:59:33 quark kernel:  do_setlink+0x49b/0x1300
+> > > Aug 01 08:59:33 quark kernel:  ? terminate_walk+0x6b/0x100
+> > > Aug 01 08:59:33 quark kernel:  ? __nla_validate_parse
+> > > Aug 01 08:59:33 quark kernel:  ? filename_lookup+0xc7/0x1b0
+> > > Aug 01 08:59:33 quark kernel:  rtnl_newlink+0xb6a/0xde0
+> > > Aug 01 08:59:33 quark kernel:  ? __wake_up_sync_key+0x51/0x80
+> > > Aug 01 08:59:33 quark kernel:  ? scm_destroy+0xc/0x30
+> > > Aug 01 08:59:33 quark kernel:  ? security_capable+0x38/0x50
+> > > Aug 01 08:59:33 quark kernel:  rtnetlink_rcv_msg+0x2dd/0x330
+> > > Aug 01 08:59:33 quark kernel:  ? select_task_rq_fair
+> > > Aug 01 08:59:33 quark kernel:  ? rtnetlink_bind+0x30/0x30
+> > > Aug 01 08:59:33 quark kernel:  netlink_rcv_skb+0xb5/0xf0
+> > > Aug 01 08:59:33 quark kernel:  netlink_unicast+0x230/0x330
+> > > Aug 01 08:59:33 quark kernel:  netlink_sendmsg+0x3b1/0x460
+> > > Aug 01 08:59:33 quark kernel:  ____sys_sendmsg
+> > > Aug 01 08:59:33 quark kernel:  ? chacha_block_generic+0x6a/0x130
+> > > Aug 01 08:59:33 quark kernel:  ___sys_sendmsg+0x282/0x2a0
+> > > Aug 01 08:59:33 quark kernel:  ? __fget_files+0x95/0xb0
+> > > Aug 01 08:59:33 quark kernel:  __se_sys_sendmsg+0xf4/0x120
+> > > Aug 01 08:59:33 quark kernel:  do_syscall_64+0x7e/0x130
+> > > Aug 01 08:59:33 quark kernel:  ? pollwake+0x52/0x60
+> > > Aug 01 08:59:33 quark kernel:  ? do_task_dead+0x50/0x50
+> > > Aug 01 08:59:33 quark kernel:  ? __wake_up_locked_key+0x48/0x70
+> > > Aug 01 08:59:33 quark kernel:  ? eventfd_write+0x193/0x1b0
+> > > Aug 01 08:59:33 quark kernel:  ? syscall_exit_to_user_mode+0x93/0xc0
+> > > Aug 01 08:59:33 quark kernel:  ? vfs_write+0xfa/0x3d0
+> > > Aug 01 08:59:33 quark kernel:  ? __fget_files+0x95/0xb0
+> > > Aug 01 08:59:33 quark kernel:  ? __fget_files+0x95/0xb0
+> > > Aug 01 08:59:33 quark kernel:  ? ksys_write+0x8f/0xb0
+> > > Aug 01 08:59:33 quark kernel:  ? arch_exit_to_user_mode_prepare+0x11=
+/0x50
+> > > Aug 01 08:59:33 quark kernel:  ? syscall_exit_to_user_mode+0x93/0xc0
+> > > Aug 01 08:59:33 quark kernel:  ? do_syscall_64+0x8a/0x130
+> > > Aug 01 08:59:33 quark kernel:  ? syscall_exit_to_user_mode+0x93/0xc0
+> > > Aug 01 08:59:33 quark kernel:  ? do_syscall_64+0x8a/0x130
+> > > Aug 01 08:59:33 quark kernel:  ? do_syscall_64+0x8a/0x130
+> > > Aug 01 08:59:33 quark kernel:  ? do_syscall_64+0x8a/0x130
+> > > Aug 01 08:59:33 quark kernel:  ? arch_exit_to_user_mode_prepare+0x11=
+/0x50
+> > > Aug 01 08:59:33 quark kernel:  entry_SYSCALL_64_after_hwframe+0x4b/0=
+x53
+> > > Aug 01 08:59:33 quark kernel: RIP: 0033:0x7f4264d31fae
+> > > Aug 01 08:59:33 quark kernel: Code: 20 89 54 24 1c 48 89 74 24 10 89
+> > > 7c 24 08 e8 a9 75 f7 ff 41 89 c0 8b 54 24 1c 48 8b 74 24 10 b8 2e 00
+> > > 00 00 8b 7c 24 08 0f 05 <48> 3d 00 f0 ff ff 77 3a 44 89 c7 48 89 44 =
+24
+> > > 08 e8 fd 75 f7 ff 48
+> > > Aug 01 08:59:33 quark kernel: RSP: 002b:00007ffff4b1afa0 EFLAGS:
+> > > 00000293 ORIG_RAX: 000000000000002e
+> > > Aug 01 08:59:33 quark kernel: RAX: ffffffffffffffda RBX:
+> > > 000055c35260c570 RCX: 00007f4264d31fae
+> > > Aug 01 08:59:33 quark kernel: RDX: 0000000000000000 RSI:
+> > > 00007ffff4b1afe0 RDI: 000000000000000d
+> > > Aug 01 08:59:33 quark kernel: RBP: 00007ffff4b1b050 R08:
+> > > 0000000000000000 R09: 0000000000000000
+> > > Aug 01 08:59:33 quark kernel: R10: 000000000000009d R11:
+> > > 0000000000000293 R12: 0000000000000004
+> > > Aug 01 08:59:33 quark kernel: R13: 0000000000000000 R14:
+> > > 0000000000000000 R15: 0000000000000000
+> > > Aug 01 08:59:33 quark kernel:  </TASK>
+> > > Aug 01 08:59:33 quark kernel: Modules linked in:
+> > > Aug 01 08:59:33 quark kernel: CR2: 0000000000000008
+> > > Aug 01 08:59:33 quark kernel: ---[ end trace 0000000000000000 ]---
+> > > Aug 01 08:59:33 quark kernel: RIP: 0010:mt7921_ipv6_addr_change
+> > > Aug 01 08:59:33 quark kernel: Code: 41 57 41 56 41 54 53 48 83 e4 f0
+> > > 48 83 ec 50 48 8b 86 70 09 00 00 0f b6 8e 90 04 00 00 4c 8d ba 68 02
+> > > 00 00 49 89 d6 4c 89 ff <48> 8b 58 08 88 4c 24 04 66 c7 44 24 05 00 =
+00
+> > > c6 44 24 07 00 66 c7
+> > > Aug 01 08:59:33 quark kernel: RSP: 0018:ffffc900069373b0 EFLAGS: 000=
+10282
+> > > Aug 01 08:59:33 quark kernel: RAX: 0000000000000000 RBX:
+> > > ffff888106740920 RCX: 0000000000000000
+> > > Aug 01 08:59:33 quark kernel: RDX: ffff888106854800 RSI:
+> > > ffff88810bb35ca0 RDI: ffff888106854a68
+> > > Aug 01 08:59:33 quark kernel: RBP: ffffc90006937420 R08:
+> > > 0000000000000000 R09: ffff888104c98200
+> > > Aug 01 08:59:33 quark kernel: R10: ffffffff7fff0000 R11:
+> > > 0000000000000020 R12: 0000000000000002
+> > > Aug 01 08:59:33 quark kernel: R13: 0000000000000000 R14:
+> > > ffff888106854800 R15: ffff888106854a68
+> > > Aug 01 08:59:33 quark kernel: FS:  00007f4265049400(0000)
+> > > GS:ffff888c2df40000(0000) knlGS:0000000000000000
+> > > Aug 01 08:59:33 quark kernel: CS:  0010 DS: 0000 ES: 0000 CR0: 00000=
+00080050033
+> > > Aug 01 08:59:33 quark kernel: CR2: 0000000000000008 CR3:
+> > > 0000000117250000 CR4: 0000000000350ef0
+> > >
+> > > On Wed, 24 Jul 2024 at 10:36, Linux regression tracking (Thorsten
+> > > Leemhuis) <regressions@leemhuis.info> wrote:
+> > > >
+> > > >
+> > > >
+> > > > On 19.07.24 01:46, sean.wang@kernel.org wrote:
+> > > > > From: Sean Wang <sean.wang@mediatek.com>
+> > > > >
+> > > > > Fix null pointer access in mt792x_mac_link_bss_remove.
+> > > > >
+> > > > > To prevent null pointer access, we should assign the vif to bss_=
+conf in
+> > > > > mt7921_add_interface. This ensures that subsequent operations on=
+ the BSS
+> > > > > can properly reference the correct vif.
+> > > > >
+> > > > > [...]
+> > > > > > Fixes: 1541d63c5fe2 ("wifi: mt76: mt7925: add
+> > > > mt7925_mac_link_bss_remove to remove per-link BSS")
+> > > > > Reported-by: Bert Karwatzki <spasswolf@web.de>
+> > > > > Closes: https://lore.kernel.org/linux-wireless/2fee61f8c903d02a9=
+00ca3188c3742c7effd102e.camel@web.de/#b
+> > > > > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> > > >
+> > > > TWIMC, Mike (now CCed) ran into the problem and on bugzilla confir=
+med
+> > > > that this fixes the problem:
+> > > >
+> > > > https://bugzilla.kernel.org/show_bug.cgi?id=3D219084
+> > > > https://lore.kernel.org/all/CAHbf0-HOS-jdRGvJOBmEgaaox3PDbDSTgnnZk=
+ZF9pz37Bmh2iw@mail.gmail.com/
+> > > >
+> > > > Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker=
+' hat)
+> > > > --
+> > > > Everything you wanna know about Linux kernel regression tracking:d
+> > > > https://linux-regtracking.leemhuis.info/about/#tldr
+> > > > If I did something stupid, please tell me, as explained on that pa=
+ge.
+> >
+> > The fix to this issue has been posted here by Felix Fietkau:
+> > > Am Mittwoch, dem 17.07.2024 um 17:25 +0200 schrieb Felix Fietkau:
+> > >
+> > > This change should fix it: https://nbd.name/p/0747f54f
+> > > Please test.
+> > >
+> > > Thanks,
+> > >
+> > > - Felix
+> >
+> > Bert Karwatzki
+
+It's in linux-6.11-rc4 and later:
+
+commit 479ffee68d59c599f8aed8fa2dcc8e13e7bd13c3
+Author: Bert Karwatzki <spasswolf@web.de>
+Date:   Mon Aug 12 12:45:41 2024 +0200
+
+    wifi: mt76: mt7921: fix NULL pointer access in mt7921_ipv6_addr_change
+
+    When disabling wifi mt7921_ipv6_addr_change() is called as a notifier.
+    At this point mvif->phy is already NULL so we cannot use it here.
+
+    Signed-off-by: Bert Karwatzki <spasswolf@web.de>
+    Signed-off-by: Felix Fietkau <nbd@nbd.name>
+    Signed-off-by: Kalle Valo <kvalo@kernel.org>
+    Link: https://patch.msgid.link/20240812104542.80760-1-spasswolf@web.de
 
 
+Bert Karwatzki
 
 
----- On Tue, 20 Aug 2024 04:08:16 -0300 Vignesh Raman  wrote ---
-
- > Set the timeout of all drm-ci jobs to 1h30m since 
- > some jobs takes more than 1 hour to complete. 
- >  
- > Signed-off-by: Vignesh Raman vignesh.raman@collabora.com> 
-
-Acked-by: Helen Koike <helen.koike@collabora.com>
-
-Thanks
-Helen
-
- > --- 
- >  drivers/gpu/drm/ci/test.yml | 5 ++++- 
- >  1 file changed, 4 insertions(+), 1 deletion(-) 
- >  
- > diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml 
- > index b6f428cdaf94..09d8447840e9 100644 
- > --- a/drivers/gpu/drm/ci/test.yml 
- > +++ b/drivers/gpu/drm/ci/test.yml 
- > @@ -10,6 +10,7 @@ 
- >  .lava-test: 
- >  extends: 
- >  - .test-rules 
- > +  timeout: "1h30m" 
- >  script: 
- >  # Note: Build dir (and thus install) may be dirty due to GIT_STRATEGY 
- >  - rm -rf install 
- > @@ -71,6 +72,7 @@ 
- >  - .baremetal-test-arm64 
- >  - .use-debian/baremetal_arm64_test 
- >  - .test-rules 
- > +  timeout: "1h30m" 
- >  variables: 
- >  FDO_CI_CONCURRENT: 10 
- >  HWCI_TEST_SCRIPT: "/install/igt_runner.sh" 
- > @@ -215,7 +217,6 @@ panfrost:rk3399: 
- >  extends: 
- >  - .lava-igt:x86_64 
- >  stage: i915 
- > -  timeout: "1h30m" 
- >  variables: 
- >  DRIVER_NAME: i915 
- >  DTB: "" 
- > @@ -414,6 +415,7 @@ panfrost:g12b: 
- >  
- >  virtio_gpu:none: 
- >  stage: software-driver 
- > +  timeout: "1h30m" 
- >  variables: 
- >  CROSVM_GALLIUM_DRIVER: llvmpipe 
- >  DRIVER_NAME: virtio_gpu 
- > @@ -436,6 +438,7 @@ virtio_gpu:none: 
- >  
- >  vkms:none: 
- >  stage: software-driver 
- > +  timeout: "1h30m" 
- >  variables: 
- >  DRIVER_NAME: vkms 
- >  GPU_VERSION: none 
- > -- 
- > 2.43.0 
- >  
- > 
 
