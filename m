@@ -4,80 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84079C54731
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Aug 2024 15:36:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64E4EC5472F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Aug 2024 15:59:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k7V95t9Eny7FjX1177LVW9tNDMS6rw8HF+Z0knd4Kuc=; b=liapG/8Z5Frwt7Vigs1f8zRyYj
-	PcodGeQQOER8+rDitu1lTm+emik2D+1LHenr7FqH/GSkPYUWJXUQLaF3NYfA1Y11h3336dgm6z+09
-	6jgv3nhR2Zu+93rFaqiXYYlI1PRNQJu0Nkh5V1Y1WN1RJ/FwftSZdtbqEnsM30LPsty3oTOfLkdy6
-	FPIadvld4/u+DVjbcvHIw+zH0i2YJA9bRjC1eDsGIruIYze1nwrw8fJcq72yCOfdlF8sKX1Cjx0wj
-	7eHrN/rkDPF54OIl0mSONPXpzLICz5aEx8bXSEq6d5x0BSVyjMoenjHuMul8LKs0MY1OEDv9jockt
-	f2JCVyAQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0Vo4GnU/h3M3K1jWnYOrEc1dy12RZqxDX2LQX4mlL3w=; b=PJcuGSOKozGmjErW3DlWCvAKoT
+	QG+Q5GTaPuK71eAcdW9F6ni8xDBRJ3hhe9MGsTJq5j8mO7d8kMsFDmrCWdnJkFxtePHUE/eRSSTup
+	1vtW1Es2ZTz5TUgYQekGGMqtcrXlCaHrs91XqwJnp4EIymuJwn8ydwfYT+nJB8Ep9A17iZvsr5Oy3
+	tgIgL1/wb09NPJH8/YQw6xAQMtBhTSvOyNxh21IDtjzN+Efb6JrCP31zTvgLKXz33G2GyvinSG0xv
+	fVwK8P2pa7iWAJD6MJXz5MCo34c1imw8BoFm3ZlpbhS3tEsRww8OI72zWuOQeWIlr1vz3rFRE5Pwp
+	I52cHNYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siyEm-0000000BuSm-0DB3;
-	Tue, 27 Aug 2024 15:36:04 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1siyb8-0000000Bz9e-1Nct;
+	Tue, 27 Aug 2024 15:59:10 +0000
+Received: from 008.lax.mailroute.net ([199.89.1.11])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1siy6p-0000000BsL2-2C6L;
-	Tue, 27 Aug 2024 15:27:52 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-201df0b2df4so46002335ad.0;
-        Tue, 27 Aug 2024 08:27:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1724772470; x=1725377270; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=k7V95t9Eny7FjX1177LVW9tNDMS6rw8HF+Z0knd4Kuc=;
-        b=ZjWH2o3ZwEnOKxEsiOXqxmHPqvnOjI+kizqT+27q9ViR80BxlVsH2J5DdgVgAjBO1c
-         mA/Ei53rdAGUWoKojhwApYCc+bwel3oM8PbwuMUQJ7k7HTHreWltPnQjgGddDg19LPc0
-         Uz0Jqd5LXee1Vt9kJFnKJ2ECp5+z25zeKRvz7z8fhgaEA+6LrqJ41vNtiYljzf+rLUm3
-         sM/Zdi7KPAXG+QwWz3gB/wdCmkdtUb5FBR58KGXSOJ01Nw88hC6z5ryA8WiipGYeqVvP
-         nepBNuSuXAKKoWW7CMh7nmy1TMqF2w95RIQX2EBUmHNC/+7ipKFVXXPkKVmePolWh311
-         4oaw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724772470; x=1725377270;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=k7V95t9Eny7FjX1177LVW9tNDMS6rw8HF+Z0knd4Kuc=;
-        b=FLcUIGhKphydalryvXxc9yON9py7x7UqOYIwNGwuSwIPuQ8tz/GIaD8H8/DAsNwebU
-         qcHSpvQS0WaDj65khIiXcsLFUjMuUfIk8W6FPi32y0ftZLkVNylJaszu5UbIsVl2v1aH
-         D6I9m413LUP4kbogXzwpugsqCs1tnys3Ut4etGboRYUK0fyCt7T6PCQZEpwFLho0FiXx
-         NKZYlX6AyoQZnb4BZWiXcr5gucPfgw3VzZvffMYSgTBYyeLq9ZpTOdcxo8FP35tArQX5
-         KVNCZQNmnGCfT5xqT9rdbU4Rh9zb9OZ4/TmMcHiPR4CNqwSZiVenlEGKTJ2ceLIDGBmb
-         isKQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUaOucwxbNRxsIDiFZoAIb20Ue9hCCZ8NFsM+SHRJNT+tO7UjAtz5j8NYyXPuFky8alOwOGna1WAH0UqXYnx98=@lists.infradead.org, AJvYcCWhkx5phBKSHbM1/aMuDenTxx2pP+tN1VkBa8dq5Qae0Py0BOq1Hd8DT+rpm/mdpC//6iXuxtyqf7PJZH1RZ+W2@lists.infradead.org
-X-Gm-Message-State: AOJu0YwkT3InIgCt2ET8vvJRSlYY1qUK+Rey8+d+3WrU2En7PODPOJe2
-	J77BLvnaDwzg8VTxGAJiy4TAx1eit4hH0+vIYFx7h1yKhKsvQNfgMqfA6Q==
-X-Google-Smtp-Source: AGHT+IEPtmV8NBgh9Dnh9bO4NJM4SHx6FsWwQbk1pW18vK1HMdArx/2c73ChRv4IRCQbzDp60q+6tw==
-X-Received: by 2002:a17:902:c404:b0:203:a0ea:6265 with SMTP id d9443c01a7336-203a0ea6d20mr198925725ad.11.1724772469523;
-        Tue, 27 Aug 2024 08:27:49 -0700 (PDT)
-Received: from google.com ([2620:15c:9d:2:fce4:8959:e48d:980c])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-203855dd2d7sm85222915ad.169.2024.08.27.08.27.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 Aug 2024 08:27:49 -0700 (PDT)
-Date: Tue, 27 Aug 2024 08:27:46 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Liao Chen <liaochen4@huawei.com>
-Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, mkorpershoek@baylibre.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com
-Subject: Re: [PATCH -next] Input: mt6779-keypad - fix module autoloading
-Message-ID: <Zs3wcpJ_vVmOXbIl@google.com>
-References: <20240827123411.431388-1-liaochen4@huawei.com>
+	id 1siyUc-0000000Bxg3-0Ca7
+	for linux-mediatek@lists.infradead.org;
+	Tue, 27 Aug 2024 15:52:28 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 008.lax.mailroute.net (Postfix) with ESMTP id 4WtX9h5XBBz6ClY97;
+	Tue, 27 Aug 2024 15:52:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1724773938; x=1727365939; bh=0Vo4GnU/h3M3K1jWnYOrEc1d
+	y12RZqxDX2LQX4mlL3w=; b=ztapJpgICCnsXGCJu7kgE0+enJV1LzHbwWNGlzmx
+	auGf9hOOGL+UGoKbrTAgScgPk1OD0j6sw+swwydeZZ7gw63oSkHYmYRWmHWk4oJi
+	qQ3Yg1Q6FKoik9XoCycETbaURLYPuozjVOoyVrQ9vcVbSwK4eZGz/jnhnttqOXsh
+	iyk57fa9YUONwaEmyYxlbrM7zL7agA7IzJs1i/ukCaTytGfPhnUO15bV/PGbRep6
+	8irOJ1rpUb510XiDy7G/IaDYsqCHm5wyNjRXpkKWbeXox1h3sDRwezaTr2tXHZdL
+	NydiTksKCQTvYc7EToU5FpRq8TUho+zvNaalyx3GC3KwJw==
+X-Virus-Scanned: by MailRoute
+Received: from 008.lax.mailroute.net ([127.0.0.1])
+ by localhost (008.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id V4rI_lcFRZEJ; Tue, 27 Aug 2024 15:52:18 +0000 (UTC)
+Received: from [172.16.58.82] (modemcable170.180-37-24.static.videotron.ca [24.37.180.170])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 008.lax.mailroute.net (Postfix) with ESMTPSA id 4WtX9T39Txz6ClY91;
+	Tue, 27 Aug 2024 15:52:12 +0000 (UTC)
+Message-ID: <d2916681-09df-4fe3-9c19-397edd488aa5@acm.org>
+Date: Tue, 27 Aug 2024 11:52:11 -0400
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240827123411.431388-1-liaochen4@huawei.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/2] ufs: core: complete scsi command after release
+To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
+ jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, naomi.chu@mediatek.com, chu.stanley@gmail.com,
+ stable@vger.kernel.org
+References: <20240826034509.17677-1-peter.wang@mediatek.com>
+ <20240826034509.17677-2-peter.wang@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20240826034509.17677-2-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240827_082751_579276_7A7AAFB7 
-X-CRM114-Status: UNSURE (   8.12  )
+X-CRM114-CacheID: sfid-20240827_085226_183494_57F3569F 
+X-CRM114-Status: UNSURE (   6.82  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,14 +91,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 27, 2024 at 12:34:11PM +0000, Liao Chen wrote:
-> Add MODULE_DEVICE_TABLE(), so modules could be properly autoloaded
-> based on the alias from of_device_id table.
-> 
-> Signed-off-by: Liao Chen <liaochen4@huawei.com>
+On 8/25/24 8:45 PM, peter.wang@mediatek.com wrote:
+> When the error handler successfully aborts a MCQ request,
+> it only releases the command and does not notify the SCSI layer.
+> This may cause another abort after 30 seconds timeout.
+> This patch notifies the SCSI layer to requeue the request.
 
-Applied, thank you.
-
--- 
-Dmitry
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
