@@ -4,59 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 418CDC54734
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Aug 2024 12:19:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8750C54734
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Aug 2024 12:43:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TcpLMTXgakMBEQ724bvsd10qDi9GSKYxx9b9qziVjS8=; b=wWrj9lVQqNq1dj3DVHDALxkG94
-	bJmJCnDjzKOxDXUymPH0yw3MXJ9VvbaFeNbcEJGPADuvJhFJUQ5Sq2Yhmg9GgaG9jBdagiC+3yhCL
-	TT0Fbx02TtnA+hDp5XFv/XUQtLdtEbQWPU/npOSesMy7MeOSMjKDP/7MLLqDJr9ANXKqa0s+P0g4g
-	KANjTI3PwlHBKWP4+8VoZWp/Orc64K/p2PQxAbsolXBSHf/qudNMQmsYD1yw2AzC/1ZR2QPRJWDC0
-	A78Su4J3N7+o1zm3mkJV7y2ASOKrJuQiQCUIo+Wp/rc/mdS++orC+l9H7FxyiK9Kkf/Je4mT2TLGO
-	eQ0VTehA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=fe3psrywiuJWL+HL3IZKyPsJdSAR788wRHt5GRegjMU=; b=LPHAOYq3HCdba61nMXYCV3BFCh
+	XX2u190Bv2FOLC++A9cSIl2LSHIJ97M5Q5iGJVSylbksYThp9aCTS7cmhJFIh1bvuq+L67w/4FUmy
+	BOBNIxhU5K1ea54iyH0n5EJMx+XkMXyls9L7NPQKr+cna3QY9befYjPWeOqoA3iUONaLtW3JKsOHP
+	xBtySD/R2Tl7E97HanH/UZPMN/fxi6JTkcdpVg6YInWQd0Vt//iELCgFnXWZNQDmC5CqumLSuRkwF
+	3y4NpUbJ+En/DkUPnE0WzbHTwemu+k/BE+FIL/QlI9djNjD6ALXWlYmQBtUYJgccdFaxf94JLNtUp
+	zG4hlBVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sivAa-0000000BBcs-0VOo;
-	Tue, 27 Aug 2024 12:19:32 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sivAM-0000000BBV5-0paD;
-	Tue, 27 Aug 2024 12:19:20 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 6D0DCDA7;
-	Tue, 27 Aug 2024 05:19:43 -0700 (PDT)
-Received: from [10.1.196.40] (e121345-lin.cambridge.arm.com [10.1.196.40])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 185FF3F762;
-	Tue, 27 Aug 2024 05:19:14 -0700 (PDT)
-Message-ID: <92ebdc16-7938-462a-bb0e-4d5d368c5eb1@arm.com>
-Date: Tue, 27 Aug 2024 13:19:13 +0100
+	id 1sivXi-0000000BIE4-25Te;
+	Tue, 27 Aug 2024 12:43:26 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
+	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sivWt-0000000BI6Q-2Ivt;
+	Tue, 27 Aug 2024 12:42:37 +0000
+Received: from mail.maildlp.com (unknown [172.19.163.252])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4WtRwW4FfvzpTr6;
+	Tue, 27 Aug 2024 20:40:43 +0800 (CST)
+Received: from dggpemm500020.china.huawei.com (unknown [7.185.36.49])
+	by mail.maildlp.com (Postfix) with ESMTPS id 397BE1800D3;
+	Tue, 27 Aug 2024 20:42:24 +0800 (CST)
+Received: from huawei.com (10.67.174.77) by dggpemm500020.china.huawei.com
+ (7.185.36.49) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Tue, 27 Aug
+ 2024 20:42:23 +0800
+From: Liao Chen <liaochen4@huawei.com>
+To: <linux-input@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: <mkorpershoek@baylibre.com>, <dmitry.torokhov@gmail.com>,
+	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH -next] Input: mt6779-keypad - fix module autoloading
+Date: Tue, 27 Aug 2024 12:34:11 +0000
+Message-ID: <20240827123411.431388-1-liaochen4@huawei.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/4] scsi: check that busses support the DMA API before
- setting dma parameters
-To: Christoph Hellwig <hch@lst.de>, iommu@lists.linux.dev
-Cc: "Martin K. Petersen" <martin.petersen@oracle.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>, linux-scsi@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- dri-devel@lists.freedesktop.org, dmaengine@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-media@vger.kernel.org, linux-mmc@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-hyperv@vger.kernel.org,
- netdev@vger.kernel.org
-References: <20240824034925.1163244-1-hch@lst.de>
- <20240824034925.1163244-2-hch@lst.de>
-From: Robin Murphy <robin.murphy@arm.com>
-Content-Language: en-GB
-In-Reply-To: <20240824034925.1163244-2-hch@lst.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.67.174.77]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ dggpemm500020.china.huawei.com (7.185.36.49)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240827_051918_439599_3BB819B9 
-X-CRM114-Status: GOOD (  17.10  )
+X-CRM114-CacheID: sfid-20240827_054235_870885_CD38595E 
+X-CRM114-Status: UNSURE (   8.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,43 +69,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24/08/2024 4:49 am, Christoph Hellwig wrote:
-> We'll start throwing warnings soon when dma_set_seg_boundary and
-> dma_set_max_seg_size are called on devices for buses that don't fully
-> support the DMA API.  Prepare for that by making the calls in the SCSI
-> midlayer conditional.
+Add MODULE_DEVICE_TABLE(), so modules could be properly autoloaded
+based on the alias from of_device_id table.
 
-Just thinking ahead, might it be worth a logical "are SG segment limits 
-relevant?" wrapper around the dev->dma_parms reference? Not a big deal 
-for now if we think this site is the only user, so either way,
+Signed-off-by: Liao Chen <liaochen4@huawei.com>
+---
+ drivers/input/keyboard/mt6779-keypad.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+diff --git a/drivers/input/keyboard/mt6779-keypad.c b/drivers/input/keyboard/mt6779-keypad.c
+index 19f69d167fbd..6d2557a9b9f5 100644
+--- a/drivers/input/keyboard/mt6779-keypad.c
++++ b/drivers/input/keyboard/mt6779-keypad.c
+@@ -260,6 +260,7 @@ static const struct of_device_id mt6779_keypad_of_match[] = {
+ 	{ .compatible = "mediatek,mt6873-keypad" },
+ 	{ /* sentinel */ }
+ };
++MODULE_DEVICE_TABLE(of, mt6779_keypad_of_match);
+ 
+ static struct platform_driver mt6779_keypad_pdrv = {
+ 	.probe = mt6779_keypad_pdrv_probe,
+-- 
+2.34.1
 
-> Signed-off-by: Christoph Hellwig <hch@lst.de>
-> ---
->   drivers/scsi/scsi_lib.c | 11 +++++++++--
->   1 file changed, 9 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/scsi/scsi_lib.c b/drivers/scsi/scsi_lib.c
-> index 3958a6d14bf457..7f0394c4492033 100644
-> --- a/drivers/scsi/scsi_lib.c
-> +++ b/drivers/scsi/scsi_lib.c
-> @@ -1988,8 +1988,15 @@ void scsi_init_limits(struct Scsi_Host *shost, struct queue_limits *lim)
->   	if (shost->no_highmem)
->   		lim->features |= BLK_FEAT_BOUNCE_HIGH;
->   
-> -	dma_set_seg_boundary(dev, shost->dma_boundary);
-> -	dma_set_max_seg_size(dev, shost->max_segment_size);
-> +	/*
-> +	 * Propagate the DMA formation properties to the dma-mapping layer as
-> +	 * a courtesy service to the LLDDs.  This needs to check that the buses
-> +	 * actually support the DMA API first, though.
-> +	 */
-> +	if (dev->dma_parms) {
-> +		dma_set_seg_boundary(dev, shost->dma_boundary);
-> +		dma_set_max_seg_size(dev, shost->max_segment_size);
-> +	}
->   }
->   EXPORT_SYMBOL_GPL(scsi_init_limits);
->   
 
