@@ -4,90 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8589C5479A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Aug 2024 09:42:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A582C54E71
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Aug 2024 10:21:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MDXXPoP3Ql2ed4Kq1NPFVHjXHxrCWpZsHv/VA9HbH3U=; b=fen2kADEyLkP8aPO9XakAhCkiQ
-	ML2FcH/dmEU7KTMWXyqAJpjn05UMzMrTcOvI87Lm9UEb36cEppdKUjCOlqEl06LcT6YGZ6mHneUQ1
-	+cFNkts8HKb4SYjU8JsaIA8nZp9zCz6PPKrFl70LjN/W8J6IuMQx8uN87KdJF1Gy83yGXTH4sPrjs
-	trc2UhQSBtjSWIV5HhOfIIRSwTy/Ppxfew0rLHSn4csF/tVPXpJvIWt+QQhEK6qcodId+9Gnn41eh
-	/W/6Czb2ZHaSOquWExmIMFZWh2eFbzoorPkeuDxx0mEFZoojiRan2d8udT9Ui5R+3fNT19pFhY5qN
-	g0HeMkoA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=l6EEmhk9Y5reOAFsAV+HEJlc3gS52f19SksxotmeIlc=; b=ZR/KvBGRCND1GK
+	LvwbIWKvP2al+3qaWiDACFAvTyEWJoiaMlSubewxzy0/tihsyYqzSuN8EemgwH5OdN9lAom86gggG
+	WGzeeuhs2/4K2cr9QfXMPfAMe3c7klQ36n4D/5EMfRAAz60d0nIsIxaq70MjiLIIlqV2SJrMQ/e3R
+	CX1bO/pIOZFjvvxaePKm+S0L8Nsdog4AvPV3t/9rWlJXGawYs29gJdRBBw5pXRLCD31M3BbTQBJWt
+	VSEqHog5zKch1RiJ5nFC+9t3X5qkTx9duzIlsvcuKqQODXHgqbWd1FKb0x4zf8kzXcy/FuvzxrJEp
+	ZRqcV4AoFcTsJI3s1cCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjFCE-0000000EmL4-0X2W;
-	Wed, 28 Aug 2024 09:42:34 +0000
-Received: from mail-vk1-xa32.google.com ([2607:f8b0:4864:20::a32])
+	id 1sjFo2-0000000EupA-2QbQ;
+	Wed, 28 Aug 2024 10:21:38 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjFBN-0000000Em77-2Ab8
+	id 1sjFie-0000000Esnp-2TD6
 	for linux-mediatek@lists.infradead.org;
-	Wed, 28 Aug 2024 09:41:43 +0000
-Received: by mail-vk1-xa32.google.com with SMTP id 71dfb90a1353d-4fce6ff78c1so1660932e0c.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 28 Aug 2024 02:41:40 -0700 (PDT)
+	Wed, 28 Aug 2024 10:16:06 +0000
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-201ee6b084bso56080545ad.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 28 Aug 2024 03:16:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1724838099; x=1725442899; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=MDXXPoP3Ql2ed4Kq1NPFVHjXHxrCWpZsHv/VA9HbH3U=;
-        b=eW1qBiEJUGsvuqpc5+77eA2tVfmehuTAqOXvPav6cP7oTTr874BwRv6ePTyfyT4Nmx
-         HzEw0ckBdFTfZk8PhucJKEspBXmobx966gXmeCb72bilOOzWpUCgX1XpZmHtS+j6S9oT
-         iIpXRFIH6W9jylD0LScmk39gEWkHowph45LJY=
+        d=chromium.org; s=google; t=1724840163; x=1725444963; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=l6EEmhk9Y5reOAFsAV+HEJlc3gS52f19SksxotmeIlc=;
+        b=JdVY2URFNBmJd0KuBa6LHHv1C20tvzKnVw4xICiow3fOrw95NfCObh9/b2NsbCGSCw
+         dy9zOBZ3YNoUu0EuF49FKCKg63SHGUFHLlWb5Y4C9xZMrrIdWagsvYeiZykHxasAa0U2
+         LUYRbVgQz6t0YguWmhUNwv5FV+B9zJfZGIFc4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1724838099; x=1725442899;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=MDXXPoP3Ql2ed4Kq1NPFVHjXHxrCWpZsHv/VA9HbH3U=;
-        b=QBObDaiNrEMZnXLw/AjPEARu1ajRrgMGYm6euRXhKHLbAfDVUqIiGQO517U6y7EZr2
-         mjbvia2s3FIsPAKSF324C+juR+ujnwK8tKqWgHsV6SSB+ZoG5IESniDULGu9zpE5rSlE
-         HGuwN1yxlE+GELKpfyS4JelASIFkGLxRlPVpq3+lbe4P23r1iawCR1j/L5c/lHLV1gbU
-         FnjQnLTe1h8dKyEftFv2A5VRWjjlB7TEsrNVc37To5CIP+vhhGRmxuh3ynO6NIXUfX1J
-         UkvbYZQGC+yNnFFiesU8DD2hDlYqjYmv/cC6UkSxc1WGLzZd6g0h8sKDjigKeAaphQKW
-         20hA==
-X-Forwarded-Encrypted: i=1; AJvYcCV2zRtWGEBRpt64pRXIP5G2Uttql+b5Nvv2rYMcueLhVYu4kiQMLtZKHZp5szW7f/2XgP0CcxJeCS1FriA1CQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyZe4LI9AaJfoxRXMJVZ3tgyM2l1ClDfhFWZLPHpDkGmEQDu9nE
-	8KuC8T+G/nv4S3wTZf2z41mXJxADvEdztBLU5ZInnEMMBf+zK/k3HXQUhkmft8HQNZuE9EBntuU
-	=
-X-Google-Smtp-Source: AGHT+IErdgCcqEhvALuflSEJ6XpyZQMc4DAcTjSajJlZknrS8nMaBqkJChBiZYoanrdZw3kn5Wvm1Q==
-X-Received: by 2002:a05:6122:911:b0:4ec:f7d0:e71c with SMTP id 71dfb90a1353d-4fd1a542084mr15665191e0c.4.1724838099395;
-        Wed, 28 Aug 2024 02:41:39 -0700 (PDT)
-Received: from mail-ua1-f41.google.com (mail-ua1-f41.google.com. [209.85.222.41])
-        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-4fd08270f35sm1254582e0c.23.2024.08.28.02.41.38
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 28 Aug 2024 02:41:38 -0700 (PDT)
-Received: by mail-ua1-f41.google.com with SMTP id a1e0cc1a2514c-842f04589f3so1712018241.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 28 Aug 2024 02:41:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCWUTLpyYkwM5wlHJcZ9DSgp5C/dPPdedizR9PONr9MtRt5MABUrBYVXo7ta5DfqbhtrTJFp9bvjIMQ2nXNtww==@lists.infradead.org
-X-Received: by 2002:a05:6102:50a9:b0:493:c81c:3148 with SMTP id
- ada2fe7eead31-498f41cdb2fmr15317053137.0.1724838098095; Wed, 28 Aug 2024
- 02:41:38 -0700 (PDT)
-MIME-Version: 1.0
-References: <20240827-drm-fixup-0819-v3-0-4761005211ec@mediatek.com> <20240827-drm-fixup-0819-v3-2-4761005211ec@mediatek.com>
-In-Reply-To: <20240827-drm-fixup-0819-v3-2-4761005211ec@mediatek.com>
+        d=1e100.net; s=20230601; t=1724840163; x=1725444963;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=l6EEmhk9Y5reOAFsAV+HEJlc3gS52f19SksxotmeIlc=;
+        b=Q4d9hRsnKw4UVp30nF408JSYorOMLs0kq/EDqISZiIUQda29RGkDcFybv+xLX5BnSo
+         WBHF2KqyEYHE4XcRrILWb+i46TEC232r3O5H3VMBZx26Tluj8saHC1OOm16N0XLCarwa
+         Y+KcqJfy9kptKaU5yTYddmPLJsmi4FsSBOmO/DGos+S6ULPMeB4efFIM/S/VatRQY8qg
+         iRFajEL+myR1L6Xb82qrrZx5LLuQrqIdAGOWpNlmTdIDF8Mp67WbkwYAd8xFDrQZmlJr
+         NwbZsjQuPIC6+KOcx49TxMsmbH4BwMUkjVA4vy5PNJus5dmdHDG9WwIuxBya4IEXuMES
+         drJQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWdJOw3MXBKLZP2xj7K+M85p+rUXtrLYvxio18RKdqDxr+wevITEnNKm+qWufT8jWCsYYRVwHa4Nil7+Edoew==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxbDUQhZEMS4nEW0Z/JC0QG+/PRQpM5w1NR8YUqqIDcRSoHfi1g
+	P4NXbsB0i9erX5BoPzyUXFE4/g0UH/oSvggi0fSqlTD+SIHHYAcCeAeD1LvTfQ==
+X-Google-Smtp-Source: AGHT+IGtCtgGflkPLcIWz63EIUUuX6MMYmWQAYa+kWCCehY2yI9ZV21P39BGDfxsdsq/CdkR0IzgFA==
+X-Received: by 2002:a17:902:fa88:b0:202:100f:7b99 with SMTP id d9443c01a7336-204f9b7f065mr15103095ad.22.1724840163370;
+        Wed, 28 Aug 2024 03:16:03 -0700 (PDT)
+Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:e0f3:8e32:ef17:cdd9])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2038560dfd1sm95645455ad.206.2024.08.28.03.16.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 28 Aug 2024 03:16:02 -0700 (PDT)
 From: Fei Shao <fshao@chromium.org>
-Date: Wed, 28 Aug 2024 17:41:00 +0800
-X-Gmail-Original-Message-ID: <CAC=S1ngpXtsLUF=A-MxVnmWY7YgwvxHKSe0NuN_n=G+7-kpG7Q@mail.gmail.com>
-Message-ID: <CAC=S1ngpXtsLUF=A-MxVnmWY7YgwvxHKSe0NuN_n=G+7-kpG7Q@mail.gmail.com>
-Subject: Re: [PATCH v3 2/2] drm/mediatek: change config_lock from spin_lock to spin_lock_irqsave
-To: jason-jh.lin@mediatek.com, Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
-	Daniel Vetter <daniel@ffwll.ch>, Singo Chang <singo.chang@mediatek.com>, 
-	Nancy Lin <nancy.lin@mediatek.com>, Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Subject: [PATCH] drm/mediatek: Use spin_lock_irqsave() for CRTC event lock
+Date: Wed, 28 Aug 2024 18:14:47 +0800
+Message-ID: <20240828101511.3269822-1-fshao@chromium.org>
+X-Mailer: git-send-email 2.46.0.295.g3b9ea8a38a-goog
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240828_024141_599643_9BB23DA3 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20240828_031604_674604_0FB5C778 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,41 +81,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Bibby Hsieh <bibby.hsieh@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jason,
+Use the state-aware spin_lock_irqsave() and spin_unlock_irqrestore()
+to avoid unconditionally re-enabling the local interrupts.
 
-On Tue, Aug 27, 2024 at 10:58=E2=80=AFPM Jason-JH.Lin via B4 Relay
-<devnull+jason-jh.lin.mediatek.com@kernel.org> wrote:
->
-> From: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
->
-> Operations within spin_locks are limited to fast memory access and
-> confirmation of minimum lock duration.
->
-> Although using spin_lock with config_lock seems to ensure shorter hold
-> times, it is safer to use spin_lock_irqsave due to potential deadlocks
-> and nested interrupt scenarios in interrupt contexts.
->
-> So change config_lock from spin_lock to spin_lock_irqsave.
->
-> Fixes: 7f82d9c43879 ("drm/mediatek: Clear pending flag when cmdq packet i=
-s done")
+Fixes: 411f5c1eacfe ("drm/mediatek: handle events when enabling/disabling crtc")
+Signed-off-by: Fei Shao <fshao@chromium.org>
+---
 
-The appropriate fix tag should be:
-Fixes: 1bbb2be61bbb ("drm/mediatek: Fix missing configuration flags in
-mtk_crtc_ddp_config()")
+ drivers/gpu/drm/mediatek/mtk_crtc.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-I don't know if it's worth resending though.
-I guess it's up to CK if he's willing to replace it when picking up the pat=
-ch.
+diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
+index 6f34f573e127..42f47086f414 100644
+--- a/drivers/gpu/drm/mediatek/mtk_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
+@@ -449,6 +449,7 @@ static void mtk_crtc_ddp_hw_fini(struct mtk_crtc *mtk_crtc)
+ {
+ 	struct drm_device *drm = mtk_crtc->base.dev;
+ 	struct drm_crtc *crtc = &mtk_crtc->base;
++	unsigned long flags;
+ 	int i;
+ 
+ 	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
+@@ -480,10 +481,10 @@ static void mtk_crtc_ddp_hw_fini(struct mtk_crtc *mtk_crtc)
+ 	pm_runtime_put(drm->dev);
+ 
+ 	if (crtc->state->event && !crtc->state->active) {
+-		spin_lock_irq(&crtc->dev->event_lock);
++		spin_lock_irqsave(&crtc->dev->event_lock, flags);
+ 		drm_crtc_send_vblank_event(crtc, crtc->state->event);
+ 		crtc->state->event = NULL;
+-		spin_unlock_irq(&crtc->dev->event_lock);
++		spin_unlock_irqrestore(&crtc->dev->event_lock, flags);
+ 	}
+ }
+ 
+-- 
+2.46.0.295.g3b9ea8a38a-goog
 
-But the change itself is valid, so after fixing that:
-Reviewed-by: Fei Shao <fshao@chromium.org>
-
-Regards,
-Fei
-
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 
