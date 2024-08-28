@@ -4,55 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0A6EC5474A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Aug 2024 07:53:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C440C5472D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Aug 2024 07:55:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=7b2Hseb9QY/049WYSH5jOQc1GsDAtRo2MBj6O2PAhWg=; b=NBlQBBl5hVVSVvnKUEaxaqiocr
-	xDrP2YDuW4uDZUE+r4qz9HvfzmfXwb5TwqNOhKTTorv9Vy1rOqedIQu6hkpph8HqrZ1elCW1rVvys
-	ffirTwXw79Zf3S4Dhhl3/JDLM+9Xm1GWPdiHwJVzVpjaF2CK/l4YFXVe5jYraIbObCbNsnwgnLdYl
-	jM2clunmoD1n0tEKEYfDGk2YL0JFQHVPQco/597wQYUHqLrINLykhQogFXTXh/099g5ybKid+aPxb
-	pXjFjz7CeiHP/Ps8xB/wrYqHtGLnAgd25TdvO9NregZabTeK1HyLtUHd3V2Ez97Kdwpn6BpOGbkY5
-	mjQO57Mg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OTk1HuoGMIJL60ESCOP0G9YxxFbYuk2FLbGh2/mxvbI=; b=elVIEkAvKyQHFpWr0k2/BCsIds
+	yG6bkBXv4wZyAD0UDQV94Qwdg6bEBlSr98sj5KKQu/aDUJYYw1YPrXZ7ES2q52/L4e+gOl+9Bv/bx
+	LY7SKu0K1YLzonIozOTyUF+lUx2o4w0swDWQcwHinnZo4iMh07W2a7Wl8bf5M0VuRqTFtN2IAa9Rd
+	hKV6cmL19AemOVFboVTWJepbs/vtGhnhejZmHWxjlc4HgTF6Lg8HqKFy+whH7suEw44ARUCDRplfQ
+	2KvovjHnprxlwSSGvoMpmHIaYoNddw+KpWFR9VmvWGsfOjFmINJlyxiDUTbnM6Azc/VJG6+593zYM
+	SER/al8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjDUR-0000000EOVv-0YUL;
-	Wed, 28 Aug 2024 07:53:15 +0000
-Received: from mail.widebizscope.pl ([51.77.245.187])
+	id 1sjDWL-0000000EPTH-3gOX;
+	Wed, 28 Aug 2024 07:55:13 +0000
+Received: from mgamail.intel.com ([192.198.163.8])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjDSK-0000000ENvy-3v1u
-	for linux-mediatek@lists.infradead.org;
-	Wed, 28 Aug 2024 07:51:06 +0000
-Received: by mail.widebizscope.pl (Postfix, from userid 1002)
-	id 91F1C24632; Wed, 28 Aug 2024 09:50:46 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=widebizscope.pl;
-	s=mail; t=1724831463;
-	bh=7b2Hseb9QY/049WYSH5jOQc1GsDAtRo2MBj6O2PAhWg=;
-	h=Date:From:To:Subject:From;
-	b=dCms/HjhOoRlot1wEMBwurwwnMrF1H6HdB9/6MQltW1hNFAoYGymTeuFQwZHdIHNt
-	 avbw1C7EPEMJcpj5qi5sXCna2CQRVLzfjWnRwR8snFShiY6Sj4YG/723WwykFQsD+B
-	 zpEjMr5BG20lVq5pSxN4au384NLUBhmhBQTm59B5LZrsh68tequ1DkbuH2HjRHj2cJ
-	 +Gy0vRll2eagVGaWh0BKdm+IMebqybdlnjkEt3d4eiwuYmFqxFTvbTBwYplqy2dp7J
-	 H4vYr4FiPZ69VwoDygVEMsRHEIbWwJ18U7dvlXVgtUxNFHmQmBWbF4VaWZ6WdZAtIX
-	 45iv595o1fNPg==
-Received: by mail.widebizscope.pl for <linux-mediatek@lists.infradead.org>; Wed, 28 Aug 2024 07:50:36 GMT
-Message-ID: <20240828084500-0.1.dc.rmam.0.0uikom9qh8@widebizscope.pl>
-Date: Wed, 28 Aug 2024 07:50:36 GMT
-From: "Szczepan Andryszczuk" <szczepan.andryszczuk@widebizscope.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: Faktury
-X-Mailer: mail.widebizscope.pl
+	id 1sjDSc-0000000ENzN-2tWL;
+	Wed, 28 Aug 2024 07:51:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1724831482; x=1756367482;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=g6S7cgkwyHTYMqfsr52CVhpQrrl8Vy5/S/YFliyHNKE=;
+  b=TEGld0ZrtBHs4WRW0gJqK+MgU3l59FRUQ9xQUl9JuNkUeQr3k1wqEeiC
+   sCo4VcFAPC2ijqsqnaq1zMEQ2xwYExwvctYpgEYExcQ1ZHrFGeOgMFNi8
+   NAWhEcmQzTLhtRMqeDoKOGjQHpokRWpXYUrb43hNWLeqeHraLNPoeiU9P
+   yKsfAzOSBpf785eB5kMupns4DDGeCZIlmAOEpJqvhYZ42EPseNCYMaQyo
+   stwDDPY2MK3MsU6jonqVYQiUFhJIfZjmRPJhnjInS5+T01NlOVRTe8b6H
+   mGE7/OFqwlSw2NmhY35g7oK2yenfw8TL1RYW4hplO/7GYtG8Z2aBHWX9U
+   A==;
+X-CSE-ConnectionGUID: fIcnTmwuQ7enC0mscYT+Cw==
+X-CSE-MsgGUID: 4slCQU7nTUKckvPL0znHpg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11177"; a="40849864"
+X-IronPort-AV: E=Sophos;i="6.10,182,1719903600"; 
+   d="scan'208";a="40849864"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Aug 2024 00:51:21 -0700
+X-CSE-ConnectionGUID: mV4/iQEoSU2UdekrGE/mQg==
+X-CSE-MsgGUID: xtm+W/8oToWtEBp4ANQBvg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,182,1719903600"; 
+   d="scan'208";a="63133947"
+Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
+  by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Aug 2024 00:51:18 -0700
+Received: from kekkonen.localdomain (localhost [127.0.0.1])
+	by kekkonen.fi.intel.com (Postfix) with SMTP id 1D86911F95D;
+	Wed, 28 Aug 2024 10:51:16 +0300 (EEST)
+Date: Wed, 28 Aug 2024 07:51:16 +0000
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Zhi Mao <zhi.mao@mediatek.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, shengnan.wang@mediatek.com,
+	yaya.chang@mediatek.com, teddy.chen@mediatek.com,
+	yunkec@chromium.org, 10572168@qq.com
+Subject: Re: [PATCH] media: i2c: improve suspend/resume switch performance
+ for GT9769 VCM driver
+Message-ID: <Zs7W9PDY2ny5JI8w@kekkonen.localdomain>
+References: <20240817073452.21627-1-zhi.mao@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240817073452.21627-1-zhi.mao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240828_005105_128760_1B7BEE5F 
-X-CRM114-Status: UNSURE (   0.00  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240828_005122_765194_4DF3E6E7 
+X-CRM114-Status: GOOD (  16.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,20 +92,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Szanowni Pa=C5=84stwo,
+Hi Zhi,
 
-Czy zmagaj=C4=85 si=C4=99 Pa=C5=84stwo z problemami p=C5=82ynno=C5=9Bci f=
-inansowej wynikaj=C4=85cymi z d=C5=82ugich termin=C3=B3w p=C5=82atno=C5=9B=
-ci od klient=C3=B3w?=20
+Thanks for the patch.
 
-Nasze us=C5=82ugi faktoringowe mog=C4=85 by=C4=87 rozwi=C4=85zaniem, kt=C3=
-=B3rego potrzebuje Pa=C5=84stwa firma, aby szybciej zamienia=C4=87 wystaw=
-ione faktury na got=C3=B3wk=C4=99.
+On Sat, Aug 17, 2024 at 03:34:02PM +0800, Zhi Mao wrote:
+> GT9769 VCM power-on default setting is PD=0,
+> so it is not necessary to set again in dw9768_init function,
+> and it also has no requirement of setting PD=1
+> before power-off in dw9768_release function.
+> For GT9769 VCM, PD mode control will add extra time
+> when switching between suspend and resume.
+> e.g. chrome camera AP can switch between video and photo mode,
+> the behavior corresponding to VCM is suspend and resume,
+> it will cause camera preview is not smooth.
 
-Je=C5=9Bli zale=C5=BCy Pa=C5=84stwu na natychmiastowym dost=C4=99pie do =C5=
-=9Brodk=C3=B3w finansowych po wystawieniu faktury, zapraszam do kontaktu.
+If this is the problem, wouldn't either of these two be a better option:
 
+- keep the file handle open in the user space, to avoid powering off the
+  VCM or
 
-Pozdrawiam
-Szczepan Andryszczuk
+- add autosuspend support to the driver.
+
+I also wouldn't differentiate driver behaviour between the chips. If the
+hardware default really is different (is it, this is rare for
+register-compatible parts), then the driver needs to reprogram it (at least
+on the one with a different default).
+
+-- 
+Kind regards,
+
+Sakari Ailus
 
