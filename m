@@ -4,89 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A5CDC5472D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Aug 2024 08:18:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D3F6C54755
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Aug 2024 09:15:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HJ9gN2dyG0tELFDyIaVWwxco35Ny0zFkmQvcfIA5lIw=; b=MNspx0fqQwVXL5WGdZOscho8wv
-	bzvoFoPrZ60AOc0MLJJCLH58Qnww3CcXmIfVnkdoW2kxOeuiVh2NZyVKq6nkzZboiINjzo4ti1X87
-	5aTHpvGj5e8KwuDJrMqefsW9MvIEwf51FWZNKUSF3G3r8sGym7TRvWLWEaQ/sgRBwC5q1SG3zBmMg
-	ePspWaqC0Oq8DiYnbOpLynUvI8BBoOfnHLsiIOPSGoHQzdfIG17wHSwT/bOiXy7zBZWuj2kzyJoV8
-	dNt9rwsAAbzDlgpUKFzO0sBCD7FHLltof3B884UsAbpJVZtKmw3XLR/BcVCBMaUveNSCGr7cHMPOM
-	X/tDiyoQ==;
+	bh=dSk/OEHoPMhRCK/ZaRMyI/zmjD4EdJp4kRX9RWfkNhI=; b=Ttbnl86XeK3BiRnBSrLa1NR58K
+	zfmJp2HxLjZWwlth3BkEVma+eRQZ6etGMxPby/krcr40ClYV9UV3H5bfNsGXRN3ecBP1g+TUcJNsl
+	nyFNnP+tv4yL07spx8gnI0IvZNjTAhDuKvJPnx5AYpH6oySxdR7hbQwGU5BVcBr3sbhd62cNyT5gO
+	f6jQC43KjXofcTd8y1o+1cM1IdWX9qttkFZ6jzV1+arNcNlfDOzHW6YtSJ8ho2Fgm4MNbsxgikTSt
+	hGQbxP/Q0hu4ARCU3ilvBKDflmagBREX/azwLoMiaTvnMel1VOb6revlv8NSqK3jj81W0LW61bHRl
+	GMt2vR7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjDsm-0000000EVHs-0EXy;
-	Wed, 28 Aug 2024 08:18:24 +0000
-Received: from mout.web.de ([212.227.15.4])
+	id 1sjEmD-0000000EfZT-1o71;
+	Wed, 28 Aug 2024 09:15:41 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjDrx-0000000EV5J-3isZ
-	for linux-mediatek@lists.infradead.org;
-	Wed, 28 Aug 2024 08:17:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1724833043; x=1725437843; i=spasswolf@web.de;
-	bh=HJ9gN2dyG0tELFDyIaVWwxco35Ny0zFkmQvcfIA5lIw=;
-	h=X-UI-Sender-Class:Message-ID:Subject:From:To:Cc:Date:In-Reply-To:
-	 References:Content-Type:MIME-Version:Content-Transfer-Encoding:cc:
-	 content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=eJZPsx1RySSUEgyds5+XOD9GkIHMzH6AYc4WK5/9l8p7j2cF/hzP1qw9xgOticWr
-	 CyVT5dUiVAPT1tASK3b7RszrWNCbIhdZdnm/RZOefeRR25bcs4ZTJK3WtOO9pj3PQ
-	 fHGP9o+0V5ZqLn58ztF3m1QIkkSDlfKX962aaUz+3R+gk0hvv24V9x9N+Ltw3+BBF
-	 3uvZyHbFtM5fp/TR3H5rd0b1OMZ9a2F0/fqGvyVTgxxx6ug5dPIaiPh49N+rDxfMq
-	 Ooa/Snb2/6dEvWqC4GYvevwl1YsahaNDencN9yvAg/Frh3zKsALI8q0ZgmhbIP08T
-	 uproA0TRoHJ2Avp1lQ==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.0.101] ([84.119.92.193]) by smtp.web.de (mrweb005
- [213.165.67.108]) with ESMTPSA (Nemesis) id 1N9cLR-1s4bg73m1F-00wkGg; Wed, 28
- Aug 2024 10:17:22 +0200
-Message-ID: <980698e0d6dfa1e0043edfed6e174ff17705e053.camel@web.de>
-Subject: Re: [PATCH] wifi: mt76: mt7921: fix null pointer access in
- mt792x_mac_link_bss_remove
-From: Bert Karwatzki <spasswolf@web.de>
-To: Mike Lothian <mike@fireburn.co.uk>
-Cc: Linux regressions mailing list <regressions@lists.linux.dev>, 
-	sean.wang@kernel.org, nbd@nbd.name, lorenzo.bianconi@redhat.com, 
-	sean.wang@mediatek.com, deren.wu@mediatek.com, mingyen.hsieh@mediatek.com, 
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	spasswolf@web.de
-Date: Wed, 28 Aug 2024 10:17:20 +0200
-In-Reply-To: <CAHbf0-HYi=x11bc-sMJFbZ4cbkdphMYQ_hjzD_wrPvJevVwyYg@mail.gmail.com>
-References: <20240718234633.12737-1-sean.wang@kernel.org>
-	 <0124ff39-7d63-49f8-bacd-3a40ce37ec4d@leemhuis.info>
-	 <CAHbf0-Hn=ZyYpk7bS1yLK7K3ZpfWKgt3-t=c9Nhdj3Ov3H84mQ@mail.gmail.com>
-	 <f7197c55d059cc8ddbf6c3def16dc414c5ec0b42.camel@web.de>
-	 <CAHbf0-EBHERbxPGakY4-1jTQWqGqua3F0OYZjxcakdemJ5Soqw@mail.gmail.com>
-	 <51e80bde6e3f3256ecdea2e5260463341e65578e.camel@web.de>
-	 <CAHbf0-HYi=x11bc-sMJFbZ4cbkdphMYQ_hjzD_wrPvJevVwyYg@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.53.2-1 
+	id 1sjDmW-0000000ETrr-1KwD;
+	Wed, 28 Aug 2024 08:11:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=dSk/OEHoPMhRCK/ZaRMyI/zmjD4EdJp4kRX9RWfkNhI=; b=OjOs3+QJ6wAt2FpOlwPSNhA8vn
+	f9nztOKU5v9T57rC7hCDYx+4m+QjRzpgfz0Rehkmejs9eW34JRobEyDAi3mHUXstfWbmB+6NMUsDx
+	gF0UT3IndD1PBk1cmZfP0ycmQScUoR8Qa5cgzFAu/KZYhnMjJ3DDTPYYZY+4gvWTj6cNxHLN/dy38
+	GFVsjxCQBRcyJwP8dwIjZy1Y+kZBPZnVoipljQSNlHHXD8swC/8iuFFnqXZnfEvE2213boKi3dSqS
+	clwaH73+HLUnwLKhv2X+xXbly+miMJIroYij8i//Y7Qw6wLd2Vqma+HkuOgwHVHY06AbabAk6bETz
+	TMre+yLg==;
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sjDmS-0000000B66e-2hc6;
+	Wed, 28 Aug 2024 08:11:54 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-371a92d8c90so3320087f8f.3;
+        Wed, 28 Aug 2024 01:11:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1724832709; x=1725437509; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=dSk/OEHoPMhRCK/ZaRMyI/zmjD4EdJp4kRX9RWfkNhI=;
+        b=OeFhPk4wbc5+w4N16QPbN4FHBxoAakBl8VME1bWzCkLC+2kSrIEF+SYdC9z5CpHwgZ
+         iqC6UgTYDMoeNegeyIM0HlxdZ1WxPPPHNNPuE68OAYGJ16v2ZDiT2yV5E1/sKSadSrrl
+         LrTTkQhTAoOt6oejL6VrilmQ9ncakc8C5zx7OFVpknJSJZbheLXQHzqIfbbARBVWpY1H
+         T7KRBbP4yGUFkDTiTYQIVzA+6k+4Wf+SQE/yQFI0/jWjd7I/6B/R4cn5fNr0SAieZ/pl
+         7NvoNiiVC+q5NqgtI/uFWJbee6NdjyaJolx7je1uH1KrB1FLf+M0p2Hu7W+Uaz6NLcFG
+         C8/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1724832709; x=1725437509;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=dSk/OEHoPMhRCK/ZaRMyI/zmjD4EdJp4kRX9RWfkNhI=;
+        b=BUsA1mAEGVRd4F/bHtPj2xr+x6y9J83thVXDWzgLKOf+Kb5Bzll1Gt+rDkgMMRmDPD
+         0x96gVxRGCGHeG9DSDWEBIv334JMCoyxUKJ/qSxLPj63+586gCyGMk3LjcQe1D4JMWeG
+         1MeFju9b4fSn7RR5gzoPGV8wvkeh2qAFb9OEF1wKr+BDAIOFMaQEDJlUElXp/F8hBOZA
+         h5VWPfwnCzCtiAP6xXoruETW8I44QUpOs7HIwtKHwfL0/ugCvLQtiMXaWcXPBfp4fRBW
+         YWB/OC27BtINNRKmPuf6a/bhl62VH+rTlk1QeSNuN9Ld+iMh/778RbKjDtdTlKl2jMA3
+         PYkw==
+X-Forwarded-Encrypted: i=1; AJvYcCU5Kn5m5TtU32YvozkRx5xzNmcqaBAB9bPR0eErF3OhxvRYftkmESeTzWO1W1Js3iAewq7AetaGSpckwejb7679@lists.infradead.org, AJvYcCWUJTo11m+F777Qm/N4ynanxYXFD6F/rqEJmMP2BIH8E4ZLeFO9GRF56aVsHQfNIfJFlv/2229AuFCtqIb+7S8=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwqkFt/lEYhQsPHQhVCLatIOonf6tnkVcvbWvKR1sm2RUr2+umP
+	VSvtW6UPc+Pk+S7CZwPNfz1KSBgeHOCBHvJxTi9vkgue+NEd5XJW
+X-Google-Smtp-Source: AGHT+IF8lcvZiFVTHUZ/tpOE7NQ2mVYYVRKLrUmvMJQgvic+d058iumAAiF97qbfy80oik/EDFhJNQ==
+X-Received: by 2002:adf:f08f:0:b0:371:7e19:b9de with SMTP id ffacd0b85a97d-37496821fb1mr774969f8f.32.1724832708968;
+        Wed, 28 Aug 2024 01:11:48 -0700 (PDT)
+Received: from [192.168.0.10] ([178.233.24.52])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42ba7b4271fsm7517625e9.29.2024.08.28.01.11.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 28 Aug 2024 01:11:48 -0700 (PDT)
+Message-ID: <66432301-d5ad-4703-a08d-833573e733e0@gmail.com>
+Date: Wed, 28 Aug 2024 11:11:46 +0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:6oZ+XXROi7lRrCqTGJQrAaf7+UZos3uRqJi6w9SfVRwy3Ai+6+X
- VzH1v1dTV1y4A0Cl5+yWA5cmtgmRpW2t5ytde1rRiTN9cNqTtss/hmQucySD9gu+k15mH3a
- BZfb7GJYdp3aB8FgVb/GySZpvBBrCMi73kG/vIIt3bxxzHK1Y0Qn8yi4Ezt+szteelBQZOg
- mtdxWhT5F6uPFlxVtsD4Q==
-UI-OutboundReport: notjunk:1;M01:P0:O3/Xpm7KHVc=;ysiL236UkqiGFos3wisn3TRiVc6
- GhTDxBq0Djzm9fPbS0xNeJwtQrVvhB+vRwQNb6+N/fdcROdszFTxugwasFNfn4gQAvpDHIcJL
- aoIzqHw/2Iq71Da21fBh6DQbs425oHcSYLxsSomUFn5nEA35tVwQalsycTkTRastmIYw7GzTs
- sQPwQvFdXoyGKmCeLhg2+Uw1kQkeQhh6l5uwiJ6zZ97VZikxqjvpQlBFFJlwg67rg4rTdUVaM
- 8unT1Dmg/w2jMtpii8YDXpSttgDPAu5YqTsFlwtNEBKScvCRPqnU9iP7HKyUlX9sOQW2W8rd5
- 7M6+408V9i6vBIE2doqJnqhkh72gpvX7VsCQ2btld3Ei+OLoYggLWXUnoG51YgyUpOWCGaHIn
- PnzdQV78WJP0kUM6KKirPCW3WGGDvenxBpBxLHzDhXFSE1a7ILHjh5O7U52Twda60xTB5Hr47
- AdNaNlsOGbHGzPzbY67EGUs4JVY2QVd3FIU9ygMCgFPOejMpZZuc1ZH21sfRGcLQUV6P4Dr0p
- Ocx4qBHM9KS/scxnIWNGOXufot7PegDlWDe5MgealQf1EHwUD1oYliMNBencoiFllqqyCZ5yj
- uKj7Y4JRXiImOu8ydcWY1K/YqCaR947FgBTy3L7r2RRp0wJSdojLTqJQ7Q/Z3LsVwuHXoRmbV
- 80kcM4n6eCWWWvCsCjObQCKlPCoynUMTefRV9q9cFgMhhao6j/vaagnCDFNwHO/BhWl6Lq0cO
- d1Cx5UbRetKYW2fFL297XAm8D8/dHzu9XK9WHk8gPRq9B+zqBlN2rBi9Zb339xR/CLsSLjSrC
- edKkU4Y2rApJYpGJ4b35RZwg==
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8186: Fix supported-hw mask for
+ GPU OPPs
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-mediatek@lists.infradead.org
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com
+References: <20240725072243.173104-1-angelogioacchino.delregno@collabora.com>
+From: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+Content-Language: en-US, tr, en-GB
+In-Reply-To: <20240725072243.173104-1-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240828_011734_331843_1FFE4221 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20240828_091152_880107_09D817C5 
+X-CRM114-Status: GOOD (  17.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,59 +112,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, dem 28.08.2024 um 00:38 +0100 schrieb Mike Lothian:
-> But not the follow on fix which fixes suspend...
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> index 2e6268cb06c0..a85c19da77e5 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> @@ -1182,7 +1182,7 @@ static void mt7921_ipv6_addr_change(struct
-> ieee80211_hw *hw,
->       struct inet6_dev *idev)
->  {
->   struct mt792x_vif *mvif =3D (struct mt792x_vif *)vif->drv_priv;
-> - struct mt792x_dev *dev =3D mvif->phy->dev;
-> + struct mt792x_dev *dev =3D mt792x_hw_dev(hw);
->   struct inet6_ifaddr *ifa;
->   struct in6_addr ns_addrs[IEEE80211_BSS_ARP_ADDR_LIST_LEN];
->   struct sk_buff *skb;
-> @@ -1205,6 +1205,9 @@ static void mt7921_ipv6_addr_change(struct
-> ieee80211_hw *hw,
->   },
->   };
->
-> + if (!mvif->phy)
-> + return;
-> +
->   read_lock_bh(&idev->lock);
->   list_for_each_entry(ifa, &idev->addr_list, if_list) {
->   if (ifa->flags & IFA_F_TENTATIVE)
->
-> > > >
-> >
+Hi,
 
-That is interesting (or odd) because suspend (s2idle) works for me in next=
--
-20240827 on this hardware:
+On 2024-07-25 10:22 +03:00, AngeloGioacchino Del Regno wrote:
+> The speedbin eFuse reads a value 'x' from 0 to 7 and, in order to
+> make that compatible with opp-supported-hw, it gets post processed
+> as BIT(x).
+> 
+> Change all of the 0x30 supported-hw to 0x20 to avoid getting
+> duplicate OPPs for speedbin 4, and also change all of the 0x8 to
+> 0xcf because speedbins different from 4 and 5 do support 900MHz,
+> 950MHz, 1000MHz with the higher voltage of 850mV, 900mV, 950mV
+> respectively.
+> 
+> Fixes: f38ea593ad0d ("arm64: dts: mediatek: mt8186: Wire up GPU voltage/frequency scaling")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
 
-04:00.0 Network controller [0280]: MEDIATEK Corp. MT7921K (RZ608) Wi-Fi 6E=
- 80MHz
-[14c3:0608]
+Tested-by: Alper Nebi Yasak <alpernebiyasak@gmail.com>
 
-are you using a different model?
+Appears to work on my magneton, I can see "Mali-G52 r1 (Panfrost)" as
+the OpenGL renderer in various programs after this patch.
 
-[  272.780054] [    T848] wlp4s0: deauthenticating from 54:67:51:3d:a2:d2 =
-by
-local choice (Reason: 3=3DDEAUTH_LEAVING)
-[  273.067438] [   T3437] PM: suspend entry (s2idle)
-[  273.151140] [   T3437] Filesystems sync: 0.083 seconds
-[  273.157029] [   T3437] Freezing user space processes
+>  arch/arm64/boot/dts/mediatek/mt8186.dtsi | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> index 4763ed5dc86c..d63a9defe73e 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> @@ -731,7 +731,7 @@ opp-850000000 {
+>  		opp-900000000-3 {
+>  			opp-hz = /bits/ 64 <900000000>;
+>  			opp-microvolt = <850000>;
+> -			opp-supported-hw = <0x8>;
+> +			opp-supported-hw = <0xcf>;
+>  		};
+>  
+>  		opp-900000000-4 {
+> @@ -743,13 +743,13 @@ opp-900000000-4 {
+>  		opp-900000000-5 {
+>  			opp-hz = /bits/ 64 <900000000>;
+>  			opp-microvolt = <825000>;
+> -			opp-supported-hw = <0x30>;
+> +			opp-supported-hw = <0x20>;
+>  		};
+>  
+>  		opp-950000000-3 {
+>  			opp-hz = /bits/ 64 <950000000>;
+>  			opp-microvolt = <900000>;
+> -			opp-supported-hw = <0x8>;
+> +			opp-supported-hw = <0xcf>;
+>  		};
+>  
+>  		opp-950000000-4 {
+> @@ -761,13 +761,13 @@ opp-950000000-4 {
+>  		opp-950000000-5 {
+>  			opp-hz = /bits/ 64 <950000000>;
+>  			opp-microvolt = <850000>;
+> -			opp-supported-hw = <0x30>;
+> +			opp-supported-hw = <0x20>;
+>  		};
+>  
+>  		opp-1000000000-3 {
+>  			opp-hz = /bits/ 64 <1000000000>;
+>  			opp-microvolt = <950000>;
+> -			opp-supported-hw = <0x8>;
+> +			opp-supported-hw = <0xcf>;
+>  		};
+>  
+>  		opp-1000000000-4 {
+> @@ -779,7 +779,7 @@ opp-1000000000-4 {
+>  		opp-1000000000-5 {
+>  			opp-hz = /bits/ 64 <1000000000>;
+>  			opp-microvolt = <875000>;
+> -			opp-supported-hw = <0x30>;
+> +			opp-supported-hw = <0x20>;
+>  		};
+>  	};
+>  
 
-Can your the post the backtrace of your error (when commit 479ffee68d59c59=
-9f is
-applied)?
-
-Bert Karwatzki
 
