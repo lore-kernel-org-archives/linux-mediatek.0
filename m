@@ -4,237 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0828C83F23
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Aug 2024 13:46:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31F53C83F32
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Aug 2024 14:55:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8XVFB3UlOiyYqWggJpnW5oaT/q3MPrtrKztdF+PffmM=; b=rnNQnp12VmxXhn/+n5jV4oDl4D
-	9VV6DYlyrSz0VGju90S4IiE6ihn6HD3A6q3WZzu7erHj3WJ3K6BtMoxjiPzcUsWsRhcpmrxGAwu5k
-	sqJlK+11hbMRKRtk8KuV2T2nxebNOB1DfokEKPWzYioCN4Z/jXo+Skrl9I1ROOt5s0okHiNZoUiKG
-	rBbvjngOfu2n+pJvrw+rm12clTKga7A5lSsZvd0uNEbLXor2eZGWrZKIQmXH/NRO/qen/SqaSgbc1
-	wMkR7l+6x5pcRbDkp4H6MLEitrsAAToLYvS1mP3uULARIHhXUrGCpVzVVCLSNDDZfsFnPtp6v+69E
-	4wovw7CQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Kt7i4GJhdgTXg3ytF2MqnupW23YASYf/2cxVEsbk79A=; b=c9KGJKneZUc4DCaOpfg9BPeQ/r
+	dFeNg7eHYmkJ4Oi+s+KFBG37dmi4UVhBK76K8/Sd+7yGZXQfihKOcoRMgUddILPzI7UQ0A3A5T2Ci
+	UERyNvy8kST4QlFXzUK1ykKxZ4KPbEwTMBWpjjyWRRm7asuaUilmVCRrk81KAKbZl9F0Tg1lyAy7D
+	N8kXzsAHXw+CJLG8gRDcLJ2Aophl4EyPfe2MZnSbxQ4f5gBNrRbHEJNWHzlty2hUZUY44Y/poMIyu
+	plCNbsXXtLJ0WeHuNFdcg9V2bO5G3T7Dz3QsbCSC+qH/dPi+Qbpao504PlZvWPwbb0zJfyDdXbI1J
+	5bOS40YA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjfTM-00000002FLP-0cz4;
-	Thu, 29 Aug 2024 13:46:00 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sjgYD-00000002V0E-42IK;
+	Thu, 29 Aug 2024 14:55:05 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjeWS-00000001zef-3CUS;
-	Thu, 29 Aug 2024 12:45:10 +0000
-X-UUID: 80e7dfa2660411efb3adad29d29602c1-20240829
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=8XVFB3UlOiyYqWggJpnW5oaT/q3MPrtrKztdF+PffmM=;
-	b=EAzZR9fYcgIMixzvKEJdiflT8xA/SQoFwo/eVdTkmjeu0h/07SvphGWwU3okMSXdem5CcGtcy3jKF56jT8W4xO21GJo6TWwXyjtgg+h3jpdQjVs0yLzO/e3B6HVhk8/xt/jpvrRixDh9tVkNLPsISQ2BWSqXHclvXIj77cZ5W2s=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:c5f67c5b-ad4f-4290-a90f-9598f4e15c57,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:1b5760cf-7921-4900-88a1-3aef019a55ce,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|-5,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 80e7dfa2660411efb3adad29d29602c1-20240829
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <tze-nan.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 215586489; Thu, 29 Aug 2024 05:45:00 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 29 Aug 2024 20:44:55 +0800
-Received: from outbound.mail.protection.outlook.com (172.21.101.237) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 29 Aug 2024 20:44:55 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=VJJ/cFDrdE1u7e6KdyTk/LHIQltF6htTpwg6BO2+1p8teC3b+W4JLhEAbOzY6pHYyv8+N0Q1FIxBI6jf1+H5Z+T8kycTMJgRIW4ilrS5h4t6e/q5rz2fboJawSs/8XW2dc8EospvfogQdigUgJ5COviQ3RE2wJIIPCTeVgKCB/7IMBfuvccQ3s6dzINV4Swfwu4xwj/m2y8Ln3uelWcCEm2cuvkf/8S3m357UBKQNxypNPGRYd7Mly01U40fIdkzATAYxDiqVAc//Pan+5C+y5e/vOIJdTPZMwWViHGnLBDGPD25I2Eot9z4wL1roAF8YV9zddhs2Er3VijRXSeQdg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8XVFB3UlOiyYqWggJpnW5oaT/q3MPrtrKztdF+PffmM=;
- b=MrXDhGTV+L2L1auzhHPuu+qX9hYKIcFtlccDee1nEqwqGkOoePQoBuKWLPEYzUUZ82xbS6s+yLMUUSOJiFZFT+m8M6DX1UeZLtxE599NWMGQt6z0qD5Azo+hOfXR4zktOnLdirmUOV/8CxOjb7qnYRdEU2Gpxek7fljJ8NWf66iipcV0BvQcpybxlpxn/QBYKvFvAf6/BWwxaIq/9NzW4JdyOfaJC/l27KjxzqN+KU90G90FPvNeK7fi5I3IQXuAG8B8gOVQLzT8/Y/rLxkwz0Jv9gEKceY33bOwxLEN5qFDD3c/W012Rd/2vFYQW5jd1jhKXPY3jF22UARMbGLgxA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8XVFB3UlOiyYqWggJpnW5oaT/q3MPrtrKztdF+PffmM=;
- b=MGsPq18KRoouz2s9LdcZIfxClwd9E40jnmts1dsZ1mUhCrMBQ6zuayZ8xkLMXfvzQOwHkAfoxFrqgsHwRu1iND6IDxS3ebCTsMBhh0F/1fdFv/nuIq7H45pFmwIO3FWM6sVF2DgWLJ/K7WFroq3dxRJqkHhtIlDCGDaB4MWFk/8=
-Received: from TYZPR03MB7183.apcprd03.prod.outlook.com (2603:1096:400:33a::11)
- by TYZPR03MB7710.apcprd03.prod.outlook.com (2603:1096:400:3ca::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7897.25; Thu, 29 Aug
- 2024 12:44:54 +0000
-Received: from TYZPR03MB7183.apcprd03.prod.outlook.com
- ([fe80::5a8:982:e044:3350]) by TYZPR03MB7183.apcprd03.prod.outlook.com
- ([fe80::5a8:982:e044:3350%6]) with mapi id 15.20.7897.021; Thu, 29 Aug 2024
- 12:44:53 +0000
-From: =?utf-8?B?VHplLW5hbiBXdSAo5ZCz5r6k5Y2XKQ==?= <Tze-nan.Wu@mediatek.com>
-To: "alexei.starovoitov@gmail.com" <alexei.starovoitov@gmail.com>,
-	"sdf@fomichev.me" <sdf@fomichev.me>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"kuniyu@amazon.com" <kuniyu@amazon.com>, "bpf@vger.kernel.org"
-	<bpf@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "ast@kernel.org" <ast@kernel.org>,
-	=?utf-8?B?Q2hlbmctSnVpIFdhbmcgKOeOi+ato+edvyk=?=
-	<Cheng-Jui.Wang@mediatek.com>,
-	=?utf-8?B?Q2hlbi1ZYW8gQ2hhbmcgKOW8teemjuiAgCk=?=
-	<Chen-Yao.Chang@mediatek.com>, wsd_upstream <wsd_upstream@mediatek.com>,
-	"andrii@kernel.org" <andrii@kernel.org>,
-	=?utf-8?B?Qm9idWxlIENoYW5nICjlvLXlvJjnvqkp?= <bobule.chang@mediatek.com>,
-	"jolsa@kernel.org" <jolsa@kernel.org>, "daniel@iogearbox.net"
-	<daniel@iogearbox.net>, "john.fastabend@gmail.com"
-	<john.fastabend@gmail.com>, =?utf-8?B?VHplLW5hbiBXdSAo5ZCz5r6k5Y2XKQ==?=
-	<Tze-nan.Wu@mediatek.com>, "song@kernel.org" <song@kernel.org>,
-	"kuba@kernel.org" <kuba@kernel.org>, "pabeni@redhat.com" <pabeni@redhat.com>,
-	"edumazet@google.com" <edumazet@google.com>,
-	=?utf-8?B?WWFuZ2h1aSBMaSAo5p2O6Ziz6L6JKQ==?= <Yanghui.Li@mediatek.com>,
-	"martin.lau@linux.dev" <martin.lau@linux.dev>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "netdev@vger.kernel.org"
-	<netdev@vger.kernel.org>, "eddyz87@gmail.com" <eddyz87@gmail.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "davem@davemloft.net"
-	<davem@davemloft.net>, "kpsingh@kernel.org" <kpsingh@kernel.org>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "yonghong.song@linux.dev"
-	<yonghong.song@linux.dev>, "haoluo@google.com" <haoluo@google.com>
-Subject: Re: [PATCH net v4] bpf, net: Check cgroup_bpf_enabled() only once in
- do_sock_getsockopt()
-Thread-Topic: [PATCH net v4] bpf, net: Check cgroup_bpf_enabled() only once in
- do_sock_getsockopt()
-Thread-Index: AQHa86zl7g+mrFIyrk6Wt5BoZjlturIyMyMAgABovYCAAD8fAIAAln+AgAI68gCACI6xAA==
-Date: Thu, 29 Aug 2024 12:44:53 +0000
-Message-ID: <2efb1f4751fa47380d51ce538253983974a4947c.camel@mediatek.com>
-References: <20240821093016.2533-1-Tze-nan.Wu@mediatek.com>
-	 <CAADnVQLLN9hbQ8FQnX_uWFAVBd7L9HhsQpQymLOmB-dHFR4VRw@mail.gmail.com>
-	 <3a7864f69b8c1d45a3fe8cda1b1e7a7c85ac9aee.camel@mediatek.com>
-	 <49d74e2c74e0e1786b976c0b12cb1cdd680c5f58.camel@mediatek.com>
-	 <CAADnVQLvbMRvCg2disV+_AR-154BwRpeB8Zg_8YpO=7gzL=Trg@mail.gmail.com>
-	 <Zsk_lGsZBBqbesqS@mini-arch>
-In-Reply-To: <Zsk_lGsZBBqbesqS@mini-arch>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB7183:EE_|TYZPR03MB7710:EE_
-x-ms-office365-filtering-correlation-id: 12c277dd-44f7-4273-2b88-08dcc828613c
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|376014|38070700018;
-x-microsoft-antispam-message-info: =?utf-8?B?Q00wa2Z6eUcrbFFpbUVVUkRvZnBMT0k3akxuRWZyNEp1WVZMTUJINENJUHhh?=
- =?utf-8?B?OElSSFBXL1ZwS1lkRUNnb1pNdHROYml1UDVNcU5qK05UMGJ1TEI5aHFvdUhQ?=
- =?utf-8?B?TlQzNWIwc3g3SjdWSk5CT25QeHIvTGtMdkpCZm9oa2U4ckZIeGUvaEhKQXpL?=
- =?utf-8?B?S0FDUXlHWWsvL2kveHhiNDNyYmVoYlVJSU81M1lIaFFhdEEvNmdVM3g1b0Nl?=
- =?utf-8?B?TzdOWThUakpHaVYzNHhOK21GODNIMEtGaFhuZkFzbzJYdDNlT0Yycy8rMk1k?=
- =?utf-8?B?c01EaU1Jak4xQ1U3bnB5bHNKdUVrK1hJellTVkNpODN4UlRBTW1kdFQ4Q3p2?=
- =?utf-8?B?OHdCZTV5azhVMHdSRFZjK2lsKzZpSkg0R29nMFN2RmlvR1pxVFBHdmJ3SzU5?=
- =?utf-8?B?a1VaNmdKbEd1SjRVZlB1eWo4K1prTlAwVGVmNDBEVmoveVA5Z2Y3TG5DVm1K?=
- =?utf-8?B?L0pENVVhRkpHYy94emc2czZ0akh4ZEVibFozbU1BZTdyU0FUU1IweUdySGVl?=
- =?utf-8?B?VVBQTnZwMHdRL3Q4WmpNSkcwTkJ6UFdHYUdycG5wZjhwdURCb1lRWEhSU0tv?=
- =?utf-8?B?MFRSM3hCQ0NGaFpkQWh2akpPSWs5WmJ1L2sxMmV6M2VGK1lxdVYyUWZHN2g0?=
- =?utf-8?B?SmRBdE9UWkp4REU3VmE2MFhuZFVHQnVJV2RjMzQ5UVNuNTRWdlNyYWhLZVAr?=
- =?utf-8?B?VExtMVA4c2NYMlVMZGFXbGhKWkhqMkpsM0N6dFl0b3AvaURlTVdReXRIM2lP?=
- =?utf-8?B?UlRqdERLMUk4QWtESWtPa2RrVGdVTGFCT29TbXRQQis3WXpWVndzZXpiTmRM?=
- =?utf-8?B?MlFTeGFpT1hHeXI3ZlM5ZGQweXIrQzBhK1ZrUDE1Ni85ZFArMlJ5VmFwZ01h?=
- =?utf-8?B?OGZ6Zi9wdEp6YitGbFRTTCt1YzdIVEtMV2Qrd25GOWRId3RldE5Cc1hTYXQz?=
- =?utf-8?B?Zk0wQS93cUpKd2taYkk4c3UreUQyZFlGSWJOMFc0cWZ4SFg2WktIV2U5S1kw?=
- =?utf-8?B?dFdmOGNvVm5nZERXUXJSVHRVZE9SSVdCaUx6NzhPcHBOcCtCVkpwU0RTRm1k?=
- =?utf-8?B?NHU0cmI4SG5QakJ1SytGN2FkeEtpU09QMXRicTBOUmRTc0xDQzJUeTFOK3Jh?=
- =?utf-8?B?dUdLaDhWd3RXYmZvMUNNU3IyM3I5L0RtV0tDbGVPWnpYT1NueEtNb0ZjM2JV?=
- =?utf-8?B?NE9jaC9nVFpqcFo1eGMrWFdWb2o0VHhkbEppNnBBM0ZrbE01R2RLS3NlMzl6?=
- =?utf-8?B?Yzk5Z1ZVcUdWK2hBQk41ZWhsMVVWU3pVeHJFN056Qzg5MXhobGlZczAzNTAx?=
- =?utf-8?B?ekJrbmFPUXU4WnFrd1dvcW5iZzhsWDJzbTIxcUFlR0xwMm92LzRodzl1UkpB?=
- =?utf-8?B?S1poUXJleVdvblhRNGFBS3FaT0ZBK1ZuSDBoMzN5Z1NNUU85WFVmV2ZDSlBh?=
- =?utf-8?B?dFZOTnJkbFErViszNWFubTB4WXdDOEtyYnVyajh4ejNxZnJkckdQdG9taVVq?=
- =?utf-8?B?TGk1U210bFA5eDZSMWZKLzA4bGNPZkwwV2JraHpHblhjdSsxVnhLVWlvUnNl?=
- =?utf-8?B?Y0U2b1dGb2NiWE52eDVjTy9WZjBaYkRyZDdVeTlzTXVreXhYRFhaVVdvdmdP?=
- =?utf-8?B?cDJpb3piTTZVd0YwM2xBQkxFM0VnNXdjWnd6OHBwNUEvdGx4cGd3Z3hlVC9X?=
- =?utf-8?B?OGQzVC9ldVFCSlFsbFlNNytLb3JkcU9ZN0thR2RFeEFRZnFGdTNkQmVIZFZL?=
- =?utf-8?B?b3RocTRsVmZTcEpTTGVtUUEwdHNOS3I0QmNMOEw1RWtobmkxNWJFY0ZlUG11?=
- =?utf-8?B?QWxpNVVOZ1JNaDVKMkx1VGFwZUJTemlHVWx3R2NHQ0JBSFl2VkpaNGUrVllt?=
- =?utf-8?B?eVdKTFpnbHNydGNIRTdjYWRBMS9pYjZwVjBNU2JzcGRDREE9PQ==?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB7183.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(7416014)(376014)(38070700018);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?RUFiVTdpb0xRQlN1TmNDS1VpUXp2cmZScTV2YWNuSnVRcENZV1lhT0dkRUVX?=
- =?utf-8?B?SFJtN3ZROXN5WWFqVVk0bDNlalhScTJMNzVHT3Q4dFRsWm5Xb3M3RE5xeVJF?=
- =?utf-8?B?MEhvd1FWMnRUWWg1Z2tNbHh5ZjNnLzJXRUJ3YmRicy9JWDhKN1phc2ZwV0ZS?=
- =?utf-8?B?WTQ2bzlqWHZuYm5EdVZ2RXFIakZTYjc0WldXVUhQaCsxMEZ1VThuWlJxbkI2?=
- =?utf-8?B?cmJZQks0TEJ3TThqSFVZTGgvYkFWcmxwUW5XRWJRODBTeFRVWSs5ZWJiR2R5?=
- =?utf-8?B?QjVYbkhnRHRKN2VRM1F0djNzclBnQjR4c0pEUVhYVldqcFJvbHlXUVA0QU80?=
- =?utf-8?B?WWxpdU9sZ3ladFdPcGkrbFFlc1dISmtRemJ6NkpSaHJoZFFveElIaEVxYXdo?=
- =?utf-8?B?UjhoKzQyK0RjRXBCaUo3VjRaSWFKdy9kdGs3OGdYWG5MRDZ1eXZxMzBtYndK?=
- =?utf-8?B?RHhjeW4rVG43eGlyenZ5cElqcVh1YllWMWdDMmVNek5wYVowdzV4a3B6WnlZ?=
- =?utf-8?B?QmlYRERBQkwzRXhYNGE5d3hwMjRmdWZwM3RNMHBQSkwrVlo2Ylc1ZzVpSTlv?=
- =?utf-8?B?ZGdqeGtncU84dSthTWZrWmpSVG8yYzh6R0NNTXBGVkJZZVUvbDJDVDBiQ1FT?=
- =?utf-8?B?a3NnNXBrak90YUVaNkJ6dm5XSHI2Z01ON2wrNmR5enU5YjVPRVhXMTZLSkpG?=
- =?utf-8?B?Z2hNM1RhVmhOanh3M09QR05WSjgwaVdBd3NENUR4OVJRclRWZDZneFVpbXlv?=
- =?utf-8?B?bmFIdldsbHZlSFZlbU1uZWdwdE5LVHozQkJxM2VQVFZ4Sm1SM01aSG1ZZW96?=
- =?utf-8?B?dEpBL2RSNllmTXpvSFpycjhRSm1vbkJHdUFYSWtFckllWEwxWFlkdUhjS0tn?=
- =?utf-8?B?YTNOalBVS2daNWdjaHNKLzhpQlNzNThRMGM1c2lGUkhWVTZta3JvZE00L2Qw?=
- =?utf-8?B?UDNHVHo1bFBhcXovR01wK1NmazNScm9qUm9WZDhGSDlqSXJwcmxBNDRld1BM?=
- =?utf-8?B?VVdLUHBDeTlwQmoyNW1xeGhYSHFpU051Q0F0aUR1aElpYURrSFhTOHlNOXZJ?=
- =?utf-8?B?UFUzQnRTK3krb01kZm8yNmphOWg4U2NFTEVVWXhUYkRDNDdsa1BvZElHcHJJ?=
- =?utf-8?B?eFhjNW1BUERON2cwb1ZlUkZCYWl1aHhoYlYzWWR6YkV6K2lSQlBCeld1VHBn?=
- =?utf-8?B?Q3pzd3U5K05yQXFoK09ueEI0c3pJYjgzeG4zQ0Vlb2liQWZqNVdpWVlVTDlK?=
- =?utf-8?B?QzhLT2JlSFN2cmYvZk1yRGlBRVkyUDRLVCtML2VLQzhqdzgzUUhSeDFhUktI?=
- =?utf-8?B?V0I5U1J6QWphMFV6V2g2WlMxenJmbVVNZU9YUmd3QVBZVFBwcktGZE9OZTVm?=
- =?utf-8?B?SUR0VjNqc05NN0taNFRmckZsKzBkdm8rQnduSVNMeFZzaUFGTkNrbXNnSml1?=
- =?utf-8?B?RXJhNVBqRWV4OXEyTkdSOEJQVmVQNnkzQmpFRnhTY1ZGb204ak1JbngvOWxi?=
- =?utf-8?B?bFV3dWVRcEVzSEpadUtoM1ZFcnlxQVg4SDdRVW9JQTVsUGorTStrU2NORVpv?=
- =?utf-8?B?TE1XTjFrWHJ5b0VXUHdlRzFnK2tSNzdNT1NNRVhDZXoySjNGWXBZMTRXTk5Q?=
- =?utf-8?B?NnVMQUtjb1RlODcrVWFGWkdWbUtOK2thcjd1L1VwZ1pFZG90YkNPaE5LQmEv?=
- =?utf-8?B?bUlGT2MwRnR6Q0NUYWVkcFNNems3a0Qyd0JsSDcwaFd5ZkxNRElDaGU3WGUz?=
- =?utf-8?B?Q254UW9nclBKa3hQTmcxc2RTQmhmZkY3R1E2QUZWb01UWnNzNFdPK1BUcjlI?=
- =?utf-8?B?andZb0cvYW8wbmJZdHJYTWFsNHpNRlJSbGlBVk9lWFRET2JGZmY0MEhkRlVB?=
- =?utf-8?B?cVRwSXhxNVovY25PMk9WdmpQVG1wM1NZazJDZEFoYS93ZE5QSzFZc0g2bExQ?=
- =?utf-8?B?bXBRTU1uL3RNUnQzUjdSczEvV0tXNS9wMUxIN0NEc05SaDNMbkdMd1pDcDFt?=
- =?utf-8?B?WnZGVXEvQkpoU2JDRk0zajFqMjRmYk9SdDhSSFZXejBaYWo4TU1uTUUrU1FV?=
- =?utf-8?B?OWNsRTRZTk5TQUxUYVJNQmNZL0NWeTd4YkdyTnh6OVE0L3paeEtYM25vblBQ?=
- =?utf-8?B?TE9ETEVlWUUwRnVRRnZxcVYyYTVlelA3eU80OXpSWVpOdlFEY3oxVWFUdysy?=
- =?utf-8?B?S0E9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <990D119997F5484D983FBFAC87B0A58C@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1sjgXK-00000002Ujp-3eRr;
+	Thu, 29 Aug 2024 14:54:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 68213A4410D;
+	Thu, 29 Aug 2024 14:54:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E06B6C4CEC8;
+	Thu, 29 Aug 2024 14:54:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1724943248;
+	bh=gGjwRsC3M9/c/KkD/8kJVbZnTVSAPzCfx1ZJsG9gXmM=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=G3QOtK4x5NkJF/9wehBXrw0qdJZFipes3cS2BkAHTycSbmymWgoAN2aCJW9S3uwQo
+	 gcGIaqAfNw9X37Zd9DaRxY0TBGmjcJ9+ruXjULPGXZqexlG/KrwaNXFW+i0UWsczUK
+	 naQWHj8poWwrGoPQOld9I/Qjw6qSrDKgjW2uKZRd2+Vlo1HgzzKJYEmbK9g7RDGmZj
+	 B4a+wrgocNvWL8vLLH/UwArKw0Jb3WBuQIOskvFTlKxoKg1gnETYttRqhU8zhyeaZT
+	 utkjuOmAfQ7jAr9FHd9EXHw7kXFIcRGO7Q4iYKRAvu78MiqgWQxfuZCDWUAp4djDG3
+	 xiLfxgrcUl7rQ==
+Received: by mail-oo1-f51.google.com with SMTP id 006d021491bc7-5df9a9f7fe2so437150eaf.2;
+        Thu, 29 Aug 2024 07:54:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCXZPxhYANrn1oqKVdVEhQ1XsxjhS3FwfhK8CItGdMRpVOq/kUp2zbfod5r/+BMaTe1VcAfrEPU2oKnXcEmph94=@lists.infradead.org, AJvYcCXfRh6imBMiOwvDRB0HcGWw83YBu+DZccyyeYjdH+UKTK29vZMMbjgHeOaijyVTZOyZl/O8R652SEzZXk2mVxe7@lists.infradead.org
+X-Gm-Message-State: AOJu0YypwfiPNFdUJyZmUwitmGjFTNdBbD1S6QTrGSs64UP+TfbSDGy8
+	TUbPyOkFYNoA4K6+bgXeEjhiQqoEhM/jmhyDGsAiq+htRVhsA+wpqIBGkbZ5aUC97+WGJsb+GEX
+	Kgt1E+Xy0rCgV78Kf6NgHB4x54A==
+X-Google-Smtp-Source: AGHT+IEyygn0DMFYzMyxc8jy6sIuWErx12dvbL0cJxtOdFO//M5/LG3maZP8Ohf/uApEShQBQN09W1UKNHJV+sMS3/Q=
+X-Received: by 2002:a05:6358:6f98:b0:1aa:a01a:23dc with SMTP id
+ e5c5f4694b2df-1b603c55350mr395137555d.15.1724943248105; Thu, 29 Aug 2024
+ 07:54:08 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB7183.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 12c277dd-44f7-4273-2b88-08dcc828613c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Aug 2024 12:44:53.4846
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: oFIKRfCW46jqoIKyrrDuZ0G1ujvlfvlZ2lBlBoP4iapVrQ469TQ7eIPQ9kF0T/5FrYd2fsRS5f7eWtI0SJv5DQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB7710
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--22.408700-8.000000
-X-TMASE-MatchedRID: 2SDSohiwfqTUL3YCMmnG4omfV7NNMGm+jLOy13Cgb4/n0eNPmPPe5KWz
-	WoIRiV9DM/Se/q/gEyf5MiS7M8c1eGmXMi7Ntyo2mlaAItiONP0oUVkB7ifJnjRCaZSKE/OsnJl
-	qVKcsJUi1TTIVILM8RChmYyu6geynNPuuZyc2/WwLPVZHwod7gEyQ5fRSh265XzOTBCnSSg/4eY
-	E/JF5KDCo+fEJV5lZoXDpuICCRgHXAeiySQKxqSTOb4QjG+dWPmWGJLfJ2t7fqwJRCt4u1yK+O3
-	p9xFzgD6I6PCD+I41xH210kirEiHqn4NN7RsxjJFDuTLTe6zcNyawdArtww51HpIy6wt5UwozbV
-	LsJ08Hn9SAPTKpsFeHVYxiwxDQDxV6XnY1k71daeAiCmPx4NwMFrpUbb72MU1kTfEkyaZdz6C0e
-	Ps7A07QKmARN5PTKc
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--22.408700-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: F18362EB48C4EF85ACE0B43CD7EEC1E0CF199E869A7DFF09261C9CA7FABC66A92000:8
+References: <20240826060654.24038-1-shuijing.li@mediatek.com>
+In-Reply-To: <20240826060654.24038-1-shuijing.li@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 29 Aug 2024 22:54:22 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8K2BQm5JOBpeP+ZYcctcHAp46JWma7z4vWGFoa1MFbCg@mail.gmail.com>
+Message-ID: <CAAOTY_8K2BQm5JOBpeP+ZYcctcHAp46JWma7z4vWGFoa1MFbCg@mail.gmail.com>
+Subject: Re: [PATCH v8] drm/mediatek: dsi: Add dsi per-frame lp code for mt8188
+To: Shuijing Li <shuijing.li@mediatek.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
+	daniel@ffwll.ch, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, jitao.shi@mediatek.com, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240829_054508_869550_E7635406 
-X-CRM114-Status: GOOD (  14.36  )
+X-CRM114-CacheID: sfid-20240829_075411_065800_ABA6BB59 
+X-CRM114-Status: GOOD (  24.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -249,80 +85,259 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCAyMDI0LTA4LTIzIGF0IDE5OjA0IC0wNzAwLCBTdGFuaXNsYXYgRm9taWNoZXYgd3Jv
-dGU6DQo+ICAJIA0KPiBFeHRlcm5hbCBlbWFpbCA6IFBsZWFzZSBkbyBub3QgY2xpY2sgbGlua3Mg
-b3Igb3BlbiBhdHRhY2htZW50cyB1bnRpbA0KPiB5b3UgaGF2ZSB2ZXJpZmllZCB0aGUgc2VuZGVy
-IG9yIHRoZSBjb250ZW50Lg0KPiAgT24gMDgvMjIsIEFsZXhlaSBTdGFyb3ZvaXRvdiB3cm90ZToN
-Cj4gPiBPbiBUaHUsIEF1ZyAyMiwgMjAyNCBhdCAxMjowMuKAr0FNIFR6ZS1uYW4gV3UgKOWQs+a+
-pOWNlykNCj4gPiA8VHplLW5hbi5XdUBtZWRpYXRlay5jb20+IHdyb3RlOg0KPiA+ID4NCj4gPiA+
-DQo+ID4gPiBCVFcsIElmIHRoaXMgc2hvdWxkIGJlIGhhbmRsZWQgaW4ga2VybmVsLCBtb2RpZmlj
-YXRpb24gc2hvd24NCj4gYmVsb3cNCj4gPiA+IGNvdWxkIGZpeCB0aGUgaXNzdWUgd2l0aG91dCBi
-cmVha2luZyB0aGUgInN0YXRpY19icmFuY2giIHVzYWdlIGluDQo+IGJvdGgNCj4gPiA+IG1hY3Jv
-czoNCj4gPiA+DQo+ID4gPg0KPiA+ID4gKysrIC9pbmNsdWRlL2xpbnV4L2JwZi1jZ3JvdXAuaDoN
-Cj4gPiA+ICAgICAtI2RlZmluZSBCUEZfQ0dST1VQX0dFVFNPQ0tPUFRfTUFYX09QVExFTihvcHRs
-ZW4pDQo+ID4gPiAgICAgKyNkZWZpbmUgQlBGX0NHUk9VUF9HRVRTT0NLT1BUX01BWF9PUFRMRU4o
-b3B0bGVuLCBjb21wYXQpDQo+ID4gPiAgICAgICh7DQo+ID4gPiAgICAgICAgICAgICBpbnQgX19y
-ZXQgPSAwOw0KPiA+ID4gICAgICAgICAgICAgaWYgKGNncm91cF9icGZfZW5hYmxlZChDR1JPVVBf
-R0VUU09DS09QVCkpDQo+ID4gPiAgICAgICAgICAgICAgICAgY29weV9mcm9tX3NvY2twdHIoJl9f
-cmV0LCBvcHRsZW4sIHNpemVvZihpbnQpKTsNCj4gPiA+ICAgICAgKyAgICAgIGVsc2UNCj4gPiA+
-ICAgICAgKyAgICAgICAgICAqY29tcGF0ID0gdHJ1ZTsNCj4gPiA+ICAgICAgICAgICAgIF9fcmV0
-Ow0KPiA+ID4gICAgICB9KQ0KPiA+ID4NCj4gPiA+ICAgICAjZGVmaW5lIEJQRl9DR1JPVVBfUlVO
-X1BST0dfR0VUU09DS09QVChzb2NrLCBsZXZlbCwgb3B0bmFtZSwNCj4gPiA+IG9wdHZhbCwgb3B0
-bGVuLCBtYXhfb3B0bGVuLCByZXR2YWwpDQo+ID4gPiAgICAgICh7DQo+ID4gPiAgICAgICAgICBp
-bnQgX19yZXQgPSByZXR2YWw7DQo+ID4gPiAgICAgLSAgICBpZiAoY2dyb3VwX2JwZl9lbmFibGVk
-KENHUk9VUF9HRVRTT0NLT1BUKSAmJg0KPiA+ID4gICAgIC0gICAgICAgIGNncm91cF9icGZfc29j
-a19lbmFibGVkKHNvY2ssIENHUk9VUF9HRVRTT0NLT1BUKSkNCj4gPiA+ICAgICArICAgIGlmIChj
-Z3JvdXBfYnBmX3NvY2tfZW5hYmxlZChzb2NrLCBDR1JPVVBfR0VUU09DS09QVCkpDQo+ID4gPiAg
-ICAgICAgICAgICAgaWYgKCEoc29jayktPnNrX3Byb3QtPmJwZl9ieXBhc3NfZ2V0c29ja29wdCB8
-fA0KPiA+ID4gICAgICAgICAgICAgICAgLi4uDQo+ID4gPg0KPiA+ID4gICArKysgL25ldC9zb2Nr
-ZXQuYzoNCj4gPiA+ICAgICBpbnQgZG9fc29ja19nZXRzb2Nrb3B0KHN0cnVjdCBzb2NrZXQgKnNv
-Y2ssIGJvb2wgY29tcGF0LCBpbnQNCj4gbGV2ZWwsDQo+ID4gPiAgICAgIHsNCj4gPiA+ICAgICAg
-ICAgLi4uDQo+ID4gPiAgICAgICAgIC4uLg0KPiA+ID4gICAgICsgICAgIC8qIFRoZSBtZWFuaW5n
-IG9mIGBjb21wYXRgIHZhcmlhYmxlIGNvdWxkIGJlIGNoYW5nZWQNCj4gaGVyZQ0KPiA+ID4gICAg
-ICsgICAgICAqIHRvIGluZGljYXRlIGlmIGNncm91cF9icGZfZW5hYmxlZChDR1JPVVBfU09DS19P
-UFMpDQo+IGlzDQo+ID4gPiBmYWxzZS4NCj4gPiA+ICAgICArICAgICAgKi8NCj4gPiA+ICAgICAg
-ICAgaWYgKCFjb21wYXQpDQo+ID4gPiAgICAgLSAgICAgICBtYXhfb3B0bGVuID0NCj4gQlBGX0NH
-Uk9VUF9HRVRTT0NLT1BUX01BWF9PUFRMRU4ob3B0bGVuKTsNCj4gPiA+ICAgICArICAgICAgIG1h
-eF9vcHRsZW4gPSBCUEZfQ0dST1VQX0dFVFNPQ0tPUFRfTUFYX09QVExFTihvcHRsZW4sDQo+ID4g
-PiAmY29tcGF0KTsNCj4gPiANCj4gPiBUaGlzIGlzIGJldHRlciwgYnV0IGl0J3Mgc3RpbGwgcXVp
-dGUgYSBoYWNrLiBMZXQncyBub3Qgb3ZlcnJpZGUgaXQuDQo+ID4gV2UgY2FuIGhhdmUgYW5vdGhl
-ciBib29sLCBidXQgdGhlIHF1ZXN0aW9uOg0KPiA+IGRvIHdlIHJlYWxseSBuZWVkIEJQRl9DR1JP
-VVBfR0VUU09DS09QVF9NQVhfT1BUTEVOICA/DQo+ID4gY29weV9mcm9tX3NvY2twdHIoJl9fcmV0
-LCBvcHRsZW4sIHNpemVvZihpbnQpKTsNCj4gPiBzaG91bGQgYmUgZmFzdCBlbm91Z2ggdG8gZG8g
-aXQgdW5jb25kaXRpb25hbGx5Lg0KPiA+IFdoYXQgYXJlIHdlIHNhdmluZyBoZXJlPw0KPiA+IA0K
-PiA+IFN0YW4gPw0KPiANCj4gQWdyZWVkLCBtb3N0IGxpa2VseSBub2JvZHkgd291bGQgbm90aWNl
-IDotKQ0KDQpTb3JyeSBmb3IgbXkgbGF0ZSByZXBseSwganVzdCBoYXZlIHRoZSBtYWlsZXIgZml4
-ZWQuDQoNCklmIGl0IGlzIGZlYXNpYmxlIHRvIG1ha2UgdGhlIGBjb3B5X2Zyb21fc29ja3B0cmAg
-dW5jb25kaXRpb25hbGx5LA0Kc2hvdWxkIEkgc3VibWl0IGEgbmV3IHBhdGNoIHRoYXQgcmVzb2x2
-ZSB0aGUgaXNzdWUgYnkgcmVtb3ZpbmcNCmBCUEZfQ0dST1VQX0dFVFNPQ0tPUFRfTUFYX09QVExF
-TmA/IFBhdGNoIEEgc2hvd24gYXMgYmVsb3cuDQoNCiAgKysrIC9uZXQvc29ja2V0LmM6DQogICBp
-bnQgZG9fc29ja19nZXRzb2Nrb3B0KC4uLikNCiAgIHsNCiAgLSAgICAgaW50IG1heF9vcHRsZW4g
-X19tYXliZV91bnVzZWQ7DQogICsgICAgIGludCBtYXhfb3B0bGVuIF9fbWF5YmVfdW51c2VkID0g
-MDsNCiAgICAgICAgY29uc3Qgc3RydWN0IHByb3RvX29wcyAqb3BzOw0KICAgICAgICBpbnQgZXJy
-Ow0KICAuLi4NCiAgLi4uDQogICAgICAgIGlmICghY29tcGF0KSA8PT0gd29uZGVyIGlmIHdlIHNo
-b3VsZCBrZWVwIHRoZSBjb25kaXRpb24gaGVyZT8NCiAgLSAgICAgICAgIG1heF9vcHRsZW4gPSBC
-UEZfQ0dST1VQX0dFVFNPQ0tPUFRfTUFYX09QVExFTihvcHRsZW4pOw0KICArICAgICAgICAgY29w
-eV9mcm9tX3NvY2twdHIoJm1heF9vcHRsZW4sIG9wdGxlbiwgc2l6ZW9mKGludCkpOw0KDQogICAg
-ICAgIG9wcyA9IFJFQURfT05DRShzb2NrLT5vcHMpOw0KICAgICAgICBpZiAobGV2ZWwgPT0gU09M
-X1NPQ0tFVCkgew0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCg0K
-T3IgcGVyaGFwcyBhZGRpbmcgYW5vdGhlciB2YXJpYWJsZSAiZW5hYmxlZCIgaXMgdGhlIHByZWZl
-cmFibGUgd2F5Pw0KQXMgaXQga2VlcHMgdGhlIHN0YXRpY19icmFuY2ggYmVoYXZpb3IuDQpQYXRj
-aCBCIHNob3duIGFzIGJlbG93Og0KDQogICsrKyAvaW5jbHVkZS9saW51eC9icGYtY2dyb3VwLmg6
-DQogIC0jZGVmaW5lIEJQRl9DR1JPVVBfR0VUU09DS09QVF9NQVhfT1BUTEVOKG9wdGxlbikNCiAg
-KyNkZWZpbmUgQlBGX0NHUk9VUF9HRVRTT0NLT1BUX01BWF9PUFRMRU4ob3B0bGVuLCBlbmFibGVk
-KQ0KICAgKHsNCiAgICAgICAgaW50IF9fcmV0ID0gMDsNCiAgICAgICAgaWYgKGNncm91cF9icGZf
-ZW5hYmxlZChDR1JPVVBfR0VUU09DS09QVCkpDQogICAgICAgICAgICBjb3B5X2Zyb21fc29ja3B0
-cigmX19yZXQsIG9wdGxlbiwgc2l6ZW9mKGludCkpOw0KICArICAgICBlbHNlDQogICsgICAgICAg
-ICAqZW5hYmxlZCA9IGZhbHNlOw0KICAgICAgICBfX3JldDsNCiAgIH0pDQoNCiAgKysrIC9uZXQv
-c29ja2V0LmM6DQogICBpbnQgZG9fc29ja19nZXRzb2Nrb3B0KC4uLikNCiAgIHsNCiAgKyAgIGJv
-b2wgZW5hYmxlZCBfX21heWJlX3VudXNlZCA9ICFjb21wYXQ7DQogICAgICBpbnQgbWF4X29wdGxl
-biBfX21heWJlX3VudXNlZDsNCiAgICAgIGNvbnN0IHN0cnVjdCBwcm90b19vcHMgKm9wczsNCiAg
-ICAgIGludCBlcnI7DQogICAgICBpZiAoIWNvbXBhdCkNCiAgLSAgICAgICBtYXhfb3B0bGVuID0g
-QlBGX0NHUk9VUF9HRVRTT0NLT1BUX01BWF9PUFRMRU4ob3B0bGVuKTsNCiAgKyAgICAgICBtYXhf
-b3B0bGVuID0gQlBGX0NHUk9VUF9HRVRTT0NLT1BUX01BWF9PUFRMRU4ob3B0bGVuLA0KJmVuYWJs
-ZWQpOw0KDQogICAgICBvcHMgPSBSRUFEX09OQ0Uoc29jay0+b3BzKTsNCiAgICAgIC4uLg0KICAg
-ICAgLi4uDQogIC0gICBpZiAoIWNvbXBhdCkNCiAgKyAgIGlmIChlbmFibGVkKQ0KICAgICAgICAg
-IGVyciA9IEJQRl9DR1JPVVBfUlVOX1BST0dfR0VUU09DS09QVCguLi4pOw0KLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCg0KQW55IGNvbW1lbnRzIHdvdWxkIGJlIGFw
-cHJlY2lhdGVkLg0KLS1UemUtbmFuDQoNCg==
+Hi, Shuijing:
+
+Shuijing Li <shuijing.li@mediatek.com> =E6=96=BC 2024=E5=B9=B48=E6=9C=8826=
+=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=882:07=E5=AF=AB=E9=81=93=EF=BC=
+=9A
+>
+> Adding the per-frame lp function of mt8188, which can keep HFP in HS and
+> reduce the time required for each line to enter and exit low power.
+> Per Frame LP:
+>   |<----------One Active Frame-------->|
+> --______________________________________----___________________
+>   ^HSA+HBP^^RGB^^HFP^^HSA+HBP^^RGB^^HFP^    ^HSA+HBP^^RGB^^HFP^
+>
+> Per Line LP:
+>   |<---------------One Active Frame----------->|
+> --______________--______________--______________----______________
+>   ^HSA+HBP^^RGB^  ^HSA+HBP^^RGB^  ^HSA+HBP^^RGB^    ^HSA+HBP^^RGB^
+
+Applied to mediatek-drm-next [1], thanks.
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-next
+
+Regards,
+Chun-Kuang.
+
+>
+> Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
+> ---
+> Changes in v8:
+> Directly write value into DSI_HSTX_CKL_WC without check per suggestion fr=
+om previous thread:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20240819061333.=
+26069-1-shuijing.li@mediatek.com/
+> Changes in v7:
+> Fix code style and simplify the code per suggestion from previous thread:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20240813022315.=
+18502-1-shuijing.li@mediatek.com/
+> Changes in v6:
+> Simplify the code per suggestion from previous thread:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20240812070341.=
+26053-1-shuijing.li@mediatek.com/
+> Changes in v5:
+> Fix code style issue and add per-line-lp function to be symmetrical with =
+per-frame-lp.
+> per suggestion from previous thread:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20240801081144.=
+22372-1-shuijing.li@mediatek.com/
+> Changes in v4:
+> Drop the code related to bllp_en and bllp_wc, adjust ps_wc to dsi->vm.hac=
+tive *
+> dsi_buf_bpp.
+> Changes in v3:
+> Use function in bitfield.h and get value from phy timing, per suggestion
+> from previous thread:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20240424091639.=
+22759-1-shuijing.li@mediatek.com/
+> Changes in v2:
+> Use bitfield macros and add new function for per prame lp and improve
+> the format, per suggestion from previous thread:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20240314094238.=
+3315-1-shuijing.li@mediatek.com/
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 106 +++++++++++++++++++++++++----
+>  1 file changed, 94 insertions(+), 12 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediate=
+k/mtk_dsi.c
+> index b6e3c011a12d..eeec641cab60 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -88,12 +88,15 @@
+>  #define DSI_HSA_WC             0x50
+>  #define DSI_HBP_WC             0x54
+>  #define DSI_HFP_WC             0x58
+> +#define HFP_HS_VB_PS_WC                GENMASK(30, 16)
+> +#define HFP_HS_EN                      BIT(31)
+>
+>  #define DSI_CMDQ_SIZE          0x60
+>  #define CMDQ_SIZE                      0x3f
+>  #define CMDQ_SIZE_SEL          BIT(15)
+>
+>  #define DSI_HSTX_CKL_WC                0x64
+> +#define HSTX_CKL_WC                    GENMASK(15, 2)
+>
+>  #define DSI_RX_DATA0           0x74
+>  #define DSI_RX_DATA1           0x78
+> @@ -187,6 +190,7 @@ struct mtk_dsi_driver_data {
+>         bool has_shadow_ctl;
+>         bool has_size_ctl;
+>         bool cmdq_long_packet_ctl;
+> +       bool support_per_frame_lp;
+>  };
+>
+>  struct mtk_dsi {
+> @@ -426,7 +430,75 @@ static void mtk_dsi_ps_control(struct mtk_dsi *dsi, =
+bool config_vact)
+>         writel(ps_val, dsi->regs + DSI_PSCTRL);
+>  }
+>
+> -static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
+> +static void mtk_dsi_config_vdo_timing_per_frame_lp(struct mtk_dsi *dsi)
+> +{
+> +       u32 horizontal_sync_active_byte;
+> +       u32 horizontal_backporch_byte;
+> +       u32 horizontal_frontporch_byte;
+> +       u32 hfp_byte_adjust, v_active_adjust;
+> +       u32 cklp_wc_min_adjust, cklp_wc_max_adjust;
+> +       u32 dsi_tmp_buf_bpp;
+> +       unsigned int da_hs_trail;
+> +       unsigned int ps_wc, hs_vb_ps_wc;
+> +       u32 v_active_roundup, hstx_cklp_wc;
+> +       u32 hstx_cklp_wc_max, hstx_cklp_wc_min;
+> +       struct videomode *vm =3D &dsi->vm;
+> +
+> +       if (dsi->format =3D=3D MIPI_DSI_FMT_RGB565)
+> +               dsi_tmp_buf_bpp =3D 2;
+> +       else
+> +               dsi_tmp_buf_bpp =3D 3;
+> +
+> +       da_hs_trail =3D dsi->phy_timing.da_hs_trail;
+> +       ps_wc =3D vm->hactive * dsi_tmp_buf_bpp;
+> +
+> +       if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE) {
+> +               horizontal_sync_active_byte =3D
+> +                       vm->hsync_len * dsi_tmp_buf_bpp - 10;
+> +               horizontal_backporch_byte =3D
+> +                       vm->hback_porch * dsi_tmp_buf_bpp - 10;
+> +               hfp_byte_adjust =3D 12;
+> +               v_active_adjust =3D 32 + horizontal_sync_active_byte;
+> +               cklp_wc_min_adjust =3D 12 + 2 + 4 + horizontal_sync_activ=
+e_byte;
+> +               cklp_wc_max_adjust =3D 20 + 6 + 4 + horizontal_sync_activ=
+e_byte;
+> +       } else {
+> +               horizontal_sync_active_byte =3D vm->hsync_len * dsi_tmp_b=
+uf_bpp - 4;
+> +               horizontal_backporch_byte =3D (vm->hback_porch + vm->hsyn=
+c_len) *
+> +                       dsi_tmp_buf_bpp - 10;
+> +               cklp_wc_min_adjust =3D 4;
+> +               cklp_wc_max_adjust =3D 12 + 4 + 4;
+> +               if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST) {
+> +                       hfp_byte_adjust =3D 18;
+> +                       v_active_adjust =3D 28;
+> +               } else {
+> +                       hfp_byte_adjust =3D 12;
+> +                       v_active_adjust =3D 22;
+> +               }
+> +       }
+> +       horizontal_frontporch_byte =3D vm->hfront_porch * dsi_tmp_buf_bpp=
+ - hfp_byte_adjust;
+> +       v_active_roundup =3D (v_active_adjust + horizontal_backporch_byte=
+ + ps_wc +
+> +                          horizontal_frontporch_byte) % dsi->lanes;
+> +       if (v_active_roundup)
+> +               horizontal_backporch_byte +=3D dsi->lanes - v_active_roun=
+dup;
+> +       hstx_cklp_wc_min =3D (DIV_ROUND_UP(cklp_wc_min_adjust, dsi->lanes=
+) + da_hs_trail + 1)
+> +                          * dsi->lanes / 6 - 1;
+> +       hstx_cklp_wc_max =3D (DIV_ROUND_UP((cklp_wc_max_adjust + horizont=
+al_backporch_byte +
+> +                          ps_wc), dsi->lanes) + da_hs_trail + 1) * dsi->=
+lanes / 6 - 1;
+> +
+> +       hstx_cklp_wc =3D FIELD_PREP(HSTX_CKL_WC, (hstx_cklp_wc_min + hstx=
+_cklp_wc_max) / 2);
+> +       writel(hstx_cklp_wc, dsi->regs + DSI_HSTX_CKL_WC);
+> +
+> +       hs_vb_ps_wc =3D ps_wc - (dsi->phy_timing.lpx + dsi->phy_timing.da=
+_hs_exit +
+> +                     dsi->phy_timing.da_hs_prepare + dsi->phy_timing.da_=
+hs_zero + 2) * dsi->lanes;
+> +       horizontal_frontporch_byte |=3D FIELD_PREP(HFP_HS_EN, 1) |
+> +                                     FIELD_PREP(HFP_HS_VB_PS_WC, hs_vb_p=
+s_wc);
+> +
+> +       writel(horizontal_sync_active_byte, dsi->regs + DSI_HSA_WC);
+> +       writel(horizontal_backporch_byte, dsi->regs + DSI_HBP_WC);
+> +       writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
+> +}
+> +
+> +static void mtk_dsi_config_vdo_timing_per_line_lp(struct mtk_dsi *dsi)
+>  {
+>         u32 horizontal_sync_active_byte;
+>         u32 horizontal_backporch_byte;
+> @@ -436,7 +508,6 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi =
+*dsi)
+>         u32 dsi_tmp_buf_bpp, data_phy_cycles;
+>         u32 delta;
+>         struct mtk_phy_timing *timing =3D &dsi->phy_timing;
+> -
+>         struct videomode *vm =3D &dsi->vm;
+>
+>         if (dsi->format =3D=3D MIPI_DSI_FMT_RGB565)
+> @@ -444,16 +515,6 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi=
+ *dsi)
+>         else
+>                 dsi_tmp_buf_bpp =3D 3;
+>
+> -       writel(vm->vsync_len, dsi->regs + DSI_VSA_NL);
+> -       writel(vm->vback_porch, dsi->regs + DSI_VBP_NL);
+> -       writel(vm->vfront_porch, dsi->regs + DSI_VFP_NL);
+> -       writel(vm->vactive, dsi->regs + DSI_VACT_NL);
+> -
+> -       if (dsi->driver_data->has_size_ctl)
+> -               writel(FIELD_PREP(DSI_HEIGHT, vm->vactive) |
+> -                      FIELD_PREP(DSI_WIDTH, vm->hactive),
+> -                      dsi->regs + DSI_SIZE_CON);
+> -
+>         horizontal_sync_active_byte =3D (vm->hsync_len * dsi_tmp_buf_bpp =
+- 10);
+>
+>         if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE)
+> @@ -499,6 +560,26 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi=
+ *dsi)
+>         writel(horizontal_sync_active_byte, dsi->regs + DSI_HSA_WC);
+>         writel(horizontal_backporch_byte, dsi->regs + DSI_HBP_WC);
+>         writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
+> +}
+> +
+> +static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
+> +{
+> +       struct videomode *vm =3D &dsi->vm;
+> +
+> +       writel(vm->vsync_len, dsi->regs + DSI_VSA_NL);
+> +       writel(vm->vback_porch, dsi->regs + DSI_VBP_NL);
+> +       writel(vm->vfront_porch, dsi->regs + DSI_VFP_NL);
+> +       writel(vm->vactive, dsi->regs + DSI_VACT_NL);
+> +
+> +       if (dsi->driver_data->has_size_ctl)
+> +               writel(FIELD_PREP(DSI_HEIGHT, vm->vactive) |
+> +                       FIELD_PREP(DSI_WIDTH, vm->hactive),
+> +                       dsi->regs + DSI_SIZE_CON);
+> +
+> +       if (dsi->driver_data->support_per_frame_lp)
+> +               mtk_dsi_config_vdo_timing_per_frame_lp(dsi);
+> +       else
+> +               mtk_dsi_config_vdo_timing_per_line_lp(dsi);
+>
+>         mtk_dsi_ps_control(dsi, false);
+>  }
+> @@ -1197,6 +1278,7 @@ static const struct mtk_dsi_driver_data mt8188_dsi_=
+driver_data =3D {
+>         .has_shadow_ctl =3D true,
+>         .has_size_ctl =3D true,
+>         .cmdq_long_packet_ctl =3D true,
+> +       .support_per_frame_lp =3D true,
+>  };
+>
+>  static const struct of_device_id mtk_dsi_of_match[] =3D {
+> --
+> 2.45.2
+>
 
