@@ -4,91 +4,185 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF60DC636E5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Aug 2024 17:07:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D014CC71156
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Aug 2024 00:58:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AmsVn2x8RYhl9OlKodN6jzV3jPJKpEsEEVkhWHyJ5OE=; b=iJHU3mVEG+owXEGn0u2hz3gm/B
-	jfkFxcgOkEVyRsc5d3bGyJfRxhdiiMTPNZvcj1raP9jlyW9e+iUV+fVeBpg0jTvXuL2u0Xs1MKjMW
-	WXjrpJD45jQyUg02rylGH6XvqGOZ3n/PYOdybvAyqBPIAgoYELI7AWiV6Q4oQNKulUV+7Hzd/LLnf
-	sQaMukiHkmwsV1Okmyd0KsbPjcE31yveZMYkvIgjomfa1jX284tb00YB2DEpaCWyGU1rR90pD1S0e
-	/rBIp+VB5J37CkNuDjbnZ5GNOaXO+vd2wfeCM2HmYseKEv2lbQT++dTnmlQfidceb5+CIZmc0QLHT
-	9DQQyQ7g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Date:References:Message-ID:In-Reply-To:From:Subject:Cc:To:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C1uVFJaaGw0bVN8nBb1owwN5pOu+mU/IFql0yDiAbs0=; b=pSkv9fTdJ9rKVEQGpuX74OMN/2
+	ATFOJtZOI9O+HWJSnYfulGPKU3ibJtUXgO9i8HNvkzcaj4TlZj3H6iQRqlFykSpKEi9rgl9/1Fv03
+	6r3g+FQvuBG3z9JeMaMmCvnbfXXuIE6hPzXp/g82X1GdjEZ79iof9E0/nf+fcYXdQKmqKpb6IvL3Z
+	5AYGvkpQf3Kh83X158qlDdxzaLRTz6lz3/TFAYwlY8TWBOkjel3p8jnsEq8J2PQG/yGDx2tpSn/yQ
+	GJOEMqOl/4uj+ujAhkbTAqBZO8lsOSXiLRqSc+5K7iUECIWju7wsVdDlyuRSMvw8rMhW7X5hdKId9
+	8fJik7FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjM98-0000000GIvy-30h8;
-	Wed, 28 Aug 2024 17:07:50 +0000
-Received: from mout.web.de ([217.72.192.78])
+	id 1sjTUV-000000002xo-07Nx;
+	Thu, 29 Aug 2024 00:58:23 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjM7I-0000000GIXk-3rTK
-	for linux-mediatek@lists.infradead.org;
-	Wed, 28 Aug 2024 17:05:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1724864746; x=1725469546; i=spasswolf@web.de;
-	bh=AmsVn2x8RYhl9OlKodN6jzV3jPJKpEsEEVkhWHyJ5OE=;
-	h=X-UI-Sender-Class:Message-ID:Subject:From:To:Cc:Date:In-Reply-To:
-	 References:Content-Type:MIME-Version:Content-Transfer-Encoding:cc:
-	 content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=U1tfiF4D/yuKOR+2ZaLb+i/2gZ1NBVMBrw+ySfKFNiEZjPeMk0D+8uNaCmWmUhrk
-	 rFvGA8L6PNIY0lzzhHXIpW7m2M1ei7tefKtQ9cllg8Z9e9CR7xHD0sFjfPpc5k4em
-	 +YSKI2u89DbD+dmYVSxbnZwugpZq5TSM8av/0XW5MWD6QBT7j5mgkOHLEvKXgC/cW
-	 NGUhfTLRuJavZtBJVYZQsz0WZJxOcdDLY/y0OVK4J50Vu1/fufYcAvCsj5YCCVD7K
-	 GAXffGbPxddNJswr3Fiyc+3DxfC1Hsqwm6nPKqDp48sUlO4OO3Wfj2xu3TnFqNqw4
-	 DOTctUUaXyZI9VuXhQ==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.0.101] ([84.119.92.193]) by smtp.web.de (mrweb106
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1MlbLM-1sIa4G2VkI-00hRNI; Wed, 28
- Aug 2024 19:05:46 +0200
-Message-ID: <d657110b726646efa972c5e83bfce6c6b1627626.camel@web.de>
-Subject: Re: [PATCH] wifi: mt76: mt7921: fix null pointer access in
- mt792x_mac_link_bss_remove
-From: Bert Karwatzki <spasswolf@web.de>
-To: Mike Lothian <mike@fireburn.co.uk>
-Cc: Linux regressions mailing list <regressions@lists.linux.dev>, 
-	sean.wang@kernel.org, nbd@nbd.name, lorenzo.bianconi@redhat.com, 
-	sean.wang@mediatek.com, deren.wu@mediatek.com, mingyen.hsieh@mediatek.com, 
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	spasswolf@web.de
-Date: Wed, 28 Aug 2024 19:05:44 +0200
-In-Reply-To: <CAHbf0-FfAQhuu1TgQ_jVcxPqLsF-ON8vC1QJ=mNhis44dYWufw@mail.gmail.com>
-References: <20240718234633.12737-1-sean.wang@kernel.org>
-	 <0124ff39-7d63-49f8-bacd-3a40ce37ec4d@leemhuis.info>
-	 <CAHbf0-Hn=ZyYpk7bS1yLK7K3ZpfWKgt3-t=c9Nhdj3Ov3H84mQ@mail.gmail.com>
-	 <f7197c55d059cc8ddbf6c3def16dc414c5ec0b42.camel@web.de>
-	 <CAHbf0-EBHERbxPGakY4-1jTQWqGqua3F0OYZjxcakdemJ5Soqw@mail.gmail.com>
-	 <51e80bde6e3f3256ecdea2e5260463341e65578e.camel@web.de>
-	 <CAHbf0-HYi=x11bc-sMJFbZ4cbkdphMYQ_hjzD_wrPvJevVwyYg@mail.gmail.com>
-	 <980698e0d6dfa1e0043edfed6e174ff17705e053.camel@web.de>
-	 <CAHbf0-FfAQhuu1TgQ_jVcxPqLsF-ON8vC1QJ=mNhis44dYWufw@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.53.2-1 
+	id 1sjTTc-000000002p7-0Xmt;
+	Thu, 29 Aug 2024 00:57:30 +0000
+Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 47SKiNqp003285;
+	Thu, 29 Aug 2024 00:57:19 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=to
+	:cc:subject:from:in-reply-to:message-id:references:date
+	:content-type:mime-version; s=corp-2023-11-20; bh=C1uVFJaaGw0bVN
+	8nBb1owwN5pOu+mU/IFql0yDiAbs0=; b=MJlkjYjrNe/49fiwPmm46Q0SF4QWJJ
+	g28B+yTelvum1G14FwicuHyvBFFNMY2+aPxXZEIrCs4SnGJHvH/daAWMWCnRaoIq
+	GnROFUbd4m79IBNBS1rps7gnvUICDT7Twj/YKxE/G2I0BZKQyaPuc4qZuhDm7Hlr
+	3QobFEGNn8dRsYFbrdu/1fh2ovJ9ehXAS5MOd6XyhcOdXUgMAVnMOEY/qjraBrmK
+	2okRh3ohEkodgIUtxKlYjVin4liFeS2/vzZ96bkpjJlVCR63gxE2LnsbkQzdd/n8
+	DaBxdSYfZR0KzV+lmpn52NbWoghpP+9Nf5F9D+8WYeOgmPEpcq+I9QXA==
+Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 419pukjy5t-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 29 Aug 2024 00:57:19 +0000 (GMT)
+Received: from pps.filterd (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 47SMd2TT020166;
+	Thu, 29 Aug 2024 00:57:17 GMT
+Received: from nam04-bn8-obe.outbound.protection.outlook.com (mail-bn8nam04lp2048.outbound.protection.outlook.com [104.47.74.48])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 418j8pswa0-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 29 Aug 2024 00:57:17 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=RIjH1O14fiZx6tBUs+2grW/AUQ3m70kVoTF2rUWeYcAWfNeJI/JYiDJLp9UAIoY3Y6bGKdmluQWRuZoc15DhHF5QXe/4d8PPu93qwJsKqAFSlMLlr2PNdYAJ+2XOitbUCHkC0S1ZBh57dECNCUIQYwA5iOZf4x5w20leyJhxzFJql4wdyPUul/BMsFadRnsFdMxyKaH787W5AVVAQBc5TZwGooF8c0A7Phid3lFTg43o7upDzhd+Gz8/5Ckh809uoJ5Xmjd16seaaFgmGoQ+IUS5ZbZL8B37D6gYppnuz48Swy/3RUk78aVZq+tH4KIsisJ6XuIyKxKNFaApCW99sg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=C1uVFJaaGw0bVN8nBb1owwN5pOu+mU/IFql0yDiAbs0=;
+ b=mWRpfm2yAhsLnHbnC2lRRpL9RXzYgUW/g0YXoFE0ZyMi8fIHXNHFVzMJC02ZBGhHRTEJC8cgSjWMXotnUkhRjQCNM9cIvysw6oTzVDjuTtjoCmCvH3Yo5BtfVrf5jYpgsrIDzMOD65hsmmXgMT4o61WlruBIm277KCzRfWOZcJgi01ZVjQ/NO2KDZzDIjGpJKTb4cE6LIZgEIeEw50oVAYdw1MNdL4FJoWpkh7HhwDm3O29m8FSGmdTkdUGizSmx0n3vDj7GBlYtgQo1QHD7vwOm5h3MHZyZDo7KlT8DDfGKggIFueMCVSUmk9946cA8z5FvYxSOfVwmFDjxjJBbcA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=C1uVFJaaGw0bVN8nBb1owwN5pOu+mU/IFql0yDiAbs0=;
+ b=fLcmNYldKnMIaWfjMgIQKD0/ZsFdPyLv9eJCg6CJpKJC8yjQ3/dAWOLUNoi6JOPUOUtnB7bXcsfaY27WARzHD2zaJRKXz60YbzH3PtJX5vqa9OxhtyQoa6KHrdT9KiYPpnsu3hov7+pUBlDl2NnGJ67cvT0l0ty5/pKdJZCMR54=
+Received: from PH0PR10MB4759.namprd10.prod.outlook.com (2603:10b6:510:3d::12)
+ by SJ0PR10MB4447.namprd10.prod.outlook.com (2603:10b6:a03:2dc::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7918.19; Thu, 29 Aug
+ 2024 00:57:15 +0000
+Received: from PH0PR10MB4759.namprd10.prod.outlook.com
+ ([fe80::5c74:6a24:843e:e8f7]) by PH0PR10MB4759.namprd10.prod.outlook.com
+ ([fe80::5c74:6a24:843e:e8f7%6]) with mapi id 15.20.7918.017; Thu, 29 Aug 2024
+ 00:57:14 +0000
+To: Christoph Hellwig <hch@lst.de>
+Cc: iommu@lists.linux.dev, "Martin K. Petersen"
+ <martin.petersen@oracle.com>,
+        Robin Murphy <robin.murphy@arm.com>,
+        Marek
+ Szyprowski <m.szyprowski@samsung.com>,
+        linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
+        linux-arm-msm@vger.kernel.org, dri-devel@lists.freedesktop.org,
+        dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+        linux-mmc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+        linux-hyperv@vger.kernel.org, netdev@vger.kernel.org
+Subject: Re: remove the dma_set_{max_seg_size,seg_boundary,min_align_mask}
+ return value v2
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+In-Reply-To: <20240824034925.1163244-1-hch@lst.de> (Christoph Hellwig's
+	message of "Sat, 24 Aug 2024 05:49:11 +0200")
+Organization: Oracle Corporation
+Message-ID: <yq1v7zkdu3s.fsf@ca-mkp.ca.oracle.com>
+References: <20240824034925.1163244-1-hch@lst.de>
+Date: Wed, 28 Aug 2024 20:57:13 -0400
+Content-Type: text/plain
+X-ClientProxiedBy: BLAPR03CA0039.namprd03.prod.outlook.com
+ (2603:10b6:208:32d::14) To PH0PR10MB4759.namprd10.prod.outlook.com
+ (2603:10b6:510:3d::12)
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:GratE7iSmB7TxXPbpEaoZJRP2+gUdnaiYVaRKvQYfjDN50ceb8C
- gFN/tPeyqYlP37JUA+MRmdfOu67pWmlUY+7iErTVbZHdZYAZhkkgOhuZQvO2xM5+Bum24N2
- N6O8lhVUONF79JJw4Fq4s5vA6gtgzT/9pWu/kSJOjfwc/bvbPl+JPEXxif9PMcgW55hRd2m
- UG8k3uwobFJO59/O7eabQ==
-UI-OutboundReport: notjunk:1;M01:P0:rplTcAYhj8o=;a2Q8lYH/qEYq7LRmuhRAd6H94lM
- 7hzVqOcoIWRvUTvEzVDRJRzpubAAX4HoebtkBZN4BQ4ucLt889VyVlhtyJtGeRFubXriFvaFr
- N89Pv4NzmnGWe+6UXL2PoOP2AaO7JuSF3OlsHAccR6nI1txm2t96JtRMnLoVkqbLSTxSSJSzD
- mp200NsW4PXsVS8fI/5ilX5CsOtuw57kYOWlUXaOEqaPQwxZ5f/+96gTdpF/et7gJ0QEROBlf
- LPNfqnEEJY9knLfHSMhn3ubVaLASAYJUIVlFjXdbF1vUJXsvP2wV+rpSwZNdwpnVIsR1o6W8I
- JPGHjaBLwkTDKDdJTB2KHLv2tgVZU9eFPpRV6cIyw3daJng/Zbi8qTJDzSDtFJxa0/9ptUwE7
- p3fiDFL3mUSo2z1fpOXUAqUEo0Sw3eJGUjl6ju5r8eC9JjHsyLjKEw605T/dM8R+m5/QfS9Rc
- /XyaZvrzIlCCJp7MnQ25qRXTKDARjudq9BlqiY1YCFBbuF6f/yLzKeM1is1Pa7yYH46125RdG
- +BVMjPx1/tihXchijgEgG35oTSEf8giIFRLD4UVWDl5Mt71/Ft3Dj7/jHhOxTtjnhx7NlJ4V+
- Oy3cwmyoD7d6+9RLwvqg7t43F983D25uLiM/wtrYMsJeXMrP6kkLSHzi4Dt/7OudPd9Ab88Cb
- 95uCBAykAu7tSise0J088hjtD2Nkff1kBSmGj46sthYkpgwfWsHRhXbhHkE8DPY6KTBs/mvH7
- tXou/WX82vT7KWxy5aU3G7mj9NYd2ckcl/u8+6+tzB72koY8b939TStD9p4rQGb4TbI+sQHou
- xf88q2lI0v3DBifq9BcXtv7g==
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR10MB4759:EE_|SJ0PR10MB4447:EE_
+X-MS-Office365-Filtering-Correlation-Id: 76beca9f-ed74-49d4-e6a8-08dcc7c585d7
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|1800799024|7416014|366016;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?iDqlXxe6wYmRwRiKZnDyyoNtXC8SRvYSwhcytIkW2CMqfwx9uACP5IlMZIr0?=
+ =?us-ascii?Q?Zj8xL0V3d8knLrzu5fvW6Cr8zgBF0iR29XD7fl9Eh32qq0+MWeyGrYnR7fx6?=
+ =?us-ascii?Q?7NTYKvoBltzP4iBg+LxP5ezBpfLpCv5T3GSCe9/A5edL6O0m3+Cd1E7/H7Q1?=
+ =?us-ascii?Q?qMwiU6GFvkJXe7jnhIvvKwSYM37k06LO+9/9/LswfCbBanEO4eDsk7YPk/0i?=
+ =?us-ascii?Q?mBxqalg1MjNWNgDzCYeEp5eayox4K5GcsfnSBLwPypzNPUkzvGebmesNxemq?=
+ =?us-ascii?Q?Mg/5rb+Cojq5vbw+ciTfhb1VZA79Pa47ZWlCsiuspqXQLqXZ4Sj3BhZBSsTc?=
+ =?us-ascii?Q?LFLUDBYDuB6XH681IftwfKkT3B4u5PD6VG0vVF7h8gAMpaClH0mYlsQHaV/z?=
+ =?us-ascii?Q?ytdbcnhAxcifZFMKjHn2e6YmtCM3JfTGB4dVT0cNIKU866V/tGKu8cTsfLRX?=
+ =?us-ascii?Q?u3UCx6B9reqaMx1mKua/OsvuHZtFFqyqFH9REcjR0FQMEHbPt31xgcV83J3u?=
+ =?us-ascii?Q?dwJarmPcnukZErftDq4aTMtcCWNj4dvemW1nNKWzbOmcxpcM6Iz7EDrsYXtA?=
+ =?us-ascii?Q?dDJU48WgLv1I9awzvEgr6ZmqQCCGto+4WUocS8T/hjXfF8PJhLCipf5rMENB?=
+ =?us-ascii?Q?MH1hV84YwzyKXSqz1iEtlJWoCbzX1PsW/vE+2RUB8zlEaapUGCPIz9aMuzkY?=
+ =?us-ascii?Q?EKBmhOf3ytEyx15TS7bIaB6DOfKfhRFp/2JUu6tHvo6BWkiTZLfQXM+BepnP?=
+ =?us-ascii?Q?q+vTCKjMwmzfqDST2VthUcd1cPErh31t8B1tLQggFClsRGXwjHrJ88WRAIsd?=
+ =?us-ascii?Q?EA5DVyY1d+nV37NNJyj0/IsSuxMI/Xab9Ei4u0T28HbI9RyEQi5y0t1hckPd?=
+ =?us-ascii?Q?xMS2fkyZNXEioasMxlR0vIIRfiHdqJDWyq9hbg3d0KCb8Jdvxo18LnMqqkkm?=
+ =?us-ascii?Q?VXV23JaWpYVK72RrJMLdua106WqsFGJMVdwWj9Ecar7nExmIiBqDIwhdvo7P?=
+ =?us-ascii?Q?/OAP5wWPhS1IFsTvWGZRFw1kP1nyu7AkAHWTCO75oEmvkMXqe0Hqfd2zVwuG?=
+ =?us-ascii?Q?VucBKPz21soTbLy5sym6wx1eZSdDqdNxwqqc0ipxbGamPinoIxhJfaDB8hfk?=
+ =?us-ascii?Q?ep+QebQM9iSk3WzpaA0kPiNQgpzSOXj2wTX62fzH+WCeZNIzZpSIQlWlrp9V?=
+ =?us-ascii?Q?17QArqXfeb2xpFbDbW2oMsYQVgcrfKcwC4ksKZPvYJaDWRuKLueDj5HxQJ11?=
+ =?us-ascii?Q?neQOC+ObTeASE6EFzKo7qOICRvAGMz4YXEASedaaD/NogMZwebUFHibGqLKr?=
+ =?us-ascii?Q?QfNIzk6TW2Hx/jSNff6BsHqlVe8ArJA/bO5x3I3dtOh9Cw=3D=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR10MB4759.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(1800799024)(7416014)(366016);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?EvuRtiFDgtw+EZnEu3qsDaSDDxTm7NGFOzgFHij1B5MXvI51VFgvud2k+WUe?=
+ =?us-ascii?Q?qwD1IuMXyN08ZaDg3sscz50RfWAIj5BXu6vV+WoACO5kQ1e763z5KqX4ghcb?=
+ =?us-ascii?Q?vKpis9XJmB/6Isztg1tfW+kRZ2kz+QxjD0UsWiL49xvq6Bx6p9KSMGBACApU?=
+ =?us-ascii?Q?QZh/HSZwLYGYN76gXgZUWY8QQnHnpa67z79wrQUCXWu9lijl9nfe+TwHNZbk?=
+ =?us-ascii?Q?WU5EW5KO+T3VXgr1ILuv7h+39PL7GxlKr0bD+FeYzbN4MYs72bwq8pPWIoz1?=
+ =?us-ascii?Q?xN5S2+E2RG19PFV+vCaRnkk/QpTetneMzhNoaNbHqAOkjhHrboddOGC+UBIQ?=
+ =?us-ascii?Q?sm7/Z3VZWmL5YlRybLdjov5SW6VTUbGp/rmW1aBWZTNyV0GW1ADzaW5FFUSS?=
+ =?us-ascii?Q?E7jB0dzE4tGWwfV1fdjdHS6YW6P1GqTqxAZYxvpKgVP6Qw6yLYGe25eIP/SH?=
+ =?us-ascii?Q?a0Er5N4VjCPyc1CB+rDRFdlR5Ez6RhkCcYhC7Eek5lbRr0zxzji6zgf+1L1c?=
+ =?us-ascii?Q?u0q3oMIzbrWWopgnF0VUxZOZFf0ynEWospDXNuLbZewlIHgEHF9vorYcqyZc?=
+ =?us-ascii?Q?TGsJCeDST+nNc4YrQjncEH6sN1hRGbAvAloCnba9T5RT4KNll+dm06q6b++4?=
+ =?us-ascii?Q?QmbfsGeTzc7XABXi4qroGEGK2CSk1eTVtZnvun70a+LPlHICXzArywv/WlwR?=
+ =?us-ascii?Q?RBLY8vj0Y0qVeUYKjjy4oyBZfOJLOfuaP3ELf16TIZ99FT/bRzpiYcgHOqnA?=
+ =?us-ascii?Q?aQa+z9qatTkzH29PX4ZMs5J0vwiCWdWWAQoDaLmRUk3o+6gedGVDMv9IFq76?=
+ =?us-ascii?Q?v1UuzxDoTwrpNJEPS4cZlox1omTNLWdnC9pBsCvnbhRdBgCWbcOhVI5A5/Ys?=
+ =?us-ascii?Q?VEC+ZjAGsvF/V7zJuRi9bs15dYZnltYi4eRzT+Y19FQ1CjaqH9NykDhMhkAx?=
+ =?us-ascii?Q?ACcwM40kWhFxMul2+H5pWNnAzAPSibpMf0q6nXmCJit9rjkINVK8j518H6qe?=
+ =?us-ascii?Q?sTpAavKORDpsN2rKRZzKoTI20KY1m0I7xt8jCVkFn9PvCkRBp3qGuhrsWtb3?=
+ =?us-ascii?Q?OZrz7wauE56/8Y5E+amGs48rjoslGi7h2f3DBxmTWcIA8u6BqKlgDqs5p4nI?=
+ =?us-ascii?Q?gSU+X2ffjsveOSARIhr8haf+mPGR7h9AqF98LYC5LgCXpC15wTddKHSpT89H?=
+ =?us-ascii?Q?W6ohLHShWipJOpExoliS/c1KnIb5AIc7R0xDwZFIk+IOh8+NqOYDfPt4U2my?=
+ =?us-ascii?Q?AR804sP1vf5kiDSHaPWcLQRO25yTE0cL+3Mg0yT7qMa1V0OG017nM2JmEJMh?=
+ =?us-ascii?Q?+lrEAczkBwprE5J/rKkqyO/KfFGnOA+CQZB5MmaxlqGJ8NmRaIXBA105VAmH?=
+ =?us-ascii?Q?4Y9vjac2zYwSiVC++Pw1/xtS6Hd36LMux8/zjK0qrOQibKczWAeh6LwvWL9I?=
+ =?us-ascii?Q?aWm9b1U7D8NjFHY/Ub/g3B60am4SOVWjkp3dwEWB3L00NZT2G2t7BMauHzB4?=
+ =?us-ascii?Q?mvvTJhno4U7oEZl2TVQuwxV2vlFoGj4C187EbV4QbHMvlRDA1u/lejf4t1HH?=
+ =?us-ascii?Q?HnuVS5El7Usz7LGRsw1HDpMmzcxf9o9sdKHZQUBrgry0ECR+UtPDyQO5336j?=
+ =?us-ascii?Q?Iw=3D=3D?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: PvaQdh5BitvDaier5HsmhAicmJoLgMOeYN1IAp/TdmjRdXc1SAZ9yyLWgM+vt47Tkty63JB2R5DYDnygpnED+04qDME0m77CezAFU3hA47ygS2ULvplZse1EHy39JzsbQq75LCoFwux3Dh3jd/XENYRm31UCbjBxX8EBymIhdnwrgJ+ROOSNUie3ZKHORkYacZZa5dwpkPfj9voLOLbwMbPNIVPFrxmOXhTdqAqbfjKH58JvoPfZvBVJZa6AHd7ymjRXgdLKAJKMFDAlJbzAuLdohD6HcbhmeqG5DmjwESdqx4f3llYYev8Td3XkaBfEkTxJ00WgbxuNz/ZJD7rCVRIwLmVLnvg56XaLEfPRj7NCqc2um0FyoDol1QpV/YUP4lYNXO/QlmRNZr3Pzy9IaWWQtckSWlEKAX1mx3ivG4XiB7L6wDleUXh8H4l1pM9+c3DLPPiKe/sJoDQXovsROAtlGHX2P/YdO7XEgNzd6/JO+K1yOurMUrHGm+H4YWaVf6PmjAPDdxBwAtownAh1LXfveYABrya7Fp3H1slFeFtf8XVg03cWJx7fVP4RhknyeUBBf+4YLoUU2HL4agFfsvGdfT9vQYH7u5Lwob7QKAQ=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 76beca9f-ed74-49d4-e6a8-08dcc7c585d7
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB4759.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Aug 2024 00:57:14.8856
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Sknl6sTTi3GglHlxYKx323m5rpbKg/70pbt+9vrK1CIOQ7xcaWtvFNRYVME6JsuZzzy92TQzJRbEeRDtL9YXF9B1IDEnMgj7lPN1mDU+ZxU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR10MB4447
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
+ definitions=2024-08-28_10,2024-08-28_01,2024-05-17_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 mlxlogscore=999
+ adultscore=0 mlxscore=0 spamscore=0 malwarescore=0 phishscore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2407110000 definitions=main-2408290005
+X-Proofpoint-GUID: Yx23GV4pwY38ymcssZ1My6Hft5sNtRHP
+X-Proofpoint-ORIG-GUID: Yx23GV4pwY38ymcssZ1My6Hft5sNtRHP
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240828_100557_485189_27A51CD1 
-X-CRM114-Status: GOOD (  26.97  )
+X-CRM114-CacheID: sfid-20240828_175728_587637_4EEAAA0F 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,217 +197,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, dem 28.08.2024 um 16:20 +0100 schrieb Mike Lothian:
-> On Wed, 28 Aug 2024 at 09:17, Bert Karwatzki <spasswolf@web.de> wrote:
-> >
-> > Am Mittwoch, dem 28.08.2024 um 00:38 +0100 schrieb Mike Lothian:
-> > > But not the follow on fix which fixes suspend...
-> > >
-> > > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> > > b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> > > index 2e6268cb06c0..a85c19da77e5 100644
-> > > --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> > > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> > > @@ -1182,7 +1182,7 @@ static void mt7921_ipv6_addr_change(struct
-> > > ieee80211_hw *hw,
-> > >       struct inet6_dev *idev)
-> > >  {
-> > >   struct mt792x_vif *mvif =3D (struct mt792x_vif *)vif->drv_priv;
-> > > - struct mt792x_dev *dev =3D mvif->phy->dev;
-> > > + struct mt792x_dev *dev =3D mt792x_hw_dev(hw);
-> > >   struct inet6_ifaddr *ifa;
-> > >   struct in6_addr ns_addrs[IEEE80211_BSS_ARP_ADDR_LIST_LEN];
-> > >   struct sk_buff *skb;
-> > > @@ -1205,6 +1205,9 @@ static void mt7921_ipv6_addr_change(struct
-> > > ieee80211_hw *hw,
-> > >   },
-> > >   };
-> > >
-> > > + if (!mvif->phy)
-> > > + return;
-> > > +
-> > >   read_lock_bh(&idev->lock);
-> > >   list_for_each_entry(ifa, &idev->addr_list, if_list) {
-> > >   if (ifa->flags & IFA_F_TENTATIVE)
-> > >
-> > > > > >
-> > > >
-> >
-> > That is interesting (or odd) because suspend (s2idle) works for me in =
-next-
-> > 20240827 on this hardware:
-> >
-> > 04:00.0 Network controller [0280]: MEDIATEK Corp. MT7921K (RZ608) Wi-F=
-i 6E 80MHz
-> > [14c3:0608]
-> >
-> > are you using a different model?
-> >
-> > [  272.780054] [    T848] wlp4s0: deauthenticating from 54:67:51:3d:a2=
-:d2 by
-> > local choice (Reason: 3=3DDEAUTH_LEAVING)
-> > [  273.067438] [   T3437] PM: suspend entry (s2idle)
-> > [  273.151140] [   T3437] Filesystems sync: 0.083 seconds
-> > [  273.157029] [   T3437] Freezing user space processes
-> >
-> > Can your the post the backtrace of your error (when commit 479ffee68d5=
-9c599f is
-> > applied)?
-> >
-> > Bert Karwatzki
->
-> Apologies, it wasn't a suspend issue, it was when the router was restart=
-ed
->
-> The error I saw was previously in this thread and someone pointed me
-> to the patch that fixed it - but that hasn't made it upstream yet
->
-> Aug 01 08:59:33 quark kernel: BUG: kernel NULL pointer dereference,
-> address: 0000000000000008
-> Aug 01 08:59:33 quark kernel: #PF: supervisor read access in kernel mode
-> Aug 01 08:59:33 quark kernel: #PF: error_code(0x0000) - not-present page
-> Aug 01 08:59:33 quark kernel: PGD 0 P4D 0
-> Aug 01 08:59:33 quark kernel: Oops: Oops: 0000 [#1] PREEMPT SMP
-> Aug 01 08:59:33 quark kernel: CPU: 13 UID: 0 PID: 468 Comm:
-> NetworkManager Not tainted 6.11.0-rc1-tip+ #3200
-> 9c927d6f3c59d826d15d8e39c195392d1d16b8a8
-> Aug 01 08:59:33 quark kernel: Hardware name: Micro Computer (HK) Tech
-> Limited EliteMini Series/HPBSD, BIOS 1.02 03/28/2024
-> Aug 01 08:59:33 quark kernel: RIP: 0010:mt7921_ipv6_addr_change
-> Aug 01 08:59:33 quark kernel: Code: 41 57 41 56 41 54 53 48 83 e4 f0
-> 48 83 ec 50 48 8b 86 70 09 00 00 0f b6 8e 90 04 00 00 4c 8d ba 68 02
-> 00 00 49 89 d6 4c 89 ff <48> 8b 58 08 88 4c 24 04 66 c7 44 24 05 00 00
-> c6 44 24 07 00 66 c7
-> Aug 01 08:59:33 quark kernel: RSP: 0018:ffffc900069373b0 EFLAGS: 0001028=
-2
-> Aug 01 08:59:33 quark kernel: RAX: 0000000000000000 RBX:
-> ffff888106740920 RCX: 0000000000000000
-> Aug 01 08:59:33 quark kernel: RDX: ffff888106854800 RSI:
-> ffff88810bb35ca0 RDI: ffff888106854a68
-> Aug 01 08:59:33 quark kernel: RBP: ffffc90006937420 R08:
-> 0000000000000000 R09: ffff888104c98200
-> Aug 01 08:59:33 quark kernel: R10: ffffffff7fff0000 R11:
-> 0000000000000020 R12: 0000000000000002
-> Aug 01 08:59:33 quark kernel: R13: 0000000000000000 R14:
-> ffff888106854800 R15: ffff888106854a68
-> Aug 01 08:59:33 quark kernel: FS:  00007f4265049400(0000)
-> GS:ffff888c2df40000(0000) knlGS:0000000000000000
-> Aug 01 08:59:33 quark kernel: CS:  0010 DS: 0000 ES: 0000 CR0: 000000008=
-0050033
-> Aug 01 08:59:33 quark kernel: CR2: 0000000000000008 CR3:
-> 0000000117250000 CR4: 0000000000350ef0
-> Aug 01 08:59:33 quark kernel: Call Trace:
-> Aug 01 08:59:33 quark kernel:  <TASK>
-> Aug 01 08:59:33 quark kernel:  ? __die_body+0x66/0xb0
-> Aug 01 08:59:33 quark kernel:  ? page_fault_oops+0x39a/0x410
-> Aug 01 08:59:33 quark kernel:  ? exc_page_fault+0x59/0xa0
-> Aug 01 08:59:33 quark kernel:  ? asm_exc_page_fault+0x22/0x30
-> Aug 01 08:59:33 quark kernel:  ? mt7921_ipv6_addr_change
-> Aug 01 08:59:33 quark kernel:  ? __try_to_del_timer_sync
-> Aug 01 08:59:33 quark kernel:  ieee80211_ifa6_changed+0x68/0x120
-> Aug 01 08:59:33 quark kernel:  atomic_notifier_call_chain+0x45/0xc0
-> Aug 01 08:59:33 quark kernel:  addrconf_ifdown+0x521/0x7d0
-> Aug 01 08:59:33 quark kernel:  addrconf_notify+0x1ed/0x4a0
-> Aug 01 08:59:33 quark kernel:  raw_notifier_call_chain+0x45/0xb0
-> Aug 01 08:59:33 quark kernel:  __dev_notify_flags+0xf4/0x200
-> Aug 01 08:59:33 quark kernel:  dev_change_flags+0x49/0x50
-> Aug 01 08:59:33 quark kernel:  do_setlink+0x49b/0x1300
-> Aug 01 08:59:33 quark kernel:  ? terminate_walk+0x6b/0x100
-> Aug 01 08:59:33 quark kernel:  ? __nla_validate_parse
-> Aug 01 08:59:33 quark kernel:  ? filename_lookup+0xc7/0x1b0
-> Aug 01 08:59:33 quark kernel:  rtnl_newlink+0xb6a/0xde0
-> Aug 01 08:59:33 quark kernel:  ? __wake_up_sync_key+0x51/0x80
-> Aug 01 08:59:33 quark kernel:  ? scm_destroy+0xc/0x30
-> Aug 01 08:59:33 quark kernel:  ? security_capable+0x38/0x50
-> Aug 01 08:59:33 quark kernel:  rtnetlink_rcv_msg+0x2dd/0x330
-> Aug 01 08:59:33 quark kernel:  ? select_task_rq_fair
-> Aug 01 08:59:33 quark kernel:  ? rtnetlink_bind+0x30/0x30
-> Aug 01 08:59:33 quark kernel:  netlink_rcv_skb+0xb5/0xf0
-> Aug 01 08:59:33 quark kernel:  netlink_unicast+0x230/0x330
-> Aug 01 08:59:33 quark kernel:  netlink_sendmsg+0x3b1/0x460
-> Aug 01 08:59:33 quark kernel:  ____sys_sendmsg
-> Aug 01 08:59:33 quark kernel:  ? chacha_block_generic+0x6a/0x130
-> Aug 01 08:59:33 quark kernel:  ___sys_sendmsg+0x282/0x2a0
-> Aug 01 08:59:33 quark kernel:  ? __fget_files+0x95/0xb0
-> Aug 01 08:59:33 quark kernel:  __se_sys_sendmsg+0xf4/0x120
-> Aug 01 08:59:33 quark kernel:  do_syscall_64+0x7e/0x130
-> Aug 01 08:59:33 quark kernel:  ? pollwake+0x52/0x60
-> Aug 01 08:59:33 quark kernel:  ? do_task_dead+0x50/0x50
-> Aug 01 08:59:33 quark kernel:  ? __wake_up_locked_key+0x48/0x70
-> Aug 01 08:59:33 quark kernel:  ? eventfd_write+0x193/0x1b0
-> Aug 01 08:59:33 quark kernel:  ? syscall_exit_to_user_mode+0x93/0xc0
-> Aug 01 08:59:33 quark kernel:  ? vfs_write+0xfa/0x3d0
-> Aug 01 08:59:33 quark kernel:  ? __fget_files+0x95/0xb0
-> Aug 01 08:59:33 quark kernel:  ? __fget_files+0x95/0xb0
-> Aug 01 08:59:33 quark kernel:  ? ksys_write+0x8f/0xb0
-> Aug 01 08:59:33 quark kernel:  ? arch_exit_to_user_mode_prepare+0x11/0x5=
-0
-> Aug 01 08:59:33 quark kernel:  ? syscall_exit_to_user_mode+0x93/0xc0
-> Aug 01 08:59:33 quark kernel:  ? do_syscall_64+0x8a/0x130
-> Aug 01 08:59:33 quark kernel:  ? syscall_exit_to_user_mode+0x93/0xc0
-> Aug 01 08:59:33 quark kernel:  ? do_syscall_64+0x8a/0x130
-> Aug 01 08:59:33 quark kernel:  ? do_syscall_64+0x8a/0x130
-> Aug 01 08:59:33 quark kernel:  ? do_syscall_64+0x8a/0x130
-> Aug 01 08:59:33 quark kernel:  ? arch_exit_to_user_mode_prepare+0x11/0x5=
-0
-> Aug 01 08:59:33 quark kernel:  entry_SYSCALL_64_after_hwframe+0x4b/0x53
-> Aug 01 08:59:33 quark kernel: RIP: 0033:0x7f4264d31fae
-> Aug 01 08:59:33 quark kernel: Code: 20 89 54 24 1c 48 89 74 24 10 89
-> 7c 24 08 e8 a9 75 f7 ff 41 89 c0 8b 54 24 1c 48 8b 74 24 10 b8 2e 00
-> 00 00 8b 7c 24 08 0f 05 <48> 3d 00 f0 ff ff 77 3a 44 89 c7 48 89 44 24
-> 08 e8 fd 75 f7 ff 48
-> Aug 01 08:59:33 quark kernel: RSP: 002b:00007ffff4b1afa0 EFLAGS:
-> 00000293 ORIG_RAX: 000000000000002e
-> Aug 01 08:59:33 quark kernel: RAX: ffffffffffffffda RBX:
-> 000055c35260c570 RCX: 00007f4264d31fae
-> Aug 01 08:59:33 quark kernel: RDX: 0000000000000000 RSI:
-> 00007ffff4b1afe0 RDI: 000000000000000d
-> Aug 01 08:59:33 quark kernel: RBP: 00007ffff4b1b050 R08:
-> 0000000000000000 R09: 0000000000000000
-> Aug 01 08:59:33 quark kernel: R10: 000000000000009d R11:
-> 0000000000000293 R12: 0000000000000004
-> Aug 01 08:59:33 quark kernel: R13: 0000000000000000 R14:
-> 0000000000000000 R15: 0000000000000000
-> Aug 01 08:59:33 quark kernel:  </TASK>
-> Aug 01 08:59:33 quark kernel: Modules linked in:
-> Aug 01 08:59:33 quark kernel: CR2: 0000000000000008
-> Aug 01 08:59:33 quark kernel: ---[ end trace 0000000000000000 ]---
-> Aug 01 08:59:33 quark kernel: RIP: 0010:mt7921_ipv6_addr_change
-> Aug 01 08:59:33 quark kernel: Code: 41 57 41 56 41 54 53 48 83 e4 f0
-> 48 83 ec 50 48 8b 86 70 09 00 00 0f b6 8e 90 04 00 00 4c 8d ba 68 02
-> 00 00 49 89 d6 4c 89 ff <48> 8b 58 08 88 4c 24 04 66 c7 44 24 05 00 00
-> c6 44 24 07 00 66 c7
-> Aug 01 08:59:33 quark kernel: RSP: 0018:ffffc900069373b0 EFLAGS: 0001028=
-2
-> Aug 01 08:59:33 quark kernel: RAX: 0000000000000000 RBX:
-> ffff888106740920 RCX: 0000000000000000
-> Aug 01 08:59:33 quark kernel: RDX: ffff888106854800 RSI:
-> ffff88810bb35ca0 RDI: ffff888106854a68
-> Aug 01 08:59:33 quark kernel: RBP: ffffc90006937420 R08:
-> 0000000000000000 R09: ffff888104c98200
-> Aug 01 08:59:33 quark kernel: R10: ffffffff7fff0000 R11:
-> 0000000000000020 R12: 0000000000000002
-> Aug 01 08:59:33 quark kernel: R13: 0000000000000000 R14:
-> ffff888106854800 R15: ffff888106854a68
-> Aug 01 08:59:33 quark kernel: FS:  00007f4265049400(0000)
-> GS:ffff888c2df40000(0000) knlGS:0000000000000000
-> Aug 01 08:59:33 quark kernel: CS:  0010 DS: 0000 ES: 0000 CR0: 000000008=
-0050033
-> Aug 01 08:59:33 quark kernel: CR2: 0000000000000008 CR3:
-> 0000000117250000 CR4: 0000000000350ef0
 
+Christoph,
 
-this seems to be exactly the same error as I had (It can also be actively
-provoked by "nmcli radio wifi off"), but in my case commit 479ffee68d59c59=
-9 is
-enough to fix the issue. Can you please double check that your faulty kern=
-el
-does not include this commit. If it does and you still get the error I can=
- post
-the fix to the list.
+> the above three functions can only return errors if the bus code
+> failed to allocate the dma_parms structure, which is a grave error
+> that won't get us far. Thus remove the pointless return values, that
+> so far have fortunately been mostly ignored, but which the cleanup
+> brigade now wants to check for for no good reason.
 
-Bert Karwatzki
+Reviewed-by: Martin K. Petersen <martin.petersen@oracle.com>
 
-
-
+-- 
+Martin K. Petersen	Oracle Linux Engineering
 
