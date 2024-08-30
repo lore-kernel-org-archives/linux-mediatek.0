@@ -4,92 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 823D4CA0EFB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Aug 2024 09:46:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B0FBCA0EFC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Aug 2024 09:46:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QCbZZ+HLARh/+zhHKGYSQ1ZKICknsRWOTY5EOhqpK0s=; b=bi+vgIm7XtTjn0AzThzZmjVaFa
-	adJJtBb9oTsyP83y732rmZ+kdsqR/c6qV7lEDLM88ff65OB2bfmU3Gpk346zimfvni9PGDXGkXVks
-	5Fp12YMwcJFdlQztVcUG6Y84KCyUOFmCKnsulz0seOavOD1r12YV8L+GzPwYmrTE0WNjZE2K3wuW5
-	sOGRROl+TxxoPvBaErfJNM74+sZpg2VzLs+0a9aa0EcztAlhyQT2PWvnAnMIevGJB2yu/AE17HV1a
-	+CNS3j2o4KXwBfdL5/3ppx/qLMkYfRyuXmAKJzyVDNsb2vnFrAkg/3K3ntnsvmrl0BthFumKGYPNm
-	nZkieA5Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hFoJ8uGU6Wt+2B+a3U8PT9o5qr4L6h8Nf/lLSdsGyCQ=; b=3z9OiKdbDAmfJYdoycJ3TSxB/N
+	NLvMi0xLk7tESdRY5fsTvMIFvQ1Yojm/dDwktkGHbDZVKOrC95fGivLmNAMXi8xk3udiZT4Y9LY9Z
+	AcXQwTzTI0bHrzJLd+CSiqpQy01pJDjUbT6PWCFQgW7k4QklA2lBIqdzXGGlxdvnvqf5wda9jhZTL
+	7XUXqufWt4C8DO5+1NtYn2ZQ7kI/ZviCc4x2RWRTWMLucTiFK4sMJxPfq7WK2eq3gfjxiOsnNHpoS
+	e4jcMPa4J6TiwidicR6Nc26RE+q+FppscK3R8JNMPUOZ29431lnT4MeP/fHxX654xwyrMtfRv9n8e
+	5nvZo1Ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjyCn-00000005cot-0VVU;
-	Fri, 30 Aug 2024 09:46:09 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1sjyCp-00000005cqv-2kFx;
+	Fri, 30 Aug 2024 09:46:11 +0000
+Received: from mail-oo1-xc2b.google.com ([2607:f8b0:4864:20::c2b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjwJW-00000005BEi-25TU
-	for linux-mediatek@bombadil.infradead.org;
-	Fri, 30 Aug 2024 07:44:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:Message-ID:
-	Date:Subject:CC:To:From:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=QCbZZ+HLARh/+zhHKGYSQ1ZKICknsRWOTY5EOhqpK0s=; b=RfVMEqW8UjNVrlwxBgX64M2jhu
-	sZSJ9N0+fUvhgmJDPHW26j2pOYsap6I7WDZyztVt2Nud9krLUoymysKxVv4EWtuZpve5lFk8pAuba
-	HAwj7t2p8FSZbqWhJV9+dHQ65wryLJJ/f1TKwKaWYP/xRsz0qcsUm8ii6pqbuOBH4lPUdlzqNyoPl
-	NWhvOyF25YRLzhAwqeNl62rnFzMPT74La8Lae3Hc0YpL0sTyjbkhSFqL7oncQzRZpHhUm2sR97E2q
-	CWLSgGiRUsnt/5G03GLQA/RwJ6UTn93QIppHjdXivzAP8ObhWvMrXNt+c9VXa0IERYwmmKQctjFmv
-	AzGhVsvQ==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjwJM-0000000BayH-2FHP
+	id 1sjxDR-00000005P7Y-2RRs
 	for linux-mediatek@lists.infradead.org;
-	Fri, 30 Aug 2024 07:44:54 +0000
-X-UUID: b0fba0c666a311efba0aef63c0775dbf-20240830
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=QCbZZ+HLARh/+zhHKGYSQ1ZKICknsRWOTY5EOhqpK0s=;
-	b=pD2sWegElDxnMkKLqSxyb3t/KdziKoM0eLDpblUPPiJKEhzWDklibSJE86+uCe7VJe1ZWtaJJ9bMZAAL9gtSX3OjoQCwAWV7GnVgDVhqBMSDS291St7kXKwCgX99duKyrBUntoDUXtS8qJ+OK2KS1UTVq9WKA2O3OOndwvlN304=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:90a6ea22-3b92-470b-8012-2c75a96ff3ca,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:c88c0a15-737d-40b3-9394-11d4ad6e91a1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: b0fba0c666a311efba0aef63c0775dbf-20240830
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 202662359; Fri, 30 Aug 2024 00:44:30 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 30 Aug 2024 15:44:28 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 30 Aug 2024 15:44:28 +0800
-From: <peter.wang@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
-	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>
-Subject: [PATCH v1 0/2] fix MCQ abort defect
-Date: Fri, 30 Aug 2024 15:44:24 +0800
-Message-ID: <20240830074426.21968-1-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	Fri, 30 Aug 2024 08:42:47 +0000
+Received: by mail-oo1-xc2b.google.com with SMTP id 006d021491bc7-5de8b17db8dso886966eaf.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 30 Aug 2024 01:42:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1725007364; x=1725612164; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=hFoJ8uGU6Wt+2B+a3U8PT9o5qr4L6h8Nf/lLSdsGyCQ=;
+        b=o9tB5QPR/lt9OYuTSVuoRfqsNuZoLpDlghZSwbdOS/w2m6cnvcCCZ+L9GtQpID6pxm
+         gAi3uAQjnVcSaY7aogsT1ehuCO5Am7gdfX8b9FzwUr5NkB7MON2xuy5f+f57F60ZLwCG
+         vWjLIqRVrITBtJ16hVQkqpnQ3+V+gdPd69ohOd6aCMFg+93cYBB0I0NAPfWDnLu/2NWZ
+         7k+Q/rjZA6SV4+5a6GDO2Eg3qPPzyChDMkT7cY58i6Es9OdhhQk0ssb9dtX2mzoLd8DD
+         ApB9cIqvKc2gJwcMGzqvEavfeh4UsCOC1vK5/ShxTWlg6X+U3rkIFmMhW8+WwLx3q8xu
+         5laQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1725007364; x=1725612164;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=hFoJ8uGU6Wt+2B+a3U8PT9o5qr4L6h8Nf/lLSdsGyCQ=;
+        b=gNUAtIuJmu/kRuUMztikgrAYoElBRsSmH3P5kQTnmU0oIuEdWo4HVWoxZgMDR68p9A
+         p3bqERQKA5XVaW+NgeQGdAJh5Sk3lrmqraQZAcgQuS0XACHPrsPe2A/BLc8JdONr1yGX
+         6RJ4bl2iG9HQxynQoTM+ANbdD8GJbnTGPx4H2eMap84uK54AaHf7iNLO//Wqw418Vos9
+         SVPOHfNrz1Oq4ElFELjCQph8oCApnpSIzus884yAOWO9H3UPi0NEmEELW2ZNaot9pRku
+         r8vbda7wsWbAKqFqPuWY1h+GXxsYRCJqlSBuLpyW3rouyTRzfxl1299Pq8838YcF8/8C
+         glBw==
+X-Forwarded-Encrypted: i=1; AJvYcCWT7pUzow3zH9xhGTBqTkEJo+f4BswkdZIKRZW3hhEiF3icsdnYxhZhzEK7WwlqCwc6PRcInMDcWAmLL1tszA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzkgUBttsCyuyQIvY4bnGNu1X+9QHvd7xzEgK2xGHhyDf9ZD3yx
+	pLYiDCkvRtaHS3aM2o/zMDTzv+diBf2FTVFxcDmy/ccVhiBzCqJuHMjDg9i4q/vU0UWtDMMFIv9
+	mcZ/j/12+88xfZ0rZu94eTI6A+Dh77Rciox8ZAg==
+X-Google-Smtp-Source: AGHT+IHBEq2kXBcob7OwHZwxMgPl68xRTiaqYdA20dFyB6L5ns13TYFSRrWJQJLVdlnc+h48Q+Hs/qXBirYHpgAHAeU=
+X-Received: by 2002:a05:6820:2216:b0:5d6:ae6:a852 with SMTP id
+ 006d021491bc7-5dfacf28289mr1998086eaf.6.1725007364035; Fri, 30 Aug 2024
+ 01:42:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20240830070351.2855919-1-jens.wiklander@linaro.org>
+ <20240830070351.2855919-4-jens.wiklander@linaro.org> <3bqb6mktkvbdl6h4eekad4mpjhyvzx7mjidhnanboygbwu2asz@6ros56bp6isd>
+In-Reply-To: <3bqb6mktkvbdl6h4eekad4mpjhyvzx7mjidhnanboygbwu2asz@6ros56bp6isd>
+From: Jens Wiklander <jens.wiklander@linaro.org>
+Date: Fri, 30 Aug 2024 10:42:32 +0200
+Message-ID: <CAHUa44Fd-Eo5-CUfxDgCFpRVbJP0gzA7LX_-5=cBfBd8NxhpDw@mail.gmail.com>
+Subject: Re: [RFC PATCH 3/4] dt-bindings: reserved-memory: add linaro,restricted-heap
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linaro-mm-sig@lists.linaro.org, op-tee@lists.trustedfirmware.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Olivier Masse <olivier.masse@nxp.com>, Thierry Reding <thierry.reding@gmail.com>, 
+	Yong Wu <yong.wu@mediatek.com>, Sumit Semwal <sumit.semwal@linaro.org>, 
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>, 
+	John Stultz <jstultz@google.com>, "T . J . Mercier" <tjmercier@google.com>, 
+	=?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+	Sumit Garg <sumit.garg@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240830_084453_325208_418D9260 
-X-CRM114-Status: UNSURE (   6.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240830_014245_670845_A69C9A7C 
+X-CRM114-Status: GOOD (  23.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,20 +101,122 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+On Fri, Aug 30, 2024 at 10:20=E2=80=AFAM Krzysztof Kozlowski <krzk@kernel.o=
+rg> wrote:
+>
+> On Fri, Aug 30, 2024 at 09:03:50AM +0200, Jens Wiklander wrote:
+> > From: Olivier Masse <olivier.masse@nxp.com>
+> >
+> > DMABUF reserved memory definition for OP-TEE secure data path feature.
+> >
+> > Signed-off-by: Olivier Masse <olivier.masse@nxp.com>
+> > Signed-off-by: Jens Wiklander <jens.wiklander@linaro.org>
+> > ---
+> >  .../linaro,restricted-heap.yaml               | 56 +++++++++++++++++++
+> >  1 file changed, 56 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/reserved-memory/l=
+inaro,restricted-heap.yaml
+> >
+> > diff --git a/Documentation/devicetree/bindings/reserved-memory/linaro,r=
+estricted-heap.yaml b/Documentation/devicetree/bindings/reserved-memory/lin=
+aro,restricted-heap.yaml
+> > new file mode 100644
+> > index 000000000000..0ab87cf02775
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/reserved-memory/linaro,restrict=
+ed-heap.yaml
+> > @@ -0,0 +1,56 @@
+> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/reserved-memory/linaro,restricted-h=
+eap.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Linaro Secure DMABUF Heap
+> > +
+> > +maintainers:
+> > +  - Olivier Masse <olivier.masse@nxp.com>
+> > +
+> > +description:
+> > +  Linaro OP-TEE firmware needs a reserved memory for the
+> > +  Secure Data Path feature (aka SDP).
+> > +  The purpose is to provide a restricted memory heap which allow
+> > +  the normal world OS (REE) to allocate/free restricted buffers.
+> > +  The TEE is reponsible for protecting the SDP memory buffers.
+> > +  TEE Trusted Application can access restricted memory references
+> > +  provided as parameters (DMABUF file descriptor).
+>
+> And what is the difference from regular reserved memory? Why it cannot
+> be used?
 
-This series fixes MCQ abort defect.
+Good question. I need a compatible =3D "linaro,restricted-heap" to find
+it, but it appears that's permitted with regular reserved memory.
+Let's drop this patch. Thanks for pointing me in the right direction.
 
-Peter Wang (2):
-  ufs: core: fix the issue of ICU failure
-  ufs: core: requeue MCQ abort request
+>
+> > +
+> > +allOf:
+> > +  - $ref: "reserved-memory.yaml"
+>
+> It does not look like you tested the bindings, at least after quick
+> look. Please run  (see
+> Documentation/devicetree/bindings/writing-schema.rst for instructions).
+> Maybe you need to update your dtschema and yamllint.
 
- drivers/ufs/core/ufs-mcq.c | 10 ++++++----
- drivers/ufs/core/ufshcd.c  | 21 ++++++++-------------
- include/ufs/ufshcd.h       |  2 ++
- 3 files changed, 16 insertions(+), 17 deletions(-)
+You're right, sorry.
 
--- 
-2.45.2
+>
+> > +
+> > +properties:
+> > +  compatible:
+> > +    const: linaro,restricted-heap
+> > +
+> > +  reg:
+> > +    description:
+> > +      Region of memory reserved for OP-TEE SDP feature
+> > +
+> > +  no-map:
+> > +    $ref: /schemas/types.yaml#/definitions/flag
+> > +    description:
+> > +      Avoid creating a virtual mapping of the region as part of the OS=
+'
+> > +      standard mapping of system memory.
+> > +
+> > +unevaluatedProperties: false
+>
+> This goes after "required:" block.
 
+OK
+
+>
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - no-map
+> > +
+> > +examples:
+> > +  - |
+> > +  reserved-memory {
+> > +    #address-cells =3D <2>;
+> > +    #size-cells =3D <2>;
+> > +
+> > +    sdp@3e800000 {
+> > +      compatible =3D "linaro,restricted-heap";
+> > +      no-map;
+> > +      reg =3D <0 0x3E800000 0 0x00400000>;
+>
+> lowercase hex
+>
+
+OK
+
+
+Thanks,
+Jens
+
+> Best regards,
+> Krzysztof
+>
 
