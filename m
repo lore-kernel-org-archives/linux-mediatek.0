@@ -4,62 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6235CA1009
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Aug 2024 19:44:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E574CA1012
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Aug 2024 20:29:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xbv9MUgctREV3I8QFnFJimenjDRYGcNMI7J8VHQbO2M=; b=T4yyVRpmbTp5bBJWi/V0751c0c
-	kSg8y28beF19zOAqFiCfjUuCBtWrretGNbM+OA2eBp56S67/46xo6h529+PkqtfwRpUjMYeq8k8EY
-	FjhpNXnoxrCVVxMHI8a7QxkKFFqoQSsypyanBGnrKqurYfRxUyiNGLo5xHx4TRwsV8delPHlZY09Z
-	hUD+K0AjWNhOdTuLDJtVdgrlP0tqV0QKNT6CsQxe3lLf1MwPo3r8r/kbwHAKWS3VjHXlnse7QD13r
-	0e/0wBTy5PudNrQUoVJRUoMXKkIi+W8XnfI2/gnKEgupnFubMG8vsekX+u2xwMz83awaQ3ZRph0b4
-	7dZfh+Jg==;
+	bh=e5DYk0b96uK4PnOcnOsHk5MFHyi5xVrOcpQ+Yf/oaTw=; b=r25XT3xmfcMHYk4W71k1cFaYsZ
+	/XmD3V0CF3k47YWEXrI7VHnRHPuZ6aSqc+0Hj6OGPeSScSoxoh0lFbTqGhszXxINH7ifsF12tL9bs
+	2TWZoirsD7RnvmV6kVSgnm+M9bePaCJpY9dRDIauQA1TXYe8+UvtUPf8QxQ3E8A7T0qpE8mELCA7m
+	fzPJMdX8pjXI12iRQ2gUl5vG/7duzbGUIRG8d+3755i6Rf6NlCkp3tGY9EBSCV3+3C9f+2LBJjZeH
+	BOATAWOaqs3Cx3YPal9FDqGnsx9eesjYilno99FAStrcrlZ0BDeTbZ/Ix35Pd2ptz61jO7mT3U39v
+	OackogcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sk7Xb-00000007WNq-2zRF;
-	Fri, 30 Aug 2024 19:44:16 +0000
+	id 1sk8F7-00000007bPe-3T5T;
+	Fri, 30 Aug 2024 20:29:13 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sk7Mk-00000007U48-1s8C;
-	Fri, 30 Aug 2024 19:33:04 +0000
+	id 1sk8ED-00000007bAb-30aF;
+	Fri, 30 Aug 2024 20:28:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1725046379;
-	bh=EGQHQ9fk8ZiqDNL6+X+CQQWMMmNTIja/SNDq7dE//XE=;
+	s=mail; t=1725049695;
+	bh=8LEKb0uhp2A4HJXFfcjVpGZqK+nWvJvHYkdGnpkaJOc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=EVFmW8zm6BHJo4kzQuf1Ng1cIjCUEEe08QXEAtUdXsssM/A105UrkQdJEMDQECxWE
-	 DHIr8fVYHbhGxUtopqOj0q5rhUp0kfQtf/yjp8xRxmRMH2lSimy5tN/OyK5H743Tm8
-	 4d+9tqLjSE7YXJ7Y68c8NOoX00M+WTBarAwkVVkM/SV1Z1JQIhQy8O3cpVEV8haA24
-	 ZY2UXS8KGYs+opY/035pG4aoDHkoi51ImMzy1eCdlghZ8fqsak6V/ewfxXm2hV8VMM
-	 BaO0B6HpVFcQwwq8KrWahZYQ+V4fY4EkMHfZNpQEah1kGPn22KK12KJTO9fEt/4bPk
-	 t8wGKP+MMkeQA==
+	b=KwfFWMSOXxuZ9aQ9w61rWlD/lHDZzxwvD4veZnVI0BehMjsAqB5424MhJRQ9mE4xs
+	 kDE57UTl1ZFYFx3vvY6jNbGzXZOy3/FHTE17aoxt989ZCaduHorM3k7SSFjyVWgyO7
+	 MdmVxXs4qQCdpbESe+pxGX+lzDlOxbaVa6cgREDQiLzP7p4z3H8i9vhlAYfIq35cr4
+	 qBNNAf7TnQ1RHuD0gHHPzWj0leVhlleFVRCkGV0xPssf23VXA3p8FA7BERON01iGDC
+	 xzucCuayX67jkvL1X6bYM4icXNI+wixHfTY+stS6lSyysYurF+NTDey2lzMaAwAksm
+	 uD1JJGDwCoLbA==
 Received: from notapiano (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F2CED17E114A;
-	Fri, 30 Aug 2024 21:32:58 +0200 (CEST)
-Date: Fri, 30 Aug 2024 15:32:56 -0400
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 84F4C17E121B;
+	Fri, 30 Aug 2024 22:28:14 +0200 (CEST)
+Date: Fri, 30 Aug 2024 16:28:12 -0400
 From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Yan Zhen <yanzhen@vivo.com>
-Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, opensource.kernel@vivo.com
-Subject: Re: [PATCH v2] soc: mediatek: Simplify with dev_err_probe()
-Message-ID: <d269df37-3bf9-45fd-8e3f-fb4f36ff9d8f@notapiano>
-References: <20240830080538.376200-1-yanzhen@vivo.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Moudy Ho <moudy.ho@mediatek.com>,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
+Subject: Re: [PATCH v3 4/5] media: platform: mtk-mdp3: Use cmdq_pkt_create()
+ and cmdq_pkt_destroy()
+Message-ID: <2b03eacb-4cb6-451a-9b45-5c636ae5052f@notapiano>
+References: <20240810090918.7457-1-chunkuang.hu@kernel.org>
+ <20240810090918.7457-5-chunkuang.hu@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240830080538.376200-1-yanzhen@vivo.com>
+In-Reply-To: <20240810090918.7457-5-chunkuang.hu@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240830_123302_680187_0F889FE7 
-X-CRM114-Status: GOOD (  23.83  )
+X-CRM114-CacheID: sfid-20240830_132818_316005_A0FF1214 
+X-CRM114-Status: GOOD (  15.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,98 +81,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-thank you for the patch. See comments below.
-
-On Fri, Aug 30, 2024 at 04:05:38PM +0800, Yan Zhen wrote:
-> Using dev_err_probe() to simplify the error path and unify a 
-> message template.
+On Sat, Aug 10, 2024 at 09:09:17AM +0000, Chun-Kuang Hu wrote:
+> Use cmdq_pkt_create() and cmdq_pkt_destroy() common function
+> instead of implementing mdp3 version.
 > 
-
-From [1]:
-
-  Describe your changes in imperative mood, e.g. “make xyzzy do frotz” instead of
-  “[This patch] makes xyzzy do frotz” or “[I] changed xyzzy to do frotz”, as if
-  you are giving orders to the codebase to change its behaviour.
-
-[1] https://www.kernel.org/doc/html/latest/process/submitting-patches.html#describe-your-changes
-
-So should be "Use dev_err_probe()...".
-
-Also, the commit summary seems a bit too broad, please add "mtk-mmsys:" in the
-subsystem:
-
-  soc: mediatek: mtk-mmsys: Simplify with dev_err_probe()
-
-> Using this helper is totally fine even if err is known to never
-> be -EPROBE_DEFER.
-> 
-> The benefit compared to a normal dev_err() is the standardized format
-> of the error code, it being emitted symbolically and the fact that
-> the error code is returned which allows more compact error paths.
-> 
-> Signed-off-by: Yan Zhen <yanzhen@vivo.com>
+> Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 > ---
+>  .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 45 ++-----------------
+>  1 file changed, 4 insertions(+), 41 deletions(-)
 > 
-> Changes in v2:
-> - Get rid of `ret = PTR_ERR(mmsys->regs);`.
-> 
->  drivers/soc/mediatek/mtk-mmsys.c | 15 ++++++---------
->  1 file changed, 6 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-> index 938240714e54..a6e0c41c10ab 100644
-> --- a/drivers/soc/mediatek/mtk-mmsys.c
-> +++ b/drivers/soc/mediatek/mtk-mmsys.c
-> @@ -397,11 +397,9 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
->  		return -ENOMEM;
+> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+> index 0cddafedbecc..48432d60b49a 100644
+> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+[..]
+> @@ -538,7 +501,7 @@ static void mdp_auto_release_work(struct work_struct *work)
+>  		wake_up(&mdp->callback_wq);
+>  	}
 >  
->  	mmsys->regs = devm_platform_ioremap_resource(pdev, 0);
-> -	if (IS_ERR(mmsys->regs)) {
-> -		ret = PTR_ERR(mmsys->regs);
-> -		dev_err(dev, "Failed to ioremap mmsys registers: %d\n", ret);
-> -		return ret;
-> -	}
-> +	if (IS_ERR(mmsys->regs))
-> +		return dev_err_probe(dev, PTR_ERR(mmsys->regs),
-> +					"Failed to ioremap mmsys registers");
+> -	mdp_cmdq_pkt_destroy(&cmd->pkt);
+> +	cmdq_pkt_destroy(mdp->cmdq_clt, &cmd->pkt);
 
-You're missing the \n at the end of the string.
+Hi,
+this doesn't build:
 
-Also, would look nicer if it was aligned like so:
+drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c: In function ‘mdp_auto_release_work’:
+drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c:504:29: error: passing argument 1 of ‘cmdq_pkt_destroy’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+  504 |         cmdq_pkt_destroy(mdp->cmdq_clt, &cmd->pkt);
+      |                          ~~~^~~~~~~~~~
+      |                             |
+      |                             struct cmdq_client **
+In file included from drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.h:12,
+                 from drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c:10:
+./include/linux/soc/mediatek/mtk-cmdq.h:111:43: note: expected ‘struct cmdq_client *’ but argument is of type ‘struct cmdq_client **’
+  111 | void cmdq_pkt_destroy(struct cmdq_client *client, struct cmdq_pkt *pkt);
+      |                       ~~~~~~~~~~~~~~~~~~~~^~~~~~
 
-		return dev_err_probe(dev, PTR_ERR(mmsys->regs),
-				     "Failed to ioremap mmsys registers\n");
-
->  
->  	mmsys->data = of_device_get_match_data(&pdev->dev);
->  
-> @@ -413,10 +411,9 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
->  		mmsys->rcdev.ops = &mtk_mmsys_reset_ops;
->  		mmsys->rcdev.of_node = pdev->dev.of_node;
->  		ret = devm_reset_controller_register(&pdev->dev, &mmsys->rcdev);
-> -		if (ret) {
-> -			dev_err(&pdev->dev, "Couldn't register mmsys reset controller: %d\n", ret);
-> -			return ret;
-> -		}
-> +		if (ret)
-> +			dev_err_probe(&pdev->dev, ret,
-> +					"Couldn't register mmsys reset controller");
-
-You're missing the return here. And the \n is also missing.
-
-Also, here checkpatch actually complains about the alignment (run
-'scripts/checkpatch.pl --strict' on your patch).
-
-CHECK: Alignment should match open parenthesis
-#50: FILE: drivers/soc/mediatek/mtk-mmsys.c:416:
-+			dev_err_probe(&pdev->dev, ret,
-+					"Couldn't register mmsys reset controller");
-
-After making those changes you can add
-
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Same in other instances in this patch and in other patches in the series.
 
 Thanks,
 Nícolas
