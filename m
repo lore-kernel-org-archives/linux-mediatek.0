@@ -4,74 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D86BCA0EE0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Aug 2024 05:42:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DD6BCA0EE7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Aug 2024 06:35:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=k4A5y+j5+WAfhLRjqTomaLz8jYqVXqpj3++oyTEnWOI=; b=3FE20F+jJkq+gMTmTgDITSAH91
-	mIly0vcC6aLUsEw/4PrVHMcZLCuIWrwdLcHid3bM6rWtO9vj9mdBjlh5GsDEmLlYPHXVIIe4/9wDI
-	Dlpk/xr5nav08KWDF910tauRfHLUFVlk4YxCkVloyKH01lCR4N/iSdAFEOxGTfB98+UZxDxd3l4HF
-	aLYPs7J0njr4Oyn66rlYLpNL0ExeJuXC2sXrcToakQWWB/nhPepWNo7yxkX4jClrez49cj7I2cObB
-	zG+gP3ln4/tJ5VQGmKnSWSLjaslorTsS2L5TrljDgVWgPRIKouybvf/UnkvV+JDcxnHmSCRdfIhJA
-	xI3OYPOw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=65vPLjjK0lUK36QVz1TbPuE8Z6mJN9QxNP2GyeGP7HY=; b=NYDFjkTPf6p/GWxlliBidxzLxP
+	ZNDSpw9664WUqZaLsoPPFLC3BBdEAXvjV4g6XA57hE8S5FJqTU1wt37ZgszHpxcX8c8VVs1AR6Eyj
+	sDr2fdRXJ7yiFpwC0tfY7WQka+RBDbYMz3dn7iQegCexWBjhS4cKFF9sPNQ9TFsKU+eP7QyOO+YVE
+	l51wZhBQwShvqU+5tnVlrhykr5Te3xMtgsRRBEm8XU4zyOXDbHPX/ZnebY09hCfSPHjkYTVFk9YyU
+	ibJdtL4ytNQ/cWCODnHVU+fY5fvatVFPmYHYVAAhoOvIsbSLIikz2yV9ovQ6qXp53FIVMhnEcCCZR
+	ou5XbvXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjuOU-00000004q7S-4AH4;
-	Fri, 30 Aug 2024 05:41:58 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sjvEa-00000004yZV-0AyW;
+	Fri, 30 Aug 2024 06:35:48 +0000
+Received: from szxga08-in.huawei.com ([45.249.212.255])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjuOR-00000004q5A-3VoJ;
-	Fri, 30 Aug 2024 05:41:57 +0000
-X-UUID: 8de673d8669211efba0aef63c0775dbf-20240829
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=k4A5y+j5+WAfhLRjqTomaLz8jYqVXqpj3++oyTEnWOI=;
-	b=f6vw7ZT/L44ErZ6qZvbTeGbhVWmWxu241qhQA8P7nutz4WqZ6rwUMqgujvJ3aD5Jc/eucDrWbPDwSn7Pwt6WPoY/ts/l9WXaMQ33W0VAgE5HajyMig7wXw/sn2ItcwhtsvDS/9GZ7bvxtzaCQJHhUTkg8k3EVPmZRLtV6XmBcHE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:0cd7c3a8-e9f1-4937-8e44-9734e75081ec,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6dc6a47,CLOUDID:ce7a2bbf-d7af-4351-93aa-42531abf0c7b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
-X-UUID: 8de673d8669211efba0aef63c0775dbf-20240829
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <chunhui.li@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1485888957; Thu, 29 Aug 2024 22:41:50 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+	id 1sjvDf-00000004yJd-44eG;
+	Fri, 30 Aug 2024 06:34:54 +0000
+Received: from mail.maildlp.com (unknown [172.19.88.194])
+	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4Ww7dp3fr0z18MyV;
+	Fri, 30 Aug 2024 14:33:50 +0800 (CST)
+Received: from kwepemh500013.china.huawei.com (unknown [7.202.181.146])
+	by mail.maildlp.com (Postfix) with ESMTPS id 14CA1140202;
+	Fri, 30 Aug 2024 14:34:41 +0800 (CST)
+Received: from [10.67.109.254] (10.67.109.254) by
+ kwepemh500013.china.huawei.com (7.202.181.146) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 29 Aug 2024 22:41:47 -0700
-Received: from mbjsdccf07.gcn.mediatek.inc (10.15.20.246) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 30 Aug 2024 13:41:47 +0800
-From: Chunhui Li <chunhui.li@mediatek.com>
-To: Luis Chamberlain <mcgrof@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-modules@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<wsd_upstream@mediatek.com>, Chunhui Li <chunhui.li@mediatek.com>, Xion Wang
-	<xion.wang@mediatek.com>
-Subject: [PATCH] module: abort module loading when sysfs setup suffer errors
-Date: Fri, 30 Aug 2024 13:43:54 +0800
-Message-ID: <20240830054400.26622-1-chunhui.li@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+ 15.2.1544.11; Fri, 30 Aug 2024 14:34:39 +0800
+Message-ID: <c29263ae-89f1-edd7-003a-bd03cdddc821@huawei.com>
+Date: Fri, 30 Aug 2024 14:34:38 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [PATCH -next RESEND 00/10] mtd: Use
+ for_each_child_of_node_scoped()
+Content-Language: en-US
+To: Miquel Raynal <miquel.raynal@bootlin.com>, Krzysztof Kozlowski
+	<krzk@kernel.org>
+CC: <michal.simek@amd.com>, <richard@nod.at>, <vigneshr@ti.com>,
+	<liang.yang@amlogic.com>, <neil.armstrong@linaro.org>,
+	<khilman@baylibre.com>, <jbrunet@baylibre.com>,
+	<martin.blumenstingl@googlemail.com>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <heiko@sntech.de>,
+	<mcoquelin.stm32@gmail.com>, <alexandre.torgue@foss.st.com>, <wens@csie.org>,
+	<jernej.skrabec@gmail.com>, <samuel@sholland.org>, <kees@kernel.org>,
+	<gustavoars@kernel.org>, <linux@treblig.org>, <robh@kernel.org>,
+	<u.kleine-koenig@pengutronix.de>, <erick.archer@gmx.com>,
+	<christophe.jaillet@wanadoo.fr>, <val@packett.cool>,
+	<christophe.kerello@foss.st.com>, <linux-mtd@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-amlogic@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>, <jic23@kernel.org>
+References: <20240826094328.2991664-1-ruanjinjie@huawei.com>
+ <20240826115213.389acaef@xps-13>
+ <f7430f87-88d2-4c08-bc1e-6bb3da4e332c@kernel.org>
+ <20240826144917.2c4e202d@xps-13>
+From: Jinjie Ruan <ruanjinjie@huawei.com>
+In-Reply-To: <20240826144917.2c4e202d@xps-13>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+X-Originating-IP: [10.67.109.254]
+X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
+ kwepemh500013.china.huawei.com (7.202.181.146)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240829_224155_960336_2CD518A9 
-X-CRM114-Status: GOOD (  16.07  )
+X-CRM114-CacheID: sfid-20240829_233452_900341_802BCD0B 
+X-CRM114-Status: UNSURE (   6.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,165 +90,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When insmod a kernel module, if fails in add_notes_attrs or
-add_sysfs_attrs such as memory allocation fail, mod_sysfs_setup
-will still return success, but we can't access user interface
-on android device.
 
-Patch for make mod_sysfs_setup can check the error of
-add_notes_attrs and add_sysfs_attrs
 
-Signed-off-by: Xion Wang <xion.wang@mediatek.com>
-Signed-off-by: Chunhui Li <chunhui.li@mediatek.com>
----
- kernel/module/sysfs.c | 49 ++++++++++++++++++++++++++++++-------------
- 1 file changed, 35 insertions(+), 14 deletions(-)
+On 2024/8/26 20:49, Miquel Raynal wrote:
+> Hi Krzysztof,
+> 
+> krzk@kernel.org wrote on Mon, 26 Aug 2024 12:19:07 +0200:
+> 
+>> On 26/08/2024 11:52, Miquel Raynal wrote:
+>>> Hi Jinjie,
+>>>
+>>> ruanjinjie@huawei.com wrote on Mon, 26 Aug 2024 17:43:18 +0800:
+>>>   
+>>>> Use scoped for_each_available_child_of_node_scoped() when iterating over
+>>>> device nodes to make code a bit simpler.  
+>>>
+>>> Why is this a resend ? Did I miss a previous iteration?  
+>>
+>> You were not cc-ed on previous iteration. I asked for proper split
+>> between subsystems and sending to maintainers, thus this resend.
+> 
+> Ok. Makes sense, and the patchset looks fine.
 
-diff --git a/kernel/module/sysfs.c b/kernel/module/sysfs.c
-index 26efe1305c12..a9ee650d995d 100644
---- a/kernel/module/sysfs.c
-+++ b/kernel/module/sysfs.c
-@@ -69,12 +69,13 @@ static void free_sect_attrs(struct module_sect_attrs *sect_attrs)
- 	kfree(sect_attrs);
- }
- 
--static void add_sect_attrs(struct module *mod, const struct load_info *info)
-+static int add_sect_attrs(struct module *mod, const struct load_info *info)
- {
- 	unsigned int nloaded = 0, i, size[2];
- 	struct module_sect_attrs *sect_attrs;
- 	struct module_sect_attr *sattr;
- 	struct bin_attribute **gattr;
-+	int ret = 0;
- 
- 	/* Count loaded sections and allocate structures */
- 	for (i = 0; i < info->hdr->e_shnum; i++)
-@@ -85,7 +86,7 @@ static void add_sect_attrs(struct module *mod, const struct load_info *info)
- 	size[1] = (nloaded + 1) * sizeof(sect_attrs->grp.bin_attrs[0]);
- 	sect_attrs = kzalloc(size[0] + size[1], GFP_KERNEL);
- 	if (!sect_attrs)
--		return;
-+		return -ENOMEM;
- 
- 	/* Setup section attributes. */
- 	sect_attrs->grp.name = "sections";
-@@ -103,8 +104,10 @@ static void add_sect_attrs(struct module *mod, const struct load_info *info)
- 		sattr->address = sec->sh_addr;
- 		sattr->battr.attr.name =
- 			kstrdup(info->secstrings + sec->sh_name, GFP_KERNEL);
--		if (!sattr->battr.attr.name)
-+		if (!sattr->battr.attr.name) {
-+			ret = -ENOMEM;
- 			goto out;
-+		}
- 		sect_attrs->nsections++;
- 		sattr->battr.read = module_sect_read;
- 		sattr->battr.size = MODULE_SECT_READ_SIZE;
-@@ -113,13 +116,16 @@ static void add_sect_attrs(struct module *mod, const struct load_info *info)
- 	}
- 	*gattr = NULL;
- 
--	if (sysfs_create_group(&mod->mkobj.kobj, &sect_attrs->grp))
-+	if (sysfs_create_group(&mod->mkobj.kobj, &sect_attrs->grp)) {
-+		ret = -EIO;
- 		goto out;
-+	}
- 
- 	mod->sect_attrs = sect_attrs;
--	return;
-+	return 0;
- out:
- 	free_sect_attrs(sect_attrs);
-+	return ret;
- }
- 
- static void remove_sect_attrs(struct module *mod)
-@@ -158,15 +164,16 @@ static void free_notes_attrs(struct module_notes_attrs *notes_attrs,
- 	kfree(notes_attrs);
- }
- 
--static void add_notes_attrs(struct module *mod, const struct load_info *info)
-+static int add_notes_attrs(struct module *mod, const struct load_info *info)
- {
- 	unsigned int notes, loaded, i;
- 	struct module_notes_attrs *notes_attrs;
- 	struct bin_attribute *nattr;
-+	int ret = 0;
- 
- 	/* failed to create section attributes, so can't create notes */
- 	if (!mod->sect_attrs)
--		return;
-+		return -EINVAL;
- 
- 	/* Count notes sections and allocate structures.  */
- 	notes = 0;
-@@ -176,12 +183,12 @@ static void add_notes_attrs(struct module *mod, const struct load_info *info)
- 			++notes;
- 
- 	if (notes == 0)
--		return;
-+		return 0;
- 
- 	notes_attrs = kzalloc(struct_size(notes_attrs, attrs, notes),
- 			      GFP_KERNEL);
- 	if (!notes_attrs)
--		return;
-+		return -ENOMEM;
- 
- 	notes_attrs->notes = notes;
- 	nattr = &notes_attrs->attrs[0];
-@@ -201,19 +208,24 @@ static void add_notes_attrs(struct module *mod, const struct load_info *info)
- 	}
- 
- 	notes_attrs->dir = kobject_create_and_add("notes", &mod->mkobj.kobj);
--	if (!notes_attrs->dir)
-+	if (!notes_attrs->dir) {
-+		ret = -ENOMEM;
- 		goto out;
-+	}
- 
- 	for (i = 0; i < notes; ++i)
- 		if (sysfs_create_bin_file(notes_attrs->dir,
--					  &notes_attrs->attrs[i]))
-+					  &notes_attrs->attrs[i])) {
-+			ret = -EIO;
- 			goto out;
-+	}
- 
- 	mod->notes_attrs = notes_attrs;
--	return;
-+	return 0;
- 
- out:
- 	free_notes_attrs(notes_attrs, i);
-+	return ret;
- }
- 
- static void remove_notes_attrs(struct module *mod)
-@@ -385,11 +397,20 @@ int mod_sysfs_setup(struct module *mod,
- 	if (err)
- 		goto out_unreg_modinfo_attrs;
- 
--	add_sect_attrs(mod, info);
--	add_notes_attrs(mod, info);
-+	err = add_sect_attrs(mod, info);
-+	if (err)
-+		goto out_unreg_sect_attrs;
-+
-+	err = add_notes_attrs(mod, info);
-+	if (err)
-+		goto out_unreg_notes_attrs;
- 
- 	return 0;
- 
-+out_unreg_notes_attrs:
-+	remove_notes_attrs(mod);
-+out_unreg_sect_attrs:
-+	remove_sect_attrs(mod);
- out_unreg_modinfo_attrs:
- 	module_remove_modinfo_attrs(mod, -1);
- out_unreg_param:
--- 
-2.45.2
+Hi, Miquel,
 
+Could this series be merged, thank you!
+
+> 
+> Jinjie, please always include a changelog when you send new versions,
+> and explanations for a RESEND.
+> 
+> Thanks,
+> Miquèl
 
