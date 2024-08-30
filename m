@@ -4,76 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC05CCA0EE8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Aug 2024 07:34:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 010C0CA0EEA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Aug 2024 07:44:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gjDU8SQTmKK/G7tRsKNeXWmyDKNqd21oMmlCsoUCz3w=; b=2ETnHgepumdu+fUpYnhQ8nv1n6
-	xR9mWeivd3u/5eV+yoAvXiczhG1FIeE6GyVuitcUVVhzQptLik1HdcDHBtebbHAtYBdjgVXTIl5CN
-	9343Q0bjZCrLcRBCooXONn3B6zmaeO0zOxYQLyzFzM3xS+CI2SK3ZDQ6ULjTbzfum0Wks4PZKWznA
-	qUasxpfBJKDwQ6oJ/JKpfKl//w/8T1fDNBJcKDQD6Ys3mAW5T4PhpTYv/jvS14kVlRPTDdVPXHf4o
-	+qeeThjj9kV9+XlJ5n1yXmWJtc4llzThLdil0xhUsgmGzANmCZxrcrUsLvDSxpY+78gHGexr3rglE
-	zLoXbbDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qB/YX4GsAIz1IbnbtiqRVmnhz51HwfzUV8S8YPMqW0Q=; b=z12kZGsd2g4cve4AKUp0T81Ubc
+	yWc1ual+/577m1KtyepJ7+5In8Rc/EIhmpq1rB6b2J66l00Ivhj58umDgzdKF4vO0QwONRQPG0Cfl
+	dJnGD3HOy32IUC2EpRkM1OOUMCWb//kIfFXdOFomlWb9sjIt+cknIdQrAR1PiHrixC1jvqDXVZCAo
+	mW6gcChG23JqJ9e/W8t/DAF0jZibPSj82kv3P7HDgbdlcL9cXippXWKhDAHMP2BquPjQOyVcoM1LJ
+	eOOZlGsGNJQ5bXqHiidxYUgkJ1v+s9B4RblkU3dlmHBcfS8EeX7TZrRygldGwjliHFZlAg/zk8x06
+	HPzw16vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjw9n-000000059IK-1YHo;
-	Fri, 30 Aug 2024 07:34:55 +0000
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+	id 1sjwJV-00000005BEh-1E1K;
+	Fri, 30 Aug 2024 07:44:57 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjw93-0000000598e-466Y
+	id 1sjwJT-00000005BEN-12AX
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 30 Aug 2024 07:44:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=qB/YX4GsAIz1IbnbtiqRVmnhz51HwfzUV8S8YPMqW0Q=; b=FgzU9YixstC7UUUdhtFUix4mA8
+	dpaO6jJfN4PJ434ro6s80jd5cY3vrBYBhP2tyQf4XQm3JlT0GDb1a/J/vbzQFiGeOSRIM2koMu6Lx
+	ANPtrVkuhN+XYnJQvC5Ny87RQEC5JIH52LXEdWyCmayHUTge/a8T8xqopukdGGT5Xu1NEgmyn0kVT
+	NofVMxbVlIY/e2CpFJUmkDTD5rIT9MO5vY7T/6n2MfnQmpqAnLA/JmIixtPEBq27NsB9WiP22KJGe
+	Qd4OrCs3nEouumGTPECMCwtwTXYW0qaAOedVPM1fdZjRoMBlem9W1DnxUcuqbjJK0gNNvMixVP5Ld
+	f8p1urnw==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+	by desiato.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1sjwJK-0000000BayG-0B8G
 	for linux-mediatek@lists.infradead.org;
-	Fri, 30 Aug 2024 07:34:11 +0000
-Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-5334c018913so1350215e87.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 30 Aug 2024 00:34:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1725003248; x=1725608048; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gjDU8SQTmKK/G7tRsKNeXWmyDKNqd21oMmlCsoUCz3w=;
-        b=al1wYLCHCfyqt9Wqpo0TZ5IxXyBPDna8dZj54arW7pllxu+isF0GrOSSHOFhAqGyQD
-         Kbj+NFrNRk4wWxk+gQ/L9D9YT3t2pDpI8L6sVRHJjbpIMKcifal5ODZDtCwVCCgedqiX
-         ZsvyfuRbilmLYoYfHoOvwM4Il05a+HJSb9/uk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725003248; x=1725608048;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=gjDU8SQTmKK/G7tRsKNeXWmyDKNqd21oMmlCsoUCz3w=;
-        b=tNltIaH/uboUpylif8Q0ELVuEjZQijZs+ktRMA/efAVOljug+ZRtW4or5E2bzsI2QI
-         pv32xf9ssEiFfwXt/rBhkizpRNK1NJFMlGHIqcmqZYAEEFlzJbgMTa3MHGu0jOUYpyE0
-         c5mzk2xtPoeSOaKwuNJ8vi0cNzTJ+C6sGiMZ5ucMM84h4S0hiyPgU0sF0wY8OL99NUG3
-         UqEDlsCH3+xWJnCcvy1hA9Xy5/HSrkmh9O5Ob+HIr+/36nB3GGcLFzLauFINDr7wN5Vq
-         lyz95c4sCDuTwwpF7MNhqYd0rPBBylAE5Oc3mOrjOd2UlHvltr/0VnwtXNscTK1nzR6z
-         w6HA==
-X-Forwarded-Encrypted: i=1; AJvYcCWM/+nPhWzusKGOzLb0Yj7bH8yy7PzQUpIB9rtUgCQ9PnZhl5l7qQzam+xeK9PLcQdJUbuWeRzynFDWQt+kCQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzo0skVtOuBSAHhRAszyLJWMXpbv99zKRSLqw8u1ZcamkbirWRh
-	t+VO3IajyFS2uLgT6h+aWsVtSOGBC1+OceF6hW/KH13vOB03AdU3bauHZTORZ1AwBihBwh8YXuJ
-	a4ErE0lx1q09O7pB03XtCh8Tmv1VRHzwSNQFc
-X-Google-Smtp-Source: AGHT+IH7wPgJ8Pq7AE8R2q3EPuMVp2JyMekh2CKFeRsvF5v6qHF2reC1sUgRVhEZPF19o77fSOnVpNkjJfV9Xd2yI9Q=
-X-Received: by 2002:a05:6512:3c85:b0:52e:9a91:bba3 with SMTP id
- 2adb3069b0e04-53546b0ba84mr856388e87.15.1725003247536; Fri, 30 Aug 2024
- 00:34:07 -0700 (PDT)
+	Fri, 30 Aug 2024 07:44:49 +0000
+X-UUID: b1520a7466a311efba0aef63c0775dbf-20240830
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=qB/YX4GsAIz1IbnbtiqRVmnhz51HwfzUV8S8YPMqW0Q=;
+	b=NqxnmiIdp7+iounzjctNzKY2aE2jg6g5Emoau68kDVpqkSlM62lhaqKcUuRWVm0cTgOXC/KIRzAjlYZh7k5sIcdlyiNbQQLO6MfbOztp9ys+HiiJFc0uj2Tu8H8yajFCGiAFNTZzyXWutWbB5jtjbuGFXdN1eV8Jk8Vj300Sxsk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:ab8c322e-8c32-400f-9438-207f6bdc1d87,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:6dc6a47,CLOUDID:ca8c0a15-737d-40b3-9394-11d4ad6e91a1,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: b1520a7466a311efba0aef63c0775dbf-20240830
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 484239719; Fri, 30 Aug 2024 00:44:31 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 30 Aug 2024 15:44:28 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 30 Aug 2024 15:44:28 +0800
+From: <peter.wang@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>,
+	<stable@vger.kernel.org>
+Subject: [PATCH v1 1/2] ufs: core: fix the issue of ICU failure
+Date: Fri, 30 Aug 2024 15:44:25 +0800
+Message-ID: <20240830074426.21968-2-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240830074426.21968-1-peter.wang@mediatek.com>
+References: <20240830074426.21968-1-peter.wang@mediatek.com>
 MIME-Version: 1.0
-References: <20240830072611.332886-1-yanzhen@vivo.com>
-In-Reply-To: <20240830072611.332886-1-yanzhen@vivo.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 30 Aug 2024 16:33:56 +0900
-Message-ID: <CAGXv+5HtbAUvC0v5bnJrxD50Tfmb+i1h956-aJkbi+i_BWXcBg@mail.gmail.com>
-Subject: Re: [PATCH v1] soc: mediatek: Simplify with dev_err_probe()
-To: Yan Zhen <yanzhen@vivo.com>
-Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, opensource.kernel@vivo.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240830_003410_100499_69A4CE44 
-X-CRM114-Status: GOOD (  20.54  )
+X-CRM114-CacheID: sfid-20240830_084446_919983_F9BA28D2 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,64 +106,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 30, 2024 at 4:28=E2=80=AFPM Yan Zhen <yanzhen@vivo.com> wrote:
->
-> Using dev_err_probe() to simplify the error path and unify a
-> message template.
->
-> Using this helper is totally fine even if err is known to never
-> be -EPROBE_DEFER.
->
-> The benefit compared to a normal dev_err() is the standardized format
-> of the error code, it being emitted symbolically and the fact that
-> the error code is returned which allows more compact error paths.
->
-> Signed-off-by: Yan Zhen <yanzhen@vivo.com>
-> ---
->  drivers/soc/mediatek/mtk-mmsys.c | 10 ++++------
->  1 file changed, 4 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-=
-mmsys.c
-> index 938240714e54..2f2aefd4d830 100644
-> --- a/drivers/soc/mediatek/mtk-mmsys.c
-> +++ b/drivers/soc/mediatek/mtk-mmsys.c
-> @@ -399,8 +399,7 @@ static int mtk_mmsys_probe(struct platform_device *pd=
-ev)
->         mmsys->regs =3D devm_platform_ioremap_resource(pdev, 0);
->         if (IS_ERR(mmsys->regs)) {
->                 ret =3D PTR_ERR(mmsys->regs);
-> -               dev_err(dev, "Failed to ioremap mmsys registers: %d\n", r=
-et);
-> -               return ret;
-> +               return dev_err_probe(dev, ret, "Failed to ioremap mmsys r=
-egisters");
+From: Peter Wang <peter.wang@mediatek.com>
 
-Nit: I would just get rid of `ret` here.
+When setting the ICU bit without using read-modify-write,
+SQRTCy will restart SQ again and receive an RTC return
+error code 2 (Failure - SQ not stopped).
 
->         }
->
->         mmsys->data =3D of_device_get_match_data(&pdev->dev);
-> @@ -413,10 +412,9 @@ static int mtk_mmsys_probe(struct platform_device *p=
-dev)
->                 mmsys->rcdev.ops =3D &mtk_mmsys_reset_ops;
->                 mmsys->rcdev.of_node =3D pdev->dev.of_node;
->                 ret =3D devm_reset_controller_register(&pdev->dev, &mmsys=
-->rcdev);
-> -               if (ret) {
-> -                       dev_err(&pdev->dev, "Couldn't register mmsys rese=
-t controller: %d\n", ret);
-> -                       return ret;
-> -               }
-> +               if (ret)
-> +                       return dev_err_probe(&pdev->dev, ret,
-> +                                               "Couldn't register mmsys =
-reset controller");
->         }
->
->         /* CMDQ is optional */
-> --
-> 2.34.1
->
->
+Additionally, the error log has been modified so that
+this type of error can be observed.
+
+Fixes: ab248643d3d6 ("scsi: ufs: core: Add error handling for MCQ mode")
+Cc: stable@vger.kernel.org
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/ufs/core/ufs-mcq.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+index 5891cdacd0b3..afd9541f4bd8 100644
+--- a/drivers/ufs/core/ufs-mcq.c
++++ b/drivers/ufs/core/ufs-mcq.c
+@@ -570,15 +570,16 @@ int ufshcd_mcq_sq_cleanup(struct ufs_hba *hba, int task_tag)
+ 	writel(nexus, opr_sqd_base + REG_SQCTI);
+ 
+ 	/* SQRTCy.ICU = 1 */
+-	writel(SQ_ICU, opr_sqd_base + REG_SQRTC);
++	writel(readl(opr_sqd_base + REG_SQRTC) | SQ_ICU,
++		opr_sqd_base + REG_SQRTC);
+ 
+ 	/* Poll SQRTSy.CUS = 1. Return result from SQRTSy.RTC */
+ 	reg = opr_sqd_base + REG_SQRTS;
+ 	err = read_poll_timeout(readl, val, val & SQ_CUS, 20,
+ 				MCQ_POLL_US, false, reg);
+-	if (err)
+-		dev_err(hba->dev, "%s: failed. hwq=%d, tag=%d err=%ld\n",
+-			__func__, id, task_tag,
++	if (err || FIELD_GET(SQ_ICU_ERR_CODE_MASK, readl(reg)))
++		dev_err(hba->dev, "%s: failed. hwq=%d, tag=%d err=%d RTC=%ld\n",
++			__func__, id, task_tag, err,
+ 			FIELD_GET(SQ_ICU_ERR_CODE_MASK, readl(reg)));
+ 
+ 	if (ufshcd_mcq_sq_start(hba, hwq))
+-- 
+2.45.2
+
 
