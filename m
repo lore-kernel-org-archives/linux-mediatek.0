@@ -4,77 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8985CA1004
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Aug 2024 15:37:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDA46CA1009
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Aug 2024 18:56:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pDt0mv0FxdO/SFYLH9NKc/21x2V5goVaLIbOQhTAmQs=; b=oE3Vl/QJqJu4nPUNzTkmjGQZst
-	KhnVrnLO8EvZCj7v1sSe8JhOMhPShwFDml6VyoH3tyvakEMtbbogutkOK6kqcbfuKQBWrCLzlOxr3
-	9FNa/YtyZvWPR93c48Lzzc2d3LZFS2ej8n4MdYjkOsVp5C+Xn2ibbyB8XXBr1VteUKEIO6ZwXQV6H
-	xL8npAJL9ophaS2hbxPqvBW/Y2XqMypTzW+26Qpc0xxxAOv4DXPe/xYwJ0xjcNMbDXuo8hSNBzWi+
-	N3JopyOoDyPxVZh7jegkE1DxIIINqJUCfMTrM1GLNC+viwgMxcFn4WVWddzPdDSraUK7m58MlSoxL
-	//V3gC9w==;
+	bh=8t6iywBMysiRw35agr1XHVTP2xF/4j8IVysH9cjVLvY=; b=ugD94tpSqNmsQR0Le1roDZ44cx
+	uRdZz4Aa36z9jBXYU5ubUUQ+tlFaDjlPEVlIq7XFxwAco/x8tLMqGeDC+vbEk0LxZzBaDpgO7cJJA
+	hHMpJnjv2Wn3EJifig1FfSF4dB80KYz2prjvVeJQLG3JtQoJ14/dfpmxPoXR5dZwqtJuu2ohV+lge
+	oa297GFlN5uHt7DleZ0lWPXgjzPdP4zK0DaxTlzuTBLUgCi6VbUrDQIw+gErxu28x5PCA9asnbIUY
+	d29u8KgvPwo9GN7Nliy17CNGHBxs9bDR8zL5+jOXBDdo7rLh3umC4Ky2x2vP/LVBwOwj+TQ6RgI8G
+	J2UOWG9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sk3hA-00000006qYd-1Ymh;
-	Fri, 30 Aug 2024 15:37:52 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1sk6nh-00000007O4u-06tv;
+	Fri, 30 Aug 2024 18:56:49 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sk3e6-00000006ppe-1Msj;
-	Fri, 30 Aug 2024 15:35:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 40569CE1E6E;
-	Fri, 30 Aug 2024 15:34:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 36455C4CEC2;
-	Fri, 30 Aug 2024 15:34:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725032079;
-	bh=sMhjK2G93E8pRdOEGgRej93yB0F8vhk+6uOsJO083iE=;
+	id 1sk6mn-00000007NzY-481b;
+	Fri, 30 Aug 2024 18:55:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1725044151;
+	bh=IHK+Ntd8fM5v8Ld8ghChA+2WvtW78d2VyJV67u5VSsw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=BGu2EEG4qNddC56ktd+1VgcidfLuPMPi9DcvYjB8+u+ih72S9+0T0da4r8ynZnk3g
-	 uR/6O5p6dBovtm452fMouESkWIiCaWQUfBRivhC/tUQ64Np56kzACgQ+N5XZ+qxpVJ
-	 e2QXDNUpP+7nKL9d3OlS3Rwkz4Tq04Ccw/3LjyXnfdQqgefQt1EAS2K682LY4cetbV
-	 N1y5WDQj4SEetgbGNmagrg5ajX/6/W5ZmL4qsIapmKNu1lpl3iqkTybW/MclgMf9vf
-	 Qwa7DbNb4yqKc4qE0/ylwDVkqcbTik4pTgPG9Cq20KDSUbfiXsxUUScfIlMlLegBaw
-	 xMaFmb9Ds0C7A==
-Date: Fri, 30 Aug 2024 10:34:37 -0500
-From: Rob Herring <robh@kernel.org>
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, linux-leds@vger.kernel.org,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Sebastian Reichel <sre@kernel.org>,
-	Pavel Machek <pavel@ucw.cz>, Sean Wang <sean.wang@mediatek.com>,
-	Lee Jones <lee@kernel.org>,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	Flora Fu <flora.fu@mediatek.com>,
-	Bear Wang <bear.wang@mediatek.com>,
-	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
-	Sen Chu <sen.chu@mediatek.com>,
-	Chris-qj chen <chris-qj.chen@mediatek.com>,
-	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
-	linux-rtc@vger.kernel.org, linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org, Chen-Yu Tsai <wenst@chromium.org>
-Subject: Re: [PATCH v2 3/7] dt-bindings: rtc: mt6397: merge to MFD
- mediatek,mt6397 DT schema
-Message-ID: <20240830153437.GB4175444-robh@kernel.org>
-References: <20240830110732.30080-1-macpaul.lin@mediatek.com>
- <20240830110732.30080-3-macpaul.lin@mediatek.com>
+	b=S2iJPtbDNO7YHcg1+4daBeQVQMv0AHjjYygS1s7EJCHZP8HXJy9iWQzl+gl/7ICmP
+	 ZCx4p66CN5fsbWJ6ga4UV42jcVG9s7mym1irLmgg2f9Hu0uywysYwiemK93yXuHq8J
+	 njuK0n/zdgQWbBr0EBXW6F8h0AB5ALMltYrbOFBcWzojfwgtldTmf79tzj4alBJ9DB
+	 t/Q2XYxBg6gALtFnmw7PlotW3LuKXQ68LhHncJk12IpuUgUOpxMEXZ9KYR4VhZRRuN
+	 vb0mtQgFZgTupyBz3pvIwMp0UWlKlJyOQjqNQqHECLbfjOBvkLxpqp71rafgpvzwTC
+	 MsXkvd7Il56MQ==
+Received: from notapiano (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4A06E17E10DB;
+	Fri, 30 Aug 2024 20:55:49 +0200 (CEST)
+Date: Fri, 30 Aug 2024 14:55:47 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Rohit Agarwal <rohiagar@chromium.org>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
+	daniel@ffwll.ch, maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org, tzimmermann@suse.de, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, ck.hu@mediatek.com,
+	jitao.shi@mediatek.com, dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v4 3/3] arm64: dts: mediatek: mt8186: Add svs node
+Message-ID: <ccc4f1cd-c57c-417b-8f34-6b1e45cec6e2@notapiano>
+References: <20240830084544.2898512-1-rohiagar@chromium.org>
+ <20240830084544.2898512-4-rohiagar@chromium.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20240830110732.30080-3-macpaul.lin@mediatek.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240830084544.2898512-4-rohiagar@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240830_083442_558993_F3B72E88 
-X-CRM114-Status: GOOD (  14.22  )
+X-CRM114-CacheID: sfid-20240830_115554_361152_26379A11 
+X-CRM114-Status: UNSURE (   8.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,19 +81,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 30, 2024 at 07:07:28PM +0800, Macpaul Lin wrote:
-> Convert rtc-mt6397.txt be compatible with the DT schema.
-> Since this is a simple RTC device node, merge it into parent
-> mediatek,mt6397.yaml. Subsequently, remove rtc-mt6397.txt with a
-> separate patch.
-
-This doesn't match what the patch does. You can just squash this into 
-the MFD patch where you add the schema.
-
+On Fri, Aug 30, 2024 at 08:45:44AM +0000, Rohit Agarwal wrote:
+> Add clock/irq/efuse setting in svs nodes for mt8186 SoC.
 > 
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> ---
->  .../devicetree/bindings/rtc/rtc-mt6397.txt    | 31 -------------------
->  1 file changed, 31 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
+> Signed-off-by: Rohit Agarwal <rohiagar@chromium.org>
+
+Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
+Although FWIW the SVS driver fails to probe as is, as for MT8186 it expects
+"cpu-big", "cpu-little" and "cci" thermal zones, which are not present in DT
+currently. The first two seem to be a matter of renaming (eg there's cpu-little0
+and cpu-little1), while cci is completely missing in DT.
+
+Thanks,
+Nícolas
 
