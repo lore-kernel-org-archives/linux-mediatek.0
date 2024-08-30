@@ -4,64 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A3E2CA0EFC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Aug 2024 10:55:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FE16CA0FE0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Aug 2024 11:02:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9B46RjCnvIYgOjmNBN6IsO3QwW3ATnjcWB9o16GdieI=; b=rMp9Scw6palt02nqbKunrrblcR
-	l/Ulvaq77UbEWlTzp9mr76+BiK0u31RSWmTtNyqMqmDVywQTuXXfwDSxgqJ5mjfakv2MLeo4iOXEb
-	RYSMw7wHkRVtZHCW5gPGPkw029rYX7tCH6m87LVwShU5u0v6uRvPfHBa+Xb+fUCAbd3zRQhFyA/Rv
-	QkpizRreSU4vD7pm4mD8SGBzO8HbDoFd54jkRnuxgWi6J3dfMs/YPBiyKH+QGdpt5xeuOuIhAovql
-	qOiUwHRzdO+Xyl+nGb/l+phIz6QWb4kfnR2WBZ/BU/ssXBKPqzM7xQDxjknKGP/yDxWGs8E1uj9jh
-	VDjMDKgw==;
+	bh=/NdsKTCUALfWcU0xajPBHnoEGQue1OOkSmwZOpKC+4g=; b=34fn80briBB02EucQtASgTltY9
+	XNgOuwxq31Iazai5vnNR/fzx71lTg/dZH2r33wA3eGXtDL7YAzpcLUAluMCzhlG/mi09EfX+BvmSv
+	EL08220KHEe91679OZ37f5Ky2PvyFhKgTshcI1u8Gbqp+JAliMwK72QDyDldKYMajbAabUnNHywVE
+	HFUTmwahgBFsj9yPsTBlMq3pe2tDry2xJgFQa5qfuDYZi54iVJajyE7qzMyAajWhCp9SDi9Lvi4GN
+	f7ctHbeeU5AQmYd2Fykwmk7JNcQJl3G/n6YE7/vXuPamGbJlW4Mz31z98FxUaaId11QUDkijFW/Qm
+	5Xd8JipQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjzIE-00000005umD-3ytp;
-	Fri, 30 Aug 2024 10:55:50 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1sjzOI-00000005wO4-3ljo;
+	Fri, 30 Aug 2024 11:02:06 +0000
+Received: from esa.microchip.iphmx.com ([68.232.154.123])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjzI0-00000005ufS-32Xw;
-	Fri, 30 Aug 2024 10:55:38 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 721EDA446BB;
-	Fri, 30 Aug 2024 10:55:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 94486C4CEC2;
-	Fri, 30 Aug 2024 10:55:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725015335;
-	bh=WiGHYqQ3xuBvbimQ4RqLRQywBEUVEijfKbSvmrPedj4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qi3JE0Is0KSULRu+fHNrtUz2DyqQgaeXzDIGycaqMRW3M7Y/EmT74mQyMS1sU87ye
-	 KGHIO83AP2PCPYyko+OIe6/mL6Etc4gb50kgEXVnW44Jlgm4tbn1buj1W8bzD/KSLD
-	 6GewoEWUoTFR+KOqysHF5g6WwYgbUjR+EBsMOFlbl98oe6ypzCBfVVm1F54opEwSRV
-	 UKvGLSTh1yj5MB40y7PBMKurc1+3ciV1yhYI+krxr6XAwidltjcF481DWyTFhk4J37
-	 Z22rXE0rcEep5BGKVYla/u3JntoVAz2YK/uEvvumgssZleJ7IBxFKGjOHeNUWluFxn
-	 fkbiwEMm4C+rQ==
-Date: Fri, 30 Aug 2024 12:55:32 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Christian Marangi <ansuelsmth@gmail.com>, Rob Herring <robh@kernel.org>,
-	Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
-	Conor Dooley <conor@kernel.org>,
-	Benjamin Larsson <benjamin.larsson@genexis.eu>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	upstream@airoha.com
+	id 1sjzOF-00000005wN2-23sj;
+	Fri, 30 Aug 2024 11:02:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+  t=1725015723; x=1756551723;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=TDfK2OXLeyP1NsBRvK2CqLKE67BvroyGJQRQiZTW4AU=;
+  b=HZ3e3VToqjkEXyqAb+9MN0/5h8aMpnunY0tn5OywWsKcYTmESRVIvdUk
+   ScQh/bW0ZSjtOpku4y9kTR49gu0nVvstBRHKEzgeT6Ie6t9ePcMwheI3i
+   vLdriK0bXa1iBegR7XGb4exruMgVQ3NlhAaubFVB9mUz75XDd+yYzDHvp
+   dpLilYfgdxVp1wevZw5X0jIr9vgST811cByZfK+3wqyUW3Q0ILhdpBPGQ
+   og2hhtnirXgFCpAktOG2MhweYyOW2axEm98IgU3uvRw5+m+nAZGWZWHBy
+   SgaTrqfj+gL9b9U1b67SxwshHAiHvCNijq97XJUYP5FBVlTskg020hWpQ
+   A==;
+X-CSE-ConnectionGUID: 491UwJ12S2WuGIiIBwqZ7Q==
+X-CSE-MsgGUID: OvBJOUT7RViFE4CCask+Fw==
+X-IronPort-AV: E=Sophos;i="6.10,188,1719903600"; 
+   d="asc'?scan'208";a="198533155"
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
+  by esa6.microchip.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 30 Aug 2024 04:02:01 -0700
+Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
+ chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Fri, 30 Aug 2024 04:01:58 -0700
+Received: from wendy (10.10.85.11) by chn-vm-ex01.mchp-main.com (10.10.85.143)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35 via Frontend
+ Transport; Fri, 30 Aug 2024 04:01:50 -0700
+Date: Fri, 30 Aug 2024 12:01:19 +0100
+From: Conor Dooley <conor.dooley@microchip.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Krzysztof Kozlowski <krzk@kernel.org>, Christian Marangi
+	<ansuelsmth@gmail.com>, Rob Herring <robh@kernel.org>, Lorenzo Bianconi
+	<lorenzo.bianconi83@gmail.com>, Conor Dooley <conor@kernel.org>, Benjamin
+ Larsson <benjamin.larsson@genexis.eu>, Linus Walleij
+	<linus.walleij@linaro.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
+ Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+	<linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<upstream@airoha.com>
 Subject: Re: [PATCH v2 1/2] dt-bindings: pinctrl: airoha: Add EN7581 pinctrl
  controller
-Message-ID: <ZtGlJBORZaFm_77K@lore-desk>
-References: <20240823-darkened-cartload-d2621f33eab8@spud>
- <66c8c50f.050a0220.d7871.f209@mx.google.com>
+Message-ID: <20240830-payphone-unexposed-75eed532c14d@wendy>
+References: <66c8c50f.050a0220.d7871.f209@mx.google.com>
  <Zsj8bmBJhfUdH6qT@lore-desk>
  <20240826-kinsman-crunching-e3b75297088c@spud>
  <CAA2SeNJ2Gi+3Za+jvAVqqbx7xEGLqkDBkJ8vL=pA=ZbKWOfp=Q@mail.gmail.com>
@@ -70,14 +81,15 @@ References: <20240823-darkened-cartload-d2621f33eab8@spud>
  <qro6jbupm27vvulymb4ckn7wm6qbvrvnydzjyd42metarlh2t2@hxdzvff4jdus>
  <66d187f1.050a0220.3213d8.ad53@mx.google.com>
  <2c9aafdd-000b-4e8f-b599-4f57e7eb0ca7@kernel.org>
+ <ZtGlJBORZaFm_77K@lore-desk>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="IYN2kXd47Q+edkfX"
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="BTdQ0ZNkxqHmGinK"
 Content-Disposition: inline
-In-Reply-To: <2c9aafdd-000b-4e8f-b599-4f57e7eb0ca7@kernel.org>
+In-Reply-To: <ZtGlJBORZaFm_77K@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240830_035536_911730_77C77892 
-X-CRM114-Status: GOOD (  26.28  )
+X-CRM114-CacheID: sfid-20240830_040203_777997_BDEAA924 
+X-CRM114-Status: GOOD (  28.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,131 +104,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---IYN2kXd47Q+edkfX
+--BTdQ0ZNkxqHmGinK
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-[...]
-
-> >>>
-> >>> Hi Rob, thanks a lot for the hint, I hope we can finally find a solut=
-ion
-> >>> on how to implement this.
-> >>>
-> >>> In Documentation the block is called GPIO Controller. As explained it=
- does
-> >>> expose pinctrl function AND pwm (with regs in the middle)
-> >>>
-> >>> Is this semplification really needed? It does pose some problem driver
-> >>> wise (on where to put the driver, in what subsystem) and also on the
-> >>
-> >> Sorry, but no, dt-bindings do not affect the driver at all in such way.
-> >> Nothing changes in your driver in such aspect, no dilemma where to put
-> >> it (the same place as before).
-> >>
-> >=20
-> > Ok, from the proposed node structure, is it problematic to move the
-> > gpio-controller and -cells in the pinctrl node? And also the pwm-cells
-> > to the pwm node?
+On Fri, Aug 30, 2024 at 12:55:32PM +0200, Lorenzo Bianconi wrote:
+> [...]
 >=20
-> The move is just unnecessary and not neat. You design DTS based on your
-> drivers architecture and this is exactly what we want to avoid.
->=20
-> > This is similar to how it's done by broadcom GPIO MFD [1] that also
->=20
-> There are 'reg' fields, which is the main problem here. I don't like
-> that arguments because it entirely misses the discussions - about that
-> binding or other bindings - happening prior to merge.
->=20
-> > expose pinctrl and other device in the same register block as MFD
-> > childs.
+> > >>>
+> > >>> Hi Rob, thanks a lot for the hint, I hope we can finally find a sol=
+ution
+> > >>> on how to implement this.
+> > >>>
+> > >>> In Documentation the block is called GPIO Controller. As explained =
+it does
+> > >>> expose pinctrl function AND pwm (with regs in the middle)
+> > >>>
+> > >>> Is this semplification really needed? It does pose some problem dri=
+ver
+> > >>> wise (on where to put the driver, in what subsystem) and also on the
+> > >>
+> > >> Sorry, but no, dt-bindings do not affect the driver at all in such w=
+ay.
+> > >> Nothing changes in your driver in such aspect, no dilemma where to p=
+ut
+> > >> it (the same place as before).
+> > >>
+> > >=20
+> > > Ok, from the proposed node structure, is it problematic to move the
+> > > gpio-controller and -cells in the pinctrl node? And also the pwm-cells
+> > > to the pwm node?
 > >=20
-> > This would be the final node block.
+> > The move is just unnecessary and not neat. You design DTS based on your
+> > drivers architecture and this is exactly what we want to avoid.
 > >=20
-> >                 mfd@1fbf0200 {
-> >                         compatible =3D "airoha,en7581-gpio-mfd";
-> >                         reg =3D <0x0 0x1fbf0200 0x0 0xc0>;
+> > > This is similar to how it's done by broadcom GPIO MFD [1] that also
 > >=20
-> >                         interrupt-parent =3D <&gic>;
-> >                         interrupts =3D <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
+> > There are 'reg' fields, which is the main problem here. I don't like
+> > that arguments because it entirely misses the discussions - about that
+> > binding or other bindings - happening prior to merge.
 > >=20
-> >                         pio: pinctrl {
-> >                                 compatible =3D "airoha,en7581-pinctrl";
+> > > expose pinctrl and other device in the same register block as MFD
+> > > childs.
+> > >=20
+> > > This would be the final node block.
+> > >=20
+> > >                 mfd@1fbf0200 {
+> > >                         compatible =3D "airoha,en7581-gpio-mfd";
+> > >                         reg =3D <0x0 0x1fbf0200 0x0 0xc0>;
+> > >=20
+> > >                         interrupt-parent =3D <&gic>;
+> > >                         interrupts =3D <GIC_SPI 26 IRQ_TYPE_LEVEL_HIG=
+H>;
+> > >=20
+> > >                         pio: pinctrl {
+> > >                                 compatible =3D "airoha,en7581-pinctrl=
+";
+> > >=20
+> > >                                 gpio-controller;
+> > >                                 #gpio-cells =3D <2>;
+> > >=20
+> > >                                 interrupt-controller;
+> > >                                 #interrupt-cells =3D <2>;
 > >=20
-> >                                 gpio-controller;
-> >                                 #gpio-cells =3D <2>;
-> >=20
-> >                                 interrupt-controller;
-> >                                 #interrupt-cells =3D <2>;
+> > No resources here...
 >=20
-> No resources here...
-
-ack. iiuc, all the properties will be in the parent node (mfd) and we will
-have just the compatible strings in the child ones, right? Something like:
-
-		mfd@1fbf0200 {
-			compatible =3D "airoha,en7581-gpio-mfd";
-			reg =3D <0x0 0x1fbf0200 0x0 0xc0>;
-			gpio-controller;
-			#gpio-cells =3D <2>;
-
-			...
-			#pwm-cells =3D <3>;
-
-			pio: pinctrl {
-				compatible =3D "airoha,en7581-pinctrl";
-			};
-
-			pwm: pwm {
-				compatible =3D "airoha,en7581-pwm";
-			};
-		};
-
+> ack. iiuc, all the properties will be in the parent node (mfd) and we will
+> have just the compatible strings in the child ones, right? Something like:
 >=20
-> >                         };
-> >=20
-> >                         pwm: pwm {
-> >                                 compatible =3D "airoha,en7581-pwm";
-> >=20
-> >                                 #pwm-cells =3D <3>;
-> >                                 status =3D "disabled";
+> 		mfd@1fbf0200 {
+> 			compatible =3D "airoha,en7581-gpio-mfd";
+> 			reg =3D <0x0 0x1fbf0200 0x0 0xc0>;
+> 			gpio-controller;
+> 			#gpio-cells =3D <2>;
 >=20
-> And why is it disabled? No external resources. There is no benefit of
-> this node.
+> 			...
+> 			#pwm-cells =3D <3>;
+>=20
+> 			pio: pinctrl {
+> 				compatible =3D "airoha,en7581-pinctrl";
+> 			};
+>=20
+> 			pwm: pwm {
+> 				compatible =3D "airoha,en7581-pwm";
+> 			};
+> 		};
 
-This is just a copy-paster error.
 
-Regards,
-Lorenzo
+Didn't Rob basically tell you how to do it earlier in the thread?
+What you've got now makes no sense, the compatibles only exist in that
+to probe drivers, which you can do from the mfd driver with
+mfd_add_devices() or w/e that function is called.
 
->=20
-> >                         };
-> >                 };
-> >=20
-> > I also link the implementation of the MFD driver [2]
-> >=20
-> > [1] https://elixir.bootlin.com/linux/v6.10.7/source/Documentation/devic=
-etree/bindings/mfd/brcm,bcm6318-gpio-sysctl.yaml
-> > [2] https://github.com/Ansuel/linux/blob/airoha-mfd/drivers/mfd/airoha-=
-en7581-gpio-mfd.c
->=20
->=20
-> Best regards,
-> Krzysztof
->=20
+Cheers,
+Conor.
 
---IYN2kXd47Q+edkfX
+--BTdQ0ZNkxqHmGinK
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZtGlJAAKCRA6cBh0uS2t
-rFzQAP4mYUCwg1JRcirltoinC6e9pS7gd5QYY6CO37on5nvrvQEAnfzJf6uwCbLw
-wY4Eg/KVWSaHIB8anfeZPF6f9L4DyAc=
-=nxyD
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZtGmfwAKCRB4tDGHoIJi
+0sEcAQCQDluOGutoHHSxi1RRVaYRPSJP0f1MJmoiZYp/4PI/ugD+IRBsC22377IK
+Ef6OU0NVQVpsYSIGHZUMn0A7WR8tYwM=
+=YVf8
 -----END PGP SIGNATURE-----
 
---IYN2kXd47Q+edkfX--
+--BTdQ0ZNkxqHmGinK--
 
