@@ -4,78 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DD6BCA0EE7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Aug 2024 06:35:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4130ACA0EE6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Aug 2024 07:05:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=65vPLjjK0lUK36QVz1TbPuE8Z6mJN9QxNP2GyeGP7HY=; b=NYDFjkTPf6p/GWxlliBidxzLxP
-	ZNDSpw9664WUqZaLsoPPFLC3BBdEAXvjV4g6XA57hE8S5FJqTU1wt37ZgszHpxcX8c8VVs1AR6Eyj
-	sDr2fdRXJ7yiFpwC0tfY7WQka+RBDbYMz3dn7iQegCexWBjhS4cKFF9sPNQ9TFsKU+eP7QyOO+YVE
-	l51wZhBQwShvqU+5tnVlrhykr5Te3xMtgsRRBEm8XU4zyOXDbHPX/ZnebY09hCfSPHjkYTVFk9YyU
-	ibJdtL4ytNQ/cWCODnHVU+fY5fvatVFPmYHYVAAhoOvIsbSLIikz2yV9ovQ6qXp53FIVMhnEcCCZR
-	ou5XbvXg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NAqkPKV8FIclg2RIfEME8aNTCMBfxloXKZQVTM0jEG4=; b=Thce6nFHdYiIc1JEaOyJI+ba+v
+	rbmD7aw5BAs2XSpf/xzRmSSGSk+I1/k+o56ir3KzmnR0hvlDA8auB2V/GVhhiBp0Ox1efibZErwp6
+	15/oNaANsCG5bfYWTApOfXzCLGWrdH/+Gd2CvYVF+oIoV2kJpfMIfKBKmhmE95x6EPAnziF+gv7UH
+	cA8xO7l2A4QF+kqWt3pEwa1/JcbY9T6FGIDkgvNqQqw3ILcXeLpCvz/ZIHEhgDkxztUcy0KJoT4en
+	ZFgX5rFepzcQ1fjmW2NvOd8UgIxU9OokayxE2M/CZ1dEIX3vjGAQ3QVccUQBt5j/2b7hzlyC+YydT
+	gk5S2m+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjvEa-00000004yZV-0AyW;
-	Fri, 30 Aug 2024 06:35:48 +0000
-Received: from szxga08-in.huawei.com ([45.249.212.255])
+	id 1sjvhO-000000052Xm-3Qv2;
+	Fri, 30 Aug 2024 07:05:35 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sjvDf-00000004yJd-44eG;
-	Fri, 30 Aug 2024 06:34:54 +0000
-Received: from mail.maildlp.com (unknown [172.19.88.194])
-	by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4Ww7dp3fr0z18MyV;
-	Fri, 30 Aug 2024 14:33:50 +0800 (CST)
-Received: from kwepemh500013.china.huawei.com (unknown [7.202.181.146])
-	by mail.maildlp.com (Postfix) with ESMTPS id 14CA1140202;
-	Fri, 30 Aug 2024 14:34:41 +0800 (CST)
-Received: from [10.67.109.254] (10.67.109.254) by
- kwepemh500013.china.huawei.com (7.202.181.146) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Fri, 30 Aug 2024 14:34:39 +0800
-Message-ID: <c29263ae-89f1-edd7-003a-bd03cdddc821@huawei.com>
-Date: Fri, 30 Aug 2024 14:34:38 +0800
+	id 1sjvgT-000000052F0-3Udc
+	for linux-mediatek@lists.infradead.org;
+	Fri, 30 Aug 2024 07:04:39 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-a83597ce5beso247179166b.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 30 Aug 2024 00:04:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1725001476; x=1725606276; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=NAqkPKV8FIclg2RIfEME8aNTCMBfxloXKZQVTM0jEG4=;
+        b=RGEdPpKYUDN0rECUSMsbYvRPEbrrSvZWBQqtAcDTRELmBbCOVr3tpUfoMXJ2YsgOtN
+         JiCZy19XR8oQmpQNSkbvz6eYcBBcYxzURbaegq6zysCfsTxcYoEmmTkb8ofBK8d8qIfV
+         NL2jPmGTYELcuEkJ9X0Rc1haStInokpwybwr4B95diK9ZpIYPoFV4UV1vIGGgUnjQY1r
+         McKX1YILymyYwZgkMVQYyzxKEKQzpIxbYnbsYH2K5iAGUnofO4iF3pMt2m/amDYEXpkc
+         l0vbTGH/zgR9Jsa6eBsS7/HEN4SKqpCawHBAPaTsbEwHoEyRr8KCd132S9mf5oLG0zJq
+         Q5Eg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1725001476; x=1725606276;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=NAqkPKV8FIclg2RIfEME8aNTCMBfxloXKZQVTM0jEG4=;
+        b=SlKxhbqbrRENcjRrasnDJLerVSAhM8CIYtdcKc5VQRA2bfjxG9fHeyKJmNmVnx9XWj
+         YR1CaZDOYg44PX/C61AldExuA8sElbBxCdJxAY2WOsMx7/BcFBIlA7Lmxp42drZ1gYrX
+         6ou1gbTth06YGaSwDVGLih6yFb2wl/zAZBw/fLvZMpIe+XiZK5QJcKcxmeJbU1r4RhNd
+         rKC9+JhQ4SZ2vD35WZZzrPLx7ALXcDpPHHkd7bIqvmkJdKegijf2VvO7c9a+FWeyy+G6
+         bw2JDDAZfL99+Zbob78J5Z4cypYvlSZsbspIxtZIJTEsWEmuxEXacV2qi3JygwLpd0Ok
+         OW2g==
+X-Forwarded-Encrypted: i=1; AJvYcCVWUUeqangFKvhhRvmtTcglA3t9DJJJI1qNNmmrAS1+gIurfUo8+IuBiTHBq3RLvHOZduItHdNdpj7s4Ni3GA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyblShwc23eE9ga1a14yMinXx2qjGw/24MAiBWsBe9JD9fWqxe6
+	EpjkFerV/ygtEENQbuAPV//qrJGIGPSe3Kb6ANG3vZV/s4InRA756q49USYibwE=
+X-Google-Smtp-Source: AGHT+IFDgPRujvPs0pY58RBt0z0M4T/+m/fwfgJO35cZdR0pWvXLPvq+fQ5KKo/0SLFh8TiIvn9dYw==
+X-Received: by 2002:a17:907:6d25:b0:a86:94cd:97f0 with SMTP id a640c23a62f3a-a89a26bfcb7mr138897066b.19.1725001475410;
+        Fri, 30 Aug 2024 00:04:35 -0700 (PDT)
+Received: from rayden.urgonet (h-217-31-164-171.A175.priv.bahnhof.se. [217.31.164.171])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a89892232c7sm178026866b.222.2024.08.30.00.04.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 30 Aug 2024 00:04:34 -0700 (PDT)
+From: Jens Wiklander <jens.wiklander@linaro.org>
+To: linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-media@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linaro-mm-sig@lists.linaro.org,
+	op-tee@lists.trustedfirmware.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Olivier Masse <olivier.masse@nxp.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Yong Wu <yong.wu@mediatek.com>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Brian Starkey <Brian.Starkey@arm.com>,
+	John Stultz <jstultz@google.com>,
+	"T . J . Mercier" <tjmercier@google.com>,
+	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+	Sumit Garg <sumit.garg@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Jens Wiklander <jens.wiklander@linaro.org>
+Subject: [RFC PATCH 0/4] Linaro restricted heap
+Date: Fri, 30 Aug 2024 09:03:47 +0200
+Message-Id: <20240830070351.2855919-1-jens.wiklander@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [PATCH -next RESEND 00/10] mtd: Use
- for_each_child_of_node_scoped()
-Content-Language: en-US
-To: Miquel Raynal <miquel.raynal@bootlin.com>, Krzysztof Kozlowski
-	<krzk@kernel.org>
-CC: <michal.simek@amd.com>, <richard@nod.at>, <vigneshr@ti.com>,
-	<liang.yang@amlogic.com>, <neil.armstrong@linaro.org>,
-	<khilman@baylibre.com>, <jbrunet@baylibre.com>,
-	<martin.blumenstingl@googlemail.com>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <heiko@sntech.de>,
-	<mcoquelin.stm32@gmail.com>, <alexandre.torgue@foss.st.com>, <wens@csie.org>,
-	<jernej.skrabec@gmail.com>, <samuel@sholland.org>, <kees@kernel.org>,
-	<gustavoars@kernel.org>, <linux@treblig.org>, <robh@kernel.org>,
-	<u.kleine-koenig@pengutronix.de>, <erick.archer@gmx.com>,
-	<christophe.jaillet@wanadoo.fr>, <val@packett.cool>,
-	<christophe.kerello@foss.st.com>, <linux-mtd@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-amlogic@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>, <jic23@kernel.org>
-References: <20240826094328.2991664-1-ruanjinjie@huawei.com>
- <20240826115213.389acaef@xps-13>
- <f7430f87-88d2-4c08-bc1e-6bb3da4e332c@kernel.org>
- <20240826144917.2c4e202d@xps-13>
-From: Jinjie Ruan <ruanjinjie@huawei.com>
-In-Reply-To: <20240826144917.2c4e202d@xps-13>
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.67.109.254]
-X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
- kwepemh500013.china.huawei.com (7.202.181.146)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240829_233452_900341_802BCD0B 
-X-CRM114-Status: UNSURE (   6.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240830_000437_894399_ACC0031E 
+X-CRM114-Status: GOOD (  14.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,36 +110,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
+This patch set is based on top of Yong Wu's restricted heap patch set [1].
+It's also a continuation on Olivier's Add dma-buf secure-heap patch set [2].
 
-On 2024/8/26 20:49, Miquel Raynal wrote:
-> Hi Krzysztof,
-> 
-> krzk@kernel.org wrote on Mon, 26 Aug 2024 12:19:07 +0200:
-> 
->> On 26/08/2024 11:52, Miquel Raynal wrote:
->>> Hi Jinjie,
->>>
->>> ruanjinjie@huawei.com wrote on Mon, 26 Aug 2024 17:43:18 +0800:
->>>   
->>>> Use scoped for_each_available_child_of_node_scoped() when iterating over
->>>> device nodes to make code a bit simpler.  
->>>
->>> Why is this a resend ? Did I miss a previous iteration?  
->>
->> You were not cc-ed on previous iteration. I asked for proper split
->> between subsystems and sending to maintainers, thus this resend.
-> 
-> Ok. Makes sense, and the patchset looks fine.
+The Linaro restricted heap uses genalloc in the kernel to manage the heap
+carvout. This is a difference from the Mediatek restricted heap which
+relies on the secure world to manage the carveout.
 
-Hi, Miquel,
+I've tried to adress the comments on [2], but [1] introduces changes so I'm
+afraid I've had to skip some comments.
 
-Could this series be merged, thank you!
+This can be tested on QEMU with the following steps:
+repo init -u https://github.com/jenswi-linaro/manifest.git -m qemu_v8.xml \
+        -b prototype/sdp-v1
+repo sync -j8
+cd build
+make toolchains -j4
+make all -j$(nproc)
+make run-only
+# login and at the prompt:
+xtest --sdp-basic
 
-> 
-> Jinjie, please always include a changelog when you send new versions,
-> and explanations for a RESEND.
-> 
-> Thanks,
-> Miquèl
+https://optee.readthedocs.io/en/latest/building/prerequisites.html
+list dependencies needed to build the above.
+
+The tests are pretty basic, mostly checking that a Trusted Application in
+the secure world can access and manipulate the memory.
+
+Cheers,
+Jens
+
+[1] https://lore.kernel.org/dri-devel/20240515112308.10171-1-yong.wu@mediatek.com/
+[2] https://lore.kernel.org/lkml/20220805135330.970-1-olivier.masse@nxp.com/
+
+Changes since Olivier's post [2]:
+* Based on Yong Wu's post [1] where much of dma-buf handling is done in
+  the generic restricted heap
+* Simplifications and cleanup
+* New commit message for "dma-buf: heaps: add Linaro restricted dmabuf heap
+  support"
+* Replaced the word "secure" with "restricted" where applicable
+
+Etienne Carriere (1):
+  tee: new ioctl to a register tee_shm from a dmabuf file descriptor
+
+Jens Wiklander (2):
+  dma-buf: heaps: restricted_heap: add no_map attribute
+  dma-buf: heaps: add Linaro restricted dmabuf heap support
+
+Olivier Masse (1):
+  dt-bindings: reserved-memory: add linaro,restricted-heap
+
+ .../linaro,restricted-heap.yaml               |  56 ++++++
+ drivers/dma-buf/heaps/Kconfig                 |  10 ++
+ drivers/dma-buf/heaps/Makefile                |   1 +
+ drivers/dma-buf/heaps/restricted_heap.c       |  17 +-
+ drivers/dma-buf/heaps/restricted_heap.h       |   2 +
+ .../dma-buf/heaps/restricted_heap_linaro.c    | 165 ++++++++++++++++++
+ drivers/tee/tee_core.c                        |  38 ++++
+ drivers/tee/tee_shm.c                         | 104 ++++++++++-
+ include/linux/tee_drv.h                       |  11 ++
+ include/uapi/linux/tee.h                      |  29 +++
+ 10 files changed, 426 insertions(+), 7 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/reserved-memory/linaro,restricted-heap.yaml
+ create mode 100644 drivers/dma-buf/heaps/restricted_heap_linaro.c
+
+-- 
+2.34.1
+
 
