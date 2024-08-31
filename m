@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DB54CA100B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Aug 2024 07:05:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBFCDCA101D
+	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Aug 2024 08:08:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oc7QG9lQ1s5OX6gDIck2KDicZ8ytCJvpOGVewu/6c/4=; b=l4YtJ7wVEmdOAewmOXS7BNZQMP
-	D1+Vu8WFIWTjIKAim02gtJvVU6BiRuVzaJ/Chop70tMLXfJrWl9jkwjICuJc7onK4NgKniqD5XkIw
-	PlwhFvSkWUfBytEkIGQW11pa35OjjBL9Nb1XOAkkfQ39Wx5hDzVhvpvl782z5ROPxutslOHWROdbm
-	8z0ZwOr48qRLeu7d9LfBj1zYQ9+h5EWE5ui3aMGM9+FvZ3DmUk0lnvUT/5OdxVRtcKsbKgYGcWamy
-	fmk8/fiSMgHKuGzjQfbgr/FbDcWkNjE+Sdc+VWPjWDmnrRcWK8nPGoilT9AXgaHccOQ7ftOqcKbZT
-	DwySDnug==;
+	bh=LzbWGIc+v897MuxHg7G7udC+aXHPAsPmct0BY/rUG00=; b=VAXoMKG46ynkJmOCpbL/EMtQha
+	wt4NRv7c1uCpSCh7uPodreBVh4RINYZPMWwtwf0jSlIFIceK4140t9Pp1/5b4hQfCqczGpf39YhOy
+	fCpVfniCJ6HQeT6Gcv5KnF0GGR17MsylEXU1LAuuBaPUGrLmKGatl7Ym/0LUS3lc1YgQTlTGf5v4l
+	sHQ+EWl4TnY6Vl5Pt61uq3hm1MojGX7+MbMqSyDCgz7AKm4FUWJplUP02qW4IqhB2Ld5slln2bqkZ
+	lNvFHwJdwv1rVqcQ1woNWuuLY2wjt7Mh6BT0aRc5la0WWipSNYDtaGj8jo414RmBO7Pb+yBLADxcg
+	u8xdl/7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skIBJ-00000008nYA-1DCn;
-	Sat, 31 Aug 2024 07:05:57 +0000
-Received: from mgamail.intel.com ([192.198.163.10])
+	id 1skJAG-00000008ul4-2x3C;
+	Sat, 31 Aug 2024 08:08:56 +0000
+Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skIAP-00000008nHr-0YsL;
-	Sat, 31 Aug 2024 07:05:03 +0000
+	id 1skJ9M-00000008ufP-1Mc1;
+	Sat, 31 Aug 2024 08:08:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1725087901; x=1756623901;
+  t=1725091681; x=1756627681;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=2MIvjife9TxEOVM4N//TXAhsxKXULju5kqrwtaSFDZI=;
-  b=ctVo7WALw7n6aZ1ZavbGdoC2D60O5A4crmHaaEzAHdGGaVzuJBThTJbu
-   4DSpapnlOneTt+/tBIL+vGY5WJyKaBNF+iG4ff7Rg379RohvOiD7T/Dv5
-   zEmFBBXgtC0OUNiqv0qW+m9TKKUgFE8QI1bSXftCQWEQgdybsMeVMpeyN
-   1QlMRO102KN+geAq49tEvhFwd1NaMJGqkj9gdUz0K6m4gmTYJRQ5YLp7M
-   Xvx70gyANmvbkrg/W/QmVwoGwbBc3DkfGZMhPLlfb3btUhN+kbJpLgDAx
-   bU3WOjbPAYYKlFzcyY2bLltahHbKw4n4agQmo0/boJQIxG5lmEInuBq2I
-   A==;
-X-CSE-ConnectionGUID: bzToTiJ+TfSfx3g3/jHyWw==
-X-CSE-MsgGUID: SC3kjgEETCG1ItcTKVMzUA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11180"; a="35142360"
+  bh=pMyd6VJ5fw/wGHIvhzQNZYG4qJelaQ5hTMxf5GnoR3c=;
+  b=P+/PuwF7Yq2mDb5bKQLcYwqIvmoBf73MbjP2BVHcriaJj0J0yiMInks1
+   RnTxeWqScJkH+FWT7d+rWSzFUNTl7F6gx4etWffFvl0bLxF04rCD8lxPj
+   KdILXlxF8YzoSgyLmlWrQKK8fcGMnOEitojwKa9/pLYakKNtEZ6q1h4EQ
+   rMGuHe6IdGO1fXwOy7rM4GJnX68YkjKPVZexLj2mPScnWi819J8F2HbQv
+   Cup5Kksixsrfb5b1tZ+CKY3xqQKOdtxTB+ApstksuQGPJjYnk1Oh2iWqB
+   tbGq7kCup9Bttl5v7bXA2JAe86r0eN/k/UGE+V9Xv5dpueGu40YO/W51d
+   w==;
+X-CSE-ConnectionGUID: N+kgDPZWTFG0mo9rKbou7Q==
+X-CSE-MsgGUID: RS5LwHj7Sq+HVRcU5ojTdQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11180"; a="23898826"
 X-IronPort-AV: E=Sophos;i="6.10,191,1719903600"; 
-   d="scan'208";a="35142360"
+   d="scan'208";a="23898826"
 Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Aug 2024 00:04:56 -0700
-X-CSE-ConnectionGUID: pBaWsdrATdClvQIISpIntA==
-X-CSE-MsgGUID: PGOW7AjMQ2qLPMI3JEsoQA==
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Aug 2024 01:07:57 -0700
+X-CSE-ConnectionGUID: +yHVbmu0R8O+HNdeMbMqzg==
+X-CSE-MsgGUID: QuDWnnohQq6+5BdwTdhPig==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.10,191,1719903600"; 
-   d="scan'208";a="64160004"
+   d="scan'208";a="64167540"
 Received: from lkp-server01.sh.intel.com (HELO 9c6b1c7d3b50) ([10.239.97.150])
-  by fmviesa009.fm.intel.com with ESMTP; 31 Aug 2024 00:04:50 -0700
+  by fmviesa009.fm.intel.com with ESMTP; 31 Aug 2024 01:07:51 -0700
 Received: from kbuild by 9c6b1c7d3b50 with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1skIAC-0002Ps-0A;
-	Sat, 31 Aug 2024 07:04:48 +0000
-Date: Sat, 31 Aug 2024 15:04:06 +0800
+	id 1skJ9A-0002Ra-2m;
+	Sat, 31 Aug 2024 08:07:48 +0000
+Date: Sat, 31 Aug 2024 16:06:53 +0800
 From: kernel test robot <lkp@intel.com>
 To: Macpaul Lin <macpaul.lin@mediatek.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -81,17 +81,17 @@ Cc: oe-kbuild-all@lists.linux.dev, Bear Wang <bear.wang@mediatek.com>,
 	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
 	linux-rtc@vger.kernel.org, linux-sound@vger.kernel.org,
 	devicetree@vger.kernel.org, Chen-Yu Tsai <wenst@chromium.org>
-Subject: Re: [PATCH v2 2/7] dt-bindings: mfd: mediatek: mt6397: Convert to DT
- schema format
-Message-ID: <202408311453.Ui9YGyJc-lkp@intel.com>
-References: <20240830110732.30080-2-macpaul.lin@mediatek.com>
+Subject: Re: [PATCH v2 5/7] dt-bindings: leds: mt6323: merge to MFD
+ mediatek,mt6397 DT schema
+Message-ID: <202408311533.GPosdKVY-lkp@intel.com>
+References: <20240830110732.30080-5-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240830110732.30080-2-macpaul.lin@mediatek.com>
+In-Reply-To: <20240830110732.30080-5-macpaul.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240831_000501_253642_91D53361 
-X-CRM114-Status: GOOD (  13.87  )
+X-CRM114-CacheID: sfid-20240831_010800_471567_4E129164 
+X-CRM114-Status: GOOD (  13.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,30 +111,33 @@ Hi Macpaul,
 kernel test robot noticed the following build warnings:
 
 [auto build test WARNING on broonie-regulator/for-next]
-[also build test WARNING on lee-mfd/for-mfd-next robh/for-next lee-mfd/for-mfd-fixes linus/master v6.11-rc5 next-20240830]
+[also build test WARNING on next-20240830]
+[cannot apply to lee-mfd/for-mfd-next robh/for-next lee-mfd/for-mfd-fixes linus/master v6.11-rc5]
 [If your patch is applied to the wrong git tree, kindly drop us a note.
 And when submitting patch, we suggest to use '--base' as documented in
 https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
 url:    https://github.com/intel-lab-lkp/linux/commits/Macpaul-Lin/dt-bindings-mfd-mediatek-mt6397-Convert-to-DT-schema-format/20240830-191309
 base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
-patch link:    https://lore.kernel.org/r/20240830110732.30080-2-macpaul.lin%40mediatek.com
-patch subject: [PATCH v2 2/7] dt-bindings: mfd: mediatek: mt6397: Convert to DT schema format
-reproduce: (https://download.01.org/0day-ci/archive/20240831/202408311453.Ui9YGyJc-lkp@intel.com/reproduce)
+patch link:    https://lore.kernel.org/r/20240830110732.30080-5-macpaul.lin%40mediatek.com
+patch subject: [PATCH v2 5/7] dt-bindings: leds: mt6323: merge to MFD mediatek,mt6397 DT schema
+reproduce: (https://download.01.org/0day-ci/archive/20240831/202408311533.GPosdKVY-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202408311453.Ui9YGyJc-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202408311533.GPosdKVY-lkp@intel.com/
 
 All warnings (new ones prefixed by >>):
 
->> Warning: Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml references a file that doesn't exist: Documentation/devicetree/bindings/mfd/mt6397.txt
-   Warning: Documentation/devicetree/bindings/leds/leds-mt6323.txt references a file that doesn't exist: Documentation/devicetree/bindings/mfd/mt6397.txt
-   Warning: Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml references a file that doesn't exist: Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
    Warning: Documentation/devicetree/bindings/power/wakeup-source.txt references a file that doesn't exist: Documentation/devicetree/bindings/input/qcom,pm8xxx-keypad.txt
    Warning: Documentation/devicetree/bindings/regulator/siliconmitus,sm5703-regulator.yaml references a file that doesn't exist: Documentation/devicetree/bindings/mfd/siliconmitus,sm5703.yaml
    Warning: Documentation/hwmon/g762.rst references a file that doesn't exist: Documentation/devicetree/bindings/hwmon/g762.txt
+   Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/reserved-memory/qcom
+   Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/display/exynos/
+>> Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/leds/leds-mt6323.txt
+   Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/misc/fsl,qoriq-mc.txt
+   Using alabaster theme
 
 -- 
 0-DAY CI Kernel Test Service
