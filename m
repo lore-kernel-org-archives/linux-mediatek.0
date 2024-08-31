@@ -4,84 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01DD8CD3423
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Aug 2024 19:49:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2E88CD13DF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Aug 2024 22:06:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CSElDLIbihEFTAbRBERxjMT7HZZGY2tjuXbtEHG/v70=; b=OK/BefOcwSr4tAK27uz3toDqAB
-	S+tTLhXIGeRxLMQvMnzoKY9+hC91zOsXF20Mqa8ydCpeMuN5vfg5d8PA76NiMQ4LcHWCbFO3VgZTI
-	eB6qiTI7X/0N8YET8zE4gyx/C/O3JlGb3B+EsbVlri//gDlq27gpO5Bh5p+Ud69oad26y3BwuCrWd
-	uo7URY1Rl3HJCs9Ngd+flvlajrPRjxjvFSpBa+DyqPKokFCSHEUgJOqN9S5P4fbYqG0IbntOjR2ri
-	KISS9MtyA5CqbzJPyRQ5ufPPhcWztbBTtlYJYx/74Z4IBJsj5xw9C24X3LU6HsVqlj5RoCX4y0eT1
-	xgsPs4kQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iHiTRjE5wPqafGdsOpFQFAP5aZVxpmACA5LO9Bj0aoQ=; b=cXZq7O8GM77Fn2UrPISpTBWyON
+	2BH8xcDUSmUnQxtBugxr8wCOii/Hk8CCRiyhc7Ql9OXBzcu8pw6S+iYlt+2FP6nEoJgnUwbnjHrMK
+	9shFV+kNzDczsBjPTyWoANP/OFLh64Rxwq5Tr6neSyoRWm39FRfMEY5sTFyQWuavK/4roFC8Iwbar
+	0zrecPZPNy+f+fp0ZLQqjTf4K1vpJ5/qXKG5IAO7kcE7YZlgZe8N6It1c/ocnS3j//NJaWypSrchv
+	YQuSumwqFXjl851UZBtyMbtnKS71fqwDPNgGFE2im19p1NTUw+JjH/axKvU8lh14MS/0NvScgnbsH
+	IwNBRZgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skU6A-00000009ydr-3GAw;
-	Sat, 31 Aug 2024 19:49:26 +0000
-Received: from mgamail.intel.com ([198.175.65.18])
+	id 1skWEa-0000000ACbD-1EsZ;
+	Sat, 31 Aug 2024 22:06:16 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skU67-00000009ydH-0xPR
-	for linux-mediatek@lists.infradead.org;
-	Sat, 31 Aug 2024 19:49:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1725133763; x=1756669763;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=TjFqpOaghVpHu0OD8TVOsUrdkEB/DlbW93skVivqlMc=;
-  b=U0I4yqoWUF6LRxnc9YFEpTKManBo2nb1tYW0Twaz9Ayd1yvco+v8mq3A
-   K1+mzHFw7B6EbEVuuiwVCgtoBV+uh8Qk+SklGNCyrxJW0pAO/8EHFefDq
-   iWIV0delmoUTZ1lhOp82eYCWtV/8lDv89E/hefN28Xvv/yasXQv/hV2Dq
-   KWos1r1dWKc25E7JdqRTOaqGg5YbzOIFeAuCqpWfc8t5f6WGNR/k2FeaF
-   p8rpUCY0nt5HlE7xK5Z7iLAv6F/nh/tgSAXE3X8Wb98KcuoowJABAWb4f
-   CsGwOUCyZkZLBbtXdY1auwic4hHuWvMImeT6sXmFe3WB+XlpUvQM0zwb4
-   g==;
-X-CSE-ConnectionGUID: fsl6Pt08TEmf09GvAUbUMA==
-X-CSE-MsgGUID: vGe2hWn2TjKDlr1pYsnuQg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11181"; a="23891613"
-X-IronPort-AV: E=Sophos;i="6.10,192,1719903600"; 
-   d="scan'208";a="23891613"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
-  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Aug 2024 12:49:22 -0700
-X-CSE-ConnectionGUID: rkMK3vv3TlWSwvqmE8pJsw==
-X-CSE-MsgGUID: 17sbqSKtTNqinfuAWjXqWA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,192,1719903600"; 
-   d="scan'208";a="64946347"
-Received: from lkp-server01.sh.intel.com (HELO 9c6b1c7d3b50) ([10.239.97.150])
-  by orviesa008.jf.intel.com with ESMTP; 31 Aug 2024 12:49:18 -0700
-Received: from kbuild by 9c6b1c7d3b50 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1skU5z-00033u-0v;
-	Sat, 31 Aug 2024 19:49:15 +0000
-Date: Sun, 1 Sep 2024 03:49:10 +0800
-From: kernel test robot <lkp@intel.com>
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
-	martin.petersen@oracle.com, avri.altman@wdc.com,
-	alim.akhtar@samsung.com, jejb@linux.ibm.com
-Cc: oe-kbuild-all@lists.linux.dev, wsd_upstream@mediatek.com,
-	linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
-	chun-hung.wu@mediatek.com, alice.chao@mediatek.com,
-	cc.chou@mediatek.com, chaotian.jing@mediatek.com,
-	jiajie.hao@mediatek.com, powen.kao@mediatek.com,
-	qilin.tan@mediatek.com, lin.gui@mediatek.com,
-	tun-yu.yu@mediatek.com, eddie.huang@mediatek.com,
-	naomi.chu@mediatek.com, ed.tsai@mediatek.com, bvanassche@acm.org,
-	stable@vger.kernel.org
-Subject: Re: [PATCH v1 2/2] ufs: core: requeue MCQ abort request
-Message-ID: <202409010304.Ivj4eQN6-lkp@intel.com>
-References: <20240830074426.21968-3-peter.wang@mediatek.com>
+	id 1skWEY-0000000ACaE-0rG0;
+	Sat, 31 Aug 2024 22:06:15 +0000
+Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-371ba7e46easo1996066f8f.0;
+        Sat, 31 Aug 2024 15:06:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1725141972; x=1725746772; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=iHiTRjE5wPqafGdsOpFQFAP5aZVxpmACA5LO9Bj0aoQ=;
+        b=BvJfW+FhSWngYCwnB5stMQh4xo09fAwnZDUQT6Nqe4Nw2hTCc2wiYE4UYbXNvo9eP1
+         hH6xDr/Q9+9Nhk3RPzjnBxEn2bOQe/NM//yQaWb9QL4Pr1BBoAAhocZTfH1YJuzk5qmr
+         0bw6Qs3guHz+bQ9lZXbB6mMonh8pSJcdemARAwJXcGsj5ymPld0UMsE5UPYUdS6sG6rO
+         IffBGNtpBShWGmyEeTN+e+3zfINCyhbHrUBE042AEKdJN4PPz1AVk4XP1Dm2UiBni2BB
+         dWvbgZ+gta6Byrh2Fa4D0griBH3c8No96YcrfIYBcfSvzRQorjS4+lZVk4Xsg/YiiE1x
+         RIxQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1725141972; x=1725746772;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=iHiTRjE5wPqafGdsOpFQFAP5aZVxpmACA5LO9Bj0aoQ=;
+        b=JpMYVYM6GCnG972oOVpORTuFvmVagfguZW2Zw5j8ojROhnR7X7EYyVsOfLR6OfOMOD
+         LSqRA1xXbkwwmXulpJMmlSk+psFvL/gKJ9Reg558ugLRji6c5hB/1zRq6DB1uaz0tmiC
+         uXJgwXFsrGu3+uqjLhCXU6ZsaqitxI14j5ixQC+UEu2FrNO3gEAzCgjyP3pMD/+WEayh
+         tlcNfXvf9Wla8CJ6UYYRqwXYP8G0r85YJmoiF+IBS3w4gyN06f1kf66h8ZmGQkH9EUDt
+         HHKEIN220t8os2ETY3D4GrMgARE4sMKGRkwQ3uwS93Dd3OL8Bx7lMNGcEv5z6J9wEAjr
+         41sw==
+X-Forwarded-Encrypted: i=1; AJvYcCW6fBzlgupmiAO1gdc1SWWSKGGP01dhl9kn/M6O4ffv7iUVC2gW0QkkAFuKxeYD6DRmxDQhtttPm6wylVarAoo=@lists.infradead.org, AJvYcCWYCZsTMhPSm6sxIMXZ9evSpTelfs7cap6cqlUxo+Jh27BadrmDlQ+G0i6d/n9RaTq5h4sLyDeRNeGC2qt5xFDy@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzi85pUpFaF0FdezXRBzJI3zw8jT5sWeOm9Cv6sm0TyeFjoAQwY
+	55FK81qXjwyHsTiIruYqarwqckcidc0ZwA27Z9fPdmGIymk9uBxgwGvnOB1fsCuAi2pBWZUusLw
+	I8C9zYEr6lhwc9pSkrjTLxWYVW9Y=
+X-Google-Smtp-Source: AGHT+IElcSjXVcepALYdR4g4ZBYS52ra8HL1nFrQuNIj918KyHcB0GxmzUlRohlXi6yN7dyNwTT9La4BHx8mt28MpUE=
+X-Received: by 2002:adf:e5cb:0:b0:368:526d:41d8 with SMTP id
+ ffacd0b85a97d-374bceb003fmr2076156f8f.23.1725141971473; Sat, 31 Aug 2024
+ 15:06:11 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240830074426.21968-3-peter.wang@mediatek.com>
+References: <20240830082518.23243-1-Tze-nan.Wu@mediatek.com> <ZtKOAKlNalVLIz2E@mini-arch>
+In-Reply-To: <ZtKOAKlNalVLIz2E@mini-arch>
+From: Alexei Starovoitov <alexei.starovoitov@gmail.com>
+Date: Sat, 31 Aug 2024 15:06:00 -0700
+Message-ID: <CAADnVQKF=o6q2FzssEy9-jmye7+DB=S58KD8=dh=aRR5QTpJrA@mail.gmail.com>
+Subject: Re: [PATCH net v5] bpf, net: Fix a potential race in do_sock_getsockopt()
+To: Stanislav Fomichev <sdf@fomichev.me>
+Cc: Tze-nan Wu <Tze-nan.Wu@mediatek.com>, Network Development <netdev@vger.kernel.org>, 
+	bpf <bpf@vger.kernel.org>, Alexei Starovoitov <ast@kernel.org>, 
+	=?UTF-8?B?Qm9idWxlIENoYW5nICjlvLXlvJjnvqkp?= <bobule.chang@mediatek.com>, 
+	wsd_upstream <wsd_upstream@mediatek.com>, LKML <linux-kernel@vger.kernel.org>, 
+	linux-mediatek@lists.infradead.org, Kuniyuki Iwashima <kuniyu@amazon.com>, 
+	=?UTF-8?B?Q2hlbi1ZYW8gQ2hhbmcgKOW8teemjuiAgCk=?= <chen-yao.chang@mediatek.com>, 
+	Yanghui Li <yanghui.li@mediatek.com>, Cheng-Jui Wang <cheng-jui.wang@mediatek.com>, 
+	Daniel Borkmann <daniel@iogearbox.net>, John Fastabend <john.fastabend@gmail.com>, 
+	Andrii Nakryiko <andrii@kernel.org>, Martin KaFai Lau <martin.lau@linux.dev>, 
+	Eduard Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>, 
+	Yonghong Song <yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, 
+	Hao Luo <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>, 
+	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240831_124923_337350_2FA68859 
-X-CRM114-Status: GOOD (  10.89  )
+X-CRM114-CacheID: sfid-20240831_150614_269539_BCC8FFB1 
+X-CRM114-Status: GOOD (  15.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,64 +104,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Fri, Aug 30, 2024 at 8:29=E2=80=AFPM Stanislav Fomichev <sdf@fomichev.me=
+> wrote:
+>
+> On 08/30, Tze-nan Wu wrote:
+> > There's a potential race when `cgroup_bpf_enabled(CGROUP_GETSOCKOPT)` i=
+s
+> > false during the execution of `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN`, but
+> > becomes true when `BPF_CGROUP_RUN_PROG_GETSOCKOPT` is called.
+> > This inconsistency can lead to `BPF_CGROUP_RUN_PROG_GETSOCKOPT` receivi=
+ng
+> > an "-EFAULT" from `__cgroup_bpf_run_filter_getsockopt(max_optlen=3D0)`.
+> > Scenario shown as below:
+> >
+> >            `process A`                      `process B`
+> >            -----------                      ------------
+> >   BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN
+> >                                             enable CGROUP_GETSOCKOPT
+> >   BPF_CGROUP_RUN_PROG_GETSOCKOPT (-EFAULT)
+> >
+> > To resolve this, remove the `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN` macro an=
+d
+> > directly uses `copy_from_sockptr` to ensure that `max_optlen` is always
+> > set before `BPF_CGROUP_RUN_PROG_GETSOCKOPT` is invoked.
+> >
+> > Fixes: 0d01da6afc54 ("bpf: implement getsockopt and setsockopt hooks")
+> > Co-developed-by: Yanghui Li <yanghui.li@mediatek.com>
+> > Signed-off-by: Yanghui Li <yanghui.li@mediatek.com>
+> > Co-developed-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
+> > Signed-off-by: Cheng-Jui Wang <cheng-jui.wang@mediatek.com>
+> > Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
+>
+> Acked-by: Stanislav Fomichev <sdf@fomichev.me>
 
-kernel test robot noticed the following build errors:
+Considering it's rc6 I was debating whether it's net/bpf or -next
+material, but could argue either way.
 
-[auto build test ERROR on jejb-scsi/for-next]
-[also build test ERROR on mkp-scsi/for-next linus/master v6.11-rc5 next-20240830]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Tze-nan,
+if I recall you were saying it affects android boot ?
+If so please describe such details in the commit log next time.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/peter-wang-mediatek-com/ufs-core-fix-the-issue-of-ICU-failure/20240830-154808
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/jejb/scsi.git for-next
-patch link:    https://lore.kernel.org/r/20240830074426.21968-3-peter.wang%40mediatek.com
-patch subject: [PATCH v1 2/2] ufs: core: requeue MCQ abort request
-config: arm64-randconfig-r132-20240831 (https://download.01.org/0day-ci/archive/20240901/202409010304.Ivj4eQN6-lkp@intel.com/config)
-compiler: clang version 14.0.6 (https://github.com/llvm/llvm-project f28c006a5895fc0e329fe15fead81e37457cb1d1)
-reproduce: (https://download.01.org/0day-ci/archive/20240901/202409010304.Ivj4eQN6-lkp@intel.com/reproduce)
+Acked-by: Alexei Starovoitov <ast@kernel.org>
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202409010304.Ivj4eQN6-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> drivers/ufs/core/ufshcd.c:6505:6: error: implicit declaration of function 'is_mcq_enabled' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-           if (is_mcq_enabled(hba) && (*ret == 0))
-               ^
-   1 error generated.
-
-
-vim +/is_mcq_enabled +6505 drivers/ufs/core/ufshcd.c
-
-  6488	
-  6489	static bool ufshcd_abort_one(struct request *rq, void *priv)
-  6490	{
-  6491		int *ret = priv;
-  6492		u32 tag = rq->tag;
-  6493		struct scsi_cmnd *cmd = blk_mq_rq_to_pdu(rq);
-  6494		struct scsi_device *sdev = cmd->device;
-  6495		struct Scsi_Host *shost = sdev->host;
-  6496		struct ufs_hba *hba = shost_priv(shost);
-  6497		struct ufshcd_lrb *lrbp = &hba->lrb[tag];
-  6498	
-  6499		*ret = ufshcd_try_to_abort_task(hba, tag);
-  6500		dev_err(hba->dev, "Aborting tag %d / CDB %#02x %s\n", tag,
-  6501			hba->lrb[tag].cmd ? hba->lrb[tag].cmd->cmnd[0] : -1,
-  6502			*ret ? "failed" : "succeeded");
-  6503	
-  6504		/* Host will post to CQ with OCS_ABORTED after SQ clean up */
-> 6505		if (is_mcq_enabled(hba) && (*ret == 0))
-  6506			lrbp->host_initiate_abort = true;
-  6507	
-  6508		return *ret == 0;
-  6509	}
-  6510	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Kuba,
+feel free to take it into net if you think it's an appropriate fix.
 
