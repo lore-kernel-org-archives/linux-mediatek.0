@@ -4,122 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24F3CCD13DD
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Aug 2024 17:32:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61B77CD1297
+	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Aug 2024 17:35:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VFS3erDJyf2Mb05Z5xCZGbf/yvs2uIXpeyy7GwMzybI=; b=SO0LY6KxU3lSjGTn5ZRV+YvJYB
-	Q9Sr9pi9Wo9oV6+akHwcrkwpS3fg0YQjP50F9bxAx12vTJ+MilkZiAMO7jW907CjWz9i86LQ795XB
-	6pf4YZG2E4u2ePL+2EAIzGM2TVz6H5a34M99ucC+fsoTAmE8Et2OlcvATX8jiaqSoc8H6L2Fn6cjQ
-	Rn8Cu3uZZEwgdcyWcvQTEzS/P9Pk/NOPQWuS5ciFj3yYq1109fa+bAXVSvnUCNLcemgemrneYJCvu
-	TaaXYLy0y10qUvs7F21y0X0WwUNAvLd9TSv1u9/hSjwjy9PvQeyVQ426w3BINFdeE8Jiu9ejFQPU4
-	ALuxqGiA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=59ZJ3OgUdIYyXvWX/Jj6HD+0T/jfFSl0CJX84upiO1o=; b=bvpqm+Rc77nFgITskDZP4PRYbY
+	rczSlv/79NXB2iYeQeSZfMOZVxeeS40V1Q0o1RBrlgjs1RzLKoGOBs08aSmNFYl9xxZGl6O8ovbom
+	ahtsM/RBtdfslSk2gFzGcBKfRRn96fs8LkTzD4mr/QDmKJwBizLgt8kYiCiEgA17PpnwSbex9h40u
+	bL7ouTzGDDpUiiD2wocMvm5XChZke25T5k+5KguJTqFdlrjj5L9WeL54RUu1padUMyl6KqOZv9IeM
+	DSL7n+OdH0Smz+zfaV2O3Et/yST5Q1tswtTkgrqEhevuUsw4LP+o12idOjIEWPnU2aPoxL3I5EoBz
+	MaGULDJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skRxC-00000009liY-0e0D;
-	Sat, 31 Aug 2024 17:32:02 +0000
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+	id 1skS0V-00000009lwc-0EYC;
+	Sat, 31 Aug 2024 17:35:27 +0000
+Received: from mgamail.intel.com ([198.175.65.9])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skRwD-00000009lbM-1gqs;
-	Sat, 31 Aug 2024 17:31:06 +0000
-Received: by mail-pj1-x102d.google.com with SMTP id 98e67ed59e1d1-2d8a4bad409so251429a91.0;
-        Sat, 31 Aug 2024 10:31:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725125460; x=1725730260; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=VFS3erDJyf2Mb05Z5xCZGbf/yvs2uIXpeyy7GwMzybI=;
-        b=PCWnNsUeZbjluk8Wlzd703fiLN6bbwPSoiDZLutu73xgDedDTwFNlCNPNcFPH0stwK
-         Igdc7QGV6Lwi988clOW8DKvkrw+DPyJ1mfKdBb8pnx78F3ryitMlZ8WgnjV3FsteelYJ
-         UVMoKMDJKAK9cNWZ23+qf80Zxu7NfZCx6632kqpSprxM0ZhnWghEDJI/VeufbB71fV26
-         YlqZE8wdx2IdZ00D2XHYSROo1bu8TAzXZbZL0B4wLrInl44tytaWkRrwAD33UVcGXsD6
-         p/dTDjB1cqkXY1W+XjBsysdRHOcThWmmfNY0494OKJoWnVPIVMDPWhrzmCsVKpFyiSao
-         Nt2w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725125460; x=1725730260;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=VFS3erDJyf2Mb05Z5xCZGbf/yvs2uIXpeyy7GwMzybI=;
-        b=r/p801xYD0kIjfLniDnSXREi+ocxYW+1uCIWMUGEd3v31Bm8N8mGlX3EqwoFZfcI8b
-         fn/IKjIzJfjqLjVmv6rAz3wjuPBNmigyaOGyDP+BngRWqk737k5eVymtY6jItfmwsf6E
-         q6UUruKNGrv1GuqKcdgiJcsz123o7nFgnq9+VPCub3Z4hD5sM3AGEwVveaf0tc+Nl9/W
-         bO6XZy13H/96+zxG2IFK7wPVd8fs+GTlxLqbeKkyFwiwLP6RalrebOpiNeqBybtDVE0K
-         flkaOSjTrR153PGItTTlmBuEQQzkwtycBms5byJSECFBIL6ueuciI99myikX1CpxuGjp
-         q8fg==
-X-Forwarded-Encrypted: i=1; AJvYcCWfiewpUvPmex8CfzsbVpCN9gsSxzQrFcecaDrufCZfVliSro5RGP7REn0zgiHYr3p3qW9RoAYba1l4AV/n2Oc=@lists.infradead.org, AJvYcCWkYS14gObAswnnHY5LT0gOQHDfTAPORY4gMohIhNOISYlBtGmLQ8P4xQPCsDnAusOjNxiKHdLGmn9Mgqbr@lists.infradead.org, AJvYcCX6U4c1/t7TOjFeYTfN9slkEkUY5aVdXOyr2fPHHJjUzUmSKGV1Gt1zzF+vrLiSePoxS2iWBSB2MVGxLds+lV0Hqg==@lists.infradead.org, AJvYcCX6dCvuS9nGXy6Qy7KNLPE2WZiWBMfE+sul8FTKNQWCn9EANyJtuPGcSAH9v437VGWkt7ZYlGJ2Ef7fKnFKjUlOlQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz92Rh1bIQ0a9DbdVhyB2L6TF0uD3uLKdqB/S0dKp7Mm0ZAMvMk
-	iLy+jqpWnO+9mEHOrJPJATrBZ/HMBGOkhoitawhmxR1cZoWAMuE7vU0IPB8P
-X-Google-Smtp-Source: AGHT+IE29YeGjb5hBV8rJJHXTxktiOK7tom34zPPHYty0F5yzQ5/zOr6JRiw2gVE5KVWlaMAx6x9ZA==
-X-Received: by 2002:a17:90b:104f:b0:2d4:924:8891 with SMTP id 98e67ed59e1d1-2d89467ed3amr2346579a91.38.1725125459271;
-        Sat, 31 Aug 2024 10:30:59 -0700 (PDT)
-Received: from localhost.localdomain ([2409:40c1:57:eb26:e0b:862d:98c2:d6d0])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2d85b11f554sm6085758a91.21.2024.08.31.10.30.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 31 Aug 2024 10:30:58 -0700 (PDT)
-From: Amit Vadhavana <av2082000@gmail.com>
-To: dmaengine@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	ricardo@marliere.net
-Cc: av2082000@gmail.com,
-	linux-kernel-mentees@lists.linux.dev,
-	skhan@linuxfoundation.org,
-	vkoul@kernel.org,
-	olivierdautricourt@gmail.com,
-	sr@denx.de,
-	ludovic.desroches@microchip.com,
-	florian.fainelli@broadcom.com,
-	bcm-kernel-feedback-list@broadcom.com,
-	rjui@broadcom.com,
-	sbranden@broadcom.com,
-	wangzhou1@hisilicon.com,
-	haijie1@huawei.com,
-	fenghua.yu@intel.com,
-	dave.jiang@intel.com,
-	zhoubinbin@loongson.cn,
-	sean.wang@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	afaerber@suse.de,
-	manivannan.sadhasivam@linaro.org,
-	Basavaraj.Natikar@amd.com,
-	linus.walleij@linaro.org,
-	ldewangan@nvidia.com,
-	jonathanh@nvidia.com,
-	thierry.reding@gmail.com,
-	laurent.pinchart@ideasonboard.com,
-	michal.simek@amd.com,
-	Frank.Li@nxp.com,
-	n.shubin@yadro.com,
-	yajun.deng@linux.dev,
-	quic_jjohnson@quicinc.com,
-	lizetao1@huawei.com,
-	pliem@maxlinear.com,
-	konrad.dybcio@linaro.org,
-	kees@kernel.org,
-	gustavoars@kernel.org,
-	bryan.odonoghue@linaro.org,
-	linux@treblig.org,
-	dan.carpenter@linaro.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-actions@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-tegra@vger.kernel.org
-Subject: [PATCH RESEND V2] dmaengine: Fix spelling mistakes
-Date: Sat, 31 Aug 2024 22:59:49 +0530
-Message-Id: <20240831172949.13189-1-av2082000@gmail.com>
-X-Mailer: git-send-email 2.25.1
+	id 1skS0S-00000009lvl-0Ib6;
+	Sat, 31 Aug 2024 17:35:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1725125724; x=1756661724;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=XN2PsVitdwqyT+0EuFJyx51meuS/idl3glEF5fMYEO0=;
+  b=S/5qXrzE3Dv8Clgfpk8KAncNoXR94bVaZokg8uAg5bLKsYUe/z0DR5rJ
+   t/lPE5966n/PWBYnaOPTQ3nto35hnn5DxXvJcBXNJ9Gyeq8BFmJDeeDwH
+   kTPwG8XTAcUwci9HJP5TQ6ACkxz+g7qO+Uv8wISJ2lY7xxvKHlFtiKBti
+   wRbceAqujf6Mua1ULF49C9VGRHXOodls3UalhowGsQePGPeyYhVTkXl/h
+   IJAAm0rPJYBqZoWJvdipCc5g+lSEnqetpP7oLJHAkpkHhWG2BLp8bhA1z
+   rV7+wVGBk9gqECw8ndKX7B8DNxCMQ9t2P8w2Y1S/eiOiJTDTQAlOsSc0Y
+   Q==;
+X-CSE-ConnectionGUID: GLdZL226Tym575SAcbR9oA==
+X-CSE-MsgGUID: TxUNHjNlS/2WUQgCeW24vw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11181"; a="46258299"
+X-IronPort-AV: E=Sophos;i="6.10,192,1719903600"; 
+   d="scan'208";a="46258299"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Aug 2024 10:35:19 -0700
+X-CSE-ConnectionGUID: PT2O5JZcSyCtWNy+z3Irog==
+X-CSE-MsgGUID: qyimSlEjTtmy07lmiKhruw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,192,1719903600"; 
+   d="scan'208";a="63885974"
+Received: from lkp-server01.sh.intel.com (HELO 9c6b1c7d3b50) ([10.239.97.150])
+  by fmviesa007.fm.intel.com with ESMTP; 31 Aug 2024 10:35:14 -0700
+Received: from kbuild by 9c6b1c7d3b50 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1skS0G-0002yK-0M;
+	Sat, 31 Aug 2024 17:35:12 +0000
+Date: Sun, 1 Sep 2024 01:35:06 +0800
+From: kernel test robot <lkp@intel.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lee Jones <lee@kernel.org>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>
+Cc: oe-kbuild-all@lists.linux.dev, linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
+	benjamin.larsson@genexis.eu, ansuelsmth@gmail.com,
+	linux-pwm@vger.kernel.org
+Subject: Re: [PATCH v3 4/5] pinctrl: airoha: Add support for EN7581 SoC
+Message-ID: <202409010106.kqFZrO3g-lkp@intel.com>
+References: <20240831-en7581-pinctrl-v3-4-98eebfb4da66@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240831-en7581-pinctrl-v3-4-98eebfb4da66@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240831_103101_491889_5163E0ED 
-X-CRM114-Status: GOOD (  27.51  )
+X-CRM114-CacheID: sfid-20240831_103524_214367_D1892BA5 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,622 +98,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Correct spelling mistakes in the DMA engine to improve readability
-and clarity without altering functionality.
+Hi Lorenzo,
 
-Signed-off-by: Amit Vadhavana <av2082000@gmail.com>
-Reviewed-by: Kees Cook <kees@kernel.org>
-Reviewed-by: Dave Jiang <dave.jiang@intel.com>
-Reviewed-by: Fenghua Yu <fenghua.yu@intel.com>
----
-V2: https://lore.kernel.org/all/20240817080408.8010-1-av2082000@gmail.com
-V1: https://lore.kernel.org/all/20240810184333.34859-1-av2082000@gmail.com 
-V1 -> V2:
-- Write the commit description in imperative mode.
----
- drivers/dma/acpi-dma.c                  | 4 ++--
- drivers/dma/altera-msgdma.c             | 4 ++--
- drivers/dma/amba-pl08x.c                | 2 +-
- drivers/dma/at_hdmac.c                  | 6 +++---
- drivers/dma/bcm-sba-raid.c              | 4 ++--
- drivers/dma/bcm2835-dma.c               | 2 +-
- drivers/dma/ep93xx_dma.c                | 4 ++--
- drivers/dma/fsl-dpaa2-qdma/dpaa2-qdma.h | 6 +++---
- drivers/dma/hisi_dma.c                  | 2 +-
- drivers/dma/idma64.c                    | 4 ++--
- drivers/dma/idxd/submit.c               | 2 +-
- drivers/dma/ioat/init.c                 | 2 +-
- drivers/dma/lgm/lgm-dma.c               | 2 +-
- drivers/dma/ls2x-apb-dma.c              | 4 ++--
- drivers/dma/mediatek/mtk-cqdma.c        | 4 ++--
- drivers/dma/mediatek/mtk-hsdma.c        | 2 +-
- drivers/dma/mv_xor.c                    | 4 ++--
- drivers/dma/mv_xor.h                    | 2 +-
- drivers/dma/mv_xor_v2.c                 | 2 +-
- drivers/dma/nbpfaxi.c                   | 2 +-
- drivers/dma/of-dma.c                    | 4 ++--
- drivers/dma/owl-dma.c                   | 2 +-
- drivers/dma/ppc4xx/adma.c               | 2 +-
- drivers/dma/ppc4xx/dma.h                | 2 +-
- drivers/dma/ptdma/ptdma.h               | 2 +-
- drivers/dma/qcom/bam_dma.c              | 4 ++--
- drivers/dma/qcom/gpi.c                  | 2 +-
- drivers/dma/qcom/qcom_adm.c             | 2 +-
- drivers/dma/sh/shdmac.c                 | 2 +-
- drivers/dma/ste_dma40.h                 | 2 +-
- drivers/dma/ste_dma40_ll.h              | 2 +-
- drivers/dma/tegra20-apb-dma.c           | 2 +-
- drivers/dma/xgene-dma.c                 | 2 +-
- drivers/dma/xilinx/xilinx_dpdma.c       | 4 ++--
- 34 files changed, 49 insertions(+), 49 deletions(-)
+kernel test robot noticed the following build warnings:
 
-diff --git a/drivers/dma/acpi-dma.c b/drivers/dma/acpi-dma.c
-index 5906eae26e2a..a58a1600dd65 100644
---- a/drivers/dma/acpi-dma.c
-+++ b/drivers/dma/acpi-dma.c
-@@ -112,7 +112,7 @@ static int acpi_dma_parse_resource_group(const struct acpi_csrt_group *grp,
- }
- 
- /**
-- * acpi_dma_parse_csrt - parse CSRT to exctract additional DMA resources
-+ * acpi_dma_parse_csrt - parse CSRT to extract additional DMA resources
-  * @adev:	ACPI device to match with
-  * @adma:	struct acpi_dma of the given DMA controller
-  *
-@@ -305,7 +305,7 @@ EXPORT_SYMBOL_GPL(devm_acpi_dma_controller_free);
-  * found.
-  *
-  * Return:
-- * 0, if no information is avaiable, -1 on mismatch, and 1 otherwise.
-+ * 0, if no information is available, -1 on mismatch, and 1 otherwise.
-  */
- static int acpi_dma_update_dma_spec(struct acpi_dma *adma,
- 		struct acpi_dma_spec *dma_spec)
-diff --git a/drivers/dma/altera-msgdma.c b/drivers/dma/altera-msgdma.c
-index 0968176f323d..e6a6566b309e 100644
---- a/drivers/dma/altera-msgdma.c
-+++ b/drivers/dma/altera-msgdma.c
-@@ -153,7 +153,7 @@ struct msgdma_extended_desc {
- /**
-  * struct msgdma_sw_desc - implements a sw descriptor
-  * @async_tx: support for the async_tx api
-- * @hw_desc: assosiated HW descriptor
-+ * @hw_desc: associated HW descriptor
-  * @node: node to move from the free list to the tx list
-  * @tx_list: transmit list node
-  */
-@@ -511,7 +511,7 @@ static void msgdma_copy_one(struct msgdma_device *mdev,
- 	 * of the DMA controller. The descriptor will get flushed to the
- 	 * FIFO, once the last word (control word) is written. Since we
- 	 * are not 100% sure that memcpy() writes all word in the "correct"
--	 * oder (address from low to high) on all architectures, we make
-+	 * order (address from low to high) on all architectures, we make
- 	 * sure this control word is written last by single coding it and
- 	 * adding some write-barriers here.
- 	 */
-diff --git a/drivers/dma/amba-pl08x.c b/drivers/dma/amba-pl08x.c
-index 73a5cfb4da8a..38cdbca59485 100644
---- a/drivers/dma/amba-pl08x.c
-+++ b/drivers/dma/amba-pl08x.c
-@@ -2,7 +2,7 @@
- /*
-  * Copyright (c) 2006 ARM Ltd.
-  * Copyright (c) 2010 ST-Ericsson SA
-- * Copyirght (c) 2017 Linaro Ltd.
-+ * Copyright (c) 2017 Linaro Ltd.
-  *
-  * Author: Peter Pearse <peter.pearse@arm.com>
-  * Author: Linus Walleij <linus.walleij@linaro.org>
-diff --git a/drivers/dma/at_hdmac.c b/drivers/dma/at_hdmac.c
-index 40052d1bd0b5..baebddc740b0 100644
---- a/drivers/dma/at_hdmac.c
-+++ b/drivers/dma/at_hdmac.c
-@@ -339,7 +339,7 @@ static inline u8 convert_buswidth(enum dma_slave_buswidth addr_width)
-  * @regs: memory mapped register base
-  * @clk: dma controller clock
-  * @save_imr: interrupt mask register that is saved on suspend/resume cycle
-- * @all_chan_mask: all channels availlable in a mask
-+ * @all_chan_mask: all channels available in a mask
-  * @lli_pool: hw lli table
-  * @memset_pool: hw memset pool
-  * @chan: channels table to store at_dma_chan structures
-@@ -668,7 +668,7 @@ static inline u32 atc_calc_bytes_left(u32 current_len, u32 ctrla)
-  * CTRLA is read in turn, next the DSCR is read a second time. If the two
-  * consecutive read values of the DSCR are the same then we assume both refers
-  * to the very same LLI as well as the CTRLA value read inbetween does. For
-- * cyclic tranfers, the assumption is that a full loop is "not so fast". If the
-+ * cyclic transfers, the assumption is that a full loop is "not so fast". If the
-  * two DSCR values are different, we read again the CTRLA then the DSCR till two
-  * consecutive read values from DSCR are equal or till the maximum trials is
-  * reach. This algorithm is very unlikely not to find a stable value for DSCR.
-@@ -700,7 +700,7 @@ static int atc_get_llis_residue(struct at_dma_chan *atchan,
- 			break;
- 
- 		/*
--		 * DSCR has changed inside the DMA controller, so the previouly
-+		 * DSCR has changed inside the DMA controller, so the previously
- 		 * read value of CTRLA may refer to an already processed
- 		 * descriptor hence could be outdated. We need to update ctrla
- 		 * to match the current descriptor.
-diff --git a/drivers/dma/bcm-sba-raid.c b/drivers/dma/bcm-sba-raid.c
-index fbaacb4c19b2..cfa6e1167a1f 100644
---- a/drivers/dma/bcm-sba-raid.c
-+++ b/drivers/dma/bcm-sba-raid.c
-@@ -15,7 +15,7 @@
-  * number of hardware rings over one or more SBA hardware devices. By
-  * design, the internal buffer size of SBA hardware device is limited
-  * but all offload operations supported by SBA can be broken down into
-- * multiple small size requests and executed parallely on multiple SBA
-+ * multiple small size requests and executed parallelly on multiple SBA
-  * hardware devices for achieving high through-put.
-  *
-  * The Broadcom SBA RAID driver does not require any register programming
-@@ -135,7 +135,7 @@ struct sba_device {
- 	u32 max_xor_srcs;
- 	u32 max_resp_pool_size;
- 	u32 max_cmds_pool_size;
--	/* Maibox client and Mailbox channels */
-+	/* Mailbox client and Mailbox channels */
- 	struct mbox_client client;
- 	struct mbox_chan *mchan;
- 	struct device *mbox_dev;
-diff --git a/drivers/dma/bcm2835-dma.c b/drivers/dma/bcm2835-dma.c
-index 9d74fe97452e..e1b92b4d7b05 100644
---- a/drivers/dma/bcm2835-dma.c
-+++ b/drivers/dma/bcm2835-dma.c
-@@ -369,7 +369,7 @@ static struct bcm2835_desc *bcm2835_dma_create_cb_chain(
- 	/* the last frame requires extra flags */
- 	d->cb_list[d->frames - 1].cb->info |= finalextrainfo;
- 
--	/* detect a size missmatch */
-+	/* detect a size mismatch */
- 	if (buf_len && (d->size != buf_len))
- 		goto error_cb;
- 
-diff --git a/drivers/dma/ep93xx_dma.c b/drivers/dma/ep93xx_dma.c
-index d6c60635e90d..4ee337e78c23 100644
---- a/drivers/dma/ep93xx_dma.c
-+++ b/drivers/dma/ep93xx_dma.c
-@@ -841,7 +841,7 @@ static dma_cookie_t ep93xx_dma_tx_submit(struct dma_async_tx_descriptor *tx)
- 	desc = container_of(tx, struct ep93xx_dma_desc, txd);
- 
- 	/*
--	 * If nothing is currently prosessed, we push this descriptor
-+	 * If nothing is currently processed, we push this descriptor
- 	 * directly to the hardware. Otherwise we put the descriptor
- 	 * to the pending queue.
- 	 */
-@@ -1025,7 +1025,7 @@ ep93xx_dma_prep_dma_memcpy(struct dma_chan *chan, dma_addr_t dest,
-  * @chan: channel
-  * @sgl: list of buffers to transfer
-  * @sg_len: number of entries in @sgl
-- * @dir: direction of tha DMA transfer
-+ * @dir: direction of the DMA transfer
-  * @flags: flags for the descriptor
-  * @context: operation context (ignored)
-  *
-diff --git a/drivers/dma/fsl-dpaa2-qdma/dpaa2-qdma.h b/drivers/dma/fsl-dpaa2-qdma/dpaa2-qdma.h
-index 2c80077cb7c0..36c284a3d184 100644
---- a/drivers/dma/fsl-dpaa2-qdma/dpaa2-qdma.h
-+++ b/drivers/dma/fsl-dpaa2-qdma/dpaa2-qdma.h
-@@ -12,8 +12,8 @@ struct dpaa2_qdma_sd_d {
- 	u32 rsv:32;
- 	union {
- 		struct {
--			u32 ssd:12; /* souce stride distance */
--			u32 sss:12; /* souce stride size */
-+			u32 ssd:12; /* source stride distance */
-+			u32 sss:12; /* source stride size */
- 			u32 rsv1:8;
- 		} sdf;
- 		struct {
-@@ -48,7 +48,7 @@ struct dpaa2_qdma_sd_d {
- #define QDMA_SER_DISABLE	(8) /* no notification */
- #define QDMA_SER_CTX		BIT(8) /* notification by FQD_CTX[fqid] */
- #define QDMA_SER_DEST		(2 << 8) /* notification by destination desc */
--#define QDMA_SER_BOTH		(3 << 8) /* soruce and dest notification */
-+#define QDMA_SER_BOTH		(3 << 8) /* source and dest notification */
- #define QDMA_FD_SPF_ENALBE	BIT(30) /* source prefetch enable */
- 
- #define QMAN_FD_VA_ENABLE	BIT(14) /* Address used is virtual address */
-diff --git a/drivers/dma/hisi_dma.c b/drivers/dma/hisi_dma.c
-index 4c47bff81064..25a4134be36b 100644
---- a/drivers/dma/hisi_dma.c
-+++ b/drivers/dma/hisi_dma.c
-@@ -677,7 +677,7 @@ static void hisi_dma_init_hw_qp(struct hisi_dma_dev *hdma_dev, u32 index)
- 		writel_relaxed(tmp, addr);
- 
- 		/*
--		 * 0 - dma should process FLR whith CPU.
-+		 * 0 - dma should process FLR with CPU.
- 		 * 1 - dma not process FLR, only cpu process FLR.
- 		 */
- 		addr = q_base + HISI_DMA_HIP09_DMA_FLR_DISABLE +
-diff --git a/drivers/dma/idma64.c b/drivers/dma/idma64.c
-index e3505e56784b..2192b7136c2a 100644
---- a/drivers/dma/idma64.c
-+++ b/drivers/dma/idma64.c
-@@ -290,7 +290,7 @@ static void idma64_desc_fill(struct idma64_chan *idma64c,
- 		desc->length += hw->len;
- 	} while (i);
- 
--	/* Trigger an interrupt after the last block is transfered */
-+	/* Trigger an interrupt after the last block is transferred */
- 	lli->ctllo |= IDMA64C_CTLL_INT_EN;
- 
- 	/* Disable LLP transfer in the last block */
-@@ -364,7 +364,7 @@ static size_t idma64_active_desc_size(struct idma64_chan *idma64c)
- 	if (!i)
- 		return bytes;
- 
--	/* The current chunk is not fully transfered yet */
-+	/* The current chunk is not fully transferred yet */
- 	bytes += desc->hw[--i].len;
- 
- 	return bytes - IDMA64C_CTLH_BLOCK_TS(ctlhi);
-diff --git a/drivers/dma/idxd/submit.c b/drivers/dma/idxd/submit.c
-index 817a564413b0..94eca25ae9b9 100644
---- a/drivers/dma/idxd/submit.c
-+++ b/drivers/dma/idxd/submit.c
-@@ -134,7 +134,7 @@ static void llist_abort_desc(struct idxd_wq *wq, struct idxd_irq_entry *ie,
- 	 * completing the descriptor will return desc to allocator and
- 	 * the desc can be acquired by a different process and the
- 	 * desc->list can be modified.  Delete desc from list so the
--	 * list trasversing does not get corrupted by the other process.
-+	 * list traversing does not get corrupted by the other process.
- 	 */
- 	list_for_each_entry_safe(d, t, &flist, list) {
- 		list_del_init(&d->list);
-diff --git a/drivers/dma/ioat/init.c b/drivers/dma/ioat/init.c
-index 7b502b60b38b..cc9ddd6c325b 100644
---- a/drivers/dma/ioat/init.c
-+++ b/drivers/dma/ioat/init.c
-@@ -905,7 +905,7 @@ static int ioat_xor_val_self_test(struct ioatdma_device *ioat_dma)
- 
- 	op = IOAT_OP_XOR_VAL;
- 
--	/* validate the sources with the destintation page */
-+	/* validate the sources with the destination page */
- 	for (i = 0; i < IOAT_NUM_SRC_TEST; i++)
- 		xor_val_srcs[i] = xor_srcs[i];
- 	xor_val_srcs[i] = dest;
-diff --git a/drivers/dma/lgm/lgm-dma.c b/drivers/dma/lgm/lgm-dma.c
-index 4117c7b67e9c..8173c3f1075a 100644
---- a/drivers/dma/lgm/lgm-dma.c
-+++ b/drivers/dma/lgm/lgm-dma.c
-@@ -107,7 +107,7 @@
-  * If header mode is set in DMA descriptor,
-  *   If bit 30 is disabled, HDR_LEN must be configured according to channel
-  *     requirement.
-- *   If bit 30 is enabled(checksum with heade mode), HDR_LEN has no need to
-+ *   If bit 30 is enabled(checksum with header mode), HDR_LEN has no need to
-  *     be configured. It will enable check sum for switch
-  * If header mode is not set in DMA descriptor,
-  *   This register setting doesn't matter
-diff --git a/drivers/dma/ls2x-apb-dma.c b/drivers/dma/ls2x-apb-dma.c
-index a49913f3ed3f..9652e8666722 100644
---- a/drivers/dma/ls2x-apb-dma.c
-+++ b/drivers/dma/ls2x-apb-dma.c
-@@ -33,11 +33,11 @@
- #define LDMA_STOP		BIT(4) /* DMA stop operation */
- #define LDMA_CONFIG_MASK	GENMASK(4, 0) /* DMA controller config bits mask */
- 
--/* Bitfields in ndesc_addr field of HW decriptor */
-+/* Bitfields in ndesc_addr field of HW descriptor */
- #define LDMA_DESC_EN		BIT(0) /*1: The next descriptor is valid */
- #define LDMA_DESC_ADDR_LOW	GENMASK(31, 1)
- 
--/* Bitfields in cmd field of HW decriptor */
-+/* Bitfields in cmd field of HW descriptor */
- #define LDMA_INT		BIT(1) /* Enable DMA interrupts */
- #define LDMA_DATA_DIRECTION	BIT(12) /* 1: write to device, 0: read from device */
- 
-diff --git a/drivers/dma/mediatek/mtk-cqdma.c b/drivers/dma/mediatek/mtk-cqdma.c
-index 529100c5b9f5..b69eabf12a24 100644
---- a/drivers/dma/mediatek/mtk-cqdma.c
-+++ b/drivers/dma/mediatek/mtk-cqdma.c
-@@ -518,7 +518,7 @@ mtk_cqdma_prep_dma_memcpy(struct dma_chan *c, dma_addr_t dest,
- 		/* setup dma channel */
- 		cvd[i]->ch = c;
- 
--		/* setup sourece, destination, and length */
-+		/* setup source, destination, and length */
- 		tlen = (len > MTK_CQDMA_MAX_LEN) ? MTK_CQDMA_MAX_LEN : len;
- 		cvd[i]->len = tlen;
- 		cvd[i]->src = src;
-@@ -617,7 +617,7 @@ static int mtk_cqdma_alloc_chan_resources(struct dma_chan *c)
- 	u32 i, min_refcnt = U32_MAX, refcnt;
- 	unsigned long flags;
- 
--	/* allocate PC with the minimun refcount */
-+	/* allocate PC with the minimum refcount */
- 	for (i = 0; i < cqdma->dma_channels; ++i) {
- 		refcnt = refcount_read(&cqdma->pc[i]->refcnt);
- 		if (refcnt < min_refcnt) {
-diff --git a/drivers/dma/mediatek/mtk-hsdma.c b/drivers/dma/mediatek/mtk-hsdma.c
-index 36ff11e909ea..58c7961ab9ad 100644
---- a/drivers/dma/mediatek/mtk-hsdma.c
-+++ b/drivers/dma/mediatek/mtk-hsdma.c
-@@ -226,7 +226,7 @@ struct mtk_hsdma_soc {
-  * @pc_refcnt:		     Track how many VCs are using the PC
-  * @lock:		     Lock protect agaisting multiple VCs access PC
-  * @soc:		     The pointer to area holding differences among
-- *			     vaious platform
-+ *			     various platform
-  */
- struct mtk_hsdma_device {
- 	struct dma_device ddev;
-diff --git a/drivers/dma/mv_xor.c b/drivers/dma/mv_xor.c
-index bcd3b623ac6c..43efce77bb57 100644
---- a/drivers/dma/mv_xor.c
-+++ b/drivers/dma/mv_xor.c
-@@ -414,7 +414,7 @@ mv_xor_tx_submit(struct dma_async_tx_descriptor *tx)
- 		if (!mv_chan_is_busy(mv_chan)) {
- 			u32 current_desc = mv_chan_get_current_desc(mv_chan);
- 			/*
--			 * and the curren desc is the end of the chain before
-+			 * and the current desc is the end of the chain before
- 			 * the append, then we need to start the channel
- 			 */
- 			if (current_desc == old_chain_tail->async_tx.phys)
-@@ -1074,7 +1074,7 @@ mv_xor_channel_add(struct mv_xor_device *xordev,
- 	if (!mv_chan->dma_desc_pool_virt)
- 		return ERR_PTR(-ENOMEM);
- 
--	/* discover transaction capabilites from the platform data */
-+	/* discover transaction capabilities from the platform data */
- 	dma_dev->cap_mask = cap_mask;
- 
- 	INIT_LIST_HEAD(&dma_dev->channels);
-diff --git a/drivers/dma/mv_xor.h b/drivers/dma/mv_xor.h
-index d86086b05b0e..c87cefd38a07 100644
---- a/drivers/dma/mv_xor.h
-+++ b/drivers/dma/mv_xor.h
-@@ -99,7 +99,7 @@ struct mv_xor_device {
-  * @common: common dmaengine channel object members
-  * @slots_allocated: records the actual size of the descriptor slot pool
-  * @irq_tasklet: bottom half where mv_xor_slot_cleanup runs
-- * @op_in_desc: new mode of driver, each op is writen to descriptor.
-+ * @op_in_desc: new mode of driver, each op is written to descriptor.
-  */
- struct mv_xor_chan {
- 	int			pending;
-diff --git a/drivers/dma/mv_xor_v2.c b/drivers/dma/mv_xor_v2.c
-index 97ebc791a30b..c8c67f4d982c 100644
---- a/drivers/dma/mv_xor_v2.c
-+++ b/drivers/dma/mv_xor_v2.c
-@@ -175,7 +175,7 @@ struct mv_xor_v2_device {
-  * struct mv_xor_v2_sw_desc - implements a xor SW descriptor
-  * @idx: descriptor index
-  * @async_tx: support for the async_tx api
-- * @hw_desc: assosiated HW descriptor
-+ * @hw_desc: associated HW descriptor
-  * @free_list: node of the free SW descriprots list
- */
- struct mv_xor_v2_sw_desc {
-diff --git a/drivers/dma/nbpfaxi.c b/drivers/dma/nbpfaxi.c
-index c08916339aa7..3b011a91d48e 100644
---- a/drivers/dma/nbpfaxi.c
-+++ b/drivers/dma/nbpfaxi.c
-@@ -897,7 +897,7 @@ static int nbpf_config(struct dma_chan *dchan,
- 	/*
- 	 * We could check config->slave_id to match chan->terminal here,
- 	 * but with DT they would be coming from the same source, so
--	 * such a check would be superflous
-+	 * such a check would be superfluous
- 	 */
- 
- 	chan->slave_dst_addr = config->dst_addr;
-diff --git a/drivers/dma/of-dma.c b/drivers/dma/of-dma.c
-index e588fff9f21d..423442e55d36 100644
---- a/drivers/dma/of-dma.c
-+++ b/drivers/dma/of-dma.c
-@@ -26,7 +26,7 @@ static DEFINE_MUTEX(of_dma_lock);
-  *
-  * Finds a DMA controller with matching device node and number for dma cells
-  * in a list of registered DMA controllers. If a match is found a valid pointer
-- * to the DMA data stored is retuned. A NULL pointer is returned if no match is
-+ * to the DMA data stored is returned. A NULL pointer is returned if no match is
-  * found.
-  */
- static struct of_dma *of_dma_find_controller(const struct of_phandle_args *dma_spec)
-@@ -342,7 +342,7 @@ EXPORT_SYMBOL_GPL(of_dma_simple_xlate);
-  *
-  * This function can be used as the of xlate callback for DMA driver which wants
-  * to match the channel based on the channel id. When using this xlate function
-- * the #dma-cells propety of the DMA controller dt node needs to be set to 1.
-+ * the #dma-cells property of the DMA controller dt node needs to be set to 1.
-  * The data parameter of of_dma_controller_register must be a pointer to the
-  * dma_device struct the function should match upon.
-  *
-diff --git a/drivers/dma/owl-dma.c b/drivers/dma/owl-dma.c
-index e001f4f7aa64..aa436f9e3571 100644
---- a/drivers/dma/owl-dma.c
-+++ b/drivers/dma/owl-dma.c
-@@ -1156,7 +1156,7 @@ static int owl_dma_probe(struct platform_device *pdev)
- 	}
- 
- 	/*
--	 * Eventhough the DMA controller is capable of generating 4
-+	 * Even though the DMA controller is capable of generating 4
- 	 * IRQ's for DMA priority feature, we only use 1 IRQ for
- 	 * simplification.
- 	 */
-diff --git a/drivers/dma/ppc4xx/adma.c b/drivers/dma/ppc4xx/adma.c
-index bbb60a970dab..7b78759ac734 100644
---- a/drivers/dma/ppc4xx/adma.c
-+++ b/drivers/dma/ppc4xx/adma.c
-@@ -9,7 +9,7 @@
-  */
- 
- /*
-- * This driver supports the asynchrounous DMA copy and RAID engines available
-+ * This driver supports the asynchronous DMA copy and RAID engines available
-  * on the AMCC PPC440SPe Processors.
-  * Based on the Intel Xscale(R) family of I/O Processors (IOP 32x, 33x, 134x)
-  * ADMA driver written by D.Williams.
-diff --git a/drivers/dma/ppc4xx/dma.h b/drivers/dma/ppc4xx/dma.h
-index 1ff4be23db0f..b5725481bfa6 100644
---- a/drivers/dma/ppc4xx/dma.h
-+++ b/drivers/dma/ppc4xx/dma.h
-@@ -14,7 +14,7 @@
- 
- /* Number of elements in the array with statical CDBs */
- #define	MAX_STAT_DMA_CDBS	16
--/* Number of DMA engines available on the contoller */
-+/* Number of DMA engines available on the controller */
- #define DMA_ENGINES_NUM		2
- 
- /* Maximum h/w supported number of destinations */
-diff --git a/drivers/dma/ptdma/ptdma.h b/drivers/dma/ptdma/ptdma.h
-index 21b4bf895200..39bc37268235 100644
---- a/drivers/dma/ptdma/ptdma.h
-+++ b/drivers/dma/ptdma/ptdma.h
-@@ -192,7 +192,7 @@ struct pt_cmd_queue {
- 	/* Queue dma pool */
- 	struct dma_pool *dma_pool;
- 
--	/* Queue base address (not neccessarily aligned)*/
-+	/* Queue base address (not necessarily aligned)*/
- 	struct ptdma_desc *qbase;
- 
- 	/* Aligned queue start address (per requirement) */
-diff --git a/drivers/dma/qcom/bam_dma.c b/drivers/dma/qcom/bam_dma.c
-index 5e7d332731e0..2d7550b8e03e 100644
---- a/drivers/dma/qcom/bam_dma.c
-+++ b/drivers/dma/qcom/bam_dma.c
-@@ -440,7 +440,7 @@ static void bam_reset(struct bam_device *bdev)
- 	val |= BAM_EN;
- 	writel_relaxed(val, bam_addr(bdev, 0, BAM_CTRL));
- 
--	/* set descriptor threshhold, start with 4 bytes */
-+	/* set descriptor threshold, start with 4 bytes */
- 	writel_relaxed(DEFAULT_CNT_THRSHLD,
- 			bam_addr(bdev, 0, BAM_DESC_CNT_TRSHLD));
- 
-@@ -667,7 +667,7 @@ static struct dma_async_tx_descriptor *bam_prep_slave_sg(struct dma_chan *chan,
- 	for_each_sg(sgl, sg, sg_len, i)
- 		num_alloc += DIV_ROUND_UP(sg_dma_len(sg), BAM_FIFO_SIZE);
- 
--	/* allocate enough room to accomodate the number of entries */
-+	/* allocate enough room to accommodate the number of entries */
- 	async_desc = kzalloc(struct_size(async_desc, desc, num_alloc),
- 			     GFP_NOWAIT);
- 
-diff --git a/drivers/dma/qcom/gpi.c b/drivers/dma/qcom/gpi.c
-index e6ebd688d746..52a7c8f2498f 100644
---- a/drivers/dma/qcom/gpi.c
-+++ b/drivers/dma/qcom/gpi.c
-@@ -1856,7 +1856,7 @@ static void gpi_issue_pending(struct dma_chan *chan)
- 
- 	read_lock_irqsave(&gpii->pm_lock, pm_lock_flags);
- 
--	/* move all submitted discriptors to issued list */
-+	/* move all submitted descriptors to issued list */
- 	spin_lock_irqsave(&gchan->vc.lock, flags);
- 	if (vchan_issue_pending(&gchan->vc))
- 		vd = list_last_entry(&gchan->vc.desc_issued,
-diff --git a/drivers/dma/qcom/qcom_adm.c b/drivers/dma/qcom/qcom_adm.c
-index 53f4273b657c..c1db398adc84 100644
---- a/drivers/dma/qcom/qcom_adm.c
-+++ b/drivers/dma/qcom/qcom_adm.c
-@@ -650,7 +650,7 @@ static enum dma_status adm_tx_status(struct dma_chan *chan, dma_cookie_t cookie,
- 	/*
- 	 * residue is either the full length if it is in the issued list, or 0
- 	 * if it is in progress.  We have no reliable way of determining
--	 * anything inbetween
-+	 * anything in between
- 	 */
- 	dma_set_residue(txstate, residue);
- 
-diff --git a/drivers/dma/sh/shdmac.c b/drivers/dma/sh/shdmac.c
-index 7cc9eb2217e8..8ead0a1fd237 100644
---- a/drivers/dma/sh/shdmac.c
-+++ b/drivers/dma/sh/shdmac.c
-@@ -318,7 +318,7 @@ static void sh_dmae_setup_xfer(struct shdma_chan *schan,
- }
- 
- /*
-- * Find a slave channel configuration from the contoller list by either a slave
-+ * Find a slave channel configuration from the controller list by either a slave
-  * ID in the non-DT case, or by a MID/RID value in the DT case
-  */
- static const struct sh_dmae_slave_config *dmae_find_slave(
-diff --git a/drivers/dma/ste_dma40.h b/drivers/dma/ste_dma40.h
-index c697bfe16a01..a90c786acc1f 100644
---- a/drivers/dma/ste_dma40.h
-+++ b/drivers/dma/ste_dma40.h
-@@ -4,7 +4,7 @@
- #define STE_DMA40_H
- 
- /*
-- * Maxium size for a single dma descriptor
-+ * Maximum size for a single dma descriptor
-  * Size is limited to 16 bits.
-  * Size is in the units of addr-widths (1,2,4,8 bytes)
-  * Larger transfers will be split up to multiple linked desc
-diff --git a/drivers/dma/ste_dma40_ll.h b/drivers/dma/ste_dma40_ll.h
-index c504e855eb02..2e30e9a94a1e 100644
---- a/drivers/dma/ste_dma40_ll.h
-+++ b/drivers/dma/ste_dma40_ll.h
-@@ -369,7 +369,7 @@ struct d40_phy_lli_bidir {
-  * @lcsp02: Either maps to register lcsp0 if src or lcsp2 if dst.
-  * @lcsp13: Either maps to register lcsp1 if src or lcsp3 if dst.
-  *
-- * This struct must be 8 bytes aligned since it will be accessed directy by
-+ * This struct must be 8 bytes aligned since it will be accessed directly by
-  * the DMA. Never add any none hw mapped registers to this struct.
-  */
- 
-diff --git a/drivers/dma/tegra20-apb-dma.c b/drivers/dma/tegra20-apb-dma.c
-index ac69778827f2..7d1acda2d72b 100644
---- a/drivers/dma/tegra20-apb-dma.c
-+++ b/drivers/dma/tegra20-apb-dma.c
-@@ -463,7 +463,7 @@ static void tegra_dma_configure_for_next(struct tegra_dma_channel *tdc,
- 
- 	/*
- 	 * If interrupt is pending then do nothing as the ISR will handle
--	 * the programing for new request.
-+	 * the programming for new request.
- 	 */
- 	if (status & TEGRA_APBDMA_STATUS_ISE_EOC) {
- 		dev_err(tdc2dev(tdc),
-diff --git a/drivers/dma/xgene-dma.c b/drivers/dma/xgene-dma.c
-index fd4397adeb79..275848a9c450 100644
---- a/drivers/dma/xgene-dma.c
-+++ b/drivers/dma/xgene-dma.c
-@@ -1742,7 +1742,7 @@ static int xgene_dma_probe(struct platform_device *pdev)
- 	/* Initialize DMA channels software state */
- 	xgene_dma_init_channels(pdma);
- 
--	/* Configue DMA rings */
-+	/* Configure DMA rings */
- 	ret = xgene_dma_init_rings(pdma);
- 	if (ret)
- 		goto err_clk_enable;
-diff --git a/drivers/dma/xilinx/xilinx_dpdma.c b/drivers/dma/xilinx/xilinx_dpdma.c
-index 36bd4825d389..c26ebced866c 100644
---- a/drivers/dma/xilinx/xilinx_dpdma.c
-+++ b/drivers/dma/xilinx/xilinx_dpdma.c
-@@ -149,7 +149,7 @@ struct xilinx_dpdma_chan;
-  * @addr_ext: upper 16 bit of 48 bit address (next_desc and src_addr)
-  * @next_desc: next descriptor 32 bit address
-  * @src_addr: payload source address (1st page, 32 LSB)
-- * @addr_ext_23: payload source address (3nd and 3rd pages, 16 LSBs)
-+ * @addr_ext_23: payload source address (2nd and 3rd pages, 16 LSBs)
-  * @addr_ext_45: payload source address (4th and 5th pages, 16 LSBs)
-  * @src_addr2: payload source address (2nd page, 32 LSB)
-  * @src_addr3: payload source address (3rd page, 32 LSB)
-@@ -210,7 +210,7 @@ struct xilinx_dpdma_tx_desc {
-  * @vchan: virtual DMA channel
-  * @reg: register base address
-  * @id: channel ID
-- * @wait_to_stop: queue to wait for outstanding transacitons before stopping
-+ * @wait_to_stop: queue to wait for outstanding transactions before stopping
-  * @running: true if the channel is running
-  * @first_frame: flag for the first frame of stream
-  * @video_group: flag if multi-channel operation is needed for video channels
+[auto build test WARNING on defaf1a2113a22b00dfa1abc0fd2014820eaf065]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Lorenzo-Bianconi/dt-bindings-arm-airoha-Add-the-chip-scu-node-for-EN7581-SoC/20240831-222958
+base:   defaf1a2113a22b00dfa1abc0fd2014820eaf065
+patch link:    https://lore.kernel.org/r/20240831-en7581-pinctrl-v3-4-98eebfb4da66%40kernel.org
+patch subject: [PATCH v3 4/5] pinctrl: airoha: Add support for EN7581 SoC
+reproduce: (https://download.01.org/0day-ci/archive/20240901/202409010106.kqFZrO3g-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202409010106.kqFZrO3g-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+   Warning: Documentation/devicetree/bindings/power/wakeup-source.txt references a file that doesn't exist: Documentation/devicetree/bindings/input/qcom,pm8xxx-keypad.txt
+   Warning: Documentation/devicetree/bindings/regulator/siliconmitus,sm5703-regulator.yaml references a file that doesn't exist: Documentation/devicetree/bindings/mfd/siliconmitus,sm5703.yaml
+   Warning: Documentation/hwmon/g762.rst references a file that doesn't exist: Documentation/devicetree/bindings/hwmon/g762.txt
+   Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/reserved-memory/qcom
+   Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/display/exynos/
+>> Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
+   Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/misc/fsl,qoriq-mc.txt
+   Using alabaster theme
+
 -- 
-2.25.1
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
