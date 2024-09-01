@@ -4,81 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BD85CD13D9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Aug 2024 22:07:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D040DCA101E
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Sep 2024 12:47:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ulQrbsPKeNSfASqPUtGDS42+PHiB38d6gRplMWFmY0I=; b=wsJJQ5ntQy477GWLjJwDsgxbXY
-	1b+J19CwndpnQtVab/vivRof6em8haD/qYyTr0rQBy3OQmlNIPBDlpcjVA+gULGqfxzNAPusrn/Qz
-	jTKFPJzhqCd+tAIVcMFPLa/I1+KTBC83tF4R5J7M7WNQ8aeVEzj/KFIyrEJU68ge40rbjJnhheL07
-	oE7hHSFIzXCkPk1M9sPXUUkvmB82bmWfMxr7fJzFi0sAxam6zUB3YZMSQmUq/ekixAcra3odIfTWi
-	mAB+UhzlcaxIaVq/r4rXtP+xjGjN/rlHtj15FFcHqe9ZsoRm0nfzQjblKb3X4zwmhrCUW+JCxQLbG
-	WWPsidjg==;
+	bh=8eQ2wxchJMX20VT9WMXGhs8oXBk4gshyoncozD+AyYA=; b=LCVCN+eWmei/+IyvEPGr09LavC
+	SbiR7HhZ9+Ewck8wmXXKkcGi1QS6oQok05k7HJL7jTvrhmjmZDPB16QAqao+aBUh5N8YPPoRlVBoO
+	MJJKKVH425tzTj5sj+OolA7bSW3N8Y0paU4ypY9jdmrkWpjAA2CelPyu0ThKQLUlwMg/FupqHzm1n
+	fxGB34TruAtcMm7pfkvT5mzbsxZIDEdLPZUn3dvBeGxjBAP/ndihJ17RiBI204EXKKTYv+VUA2mtZ
+	4odxtGxvbeHe1HvD3265Yy4pGmzRs3ItwNWWv0QX2nHTV/a0EsW0SL2OzEcweVNfUuF75oylef+Po
+	GPXAIPxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skWFR-0000000ACjx-3qNL;
-	Sat, 31 Aug 2024 22:07:09 +0000
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
+	id 1skjzm-0000000BeSW-2Z81;
+	Sun, 01 Sep 2024 12:47:54 +0000
+Received: from mgamail.intel.com ([192.198.163.16])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skWEp-0000000ACeR-2Ipo
-	for linux-mediatek@lists.infradead.org;
-	Sat, 31 Aug 2024 22:06:32 +0000
-Received: by mail-yw1-x1134.google.com with SMTP id 00721157ae682-6d6891012d5so709537b3.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 31 Aug 2024 15:06:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725141990; x=1725746790; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=ulQrbsPKeNSfASqPUtGDS42+PHiB38d6gRplMWFmY0I=;
-        b=Eu9CYPR5NLVdFRHxRARN0bHIbWOny6yAumu5BR/YztMnrtX4wY4+nLiD8QoOnPWIJU
-         KrdM6nqSD/gKzENTB7FEjOmSUVYMpHk530jFQ/62nJEKj+jG+YqxR5LPPmyuFFzbLq4l
-         20V4P7a1T1kHhOw8ScZnAnyBfzd91p+3tDSBsTI+LUXfUM+HYGZ5s/j1jnlnCO3fwYTB
-         BBYNyKJWfzt+WeoOMd66gF6F6r5ALHkL+vslnFj0KvMARPzL71JIQoF+78dZC6VdSKJ6
-         ysdC4bPZwVU216HnKYAClz+98QAKTFt0mQ+G7SS9C+NYa2pIgaWb7l35yOp3uzfLey7/
-         5Hbg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725141990; x=1725746790;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ulQrbsPKeNSfASqPUtGDS42+PHiB38d6gRplMWFmY0I=;
-        b=hDh8+4QPTGgkjRwx/u9ZMXa3nuOPStbokmqThX24JXdZCdzUM10/0hkpuU5J4IW0Lc
-         QuAIWxH9eSDcrQcWJw4Z8n9mrveZd0pMUUzL3HCzs+ihLj9scIHtU3jRmGM5ZGTJIBie
-         IUFnBtiECvhekgCDunh1sIKxuDT3DPMNROGGG6gnqqwBBsNZSmxYk56RcoNRpbcNN1Eq
-         z0PBxFqeJUegeLQJnZO+Ybn+Nlz4beJZOLyJOX87vJSctobEvEccdvQ3eraEcvFuwckG
-         gG6lRuPZ4AAfK9K0qFtnSE2o4+s0vsHq8YtPgfyEAt5ucVH4eBVtdKlAE4Pvc51F4FCY
-         GX3Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWB9JP+xe66ZikM0XUMOzWe+exztDlkhEeF5bqutsh5gxtncpeDA2Kq4PG10oCkHUDuDEqjULq4KwGETHLLVw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw0mZ8kadg+lFE7MKG17ox/9TMj95UhIW5sZPAwSmhUu73tJjn1
-	U9datS8RbvLC6fUwbizdPgBLvy56tHYxc2CAmP3GEIu8KVIcPTphnOAb+ERQuFPmoOsiJTSQKzc
-	ghwKrKITFxDynmyzDu9AHmhBA/Wc=
-X-Google-Smtp-Source: AGHT+IGAwrWf7EGVz/bVMNvK8zEl3gIgbALsHsMVb86jJRhMXd1l1F//XDDxFyoceEhPRZCbiodQ7TVpLLRs2XP22EI=
-X-Received: by 2002:a05:690c:893:b0:6b1:4eb6:345e with SMTP id
- 00721157ae682-6d40e7824cemr79143697b3.26.1725141989899; Sat, 31 Aug 2024
- 15:06:29 -0700 (PDT)
+	id 1skjzj-0000000BeRh-2IQw;
+	Sun, 01 Sep 2024 12:47:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1725194871; x=1756730871;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=KXwHXFoVbUQo0mmA9L6Z11g75Iq0m11E3mtjvkPEV3M=;
+  b=F7y9qXNfrbWUdjybLke+k1Zta1Y6VhiSSFB2XSKTcyKBpnkKI+l3hzsy
+   RxQWzvd01RymFvjlz3K/9YonVk2aMOdXx8UJPfSjOSIO3910YOn2BN+hq
+   +jRe2YirMq3V3Cigp1hxIHDfV87ZS7BpdrPHGV3Jbh5FrVGqgrVc04QnS
+   7LxCalXzi8yYhc7wdrKOfAgFytdcdIXliPjuAl9Z6YLStqkoPdD1ej/GV
+   R+CT836Ra3djXYabDxPiv80W3TJX6Gwoy9/vc6pe82AnKY1BRx7l0fNNe
+   B13jh1wjknU2TDTz8OzPZPQVerQYvEdzwDWaNEt+z+wyTRfEEwffLQ0ZX
+   w==;
+X-CSE-ConnectionGUID: sOa1ifIeQxyUnQSuY+Rjig==
+X-CSE-MsgGUID: cgn9gZe2Q7GqzB5OEThn6g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11181"; a="13318154"
+X-IronPort-AV: E=Sophos;i="6.10,194,1719903600"; 
+   d="scan'208";a="13318154"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Sep 2024 05:47:47 -0700
+X-CSE-ConnectionGUID: qEuxH4RrTvO4hmLSQ1NkKw==
+X-CSE-MsgGUID: JvFphALFQW66W/hQzhpDaQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,194,1719903600"; 
+   d="scan'208";a="68739433"
+Received: from lkp-server01.sh.intel.com (HELO 9c6b1c7d3b50) ([10.239.97.150])
+  by fmviesa005.fm.intel.com with ESMTP; 01 Sep 2024 05:47:43 -0700
+Received: from kbuild by 9c6b1c7d3b50 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1skjzZ-0003dq-0C;
+	Sun, 01 Sep 2024 12:47:41 +0000
+Date: Sun, 1 Sep 2024 20:46:43 +0800
+From: kernel test robot <lkp@intel.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lee Jones <lee@kernel.org>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>
+Cc: oe-kbuild-all@lists.linux.dev, linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
+	benjamin.larsson@genexis.eu, ansuelsmth@gmail.com,
+	linux-pwm@vger.kernel.org
+Subject: Re: [PATCH v3 4/5] pinctrl: airoha: Add support for EN7581 SoC
+Message-ID: <202409012015.isPMHBiL-lkp@intel.com>
+References: <20240831-en7581-pinctrl-v3-4-98eebfb4da66@kernel.org>
 MIME-Version: 1.0
-References: <20240830073229.21593-1-mingyen.hsieh@mediatek.com>
-In-Reply-To: <20240830073229.21593-1-mingyen.hsieh@mediatek.com>
-From: Jonas Gorski <jonas.gorski@gmail.com>
-Date: Sun, 1 Sep 2024 00:06:18 +0200
-Message-ID: <CAOiHx=kaKhVw8YW1ih7Xjz9T93G5a51hLJ_5J9rqTp2EuYnTOA@mail.gmail.com>
-Subject: Re: [PATCH] wifi: mac80211: introduce EHT rate support in AQL airtime
-To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-Cc: nbd@nbd.name, lorenzo@kernel.org, deren.wu@mediatek.com, 
-	Sean.Wang@mediatek.com, Soul.Huang@mediatek.com, Leon.Yen@mediatek.com, 
-	Michael.Lo@mediatek.com, Eric-SY.Chang@mediatek.com, km.lin@mediatek.com, 
-	robin.chiu@mediatek.com, ch.yeh@mediatek.com, posh.sun@mediatek.com, 
-	Quan.Zhou@mediatek.com, Ryder.Lee@mediatek.com, Shayne.Chen@mediatek.com, 
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	Bo Jiao <Bo.Jiao@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240831-en7581-pinctrl-v3-4-98eebfb4da66@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240831_150631_632470_45781B67 
-X-CRM114-Status: GOOD (  18.18  )
+X-CRM114-CacheID: sfid-20240901_054751_654479_5DF01ADA 
+X-CRM114-Status: GOOD (  10.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,85 +98,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Lorenzo,
 
-On Fri, 30 Aug 2024 at 09:33, Mingyen Hsieh <mingyen.hsieh@mediatek.com> wrote:
->
-> From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
->
-> Add definitions related to EHT mode and airtime calculation
-> according to the 802.11BE_D4.0.
->
-> Co-developed-by: Bo Jiao <Bo.Jiao@mediatek.com>
-> Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
-> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
-> Signed-off-by: Ming Yen Hsieh <MingYen.Hsieh@mediatek.com>
-> ---
->  net/mac80211/airtime.c | 352 ++++++++++++++++++++++++++++++++++++++++-
->  1 file changed, 349 insertions(+), 3 deletions(-)
->
-> diff --git a/net/mac80211/airtime.c b/net/mac80211/airtime.c
-> index fdf8b658fede..1fd9bea61379 100644
-> --- a/net/mac80211/airtime.c
-> +++ b/net/mac80211/airtime.c
+kernel test robot noticed the following build errors:
 
-(snip)
+[auto build test ERROR on defaf1a2113a22b00dfa1abc0fd2014820eaf065]
 
-> @@ -55,10 +55,21 @@
->  #define HE_DURATION_S(shift, streams, gi, bps)         \
->         (HE_DURATION(streams, gi, bps) >> shift)
->
-> +/* gi in HE/EHT is identical. It matches enum nl80211_eht_gi as well */
-> +#define EHT_GI_08 HE_GI_08
-> +#define EHT_GI_16 HE_GI_16
-> +#define EHT_GI_32 HE_GI_32
-> +
-> +#define EHT_DURATION(streams, gi, bps)                 \
-> +       HE_DURATION(streams, gi, bps)
-> +#define EHT_DURATION_S(shift, streams, gi, bps)                \
-> +       HE_DURATION_S(shift, streams, gi, bps)
-> +
->  #define BW_20                  0
->  #define BW_40                  1
->  #define BW_80                  2
->  #define BW_160                 3
-> +#define BW_320                 4
-...
+url:    https://github.com/intel-lab-lkp/linux/commits/Lorenzo-Bianconi/dt-bindings-arm-airoha-Add-the-chip-scu-node-for-EN7581-SoC/20240831-222958
+base:   defaf1a2113a22b00dfa1abc0fd2014820eaf065
+patch link:    https://lore.kernel.org/r/20240831-en7581-pinctrl-v3-4-98eebfb4da66%40kernel.org
+patch subject: [PATCH v3 4/5] pinctrl: airoha: Add support for EN7581 SoC
+config: sh-allmodconfig (https://download.01.org/0day-ci/archive/20240901/202409012015.isPMHBiL-lkp@intel.com/config)
+compiler: sh4-linux-gcc (GCC) 14.1.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240901/202409012015.isPMHBiL-lkp@intel.com/reproduce)
 
-> +       EHT_GROUP(16, EHT_GI_32, BW_320),
->  };
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202409012015.isPMHBiL-lkp@intel.com/
 
-You define BW_320 and groups for it, but currently
-ieee80211_get_rate_duration() rejects rx_statuses with a bw > 160, so
-you will need to allow BW_320 (for EHT only?) as well.
+All errors (new ones prefixed by >>, old ones prefixed by <<):
 
->  static u32
-> @@ -443,11 +771,20 @@ static u32 ieee80211_get_rate_duration(struct ieee80211_hw *hw,
->                 idx = status->rate_idx;
->                 group = HE_GROUP_IDX(streams, status->he_gi, bw);
->                 break;
-> +       case RX_ENC_EHT:
-> +               streams = status->nss;
-> +               idx = status->rate_idx;
-> +               group = EHT_GROUP_IDX(streams, status->eht.gi, bw);
-> +               break;
->         default:
->                 WARN_ON_ONCE(1);
->                 return 0;
->         }
->
-> +       if (WARN_ON_ONCE((status->encoding != RX_ENC_EHT && streams > 8) ||
-> +                        (status->encoding == RX_ENC_EHT && streams > 16)))
-> +               return 0;
-> +
->         if (WARN_ON_ONCE((status->encoding != RX_ENC_HE && streams > 4) ||
->                          (status->encoding == RX_ENC_HE && streams > 8)))
->                 return 0;
+WARNING: modpost: missing MODULE_DESCRIPTION() in kernel/locking/test-ww_mutex.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in lib/test_objpool.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/usb/serial/ch341.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/usb/serial/usb_debug.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/usb/serial/mxuport.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/usb/serial/navman.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/usb/serial/qcaux.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/usb/serial/usb-serial-simple.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/usb/serial/symbolserial.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/devfreq/governor_simpleondemand.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/devfreq/governor_performance.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/devfreq/governor_powersave.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/devfreq/governor_userspace.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/fsi/fsi-core.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/fsi/fsi-master-hub.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/fsi/fsi-master-aspeed.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/fsi/fsi-master-gpio.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/fsi/fsi-master-ast-cf.o
+WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/fsi/fsi-scom.o
+>> ERROR: modpost: "__ffsdi2" [drivers/pinctrl/mediatek/pinctrl-airoha.ko] undefined!
+ERROR: modpost: "__delay" [drivers/net/mdio/mdio-cavium.ko] undefined!
+ERROR: modpost: "devm_of_clk_add_hw_provider" [drivers/media/i2c/tc358746.ko] undefined!
+ERROR: modpost: "devm_clk_hw_register" [drivers/media/i2c/tc358746.ko] undefined!
+ERROR: modpost: "of_clk_hw_simple_get" [drivers/media/i2c/tc358746.ko] undefined!
 
-RX_ENC_EHT with > 4 streams would trigger the existing WARN_ON() and
-make this not work. Probably not what you indented.
-
-Best Regards,
-Jonas
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
