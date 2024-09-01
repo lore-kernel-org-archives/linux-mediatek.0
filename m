@@ -4,59 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 346E5C54FC6
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Sep 2024 13:14:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A151CA101E
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Sep 2024 13:28:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=VsGlwPZVDBGybTRg10cMLlzuGawlqNFvp72WBi29Nyo=; b=ATI2+MPqK7pz7r
-	SQAI6DwtXwWZzIR2lNGnpAsv8ql010G3oih1AuUW7PyLuUcKRKjZn9MQh7HNLo52mQpOXB67huZly
-	CHmZXhX5+1bVyy3tvDI5TmcSGbgOJ3bsFdeDP6/zTRovlMZ+44HmJlvqzULWLvOzdqFd0XaC78YvK
-	PgJzilEm06BygWLtcuKx066G01j0/Cklkz4Zgz3iqDBMfV9nTkbiciC3ynbyg+hkBSbAoYjpyrsxH
-	AQ46CloFuvXb+eHVVjX+wHPJZ1sfPWDB5LSCR+MU2q81BZpIdIGJmVGHIfw5Dw+S6O4GrmscIvlEZ
-	S/W6mrpuy1l/NlcVDiqA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=J/FL66kNp186GKOdmXM+XWMwptPlQO2wFqvQNiCGvJs=; b=sdydJmNTKTKdF/Ti0bOPVl8Vmw
+	DpfsmF7eEADbMEaQJzmD/sZdAX9vEe0AuD1WKW04y5S/puO7Lm/pPwlTV3sapBUbBRvwV4Nxbfl57
+	RzwtvbXcAMjbNC7cREZW30ZlsVRI9/VINF8NK4u1PFqZ/DvVc/shzrvXdoiBub4Du5Z0mNFnq3b1E
+	lQJuzdA4fPUotgNYPZZ0qD+JqQfUVZvsfCLapFF0s8u5WskOVrRstDv97HYLH0uZLFQj8Vh9YKglG
+	pPGtBs9OwYieVy+nc6YBoApZJbHdmGvijhBa9AcvZNcb0PZTTdkrQHtlXo1BixqhVOrXnoQy+TJR6
+	XCpUMcJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skkPC-0000000BgMw-2iSQ;
-	Sun, 01 Sep 2024 13:14:10 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1skkdR-0000000BhNZ-3NY3;
+	Sun, 01 Sep 2024 13:28:53 +0000
+Received: from mgamail.intel.com ([192.198.163.9])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skkP9-0000000BgLk-3TBb
-	for linux-mediatek@lists.infradead.org;
-	Sun, 01 Sep 2024 13:14:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B466E5C4D20;
-	Sun,  1 Sep 2024 13:13:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 413AEC4CEC3;
-	Sun,  1 Sep 2024 13:13:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725196440;
-	bh=TsJk1UslMdTzF39qT2aKFXcW5AVFwY/n1oi5BBSvDac=;
-	h=From:To:Cc:Subject:Date:From;
-	b=LFs28TByEBAyyAoduQhLjyAowqYt8AQKf9cZ5Kw8g4aS9vYMoLgpp4Vw9zNKNqVCg
-	 QmrEFpBNhbbGvUiMBWMPsnUQdyMCzla4WajVQSnknnuvCwT3Kzow2ZJaJ21nIju1jJ
-	 lZM/rnJWYJ27yRPVbWT4oJILDqR5k36jsYW64UvFCx60+FLVB4lVB54N5PHJbMMhVQ
-	 9JCuZ5J9loiqDA8/eJRVsAl4NpinmdinXJrHa8RFUZXgGJ9BXqTHQK5v3y9Ax89yap
-	 t9Y78H33DwQebGvd3WFLDUWiG0NZ/jHXSGf2/lJQ8KunHppIaH9/GThQBRXSZZrZbQ
-	 wwMnzyG1A5ACA==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: David Airlie <airlied@linux.ie>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org
-Subject: [GIT PULL] mediatek drm next for 6.12
-Date: Sun,  1 Sep 2024 13:13:54 +0000
-Message-Id: <20240901131354.2686-1-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.34.1
+	id 1skkdP-0000000BhMx-0TsD;
+	Sun, 01 Sep 2024 13:28:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1725197331; x=1756733331;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=B1Ym6T0bBnsNcRUf8vZAOZRZpf/YLk3MxfySZOJtVwY=;
+  b=dbBTpMy3RKhDOPKZU/FS3iUr85CDRRZTU+Y3gXME3LtV2vWxnTSZJxa/
+   dSixG5T0TIm2AzT4SR5abt6hUuEKpHjCrfszY3Ept1Aq49cR8MB20i+o9
+   AurgscJTMQAzAdf+8g/l5QYaZ1cYXvA+VSB4hlW9Hzt0MuM61JhcQk9p/
+   GY/0Tapi/aOhOQYhvw2R7x3LwMlAhxIa7A3U04Hv3Kp3xjt0ldZNHiipd
+   aYqKgArf4HiOueLdSPqQcJol46qk0GGDR9gOvECO8pvnu8HT4/geFqIto
+   z/Z1u6LGAc1HsMMdZB5mBmHzh946PsZIG0wWcYFrs2eEjV9zaty/uudZI
+   Q==;
+X-CSE-ConnectionGUID: MoUP+0kbQNW4XVx2OBFrwQ==
+X-CSE-MsgGUID: oXNdDU9gQ5ycro+2/S9dxw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11181"; a="34446833"
+X-IronPort-AV: E=Sophos;i="6.10,194,1719903600"; 
+   d="scan'208";a="34446833"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Sep 2024 06:28:49 -0700
+X-CSE-ConnectionGUID: N7yVSMzrQCWOdRkFLSXZvg==
+X-CSE-MsgGUID: IjNOdIuCTVue7+VsX/XmMA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,194,1719903600"; 
+   d="scan'208";a="64388335"
+Received: from lkp-server01.sh.intel.com (HELO 9c6b1c7d3b50) ([10.239.97.150])
+  by fmviesa009.fm.intel.com with ESMTP; 01 Sep 2024 06:28:45 -0700
+Received: from kbuild by 9c6b1c7d3b50 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1skkdG-0003gf-2L;
+	Sun, 01 Sep 2024 13:28:42 +0000
+Date: Sun, 1 Sep 2024 21:28:15 +0800
+From: kernel test robot <lkp@intel.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lee Jones <lee@kernel.org>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>
+Cc: oe-kbuild-all@lists.linux.dev, linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
+	benjamin.larsson@genexis.eu, ansuelsmth@gmail.com,
+	linux-pwm@vger.kernel.org
+Subject: Re: [PATCH v3 4/5] pinctrl: airoha: Add support for EN7581 SoC
+Message-ID: <202409012045.91oDLtEE-lkp@intel.com>
+References: <20240831-en7581-pinctrl-v3-4-98eebfb4da66@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240831-en7581-pinctrl-v3-4-98eebfb4da66@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240901_061407_958628_D7E16527 
-X-CRM114-Status: UNSURE (   7.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240901_062851_222054_3C18FF5A 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,95 +95,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Rohit Agarwal <rohiagar@chromium.org>, Javier Carrasco <javier.carrasco.cruz@gmail.com>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Shuijing Li <shuijing.li@mediatek.com>, Hsiao Chien Sung <shawn.sung@mediatek.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dave & Daniel:
+Hi Lorenzo,
 
-This includes:
+kernel test robot noticed the following build errors:
 
-1. Support alpha blending
-2. Remove cl in struct cmdq_pkt
-3. Fixup for ovl adaptor
-4. Declare Z Position for all planes
-5. Drop unnecessary check for property presence
-6. Add dsi per-frame lp code for mt8188
-7. Fix missing configuration flags in mtk_crtc_ddp_config()
-8. Use spin_lock_irqsave() for CRTC event lock
-9. Add power domain binding to the mediatek DPI controller
+[auto build test ERROR on defaf1a2113a22b00dfa1abc0fd2014820eaf065]
 
-Regards,
-Chun-Kuang.
+url:    https://github.com/intel-lab-lkp/linux/commits/Lorenzo-Bianconi/dt-bindings-arm-airoha-Add-the-chip-scu-node-for-EN7581-SoC/20240831-222958
+base:   defaf1a2113a22b00dfa1abc0fd2014820eaf065
+patch link:    https://lore.kernel.org/r/20240831-en7581-pinctrl-v3-4-98eebfb4da66%40kernel.org
+patch subject: [PATCH v3 4/5] pinctrl: airoha: Add support for EN7581 SoC
+config: m68k-allyesconfig (https://download.01.org/0day-ci/archive/20240901/202409012045.91oDLtEE-lkp@intel.com/config)
+compiler: m68k-linux-gcc (GCC) 14.1.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240901/202409012045.91oDLtEE-lkp@intel.com/reproduce)
 
-The following changes since commit 8400291e289ee6b2bf9779ff1c83a291501f017b:
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202409012045.91oDLtEE-lkp@intel.com/
 
-  Linux 6.11-rc1 (2024-07-28 14:19:55 -0700)
+All errors (new ones prefixed by >>):
 
-are available in the Git repository at:
+   m68k-linux-ld: drivers/pinctrl/mediatek/pinctrl-airoha.o: in function `airoha_pinconf_get':
+   pinctrl-airoha.c:(.text+0xa7a): undefined reference to `__ffsdi2'
+>> m68k-linux-ld: pinctrl-airoha.c:(.text+0xb5e): undefined reference to `__ffsdi2'
+   m68k-linux-ld: pinctrl-airoha.c:(.text+0xc2a): undefined reference to `__ffsdi2'
+   m68k-linux-ld: drivers/pinctrl/mediatek/pinctrl-airoha.o: in function `airoha_pinconf_set':
+   pinctrl-airoha.c:(.text+0xf84): undefined reference to `__ffsdi2'
+   m68k-linux-ld: pinctrl-airoha.c:(.text+0xfda): undefined reference to `__ffsdi2'
+   m68k-linux-ld: drivers/pinctrl/mediatek/pinctrl-airoha.o:pinctrl-airoha.c:(.text+0x10b0): more undefined references to `__ffsdi2' follow
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-6.12
-
-for you to fetch changes up to 5474d49b2f79b41f2ab09b0deb9d97d47b18d094:
-
-  dt-bindings: display: mediatek: dpi: Add power domains (2024-08-30 12:12:40 +0000)
-
-----------------------------------------------------------------
-Mediatek DRM Next for Linux 6.12
-
-1. Support alpha blending
-2. Remove cl in struct cmdq_pkt
-3. Fixup for ovl adaptor
-4. Declare Z Position for all planes
-5. Drop unnecessary check for property presence
-6. Add dsi per-frame lp code for mt8188
-7. Fix missing configuration flags in mtk_crtc_ddp_config()
-8. Use spin_lock_irqsave() for CRTC event lock
-9. Add power domain binding to the mediatek DPI controller
-
-----------------------------------------------------------------
-AngeloGioacchino Del Regno (1):
-      drm/mediatek: Declare Z Position for all planes
-
-Chun-Kuang Hu (2):
-      drm/mediatek: Use cmdq_pkt_eoc() instead of cmdq_pkt_finalize()
-      drm/mediatek: Use cmdq_pkt_create() and cmdq_pkt_destroy()
-
-Fei Shao (1):
-      drm/mediatek: Use spin_lock_irqsave() for CRTC event lock
-
-Hsiao Chien Sung (5):
-      drm/mediatek: Support "None" blending in OVL
-      drm/mediatek: Support "None" blending in Mixer
-      drm/mediatek: Support "Pre-multiplied" blending in OVL
-      drm/mediatek: Support "Pre-multiplied" blending in Mixer
-      drm/mediatek: Support alpha blending in display driver
-
-Jason-JH.Lin (1):
-      drm/mediatek: Fix missing configuration flags in mtk_crtc_ddp_config()
-
-Javier Carrasco (3):
-      drm/mediatek: ovl_adaptor: Drop unused mtk_crtc.h header
-      drm/mediatek: ovl_adaptor: Add missing of_node_put()
-      drm/mediatek: ovl_adaptor: Use scoped variant of for_each_child_of_node()
-
-Rob Herring (Arm) (1):
-      drm/mediatek: Drop unnecessary check for property presence
-
-Rohit Agarwal (1):
-      dt-bindings: display: mediatek: dpi: Add power domains
-
-Shuijing Li (1):
-      drm/mediatek: dsi: Add dsi per-frame lp code for mt8188
-
- .../bindings/display/mediatek/mediatek,dpi.yaml    |  17 ++++
- drivers/gpu/drm/mediatek/mtk_crtc.c                |  82 +++++++---------
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c            |  36 +++++--
- drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c    |   5 +-
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c           |  13 +--
- drivers/gpu/drm/mediatek/mtk_dsi.c                 | 106 ++++++++++++++++++---
- drivers/gpu/drm/mediatek/mtk_ethdr.c               |  13 ++-
- drivers/gpu/drm/mediatek/mtk_plane.c               |  29 +++++-
- drivers/gpu/drm/mediatek/mtk_plane.h               |   3 +-
- 9 files changed, 221 insertions(+), 83 deletions(-)
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
