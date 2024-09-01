@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B5BBC54FC6
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Sep 2024 14:34:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B664EC54FC6
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Sep 2024 14:35:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=asCcdoNfeoDoMME8+WTvYy9ABUzv19l7QaW5+59YtmU=; b=5BcuR1xxfivBCeJrBMGzvk9gY5
-	bwvJw2wGPoty8vL1LCXk72wrHI9V3B49ZKq+FZJ8MOP+eUN2ZHdNuwYPYJN1jjCtL7iI33l1lKKpg
-	xMmUs9H15uEOUvjbwuHThC/y4eo6U2ndduveYFsTRcBaVQNcax++OKHW5mu6X8ElyJdX8D083yOrw
-	SbIa3GbizVxVknhaoGmQi/a3aLod6jfZYjPBKdE7CXs+hEkaf4PD63klPdBU19gGBd+wUzIv4fs+z
-	EwIKIuxjwNWrU89knaix/em3gGiDjkfeKTho6sVraZfKpvCcauo4iSZJdqtzAx8HWKlYdrZAH76XR
-	bRTMZyCw==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=czMLRZ4jTEhbrB9Z64DqHkpmmy+v+yicLqiw4wwgoCw=; b=e7ecLznZJ4ZzAcM+p7DORA6iRq
+	yRyh5wlHDl+uaoM5ibiQljdA6PbCK0ahNU8HJKPYWNX1yKCoCQtD2cosIhYudnwyJZucG7C+LoP0E
+	2wEqAFnOeUyNr52mtKgDW6xKNjN2SwkrWWevlJSs1BkhwiLh98jla3ifaK7+X75I145LRGTi9D7Oq
+	wcBu1rcwc6QumQvMGQBIarBcdno0yyVE6w97450IzGYAceX4/Buzc4ojdJld3Sx2GjZkuy12C/PYO
+	8Zi+TSBsHlU4o+YZzZ0k+HxcoxuAsNzr1w4BLeO5fDrgEOKpWePY/mNevlvbWmJUg8I2TS2Qc9g4P
+	7PnBUm5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skleb-0000000Bn7B-3Ptz;
-	Sun, 01 Sep 2024 14:34:09 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sklfS-0000000BnFm-1Od6;
+	Sun, 01 Sep 2024 14:35:02 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skldc-0000000Bmlr-3T7f;
-	Sun, 01 Sep 2024 14:33:10 +0000
+	id 1sklde-0000000BmmJ-3ubw;
+	Sun, 01 Sep 2024 14:33:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 72A415C56BC;
-	Sun,  1 Sep 2024 14:33:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83635C4CEC3;
-	Sun,  1 Sep 2024 14:33:04 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id E5CCB5C56A5;
+	Sun,  1 Sep 2024 14:33:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7F0D5C4CECD;
+	Sun,  1 Sep 2024 14:33:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725201187;
-	bh=kwPiH44pV1ANFJhkdOlQ2NoEBgwHo7h8ejpepwo1EGg=;
-	h=From:To:Cc:Subject:Date:From;
-	b=WXkoa9zK+zwyHz3IGIZIBI49Cak3R/xK0dOG42JMjUdpekcS9VOsXzkkAj37LChqv
-	 12/aGUKYtkBI/aLxQdYq9pG0dWmFRYL05d4yGOKcgm3SYMhhhib+YruMcc6pSWt2u4
-	 RWxmHE+d7QEe/Go6VfP+1ipw6eufotuX7wutA0tfE1tJ3ScPfg61GnzskzBTbTWF02
-	 3mKTBYRCp8M9n10iZRsPPuBkhMpaXMKhbO+XCEFcNEJ4eVPo9/RgUq4ALHvtHAXLQN
-	 xS+bZxQp/ojwtOI22cq6rjTdjRhynrZPAk2Yyz4W7dJiemdBR7f9gPVSyzOxBCjh8e
-	 cV7cuBMUi+BQQ==
+	s=k20201202; t=1725201190;
+	bh=i7Lw4IfBoqo0kG80MnG3Ijy3VYTPrwyYdPOoj92o7xI=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=FUAKzuVZelACgDJySU4gn3P3OQd5uhWOgy0tz85SCcnN1WeELxJMJXS+GnDHsWRxt
+	 wRwi3P5gQkg+4eeRA3YmF+2L2Qea+UaXnUQoNwszDH98VwVoODtZ/lC+gmr9Cn1m7v
+	 vIDFgw4+NBLPBrY95Vlx89SKvOrlzHtKzB6x/cbeiEQvdAUkA/+y8GcV6pjlE7WQLR
+	 C4tnOxFUXDw6vAQ5IHR4LYDboZs+tdwLf6Yw/bRLuuUPaO1Sdd1aO7buaO5w0WKhVX
+	 7gaYRi7Lp8anN1wUlal3HHGgT8XGni8h2NYnHWF76yEdpCltNkDY5FNghtiRH+JPgH
+	 WmdiGN68hKj0w==
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -53,16 +53,17 @@ To: Matthias Brugger <matthias.bgg@gmail.com>,
 	linux-kernel@vger.kernel.org,
 	linux-media@vger.kernel.org
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Subject: [PATCH v4 0/3] Remove cl in struct cmdq_pkt
-Date: Sun,  1 Sep 2024 14:32:56 +0000
-Message-Id: <20240901143259.16849-1-chunkuang.hu@kernel.org>
+Subject: [PATCH v4 1/3] media: platform: mtk-mdp3: Get fine-grain control of cmdq_pkt_finalize()
+Date: Sun,  1 Sep 2024 14:32:57 +0000
+Message-Id: <20240901143259.16849-2-chunkuang.hu@kernel.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240901143259.16849-1-chunkuang.hu@kernel.org>
+References: <20240901143259.16849-1-chunkuang.hu@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240901_073308_957086_2E52B562 
-X-CRM114-Status: UNSURE (   9.02  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240901_073311_054053_8FF4C82B 
+X-CRM114-Status: GOOD (  12.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,44 +78,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-cl in struct cmdq_pkt is used to store struct cmdq_client, but every client
-driver has the struct cmdq_client information, so it's not necessary to
-store struct cmdq_client in struct cmdq_pkt. Because mailbox maintainer
-do not like to mix mailbox patch with other patches in a series, so
-mailbox patch [1] would be sent independently.
+In order to have fine-grained control, use cmdq_pkt_eoc() and
+cmdq_pkt_jump_rel() to replace cmdq_pkt_finalize().
 
-Changes in v4:
-1. Rebase onto mediatek-drm-next-6.12
-2. Fix build error in mpd3 driver
-Changes in v3:
-1. Rebase onto Linux 6.11-rc1 and fix conflicts.
-Changes in v2:
-1. Fix typo of CMDQ_JUMP_RELATIVE
-2. Refine cmdq_pkt_create() and cmdq_pkt_destroy()
-3. Rename cmdq_pkt_jump() to cmdq_pkt_jump_abs()
-4. Add cmdq_pkt_jump_rel() helper function
-5. drm/mediatek: Use cmdq_pkt_create() and cmdq_pkt_destroy()
-6. mtk-mdp3: Get fine-grain control of cmdq_pkt_finalize()
-7. mtk-mdp3: Use cmdq_pkt_create() and cmdq_pkt_destroy()
+Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+---
+ drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c | 3 ++-
+ drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c | 2 ++
+ drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h | 1 +
+ 3 files changed, 5 insertions(+), 1 deletion(-)
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/commit/?h=mediatek-cmdq8&id=a1b2f7a7488285975c1f439086f1c4cc51a13bb9
-
-
-Chun-Kuang Hu (3):
-  media: platform: mtk-mdp3: Get fine-grain control of
-    cmdq_pkt_finalize()
-  media: platform: mtk-mdp3: Use cmdq_pkt_create() and
-    cmdq_pkt_destroy()
-  soc: mediatek: cmdq: Remove cmdq_pkt_finalize() helper function
-
- .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 49 +++----------------
- .../platform/mediatek/mdp3/mtk-mdp3-cmdq.h    |  1 +
- .../platform/mediatek/mdp3/mtk-mdp3-core.c    |  2 +
- .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  1 +
- drivers/soc/mediatek/mtk-cmdq-helper.c        | 22 ---------
- include/linux/soc/mediatek/mtk-cmdq.h         | 13 -----
- 6 files changed, 11 insertions(+), 77 deletions(-)
-
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+index ea2ea119dd2a..ef5dade35fd3 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+@@ -676,7 +676,8 @@ static struct mdp_cmdq_cmd *mdp_cmdq_prepare(struct mdp_dev *mdp,
+ 		dev_err(dev, "mdp_path_config error %d\n", pp_idx);
+ 		goto err_free_path;
+ 	}
+-	cmdq_pkt_finalize(&cmd->pkt);
++	cmdq_pkt_eoc(&cmd->pkt);
++	cmdq_pkt_jump_rel(&cmd->pkt, CMDQ_INST_SIZE, mdp->cmdq_shift_pa[pp_idx]);
+ 
+ 	for (i = 0; i < num_comp; i++) {
+ 		s32 inner_id = MDP_COMP_NONE;
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+index 37e7b985d52c..40623c1980bf 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+@@ -312,6 +312,8 @@ static int mdp_probe(struct platform_device *pdev)
+ 			ret = PTR_ERR(mdp->cmdq_clt[i]);
+ 			goto err_mbox_destroy;
+ 		}
++
++		mdp->cmdq_shift_pa[i] = cmdq_get_shift_pa(mdp->cmdq_clt[i]->chan);
+ 	}
+ 
+ 	init_waitqueue_head(&mdp->callback_wq);
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
+index 430251f63754..05cade1d098e 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
+@@ -126,6 +126,7 @@ struct mdp_dev {
+ 	u32					id_count;
+ 	struct ida				mdp_ida;
+ 	struct cmdq_client			*cmdq_clt[MDP_PP_MAX];
++	u8					cmdq_shift_pa[MDP_PP_MAX];
+ 	wait_queue_head_t			callback_wq;
+ 
+ 	struct v4l2_device			v4l2_dev;
 -- 
 2.34.1
 
