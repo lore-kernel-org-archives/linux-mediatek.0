@@ -4,86 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A151CA101E
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Sep 2024 13:28:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B5BBC54FC6
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Sep 2024 14:34:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J/FL66kNp186GKOdmXM+XWMwptPlQO2wFqvQNiCGvJs=; b=sdydJmNTKTKdF/Ti0bOPVl8Vmw
-	DpfsmF7eEADbMEaQJzmD/sZdAX9vEe0AuD1WKW04y5S/puO7Lm/pPwlTV3sapBUbBRvwV4Nxbfl57
-	RzwtvbXcAMjbNC7cREZW30ZlsVRI9/VINF8NK4u1PFqZ/DvVc/shzrvXdoiBub4Du5Z0mNFnq3b1E
-	lQJuzdA4fPUotgNYPZZ0qD+JqQfUVZvsfCLapFF0s8u5WskOVrRstDv97HYLH0uZLFQj8Vh9YKglG
-	pPGtBs9OwYieVy+nc6YBoApZJbHdmGvijhBa9AcvZNcb0PZTTdkrQHtlXo1BixqhVOrXnoQy+TJR6
-	XCpUMcJQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=asCcdoNfeoDoMME8+WTvYy9ABUzv19l7QaW5+59YtmU=; b=5BcuR1xxfivBCeJrBMGzvk9gY5
+	bwvJw2wGPoty8vL1LCXk72wrHI9V3B49ZKq+FZJ8MOP+eUN2ZHdNuwYPYJN1jjCtL7iI33l1lKKpg
+	xMmUs9H15uEOUvjbwuHThC/y4eo6U2ndduveYFsTRcBaVQNcax++OKHW5mu6X8ElyJdX8D083yOrw
+	SbIa3GbizVxVknhaoGmQi/a3aLod6jfZYjPBKdE7CXs+hEkaf4PD63klPdBU19gGBd+wUzIv4fs+z
+	EwIKIuxjwNWrU89knaix/em3gGiDjkfeKTho6sVraZfKpvCcauo4iSZJdqtzAx8HWKlYdrZAH76XR
+	bRTMZyCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skkdR-0000000BhNZ-3NY3;
-	Sun, 01 Sep 2024 13:28:53 +0000
-Received: from mgamail.intel.com ([192.198.163.9])
+	id 1skleb-0000000Bn7B-3Ptz;
+	Sun, 01 Sep 2024 14:34:09 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skkdP-0000000BhMx-0TsD;
-	Sun, 01 Sep 2024 13:28:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1725197331; x=1756733331;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=B1Ym6T0bBnsNcRUf8vZAOZRZpf/YLk3MxfySZOJtVwY=;
-  b=dbBTpMy3RKhDOPKZU/FS3iUr85CDRRZTU+Y3gXME3LtV2vWxnTSZJxa/
-   dSixG5T0TIm2AzT4SR5abt6hUuEKpHjCrfszY3Ept1Aq49cR8MB20i+o9
-   AurgscJTMQAzAdf+8g/l5QYaZ1cYXvA+VSB4hlW9Hzt0MuM61JhcQk9p/
-   GY/0Tapi/aOhOQYhvw2R7x3LwMlAhxIa7A3U04Hv3Kp3xjt0ldZNHiipd
-   aYqKgArf4HiOueLdSPqQcJol46qk0GGDR9gOvECO8pvnu8HT4/geFqIto
-   z/Z1u6LGAc1HsMMdZB5mBmHzh946PsZIG0wWcYFrs2eEjV9zaty/uudZI
-   Q==;
-X-CSE-ConnectionGUID: MoUP+0kbQNW4XVx2OBFrwQ==
-X-CSE-MsgGUID: oXNdDU9gQ5ycro+2/S9dxw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11181"; a="34446833"
-X-IronPort-AV: E=Sophos;i="6.10,194,1719903600"; 
-   d="scan'208";a="34446833"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Sep 2024 06:28:49 -0700
-X-CSE-ConnectionGUID: N7yVSMzrQCWOdRkFLSXZvg==
-X-CSE-MsgGUID: IjNOdIuCTVue7+VsX/XmMA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,194,1719903600"; 
-   d="scan'208";a="64388335"
-Received: from lkp-server01.sh.intel.com (HELO 9c6b1c7d3b50) ([10.239.97.150])
-  by fmviesa009.fm.intel.com with ESMTP; 01 Sep 2024 06:28:45 -0700
-Received: from kbuild by 9c6b1c7d3b50 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1skkdG-0003gf-2L;
-	Sun, 01 Sep 2024 13:28:42 +0000
-Date: Sun, 1 Sep 2024 21:28:15 +0800
-From: kernel test robot <lkp@intel.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1skldc-0000000Bmlr-3T7f;
+	Sun, 01 Sep 2024 14:33:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 72A415C56BC;
+	Sun,  1 Sep 2024 14:33:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83635C4CEC3;
+	Sun,  1 Sep 2024 14:33:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1725201187;
+	bh=kwPiH44pV1ANFJhkdOlQ2NoEBgwHo7h8ejpepwo1EGg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=WXkoa9zK+zwyHz3IGIZIBI49Cak3R/xK0dOG42JMjUdpekcS9VOsXzkkAj37LChqv
+	 12/aGUKYtkBI/aLxQdYq9pG0dWmFRYL05d4yGOKcgm3SYMhhhib+YruMcc6pSWt2u4
+	 RWxmHE+d7QEe/Go6VfP+1ipw6eufotuX7wutA0tfE1tJ3ScPfg61GnzskzBTbTWF02
+	 3mKTBYRCp8M9n10iZRsPPuBkhMpaXMKhbO+XCEFcNEJ4eVPo9/RgUq4ALHvtHAXLQN
+	 xS+bZxQp/ojwtOI22cq6rjTdjRhynrZPAk2Yyz4W7dJiemdBR7f9gPVSyzOxBCjh8e
+	 cV7cuBMUi+BQQ==
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lee Jones <lee@kernel.org>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>
-Cc: oe-kbuild-all@lists.linux.dev, linux-mediatek@lists.infradead.org,
-	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
-	benjamin.larsson@genexis.eu, ansuelsmth@gmail.com,
-	linux-pwm@vger.kernel.org
-Subject: Re: [PATCH v3 4/5] pinctrl: airoha: Add support for EN7581 SoC
-Message-ID: <202409012045.91oDLtEE-lkp@intel.com>
-References: <20240831-en7581-pinctrl-v3-4-98eebfb4da66@kernel.org>
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Moudy Ho <moudy.ho@mediatek.com>,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Subject: [PATCH v4 0/3] Remove cl in struct cmdq_pkt
+Date: Sun,  1 Sep 2024 14:32:56 +0000
+Message-Id: <20240901143259.16849-1-chunkuang.hu@kernel.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240831-en7581-pinctrl-v3-4-98eebfb4da66@kernel.org>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240901_062851_222054_3C18FF5A 
-X-CRM114-Status: GOOD (  11.32  )
+X-CRM114-CacheID: sfid-20240901_073308_957086_2E52B562 
+X-CRM114-Status: UNSURE (   9.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,37 +77,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Lorenzo,
+cl in struct cmdq_pkt is used to store struct cmdq_client, but every client
+driver has the struct cmdq_client information, so it's not necessary to
+store struct cmdq_client in struct cmdq_pkt. Because mailbox maintainer
+do not like to mix mailbox patch with other patches in a series, so
+mailbox patch [1] would be sent independently.
 
-kernel test robot noticed the following build errors:
+Changes in v4:
+1. Rebase onto mediatek-drm-next-6.12
+2. Fix build error in mpd3 driver
+Changes in v3:
+1. Rebase onto Linux 6.11-rc1 and fix conflicts.
+Changes in v2:
+1. Fix typo of CMDQ_JUMP_RELATIVE
+2. Refine cmdq_pkt_create() and cmdq_pkt_destroy()
+3. Rename cmdq_pkt_jump() to cmdq_pkt_jump_abs()
+4. Add cmdq_pkt_jump_rel() helper function
+5. drm/mediatek: Use cmdq_pkt_create() and cmdq_pkt_destroy()
+6. mtk-mdp3: Get fine-grain control of cmdq_pkt_finalize()
+7. mtk-mdp3: Use cmdq_pkt_create() and cmdq_pkt_destroy()
 
-[auto build test ERROR on defaf1a2113a22b00dfa1abc0fd2014820eaf065]
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/commit/?h=mediatek-cmdq8&id=a1b2f7a7488285975c1f439086f1c4cc51a13bb9
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Lorenzo-Bianconi/dt-bindings-arm-airoha-Add-the-chip-scu-node-for-EN7581-SoC/20240831-222958
-base:   defaf1a2113a22b00dfa1abc0fd2014820eaf065
-patch link:    https://lore.kernel.org/r/20240831-en7581-pinctrl-v3-4-98eebfb4da66%40kernel.org
-patch subject: [PATCH v3 4/5] pinctrl: airoha: Add support for EN7581 SoC
-config: m68k-allyesconfig (https://download.01.org/0day-ci/archive/20240901/202409012045.91oDLtEE-lkp@intel.com/config)
-compiler: m68k-linux-gcc (GCC) 14.1.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240901/202409012045.91oDLtEE-lkp@intel.com/reproduce)
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202409012045.91oDLtEE-lkp@intel.com/
+Chun-Kuang Hu (3):
+  media: platform: mtk-mdp3: Get fine-grain control of
+    cmdq_pkt_finalize()
+  media: platform: mtk-mdp3: Use cmdq_pkt_create() and
+    cmdq_pkt_destroy()
+  soc: mediatek: cmdq: Remove cmdq_pkt_finalize() helper function
 
-All errors (new ones prefixed by >>):
-
-   m68k-linux-ld: drivers/pinctrl/mediatek/pinctrl-airoha.o: in function `airoha_pinconf_get':
-   pinctrl-airoha.c:(.text+0xa7a): undefined reference to `__ffsdi2'
->> m68k-linux-ld: pinctrl-airoha.c:(.text+0xb5e): undefined reference to `__ffsdi2'
-   m68k-linux-ld: pinctrl-airoha.c:(.text+0xc2a): undefined reference to `__ffsdi2'
-   m68k-linux-ld: drivers/pinctrl/mediatek/pinctrl-airoha.o: in function `airoha_pinconf_set':
-   pinctrl-airoha.c:(.text+0xf84): undefined reference to `__ffsdi2'
-   m68k-linux-ld: pinctrl-airoha.c:(.text+0xfda): undefined reference to `__ffsdi2'
-   m68k-linux-ld: drivers/pinctrl/mediatek/pinctrl-airoha.o:pinctrl-airoha.c:(.text+0x10b0): more undefined references to `__ffsdi2' follow
+ .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 49 +++----------------
+ .../platform/mediatek/mdp3/mtk-mdp3-cmdq.h    |  1 +
+ .../platform/mediatek/mdp3/mtk-mdp3-core.c    |  2 +
+ .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  1 +
+ drivers/soc/mediatek/mtk-cmdq-helper.c        | 22 ---------
+ include/linux/soc/mediatek/mtk-cmdq.h         | 13 -----
+ 6 files changed, 11 insertions(+), 77 deletions(-)
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.34.1
+
 
