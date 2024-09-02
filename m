@@ -4,83 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AD14CA0ED3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Sep 2024 15:49:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19F29CA0ED3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Sep 2024 15:51:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z3h2EurFym/sQNYIHHNko50ySAciatxZuiR1HYEGZyY=; b=I73RAIPUB+A+ZoBHaH7hJF9o+j
-	tjDghCrKM3o+fmL398rdtS1AJ7YLy9ThpUoRU39h66h3MGWUwUU/9euDtj61huTw/hExc8WEs00sd
-	CG/B5VhwxqSJX/TYre3pqlSxoce3UYu9/Ysd+PjEyTyD3Ro3m0g8mjiHBZP1D/WxaHK+K2BJAc4vf
-	NvlTe9GVcf+VO/Jol1GZh3aWGvD+aCbDzDbM99FZcgIpaxgFi8fvmk1Tu+dj9wso0iFNuZfcHbyEt
-	Pewp15uazgT5w3q11+yYiaw2Qv0PE2j1TInfvp+KDKBsurx+ul7bJ5BpSBx4XvoQYZ+mxvROmVMGq
-	Zz14ioLQ==;
+	bh=bfR441/z2KXRbtRPvcV5jaQ/+dlUWdH1GL8QEmA05xU=; b=2C1nADkbLN5m2p9U9F9bTtWvoa
+	9a8KW+Iio1LJFvN5N3evxJBz+ZdsPSdkJqOhJh9XkspQJCYGdTd7f02SO0qQ831z/THdRFXJoVO+Y
+	e0BHl/S8cbiqU0gQDdHbW56pSXUaRjQZjeW6UXiyJxLCSGYK/j08odJxZvVYYPF8tJm9EzyYrB4+C
+	umFSAdxQQEcmXfv+qIrbv+qKYJ8ctzK4myXIJv56B+x9GEvk8Gm0NL/FnnRUbNHj5cwXuAE3mcicT
+	woYdNF342CqTn+t5+xR7v6xwPAsomfVOHFciKl5smypO5Z6WwW6Pmg2mj5R48KqyK4GDBpTdQ2BuN
+	QZifVESg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sl9JK-0000000EuO3-3sw9;
-	Mon, 02 Sep 2024 15:49:46 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1sl9LA-0000000Eul8-3JLy;
+	Mon, 02 Sep 2024 15:51:40 +0000
+Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sl9JH-0000000EuNN-2Pj0;
-	Mon, 02 Sep 2024 15:49:44 +0000
-Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a7a843bef98so444471966b.2;
-        Mon, 02 Sep 2024 08:49:43 -0700 (PDT)
+	id 1sl9KE-0000000EuW8-1eSu;
+	Mon, 02 Sep 2024 15:50:44 +0000
+Received: by mail-lj1-x235.google.com with SMTP id 38308e7fff4ca-2f409c87b07so54761761fa.0;
+        Mon, 02 Sep 2024 08:50:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725292182; x=1725896982; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1725292241; x=1725897041; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=Z3h2EurFym/sQNYIHHNko50ySAciatxZuiR1HYEGZyY=;
-        b=hsnoeppE7OcorvZbuIbpVTK3fqUMhwJIiSHXGaMdHhpdWK6lJIPWehPV3+gGhoIcew
-         1paB5e8T8/1wFSKuZ4xpYKTLPLFpsiplPd10jYdIiRJIoPq4cHkGRj6Lurr+KAPMqiyH
-         ABHM+rnmQZwFzqRS5KYnWy4ASI99bgTaVpm95v0Abj6R6/Os2JMLljtWSDAgpyYXtanC
-         6YNAoJHmv6BisZCCD0TSiG+4PUQcVbdE9mhXKuQHUY/+gJ2N4uLSi3hU6pNuypNZC2en
-         k2HA2eAw4/HTiHyXJQkBBWGjD+azIIM9we6WJkqABWQmCzDS0WxLr/5m37b6RJH2f9g3
-         W9Jw==
+        bh=bfR441/z2KXRbtRPvcV5jaQ/+dlUWdH1GL8QEmA05xU=;
+        b=CQGklO0vAhRGR9d0ALLRALe8GMmEdo30KvOpxT7F+quinaPvF64MdKUS2ffi5aTQlJ
+         tC3paK4AEV8yyhS5wvac+/w6vfaNkazqOpvxUZg7xZ25lR85BvnYm+BlwQ6CzXqurMpv
+         qZmfZAlFQlX/jYFUUd2BSR6O0qsznWA+DDD0NxHOJKWEhckvmUB1EPNvV14oIg0Cij32
+         qeUuSEXBdeYfFfzqHq1Pj34yu31hBhftLzcdI26z3TQe3ra91yODqU1U6ynSiqyDytfZ
+         vdVthX33VPvIal6VZZJVW4UmBP3GRl5cRYrXxabTA2nKVN0yPO/pY6rdC9MJBkWXfnXo
+         7qtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725292182; x=1725896982;
+        d=1e100.net; s=20230601; t=1725292241; x=1725897041;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Z3h2EurFym/sQNYIHHNko50ySAciatxZuiR1HYEGZyY=;
-        b=OH2LBexQct4/fs/VRGb54ayTbrccF3VmWY6NCttKccK2xcAOSlkvOlsuxSE9IuCfnp
-         u3cakuZB0p3XJV82gQuNf1wPwHoAEfTTamUdgs6ANkkYqcBNXU0Fc1pXvkONM+3wEQdc
-         4R1WVwgIu8jZbHennl56hF463m99yjnfIcYDpFM9kyuundt4O/PikBhM1pNZz1fm1JuA
-         TWHqimozbnAS4m3Ty1mm8MNuWwThqPIBbDwyyw/Ti4MczyrpqebBI2sgSUIhH7Pz0lq+
-         5bjKia2mqU8nP4Vk28Xo2/EeCNb5IEqr8lm5K5GQglfJh8xb8NKywKnJafxQEpC33rDA
-         iI2A==
-X-Forwarded-Encrypted: i=1; AJvYcCV+VEAoTZBPJrlF6dodpixoDnN6yWzJY/AOGxJW/IBB9YZAdR0iP+JGxWwzh+SYRUHUG34SRdzLog2IcjdiIJME@lists.infradead.org, AJvYcCVNKr2MkcZsN+yhL84IgQQ8lA4oTijne6r0BLNOBk243GPK0TJzFv3K85WJGn7S7pkHwOFoQoc6n0KczMSBSFw=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzLyZgb+f2e6OKRIa2gdHnJT92eVN5+m6aMOWf8dLAqkAmXzeZM
-	9wlq5QUCH7h7rCWLoZy+amEonyy+upjCENQqQk3GHm0Pa1OQIK2+
-X-Google-Smtp-Source: AGHT+IFkrMJAr1bIVCDfHMNzWboGCkoQxUavu8RvYaOR3yduP93g/hvF/6pCzpzirPQjSCGSIj7GBw==
-X-Received: by 2002:a17:907:d24:b0:a86:700f:93c0 with SMTP id a640c23a62f3a-a89d879c339mr476503866b.35.1725292181400;
-        Mon, 02 Sep 2024 08:49:41 -0700 (PDT)
+        bh=bfR441/z2KXRbtRPvcV5jaQ/+dlUWdH1GL8QEmA05xU=;
+        b=Vc+EeQrDcsmG+lQWRiSnmxJJ3DcKF/74gnGVTs4kN6eHs4wokG2MMgtt34sO4GcTqp
+         uybFT1zwQoS+wD9b0K2QZe6+fQ5MNW25yLUtoX4GdrJtTLL1po+QzyExJLp4+cyB1YOv
+         LaiMGCJZw5+LpjTV74EYZf/4/WKxSrccpP2+djGESkA4kEK8IyDmTvbOEOo8jsTVtZMK
+         aWELjrqq/3qsiMbbX36S9Pz71ZyM39bT/WMMWtK+uOF3fv/poFyxcX8ry6X6Cl367wMW
+         IFMlH0NUguFaBMZaB/b2C6wepS4BR2Lf4wqRCyMnldopdIdN1Pn5TEZZ2jGxQ5B+45xN
+         5/9Q==
+X-Forwarded-Encrypted: i=1; AJvYcCXChzrUtpviCv3/MbmOIjKJZiJ3S0L+BQhxiss8J+gRilkqAeX+itwJmPoeOLO4D9s3mHKFZRfLk+8Xm34PZl0=@lists.infradead.org, AJvYcCXVP2Heb2+/A21iWL87QdrFlpaTt5dqrMOulT97OGqdR9WEw08fAV9/6ul+5gFjCgoFmBRpuxR1654OnzmNP/zi@lists.infradead.org
+X-Gm-Message-State: AOJu0YxxD8HsbVvx2rlfoMg4hCPFafHouAlZL2mZxQZ+LwUfV00CUDFU
+	scTtVunq5frwqiUYRFRp050izZM6eVyC43gxmo5ExnpoOYT/MNW2tD3rqw==
+X-Google-Smtp-Source: AGHT+IGBu4sXdVkP/DfgdJUulgeC3nRnKuj4BLMXI2x7OZ5cdEIkk/9G5JXSziB5lUuUgi07UyYq6Q==
+X-Received: by 2002:a05:6512:68b:b0:52e:f367:709b with SMTP id 2adb3069b0e04-53546b93fb3mr8150957e87.42.1725292239827;
+        Mon, 02 Sep 2024 08:50:39 -0700 (PDT)
 Received: from [192.168.0.20] ([148.56.230.39])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a89891963c1sm573331266b.103.2024.09.02.08.49.39
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8989196715sm571049866b.113.2024.09.02.08.50.38
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 02 Sep 2024 08:49:40 -0700 (PDT)
-Message-ID: <dad2df65-4321-497d-bb39-e96ca3df9bf1@gmail.com>
-Date: Mon, 2 Sep 2024 17:49:38 +0200
+        Mon, 02 Sep 2024 08:50:38 -0700 (PDT)
+Message-ID: <b0d83115-db4f-4c3b-9cfe-e889b1410c44@gmail.com>
+Date: Mon, 2 Sep 2024 17:50:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND PATCH v2 1/2] arm64: dts: mt8183: add dpi node to mt8183
-To: Pin-yen Lin <treapking@chromium.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>,
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Correct clock order for
+ dp_intf*
+To: Chen-Yu Tsai <wenst@chromium.org>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: "open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Pi-Hsun Shih <pihsun@chromium.org>,
- Jitao Shi <jitao.shi@mediatek.com>, Fabien Parent <fparent@baylibre.com>
-References: <20240819120735.1508789-1-treapking@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20240802070951.1086616-1-wenst@chromium.org>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -126,12 +119,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20240819120735.1508789-1-treapking@chromium.org>
+In-Reply-To: <20240802070951.1086616-1-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240902_084943_654571_49CA6DDE 
-X-CRM114-Status: GOOD (  13.60  )
+X-CRM114-CacheID: sfid-20240902_085042_492778_DCFDB0FA 
+X-CRM114-Status: GOOD (  14.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,45 +141,49 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 19/08/2024 14:05, Pin-yen Lin wrote:
-> From: Pi-Hsun Shih <pihsun@chromium.org>
+On 02/08/2024 09:09, Chen-Yu Tsai wrote:
+> The clocks for dp_intf* device nodes are given in the wrong order,
+> causing the binding validation to fail.
 > 
-> Add dpi node to mt8183.
-> 
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
+> Fixes: 6c2503b5856a ("arm64: dts: mt8195: Add dp-intf nodes")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
 Applied, thanks!
 
 > ---
+>   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 12 ++++++------
+>   1 file changed, 6 insertions(+), 6 deletions(-)
 > 
-> (no changes since v1)
-> 
->   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 11 +++++++++++
->   1 file changed, 11 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 267378fa46c0..266441e999f2 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -1836,6 +1836,17 @@ dsi0: dsi@14014000 {
->   			phy-names = "dphy";
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> index 989e8ac545ac..e89ba384c4aa 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -3252,10 +3252,10 @@ dp_intf0: dp-intf@1c015000 {
+>   			compatible = "mediatek,mt8195-dp-intf";
+>   			reg = <0 0x1c015000 0 0x1000>;
+>   			interrupts = <GIC_SPI 657 IRQ_TYPE_LEVEL_HIGH 0>;
+> -			clocks = <&vdosys0  CLK_VDO0_DP_INTF0>,
+> -				 <&vdosys0 CLK_VDO0_DP_INTF0_DP_INTF>,
+> +			clocks = <&vdosys0 CLK_VDO0_DP_INTF0_DP_INTF>,
+> +				 <&vdosys0  CLK_VDO0_DP_INTF0>,
+>   				 <&apmixedsys CLK_APMIXED_TVDPLL1>;
+> -			clock-names = "engine", "pixel", "pll";
+> +			clock-names = "pixel", "engine", "pll";
+>   			status = "disabled";
 >   		};
 >   
-> +		dpi0: dpi@14015000 {
-> +			compatible = "mediatek,mt8183-dpi";
-> +			reg = <0 0x14015000 0 0x1000>;
-> +			interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
-> +			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-> +			clocks = <&mmsys CLK_MM_DPI_IF>,
-> +				 <&mmsys CLK_MM_DPI_MM>,
-> +				 <&apmixedsys CLK_APMIXED_TVDPLL>;
+> @@ -3522,10 +3522,10 @@ dp_intf1: dp-intf@1c113000 {
+>   			reg = <0 0x1c113000 0 0x1000>;
+>   			interrupts = <GIC_SPI 513 IRQ_TYPE_LEVEL_HIGH 0>;
+>   			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
+> -			clocks = <&vdosys1 CLK_VDO1_DP_INTF0_MM>,
+> -				 <&vdosys1 CLK_VDO1_DPINTF>,
+> +			clocks = <&vdosys1 CLK_VDO1_DPINTF>,
+> +				 <&vdosys1 CLK_VDO1_DP_INTF0_MM>,
+>   				 <&apmixedsys CLK_APMIXED_TVDPLL2>;
+> -			clock-names = "engine", "pixel", "pll";
 > +			clock-names = "pixel", "engine", "pll";
-> +		};
-> +
->   		mutex: mutex@14016000 {
->   			compatible = "mediatek,mt8183-disp-mutex";
->   			reg = <0 0x14016000 0 0x1000>;
+>   			status = "disabled";
+>   		};
+>   
 
