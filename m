@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E914CD13CF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Sep 2024 15:44:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AD14CA0ED3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Sep 2024 15:49:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FP5u0P3Ro8DGfBZjAhSMaSTilOOjxZnvSRuA8wU6ado=; b=WbD27P5fqNu1Er+CosYgc9XfYf
-	k2Mcney93wFcGx7aA6LpnYmPHJsZqgVafcc77DFVxpLy+Lm6o2U7UbcHT3KEhAxFn+DDFfM8PVJbc
-	VI8Y7dAJ11V8JLwJpTHBK6eyMdoxWMPprrPgShkTjFhE8ri1QVkfIxzEH9+ZRs48/QsxiDGX1kfC2
-	MQf/H2xoCgy5ef8AFjGlFOUWfpoOAJQbliSa1o/tlRK2hJkYRcoNKoQQ+BtW2jpJT+/Y0fFaPhd68
-	kK0bGorMKxVT60GyWwL2OV7h2qiL1XLzgGa8rVGPA8+Gd+U6cUsViVkr6PNDbcWm8zvllGQFFwura
-	pKSbECUg==;
+	bh=Z3h2EurFym/sQNYIHHNko50ySAciatxZuiR1HYEGZyY=; b=I73RAIPUB+A+ZoBHaH7hJF9o+j
+	tjDghCrKM3o+fmL398rdtS1AJ7YLy9ThpUoRU39h66h3MGWUwUU/9euDtj61huTw/hExc8WEs00sd
+	CG/B5VhwxqSJX/TYre3pqlSxoce3UYu9/Ysd+PjEyTyD3Ro3m0g8mjiHBZP1D/WxaHK+K2BJAc4vf
+	NvlTe9GVcf+VO/Jol1GZh3aWGvD+aCbDzDbM99FZcgIpaxgFi8fvmk1Tu+dj9wso0iFNuZfcHbyEt
+	Pewp15uazgT5w3q11+yYiaw2Qv0PE2j1TInfvp+KDKBsurx+ul7bJ5BpSBx4XvoQYZ+mxvROmVMGq
+	Zz14ioLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sl9EG-0000000Etf3-3o4v;
-	Mon, 02 Sep 2024 15:44:32 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1sl9JK-0000000EuO3-3sw9;
+	Mon, 02 Sep 2024 15:49:46 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sl9EE-0000000Etdo-02Pr;
-	Mon, 02 Sep 2024 15:44:31 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-533488ffaddso5485781e87.1;
-        Mon, 02 Sep 2024 08:44:29 -0700 (PDT)
+	id 1sl9JH-0000000EuNN-2Pj0;
+	Mon, 02 Sep 2024 15:49:44 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a7a843bef98so444471966b.2;
+        Mon, 02 Sep 2024 08:49:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725291868; x=1725896668; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1725292182; x=1725896982; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=FP5u0P3Ro8DGfBZjAhSMaSTilOOjxZnvSRuA8wU6ado=;
-        b=V8Qo6GX3M2aBBU/y1wlESvWCxUPBwubyy57LbHCOyR2QWNmxhjaOfJYrUZ07pgg1HL
-         XK8R6QZMfbMi3gEopiJgppsu3mVDqsu2oNiCRXE03B0AobIHuEanZ4FOLS9DX1UY90N1
-         BkdiQe+cxupgRsBb4cve8+3jZoQZ03oA9KAntq5xhM7xNzRv4s3QesnvnGXt/8D1wADb
-         As6G2/Lb4GQcCEks1dngUEZZLRuOOSY8hJU/2Bc3rIOEUNW211DsjjJ4sY/Nxntm4AC7
-         obso2YMa7gf7qPQRPZW6BuFR+dZpQVplU97RUXBkNYsK+//UYOfw6IGxI3p9OHPnWcfh
-         5d6w==
+        bh=Z3h2EurFym/sQNYIHHNko50ySAciatxZuiR1HYEGZyY=;
+        b=hsnoeppE7OcorvZbuIbpVTK3fqUMhwJIiSHXGaMdHhpdWK6lJIPWehPV3+gGhoIcew
+         1paB5e8T8/1wFSKuZ4xpYKTLPLFpsiplPd10jYdIiRJIoPq4cHkGRj6Lurr+KAPMqiyH
+         ABHM+rnmQZwFzqRS5KYnWy4ASI99bgTaVpm95v0Abj6R6/Os2JMLljtWSDAgpyYXtanC
+         6YNAoJHmv6BisZCCD0TSiG+4PUQcVbdE9mhXKuQHUY/+gJ2N4uLSi3hU6pNuypNZC2en
+         k2HA2eAw4/HTiHyXJQkBBWGjD+azIIM9we6WJkqABWQmCzDS0WxLr/5m37b6RJH2f9g3
+         W9Jw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725291868; x=1725896668;
+        d=1e100.net; s=20230601; t=1725292182; x=1725896982;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=FP5u0P3Ro8DGfBZjAhSMaSTilOOjxZnvSRuA8wU6ado=;
-        b=CcOrMdA4KX7aRTForsz7Gi/6Z5mlxZC6tlHdtwZLtA990hBy21MgbXYi6w6ZbnBlrZ
-         KqbLFbY+3jraFdD+PokA5pECfyfZ1oQ8O7z8OdaAhj18ApbHJFjgiQlj2UKhUZcm/i8k
-         j48cGRjqLOxUsYKRhWiBF2pTcc9SpZzw6BqiaAGwji2B5vE0/tANKkyGaTPd7l2/2rV2
-         608Dc6SIBfneQIZyuS2F4oALMUTzqkLXyQ+jKZk6CQX4CI8mh9BwHHhfy+OXrPlVPlRy
-         /JOf10UIJMGRx1SFOJaKlh3RkSqa/h0uRrL7fAb8XzX1S08ZX40b9Mu+jc4neMS4RBcG
-         H+1g==
-X-Forwarded-Encrypted: i=1; AJvYcCVUYOIeW3yK/i8O7x0CKuniv9BGx5m5zA2SmC2GyYpL5o9lcHHxROQnCiwmMrxf4C2pjeTVqkVwQmy+Rt1mwis=@lists.infradead.org, AJvYcCX2T9w/6CU+XdZXGJ5X5n9+0w+HULfX+fuK2MKd1mOtIVf7GjDpV/pbwUcdnO5yimK1iAyWv+SRsp6e0272q4cu@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw70HMnky50jucHzmvjBLatlHJc7UvquIF3fNdRNwQVdGJrB6+V
-	d2I/giyhNc/K/M4khXMdwHAFeeMcYPwA6dBJpkyk9GTlRSgCYWhn
-X-Google-Smtp-Source: AGHT+IEgfNaR3U3/b1uiiFFzr2EHklk9wo8C+1+IZLOlEr0ViAXQdcdOmk/tJH3WaUnAg4lxM5ksZg==
-X-Received: by 2002:a05:6512:1318:b0:52c:dfa7:9f43 with SMTP id 2adb3069b0e04-53546b43623mr7531624e87.34.1725291867234;
-        Mon, 02 Sep 2024 08:44:27 -0700 (PDT)
+        bh=Z3h2EurFym/sQNYIHHNko50ySAciatxZuiR1HYEGZyY=;
+        b=OH2LBexQct4/fs/VRGb54ayTbrccF3VmWY6NCttKccK2xcAOSlkvOlsuxSE9IuCfnp
+         u3cakuZB0p3XJV82gQuNf1wPwHoAEfTTamUdgs6ANkkYqcBNXU0Fc1pXvkONM+3wEQdc
+         4R1WVwgIu8jZbHennl56hF463m99yjnfIcYDpFM9kyuundt4O/PikBhM1pNZz1fm1JuA
+         TWHqimozbnAS4m3Ty1mm8MNuWwThqPIBbDwyyw/Ti4MczyrpqebBI2sgSUIhH7Pz0lq+
+         5bjKia2mqU8nP4Vk28Xo2/EeCNb5IEqr8lm5K5GQglfJh8xb8NKywKnJafxQEpC33rDA
+         iI2A==
+X-Forwarded-Encrypted: i=1; AJvYcCV+VEAoTZBPJrlF6dodpixoDnN6yWzJY/AOGxJW/IBB9YZAdR0iP+JGxWwzh+SYRUHUG34SRdzLog2IcjdiIJME@lists.infradead.org, AJvYcCVNKr2MkcZsN+yhL84IgQQ8lA4oTijne6r0BLNOBk243GPK0TJzFv3K85WJGn7S7pkHwOFoQoc6n0KczMSBSFw=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzLyZgb+f2e6OKRIa2gdHnJT92eVN5+m6aMOWf8dLAqkAmXzeZM
+	9wlq5QUCH7h7rCWLoZy+amEonyy+upjCENQqQk3GHm0Pa1OQIK2+
+X-Google-Smtp-Source: AGHT+IFkrMJAr1bIVCDfHMNzWboGCkoQxUavu8RvYaOR3yduP93g/hvF/6pCzpzirPQjSCGSIj7GBw==
+X-Received: by 2002:a17:907:d24:b0:a86:700f:93c0 with SMTP id a640c23a62f3a-a89d879c339mr476503866b.35.1725292181400;
+        Mon, 02 Sep 2024 08:49:41 -0700 (PDT)
 Received: from [192.168.0.20] ([148.56.230.39])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a898908ce6asm576985566b.92.2024.09.02.08.44.25
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a89891963c1sm573331266b.103.2024.09.02.08.49.39
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 02 Sep 2024 08:44:26 -0700 (PDT)
-Message-ID: <434edbf2-da3f-49b2-9ee4-d12e84428d44@gmail.com>
-Date: Mon, 2 Sep 2024 17:44:24 +0200
+        Mon, 02 Sep 2024 08:49:40 -0700 (PDT)
+Message-ID: <dad2df65-4321-497d-bb39-e96ca3df9bf1@gmail.com>
+Date: Mon, 2 Sep 2024 17:49:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND PATCH v2 2/2] arm64: dts: mediatek: mt8183-pumpkin: add
- HDMI support
+Subject: Re: [RESEND PATCH v2 1/2] arm64: dts: mt8183: add dpi node to mt8183
 To: Pin-yen Lin <treapking@chromium.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>,
@@ -79,9 +78,9 @@ Cc: "open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
  "moderated list:ARM/Mediatek SoC support"
  <linux-arm-kernel@lists.infradead.org>,
  "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Fabien Parent <fparent@baylibre.com>
+ <devicetree@vger.kernel.org>, Pi-Hsun Shih <pihsun@chromium.org>,
+ Jitao Shi <jitao.shi@mediatek.com>, Fabien Parent <fparent@baylibre.com>
 References: <20240819120735.1508789-1-treapking@chromium.org>
- <20240819120735.1508789-2-treapking@chromium.org>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -127,12 +126,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20240819120735.1508789-2-treapking@chromium.org>
+In-Reply-To: <20240819120735.1508789-1-treapking@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240902_084430_090496_45E747B2 
-X-CRM114-Status: GOOD (  15.68  )
+X-CRM114-CacheID: sfid-20240902_084943_654571_49CA6DDE 
+X-CRM114-Status: GOOD (  13.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,182 +149,44 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 19/08/2024 14:05, Pin-yen Lin wrote:
-> From: Fabien Parent <fparent@baylibre.com>
+> From: Pi-Hsun Shih <pihsun@chromium.org>
 > 
-> The MT8183 Pumpkin board has a micro-HDMI connector. HDMI support is
-> provided by an IT66121 DPI <-> HDMI bridge.
+> Add dpi node to mt8183.
 > 
-> This commit enables DPI and add the node for the IT66121 bridge.
-> 
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
 > Signed-off-by: Fabien Parent <fparent@baylibre.com>
 > Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-> 
 
-Building DTB fais with:
-arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:138.27-169.4: ERROR 
-(phandle_references): /soc/i2c@11005000/hdmitx@4c: Reference to non-existent 
-node or label "mt6358_vcn33_wifi_reg"
-
-Please check your code before submitting.
-
-Regards,
-Matthias
+Applied, thanks!
 
 > ---
 > 
 > (no changes since v1)
 > 
->   .../boot/dts/mediatek/mt8183-pumpkin.dts      | 121 ++++++++++++++++++
->   1 file changed, 121 insertions(+)
+>   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 11 +++++++++++
+>   1 file changed, 11 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-> index 1aa668c3ccf9..ecc237355b56 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-> @@ -63,6 +63,18 @@ thermistor {
->   		pulldown-ohm = <0>;
->   		io-channels = <&auxadc 0>;
->   	};
-> +
-> +	connector {
-> +		compatible = "hdmi-connector";
-> +		label = "hdmi";
-> +		type = "d";
-> +
-> +		port {
-> +			hdmi_connector_in: endpoint {
-> +				remote-endpoint = <&hdmi_connector_out>;
-> +			};
-> +		};
-> +	};
->   };
->   
->   &auxadc {
-> @@ -120,6 +132,41 @@ &i2c6 {
->   	pinctrl-0 = <&i2c6_pins>;
->   	status = "okay";
->   	clock-frequency = <100000>;
-> +	#address-cells = <1>;
-> +	#size-cells = <0>;
-> +
-> +	it66121hdmitx: hdmitx@4c {
-> +		compatible = "ite,it66121";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&ite_pins>;
-> +		vcn33-supply = <&mt6358_vcn33_wifi_reg>;
-> +		vcn18-supply = <&mt6358_vcn18_reg>;
-> +		vrf12-supply = <&mt6358_vrf12_reg>;
-> +		reset-gpios = <&pio 160 GPIO_ACTIVE_LOW>;
-> +		interrupt-parent = <&pio>;
-> +		interrupts = <4 IRQ_TYPE_LEVEL_LOW>;
-> +		reg = <0x4c>;
-> +
-> +		ports {
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +
-> +			port@0 {
-> +				reg = <0>;
-> +				it66121_in: endpoint {
-> +					bus-width = <12>;
-> +					remote-endpoint = <&dpi_out>;
-> +				};
-> +			};
-> +
-> +			port@1 {
-> +				reg = <1>;
-> +				hdmi_connector_out: endpoint {
-> +					remote-endpoint = <&hdmi_connector_in>;
-> +				};
-> +			};
-> +		};
-> +	};
->   };
->   
->   &keyboard {
-> @@ -362,6 +409,67 @@ pins_clk {
->   			input-enable;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 267378fa46c0..266441e999f2 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -1836,6 +1836,17 @@ dsi0: dsi@14014000 {
+>   			phy-names = "dphy";
 >   		};
->   	};
-> +
-> +	ite_pins: ite-pins {
-> +		pins-irq {
-> +			pinmux = <PINMUX_GPIO4__FUNC_GPIO4>;
-> +			input-enable;
-> +			bias-pull-up;
-> +		};
-> +
-> +		pins-rst {
-> +			pinmux = <PINMUX_GPIO160__FUNC_GPIO160>;
-> +			output-high;
-> +		};
-> +	};
-> +
-> +	dpi_func_pins: dpi-func-pins {
-> +		pins-dpi {
-> +			pinmux = <PINMUX_GPIO12__FUNC_I2S5_BCK>,
-> +				 <PINMUX_GPIO46__FUNC_I2S5_LRCK>,
-> +				 <PINMUX_GPIO47__FUNC_I2S5_DO>,
-> +				 <PINMUX_GPIO13__FUNC_DBPI_D0>,
-> +				 <PINMUX_GPIO14__FUNC_DBPI_D1>,
-> +				 <PINMUX_GPIO15__FUNC_DBPI_D2>,
-> +				 <PINMUX_GPIO16__FUNC_DBPI_D3>,
-> +				 <PINMUX_GPIO17__FUNC_DBPI_D4>,
-> +				 <PINMUX_GPIO18__FUNC_DBPI_D5>,
-> +				 <PINMUX_GPIO19__FUNC_DBPI_D6>,
-> +				 <PINMUX_GPIO20__FUNC_DBPI_D7>,
-> +				 <PINMUX_GPIO21__FUNC_DBPI_D8>,
-> +				 <PINMUX_GPIO22__FUNC_DBPI_D9>,
-> +				 <PINMUX_GPIO23__FUNC_DBPI_D10>,
-> +				 <PINMUX_GPIO24__FUNC_DBPI_D11>,
-> +				 <PINMUX_GPIO25__FUNC_DBPI_HSYNC>,
-> +				 <PINMUX_GPIO26__FUNC_DBPI_VSYNC>,
-> +				 <PINMUX_GPIO27__FUNC_DBPI_DE>,
-> +				 <PINMUX_GPIO28__FUNC_DBPI_CK>;
-> +		};
-> +	};
-> +
-> +	dpi_idle_pins: dpi-idle-pins {
-> +		pins-idle {
-> +			pinmux = <PINMUX_GPIO12__FUNC_GPIO12>,
-> +				 <PINMUX_GPIO46__FUNC_GPIO46>,
-> +				 <PINMUX_GPIO47__FUNC_GPIO47>,
-> +				 <PINMUX_GPIO13__FUNC_GPIO13>,
-> +				 <PINMUX_GPIO14__FUNC_GPIO14>,
-> +				 <PINMUX_GPIO15__FUNC_GPIO15>,
-> +				 <PINMUX_GPIO16__FUNC_GPIO16>,
-> +				 <PINMUX_GPIO17__FUNC_GPIO17>,
-> +				 <PINMUX_GPIO18__FUNC_GPIO18>,
-> +				 <PINMUX_GPIO19__FUNC_GPIO19>,
-> +				 <PINMUX_GPIO20__FUNC_GPIO20>,
-> +				 <PINMUX_GPIO21__FUNC_GPIO21>,
-> +				 <PINMUX_GPIO22__FUNC_GPIO22>,
-> +				 <PINMUX_GPIO23__FUNC_GPIO23>,
-> +				 <PINMUX_GPIO24__FUNC_GPIO24>,
-> +				 <PINMUX_GPIO25__FUNC_GPIO25>,
-> +				 <PINMUX_GPIO26__FUNC_GPIO26>,
-> +				 <PINMUX_GPIO27__FUNC_GPIO27>,
-> +				 <PINMUX_GPIO28__FUNC_GPIO28>;
-> +		};
-> +	};
->   };
 >   
->   &pmic {
-> @@ -415,3 +523,16 @@ &scp {
->   &dsi0 {
->   	status = "disabled";
->   };
-> +
-> +&dpi0 {
-> +	pinctrl-names = "default", "sleep";
-> +	pinctrl-0 = <&dpi_func_pins>;
-> +	pinctrl-1 = <&dpi_idle_pins>;
-> +	status = "okay";
-> +
-> +	port {
-> +		dpi_out: endpoint {
-> +			remote-endpoint = <&it66121_in>;
+> +		dpi0: dpi@14015000 {
+> +			compatible = "mediatek,mt8183-dpi";
+> +			reg = <0 0x14015000 0 0x1000>;
+> +			interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
+> +			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
+> +			clocks = <&mmsys CLK_MM_DPI_IF>,
+> +				 <&mmsys CLK_MM_DPI_MM>,
+> +				 <&apmixedsys CLK_APMIXED_TVDPLL>;
+> +			clock-names = "pixel", "engine", "pll";
 > +		};
-> +	};
-> +};
+> +
+>   		mutex: mutex@14016000 {
+>   			compatible = "mediatek,mt8183-disp-mutex";
+>   			reg = <0 0x14016000 0 0x1000>;
 
