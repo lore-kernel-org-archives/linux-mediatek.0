@@ -4,58 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDC73CD13CF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Sep 2024 06:02:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A00A3CD13CF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Sep 2024 08:31:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RLT+ZXlJz8SWaaahByoLRZfSQKkmdiE+KQxWWpCGtXw=; b=BoXMClXV3mDPiTSFNToOiQeHvb
-	osi2NeK9yCyg7QIdtBJG40XV6AOKK9EirewVDhXBDpPdzghvtuyalaerxxAGQQuSwrJcGRHWgzq+C
-	bafUYyQReZneBAEhvoWeTuxnRidVEln2x1T+2OLIobe/ur+XTeF1r/mpNNa10mVf66ApBuENeCbLw
-	8ogeU+3sxu1idEFaaGsScoNdzEbawb9QdnbG0SKTdUgfjSKzmCjyAL9E4okzm5RjpwH7VrGFEAeHL
-	IClhl64L7fdB+HN4k0WjnxFBMKCfSM/5UFit4KVVLsxFkCV9XCVXGSubAmqvIYL29+rIVY2+zFU6r
-	AygtXBhw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UeWBVYJmlGHv3HP1aRZWCBvB4u4Cb5G9X8OebZWfO3Y=; b=w5aJvbLR3agpIhfLhBdXplmmwo
+	ZP3OQLOl6IYYwDPmY7hM+iM3XHTvvHuFt1uQMk+d1PaYvqpE59o6XFIszXWrJdp71Eke0yfj4zILi
+	at6lvKk8qmb9nKT/zpLV6JD/HKLJvMWrMuirgWLWp8HAi69MhVRbUFgQ78hIZNZTB65XhPqYAe7Lf
+	g0T8ceYxHwadQ2zKyKPkF5wlpmATvDoGOXD3wIrNyt4lBEJZm6mS1SleI4F9qdt/Qhxf3WY1xJkkq
+	t1+gsTyMCiBQEdo6lrV+ByfJCUAAPloIX5WazsN6qXzeI1a5C5dfmI0m/R972y0nhnQCLr9tQ+9r8
+	/tP1u4vQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sl08i-0000000D5O4-2YOF;
-	Mon, 02 Sep 2024 06:02:12 +0000
+	id 1sl2Tb-0000000DWSR-1YMM;
+	Mon, 02 Sep 2024 08:31:55 +0000
 Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sl07m-0000000D585-3fCc;
-	Mon, 02 Sep 2024 06:01:16 +0000
+	id 1sl2R4-0000000DVhq-2YjX;
+	Mon, 02 Sep 2024 08:29:19 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 16153A416B6;
-	Mon,  2 Sep 2024 06:01:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4953AC4CEC2;
-	Mon,  2 Sep 2024 06:01:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1725256873;
-	bh=uFqYDAGst+R76BzrFXSqxQfFeaOgB/jwHSV/x4bw5xE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XcGT8ny+K7EZPFWj7plmSyaw+3DUmYHQrHQM/nEmQbnG+VvCxd3U3HDIZTeX7YiRL
-	 1biMvmNuYBWWnQkGh0oHiWSUlCqiK7KZ7mv2ol4roKIvw1j5SP2yZJAPHRBUHL3qRF
-	 ShEo26DaXuTOaDOPfo65oFbxkvB50L+QG9bfwOUg=
-Date: Mon, 2 Sep 2024 08:01:10 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Yenchia Chen <yenchia.chen@mediatek.com>
-Cc: stable@vger.kernel.org, "Rafael J. Wysocki" <rafael@kernel.org>,
-	Pavel Machek <pavel@ucw.cz>, Len Brown <len.brown@intel.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 5.15 0/1] pm, restore async device resume optimization
-Message-ID: <2024090220-uncaring-pretext-4391@gregkh>
-References: <20240902031047.9865-1-yenchia.chen@mediatek.com>
+	by nyc.source.kernel.org (Postfix) with ESMTP id A270FA418F4;
+	Mon,  2 Sep 2024 08:29:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62960C4CEC8;
+	Mon,  2 Sep 2024 08:29:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1725265757;
+	bh=cxKDCdCiqIYOE5vwlnqkPpcgy/ZNa0A4fziYZeuC258=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=K0E/fMkMAVtRD/E0g2t9G1nI2nuYeKPDLA7N1xTHwYgSeerdXkGgInLCjPD7H5LF6
+	 cKuLUHBjBGwUiS8n9lpvvCLRGq4H1OgPifoRItKxem5U6AhbKXlPVcoJZJOWqk18Cw
+	 OhsAmW3Roc1m6mmUuzwjqDidi7bF87RC02nwbXJTJb7IbZBAd3s+rcVdEYWKfT3hrZ
+	 JkxQYWGWpu0MPDwhFjKEHKwBu4oK9ZiYqXdI3reyTXMrHQn/pKj/1D40ClgiTiHd1L
+	 R36AjBJdtKmZaZyNI6YrHP3BuJAKNokIroLepJePgXtHPH0uvibSXL+u6udtWEAd0y
+	 t6N18NItgbIQg==
+From: Vinod Koul <vkoul@kernel.org>
+To: dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ ricardo@marliere.net, Amit Vadhavana <av2082000@gmail.com>
+Cc: linux-kernel-mentees@lists.linux.dev, skhan@linuxfoundation.org, 
+ olivierdautricourt@gmail.com, sr@denx.de, ludovic.desroches@microchip.com, 
+ florian.fainelli@broadcom.com, bcm-kernel-feedback-list@broadcom.com, 
+ rjui@broadcom.com, sbranden@broadcom.com, wangzhou1@hisilicon.com, 
+ haijie1@huawei.com, fenghua.yu@intel.com, dave.jiang@intel.com, 
+ zhoubinbin@loongson.cn, sean.wang@mediatek.com, matthias.bgg@gmail.com, 
+ angelogioacchino.delregno@collabora.com, afaerber@suse.de, 
+ manivannan.sadhasivam@linaro.org, Basavaraj.Natikar@amd.com, 
+ linus.walleij@linaro.org, ldewangan@nvidia.com, jonathanh@nvidia.com, 
+ thierry.reding@gmail.com, laurent.pinchart@ideasonboard.com, 
+ michal.simek@amd.com, Frank.Li@nxp.com, n.shubin@yadro.com, 
+ yajun.deng@linux.dev, quic_jjohnson@quicinc.com, lizetao1@huawei.com, 
+ pliem@maxlinear.com, konrad.dybcio@linaro.org, kees@kernel.org, 
+ gustavoars@kernel.org, bryan.odonoghue@linaro.org, linux@treblig.org, 
+ dan.carpenter@linaro.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-actions@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+ linux-tegra@vger.kernel.org
+In-Reply-To: <20240831172949.13189-1-av2082000@gmail.com>
+References: <20240831172949.13189-1-av2082000@gmail.com>
+Subject: Re: [PATCH RESEND V2] dmaengine: Fix spelling mistakes
+Message-Id: <172526574398.510261.10954732298871538.b4-ty@kernel.org>
+Date: Mon, 02 Sep 2024 13:59:03 +0530
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240902031047.9865-1-yenchia.chen@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240901_230115_000928_3126839F 
-X-CRM114-Status: GOOD (  12.77  )
+X-CRM114-CacheID: sfid-20240902_012918_763006_A556573C 
+X-CRM114-Status: UNSURE (   3.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,23 +89,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 02, 2024 at 11:10:44AM +0800, Yenchia Chen wrote:
-> From: "yenchia.chen" <yenchia.chen@mediatek.com>
+
+On Sat, 31 Aug 2024 22:59:49 +0530, Amit Vadhavana wrote:
+> Correct spelling mistakes in the DMA engine to improve readability
+> and clarity without altering functionality.
 > 
-> We have met a deadlock issue on our device when resuming.
-> After applying this patch which is picked from mainline, issue solved.
-> We'd like to backport to 5.15.y and could you help to review? thanks.
 > 
-> [ Upstream commit 3e999770ac1c7c31a70685dd5b88e89473509e9c ]
 
-For obvious reasons (and as per the documentation), we can't take
-commits that are not also in all newer kernel releases, otherwise you
-would have a regression if you moved to a newer kernel, right?
+Applied, thanks!
 
-Please submit a series for all affected releases if you wish for a patch
-to be applied to the trees.
+[1/1] dmaengine: Fix spelling mistakes
+      commit: a688efea0f2a084aee372e5b7b12d4d2d172f99a
 
-thanks,
+Best regards,
+-- 
+~Vinod
 
-greg k-h
+
 
