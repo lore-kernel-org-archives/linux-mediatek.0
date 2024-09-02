@@ -4,80 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11D7BCD13CF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Sep 2024 15:35:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8CFACD13CF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Sep 2024 15:38:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1lEAaITg61rMOKoeV9sGqIv6NT56UG0eY9VP45Si6Hs=; b=zxSvqNIfKGcC9O59L9lfesqf2E
-	QApbI9dG0k/YE7BaYT0Gq+bpzc3/OFxRbAuDAYM6R6WZEfMxT+9FApBJ7L9vJ7S5bj6kAvpLNovgo
-	304xIWlnY/uuj0ByKarc3wNoztpMEWb1Cf1bFnI7J5uFlvZmKwcP8bx3eOoAIx37Mp+8igygZ7XXI
-	74xiS5rQNucHhPM9npkzx5+jYJDpvLCPXHoEcNE7pyV9ZWlaiarYEaBbjyqt1SXNrkwsolmvzMESa
-	zyJQgMKmjQHVbQ3j+RzdI9d8mOPHh1SWrV4cG+l5En9wBuvmIhYrFaZIp9M2Sd0LYgjIRAzPNcH46
-	USRx1RIQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oatbIoqJeiz1r5S9oalVSgxEcEqEqUpERpHFaw/Rf+I=; b=njIGc9dFt2tGFazzhDzk6dM3mP
+	SqMqjHjtLCdSXpyhWEY33Zrbp7IyckAJXWGlhiRlsIFGfNY/puLjjXg99I7W/U7ynlZQ2AZ1gDkzU
+	d6MypHifWXALI3xTSLVrtmkAaFgNIJ0nKnX+RlLBaWkNNiD/HB4SiSRyhlEVbHU4Oi0mzLJEzD9Ra
+	VIHuV+i6aa/Nt6I2dvMUoxp5G6YjFxnMCPmFZwgn17G5TLTkvh3rjg4nFUDdZgv/jcx/A/OlnIO4t
+	tVKjRJA/hXp97pNNszfAvsws0aWQNxblhjysCPZBME1/tRTfEMO4zJFZT8COJ3n63K4rHydngWS5E
+	SYejErTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sl95P-0000000Es2u-39eo;
-	Mon, 02 Sep 2024 15:35:23 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1sl983-0000000Esa7-22yR;
+	Mon, 02 Sep 2024 15:38:07 +0000
+Received: from mail-il1-x12e.google.com ([2607:f8b0:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sl925-0000000ErCc-1QJd;
-	Mon, 02 Sep 2024 15:31:58 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-53345604960so4906965e87.3;
-        Mon, 02 Sep 2024 08:31:56 -0700 (PDT)
+	id 1sl95t-0000000EsB0-304H;
+	Mon, 02 Sep 2024 15:35:55 +0000
+Received: by mail-il1-x12e.google.com with SMTP id e9e14a558f8ab-39f54ab8e69so5285735ab.1;
+        Mon, 02 Sep 2024 08:35:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725291115; x=1725895915; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1725291352; x=1725896152; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:to:subject:user-agent:mime-version:date
-         :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=1lEAaITg61rMOKoeV9sGqIv6NT56UG0eY9VP45Si6Hs=;
-        b=d63JS1egrLCTz2G9MSJf0E0JlC2Ju7MrBvWo1p1XeV+Jxku8joTqefMVptXbbkubmn
-         PT4oOu+5/7BUMrE/v/cl95Lz5nHMQq9U2gdvsQfCtco27vhhErbTzcSYtCGXGNJU8hvC
-         3b67z2c9HtXSnSiihEbr7wDZb+XPqEy5R3mBnABbWVt3DXC+TWbkSUGi46pXLFX6tY/E
-         rjbjEEp7cLwZVxePhXhRbpW1d+jvoFa74Q32PYfNQqo4L4MvqXSw8Vi2bZz3pvruzuYD
-         LRLBaX8Ie0/awV34xlzmXc7Ng8BRscghLeqO375kvMFooS55sFqW2yULrmHiUruFLLTb
-         z3Bw==
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=oatbIoqJeiz1r5S9oalVSgxEcEqEqUpERpHFaw/Rf+I=;
+        b=D2Kc+tCBm6rJh0YQIuKWrImGJgPrwP9pWG1aDWGN580N2hEtSh7E7PL0pLpPJ9bANk
+         sGjddi4piuTGz3iH6brD36Iy1a0xsZm8hMcC0sEVxivH61lXgUJ4MXDw4luUg9oRqtTw
+         KBwIdujgQ7mOT4hegAJ05wyx8/dl1+QyWjCdR/PzubDwGye/3hVz9SdJkTD2AexXv2EY
+         qOiNgfGX7vFywwLANBrjV4L2imxsgga5xFbGs/zkbFKZ+Af4zQS5jNmym+2z5RVM5jbA
+         0D6nnh105/whymed901/8BmVZcvNWNKn8ktJm5EdtIc3aShDNXZ6KYatEyQWslTFmRNU
+         oLDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725291115; x=1725895915;
+        d=1e100.net; s=20230601; t=1725291352; x=1725896152;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=1lEAaITg61rMOKoeV9sGqIv6NT56UG0eY9VP45Si6Hs=;
-        b=L+PbfMXb/kkFKzPhrs+MdYQwyrhQ87CbAs5Hv5k8mZcJeFFiH3d7A3jTDZ9u78bH6s
-         gCWLAW/ksiFALwIWiZBnIJ7h0RDL1bBIzExbu4UCGs4TXLt/PQbXynOAV5/0P6jTKiDC
-         9vqOZpJxsbNrp4dsEXwI82ie83z6Y46pBtOikR1NSQE3tCr6DamqP2E6Xmg5KYWBNSyZ
-         YSjAChp4kSxNX92NhjQ0sdzw8amUhLy4AFmGUu/JPnXWKxuQU1ThH/yaEc3xN68AASGK
-         XEIcXC99JBYLsc+WYAn47fN1MyTSvnixWz+8YibaM28oCy6bkgNd/dR5YPq3WC/xLQIp
-         7eig==
-X-Forwarded-Encrypted: i=1; AJvYcCU4l5wzxLXFmxgY23cmGYbZOYJvws+2XJ+HHPO/46SrYN0LJNexJYOc5QQIIWkBhvstNR8ks6CD7ahOdo0xvci+@lists.infradead.org, AJvYcCUbu5E54enehnkN6SLMbxW5279934PMFMszgtiJVr6fYuI8zghW45rt6hwHrMJxckVz1WXuL2nJpQh3jE5Y4Nc=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxGt48PaP/H4TObWuKze1zyl9vDN77mAyDfSELy8cGHuweoO4U7
-	lkhmG2apuNUrdZbOBXKZARqPynzu3QncSBOgdZUVPvrjhRCJm6b7
-X-Google-Smtp-Source: AGHT+IGYGf8VX7LIcYOgdyPmt731pfn6LVYofo2CruraVVYwx7aQjpnX8k6VgUS23jgFdINd2tm2Fw==
-X-Received: by 2002:a05:6512:a92:b0:533:77d:1176 with SMTP id 2adb3069b0e04-53546af3011mr6978933e87.4.1725291114527;
-        Mon, 02 Sep 2024 08:31:54 -0700 (PDT)
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=oatbIoqJeiz1r5S9oalVSgxEcEqEqUpERpHFaw/Rf+I=;
+        b=qYl+xEMUqhMSALea+uihVPSZx27/Gg5Ni4RpG/7qC3kWqWsuSha4bexsoUeR0yhNl3
+         uEVd5yH8YjsSO3lEhE2k7HAHKULveuwmuePB8hBP/Zh/Tf9Tc4zf2u/Hr6lFD+qZXCRd
+         SZDhYiGRZ8x3Yuf/hPXcvG38IJZ14YXLheCg8TV6AAiGovnxUPRFw0VFxW313AVmn08b
+         YC8rhrO2TLjrSKgAUtK+5k4lAbZSKrkRzUkm5brbpf6BPRbb30y4dtO+w/joVJMptVUu
+         z6qFWFAByzk4rkpeh6SKbMX/UD6d+XCB7Py+dPg8aXLwFkIBDZ5+fXZ9ALUSWsSGcnTV
+         BwYA==
+X-Forwarded-Encrypted: i=1; AJvYcCVMRz4iiN03AAIYf+QTQ5+tVklGxCMY7gK5sTfRVfqHaYqyC88/K0+cbLt902v9GfsJnZWZuCdjK9uGJehd99o=@lists.infradead.org, AJvYcCVrA3NQw+thfo4GjENa9Fw+c7PUg9COPz3RSl3uVzqdtrr2nsooSCGwVZhGNhyorawU2wOijWX5aqhOS3RRCROb@lists.infradead.org
+X-Gm-Message-State: AOJu0YxbvytiIVxR3ZXPrJfoavbWuJzDLUhZKmag+hLp8X55wPN0yCbZ
+	cQ3QzBaVrCC0ncXqdW2wbStD8FagxA9AjBtZ+e8hrphc0ZWA+Ih6
+X-Google-Smtp-Source: AGHT+IGYxXRE9ElJTBYT03Z4rxLGq3EvcKdSNQ9rIPxYV0YnvW8G3doE+O8CiwFNbCLGCtAIAComvw==
+X-Received: by 2002:a05:6e02:1ca8:b0:39b:35d8:dc37 with SMTP id e9e14a558f8ab-39f413ff0fcmr64430575ab.13.1725291352363;
+        Mon, 02 Sep 2024 08:35:52 -0700 (PDT)
 Received: from [192.168.0.20] ([148.56.230.39])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8989233403sm569728466b.212.2024.09.02.08.31.53
+        by smtp.gmail.com with ESMTPSA id e9e14a558f8ab-39f51aa0a6fsm14393165ab.54.2024.09.02.08.35.49
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 02 Sep 2024 08:31:53 -0700 (PDT)
-Message-ID: <f6566469-36fe-4cf8-b1c1-4a476e5c5645@gmail.com>
-Date: Mon, 2 Sep 2024 17:31:52 +0200
+        Mon, 02 Sep 2024 08:35:51 -0700 (PDT)
+Message-ID: <0cd84a80-589c-4706-b798-0d7808488ee2@gmail.com>
+Date: Mon, 2 Sep 2024 17:35:48 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 3/3] soc: mediatek: cmdq: Remove cmdq_pkt_finalize()
- helper function
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Moudy Ho
- <moudy.ho@mediatek.com>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org
-References: <20240901143259.16849-1-chunkuang.hu@kernel.org>
- <20240901143259.16849-4-chunkuang.hu@kernel.org>
+Subject: Re: [PATCH v3] soc: mediatek: mtk-mmsys: Simplify with
+ dev_err_probe()
+To: Yan Zhen <yanzhen@vivo.com>, angelogioacchino.delregno@collabora.com
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, opensource.kernel@vivo.com
+References: <20240902053001.930379-1-yanzhen@vivo.com>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -123,12 +118,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20240901143259.16849-4-chunkuang.hu@kernel.org>
+In-Reply-To: <20240902053001.930379-1-yanzhen@vivo.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240902_083157_419107_E9FDAE11 
-X-CRM114-Status: GOOD (  16.27  )
+X-CRM114-CacheID: sfid-20240902_083553_805851_B3A089E7 
+X-CRM114-Status: GOOD (  20.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,80 +140,61 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 01/09/2024 16:32, Chun-Kuang Hu wrote:
-> In order to have fine-grained control, use cmdq_pkt_eoc() and
-> cmdq_pkt_jump_rel() to replace cmdq_pkt_finalize().
+On 02/09/2024 07:30, Yan Zhen wrote:
+> Use dev_err_probe() to simplify the error path and unify a
+> message template.
 > 
-> Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-
-Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
-
+> Using this helper is totally fine even if err is known to never
+> be -EPROBE_DEFER.
+> 
+> The benefit compared to a normal dev_err() is the standardized format
+> of the error code, it being emitted symbolically and the fact that
+> the error code is returned which allows more compact error paths.
+> 
+> Signed-off-by: Yan Zhen <yanzhen@vivo.com>
 > ---
->   drivers/soc/mediatek/mtk-cmdq-helper.c | 22 ----------------------
->   include/linux/soc/mediatek/mtk-cmdq.h  | 13 -------------
->   2 files changed, 35 deletions(-)
 > 
-> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> index a8fccedba83f..2a47dda4dd4a 100644
-> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> @@ -538,27 +538,5 @@ int cmdq_pkt_eoc(struct cmdq_pkt *pkt)
->   }
->   EXPORT_SYMBOL(cmdq_pkt_eoc);
+> Changes in v3:
+> - Modify the message.
+> - Add the '\n' at the end of the string.
+> 
+>   drivers/soc/mediatek/mtk-mmsys.c | 15 ++++++---------
+>   1 file changed, 6 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+> index 938240714e54..170319163c28 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.c
+> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> @@ -397,11 +397,9 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+>   		return -ENOMEM;
 >   
-> -int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
-> -{
-> -	struct cmdq_instruction inst = { {0} };
-> -	int err;
-> -
-> -	/* insert EOC and generate IRQ for each command iteration */
-> -	inst.op = CMDQ_CODE_EOC;
-> -	inst.value = CMDQ_EOC_IRQ_EN;
-> -	err = cmdq_pkt_append_command(pkt, inst);
-> -	if (err < 0)
-> -		return err;
-> -
-> -	/* JUMP to end */
-> -	inst.op = CMDQ_CODE_JUMP;
-> -	inst.value = CMDQ_JUMP_PASS >>
-> -		cmdq_get_shift_pa(((struct cmdq_client *)pkt->cl)->chan);
-> -	err = cmdq_pkt_append_command(pkt, inst);
-> -
-> -	return err;
-> -}
-> -EXPORT_SYMBOL(cmdq_pkt_finalize);
-> -
->   MODULE_DESCRIPTION("MediaTek Command Queue (CMDQ) driver");
->   MODULE_LICENSE("GPL v2");
-> diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-> index 5bee6f7fc400..0c3906e8ad19 100644
-> --- a/include/linux/soc/mediatek/mtk-cmdq.h
-> +++ b/include/linux/soc/mediatek/mtk-cmdq.h
-> @@ -391,14 +391,6 @@ int cmdq_pkt_jump_rel(struct cmdq_pkt *pkt, s32 offset, u8 shift_pa);
->    */
->   int cmdq_pkt_eoc(struct cmdq_pkt *pkt);
+>   	mmsys->regs = devm_platform_ioremap_resource(pdev, 0);
+> -	if (IS_ERR(mmsys->regs)) {
+> -		ret = PTR_ERR(mmsys->regs);
+> -		dev_err(dev, "Failed to ioremap mmsys registers: %d\n", ret);
+> -		return ret;
+> -	}
+> +	if (IS_ERR(mmsys->regs))
+> +		return dev_err_probe(dev, PTR_ERR(mmsys->regs),
+> +				     "Failed to ioremap mmsys registers\n");
 >   
-> -/**
-> - * cmdq_pkt_finalize() - Append EOC and jump command to pkt.
-> - * @pkt:	the CMDQ packet
-> - *
-> - * Return: 0 for success; else the error code is returned
-> - */
-> -int cmdq_pkt_finalize(struct cmdq_pkt *pkt);
-> -
->   #else /* IS_ENABLED(CONFIG_MTK_CMDQ) */
+>   	mmsys->data = of_device_get_match_data(&pdev->dev);
 >   
->   static inline int cmdq_dev_get_client_reg(struct device *dev,
-> @@ -519,11 +511,6 @@ static inline int cmdq_pkt_eoc(struct cmdq_pkt *pkt)
->   	return -EINVAL;
->   }
+> @@ -413,10 +411,9 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+>   		mmsys->rcdev.ops = &mtk_mmsys_reset_ops;
+>   		mmsys->rcdev.of_node = pdev->dev.of_node;
+>   		ret = devm_reset_controller_register(&pdev->dev, &mmsys->rcdev);
+> -		if (ret) {
+> -			dev_err(&pdev->dev, "Couldn't register mmsys reset controller: %d\n", ret);
+> -			return ret;
+> -		}
+> +		if (ret)
+> +			dev_err_probe(&pdev->dev, ret,
+> +				      "Couldn't register mmsys reset controller\n");
+
+Your missing return of the error value.
+
+>   	}
 >   
-> -static inline int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
-> -{
-> -	return -EINVAL;
-> -}
-> -
->   #endif /* IS_ENABLED(CONFIG_MTK_CMDQ) */
->   
->   #endif	/* __MTK_CMDQ_H__ */
+>   	/* CMDQ is optional */
 
