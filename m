@@ -4,66 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47A08C54FC6
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Sep 2024 14:36:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB1E4CD342B
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Sep 2024 02:18:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hch/1G2NPI41RewF4nHGE9/2spBG5epou7BQHUFJO28=; b=hWmFFZHGr2XfPtwml2E3GEnCoU
-	TspMyk//MzE5NrERRJFJFF4FNzwwukd5V3ZjI4WRCvpG6TK7Np5fiPqn2ehEpInXulmn9CJ2ki7NP
-	THIWomlQWdJGAH6eQbVObEL27suLcEAVv0hbRvEVVSKYkP5tf2NElwQd8QSvblIYwjOpM5WSc7Q3i
-	b7n3K1WalSGkM7UCQEuYKrnYseVGHl+4EOQCkDxNOJ4HUuTwTgweWGshlqg+7u+wMdtzrIT75ZOhk
-	vDR5Ms5/mEkXT5TtvWoanTi/N/tN3HH8PuWN8kiRpbrYifauJSoxSII/uf0P9TZfK4VgvBgxW/WMM
-	JOEv+lYQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=IpE34Ib3iLYsizsoLIqf1kKaYwMbvMKsrhzn7Y4bSKY=; b=Hb0cBE03RHg4Ls9e2glT56PyMb
+	pvImGaG9Vm5DKB+NskvsccC+WyFa8r9PN7Cr7QrieJLFJ9pNORUkGfIS7itrdMg/yK+P+mKiO1990
+	uLz0N7gtE1ky6lpke5ejH3GzteNMHZKtvNg/LhEby/nB/Hg+ARcnv57b+QiIkhfLnv28L/hnUDB25
+	zatKSmxOSa7TYUR+LSZ24wDMFX22uogLkFlhCUhZBi3EHToFQJ49O/h6RdqP4aH2e/raWAhRRO10m
+	VGY6TuVsp+SvJ8KT2QNy6IbYF325l8ylvTow3WdDge7rvnyAf5OkOChe4atlOvfXDMnaTY7PFu0xT
+	vfRkl/1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sklh9-0000000BnWS-499w;
-	Sun, 01 Sep 2024 14:36:47 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1skwea-0000000Ck6a-0RVx;
+	Mon, 02 Sep 2024 02:18:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1skldk-0000000Bmrg-3wvn;
-	Sun, 01 Sep 2024 14:33:20 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id DD5BD5C56AD;
-	Sun,  1 Sep 2024 14:33:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56570C4CEC8;
-	Sun,  1 Sep 2024 14:33:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725201195;
-	bh=ROGEn5ECVelo0EfWlJ1OSMy/l5R+qmtaTbsKv+Infh4=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=i6MkhTrFq716cdv+8qD66wvIL1A8tVM3FVlgHNjG3zO3nFUrcjfTC7JZLpInpP/Q3
-	 0NiMeypm1Lnf0c5Y6eNvbTEpbBlVdc1ff6hslU0NsODASxmRd2Z0rXCT2SMuzebont
-	 FLxi+knnKYiGKcArMn2iLv3IX/SBwkF2eunhz7evzPoJsuSxxHgWbtkJvrwKQz0Zbo
-	 lRZTDB8F+FrKzMABEQUdYk2al3otfZ6zfvfep/FGVoAkJ2y/lq7Al4m1d1aeSvdoII
-	 9pHenYqLpsfI0Ag8f+obus8e2aoqu1tKiT/F1BbT0Km1cUbsHElSpNnOj+eNEfBOTE
-	 lOmB9NHPCJRxA==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Moudy Ho <moudy.ho@mediatek.com>,
-	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Subject: [PATCH v4 3/3] soc: mediatek: cmdq: Remove cmdq_pkt_finalize() helper function
-Date: Sun,  1 Sep 2024 14:32:59 +0000
-Message-Id: <20240901143259.16849-4-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240901143259.16849-1-chunkuang.hu@kernel.org>
-References: <20240901143259.16849-1-chunkuang.hu@kernel.org>
+	id 1skweX-0000000Ck5K-3wId
+	for linux-mediatek@lists.infradead.org;
+	Mon, 02 Sep 2024 02:18:51 +0000
+X-UUID: ac06355668d111efba0aef63c0775dbf-20240901
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=IpE34Ib3iLYsizsoLIqf1kKaYwMbvMKsrhzn7Y4bSKY=;
+	b=je9g1o729UQUtK6SE+VNfClmdxCPBp/jL1yvC91b/mU5s4QGwB9TFVPHzVa9eJE1VYr9+YwgEoqRG7UdHPbkfGsDOQsL6Jm2Uih7jBxQ24Zs1r35B9Oe1lCeyJ+M0/5ixyCXeUzCxu+x+HaGPslBCNfG9Y8FPWoH00KMqaXenyQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:09b6a1a8-e140-416c-8047-e914ff0e1f21,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:384e87cf-7921-4900-88a1-3aef019a55ce,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: ac06355668d111efba0aef63c0775dbf-20240901
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1426182218; Sun, 01 Sep 2024 19:18:41 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Sun, 1 Sep 2024 19:18:07 -0700
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 2 Sep 2024 10:18:07 +0800
+From: <peter.wang@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>,
+	<quic_nguyenb@quicinc.com>
+Subject: [PATCH v2 0/2] fix MCQ abort defect
+Date: Mon, 2 Sep 2024 10:18:03 +0800
+Message-ID: <20240902021805.1125-1-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240901_073317_169473_9B12A62C 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20240901_191849_982631_F0E7EDBA 
+X-CRM114-Status: UNSURE (   7.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,79 +90,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to have fine-grained control, use cmdq_pkt_eoc() and
-cmdq_pkt_jump_rel() to replace cmdq_pkt_finalize().
+From: Peter Wang <peter.wang@mediatek.com>
 
-Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
----
- drivers/soc/mediatek/mtk-cmdq-helper.c | 22 ----------------------
- include/linux/soc/mediatek/mtk-cmdq.h  | 13 -------------
- 2 files changed, 35 deletions(-)
+This series fixes MCQ abort defect.
 
-diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-index a8fccedba83f..2a47dda4dd4a 100644
---- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-+++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-@@ -538,27 +538,5 @@ int cmdq_pkt_eoc(struct cmdq_pkt *pkt)
- }
- EXPORT_SYMBOL(cmdq_pkt_eoc);
- 
--int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
--{
--	struct cmdq_instruction inst = { {0} };
--	int err;
--
--	/* insert EOC and generate IRQ for each command iteration */
--	inst.op = CMDQ_CODE_EOC;
--	inst.value = CMDQ_EOC_IRQ_EN;
--	err = cmdq_pkt_append_command(pkt, inst);
--	if (err < 0)
--		return err;
--
--	/* JUMP to end */
--	inst.op = CMDQ_CODE_JUMP;
--	inst.value = CMDQ_JUMP_PASS >>
--		cmdq_get_shift_pa(((struct cmdq_client *)pkt->cl)->chan);
--	err = cmdq_pkt_append_command(pkt, inst);
--
--	return err;
--}
--EXPORT_SYMBOL(cmdq_pkt_finalize);
--
- MODULE_DESCRIPTION("MediaTek Command Queue (CMDQ) driver");
- MODULE_LICENSE("GPL v2");
-diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-index 5bee6f7fc400..0c3906e8ad19 100644
---- a/include/linux/soc/mediatek/mtk-cmdq.h
-+++ b/include/linux/soc/mediatek/mtk-cmdq.h
-@@ -391,14 +391,6 @@ int cmdq_pkt_jump_rel(struct cmdq_pkt *pkt, s32 offset, u8 shift_pa);
-  */
- int cmdq_pkt_eoc(struct cmdq_pkt *pkt);
- 
--/**
-- * cmdq_pkt_finalize() - Append EOC and jump command to pkt.
-- * @pkt:	the CMDQ packet
-- *
-- * Return: 0 for success; else the error code is returned
-- */
--int cmdq_pkt_finalize(struct cmdq_pkt *pkt);
--
- #else /* IS_ENABLED(CONFIG_MTK_CMDQ) */
- 
- static inline int cmdq_dev_get_client_reg(struct device *dev,
-@@ -519,11 +511,6 @@ static inline int cmdq_pkt_eoc(struct cmdq_pkt *pkt)
- 	return -EINVAL;
- }
- 
--static inline int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
--{
--	return -EINVAL;
--}
--
- #endif /* IS_ENABLED(CONFIG_MTK_CMDQ) */
- 
- #endif	/* __MTK_CMDQ_H__ */
+V2:
+ - Fix mcq_enabled build error.
+
+Peter Wang (2):
+  ufs: core: fix the issue of ICU failure
+  ufs: core: requeue MCQ abort request
+
+ drivers/ufs/core/ufs-mcq.c | 10 ++++++----
+ drivers/ufs/core/ufshcd.c  | 21 ++++++++-------------
+ include/ufs/ufshcd.h       |  2 ++
+ 3 files changed, 16 insertions(+), 17 deletions(-)
+
 -- 
-2.34.1
+2.45.2
 
 
