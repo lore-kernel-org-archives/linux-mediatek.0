@@ -4,79 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D74ABCD13CF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Sep 2024 15:11:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDB78CA0ED3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Sep 2024 15:14:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D9rypXAWMcgXo95n4JRKIoFCfiCMfGF6hOvWGECnhvc=; b=R3m6fdmNo0ZiSAKbFaaiaQhNj1
-	EIiGI8ADwgcOTdj9zRm5dZb2DzKMZMAE/kKkTiUZtxmmcdSkU3ZNQTUcG/Ywzb5wcWtF8vAnF5U/3
-	heMAbZ2x5pQz8N2FnuGFqOUZweQMEqWMy10mWU05fXY13fKoNhd6KeDcBpJF6lpedmsJvb2tJpYr1
-	WEDoRGf8imZHu7AgsKUYA2Tc+ywFuIoB1wXQWvXE2mTGLL6HF6a3KcwubAtAlQBbJ7bO3QyZ1dHy+
-	uotlYaci/kq1JSFS18NjiSaO/UxddNynZpd+6igWafTLDdPlbVMmd5fN6R0zFW3Y+1nyAVOTqnM8M
-	QKJBDQPg==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oHPPT7ZkbrUn9pl1hVWn7R61jGe9Uaxnb9axyjuhqaM=; b=2YzGcm8VnY/XD33PQEfU+kdEVq
+	yaAhtkOognZ9eoxGNSsKOkBhiAGdegks5eDw2DX7yqAgRyC4s6jfQsbObDiB7h6rH9TkQU5vQTD2q
+	AaLNBv/Ygz74ZQLtQGg2xqvT4CtiUfYFaUVROp6xvicVZ4ZBuuWqcWx0TmPuTfNOOaKvPTiu/z08L
+	iZkZhHP8AUNVVUdC+CUNQEd9MBocu5sxa52+fFmX4Gy+nttBzVmQR7aWHxRgm7ta2h9f+1nERxvrR
+	dH0b0UFspEZ1XCbJlAj5XmjrNiH5Fod20V6BAvUoCRI6fZeEYpsXVtn4lRZE0Y6uYUPf5QoDx23av
+	E9GK99ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sl8i9-0000000Enw6-2AbA;
-	Mon, 02 Sep 2024 15:11:21 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1sl8la-0000000EoXL-24Zg;
+	Mon, 02 Sep 2024 15:14:54 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sl8df-0000000En0E-0mVV;
-	Mon, 02 Sep 2024 15:06:44 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-5c218866849so4573816a12.0;
-        Mon, 02 Sep 2024 08:06:42 -0700 (PDT)
+	id 1sl8i3-0000000Enu2-1jnh;
+	Mon, 02 Sep 2024 15:11:16 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-533463f6b16so5520103e87.1;
+        Mon, 02 Sep 2024 08:11:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725289602; x=1725894402; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1725289873; x=1725894673; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=D9rypXAWMcgXo95n4JRKIoFCfiCMfGF6hOvWGECnhvc=;
-        b=GAZeiP7X8MuXLHG16orG/JWBJrAsy1MFiODfcpS7jDx6X+EyTKwoIg9fW54FUlfzPn
-         nhYIbZEacMWik8fGsRVSQ0RLW66QDH5zZ4fngzxA0QlxqM6Ivnp+5j8Mmj7uIJxApr13
-         3jvzljbPu4FOu/B82xuBbdWByP++hP3W6a/b3DKv9Rfk/OYskZL5q4DjQJ5u0yI2M4xq
-         fW2/7mtC/+PM4u1rzXPsBcZaTOHw+ayZAbrWN+RnUc8P91Ao8wU96VPHCLTa6otJ9MGB
-         jXZcdUYgGRElLjCwLEo5OeOW43X3ohuOV6wfA66tHyviD+po4856MfE9Et5AriPpywVl
-         SYeA==
+         :content-language:references:to:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=oHPPT7ZkbrUn9pl1hVWn7R61jGe9Uaxnb9axyjuhqaM=;
+        b=WkM0mp6chilgzkpqn+hQt18k/2V+icvNyBb9ix/SG+5sbfmM4xEV0bLoC+RHdZsnrL
+         jzLsuxnfowkAHWP9B93AM9/7GVV+skvI1H8mLlVuwhmtbKRY8fig1lk3llzgF/DG0Tyh
+         n2xvvyPot09xPcqHnaB1+SagCHnftDv4SufoYANd552PMXI1B50gVZ7Ln1tYYbZNioI7
+         QoJGcZwGRPSuBYDFGXUfK+vMZZPWSEvQ8S2m6TjHNz+O4JK7yO0bNdpfyA7YgSJROrgM
+         BWcdNa5nrm58gKRx7z9LBX0rM3Bfd4udywPCvLxTSpoHLZkqCBb8d+AjvaxklR6bVLVZ
+         AvKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725289602; x=1725894402;
+        d=1e100.net; s=20230601; t=1725289873; x=1725894673;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=D9rypXAWMcgXo95n4JRKIoFCfiCMfGF6hOvWGECnhvc=;
-        b=JwiAvIaUf/GrCMHEk07YSNZ/vesu6j1w2YYvelYXZOSU8ImCqG61RzNiUr9QY2yF/+
-         8YLmm52vsryqy4wdp56YM9sMWgwhlj3uMb7jeUSFuS4b+MjJikVrzEBaTNkCTbffz4FI
-         v1Bvx2e4XMQMYleo04kHoii6po1MEVfTrdfs0YQlkpnFqfdUG5njZxuY67Cr0Rkm8X8f
-         vchkqH3ILCyyW7ScHiZc2x0DcckMC5sjQXivX0HKNT6TbB4Yui6lTMeJ6RRQe7Eehi2I
-         KWt3d+EwD/FUjCpDEulqcAJrtUI1vhHtaawLNGhOrHASYrVOhaXz1Vh8I6jNzA/igKsw
-         OI8w==
-X-Forwarded-Encrypted: i=1; AJvYcCUmVRcampMu0/wr9IK08UuLJK6t5G0cqClSVgpAt9YqA6WYBzU1d0M/f/lfrj2+jMH5HViX777BmeVk6VUujJSk@lists.infradead.org, AJvYcCX3smbqnds2s3fO5ibEOC6NJLIbh5zhnIbap/T8ACiz5+9r/frfzW3gGjjpRtdrpfBe9IRxBLSI+3W4wQMQCL8=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxd7lUVmj3vZGrwW2B3UC7218wCT9c5HjW1FnkixfvX3L3yagK8
-	ZH/McoLrHIT1WTQLpju1IzckxDc1nwwwtAiiGZKwS7hxvWsC/ihg
-X-Google-Smtp-Source: AGHT+IEV06D0gjzas2Qzz4fJfat5nN9q+SxRpndd7IqZOjugMa2klJ/zM1s4NvNZGmlM+9J6F9nJGw==
-X-Received: by 2002:a05:6402:13c9:b0:5c2:631c:80d5 with SMTP id 4fb4d7f45d1cf-5c2631c8107mr1391455a12.5.1725289601038;
-        Mon, 02 Sep 2024 08:06:41 -0700 (PDT)
+         :content-language:references:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=oHPPT7ZkbrUn9pl1hVWn7R61jGe9Uaxnb9axyjuhqaM=;
+        b=h1if6zrpFw2Gk5tWBCfGIy2fZcAjOXogkPQu26m7NovBq/7QSvpxJ9MpdykK0iFzIf
+         sjdrTZIRdDjM0INYb8EZ9TH61MO9duRIWTLQia6oLq3WYINSJHgf9BZqwrGf/7FjFLqZ
+         DNTHdJE8C6TG5Ee07D9x7wOTdQuQRTiNyqEUyxqxYMDSLmSICzByOUnY7R7FPIn880B2
+         IQyg04DmaKovD5uHbQz0+rEOidAHTHgpHtL8ReGwKEqirDcR3COpWmGszRp6zYNW31si
+         mNwbF+MFsmRZiBi7egLGE+mmIDcLkvGyTU9zgTm0eUxx0Uc+X/wMz9EhAejHwc/kEf99
+         bugw==
+X-Forwarded-Encrypted: i=1; AJvYcCV4Mo3tmnOtOEpGl9cE6pB/0lQix8B3MvJf/afPV3dB2GyjSoBxIo+kRn62iChYDEBgR0vW76gMjv1eIODqPWQ=@lists.infradead.org, AJvYcCW9fmNQiP19TbjNnDwC/uGLdh92J4dKD4TCJl9ttOERmCMgz92St3O5jHScwXyZRX8oAFItaDroHgmZ1Nmzq9j4@lists.infradead.org
+X-Gm-Message-State: AOJu0YwubDombatYmBcbRSGbzrTVsL5Y3lgMg54YaMT+mKE6zKgD/kR9
+	k1qAKCv1AyDtxxOcRsyRTMKP3D0r+CsEg1OnyodUONHv36Sc1yignXQmpQ==
+X-Google-Smtp-Source: AGHT+IEhldxyDJcBrDs2vYqNrg252hxWD17bYDAn8+/XFJg2FKk5uLztJCbcGo4d6p/MUi1uw1jGwQ==
+X-Received: by 2002:a05:6512:e83:b0:52e:be2c:4b05 with SMTP id 2adb3069b0e04-53546aff49emr7203604e87.21.1725289872514;
+        Mon, 02 Sep 2024 08:11:12 -0700 (PDT)
 Received: from [192.168.0.20] ([148.56.230.39])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5c226ccfe3csm5353155a12.75.2024.09.02.08.06.39
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8989196b79sm567152366b.112.2024.09.02.08.11.10
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 02 Sep 2024 08:06:39 -0700 (PDT)
-Message-ID: <cc3e30c6-3e97-4db8-a978-9c2048bfad0e@gmail.com>
-Date: Mon, 2 Sep 2024 17:06:37 +0200
+        Mon, 02 Sep 2024 08:11:11 -0700 (PDT)
+Message-ID: <a47e464c-6a6e-4121-b521-7dec741caa66@gmail.com>
+Date: Mon, 2 Sep 2024 17:11:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH][next] media: mediatek: vcodec: Remove trailing space
- after \n newline
-To: Colin Ian King <colin.i.king@gmail.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20240902140758.308202-1-colin.i.king@gmail.com>
+Subject: Re: [PATCH v4 1/3] media: platform: mtk-mdp3: Get fine-grain control
+ of cmdq_pkt_finalize()
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Moudy Ho
+ <moudy.ho@mediatek.com>, "Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org
+References: <20240901143259.16849-1-chunkuang.hu@kernel.org>
+ <20240901143259.16849-2-chunkuang.hu@kernel.org>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -122,12 +123,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20240902140758.308202-1-colin.i.king@gmail.com>
+In-Reply-To: <20240901143259.16849-2-chunkuang.hu@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240902_080643_280747_91FAB721 
-X-CRM114-Status: GOOD (  14.41  )
+X-CRM114-CacheID: sfid-20240902_081115_490092_066C71B0 
+X-CRM114-Status: GOOD (  17.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,29 +145,57 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 02/09/2024 16:07, Colin Ian King wrote:
-> There is a extraneous space after a newline in a mtk_venc_debug message.
-> Remove it.
+On 01/09/2024 16:32, Chun-Kuang Hu wrote:
+> In order to have fine-grained control, use cmdq_pkt_eoc() and
+> cmdq_pkt_jump_rel() to replace cmdq_pkt_finalize().
 > 
-> Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
+> Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
 > ---
->   .../media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c  | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c | 3 ++-
+>   drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c | 2 ++
+>   drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h | 1 +
+>   3 files changed, 5 insertions(+), 1 deletion(-)
 > 
-> diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
-> index f8145998fcaf..59e56b81d5e0 100644
-> --- a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
-> @@ -515,7 +515,7 @@ static int h264_encode_frame(struct venc_h264_inst *inst,
->   	struct venc_frame_info frame_info;
->   	struct mtk_vcodec_enc_ctx *ctx = inst->ctx;
+> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+> index ea2ea119dd2a..ef5dade35fd3 100644
+> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+> @@ -676,7 +676,8 @@ static struct mdp_cmdq_cmd *mdp_cmdq_prepare(struct mdp_dev *mdp,
+>   		dev_err(dev, "mdp_path_config error %d\n", pp_idx);
+>   		goto err_free_path;
+>   	}
+> -	cmdq_pkt_finalize(&cmd->pkt);
+> +	cmdq_pkt_eoc(&cmd->pkt);
+> +	cmdq_pkt_jump_rel(&cmd->pkt, CMDQ_INST_SIZE, mdp->cmdq_shift_pa[pp_idx]);
 >   
-> -	mtk_venc_debug(ctx, "frm_cnt = %d\n ", inst->frm_cnt);
-> +	mtk_venc_debug(ctx, "frm_cnt = %d\n", inst->frm_cnt);
+>   	for (i = 0; i < num_comp; i++) {
+>   		s32 inner_id = MDP_COMP_NONE;
+> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+> index 37e7b985d52c..40623c1980bf 100644
+> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+> @@ -312,6 +312,8 @@ static int mdp_probe(struct platform_device *pdev)
+>   			ret = PTR_ERR(mdp->cmdq_clt[i]);
+>   			goto err_mbox_destroy;
+>   		}
+> +
+> +		mdp->cmdq_shift_pa[i] = cmdq_get_shift_pa(mdp->cmdq_clt[i]->chan);
+>   	}
 >   
->   	if (MTK_ENC_IOVA_IS_34BIT(ctx)) {
->   		gop_size = inst->vsi_34->config.gop_size;
+>   	init_waitqueue_head(&mdp->callback_wq);
+> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
+> index 430251f63754..05cade1d098e 100644
+> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
+> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
+> @@ -126,6 +126,7 @@ struct mdp_dev {
+>   	u32					id_count;
+>   	struct ida				mdp_ida;
+>   	struct cmdq_client			*cmdq_clt[MDP_PP_MAX];
+> +	u8					cmdq_shift_pa[MDP_PP_MAX];
+>   	wait_queue_head_t			callback_wq;
+>   
+>   	struct v4l2_device			v4l2_dev;
 
