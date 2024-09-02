@@ -4,75 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8CFACD13CF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Sep 2024 15:38:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E914CD13CF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Sep 2024 15:44:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oatbIoqJeiz1r5S9oalVSgxEcEqEqUpERpHFaw/Rf+I=; b=njIGc9dFt2tGFazzhDzk6dM3mP
-	SqMqjHjtLCdSXpyhWEY33Zrbp7IyckAJXWGlhiRlsIFGfNY/puLjjXg99I7W/U7ynlZQ2AZ1gDkzU
-	d6MypHifWXALI3xTSLVrtmkAaFgNIJ0nKnX+RlLBaWkNNiD/HB4SiSRyhlEVbHU4Oi0mzLJEzD9Ra
-	VIHuV+i6aa/Nt6I2dvMUoxp5G6YjFxnMCPmFZwgn17G5TLTkvh3rjg4nFUDdZgv/jcx/A/OlnIO4t
-	tVKjRJA/hXp97pNNszfAvsws0aWQNxblhjysCPZBME1/tRTfEMO4zJFZT8COJ3n63K4rHydngWS5E
-	SYejErTA==;
+	bh=FP5u0P3Ro8DGfBZjAhSMaSTilOOjxZnvSRuA8wU6ado=; b=WbD27P5fqNu1Er+CosYgc9XfYf
+	k2Mcney93wFcGx7aA6LpnYmPHJsZqgVafcc77DFVxpLy+Lm6o2U7UbcHT3KEhAxFn+DDFfM8PVJbc
+	VI8Y7dAJ11V8JLwJpTHBK6eyMdoxWMPprrPgShkTjFhE8ri1QVkfIxzEH9+ZRs48/QsxiDGX1kfC2
+	MQf/H2xoCgy5ef8AFjGlFOUWfpoOAJQbliSa1o/tlRK2hJkYRcoNKoQQ+BtW2jpJT+/Y0fFaPhd68
+	kK0bGorMKxVT60GyWwL2OV7h2qiL1XLzgGa8rVGPA8+Gd+U6cUsViVkr6PNDbcWm8zvllGQFFwura
+	pKSbECUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sl983-0000000Esa7-22yR;
-	Mon, 02 Sep 2024 15:38:07 +0000
-Received: from mail-il1-x12e.google.com ([2607:f8b0:4864:20::12e])
+	id 1sl9EG-0000000Etf3-3o4v;
+	Mon, 02 Sep 2024 15:44:32 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sl95t-0000000EsB0-304H;
-	Mon, 02 Sep 2024 15:35:55 +0000
-Received: by mail-il1-x12e.google.com with SMTP id e9e14a558f8ab-39f54ab8e69so5285735ab.1;
-        Mon, 02 Sep 2024 08:35:53 -0700 (PDT)
+	id 1sl9EE-0000000Etdo-02Pr;
+	Mon, 02 Sep 2024 15:44:31 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-533488ffaddso5485781e87.1;
+        Mon, 02 Sep 2024 08:44:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725291352; x=1725896152; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1725291868; x=1725896668; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=oatbIoqJeiz1r5S9oalVSgxEcEqEqUpERpHFaw/Rf+I=;
-        b=D2Kc+tCBm6rJh0YQIuKWrImGJgPrwP9pWG1aDWGN580N2hEtSh7E7PL0pLpPJ9bANk
-         sGjddi4piuTGz3iH6brD36Iy1a0xsZm8hMcC0sEVxivH61lXgUJ4MXDw4luUg9oRqtTw
-         KBwIdujgQ7mOT4hegAJ05wyx8/dl1+QyWjCdR/PzubDwGye/3hVz9SdJkTD2AexXv2EY
-         qOiNgfGX7vFywwLANBrjV4L2imxsgga5xFbGs/zkbFKZ+Af4zQS5jNmym+2z5RVM5jbA
-         0D6nnh105/whymed901/8BmVZcvNWNKn8ktJm5EdtIc3aShDNXZ6KYatEyQWslTFmRNU
-         oLDQ==
+        bh=FP5u0P3Ro8DGfBZjAhSMaSTilOOjxZnvSRuA8wU6ado=;
+        b=V8Qo6GX3M2aBBU/y1wlESvWCxUPBwubyy57LbHCOyR2QWNmxhjaOfJYrUZ07pgg1HL
+         XK8R6QZMfbMi3gEopiJgppsu3mVDqsu2oNiCRXE03B0AobIHuEanZ4FOLS9DX1UY90N1
+         BkdiQe+cxupgRsBb4cve8+3jZoQZ03oA9KAntq5xhM7xNzRv4s3QesnvnGXt/8D1wADb
+         As6G2/Lb4GQcCEks1dngUEZZLRuOOSY8hJU/2Bc3rIOEUNW211DsjjJ4sY/Nxntm4AC7
+         obso2YMa7gf7qPQRPZW6BuFR+dZpQVplU97RUXBkNYsK+//UYOfw6IGxI3p9OHPnWcfh
+         5d6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725291352; x=1725896152;
+        d=1e100.net; s=20230601; t=1725291868; x=1725896668;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=oatbIoqJeiz1r5S9oalVSgxEcEqEqUpERpHFaw/Rf+I=;
-        b=qYl+xEMUqhMSALea+uihVPSZx27/Gg5Ni4RpG/7qC3kWqWsuSha4bexsoUeR0yhNl3
-         uEVd5yH8YjsSO3lEhE2k7HAHKULveuwmuePB8hBP/Zh/Tf9Tc4zf2u/Hr6lFD+qZXCRd
-         SZDhYiGRZ8x3Yuf/hPXcvG38IJZ14YXLheCg8TV6AAiGovnxUPRFw0VFxW313AVmn08b
-         YC8rhrO2TLjrSKgAUtK+5k4lAbZSKrkRzUkm5brbpf6BPRbb30y4dtO+w/joVJMptVUu
-         z6qFWFAByzk4rkpeh6SKbMX/UD6d+XCB7Py+dPg8aXLwFkIBDZ5+fXZ9ALUSWsSGcnTV
-         BwYA==
-X-Forwarded-Encrypted: i=1; AJvYcCVMRz4iiN03AAIYf+QTQ5+tVklGxCMY7gK5sTfRVfqHaYqyC88/K0+cbLt902v9GfsJnZWZuCdjK9uGJehd99o=@lists.infradead.org, AJvYcCVrA3NQw+thfo4GjENa9Fw+c7PUg9COPz3RSl3uVzqdtrr2nsooSCGwVZhGNhyorawU2wOijWX5aqhOS3RRCROb@lists.infradead.org
-X-Gm-Message-State: AOJu0YxbvytiIVxR3ZXPrJfoavbWuJzDLUhZKmag+hLp8X55wPN0yCbZ
-	cQ3QzBaVrCC0ncXqdW2wbStD8FagxA9AjBtZ+e8hrphc0ZWA+Ih6
-X-Google-Smtp-Source: AGHT+IGYxXRE9ElJTBYT03Z4rxLGq3EvcKdSNQ9rIPxYV0YnvW8G3doE+O8CiwFNbCLGCtAIAComvw==
-X-Received: by 2002:a05:6e02:1ca8:b0:39b:35d8:dc37 with SMTP id e9e14a558f8ab-39f413ff0fcmr64430575ab.13.1725291352363;
-        Mon, 02 Sep 2024 08:35:52 -0700 (PDT)
+        bh=FP5u0P3Ro8DGfBZjAhSMaSTilOOjxZnvSRuA8wU6ado=;
+        b=CcOrMdA4KX7aRTForsz7Gi/6Z5mlxZC6tlHdtwZLtA990hBy21MgbXYi6w6ZbnBlrZ
+         KqbLFbY+3jraFdD+PokA5pECfyfZ1oQ8O7z8OdaAhj18ApbHJFjgiQlj2UKhUZcm/i8k
+         j48cGRjqLOxUsYKRhWiBF2pTcc9SpZzw6BqiaAGwji2B5vE0/tANKkyGaTPd7l2/2rV2
+         608Dc6SIBfneQIZyuS2F4oALMUTzqkLXyQ+jKZk6CQX4CI8mh9BwHHhfy+OXrPlVPlRy
+         /JOf10UIJMGRx1SFOJaKlh3RkSqa/h0uRrL7fAb8XzX1S08ZX40b9Mu+jc4neMS4RBcG
+         H+1g==
+X-Forwarded-Encrypted: i=1; AJvYcCVUYOIeW3yK/i8O7x0CKuniv9BGx5m5zA2SmC2GyYpL5o9lcHHxROQnCiwmMrxf4C2pjeTVqkVwQmy+Rt1mwis=@lists.infradead.org, AJvYcCX2T9w/6CU+XdZXGJ5X5n9+0w+HULfX+fuK2MKd1mOtIVf7GjDpV/pbwUcdnO5yimK1iAyWv+SRsp6e0272q4cu@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw70HMnky50jucHzmvjBLatlHJc7UvquIF3fNdRNwQVdGJrB6+V
+	d2I/giyhNc/K/M4khXMdwHAFeeMcYPwA6dBJpkyk9GTlRSgCYWhn
+X-Google-Smtp-Source: AGHT+IEgfNaR3U3/b1uiiFFzr2EHklk9wo8C+1+IZLOlEr0ViAXQdcdOmk/tJH3WaUnAg4lxM5ksZg==
+X-Received: by 2002:a05:6512:1318:b0:52c:dfa7:9f43 with SMTP id 2adb3069b0e04-53546b43623mr7531624e87.34.1725291867234;
+        Mon, 02 Sep 2024 08:44:27 -0700 (PDT)
 Received: from [192.168.0.20] ([148.56.230.39])
-        by smtp.gmail.com with ESMTPSA id e9e14a558f8ab-39f51aa0a6fsm14393165ab.54.2024.09.02.08.35.49
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a898908ce6asm576985566b.92.2024.09.02.08.44.25
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 02 Sep 2024 08:35:51 -0700 (PDT)
-Message-ID: <0cd84a80-589c-4706-b798-0d7808488ee2@gmail.com>
-Date: Mon, 2 Sep 2024 17:35:48 +0200
+        Mon, 02 Sep 2024 08:44:26 -0700 (PDT)
+Message-ID: <434edbf2-da3f-49b2-9ee4-d12e84428d44@gmail.com>
+Date: Mon, 2 Sep 2024 17:44:24 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] soc: mediatek: mtk-mmsys: Simplify with
- dev_err_probe()
-To: Yan Zhen <yanzhen@vivo.com>, angelogioacchino.delregno@collabora.com
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, opensource.kernel@vivo.com
-References: <20240902053001.930379-1-yanzhen@vivo.com>
+Subject: Re: [RESEND PATCH v2 2/2] arm64: dts: mediatek: mt8183-pumpkin: add
+ HDMI support
+To: Pin-yen Lin <treapking@chromium.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: "open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Fabien Parent <fparent@baylibre.com>
+References: <20240819120735.1508789-1-treapking@chromium.org>
+ <20240819120735.1508789-2-treapking@chromium.org>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -118,12 +127,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20240902053001.930379-1-yanzhen@vivo.com>
+In-Reply-To: <20240819120735.1508789-2-treapking@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240902_083553_805851_B3A089E7 
-X-CRM114-Status: GOOD (  20.68  )
+X-CRM114-CacheID: sfid-20240902_084430_090496_45E747B2 
+X-CRM114-Status: GOOD (  15.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,61 +149,183 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 02/09/2024 07:30, Yan Zhen wrote:
-> Use dev_err_probe() to simplify the error path and unify a
-> message template.
+On 19/08/2024 14:05, Pin-yen Lin wrote:
+> From: Fabien Parent <fparent@baylibre.com>
 > 
-> Using this helper is totally fine even if err is known to never
-> be -EPROBE_DEFER.
+> The MT8183 Pumpkin board has a micro-HDMI connector. HDMI support is
+> provided by an IT66121 DPI <-> HDMI bridge.
 > 
-> The benefit compared to a normal dev_err() is the standardized format
-> of the error code, it being emitted symbolically and the fact that
-> the error code is returned which allows more compact error paths.
+> This commit enables DPI and add the node for the IT66121 bridge.
 > 
-> Signed-off-by: Yan Zhen <yanzhen@vivo.com>
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
+> 
+
+Building DTB fais with:
+arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:138.27-169.4: ERROR 
+(phandle_references): /soc/i2c@11005000/hdmitx@4c: Reference to non-existent 
+node or label "mt6358_vcn33_wifi_reg"
+
+Please check your code before submitting.
+
+Regards,
+Matthias
+
 > ---
 > 
-> Changes in v3:
-> - Modify the message.
-> - Add the '\n' at the end of the string.
+> (no changes since v1)
 > 
->   drivers/soc/mediatek/mtk-mmsys.c | 15 ++++++---------
->   1 file changed, 6 insertions(+), 9 deletions(-)
+>   .../boot/dts/mediatek/mt8183-pumpkin.dts      | 121 ++++++++++++++++++
+>   1 file changed, 121 insertions(+)
 > 
-> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-> index 938240714e54..170319163c28 100644
-> --- a/drivers/soc/mediatek/mtk-mmsys.c
-> +++ b/drivers/soc/mediatek/mtk-mmsys.c
-> @@ -397,11 +397,9 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
->   		return -ENOMEM;
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
+> index 1aa668c3ccf9..ecc237355b56 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
+> @@ -63,6 +63,18 @@ thermistor {
+>   		pulldown-ohm = <0>;
+>   		io-channels = <&auxadc 0>;
+>   	};
+> +
+> +	connector {
+> +		compatible = "hdmi-connector";
+> +		label = "hdmi";
+> +		type = "d";
+> +
+> +		port {
+> +			hdmi_connector_in: endpoint {
+> +				remote-endpoint = <&hdmi_connector_out>;
+> +			};
+> +		};
+> +	};
+>   };
 >   
->   	mmsys->regs = devm_platform_ioremap_resource(pdev, 0);
-> -	if (IS_ERR(mmsys->regs)) {
-> -		ret = PTR_ERR(mmsys->regs);
-> -		dev_err(dev, "Failed to ioremap mmsys registers: %d\n", ret);
-> -		return ret;
-> -	}
-> +	if (IS_ERR(mmsys->regs))
-> +		return dev_err_probe(dev, PTR_ERR(mmsys->regs),
-> +				     "Failed to ioremap mmsys registers\n");
+>   &auxadc {
+> @@ -120,6 +132,41 @@ &i2c6 {
+>   	pinctrl-0 = <&i2c6_pins>;
+>   	status = "okay";
+>   	clock-frequency = <100000>;
+> +	#address-cells = <1>;
+> +	#size-cells = <0>;
+> +
+> +	it66121hdmitx: hdmitx@4c {
+> +		compatible = "ite,it66121";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&ite_pins>;
+> +		vcn33-supply = <&mt6358_vcn33_wifi_reg>;
+> +		vcn18-supply = <&mt6358_vcn18_reg>;
+> +		vrf12-supply = <&mt6358_vrf12_reg>;
+> +		reset-gpios = <&pio 160 GPIO_ACTIVE_LOW>;
+> +		interrupt-parent = <&pio>;
+> +		interrupts = <4 IRQ_TYPE_LEVEL_LOW>;
+> +		reg = <0x4c>;
+> +
+> +		ports {
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			port@0 {
+> +				reg = <0>;
+> +				it66121_in: endpoint {
+> +					bus-width = <12>;
+> +					remote-endpoint = <&dpi_out>;
+> +				};
+> +			};
+> +
+> +			port@1 {
+> +				reg = <1>;
+> +				hdmi_connector_out: endpoint {
+> +					remote-endpoint = <&hdmi_connector_in>;
+> +				};
+> +			};
+> +		};
+> +	};
+>   };
 >   
->   	mmsys->data = of_device_get_match_data(&pdev->dev);
+>   &keyboard {
+> @@ -362,6 +409,67 @@ pins_clk {
+>   			input-enable;
+>   		};
+>   	};
+> +
+> +	ite_pins: ite-pins {
+> +		pins-irq {
+> +			pinmux = <PINMUX_GPIO4__FUNC_GPIO4>;
+> +			input-enable;
+> +			bias-pull-up;
+> +		};
+> +
+> +		pins-rst {
+> +			pinmux = <PINMUX_GPIO160__FUNC_GPIO160>;
+> +			output-high;
+> +		};
+> +	};
+> +
+> +	dpi_func_pins: dpi-func-pins {
+> +		pins-dpi {
+> +			pinmux = <PINMUX_GPIO12__FUNC_I2S5_BCK>,
+> +				 <PINMUX_GPIO46__FUNC_I2S5_LRCK>,
+> +				 <PINMUX_GPIO47__FUNC_I2S5_DO>,
+> +				 <PINMUX_GPIO13__FUNC_DBPI_D0>,
+> +				 <PINMUX_GPIO14__FUNC_DBPI_D1>,
+> +				 <PINMUX_GPIO15__FUNC_DBPI_D2>,
+> +				 <PINMUX_GPIO16__FUNC_DBPI_D3>,
+> +				 <PINMUX_GPIO17__FUNC_DBPI_D4>,
+> +				 <PINMUX_GPIO18__FUNC_DBPI_D5>,
+> +				 <PINMUX_GPIO19__FUNC_DBPI_D6>,
+> +				 <PINMUX_GPIO20__FUNC_DBPI_D7>,
+> +				 <PINMUX_GPIO21__FUNC_DBPI_D8>,
+> +				 <PINMUX_GPIO22__FUNC_DBPI_D9>,
+> +				 <PINMUX_GPIO23__FUNC_DBPI_D10>,
+> +				 <PINMUX_GPIO24__FUNC_DBPI_D11>,
+> +				 <PINMUX_GPIO25__FUNC_DBPI_HSYNC>,
+> +				 <PINMUX_GPIO26__FUNC_DBPI_VSYNC>,
+> +				 <PINMUX_GPIO27__FUNC_DBPI_DE>,
+> +				 <PINMUX_GPIO28__FUNC_DBPI_CK>;
+> +		};
+> +	};
+> +
+> +	dpi_idle_pins: dpi-idle-pins {
+> +		pins-idle {
+> +			pinmux = <PINMUX_GPIO12__FUNC_GPIO12>,
+> +				 <PINMUX_GPIO46__FUNC_GPIO46>,
+> +				 <PINMUX_GPIO47__FUNC_GPIO47>,
+> +				 <PINMUX_GPIO13__FUNC_GPIO13>,
+> +				 <PINMUX_GPIO14__FUNC_GPIO14>,
+> +				 <PINMUX_GPIO15__FUNC_GPIO15>,
+> +				 <PINMUX_GPIO16__FUNC_GPIO16>,
+> +				 <PINMUX_GPIO17__FUNC_GPIO17>,
+> +				 <PINMUX_GPIO18__FUNC_GPIO18>,
+> +				 <PINMUX_GPIO19__FUNC_GPIO19>,
+> +				 <PINMUX_GPIO20__FUNC_GPIO20>,
+> +				 <PINMUX_GPIO21__FUNC_GPIO21>,
+> +				 <PINMUX_GPIO22__FUNC_GPIO22>,
+> +				 <PINMUX_GPIO23__FUNC_GPIO23>,
+> +				 <PINMUX_GPIO24__FUNC_GPIO24>,
+> +				 <PINMUX_GPIO25__FUNC_GPIO25>,
+> +				 <PINMUX_GPIO26__FUNC_GPIO26>,
+> +				 <PINMUX_GPIO27__FUNC_GPIO27>,
+> +				 <PINMUX_GPIO28__FUNC_GPIO28>;
+> +		};
+> +	};
+>   };
 >   
-> @@ -413,10 +411,9 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
->   		mmsys->rcdev.ops = &mtk_mmsys_reset_ops;
->   		mmsys->rcdev.of_node = pdev->dev.of_node;
->   		ret = devm_reset_controller_register(&pdev->dev, &mmsys->rcdev);
-> -		if (ret) {
-> -			dev_err(&pdev->dev, "Couldn't register mmsys reset controller: %d\n", ret);
-> -			return ret;
-> -		}
-> +		if (ret)
-> +			dev_err_probe(&pdev->dev, ret,
-> +				      "Couldn't register mmsys reset controller\n");
-
-Your missing return of the error value.
-
->   	}
->   
->   	/* CMDQ is optional */
+>   &pmic {
+> @@ -415,3 +523,16 @@ &scp {
+>   &dsi0 {
+>   	status = "disabled";
+>   };
+> +
+> +&dpi0 {
+> +	pinctrl-names = "default", "sleep";
+> +	pinctrl-0 = <&dpi_func_pins>;
+> +	pinctrl-1 = <&dpi_idle_pins>;
+> +	status = "okay";
+> +
+> +	port {
+> +		dpi_out: endpoint {
+> +			remote-endpoint = <&it66121_in>;
+> +		};
+> +	};
+> +};
 
