@@ -4,78 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6795CD13CF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Sep 2024 16:04:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABF83CA0ED3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Sep 2024 16:07:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+Kv/apDvPrExBQ5X/4dafVzGVDaldCIfwo7y23syOH4=; b=TC/pROVflUOfXZUKkn5bJRFv5I
-	Vney4Z9JfdrZj+ukNa1VJyXTct/uO2N+lm3c3iKQEWRj/TDLTuitOeD1w42R+nls6L0UkmIbBtcee
-	mD/6Tr/WLiqMb/4fEsJeezl6obO+g5bUHBpRdU0DmIpJJbDHvgrAOZtRD1sioavXklL3KejHE0TR0
-	5QKQeJEZDf5LrCCEx6OFdfkdGv7e7xKx8tNhlrdANglbjQBcBeRQ1mfsG0s0yO3n7/n4Ks7F/aCyU
-	T1HAbFHfy2vkmjRtlCaPGdzPVOL6OF5Bg35i4immGi7RLTdgNuslJ/oW4byk3D7PGvhvpoVZM/2cI
-	oHc1YSww==;
+	bh=IFpKPUQiiQjznlpL3dC9bwEAhSvdW7y0yHKICmDze0w=; b=ckk4ySoBOuioWLSdQN2T87jB1L
+	dvvZE6X6DTRvFUIFSTn5/ChtIN4CTSEH+EHmekH7MYr6LOsOFd71RTFIWH3NT1uXBki/OfCtcF595
+	48ztbuZhuULX9NheXvnxyAaPXpm5LSgS64KBzExnjoWQeEr6a2gU02EzC+bS2Gyy+FQGBVvD0w8mE
+	euDQOX/HwiKyEMX8TEzpXc306Rjrzz6M+n8n+f/SDvrTmBiCsoA0UtWrpvxSh7uetx72axgsTbJjv
+	um06iH9m9R8qnlJdUKzFi1d/mq77K23w9A0lj75Ixemr7VhDKNE/doEUMFZuMVmW+7BOC0+pD2K+X
+	s657vu1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sl9Xd-0000000Ex1j-0HDH;
-	Mon, 02 Sep 2024 16:04:33 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1sl9aD-0000000ExPq-0Hbq;
+	Mon, 02 Sep 2024 16:07:13 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sl9Wf-0000000EwpQ-1nPU;
-	Mon, 02 Sep 2024 16:03:34 +0000
-Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-5c09fd20eddso4045195a12.3;
-        Mon, 02 Sep 2024 09:03:33 -0700 (PDT)
+	id 1sl9aA-0000000ExP9-3wVm;
+	Mon, 02 Sep 2024 16:07:12 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-a86e9db75b9so475542966b.1;
+        Mon, 02 Sep 2024 09:07:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725293011; x=1725897811; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1725293229; x=1725898029; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=+Kv/apDvPrExBQ5X/4dafVzGVDaldCIfwo7y23syOH4=;
-        b=M2ZWYTsvAqM1kU/0O1exG6zeN9fXeeNIF3rE4gX7PD3HKSxC/UeVgd4hW3HAkpV/iY
-         F/P0pIEu1vKZWhGm2r/fEy62zJ68HwSsvDoZaD6Yh1jC2b/tUB/Gv2/RAT2NGBqJXOMi
-         FIGRgnWe1frtgYkgBWsWJVARZgk7WxQd+O3U8mTtuiptcBgzfkSZf08OnntJkr/CXaxD
-         +X0DlieL/U5qkvba8RSGk83lhZyk3GBe6aqX2sHJXRanvxPlMzYMkdGMjABLnzan7Wa9
-         CxDFpsVFLUf8mXY3yBVPedCAWDhhdEbExet8VWOS1QoUigSHsBOehmHLtmylFNTByIkU
-         lnIw==
+        bh=IFpKPUQiiQjznlpL3dC9bwEAhSvdW7y0yHKICmDze0w=;
+        b=bSmOQXf8l8WyG9MIOiSdDAOUD0B1N0qkGEa2XJ0CHBxJmbBynqQ7q0QAfYrJqdYkKr
+         7K12/xDYqzm+i7uW3uG50aZUEbWEAn8j16eMzvFP9cEHSuhVBAazGCkJJySLSJwOrxlY
+         DYHSsd4xuQ8v0ESiU/ES+PSYZGjTz0t9C7PZ1Suv5R/bJ42BA/VLbRjt4psDXCPB7hoc
+         OQ014Iq3sCZ6i5j9tjn8t5VwmdxXwSsOwAsAN/qjCnNccCyXsUiROM3VDkzbQaMbplfP
+         QAFxmC6xpE+g4TXLP7HL1WG4g1f0bOloxy6e/rf2fDofrVTcGqTWt0AMfP3SRbYqLKsa
+         MWBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725293011; x=1725897811;
+        d=1e100.net; s=20230601; t=1725293229; x=1725898029;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=+Kv/apDvPrExBQ5X/4dafVzGVDaldCIfwo7y23syOH4=;
-        b=BZLIO58ZV4UW+TGCoNO5Ta0sys4ElxPcLaC5pRbasBQE0R02hxfl9ljGzMCDBEZ8J9
-         8zA4v3nd1FiK42/vM8YrEFXLFhT+akVGXaHf5LlEjRKOrZ3aWy2kKzhtuBaZG6SX9r8v
-         S6fFkiAPLDUjnNhfgayamdr6gDm2ADO86QVScX4dfHa9RKxEFZYkLBwLfNts0ED33JNi
-         PRZjOsNZ3I4OzxenOl+LYDAx0pl2qpqdjEJVDPqOtVV9BfYBYFmzGqziHxZCPqsTttWb
-         w5ZIgoGyDo0HnC7BBWo6JXxqR1S2EYRqbm9HwiUufiA5J4J2VIv1habPsgobpkYVEhe6
-         8e3w==
-X-Forwarded-Encrypted: i=1; AJvYcCVvWlVldzvdlvD6vexx0r2N4p7ymcY+7K0M6PpnLSNCsFCqOzwR56Rv1RR/YMr3o04Biy2nONF/o0/QnpPhG9qU@lists.infradead.org, AJvYcCXdAIilP9KyCWUhal+V4OwPL8gWuO7QjyhV3U+PYeMVNmO/ndl8ySf8caibeRTA96CGtCJNc4GtL5kbJfWZ2k4=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx3M7cTz77qs4VySoX4SQP4+bFnWxZp6M3PdIRWR82HQMm+lZpT
-	soncaP5KyWc8JB2bB2QDY3yftvn5i/lQqVXVNvtHM6x/jlpCmUKR
-X-Google-Smtp-Source: AGHT+IFwZe3vVzPMqvX+UqTwajDfeT9bDtU/z3lfwpijGNagFI21EwhcugsW/nwlZeHUF+s2trUicw==
-X-Received: by 2002:a05:6402:27d1:b0:5c0:b333:b2e1 with SMTP id 4fb4d7f45d1cf-5c21ed52b96mr11240428a12.20.1725293010839;
-        Mon, 02 Sep 2024 09:03:30 -0700 (PDT)
+        bh=IFpKPUQiiQjznlpL3dC9bwEAhSvdW7y0yHKICmDze0w=;
+        b=tpjHCJxykzCez+ook55TUlbxNI5z0xPhQ7tqjOz8V3WOv/D/ToTyugnxAwk8GOmrVP
+         jd1bAbayQsx1Dopw3MK5YeTjxyZhbcraZ4ZKNeyEaaNZ2CIWaDKJgzA4A2fhyx+V0leK
+         xkJh1TDvWM8y9v/Bfo2NIyLrXUKgyiiHqTx1yKS9ZspoiKQ3TBEKHjCXZWFqKKfG933o
+         hCv+CLDUyTKiwPYCki0XFTYOLiRhlvPG9pXVxXsfrJIojzuMRaBn4Hs/Uda519B7GEC4
+         mxTmhyjzzHGjNdUwAWUAmPJdbbI6fOg4suXaCto+MmsXpj2YBEpYhYiGEyuy5sf44mqx
+         I8aA==
+X-Forwarded-Encrypted: i=1; AJvYcCUaaTb2cM3IXHjrFkX7PQGJnv9dXrrYMZ11f0irLYCXL04++sYf04Pe7TGl1WQNt87vNH2ZobrMEi68cLHPF9Pa@lists.infradead.org, AJvYcCWhCkkzWeyh62hCtz9Tq+1ILbzl1pEzRgNAy3ST5LvcpG/WAAV0H9qrPqqksvMPwNAhWqZTqdn7Yix2dLfI1rU=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy8pEMVHJpQ7fk6coDiFch6u4Bw6q53lZA5OlfRq6BhyCpwTW6r
+	tXjbOlOp9eDy1+w1oUT0R77hcc08xbHXu/JJZw0agzOXZ042eUzG
+X-Google-Smtp-Source: AGHT+IH2DkWASp1pwUYEawA2T8SRRfukE+ElsHknlGlmwAMwSVtewqJ5nzNaOjFYV67cTlRlQt9nMQ==
+X-Received: by 2002:a17:907:3d92:b0:a83:94bd:d913 with SMTP id a640c23a62f3a-a8a1d29ba02mr53582266b.10.1725293228564;
+        Mon, 02 Sep 2024 09:07:08 -0700 (PDT)
 Received: from [192.168.0.20] ([148.56.230.39])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5c226ccfe84sm5359695a12.71.2024.09.02.09.03.29
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a89890090a1sm576607466b.49.2024.09.02.09.07.06
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 02 Sep 2024 09:03:29 -0700 (PDT)
-Message-ID: <bb0dba5a-68e9-4c03-bbea-6788f4cc7d16@gmail.com>
-Date: Mon, 2 Sep 2024 18:03:28 +0200
+        Mon, 02 Sep 2024 09:07:07 -0700 (PDT)
+Message-ID: <9aec2480-5b49-4fd0-8ad0-9fd87c865630@gmail.com>
+Date: Mon, 2 Sep 2024 18:07:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8186-corsola: Disable DPI display
- interface
-To: Chen-Yu Tsai <wenst@chromium.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Stephen Boyd <swboyd@chromium.org>, Pin-yen Lin <treapking@chromium.org>,
- Alper Nebi Yasak <alpernebiyasak@gmail.com>, stable@vger.kernel.org
-References: <20240821042836.2631815-1-wenst@chromium.org>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8186: Fix supported-hw mask for
+ GPU OPPs
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-mediatek@lists.infradead.org
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ wenst@chromium.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com
+References: <20240725072243.173104-1-angelogioacchino.delregno@collabora.com>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -121,12 +121,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20240821042836.2631815-1-wenst@chromium.org>
+In-Reply-To: <20240725072243.173104-1-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240902_090333_507217_81BAE9CD 
-X-CRM114-Status: GOOD (  19.82  )
+X-CRM114-CacheID: sfid-20240902_090711_048553_2CE78B54 
+X-CRM114-Status: GOOD (  17.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,50 +143,84 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 21/08/2024 06:28, Chen-Yu Tsai wrote:
-> The DPI display interface feeds the external display pipeline. However
-> the pipeline representation is currently incomplete. Efforts are still
-> under way to come up with a way to represent the "creative" repurposing
-> of the DP bridge chip's internal output mux, which is meant to support
-> USB type-C orientation changes, to output to one of two type-C ports.
+On 25/07/2024 09:22, AngeloGioacchino Del Regno wrote:
+> The speedbin eFuse reads a value 'x' from 0 to 7 and, in order to
+> make that compatible with opp-supported-hw, it gets post processed
+> as BIT(x).
 > 
-> Until that is finalized, the external display can't be fully described,
-> and thus won't work. Even worse, the half complete graph potentially
-> confuses the OS, breaking the internal display as well.
+> Change all of the 0x30 supported-hw to 0x20 to avoid getting
+> duplicate OPPs for speedbin 4, and also change all of the 0x8 to
+> 0xcf because speedbins different from 4 and 5 do support 900MHz,
+> 950MHz, 1000MHz with the higher voltage of 850mV, 900mV, 950mV
+> respectively.
 > 
-> Disable the external display interface across the whole Corsola family
-> until the DP / USB Type-C muxing graph binding is ready.
-> 
-> Reported-by: Alper Nebi Yasak <alpernebiyasak@gmail.com>
-> Closes: https://lore.kernel.org/linux-mediatek/38a703a9-6efb-456a-a248-1dd3687e526d@gmail.com/
-> Fixes: 8855d01fb81f ("arm64: dts: mediatek: Add MT8186 Krabby platform based Tentacruel / Tentacool")
-> Cc: <stable@vger.kernel.org>
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Fixes: f38ea593ad0d ("arm64: dts: mediatek: mt8186: Wire up GPU voltage/frequency scaling")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Applied, thanks
+Patch got applied and is queued for v6.12 (v6.11-next/dts64 branch).
+Somehow no email was send to inform about this.
+
+Angelo, not sure if it's worth investigating what happened.
+
+Regards,
+Matthias
 
 > ---
-> Stephen has recently posted the "platform/chrome: Add DT USB/DP
-> muxing/topology support" patch series, which is now up to v3 [1].
-> More work based on this series is needed for the DP bridge drivers.
+>   arch/arm64/boot/dts/mediatek/mt8186.dtsi | 12 ++++++------
+>   1 file changed, 6 insertions(+), 6 deletions(-)
 > 
-> [1] https://lore.kernel.org/dri-devel/20240819223834.2049862-1-swboyd@chromium.org/
-> ---
->   arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-> index 0c4a26117428..682c6ad2574d 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-> @@ -353,7 +353,8 @@ &dpi {
->   	pinctrl-names = "default", "sleep";
->   	pinctrl-0 = <&dpi_pins_default>;
->   	pinctrl-1 = <&dpi_pins_sleep>;
-> -	status = "okay";
-> +	/* TODO Re-enable after DP to Type-C port muxing can be described */
-> +	status = "disabled";
->   };
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> index 4763ed5dc86c..d63a9defe73e 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> @@ -731,7 +731,7 @@ opp-850000000 {
+>   		opp-900000000-3 {
+>   			opp-hz = /bits/ 64 <900000000>;
+>   			opp-microvolt = <850000>;
+> -			opp-supported-hw = <0x8>;
+> +			opp-supported-hw = <0xcf>;
+>   		};
 >   
->   &dpi_out {
+>   		opp-900000000-4 {
+> @@ -743,13 +743,13 @@ opp-900000000-4 {
+>   		opp-900000000-5 {
+>   			opp-hz = /bits/ 64 <900000000>;
+>   			opp-microvolt = <825000>;
+> -			opp-supported-hw = <0x30>;
+> +			opp-supported-hw = <0x20>;
+>   		};
+>   
+>   		opp-950000000-3 {
+>   			opp-hz = /bits/ 64 <950000000>;
+>   			opp-microvolt = <900000>;
+> -			opp-supported-hw = <0x8>;
+> +			opp-supported-hw = <0xcf>;
+>   		};
+>   
+>   		opp-950000000-4 {
+> @@ -761,13 +761,13 @@ opp-950000000-4 {
+>   		opp-950000000-5 {
+>   			opp-hz = /bits/ 64 <950000000>;
+>   			opp-microvolt = <850000>;
+> -			opp-supported-hw = <0x30>;
+> +			opp-supported-hw = <0x20>;
+>   		};
+>   
+>   		opp-1000000000-3 {
+>   			opp-hz = /bits/ 64 <1000000000>;
+>   			opp-microvolt = <950000>;
+> -			opp-supported-hw = <0x8>;
+> +			opp-supported-hw = <0xcf>;
+>   		};
+>   
+>   		opp-1000000000-4 {
+> @@ -779,7 +779,7 @@ opp-1000000000-4 {
+>   		opp-1000000000-5 {
+>   			opp-hz = /bits/ 64 <1000000000>;
+>   			opp-microvolt = <875000>;
+> -			opp-supported-hw = <0x30>;
+> +			opp-supported-hw = <0x20>;
+>   		};
+>   	};
+>   
 
