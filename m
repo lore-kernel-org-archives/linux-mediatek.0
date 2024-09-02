@@ -4,62 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B630CD13CF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Sep 2024 06:01:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDC73CD13CF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Sep 2024 06:02:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Waas5O5lR0sclFrGnpd2UQO3LhYdsfBQV16Ml7nGlY4=; b=f/Jzo6+d56p5jF3KcPneFgHXNs
-	YjhuDP6vOrU6nEQeD7/v4TglPnQlaE6UFfcAOnddgOYE8QZKioetOyP377ABizZvM3eJPcnAmWwcJ
-	geWQvnRB+AJ+9WShADIhe/HTUx9DSC0swaxgvFcgESudihJqrAaGxDoi0/sozbyCPDfpLtA/vEPrF
-	xvduJOJqJbTckMb3ds1Vb8/2OJD+ohE/W70mptZ7gxkCEaTjw69jO9weUZFTORVOlLKIf7fSdJ+pA
-	acO+6W5mQ4p94WmseTtAGEja3a4EkEoeia6Yjfpy7UtVeatJBklW2UgMImDqdTxzXuLXGthPcJqzW
-	2l8eqHdg==;
+	bh=RLT+ZXlJz8SWaaahByoLRZfSQKkmdiE+KQxWWpCGtXw=; b=BoXMClXV3mDPiTSFNToOiQeHvb
+	osi2NeK9yCyg7QIdtBJG40XV6AOKK9EirewVDhXBDpPdzghvtuyalaerxxAGQQuSwrJcGRHWgzq+C
+	bafUYyQReZneBAEhvoWeTuxnRidVEln2x1T+2OLIobe/ur+XTeF1r/mpNNa10mVf66ApBuENeCbLw
+	8ogeU+3sxu1idEFaaGsScoNdzEbawb9QdnbG0SKTdUgfjSKzmCjyAL9E4okzm5RjpwH7VrGFEAeHL
+	IClhl64L7fdB+HN4k0WjnxFBMKCfSM/5UFit4KVVLsxFkCV9XCVXGSubAmqvIYL29+rIVY2+zFU6r
+	AygtXBhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sl07j-0000000D57J-3hJq;
-	Mon, 02 Sep 2024 06:01:11 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1sl08i-0000000D5O4-2YOF;
+	Mon, 02 Sep 2024 06:02:12 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sl06n-0000000D4wR-39Xp;
-	Mon, 02 Sep 2024 06:00:15 +0000
+	id 1sl07m-0000000D585-3fCc;
+	Mon, 02 Sep 2024 06:01:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id A6F9AA416B5;
-	Mon,  2 Sep 2024 06:00:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 068CFC4CEC2;
-	Mon,  2 Sep 2024 06:00:11 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 16153A416B6;
+	Mon,  2 Sep 2024 06:01:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4953AC4CEC2;
+	Mon,  2 Sep 2024 06:01:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1725256812;
-	bh=fkYfWMLlfk5e2VJ1eg33dBxjDkhjDPqpeRo+qkVeL00=;
+	s=korg; t=1725256873;
+	bh=uFqYDAGst+R76BzrFXSqxQfFeaOgB/jwHSV/x4bw5xE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=oIo4Qytbe/iyRXPwnfYn9skDnjW1uH6B6CMf0AAs8IycOmXcgYAcSUvYiHwbalw1H
-	 AUhtuaV/nN+PkUQzRjh7p1MfLP6qgxtg1H3hhF/4euS3MgFgqgOh5EhsqK//ojDhez
-	 vIaEejmsQrubCPr32jvW58gTqmg315O23VDc1lPU=
-Date: Mon, 2 Sep 2024 08:00:08 +0200
+	b=XcGT8ny+K7EZPFWj7plmSyaw+3DUmYHQrHQM/nEmQbnG+VvCxd3U3HDIZTeX7YiRL
+	 1biMvmNuYBWWnQkGh0oHiWSUlCqiK7KZ7mv2ol4roKIvw1j5SP2yZJAPHRBUHL3qRF
+	 ShEo26DaXuTOaDOPfo65oFbxkvB50L+QG9bfwOUg=
+Date: Mon, 2 Sep 2024 08:01:10 +0200
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: Yenchia Chen <yenchia.chen@mediatek.com>
-Cc: stable@vger.kernel.org,
-	"Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Len Brown <len.brown@intel.com>, Pavel Machek <pavel@ucw.cz>,
+Cc: stable@vger.kernel.org, "Rafael J. Wysocki" <rafael@kernel.org>,
+	Pavel Machek <pavel@ucw.cz>, Len Brown <len.brown@intel.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 5.15 1/1] PM: sleep: Restore asynchronous device resume
- optimization
-Message-ID: <2024090250-reliably-ecard-3b58@gregkh>
+Subject: Re: [PATCH 5.15 0/1] pm, restore async device resume optimization
+Message-ID: <2024090220-uncaring-pretext-4391@gregkh>
 References: <20240902031047.9865-1-yenchia.chen@mediatek.com>
- <20240902031047.9865-2-yenchia.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240902031047.9865-2-yenchia.chen@mediatek.com>
+In-Reply-To: <20240902031047.9865-1-yenchia.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240901_230013_882255_508D03EB 
-X-CRM114-Status: GOOD (  13.48  )
+X-CRM114-CacheID: sfid-20240901_230115_000928_3126839F 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,26 +70,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 02, 2024 at 11:10:45AM +0800, Yenchia Chen wrote:
-> From: "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
+On Mon, Sep 02, 2024 at 11:10:44AM +0800, Yenchia Chen wrote:
+> From: "yenchia.chen" <yenchia.chen@mediatek.com>
 > 
-> Before commit 7839d0078e0d ("PM: sleep: Fix possible deadlocks in core
-> system-wide PM code"), the resume of devices that were allowed to resume
-> asynchronously was scheduled before starting the resume of the other
-> devices, so the former did not have to wait for the latter unless
-> functional dependencies were present.
+> We have met a deadlock issue on our device when resuming.
+> After applying this patch which is picked from mainline, issue solved.
+> We'd like to backport to 5.15.y and could you help to review? thanks.
 > 
-> Commit 7839d0078e0d removed that optimization in order to address a
-> correctness issue, but it can be restored with the help of a new device
-> power management flag, so do that now.
-> 
-> Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
-> Reviewed-by: Stanislaw Gruszka <stanislaw.gruszka@linux.intel.com>
-> Signed-off-by: yenchia.chen <yenchia.chen@mediatek.com>
+> [ Upstream commit 3e999770ac1c7c31a70685dd5b88e89473509e9c ]
 
-Please sign off using your name, not your email alias.
+For obvious reasons (and as per the documentation), we can't take
+commits that are not also in all newer kernel releases, otherwise you
+would have a regression if you moved to a newer kernel, right?
 
-Also, what git id is this?
+Please submit a series for all affected releases if you wish for a patch
+to be applied to the trees.
 
 thanks,
 
