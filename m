@@ -4,76 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEF73CD37AA
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Sep 2024 17:16:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD36FCD37AA
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Sep 2024 17:45:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EOtMdI/pXteLBcjEnRHOPnypTmqhN4BLZTDiPNlDdtQ=; b=Uy/eaqMjA6oXMadyP6LYXQpycM
-	vlJVLEYogSt9anBT0+0tcVIwzaUg0056tTjPd1t4WJSB8D9JBrr6+vldEGTWn1iztujMhT1YndoWF
-	/QTYPej7KhLw/16muj0uHbyGxVimXbefbMAPEuBv5LfVDdTU2h/bAa/Nue463xlTmTZgGidoyKjVw
-	Jj0T1JrcBicU7jDRRjaqrGSedT7KOYSUciLjJuwNIegLa5sx4msOoaoqU2JZjGZuTbUGVGqN+x402
-	GX6gD3kgXrlLoUlVLyxfvp6q6bp3t80yBe0mOCAyNNPOhtz04Rm8KAormQ2pP1QcMih7DFR0lSrTJ
-	lzb33JIw==;
+	bh=+IBsYaPbezPpgRuG1uD3riOzo1Dt0eeW8YyHRQcRrcA=; b=uIhGLIM7pVh9bi8oe64f9cHTYM
+	XAtxozUQs8TSX/9rLus6a1UHgmQVBYVdc3DENp2+5ouZjLXjXVEuFpqDX4zB2OMcvJKf0s3DLYdQB
+	x/RSt0Gsn+iMVZQRg3hoZvxB1vj7EmtlS3X0i05mL35HfqtM4aw9lC/Sj67B3TIC8xH6jqcQB7wav
+	b4IfmkvuoszcFMko1/dQRIKEO4buhORNS1SAAF2VoYHRX+FIVhEg5NjY5LRHA/hz4w0zHbMuesO97
+	UUaCQ4rPSb7O8tcGvAV9IBB0k289GOlDB6ndjxGgYDDJL/xKJdYAWXR74kWDdekKMbSo2mCP+WLtO
+	iyu2uW+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slX8V-00000001GJb-3IXP;
-	Tue, 03 Sep 2024 17:16:11 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1slXb0-00000001LTg-1Ezl;
+	Tue, 03 Sep 2024 17:45:38 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slX79-00000001Fry-27RA;
-	Tue, 03 Sep 2024 17:14:48 +0000
+	id 1slWbp-00000001AMs-2jmT;
+	Tue, 03 Sep 2024 16:42:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 4CF73A429C2;
-	Tue,  3 Sep 2024 17:14:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 238D9C4CEC4;
-	Tue,  3 Sep 2024 17:14:40 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 688BE5C55E2;
+	Tue,  3 Sep 2024 16:42:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2A82BC4CEC4;
+	Tue,  3 Sep 2024 16:42:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725383686;
-	bh=qW0RktGoVkbp3dbELJ0XnlGsWcBLW434fwCOzn74Vkc=;
+	s=k20201202; t=1725381744;
+	bh=ysx2yq2EzG2SmeMo3CLySNMcvk3ddYkzx0Kw43XPAxo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=GuRAngMw4FtK7TyflROsYBV1lYCTKtUT1bir8ZZY8wNReUFtnfddZvBvkFwjVTRym
-	 b0Ao6qM8UI9rNBWicO+BMdEQMpNhOj1Rvbvou5lenbKL5r7AYzNMtp66G4GV83QiO4
-	 ySeux05NNkyQIkpAOs/iEeofWo4KInG6x3Kb53MbNhZYux9jHVNuAzD9w56B3eHRb1
-	 1wMjoqQy7sVJedE2hizsg2pd5hE7tb8i9AZ/dzRaIFxBNpWbiTBRKHnvhdoNgvgS8q
-	 +5FSuI3B0GX3tCbf6hjjFEbar8JPcn2SRQOGe3JJw7ivrMWZk+JHr9Gz0KhHSqDJcH
-	 b1fj3m/Ktu8gg==
-Date: Tue, 3 Sep 2024 18:14:38 +0100
-From: Mark Brown <broonie@kernel.org>
-To: amergnat@baylibre.com
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	b=XgCqPXZazwzGXgfGAhqlE+vpCryS6mxbB6qDi2nJMtReK0UuPyw1UIERUdA36XOgx
+	 WDxqlO5jl7O5CapgicZ8MVPOkcojtyHi3qvPdKgYDGAzo9OtCWfBzAZh7QqeQC3MrK
+	 1VrUL5vWukZR8FWRGHp14byhFqupVrqQpdh985FojvyqjwFs4XVGr5ZJAvd6PglQ4U
+	 XQk5k3/pmyZBDIQdpxVRXXGile+ffCXoRKvpg0sEZmBvfU5PVA9tametbMV8sM87Jn
+	 o84+B+tFOlo+AgtR5XGka5zi/SBUFzD/yIQOeONzQyeIzkRV4u7WAn1fGUSuI4RW7Z
+	 YQeezY7rQRlQA==
+Date: Tue, 3 Sep 2024 17:42:18 +0100
+From: Lee Jones <lee@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
-	Nicolas Belin <nbelin@baylibre.com>
-Subject: Re: [PATCH v7 12/16] ASoC: codecs: add MT6357 support
-Message-ID: <c386c74c-9008-48ea-ad79-524eb85c370b@sirena.org.uk>
-References: <20240226-audio-i350-v7-0-6518d953a141@baylibre.com>
- <20240226-audio-i350-v7-12-6518d953a141@baylibre.com>
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	upstream@airoha.com, benjamin.larsson@genexis.eu,
+	linux-pwm@vger.kernel.org
+Subject: Re: [PATCH v3 2/5] dt-bindings: mfd: Add support for Airoha EN7581
+ GPIO System Controller
+Message-ID: <20240903164218.GC6858@google.com>
+References: <20240831-en7581-pinctrl-v3-0-98eebfb4da66@kernel.org>
+ <20240831-en7581-pinctrl-v3-2-98eebfb4da66@kernel.org>
+ <20240903153353.GZ6858@google.com>
+ <66d72ea9.df0a0220.21f5f.029f@mx.google.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="OMC7w3ub4Px9anag"
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20240226-audio-i350-v7-12-6518d953a141@baylibre.com>
-X-Cookie: Please take note:
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <66d72ea9.df0a0220.21f5f.029f@mx.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240903_101447_632332_B414B4A4 
-X-CRM114-Status: GOOD (  11.04  )
+X-CRM114-CacheID: sfid-20240903_094225_846484_6E466D93 
+X-CRM114-Status: GOOD (  30.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,43 +86,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, 03 Sep 2024, Christian Marangi wrote:
 
---OMC7w3ub4Px9anag
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> On Tue, Sep 03, 2024 at 04:33:53PM +0100, Lee Jones wrote:
+> > On Sat, 31 Aug 2024, Lorenzo Bianconi wrote:
+> > 
+> > > From: Christian Marangi <ansuelsmth@gmail.com>
+> > > 
+> > > Add support for Airoha EN7581 GPIO System Controller which provide a
+> > > register map for controlling the GPIO, pinctrl and PWM of the SoC.
+> > > 
+> > > Schema define cells for both gpio/interrupt controller and PWM.
+> > > Moreover it provides a dedicated pinctrl node for pins and config
+> > > definitions.
+> > > 
+> > > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> > > Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > > ---
+> > >  .../bindings/mfd/airoha,en7581-gpio-sysctl.yaml    | 433 +++++++++++++++++++++
+> > >  1 file changed, 433 insertions(+)
+> > > 
+> > > diff --git a/Documentation/devicetree/bindings/mfd/airoha,en7581-gpio-sysctl.yaml b/Documentation/devicetree/bindings/mfd/airoha,en7581-gpio-sysctl.yaml
+> > > new file mode 100644
+> > > index 000000000000..a9080c7f50f9
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/mfd/airoha,en7581-gpio-sysctl.yaml
+> > > @@ -0,0 +1,433 @@
+> > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > > +%YAML 1.2
+> > > +---
+> > > +$id: http://devicetree.org/schemas/mfd/airoha,en7581-gpio-sysctl.yaml#
+> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > +
+> > > +title: Airoha EN7581 GPIO System Controller
+> > > +
+> > > +maintainers:
+> > > +  - Christian Marangi <ansuelsmth@gmail.com>
+> > > +  - Lorenzo Bianconi <lorenzo@kernel.org>
+> > > +
+> > > +description:
+> > > +  Airoha EN7581 SoC GPIO system controller which provided a register map
+> > > +  for controlling the GPIO, pins and PWM of the SoC.
+> > 
+> > This whole thing is just about pins.
+> > 
+> > The MFD portion of this submission doesn't do anything.
+> >
+> 
+> Hi Lee,
+> 
+> thanks for the review. I think you missed the other series as it was
+> requested to use MFD implementation due to shared register map.
+> 
+> > Please rework this to omit the MFD driver.
+> 
+> I'm a bit confused by this you mean in the schema? Putting PWM property
+> in a pinctrl schema looks wrong to me :(
+> 
+> > 
+> > After just a glance, it looks like simple-mfd _might_ work.
+> 
+> Simple-mfd works if register map are well defined and you can have
+> something like
+> - parent define the whole register
+> - child can user reg property to register offset and subsection of the
+>   parent register
+> 
+> Here it's all mixed and scrambled and also it was requested to have a
+> very simple node that include both pwm and pinctrl property (cause that
+> is how the HW register block is designed and schema must reflect HW)
+> 
+> Hope you can understand these reasons.
 
-On Mon, Jul 22, 2024 at 08:53:41AM +0200, amergnat@baylibre.com wrote:
-> From: Nicolas Belin <nbelin@baylibre.com>
->=20
-> Add the support of MT6357 PMIC audio codec.
+Thinking very quickly before I have to rush off.
 
-This breaks the build:
+Have you considered syscon?
 
-/build/stage/linux/sound/soc/codecs/mt6357.c: In function =E2=80=98mt6357_p=
-latform_driver_probe=E2=80=99:
-/build/stage/linux/sound/soc/codecs/mt6357.c:1824:55: error: too many argum=
-ents for format [-Werror=3Dformat-extra-args]
- 1824 |                 return dev_err_probe(&pdev->dev, ret, "Failed to pa=
-rse dts\n", __func__);
-      |                                                       ^~~~~~~~~~~~~=
-~~~~~~~~~~
-cc1: all warnings being treated as errors
-
---OMC7w3ub4Px9anag
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmbXQ/0ACgkQJNaLcl1U
-h9CpOQf/TZgfm5Me95NAaeAf3HC8+QtPbX8C2nII9zKTnbEfLCDi/g1gWoJoK6ge
-FBcp4NuLABoPKK/c0mXC0iSzZ8mjHoHX08LBYnh3Q+BZFvOy+6hXTs/cr6/RMtDR
-OQ7lNNGHEhH5YZvCMPrt+3p2BnWcLGvbreX+xIa1PfT91BvUGpEhxPMkPe/UQKkk
-+sGgJdVgQRZgjtoaqZXWBsVYD2fUK6CJwb4w14Gm+BwFYwvrIj7Tq8FpnDdmUawg
-SYP7QBsvrhWdYaAOAfRi0cpusU8wgwSjvUOu2md93uMVLke+S0T+8dkw/tkPnJcS
-XvtVy+qXZ/rNyGhr44XT3XZmwXdOTw==
-=ZHfg
------END PGP SIGNATURE-----
-
---OMC7w3ub4Px9anag--
+-- 
+Lee Jones [李琼斯]
 
