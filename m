@@ -4,74 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89F5BCD3435
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Sep 2024 13:47:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75918CD342A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Sep 2024 15:07:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YVOZDWCkI5gq5GT1DRRpnaiGf/P82/ZwGLvkG+VkGdw=; b=bf1gpUTQGX4jBattS4BhCbJmCF
-	P5Onu7Q68C4G0iT3qaTKXmeTU4f4EjER+I5F5xmksotLYu3pxncYJOZCs/5z+6u2R6R7WhAhiTH2u
-	DVLh48lteniJtgD1+OAwSihlADYA5K/1BxtsmiDQW3UHDOlDuip8uVVzw96DaQfTxVujPiBBTRdZh
-	iRW8c0g2892ukCIivWkQB3fsTl/PBOKiUyz49PL8rqZO2hePCOriPOurmqd3S6zH1ueB1ES3ikfD0
-	xgt74zM1ERTNQddDEKpEtzWK6u8m0xHQ+lXwk8tnM8UFhU14XwuNJ6fUK+OwFkoUQ25A8f7Tu1t86
-	IfwKMUUA==;
+	bh=F5GQ1l1T7KpghZKbXuX0bW89AWlkX/VbMQy0rP5A5Xo=; b=P2aPBjDZjeKwxc+O6TO0AYlYWE
+	S9iGc/StoVI8HyM5xb/Tim9cpKCfGTfthYndE81Y5t21yhgro4uLaoCDpqGA+IcehKdib8X9l56wY
+	c6/s2Cesdk4p6JgimTpT6mUjpJD7Usd7YUUYcM6x3kWx5nv30SykGU5SqfffYP3NmmL4dKKYXmnOb
+	QphT3Gr5Ac+WxABdyM51eclWrYLR7YpEE0OeSnOS8H4IEx4NGcDO0rqDzS7JImpNkH0XQKmJEJyPB
+	3V4EkbZnkWe+XSSBWMn/GpOZiEljj+j79wISNBZ2sZ1ZpIsuztWychdJsafAypuxfZovz+LlvZNRf
+	GTwKu5ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slTsX-00000000Q1b-13Dl;
-	Tue, 03 Sep 2024 13:47:29 +0000
-Received: from mail-pj1-f49.google.com ([209.85.216.49])
+	id 1slV7u-00000000jt4-1bm2;
+	Tue, 03 Sep 2024 15:07:26 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slTsU-00000000Q0Y-2Cc4;
-	Tue, 03 Sep 2024 13:47:27 +0000
-Received: by mail-pj1-f49.google.com with SMTP id 98e67ed59e1d1-2d86f71353dso2889815a91.2;
-        Tue, 03 Sep 2024 06:47:26 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725371245; x=1725976045;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YVOZDWCkI5gq5GT1DRRpnaiGf/P82/ZwGLvkG+VkGdw=;
-        b=phn9gOa3Y15aw2hAdy2N79v7BlUv/CqFlisbujEw0egwGg9bT4vCy6bgF4Ev19+19e
-         kDWOnAUfxWMUbGt/dDGd2gvIyKOgvQ4w0U8YESP70hjGfCR9OezAG63pjb5Shxsnlr2f
-         6QbHql7W3LREpCte13YBuu9I3EsXGyTV5GdRhB3uxDla8F5v3jc6Vyax9felttBK4SJL
-         Fgd32vzkClGbvM7IpIDmPEqnU3cR+JrNzYbk18NRPOa9F5F8bcLdeEyfr4Im/CH5zlNB
-         rJpUtUvuT764SsWTfgDlKLM+gxottENXNMI4eZnHHhq/QpYq/8Y5hCeP4DCKTazyJgyl
-         pJVA==
-X-Forwarded-Encrypted: i=1; AJvYcCVLLdyexpwlAMV5qfMW3xMiKSRfxtXZCEPEP5aV32k/MYfRImCLrOdRy4J/viQ2eAfAoGe0rjrwftppfEPIGK3p@lists.infradead.org, AJvYcCXG5cX+LcRmnfDtvKYY02MnrPk8ZNAXpMG2GOEO8mqcF0s0xKUT+6Nd2rSSuO732MzgsWTjVZLgo2x7AHA6RqI=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxHBMIeAfOTmjDVlKevDkG3DAwOtmZXZ0wv3A3bWB/wkzkxc7qQ
-	o52Px0jhtgI4u0B9yoskmYi5ZKoM0nthCHH190EM5NcNdn6OgKtJ
-X-Google-Smtp-Source: AGHT+IEhaO74x3D7NZ/N03KAk2Xu+dCACB1T+nWArP6VhDK7YxC8h/t/H6iyXhI45/BoQU/aoKy7DQ==
-X-Received: by 2002:a17:90b:1083:b0:2d8:840d:d9f2 with SMTP id 98e67ed59e1d1-2d8840ddbb7mr13352021a91.24.1725371245433;
-        Tue, 03 Sep 2024 06:47:25 -0700 (PDT)
-Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2d8edb8d4ccsm1328458a91.1.2024.09.03.06.47.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Sep 2024 06:47:25 -0700 (PDT)
-Date: Tue, 3 Sep 2024 22:47:23 +0900
-From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, linux-pci@vger.kernel.org,
-	ryder.lee@mediatek.com, jianjun.wang@mediatek.com,
-	lpieralisi@kernel.org, robh@kernel.org, bhelgaas@google.com,
-	linux-mediatek@lists.infradead.org, lorenzo.bianconi83@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org,
-	nbd@nbd.name, dd@embedd.com, upstream@airoha.com,
-	angelogioacchino.delregno@collabora.com
-Subject: Re: [PATCH v4 0/4] Add Airoha EN7581 PCIe support
-Message-ID: <20240903134723.GB1403301@rocinante>
-References: <ZsRX-Hrn2fCITK4P@lore-desk>
- <20240820140133.GA207494@bhelgaas>
+	id 1slV68-00000000jUR-3IEB;
+	Tue, 03 Sep 2024 15:05:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2B5595C59E0;
+	Tue,  3 Sep 2024 15:05:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3E00C4CEC4;
+	Tue,  3 Sep 2024 15:05:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1725375935;
+	bh=KL0RQRwssSJZNsqC3FsLLADFxblDIjhPUl1YLEacyms=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=DRIRAocqMOoyi0rW8os/xYVVD6vNIkBzoAlQ6hS2tSqR1dB70Nr3njU0wCyg3zgwu
+	 LacEso3uef9loUUnpQphxgtcE7qUvZSzFxL7C3t7jDK9reXbttX+aQ7Qz35fAggN0o
+	 lkn8P30kt6mxExCkPfIH18o2hQZhMeslMjkRnbqR8pQsmFuB9RGfxWBbFN/O/EzPo8
+	 6hw5ms6StC7SwGIY5PlV2myw4czbRwVcF3KNidbGniUstdvQJ458e83ikt7ISlZ3uL
+	 Onbf/nglN5e3FjWS9Wl8N/NCX9+JzjhDjF3IRsS9zdcTZ+i35Mg31/jZ7zmq7UHmGQ
+	 cgsEf0ky6UuxQ==
+Date: Tue, 3 Sep 2024 10:05:34 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: devicetree@vger.kernel.org,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
+	linux-pwm@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
+	Lee Jones <lee@kernel.org>, linux-mediatek@lists.infradead.org,
+	upstream@airoha.com, Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-gpio@vger.kernel.org, benjamin.larsson@genexis.eu,
+	ansuelsmth@gmail.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v3 1/5] dt-bindings: arm: airoha: Add the chip-scu node
+ for EN7581 SoC
+Message-ID: <172537593271.1018147.17791430767383351676.robh@kernel.org>
+References: <20240831-en7581-pinctrl-v3-0-98eebfb4da66@kernel.org>
+ <20240831-en7581-pinctrl-v3-1-98eebfb4da66@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240820140133.GA207494@bhelgaas>
+In-Reply-To: <20240831-en7581-pinctrl-v3-1-98eebfb4da66@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240903_064726_585174_867CC267 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20240903_080536_964812_B03D0EF1 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,15 +82,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
 
-> > any update about this series? Am I supposed to do something? Thanks in advance.
+On Sat, 31 Aug 2024 16:27:46 +0200, Lorenzo Bianconi wrote:
+> This patch adds the chip-scu document bindings for EN7581 SoC.
+> The airoha chip-scu block provides a configuration interface for clock,
+> io-muxing and other functionalities used by multiple controllers (e.g.
+> clock, pinctrl, ecc.) on EN7581 SoC.
 > 
-> No need to do anything, I think Krzysztof will likely pick this up
-> when he has a minute.
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  .../bindings/arm/airoha,en7581-chip-scu.yaml       | 42 ++++++++++++++++++++++
+>  1 file changed, 42 insertions(+)
+> 
 
-Everything looks good!  Bjorn, should be able to pull it for 6.12,
-hopefully.  Apologies for the delay.
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
-	Krzysztof
 
