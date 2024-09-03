@@ -4,202 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38853CD3420
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Sep 2024 09:55:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2244CD13CF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Sep 2024 10:48:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ypBQuA+AIcEE/6X9OeNSXiZ9Yc6T0zY0vK7Sa5PBDUI=; b=zda3BpnFWcjeCAaVx4CalsqrZH
-	b94uGmfqkPAcb1xbc7DA563lXPtYzJCykQz3imTSPECP3bNxiGYn3KbOWkll3WH6mWxsvdy8YTwr8
-	RyTT35brABVizNM4knkbjK6lKguFiWrwJzaLhxqgwOL6l4whieL5fs70ya2n7lIhf5Tm73pAOGQe2
-	fu6XaLAGhY+mFuFxwdeA3O69eqGIihdBKY2SpIMbiB16KBh9Pa3R5R1uSl3cLyCLFlLmOlrJuanm7
-	EWAS/vuRpVddZ+LP5mHM6UbMngERQCKp1L7jetCi+RE01yWE+IN1EBTAiS2ue/BETzLg8M9QqUWMz
-	CnWlZ3dw==;
+	bh=4umYbcZ0b+sOSGAj+Oq1NFycyEsAC59fT5uNZWwoeU4=; b=WRPUqDWhhMNom8gCg2VrOOZ5ut
+	vphgZJijuHhdV65vEKeH6KnBO6nMSgGZ7dujqmcA8lP8NghD/Sv2wCC2IeATRU2w60GY8404AumtY
+	1NaIG78DlJxJ8MhL+FrGorFbLpnXEvJzD/t8vY10vJDGm7soGrhqUA4LL5D/AqFakBTGTz4R2M5lB
+	J3rQyBj9XQUQno9bOjgKFJ04zAUXaaK0qruwHmAM75dhFfCVEWafVXi1vhQhmA/08m85UCyE2bL4O
+	eqKE0F09rIpn2Ahu0hRHCdfay1YQNlpXrhIwOrK+0mBKaK4OIK/4XiWdtzfGv5fNDvKpiIyUcH8MU
+	4kfzYlFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slQGL-0000000HG3h-3tLy;
-	Tue, 03 Sep 2024 09:55:49 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1slR5R-0000000HOkr-1cPF;
+	Tue, 03 Sep 2024 10:48:37 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slQ1C-0000000HCxd-0Ymd;
-	Tue, 03 Sep 2024 09:40:11 +0000
-X-UUID: 7dbe677e69d811efba0aef63c0775dbf-20240903
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:To:From; bh=ypBQuA+AIcEE/6X9OeNSXiZ9Yc6T0zY0vK7Sa5PBDUI=;
-	b=LoHUrleH0uC57Nh9XgnZiaxjVHteSoI01ozgEcnuBrEx6r0bwhVAd+hG20AqLnABq5+Bss1g5opNM/hpe3anY2+Ljw0p3njEW+yOgpgEE6Qs/QpDUzVWCDo5mGUgoASP4r1s0wSoFnYZRqx6DSW8u4cqesRaQaWWgvNnxdGK52A=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:ef0c7950-efbb-44aa-a334-caffd8bf85ce,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:dafc3b15-737d-40b3-9394-11d4ad6e91a1,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1|-5,EDM:-3,IP:ni
-	l,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
-	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 7dbe677e69d811efba0aef63c0775dbf-20240903
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1030155670; Tue, 03 Sep 2024 02:40:01 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 3 Sep 2024 17:39:28 +0800
-Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 3 Sep 2024 17:39:28 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=kKZ87MFvWUZNjterxGi0CUcpBji1ZVehq1HrCckhUmfy5LP5wy8VnI6bI4ijFdu23Qo2Xtr5M5nSl+gqR3YYLMqdtkLKU6qHzA4SOKCgAsdGBe/UBlmu2NaGo9HOW1EMHqB9d8uItB6QMy7OliRojoyZdMV/1KC9hgGnAncXFV3ryAk63JPkkY5ScFxpk9ELUjWn64F4y685uVOzpq9yxNVnmy1uXhZs5xbEBFVgRLSaeq9kS6W6cUs4CKSh9dg3GFu+wKajCwzJaNj8NnIi7MhWqUNfduA57BQx+sgsGjj88o4C+MQKAL7UGpsRvyGK4Vqp+p5ZVLmIHBcgJvat1Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ypBQuA+AIcEE/6X9OeNSXiZ9Yc6T0zY0vK7Sa5PBDUI=;
- b=XmMeUDublD19QFvT+pzpiPMJvnHGM2UCuAy/dcWRXOtnypakxTXneRNxZNPv04b1cd3IO9qWlA7VkW1rEhw1aguwgmOfuwHJ1SvPq6oj8NCml2khSuW9mui7bmj2o4wBS4+dstiszOM3ECN6/JvR7mw2UVJiJ9oteO7q6B3PR4EmRKCfw+YJuU5dOd9nUaj5R+cXBqhzsdDBhgUwahSHCYaOUK7EjwjT7HRae31vmmSjfZvx3w0PFCfT6tDCErviTizzFleA0s/Dspiv/dsU4+Zvo3p1DClOTUWw8C5LmpEW9tMjzdUUlL8UtI0rUV1R6fOPvmG8b6BSBIeTzOF8jg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	id 1slR3z-0000000HOL4-2ilk
+	for linux-mediatek@lists.infradead.org;
+	Tue, 03 Sep 2024 10:47:12 +0000
+Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-5c245c62362so2681894a12.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 03 Sep 2024 03:47:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ypBQuA+AIcEE/6X9OeNSXiZ9Yc6T0zY0vK7Sa5PBDUI=;
- b=nr+jJTZEq+5UYcrQfA0FF6QD6ZUfp95uOZzcllTPsHlIBVl08W4HMPdsvubnsze50BOIqmDjuBSPzAAAJ064WzETnCMbqZKdrz5kNmIkAkiI8h6z9dxwARervdOIDGUushLnuRTKyXcKGGWM73e/gsoEnPSGbzmKIo/Orn1N5Rs=
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
- by TYZPR03MB6671.apcprd03.prod.outlook.com (2603:1096:400:1f1::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7918.23; Tue, 3 Sep
- 2024 09:39:26 +0000
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::9ce6:1e85:c4a7:2a54]) by TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::9ce6:1e85:c4a7:2a54%7]) with mapi id 15.20.7918.024; Tue, 3 Sep 2024
- 09:39:26 +0000
-From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-To: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	=?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, "mchehab@kernel.org"
-	<mchehab@kernel.org>, =?utf-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?=
-	<Moudy.Ho@mediatek.com>, "dri-devel@lists.freedesktop.org"
-	<dri-devel@lists.freedesktop.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v4 2/3] media: platform: mtk-mdp3: Use cmdq_pkt_create()
- and cmdq_pkt_destroy()
-Thread-Topic: [PATCH v4 2/3] media: platform: mtk-mdp3: Use cmdq_pkt_create()
- and cmdq_pkt_destroy()
-Thread-Index: AQHa/HvrzIwSoIk6K0eKlefaDAGVSrJEoV4AgAEv/YA=
-Date: Tue, 3 Sep 2024 09:39:25 +0000
-Message-ID: <d5c512d06e013555397722137d5790dc8a627bfd.camel@mediatek.com>
-References: <20240901143259.16849-1-chunkuang.hu@kernel.org>
-	 <20240901143259.16849-3-chunkuang.hu@kernel.org>
-	 <1d4e9e86-aaaf-4d19-b89f-6f7207ab72d8@gmail.com>
-In-Reply-To: <1d4e9e86-aaaf-4d19-b89f-6f7207ab72d8@gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|TYZPR03MB6671:EE_
-x-ms-office365-filtering-correlation-id: 77564307-1d0c-4133-492d-08dccbfc4cbe
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|366016|376014|1800799024|38070700018|921020;
-x-microsoft-antispam-message-info: =?utf-8?B?emFnUEpVNURHNDBuaytlZUc0S0VxUFVvamtGaTBOQzdBc2dYWUJQaWsvb29M?=
- =?utf-8?B?L2RUWktVcndmeVc2M1JpQVlPNW5mUEduSHcxYzg4Qng2Y282WG5jRkZ5NHl5?=
- =?utf-8?B?WFlFZVBxNEpmdHlYWm4wbnNwR0h2MkNFd0RJMERaMWZqYWhMNWdObUllMzNM?=
- =?utf-8?B?NFd4eFpmUm5oWVVmcGZyMkJuSGVkSGxySFcyb1VPczZmUGJyTnowdSthdXV1?=
- =?utf-8?B?eDhGT01NK3dERExvYTN5VTRzdUhqWkNqU0lONTUyZFY0MkY1WUF2U0s4c2l3?=
- =?utf-8?B?NmdOSG44ZTQyZDNFa2J2YkFzZUh1ZmV5SElWTHJhV1g3WDNPVngxMDh6OWxB?=
- =?utf-8?B?aFRxRW1BUW80V1dXV0NCNy9XQXhhczV2eDJ4ZHlsYjNwVksrSnlsRmdDbWVO?=
- =?utf-8?B?VUpudEZjYUlVbW92K2N5bzFIUWp3cXo4d2xyVWYxdmI3VlF3Z20vRmZjaGlU?=
- =?utf-8?B?dWVYWDMxaU1JdHJVREdGb3A3bndIUVlhZWM5d2FrbXYxNW82WUNKZlYxZTJ0?=
- =?utf-8?B?eU9oei9wazdIcTMzUjhqU1NVVlFnZkhhQ1U3M1lmNk1GOG9wQWN0OENyRXVH?=
- =?utf-8?B?VTQ2Yi9xeFBNeEZkWWFZdlFnaTk4MFdTQ3VMdDBITjBVVEdxaUlXVXZXMXhR?=
- =?utf-8?B?R1dhemVoTFRBN283ZUIvVFJxbzJoNE1OWUNLcWVQMXhZNml0NGx4N0phQ3BK?=
- =?utf-8?B?MXNGaDRQLzBuUG9LbFJvd3puOUcrVlVVaysxd1lETHFMU29OZ2piYXIwTnVp?=
- =?utf-8?B?RmZXTzFCNEtSSWZBdUJrbWxiTXVUR29TdHpQNkpqajhCK2Z0RVFxVFBsUUdo?=
- =?utf-8?B?TktFdjU1YjQ0dWZkWVRUeTVKU3ViOGQ0NmJLeW5FSkp0dlZxRmszUENxb1px?=
- =?utf-8?B?aEZRQU1UZ0JhZEtSS25hRjcrS3pTdlJsR1VBWGJZVFg5bUF4MGhmVGtYSHBD?=
- =?utf-8?B?UXlpT3lJUmU4THU1SFQ0YXdpR1RYSSsrTjRpVmpHN0EvOFRvUnB2alpRbVpr?=
- =?utf-8?B?bGUvR2dVdllEYXlteldhSzNBaUMrb1NqOGQvd2tTY2pvMnA4QUNEa3BDYW1E?=
- =?utf-8?B?MkJiZ3NOS2lyOHVWTDRRa21Pb0hBcDZTOTlPbDRRdnlYM1FxcDI0bkRvOVEw?=
- =?utf-8?B?cm4vUWlScjNNbUloSHpBRytTOSt3OERGOGphQzNNSC9BNTExUk5nUmtUSmly?=
- =?utf-8?B?Q2NueWs3YmFsZVNnMU9SbzRwcG9UaVRkQVJyNDQyaXAvNE1DM2ozK2tYZUp2?=
- =?utf-8?B?MERaZ1VDUzZyWFZWUkl3SS9SVDhweU9OeGNJS1RDT1QxMnFBT1IxMHR3M2FH?=
- =?utf-8?B?V08vaFN3VkV5dVJ2ZVdyUVdSb1RJbEV3K0ltNGFxMlhNWENqTzYxd3kvN2xy?=
- =?utf-8?B?YWxhSFlvY2NyMjZPNU5mR1ZRb1MvSklhKzJJMTRGYmcxdEQwYytpKzg1UzFS?=
- =?utf-8?B?K2Q5WmpGTXVCTmlpNEpON1RmRXQrSXlkTXZjai8yOERPL2Yyd0FibDNIa280?=
- =?utf-8?B?bU41MEcwR3BqVi9MWWxGNEIyakkzek93akgvWkl1dkxhU0RURkpwdHZoRlU0?=
- =?utf-8?B?Q1N4azEySk1mMzk0RDVYUzhjWWV2SHNSdUloakNZdk5obzF4dEZrOVd6dFRa?=
- =?utf-8?B?eHovVll4cVNOOHR1OGF6TUdOcnYyempzWUdxZ1dTNTFNNVZicUVJNWh6dE9q?=
- =?utf-8?B?UUtQanVaMEhWYUFrcXMzeUlVMFkvclRTbEcyN0pBNkIyZHF4ZVZvckFoTWxS?=
- =?utf-8?B?blozeVlmdncwQWpuNmd0WVdzaFk5U2pac2M4ME1kQlpqY0ttVmJPUjZEaXNo?=
- =?utf-8?B?bXVGWkNHRWpJeDl6SEYzNnNTNWhNekQ5YVBaTFM3ZGVTZ0FES1VjRitpRTh5?=
- =?utf-8?B?cWVMam5jQ0JkaW9OQ21obldTbXAvUXErdUl6ZU4yTTNzUytXaTNmc2dIYUcx?=
- =?utf-8?Q?tC8Jo/Fd+f8=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(376014)(1800799024)(38070700018)(921020);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Z01YMHZJb3dIOWtCZnFhei8vSVNXZDVTZXVZSE01L2FQcTdtc3JIOVg4MnBn?=
- =?utf-8?B?VHpIWE11NHF3UmZpa0UvSlI4OXNwSmN3MWc4NGNuQVZtUk9SYTRzQyt2OU9K?=
- =?utf-8?B?RU5CYWVuMTNHZEVSU1J4NWd0YXNEcVhxazV5bC9EK0V5czdiU0ZXejlGUnhP?=
- =?utf-8?B?ZkZ1Q3Z2MFk5TEIwaTllT2o3S2NJVDV1MEpjWmo3THZuVExRMmUxd1Yvekhr?=
- =?utf-8?B?clhLemZldllqWkpjZXFkVm5ISXVUL1lHeWlxR1lrSjBsOTBCSWx6Q09tUFEx?=
- =?utf-8?B?MDFDcGNZZ09HdHgrM0wvL2pOZ0RDSFlxYS9oTWNKWjAxeFJFbVMxSEhmL0lE?=
- =?utf-8?B?bEZwU2NQT1NQcEFOMVRtV1JmZnAvNDBuTVo0QlhmZC93YnFXaENOT3dLSVpR?=
- =?utf-8?B?SlI3MHZyeEpoV2diV3I0Tldwd0IwRnZXZ1BBRkppaHcyZFNiekZ3cjNSS09T?=
- =?utf-8?B?NHFwMEVyZmltMkYrbmxsbEV5YzhiRXl2NzRyUldMTzAyQ1dpV2RENXhwdkx4?=
- =?utf-8?B?enFUazBpOWtVNTRLRHJHekV5R2wwSW94Z04xQzFKWTJTOGkySVlmNzYxdjlS?=
- =?utf-8?B?MnhHOThLMER5Vk5TSmVoVW5RNnI1M3UxN0pZWDg5d1BON2FXQjJtdmpnZmlW?=
- =?utf-8?B?Ukc4WmRSd3IzeU9Dd2h4Zm1pamVBT2ZCMEdRSVcvSXhwbGJNRVE1ZFhEaE9O?=
- =?utf-8?B?KzJ1WkdDOGhEOFd6TGdJK0R2Nzc2bWdqTzZROWlObmlUU2RxeFVlOHVEektp?=
- =?utf-8?B?ek9oTHpTbXRzVlB1ZnIrdEQzcnlBUzNvTzVwRGR5cHoyM1l6SjlFZS9ZaEts?=
- =?utf-8?B?akFLRmcvNnMwLzdQWi9BMnR2bGhENEk0M3hianFSaGNDVlZSeEpZWmhBd2pR?=
- =?utf-8?B?V0c0bWNqYUlsWU9YT0l2QzRra3BTOTBDaDY2d3l4UkdlTWRxSUo4REhCU3FX?=
- =?utf-8?B?dU9QcEExMGFWc0tNS2hoSVJBZ1BtcmoxWjJ0dDdvQjEyUytjVWxURDRwTDlW?=
- =?utf-8?B?amcvSlBRY2FZVXA5Q1A3SEFGS09TZ054bnBTeGFaQmcwS3VZTEY5cnlDR01j?=
- =?utf-8?B?MTY5YVRjeHNHRU9UWm5DMkwrMEFuOGIwMmJ1TUlpeXAvZCtyNEl1Myt1VGNF?=
- =?utf-8?B?QWJhVmlDZ05uQW5FTTdLbWdFQ0kzQnk1bEgvUzAzaGR4cFp1S0kzcHBiZUNK?=
- =?utf-8?B?c2xpSGc2MG1rYUIxcVdhYjNQMTg5QjNzTklTRVgraktWbEYzYU1Ba2ZwczZ4?=
- =?utf-8?B?SVl3MkpkaWlKU3drNFZ5U0MreTFKeUVzS0xQOE9xV1UzMmRmUXNLbGxzRFNJ?=
- =?utf-8?B?VmJoWlFqWmlQUnc3OWlMbGhPaVNsUXdkM244SjlXNlFuN2tqc2lRNm9BR0x2?=
- =?utf-8?B?cCtNZkZlQW14eUJTMHoxd2xmamZ4N0hzNWJ5enBlRCtBZ1YrS3MydFk5MUFW?=
- =?utf-8?B?a25USk9FdTg1WVhxbEV3akIwRFkwYWJMUndCNGw1M0orcWVSQ2ExMTBBTE0r?=
- =?utf-8?B?R3pZZDJ4RkE3SnU1UXVSaTVLZjIyYitZOGNxV00vYytDNDdjc3d2MTc0R1VJ?=
- =?utf-8?B?ZnJIdHJQMVZld3VhRFNzSVZ2OThsNjlhTjlvaVZnQnR0di9XU3AzNkxXZ0Jv?=
- =?utf-8?B?S1NySit4cHZKdWxaSWRjMkhpc1d1bzJIMlY2U1VibmRlTU4wY1cybGxMSHBJ?=
- =?utf-8?B?a0I1Umc1R3IwVlorRGg0K1hMeHlFaHdFditreitFWnhaU2F6OU9WSVI2VzdQ?=
- =?utf-8?B?T2RCV3M4VHhzY3J6ZGVGZnBXN0RUMkI5WWlxZk1PNlhQVDg1N1ZvSDQ2OWti?=
- =?utf-8?B?T2hkTE8vbGpWd002aTVSWExKUHl4bjk5eXZWSlFKYXRSTkRQdEFXSVBmbnVj?=
- =?utf-8?B?Y2RpMENIRHF4RXRseHVMSm1NVDFrQkFzemloVmFMSG5jZG4rWTZzRnhpZTVT?=
- =?utf-8?B?UTVQenRMWG1rN0tMa1lmS1NIRDJtQWwydUZRUlc0aXd4QiszTHJ4YUxyZ0VC?=
- =?utf-8?B?QVdoaHdVUFhuRE1kVC9FMmt4WE02bHhUOUJlVGJ3ejVxZkNCNUdqZ2ZsTnJk?=
- =?utf-8?B?VEUwRFZYRnhMRU1XZUNQZ2p6S3dlemdQbmRYQlBkWlZaZTd5Q0dFQWdCM3NE?=
- =?utf-8?Q?ylRqnWdnpe3gzTzPoK0NM9Z5j?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <CA8BD679BC00B64390FC56D41393181A@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1725360420; x=1725965220; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=4umYbcZ0b+sOSGAj+Oq1NFycyEsAC59fT5uNZWwoeU4=;
+        b=FZTbyxRdtDFyXxLm8TDVgMpiGgWOkp4XVmmeQvUQiLwE83FaxaVVZhXf/i1tABjbSV
+         2PuFK/DOBEwaEjYf/3RJoZXbQaRlIdViaZA5Hn2Ox8KlXre9wm41iXDrWhp5B+o2kkfe
+         1zbuk55I1VoTCGSXNDwEmCHWWWVxqRpbAotmq0gjqJ09Q/t0KOT4J1YKBKDR0/P00uxY
+         TIFub+kSR2AHeONknBRqh/L8yD9pCdh/ZtAqlUUTFuN0CrK/oPnZXEiEWmsXfvGSPdmZ
+         KMsWr7HHC25OTzufS0HSck7dOldS/7bG3FnNggjykrLArhFGNfB0dXfXTB2ZI+RzsAgM
+         ytoQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1725360420; x=1725965220;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=4umYbcZ0b+sOSGAj+Oq1NFycyEsAC59fT5uNZWwoeU4=;
+        b=bI+nDgLrwZIbLQp0Uc9Oau2VWn/9l6Bytgt/cvZW9G+k9hBAIfwe7W1OBucQiIWQo0
+         Uo3I6/i8JNWRQMW/Mun9Zs4Fb3FQN93jxMA8cR+ugnkpEcht2WxQ/5cqo/swQMIL52ex
+         0ju13y4XmK4dgoQDOpnNNr5jCFcsw7MJZ7pjN1znEEmyrjo5F/ANGpJYrV5vMSfyg704
+         jy9911CzX1lXG/nh9U9+qAvvhoarCOpmi2AORrwJZ/CWjf+DWbTy4znn/87BpSa8LGm+
+         9E389G/u6mZKtPJXL6dB0PG8nOSmJMGiqWPBirAakbUTqD4CzjWXepthj8t/ifr/sibe
+         xIDA==
+X-Forwarded-Encrypted: i=1; AJvYcCXzJdN53mrNKAy91XqhCkZdonbbWQiyJoBBFvozLRio3D4snyCt1ClsYECq9vboOK4++rP3p74447W9e2LWfA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yww2M5XlRctI4Zw8LmCxx8Qr7SpJo4l7Z2vuLXYiUgDa8QvzrLw
+	ocU4+D5P7zC5oNfIghl7od6bsIs6aZHmTDBUSe3scFNaV9mqbK32GyZm9lz1BSI=
+X-Google-Smtp-Source: AGHT+IGgYRkw1SDOUq0lQnzzs2I5aHryZGs6yz1j3swbXveBrYRLbcENX7PHHVTWqGmRE/+HgnBnIA==
+X-Received: by 2002:a05:6402:401a:b0:5c2:61a7:62e4 with SMTP id 4fb4d7f45d1cf-5c2757d6926mr219652a12.10.1725360419472;
+        Tue, 03 Sep 2024 03:46:59 -0700 (PDT)
+Received: from localhost (p5dc68f76.dip0.t-ipconnect.de. [93.198.143.118])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5c226ccf2a0sm6260879a12.64.2024.09.03.03.46.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 03 Sep 2024 03:46:59 -0700 (PDT)
+Date: Tue, 3 Sep 2024 12:46:57 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lee Jones <lee@kernel.org>, linux-mediatek@lists.infradead.org, 
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	upstream@airoha.com, benjamin.larsson@genexis.eu, ansuelsmth@gmail.com, 
+	linux-pwm@vger.kernel.org
+Subject: Re: [PATCH v3 5/5] pwm: airoha: Add support for EN7581 SoC
+Message-ID: <yfqmlca6cnhrghpo5s6tml36tngmekcfbyjakxs7or7wtap3ka@7qlrxjowo4ou>
+References: <20240831-en7581-pinctrl-v3-0-98eebfb4da66@kernel.org>
+ <20240831-en7581-pinctrl-v3-5-98eebfb4da66@kernel.org>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 77564307-1d0c-4133-492d-08dccbfc4cbe
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Sep 2024 09:39:25.9157
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: zSR5igM+tarbS/nE8NUtQ6sljxUCm07VcvqG8SFLIiSbQCdBH6b4cK9diBwy6sdL9Ah/EKO9M1hhZ1Lyardwaw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB6671
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="xrkzyim6vsn2dpvr"
+Content-Disposition: inline
+In-Reply-To: <20240831-en7581-pinctrl-v3-5-98eebfb4da66@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240903_024010_188679_236E56B4 
-X-CRM114-Status: GOOD (  18.76  )
+X-CRM114-CacheID: sfid-20240903_034708_189702_64E9CBB2 
+X-CRM114-Status: GOOD (  47.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -214,88 +99,627 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIE1hdHRoaWFzOg0KDQpPbiBNb24sIDIwMjQtMDktMDIgYXQgMTc6MzEgKzAyMDAsIE1hdHRo
-aWFzIEJydWdnZXIgd3JvdGU6DQo+ICAJIA0KPiBFeHRlcm5hbCBlbWFpbCA6IFBsZWFzZSBkbyBu
-b3QgY2xpY2sgbGlua3Mgb3Igb3BlbiBhdHRhY2htZW50cyB1bnRpbCB5b3UgaGF2ZSB2ZXJpZmll
-ZCB0aGUgc2VuZGVyIG9yIHRoZSBjb250ZW50Lg0KPiAgDQo+IA0KPiBPbiAwMS8wOS8yMDI0IDE2
-OjMyLCBDaHVuLUt1YW5nIEh1IHdyb3RlOg0KPiA+IFVzZSBjbWRxX3BrdF9jcmVhdGUoKSBhbmQg
-Y21kcV9wa3RfZGVzdHJveSgpIGNvbW1vbiBmdW5jdGlvbg0KPiA+IGluc3RlYWQgb2YgaW1wbGVt
-ZW50aW5nIG1kcDMgdmVyc2lvbi4NCj4gPiANCj4gPiBTaWduZWQtb2ZmLWJ5OiBDaHVuLUt1YW5n
-IEh1IDxjaHVua3VhbmcuaHVAa2VybmVsLm9yZz4NCj4gPiAtLS0NCj4gPiAgIC4uLi9wbGF0Zm9y
-bS9tZWRpYXRlay9tZHAzL210ay1tZHAzLWNtZHEuYyAgICB8IDQ2ICsrLS0tLS0tLS0tLS0tLS0t
-LS0NCj4gPiAgIC4uLi9wbGF0Zm9ybS9tZWRpYXRlay9tZHAzL210ay1tZHAzLWNtZHEuaCAgICB8
-ICAxICsNCj4gPiAgIDIgZmlsZXMgY2hhbmdlZCwgNiBpbnNlcnRpb25zKCspLCA0MSBkZWxldGlv
-bnMoLSkNCj4gPiANCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tZWRp
-YXRlay9tZHAzL210ay1tZHAzLWNtZHEuYyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbWVkaWF0
-ZWsvbWRwMy9tdGstbWRwMy1jbWRxLmMNCj4gPiBpbmRleCBlZjVkYWRlMzVmZDMuLjc0MGE0ODRj
-OGViNCAxMDA2NDQNCj4gPiAtLS0gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21lZGlhdGVrL21k
-cDMvbXRrLW1kcDMtY21kcS5jDQo+ID4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tZWRp
-YXRlay9tZHAzL210ay1tZHAzLWNtZHEuYw0KPiA+IEBAIC00NzEsNDMgKzQ3MSw2IEBAIHN0YXRp
-YyBpbnQgbWRwX3BhdGhfY29uZmlnKHN0cnVjdCBtZHBfZGV2ICptZHAsIHN0cnVjdCBtZHBfY21k
-cV9jbWQgKmNtZCwNCj4gPiAgIHJldHVybiAwOw0KPiA+ICAgfQ0KPiA+ICAgDQo+ID4gLXN0YXRp
-YyBpbnQgbWRwX2NtZHFfcGt0X2NyZWF0ZShzdHJ1Y3QgY21kcV9jbGllbnQgKmNsaWVudCwgc3Ry
-dWN0IGNtZHFfcGt0ICpwa3QsDQo+ID4gLSAgICAgICBzaXplX3Qgc2l6ZSkNCj4gPiAtew0KPiA+
-IC1zdHJ1Y3QgZGV2aWNlICpkZXY7DQo+ID4gLWRtYV9hZGRyX3QgZG1hX2FkZHI7DQo+ID4gLQ0K
-PiA+IC1wa3QtPnZhX2Jhc2UgPSBremFsbG9jKHNpemUsIEdGUF9LRVJORUwpOw0KPiA+IC1pZiAo
-IXBrdC0+dmFfYmFzZSkNCj4gPiAtcmV0dXJuIC1FTk9NRU07DQo+ID4gLQ0KPiA+IC1wa3QtPmJ1
-Zl9zaXplID0gc2l6ZTsNCj4gPiAtcGt0LT5jbCA9ICh2b2lkICopY2xpZW50Ow0KPiANCj4gY21k
-cV9wa3RfY3JlYXRlIGRvZXMgbm90IHNldCB0aGUgY2FsbGJhY2suIFdoeSBkb2Vzbid0IHRoYXQg
-YnJlYWsgdGhpbmdzPw0KPiBTYW1lIGhvbGRzIGZvciB0aGUgY3J0YyBkcml2ZXIgdGhhdCBpcyBh
-bHJlYWR5IGluIGxpbnV4LW5leHQuDQoNClRoaXMgc2VyaWVzIGlzIHRvIHJlbW92ZSBwa3QtPmNs
-Lg0KRm9yIHRoZSBoZWxwZXIgZnVuY3Rpb24gd2hpY2sgbmVlZCBwa3QtPmNsLCBhZGQgcGFyYW1l
-dGVyIHRvIHBhc3MgdGhlIGNtZHFfY2xpZW50IGluZm9ybWF0aW9uLg0KVXAgdG8gbm93LCBvbmx5
-IGNtZHFfcGt0X2ZpbmFsaXplKCkgdXNlIHBrdC0+Y2wsIGJ1dCBpdCBpcyByZXBsYWNlZCBieSBj
-bWRxX3BrdF9lb2MoKSBhbmQgY21kcV9wa3RfanVtcF9yZWwoKSBpbiBbUEFUQ0ggdjQgMS8zXS4N
-ClNvIHRoaXMgd291bGQgbm90IGJyZWFrIGFueSB0aGluZy4NCg0KUmVnYXJkcywNCkNLDQoNCj4g
-DQo+IFJlZ2FyZHMsDQo+IE1hdHRoaWFzDQo+IA0KPiA+IC0NCj4gPiAtZGV2ID0gY2xpZW50LT5j
-aGFuLT5tYm94LT5kZXY7DQo+ID4gLWRtYV9hZGRyID0gZG1hX21hcF9zaW5nbGUoZGV2LCBwa3Qt
-PnZhX2Jhc2UsIHBrdC0+YnVmX3NpemUsDQo+ID4gLSAgRE1BX1RPX0RFVklDRSk7DQo+ID4gLWlm
-IChkbWFfbWFwcGluZ19lcnJvcihkZXYsIGRtYV9hZGRyKSkgew0KPiA+IC1kZXZfZXJyKGRldiwg
-ImRtYSBtYXAgZmFpbGVkLCBzaXplPSV1XG4iLCAodTMyKSh1NjQpc2l6ZSk7DQo+ID4gLWtmcmVl
-KHBrdC0+dmFfYmFzZSk7DQo+ID4gLXJldHVybiAtRU5PTUVNOw0KPiA+IC19DQo+ID4gLQ0KPiA+
-IC1wa3QtPnBhX2Jhc2UgPSBkbWFfYWRkcjsNCj4gPiAtDQo+ID4gLXJldHVybiAwOw0KPiA+IC19
-DQo+ID4gLQ0KPiA+IC1zdGF0aWMgdm9pZCBtZHBfY21kcV9wa3RfZGVzdHJveShzdHJ1Y3QgY21k
-cV9wa3QgKnBrdCkNCj4gPiAtew0KPiA+IC1zdHJ1Y3QgY21kcV9jbGllbnQgKmNsaWVudCA9IChz
-dHJ1Y3QgY21kcV9jbGllbnQgKilwa3QtPmNsOw0KPiA+IC0NCj4gPiAtZG1hX3VubWFwX3Npbmds
-ZShjbGllbnQtPmNoYW4tPm1ib3gtPmRldiwgcGt0LT5wYV9iYXNlLCBwa3QtPmJ1Zl9zaXplLA0K
-PiA+IC0gRE1BX1RPX0RFVklDRSk7DQo+ID4gLWtmcmVlKHBrdC0+dmFfYmFzZSk7DQo+ID4gLXBr
-dC0+dmFfYmFzZSA9IE5VTEw7DQo+ID4gLX0NCj4gPiAtDQo+ID4gICBzdGF0aWMgdm9pZCBtZHBf
-YXV0b19yZWxlYXNlX3dvcmsoc3RydWN0IHdvcmtfc3RydWN0ICp3b3JrKQ0KPiA+ICAgew0KPiA+
-ICAgc3RydWN0IG1kcF9jbWRxX2NtZCAqY21kOw0KPiA+IEBAIC01MzgsNyArNTAxLDcgQEAgc3Rh
-dGljIHZvaWQgbWRwX2F1dG9fcmVsZWFzZV93b3JrKHN0cnVjdCB3b3JrX3N0cnVjdCAqd29yaykN
-Cj4gPiAgIHdha2VfdXAoJm1kcC0+Y2FsbGJhY2tfd3EpOw0KPiA+ICAgfQ0KPiA+ICAgDQo+ID4g
-LW1kcF9jbWRxX3BrdF9kZXN0cm95KCZjbWQtPnBrdCk7DQo+ID4gK2NtZHFfcGt0X2Rlc3Ryb3ko
-bWRwLT5jbWRxX2NsdFtjbWQtPnBwX2lkeF0sICZjbWQtPnBrdCk7DQo+ID4gICBrZnJlZShjbWQt
-PmNvbXBzKTsNCj4gPiAgIGNtZC0+Y29tcHMgPSBOVUxMOw0KPiA+ICAga2ZyZWUoY21kKTsNCj4g
-PiBAQCAtNTc4LDcgKzU0MSw3IEBAIHN0YXRpYyB2b2lkIG1kcF9oYW5kbGVfY21kcV9jYWxsYmFj
-ayhzdHJ1Y3QgbWJveF9jbGllbnQgKmNsLCB2b2lkICptc3NnKQ0KPiA+ICAgaWYgKHJlZmNvdW50
-X2RlY19hbmRfdGVzdCgmbWRwLT5qb2JfY291bnQpKQ0KPiA+ICAgd2FrZV91cCgmbWRwLT5jYWxs
-YmFja193cSk7DQo+ID4gICANCj4gPiAtbWRwX2NtZHFfcGt0X2Rlc3Ryb3koJmNtZC0+cGt0KTsN
-Cj4gPiArY21kcV9wa3RfZGVzdHJveShtZHAtPmNtZHFfY2x0W2NtZC0+cHBfaWR4XSwgJmNtZC0+
-cGt0KTsNCj4gPiAgIGtmcmVlKGNtZC0+Y29tcHMpOw0KPiA+ICAgY21kLT5jb21wcyA9IE5VTEw7
-DQo+ID4gICBrZnJlZShjbWQpOw0KPiA+IEBAIC02MjAsNyArNTgzLDcgQEAgc3RhdGljIHN0cnVj
-dCBtZHBfY21kcV9jbWQgKm1kcF9jbWRxX3ByZXBhcmUoc3RydWN0IG1kcF9kZXYgKm1kcCwNCj4g
-PiAgIGdvdG8gZXJyX3VuaW5pdDsNCj4gPiAgIH0NCj4gPiAgIA0KPiA+IC1yZXQgPSBtZHBfY21k
-cV9wa3RfY3JlYXRlKG1kcC0+Y21kcV9jbHRbcHBfaWR4XSwgJmNtZC0+cGt0LCBTWl8xNkspOw0K
-PiA+ICtyZXQgPSBjbWRxX3BrdF9jcmVhdGUobWRwLT5jbWRxX2NsdFtwcF9pZHhdLCAmY21kLT5w
-a3QsIFNaXzE2Syk7DQo+ID4gICBpZiAocmV0KQ0KPiA+ICAgZ290byBlcnJfZnJlZV9jbWQ7DQo+
-ID4gICANCj4gPiBAQCAtNzAwLDYgKzY2Myw3IEBAIHN0YXRpYyBzdHJ1Y3QgbWRwX2NtZHFfY21k
-ICptZHBfY21kcV9wcmVwYXJlKHN0cnVjdCBtZHBfZGV2ICptZHAsDQo+ID4gICBjbWQtPmNvbXBz
-ID0gY29tcHM7DQo+ID4gICBjbWQtPm51bV9jb21wcyA9IG51bV9jb21wOw0KPiA+ICAgY21kLT5t
-ZHBfY3R4ID0gcGFyYW0tPm1kcF9jdHg7DQo+ID4gK2NtZC0+cHBfaWR4ID0gcHBfaWR4Ow0KPiA+
-ICAgDQo+ID4gICBrZnJlZShwYXRoKTsNCj4gPiAgIHJldHVybiBjbWQ7DQo+ID4gQEAgLTcxMSw3
-ICs2NzUsNyBAQCBzdGF0aWMgc3RydWN0IG1kcF9jbWRxX2NtZCAqbWRwX2NtZHFfcHJlcGFyZShz
-dHJ1Y3QgbWRwX2RldiAqbWRwLA0KPiA+ICAgZXJyX2ZyZWVfY29tcHM6DQo+ID4gICBrZnJlZShj
-b21wcyk7DQo+ID4gICBlcnJfZGVzdHJveV9wa3Q6DQo+ID4gLW1kcF9jbWRxX3BrdF9kZXN0cm95
-KCZjbWQtPnBrdCk7DQo+ID4gK2NtZHFfcGt0X2Rlc3Ryb3kobWRwLT5jbWRxX2NsdFtwcF9pZHhd
-LCAmY21kLT5wa3QpOw0KPiA+ICAgZXJyX2ZyZWVfY21kOg0KPiA+ICAga2ZyZWUoY21kKTsNCj4g
-PiAgIGVycl91bmluaXQ6DQo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0v
-bWVkaWF0ZWsvbWRwMy9tdGstbWRwMy1jbWRxLmggYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL21l
-ZGlhdGVrL21kcDMvbXRrLW1kcDMtY21kcS5oDQo+ID4gaW5kZXggNTNhMzBhZDdlMGIwLi45MzVh
-ZTk4MjU3MjggMTAwNjQ0DQo+ID4gLS0tIGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tZWRpYXRl
-ay9tZHAzL210ay1tZHAzLWNtZHEuaA0KPiA+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0v
-bWVkaWF0ZWsvbWRwMy9tdGstbWRwMy1jbWRxLmgNCj4gPiBAQCAtMzUsNiArMzUsNyBAQCBzdHJ1
-Y3QgbWRwX2NtZHFfY21kIHsNCj4gPiAgIHN0cnVjdCBtZHBfY29tcCAqY29tcHM7DQo+ID4gICB2
-b2lkICptZHBfY3R4Ow0KPiA+ICAgdTggbnVtX2NvbXBzOw0KPiA+ICt1OCBwcF9pZHg7DQo+ID4g
-ICB9Ow0KPiA+ICAgDQo+ID4gICBzdHJ1Y3QgbWRwX2RldjsNCg==
+
+--xrkzyim6vsn2dpvr
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hello,
+
+On Sat, Aug 31, 2024 at 04:27:50PM +0200, Lorenzo Bianconi wrote:
+> From: Benjamin Larsson <benjamin.larsson@genexis.eu>
+>=20
+> Introduce driver for PWM module available on EN7581 SoC.
+>=20
+> Signed-off-by: Benjamin Larsson <benjamin.larsson@genexis.eu>
+> Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  drivers/pwm/Kconfig      |  10 ++
+>  drivers/pwm/Makefile     |   1 +
+>  drivers/pwm/pwm-airoha.c | 435 +++++++++++++++++++++++++++++++++++++++++=
+++++++
+>  3 files changed, 446 insertions(+)
+>=20
+> diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
+> index 3e53838990f5..0a78bda0707d 100644
+> --- a/drivers/pwm/Kconfig
+> +++ b/drivers/pwm/Kconfig
+> @@ -47,6 +47,16 @@ config PWM_AB8500
+>  	  To compile this driver as a module, choose M here: the module
+>  	  will be called pwm-ab8500.
+> =20
+> +config PWM_AIROHA
+> +	tristate "Airoha PWM support"
+> +	depends on ARCH_AIROHA || COMPILE_TEST
+> +	depends on OF
+> +	help
+> +	  Generic PWM framework driver for Airoha SoC.
+> +
+> +	  To compile this driver as a module, choose M here: the module
+> +	  will be called pwm-airoha.
+> +
+>  config PWM_APPLE
+>  	tristate "Apple SoC PWM support"
+>  	depends on ARCH_APPLE || COMPILE_TEST
+> diff --git a/drivers/pwm/Makefile b/drivers/pwm/Makefile
+> index 0be4f3e6dd43..7ee61822d88d 100644
+> --- a/drivers/pwm/Makefile
+> +++ b/drivers/pwm/Makefile
+> @@ -1,6 +1,7 @@
+>  # SPDX-License-Identifier: GPL-2.0
+>  obj-$(CONFIG_PWM)		+=3D core.o
+>  obj-$(CONFIG_PWM_AB8500)	+=3D pwm-ab8500.o
+> +obj-$(CONFIG_PWM_AIROHA)	+=3D pwm-airoha.o
+>  obj-$(CONFIG_PWM_APPLE)		+=3D pwm-apple.o
+>  obj-$(CONFIG_PWM_ATMEL)		+=3D pwm-atmel.o
+>  obj-$(CONFIG_PWM_ATMEL_HLCDC_PWM)	+=3D pwm-atmel-hlcdc.o
+> diff --git a/drivers/pwm/pwm-airoha.c b/drivers/pwm/pwm-airoha.c
+> new file mode 100644
+> index 000000000000..54dc12d20da4
+> --- /dev/null
+> +++ b/drivers/pwm/pwm-airoha.c
+> @@ -0,0 +1,435 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright 2022 Markus Gothe <markus.gothe@genexis.eu>
+> + */
+
+Would you please add a "Limitations" paragraph here covering the
+following questions:
+
+ - How does the hardware behave on changes of configuration (does it
+   complete the currently running period? Are there any glitches?)
+ - How does the hardware behave on disabling?
+
+Please stick to the format used in several other drivers such that=20
+
+	sed -rn '/Limitations:/,/\*\/?$/p' drivers/pwm/*.c
+
+emits the informations.
+
+> +
+> +#include <linux/bitfield.h>
+> +#include <linux/err.h>
+> +#include <linux/io.h>
+> +#include <linux/iopoll.h>
+> +#include <linux/mfd/airoha-en7581-mfd.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/pwm.h>
+> +#include <linux/gpio.h>
+> +#include <linux/bitops.h>
+> +#include <asm/div64.h>
+> +
+> +#define REG_SGPIO_CFG			0x0024
+> +#define REG_FLASH_CFG			0x0038
+> +#define REG_CYCLE_CFG			0x0098
+> +
+> +#define REG_SGPIO_LED_DATE		0x0000
+> +#define SGPIO_LED_SHIFT_FLAG		BIT(31)
+> +#define SGPIO_LED_DATA			GENMASK(16, 0)
+
+Please make the bit fields's names start with the register name.
+
+> +#define REG_SGPIO_CLK_DIVR		0x0004
+> +#define REG_SGPIO_CLK_DLY		0x0008
+> +
+> +#define REG_SIPO_FLASH_MODE_CFG		0x000c
+> +#define SERIAL_GPIO_FLASH_MODE		BIT(1)
+> +#define SERIAL_GPIO_MODE		BIT(0)
+> +
+> +#define REG_GPIO_FLASH_PRD_SET(_n)	(0x0004 + ((_n) << 2))
+> +#define GPIO_FLASH_PRD_MASK(_n)		GENMASK(15 + ((_n) << 4), ((_n) << 4))
+> +
+> +#define REG_GPIO_FLASH_MAP(_n)		(0x0014 + ((_n) << 2))
+> +#define GPIO_FLASH_SETID_MASK(_n)	GENMASK(2 + ((_n) << 2), ((_n) << 2))
+> +#define GPIO_FLASH_EN(_n)		BIT(3 + ((_n) << 2))
+> +
+> +#define REG_SIPO_FLASH_MAP(_n)		(0x001c + ((_n) << 2))
+> +
+> +#define REG_CYCLE_CFG_VALUE(_n)		(0x0000 + ((_n) << 2))
+> +#define WAVE_GEN_CYCLE_MASK(_n)		GENMASK(7 + ((_n) << 3), ((_n) << 3))
+> +
+> +struct airoha_pwm {
+> +	void __iomem *sgpio_cfg;
+> +	void __iomem *flash_cfg;
+> +	void __iomem *cycle_cfg;
+> +
+> +	struct device_node *np;
+> +	u64 initialized;
+> +
+> +	struct {
+> +		/* Bitmask of PWM channels using this bucket */
+> +		u64 used;
+> +		u64 period_ns;
+> +		u64 duty_ns;
+> +		enum pwm_polarity polarity;
+> +	} bucket[8];
+> +};
+> +
+> +/*
+> + * The first 16 GPIO pins, GPIO0-GPIO15, are mapped into 16 PWM channels=
+, 0-15.
+> + * The SIPO GPIO pins are 16 pins which are mapped into 17 PWM channels,=
+ 16-32.
+
+How can 16 pins be mapped to 17 PWM channels?
+
+> + * However, we've only got 8 concurrent waveform generators and can ther=
+efore
+> + * only use up to 8 different combinations of duty cycle and period at a=
+ time.
+
+That's an information to add to the Limitations paragraph.
+
+> + */
+> +#define PWM_NUM_GPIO	16
+> +#define PWM_NUM_SIPO	17
+> +
+> +/* The PWM hardware supports periods between 4 ms and 1 s */
+> +#define PERIOD_MIN_NS	4000000
+> +#define PERIOD_MAX_NS	1000000000
+> +/* It is represented internally as 1/250 s between 1 and 250 */
+> +#define PERIOD_MIN	1
+> +#define PERIOD_MAX	250
+> +/* Duty cycle is relative with 255 corresponding to 100% */
+> +#define DUTY_FULL	255
+> +
+> +static u32 airoha_pwm_rmw(struct airoha_pwm *pc, void __iomem *addr,
+> +			  u32 mask, u32 val)
+> +{
+> +	val |=3D (readl(addr) & ~mask);
+> +	writel(val, addr);
+> +
+> +	return val;
+> +}
+
+pc is unused here, please drop it.
+
+> +#define airoha_pwm_sgpio_rmw(pc, offset, mask, val)				\
+> +	airoha_pwm_rmw((pc), (pc)->sgpio_cfg + (offset), (mask), (val))
+> +#define airoha_pwm_flash_rmw(pc, offset, mask, val)				\
+> +	airoha_pwm_rmw((pc), (pc)->flash_cfg + (offset), (mask), (val))
+> +#define airoha_pwm_cycle_rmw(pc, offset, mask, val)				\
+> +	airoha_pwm_rmw((pc), (pc)->cycle_cfg + (offset), (mask), (val))
+> +
+> +#define airoha_pwm_sgpio_set(pc, offset, val)					\
+> +	airoha_pwm_sgpio_rmw((pc), (offset), 0, (val))
+
+That does the right thing, but I'd consider
+
+	#define airoha_pwm_sgpio_set(pc, offset, val)					\
+		airoha_pwm_sgpio_rmw((pc), (offset), (val), (val))
+
+to be more understandable (or ~0 instead of the last (val)?)
+
+> +#define airoha_pwm_sgpio_clear(pc, offset, mask)				\
+> +	airoha_pwm_sgpio_rmw((pc), (offset), (mask), 0)
+> +#define airoha_pwm_flash_set(pc, offset, val)					\
+> +	airoha_pwm_flash_rmw((pc), (offset), 0, (val))
+> +#define airoha_pwm_flash_clear(pc, offset, mask)				\
+> +	airoha_pwm_flash_rmw((pc), (offset), (mask), 0)
+> +
+> +static int airoha_pwm_get_waveform(struct airoha_pwm *pc, u64 duty_ns,
+> +				   u64 period_ns)
+
+Given that "waveform" will gain some specific semantic soon, but this
+usage is different, I'd like to see this function renamed.
+
+> +{
+> +	int i;
+> +
+> +	for (i =3D 0; i < ARRAY_SIZE(pc->bucket); i++) {
+> +		if (!pc->bucket[i].used)
+> +			continue;
+> +
+> +		if (duty_ns =3D=3D pc->bucket[i].duty_ns &&
+> +		    period_ns =3D=3D pc->bucket[i].period_ns)
+> +			return i;
+> +
+> +		/*
+> +		 * Unlike duty cycle zero, which can be handled by
+> +		 * disabling PWM, a generator is needed for full duty
+> +		 * cycle but it can be reused regardless of period
+> +		 */
+> +		if (duty_ns =3D=3D DUTY_FULL && pc->bucket[i].duty_ns =3D=3D DUTY_FULL)
+> +			return i;
+> +	}
+> +
+> +	return -1;
+> +}
+> +
+> +static void airoha_pwm_free_waveform(struct airoha_pwm *pc, unsigned int=
+ hwpwm)
+> +{
+> +	int i;
+> +
+> +	for (i =3D 0; i < ARRAY_SIZE(pc->bucket); i++)
+> +		pc->bucket[i].used &=3D ~BIT_ULL(hwpwm);
+> +}
+> +
+> +static int airoha_pwm_consume_waveform(struct airoha_pwm *pc,
+> +				       u64 duty_ns, u64 period_ns,
+> +				       enum pwm_polarity polarity,
+> +				       unsigned int hwpwm)
+> +{
+> +	int id =3D airoha_pwm_get_waveform(pc, duty_ns, period_ns);
+> +
+> +	if (id < 0) {
+> +		int i;
+> +
+> +		/* find an unused waveform generator */
+> +		for (i =3D 0; i < ARRAY_SIZE(pc->bucket); i++) {
+> +			if (!(pc->bucket[i].used & ~BIT_ULL(hwpwm))) {
+> +				id =3D i;
+> +				break;
+> +			}
+> +		}
+> +	}
+> +
+> +	if (id >=3D 0) {
+> +		airoha_pwm_free_waveform(pc, hwpwm);
+> +		pc->bucket[id].used |=3D BIT_ULL(hwpwm);
+> +		pc->bucket[id].period_ns =3D period_ns;
+> +		pc->bucket[id].duty_ns =3D duty_ns;
+> +		pc->bucket[id].polarity =3D polarity;
+> +	}
+
+One downside of the (nearly) maximal flexibility implemented here is
+that if you have 9 (or more) requested pwm devices configuration is
+quite limited.  So it might happen that a consumer changes the
+configuration for pwm#2 from pwm_state A to pwm_state B but cannot
+change back to A later.
+
+If you limit the number of requested pwm devices to 8, the code gets a
+tad simpler (because you can map a fixed bucket to each pwm device and
+don't need to search during .apply()) and each consumer has maximal
+freedom to configure its device.
+
+> +
+> +	return id;
+> +}
+> +
+> +static int airoha_pwm_sipo_init(struct airoha_pwm *pc)
+> +{
+> +	u32 clk_divr_val =3D 3, sipo_clock_delay =3D 1;
+> +	u32 val, sipo_clock_divisor =3D 32;
+> +
+> +	if (!(pc->initialized >> PWM_NUM_GPIO))
+> +		return 0;
+> +
+> +	/* Select the right shift register chip */
+> +	if (of_property_read_bool(pc->np, "hc74595"))
+> +		airoha_pwm_sgpio_set(pc, REG_SIPO_FLASH_MODE_CFG,
+> +				     SERIAL_GPIO_MODE);
+> +	else
+> +		airoha_pwm_sgpio_clear(pc, REG_SIPO_FLASH_MODE_CFG,
+> +				       SERIAL_GPIO_MODE);
+> +
+> +	if (!of_property_read_u32(pc->np, "sipo-clock-divisor",
+> +				  &sipo_clock_divisor)) {
+> +		switch (sipo_clock_divisor) {
+> +		case 4:
+> +			clk_divr_val =3D 0;
+> +			break;
+> +		case 8:
+> +			clk_divr_val =3D 1;
+> +			break;
+> +		case 16:
+> +			clk_divr_val =3D 2;
+> +			break;
+> +		case 32:
+> +			clk_divr_val =3D 3;
+> +			break;
+> +		default:
+> +			return -EINVAL;
+> +		}
+> +	}
+> +	/* Configure shift register timings */
+> +	writel(clk_divr_val, pc->sgpio_cfg + REG_SGPIO_CLK_DIVR);
+> +
+> +	of_property_read_u32(pc->np, "sipo-clock-delay", &sipo_clock_delay);
+> +	if (sipo_clock_delay < 1 || sipo_clock_delay > sipo_clock_divisor / 2)
+> +		return -EINVAL;
+> +
+> +	/*
+> +	 * The actual delay is sclkdly + 1 so subtract 1 from
+> +	 * sipo-clock-delay to calculate the register value
+> +	 */
+> +	sipo_clock_delay--;
+> +	writel(sipo_clock_delay, pc->sgpio_cfg + REG_SGPIO_CLK_DLY);
+> +
+> +	/*
+> +	 * It it necessary to after muxing explicitly shift out all
+> +	 * zeroes to initialize the shift register before enabling PWM
+> +	 * mode because in PWM mode SIPO will not start shifting until
+> +	 * it needs to output a non-zero value (bit 31 of led_data
+> +	 * indicates shifting in progress and it must return to zero
+> +	 * before led_data can be written or PWM mode can be set)
+> +	 */
+> +	if (readl_poll_timeout(pc->sgpio_cfg + REG_SGPIO_LED_DATE, val,
+> +			       !(val & SGPIO_LED_SHIFT_FLAG), 10,
+> +			       200 * USEC_PER_MSEC))
+> +		return -ETIMEDOUT;
+> +
+> +	airoha_pwm_sgpio_clear(pc, REG_SGPIO_LED_DATE, SGPIO_LED_DATA);
+> +	if (readl_poll_timeout(pc->sgpio_cfg + REG_SGPIO_LED_DATE, val,
+> +			       !(val & SGPIO_LED_SHIFT_FLAG), 10,
+> +			       200 * USEC_PER_MSEC))
+> +		return -ETIMEDOUT;
+> +
+> +	/* Set SIPO in PWM mode */
+> +	airoha_pwm_sgpio_set(pc, REG_SIPO_FLASH_MODE_CFG,
+> +			     SERIAL_GPIO_FLASH_MODE);
+> +
+> +	return 0;
+> +}
+> +
+> +static void airoha_pwm_config_waveform(struct airoha_pwm *pc, int index,
+> +				       u64 duty_ns, u64 period_ns,
+> +				       enum pwm_polarity polarity)
+> +{
+> +	u32 period, duty, mask, val;
+> +
+> +	duty =3D clamp_val(div64_u64(DUTY_FULL * duty_ns, period_ns), 0,
+> +			 DUTY_FULL);
+
+DUTY_FULL * duty_ns might overflow. Also the calculation is wrong.
+For example if the following is requested:
+
+	.period =3D 23999999,
+	.duty_cycle =3D 8000000,
+
+you're supposed to configure period =3D 16000000 ns and duty_cycle =3D
+8000000 ns.
+
+(I.e.: Pick the biggest possible period not bigger than the requested
+period. For that pick the biggest possible duty_cycle not bigger than
+the requested duty_cycle.)
+
+If you implement .get_state() in a way to return the actually configured
+state, enabling PWM_DEBUG and intensive testing helps to get this right.
+
+> +	if (polarity =3D=3D PWM_POLARITY_INVERSED)
+> +		duty =3D DUTY_FULL - duty;
+
+This alone doesn't switch the polarity of the signal. Please only claim
+to be able to implement the settings that the hardware actually can do.
+
+> +	period =3D clamp_val(div64_u64(25 * period_ns, 100000000), PERIOD_MIN,
+> +			   PERIOD_MAX);
+> +
+> +	/* Configure frequency divisor */
+> +	mask =3D WAVE_GEN_CYCLE_MASK(index % 4);
+> +	val =3D (period << __ffs(mask)) & mask;
+> +	airoha_pwm_cycle_rmw(pc, REG_CYCLE_CFG_VALUE(index / 4), mask, val);
+> +
+> +	/* Configure duty cycle */
+> +	duty =3D ((DUTY_FULL - duty) << 8) | duty;
+> +	mask =3D GPIO_FLASH_PRD_MASK(index % 2);
+> +	val =3D (duty << __ffs(mask)) & mask;
+> +	airoha_pwm_flash_rmw(pc, REG_GPIO_FLASH_PRD_SET(index / 2), mask, val);
+> +}
+> +
+> +static void airoha_pwm_config_flash_map(struct airoha_pwm *pc,
+> +					unsigned int hwpwm, int index)
+> +{
+> +	u32 addr, mask, val;
+> +
+> +	if (hwpwm < PWM_NUM_GPIO) {
+> +		addr =3D REG_GPIO_FLASH_MAP(hwpwm / 8);
+> +	} else {
+> +		addr =3D REG_SIPO_FLASH_MAP(hwpwm / 8);
+> +		hwpwm -=3D PWM_NUM_GPIO;
+> +	}
+> +
+> +	if (index < 0) {
+> +		/*
+> +		 * Change of waveform takes effect immediately but
+> +		 * disabling has some delay so to prevent glitching
+> +		 * only the enable bit is touched when disabling
+> +		 */
+> +		airoha_pwm_flash_clear(pc, addr, GPIO_FLASH_EN(hwpwm % 8));
+> +		return;
+> +	}
+> +
+> +	mask =3D GPIO_FLASH_SETID_MASK(hwpwm % 8);
+> +	val =3D ((index & 7) << __ffs(mask)) & mask;
+> +	airoha_pwm_flash_rmw(pc, addr, mask, val);
+> +	airoha_pwm_flash_set(pc, addr, GPIO_FLASH_EN(hwpwm % 8));
+> +}
+> +
+> +static int airoha_pwm_config(struct airoha_pwm *pc, struct pwm_device *p=
+wm,
+> +			     u64 duty_ns, u64 period_ns,
+> +			     enum pwm_polarity polarity)
+> +{
+> +	int index =3D -1;
+> +
+> +	index =3D airoha_pwm_consume_waveform(pc, duty_ns, period_ns, polarity,
+> +					    pwm->hwpwm);
+> +	if (index < 0)
+> +		return -EBUSY;
+> +
+> +	if (!(pc->initialized & BIT_ULL(pwm->hwpwm)) &&
+> +	    pwm->hwpwm >=3D PWM_NUM_GPIO)
+> +		airoha_pwm_sipo_init(pc);
+> +
+> +	if (index >=3D 0) {
+> +		airoha_pwm_config_waveform(pc, index, duty_ns, period_ns,
+> +					   polarity);
+> +		airoha_pwm_config_flash_map(pc, pwm->hwpwm, index);
+> +	} else {
+> +		airoha_pwm_config_flash_map(pc, pwm->hwpwm, index);
+> +		airoha_pwm_free_waveform(pc, pwm->hwpwm);
+> +	}
+> +
+> +	pc->initialized |=3D BIT_ULL(pwm->hwpwm);
+> +
+> +	return 0;
+> +}
+> +
+> +static void airoha_pwm_free(struct pwm_chip *chip, struct pwm_device *pw=
+m)
+> +{
+> +	struct airoha_pwm *pc =3D pwmchip_get_drvdata(chip);
+> +
+> +	/* Disable PWM and release the waveform */
+> +	airoha_pwm_config_flash_map(pc, pwm->hwpwm, -1);
+> +	airoha_pwm_free_waveform(pc, pwm->hwpwm);
+> +
+> +	pc->initialized &=3D ~BIT_ULL(pwm->hwpwm);
+> +	if (!(pc->initialized >> PWM_NUM_GPIO))
+> +		airoha_pwm_sgpio_clear(pc, REG_SIPO_FLASH_MODE_CFG,
+> +				       SERIAL_GPIO_FLASH_MODE);
+> +
+> +	/*
+> +	 * Clear the state to force re-initialization the next time
+> +	 * this PWM channel is used since we cannot retain state in
+> +	 * hardware due to limited number of waveform generators
+> +	 */
+> +	memset(&pwm->state, 0, sizeof(pwm->state));
+
+Please don't reconfigure the hardware in .free(). Instead assume that
+the consumer disabled the PWM before releasing it or that they know what
+they do.
+
+Also don't write to pwm->state, that is supposed to only happen in the
+core.
+
+> +}
+> +
+> +static int airoha_pwm_apply(struct pwm_chip *chip, struct pwm_device *pw=
+m,
+> +			    const struct pwm_state *state)
+> +{
+> +	struct airoha_pwm *pc =3D pwmchip_get_drvdata(chip);
+> +	u64 duty =3D state->enabled ? state->duty_cycle : 0;
+> +
+> +	if (!state->enabled) {
+> +		airoha_pwm_free(chip, pwm);
+> +		return 0;
+> +	}
+> +
+> +	if (state->period < PERIOD_MIN_NS || state->period > PERIOD_MAX_NS)
+> +		return -EINVAL;
+
+Please handle state->period > PERIOD_MAX_NS by configuring a period of
+PERIOD_MAX_NS.
+
+> +	return airoha_pwm_config(pc, pwm, duty, state->period,
+> +				 state->polarity);
+> +}
+> +
+> +static int airoha_pwm_get_state(struct pwm_chip *chip, struct pwm_device=
+ *pwm,
+> +				struct pwm_state *state)
+> +{
+> +	struct airoha_pwm *pc =3D pwmchip_get_drvdata(chip);
+> +	int i;
+> +
+> +	/* find hwpwm in waveform generator bucket */
+> +	for (i =3D 0; i < ARRAY_SIZE(pc->bucket); i++) {
+> +		if (pc->bucket[i].used & BIT_ULL(pwm->hwpwm)) {
+> +			state->enabled =3D pc->initialized & BIT_ULL(pwm->hwpwm);
+> +			state->polarity =3D pc->bucket[i].polarity;
+> +			state->period =3D pc->bucket[i].period_ns;
+> +			state->duty_cycle =3D pc->bucket[i].duty_ns;
+> +			break;
+> +		}
+> +	}
+> +
+> +	if (i =3D=3D ARRAY_SIZE(pc->bucket))
+> +		state->enabled =3D false;
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct pwm_ops airoha_pwm_ops =3D {
+> +	.get_state =3D airoha_pwm_get_state,
+> +	.apply =3D airoha_pwm_apply,
+> +	.free =3D airoha_pwm_free,
+> +};
+> +
+> +static int airoha_pwm_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev =3D &pdev->dev;
+> +	struct airoha_mfd *mfd;
+> +	struct airoha_pwm *pc;
+> +	struct pwm_chip *chip;
+> +
+> +	/* Assign parent MFD of_node to dev */
+> +	dev->of_node =3D of_node_get(dev->parent->of_node);
+
+I think you want
+device_set_of_node_from_dev(dev->parent, dev)
+here.
+
+> +	mfd =3D dev_get_drvdata(dev->parent);
+> +
+> +	chip =3D devm_pwmchip_alloc(dev, PWM_NUM_GPIO + PWM_NUM_SIPO,
+> +				  sizeof(*pc));
+> +	if (IS_ERR(chip))
+> +		return PTR_ERR(chip);
+> +
+> +	pc =3D pwmchip_get_drvdata(chip);
+> +	pc->np =3D dev->of_node;
+> +	pc->sgpio_cfg =3D mfd->base + REG_SGPIO_CFG;
+> +	pc->flash_cfg =3D mfd->base + REG_FLASH_CFG;
+> +	pc->cycle_cfg =3D mfd->base + REG_CYCLE_CFG;
+
+Is it really worth to store these values in the private data struct? My
+intuition would be to only store .base in pc and then define the
+register accessors macros like:
+
+	#define airoha_pwm_cycle_rmw(pc, offset, mask, val)				\
+		airoha_pwm_rmw((pc), (pc)->base + REG_CYCLE_CFG + (offset), (mask), (val))
+
+> +	chip->ops =3D &airoha_pwm_ops;
+> +	chip->of_xlate =3D of_pwm_xlate_with_flags;
+
+Please don't assign .of_xlate, the core does
+
+        if (!chip->of_xlate)
+                chip->of_xlate =3D of_pwm_xlate_with_flags;
+
+> +
+> +	return devm_pwmchip_add(&pdev->dev, chip);
+> +}
+> +
+> +static struct platform_driver airoha_pwm_driver =3D {
+> +	.driver =3D {
+> +		.name =3D "airoha-pwm",
+> +	},
+> +	.probe =3D airoha_pwm_probe,
+> +};
+> +module_platform_driver(airoha_pwm_driver);
+> +
+> +MODULE_AUTHOR("Lorenzo Bianconi <lorenzo@kernel.org>");
+> +MODULE_AUTHOR("Markus Gothe <markus.gothe@genexis.eu>");
+> +MODULE_AUTHOR("Benjamin Larsson <benjamin.larsson@genexis.eu>");
+> +MODULE_DESCRIPTION("Airoha EN7581 PWM driver");
+> +MODULE_LICENSE("GPL");
+
+Best regards
+Uwe
+
+--xrkzyim6vsn2dpvr
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmbW6R8ACgkQj4D7WH0S
+/k4P4gf+N6uWIy5Nqj2hfh4osyIXsAYyH0Rbg++uwe24C9sxSEGWSC+4H2+DeL1G
+cI/3mpQTnt0h36ZKPH0gi97dytc6QSYN0mnPao7RfZHIi3QPQMqjvmPcneRefnQB
+YN/HPOAJlhJHnYl8VBgP6F39p3ihtYZrlAZbck34Sz3RhESMaREJ4vRYV8UeFMVr
+rl2hX/0SwVavz7yEMWSIxkKvx6zh+yzqGg2b/urdUrT+zjtbycjWlhzAdhvd+W+f
+ymD54NEAggpK1s7Ptp6pWWwgrBKEM9HMGhL0rRPJ4dGnmBhHFOFFFhqh9avlmPdC
+tyibTqX+hAkfuwZu+A56i4iKQDy79Q==
+=ti50
+-----END PGP SIGNATURE-----
+
+--xrkzyim6vsn2dpvr--
 
