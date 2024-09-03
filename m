@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75918CD342A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Sep 2024 15:07:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49B33CD343D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Sep 2024 15:11:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F5GQ1l1T7KpghZKbXuX0bW89AWlkX/VbMQy0rP5A5Xo=; b=P2aPBjDZjeKwxc+O6TO0AYlYWE
-	S9iGc/StoVI8HyM5xb/Tim9cpKCfGTfthYndE81Y5t21yhgro4uLaoCDpqGA+IcehKdib8X9l56wY
-	c6/s2Cesdk4p6JgimTpT6mUjpJD7Usd7YUUYcM6x3kWx5nv30SykGU5SqfffYP3NmmL4dKKYXmnOb
-	QphT3Gr5Ac+WxABdyM51eclWrYLR7YpEE0OeSnOS8H4IEx4NGcDO0rqDzS7JImpNkH0XQKmJEJyPB
-	3V4EkbZnkWe+XSSBWMn/GpOZiEljj+j79wISNBZ2sZ1ZpIsuztWychdJsafAypuxfZovz+LlvZNRf
-	GTwKu5ug==;
+	bh=xHtnzkQTVFbBwbuE/npC6o/etbMHQ0IPpQLhY48rmz0=; b=mG2Dx+ciKLO/kVJjcC9GE5I/K8
+	PxvhmC2wj6TLonrXhib7EdNWoR+dBlQQslB5kuWnsz3OidIxJ93yFEpxixp3y9naNsNWgFux47rhb
+	VQE/padsKuG5QDc7yhkhzBu4iS0xPvlZVhiOymF+1aB8bCK3Zj1lkfExXWLDx0ame8Xvct9XvzK5u
+	QEinjFHbzteHP2FnxmD6qb7I7d+IFNoAd2xlx2hNbBHjDOAWsipdVxHcyBiS4M1hsrz2btfwtDfHi
+	ilvTpslk5zAAtVq9ppaQdLO4S3yDw689ZgT2XcZqKn7aL+S4gaxJT0GXa5T8SGk8j7ntoIY0cu7NY
+	33aafFNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slV7u-00000000jt4-1bm2;
-	Tue, 03 Sep 2024 15:07:26 +0000
+	id 1slVBN-00000000lIw-3kjB;
+	Tue, 03 Sep 2024 15:11:01 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slV68-00000000jUR-3IEB;
-	Tue, 03 Sep 2024 15:05:38 +0000
+	id 1slVAK-00000000kxZ-0sle;
+	Tue, 03 Sep 2024 15:09:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2B5595C59E0;
-	Tue,  3 Sep 2024 15:05:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3E00C4CEC4;
-	Tue,  3 Sep 2024 15:05:34 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id CBEC35C5722;
+	Tue,  3 Sep 2024 15:09:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC08AC4CEC6;
+	Tue,  3 Sep 2024 15:09:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725375935;
-	bh=KL0RQRwssSJZNsqC3FsLLADFxblDIjhPUl1YLEacyms=;
+	s=k20201202; t=1725376194;
+	bh=jIW79MyAeLnLk8Tf9pgkACo++H/cWJ8aF/7auE5Di5E=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=DRIRAocqMOoyi0rW8os/xYVVD6vNIkBzoAlQ6hS2tSqR1dB70Nr3njU0wCyg3zgwu
-	 LacEso3uef9loUUnpQphxgtcE7qUvZSzFxL7C3t7jDK9reXbttX+aQ7Qz35fAggN0o
-	 lkn8P30kt6mxExCkPfIH18o2hQZhMeslMjkRnbqR8pQsmFuB9RGfxWBbFN/O/EzPo8
-	 6hw5ms6StC7SwGIY5PlV2myw4czbRwVcF3KNidbGniUstdvQJ458e83ikt7ISlZ3uL
-	 Onbf/nglN5e3FjWS9Wl8N/NCX9+JzjhDjF3IRsS9zdcTZ+i35Mg31/jZ7zmq7UHmGQ
-	 cgsEf0ky6UuxQ==
-Date: Tue, 3 Sep 2024 10:05:34 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
+	b=Z2G2SLdRclDbvhec0I/IM6qfdwMkFkKRdAwrbdb4LcwYBforMi081pghUbCiH+ikU
+	 pf8eOgNuu4GKjJndPsp0bUpLQsqyL/xQojXURGO6pRw16lavL3OXlcHMNtsnrSE7DA
+	 9Pk1ZYCw09IArWMq/tyHVR358Rb9nHAjMhyuNjyfiS4Pdl543MYWdZSZyXk98ErRsN
+	 RIrkdgdzsjK4rAJGFn8oo71d5M4VYVkGVVP9G2q91VhjomojxPxx8y+NyLbo5tNMHu
+	 kB/+4nYrU4F/yg8rQ/uVBGDrS4tBosF+4pMjH4Xs5uigffi/atniW5MuL6N7zdz5si
+	 lP9qrfXXFcrCA==
+Date: Tue, 3 Sep 2024 10:09:53 -0500
+From: Rob Herring <robh@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: devicetree@vger.kernel.org,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
-	linux-pwm@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
-	Lee Jones <lee@kernel.org>, linux-mediatek@lists.infradead.org,
-	upstream@airoha.com, Sean Wang <sean.wang@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+Cc: Linus Walleij <linus.walleij@linaro.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-gpio@vger.kernel.org, benjamin.larsson@genexis.eu,
-	ansuelsmth@gmail.com,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v3 1/5] dt-bindings: arm: airoha: Add the chip-scu node
- for EN7581 SoC
-Message-ID: <172537593271.1018147.17791430767383351676.robh@kernel.org>
+	Lee Jones <lee@kernel.org>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	upstream@airoha.com, benjamin.larsson@genexis.eu,
+	ansuelsmth@gmail.com, linux-pwm@vger.kernel.org
+Subject: Re: [PATCH v3 2/5] dt-bindings: mfd: Add support for Airoha EN7581
+ GPIO System Controller
+Message-ID: <20240903150953.GA1018489-robh@kernel.org>
 References: <20240831-en7581-pinctrl-v3-0-98eebfb4da66@kernel.org>
- <20240831-en7581-pinctrl-v3-1-98eebfb4da66@kernel.org>
+ <20240831-en7581-pinctrl-v3-2-98eebfb4da66@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240831-en7581-pinctrl-v3-1-98eebfb4da66@kernel.org>
+In-Reply-To: <20240831-en7581-pinctrl-v3-2-98eebfb4da66@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240903_080536_964812_B03D0EF1 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20240903_080956_586138_19E35B68 
+X-CRM114-Status: GOOD (  19.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,19 +82,315 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Sat, 31 Aug 2024 16:27:46 +0200, Lorenzo Bianconi wrote:
-> This patch adds the chip-scu document bindings for EN7581 SoC.
-> The airoha chip-scu block provides a configuration interface for clock,
-> io-muxing and other functionalities used by multiple controllers (e.g.
-> clock, pinctrl, ecc.) on EN7581 SoC.
+On Sat, Aug 31, 2024 at 04:27:47PM +0200, Lorenzo Bianconi wrote:
+> From: Christian Marangi <ansuelsmth@gmail.com>
 > 
+> Add support for Airoha EN7581 GPIO System Controller which provide a
+> register map for controlling the GPIO, pinctrl and PWM of the SoC.
+> 
+> Schema define cells for both gpio/interrupt controller and PWM.
+> Moreover it provides a dedicated pinctrl node for pins and config
+> definitions.
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > ---
->  .../bindings/arm/airoha,en7581-chip-scu.yaml       | 42 ++++++++++++++++++++++
->  1 file changed, 42 insertions(+)
+>  .../bindings/mfd/airoha,en7581-gpio-sysctl.yaml    | 433 +++++++++++++++++++++
+>  1 file changed, 433 insertions(+)
 > 
+> diff --git a/Documentation/devicetree/bindings/mfd/airoha,en7581-gpio-sysctl.yaml b/Documentation/devicetree/bindings/mfd/airoha,en7581-gpio-sysctl.yaml
+> new file mode 100644
+> index 000000000000..a9080c7f50f9
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mfd/airoha,en7581-gpio-sysctl.yaml
+> @@ -0,0 +1,433 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mfd/airoha,en7581-gpio-sysctl.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Airoha EN7581 GPIO System Controller
+> +
+> +maintainers:
+> +  - Christian Marangi <ansuelsmth@gmail.com>
+> +  - Lorenzo Bianconi <lorenzo@kernel.org>
+> +
+> +description:
+> +  Airoha EN7581 SoC GPIO system controller which provided a register map
+> +  for controlling the GPIO, pins and PWM of the SoC.
+> +
+> +properties:
+> +  compatible:
+> +    const: airoha,en7581-gpio-sysctl
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  gpio-controller: true
+> +
+> +  '#gpio-cells':
+> +    const: 2
+> +
+> +  interrupt-controller: true
+> +
+> +  '#interrupt-cells':
+> +    const: 2
+> +
+> +  "#pwm-cells":
+> +    const: 3
+> +
+> +  pinctrl:
+> +    type: object
+> +
+> +    $ref: /schemas/pinctrl/pinctrl.yaml
+> +
+> +    patternProperties:
+> +      '-pins$':
+> +        type: object
+> +
+> +        patternProperties:
+> +          '^.*mux.*$':
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Do you really need 'mux' anywhere in the node names? Isn't either a 
+prefix or a suffix enough?
 
+> +            type: object
+> +
+> +            description:
+> +              pinmux configuration nodes.
+> +
+> +            $ref: /schemas/pinctrl/pinmux-node.yaml
+> +
+> +            properties:
+> +              function:
+> +                description:
+> +                  A string containing the name of the function to mux to the group.
+> +                enum: [pon, tod_1pps, sipo, mdio, uart, i2c, jtag, pcm, spi,
+> +                       pcm_spi, i2s, emmc, pnand, pcie_reset, pwm, phy1_led0,
+> +                       phy2_led0, phy3_led0, phy4_led0, phy1_led1, phy2_led1,
+> +                       phy3_led1, phy4_led1]
+> +
+> +              groups:
+> +                description:
+> +                  An array of strings. Each string contains the name of a group.
+> +
+> +            required:
+> +              - function
+> +              - groups
+> +
+> +            allOf:
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: pon
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [pon]
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: tod_1pps
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [pon_tod_1pps, gsw_tod_1pps]
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: sipo
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [sipo, sipo_rclk]
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: mdio
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [mdio]
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: uart
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      items:
+> +                        enum: [uart2, uart2_cts_rts, hsuart, hsuart_cts_rts, uart4,
+> +                               uart5]
+> +                      maxItems: 2
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: i2c
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [i2c1]
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: jtag
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [jtag_udi, jtag_dfd]
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: pcm
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [pcm1, pcm2]
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: spi
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      items:
+> +                        enum: [spi_quad, spi_cs1]
+> +                      maxItems: 2
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: pcm_spi
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      items:
+> +                        enum: [pcm_spi, pcm_spi_int, pcm_spi_rst, pcm_spi_cs1,
+> +                               pcm_spi_cs2_p156, pcm_spi_cs2_p128, pcm_spi_cs3,
+> +                               pcm_spi_cs4]
+> +                      maxItems: 7
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: i2c
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [i2s]
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: emmc
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [emmc]
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: pnand
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [pnand]
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: pcie_reset
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [pcie_reset0, pcie_reset1, pcie_reset2]
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: pwm
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [gpio0, gpio1, gpio2, gpio3, gpio4, gpio5, gpio6,
+> +                             gpio7, gpio8, gpio9, gpio10, gpio11, gpio12, gpio13,
+> +                             gpio14, gpio15, gpio16, gpio17, gpio18, gpio19,
+> +                             gpio20, gpio21, gpio22, gpio23, gpio24, gpio25,
+> +                             gpio26, gpio27, gpio28, gpio29, gpio30, gpio31,
+> +                             gpio36, gpio37, gpio38, gpio39, gpio40, gpio41,
+> +                             gpio42, gpio43, gpio44, gpio45, gpio46, gpio47]
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: phy1_led0
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [gpio33, gpio34, gpio35, gpio42]
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: phy2_led0
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [gpio33, gpio34, gpio35, gpio42]
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: phy3_led0
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [gpio33, gpio34, gpio35, gpio42]
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: phy4_led0
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [gpio33, gpio34, gpio35, gpio42]
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: phy1_led1
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [gpio43, gpio44, gpio45, gpio46]
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: phy2_led1
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [gpio43, gpio44, gpio45, gpio46]
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: phy3_led1
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [gpio43, gpio44, gpio45, gpio46]
+> +              - if:
+> +                  properties:
+> +                    function:
+> +                      const: phy4_led1
+> +                then:
+> +                  properties:
+> +                    groups:
+> +                      enum: [gpio43, gpio44, gpio45, gpio46]
+> +
+> +            additionalProperties: false
+> +
+> +          '^.*conf.*$':
+
+Same here.
+
+Otherwise, LGTM.
+
+Rob
 
