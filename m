@@ -4,108 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C19E0CA101E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Sep 2024 04:57:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADE27CD342C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Sep 2024 07:53:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QaXgD3nnEBf2FvN2o3oUkR2SpAKFJSDAPnp60cmG00M=; b=pMCrCgE68jCgp+w8QU1CHvOslC
-	f8d9AOwc2XCru2tElzW1Ya+Co+fgDrXsQxWj4CxNm2U8fEoebrnLVgNytDTDAxJ53DOCdWoNzmmmS
-	zJQHjs2Kem3DqyiKaAzJTrf9AkBgRgivarl8CPtO7bEk9FouGWH0TGyoXwojVSQIscdeJFzguLZDs
-	8v/DY8dFq71c0YroGMSHSF2RtHq5evp3O4H2rlumMHXBNtpRe77HQLPU/WfBnMEgjGkcqY1HwURfO
-	sq7wgy/70p/kFM2l684VzAQEcQztmpqSMVOS8h6Wv2sLwkHEV6cnaNNRQNztwh35iHqBdr3HISVro
-	bWzDdyxA==;
+	bh=CtNmo9re+7Yvhm1wct00g9dYy6n+zo3R/1J33fswy0I=; b=a4ugq4AELcIbcUaual1t/PU5Y+
+	AwbaCW8BudosoE4IwV+tLM0Z5lz5XzR69ePDZX06+zMKhEeC+u0e3SOGOl7MSmGxDLcc68cBt7ymE
+	ndfVt1IWf7kQD2/fsoTbLETdfokuIu5xSsnQPMq68Ce41AK1wtrN2+6RdN4/+g13D1W1mhn1PVUjh
+	JN9iAf2JWQbXt0pKaAuAkMU7lkMfO2e9upVnmFuUWYFn/4EhlX48qCH/a0HR/QwHZcpSyfKe7z1CT
+	i5gjwZ05oa48N48NHauK9c6t0pW+fJXvfeo8+ZrQglmJlJH6jVMGXYdTD8n52pKCYnXO0YOM9kUbW
+	i4Qzj9xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slLbE-0000000GK24-1VrH;
-	Tue, 03 Sep 2024 04:57:04 +0000
-Received: from flow5-smtp.messagingengine.com ([103.168.172.140])
+	id 1slOM6-0000000Gm3P-0j93;
+	Tue, 03 Sep 2024 07:53:38 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slLaF-0000000GJw2-04hl;
-	Tue, 03 Sep 2024 04:56:08 +0000
-Received: from phl-compute-08.internal (phl-compute-08.nyi.internal [10.202.2.48])
-	by mailflow.nyi.internal (Postfix) with ESMTP id 6E99B200212;
-	Tue,  3 Sep 2024 00:55:59 -0400 (EDT)
-Received: from phl-mailfrontend-02 ([10.202.2.163])
-  by phl-compute-08.internal (MEProxy); Tue, 03 Sep 2024 00:55:59 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=cc
-	:cc:content-type:content-type:date:date:from:from:in-reply-to
-	:in-reply-to:message-id:mime-version:references:reply-to:subject
-	:subject:to:to; s=fm1; t=1725339359; x=1725346559; bh=QaXgD3nnEB
-	f2FvN2o3oUkR2SpAKFJSDAPnp60cmG00M=; b=lrRrLrd5xSbH/ug6+KlAeIfBcR
-	qaQYhdGGV7g5qvomtuPvVCMlau0MKsFqfRc879wODFXaTZBZ/8QYTrmCO/6Yfpov
-	2ofD83p+Sx+1eM4rBcMiOnuOtYgX6NZqA7lqQ9ea6PLfY8fORimsjINWuFPFpg9w
-	nlrqOjfEMj8USskrW7U4iI+8fc5w4dBYU4TXmS6uw3npwQdgzbH6AD3aLaeBwN+i
-	nCOWnv5OCd6SaeCEN9mTkU/75o1nd/x0LRTNXgL9CCbe/aSLwnJvatF9R+Oxzxe3
-	pnQDJGCpME7OqAK9Ls1KWjwrTLgtcTTICWodNuDF+Flp0WugvWvWaPXVNGvw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:content-type:date:date
-	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:subject:subject:to
-	:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm1; t=1725339359; x=1725346559; bh=QaXgD3nnEBf2FvN2o3oUkR2SpAKF
-	JSDAPnp60cmG00M=; b=kkgRwXxKqXV4hca5Mw/+wTzndZFnOTrZVr5Yy5gSzUcN
-	l/Frz31dZBhO8irg8IrtIv8IUC8O+bGi7H+JS2I8VYCHwzTCUx8IiP9fHkSiFGJv
-	VxG+nPvPgjQBJW0InT1DKfDC+Qxrg3qNI50htHB8evCNGDSx4Y5LDD4yKvT/3r1V
-	5h5v2DJmeN3PlAisV2E1EPdB4dtKQrHIVHEOA4kSA7lQH7/cTVQQYlYpftnuJe/S
-	Mn5bIWK/wo3+LVK+Ws0RopxFA8dOMjLo9efsrIVhWClubstfR2RamDzUTzWvbidG
-	7Xv+gdG3LGqwddh44BV6gWO/z1kKQwsnS2uhV6Oahw==
-X-ME-Sender: <xms:3pbWZkZlMyT8nw3X75H33sZYTuBLrC2qifWq9WD_djnoYfCmXyhlCw>
-    <xme:3pbWZvYeXe-W_dw6QF1ChUzuwLRcmQ7EPqLqGaslQy4vdlg_VsX7Rnmg9ROs3-uVA
-    IW0HI9l_ifYiQ>
-X-ME-Received: <xmr:3pbWZu-Kn2oarZ8_9Ow94znknYYSJ9cGVsBC0eSNUTNqsPkrViiznZL2cnR9dzZFZw7RyeepUkvC_kFAqiQI10MUsueiXng_U3D_Dw>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrudehgedgleduucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggvpdfu
-    rfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnh
-    htshculddquddttddmnecujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvden
-    ucfhrhhomhepifhrvghgucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheqnecuggftrf
-    grthhtvghrnhepheegvdevvdeljeeugfdtudduhfekledtiefhveejkeejuefhtdeufefh
-    gfehkeetnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
-    epghhrvghgsehkrhhorghhrdgtohhmpdhnsggprhgtphhtthhopeegkedpmhhouggvpehs
-    mhhtphhouhhtpdhrtghpthhtohepmhgrkhgvvdegsehishgtrghsrdgrtgdrtghnpdhrtg
-    hpthhtohepnhgsugesnhgsugdrnhgrmhgvpdhrtghpthhtoheplhhorhgvnhiioheskhgv
-    rhhnvghlrdhorhhgpdhrtghpthhtoheprhihuggvrhdrlhgvvgesmhgvughirghtvghkrd
-    gtohhmpdhrtghpthhtohepshhhrgihnhgvrdgthhgvnhesmhgvughirghtvghkrdgtohhm
-    pdhrtghpthhtohepshgvrghnrdifrghnghesmhgvughirghtvghkrdgtohhmpdhrtghpth
-    htohepkhhvrghloheskhgvrhhnvghlrdhorhhgpdhrtghpthhtohepmhgrthhthhhirghs
-    rdgsghhgsehgmhgrihhlrdgtohhmpdhrtghpthhtoheprghnghgvlhhoghhiohgrtggthh
-    hinhhordguvghlrhgvghhnohestgholhhlrggsohhrrgdrtghomh
-X-ME-Proxy: <xmx:3pbWZupN-FcNMwfx2JqME2u1giu4qg3Knb8zOft___manRJ7U81gCA>
-    <xmx:3pbWZvostYbpJjibu84wEbU76J0ekjMUe3kGMLFc0Icz6nSJHJj9RQ>
-    <xmx:3pbWZsRe6-QfWiv-rn4CV96o3PV6tnGlWHsb91TvFygcH64qTChGPA>
-    <xmx:3pbWZvoCqbYWRGd-lJbR7yyo4QovcSguYwsB9V73AVlGZNw2wTnPgg>
-    <xmx:35bWZqHQxUchp1_GGGk2zcsVFWLUDcR1HYI8TELq0TunTNpuIIxF_hxh>
-Feedback-ID: i787e41f1:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 3 Sep 2024 00:55:57 -0400 (EDT)
-Date: Tue, 3 Sep 2024 06:55:55 +0200
-From: Greg KH <greg@kroah.com>
+	id 1slOJZ-0000000GlOp-0Fhw;
+	Tue, 03 Sep 2024 07:51:02 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0A6165C5666;
+	Tue,  3 Sep 2024 07:50:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74599C4CEC5;
+	Tue,  3 Sep 2024 07:50:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1725349860;
+	bh=enMEnSyK0jNHPU7yp7IVPrx6oVxfPhkG/5GIYZ4dcKg=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=PO3adIGD9QXcaLxsn+UYkxTFEniu9l4gE1ID45KjMX3yLkH5DazB0u1IBB4d8vzLd
+	 l/5Fwl56gGpveG03eWt1WQIQ6p0u20PAR8qsqMsWDFDjeWnjFgGB4yB8ZntUoCyOYk
+	 i1+EQxTEc6gtNRk1puU0jPx9BWXqfdunZoZ0ergRNWaqwnEHL5xHi1KHsIv+qHZc85
+	 omyj9bce8K6nzb1MAWzf5BhEH6LvF2uxfoINz0TUt+DwPYibmNnq3U6fpx8Lbbch+5
+	 5irOVssMvG9hSRB0/kkowIxiu22jDabPJAvw/Pw/5ooAs73F4bifl/MVu3exXaWGme
+	 Picnt1dGInvMg==
+From: Kalle Valo <kvalo@kernel.org>
 To: Ma Ke <make24@iscas.ac.cn>
-Cc: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com, sean.wang@mediatek.com, kvalo@kernel.org,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	chui-hao.chiu@mediatek.com, howard-yh.hsu@mediatek.com,
-	StanleyYP.Wang@mediatek.com, benjamin-jw.lin@mediatek.com,
-	allen.ye@mediatek.com, chank.chen@mediatek.com,
-	meichia.chiu@mediatek.com, Money.Wang@mediatek.com,
-	Bo.Jiao@mediatek.com, akpm@linux-foundation.org,
-	linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, stable@vger.kernel.org
-Subject: Re: [PATCH RESEND] wifi: mt76: mt7996: fix NULL pointer dereference
- in mt7996_mcu_sta_bfer_he
-Message-ID: <2024090332-waged-yummy-296b@gregkh>
-References: <20240903013913.4143602-1-make24@iscas.ac.cn>
+Cc: nbd@nbd.name,  lorenzo@kernel.org,  ryder.lee@mediatek.com,
+  shayne.chen@mediatek.com,  sean.wang@mediatek.com,
+  matthias.bgg@gmail.com,  angelogioacchino.delregno@collabora.com,
+  mingyen.hsieh@mediatek.com,  deren.wu@mediatek.com,
+  ruanjinjie@huawei.com,  greearb@candelatech.com,
+  akpm@linux-foundation.org,  linux-wireless@vger.kernel.org,
+  linux-kernel@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,
+  linux-mediatek@lists.infradead.org,  stable@vger.kernel.org
+Subject: Re: [PATCH RESEND] wifi: mt76: mt7921: Check devm_kasprintf()
+ returned value
+References: <20240903014455.4144536-1-make24@iscas.ac.cn>
+Date: Tue, 03 Sep 2024 10:50:54 +0300
+In-Reply-To: <20240903014455.4144536-1-make24@iscas.ac.cn> (Ma Ke's message of
+	"Tue, 3 Sep 2024 09:44:55 +0800")
+Message-ID: <87wmjtjhup.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240903013913.4143602-1-make24@iscas.ac.cn>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240902_215603_419824_A1CCD0CC 
-X-CRM114-Status: GOOD (  15.91  )
+X-CRM114-CacheID: sfid-20240903_005101_164601_6F2F521B 
+X-CRM114-Status: GOOD (  15.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,35 +78,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 03, 2024 at 09:39:13AM +0800, Ma Ke wrote:
-> Fix the NULL pointer dereference in mt7996_mcu_sta_bfer_he
-> routine adding an sta interface to the mt7996 driver.
-> 
+Ma Ke <make24@iscas.ac.cn> writes:
+
+> devm_kasprintf() can return a NULL pointer on failure but this returned
+> value is not checked. Fix this lack and check the returned value.
+>
 > Found by code review.
-> 
+>
 > Cc: stable@vger.kernel.org
-> Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
+> Fixes: 6ae39b7c7ed4 ("wifi: mt76: mt7921: Support temp sensor")
 > Signed-off-by: Ma Ke <make24@iscas.ac.cn>
 > ---
->  drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-> index 2e4fa9f48dfb..cba28d8d5562 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-> @@ -1544,6 +1544,9 @@ mt7996_mcu_sta_bfer_he(struct ieee80211_sta *sta, struct ieee80211_vif *vif,
->  	u8 nss_mcs = mt7996_mcu_get_sta_nss(mcs_map);
->  	u8 snd_dim, sts;
+>  drivers/net/wireless/mediatek/mt76/mt7921/init.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+> index ef0c721d26e3..5ab395d9d93e 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+> @@ -52,6 +52,8 @@ static int mt7921_thermal_init(struct mt792x_phy *phy)
 >  
-> +	if (!vc)
-> +		return;
+>  	name = devm_kasprintf(&wiphy->dev, GFP_KERNEL, "mt7921_%s",
+>  			      wiphy_name(wiphy));
+> +	if (!name)
+> +		return -ENOMEM;
+>  
+>  	hwmon = devm_hwmon_device_register_with_groups(&wiphy->dev, name, phy,
+>  						       mt7921_hwmon_groups);
 
-Why is this the only place you are checking the return value of
-mt76_connac_get_he_phy_cap()?  Either fix them all in this driver or
-none as obviously it can not fail :(
+You sent the previous version of this on August 26th:
 
-thanks,
+https://patchwork.kernel.org/project/linux-wireless/patch/20240826095535.2603538-1-make24@iscas.ac.cn/
 
-greg k-h
+Please stop spamming like this and understand that maintainers are busy.
+
+-- 
+https://patchwork.kernel.org/project/linux-wireless/list/
+
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+https://docs.kernel.org/process/submitting-patches.html
 
