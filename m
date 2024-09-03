@@ -4,87 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC23FCD37AB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Sep 2024 17:51:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABFFCCD37AC
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Sep 2024 20:11:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JrFeVjsToed3Zl4nCqY+dKTT7Tnujwq6CI4PwJa2K18=; b=XSZ/DTfbkcetbGdLVio1qIWgHl
-	WShmAmeTWn2MNLuVqJQ8QNlxtUN4k2JnXfM4f3SvC++ONAznJycWEJS8P6Z8HxtTDW/5LpKKFLQ3l
-	9z6V81reS+iKymq13PrNzklpJZEROvWKu4IBGihwN20Qeo6PMomuNL++tK9C/wG/JTGt4DT8uFPnK
-	UvAhd4WVjBwkmfEFmokfP09znaWlsBFx+pnQ4oThd0/x3X8ed+OvGzeD287WQVpl5wj3gOx/zUx3v
-	JbB/zYXf0T3IAuDaChPX7kOg6uCjfptN3mdKbHXlitzgJdQXCaKx/0RtmMnr6W8lyeRwf560MH4EO
-	nBAQqq4A==;
+	bh=eAojFAT3ba3n2wnIcj5YA7EMjuQSkflQk3mevZ8OoEs=; b=iW58C41PQIrLDIgxlZ/sqzKTsH
+	Mf3TqVhd2SyOrt2JSAOGEWhQLbuhQsY2uCs1x2EKom9/HG7fvyC84pD1hKL5Ku0Hef5hkRk3yZF3i
+	J+W9ymDcNKE1FNGCHcvpIIAA/05pUGKPPpBfn6XSYtAXIxpmsV4ygJJIPRckyO3QbCyBRWLHyzl8R
+	3s2n4ogqcA0H0YQILtMSb1WuNDYarU9Hg91OZJuk3BofbAx7UasC0liPSAWRFhvwoKF+Wp0KHlr4b
+	VHkyQxaYc8SxvJVEUaciI4uBJH1DsmcLKQbBSkQ/RaYzOI39zcY7D5egrcOUOCtzH0vZJLtLVFc+z
+	tzb5+B0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slXh9-00000001NMP-2Cmy;
-	Tue, 03 Sep 2024 17:51:59 +0000
-Received: from mail-qt1-x834.google.com ([2607:f8b0:4864:20::834])
+	id 1slZs9-00000001iEc-2xtP;
+	Tue, 03 Sep 2024 20:11:29 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slXfW-00000001MvF-3pd1
-	for linux-mediatek@lists.infradead.org;
-	Tue, 03 Sep 2024 17:50:20 +0000
-Received: by mail-qt1-x834.google.com with SMTP id d75a77b69052e-4567deb9f9dso22091cf.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 03 Sep 2024 10:50:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1725385817; x=1725990617; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=JrFeVjsToed3Zl4nCqY+dKTT7Tnujwq6CI4PwJa2K18=;
-        b=Z58d0bdbmcOl2Lt2vikPfSWCDi82Hc3JkVygGEpn9VJcpXKq9fU50FKruTomZl94vF
-         C8GlckJnxSHziVTPDZF5yeTLxt8/u8wHM0rWjp/nM2QbBzXbNbbEgIECIW63hYbf8d35
-         cacIFaFbixK5d/izwUZ9BBOnQp7NHeIENDXEgNqlhxrzvlonjrobQyEheZfybWdBMqk3
-         cCGEIorgXU1zp2Rl+sF+OlVIEmDBYUIEowBWj7+WuJWyAKscZIiQw+Y6CbgIULzlgRX6
-         GBet/ygbziNHVtnK/Eq4wBBPQCZBWnVr31td5d2kzvkEqOCHP38tr5R141NSG8h4L2kx
-         FcNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725385817; x=1725990617;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=JrFeVjsToed3Zl4nCqY+dKTT7Tnujwq6CI4PwJa2K18=;
-        b=G+8grHzhjoUvCpJDeS7ceiSTjmRVh5Deg8t4KkR7DI+ZJZxUFmLhI0HBznT//+2R1+
-         rVNkV1p1aNHoljESsyktvHRgu+jVoubsjreiX3PpYL10d04Z9dxN8mb1u8vHFrxzefm8
-         AtM3g+d8bE2emicJvLynoeYRjAjhHTBO0L84UBzCDUn91MfgzIMnucgmc+fyJMSTLJtE
-         WsfGq8IeNJ+91OXyXC8oIYe0BlHgxq2IhrmMxDZoi5PwAPz41HKWhk9+ST+VDYAP+tdt
-         wMyO5citw8GJP7VCe9v3KSaeVeNnxXezvpGpk0AX/CdgC7qBHFZSYts+Rozu5IPesoUr
-         /vmw==
-X-Forwarded-Encrypted: i=1; AJvYcCUN3SNxs+xKj+2KfjH/wJgh0qRpl3kOKwRTte8xU9ytnh68gZDuCmGdxEJrtjUjm8G9WBJmnF+6RjyRhqzS5Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YydevtqTxeKWledaSJoIACttdW4GYAnsHwAFDBDn/voBHzG+8z4
-	jipNhQD1qgTQiu8wfq1hgIazMRBCVIsBvP3LYz07cDM8wBFMtbmVeiWl9TUVFTajK0C/HANRfj+
-	arPrf2OJM1AWRevYqQonYfR53vKz3AZRqru3T
-X-Google-Smtp-Source: AGHT+IFLN1lkdyhPhtJ7VV4yd4KAzRRhRDJbTZcdZABtsAuM+hteQRAQb6ynMiViAEg4qg+jaKvZxxEgZDrm35jdMxc=
-X-Received: by 2002:a05:622a:155:b0:453:5b5a:e77c with SMTP id
- d75a77b69052e-457f622cbfbmr95461cf.10.1725385817316; Tue, 03 Sep 2024
- 10:50:17 -0700 (PDT)
+	id 1slZrC-00000001hyH-1hNg;
+	Tue, 03 Sep 2024 20:10:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 38EE35C5647;
+	Tue,  3 Sep 2024 20:10:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4384FC4CEC4;
+	Tue,  3 Sep 2024 20:10:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1725394229;
+	bh=Gw0IBZUNC2LELFePtOPc07moZnDlfXuC4n8LfF7pvzU=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=ixWllNYlPxV1drLcJ6si72tTxEd7GRY8zYsO2uGb8/oFrVS2IZ9nQD7XN5xS9b/GY
+	 JBSuk1ELBOIp9Ik9gy+7U2jNl7+xNpRRhSNOd9YSUl4XrTCizUuzKmSVJiwSsXZBqY
+	 UXHmJMmDbeiOuIdC1XCwdNTyc2cxZKMNYlazw/wmSV2jmyzQ0iGUDsDl0EH8g/fOFP
+	 9vGwg2CBV2lKNO41vooZQ/XlEF5+0zPTlG4gV9HOM2JyFkyFC5F/9RehYKcgYnTNA9
+	 2TH7pHX7RuO/qrhuMw2ctg4xypmAh05jlDWZyKB9BclnSUq4OuSOYHAXjCdvJOvSiJ
+	 Ybark54rrOPag==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 342A63805D82;
+	Tue,  3 Sep 2024 20:10:31 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-References: <20240830070351.2855919-1-jens.wiklander@linaro.org> <20240830070351.2855919-5-jens.wiklander@linaro.org>
-In-Reply-To: <20240830070351.2855919-5-jens.wiklander@linaro.org>
-From: "T.J. Mercier" <tjmercier@google.com>
-Date: Tue, 3 Sep 2024 10:50:03 -0700
-Message-ID: <CABdmKX2KzswmiDY4oWw69_rPWs8d_Cqp7OXouSeMQaYX1SDSmw@mail.gmail.com>
-Subject: Re: [RFC PATCH 4/4] dma-buf: heaps: add Linaro restricted dmabuf heap support
-To: Jens Wiklander <jens.wiklander@linaro.org>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linaro-mm-sig@lists.linaro.org, op-tee@lists.trustedfirmware.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Olivier Masse <olivier.masse@nxp.com>, Thierry Reding <thierry.reding@gmail.com>, 
-	Yong Wu <yong.wu@mediatek.com>, Sumit Semwal <sumit.semwal@linaro.org>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>, 
-	John Stultz <jstultz@google.com>, =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
-	Sumit Garg <sumit.garg@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net v5] bpf, net: Fix a potential race in do_sock_getsockopt()
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <172539423002.426047.5750436407367309589.git-patchwork-notify@kernel.org>
+Date: Tue, 03 Sep 2024 20:10:30 +0000
+References: <20240830082518.23243-1-Tze-nan.Wu@mediatek.com>
+In-Reply-To: <20240830082518.23243-1-Tze-nan.Wu@mediatek.com>
+To: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
+Cc: netdev@vger.kernel.org, bpf@vger.kernel.org, ast@kernel.org,
+ sdf@fomichev.me, alexei.starovoitov@gmail.com, bobule.chang@mediatek.com,
+ wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, kuniyu@amazon.com,
+ chen-yao.chang@mediatek.com, yanghui.li@mediatek.com,
+ cheng-jui.wang@mediatek.com, daniel@iogearbox.net, john.fastabend@gmail.com,
+ andrii@kernel.org, martin.lau@linux.dev, eddyz87@gmail.com, song@kernel.org,
+ yonghong.song@linux.dev, kpsingh@kernel.org, haoluo@google.com,
+ jolsa@kernel.org, davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, linux-arm-kernel@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240903_105019_082629_3FD022BA 
-X-CRM114-Status: GOOD (  27.32  )
+X-CRM114-CacheID: sfid-20240903_131030_504931_18586C8D 
+X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,249 +83,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 30, 2024 at 12:04=E2=80=AFAM Jens Wiklander
-<jens.wiklander@linaro.org> wrote:
->
-> Add a Linaro restricted heap using the linaro,restricted-heap bindings
-> implemented based on the generic restricted heap.
->
-> The bindings defines a range of physical restricted memory. The heap
-> manages this address range using genalloc. The allocated dma-buf file
-> descriptor can later be registered with the TEE subsystem for later use
-> via Trusted Applications in the secure world.
->
-> Co-developed-by: Olivier Masse <olivier.masse@nxp.com>
-> Signed-off-by: Olivier Masse <olivier.masse@nxp.com>
-> Signed-off-by: Jens Wiklander <jens.wiklander@linaro.org>
-> ---
->  drivers/dma-buf/heaps/Kconfig                 |  10 ++
->  drivers/dma-buf/heaps/Makefile                |   1 +
->  .../dma-buf/heaps/restricted_heap_linaro.c    | 165 ++++++++++++++++++
->  3 files changed, 176 insertions(+)
->  create mode 100644 drivers/dma-buf/heaps/restricted_heap_linaro.c
->
-> diff --git a/drivers/dma-buf/heaps/Kconfig b/drivers/dma-buf/heaps/Kconfi=
-g
-> index 58903bc62ac8..82e2c5d09242 100644
-> --- a/drivers/dma-buf/heaps/Kconfig
-> +++ b/drivers/dma-buf/heaps/Kconfig
-> @@ -28,3 +28,13 @@ config DMABUF_HEAPS_RESTRICTED_MTK
->         help
->           Enable restricted dma-buf heaps for MediaTek platform. This hea=
-p is backed by
->           TEE client interfaces. If in doubt, say N.
-> +
-> +config DMABUF_HEAPS_RESTRICTED_LINARO
-> +       bool "Linaro DMA-BUF Restricted Heap"
-> +       depends on DMABUF_HEAPS_RESTRICTED
-> +       help
-> +         Choose this option to enable the Linaro restricted dma-buf heap=
-.
-> +         The restricted heap pools are defined according to the DT. Heap=
-s
-> +         are allocated in the pools using gen allocater.
-> +         If in doubt, say N.
-> +
-> diff --git a/drivers/dma-buf/heaps/Makefile b/drivers/dma-buf/heaps/Makef=
-ile
-> index 0028aa9d875f..66b2f67c47b5 100644
-> --- a/drivers/dma-buf/heaps/Makefile
-> +++ b/drivers/dma-buf/heaps/Makefile
-> @@ -2,4 +2,5 @@
->  obj-$(CONFIG_DMABUF_HEAPS_CMA)         +=3D cma_heap.o
->  obj-$(CONFIG_DMABUF_HEAPS_RESTRICTED)  +=3D restricted_heap.o
->  obj-$(CONFIG_DMABUF_HEAPS_RESTRICTED_MTK)      +=3D restricted_heap_mtk.=
-o
-> +obj-$(CONFIG_DMABUF_HEAPS_RESTRICTED_LINARO)   +=3D restricted_heap_lina=
-ro.o
->  obj-$(CONFIG_DMABUF_HEAPS_SYSTEM)      +=3D system_heap.o
-> diff --git a/drivers/dma-buf/heaps/restricted_heap_linaro.c b/drivers/dma=
--buf/heaps/restricted_heap_linaro.c
-> new file mode 100644
-> index 000000000000..4b08ed514023
-> --- /dev/null
-> +++ b/drivers/dma-buf/heaps/restricted_heap_linaro.c
-> @@ -0,0 +1,165 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * DMABUF secure heap exporter
-> + *
-> + * Copyright 2021 NXP.
-> + * Copyright 2024 Linaro Limited.
-> + */
-> +
-> +#define pr_fmt(fmt)     "rheap_linaro: " fmt
-> +
-> +#include <linux/dma-buf.h>
-> +#include <linux/err.h>
-> +#include <linux/genalloc.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/of_fdt.h>
-> +#include <linux/of_reserved_mem.h>
-> +#include <linux/scatterlist.h>
-> +#include <linux/slab.h>
-> +
-> +#include "restricted_heap.h"
-> +
-> +#define MAX_HEAP_COUNT 2
+Hello:
 
-Are multiple supported because of what Cyrille mentioned here about permiss=
-ions?
-https://lore.kernel.org/lkml/DBBPR04MB7514E006455AEA407041E4F788709@DBBPR04=
-MB7514.eurprd04.prod.outlook.com/
+This patch was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-So this is just some arbitrary limit? I'd prefer to have some sort of
-documentation about this.
+On Fri, 30 Aug 2024 16:25:17 +0800 you wrote:
+> There's a potential race when `cgroup_bpf_enabled(CGROUP_GETSOCKOPT)` is
+> false during the execution of `BPF_CGROUP_GETSOCKOPT_MAX_OPTLEN`, but
+> becomes true when `BPF_CGROUP_RUN_PROG_GETSOCKOPT` is called.
+> This inconsistency can lead to `BPF_CGROUP_RUN_PROG_GETSOCKOPT` receiving
+> an "-EFAULT" from `__cgroup_bpf_run_filter_getsockopt(max_optlen=0)`.
+> Scenario shown as below:
+> 
+> [...]
+
+Here is the summary with links:
+  - [net,v5] bpf, net: Fix a potential race in do_sock_getsockopt()
+    https://git.kernel.org/netdev/net/c/33f339a1ba54
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
 
-> +#define HEAP_NAME_LEN  32
-> +
-> +struct resmem_restricted {
-> +       phys_addr_t base;
-> +       phys_addr_t size;
-> +
-> +       char name[HEAP_NAME_LEN];
-> +
-> +       bool no_map;
-> +};
-> +
-> +static struct resmem_restricted restricted_data[MAX_HEAP_COUNT] =3D {0};
-> +static unsigned int restricted_data_count;
-> +
-> +static int linaro_restricted_memory_allocate(struct restricted_heap *hea=
-p,
-> +                                            struct restricted_buffer *bu=
-f)
-> +{
-> +       struct gen_pool *pool =3D heap->priv_data;
-> +       unsigned long pa;
-> +       int ret;
-> +
-> +       buf->size =3D ALIGN(buf->size, PAGE_SIZE);
-> +       pa =3D gen_pool_alloc(pool, buf->size);
-> +       if (!pa)
-> +               return -ENOMEM;
-> +
-> +       ret =3D sg_alloc_table(&buf->sg_table, 1, GFP_KERNEL);
-> +       if (ret) {
-> +               gen_pool_free(pool, pa, buf->size);
-> +               return ret;
-> +       }
-> +
-> +       sg_set_page(buf->sg_table.sgl, phys_to_page(pa), buf->size, 0);
-> +
-> +       return 0;
-> +}
-> +
-> +static void linaro_restricted_memory_free(struct restricted_heap *heap,
-> +                                         struct restricted_buffer *buf)
-> +{
-> +       struct gen_pool *pool =3D heap->priv_data;
-> +       struct scatterlist *sg;
-> +       unsigned int i;
-> +
-> +       for_each_sg(buf->sg_table.sgl, sg, buf->sg_table.nents, i)
-> +               gen_pool_free(pool, page_to_phys(sg_page(sg)), sg->length=
-);
-> +       sg_free_table(&buf->sg_table);
-> +}
-> +
-> +static const struct restricted_heap_ops linaro_restricted_heap_ops =3D {
-> +       .alloc =3D linaro_restricted_memory_allocate,
-> +       .free =3D linaro_restricted_memory_free,
-> +};
-> +
-> +static int add_heap(struct resmem_restricted *mem)
-> +{
-> +       struct restricted_heap *heap;
-> +       struct gen_pool *pool;
-> +       int ret;
-> +
-> +       if (mem->base =3D=3D 0 || mem->size =3D=3D 0) {
-> +               pr_err("restricted_data base or size is not correct\n");
-> +               return -EINVAL;
-> +       }
-> +
-> +       heap =3D kzalloc(sizeof(*heap), GFP_KERNEL);
-> +       if (!heap)
-> +               return -ENOMEM;
-> +
-> +       pool =3D gen_pool_create(PAGE_SHIFT, -1);
-> +       if (!pool) {
-> +               ret =3D -ENOMEM;
-> +               goto err_free_heap;
-> +       }
-> +
-> +       ret =3D gen_pool_add(pool, mem->base, mem->size, -1);
-> +       if (ret)
-> +               goto err_free_pool;
-> +
-> +       heap->no_map =3D mem->no_map;
-> +       heap->priv_data =3D pool;
-> +       heap->name =3D mem->name;
-> +       heap->ops =3D &linaro_restricted_heap_ops;
-> +
-> +       ret =3D restricted_heap_add(heap);
-> +       if (ret)
-> +               goto err_free_pool;
-> +
-> +       return 0;
-> +
-> +err_free_pool:
-> +       gen_pool_destroy(pool);
-> +err_free_heap:
-> +       kfree(heap);
-> +
-> +       return ret;
-> +}
-> +
-> +static int __init rmem_restricted_heap_setup(struct reserved_mem *rmem)
-> +{
-> +       size_t len =3D HEAP_NAME_LEN;
-> +       const char *s;
-> +       bool no_map;
-> +
-> +       if (WARN_ONCE(restricted_data_count >=3D MAX_HEAP_COUNT,
-> +                     "Cannot handle more than %u restricted heaps\n",
-> +                     MAX_HEAP_COUNT))
-> +               return -EINVAL;
-> +
-> +       no_map =3D of_get_flat_dt_prop(rmem->fdt_node, "no-map", NULL);
-> +       s =3D strchr(rmem->name, '@');
-> +       if (s)
-> +               len =3D umin(s - rmem->name + 1, len);
-> +
-> +       restricted_data[restricted_data_count].base =3D rmem->base;
-> +       restricted_data[restricted_data_count].size =3D rmem->size;
-> +       restricted_data[restricted_data_count].no_map =3D no_map;
-> +       strscpy(restricted_data[restricted_data_count].name, rmem->name, =
-len);
-> +
-> +       restricted_data_count++;
-> +       return 0;
-> +}
-> +
-> +RESERVEDMEM_OF_DECLARE(linaro_restricted_heap, "linaro,restricted-heap",
-> +                      rmem_restricted_heap_setup);
-> +
-> +static int linaro_restricted_heap_init(void)
-> +{
-> +       unsigned int i;
-> +       int ret;
-> +
-> +       for (i =3D 0; i < restricted_data_count; i++) {
-> +               ret =3D add_heap(&restricted_data[i]);
-> +               if (ret)
-> +                       return ret;
-> +       }
-> +       return 0;
-> +}
-> +
-> +module_init(linaro_restricted_heap_init);
-> +MODULE_DESCRIPTION("Linaro Restricted Heap Driver");
-> +MODULE_LICENSE("GPL");
-> --
-> 2.34.1
->
 
