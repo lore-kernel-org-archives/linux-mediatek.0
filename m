@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA185CA0ED3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 13:54:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BF7FCA0ED3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 14:05:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WIqYivxxNBK5wQwFDATI7PJyKeGApgKLKITwgVNwJOM=; b=m+ybcQoYii4UvxO+Ml6l4Yn/UY
-	08WSEeZb2DJRmB7ctDJBUz5ppnL9K/r8QLbCy7qvuxghKlVLsnxUmtSzzmGM0NMu+GJIspCj1C3Eo
-	IlWbym41F9y0xjtauid81hUlGfh9gpbdQsoZ2cHqTVUhv2cbcbAOMXPN0VQ7FZrBy/U3tNNZrPNOz
-	s54iOD5NAs79UW0nGmGQHaoUeFbu0bu3OGba04he8LFUF05Uv3ozWnIVb0WaYKHj5xh2bfomt48eh
-	UEkFOHe5+psorqEmaopkGQVsyXCSPpHf5k4G0wvfcY7SeTknTK8GgcKmyw2Vg724Na/EfFn8ikdC4
-	vddrAxcQ==;
+	bh=8yqP8oZ72fsO5/2JR2ih49Ao0JF4zlr8p7IuPD366vY=; b=pUd10OUbNg/AnCgru5S0h/TnfU
+	0f09HV9ak+/Gevjozlc214Eh+1n+PwMwO7Rn9qxGrdQDUbepj99TW3vLWtceeYukoeTT3dcnpF4NG
+	8n+RKagWe0JaFxd6j77C+/RR8OPFG6maAmoh0/fUx6q0HwdKFs7sfYFB45bIcrcKlPuC0/jgm6Gl7
+	xTkTiAYW7MGU8zqrUEqEZt+Wn0oYtHDOQ4VOJvoKfKgfJGeH53AArn2iNGEzMrcKeELoZP7m9BsLL
+	UF2iqGWBMNIy8sd7D9eGNqTGKoFjJ/4ZTIKBKCNQS09AiUhCDh0xW9HAKPd1Pi7//48LzSbxW1ecn
+	nuvo43xA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slqT1-00000004dwO-111g;
-	Wed, 04 Sep 2024 13:54:39 +0000
-Received: from mgamail.intel.com ([192.198.163.8])
+	id 1slqdC-00000004gnX-28Hn;
+	Wed, 04 Sep 2024 14:05:10 +0000
+Received: from mgamail.intel.com ([198.175.65.18])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slqS3-00000004dhc-2xzk;
-	Wed, 04 Sep 2024 13:53:41 +0000
+	id 1slqcD-00000004gYk-3WxO;
+	Wed, 04 Sep 2024 14:04:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1725458019; x=1756994019;
+  t=1725458650; x=1756994650;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=IrZ7cqUQ/rV3TjzeCgtYwOAMGS511YXRIN78hNIahso=;
-  b=HptEWlm3zqmmEQs/7V1hm4OF3hWBlUxM5DGP1k7OpjqyMwrR4O3je4G/
-   X3escZqcD+MvmtMtzgCnBIGG8ztaxTeE6SBmS/hNxNSW1KFzy4QTi+fsR
-   c184D8Bo8Kax8XFHcm4bgWCvP+z7E0JGz+cX5uhb2Q13Csb/qsDEgd6S/
-   OO02NiC3POFQhw1lmEVtrVdkfHkRHKlbtFyGIaAT1Gf8PLOJN0RRJomCa
-   JypDiQn0QJurvzFW8WLx5RPimT6fq3AMXsoE17QBc1MjKm+BKgm7zJjHy
-   lU0oITppCulam+YDjezeRHB6miK9oGJUga6oh8dB2GGOW+BtOPIYBT+96
-   w==;
-X-CSE-ConnectionGUID: iUIQWKaET2W/RZg5F4UZSg==
-X-CSE-MsgGUID: RHxFRpfdS/2CRnQsx8YG3w==
-X-IronPort-AV: E=McAfee;i="6700,10204,11185"; a="41619648"
+  bh=4TSPzyXFo3mbtoWssEyI2IeYSaBZSS1lpLsVvyGQj+w=;
+  b=jWYT5WFSSAd++YWDOM6kYfYT/Fwzd4ocz7iJQxFcLr4G45harGxmBQgg
+   vwkD72oIrcUpXVxvCK0rnV6HAsTMGjvcxKui1/roq9nHUt+jvZ+Ua0lbJ
+   xURYoPRcaL4/UlcTvdRYLs0NK2T+URMMbM+kAWgWBwpMAqiRbl7Bc+7V9
+   5GCDIXEgcr91gjNItOLNUWynDlFY1RpECFb5JuLEGa8wdKJDHrVcXrQh7
+   7lzqYYUMrixfQxlKM5292VhFrzM3og9EjZ8cdh0ZhFyTMvRhpAO5GVIRr
+   Z+G98ChGMnyAo6BfIC+4JxG+2CXmz1Zo3vQNRwJS8sAoerHH1a237vLcM
+   Q==;
+X-CSE-ConnectionGUID: 3pdE+xe+T+quDo7ex0BxfQ==
+X-CSE-MsgGUID: u0N1L6bOTCCoJwlQTY/DXw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11185"; a="24263233"
 X-IronPort-AV: E=Sophos;i="6.10,202,1719903600"; 
-   d="scan'208";a="41619648"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Sep 2024 06:53:37 -0700
-X-CSE-ConnectionGUID: j610Y+0US6q4B+XEa1zMhw==
-X-CSE-MsgGUID: bvEv6kCCSCmYTMkuy16joQ==
+   d="scan'208";a="24263233"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Sep 2024 07:04:09 -0700
+X-CSE-ConnectionGUID: vo0i1YUjRZmNB8mT1EJMSw==
+X-CSE-MsgGUID: iLEpjnPLTGeJk6AuL3/5Qg==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.10,202,1719903600"; 
-   d="scan'208";a="64946038"
+   d="scan'208";a="65120093"
 Received: from smile.fi.intel.com ([10.237.72.54])
-  by fmviesa006.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Sep 2024 06:53:33 -0700
+  by orviesa010.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Sep 2024 07:04:05 -0700
 Received: from andy by smile.fi.intel.com with local (Exim 4.98)
 	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1slqRu-0000000553f-1ICw;
-	Wed, 04 Sep 2024 16:53:30 +0300
-Date: Wed, 4 Sep 2024 16:53:30 +0300
+	id 1slqc6-000000055Ds-0KY5;
+	Wed, 04 Sep 2024 17:04:02 +0300
+Date: Wed, 4 Sep 2024 17:04:01 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
@@ -72,18 +72,18 @@ Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
 	Douglas Anderson <dianders@chromium.org>,
 	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
 	linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v6 09/12] i2c: of-prober: Add regulator support
-Message-ID: <ZthmWoJbjrEmzOzu@smile.fi.intel.com>
+Subject: Re: [PATCH v6 10/12] i2c: of-prober: Add GPIO support
+Message-ID: <Ztho0WuqgFZxpD1Q@smile.fi.intel.com>
 References: <20240904090016.2841572-1-wenst@chromium.org>
- <20240904090016.2841572-10-wenst@chromium.org>
+ <20240904090016.2841572-11-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240904090016.2841572-10-wenst@chromium.org>
+In-Reply-To: <20240904090016.2841572-11-wenst@chromium.org>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_065339_813156_4C1C2FD4 
-X-CRM114-Status: GOOD (  29.54  )
+X-CRM114-CacheID: sfid-20240904_070409_952479_1B300E6C 
+X-CRM114-Status: GOOD (  30.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,12 +98,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 04, 2024 at 05:00:11PM +0800, Chen-Yu Tsai wrote:
-> This adds regulator management to the I2C OF component prober.
+On Wed, Sep 04, 2024 at 05:00:12PM +0800, Chen-Yu Tsai wrote:
+> This adds GPIO management to the I2C OF component prober.
 > Components that the prober intends to probe likely require their
 > regulator supplies be enabled, and GPIOs be toggled to enable them or
 > bring them out of reset before they will respond to probe attempts.
-> GPIOs will be handled in the next patch.
+> regulator support was added in the previous patch.
 > 
 > Without specific knowledge of each component's resource names or
 > power sequencing requirements, the prober can only enable the
@@ -128,68 +128,118 @@ On Wed, Sep 04, 2024 at 05:00:11PM +0800, Chen-Yu Tsai wrote:
 
 ...
 
-> +static int i2c_of_probe_get_regulators(struct device *dev, struct device_node *node,
-> +				       struct i2c_of_probe_data *data)
+> +static int i2c_of_probe_get_gpiod(struct device_node *node, struct property *prop,
+> +				  struct i2c_of_probe_data *data)
 > +{
-> +	struct regulator_bulk_data *tmp, *new_regulators;
-> +	int ret;
+> +	struct fwnode_handle *fwnode = of_fwnode_handle(node);
+> +	struct gpio_descs *gpiods;
+> +	struct gpio_desc *gpiod;
+> +	char propname[32]; /* 32 is max size of property name */
+> +	char *con_id = NULL;
+> +	size_t new_size;
+> +	int len, ret;
 > +
-> +	ret = of_regulator_bulk_get_all(dev, node, &tmp);
+> +	len = gpio_get_property_name_length(prop->name);
+> +	if (len < 0)
+> +		return 0;
+> +
+> +	ret = strscpy(propname, prop->name);
 > +	if (ret < 0) {
-> +		return ret;
-> +	} else if (ret == 0) {
-> +		/*
-> +		 * It's entirely possible for a device node to not have
-> +		 * regulator supplies. While it doesn't make sense from
-> +		 * a hardware perspective, the supplies could be always
-> +		 * on or otherwise not modeled in the device tree, but
-> +		 * the device would still work.
-> +		 */
-> +		return ret;
+> +		pr_err("%pOF: length of GPIO name \"%s\" exceeds current limit\n",
+> +		       node, prop->name);
+> +		return -EINVAL;
+
+Any good reason to shadow the error code from strscpy() here?
+
 > +	}
-
-	if (ret < 0)
-		return ret;
-
-	/*
-	 * It's entirely possible for a device node to not have regulator
-	 * supplies. While it doesn't make sense from a hardware perspective,
-	 * the supplies could be always on or otherwise not modeled in
-	 * the device tree, but the device would still work.
-	 */
-	if (ret == 0)
-		return ret;
-
-> +	if (!data->regulators) {
-> +		data->regulators = tmp;
-> +		data->regulators_num = ret;
-> +		return ret;
-> +	};
 > +
-> +	new_regulators = krealloc_array(data->regulators, (data->regulators_num + ret),
+> +	if (len > 0) {
+> +		/* "len < ARRAY_SIZE(propname)" guaranteed by strscpy() above */
 
-Redundant parentheses.
+is guaranteed
 
-> +					sizeof(*tmp), GFP_KERNEL);
-> +	if (!new_regulators) {
-> +		regulator_bulk_free(ret, tmp);
+> +		propname[len] = '\0';
+
+Please, check if it's guaranteed by strscpy() (IIRC it is, hence redundant line).
+
+> +		con_id = propname;
+> +	}
+> +
+> +	/*
+> +	 * GPIO descriptors are not reference counted. GPIOD_FLAGS_BIT_NONEXCLUSIVE
+> +	 * can't differentiate between GPIOs shared between devices to be probed and
+> +	 * other devices (which is incorrect). If the initial request fails with
+> +	 * -EBUSY, retry with GPIOD_FLAGS_BIT_NONEXCLUSIVE and see if it matches
+> +	 * any existing ones.
+> +	 */
+> +	gpiod = fwnode_gpiod_get_index(fwnode, con_id, 0, GPIOD_ASIS, "i2c-of-prober");
+> +	if (IS_ERR(gpiod)) {
+> +		if (PTR_ERR(gpiod) != -EBUSY || !data->gpiods)
+> +			return PTR_ERR(gpiod);
+> +
+> +		gpiod = fwnode_gpiod_get_index(fwnode, con_id, 0,
+> +					       GPIOD_ASIS | GPIOD_FLAGS_BIT_NONEXCLUSIVE,
+> +					       "i2c-of-prober");
+> +		for (unsigned int i = 0; i < data->gpiods->ndescs; i++)
+> +			if (gpiod == data->gpiods->desc[i])
+> +				return 1;
+> +
+> +		return -EBUSY;
+> +	}
+> +
+> +	new_size = struct_size(gpiods, desc, data->gpiods ? data->gpiods->ndescs + 1 : 1);
+> +	gpiods = krealloc(data->gpiods, new_size, GFP_KERNEL);
+> +	if (!gpiods) {
+> +		gpiod_put(gpiod);
 > +		return -ENOMEM;
 > +	}
 > +
-> +	data->regulators = new_regulators;
-> +	memcpy(&data->regulators[data->regulators_num], tmp, sizeof(*tmp) * ret);
-
-Shouldn't be the size calculated based on the size of the destination?
-
-> +	data->regulators_num += ret;
+> +	data->gpiods = gpiods;
+> +	data->gpiods->desc[data->gpiods->ndescs++] = gpiod;
 > +
-> +	return ret;
+> +	return 1;
 > +}
 
 ...
 
-As I said earlier my main concern is that timeout heuristic which seems fragile.
-But I have no ideas to propose, leave this to others to comment on / think about.
+> +static int i2c_of_probe_set_gpios(struct device *dev, struct i2c_of_probe_data *data)
+> +{
+> +	int ret;
+> +	int gpio_i;
+
+Why signed? And can it be simply named 'i'?
+
+> +
+> +	if (!data->gpiods)
+> +		return 0;
+> +
+> +	for (gpio_i = 0; gpio_i < data->gpiods->ndescs; gpio_i++) {
+> +		/*
+> +		 * "reset" GPIOs normally have opposite polarity compared to
+> +		 * "enable" GPIOs. Instead of parsing the flags again, simply
+> +		 * set the raw value to high.
+> +		 */
+> +		dev_dbg(dev, "Setting GPIO %d\n", gpio_i);
+> +		ret = gpiod_direction_output_raw(data->gpiods->desc[gpio_i], 1);
+> +		if (ret)
+> +			goto disable_gpios;
+> +	}
+> +
+> +	msleep(data->opts->post_reset_deassert_delay_ms);
+> +
+> +	return 0;
+> +
+> +disable_gpios:
+
+> +	for (gpio_i--; gpio_i >= 0; gpio_i--)
+
+	while (i--)
+
+> +		gpiod_set_raw_value_cansleep(data->gpiods->desc[gpio_i], 0);
+> +
+> +	return ret;
+> +}
+
 
 -- 
 With Best Regards,
