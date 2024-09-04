@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49B4ACD3431
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 09:39:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18FC7CA0ED3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 09:40:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oXe0bTAdK4fzeVHk0iwWr+4YgaeXrtwwmT3G1fAlM0c=; b=KfLvWFJ+tNyAK5nb/TZmEIDA+m
-	WvAUK1HF+m6LZ+MYzuiMUr/TUfO0KjYResj36uMpgoPeei4+hQD/FMdxmbN3wrZyfqBnJUVKi3ESY
-	xFbVGmRuykk57DdD/k6m5QvLB5sUjAcEm+BG6PwpysdjROOGBe+tBCnPQqShbnPv2hHUm50UE0SXq
-	dyRv86JKRZb0tVUFCMigTWk1ugnZD42dd5z55BYCFNwIRdb0Lj66SlcC8wutyT/LNn5g/Heuy0H2a
-	Q4LKqyDsUzScuEGpawXPMTa5QfVEEpJz5tdXipXT0l+jrVNum6F2OHPmCKi32waeT+sXZjJRi3zIF
-	rx2QIhQA==;
+	bh=1lx3yQsWkTb9x7LagKbuMm4vpMCf33yZ7BqsG5IeSJA=; b=bECIwOP8v+qJbsny84qEQ0LZ/c
+	nyHKKE2/aeTE+seSlzgWN2y8ZsptOrnXUmChJRf0Td4O8AQqnLmIs0FzuajgQM4wKcxD8vDi6UK8o
+	8/XTfVg1yPFZN3NvHeMQm1ZTIH718MYjOSOH0LWTmpkJC6ZyYqfdo71htSw0+BC1QC27NelWy2cAZ
+	yBEca8/QsaYD86c2XU5KkUvmY2ew7QFJBxlBaD/v4j6aXzMCOw2adjnU3bsi5JUJM+NdZH9q/6jV/
+	KmWw6ox0VqLhRnlLLmomuvdRlBUOQGnsVwkD4lfkWhVURS/0ON564JkyNY5cW9IFZFeCkMEPW6Ltt
+	hiTjIBsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slmTp-00000003iru-03Kc;
-	Wed, 04 Sep 2024 09:39:13 +0000
+	id 1slmUi-00000003j6R-3KLs;
+	Wed, 04 Sep 2024 09:40:08 +0000
 Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sllsb-00000003YtK-1pC6
+	id 1sllsf-00000003Yvh-0WkW
 	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Sep 2024 09:00:46 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-70cec4aa1e4so4530549b3a.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 04 Sep 2024 02:00:45 -0700 (PDT)
+	Wed, 04 Sep 2024 09:00:51 +0000
+Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-7176645e440so368567b3a.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 04 Sep 2024 02:00:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1725440445; x=1726045245; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1725440448; x=1726045248; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=oXe0bTAdK4fzeVHk0iwWr+4YgaeXrtwwmT3G1fAlM0c=;
-        b=XQdfrNjutGUIBe2/XwPDYvEn+AP0z8AsthSaC5lHzJqyN82N6+4bMzA/IRyTAjvzuw
-         Nj/ZdEJ7bAtlyz54SQ4ewsOJVOGHlDapx44X/0PrGn49Wp2m3O3nIeKJUWaB+rIqfKEB
-         cjQA4gyBPs4od8BL86m5p2dIcmAvqML6SYhLc=
+        bh=1lx3yQsWkTb9x7LagKbuMm4vpMCf33yZ7BqsG5IeSJA=;
+        b=cSH3S+V7TT3X2JYOSRfMfTppqszYgpAZx22dDnp8yG82K2ict/GrZqlLG2INjx8u2W
+         hDM75Th3aOhZWGq6dGSsSDtKxQ16i48ZqzU8SgjIQYaMlZXQHGAGdXVWDyAfquFNvdQT
+         /2ROLBtt2uZSJKX/DfZ+ZfdxYk1++vsN+LOx4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725440445; x=1726045245;
+        d=1e100.net; s=20230601; t=1725440448; x=1726045248;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=oXe0bTAdK4fzeVHk0iwWr+4YgaeXrtwwmT3G1fAlM0c=;
-        b=Eu5WF2RP7JmtUWJftSYBxCLfDdZudYzg5POfPSlCxC9ecqc1HXPZq18WAYi9SflsdH
-         kChmhLk6jrniZ9q5GowBcpB7GLEGgJsPEmaU6MOFmEyW8pMdbtL9+MeKzJXKAABcUAbe
-         cGC/AqXsys3+Arj6eMNyenjFTmXHC76dVcf9w2l6DAgQiZQbPUbNOqKmQ0HI6h8ekicc
-         g/UGgWdlWfGj5Sr04GPLsorjVtM7vgav0lccb+anX5yDQzFJoMNYz5xHB3DG8WDg5tYQ
-         0qSppvZcgIUtoC6zcp4KCwZtR7HtQ7wKefbrQzZt0JIUCt1AU0C+DkOl76h0W8Y5iyRA
-         qkWQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU7DnwUvD6Rlw7JhVH5HPrCHDNwLfbe0Tvkq0CXAlNXADzEAsGLRr73sS9kR4VEOpVeq6gWreFtpEeohJ+xQA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxkwoXi6O9LgRR537mlPvglFRC+Z7Y7CKxAYiE7/jmlCbR6NNKJ
-	feNgb5KZZw+zZxkFfbTFL6CEMO99fT5F4tH4Gb7fr5Lj9jXyaUJMK2gtj4C4Hw==
-X-Google-Smtp-Source: AGHT+IGxijmAvO+pYlgJ7hjMKsPERsrObcLBwxYEKhBRWkHQTmof+srMssUjYemzBoLP7fiuqVV5Ew==
-X-Received: by 2002:a05:6a20:d48c:b0:1be:c929:e269 with SMTP id adf61e73a8af0-1cce10ab242mr24768495637.34.1725440444657;
-        Wed, 04 Sep 2024 02:00:44 -0700 (PDT)
+        bh=1lx3yQsWkTb9x7LagKbuMm4vpMCf33yZ7BqsG5IeSJA=;
+        b=E8uALIBOo+4goad2zlSXGfDhcGSRXKM2cked4k6xm8mWJj90Tyw0QwCUeQPDDEw4HN
+         TTtiKHeFbMGmELF+OgNy/MWrX3xobyoHL3wwAIyusAUwaxDYodPyDWFjhWd8SpPPPJII
+         skkXnmZv7irBtOfCz/klHXVO8LXA1ErGLkEAxf9pjGvxpirwP5vi/hNmSAtLbYOZFdSl
+         HgRznZrdeTUkyj5h5crkbywMQ0S34sHt1PQNodRQMqBw2yC4Z0BTztcFY6dWESXyHxt4
+         WRd7eSmg/HhbazME0REuRNABtNdsOfk2+ahnywXapZOh5M2sHb2QyqEJvVkQpwWI6Sj5
+         dXUQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXFUil3AaT99v2nHoUc25b//8vyQanHLfOtLvXhKm5YnAz/EDvWa6pBidz8tvXYOiwPxChGZY7BFUZd6eV0dQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyjvTmTB8jpyCnVy1wcyRjpqQ8/U77BG4qm2tlF8HLEQIfDbK8L
+	T2pljHWHAfbBk+rEr6cXlyOu2dcoXXmgDUfKwWZnQTM32RFeww1GysWd5Q2dbg==
+X-Google-Smtp-Source: AGHT+IFljw5CEOubKFgJs6Qw/4fe2qNKJQ/lUogumRK/GAi7DQzBwRnb7bCkK8F5ANHCSTOzSxDq3Q==
+X-Received: by 2002:a05:6a00:2e08:b0:714:228d:e9f2 with SMTP id d2e1a72fcca58-7177a92187bmr2450461b3a.3.1725440448446;
+        Wed, 04 Sep 2024 02:00:48 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:83fc:5c8e:13bd:d165])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-717785b5183sm1153279b3a.197.2024.09.04.02.00.41
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-717785b5183sm1153279b3a.197.2024.09.04.02.00.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Sep 2024 02:00:44 -0700 (PDT)
+        Wed, 04 Sep 2024 02:00:48 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Rob Herring <robh@kernel.org>,
 	Saravana Kannan <saravanak@google.com>,
@@ -81,17 +81,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	Jiri Kosina <jikos@kernel.org>,
 	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
 	linux-i2c@vger.kernel.org
-Subject: [PATCH v6 06/12] gpiolib: Add gpio_get_property_name_length()
-Date: Wed,  4 Sep 2024 17:00:08 +0800
-Message-ID: <20240904090016.2841572-7-wenst@chromium.org>
+Subject: [PATCH v6 07/12] i2c: core: Remove extra space in Makefile
+Date: Wed,  4 Sep 2024 17:00:09 +0800
+Message-ID: <20240904090016.2841572-8-wenst@chromium.org>
 X-Mailer: git-send-email 2.46.0.469.g59c65b2a67-goog
 In-Reply-To: <20240904090016.2841572-1-wenst@chromium.org>
 References: <20240904090016.2841572-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_020045_511054_E0B200AC 
-X-CRM114-Status: GOOD (  19.78  )
+X-CRM114-CacheID: sfid-20240904_020049_209566_953F54D7 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,98 +106,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The I2C device tree component prober needs to get and toggle GPIO lines
-for the components it intends to probe. These components may not use the
-same name for their GPIO lines, so the prober must go through the device
-tree, check each property to see it is a GPIO property, and get the GPIO
-line.
+Some lines in the Makefile have a space before tabs. Remove those.
 
-Instead of duplicating the GPIO suffixes, or exporting them to the
-prober to do pattern matching, simply add and export a new function that
-does the pattern matching and returns the length of the GPIO name. The
-caller can then use that to copy out the name if it needs to.
-
-Andy suggested a much shorter implementation.
-
-Suggested-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Reported-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Closes: https://lore.kernel.org/all/ZsdE0PxKnGRjzChl@smile.fi.intel.com/
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-
 ---
 Changes since v5:
-- Changed function name to "gpio_get_property_name_length()"
-- Changed argument name to "propname"
-- Clarified return value for "*-<GPIO suffix>" case
-- Reworked according to Andy's suggestion
-- Added stub function
-
-Changes since v4:
 - new patch
 ---
- drivers/gpio/gpiolib.c        | 25 +++++++++++++++++++++++++
- include/linux/gpio/consumer.h |  7 +++++++
- 2 files changed, 32 insertions(+)
+ drivers/i2c/Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/gpio/gpiolib.c b/drivers/gpio/gpiolib.c
-index 3903d0a75304..86527cc7991b 100644
---- a/drivers/gpio/gpiolib.c
-+++ b/drivers/gpio/gpiolib.c
-@@ -4295,6 +4295,31 @@ struct gpio_desc *fwnode_gpiod_get_index(struct fwnode_handle *fwnode,
- }
- EXPORT_SYMBOL_GPL(fwnode_gpiod_get_index);
+diff --git a/drivers/i2c/Makefile b/drivers/i2c/Makefile
+index 3f71ce4711e3..f12d6b10a85e 100644
+--- a/drivers/i2c/Makefile
++++ b/drivers/i2c/Makefile
+@@ -5,10 +5,10 @@
  
-+/**
-+ * gpio_get_property_name_length - Returns the GPIO name length from a property name
-+ * @propname:	name of the property to check
-+ *
-+ * This function checks if the given property name matches the GPIO property
-+ * patterns, and returns the length of the name of the GPIO. The pattern is
-+ * "*-<GPIO suffix>" or just "<GPIO suffix>".
-+ *
-+ * Returns:
-+ * The length of the string before '-<GPIO suffix>' if it matches
-+ * "*-<GPIO suffix>", or 0 if no name part, just the suffix, or
-+ * -EINVAL if the string doesn't match the pattern.
-+ */
-+int gpio_get_property_name_length(const char *propname)
-+{
-+	const char *dash = strrchr(propname, '-');
-+
-+	for (const char *const *p = gpio_suffixes; *p; p++)
-+		if (!strcmp(dash ? dash + 1 : propname, *p))
-+			return dash ? dash - propname : 0;
-+
-+	return -EINVAL;
-+}
-+EXPORT_SYMBOL_GPL(gpio_get_property_name_length);
-+
- /**
-  * gpiod_count - return the number of GPIOs associated with a device / function
-  *		or -ENOENT if no GPIO has been assigned to the requested function
-diff --git a/include/linux/gpio/consumer.h b/include/linux/gpio/consumer.h
-index db2dfbae8edb..494dde33ca44 100644
---- a/include/linux/gpio/consumer.h
-+++ b/include/linux/gpio/consumer.h
-@@ -56,6 +56,8 @@ enum gpiod_flags {
+ obj-$(CONFIG_I2C_BOARDINFO)	+= i2c-boardinfo.o
+ obj-$(CONFIG_I2C)		+= i2c-core.o
+-i2c-core-objs 			:= i2c-core-base.o i2c-core-smbus.o
++i2c-core-objs			:= i2c-core-base.o i2c-core-smbus.o
+ i2c-core-$(CONFIG_ACPI)		+= i2c-core-acpi.o
+-i2c-core-$(CONFIG_I2C_SLAVE) 	+= i2c-core-slave.o
+-i2c-core-$(CONFIG_OF) 		+= i2c-core-of.o
++i2c-core-$(CONFIG_I2C_SLAVE)	+= i2c-core-slave.o
++i2c-core-$(CONFIG_OF)		+= i2c-core-of.o
  
- #ifdef CONFIG_GPIOLIB
- 
-+int gpio_get_property_name_length(const char *propname);
-+
- /* Return the number of GPIOs associated with a device / function */
- int gpiod_count(struct device *dev, const char *con_id);
- 
-@@ -188,6 +190,11 @@ struct gpio_desc *devm_fwnode_gpiod_get_index(struct device *dev,
- 
- #include <asm/bug.h>
- 
-+static inline int gpio_get_property_name_length(const char *propname)
-+{
-+	return ERR_PTR(-ENOSYS);
-+}
-+
- static inline int gpiod_count(struct device *dev, const char *con_id)
- {
- 	return 0;
+ obj-$(CONFIG_I2C_SMBUS)		+= i2c-smbus.o
+ obj-$(CONFIG_I2C_CHARDEV)	+= i2c-dev.o
 -- 
 2.46.0.469.g59c65b2a67-goog
 
