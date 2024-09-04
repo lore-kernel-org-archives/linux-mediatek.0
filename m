@@ -4,63 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9394CA0ED3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 13:44:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDBC8CD3431
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 13:45:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VwEfdm4q+wfr0l6mlGCoktTiJUKUaRM/VZwyRBPBIlI=; b=y0tiNzlqRt8YSHYd70M38/yB6H
-	XkXFN77Pbg/RAiEqNcN1JRC9ZnHDOap3RN9PrZq5cqkpxrEFgDzG0t5gl/hq4BVPylhptoYoV1d/d
-	V3+3vk1ApzwlxLQHlXX+RplJd79KZZ+NA+/3tD85fO3K4DZLKoCdMSNcWtAbAvF4BPzTwtJzwUlCi
-	lUJnzC+11SzAjXAWTaTP+d2EEvJrhtB8s2sVLht3ALUhD+2RYZh77Jk/swS9Vde/pD2xcHWZu6IzJ
-	KyRVLi7C6LT/uTVIeRmwV6QYTQf/v0dKMue+KVYgiItUXHXyAqctJGDxxfFGVG4g9HseTcsjgwCUn
-	5CpI8PWg==;
+	bh=5AgQ5AISZZ1ssep2yGiu41tQFkna3VBpDnGenFC5mK4=; b=wT+uyXjKQBBCsAA2Tuv1XnUhc+
+	9hXqZyLqWw7vg+tWFRaoF+wVPJ0tQCA/9DulAox1jhIj+hc+ZFjgPbICM2Vg+gSdkF51q/mF7bS2b
+	PU0eSBsakwWMYLdZqokawcjSQV2/nH06W0l2hh5r1NtCE8PjfY6/ucSIFnu4LmNFFau5042TAfKSV
+	KYrBwV4A4I3B4RUZ/HGLMyKFR7JT8k+6pOKGZDPDgDoUR7/cSY6YUG5u+hSVoWEb5dlONjut/xpYh
+	8O4vTIvLibZbtH4IiMZa19o4j8+59hB0kuX2Rzcf4UA3mqh48yQjmIaqHE9Sz36bkKhecK49I/wFK
+	eGgL2iEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slqJ7-00000004cA2-2Bug;
-	Wed, 04 Sep 2024 13:44:25 +0000
-Received: from mgamail.intel.com ([198.175.65.21])
+	id 1slqK2-00000004cQG-2K4U;
+	Wed, 04 Sep 2024 13:45:22 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slqGz-00000004bTq-2QlH;
-	Wed, 04 Sep 2024 13:42:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1725457333; x=1756993333;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=NINj+1oq4hrfppG9fWwkMRuDXoIUekzuXgqNElLQs0M=;
-  b=ExMSmYtEjiTuTRLZRzTjdiRp1iqMaRKxxr+CZJBn9TOMALh7LjWIqB3i
-   UWbAqTpTf+CTWIuwPWOQlAGujo0xYqfCOk1IOjxKABX+z5bZt1s7xbwQX
-   um1ZDH6Tcb+5267BZC1dUD92ovPe1m3kjWdv8vm0VkkhtJfrZguYJqzME
-   bl3bGiesMXzGGIqpWJr8wkhHocaWdg69r5cw8N3LglnUpxxjU3LYDN5ip
-   rK5UiWdy9iNZrug4ZARsnVbXj69E5kRVnAI64qOgSYB3uziWYSm1CLpAZ
-   X8sj2UIfHRmfbSogYe/UZOuNU75mbwdTh1tt1HN/YEnaj6MiykraymEhd
-   g==;
-X-CSE-ConnectionGUID: DJaBRa1AQki+2fGE0ior8w==
-X-CSE-MsgGUID: KOjqhJ2qRUC+7pzxL7T/sQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11185"; a="24070508"
-X-IronPort-AV: E=Sophos;i="6.10,202,1719903600"; 
-   d="scan'208";a="24070508"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Sep 2024 06:42:12 -0700
-X-CSE-ConnectionGUID: 9OjySTKyQw6NDxzamnIErA==
-X-CSE-MsgGUID: 0+LQUU0fQKa5kG2MyEgvgg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,202,1719903600"; 
-   d="scan'208";a="65618042"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Sep 2024 06:42:08 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1slqGq-000000054o4-3OEs;
-	Wed, 04 Sep 2024 16:42:04 +0300
-Date: Wed, 4 Sep 2024 16:41:36 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
+	id 1slqIB-00000004bsh-47sS;
+	Wed, 04 Sep 2024 13:43:29 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id EA431A44381;
+	Wed,  4 Sep 2024 13:43:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9D3CAC4CEC2;
+	Wed,  4 Sep 2024 13:43:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1725457406;
+	bh=kE0X7wspkpxVH1tIDaeGEqIrVA9YrtMyOtuxX4FrNRo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ZCrN3BJwrnkJylI3AHIVOu+JPvpU3xjzr+2K2+H+Rk/DYpys1kb23fmHuCQ+zIHL+
+	 GpfXxfeDc84NCy+BkvSf76BQawFIwYmQeSICEt3LcZj2Nc1rl9mYNyxKrh/953gZOf
+	 oigq1scn6Qpex2HtUPIOuFzzyAaBwdTDTDu5u4i8ZkuGOA3NztWJE+qLe9ASJxeH5t
+	 vWaM+TWrwBkGeRaON+zOKqSklStlgtQ3ugRR2tja03EisNhSp5sHMkCr4fJZSHRSbK
+	 5YJcNHp6qvaHwpEpJsNOySRSQh2D4i/QXmTyzFh/LPudb1OOvH9F3haSSzirIqXBFx
+	 w99KibqkqfLPQ==
+Date: Wed, 4 Sep 2024 08:43:25 -0500
+From: Rob Herring <robh@kernel.org>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Chen-Yu Tsai <wenst@chromium.org>
+Cc: Saravana Kannan <saravanak@google.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Wolfram Sang <wsa@kernel.org>, Benson Leung <bleung@chromium.org>,
@@ -72,19 +57,19 @@ Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
 	Douglas Anderson <dianders@chromium.org>,
 	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
 	linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v6 07/12] i2c: core: Remove extra space in Makefile
-Message-ID: <ZthjkJwtpz9gU9hI@smile.fi.intel.com>
+Subject: Re: [PATCH v6 02/12] of: base: Add
+ for_each_child_of_node_with_prefix_scoped()
+Message-ID: <20240904134325.GA2416154-robh@kernel.org>
 References: <20240904090016.2841572-1-wenst@chromium.org>
- <20240904090016.2841572-8-wenst@chromium.org>
+ <20240904090016.2841572-3-wenst@chromium.org>
+ <Zthasx8VNCw_yj5q@smile.fi.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240904090016.2841572-8-wenst@chromium.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <Zthasx8VNCw_yj5q@smile.fi.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_064213_689476_3F18C82E 
-X-CRM114-Status: UNSURE (   8.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240904_064328_231857_D692D918 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,14 +84,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 04, 2024 at 05:00:09PM +0800, Chen-Yu Tsai wrote:
-> Some lines in the Makefile have a space before tabs. Remove those.
+On Wed, Sep 04, 2024 at 04:03:47PM +0300, Andy Shevchenko wrote:
+> On Wed, Sep 04, 2024 at 05:00:04PM +0800, Chen-Yu Tsai wrote:
+> > There are cases where drivers would go through child device nodes and
+> > operate on only the ones whose node name starts with a given prefix.
+> > 
+> > Provide a helper for these users. This will mainly be used in a
+> > subsequent patch that implements a hardware component prober for I2C
+> > busses.
+> 
+> ...
+> 
+> > +#define for_each_child_of_node_with_prefix_scoped(parent, child, prefix) \
+> > +	for (struct device_node *child __free(device_node) =		\
+> > +	     of_get_next_child_with_prefix(parent, NULL, prefix);	\
+> > +	     child != NULL;						\
+> > +	     child = of_get_next_child_with_prefix(parent, child, prefix))
+> 
+> I'm wondering if we may drop _scoped from day 1. Yeah, probably a bit confusing
+> as the rest of APIs without that suffix do require reference count handling on
+> the loop abrupt.
 
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Yes, please drop. We have other new ones coming and they don't have 
+"_scoped". I was on the fence, but if you use a scoped one like a 
+non-scoped one (declaring child outside or using it outside the loop) 
+you will get a compiler error.
 
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+Rob
 
