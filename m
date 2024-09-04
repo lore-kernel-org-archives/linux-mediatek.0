@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 385FFCD3431
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91E1CCA0ED3
 	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 09:42:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,54 +12,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qLn/XE+uDzMxmMKZJAijY6Hl5jp5DWcTMHCPptQeycc=; b=IB/Po+pJ50N9BUEOGyvcij0vHy
-	SQA0/EmPQ8f/9SGdQ2H+iSJsL/Ud8TTUdm4f9i/Rzg5jCfLfVL95HiPzDzsz0ZOIgdqSOgdIaiwnf
-	DNer7lWtuGhMh76cf9oA0jGY5SK42pAmqgL0FHmoGelr0a7tx/Ftz0w5ZubLORmt2pN5e9AZ9A9DC
-	rfANJ3w5W0fhI3b5mxDUz6+5V3FTKUP2ns3E5CRSkPTTLS80OuUSX5+X6+dt1pand9mT1QAPirkWN
-	LuKt20Nt4YaHuW3wJprXkJH+wAPmzQYp/QqGooTeGgZiDd77AvOMNf+/wAcClRnd6KcQCJ2T5KYVj
-	MwIi3PjA==;
+	bh=DwAJluv0Exq9EadYfBSyNeJ8D4Ka/sU/iYmJbm5J4eo=; b=KR+oq+ku3T9+yjIGNb0C9A02+6
+	oGSZkd8yDVgVNoUqA5d11FW19OkX31/lLZE32OJEyldMku+GA/YVnkrw4vIZni8M3zlJFvm6ieYOI
+	6GnilveYzmzv+2xk80GvP7QX/J35z/jwLDy/7NcFrQkaqIP3MMvJCNUZ7ZE7zrF+VcxZjeYRzH6MK
+	FdrP070dy4hNLEqzRLelzQb0eBv/wzwE12BPjjzcny3c0+vT9ofA3CVjGNxaMmvMm8PA7jAlzx08X
+	NdN99lEeZyCBAjXzC8j67CoQEpAjwfHxeY9nXC9NV7dU/TTXcz6Cajm41jvDupU5ncNPVKHXp+3ad
+	A98KjgrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slmXQ-00000003jpL-2jAK;
+	id 1slmXQ-00000003jpg-43dS;
 	Wed, 04 Sep 2024 09:42:56 +0000
-Received: from mail-oo1-xc32.google.com ([2607:f8b0:4864:20::c32])
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sllsn-00000003Yzf-1NTh
+	id 1sllsq-00000003Z1I-1zEj
 	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Sep 2024 09:00:58 +0000
-Received: by mail-oo1-xc32.google.com with SMTP id 006d021491bc7-5dca9cc71b2so375347eaf.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 04 Sep 2024 02:00:56 -0700 (PDT)
+	Wed, 04 Sep 2024 09:01:04 +0000
+Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-7cd9e634ea9so4246150a12.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 04 Sep 2024 02:01:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1725440456; x=1726045256; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1725440459; x=1726045259; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=qLn/XE+uDzMxmMKZJAijY6Hl5jp5DWcTMHCPptQeycc=;
-        b=fstfpRde66oLtMa3jcIppzwB080rXQbI/UsUVdJnR1r1+kQNmumN/EXzpCQZwwEBtj
-         HoG0KXbulty6G6QtFbXeQjXQtCgAo5ZhI74k/kjfnv9SI/jLAEhgHpX/ZJ+8r31ckFZ3
-         gzFU7fC/j+AuJ4bt2V1XiRpld4mNOuA/xxanQ=
+        bh=DwAJluv0Exq9EadYfBSyNeJ8D4Ka/sU/iYmJbm5J4eo=;
+        b=HN9lcGD8K79UBtI0kNYMK9wbHIRVQ6rE7ECNkFVro2Tvdup3scINZBFXy/soSNa8xL
+         Dy+sU05nafY43echRHmlmbhlexM4RVyTsLvdEHDN4P4f4KB7aIo3+J/1xeBv/WYKQn8P
+         JrwHw4n7vjt+p+V8YdmYg+kuElouUDMnwvG1A=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725440456; x=1726045256;
+        d=1e100.net; s=20230601; t=1725440459; x=1726045259;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=qLn/XE+uDzMxmMKZJAijY6Hl5jp5DWcTMHCPptQeycc=;
-        b=R6pv3lGrlhNBUYyI9tjmOon7Gsn6hKeOReXkVTevM82AD3D1KmDX+XKGwZyaX3ITyd
-         sZZSg+osi20K7JUGiTb3UCQoi28rxfAl50W7sly6YmFdRII+ga2BXvBdgnAfL/Ao0X92
-         nZOJD/g2YbsvQgeH17YLZ/W9LqCWd+S03CPQBAlIYk3jKDXnz8vdrSWVhVYKvEuvEB0p
-         mco6+JSFPL6uxIkXMd95RvGFmjs7zBs+E2FQkOer0nDkBFTPJMwSEpQexQG8nH8PjtWY
-         GaVc6YuWU6yRIDlztfMhtAMefwKd/ryRf36ficNH+1OE6+p4rthgwvql++I/UKlG5S0w
-         a4rA==
-X-Forwarded-Encrypted: i=1; AJvYcCXPSTOOnQe3Rk305yxPEWwfHW/uz6Vat1i9yCB+dVSIAnmBHD9bq6fAd7JRaZew2oIOunnj+QTKDb7As9V8hA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzOzV5HJlnbDfs+eDnhs3w9GWgmI5Lm+HO2lYGIHlThlcqdjT9w
-	uVQMFBvS4UDoTZUAwPngJ+egkxe/qE6oWZvUxtePo7D5ecm2rFHh7MMAe3TUiQ==
-X-Google-Smtp-Source: AGHT+IHzx1FZvOZD6BTlnZiQsDYe4dTxexfmSKVGQ4N7JYcwoXKnticdmTrNQBjnjLU8yqjr9ZcwRA==
-X-Received: by 2002:a05:6870:64a9:b0:277:e512:f27a with SMTP id 586e51a60fabf-277e512f84emr11125014fac.16.1725440455782;
-        Wed, 04 Sep 2024 02:00:55 -0700 (PDT)
+        bh=DwAJluv0Exq9EadYfBSyNeJ8D4Ka/sU/iYmJbm5J4eo=;
+        b=i58y0GZyH2eP86WPISfM+h8spqICXi7DYTUDuk/HPaAYseRok+r/av3S1C4j3n6/q+
+         BvRG+I2tUAWKIih7JuwDgqkDCcsh5qFT2ntwfpK7q9A13ocwA0PgFGBnP3KpmINRk/CD
+         q/07fmUe5J5z9/jlEAMeEvoWGy1qKR86bEVuZbJRpSdc22koNfK1aKrejvSb5UTsJQtJ
+         JoI2LF2HwAh/DC0yz7PCk7nk60COJPxvZl1bKFNmYx9JnuWfIxZSwh4NxVqGdllecMoo
+         GLxm9taXj/8C8hjbyK2e/x/tDRotYJiDP1WA0URF6m1ceYMmhWjljil7B9xO9kL+fGBa
+         XyQQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU1pLNEkjkR2j3h4kIpqstt7XISBe1cwOzjUdiAdeai8PoZFWf7D4/NbhOej0ccH849Kyyvtq2/vjySdM5MFg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyW3bfgGYphdhPjOYZLno3r2hZv7USGfMxRf/awnQT7FTeHojNo
+	iVqd0EuG9q8hZaL8+KgqVPwLc050SChuIWl9zfGMzcM4+aaVHRxoDuUBR2lW5A==
+X-Google-Smtp-Source: AGHT+IFFqCnmeBWZ9aXSqOpUywkoxinPfwTNU43tOQwWBlrfj1Rm3kLKZ4eIZFoE+WAsIUVUCM7mHQ==
+X-Received: by 2002:a05:6a21:1813:b0:1cd:f065:4ef7 with SMTP id adf61e73a8af0-1ced0469052mr12363435637.19.1725440459454;
+        Wed, 04 Sep 2024 02:00:59 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:83fc:5c8e:13bd:d165])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-717785b5183sm1153279b3a.197.2024.09.04.02.00.52
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-717785b5183sm1153279b3a.197.2024.09.04.02.00.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Sep 2024 02:00:55 -0700 (PDT)
+        Wed, 04 Sep 2024 02:00:59 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Rob Herring <robh@kernel.org>,
 	Saravana Kannan <saravanak@google.com>,
@@ -81,17 +81,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	Jiri Kosina <jikos@kernel.org>,
 	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
 	linux-i2c@vger.kernel.org
-Subject: [PATCH v6 09/12] i2c: of-prober: Add regulator support
-Date: Wed,  4 Sep 2024 17:00:11 +0800
-Message-ID: <20240904090016.2841572-10-wenst@chromium.org>
+Subject: [PATCH v6 10/12] i2c: of-prober: Add GPIO support
+Date: Wed,  4 Sep 2024 17:00:12 +0800
+Message-ID: <20240904090016.2841572-11-wenst@chromium.org>
 X-Mailer: git-send-email 2.46.0.469.g59c65b2a67-goog
 In-Reply-To: <20240904090016.2841572-1-wenst@chromium.org>
 References: <20240904090016.2841572-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_020057_380783_D9B6DF79 
-X-CRM114-Status: GOOD (  33.18  )
+X-CRM114-CacheID: sfid-20240904_020100_545676_545BCF93 
+X-CRM114-Status: GOOD (  34.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,11 +106,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This adds regulator management to the I2C OF component prober.
+This adds GPIO management to the I2C OF component prober.
 Components that the prober intends to probe likely require their
 regulator supplies be enabled, and GPIOs be toggled to enable them or
 bring them out of reset before they will respond to probe attempts.
-GPIOs will be handled in the next patch.
+regulator support was added in the previous patch.
 
 Without specific knowledge of each component's resource names or
 power sequencing requirements, the prober can only enable the
@@ -134,282 +134,276 @@ same reason, the prober will release the GPIOs before the successfully
 probed component is actually enabled.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+
 ---
 Changes since v5:
-- Split of_regulator_bulk_get_all() return value check and explain
-  "ret == 0" case
-- Switched to of_get_next_child_with_prefix_scoped() where applicable
-- Used krealloc_array() instead of directly calculating size
-- copy whole regulator array in one memcpy() call
-- Drop "0" from struct zeroing initializer
-- Split out regulator helper from i2c_of_probe_enable_res() to keep
-  code cleaner when combined with the next patch
-- Added options for customizing power sequencing delay
-- Rename i2c_of_probe_get_regulator() to i2c_of_probe_get_regulators()
-- Add i2c_of_probe_free_regulator() helper
+- Renamed "con" to "propname" in i2c_of_probe_get_gpiod()
+- Copy string first and check return value of strscpy() for overflow in
+  i2c_of_probe_get_gpiod()
+- Add parenthesis around "enable" and "reset" GPIO names in comments
+- Split resource count debug message into two separate lines
+- Split out GPIO helper from i2c_of_probe_enable_res() to keep code
+  cleaner following the previous patch
+- Adopted options for customizing power sequencing delay following
+  previous patch
 
 Changes since v4:
-- Split out GPIO handling to separate patch
-- Rewrote using of_regulator_bulk_get_all()
-- Replaced "regulators" with "regulator supplies" in debug messages
-
-Changes since v3:
-- New patch
-
-This change is kept as a separate patch for now since the changes are
-quite numerous.
+- Split out from previous patch
+- Moved GPIO property name check to common function in gpiolib.c in new
+  patch
+- Moved i2c_of_probe_free_gpios() into for_each_child_of_node_scoped()
+- Rewrote in gpiod_*_array-esque fashion
 ---
- drivers/i2c/i2c-core-of-prober.c | 154 +++++++++++++++++++++++++++++--
- include/linux/i2c.h              |  10 +-
- 2 files changed, 155 insertions(+), 9 deletions(-)
+ drivers/i2c/i2c-core-of-prober.c | 143 ++++++++++++++++++++++++++++++-
+ include/linux/i2c.h              |   2 +
+ 2 files changed, 144 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/i2c/i2c-core-of-prober.c b/drivers/i2c/i2c-core-of-prober.c
-index 64d7631f4885..56b06ad7aa64 100644
+index 56b06ad7aa64..04242ff86e69 100644
 --- a/drivers/i2c/i2c-core-of-prober.c
 +++ b/drivers/i2c/i2c-core-of-prober.c
-@@ -6,12 +6,14 @@
+@@ -5,16 +5,19 @@
+  * Copyright (C) 2024 Google LLC
   */
  
++#include <linux/bitmap.h>
  #include <linux/cleanup.h>
-+#include <linux/delay.h>
+ #include <linux/delay.h>
  #include <linux/device.h>
  #include <linux/dev_printk.h>
  #include <linux/err.h>
++#include <linux/gpio/consumer.h>
  #include <linux/i2c.h>
  #include <linux/module.h>
  #include <linux/of.h>
-+#include <linux/regulator/consumer.h>
+ #include <linux/regulator/consumer.h>
  #include <linux/slab.h>
++#include <linux/types.h>
  
  /*
-@@ -27,11 +29,119 @@
+  * Some devices, such as Google Hana Chromebooks, are produced by multiple
+@@ -29,12 +32,14 @@
   * address responds.
   *
   * TODO:
-- * - Support handling common regulators.
-  * - Support handling common GPIOs.
+- * - Support handling common GPIOs.
++ * - Support inverted polarity GPIOs, such as electrical high to "disable".
++ *   Seen on some OmniVision camera sensors.
   * - Support I2C muxes
   */
  
-+struct i2c_of_probe_data {
-+	const struct i2c_of_probe_opts *opts;
-+	struct regulator_bulk_data *regulators;
-+	unsigned int regulators_num;
+ struct i2c_of_probe_data {
+ 	const struct i2c_of_probe_opts *opts;
++	struct gpio_descs *gpiods;
+ 	struct regulator_bulk_data *regulators;
+ 	unsigned int regulators_num;
+ };
+@@ -85,10 +90,90 @@ static void i2c_of_probe_free_regulators(struct i2c_of_probe_data *data)
+ 	regulator_bulk_free(data->regulators_num, data->regulators);
+ 	data->regulators_num = 0;
+ 	data->regulators = NULL;
 +};
 +
-+/* Returns number of regulator supplies found for node, or error. */
-+static int i2c_of_probe_get_regulators(struct device *dev, struct device_node *node,
-+				       struct i2c_of_probe_data *data)
++/*
++ * Returns 1 if property is GPIO and GPIO successfully requested,
++ * 0 if not a GPIO property, or error if request for GPIO failed.
++ */
++static int i2c_of_probe_get_gpiod(struct device_node *node, struct property *prop,
++				  struct i2c_of_probe_data *data)
 +{
-+	struct regulator_bulk_data *tmp, *new_regulators;
-+	int ret;
++	struct fwnode_handle *fwnode = of_fwnode_handle(node);
++	struct gpio_descs *gpiods;
++	struct gpio_desc *gpiod;
++	char propname[32]; /* 32 is max size of property name */
++	char *con_id = NULL;
++	size_t new_size;
++	int len, ret;
 +
-+	ret = of_regulator_bulk_get_all(dev, node, &tmp);
++	len = gpio_get_property_name_length(prop->name);
++	if (len < 0)
++		return 0;
++
++	ret = strscpy(propname, prop->name);
 +	if (ret < 0) {
-+		return ret;
-+	} else if (ret == 0) {
-+		/*
-+		 * It's entirely possible for a device node to not have
-+		 * regulator supplies. While it doesn't make sense from
-+		 * a hardware perspective, the supplies could be always
-+		 * on or otherwise not modeled in the device tree, but
-+		 * the device would still work.
-+		 */
-+		return ret;
++		pr_err("%pOF: length of GPIO name \"%s\" exceeds current limit\n",
++		       node, prop->name);
++		return -EINVAL;
 +	}
 +
-+	if (!data->regulators) {
-+		data->regulators = tmp;
-+		data->regulators_num = ret;
-+		return ret;
-+	};
++	if (len > 0) {
++		/* "len < ARRAY_SIZE(propname)" guaranteed by strscpy() above */
++		propname[len] = '\0';
++		con_id = propname;
++	}
 +
-+	new_regulators = krealloc_array(data->regulators, (data->regulators_num + ret),
-+					sizeof(*tmp), GFP_KERNEL);
-+	if (!new_regulators) {
-+		regulator_bulk_free(ret, tmp);
++	/*
++	 * GPIO descriptors are not reference counted. GPIOD_FLAGS_BIT_NONEXCLUSIVE
++	 * can't differentiate between GPIOs shared between devices to be probed and
++	 * other devices (which is incorrect). If the initial request fails with
++	 * -EBUSY, retry with GPIOD_FLAGS_BIT_NONEXCLUSIVE and see if it matches
++	 * any existing ones.
++	 */
++	gpiod = fwnode_gpiod_get_index(fwnode, con_id, 0, GPIOD_ASIS, "i2c-of-prober");
++	if (IS_ERR(gpiod)) {
++		if (PTR_ERR(gpiod) != -EBUSY || !data->gpiods)
++			return PTR_ERR(gpiod);
++
++		gpiod = fwnode_gpiod_get_index(fwnode, con_id, 0,
++					       GPIOD_ASIS | GPIOD_FLAGS_BIT_NONEXCLUSIVE,
++					       "i2c-of-prober");
++		for (unsigned int i = 0; i < data->gpiods->ndescs; i++)
++			if (gpiod == data->gpiods->desc[i])
++				return 1;
++
++		return -EBUSY;
++	}
++
++	new_size = struct_size(gpiods, desc, data->gpiods ? data->gpiods->ndescs + 1 : 1);
++	gpiods = krealloc(data->gpiods, new_size, GFP_KERNEL);
++	if (!gpiods) {
++		gpiod_put(gpiod);
 +		return -ENOMEM;
 +	}
 +
-+	data->regulators = new_regulators;
-+	memcpy(&data->regulators[data->regulators_num], tmp, sizeof(*tmp) * ret);
-+	data->regulators_num += ret;
++	data->gpiods = gpiods;
++	data->gpiods->desc[data->gpiods->ndescs++] = gpiod;
 +
-+	return ret;
++	return 1;
 +}
 +
-+static void i2c_of_probe_free_regulators(struct i2c_of_probe_data *data)
++/*
++ * This is split into two functions because in the normal flow the GPIOs
++ * have to be released before the actual driver probes so that the latter
++ * can acquire them.
++ */
++static void i2c_of_probe_free_gpios(struct i2c_of_probe_data *data)
 +{
-+	regulator_bulk_free(data->regulators_num, data->regulators);
-+	data->regulators_num = 0;
-+	data->regulators = NULL;
-+}
-+
-+static void i2c_of_probe_free_res(struct i2c_of_probe_data *data)
-+{
-+	i2c_of_probe_free_regulators(data);
-+}
-+
-+static int i2c_of_probe_get_res(struct device *dev, struct device_node *node,
-+				struct i2c_of_probe_data *data)
-+{
-+	struct property *prop;
-+	int ret;
-+
-+	ret = i2c_of_probe_get_regulators(dev, node, data);
-+	if (ret < 0) {
-+		dev_err_probe(dev, ret, "Failed to get regulator supplies from %pOF\n", node);
-+		goto err_cleanup;
-+	}
-+
-+	return 0;
-+
-+err_cleanup:
-+	i2c_of_probe_free_res(data);
-+	return ret;
-+}
-+
-+static int i2c_of_probe_enable_regulators(struct device *dev, struct i2c_of_probe_data *data)
-+{
-+	int ret;
-+
-+	dev_dbg(dev, "Enabling regulator supplies\n");
-+
-+	ret = regulator_bulk_enable(data->regulators_num, data->regulators);
-+	if (ret)
-+		return ret;
-+
-+	msleep(data->opts->post_power_on_delay_ms);
-+
-+	return 0;
-+}
-+
-+static void i2c_of_probe_disable_regulators(struct i2c_of_probe_data *data)
-+{
-+	regulator_bulk_disable(data->regulators_num, data->regulators);
-+}
-+
-+static int i2c_of_probe_enable_res(struct device *dev, struct i2c_of_probe_data *data)
-+{
-+	int ret;
-+
-+	ret = i2c_of_probe_enable_regulators(dev, data);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
- static struct device_node *i2c_of_probe_get_i2c_node(struct device *dev, const char *type)
- {
- 	struct device_node *node __free(device_node) = of_find_node_by_name(NULL, type);
-@@ -78,10 +188,17 @@ static int i2c_of_probe_enable_node(struct device *dev, struct device_node *node
- 	return ret;
++	if (data->gpiods)
++		gpiod_put_array(data->gpiods);
++	data->gpiods = NULL;
  }
  
-+static const struct i2c_of_probe_opts i2c_of_probe_opts_default = {
-+	/* largest post-power-on pre-reset-deassert delay seen among drivers */
-+	.post_power_on_delay_ms = 500,
-+};
-+
- /**
-  * i2c_of_probe_component() - probe for devices of "type" on the same i2c bus
-  * @dev: &struct device of the caller, only used for dev_* printk messages
-  * @type: a string to match the device node name prefix to probe for
-+ * @opts: &struct i2c_of_probe_data containing tweakable options for the prober.
-+ *	  Defaults are used if this is %NULL.
-  *
-  * Probe for possible I2C components of the same "type" on the same I2C bus
-  * that have their status marked as "fail".
-@@ -108,8 +225,9 @@ static int i2c_of_probe_enable_node(struct device *dev, struct device_node *node
-  *         had multiple types of components to probe, and one of them down
-  *         the list caused a deferred probe. This is expected behavior.
-  */
--int i2c_of_probe_component(struct device *dev, const char *type)
-+int i2c_of_probe_component(struct device *dev, const char *type, const struct i2c_of_probe_opts *opts)
+ static void i2c_of_probe_free_res(struct i2c_of_probe_data *data)
  {
-+	struct i2c_of_probe_data probe_data = { .opts = opts ?: &i2c_of_probe_opts_default };
- 	struct i2c_adapter *i2c;
- 	int ret;
++	i2c_of_probe_free_gpios(data);
+ 	i2c_of_probe_free_regulators(data);
+ }
  
-@@ -117,9 +235,7 @@ int i2c_of_probe_component(struct device *dev, const char *type)
- 	if (IS_ERR(i2c_node))
- 		return PTR_ERR(i2c_node);
- 
--	for_each_child_of_node_scoped(i2c_node, node) {
--		if (!of_node_name_prefix(node, type))
--			continue;
-+	for_each_child_of_node_with_prefix_scoped(i2c_node, node, type) {
- 		if (!of_device_is_available(node))
- 			continue;
- 
-@@ -134,13 +250,33 @@ int i2c_of_probe_component(struct device *dev, const char *type)
- 	if (!i2c)
- 		return dev_err_probe(dev, -EPROBE_DEFER, "Couldn't get I2C adapter\n");
- 
-+	/* Grab resources */
-+	for_each_child_of_node_with_prefix_scoped(i2c_node, node, type) {
-+		u32 addr;
-+
-+		if (of_property_read_u32(node, "reg", &addr))
-+			continue;
-+
-+		dev_dbg(dev, "Requesting resources for %pOF\n", node);
-+		ret = i2c_of_probe_get_res(dev, node, &probe_data);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	dev_dbg(dev, "Resources: # of regulator supplies = %d\n", probe_data.regulators_num);
-+
-+	/* Enable resources */
-+	ret = i2c_of_probe_enable_res(dev, &probe_data);
-+	if (ret) {
-+		i2c_of_probe_free_res(&probe_data);
-+		return dev_err_probe(dev, ret, "Failed to enable resources\n");
-+	}
-+
- 	ret = 0;
--	for_each_child_of_node_scoped(i2c_node, node) {
-+	for_each_child_of_node_with_prefix_scoped(i2c_node, node, type) {
- 		union i2c_smbus_data data;
- 		u32 addr;
- 
--		if (!of_node_name_prefix(node, type))
--			continue;
- 		if (of_property_read_u32(node, "reg", &addr))
- 			continue;
- 		if (i2c_smbus_xfer(i2c, addr, 0, I2C_SMBUS_READ, 0, I2C_SMBUS_BYTE, &data) < 0)
-@@ -151,6 +287,8 @@ int i2c_of_probe_component(struct device *dev, const char *type)
- 		break;
+@@ -104,6 +189,18 @@ static int i2c_of_probe_get_res(struct device *dev, struct device_node *node,
+ 		goto err_cleanup;
  	}
  
-+	i2c_of_probe_disable_regulators(&probe_data);
-+	i2c_of_probe_free_res(&probe_data);
- 	i2c_put_adapter(i2c);
++	for_each_property_of_node(node, prop) {
++		dev_dbg(dev, "Trying property %pOF/%s\n", node, prop->name);
++
++		/* GPIOs */
++		ret = i2c_of_probe_get_gpiod(node, prop, data);
++		if (ret < 0) {
++			dev_err_probe(dev, ret, "Failed to get GPIO from %pOF/%s\n",
++				      node, prop->name);
++			goto err_cleanup;
++		}
++	}
++
+ 	return 0;
  
- 	return ret;
+ err_cleanup:
+@@ -131,6 +228,37 @@ static void i2c_of_probe_disable_regulators(struct i2c_of_probe_data *data)
+ 	regulator_bulk_disable(data->regulators_num, data->regulators);
+ }
+ 
++static int i2c_of_probe_set_gpios(struct device *dev, struct i2c_of_probe_data *data)
++{
++	int ret;
++	int gpio_i;
++
++	if (!data->gpiods)
++		return 0;
++
++	for (gpio_i = 0; gpio_i < data->gpiods->ndescs; gpio_i++) {
++		/*
++		 * "reset" GPIOs normally have opposite polarity compared to
++		 * "enable" GPIOs. Instead of parsing the flags again, simply
++		 * set the raw value to high.
++		 */
++		dev_dbg(dev, "Setting GPIO %d\n", gpio_i);
++		ret = gpiod_direction_output_raw(data->gpiods->desc[gpio_i], 1);
++		if (ret)
++			goto disable_gpios;
++	}
++
++	msleep(data->opts->post_reset_deassert_delay_ms);
++
++	return 0;
++
++disable_gpios:
++	for (gpio_i--; gpio_i >= 0; gpio_i--)
++		gpiod_set_raw_value_cansleep(data->gpiods->desc[gpio_i], 0);
++
++	return ret;
++}
++
+ static int i2c_of_probe_enable_res(struct device *dev, struct i2c_of_probe_data *data)
+ {
+ 	int ret;
+@@ -139,7 +267,15 @@ static int i2c_of_probe_enable_res(struct device *dev, struct i2c_of_probe_data
+ 	if (ret)
+ 		return ret;
+ 
++	ret = i2c_of_probe_set_gpios(dev, data);
++	if (ret)
++		goto err_disable_regulators;
++
+ 	return 0;
++
++err_disable_regulators:
++	i2c_of_probe_disable_regulators(data);
++	return ret;
+ }
+ 
+ static struct device_node *i2c_of_probe_get_i2c_node(struct device *dev, const char *type)
+@@ -191,6 +327,8 @@ static int i2c_of_probe_enable_node(struct device *dev, struct device_node *node
+ static const struct i2c_of_probe_opts i2c_of_probe_opts_default = {
+ 	/* largest post-power-on pre-reset-deassert delay seen among drivers */
+ 	.post_power_on_delay_ms = 500,
++	/* largest post-reset-deassert delay seen in tree for Elan I2C HID */
++	.post_reset_deassert_delay_ms = 300,
+ };
+ 
+ /**
+@@ -264,6 +402,8 @@ int i2c_of_probe_component(struct device *dev, const char *type, const struct i2
+ 	}
+ 
+ 	dev_dbg(dev, "Resources: # of regulator supplies = %d\n", probe_data.regulators_num);
++	dev_dbg(dev, "Resources: # of GPIOs = %d\n",
++		probe_data.gpiods ? probe_data.gpiods->ndescs : 0);
+ 
+ 	/* Enable resources */
+ 	ret = i2c_of_probe_enable_res(dev, &probe_data);
+@@ -283,6 +423,7 @@ int i2c_of_probe_component(struct device *dev, const char *type, const struct i2
+ 			continue;
+ 
+ 		/* Found a device that is responding */
++		i2c_of_probe_free_gpios(&probe_data);
+ 		ret = i2c_of_probe_enable_node(dev, node);
+ 		break;
+ 	}
 diff --git a/include/linux/i2c.h b/include/linux/i2c.h
-index c6c16731243d..dbcdb8edbf6f 100644
+index dbcdb8edbf6f..0da1edddb5a2 100644
 --- a/include/linux/i2c.h
 +++ b/include/linux/i2c.h
-@@ -1034,7 +1034,15 @@ int of_i2c_get_board_info(struct device *dev, struct device_node *node,
- 			  struct i2c_board_info *info);
+@@ -1037,9 +1037,11 @@ int of_i2c_get_board_info(struct device *dev, struct device_node *node,
+ /**
+  * i2c_of_probe_opts - I2C OF component prober customization options
+  * @post_power_on_delay_us: Delay in ms after regulators are powered on. Passed to msleep().
++ * @post_reset_deassert_delay_ms: Delay in ms after GPIOs are set. Passed to msleep().
+  */
+ struct i2c_of_probe_opts {
+ 	unsigned int post_power_on_delay_ms;
++	unsigned int post_reset_deassert_delay_ms;
+ };
  
- #if IS_ENABLED(CONFIG_OF_DYNAMIC)
--int i2c_of_probe_component(struct device *dev, const char *type);
-+/**
-+ * i2c_of_probe_opts - I2C OF component prober customization options
-+ * @post_power_on_delay_us: Delay in ms after regulators are powered on. Passed to msleep().
-+ */
-+struct i2c_of_probe_opts {
-+	unsigned int post_power_on_delay_ms;
-+};
-+
-+int i2c_of_probe_component(struct device *dev, const char *type, const struct i2c_of_probe_opts *opts);
- #endif
- 
- #else
+ int i2c_of_probe_component(struct device *dev, const char *type, const struct i2c_of_probe_opts *opts);
 -- 
 2.46.0.469.g59c65b2a67-goog
 
