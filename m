@@ -4,60 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 825E6CD37B4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 13:11:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AAA3CD3431
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 13:16:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H5INdmuob/xdKoZ8GkDf20JhY6cC8bC1424SXiBQesE=; b=HZi/nR7glCrM59JpC6wVaqJhVM
-	v2SiLovJlBcGlqPxxJlj/q7UM6Oq/u8XdjaaKWZcriMLKZl8RKBFTzkTJP4gQcmHYa5iLCfy/V3ZN
-	mZbEwABKna3m01jKiUwFdQUByEOmtNAwHY4HY/2gX5MajwKrOX5vM4ef/Vfw/qMfVWD1GlTse70tf
-	MnJ61GWZHT+MAt5rRdgL7YIROYtvqnJ8y8b5Y/iR6wdCMOQFHNMoEHAVC6dmKrbqdQsjprieWs6Nj
-	KaH9qxUCh3dky2GV/ZByVd3SkixaTOFSY1tuVYC9/0sZ0huTQtIGJoavmXKgYi5rmRo5Mi/n/24oN
-	z/UZUaPw==;
+	bh=38L22690z5fHiXIh40+Mckw2G05fl9KZgILyvKKXC2I=; b=rsxsdDQKODdJFscmYbjP+5dW9+
+	yZO+lVoTG2U9K2AbNL9dqzSLpehvQ+EoWJTsJI59igf/T0/brQCLdJBV5x0wFD2vHsU38pCfi8lBe
+	Fk2y4tJ3BRKDWdlCcCRr6SPAEeICYpaR6zZDBDMW9lMW31/vWHnSCe3usNqLHsx8Sx2/y9mKgfxGQ
+	gxaq00xYF4SESGzfjyzKnaMOm2ZVOTnXEmtfn0fl1vNG9kspZSLFkWlue7hcooEk/Xf/f405ldAq8
+	8QHRwVIGd5UYaa9AwWtAJcl7YFRIqYnIZ9H7Ka3UQsVFesy3SrjgUPlA1vZZfHQqILbJ2wkY4de4A
+	yIYFimzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slpn1-00000004V1r-0RtQ;
-	Wed, 04 Sep 2024 13:11:15 +0000
-Received: from mgamail.intel.com ([198.175.65.12])
+	id 1slprb-00000004Vlw-3gJs;
+	Wed, 04 Sep 2024 13:15:59 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slplr-00000004Ul5-3AZJ;
-	Wed, 04 Sep 2024 13:10:15 +0000
+	id 1slpqe-00000004VcA-2uWS;
+	Wed, 04 Sep 2024 13:15:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=38L22690z5fHiXIh40+Mckw2G05fl9KZgILyvKKXC2I=; b=ioY3POu4aXVdDvXOvybLtGP/he
+	8mm+W7GaFslm+NlV0FInEdcmBpygvSRsrAVmBCAbgXUWresp3X0bh3jOyCsGS+/676VnOKf2FI9wF
+	tFZmhb0Xfq1dT/U/X6GBqJoqHeCKDBbGY58ZoMzvh+QLYvq4LBUnZ32Hz11IyAE0Ub6a129lRspaX
+	7v4xTTJjZuHcP9RlastXVrPRHyYlMDXX5GW8ZoPY61Zh8Vk+LOPoi6d+QdcXDVt4Eu/44L6/E3Idc
+	kd3JyIeQaYLMkRz3Qatf3khLg09FRJPzhfpqCru/Rc5xvhwScLDfgkl9nwo6eWuMX3mussIdXRQIT
+	eWGrvXCw==;
+Received: from mgamail.intel.com ([198.175.65.14])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1slppy-00000000E5U-3ze9;
+	Wed, 04 Sep 2024 13:14:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1725455404; x=1756991404;
+  t=1725455659; x=1756991659;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=tATWn40qt4pXS+t/MnTUTHbZoXR7GdywvSxVFOVuwNw=;
-  b=mwjh+9wzJ175Y/ogWZY3wJnoPgM1jSdTi9rjDxnmDnAQMH+qyjAua2S0
-   gdSAlyB3b0bTcRt/ORrk499mAi6vSB3d0DHsrVSAy+CJVQgSezZp0Q6vu
-   eB4uoGpQy6zcshR+YGEzTbpVZszx12tonZ6L+o5DNXf7vS/Yb0d7z8bmQ
-   uH3+O8Wn0JR/vmFY8xyTGxn/4FPI4iiPvH5FJSMRSMG2RqQJHmC2eq80A
-   /AXO1/hgapNBIeZ2sj5fTgY2MZ5pi8bpMesX+rV9GSYf8cYTP+Rh16F/u
-   QhH9R56+NARI9kyAfeF6PAcEELwjuazA4CB+PfXjJo1JwORJtvIXaNgYH
+  bh=zHIc1Xe49cAdQbrSE9iC8kis8SkfxhbbHfvV3kPeSfA=;
+  b=RkI8QdV9WnArEWp+6bglOSMuSfTMjSOlVNQtI2E3/xdJ3LMzcH+RTyN7
+   oYfHParVLdfVrybFoFBFy7GqFnvIESEPH2QeTlAjJvD6FNaQp7Faf9wqZ
+   POUcrLOe0NcFx0PpAmj70FDSfXyiEXIG5sejKlB+s00Y+yHXEDZt3wKOY
+   askju/s9HDCZmkNGER0sJa5StcXf5q3CIHjBZVfy8m1Qsugx+gzCFZ8md
+   ahoCN4LErIfyYHqymyg9/FRrjtlWNTN9zNnw9AcnyxUd2OiqV1ingf6Tt
+   AN9rik8hHizwxlkvkIOSE09V6wAoCwk4LiKoUseQVAMQPJyJqsP258vjW
    w==;
-X-CSE-ConnectionGUID: mn+LE/0YS1yVbSMSX2KGtw==
-X-CSE-MsgGUID: rIODxD9gTeyOakHx/nuMJw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11185"; a="35475112"
+X-CSE-ConnectionGUID: G18Ck+w0T6qX4YDnDwxi4A==
+X-CSE-MsgGUID: UL3+XSaLTcy9LOhAl7cnyQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11185"; a="27904064"
 X-IronPort-AV: E=Sophos;i="6.10,201,1719903600"; 
-   d="scan'208";a="35475112"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Sep 2024 06:10:02 -0700
-X-CSE-ConnectionGUID: uC3tCP1tTJOsjejHvYHljg==
-X-CSE-MsgGUID: zGepQVQES8CnElRy5vFcKA==
+   d="scan'208";a="27904064"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Sep 2024 06:13:31 -0700
+X-CSE-ConnectionGUID: nqlk14NrR3qCkWhyjarSeQ==
+X-CSE-MsgGUID: EbYFOQjIR46uSDvJ0f9PEw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.10,201,1719903600"; 
-   d="scan'208";a="65307987"
+   d="scan'208";a="69894307"
 Received: from smile.fi.intel.com ([10.237.72.54])
-  by fmviesa009.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Sep 2024 06:09:58 -0700
+  by fmviesa004.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Sep 2024 06:13:26 -0700
 Received: from andy by smile.fi.intel.com with local (Exim 4.98)
 	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1slplG-000000054Je-2wKN;
-	Wed, 04 Sep 2024 16:09:26 +0300
-Date: Wed, 4 Sep 2024 16:09:26 +0300
+	id 1slpp5-000000054Ne-0cgl;
+	Wed, 04 Sep 2024 16:13:23 +0300
+Date: Wed, 4 Sep 2024 16:13:22 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
@@ -72,19 +86,19 @@ Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
 	Douglas Anderson <dianders@chromium.org>,
 	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
 	linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v6 03/12] regulator: Move OF-specific regulator lookup
- code to of_regulator.c
-Message-ID: <ZthcBpx8WFIvsrJj@smile.fi.intel.com>
+Subject: Re: [PATCH v6 05/12] regulator: Do pure DT regulator lookup in
+ of_regulator_bulk_get_all()
+Message-ID: <Zthc8r62z2eaR8k0@smile.fi.intel.com>
 References: <20240904090016.2841572-1-wenst@chromium.org>
- <20240904090016.2841572-4-wenst@chromium.org>
+ <20240904090016.2841572-6-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240904090016.2841572-4-wenst@chromium.org>
+In-Reply-To: <20240904090016.2841572-6-wenst@chromium.org>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_061003_871671_669ABCC6 
-X-CRM114-Status: GOOD (  24.33  )
+X-CRM114-CacheID: sfid-20240904_141424_205400_FBF128D5 
+X-CRM114-Status: GOOD (  18.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,123 +113,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 04, 2024 at 05:00:05PM +0800, Chen-Yu Tsai wrote:
-> There's still a bit of OF-specific code in the regulator device lookup
-> function.
+On Wed, Sep 04, 2024 at 05:00:07PM +0800, Chen-Yu Tsai wrote:
+> The to-be-introduced I2C component prober needs to enable regulator
+> supplies (and toggle GPIO pins) for the various components it intends
+> to probe. To support this, a new "pure DT lookup" method for getting
+> regulator supplies is needed, since the device normally requesting
+> the supply won't get created until after the component is probed to
+> be available.
 > 
-> Move those bits of code over to of_regulator.c, and create a new
-> function of_regulator_dev_lookup() to encapsulate the code moved out of
-> regulator_dev_lookup().
+> Convert the existing of_regulator_bulk_get_all() for this purpose.
+> This function has no in-tree users, as the original patch [1] that
+> used it was never landed. This patch changes the function ABI, but
+> it is straightforward to convert users.
 > 
-> Also mark of_find_regulator_by_node() as static, since there are no
-> other users in other compile units.
+> The underlying code that supports the existing regulator_get*()
+> functions has been reworked in previous patches to support this
+> specific case. An internal OF-specific version of regulator_get(),
+> of_regulator_get_optional(), is added for this.
 > 
-> There are no functional changes. A line alignment was also fixed.
+> Also convert an existing usage of "dev && dev->of_node" to
+> "dev_of_node(dev)".
 
-...
+> [1] https://lore.kernel.org/all/20231220203537.83479-2-jernej.skrabec@gmail.com/
+> 
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-> +/**
-> + * of_get_child_regulator - get a child regulator device node
-> + * based on supply name
-> + * @parent: Parent device node
-> + * @prop_name: Combination regulator supply name and "-supply"
-> + *
-> + * Traverse all child nodes.
-> + * Extract the child regulator device node corresponding to the supply name.
-> + *
-> + * Return: Pointer to the &struct device_node corresponding to the regulator
-> + *	   if found, or %NULL if not found.
-> + */
-> +static struct device_node *of_get_child_regulator(struct device_node *parent,
-> +						  const char *prop_name)
-> +{
-> +	struct device_node *regnode = NULL;
-> +	struct device_node *child = NULL;
-> +
-> +	for_each_child_of_node(parent, child) {
+Make it Link tag.
 
-> +		regnode = of_parse_phandle(child, prop_name, 0);
-> +		if (!regnode) {
-> +			regnode = of_get_child_regulator(child, prop_name);
-> +			if (regnode)
-> +				goto err_node_put;
-> +		} else {
-> +			goto err_node_put;
-> +		}
-
-I know this is just a move of the existing code, but consider negating the
-conditional and have something like
-
-		regnode = of_parse_phandle(child, prop_name, 0);
-		if (regnode)
-			goto err_node_put;
-
-		regnode = of_get_child_regulator(child, prop_name);
-		if (regnode)
-			goto err_node_put;
-
-> +	}
-> +	return NULL;
-> +
-> +err_node_put:
-> +	of_node_put(child);
-> +	return regnode;
-> +}
-
-...
-
-I assume the use of _scoped() macros is in mind for the future changes?
-
-...
-
-> +/**
-> + * of_get_regulator - get a regulator device node based on supply name
-> + * @dev: Device pointer for the consumer (of regulator) device
-> + * @supply: regulator supply name
-> + *
-> + * Extract the regulator device node corresponding to the supply name.
-> + *
-> + * Return: Pointer to the &struct device_node corresponding to the regulator
-> + *	   if found, or %NULL if not found.
-> + */
-> +static struct device_node *of_get_regulator(struct device *dev, const char *supply)
-> +{
-> +	struct device_node *regnode = NULL;
-> +	char prop_name[64]; /* 64 is max size of property name */
-> +
-> +	dev_dbg(dev, "Looking up %s-supply from device tree\n", supply);
-> +
-> +	snprintf(prop_name, 64, "%s-supply", supply);
-> +	regnode = of_parse_phandle(dev->of_node, prop_name, 0);
-
-> +	if (!regnode) {
-
-Similarly here
-
-	snprintf(prop_name, 64, "%s-supply", supply);
-	regnode = of_parse_phandle(dev->of_node, prop_name, 0);
-	if (regnode)
-		return regnode;
-
-
-> +		regnode = of_get_child_regulator(dev->of_node, prop_name);
-> +		if (regnode)
-> +			return regnode;
-> +
-> +		dev_dbg(dev, "Looking up %s property in node %pOF failed\n",
-> +			prop_name, dev->of_node);
-> +		return NULL;
-> +	}
-> +	return regnode;
-
-	regnode = of_get_child_regulator(dev->of_node, prop_name);
-	if (regnode)
-		return regnode;
-
-	dev_dbg(dev, "Looking up %s property in node %pOF failed\n", prop_name, dev->of_node);
-	return NULL;
-
-> +}
+  Link: https://lore.kernel.org/all/20231220203537.83479-2-jernej.skrabec@gmail.com/ [1]
+  Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
 -- 
 With Best Regards,
