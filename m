@@ -4,66 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D296CD4847
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 10:08:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DE06CD4847
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 10:15:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QHwdImZwMaVc4O1Fs/2dN8M1RWteS+aWLr57hgj/EfU=; b=Gvf/ktW8bHWdJ8AMazLW6XAATi
-	sgyknlaZSMlSqgOVGiQkvGQ86mPFJqb8G8RYsT51pynKb5CVd49PsmKCre3Qu9OlTz/HA1+9ZuA7B
-	YLRmpd5nkcwzbYAosmbfgsqorIb8ZMR732TNnkErL80DslA8u47G5HqiOiHHDSIt0s4oCzGtcqKU9
-	LUjzxyls8NeULDQuBHeRv8SWkf9N9wFSBa96+EcyUK9g/gHsGO6DJcxDXiosVdeYRSrrgZ4j7A6cm
-	eiR0RfD3bb9jBpOKQr6BA2vBSk58OfxJlV06/rs911ntCKueK7GDVgns1PW8+wb/8whTk12/44OYP
-	Cjke/Ygg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=G2jCB3Mh2D7e/fKcpdcpOCelHevV01EHEW0KXFzYpnE=; b=kjEXpxii7UWxT1hQWoi7wIxTlg
+	xBOfkdYYS2RN29sc4tFGiTx0t9eEb03crZh1QHbOgcuUaO2Bt1l3YtAvtIfrvL47uRp5hX7iC82qn
+	j+LVuidX706XQZqc2b6YQtEqAK41q0ulhj+oIyZCxGt5avTdJH0CCwEaan1gvXalf7dhbvB1rAa/n
+	OwfhbwiA+H5PpugoDkv7WD0PRM0GQd/2iL0q0ydlfhEJaZgBAcex+vpz4H4iK2zk2lsVYzdn6K1I+
+	w8ZB9SqvwW4vOBIhto5+wNqW6B0vtmrm8NiXSC2SrGIirhDDN94XNnUmjqAfA00V7Oneo4NzZiDjN
+	5ltOJjFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slmvu-00000003pmq-3ezH;
-	Wed, 04 Sep 2024 10:08:14 +0000
-Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
+	id 1sln3K-00000003reB-1jsM;
+	Wed, 04 Sep 2024 10:15:54 +0000
+Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slmKv-00000003gUA-0BLx
+	id 1slmZC-00000003kLV-34zO
 	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Sep 2024 09:30:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
-	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
-	Resent-Cc:Resent-Message-ID; bh=QHwdImZwMaVc4O1Fs/2dN8M1RWteS+aWLr57hgj/EfU=;
-	t=1725442200; x=1726651800; b=vrDsAfXgbZRCf2ZQrKaaHOGWiKNNTnla9WnWFKzaDA9BIWL
-	+dxzjKQEJ4PzNEf6PeM+9YNdUVsLQQrwosIp2izUmg/o4Jgx7XCJEyn4hJpWQO7LH+nSS9Pp5Nlbn
-	zcJDapLNDpveg+HONs+wSTD9bFFTGedt2jrZIB3vgeKWizrtHX86HPzs/6obXrHH5yNVIULONukHr
-	Wka/zYsEzRN9bCgNHQT2hIjA2Hz+5hCeUc6rkMKFyy/Yhot9JWduo+P1PbhNVo5YaWl0c2WsplMT7
-	lVUpYI/vAvptqk69L/TXv7jYzco7EK/P12j5eA2eChV/FJP2PShZRulPCtCTcOCA==;
-Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	(Exim 4.97)
-	(envelope-from <johannes@sipsolutions.net>)
-	id 1slmKq-00000004Z9a-39p8;
-	Wed, 04 Sep 2024 11:29:56 +0200
-Message-ID: <df96a65701b5c72d78805b7f7c518670ae794f2b.camel@sipsolutions.net>
-Subject: Re: [PATCH v4] wifi: mac80211: introduce EHT rate support in AQL
- airtime
-From: Johannes Berg <johannes@sipsolutions.net>
-To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>, jonas.gorski@gmail.com
-Cc: deren.wu@mediatek.com, Sean.Wang@mediatek.com, Soul.Huang@mediatek.com, 
- Leon.Yen@mediatek.com, Michael.Lo@mediatek.com, Eric-SY.Chang@mediatek.com,
-  km.lin@mediatek.com, robin.chiu@mediatek.com, ch.yeh@mediatek.com, 
- posh.sun@mediatek.com, Quan.Zhou@mediatek.com, Ryder.Lee@mediatek.com, 
- Shayne.Chen@mediatek.com, linux-wireless@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, Bo Jiao <Bo.Jiao@mediatek.com>
-Date: Wed, 04 Sep 2024 11:29:55 +0200
-In-Reply-To: <20240904091749.7311-1-mingyen.hsieh@mediatek.com>
-References: <20240904091749.7311-1-mingyen.hsieh@mediatek.com>
+	Wed, 04 Sep 2024 09:44:48 +0000
+Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-277fa3de06fso1517274fac.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 04 Sep 2024 02:44:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1725443085; x=1726047885; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=G2jCB3Mh2D7e/fKcpdcpOCelHevV01EHEW0KXFzYpnE=;
+        b=vdMb63T3bd43ly0G9DbWTU+lC6LCpli+VizLoQKsog6Pk+jW41DrpTVFIne2+XPWkU
+         hAG5uORyI8cEr2X5ubxOwIYBrWfTOeP/xgoToe7XvpFat9UlH3WiQ4SoZZGLxlShurV8
+         JudtcTW4uK9ySg5T3zXxQAl8O9fBvi/lS4UhK8TNTj5ovuAC57UawmeaDNMqU+3lFITX
+         1FF4H0Jq7oRF7WT2InD963NaFzraeeKcIpwyxnj/3L5VApXv1CkLRfx65JA8dgXU4B3X
+         sgy43DiJeEXYU63YxALWK+1zSbdYXFmd7r+al5c5kQGFWvqvy0HMoSM0678lzbkTegkH
+         kbGg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1725443085; x=1726047885;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=G2jCB3Mh2D7e/fKcpdcpOCelHevV01EHEW0KXFzYpnE=;
+        b=gloNnkXGIg3NqofWeWwg0VZYF4sqAD1fhxWBjnsQ5COyLIvNTP1A1pr7lGcwbd+0Oa
+         BxKClJA6oWBFsOZFGghEAU5FsEs3/KsoS/19RQV+4lWTRmI+QfiN/nrye6zlMZqfwftB
+         po3vVLpbmHDGj3SvIVbZ9MjkyFDBhfqzzNzP+jQ96+DoVGFsV8QHNQs0bHeBHmhzNKCp
+         nXU1sBfh68WZE9Mx8FFeWc8xlxWDNauG4CK8QV+qeF0fFpIhvticRDPCEv69kAf59Ild
+         0l8xznTd40DdGBYXyzhT/iXRC+4UQuKvVsksUQLMTDkaP9lnQYws+Fjz9lWa89Wko+vM
+         cNgQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVVvPoGXdGvm6jpmqRzrS8AsZf7F3+B22E581hLGQ40YE+Fh19hZfhtNKrn9BmXGKWdB+CdXYrwhZpvo7wuuQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxxhiBhS78A6xrSSlqtjHh0FlAYkni9JhDhA6MjWs4aSlFIosZQ
+	EQ7HRP4NQAZ3Du/y6K7w3eLs+5xny6VOcZkXx2VEtDvelX4H71G8/ZLtI5fNM2DdmLU9MVHJ2UD
+	STmhjxezVM+ak1DyZ1KivJBmUrkbduE5ItvtneQ==
+X-Google-Smtp-Source: AGHT+IGYbHJdBZDqXfJaLvPa+cheRpz0nZvpY4lYVwTEuIeN+wJEbeHIAIs0Kb9fRcKIKf3+GKU49MLlqIZtGriKRJU=
+X-Received: by 2002:a05:6870:171d:b0:25d:f0ba:eab7 with SMTP id
+ 586e51a60fabf-27810b95f26mr7655971fac.18.1725443085257; Wed, 04 Sep 2024
+ 02:44:45 -0700 (PDT)
+MIME-Version: 1.0
+References: <20240830070351.2855919-1-jens.wiklander@linaro.org>
+ <20240830070351.2855919-5-jens.wiklander@linaro.org> <CABdmKX2KzswmiDY4oWw69_rPWs8d_Cqp7OXouSeMQaYX1SDSmw@mail.gmail.com>
+In-Reply-To: <CABdmKX2KzswmiDY4oWw69_rPWs8d_Cqp7OXouSeMQaYX1SDSmw@mail.gmail.com>
+From: Jens Wiklander <jens.wiklander@linaro.org>
+Date: Wed, 4 Sep 2024 11:44:33 +0200
+Message-ID: <CAHUa44FYYFVQWf0DGUXNHoOVQEC0-HRyYa0386dHNjo4y1qSiQ@mail.gmail.com>
+Subject: Re: [RFC PATCH 4/4] dma-buf: heaps: add Linaro restricted dmabuf heap support
+To: "T.J. Mercier" <tjmercier@google.com>
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linaro-mm-sig@lists.linaro.org, op-tee@lists.trustedfirmware.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Olivier Masse <olivier.masse@nxp.com>, Thierry Reding <thierry.reding@gmail.com>, 
+	Yong Wu <yong.wu@mediatek.com>, Sumit Semwal <sumit.semwal@linaro.org>, 
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>, 
+	John Stultz <jstultz@google.com>, =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+	Sumit Garg <sumit.garg@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.52.4 (3.52.4-1.fc40) 
-MIME-Version: 1.0
-X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_023001_107558_047AE004 
-X-CRM114-Status: GOOD (  10.41  )
+X-CRM114-CacheID: sfid-20240904_024446_805304_08815D92 
+X-CRM114-Status: GOOD (  32.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,31 +100,268 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2024-09-04 at 17:17 +0800, Mingyen Hsieh wrote:
->=20
-> @@ -443,13 +549,18 @@ static u32 ieee80211_get_rate_duration(struct ieee8=
-0211_hw *hw,
->  		idx =3D status->rate_idx;
->  		group =3D HE_GROUP_IDX(streams, status->he_gi, bw);
->  		break;
-> +	case RX_ENC_EHT:
-> +		streams =3D status->nss;
-> +		idx =3D status->rate_idx;
-> +		group =3D EHT_GROUP_IDX(streams, status->eht.gi, bw);
-> +		break;
->  	default:
->  		WARN_ON_ONCE(1);
->  		return 0;
->  	}
-> =20
-> -	if (WARN_ON_ONCE((status->encoding !=3D RX_ENC_HE && streams > 4) ||
-> -			 (status->encoding =3D=3D RX_ENC_HE && streams > 8)))
-> +	if (WARN_ON_ONCE((status->encoding > RX_ENC_HE && streams > 8) ||
+On Tue, Sep 3, 2024 at 7:50=E2=80=AFPM T.J. Mercier <tjmercier@google.com> =
+wrote:
+>
+> On Fri, Aug 30, 2024 at 12:04=E2=80=AFAM Jens Wiklander
+> <jens.wiklander@linaro.org> wrote:
+> >
+> > Add a Linaro restricted heap using the linaro,restricted-heap bindings
+> > implemented based on the generic restricted heap.
+> >
+> > The bindings defines a range of physical restricted memory. The heap
+> > manages this address range using genalloc. The allocated dma-buf file
+> > descriptor can later be registered with the TEE subsystem for later use
+> > via Trusted Applications in the secure world.
+> >
+> > Co-developed-by: Olivier Masse <olivier.masse@nxp.com>
+> > Signed-off-by: Olivier Masse <olivier.masse@nxp.com>
+> > Signed-off-by: Jens Wiklander <jens.wiklander@linaro.org>
+> > ---
+> >  drivers/dma-buf/heaps/Kconfig                 |  10 ++
+> >  drivers/dma-buf/heaps/Makefile                |   1 +
+> >  .../dma-buf/heaps/restricted_heap_linaro.c    | 165 ++++++++++++++++++
+> >  3 files changed, 176 insertions(+)
+> >  create mode 100644 drivers/dma-buf/heaps/restricted_heap_linaro.c
+> >
+> > diff --git a/drivers/dma-buf/heaps/Kconfig b/drivers/dma-buf/heaps/Kcon=
+fig
+> > index 58903bc62ac8..82e2c5d09242 100644
+> > --- a/drivers/dma-buf/heaps/Kconfig
+> > +++ b/drivers/dma-buf/heaps/Kconfig
+> > @@ -28,3 +28,13 @@ config DMABUF_HEAPS_RESTRICTED_MTK
+> >         help
+> >           Enable restricted dma-buf heaps for MediaTek platform. This h=
+eap is backed by
+> >           TEE client interfaces. If in doubt, say N.
+> > +
+> > +config DMABUF_HEAPS_RESTRICTED_LINARO
+> > +       bool "Linaro DMA-BUF Restricted Heap"
+> > +       depends on DMABUF_HEAPS_RESTRICTED
+> > +       help
+> > +         Choose this option to enable the Linaro restricted dma-buf he=
+ap.
+> > +         The restricted heap pools are defined according to the DT. He=
+aps
+> > +         are allocated in the pools using gen allocater.
+> > +         If in doubt, say N.
+> > +
+> > diff --git a/drivers/dma-buf/heaps/Makefile b/drivers/dma-buf/heaps/Mak=
+efile
+> > index 0028aa9d875f..66b2f67c47b5 100644
+> > --- a/drivers/dma-buf/heaps/Makefile
+> > +++ b/drivers/dma-buf/heaps/Makefile
+> > @@ -2,4 +2,5 @@
+> >  obj-$(CONFIG_DMABUF_HEAPS_CMA)         +=3D cma_heap.o
+> >  obj-$(CONFIG_DMABUF_HEAPS_RESTRICTED)  +=3D restricted_heap.o
+> >  obj-$(CONFIG_DMABUF_HEAPS_RESTRICTED_MTK)      +=3D restricted_heap_mt=
+k.o
+> > +obj-$(CONFIG_DMABUF_HEAPS_RESTRICTED_LINARO)   +=3D restricted_heap_li=
+naro.o
+> >  obj-$(CONFIG_DMABUF_HEAPS_SYSTEM)      +=3D system_heap.o
+> > diff --git a/drivers/dma-buf/heaps/restricted_heap_linaro.c b/drivers/d=
+ma-buf/heaps/restricted_heap_linaro.c
+> > new file mode 100644
+> > index 000000000000..4b08ed514023
+> > --- /dev/null
+> > +++ b/drivers/dma-buf/heaps/restricted_heap_linaro.c
+> > @@ -0,0 +1,165 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +/*
+> > + * DMABUF secure heap exporter
+> > + *
+> > + * Copyright 2021 NXP.
+> > + * Copyright 2024 Linaro Limited.
+> > + */
+> > +
+> > +#define pr_fmt(fmt)     "rheap_linaro: " fmt
+> > +
+> > +#include <linux/dma-buf.h>
+> > +#include <linux/err.h>
+> > +#include <linux/genalloc.h>
+> > +#include <linux/module.h>
+> > +#include <linux/of.h>
+> > +#include <linux/of_fdt.h>
+> > +#include <linux/of_reserved_mem.h>
+> > +#include <linux/scatterlist.h>
+> > +#include <linux/slab.h>
+> > +
+> > +#include "restricted_heap.h"
+> > +
+> > +#define MAX_HEAP_COUNT 2
+>
+> Are multiple supported because of what Cyrille mentioned here about permi=
+ssions?
+> https://lore.kernel.org/lkml/DBBPR04MB7514E006455AEA407041E4F788709@DBBPR=
+04MB7514.eurprd04.prod.outlook.com/
 
-That should've been >=3D, but I feel like it might be better to move the
-warning as multiple warnings into the switch statement now? The > and <
-here also makes it vulnerable to reordering, which is probably not going
-to happen, but why put the trap here?
+Yes, I kept that as is.
 
-johannes
+>
+> So this is just some arbitrary limit? I'd prefer to have some sort of
+> documentation about this.
+
+How about removing the limit and using dynamic allocation instead?
+
+Thanks,
+Jens
+
+>
+>
+> > +#define HEAP_NAME_LEN  32
+> > +
+> > +struct resmem_restricted {
+> > +       phys_addr_t base;
+> > +       phys_addr_t size;
+> > +
+> > +       char name[HEAP_NAME_LEN];
+> > +
+> > +       bool no_map;
+> > +};
+> > +
+> > +static struct resmem_restricted restricted_data[MAX_HEAP_COUNT] =3D {0=
+};
+> > +static unsigned int restricted_data_count;
+> > +
+> > +static int linaro_restricted_memory_allocate(struct restricted_heap *h=
+eap,
+> > +                                            struct restricted_buffer *=
+buf)
+> > +{
+> > +       struct gen_pool *pool =3D heap->priv_data;
+> > +       unsigned long pa;
+> > +       int ret;
+> > +
+> > +       buf->size =3D ALIGN(buf->size, PAGE_SIZE);
+> > +       pa =3D gen_pool_alloc(pool, buf->size);
+> > +       if (!pa)
+> > +               return -ENOMEM;
+> > +
+> > +       ret =3D sg_alloc_table(&buf->sg_table, 1, GFP_KERNEL);
+> > +       if (ret) {
+> > +               gen_pool_free(pool, pa, buf->size);
+> > +               return ret;
+> > +       }
+> > +
+> > +       sg_set_page(buf->sg_table.sgl, phys_to_page(pa), buf->size, 0);
+> > +
+> > +       return 0;
+> > +}
+> > +
+> > +static void linaro_restricted_memory_free(struct restricted_heap *heap=
+,
+> > +                                         struct restricted_buffer *buf=
+)
+> > +{
+> > +       struct gen_pool *pool =3D heap->priv_data;
+> > +       struct scatterlist *sg;
+> > +       unsigned int i;
+> > +
+> > +       for_each_sg(buf->sg_table.sgl, sg, buf->sg_table.nents, i)
+> > +               gen_pool_free(pool, page_to_phys(sg_page(sg)), sg->leng=
+th);
+> > +       sg_free_table(&buf->sg_table);
+> > +}
+> > +
+> > +static const struct restricted_heap_ops linaro_restricted_heap_ops =3D=
+ {
+> > +       .alloc =3D linaro_restricted_memory_allocate,
+> > +       .free =3D linaro_restricted_memory_free,
+> > +};
+> > +
+> > +static int add_heap(struct resmem_restricted *mem)
+> > +{
+> > +       struct restricted_heap *heap;
+> > +       struct gen_pool *pool;
+> > +       int ret;
+> > +
+> > +       if (mem->base =3D=3D 0 || mem->size =3D=3D 0) {
+> > +               pr_err("restricted_data base or size is not correct\n")=
+;
+> > +               return -EINVAL;
+> > +       }
+> > +
+> > +       heap =3D kzalloc(sizeof(*heap), GFP_KERNEL);
+> > +       if (!heap)
+> > +               return -ENOMEM;
+> > +
+> > +       pool =3D gen_pool_create(PAGE_SHIFT, -1);
+> > +       if (!pool) {
+> > +               ret =3D -ENOMEM;
+> > +               goto err_free_heap;
+> > +       }
+> > +
+> > +       ret =3D gen_pool_add(pool, mem->base, mem->size, -1);
+> > +       if (ret)
+> > +               goto err_free_pool;
+> > +
+> > +       heap->no_map =3D mem->no_map;
+> > +       heap->priv_data =3D pool;
+> > +       heap->name =3D mem->name;
+> > +       heap->ops =3D &linaro_restricted_heap_ops;
+> > +
+> > +       ret =3D restricted_heap_add(heap);
+> > +       if (ret)
+> > +               goto err_free_pool;
+> > +
+> > +       return 0;
+> > +
+> > +err_free_pool:
+> > +       gen_pool_destroy(pool);
+> > +err_free_heap:
+> > +       kfree(heap);
+> > +
+> > +       return ret;
+> > +}
+> > +
+> > +static int __init rmem_restricted_heap_setup(struct reserved_mem *rmem=
+)
+> > +{
+> > +       size_t len =3D HEAP_NAME_LEN;
+> > +       const char *s;
+> > +       bool no_map;
+> > +
+> > +       if (WARN_ONCE(restricted_data_count >=3D MAX_HEAP_COUNT,
+> > +                     "Cannot handle more than %u restricted heaps\n",
+> > +                     MAX_HEAP_COUNT))
+> > +               return -EINVAL;
+> > +
+> > +       no_map =3D of_get_flat_dt_prop(rmem->fdt_node, "no-map", NULL);
+> > +       s =3D strchr(rmem->name, '@');
+> > +       if (s)
+> > +               len =3D umin(s - rmem->name + 1, len);
+> > +
+> > +       restricted_data[restricted_data_count].base =3D rmem->base;
+> > +       restricted_data[restricted_data_count].size =3D rmem->size;
+> > +       restricted_data[restricted_data_count].no_map =3D no_map;
+> > +       strscpy(restricted_data[restricted_data_count].name, rmem->name=
+, len);
+> > +
+> > +       restricted_data_count++;
+> > +       return 0;
+> > +}
+> > +
+> > +RESERVEDMEM_OF_DECLARE(linaro_restricted_heap, "linaro,restricted-heap=
+",
+> > +                      rmem_restricted_heap_setup);
+> > +
+> > +static int linaro_restricted_heap_init(void)
+> > +{
+> > +       unsigned int i;
+> > +       int ret;
+> > +
+> > +       for (i =3D 0; i < restricted_data_count; i++) {
+> > +               ret =3D add_heap(&restricted_data[i]);
+> > +               if (ret)
+> > +                       return ret;
+> > +       }
+> > +       return 0;
+> > +}
+> > +
+> > +module_init(linaro_restricted_heap_init);
+> > +MODULE_DESCRIPTION("Linaro Restricted Heap Driver");
+> > +MODULE_LICENSE("GPL");
+> > --
+> > 2.34.1
+> >
 
