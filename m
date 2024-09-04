@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1052CD3431
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 11:28:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3575CD3431
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 11:30:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hiwbzPK22pU5AX+O6hCyIPiAI54csNgeo/YNv3wD5J4=; b=L38sGeNbOxuYVvW8pFVwFuY6yd
-	Ej9Q+aNuWjr6dAQDlFKOSraVeYai7lY07XScxDMHkDeyae5tb4Zv3R9fQd2ctjQXyzivlpEpDBLXI
-	q8yokYN8BplkHvWLp5honTP8sKl/cgi7LD3oFAg/Nck5OiWCH/mAeQXSVrECnouaY3Nw14k27++6l
-	oBmU0Tz5djduWkoPBNBTOVcEaZKubTvnQg70h2PQDLAgtRPrrtV8mykqXtBLHK/M/zO+qbkrccyf8
-	BOiansHXf7k/6JpjengD03h+j7SZG7xXNd39rMV3DZjvZMdnO8Sh7IViEqyGyFCGanncq2W579Zof
-	BDdECrKg==;
+	bh=GcwPYqg37yLR4NK23neDFZR3aZZwObB1TbdlKu3ptcA=; b=0r1GrFCD64ec/vF1BCxpDG/tQh
+	XSZl9TZjDKwQA9iZR3qjMFN+OGEjuRzsb65SbbERb1CErA6rVzRF+fP6pklxvuD+FF85C3N7SqmnC
+	louEGKmgehN/fjEb3uR9PMvAMNWU22VJyg1D4hbA9GwZR9oa85Bi81LGA9OpEKLEqFKwL66ixczV4
+	fkbk0KW+7k/hma+0nPNEhdMUqoDDfE1xD9PqJlepI1SwnGJjx0d7UrOj96hWWkt7sTzcZ2/2ot9J3
+	3FZZMvwDJCfbKT1TNaEwxDeh/aGCLNIDbERDq7U8nZM9lIrR2lNwmou5edDUKV5LPAkxp1KwucMu0
+	nZE/8Zrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sloBB-000000048SO-1JSv;
-	Wed, 04 Sep 2024 11:28:05 +0000
+	id 1sloDN-000000049cd-2ISq;
+	Wed, 04 Sep 2024 11:30:21 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slo0D-000000045FC-0fhj;
-	Wed, 04 Sep 2024 11:16:46 +0000
+	id 1slo0M-000000045Jn-2vu1;
+	Wed, 04 Sep 2024 11:16:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id F13245C56F5;
-	Wed,  4 Sep 2024 11:16:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EC3A8C4CECC;
-	Wed,  4 Sep 2024 11:16:38 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id A975C5C54AF;
+	Wed,  4 Sep 2024 11:16:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D711FC4CEC9;
+	Wed,  4 Sep 2024 11:16:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725448604;
-	bh=jnoKCbmPcD1GmESgYWHnWAC+C8551B8aEwnlyDgxp3c=;
+	s=k20201202; t=1725448613;
+	bh=SFWQxwybbR05p/JSlu2vfeQxyFVILJVtOStppUEw+xw=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=KjHlMtPnOpovnTl90GfKpIuPGs+gwJYi/h9SpXSQSXUdkrLC8x059cyHOUCTVcQOD
-	 Eqr9oJu5zIZad+ON1Qmc3Db1zhARkcfmANz8S72acVTG2+sXIuoCP+UGzxD6lMqVxL
-	 A344eGn47au8ya+z4zXlx1unlRaMD2HS3bXc2HkfL0x0sLRhbFUWjvxrIfFFXtxORU
-	 4qAl+rFufzT6CVtExWQQ+WK9KnpnQZorBxF7zoVKjz+50bzQv32m+7xqpJef5BXpXq
-	 p0i1jr9DGm3zmP/+0sQ9VrwCcFGTJnLAvroMUo6N0mCMOO9W5uEmSP7bYwNYcVHMjW
-	 LgHv2DTwNjySA==
+	b=KRVtWdg9D4xhd/xX3u5CgZSN5Sm0NZWjAaFc8R5UIZOvKvw7KgThuvHywHeB3MdGE
+	 kgA2xop/P1gXyrNDSdt9rkNvIKmYiSEpIzrKdCqUSl1RczLm9zXv5zRl4J+FummyAt
+	 Xi8bvs1g+F47UlxXsHpphN5OeHmq6pxpp0RWjA95epvKzdjasyrp2JgHw8t8e3Nosp
+	 VBomlo31XSnwYb0Cem8rEVFMAlnnrfrfSCfiFncF8c/X9VoNBp67c3eqHtvOrCoNxj
+	 q2KL+vVp0YtBLxLoISr+raawo46JGCCLhCqUxMAaeLNlbLagNf7BrjjDV86zzRJKmH
+	 Fw24bheSYB6OQ==
 From: Mark Brown <broonie@kernel.org>
 To: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
@@ -60,19 +60,19 @@ Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
  Nicolas Belin <nbelin@baylibre.com>
-In-Reply-To: <20240226-audio-i350-v6-0-f754ec1a7634@baylibre.com>
-References: <20240226-audio-i350-v6-0-f754ec1a7634@baylibre.com>
-Subject: Re: (subset) [PATCH v6 00/16] Add audio support for the MediaTek
+In-Reply-To: <20240226-audio-i350-v7-0-6518d953a141@baylibre.com>
+References: <20240226-audio-i350-v7-0-6518d953a141@baylibre.com>
+Subject: Re: (subset) [PATCH v7 00/16] Add audio support for the MediaTek
  Genio 350-evk board
-Message-Id: <172544859867.19172.9438630691561948517.b4-ty@kernel.org>
-Date: Wed, 04 Sep 2024 12:16:38 +0100
+Message-Id: <172544860860.19172.7052813450885034844.b4-ty@kernel.org>
+Date: Wed, 04 Sep 2024 12:16:48 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.15-dev-99b12
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_041645_338875_2CFA55E1 
-X-CRM114-Status: GOOD (  13.76  )
+X-CRM114-CacheID: sfid-20240904_041655_243922_1F0159C7 
+X-CRM114-Status: GOOD (  13.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,7 +87,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 19 Jun 2024 16:46:36 +0200, Alexandre Mergnat wrote:
+On Mon, 22 Jul 2024 08:53:29 +0200, Alexandre Mergnat wrote:
 > This serie aim to add the following audio support for the Genio 350-evk:
 > - Playback
 >   - 2ch Headset Jack (Earphone)
@@ -110,6 +110,8 @@ Thanks!
         commit: ceb3ca2876243e3ea02f78b3d488b1f2d734de49
 [02/16] ASoC: dt-bindings: mediatek,mt8365-mt6357: Add audio sound card document
         commit: 76d80dcdd55f70b28930edb97b96ee375e1cce5a
+[03/16] dt-bindings: mfd: mediatek: Add codec property for MT6357 PMIC
+        commit: 761cab667898d86c04867948f1b7aec1090be796
 [04/16] ASoC: mediatek: mt8365: Add common header
         commit: 38c7c9ddc74033406461d64e541bbc8268e77f73
 [05/16] ASoC: mediatek: mt8365: Add audio clock control support
