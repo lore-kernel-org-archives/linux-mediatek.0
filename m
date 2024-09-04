@@ -4,89 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1F81CA0ED3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 09:54:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D296CD4847
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 10:08:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Ebco0ZGeLUoZggYWtEKwxZnLazcyMFV5Q3b4EndSOmM=; b=AJwo7c00Hks8Dq/nh3MRa83Ei5
-	cpzxulYWq9QG6ysrCW+Nh/ttL/BlvfcOkSsqOBdtbLt9Q1xP73ciEPlk3BhMCU38YNbzqDzTOHF2h
-	vLTaOJhZAPJTlyYAAXVF/YJn5tIn+Af8Ynf3J36WEsEz6s4CovJ0AGlgKZaNgT17WcmcuB5xhw514
-	nanqzXz5mLqke8ocd+ecVGHQgZN5TIb52j0x74SEqHsxTCnpxg0dqvJV26/ROUmlWp6M/P8O36Z5o
-	EPBAwE0HK9ZJa/01nCcxbGlinqi86JOJuCchYlzSUDzKbfGWYYQqqPP7DKs1nPfMbIeUEjAIxMCM4
-	5wI82OFw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QHwdImZwMaVc4O1Fs/2dN8M1RWteS+aWLr57hgj/EfU=; b=Gvf/ktW8bHWdJ8AMazLW6XAATi
+	sgyknlaZSMlSqgOVGiQkvGQ86mPFJqb8G8RYsT51pynKb5CVd49PsmKCre3Qu9OlTz/HA1+9ZuA7B
+	YLRmpd5nkcwzbYAosmbfgsqorIb8ZMR732TNnkErL80DslA8u47G5HqiOiHHDSIt0s4oCzGtcqKU9
+	LUjzxyls8NeULDQuBHeRv8SWkf9N9wFSBa96+EcyUK9g/gHsGO6DJcxDXiosVdeYRSrrgZ4j7A6cm
+	eiR0RfD3bb9jBpOKQr6BA2vBSk58OfxJlV06/rs911ntCKueK7GDVgns1PW8+wb/8whTk12/44OYP
+	Cjke/Ygg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slmiL-00000003mcG-1DVg;
-	Wed, 04 Sep 2024 09:54:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1slmvu-00000003pmq-3ezH;
+	Wed, 04 Sep 2024 10:08:14 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slm9t-00000003dXQ-0cV3
+	id 1slmKv-00000003gUA-0BLx
 	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Sep 2024 09:18:38 +0000
-X-UUID: a6964c186a9e11efba0aef63c0775dbf-20240904
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Ebco0ZGeLUoZggYWtEKwxZnLazcyMFV5Q3b4EndSOmM=;
-	b=nsynrmbcOtac+OEznWmGrcT8CDjyLWJ+scGXy3f+Pqi7DPkepB0MGNpXh1s3iXKiL7+SIJiWxDcTx3BSGLLMLHrkp8UgB52hq5zWcLToY77v96OpdkDjMyChODTrk7XS3T1slB2CucgOoMqUJxnG6rSUJcd8ggAR6T+WnAF8J4k=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:d1292636-8f3d-44ff-a9ac-5174e644a7e0,IP:0,U
-	RL:0,TC:0,Content:33,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:33
-X-CID-META: VersionHash:6dc6a47,CLOUDID:83e3accf-7921-4900-88a1-3aef019a55ce,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:4,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: a6964c186a9e11efba0aef63c0775dbf-20240904
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 567636914; Wed, 04 Sep 2024 02:18:30 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 4 Sep 2024 17:17:53 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 4 Sep 2024 17:17:53 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <johannes@sipsolutions.net>, <jonas.gorski@gmail.com>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Michael.Lo@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
-	<km.lin@mediatek.com>, <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>,
-	<posh.sun@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
-	<mingyen.hsieh@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, Quan Zhou
-	<quan.zhou@mediatek.com>, Ming Yen Hsieh <MingYen.Hsieh@mediatek.com>
-Subject: [PATCH v4] wifi: mac80211: introduce EHT rate support in AQL airtime
-Date: Wed, 4 Sep 2024 17:17:49 +0800
-Message-ID: <20240904091749.7311-1-mingyen.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	Wed, 04 Sep 2024 09:30:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+	Resent-Cc:Resent-Message-ID; bh=QHwdImZwMaVc4O1Fs/2dN8M1RWteS+aWLr57hgj/EfU=;
+	t=1725442200; x=1726651800; b=vrDsAfXgbZRCf2ZQrKaaHOGWiKNNTnla9WnWFKzaDA9BIWL
+	+dxzjKQEJ4PzNEf6PeM+9YNdUVsLQQrwosIp2izUmg/o4Jgx7XCJEyn4hJpWQO7LH+nSS9Pp5Nlbn
+	zcJDapLNDpveg+HONs+wSTD9bFFTGedt2jrZIB3vgeKWizrtHX86HPzs/6obXrHH5yNVIULONukHr
+	Wka/zYsEzRN9bCgNHQT2hIjA2Hz+5hCeUc6rkMKFyy/Yhot9JWduo+P1PbhNVo5YaWl0c2WsplMT7
+	lVUpYI/vAvptqk69L/TXv7jYzco7EK/P12j5eA2eChV/FJP2PShZRulPCtCTcOCA==;
+Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.97)
+	(envelope-from <johannes@sipsolutions.net>)
+	id 1slmKq-00000004Z9a-39p8;
+	Wed, 04 Sep 2024 11:29:56 +0200
+Message-ID: <df96a65701b5c72d78805b7f7c518670ae794f2b.camel@sipsolutions.net>
+Subject: Re: [PATCH v4] wifi: mac80211: introduce EHT rate support in AQL
+ airtime
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>, jonas.gorski@gmail.com
+Cc: deren.wu@mediatek.com, Sean.Wang@mediatek.com, Soul.Huang@mediatek.com, 
+ Leon.Yen@mediatek.com, Michael.Lo@mediatek.com, Eric-SY.Chang@mediatek.com,
+  km.lin@mediatek.com, robin.chiu@mediatek.com, ch.yeh@mediatek.com, 
+ posh.sun@mediatek.com, Quan.Zhou@mediatek.com, Ryder.Lee@mediatek.com, 
+ Shayne.Chen@mediatek.com, linux-wireless@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, Bo Jiao <Bo.Jiao@mediatek.com>
+Date: Wed, 04 Sep 2024 11:29:55 +0200
+In-Reply-To: <20240904091749.7311-1-mingyen.hsieh@mediatek.com>
+References: <20240904091749.7311-1-mingyen.hsieh@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.52.4 (3.52.4-1.fc40) 
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10-0.549300-8.000000
-X-TMASE-MatchedRID: Nx8rbYjNkK6GeTbGWdRz1u7KTDtx8CggojQrbrPpzzpF+YXPIqAdvlmE
-	vDqzEeg3sThZ10FHnFEv5lfyMf6URTAPG7OdV/f5A9lly13c/gF1YAaV5eZ2GHa2ZEC0WTlXYsW
-	akGXS7FcRzw695MTyJ37qfk4HKEv/ni0W1YoG9GlH+PTjR9EWktqgUkBwIfKYE2/97E9ezFxDvG
-	UoZxh/scy7C2jYvKTGm11lBSAav6kfE8yM4pjsDwtuKBGekqUpOlxBO2IcOBZa6Ti9/rmOC0DXv
-	jNZa/RULw+lOhFhrfXHnIy1pocpZF48kj8Cmy0oAa0/bzuGVBqZ8223p1Wx4w0iZwgvPhVduMdw
-	Mbc83nTBkGBTIlURuXoXDz8+lMxFpW+aIDJ4DaRzkxJ+SIkUjhOkquqFSwuzlExlQIQeRG0=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10-0.549300-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 18A8E5E0D33BE529A75940CF943EDAA593A557A9AF782C422620E99DFC1075B42000:8
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_021837_235088_D55218AF 
-X-CRM114-Status: GOOD (  17.20  )
+X-CRM114-CacheID: sfid-20240904_023001_107558_047AE004 
+X-CRM114-Status: GOOD (  10.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,240 +78,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+On Wed, 2024-09-04 at 17:17 +0800, Mingyen Hsieh wrote:
+>=20
+> @@ -443,13 +549,18 @@ static u32 ieee80211_get_rate_duration(struct ieee8=
+0211_hw *hw,
+>  		idx =3D status->rate_idx;
+>  		group =3D HE_GROUP_IDX(streams, status->he_gi, bw);
+>  		break;
+> +	case RX_ENC_EHT:
+> +		streams =3D status->nss;
+> +		idx =3D status->rate_idx;
+> +		group =3D EHT_GROUP_IDX(streams, status->eht.gi, bw);
+> +		break;
+>  	default:
+>  		WARN_ON_ONCE(1);
+>  		return 0;
+>  	}
+> =20
+> -	if (WARN_ON_ONCE((status->encoding !=3D RX_ENC_HE && streams > 4) ||
+> -			 (status->encoding =3D=3D RX_ENC_HE && streams > 8)))
+> +	if (WARN_ON_ONCE((status->encoding > RX_ENC_HE && streams > 8) ||
 
-Add definitions related to EHT mode and airtime calculation
-according to the 802.11BE_D4.0.
+That should've been >=3D, but I feel like it might be better to move the
+warning as multiple warnings into the switch statement now? The > and <
+here also makes it vulnerable to reordering, which is probably not going
+to happen, but why put the trap here?
 
-Co-developed-by: Bo Jiao <Bo.Jiao@mediatek.com>
-Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
-Signed-off-by: Ming Yen Hsieh <MingYen.Hsieh@mediatek.com>
----
-v2:
- - add BW_320 support in ieee80211_get_rate_duration().
- - rewrite the existing WARN_ON for property stream condition.
-v3:
- - add a macro EHT_GROUP_RANGE() to reduce the line which repetitive the EHT_GROUP().
- - to comply with the current use of EHT streams, the WARN_ON check has been modified
-   to be consistent with HE. 
-v4:
- - change IEEE80211_EHT_MAX_STREAMS 16 to 8.
----
- net/mac80211/airtime.c | 130 +++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 125 insertions(+), 5 deletions(-)
-
-diff --git a/net/mac80211/airtime.c b/net/mac80211/airtime.c
-index fdf8b658fede..c36b48d36b03 100644
---- a/net/mac80211/airtime.c
-+++ b/net/mac80211/airtime.c
-@@ -55,10 +55,21 @@
- #define HE_DURATION_S(shift, streams, gi, bps)		\
- 	(HE_DURATION(streams, gi, bps) >> shift)
- 
-+/* gi in HE/EHT is identical. It matches enum nl80211_eht_gi as well */
-+#define EHT_GI_08 HE_GI_08
-+#define EHT_GI_16 HE_GI_16
-+#define EHT_GI_32 HE_GI_32
-+
-+#define EHT_DURATION(streams, gi, bps)			\
-+	HE_DURATION(streams, gi, bps)
-+#define EHT_DURATION_S(shift, streams, gi, bps)		\
-+	HE_DURATION_S(shift, streams, gi, bps)
-+
- #define BW_20			0
- #define BW_40			1
- #define BW_80			2
- #define BW_160			3
-+#define BW_320			4
- 
- /*
-  * Define group sort order: HT40 -> SGI -> #streams
-@@ -68,17 +79,26 @@
- #define IEEE80211_VHT_STREAM_GROUPS	8 /* BW(=4) * SGI(=2) */
- 
- #define IEEE80211_HE_MAX_STREAMS	8
-+#define IEEE80211_HE_STREAM_GROUPS	12 /* BW(=4) * GI(=3) */
-+
-+#define IEEE80211_EHT_MAX_STREAMS	8
-+#define IEEE80211_EHT_STREAM_GROUPS	15 /* BW(=5) * GI(=3) */
- 
- #define IEEE80211_HT_GROUPS_NB	(IEEE80211_MAX_STREAMS *	\
- 				 IEEE80211_HT_STREAM_GROUPS)
- #define IEEE80211_VHT_GROUPS_NB	(IEEE80211_MAX_STREAMS *	\
- 					 IEEE80211_VHT_STREAM_GROUPS)
-+#define IEEE80211_HE_GROUPS_NB	(IEEE80211_HE_MAX_STREAMS *	\
-+				 IEEE80211_HE_STREAM_GROUPS)
-+#define IEEE80211_EHT_GROUPS_NB	(IEEE80211_EHT_MAX_STREAMS *	\
-+				 IEEE80211_EHT_STREAM_GROUPS)
- 
- #define IEEE80211_HT_GROUP_0	0
- #define IEEE80211_VHT_GROUP_0	(IEEE80211_HT_GROUP_0 + IEEE80211_HT_GROUPS_NB)
- #define IEEE80211_HE_GROUP_0	(IEEE80211_VHT_GROUP_0 + IEEE80211_VHT_GROUPS_NB)
-+#define IEEE80211_EHT_GROUP_0	(IEEE80211_HE_GROUP_0 + IEEE80211_HE_GROUPS_NB)
- 
--#define MCS_GROUP_RATES		12
-+#define MCS_GROUP_RATES		14
- 
- #define HT_GROUP_IDX(_streams, _sgi, _ht40)	\
- 	IEEE80211_HT_GROUP_0 +			\
-@@ -203,6 +223,69 @@
- #define HE_GROUP(_streams, _gi, _bw)					\
- 	__HE_GROUP(_streams, _gi, _bw,				\
- 		   HE_GROUP_SHIFT(_streams, _gi, _bw))
-+
-+#define EHT_BW2VBPS(_bw, r5, r4, r3, r2, r1)					\
-+	((_bw) == BW_320 ? r5 : BW2VBPS(_bw, r4, r3, r2, r1))
-+
-+#define EHT_GROUP_IDX(_streams, _gi, _bw)				\
-+	(IEEE80211_EHT_GROUP_0 +					\
-+	 IEEE80211_EHT_MAX_STREAMS * 3 * (_bw) +			\
-+	 IEEE80211_EHT_MAX_STREAMS * (_gi) +				\
-+	 (_streams) - 1)
-+
-+#define __EHT_GROUP(_streams, _gi, _bw, _s)						\
-+	[EHT_GROUP_IDX(_streams, _gi, _bw)] = {						\
-+	.shift = _s,									\
-+	.duration = {									\
-+		EHT_DURATION_S(_s, _streams, _gi,					\
-+			       EHT_BW2VBPS(_bw,  1960,   980,  490,  234,  117)),	\
-+		EHT_DURATION_S(_s, _streams, _gi,					\
-+			       EHT_BW2VBPS(_bw,  3920,  1960,  980,  468,  234)),	\
-+		EHT_DURATION_S(_s, _streams, _gi,					\
-+			       EHT_BW2VBPS(_bw,  5880,  2937, 1470,  702,  351)),	\
-+		EHT_DURATION_S(_s, _streams, _gi,					\
-+			       EHT_BW2VBPS(_bw,  7840,  3920, 1960,  936,  468)),	\
-+		EHT_DURATION_S(_s, _streams, _gi,					\
-+			       EHT_BW2VBPS(_bw, 11760,  5880, 2940, 1404,  702)),	\
-+		EHT_DURATION_S(_s, _streams, _gi,					\
-+			       EHT_BW2VBPS(_bw, 15680,  7840, 3920, 1872,  936)),	\
-+		EHT_DURATION_S(_s, _streams, _gi,					\
-+			       EHT_BW2VBPS(_bw, 17640,  8820, 4410, 2106, 1053)),	\
-+		EHT_DURATION_S(_s, _streams, _gi,					\
-+			       EHT_BW2VBPS(_bw, 19600,  9800, 4900, 2340, 1170)),	\
-+		EHT_DURATION_S(_s, _streams, _gi,					\
-+			       EHT_BW2VBPS(_bw, 23520, 11760, 5880, 2808, 1404)),	\
-+		EHT_DURATION_S(_s, _streams, _gi,					\
-+			       EHT_BW2VBPS(_bw, 26133, 13066, 6533, 3120, 1560)),	\
-+		EHT_DURATION_S(_s, _streams, _gi,					\
-+			       EHT_BW2VBPS(_bw, 29400, 14700, 7350, 3510, 1755)),	\
-+		EHT_DURATION_S(_s, _streams, _gi,					\
-+			       EHT_BW2VBPS(_bw, 32666, 16333, 8166, 3900, 1950)),	\
-+		EHT_DURATION_S(_s, _streams, _gi,					\
-+			       EHT_BW2VBPS(_bw, 35280, 17640, 8820, 4212, 2106)),	\
-+		EHT_DURATION_S(_s, _streams, _gi,					\
-+			       EHT_BW2VBPS(_bw, 39200, 19600, 9800, 4680, 2340))	\
-+		}									\
-+}
-+
-+#define EHT_GROUP_SHIFT(_streams, _gi, _bw)						\
-+	GROUP_SHIFT(EHT_DURATION(_streams, _gi,						\
-+				 EHT_BW2VBPS(_bw, 1960, 980, 490, 234, 117)))
-+
-+#define EHT_GROUP(_streams, _gi, _bw)					\
-+	__EHT_GROUP(_streams, _gi, _bw,				\
-+		   EHT_GROUP_SHIFT(_streams, _gi, _bw))
-+
-+#define EHT_GROUP_RANGE(_gi, _bw)	\
-+	EHT_GROUP(1, _gi, _bw),		\
-+	EHT_GROUP(2, _gi, _bw),		\
-+	EHT_GROUP(3, _gi, _bw),		\
-+	EHT_GROUP(4, _gi, _bw),		\
-+	EHT_GROUP(5, _gi, _bw),		\
-+	EHT_GROUP(6, _gi, _bw),		\
-+	EHT_GROUP(7, _gi, _bw),		\
-+	EHT_GROUP(8, _gi, _bw)
-+
- struct mcs_group {
- 	u8 shift;
- 	u16 duration[MCS_GROUP_RATES];
-@@ -376,6 +459,26 @@ static const struct mcs_group airtime_mcs_groups[] = {
- 	HE_GROUP(6, HE_GI_32, BW_160),
- 	HE_GROUP(7, HE_GI_32, BW_160),
- 	HE_GROUP(8, HE_GI_32, BW_160),
-+
-+	EHT_GROUP_RANGE(EHT_GI_08, BW_20),
-+	EHT_GROUP_RANGE(EHT_GI_16, BW_20),
-+	EHT_GROUP_RANGE(EHT_GI_32, BW_20),
-+
-+	EHT_GROUP_RANGE(EHT_GI_08, BW_40),
-+	EHT_GROUP_RANGE(EHT_GI_16, BW_40),
-+	EHT_GROUP_RANGE(EHT_GI_32, BW_40),
-+
-+	EHT_GROUP_RANGE(EHT_GI_08, BW_80),
-+	EHT_GROUP_RANGE(EHT_GI_16, BW_80),
-+	EHT_GROUP_RANGE(EHT_GI_32, BW_80),
-+
-+	EHT_GROUP_RANGE(EHT_GI_08, BW_160),
-+	EHT_GROUP_RANGE(EHT_GI_16, BW_160),
-+	EHT_GROUP_RANGE(EHT_GI_32, BW_160),
-+
-+	EHT_GROUP_RANGE(EHT_GI_08, BW_320),
-+	EHT_GROUP_RANGE(EHT_GI_16, BW_320),
-+	EHT_GROUP_RANGE(EHT_GI_32, BW_320),
- };
- 
- static u32
-@@ -422,6 +525,9 @@ static u32 ieee80211_get_rate_duration(struct ieee80211_hw *hw,
- 	case RATE_INFO_BW_160:
- 		bw = BW_160;
- 		break;
-+	case RATE_INFO_BW_320:
-+		bw = BW_320;
-+		break;
- 	default:
- 		WARN_ON_ONCE(1);
- 		return 0;
-@@ -443,13 +549,18 @@ static u32 ieee80211_get_rate_duration(struct ieee80211_hw *hw,
- 		idx = status->rate_idx;
- 		group = HE_GROUP_IDX(streams, status->he_gi, bw);
- 		break;
-+	case RX_ENC_EHT:
-+		streams = status->nss;
-+		idx = status->rate_idx;
-+		group = EHT_GROUP_IDX(streams, status->eht.gi, bw);
-+		break;
- 	default:
- 		WARN_ON_ONCE(1);
- 		return 0;
- 	}
- 
--	if (WARN_ON_ONCE((status->encoding != RX_ENC_HE && streams > 4) ||
--			 (status->encoding == RX_ENC_HE && streams > 8)))
-+	if (WARN_ON_ONCE((status->encoding > RX_ENC_HE && streams > 8) ||
-+			 (status->encoding < RX_ENC_HE && streams > 4)))
- 		return 0;
- 
- 	if (idx >= MCS_GROUP_RATES)
-@@ -517,7 +628,9 @@ static bool ieee80211_fill_rate_info(struct ieee80211_hw *hw,
- 	stat->nss = ri->nss;
- 	stat->rate_idx = ri->mcs;
- 
--	if (ri->flags & RATE_INFO_FLAGS_HE_MCS)
-+	if (ri->flags & RATE_INFO_FLAGS_EHT_MCS)
-+		stat->encoding = RX_ENC_EHT;
-+	else if (ri->flags & RATE_INFO_FLAGS_HE_MCS)
- 		stat->encoding = RX_ENC_HE;
- 	else if (ri->flags & RATE_INFO_FLAGS_VHT_MCS)
- 		stat->encoding = RX_ENC_VHT;
-@@ -529,7 +642,14 @@ static bool ieee80211_fill_rate_info(struct ieee80211_hw *hw,
- 	if (ri->flags & RATE_INFO_FLAGS_SHORT_GI)
- 		stat->enc_flags |= RX_ENC_FLAG_SHORT_GI;
- 
--	stat->he_gi = ri->he_gi;
-+	switch (stat->encoding) {
-+	case RX_ENC_EHT:
-+		stat->eht.gi = ri->eht_gi;
-+		break;
-+	default:
-+		stat->he_gi = ri->he_gi;
-+		break;
-+	}
- 
- 	if (stat->encoding != RX_ENC_LEGACY)
- 		return true;
--- 
-2.45.2
-
+johannes
 
