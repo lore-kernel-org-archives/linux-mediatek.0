@@ -4,95 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8175CD3431
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 11:06:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12994CA0ED3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 11:27:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xko3AdnDwXu1UPoPnl6WxfrRj7WMJuxp0Ni5HvaBX0o=; b=Rn80P5P7BIW9YwHazwtBbd3gAs
-	2qPfd/fqd2+mQrbLgdOqlxs1Uf1D624zEYPCCTjOfKyNtfaVpWblz3n45EPDuoWRz7eydjN9JeZIl
-	7mNOP/Uu7xI/wafQ/k2JHU26Bm1Iq4dcdBauv1q+yr7kh6vz0JVTR0a9DMarNKFC9mh3Wm5kfb8UI
-	cl7oEIv5DoeyiswEdIOuNEZ4Hx1fDENmM2slSS0KhV9Ldp/vvi2oPoCVoFCrBbwp1Bs9+VunCmHXi
-	f7j97B6i1N3Gdd22wQ1zEpA/Rczh3H128Z2/BOLmFsmXjl60WsjAfg/WlUG+YHz2twdNTeB7jX4y4
-	VhdLjOww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HESMGutimECO7wRTLpcnVcd1uPlr9AHsGq0msCqFBt8=; b=2vl/LMRBSxr3Qg8eZajLmrZAxe
+	NcxzAr1ZfmSFvctoZrbl0CNRqa5KK/SK71JXHprbrq3UgZN8JrfLcYaP2CxW5uJz4H82K30IsORlJ
+	2LWQ3jDkxIS4/dqvrnhRWGYLSh85WQGGmRH8Vhupfa5U/QKcgV+EggYSrtV1eHC3gYCWC8RBjsdlX
+	5ZVSvrPEiXrLQboRVFrBwUFlv4F+65CNSAMELDt8BQ2Bmwh5LmeO0LP+iBAL9zhdos29UDTosXj4r
+	T+Ehob6ZOAksrc2OQWlsRpcAys4MpW6EF2cqkC+lvSwzUaYCowTVZqZ9IQhmbrJVzeNqeOpCSNmcn
+	bOxoh/zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slnqi-000000042og-1Lqr;
-	Wed, 04 Sep 2024 11:06:56 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1sloAu-000000048Bc-0zYI;
+	Wed, 04 Sep 2024 11:27:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slnqe-000000042oJ-3ov0;
-	Wed, 04 Sep 2024 11:06:54 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-427fc97a88cso5717665e9.0;
-        Wed, 04 Sep 2024 04:06:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725448011; x=1726052811; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=xko3AdnDwXu1UPoPnl6WxfrRj7WMJuxp0Ni5HvaBX0o=;
-        b=UcwjE99qtyZVaafMz/Pwii3621er8omctfa242JiqznYBkuST3xEENtqEk7naDuP5f
-         OUwoTH7f3fQ8PB+TdRaDw9yD8e2lV1nzaq/toRwTWEqfCEE6N6l3fjYol6Qah1gcvMSQ
-         RKm9pDGJgLE4xmPRwoHcoBKP38NxP3veN+cj4azKrKUcg9e/UPAMDt3PSb3Nc6q9EZ+c
-         +thekwswop1vT1ZfMuYvxfR7bMYWLNqrA5A3gfqBiMlBYC+7+E4eCNgSYYfh+MnHaHJP
-         r4tgXBsGk/Zmh/mEPK62fbwEMbXJaol5rkIyS+wbYj6liTr9Zn00qCVCbCnttE5LalTs
-         Hdmg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725448011; x=1726052811;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xko3AdnDwXu1UPoPnl6WxfrRj7WMJuxp0Ni5HvaBX0o=;
-        b=cYjW2+duufPqZTLZzSn1CpGs/bMg1qsryNanpCEmmSnj1akD4sREQ26JVjMiDBpu2C
-         gLQ9avH6SOZJAahVPJ/SqCyrLtCn7Y1UJoy5rMTO8Ambqlt5MGbpp/0ggio5S597IGZ4
-         Gl9IQUiv2kUYe/kX2+1YOquW4mI/JmWC5NBAv81MlYh0y7bvySLPsVmOK+N10YWhZEN1
-         bZSXURFZkKeYu3jIs2jLvyiWrxbx0CV8fXSlaw2D+Od1lDZJd0seZbTO/7q2ZWJajSyv
-         c1tDU7reUAsgOYi0Y1nzNVpzsWGihJMebQHAaXok/O/HJBLo3+H7O2RiQgxaHI/Nzllx
-         zaIQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVO4n86/D6rT1+lsOXTIUDZ2+ud33kWVhhsVJR50BJfUOlNxOr9oDpBEpubLJ1+8AxOaqskcYINp9oTatoMZZcA@lists.infradead.org, AJvYcCWdOoYP6vcYyvI0jHEvgvFVcQgYk0ZiqjMEWU1OCGYBKOcr44U8d1l4F9EduP65kGEgkIakquy3D+g8VadUJBQ=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyhAWxL0KnMaUNvt8Jm2O94Ia+tekF3Ko8RCPWcUsKGvasc0mP1
-	DR+nkiaFCyI2TBHpAbau7MKSnR0MRkoju9aaedrv4cfk7WT/bYW5
-X-Google-Smtp-Source: AGHT+IHUMikIomgVAajePk5PmkHaQSWCkSEU4DQdow9b2O+jbzsNIiZOILgd/MoiMo4W1w4+DjhFag==
-X-Received: by 2002:a05:600c:4e8c:b0:428:2e9:65a9 with SMTP id 5b1f17b1804b1-42c9548d081mr14423945e9.28.1725448010702;
-        Wed, 04 Sep 2024 04:06:50 -0700 (PDT)
-Received: from Ansuel-XPS. (host-87-16-250-236.retail.telecomitalia.it. [87.16.250.236])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42bbf00e095sm161231175e9.13.2024.09.04.04.06.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Sep 2024 04:06:50 -0700 (PDT)
-Message-ID: <66d83f49.050a0220.3d273e.b096@mx.google.com>
-X-Google-Original-Message-ID: <Ztg_RsH5rep8cwuN@Ansuel-XPS.>
-Date: Wed, 4 Sep 2024 13:06:46 +0200
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Lee Jones <lee@kernel.org>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	upstream@airoha.com, benjamin.larsson@genexis.eu,
-	linux-pwm@vger.kernel.org
-Subject: Re: [PATCH v3 2/5] dt-bindings: mfd: Add support for Airoha EN7581
- GPIO System Controller
-References: <20240831-en7581-pinctrl-v3-0-98eebfb4da66@kernel.org>
- <20240831-en7581-pinctrl-v3-2-98eebfb4da66@kernel.org>
- <20240903153353.GZ6858@google.com>
- <66d72ea9.df0a0220.21f5f.029f@mx.google.com>
- <20240903164218.GC6858@google.com>
+	id 1slnxC-000000044Hw-2ttt
+	for linux-mediatek@lists.infradead.org;
+	Wed, 04 Sep 2024 11:13:40 +0000
+X-UUID: b8abdd406aae11efba0aef63c0775dbf-20240904
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=HESMGutimECO7wRTLpcnVcd1uPlr9AHsGq0msCqFBt8=;
+	b=VKccHo7uKYv4Xnfh3uts0UDbmfaA9Qo6tsZU/239X0jb540c27OCCtoIUyKXkzY2DB4dCA1K7UqOCQLVWdidiv+xjw+KBeoaOZCbDUyfKzB5LnDHntJBqBQ6PhByRZWLgm7pbE2ELJ0g67gr+NUZl4ICYt2snnw0pHyPujHS5rI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:da3bf897-7c3d-45f7-8b18-633166db6ade,IP:0,U
+	RL:0,TC:0,Content:33,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:33
+X-CID-META: VersionHash:6dc6a47,CLOUDID:87672d05-42cd-428b-a1e3-ab5b763cfa17,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:4,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: b8abdd406aae11efba0aef63c0775dbf-20240904
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <mingyen.hsieh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 575419901; Wed, 04 Sep 2024 04:13:32 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 4 Sep 2024 19:13:00 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 4 Sep 2024 19:13:00 +0800
+From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+To: <johannes@sipsolutions.net>, <jonas.gorski@gmail.com>
+CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
+	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Michael.Lo@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
+	<km.lin@mediatek.com>, <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>,
+	<posh.sun@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, Quan Zhou
+	<quan.zhou@mediatek.com>
+Subject: [PATCH v5] wifi: mac80211: introduce EHT rate support in AQL airtime
+Date: Wed, 4 Sep 2024 19:12:56 +0800
+Message-ID: <20240904111256.11734-1-mingyen.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240903164218.GC6858@google.com>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_040652_974722_1DDF848A 
-X-CRM114-Status: GOOD (  36.83  )
+X-CRM114-CacheID: sfid-20240904_041338_790968_E41AF29C 
+X-CRM114-Status: GOOD (  18.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,95 +88,252 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 03, 2024 at 05:42:18PM +0100, Lee Jones wrote:
-> On Tue, 03 Sep 2024, Christian Marangi wrote:
-> 
-> > On Tue, Sep 03, 2024 at 04:33:53PM +0100, Lee Jones wrote:
-> > > On Sat, 31 Aug 2024, Lorenzo Bianconi wrote:
-> > > 
-> > > > From: Christian Marangi <ansuelsmth@gmail.com>
-> > > > 
-> > > > Add support for Airoha EN7581 GPIO System Controller which provide a
-> > > > register map for controlling the GPIO, pinctrl and PWM of the SoC.
-> > > > 
-> > > > Schema define cells for both gpio/interrupt controller and PWM.
-> > > > Moreover it provides a dedicated pinctrl node for pins and config
-> > > > definitions.
-> > > > 
-> > > > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> > > > Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > > > ---
-> > > >  .../bindings/mfd/airoha,en7581-gpio-sysctl.yaml    | 433 +++++++++++++++++++++
-> > > >  1 file changed, 433 insertions(+)
-> > > > 
-> > > > diff --git a/Documentation/devicetree/bindings/mfd/airoha,en7581-gpio-sysctl.yaml b/Documentation/devicetree/bindings/mfd/airoha,en7581-gpio-sysctl.yaml
-> > > > new file mode 100644
-> > > > index 000000000000..a9080c7f50f9
-> > > > --- /dev/null
-> > > > +++ b/Documentation/devicetree/bindings/mfd/airoha,en7581-gpio-sysctl.yaml
-> > > > @@ -0,0 +1,433 @@
-> > > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > > > +%YAML 1.2
-> > > > +---
-> > > > +$id: http://devicetree.org/schemas/mfd/airoha,en7581-gpio-sysctl.yaml#
-> > > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > > +
-> > > > +title: Airoha EN7581 GPIO System Controller
-> > > > +
-> > > > +maintainers:
-> > > > +  - Christian Marangi <ansuelsmth@gmail.com>
-> > > > +  - Lorenzo Bianconi <lorenzo@kernel.org>
-> > > > +
-> > > > +description:
-> > > > +  Airoha EN7581 SoC GPIO system controller which provided a register map
-> > > > +  for controlling the GPIO, pins and PWM of the SoC.
-> > > 
-> > > This whole thing is just about pins.
-> > > 
-> > > The MFD portion of this submission doesn't do anything.
-> > >
-> > 
-> > Hi Lee,
-> > 
-> > thanks for the review. I think you missed the other series as it was
-> > requested to use MFD implementation due to shared register map.
-> > 
-> > > Please rework this to omit the MFD driver.
-> > 
-> > I'm a bit confused by this you mean in the schema? Putting PWM property
-> > in a pinctrl schema looks wrong to me :(
-> > 
-> > > 
-> > > After just a glance, it looks like simple-mfd _might_ work.
-> > 
-> > Simple-mfd works if register map are well defined and you can have
-> > something like
-> > - parent define the whole register
-> > - child can user reg property to register offset and subsection of the
-> >   parent register
-> > 
-> > Here it's all mixed and scrambled and also it was requested to have a
-> > very simple node that include both pwm and pinctrl property (cause that
-> > is how the HW register block is designed and schema must reflect HW)
-> > 
-> > Hope you can understand these reasons.
-> 
-> Thinking very quickly before I have to rush off.
-> 
-> Have you considered syscon?
->
+From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-Yes it was considered and proposed but it's not suitable for what it was
-suggested from DT guy. A syscon implementation would require adding
-child nodes with compatible (to probe driver that way) and that got
-rejected.
+Add definitions related to EHT mode and airtime calculation
+according to the 802.11BE_D4.0.
 
-The main reason is that it's wrong to create .yaml that describe how
-the driver structure works (mfd + child nodes with compatible) instead
-of describing how the actual HW works (single register map that expose
-both GPIO/PINCTRL and PWM)
+Co-developed-by: Bo Jiao <Bo.Jiao@mediatek.com>
+Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+---
+v2:
+ - add BW_320 support in ieee80211_get_rate_duration().
+ - rewrite the existing WARN_ON for property stream condition.
+v3:
+ - add a macro EHT_GROUP_RANGE() to reduce the line which repetitive the EHT_GROUP().
+ - to comply with the current use of EHT streams, the WARN_ON check has been modified
+   to be consistent with HE. 
+v4:
+ - change IEEE80211_EHT_MAX_STREAMS 16 to 8.
+v5:
+ - use switch-case instead of if-else for stream check.
+---
+ net/mac80211/airtime.c | 140 +++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 134 insertions(+), 6 deletions(-)
 
+diff --git a/net/mac80211/airtime.c b/net/mac80211/airtime.c
+index fdf8b658fede..c61df637232a 100644
+--- a/net/mac80211/airtime.c
++++ b/net/mac80211/airtime.c
+@@ -55,10 +55,21 @@
+ #define HE_DURATION_S(shift, streams, gi, bps)		\
+ 	(HE_DURATION(streams, gi, bps) >> shift)
+ 
++/* gi in HE/EHT is identical. It matches enum nl80211_eht_gi as well */
++#define EHT_GI_08 HE_GI_08
++#define EHT_GI_16 HE_GI_16
++#define EHT_GI_32 HE_GI_32
++
++#define EHT_DURATION(streams, gi, bps)			\
++	HE_DURATION(streams, gi, bps)
++#define EHT_DURATION_S(shift, streams, gi, bps)		\
++	HE_DURATION_S(shift, streams, gi, bps)
++
+ #define BW_20			0
+ #define BW_40			1
+ #define BW_80			2
+ #define BW_160			3
++#define BW_320			4
+ 
+ /*
+  * Define group sort order: HT40 -> SGI -> #streams
+@@ -68,17 +79,26 @@
+ #define IEEE80211_VHT_STREAM_GROUPS	8 /* BW(=4) * SGI(=2) */
+ 
+ #define IEEE80211_HE_MAX_STREAMS	8
++#define IEEE80211_HE_STREAM_GROUPS	12 /* BW(=4) * GI(=3) */
++
++#define IEEE80211_EHT_MAX_STREAMS	8
++#define IEEE80211_EHT_STREAM_GROUPS	15 /* BW(=5) * GI(=3) */
+ 
+ #define IEEE80211_HT_GROUPS_NB	(IEEE80211_MAX_STREAMS *	\
+ 				 IEEE80211_HT_STREAM_GROUPS)
+ #define IEEE80211_VHT_GROUPS_NB	(IEEE80211_MAX_STREAMS *	\
+ 					 IEEE80211_VHT_STREAM_GROUPS)
++#define IEEE80211_HE_GROUPS_NB	(IEEE80211_HE_MAX_STREAMS *	\
++				 IEEE80211_HE_STREAM_GROUPS)
++#define IEEE80211_EHT_GROUPS_NB	(IEEE80211_EHT_MAX_STREAMS *	\
++				 IEEE80211_EHT_STREAM_GROUPS)
+ 
+ #define IEEE80211_HT_GROUP_0	0
+ #define IEEE80211_VHT_GROUP_0	(IEEE80211_HT_GROUP_0 + IEEE80211_HT_GROUPS_NB)
+ #define IEEE80211_HE_GROUP_0	(IEEE80211_VHT_GROUP_0 + IEEE80211_VHT_GROUPS_NB)
++#define IEEE80211_EHT_GROUP_0	(IEEE80211_HE_GROUP_0 + IEEE80211_HE_GROUPS_NB)
+ 
+-#define MCS_GROUP_RATES		12
++#define MCS_GROUP_RATES		14
+ 
+ #define HT_GROUP_IDX(_streams, _sgi, _ht40)	\
+ 	IEEE80211_HT_GROUP_0 +			\
+@@ -203,6 +223,69 @@
+ #define HE_GROUP(_streams, _gi, _bw)					\
+ 	__HE_GROUP(_streams, _gi, _bw,				\
+ 		   HE_GROUP_SHIFT(_streams, _gi, _bw))
++
++#define EHT_BW2VBPS(_bw, r5, r4, r3, r2, r1)					\
++	((_bw) == BW_320 ? r5 : BW2VBPS(_bw, r4, r3, r2, r1))
++
++#define EHT_GROUP_IDX(_streams, _gi, _bw)				\
++	(IEEE80211_EHT_GROUP_0 +					\
++	 IEEE80211_EHT_MAX_STREAMS * 3 * (_bw) +			\
++	 IEEE80211_EHT_MAX_STREAMS * (_gi) +				\
++	 (_streams) - 1)
++
++#define __EHT_GROUP(_streams, _gi, _bw, _s)						\
++	[EHT_GROUP_IDX(_streams, _gi, _bw)] = {						\
++	.shift = _s,									\
++	.duration = {									\
++		EHT_DURATION_S(_s, _streams, _gi,					\
++			       EHT_BW2VBPS(_bw,  1960,   980,  490,  234,  117)),	\
++		EHT_DURATION_S(_s, _streams, _gi,					\
++			       EHT_BW2VBPS(_bw,  3920,  1960,  980,  468,  234)),	\
++		EHT_DURATION_S(_s, _streams, _gi,					\
++			       EHT_BW2VBPS(_bw,  5880,  2937, 1470,  702,  351)),	\
++		EHT_DURATION_S(_s, _streams, _gi,					\
++			       EHT_BW2VBPS(_bw,  7840,  3920, 1960,  936,  468)),	\
++		EHT_DURATION_S(_s, _streams, _gi,					\
++			       EHT_BW2VBPS(_bw, 11760,  5880, 2940, 1404,  702)),	\
++		EHT_DURATION_S(_s, _streams, _gi,					\
++			       EHT_BW2VBPS(_bw, 15680,  7840, 3920, 1872,  936)),	\
++		EHT_DURATION_S(_s, _streams, _gi,					\
++			       EHT_BW2VBPS(_bw, 17640,  8820, 4410, 2106, 1053)),	\
++		EHT_DURATION_S(_s, _streams, _gi,					\
++			       EHT_BW2VBPS(_bw, 19600,  9800, 4900, 2340, 1170)),	\
++		EHT_DURATION_S(_s, _streams, _gi,					\
++			       EHT_BW2VBPS(_bw, 23520, 11760, 5880, 2808, 1404)),	\
++		EHT_DURATION_S(_s, _streams, _gi,					\
++			       EHT_BW2VBPS(_bw, 26133, 13066, 6533, 3120, 1560)),	\
++		EHT_DURATION_S(_s, _streams, _gi,					\
++			       EHT_BW2VBPS(_bw, 29400, 14700, 7350, 3510, 1755)),	\
++		EHT_DURATION_S(_s, _streams, _gi,					\
++			       EHT_BW2VBPS(_bw, 32666, 16333, 8166, 3900, 1950)),	\
++		EHT_DURATION_S(_s, _streams, _gi,					\
++			       EHT_BW2VBPS(_bw, 35280, 17640, 8820, 4212, 2106)),	\
++		EHT_DURATION_S(_s, _streams, _gi,					\
++			       EHT_BW2VBPS(_bw, 39200, 19600, 9800, 4680, 2340))	\
++		}									\
++}
++
++#define EHT_GROUP_SHIFT(_streams, _gi, _bw)						\
++	GROUP_SHIFT(EHT_DURATION(_streams, _gi,						\
++				 EHT_BW2VBPS(_bw, 1960, 980, 490, 234, 117)))
++
++#define EHT_GROUP(_streams, _gi, _bw)					\
++	__EHT_GROUP(_streams, _gi, _bw,				\
++		   EHT_GROUP_SHIFT(_streams, _gi, _bw))
++
++#define EHT_GROUP_RANGE(_gi, _bw)	\
++	EHT_GROUP(1, _gi, _bw),		\
++	EHT_GROUP(2, _gi, _bw),		\
++	EHT_GROUP(3, _gi, _bw),		\
++	EHT_GROUP(4, _gi, _bw),		\
++	EHT_GROUP(5, _gi, _bw),		\
++	EHT_GROUP(6, _gi, _bw),		\
++	EHT_GROUP(7, _gi, _bw),		\
++	EHT_GROUP(8, _gi, _bw)
++
+ struct mcs_group {
+ 	u8 shift;
+ 	u16 duration[MCS_GROUP_RATES];
+@@ -376,6 +459,26 @@ static const struct mcs_group airtime_mcs_groups[] = {
+ 	HE_GROUP(6, HE_GI_32, BW_160),
+ 	HE_GROUP(7, HE_GI_32, BW_160),
+ 	HE_GROUP(8, HE_GI_32, BW_160),
++
++	EHT_GROUP_RANGE(EHT_GI_08, BW_20),
++	EHT_GROUP_RANGE(EHT_GI_16, BW_20),
++	EHT_GROUP_RANGE(EHT_GI_32, BW_20),
++
++	EHT_GROUP_RANGE(EHT_GI_08, BW_40),
++	EHT_GROUP_RANGE(EHT_GI_16, BW_40),
++	EHT_GROUP_RANGE(EHT_GI_32, BW_40),
++
++	EHT_GROUP_RANGE(EHT_GI_08, BW_80),
++	EHT_GROUP_RANGE(EHT_GI_16, BW_80),
++	EHT_GROUP_RANGE(EHT_GI_32, BW_80),
++
++	EHT_GROUP_RANGE(EHT_GI_08, BW_160),
++	EHT_GROUP_RANGE(EHT_GI_16, BW_160),
++	EHT_GROUP_RANGE(EHT_GI_32, BW_160),
++
++	EHT_GROUP_RANGE(EHT_GI_08, BW_320),
++	EHT_GROUP_RANGE(EHT_GI_16, BW_320),
++	EHT_GROUP_RANGE(EHT_GI_32, BW_320),
+ };
+ 
+ static u32
+@@ -422,6 +525,9 @@ static u32 ieee80211_get_rate_duration(struct ieee80211_hw *hw,
+ 	case RATE_INFO_BW_160:
+ 		bw = BW_160;
+ 		break;
++	case RATE_INFO_BW_320:
++		bw = BW_320;
++		break;
+ 	default:
+ 		WARN_ON_ONCE(1);
+ 		return 0;
+@@ -443,14 +549,27 @@ static u32 ieee80211_get_rate_duration(struct ieee80211_hw *hw,
+ 		idx = status->rate_idx;
+ 		group = HE_GROUP_IDX(streams, status->he_gi, bw);
+ 		break;
++	case RX_ENC_EHT:
++		streams = status->nss;
++		idx = status->rate_idx;
++		group = EHT_GROUP_IDX(streams, status->eht.gi, bw);
++		break;
+ 	default:
+ 		WARN_ON_ONCE(1);
+ 		return 0;
+ 	}
+ 
+-	if (WARN_ON_ONCE((status->encoding != RX_ENC_HE && streams > 4) ||
+-			 (status->encoding == RX_ENC_HE && streams > 8)))
+-		return 0;
++	switch (status->encoding) {
++	case RX_ENC_EHT:
++	case RX_ENC_HE:
++		if (WARN_ON_ONCE(streams > 8))
++			return 0;
++		break;
++	default:
++		if (WARN_ON_ONCE(streams > 4))
++			return 0;
++		break;
++	}
+ 
+ 	if (idx >= MCS_GROUP_RATES)
+ 		return 0;
+@@ -517,7 +636,9 @@ static bool ieee80211_fill_rate_info(struct ieee80211_hw *hw,
+ 	stat->nss = ri->nss;
+ 	stat->rate_idx = ri->mcs;
+ 
+-	if (ri->flags & RATE_INFO_FLAGS_HE_MCS)
++	if (ri->flags & RATE_INFO_FLAGS_EHT_MCS)
++		stat->encoding = RX_ENC_EHT;
++	else if (ri->flags & RATE_INFO_FLAGS_HE_MCS)
+ 		stat->encoding = RX_ENC_HE;
+ 	else if (ri->flags & RATE_INFO_FLAGS_VHT_MCS)
+ 		stat->encoding = RX_ENC_VHT;
+@@ -529,7 +650,14 @@ static bool ieee80211_fill_rate_info(struct ieee80211_hw *hw,
+ 	if (ri->flags & RATE_INFO_FLAGS_SHORT_GI)
+ 		stat->enc_flags |= RX_ENC_FLAG_SHORT_GI;
+ 
+-	stat->he_gi = ri->he_gi;
++	switch (stat->encoding) {
++	case RX_ENC_EHT:
++		stat->eht.gi = ri->eht_gi;
++		break;
++	default:
++		stat->he_gi = ri->he_gi;
++		break;
++	}
+ 
+ 	if (stat->encoding != RX_ENC_LEGACY)
+ 		return true;
 -- 
-	Ansuel
+2.25.1
+
 
