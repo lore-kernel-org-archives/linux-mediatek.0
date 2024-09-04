@@ -4,89 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B133DCD4F3C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 21:42:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB4A6CD4F4A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 22:57:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XUOw5lMiHDw0MiG7UAI15FhQeJ9HSg6Beuvp398enyw=; b=VL85Nm2avQ1mMh7MjbAaQhXqXi
-	tZij5ju3yGqAuI0quUWjeZg+9zYjdSicW+XdqH+T0iKdSpv7nVyngrAifrP8tyjsdd/lcUwwDnO9A
-	1HiLj7d1OEs/U+Go/FLFNbsPEOpsUlnaGO/jPwin3fQB4gfmrCDMmxcAREBT6hYbrbZCMOowabDZ7
-	ZTATO1AyS7LLufNdDb7+Oq4viGXU697f6kCx+LC10Ufyr92doepzxWQ8eHKcPE/KYEw57jD3tYWmK
-	v6lXSPuaLVmscm/oh3Y+uojIH1GxwTXiorsoSnZSNF+m3HLenYI9P9lYYjfXw8ctn9cYR2j3xZwpK
-	Yn3mC8hQ==;
+	bh=k696Bg6R54WASMTi+pz+LZlGCRBSQtRYcr6+VwRcm/8=; b=uid+VfLbvqZ43p/rn9KTCQ0yni
+	uuA7PUAcm/tRP2ZT72Qssy6h9gsvAHr80ueawG+thwou0htS89V2imaMgwSmK8AiHYsRfEhnnDnaF
+	Klj/Y8H6hizHHdYAd9LCRwxfcMHEUIu1NiLOA0QBHCxk03W4NhqRcWxvT3Xh0KLWnMItNzI9PN/a6
+	eqM44HEX0DpaliyUoBBjPFgTqvFqxfmXeguaQcvUB5sAhExM1Q5pH4DOYmJZZuxU9rBHOWi/ECxHr
+	irRKSgoMYDdolcihsqwofYJGEqnvxdTkYvGlSYP1+tx18BfWkaHwQG5/iOfsAzrCs3cXHodedUuVh
+	H8TLevIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slxm3-000000069ai-0DKI;
-	Wed, 04 Sep 2024 21:42:47 +0000
-Received: from mail-qt1-x82f.google.com ([2607:f8b0:4864:20::82f])
+	id 1slywU-00000006Izq-46vD;
+	Wed, 04 Sep 2024 22:57:38 +0000
+Received: from mail-qk1-x72b.google.com ([2607:f8b0:4864:20::72b])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slxlz-000000069Zx-3GLa
+	id 1slywR-00000006Iz8-42eK
 	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Sep 2024 21:42:45 +0000
-Received: by mail-qt1-x82f.google.com with SMTP id d75a77b69052e-4567fe32141so42341cf.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 04 Sep 2024 14:42:41 -0700 (PDT)
+	Wed, 04 Sep 2024 22:57:37 +0000
+Received: by mail-qk1-x72b.google.com with SMTP id af79cd13be357-7a8130906faso11025985a.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 04 Sep 2024 15:57:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1725486161; x=1726090961; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1725490654; x=1726095454; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=XUOw5lMiHDw0MiG7UAI15FhQeJ9HSg6Beuvp398enyw=;
-        b=lFldnvSLyPh8oTkdyriLBwLZ1Ju/cNa4X3NMkZ5yNvi4nJCs3Vx3XYGlTveNuZ/sap
-         4jJz2RSpEtHyYJRWHvGdiqObPGvFVDuXbFtEftv9JmRghAm0865Wu4xsd6JXzUUqUYRW
-         TooQlXlIXv/ZWxzrvVVcZAVRZ4aa+rSe86k8yiObob53o6NcKExCTgFxyCcQ7G8BffFY
-         b4B1IkGORXVZEHVX+b2ut5PKO3YYDulP0TW7JJgBOKIN1rbRyfdldHPycfKlMLN2GCYx
-         Gv8sL3DtZWMZFt4roAgr/onUwzPvSzj9KSBeL2zOCCvz5atS4gB9qisBaARczWIUVnCT
-         FACA==
+        bh=k696Bg6R54WASMTi+pz+LZlGCRBSQtRYcr6+VwRcm/8=;
+        b=S9JXF0QNMXpEdLpIxLMS8Exd2ijeki/HpYWmwTnrAnrnMXXGQ2X5iCjXCrI+Vl9ijH
+         SGilwQMAb06kvS0Vd4/N/yLs1e5cTd/u2O/y+hV5mCTg/iv9/fPFomuXiArhHjb6cmY8
+         qIZKo9BX24nUr0NB/inpVqo31ZvmevNhdcDmk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725486161; x=1726090961;
+        d=1e100.net; s=20230601; t=1725490654; x=1726095454;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=XUOw5lMiHDw0MiG7UAI15FhQeJ9HSg6Beuvp398enyw=;
-        b=QVIPhQz6eg0OM4soWmMSjvLwXmdfili4JFvSA1JrxdEGZxv8ut7syTtZAOUQFpliQl
-         eSZEGWraZX6L9cSr/B8yqkaDRVhGNbFIQMqtduVN/egcWgHV7wF0S738hlJA7DELhxjA
-         jMDlgWpnThouiAPW71cTacA8WiNWXRNCmMEbSW9TRQql4HC8+6Sit/TSsnS3lIRgoh28
-         ASP8UesJ1ylmaj5rIUBJmJgVbRQ3dKDryDSkUsWd4y+sK+UpDDEQLYeHBHQJzQjbvILZ
-         GYkV+RvtZR5kgdR7CCmy6BI9TUIcZBHt04gVnMaqOdIIDsAunl6A5RQWR9SBit6DR75p
-         MaUA==
-X-Forwarded-Encrypted: i=1; AJvYcCVNEQg/+4iqAdR5eYDIYlYxuR0tikrrKBK9b/r4gRL/slbEg5NkhzGsOBrtgNY/oZJaEDSH/HtTJr0cBuit9A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyJZK72hx8g6Ob9WkQMxW9h+oFPdy5+c62xxGRu5nkJ/+nQv3/H
-	ixP89cBrcUFEgRNHn4RmnXKierpPvbTP3CxDwoEr7aoqsnWf1gZS9vRiTOzQYyZZgVyuPKDSw9g
-	+HBatGK6mi7ci+mFMd9n6XoB1V39KrU2ovYyX
-X-Google-Smtp-Source: AGHT+IEpGF7+WsKzz/JrGdpbLM/PeRMTZKHHeKwab0nvhh64NIvNlNBwZyTBj3hwa0VujqMyfqFoFxJtF/XvbPvKPO0=
-X-Received: by 2002:a05:622a:6790:b0:456:7d9f:2af8 with SMTP id
- d75a77b69052e-458033f9c82mr245311cf.7.1725486160847; Wed, 04 Sep 2024
- 14:42:40 -0700 (PDT)
+        bh=k696Bg6R54WASMTi+pz+LZlGCRBSQtRYcr6+VwRcm/8=;
+        b=GCQKQi+JotZpZq+imCjUH0dEXtSB51naUZVtgga6GpifYMw6u6v4N8eRMl7d+zHnso
+         t4XFoQxFG2c+Y+JitWyeIStKZgFpAZPieDYETAQDvYBX2xtNOTStpytxwjdk9XGOfxYc
+         hoMfg4L94NnnvflS6zetn62yUBX9zDY8kzoSVsFT06FdCeaaCh32hParNVyyW8FutNy9
+         KUol1Id7qjcAi+zXCG4Fn5setMoG6VjUL6J95N6gs1CHxsm0etirWALn5Ptzcn81B/Dj
+         MyHj/zZAMWPTFBmUXyxw2tcS3CTBVUQUqLui1YLZGpNBqVEs9n2Lw1LsMxWDvxQr+RJ/
+         hs0g==
+X-Forwarded-Encrypted: i=1; AJvYcCVckLz8up4n8J1tlXpzgUnPQPsd8eUcY5Ny9DxQ2cS/7xlLhh58m0o3CLPQNp3UikyJ7M0xDVVHyU9DudYYgg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwYS3tPaMFijAKAnyigAAhTME0jnSMG5NfqcwldRANgoVTQcK17
+	WVDgz7zIQX8oR7D/XIcctNSJDU3UF0GByNVKvwWJ+lP1f02AXAz8P4a2H3GvptXFBe4ERhzx6YI
+	=
+X-Google-Smtp-Source: AGHT+IF+FnWLAzcDjMM4JmVSM6/SkdrJVwKh7l4GSzPkH8Tjh/V5LvB8zwpR9YABo13TPmtHSC/8rA==
+X-Received: by 2002:a05:620a:4090:b0:7a7:f18a:e46f with SMTP id af79cd13be357-7a8ac3ba8camr2033240185a.43.1725490654388;
+        Wed, 04 Sep 2024 15:57:34 -0700 (PDT)
+Received: from mail-qt1-f170.google.com (mail-qt1-f170.google.com. [209.85.160.170])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7a98efed3dasm26382385a.95.2024.09.04.15.57.34
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 04 Sep 2024 15:57:34 -0700 (PDT)
+Received: by mail-qt1-f170.google.com with SMTP id d75a77b69052e-457d46ea04dso970821cf.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 04 Sep 2024 15:57:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCV3E9P5KBOQblMzTwYVhxJ71tC4ni2QAuBs6UP86xBLSwfMPxKtTROKp/DZGfWl5YwuRX6H/uSV0fJyPb/OLA==@lists.infradead.org
+X-Received: by 2002:a05:6214:3da0:b0:6b7:b277:dd12 with SMTP id
+ 6a1803df08f44-6c3558475afmr184722756d6.49.1725490653502; Wed, 04 Sep 2024
+ 15:57:33 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240830070351.2855919-1-jens.wiklander@linaro.org>
- <20240830070351.2855919-5-jens.wiklander@linaro.org> <CABdmKX2KzswmiDY4oWw69_rPWs8d_Cqp7OXouSeMQaYX1SDSmw@mail.gmail.com>
- <CAHUa44FYYFVQWf0DGUXNHoOVQEC0-HRyYa0386dHNjo4y1qSiQ@mail.gmail.com>
-In-Reply-To: <CAHUa44FYYFVQWf0DGUXNHoOVQEC0-HRyYa0386dHNjo4y1qSiQ@mail.gmail.com>
-From: "T.J. Mercier" <tjmercier@google.com>
-Date: Wed, 4 Sep 2024 14:42:28 -0700
-Message-ID: <CABdmKX0qd0RoTn2TBQTs9zdf=_JP8pW8hFRUR_7n_t-sfxsGdg@mail.gmail.com>
-Subject: Re: [RFC PATCH 4/4] dma-buf: heaps: add Linaro restricted dmabuf heap support
-To: Jens Wiklander <jens.wiklander@linaro.org>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linaro-mm-sig@lists.linaro.org, op-tee@lists.trustedfirmware.org, 
+References: <20240904090016.2841572-1-wenst@chromium.org> <20240904090016.2841572-10-wenst@chromium.org>
+In-Reply-To: <20240904090016.2841572-10-wenst@chromium.org>
+From: Doug Anderson <dianders@chromium.org>
+Date: Wed, 4 Sep 2024 15:57:18 -0700
+X-Gmail-Original-Message-ID: <CAD=FV=UGOz3Xzg7reJKP=tA1LqTxszv5w-CL9krmoXQtXdJLaQ@mail.gmail.com>
+Message-ID: <CAD=FV=UGOz3Xzg7reJKP=tA1LqTxszv5w-CL9krmoXQtXdJLaQ@mail.gmail.com>
+Subject: Re: [PATCH v6 09/12] i2c: of-prober: Add regulator support
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
+	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
+	Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
+	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Olivier Masse <olivier.masse@nxp.com>, Thierry Reding <thierry.reding@gmail.com>, 
-	Yong Wu <yong.wu@mediatek.com>, Sumit Semwal <sumit.semwal@linaro.org>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>, 
-	John Stultz <jstultz@google.com>, =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
-	Sumit Garg <sumit.garg@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
+	linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>, 
+	Jiri Kosina <jikos@kernel.org>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	linux-i2c@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_144243_846575_0252F370 
-X-CRM114-Status: GOOD (  35.26  )
+X-CRM114-CacheID: sfid-20240904_155736_047593_2ABE8653 
+X-CRM114-Status: GOOD (  33.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,281 +106,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 4, 2024 at 2:44=E2=80=AFAM Jens Wiklander <jens.wiklander@linar=
-o.org> wrote:
->
-> On Tue, Sep 3, 2024 at 7:50=E2=80=AFPM T.J. Mercier <tjmercier@google.com=
-> wrote:
-> >
-> > On Fri, Aug 30, 2024 at 12:04=E2=80=AFAM Jens Wiklander
-> > <jens.wiklander@linaro.org> wrote:
-> > >
-> > > Add a Linaro restricted heap using the linaro,restricted-heap binding=
-s
-> > > implemented based on the generic restricted heap.
-> > >
-> > > The bindings defines a range of physical restricted memory. The heap
-> > > manages this address range using genalloc. The allocated dma-buf file
-> > > descriptor can later be registered with the TEE subsystem for later u=
-se
-> > > via Trusted Applications in the secure world.
-> > >
-> > > Co-developed-by: Olivier Masse <olivier.masse@nxp.com>
-> > > Signed-off-by: Olivier Masse <olivier.masse@nxp.com>
-> > > Signed-off-by: Jens Wiklander <jens.wiklander@linaro.org>
-> > > ---
-> > >  drivers/dma-buf/heaps/Kconfig                 |  10 ++
-> > >  drivers/dma-buf/heaps/Makefile                |   1 +
-> > >  .../dma-buf/heaps/restricted_heap_linaro.c    | 165 ++++++++++++++++=
-++
-> > >  3 files changed, 176 insertions(+)
-> > >  create mode 100644 drivers/dma-buf/heaps/restricted_heap_linaro.c
-> > >
-> > > diff --git a/drivers/dma-buf/heaps/Kconfig b/drivers/dma-buf/heaps/Kc=
-onfig
-> > > index 58903bc62ac8..82e2c5d09242 100644
-> > > --- a/drivers/dma-buf/heaps/Kconfig
-> > > +++ b/drivers/dma-buf/heaps/Kconfig
-> > > @@ -28,3 +28,13 @@ config DMABUF_HEAPS_RESTRICTED_MTK
-> > >         help
-> > >           Enable restricted dma-buf heaps for MediaTek platform. This=
- heap is backed by
-> > >           TEE client interfaces. If in doubt, say N.
-> > > +
-> > > +config DMABUF_HEAPS_RESTRICTED_LINARO
-> > > +       bool "Linaro DMA-BUF Restricted Heap"
-> > > +       depends on DMABUF_HEAPS_RESTRICTED
-> > > +       help
-> > > +         Choose this option to enable the Linaro restricted dma-buf =
-heap.
-> > > +         The restricted heap pools are defined according to the DT. =
-Heaps
-> > > +         are allocated in the pools using gen allocater.
-> > > +         If in doubt, say N.
-> > > +
-> > > diff --git a/drivers/dma-buf/heaps/Makefile b/drivers/dma-buf/heaps/M=
-akefile
-> > > index 0028aa9d875f..66b2f67c47b5 100644
-> > > --- a/drivers/dma-buf/heaps/Makefile
-> > > +++ b/drivers/dma-buf/heaps/Makefile
-> > > @@ -2,4 +2,5 @@
-> > >  obj-$(CONFIG_DMABUF_HEAPS_CMA)         +=3D cma_heap.o
-> > >  obj-$(CONFIG_DMABUF_HEAPS_RESTRICTED)  +=3D restricted_heap.o
-> > >  obj-$(CONFIG_DMABUF_HEAPS_RESTRICTED_MTK)      +=3D restricted_heap_=
-mtk.o
-> > > +obj-$(CONFIG_DMABUF_HEAPS_RESTRICTED_LINARO)   +=3D restricted_heap_=
-linaro.o
-> > >  obj-$(CONFIG_DMABUF_HEAPS_SYSTEM)      +=3D system_heap.o
-> > > diff --git a/drivers/dma-buf/heaps/restricted_heap_linaro.c b/drivers=
-/dma-buf/heaps/restricted_heap_linaro.c
-> > > new file mode 100644
-> > > index 000000000000..4b08ed514023
-> > > --- /dev/null
-> > > +++ b/drivers/dma-buf/heaps/restricted_heap_linaro.c
-> > > @@ -0,0 +1,165 @@
-> > > +// SPDX-License-Identifier: GPL-2.0
-> > > +/*
-> > > + * DMABUF secure heap exporter
-> > > + *
-> > > + * Copyright 2021 NXP.
-> > > + * Copyright 2024 Linaro Limited.
-> > > + */
-> > > +
-> > > +#define pr_fmt(fmt)     "rheap_linaro: " fmt
-> > > +
-> > > +#include <linux/dma-buf.h>
-> > > +#include <linux/err.h>
-> > > +#include <linux/genalloc.h>
-> > > +#include <linux/module.h>
-> > > +#include <linux/of.h>
-> > > +#include <linux/of_fdt.h>
-> > > +#include <linux/of_reserved_mem.h>
-> > > +#include <linux/scatterlist.h>
-> > > +#include <linux/slab.h>
-> > > +
-> > > +#include "restricted_heap.h"
-> > > +
-> > > +#define MAX_HEAP_COUNT 2
-> >
-> > Are multiple supported because of what Cyrille mentioned here about per=
-missions?
-> > https://lore.kernel.org/lkml/DBBPR04MB7514E006455AEA407041E4F788709@DBB=
-PR04MB7514.eurprd04.prod.outlook.com/
->
-> Yes, I kept that as is.
+Hi,
 
-Ok thanks.
-
-> > So this is just some arbitrary limit? I'd prefer to have some sort of
-> > documentation about this.
+On Wed, Sep 4, 2024 at 2:01=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> wr=
+ote:
 >
-> How about removing the limit and using dynamic allocation instead?
-
-That works too!
-
+> This adds regulator management to the I2C OF component prober.
+> Components that the prober intends to probe likely require their
+> regulator supplies be enabled, and GPIOs be toggled to enable them or
+> bring them out of reset before they will respond to probe attempts.
+> GPIOs will be handled in the next patch.
 >
-> Thanks,
-> Jens
+> Without specific knowledge of each component's resource names or
+> power sequencing requirements, the prober can only enable the
+> regulator supplies all at once, and toggle the GPIOs all at once.
+> Luckily, reset pins tend to be active low, while enable pins tend to
+> be active high, so setting the raw status of all GPIO pins to high
+> should work. The wait time before and after resources are enabled
+> are collected from existing drivers and device trees.
 >
-> >
-> >
-> > > +#define HEAP_NAME_LEN  32
-> > > +
-> > > +struct resmem_restricted {
-> > > +       phys_addr_t base;
-> > > +       phys_addr_t size;
-> > > +
-> > > +       char name[HEAP_NAME_LEN];
-> > > +
-> > > +       bool no_map;
-> > > +};
-> > > +
-> > > +static struct resmem_restricted restricted_data[MAX_HEAP_COUNT] =3D =
-{0};
-> > > +static unsigned int restricted_data_count;
-> > > +
-> > > +static int linaro_restricted_memory_allocate(struct restricted_heap =
-*heap,
-> > > +                                            struct restricted_buffer=
- *buf)
-> > > +{
-> > > +       struct gen_pool *pool =3D heap->priv_data;
-> > > +       unsigned long pa;
-> > > +       int ret;
-> > > +
-> > > +       buf->size =3D ALIGN(buf->size, PAGE_SIZE);
-> > > +       pa =3D gen_pool_alloc(pool, buf->size);
-> > > +       if (!pa)
-> > > +               return -ENOMEM;
-> > > +
-> > > +       ret =3D sg_alloc_table(&buf->sg_table, 1, GFP_KERNEL);
-> > > +       if (ret) {
-> > > +               gen_pool_free(pool, pa, buf->size);
-> > > +               return ret;
-> > > +       }
-> > > +
-> > > +       sg_set_page(buf->sg_table.sgl, phys_to_page(pa), buf->size, 0=
-);
-> > > +
-> > > +       return 0;
-> > > +}
-> > > +
-> > > +static void linaro_restricted_memory_free(struct restricted_heap *he=
-ap,
-> > > +                                         struct restricted_buffer *b=
-uf)
-> > > +{
-> > > +       struct gen_pool *pool =3D heap->priv_data;
-> > > +       struct scatterlist *sg;
-> > > +       unsigned int i;
-> > > +
-> > > +       for_each_sg(buf->sg_table.sgl, sg, buf->sg_table.nents, i)
-> > > +               gen_pool_free(pool, page_to_phys(sg_page(sg)), sg->le=
-ngth);
-> > > +       sg_free_table(&buf->sg_table);
-> > > +}
-> > > +
-> > > +static const struct restricted_heap_ops linaro_restricted_heap_ops =
-=3D {
-> > > +       .alloc =3D linaro_restricted_memory_allocate,
-> > > +       .free =3D linaro_restricted_memory_free,
-> > > +};
-> > > +
-> > > +static int add_heap(struct resmem_restricted *mem)
-> > > +{
-> > > +       struct restricted_heap *heap;
-> > > +       struct gen_pool *pool;
-> > > +       int ret;
-> > > +
-> > > +       if (mem->base =3D=3D 0 || mem->size =3D=3D 0) {
-> > > +               pr_err("restricted_data base or size is not correct\n=
-");
-> > > +               return -EINVAL;
-> > > +       }
-> > > +
-> > > +       heap =3D kzalloc(sizeof(*heap), GFP_KERNEL);
-> > > +       if (!heap)
-> > > +               return -ENOMEM;
-> > > +
-> > > +       pool =3D gen_pool_create(PAGE_SHIFT, -1);
-> > > +       if (!pool) {
-> > > +               ret =3D -ENOMEM;
-> > > +               goto err_free_heap;
-> > > +       }
-> > > +
-> > > +       ret =3D gen_pool_add(pool, mem->base, mem->size, -1);
-> > > +       if (ret)
-> > > +               goto err_free_pool;
-> > > +
-> > > +       heap->no_map =3D mem->no_map;
-> > > +       heap->priv_data =3D pool;
-> > > +       heap->name =3D mem->name;
-> > > +       heap->ops =3D &linaro_restricted_heap_ops;
-> > > +
-> > > +       ret =3D restricted_heap_add(heap);
-> > > +       if (ret)
-> > > +               goto err_free_pool;
-> > > +
-> > > +       return 0;
-> > > +
-> > > +err_free_pool:
-> > > +       gen_pool_destroy(pool);
-> > > +err_free_heap:
-> > > +       kfree(heap);
-> > > +
-> > > +       return ret;
-> > > +}
-> > > +
-> > > +static int __init rmem_restricted_heap_setup(struct reserved_mem *rm=
-em)
-> > > +{
-> > > +       size_t len =3D HEAP_NAME_LEN;
-> > > +       const char *s;
-> > > +       bool no_map;
-> > > +
-> > > +       if (WARN_ONCE(restricted_data_count >=3D MAX_HEAP_COUNT,
-> > > +                     "Cannot handle more than %u restricted heaps\n"=
-,
-> > > +                     MAX_HEAP_COUNT))
-> > > +               return -EINVAL;
-> > > +
-> > > +       no_map =3D of_get_flat_dt_prop(rmem->fdt_node, "no-map", NULL=
-);
-> > > +       s =3D strchr(rmem->name, '@');
-> > > +       if (s)
-> > > +               len =3D umin(s - rmem->name + 1, len);
-> > > +
-> > > +       restricted_data[restricted_data_count].base =3D rmem->base;
-> > > +       restricted_data[restricted_data_count].size =3D rmem->size;
-> > > +       restricted_data[restricted_data_count].no_map =3D no_map;
-> > > +       strscpy(restricted_data[restricted_data_count].name, rmem->na=
-me, len);
-> > > +
-> > > +       restricted_data_count++;
-> > > +       return 0;
-> > > +}
-> > > +
-> > > +RESERVEDMEM_OF_DECLARE(linaro_restricted_heap, "linaro,restricted-he=
-ap",
-> > > +                      rmem_restricted_heap_setup);
-> > > +
-> > > +static int linaro_restricted_heap_init(void)
-> > > +{
-> > > +       unsigned int i;
-> > > +       int ret;
-> > > +
-> > > +       for (i =3D 0; i < restricted_data_count; i++) {
-> > > +               ret =3D add_heap(&restricted_data[i]);
-> > > +               if (ret)
-> > > +                       return ret;
-> > > +       }
-> > > +       return 0;
-> > > +}
-> > > +
-> > > +module_init(linaro_restricted_heap_init);
-> > > +MODULE_DESCRIPTION("Linaro Restricted Heap Driver");
-> > > +MODULE_LICENSE("GPL");
-> > > --
-> > > 2.34.1
-> > >
+> The prober collects resources from all possible components and enables
+> them together, instead of enabling resources and probing each component
+> one by one. The latter approach does not provide any boot time benefits
+> over simply enabling each component and letting each driver probe
+> sequentially.
+>
+> The prober will also deduplicate the resources, since on a component
+> swap out or co-layout design, the resources are always the same.
+> While duplicate regulator supplies won't cause much issue, shared
+> GPIOs don't work reliably, especially with other drivers. For the
+> same reason, the prober will release the GPIOs before the successfully
+> probed component is actually enabled.
+>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+> Changes since v5:
+> - Split of_regulator_bulk_get_all() return value check and explain
+>   "ret =3D=3D 0" case
+> - Switched to of_get_next_child_with_prefix_scoped() where applicable
+> - Used krealloc_array() instead of directly calculating size
+> - copy whole regulator array in one memcpy() call
+> - Drop "0" from struct zeroing initializer
+> - Split out regulator helper from i2c_of_probe_enable_res() to keep
+>   code cleaner when combined with the next patch
+> - Added options for customizing power sequencing delay
+> - Rename i2c_of_probe_get_regulator() to i2c_of_probe_get_regulators()
+> - Add i2c_of_probe_free_regulator() helper
+>
+> Changes since v4:
+> - Split out GPIO handling to separate patch
+> - Rewrote using of_regulator_bulk_get_all()
+> - Replaced "regulators" with "regulator supplies" in debug messages
+>
+> Changes since v3:
+> - New patch
+>
+> This change is kept as a separate patch for now since the changes are
+> quite numerous.
+> ---
+>  drivers/i2c/i2c-core-of-prober.c | 154 +++++++++++++++++++++++++++++--
+>  include/linux/i2c.h              |  10 +-
+>  2 files changed, 155 insertions(+), 9 deletions(-)
+
+I never jumped back into looking at this since you started sending new
+versions last month (sorry), but I finally did...
+
+At a high level, I have to say I'm not really a fan of the "reach into
+all of the devices, jam their regulators on, force their GPIOs high,
+and hope for the best" approach. It just feels like it's going to
+break at the first bit of slightly different hardware and cause power
+sequence violations left and right. If nothing else, regulators often
+need delays between when one regulator is enabled and the next. There
+may also be complex relationships between regulators and GPIOs, GPIOs,
+GPIOs that need to be low, or even GPIO "toggle sequences" (power on
+rail 1, wait 1 ms, assert reset, wait 10 ms, deassert reset, power on
+rail 2).
+
+IMO the only way to make this reliable is to have this stuff be much
+less automatic and much more driven by the board.
+
+I think that, in general, before the board prober checks i2c address
+then the prober should be in charge of setting up pinctrl and turning
+on regulators / GPIOs. Given that the same regulator(s) and GPIO(s)
+may be specified by different children, the prober will just have to
+pick one child to find those resources. It should have enough
+board-specific knowledge to make this choice. Then the prober should
+turn them on via a board-specific power-on sequence that's known to
+work for all the children. Then it should start probing.
+
+I think there can still be plenty of common helper functions that the
+board-specific prober can leverage, but overall I'd expect the actual
+power-on and power-off code to be board-specific.
+
+If many boards have in common that we need to turn on exactly one
+regulator + one GPIO, or just one regulator, or whatever then having a
+helper function that handles these cases is fine. ...but it should be
+one of many choices that a board proper could use and not the only
+one.
+
+-Doug
 
