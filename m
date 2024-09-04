@@ -4,77 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 438C7CD3431
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 09:03:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5FE7CD37B6
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 09:19:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=coqROFg8ieCUdM0Q+87b+N5eZVFIazUMtX0eKOozZo4=; b=Fs0WV+NN3CGUCJvRnS024W0wjv
-	BUalG7nCDqZ/VlRYjnZjnGBUYeCFEHEEGpmyw3oLvoZyjHbAVosYJWKNSn5epHO2JGb2NhGmdoQ7t
-	RTk4tAkb/D/XGb5/kmVpvHQzOO1YuGuE6/VqoE91mOeaYtqmnHZNKrwBHcs6JSoEWvkfgJXaawh6w
-	9uEKG7qsD8gqtndXJd9OKbEdMrlZ0UAYaL4KYaXKksBgyZJVpMz0my3EZ3qYiXngKS6TLgJBsOK8P
-	WrRBmamKAOMWtwiSyPyy4X1lr1voZK4yhHjueNFUXJfdb/zsDr6bt4COTWwbsX+c9zUZWNNmMqSv3
-	Pmo3lJcQ==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=shuryc8UlV73M1Z/RV04h2I1CmqvY0itpik4aNPG9pM=; b=KyxWVGJtZBz7uRo4KX2asZAqSB
+	tXIdKXZ/2gpbWzWOFxszRbHG4eBWGEAHLT4uwUczyC6N+QkzjGfQL8DGD25H6frZ4bS8nt9XLhawK
+	lBfoxfQZIanHw9Spt3opwR473+yXtUSx3puG0nyohvgDE07QOK557YdLMa/Qfb2zK6pm9Ye1TCWGz
+	n+DKymEl8fw4/N0nCR5kRV9Tma3AAYkLR2X5VTD4APafZK+zj0WsyBOllaCzFuYGElJC6vBe5CwW2
+	OJmfxhGWadmZ4F7dAVOIFMFGZUswgQ+O+o+pk3As9020cUOPdhoFaSMD/hb7HWGO2nTK5YMLt25eU
+	GrIwWwUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sllun-00000003ZcT-2ph4;
-	Wed, 04 Sep 2024 09:03:01 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1slmAa-00000003dgA-2GGA;
+	Wed, 04 Sep 2024 09:19:21 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sllVU-00000003RiE-1fUO;
-	Wed, 04 Sep 2024 08:36:54 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-42bb885f97eso2507125e9.0;
-        Wed, 04 Sep 2024 01:36:51 -0700 (PDT)
+	id 1sllbC-00000003Ty1-2On3;
+	Wed, 04 Sep 2024 08:42:48 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-42bb7298bdeso70227155e9.1;
+        Wed, 04 Sep 2024 01:42:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725439010; x=1726043810; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1725439365; x=1726044165; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=coqROFg8ieCUdM0Q+87b+N5eZVFIazUMtX0eKOozZo4=;
-        b=gwHJBh0/UPkdlVajSrVAeT8D/v7z8uiKuRsbFgPsOwF35/6D81c7zpC49vuCxFN4sc
-         KYGNhgN/SK/W3RNClJJAbxJAr62c4Hp6zacGJykUaj68ZzCidVJE8pb/XQ39tt1ItKN5
-         Y1WDg9mBglj/s/gFLfWXiFcm9wTtL2jMazSu2AxN25PWWAa8p5rgUKSSkvXqbxx/A/aS
-         mpEPmTBZMHcLfCgpgxqyzHJ/xxfMpsdnHIsLgvtqnUrRUUZn1H5phGoi8cJxXoCDQ6Tf
-         WjH/MF2DM0Co51h00IqIlgoLhveSKOYSTwkEWDl0dF/VTyBtyl4E8Wr0atEywMXzXizR
-         ks5A==
+         :content-language:references:to:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=shuryc8UlV73M1Z/RV04h2I1CmqvY0itpik4aNPG9pM=;
+        b=JL0RDnjR3LZ59r9W1sJQyLQKO5ky9MNpCRLKDTE+fAXVvgCLfUOdtGLiwkoAWK6Dya
+         HzFISoMU9nUohT3Qx/fQ9W9ceKDLPt4h/KmzN33OrK5tYSJ4qhAAVIiLGFutRSfwIWv7
+         3ooXY/XYO/Hcqd5nYJE38XCz0aW1gNNbelLYpSecrdEBUxDzlILEpuOFwyTPv2VtLBvx
+         NG+yVC5XnnRwJewwuSPOUC/n8q8jcyHnKiCYQklTIv+CtTePg+Br1Y8MnLXM9yGOZFJV
+         sRSNmYJJt5U+b/tgohCPyxfVCsszFM3pDPEWKJuCgpBF9BVWO+7pKVB0W/Ey+NYCtkfw
+         Yv4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725439010; x=1726043810;
+        d=1e100.net; s=20230601; t=1725439365; x=1726044165;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=coqROFg8ieCUdM0Q+87b+N5eZVFIazUMtX0eKOozZo4=;
-        b=ZRtShkMUg5xMrmYijUwkCbKCvwW9YUkQKz8k9wYiJPln10qMefoafJ1g6Owa8pJ/R0
-         enANdAkISCdVRW63s1XBoCLPd26Z5q0EpoGMqPQfjcAmL2ey7hw3GJ5zGkV/5LYc2/yU
-         5tmR1MewNkwgIsz9i+hiZ4TtTvZS8IG6hKmA4/mQOuYxKaT5hi13sE4N8FkrtNkLyPZ2
-         O3UqeXJZs/Ox5u3kKADbYA602D4RhAIX6XnBxY9/YbKhAegHTA87KGdD7/mIdlmXir/L
-         DJODkim5rKAKsBi2KbJ8Z0vEekgxCgbWXTI+Im8Vkv+T+wnPMYSbIFh4zYL5uaAaJ0nO
-         EPPQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVLR/C/oB8dKiEo3+i0sPJJPaAa+biw4SH4AE5uEopyByndqrGvB5tlJsX+gG9sNKzC+mxxQHBQyD3ltZavn3s=@lists.infradead.org, AJvYcCXTneKEub8vuI0nrEYYNS0wTEkq21fEC2zbeYsWmyM3/gtHiIUK0yohPRRKSCP3IlpFq7F/0miyLHwjuKAi76xS@lists.infradead.org
-X-Gm-Message-State: AOJu0YzZHXduMOdRj7+4O2gn41RC0BjCQpazTOsXNPWxZeY3c1wizZ7b
-	H3icUtHq1R1tl5ywYE2mTGq3CL/EHRMJLiEsjFvpKlZNKqRIDW68
-X-Google-Smtp-Source: AGHT+IFZfXBla80xFEu9ewJ3fbefvH2EuZAZIRSZp/svaazCGUxVeydes80wRxUEgoJGLqgLEyeXdQ==
-X-Received: by 2002:a05:600c:511a:b0:426:5c36:f57a with SMTP id 5b1f17b1804b1-42c95b9a087mr7582415e9.14.1725439009520;
-        Wed, 04 Sep 2024 01:36:49 -0700 (PDT)
+         :content-language:references:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=shuryc8UlV73M1Z/RV04h2I1CmqvY0itpik4aNPG9pM=;
+        b=unzHED3uvZ73/qfQ2zW62E+ZJoSUer9GOBDrgUSGYAK6M1EXG+hZ+oYLOwH5abH5M9
+         apd4xqf3TkBGLsdlLdpAVcj0LWjRbg9Q9TOjnhsvST4OQQ3cX2SqBFrhPGLzbqFqsdKW
+         BTy5PcvTXSwkVM5XDSg+ZLpGaWg0GelJIM6gbaXgcQ1DYjT4av2h5m00M5A+ico0if2E
+         wCTExWitnsLYRYlwA/mzp31l5KWV+ZEDmc2mFDn/Svls9QXw6FpqJLcGKSp8WYKPTi/f
+         MRdxFSYH2ee8xQj/50e0zD+C6I22HZqeU17bXZZJ5BRSh+fpFucvMoBiaCuRBDB1xWlp
+         RzGw==
+X-Forwarded-Encrypted: i=1; AJvYcCW6avL3ewz+BluSepPvp73wRC38sEFGjfKMNCijnypYwevyDdO0j3RSu7GIEapf6D+HVLXzM6EMKdRO7Sy8zv6G@lists.infradead.org, AJvYcCWvsboj4X1u+XJc96FYkjRS5lu6EZiOnMu/1f0y90KTl7j75nAkZ1YAuydSqabkOkfXiy7l4H40H4d2xCJeNZc=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx+g5u0mwlkghppB2hnGFFBDt3Oj8+evihhfbOMDx0AyY5DU0aE
+	r9qWk0cKsvBA0gYjMXGspEPwW/DNBLLQJx/n/KVl42aypYVXb0F2
+X-Google-Smtp-Source: AGHT+IF/pOUJJl0LCA5WpJcCGZEm59/Vf3Hin0V6BO18X7t+yP5gInTEKJS1DwObTNtwuSa8H+xXaw==
+X-Received: by 2002:a05:600c:1391:b0:426:6f87:65fc with SMTP id 5b1f17b1804b1-42bb01c19c0mr181812735e9.17.1725439364028;
+        Wed, 04 Sep 2024 01:42:44 -0700 (PDT)
 Received: from [192.168.0.20] ([148.56.230.39])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42bbc87773fsm157261795e9.0.2024.09.04.01.36.47
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42bbc127ec5sm169965315e9.19.2024.09.04.01.42.42
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 04 Sep 2024 01:36:48 -0700 (PDT)
-Message-ID: <f2380ad1-f1d1-41c1-b00e-782f2c1937fc@gmail.com>
-Date: Wed, 4 Sep 2024 10:36:46 +0200
+        Wed, 04 Sep 2024 01:42:43 -0700 (PDT)
+Message-ID: <e58b27cc-69a8-4338-827c-c27f09856802@gmail.com>
+Date: Wed, 4 Sep 2024 10:42:41 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] wifi: mt76: mt7925: convert comma to semicolon
-To: Chen Ni <nichen@iscas.ac.cn>, nbd@nbd.name, lorenzo@kernel.org,
- ryder.lee@mediatek.com, shayne.chen@mediatek.com, sean.wang@mediatek.com,
- kvalo@kernel.org, angelogioacchino.delregno@collabora.com,
- deren.wu@mediatek.com, mingyen.hsieh@mediatek.com
-Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240904075213.1352976-1-nichen@iscas.ac.cn>
+Subject: Re: [PATCH v4 2/3] media: platform: mtk-mdp3: Use cmdq_pkt_create()
+ and cmdq_pkt_destroy()
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "mchehab@kernel.org" <mchehab@kernel.org>,
+ =?UTF-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>
+References: <20240901143259.16849-1-chunkuang.hu@kernel.org>
+ <20240901143259.16849-3-chunkuang.hu@kernel.org>
+ <1d4e9e86-aaaf-4d19-b89f-6f7207ab72d8@gmail.com>
+ <d5c512d06e013555397722137d5790dc8a627bfd.camel@mediatek.com>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -120,12 +131,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20240904075213.1352976-1-nichen@iscas.ac.cn>
+In-Reply-To: <d5c512d06e013555397722137d5790dc8a627bfd.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_013652_481882_95C0474C 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20240904_014246_649573_F13F7BEC 
+X-CRM114-Status: GOOD (  18.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,46 +153,147 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 04/09/2024 09:52, Chen Ni wrote:
-> Replace comma between expressions with semicolons.
+On 03/09/2024 11:39, CK Hu (胡俊光) wrote:
+> Hi, Matthias:
 > 
-> Using a ',' in place of a ';' can have unintended side effects.
-> Although that is not the case here, it is seems best to use ';'
-> unless ',' is intended.
+> On Mon, 2024-09-02 at 17:31 +0200, Matthias Brugger wrote:
+>>   	
+>> External email : Please do not click links or open attachments until you have verified the sender or the content.
+>>   
+>>
+>> On 01/09/2024 16:32, Chun-Kuang Hu wrote:
+>>> Use cmdq_pkt_create() and cmdq_pkt_destroy() common function
+>>> instead of implementing mdp3 version.
+>>>
+>>> Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+>>> ---
+>>>    .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 46 ++-----------------
+>>>    .../platform/mediatek/mdp3/mtk-mdp3-cmdq.h    |  1 +
+>>>    2 files changed, 6 insertions(+), 41 deletions(-)
+>>>
+>>> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+>>> index ef5dade35fd3..740a484c8eb4 100644
+>>> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+>>> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+>>> @@ -471,43 +471,6 @@ static int mdp_path_config(struct mdp_dev *mdp, struct mdp_cmdq_cmd *cmd,
+>>>    return 0;
+>>>    }
+>>>    
+>>> -static int mdp_cmdq_pkt_create(struct cmdq_client *client, struct cmdq_pkt *pkt,
+>>> -       size_t size)
+>>> -{
+>>> -struct device *dev;
+>>> -dma_addr_t dma_addr;
+>>> -
+>>> -pkt->va_base = kzalloc(size, GFP_KERNEL);
+>>> -if (!pkt->va_base)
+>>> -return -ENOMEM;
+>>> -
+>>> -pkt->buf_size = size;
+>>> -pkt->cl = (void *)client;
+>>
+>> cmdq_pkt_create does not set the callback. Why doesn't that break things?
+>> Same holds for the crtc driver that is already in linux-next.
 > 
-> Found by inspection.
-> No functional change intended.
-> Compile tested only.
+> This series is to remove pkt->cl.
+> For the helper function whick need pkt->cl, add parameter to pass the cmdq_client information.
+> Up to now, only cmdq_pkt_finalize() use pkt->cl, but it is replaced by cmdq_pkt_eoc() and cmdq_pkt_jump_rel() in [PATCH v4 1/3].
+> So this would not break any thing.
 > 
-> Signed-off-by: Chen Ni <nichen@iscas.ac.cn>
+
+Right, actually this is explained in the cover letter. Sorry for the noise.
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-> ---
->   drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 12 ++++++------
->   1 file changed, 6 insertions(+), 6 deletions(-)
+> Regards,
+> CK
 > 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-> index 9dc22fbe25d3..82c5a8def344 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-> @@ -2171,12 +2171,12 @@ void mt7925_mcu_bss_rlm_tlv(struct sk_buff *skb, struct mt76_phy *phy,
->   
->   	tlv = mt76_connac_mcu_add_tlv(skb, UNI_BSS_INFO_RLM, sizeof(*req));
->   	req = (struct bss_rlm_tlv *)tlv;
-> -	req->control_channel = chandef->chan->hw_value,
-> -	req->center_chan = ieee80211_frequency_to_channel(freq1),
-> -	req->center_chan2 = ieee80211_frequency_to_channel(freq2),
-> -	req->tx_streams = hweight8(phy->antenna_mask),
-> -	req->ht_op_info = 4, /* set HT 40M allowed */
-> -	req->rx_streams = hweight8(phy->antenna_mask),
-> +	req->control_channel = chandef->chan->hw_value;
-> +	req->center_chan = ieee80211_frequency_to_channel(freq1);
-> +	req->center_chan2 = ieee80211_frequency_to_channel(freq2);
-> +	req->tx_streams = hweight8(phy->antenna_mask);
-> +	req->ht_op_info = 4; /* set HT 40M allowed */
-> +	req->rx_streams = hweight8(phy->antenna_mask);
->   	req->band = band;
->   
->   	switch (chandef->width) {
+>>
+>> Regards,
+>> Matthias
+>>
+>>> -
+>>> -dev = client->chan->mbox->dev;
+>>> -dma_addr = dma_map_single(dev, pkt->va_base, pkt->buf_size,
+>>> -  DMA_TO_DEVICE);
+>>> -if (dma_mapping_error(dev, dma_addr)) {
+>>> -dev_err(dev, "dma map failed, size=%u\n", (u32)(u64)size);
+>>> -kfree(pkt->va_base);
+>>> -return -ENOMEM;
+>>> -}
+>>> -
+>>> -pkt->pa_base = dma_addr;
+>>> -
+>>> -return 0;
+>>> -}
+>>> -
+>>> -static void mdp_cmdq_pkt_destroy(struct cmdq_pkt *pkt)
+>>> -{
+>>> -struct cmdq_client *client = (struct cmdq_client *)pkt->cl;
+>>> -
+>>> -dma_unmap_single(client->chan->mbox->dev, pkt->pa_base, pkt->buf_size,
+>>> - DMA_TO_DEVICE);
+>>> -kfree(pkt->va_base);
+>>> -pkt->va_base = NULL;
+>>> -}
+>>> -
+>>>    static void mdp_auto_release_work(struct work_struct *work)
+>>>    {
+>>>    struct mdp_cmdq_cmd *cmd;
+>>> @@ -538,7 +501,7 @@ static void mdp_auto_release_work(struct work_struct *work)
+>>>    wake_up(&mdp->callback_wq);
+>>>    }
+>>>    
+>>> -mdp_cmdq_pkt_destroy(&cmd->pkt);
+>>> +cmdq_pkt_destroy(mdp->cmdq_clt[cmd->pp_idx], &cmd->pkt);
+>>>    kfree(cmd->comps);
+>>>    cmd->comps = NULL;
+>>>    kfree(cmd);
+>>> @@ -578,7 +541,7 @@ static void mdp_handle_cmdq_callback(struct mbox_client *cl, void *mssg)
+>>>    if (refcount_dec_and_test(&mdp->job_count))
+>>>    wake_up(&mdp->callback_wq);
+>>>    
+>>> -mdp_cmdq_pkt_destroy(&cmd->pkt);
+>>> +cmdq_pkt_destroy(mdp->cmdq_clt[cmd->pp_idx], &cmd->pkt);
+>>>    kfree(cmd->comps);
+>>>    cmd->comps = NULL;
+>>>    kfree(cmd);
+>>> @@ -620,7 +583,7 @@ static struct mdp_cmdq_cmd *mdp_cmdq_prepare(struct mdp_dev *mdp,
+>>>    goto err_uninit;
+>>>    }
+>>>    
+>>> -ret = mdp_cmdq_pkt_create(mdp->cmdq_clt[pp_idx], &cmd->pkt, SZ_16K);
+>>> +ret = cmdq_pkt_create(mdp->cmdq_clt[pp_idx], &cmd->pkt, SZ_16K);
+>>>    if (ret)
+>>>    goto err_free_cmd;
+>>>    
+>>> @@ -700,6 +663,7 @@ static struct mdp_cmdq_cmd *mdp_cmdq_prepare(struct mdp_dev *mdp,
+>>>    cmd->comps = comps;
+>>>    cmd->num_comps = num_comp;
+>>>    cmd->mdp_ctx = param->mdp_ctx;
+>>> +cmd->pp_idx = pp_idx;
+>>>    
+>>>    kfree(path);
+>>>    return cmd;
+>>> @@ -711,7 +675,7 @@ static struct mdp_cmdq_cmd *mdp_cmdq_prepare(struct mdp_dev *mdp,
+>>>    err_free_comps:
+>>>    kfree(comps);
+>>>    err_destroy_pkt:
+>>> -mdp_cmdq_pkt_destroy(&cmd->pkt);
+>>> +cmdq_pkt_destroy(mdp->cmdq_clt[pp_idx], &cmd->pkt);
+>>>    err_free_cmd:
+>>>    kfree(cmd);
+>>>    err_uninit:
+>>> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.h b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.h
+>>> index 53a30ad7e0b0..935ae9825728 100644
+>>> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.h
+>>> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.h
+>>> @@ -35,6 +35,7 @@ struct mdp_cmdq_cmd {
+>>>    struct mdp_comp *comps;
+>>>    void *mdp_ctx;
+>>>    u8 num_comps;
+>>> +u8 pp_idx;
+>>>    };
+>>>    
+>>>    struct mdp_dev;
 
