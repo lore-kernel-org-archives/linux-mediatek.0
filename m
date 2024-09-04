@@ -4,131 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F728CA0ED3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 09:34:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3793ACA0ED3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Sep 2024 09:35:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Vy90VFulS8e/nyhzi0U0xOoN1F9n1Y4+P2Hnc5uXLeE=; b=qTUx5sIoU1+/sCTTw+rbBrb5xf
-	VoQKcXRUlPUII3URAJQyaBItvFMXBM1yn06Gu+pw7keSlRu2wBSHaqDYsiJAxX1QNGkCHBnEgug+P
-	sPTt2NoTJqN1dOPGxyyFkuwUX7aZpkfoSrm3SxIavZSRDBuwHTpSlZsY4Y+TqgNpCu3AQSrZSfHDl
-	HVNLXM4NhB5I5jiEYQtiT2H2ejRgUVu7rt/MX1GNck2NBOjmbCbod3KFpkmZFXhXivet1sOZvjIBB
-	EUh57GQy5GfzZ5pW4mFnus7WVEn8GTmTU64QcDMq7pWC/LDDr/oyCAEkLYVBOBUqOCsJZhfr2W3uI
-	AG7gWaXQ==;
+	bh=2M921d4gJ85snm6ehV18l9ZU1Po4pieq34BYMUnhsNU=; b=vzSmSBd+fTw49RkgIINWvaeiGl
+	5OVtRPxBRyYDkjtVeCrayPcjfKvRGkfWLmCDNBXJI1yyim/Nx7s7z0QOYPkhynKvNeGv8Nd2XbAdU
+	A0D3+BK32nvjiOXKyaFBTzm0tFgh3oUMT6SR7uHQanUIf8AHvG6dC/8pd1izGrD9fK/6NvCsWX2Dy
+	lx8CVR1OBxjdgZw2DcYwPIOUBUwFCDkwc7u5I2ZuQbza7Sfcx6+TcbkW69MWCpp7Ac+LhQcY1Z3zb
+	gvUtztCwnlXh4UqjTDo3IepgO++GlkKx1J67Kbyr7h1Sn75qAFN5hnHaVyOuJbM3tRV5ACLNj2HWC
+	r37qaDpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1slmPH-00000003hbS-3SHe;
-	Wed, 04 Sep 2024 09:34:31 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1slmQB-00000003hpH-3lTp;
+	Wed, 04 Sep 2024 09:35:27 +0000
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sllsN-00000003YmM-1MCC;
-	Wed, 04 Sep 2024 09:00:32 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-42bbd0a40faso43103695e9.1;
-        Wed, 04 Sep 2024 02:00:30 -0700 (PDT)
+	id 1sllsP-00000003Yn5-1pkD
+	for linux-mediatek@lists.infradead.org;
+	Wed, 04 Sep 2024 09:00:35 +0000
+Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-715e64ea7d1so5352793b3a.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 04 Sep 2024 02:00:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725440429; x=1726045229; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=Vy90VFulS8e/nyhzi0U0xOoN1F9n1Y4+P2Hnc5uXLeE=;
-        b=mRzjLQXV8oQSYzPSNLH/dwHq3KofGhHMWCo3bDwZYTjybO2oitvz0bH/9G+34YdSo8
-         rONLwfeDY/2Iv5mdzd5fGhwLvx1FoD5wQvQd2NEwmarWVicqsa7sFF0W6q9lxLzdikDO
-         kAlyRnfrBDyfadja0TdqOsaS7CfKlM0egoNwhdbCNPy3DMRy+g2gjbKMem0/BLUnuFlf
-         lTeRJRZJa0NgX5AfmRp2pnUstRXgqm5pXaxxQzojMaLwRHWWP/nB/yOfm+9VjmsL1KbE
-         hKnE1x1KFXGuy81KBHWR/erFJvoD7bV8iAfl1inO5E62SVkmgMeYN7FgpDQ6vrSMZxk7
-         84XA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725440429; x=1726045229;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+        d=chromium.org; s=google; t=1725440432; x=1726045232; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Vy90VFulS8e/nyhzi0U0xOoN1F9n1Y4+P2Hnc5uXLeE=;
-        b=Jjc+4F5kqwALGjx95XJe+U6gyt72JVM9bV/Izv2nrS7uUISM04abnQzFuvNxNgZJ79
-         9HjwpRlqN0twQP8azKiu91cLiD8dHwsJQQOw5UaLatGLcFsYPfrY1S9km+3fUv3TN3LS
-         1JcTdIq0N1QqgsRSJTyJFkobejS89LcMwTtUqzwpoo0vNydvuwWcrZxlfSJsSbK4/e7f
-         zwdY7ob58y9tK27TbkKtTLIQynYAIg2ZX4EmwkKq+KQPFXRjAozfxPr0DqTemSGc+Z8M
-         RZRes9cXS8VY7aZlSOCpHGxpTrd5JHXlP5nr3oDfjAzZpIzhBP7XQt2H2v2UrpLdTCsT
-         MlAg==
-X-Forwarded-Encrypted: i=1; AJvYcCV+zxXDvn49pfuQXJSYWapWy/QG3oyvyQYHL7gZ7fqE69SMHobNH0CVrna02/BbXpKUJCbgxa1aVuU0nM+Y6WoU@lists.infradead.org, AJvYcCXvYqyqvZZq0FNoTuhEKn4u+Y/4dJH7TODasSO8MVqCBZx+gX+UKw0ToYRuVb/YV9G5xKpe7pK5f+Vhwx+sxuQ=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx/Ene7b2ZFITtv20tCyGYprEb3a4xFIxc8dt7iIPBujukVktgE
-	eIV90fI/KPoGEMherpkO0xcaXdnHMY+1iFEdSl22d+N4R9NBD0yH
-X-Google-Smtp-Source: AGHT+IEtlT/yGsPphh+1fUhiEvpB+7pooR/GcaT/vc+N+I6fSNITQKA/Tm7hayaCxE8vwNZ1yEM4fA==
-X-Received: by 2002:a05:600c:1c06:b0:42b:b594:4a8c with SMTP id 5b1f17b1804b1-42c881030dcmr49127195e9.27.1725440429094;
-        Wed, 04 Sep 2024 02:00:29 -0700 (PDT)
-Received: from [192.168.0.20] ([148.56.230.39])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42bb6e274ccsm200917995e9.37.2024.09.04.02.00.26
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 04 Sep 2024 02:00:28 -0700 (PDT)
-Message-ID: <f48db1ae-23e2-4587-a4ab-3844d0822194@gmail.com>
-Date: Wed, 4 Sep 2024 11:00:24 +0200
+        bh=2M921d4gJ85snm6ehV18l9ZU1Po4pieq34BYMUnhsNU=;
+        b=OsfIL8BXKldKg5tH0b0xTjjjuAlw1z9T7JKqJsFRnakOfo05Z1B75dZk48ffomOeAy
+         g+ctfI8vU3NFknzzUn68VMVyx/bS//pcr6XJKFBzfmO0jgmsKTS+/OWd7D56EC/IFnay
+         eKkvx67/wFamC3x7hvSFUIGcDxz7hG9ap+RHk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1725440432; x=1726045232;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=2M921d4gJ85snm6ehV18l9ZU1Po4pieq34BYMUnhsNU=;
+        b=gOkCd1LLuxcJ+HKL3kcp3YmQ5A/RdOtCyUm8xOVOU+2ZPWJptckGjiSLA5vZz125Qs
+         SEUL678tYLYwv6aBCz1b1FYNkdPGNKAMaI1BdeYhZs1h4KhwpLBs4L0B41xUte+kkhN1
+         3tUhjZpTD5tLzV8rGuC5PeUWZiEPdbzwEm882EQRia2ytUpiT1ZgAMjtCjaJDTnQXg5R
+         PTjdNj/e20QWcsn7O9Yw8AbeR5uq8QncGnPGbux7L5F5C2YRdwq743C7iL7XE7k37yDd
+         Gpwl/sZzBfvbhmu2NvZVsCRoHuDK7WnABxvsofxGnLqHc5e1/djugOUPEH+YlXxRsVpC
+         Bitw==
+X-Forwarded-Encrypted: i=1; AJvYcCVffkvCVpSa5CxCSugg9gstbqhZBYMTvYRx2T7pAW+TCu0XADC40QOE2AEISehRBxLrppkQdDBE9l/0K6LGag==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyBKhR2+ysB56R8us/t3pIYCA/4Aif8oLAPnCF9Ypav3xY7GDLO
+	cZo7EXmBrWMcYkMevVskgr830VrhKGaacDqh/OrE+0z3e3kkLUXiftysqdRTIQ==
+X-Google-Smtp-Source: AGHT+IF/MVW4wrOQrl8cYkGW2jFbuYY69p3WFoLB5FjxApHmcb1+fCtPnl3w/uoQeTGzo0ajB2S9PQ==
+X-Received: by 2002:a05:6a00:66d9:b0:710:e4db:a6fc with SMTP id d2e1a72fcca58-7173b6b63demr14365184b3a.27.1725440430497;
+        Wed, 04 Sep 2024 02:00:30 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:83fc:5c8e:13bd:d165])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-717785b5183sm1153279b3a.197.2024.09.04.02.00.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 04 Sep 2024 02:00:30 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Rob Herring <robh@kernel.org>,
+	Saravana Kannan <saravanak@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wolfram Sang <wsa@kernel.org>,
+	Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Mark Brown <broonie@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	chrome-platform@lists.linux.dev,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Douglas Anderson <dianders@chromium.org>,
+	Johan Hovold <johan@kernel.org>,
+	Jiri Kosina <jikos@kernel.org>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	linux-i2c@vger.kernel.org
+Subject: [PATCH v6 02/12] of: base: Add for_each_child_of_node_with_prefix_scoped()
+Date: Wed,  4 Sep 2024 17:00:04 +0800
+Message-ID: <20240904090016.2841572-3-wenst@chromium.org>
+X-Mailer: git-send-email 2.46.0.469.g59c65b2a67-goog
+In-Reply-To: <20240904090016.2841572-1-wenst@chromium.org>
+References: <20240904090016.2841572-1-wenst@chromium.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RESEND] wifi: mt76: mt7921: Check devm_kasprintf()
- returned value
-To: Ma Ke <make24@iscas.ac.cn>, nbd@nbd.name, lorenzo@kernel.org,
- ryder.lee@mediatek.com, shayne.chen@mediatek.com, sean.wang@mediatek.com,
- kvalo@kernel.org, angelogioacchino.delregno@collabora.com,
- mingyen.hsieh@mediatek.com, deren.wu@mediatek.com, ruanjinjie@huawei.com,
- greearb@candelatech.com, akpm@linux-foundation.org
-Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- stable@vger.kernel.org
-References: <20240903014455.4144536-1-make24@iscas.ac.cn>
-Content-Language: en-US, ca-ES, es-ES
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Autocrypt: addr=matthias.bgg@gmail.com; keydata=
- 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
-In-Reply-To: <20240903014455.4144536-1-make24@iscas.ac.cn>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240904_020031_402720_0B9F5154 
-X-CRM114-Status: GOOD (  14.03  )
+X-CRM114-CacheID: sfid-20240904_020033_508841_26B7EFA1 
+X-CRM114-Status: GOOD (  15.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,35 +106,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+There are cases where drivers would go through child device nodes and
+operate on only the ones whose node name starts with a given prefix.
 
+Provide a helper for these users. This will mainly be used in a
+subsequent patch that implements a hardware component prober for I2C
+busses.
 
-On 03/09/2024 03:44, Ma Ke wrote:
-> devm_kasprintf() can return a NULL pointer on failure but this returned
-> value is not checked. Fix this lack and check the returned value.
-> 
-> Found by code review.
-> 
-> Cc: stable@vger.kernel.org
-> Fixes: 6ae39b7c7ed4 ("wifi: mt76: mt7921: Support temp sensor")
-> Signed-off-by: Ma Ke <make24@iscas.ac.cn>
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+Changes since v5:
+- New patch
+---
+ drivers/of/base.c  | 35 +++++++++++++++++++++++++++++++++++
+ include/linux/of.h |  9 +++++++++
+ 2 files changed, 44 insertions(+)
 
-Reviwed-by: Matthias Brugger <matthias.bgg@gmail.com>
+diff --git a/drivers/of/base.c b/drivers/of/base.c
+index 20603d3c9931..d3c123b3261a 100644
+--- a/drivers/of/base.c
++++ b/drivers/of/base.c
+@@ -628,6 +628,41 @@ struct device_node *of_get_next_child(const struct device_node *node,
+ }
+ EXPORT_SYMBOL(of_get_next_child);
+ 
++/**
++ * of_get_next_child_with_prefix - Find the next child node with prefix
++ * @node:	parent node
++ * @prev:	previous child of the parent node, or NULL to get first
++ *
++ * This function is like of_get_next_child(), except that it automatically
++ * skips any nodes whose name doesn't have the given prefix.
++ *
++ * Return: A node pointer with refcount incremented, use
++ * of_node_put() on it when done.
++ */
++struct device_node *of_get_next_child_with_prefix(const struct device_node *node,
++						  struct device_node *prev,
++						  const char *prefix)
++{
++	struct device_node *next;
++	unsigned long flags;
++
++	if (!node)
++		return NULL;
++
++	raw_spin_lock_irqsave(&devtree_lock, flags);
++	next = prev ? prev->sibling : node->child;
++	for (; next; next = next->sibling) {
++		if (!of_node_name_prefix(next, prefix))
++			continue;
++		if (of_node_get(next))
++			break;
++	}
++	of_node_put(prev);
++	raw_spin_unlock_irqrestore(&devtree_lock, flags);
++	return next;
++}
++EXPORT_SYMBOL(of_get_next_child_with_prefix);
++
+ static struct device_node *of_get_next_status_child(const struct device_node *node,
+ 						    struct device_node *prev,
+ 						    bool (*checker)(const struct device_node *))
+diff --git a/include/linux/of.h b/include/linux/of.h
+index 046283be1cd3..acc0d5b98417 100644
+--- a/include/linux/of.h
++++ b/include/linux/of.h
+@@ -289,6 +289,9 @@ extern struct device_node *of_get_parent(const struct device_node *node);
+ extern struct device_node *of_get_next_parent(struct device_node *node);
+ extern struct device_node *of_get_next_child(const struct device_node *node,
+ 					     struct device_node *prev);
++extern struct device_node *of_get_next_child_with_prefix(const struct device_node *node,
++							 struct device_node *prev,
++							 const char *prefix);
+ extern struct device_node *of_get_next_available_child(
+ 	const struct device_node *node, struct device_node *prev);
+ extern struct device_node *of_get_next_reserved_child(
+@@ -1468,6 +1471,12 @@ static inline int of_property_read_s32(const struct device_node *np,
+ 	     child != NULL;						\
+ 	     child = of_get_next_child(parent, child))
+ 
++#define for_each_child_of_node_with_prefix_scoped(parent, child, prefix) \
++	for (struct device_node *child __free(device_node) =		\
++	     of_get_next_child_with_prefix(parent, NULL, prefix);	\
++	     child != NULL;						\
++	     child = of_get_next_child_with_prefix(parent, child, prefix))
++
+ #define for_each_available_child_of_node(parent, child) \
+ 	for (child = of_get_next_available_child(parent, NULL); child != NULL; \
+ 	     child = of_get_next_available_child(parent, child))
+-- 
+2.46.0.469.g59c65b2a67-goog
 
-> ---
->   drivers/net/wireless/mediatek/mt76/mt7921/init.c | 2 ++
->   1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> index ef0c721d26e3..5ab395d9d93e 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> @@ -52,6 +52,8 @@ static int mt7921_thermal_init(struct mt792x_phy *phy)
->   
->   	name = devm_kasprintf(&wiphy->dev, GFP_KERNEL, "mt7921_%s",
->   			      wiphy_name(wiphy));
-> +	if (!name)
-> +		return -ENOMEM;
->   
->   	hwmon = devm_hwmon_device_register_with_groups(&wiphy->dev, name, phy,
->   						       mt7921_hwmon_groups);
 
