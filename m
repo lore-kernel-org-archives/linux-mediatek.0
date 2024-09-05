@@ -4,177 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8495CCE7A81
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Sep 2024 18:36:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4214CD98FE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Sep 2024 18:43:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dnH92hfxF1eTWGuZ2L9bPU6SUNXY/rWqsOGRDrGg2v8=; b=C7YexzK6DKiIly5QNdKACTvd51
-	6qs1kHyqOSoJDfb+g2xNQIa92Z61kduyAGNlml/cUUz0dcSVDT2W/4ksUewYwRd1Vq7rBjw2pu+Gs
-	D5cziA2oPjpp5CMH0xnpvUOJsWbNCW97MCFvneHdB3u9KWtAQSTqC/Pm+f31L+9XGHXMG72ynHxep
-	Z1g6b3vLpqsxrBO6eyJ3yXZjeZh/w5SC1jl0x6EZ8XbIwGGJj50ed/5rr/GFBHpwm9e6wCuh6D00g
-	Fbd/sgXEa+vete3n0wXD6ft/MoBhMsIuNAy+6/i800izHDK5+HiT6VnlG5nOuqmIl5ywYbClUvoOw
-	1G7yoMWg==;
+	bh=rmw+C6AGt+s2oTpqKtQzIcUC/3UDxQxltFXDb2g6ktw=; b=qeD8IpOp6ZINT7Gu9ac7NPsYnq
+	NO2UyL4k4x8HNgqPDZLGBeL3h0HXwI5Wmuw90WOVO+cnqh+n+S9rSKlnhI/4m84hicGTsmr65pPpe
+	+yDSUvWaZ73Sxy81rcbemFBel0DZyA1eHoxXCL8x5WDfAAJD3txZi0lJcbIlDWB8dTzXuFBJyV7c6
+	cwLPkM1THBkXEM+4riZnEP5KN6WDoAX1qp7OI+8E6Tvs0DXD/iPESVE+mzwQICI3/F0Y6+Kc7sVd1
+	am5jmvYngXjzNO47LU779e6Oq9UuP4HOxCDFu+rb0XfWm60bxefBSYNT2DsI+cw0f2+l6yQSjjXMG
+	ZFEwX4MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smHLb-00000009T1m-0AQW;
-	Thu, 05 Sep 2024 18:36:47 +0000
-Received: from mail-vi1eur05on2072b.outbound.protection.outlook.com ([2a01:111:f403:2613::72b] helo=EUR05-VI1-obe.outbound.protection.outlook.com)
+	id 1smHRn-00000009Tv7-13NR;
+	Thu, 05 Sep 2024 18:43:11 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smHKN-00000009SmF-3H4L;
-	Thu, 05 Sep 2024 18:35:34 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=pWuFBA7JnmsNlbRhCHwsdHuPZo3ERxH1UQWzZh6iRA96a5m6kPsTFrXdXwcIUHQdYlpKocdCXfHvvpnxOBhCQZd7vc2MARQmpvIS5rF5eaFObXAOnPG4+X9ejwVclzWWGAPVJED3cNwQ2KmsMN96i+QQM3JPoIL5xrX/OmRwA0FiQPNcJ73izh7yM40UUt9KwSAR4rea4ow+5cfYSwR+D8q7GGQNpWNFOYqYh8CXd84KbA63m2T0nhBO0xBVspojvB90eTEvDjWs1G80MCJB+iodP2Hhe18VPv7QRqqHSi3KmjDbHOSLVnYcCmI28H0Y0Sn4i6qoosiglQGk0kwD7g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=dnH92hfxF1eTWGuZ2L9bPU6SUNXY/rWqsOGRDrGg2v8=;
- b=F8Dw8rI5uszbyJrgL1K/1MpmRHTsEfq5awfFldTlLm6lWgveBCb8srKgdS0JrvWkClGrEuROJi5xrkh73cnfJ59RUwIBnySKqf5aXwLZ3/bSo34y/3J3kfK2qzlHapjd+jvwGWqvNlXF4o/zeOaYbcZwdiKJexMWA3toYJY6y61GTonx3AGzuKasQo7UP1JBPxyA/L16/JHNvkShXue9UnoVg5jdzcO7BiSrg8AQvx48DX5UN3IUMuo3AY5tWbqmmWlPbdNBz2dMn6XZ7e90QXXuFawseBrcDXv3rJIVHZ2d6QWcRAeZgM9tGHgcbrftmgmbECFmf7m4Vlyj8vtZxQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=genexis.eu;
- dkim=pass header.d=genexis.eu; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=genexis.eu;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=dnH92hfxF1eTWGuZ2L9bPU6SUNXY/rWqsOGRDrGg2v8=;
- b=dL0yAMEEHh6X3a2GCDovP0UIj37vVyLSnq/OIt/5+9jQh0ul8k5kuPr3X1arg1aEXILKLZLpSBcAUI61h9eBXspdUnTylnrksyz8BkHpBElzGjGOHo1dzgQxlmlclhD7V+AirMjub4NAKdBhS1YOH2BEVWe813UiwTq+fafkldI=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=genexis.eu;
-Received: from AM9PR08MB6034.eurprd08.prod.outlook.com (2603:10a6:20b:2db::18)
- by PAXPR08MB6493.eurprd08.prod.outlook.com (2603:10a6:102:15a::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7939.12; Thu, 5 Sep
- 2024 18:35:20 +0000
-Received: from AM9PR08MB6034.eurprd08.prod.outlook.com
- ([fe80::9ead:b6bc:10eb:ef35]) by AM9PR08MB6034.eurprd08.prod.outlook.com
- ([fe80::9ead:b6bc:10eb:ef35%5]) with mapi id 15.20.7939.010; Thu, 5 Sep 2024
- 18:35:19 +0000
-Message-ID: <2e8806fa-c476-4cfa-bc2e-dc02754830d1@genexis.eu>
-Date: Thu, 5 Sep 2024 20:35:17 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 5/5] pwm: airoha: Add support for EN7581 SoC
-To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Lee Jones <lee@kernel.org>, linux-mediatek@lists.infradead.org,
- linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
- ansuelsmth@gmail.com, linux-pwm@vger.kernel.org
-References: <20240831-en7581-pinctrl-v3-0-98eebfb4da66@kernel.org>
- <20240831-en7581-pinctrl-v3-5-98eebfb4da66@kernel.org>
- <yfqmlca6cnhrghpo5s6tml36tngmekcfbyjakxs7or7wtap3ka@7qlrxjowo4ou>
- <d9298199-fe10-4b28-8e28-dc252bd6832c@genexis.eu>
- <t2f5kockuvfi66qqumda6jxf5a4c4zf35ld5ainsnksavkchyj@kdueaqlhjoar>
- <b7e44fb2-6cf6-4530-a271-9e1730d4f431@genexis.eu>
- <xmlta4za6malgthd6cmt5fcipxgyzwmqwxqdg5e4qahcuqzcrt@eidsf6mexrkz>
- <a0a14b57-cc4e-43ef-984f-fb405949b41d@genexis.eu>
- <64zfjgmc2dutmsukg2bxhb44k3wu2y7tt3h26hej7d4fx5nc7z@5zvo3hsucipc>
-Content-Language: en-US
-From: Benjamin Larsson <benjamin.larsson@genexis.eu>
-In-Reply-To: <64zfjgmc2dutmsukg2bxhb44k3wu2y7tt3h26hej7d4fx5nc7z@5zvo3hsucipc>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: GV3P280CA0059.SWEP280.PROD.OUTLOOK.COM
- (2603:10a6:150:9::12) To AM9PR08MB6034.eurprd08.prod.outlook.com
- (2603:10a6:20b:2db::18)
+	id 1smHQn-00000009Tbb-0IMb;
+	Thu, 05 Sep 2024 18:42:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id C3C01A44EDE;
+	Thu,  5 Sep 2024 18:42:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E462CC4CEC3;
+	Thu,  5 Sep 2024 18:42:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1725561727;
+	bh=JLzVazegeLJ+NiJYdoB5mJULvbuw17ruPjgTitRufoE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=F0cbN73WOD3DxYI/K0CjeWeXQd+U2po05/OERE8h+3LJsoO65AO8hdXiC5G1uW26k
+	 Mr0thEzBNsosJ/XZ/MGKrcc2q5nRtKbmNN07lWaa2J/plvpbavsA5vQFfFAM4wWdcG
+	 OfoBOn5tY98MNlmAvKTK+yV+h2l3A8+BUVyoWyTWQFIYsxxiYa1cnwNztDaigyURad
+	 7Md/MqbqhEpRZ3vC1ibWwrh7QeHcsYKy59cpPvy8Izuzugfn2oGrsNsYq6gvgLB1ja
+	 H6tuWfrXiZDfcB+A7Z89KPML8vSAp6ugE6xqJPmppgoGBvbPlErl8sR1UX5DmI4sUk
+	 EKTqn0OtRTQLQ==
+Date: Thu, 5 Sep 2024 19:42:00 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Doug Anderson <dianders@chromium.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh@kernel.org>,
+	Saravana Kannan <saravanak@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wolfram Sang <wsa@kernel.org>, Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	linux-i2c@vger.kernel.org
+Subject: Re: [PATCH v6 09/12] i2c: of-prober: Add regulator support
+Message-ID: <1e91439d-e8fe-4675-ac0b-03939f563bca@sirena.org.uk>
+References: <20240904090016.2841572-1-wenst@chromium.org>
+ <20240904090016.2841572-10-wenst@chromium.org>
+ <CAD=FV=UGOz3Xzg7reJKP=tA1LqTxszv5w-CL9krmoXQtXdJLaQ@mail.gmail.com>
+ <CAGXv+5F27K76t=ht5v75jKsNF-J+C0r5+m=czHz6PtV3t5DxcQ@mail.gmail.com>
+ <CAD=FV=XVrAdQN8p9QJtt3Ah_YQAG7Y-D4wDx8_+qb1EGN7+Uig@mail.gmail.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM9PR08MB6034:EE_|PAXPR08MB6493:EE_
-X-MS-Office365-Filtering-Correlation-Id: 67f051cc-2286-4ed0-c824-08dccdd97e6a
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|376014;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?a2QrczBaWXhaSERPZERwbEc2ZXNBV0s4bDgzbEFOVXJyenVjcitnMEIxVVc1?=
- =?utf-8?B?dVNxY1JieVIzTGpJNEVUUjQyaTlSUDg1NVJuMkQvT0duT0I2QXFpczJnLzMw?=
- =?utf-8?B?V3BZU3BaVVk0OGpqLzd3L0FQRlliWkd1Y21kVU9peUxvejVIdERBM1RoUk1X?=
- =?utf-8?B?SlpVZWlBYndhVmtoTmcyc2xlTFRidjhCQWJqT2VGd1I1N0x6aFlmT2x4WlZO?=
- =?utf-8?B?ZWtoaERiaklOcmNVVTdQaTRaYnJwQlV0MmU3a2lKR2hkSkdSbWsvMVg1T1gz?=
- =?utf-8?B?VnBTWG05Ylo4emQ5SmFvczlXNjVrZmxCSlkzSVVBMFdnREZDMUhBcDRCdGow?=
- =?utf-8?B?SE5vSVh3eUMyRnVxTmg4NHZ3aUw2M0loNUVSODVJY09HQjJMeVdjN0lWWGRB?=
- =?utf-8?B?WTJna1A1WTF5N3FoUU51L1JTM0pwTXF4bll1bCtUTkVDRGV6NTM1S3RPMXNK?=
- =?utf-8?B?amw3dVNWUUY0RlB6cXRtdFN4QjRxMFNDVGFzNXhUZTQ1UE5LeTdMU1BXRTZ2?=
- =?utf-8?B?ekNLaURBaDl3S2RJSlgwcmVoNXYxeGZDS2ZMQ3QvamxPM2pXdmN0Y1ByTWM2?=
- =?utf-8?B?VXZMMXVFNFZBTEVESXZwZmtTNDRIT203OW5kaS9JTXZkeGFqM0hqVnFkZ0RZ?=
- =?utf-8?B?ZmUwbjlqVVJHSm9jQ29ENjFBeElyVHNOYnFNTVgxQzFIUnFQaWltYklYUis1?=
- =?utf-8?B?WVJKMUJPYlhDZk9sU1JXc3BjemNWa3JiN0lUK3JLVzM3dTlDWVdrQjFoazJx?=
- =?utf-8?B?VlVXYTRjUzU2UkV4dTBQdVRqVnRnZTBYWXlzd0FuTnQyeTd4eGxhQ1JVQ2dm?=
- =?utf-8?B?RENyY08xZGZENDRJWm0zOVNLTkg5RmM0eGZNWlZ3NDVDTEtOTUZLSjVGc2xi?=
- =?utf-8?B?dnNoT1BMQkZuSjJobkZZenExUDZtU2svaVR2WU9WL1pRdkU0blFNM2tmNENx?=
- =?utf-8?B?LzZ0cll4Z3M1RnM3VEo0LzB1aGI4TWRpMllSVUpzTTh5RGQyWGxyNDZNMVUz?=
- =?utf-8?B?emxnc2NELzdZSE1iY0hwNlo0bFZjNGRFNlRaZ1ZoaURDWktvci9pT1huazNa?=
- =?utf-8?B?MzJHQkZWamtXQ2FwZWJxVGsraUVVYkNnSmE0V3ZPdzN1ODdPOHR0N3QxeWho?=
- =?utf-8?B?K2t0L0ErRncwNHNnZ09oRFg3WUtZWFhWbzV1Tk5Gc2Nxak1IZlJUVmdxZVF1?=
- =?utf-8?B?SDI3M2ZxWndOWGN6Y3hhVFI4d2VIQVU1dlN4UURvU1AzVmRZT0pkcHZxVmNz?=
- =?utf-8?B?UkJRaEZvUmZYNUgxaW1xUXJMeHRPd3o1S25ZU1o2Z0VuMEVkUEwwMHFQeks2?=
- =?utf-8?B?ZUJ2d1NoUkNESG5LVVBWblFjdExyTHhoelp2NzJLbHE3bTdWNyt0TlJrd3Yv?=
- =?utf-8?B?dCtzQjA3SG1wcHJ2eE8vY0NVRXJwMzdzOUtDRWRIeGV2cmpRdFp3dC9XYzhy?=
- =?utf-8?B?U00vMUhzSklKNE1XR0Y2Q2x1ajhxMWw1SWJzbnQ2QTBSUGZ1Zmc5czUvcVY2?=
- =?utf-8?B?QUptUjIrdllsaHhsejd4Q0F3UGZxeFpPdGxHY3g5dFowc09pRnZSQWU4UDM5?=
- =?utf-8?B?Ym94TytMT3Rra3NXYTVRdHMvV2pJZXRLNlc4cWRKTE0zdXc3RDJKOTAybzd5?=
- =?utf-8?B?Vnk1K1huckZwU0t1ZHNRRklOUXpTb3FEd0dha01sem9MZVQ5YjAxL0ZVcmww?=
- =?utf-8?B?Nmp2djIwa2ViZ3ZnYVNZYWNVN0M5OTBacEVTc2tPQ1g4REVza2U2TURmQ2Ix?=
- =?utf-8?B?S1RwN3gxSHdGR3o3dmtVMUdDRDgydE5xbFBhanlLeHhVQmhzaU9aTXFsL2VK?=
- =?utf-8?B?eDNLM1VWa0MvQjNBaEIxQT09?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR08MB6034.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(7416014)(376014);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?V3ZGVUdBU1BrL2FRTFEvdUYrN2xhNnV6RWRmY2pmUkFuMHhuQndYMzVjeFph?=
- =?utf-8?B?UlNzTUJ0Ni9Td2JYYnFyZ3RZb0w4dmdDcmtpYjRwVDlNYWdPZlZ4Y2t2SE1B?=
- =?utf-8?B?bFlPc1dVdWdqOUtNbnJGOHlDSXl1Z0tCRVQrWDdkYnIzNlF3UkV1N0lRYXNK?=
- =?utf-8?B?QWE5c0t6ZVZmQkVLQ0Q1SG92ZE1wbEo5Qk5KbTYwMXVLdjZCaTVoQmhaZk9P?=
- =?utf-8?B?N280TTRSd1IrL1VPaURJMlJQdkV6UWpucEVPZ0pGU2orcG9UdDJNRklqNGdH?=
- =?utf-8?B?emo2ZGxjbzVUa1F1cGp3K1NtTnNwWUlqTFVrN3daNUhiMzloWXhuUkFIMStR?=
- =?utf-8?B?WHU1RUVjdE91ZjZyRDhNOFlxc0hUckRCSnpyc1ozcmdJRVRjSndBbW1keUdh?=
- =?utf-8?B?dEhPOXpzaEdyS0NmSGMveFpqbkxvNlNjbTZ3Z1pWYjBpbW1tZVpYd2NaZHNt?=
- =?utf-8?B?VWNRZEYwd0VZbXdPN0xxRUFWdGpSYzZOVkNwNytTSVZHL0lydG5iQkhjM2R4?=
- =?utf-8?B?UW5sRkhZaythMGU1blo1c0lqUWZSMmxrdU5JTXg2VnhsM2tod2ZxRXgvMnBw?=
- =?utf-8?B?bE13ZlVBam9UenNRaGZ6c3Z3S3pHWVFwUzlMaGx2TFo5dlJTKzIzSmJDdEVY?=
- =?utf-8?B?RHhObHZvRmJRRGJQem1xSGd0VjIzSGVrdGt3ejN1WTVkbVVjQ0pTRUx4bzk4?=
- =?utf-8?B?R0NPWDRXUklNV1R0akVwdnNmR2JCMTNDNkVtU0NZUXN5VDI5VEdEZHhCSDZy?=
- =?utf-8?B?clNJTlQrNlRuUWlBNnhOLzFqTXEyaTNuV2JUeUhob25sTUpSK0U2TWR4Qkk4?=
- =?utf-8?B?dXhuZXZzMVpoS0s2TE1LV2FEZnl0OE5aS2RXQjc0SFFWeWxsdUhMVjg1YkVs?=
- =?utf-8?B?VGNtRmE3bVI4M0Fnc0wwTzEzanhSaXdxZHU2dU5oQnVSUDZETTFud0VhT3J2?=
- =?utf-8?B?eitHbzdSdWFML0t3cEFVVTNSTkkrbVVwckhsMDJpZU5EbnFNcERxcVVrc0xu?=
- =?utf-8?B?aFhRd01DcW5aeXZQbzFoRGZ3Nk9WaWVJNmp0WGp2a3VHNnFDSkdERUZyZDR4?=
- =?utf-8?B?ak8yR2dYM090bkk0ekIzeEdubExoVlVmSTAwOFRjSzNCRGZYcHNQMWVKZ296?=
- =?utf-8?B?cmFIYXA5dVZIQXRMakJBdFJQc2w3aitPUEY2V09OcDU2VXFkZ1lLdS9RbEpu?=
- =?utf-8?B?dHpWNm9wOERzN29JY0p1NlRWNExxbVJTU3g0T1RFTVI3Sms3R1VpaUMvdXJa?=
- =?utf-8?B?U0xaQjQ0TUZ3MEp6UzVKOGFYVEIrY0pEaU83eEs3U1ZuR3lhSGFFczc0ZGRP?=
- =?utf-8?B?TFB6MVJLdHlnNDVvaUFOb1p2aWpMZzNhMFBscktZUGRacHVTOEZNTDBXZTRa?=
- =?utf-8?B?WVFRS3R3eDVqVGlHREMvMncwbklDanYzN2JOb2FQRTl6WW1XR3NsNDFpRjdZ?=
- =?utf-8?B?cmZBa1Z6aVhlbE5aa2VBWFcwQ0hIaGpZNnlOWDdtRm5pNlZkZFkxTXJKMlBi?=
- =?utf-8?B?eFR5T1l4aXdKS0l5YnBWdDUrc3JHcnRPcTU1QmRBV2Q4RkFaK1pLWGl6eGdl?=
- =?utf-8?B?M2VSdjJkSDJHMlVROHl2N0hNcWtud1VJd1FpTlh5cnYzaFZiSWdqS0o4NDNp?=
- =?utf-8?B?TjlOZE5YVGtoODlxTzE5N3gyYzQ1d1V1Wk1XeFdTaExDVmdOcFFJS2JZMEpX?=
- =?utf-8?B?MXgxL3JSVmllcm1PLzFNdUFPdGFZdmdIcDNnSnNUTmwyOWFwU1FzR3ZkdzdQ?=
- =?utf-8?B?OFdkSlVkaFBXaDdFSmdEN1NjL1hMSytvNk1ReHFpRmFUNm5sY3ZMV0hFSE5P?=
- =?utf-8?B?R0JwSUpMTHpxUHJNWGFIazRLeDJldGRiM1luK3Bxck5wdEdMWXZteDYzN0lY?=
- =?utf-8?B?bEl5RmpQektTb3ZNRXV6UWcrbHlPTFk1aVR6c2VXMUdvU0NzUXFPMVI0dWZO?=
- =?utf-8?B?bnJkdWJWS3hFR2tvMThjck1QSERtRFYyRE11NVJETStLZ2FGN2lzMHNWV2tp?=
- =?utf-8?B?akhNUzJ2TU53RWEyejBmTE1RTk1sU2owUzQ5Q3pRZkhzWW1ueDQ4cVJITDV4?=
- =?utf-8?B?QnVCZ2RlVGZvempCcmpRWEx3NytOM3gzUkZJMEVFTFhFQXY1TkJaTm0xU0ll?=
- =?utf-8?B?ZHgwdi9CTXovdDFCWG5Sa2xsOUthQkFxSzhSRGFrVXhiWXhwc0ZlcGlVMEdQ?=
- =?utf-8?B?L0E9PQ==?=
-X-OriginatorOrg: genexis.eu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 67f051cc-2286-4ed0-c824-08dccdd97e6a
-X-MS-Exchange-CrossTenant-AuthSource: AM9PR08MB6034.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Sep 2024 18:35:19.4081
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: atIA96TPkeLDRES8nzqmDPblePXaDCRVXB/pY1zdm1OXXTip/vbNv0b1m4my9fE+qJ0VAxgildL9CzkUXJdifrSo8OLtd6+9kJCkuw7kYzs=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAXPR08MB6493
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="XGG4EEhvNkYs12Vb"
+Content-Disposition: inline
+In-Reply-To: <CAD=FV=XVrAdQN8p9QJtt3Ah_YQAG7Y-D4wDx8_+qb1EGN7+Uig@mail.gmail.com>
+X-Cookie: The horror... the horror!
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240905_113532_509589_1DEAFCAE 
-X-CRM114-Status: GOOD (  24.33  )
+X-CRM114-CacheID: sfid-20240905_114209_263949_2A853A5E 
+X-CRM114-Status: GOOD (  20.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -189,91 +87,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi.
 
-On 05/09/2024 17:39, Uwe Kleine-König wrote:
-> Hello Benjamin,
->
-> On Thu, Sep 05, 2024 at 02:18:41PM +0200, Benjamin Larsson wrote:
->> On 2024-09-05 11:30, Uwe Kleine-König wrote:
->>> 1 second long pulses with a period size of 1 second, so a constant high
->>> signal?
->> Hi, I think I was unclear. The SoC documentation is not that detailed. But I
->> think I understand how it works now.
->>
->> One register contains the minimum duration (d_min). And then there is one 8
->> bit register for the signal low period (lp) and then another 8bit register
->> for the high period (hp). Per my understanding a change of polarity is then
->> just a swap of lp and hp.
-> that doesn't sound right.
->
-> A "normal" waveform with period = 10 ns and duty_cycle = 2 ns looks as
-> follows:
->
->     _         _         _
->    / \_______/ \_______/ \_______/
->    ^         ^         ^         ^
->
-> assuming a monospace font that's 1 char per ns, the ^ marking the period
-> start.
->
-> Ignoring scaling, your hardware needs to have hp = 2 and lp = 8. If you
-> switch that (assuming you mean switching in the same way as I do) to hp
-> = 8 and lp = 2, you get:
->
->     _______   _______   _______
->    /       \_/       \_/       \_/
->    ^         ^         ^         ^
->
-> which is still a "normal" polarity output as a period starts with the
-> active part.
->
-> I admit that's a bit artificial, because the waveform for
->
-> 	period = 10 ns
-> 	duty_cycle = 2 ns
-> 	polarity = inversed
->
-> looks as follows:
->
->       _______   _______   _______
->    \_/       \_/       \_/       \_/
->    ^         ^         ^         ^
->
-> which isn't any different from the 2nd waveform above if you ignore the
-> period start markers (which are not observable apart from the moments
-> where you reconfigure the output).
->
-> However it matters if you have a chip with >1 output that are not
-> independent.
+--XGG4EEhvNkYs12Vb
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On Thu, Sep 05, 2024 at 11:14:58AM -0700, Doug Anderson wrote:
+> On Thu, Sep 5, 2024 at 8:10=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> =
+wrote:
 
-Ok that was a clear explanation, anyway the pwm hardware is then not 
-capable of a polarity change. It is possible to change the polarity via 
-other means but there is no way for the pwm block (and driver) to handle 
-this.
+> > This next item would be a later enhancement (which isn't implemented in
+> > this series anyway):
 
+> >   - optional prober callback that does actual probing
 
->> This means that when requesting a period and duty cycle you need to search
->> through the configuration space to find the optimal value.
-> Or restrict yourself consistently to something simpler than a exhaustive
-> search through the complete configuration space.
+> > In our case it would only be used for cases where an HID-over-I2C
+> > component shares the same address as a non-HID one, and some extra
+> > work is needed to determine which type it is. I still need to think
+> > about the structure of this.
 
-Is there a recommendation on what is more important? Period duration or 
-duty cycle percentage?
+> IMO _that_ would be a great option to the i2c prober. It feels like
+> you could have an optional register read that needs to match to have
+> the i2c prober succeed. Most people would leave it blank (just the i2c
+> device existing is enough) but probably a single register read would
+> be enough to confirm you got the right device. Most i2c devices have
+> some sort of "version" / "vendor" / "id" type register somewhere.
 
+I'm not so sure about the "most" there - it depends quite a bit on the
+class of device.  This also imply that the prober would have a regmap
+config as well...
 
->> MvH
-> (BTW, I had to research the meaning of MvH. In case someone else doesn't
-> know it: It's the usual abbreviation for "Med vänliga hälsningar" in
-> Sweden or "Med vennlig hilsen" in Norway; both meaning "With friendly
-> greetings".)
->
-> Best regards
-> Uwe
+--XGG4EEhvNkYs12Vb
+Content-Type: application/pgp-signature; name="signature.asc"
 
-MvH
+-----BEGIN PGP SIGNATURE-----
 
-Benjamin Larsson
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmbZ+3cACgkQJNaLcl1U
+h9C98Qf/eDbxzuWN9wKXOgtyn/KGNJ9usI1DrqYUNAy7+kXpYwuywHuxw7jQX/m7
+apBm7viyIeyEcsCjy7BmmPJ3Fyfqfpt/4/cvh+wFla+E/dVadH0thHf+1XHjI7sC
+M6Vs/bjtPpEIAC2StD3yNUezMRQc/6KW2mlzh66rPCfE7vubfHN3xXgq5xFr402G
+/m1HX2HkBqGarvXdkUgOOQuFfb/FIiKB4l+VyXwGmzAgwTeXYofMuEwfF6lPqpvX
+VYgxNyAJdvImmjHthf/EFx5TDwj3tSMDYj0/qAhKrFnreXU6H1sNcAhIvv/7gyGa
++SArYn2Cah9+B40+mW2rGa619WFc7Q==
+=aEkW
+-----END PGP SIGNATURE-----
 
+--XGG4EEhvNkYs12Vb--
 
