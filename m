@@ -4,95 +4,177 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47F2CCD98FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Sep 2024 18:15:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8495CCE7A81
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Sep 2024 18:36:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YqMkVgPFvnHANIyPGIBBKdw4kieVUrc29sSkj0u1A2s=; b=tvj7zw8QilAzwVXu89KY6MuKYC
-	Xm6qyztxNqDtD9aKc3SYYXA1levKThoxZd4Hql7j8qmJbsJWPnUAh6tczsedDktEheyW7dQlEzPO4
-	1+Tv+AAKNPgCyGlqhijZMB3oDfE9NvW0g4O6+Z4BB/4YzhxcgMy5p23XKx2dNM0/Gh74uZemhwKKm
-	DpMHUaF2qguVRCzxqcTHUSIc3oeQfxOLnPG8h6UNNaa957BfOxtOZcEcWdBJWYDShICspUxsd702M
-	YfN5MTNwU9Cl9+g+1OAsBxzPL4/AG0VfAV5e2ZBBy59HGC+jlpEz04wcx6RxFFiEnId/tCNJfpxtK
-	r4ewSPWw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dnH92hfxF1eTWGuZ2L9bPU6SUNXY/rWqsOGRDrGg2v8=; b=C7YexzK6DKiIly5QNdKACTvd51
+	6qs1kHyqOSoJDfb+g2xNQIa92Z61kduyAGNlml/cUUz0dcSVDT2W/4ksUewYwRd1Vq7rBjw2pu+Gs
+	D5cziA2oPjpp5CMH0xnpvUOJsWbNCW97MCFvneHdB3u9KWtAQSTqC/Pm+f31L+9XGHXMG72ynHxep
+	Z1g6b3vLpqsxrBO6eyJ3yXZjeZh/w5SC1jl0x6EZ8XbIwGGJj50ed/5rr/GFBHpwm9e6wCuh6D00g
+	Fbd/sgXEa+vete3n0wXD6ft/MoBhMsIuNAy+6/i800izHDK5+HiT6VnlG5nOuqmIl5ywYbClUvoOw
+	1G7yoMWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smH0p-00000009PRN-1P4C;
-	Thu, 05 Sep 2024 18:15:19 +0000
-Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
+	id 1smHLb-00000009T1m-0AQW;
+	Thu, 05 Sep 2024 18:36:47 +0000
+Received: from mail-vi1eur05on2072b.outbound.protection.outlook.com ([2a01:111:f403:2613::72b] helo=EUR05-VI1-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smH0m-00000009PPt-1Q4b
-	for linux-mediatek@lists.infradead.org;
-	Thu, 05 Sep 2024 18:15:17 +0000
-Received: by mail-yb1-xb29.google.com with SMTP id 3f1490d57ef6-dff1ccdc17bso1221754276.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 05 Sep 2024 11:15:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1725560114; x=1726164914; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YqMkVgPFvnHANIyPGIBBKdw4kieVUrc29sSkj0u1A2s=;
-        b=fSYA5VHvv6lPmpLycJhjsVHKXMl5ySR1UwouoO5Y30WoVTOKEEUDscrJMAsBuWwnpe
-         sVYQKCAA755VaA7cwEbyBHgI5Qf/D9l3AXVtEf9SBDe5RYkKZCvm3Bf3JZgnUrx6Je7U
-         1uc5Rkqe3jOh8w0P3Yz0HqXm9Td5rJUjYXM68=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725560114; x=1726164914;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=YqMkVgPFvnHANIyPGIBBKdw4kieVUrc29sSkj0u1A2s=;
-        b=cCX3bnUjeSw3dPoBmFTTb/fTxlp+SOwdJHEgJ0wOZrshOuDGyeMxfEGtRqt6Aqo5PK
-         oAYX0Q1IT5/flyms86hvxmsxp5IQCXTO38IcLw/1Y1O/59rVqCVxiuMYUF/Rthg2Xw28
-         mt3atiJgnvMh22bSMLHm2WVw0b5NOF5+ljXk6muO5xBWCedatVXaojEvjYAP7tBbJ1C8
-         662fVN0pMfbirVAIOS6CwRvY5m15+jTauKtBAA3OJIMqEpWvFq3oB7GaJKeFtJv+qzwD
-         o2lhAQ0ooQyUFyY2zMeOEp7ar6T/ERhdQdrugZxzufeVGMBoyONPSuaZq22OG3EAbqr/
-         BYsg==
-X-Forwarded-Encrypted: i=1; AJvYcCVgKitvsu3lLzfT6khGJ3zfBGFJac506jo1H1TGyMTXCSg6oJc+eHx3Ep6NDtKjf4bUGLpLq+bf2KK3BU2cug==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxhelYMk5806rFXID2f603kD3q7epCtm4vzP1iB9/prqYdozEq3
-	3OkVP/d04kqcxBLVGV/o0mTvdgqUY4HZ8YWx0fs9HZK2WtiuCOCLQKfdi5sofrafh4WpInGf2i4
-	=
-X-Google-Smtp-Source: AGHT+IE0krvDTMOkBm+7zHmkR6sQXmeZLp69Dypyix3iB5dYSSBZMskdIgU8wFo8PfR2Vcdw+e4KMQ==
-X-Received: by 2002:a25:84c2:0:b0:e1a:ab3c:2a97 with SMTP id 3f1490d57ef6-e1d349cf0a6mr109858276.40.1725560113803;
-        Thu, 05 Sep 2024 11:15:13 -0700 (PDT)
-Received: from mail-qv1-f41.google.com (mail-qv1-f41.google.com. [209.85.219.41])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6c5202de91fsm9577526d6.71.2024.09.05.11.15.13
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 05 Sep 2024 11:15:13 -0700 (PDT)
-Received: by mail-qv1-f41.google.com with SMTP id 6a1803df08f44-6c35334dfb1so6474646d6.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 05 Sep 2024 11:15:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCWn3vwl6cJeb6tUUxD7LS/Imi5Cb9KnZ8Sw4EhuAXAarAw0rk6hdbtj0hR8AqmvDMPVjuDSqj5ikIIzvEAvLg==@lists.infradead.org
-X-Received: by 2002:a05:6214:3a8a:b0:6c3:5cf1:e5b2 with SMTP id
- 6a1803df08f44-6c35cf1e7ddmr191248766d6.29.1725560112825; Thu, 05 Sep 2024
- 11:15:12 -0700 (PDT)
+	id 1smHKN-00000009SmF-3H4L;
+	Thu, 05 Sep 2024 18:35:34 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=pWuFBA7JnmsNlbRhCHwsdHuPZo3ERxH1UQWzZh6iRA96a5m6kPsTFrXdXwcIUHQdYlpKocdCXfHvvpnxOBhCQZd7vc2MARQmpvIS5rF5eaFObXAOnPG4+X9ejwVclzWWGAPVJED3cNwQ2KmsMN96i+QQM3JPoIL5xrX/OmRwA0FiQPNcJ73izh7yM40UUt9KwSAR4rea4ow+5cfYSwR+D8q7GGQNpWNFOYqYh8CXd84KbA63m2T0nhBO0xBVspojvB90eTEvDjWs1G80MCJB+iodP2Hhe18VPv7QRqqHSi3KmjDbHOSLVnYcCmI28H0Y0Sn4i6qoosiglQGk0kwD7g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=dnH92hfxF1eTWGuZ2L9bPU6SUNXY/rWqsOGRDrGg2v8=;
+ b=F8Dw8rI5uszbyJrgL1K/1MpmRHTsEfq5awfFldTlLm6lWgveBCb8srKgdS0JrvWkClGrEuROJi5xrkh73cnfJ59RUwIBnySKqf5aXwLZ3/bSo34y/3J3kfK2qzlHapjd+jvwGWqvNlXF4o/zeOaYbcZwdiKJexMWA3toYJY6y61GTonx3AGzuKasQo7UP1JBPxyA/L16/JHNvkShXue9UnoVg5jdzcO7BiSrg8AQvx48DX5UN3IUMuo3AY5tWbqmmWlPbdNBz2dMn6XZ7e90QXXuFawseBrcDXv3rJIVHZ2d6QWcRAeZgM9tGHgcbrftmgmbECFmf7m4Vlyj8vtZxQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=genexis.eu;
+ dkim=pass header.d=genexis.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=genexis.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=dnH92hfxF1eTWGuZ2L9bPU6SUNXY/rWqsOGRDrGg2v8=;
+ b=dL0yAMEEHh6X3a2GCDovP0UIj37vVyLSnq/OIt/5+9jQh0ul8k5kuPr3X1arg1aEXILKLZLpSBcAUI61h9eBXspdUnTylnrksyz8BkHpBElzGjGOHo1dzgQxlmlclhD7V+AirMjub4NAKdBhS1YOH2BEVWe813UiwTq+fafkldI=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=genexis.eu;
+Received: from AM9PR08MB6034.eurprd08.prod.outlook.com (2603:10a6:20b:2db::18)
+ by PAXPR08MB6493.eurprd08.prod.outlook.com (2603:10a6:102:15a::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7939.12; Thu, 5 Sep
+ 2024 18:35:20 +0000
+Received: from AM9PR08MB6034.eurprd08.prod.outlook.com
+ ([fe80::9ead:b6bc:10eb:ef35]) by AM9PR08MB6034.eurprd08.prod.outlook.com
+ ([fe80::9ead:b6bc:10eb:ef35%5]) with mapi id 15.20.7939.010; Thu, 5 Sep 2024
+ 18:35:19 +0000
+Message-ID: <2e8806fa-c476-4cfa-bc2e-dc02754830d1@genexis.eu>
+Date: Thu, 5 Sep 2024 20:35:17 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 5/5] pwm: airoha: Add support for EN7581 SoC
+To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Lee Jones <lee@kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
+ ansuelsmth@gmail.com, linux-pwm@vger.kernel.org
+References: <20240831-en7581-pinctrl-v3-0-98eebfb4da66@kernel.org>
+ <20240831-en7581-pinctrl-v3-5-98eebfb4da66@kernel.org>
+ <yfqmlca6cnhrghpo5s6tml36tngmekcfbyjakxs7or7wtap3ka@7qlrxjowo4ou>
+ <d9298199-fe10-4b28-8e28-dc252bd6832c@genexis.eu>
+ <t2f5kockuvfi66qqumda6jxf5a4c4zf35ld5ainsnksavkchyj@kdueaqlhjoar>
+ <b7e44fb2-6cf6-4530-a271-9e1730d4f431@genexis.eu>
+ <xmlta4za6malgthd6cmt5fcipxgyzwmqwxqdg5e4qahcuqzcrt@eidsf6mexrkz>
+ <a0a14b57-cc4e-43ef-984f-fb405949b41d@genexis.eu>
+ <64zfjgmc2dutmsukg2bxhb44k3wu2y7tt3h26hej7d4fx5nc7z@5zvo3hsucipc>
+Content-Language: en-US
+From: Benjamin Larsson <benjamin.larsson@genexis.eu>
+In-Reply-To: <64zfjgmc2dutmsukg2bxhb44k3wu2y7tt3h26hej7d4fx5nc7z@5zvo3hsucipc>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: GV3P280CA0059.SWEP280.PROD.OUTLOOK.COM
+ (2603:10a6:150:9::12) To AM9PR08MB6034.eurprd08.prod.outlook.com
+ (2603:10a6:20b:2db::18)
 MIME-Version: 1.0
-References: <20240904090016.2841572-1-wenst@chromium.org> <20240904090016.2841572-10-wenst@chromium.org>
- <CAD=FV=UGOz3Xzg7reJKP=tA1LqTxszv5w-CL9krmoXQtXdJLaQ@mail.gmail.com> <CAGXv+5F27K76t=ht5v75jKsNF-J+C0r5+m=czHz6PtV3t5DxcQ@mail.gmail.com>
-In-Reply-To: <CAGXv+5F27K76t=ht5v75jKsNF-J+C0r5+m=czHz6PtV3t5DxcQ@mail.gmail.com>
-From: Doug Anderson <dianders@chromium.org>
-Date: Thu, 5 Sep 2024 11:14:58 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=XVrAdQN8p9QJtt3Ah_YQAG7Y-D4wDx8_+qb1EGN7+Uig@mail.gmail.com>
-Message-ID: <CAD=FV=XVrAdQN8p9QJtt3Ah_YQAG7Y-D4wDx8_+qb1EGN7+Uig@mail.gmail.com>
-Subject: Re: [PATCH v6 09/12] i2c: of-prober: Add regulator support
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
-	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
-	Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
-	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>, 
-	Jiri Kosina <jikos@kernel.org>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
-	linux-i2c@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM9PR08MB6034:EE_|PAXPR08MB6493:EE_
+X-MS-Office365-Filtering-Correlation-Id: 67f051cc-2286-4ed0-c824-08dccdd97e6a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|376014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?a2QrczBaWXhaSERPZERwbEc2ZXNBV0s4bDgzbEFOVXJyenVjcitnMEIxVVc1?=
+ =?utf-8?B?dVNxY1JieVIzTGpJNEVUUjQyaTlSUDg1NVJuMkQvT0duT0I2QXFpczJnLzMw?=
+ =?utf-8?B?V3BZU3BaVVk0OGpqLzd3L0FQRlliWkd1Y21kVU9peUxvejVIdERBM1RoUk1X?=
+ =?utf-8?B?SlpVZWlBYndhVmtoTmcyc2xlTFRidjhCQWJqT2VGd1I1N0x6aFlmT2x4WlZO?=
+ =?utf-8?B?ZWtoaERiaklOcmNVVTdQaTRaYnJwQlV0MmU3a2lKR2hkSkdSbWsvMVg1T1gz?=
+ =?utf-8?B?VnBTWG05Ylo4emQ5SmFvczlXNjVrZmxCSlkzSVVBMFdnREZDMUhBcDRCdGow?=
+ =?utf-8?B?SE5vSVh3eUMyRnVxTmg4NHZ3aUw2M0loNUVSODVJY09HQjJMeVdjN0lWWGRB?=
+ =?utf-8?B?WTJna1A1WTF5N3FoUU51L1JTM0pwTXF4bll1bCtUTkVDRGV6NTM1S3RPMXNK?=
+ =?utf-8?B?amw3dVNWUUY0RlB6cXRtdFN4QjRxMFNDVGFzNXhUZTQ1UE5LeTdMU1BXRTZ2?=
+ =?utf-8?B?ekNLaURBaDl3S2RJSlgwcmVoNXYxeGZDS2ZMQ3QvamxPM2pXdmN0Y1ByTWM2?=
+ =?utf-8?B?VXZMMXVFNFZBTEVESXZwZmtTNDRIT203OW5kaS9JTXZkeGFqM0hqVnFkZ0RZ?=
+ =?utf-8?B?ZmUwbjlqVVJHSm9jQ29ENjFBeElyVHNOYnFNTVgxQzFIUnFQaWltYklYUis1?=
+ =?utf-8?B?WVJKMUJPYlhDZk9sU1JXc3BjemNWa3JiN0lUK3JLVzM3dTlDWVdrQjFoazJx?=
+ =?utf-8?B?VlVXYTRjUzU2UkV4dTBQdVRqVnRnZTBYWXlzd0FuTnQyeTd4eGxhQ1JVQ2dm?=
+ =?utf-8?B?RENyY08xZGZENDRJWm0zOVNLTkg5RmM0eGZNWlZ3NDVDTEtOTUZLSjVGc2xi?=
+ =?utf-8?B?dnNoT1BMQkZuSjJobkZZenExUDZtU2svaVR2WU9WL1pRdkU0blFNM2tmNENx?=
+ =?utf-8?B?LzZ0cll4Z3M1RnM3VEo0LzB1aGI4TWRpMllSVUpzTTh5RGQyWGxyNDZNMVUz?=
+ =?utf-8?B?emxnc2NELzdZSE1iY0hwNlo0bFZjNGRFNlRaZ1ZoaURDWktvci9pT1huazNa?=
+ =?utf-8?B?MzJHQkZWamtXQ2FwZWJxVGsraUVVYkNnSmE0V3ZPdzN1ODdPOHR0N3QxeWho?=
+ =?utf-8?B?K2t0L0ErRncwNHNnZ09oRFg3WUtZWFhWbzV1Tk5Gc2Nxak1IZlJUVmdxZVF1?=
+ =?utf-8?B?SDI3M2ZxWndOWGN6Y3hhVFI4d2VIQVU1dlN4UURvU1AzVmRZT0pkcHZxVmNz?=
+ =?utf-8?B?UkJRaEZvUmZYNUgxaW1xUXJMeHRPd3o1S25ZU1o2Z0VuMEVkUEwwMHFQeks2?=
+ =?utf-8?B?ZUJ2d1NoUkNESG5LVVBWblFjdExyTHhoelp2NzJLbHE3bTdWNyt0TlJrd3Yv?=
+ =?utf-8?B?dCtzQjA3SG1wcHJ2eE8vY0NVRXJwMzdzOUtDRWRIeGV2cmpRdFp3dC9XYzhy?=
+ =?utf-8?B?U00vMUhzSklKNE1XR0Y2Q2x1ajhxMWw1SWJzbnQ2QTBSUGZ1Zmc5czUvcVY2?=
+ =?utf-8?B?QUptUjIrdllsaHhsejd4Q0F3UGZxeFpPdGxHY3g5dFowc09pRnZSQWU4UDM5?=
+ =?utf-8?B?Ym94TytMT3Rra3NXYTVRdHMvV2pJZXRLNlc4cWRKTE0zdXc3RDJKOTAybzd5?=
+ =?utf-8?B?Vnk1K1huckZwU0t1ZHNRRklOUXpTb3FEd0dha01sem9MZVQ5YjAxL0ZVcmww?=
+ =?utf-8?B?Nmp2djIwa2ViZ3ZnYVNZYWNVN0M5OTBacEVTc2tPQ1g4REVza2U2TURmQ2Ix?=
+ =?utf-8?B?S1RwN3gxSHdGR3o3dmtVMUdDRDgydE5xbFBhanlLeHhVQmhzaU9aTXFsL2VK?=
+ =?utf-8?B?eDNLM1VWa0MvQjNBaEIxQT09?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR08MB6034.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(7416014)(376014);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?V3ZGVUdBU1BrL2FRTFEvdUYrN2xhNnV6RWRmY2pmUkFuMHhuQndYMzVjeFph?=
+ =?utf-8?B?UlNzTUJ0Ni9Td2JYYnFyZ3RZb0w4dmdDcmtpYjRwVDlNYWdPZlZ4Y2t2SE1B?=
+ =?utf-8?B?bFlPc1dVdWdqOUtNbnJGOHlDSXl1Z0tCRVQrWDdkYnIzNlF3UkV1N0lRYXNK?=
+ =?utf-8?B?QWE5c0t6ZVZmQkVLQ0Q1SG92ZE1wbEo5Qk5KbTYwMXVLdjZCaTVoQmhaZk9P?=
+ =?utf-8?B?N280TTRSd1IrL1VPaURJMlJQdkV6UWpucEVPZ0pGU2orcG9UdDJNRklqNGdH?=
+ =?utf-8?B?emo2ZGxjbzVUa1F1cGp3K1NtTnNwWUlqTFVrN3daNUhiMzloWXhuUkFIMStR?=
+ =?utf-8?B?WHU1RUVjdE91ZjZyRDhNOFlxc0hUckRCSnpyc1ozcmdJRVRjSndBbW1keUdh?=
+ =?utf-8?B?dEhPOXpzaEdyS0NmSGMveFpqbkxvNlNjbTZ3Z1pWYjBpbW1tZVpYd2NaZHNt?=
+ =?utf-8?B?VWNRZEYwd0VZbXdPN0xxRUFWdGpSYzZOVkNwNytTSVZHL0lydG5iQkhjM2R4?=
+ =?utf-8?B?UW5sRkhZaythMGU1blo1c0lqUWZSMmxrdU5JTXg2VnhsM2tod2ZxRXgvMnBw?=
+ =?utf-8?B?bE13ZlVBam9UenNRaGZ6c3Z3S3pHWVFwUzlMaGx2TFo5dlJTKzIzSmJDdEVY?=
+ =?utf-8?B?RHhObHZvRmJRRGJQem1xSGd0VjIzSGVrdGt3ejN1WTVkbVVjQ0pTRUx4bzk4?=
+ =?utf-8?B?R0NPWDRXUklNV1R0akVwdnNmR2JCMTNDNkVtU0NZUXN5VDI5VEdEZHhCSDZy?=
+ =?utf-8?B?clNJTlQrNlRuUWlBNnhOLzFqTXEyaTNuV2JUeUhob25sTUpSK0U2TWR4Qkk4?=
+ =?utf-8?B?dXhuZXZzMVpoS0s2TE1LV2FEZnl0OE5aS2RXQjc0SFFWeWxsdUhMVjg1YkVs?=
+ =?utf-8?B?VGNtRmE3bVI4M0Fnc0wwTzEzanhSaXdxZHU2dU5oQnVSUDZETTFud0VhT3J2?=
+ =?utf-8?B?eitHbzdSdWFML0t3cEFVVTNSTkkrbVVwckhsMDJpZU5EbnFNcERxcVVrc0xu?=
+ =?utf-8?B?aFhRd01DcW5aeXZQbzFoRGZ3Nk9WaWVJNmp0WGp2a3VHNnFDSkdERUZyZDR4?=
+ =?utf-8?B?ak8yR2dYM090bkk0ekIzeEdubExoVlVmSTAwOFRjSzNCRGZYcHNQMWVKZ296?=
+ =?utf-8?B?cmFIYXA5dVZIQXRMakJBdFJQc2w3aitPUEY2V09OcDU2VXFkZ1lLdS9RbEpu?=
+ =?utf-8?B?dHpWNm9wOERzN29JY0p1NlRWNExxbVJTU3g0T1RFTVI3Sms3R1VpaUMvdXJa?=
+ =?utf-8?B?U0xaQjQ0TUZ3MEp6UzVKOGFYVEIrY0pEaU83eEs3U1ZuR3lhSGFFczc0ZGRP?=
+ =?utf-8?B?TFB6MVJLdHlnNDVvaUFOb1p2aWpMZzNhMFBscktZUGRacHVTOEZNTDBXZTRa?=
+ =?utf-8?B?WVFRS3R3eDVqVGlHREMvMncwbklDanYzN2JOb2FQRTl6WW1XR3NsNDFpRjdZ?=
+ =?utf-8?B?cmZBa1Z6aVhlbE5aa2VBWFcwQ0hIaGpZNnlOWDdtRm5pNlZkZFkxTXJKMlBi?=
+ =?utf-8?B?eFR5T1l4aXdKS0l5YnBWdDUrc3JHcnRPcTU1QmRBV2Q4RkFaK1pLWGl6eGdl?=
+ =?utf-8?B?M2VSdjJkSDJHMlVROHl2N0hNcWtud1VJd1FpTlh5cnYzaFZiSWdqS0o4NDNp?=
+ =?utf-8?B?TjlOZE5YVGtoODlxTzE5N3gyYzQ1d1V1Wk1XeFdTaExDVmdOcFFJS2JZMEpX?=
+ =?utf-8?B?MXgxL3JSVmllcm1PLzFNdUFPdGFZdmdIcDNnSnNUTmwyOWFwU1FzR3ZkdzdQ?=
+ =?utf-8?B?OFdkSlVkaFBXaDdFSmdEN1NjL1hMSytvNk1ReHFpRmFUNm5sY3ZMV0hFSE5P?=
+ =?utf-8?B?R0JwSUpMTHpxUHJNWGFIazRLeDJldGRiM1luK3Bxck5wdEdMWXZteDYzN0lY?=
+ =?utf-8?B?bEl5RmpQektTb3ZNRXV6UWcrbHlPTFk1aVR6c2VXMUdvU0NzUXFPMVI0dWZO?=
+ =?utf-8?B?bnJkdWJWS3hFR2tvMThjck1QSERtRFYyRE11NVJETStLZ2FGN2lzMHNWV2tp?=
+ =?utf-8?B?akhNUzJ2TU53RWEyejBmTE1RTk1sU2owUzQ5Q3pRZkhzWW1ueDQ4cVJITDV4?=
+ =?utf-8?B?QnVCZ2RlVGZvempCcmpRWEx3NytOM3gzUkZJMEVFTFhFQXY1TkJaTm0xU0ll?=
+ =?utf-8?B?ZHgwdi9CTXovdDFCWG5Sa2xsOUthQkFxSzhSRGFrVXhiWXhwc0ZlcGlVMEdQ?=
+ =?utf-8?B?L0E9PQ==?=
+X-OriginatorOrg: genexis.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: 67f051cc-2286-4ed0-c824-08dccdd97e6a
+X-MS-Exchange-CrossTenant-AuthSource: AM9PR08MB6034.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Sep 2024 18:35:19.4081
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: atIA96TPkeLDRES8nzqmDPblePXaDCRVXB/pY1zdm1OXXTip/vbNv0b1m4my9fE+qJ0VAxgildL9CzkUXJdifrSo8OLtd6+9kJCkuw7kYzs=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAXPR08MB6493
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240905_111516_453723_07CE31D7 
-X-CRM114-Status: GOOD (  66.99  )
+X-CRM114-CacheID: sfid-20240905_113532_509589_1DEAFCAE 
+X-CRM114-Status: GOOD (  24.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,194 +189,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi.
 
-On Thu, Sep 5, 2024 at 8:10=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> wr=
-ote:
+On 05/09/2024 17:39, Uwe Kleine-König wrote:
+> Hello Benjamin,
 >
-> On Thu, Sep 5, 2024 at 6:57=E2=80=AFAM Doug Anderson <dianders@chromium.o=
-rg> wrote:
-> >
-> > Hi,
-> >
-> > On Wed, Sep 4, 2024 at 2:01=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org=
-> wrote:
-> > >
-> > > This adds regulator management to the I2C OF component prober.
-> > > Components that the prober intends to probe likely require their
-> > > regulator supplies be enabled, and GPIOs be toggled to enable them or
-> > > bring them out of reset before they will respond to probe attempts.
-> > > GPIOs will be handled in the next patch.
-> > >
-> > > Without specific knowledge of each component's resource names or
-> > > power sequencing requirements, the prober can only enable the
-> > > regulator supplies all at once, and toggle the GPIOs all at once.
-> > > Luckily, reset pins tend to be active low, while enable pins tend to
-> > > be active high, so setting the raw status of all GPIO pins to high
-> > > should work. The wait time before and after resources are enabled
-> > > are collected from existing drivers and device trees.
-> > >
-> > > The prober collects resources from all possible components and enable=
-s
-> > > them together, instead of enabling resources and probing each compone=
-nt
-> > > one by one. The latter approach does not provide any boot time benefi=
-ts
-> > > over simply enabling each component and letting each driver probe
-> > > sequentially.
-> > >
-> > > The prober will also deduplicate the resources, since on a component
-> > > swap out or co-layout design, the resources are always the same.
-> > > While duplicate regulator supplies won't cause much issue, shared
-> > > GPIOs don't work reliably, especially with other drivers. For the
-> > > same reason, the prober will release the GPIOs before the successfull=
-y
-> > > probed component is actually enabled.
-> > >
-> > > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > > ---
-> > > Changes since v5:
-> > > - Split of_regulator_bulk_get_all() return value check and explain
-> > >   "ret =3D=3D 0" case
-> > > - Switched to of_get_next_child_with_prefix_scoped() where applicable
-> > > - Used krealloc_array() instead of directly calculating size
-> > > - copy whole regulator array in one memcpy() call
-> > > - Drop "0" from struct zeroing initializer
-> > > - Split out regulator helper from i2c_of_probe_enable_res() to keep
-> > >   code cleaner when combined with the next patch
-> > > - Added options for customizing power sequencing delay
-> > > - Rename i2c_of_probe_get_regulator() to i2c_of_probe_get_regulators(=
-)
-> > > - Add i2c_of_probe_free_regulator() helper
-> > >
-> > > Changes since v4:
-> > > - Split out GPIO handling to separate patch
-> > > - Rewrote using of_regulator_bulk_get_all()
-> > > - Replaced "regulators" with "regulator supplies" in debug messages
-> > >
-> > > Changes since v3:
-> > > - New patch
-> > >
-> > > This change is kept as a separate patch for now since the changes are
-> > > quite numerous.
-> > > ---
-> > >  drivers/i2c/i2c-core-of-prober.c | 154 +++++++++++++++++++++++++++++=
---
-> > >  include/linux/i2c.h              |  10 +-
-> > >  2 files changed, 155 insertions(+), 9 deletions(-)
-> >
-> > I never jumped back into looking at this since you started sending new
-> > versions last month (sorry), but I finally did...
-> >
-> > At a high level, I have to say I'm not really a fan of the "reach into
-> > all of the devices, jam their regulators on, force their GPIOs high,
-> > and hope for the best" approach. It just feels like it's going to
-> > break at the first bit of slightly different hardware and cause power
-> > sequence violations left and right. If nothing else, regulators often
-> > need delays between when one regulator is enabled and the next. There
-> > may also be complex relationships between regulators and GPIOs, GPIOs,
-> > GPIOs that need to be low, or even GPIO "toggle sequences" (power on
-> > rail 1, wait 1 ms, assert reset, wait 10 ms, deassert reset, power on
-> > rail 2).
-> >
-> > IMO the only way to make this reliable is to have this stuff be much
-> > less automatic and much more driven by the board.
-> >
-> > I think that, in general, before the board prober checks i2c address
-> > then the prober should be in charge of setting up pinctrl and turning
-> > on regulators / GPIOs. Given that the same regulator(s) and GPIO(s)
-> > may be specified by different children, the prober will just have to
-> > pick one child to find those resources. It should have enough
-> > board-specific knowledge to make this choice. Then the prober should
-> > turn them on via a board-specific power-on sequence that's known to
-> > work for all the children. Then it should start probing.
-> >
-> > I think there can still be plenty of common helper functions that the
-> > board-specific prober can leverage, but overall I'd expect the actual
-> > power-on and power-off code to be board-specific.
-> >
-> > If many boards have in common that we need to turn on exactly one
-> > regulator + one GPIO, or just one regulator, or whatever then having a
-> > helper function that handles these cases is fine. ...but it should be
-> > one of many choices that a board proper could use and not the only
-> > one.
+> On Thu, Sep 05, 2024 at 02:18:41PM +0200, Benjamin Larsson wrote:
+>> On 2024-09-05 11:30, Uwe Kleine-König wrote:
+>>> 1 second long pulses with a period size of 1 second, so a constant high
+>>> signal?
+>> Hi, I think I was unclear. The SoC documentation is not that detailed. But I
+>> think I understand how it works now.
+>>
+>> One register contains the minimum duration (d_min). And then there is one 8
+>> bit register for the signal low period (lp) and then another 8bit register
+>> for the high period (hp). Per my understanding a change of polarity is then
+>> just a swap of lp and hp.
+> that doesn't sound right.
 >
-> IIUC we could have the "options" data structure have much more board
-> specific information:
+> A "normal" waveform with period = 10 ns and duty_cycle = 2 ns looks as
+> follows:
 >
->   - name of node to fetch resources (regulator supplies and GPIOs) from
->   - names of the resources for the node given from the previous item
->   - delay time after each resource is toggled
->   - polarity in the case of GPIOs
->   - prober callback to do power sequencing
+>     _         _         _
+>    / \_______/ \_______/ \_______/
+>    ^         ^         ^         ^
 >
-> The "resource collection" step would use the first two items to retrieve
-> the regulator supplies and GPIOS instead of the bulk APIs used right now.
+> assuming a monospace font that's 1 char per ns, the ^ marking the period
+> start.
 >
-> The power sequencing callback would use the resources combined with the
-> given delays to enable the supplies and toggle the GPIOs.
+> Ignoring scaling, your hardware needs to have hp = 2 and lp = 8. If you
+> switch that (assuming you mean switching in the same way as I do) to hp
+> = 8 and lp = 2, you get:
 >
-> For now I would probably only implement a generic one regulator supply
-> plus one GPIO helper. That is the common case for touchscreens and
-> trackpads connected over a ribbon cable.
+>     _______   _______   _______
+>    /       \_/       \_/       \_/
+>    ^         ^         ^         ^
 >
-> Does that sound like what you have in mind?
-
-I guess I'd have to see how the code looks to know for sure, but if I
-understand it sounds a little awkward. Specifically, the "options"
-sound like they might become complicated enough that you're inventing
-your own little programming language (with delays, abilities to drive
-pins low and high, abilities to turn on/off clocks, and abilities to
-turn off/on regulators) and then probers need to code up their
-programs in this language. You also need to handle undoing things
-properly if there is a failure in the middle. Like your "program"
-would look like this (obviously you'd have to play with enums more,
-but you get the idea):
-
-{
-   { OPCODE_TURN_REGULATOR_ON, "vdd" },
-   { OPCODE_DELAY, 10 },
-   { OPCODE_GPIO_ASSERT, "reset" },
-   { OPCODE_DELAY, 5 },
-   { OPCODE_GPIO_DEASSERT "reset" },
-   { OPCODE_DELAY, 100 },
-   { OPCODE_TURN_REGULATOR_ON, "vddIO" },
-}
-
-Why not just expect the board probers to write C code to turn things
-on before looking for i2c devices, then provide helpers to the C code?
-
-So there wouldn't be some generic "resource collection" API, but you'd
-provide a helper to make it easy to grab regulators from one of the
-nodes by name. If you think bulk enabling regulators is common then
-you could make a helper that grabs all of the regulators from a node
-in a way that is consistent with the bulk APIs, but I wouldn't expect
-every driver to use that since devices I've seen expect regulators to
-be enabled in a very specific order even if they don't need a delay
-between them.
-
-I wouldn't expect a "collect all GPIOs" API because it seems really
-weird to me that we'd ever want to jam multiple GPIOs in a state
-without knowing exactly which GPIO was what and asserting them in the
-right sequence.
-
-
-> This next item would be a later enhancement (which isn't implemented in
-> this series anyway):
+> which is still a "normal" polarity output as a period starts with the
+> active part.
 >
->   - optional prober callback that does actual probing
+> I admit that's a bit artificial, because the waveform for
 >
-> In our case it would only be used for cases where an HID-over-I2C
-> component shares the same address as a non-HID one, and some extra
-> work is needed to determine which type it is. I still need to think
-> about the structure of this.
+> 	period = 10 ns
+> 	duty_cycle = 2 ns
+> 	polarity = inversed
+>
+> looks as follows:
+>
+>       _______   _______   _______
+>    \_/       \_/       \_/       \_/
+>    ^         ^         ^         ^
+>
+> which isn't any different from the 2nd waveform above if you ignore the
+> period start markers (which are not observable apart from the moments
+> where you reconfigure the output).
+>
+> However it matters if you have a chip with >1 output that are not
+> independent.
 
-IMO _that_ would be a great option to the i2c prober. It feels like
-you could have an optional register read that needs to match to have
-the i2c prober succeed. Most people would leave it blank (just the i2c
-device existing is enough) but probably a single register read would
-be enough to confirm you got the right device. Most i2c devices have
-some sort of "version" / "vendor" / "id" type register somewhere.
 
--Doug
+Ok that was a clear explanation, anyway the pwm hardware is then not 
+capable of a polarity change. It is possible to change the polarity via 
+other means but there is no way for the pwm block (and driver) to handle 
+this.
+
+
+>> This means that when requesting a period and duty cycle you need to search
+>> through the configuration space to find the optimal value.
+> Or restrict yourself consistently to something simpler than a exhaustive
+> search through the complete configuration space.
+
+Is there a recommendation on what is more important? Period duration or 
+duty cycle percentage?
+
+
+>> MvH
+> (BTW, I had to research the meaning of MvH. In case someone else doesn't
+> know it: It's the usual abbreviation for "Med vänliga hälsningar" in
+> Sweden or "Med vennlig hilsen" in Norway; both meaning "With friendly
+> greetings".)
+>
+> Best regards
+> Uwe
+
+MvH
+
+Benjamin Larsson
+
 
