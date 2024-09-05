@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A060CD5BB9
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Sep 2024 12:42:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41222CD5BCA
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Sep 2024 13:34:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=OcLEq6dH8qftZcTYguFuaKmK6b9OpijG3PWo0vk/dHk=; b=IPMn2T3f624P6PkuWTT1bCf6hL
-	QXJAM2ujJA3m4Qun9VkobtTbZL7Omq72sFaGe0tup0xYdLk4MkHKbFoXpmQjLN+eVGwNy5oCoOAKy
-	OHL15zg4/k0/UPEYeojau8QIBl5+VjEF5733ihopeuGTfbMpdPe52G4RKFeUSG2PGoP2USf8pUgrt
-	h/DiIpuFGB2VMs3Y/uZgsjt4Yqz/lnSVLVjF5k6k7i2kFH3hAcmx8IAW3R8o7zysgq1x1hgXU0GAq
-	CMchI5lRN78tem94VVlTUIiA+I9HRc+1Uu7wWcSHHtflqxLyws79IiGm334qclPwQh+UKpenXqlW/
-	DRcRgdDg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:In-Reply-To:Date:References:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tLsXjV1VKVcilJWw4iGh7ueKoTBlMCFleWWZtbndws4=; b=dZ7DBObc1Lj9vg/qsAQjeK3vJe
+	MQaBhRCBBd4xRdVPipYwan6KaNzlfJh1FouSaQnfj0vnMyJbooa8CphjIpx31AiC+qButY+5t7adC
+	1PcSO+ipSbX935P48ZVeIPdx/yoQnSgGzvEQiK+HDjAwgtR5FDRv4TAL3RDX0R5On/gbcYC6pHwmP
+	IyL7iIaOvfZaYiQrnF5BJPvqz0Rw4nNuG8vfcpjmryDayWUxVffqU7OifaN7fSm7IjXYjLoWHJ6pT
+	5EmIOtXGkrieK0orPVTq2zulE5oYPCJr7j3W9Ht4IwRioJz4N9igBC3E4/kRs+qz7mkn47Yto/VhU
+	ZKfQtdOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smBoh-00000008Mul-2Lhf;
-	Thu, 05 Sep 2024 12:42:27 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1smCcY-00000008YCm-1DA8;
+	Thu, 05 Sep 2024 13:33:58 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smBng-00000008Ma9-3nLM;
-	Thu, 05 Sep 2024 12:41:27 +0000
-X-UUID: 26dc39106b8411efba0aef63c0775dbf-20240905
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=OcLEq6dH8qftZcTYguFuaKmK6b9OpijG3PWo0vk/dHk=;
-	b=K3LS7pTmHLuPz2HiPRWmXfGRPeXYdKieERm7tysdpHuMl86fnc6k0tVkHMJ25pD/u6S3PY3Cgo0mPgAXoPlFUPvYiGr8uUUJVJhGYe69p7PjV/XkmVbzzhh9P6h/sCQ2+0Rxhj9ZoRyvcorvwOmvfBCmnFvPAwWqtM4HC5aROgI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:205b49dc-9d4c-4df1-993d-95bcc639088d,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:2b1780bf-d7af-4351-93aa-42531abf0c7b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 26dc39106b8411efba0aef63c0775dbf-20240905
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
-	(envelope-from <liankun.yang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 137218862; Thu, 05 Sep 2024 05:41:20 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 5 Sep 2024 05:40:45 -0700
-Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 5 Sep 2024 20:40:45 +0800
-From: Liankun Yang <liankun.yang@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
-	<simona@ffwll.ch>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <ck.hu@mediatek.com>,
-	<shuijing.li@mediatek.com>, <jitao.shi@mediatek.com>,
-	<mac.shen@mediatek.com>, <peng.liu@mediatek.com>, <liankun.yang@mediatek.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>
-Subject: [PATCH v4 1/1] drm/mediatek: Fix get efuse issue for MT8188 DPTX
-Date: Thu, 5 Sep 2024 20:40:02 +0800
-Message-ID: <20240905124041.3658-1-liankun.yang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1smCc5-00000008Y2S-2RFs
+	for linux-mediatek@lists.infradead.org;
+	Thu, 05 Sep 2024 13:33:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 65CE6A44C2E;
+	Thu,  5 Sep 2024 13:33:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 66002C4CEC4;
+	Thu,  5 Sep 2024 13:33:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1725543208;
+	bh=bnAS4E/vDjLHG8xkgTnr6zM6XR0xaTXlpGLRZPgH52g=;
+	h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+	b=EPtZHFRW8llmK6Z6OVTsRpJ+4eQesF7cbGV3cffdTTduiP8DBxzH6kgfFtLWMqyh+
+	 cPWIUMczr4JeZd/3P1zpsXPKCqbIcKXB1o6K/8NmSdrhy+SNdQNv3AiZyiSO4VZJio
+	 UzVf2/99ht0fcJ0m8x/ZoZvIYbDEn+QTuraZaK3s3lNn2dUHCRUZ7fCBADyx8cp/Ur
+	 wnXIQhZHgmyKpKSgiUHTq7oSDM9m90AgoZo0yWZCxS/yKngy+PsBnM/uMRzHV4JPr7
+	 fwR6SIEF4GDs7UzJgMidLwgUbkZTNB6YewSBtbxy3ZE0UOrBh+OqX+4c8ioUc3IuCU
+	 C4CQi5fFHDYew==
+From: Kalle Valo <kvalo@kernel.org>
+To: Mike Lothian <mike@fireburn.co.uk>
+Cc: Bert Karwatzki <spasswolf@web.de>,  Linux regressions mailing list
+ <regressions@lists.linux.dev>,  sean.wang@kernel.org,  nbd@nbd.name,
+  lorenzo.bianconi@redhat.com,  sean.wang@mediatek.com,
+  deren.wu@mediatek.com,  mingyen.hsieh@mediatek.com,
+  linux-wireless@vger.kernel.org,  linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] wifi: mt76: mt7921: fix null pointer access in
+ mt792x_mac_link_bss_remove
+References: <20240718234633.12737-1-sean.wang@kernel.org>
+	<0124ff39-7d63-49f8-bacd-3a40ce37ec4d@leemhuis.info>
+	<CAHbf0-Hn=ZyYpk7bS1yLK7K3ZpfWKgt3-t=c9Nhdj3Ov3H84mQ@mail.gmail.com>
+	<f7197c55d059cc8ddbf6c3def16dc414c5ec0b42.camel@web.de>
+	<CAHbf0-EBHERbxPGakY4-1jTQWqGqua3F0OYZjxcakdemJ5Soqw@mail.gmail.com>
+	<51e80bde6e3f3256ecdea2e5260463341e65578e.camel@web.de>
+	<CAHbf0-HYi=x11bc-sMJFbZ4cbkdphMYQ_hjzD_wrPvJevVwyYg@mail.gmail.com>
+	<980698e0d6dfa1e0043edfed6e174ff17705e053.camel@web.de>
+	<CAHbf0-FfAQhuu1TgQ_jVcxPqLsF-ON8vC1QJ=mNhis44dYWufw@mail.gmail.com>
+	<d657110b726646efa972c5e83bfce6c6b1627626.camel@web.de>
+	<CAHbf0-ETMTYs+T=qkLd=Y-W1ssQq1ZMDkxqHCJPSYA9U9CCgHw@mail.gmail.com>
+	<CAHbf0-HbLRRhtUEj1TDzemePoaLo71sxMFDN526HPEB_zO+4ow@mail.gmail.com>
+Date: Thu, 05 Sep 2024 16:33:24 +0300
+In-Reply-To: <CAHbf0-HbLRRhtUEj1TDzemePoaLo71sxMFDN526HPEB_zO+4ow@mail.gmail.com>
+	(Mike Lothian's message of "Thu, 29 Aug 2024 17:52:36 +0100")
+Message-ID: <8734mecjiz.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240905_054124_967902_2D3E34DD 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20240905_063329_722690_9AB74EA7 
+X-CRM114-Status: GOOD (  20.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,139 +87,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Update efuse data for MT8188 displayport.
+Mike Lothian <mike@fireburn.co.uk> writes:
 
-The DP monitor can not display when DUT connected to USB-c to DP dongle.
-Analysis view is invalid DP efuse data.
+>> > this seems to be exactly the same error as I had (It can also be actively
+>> > provoked by "nmcli radio wifi off"), but in my case commit 479ffee68d59c599 is
+>> > enough to fix the issue. Can you please double check that your faulty kernel
+>> > does not include this commit. If it does and you still get the error I can post
+>> > the fix to the list.
+>>
+>> 479ffee68d59c599 isn't enough to fix it here, I've been applying the
+>> second patch since it was pointed out
+>
+> Sorry I've gotten myself confused as the patches changed
+>
+> My kernel with
+> 6557a28f3e3a54cff4f0dcdd1dfa649b26557ab3
+> 479ffee68d59c599f8aed8fa2dcc8e13e7bd13c3
+>
+> Is enough to fix things
+>
+> I've been applying  the old fix on top which was only applying
+>
+> @@ -1206,6 +1206,9 @@ static void mt7921_ipv6_addr_change(struct
+> ieee80211_hw *hw,
+>                },
+>        };
+>
+> +       if (!mvif->phy)
+> +               return;
+> +
+>        read_lock_bh(&idev->lock);
+>        list_for_each_entry(ifa, &idev->addr_list, if_list) {
+>                if (ifa->flags & IFA_F_TENTATIVE)
+>
+> Casing it to be rebuilt each time
 
-Fixes: 350c3fe907fb ("drm/mediatek: dp: Add support MT8188 dp/edp function")
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
----
-Changes in V4:
-- Remove excess newlines.
-Per suggestion from the previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20240903121028.20689-1-liankun.yang@mediatek.com/
+So just to confirm: all fixes are now applied to the tree and we don't
+have any missing fixes?
 
-Changes in V3
-- Update change log position in commit message.
-Per suggestion from the previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20240902133736.16461-1-liankun.yang@mediatek.com/
-
-Changes in V2
-- Add Fixes tag.
-- Update the commit title.
-- Update the commit description.
-Per suggestion from the previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20240510061716.31103-1-liankun.yang@mediatek.com/
----
- drivers/gpu/drm/mediatek/mtk_dp.c | 85 ++++++++++++++++++++++++++++++-
- 1 file changed, 84 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index d8796a904eca..f2bee617f063 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -145,6 +145,89 @@ struct mtk_dp_data {
- 	u16 audio_m_div2_bit;
- };
- 
-+static const struct mtk_dp_efuse_fmt mt8188_dp_efuse_fmt[MTK_DP_CAL_MAX] = {
-+	[MTK_DP_CAL_GLB_BIAS_TRIM] = {
-+		.idx = 0,
-+		.shift = 10,
-+		.mask = 0x1f,
-+		.min_val = 1,
-+		.max_val = 0x1e,
-+		.default_val = 0xf,
-+	},
-+	[MTK_DP_CAL_CLKTX_IMPSE] = {
-+		.idx = 0,
-+		.shift = 15,
-+		.mask = 0xf,
-+		.min_val = 1,
-+		.max_val = 0xe,
-+		.default_val = 0x8,
-+	},
-+	[MTK_DP_CAL_LN_TX_IMPSEL_PMOS_0] = {
-+		.idx = 1,
-+		.shift = 0,
-+		.mask = 0xf,
-+		.min_val = 1,
-+		.max_val = 0xe,
-+		.default_val = 0x8,
-+	},
-+	[MTK_DP_CAL_LN_TX_IMPSEL_PMOS_1] = {
-+		.idx = 1,
-+		.shift = 8,
-+		.mask = 0xf,
-+		.min_val = 1,
-+		.max_val = 0xe,
-+		.default_val = 0x8,
-+	},
-+	[MTK_DP_CAL_LN_TX_IMPSEL_PMOS_2] = {
-+		.idx = 1,
-+		.shift = 16,
-+		.mask = 0xf,
-+		.min_val = 1,
-+		.max_val = 0xe,
-+		.default_val = 0x8,
-+	},
-+	[MTK_DP_CAL_LN_TX_IMPSEL_PMOS_3] = {
-+		.idx = 1,
-+		.shift = 24,
-+		.mask = 0xf,
-+		.min_val = 1,
-+		.max_val = 0xe,
-+		.default_val = 0x8,
-+	},
-+	[MTK_DP_CAL_LN_TX_IMPSEL_NMOS_0] = {
-+		.idx = 1,
-+		.shift = 4,
-+		.mask = 0xf,
-+		.min_val = 1,
-+		.max_val = 0xe,
-+		.default_val = 0x8,
-+	},
-+	[MTK_DP_CAL_LN_TX_IMPSEL_NMOS_1] = {
-+		.idx = 1,
-+		.shift = 12,
-+		.mask = 0xf,
-+		.min_val = 1,
-+		.max_val = 0xe,
-+		.default_val = 0x8,
-+	},
-+	[MTK_DP_CAL_LN_TX_IMPSEL_NMOS_2] = {
-+		.idx = 1,
-+		.shift = 20,
-+		.mask = 0xf,
-+		.min_val = 1,
-+		.max_val = 0xe,
-+		.default_val = 0x8,
-+	},
-+	[MTK_DP_CAL_LN_TX_IMPSEL_NMOS_3] = {
-+		.idx = 1,
-+		.shift = 28,
-+		.mask = 0xf,
-+		.min_val = 1,
-+		.max_val = 0xe,
-+		.default_val = 0x8,
-+	},
-+};
-+
- static const struct mtk_dp_efuse_fmt mt8195_edp_efuse_fmt[MTK_DP_CAL_MAX] = {
- 	[MTK_DP_CAL_GLB_BIAS_TRIM] = {
- 		.idx = 3,
-@@ -2771,7 +2854,7 @@ static SIMPLE_DEV_PM_OPS(mtk_dp_pm_ops, mtk_dp_suspend, mtk_dp_resume);
- static const struct mtk_dp_data mt8188_dp_data = {
- 	.bridge_type = DRM_MODE_CONNECTOR_DisplayPort,
- 	.smc_cmd = MTK_DP_SIP_ATF_VIDEO_UNMUTE,
--	.efuse_fmt = mt8195_dp_efuse_fmt,
-+	.efuse_fmt = mt8188_dp_efuse_fmt,
- 	.audio_supported = true,
- 	.audio_pkt_in_hblank_area = true,
- 	.audio_m_div2_bit = MT8188_AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_2,
 -- 
-2.45.2
+https://patchwork.kernel.org/project/linux-wireless/list/
 
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
