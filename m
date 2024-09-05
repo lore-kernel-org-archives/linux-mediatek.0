@@ -4,80 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 723A9CE7AA0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Sep 2024 22:28:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46AFCCE7AA2
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Sep 2024 23:16:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J8bsFvi274Z1/0//LbJLrnJX6Kj0fdqJNvlLX9twL68=; b=AK8hgx9EWqwRHXCmOViZV58SKF
-	Nou4U5AtWYwBNegCP/fOopUuMPbCjC+JJyHglRJ0HH3UBJfqGMPmk6mxrhoLPK/1w/fUh3qbcmo7i
-	eKw+D+HuoHKFQgWEF+co62VDDi4gdlfvGNaATPHYR18K+Xs2CFUcBBjPDQVKbPWIZZrGi74lod80h
-	9pce12s+sgBoHKh2gdwELPxF7JKNc8235WKZ72Rv6Z8/2tP/4Nfquuh+WMkWQdzyBvgB5odDiBnCe
-	5G2NfTuEs/a67NwwBL2JRSLZgyLc5Ge5Ynv4BIbEZUHzihNNPapU6cfLr7FUOuEkDG28vH01CCr2k
-	eGZqUinw==;
+	bh=5HUUgDpFpg7CH7B/u64K6gdMfWIHArY9NWamcfsBl4o=; b=TfMe7U8qZsJQn4RKwgy+Oiroq8
+	crc6eR3TfUYsqfedxqxd8lwgsCG3NNMNGb4oRc4CFyCnscWQh3ZtcXVsVnV9S11vI/TVH6F7SBDh5
+	C/n+z8CmpjzfmA7fYlPQ8JwHpjt2Ut1Oq6ajhXB4nGBzL5VCYfKn59MGDDDh1dzuQ7cISFO29Gp8B
+	VHHKa7kpdqtIRA9NUCms0TKldQyChZQ8YX8kX6AaTmiGOtsTAM793FSf3k8ObWf6KbbezvQHSLh2F
+	U5tZcvVdrOi/RwWPwnqIiZXwlwf5o2K1GTmNJM47LNWoYIEWN6BQqPEBHBa21pK7N9lGNUKWoC5Nr
+	DDS6iRdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smKxv-0000000A1DG-3g4W;
-	Thu, 05 Sep 2024 22:28:35 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1smLhz-0000000A5yI-2OoK;
+	Thu, 05 Sep 2024 23:16:11 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smKxt-0000000A1Be-0s8e
-	for linux-mediatek@lists.infradead.org;
-	Thu, 05 Sep 2024 22:28:34 +0000
-Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-374c4d4f219so777322f8f.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 05 Sep 2024 15:28:32 -0700 (PDT)
+	id 1smKXL-00000009wxL-1c6x;
+	Thu, 05 Sep 2024 22:01:18 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-374cacf18b1so864538f8f.2;
+        Thu, 05 Sep 2024 15:01:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725575311; x=1726180111; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1725573665; x=1726178465; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=J8bsFvi274Z1/0//LbJLrnJX6Kj0fdqJNvlLX9twL68=;
-        b=cFN9ZCKY9QXKAe2z5frk2ChIY5kLBjJ5CcqnhvMAK3ZflPyLELYBXfCjBG+RcScI+/
-         pzBUbyQ81oSFW9KX5ZxRc7peuu2zek93XV9gBiPeZXqVbGA/Q5w0A3aRqdzLLc69Wfct
-         GHj3cL9TrBmgBbLaLkJfW+5l6tNZ5iQrxZXOy3pukuAWFWqcErWCwdluv0TJKBO9+c2M
-         M5XM05N4skwtmntUOMFiil6RwlNdakQ1gamZhor0XAhMnLrCrX14pnp4DiUHyrvTVP6K
-         0HbRnPwRtQ+yD01WwS42wsRqqLql0rFzcAKz9XQ2iWu5QP5h8CTKv5ccTf2VpLz/f6og
-         1EgA==
+        bh=5HUUgDpFpg7CH7B/u64K6gdMfWIHArY9NWamcfsBl4o=;
+        b=iktwlLpHw1R6Z+OCZUZaR061O324XwFZcXZi7Uk5y5jSyZKEQHuwt2YaYMQc/aWtug
+         6Dg9oTHiuDI0akhvQd+YVvoLgkd6AqM04LO0c51t6KMlq6/nIfzrKsVRsS0AByXgh6vT
+         zBQDSlW+mzN2uCkmNes4qzK+y780vNT0MW2taOqpkLT6wk1Rbq+XKZQDbC90f7LO2acZ
+         yFUy8Fg3i/y+o96OookjZ+8f231V4g6iAAPuqAzIHf6qgRmtb8YMEhmcFwGf4p/NuRfp
+         2pVGCBZqLuEOKYvzSZFiPkxr3U2G60zHVBFkqWgtYTTrvp3RQ8k1K4w8DUQLfWx8/IgF
+         /7lQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725575311; x=1726180111;
+        d=1e100.net; s=20230601; t=1725573665; x=1726178465;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=J8bsFvi274Z1/0//LbJLrnJX6Kj0fdqJNvlLX9twL68=;
-        b=gjkvKLv5W1Jc7VvPOpfhUwlwgSYggpQggWNVUpe+DqIOiDY9vDW+B6DM6LS1schEFW
-         v7ntVi1yMewoaMzOz1y6fVDtSsmBFXkJxikfo2pwLwn3SmagS0aOPdCcL6yNEZ4czjUo
-         aGHl5VFhan/T6hVwkWSC7ul4qNrBpBF5yVhl2WpxCgofudo+tCz2jsgJSl7EYpukE289
-         Taq3uAPuXDl/CS/7fQNazS5jIsbW/ZB2L/KnIs3lC1Ap8HfgrxHUX9u1YMYkiMJ/wPx+
-         exzezjW4+zAYs1KydvjP5+BaMf1coCIiCwDj3P1RS21tlWKDq8JKet8dPac5gwkMch3N
-         R19g==
-X-Forwarded-Encrypted: i=1; AJvYcCWNOFfuTA1l3UVD1eREh7w3/Mrn+1VVGXG6aPFVutiH31up7+tA7xgbgOwO3nDSB0JOyDonOJnS9C2KwrAWrA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzJwHnqDFLFD5f6i260yPyOdXdJZ7gRLfFpKHodCb0/SYSldECi
-	yR9/0vUuATOfHC3iQ2VR4p/+XAdMW9wI0xT0WFDH/IEgPpWKVmtI
-X-Google-Smtp-Source: AGHT+IG76TGZrQuFkLyAWbX5VvJXhIHiBLmreTJqK6O6LTzwG4AxcmxhJGyEUvCTmRyQUMq0pOX0MQ==
-X-Received: by 2002:a5d:6743:0:b0:374:93c4:2f61 with SMTP id ffacd0b85a97d-378895c4851mr335843f8f.5.1725575310703;
-        Thu, 05 Sep 2024 15:28:30 -0700 (PDT)
+        bh=5HUUgDpFpg7CH7B/u64K6gdMfWIHArY9NWamcfsBl4o=;
+        b=dsxlNpRx3PglFxqVg0nqVgyawuTcCZ6mH+K4Ezs+8jM7S5vMv6v5xIwBsG9GEvX3pd
+         P3hHnqhIg6YhjYnincH0TnYlTN3LHEsvOH/dL9GkXSYwM46WF5OnXqR2pvwYfXDZNbR1
+         9RToEy6cfoyQlcMjn1YBaYpSETRK84zHYIWSRjsZZcm71DGOKdRn04q8UbFxDZB6F+BD
+         FNp+wAGiriTLGjCYJNq/IUspPgHyKEO2IFStGOoTCv3n24IZn5leMRxEchx6AXQWYE8f
+         ZTK0Cp0SP/5bm09opGFkwfd4UOR4G8V1P88mVGdTbcuFB84cw3Z+x/IbR5wiV3zH2Au6
+         1QRQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWFA3+xFj8xSmM2l4iPfIwzEmjqJG3cDg59ClJ6mbRdwUyNkP0YzqYfSLx52grbKLcRddYrft0cyKCbzoHi3h8=@lists.infradead.org, AJvYcCXv8/mTUIkP70FpX7x31ariKHiitsaLnRT7X7PEmnevnIhdm4IUbmpnbtwVnlJGQ8b5/boih7XFn4ziTh1GszPZ@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy/Jdx7Q81iMX/cN4atlbuJE2blbs4JU4m5U/jvtw42/424MLKZ
+	tkE+30Hbumb5QWBkp7oRadc5NUwN4e9+BhSYRABH5me9QaEsJiPM
+X-Google-Smtp-Source: AGHT+IElmqtoaM4ugIP0F84FqbTkzYo43tKuoYe27gwYhYG+/JbVKL3d4EHnf4sLbNRkLnSCI011IQ==
+X-Received: by 2002:a5d:5388:0:b0:376:27b7:da81 with SMTP id ffacd0b85a97d-37627b7e3a3mr7200895f8f.22.1725573664211;
+        Thu, 05 Sep 2024 15:01:04 -0700 (PDT)
 Received: from [192.168.2.177] ([81.0.7.156])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-374ba30d5b8sm16525567f8f.15.2024.09.05.15.28.28
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42ca05ca70fsm194115e9.16.2024.09.05.15.01.01
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 05 Sep 2024 15:28:29 -0700 (PDT)
-Message-ID: <3d85b40b-bcb1-430f-89d5-739ad6f907d4@gmail.com>
-Date: Fri, 6 Sep 2024 00:28:27 +0200
+        Thu, 05 Sep 2024 15:01:03 -0700 (PDT)
+Message-ID: <72b3ddc2-1c56-402b-a58a-cfe7e9f4aaa7@gmail.com>
+Date: Fri, 6 Sep 2024 00:01:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/2] arm64: dts: mediatek: Add MT8186 Ponyta
-To: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>,
- angelogioacchino.delregno@collabora.com, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, knoxchiou@google.com,
- hsinyi@google.com
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-References: <20240904081501.2060933-1-cengjianeng@huaqin.corp-partner.google.com>
+Subject: Re: [PATCH v8 3/5] arm64: defconfig: enable mt8365 sound
+To: Alexandre Mergnat <amergnat@baylibre.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>
+Cc: linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org
+References: <20240226-audio-i350-v8-0-e80a57d026ce@baylibre.com>
+ <20240226-audio-i350-v8-3-e80a57d026ce@baylibre.com>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -123,13 +125,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20240904081501.2060933-1-cengjianeng@huaqin.corp-partner.google.com>
+In-Reply-To: <20240226-audio-i350-v8-3-e80a57d026ce@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240905_152833_283735_4FD3609D 
-X-CRM114-Status: UNSURE (   9.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240905_150107_465812_972869E9 
+X-CRM114-Status: GOOD (  12.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,37 +147,33 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 04/09/2024 10:14, Jianeng Ceng wrote:
-> This is v3 of the MT8186 Chromebook device tree series.
+On 05/09/2024 11:07, Alexandre Mergnat wrote:
+> Enable the MediaTek MT8365-EVK sound support.
+> 
+> The audio feature is handled by the MT8365 SoC and
+> the MT6357 PMIC codec audio.
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-Please send this kind of patches also to the mediatek mailinglist:
-moderated list:ARM/Mediatek SoC support <linux-mediatek@lists.infradead.org>
-
-Thanks
-Matthias
+Applied, thanks.
 
 > ---
-> Changes in v3:
-> - PATCH 0/2: Add the modify records.
-> - PATCH 1/2: Modify lable to label.
-> - Link to v2:https://lore.kernel.org/all/20240903061603.3007289-1-cengjianeng@huaqin.corp-partner.google.com/
+>   arch/arm64/configs/defconfig | 2 ++
+>   1 file changed, 2 insertions(+)
 > 
-> Changes in v2:
-> - PATCH 2/2: Modify the dtb name without rev2.
-> - Link to v1:https://lore.kernel.org/all/20240902125502.1844374-1-cengjianeng@huaqin.corp-partner.google.com/
-> 
-> Jianeng Ceng (2):
->    dt-bindings: arm: mediatek: Add MT8186 Ponyta Chromebook
->    arm64: dts: mediatek: Add MT8186 Ponyta Chromebooks
-> 
->   .../devicetree/bindings/arm/mediatek.yaml     | 11 +++++
->   arch/arm64/boot/dts/mediatek/Makefile         |  2 +
->   .../mediatek/mt8186-corsola-ponyta-sku0.dts   | 24 ++++++++++
->   .../mediatek/mt8186-corsola-ponyta-sku1.dts   | 27 ++++++++++++
->   .../dts/mediatek/mt8186-corsola-ponyta.dtsi   | 44 +++++++++++++++++++
->   5 files changed, 108 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta.dtsi
+> diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+> index 7d32fca64996..111ca3abd651 100644
+> --- a/arch/arm64/configs/defconfig
+> +++ b/arch/arm64/configs/defconfig
+> @@ -960,6 +960,8 @@ CONFIG_SND_SOC_MT8192=m
+>   CONFIG_SND_SOC_MT8192_MT6359_RT1015_RT5682=m
+>   CONFIG_SND_SOC_MT8195=m
+>   CONFIG_SND_SOC_MT8195_MT6359=m
+> +CONFIG_SND_SOC_MT8365=m
+> +CONFIG_SND_SOC_MT8365_MT6357=m
+>   CONFIG_SND_MESON_AXG_SOUND_CARD=m
+>   CONFIG_SND_MESON_GX_SOUND_CARD=m
+>   CONFIG_SND_SOC_QCOM=m
 > 
 
