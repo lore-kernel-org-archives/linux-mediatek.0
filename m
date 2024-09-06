@@ -4,95 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED1EDE6FE30
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Sep 2024 16:16:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEFFAE6FE41
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Sep 2024 18:05:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
-	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0gVP1IO5B0KxwnAMcPOyPNDvjw/mvY2nbIjRYuUupdU=; b=ZWWZOX7vrZfbHl/VxQRNYvRBuE
-	IRrumjuUwRc5TPK46EobEsp/XF6ANV8Ran9NnHynW8yU2f1HQ1GdnCRAlF2GVL3mUHzAiU4JmgOcQ
-	IMc23dfo/bcn9sH+l/PEys0KHqUL+vPaK4aqtiaNmp82lTaQdHG5E6qocP6P5DwuV2M5ghBODrk5g
-	P26cEhcnDccGxysUXhJIK+w2ISF6uCc0mcMAj5h++pbZdW/YKqmyazzIlwH+WeWjQXvhCXbkD7P+s
-	Ab1Eqx81hrDjH9ZxupJq9VVqnaHWlNIWZhEQ5lGGa5qyus1DHb3kiKHP11aKIIt/8IycXQ5Vyxavc
-	v4mJfQ9A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cHL0uqqr3ZSeba+yYFH78zYFthq8cZehaMff5A8+j+s=; b=Imv8WrINvPsrAtWwmQQR9x20nX
+	BKWz1wUSQaye2y6bFITfnWxnLgvIMEu3ZBDFPJz7GXBO/GKTXTFqma1Fejpj6eQ/UoFgTon5Pekwf
+	ykFPVMt9OcQ9aLiF7Z9bdFN/3of1yNTixZrBZkfVnwNqJfF7E884c4u06usPmrnsqLpwfSiDOAivl
+	uljqg4Bs4ChIoOt5JzSbmXYyKmzFkY/P4CtlEzYHbKYGviHA+bFkX1MhKqKlGlCBYmYe82DkhmTZ7
+	Vj2+I22/gK4vM2jSJCw1EQ3W1DTyFmBW7XMesHGiO6u8CPd/9mH5R9JNj6AgmYUq0bDv9W5ER6bj2
+	4uijLigw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smbdW-0000000CvZK-2puW;
-	Fri, 06 Sep 2024 16:16:38 +0000
-Received: from relay5-d.mail.gandi.net ([217.70.183.197])
+	id 1smdL0-0000000DCRn-0GTq;
+	Fri, 06 Sep 2024 18:05:38 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smaVG-0000000Cf6s-3IvM;
-	Fri, 06 Sep 2024 15:04:04 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 10FF81C000D;
-	Fri,  6 Sep 2024 15:03:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1725635040;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=0gVP1IO5B0KxwnAMcPOyPNDvjw/mvY2nbIjRYuUupdU=;
-	b=lPF136AFaXPTVEKxnUQMWPcv+NslqQqYRoTBEdgY2gcjR9kVQpL2qGAMOp23FcUtGHqAal
-	m6W2r6rK4/3g+NFSfeQtOQG21ZBHap2EfQYyAVC/vWZniDLb326RRU107oBb5UGa4yab+z
-	AupglR5W41ecFm6fBikBJLW2i6kjgpO3SeNlEzdkMUZEbctp/Pwp68Emx4/96MVNsC+trh
-	0tOCnVwOtENsa8b4qxAoHl9vR0djb5fKuZPzcRSdD7vX1yGHvIJwAP68a3h8NEjUDw8auw
-	W5JtVwLM25N7hJws1c+MDFny/rk4NYO/BXqOpJiGfJ57aGAogkUW5ec+cjnfXQ==
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Jinjie Ruan <ruanjinjie@huawei.com>,
-	miquel.raynal@bootlin.com,
-	michal.simek@amd.com,
-	richard@nod.at,
-	vigneshr@ti.com,
-	liang.yang@amlogic.com,
-	neil.armstrong@linaro.org,
-	khilman@baylibre.com,
-	jbrunet@baylibre.com,
-	martin.blumenstingl@googlemail.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	heiko@sntech.de,
-	mcoquelin.stm32@gmail.com,
-	alexandre.torgue@foss.st.com,
-	wens@csie.org,
-	jernej.skrabec@gmail.com,
-	samuel@sholland.org,
-	kees@kernel.org,
-	gustavoars@kernel.org,
-	linux@treblig.org,
-	robh@kernel.org,
-	u.kleine-koenig@pengutronix.de,
-	erick.archer@gmx.com,
-	christophe.jaillet@wanadoo.fr,
-	val@packett.cool,
-	christophe.kerello@foss.st.com,
-	linux-mtd@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	krzk@kernel.org,
-	jic23@kernel.org
-Subject: Re: [PATCH -next RESEND 04/10] mtd: rawnand: marvell: drm/rockchip: Use for_each_child_of_node_scoped()
-Date: Fri,  6 Sep 2024 17:03:57 +0200
-Message-ID: <20240906150357.734687-1-miquel.raynal@bootlin.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240826094328.2991664-5-ruanjinjie@huawei.com>
-References: 
+	id 1smdJJ-0000000DC4r-2DwM;
+	Fri, 06 Sep 2024 18:03:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 06D83A451D7;
+	Fri,  6 Sep 2024 18:03:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 788F0C4CEC4;
+	Fri,  6 Sep 2024 18:03:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1725645832;
+	bh=hx2BvcSYEXDXsd30G48n6SaMQB+nEO53TTi/T3dYx4k=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qNf4LlgTbFvMEsrAmRZpefJfB7LgGkp1GKIdjdZVUrStxdYfdNUhqcYF1Vg4/sWdr
+	 iJnKgMx01XSppe7SEn8cgQC0+dut2FaFj6v29fKgojWKyIq1XC4xBHPfJz+/DKvFIO
+	 M9GqbtUaLK23Pnn+gVrEYABK/8Q1l1lTpHVSDR5PwSL/ck5ChGn7JVNf8zsHsthyXa
+	 L/kZbXhvPgc75ybcuF/M/h/P0wsjULMD560Yjfi/ERrVWuWVzkPRfxtFLHctfGloOs
+	 AjOm3siThTDeAQnVWK55dFYxXnGZJ09ZwguIDUjoalkFlw08RO6kRI3OC1SB+aMpXD
+	 LqwDIAg+OcoEw==
+Date: Fri, 6 Sep 2024 11:03:48 -0700
+From: Nathan Chancellor <nathan@kernel.org>
+To: Mark Brown <broonie@kernel.org>,
+	Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Nicolas Belin <nbelin@baylibre.com>
+Subject: Re: (subset) [PATCH v7 00/16] Add audio support for the MediaTek
+ Genio 350-evk board
+Message-ID: <20240906180348.GA1239602@thelio-3990X>
+References: <20240226-audio-i350-v7-0-6518d953a141@baylibre.com>
+ <172544860860.19172.7052813450885034844.b4-ty@kernel.org>
 MIME-Version: 1.0
-X-linux-mtd-patch-notification: thanks
-X-linux-mtd-patch-commit: b'707f2d0720ed6831d736cca084b62ba97eb7fa23'
-Content-Transfer-Encoding: 8bit
-X-GND-Sasl: miquel.raynal@bootlin.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <172544860860.19172.7052813450885034844.b4-ty@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240906_080402_979784_A867462F 
-X-CRM114-Status: UNSURE (   4.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240906_110353_727814_97150B55 
+X-CRM114-Status: GOOD (  17.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,13 +89,222 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2024-08-26 at 09:43:22 UTC, Jinjie Ruan wrote:
-> Avoids the need for manual cleanup of_node_put() in early exits
-> from the loop.
-> 
-> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+On Wed, Sep 04, 2024 at 12:16:48PM +0100, Mark Brown wrote:
+> [01/16] ASoC: dt-bindings: mediatek,mt8365-afe: Add audio afe document
+>         commit: ceb3ca2876243e3ea02f78b3d488b1f2d734de49
+> [02/16] ASoC: dt-bindings: mediatek,mt8365-mt6357: Add audio sound card document
+>         commit: 76d80dcdd55f70b28930edb97b96ee375e1cce5a
+> [03/16] dt-bindings: mfd: mediatek: Add codec property for MT6357 PMIC
+>         commit: 761cab667898d86c04867948f1b7aec1090be796
+> [04/16] ASoC: mediatek: mt8365: Add common header
+>         commit: 38c7c9ddc74033406461d64e541bbc8268e77f73
+> [05/16] ASoC: mediatek: mt8365: Add audio clock control support
+>         commit: ef307b40b7f0042d54f020bccb3e728ced292282
+> [06/16] ASoC: mediatek: mt8365: Add I2S DAI support
+>         commit: 402bbb13a195caa83b3279ebecdabfb11ddee084
+> [07/16] ASoC: mediatek: mt8365: Add ADDA DAI support
+>         commit: 7c58c88e524180e8439acdfc44872325e7f6d33d
+> [08/16] ASoC: mediatek: mt8365: Add DMIC DAI support
+>         commit: 1c50ec75ce6c0c6b5736499393e522f73e19d0cf
+> [09/16] ASoC: mediatek: mt8365: Add PCM DAI support
+>         commit: 5097c0c8634d703e3c59cfb89831b7db9dc46339
+> [10/16] ASoc: mediatek: mt8365: Add a specific soundcard for EVK
+>         commit: 1bf6dbd75f7603dd026660bebf324f812200dc1b
+> [11/16] ASoC: mediatek: mt8365: Add the AFE driver support
+>         commit: e1991d102bc2abb32331c462f8f3e77059c69578
 
-Applied to https://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git nand/next, thanks.
+I am seeing several warnings/errors from both GCC and Clang with
+ARCH=arm64 allmodconfig after this series appeared in next-20240906.
+As far as I can tell, they appear to agree. I wondered how this was not
+caught during the series development but perhaps it was written against
+a development tree that did not have Arnd's extrawarn series from 6.10
+in it yet? I was going to work on a series but I was not sure about the
+best way to address the overflow errors, hence just the report.
 
-Miquel
+Clang 19:
+
+  sound/soc/mediatek/mt8365/mt8365-afe-clk.c:298:5: error: no previous prototype for function 'mt8365_afe_hd_engen_enable' [-Werror,-Wmissing-prototypes]
+    298 | int mt8365_afe_hd_engen_enable(struct mtk_base_afe *afe, bool apll1)
+        |     ^
+  sound/soc/mediatek/mt8365/mt8365-afe-clk.c:298:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+    298 | int mt8365_afe_hd_engen_enable(struct mtk_base_afe *afe, bool apll1)
+        | ^
+        | static 
+  sound/soc/mediatek/mt8365/mt8365-afe-clk.c:310:5: error: no previous prototype for function 'mt8365_afe_hd_engen_disable' [-Werror,-Wmissing-prototypes]
+    310 | int mt8365_afe_hd_engen_disable(struct mtk_base_afe *afe, bool apll1)
+        |     ^
+  sound/soc/mediatek/mt8365/mt8365-afe-clk.c:310:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+    310 | int mt8365_afe_hd_engen_disable(struct mtk_base_afe *afe, bool apll1)
+        | ^
+        | static 
+  sound/soc/mediatek/mt8365/mt8365-afe-clk.c:314:24: error: implicit conversion from 'unsigned long' to 'unsigned int' changes value from 18446744073709551614 to 4294967294 [-Werror,-Wconstant-conversion]
+    313 |                 regmap_update_bits(afe->regmap, AFE_HD_ENGEN_ENABLE,
+        |                 ~~~~~~~~~~~~~~~~~~
+    314 |                                    AFE_22M_PLL_EN, ~AFE_22M_PLL_EN);
+        |                                                    ^~~~~~~~~~~~~~~
+  sound/soc/mediatek/mt8365/mt8365-afe-clk.c:317:24: error: implicit conversion from 'unsigned long' to 'unsigned int' changes value from 18446744073709551613 to 4294967293 [-Werror,-Wconstant-conversion]
+    316 |                 regmap_update_bits(afe->regmap, AFE_HD_ENGEN_ENABLE,
+        |                 ~~~~~~~~~~~~~~~~~~
+    317 |                                    AFE_24M_PLL_EN, ~AFE_24M_PLL_EN);
+        |                                                    ^~~~~~~~~~~~~~~
+  4 errors generated.
+
+  sound/soc/mediatek/mt8365/mt8365-dai-adda.c:93:8: error: implicit conversion from 'unsigned long' to 'unsigned int' changes value from 18446744073709551614 to 4294967294 [-Werror,-Wconstant-conversion]
+     91 |                 regmap_update_bits(afe->regmap, AFE_ADDA_UL_DL_CON0,
+        |                 ~~~~~~~~~~~~~~~~~~
+     92 |                                    AFE_ADDA_UL_DL_ADDA_AFE_ON,
+     93 |                                    ~AFE_ADDA_UL_DL_ADDA_AFE_ON);
+        |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+  1 error generated.
+
+  sound/soc/mediatek/mt8365/mt8365-mt6357.c:293:22: error: unused variable 'platform_node' [-Werror,-Wunused-variable]
+    293 |         struct device_node *platform_node;
+        |                             ^~~~~~~~~~~~~
+  sound/soc/mediatek/mt8365/mt8365-mt6357.c:295:6: error: unused variable 'i' [-Werror,-Wunused-variable]
+    295 |         int i, ret;
+        |             ^
+  2 errors generated.
+
+  sound/soc/mediatek/mt8365/mt8365-dai-dmic.c:64:7: error: implicit conversion from 'unsigned long' to 'unsigned int' changes value from 18446744073709551613 to 4294967293 [-Werror,-Wconstant-conversion]
+     62 |         regmap_update_bits(afe->regmap, AFE_ADDA_UL_DL_CON0,
+        |         ~~~~~~~~~~~~~~~~~~
+     63 |                            AFE_ADDA_UL_DL_DMIC_CLKDIV_ON,
+     64 |                            ~AFE_ADDA_UL_DL_DMIC_CLKDIV_ON);
+        |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  1 error generated.
+
+  sound/soc/mediatek/mt8365/mt8365-dai-i2s.c:388:8: error: implicit conversion from 'unsigned long' to 'unsigned int' changes value from 18446744073709551613 to 4294967293 [-Werror,-Wconstant-conversion]
+    386 |                 regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON0,
+        |                 ~~~~~~~~~~~~~~~~~~
+    387 |                                    COEFF_SRAM_CTRL,
+    388 |                                    (unsigned long)~COEFF_SRAM_CTRL);
+        |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  sound/soc/mediatek/mt8365/mt8365-dai-i2s.c:396:16: error: implicit conversion from 'unsigned long' to 'unsigned int' changes value from 18446744073709549567 to 4294965247 [-Werror,-Wconstant-conversion]
+    395 |                 regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON2,
+        |                 ~~~~~~~~~~~~~~~~~~
+    396 |                                    IIR_EN, (unsigned long)~IIR_EN);
+        |                                            ^~~~~~~~~~~~~~~~~~~~~~
+  sound/soc/mediatek/mt8365/mt8365-dai-i2s.c:459:16: error: implicit conversion from 'unsigned long' to 'unsigned int' changes value from 18446744073709551614 to 4294967294 [-Werror,-Wconstant-conversion]
+    458 |                 regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON0,
+        |                 ~~~~~~~~~~~~~~~~~~
+    459 |                                    ASM_ON, (unsigned long)~ASM_ON);
+        |                                            ^~~~~~~~~~~~~~~~~~~~~~
+  3 errors generated.
+
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:173:6: error: no previous prototype for function 'mt8365_afe_clk_group_44k' [-Werror,-Wmissing-prototypes]
+    173 | bool mt8365_afe_clk_group_44k(int sample_rate)
+        |      ^
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:173:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+    173 | bool mt8365_afe_clk_group_44k(int sample_rate)
+        | ^
+        | static 
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:499:5: error: no previous prototype for function 'mt8365_afe_fe_startup' [-Werror,-Wmissing-prototypes]
+    499 | int mt8365_afe_fe_startup(struct snd_pcm_substream *substream,
+        |     ^
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:499:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+    499 | int mt8365_afe_fe_startup(struct snd_pcm_substream *substream,
+        | ^
+        | static 
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:575:9: error: implicit conversion from 'unsigned long' to 'unsigned int' changes value from 18446744073709547519 to 4294963199 [-Werror,-Wconstant-conversion]
+    573 |                         regmap_update_bits(afe->regmap, AFE_CM2_CON0,
+        |                         ~~~~~~~~~~~~~~~~~~
+    574 |                                            CM_AFE_CM2_TDM_SEL,
+    575 |                                            ~CM_AFE_CM2_TDM_SEL);
+        |                                            ^~~~~~~~~~~~~~~~~~~
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:654:29: error: unused variable 'memif' [-Werror,-Wunused-variable]
+    654 |         struct mtk_base_afe_memif *memif = &afe->memif[dai_id];
+        |                                    ^~~~~
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:717:5: error: no previous prototype for function 'mt8365_afe_fe_trigger' [-Werror,-Wmissing-prototypes]
+    717 | int mt8365_afe_fe_trigger(struct snd_pcm_substream *substream, int cmd,
+        |     ^
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:717:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+    717 | int mt8365_afe_fe_trigger(struct snd_pcm_substream *substream, int cmd,
+        | ^
+        | static 
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:746:23: error: implicit conversion from 'unsigned long' to 'unsigned int' changes value from 18446744073709551599 to 4294967279 [-Werror,-Wconstant-conversion]
+    745 |                         regmap_update_bits(afe->regmap, AFE_CM1_CON0,
+        |                         ~~~~~~~~~~~~~~~~~~
+    746 |                                            CM_AFE_CM_ON, ~CM_AFE_CM_ON);
+        |                                                          ^~~~~~~~~~~~~
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:750:23: error: implicit conversion from 'unsigned long' to 'unsigned int' changes value from 18446744073709551599 to 4294967279 [-Werror,-Wconstant-conversion]
+    749 |                         regmap_update_bits(afe->regmap, AFE_CM2_CON0,
+        |                         ~~~~~~~~~~~~~~~~~~
+    750 |                                            CM_AFE_CM_ON, ~CM_AFE_CM_ON);
+        |                                                          ^~~~~~~~~~~~~
+  7 errors generated.
+
+GCC 14:
+
+  sound/soc/mediatek/mt8365/mt8365-mt6357.c: In function 'mt8365_mt6357_dev_probe':
+  sound/soc/mediatek/mt8365/mt8365-mt6357.c:295:13: error: unused variable 'i' [-Werror=unused-variable]
+    295 |         int i, ret;
+        |             ^
+  sound/soc/mediatek/mt8365/mt8365-mt6357.c:293:29: error: unused variable 'platform_node' [-Werror=unused-variable]
+    293 |         struct device_node *platform_node;
+        |                             ^~~~~~~~~~~~~
+  cc1: all warnings being treated as errors
+
+  sound/soc/mediatek/mt8365/mt8365-dai-dmic.c: In function 'audio_dmic_adda_disable':
+  sound/soc/mediatek/mt8365/mt8365-dai-dmic.c:64:28: error: conversion from 'long unsigned int' to 'unsigned int' changes value from '18446744073709551613' to '4294967293' [-Werror=overflow]
+     64 |                            ~AFE_ADDA_UL_DL_DMIC_CLKDIV_ON);
+  sound/soc/mediatek/mt8365/mt8365-dai-dmic.c: At top level:
+  sound/soc/mediatek/mt8365/mt8365-dai-dmic.c:134:12: error: 'mt8365_dai_load_dmic_iir_coeff_table' defined but not used [-Werror=unused-function]
+    134 | static int mt8365_dai_load_dmic_iir_coeff_table(struct mtk_base_afe *afe)
+        |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  cc1: all warnings being treated as errors
+
+  sound/soc/mediatek/mt8365/mt8365-dai-adda.c: In function 'mt8365_dai_disable_adda_on':
+  sound/soc/mediatek/mt8365/mt8365-dai-adda.c:93:36: error: conversion from 'long unsigned int' to 'unsigned int' changes value from '18446744073709551614' to '4294967294' [-Werror=overflow]
+     93 |                                    ~AFE_ADDA_UL_DL_ADDA_AFE_ON);
+  cc1: all warnings being treated as errors
+
+  sound/soc/mediatek/mt8365/mt8365-afe-clk.c:298:5: error: no previous prototype for 'mt8365_afe_hd_engen_enable' [-Werror=missing-prototypes]
+    298 | int mt8365_afe_hd_engen_enable(struct mtk_base_afe *afe, bool apll1)
+        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+  sound/soc/mediatek/mt8365/mt8365-afe-clk.c:310:5: error: no previous prototype for 'mt8365_afe_hd_engen_disable' [-Werror=missing-prototypes]
+    310 | int mt8365_afe_hd_engen_disable(struct mtk_base_afe *afe, bool apll1)
+        |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+  sound/soc/mediatek/mt8365/mt8365-afe-clk.c: In function 'mt8365_afe_hd_engen_disable':
+  sound/soc/mediatek/mt8365/mt8365-afe-clk.c:314:52: error: conversion from 'long unsigned int' to 'unsigned int' changes value from '18446744073709551614' to '4294967294' [-Werror=overflow]
+    314 |                                    AFE_22M_PLL_EN, ~AFE_22M_PLL_EN);
+  sound/soc/mediatek/mt8365/mt8365-afe-clk.c:317:52: error: conversion from 'long unsigned int' to 'unsigned int' changes value from '18446744073709551613' to '4294967293' [-Werror=overflow]
+    317 |                                    AFE_24M_PLL_EN, ~AFE_24M_PLL_EN);
+  cc1: all warnings being treated as errors
+
+  sound/soc/mediatek/mt8365/mt8365-dai-i2s.c: In function 'mt8365_afe_set_2nd_i2s_asrc':
+  sound/soc/mediatek/mt8365/mt8365-dai-i2s.c:388:36: error: conversion from 'long unsigned int' to 'unsigned int' changes value from '18446744073709551613' to '4294967293' [-Werror=overflow]
+    388 |                                    (unsigned long)~COEFF_SRAM_CTRL);
+  sound/soc/mediatek/mt8365/mt8365-dai-i2s.c:396:44: error: conversion from 'long unsigned int' to 'unsigned int' changes value from '18446744073709549567' to '4294965247' [-Werror=overflow]
+    396 |                                    IIR_EN, (unsigned long)~IIR_EN);
+  sound/soc/mediatek/mt8365/mt8365-dai-i2s.c: In function 'mt8365_afe_set_2nd_i2s_asrc_enable':
+  sound/soc/mediatek/mt8365/mt8365-dai-i2s.c:459:44: error: conversion from 'long unsigned int' to 'unsigned int' changes value from '18446744073709551614' to '4294967294' [-Werror=overflow]
+    459 |                                    ASM_ON, (unsigned long)~ASM_ON);
+  cc1: all warnings being treated as errors
+
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:173:6: error: no previous prototype for 'mt8365_afe_clk_group_44k' [-Werror=missing-prototypes]
+    173 | bool mt8365_afe_clk_group_44k(int sample_rate)
+        |      ^~~~~~~~~~~~~~~~~~~~~~~~
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:499:5: error: no previous prototype for 'mt8365_afe_fe_startup' [-Werror=missing-prototypes]
+    499 | int mt8365_afe_fe_startup(struct snd_pcm_substream *substream,
+        |     ^~~~~~~~~~~~~~~~~~~~~
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c: In function 'mt8365_afe_fe_hw_params':
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:575:44: error: conversion from 'long unsigned int' to 'unsigned int' changes value from '18446744073709547519' to '4294963199' [-Werror=overflow]
+    575 |                                            ~CM_AFE_CM2_TDM_SEL);
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c: In function 'mt8365_afe_fe_hw_free':
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:654:36: error: unused variable 'memif' [-Werror=unused-variable]
+    654 |         struct mtk_base_afe_memif *memif = &afe->memif[dai_id];
+        |                                    ^~~~~
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c: At top level:
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:717:5: error: no previous prototype for 'mt8365_afe_fe_trigger' [-Werror=missing-prototypes]
+    717 | int mt8365_afe_fe_trigger(struct snd_pcm_substream *substream, int cmd,
+        |     ^~~~~~~~~~~~~~~~~~~~~
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c: In function 'mt8365_afe_fe_trigger':
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:746:58: error: conversion from 'long unsigned int' to 'unsigned int' changes value from '18446744073709551599' to '4294967279' [-Werror=overflow]
+    746 |                                            CM_AFE_CM_ON, ~CM_AFE_CM_ON);
+  sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:750:58: error: conversion from 'long unsigned int' to 'unsigned int' changes value from '18446744073709551599' to '4294967279' [-Werror=overflow]
+    750 |                                            CM_AFE_CM_ON, ~CM_AFE_CM_ON);
+  cc1: all warnings being treated as errors
+
+Cheers,
+Nathan
 
