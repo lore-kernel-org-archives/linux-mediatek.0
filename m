@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 885F7CE7AE6
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Sep 2024 08:25:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E546CCE7AE6
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Sep 2024 08:28:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C/qbsQnhoRVWnIKxqDbsfPTTFW5h8DVW8RmtvDaWG/c=; b=dGceR4uio0v0vv5A0WVNHzOc8t
-	JyzMi2Btw6aAGaWoMziEQfjzujVNBge9IRP+SDq2W5HUqfDNi183fu6pa64K73i0hoPFtQUSKTH0L
-	3xtH3R3T2HSDU0EKSNRl9yIB71hdJVKL3lsIPUXlMB9XsP/6OD+0jPuXChL76Iy1VknJXTMlNrdIh
-	4QZDjahDg9bNJKoAn4Bwyq9ex815TR+RALz489G2VcoV87s4pMsLpyrHEj8d9W90o6JFvOkF7tOjX
-	lW4BY2RQ1Wom4mLvI6VBls8zIdYMCjk2NYMXcC8nfBjcdMf62WjY7pW2psTGr/c/ZaeW6kc+KjybX
-	jCZ9bgow==;
+	bh=UKrKQ6yNH03PcVJ7Khtyx7BtEPnNtK9NfpXH/VDEpNM=; b=0XIOiBjSnx3LgtkRMWChhnN3K7
+	AvM2qL1pdeTCJ4tvsO63QyCQiAraUjO+xyZyuZ/Rd2G586/kWhtAewHRA04O2dyK++HWlA0MDGWhF
+	IT5MOXNzq08R2bhsAQLBGTNnmfQxutuQPjOvZ/NRoHrTGO5hLK23cRfIgYKhXvx84WUoiGWyvxVEc
+	MIqHtIJF4IOXOenUE6V3JRXEGE/ZtWC+QjM0blRfg5shU+PjvMWeFAAJ1x9iK+1+fXvu0nN4v5ALT
+	6+ITBBW31mJOZW98q9M55vh5668KizmK/DZQBy5Mg47WgcFSGNaWm5KTRc1ioa46jcf0QstAcllr+
+	GhAh1lyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smUHM-0000000BIof-0nlv;
-	Fri, 06 Sep 2024 08:25:16 +0000
-Received: from a7-50.smtp-out.eu-west-1.amazonses.com ([54.240.7.50])
+	id 1smUKK-0000000BJtM-2ZZ4;
+	Fri, 06 Sep 2024 08:28:20 +0000
+Received: from a7-31.smtp-out.eu-west-1.amazonses.com ([54.240.7.31])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smU8D-0000000BGGD-2ZIf;
-	Fri, 06 Sep 2024 08:15:51 +0000
+	id 1smUA0-0000000BGvU-2o1l;
+	Fri, 06 Sep 2024 08:17:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1725610546;
+	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1725610656;
 	h=Message-ID:Date:MIME-Version:Subject:To:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding;
-	bh=c6Ae/CSZxtzebGJwopcs50GFm8MBKWaLfuixS2uzqMg=;
-	b=kUFFKTHHBd/JqEo+8xtUNUiXSTdiKf1TVC21fUrLGXz912Wp7bTIpwt3o4aMlXN7
-	eI3CaYLsoOg0sn7ECQkYLryyqyiJ0F9BcBkYN9pY+h6XjciEqvZyH0rZOQT0Pa9xNFS
-	rQZr1+to56I7wILAZJVVJX6XoMuWG7BGi+PHigEaEiRgrDL2+8fy/vKhnILqcqVL+2w
-	GtYhzrQx/PBCEeo1FD0egxIPrwO0HzCGidQ7wZX9cCtrpj8BO/30HOdwWCnD/f7hTye
-	DPktdonfuIBZMxKbFA4FVradAcr4E5HntroxWs4MyQMW9U5idKwodeFciA6NgU6+lkQ
-	BnQcE/7qBQ==
+	bh=5Wb8fP1SEMFE6J1hco629bsm8w9ZG7Mlhn8OcjaJNVo=;
+	b=RcHa/+l+DOBAVoa5TU8sKEbZ2RoOrayZl6FYJIZpncFsGRSW6hkVqo8X0X5pbg/c
+	ySnV1UBHh71xdIlqyh+C1ZpotRBts8tbHFwD3Z0T+UZeAcFCMdatoJG1BBrHmOOSLnW
+	UKmp1gD5Z6NdMmpZhjjKU5bnTMK17twPYiZY+HmY5gJy0Lbgng9lqFnLtrZt81J0MrH
+	ZQDQsLIguCzeS7E8mJBNi7bh96LLLSa7XIQ5C3VM/sibaWjSQhAiP7ZRiWrWohwPb9k
+	Imk8Adthfr/s/egcEx7iPaPN97ZCW/uoWF/TtsO+heNo7EH3A7ySj58bsd0TkZiU6SN
+	dnD8pPNtmQ==
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1725610546;
+	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1725610656;
 	h=Message-ID:Date:MIME-Version:Subject:To:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Feedback-ID;
-	bh=c6Ae/CSZxtzebGJwopcs50GFm8MBKWaLfuixS2uzqMg=;
-	b=H4SOWUe8qRqlOzVrsykccb12OFxX8XUYslSv0/QIq/FiNVwLK30PLKhfdFgt3dvK
-	+urQXrGjVP06HCGzU6GfFJdzx9fq00WBGMXlDBw3SkeDpjwfp4ZIeYy/CHU8P8rTSw4
-	UtVp/4Ay+RHL0tncUd+2RL8kzP4rR+8EVhf59Vjk=
-Message-ID: <01020191c667530a-66e8f4db-1b0e-46d3-a69b-3362e84e0f02-000000@eu-west-1.amazonses.com>
-Date: Fri, 6 Sep 2024 08:15:45 +0000
+	bh=5Wb8fP1SEMFE6J1hco629bsm8w9ZG7Mlhn8OcjaJNVo=;
+	b=VTzYYLNuMnj343jmhvymhUF3UBDLYeg0IHWy/sjm2BenIgksQrOOtJ7rXr8A5LON
+	pn0/0SDI8fGzrMP87AZ1WscwGB7B96cneacJ2giOcf6v71S9RNqeYJ/368NJHIKvVg7
+	9hgxLLKYn1AKxHZd7YqGlB+IzrzG+L/FmTIW9VDw=
+Message-ID: <01020191c669040b-0320e5c0-d4b2-4241-a403-09ec32f7ef35-000000@eu-west-1.amazonses.com>
+Date: Fri, 6 Sep 2024 08:17:36 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/3] media: platform: mtk-mdp3: Get fine-grain control
- of cmdq_pkt_finalize()
+Subject: Re: [PATCH v4 3/3] soc: mediatek: cmdq: Remove cmdq_pkt_finalize()
+ helper function
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
 	Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -58,17 +58,17 @@ To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
 	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
 References: <20240901143259.16849-1-chunkuang.hu@kernel.org>
- <20240901143259.16849-2-chunkuang.hu@kernel.org>
+ <20240901143259.16849-4-chunkuang.hu@kernel.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240901143259.16849-2-chunkuang.hu@kernel.org>
+In-Reply-To: <20240901143259.16849-4-chunkuang.hu@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
-X-SES-Outgoing: 2024.09.06-54.240.7.50
+X-SES-Outgoing: 2024.09.06-54.240.7.31
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240906_011550_361837_70BDBDFC 
-X-CRM114-Status: UNSURE (   4.44  )
+X-CRM114-CacheID: sfid-20240906_011740_912930_B6E7D94D 
+X-CRM114-Status: UNSURE (   4.74  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,6 +90,9 @@ Il 01/09/24 16:32, Chun-Kuang Hu ha scritto:
 > 
 > Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 
+I'll pick this one after the media patches will be mainlined to avoid issues.
+
+In the meanwhile, mainly as a self-reminder:
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
