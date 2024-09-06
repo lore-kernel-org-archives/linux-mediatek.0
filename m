@@ -4,83 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50991E6FE48
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Sep 2024 21:05:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D97BE6FE4A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Sep 2024 21:26:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pbwzxJltLtuBGPdLGYHCdOUpJUbGvZ4l4O7xd13TLmg=; b=UBUM3iirIDdjZJnGC3lNY70YNg
-	dDTbazqd2ABp2A58aukVP093s39w/5L0YmKd7McaLm1HDAJ5qwXcVq1q7rgD44EoWkAYth4XN6wWK
-	fBaoLnANsJe/YTOqah0alzF26Z/nkF6qHbE8FO80V6C8q56I/QQ+QIkLzaCSPDoeZBpj8Dd6OJHuW
-	InSEl56TvM10Ve5ss8wDSL3Ce8DwTFOye7JERNQxn5JfAa3Ei414w2eiqbl5PG5j29cOfBCJOUe/a
-	Yn6IHHcACxgE+fUZGtD6ECL56T9bYblpj63s8sFQAT+BBmbDFT05Vz+S6R48B0jSz00469lvNTGBb
-	BT80EjNA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=modpcTFGLF9aKbO8/hxRVTkNY+Z5zDvT8kayu0jRlU4=; b=p2xNd+OOzL17QeTHR8zUBF8RSl
+	GPmIw2aY3DTESvNy0x9kczkEyLK8BiZGDDVpEafaf8ezrB4qqYtQiq0dx4WJjF/KTsLEwpttiGyxp
+	sNWHgc99Dz03/QL0MAauqSet8KoE7NzQWTmdmK0KWt2wxT6phgSIFGdjofdeKwel3Yd5AcjNR+8W6
+	PxPmXQSJsRQlVYPNakJ/B/R/BSTL/2Aqd3m7dQakW3kxWr+bCcKj4H+iEjX7uYL41uwjCAdgop0zr
+	fH8ewG+iOWQ8HlDG3Em5I0eBDtk5Co006qIxydrkfh5a+LWyH/c+ZyiaMFJLS1VuvQzEylJ4O3gCe
+	GVGW3QqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smg9S-0000000DcSk-3OKW;
-	Fri, 06 Sep 2024 21:05:54 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1smgTq-0000000Dexn-02Sd;
+	Fri, 06 Sep 2024 21:26:58 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smg8S-0000000DcKF-2dOw;
-	Fri, 06 Sep 2024 21:04:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 396A5A452C7;
-	Fri,  6 Sep 2024 21:04:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C40CC4CEC4;
-	Fri,  6 Sep 2024 21:04:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725656691;
-	bh=Qi7l3LEit7RU0ApqPXLuPy7zvE5YFnc5ZdG9M93j8ms=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Vmb8um88N+sRkcpvVWHxnTOb8jGW9yFBSYtGRagysQ7mAgSmuSeox8PgqMTglme18
-	 +F840LNShRhr7zMt8FRUXxYglgaH9GIc5+VaGdBG23kUf8obXYjcLJQpli7jugzmp4
-	 rlxP32YE2f7J5Ne4XKrLsuOG46nI+Pz2iEP1lPAK4cxtkk2+pdJjlir2C3H6jspetw
-	 kyo5qKCDSu+5EdqKASCPiA6qgIzRAoJcvGsA9/8F7Ji173UqxRkzosN5vapkHrlAvw
-	 izCCxVZm+mn/F1BH2QanTGH/dHLf1VWbrfDw1UcWbcJRAgZ3lh6rtmWNe51vWM6pfw
-	 URZoLmwXGjnHg==
-Date: Fri, 6 Sep 2024 22:04:48 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Nathan Chancellor <nathan@kernel.org>
-Cc: Alexandre Mergnat <amergnat@baylibre.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lee Jones <lee@kernel.org>, Flora Fu <flora.fu@mediatek.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Nicolas Belin <nbelin@baylibre.com>
-Subject: Re: (subset) [PATCH v7 00/16] Add audio support for the MediaTek
- Genio 350-evk board
-Message-ID: <ZttucCV86ryyqIiT@finisterre.sirena.org.uk>
-References: <20240226-audio-i350-v7-0-6518d953a141@baylibre.com>
- <172544860860.19172.7052813450885034844.b4-ty@kernel.org>
- <20240906180348.GA1239602@thelio-3990X>
- <ZttJdexQFOq2Q9iQ@finisterre.sirena.org.uk>
- <20240906192323.GA3160860@thelio-3990X>
+	id 1smgTm-0000000Dex3-1I0p
+	for linux-mediatek@lists.infradead.org;
+	Fri, 06 Sep 2024 21:26:55 +0000
+Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-5c26852af8fso2623431a12.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 06 Sep 2024 14:26:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1725658011; x=1726262811; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=modpcTFGLF9aKbO8/hxRVTkNY+Z5zDvT8kayu0jRlU4=;
+        b=T6WvqpSD9Cwlu5L+WCeEAJjEHkvSxcPRDu7qm1RHFr6igCNnJa5/nceuRbVzaT3VJy
+         ca/SUdSo63CPTRO8DdAkGXkhIl14Pnjeitf2ejaXyPvWnh4iHAsyr31rSWRIVs2Ae3cn
+         1N1431wgKAPmm7bXyXRFpH9gLTg/CRAcPrsmE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1725658011; x=1726262811;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=modpcTFGLF9aKbO8/hxRVTkNY+Z5zDvT8kayu0jRlU4=;
+        b=gqlOJPh/qPwV1mM7UTx27H6I3HjHU4pBVJGINovS7vF/OHbc6EJNuHfhl4da6Tn+H3
+         mxLui6KASNXIimbR1rFUxGw6UN4+cCmoAO2VcbtxBPTo6Nr7bYNdqMOvhzjP+Ubxcg5Q
+         3vIk51ct3h3eb9WhFlS0fHnCNojDD6Cf5LNIu/Iu/ruJIu7n4y22xGZjkIN85tJyHVui
+         /tis5jBn8RBKEHth+/X012sBgCgm9QK2T0996mTvxfZT8nMzt3zuEOxpEw48yLrdhB+P
+         VhRkSS69a3aqwqhKeyDFrxAHrfDCaUI6/Enkt238N8KUfo8V2PwbBCYHvSdTXALEq2Ek
+         MCCA==
+X-Forwarded-Encrypted: i=1; AJvYcCV1fsjmN9vv9Fq6x68YjPVhjVTMXR+hpX9HijzOXDovr2UX5rRkbFTRCut2/nFKXAMQ2W//IoxKd8PB1xDSXg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwERH8vH5CVcrDqHE/sRJYWB0L51jSMh+aHdvE/XFgk0Ws8tZ23
+	1gBoZLIqMIkryo1G1Rf4YfQYhcb7GdYclCdKz3VU21JgAOoVbcMK78+0G9nleTxsv4ojJEpe4RV
+	kT9KYs+YNwDH+GWwDQ+LXHnIi2JKRZRgO5ZvF
+X-Google-Smtp-Source: AGHT+IHcF5eFRWlqZt110Uz30CQNhxKthjlTRSddSsueRyNGudDWIFoPa9u+T+MfMoSREaLKrpMFRIaqTdFrN9C5Yew=
+X-Received: by 2002:a05:6402:35c1:b0:5c2:4ad9:6d9f with SMTP id
+ 4fb4d7f45d1cf-5c3e953355dmr454244a12.1.1725658011403; Fri, 06 Sep 2024
+ 14:26:51 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="tSNyT2qHs0Efy6wS"
-Content-Disposition: inline
-In-Reply-To: <20240906192323.GA3160860@thelio-3990X>
-X-Cookie: Your love life will be... interesting.
+References: <20240906085739.1322676-1-cengjianeng@huaqin.corp-partner.google.com>
+ <20240906085739.1322676-2-cengjianeng@huaqin.corp-partner.google.com>
+In-Reply-To: <20240906085739.1322676-2-cengjianeng@huaqin.corp-partner.google.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Fri, 6 Sep 2024 14:26:25 -0700
+Message-ID: <CAJMQK-imYrDTuycVzQxkfbkZuHehE8uwc+qS2w=UDShETsBvEw@mail.gmail.com>
+Subject: Re: [PATCH v4 1/2] dt-bindings: arm: mediatek: Add MT8186 Ponyta Chromebook
+To: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>
+Cc: angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, 
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	knoxchiou@google.com, hsinyi@google.com, dri-devel@lists.freedesktop.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240906_140452_816647_BE304FED 
-X-CRM114-Status: GOOD (  25.37  )
+X-CRM114-CacheID: sfid-20240906_142654_388780_295F76D5 
+X-CRM114-Status: GOOD (  14.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,79 +91,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Sep 6, 2024 at 1:57=E2=80=AFAM Jianeng Ceng
+<cengjianeng@huaqin.corp-partner.google.com> wrote:
+>
+> Ponyta is a custom label Chromebook based on MT8186. It is a
+> self-developed project of Huaqin and has no fixed OEM.
+>
+> Signed-off-by: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>
+> ---
+> Changes in v4:
+> - PATCH 1/2: Add more info for Ponyta custom label in commit.
+> - Link to v3:https://lore.kernel.org/all/20240904081501.2060933-1-cengjia=
+neng@huaqin.corp-partner.google.com/
+>
+> Changes in v3:
+> - PATCH 1/2: Modify lable to label.
+> - Link to v2:https://lore.kernel.org/all/20240903061603.3007289-1-cengjia=
+neng@huaqin.corp-partner.google.com/
+>
+> Chage since V2:
+> - No change.
+>
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
+>
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Docume=
+ntation/devicetree/bindings/arm/mediatek.yaml
+> index 1d4bb50fcd8d..4bc1777b9ea6 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> @@ -257,6 +257,17 @@ properties:
+>            - const: google,steelix-sku393218
+>            - const: google,steelix
+>            - const: mediatek,mt8186
+> +      - description: Google Ponyta (Custom label)
+> +        items:
+> +          - const: google,ponyta-sku0
+> +          - const: google,ponyta-sku2147483647
 
---tSNyT2qHs0Efy6wS
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+sku2147483647 is not available anywhere besides the factory, so you
+can drop this. Same for the v4 2/2 dts patch.
 
-On Fri, Sep 06, 2024 at 12:23:23PM -0700, Nathan Chancellor wrote:
-> On Fri, Sep 06, 2024 at 07:27:01PM +0100, Mark Brown wrote:
-> > Are these just warnings introduced by recent versions of the toolchains?
-> > These commits passed an x86 allmodconfig with GCC 12 at each step (I did
-> > catch one warning there with another patch in the series that didn't get
-> > applied) and 0day didn't say anything at any point.
-
-> Not sure, I did not look too hard. At cursory glance, I am not sure x86
-> allmodconfig would catch these, as this code depends on ARCH_MEDIATEK
-> (not COMPILE_TEST), which only exists for arm and arm64.
-
-Ah, I hadn't seen that (the other bits were building on x86).
-
-> > > Clang 19:
-
-> > That's relatively modern, though some of the warnings don't look
-> > particularly new and exciting.
-
-> Fair although I still see some of them on old versions too:
-
-Yeah, like I say some of the warnings didn't look like they were new.
-
-> https://github.com/ClangBuiltLinux/continuous-integration2/actions/runs/1=
-0738441894
->=20
-> > >   sound/soc/mediatek/mt8365/mt8365-dai-adda.c:93:8: error: implicit c=
-onversion from 'unsigned long' to 'unsigned int' changes value from 1844674=
-4073709551614 to 4294967294 [-Werror,-Wconstant-conversion]
-> > >      91 |                 regmap_update_bits(afe->regmap, AFE_ADDA_UL=
-_DL_CON0,
-> > >         |                 ~~~~~~~~~~~~~~~~~~
-> > >      92 |                                    AFE_ADDA_UL_DL_ADDA_AFE_=
-ON,
-> > >      93 |                                    ~AFE_ADDA_UL_DL_ADDA_AFE=
-_ON);
-> > >         |                                    ^~~~~~~~~~~~~~~~~~~~~~~~=
-~~~
-> > >   1 error generated.
-> >=20
-> > That's a bit surprising, regmap_update_bits() takes an unsigned long?  I
-> > suspect the constants need to be defined as unsigned.
-
-> Does it? I see it taking 'unsigned int' for all of its parameters.
-
-Sorry, I misread the warning there (or was perhaps looking at another
-one) and for some reason though it was about dropping signs but it's
-rather due to BIT() being defined for longs which is a rather bad
-landmine given how common a pattern negation is.  I do see that
-synclink.h has some convenient BITn macros for some reason which would
-do the trick but really I think it's just a case of open coding the
-BIT() usage, or defining a BITI() or something but that seems ugly.
-Probably just open code the definitions.
-
---tSNyT2qHs0Efy6wS
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmbbbmoACgkQJNaLcl1U
-h9A4/AgAhDUwT8rRI4M3S+NXdNzBJSPacU05GQT9cqLHhdUtUgyqvhxeH6OhPjiN
-wUxAA7ugGFCDswITd22nOKiR76kgijacKAluiYXCh0nPvokDPQyzUklJltqFUYzm
-GJfOTqniw75BP3VxTgB7KmehOyYd1EP72Oj1qc6HmNmZX7G3c2wcX3cbED2eP4hU
-BfWhc9whOYYXqUYMicCcpItyPVVfKyvNgwbePdDxlHNcapm5t8z8b0jIutnhDr+c
-4AUADF6NwNc6L7+ttA5yHTogggWSrzJBIYea3trWLj14a32ho28hZb6+1jE3Q6R6
-bnK/Qw7CnUl4m787UaxMFjX9z84mxA==
-=qv06
------END PGP SIGNATURE-----
-
---tSNyT2qHs0Efy6wS--
+> +          - const: google,ponyta
+> +          - const: mediatek,mt8186
+> +      - description: Google Ponyta (Custom label)
+> +        items:
+> +          - const: google,ponyta-sku1
+> +          - const: google,ponyta
+> +          - const: mediatek,mt8186
+>        - description: Google Rusty (Lenovo 100e Chromebook Gen 4)
+>          items:
+>            - const: google,steelix-sku196609
 
