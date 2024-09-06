@@ -4,68 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EBF1CE7AE0
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Sep 2024 08:15:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02A01CE7AE6
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Sep 2024 08:24:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RZOPnIhWtFX3uCEDcD5VPfJhp13BsZ3mcHU/l6ek8dE=; b=FukIeUZo9Gw/+mgLeTwO3Mq2LJ
-	bFWNnjUUMXp+v8GBNRZErgWLbT4S39xmbOEmFEFWlQzdhMJG4SAQwga2/MJArjPcRjCEYasztuUOg
-	r1b8Z5kye8KGwBlCQqtsP2hLXTx0ewpEUhhQKmqu7aO8vZLOLI44R1xfqWDFaCKeNbHwhR8gM6Nl8
-	K37y23xQQHHnaiyAjREOscfWCtQkEa0pBjA/eNAV6TTOLafi1+RAg7RREbEWmz8eWfSV6lAuHTYtY
-	8HRQ8RHEDXsXoja5Qy+YQKObm2eq/2viSNM44PR90yoxKaUEANcJDuzt4wkLWiu5uMgOC1Y6pXiAz
-	WYo46EsA==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/FEO4jb3OdXofRAIPxzn7VIfujzT1rq+Fj8VGMgiPA8=; b=m2eyEWRoHp71Uy714BzbtTz0cE
+	aWzK9ObD4qzQ4GlNZymT8UMTAIljxutsDA74jnTdvD7alIP3ih5hBglQH8zqIEVZfM/Y6dFWmt4dc
+	HvBRd5qKoGvLokJXnhclCOKBBl6MpWeZBPQonpd3RK+EZ5+aLxIP0y52iLxtsGbYqPBAyeaMyAk0k
+	JMMnm7KNLEBEEOZ5x87ICpLcbHmA1978+xNPYsjq820NpBnUpmtPq9EYLHFc4EQhjZH6fH1HAYT8e
+	xm6rxb1Le5irrRXCeiazBCbxr0bZWXErxe8bSmxCe8SBmxhPQ4OQklkctYlh6/+Zp+OrjvxewhYPf
+	XPxw5W3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smU8M-0000000BGMW-3dWV;
-	Fri, 06 Sep 2024 08:15:58 +0000
-Received: from a7-48.smtp-out.eu-west-1.amazonses.com ([54.240.7.48])
+	id 1smUGC-0000000BIMm-1hJf;
+	Fri, 06 Sep 2024 08:24:04 +0000
+Received: from a7-33.smtp-out.eu-west-1.amazonses.com ([54.240.7.33])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smU6Z-0000000BFkt-44kU;
-	Fri, 06 Sep 2024 08:14:09 +0000
+	id 1smU8D-0000000BGFj-16AS;
+	Fri, 06 Sep 2024 08:15:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1725610443;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding;
-	bh=VX7OlLnBt7jfAMupnrzu9AoSfcrke19/MgnbQULyPN0=;
-	b=eFD/OAhUGa5sw9pLaicdiqtoY6wLOPI1biF5Wxi58nit79YB+YR36Rv6jMej/GEq
-	IciE4Q6NLUxLH//4vNXgmxFlvx+yJ8LnQl/IwqDvNZpPb6VJKPfDbiOkPuffaaMpZHT
-	t4trHzi8nnYw3YQETnln1kIJ0NhBRZG53rrMX+vozzla1B6GL2rvIEz9D6uKpTnaaar
-	DU/y8yuvLlMoKID0KJsl9CE5oTRgQ5iaQe9gfHVzJncnTUnS/1s9xEHjg58cUJ2g4lj
-	WnHFOeHtmg+XcZQL6hRM1EuUK/ZhzT+zRI2LFqeHHOgD8e1RcJEuSNEmjieO36naPuE
-	CTz9DvUBnA==
+	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1725610545;
+	h=Message-ID:Date:MIME-Version:Subject:To:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding;
+	bh=yM3jGEYrmpmAPT0rz7opuwruNthFWSkw9+TDL4YVBDA=;
+	b=aSU5dIMIVZa+cVJ8YC9WRBz0bUv9ZRkWK5nvrqULiski3hj0PrU0tO8GE0DE5tDo
+	tJYkolI1oPcFUfhre3qb8194/JecXFEhraqDF6BGAvjeLDCEN5BkjskujGkw787lkOT
+	JhRTqG+8JEPJbuXqi8WS0M4KPo3oeYmR2FNm7ITIAyt6v/4rjAtGbEMhA3nF/r/aSvi
+	cvJF3ozvVIhef+8lnEZd7mQykkA6R5favg/l1EJL46lVMIoLa/YccaPcYzHbhSY3ncG
+	Si6+iKezpPy5tKLOBX5ZsfXB8Y29Xx+BGuNwtu2ZKwyN4h72SZWyU5Lu12NHxsRBeNj
+	qmH0hFNeMQ==
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1725610443;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Feedback-ID;
-	bh=VX7OlLnBt7jfAMupnrzu9AoSfcrke19/MgnbQULyPN0=;
-	b=fX/Jydk1y6+dVBlfSvKcrqhkAlAVAqdnPwf7EzAfbEiZtIQjuMfTKcUauJp/j99e
-	vYsA8VTOqrT93Ll54NNjVHeOYlqwER/vyYQ4YWuKgMdmOZCCEvqDyAP+CS6SxPl3jsJ
-	s65MA5jq66MD715cIMZDdIrJFo5oA+JWsgDSPcz8=
-Message-ID: <01020191c665c261-8b839b39-d297-441f-8b83-49edd60ba752-000000@eu-west-1.amazonses.com>
-Date: Fri, 6 Sep 2024 08:14:03 +0000
+	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1725610545;
+	h=Message-ID:Date:MIME-Version:Subject:To:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Feedback-ID;
+	bh=yM3jGEYrmpmAPT0rz7opuwruNthFWSkw9+TDL4YVBDA=;
+	b=ceBrJR0YS4QJudMIU1bumx8QW4TjyLwKO/B5IlDefuyExI/7A3gSeecXmcnWI0xG
+	IIa1I1+32mFPri3a5FyfqIv201Os4uSGsCSfe0+dXcZR3SV4XhjNg8yiKis28mT1GrA
+	LNjnn7XFJjm6ktDTZhX3qWys+vrNabuz4qn9mLEc=
+Message-ID: <01020191c6674f69-5391f772-bfad-44bd-884e-c3ce732c19b5-000000@eu-west-1.amazonses.com>
+Date: Fri, 6 Sep 2024 08:15:45 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/1] drm/mediatek: Fix get efuse issue for MT8188 DPTX
-To: Liankun Yang <liankun.yang@mediatek.com>, chunkuang.hu@kernel.org, 
-	p.zabel@pengutronix.de, airlied@gmail.com, daniel@ffwll.ch, 
-	matthias.bgg@gmail.com, ck.hu@mediatek.com, shuijing.li@mediatek.com, 
-	jitao.shi@mediatek.com, mac.shen@mediatek.com
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20240902133736.16461-1-liankun.yang@mediatek.com>
+Subject: Re: [PATCH v4 2/3] media: platform: mtk-mdp3: Use cmdq_pkt_create()
+ and cmdq_pkt_destroy()
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Moudy Ho <moudy.ho@mediatek.com>, 
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>, 
+	linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
+References: <20240901143259.16849-1-chunkuang.hu@kernel.org>
+ <20240901143259.16849-3-chunkuang.hu@kernel.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240902133736.16461-1-liankun.yang@mediatek.com>
+In-Reply-To: <20240901143259.16849-3-chunkuang.hu@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
-X-SES-Outgoing: 2024.09.06-54.240.7.48
+X-SES-Outgoing: 2024.09.06-54.240.7.33
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240906_011408_188533_0B60CF5E 
-X-CRM114-Status: UNSURE (   7.91  )
+X-CRM114-CacheID: sfid-20240906_011549_510764_AD2BD645 
+X-CRM114-Status: UNSURE (   4.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,23 +84,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 02/09/24 15:36, Liankun Yang ha scritto:
-> Update efuse data for MT8188 displayport.
+Il 01/09/24 16:32, Chun-Kuang Hu ha scritto:
+> Use cmdq_pkt_create() and cmdq_pkt_destroy() common function
+> instead of implementing mdp3 version.
 > 
-> The DP monitor can not display when DUT connected to USB-c to DP dongle.
-> Analysis view is invalid DP efuse data.
-> 
-> Fixes: 350c3fe907fb ("drm/mediatek: dp: Add support MT8188 dp/edp function")
-> 
-> Changes in V2:
-> - Add Fixes tag.
-> - Update the commit title.
-> - Update the commit description.
-> Per suggestion from the previous thread:
-> https://patchwork.kernel.org/project/linux-mediatek/patch/
-> 20240510061716.31103-1-liankun.yang@mediatek.com/
-> 
-> Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
+> Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
