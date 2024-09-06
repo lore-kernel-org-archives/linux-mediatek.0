@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A654BCE7B1E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Sep 2024 15:08:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44C6EE6FE20
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Sep 2024 15:08:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
 	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b8ODKZaCniGTHW6OkRl9tVAEUv9GIxZiiZmZyth8g8g=; b=PwrVq4Hcglv7tmCkh9lyE0hmq7
-	p6dOhzPYA7azzuu+LqoNRzUqTWEU+UItODqFYYzxowa+NlHfQev0Pxyt7GSF/NAg8q3pY6TeEEW/p
-	Swiq1BQm4ok/kvWaT2PGEfTw6QJcG5Q3YYsTlL8cb+XXkOSCeK04TKgIknVeFIIJu2cHUafUPbaF6
-	5IKopzUPfMKI2Z7goPzYp5aQYKJXVYb7HX5ayeGfs1xRsJNPXzxUBSlmPN4/YY/4fnVLI8ZgpuLoa
-	W5gqFR1SjZMLf0VswRD6dzZPkHW1gpxTJnyDTEJz/nBQRmXNUM4j1CCcBPU0wqBggkhOSNo0y0H/6
-	Caa5I1aA==;
+	bh=KCE2Aeig1Xtcqxsj6OCesMJmx0Bzx3NcYdEg1kOU9Wc=; b=HqCh+tNbn2DElFV9QyRP2a5AVb
+	o4LRmzwVF7q9ASEKWV7AJQnRiCrQFiF/pOzZ5xx9oLtX1/rDqyXyT1aK7/PlvY9NkYSZ/lJ3CXIk1
+	lwHhuSibqbY5SDOtCe0L4B8OC0FhvuElzm73ed6n37MSrQ+Y/W02XcvR40h58p6uB8GDQUGrVZ+gb
+	RTth5VlpecIzDkg2FSaXG6pWl1yHQCwoP3Min1/grAKOWDbnVGpsvCtPAPrA41sUClwDBsZtBni7M
+	TIWo96bYS8L7T1LHEhRdfyZPcvqS3vJBn+feCfwpDRslB5b1qA1Axj0gT/cm0nDpZ09n84cw1rGok
+	rAyj7Ueg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smaZ6-0000000Ch3N-2uTS;
-	Fri, 06 Sep 2024 15:08:00 +0000
-Received: from relay8-d.mail.gandi.net ([217.70.183.201])
+	id 1smaZI-0000000ChBw-1noA;
+	Fri, 06 Sep 2024 15:08:12 +0000
+Received: from relay3-d.mail.gandi.net ([217.70.183.195])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smaV5-0000000Cf0C-1vLB;
-	Fri, 06 Sep 2024 15:03:52 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id F10221BF206;
-	Fri,  6 Sep 2024 15:03:46 +0000 (UTC)
+	id 1smaVA-0000000Cf2k-2S7W;
+	Fri, 06 Sep 2024 15:03:58 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 32D6E60009;
+	Fri,  6 Sep 2024 15:03:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1725635029;
+	t=1725635034;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=b8ODKZaCniGTHW6OkRl9tVAEUv9GIxZiiZmZyth8g8g=;
-	b=Vg4M17S0ts0e61e+Vye/efUQ1IIDQhnk6EdDJDu89ir9Pu5Y737hcF9pXu1NLMK2PEC4a7
-	NgTDWV9F3FKJX9LxL+M/+S9ZQ8/mP+T8IN5fOwRKtWlLpAdCcHdS5KWz/qY00/1+Vi12y8
-	THdSw45/vQW+CeaApXaPfGH8f9RFKLDjV4rbA7Lh+0bb+Uqv57plcCWHuputbDJKxDoBSg
-	IVEEfOHCmCtNK9t5txrASCVVXg9NNDdrN38ZjwliS3O5YvNykCR8nFDGclDB4RguZkBoTG
-	0jh1yABAwDhXgY7mCgW6WuiUg6FDzPmpgHX8S8RTmOOYhUAWtzO4z5BRVNNbNQ==
+	bh=KCE2Aeig1Xtcqxsj6OCesMJmx0Bzx3NcYdEg1kOU9Wc=;
+	b=PunlC78BePp6i3CMkcel19x4PHIcMkhAoQtwHCtPb3f/8vgyKhRc4njyM1R8yUlHP5IadP
+	4sOrUMZ86RJ2cXmTOITw+HIRlggZDpVCzT1VfBUqZ0dsb3MfwlpJjo/M8jDPUYN8Gont70
+	AGNqpJRGxlaEzQCk6b+C1UTPQOwqsylksrCZyxc7QEQov8J9L8XwvpD9TAcgqkefj5o3Fl
+	8pUErSqOrREkixPF39G2m0nTzGI8PwKQZDMPVfFVuKfwEYv4Fp6hWOpYUfnhClb4mglzrU
+	+5co91phMXuldBvfqhxTKq44tpZqr82YMIlNc35Ul7+vcL1gK92/acbVnNnVOw==
 From: Miquel Raynal <miquel.raynal@bootlin.com>
 To: Jinjie Ruan <ruanjinjie@huawei.com>,
 	miquel.raynal@bootlin.com,
@@ -78,20 +78,20 @@ To: Jinjie Ruan <ruanjinjie@huawei.com>,
 	linux-stm32@st-md-mailman.stormreply.com,
 	krzk@kernel.org,
 	jic23@kernel.org
-Subject: Re: [PATCH -next RESEND 06/10] mtd: rawnand: meson: Use for_each_child_of_node_scoped()
-Date: Fri,  6 Sep 2024 17:03:46 +0200
-Message-ID: <20240906150346.734628-1-miquel.raynal@bootlin.com>
+Subject: Re: [PATCH -next RESEND 05/10] mtd: rawnand: rockchip: Use for_each_child_of_node_scoped()
+Date: Fri,  6 Sep 2024 17:03:51 +0200
+Message-ID: <20240906150351.734658-1-miquel.raynal@bootlin.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240826094328.2991664-7-ruanjinjie@huawei.com>
+In-Reply-To: <20240826094328.2991664-6-ruanjinjie@huawei.com>
 References: 
 MIME-Version: 1.0
 X-linux-mtd-patch-notification: thanks
-X-linux-mtd-patch-commit: b'ee06c7821d0426d0f998593cbc442757247e7cd6'
+X-linux-mtd-patch-commit: b'0d5c32b5c877d61afc954c760dc58f3b8626ec04'
 Content-Transfer-Encoding: 8bit
 X-GND-Sasl: miquel.raynal@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240906_080351_650437_BB3BAD03 
-X-CRM114-Status: UNSURE (   4.62  )
+X-CRM114-CacheID: sfid-20240906_080356_827918_8001D57E 
+X-CRM114-Status: UNSURE (   4.53  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -107,7 +107,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2024-08-26 at 09:43:24 UTC, Jinjie Ruan wrote:
+On Mon, 2024-08-26 at 09:43:23 UTC, Jinjie Ruan wrote:
 > Avoids the need for manual cleanup of_node_put() in early exits
 > from the loop.
 > 
