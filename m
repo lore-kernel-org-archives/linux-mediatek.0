@@ -4,71 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E546CCE7AE6
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Sep 2024 08:28:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFE92CE7AEB
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Sep 2024 08:57:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UKrKQ6yNH03PcVJ7Khtyx7BtEPnNtK9NfpXH/VDEpNM=; b=0XIOiBjSnx3LgtkRMWChhnN3K7
-	AvM2qL1pdeTCJ4tvsO63QyCQiAraUjO+xyZyuZ/Rd2G586/kWhtAewHRA04O2dyK++HWlA0MDGWhF
-	IT5MOXNzq08R2bhsAQLBGTNnmfQxutuQPjOvZ/NRoHrTGO5hLK23cRfIgYKhXvx84WUoiGWyvxVEc
-	MIqHtIJF4IOXOenUE6V3JRXEGE/ZtWC+QjM0blRfg5shU+PjvMWeFAAJ1x9iK+1+fXvu0nN4v5ALT
-	6+ITBBW31mJOZW98q9M55vh5668KizmK/DZQBy5Mg47WgcFSGNaWm5KTRc1ioa46jcf0QstAcllr+
-	GhAh1lyQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HGUemR1VhN2nMqLUgi9zXLGIZPomuw+no6hZxV3BaX0=; b=OwyY5MZyv2mvi1rot/KRlsVvQw
+	6Uw0VisZo6mqostkTX7Fk0tpBulDa9c3hkOmA7oxRLowAtkLOXJpxnuZF79JyaPAFTX7/7CI2Esh4
+	qno/Ilh/1aBZHH5AtbD8mDMnYFKvQEUpNz4VFmDsOymE9hhAuBJCFNjk9X3oEnLP0TAdnTLrepE1f
+	uQzeXKU18AFWms8E8bcblGWrmi757TmP5nT3LvLHPZI1et2fnzeVZIi8LTcxvtgONGnh3kbOvUqTy
+	jQV9/2U2c+7KWq7xF4kZmPbDxfWOHTk3UvXtmAPe/WA51B0jiB8fEji/xsZSrO+GT0FcN047d2ZBU
+	OTOXiEBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smUKK-0000000BJtM-2ZZ4;
-	Fri, 06 Sep 2024 08:28:20 +0000
-Received: from a7-31.smtp-out.eu-west-1.amazonses.com ([54.240.7.31])
+	id 1smUmy-0000000BQwV-1peQ;
+	Fri, 06 Sep 2024 08:57:56 +0000
+Received: from mail-oa1-x32.google.com ([2001:4860:4864:20::32])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smUA0-0000000BGvU-2o1l;
-	Fri, 06 Sep 2024 08:17:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1725610656;
-	h=Message-ID:Date:MIME-Version:Subject:To:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding;
-	bh=5Wb8fP1SEMFE6J1hco629bsm8w9ZG7Mlhn8OcjaJNVo=;
-	b=RcHa/+l+DOBAVoa5TU8sKEbZ2RoOrayZl6FYJIZpncFsGRSW6hkVqo8X0X5pbg/c
-	ySnV1UBHh71xdIlqyh+C1ZpotRBts8tbHFwD3Z0T+UZeAcFCMdatoJG1BBrHmOOSLnW
-	UKmp1gD5Z6NdMmpZhjjKU5bnTMK17twPYiZY+HmY5gJy0Lbgng9lqFnLtrZt81J0MrH
-	ZQDQsLIguCzeS7E8mJBNi7bh96LLLSa7XIQ5C3VM/sibaWjSQhAiP7ZRiWrWohwPb9k
-	Imk8Adthfr/s/egcEx7iPaPN97ZCW/uoWF/TtsO+heNo7EH3A7ySj58bsd0TkZiU6SN
-	dnD8pPNtmQ==
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1725610656;
-	h=Message-ID:Date:MIME-Version:Subject:To:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Feedback-ID;
-	bh=5Wb8fP1SEMFE6J1hco629bsm8w9ZG7Mlhn8OcjaJNVo=;
-	b=VTzYYLNuMnj343jmhvymhUF3UBDLYeg0IHWy/sjm2BenIgksQrOOtJ7rXr8A5LON
-	pn0/0SDI8fGzrMP87AZ1WscwGB7B96cneacJ2giOcf6v71S9RNqeYJ/368NJHIKvVg7
-	9hgxLLKYn1AKxHZd7YqGlB+IzrzG+L/FmTIW9VDw=
-Message-ID: <01020191c669040b-0320e5c0-d4b2-4241-a403-09ec32f7ef35-000000@eu-west-1.amazonses.com>
-Date: Fri, 6 Sep 2024 08:17:36 +0000
+	id 1smUmu-0000000BQvW-3mEg
+	for linux-mediatek@lists.infradead.org;
+	Fri, 06 Sep 2024 08:57:54 +0000
+Received: by mail-oa1-x32.google.com with SMTP id 586e51a60fabf-277f0540c3aso1038341fac.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 06 Sep 2024 01:57:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1725613071; x=1726217871; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=HGUemR1VhN2nMqLUgi9zXLGIZPomuw+no6hZxV3BaX0=;
+        b=iCA3uYmO6qcsk8dtGAa0F1ChxgZnMUz9vBLKCphTQMgRcvKYPX2aixQwDL13AhMxYS
+         2ZWo7lMpKso27CHJbnO7r0XZHmpqEnssQIxWipjvVTiXp+nkJjH7TK8ZhD4/Ldjgt263
+         y/JW5T6I4cE+QJxEj+o2jB6oZhj3xjkrAVfSmuVDGIokUB9TB/DhVw+Y3s4Os/G4iht5
+         wW5J1ElSxe/Aui0n2pm4ektgU6L1Shg7tJ10SNe/Mn8cBBkesY/ak8Ij4D3lDNtRisLO
+         c9UbIxkjOoKngIRCcTEUOUia5eJQijo8JR78vhJ+KF4OMX8nEOej0PKfRxN/8bfEi84z
+         2zTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1725613071; x=1726217871;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=HGUemR1VhN2nMqLUgi9zXLGIZPomuw+no6hZxV3BaX0=;
+        b=hqTGF1m/DcrXM7bgGTpg5MdtVyX7bsvrSDkmLiAfQahqrH/BQnlMRR1tBwc2rzhZmd
+         5AFjeIbTRFvnOklCgjQipCJ1DqauD+CaEsjz3waAiJu3noVwAJ4l8mRlYswuEKpquMmr
+         cvbLZawXRPhmq+/IQxbcPd9T3/5mYrN9UObG2Bec7zb1fhPO+qUULr08aewGGcmbSpZu
+         NB8Zk4DZmXSEh4Kf87aaoiUxGenF6y7gzEBU1lOruosCSJzIzTMkN+BI4z3RNiplxQTj
+         qqrRcDaXy9+NCj1SUhVZeQT986OT54KBx+GBF3W3xuVWhz3UWGDWEXZjdKC3B8m7cbse
+         SASw==
+X-Forwarded-Encrypted: i=1; AJvYcCVqKNkyzUqJBwnzl1Lgp8BmPyluYVnIJS6Bc+/+lyBh9zKmrNavglk7hmt6CEKAVS6MlvZpgRT+/LqRwELiJA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy92+CIxu7d3/GfV+dcmuGXSkWDPc1P2LG3CoV12Rxh2Y8+nkyy
+	pvM6yasRV7n0oaSE0Bwq4BujN0Xo8KATB12wvZdsu1/ya+FUONoiJdqdZz9gt5k=
+X-Google-Smtp-Source: AGHT+IFk6WA0QFBBPEfr+oxwj7x0SWhji/tk64+zlRIENA9+hoq0FUcNrJY4D3BBYjbPQUuMA8Ocbw==
+X-Received: by 2002:a05:6870:8289:b0:260:f43e:7d89 with SMTP id 586e51a60fabf-27b82db9750mr1951434fac.2.1725613071057;
+        Fri, 06 Sep 2024 01:57:51 -0700 (PDT)
+Received: from zjn.huaqin.com ([116.66.212.162])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71798286219sm1439166b3a.57.2024.09.06.01.57.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 06 Sep 2024 01:57:50 -0700 (PDT)
+From: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>
+To: angelogioacchino.delregno@collabora.com,
+	matthias.bgg@gmail.com,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	knoxchiou@google.com,
+	hsinyi@google.com
+Cc: dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>
+Subject: [PATCH v4 0/2] arm64: dts: mediatek: Add MT8186 Ponyta
+Date: Fri,  6 Sep 2024 16:57:37 +0800
+Message-Id: <20240906085739.1322676-1-cengjianeng@huaqin.corp-partner.google.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 3/3] soc: mediatek: cmdq: Remove cmdq_pkt_finalize()
- helper function
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Moudy Ho <moudy.ho@mediatek.com>, 
-	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>, 
-	linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
-References: <20240901143259.16849-1-chunkuang.hu@kernel.org>
- <20240901143259.16849-4-chunkuang.hu@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240901143259.16849-4-chunkuang.hu@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
-X-SES-Outgoing: 2024.09.06-54.240.7.31
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240906_011740_912930_B6E7D94D 
-X-CRM114-Status: UNSURE (   4.74  )
+X-CRM114-CacheID: sfid-20240906_015753_113055_FB2DDEDE 
+X-CRM114-Status: UNSURE (   8.08  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,16 +99,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 01/09/24 16:32, Chun-Kuang Hu ha scritto:
-> In order to have fine-grained control, use cmdq_pkt_eoc() and
-> cmdq_pkt_jump_rel() to replace cmdq_pkt_finalize().
-> 
-> Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+This is v4 of the MT8186 Chromebook device tree series.
+---
+Changes in v4:
+- PATCH 1/2: Add more info for Ponyta custom label in commit.
+- Link to v3:https://lore.kernel.org/all/20240904081501.2060933-1-cengjianeng@huaqin.corp-partner.google.com/
 
-I'll pick this one after the media patches will be mainlined to avoid issues.
+Changes in v3:
+- PATCH 0/2: Add the modify records.
+- PATCH 1/2: Modify lable to label.
+- Link to v2:https://lore.kernel.org/all/20240903061603.3007289-1-cengjianeng@huaqin.corp-partner.google.com/
 
-In the meanwhile, mainly as a self-reminder:
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Changes in v2:
+- PATCH 2/2: Modify the dtb name without rev2.
+- Link to v1:https://lore.kernel.org/all/20240902125502.1844374-1-cengjianeng@huaqin.corp-partner.google.com/
 
+Jianeng Ceng (2):
+  dt-bindings: arm: mediatek: Add MT8186 Ponyta Chromebook
+  arm64: dts: mediatek: Add MT8186 Ponyta Chromebooks
+
+ .../devicetree/bindings/arm/mediatek.yaml     | 11 +++++
+ arch/arm64/boot/dts/mediatek/Makefile         |  2 +
+ .../mediatek/mt8186-corsola-ponyta-sku0.dts   | 24 ++++++++++
+ .../mediatek/mt8186-corsola-ponyta-sku1.dts   | 27 ++++++++++++
+ .../dts/mediatek/mt8186-corsola-ponyta.dtsi   | 44 +++++++++++++++++++
+ 5 files changed, 108 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta.dtsi
+
+-- 
+2.34.1
 
 
