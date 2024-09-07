@@ -4,66 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D336EB64CA
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Sep 2024 18:02:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C2A4ECE573
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Sep 2024 22:21:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=JaZHywHnUEGU1CiZx3WY2OGSJ/wsLWAzzr9U/RNAnbM=; b=QuAu7PsaLxYBCnCwttYvUoCs0z
-	IMmENEpCgCwihnZZM3caA4f88ThgYiKsKy2num/VUx1RM1K/Vgw9IO5QmAXSyM6xVWR2lzBJIP/2p
-	d0kq910aCGlu49b0MB64QZiqIAUpnR64RuK19u78j/NKqzk1l5mAuuekLjb2ncQ0hxTBg4A9cvXBe
-	/sCaBJVUnmxzKdLo5OxwixFRUx9VDsaj4hkN1hEH+z6DHX87N8u34v5vVXx3F6fdaKoTctDSL0t3e
-	7pxao6zfCK9sZKGSnDrIiwbM/TDEatQJSq9q+BnVRgMRq5vlf53159yQpHM7XfMRBnoOJ+gL6D/90
-	xrvZ7cxw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JYC6QIo1juTuTZ9/Y1qG6lgMiu14ecOg3Vq9N8buy0g=; b=3BdxSINm8P18g73W1kaUBZNB8O
+	uOqtOlBceVQzZDIA0TvROn1qdUEo4PWJNKxQgDFXnliTOuwHZN/4E6c3lR4iwmATPuomN7ZqX/Hni
+	9g1XtOaSI8YTmSBHwgymsJi3Ud5SEpCpRAEafWuvG1RfzsCZUcoorNm0oAgKG/SsYE/nRXe2f5A1z
+	ZOkvjYmgoC+GkCav6UhMwhhrMsXw3VkJcmzICEulfEuO67x1y7Q577dOsmnivJ4mGAOO/VZAtxkU1
+	8+1eerP+0c6WdVvNyr5OVXRubQL5fhCFjdzDWqCxGz819e5Wtg0CSbZauCTeiO9Qtr8BUqtn/9k6E
+	BD9SD5fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smzlA-0000000FPZA-18h3;
-	Sat, 07 Sep 2024 18:02:08 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1sn3oN-0000000FjZs-17Zf;
+	Sat, 07 Sep 2024 22:21:43 +0000
+Received: from mgamail.intel.com ([192.198.163.13])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smzk9-0000000FPTZ-3PTP;
-	Sat, 07 Sep 2024 18:01:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id B2919A4081F;
-	Sat,  7 Sep 2024 18:00:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0A0F6C4CEC2;
-	Sat,  7 Sep 2024 18:01:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725732063;
-	bh=Mv6kZrJv/bwLcYzdrAAeBS2GRlYFUpBzbrl5z92vyCI=;
-	h=From:To:Cc:Subject:Date:From;
-	b=N1UNP+ZT/W0cRRK9h9TJ1sFXGw7CVe+SC6IIrJwU1X/PuMOkxDrzozGYfkV33GQ9R
-	 PjZ0/BUxcInEi1WPSw5LplbVgq0vqm7k35owy4ps8NDFyggnFheOHh67AMUpFC49/t
-	 r8EaFsfUqNx/7/Wqi9TGi06X0tilOOw13/5bgFhX7IXZo7cxZ4OBWewHU9iujf1wyB
-	 ydDHboQnilo2j6R4p+Xpttmqd596iYZi1dl/bZGkk/DsjOKzEoV9Ia7nWjQLeGoSaN
-	 ZlFaUWEm4Qg3BLQbMlOIyaWeXZ/FCF7S2uhqGhca5/C41lOEwPVclnZDhWg1p7KSNB
-	 oNDgorq+YdIPg==
-From: Arnd Bergmann <arnd@kernel.org>
-To: Mark Brown <broonie@kernel.org>
-Cc: Arnd Bergmann <arnd@arndb.de>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
+	id 1sn3nL-0000000FjT5-3oCn;
+	Sat, 07 Sep 2024 22:20:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1725747640; x=1757283640;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=18QHyOowCoerOI8GyYR6ejC+zvs3qPUSNSXla/8mTQQ=;
+  b=TDzwdrS1npdzY6W9zvTs63xTovboLN28b4/v/HdCy/jp2j66Ou5104Kf
+   ic0LZR4gUzw9ei0L3UzZvhzIFpzIRdNY9IVx5p+mVSwPyEWBJd9YMCGzE
+   8i9mhikmuU2fBxul73SS1qHvDdXbNitYLQPI0sSrsLVIXPWQ3yv4FzyPB
+   t+No7qcuj2WKEo8Pszhx9OYUaTwhznAFURu4u8yWmTRzeBRC8bfO3J2Yg
+   NYkaYoc6S7+LOjkr6kpEN28QASOC1fLbDaXUgcofho654+5WQlqiks8As
+   lbW0YAdJkExPmYx90MlqDZe0fNicfWE54n/FijpeRdRzXAISfszY0HdLt
+   Q==;
+X-CSE-ConnectionGUID: UkI44xs4RHqeupK9Kl3SSg==
+X-CSE-MsgGUID: HMGaczZXSn2iwv0PfyrDrg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11188"; a="27397996"
+X-IronPort-AV: E=Sophos;i="6.10,211,1719903600"; 
+   d="scan'208";a="27397996"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Sep 2024 15:20:32 -0700
+X-CSE-ConnectionGUID: 0o2KY8N/R/OI7fU2DO3w6Q==
+X-CSE-MsgGUID: gFO3pKwNQD26MyxnmRlHxQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,211,1719903600"; 
+   d="scan'208";a="103750126"
+Received: from lkp-server01.sh.intel.com (HELO 9c6b1c7d3b50) ([10.239.97.150])
+  by orviesa001.jf.intel.com with ESMTP; 07 Sep 2024 15:20:29 -0700
+Received: from kbuild by 9c6b1c7d3b50 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1sn3n8-000D3Q-2V;
+	Sat, 07 Sep 2024 22:20:26 +0000
+Date: Sun, 8 Sep 2024 06:19:57 +0800
+From: kernel test robot <lkp@intel.com>
+To: Chunhui Li <chunhui.li@mediatek.com>,
+	Luis Chamberlain <mcgrof@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	linux-modules@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] ASoC: mediatek: mt8365: remove unused mt8365_i2s_hd_str
-Date: Sat,  7 Sep 2024 20:00:38 +0000
-Message-Id: <20240907200053.3027553-1-arnd@kernel.org>
-X-Mailer: git-send-email 2.39.2
+	linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com,
+	Chunhui Li <chunhui.li@mediatek.com>,
+	Petr Pavlu <petr.pavlu@suse.com>, kernel test robot <lkp@intel.com>,
+	Xion Wang <xion.wang@mediatek.com>
+Subject: Re: [PATCH v3 1/1] module: abort module loading when sysfs setup
+ suffer errors
+Message-ID: <202409080534.y2m1URF1-lkp@intel.com>
+References: <20240906115748.5367-2-chunhui.li@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240906115748.5367-2-chunhui.li@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240907_110105_944419_AF80837A 
-X-CRM114-Status: UNSURE (   9.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240907_152039_965569_0D9846DA 
+X-CRM114-Status: GOOD (  13.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,44 +95,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arnd Bergmann <arnd@arndb.de>
+Hi Chunhui,
 
-The mt8365_i2s_enum and mt8365_i2s_hd_str variables are not
-used anywhere, but cause a warning when building with C=1
-or when enabling -Wunused-const-variable:
+kernel test robot noticed the following build warnings:
 
-sound/soc/mediatek/mt8365/mt8365-dai-i2s.c:781:27: error: 'mt8365_i2s_hd_str' defined but not used [-Werror=unused-const-variable=]
-  781 | static const char * const mt8365_i2s_hd_str[] = {
-      |                           ^~~~~~~~~~~~~~~~~
+[auto build test WARNING on mcgrof/modules-next]
+[also build test WARNING on linus/master v6.11-rc6 next-20240906]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Remove these for the moment, they can be added back if a
-user comes up.
+url:    https://github.com/intel-lab-lkp/linux/commits/Chunhui-Li/module-abort-module-loading-when-sysfs-setup-suffer-errors/20240907-000002
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/mcgrof/linux.git modules-next
+patch link:    https://lore.kernel.org/r/20240906115748.5367-2-chunhui.li%40mediatek.com
+patch subject: [PATCH v3 1/1] module: abort module loading when sysfs setup suffer errors
+config: powerpc-asp8347_defconfig (https://download.01.org/0day-ci/archive/20240908/202409080534.y2m1URF1-lkp@intel.com/config)
+compiler: clang version 17.0.6 (https://github.com/llvm/llvm-project 6009708b4367171ccdbf4b5905cb6a803753fe18)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240908/202409080534.y2m1URF1-lkp@intel.com/reproduce)
 
-Fixes: 402bbb13a195 ("ASoC: mediatek: mt8365: Add I2S DAI support")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- sound/soc/mediatek/mt8365/mt8365-dai-i2s.c | 7 -------
- 1 file changed, 7 deletions(-)
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202409080534.y2m1URF1-lkp@intel.com/
 
-diff --git a/sound/soc/mediatek/mt8365/mt8365-dai-i2s.c b/sound/soc/mediatek/mt8365/mt8365-dai-i2s.c
-index 6b4d8b7e24ca..3482d8f8b4e7 100644
---- a/sound/soc/mediatek/mt8365/mt8365-dai-i2s.c
-+++ b/sound/soc/mediatek/mt8365/mt8365-dai-i2s.c
-@@ -777,13 +777,6 @@ static struct snd_soc_dai_driver mtk_dai_i2s_driver[] = {
- 	}
- };
- 
--/* low jitter control */
--static const char * const mt8365_i2s_hd_str[] = {
--	"Normal", "Low_Jitter"
--};
--
--static SOC_ENUM_SINGLE_EXT_DECL(mt8365_i2s_enum, mt8365_i2s_hd_str);
--
- static const char * const fmi2sin_text[] = {
- 	"OPEN", "FM_2ND_I2S_IN"
- };
+All warnings (new ones prefixed by >>):
+
+>> kernel/module/sysfs.c:232:86: warning: non-void function does not return a value [-Wreturn-type]
+     232 | static inline int add_sect_attrs(struct module *mod, const struct load_info *info) { }
+         |                                                                                      ^
+   kernel/module/sysfs.c:234:87: warning: non-void function does not return a value [-Wreturn-type]
+     234 | static inline int add_notes_attrs(struct module *mod, const struct load_info *info) { }
+         |                                                                                       ^
+   2 warnings generated.
+
+
+vim +232 kernel/module/sysfs.c
+
+   230	
+   231	#else /* !CONFIG_KALLSYMS */
+ > 232	static inline int add_sect_attrs(struct module *mod, const struct load_info *info) { }
+   233	static inline void remove_sect_attrs(struct module *mod) { }
+   234	static inline int add_notes_attrs(struct module *mod, const struct load_info *info) { }
+   235	static inline void remove_notes_attrs(struct module *mod) { }
+   236	#endif /* CONFIG_KALLSYMS */
+   237	
+
 -- 
-2.39.2
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
