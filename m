@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A28DBE6FE49
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Sep 2024 00:57:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 789B8E6FE49
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Sep 2024 00:58:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Khu098WlXlgqdRhsT4spPojBoQ9J8F2ndSM5PtIXoRY=; b=MQ1glG4oXSJGSKpihr3hiMxgq7
-	MpaR3t5hs7/ZNybNxRW5IKf0M5y2rJOtAhqs/gkryZwaa1rrtU8Lfns6zBibSQkNLMB/Q3Gj+sB2a
-	14Lloz90hK46Kf1VX57jX9UpT4W05HhUlhaVzUcX0OfpmhKKnCRUNfWL0gJLsn3Tubn7XM6y630ox
-	Ye3ECcR2jFoinE/PipdC05fkDh2NilYfisbEB6ELHq3SVOP8k4p5StjUw2x7Pe5tExTdzou386iQ2
-	IhYfHmblY3UYUQkUBjPkIbGYaywdhahV92yUt9SCiuwAt8HMxPylUUuB9znx1zEbDYKuWej+yBmWf
-	zJq2bHzQ==;
+	bh=sCHSnlKs7nbNTJVYOubK3rmYPxj9MGSnBIf+5OHCecE=; b=sDvYazFMyl6CBnsXIz725vVV7M
+	vJCwdPDva4kYo34BP91xmbm6jRTkprP2rgGOaVIwbpGQQxCHue+Wxml6ucqBN1XrN0+cg75Vm5/b+
+	YCHdij85l7JfElgTj7yYgHMREcI0xRd+Ksy7pOC9C5yc16ry78OC0rC8+IJ9DTWg+kML5jmhNqMT4
+	XnrOPB+yhSPzdZxxvLWYSPnyFP2Vr8gmbXrtw0K6KjVNUiGIWtwQBZPFnL7jsmqnkItH1LdijxljS
+	tYJeUL5BwGbuaN5lJx7TnRGgm3cW6ogf/N7uRgR/5G6XT37Q2EdBB/1ndpmGrRTdKY12llPMeHy2E
+	IptEHWpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smjlj-0000000Dyll-1Xh2;
-	Sat, 07 Sep 2024 00:57:39 +0000
+	id 1smjmg-0000000Dyut-0fNf;
+	Sat, 07 Sep 2024 00:58:38 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1smjjl-0000000DyGp-3xuq;
-	Sat, 07 Sep 2024 00:55:39 +0000
+	id 1smjjp-0000000DyHb-13dJ;
+	Sat, 07 Sep 2024 00:55:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C6BA75C5ACC;
-	Sat,  7 Sep 2024 00:55:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4A6C6C4CEC9;
-	Sat,  7 Sep 2024 00:55:34 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 443E45C5AD7;
+	Sat,  7 Sep 2024 00:55:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E5AAC4CEC4;
+	Sat,  7 Sep 2024 00:55:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725670537;
-	bh=IyWmu4DnoFuCIPAtXWPw8SVtC2zLrvIEG26z/VzRYQ8=;
+	s=k20201202; t=1725670540;
+	bh=iSQufWGpx94L8jD/fIu7r3A06l7ki4DXdmHTvAiYL80=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=hbz3QdX8P5AKEBFnJWtZZX1WapHIACqdLWrTGd+HxYRdNrpntBa1lGkacPBWd8iTe
-	 QmGiCDsvnjSccG8C9X51YWiyHaWD+CebJE27tXcx0cecUhn0NU7d2BPq/hla5838/1
-	 oN9dJDmnp2s5crHV9g0m5SsIHsJTtjEjU/OdzhO2v68nhNjn9DE3mssSGxES/dCMvU
-	 h0zb7PvuWZby8GfjpY5Wk2tsNtZQu3C0RNMvAqKReqhLul5472D4ckflWiwxjaLybO
-	 eE5GdezE10N1xAeuT4PhPbuGKIPr5CFJWtzThyAixeq+rFQdwWA/8siJi7kKwIBRpM
-	 QcdwYlPe6H2wQ==
+	b=sSxPW2sFMCFSmehq8NSEkbXl3fNtzmSJ9LJxUiy6tk22JT1lWq0k/LNUUiKu/SWGl
+	 IX3IqozxmqcyuX0oEOt8pVnSMV+NH+WF9Yb83qz7NnFR0g653PywNMg0CH66N7EoO0
+	 fjHh/pOGEPv6TFJnSl9C+I3DDQOf/D7qkxpWgY4Qg+ureyaU2baNYd9YDMUipPzWyq
+	 eVgcbLokxA1nBTxvlridk71RPJzLAStxaKyF2tM56XnfdEAmSiOoCvrlLr5QuXltUu
+	 3V9/0yIrW4ii28dpVafBdut8suqjYmH323Igr8scJODtq4NWv9kmC90YeQC24oYqvD
+	 mW+Om5SotZQ2A==
 From: Mark Brown <broonie@kernel.org>
-Date: Sat, 07 Sep 2024 01:53:26 +0100
-Subject: [PATCH 1/7] ASoC: mt8365: Open code BIT() to avoid spurious
- warnings
+Date: Sat, 07 Sep 2024 01:53:27 +0100
+Subject: [PATCH 2/7] ASoC: mt8365: Remove spurious unsigned long casts
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240907-asoc-fix-mt8365-build-v1-1-7ad0bac20161@kernel.org>
+Message-Id: <20240907-asoc-fix-mt8365-build-v1-2-7ad0bac20161@kernel.org>
 References: <20240907-asoc-fix-mt8365-build-v1-0-7ad0bac20161@kernel.org>
 In-Reply-To: <20240907-asoc-fix-mt8365-build-v1-0-7ad0bac20161@kernel.org>
 To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
@@ -59,20 +58,20 @@ Cc: Nathan Chancellor <nathan@kernel.org>,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, Mark Brown <broonie@kernel.org>
 X-Mailer: b4 0.15-dev-99b12
-X-Developer-Signature: v=1; a=openpgp-sha256; l=12902; i=broonie@kernel.org;
- h=from:subject:message-id; bh=IyWmu4DnoFuCIPAtXWPw8SVtC2zLrvIEG26z/VzRYQ8=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBm26R9/Ba36Aai3qZF7yqr0peg9E9zHo18oCWB1
- cf92ZALXoaJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCZtukfQAKCRAk1otyXVSH
- 0Ad9B/9HMX0ox4ptcHxsyooXsguJhgP3qIOpW8QY/RaZxFlabiG7Zx246FTsgu+COsBb9liQZUb
- z9KK9Yep4XRip7xuGgwbtX6I5yGcBsdz6H76XLt2gNvJtnjRjIaYv9JCbgwhx6B/bnmD1lCNxCo
- N5NP0T/5NK+RNmgiHBrmuPvajxrQ9PgSDtpxMx2o3vR8Wg2PFvz+AkiQpwzvIyOE7M4T+k+p9Vo
- BoTBQaqYS4OsPkskM4MckesWQYMWWLCLyW6NBqhjCV4b518BYp49J9chYqQ6EWIm7KUal1QlMx3
- x+lPdIZHBzdsSsm2LhykhQfpQLHwHcJ4ER8hyTHYdRKgrovi
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1580; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=iSQufWGpx94L8jD/fIu7r3A06l7ki4DXdmHTvAiYL80=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBm26R+zknCtJq+ENLDqwu1RsLA7s39ffxBc41Hj
+ KN25Rko+ZmJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCZtukfgAKCRAk1otyXVSH
+ 0IHSB/92x7A9qdeg88jK2oSvesXS/dYxWzhp9sqLKjt2RvrB7oYqO/C2RlYbYaf1todLCgSAQhe
+ p+jsJEaaD5U9vMDyp6rd/+2Urx5qJcBVXU/KlVptzaNrytAcyBVqqwMqwFH8S6V3RoisfHV9VTc
+ N67ePaaDqers+7fgRq/rkUHfM3UdXOiKm3GkegtrcvrSWHIa7zapJwgTnjinufYnCXrFn3OGpe1
+ d7Htr52YKD9WAH2sL6Ro3Rvdggjwi4RvTtc/ncnASTEgLdF3ZYDM+IbWtjP0tL4ZNXbXLQUzMr+
+ NMiVrX+ihx36pTcGzqAKpgMZgKJoi1pPPXlL7rcL9jh3bGAt
 X-Developer-Key: i=broonie@kernel.org; a=openpgp;
  fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240906_175538_116299_4BB65EF6 
-X-CRM114-Status: GOOD (  10.08  )
+X-CRM114-CacheID: sfid-20240906_175541_410317_4294E694 
+X-CRM114-Status: GOOD (  10.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,338 +86,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mt8365 driver uses bits.h to define bitfields but BIT() uses unsigned
-long constants so does not play well with being bitwise negated and
-converted to an unsigned int, the compiler complains about width reduction
-on a number of architectures. Just open code the shifting to avoid the
-issue.
+The regmap APIs take unsigned ints not unsigned longs so casting their
+arguments to unsigned longs is not a good choice, the constants being
+cast here are all unsigned ints anyway.
 
-Generated with s/BIT(/(1U << /
-
-Reported-by: Nathan Chancellor <nathan@kernel.org>
 Signed-off-by: Mark Brown <broonie@kernel.org>
 ---
- sound/soc/mediatek/mt8365/mt8365-reg.h | 214 ++++++++++++++++-----------------
- 1 file changed, 107 insertions(+), 107 deletions(-)
+ sound/soc/mediatek/mt8365/mt8365-dai-i2s.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/sound/soc/mediatek/mt8365/mt8365-reg.h b/sound/soc/mediatek/mt8365/mt8365-reg.h
-index b7334c2e64ed..b763cddc93db 100644
---- a/sound/soc/mediatek/mt8365/mt8365-reg.h
-+++ b/sound/soc/mediatek/mt8365/mt8365-reg.h
-@@ -734,57 +734,57 @@
- #define AFE_IRQ_STATUS_BITS		0x3ff
+diff --git a/sound/soc/mediatek/mt8365/mt8365-dai-i2s.c b/sound/soc/mediatek/mt8365/mt8365-dai-i2s.c
+index 5003fe5e5ccf..6b4d8b7e24ca 100644
+--- a/sound/soc/mediatek/mt8365/mt8365-dai-i2s.c
++++ b/sound/soc/mediatek/mt8365/mt8365-dai-i2s.c
+@@ -385,7 +385,7 @@ static int mt8365_afe_set_2nd_i2s_asrc(struct mtk_base_afe *afe,
+ 		/* disable IIR coeff SRAM access */
+ 		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON0,
+ 				   COEFF_SRAM_CTRL,
+-				   (unsigned long)~COEFF_SRAM_CTRL);
++				   ~COEFF_SRAM_CTRL);
+ 		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON2,
+ 				   CLR_IIR_HISTORY | IIR_EN | IIR_STAGE_MASK,
+ 				   CLR_IIR_HISTORY | IIR_EN |
+@@ -393,7 +393,7 @@ static int mt8365_afe_set_2nd_i2s_asrc(struct mtk_base_afe *afe,
+ 	} else {
+ 		/* disable IIR */
+ 		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON2,
+-				   IIR_EN, (unsigned long)~IIR_EN);
++				   IIR_EN, ~IIR_EN);
+ 	}
  
- /* AUDIO_TOP_CON0 (0x0000) */
--#define AUD_TCON0_PDN_TML		BIT(27)
--#define AUD_TCON0_PDN_DAC_PREDIS	BIT(26)
--#define AUD_TCON0_PDN_DAC		BIT(25)
--#define AUD_TCON0_PDN_ADC		BIT(24)
--#define AUD_TCON0_PDN_TDM_IN		BIT(23)
--#define AUD_TCON0_PDN_TDM_OUT		BIT(22)
--#define AUD_TCON0_PDN_SPDIF		BIT(21)
--#define AUD_TCON0_PDN_APLL_TUNER	BIT(19)
--#define AUD_TCON0_PDN_APLL2_TUNER	BIT(18)
--#define AUD_TCON0_PDN_INTDIR		BIT(15)
--#define AUD_TCON0_PDN_24M		BIT(9)
--#define AUD_TCON0_PDN_22M		BIT(8)
--#define AUD_TCON0_PDN_I2S_IN		BIT(6)
--#define AUD_TCON0_PDN_AFE		BIT(2)
-+#define AUD_TCON0_PDN_TML		(1U << 27)
-+#define AUD_TCON0_PDN_DAC_PREDIS	(1U << 26)
-+#define AUD_TCON0_PDN_DAC		(1U << 25)
-+#define AUD_TCON0_PDN_ADC		(1U << 24)
-+#define AUD_TCON0_PDN_TDM_IN		(1U << 23)
-+#define AUD_TCON0_PDN_TDM_OUT		(1U << 22)
-+#define AUD_TCON0_PDN_SPDIF		(1U << 21)
-+#define AUD_TCON0_PDN_APLL_TUNER	(1U << 19)
-+#define AUD_TCON0_PDN_APLL2_TUNER	(1U << 18)
-+#define AUD_TCON0_PDN_INTDIR		(1U << 15)
-+#define AUD_TCON0_PDN_24M		(1U << 9)
-+#define AUD_TCON0_PDN_22M		(1U << 8)
-+#define AUD_TCON0_PDN_I2S_IN		(1U << 6)
-+#define AUD_TCON0_PDN_AFE		(1U << 2)
+ 	/* CON3 setting (RX OFS) */
+@@ -456,7 +456,7 @@ static int mt8365_afe_set_2nd_i2s_asrc_enable(struct mtk_base_afe *afe,
+ 				   ASM_ON, ASM_ON);
+ 	else
+ 		regmap_update_bits(afe->regmap, AFE_ASRC_2CH_CON0,
+-				   ASM_ON, (unsigned long)~ASM_ON);
++				   ASM_ON, ~ASM_ON);
+ 	return 0;
+ }
  
- /* AUDIO_TOP_CON1 (0x0004) */
--#define AUD_TCON1_PDN_TDM_ASRC		BIT(15)
--#define AUD_TCON1_PDN_GENERAL2_ASRC	BIT(14)
--#define AUD_TCON1_PDN_GENERAL1_ASRC	BIT(13)
--#define AUD_TCON1_PDN_CONNSYS_I2S_ASRC	BIT(12)
--#define AUD_TCON1_PDN_DMIC3_ADC		BIT(11)
--#define AUD_TCON1_PDN_DMIC2_ADC		BIT(10)
--#define AUD_TCON1_PDN_DMIC1_ADC		BIT(9)
--#define AUD_TCON1_PDN_DMIC0_ADC		BIT(8)
--#define AUD_TCON1_PDN_I2S4_BCLK		BIT(7)
--#define AUD_TCON1_PDN_I2S3_BCLK		BIT(6)
--#define AUD_TCON1_PDN_I2S2_BCLK		BIT(5)
--#define AUD_TCON1_PDN_I2S1_BCLK		BIT(4)
-+#define AUD_TCON1_PDN_TDM_ASRC		(1U << 15)
-+#define AUD_TCON1_PDN_GENERAL2_ASRC	(1U << 14)
-+#define AUD_TCON1_PDN_GENERAL1_ASRC	(1U << 13)
-+#define AUD_TCON1_PDN_CONNSYS_I2S_ASRC	(1U << 12)
-+#define AUD_TCON1_PDN_DMIC3_ADC		(1U << 11)
-+#define AUD_TCON1_PDN_DMIC2_ADC		(1U << 10)
-+#define AUD_TCON1_PDN_DMIC1_ADC		(1U << 9)
-+#define AUD_TCON1_PDN_DMIC0_ADC		(1U << 8)
-+#define AUD_TCON1_PDN_I2S4_BCLK		(1U << 7)
-+#define AUD_TCON1_PDN_I2S3_BCLK		(1U << 6)
-+#define AUD_TCON1_PDN_I2S2_BCLK		(1U << 5)
-+#define AUD_TCON1_PDN_I2S1_BCLK		(1U << 4)
- 
- /* AUDIO_TOP_CON3 (0x000C) */
--#define AUD_TCON3_HDMI_BCK_INV		BIT(3)
-+#define AUD_TCON3_HDMI_BCK_INV		(1U << 3)
- 
- /* AFE_I2S_CON (0x0018) */
--#define AFE_I2S_CON_PHASE_SHIFT_FIX	BIT(31)
--#define AFE_I2S_CON_FROM_IO_MUX		BIT(28)
--#define AFE_I2S_CON_LOW_JITTER_CLK	BIT(12)
-+#define AFE_I2S_CON_PHASE_SHIFT_FIX	(1U << 31)
-+#define AFE_I2S_CON_FROM_IO_MUX		(1U << 28)
-+#define AFE_I2S_CON_LOW_JITTER_CLK	(1U << 12)
- #define AFE_I2S_CON_RATE_MASK		GENMASK(11, 8)
--#define AFE_I2S_CON_FORMAT_I2S		BIT(3)
--#define AFE_I2S_CON_SRC_SLAVE		BIT(2)
-+#define AFE_I2S_CON_FORMAT_I2S		(1U << 3)
-+#define AFE_I2S_CON_SRC_SLAVE		(1U << 2)
- 
- /* AFE_ASRC_2CH_CON0 */
--#define ONE_HEART	BIT(31)
--#define CHSET_STR_CLR	BIT(4)
--#define COEFF_SRAM_CTRL	BIT(1)
--#define ASM_ON		BIT(0)
-+#define ONE_HEART	(1U << 31)
-+#define CHSET_STR_CLR	(1U << 4)
-+#define COEFF_SRAM_CTRL	(1U << 1)
-+#define ASM_ON		(1U << 0)
- 
- /* CON2 */
--#define O16BIT		BIT(19)
--#define CLR_IIR_HISTORY	BIT(17)
--#define IS_MONO		BIT(16)
--#define IIR_EN		BIT(11)
-+#define O16BIT		(1U << 19)
-+#define CLR_IIR_HISTORY	(1U << 17)
-+#define IS_MONO		(1U << 16)
-+#define IIR_EN		(1U << 11)
- #define IIR_STAGE_MASK	GENMASK(10, 8)
- 
- /* CON5 */
-@@ -793,80 +793,80 @@
- #define CALI_96_CYCLE	FIELD_PREP(CALI_CYCLE_MASK, 0x5F)
- #define CALI_441_CYCLE	FIELD_PREP(CALI_CYCLE_MASK, 0x1B8)
- 
--#define CALI_AUTORST	BIT(15)
--#define AUTO_TUNE_FREQ5	BIT(12)
--#define COMP_FREQ_RES	BIT(11)
-+#define CALI_AUTORST	(1U << 15)
-+#define AUTO_TUNE_FREQ5	(1U << 12)
-+#define COMP_FREQ_RES	(1U << 11)
- 
- #define CALI_SEL_MASK	GENMASK(9, 8)
- #define CALI_SEL_00	FIELD_PREP(CALI_SEL_MASK, 0)
- #define CALI_SEL_01	FIELD_PREP(CALI_SEL_MASK, 1)
- 
--#define CALI_BP_DGL		BIT(7) /* Bypass the deglitch circuit */
--#define AUTO_TUNE_FREQ4		BIT(3)
--#define CALI_AUTO_RESTART	BIT(2)
--#define CALI_USE_FREQ_OUT	BIT(1)
--#define CALI_ON			BIT(0)
-+#define CALI_BP_DGL		(1U << 7) /* Bypass the deglitch circuit */
-+#define AUTO_TUNE_FREQ4		(1U << 3)
-+#define CALI_AUTO_RESTART	(1U << 2)
-+#define CALI_USE_FREQ_OUT	(1U << 1)
-+#define CALI_ON			(1U << 0)
- 
--#define AFE_I2S_CON_WLEN_32BIT		BIT(1)
--#define AFE_I2S_CON_EN			BIT(0)
-+#define AFE_I2S_CON_WLEN_32BIT		(1U << 1)
-+#define AFE_I2S_CON_EN			(1U << 0)
- 
--#define AFE_CONN3_I03_O03_S		BIT(3)
--#define AFE_CONN4_I04_O04_S		BIT(4)
--#define AFE_CONN4_I03_O04_S		BIT(3)
-+#define AFE_CONN3_I03_O03_S		(1U << 3)
-+#define AFE_CONN4_I04_O04_S		(1U << 4)
-+#define AFE_CONN4_I03_O04_S		(1U << 3)
- 
- /* AFE_I2S_CON1 (0x0034) */
--#define AFE_I2S_CON1_I2S2_TO_PAD	BIT(18)
-+#define AFE_I2S_CON1_I2S2_TO_PAD	(1U << 18)
- #define AFE_I2S_CON1_TDMOUT_TO_PAD	(0 << 18)
- #define AFE_I2S_CON1_RATE		GENMASK(11, 8)
--#define AFE_I2S_CON1_FORMAT_I2S		BIT(3)
--#define AFE_I2S_CON1_WLEN_32BIT		BIT(1)
--#define AFE_I2S_CON1_EN			BIT(0)
-+#define AFE_I2S_CON1_FORMAT_I2S		(1U << 3)
-+#define AFE_I2S_CON1_WLEN_32BIT		(1U << 1)
-+#define AFE_I2S_CON1_EN			(1U << 0)
- 
- /* AFE_I2S_CON2 (0x0038) */
--#define AFE_I2S_CON2_LOW_JITTER_CLK	BIT(12)
-+#define AFE_I2S_CON2_LOW_JITTER_CLK	(1U << 12)
- #define AFE_I2S_CON2_RATE		GENMASK(11, 8)
--#define AFE_I2S_CON2_FORMAT_I2S		BIT(3)
--#define AFE_I2S_CON2_WLEN_32BIT		BIT(1)
--#define AFE_I2S_CON2_EN			BIT(0)
-+#define AFE_I2S_CON2_FORMAT_I2S		(1U << 3)
-+#define AFE_I2S_CON2_WLEN_32BIT		(1U << 1)
-+#define AFE_I2S_CON2_EN			(1U << 0)
- 
- /* AFE_I2S_CON3 (0x004C) */
--#define AFE_I2S_CON3_LOW_JITTER_CLK	BIT(12)
-+#define AFE_I2S_CON3_LOW_JITTER_CLK	(1U << 12)
- #define AFE_I2S_CON3_RATE		GENMASK(11, 8)
--#define AFE_I2S_CON3_FORMAT_I2S		BIT(3)
--#define AFE_I2S_CON3_WLEN_32BIT		BIT(1)
--#define AFE_I2S_CON3_EN			BIT(0)
-+#define AFE_I2S_CON3_FORMAT_I2S		(1U << 3)
-+#define AFE_I2S_CON3_WLEN_32BIT		(1U << 1)
-+#define AFE_I2S_CON3_EN			(1U << 0)
- 
- /* AFE_ADDA_DL_SRC2_CON0 (0x0108) */
- #define AFE_ADDA_DL_SAMPLING_RATE	GENMASK(31, 28)
- #define AFE_ADDA_DL_8X_UPSAMPLE		GENMASK(25, 24)
--#define AFE_ADDA_DL_MUTE_OFF_CH1	BIT(12)
--#define AFE_ADDA_DL_MUTE_OFF_CH2	BIT(11)
--#define AFE_ADDA_DL_VOICE_DATA		BIT(5)
--#define AFE_ADDA_DL_DEGRADE_GAIN	BIT(1)
-+#define AFE_ADDA_DL_MUTE_OFF_CH1	(1U << 12)
-+#define AFE_ADDA_DL_MUTE_OFF_CH2	(1U << 11)
-+#define AFE_ADDA_DL_VOICE_DATA		(1U << 5)
-+#define AFE_ADDA_DL_DEGRADE_GAIN	(1U << 1)
- 
- /* AFE_ADDA_UL_SRC_CON0 (0x0114) */
- #define AFE_ADDA_UL_SAMPLING_RATE	GENMASK(19, 17)
- 
- /* AFE_ADDA_UL_DL_CON0 */
--#define AFE_ADDA_UL_DL_ADDA_AFE_ON	BIT(0)
--#define AFE_ADDA_UL_DL_DMIC_CLKDIV_ON	BIT(1)
-+#define AFE_ADDA_UL_DL_ADDA_AFE_ON	(1U << 0)
-+#define AFE_ADDA_UL_DL_DMIC_CLKDIV_ON	(1U << 1)
- 
- /* AFE_APLL_TUNER_CFG (0x03f0) */
- #define AFE_APLL_TUNER_CFG_MASK		GENMASK(15, 1)
--#define AFE_APLL_TUNER_CFG_EN_MASK	BIT(0)
-+#define AFE_APLL_TUNER_CFG_EN_MASK	(1U << 0)
- 
- /* AFE_APLL_TUNER_CFG1 (0x03f4) */
- #define AFE_APLL_TUNER_CFG1_MASK	GENMASK(15, 1)
--#define AFE_APLL_TUNER_CFG1_EN_MASK	BIT(0)
-+#define AFE_APLL_TUNER_CFG1_EN_MASK	(1U << 0)
- 
- /* PCM_INTF_CON1 (0x0550) */
--#define PCM_INTF_CON1_EXT_MODEM		BIT(17)
-+#define PCM_INTF_CON1_EXT_MODEM		(1U << 17)
- #define PCM_INTF_CON1_16BIT		(0 << 16)
--#define PCM_INTF_CON1_24BIT		BIT(16)
-+#define PCM_INTF_CON1_24BIT		(1U << 16)
- #define PCM_INTF_CON1_32BCK		(0 << 14)
--#define PCM_INTF_CON1_64BCK		BIT(14)
-+#define PCM_INTF_CON1_64BCK		(1U << 14)
- #define PCM_INTF_CON1_MASTER_MODE	(0 << 5)
--#define PCM_INTF_CON1_SLAVE_MODE	BIT(5)
-+#define PCM_INTF_CON1_SLAVE_MODE	(1U << 5)
- #define PCM_INTF_CON1_FS_MASK		GENMASK(4, 3)
- #define PCM_INTF_CON1_FS_8K		FIELD_PREP(PCM_INTF_CON1_FS_MASK, 0)
- #define PCM_INTF_CON1_FS_16K		FIELD_PREP(PCM_INTF_CON1_FS_MASK, 1)
-@@ -875,12 +875,12 @@
- #define PCM_INTF_CON1_SYNC_LEN_MASK	GENMASK(13, 9)
- #define PCM_INTF_CON1_SYNC_LEN(x)	FIELD_PREP(PCM_INTF_CON1_SYNC_LEN_MASK, ((x) - 1))
- #define PCM_INTF_CON1_FORMAT_MASK	GENMASK(2, 1)
--#define PCM_INTF_CON1_SYNC_OUT_INV	BIT(23)
--#define PCM_INTF_CON1_BCLK_OUT_INV	BIT(22)
--#define PCM_INTF_CON1_SYNC_IN_INV	BIT(21)
--#define PCM_INTF_CON1_BCLK_IN_INV	BIT(20)
--#define PCM_INTF_CON1_BYPASS_ASRC	BIT(6)
--#define PCM_INTF_CON1_EN		BIT(0)
-+#define PCM_INTF_CON1_SYNC_OUT_INV	(1U << 23)
-+#define PCM_INTF_CON1_BCLK_OUT_INV	(1U << 22)
-+#define PCM_INTF_CON1_SYNC_IN_INV	(1U << 21)
-+#define PCM_INTF_CON1_BCLK_IN_INV	(1U << 20)
-+#define PCM_INTF_CON1_BYPASS_ASRC	(1U << 6)
-+#define PCM_INTF_CON1_EN		(1U << 0)
- #define PCM_INTF_CON1_CONFIG_MASK	(0xf3fffe)
- 
- /* AFE_DMIC0_UL_SRC_CON0 (0x05b4)
-@@ -890,9 +890,9 @@
-  */
- #define DMIC_TOP_CON_CK_PHASE_SEL_CH1		GENMASK(29, 27)
- #define DMIC_TOP_CON_CK_PHASE_SEL_CH2		GENMASK(26, 24)
--#define DMIC_TOP_CON_TWO_WIRE_MODE		BIT(23)
--#define DMIC_TOP_CON_CH2_ON			BIT(22)
--#define DMIC_TOP_CON_CH1_ON			BIT(21)
-+#define DMIC_TOP_CON_TWO_WIRE_MODE		(1U << 23)
-+#define DMIC_TOP_CON_CH2_ON			(1U << 22)
-+#define DMIC_TOP_CON_CH1_ON			(1U << 21)
- #define DMIC_TOP_CON_VOICE_MODE_MASK		GENMASK(19, 17)
- #define DMIC_TOP_CON_VOICE_MODE_8K		FIELD_PREP(DMIC_TOP_CON_VOICE_MODE_MASK, 0)
- #define DMIC_TOP_CON_VOICE_MODE_16K		FIELD_PREP(DMIC_TOP_CON_VOICE_MODE_MASK, 1)
-@@ -900,28 +900,28 @@
- #define DMIC_TOP_CON_VOICE_MODE_48K		FIELD_PREP(DMIC_TOP_CON_VOICE_MODE_MASK, 3)
- #define DMIC_TOP_CON_LOW_POWER_MODE_MASK	GENMASK(15, 14)
- #define DMIC_TOP_CON_LOW_POWER_MODE(x)		FIELD_PREP(DMIC_TOP_CON_LOW_POWER_MODE_MASK, (x))
--#define DMIC_TOP_CON_IIR_ON			BIT(10)
-+#define DMIC_TOP_CON_IIR_ON			(1U << 10)
- #define DMIC_TOP_CON_IIR_MODE			GENMASK(9, 7)
--#define DMIC_TOP_CON_INPUT_MODE			BIT(5)
--#define DMIC_TOP_CON_SDM3_LEVEL_MODE		BIT(1)
--#define DMIC_TOP_CON_SRC_ON			BIT(0)
-+#define DMIC_TOP_CON_INPUT_MODE			(1U << 5)
-+#define DMIC_TOP_CON_SDM3_LEVEL_MODE		(1U << 1)
-+#define DMIC_TOP_CON_SRC_ON			(1U << 0)
- #define DMIC_TOP_CON_SDM3_DE_SELECT		(0 << 1)
- #define DMIC_TOP_CON_CONFIG_MASK		(0x3f8ed7a6)
- 
- /* AFE_CONN_24BIT (0x0AA4) */
--#define AFE_CONN_24BIT_O10		BIT(10)
--#define AFE_CONN_24BIT_O09		BIT(9)
--#define AFE_CONN_24BIT_O06		BIT(6)
--#define AFE_CONN_24BIT_O05		BIT(5)
--#define AFE_CONN_24BIT_O04		BIT(4)
--#define AFE_CONN_24BIT_O03		BIT(3)
--#define AFE_CONN_24BIT_O02		BIT(2)
--#define AFE_CONN_24BIT_O01		BIT(1)
--#define AFE_CONN_24BIT_O00		BIT(0)
-+#define AFE_CONN_24BIT_O10		(1U << 10)
-+#define AFE_CONN_24BIT_O09		(1U << 9)
-+#define AFE_CONN_24BIT_O06		(1U << 6)
-+#define AFE_CONN_24BIT_O05		(1U << 5)
-+#define AFE_CONN_24BIT_O04		(1U << 4)
-+#define AFE_CONN_24BIT_O03		(1U << 3)
-+#define AFE_CONN_24BIT_O02		(1U << 2)
-+#define AFE_CONN_24BIT_O01		(1U << 1)
-+#define AFE_CONN_24BIT_O00		(1U << 0)
- 
- /* AFE_HD_ENGEN_ENABLE */
--#define AFE_22M_PLL_EN		BIT(0)
--#define AFE_24M_PLL_EN		BIT(1)
-+#define AFE_22M_PLL_EN		(1U << 0)
-+#define AFE_24M_PLL_EN		(1U << 1)
- 
- /* AFE_GAIN1_CON0 (0x0410) */
- #define AFE_GAIN1_CON0_EN_MASK			GENMASK(0, 0)
-@@ -938,15 +938,15 @@
- /* AFE_CM2_CON0 (0x0e60) */
- #define CM_AFE_CM_CH_NUM_MASK		GENMASK(3, 0)
- #define CM_AFE_CM_CH_NUM(x)		FIELD_PREP(CM_AFE_CM_CH_NUM_MASK, ((x) - 1))
--#define CM_AFE_CM_ON			BIT(4)
-+#define CM_AFE_CM_ON			(1U << 4)
- #define CM_AFE_CM_START_DATA_MASK	GENMASK(11, 8)
- 
--#define CM_AFE_CM1_VUL_SEL		BIT(12)
-+#define CM_AFE_CM1_VUL_SEL		(1U << 12)
- #define CM_AFE_CM1_IN_MODE_MASK		GENMASK(19, 16)
--#define CM_AFE_CM2_TDM_SEL		BIT(12)
--#define CM_AFE_CM2_CLK_SEL		BIT(13)
--#define CM_AFE_CM2_GASRC1_OUT_SEL	BIT(17)
--#define CM_AFE_CM2_GASRC2_OUT_SEL	BIT(16)
-+#define CM_AFE_CM2_TDM_SEL		(1U << 12)
-+#define CM_AFE_CM2_CLK_SEL		(1U << 13)
-+#define CM_AFE_CM2_GASRC1_OUT_SEL	(1U << 17)
-+#define CM_AFE_CM2_GASRC2_OUT_SEL	(1U << 16)
- 
- /* AFE_CM2_CONN* */
- #define CM2_AFE_CM2_CONN_CFG1(x)	FIELD_PREP(CM2_AFE_CM2_CONN_CFG1_MASK, (x))
 
 -- 
 2.39.2
