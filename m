@@ -4,83 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFD6EE6FE49
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Sep 2024 14:36:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACE78E6FE49
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Sep 2024 20:19:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XWFEP7tM0wjf6p/5JrHRs4l6Fd8dhOljCSScjquiSzE=; b=hPfUX2apGNunWLhiOFMH2AOajS
-	kRbjZGSyfDB3vwqw8Ykm+cSwkamaSSCQxM96s42j0Sci/WPSwdmm/3Hpg2mlQ0bZJE0mmkhkm5v/a
-	M2mv0+vEH4gS7PuQRjkhsnXOkKy6cycisbjnfAr8b0VjC9xHMrEZKIVi01lT5AChu0+fGqcBI23iN
-	ekOuIfAs4NTBo7kwTPRxR3r4NQzxcirqgdA6c4bwduzlbX5YnRobkk7anO542ZS7K2E/ZtF0n1Iy/
-	ysvLJZAuYhKdWmXWbI1jhNm8kK8MStQLBU51RqadbGlk9Fh3IVSNRtHNs2mExx7rcEIY4kGULzsjF
-	qJycQQrA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7H5loooV/zDsI81/Saia2/i83nub5Yi42cBeDfDzx4M=; b=FZttZ8EMm12AngjpGMboxDQX1v
+	qxV7v7bqFgyrP5G0kRo0wdQ9MJPj9duGwPi+qq09ygPCf3aqMrhVUkgCfgCYKR0zcW5XQUZYdeWqQ
+	aZh6zg6bL1twKJEMG5XYd2pUlZ8auZU3xGNQflvlQSuhyTEk7UsEwXuu9bD2QGx1g1861IgvgKx7m
+	M6Bo71qN2OJE50/jpCkll/cyBDahBKBojQxxC9o3towAxv+EZFBiqHiY09fv6i31ajYngS/MKDgsc
+	EQIOI5CVzJ/nX6d/WwJ0HJzCJszH4nBTCtyLU70/hdNznO4MRCDUTQ4hKzJ8SLd4iHdQCajPIwMut
+	328487GQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snJ1l-0000000GxqE-0jq7;
-	Sun, 08 Sep 2024 14:36:33 +0000
-Received: from mout.web.de ([212.227.17.12])
+	id 1snONG-0000000HOzw-2ozQ;
+	Sun, 08 Sep 2024 20:19:06 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snJ1h-0000000Gxpi-0juW;
-	Sun, 08 Sep 2024 14:36:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1725806170; x=1726410970; i=markus.elfring@web.de;
-	bh=XWFEP7tM0wjf6p/5JrHRs4l6Fd8dhOljCSScjquiSzE=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
-	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
-	 cc:content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=n+wVjpVcHBNz7B6SZPb1L5lTm3hkZKvp9dKeL4rENyJPQUyMwX4xM9eEZZm6zwgF
-	 ydiLlhhlGh3PFCPat3al4NHM1J6exLZnLJ9r+UyQt+YU5Rohpl9U23VqMwH3WqCAG
-	 pKjP5tsD8NSpwVr2exo71bVcWsNJ4Nd3jRryxbw0N93Nf7lOxonnoJmzuSaGZz6a6
-	 jtym8vGTTMlv1jExiXbFwCEvFWe7I+XZLjjq+bzClXJQEARP5mrA8fLIAA5n6BAqF
-	 xsw/HPEK+zzigFfG2X2/ir1Sz/6+64dyRezJiYfzbw8z5NZLwCPxLBvL3+tYu9wNS
-	 tvQloEhuNHYNhX7uQQ==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.80.95]) by smtp.web.de (mrweb105
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1MiMAO-1s8zvA36u6-00degp; Sun, 08
- Sep 2024 16:36:10 +0200
-Message-ID: <066bcaba-8f3c-4afc-82ab-2c81ca4ceb95@web.de>
-Date: Sun, 8 Sep 2024 16:36:07 +0200
+	id 1snOMF-0000000HOt3-0hoP;
+	Sun, 08 Sep 2024 20:18:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5B1915C0F4D;
+	Sun,  8 Sep 2024 20:17:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF378C4CEC3;
+	Sun,  8 Sep 2024 20:17:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1725826680;
+	bh=cO0VA8sPCHSdvNTRaAgPs6NicHsgD6AL7kQaFUvXJBA=;
+	h=From:To:Cc:Subject:Date:From;
+	b=cZBMt+B8eG+8kL6yhFWRP1OiZyxxqgIG04xCyMaBhgoDw4rpmDAal1d9t459Ac5SH
+	 T7FXM5+nSB0jYdhZTLo31IdE7SB+RghmlE4ys3ZGpPSA/sv6b9cu0fR9sZcW+LLT4X
+	 F/wGmSh/AxnEuakZsr7pe0fT9KVyvRexuf5QKRYpjFPNv76jMruuDrgO5bW2m9lAnp
+	 L3F9YnZ4smPRugvULJM0GlPiR/FY18bHWqX4uZqIgOYNprMlmTBBH5pUvs2s+lDWxJ
+	 BG3rEMUdIv5mPGJzpjd0+uh2Ods/zwKwL81BPm95/lMTa/ayWs9xbvRgW6wggUoNHf
+	 I/j5E0HP35iNw==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Mark Brown <broonie@kernel.org>
+Cc: Arnd Bergmann <arnd@arndb.de>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] ASoC: mediatek: mt8365: include linux/bitfield.h
+Date: Sun,  8 Sep 2024 22:17:34 +0000
+Message-Id: <20240908221754.2210857-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Tang Bin <tangbin@cmss.chinamobile.com>, linux-sound@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jaroslav Kysela <perex@perex.cz>, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Takashi Iwai <tiwai@suse.com>
-Cc: LKML <linux-kernel@vger.kernel.org>
-References: <20240908134604.3652-1-tangbin@cmss.chinamobile.com>
-Subject: Re: [PATCH] ASoC: codecs: fix the right check and simplify code
-Content-Language: en-GB
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <20240908134604.3652-1-tangbin@cmss.chinamobile.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:a7FM6yZ9QUWzf/F+7OQlgqI+RPBwRznUxoEiTyvs9GStjPkkDS3
- pJ30zCb83RU0kFHMns9th5b/rrR4+SaGttAqqSpAJuZiMOsg1mBN50c7GhMv4ulwBw1dK4g
- zEkWNQaav15zfxV2Hbcs5cH7T5Av7zFlMVsjP97sOjuHMKS5J7HwHudNnjw1BVaPHbAmcVj
- DZ74lMaLKmHyFpzH40mew==
-UI-OutboundReport: notjunk:1;M01:P0:n267RWK3I4k=;KlNEiHzhtpd99sO6EPmTY1/PasZ
- dJL3Y4CB1rWrf+B12jmN5CmbjlUlVDCBctU5tbHr7TBH8RssepNjtm+aNIlmwRpk+KM1DkkQc
- Oyg7n4YTqIysk0xII3pZdczaeZqescknVROyIhmzzNxwX40rraNXTPhBMe9u5/1Br1GYhXXN8
- QVDJ+nONa8xE0QuOxcOdkuCu95Ew3ufK2Fc64vo9XkptQcmE7jQqMz9gi2mCJXCDlLR2WT94K
- JPTvCE58YiWpgg+MAEA03sqCSqUhy5Cl+aOUK3h+oSRVJiNsAM8HAP5YcFqj9LGjZ6g+xy+0C
- BL9sVMydA4dc9SumiogAu1HpNHQEAj7EDI8q1vqTwL21kuuHq+jae1o0Fm6mzXCqjSXrBYRb5
- /3N2390+C+5GM5RIP7UwnOr2noK8ffi5oUvhuF0vvvuon2569IF2k+4V2aLPC26WdPl3Gb9n8
- G7mPCmovI5m1OXvafba2Xuq9Fl4WXJuMb+eEGu2OeCVaYm/Pgp8rqRemGsuJn8XqxDwjjxUcb
- L00S6ZPLygOetYn2g8Mqi6GU4OmgLBdf1m3FKmj7Xt9qCAaQr0hUHoMlAbQmhIJ9BMFp+sP3a
- KBdMXOkVCVwQuYjv9b6A0cFx8wZHIJ2X4L6Re5C50TfkwOYMocfLmBP6iKBqs1aHL+6YaFnT0
- KwFsXXyOqEgcUo4LoAMmyd0RRIXKsbtnDaMGyoP3peo9YVKhWlWH9o0HtdgwJ+d/qzYy9T3oo
- /7QAf1e3QGBhRaSiOmYoAIxuv4R89JB9tcmOMYHQ+aXNvuMgEAHDPhgSWi/X4zBG3dV/+sJZs
- ztLk8u5BxGUIJx64vJ8kVdZg==
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240908_073629_612754_FE6D1EF3 
-X-CRM114-Status: UNSURE (   7.65  )
+X-CRM114-CacheID: sfid-20240908_131803_301044_BEB4F35A 
+X-CRM114-Status: UNSURE (   9.21  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,22 +78,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> In the file drivers/base/platform.c, the return description of
-> platform_get_irq is 'non-zero IRQ number on success, negative
-> error number on failure.', so the check is wrong, fix it. And
-> when get irq failed, the function platform_get_irq logs an error
-> message.
+From: Arnd Bergmann <arnd@arndb.de>
 
-1. You may occasionally put more than 64 characters into text lines
-   of such a change description.
+On x86, the header is not already included implicitly,
+breaking compile-testing:
 
-2. How do you think about to split any changes into separate update steps?
-   https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree=
-/Documentation/process/submitting-patches.rst?h=3Dv6.11-rc6#n81
+In file included from sound/soc/mediatek/mt8365/mt8365-afe-common.h:19,
+                 from sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:18:
+sound/soc/mediatek/mt8365/mt8365-afe-pcm.c: In function 'mt8365_afe_cm2_mux_conn':
+sound/soc/mediatek/mt8365/mt8365-reg.h:952:41: error: implicit declaration of function 'FIELD_PREP' [-Wimplicit-function-declaration]
+  952 | #define CM2_AFE_CM2_CONN_CFG1(x)        FIELD_PREP(CM2_AFE_CM2_CONN_CFG1_MASK, (x))
+      |                                         ^~~~~~~~~~
 
-3. I find the wording =E2=80=9Cfix the right check=E2=80=9D confusing.
+Included it ahead of the field definitions.
 
+Fixes: 38c7c9ddc740 ("ASoC: mediatek: mt8365: Add common header")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
 
-Regards,
-Markus
+This started happening after I applied "ASoC: mt8365: Allow build coverage".
+---
+ sound/soc/mediatek/mt8365/mt8365-reg.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/sound/soc/mediatek/mt8365/mt8365-reg.h b/sound/soc/mediatek/mt8365/mt8365-reg.h
+index b763cddc93db..4ebbb94ff02e 100644
+--- a/sound/soc/mediatek/mt8365/mt8365-reg.h
++++ b/sound/soc/mediatek/mt8365/mt8365-reg.h
+@@ -10,6 +10,8 @@
+ #ifndef _MT8365_REG_H_
+ #define _MT8365_REG_H_
+ 
++#include <linux/bitfield.h>
++
+ #define AUDIO_TOP_CON0			(0x0000)
+ #define AUDIO_TOP_CON1			(0x0004)
+ #define AUDIO_TOP_CON2			(0x0008)
+-- 
+2.39.2
+
 
