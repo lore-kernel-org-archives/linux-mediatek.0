@@ -4,64 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34BE6ECE579
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 17:21:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF5EDECE577
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 18:39:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KOfQXY/A6gxYduGlhhCQwnPLt3hFvfXbKzE4Uxhkir4=; b=sNEI2vlcxrrq2Z+V5U8og25Wzm
-	Bs4rsjEPU/2Xkf8XXoDXpNb90FXD9VRO5g6vLlqW67VLocvafNvWG8TAVK1oiQN96ov9Q3vyV0eDF
-	fdGcLuxOfdoWpfSWGcPhyMckGWTIolk16ZoXWDptI7MqkrDPXegtbWibhHnWeHm4CvfqVEf69lZCM
-	b8dz1YpG6/XAAyGlaJAnoxvZM4vqZKEIJ7V0TPhezIFpCkFk9upCJsoKxYKfGhGbZBeaOKM3n3wnx
-	jEWzGkScbE9Fm8e7dh4ZsxcAGVAkvbJp1/9TAN+o+EGPh9cBJe2lzWTuNpL9SBI6x7fJyXEtVnbPU
-	0ezTnrOA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Ctniu5o5pSn2Xl9x/oQ3EOBA3dmB7q9aVi1ZjFolhD4=; b=wynyZuMKtBcIAV
+	0dFZXxEbcW0HgSk9UgzH0q0aqHa19L4ulhRuXxXquUAcV77GiDfzvUVyZNmgSH1fjI/h3lGimZT2C
+	8jFhsb1G0iSvq9qeMER5AlgIlYecGFt1uB/gFlTF3neMdIrMWJipBWIS+lqiwRROj1JEEEjqlGodh
+	aaGx+OD44B6hKOvgNB9UqHfxB3jA3KssFgOGBhc+I9EADiivKbhAXHXr5VdUilF0W1Tf/KkoUMlII
+	8dRtk3OVe/n7izS0sbeTAASEA/jlddeLQl6WJQE2lg7K1PLfySV5IeJUdPzvyOZCK6BSgsmFXJoOV
+	IRyK7TjRzpAXeU+jagKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sni4U-00000002noT-2xYZ;
-	Mon, 09 Sep 2024 17:21:02 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1snjIG-00000002zau-2ucX;
+	Mon, 09 Sep 2024 18:39:20 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sni2S-00000002nI3-0DVo;
-	Mon, 09 Sep 2024 17:18:57 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 65ED15C00B1;
-	Mon,  9 Sep 2024 17:18:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16E5AC4CEC7;
-	Mon,  9 Sep 2024 17:18:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725902334;
-	bh=EhoK4r8YL8dVYI1oM5qZI8MIrFWarHcSHL0ip3G9iw8=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=MoNfweyk+KZ23+E30IX43XB2oxHv24uNClsK9sCkJuO4txLMOOI6Ha0hjsDcoBPDW
-	 y5JL3lbnUIwVyws1OWsNdPk56DtyJUTrql6OZNItZbjQrVmAtbv+xOknkYh58vYWZB
-	 4s4M2w4t9MNvNgwDH10C4elbKGXgLqeEX1UrJSToovIka5MvJQQ0CZyc4Ydm0bXDz4
-	 sFrLTKkI3rarbA7EfrMib08D/z7tKsYkD+bsAJpHWV9lL3riHR12HiA+h4X3wKpOQi
-	 1hw4JwJIGkaxDcjX6nAoXq2v6DRkgaPThUvN71u2mxhO5davDqEdsZM7wmIaNYY9NL
-	 y1QO5embhMS2Q==
-From: Mark Brown <broonie@kernel.org>
-To: Arnd Bergmann <arnd@kernel.org>
-Cc: Arnd Bergmann <arnd@arndb.de>, Liam Girdwood <lgirdwood@gmail.com>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Alexandre Mergnat <amergnat@baylibre.com>, linux-sound@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20240908221754.2210857-1-arnd@kernel.org>
-References: <20240908221754.2210857-1-arnd@kernel.org>
-Subject: Re: [PATCH] ASoC: mediatek: mt8365: include linux/bitfield.h
-Message-Id: <172590232922.1707146.8389752525404411197.b4-ty@kernel.org>
-Date: Mon, 09 Sep 2024 18:18:49 +0100
+	id 1snjHD-00000002zLj-1KrQ;
+	Mon, 09 Sep 2024 18:38:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1725907093;
+	bh=QvSdxTDvn8AaYy6kGpwsljEiMhfwzV+X7Yjh0q69b1g=;
+	h=From:Subject:Date:To:Cc:From;
+	b=b5OE9DTdhoalVXxxeEAxJs4KvmlVPW5zCkFstuELc2cLUW/NE0RqPnFPm7z1ebPof
+	 qldjWVxBgavSO3WPNll69gLZLM36jEABuWO4sRRSwtH6Y7gKH4TpK9LN1ZaJJWtjTD
+	 M5eO3wwC9V6126wbdoFtMdRg4mQZVfotachXYMl4qqVvuhiY218LIojdijtOy877L8
+	 jn1yompLUoI+9TeJ5Y0L3m6UTsHeZV/tlgwu2uLWg6U60p1/GxtNIGi4jgvK/MHUZs
+	 6FyljcO5m99Ko+EgN1ZDirIqhnqIR3g4AXv3aHmqd6O5al+L1cOhZVYpO1p6EVzygw
+	 CR3jFj0T+Q4AQ==
+Received: from [192.168.1.95] (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A441217E35FB;
+	Mon,  9 Sep 2024 20:38:11 +0200 (CEST)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Subject: [PATCH RFC 0/3] Verify bias functionality for pinctrl_paris driver
+ through new gpio test
+Date: Mon, 09 Sep 2024 14:37:31 -0400
+Message-Id: <20240909-kselftest-gpio-set-get-config-v1-0-16a065afc3c1@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-99b12
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAGtA32YC/x2MwQrCMBAFf6Xs2YW0tBG9Cn6AV/HQxpe4KEnJl
+ iKU/ruLh4GZy2ykqAKlc7NRxSoqJVu0h4bCa8wJLE9r6lzXu5Pz/FZ84gJdOM1SWGFihJKjJPY
+ YpskfXWjHgewxV0T5/v93ul0v9Nj3H+YIlT10AAAA
+To: Sean Wang <sean.wang@kernel.org>, 
+ Linus Walleij <linus.walleij@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Bamvor Jian Zhang <bamv2005@gmail.com>, Shuah Khan <shuah@kernel.org>
+Cc: kernel@collabora.com, linux-mediatek@lists.infradead.org, 
+ linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kselftest@vger.kernel.org, 
+ kernelci@lists.linux.dev, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+X-Mailer: b4 0.14.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_101856_169233_F76B9D45 
-X-CRM114-Status: GOOD (  12.37  )
+X-CRM114-CacheID: sfid-20240909_113815_548263_405C7F6D 
+X-CRM114-Status: GOOD (  13.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,45 +82,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 08 Sep 2024 22:17:34 +0000, Arnd Bergmann wrote:
-> On x86, the header is not already included implicitly,
-> breaking compile-testing:
-> 
-> In file included from sound/soc/mediatek/mt8365/mt8365-afe-common.h:19,
->                  from sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:18:
-> sound/soc/mediatek/mt8365/mt8365-afe-pcm.c: In function 'mt8365_afe_cm2_mux_conn':
-> sound/soc/mediatek/mt8365/mt8365-reg.h:952:41: error: implicit declaration of function 'FIELD_PREP' [-Wimplicit-function-declaration]
->   952 | #define CM2_AFE_CM2_CONN_CFG1(x)        FIELD_PREP(CM2_AFE_CM2_CONN_CFG1_MASK, (x))
->       |                                         ^~~~~~~~~~
-> 
-> [...]
+This series was motivated by the regression fixed by 166bf8af9122
+("pinctrl: mediatek: common-v2: Fix broken bias-disable for
+PULL_PU_PD_RSEL_TYPE"). A bug was introduced in the pinctrl_paris driver
+which prevented certain pins from having their bias configured.
 
-Applied to
+Running this test on the mt8195-tomato platform with the test plan
+included below[1] shows the test passing with the fix applied, but failing
+without the fix:
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+With fix:
+  $ ./gpio-setget-config.py
+  TAP version 13
+  # Using test plan file: ./google,tomato.yaml
+  1..3
+  ok 1 pinctrl_paris.34.pull-up
+  ok 2 pinctrl_paris.34.pull-down
+  ok 3 pinctrl_paris.34.disabled
+  # Totals: pass:3 fail:0 xfail:0 xpass:0 skip:0 error:0
 
-Thanks!
+Without fix:
+  $ ./gpio-setget-config.py
+  TAP version 13
+  # Using test plan file: ./google,tomato.yaml
+  1..3
+  # Bias doesn't match: Expected pull-up, read pull-down.
+  not ok 1 pinctrl_paris.34.pull-up
+  ok 2 pinctrl_paris.34.pull-down
+  # Bias doesn't match: Expected disabled, read pull-down.
+  not ok 3 pinctrl_paris.34.disabled
+  # Totals: pass:1 fail:2 xfail:0 xpass:0 skip:0 error:0
 
-[1/1] ASoC: mediatek: mt8365: include linux/bitfield.h
-      commit: 6b31d6a4ca3b4d8abfb39127130889f9a9a38aa1
+In order to achieve this, the first patch exposes bias configuration
+through the GPIO API in the pinctrl_paris driver, patch 2 extends the
+gpio-mockup-cdev utility for use by patch 3, and patch 3 introduces a
+new GPIO kselftest that takes a test plan in YAML, which can be tailored
+per-platform to specify the configurations to test, and sets and gets
+back each pin configuration to verify that they match and thus that the
+driver is behaving as expected.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+Since the GPIO uAPI only allows setting the pin configuration, getting
+it back is done through pinconf-pins in the pinctrl debugfs folder.
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+The test currently only verifies bias but it would be easy to extend to
+verify other pin configurations.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+The test plan YAML file can be customized for each use-case and is
+platform-dependant. For that reason, only an example is included in
+patch 3 and the user is supposed to provide their test plan. That said,
+the aim is to collect test plans for ease of use at [2].
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+[1] This is the test plan used for mt8195-tomato:
 
-Thanks,
-Mark
+- label: "pinctrl_paris"
+  tests:
+  # Pin 34 has type MTK_PULL_PU_PD_RSEL_TYPE and is unused.
+  # Setting bias to MTK_PULL_PU_PD_RSEL_TYPE pins was fixed by
+  # 166bf8af9122 ("pinctrl: mediatek: common-v2: Fix broken bias-disable for PULL_PU_PD_RSEL_TYPE")
+  - pin: 34
+    bias: "pull-up"
+  - pin: 34
+    bias: "pull-down"
+  - pin: 34
+    bias: "disabled"
+
+[2] https://github.com/kernelci/platform-test-parameters
+
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+Nícolas F. R. A. Prado (3):
+      pinctrl: mediatek: paris: Expose more configurations to GPIO set_config
+      selftest: gpio: Add wait flag to gpio-mockup-cdev
+      selftest: gpio: Add a new set-get config test
+
+ drivers/pinctrl/mediatek/pinctrl-paris.c           |  20 +--
+ tools/testing/selftests/gpio/Makefile              |   2 +-
+ tools/testing/selftests/gpio/gpio-mockup-cdev.c    |  14 +-
+ .../gpio-set-get-config-example-test-plan.yaml     |  15 ++
+ .../testing/selftests/gpio/gpio-set-get-config.py  | 183 +++++++++++++++++++++
+ 5 files changed, 220 insertions(+), 14 deletions(-)
+---
+base-commit: 6a7917c89f219f09b1d88d09f376000914a52763
+change-id: 20240906-kselftest-gpio-set-get-config-6e5bb670c1a5
+
+Best regards,
+-- 
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 
