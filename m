@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4EF9ECE577
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 17:20:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34BE6ECE579
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 17:21:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cnoB+2O0v2dUqRa/4oFPuPEfvXEnYfKrsqe2ib63Ozw=; b=OVlAnZHR4fvEdtMuZrMXG59Huy
-	vwv1bqWCaQxwgeD62A2wWtDlSr1T3OvxtiUvZL4HvGrwo/R5thvFF7pQ6c99JNXy7It6AEfmX4/Ip
-	no6Ax9ul6Lj8S1IFklpbHS2DGOJL8c61qaPXx6sHGB19rhqCU6k5fHDxBLfkvcysoVJwOeUsO1iWB
-	+6DiJkX1mTrCH4yAPpr5pLFhsrfYZTThliFpOXmI+yDZJNCQ8tnbcHXUT6AQ4EOnQILnxvCuOygv4
-	i6Toim1s5XC4Bbd1ZrgpPDXunhuqx6388gZ9kiQIv4kK1HWuwQtrEYRlaPkdV3Hg+W8CwnIRNvIh/
-	L6HAtrqg==;
+	bh=KOfQXY/A6gxYduGlhhCQwnPLt3hFvfXbKzE4Uxhkir4=; b=sNEI2vlcxrrq2Z+V5U8og25Wzm
+	Bs4rsjEPU/2Xkf8XXoDXpNb90FXD9VRO5g6vLlqW67VLocvafNvWG8TAVK1oiQN96ov9Q3vyV0eDF
+	fdGcLuxOfdoWpfSWGcPhyMckGWTIolk16ZoXWDptI7MqkrDPXegtbWibhHnWeHm4CvfqVEf69lZCM
+	b8dz1YpG6/XAAyGlaJAnoxvZM4vqZKEIJ7V0TPhezIFpCkFk9upCJsoKxYKfGhGbZBeaOKM3n3wnx
+	jEWzGkScbE9Fm8e7dh4ZsxcAGVAkvbJp1/9TAN+o+EGPh9cBJe2lzWTuNpL9SBI6x7fJyXEtVnbPU
+	0ezTnrOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sni3U-00000002nd4-2POj;
-	Mon, 09 Sep 2024 17:20:00 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1sni4U-00000002noT-2xYZ;
+	Mon, 09 Sep 2024 17:21:02 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sni2P-00000002nHK-1rbt;
-	Mon, 09 Sep 2024 17:18:55 +0000
+	id 1sni2S-00000002nI3-0DVo;
+	Mon, 09 Sep 2024 17:18:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id BBF3CA41B29;
-	Mon,  9 Sep 2024 17:18:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DFE17C4CEC8;
-	Mon,  9 Sep 2024 17:18:48 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 65ED15C00B1;
+	Mon,  9 Sep 2024 17:18:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16E5AC4CEC7;
+	Mon,  9 Sep 2024 17:18:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725902331;
-	bh=0my6CiCfO1YSLi/x8EJebBhnlxug1KH7Le/Dp6Hn1rI=;
+	s=k20201202; t=1725902334;
+	bh=EhoK4r8YL8dVYI1oM5qZI8MIrFWarHcSHL0ip3G9iw8=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=jAh2/l396k5GbqfjNSaQBy3Jg/M415D6WaNic28NqN6ztZY8NtKkWpPtdeuUSedUt
-	 dqkxeuQytTySmAQGoW2SS4Uy3WoBhaavUZP4QaZtEjGeGMLPkR8BClNcFuhH2wJ4vH
-	 bdfTI4rv626NwLhGgae9ILHX85IGVthJ0E6EY1ICS/lQ0Eyg9wNFyVGfiTFsRdwFQ9
-	 99VzDnoAaa4/FzpNhPL7jz+hk6p2PoCfu8sPBYtpcrjFoNTudw4/tcVkW/91zmwiDL
-	 uK57Q/UWQ6MoAS/z8OMre954Of2e2QSOJoFb1pY5z67geJu2IWWc5nvzRVUJ6cb1kH
-	 UvLW8+V0HRcJA==
+	b=MoNfweyk+KZ23+E30IX43XB2oxHv24uNClsK9sCkJuO4txLMOOI6Ha0hjsDcoBPDW
+	 y5JL3lbnUIwVyws1OWsNdPk56DtyJUTrql6OZNItZbjQrVmAtbv+xOknkYh58vYWZB
+	 4s4M2w4t9MNvNgwDH10C4elbKGXgLqeEX1UrJSToovIka5MvJQQ0CZyc4Ydm0bXDz4
+	 sFrLTKkI3rarbA7EfrMib08D/z7tKsYkD+bsAJpHWV9lL3riHR12HiA+h4X3wKpOQi
+	 1hw4JwJIGkaxDcjX6nAoXq2v6DRkgaPThUvN71u2mxhO5davDqEdsZM7wmIaNYY9NL
+	 y1QO5embhMS2Q==
 From: Mark Brown <broonie@kernel.org>
 To: Arnd Bergmann <arnd@kernel.org>
 Cc: Arnd Bergmann <arnd@arndb.de>, Liam Girdwood <lgirdwood@gmail.com>, 
@@ -50,19 +50,18 @@ Cc: Arnd Bergmann <arnd@arndb.de>, Liam Girdwood <lgirdwood@gmail.com>,
  Alexandre Mergnat <amergnat@baylibre.com>, linux-sound@vger.kernel.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org
-In-Reply-To: <20240907200053.3027553-1-arnd@kernel.org>
-References: <20240907200053.3027553-1-arnd@kernel.org>
-Subject: Re: [PATCH] ASoC: mediatek: mt8365: remove unused
- mt8365_i2s_hd_str
-Message-Id: <172590232608.1707146.10719220040805343879.b4-ty@kernel.org>
-Date: Mon, 09 Sep 2024 18:18:46 +0100
+In-Reply-To: <20240908221754.2210857-1-arnd@kernel.org>
+References: <20240908221754.2210857-1-arnd@kernel.org>
+Subject: Re: [PATCH] ASoC: mediatek: mt8365: include linux/bitfield.h
+Message-Id: <172590232922.1707146.8389752525404411197.b4-ty@kernel.org>
+Date: Mon, 09 Sep 2024 18:18:49 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.15-dev-99b12
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_101853_581558_4E681901 
-X-CRM114-Status: GOOD (  12.71  )
+X-CRM114-CacheID: sfid-20240909_101856_169233_F76B9D45 
+X-CRM114-Status: GOOD (  12.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,14 +76,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 07 Sep 2024 20:00:38 +0000, Arnd Bergmann wrote:
-> The mt8365_i2s_enum and mt8365_i2s_hd_str variables are not
-> used anywhere, but cause a warning when building with C=1
-> or when enabling -Wunused-const-variable:
+On Sun, 08 Sep 2024 22:17:34 +0000, Arnd Bergmann wrote:
+> On x86, the header is not already included implicitly,
+> breaking compile-testing:
 > 
-> sound/soc/mediatek/mt8365/mt8365-dai-i2s.c:781:27: error: 'mt8365_i2s_hd_str' defined but not used [-Werror=unused-const-variable=]
->   781 | static const char * const mt8365_i2s_hd_str[] = {
->       |                           ^~~~~~~~~~~~~~~~~
+> In file included from sound/soc/mediatek/mt8365/mt8365-afe-common.h:19,
+>                  from sound/soc/mediatek/mt8365/mt8365-afe-pcm.c:18:
+> sound/soc/mediatek/mt8365/mt8365-afe-pcm.c: In function 'mt8365_afe_cm2_mux_conn':
+> sound/soc/mediatek/mt8365/mt8365-reg.h:952:41: error: implicit declaration of function 'FIELD_PREP' [-Wimplicit-function-declaration]
+>   952 | #define CM2_AFE_CM2_CONN_CFG1(x)        FIELD_PREP(CM2_AFE_CM2_CONN_CFG1_MASK, (x))
+>       |                                         ^~~~~~~~~~
 > 
 > [...]
 
@@ -94,8 +95,8 @@ Applied to
 
 Thanks!
 
-[1/1] ASoC: mediatek: mt8365: remove unused mt8365_i2s_hd_str
-      commit: 876dec03fdfb7eeb592d01a95ba292c9e53b324b
+[1/1] ASoC: mediatek: mt8365: include linux/bitfield.h
+      commit: 6b31d6a4ca3b4d8abfb39127130889f9a9a38aa1
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
