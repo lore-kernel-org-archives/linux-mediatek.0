@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4C69CD4F4C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 02:32:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29BFDECE577
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 02:32:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h3jsBoK6osKU+9RLD62g9RUso5s5R8d15TnY03wmQ6c=; b=HuoCZa9dKHJQzCqOIZsKYtm5hQ
-	XTbiQZxE9SpiPS+dbirNCcUdcmkqS3yHeTPoAUX45T90MsQLE7MhFpKOoP+QiA4YLeFvNZuENZFP9
-	u60gEs4q98krW1v6YVloLC1hUhXJ6d7FP8+emRJhbZ9+vp6TEIEoZ4bv4jI5c4dngqtyVePDV0s2Z
-	S3niKgMhW1d1XOlZq9P+ztCqsEA7jFEoAVnjF2ZNbNhrRgNXH6Buv4D6ljmKwce8iMe5X4Y1vyMNZ
-	jIWK7eN4+ML9EEpXsQ8lGagExB17HX0eE7++lIN4o8lAInm9ViVgzFDvazWx2n5ikvPVdeqa/TQ70
-	SbeDC4Cw==;
+	bh=Ai6i40gtLi8KkfaAdRGfJKbTUS/9SVUXMlQmPGbzRSI=; b=yBWf+VFh0aIuByqH/BCGQhwGST
+	PHNNrnIUKC/rxOV3S7+BFhjZmQb6EUbcj03QIVR21Lx43xdiGM/kIeRH0dYcjyybF5Jp6qSZjpvzx
+	XcaE8lj0kP03HhMiOsl0AFDiBW7F33dFWYOCiI373cu5jRA4Nl4M2AuPhObv9SA7dt1cqW/nCYZUu
+	Cm0V8QU8P2VuQalA7Q0LQqysdgWvLNXjcgs0N61aKG561vwAkbSoJMMuWWII6C3xIO/lytVQCBnDd
+	fCcEI5Jqplxm5bW0ZWANWtNKWt/N4dC5XIy8xdwK2s+JbhVCyVLXKcwVAIc7wd6KHlfUO9NSuerVO
+	PYkCexww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snUCF-00000000HdP-0OoQ;
-	Mon, 09 Sep 2024 02:32:07 +0000
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+	id 1snUCI-00000000HfB-38IL;
+	Mon, 09 Sep 2024 02:32:10 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snUCA-00000000Hck-3Be1
+	id 1snUCE-00000000HdE-2UBL
 	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Sep 2024 02:32:04 +0000
-Received: by mail-pj1-x102c.google.com with SMTP id 98e67ed59e1d1-2d889207d1aso2697103a91.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 08 Sep 2024 19:32:01 -0700 (PDT)
+	Mon, 09 Sep 2024 02:32:08 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id 98e67ed59e1d1-2d892997913so2507248a91.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 08 Sep 2024 19:32:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1725849121; x=1726453921; darn=lists.infradead.org;
+        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1725849126; x=1726453926; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=h3jsBoK6osKU+9RLD62g9RUso5s5R8d15TnY03wmQ6c=;
-        b=zC6cbeP85MrkIsRWU8oL5DS6Xph1q770DVQ9/CKe+qNuJz2lIVbgixcGbgWsvIu7WV
-         ZEyxIv65F3aPQj4OjrqVSkNeh2fP0DKi9fnf7jjUXqNGrQbfJsURm5JpShdIXahoIDeE
-         sa6H66fPlTlrlF3ee2xjbmoQLUEENwc22hV5Yy1nH7mg3+in27Qt3+cmiA6GjD8jQmb5
-         lCFppa3OPJR88A5CwiyxeyPiQHd4o0/jU9SXUUsye68ls6koVvURGLwihTomtawqbHrY
-         OWTckD5kTAdWwCRn403Xpapx7i0pDxeOBpBdkOl8vR1iqhfcriFYKebgweKhfXdnHRw5
-         tGOQ==
+        bh=Ai6i40gtLi8KkfaAdRGfJKbTUS/9SVUXMlQmPGbzRSI=;
+        b=h6BuDZY0/x12IQXuvX+QLz/P3PzlbrGdRwhyum4UIZELUaW4TplzCnXpUbDnKpMieg
+         i4YDRMvDJKeC7rj1GEbAU/Ff4OyMT21xui2X+WuFyu5E1lPUqb8HJg9NXqS2f3jZO8Nx
+         S/E8+g4Wgu0fUtnKMjI4K+rH1XRkmh4a8el6Jw4RL/h7sYvC1X+sHRNCGoy66VHgBypy
+         xY6HecNhqE1aLfQVA3QTdQ7fs2W51du68jYFyL1BRj9J4RqvPp9x5e6gEAld9iLajCJi
+         M/95QoEVtwE8b1AmBe+/T3Qjbw2loNMt22NyUkP4VHBmtX9ZKeZyiRJuxRJ7+q6t+dj2
+         ZFHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725849121; x=1726453921;
+        d=1e100.net; s=20230601; t=1725849126; x=1726453926;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=h3jsBoK6osKU+9RLD62g9RUso5s5R8d15TnY03wmQ6c=;
-        b=OOcE+bIw2SwCHVNJLTOL1vzyCyf69SzvOcbkXEcD1Da8YirjeaXvtE0XtgFqto6qV5
-         GlszkW1Mb/ZZ5h+bV4E7eB+Dd94XuIvRsRntpp9A1tLc2khB7H7URaRy6m0bkqIzcANP
-         ViuRxpgE2+vd+6Xvxg4v9ID2ygKpxRMvl+BYGY+gn7HHJLyNpnZ5Xk635ST5+J4RuQnr
-         TQ9yiZAG3MZSq7mYokBaTND97f7zHUmZERwfhjg7HAQmnObl3fMQMT9BbbfxRmy8IO5r
-         lDSIy9jF1jP2cNN3KuL+FUNIGv5Ndp5J217li8qWilGm613FhDg2NCD9NEIKIp1x6OYR
-         Kt1w==
-X-Forwarded-Encrypted: i=1; AJvYcCXYYbhir/MJn2inCiuyY8jBoxjThQ5h6n0WLQ7X/T6hgDnTwtHMolrUov1TV44r4apXGhh3X7c6LPTMB+OUgQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzqgXBun7YrXjwvweo6ZzrI7ZYJWp0XXwURoramojoFL08yfxTY
-	iToZCa2gUCSWQMbjjsdVdFoYE6axOEHJLBufhxOZDiln7GlA8qPXXMxvs2M5kMw=
-X-Google-Smtp-Source: AGHT+IFdVpSBGSpWYYHDlsrmgHjef/BjQGNN3o4DAAfwJWFtVeibofNSvovQsC/WeLsU5p/ooe4SLw==
-X-Received: by 2002:a17:90a:be15:b0:2cc:ff56:5be1 with SMTP id 98e67ed59e1d1-2dad50831d1mr8627025a91.7.1725849121016;
-        Sun, 08 Sep 2024 19:32:01 -0700 (PDT)
+        bh=Ai6i40gtLi8KkfaAdRGfJKbTUS/9SVUXMlQmPGbzRSI=;
+        b=EwGYmYGEl2RGq3eUGvdGNeXDxn0anU2Cfr0DuIXSDbfZQFPjEMgSXQnIS83rz5i/NW
+         DAgZRpY0Xdj6Uz5JqlfIqOde0d7R8g7Z9F1VMo8a7cvEYR7Zl1Epej4N3Pzz6qs5sf4+
+         DxbaTC7gE3XzhUjFDeqzqPrE9LZh6UOl+xUTOJ+vqzg5Rb0JQQC2dHK9B+A6ylYCcujJ
+         54wYwZ1UyzCNxQ9tLN8PPSG20ptvTaIP7MQ95NpJSPne27j07YNLjxPD1BkUrhorkUAK
+         nNm3fUQl2YbcQMNsGbXgYrRANIoHcxanlEOCFRiONu5s3pW6WaD+Zonj+k5P4NEIwS50
+         1IdA==
+X-Forwarded-Encrypted: i=1; AJvYcCVku3LYSZIk9JBV9bL2Ao66yt3xQXvot4+NfKAahL7OcM3OdoJEmlagZe2ZXGUMX2jwFJi3+TMfIWIyW79XbQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzATEgSgxwnP1gye7eSHG1aB+epTXvqeH+m7p/7dND+49bRyCzP
+	PyfMSxYjrz+rWKI/mMnemtaSIpHqQjBJCsEpdkKoSjrq88/fmXuXUAD7BjDNqVw=
+X-Google-Smtp-Source: AGHT+IGgNx7WABZhDETOCChw3HAPeP3YssU06NrA2tHr9bsZ2XDn3kY71U0vqFahzzAqH5lBWek1ow==
+X-Received: by 2002:a17:90b:196:b0:2d3:c664:e253 with SMTP id 98e67ed59e1d1-2dad4ef6033mr13296275a91.10.1725849125363;
+        Sun, 08 Sep 2024 19:32:05 -0700 (PDT)
 Received: from zjn.huaqin.com ([116.66.212.162])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2db049873b0sm3323645a91.47.2024.09.08.19.31.58
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2db049873b0sm3323645a91.47.2024.09.08.19.32.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 08 Sep 2024 19:32:00 -0700 (PDT)
+        Sun, 08 Sep 2024 19:32:05 -0700 (PDT)
 From: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>
 To: hsinyi@chromium.org
 Cc: angelogioacchino.delregno@collabora.com,
@@ -77,17 +77,18 @@ Cc: angelogioacchino.delregno@collabora.com,
 	linux-mediatek@lists.infradead.org,
 	matthias.bgg@gmail.com,
 	robh@kernel.org
-Subject: [PATCH v5 0/2] arm64: dts: mediatek: Add MT8186 Ponyta
-Date: Mon,  9 Sep 2024 10:31:46 +0800
-Message-Id: <20240909023148.1677936-1-cengjianeng@huaqin.corp-partner.google.com>
+Subject: [PATCH v5 1/2] dt-bindings: arm: mediatek: Add MT8186 Ponyta Chromebook
+Date: Mon,  9 Sep 2024 10:31:47 +0800
+Message-Id: <20240909023148.1677936-2-cengjianeng@huaqin.corp-partner.google.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <CAJMQK-imYrDTuycVzQxkfbkZuHehE8uwc+qS2w=UDShETsBvEw@mail.gmail.com>
+In-Reply-To: <20240909023148.1677936-1-cengjianeng@huaqin.corp-partner.google.com>
 References: <CAJMQK-imYrDTuycVzQxkfbkZuHehE8uwc+qS2w=UDShETsBvEw@mail.gmail.com>
+ <20240909023148.1677936-1-cengjianeng@huaqin.corp-partner.google.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240908_193202_966567_F5E43C0D 
-X-CRM114-Status: UNSURE (   8.71  )
+X-CRM114-CacheID: sfid-20240908_193206_654271_C7357639 
+X-CRM114-Status: UNSURE (   7.71  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,40 +104,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is v5 of the MT8186 Chromebook device tree series.
+Ponyta is a custom label Chromebook based on MT8186. It is a
+self-developed project of Huaqin and has no fixed OEM.
+
+Signed-off-by: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>
 ---
 Changes in v5:
 - PATCH 1/2: Remove sku2147483647.
-- PATCH 2/2: Remove sku2147483647.
-- Link to v4:https://lore.kernel.org/all/20240906085739.1322676-1-cengjianeng@huaqin.corp-partner.google.com/
+- Link to v4:https://lore.kernel.org/all/20240906085739.1322676-2-cengjianeng@huaqin.corp-partner.google.com/
 
 Changes in v4:
 - PATCH 1/2: Add more info for Ponyta custom label in commit.
 - Link to v3:https://lore.kernel.org/all/20240904081501.2060933-1-cengjianeng@huaqin.corp-partner.google.com/
 
 Changes in v3:
-- PATCH 0/2: Add the modify records.
 - PATCH 1/2: Modify lable to label.
 - Link to v2:https://lore.kernel.org/all/20240903061603.3007289-1-cengjianeng@huaqin.corp-partner.google.com/
 
-Changes in v2:
-- PATCH 2/2: Modify the dtb name without rev2.
-- Link to v1:https://lore.kernel.org/all/20240902125502.1844374-1-cengjianeng@huaqin.corp-partner.google.com/
+Chage since V2:
+- No change.
 
-Jianeng Ceng (2):
-  dt-bindings: arm: mediatek: Add MT8186 Ponyta Chromebook
-  arm64: dts: mediatek: Add MT8186 Ponyta Chromebooks
+---
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
- .../devicetree/bindings/arm/mediatek.yaml     | 10 +++++
- arch/arm64/boot/dts/mediatek/Makefile         |  2 +
- .../mediatek/mt8186-corsola-ponyta-sku0.dts   | 23 ++++++++++
- .../mediatek/mt8186-corsola-ponyta-sku1.dts   | 27 ++++++++++++
- .../dts/mediatek/mt8186-corsola-ponyta.dtsi   | 44 +++++++++++++++++++
- 5 files changed, 106 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta.dtsi
-
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index 1d4bb50fcd8d..43a824bee1b6 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -257,6 +257,16 @@ properties:
+           - const: google,steelix-sku393218
+           - const: google,steelix
+           - const: mediatek,mt8186
++      - description: Google Ponyta (Custom label)
++        items:
++          - const: google,ponyta-sku0
++          - const: google,ponyta
++          - const: mediatek,mt8186
++      - description: Google Ponyta (Custom label)
++        items:
++          - const: google,ponyta-sku1
++          - const: google,ponyta
++          - const: mediatek,mt8186
+       - description: Google Rusty (Lenovo 100e Chromebook Gen 4)
+         items:
+           - const: google,steelix-sku196609
 -- 
 2.34.1
 
