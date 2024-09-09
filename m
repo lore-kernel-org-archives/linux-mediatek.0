@@ -4,58 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA4EFECE589
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 20:55:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D493DECE589
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 21:02:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:From:
-	Subject:References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OZrQ5VHLk1tA7kiaeGofa3flE1g1BnftMlLoittxaRY=; b=2yOO9W3z4HR8sSBckLS9+8hxUR
-	Iqo3DYb9nsnAM2i49t5SCvG8wpL0D5zXIs9UIg3A9vCAcPGkBrjZr+DxJg8rZso1xZYzFdqkP6ZT0
-	Luo4DbS5E7SwJlAevCCtdWluD8vw03w5VR6CS+tiTqnorDrrlAfbbvg6S9cwHQ87IIUGlDCauQNxz
-	H9sFOKh8LLH4WeXaEtWdh/oxqEBYBwfjQCg9eojH0VbpziGp3O5inowM1hJAaEv+/nAofPx5hWc4i
-	4Qifp1+L8jQW/jg4Jt2y7HgZmJFDTbtHU3Vca8D2DSUPqkRkQROtU2zyPVA8b7PEkZG1uDQmiGVaZ
-	2ngL18zg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dCmRqOe+HDO81bSmE8MN6bptIZEYPzdRKR04N6fAtEI=; b=0sIeRh5em6KkfzHbXEq3IhqI+h
+	itax4yO7zwgnkonUU8wV0SuuehhdFZjU44H2Aak++gp8TFl8Bbby8C/rw4ubRNSZc68y0i0xwVhRP
+	Y41jX60N/GlyWxFXaNqIgPUwNH96dXRBqNlrZG2YCDPOD4Fqoi2mcJQH8FOXsScSG2Z4H7O8TldxF
+	0TuPm+OkLeLgC81I6LPy+cWGCw1BcaL5lyfiacp5q8imKjXoQs/0fnGTj1K5rnn/sLbJ5BwbUls38
+	YRrfNWG6n3YgKuPYweIbK+BdHgohAZPGbmQ7yJJq+fNDFQoI00BWr+dJPPAgKuv0aCS3LLtr+dpyZ
+	yV5fZcIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snlPc-00000003ISv-1KgL;
-	Mon, 09 Sep 2024 20:55:04 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1snlX8-00000003JDI-1PvH;
+	Mon, 09 Sep 2024 21:02:50 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snlOZ-00000003IHM-33sj;
-	Mon, 09 Sep 2024 20:54:00 +0000
+	id 1snlW6-00000003J2G-0BUx;
+	Mon, 09 Sep 2024 21:01:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 264AC5C0606;
-	Mon,  9 Sep 2024 20:53:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2AF9BC4CEC5;
-	Mon,  9 Sep 2024 20:53:58 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id A668D5C03F3;
+	Mon,  9 Sep 2024 21:01:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE7C7C4CEC5;
+	Mon,  9 Sep 2024 21:01:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725915238;
-	bh=OZrQ5VHLk1tA7kiaeGofa3flE1g1BnftMlLoittxaRY=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=CnWzYTxb3ULUB5oKpi2o0X+AFl3YFhfqZj+cUBeuMgyr3rv3rIkwOj9yTmTVupqPR
-	 UzSJ+Izh8+MJDvTWhumOp1ej67K1nR5qMxiIORNLzX24nXIvOIkLmIIUscMBncKitT
-	 gRob3Qvvg5vWOkhYcbHQeJsj5QnpR9MV+yR6f+AgFGPJ8TRQ7BI98tYbP4fvdJNQSF
-	 yFymuKDN83jz+UwO8oMJzmXT15mp/oU2Ekv8eCz5XcntQvYYblYhTYH4nVN+uF+kCY
-	 TzidZjAWNAE4efHOOUoeZ3F0NszCj9e80+aGjO3+QFo+Xkhnb36QO2iSbM1Kuxp+LW
-	 crwNROQK4p3Gw==
-Message-ID: <702f0a6c2a7529eee53681239056ffef.sboyd@kernel.org>
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1725915704;
+	bh=jxL+ub2/BNNjbnn0ZgajuJ4HTjl9JV3DFe99yHB85Js=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=fFbnoERZ/JUbYGmIOJA65uYscqWs9uIsxE2v5WECHkkG/mReJe7MobdUcT2HoAu1d
+	 baMdiRag0IGtw1vxr9XV4i1nQ7prQaoT8c/7FvISDOuqD6o0xvD76DhntReF7FQCfK
+	 IF+orY7NOUOxq2yCxz5cxvuFbDdze2+hyXWf3/lgRYU8hQx8d1XjFBOLSFrGXFrbmn
+	 XR6hCrsemJoefAdrzwUOpwinYSXrc1Nz/hwGGoUtv7J+hfek35BGcKq30GYov354Qo
+	 jdTVgLYYpNxI9DTGDm1yIQwh6yEwOKPWIo1Nig1O/cesoWb1Z4fZahvKH8x3ZbEQZI
+	 6GP21X28pplrA==
+From: Mark Brown <broonie@kernel.org>
+To: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, 
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+ Tang Bin <tangbin@cmss.chinamobile.com>
+Cc: linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20240908134604.3652-1-tangbin@cmss.chinamobile.com>
+References: <20240908134604.3652-1-tangbin@cmss.chinamobile.com>
+Subject: Re: [PATCH] ASoC: codecs: fix the right check and simplify code
+Message-Id: <172591570270.136248.14851761791754524473.b4-ty@kernel.org>
+Date: Mon, 09 Sep 2024 22:01:42 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20240909111535.528624-11-fshao@chromium.org>
-References: <20240909111535.528624-1-fshao@chromium.org> <20240909111535.528624-11-fshao@chromium.org>
-Subject: Re: [PATCH 10/13] dt-bindings: spmi: spmi-mtk-pmif: Add compatible for MT8188
-From: Stephen Boyd <sboyd@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Fei Shao <fshao@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Date: Mon, 09 Sep 2024 13:53:56 -0700
-User-Agent: alot/0.10
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-99b12
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_135359_828181_6E32EC11 
-X-CRM114-Status: UNSURE (   7.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240909_140146_183260_5B1372C3 
+X-CRM114-Status: GOOD (  12.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,16 +70,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Rob Herring <robh@kernel.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Fei Shao (2024-09-09 04:14:23)
-> Add compatible string for the SPMI block on MT8188 SoC, which is
-> compatible with the one used on MT8195.
->=20
-> Signed-off-by: Fei Shao <fshao@chromium.org>
-> ---
+On Sun, 08 Sep 2024 21:46:04 +0800, Tang Bin wrote:
+> In the file drivers/base/platform.c, the return description of
+> platform_get_irq is 'non-zero IRQ number on success, negative
+> error number on failure.', so the check is wrong, fix it. And
+> when get irq failed, the function platform_get_irq logs an error
+> message.
+> 
+> 
+> [...]
 
-Acked-by: Stephen Boyd <sboyd@kernel.org>
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: codecs: fix the right check and simplify code
+      commit: 130eb72d3cb38a629205a2a192800b4b1b9bc5c9
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
