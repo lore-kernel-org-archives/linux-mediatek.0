@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 464CCECE579
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 13:00:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C78EECE57A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 13:05:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=763rg3ZUl+6DZJOJy5DwsZvQOJ60xrN183DDZfMyDrU=; b=gnVV8r5BBmKOwf3o5t0NmKH5M1
-	KkJ8agBeaD44ypR0odGT6gHMAYMbfGdSCEABFRMVA3UTivuVRkEYyRTv9VcVeF19o6ucp1FS3dSUo
-	bs3yJog0ayU71q7N16zDQval+G+BtnSyn4d3lOOuehnYq1Nuy/tx6wEilemA2cpCbce4jH4JGHSLs
-	ZM1Lib/fDTw7TbuTIdHHjWsw/Ua5yDvIsR2uJ8mkCSXFxoCNKCkt6jCp+C8sXY5LkfZeUjkbt20Ph
-	/m2506q3ugbJzBThP+HeXbWoRKNw9SC9N6yO05JKIzlqbosOWokEZmazSOdOzcszbSjZ5Uz12YkZn
-	h/4a7aYw==;
+	bh=umZi9yP51lcJ8RnrYZCo5jDOmCTZJdRYUd8lcqv4bzE=; b=aDiJyyN14OwoAFfzod6AIePRAL
+	NaNQT/sKS66apP15kqciQf4kVmsMhhOabwC7g0HPrOnkFk/cX/R5BzRvhA1MHXWG67q5So0atrFIp
+	LlYPhpt9Pq7T67cqXr5tN4yfEJgLJ2P+jINMPclF5hKsXdFgPY1EK3dtX89Ri7W6Fa7HY2reicenm
+	wtYvsGLbVufTZoRkBnEfCmchDibO3Hx19ATnd/hOAm7VFR0w/1w1ZZD4713tdWtjxfBgwYprwXN+P
+	1vrsRTeGBpdiGwxNIGSQRyu3m0VvyuGFPJ6bdD0FuPwpS4//S9qdkQF1eIOYaJMoWVuns1sug4DDM
+	Ld/BVwrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sne0N-00000001yKr-47GJ;
-	Mon, 09 Sep 2024 13:00:31 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1sne5H-00000001zOe-3i7w;
+	Mon, 09 Sep 2024 13:05:35 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sndt6-00000001wZE-1MUB
+	id 1sne1Y-00000001yXF-1Wih
 	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Sep 2024 12:53:01 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-42bbdf7f860so39271315e9.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 09 Sep 2024 05:53:00 -0700 (PDT)
+	Mon, 09 Sep 2024 13:01:46 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-42cb9a0c300so6131175e9.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 09 Sep 2024 06:01:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1725886379; x=1726491179; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1725886903; x=1726491703; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=763rg3ZUl+6DZJOJy5DwsZvQOJ60xrN183DDZfMyDrU=;
-        b=rZoOhnutAr1/LP0swmZGb0GVRZF2T+D1Spz4crOyfVLHKYadCHCe13b5domqVTsLlc
-         nxg36e1hKTAOt1LGnpsKIq2+MSajPZSsEykkr1ECvlUWmFihejTQMJbDqW9tUN7XTkdi
-         5AxMVmOjpsHl/fdfigVL4oGoUyOXMbVMJ1WqTBI+oNsUveseOaV3waGR9xcgVBhts06a
-         P3A//Tjue6BUQHaoOdJUskTViieXbkMSnwrZszlhNYX3H8/v3AuYApPfKoZE43D8y848
-         4loABQZBFEs208pGTz757L+Mbx+gA7QnR215ebsW6aowndmC589nHKROZCyha8xb6uZt
-         fwjA==
+        bh=umZi9yP51lcJ8RnrYZCo5jDOmCTZJdRYUd8lcqv4bzE=;
+        b=ezWSI1s6uA5lV2I0pQT91mD1vybkUfkzOZP25FB50BaDi3kFZaMXtagI4JTmLAiyQj
+         e5yoy2U16BEhis/0swFmis1mb/2Gt57ILPLobQuqBWvYGC3Y4aOdKsQVF75QOZTrnGRR
+         Llnasvoc6bZ8XnXnnSKHHFlfrX8E0HGZMt+ngJXHY1eNbPTl7BXHIAfLn67slomc8hPK
+         C08SdZ+ufRcDtvY+JK7bBbjECqzM5x78H2wajCUN1c9m5ruXxFNZEi/3/IHHL30oRHjj
+         MS/DL5FffbSh7vW0KlU8G/Aght0pjEDy1r5DjkXPz9llxqURZyuXpD/Jbl826472kGhC
+         yGRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725886379; x=1726491179;
+        d=1e100.net; s=20230601; t=1725886903; x=1726491703;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=763rg3ZUl+6DZJOJy5DwsZvQOJ60xrN183DDZfMyDrU=;
-        b=d2gy56AdFm/HPaRKLD2RdOF4e7kv6xyn/6ChxHgxL7WxEg37xIZwSrx8qu+JgcDt/4
-         Dcsu8ZeKGhIr+3NgWNgvzyOPQAX5q6oRl5gNCYL5Y/17kzChG0xRg92YT0NuFKRXoGrG
-         xymJpCl8Ro0DdHppPTbctLZfba+SnhafklWa6ZHdGq6yWNqKSYkWtTqI7S+c4cY1XjoY
-         Srlw8kLFlcooWau2/Yhyp9blbvR2TfHnPqh8KV6VSlCXMJdsvIhLch+IzJcizGhE8pId
-         Ak9LBomC0FOqc6nrAoL5oD+K89ViAd+wcclRX+EjQ1XKsx5ClKNm3QbALk+oQcMGBLLp
-         JgaA==
-X-Forwarded-Encrypted: i=1; AJvYcCXPjJjoLDLa8r8OFGaERNWS6Ip2pb2wDdONs7Jc9ZvuQ0gBEHcd7gNh4Qo3v40BdxaI0tpwm+6xkjFopvTuiA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz2JoaiNOvJLTud8AaECbp6jnhyZLb7gfnSK73/XFe258b46OOc
-	L6jhtDUyyoOsRrUZdUuF5waVfr9G4oCNVLtRtVULjfSMAM8gYOQsdBvSEC5CBRc=
-X-Google-Smtp-Source: AGHT+IHpDUAYZ6M9I2utE7B65i3OcZBvlzvw4You9gctJaalUrdtM/PYSMSxk8LHlM5pPU+PhOzRpw==
-X-Received: by 2002:a05:600c:1ca6:b0:42b:a7c7:5667 with SMTP id 5b1f17b1804b1-42cae76cf3bmr53395615e9.25.1725886378512;
-        Mon, 09 Sep 2024 05:52:58 -0700 (PDT)
+        bh=umZi9yP51lcJ8RnrYZCo5jDOmCTZJdRYUd8lcqv4bzE=;
+        b=nWDqxzd6RmD0LyM0GeWVE/M67JUoTlEbRcUYcRC3nhJS+m3exA5st9a4CxRUfLHBxz
+         21MBlow5MVGVBM5GFcdcMperqZgs6K5E1rT090zDgfMDuQtL6alB6E/jO28SsNWx26an
+         M0WG8+ZyjV73td7QdQHArWGHBlA/j4jGgzpcX1wWzh/dgmH83h0sUU9uD2QHy8Be5V6G
+         LieCMTtRbgzm3GzObF7+c3bPR7qMUbs6kw2ZZsEoTb7uh03Fl6GIqVRXOZzgYTpD4rSI
+         MX0p1z939RxMIviTUDYQFCkA2MK1tpvUDGZEVHux6Udngi8DYo31e2TbBJXM5r8eWZ+f
+         yiQg==
+X-Forwarded-Encrypted: i=1; AJvYcCW2+ZkfThp4y4jEuH5tEirurgokh28llndoxS6YaTF7U/61OqjokrGA9JsCV5KLvQdO7xxjqggI/pJTcBlEaA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxhCxR59RyE+GTbSgd27rEg/TbYsLtZbUe9SJj64dW93zbG4kTJ
+	2RRZdne+lbFb1emwGMh9vuuHaKs1kM576iy2EGbLaJ47/ULnOKZQi0Fwnota3b8=
+X-Google-Smtp-Source: AGHT+IH9Romwpgt1JE9YYIpT65omJV/odmabpcbADjq2kLQrDj02YgN6/FmS8gS8gLzsLuEGe2rV6g==
+X-Received: by 2002:adf:ec0c:0:b0:374:cb5c:2966 with SMTP id ffacd0b85a97d-378896a94aamr8655060f8f.40.1725886901672;
+        Mon, 09 Sep 2024 06:01:41 -0700 (PDT)
 Received: from [192.168.0.172] (88-127-185-239.subs.proxad.net. [88.127.185.239])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-378956e8700sm5957292f8f.116.2024.09.09.05.52.57
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-378956652ddsm6040100f8f.29.2024.09.09.06.01.40
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Sep 2024 05:52:58 -0700 (PDT)
-Message-ID: <e461d366-ddeb-4d87-813d-9d8cb7e30238@baylibre.com>
-Date: Mon, 9 Sep 2024 14:52:57 +0200
+        Mon, 09 Sep 2024 06:01:41 -0700 (PDT)
+Message-ID: <ce36e6e6-2e56-489c-be15-5a2d84d035b0@baylibre.com>
+Date: Mon, 9 Sep 2024 15:01:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/7] ASoC: mt8365: Remove unused variables
+Subject: Re: [PATCH 7/7] ASoC: mt8365: Allow build coverage
 To: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
  Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
@@ -76,16 +76,15 @@ Cc: Nathan Chancellor <nathan@kernel.org>, linux-sound@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20240907-asoc-fix-mt8365-build-v1-0-7ad0bac20161@kernel.org>
- <20240907-asoc-fix-mt8365-build-v1-5-7ad0bac20161@kernel.org>
+ <20240907-asoc-fix-mt8365-build-v1-7-7ad0bac20161@kernel.org>
 Content-Language: en-US
 From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20240907-asoc-fix-mt8365-build-v1-5-7ad0bac20161@kernel.org>
+In-Reply-To: <20240907-asoc-fix-mt8365-build-v1-7-7ad0bac20161@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_055300_421159_78AA0D7B 
-X-CRM114-Status: UNSURE (   5.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240909_060144_445169_FDDC26F5 
+X-CRM114-Status: GOOD (  14.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,7 +102,28 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
 On 07/09/2024 02:53, Mark Brown wrote:
-> Silence compiler warnings by removing unused variables.
+> There is no build time dependency on anything specific to ARCH_MEDIATEK so
+> enable COMPILE_TEST builds.
+> 
+> Signed-off-by: Mark Brown <broonie@kernel.org>
+> ---
+>   sound/soc/mediatek/Kconfig | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+> index e6f7a5a49794..3033e2d3fe16 100644
+> --- a/sound/soc/mediatek/Kconfig
+> +++ b/sound/soc/mediatek/Kconfig
+> @@ -301,7 +301,7 @@ config SND_SOC_MT8195_MT6359
+>   
+>   config SND_SOC_MT8365
+>   	tristate "ASoC support for MediaTek MT8365 chip"
+> -	depends on ARCH_MEDIATEK
+> +	depends on ARCH_MEDIATEK || COMPILE_TEST
+>   	select SND_SOC_MEDIATEK
+>   	help
+>   	  This adds ASoC platform driver support for MediaTek MT8365 chip
+> 
 
 -- 
 Regards,
