@@ -4,104 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94F6FECE57A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 14:10:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 470D6ECE579
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 14:34:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D4QKaI+3WBHRSwPufs3rtV0LI1aQyhehd6Wi2dpHTGg=; b=L4zEhdUFRzxRpBdZyOtdr0c39O
-	xd9Cc342nSK+OBMSV4OkCPgEDV2BTvrW+ujUJp7UyAVVstOskOTDTufCG68mU4xyzps/pgZ7TyfeJ
-	xbebnnDay59X+98YTyrrOYbMrK0BcusUUmuECTBzHtbbBmei4f5l1vgNbZTbCr80eEUdsQaRLeys8
-	zOHpmmp3I755Fg64YtlqZCqn1cYWZ3RfCLSm+XlBj+QZz4sjnCP5ZA3080pO6rfRHn96MG313CpMG
-	8SGAN3xLKgEG2IGoTMgWmuU2WsGFWh6HiA7k0yu6tx+G6FBWjmstikYKdFxCsGQx2lbfYhRIRs6se
-	dYYyYziw==;
+	bh=jcyd+1GY/b3HwE+3H+LE5Y/SZ1QVkRniYaPks4Bopik=; b=rTHg6XRozmhXMvodMNkp5soEif
+	2JHiwW5Cyr6HtUHDHZTYQvvMwzZ/OknZ0K5itePpdEY+dDotCwy5HsaTSUwcQ0ePh+VYp2HSs53EY
+	Sj099jYVUtYqW1JeR2nvFqpUPkYC6gfyP8gwjxwi8pFXBbJx9YrucZc5D/T1NJu7Ao4CDo/vDo0J5
+	Xui7tXLZaim8qTPKdv9JKot96Zy6lG29tU2g2DKpF0TmqKuDp6641KH/bxO9tv7uF3KKLc8wpPwvX
+	3OnSZkbvRglHz11OxgzFuomCAUWtH+U2LUqolNoKZBSEJsy6VVc9fWRPm2V7RrC1ZkDGXYhQgwi01
+	tIiZD0TQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snf6R-00000002DWG-0B4n;
-	Mon, 09 Sep 2024 14:10:51 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1snfTV-00000002ItE-3WBr;
+	Mon, 09 Sep 2024 14:34:41 +0000
+Received: from a7-39.smtp-out.eu-west-1.amazonses.com ([54.240.7.39])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sneoG-000000028on-2LQ0
+	id 1snfTT-00000002Is7-0YHQ
 	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Sep 2024 13:52:06 +0000
-Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-a8a87c7c68dso12367666b.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 09 Sep 2024 06:52:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1725889923; x=1726494723; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=D4QKaI+3WBHRSwPufs3rtV0LI1aQyhehd6Wi2dpHTGg=;
-        b=E6Gc0HYE+M0Z/ogTlilNZFiLHwVllkWPnr6pjsOeQbkpT0MRcIGhYwG7G+z0Z4IYEX
-         uAmBRlP+sYDCqMSkMRRwcO1Mh3wRPZQ/vuQsVuG2ILRz+jmqOpEXZMaqciBELVwjdfIa
-         7jTmy+TPVlu3VSmO3jvZcFlnwVFyrbVZcYC2AwDVkNBujuhVx619pGQxlr1KoyWXY/0z
-         0yzg+BC+Xbfl1Ns89oMTDipBY56a1HR1FVzsH4/Nd5g/ZFU8Mc7uPms/wDwDO5n29/hx
-         YUioFlj4qp2dTC6lOTJwwSlcKD3aGIbrn02QnKNr5DbZ+LgCE+3D+aCgkNNZpfelySrc
-         bd+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725889923; x=1726494723;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=D4QKaI+3WBHRSwPufs3rtV0LI1aQyhehd6Wi2dpHTGg=;
-        b=NmgVkviPFaJzfAq0r2fdxyTKhp+EuSE2bRAG66K0YyFxTqocmHbJrHAQQ+v+bJ7qu8
-         qWE/EMn4ha21/DhOqNnYVVYUYNxtOUXp/MtJAYoxXfpnK6PrCZjcc8h0nzTiDkC0I6dr
-         G5vurHfoXphpfKks3aW4EsF8pXcQGcV9GvTBv3w8rqFMHXU1OyrS9bZQbnWvhV6T2uhT
-         Y2RD5yrFocMAWnCRlHLficA9jfiAhUXX+QM8hj84TANR3MHBzA3L+/wglvGIEuc8FMUC
-         Rt877rGI1233t9i/tnxYPxBn5+Bzr7QN5saXwtk+qkY4y8raP1mniAUm/R+ZpnNKuzN6
-         mqyA==
-X-Forwarded-Encrypted: i=1; AJvYcCVeBwxMj2nNNnCTz+hCb94CL3YubwwFcyZxY4xRCpeag5OM2eqgTIYTjn5egwmuumQq34E+N2z4uERJYHv7yw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxaDpYdwo62htRHW2saWbi3TsmCdkQwCQb5JBT8WOvqLhbUdRgt
-	Seq9N2J/C9dcNPDvShXd8jNSGS5R9d9jonuIvgDswyVpnjLVrHYkZ/WKMOPXqAk=
-X-Google-Smtp-Source: AGHT+IFkB5FwZ6RP2VpeDYDu58V07W5VhL+BMyppWhQzRBjqI5M81sTuW26HDIwx4LByUJ7TdWVeBw==
-X-Received: by 2002:a17:907:608a:b0:a8a:7189:2106 with SMTP id a640c23a62f3a-a8a88803359mr291596666b.6.1725889922892;
-        Mon, 09 Sep 2024 06:52:02 -0700 (PDT)
-Received: from [127.0.1.1] ([178.197.222.82])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8d25cf3ad6sm345344566b.148.2024.09.09.06.52.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Sep 2024 06:52:02 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Mon, 09 Sep 2024 15:51:28 +0200
-Subject: [PATCH 17/17] regulator: max77650: Use container_of and constify
- static data
+	Mon, 09 Sep 2024 14:34:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1725892475;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding;
+	bh=jXdZd1nxFVpn9kF95ZTOmNkylHuRPykng36i8DK7+Z8=;
+	b=JkkGe4fwOjSMlldzBxkXecc8UDlfDJP5j8GlDNl4lCKkV2yZE0JTFVf7Eaao6mXZ
+	3zi5l5QXjA/oSCPGRJKKQNsx8C6wNGR5UoBK6daAMRFqakZBIxrp0SE84Sgn+xn4ndj
+	pB1KMLY6F31pgALbc5hx8fs2feUadEPFsq7xFk1vv9cy2dL4PqhCL3BZ3xsEbEbKbwK
+	nFwDRRKv1PYfCxWmkWGjaHUn6U38wZRWQNVLC+5StumVSCjK2OR387It3uFYoOhtGp4
+	Aqk3zfEDyg1h1kjbKGqkyg6IfCQqkSHlDmdZTorf2OO6303/+aivlQ+yHHMGvz22U1v
+	1OFmmMXaNQ==
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1725892475;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Feedback-ID;
+	bh=jXdZd1nxFVpn9kF95ZTOmNkylHuRPykng36i8DK7+Z8=;
+	b=KXQG/KNeV5n/CTYFm+n1hNTTFPhukwIytvBx3kvJfenFH9bDHzysCn2GKrlCvvXT
+	OUYOnjvbuUzeUv3ZBTiPqikszKneJiH3kKoHLK4M+H8GBbjiPiI3NEwAPOtIbI/CN3M
+	dkgbr5fW9wxrcNCubmj5ZaQ3BXLYCp1WtgprHjSs=
+Message-ID: <01020191d7353903-ef7f28db-4285-473b-af03-38d1cc663042-000000@eu-west-1.amazonses.com>
+Date: Mon, 9 Sep 2024 14:34:35 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 2/2] arm64: dts: mediatek: Add MT8186 Ponyta
+ Chromebooks
+To: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>, 
+	hsinyi@chromium.org
+Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, hsinyi@google.com, 
+	knoxchiou@google.com, krzk+dt@kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	matthias.bgg@gmail.com, robh@kernel.org
+References: <CAJMQK-imYrDTuycVzQxkfbkZuHehE8uwc+qS2w=UDShETsBvEw@mail.gmail.com>
+ <20240909023148.1677936-1-cengjianeng@huaqin.corp-partner.google.com>
+ <20240909023148.1677936-3-cengjianeng@huaqin.corp-partner.google.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240909023148.1677936-3-cengjianeng@huaqin.corp-partner.google.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240909-regulator-const-v1-17-8934704a5787@linaro.org>
-References: <20240909-regulator-const-v1-0-8934704a5787@linaro.org>
-In-Reply-To: <20240909-regulator-const-v1-0-8934704a5787@linaro.org>
-To: Support Opensource <support.opensource@diasemi.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-X-Mailer: b4 0.14.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5091;
- i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=pT3vklV3r+mZAGNAtUkG8vU9TQS654l0/1TCGybfK8Q=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBm3v1nXIJdWNbRtDH6jLRbfKirVbrDR9hrPibYD
- A0gRNKrWKKJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZt79ZwAKCRDBN2bmhouD
- 14qVEACRgLsVdWDXrS20GsTp4A3Ag89uPdX4Lm1yhjam8q9PHA1EcqEd03qyD9++DH9J+ze5ujx
- c9LiuV8Y4yAXbrIxGmNWOpx5u/7JoGvGjwsAKmG4P+E5hnO96bKsupFq0ZONfubtSA7efMP65qw
- xfW4XKiQcPq3KaXujdFdgnhdkG8ultcDksYS2ZU/MB3hiiFytZi6dddp7Mfzx7BEHgs7yF4s9m8
- yoigsGsbquv2hbcCDnb1ytwDxR+un6SE33cXwUfo5pNBXAW92nmpQbtbWykifj6vIMjV6CmbraR
- 52C5s+4gdyII3bdtf4HvUTcz66Asm+/9ihcxYClBn5HiA6lUefRTJjN5zqznTDK0L3zPULYVR2h
- WbLPZiHzj8UDkLW4aGaclTo/gCX5gAgyzDPphNHbsFx185jVuudPHcW7xU1b+9qMguFXzZIwSlp
- 5tmlv7aRCC/dGhe1JG9DX3G6ICnQW968kLzlnqDcw6EEHsON1+e8XB/FzHZM2TpHLPTUcRdr5D/
- 1o0NHLpdQEnvyS5eZKbx08DylInn6xnZ9QbOZ4sYmBITYGcD8Ou4rdHa/lZHhBW1+E0C4QUP16t
- fLQaiHp2fnlt+GpZXPFrbgCuNfgB6MoliRVSldN2+bWRS5k1sbw8oTaQWBmbqNuZRtcbE5JSIsL
- 1RjfoAwiIZmG/ZA==
-X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
- fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
+Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
+X-SES-Outgoing: 2024.09.09-54.240.7.39
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_065204_691708_C2D71A94 
-X-CRM114-Status: GOOD (  15.24  )
+X-CRM114-CacheID: sfid-20240909_073439_395620_9128D9E7 
+X-CRM114-Status: GOOD (  17.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,147 +84,185 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Switch from rdev_get_drvdata() to container_of(), so the static
-'struct max77650_regulator_desc' holding 'struct regulator_desc' can
-be made const for code safety.
+Il 09/09/24 04:31, Jianeng Ceng ha scritto:
+> MT8186 ponyta, known as huaqin custom label, is a
+> MT8186 based laptop. It is based on the "corsola" design.
+> It includes LTE, touchpad combinations.
+> 
+> Signed-off-by: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>
+> ---
+> Changes in v5:
+> - PATCH 2/2: Remove sku2147483647.
+> - Link to v4:https://lore.kernel.org/all/20240906085739.1322676-3-cengjianeng@huaqin.corp-partner.google.com/
+> 
+> Chage since v3:
+> - No change.
+> 
+> Changes in v2:
+> - PATCH 2/2: Modify the dtb name without rev2.
+> - Link to v1:https://lore.kernel.org/all/20240902125502.1844374-1-cengjianeng@huaqin.corp-partner.google.com/
+> 
+> ---
+>   arch/arm64/boot/dts/mediatek/Makefile         |  2 +
+>   .../mediatek/mt8186-corsola-ponyta-sku0.dts   | 23 ++++++++++
+>   .../mediatek/mt8186-corsola-ponyta-sku1.dts   | 27 ++++++++++++
+>   .../dts/mediatek/mt8186-corsola-ponyta.dtsi   | 44 +++++++++++++++++++
+>   4 files changed, 96 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta.dtsi
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> index 8fd7b2bb7a15..50b5cf04d3ae 100644
+> --- a/arch/arm64/boot/dts/mediatek/Makefile
+> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> @@ -58,6 +58,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-pumpkin.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393216.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393217.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393218.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-ponyta-sku0.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-ponyta-sku1.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-rusty-sku196608.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-steelix-sku131072.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-steelix-sku131073.dtb
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dts
+> new file mode 100644
+> index 000000000000..f6448e91436a
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dts
+> @@ -0,0 +1,23 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright 2023 Google LLC
+> + */
+> +
+> +/dts-v1/;
+> +#include "mt8186-corsola-ponyta.dtsi"
+> +
+> +/ {
+> +	model = "Google Ponyta sku0/unprovisioned board";
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Is this a prototype that will never go into the wild?!
+Those machines will anyway be unavailable in the following months, so it looks
+like it's really useless to add them.
 
----
+If that's not just a prototype, then nevermind, we can add it.
 
-[RFT]: Not tested, only built.
----
- drivers/regulator/max77650-regulator.c | 31 ++++++++++++++-----------------
- 1 file changed, 14 insertions(+), 17 deletions(-)
+> +	compatible = "google,ponyta-sku0", "google,ponyta", "mediatek,mt8186";
+> +};
+> +
+> +&i2c2 {
+> +	touchpad@2c {
 
-diff --git a/drivers/regulator/max77650-regulator.c b/drivers/regulator/max77650-regulator.c
-index 94abfbb2bc1e..7368f54f046d 100644
---- a/drivers/regulator/max77650-regulator.c
-+++ b/drivers/regulator/max77650-regulator.c
-@@ -43,8 +43,6 @@ struct max77650_regulator_desc {
- 	unsigned int regB;
- };
- 
--static struct max77650_regulator_desc max77651_SBB1_desc;
--
- static const unsigned int max77651_sbb1_volt_range_sel[] = {
- 	0x0, 0x1, 0x2, 0x3
- };
-@@ -66,11 +64,11 @@ static const unsigned int max77650_current_limit_table[] = {
- 
- static int max77650_regulator_is_enabled(struct regulator_dev *rdev)
- {
--	struct max77650_regulator_desc *rdesc;
-+	const struct max77650_regulator_desc *rdesc;
- 	struct regmap *map;
- 	int val, rv, en;
- 
--	rdesc = rdev_get_drvdata(rdev);
-+	rdesc = container_of(rdev->desc, struct max77650_regulator_desc, desc);
- 	map = rdev_get_regmap(rdev);
- 
- 	rv = regmap_read(map, rdesc->regB, &val);
-@@ -84,10 +82,10 @@ static int max77650_regulator_is_enabled(struct regulator_dev *rdev)
- 
- static int max77650_regulator_enable(struct regulator_dev *rdev)
- {
--	struct max77650_regulator_desc *rdesc;
-+	const struct max77650_regulator_desc *rdesc;
- 	struct regmap *map;
- 
--	rdesc = rdev_get_drvdata(rdev);
-+	rdesc = container_of(rdev->desc, struct max77650_regulator_desc, desc);
- 	map = rdev_get_regmap(rdev);
- 
- 	return regmap_update_bits(map, rdesc->regB,
-@@ -97,10 +95,10 @@ static int max77650_regulator_enable(struct regulator_dev *rdev)
- 
- static int max77650_regulator_disable(struct regulator_dev *rdev)
- {
--	struct max77650_regulator_desc *rdesc;
-+	const struct max77650_regulator_desc *rdesc;
- 	struct regmap *map;
- 
--	rdesc = rdev_get_drvdata(rdev);
-+	rdesc = container_of(rdev->desc, struct max77650_regulator_desc, desc);
- 	map = rdev_get_regmap(rdev);
- 
- 	return regmap_update_bits(map, rdesc->regB,
-@@ -145,7 +143,7 @@ static const struct regulator_ops max77651_SBB1_regulator_ops = {
- 	.set_active_discharge	= regulator_set_active_discharge_regmap,
- };
- 
--static struct max77650_regulator_desc max77650_LDO_desc = {
-+static const struct max77650_regulator_desc max77650_LDO_desc = {
- 	.desc = {
- 		.name			= "ldo",
- 		.of_match		= of_match_ptr("ldo"),
-@@ -171,7 +169,7 @@ static struct max77650_regulator_desc max77650_LDO_desc = {
- 	.regB		= MAX77650_REG_CNFG_LDO_B,
- };
- 
--static struct max77650_regulator_desc max77650_SBB0_desc = {
-+static const struct max77650_regulator_desc max77650_SBB0_desc = {
- 	.desc = {
- 		.name			= "sbb0",
- 		.of_match		= of_match_ptr("sbb0"),
-@@ -201,7 +199,7 @@ static struct max77650_regulator_desc max77650_SBB0_desc = {
- 	.regB		= MAX77650_REG_CNFG_SBB0_B,
- };
- 
--static struct max77650_regulator_desc max77650_SBB1_desc = {
-+static const struct max77650_regulator_desc max77650_SBB1_desc = {
- 	.desc = {
- 		.name			= "sbb1",
- 		.of_match		= of_match_ptr("sbb1"),
-@@ -231,7 +229,7 @@ static struct max77650_regulator_desc max77650_SBB1_desc = {
- 	.regB		= MAX77650_REG_CNFG_SBB1_B,
- };
- 
--static struct max77650_regulator_desc max77651_SBB1_desc = {
-+static const struct max77650_regulator_desc max77651_SBB1_desc = {
- 	.desc = {
- 		.name			= "sbb1",
- 		.of_match		= of_match_ptr("sbb1"),
-@@ -264,7 +262,7 @@ static struct max77650_regulator_desc max77651_SBB1_desc = {
- 	.regB		= MAX77650_REG_CNFG_SBB1_B,
- };
- 
--static struct max77650_regulator_desc max77650_SBB2_desc = {
-+static const struct max77650_regulator_desc max77650_SBB2_desc = {
- 	.desc = {
- 		.name			= "sbb2",
- 		.of_match		= of_match_ptr("sbb2"),
-@@ -294,7 +292,7 @@ static struct max77650_regulator_desc max77650_SBB2_desc = {
- 	.regB		= MAX77650_REG_CNFG_SBB2_B,
- };
- 
--static struct max77650_regulator_desc max77651_SBB2_desc = {
-+static const struct max77650_regulator_desc max77651_SBB2_desc = {
- 	.desc = {
- 		.name			= "sbb2",
- 		.of_match		= of_match_ptr("sbb2"),
-@@ -326,8 +324,8 @@ static struct max77650_regulator_desc max77651_SBB2_desc = {
- 
- static int max77650_regulator_probe(struct platform_device *pdev)
- {
--	struct max77650_regulator_desc **rdescs;
--	struct max77650_regulator_desc *rdesc;
-+	const struct max77650_regulator_desc **rdescs;
-+	const struct max77650_regulator_desc *rdesc;
- 	struct regulator_config config = { };
- 	struct device *dev, *parent;
- 	struct regulator_dev *rdev;
-@@ -376,7 +374,6 @@ static int max77650_regulator_probe(struct platform_device *pdev)
- 
- 	for (i = 0; i < MAX77650_REGULATOR_NUM_REGULATORS; i++) {
- 		rdesc = rdescs[i];
--		config.driver_data = rdesc;
- 
- 		rdev = devm_regulator_register(dev, &rdesc->desc, &config);
- 		if (IS_ERR(rdev))
+This is already inherited from mt8186-corsola-steelix.dtsi, so you simply need
+to disable the other trackpad.
 
--- 
-2.43.0
+	trackpad@15 {
+		status = "disabled";
+	};
+
+> +		compatible = "hid-over-i2c";
+> +		reg = <0x2c>;
+> +		hid-descr-addr = <0x20>;
+> +		interrupts-extended = <&pio 11 IRQ_TYPE_LEVEL_LOW>;
+> +		vcc-supply = <&pp3300_s3>;
+> +		wakeup-source;
+> +	};
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dts
+> new file mode 100644
+> index 000000000000..203ee109bbf7
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dts
+> @@ -0,0 +1,27 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright 2023 Google LLC
+> + */
+> +
+> +/dts-v1/;
+> +#include "mt8186-corsola-ponyta.dtsi"
+> +
+> +/ {
+> +	model = "Google Ponyta sku1 board";
+> +	compatible = "google,ponyta-sku1", "google,ponyta", "mediatek,mt8186";
+> +};
+> +
+> +&i2c2 {
+> +	touchpad@15 {
+
+Same comment as the other one.... but here it will be
+
+	trackpad@2c {
+		status = "disabled";
+	};
+
+
+Regards,
+Angelo
+
+> +		compatible = "elan,ekth3000";
+> +		reg = <0x15>;
+> +		interrupt-parent = <&pio>;
+> +		interrupts = <11 IRQ_TYPE_LEVEL_LOW>;
+> +		vcc-supply = <&pp3300_s3>;
+> +		wakeup-source;
+> +	};
+> +};
+> +
+> +&usb_c1 {
+> +	status = "disabled";
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta.dtsi
+> new file mode 100644
+> index 000000000000..59594022331e
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta.dtsi
+> @@ -0,0 +1,44 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright 2023 Google LLC
+> + */
+> +
+> +/dts-v1/;
+> +#include "mt8186-corsola-steelix.dtsi"
+> +
+> +&keyboard_controller {
+> +	function-row-physmap = <
+> +		MATRIX_KEY(0x00, 0x02, 0)	/* T1 */
+> +		MATRIX_KEY(0x03, 0x02, 0)	/* T2 */
+> +		MATRIX_KEY(0x02, 0x02, 0)	/* T3 */
+> +		MATRIX_KEY(0x01, 0x02, 0)	/* T4 */
+> +		MATRIX_KEY(0x03, 0x04, 0)	/* T5 */
+> +		MATRIX_KEY(0x02, 0x04, 0)	/* T6 */
+> +		MATRIX_KEY(0x01, 0x04, 0)	/* T7 */
+> +		MATRIX_KEY(0x00, 0x04, 0)	/* T8 */
+> +		MATRIX_KEY(0x00, 0x01, 0)	/* T9 */
+> +		MATRIX_KEY(0x02, 0x09, 0)	/* T10 */
+> +		MATRIX_KEY(0x01, 0x09, 0)	/* T11 */
+> +		MATRIX_KEY(0x01, 0x05, 0)	/* T12 */
+> +	>;
+> +
+> +	linux,keymap = <
+> +		CROS_STD_MAIN_KEYMAP
+> +		MATRIX_KEY(0x00, 0x02, KEY_BACK)
+> +		MATRIX_KEY(0x03, 0x02, KEY_REFRESH)
+> +		MATRIX_KEY(0x02, 0x02, KEY_ZOOM)
+> +		MATRIX_KEY(0x01, 0x02, KEY_SCALE)
+> +		MATRIX_KEY(0x03, 0x04, KEY_SYSRQ)
+> +		MATRIX_KEY(0x02, 0x04, KEY_BRIGHTNESSDOWN)
+> +		MATRIX_KEY(0x01, 0x04, KEY_BRIGHTNESSUP)
+> +		MATRIX_KEY(0x00, 0x04, KEY_PLAYPAUSE)
+> +		MATRIX_KEY(0x00, 0x01, KEY_MICMUTE)
+> +		MATRIX_KEY(0x02, 0x09, KEY_MUTE)
+> +		MATRIX_KEY(0x01, 0x09, KEY_VOLUMEDOWN)
+> +		MATRIX_KEY(0x01, 0x05, KEY_VOLUMEUP)
+> +	>;
+> +};
+> +
+> +&mt6366codec {
+> +	mediatek,dmic-mode = <1>; /* one-wire */
+> +};
+
 
 
