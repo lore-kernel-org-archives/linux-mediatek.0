@@ -4,70 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BA94ECE579
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 16:23:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF7B5ECE584
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 16:23:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Wq0IkV0Lv2pZtfXSh1BPu6k9p2NO+aTvValWcdqq3mQ=; b=Y/HlOu6eI19eT6jy459rTpcrVh
-	09l+rS3X8fqOrs4USPlC45IHI/hCGmongI9IHM7lHbeYaPCPSQidPDCLJaceSU4ZnQ9DBjFbdRFit
-	Pminycqa/5K/DUksa8oyPmbqrRi8pFMp/Rpq5LOFQIxyBpkXS8Amn4Tw/wmAPz/3eLE37gEHUJ6fL
-	30730X6oE44Ra4ri/dbmv2mbdxnqeNlOYLQeFEfQUeYH6oHxXAoF/lILYEGdS4vbnrqElGLeKznWb
-	PSHP1y27FrwVl7qvryTjRyeBIQzzw2D1Bda74rNX/j4t+p50llGj5LjqoN4VM1HnXoNf4o63fVuhw
-	XJTV5vug==;
+	bh=yLkal1Ab/hfo4k1izmSkYPq/gUsrKPgGpDc1SoF3+dU=; b=XSBx67RafkT3hoTcHO+1aubR94
+	owPkH9XGHHL7JMOjni/IXU8GYjUdqdX3CP7+O+MUVrpDNHDbjtfySGEczMbwdwevUsGYXcA1JtWxi
+	u5esZUfHbemdGr6W3iTekZsigVIw8qAHD9WnImH8viDsBXGQ2IpsoLPhWSaetJ6JHqcXoWTLWCbK/
+	iREnD/ASMIH69irc3vXVrFKsT1F1Y+PBsVOIKg/LNMD5IYsP/+dqHQH0B+QUqoD1DbOML+aVLU6gG
+	6ihEggC1nkzlA9eTUuFR0PZUgiG3PwnSiz+tb/RmSarmicXeZKpdx8DJ+UVZqi8TP6jSto6PmDyOm
+	KaVw4ndw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snhAh-00000002dUj-2NFi;
-	Mon, 09 Sep 2024 16:23:23 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1snhAj-00000002dVy-1ltG;
+	Mon, 09 Sep 2024 16:23:25 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snh0D-00000002bs8-3dhc;
-	Mon, 09 Sep 2024 16:12:35 +0000
+	id 1snh1c-00000002c7D-2peG;
+	Mon, 09 Sep 2024 16:14:01 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 78AC75C00A4;
-	Mon,  9 Sep 2024 16:12:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3A6E7C4CECF;
-	Mon,  9 Sep 2024 16:12:32 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 558CC5C0273;
+	Mon,  9 Sep 2024 16:13:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 68860C4CEC5;
+	Mon,  9 Sep 2024 16:13:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725898352;
-	bh=OtOcI4mwE4jLt6DU3HeKv4GZ8kD7yTDwnouuHDCYPhc=;
+	s=k20201202; t=1725898439;
+	bh=yDChzJjmgW4nM5O9QsBLIaNDGh7qLwtF9Pzw8gaiZE8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=H9ieu6t0DxInHvwEGyZjzDRyo24HMrpacur192BO207ZdU9YWj1udgNu7cJFa8b9i
-	 Ev1k7lkUnUFmKN53YsjzA8BnUitV9kzpBO0+D/hXfnfxUJU8dpctJ1YgYyO44Maf1X
-	 gSd20JtTod/qAK6lLGN+wY8oM5Xu2/Hu72gGqkLQT9rKa4w9ppVaN2ryPGHNlqtiot
-	 i+3Knzp5KaBXHksKxizNCjpuFbFk4twpqPUsIL1M+O6wolbnK883UCWjyCeTt/f7nW
-	 G2u0mIPvy0fvG+q1/fHBzzM014RkCCwgtbtf50Vwneync30s7woRtMM/lgSF8iLElE
-	 ZLGokkxxoDlHA==
-Date: Mon, 9 Sep 2024 11:12:31 -0500
+	b=BZsAWBkc1G1NQkcsSfhiqCXxlydEAaGbpwbSz25Wmo0unaFvyI7K4Z7iWGTAfnB6H
+	 kh2clR5a9PKWr+rd36vKBo1lYJ/5CkSkeVrsvRGoRyGvaEml+xRBJJfeYF+F2feu4T
+	 lDM7rxmkOcFqnQfNaKXPe0VorUsuEHuZKlEbyfroVRZdvL7L/+8pTizUt9y9KEPJrO
+	 PXKMMysEOCxQL5Pkinfzgv7SnLvINHPQb4DoOejXE7Lozcq0AD9k+54Vrz4pqpHNdi
+	 JKqOq7ZKZLTV4ALSGkayNabL/u4oef24HYgfo2QqfVn3VCUI4M5mtq3qmF+TIElc/N
+	 hXRx50e987HdA==
+Date: Mon, 9 Sep 2024 11:13:58 -0500
 From: "Rob Herring (Arm)" <robh@kernel.org>
 To: Fei Shao <fshao@chromium.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Fabien Parent <fparent@baylibre.com>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	Jassi Brar <jassisinghbrar@gmail.com>, devicetree@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	Markus Schneider-Pargmann <msp@baylibre.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	MandyJH Liu <mandyjh.liu@mediatek.com>,
-	linux-arm-kernel@lists.infradead.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	Conor Dooley <conor+dt@kernel.org>
-Subject: Re: [PATCH 07/13] dt-bindings: power: mediatek: Add another nested
- power-domain layer
-Message-ID: <172589835005.306979.15596103474181849299.robh@kernel.org>
+	Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>,
+	linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 12/13] dt-bindings: mailbox: mtk,adsp-mbox: Add
+ compatible for MT8188
+Message-ID: <172589843790.327330.8035137632260512976.robh@kernel.org>
 References: <20240909111535.528624-1-fshao@chromium.org>
- <20240909111535.528624-8-fshao@chromium.org>
+ <20240909111535.528624-13-fshao@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240909111535.528624-8-fshao@chromium.org>
+In-Reply-To: <20240909111535.528624-13-fshao@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_091233_989864_2DCAA110 
-X-CRM114-Status: GOOD (  11.57  )
+X-CRM114-CacheID: sfid-20240909_091400_809691_E2506B41 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,19 +80,15 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 09 Sep 2024 19:14:20 +0800, Fei Shao wrote:
-> The MT8188 SoC has a more in-depth power-domain tree, and the
-> CHECK_DTBS=y check could fail because the current MediaTek power
-> dt-binding is insufficient to cover its CAM_SUBA and CAM_SUBB
-> sub-domains.
-> 
-> Add one more nested power-domain layer to pass the check.
+On Mon, 09 Sep 2024 19:14:25 +0800, Fei Shao wrote:
+> Add compatible string for ADSP mailbox on MT8188 SoC, which is
+> compatible with the one used on MT8186.
 > 
 > Signed-off-by: Fei Shao <fshao@chromium.org>
 > ---
 > 
->  .../devicetree/bindings/power/mediatek,power-controller.yaml  | 4 ++++
->  1 file changed, 4 insertions(+)
+>  .../devicetree/bindings/mailbox/mtk,adsp-mbox.yaml   | 12 +++++++++---
+>  1 file changed, 9 insertions(+), 3 deletions(-)
 > 
 
 Acked-by: Rob Herring (Arm) <robh@kernel.org>
