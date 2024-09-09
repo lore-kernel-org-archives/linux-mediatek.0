@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE955ECE579
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 14:03:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6117EECE57A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 14:05:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yX0ieRX3qt7UlOSEcKeb4ov5m9CKVjYZ6v64GoSji2o=; b=IXd0PUDv72iytCkW55TcixJOIZ
-	coDGp/c1z5xAiWgm0DUOAfqtm0Ec2iEFsnf8JHNDPv4TU6GQi46KwR5EcZsA94oY7Q6YGYEZDEabQ
-	5wmv/TdYzQw9rxIuGhz4par5B0Ap4JvZIlIR775TSzIDY1xEM7U6bHP/L8M4UmyoUkTs8YNub6v5Z
-	q/69JwmAZNeQW1MsWOmxHHLY/3SmnX0CcUEExaBfkxCx6jWc0PoQRXBLRXJjgN6GVJW/OWIrm5Wec
-	wP3rBcNnh4h3y9qnd7GXsE22g5r0k3JdDJANap+bqv5IYlU94r+M1+t4XaHC+jrHHZFIKxKrLN7yc
-	kDwI5ZWg==;
+	bh=go5+dPyR/CU/+h6S38uOSI6svsd8/ygd6Agr2YKEpkk=; b=OuoHtbyW4nC3CeejP2fXhCcpP4
+	AiynxScndfl24LstvmWKBrppn98ip9mCTzsGMisDqQAzKTG8fnK6hTFcymOWPUzliZzbcXFUOqguV
+	2AOYbBH0JwelNzoNjYsUaQ1GYUfKm7GIaQS8x6bkvkl5UnMnLwLnrjTuYXBDfXHSOAkhPOLtBHkJ9
+	EiKCV5bfXY2+f+RQ8jv6RKzfq0YyA1z3hNwjsenD9q+CQFAukXWvIsZyy2gKioErax0cE7nfOM1/p
+	4EmXey6DtYoqyPo5MFCKGDzdG7xUVs2WrGdZorMMh+cr6+K8l+aubXkTt0rMzFPYVNkXlL2keNGLh
+	zX3U9eHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snezZ-00000002CG6-23Bw;
-	Mon, 09 Sep 2024 14:03:45 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1snf1X-00000002Cd1-0F7b;
+	Mon, 09 Sep 2024 14:05:47 +0000
+Received: from mail-ej1-f44.google.com ([209.85.218.44])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sneo9-000000028hq-1kuI
+	id 1sneoC-000000028lH-3yHi
 	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Sep 2024 13:51:59 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-a8a858ab5a5so24731966b.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 09 Sep 2024 06:51:56 -0700 (PDT)
+	Mon, 09 Sep 2024 13:52:02 +0000
+Received: by mail-ej1-f44.google.com with SMTP id a640c23a62f3a-a8a765f980dso26505666b.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 09 Sep 2024 06:52:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1725889915; x=1726494715; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1725889919; x=1726494719; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=yX0ieRX3qt7UlOSEcKeb4ov5m9CKVjYZ6v64GoSji2o=;
-        b=JS2FMpPU0vCjzJRajiZHgzPEvKoF1qCWx6vqBTxO7oAMuF0EcZ5Jl8CkVUxDJ3j4df
-         iFcgLOHDxYVz9FbCbspzBh1o80YFpWRay2+B4RAfbMCtq8AXcZ0Fh8B2emkPjWNjIL6I
-         VA+VbVLq7PB80LCZCy5bIuHNZmrWDwGxWlcrrrzZmOgn44I/50E+Pi25tL6kR9egfGdX
-         OMp6P9+iSfVjNFubnQfxoY2+nWG6EWDbcaR1UKI9YUAR6Ezajf/uOy7UQreNg8PlGVED
-         KsueY76tdWjJc/40+4QXCLMuOJ6CeWh3cbAI3qMmU9NPqwrWCI+Vyax7NG8yERTSRyNT
-         xVJA==
+        bh=go5+dPyR/CU/+h6S38uOSI6svsd8/ygd6Agr2YKEpkk=;
+        b=o4zqincT+AT8sVQ5tMPNI4YU00DtQ3DRtti/Xz9KzUWR7zkLGHR9ANhdpmvx++PIq6
+         U5ZjP/OFffN3vFT+L/jiAwEMtAWFNWOVnISEXGpAWGF0hYPXgUxMdfirtZKul8cGkhGr
+         QdOap3FWXlUls9+REl7noTWxEQgnvu2Gzy95Dk6WkZ0l1sMKYvSaLHL+xqC8s/ZLF34h
+         9J9IdkmkFCdKpfuAmUKDQCkifgMegNhK8isSOkekSxFP6ixl2vWRMmAdllPk+l1DYajS
+         6Sx8dIbTvGhxuPmXm3Z5kjGaGHOlnP/jcL5mAZ6T3UDDF+cUziSkV2Xkve2ihX4FnU1j
+         VBWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725889915; x=1726494715;
+        d=1e100.net; s=20230601; t=1725889919; x=1726494719;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=yX0ieRX3qt7UlOSEcKeb4ov5m9CKVjYZ6v64GoSji2o=;
-        b=ZJAS/r7FJes/Bky/VgRJvDJciKURkvRWt3VLyEbiMKPHPxetqKHvCkV2bSljshxuc7
-         sc00AN6IztD+411V9hM8Jr3OJPLXfXiIRnC8A7Ui63kBXP5NMADnLB7onz56FdrohTNn
-         9Ms13anZD42BGLlOXYyAkkGxa6iscOgII7sramsgWB/Vk1zND22JFsEmnQNlDveAO5bT
-         BeCOEqTuVFTn8KwHGplYb9pgFcL5LCX0EYQkfH7R3cVAYfj3N5xN59V3kuSM7kGujQkb
-         HFoaElH3yadD+OIC+FDWV/oJmmM60TtQt+iC/e+jC2LiNCUvvQKCvXbYhLVlvW4SJCXB
-         xNbw==
-X-Forwarded-Encrypted: i=1; AJvYcCXAlmoeev5wl8UYNK1/E3vT+nZSCTYSAY0SSRe17Jf25BynWPkqrAFQ6sZgMhDizMOZi7LMm/KhUhCqmivM7g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxdmiRW21h6t+Pdzk/M+RzHrhv4uQm9quNxv7D592XxioEw7JuB
-	vgHrSWlAz1RMwfPCTPhv0XHNDnCxJXdECb76f9PTZzNwLYxc6ADH0jsn8W+n6qM=
-X-Google-Smtp-Source: AGHT+IHCG4aOhWEoDHhp4VlM/hSRsuN52yWkPHfFAEGYdvVImYzvsFpKRpyVze8PsPQZpSmUk8de4A==
-X-Received: by 2002:a17:907:7212:b0:a80:ed7e:8468 with SMTP id a640c23a62f3a-a8a882725e1mr381160866b.0.1725889915394;
-        Mon, 09 Sep 2024 06:51:55 -0700 (PDT)
+        bh=go5+dPyR/CU/+h6S38uOSI6svsd8/ygd6Agr2YKEpkk=;
+        b=VpnLW/zFeRuH0Fs7ns7i1AzDfuHWaXcrP54UYxeyY+yGZy+YLYFa1U607WPqudSKG0
+         RG4nDn6phc2tWZJ0QLj/m8qMWwubaxvpKsigwc76Ay+lS8jFKCl/Q4UPrvfj/v1IVKWQ
+         Fj41dudbu5hLAFRIBvWJ0zxrr5/b3UQD4F6cxiKrjqFEM4djMydgCaC4M2DF/6+5q9PM
+         I39P1pD3MvHwUv0BBrTEK4t0wDb7kLAm59F62kVgOhoz+RT4zLl5ypjLSCgYFeTT/YN9
+         qhGwIbHjDUgWae+zFENoBjjr13koLzppAVW6+YeAaw2gXkwlWf8/7fx690C6B54qL8LX
+         w7iA==
+X-Forwarded-Encrypted: i=1; AJvYcCWrSWKpicGt6kHlSFv4ashWos89XqHhzk1lhQqoc0fINyQYfhb6PWXKj8vc72ulP0Vj6I+0n5wHWAPNnz0s7A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwTRQZXIVRc6zAlf7WRY8NCdfx1tHifUToIfqQK5UlEDw9dwGX4
+	dZvNVpchrlo6j/ASNXf65adJy0DgM2xvJiRMsYzU/d1+sxlr8WYEWfIpOP8H/Nc=
+X-Google-Smtp-Source: AGHT+IGy1tiHdaQw1EmLxWCIRZx0QTX7/qecRmbSfYliJR+FY+WlBher2f7vPLzcYnQtkfCEQty3qw==
+X-Received: by 2002:a17:907:daa:b0:a86:83b1:5d94 with SMTP id a640c23a62f3a-a8a885fa928mr395447566b.3.1725889918257;
+        Mon, 09 Sep 2024 06:51:58 -0700 (PDT)
 Received: from [127.0.1.1] ([178.197.222.82])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8d25cf3ad6sm345344566b.148.2024.09.09.06.51.54
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8d25cf3ad6sm345344566b.148.2024.09.09.06.51.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Sep 2024 06:51:54 -0700 (PDT)
+        Mon, 09 Sep 2024 06:51:57 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Mon, 09 Sep 2024 15:51:23 +0200
-Subject: [PATCH 12/17] regulator: pcap: Constify static data
+Date: Mon, 09 Sep 2024 15:51:25 +0200
+Subject: [PATCH 14/17] regulator: qcom-refgen: Constify static data
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240909-regulator-const-v1-12-8934704a5787@linaro.org>
+Message-Id: <20240909-regulator-const-v1-14-8934704a5787@linaro.org>
 References: <20240909-regulator-const-v1-0-8934704a5787@linaro.org>
 In-Reply-To: <20240909-regulator-const-v1-0-8934704a5787@linaro.org>
 To: Support Opensource <support.opensource@diasemi.com>, 
@@ -81,26 +81,26 @@ Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.14.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2714;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1177;
  i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=MS4Vn8NDElkbWDEAQWJiCHTN4oDL8ETlvc4aO5xEqXE=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBm3v1ipR0PFario11XiOMREeg6br4HZqWH6heoy
- GID0BAwI3aJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZt79YgAKCRDBN2bmhouD
- 1+kjD/4yE+PIP+59j+gU/cUsfasMKH6r1asR/aM3IqmfKNUATk6MFUoNDDqUNZZnvEQ2gXzj2kL
- ThFAHRQoOCDMk/5me0Qil5BYYCS7NVWojWcIA/GVUsB90Zc4bYWmSZxs4UijN3cVkqmqT4ddIHK
- tBcOZmJ9sibK9TVjWT5DjKslzyWfB1WjU2v0w42c6pFD5D4OOdrXMHg1EhcEgb+DsObz20hKhTD
- JH+rPF33xMlY6zwl0/fcmgxM4uQv2+yLuyhGKg9OFDdcYtXICXhc3Uk7+Uky79VqwLP9hnoyGll
- Ps0YHrHaeFLkVFErLkBvJtfe8C0+z0LvhmyM8Hwu8OICUSQ1SImwdzggxP/8aIGVSmYCTIxUhmM
- fEgimd1EJZxM9199uNr2fXFFSw7+2jgiOoVcYC18cQieDZU6mkhTkysZeY7YcVrzF49oNuYSONr
- GIDEw65D1QWqcpSwx7HEXOwfROB8RgQgoo2D41EYaE1hrqLob34BEAhOqAVZhAWAfUiOYhMkz3O
- ENspkvf9K2h/6v13cIsrsKnUqjA0C49v0h5EG375HB3awPv3EBQHxCN3ZeDcSWT8qoMJ646n+qC
- aPfIJZXhcERGnaRZVS6MtRl5WezHcyJ71zGeqitfhtptvvt9rfqHlRQ+fLDtqjjy03WFiT05ZGr
- a4zrHL0vlDmpXiA==
+ bh=KcmtvuFpgJTQr+NrBtSfkFBmPuXrmTaJALoNQh34mgc=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBm3v1khpb7WzxyunM5lYXMazdM4ujdBKnR1uNAG
+ IJMqHk63k6JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZt79ZAAKCRDBN2bmhouD
+ 1xTvD/9iDwh1+cEyfWNjyNGqc4y9wqU0ZzDeg3tyTbYWtWgBrDXX4gYRWsD0etQouIuhs83FC5m
+ 7m67B+n4Q7QjrfQUtSTkfGWvYGHjLQ/RooOdXrg4+dfjO6myAtqeTeaHlNZu74tr0xVQMocpWC2
+ CpBT9Ek9UtovGtrVKAqsQhsSbMXSek1w7kB/u3fnRe6Z7N13lKr8XjBaqaaRPsqfS032KXyQ3uv
+ Le3dFP+wqoLN+CqPjM6LMPx8iRceIuX1rSb1CpJgJaf+zLVAVMi5ZitneFTPpWjFHEWw9i2ZxX1
+ atam2jSgTHB3NgxVpjBoaayFmWv6Rwq5uBmrYvXVpKSK92NHqDmd0hxrq3G3Xl8bF1hpCDtkqVi
+ QhNR3/DD87VK4Jt/7pPG4f1RYHZhNl9qJ2jEqQwLFVfK+GqI1xLCRsl5TY3i6dWXHHqV0KTOtw6
+ lJn32B6vGS9haLMgSBewc356tSJEBwE6QpycGFI+ENmABZSJvasyHqXQL563bHFyQvHOhCNjsaD
+ R1We9KqaUZJALCSELvgzu0qBevYrx9Yw5VqdwW4id3C4UjPXdVOzId9mlYN2laxcb1+RkTbyEIr
+ yENminEQ5sFMNejQBF6CUF8SBl08MgdL43RBCT7XKPzK4MbNt9K8Uwgn6NVVVrICJgXS0rscTtM
+ y/G9xuQdIzo4sZQ==
 X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_065157_581848_95B6A378 
-X-CRM114-Status: GOOD (  12.24  )
+X-CRM114-CacheID: sfid-20240909_065201_020730_A4CCC8B3 
+X-CRM114-Status: GOOD (  12.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,71 +116,35 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Driver does not modify static data with regulator description (struct
-pcap_regulator), so make it const for code safety.
+regulator_desc), so make it const for code safety.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- drivers/regulator/pcap-regulator.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/regulator/qcom-refgen-regulator.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/regulator/pcap-regulator.c b/drivers/regulator/pcap-regulator.c
-index 319a88412154..441c9344aef7 100644
---- a/drivers/regulator/pcap-regulator.c
-+++ b/drivers/regulator/pcap-regulator.c
-@@ -105,7 +105,7 @@ struct pcap_regulator {
- 		.lowpwr		= _lowpwr,				\
- 	}
+diff --git a/drivers/regulator/qcom-refgen-regulator.c b/drivers/regulator/qcom-refgen-regulator.c
+index 063e12c08e75..cfa72ce85bc8 100644
+--- a/drivers/regulator/qcom-refgen-regulator.c
++++ b/drivers/regulator/qcom-refgen-regulator.c
+@@ -62,7 +62,7 @@ static int qcom_sdm845_refgen_is_enabled(struct regulator_dev *rdev)
+ 	return 1;
+ }
  
--static struct pcap_regulator vreg_table[] = {
-+static const struct pcap_regulator vreg_table[] = {
- 	VREG_INFO(V1,    PCAP_REG_VREG1,   1,  2,  18, 0),
- 	VREG_INFO(V2,    PCAP_REG_VREG1,   5,  6,  19, 22),
- 	VREG_INFO(V3,    PCAP_REG_VREG1,   7,  8,  20, 23),
-@@ -141,7 +141,7 @@ static struct pcap_regulator vreg_table[] = {
- static int pcap_regulator_set_voltage_sel(struct regulator_dev *rdev,
- 					  unsigned selector)
- {
--	struct pcap_regulator *vreg = &vreg_table[rdev_get_id(rdev)];
-+	const struct pcap_regulator *vreg = &vreg_table[rdev_get_id(rdev)];
- 	void *pcap = rdev_get_drvdata(rdev);
+-static struct regulator_desc sdm845_refgen_desc = {
++static const struct regulator_desc sdm845_refgen_desc = {
+ 	.enable_time = 5,
+ 	.name = "refgen",
+ 	.owner = THIS_MODULE,
+@@ -74,7 +74,7 @@ static struct regulator_desc sdm845_refgen_desc = {
+ 	},
+ };
  
- 	/* the regulator doesn't support voltage switching */
-@@ -155,7 +155,7 @@ static int pcap_regulator_set_voltage_sel(struct regulator_dev *rdev,
- 
- static int pcap_regulator_get_voltage_sel(struct regulator_dev *rdev)
- {
--	struct pcap_regulator *vreg = &vreg_table[rdev_get_id(rdev)];
-+	const struct pcap_regulator *vreg = &vreg_table[rdev_get_id(rdev)];
- 	void *pcap = rdev_get_drvdata(rdev);
- 	u32 tmp;
- 
-@@ -169,7 +169,7 @@ static int pcap_regulator_get_voltage_sel(struct regulator_dev *rdev)
- 
- static int pcap_regulator_enable(struct regulator_dev *rdev)
- {
--	struct pcap_regulator *vreg = &vreg_table[rdev_get_id(rdev)];
-+	const struct pcap_regulator *vreg = &vreg_table[rdev_get_id(rdev)];
- 	void *pcap = rdev_get_drvdata(rdev);
- 
- 	if (vreg->en == NA)
-@@ -180,7 +180,7 @@ static int pcap_regulator_enable(struct regulator_dev *rdev)
- 
- static int pcap_regulator_disable(struct regulator_dev *rdev)
- {
--	struct pcap_regulator *vreg = &vreg_table[rdev_get_id(rdev)];
-+	const struct pcap_regulator *vreg = &vreg_table[rdev_get_id(rdev)];
- 	void *pcap = rdev_get_drvdata(rdev);
- 
- 	if (vreg->en == NA)
-@@ -191,7 +191,7 @@ static int pcap_regulator_disable(struct regulator_dev *rdev)
- 
- static int pcap_regulator_is_enabled(struct regulator_dev *rdev)
- {
--	struct pcap_regulator *vreg = &vreg_table[rdev_get_id(rdev)];
-+	const struct pcap_regulator *vreg = &vreg_table[rdev_get_id(rdev)];
- 	void *pcap = rdev_get_drvdata(rdev);
- 	u32 tmp;
- 
+-static struct regulator_desc sm8250_refgen_desc = {
++static const struct regulator_desc sm8250_refgen_desc = {
+ 	.enable_reg = REFGEN_REG_PWRDWN_CTRL5,
+ 	.enable_mask = REFGEN_PWRDWN_CTRL5_MASK,
+ 	.enable_val = REFGEN_PWRDWN_CTRL5_ENABLE,
 
 -- 
 2.43.0
