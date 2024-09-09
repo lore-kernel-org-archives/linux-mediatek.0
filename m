@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45655ECE577
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 19:06:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96D0AECE577
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 19:08:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Subject:From:Cc:To:MIME-Version:Date:Message-ID:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Ae/kPQ7qJTsMpU1FP3tvdogFejQsPDBzD/3o1TvUWsE=; b=VP5fQLB2iKe19Peo0NDXVoqwsO
-	gpl7674PHLL2lM2/EWc2CCdX1NQmco2rfoDLR/dmmT6soPoDaIA1I7EVFzA5Un0BRGKGy/gGUZFAm
-	e+U4klfzXJnqxHiV+EFNFGpEI468x67v2tUbb84HeGBK1rVTtgpoiFQVYEJT2NSZjTk6qRkcmfI34
-	91Y2bgwpChG582tDCU4x/Soh4nhKs/Co2FyyU6uO7jMe2okF+j1w0K8bmUq4PYZob7x6lV3U4CbYe
-	152h/as2njXq2M3mgx7a7Ag4m9KBhdMDooUZV5Pujv7n79WLmofl7Ienj/JmfXdzC9+BqG9jkVwo1
-	ejfhSPtg==;
+	bh=hzdIyFwes5E7fNP0XbG/FRyMiugQp0LAX05kqVps+ao=; b=kfabp4rgX2iScU/Nve1oA2Txoi
+	VXgxCJpBSraQKZqVWMHUKciLReScIZjHcofEmLURm/B/+Hf8T39SkOnHxr2qH86sMa3oRbWwVu7md
+	hDCJ2ZnKdyD2mRMgboz6WiqeywMneFsIUWFDxetdW4xeAZ1J/e/ExtDm3YLrSRBF19WnEp+wU103e
+	djuJQlTWfD8KfRQL3RYdb5INMc/9lf7Mcpu3ATbfwUoa4TvAaiCExZa1LnEWM019NLwHAs+XQ1TR2
+	XUWCIg6dnYKdVAKAyYumXTsgOxdYB6xtOcL3Q5RNvrISj/sJgZEXlDEcwSgPMmOT7EqUc1suQroSB
+	HpoYwjtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snjil-000000032T3-3Eo8;
-	Mon, 09 Sep 2024 19:06:43 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1snjkp-000000032kQ-13bj;
+	Mon, 09 Sep 2024 19:08:51 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snjha-000000032MC-2u2P;
-	Mon, 09 Sep 2024 19:05:41 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-42cbe624c59so1082775e9.3;
-        Mon, 09 Sep 2024 12:05:29 -0700 (PDT)
+	id 1snjho-000000032NY-1owD;
+	Mon, 09 Sep 2024 19:05:56 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-42cb9a0c300so9834355e9.0;
+        Mon, 09 Sep 2024 12:05:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725908728; x=1726513528; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1725908742; x=1726513542; darn=lists.infradead.org;
         h=content-transfer-encoding:autocrypt:subject:from:cc:to
          :content-language:user-agent:mime-version:date:message-id:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Ae/kPQ7qJTsMpU1FP3tvdogFejQsPDBzD/3o1TvUWsE=;
-        b=VOuukzfMAD/cKw+9JKQQJPEA3hDkpExYRhAMs8GXes12Ud7NSX6HOEDxkk78aY0Tvl
-         nYG/QxXKiHW+LZLJFr3VN4W0dAo4DDrZ8iA1QXPqq+NTyGCRwDk2ucOunqzKfvnqwKVK
-         Twl1h6XEcdADnfdV0BLfQJP78oyknCk4uhsePnKdpJuAwDcVqoPFa5qbvWPe/xP8yvVo
-         GyrZtu2GBAu3S5sAk3n3vbXifM57vRSP4uWNMYKF86jIn0TVESUJkaQsmuQZQ6B/gjBe
-         v2dZtG4BTs15qyDfZ0Y7OKjD0nKYEvZBu3yKI3jsDTdV/WJBbk92Rek1/2GoV24URSyO
-         YvQQ==
+        bh=hzdIyFwes5E7fNP0XbG/FRyMiugQp0LAX05kqVps+ao=;
+        b=Vqlht0i8rY9oHx/+a+2+wWpqMOy0M/Ffu8mx2TPyeZfEokEf6m7OSLpIZtBknl+yOd
+         38UjL359p6munLn8UignBr6RKiFjeabHo0YixAy6BUkKz+T6CRBgNBf6l4WRut8DQ477
+         xFaz662B/md/v5PBAV6es1w6Zv2oTW/LS5Y9rSqaI80E1RZX8uNlHXsUj7D12pWLF0ee
+         wWuQsP6t91N+/4aLd1Co7uMlxKE8a//YWuZ9ETyULBVCv7FABnZ1uIHxDvTXnKmNjI6+
+         /91eH8rpkriHUrx2GCsKUSkcqg062XcZKTwbaThvC25JIpvuzhvnuZFgIUsqmZfb0k2o
+         6OoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725908728; x=1726513528;
+        d=1e100.net; s=20230601; t=1725908742; x=1726513542;
         h=content-transfer-encoding:autocrypt:subject:from:cc:to
          :content-language:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Ae/kPQ7qJTsMpU1FP3tvdogFejQsPDBzD/3o1TvUWsE=;
-        b=jkjePYdCnoU/FTrDNLrAI03AjdSaAfqS1fO7yMIe3/qP+WFNqJanTEVl8vt+EbSxM4
-         q+Vr98qzS6kbpL/4BucpB8BkJAevMsPJuBxELrdCTj6Mdv7v3JNOuCRViwoNlI+cqD4o
-         TUSfl+IYLjYDMYszIzWMgn8qyQWOy3JGaV76UFyOX6OB1MWsIQT0HCxii10kJxZlWqj4
-         2FpnOsN7aiGaTSbeC194EzwuXW6d6w7uaBfOi7FDsuKB7pZD+yO0pDMgVQ1BOBAzN3sw
-         0uj3a/BATjKcPpShRAtcPz9Ug2WAH9XpdvZlG0JQ2NLkDAbdcK/lB+fKhlgXfJS+Dsgk
-         UFPw==
-X-Forwarded-Encrypted: i=1; AJvYcCUUblkUeCpNbAv5S5ouSb3MA4FT1tacAp8z6A2y2MIfYC2r2Nd5b4CQjc0j2AZwOV0kPYX16ElxRBvGw66Ph74M@lists.infradead.org, AJvYcCVCmpq6Z8xQpImjePDIzw9tat+27/tyMHak+pVXOyBLg3yJY/GlgXkXc9nn+IltgE34sJuy9vVuFGE0fcvotVc=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwbqFv+oUu46i1ILLBRMRitTNWxOELpm5hDt/2mo907TmuR5sIv
-	JQVskb4X0VuDHQb16giyIFT/uVLjqjSCEHtlNrli8/UR9Dd7SqzH
-X-Google-Smtp-Source: AGHT+IEHbN8o1/wGfS3QC6fhw9Tt8arwZjvY1P0OeSVSggmEyjLvMw+LUtcZLk6S4CuS6OGV+yobcw==
-X-Received: by 2002:a05:600c:35ce:b0:423:791:f446 with SMTP id 5b1f17b1804b1-42c9f9790edmr87080565e9.7.1725908727804;
-        Mon, 09 Sep 2024 12:05:27 -0700 (PDT)
+        bh=hzdIyFwes5E7fNP0XbG/FRyMiugQp0LAX05kqVps+ao=;
+        b=eF6dUX46gl8WkJv5gIW7GKV+x5qjIjZSII9WGrn+KBiekew7DZbqola4n4Q43SpAJU
+         vEDkycC6dfwZzUz8JIyaFYPHNiBZGbhm1T1MYF4iYX9D5Dk77RoOYfyczV9cv0aqVEHT
+         Ld+cgEq8vw6K+ud+lu8waIcxyFLlBuxIkvMfW0lNBXxvWXKzhYcHgC2P614cb1gmlVHP
+         kltVQLHTpPz6R+gF/dZrjhSVGGDmm5y4ZnnX9fG//+CYUHRavN2Rmi/cOg9kdRvUKEQH
+         3FTW7hpZ20T68bXpK/TZ+l6D3vUlcfJ8L/P3RjqF5NHHKpoFjpjkq7u1N/nLxMCDZm7+
+         52HA==
+X-Forwarded-Encrypted: i=1; AJvYcCUnmN+9Lr+MzukqCZB6rj4yoKQtyYugYHxn2LlowPnuvNksR5+7GNrEzMFOd3NmAFIWpXTMG2fCQlEduR1tB/xh@lists.infradead.org, AJvYcCWFabah6jQaxtfyo/RrM4nAsea4yS/nXwWwVipCCFN7WIRXXiLcRzQw6CY1TN5Oy33FrgiaQGSYybDnNZxINrI=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxwv21kzUXC2ZvE1Q3+p13VgA+Or7hlIkZ8vM6hfHg44Mr4vXra
+	TUfWmlTUpYF0OH/FIcfu67mh2IHTAZFAW/R2plvebpclkjhOu5lT
+X-Google-Smtp-Source: AGHT+IGGFS6+SNzhStLak4DTSssNfwHMJp+x/lO5SGNb0RMvaiFuXTAvIydG+lDYr7vGpowfqu+5Yw==
+X-Received: by 2002:a05:600c:1d9f:b0:42c:bf0b:c489 with SMTP id 5b1f17b1804b1-42cbf0bc58cmr456635e9.18.1725908742222;
+        Mon, 09 Sep 2024 12:05:42 -0700 (PDT)
 Received: from [192.168.2.177] ([81.0.7.156])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42c9a5eed16sm125075245e9.0.2024.09.09.12.05.25
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42cae117aeesm88930315e9.6.2024.09.09.12.05.40
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Sep 2024 12:05:26 -0700 (PDT)
-Message-ID: <ea168bd6-b54b-47d3-ba5d-e545a9b406c1@gmail.com>
-Date: Mon, 9 Sep 2024 21:05:24 +0200
+        Mon, 09 Sep 2024 12:05:41 -0700 (PDT)
+Message-ID: <bfa9ab87-9de8-41fc-bfd1-de5ec324cfe0@gmail.com>
+Date: Mon, 9 Sep 2024 21:05:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Content-Language: en-US, ca-ES, es-ES
-To: SoC Team <soc@kernel.org>, arm-soc <arm@kernel.org>
+To: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  "linux-arm-kernel@lists.infradead.org"
  <linux-arm-kernel@lists.infradead.org>,
  "moderated list:ARM/Mediatek SoC support"
  <linux-mediatek@lists.infradead.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] MediaTek config updates for v6.12
+Subject: [GIT PULL] MediaTek driver updates for v6.12
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  xsFNBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
  fL3eT7ZsYV5nur7zctmJ+vbszoOASXUpfq8M+S5hU2w7sBaVk5rpH9yW8CUWz2+ZpQXPJcFa
@@ -121,8 +121,8 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_120530_772284_36259B6E 
-X-CRM114-Status: UNSURE (   7.61  )
+X-CRM114-CacheID: sfid-20240909_120544_509627_1A9C42F2 
+X-CRM114-Status: UNSURE (   7.85  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -140,12 +140,13 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Arnd,
 
-Please find below the one and only update to the defconfig for MediaTek.
-Sorry for the delay.
+Please find below the changes for the SoC driver for MediaTek. Sorry for the 
+delay. Hope we are still in time to get the patches in.
 
 Matthias
 
 ---
+
 
 The following changes since commit 8400291e289ee6b2bf9779ff1c83a291501f017b:
 
@@ -154,20 +155,31 @@ The following changes since commit 8400291e289ee6b2bf9779ff1c83a291501f017b:
 are available in the Git repository at:
 
    https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/ 
-tags/v6.11-next-defconfig
+tags/v6.11-next-soc
 
-for you to fetch changes up to e6be129f4c1865ad6985a853439a75d1ad6fad78:
+for you to fetch changes up to d1e5d531d20b085bb83d9ab1868ed99fdeb0cc42:
 
-   arm64: defconfig: enable mt8365 sound (2024-09-09 16:46:58 +0200)
-
-----------------------------------------------------------------
-mt8365:
-- Enable audio handled by the SoC and the PMIC codec.
+   soc: mediatek: mtk-mutex: Reduce type size for mtk_mutex_data members 
+(2024-07-30 10:58:46 +0200)
 
 ----------------------------------------------------------------
-Alexandre Mergnat (1):
-       arm64: defconfig: enable mt8365 sound
+pmic warpper:
+- reduce size by constifying data structures
+- use devm_clk_bulk_det_all_enable
 
-  arch/arm64/configs/defconfig | 2 ++
-  1 file changed, 2 insertions(+)
+mutex:
+- reduce size by changing variable bit size
+
+----------------------------------------------------------------
+AngeloGioacchino Del Regno (1):
+       soc: mediatek: mtk-mutex: Reduce type size for mtk_mutex_data members
+
+Christophe JAILLET (3):
+       soc: mediatek: pwrap: Constify struct pmic_wrapper_type
+       soc: mediatek: pwrap: Constify some struct int[]
+       soc: mediatek: pwrap: Use devm_clk_bulk_get_all_enable()
+
+  drivers/soc/mediatek/mtk-mutex.c     |  52 +++++++--------
+  drivers/soc/mediatek/mtk-pmic-wrap.c | 118 +++++++++--------------------------
+  2 files changed, 56 insertions(+), 114 deletions(-)
 
