@@ -4,58 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79FDEECE589
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 21:22:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48785ECE589
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 21:58:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
-	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tK0vooX06fNMJDsOaDbjgFNdPUmm25HgOZttNw444Wc=; b=y28Sy2Mf34yk+9k1/Ij7W/Q365
-	mNJtS6PVxnIieI5dPPqxMv1BfyLboTl47Jnp6azRACTzCbvfkACIL8UG1UiAsz6hLT4XC5CEt20+M
-	THQqrjpJQDBh7jHGiUeCgMvy4ow9+LxwUV7FII5h+ccxoZkd2iUPOnTAbOPYFXUy7N9ShRI7k5h07
-	ShJ4stsK86SwTOcTLn1XnmtTbME4DDwWzNUMOS5umyJuqbekMUxJ1xeLnBuQxL6D6N4J/2QXDf3q5
-	bOCYNtov83nsUHrkdaqBo6xnHIzHghBckIOoOnv/aUPu/eiZr1W11vVC/ICS6ZqLho0tnAcvKwswI
-	P7n+2zBQ==;
+	bh=2fLvJm2AdJalhW8NrrNeOozpxblVXnRN5Kl+xF2tIWw=; b=QwVu8P0FBm9yIm/kAymg+GlmVf
+	kkpybVhmhbt/HTyDIRoPZf9rLHIv+B+uTxrZVZp/Vnc9Siie6dvdu6AZ9CVRWIBeAknvJ77P2QvqO
+	SdirKyVXev57fPmEN6klTqn4uHM5+ZFtPJ8Sc9vr2v4elyUlgwVFvaP8ku9mVJzBIp/URajFRnPAL
+	hin+losDBwxxA8XMtXXK5CtUD1fICItS8AMpMXKfOOtj4qhekiTkyFWbfBMzISp10ltQtrYFdBX94
+	BxUnCXHaYP7CkHmFabtouyOtDeeojTVEMRVG8EKo0Szw9KcIrL2kGDOACGQSukuSOy1lewYZBbiwq
+	R1zdL1VQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snlph-00000003Lvu-1fh0;
-	Mon, 09 Sep 2024 21:22:01 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1snmOv-00000003QEY-3I52;
+	Mon, 09 Sep 2024 21:58:25 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snlog-00000003Ls3-1SwV;
-	Mon, 09 Sep 2024 21:20:59 +0000
+	id 1snmNt-00000003Q4F-1hI8;
+	Mon, 09 Sep 2024 21:57:22 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0E6CE5C029A;
-	Mon,  9 Sep 2024 21:20:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34A2BC4CEC5;
-	Mon,  9 Sep 2024 21:20:57 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2AA895C0648;
+	Mon,  9 Sep 2024 21:57:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 08F98C4CECB;
+	Mon,  9 Sep 2024 21:57:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725916857;
-	bh=tK0vooX06fNMJDsOaDbjgFNdPUmm25HgOZttNw444Wc=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=FKV7PFNoHKTi30ShjIpCoZkwRE9t9Bfen1obWZlTvE/7kBYKoIEn31C3N39nYrzLS
-	 wV2jGW6w3KN0K3zsvrErlzYPWwBetvWrY2f307qC1q/3r6J+/p1zFtPeTYhXIBOgN0
-	 eciafNUixANNFxl6vSdZtqlBS5a9LmNMRn55+D94diIDR7T0G/PHhYyWeO5X33k4FG
-	 eTc+U7uq9LECMV+8qgZJNyPQQ3B1/4G+QyMY4iVu63qvL0PddnNwd/KXYnczd4Jcm4
-	 IDC2sERGEVlUEXtxEBNhzMRj5ryAeR0lohVqt8NWNujt4iZz2fJvqK4Z8M+XAaInC8
-	 wBai1QZE/xkAA==
-Message-ID: <ca22b69fe6311ba87a7dcca9948a62a7.sboyd@kernel.org>
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1725919040;
+	bh=2UqAJVFWBnjGJoioHdA1uFRvBlpi1A+ZG7kkU7DYCGw=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=XZGFmF7KMgt+DbN5wp9RuN4VheJL/oWNBdMiHvhi/FbVbckqAELzDes8OYxH6gLRy
+	 MqiHsUBvwabRIWxx9tPABWEgeEu7nk7mYHRrlSfG0xHKlVKhAQ2HXvd9BXW3DfOzAk
+	 fQRgWmwzXdJiIia3E+JFl7s0VMAn4cBJPwLfmKiRJW2DFOGyusWO1KMRm7JyndHGEV
+	 FaUzpxAQ2PaCzbJAtrAvZbYsApvr6CDYP3QRRLIWWX18JiSrf0cL2bRSZJ/b1CmwWX
+	 qlOLX1/RDJ8Qsy8x/tPlxcnwFksXC5mylNS2GkAA3fh2+lKWJYhLqr5zz0D+X3jB7z
+	 TLNozMClrByZQ==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Mark Brown <broonie@kernel.org>
+Cc: Nathan Chancellor <nathan@kernel.org>, 
+ Alexandre Mergnat <amergnat@baylibre.com>, linux-sound@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20240907-asoc-fix-mt8365-build-v1-0-7ad0bac20161@kernel.org>
+References: <20240907-asoc-fix-mt8365-build-v1-0-7ad0bac20161@kernel.org>
+Subject: Re: [PATCH 0/7] ASoC: mt8365: Fix -Werror builds
+Message-Id: <172591903776.148496.17884899696654432666.b4-ty@kernel.org>
+Date: Mon, 09 Sep 2024 22:57:17 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20240909144026.870565-2-u.kleine-koenig@baylibre.com>
-References: <20240909144026.870565-2-u.kleine-koenig@baylibre.com>
-Subject: Re: [PATCH] clk: Switch back to struct platform_driver::remove()
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: linux-clk@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, arm-scmi@vger.kernel.org, imx@lists.linux.dev, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, linux-omap@vger.kernel.org
-To: Michael Turquette <mturquette@baylibre.com>, Uwe =?utf-8?q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-Date: Mon, 09 Sep 2024 14:20:55 -0700
-User-Agent: alot/0.10
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-99b12
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_142058_473787_E4A1EEEA 
-X-CRM114-Status: GOOD (  12.04  )
+X-CRM114-CacheID: sfid-20240909_145721_523199_CA9E46BF 
+X-CRM114-Status: GOOD (  12.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,27 +76,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Uwe Kleine-K=C3=B6nig (2024-09-09 07:40:25)
-> After commit 0edb555a65d1 ("platform: Make platform_driver::remove()
-> return void") .remove() is (again) the right callback to implement for
-> platform drivers.
->=20
-> Convert all clk drivers to use .remove(), with the eventual goal to drop
-> struct platform_driver::remove_new(). As .remove() and .remove_new() have
-> the same prototypes, conversion is done by just changing the structure
-> member name in the driver initializer.
->=20
-> Signed-off-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@baylibre.com>
-> ---
-> Hello,
->=20
-> I was lazy and created a single patch for all of clk. Please tell me if
-> I should split per vendor (or per-driver). Given that touches so many
-> drivers, I also stripped the individual maintainers and just kept the
-> mailing lists. I hope this doesn't prevent people to give feedback, but
-> otherwise the Cc: list gets Huge.
->=20
+On Sat, 07 Sep 2024 01:53:25 +0100, Mark Brown wrote:
+> Nathan reported that the newly added mt8365 drivers were causing a
+> number of warnings which break -Werror builds, these were only visible
+> on arm64 since the drivers did not have COMPILE_TEST enabled.  Fix this
+> and some other minor stuff I noticed while doing so.
+> 
+> 
 
-I'll apply it on top of clk-next right before sending the main clk PR to
-Linus.
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/7] ASoC: mt8365: Open code BIT() to avoid spurious warnings
+      commit: d01c6a398750aae265c17859b57d7409a6d9181d
+[2/7] ASoC: mt8365: Remove spurious unsigned long casts
+      commit: 1b084d8e3b98ca460b815cff14617719ebe605ad
+[3/7] ASoC: mt8365: Remove unused prototype for mt8365_afe_clk_group_48k()
+      commit: 3e61df7d2ff67875c770a7f548038054d05a0f15
+[4/7] ASoC: mt8365: Make non-exported functions static
+      commit: 63157d994025639075b3faa372976a96186322c1
+[5/7] ASoC: mt8365: Remove unused variables
+      commit: 067d832806225cfaabeec8f5f683b7e2bc508a6d
+[6/7] ASoC: mt8365: Remove unused DMIC IIR coefficient configuration
+      commit: d70ce6d3105a6bd02b1708c399105631643a550a
+[7/7] ASoC: mt8365: Allow build coverage
+      commit: 36fa259b214c37bbae3e0b7a47e7fb49cb0ab462
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
