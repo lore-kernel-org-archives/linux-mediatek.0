@@ -4,87 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C78EECE57A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 13:05:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C0A0ECE57E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 13:53:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=umZi9yP51lcJ8RnrYZCo5jDOmCTZJdRYUd8lcqv4bzE=; b=aDiJyyN14OwoAFfzod6AIePRAL
-	NaNQT/sKS66apP15kqciQf4kVmsMhhOabwC7g0HPrOnkFk/cX/R5BzRvhA1MHXWG67q5So0atrFIp
-	LlYPhpt9Pq7T67cqXr5tN4yfEJgLJ2P+jINMPclF5hKsXdFgPY1EK3dtX89Ri7W6Fa7HY2reicenm
-	wtYvsGLbVufTZoRkBnEfCmchDibO3Hx19ATnd/hOAm7VFR0w/1w1ZZD4713tdWtjxfBgwYprwXN+P
-	1vrsRTeGBpdiGwxNIGSQRyu3m0VvyuGFPJ6bdD0FuPwpS4//S9qdkQF1eIOYaJMoWVuns1sug4DDM
-	Ld/BVwrg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=xIf1wAbIzj4CuxkxfofvazjN5/qDj/bgJx/cWPTX0TU=; b=DOxDAMEc4s2lpi
+	IG8Ov/mCtbNCmfGnM84yvsCm9QUI7l/YSgt/N5q1JOB2MJa+b78lAsmKtPuElkdZsOstvU9S2tHb9
+	HXrVw6Mo7uHz8sIyn90vOxkT98rJBLOYv2WQVD1zyJZs5zbYtZbc/TN22X4yAl++tJoO6L0ryU+Bl
+	RJIhpsF+PFSSL2DaykMKD+RPN5FlMTlefcxGaFEv973FxKqY+2Rq3LsD81AmikV5y8kxuqfMVDokJ
+	Uws5WJuNreSwToMRtNKHfWW8AuWBaXf+HsffkvHHP4hTPR5cWiav+Ht5FuLoM32MtqQuEt+VWnbqK
+	emsn77pG6iqlXv5jHZTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sne5H-00000001zOe-3i7w;
-	Mon, 09 Sep 2024 13:05:35 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1snepu-000000029Fh-18qv;
+	Mon, 09 Sep 2024 13:53:46 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sne1Y-00000001yXF-1Wih
+	id 1snenr-000000028W0-2d7V
 	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Sep 2024 13:01:46 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-42cb9a0c300so6131175e9.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 09 Sep 2024 06:01:44 -0700 (PDT)
+	Mon, 09 Sep 2024 13:51:41 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-a8d2bd7dcd4so8395666b.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 09 Sep 2024 06:51:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1725886903; x=1726491703; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=umZi9yP51lcJ8RnrYZCo5jDOmCTZJdRYUd8lcqv4bzE=;
-        b=ezWSI1s6uA5lV2I0pQT91mD1vybkUfkzOZP25FB50BaDi3kFZaMXtagI4JTmLAiyQj
-         e5yoy2U16BEhis/0swFmis1mb/2Gt57ILPLobQuqBWvYGC3Y4aOdKsQVF75QOZTrnGRR
-         Llnasvoc6bZ8XnXnnSKHHFlfrX8E0HGZMt+ngJXHY1eNbPTl7BXHIAfLn67slomc8hPK
-         C08SdZ+ufRcDtvY+JK7bBbjECqzM5x78H2wajCUN1c9m5ruXxFNZEi/3/IHHL30oRHjj
-         MS/DL5FffbSh7vW0KlU8G/Aght0pjEDy1r5DjkXPz9llxqURZyuXpD/Jbl826472kGhC
-         yGRw==
+        d=linaro.org; s=google; t=1725889898; x=1726494698; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=xIf1wAbIzj4CuxkxfofvazjN5/qDj/bgJx/cWPTX0TU=;
+        b=kUW+KFWNHwjznTn/4Qpgf+UTdf5+1vs3vVLpfS8cQQFj9kmN+a8p6Zw6By4olPyk+y
+         Wqe7wR1TZfuhg1q7PzZkcbwW8JfeCu7lzDN1go81YjuXImO4fYSbBPN3disH8nncDfUn
+         Q8Fc7onaNkDKNswYTeTtw8J0erH/79tRrMtlpdiWaSQAEHGUEXHD2jyGnhv8N/Meskd3
+         H8smNhjTUaxHounS9JRHbQqY1krtsSN7mufX/3oF6nKSaMyQfu7rWy02CleFxmvzGUU6
+         jIU3+JD9qR3o2T3YOnQBqYXW+6XeHBdAj8q4WWzq327afcjMrF/Iw+BRvcnV2NkWr8qX
+         m3Sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725886903; x=1726491703;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=umZi9yP51lcJ8RnrYZCo5jDOmCTZJdRYUd8lcqv4bzE=;
-        b=nWDqxzd6RmD0LyM0GeWVE/M67JUoTlEbRcUYcRC3nhJS+m3exA5st9a4CxRUfLHBxz
-         21MBlow5MVGVBM5GFcdcMperqZgs6K5E1rT090zDgfMDuQtL6alB6E/jO28SsNWx26an
-         M0WG8+ZyjV73td7QdQHArWGHBlA/j4jGgzpcX1wWzh/dgmH83h0sUU9uD2QHy8Be5V6G
-         LieCMTtRbgzm3GzObF7+c3bPR7qMUbs6kw2ZZsEoTb7uh03Fl6GIqVRXOZzgYTpD4rSI
-         MX0p1z939RxMIviTUDYQFCkA2MK1tpvUDGZEVHux6Udngi8DYo31e2TbBJXM5r8eWZ+f
-         yiQg==
-X-Forwarded-Encrypted: i=1; AJvYcCW2+ZkfThp4y4jEuH5tEirurgokh28llndoxS6YaTF7U/61OqjokrGA9JsCV5KLvQdO7xxjqggI/pJTcBlEaA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxhCxR59RyE+GTbSgd27rEg/TbYsLtZbUe9SJj64dW93zbG4kTJ
-	2RRZdne+lbFb1emwGMh9vuuHaKs1kM576iy2EGbLaJ47/ULnOKZQi0Fwnota3b8=
-X-Google-Smtp-Source: AGHT+IH9Romwpgt1JE9YYIpT65omJV/odmabpcbADjq2kLQrDj02YgN6/FmS8gS8gLzsLuEGe2rV6g==
-X-Received: by 2002:adf:ec0c:0:b0:374:cb5c:2966 with SMTP id ffacd0b85a97d-378896a94aamr8655060f8f.40.1725886901672;
-        Mon, 09 Sep 2024 06:01:41 -0700 (PDT)
-Received: from [192.168.0.172] (88-127-185-239.subs.proxad.net. [88.127.185.239])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-378956652ddsm6040100f8f.29.2024.09.09.06.01.40
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Sep 2024 06:01:41 -0700 (PDT)
-Message-ID: <ce36e6e6-2e56-489c-be15-5a2d84d035b0@baylibre.com>
-Date: Mon, 9 Sep 2024 15:01:40 +0200
+        d=1e100.net; s=20230601; t=1725889898; x=1726494698;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=xIf1wAbIzj4CuxkxfofvazjN5/qDj/bgJx/cWPTX0TU=;
+        b=ceQocc/BOicyxcSJhSTV1tMzdxkMryoxunwpddnpWl6s2UixhkW/2N7m6+Nwuexa9D
+         BTgxirzlN6onmcdcCE0no8fnOIMciBnEUIXKcjxEQYj7a30zR+FRyROOGSNBXjG4PU4B
+         bXJ3DoIIlAo84WzjeQIkmyp8eFukXXnw56cpTUoEuYmrDQxRXkj5dkuxjInQkj6bjXtZ
+         lNYgfzsEm8eYp/i5Ivs4lIM9CNRLR0ja6NbDP3fUPcSQi+/EfhoY/1kUh1rWNsAuLWpq
+         i1eVdKsCqfBoG/9AOQdKFHiOrQlFq8apDiKQpA5duEzBhZ1BMUuxa92RRs/+3tvrPojf
+         UJsA==
+X-Forwarded-Encrypted: i=1; AJvYcCUz3n5YSaZ2gU9ivaR56roc6vLtpx7mvXtV3uesUQQZu432SLXuG5PM3AZ7ScOu7pOio1Ti2w/3jmRDBMdNIQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyddn/NAd0iIjL0Hs41yQWIuA2YzcxR1ssno5zBZFrnzT3sjzUp
+	qggIPEsHWeKC8rTQRkvNRSq/XMbAPAYHrt2LgC6oeJsKCjcunz0DKKa6GDSTOlw=
+X-Google-Smtp-Source: AGHT+IF9Mh+MgE0b3Jf7kgDpkQxsvludlLfJmIJC1bDwVRLgk1OMrtfUfpR0kKiqTATr3BREdjGX6A==
+X-Received: by 2002:a17:906:c148:b0:a86:a4cf:a197 with SMTP id a640c23a62f3a-a8a887fcbe0mr296077966b.5.1725889897492;
+        Mon, 09 Sep 2024 06:51:37 -0700 (PDT)
+Received: from [127.0.1.1] ([178.197.222.82])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8d25cf3ad6sm345344566b.148.2024.09.09.06.51.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 09 Sep 2024 06:51:37 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 00/17] regulator: Few constifications of static data
+Date: Mon, 09 Sep 2024 15:51:11 +0200
+Message-Id: <20240909-regulator-const-v1-0-8934704a5787@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 7/7] ASoC: mt8365: Allow build coverage
-To: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Nathan Chancellor <nathan@kernel.org>, linux-sound@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20240907-asoc-fix-mt8365-build-v1-0-7ad0bac20161@kernel.org>
- <20240907-asoc-fix-mt8365-build-v1-7-7ad0bac20161@kernel.org>
-Content-Language: en-US
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <20240907-asoc-fix-mt8365-build-v1-7-7ad0bac20161@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAE/93mYC/x3MMQqAMAxA0atIZgOxVESvIg5aowaklVRFkN7d4
+ viG/1+IrMIRuuIF5VuiBJ9RlQW4bfQro8zZYMhYaqlF5fXaxzMouuDjiVNDszPG1jQR5OpQXuT
+ 5j/2Q0gf6uJlQYQAAAA==
+To: Support Opensource <support.opensource@diasemi.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+X-Mailer: b4 0.14.1
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2263;
+ i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
+ bh=zUHhg/UyzRf/dZcnGmfWPB4ecX+Ntlv/UdMU1qsMFhE=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBm3v1VgRQNlylPub6yNjTD+zg1dZZuybYlU3O5P
+ dYuhnlzbSCJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZt79VQAKCRDBN2bmhouD
+ 18H6EACQOmd1uI3uaTvI5UKYLHpsmpK02EBrdx7JfUDu7mYQKIwkyaQ7/NZTXgYa3NeSubtpWqS
+ CYbu3d4cN9X5LRMnP/JfMWvN5nPjCJ9yezEZ1IlOJtorpsV4QDmQzpx7jhK4TVWVOT3H2EFdHf+
+ Qhsg7Ra3zq3eQbpakhFmlWTVpiCXjAQ8ewaszVTwD2mhmqP8rn8IQCPWY0GBz1/zrFdwRMUSc1N
+ VDt/txtsgO+LhT06oBFGSgqoMmEc+hzbAHhKWP/lqErty136Vq+GXJqRfmFwtbIDq/W6PI9lVj9
+ LrZGJI/T7x7FhrH5V2t2MvvXERnKJMd1yscboisw+JYX/L6PMT0uqXRxF2Oiok92GZXua7D3gpQ
+ KG/LN6HH0YYWc+KVxGaikAADasjgiO10L9qOwEONgUsBx8z44TncZMgPRAqUuuadqj91gi448lM
+ xC2+L5ablOxm7cUiGaKaPgeSaZQK7MtJPbpuBhFq7jDN3It20DFo90EF0+qwO8a+S3Y0jLfYnuX
+ lLJASJvsh5c7KTi54zRhQY5H6elWKfnkvjsM6jtWVrI/DbJSF/wsoIke4n0rYXEDmg1UG+7NU7t
+ WQLd1Dr6580QziSbr9Z1VjK64AdhO5rmijvUVs3Bc6dwmjGCb1No0vYDv664QDCk8T0v5mVFnt2
+ wSjVdO9X45kDo+A==
+X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
+ fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_060144_445169_FDDC26F5 
-X-CRM114-Status: GOOD (  14.53  )
+X-CRM114-CacheID: sfid-20240909_065139_759949_4AE8E54A 
+X-CRM114-Status: UNSURE (   8.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,33 +116,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+Hi,
 
-On 07/09/2024 02:53, Mark Brown wrote:
-> There is no build time dependency on anything specific to ARCH_MEDIATEK so
-> enable COMPILE_TEST builds.
-> 
-> Signed-off-by: Mark Brown <broonie@kernel.org>
-> ---
->   sound/soc/mediatek/Kconfig | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-> index e6f7a5a49794..3033e2d3fe16 100644
-> --- a/sound/soc/mediatek/Kconfig
-> +++ b/sound/soc/mediatek/Kconfig
-> @@ -301,7 +301,7 @@ config SND_SOC_MT8195_MT6359
->   
->   config SND_SOC_MT8365
->   	tristate "ASoC support for MediaTek MT8365 chip"
-> -	depends on ARCH_MEDIATEK
-> +	depends on ARCH_MEDIATEK || COMPILE_TEST
->   	select SND_SOC_MEDIATEK
->   	help
->   	  This adds ASoC platform driver support for MediaTek MT8365 chip
-> 
+Few cleanups (safer code), built tested.  Last two patches should
+probably be tested.
 
+Best regards,
+Krzysztof
+
+---
+Krzysztof Kozlowski (17):
+      regulator: da9052: Constify static data
+      regulator: da9055: Constify static data
+      regulator: da9063: Constify static data
+      regulator: da9121: Constify static data
+      regulator: da9211: Constify static data
+      regulator: hi6421: Constify static data
+      regulator: hi6421v600: Constify static data
+      regulator: tps65023: Constify static data
+      regulator: max77826: Drop unused 'rdesc' in 'struct max77826_regulator_info'
+      regulator: max77826: Constify static data
+      regulator: mtk-dvfsrc: Constify static data
+      regulator: pcap: Constify static data
+      regulator: pfuze100: Constify static data
+      regulator: qcom-refgen: Constify static data
+      regulator: hi6421v530: Drop unused 'eco_microamp'
+      regulator: hi6421v530: Use container_of and constify static data
+      regulator: max77650: Use container_of and constify static data
+
+ drivers/regulator/da9052-regulator.c      | 22 +++++++++++-----------
+ drivers/regulator/da9055-regulator.c      | 28 ++++++++++++++--------------
+ drivers/regulator/da9063-regulator.c      |  2 +-
+ drivers/regulator/da9121-regulator.c      | 20 ++++++++++----------
+ drivers/regulator/da9211-regulator.c      |  2 +-
+ drivers/regulator/hi6421-regulator.c      | 14 +++++++-------
+ drivers/regulator/hi6421v530-regulator.c  | 27 +++++++++++----------------
+ drivers/regulator/hi6421v600-regulator.c  | 10 +++++-----
+ drivers/regulator/max77650-regulator.c    | 31 ++++++++++++++-----------------
+ drivers/regulator/max77826-regulator.c    |  4 +---
+ drivers/regulator/mtk-dvfsrc-regulator.c  | 10 +++++-----
+ drivers/regulator/pcap-regulator.c        | 12 ++++++------
+ drivers/regulator/pfuze100-regulator.c    | 10 +++++-----
+ drivers/regulator/qcom-refgen-regulator.c |  4 ++--
+ drivers/regulator/tps65023-regulator.c    |  6 +++---
+ 15 files changed, 96 insertions(+), 106 deletions(-)
+---
+base-commit: fd9058d56c6de25c2d3215db4e2e950a7965ffd2
+change-id: 20240909-regulator-const-b70dc22450b0
+
+Best regards,
 -- 
-Regards,
-Alexandre
+Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
 
