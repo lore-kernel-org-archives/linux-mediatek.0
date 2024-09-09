@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5551ECE584
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 12:47:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17545ECE57A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 12:47:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cPpPZ5NAG7I0/wWI5OC0fVZtWkOxnGxwu+Rn1nu6wEw=; b=0QKaQMOq2xreyyifhtU96s6Mj8
-	Ly54jG89q1e8ewPk5Edx/FIsEaPyuqLxJOAeChjeXzVqk9ozXJD0iGvTC1AOSjurZcp+KmiXGHG7y
-	PB0pZneFg+ak7v1/0EVipdOs9cB+xr73QVzHVYWML/rcp087NjscAd3fjfn76Ej6+qtLKLyi+fHVl
-	t2NnUYjGswqDClqr69ePIysus/a75doLf19ttQrlnDopkSwxoTrrAUiet7Xvjc+zGJ8aDoTKZD6R5
-	kZfoGmEgUSD6PuWQl2Uz+dq2O82x7SEkX7vIHBAuqR3svTXNQULhdN6ts3RE6xrwkbVlBipcXBff2
-	pbdgEBRg==;
+	bh=OuO693xDxpcBtCeCPFg6NYzQpuCCq+xMFk+Gdje7vu4=; b=EohOkpw3kF/e9NXvc2VrS3/SJF
+	ahf1W3A/L8uoTEAKB8vWmLpMwHoMOgTepifiocB6RwwzV++7I52m7ff9PJ/btq2Orxm+BWiCPzBJ2
+	kXwxjsiT6XtCr6df/o6dXageipMCauhASeZud3TAv4Ev1sXo213I8LmK286i03izkCONmdUbN1MC7
+	rKlBtv+ZhA/GUk68hTsASI7OHVDAYW9pL6pYcEB8Xmh0bPzEYyCc7vgLZNYz3MHpMGybcDtZz78nj
+	oshsh5TE5M+YkLGe6bOAOiUaDoBg84TB4ZPhXQmJ5RSC7184vR+UPtYbEdO8Fr6tu3+ityiD1Db+l
+	3EDCcJ2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sndnW-00000001uGP-399s;
-	Mon, 09 Sep 2024 12:47:14 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1sndnc-00000001uL0-11s2;
+	Mon, 09 Sep 2024 12:47:20 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sncPb-00000001dPx-38PU;
-	Mon, 09 Sep 2024 11:18:29 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-42cb1e623d1so13984735e9.0;
-        Mon, 09 Sep 2024 04:18:27 -0700 (PDT)
+	id 1sncPm-00000001dT0-1yTs;
+	Mon, 09 Sep 2024 11:18:39 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-42cafda818aso16996275e9.2;
+        Mon, 09 Sep 2024 04:18:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725880706; x=1726485506; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1725880716; x=1726485516; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=cPpPZ5NAG7I0/wWI5OC0fVZtWkOxnGxwu+Rn1nu6wEw=;
-        b=FjtAMDpsJBgl1CbxP3JXLL61Ghdjx+kVA+HOEL3qMM3SEsstKlNkUQkLgc2Z1vQAlY
-         7kx46Z6O2IOGdzBc9QTkhhOQA9bYDvvRhgnP/5pewUfDcaz4205JOVjoeUW9X0q4Av7d
-         Z12unn/Q2owS+IhgzPBZLz2hNhp8FSb/dskKDCKbZLRVHJhlpqhsU8xlalCIXx5tX4w1
-         CSYORAcYWodTcP5lrG9fITYKHSHhvgOZsz21/WmrZoghWQ0FrI4jvs6x65GMgIoV0z32
-         00lN2ajX2vjO/7tCDC6tnxBXXMBLzUfoT1pu/hQ3GhL9pcpB4ym6mZRiLr5bvwbliLc6
-         hNsQ==
+        bh=OuO693xDxpcBtCeCPFg6NYzQpuCCq+xMFk+Gdje7vu4=;
+        b=SmDh8/CwWWLn6E0nUJ03XTBUSc/zfqAiqAazWtlqR9Xh7AEGXUEtspKilUtMxkTg0j
+         4BguXstKR8BdzyPxqTNDigkuw2WF1d4avtgyFW8UeLmsrjUyY+2A5Srt519MJ4z8q4ta
+         vTq0u5PZb7FG3kj93V8F1R3CdYqy8Cn4+rgOSbqTnOixlBUQIcx3m9MY/BKPdjUaspmR
+         VxiDjvoypjw9D/g2XNQ3RYZ/06NDJMNcLDV880ei2NlopPxX3kal2Ihzbryfxvce1xZY
+         44u+3Q3kGoxlDzvjJyAR3EBYzzC9XR0R7pFJmTUv838OR3JrfLlceZqGKVSsX5yYR0a6
+         t0og==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725880706; x=1726485506;
+        d=1e100.net; s=20230601; t=1725880716; x=1726485516;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=cPpPZ5NAG7I0/wWI5OC0fVZtWkOxnGxwu+Rn1nu6wEw=;
-        b=kmIp1wRzEuJH5JUpdWLzie0yQKbZ4ShiwK97cxlC80Ov0Hm9HD/P/8YwYXWIeTuR+S
-         0B8uN4dLLa/o1YTwjeyu9VS6aTZ/aMXuNNWC+yNejsv1E76NkPwlohGWS/jZLO3i+rzm
-         nyftksy1Imi3gr2QkHMQ2S4UmM9K0gBIQZ9IM7BZJJpnz+aQZ8wK6LBls7GPP2AgrEYS
-         5RfW2pxzf6stbWUyG35twByFiAZtD8ub6vTOKI0oMU+bTUSXtL4RDzra2H1QAvmaclAP
-         gZiXPFXEXIERPOG/2ktXc5TWXP+ucyZzkJL5s1yP+qizHtK5B0Od2F9rtB6FbIWlTOsY
-         WnPQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU3DSSJ1n4DBg6Xti8RBKN7S+gJL0SiXwbyY/UYLjjnsu2D7UUIsPuiif+268HaAuQLgZBo/3CNI7hY6CRHGo8=@lists.infradead.org, AJvYcCVxhO7mB35K+eXnVXNbeDZxO8SvQWDEuXNggeB/wFPDM+GKONa1kJbCiYLkkpkngeKMchI4nhb37/HwU0WmI9UY@lists.infradead.org
-X-Gm-Message-State: AOJu0YzXtW7RB1dGIRE2H3IQJ1RjKEqyV+S4p191wKrGE/SIZU/tbimi
-	0wNzSIKT6A/+313fuLubjsLRWGb1In4pyZQ3NG7Yn3m3a8zmhfSLr9bOliYi
-X-Google-Smtp-Source: AGHT+IGm25VtTRscm5ItV1eNhlLKd50eovxRR4Bgk9yPNz7T2NdJpvOzuGlKTTsiNQgZgLymeE6OPg==
-X-Received: by 2002:a5d:40d0:0:b0:374:b97b:c69 with SMTP id ffacd0b85a97d-378896a4166mr6752950f8f.48.1725880705683;
-        Mon, 09 Sep 2024 04:18:25 -0700 (PDT)
+        bh=OuO693xDxpcBtCeCPFg6NYzQpuCCq+xMFk+Gdje7vu4=;
+        b=cmcx2AryXX1FQUodI+Lf9Mou1GBc/AYkJYuAwOoEo9Z0HSEsiUGrPudJVXOIC2NGuE
+         3+OwB/oLeb7M++N1HVu6MI3tL+IPDbSqS5e1OE3SjF8+17R4DkZMeFPaH34c/jCnwPa7
+         icHWkFwRLqpOqO/JnbAerutwD7lC5Aq35HPTTyOyv6e/SkYvym5meIHQf+tLsBEej86j
+         U3L213lIHsjuwwZm272PP3gxDcdEtZpdda9c3MWBPGUctvmnzQvkOt4tLx9F2/1cClkG
+         LUyLLJNhBRp4VrdXxMD9J3OnoqrN2gfzUNPz6Uqk+v7zJ2kuZCJQYtv0KJG2BkYY1h1b
+         K4wg==
+X-Forwarded-Encrypted: i=1; AJvYcCVWFw01D5Gddx0yujqSXSFv3xvs81XNhJCcGeMS+nGF2NHP5s1Xh7ybxzg0RqGcUV3crFBnEvNWHdjVaqNkfXI=@lists.infradead.org, AJvYcCWqSml9eFaZLq9EpvL17cbGxbbEagiHZL8H/cb95B7kV0/AA1X43OliedW+k2ZvR4wRceILeQPZwYM+rh10R18W@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy51DGrZq11hC2Pb2n5LzHPhp/AXo1TH7T5x9jgPgT0H2e/A50R
+	pRdBRZFb8V+acDXAxB8KFdiAEMKxh7Yp4vR0vpPAiKxldfxOHgh3
+X-Google-Smtp-Source: AGHT+IGv8BOAf8eajWlh3TYCfdd2+gH32sYlqXSszlldWyeSGJFS2XxNbCGjQOXnYZtyT2YZng2pPw==
+X-Received: by 2002:a05:600c:154c:b0:426:5416:67de with SMTP id 5b1f17b1804b1-42c9f9d7059mr79844225e9.30.1725880715608;
+        Mon, 09 Sep 2024 04:18:35 -0700 (PDT)
 Received: from [192.168.2.177] ([81.0.7.156])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42ca05c6340sm107868385e9.4.2024.09.09.04.18.23
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42caeb8181csm73773095e9.33.2024.09.09.04.18.34
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Sep 2024 04:18:24 -0700 (PDT)
-Message-ID: <39eeb382-1354-406f-800c-ac5db02f8469@gmail.com>
-Date: Mon, 9 Sep 2024 13:18:23 +0200
+        Mon, 09 Sep 2024 04:18:34 -0700 (PDT)
+Message-ID: <7d1b36fc-463c-47d7-b5e2-ddca744e1c05@gmail.com>
+Date: Mon, 9 Sep 2024 13:18:33 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/4] arm64: dts: mt8183: burnet: add i2c2's
+Subject: Re: [PATCH 3/4] arm64: dts: mt8183: cozmo: add i2c2's
  i2c-scl-internal-delay-ns
 To: Hsin-Te Yuan <yuanhsinte@chromium.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
@@ -79,7 +79,7 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  Daolong Zhu <jg_daolongzhu@mediatek.corp-partner.google.com>
 References: <20240909-i2c-delay-v1-0-4b406617a5f5@chromium.org>
- <20240909-i2c-delay-v1-2-4b406617a5f5@chromium.org>
+ <20240909-i2c-delay-v1-3-4b406617a5f5@chromium.org>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -125,12 +125,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20240909-i2c-delay-v1-2-4b406617a5f5@chromium.org>
+In-Reply-To: <20240909-i2c-delay-v1-3-4b406617a5f5@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_041827_865558_F61B8D0E 
-X-CRM114-Status: GOOD (  12.16  )
+X-CRM114-CacheID: sfid-20240909_041838_544635_B91532EB 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,25 +152,27 @@ On 09/09/2024 09:29, Hsin-Te Yuan wrote:
 > 
 > Add i2c2's i2c-scl-internal-delay-ns.
 > 
-> Fixes: dd6e3b06214f ("arm64: dts: mt8183: Add kukui-jacuzzi-burnet board")
+> Fixes: 52e84f233459 ("arm64: dts: mt8183: Add kukui-jacuzzi-cozmo board")
 > Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
 > ---
->   arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dts | 3 +++
->   1 file changed, 3 insertions(+)
+>   arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dts | 2 ++
+>   1 file changed, 2 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dts
-> index 19c1e2bee494c98c0db87308494713a26e304cd2..20b71f2e7159ade7e7d2135aabe6587c8f8d64de 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dts
-> @@ -30,3 +30,6 @@ touchscreen@2c {
->   	};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dts
+> index f34964afe39b5353de7b17e82d14d1fba88551ab..83bbcfe620835ab6d34cd2f4c2183fbdf11d0909 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dts
+> @@ -18,6 +18,8 @@ &i2c_tunnel {
 >   };
 >   
-> +&i2c2 {
-> +	i2c-scl-internal-delay-ns = <4100>;
-> +};
+>   &i2c2 {
+> +	i2c-scl-internal-delay-ns = <25000>;
+> +
+>   	trackpad@2c {
+>   		compatible = "hid-over-i2c";
+>   		reg = <0x2c>;
 > 
 
