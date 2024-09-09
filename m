@@ -4,78 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E07BBECE579
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 16:35:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4EF9ECE577
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 17:20:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rhGz1o6DQnzxBuA3jBt10TbR2anRakqtBYrmL8Gd4kc=; b=zKkiK3Lh6lwxL+DuMxOzx+wSmq
-	0nVDvF2SQuCo7xUhCvVCt7gzNbtjYRQhLouCNj+cNZCnFIvi0/YBfyu20twEB6efm59/+vyrJZ3ie
-	8Xi8jMEYwUH886c/unjNPaG1gvk5enkYiSad+C9XdqOcagxJh7nQFZEQ4sFqdmIZdVDUazK0JIgeP
-	Q9j80W6MXwpenVfDF60rQt0mIz4fhiQcWE0tFH3ktWRX/KuyNnbJrQa8xPBi3OwnnNERrTpImZvAi
-	mlszXCzdDMIg1INGDmU+V2H+OzK8vHfJJ2eEcyxkq7MZkyhOcLQJNMOV3o343HqCfwruUGJK1Jsf5
-	3vIRCXVw==;
+	bh=cnoB+2O0v2dUqRa/4oFPuPEfvXEnYfKrsqe2ib63Ozw=; b=OVlAnZHR4fvEdtMuZrMXG59Huy
+	vwv1bqWCaQxwgeD62A2wWtDlSr1T3OvxtiUvZL4HvGrwo/R5thvFF7pQ6c99JNXy7It6AEfmX4/Ip
+	no6Ax9ul6Lj8S1IFklpbHS2DGOJL8c61qaPXx6sHGB19rhqCU6k5fHDxBLfkvcysoVJwOeUsO1iWB
+	+6DiJkX1mTrCH4yAPpr5pLFhsrfYZTThliFpOXmI+yDZJNCQ8tnbcHXUT6AQ4EOnQILnxvCuOygv4
+	i6Toim1s5XC4Bbd1ZrgpPDXunhuqx6388gZ9kiQIv4kK1HWuwQtrEYRlaPkdV3Hg+W8CwnIRNvIh/
+	L6HAtrqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snhMA-00000002gTA-23Io;
-	Mon, 09 Sep 2024 16:35:14 +0000
-Received: from 008.lax.mailroute.net ([199.89.1.11])
+	id 1sni3U-00000002nd4-2POj;
+	Mon, 09 Sep 2024 17:20:00 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snhM6-00000002gSa-42ig
-	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Sep 2024 16:35:12 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 008.lax.mailroute.net (Postfix) with ESMTP id 4X2XW22bNtz6ClbFf;
-	Mon,  9 Sep 2024 16:35:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1725899699; x=1728491700; bh=rhGz1o6DQnzxBuA3jBt10TbR
-	2anRakqtBYrmL8Gd4kc=; b=uG/RojT6jz5IlNwuYFUZmtUatb+JLEYE6yhFRQ37
-	xk2kvuPeI0ccPf9bLCpPhYpEwGSOMN/peD20A9f+gSjhQ2FVaY6vOXj7gikS9Q8D
-	4dvCmLRafT/602JO2gbtJL5f8T7BaGcbZX6nrzLQaZNx4fJ6Y7fpQ8qjDG3BxRGt
-	KFUkogOOHPvqsho1zKArWqz2Cnq5FPRQZ15uZMB3LR0Sy2kDwKdXzX5eZdHySih4
-	QkeaAl2nmgGEtoeVaG11QLc9gXc/dpd9kW09zQqHEorf40nVmNy9CU3CjkuUeaxC
-	hrO3oyd0X1bWvh2fWnJr3OAW6QAHWl0+buUWn8ZUuJTmwQ==
-X-Virus-Scanned: by MailRoute
-Received: from 008.lax.mailroute.net ([127.0.0.1])
- by localhost (008.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id iHK1D7E3_mxJ; Mon,  9 Sep 2024 16:34:59 +0000 (UTC)
-Received: from [100.66.154.22] (unknown [104.135.204.82])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 008.lax.mailroute.net (Postfix) with ESMTPSA id 4X2XVk0qcwz6ClbFZ;
-	Mon,  9 Sep 2024 16:34:53 +0000 (UTC)
-Message-ID: <c4d22b9c-2554-4871-94dc-3dae4bd62a5a@acm.org>
-Date: Mon, 9 Sep 2024 09:34:52 -0700
+	id 1sni2P-00000002nHK-1rbt;
+	Mon, 09 Sep 2024 17:18:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id BBF3CA41B29;
+	Mon,  9 Sep 2024 17:18:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DFE17C4CEC8;
+	Mon,  9 Sep 2024 17:18:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1725902331;
+	bh=0my6CiCfO1YSLi/x8EJebBhnlxug1KH7Le/Dp6Hn1rI=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=jAh2/l396k5GbqfjNSaQBy3Jg/M415D6WaNic28NqN6ztZY8NtKkWpPtdeuUSedUt
+	 dqkxeuQytTySmAQGoW2SS4Uy3WoBhaavUZP4QaZtEjGeGMLPkR8BClNcFuhH2wJ4vH
+	 bdfTI4rv626NwLhGgae9ILHX85IGVthJ0E6EY1ICS/lQ0Eyg9wNFyVGfiTFsRdwFQ9
+	 99VzDnoAaa4/FzpNhPL7jz+hk6p2PoCfu8sPBYtpcrjFoNTudw4/tcVkW/91zmwiDL
+	 uK57Q/UWQ6MoAS/z8OMre954Of2e2QSOJoFb1pY5z67geJu2IWWc5nvzRVUJ6cb1kH
+	 UvLW8+V0HRcJA==
+From: Mark Brown <broonie@kernel.org>
+To: Arnd Bergmann <arnd@kernel.org>
+Cc: Arnd Bergmann <arnd@arndb.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Alexandre Mergnat <amergnat@baylibre.com>, linux-sound@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20240907200053.3027553-1-arnd@kernel.org>
+References: <20240907200053.3027553-1-arnd@kernel.org>
+Subject: Re: [PATCH] ASoC: mediatek: mt8365: remove unused
+ mt8365_i2s_hd_str
+Message-Id: <172590232608.1707146.10719220040805343879.b4-ty@kernel.org>
+Date: Mon, 09 Sep 2024 18:18:46 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/2] ufs: core: requeue aborted request
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
- qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
- eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com,
- quic_nguyenb@quicinc.com, stable@vger.kernel.org
-References: <20240909082100.24019-1-peter.wang@mediatek.com>
- <20240909082100.24019-3-peter.wang@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20240909082100.24019-3-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-99b12
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_093511_061537_1E020549 
-X-CRM114-Status: GOOD (  17.69  )
+X-CRM114-CacheID: sfid-20240909_101853_581558_4E681901 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,50 +77,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/9/24 1:21 AM, peter.wang@mediatek.com wrote:
-> diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-> index 3903947dbed1..1f57ebf24a39 100644
-> --- a/drivers/ufs/core/ufs-mcq.c
-> +++ b/drivers/ufs/core/ufs-mcq.c
-> @@ -642,6 +642,7 @@ static bool ufshcd_mcq_sqe_search(struct ufs_hba *hba,
->   		match = le64_to_cpu(utrd->command_desc_base_addr) & CQE_UCD_BA;
->   		if (addr == match) {
->   			ufshcd_mcq_nullify_sqe(utrd);
-> +			lrbp->abort_initiated_by_err = true;
->   			ret = true;
->   			goto out;
->   		}
+On Sat, 07 Sep 2024 20:00:38 +0000, Arnd Bergmann wrote:
+> The mt8365_i2s_enum and mt8365_i2s_hd_str variables are not
+> used anywhere, but cause a warning when building with C=1
+> or when enabling -Wunused-const-variable:
+> 
+> sound/soc/mediatek/mt8365/mt8365-dai-i2s.c:781:27: error: 'mt8365_i2s_hd_str' defined but not used [-Werror=unused-const-variable=]
+>   781 | static const char * const mt8365_i2s_hd_str[] = {
+>       |                           ^~~~~~~~~~~~~~~~~
+> 
+> [...]
 
-As mentioned before, I think that this change is wrong. Setting
-lrbp->abort_initiated_by_err affects the value of scsi_cmnd::result.
-This member variable is ignored for aborted commands. Although the
-above change does not affect the SCSI error handler, I think it should
-be left out because it will confuse anyone who reads the UFS driver code
-and who has not followed this discussion.
+Applied to
 
-> @@ -7561,6 +7552,16 @@ int ufshcd_try_to_abort_task(struct ufs_hba *hba, int tag)
->   		goto out;
->   	}
->   
-> +	/*
-> +	 * When the host software receives a "FUNCTION COMPLETE", set flag
-> +	 * to requeue command after receive response with OCS_ABORTED
-> +	 * SDB mode: UTRLCLR Task Management response which means a Transfer
-> +	 *           Request was aborted.
-> +	 * MCQ mode: Host will post to CQ with OCS_ABORTED after SQ cleanup
-> +	 */
-> +	if (!err)
-> +		lrbp->abort_initiated_by_err = true;
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-Please add a comment that explains that the purpose of this code is to 
-requeue commands aborted by ufshcd_abort_all().
+Thanks!
 
-> + * @abort_initiated_by_err: abort initiated by error
+[1/1] ASoC: mediatek: mt8365: remove unused mt8365_i2s_hd_str
+      commit: 876dec03fdfb7eeb592d01a95ba292c9e53b324b
 
-The member variable name and also the explanation of this member
-variable are incomprehensible to me.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
 Thanks,
+Mark
 
-Bart.
 
