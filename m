@@ -4,73 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40400ECE57A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 11:48:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2253ECE57A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 11:54:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CBNFOIO3TEenWtGjGPFTLkAeQvP4vWnSVrDaQqGydKI=; b=2SA9PZoXomagQNH4QGyOZLIpVp
-	LDca8GhExovc3u/0od8pD6xbawT0NrxatmC+ZoSTcdA0/R8WRo8DpgmS8Q+Ml9UMbvkVIH9R6ww4m
-	14ZQw9q28gfBUTaBrnE6h1mgoY9pxwiJ65cm9uJOjYSxVviLhBOBLtLjexg42rVuSKtMCd05ogyUv
-	qtaHpdlnF998PkAp3NyxXs3OUMoXzkhSLJE/I3LiJwEBlXt0Oax7oX2mKrdkXqODAvI4KQ6YUPQee
-	jzWqU988iioJ5+Neseaw9UekIYPQFYBh0xNALc/p2yeLoscdDFb4RQwOnKGqogG245e7LrTTwZhi9
-	htOd2W7A==;
+	bh=M/6JJiImqLpaxD0Mp9l9TFHwFJ15FAgxB3/F7i0hVKM=; b=FsoI4oIvnYGv4Ciw+iO/0AcpCg
+	9zwd3oWw7jrcT49UjDjqNlBFJA8IWCrNI1eS1U+B0LYOIgpTsdjIxtBK4RKl0RhFu53Ycig/zs9e7
+	yXQp2QU+7qJzuatfyjvquenFaOM11trCJ4myZcD4W7ZZXUBfyGx/TF1HyWyCtH9kV3y011f5f5bjM
+	jHqDZY+zad/GDE1SQWndpxj7N2mfWZto848VBFYAUy3QcpcxrpIF8KKZOa1W3YO1yqH9au2IljP0W
+	BkS4n41hOrzR6h3IS1YKVVEJI6Sp9NSC1QheMx8OO68OQvK6NknlFPK9ULgA7glSrBBmsrv7aIpaF
+	axNHnREA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sncsT-00000001jel-3CMA;
-	Mon, 09 Sep 2024 11:48:17 +0000
-Received: from a7-28.smtp-out.eu-west-1.amazonses.com ([54.240.7.28])
+	id 1sncyO-00000001l8M-0lsP;
+	Mon, 09 Sep 2024 11:54:24 +0000
+Received: from a7-45.smtp-out.eu-west-1.amazonses.com ([54.240.7.45])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sncsA-00000001jcg-3osj;
-	Mon, 09 Sep 2024 11:48:00 +0000
+	id 1sncuB-00000001k3h-0XMq;
+	Mon, 09 Sep 2024 11:50:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1725882118;
+	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1725882599;
 	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding;
-	bh=IdCditF+fELDvgkw3sLyWuY+BayYAd5MhQ9wNy2likg=;
-	b=iNlzqMNY5cQLCUq8TLpzo5/xO0wavPYhqY5RrJfvfuwqMbTpBulL1G27JgpwAni/
-	nvTAQ2yOF0DOkmje4jUdV2Hv8FlXPnxPxdrthAKqi/ylPAXtAdWGmqQHERHSBb2B2rG
-	fLnzfujdWZyskTmQoROXIq74AvyWiJavEZsDmLi0wQl/ybJ9CY/wxAqrlaJEPBnTS4F
-	NDxE4LBcj7pUoQkPRwVq3HWQsFpYX7jfRf2Tq4BiZYRnaBAL3Wxk8DeQVBqtgk91Lew
-	d7kk8ytiH2tkxdv715+Gt1nMrKPR7YGletn8s03uji0gtespcfWIe8g1ZD6rRRls/5J
-	cJ/WDSk5tA==
+	bh=r9QUF7QVMFgab3Q833wJ2VFjeAU7H8m4qLqgty3INyQ=;
+	b=AkeXvqepN74am8AJZosrAgPH+V8h4jex9dhY7iO3eM2lNEuG5dQnS9C8t++0Y1TY
+	hLYaHK+jn+uRiE/ncAZC2Gv+7dEsIItjYvMDqk2C06RA/vskTqXp43Xx3pOb6s6fT59
+	XCVXn4vmEkajzsxVfcJr7GtYnV8wAJzTvjR6NXKC/oRehF1hTO1/TIBG4I4OuRGVmRH
+	NLXHq4v/T3QbBs7jP2D7g/CIIpF8SsqH9S0Y8jxhPUfpWP5M8DjfvN3TAtPW62hT6jh
+	j5FcWX+Xct/p0VzlnYy1FzjtPpJ1dSO2QAMiDthGoz7dFQ1SjaF9NmmvCpGMXQFjd+A
+	6PnS6ieYmg==
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1725882118;
+	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1725882599;
 	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Feedback-ID;
-	bh=IdCditF+fELDvgkw3sLyWuY+BayYAd5MhQ9wNy2likg=;
-	b=Hnhzb93uKSHuxIhrpy369Cfvcy/yYiBONNWt3VYf0DZxuzPPn8DA5jtOd17Pz0Ni
-	LcC1ftENJSwtIf4b1aq9Q/P8BH+CbYwIqNS7qsubFnDNnT+9d7BGzyRwWexxrAv+u1T
-	K34VKI+5E4fkLkC+nKo/0mxyrv5oiXl8btWUOgPw=
-Message-ID: <01020191d6972ef5-12c59f31-ae58-4aad-b33e-5b7618c0443d-000000@eu-west-1.amazonses.com>
-Date: Mon, 9 Sep 2024 11:41:57 +0000
+	bh=r9QUF7QVMFgab3Q833wJ2VFjeAU7H8m4qLqgty3INyQ=;
+	b=gzpwkHDSf7Plm/VuBK/eCISzJ3ZbtBm0zawPlojZsaj8InPhJQhGLVYvmYijn2DF
+	Drfw2t0+MPIy6eDP9V8ShUclDRBKyemQ8+c6RBxDD2FEocmfkST0Eeur7ZIlxJcy9Cn
+	Vma6ZUKDWJsaCBiA27aSE5ZWpnoqqsEwDKus3IeA=
+Message-ID: <01020191d69e8733-e5caff8d-c8ad-4cda-b8bb-ae7368a8dd9a-000000@eu-west-1.amazonses.com>
+Date: Mon, 9 Sep 2024 11:49:59 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] arm64: dts: mt8183: krane: Fix the address of eeprom
- at i2c4
-To: Hsin-Te Yuan <yuanhsinte@chromium.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	Enric Balletbo i Serra <eballetbo@kernel.org>, 
-	Ben Ho <Ben.Ho@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
-	Nicolas Boichat <drinkcat@chromium.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+Subject: Re: [PATCH 7/7] ASoC: mt8365: Allow build coverage
+To: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Nathan Chancellor <nathan@kernel.org>, 
+	Alexandre Mergnat <amergnat@baylibre.com>, 
+	linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org
-References: <20240909-eeprom-v1-0-1ed2bc5064f4@chromium.org>
- <20240909-eeprom-v1-1-1ed2bc5064f4@chromium.org>
+References: <20240907-asoc-fix-mt8365-build-v1-0-7ad0bac20161@kernel.org>
+ <20240907-asoc-fix-mt8365-build-v1-7-7ad0bac20161@kernel.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240909-eeprom-v1-1-1ed2bc5064f4@chromium.org>
+In-Reply-To: <20240907-asoc-fix-mt8365-build-v1-7-7ad0bac20161@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
-X-SES-Outgoing: 2024.09.09-54.240.7.28
+X-SES-Outgoing: 2024.09.09-54.240.7.45
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_044759_102803_44F58A26 
-X-CRM114-Status: UNSURE (   6.22  )
+X-CRM114-CacheID: sfid-20240909_045003_344168_A1A0D96B 
+X-CRM114-Status: UNSURE (   5.04  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,13 +83,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/09/24 10:33, Hsin-Te Yuan ha scritto:
-> The address of eeprom should be 50.
+Il 07/09/24 02:53, Mark Brown ha scritto:
+> There is no build time dependency on anything specific to ARCH_MEDIATEK so
+> enable COMPILE_TEST builds.
 > 
-> Fixes: cd894e274b74 ("arm64: dts: mt8183: Add krane-sku176 board")
-> Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+> Signed-off-by: Mark Brown <broonie@kernel.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
 
 
