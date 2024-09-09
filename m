@@ -4,76 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5064ECE58A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 11:38:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7034EECE57A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 11:43:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2E0O8WG9qwHR9JUYmxw/yuHs3HNYdoAdYl7RzElF3KM=; b=e/wzvZL+92zmgU
-	f4Ar8SjgXpCOS2auwrPF37JuOqwUviANQXpza9j51AXCFcmEVHMbkAZJt7CuJnOEcl05gvzSGbjxe
-	gc1V4m50ouPgMi/PITZKHXKX1PceU8DjH/Yqk/kh02YtIbJArRsWQrywva4DjpEBNmaC3NZYCVs4d
-	1eZVn7V8HRgyWkCetMocN+tpgSSqc3fYm2BX6OXUdvS9FcqvWiWpEBEkUH0LyXLnFaA6kF6/htUGA
-	x1W/Ci9h9qJrDGz+wHJMrH4cbM46vupVOvMBB3fOX6qoXDhh0qaOqoJ1wiPUGCvVoQEntNFxZv2im
-	TquJ3StyRZMDUbN7p16g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XpxyYXfNnfy97a5pTvqqur4r0cSJbVoapO0sRLcMn0k=; b=d/mUCPDx1QRVeZ1WpuvOu6tT2P
+	VFi+hrO1lW2MLdiGWCLSd88Ugx1yHfsfzZloNAcVD7K2ZnLoscJUI2fQcvDpWDSl+yBM9U0jl1SfX
+	Iu7QDk3oyV4zr4T6BL5Fi9xvfyybvhqvcsMM8ODNGdFQzmAP/TYrEIhta51N41gmXROy/wlKEijAq
+	DU67iUNH409Ul7pbP74daTN9ZqD4eMxb7b/PRgyCgg1QS/2w3WbNzPPCyBRcZHxMS+HlIX1fP/FYp
+	X+k9j2YRHWlQx1F0toRKpzHndORSlz6vg+EKYuobMqjJ/XIjEwK45SAt0Ytllydd8DSlOjXfP2n2r
+	w66BeWLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sncjI-00000001hbp-3QEb;
-	Mon, 09 Sep 2024 11:38:48 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1snco7-00000001ixL-02Va;
+	Mon, 09 Sep 2024 11:43:47 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sncPW-00000001dOP-2f1D
-	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Sep 2024 11:18:24 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2068a7c9286so37676635ad.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 09 Sep 2024 04:18:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1725880702; x=1726485502; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=2E0O8WG9qwHR9JUYmxw/yuHs3HNYdoAdYl7RzElF3KM=;
-        b=gy5Q7L/bBoU+UNxNkFzU4HUMYThFIy3tBeP69+lB1hofFY1MVAe/d3WTNx7vhBWEPG
-         y7D/zuzdA63BDPTIN05ljIZFUaOJsruCzSc6++blMGi88+ENOy/J32mtkqN0vWRwh4GP
-         Y9NiFBZWM4JcaDJUv9GJE1EhiV/+bgo5sjmoc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725880702; x=1726485502;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=2E0O8WG9qwHR9JUYmxw/yuHs3HNYdoAdYl7RzElF3KM=;
-        b=QtYhDlmnQxgaNBrZtTyfa9phdkesljdtBMetTdd7jB+4FujZ5bDO0ZSpQYULTHcKiP
-         p2D/89F4+Pp/Tsx3D+KFghA2RvS0PNnYZCBQIqmpRXh3n08glrz4kgSdzsFlRpKzj3dv
-         AMmG+gRj1DsQm3zg6RBOtCi/seQYPYqBMsg73CSY0ZjG/7pgTg2OIBY7/HNfxMjVXLQ3
-         mH+mPORme3p7SDUgEJwPyBsKlb++3tpHyRViAFD6akLxTs/CLMakulagCnkIoQ4zdWxm
-         rUlpCe5gVA1vwpCICUy5iDqT9PUIT/VimOxbQj9dnCVi6HnlzY4gebiZG6LRvXEmlaGu
-         6MGA==
-X-Forwarded-Encrypted: i=1; AJvYcCVcPYZHUrXqsj7mP0wa0miFtcRgL01DhTKip91VErcFFktlC05WWOsKmcNPNS+C9aIRi4Cfm67BvHdNu0aN6A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxYj4UPIGiqYOxfiddrnvuDZiOJaxk/fQiji4b8g3qXnUHJaZvP
-	bLqyVzdwLo+QpFRn9dv0fQ9bnYxsxjw/mkdnbWc8noyiU5ZodFT8PLs/z7tf/w==
-X-Google-Smtp-Source: AGHT+IGmr6w0YJFJy21E98ud0odKV33bYvulxcOeJu7Zcyxoe1V9M007M6uliWys5/1acdhBj/f9wQ==
-X-Received: by 2002:a17:903:230a:b0:206:c486:4c33 with SMTP id d9443c01a7336-206f0522330mr138456765ad.30.1725880702085;
-        Mon, 09 Sep 2024 04:18:22 -0700 (PDT)
-Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:6647:6d5f:dd48:8f5c])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20710f1dc55sm32039745ad.186.2024.09.09.04.18.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Sep 2024 04:18:21 -0700 (PDT)
-From: Fei Shao <fshao@chromium.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH 13/13] arm64: dts: mediatek: mt8188: Add audio support
-Date: Mon,  9 Sep 2024 19:14:26 +0800
-Message-ID: <20240909111535.528624-14-fshao@chromium.org>
-X-Mailer: git-send-email 2.46.0.469.g59c65b2a67-goog
-In-Reply-To: <20240909111535.528624-1-fshao@chromium.org>
-References: <20240909111535.528624-1-fshao@chromium.org>
+	id 1snclb-00000001ibv-28mc;
+	Mon, 09 Sep 2024 11:41:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=XpxyYXfNnfy97a5pTvqqur4r0cSJbVoapO0sRLcMn0k=; b=FkEKLwLA25gwuHYkI1BpTlnd2n
+	EIQnpuA76hiqdtieZYrcJbL0AKxVJstgtRM0K2dAGXav1J+zQ+9wNYtRQINQCRzvJQPFrbBX5+HkI
+	Upc27aliiqKyIlJFGiR9CjqUooikw29DLkVSTkDsVZsh1PivRnQuuNhNxhVJq/Gtz7MIvOLNgrsd7
+	o8NhMxlx/2NYXrZvwsVjUXXudQOZ0Lf0ebKPotHCypWQHasgn3oGOk5b2qkD0/RiczTta10FlXDuH
+	TB1a4o+Kr7hpUFdxj0EM+KiDUWjrbS5rC5j3AgY5+VD/w+mn+QP3BYu6SVV1aVXQmN2v9Q80yme+3
+	bo0Bljwg==;
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1snclY-00000000Ptv-1gDg;
+	Mon, 09 Sep 2024 11:41:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B60595C3FC3;
+	Mon,  9 Sep 2024 11:41:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C4F1C4CEC5;
+	Mon,  9 Sep 2024 11:41:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1725882065;
+	bh=6/+EqaPSsrYL9V8TQ3nx2MbuQ5EXVDWmuo2Djz3m75I=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=FWz8Jo+v0ZNedUFk4XqEUoExyOPknoMcXLdRUZHCo+0cMa4rfL9nnSHxasHS6rmOz
+	 conAjirF3qEUEoTV07LsKdKHUpbkQKr1IN5GwQlVegXbnBCept2OMfCoDYFce8PfeG
+	 MiSW8g2M1FZyCnDlPiuIRxeC2BHTaD0ctbatx6RVMAECncRB8E8AQc2Smorj3aLkZj
+	 A9ZzPLbq9AN2yqfMjauTDHY701+mtP9N8wRJD36FOM/+Q/bgdfY6llqUe5xJAFkSy3
+	 SV6tVgu3EU4n+43nNnn5Ong6wfbyiSn2s4Edm183nXMuExKUKBcBOsBgDcDchVeDaY
+	 LPVcumN+K+EDA==
+Message-ID: <11bc2522-bc10-4dcf-8142-708b57d181cf@kernel.org>
+Date: Mon, 9 Sep 2024 13:41:00 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 06/13] arm64: dts: mediatek: mt8188: Update VPPSYS node
+ name and compatible
+To: Fei Shao <fshao@chromium.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20240909111535.528624-1-fshao@chromium.org>
+ <20240909111535.528624-7-fshao@chromium.org>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240909111535.528624-7-fshao@chromium.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_041822_718855_75D87FBA 
-X-CRM114-Status: GOOD (  10.58  )
+X-CRM114-CacheID: sfid-20240909_124108_706646_A0912509 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,136 +132,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add following nodes to support audio enablement on MT8188 SoC:
-- sound card
-- audio controller (AFE)
-- audio DSP and its associated mailboxes
+On 09/09/2024 13:14, Fei Shao wrote:
+> Use and add "syscon" in VPPSYS node names and compatible to fix errors
+> from `make CHECK_DTBS=y mediatek/mt8188-evb.dtb`.
+> 
+> Signed-off-by: Fei Shao <fshao@chromium.org>
+> ---
+> 
+>  arch/arm64/boot/dts/mediatek/mt8188.dtsi | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+> index 2900d78b7ceb..14e51a11f688 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+> @@ -1799,8 +1799,8 @@ mfgcfg: clock-controller@13fbf000 {
+>  			#clock-cells = <1>;
+>  		};
+>  
+> -		vppsys0: clock-controller@14000000 {
+> -			compatible = "mediatek,mt8188-vppsys0";
+> +		vppsys0: syscon@14000000 {
+> +			compatible = "mediatek,mt8188-vppsys0", "syscon";
 
-Signed-off-by: Fei Shao <fshao@chromium.org>
----
+If this was working before, it looks like this is not a syscon and
+bindings need to be fixed.
 
- arch/arm64/boot/dts/mediatek/mt8188.dtsi | 96 ++++++++++++++++++++++++
- 1 file changed, 96 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-index 08f13ccefcfc..d99447a01a60 100644
---- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-@@ -431,6 +431,11 @@ psci {
- 		method = "smc";
- 	};
- 
-+	sound: sound {
-+		mediatek,platform = <&afe>;
-+		status = "disabled";
-+	};
-+
- 	thermal_zones: thermal-zones {
- 		cpu-little0-thermal {
- 			polling-delay = <1000>;
-@@ -1356,6 +1361,97 @@ scp: scp@10500000 {
- 			interrupts = <GIC_SPI 462 IRQ_TYPE_LEVEL_HIGH 0>;
- 		};
- 
-+		afe: audio-controller@10b10000 {
-+			compatible = "mediatek,mt8188-afe";
-+			reg = <0 0x10b10000 0 0x10000>;
-+			assigned-clocks = <&topckgen CLK_TOP_A1SYS_HP>;
-+			assigned-clock-parents =  <&clk26m>;
-+			clocks = <&clk26m>,
-+				 <&apmixedsys CLK_APMIXED_APLL1>,
-+				 <&apmixedsys CLK_APMIXED_APLL2>,
-+				 <&topckgen CLK_TOP_APLL12_CK_DIV0>,
-+				 <&topckgen CLK_TOP_APLL12_CK_DIV1>,
-+				 <&topckgen CLK_TOP_APLL12_CK_DIV2>,
-+				 <&topckgen CLK_TOP_APLL12_CK_DIV3>,
-+				 <&topckgen CLK_TOP_APLL12_CK_DIV9>,
-+				 <&topckgen CLK_TOP_A1SYS_HP>,
-+				 <&topckgen CLK_TOP_AUD_INTBUS>,
-+				 <&topckgen CLK_TOP_AUDIO_H>,
-+				 <&topckgen CLK_TOP_AUDIO_LOCAL_BUS>,
-+				 <&topckgen CLK_TOP_DPTX>,
-+				 <&topckgen CLK_TOP_I2SO1>,
-+				 <&topckgen CLK_TOP_I2SO2>,
-+				 <&topckgen CLK_TOP_I2SI1>,
-+				 <&topckgen CLK_TOP_I2SI2>,
-+				 <&adsp_audio26m CLK_AUDIODSP_AUDIO26M>,
-+				 <&topckgen CLK_TOP_APLL1_D4>,
-+				 <&topckgen CLK_TOP_APLL2_D4>,
-+				 <&topckgen CLK_TOP_APLL12_CK_DIV4>,
-+				 <&topckgen CLK_TOP_A2SYS>,
-+				 <&topckgen CLK_TOP_AUD_IEC>;
-+			clock-names = "clk26m",
-+				      "apll1",
-+				      "apll2",
-+				      "apll12_div0",
-+				      "apll12_div1",
-+				      "apll12_div2",
-+				      "apll12_div3",
-+				      "apll12_div9",
-+				      "top_a1sys_hp",
-+				      "top_aud_intbus",
-+				      "top_audio_h",
-+				      "top_audio_local_bus",
-+				      "top_dptx",
-+				      "top_i2so1",
-+				      "top_i2so2",
-+				      "top_i2si1",
-+				      "top_i2si2",
-+				      "adsp_audio_26m",
-+				      "apll1_d4",
-+				      "apll2_d4",
-+				      "apll12_div4",
-+				      "top_a2sys",
-+				      "top_aud_iec";
-+			interrupts = <GIC_SPI 822 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8188_POWER_DOMAIN_AUDIO>;
-+			resets = <&watchdog 14>;
-+			reset-names = "audiosys";
-+			mediatek,infracfg = <&infracfg_ao>;
-+			mediatek,topckgen = <&topckgen>;
-+			status = "disabled";
-+		};
-+
-+		adsp: adsp@10b80000 {
-+			compatible = "mediatek,mt8188-dsp";
-+			reg = <0 0x10b80000 0 0x2000>,
-+			      <0 0x10d00000 0 0x80000>,
-+			      <0 0x10b8b000 0 0x100>,
-+			      <0 0x10b8f000 0 0x1000>;
-+			reg-names = "cfg", "sram", "sec", "bus";
-+			assigned-clocks = <&topckgen CLK_TOP_ADSP>;
-+			clocks = <&topckgen CLK_TOP_ADSP>,
-+				 <&topckgen CLK_TOP_AUDIO_LOCAL_BUS>;
-+			clock-names = "audiodsp", "adsp_bus";
-+			mboxes = <&adsp_mailbox0>, <&adsp_mailbox1>;
-+			mbox-names = "rx", "tx";
-+			power-domains = <&spm MT8188_POWER_DOMAIN_ADSP>;
-+			status = "disabled";
-+		};
-+
-+		adsp_mailbox0: mailbox@10b86000 {
-+			compatible = "mediatek,mt8188-adsp-mbox", "mediatek,mt8186-adsp-mbox";
-+			reg = <0 0x10b86100 0 0x1000>;
-+			interrupts = <GIC_SPI 478 IRQ_TYPE_LEVEL_HIGH 0>;
-+			#mbox-cells = <0>;
-+		};
-+
-+		adsp_mailbox1: mailbox@10b87000 {
-+			compatible = "mediatek,mt8188-adsp-mbox", "mediatek,mt8186-adsp-mbox";
-+			reg = <0 0x10b87100 0 0x1000>;
-+			interrupts = <GIC_SPI 479 IRQ_TYPE_LEVEL_HIGH 0>;
-+			#mbox-cells = <0>;
-+		};
-+
- 		adsp_audio26m: clock-controller@10b91100 {
- 			compatible = "mediatek,mt8188-adsp-audio26m";
- 			reg = <0 0x10b91100 0 0x100>;
--- 
-2.46.0.469.g59c65b2a67-goog
+Best regards,
+Krzysztof
 
 
