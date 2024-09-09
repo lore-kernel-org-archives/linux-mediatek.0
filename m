@@ -4,67 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF7B5ECE584
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 16:23:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4758ECE577
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 16:25:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yLkal1Ab/hfo4k1izmSkYPq/gUsrKPgGpDc1SoF3+dU=; b=XSBx67RafkT3hoTcHO+1aubR94
-	owPkH9XGHHL7JMOjni/IXU8GYjUdqdX3CP7+O+MUVrpDNHDbjtfySGEczMbwdwevUsGYXcA1JtWxi
-	u5esZUfHbemdGr6W3iTekZsigVIw8qAHD9WnImH8viDsBXGQ2IpsoLPhWSaetJ6JHqcXoWTLWCbK/
-	iREnD/ASMIH69irc3vXVrFKsT1F1Y+PBsVOIKg/LNMD5IYsP/+dqHQH0B+QUqoD1DbOML+aVLU6gG
-	6ihEggC1nkzlA9eTUuFR0PZUgiG3PwnSiz+tb/RmSarmicXeZKpdx8DJ+UVZqi8TP6jSto6PmDyOm
-	KaVw4ndw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=v/bF203iU7vUDeGns7N4RvzOgpMdF7ZklfpBuMpeGbw=; b=syDh+C+ccwGgZCUMKR+p63mK1I
+	YKzRoFl9R3mptprGDmqmjk7S4rlofKOwZbnmSIdvFYdsvS25tqFV8kNvPxSevPT5tjSfxxzHKu5bf
+	kNeQFiH23/ZD2oE5rgGmSp/jqR2dgr7KtTXIsW9FmUa5+RwdTtxsaPurYVMJNrI+7xLv/+jHXHKN9
+	mS7/w58SmPmawrPl+KCg2zYvWBDH/3uZR6lLZ9tHLuU3D+1jx66usbWUhK1P66/fWt6ncOkKO+W6O
+	aOl7It1rZuq3z47DSwBt2wcYBJMeU1HAPj0JjDBnJWVkLzR/I9BDSxxoDqvK4Y205oNNNcFVpOpUf
+	EmlowLVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snhAj-00000002dVy-1ltG;
-	Mon, 09 Sep 2024 16:23:25 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1snhCg-00000002eYa-1Hy1;
+	Mon, 09 Sep 2024 16:25:26 +0000
+Received: from 008.lax.mailroute.net ([199.89.1.11])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snh1c-00000002c7D-2peG;
-	Mon, 09 Sep 2024 16:14:01 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 558CC5C0273;
-	Mon,  9 Sep 2024 16:13:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 68860C4CEC5;
-	Mon,  9 Sep 2024 16:13:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1725898439;
-	bh=yDChzJjmgW4nM5O9QsBLIaNDGh7qLwtF9Pzw8gaiZE8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=BZsAWBkc1G1NQkcsSfhiqCXxlydEAaGbpwbSz25Wmo0unaFvyI7K4Z7iWGTAfnB6H
-	 kh2clR5a9PKWr+rd36vKBo1lYJ/5CkSkeVrsvRGoRyGvaEml+xRBJJfeYF+F2feu4T
-	 lDM7rxmkOcFqnQfNaKXPe0VorUsuEHuZKlEbyfroVRZdvL7L/+8pTizUt9y9KEPJrO
-	 PXKMMysEOCxQL5Pkinfzgv7SnLvINHPQb4DoOejXE7Lozcq0AD9k+54Vrz4pqpHNdi
-	 JKqOq7ZKZLTV4ALSGkayNabL/u4oef24HYgfo2QqfVn3VCUI4M5mtq3qmF+TIElc/N
-	 hXRx50e987HdA==
-Date: Mon, 9 Sep 2024 11:13:58 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Fei Shao <fshao@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	Jassi Brar <jassisinghbrar@gmail.com>, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>,
-	linux-kernel@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 12/13] dt-bindings: mailbox: mtk,adsp-mbox: Add
- compatible for MT8188
-Message-ID: <172589843790.327330.8035137632260512976.robh@kernel.org>
-References: <20240909111535.528624-1-fshao@chromium.org>
- <20240909111535.528624-13-fshao@chromium.org>
+	id 1snhBe-00000002e89-2RrK
+	for linux-mediatek@lists.infradead.org;
+	Mon, 09 Sep 2024 16:24:23 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 008.lax.mailroute.net (Postfix) with ESMTP id 4X2XGW6KRsz6ClbFf;
+	Mon,  9 Sep 2024 16:24:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1725899049; x=1728491050; bh=v/bF203iU7vUDeGns7N4RvzO
+	gpMdF7ZklfpBuMpeGbw=; b=rR++cUl2hcZr6HeuFF9vBBnPe1y41T6XsOWgcOwK
+	yGzrUUoil/PdVoDo7bgW/qpdkM8PYi3oZkMc6qtMS96c9hh61qEY0/A2Lssu4WtB
+	MJJa+XnjKDRHW0z2XBZy9UtWUPck5QcCBrVmMHXzo/zqPGseg27IZIMBpq9CI5uw
+	sHokbw/MbClnMEbiSWXnkYDWdSY2wjx6gP9AxIYYSU75a1Sei6i/qx/3HlPurTxV
+	0H3LvSmhd6Vw1DBkZyTIqSBO2/nxH+zXUcv8LEEmU9hS2LCWoJ7ftImR8PWGZ3hr
+	E+LvsB+dUuhP9BYuvKQ9N9Wcedw5/RIsqiZ8RbnpN7av9w==
+X-Virus-Scanned: by MailRoute
+Received: from 008.lax.mailroute.net ([127.0.0.1])
+ by localhost (008.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id kQvfdU8MHhMJ; Mon,  9 Sep 2024 16:24:09 +0000 (UTC)
+Received: from [100.66.154.22] (unknown [104.135.204.82])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 008.lax.mailroute.net (Postfix) with ESMTPSA id 4X2XGD5F0tz6ClbFZ;
+	Mon,  9 Sep 2024 16:24:04 +0000 (UTC)
+Message-ID: <edbabf35-8111-4672-b14c-52d76ed46fd9@acm.org>
+Date: Mon, 9 Sep 2024 09:24:02 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240909111535.528624-13-fshao@chromium.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/2] ufs: core: fix the issue of ICU failure
+To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
+ jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com,
+ quic_nguyenb@quicinc.com, stable@vger.kernel.org
+References: <20240909082100.24019-1-peter.wang@mediatek.com>
+ <20240909082100.24019-2-peter.wang@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20240909082100.24019-2-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_091400_809691_E2506B41 
-X-CRM114-Status: GOOD (  10.45  )
+X-CRM114-CacheID: sfid-20240909_092422_702027_1F3D6487 
+X-CRM114-Status: GOOD (  11.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,18 +90,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 9/9/24 1:20 AM, peter.wang@mediatek.com wrote:
+> diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+> index 5891cdacd0b3..3903947dbed1 100644
+> --- a/drivers/ufs/core/ufs-mcq.c
+> +++ b/drivers/ufs/core/ufs-mcq.c
+> @@ -539,7 +539,7 @@ int ufshcd_mcq_sq_cleanup(struct ufs_hba *hba, int task_tag)
+>   	struct scsi_cmnd *cmd = lrbp->cmd;
+>   	struct ufs_hw_queue *hwq;
+>   	void __iomem *reg, *opr_sqd_base;
+> -	u32 nexus, id, val;
+> +	u32 nexus, id, val, rtc;
+>   	int err;
+>   
+>   	if (hba->quirks & UFSHCD_QUIRK_MCQ_BROKEN_RTC)
+> @@ -569,17 +569,18 @@ int ufshcd_mcq_sq_cleanup(struct ufs_hba *hba, int task_tag)
+>   	opr_sqd_base = mcq_opr_base(hba, OPR_SQD, id);
+>   	writel(nexus, opr_sqd_base + REG_SQCTI);
+>   
+> -	/* SQRTCy.ICU = 1 */
+> -	writel(SQ_ICU, opr_sqd_base + REG_SQRTC);
+> +	/* Initiate Cleanup */
+> +	writel(readl(opr_sqd_base + REG_SQRTC) | SQ_ICU,
+> +		opr_sqd_base + REG_SQRTC);
+>   
+>   	/* Poll SQRTSy.CUS = 1. Return result from SQRTSy.RTC */
+>   	reg = opr_sqd_base + REG_SQRTS;
+>   	err = read_poll_timeout(readl, val, val & SQ_CUS, 20,
+>   				MCQ_POLL_US, false, reg);
+> -	if (err)
+> -		dev_err(hba->dev, "%s: failed. hwq=%d, tag=%d err=%ld\n",
+> -			__func__, id, task_tag,
+> -			FIELD_GET(SQ_ICU_ERR_CODE_MASK, readl(reg)));
+> +	rtc = FIELD_GET(SQ_ICU_ERR_CODE_MASK, readl(reg));
+> +	if (err || rtc)
+> +		dev_err(hba->dev, "%s: failed. hwq=%d, tag=%d err=%d RTC=%d\n",
+> +			__func__, id, task_tag, err, rtc);
+>   
+>   	if (ufshcd_mcq_sq_start(hba, hwq))
+>   		err = -ETIMEDOUT;
 
-On Mon, 09 Sep 2024 19:14:25 +0800, Fei Shao wrote:
-> Add compatible string for ADSP mailbox on MT8188 SoC, which is
-> compatible with the one used on MT8186.
-> 
-> Signed-off-by: Fei Shao <fshao@chromium.org>
-> ---
-> 
->  .../devicetree/bindings/mailbox/mtk,adsp-mbox.yaml   | 12 +++++++++---
->  1 file changed, 9 insertions(+), 3 deletions(-)
-> 
-
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
-
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
