@@ -4,104 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D00CECE57A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 13:59:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01BF8ECE579
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 14:00:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e4nMk71Ror4dDuFejQdNMVkNcSGmGkDbOfs0S0Gk4o4=; b=zy+oMug375ComQYuqOBvE+RILp
-	c0BnYtzCJiLQCPh0lUQWzOz54oZOf6xuJoPyuX5EppqZA2cIkBpMaZdFEo+Dv+0ZTXr2nnsyMPsV3
-	WTxcrQ2XIVfUTLueb5mJHMzEKvJkvfFFjgHZx7MTZ4R7D1UyNubt+s5L7vlRLI2YruUKPQPqisKm0
-	Expg/dZN2i6/F4JNzW6IfJWJaGTCmgNpe9driJmAeZ/54nNLLuC7Nz5OWzC9WtgOl3lvLtm07ifC5
-	s9fNIPG9DIT45vYjTSb08AmCxVnfcYw5xNkUJ8fOOqOgpNJhq9FBKlSwwt21cIAE8YQ++J+P4hG/i
-	/XQ4WRxw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=k98xHcx8LIPGVP0kPjUAh1AHHL+3f8QtEI3GBp8SnEs=; b=O3QPfFBPNfvCfV
+	FFWBX/3IKe2MDNchku3S64RY5IoC/TqDUo9AotovL873xH+MvgJrJJ40+m6BUueGEN74XEGXUqX+x
+	g6IM8E1FdUOShgaxS9sXWvOnq14rfCd8JGBtv8n+ZrPUkneXPc0M4aCkAFiDLnuuE+EDeJ9RLHmAX
+	UhNYLn6VLdVR9Xcwu3J+D4AcwfZxv9+34zAUJ9Ul4x50/8r6HPYt98LbpdyyMjP+5VSf1qfcOoRXo
+	+rrwAzRjpiGisClXAzY+SxXTI3h/aLcf7N4L7GdBdhQWTsa15vAhagp47Qd35Flq9GeoytjCtkXoq
+	cZfy+fEdt3+HT4mBFgbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snevR-00000002AoQ-0ZYJ;
-	Mon, 09 Sep 2024 13:59:29 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1snewH-00000002B43-2OJH;
+	Mon, 09 Sep 2024 14:00:21 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sneo5-000000028em-0RVE
+	id 1sncP9-00000001dBr-0yTB
 	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Sep 2024 13:51:54 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-a8d302b6b30so8522266b.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 09 Sep 2024 06:51:52 -0700 (PDT)
+	Mon, 09 Sep 2024 11:18:00 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-2055f630934so31437135ad.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 09 Sep 2024 04:17:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1725889911; x=1726494711; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=e4nMk71Ror4dDuFejQdNMVkNcSGmGkDbOfs0S0Gk4o4=;
-        b=gblslyPPfVCEinXV26L2f+MgtYZ9fHje6XMVk5dCOFz5l/b4Gvjbt08ZYo3NDA+Pm5
-         uh2soqEob4Ugh9CCdYSdlTq5xTaSJpeDnCWUAa6niSelfgC0txZ9K7WnQ3Asp+s4ybrH
-         2BKplQIERgMrVyyozVoACC7hVTU1M8xh+HetCw8FuQgPIgmN3XeTe3kU1kb87EWBnOcC
-         s3Pwd4/ZrwJm0VMwVug6cvxx8V76Qh09fpRVbKgnLPD0gh6ExF4w87ZAhl1bXwmNCqs/
-         49KYLANW3y9nSgd0rnXMcM5X+QTWiYBGb5v6asL3plza3wJGGbQMUhQrVts3GDtLyvdU
-         IvBQ==
+        d=chromium.org; s=google; t=1725880678; x=1726485478; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=k98xHcx8LIPGVP0kPjUAh1AHHL+3f8QtEI3GBp8SnEs=;
+        b=C2N0VW4ShhCja0IO3UiXmwEjJUhKQUesvo0NaJaZ2uv2Hu4+CmhQg1oEm/O33s4Fu1
+         neqa7ykS0K+V4I522+B+ju2JWru56i+gf0TzDc+4/vKAu/xe6pamfMTE5O6V09Tt+Rf1
+         CWWvLQUYHP3REimZFulGcETgjny1kmsbYEjd8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725889911; x=1726494711;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1725880678; x=1726485478;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=e4nMk71Ror4dDuFejQdNMVkNcSGmGkDbOfs0S0Gk4o4=;
-        b=O7y3PYkl8hSXxBmDMn6gypYoIjDR5qj/U+Yns31LBRX6Scu+/GfA1A02QRTytGkFB5
-         qRahLj656A1cux2Xx++VM0uWOUpe8cFWt0kM40YS0mzp7oFbxXhWJ7pCecUwjcd9dfju
-         56wsGn2JO3YI2nkoggZOUlVTsujkgYYZYRB0OLouZKWzaj3/26YRdia5wWc+ejQQkFRw
-         /Cz9CBq2H9UcSNQMVIZww5HAAApokinSHGi+27sMjUDJazNhW57Hds3KqeqpZdDfeikq
-         5/FgpAij80yL8feAazlRf2WhF28STDyEe0TahcBvc0O0TymobFAj2NH2ZHWXVsI3R4fQ
-         dP7g==
-X-Forwarded-Encrypted: i=1; AJvYcCUwYA3RiyueE6LlxpJ8DtlIoibSkjUHEdb8XcBJrMGIobJh4EhZ4fAq+KNtEvufGXuAynKaawipRvGnztcZNw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyZ70yzjgq+nvcbGYWwGI5K3yQqgGi9A0OAwKiVFZ56lv5gFmqr
-	dYKWT+4XWA/68D+3W73NLMslKsUnmC5Hyp/pGfKMdLWCERpOcXiX4JwSHGxrIi8=
-X-Google-Smtp-Source: AGHT+IF2PjCN56jaALnPx3R93ZXhQvgFBd1aE1EAodWyw/lW7I8GsseYFB7PzSZqIjBvJb78EvrSWg==
-X-Received: by 2002:a17:907:3da7:b0:a8a:81ec:f731 with SMTP id a640c23a62f3a-a8a885c3265mr378374066b.2.1725889911134;
-        Mon, 09 Sep 2024 06:51:51 -0700 (PDT)
-Received: from [127.0.1.1] ([178.197.222.82])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a8d25cf3ad6sm345344566b.148.2024.09.09.06.51.49
+        bh=k98xHcx8LIPGVP0kPjUAh1AHHL+3f8QtEI3GBp8SnEs=;
+        b=BvM9sCkH84T8UcF/gBMuTT6bNHypGBH8RpXR62TVCIQkltjhSUoZGXrTM6xbhzdeQV
+         f01Fm8uPa0nVtsEu+aYTKxPmkATXvDS6MtzUM1pjXCk9iZ3FX9RTTXOWJ2iwfN8vwXS3
+         cVG/u6bQ1FTKjhbWpV+mAYr9bd3kriZ17csydFb4jDPqpf3whetduuRRADlTjr148iv+
+         Hb2pADvotJ1hwbgh58hHeYJhzoELFNccT4yPRi9ypIG1wicMYfwdA6sw90+63cM/FCHQ
+         pbpa94d7qIlvJXB5MtppZ01USWI7gRVY7tJYRm3eMshc1fWUA65WKNohOpEKv3z4TPP2
+         c8Xw==
+X-Forwarded-Encrypted: i=1; AJvYcCWjzXHtJbaRhMVKz+h5NaDYKDY55zX/e/zAGvt+iFaKrNHnzLDvkphHGyksTuI4Q/qF4oxKFz1nKjOTiWYQig==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw5RfWsoX9/hLpGZhPpVR8aJ7y2YSnX5cO5plZkf10qVNAidIw/
+	S3jpJgVF0YL3pjIkPZxN/6VXkDHZ+Ph0754OL7VyKPUVcjiXKv3/dgTPiCAPLasXileMJwByddc
+	=
+X-Google-Smtp-Source: AGHT+IGoS/wNfT96ErEpO6j2A4iVl+SSYkCw9fl18EPKIdICyKbSqkOSzDP41poSrNFHrcako0/RMQ==
+X-Received: by 2002:a17:903:22cb:b0:206:bbaa:84e9 with SMTP id d9443c01a7336-2070a7e5982mr90617095ad.47.1725880678168;
+        Mon, 09 Sep 2024 04:17:58 -0700 (PDT)
+Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:6647:6d5f:dd48:8f5c])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20710f1dc55sm32039745ad.186.2024.09.09.04.17.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Sep 2024 06:51:50 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Mon, 09 Sep 2024 15:51:20 +0200
-Subject: [PATCH 09/17] regulator: max77826: Drop unused 'rdesc' in 'struct
- max77826_regulator_info'
+        Mon, 09 Sep 2024 04:17:57 -0700 (PDT)
+From: Fei Shao <fshao@chromium.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH 04/13] arm64: dts: mediatek: mt8188: Move vdec1 power domain under vdec0
+Date: Mon,  9 Sep 2024 19:14:17 +0800
+Message-ID: <20240909111535.528624-5-fshao@chromium.org>
+X-Mailer: git-send-email 2.46.0.469.g59c65b2a67-goog
+In-Reply-To: <20240909111535.528624-1-fshao@chromium.org>
+References: <20240909111535.528624-1-fshao@chromium.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240909-regulator-const-v1-9-8934704a5787@linaro.org>
-References: <20240909-regulator-const-v1-0-8934704a5787@linaro.org>
-In-Reply-To: <20240909-regulator-const-v1-0-8934704a5787@linaro.org>
-To: Support Opensource <support.opensource@diasemi.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-X-Mailer: b4 0.14.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=991;
- i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=rxHbd8ZN2Gnll5CmN6olaVIKBgECJTgaQrtvW4I7hxI=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBm3v1gk6LT/h4VMebCtZMbJoCRkBZvx8KAMANRf
- n9s9srNC/uJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCZt79YAAKCRDBN2bmhouD
- 161kD/9Lp6g4Ua2xpAlNHKFc2J5G5EkSOmL9wRmeRWCqsIzq5Ao0p02ZQ/8kTCNSxibJ8bPQuIK
- m64QJ0LFlP7nWIYw91ctKvfqnOy9UrHRju3r8U7TXRUYNFab/vQ3BrceR6gpzcLhFXvfTX5En9+
- JRGMtRd5J5AiGl5VBp5TIig09DqDdVkFCEpKDBn9zj49laVzNo+V3xue8dnGynTAxW9z2buAKmw
- gMI3QvQEEk3fqKFNxGFJExDUoC6NHK5qBENhj4+JjHPbYN+gS0KSxwYT3EfTxhE6ufKfpoQzaOX
- 2bvZ9kMCCaaayjeO4s/J0YlxHCdjAnFy0iTRQ3Q+lWkWbCoYT8KKOU54FAEfvqVZl1M1lCQ6OeG
- lg/enr2QZKSc3XG6+Qld8the0DM7gOehFJyT02OTsv7Q4Mk93qun+f38yHQOuxZxJCcBmIZCRDr
- 1udf/OsmXR9Gl0qG/QEslImmSd2+1Kw1McycPnPgPWMGc9hhQtxycEKTzCqDDS/+Pq8rgBZ23em
- Ck/jxoX3WTakTQHwWJBUqXjZzFeBhpEWY+yGphtd7kJMlyHZoHCbUfloX27j8SAas98RNlyQxpM
- Tt5GlM0LkHrEzEyWqRpdSva0G/5/lYGNTKtPDYZWm+xvCXgM4jEa5Zx8VCwN0F7GpxQwPiL9omy
- hTqm9UKegqYPonQ==
-X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
- fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_065153_174769_4EA07574 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20240909_041759_287844_47C97ABC 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,38 +86,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The max77826_regulator_info.rdesc is assigned once and never used again.
+There are two hardware IP blocks in MT8188 video decoder pipeline:
+vdec-lat and vdec-core, which are powered by vdec0 and vdec1 power
+domains respectively.
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+We noticed that vdec-core needs to be powered down before vdec-lat
+during suspend to prevent failures. It's unclear if it's an intended
+hardware design or due to power isolation glitch. But in any case, we
+observed a power-off sequence here, and it can be considered as an
+indirect dependency implication between the vdec0 and vdec1 domains.
+
+Given that, update vdec1 as a sub-domain of vdec0 to enforce the
+sequence. Also, use more specific clock names for both power domains.
+
+Signed-off-by: Fei Shao <fshao@chromium.org>
 ---
- drivers/regulator/max77826-regulator.c | 2 --
- 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/regulator/max77826-regulator.c b/drivers/regulator/max77826-regulator.c
-index 5590cdf615b7..4b656a694108 100644
---- a/drivers/regulator/max77826-regulator.c
-+++ b/drivers/regulator/max77826-regulator.c
-@@ -153,7 +153,6 @@ enum max77826_regulators {
- 
- struct max77826_regulator_info {
- 	struct regmap *regmap;
--	struct regulator_desc *rdesc;
- };
- 
- static const struct regmap_config max77826_regmap_config = {
-@@ -246,7 +245,6 @@ static int max77826_i2c_probe(struct i2c_client *client)
- 	if (!info)
- 		return -ENOMEM;
- 
--	info->rdesc = max77826_regulators_desc;
- 	regmap = devm_regmap_init_i2c(client, &max77826_regmap_config);
- 	if (IS_ERR(regmap)) {
- 		dev_err(dev, "Failed to allocate regmap!\n");
+ arch/arm64/boot/dts/mediatek/mt8188.dtsi | 22 ++++++++++++----------
+ 1 file changed, 12 insertions(+), 10 deletions(-)
 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+index dfbc50c878c4..445d30eee2a1 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+@@ -1078,20 +1078,22 @@ power-domain@MT8188_POWER_DOMAIN_VPPSYS1 {
+ 							#power-domain-cells = <0>;
+ 						};
+ 
+-						power-domain@MT8188_POWER_DOMAIN_VDEC1 {
+-							reg = <MT8188_POWER_DOMAIN_VDEC1>;
+-							clocks = <&vdecsys CLK_VDEC2_LARB1>;
+-							clock-names = "ss-vdec";
+-							mediatek,infracfg = <&infracfg_ao>;
+-							#power-domain-cells = <0>;
+-						};
+-
+ 						power-domain@MT8188_POWER_DOMAIN_VDEC0 {
+ 							reg = <MT8188_POWER_DOMAIN_VDEC0>;
+ 							clocks = <&vdecsys_soc CLK_VDEC1_SOC_LARB1>;
+-							clock-names = "ss-vdec";
++							clock-names = "ss-vdec1-soc-l1";
+ 							mediatek,infracfg = <&infracfg_ao>;
+-							#power-domain-cells = <0>;
++							#address-cells = <1>;
++							#size-cells = <0>;
++							#power-domain-cells = <1>;
++
++							power-domain@MT8188_POWER_DOMAIN_VDEC1 {
++								reg = <MT8188_POWER_DOMAIN_VDEC1>;
++								clocks = <&vdecsys CLK_VDEC2_LARB1>;
++								clock-names = "ss-vdec2-l1";
++								mediatek,infracfg = <&infracfg_ao>;
++								#power-domain-cells = <0>;
++							};
+ 						};
+ 
+ 						cam_vcore: power-domain@MT8188_POWER_DOMAIN_CAM_VCORE {
 -- 
-2.43.0
+2.46.0.469.g59c65b2a67-goog
 
 
