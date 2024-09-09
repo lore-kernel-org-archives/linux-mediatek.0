@@ -4,76 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29E95ECE584
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 12:45:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D703ECE57A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Sep 2024 12:46:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RWmqJ0QnsjOgSdJJ/G5iQCng26pUBwqaJRO9c0Rx7mg=; b=ANd7Hq+L9RhlMPqyqL1DYld7Ak
-	qS6rh+Eb/eVJN8E7R6Deg3HUIXTPzoJFKDP+yX5DQhCWcNTggji3zDYPweLl1lae/NLIKyzO4nln5
-	lLW/7WM9feKc/KLakdejXTwlnCa+j7srvZq2fs8ap6J+HpDXMLH8FEVxFGhUuR6jIddLq5zdPdgvY
-	nEqnZMJT4jckX06HE+KtF6OZzVp5zQcztajJPK6X7EHPRVYZc6e3cXn+WPlTfaJwnueaznoTrY9Ch
-	Mwo+YYUSa0uu8H3h/N40NQ90rHaO0iC/nYZ5rqpDP32CavAPNo9GmY/aXnTKkeHupCcoAr8orw0A+
-	Bmz7m2gw==;
+	bh=XZonbfJF60MrOr6HTUV7NctqUdDwU+6CyQCXFpoAHDY=; b=xuY0VRn8ogFYZR34eq6KUHwJYF
+	57e4nOryjixTpuDwsnSLz7EuN3/NhWIXXXoViJvuWdw8C4qFXE+H8y/5pOQcfIZW5AalOJ/XJU8ES
+	4IsHvtjJNntawx7dO3B2jcQWh4pZZow6oemwBYo24wdmmzDvp6sP64dkmc9guBKqicmwecSEOnuAP
+	+oNI5Omj8TZSpjEU41c9zaR50kfg/8FFUV6gcoq3zTuI4xwmPXI2xSz5QDvb/0tR6h+ZSgjBrw8c/
+	RHSvuArIuw1n2GVoxy0rqoF4eWVAA6h8Td2yReLbfg3lo0iZup22/t82ziapMgcHfOazXlyuJz9bE
+	gkRX+WAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sndm9-00000001swW-1eGO;
-	Mon, 09 Sep 2024 12:45:49 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1sndmJ-00000001t6E-2ptz;
+	Mon, 09 Sep 2024 12:45:59 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sncDb-00000001c0G-2XA8;
-	Mon, 09 Sep 2024 11:06:05 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-42cb8dac900so6366095e9.3;
-        Mon, 09 Sep 2024 04:06:03 -0700 (PDT)
+	id 1sncEy-00000001cDX-0cbD;
+	Mon, 09 Sep 2024 11:07:29 +0000
+Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-374ba78f192so2479652f8f.3;
+        Mon, 09 Sep 2024 04:07:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725879962; x=1726484762; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1725880046; x=1726484846; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=RWmqJ0QnsjOgSdJJ/G5iQCng26pUBwqaJRO9c0Rx7mg=;
-        b=eCVnrNzpzXeCFCPjNkB4dBeKOKa2cCuhYbHQ5eZQZpaRbx47PArAKGJRnZmsYHqte2
-         4k9SqWu/zSfVc+GCj5gT8JHAJtQSuzjiWR52PY5eqEdEBuzCQex0orlFWFmuKcrJBkRY
-         yVzO7wTGy8+Q343+sEwZdcFsYH/nE1ITO5vaGBDyQ6v7vGd5DTq5Tl3i5HpuBeESOp2a
-         weuBWl+5ZkKaIIbkDSJEUcJYtTHmo+sbvQFV94P8Q9QY3r1GGIadcwlIgXr9AcMg8xJ2
-         IotaZhgH+iW1c5dYyHTYrzPQ9cOHKBKi078uox5yRnTS45vGKs6AhHE7gdv9/2e3Y4mh
-         ZDLw==
+        bh=XZonbfJF60MrOr6HTUV7NctqUdDwU+6CyQCXFpoAHDY=;
+        b=eIVSSshzL89J35PHmPB18TAvDl84DcQT6tbjnAtgNLBP7R/16SBp7N3AGi3H03gJeS
+         xKyOSspV94uJgHz9qrGh440taPddD0qbtwceGEfihrOR7smeKqmzkIAQvnuqeal1M4Bl
+         njSWe0rxqIEJYbcukamNoH0esAQ9AYHYa3h+39FBayPNSjUQmPS4ksuXA8/wx47I9id1
+         iC0+KMQdQSGpqa9YjgVMT5Z5YgO52ZegkJBNSTx9maE6njqUk3nHAmkASDjkAFFhkDZa
+         /6ljzFjMtosqJEUTUg2xikx9Wx4R5qXcEkE/w8BmpXeYr1m4OehGeZZevGZ69N1S4A8a
+         3GOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725879962; x=1726484762;
+        d=1e100.net; s=20230601; t=1725880046; x=1726484846;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=RWmqJ0QnsjOgSdJJ/G5iQCng26pUBwqaJRO9c0Rx7mg=;
-        b=ra1TeIQ1H/SiPZ0YWVWeEky0PWzV+GIB1pE6gBhqqWoCGfrtJ7oaWCDbIJCQ1lKvjr
-         S8Dom7Zd5+4U+6BYGuBH9SYQBQLRlG04vedJFtDbjxiLLqyglVmdG1yHaF75YiuKK20R
-         uoottJPHkAfu2qj2xp2FPfDPp0KPCtZ9yuV0dC/yLu+KtQUyJfNlIxJXoIj4kQpjONLr
-         Goj+aBR4XWTyEWq4cHA7FIyefxLpJ9qSyK/if3DlMND/NTwEN55N+EDV1fOuB/scZNxo
-         TTyTQAjumgiuCGfpx/mN7O/zwQoKznNAE8fQivUEJxJyV739jRed9zIgE0Wv2z75uaAG
-         C91w==
-X-Forwarded-Encrypted: i=1; AJvYcCVKtYBMk1pnhVtrPlefbwfvMYvx6OMh4plNBWdNjocgdmUGOE+UoFoEgFcmZvfKdRrPFy7gp0s6OZ9Brmte1Ysg@lists.infradead.org, AJvYcCWhXmZUpbsLfPjeOcw7KkOcSk6wutlPENd2Usq/EnaczQkg2aSPNuHVHlCU4tTPDzEzvxFeedYkDbvxfWOfr2Y=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxmeB18hwYF4qDRcf8jJv0EEIJ7YyoT7xvHsSiWiIInfuXZjz+3
-	iCd3HOnlIrFNQ1EL5fWCRKpirak0XYLGiro6Bgv6kQrTtffy6+YT
-X-Google-Smtp-Source: AGHT+IFXoZJF/NpObjLR4CjIrB0HP/RDgWsNpea8/ntA4ShIsjHaM8fSKp67I18EquQCeBMl8pJb3w==
-X-Received: by 2002:a05:6000:542:b0:374:c57b:a90f with SMTP id ffacd0b85a97d-37889659729mr6143996f8f.42.1725879960879;
-        Mon, 09 Sep 2024 04:06:00 -0700 (PDT)
+        bh=XZonbfJF60MrOr6HTUV7NctqUdDwU+6CyQCXFpoAHDY=;
+        b=mJwyOs7jG8Tzn7/nrX6ryr0YigAQRWtDCRfWVTNgDE8whdjoN94YpgFXACAg11IVV+
+         1X5J+X3Sz5eR5QtjEehLZWmhxqo4jMP4OouWoXlXC4DKIRjOS37yzJIE1PgRWrzX/HXZ
+         kisxDIrRfH/4D6I5gHYX4aFzcKAHMyvKJfFd2OeN2phxAcMG+GM4MfZFPpb/P48lNan5
+         oFAu9hb+6ZeMbF0hXnisj2oas8oHZ/2/8/bbXDjG8tUiW77xUC0r9XQUtATNhUdtWM0w
+         EKBzFn8MLJHNQZ7fXgE4VeTTpSvbaKlb59qXfyEjt9B+/yssb6VIqtggOIHj+YfRp9Ia
+         w1RA==
+X-Forwarded-Encrypted: i=1; AJvYcCV7DYIGU02zrw/HpBQb0EsuX4wVFaQ3626s/8Js4FmOt4sr0ndPKT3kRF8ndI5kDdZQviTUwenISQd5NQhZ0JNMvA==@lists.infradead.org, AJvYcCW+X9ac4Fzbn098Puk5qWJB7qY1fDcHnVsqBgosVaaIjO19QXtkI351TjlViI7U4xJ6sBQkBEAMkmFCX2WmSh0=@lists.infradead.org, AJvYcCXJmJ/sv+Bhgf3II5qhVt3IkA6nM+7KrpvvJocVnpRyUQZajx+VRqKG4tNwAkDxYQEeV0QONWb6TGZ+KsXC@lists.infradead.org
+X-Gm-Message-State: AOJu0YyNaI2QZ5pRXt/iYloGI6tIey+VWZNfWY0n+Ny/kPWkrC9P7cm+
+	4bQv83dEs26N2mSYY3sXzXPpPBsFzpbqEcNHhc+29u1+yTfOdMZa
+X-Google-Smtp-Source: AGHT+IFf5GN2ZxFR5xiNyC1JjMsPZdLZ1bIPbUSy+hNK6EbkI2/bPy930ExxBVZNztYRfLZ4aNjKjw==
+X-Received: by 2002:a5d:5545:0:b0:374:c269:df6e with SMTP id ffacd0b85a97d-378895ddf36mr6270562f8f.25.1725880046079;
+        Mon, 09 Sep 2024 04:07:26 -0700 (PDT)
 Received: from [192.168.2.177] ([81.0.7.156])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-378956d3743sm5776139f8f.79.2024.09.09.04.05.59
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-378956d375asm5733608f8f.66.2024.09.09.04.07.23
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Sep 2024 04:05:59 -0700 (PDT)
-Message-ID: <f623afa8-7c5a-44c5-be63-199a06ddbcfc@gmail.com>
-Date: Mon, 9 Sep 2024 13:05:58 +0200
+        Mon, 09 Sep 2024 04:07:25 -0700 (PDT)
+Message-ID: <39a07b50-e403-4799-9091-edfcbfba067e@gmail.com>
+Date: Mon, 9 Sep 2024 13:07:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH -next v2] usb: musb: mediatek: Simplify code with
- dev_err_probe()
-To: Lin Ruifeng <linruifeng4@huawei.com>, b-liu@ti.com,
- gregkh@linuxfoundation.org, angelogioacchino.delregno@collabora.com
-Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240907081351.19879-1-linruifeng4@huawei.com>
+Subject: Re: [PATCH 4/5] drm/mediatek: dp: constify regmap_config
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@nxp.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jagan Teki <jagan@amarulasolutions.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>
+Cc: dri-devel@lists.freedesktop.org, linux-amlogic@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20240908-regmap-config-const-v1-0-28f349004811@linaro.org>
+ <20240908-regmap-config-const-v1-4-28f349004811@linaro.org>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -119,12 +133,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20240907081351.19879-1-linruifeng4@huawei.com>
+In-Reply-To: <20240908-regmap-config-const-v1-4-28f349004811@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_040603_701448_DA94816D 
-X-CRM114-Status: GOOD (  17.56  )
+X-CRM114-CacheID: sfid-20240909_040728_223354_D6E23198 
+X-CRM114-Status: GOOD (  13.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -141,69 +155,30 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 07/09/2024 10:13, Lin Ruifeng wrote:
-> The combination of dev_err() and the returned error code could be
-> replaced by dev_err_probe() in driver's probe function. Let's,
-> converting to dev_err_probe() to make code more simple.
+On 08/09/2024 16:21, Krzysztof Kozlowski wrote:
+> Mark local static 'struct regmap_config' as const for safer and more
+> obvious code.
 > 
-> Signed-off-by: Lin Ruifeng <linruifeng4@huawei.com>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
 > ---
-> v2:
-> - The wrong message is modified.
->   drivers/usb/musb/mediatek.c | 27 +++++++++++----------------
->   1 file changed, 11 insertions(+), 16 deletions(-)
+>   drivers/gpu/drm/mediatek/mtk_dp.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/drivers/usb/musb/mediatek.c b/drivers/usb/musb/mediatek.c
-> index 0a35aab3ab81..63c86c046b98 100644
-> --- a/drivers/usb/musb/mediatek.c
-> +++ b/drivers/usb/musb/mediatek.c
-> @@ -416,10 +416,9 @@ static int mtk_musb_probe(struct platform_device *pdev)
->   		return -ENOMEM;
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+> index d8796a904eca..f0f6f402994a 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+> @@ -311,7 +311,7 @@ static const struct mtk_dp_efuse_fmt mt8195_dp_efuse_fmt[MTK_DP_CAL_MAX] = {
+>   	},
+>   };
 >   
->   	ret = of_platform_populate(np, NULL, NULL, dev);
-> -	if (ret) {
-> -		dev_err(dev, "failed to create child devices at %p\n", np);
-> -		return ret;
-> -	}
-> +	if (ret)
-> +		return dev_err_probe(dev, ret,
-> +				"failed to create child devices at %p\n", np);
->   
->   	ret = mtk_musb_clks_get(glue);
->   	if (ret)
-> @@ -448,23 +447,19 @@ static int mtk_musb_probe(struct platform_device *pdev)
->   		glue->role = USB_ROLE_NONE;
->   		break;
->   	default:
-> -		dev_err(&pdev->dev, "Error 'dr_mode' property\n");
-> -		return -EINVAL;
-> +		return dev_err_probe(&pdev->dev, -EINVAL,
-> +				"Error 'dr_mode' property\n");
->   	}
->   
->   	glue->phy = devm_of_phy_get_by_index(dev, np, 0);
-> -	if (IS_ERR(glue->phy)) {
-> -		dev_err(dev, "fail to getting phy %ld\n",
-> -			PTR_ERR(glue->phy));
-> -		return PTR_ERR(glue->phy);
-> -	}
-> +	if (IS_ERR(glue->phy))
-> +		return dev_err_probe(dev, PTR_ERR(glue->phy),
-> +				"fail to getting phy\n");
->   
->   	glue->usb_phy = usb_phy_generic_register();
-> -	if (IS_ERR(glue->usb_phy)) {
-> -		dev_err(dev, "fail to registering usb-phy %ld\n",
-> -			PTR_ERR(glue->usb_phy));
-> -		return PTR_ERR(glue->usb_phy);
-> -	}
-> +	if (IS_ERR(glue->usb_phy))
-> +		return dev_err_probe(dev, PTR_ERR(glue->usb_phy),
-> +				"fail to registering usb-phy\n");
->   
->   	glue->xceiv = devm_usb_get_phy(dev, USB_PHY_TYPE_USB2);
->   	if (IS_ERR(glue->xceiv)) {
+> -static struct regmap_config mtk_dp_regmap_config = {
+> +static const struct regmap_config mtk_dp_regmap_config = {
+>   	.reg_bits = 32,
+>   	.val_bits = 32,
+>   	.reg_stride = 4,
+> 
 
