@@ -4,78 +4,186 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4542AEDE9AC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Sep 2024 18:00:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C641EE01E7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Sep 2024 20:40:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oRpBILn97hQlAgqu+BPpd8j0wIORp8/sYsHHAPwOHwk=; b=AzVjCMgioGC2Y8d5eQVLGRq9OZ
-	WriamGu4FcluLim/1MHD28KpM+XlrEfiCyVtg0Gq9SdTkF0lDEyim/XI3LTM3WKCSnQFWBT2c8fcB
-	J0mjELBMH9O6nQpukPf1BvHspd0Zbm2sAMG+bUxZ0Tec855YuRYnnTut9p12+fKybI/d1JNb3lOxX
-	J84WLI5LIQPAmD7Nl70hGcehegvQo0oOLkVW20RyoCC5DtMKhYQKtzFiGSehgsyvvdyV+XYRZ+zk5
-	bfo/Z/J6qH8iPEELM3w0rdVL4WnvzGIG3FPQignQwxmSyvwBoZSDLJjoL8w5fr+0Y6DnJ7g0ZmDRN
-	AURsbLtA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=97vxCdXLwuFduqUhtXr004SNCY2o21oib/qXwi4Ht/g=; b=aJb550T1HtRw03Sd7d49UqjA1l
+	U4N0vFaC+L5VXDMCo5Br2LR/98O9Z4tRGhIL2+k9PkEA/ZLxPi3CkmZdaiWXPXVDrZa5BwImkGiTD
+	b6qRozqBHPf8m2xEmv5aoVseEfgN1gEhlnlDTXK692/2oEZnvsz1xwAW9l7e0miT2+M1AbCuKEzbU
+	T54iFPgffui59WzFi2BOdy8pP2xQrx1CfexlVAg+wO/3IcqiPuudC7Nc+teegZaQP9pyGkzoKn8bm
+	/stblNWvuSH3qABHNHYdI6jlETyvcEneC3I5iA04tQxJQPACjwWrEno128LuoRFIHIoZ/hjhEKbdg
+	vmz2BUTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1so5AL-00000006gcw-021P;
-	Tue, 10 Sep 2024 18:00:37 +0000
-Received: from 009.lax.mailroute.net ([199.89.1.12])
+	id 1so7fC-000000074us-0I94;
+	Tue, 10 Sep 2024 20:40:38 +0000
+Received: from mail-am6eur05on2060c.outbound.protection.outlook.com ([2a01:111:f403:2612::60c] helo=EUR05-AM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1so59W-00000006gSu-2vyv
+	id 1so7f8-000000074sh-1X7O
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Sep 2024 17:59:47 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 009.lax.mailroute.net (Postfix) with ESMTP id 4X3BL967XNzlgVnf;
-	Tue, 10 Sep 2024 17:59:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1725991174; x=1728583175; bh=oRpBILn97hQlAgqu+BPpd8j0
-	wIORp8/sYsHHAPwOHwk=; b=UD4IcbBkrLSUorg1mwaLj3gCH9px3fa3/cCIWLau
-	Yi0TC9URYhFajnf5t4Xx6rkFrNoZk+jsnhvrC0du5Kr6oElQ/ecp8xvGr2gHc2RX
-	/h5Kc7V62EB2570/EGWCWP1muZwaPCVoczra9dhbTh11nOSNGTaqnE53/JK5bOUq
-	ErWn9eS9qqM/7YbqqjkQcsK43u4BJfvAMtsIv428kC4A3+wTUPlISJD5b+f14JYu
-	IZskNUv4U8YkBONQ7QN5aVWi719R+QpO6tMPcCItbqk6H8ncbs6xPLelstjujOdG
-	OJVevr8exVNRhq6KTBu5rwT8HR6I88x6sTQg1f26RFXwzw==
-X-Virus-Scanned: by MailRoute
-Received: from 009.lax.mailroute.net ([127.0.0.1])
- by localhost (009.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id IFyM8jt2rizU; Tue, 10 Sep 2024 17:59:34 +0000 (UTC)
-Received: from [100.66.154.22] (unknown [104.135.204.82])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 009.lax.mailroute.net (Postfix) with ESMTPSA id 4X3BKw4H3dzlgTWQ;
-	Tue, 10 Sep 2024 17:59:32 +0000 (UTC)
-Message-ID: <e42abf07-ba6b-4301-8717-8d5b01d56640@acm.org>
-Date: Tue, 10 Sep 2024 10:59:31 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/2] ufs: core: requeue aborted request
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
- qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
- eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com,
- quic_nguyenb@quicinc.com, stable@vger.kernel.org
-References: <20240910073035.25974-1-peter.wang@mediatek.com>
- <20240910073035.25974-3-peter.wang@mediatek.com>
+	Tue, 10 Sep 2024 20:40:36 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=j/XeDoGWpR7GKiVYZke5hx2CkxvAbk2dLjnkUoQ0Lw9pvFtT4ra7DQSn7f8/E2/5fpW7Z1oukrttUtre1voMVLtTC/djOmE37kmMc7arBtHbaJUc9qd0ciYSRjzyh8SkCiPb9RCUCQsikocj6GMYrprT+F29O3H1hMT1ftuKHFiEahrKBBa+KNmF5dHNujE+/iqLlVNc8tuIsMp/cMY9cgS8K9MciuZ/Xc86sApTcfkA1AHh6whsZfqnGQBF6Ivurii6cAqfpFKo7kaIA2W21+TOLYlh2frVB4GtfQ6khCTPPM7wqHlJ28oOjPNqU/Grk0d6ysBwXKIpbDjFNwpl6Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=97vxCdXLwuFduqUhtXr004SNCY2o21oib/qXwi4Ht/g=;
+ b=QAlY9095kGWwxdMA31tlZ772Xxsc5VY1VcVGqjyS9u/llsfPPbxzmewr3y+GWX3dDWz1pb3q8JQgJyMr7Jga99pN0Puc7r10TFFOiKI/x7SsAzp4GChrucB4g1Su7sOeOEBOK0rTEiSS/A88PA8pkRhgRh0NP407tiZOQWt9fXjpC90NAO2yt1IbtjGvvxqh5kzwv0MZEI4XwGT7FlN2BNbpsEdgp6Va/szBr17uvjfNX+8vB8AValG1pJaIKGgEFMmjWOmft5Qn7g/HlWAVfsoRqXw0yXbcoYBNMiS0UMx8lLxI9na0py7XZutM8h77Z9kCpBnfw0gPbEVZxUxfTA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=siemens.com; dmarc=pass action=none header.from=siemens.com;
+ dkim=pass header.d=siemens.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=siemens.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=97vxCdXLwuFduqUhtXr004SNCY2o21oib/qXwi4Ht/g=;
+ b=QUSrTBB/iFQBf3tgH7eYk5oWP5BqmJXDNazuItd9pejZn0/I0yD39HQSbrkQjiP28zkyi80XineUSIbik0PnFwgELWaQjUXHd21R6G81akFWSOf+tN2xDAGi+IB+4KT11CdGVAzvtrarsTdNp1of4YMZ35OyXYXQPif/ddNbMZWJJ+Z2h+xbIC7MpFcSo4g6MbbaegMRimSyMYQiO8ukIvViYJ4mxuxCZyMDS3qgqMzyO9XTZ/JHlhMO/NfAcUGaSnlyvmhILjlnUe2nSyIG1VOCzclUGErNNRW/ObMXusWMv9jLvFdX/NcjeCfCFqs04q4wU7tL3mfZ9VpUGnj7AQ==
+Received: from AS8PR10MB6867.EURPRD10.PROD.OUTLOOK.COM (2603:10a6:20b:5b6::22)
+ by DB8PR10MB3644.EURPRD10.PROD.OUTLOOK.COM (2603:10a6:10:141::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7939.24; Tue, 10 Sep
+ 2024 20:40:26 +0000
+Received: from AS8PR10MB6867.EURPRD10.PROD.OUTLOOK.COM
+ ([fe80::baa6:3ada:fbe6:98f4]) by AS8PR10MB6867.EURPRD10.PROD.OUTLOOK.COM
+ ([fe80::baa6:3ada:fbe6:98f4%3]) with mapi id 15.20.7939.022; Tue, 10 Sep 2024
+ 20:40:26 +0000
+From: "Sverdlin, Alexander" <alexander.sverdlin@siemens.com>
+To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+	"florian.fainelli@broadcom.com" <florian.fainelli@broadcom.com>
+CC: "andrew@lunn.ch" <andrew@lunn.ch>, "olteanv@gmail.com"
+	<olteanv@gmail.com>, "bridge@lists.linux.dev" <bridge@lists.linux.dev>,
+	"claudiu.manoil@nxp.com" <claudiu.manoil@nxp.com>, "dqfext@gmail.com"
+	<dqfext@gmail.com>, "nbd@nbd.name" <nbd@nbd.name>, "davem@davemloft.net"
+	<davem@davemloft.net>, "stable@vger.kernel.org" <stable@vger.kernel.org>,
+	"angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>, "Mark-MC.Lee@mediatek.com"
+	<Mark-MC.Lee@mediatek.com>, "UNGLinuxDriver@microchip.com"
+	<UNGLinuxDriver@microchip.com>, "pabeni@redhat.com" <pabeni@redhat.com>,
+	"arinc.unal@arinc9.com" <arinc.unal@arinc9.com>,
+	"alexandre.belloni@bootlin.com" <alexandre.belloni@bootlin.com>,
+	"edumazet@google.com" <edumazet@google.com>,
+	"bcm-kernel-feedback-list@broadcom.com"
+	<bcm-kernel-feedback-list@broadcom.com>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "daniel@makrotopia.org"
+	<daniel@makrotopia.org>, "razor@blackwall.org" <razor@blackwall.org>,
+	"kuba@kernel.org" <kuba@kernel.org>, "sean.wang@mediatek.com"
+	<sean.wang@mediatek.com>, "roopa@nvidia.com" <roopa@nvidia.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "f.fainelli@gmail.com"
+	<f.fainelli@gmail.com>, "lorenzo@kernel.org" <lorenzo@kernel.org>
+Subject: Re: [PATCH 1/2] net: dsa: RCU-protect dsa_ptr in struct net_device
+Thread-Topic: [PATCH 1/2] net: dsa: RCU-protect dsa_ptr in struct net_device
+Thread-Index: AQHbA4Hagboir6ZjOEqxQ/L/+DWWZ7JRShcAgAAyOIA=
+Date: Tue, 10 Sep 2024 20:40:26 +0000
+Message-ID: <a89dfb1524d9592a5077d2a7a34dceed579e7d3d.camel@siemens.com>
+References: <20240910130321.337154-1-alexander.sverdlin@siemens.com>
+	 <20240910130321.337154-2-alexander.sverdlin@siemens.com>
+	 <b6604e07-9add-4e93-ad6b-f1efc336e3bf@broadcom.com>
+In-Reply-To: <b6604e07-9add-4e93-ad6b-f1efc336e3bf@broadcom.com>
+Accept-Language: en-US
 Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20240910073035.25974-3-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=siemens.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: AS8PR10MB6867:EE_|DB8PR10MB3644:EE_
+x-ms-office365-filtering-correlation-id: 2413772b-8326-4fe9-c6a9-08dcd1d8ccfb
+x-ms-exchange-atpmessageproperties: SA
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|7416014|376014|1800799024|366016|38070700018;
+x-microsoft-antispam-message-info: =?utf-8?B?NWlBWDJ5UWc0RVNpUUd1MkJBVzVzY3lmNWoza0IzMVhXSmpFNFBLNHZKUldk?=
+ =?utf-8?B?cnI1bEZFa1NSNkhkYzNOcUs0U1doaEJ2Y3Y5Z3RTaWthMFQ1KzRzQkZFbVd1?=
+ =?utf-8?B?cU01UG1RbHB1azNJNlhKN2Qxa3RKNHVOb0k5QzJsRmJIWG5iU2JnUWhwVW8w?=
+ =?utf-8?B?OVg5NVBoK2IwVUt3ZDBPSFppdzFQWnlMSDI4dTRUaXNUdVlkM2VkNVlVdFVN?=
+ =?utf-8?B?RXB0dnVYWTd0emR4aVpEdEs4dnFsaXNUeTFjRVM5SFY2VEFCN1BiK1hXMTl6?=
+ =?utf-8?B?MW5TSEZ0bk01RXhMRzZxQkhCWGZyUEhJbGFwR1RhZysycVh3eCt4aVhvRTJu?=
+ =?utf-8?B?V1dVVndmZ3BjaDYxV3d1QXprejJYaUNQTEFIeDdzR3A2U3lCOWxoRnJuQmdL?=
+ =?utf-8?B?Tjd4c3JZS01USDQ3eS9mK29KMytwUXF2d3RhWjUxMHh5alBrYnlpZVpmblBZ?=
+ =?utf-8?B?UzFTUXBOWmtpazJCU0kvcTFXL0RoOTc2bkJSS1BpRTc1SzFkT1BoMmFPOVFC?=
+ =?utf-8?B?WlhjS0RmS2JxSkVaVVQvekpFZGJWZmN5L0lqamJRYUNjMlB1c2VBcndIOXhU?=
+ =?utf-8?B?Yk1zWkIrSiswWG53RTlSaVA1b1dlQ25TTzU1SlJ2TjZNV2Y0Mk5SZGluMnR2?=
+ =?utf-8?B?ZGhQdHZQMnk5Ykw0VVNqSEtmZHBUeGZSQnl4b1hXRlNJN1A3eG1FcUIzRldB?=
+ =?utf-8?B?eEJlZ2V3b3FxU1pIYzZWQjBoeWU4WGp6TmhETHU0ZE5QZzNyNFBoQkRwc0lp?=
+ =?utf-8?B?dEYxa2VxbzFlWTZ2WDlSczRCM3EvS0hCVkNhYmRHdHM1OTFUODk2UVE4WXJM?=
+ =?utf-8?B?bGdpbDJVUGdaNzh4anRWYWF2QTBTTFpwd251dWpqSTkrSFRmNHd4eGFQOEsr?=
+ =?utf-8?B?OUhjTDM1SGg4elhuOVFXd3VDM0xVZmxjYlhHRy9CdHlmT3dyeXVGM2VUVmNX?=
+ =?utf-8?B?T0pPUGtNWVYvdVpwdE5FSXFQUUw4YzBOVjVlc1o0Tlp3dXVYZFlMTGNYdjZT?=
+ =?utf-8?B?SkVlZ1JqZWRYVUJRQ2ZLTVltSGc5SEhRY0haQStyNnV6MWwzREJEZGlvc3RB?=
+ =?utf-8?B?VjZ0cm1JWjFGRVFQMFhIT2F0bWdLZTNZQktqNWJmdC9kWVMzSktWdjVLOWxt?=
+ =?utf-8?B?WThVYmRmMkpJcXd5bVRGZUhwbi9LODZ5UkJqMy9sbXcwWGs5Z1RWbitoWE9q?=
+ =?utf-8?B?OHZORUdaUThiMDJEYzNMR0krRjNudUttc0NHSjFhWEpSRzhFVWJqaDJOc0NE?=
+ =?utf-8?B?MWJiakZJbUVwVEpUZTkyc1NNTmFMSmVHWW84bGM5N1lKMHFtV0tGbEFYOTNS?=
+ =?utf-8?B?N1FRMmlQL3ZxalJyZjliNkNhNzRyeGpvRGdTbytJVFcrZURXbytTa0VkL3Vv?=
+ =?utf-8?B?eWpRZXp0VHMvUmtoblhkbEVRNzN1cTBpbUVuaVVDWWVXUTNEYVk3K2U5c2JO?=
+ =?utf-8?B?Snl4M2cvczF2N2owYlRYMUM1NVVyN2lUNXUxQXR0cGg4NVM3cDhOMEUwRDEy?=
+ =?utf-8?B?cmV0ZWtaQ3BwK2YxNmhLZm0wT2JoNjNJdWZuNU1OT2luUG1rTHRBWGxjemNk?=
+ =?utf-8?B?dlVyVkxBTHlMN0lTeHhEdHIwV00zNG5MV2tOZCsvL2lvMzg0Zmh3V0VsVGlI?=
+ =?utf-8?B?K2R3ZWFSLy91VjN6eEczOGRNMnBXYW56YU9TMlNIRjlHM29yQzhuVVFYQ293?=
+ =?utf-8?B?NVlGM2ZMc2g5dVlmWHdMVEIwbnMzUm04VHNHYi9FcjhLVjVQTVdINXhsMzFv?=
+ =?utf-8?B?bnlQeGJtM2xpR29VcDVSWFBlczVhQmUzMkRHRWZKaEJPOXpKNy94M1RKaGxz?=
+ =?utf-8?Q?4+EmaZlGJ44m93B38u4K3QxQTXMCDpPbanrjw=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR10MB6867.EURPRD10.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(1800799024)(366016)(38070700018);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?SWtLM2M2UHpTSyt2K1hrT1lycVk3dUxGekxkNUQwb2hCR1ZnUWpLaGh5SlVU?=
+ =?utf-8?B?SG1ZYk9hbHpPU00yZ0VTTXhFS1NmOFFwOGgwT1BHbit1TUFYU0NIS0d2bUND?=
+ =?utf-8?B?RGVIZUlwZk5GZGFqUjJKRDNGRkVyNWtaOVpzVzdySmRsVmZXUmFpRHkxVFFD?=
+ =?utf-8?B?cEZJdXQyNm4vRG1nT0p1Mi9JTDVIZzdtMXh0cW0rOTJmNVh1dkVMRGZleXhT?=
+ =?utf-8?B?NmNHZjl5OWFzbEFmQTJ2eit4ZDM5Q2xITkJBWlUrVWllNTd6enFJQzVtUnFD?=
+ =?utf-8?B?bExlQkJRdkZKUGNTOEFIVzBvTzJqeXJJMWROUDZsQWp2Z3IzMEtscGU0dTE1?=
+ =?utf-8?B?Q1dia3pkMlBhMDhCWjJiSlVmMHpsOGJGZWFBWVQ0Um1COGNva2J3T2UzNUdK?=
+ =?utf-8?B?YnpJUmszLy83K0N2eHpocHdDaWMyR09FOUVMOXM4V0JlS0lJUUFUQjZpaWtH?=
+ =?utf-8?B?d1FVdld3Z20zVGlPUHVHMWFEWGtDRGdYRGZYZXlRK0pJbjdxejdMbjdpYXh6?=
+ =?utf-8?B?RVFvbVJ4aGF3Mk5XTkxpZDlmdUpkV0JQSDFSRW1ReGs0ZEZFSU5DRU51Rklh?=
+ =?utf-8?B?ODd4SWs2YnVwU09sYlRhQ1prSUZ6WUV0bEpGWUs0TCt0YmpiQ3pyZTUrbXJw?=
+ =?utf-8?B?RlVMcktUNjRoTnZzNi9hbTRFZlFENmRwc3pwUjRYbktMcFN0SkRvOWx1MGJa?=
+ =?utf-8?B?cG0rTGpnVzRNZTNNdlJIRWh3MndTakUwZm94Q1Z4UWdkN0E2MnZuTEY3TU1B?=
+ =?utf-8?B?T0ZpM1p5Tk9FbnJpOFBiY0dYZng2QUZxUis1TnJ3Lytva1dyVUVYS2RKeElS?=
+ =?utf-8?B?YW1BUkkyMk1GMXI5UXJOa1RFUXZ2dmdudTlJRy9ZcVg2WGpIbmthVXBYQ1hv?=
+ =?utf-8?B?ZC9xNTIwL0RoSUJOVmwxcDU1cXIwWWw1N2VQdXRSSFdjN2cxSXFIS1YzODFO?=
+ =?utf-8?B?NHBqQjh5dm5CMm10K2IxTFgxbkNiSnlpMnpUaCsxc1E1S0RiT3V3T0szQjB3?=
+ =?utf-8?B?RTQ2bnhBNEhkRWhTMUdkWUJZczZCdEhMVm5QaW95U0JRL21oUGRIUFNwWnhR?=
+ =?utf-8?B?RW50UzlSdkhyNkF5a2dSR3F3aDVLckFEa3lMNWovdEg2TnZsdVZrRk9URFN2?=
+ =?utf-8?B?MDNXRXc1WjNsN2tTQVM3QjJqK2VGL0I0WmxjbStIY0h5akxoZkVUL3oySTlC?=
+ =?utf-8?B?ZFpsZUh5RFFMYUlNWTV2NGovVHdWdXZ3bGlFUmo5a0pvMVlzSldKd3p2eUhj?=
+ =?utf-8?B?WlpWSWY5aWl1NEM1N21oQWZGdUc0Q042QXp1aDVtQWZoN0p6c1dnN2lWeHZF?=
+ =?utf-8?B?S2V2d0VteGZZbXBNRCtQM0l3cWEybVdpMlh5amViUExHWndQdzQrazdBQUJD?=
+ =?utf-8?B?MnRNcWRqSGt1dmpvRFFZb0cyMlVsaWhRYnltUnFJVnBLNkVZUjZQT1Nmaitq?=
+ =?utf-8?B?QTlVUTZMY3hVRlNqblV1SDZlN0hKNGdJZlFhaE1CMGxHV28xdmMxNlNLNksv?=
+ =?utf-8?B?RVNjS0lsWTBqakp2dmRUcVRYV2llMDk0TEJPNVBKQlNCaXFvajhVbW5JYXFu?=
+ =?utf-8?B?bC9EOTVUdGphSHBwbmlmMGlsZmowQ3JmY3lpdFJOY2J1T1hVSEt5RkhRdmpl?=
+ =?utf-8?B?dGlwci9seXgrQU94Nkt2dUJ3TjRzcjA2ZjA1ZUxrNi9aV1pxZW85Q1B1Nk5U?=
+ =?utf-8?B?Vjh3TGdsbko1djlTbGdNaVZOS3JlRlkxb2tZQzFUTDBzVzhER1Q2K0xTV2J2?=
+ =?utf-8?B?T2JXSjladXRqRkVhWWREakN1SkliL1VDdDJva2JpOHBpUllkcGRPWTJWd2ho?=
+ =?utf-8?B?MkNkVjRwaGpCdDdEZmlUbndPcmJXQVdpWFNoTVlPMU5LczhVNm1mTlRLcnlu?=
+ =?utf-8?B?S3MxRmNnSFFrVXM4VW5HMjVOOGxNZ3dHM3BpTFc0L1g2MnRrYVdKQmNtVjJZ?=
+ =?utf-8?B?YWY5SGNqK1luWHVOa1VHeGxsa1pKVmpra29sVEtQbzZkdWx1d0JWWURDS1Fs?=
+ =?utf-8?B?MFJqNFREYk0xK1grb0hibjNlUU8zclJhQlQvM29Wa2JtS3NCOU83QzBiUFFI?=
+ =?utf-8?B?RHFsQnNreERrY3VnTW5ibnZPMHhkSWpFR2Y4aFp6UTBPWUQzeStzZ3JWYmxH?=
+ =?utf-8?B?c2kxWmJHdTVDb0l1R2J4QTBkNlQ1WEZ3QjJXNzBVZmtNcGJOSkF1anJOT05h?=
+ =?utf-8?Q?LqvL+Siyz91ZgDv5m9rj+oY=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <42AA87166BB4B1448644FE8ABF440EC1@EURPRD10.PROD.OUTLOOK.COM>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: siemens.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: AS8PR10MB6867.EURPRD10.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2413772b-8326-4fe9-c6a9-08dcd1d8ccfb
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Sep 2024 20:40:26.1391
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 38ae3bcd-9579-4fd4-adda-b42e1495d55a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: xzaiXCbzrBoRNxSh2vbvzDC8VxMxzcHaQ3tmf/hM8dZoHVchL6DvJftw6L9F8FlTWZpOQZnhU4yhTScPY42eRsHAnFoTlQiUWUEDaSuGvLM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR10MB3644
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240910_105946_800725_AB90F11E 
-X-CRM114-Status: GOOD (  25.74  )
+X-CRM114-CacheID: sfid-20240910_134034_498438_B4F08FEB 
+X-CRM114-Status: GOOD (  13.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,83 +198,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/10/24 12:30 AM, peter.wang@mediatek.com wrote:
-> ufshcd_abort_all froce abort all on-going command and the host
-                    ^^^^^ ^^^^^              ^^^^^^^         ^^^^
-                forcibly? aborts?            commands?   host controller?
-> will automatically fill in the OCS field of the corresponding
-> response with OCS_ABORTED based on different working modes.
-                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The host controller only sets the OCS field to OCS_ABORTED in MCQ mode
-if the host controller successfully aborted the command. If the
-abort TMF is submitted to the UFS device, the OCS field won't be changed
-into OCS_ABORTED. In SDB mode, the host controller does not modify the 
-OCS field either.
-
-> SDB mode: aborts a command using UTRLCLR. Task Management response
-> which means a Transfer Request was aborted.
-
-Hmm ... my understanding is that clearing a bit from UTRLCLR is only
-allowed *after* a command has been aborted and also that clearing a bit
-from this register does not abort a command but only frees the resources
-in the host controller associated with the command.
-
-> For these two cases, set a flag to notify SCSI to requeue the
-> command after receiving response with OCS_ABORTED.
-
-I think there is only one case when the SCSI core needs to be requested
-to requeue a command, namely when the UFS driver decided to initiate the
-abort (ufshcd_abort_all()).
-
-> @@ -7561,6 +7551,20 @@ int ufshcd_try_to_abort_task(struct ufs_hba *hba, int tag)
->   		goto out;
->   	}
->   
-> +	/*
-> +	 * When the host software receives a "FUNCTION COMPLETE", set flag
-> +	 * to requeue command after receive response with OCS_ABORTED
-> +	 * SDB mode: UTRLCLR Task Management response which means a Transfer
-> +	 *           Request was aborted.
-> +	 * MCQ mode: Host will post to CQ with OCS_ABORTED after SQ cleanup
-> +	 * This flag is set because ufshcd_abort_all forcibly aborts all
-> +	 * commands, and the host will automatically fill in the OCS field
-> +	 * of the corresponding response with OCS_ABORTED.
-> +	 * Therefore, upon receiving this response, it needs to be requeued.
-> +	 */
-> +	if (!err)
-> +		lrbp->abort_initiated_by_err = true;
-> +
->   	err = ufshcd_clear_cmd(hba, tag);
->   	if (err)
->   		dev_err(hba->dev, "%s: Failed clearing cmd at tag %d, err %d\n",
-
-The above change is misplaced. ufshcd_try_to_abort_task() can be called
-when the SCSI core decides to abort a command while
-abort_initiated_by_err must not be set in that case. Please move the
-above code block into ufshcd_abort_one().
-
-Regarding the word "host" in the above comment block: the host is the 
-Android device. I think that in the above comment "host" should be
-changed into "host controller".
-
-> diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-> index 0fd2aebac728..15b357672ca5 100644
-> --- a/include/ufs/ufshcd.h
-> +++ b/include/ufs/ufshcd.h
-> @@ -173,6 +173,8 @@ struct ufs_pm_lvl_states {
->    * @crypto_key_slot: the key slot to use for inline crypto (-1 if none)
->    * @data_unit_num: the data unit number for the first block for inline crypto
->    * @req_abort_skip: skip request abort task flag
-> + * @abort_initiated_by_err: The flag is specifically used to handle aborts
-> + *                          caused by errors due to host/device communication
-
-The "abort_initiated_by_err" name still seems confusing to me. Please
-make it more clear that this flag is only set if the UFS error handler
-decides to abort a command. How about "abort_initiated_by_eh"?
-
-Please also make the description of this member variable more clear.
-
-Thanks,
-
-Bart.
+SGkgRmxvcmlhbiENCg0KT24gVHVlLCAyMDI0LTA5LTEwIGF0IDEwOjQwIC0wNzAwLCBGbG9yaWFu
+IEZhaW5lbGxpIHdyb3RlOg0KPiA+IFJDVS1wcm90ZWN0IGRzYV9wdHIgYW5kIHVzZSByY3VfZGVy
+ZWZlcmVuY2UoKSBvciBydG5sX2RlcmVmZXJlbmNlKCkNCj4gPiBkZXBlbmRpbmcgb24gdGhlIGNh
+bGxpbmcgY29udGV4dC4NCj4gPiANCj4gPiBSZW5hbWUgbmV0ZGV2X3VzZXNfZHNhKCkgaW50byBf
+X25ldGRldl91c2VzX2RzYV9jdXJyZW50bHkoKQ0KPiA+IChhc3N1bWVzIGV0aGVyIFJDVSBvciBS
+VE5MIGxvY2sgaGVsZCkgYW5kIG5ldGRldl91c2VzX2RzYV9jdXJyZW50bHkoKQ0KPiA+IHZhcmlh
+bnRzIHdoaWNoIGJldHRlciByZWZsZWN0IHRoZSB1c2VsZXNzbmVzcyBvZiB0aGUgZnVuY3Rpb24n
+cw0KPiA+IHJldHVybiB2YWx1ZSwgd2hpY2ggYmVjb21lcyBvdXRkYXRlZCByaWdodCBhZnRlciB0
+aGUgY2FsbC4NCj4gPiANCj4gPiBGaXhlczogZWU1MzQzNzhmMDA1ICgibmV0OiBkc2E6IGZpeCBw
+YW5pYyB3aGVuIERTQSBtYXN0ZXIgZGV2aWNlIHVuYmluZHMgb24gc2h1dGRvd24iKQ0KPiA+IENj
+OiBzdGFibGVAdmdlci5rZXJuZWwub3JnDQo+ID4gU2lnbmVkLW9mZi1ieTogQWxleGFuZGVyIFN2
+ZXJkbGluIDxhbGV4YW5kZXIuc3ZlcmRsaW5Ac2llbWVucy5jb20+DQo+IA0KPiBUaGFua3MgZm9y
+IGRvaW5nIHRoaXMgd29yaywganVzdCBhIGZldyBuaXRzIGJlbG93LiBUaGlzIGlzIGxpa2VseSB0
+byBiZSANCj4gZGlmZmljdWx0IHRvIGJhY2twb3J0IHRvIHN0YWJsZSB0cmVlcy4NCg0KVGhhbmtz
+IGZvciB0aGUgcXVpY2sgZmVlZGJhY2shDQpBcyBJJ3ZlIG1lbnRpb25lZCBpbiB0aGUgY292ZXIg
+bGV0dGVyLCBJJ3ZlIHY2LjEgYmFja3BvcnQgYWxyZWFkeSBhdmFpbGFibGUNCmFuZCBJJ20gcmVh
+ZHkgdG8gYmFja3BvcnQgdG8gdjYuOCBhcyBzb29uIGFzIHdlIGFncmVlIG9uIHRoZSBmaW5hbCBm
+b3JtIGZvcg0KdjYuMTEuDQoNCi0tIA0KQWxleGFuZGVyIFN2ZXJkbGluDQpTaWVtZW5zIEFHDQp3
+d3cuc2llbWVucy5jb20NCg==
 
