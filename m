@@ -4,92 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 147DAECE564
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Sep 2024 11:08:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 955B3EB64DE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Sep 2024 13:03:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W9FpI4bl+ZGfp9SIboAslOt3vHYJy01BUP4KB+ndZUo=; b=pHTvSvK6RAlvAx0isTLkonaZXz
-	DKBvJ5CVreWs25br3qi0tMv2cx8fM5P1BhncS5uKBgZgyrWwYGUK0PMjKng5SiytFLrb5onzvnhHu
-	a0TD/PWt0zXmv12yyR+zw9rPuJrIG3Vv/YSXHzlRk33QaQI2vetVoZ5bIo3aR+YQLnMDBsCdkhRtw
-	lx0CVUeZkxA3q66uitQ6O2wOUGEEugCqf2eDuJokyK80MWNoKq93teUdsCEprV0hiwX1Tb0UpncZd
-	4/onFDGp0Ie6j/itqm4uTemzMy2ACY7qmQPuyTBFSq9OPeNEK5n4IItee2WfDQcIOImHptlvZrMuK
-	KpjKQsCw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ysY9Sm6/JWBZ3bOT6S/Yzq5jj/3qAL5EYD8foDPm2Q0=; b=03zPVW0tyvNufrzkzTbAobmD3x
+	IPK8VxD2cZIP5AFii2YTrTAffYNrgrJZr+SHf9LxfzupPvu8mP/uSJWTKXiOzZ88jsn5Wg/D70leJ
+	jhpTmarnSQYS6dKily7d0HBNDhQD905aP0j/ppXfL1q3aFSYKoZ4ydvISGvwb1rbWVVCWh9cFzugH
+	TXn4tTjkgJ5ZWotl5eRwyrGdESl+xT98dojjnbeNoBNZ2JV1hs13+3QCXcg6seynERyUREVzpbiPv
+	AL6k3x+5mnNB2m6Er5O0fu0VZlJSyjUSJilS6jENWP6UFOALxlZg2LY5Jrv1k7H+dr2j6UZ3Hcu6W
+	5IBZfwrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snyjU-00000005LAV-2r7d;
-	Tue, 10 Sep 2024 11:08:28 +0000
-Received: from mail-oo1-xc2f.google.com ([2607:f8b0:4864:20::c2f])
+	id 1so0Wy-00000005edn-2rl6;
+	Tue, 10 Sep 2024 13:03:40 +0000
+Received: from mta-64-225.siemens.flowmailer.net ([185.136.64.225])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snyiS-00000005L2w-0NlE
+	id 1so0Wv-00000005ecW-2IId
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Sep 2024 11:07:26 +0000
-Received: by mail-oo1-xc2f.google.com with SMTP id 006d021491bc7-5e1c65eb5bbso1474483eaf.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Sep 2024 04:07:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1725966442; x=1726571242; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=W9FpI4bl+ZGfp9SIboAslOt3vHYJy01BUP4KB+ndZUo=;
-        b=Zx37EhpTInEHCGjmiFL68NxKt3Dv5SOIfaJEYtlpa4AeRRqxdCHe37hQgvKN9HCJSu
-         QbeBF1pdw1G2v5coM7L+nZ5v046QenKaPInpAff3PHz8mGSBx/myS8kzimFmLxlodjxC
-         bW6EAlnKaODlgRNdIL+LPeJm/VvHwBy6/nia8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725966442; x=1726571242;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=W9FpI4bl+ZGfp9SIboAslOt3vHYJy01BUP4KB+ndZUo=;
-        b=P7dwmJ9wgMDcSplcZ9+lrePsiqZAK+cXj7F7QSjGSoWLXOh9gJQe0BVmJC+8/QosqR
-         uBbzPqziPzTUfuwd97tETEc5M5zlU6ssALttqrHNvQUZKQVJC9j0T7x5ebO9mImeRLMW
-         50FoMExXJcnmVSdpX2QBjNXRGv4ZoM/379nOsYDSgpqDchJqPs9dqvSrbtIUfhZRGI3i
-         N/9N/olWp9Zw56ES6giKbJgIX7HEhqeVY0uAeT+LEJgZT9ISWDS2tmhl5MT0sauMxlXE
-         NWu2i2SHJ+wQqd+3epnu6A5gQNJZUxUpjGV5T/PMB7lWbAOk3ok+94ilCp1ADki1bgBe
-         GSEQ==
-X-Forwarded-Encrypted: i=1; AJvYcCW9fumIx9TGi8di/IuTFSI7YEX7CALFnrnDJgI5P3aZpYH3qwrVmCXDC7XN2VhUV48Og0uW931W+TFkjxApOw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YygM8gdUgU0dpazFvOF8Ihu391NlyQWW/+ziyMvpKtUFe8HddmH
-	B1mJ53q2RLQs1p1F63G6sw7mOpjID3rKOiwHK0GoKB//oWA4tS4MvWfMzEqMNiIAmY8D1US+09Y
-	Xdg==
-X-Google-Smtp-Source: AGHT+IFEESWyuTXKj7jbAoW0Cavfh1YnKvIsl7xy1Y1WK5XXPwtlOuXRvXvKLP7occ62IJaxLiQJpA==
-X-Received: by 2002:a05:6808:1513:b0:3da:ab86:bfd7 with SMTP id 5614622812f47-3e037a64d5fmr7070004b6e.3.1725966441749;
-        Tue, 10 Sep 2024 04:07:21 -0700 (PDT)
-Received: from mail-oi1-f175.google.com (mail-oi1-f175.google.com. [209.85.167.175])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-3e039a6c857sm1572469b6e.20.2024.09.10.04.07.20
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 10 Sep 2024 04:07:20 -0700 (PDT)
-Received: by mail-oi1-f175.google.com with SMTP id 5614622812f47-3e039889ca0so1495788b6e.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Sep 2024 04:07:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUzh8fsezX5+91wZ6UJnz5PuBtgyj4RX1k44qPSMT9x5FVUnJNrGJI34hR1v5Gbq9jXs6O2y2EQC80m70wVsQ==@lists.infradead.org
-X-Received: by 2002:a05:6808:2dce:b0:3e0:3ead:2480 with SMTP id
- 5614622812f47-3e03ead28efmr7407710b6e.12.1725966440393; Tue, 10 Sep 2024
- 04:07:20 -0700 (PDT)
+	Tue, 10 Sep 2024 13:03:39 +0000
+Received: by mta-64-225.siemens.flowmailer.net with ESMTPSA id 20240910130332a12ddb7ac64ec3d8e6
+        for <linux-mediatek@lists.infradead.org>;
+        Tue, 10 Sep 2024 15:03:32 +0200
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; s=fm1;
+ d=siemens.com; i=alexander.sverdlin@siemens.com;
+ h=Date:From:Subject:To:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Cc;
+ bh=ysY9Sm6/JWBZ3bOT6S/Yzq5jj/3qAL5EYD8foDPm2Q0=;
+ b=Lm+poT+zCYhcBoxzXcBNf1re8bJ0YaLedOb4LNRNhibSLtF7DeWFZTM+QwdLNheEe1GVtD
+ fAYFg5nzY321NNl0BXrEGHrWz4iFDOxbO5oFYIVX4p/N/16fI2r2I43dksAS2K3I2H+s/Dr+
+ PkG8P7eg5oiXD1m5T6F/GrFBbKmcjfji5Hezn+olJ7yiadhEXLMRK7x9iF21DGvSOi0wXQGb
+ BcZp8VLrBoBPC+qB9oEAAnLrNCdke/xheqwKD8q8C423IR0/vwiREcGg9h5rOterU52C88Fx
+ 8VRNHrikSmVukCpuqgUxdvzs6iwIbSZhxemAC8yd/76ocmRGsTcIQbXQ==;
+From: "A. Sverdlin" <alexander.sverdlin@siemens.com>
+To: netdev@vger.kernel.org
+Cc: Alexander Sverdlin <alexander.sverdlin@siemens.com>,
+ =?ISO-8859-1?Q?Ar1n=E7_=DCNAL?= <arinc.unal@arinc9.com>, Daniel Golle
+ <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, Sean Wang
+ <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, Florian Fainelli
+ <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David S.
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
+ Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Claudiu Manoil
+ <claudiu.manoil@nxp.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, UNGLinuxDriver@microchip.com, Broadcom
+ internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>, Mark
+ Lee <Mark-MC.Lee@mediatek.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay
+ Aleksandrov <razor@blackwall.org>, linux-mediatek@lists.infradead.org,
+ bridge@lists.linux.dev, Jonathan Corbet <corbet@lwn.net>,
+ linux-doc@vger.kernel.org
+Subject: [PATCH 0/2] net: dsa: RCU-protect dsa_ptr in struct net_device
+Date: Tue, 10 Sep 2024 15:03:14 +0200
+Message-ID: <20240910130321.337154-1-alexander.sverdlin@siemens.com>
 MIME-Version: 1.0
-References: <20240909111535.528624-1-fshao@chromium.org> <20240909111535.528624-7-fshao@chromium.org>
- <11bc2522-bc10-4dcf-8142-708b57d181cf@kernel.org> <CAC=S1nhiJ=7yAucJsaYKUUBrwrxOVBMB2CF=bFwyLa2o-5RmWw@mail.gmail.com>
- <64cc35c8-30df-4882-a933-f42119270f48@kernel.org>
-In-Reply-To: <64cc35c8-30df-4882-a933-f42119270f48@kernel.org>
-From: Fei Shao <fshao@chromium.org>
-Date: Tue, 10 Sep 2024 19:06:43 +0800
-X-Gmail-Original-Message-ID: <CAC=S1ni+pJJZhbjvVqhba5u1JqGv=dZTv8+KH4xburea2AG4Qg@mail.gmail.com>
-Message-ID: <CAC=S1ni+pJJZhbjvVqhba5u1JqGv=dZTv8+KH4xburea2AG4Qg@mail.gmail.com>
-Subject: Re: [PATCH 06/13] arm64: dts: mediatek: mt8188: Update VPPSYS node
- name and compatible
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Conor Dooley <conor+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-Flowmailer-Platform: Siemens
+Feedback-ID: 519:519-456497:519-21489:flowmailer
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240910_040724_145243_446EEAB2 
-X-CRM114-Status: GOOD (  23.72  )
+X-CRM114-CacheID: sfid-20240910_060338_025824_10104016 
+X-CRM114-Status: UNSURE (   8.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,62 +83,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 10, 2024 at 3:19=E2=80=AFPM Krzysztof Kozlowski <krzk@kernel.or=
-g> wrote:
->
-> On 10/09/2024 07:12, Fei Shao wrote:
-> > On Mon, Sep 9, 2024 at 7:41=E2=80=AFPM Krzysztof Kozlowski <krzk@kernel=
-.org> wrote:
-> >>
-> >> On 09/09/2024 13:14, Fei Shao wrote:
-> >>> Use and add "syscon" in VPPSYS node names and compatible to fix error=
-s
-> >>> from `make CHECK_DTBS=3Dy mediatek/mt8188-evb.dtb`.
-> >>>
-> >>> Signed-off-by: Fei Shao <fshao@chromium.org>
-> >>> ---
-> >>>
-> >>>  arch/arm64/boot/dts/mediatek/mt8188.dtsi | 8 ++++----
-> >>>  1 file changed, 4 insertions(+), 4 deletions(-)
-> >>>
-> >>> diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/bo=
-ot/dts/mediatek/mt8188.dtsi
-> >>> index 2900d78b7ceb..14e51a11f688 100644
-> >>> --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> >>> +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> >>> @@ -1799,8 +1799,8 @@ mfgcfg: clock-controller@13fbf000 {
-> >>>                       #clock-cells =3D <1>;
-> >>>               };
-> >>>
-> >>> -             vppsys0: clock-controller@14000000 {
-> >>> -                     compatible =3D "mediatek,mt8188-vppsys0";
-> >>> +             vppsys0: syscon@14000000 {
-> >>> +                     compatible =3D "mediatek,mt8188-vppsys0", "sysc=
-on";
-> >>
-> >> If this was working before, it looks like this is not a syscon and
-> >> bindings need to be fixed.
-> >
-> > I guess it's because the binding was later updated in commit
-> > 26bcd8a53098 ("dt-bindings: arm: mediatek: mmsys: Add VPPSYS
-> > compatible for MT8188"), and the corresponding DT update was unnoticed
-> > at the time.
-> > If that makes sense then this should be a valid fix.
->
-> Not necessarily. Why not fixing bindings? Prove that bindings are
-> correct, not DTS, first.
+From: Alexander Sverdlin <alexander.sverdlin@siemens.com>
 
-MediaTek's mmsys doesn't merely control clocks, it also provides
-display pipeline routing control and other misc control registers, so
-it's appropriate to categorize it as a system controller over a clock
-controller.
-As for vdosys and vppsys, they are likely variants or aliases of mmsys
-introduced in their newer SoCs.
+There are multiple races of zeroing dsa_ptr in struct net_device (on
+shutdown/remove) against asynchronous dereferences all over the net
+code. Widespread pattern is as follows:
 
-That description was updated in commit 1a680aa888d6 ("dt-bindings:
-mediatek: Update mmsys binding to reflect it is a system controller"),
-so I just assumed it's correct without thinking much...
+CPU0					CPU1
+if (netdev_uses_dsa())
+					dev->dsa_ptr = NULL;
+        dev->dsa_ptr->...
 
-Regards,
-Fei
+RCU-protect the dsa_ptr and ajust the documentation where unsafe patterns
+were mentioned.
+
+The first patch has been compiled with ARCH=arm64 and allyesconfig against
+v6.11-rc6. Backported to v6.1 and tested on arm64 HW with LAN9303 switch
+(where the issue was initially reproduced), including LOCKDEP and
+PROVE_RCU. Therefore I will be able to provide v6.1 backport (for -stable
+purposes) and later v6.8 backport as well.
+
+Alexander Sverdlin (2):
+  net: dsa: RCU-protect dsa_ptr in struct net_device
+  docs: net: dsa: RCU protection of dsa_ptr in struct net_device
+
+ Documentation/networking/dsa/dsa.rst        |  18 ++--
+ drivers/net/dsa/mt7530.c                    |   3 +-
+ drivers/net/dsa/ocelot/felix.c              |   3 +-
+ drivers/net/dsa/qca/qca8k-8xxx.c            |   3 +-
+ drivers/net/ethernet/broadcom/bcmsysport.c  |   8 +-
+ drivers/net/ethernet/mediatek/airoha_eth.c  |   2 +-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c |  22 +++--
+ drivers/net/ethernet/mediatek/mtk_ppe.c     |  15 ++-
+ include/linux/netdevice.h                   |   2 +-
+ include/net/dsa.h                           |  36 +++++--
+ include/net/dsa_stubs.h                     |   6 +-
+ net/bridge/br_input.c                       |   2 +-
+ net/core/dev.c                              |   3 +-
+ net/core/flow_dissector.c                   |  19 ++--
+ net/dsa/conduit.c                           |  66 ++++++++-----
+ net/dsa/dsa.c                               |  19 ++--
+ net/dsa/port.c                              |   3 +-
+ net/dsa/tag.c                               |   3 +-
+ net/dsa/tag.h                               |  19 ++--
+ net/dsa/tag_8021q.c                         |  10 +-
+ net/dsa/tag_brcm.c                          |   2 +-
+ net/dsa/tag_dsa.c                           |   8 +-
+ net/dsa/tag_qca.c                           |  10 +-
+ net/dsa/tag_sja1105.c                       |  22 +++--
+ net/dsa/user.c                              | 104 +++++++++++---------
+ net/ethernet/eth.c                          |   2 +-
+ 26 files changed, 249 insertions(+), 161 deletions(-)
+
+-- 
+2.46.0
+
 
