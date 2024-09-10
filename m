@@ -4,84 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A82D6ECE564
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Sep 2024 06:34:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAD95ECE564
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Sep 2024 07:20:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+/aJw7OF4dGO4YwB0NFwJSdiUCvGjw20wyqsbh56zsk=; b=os+5sd50ULfYGKD+OC955jhM1J
-	vy4HyifFSBjE9Q98NdvMJC2vav1kPyK90yNxliGtZPA9pRQDdqSRKZt9wtA5qNHW9XlE7hhbWhkfv
-	GnlOV/Vu7u8dhhrhUK1UkpfErm9t7b+4UG/ooqyNzYOQd6K0KdO3bT2p89FefoLvkFpe+PibZBSUR
-	ptcTyAMGNqMSGihDV+FAc1+g13piK3BhXoruhAAmFJUmghwY7ojl9p9LzZuWu9/cGGYRI15JmfYi5
-	Z9vk1B9pH5UPlSYSrfa09CceB9PRLoARghL81Xo4E07I8K7Z4YHBkgVmVZ4m5PMK+e4VeQtk7hhkZ
-	QyzFQ/QA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1thH+xUnZFdMzWw+nNglaftPI510ibq87BsbkAthPYM=; b=tXYCHXugdqde41XNORPxMYIw8i
+	UHVhIPgdSO/DKQB4Xy/dPdUWIXOpWHpg8SSQVvRVt3G39v5Jxz5Nn8vGAfOxEZJYM34CpbjQcO41z
+	Q2B68gkheVmR4Caim6Udzkp01nBdfVmICcZw8BOzYDhIiijFe7sfAurLCpii74pteyHv9Bq0pR9ys
+	sF+X0Ou5ad2sY0OoIBTeAkE1flh3t7vOYbgAcpodUwfNpZXQGKfEhdvQbZiD5QW3EUqQ9CCeoIf1x
+	CAcm8c3dMcTCcTSudxx2yuVM0bhcjVY1L+yAMJhWw4DjHKYkUQtUEwsY0Wd6m8N8kCXy7TmYCL/o3
+	VraIJXIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snuSZ-00000004Sdv-0sKF;
-	Tue, 10 Sep 2024 06:34:43 +0000
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+	id 1snvAQ-00000004Zic-2B5C;
+	Tue, 10 Sep 2024 07:20:02 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snuRX-00000004SQe-0LDp
-	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Sep 2024 06:33:40 +0000
-Received: by mail-pg1-x532.google.com with SMTP id 41be03b00d2f7-6c5bcb8e8edso4015429a12.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 09 Sep 2024 23:33:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1725950018; x=1726554818; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=+/aJw7OF4dGO4YwB0NFwJSdiUCvGjw20wyqsbh56zsk=;
-        b=FRI7E/2LG67AnQhQ7bREeBkBh1cYp7SgrT1wZaxzI227myw7I0tdMQIEULyHch3dkY
-         lxalM8q0jSak2hWgTRHPv8hKBXtnTTvVNLPuE1vwVW+H5dxxnoHgaleCtL9Kr4qKyDP4
-         9YA7r0T6naP9u1ezAx/paF5j1vsvKsaHbJHWc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725950018; x=1726554818;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=+/aJw7OF4dGO4YwB0NFwJSdiUCvGjw20wyqsbh56zsk=;
-        b=i89HYRV+noTgSXKqGSfuEtPG9pSeOKO7nBl0AJ7gR4oLl5Ny+iZBC2jx04m1ZU8K+g
-         RrwcckjJC0aNTN18lmataItiqXcxRv64NJ7oziepl0LmKl37ZQLCPqhtK958oeC49vwE
-         EoT3GDRxSKdt26g2OlZwdMeDpbZNlQwlcMuiO2dmpfzotYna4SLM4B/7Dx2rCRH8Dz1A
-         RHbrbs0wrcl/RDHT/ZyJPYm9nyetzJPM878oOF7cauGZKSjxOQ2F4/M+/CyUdXUTwjhB
-         pS4ijyTMOr+OeZgxSy10TSEAdSbPArbxksaAJyInWDRuVu6aT2vjggeODo2hnVOg2IHp
-         WgfA==
-X-Forwarded-Encrypted: i=1; AJvYcCWWT8dznkp/MqlLaQrmWsnAdC6VQv7sTqjxObsbHaREPBRTsEdzPh98+RLzxXCoeSiTvrnfv3iW4Qxdh4fP8w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwsLnjxFStO1JCqA8GrLlaZYCvQ7d7LJPn6aBsD2eChIsPNjlD+
-	Dx+mmTtKvJktygIRBJtYw7Sj+Byqs6AfFKSs/TYIybI8MFgkVxP2doiBi6ZyLQ==
-X-Google-Smtp-Source: AGHT+IHZAOmJi6NMS7af0hTyK5lmGDFP2TH09MXuOWEpUh2DhKcLpAp2eDRZDwrIT3I2ERS0dm+E9g==
-X-Received: by 2002:a05:6a20:2d0a:b0:1cf:451f:4624 with SMTP id adf61e73a8af0-1cf451f4876mr6216404637.21.1725950018062;
-        Mon, 09 Sep 2024 23:33:38 -0700 (PDT)
-Received: from yuanhsinte.c.googlers.com (30.191.80.34.bc.googleusercontent.com. [34.80.191.30])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-719090c9b08sm696684b3a.207.2024.09.09.23.33.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Sep 2024 23:33:37 -0700 (PDT)
-From: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Date: Tue, 10 Sep 2024 06:33:33 +0000
-Subject: [PATCH] arm64: dts: mt8183: set DMIC one-wire mode on Damu
+	id 1snv9O-00000004Zb4-1s8n;
+	Tue, 10 Sep 2024 07:19:00 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 45B445C056B;
+	Tue, 10 Sep 2024 07:18:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9DB94C4CEC3;
+	Tue, 10 Sep 2024 07:18:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1725952737;
+	bh=9ydDRWbSkEmSH0yWjxbosUDxX8EGmmmc6WbzVzm/nSA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=gMpvd9NguwJpAFP10z80KzOqQYeSvxYoeuRP1xdXsXKNlrgUaqi/OMOnN++CY1Soc
+	 no3ri1ow5z3mAnMlqZWEy3Gu4aQda3mr9nS/HzLqMdYmqJekDWM3FDLDqpgK6Y9dbi
+	 EaJnwOlZ9+1B9dUqA+jZsAEcWToXPvPke7Kze48JSHZmmfUpnIXOdT7mhHE2iOclyQ
+	 Zma4Jtkjdbjl/3XcCX43lf0o/A0lbQ3zBmlgYtwk9FwGAWosZ1nZcuWgA6Ff3/29DA
+	 NyyA0afAnGccoJ9zAU47h0HHAabghdnCZExKcuJPq5+Azp8spZSVD1SlDGXMEqY88R
+	 zqMQdN3H2bKnA==
+Message-ID: <64cc35c8-30df-4882-a933-f42119270f48@kernel.org>
+Date: Tue, 10 Sep 2024 09:18:51 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240910-one-wire-v1-1-d25486a6ba6d@chromium.org>
-X-B4-Tracking: v=1; b=H4sIADzo32YC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIxMDS0MD3fy8VN3yzKJUXaMUgzRzQ0PjlGSLJCWg8oKi1LTMCrBR0bG1tQD
- hj87jWgAAAA==
-X-Change-ID: 20240910-one-wire-2d0f7113dc8b
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Hsin-Yi Wang <hsinyi@chromium.org>, Hsin-Te Yuan <yuanhsinte@chromium.org>
-X-Mailer: b4 0.15-dev-7be4f
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 06/13] arm64: dts: mediatek: mt8188: Update VPPSYS node
+ name and compatible
+To: Fei Shao <fshao@chromium.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Conor Dooley
+ <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20240909111535.528624-1-fshao@chromium.org>
+ <20240909111535.528624-7-fshao@chromium.org>
+ <11bc2522-bc10-4dcf-8142-708b57d181cf@kernel.org>
+ <CAC=S1nhiJ=7yAucJsaYKUUBrwrxOVBMB2CF=bFwyLa2o-5RmWw@mail.gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <CAC=S1nhiJ=7yAucJsaYKUUBrwrxOVBMB2CF=bFwyLa2o-5RmWw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_233339_193268_4D4A6754 
-X-CRM114-Status: UNSURE (   9.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240910_001858_593180_CFD8320D 
+X-CRM114-Status: GOOD (  16.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,37 +123,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hsin-Yi Wang <hsinyi@chromium.org>
+On 10/09/2024 07:12, Fei Shao wrote:
+> On Mon, Sep 9, 2024 at 7:41 PM Krzysztof Kozlowski <krzk@kernel.org> wrote:
+>>
+>> On 09/09/2024 13:14, Fei Shao wrote:
+>>> Use and add "syscon" in VPPSYS node names and compatible to fix errors
+>>> from `make CHECK_DTBS=y mediatek/mt8188-evb.dtb`.
+>>>
+>>> Signed-off-by: Fei Shao <fshao@chromium.org>
+>>> ---
+>>>
+>>>  arch/arm64/boot/dts/mediatek/mt8188.dtsi | 8 ++++----
+>>>  1 file changed, 4 insertions(+), 4 deletions(-)
+>>>
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+>>> index 2900d78b7ceb..14e51a11f688 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+>>> @@ -1799,8 +1799,8 @@ mfgcfg: clock-controller@13fbf000 {
+>>>                       #clock-cells = <1>;
+>>>               };
+>>>
+>>> -             vppsys0: clock-controller@14000000 {
+>>> -                     compatible = "mediatek,mt8188-vppsys0";
+>>> +             vppsys0: syscon@14000000 {
+>>> +                     compatible = "mediatek,mt8188-vppsys0", "syscon";
+>>
+>> If this was working before, it looks like this is not a syscon and
+>> bindings need to be fixed.
+> 
+> I guess it's because the binding was later updated in commit
+> 26bcd8a53098 ("dt-bindings: arm: mediatek: mmsys: Add VPPSYS
+> compatible for MT8188"), and the corresponding DT update was unnoticed
+> at the time.
+> If that makes sense then this should be a valid fix.
 
-Sets DMIC one-wire mode on Damu.
-
-Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
-index 0b45aee2e29953b6117b462034a00dff2596b9ff..06a689feff52945d141d196d439cba034f25fdf6 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
-@@ -26,6 +26,10 @@ &touchscreen {
- 	hid-descr-addr = <0x0001>;
- };
- 
-+&mt6358codec {
-+	mediatek,dmic-mode = <1>; /* one-wire */
-+};
-+
- &qca_wifi {
- 	qcom,ath10k-calibration-variant = "GO_DAMU";
- };
-
----
-base-commit: da3ea35007d0af457a0afc87e84fddaebc4e0b63
-change-id: 20240910-one-wire-2d0f7113dc8b
+Not necessarily. Why not fixing bindings? Prove that bindings are
+correct, not DTS, first.
 
 Best regards,
--- 
-Hsin-Te Yuan <yuanhsinte@chromium.org>
+Krzysztof
 
 
