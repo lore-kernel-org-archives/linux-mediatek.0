@@ -4,129 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0BCBEDE9AB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Sep 2024 17:40:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4542AEDE9AC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Sep 2024 18:00:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KWiNzFgnhVTIr2U5XjVoFFKWQp70DaD9UbVVHcdtg9s=; b=fgdQlyuYeaT3YDkrOX1snEkpje
-	sHei8I+sR4FkDhYG6XuT5d1EjUOsgZKpC4rzzP8MZcDy6KjgbNbNnW2kCVh6h+AeUNrsNNTaRLTWZ
-	vnyp4rVqsOFR6RNTyKHJreCNLvLY6SivAd8EpH3zjYups0u7s9EH9vtTJhwQ7+YjsoyASjQUteTCN
-	slmE2NwAIrnrEtjPrIEsLk3gfkdunIJh/+c31pOgJfWFO8Om26VmEAsHbnkizrcX4372Y+4PxfHa1
-	qkJTOyzEhnGNVBrOOiz3gKGrDsRU1dchr6OtEAO0k7nVPknRakzY54+1ck4/gOH4CoKJYhBuwP42s
-	z/jxS7rA==;
+	bh=oRpBILn97hQlAgqu+BPpd8j0wIORp8/sYsHHAPwOHwk=; b=AzVjCMgioGC2Y8d5eQVLGRq9OZ
+	WriamGu4FcluLim/1MHD28KpM+XlrEfiCyVtg0Gq9SdTkF0lDEyim/XI3LTM3WKCSnQFWBT2c8fcB
+	J0mjELBMH9O6nQpukPf1BvHspd0Zbm2sAMG+bUxZ0Tec855YuRYnnTut9p12+fKybI/d1JNb3lOxX
+	J84WLI5LIQPAmD7Nl70hGcehegvQo0oOLkVW20RyoCC5DtMKhYQKtzFiGSehgsyvvdyV+XYRZ+zk5
+	bfo/Z/J6qH8iPEELM3w0rdVL4WnvzGIG3FPQignQwxmSyvwBoZSDLJjoL8w5fr+0Y6DnJ7g0ZmDRN
+	AURsbLtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1so4rE-00000006cRy-2F06;
-	Tue, 10 Sep 2024 17:40:52 +0000
-Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30])
+	id 1so5AL-00000006gcw-021P;
+	Tue, 10 Sep 2024 18:00:37 +0000
+Received: from 009.lax.mailroute.net ([199.89.1.12])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1so4r8-00000006cM4-3OOi
+	id 1so59W-00000006gSu-2vyv
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Sep 2024 17:40:50 +0000
-Received: by mail-qv1-xf30.google.com with SMTP id 6a1803df08f44-6bf6606363fso37706806d6.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Sep 2024 10:40:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=broadcom.com; s=google; t=1725990046; x=1726594846; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=KWiNzFgnhVTIr2U5XjVoFFKWQp70DaD9UbVVHcdtg9s=;
-        b=VfL6i2NMpuZeGJ/jOacZrwqFZjvqW70gepFyNHm2KrPGJmSEiVx2dAxGSz9fE3OoKx
-         bZRUTn3LgbTCyUwj9yVkow0tyfWacVEtUhOnmBL/TW5K2JGVThTdtAFU2S5u10mj1+94
-         K1qxhrIV0N3PsfD0X3eFdPeu+B8FEfK4bAlEE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725990046; x=1726594846;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=KWiNzFgnhVTIr2U5XjVoFFKWQp70DaD9UbVVHcdtg9s=;
-        b=fJEHbO1VqDZCG6lmJCNwoEHdyLncx37cfJetosgJz3Myhuu6vILaV3RjQJZ2bTl0as
-         ksvqu8R4Jk/1rh816SKPzciqG8/tciTcKlVZvRbzJyjcBRh46HM1/Rpo/+ooy9KKxw8a
-         diuSq5OqcHYqyw/72FKdOEVY8DmZtb3rjMO4B7AZ18xg0aJhCuNYke8JvjX9kpgl9PzU
-         lMB911yu47HOtC/Flj14elr0R4Up9RcNWRO2FwZ1ujDpAO6XqWqWmpiaCj58vSY+A4YB
-         Ckm3vmkzYCGaBw1hB38LheiDJ/M4g21QehHXum3uAZiyKC4rWQ1Yw+fRG6B6RxNa6+fq
-         cnLw==
-X-Forwarded-Encrypted: i=1; AJvYcCW8DOKjIgv9efL6YteXkSm73Ncqq9i/IC/WqTlrMMOYb+ivA3DWhD7dkz0iMrc/Nq7N3Y1RaiDpT5W6TmgPYA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxp2KR9ovM3ym7Ne0Lv2djQ/OlvE3tjyXpjkwK7VsI5bdvLH77s
-	WMoMKT3rPJA76BkH2ThvnulE4dYEqEXfQsvKZ8lEf+ymaSCehkU3N5GbLAli3A==
-X-Google-Smtp-Source: AGHT+IGz2GsDK4EAX2RRXqgrurkXiUEF+O3nF/sGJkyNvVVDZ7mgEWRLVZAnLKq/fgLp0Ujnay4gnA==
-X-Received: by 2002:a05:6214:440c:b0:6c3:58b7:d703 with SMTP id 6a1803df08f44-6c5284fff35mr166317166d6.22.1725990045599;
-        Tue, 10 Sep 2024 10:40:45 -0700 (PDT)
-Received: from [10.67.48.245] ([192.19.223.252])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6c53474f79fsm31885006d6.80.2024.09.10.10.40.41
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 10 Sep 2024 10:40:44 -0700 (PDT)
-Message-ID: <b6604e07-9add-4e93-ad6b-f1efc336e3bf@broadcom.com>
-Date: Tue, 10 Sep 2024 10:40:40 -0700
+	Tue, 10 Sep 2024 17:59:47 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 009.lax.mailroute.net (Postfix) with ESMTP id 4X3BL967XNzlgVnf;
+	Tue, 10 Sep 2024 17:59:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1725991174; x=1728583175; bh=oRpBILn97hQlAgqu+BPpd8j0
+	wIORp8/sYsHHAPwOHwk=; b=UD4IcbBkrLSUorg1mwaLj3gCH9px3fa3/cCIWLau
+	Yi0TC9URYhFajnf5t4Xx6rkFrNoZk+jsnhvrC0du5Kr6oElQ/ecp8xvGr2gHc2RX
+	/h5Kc7V62EB2570/EGWCWP1muZwaPCVoczra9dhbTh11nOSNGTaqnE53/JK5bOUq
+	ErWn9eS9qqM/7YbqqjkQcsK43u4BJfvAMtsIv428kC4A3+wTUPlISJD5b+f14JYu
+	IZskNUv4U8YkBONQ7QN5aVWi719R+QpO6tMPcCItbqk6H8ncbs6xPLelstjujOdG
+	OJVevr8exVNRhq6KTBu5rwT8HR6I88x6sTQg1f26RFXwzw==
+X-Virus-Scanned: by MailRoute
+Received: from 009.lax.mailroute.net ([127.0.0.1])
+ by localhost (009.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id IFyM8jt2rizU; Tue, 10 Sep 2024 17:59:34 +0000 (UTC)
+Received: from [100.66.154.22] (unknown [104.135.204.82])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 009.lax.mailroute.net (Postfix) with ESMTPSA id 4X3BKw4H3dzlgTWQ;
+	Tue, 10 Sep 2024 17:59:32 +0000 (UTC)
+Message-ID: <e42abf07-ba6b-4301-8717-8d5b01d56640@acm.org>
+Date: Tue, 10 Sep 2024 10:59:31 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] net: dsa: RCU-protect dsa_ptr in struct net_device
-To: "A. Sverdlin" <alexander.sverdlin@siemens.com>, netdev@vger.kernel.org
-Cc: =?UTF-8?B?QXIxbsOnIMOcTkFM?= <arinc.unal@arinc9.com>,
- Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- UNGLinuxDriver@microchip.com,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
- Mark Lee <Mark-MC.Lee@mediatek.com>, Roopa Prabhu <roopa@nvidia.com>,
- Nikolay Aleksandrov <razor@blackwall.org>,
- linux-mediatek@lists.infradead.org, bridge@lists.linux.dev,
- stable@vger.kernel.org
-References: <20240910130321.337154-1-alexander.sverdlin@siemens.com>
- <20240910130321.337154-2-alexander.sverdlin@siemens.com>
+Subject: Re: [PATCH v4 2/2] ufs: core: requeue aborted request
+To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
+ jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com,
+ quic_nguyenb@quicinc.com, stable@vger.kernel.org
+References: <20240910073035.25974-1-peter.wang@mediatek.com>
+ <20240910073035.25974-3-peter.wang@mediatek.com>
 Content-Language: en-US
-From: Florian Fainelli <florian.fainelli@broadcom.com>
-Autocrypt: addr=florian.fainelli@broadcom.com; keydata=
- xsBNBFPAG8ABCAC3EO02urEwipgbUNJ1r6oI2Vr/+uE389lSEShN2PmL3MVnzhViSAtrYxeT
- M0Txqn1tOWoIc4QUl6Ggqf5KP6FoRkCrgMMTnUAINsINYXK+3OLe7HjP10h2jDRX4Ajs4Ghs
- JrZOBru6rH0YrgAhr6O5gG7NE1jhly+EsOa2MpwOiXO4DE/YKZGuVe6Bh87WqmILs9KvnNrQ
- PcycQnYKTVpqE95d4M824M5cuRB6D1GrYovCsjA9uxo22kPdOoQRAu5gBBn3AdtALFyQj9DQ
- KQuc39/i/Kt6XLZ/RsBc6qLs+p+JnEuPJngTSfWvzGjpx0nkwCMi4yBb+xk7Hki4kEslABEB
- AAHNMEZsb3JpYW4gRmFpbmVsbGkgPGZsb3JpYW4uZmFpbmVsbGlAYnJvYWRjb20uY29tPsLB
- IQQQAQgAywUCZWl41AUJI+Jo+hcKAAG/SMv+fS3xUQWa0NryPuoRGjsA3SAUAAAAAAAWAAFr
- ZXktdXNhZ2UtbWFza0BwZ3AuY29tjDAUgAAAAAAgAAdwcmVmZXJyZWQtZW1haWwtZW5jb2Rp
- bmdAcGdwLmNvbXBncG1pbWUICwkIBwMCAQoFF4AAAAAZGGxkYXA6Ly9rZXlzLmJyb2FkY29t
- Lm5ldAUbAwAAAAMWAgEFHgEAAAAEFQgJChYhBNXZKpfnkVze1+R8aIExtcQpvGagAAoJEIEx
- tcQpvGagWPEH/2l0DNr9QkTwJUxOoP9wgHfmVhqc0ZlDsBFv91I3BbhGKI5UATbipKNqG13Z
- TsBrJHcrnCqnTRS+8n9/myOF0ng2A4YT0EJnayzHugXm+hrkO5O9UEPJ8a+0553VqyoFhHqA
- zjxj8fUu1px5cbb4R9G4UAySqyeLLeqnYLCKb4+GklGSBGsLMYvLmIDNYlkhMdnnzsSUAS61
- WJYW6jjnzMwuKJ0ZHv7xZvSHyhIsFRiYiEs44kiYjbUUMcXor/uLEuTIazGrE3MahuGdjpT2
- IOjoMiTsbMc0yfhHp6G/2E769oDXMVxCCbMVpA+LUtVIQEA+8Zr6mX0Yk4nDS7OiBlvOwE0E
- U8AbwQEIAKxr71oqe+0+MYCc7WafWEcpQHFUwvYLcdBoOnmJPxDwDRpvU5LhqSPvk/yJdh9k
- 4xUDQu3rm1qIW2I9Puk5n/Jz/lZsqGw8T13DKyu8eMcvaA/irm9lX9El27DPHy/0qsxmxVmU
- pu9y9S+BmaMb2CM9IuyxMWEl9ruWFS2jAWh/R8CrdnL6+zLk60R7XGzmSJqF09vYNlJ6Bdbs
- MWDXkYWWP5Ub1ZJGNJQ4qT7g8IN0qXxzLQsmz6tbgLMEHYBGx80bBF8AkdThd6SLhreCN7Uh
- IR/5NXGqotAZao2xlDpJLuOMQtoH9WVNuuxQQZHVd8if+yp6yRJ5DAmIUt5CCPcAEQEAAcLB
- gQQYAQIBKwUCU8AbwgUbDAAAAMBdIAQZAQgABgUCU8AbwQAKCRCTYAaomC8PVQ0VCACWk3n+
- obFABEp5Rg6Qvspi9kWXcwCcfZV41OIYWhXMoc57ssjCand5noZi8bKg0bxw4qsg+9cNgZ3P
- N/DFWcNKcAT3Z2/4fTnJqdJS//YcEhlr8uGs+ZWFcqAPbteFCM4dGDRruo69IrHfyyQGx16s
- CcFlrN8vD066RKevFepb/ml7eYEdN5SRALyEdQMKeCSf3mectdoECEqdF/MWpfWIYQ1hEfdm
- C2Kztm+h3Nkt9ZQLqc3wsPJZmbD9T0c9Rphfypgw/SfTf2/CHoYVkKqwUIzI59itl5Lze+R5
- wDByhWHx2Ud2R7SudmT9XK1e0x7W7a5z11Q6vrzuED5nQvkhAAoJEIExtcQpvGagugcIAJd5
- EYe6KM6Y6RvI6TvHp+QgbU5dxvjqSiSvam0Ms3QrLidCtantcGT2Wz/2PlbZqkoJxMQc40rb
- fXa4xQSvJYj0GWpadrDJUvUu3LEsunDCxdWrmbmwGRKqZraV2oG7YEddmDqOe0Xm/NxeSobc
- MIlnaE6V0U8f5zNHB7Y46yJjjYT/Ds1TJo3pvwevDWPvv6rdBeV07D9s43frUS6xYd1uFxHC
- 7dZYWJjZmyUf5evr1W1gCgwLXG0PEi9n3qmz1lelQ8lSocmvxBKtMbX/OKhAfuP/iIwnTsww
- 95A2SaPiQZA51NywV8OFgsN0ITl2PlZ4Tp9hHERDe6nQCsNI/Us=
-In-Reply-To: <20240910130321.337154-2-alexander.sverdlin@siemens.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20240910073035.25974-3-peter.wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240910_104046_950600_DDC3F857 
-X-CRM114-Status: GOOD (  29.70  )
+X-CRM114-CacheID: sfid-20240910_105946_800725_AB90F11E 
+X-CRM114-Status: GOOD (  25.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -141,262 +90,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/10/24 06:03, 'A. Sverdlin' via BCM-KERNEL-FEEDBACK-LIST,PDL wrote:
-> From: Alexander Sverdlin <alexander.sverdlin@siemens.com>
-> 
-> There are multiple races of zeroing dsa_ptr in struct net_device (on
-> shutdown/remove) against asynchronous dereferences all over the net
-> code. Widespread pattern is as follows:
-> 
-> CPU0					CPU1
-> if (netdev_uses_dsa())
-> 					dev->dsa_ptr = NULL;
->          dev->dsa_ptr->...
-> 
-> One of the possible crashes:
-> 
-> Unable to handle kernel NULL pointer dereference at virtual address 0000000000000010
-> CPU: 0 PID: 12 Comm: ksoftirqd/0 Tainted: G O 6.1.99+ #1
-> pc : lan9303_rcv
-> lr : lan9303_rcv
-> Call trace:
->   lan9303_rcv
->   dsa_switch_rcv
->   __netif_receive_skb_list_core
->   netif_receive_skb_list_internal
->   napi_gro_receive
->   fec_enet_rx_napi
->   __napi_poll
->   net_rx_action
-> ...
-> 
-> RCU-protect dsa_ptr and use rcu_dereference() or rtnl_dereference()
-> depending on the calling context.
-> 
-> Rename netdev_uses_dsa() into __netdev_uses_dsa_currently()
-> (assumes ether RCU or RTNL lock held) and netdev_uses_dsa_currently()
-> variants which better reflect the uselessness of the function's
-> return value, which becomes outdated right after the call.
-> 
-> Fixes: ee534378f005 ("net: dsa: fix panic when DSA master device unbinds on shutdown")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Alexander Sverdlin <alexander.sverdlin@siemens.com>
+On 9/10/24 12:30 AM, peter.wang@mediatek.com wrote:
+> ufshcd_abort_all froce abort all on-going command and the host
+                    ^^^^^ ^^^^^              ^^^^^^^         ^^^^
+                forcibly? aborts?            commands?   host controller?
+> will automatically fill in the OCS field of the corresponding
+> response with OCS_ABORTED based on different working modes.
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The host controller only sets the OCS field to OCS_ABORTED in MCQ mode
+if the host controller successfully aborted the command. If the
+abort TMF is submitted to the UFS device, the OCS field won't be changed
+into OCS_ABORTED. In SDB mode, the host controller does not modify the 
+OCS field either.
 
-Thanks for doing this work, just a few nits below. This is likely to be 
-difficult to backport to stable trees.
+> SDB mode: aborts a command using UTRLCLR. Task Management response
+> which means a Transfer Request was aborted.
 
-> ---
->   drivers/net/dsa/mt7530.c                    |   3 +-
->   drivers/net/dsa/ocelot/felix.c              |   3 +-
->   drivers/net/dsa/qca/qca8k-8xxx.c            |   3 +-
->   drivers/net/ethernet/broadcom/bcmsysport.c  |   8 +-
->   drivers/net/ethernet/mediatek/airoha_eth.c  |   2 +-
->   drivers/net/ethernet/mediatek/mtk_eth_soc.c |  22 +++--
->   drivers/net/ethernet/mediatek/mtk_ppe.c     |  15 ++-
->   include/linux/netdevice.h                   |   2 +-
->   include/net/dsa.h                           |  36 +++++--
->   include/net/dsa_stubs.h                     |   6 +-
->   net/bridge/br_input.c                       |   2 +-
->   net/core/dev.c                              |   3 +-
->   net/core/flow_dissector.c                   |  19 ++--
->   net/dsa/conduit.c                           |  66 ++++++++-----
->   net/dsa/dsa.c                               |  19 ++--
->   net/dsa/port.c                              |   3 +-
->   net/dsa/tag.c                               |   3 +-
->   net/dsa/tag.h                               |  19 ++--
->   net/dsa/tag_8021q.c                         |  10 +-
->   net/dsa/tag_brcm.c                          |   2 +-
->   net/dsa/tag_dsa.c                           |   8 +-
->   net/dsa/tag_qca.c                           |  10 +-
->   net/dsa/tag_sja1105.c                       |  22 +++--
->   net/dsa/user.c                              | 104 +++++++++++---------
->   net/ethernet/eth.c                          |   2 +-
->   25 files changed, 240 insertions(+), 152 deletions(-)
-> 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index ec18e68bf3a8..82d3f1786156 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -20,6 +20,7 @@
->   #include <linux/reset.h>
->   #include <linux/gpio/consumer.h>
->   #include <linux/gpio/driver.h>
-> +#include <linux/rtnetlink.h>
->   #include <net/dsa.h>
->   
->   #include "mt7530.h"
-> @@ -3092,7 +3093,7 @@ mt753x_conduit_state_change(struct dsa_switch *ds,
->   			    const struct net_device *conduit,
->   			    bool operational)
->   {
-> -	struct dsa_port *cpu_dp = conduit->dsa_ptr;
-> +	struct dsa_port *cpu_dp = rtnl_dereference(conduit->dsa_ptr);
+Hmm ... my understanding is that clearing a bit from UTRLCLR is only
+allowed *after* a command has been aborted and also that clearing a bit
+from this register does not abort a command but only frees the resources
+in the host controller associated with the command.
 
-Out of curiosity, only sparse will likely be able to recognize the __rcu 
-annotation of net_device::dsa_ptr so there is still unfortunately room 
-for programmers to forget about using rtnl_dereference(), this should 
-hopefully be caught by CI when patches are submitted.
+> For these two cases, set a flag to notify SCSI to requeue the
+> command after receiving response with OCS_ABORTED.
 
->   	struct mt7530_priv *priv = ds->priv;
->   	int val = 0;
->   	u8 mask;
-> diff --git a/drivers/net/dsa/ocelot/felix.c b/drivers/net/dsa/ocelot/felix.c
-> index 4a705f7333f4..f6bc0ff0c116 100644
-> --- a/drivers/net/dsa/ocelot/felix.c
-> +++ b/drivers/net/dsa/ocelot/felix.c
-> @@ -21,6 +21,7 @@
->   #include <linux/of_net.h>
->   #include <linux/pci.h>
->   #include <linux/of.h>
-> +#include <linux/rtnetlink.h>
->   #include <net/pkt_sched.h>
->   #include <net/dsa.h>
->   #include "felix.h"
-> @@ -57,7 +58,7 @@ static int felix_cpu_port_for_conduit(struct dsa_switch *ds,
->   		return lag;
+I think there is only one case when the SCSI core needs to be requested
+to requeue a command, namely when the UFS driver decided to initiate the
+abort (ufshcd_abort_all()).
+
+> @@ -7561,6 +7551,20 @@ int ufshcd_try_to_abort_task(struct ufs_hba *hba, int tag)
+>   		goto out;
 >   	}
 >   
-> -	cpu_dp = conduit->dsa_ptr;
-> +	cpu_dp = rtnl_dereference(conduit->dsa_ptr);
->   	return cpu_dp->index;
->   }
->   
-> diff --git a/drivers/net/dsa/qca/qca8k-8xxx.c b/drivers/net/dsa/qca/qca8k-8xxx.c
-> index f8d8c70642c4..10b4d7e9be2f 100644
-> --- a/drivers/net/dsa/qca/qca8k-8xxx.c
-> +++ b/drivers/net/dsa/qca/qca8k-8xxx.c
-> @@ -20,6 +20,7 @@
->   #include <linux/gpio/consumer.h>
->   #include <linux/etherdevice.h>
->   #include <linux/dsa/tag_qca.h>
-> +#include <linux/rtnetlink.h>
->   
->   #include "qca8k.h"
->   #include "qca8k_leds.h"
-> @@ -1754,7 +1755,7 @@ static void
->   qca8k_conduit_change(struct dsa_switch *ds, const struct net_device *conduit,
->   		     bool operational)
->   {
-> -	struct dsa_port *dp = conduit->dsa_ptr;
-> +	struct dsa_port *dp = rtnl_dereference(conduit->dsa_ptr);
->   	struct qca8k_priv *priv = ds->priv;
->   
->   	/* Ethernet MIB/MDIO is only supported for CPU port 0 */
-> diff --git a/drivers/net/ethernet/broadcom/bcmsysport.c b/drivers/net/ethernet/broadcom/bcmsysport.c
-> index c9faa8540859..bd9bc081346d 100644
-> --- a/drivers/net/ethernet/broadcom/bcmsysport.c
-> +++ b/drivers/net/ethernet/broadcom/bcmsysport.c
-> @@ -145,7 +145,7 @@ static void bcm_sysport_set_rx_csum(struct net_device *dev,
->   	 * sure we tell the RXCHK hardware to expect a 4-bytes Broadcom
->   	 * tag after the Ethernet MAC Source Address.
->   	 */
-> -	if (netdev_uses_dsa(dev))
-> +	if (__netdev_uses_dsa_currently(dev))
-
-I appreciate the thought given into the function name, though I am not 
-sure it is warranted to suffix with _currently().
-
->   		reg |= RXCHK_BRCM_TAG_EN;
->   	else
->   		reg &= ~RXCHK_BRCM_TAG_EN;
-> @@ -173,7 +173,7 @@ static void bcm_sysport_set_tx_csum(struct net_device *dev,
->   	 * checksum to be computed correctly when using VLAN HW acceleration,
->   	 * else it has no effect, so it can always be turned on.
->   	 */
-> -	if (netdev_uses_dsa(dev))
-> +	if (__netdev_uses_dsa_currently(dev))
->   		reg |= tdma_control_bit(priv, SW_BRCM_TAG);
->   	else
->   		reg &= ~tdma_control_bit(priv, SW_BRCM_TAG);
-> @@ -1950,7 +1950,7 @@ static inline void gib_set_pad_extension(struct bcm_sysport_priv *priv)
->   
->   	reg = gib_readl(priv, GIB_CONTROL);
->   	/* Include Broadcom tag in pad extension and fix up IPG_LENGTH */
-> -	if (netdev_uses_dsa(priv->netdev)) {
-> +	if (__netdev_uses_dsa_currently(priv->netdev)) {
->   		reg &= ~(GIB_PAD_EXTENSION_MASK << GIB_PAD_EXTENSION_SHIFT);
->   		reg |= ENET_BRCM_TAG_LEN << GIB_PAD_EXTENSION_SHIFT;
->   	}
-> @@ -2299,7 +2299,7 @@ static u16 bcm_sysport_select_queue(struct net_device *dev, struct sk_buff *skb,
->   	struct bcm_sysport_tx_ring *tx_ring;
->   	unsigned int q, port;
->   
-> -	if (!netdev_uses_dsa(dev))
-> +	if (!__netdev_uses_dsa_currently(dev))
->   		return netdev_pick_tx(dev, skb, NULL);
->   
->   	/* DSA tagging layer will have configured the correct queue */
-> diff --git a/drivers/net/ethernet/mediatek/airoha_eth.c b/drivers/net/ethernet/mediatek/airoha_eth.c
-> index 1c5b85a86df1..f7425d393b22 100644
-> --- a/drivers/net/ethernet/mediatek/airoha_eth.c
-> +++ b/drivers/net/ethernet/mediatek/airoha_eth.c
-> @@ -2255,7 +2255,7 @@ static int airoha_dev_open(struct net_device *dev)
->   	if (err)
->   		return err;
->   
-> -	if (netdev_uses_dsa(dev))
-> +	if (__netdev_uses_dsa_currently(dev))
->   		airoha_fe_set(eth, REG_GDM_INGRESS_CFG(port->id),
->   			      GDM_STAG_EN_MASK);
->   	else
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index 16ca427cf4c3..82a828349323 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -24,6 +24,7 @@
->   #include <linux/pcs/pcs-mtk-lynxi.h>
->   #include <linux/jhash.h>
->   #include <linux/bitfield.h>
-> +#include <linux/rcupdate.h>
->   #include <net/dsa.h>
->   #include <net/dst_metadata.h>
->   #include <net/page_pool/helpers.h>
-> @@ -1375,7 +1376,8 @@ static void mtk_tx_set_dma_desc_v2(struct net_device *dev, void *txd,
->   		/* tx checksum offload */
->   		if (info->csum)
->   			data |= TX_DMA_CHKSUM_V2;
-> -		if (mtk_is_netsys_v3_or_greater(eth) && netdev_uses_dsa(dev))
-> +		if (mtk_is_netsys_v3_or_greater(eth) &&
-> +		    __netdev_uses_dsa_currently(dev))
->   			data |= TX_DMA_SPTAG_V3;
->   	}
->   	WRITE_ONCE(desc->txd5, data);
-> @@ -2183,7 +2185,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
->   		 * hardware treats the MTK special tag as a VLAN and untags it.
->   		 */
->   		if (mtk_is_netsys_v1(eth) && (trxd.rxd2 & RX_DMA_VTAG) &&
-> -		    netdev_uses_dsa(netdev)) {
-> +		    __netdev_uses_dsa_currently(netdev)) {
->   			unsigned int port = RX_DMA_VPID(trxd.rxd3) & GENMASK(2, 0);
->   
->   			if (port < ARRAY_SIZE(eth->dsa_meta) &&
-> @@ -3304,7 +3306,7 @@ static void mtk_gdm_config(struct mtk_eth *eth, u32 id, u32 config)
->   
->   	val |= config;
->   
-> -	if (eth->netdev[id] && netdev_uses_dsa(eth->netdev[id]))
-> +	if (eth->netdev[id] && __netdev_uses_dsa_currently(eth->netdev[id]))
->   		val |= MTK_GDMA_SPECIAL_TAG;
->   
->   	mtk_w32(eth, val, MTK_GDMA_FWD_CFG(id));
-> @@ -3313,12 +3315,16 @@ static void mtk_gdm_config(struct mtk_eth *eth, u32 id, u32 config)
->   
->   static bool mtk_uses_dsa(struct net_device *dev)
->   {
-> +	bool ret = false;
->   #if IS_ENABLED(CONFIG_NET_DSA)
-> -	return netdev_uses_dsa(dev) &&
-> -	       dev->dsa_ptr->tag_ops->proto == DSA_TAG_PROTO_MTK;
-> -#else
-> -	return false;
-> +	struct dsa_port *dp;
+> +	/*
+> +	 * When the host software receives a "FUNCTION COMPLETE", set flag
+> +	 * to requeue command after receive response with OCS_ABORTED
+> +	 * SDB mode: UTRLCLR Task Management response which means a Transfer
+> +	 *           Request was aborted.
+> +	 * MCQ mode: Host will post to CQ with OCS_ABORTED after SQ cleanup
+> +	 * This flag is set because ufshcd_abort_all forcibly aborts all
+> +	 * commands, and the host will automatically fill in the OCS field
+> +	 * of the corresponding response with OCS_ABORTED.
+> +	 * Therefore, upon receiving this response, it needs to be requeued.
+> +	 */
+> +	if (!err)
+> +		lrbp->abort_initiated_by_err = true;
 > +
-> +	rcu_read_lock();
-> +	dp = rcu_dereference(dev->dsa_ptr);
-> +	ret = dp && dp->tag_ops->proto == DSA_TAG_PROTO_MTK;
-> +	rcu_read_unlock();
+>   	err = ufshcd_clear_cmd(hba, tag);
+>   	if (err)
+>   		dev_err(hba->dev, "%s: Failed clearing cmd at tag %d, err %d\n",
 
-This pattern repeats in mtk_ppe.c, a possible factoring for later.
--- 
-Florian
+The above change is misplaced. ufshcd_try_to_abort_task() can be called
+when the SCSI core decides to abort a command while
+abort_initiated_by_err must not be set in that case. Please move the
+above code block into ufshcd_abort_one().
+
+Regarding the word "host" in the above comment block: the host is the 
+Android device. I think that in the above comment "host" should be
+changed into "host controller".
+
+> diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+> index 0fd2aebac728..15b357672ca5 100644
+> --- a/include/ufs/ufshcd.h
+> +++ b/include/ufs/ufshcd.h
+> @@ -173,6 +173,8 @@ struct ufs_pm_lvl_states {
+>    * @crypto_key_slot: the key slot to use for inline crypto (-1 if none)
+>    * @data_unit_num: the data unit number for the first block for inline crypto
+>    * @req_abort_skip: skip request abort task flag
+> + * @abort_initiated_by_err: The flag is specifically used to handle aborts
+> + *                          caused by errors due to host/device communication
+
+The "abort_initiated_by_err" name still seems confusing to me. Please
+make it more clear that this flag is only set if the UFS error handler
+decides to abort a command. How about "abort_initiated_by_eh"?
+
+Please also make the description of this member variable more clear.
+
+Thanks,
+
+Bart.
 
