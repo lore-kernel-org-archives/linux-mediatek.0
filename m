@@ -4,94 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C025ECE582
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Sep 2024 08:45:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 665B1ECE564
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Sep 2024 08:47:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LQLPSb8ldyG1OVVh0BB+yFOhjzNrq/gu6sGXkPkLj9A=; b=R5SCvY+xeQce/PK+6K/c2Ps1xa
-	qt5hHZwmfMiTy/L70+f26qVypgZplMsrlsDVXMf5hszC19c/h27kj8kOYlI8En2LT1pOJ8Q0pmwii
-	QEHkE/vT8qWP23r6EsF+wiK1QDcI5pkntMBnXQb79fWGjcmnfV292wnHb8B+/SInW9a6XFdzXAdwj
-	rr4cSQhc9B3C81tb2VO5zp0CQ3rT37b16D5aAuO2633g9Rr2WfrVQ/z6c82CPqEpyzMUBw3tlt2xP
-	FO86oaFroymvnK73smJsPre++55lmaWsscCj+Nva0FJEIcaocfoXYqixCgH7iPcslOEwX/x0OLJon
-	8wOeXTtg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=cBBzknlK+lLnrfwKbcqJfsrQ3C2pRWbeBhTXiYHvZyE=; b=jzo3Nk0ZiQ9m+s1O7mpA1GNQXk
+	7H3qNXU1XQXWo5DdvzTX5oNcqkTpRZnog1OgcAMDSesZspLlZn3oMbPhabJpsdUnZVs84uvZ37jQp
+	zs0uHHgAfJnsiCALuDIbiKC9omOPfU5rZsCbMZQr8vB3+5/Iq7eBvmWOOi2aMM9nczVjcN2hWCQaX
+	yeADphCZvAwGergic5JsMhhi64ARsLRUrHk3nmrKR7ANUhbcgqA8noC+Y0mAmdqbEUzlBPIPNuCKO
+	iRMYUsNzsZA11hXP90UbWrCxfDXdvNi4WwIkmnkLW+z6KSB3DkHNxs5WUAjdItV5Ht1+OL7kZ8jJe
+	FI1ksGpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snwV6-00000004s2C-2WoK;
-	Tue, 10 Sep 2024 08:45:28 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1snwXR-00000004sPF-3hN9;
+	Tue, 10 Sep 2024 08:47:53 +0000
+Received: from mail-il1-x134.google.com ([2607:f8b0:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snvLs-00000004bhM-0uLO
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 10 Sep 2024 07:31:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=LQLPSb8ldyG1OVVh0BB+yFOhjzNrq/gu6sGXkPkLj9A=; b=B/CvQai5dThyabJ/W4XK83A0wR
-	8oBQcS1duFnGK5ERNCaOgoGN0sGVmBNT3K7zpftC+YAHdOXGEfoj0lQysprAQ2byhkS3tA3dCxAOx
-	g7Uk5IS7FM4QrDx7kwF7qYboCOoHCt8pgHKnCA3Di0zulltxeEHEf8UNQii4ExK15eEKR2lfnBKD/
-	EQPM3J27JI9QRjdqOMFR8CACa8cNsa/QZmAYlhaFC94vNqLanbEnwa0b0PckRfL14d6FsqluPBtNh
-	Nj4QoIIMwcC5tPYhi1RAgxnPlSHnH0HzyCJKgX4+sjmixp4qJkdysuN4sRmBLrrS+XFUyU7i5tl7F
-	edW7v5QQ==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1snvLo-00000000gk9-2UFY
+	id 1snwXO-00000004sNY-3hcN
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Sep 2024 07:31:50 +0000
-X-UUID: b421dd466f4611efb3adad29d29602c1-20240910
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=LQLPSb8ldyG1OVVh0BB+yFOhjzNrq/gu6sGXkPkLj9A=;
-	b=XYoSD9To7R83Di0pr6preyBmmIW6CEX08nva6ZokJfaEeOXgmIp4UPretQd+REZHo0Kwd1+QP7+IaVa8r+DrtjsM+d2e1aW7ffWxcWpeJBoWNEgJN7xPTh14vPdpYMPBheFeUXHW4DXOfna4S1xSUAN0Xd9s6jjOcJcZ3yQaTCE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:5b1447c4-5dfb-4024-be47-bea14c4ad2bc,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6dc6a47,CLOUDID:7b7af8cf-7921-4900-88a1-3aef019a55ce,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: b421dd466f4611efb3adad29d29602c1-20240910
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 871869459; Tue, 10 Sep 2024 00:31:33 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 10 Sep 2024 00:30:37 -0700
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 10 Sep 2024 15:30:37 +0800
-From: <peter.wang@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
-	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>,
-	<quic_nguyenb@quicinc.com>, <stable@vger.kernel.org>
-Subject: [PATCH v4 1/2] ufs: core: fix the issue of ICU failure
-Date: Tue, 10 Sep 2024 15:30:34 +0800
-Message-ID: <20240910073035.25974-2-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240910073035.25974-1-peter.wang@mediatek.com>
-References: <20240910073035.25974-1-peter.wang@mediatek.com>
+	Tue, 10 Sep 2024 08:47:52 +0000
+Received: by mail-il1-x134.google.com with SMTP id e9e14a558f8ab-39e6a1e0079so1872175ab.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Sep 2024 01:47:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1725958069; x=1726562869; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=cBBzknlK+lLnrfwKbcqJfsrQ3C2pRWbeBhTXiYHvZyE=;
+        b=HgX3Nxa3FyXuHALdow/uBm2GJJ5PvyM0CNLuWf2jabGqeYIS5p13G4hBNjyj7yGql+
+         A0G9A9182jUhRghc0O5LS8NCG3P7XZCVRiF3Vphih83E6WWX1yRcjC9GWxz5kdeHZ7yI
+         YgP5n0NG3nvH22PozO/iskfD4J0htJLExt9KI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1725958069; x=1726562869;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=cBBzknlK+lLnrfwKbcqJfsrQ3C2pRWbeBhTXiYHvZyE=;
+        b=snAufnYvBOHjiYOBxSIOTLsBCgeeFMcTibMWwJRAxl2Da9JR8KINygEZmE4Zsm085v
+         dFPM15iHvCGystCB+JxtQ7WXIwuApOlmzoIcnut9phPo3zELa5IAvkIBNf2QjXlaJ5fq
+         QBMu/YNTq6wEpa5AIToWp6u108A/3obd3QsvM9oNUfGXmQ+ajnzgVSOnmkNef4hrH1f6
+         Vh/NpmvvDV5E8uRpb+NI7drbw3UyEBQFwutn4/r3uwGUM/dS6+TWS9fVLDAgiEOKrQlv
+         F7nJRL6pIClr++/3nKPZJINGuYe5BTM9qG9AoyLP/UKOisP+lt+JLL3xMCeIY2xu8r0l
+         I3cA==
+X-Forwarded-Encrypted: i=1; AJvYcCWQf7rbLDM2FK1X37eZepwuYHnlRp2GSW+ATekAyjRtySamThzu39KKdUWkZ+Ypp+KoQOppeAcVrRoJ5Kpv4Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw4IQiSdl8Ck3k/OZuiasYoFvA1TnVBWbFaE/erY6Cy2x5YZHUm
+	gQaG8ghE6HRh9YnLee3M8f0xrFXzV6u8JySId7yhKAUWV3eSJY6Mw4jqiYQoTQ==
+X-Google-Smtp-Source: AGHT+IFOVFWWzyNSgsRLILhNfgn8ya/XNChSnkapjK3BwdkIfk05bwfwygl28fTApbbAe6jPdsd0hQ==
+X-Received: by 2002:a05:6e02:1d82:b0:3a0:4603:70df with SMTP id e9e14a558f8ab-3a04f07e7d9mr156667075ab.7.1725958068990;
+        Tue, 10 Sep 2024 01:47:48 -0700 (PDT)
+Received: from yuanhsinte.c.googlers.com (30.191.80.34.bc.googleusercontent.com. [34.80.191.30])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7d8b0fbffa0sm3931470a12.1.2024.09.10.01.47.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Sep 2024 01:47:48 -0700 (PDT)
+From: Hsin-Te Yuan <yuanhsinte@chromium.org>
+Date: Tue, 10 Sep 2024 08:47:44 +0000
+Subject: [PATCH v2] arm64: dts: mt8183: set DMIC one-wire mode on Damu
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240910-one-wire-v2-1-2bb40d5a3cf8@chromium.org>
+X-B4-Tracking: v=1; b=H4sIAK8H4GYC/23MQQ7CIBCF4as0sxYDWLG68h6mCwrTMosWMyhqG
+ u4udu3yf3n5VkjIhAkuzQqMmRLFpYbeNeCCXSYU5GuDlrqVZyVFXFC8iFFoL8eTUgfvugHq/c4
+ 40nujbn3tQOkR+bPJWf3WP0hWQgmvj21nrBms8VcXOM70nPeRJ+hLKV+4ODgSowAAAA==
+X-Change-ID: 20240910-one-wire-2d0f7113dc8b
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Hsin-Te Yuan <yuanhsinte@chromium.org>
+X-Mailer: b4 0.15-dev-7be4f
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240910_083149_119660_7D2BBE79 
-X-CRM114-Status: GOOD (  12.00  )
+X-CRM114-CacheID: sfid-20240910_014750_994311_68604C57 
+X-CRM114-Status: GOOD (  10.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,63 +96,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
 
-When setting the ICU bit without using read-modify-write,
-SQRTCy will restart SQ again and receive an RTC return
-error code 2 (Failure - SQ not stopped).
+Sets DMIC one-wire mode on Damu.
 
-Additionally, the error log has been modified so that
-this type of error can be observed.
-
-Fixes: ab248643d3d6 ("scsi: ufs: core: Add error handling for MCQ mode")
-Cc: stable@vger.kernel.org
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
-Reviewed-by: Bao D. Nguyen <quic_nguyenb@quicinc.com>
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+Fixes: cabc71b08eb5 ("arm64: dts: mt8183: Add kukui-jacuzzi-damu board")
+Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
 ---
- drivers/ufs/core/ufs-mcq.c | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
+Changes in v2:
+- Add fixes tag 
+- Link to v1: https://lore.kernel.org/r/20240910-one-wire-v1-1-d25486a6ba6d@chromium.org
+---
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-index 5891cdacd0b3..3903947dbed1 100644
---- a/drivers/ufs/core/ufs-mcq.c
-+++ b/drivers/ufs/core/ufs-mcq.c
-@@ -539,7 +539,7 @@ int ufshcd_mcq_sq_cleanup(struct ufs_hba *hba, int task_tag)
- 	struct scsi_cmnd *cmd = lrbp->cmd;
- 	struct ufs_hw_queue *hwq;
- 	void __iomem *reg, *opr_sqd_base;
--	u32 nexus, id, val;
-+	u32 nexus, id, val, rtc;
- 	int err;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
+index 0b45aee2e29953b6117b462034a00dff2596b9ff..06a689feff52945d141d196d439cba034f25fdf6 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
+@@ -26,6 +26,10 @@ &touchscreen {
+ 	hid-descr-addr = <0x0001>;
+ };
  
- 	if (hba->quirks & UFSHCD_QUIRK_MCQ_BROKEN_RTC)
-@@ -569,17 +569,18 @@ int ufshcd_mcq_sq_cleanup(struct ufs_hba *hba, int task_tag)
- 	opr_sqd_base = mcq_opr_base(hba, OPR_SQD, id);
- 	writel(nexus, opr_sqd_base + REG_SQCTI);
- 
--	/* SQRTCy.ICU = 1 */
--	writel(SQ_ICU, opr_sqd_base + REG_SQRTC);
-+	/* Initiate Cleanup */
-+	writel(readl(opr_sqd_base + REG_SQRTC) | SQ_ICU,
-+		opr_sqd_base + REG_SQRTC);
- 
- 	/* Poll SQRTSy.CUS = 1. Return result from SQRTSy.RTC */
- 	reg = opr_sqd_base + REG_SQRTS;
- 	err = read_poll_timeout(readl, val, val & SQ_CUS, 20,
- 				MCQ_POLL_US, false, reg);
--	if (err)
--		dev_err(hba->dev, "%s: failed. hwq=%d, tag=%d err=%ld\n",
--			__func__, id, task_tag,
--			FIELD_GET(SQ_ICU_ERR_CODE_MASK, readl(reg)));
-+	rtc = FIELD_GET(SQ_ICU_ERR_CODE_MASK, readl(reg));
-+	if (err || rtc)
-+		dev_err(hba->dev, "%s: failed. hwq=%d, tag=%d err=%d RTC=%d\n",
-+			__func__, id, task_tag, err, rtc);
- 
- 	if (ufshcd_mcq_sq_start(hba, hwq))
- 		err = -ETIMEDOUT;
++&mt6358codec {
++	mediatek,dmic-mode = <1>; /* one-wire */
++};
++
+ &qca_wifi {
+ 	qcom,ath10k-calibration-variant = "GO_DAMU";
+ };
+
+---
+base-commit: da3ea35007d0af457a0afc87e84fddaebc4e0b63
+change-id: 20240910-one-wire-2d0f7113dc8b
+
+Best regards,
 -- 
-2.45.2
+Hsin-Te Yuan <yuanhsinte@chromium.org>
 
 
