@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8890EECE564
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Sep 2024 13:03:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0012EECE58D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Sep 2024 13:19:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kw4l5HZVrUk3+Q72g4V6pB8Svv1P+K7Ki3rt+kSviSQ=; b=LMpAn3hYO/JqjsZoeGAYxxVftH
-	uVR3oQlyHMdVrhly/8fxDV3LzfiEOxBjDCQM64GFo3hmZbLCVxQgEaW1L3mx2cHWdPZ3doD+2eqVj
-	1Azds0XTLrAci8bw5GgFsBb0tHo9ZmC0Ot6edVKqfiIvZfODeLz+bOL0mcAGbJBFxa45ohz4DOIFG
-	dzvVroqjLr1VgDF31EhHUDSSgJDUmGzSYK8OUvn7GWrLYAFU1UysbwbcoOLxhObZQUSC3bwX0yOUm
-	6FVinIBZUqJKX7wDsCbAnfWYtZs/2Xo68vwf0QQXQQ6ksK3vbLPVcyqRDqaQmC2KXPTZDoTU8kO0Z
-	sI/Pr/TA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hJDB3o2CjA8fcKBHH/Rq8sq82yTyWybpBcJmg1FDWzM=; b=dY7Mm3OVDF5ulI9kBoCberyPM/
+	8Rtoo5LzNLiOYhwXrJwo49AhbvuKhfDwS1VY1HKWiSCQmU1AWgk/cenFmC/bMivyYY5YdUwfZkL2B
+	7bhpiAw7kqkMrzJQhcU9uceUzzlRZEbq/0gM7FlGMo5fpICODiKWkW68SDhbBzAemRH8uBHfkaSVL
+	XuP/Dgqz/etodXoBVxBPL3qZHQi6QGCXh8nsb4y6mNt0znn2EMFf2GEu2pt6vavwczC87fj58kObO
+	SbuMW10zSgqgmPJfJLhmA7pkwx+tprxDpSetXwnM5X19F6Xi9T5G0OnfNXuQPLJMKv+Rr/gGjl6Wz
+	nIlYs4iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1so0X2-00000005ef1-10yy;
-	Tue, 10 Sep 2024 13:03:44 +0000
-Received: from mta-64-227.siemens.flowmailer.net ([185.136.64.227])
+	id 1so0mb-00000005guV-2ZBN;
+	Tue, 10 Sep 2024 13:19:49 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1so0Ww-00000005ech-2zdZ
-	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Sep 2024 13:03:43 +0000
-Received: by mta-64-227.siemens.flowmailer.net with ESMTPSA id 2024091013033496895087903d2fce52
-        for <linux-mediatek@lists.infradead.org>;
-        Tue, 10 Sep 2024 15:03:34 +0200
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; s=fm1;
- d=siemens.com; i=alexander.sverdlin@siemens.com;
- h=Date:From:Subject:To:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Cc:References:In-Reply-To;
- bh=kw4l5HZVrUk3+Q72g4V6pB8Svv1P+K7Ki3rt+kSviSQ=;
- b=QvrTx0XQwkl2Mo5aqKH7kW/waZoZ/v5mAqoOMimUHpzPcMaoSNicWSSIFgBx9fsTGnCOkK
- FyUIB0KFhNo7X0LgRxSOA7anjNI9/0DFLOLz0SYgLES1ygz6Xo2+NbrFjvmdm9FvROhAX7v4
- HPkYJGdWlsUlzraQiJpONk9Gio86ALFfgEXHVMdKlktzYVJpGv1yDYf4UrXiodD5RfDRhe6v
- rW8ApBPSrAi3LWFpNpXmk+qUMJtRHxHrxxoUmEJts1qIf0M71G8jer47RuG3tzM9WhWya92G
- NNS1EUk0L3c2QBwcIEqtSUQ0XFz2oAtC9tY+bmR4TnvGrIpTjfQuqNzA==;
-From: "A. Sverdlin" <alexander.sverdlin@siemens.com>
-To: netdev@vger.kernel.org
-Cc: Alexander Sverdlin <alexander.sverdlin@siemens.com>,
- =?ISO-8859-1?Q?Ar1n=E7_=DCNAL?= <arinc.unal@arinc9.com>, Daniel Golle
- <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, Sean Wang
- <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, Florian Fainelli
- <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David S.
- Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Claudiu Manoil
- <claudiu.manoil@nxp.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, UNGLinuxDriver@microchip.com, Broadcom
- internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>, Mark
- Lee <Mark-MC.Lee@mediatek.com>, Roopa Prabhu <roopa@nvidia.com>, Nikolay
- Aleksandrov <razor@blackwall.org>, linux-mediatek@lists.infradead.org,
- bridge@lists.linux.dev, stable@vger.kernel.org
-Subject: [PATCH 1/2] net: dsa: RCU-protect dsa_ptr in struct net_device
-Date: Tue, 10 Sep 2024 15:03:15 +0200
-Message-ID: <20240910130321.337154-2-alexander.sverdlin@siemens.com>
-In-Reply-To: <20240910130321.337154-1-alexander.sverdlin@siemens.com>
-References: <20240910130321.337154-1-alexander.sverdlin@siemens.com>
+	id 1so0mW-00000005gtC-05nm;
+	Tue, 10 Sep 2024 13:19:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1725974382;
+	bh=Mr5aYDOIGEIqV8iwbGHYh7Nn/2V2geaD7danw4WAqkI=;
+	h=From:To:Cc:Subject:Date:From;
+	b=blRZsNk27F30dlEHQnWcauNHxWHHyv+mUW5M1qAEX3Vqt3RHTwGYElwQVJDPWV7lI
+	 zwU1KYPkxtILmqKr7/myZUelppEZ7xDliBQDnTPhoeE6bUgCamT0awcqApR3nFpEV0
+	 9w3DkEPAfIDrcqg0lCuxMpVms876RvfomUoRS/cdqvzmD5d9PQhx2zcaOwdUJE5hW0
+	 9jkZ5NUWsQQ9X61Azx+OTwZHr+IYiwscGkkUBCUMYWf4u7Catx5JJYKM6VzxTmslfm
+	 XsoaQhc5VPV0gfB5mebIXoZdfre7GmpM9aj4lp21a1znQCwCUi6YVptWHowkxgiY4o
+	 AFnT05K72R33w==
+Received: from localhost.localdomain (unknown [171.76.81.149])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3295D17E121F;
+	Tue, 10 Sep 2024 15:19:38 +0200 (CEST)
+From: Vignesh Raman <vignesh.raman@collabora.com>
+To: dri-devel@lists.freedesktop.org
+Cc: daniels@collabora.com,
+	helen.koike@collabora.com,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
+	robdclark@gmail.com,
+	guilherme.gallo@collabora.com,
+	sergi.blanch.torne@collabora.com,
+	deborah.brouwer@collabora.com,
+	linux-mediatek@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	amd-gfx@lists.freedesktop.org,
+	linux-arm-msm@vger.kernel.org,
+	intel-gfx@lists.freedesktop.org,
+	virtualization@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2] drm/ci: uprev mesa, IGT and deqp-runner
+Date: Tue, 10 Sep 2024 18:49:24 +0530
+Message-ID: <20240910131927.161883-1-vignesh.raman@collabora.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Flowmailer-Platform: Siemens
-Feedback-ID: 519:519-456497:519-21489:flowmailer
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240910_060339_226959_7C9AA63B 
-X-CRM114-Status: GOOD (  22.62  )
+X-CRM114-CacheID: sfid-20240910_061944_418385_8F005600 
+X-CRM114-Status: GOOD (  14.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,1303 +84,900 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Alexander Sverdlin <alexander.sverdlin@siemens.com>
+Uprev mesa, IGT to the latest version and deqp-runner
+to v0.20.0. Also update expectation files.
 
-There are multiple races of zeroing dsa_ptr in struct net_device (on
-shutdown/remove) against asynchronous dereferences all over the net
-code. Widespread pattern is as follows:
-
-CPU0					CPU1
-if (netdev_uses_dsa())
-					dev->dsa_ptr = NULL;
-        dev->dsa_ptr->...
-
-One of the possible crashes:
-
-Unable to handle kernel NULL pointer dereference at virtual address 0000000000000010
-CPU: 0 PID: 12 Comm: ksoftirqd/0 Tainted: G O 6.1.99+ #1
-pc : lan9303_rcv
-lr : lan9303_rcv
-Call trace:
- lan9303_rcv
- dsa_switch_rcv
- __netif_receive_skb_list_core
- netif_receive_skb_list_internal
- napi_gro_receive
- fec_enet_rx_napi
- __napi_poll
- net_rx_action
-...
-
-RCU-protect dsa_ptr and use rcu_dereference() or rtnl_dereference()
-depending on the calling context.
-
-Rename netdev_uses_dsa() into __netdev_uses_dsa_currently()
-(assumes ether RCU or RTNL lock held) and netdev_uses_dsa_currently()
-variants which better reflect the uselessness of the function's
-return value, which becomes outdated right after the call.
-
-Fixes: ee534378f005 ("net: dsa: fix panic when DSA master device unbinds on shutdown")
-Cc: stable@vger.kernel.org
-Signed-off-by: Alexander Sverdlin <alexander.sverdlin@siemens.com>
+Acked-by: Helen Koike <helen.koike@collabora.com>
+Reviewed-by: Daniel Stone <daniels@collabora.com>
+Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
 ---
- drivers/net/dsa/mt7530.c                    |   3 +-
- drivers/net/dsa/ocelot/felix.c              |   3 +-
- drivers/net/dsa/qca/qca8k-8xxx.c            |   3 +-
- drivers/net/ethernet/broadcom/bcmsysport.c  |   8 +-
- drivers/net/ethernet/mediatek/airoha_eth.c  |   2 +-
- drivers/net/ethernet/mediatek/mtk_eth_soc.c |  22 +++--
- drivers/net/ethernet/mediatek/mtk_ppe.c     |  15 ++-
- include/linux/netdevice.h                   |   2 +-
- include/net/dsa.h                           |  36 +++++--
- include/net/dsa_stubs.h                     |   6 +-
- net/bridge/br_input.c                       |   2 +-
- net/core/dev.c                              |   3 +-
- net/core/flow_dissector.c                   |  19 ++--
- net/dsa/conduit.c                           |  66 ++++++++-----
- net/dsa/dsa.c                               |  19 ++--
- net/dsa/port.c                              |   3 +-
- net/dsa/tag.c                               |   3 +-
- net/dsa/tag.h                               |  19 ++--
- net/dsa/tag_8021q.c                         |  10 +-
- net/dsa/tag_brcm.c                          |   2 +-
- net/dsa/tag_dsa.c                           |   8 +-
- net/dsa/tag_qca.c                           |  10 +-
- net/dsa/tag_sja1105.c                       |  22 +++--
- net/dsa/user.c                              | 104 +++++++++++---------
- net/ethernet/eth.c                          |   2 +-
- 25 files changed, 240 insertions(+), 152 deletions(-)
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index ec18e68bf3a8..82d3f1786156 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -20,6 +20,7 @@
- #include <linux/reset.h>
- #include <linux/gpio/consumer.h>
- #include <linux/gpio/driver.h>
-+#include <linux/rtnetlink.h>
- #include <net/dsa.h>
+v1:
+- Flaky test report will be sent to maintainers after this
+  patch series is reviewed.
+
+v2:
+- Uprev mesa and rerun with latest drm-misc-next.
+  Updated flaky tests bug report link.
+
+---
+ drivers/gpu/drm/ci/gitlab-ci.yml              | 14 +++--
+ drivers/gpu/drm/ci/image-tags.yml             |  2 +-
+ .../gpu/drm/ci/xfails/amdgpu-stoney-fails.txt |  2 +-
+ .../drm/ci/xfails/amdgpu-stoney-flakes.txt    |  7 +++
+ drivers/gpu/drm/ci/xfails/i915-amly-fails.txt |  2 +-
+ .../gpu/drm/ci/xfails/i915-amly-flakes.txt    |  7 +++
+ drivers/gpu/drm/ci/xfails/i915-apl-fails.txt  |  1 -
+ drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt |  7 +++
+ drivers/gpu/drm/ci/xfails/i915-cml-fails.txt  | 10 ++--
+ drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt | 14 +++++
+ drivers/gpu/drm/ci/xfails/i915-glk-fails.txt  |  1 +
+ drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt  |  2 -
+ drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt  | 34 ++++++++++--
+ drivers/gpu/drm/ci/xfails/i915-whl-fails.txt  |  9 ++--
+ .../drm/ci/xfails/mediatek-mt8173-fails.txt   | 11 +---
+ .../drm/ci/xfails/mediatek-mt8183-fails.txt   |  6 ---
+ .../gpu/drm/ci/xfails/meson-g12b-fails.txt    |  1 -
+ .../gpu/drm/ci/xfails/msm-apq8016-fails.txt   |  5 --
+ .../gpu/drm/ci/xfails/msm-apq8096-fails.txt   |  5 --
+ .../msm-sc7180-trogdor-kingoftown-fails.txt   | 27 ----------
+ ...sm-sc7180-trogdor-lazor-limozeen-fails.txt | 27 ----------
+ .../gpu/drm/ci/xfails/msm-sdm845-fails.txt    |  6 +--
+ .../gpu/drm/ci/xfails/msm-sdm845-flakes.txt   | 14 +++++
+ .../gpu/drm/ci/xfails/msm-sdm845-skips.txt    |  5 ++
+ .../gpu/drm/ci/xfails/panfrost-g12b-fails.txt |  1 +
+ .../drm/ci/xfails/panfrost-mt8183-fails.txt   |  1 +
+ .../drm/ci/xfails/panfrost-rk3288-fails.txt   |  1 +
+ .../drm/ci/xfails/panfrost-rk3399-fails.txt   |  1 +
+ .../drm/ci/xfails/rockchip-rk3288-fails.txt   | 22 +++++---
+ .../drm/ci/xfails/rockchip-rk3288-flakes.txt  | 28 ++++++++++
+ .../drm/ci/xfails/rockchip-rk3399-fails.txt   |  7 ---
+ .../drm/ci/xfails/rockchip-rk3399-flakes.txt  | 28 ++++++++++
+ drivers/gpu/drm/ci/xfails/vkms-none-fails.txt | 21 --------
+ drivers/gpu/drm/ci/xfails/vkms-none-skips.txt | 53 +++++++++++++++++++
+ 34 files changed, 234 insertions(+), 148 deletions(-)
+
+diff --git a/drivers/gpu/drm/ci/gitlab-ci.yml b/drivers/gpu/drm/ci/gitlab-ci.yml
+index eca47d4f816f..90bde9f00cc3 100644
+--- a/drivers/gpu/drm/ci/gitlab-ci.yml
++++ b/drivers/gpu/drm/ci/gitlab-ci.yml
+@@ -1,14 +1,14 @@
+ variables:
+   DRM_CI_PROJECT_PATH: &drm-ci-project-path mesa/mesa
+-  DRM_CI_COMMIT_SHA: &drm-ci-commit-sha d9849ac46623797a9f56fb9d46dc52460ac477de
++  DRM_CI_COMMIT_SHA: &drm-ci-commit-sha c6a9a9c3bce90923f7700219354e0b6e5a3c9ba6
  
- #include "mt7530.h"
-@@ -3092,7 +3093,7 @@ mt753x_conduit_state_change(struct dsa_switch *ds,
- 			    const struct net_device *conduit,
- 			    bool operational)
- {
--	struct dsa_port *cpu_dp = conduit->dsa_ptr;
-+	struct dsa_port *cpu_dp = rtnl_dereference(conduit->dsa_ptr);
- 	struct mt7530_priv *priv = ds->priv;
- 	int val = 0;
- 	u8 mask;
-diff --git a/drivers/net/dsa/ocelot/felix.c b/drivers/net/dsa/ocelot/felix.c
-index 4a705f7333f4..f6bc0ff0c116 100644
---- a/drivers/net/dsa/ocelot/felix.c
-+++ b/drivers/net/dsa/ocelot/felix.c
-@@ -21,6 +21,7 @@
- #include <linux/of_net.h>
- #include <linux/pci.h>
- #include <linux/of.h>
-+#include <linux/rtnetlink.h>
- #include <net/pkt_sched.h>
- #include <net/dsa.h>
- #include "felix.h"
-@@ -57,7 +58,7 @@ static int felix_cpu_port_for_conduit(struct dsa_switch *ds,
- 		return lag;
- 	}
+   UPSTREAM_REPO: https://gitlab.freedesktop.org/drm/kernel.git
+   TARGET_BRANCH: drm-next
  
--	cpu_dp = conduit->dsa_ptr;
-+	cpu_dp = rtnl_dereference(conduit->dsa_ptr);
- 	return cpu_dp->index;
- }
+-  IGT_VERSION: f13702b8e4e847c56da3ef6f0969065d686049c5
++  IGT_VERSION: a73311079a5d8ac99eb25336a8369a2c3c6b519b
  
-diff --git a/drivers/net/dsa/qca/qca8k-8xxx.c b/drivers/net/dsa/qca/qca8k-8xxx.c
-index f8d8c70642c4..10b4d7e9be2f 100644
---- a/drivers/net/dsa/qca/qca8k-8xxx.c
-+++ b/drivers/net/dsa/qca/qca8k-8xxx.c
-@@ -20,6 +20,7 @@
- #include <linux/gpio/consumer.h>
- #include <linux/etherdevice.h>
- #include <linux/dsa/tag_qca.h>
-+#include <linux/rtnetlink.h>
+   DEQP_RUNNER_GIT_URL: https://gitlab.freedesktop.org/mesa/deqp-runner.git
+-  DEQP_RUNNER_GIT_TAG: v0.15.0
++  DEQP_RUNNER_GIT_TAG: v0.20.0
  
- #include "qca8k.h"
- #include "qca8k_leds.h"
-@@ -1754,7 +1755,7 @@ static void
- qca8k_conduit_change(struct dsa_switch *ds, const struct net_device *conduit,
- 		     bool operational)
- {
--	struct dsa_port *dp = conduit->dsa_ptr;
-+	struct dsa_port *dp = rtnl_dereference(conduit->dsa_ptr);
- 	struct qca8k_priv *priv = ds->priv;
- 
- 	/* Ethernet MIB/MDIO is only supported for CPU port 0 */
-diff --git a/drivers/net/ethernet/broadcom/bcmsysport.c b/drivers/net/ethernet/broadcom/bcmsysport.c
-index c9faa8540859..bd9bc081346d 100644
---- a/drivers/net/ethernet/broadcom/bcmsysport.c
-+++ b/drivers/net/ethernet/broadcom/bcmsysport.c
-@@ -145,7 +145,7 @@ static void bcm_sysport_set_rx_csum(struct net_device *dev,
- 	 * sure we tell the RXCHK hardware to expect a 4-bytes Broadcom
- 	 * tag after the Ethernet MAC Source Address.
- 	 */
--	if (netdev_uses_dsa(dev))
-+	if (__netdev_uses_dsa_currently(dev))
- 		reg |= RXCHK_BRCM_TAG_EN;
- 	else
- 		reg &= ~RXCHK_BRCM_TAG_EN;
-@@ -173,7 +173,7 @@ static void bcm_sysport_set_tx_csum(struct net_device *dev,
- 	 * checksum to be computed correctly when using VLAN HW acceleration,
- 	 * else it has no effect, so it can always be turned on.
- 	 */
--	if (netdev_uses_dsa(dev))
-+	if (__netdev_uses_dsa_currently(dev))
- 		reg |= tdma_control_bit(priv, SW_BRCM_TAG);
- 	else
- 		reg &= ~tdma_control_bit(priv, SW_BRCM_TAG);
-@@ -1950,7 +1950,7 @@ static inline void gib_set_pad_extension(struct bcm_sysport_priv *priv)
- 
- 	reg = gib_readl(priv, GIB_CONTROL);
- 	/* Include Broadcom tag in pad extension and fix up IPG_LENGTH */
--	if (netdev_uses_dsa(priv->netdev)) {
-+	if (__netdev_uses_dsa_currently(priv->netdev)) {
- 		reg &= ~(GIB_PAD_EXTENSION_MASK << GIB_PAD_EXTENSION_SHIFT);
- 		reg |= ENET_BRCM_TAG_LEN << GIB_PAD_EXTENSION_SHIFT;
- 	}
-@@ -2299,7 +2299,7 @@ static u16 bcm_sysport_select_queue(struct net_device *dev, struct sk_buff *skb,
- 	struct bcm_sysport_tx_ring *tx_ring;
- 	unsigned int q, port;
- 
--	if (!netdev_uses_dsa(dev))
-+	if (!__netdev_uses_dsa_currently(dev))
- 		return netdev_pick_tx(dev, skb, NULL);
- 
- 	/* DSA tagging layer will have configured the correct queue */
-diff --git a/drivers/net/ethernet/mediatek/airoha_eth.c b/drivers/net/ethernet/mediatek/airoha_eth.c
-index 1c5b85a86df1..f7425d393b22 100644
---- a/drivers/net/ethernet/mediatek/airoha_eth.c
-+++ b/drivers/net/ethernet/mediatek/airoha_eth.c
-@@ -2255,7 +2255,7 @@ static int airoha_dev_open(struct net_device *dev)
- 	if (err)
- 		return err;
- 
--	if (netdev_uses_dsa(dev))
-+	if (__netdev_uses_dsa_currently(dev))
- 		airoha_fe_set(eth, REG_GDM_INGRESS_CFG(port->id),
- 			      GDM_STAG_EN_MASK);
- 	else
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 16ca427cf4c3..82a828349323 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -24,6 +24,7 @@
- #include <linux/pcs/pcs-mtk-lynxi.h>
- #include <linux/jhash.h>
- #include <linux/bitfield.h>
-+#include <linux/rcupdate.h>
- #include <net/dsa.h>
- #include <net/dst_metadata.h>
- #include <net/page_pool/helpers.h>
-@@ -1375,7 +1376,8 @@ static void mtk_tx_set_dma_desc_v2(struct net_device *dev, void *txd,
- 		/* tx checksum offload */
- 		if (info->csum)
- 			data |= TX_DMA_CHKSUM_V2;
--		if (mtk_is_netsys_v3_or_greater(eth) && netdev_uses_dsa(dev))
-+		if (mtk_is_netsys_v3_or_greater(eth) &&
-+		    __netdev_uses_dsa_currently(dev))
- 			data |= TX_DMA_SPTAG_V3;
- 	}
- 	WRITE_ONCE(desc->txd5, data);
-@@ -2183,7 +2185,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 		 * hardware treats the MTK special tag as a VLAN and untags it.
- 		 */
- 		if (mtk_is_netsys_v1(eth) && (trxd.rxd2 & RX_DMA_VTAG) &&
--		    netdev_uses_dsa(netdev)) {
-+		    __netdev_uses_dsa_currently(netdev)) {
- 			unsigned int port = RX_DMA_VPID(trxd.rxd3) & GENMASK(2, 0);
- 
- 			if (port < ARRAY_SIZE(eth->dsa_meta) &&
-@@ -3304,7 +3306,7 @@ static void mtk_gdm_config(struct mtk_eth *eth, u32 id, u32 config)
- 
- 	val |= config;
- 
--	if (eth->netdev[id] && netdev_uses_dsa(eth->netdev[id]))
-+	if (eth->netdev[id] && __netdev_uses_dsa_currently(eth->netdev[id]))
- 		val |= MTK_GDMA_SPECIAL_TAG;
- 
- 	mtk_w32(eth, val, MTK_GDMA_FWD_CFG(id));
-@@ -3313,12 +3315,16 @@ static void mtk_gdm_config(struct mtk_eth *eth, u32 id, u32 config)
- 
- static bool mtk_uses_dsa(struct net_device *dev)
- {
-+	bool ret = false;
- #if IS_ENABLED(CONFIG_NET_DSA)
--	return netdev_uses_dsa(dev) &&
--	       dev->dsa_ptr->tag_ops->proto == DSA_TAG_PROTO_MTK;
--#else
--	return false;
-+	struct dsa_port *dp;
+   FDO_UPSTREAM_REPO: helen.fornazier/linux   # The repo where the git-archive daily runs
+   MESA_TEMPLATES_COMMIT: &ci-templates-commit d5aa3941aa03c2f716595116354fb81eb8012acb
+@@ -153,6 +153,14 @@ stages:
+     # Pre-merge pipeline for Marge Bot
+     - if: &is-pre-merge-for-marge '$GITLAB_USER_LOGIN == "marge-bot" && $CI_PIPELINE_SOURCE == "merge_request_event"'
+       when: on_success
++    # Push to a branch on a fork
++    - &is-fork-push '$CI_PROJECT_NAMESPACE != "mesa" && $CI_PIPELINE_SOURCE == "push"'
 +
-+	rcu_read_lock();
-+	dp = rcu_dereference(dev->dsa_ptr);
-+	ret = dp && dp->tag_ops->proto == DSA_TAG_PROTO_MTK;
-+	rcu_read_unlock();
- #endif
-+	return ret;
- }
++# Rules applied to every job in the pipeline
++.common-rules:
++  rules:
++    - if: *is-fork-push
++      when: manual
  
- static int mtk_device_event(struct notifier_block *n, unsigned long event, void *ptr)
-@@ -4482,7 +4488,7 @@ static u16 mtk_select_queue(struct net_device *dev, struct sk_buff *skb,
- 	struct mtk_mac *mac = netdev_priv(dev);
- 	unsigned int queue = 0;
+ .never-post-merge-rules:
+   rules:
+diff --git a/drivers/gpu/drm/ci/image-tags.yml b/drivers/gpu/drm/ci/image-tags.yml
+index 2c340d063a96..8d8b9e71852e 100644
+--- a/drivers/gpu/drm/ci/image-tags.yml
++++ b/drivers/gpu/drm/ci/image-tags.yml
+@@ -1,5 +1,5 @@
+ variables:
+-   CONTAINER_TAG: "2024-08-07-mesa-uprev"
++   CONTAINER_TAG: "2024-09-09-uprevs"
+    DEBIAN_X86_64_BUILD_BASE_IMAGE: "debian/x86_64_build-base"
+    DEBIAN_BASE_TAG: "${CONTAINER_TAG}"
  
--	if (netdev_uses_dsa(dev))
-+	if (__netdev_uses_dsa_currently(dev))
- 		queue = skb_get_queue_mapping(skb) + 3;
- 	else
- 		queue = mac->id;
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
-index 0acee405a749..0c78ec90d855 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
-@@ -8,6 +8,7 @@
- #include <linux/platform_device.h>
- #include <linux/if_ether.h>
- #include <linux/if_vlan.h>
-+#include <linux/rcupdate.h>
- #include <net/dst_metadata.h>
- #include <net/dsa.h>
- #include "mtk_eth_soc.h"
-@@ -785,9 +786,17 @@ void __mtk_ppe_check_skb(struct mtk_ppe *ppe, struct sk_buff *skb, u16 hash)
- 	switch (skb->protocol) {
- #if IS_ENABLED(CONFIG_NET_DSA)
- 	case htons(ETH_P_XDSA):
--		if (!netdev_uses_dsa(skb->dev) ||
--		    skb->dev->dsa_ptr->tag_ops->proto != DSA_TAG_PROTO_MTK)
--			goto out;
-+		{
-+			struct dsa_port *dp;
-+			bool proto_mtk;
+diff --git a/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt b/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt
+index 8e2fed6d76a3..f44dbce3151a 100644
+--- a/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/amdgpu-stoney-fails.txt
+@@ -2,6 +2,7 @@ amdgpu/amd_abm@abm_enabled,Fail
+ amdgpu/amd_abm@abm_gradual,Fail
+ amdgpu/amd_abm@backlight_monotonic_abm,Fail
+ amdgpu/amd_abm@backlight_monotonic_basic,Fail
++amdgpu/amd_abm@dpms_cycle,Fail
+ amdgpu/amd_assr@assr-links,Fail
+ amdgpu/amd_assr@assr-links-dpms,Fail
+ amdgpu/amd_mall@static-screen,Crash
+@@ -14,7 +15,6 @@ amdgpu/amd_plane@mpo-scale-p010,Fail
+ amdgpu/amd_plane@mpo-scale-rgb,Crash
+ amdgpu/amd_plane@mpo-swizzle-toggle,Fail
+ amdgpu/amd_uvd_dec@amdgpu_uvd_decode,Fail
+-dumb_buffer@invalid-bpp,Fail
+ kms_addfb_basic@bad-pitch-65536,Fail
+ kms_addfb_basic@bo-too-small,Fail
+ kms_addfb_basic@too-high,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/amdgpu-stoney-flakes.txt b/drivers/gpu/drm/ci/xfails/amdgpu-stoney-flakes.txt
+index e4faa96fa000..e70bd9d447ca 100644
+--- a/drivers/gpu/drm/ci/xfails/amdgpu-stoney-flakes.txt
++++ b/drivers/gpu/drm/ci/xfails/amdgpu-stoney-flakes.txt
+@@ -18,3 +18,10 @@ kms_async_flips@crc
+ # IGT Version: 1.28-g0df7b9b97
+ # Linux Version: 6.9.0-rc7
+ kms_plane@pixel-format-source-clamping
 +
-+			rcu_read_lock();
-+			dp = rcu_dereference(skb->dev->dsa_ptr);
-+			proto_mtk = dp && dp->tag_ops->proto == DSA_TAG_PROTO_MTK;
-+			rcu_read_unlock();
-+			if (!proto_mtk)
-+				goto out;
-+		}
- 
- 		if (!skb_metadata_dst(skb))
- 			tag += 4;
-diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
-index 607009150b5f..e645c7eabd42 100644
---- a/include/linux/netdevice.h
-+++ b/include/linux/netdevice.h
-@@ -2229,7 +2229,7 @@ struct net_device {
- 	struct vlan_info __rcu	*vlan_info;
- #endif
- #if IS_ENABLED(CONFIG_NET_DSA)
--	struct dsa_port		*dsa_ptr;
-+	struct dsa_port	 __rcu	*dsa_ptr;
- #endif
- #if IS_ENABLED(CONFIG_TIPC)
- 	struct tipc_bearer __rcu *tipc_ptr;
-diff --git a/include/net/dsa.h b/include/net/dsa.h
-index d7a6c2930277..ab2777611e71 100644
---- a/include/net/dsa.h
-+++ b/include/net/dsa.h
-@@ -19,6 +19,7 @@
- #include <linux/phy.h>
- #include <linux/platform_data/dsa.h>
- #include <linux/phylink.h>
-+#include <linux/rcupdate.h>
- #include <net/devlink.h>
- #include <net/switchdev.h>
- 
-@@ -92,8 +93,9 @@ struct dsa_switch;
- struct dsa_device_ops {
- 	struct sk_buff *(*xmit)(struct sk_buff *skb, struct net_device *dev);
- 	struct sk_buff *(*rcv)(struct sk_buff *skb, struct net_device *dev);
--	void (*flow_dissect)(const struct sk_buff *skb, __be16 *proto,
--			     int *offset);
-+	void (*flow_dissect)(const struct sk_buff *skb,
-+			     const struct dsa_port *dp,
-+			     __be16 *proto, int *offset);
- 	int (*connect)(struct dsa_switch *ds);
- 	void (*disconnect)(struct dsa_switch *ds);
- 	unsigned int needed_headroom;
-@@ -1334,14 +1336,29 @@ bool dsa_mdb_present_in_other_db(struct dsa_switch *ds, int port,
- 				 struct dsa_db db);
- 
- /* Keep inline for faster access in hot path */
--static inline bool netdev_uses_dsa(const struct net_device *dev)
++# Board Name: hp-11A-G6-EE-grunt
++# Bug Report: https://lore.kernel.org/amd-gfx/09ee1862-3a0e-4085-ac1b-262601b1122b@collabora.com/T/#t
++# Failure Rate: 100
++# IGT Version: 1.28-ga73311079
++# Linux Version: 6.11.0-rc2
++kms_async_flips@async-flip-with-page-flip-events
+diff --git a/drivers/gpu/drm/ci/xfails/i915-amly-fails.txt b/drivers/gpu/drm/ci/xfails/i915-amly-fails.txt
+index 9b84f68a5122..0907cb0f6d9e 100644
+--- a/drivers/gpu/drm/ci/xfails/i915-amly-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/i915-amly-fails.txt
+@@ -1,3 +1,4 @@
++core_setmaster@master-drop-set-shared-fd,Fail
+ core_setmaster@master-drop-set-user,Fail
+ core_setmaster_vs_auth,Fail
+ i915_module_load@load,Fail
+@@ -6,7 +7,6 @@ i915_module_load@reload-no-display,Fail
+ i915_module_load@resize-bar,Fail
+ i915_pm_rpm@gem-execbuf-stress,Timeout
+ i915_pm_rpm@module-reload,Fail
+-kms_ccs@crc-primary-rotation-180-yf-tiled-ccs,Timeout
+ kms_cursor_legacy@short-flip-before-cursor-atomic-transitions,Timeout
+ kms_fb_coherency@memset-crc,Crash
+ kms_flip@busy-flip,Timeout
+diff --git a/drivers/gpu/drm/ci/xfails/i915-amly-flakes.txt b/drivers/gpu/drm/ci/xfails/i915-amly-flakes.txt
+index 581f0da4d0f2..0207c9807bee 100644
+--- a/drivers/gpu/drm/ci/xfails/i915-amly-flakes.txt
++++ b/drivers/gpu/drm/ci/xfails/i915-amly-flakes.txt
+@@ -46,3 +46,10 @@ i915_hangman@engine-engine-hang
+ # IGT Version: 1.28-gf13702b8e
+ # Linux Version: 6.10.0-rc5
+ kms_pm_rpm@modeset-lpsp-stress
 +
-+/* Must be called under RCU or RTNL lock */
-+static inline bool __netdev_uses_dsa_currently(const struct net_device *dev)
- {
- #if IS_ENABLED(CONFIG_NET_DSA)
--	return dev->dsa_ptr && dev->dsa_ptr->rcv;
-+	struct dsa_port *dp = rcu_dereference_rtnl(dev->dsa_ptr);
++# Board Name: asus-C433TA-AJ0005-rammus
++# Bug Report: https://lore.kernel.org/intel-gfx/61f62c86-3e82-4eff-bd3c-8123fa0ca332@collabora.com/T/#t
++# Failure Rate: 50
++# IGT Version: 1.28-ga73311079
++# Linux Version: 6.11.0-rc2
++kms_pm_rpm@drm-resources-equal
+diff --git a/drivers/gpu/drm/ci/xfails/i915-apl-fails.txt b/drivers/gpu/drm/ci/xfails/i915-apl-fails.txt
+index e612281149aa..64772fedaed5 100644
+--- a/drivers/gpu/drm/ci/xfails/i915-apl-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/i915-apl-fails.txt
+@@ -8,7 +8,6 @@ kms_flip_scaled_crc@flip-32bpp-xtile-to-64bpp-xtile-downscaling,Fail
+ kms_flip_scaled_crc@flip-32bpp-xtile-to-64bpp-xtile-upscaling,Fail
+ kms_flip_scaled_crc@flip-32bpp-ytile-to-64bpp-ytile-downscaling,Fail
+ kms_flip_scaled_crc@flip-32bpp-ytile-to-64bpp-ytile-upscaling,Fail
+-kms_flip_scaled_crc@flip-32bpp-ytileccs-to-64bpp-ytile-downscaling,Fail
+ kms_flip_scaled_crc@flip-32bpp-ytileccs-to-64bpp-ytile-upscaling,Fail
+ kms_flip_scaled_crc@flip-64bpp-linear-to-16bpp-linear-downscaling,Fail
+ kms_flip_scaled_crc@flip-64bpp-linear-to-16bpp-linear-upscaling,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt b/drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt
+index 4663d4d13f35..e8bddda56737 100644
+--- a/drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt
++++ b/drivers/gpu/drm/ci/xfails/i915-apl-flakes.txt
+@@ -4,3 +4,10 @@
+ # IGT Version: 1.28-g0df7b9b97
+ # Linux Version: 6.9.0-rc7
+ kms_fb_coherency@memset-crc
 +
-+	return dp && dp->rcv;
- #endif
- 	return false;
- }
- 
-+static inline bool netdev_uses_dsa_currently(const struct net_device *dev)
-+{
-+	bool ret = false;
-+#if IS_ENABLED(CONFIG_NET_DSA)
-+	rcu_read_lock();
-+	ret = __netdev_uses_dsa_currently(dev);
-+	rcu_read_unlock();
-+#endif
-+	return ret;
-+}
++# Board Name: asus-C523NA-A20057-coral
++# Bug Report: https://lore.kernel.org/intel-gfx/61f62c86-3e82-4eff-bd3c-8123fa0ca332@collabora.com/T/#t
++# Failure Rate: 100
++# IGT Version: 1.28-ga73311079
++# Linux Version: 6.11.0-rc2
++kms_universal_plane@cursor-fb-leak
+diff --git a/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt b/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt
+index 2723e2832797..f352b719cf7d 100644
+--- a/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/i915-cml-fails.txt
+@@ -1,5 +1,5 @@
++core_setmaster@master-drop-set-shared-fd,Fail
+ core_setmaster@master-drop-set-user,Fail
+-core_setmaster_vs_auth,Fail
+ i915_module_load@load,Fail
+ i915_module_load@reload,Fail
+ i915_module_load@reload-no-display,Fail
+@@ -9,10 +9,10 @@ i915_pipe_stress@stress-xrgb8888-ytiled,Fail
+ i915_pm_rpm@gem-execbuf-stress,Timeout
+ i915_pm_rpm@module-reload,Fail
+ i915_pm_rpm@system-suspend-execbuf,Timeout
+-kms_ccs@crc-primary-rotation-180-yf-tiled-ccs,Timeout
++i915_pm_rps@engine-order,Fail
++kms_big_fb@linear-16bpp-rotate-180,Timeout
+ kms_fb_coherency@memset-crc,Crash
+ kms_flip@busy-flip,Timeout
+-kms_flip@single-buffer-flip-vs-dpms-off-vs-modeset-interruptible,Fail
+ kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-downscaling,Fail
+ kms_flip_scaled_crc@flip-32bpp-linear-to-64bpp-linear-upscaling,Fail
+ kms_flip_scaled_crc@flip-32bpp-xtile-to-64bpp-xtile-downscaling,Fail
+@@ -40,14 +40,11 @@ kms_plane_alpha_blend@alpha-basic,Fail
+ kms_plane_alpha_blend@alpha-opaque-fb,Fail
+ kms_plane_alpha_blend@alpha-transparent-fb,Fail
+ kms_plane_alpha_blend@constant-alpha-max,Fail
+-kms_plane_scaling@plane-scaler-with-clipping-clamping-rotation,Timeout
+ kms_plane_scaling@planes-upscale-factor-0-25-downscale-factor-0-5,Timeout
+ kms_pm_rpm@modeset-stress-extra-wait,Timeout
+ kms_pm_rpm@universal-planes,Timeout
+ kms_pm_rpm@universal-planes-dpms,Timeout
+-kms_prop_blob@invalid-set-prop,Fail
+ kms_psr2_sf@cursor-plane-update-sf,Fail
+-kms_psr2_sf@fbc-plane-move-sf-dmg-area,Timeout
+ kms_psr2_sf@overlay-plane-update-continuous-sf,Fail
+ kms_psr2_sf@overlay-plane-update-sf-dmg-area,Fail
+ kms_psr2_sf@overlay-primary-update-sf-dmg-area,Fail
+@@ -55,7 +52,6 @@ kms_psr2_sf@plane-move-sf-dmg-area,Fail
+ kms_psr2_sf@primary-plane-update-sf-dmg-area,Fail
+ kms_psr2_sf@primary-plane-update-sf-dmg-area-big-fb,Fail
+ kms_psr2_su@page_flip-NV12,Fail
+-kms_psr2_su@page_flip-P010,Fail
+ kms_rotation_crc@primary-rotation-180,Timeout
+ kms_setmode@basic,Fail
+ kms_vblank@query-forked-hang,Timeout
+diff --git a/drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt b/drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt
+index 58a6001abb28..d8401251e5f4 100644
+--- a/drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt
++++ b/drivers/gpu/drm/ci/xfails/i915-cml-flakes.txt
+@@ -11,3 +11,17 @@ kms_plane_alpha_blend@constant-alpha-min
+ # IGT Version: 1.28-gf13702b8e
+ # Linux Version: 6.10.0-rc5
+ kms_atomic_transition@plane-all-modeset-transition-internal-panels
 +
- /* All DSA tags that push the EtherType to the right (basically all except tail
-  * tags, which don't break dissection) can be treated the same from the
-  * perspective of the flow dissector.
-@@ -1355,17 +1372,20 @@ static inline bool netdev_uses_dsa(const struct net_device *dev)
-  *    that, in __be16 shorts).
-  *
-  *  - proto: the value of the real EtherType.
-+ *
-+ * Must be called under RCU read lock (because of dp).
-  */
- static inline void dsa_tag_generic_flow_dissect(const struct sk_buff *skb,
-+						const struct dsa_port *dp,
- 						__be16 *proto, int *offset)
- {
--#if IS_ENABLED(CONFIG_NET_DSA)
--	const struct dsa_device_ops *ops = skb->dev->dsa_ptr->tag_ops;
--	int tag_len = ops->needed_headroom;
-+	int tag_len;
- 
-+	RCU_LOCKDEP_WARN(!rcu_read_lock_any_held(), "no rcu lock held");
++# Board Name: asus-C436FA-Flip-hatch
++# Bug Report: https://lore.kernel.org/intel-gfx/61f62c86-3e82-4eff-bd3c-8123fa0ca332@collabora.com/T/#t
++# Failure Rate: 100
++# IGT Version: 1.28-ga73311079
++# Linux Version: 6.11.0-rc2
++kms_plane_alpha_blend@constant-alpha-min
 +
-+	tag_len = dp->tag_ops->needed_headroom;
- 	*offset = tag_len;
- 	*proto = ((__be16 *)skb->data)[(tag_len / 2) - 1];
--#endif
- }
- 
- void dsa_unregister_switch(struct dsa_switch *ds);
-diff --git a/include/net/dsa_stubs.h b/include/net/dsa_stubs.h
-index 6f384897f287..ca899305ba36 100644
---- a/include/net/dsa_stubs.h
-+++ b/include/net/dsa_stubs.h
-@@ -22,9 +22,6 @@ static inline int dsa_conduit_hwtstamp_validate(struct net_device *dev,
- 						const struct kernel_hwtstamp_config *config,
- 						struct netlink_ext_ack *extack)
- {
--	if (!netdev_uses_dsa(dev))
--		return 0;
--
- 	/* rtnl_lock() is a sufficient guarantee, because as long as
- 	 * netdev_uses_dsa() returns true, the dsa_core module is still
- 	 * registered, and so, dsa_unregister_stubs() couldn't have run.
-@@ -33,6 +30,9 @@ static inline int dsa_conduit_hwtstamp_validate(struct net_device *dev,
- 	 */
- 	ASSERT_RTNL();
- 
-+	if (!__netdev_uses_dsa_currently(dev))
-+		return 0;
++# Board Name: asus-C436FA-Flip-hatch
++# Bug Report: https://lore.kernel.org/intel-gfx/61f62c86-3e82-4eff-bd3c-8123fa0ca332@collabora.com/T/#t
++# Failure Rate: 50
++# IGT Version: 1.28-ga73311079
++# Linux Version: 6.11.0-rc2
++kms_async_flips@crc
+diff --git a/drivers/gpu/drm/ci/xfails/i915-glk-fails.txt b/drivers/gpu/drm/ci/xfails/i915-glk-fails.txt
+index 4821c9adefd1..6eb64c672f7d 100644
+--- a/drivers/gpu/drm/ci/xfails/i915-glk-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/i915-glk-fails.txt
+@@ -63,3 +63,4 @@ xe_module_load@load,Fail
+ xe_module_load@many-reload,Fail
+ xe_module_load@reload,Fail
+ xe_module_load@reload-no-display,Fail
++core_setmaster@master-drop-set-shared-fd,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt b/drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt
+index 1de04a3308c4..d4fba4f55ec1 100644
+--- a/drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/i915-kbl-fails.txt
+@@ -17,12 +17,10 @@ perf@i915-ref-count,Fail
+ perf_pmu@busy-accuracy-50,Fail
+ perf_pmu@module-unload,Fail
+ perf_pmu@rc6,Crash
+-prime_busy@after,Fail
+ sysfs_heartbeat_interval@long,Timeout
+ sysfs_heartbeat_interval@off,Timeout
+ sysfs_preempt_timeout@off,Timeout
+ sysfs_timeslice_duration@off,Timeout
+-testdisplay,Timeout
+ xe_module_load@force-load,Fail
+ xe_module_load@load,Fail
+ xe_module_load@many-reload,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt b/drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt
+index e728ccc62326..461ef69ef08a 100644
+--- a/drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/i915-tgl-fails.txt
+@@ -1,40 +1,64 @@
++api_intel_allocator@fork-simple-stress-signal,Timeout
++api_intel_allocator@open-vm,Timeout
+ api_intel_allocator@simple-allocator,Timeout
++api_intel_bb@lot-of-buffers,Timeout
+ api_intel_bb@object-reloc-keep-cache,Timeout
+ api_intel_bb@offset-control,Timeout
+-core_auth@getclient-simple,Timeout
+-core_hotunplug@hotunbind-rebind,Timeout
++api_intel_bb@render-ccs,Timeout
++api_intel_bb@reset-bb,Timeout
++core_auth@basic-auth,Timeout
++core_hotunplug@hotrebind,Timeout
++core_setmaster@master-drop-set-user,Fail
+ debugfs_test@read_all_entries_display_on,Timeout
+-drm_read@invalid-buffer,Timeout
+-drm_read@short-buffer-nonblock,Timeout
++drm_read@empty-block,Timeout
++dumb_buffer@create-clear,Timeout
++dumb_buffer@invalid-bpp,Timeout
+ gen3_render_tiledx_blits,Timeout
+ gen7_exec_parse@basic-allocation,Timeout
+-gen7_exec_parse@batch-without-end,Timeout
+ gen9_exec_parse@batch-invalid-length,Timeout
+ gen9_exec_parse@bb-secure,Timeout
+ gen9_exec_parse@secure-batches,Timeout
+ gen9_exec_parse@shadow-peek,Timeout
+ gen9_exec_parse@unaligned-jump,Timeout
++i915_getparams_basic@basic-subslice-total,Timeout
++i915_hangman@gt-engine-hang,Timeout
+ i915_module_load@load,Fail
+ i915_module_load@reload,Fail
+ i915_module_load@reload-no-display,Fail
+ i915_module_load@resize-bar,Fail
++i915_pciid,Timeout
++i915_pipe_stress@stress-xrgb8888-ytiled,Timeout
++i915_pm_rpm@gem-execbuf-stress,Timeout
++i915_pm_rps@engine-order,Timeout
++i915_pm_rps@thresholds-idle-park,Timeout
+ i915_query@engine-info,Timeout
+ i915_query@query-topology-kernel-writes,Timeout
+ i915_query@test-query-geometry-subslices,Timeout
+ kms_lease@lease-uevent,Fail
+ kms_rotation_crc@multiplane-rotation,Fail
+ perf@i915-ref-count,Fail
++perf_pmu@busy,Timeout
+ perf_pmu@enable-race,Timeout
+ perf_pmu@event-wait,Timeout
++perf_pmu@faulting-read,Timeout
+ perf_pmu@gt-awake,Timeout
+ perf_pmu@interrupts,Timeout
+ perf_pmu@module-unload,Fail
++perf_pmu@most-busy-idle-check-all,Timeout
+ perf_pmu@rc6,Crash
++perf_pmu@render-node-busy-idle,Fail
++perf_pmu@semaphore-wait-idle,Timeout
++prime_busy@after,Timeout
++prime_mmap@test_aperture_limit,Timeout
+ prime_mmap@test_map_unmap,Timeout
+ prime_mmap@test_refcounting,Timeout
+ prime_self_import@basic-with_one_bo,Timeout
++sriov_basic@enable-vfs-autoprobe-off,Timeout
++syncobj_basic@bad-destroy,Timeout
+ syncobj_basic@bad-flags-fd-to-handle,Timeout
++syncobj_basic@create-signaled,Timeout
+ syncobj_eventfd@invalid-bad-pad,Timeout
++syncobj_eventfd@timeline-wait-before-signal,Timeout
+ syncobj_wait@invalid-multi-wait-unsubmitted-signaled,Timeout
+ syncobj_wait@invalid-signal-illegal-handle,Timeout
+ syncobj_wait@invalid-single-wait-all-unsubmitted,Timeout
+diff --git a/drivers/gpu/drm/ci/xfails/i915-whl-fails.txt b/drivers/gpu/drm/ci/xfails/i915-whl-fails.txt
+index 2adae2175501..0ce240e3aa07 100644
+--- a/drivers/gpu/drm/ci/xfails/i915-whl-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/i915-whl-fails.txt
+@@ -1,5 +1,5 @@
++core_setmaster@master-drop-set-shared-fd,Fail
+ core_setmaster@master-drop-set-user,Fail
+-core_setmaster_vs_auth,Fail
+ i915_module_load@load,Fail
+ i915_module_load@reload,Fail
+ i915_module_load@reload-no-display,Fail
+@@ -7,7 +7,8 @@ i915_module_load@resize-bar,Fail
+ i915_pm_rpm@gem-execbuf-stress,Timeout
+ i915_pm_rpm@module-reload,Fail
+ i915_pm_rpm@system-suspend-execbuf,Timeout
+-kms_ccs@crc-primary-rotation-180-yf-tiled-ccs,Timeout
++i915_pm_rps@engine-order,Fail
++kms_big_fb@linear-16bpp-rotate-180,Timeout
+ kms_cursor_legacy@short-flip-before-cursor-atomic-transitions,Timeout
+ kms_dirtyfb@default-dirtyfb-ioctl,Fail
+ kms_dirtyfb@fbc-dirtyfb-ioctl,Fail
+@@ -32,19 +33,17 @@ kms_flip_scaled_crc@flip-64bpp-ytile-to-32bpp-ytile-downscaling,Fail
+ kms_flip_scaled_crc@flip-64bpp-ytile-to-32bpp-ytile-upscaling,Fail
+ kms_flip_scaled_crc@flip-64bpp-ytile-to-32bpp-ytilegen12rcccs-upscaling,Fail
+ kms_flip_scaled_crc@flip-64bpp-ytile-to-32bpp-ytilercccs-downscaling,Fail
+-kms_frontbuffer_tracking@fbc-rgb565-draw-mmap-cpu,Timeout
+ kms_frontbuffer_tracking@fbc-tiling-linear,Fail
++kms_frontbuffer_tracking@fbc-1p-indfb-fliptrack-mmap-gtt,Timeout
+ kms_lease@lease-uevent,Fail
+ kms_plane_alpha_blend@alpha-basic,Fail
+ kms_plane_alpha_blend@alpha-opaque-fb,Fail
+ kms_plane_alpha_blend@alpha-transparent-fb,Fail
+ kms_plane_alpha_blend@constant-alpha-max,Fail
+-kms_plane_scaling@plane-scaler-with-clipping-clamping-rotation,Timeout
+ kms_plane_scaling@planes-upscale-factor-0-25-downscale-factor-0-5,Timeout
+ kms_pm_rpm@modeset-stress-extra-wait,Timeout
+ kms_pm_rpm@universal-planes,Timeout
+ kms_pm_rpm@universal-planes-dpms,Timeout
+-kms_prop_blob@invalid-set-prop,Fail
+ kms_rotation_crc@primary-rotation-180,Timeout
+ kms_vblank@query-forked-hang,Timeout
+ perf@i915-ref-count,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
+index a14349a1967f..8e0efc80d510 100644
+--- a/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8173-fails.txt
+@@ -1,8 +1,3 @@
+-device_reset@cold-reset-bound,Fail
+-device_reset@reset-bound,Fail
+-device_reset@unbind-cold-reset-rebind,Fail
+-device_reset@unbind-reset-rebind,Fail
+-dumb_buffer@invalid-bpp,Fail
+ fbdev@eof,Fail
+ fbdev@read,Fail
+ kms_3d,Fail
+@@ -27,10 +22,6 @@ kms_cursor_legacy@cursor-vs-flip-atomic,Fail
+ kms_cursor_legacy@cursor-vs-flip-legacy,Fail
+ kms_flip@flip-vs-modeset-vs-hang,Fail
+ kms_flip@flip-vs-panning-vs-hang,Fail
+-kms_flip@flip-vs-suspend,Fail
+-kms_flip@flip-vs-suspend-interruptible,Fail
+ kms_lease@lease-uevent,Fail
+-kms_properties@get_properties-sanity-atomic,Fail
+-kms_properties@plane-properties-atomic,Fail
+-kms_properties@plane-properties-legacy,Fail
+ kms_rmfb@close-fd,Fail
++kms_flip@flip-vs-suspend-interruptible,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
+index 8cb2cb67853d..845f852bb4a0 100644
+--- a/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/mediatek-mt8183-fails.txt
+@@ -1,10 +1,5 @@
+ core_setmaster@master-drop-set-shared-fd,Fail
+-device_reset@cold-reset-bound,Fail
+-device_reset@reset-bound,Fail
+-device_reset@unbind-cold-reset-rebind,Fail
+-device_reset@unbind-reset-rebind,Fail
+ dumb_buffer@create-clear,Crash
+-dumb_buffer@invalid-bpp,Fail
+ fbdev@eof,Fail
+ fbdev@pan,Fail
+ fbdev@read,Fail
+@@ -18,5 +13,4 @@ kms_color@invalid-gamma-lut-sizes,Fail
+ kms_flip@flip-vs-panning-vs-hang,Fail
+ kms_flip@flip-vs-suspend,Fail
+ kms_lease@lease-uevent,Fail
+-kms_properties@plane-properties-atomic,Fail
+ kms_rmfb@close-fd,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/meson-g12b-fails.txt b/drivers/gpu/drm/ci/xfails/meson-g12b-fails.txt
+index 328967d3e23d..fc3745180683 100644
+--- a/drivers/gpu/drm/ci/xfails/meson-g12b-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/meson-g12b-fails.txt
+@@ -1,4 +1,3 @@
+-dumb_buffer@invalid-bpp,Fail
+ kms_3d,Fail
+ kms_cursor_legacy@forked-bo,Fail
+ kms_cursor_legacy@forked-move,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt b/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
+index 4ac46168eff3..066d24ee3e08 100644
+--- a/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
+@@ -1,8 +1,3 @@
+-device_reset@cold-reset-bound,Fail
+-device_reset@reset-bound,Fail
+-device_reset@unbind-cold-reset-rebind,Fail
+-device_reset@unbind-reset-rebind,Fail
+-dumb_buffer@invalid-bpp,Fail
+ kms_3d,Fail
+ kms_cursor_legacy@torture-bo,Fail
+ kms_force_connector_basic@force-edid,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/msm-apq8096-fails.txt b/drivers/gpu/drm/ci/xfails/msm-apq8096-fails.txt
+index bd0653caf7a0..2893f98a6b97 100644
+--- a/drivers/gpu/drm/ci/xfails/msm-apq8096-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/msm-apq8096-fails.txt
+@@ -1,7 +1,2 @@
+-device_reset@cold-reset-bound,Fail
+-device_reset@reset-bound,Fail
+-device_reset@unbind-cold-reset-rebind,Fail
+-device_reset@unbind-reset-rebind,Fail
+-dumb_buffer@invalid-bpp,Fail
+ kms_3d,Fail
+ kms_lease@lease-uevent,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
+index d42004cd6977..6dbc2080347d 100644
+--- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-kingoftown-fails.txt
+@@ -1,8 +1,3 @@
+-device_reset@cold-reset-bound,Fail
+-device_reset@reset-bound,Fail
+-device_reset@unbind-cold-reset-rebind,Fail
+-device_reset@unbind-reset-rebind,Fail
+-dumb_buffer@invalid-bpp,Fail
+ kms_color@ctm-0-25,Fail
+ kms_color@ctm-0-50,Fail
+ kms_color@ctm-0-75,Fail
+@@ -11,35 +6,13 @@ kms_color@ctm-green-to-red,Fail
+ kms_color@ctm-negative,Fail
+ kms_color@ctm-red-to-blue,Fail
+ kms_color@ctm-signed,Fail
+-kms_content_protection@atomic,Crash
+-kms_content_protection@atomic-dpms,Crash
+-kms_content_protection@content-type-change,Crash
+-kms_content_protection@lic-type-0,Crash
+-kms_content_protection@lic-type-1,Crash
+-kms_content_protection@srm,Crash
+-kms_content_protection@type1,Crash
+-kms_content_protection@uevent,Crash
+-kms_cursor_legacy@2x-cursor-vs-flip-atomic,Fail
+-kms_cursor_legacy@2x-cursor-vs-flip-legacy,Fail
+-kms_cursor_legacy@2x-flip-vs-cursor-atomic,Fail
+-kms_cursor_legacy@2x-flip-vs-cursor-legacy,Fail
+-kms_cursor_legacy@2x-long-cursor-vs-flip-atomic,Fail
+-kms_cursor_legacy@2x-long-cursor-vs-flip-legacy,Fail
+-kms_cursor_legacy@2x-long-flip-vs-cursor-atomic,Fail
+-kms_cursor_legacy@2x-long-flip-vs-cursor-legacy,Fail
+ kms_cursor_legacy@cursor-vs-flip-toggle,Fail
+ kms_cursor_legacy@cursor-vs-flip-varying-size,Fail
+-kms_display_modes@extended-mode-basic,Fail
+-kms_flip@2x-flip-vs-modeset-vs-hang,Fail
+-kms_flip@2x-flip-vs-panning-vs-hang,Fail
+ kms_flip@flip-vs-modeset-vs-hang,Fail
+ kms_flip@flip-vs-panning-vs-hang,Fail
+ kms_lease@lease-uevent,Fail
+-kms_multipipe_modeset@basic-max-pipe-crc-check,Fail
+ kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Fail
+ kms_plane_alpha_blend@alpha-7efc,Fail
+ kms_plane_alpha_blend@coverage-7efc,Fail
+ kms_plane_alpha_blend@coverage-vs-premult-vs-constant,Fail
+-kms_plane_lowres@tiling-none,Fail
+ kms_rmfb@close-fd,Fail
+-kms_vblank@ts-continuation-dpms-rpm,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
+index d42004cd6977..6dbc2080347d 100644
+--- a/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/msm-sc7180-trogdor-lazor-limozeen-fails.txt
+@@ -1,8 +1,3 @@
+-device_reset@cold-reset-bound,Fail
+-device_reset@reset-bound,Fail
+-device_reset@unbind-cold-reset-rebind,Fail
+-device_reset@unbind-reset-rebind,Fail
+-dumb_buffer@invalid-bpp,Fail
+ kms_color@ctm-0-25,Fail
+ kms_color@ctm-0-50,Fail
+ kms_color@ctm-0-75,Fail
+@@ -11,35 +6,13 @@ kms_color@ctm-green-to-red,Fail
+ kms_color@ctm-negative,Fail
+ kms_color@ctm-red-to-blue,Fail
+ kms_color@ctm-signed,Fail
+-kms_content_protection@atomic,Crash
+-kms_content_protection@atomic-dpms,Crash
+-kms_content_protection@content-type-change,Crash
+-kms_content_protection@lic-type-0,Crash
+-kms_content_protection@lic-type-1,Crash
+-kms_content_protection@srm,Crash
+-kms_content_protection@type1,Crash
+-kms_content_protection@uevent,Crash
+-kms_cursor_legacy@2x-cursor-vs-flip-atomic,Fail
+-kms_cursor_legacy@2x-cursor-vs-flip-legacy,Fail
+-kms_cursor_legacy@2x-flip-vs-cursor-atomic,Fail
+-kms_cursor_legacy@2x-flip-vs-cursor-legacy,Fail
+-kms_cursor_legacy@2x-long-cursor-vs-flip-atomic,Fail
+-kms_cursor_legacy@2x-long-cursor-vs-flip-legacy,Fail
+-kms_cursor_legacy@2x-long-flip-vs-cursor-atomic,Fail
+-kms_cursor_legacy@2x-long-flip-vs-cursor-legacy,Fail
+ kms_cursor_legacy@cursor-vs-flip-toggle,Fail
+ kms_cursor_legacy@cursor-vs-flip-varying-size,Fail
+-kms_display_modes@extended-mode-basic,Fail
+-kms_flip@2x-flip-vs-modeset-vs-hang,Fail
+-kms_flip@2x-flip-vs-panning-vs-hang,Fail
+ kms_flip@flip-vs-modeset-vs-hang,Fail
+ kms_flip@flip-vs-panning-vs-hang,Fail
+ kms_lease@lease-uevent,Fail
+-kms_multipipe_modeset@basic-max-pipe-crc-check,Fail
+ kms_pipe_crc_basic@compare-crc-sanitycheck-nv12,Fail
+ kms_plane_alpha_blend@alpha-7efc,Fail
+ kms_plane_alpha_blend@coverage-7efc,Fail
+ kms_plane_alpha_blend@coverage-vs-premult-vs-constant,Fail
+-kms_plane_lowres@tiling-none,Fail
+ kms_rmfb@close-fd,Fail
+-kms_vblank@ts-continuation-dpms-rpm,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/msm-sdm845-fails.txt b/drivers/gpu/drm/ci/xfails/msm-sdm845-fails.txt
+index 770a1c685fde..fa8c7e663858 100644
+--- a/drivers/gpu/drm/ci/xfails/msm-sdm845-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/msm-sdm845-fails.txt
+@@ -1,8 +1,4 @@
+-device_reset@cold-reset-bound,Fail
+-device_reset@reset-bound,Fail
+-device_reset@unbind-cold-reset-rebind,Fail
+-device_reset@unbind-reset-rebind,Fail
+-dumb_buffer@invalid-bpp,Fail
++drm_read@invalid-buffer,Fail
+ kms_color@ctm-0-25,Fail
+ kms_color@ctm-0-50,Fail
+ kms_color@ctm-0-75,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/msm-sdm845-flakes.txt b/drivers/gpu/drm/ci/xfails/msm-sdm845-flakes.txt
+index 2aa96b1241c3..38ec0305c1f4 100644
+--- a/drivers/gpu/drm/ci/xfails/msm-sdm845-flakes.txt
++++ b/drivers/gpu/drm/ci/xfails/msm-sdm845-flakes.txt
+@@ -116,3 +116,17 @@ kms_cursor_legacy@flip-vs-cursor-toggle
+ # IGT Version: 1.28-gf13702b8e
+ # Linux Version: 6.10.0-rc5
+ msm/msm_shrink@copy-mmap-oom-8
 +
- 	return dsa_stubs->conduit_hwtstamp_validate(dev, config, extack);
- }
- 
-diff --git a/net/bridge/br_input.c b/net/bridge/br_input.c
-index ceaa5a89b947..542cfc5678df 100644
---- a/net/bridge/br_input.c
-+++ b/net/bridge/br_input.c
-@@ -443,7 +443,7 @@ static rx_handler_result_t br_handle_frame_dummy(struct sk_buff **pskb)
- 
- rx_handler_func_t *br_get_rx_handler(const struct net_device *dev)
- {
--	if (netdev_uses_dsa(dev))
-+	if (__netdev_uses_dsa_currently(dev))
- 		return br_handle_frame_dummy;
- 
- 	return br_handle_frame;
-diff --git a/net/core/dev.c b/net/core/dev.c
-index f66e61407883..9ae1c097cbad 100644
---- a/net/core/dev.c
-+++ b/net/core/dev.c
-@@ -5568,7 +5568,8 @@ static int __netif_receive_skb_core(struct sk_buff **pskb, bool pfmemalloc,
- 		}
- 	}
- 
--	if (unlikely(skb_vlan_tag_present(skb)) && !netdev_uses_dsa(skb->dev)) {
-+	if (unlikely(skb_vlan_tag_present(skb)) &&
-+	    !__netdev_uses_dsa_currently(skb->dev)) {
- check_vlan_id:
- 		if (skb_vlan_tag_get_id(skb)) {
- 			/* Vlan id is non 0 and vlan_do_receive() above couldn't
-diff --git a/net/core/flow_dissector.c b/net/core/flow_dissector.c
-index 0e638a37aa09..e1523c609bb7 100644
---- a/net/core/flow_dissector.c
-+++ b/net/core/flow_dissector.c
-@@ -1071,25 +1071,30 @@ bool __skb_flow_dissect(const struct net *net,
- 		nhoff = skb_network_offset(skb);
- 		hlen = skb_headlen(skb);
- #if IS_ENABLED(CONFIG_NET_DSA)
--		if (unlikely(skb->dev && netdev_uses_dsa(skb->dev) &&
--			     proto == htons(ETH_P_XDSA))) {
-+		if (unlikely(skb->dev && proto == htons(ETH_P_XDSA))) {
- 			struct metadata_dst *md_dst = skb_metadata_dst(skb);
--			const struct dsa_device_ops *ops;
-+			struct dsa_port *dp;
- 			int offset = 0;
- 
--			ops = skb->dev->dsa_ptr->tag_ops;
-+			rcu_read_lock();
++# Board Name: sdm845-cheza-r3
++# Bug Report: https://lore.kernel.org/linux-arm-msm/64bc4bcf-de51-4e60-a9f7-1295a1e64c65@collabora.com/T/#t
++# Failure Rate: 50
++# IGT Version: 1.28-ga73311079
++# Linux Version: 6.11.0-rc2
++kms_lease@page-flip-implicit-plane
 +
-+			dp = rcu_dereference(skb->dev->dsa_ptr);
- 			/* Only DSA header taggers break flow dissection */
--			if (ops->needed_headroom &&
-+			if (dp && dp->tag_ops->needed_headroom &&
- 			    (!md_dst || md_dst->type != METADATA_HW_PORT_MUX)) {
--				if (ops->flow_dissect)
--					ops->flow_dissect(skb, &proto, &offset);
-+				if (dp->tag_ops->flow_dissect)
-+					dp->tag_ops->flow_dissect(skb, dp,
-+								  &proto, &offset);
- 				else
- 					dsa_tag_generic_flow_dissect(skb,
-+								     dp,
- 								     &proto,
- 								     &offset);
- 				hlen -= offset;
- 				nhoff += offset;
- 			}
++# Board Name: sdm845-cheza-r3
++# Bug Report: https://lore.kernel.org/linux-arm-msm/64bc4bcf-de51-4e60-a9f7-1295a1e64c65@collabora.com/T/#t
++# Failure Rate: 50
++# IGT Version: 1.28-ga73311079
++# Linux Version: 6.11.0-rc5
++kms_flip@flip-vs-expired-vblank
+diff --git a/drivers/gpu/drm/ci/xfails/msm-sdm845-skips.txt b/drivers/gpu/drm/ci/xfails/msm-sdm845-skips.txt
+index 90651048ab61..94783cafc21a 100644
+--- a/drivers/gpu/drm/ci/xfails/msm-sdm845-skips.txt
++++ b/drivers/gpu/drm/ci/xfails/msm-sdm845-skips.txt
+@@ -25,3 +25,8 @@ core_hotunplug.*
+ 
+ # Whole machine hangs
+ kms_cursor_crc.*
 +
-+			rcu_read_unlock();
- 		}
- #endif
- 	}
-diff --git a/net/dsa/conduit.c b/net/dsa/conduit.c
-index 3dfdb3cb47dc..967770cdf88f 100644
---- a/net/dsa/conduit.c
-+++ b/net/dsa/conduit.c
-@@ -9,6 +9,7 @@
- #include <linux/ethtool.h>
- #include <linux/netdevice.h>
- #include <linux/netlink.h>
-+#include <linux/rcupdate.h>
- #include <net/dsa.h>
- 
- #include "conduit.h"
-@@ -18,7 +19,7 @@
- 
- static int dsa_conduit_get_regs_len(struct net_device *dev)
- {
--	struct dsa_port *cpu_dp = dev->dsa_ptr;
-+	struct dsa_port *cpu_dp = rtnl_dereference(dev->dsa_ptr);
- 	const struct ethtool_ops *ops = cpu_dp->orig_ethtool_ops;
- 	struct dsa_switch *ds = cpu_dp->ds;
- 	int port = cpu_dp->index;
-@@ -48,7 +49,7 @@ static int dsa_conduit_get_regs_len(struct net_device *dev)
- static void dsa_conduit_get_regs(struct net_device *dev,
- 				 struct ethtool_regs *regs, void *data)
- {
--	struct dsa_port *cpu_dp = dev->dsa_ptr;
-+	struct dsa_port *cpu_dp = rtnl_dereference(dev->dsa_ptr);
- 	const struct ethtool_ops *ops = cpu_dp->orig_ethtool_ops;
- 	struct dsa_switch *ds = cpu_dp->ds;
- 	struct ethtool_drvinfo *cpu_info;
-@@ -84,7 +85,7 @@ static void dsa_conduit_get_ethtool_stats(struct net_device *dev,
- 					  struct ethtool_stats *stats,
- 					  uint64_t *data)
- {
--	struct dsa_port *cpu_dp = dev->dsa_ptr;
-+	struct dsa_port *cpu_dp = rtnl_dereference(dev->dsa_ptr);
- 	const struct ethtool_ops *ops = cpu_dp->orig_ethtool_ops;
- 	struct dsa_switch *ds = cpu_dp->ds;
- 	int port = cpu_dp->index;
-@@ -103,7 +104,7 @@ static void dsa_conduit_get_ethtool_phy_stats(struct net_device *dev,
- 					      struct ethtool_stats *stats,
- 					      uint64_t *data)
- {
--	struct dsa_port *cpu_dp = dev->dsa_ptr;
-+	struct dsa_port *cpu_dp = rtnl_dereference(dev->dsa_ptr);
- 	const struct ethtool_ops *ops = cpu_dp->orig_ethtool_ops;
- 	struct dsa_switch *ds = cpu_dp->ds;
- 	int port = cpu_dp->index;
-@@ -127,7 +128,7 @@ static void dsa_conduit_get_ethtool_phy_stats(struct net_device *dev,
- 
- static int dsa_conduit_get_sset_count(struct net_device *dev, int sset)
- {
--	struct dsa_port *cpu_dp = dev->dsa_ptr;
-+	struct dsa_port *cpu_dp = rtnl_dereference(dev->dsa_ptr);
- 	const struct ethtool_ops *ops = cpu_dp->orig_ethtool_ops;
- 	struct dsa_switch *ds = cpu_dp->ds;
- 	int count = 0;
-@@ -150,7 +151,7 @@ static int dsa_conduit_get_sset_count(struct net_device *dev, int sset)
- static void dsa_conduit_get_strings(struct net_device *dev, uint32_t stringset,
- 				    uint8_t *data)
- {
--	struct dsa_port *cpu_dp = dev->dsa_ptr;
-+	struct dsa_port *cpu_dp = rtnl_dereference(dev->dsa_ptr);
- 	const struct ethtool_ops *ops = cpu_dp->orig_ethtool_ops;
- 	struct dsa_switch *ds = cpu_dp->ds;
- 	int port = cpu_dp->index;
-@@ -202,7 +203,7 @@ int __dsa_conduit_hwtstamp_validate(struct net_device *dev,
- 				    const struct kernel_hwtstamp_config *config,
- 				    struct netlink_ext_ack *extack)
- {
--	struct dsa_port *cpu_dp = dev->dsa_ptr;
-+	struct dsa_port *cpu_dp = rtnl_dereference(dev->dsa_ptr);
- 	struct dsa_switch *ds = cpu_dp->ds;
- 	struct dsa_switch_tree *dst;
- 	struct dsa_port *dp;
-@@ -222,7 +223,7 @@ int __dsa_conduit_hwtstamp_validate(struct net_device *dev,
- 
- static int dsa_conduit_ethtool_setup(struct net_device *dev)
- {
--	struct dsa_port *cpu_dp = dev->dsa_ptr;
-+	struct dsa_port *cpu_dp = rtnl_dereference(dev->dsa_ptr);
- 	struct dsa_switch *ds = cpu_dp->ds;
- 	struct ethtool_ops *ops;
- 
-@@ -251,7 +252,7 @@ static int dsa_conduit_ethtool_setup(struct net_device *dev)
- 
- static void dsa_conduit_ethtool_teardown(struct net_device *dev)
- {
--	struct dsa_port *cpu_dp = dev->dsa_ptr;
-+	struct dsa_port *cpu_dp = rtnl_dereference(dev->dsa_ptr);
- 
- 	if (netif_is_lag_master(dev))
- 		return;
-@@ -267,13 +268,14 @@ static void dsa_conduit_ethtool_teardown(struct net_device *dev)
-  */
- static void dsa_conduit_set_promiscuity(struct net_device *dev, int inc)
- {
--	const struct dsa_device_ops *ops = dev->dsa_ptr->tag_ops;
-+	const struct dsa_device_ops *ops;
++# IGT test crash
++# IGT Version: 1.28-ga73311079
++# Linux Version: 6.11.0-rc2
++kms_content_protection@uevent
+diff --git a/drivers/gpu/drm/ci/xfails/panfrost-g12b-fails.txt b/drivers/gpu/drm/ci/xfails/panfrost-g12b-fails.txt
+index fe8ce2ce33e6..abd1ccb71561 100644
+--- a/drivers/gpu/drm/ci/xfails/panfrost-g12b-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/panfrost-g12b-fails.txt
+@@ -1 +1,2 @@
+ panfrost/panfrost_prime@gem-prime-import,Fail
++panfrost/panfrost_submit@pan-submit-error-bad-requirements,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/panfrost-mt8183-fails.txt b/drivers/gpu/drm/ci/xfails/panfrost-mt8183-fails.txt
+index fe8ce2ce33e6..abd1ccb71561 100644
+--- a/drivers/gpu/drm/ci/xfails/panfrost-mt8183-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/panfrost-mt8183-fails.txt
+@@ -1 +1,2 @@
+ panfrost/panfrost_prime@gem-prime-import,Fail
++panfrost/panfrost_submit@pan-submit-error-bad-requirements,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3288-fails.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-fails.txt
+index 4a2f4b6b14c1..8330b934602a 100644
+--- a/drivers/gpu/drm/ci/xfails/panfrost-rk3288-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3288-fails.txt
+@@ -1 +1,2 @@
+ panfrost/panfrost_prime@gem-prime-import,Crash
++panfrost/panfrost_submit@pan-submit-error-bad-requirements,Crash
+diff --git a/drivers/gpu/drm/ci/xfails/panfrost-rk3399-fails.txt b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-fails.txt
+index fe8ce2ce33e6..abd1ccb71561 100644
+--- a/drivers/gpu/drm/ci/xfails/panfrost-rk3399-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/panfrost-rk3399-fails.txt
+@@ -1 +1,2 @@
+ panfrost/panfrost_prime@gem-prime-import,Fail
++panfrost/panfrost_submit@pan-submit-error-bad-requirements,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
+index ea7b2ceb95b9..90282dfa19f4 100644
+--- a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-fails.txt
+@@ -1,18 +1,24 @@
+-core_setmaster@master-drop-set-root,Crash
+ core_setmaster@master-drop-set-user,Crash
+-core_setmaster_vs_auth,Crash
+-device_reset@cold-reset-bound,Crash
+-device_reset@reset-bound,Crash
+-device_reset@unbind-cold-reset-rebind,Crash
+-device_reset@unbind-reset-rebind,Crash
+ dumb_buffer@create-clear,Crash
+-dumb_buffer@invalid-bpp,Crash
+ fbdev@pan,Crash
++kms_bw@linear-tiling-2-displays-1920x1080p,Fail
+ kms_cursor_crc@cursor-onscreen-32x10,Crash
+ kms_cursor_crc@cursor-onscreen-32x32,Crash
++kms_cursor_crc@cursor-onscreen-64x64,Crash
+ kms_cursor_crc@cursor-random-32x10,Crash
++kms_cursor_crc@cursor-sliding-32x10,Crash
+ kms_cursor_crc@cursor-sliding-32x32,Crash
++kms_cursor_crc@cursor-sliding-64x21,Crash
+ kms_cursor_legacy@basic-flip-before-cursor-atomic,Fail
+ kms_cursor_legacy@cursor-vs-flip-legacy,Fail
++kms_cursor_legacy@flip-vs-cursor-crc-atomic,Crash
++kms_flip@flip-vs-panning-vs-hang,Crash
++kms_invalid_mode@int-max-clock,Crash
++kms_lease@invalid-create-leases,Fail
++kms_pipe_crc_basic@read-crc-frame-sequence,Crash
++kms_plane@pixel-format,Crash
++kms_plane@pixel-format-source-clamping,Crash
+ kms_prop_blob@invalid-set-prop,Crash
+-kms_prop_blob@invalid-set-prop-any,Crash
++kms_properties@get_properties-sanity-atomic,Crash
++kms_properties@get_properties-sanity-non-atomic,Crash
++kms_rmfb@close-fd,Crash
+diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
+index 7ede273aab20..cd0b27d8b636 100644
+--- a/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
++++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3288-flakes.txt
+@@ -4,3 +4,31 @@
+ # IGT Version: 1.28-gf13702b8e
+ # Linux Version: 6.10.0-rc5
+ kms_cursor_legacy@flip-vs-cursor-atomic
 +
-+	ASSERT_RTNL();
-+	ops = rtnl_dereference(dev->dsa_ptr)->tag_ops;
- 
- 	if ((dev->priv_flags & IFF_UNICAST_FLT) && !ops->promisc_on_conduit)
- 		return;
- 
--	ASSERT_RTNL();
--
- 	dev_set_promiscuity(dev, inc);
- }
- 
-@@ -281,10 +283,17 @@ static ssize_t tagging_show(struct device *d, struct device_attribute *attr,
- 			    char *buf)
- {
- 	struct net_device *dev = to_net_dev(d);
--	struct dsa_port *cpu_dp = dev->dsa_ptr;
-+	struct dsa_port *cpu_dp;
-+	int ret = 0;
++# Board Name: rk3288-veyron-jaq
++# Bug Report: https://lore.kernel.org/linux-rockchip/7505ac00-29ef-4ad9-8904-94b4c024c02b@collabora.com/T/#t
++# Failure Rate: 100
++# IGT Version: 1.28-ga73311079
++# Linux Version: 6.11.0-rc2
++kms_cursor_crc@cursor-offscreen-32x10
 +
-+	rcu_read_lock();
-+	cpu_dp = rcu_dereference(dev->dsa_ptr);
-+	if (cpu_dp)
-+		ret = sysfs_emit(buf, "%s\n",
-+				 dsa_tag_protocol_to_str(cpu_dp->tag_ops));
-+	rcu_read_unlock();
- 
--	return sysfs_emit(buf, "%s\n",
--		       dsa_tag_protocol_to_str(cpu_dp->tag_ops));
-+	return ret;
- }
- 
- static ssize_t tagging_store(struct device *d, struct device_attribute *attr,
-@@ -293,7 +302,7 @@ static ssize_t tagging_store(struct device *d, struct device_attribute *attr,
- 	const struct dsa_device_ops *new_tag_ops, *old_tag_ops;
- 	const char *end = strchrnul(buf, '\n'), *name;
- 	struct net_device *dev = to_net_dev(d);
--	struct dsa_port *cpu_dp = dev->dsa_ptr;
-+	struct dsa_port *cpu_dp;
- 	size_t len = end - buf;
- 	int err;
- 
-@@ -305,13 +314,17 @@ static ssize_t tagging_store(struct device *d, struct device_attribute *attr,
- 	if (!name)
- 		return -ENOMEM;
- 
--	old_tag_ops = cpu_dp->tag_ops;
- 	new_tag_ops = dsa_tag_driver_get_by_name(name);
- 	kfree(name);
- 	/* Bad tagger name? */
- 	if (IS_ERR(new_tag_ops))
- 		return PTR_ERR(new_tag_ops);
- 
-+	if (!rtnl_trylock())
-+		return restart_syscall();
++# Board Name: rk3288-veyron-jaq
++# Bug Report: https://lore.kernel.org/linux-rockchip/7505ac00-29ef-4ad9-8904-94b4c024c02b@collabora.com/T/#t
++# Failure Rate: 100
++# IGT Version: 1.28-ga73311079
++# Linux Version: 6.11.0-rc2
++kms_cursor_edge_walk@64x64-left-edge
 +
-+	cpu_dp = rtnl_dereference(dev->dsa_ptr);
-+	old_tag_ops = cpu_dp->tag_ops;
- 	if (new_tag_ops == old_tag_ops)
- 		/* Drop the temporarily held duplicate reference, since
- 		 * the DSA switch tree uses this tagger.
-@@ -321,6 +334,7 @@ static ssize_t tagging_store(struct device *d, struct device_attribute *attr,
- 	err = dsa_tree_change_tag_proto(cpu_dp->ds->dst, new_tag_ops,
- 					old_tag_ops);
- 	if (err) {
-+		rtnl_unlock();
- 		/* On failure the old tagger is restored, so we don't need the
- 		 * driver for the new one.
- 		 */
-@@ -331,6 +345,7 @@ static ssize_t tagging_store(struct device *d, struct device_attribute *attr,
- 	/* On success we no longer need the module for the old tagging protocol
- 	 */
- out:
-+	rtnl_unlock();
- 	dsa_tag_driver_put(old_tag_ops);
- 	return count;
- }
-@@ -384,13 +399,11 @@ int dsa_conduit_setup(struct net_device *dev, struct dsa_port *cpu_dp)
- 		netdev_warn(dev, "error %d setting MTU to %d to include DSA overhead\n",
- 			    ret, mtu);
- 
--	/* If we use a tagging format that doesn't have an ethertype
--	 * field, make sure that all packets from this point on get
--	 * sent to the tag format's receive function.
-+	rcu_assign_pointer(dev->dsa_ptr, cpu_dp);
-+	/*
-+	 * No need to synchronize_rcu() here because dsa_ptr in not going away
-+	 * before it will be zeroed
- 	 */
--	wmb();
--
--	dev->dsa_ptr = cpu_dp;
- 
- 	dsa_conduit_set_promiscuity(dev, 1);
- 
-@@ -418,13 +431,12 @@ void dsa_conduit_teardown(struct net_device *dev)
- 	dsa_conduit_reset_mtu(dev);
- 	dsa_conduit_set_promiscuity(dev, -1);
- 
--	dev->dsa_ptr = NULL;
--
- 	/* If we used a tagging format that doesn't have an ethertype
- 	 * field, make sure that all packets from this point get sent
- 	 * without the tag and go through the regular receive path.
- 	 */
--	wmb();
-+	rcu_assign_pointer(dev->dsa_ptr, NULL);
-+	synchronize_rcu();
- }
- 
- int dsa_conduit_lag_setup(struct net_device *lag_dev, struct dsa_port *cpu_dp,
-@@ -434,7 +446,7 @@ int dsa_conduit_lag_setup(struct net_device *lag_dev, struct dsa_port *cpu_dp,
- 	bool conduit_setup = false;
- 	int err;
- 
--	if (!netdev_uses_dsa(lag_dev)) {
-+	if (!__netdev_uses_dsa_currently(lag_dev)) {
- 		err = dsa_conduit_setup(lag_dev, cpu_dp);
- 		if (err)
- 			return err;
-diff --git a/net/dsa/dsa.c b/net/dsa/dsa.c
-index 668c729946ea..36b9ebddc8b8 100644
---- a/net/dsa/dsa.c
-+++ b/net/dsa/dsa.c
-@@ -976,6 +976,8 @@ static int dsa_tree_bind_tag_proto(struct dsa_switch_tree *dst,
- /* Since the dsa/tagging sysfs device attribute is per conduit, the assumption
-  * is that all DSA switches within a tree share the same tagger, otherwise
-  * they would have formed disjoint trees (different "dsa,member" values).
-+ *
-+ * Must be called with RTNL lock held.
-  */
- int dsa_tree_change_tag_proto(struct dsa_switch_tree *dst,
- 			      const struct dsa_device_ops *tag_ops,
-@@ -985,8 +987,7 @@ int dsa_tree_change_tag_proto(struct dsa_switch_tree *dst,
- 	struct dsa_port *dp;
- 	int err = -EBUSY;
- 
--	if (!rtnl_trylock())
--		return restart_syscall();
-+	ASSERT_RTNL();
- 
- 	/* At the moment we don't allow changing the tag protocol under
- 	 * traffic. The rtnl_mutex also happens to serialize concurrent
-@@ -1011,15 +1012,12 @@ int dsa_tree_change_tag_proto(struct dsa_switch_tree *dst,
- 	if (err)
- 		goto out_unwind_tagger;
- 
--	rtnl_unlock();
--
- 	return 0;
- 
- out_unwind_tagger:
- 	info.tag_ops = old_tag_ops;
- 	dsa_tree_notify(dst, DSA_NOTIFIER_TAG_PROTO, &info);
- out_unlock:
--	rtnl_unlock();
- 	return err;
- }
- 
-@@ -1027,7 +1025,7 @@ static void dsa_tree_conduit_state_change(struct dsa_switch_tree *dst,
- 					  struct net_device *conduit)
- {
- 	struct dsa_notifier_conduit_state_info info;
--	struct dsa_port *cpu_dp = conduit->dsa_ptr;
-+	struct dsa_port *cpu_dp = rtnl_dereference(conduit->dsa_ptr);
- 
- 	info.conduit = conduit;
- 	info.operational = dsa_port_conduit_is_operational(cpu_dp);
-@@ -1039,7 +1037,7 @@ void dsa_tree_conduit_admin_state_change(struct dsa_switch_tree *dst,
- 					 struct net_device *conduit,
- 					 bool up)
- {
--	struct dsa_port *cpu_dp = conduit->dsa_ptr;
-+	struct dsa_port *cpu_dp = rtnl_dereference(conduit->dsa_ptr);
- 	bool notify = false;
- 
- 	/* Don't keep track of admin state on LAG DSA conduits,
-@@ -1062,7 +1060,7 @@ void dsa_tree_conduit_oper_state_change(struct dsa_switch_tree *dst,
- 					struct net_device *conduit,
- 					bool up)
- {
--	struct dsa_port *cpu_dp = conduit->dsa_ptr;
-+	struct dsa_port *cpu_dp = rtnl_dereference(conduit->dsa_ptr);
- 	bool notify = false;
- 
- 	/* Don't keep track of oper state on LAG DSA conduits,
-@@ -1594,10 +1592,11 @@ void dsa_switch_shutdown(struct dsa_switch *ds)
- 	}
- 
- 	/* Disconnect from further netdevice notifiers on the conduit,
--	 * since netdev_uses_dsa() will now return false.
-+	 * from now on, netdev_uses_dsa_currently() will return false.
- 	 */
- 	dsa_switch_for_each_cpu_port(dp, ds)
--		dp->conduit->dsa_ptr = NULL;
-+		rcu_assign_pointer(dp->conduit->dsa_ptr, NULL);
-+	synchronize_rcu();
- 
- 	rtnl_unlock();
- out:
-diff --git a/net/dsa/port.c b/net/dsa/port.c
-index 25258b33e59e..6220c520d776 100644
---- a/net/dsa/port.c
-+++ b/net/dsa/port.c
-@@ -11,6 +11,7 @@
- #include <linux/notifier.h>
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
-+#include <linux/rtnetlink.h>
- 
- #include "dsa.h"
- #include "port.h"
-@@ -1414,7 +1415,7 @@ static int dsa_port_assign_conduit(struct dsa_port *dp,
- 	if (err && fail_on_err)
- 		return err;
- 
--	dp->cpu_dp = conduit->dsa_ptr;
-+	dp->cpu_dp = rtnl_dereference(conduit->dsa_ptr);
- 	dp->cpu_port_in_lag = netif_is_lag_master(conduit);
- 
- 	return 0;
-diff --git a/net/dsa/tag.c b/net/dsa/tag.c
-index 79ad105902d9..ba662adecc14 100644
---- a/net/dsa/tag.c
-+++ b/net/dsa/tag.c
-@@ -10,6 +10,7 @@
- #include <linux/netdevice.h>
- #include <linux/ptp_classify.h>
- #include <linux/skbuff.h>
-+#include <linux/rcupdate.h>
- #include <net/dsa.h>
- #include <net/dst_metadata.h>
- 
-@@ -55,7 +56,7 @@ static int dsa_switch_rcv(struct sk_buff *skb, struct net_device *dev,
- 			  struct packet_type *pt, struct net_device *unused)
- {
- 	struct metadata_dst *md_dst = skb_metadata_dst(skb);
--	struct dsa_port *cpu_dp = dev->dsa_ptr;
-+	struct dsa_port *cpu_dp = rcu_dereference(dev->dsa_ptr);
- 	struct sk_buff *nskb = NULL;
- 	struct dsa_user_priv *p;
- 
-diff --git a/net/dsa/tag.h b/net/dsa/tag.h
-index d5707870906b..dbb2217d4344 100644
---- a/net/dsa/tag.h
-+++ b/net/dsa/tag.h
-@@ -5,6 +5,7 @@
- 
- #include <linux/if_vlan.h>
- #include <linux/list.h>
-+#include <linux/rcupdate.h>
- #include <linux/types.h>
- #include <net/dsa.h>
- 
-@@ -32,11 +33,14 @@ static inline int dsa_tag_protocol_overhead(const struct dsa_device_ops *ops)
- static inline struct net_device *dsa_conduit_find_user(struct net_device *dev,
- 						       int device, int port)
- {
--	struct dsa_port *cpu_dp = dev->dsa_ptr;
--	struct dsa_switch_tree *dst = cpu_dp->dst;
-+	struct dsa_port *cpu_dp;
- 	struct dsa_port *dp;
- 
--	list_for_each_entry(dp, &dst->ports, list)
-+	cpu_dp = rcu_dereference(dev->dsa_ptr);
-+	if (!cpu_dp)
-+		return NULL;
++# Board Name: rk3288-veyron-jaq
++# Bug Report: https://lore.kernel.org/linux-rockchip/7505ac00-29ef-4ad9-8904-94b4c024c02b@collabora.com/T/#t
++# Failure Rate: 100
++# IGT Version: 1.28-ga73311079
++# Linux Version: 6.11.0-rc2
++kms_flip@plain-flip-ts-check
 +
-+	list_for_each_entry(dp, &cpu_dp->dst->ports, list)
- 		if (dp->ds->index == device && dp->index == port &&
- 		    dp->type == DSA_PORT_TYPE_USER)
- 			return dp->user;
-@@ -184,14 +188,17 @@ static inline struct sk_buff *dsa_software_vlan_untag(struct sk_buff *skb)
- static inline struct net_device *
- dsa_find_designated_bridge_port_by_vid(struct net_device *conduit, u16 vid)
- {
--	struct dsa_port *cpu_dp = conduit->dsa_ptr;
--	struct dsa_switch_tree *dst = cpu_dp->dst;
-+	struct dsa_port *cpu_dp;
- 	struct bridge_vlan_info vinfo;
- 	struct net_device *user;
- 	struct dsa_port *dp;
- 	int err;
- 
--	list_for_each_entry(dp, &dst->ports, list) {
-+	cpu_dp = rcu_dereference(conduit->dsa_ptr);
-+	if (!cpu_dp)
-+		return NULL;
++# Board Name: rk3288-veyron-jaq
++# Bug Report: https://lore.kernel.org/linux-rockchip/7505ac00-29ef-4ad9-8904-94b4c024c02b@collabora.com/T/#t
++# Failure Rate: 100
++# IGT Version: 1.28-ga73311079
++# Linux Version: 6.11.0-rc2
++kms_cursor_crc@cursor-alpha-opaque
+diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
+index 9309ff15e23a..83a38853b4af 100644
+--- a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-fails.txt
+@@ -1,9 +1,4 @@
+-device_reset@cold-reset-bound,Fail
+-device_reset@reset-bound,Fail
+-device_reset@unbind-cold-reset-rebind,Fail
+-device_reset@unbind-reset-rebind,Fail
+ dumb_buffer@create-clear,Crash
+-dumb_buffer@invalid-bpp,Fail
+ kms_atomic_transition@modeset-transition,Fail
+ kms_atomic_transition@modeset-transition-fencing,Fail
+ kms_atomic_transition@plane-toggle-modeset-transition,Fail
+@@ -46,7 +41,6 @@ kms_cursor_legacy@flip-vs-cursor-legacy,Fail
+ kms_cursor_legacy@long-nonblocking-modeset-vs-cursor-atomic,Fail
+ kms_flip@basic-flip-vs-wf_vblank,Fail
+ kms_flip@blocking-wf_vblank,Fail
+-kms_flip@dpms-vs-vblank-race,Fail
+ kms_flip@flip-vs-absolute-wf_vblank,Fail
+ kms_flip@flip-vs-blocking-wf-vblank,Fail
+ kms_flip@flip-vs-modeset-vs-hang,Fail
+@@ -59,7 +53,6 @@ kms_flip@plain-flip-fb-recreate,Fail
+ kms_flip@plain-flip-fb-recreate-interruptible,Fail
+ kms_flip@plain-flip-ts-check,Fail
+ kms_flip@plain-flip-ts-check-interruptible,Fail
+-kms_flip@wf_vblank-ts-check,Fail
+ kms_flip@wf_vblank-ts-check-interruptible,Fail
+ kms_invalid_mode@int-max-clock,Fail
+ kms_lease@lease-uevent,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
+index d98f6a17343c..56f7d4f1ed15 100644
+--- a/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
++++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3399-flakes.txt
+@@ -46,3 +46,31 @@ kms_setmode@basic
+ # IGT Version: 1.28-gf13702b8e
+ # Linux Version: 6.10.0-rc5
+ kms_bw@connected-linear-tiling-1-displays-2560x1440p
 +
-+	list_for_each_entry(dp, &cpu_dp->dst->ports, list) {
- 		if (dp->type != DSA_PORT_TYPE_USER)
- 			continue;
- 
-diff --git a/net/dsa/tag_8021q.c b/net/dsa/tag_8021q.c
-index 3ee53e28ec2e..c9fb4fd2a4cf 100644
---- a/net/dsa/tag_8021q.c
-+++ b/net/dsa/tag_8021q.c
-@@ -5,6 +5,7 @@
-  * primitives for taggers that rely on 802.1Q VLAN tags to use.
-  */
- #include <linux/if_vlan.h>
-+#include <linux/rcupdate.h>
- #include <linux/dsa/8021q.h>
- 
- #include "port.h"
-@@ -474,14 +475,17 @@ EXPORT_SYMBOL_GPL(dsa_8021q_xmit);
- static struct net_device *
- dsa_tag_8021q_find_port_by_vbid(struct net_device *conduit, int vbid)
- {
--	struct dsa_port *cpu_dp = conduit->dsa_ptr;
--	struct dsa_switch_tree *dst = cpu_dp->dst;
-+	struct dsa_port *cpu_dp;
- 	struct dsa_port *dp;
- 
- 	if (WARN_ON(!vbid))
- 		return NULL;
- 
--	dsa_tree_for_each_user_port(dp, dst) {
-+	cpu_dp = rcu_dereference(conduit->dsa_ptr);
-+	if (!cpu_dp)
-+		return NULL;
++# Board Name: rk3399-gru-kevin
++# Bug Report: https://lore.kernel.org/linux-rockchip/7505ac00-29ef-4ad9-8904-94b4c024c02b@collabora.com/T/#t
++# Failure Rate: 50
++# IGT Version: 1.28-ga73311079
++# Linux Version: 6.11.0-rc2
++kms_flip@wf_vblank-ts-check
 +
-+	dsa_tree_for_each_user_port(dp, cpu_dp->dst) {
- 		if (!dp->bridge)
- 			continue;
- 
-diff --git a/net/dsa/tag_brcm.c b/net/dsa/tag_brcm.c
-index 8c3c068728e5..c87f16cd959f 100644
---- a/net/dsa/tag_brcm.c
-+++ b/net/dsa/tag_brcm.c
-@@ -269,7 +269,7 @@ static struct sk_buff *brcm_leg_tag_rcv(struct sk_buff *skb,
- 		return NULL;
- 
- 	/* VLAN tag is added by BCM63xx internal switch */
--	if (netdev_uses_dsa(skb->dev))
-+	if (__netdev_uses_dsa_currently(skb->dev))
- 		len += VLAN_HLEN;
- 
- 	/* Remove Broadcom tag and update checksum */
-diff --git a/net/dsa/tag_dsa.c b/net/dsa/tag_dsa.c
-index 2a2c4fb61a65..7f5dc8d384c9 100644
---- a/net/dsa/tag_dsa.c
-+++ b/net/dsa/tag_dsa.c
-@@ -48,6 +48,7 @@
- #include <linux/dsa/mv88e6xxx.h>
- #include <linux/etherdevice.h>
- #include <linux/list.h>
-+#include <linux/rcupdate.h>
- #include <linux/slab.h>
- 
- #include "tag.h"
-@@ -257,14 +258,15 @@ static struct sk_buff *dsa_rcv_ll(struct sk_buff *skb, struct net_device *dev,
- 	source_port = (dsa_header[1] >> 3) & 0x1f;
- 
- 	if (trunk) {
--		struct dsa_port *cpu_dp = dev->dsa_ptr;
--		struct dsa_lag *lag;
-+		struct dsa_port *cpu_dp = rcu_dereference(dev->dsa_ptr);
-+		struct dsa_lag *lag = NULL;
- 
- 		/* The exact source port is not available in the tag,
- 		 * so we inject the frame directly on the upper
- 		 * team/bond.
- 		 */
--		lag = dsa_lag_by_id(cpu_dp->dst, source_port + 1);
-+		if (cpu_dp)
-+			lag = dsa_lag_by_id(cpu_dp->dst, source_port + 1);
- 		skb->dev = lag ? lag->dev : NULL;
- 	} else {
- 		skb->dev = dsa_conduit_find_user(dev, source_device,
-diff --git a/net/dsa/tag_qca.c b/net/dsa/tag_qca.c
-index 0cf61286b426..dbc1f659ed07 100644
---- a/net/dsa/tag_qca.c
-+++ b/net/dsa/tag_qca.c
-@@ -5,6 +5,7 @@
- 
- #include <linux/etherdevice.h>
- #include <linux/bitfield.h>
-+#include <linux/rcupdate.h>
- #include <net/dsa.h>
- #include <linux/dsa/tag_qca.h>
- 
-@@ -36,8 +37,8 @@ static struct sk_buff *qca_tag_xmit(struct sk_buff *skb, struct net_device *dev)
- static struct sk_buff *qca_tag_rcv(struct sk_buff *skb, struct net_device *dev)
- {
- 	struct qca_tagger_data *tagger_data;
--	struct dsa_port *dp = dev->dsa_ptr;
--	struct dsa_switch *ds = dp->ds;
-+	struct dsa_port *dp;
-+	struct dsa_switch *ds;
- 	u8 ver, pk_type;
- 	__be16 *phdr;
- 	int port;
-@@ -45,6 +46,11 @@ static struct sk_buff *qca_tag_rcv(struct sk_buff *skb, struct net_device *dev)
- 
- 	BUILD_BUG_ON(sizeof(struct qca_mgmt_ethhdr) != QCA_HDR_MGMT_HEADER_LEN + QCA_HDR_LEN);
- 
-+	dp = rcu_dereference(dev->dsa_ptr);
-+	if (!dp)
-+		return NULL;
-+	ds = dp->ds;
++# Board Name: rk3399-gru-kevin
++# Bug Report: https://lore.kernel.org/linux-rockchip/7505ac00-29ef-4ad9-8904-94b4c024c02b@collabora.com/T/#t
++# Failure Rate: 50
++# IGT Version: 1.28-ga73311079
++# Linux Version: 6.11.0-rc5
++kms_flip@dpms-vs-vblank-race
 +
- 	tagger_data = ds->tagger_data;
- 
- 	if (unlikely(!pskb_may_pull(skb, QCA_HDR_LEN)))
-diff --git a/net/dsa/tag_sja1105.c b/net/dsa/tag_sja1105.c
-index 3e902af7eea6..0746a7d34178 100644
---- a/net/dsa/tag_sja1105.c
-+++ b/net/dsa/tag_sja1105.c
-@@ -5,6 +5,7 @@
- #include <linux/dsa/sja1105.h>
- #include <linux/dsa/8021q.h>
- #include <linux/packing.h>
-+#include <linux/rcupdate.h>
- 
- #include "tag.h"
- #include "tag_8021q.h"
-@@ -530,12 +531,13 @@ static struct sk_buff *sja1110_rcv_meta(struct sk_buff *skb, u16 rx_header)
- 	int n_ts = SJA1110_RX_HEADER_N_TS(rx_header);
- 	struct sja1105_tagger_data *tagger_data;
- 	struct net_device *conduit = skb->dev;
-+	struct dsa_switch *ds = NULL;
- 	struct dsa_port *cpu_dp;
--	struct dsa_switch *ds;
- 	int i;
- 
--	cpu_dp = conduit->dsa_ptr;
--	ds = dsa_switch_find(cpu_dp->dst->index, switch_id);
-+	cpu_dp = rcu_dereference(conduit->dsa_ptr);
-+	if (cpu_dp)
-+		ds = dsa_switch_find(cpu_dp->dst->index, switch_id);
- 	if (!ds) {
- 		net_err_ratelimited("%s: cannot find switch id %d\n",
- 				    conduit->name, switch_id);
-@@ -662,24 +664,26 @@ static struct sk_buff *sja1110_rcv(struct sk_buff *skb,
- 	return skb;
- }
- 
--static void sja1105_flow_dissect(const struct sk_buff *skb, __be16 *proto,
--				 int *offset)
-+static void sja1105_flow_dissect(const struct sk_buff *skb,
-+				 const struct dsa_port *dp,
-+				 __be16 *proto, int *offset)
- {
- 	/* No tag added for management frames, all ok */
- 	if (unlikely(sja1105_is_link_local(skb)))
- 		return;
- 
--	dsa_tag_generic_flow_dissect(skb, proto, offset);
-+	dsa_tag_generic_flow_dissect(skb, dp, proto, offset);
- }
- 
--static void sja1110_flow_dissect(const struct sk_buff *skb, __be16 *proto,
--				 int *offset)
-+static void sja1110_flow_dissect(const struct sk_buff *skb,
-+				 const struct dsa_port *dp,
-+				 __be16 *proto, int *offset)
- {
- 	/* Management frames have 2 DSA tags on RX, so the needed_headroom we
- 	 * declared is fine for the generic dissector adjustment procedure.
- 	 */
- 	if (unlikely(sja1105_is_link_local(skb)))
--		return dsa_tag_generic_flow_dissect(skb, proto, offset);
-+		return dsa_tag_generic_flow_dissect(skb, dp, proto, offset);
- 
- 	/* For the rest, there is a single DSA tag, the tag_8021q one */
- 	*offset = VLAN_HLEN;
-diff --git a/net/dsa/user.c b/net/dsa/user.c
-index f5adfa1d978a..2afd21e34772 100644
---- a/net/dsa/user.c
-+++ b/net/dsa/user.c
-@@ -21,6 +21,7 @@
- #include <linux/if_hsr.h>
- #include <net/dcbnl.h>
- #include <linux/netpoll.h>
-+#include <linux/rcupdate.h>
- #include <linux/string.h>
- 
- #include "conduit.h"
-@@ -2839,7 +2840,7 @@ int dsa_user_change_conduit(struct net_device *dev, struct net_device *conduit,
- 		return -EOPNOTSUPP;
- 	}
- 
--	if (!netdev_uses_dsa(conduit)) {
-+	if (!__netdev_uses_dsa_currently(conduit)) {
- 		NL_SET_ERR_MSG_MOD(extack,
- 				   "Interface not eligible as DSA conduit");
- 		return -EOPNOTSUPP;
-@@ -3141,8 +3142,8 @@ static int dsa_lag_conduit_validate(struct net_device *lag_dev,
- 
- 	netdev_for_each_lower_dev(lag_dev, lower1, iter1) {
- 		netdev_for_each_lower_dev(lag_dev, lower2, iter2) {
--			if (!netdev_uses_dsa(lower1) ||
--			    !netdev_uses_dsa(lower2)) {
-+			if (!__netdev_uses_dsa_currently(lower1) ||
-+			    !__netdev_uses_dsa_currently(lower2)) {
- 				NL_SET_ERR_MSG_MOD(extack,
- 						   "All LAG ports must be eligible as DSA conduits");
- 				return notifier_from_errno(-EINVAL);
-@@ -3151,8 +3152,8 @@ static int dsa_lag_conduit_validate(struct net_device *lag_dev,
- 			if (lower1 == lower2)
- 				continue;
- 
--			if (!dsa_port_tree_same(lower1->dsa_ptr,
--						lower2->dsa_ptr)) {
-+			if (!dsa_port_tree_same(rtnl_dereference(lower1->dsa_ptr),
-+						rtnl_dereference(lower2->dsa_ptr))) {
- 				NL_SET_ERR_MSG_MOD(extack,
- 						   "LAG contains DSA conduits of disjoint switch trees");
- 				return notifier_from_errno(-EINVAL);
-@@ -3169,7 +3170,7 @@ dsa_conduit_prechangeupper_sanity_check(struct net_device *conduit,
- {
- 	struct netlink_ext_ack *extack = netdev_notifier_info_to_extack(&info->info);
- 
--	if (!netdev_uses_dsa(conduit))
-+	if (!__netdev_uses_dsa_currently(conduit))
- 		return NOTIFY_DONE;
- 
- 	if (!info->linking)
-@@ -3205,20 +3206,22 @@ dsa_lag_conduit_prechangelower_sanity_check(struct net_device *dev,
- 	struct net_device *lower;
- 	struct list_head *iter;
- 
--	if (!netdev_uses_dsa(lag_dev) || !netif_is_lag_master(lag_dev))
-+	if (!__netdev_uses_dsa_currently(lag_dev) ||
-+	    !netif_is_lag_master(lag_dev))
- 		return NOTIFY_DONE;
- 
- 	if (!info->linking)
- 		return NOTIFY_DONE;
- 
--	if (!netdev_uses_dsa(dev)) {
-+	if (!__netdev_uses_dsa_currently(dev)) {
- 		NL_SET_ERR_MSG(extack,
- 			       "Only DSA conduits can join a LAG DSA conduit");
- 		return notifier_from_errno(-EINVAL);
- 	}
- 
- 	netdev_for_each_lower_dev(lag_dev, lower, iter) {
--		if (!dsa_port_tree_same(dev->dsa_ptr, lower->dsa_ptr)) {
-+		if (!dsa_port_tree_same(rtnl_dereference(dev->dsa_ptr),
-+					rtnl_dereference(lower->dsa_ptr))) {
- 			NL_SET_ERR_MSG(extack,
- 				       "Interface is DSA conduit for a different switch tree than this LAG");
- 			return notifier_from_errno(-EINVAL);
-@@ -3257,7 +3260,8 @@ dsa_bridge_prechangelower_sanity_check(struct net_device *new_lower,
- 	extack = netdev_notifier_info_to_extack(&info->info);
- 
- 	netdev_for_each_lower_dev(br, lower, iter) {
--		if (!netdev_uses_dsa(new_lower) && !netdev_uses_dsa(lower))
-+		if (!__netdev_uses_dsa_currently(new_lower) &&
-+		    !__netdev_uses_dsa_currently(lower))
- 			continue;
- 
- 		if (!netdev_port_same_parent_id(lower, new_lower)) {
-@@ -3295,7 +3299,7 @@ static int dsa_conduit_lag_join(struct net_device *conduit,
- 				struct netdev_lag_upper_info *uinfo,
- 				struct netlink_ext_ack *extack)
- {
--	struct dsa_port *cpu_dp = conduit->dsa_ptr;
-+	struct dsa_port *cpu_dp = rtnl_dereference(conduit->dsa_ptr);
- 	struct dsa_switch_tree *dst = cpu_dp->dst;
- 	struct dsa_port *dp;
- 	int err;
-@@ -3328,7 +3332,7 @@ static int dsa_conduit_lag_join(struct net_device *conduit,
- 		}
- 	}
- 
--	dsa_conduit_lag_teardown(lag_dev, conduit->dsa_ptr);
-+	dsa_conduit_lag_teardown(lag_dev, rtnl_dereference(conduit->dsa_ptr));
- 
- 	return err;
- }
-@@ -3336,17 +3340,16 @@ static int dsa_conduit_lag_join(struct net_device *conduit,
- static void dsa_conduit_lag_leave(struct net_device *conduit,
- 				  struct net_device *lag_dev)
- {
--	struct dsa_port *dp, *cpu_dp = lag_dev->dsa_ptr;
-+	struct dsa_port *dp, *cpu_dp = rtnl_dereference(lag_dev->dsa_ptr);
- 	struct dsa_switch_tree *dst = cpu_dp->dst;
- 	struct dsa_port *new_cpu_dp = NULL;
- 	struct net_device *lower;
- 	struct list_head *iter;
- 
- 	netdev_for_each_lower_dev(lag_dev, lower, iter) {
--		if (netdev_uses_dsa(lower)) {
--			new_cpu_dp = lower->dsa_ptr;
-+		new_cpu_dp = rtnl_dereference(lower->dsa_ptr);
-+		if (new_cpu_dp)
- 			break;
--		}
- 	}
- 
- 	if (new_cpu_dp) {
-@@ -3360,8 +3363,11 @@ static void dsa_conduit_lag_leave(struct net_device *conduit,
- 		/* Update the index of the virtual CPU port to match the lowest
- 		 * physical CPU port
- 		 */
--		lag_dev->dsa_ptr = new_cpu_dp;
--		wmb();
-+		rcu_assign_pointer(lag_dev->dsa_ptr, new_cpu_dp);
-+		/*
-+		 * No need to synchronize_rcu() here because dsa_ptr in not
-+		 * going away before it will be zeroed
-+		 */
- 	} else {
- 		/* If the LAG DSA conduit has no ports left, migrate back all
- 		 * user ports to the first physical CPU port
-@@ -3372,7 +3378,7 @@ static void dsa_conduit_lag_leave(struct net_device *conduit,
- 	/* This DSA conduit has left its LAG in any case, so let
- 	 * the CPU port leave the hardware LAG as well
- 	 */
--	dsa_conduit_lag_teardown(lag_dev, conduit->dsa_ptr);
-+	dsa_conduit_lag_teardown(lag_dev, rtnl_dereference(conduit->dsa_ptr));
- }
- 
- static int dsa_conduit_changeupper(struct net_device *dev,
-@@ -3381,7 +3387,7 @@ static int dsa_conduit_changeupper(struct net_device *dev,
- 	struct netlink_ext_ack *extack;
- 	int err = NOTIFY_DONE;
- 
--	if (!netdev_uses_dsa(dev))
-+	if (!__netdev_uses_dsa_currently(dev))
- 		return err;
- 
- 	extack = netdev_notifier_info_to_extack(&info->info);
-@@ -3464,14 +3470,14 @@ static int dsa_user_netdevice_event(struct notifier_block *nb,
- 			err = dsa_port_lag_change(dp, info->lower_state_info);
- 		}
- 
-+		dp = rtnl_dereference(dev->dsa_ptr);
-+		if (!dp)
-+			return NOTIFY_OK;
++# Board Name: rk3399-gru-kevin
++# Bug Report: https://lore.kernel.org/linux-rockchip/7505ac00-29ef-4ad9-8904-94b4c024c02b@collabora.com/T/#t
++# Failure Rate: 50
++# IGT Version: 1.28-ga73311079
++# Linux Version: 6.11.0-rc5
++kms_bw@linear-tiling-2-displays-2160x1440p
 +
- 		/* Mirror LAG port events on DSA conduits that are in
- 		 * a LAG towards their respective switch CPU ports
- 		 */
--		if (netdev_uses_dsa(dev)) {
--			dp = dev->dsa_ptr;
--
--			err = dsa_port_lag_change(dp, info->lower_state_info);
--		}
-+		err = dsa_port_lag_change(dp, info->lower_state_info);
++# Board Name: rk3399-gru-kevin
++# Bug Report: https://lore.kernel.org/linux-rockchip/7505ac00-29ef-4ad9-8904-94b4c024c02b@collabora.com/T/#t
++# Failure Rate: 50
++# IGT Version: 1.28-ga73311079
++# Linux Version: 6.11.0-rc5
++kms_flip@flip-vs-expired-vblank
+diff --git a/drivers/gpu/drm/ci/xfails/vkms-none-fails.txt b/drivers/gpu/drm/ci/xfails/vkms-none-fails.txt
+index 5408110f4c60..71c02104a683 100644
+--- a/drivers/gpu/drm/ci/xfails/vkms-none-fails.txt
++++ b/drivers/gpu/drm/ci/xfails/vkms-none-fails.txt
+@@ -1,24 +1,3 @@
+-core_hotunplug@hotrebind,Fail
+-core_hotunplug@hotrebind-lateclose,Fail
+-core_hotunplug@hotreplug,Fail
+-core_hotunplug@hotreplug-lateclose,Fail
+-core_hotunplug@hotunbind-rebind,Fail
+-core_hotunplug@hotunplug-rescan,Fail
+-core_hotunplug@unbind-rebind,Fail
+-core_hotunplug@unplug-rescan,Fail
+-device_reset@cold-reset-bound,Fail
+-device_reset@reset-bound,Fail
+-device_reset@unbind-cold-reset-rebind,Fail
+-device_reset@unbind-reset-rebind,Fail
+-dumb_buffer@invalid-bpp,Fail
+-kms_content_protection@atomic,Crash
+-kms_content_protection@atomic-dpms,Crash
+-kms_content_protection@content-type-change,Crash
+-kms_content_protection@lic-type-0,Crash
+-kms_content_protection@lic-type-1,Crash
+-kms_content_protection@srm,Crash
+-kms_content_protection@type1,Crash
+-kms_content_protection@uevent,Crash
+ kms_cursor_crc@cursor-rapid-movement-128x128,Fail
+ kms_cursor_crc@cursor-rapid-movement-128x42,Fail
+ kms_cursor_crc@cursor-rapid-movement-256x256,Fail
+diff --git a/drivers/gpu/drm/ci/xfails/vkms-none-skips.txt b/drivers/gpu/drm/ci/xfails/vkms-none-skips.txt
+index 5ccc771fbb36..b3d16e82e9a2 100644
+--- a/drivers/gpu/drm/ci/xfails/vkms-none-skips.txt
++++ b/drivers/gpu/drm/ci/xfails/vkms-none-skips.txt
+@@ -205,6 +205,59 @@ kms_cursor_edge_walk@128x128-right-edge
+ # R10: ffffa2c181790000 R11: 0000000000000000 R12: ffffa2c1814fa810
+ # R13: 0000000000000031 R14: 0000000000000031 R15: 000000000000
  
- 		return notifier_from_errno(err);
- 	}
-@@ -3481,39 +3487,41 @@ static int dsa_user_netdevice_event(struct notifier_block *nb,
- 		 * DSA driver may require the conduit port (and indirectly
- 		 * the tagger) to be available for some special operation.
- 		 */
--		if (netdev_uses_dsa(dev)) {
--			struct dsa_port *cpu_dp = dev->dsa_ptr;
--			struct dsa_switch_tree *dst = cpu_dp->ds->dst;
--
--			/* Track when the conduit port is UP */
--			dsa_tree_conduit_oper_state_change(dst, dev,
--							   netif_oper_up(dev));
--
--			/* Track when the conduit port is ready and can accept
--			 * packet.
--			 * NETDEV_UP event is not enough to flag a port as ready.
--			 * We also have to wait for linkwatch_do_dev to dev_activate
--			 * and emit a NETDEV_CHANGE event.
--			 * We check if a conduit port is ready by checking if the dev
--			 * have a qdisc assigned and is not noop.
--			 */
--			dsa_tree_conduit_admin_state_change(dst, dev,
--							    !qdisc_tx_is_noop(dev));
-+		struct dsa_port *cpu_dp = rtnl_dereference(dev->dsa_ptr);
-+		struct dsa_switch_tree *dst;
- 
--			return NOTIFY_OK;
--		}
-+		if (!cpu_dp)
-+			return NOTIFY_DONE;
++kms_cursor_edge_walk@128x128-left-edge
++# DEBUG - Begin test kms_cursor_edge_walk@128x128-left-edge
++# Oops: Oops: 0000 [#1] PREEMPT SMP NOPTI
++# CPU: 0 UID: 0 PID: 27 Comm: kworker/u8:1 Not tainted 6.11.0-rc5-g5d3429a7e9aa #1
++# Hardware name: ChromiumOS crosvm, BIOS 0
++# Workqueue: vkms_composer vkms_composer_worker [vkms]
++# RIP: 0010:compose_active_planes+0x344/0x4e0 [vkms]
++# Code: 6a 34 0f 8e 91 fe ff ff 44 89 ea 48 8d 7c 24 48 e8 71 f0 ff ff 4b 8b 04 fc 48 8b 4c 24 50 48 8b 7c 24 40 48 8b 80 48 01 00 00 <48> 63 70 18 8b 40 20 48 89 f2 48 c1 e6 03 29 d0 48 8b 54 24 48 48
++# RSP: 0018:ffffa437800ebd58 EFLAGS: 00010282
++# RAX: 0000000000000000 RBX: 0000000000000002 RCX: ffffa0e841904000
++# RDX: 00000000000000ff RSI: ffffa0e841905ff8 RDI: ffffa0e841902000
++# RBP: 0000000000000000 R08: ffffa0e84158a600 R09: 00000000000003ff
++# R10: 0000000078b2bcd2 R11: 00000000278b2bcd R12: ffffa0e84870fc60
++# R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
++# FS:  0000000000000000(0000) GS:ffffa0e86bc00000(0000) knlGS:0000000000000000
++# CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
++# CR2: 0000000000000018 CR3: 0000000101710000 CR4: 0000000000350ef0
++# Call Trace:
++#  <TASK>
++#  ? __die+0x1e/0x60
++#  ? page_fault_oops+0x17b/0x4a0
++#  ? exc_page_fault+0x6d/0x230
++#  ? asm_exc_page_fault+0x26/0x30
++#  ? compose_active_planes+0x344/0x4e0 [vkms]
++#  ? compose_active_planes+0x32f/0x4e0 [vkms]
++#  ? srso_return_thunk+0x5/0x5f
++#  vkms_composer_worker+0x205/0x240 [vkms]
++#  process_one_work+0x201/0x6c0
++#  ? lock_is_held_type+0x9e/0x110
++#  worker_thread+0x17e/0x310
++#  ? __pfx_worker_thread+0x10/0x10
++#  kthread+0xce/0x100
++#  ? __pfx_kthread+0x10/0x10
++#  ret_from_fork+0x2f/0x50
++#  ? __pfx_kthread+0x10/0x10
++#  ret_from_fork_asm+0x1a/0x30
++#  </TASK>
++# Modules linked in: vkms
++# CR2: 0000000000000018
++# ---[ end trace 0000000000000000 ]---
++# RIP: 0010:compose_active_planes+0x344/0x4e0 [vkms]
++# Code: 6a 34 0f 8e 91 fe ff ff 44 89 ea 48 8d 7c 24 48 e8 71 f0 ff ff 4b 8b 04 fc 48 8b 4c 24 50 48 8b 7c 24 40 48 8b 80 48 01 00 00 <48> 63 70 18 8b 40 20 48 89 f2 48 c1 e6 03 29 d0 48 8b 54 24 48 48
++# RSP: 0018:ffffa437800ebd58 EFLAGS: 00010282
++# RAX: 0000000000000000 RBX: 0000000000000002 RCX: ffffa0e841904000
++# RDX: 00000000000000ff RSI: ffffa0e841905ff8 RDI: ffffa0e841902000
++# RBP: 0000000000000000 R08: ffffa0e84158a600 R09: 00000000000003ff
++# R10: 0000000078b2bcd2 R11: 00000000278b2bcd R12: ffffa0e84870fc60
++# R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
++# FS:  0000000000000000(0000) GS:ffffa0e86bc00000(0000) knlGS:0000000000000000
++# CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
++# CR2: 0000000000000018 CR3: 0000000101710000 CR4: 0000000000350ef0
++# vkms_vblank_simulate: vblank timer overrun
 +
-+		dst = cpu_dp->ds->dst;
-+
-+		/* Track when the conduit port is UP */
-+		dsa_tree_conduit_oper_state_change(dst, dev,
-+						   netif_oper_up(dev));
-+
-+		/* Track when the conduit port is ready and can accept
-+		 * packet.
-+		 * NETDEV_UP event is not enough to flag a port as ready.
-+		 * We also have to wait for linkwatch_do_dev to dev_activate
-+		 * and emit a NETDEV_CHANGE event.
-+		 * We check if a conduit port is ready by checking if the dev
-+		 * have a qdisc assigned and is not noop.
-+		 */
-+		dsa_tree_conduit_admin_state_change(dst, dev,
-+						    !qdisc_tx_is_noop(dev));
-+
-+		return NOTIFY_OK;
- 
--		return NOTIFY_DONE;
- 	}
- 	case NETDEV_GOING_DOWN: {
- 		struct dsa_port *dp, *cpu_dp;
- 		struct dsa_switch_tree *dst;
- 		LIST_HEAD(close_list);
- 
--		if (!netdev_uses_dsa(dev))
-+		cpu_dp = rtnl_dereference(dev->dsa_ptr);
-+		if (!cpu_dp)
- 			return NOTIFY_DONE;
- 
--		cpu_dp = dev->dsa_ptr;
- 		dst = cpu_dp->ds->dst;
- 
- 		dsa_tree_conduit_admin_state_change(dst, dev, false);
-diff --git a/net/ethernet/eth.c b/net/ethernet/eth.c
-index 4e3651101b86..a05ff82551c3 100644
---- a/net/ethernet/eth.c
-+++ b/net/ethernet/eth.c
-@@ -170,7 +170,7 @@ __be16 eth_type_trans(struct sk_buff *skb, struct net_device *dev)
- 	 * variants has been configured on the receiving interface,
- 	 * and if so, set skb->protocol without looking at the packet.
- 	 */
--	if (unlikely(netdev_uses_dsa(dev)))
-+	if (unlikely(netdev_uses_dsa_currently(dev)))
- 		return htons(ETH_P_XDSA);
- 
- 	if (likely(eth_proto_is_802_3(eth->h_proto)))
+ # Skip driver specific tests
+ ^amdgpu.*
+ ^msm.*
 -- 
-2.46.0
+2.43.0
 
 
