@@ -4,68 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F189BECE564
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Sep 2024 09:06:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D547ECE564
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Sep 2024 09:08:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2raA0lV/pUkBYaoJm1OGaXhIA0iskFSmpugVVHAgAXc=; b=YBq0AYBbw1d4p3okaewTZHUgPC
-	6J4T8OFhTsnUqjEBWwh6UfblbDxrVkOjRy4vFPgkhkmW9IwkV14HRBGZttkUuB6CzYtx0Z1pqAKRt
-	l1+nai7vscZOeEs/9zq+Iq7IC5tsz4umRznPokGXV4IH+q4rXQEJ/y8NJlrTUMD0IZxgxFnyE7QbO
-	nnqlmTq9JydVs1o+AuuofzvAoUYsz2x322H8yP1OBIOnxxbHl4POsFpKZxp5CuQ6KZQLrmhC1oZjr
-	eheTL655bTIOb9n93UGtTrwrhfdNVyhcXHGnOOQ9GBViygyznOlSQAXo8dCdgWeFQiVtqV2iHGyN8
-	PUW/g7mg==;
+	bh=/sF7YhEJi6IxY7+GPcmodKPCdjGaxPJW8WZHlA6K6J0=; b=KJVizKyAXYsuHroiFND/JMKMKQ
+	fDgSURF7yb20jVVMGuaT1ibViUtYJscqmVvFlMaNIVDb4pvnUQGGuxy50HkJn27GfGppjoKpIv5rM
+	i4TYwomn04IcVOmvUqArQKG+Qv6CoRVFvJo41ew0wkmap45/6D80M2LHddF1iKQBY8OOLWmdSxCMC
+	GEbYXE9IhxNazQOpw/TJ2biJTUIHPcLYweUf3xUKap6DrhxqMoil5HOIiNOu2JAOCfM/E3jow+DqM
+	D/+QSU2q6rGoR9+jvaw7BQy+UI0UwgguudDUmxqZzozt5GWTMKXmrxN8Iu6LwC79NkaAxZOHIMJT0
+	KcUi21Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snwp5-00000004w2g-2LZN;
-	Tue, 10 Sep 2024 09:06:07 +0000
-Received: from a7-49.smtp-out.eu-west-1.amazonses.com ([54.240.7.49])
+	id 1snwr3-00000004wLv-01V0;
+	Tue, 10 Sep 2024 09:08:09 +0000
+Received: from a7-43.smtp-out.eu-west-1.amazonses.com ([54.240.7.43])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snwof-00000004vvc-1WoV;
-	Tue, 10 Sep 2024 09:05:42 +0000
+	id 1snwqz-00000004wKH-4AIC;
+	Tue, 10 Sep 2024 09:08:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1725959137;
+	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1725959282;
 	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding;
-	bh=e4E2QhibonUrb1as7MzSa4GR+pgL2He6HwaENBXi7to=;
-	b=fc6+luku6MrEhrDUHytMjT4jSVkMAo5tyKr9F5VdtIWuegF2xO/n2RUrUzEziERJ
-	W0I6OM6WAd5wcwKpqzkt8m9BVYxOsfqgrPHetjVgp9nlWN4Glu6DCjtDwB9C61IvGKd
-	kO9mdOiBGww6ppt4HQdSquJ/1vzb7ih8GabjhrLDGtRlNB7JmQHvK8z+vBY2EvRImdp
-	WxAgAgpFapf7gl9GOQDHVo3bhWy44uoS3teNdDKxTvHzR9zjZQcpNJy1XhGOUWe5L8h
-	vVTkH4jIRi5gqq7EW5IJ+7K5nJspazyjsiQI1leh4NQZvr3JhDf4qkyDZshLa8ByDnH
-	7tHsJEdHzg==
+	bh=4MGTJa48J1CqPLOLp7MjUqO5NfFHXXNKzWSU5StJO/c=;
+	b=Wpw3QA3BviVlwoK2hCxxDKhj03x5AD417aOlfMpWU1BsuJHGA+/zcrkzSbhp3FAq
+	4bBChX1F3l4HN84Qe7EIxuYbZAhUqkdd+BfZuuRAIrEFf9dBSuKQYvxxfJXhenKA8nF
+	JYZoGTS+zHFiSfZ/wZdPETfFge+677U/BKCn4ofvbrR2ge00PIiDW4HK/W5OZ6GbAoY
+	3HWEX75tyPdAEnLDw2zeu/qwjR6UbN96B3GRObi79IZx4h1c4vrBT9f7vYduPxOzpP4
+	OZ7i2bWE9LmBfQ8SGN7OvH3AQfzwKVrAGbKAykUo7Xp/ACKkqOodfomRUFsh4JJjVcR
+	sAAFizqC3A==
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1725959137;
+	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1725959282;
 	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Feedback-ID;
-	bh=e4E2QhibonUrb1as7MzSa4GR+pgL2He6HwaENBXi7to=;
-	b=BJYPBWuF8Cw+HNGvI2d33pqsPo7cTFTfIb7Q74Ywmhy4h19IeWWantrd/4LlKuGx
-	JYVXmrw4cYsQuQWcXJpxSaeA4ivgLmgoyE0xfMu3nau0I3BC6+as5hP4IfvYVBQ069O
-	k+YWbQX9ggfKZxsWkoguYpGAo8iVe1Ul75CtAKQs=
-Message-ID: <01020191db2e68dd-f46a7a3b-61d3-4f99-a449-5c9b86d667cb-000000@eu-west-1.amazonses.com>
-Date: Tue, 10 Sep 2024 09:05:37 +0000
+	bh=4MGTJa48J1CqPLOLp7MjUqO5NfFHXXNKzWSU5StJO/c=;
+	b=RqmRS3xhAewkHeNL0yr4Af0zFSCUi/No50VqHgA2DscUeSgybcHdHgiSlLGylsHL
+	8FFWq/B+Ggwfjd7MSfaLI8IeoyyYeznEtVHjUCLdeZ7jIMOWbSt75Lr2taF5ZalQ72+
+	l3+Q1sycoKTCHm88sII9p71Gnqq0h1EQr+un7tGs=
+Message-ID: <01020191db309dcb-22192dd3-993f-45e4-9bf2-1997ba46acb5-000000@eu-west-1.amazonses.com>
+Date: Tue, 10 Sep 2024 09:08:02 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/2] PCI: mediatek-gen3: Support limiting link speed and
- width
-To: linux-pci@vger.kernel.org
-Cc: ryder.lee@mediatek.com, jianjun.wang@mediatek.com, lpieralisi@kernel.org, 
-	kw@linux.com, robh@kernel.org, bhelgaas@google.com, 
-	matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, 
+Subject: Re: [PATCH 4/4] media: platform: mtk-mdp3: Remove mask parameter from
+ MM_REG_POLL macro
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: kernel@collabora.com, linux-media@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	kernel@collabora.com
-References: <20240806094816.92137-1-angelogioacchino.delregno@collabora.com>
+	linux-mediatek@lists.infradead.org
+References: <20240823-mdp3-comp-cleanups-v1-0-1f8c1395ecd3@collabora.com>
+ <20240823-mdp3-comp-cleanups-v1-4-1f8c1395ecd3@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240806094816.92137-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240823-mdp3-comp-cleanups-v1-4-1f8c1395ecd3@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
-X-SES-Outgoing: 2024.09.10-54.240.7.49
+X-SES-Outgoing: 2024.09.10-54.240.7.43
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240910_020541_583369_1BCE032B 
-X-CRM114-Status: GOOD (  11.92  )
+X-CRM114-CacheID: sfid-20240910_020806_193922_C80765F0 
+X-CRM114-Status: UNSURE (   8.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,30 +82,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/08/24 11:48, AngeloGioacchino Del Regno ha scritto:
-> This series adds support for limiting the PCI-Express link speed
-> (or PCIe gen restriction) and link width (number of lanes) in the
-> pcie-mediatek-gen3 driver.
+Il 23/08/24 23:31, Nícolas F. R. A. Prado ha scritto:
+> Just like was done with MM_REG_WRITE, remove the mask from the
+> MM_REG_POLL macro, leaving MM_REG_POLL_MASK to be used when a mask is
+> required, and update the call sites accordingly. In this case, all calls
+> require a mask, so MM_REG_POLL remains unused, but at least this makes
+> the MM_REG_POLL macros consistent with the MM_REG_WRITE ones.
 > 
-> The maximum supported pcie gen is read from the controller itself,
-> so defining a max gen through platform data for each SoC is avoided.
-> 
-> Both are done by adding support for the standard devicetree properties
-> `max-link-speed` and `num-lanes`.
-> 
-> Please note that changing the bindings is not required, as those do
-> already allow specifying those properties for this controller.
-> 
-> AngeloGioacchino Del Regno (2):
->    PCI: mediatek-gen3: Add support for setting max-link-speed limit
->    PCI: mediatek-gen3: Add support for restricting link width
-> 
->   drivers/pci/controller/pcie-mediatek-gen3.c | 76 ++++++++++++++++++++-
->   1 file changed, 74 insertions(+), 2 deletions(-)
-> 
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-Gentle ping for this series.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Thanks,
-Angelo.
+
 
