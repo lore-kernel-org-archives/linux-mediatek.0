@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C21DECE564
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Sep 2024 06:22:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A82D6ECE564
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Sep 2024 06:34:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=9NAqLSzfiTKu9/ujNb6PjoEVWXdaDlFqYoM8Sol5284=; b=CYv1kRSWI9zBlyytc0vKxlVCNt
-	cLCUtWQthpUu79cV0NGdYYHm2gLYCJNCNLos1e70o8YJc/Jgn6JpEMSuCmne6DTMmgQZwcTklMgMh
-	p2R3AHCZpy9JGx4lkxUY3MVn8pvXzsHJv782U1vW5Lg6qS5e0OJ8qLXNY6wgxTCpprYXs4vXRmMYp
-	3Zq3tlONzbWktKw/Oa4FH+iD8Aq6MA+kaKRYdI3W5gRbg5KfFYN8/wAmGrcd/SftEXNQ6/K4gq4lO
-	pHvv+CmaI26pWM+iorwteUIS8F0Sg+lVXb2NeoCLRowvqo0agdr5YK6H8+LZ/0ULiJjsWV2kk3aDl
-	gwV15UXA==;
+	bh=+/aJw7OF4dGO4YwB0NFwJSdiUCvGjw20wyqsbh56zsk=; b=os+5sd50ULfYGKD+OC955jhM1J
+	vy4HyifFSBjE9Q98NdvMJC2vav1kPyK90yNxliGtZPA9pRQDdqSRKZt9wtA5qNHW9XlE7hhbWhkfv
+	GnlOV/Vu7u8dhhrhUK1UkpfErm9t7b+4UG/ooqyNzYOQd6K0KdO3bT2p89FefoLvkFpe+PibZBSUR
+	ptcTyAMGNqMSGihDV+FAc1+g13piK3BhXoruhAAmFJUmghwY7ojl9p9LzZuWu9/cGGYRI15JmfYi5
+	Z9vk1B9pH5UPlSYSrfa09CceB9PRLoARghL81Xo4E07I8K7Z4YHBkgVmVZ4m5PMK+e4VeQtk7hhkZ
+	QyzFQ/QA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snuGL-00000004R4k-1L0A;
-	Tue, 10 Sep 2024 06:22:05 +0000
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+	id 1snuSZ-00000004Sdv-0sKF;
+	Tue, 10 Sep 2024 06:34:43 +0000
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snuFI-00000004QyH-2ZBQ
+	id 1snuRX-00000004SQe-0LDp
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Sep 2024 06:21:02 +0000
-Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-70b2421471aso3409337a12.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 09 Sep 2024 23:21:00 -0700 (PDT)
+	Tue, 10 Sep 2024 06:33:40 +0000
+Received: by mail-pg1-x532.google.com with SMTP id 41be03b00d2f7-6c5bcb8e8edso4015429a12.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 09 Sep 2024 23:33:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1725949259; x=1726554059; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1725950018; x=1726554818; darn=lists.infradead.org;
         h=cc:to:message-id:content-transfer-encoding:mime-version:subject
          :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=9NAqLSzfiTKu9/ujNb6PjoEVWXdaDlFqYoM8Sol5284=;
-        b=REmd0b+w2mlVB6mv32RPzenTfNvEuHxpABKhdEMzFn/mTC7eOaE7VhFHqFIkhNLfiK
-         K2aAVifjdJf+P25X+ee791P8HzTnfF3o0nPcSK+cRMlmmuXK1UcVRhGVWCOJx4cA8Bxj
-         tNfM+1NZAJUEVjpBsviefE9dtHlp4pNSUjDp4=
+        bh=+/aJw7OF4dGO4YwB0NFwJSdiUCvGjw20wyqsbh56zsk=;
+        b=FRI7E/2LG67AnQhQ7bREeBkBh1cYp7SgrT1wZaxzI227myw7I0tdMQIEULyHch3dkY
+         lxalM8q0jSak2hWgTRHPv8hKBXtnTTvVNLPuE1vwVW+H5dxxnoHgaleCtL9Kr4qKyDP4
+         9YA7r0T6naP9u1ezAx/paF5j1vsvKsaHbJHWc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725949259; x=1726554059;
+        d=1e100.net; s=20230601; t=1725950018; x=1726554818;
         h=cc:to:message-id:content-transfer-encoding:mime-version:subject
          :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=9NAqLSzfiTKu9/ujNb6PjoEVWXdaDlFqYoM8Sol5284=;
-        b=n8ijNBl67EOB4biryrjM5RI7ggWSB1xwK4csy6rQTbcYTHWhogRNI/Kg8Y2SuBDZ6m
-         +dRec8RioexTPeFhFMYFNwtJL0F0qieSu/Nap2uI6M88xO+SQcGHm9Sc0E055KbflHxQ
-         7I41dn15qVq5xruGg+gvjcy3pzrSXBgkYByq18wV2xX6w2Pkn8FhHS44sS12CL6mybSx
-         2pIuRttwPrV1LH2w95w0DVVV1uxS8U+rsASc9AwgmC21SjToqPmSdoQuNHrSnz1H4SCc
-         LkbkjGeRGTexe8j22VwMxKjcIWy/9DmOsC1iXV+qQCjEdcZ1OlI+GTy4vNZAwdB0t8AR
-         RwrA==
-X-Forwarded-Encrypted: i=1; AJvYcCVGvshJFnsvPmP2sAlfMslh+lJGpcocsp353ZNvPflmgPWpq+DKK+sJFV9bl45WN56nrDpiY0uif0C7TA2zhg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwSDE/uzs592YxmZos8uZ5KzrJe9zP1Yc/L+qK0K49KUet06+aQ
-	1jJvEuuVwS91uknFuZjmyxVh5wDzcWinFbu6G1tHUMic+bL9grk0HUATAUbaKg==
-X-Google-Smtp-Source: AGHT+IEbJWi/XiTXkjvEqBmFZgc8Mp05CZ7p6lurFZhANudU33VAWtc+4cYuapG1rcW6R1YeF9lrEg==
-X-Received: by 2002:a05:6a20:6f08:b0:1c4:9ef6:499b with SMTP id adf61e73a8af0-1cf1d13337amr13713739637.29.1725949259296;
-        Mon, 09 Sep 2024 23:20:59 -0700 (PDT)
+        bh=+/aJw7OF4dGO4YwB0NFwJSdiUCvGjw20wyqsbh56zsk=;
+        b=i89HYRV+noTgSXKqGSfuEtPG9pSeOKO7nBl0AJ7gR4oLl5Ny+iZBC2jx04m1ZU8K+g
+         RrwcckjJC0aNTN18lmataItiqXcxRv64NJ7oziepl0LmKl37ZQLCPqhtK958oeC49vwE
+         EoT3GDRxSKdt26g2OlZwdMeDpbZNlQwlcMuiO2dmpfzotYna4SLM4B/7Dx2rCRH8Dz1A
+         RHbrbs0wrcl/RDHT/ZyJPYm9nyetzJPM878oOF7cauGZKSjxOQ2F4/M+/CyUdXUTwjhB
+         pS4ijyTMOr+OeZgxSy10TSEAdSbPArbxksaAJyInWDRuVu6aT2vjggeODo2hnVOg2IHp
+         WgfA==
+X-Forwarded-Encrypted: i=1; AJvYcCWWT8dznkp/MqlLaQrmWsnAdC6VQv7sTqjxObsbHaREPBRTsEdzPh98+RLzxXCoeSiTvrnfv3iW4Qxdh4fP8w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwsLnjxFStO1JCqA8GrLlaZYCvQ7d7LJPn6aBsD2eChIsPNjlD+
+	Dx+mmTtKvJktygIRBJtYw7Sj+Byqs6AfFKSs/TYIybI8MFgkVxP2doiBi6ZyLQ==
+X-Google-Smtp-Source: AGHT+IHZAOmJi6NMS7af0hTyK5lmGDFP2TH09MXuOWEpUh2DhKcLpAp2eDRZDwrIT3I2ERS0dm+E9g==
+X-Received: by 2002:a05:6a20:2d0a:b0:1cf:451f:4624 with SMTP id adf61e73a8af0-1cf451f4876mr6216404637.21.1725950018062;
+        Mon, 09 Sep 2024 23:33:38 -0700 (PDT)
 Received: from yuanhsinte.c.googlers.com (30.191.80.34.bc.googleusercontent.com. [34.80.191.30])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-719090b0397sm675188b3a.154.2024.09.09.23.20.57
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-719090c9b08sm696684b3a.207.2024.09.09.23.33.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Sep 2024 23:20:58 -0700 (PDT)
+        Mon, 09 Sep 2024 23:33:37 -0700 (PDT)
 From: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Date: Tue, 10 Sep 2024 06:20:55 +0000
-Subject: [PATCH] arm64: dts: mt8183: Add encoder node
+Date: Tue, 10 Sep 2024 06:33:33 +0000
+Subject: [PATCH] arm64: dts: mt8183: set DMIC one-wire mode on Damu
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240910-venc-v1-1-d17dfd931dc8@chromium.org>
-X-B4-Tracking: v=1; b=H4sIAEbl32YC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIxMDSwNL3bLUvGRdE3MD02TztLQ00xQzJaDSgqLUtMwKsDHRsbW1AAWLZWl
- WAAAA
-X-Change-ID: 20240909-venc-4705c7fff5d6
+Message-Id: <20240910-one-wire-v1-1-d25486a6ba6d@chromium.org>
+X-B4-Tracking: v=1; b=H4sIADzo32YC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIxMDS0MD3fy8VN3yzKJUXaMUgzRzQ0PjlGSLJCWg8oKi1LTMCrBR0bG1tQD
+ hj87jWgAAAA==
+X-Change-ID: 20240910-one-wire-2d0f7113dc8b
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Hsin-Te Yuan <yuanhsinte@chromium.org>
+ Hsin-Yi Wang <hsinyi@chromium.org>, Hsin-Te Yuan <yuanhsinte@chromium.org>
 X-Mailer: b4 0.15-dev-7be4f
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240909_232100_710138_580E2D48 
-X-CRM114-Status: UNSURE (   9.32  )
+X-CRM114-CacheID: sfid-20240909_233339_193268_4D4A6754 
+X-CRM114-Status: UNSURE (   9.92  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,51 +96,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add encoder node.
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+
+Sets DMIC one-wire mode on Damu.
 
 Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
 ---
-According to
-https://lore.kernel.org/all/184d895c-239e-3f23-970e-6a9563235cd9@gmail.com/,
-the encoder node of MT8183 should be added only after its dependency has
-been accepted. Add the encoder node in this patch.
----
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index fbf145639b8c90b2c69da1cb4bac4f61ca7a1c9e..d24c89e4e13b0c74f549e638e97e0729052909a7 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1965,6 +1965,24 @@ larb4: larb@17010000 {
- 			power-domains = <&spm MT8183_POWER_DOMAIN_VENC>;
- 		};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
+index 0b45aee2e29953b6117b462034a00dff2596b9ff..06a689feff52945d141d196d439cba034f25fdf6 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
+@@ -26,6 +26,10 @@ &touchscreen {
+ 	hid-descr-addr = <0x0001>;
+ };
  
-+		vcodec_enc: vcodec@17020000 {
-+			compatible = "mediatek,mt8183-vcodec-enc";
-+			reg = <0 0x17020000 0 0x1000>,
-+			interrupts = <GIC_SPI 247 IRQ_TYPE_LEVEL_LOW>;
-+			mediatek,larb = <&larb4>;
-+			iommus = <&iommu M4U_PORT_VENC_REC>,
-+				 <&iommu M4U_PORT_VENC_BSDMA>,
-+				 <&iommu M4U_PORT_VENC_RD_COMV>,
-+				 <&iommu M4U_PORT_VENC_CUR_LUMA>,
-+				 <&iommu M4U_PORT_VENC_CUR_CHROMA>,
-+				 <&iommu M4U_PORT_VENC_REF_LUMA>,
-+				 <&iommu M4U_PORT_VENC_REF_CHROMA>;
-+			mediatek,scp = <&scp>;
-+			power-domains = <&spm MT8183_POWER_DOMAIN_VENC>;
-+			clocks = <&vencsys CLK_VENC_VENC>;
-+			clock-names = "MT_CG_VENC";
-+		};
++&mt6358codec {
++	mediatek,dmic-mode = <1>; /* one-wire */
++};
 +
- 		venc_jpg: jpeg-encoder@17030000 {
- 			compatible = "mediatek,mt8183-jpgenc", "mediatek,mtk-jpgenc";
- 			reg = <0 0x17030000 0 0x1000>;
+ &qca_wifi {
+ 	qcom,ath10k-calibration-variant = "GO_DAMU";
+ };
 
 ---
 base-commit: da3ea35007d0af457a0afc87e84fddaebc4e0b63
-change-id: 20240909-venc-4705c7fff5d6
+change-id: 20240910-one-wire-2d0f7113dc8b
 
 Best regards,
 -- 
