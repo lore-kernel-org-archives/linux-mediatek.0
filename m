@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBA68ECE582
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Sep 2024 09:01:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A1BEECE564
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Sep 2024 09:02:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=MNByqGKEN5Hy+k4gefrdF+qpHt/Ld1bZSFzq94QvX3c=; b=oULK1+3B215n0e+C3G7EdPOdKV
-	qY/6iELPXzZuNBkIlP7wbd3/+g1V/cBQYNDAPOz8nkzKOK0vEtODyzDNETR4s+BeVQxwwP2GFFcx2
-	AwISVkr9t2xDavFxNVM/787Js/Y6FLUPjM0uQNzat7CGU0U5w8ozC4WYHXJXFYYJgQiV6UPe3ySMp
-	H2sCQPxBo6uh+ESFUH3NYWQXrfbO8TQihJQ8x6q7P4dIPuIvedoRE9+VdOWzgWrAh4G21HBChw4Vj
-	CQmz/mJiC29qQQjlZTXKhfmMRiarT4NYjzxzoPHL7Igv3zbf/2ErYUhyFtuvPZ7gUuam6Bcn4zyL2
-	Kb6fpLkA==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mKEfFgRP4pwbuJrrgmr4fyApWqmavw49yGt+Qpw4FN0=; b=GZ3Q9l7tHM+35Vn8bZypTsD2NE
+	dbGH9bKU1VoMgLXwaLd+Amyu7DcxpPoraumhEesEa1NHwPe1p6rqbFj3O4iZhlRVbrYUV3GpYBMV6
+	qOkYurOWi2rmoZjC2RMFSXmlc89URsmxaXLg1nx/WJoYJx5WzrnfvNw3ncpSHaCKVfnySaaMj9s/p
+	5V+Bjbrwnqr2hY1l9VvqFGJboZ/sd4c5xeyX1H3eK4eib/EFGKoYUWU+G8PDiBlMnC87WXnNkQT/q
+	Xc97jgB1ztcqcVEfcAaDEq2qobPv5yD3pszgvKEIHZ9q0pVqftE0kwu9Cya05Bd/+SCSUC7TlIZL5
+	tvt0oRwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snwks-00000004uju-1LpQ;
-	Tue, 10 Sep 2024 09:01:46 +0000
-Received: from a7-48.smtp-out.eu-west-1.amazonses.com ([54.240.7.48])
+	id 1snwm1-00000004vDd-12Vz;
+	Tue, 10 Sep 2024 09:02:57 +0000
+Received: from a7-42.smtp-out.eu-west-1.amazonses.com ([54.240.7.42])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1snwko-00000004ugD-33y4;
-	Tue, 10 Sep 2024 09:01:44 +0000
+	id 1snwks-00000004uhh-40FG;
+	Tue, 10 Sep 2024 09:01:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1725958898;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Transfer-Encoding;
-	bh=DaEnJgdMzkO5FdaJohFPaDZH5R8sp5QKWsb+He1nwEM=;
-	b=P1XL5RzPKJt9mvsIwobKjKMlgdDAnBI2zXVbfTGP1EkaoixYAsmUSsv3/ArGAxFg
-	YzrAe98nka2EKbN7zDydYHa4MgAI9aIVMzkQwAELvTW9hPIY43+fvb7ezJ99oaJfmcf
-	Tpp9V1fgFdsSpbr8Kq+QXixfjQ5BEh+qe9d50dv6Kyy7nlE4m9ovUQObVY/fHgc4doC
-	ay24lJH9Dl5TngZuh23ASfWvr/QpQQnl/LcQJUc6tXgaoOtRFzaES7kAarltShRpyv/
-	BITbaVQtjZs4X81Gc1P1tR6Kc3YrnU6k4gQYwBq0KkA/5vnrC6ODcQSkU7oUoNpAoSm
-	ynBiLn/B6w==
+	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1725958902;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding;
+	bh=GzLfsDTUMMdGBR6iRZk3PPetRE7pbsieNX4s440SIME=;
+	b=hXaSXFh3Xn9vshD81c/7qVKyPw3piq5WqRxzXfC4GVFeQ3UUnO3vX4+D/2I7DOfQ
+	H4pfbIfxrQFAPjPXrsA7KKAtv37WCARqeVejxQtV9xGDxexQr4GjRj7y6ZPmfuy34+p
+	WMXXqX+HO01Gwskb2sUmDZfWbulvgRfYSfu3pfMPyDWp4EosSvIT02+mvT5NA0MLUAi
+	Xtvnj3Y1rURSdld7xl33Es7/N0QZwLPTYV9GjYUuiBG1MK0/P5DMws91QnMCA97g48F
+	rshdQ9TkAiPWAR79VIpyIhDbf8/fAonMwmNVJ+NPWwBYqOozz3p5FvG/agc8wwDg3Wl
+	uzqxDfnMFQ==
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1725958898;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Feedback-ID;
-	bh=DaEnJgdMzkO5FdaJohFPaDZH5R8sp5QKWsb+He1nwEM=;
-	b=Mnl0h/sz7tTEG3WD+QE7jIY9zsgzJZ0B6dfWqSzmbCSjUdPc3U2KdtolsxX+fUlL
-	Bh5jdQa1vwVZmkMuQmT1AvmUK5pIKE/boczac4t2soM809gSP3yyKhnKL0D47SloNOT
-	q//vkGUvab8JetcGCQzL8fr3qLOR565Uu+mY0ZVw=
+	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1725958902;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Feedback-ID;
+	bh=GzLfsDTUMMdGBR6iRZk3PPetRE7pbsieNX4s440SIME=;
+	b=UPaiIJziNX8fkkVk/YAq72IeeWjbkSozMUh1OxU1D1u3rvPTrFJtPbWcqxbMbprQ
+	Iq2LH//8dl6mh1+EeGimNcB0JrfuuJcFY+hK1em/pY4mt7NG7VGzNAGhcdCJkMbUwku
+	v3ZiHBaTuTDca3aG8JfeoXc0uAiMvnJhPP/A24CY=
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, 
@@ -56,18 +56,21 @@ Cc: robh@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org,
 	linux-mediatek@lists.infradead.org, 
 	linux-arm-kernel@lists.infradead.org, wenst@chromium.org, 
 	kernel@collabora.com, sui.jingfeng@linux.dev, michael@walle.cc, 
-	sjoerd@collabora.com
-Subject: [PATCH v9 0/3] drm/mediatek: Add support for OF graphs
-Date: Tue, 10 Sep 2024 09:01:38 +0000
-Message-ID: <01020191db2ac439-4e2dc95a-6323-4f0f-b9fc-c482948018a8-000000@eu-west-1.amazonses.com>
+	sjoerd@collabora.com, Alexandre Mergnat <amergnat@baylibre.com>, 
+	Michael Walle <mwalle@kernel.org>
+Subject: [PATCH v9 2/3] dt-bindings: arm: mediatek: mmsys: Add OF graph support for board path
+Date: Tue, 10 Sep 2024 09:01:42 +0000
+Message-ID: <01020191db2ad3bd-dafdac93-c1ab-4ef4-9287-5a17c3dccfd4-000000@eu-west-1.amazonses.com>
 X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20240910090127.78905-1-angelogioacchino.delregno@collabora.com>
+References: <20240910090127.78905-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
-X-SES-Outgoing: 2024.09.10-54.240.7.48
+X-SES-Outgoing: 2024.09.10-54.240.7.42
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240910_020142_945658_E3D5B9E3 
-X-CRM114-Status: GOOD (  21.27  )
+X-CRM114-CacheID: sfid-20240910_020147_320725_2F2CEC98 
+X-CRM114-Status: GOOD (  10.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,142 +85,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v9:
- - Rebased on next-20240910
- - Removed redundant assignment and changed a print to dev_err()
- - Dropped if branch to switch conversion as requested; this will
-   be sent as a separate commit out of this series.
+Document OF graph on MMSYS/VDOSYS: this supports up to three DDP paths
+per HW instance (so potentially up to six displays for multi-vdo SoCs).
 
-Changes in v8:
- - Rebased on next-20240617
- - Changed to allow probing a VDO with no available display outputs
+The MMSYS or VDOSYS is always the first component in the DDP pipeline,
+so it only supports an output port with multiple endpoints - where each
+endpoint defines the starting point for one of the (currently three)
+possible hardware paths.
 
-Changes in v7:
- - Fix typo in patch 3/3
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+Tested-by: Alexandre Mergnat <amergnat@baylibre.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Tested-by: Michael Walle <mwalle@kernel.org> # on kontron-sbc-i1200
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../bindings/arm/mediatek/mediatek,mmsys.yaml | 28 +++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
-Changes in v6:
- - Added EPROBE_DEFER check to fix dsi/dpi false positive DT fallback case
- - Dropped refcount of ep_out in mtk_drm_of_get_ddp_ep_cid()
- - Fixed double refcount drop during path building
- - Removed failure upon finding a DT-disabled path as requested
- - Tested again on MT8195, MT8395 boards
-
-Changes in v5:
- - Fixed commit [2/3], changed allOf -> anyOf to get the
-   intended allowance in the binding
-
-Changes in v4:
- - Fixed a typo that caused pure OF graphs pipelines multiple
-   concurrent outputs to not get correctly parsed (port->id); 
- - Added OVL_ADAPTOR support for OF graph specified pipelines;
- - Now tested with fully OF Graph specified pipelines on MT8195
-   Chromebooks and MT8395 boards;
- - Rebased on next-20240516
-
-Changes in v3:
- - Rebased on next-20240502 because of renames in mediatek-drm
-
-Changes in v2:
- - Fixed wrong `required` block indentation in commit [2/3]
-
-
-The display IPs in MediaTek SoCs are *VERY* flexible and those support
-being interconnected with different instances of DDP IPs (for example,
-merge0 or merge1) and/or with different DDP IPs (for example, rdma can
-be connected with either color, dpi, dsi, merge, etc), forming a full
-Display Data Path that ends with an actual display.
-
-This series was born because of an issue that I've found while enabling
-support for MT8195/MT8395 boards with DSI output as main display: the
-current mtk_drm_route variations would not work as currently, the driver
-hardcodes a display path for Chromebooks, which have a DisplayPort panel
-with DSC support, instead of a DSI panel without DSC support.
-
-There are other reasons for which I wrote this series, and I find that
-hardcoding those paths - when a HW path is clearly board-specific - is
-highly suboptimal. Also, let's not forget about keeping this driver from
-becoming a huge list of paths for each combination of SoC->board->disp
-and... this and that.
-
-For more information, please look at the commit description for each of
-the commits included in this series.
-
-This series is essential to enable support for the MT8195/MT8395 EVK,
-Kontron i1200, Radxa NIO-12L and, mainly, for non-Chromebook boards
-and Chromebooks to co-exist without conflicts.
-
-Besides, this is also a valid option for MT8188 Chromebooks which might
-have different DSI-or-eDP displays depending on the model (as far as I
-can see from the mtk_drm_route attempt for this SoC that is already
-present in this driver).
-
-This series was tested on MT8195 Cherry Tomato and on MT8395 Radxa
-NIO-12L with both hardcoded paths, OF graph support and partially
-hardcoded paths, and pure OF graph support including pipelines that
-require OVL_ADAPTOR support.
-
-AngeloGioacchino Del Regno (3):
-  dt-bindings: display: mediatek: Add OF graph support for board path
-  dt-bindings: arm: mediatek: mmsys: Add OF graph support for board path
-  drm/mediatek: Implement OF graphs support for display paths
-
- .../bindings/arm/mediatek/mediatek,mmsys.yaml |  28 ++
- .../arm/mediatek/mediatek,mmsys.yaml.orig     | 140 ++++++++++
- .../display/mediatek/mediatek,aal.yaml        |  40 +++
- .../display/mediatek/mediatek,aal.yaml.orig   |  93 +++++++
- .../display/mediatek/mediatek,ccorr.yaml      |  21 ++
- .../display/mediatek/mediatek,ccorr.yaml.orig |  88 ++++++
- .../display/mediatek/mediatek,color.yaml      |  22 ++
- .../display/mediatek/mediatek,color.yaml.orig |  96 +++++++
- .../display/mediatek/mediatek,dither.yaml     |  22 ++
- .../mediatek/mediatek,dither.yaml.orig        |  87 ++++++
- .../display/mediatek/mediatek,dpi.yaml        |  25 +-
- .../display/mediatek/mediatek,dpi.yaml.orig   | 122 +++++++++
- .../display/mediatek/mediatek,dsc.yaml        |  24 ++
- .../display/mediatek/mediatek,dsi.yaml        |  27 +-
- .../display/mediatek/mediatek,dsi.yaml.orig   | 126 +++++++++
- .../display/mediatek/mediatek,ethdr.yaml      |  22 ++
- .../display/mediatek/mediatek,gamma.yaml      |  19 ++
- .../display/mediatek/mediatek,gamma.yaml.orig |  96 +++++++
- .../display/mediatek/mediatek,merge.yaml      |  23 ++
- .../display/mediatek/mediatek,merge.yaml.orig | 110 ++++++++
- .../display/mediatek/mediatek,od.yaml         |  22 ++
- .../display/mediatek/mediatek,ovl-2l.yaml     |  22 ++
- .../mediatek/mediatek,ovl-2l.yaml.orig        |  78 ++++++
- .../display/mediatek/mediatek,ovl.yaml        |  22 ++
- .../display/mediatek/mediatek,ovl.yaml.orig   | 109 ++++++++
- .../display/mediatek/mediatek,postmask.yaml   |  21 ++
- .../display/mediatek/mediatek,rdma.yaml       |  22 ++
- .../display/mediatek/mediatek,rdma.yaml.orig  | 122 +++++++++
- .../display/mediatek/mediatek,ufoe.yaml       |  21 ++
- .../display/mediatek/mediatek,wdma.yaml.orig  |  76 ++++++
- .../bindings/gpu/arm,mali-bifrost.yaml.orig   | 250 +++++++++++++++++
- .../bindings/leds/leds-mt6323.txt.orig        |  60 +++++
- .../bindings/ufs/mediatek,ufs.yaml.orig       |  71 +++++
- drivers/gpu/drm/mediatek/mtk_disp_drv.h       |   1 +
- .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   |  40 ++-
- drivers/gpu/drm/mediatek/mtk_dpi.c            |  21 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 253 +++++++++++++++++-
- drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   2 +-
- drivers/gpu/drm/mediatek/mtk_dsi.c            |  14 +-
- 39 files changed, 2433 insertions(+), 25 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml.orig
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml.orig
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml.orig
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml.orig
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml.orig
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml.orig
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml.orig
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml.orig
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml.orig
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml.orig
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml.orig
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml.orig
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml.orig
- create mode 100644 Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml.orig
- create mode 100644 Documentation/devicetree/bindings/leds/leds-mt6323.txt.orig
- create mode 100644 Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml.orig
-
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+index b3c6888c1457..3f4262e93c78 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -93,6 +93,34 @@ properties:
+   '#reset-cells':
+     const: 1
+ 
++  port:
++    $ref: /schemas/graph.yaml#/properties/port
++    description:
++      Output port node. This port connects the MMSYS/VDOSYS output to
++      the first component of one display pipeline, for example one of
++      the available OVL or RDMA blocks.
++      Some MediaTek SoCs support multiple display outputs per MMSYS.
++    properties:
++      endpoint@0:
++        $ref: /schemas/graph.yaml#/properties/endpoint
++        description: Output to the primary display pipeline
++
++      endpoint@1:
++        $ref: /schemas/graph.yaml#/properties/endpoint
++        description: Output to the secondary display pipeline
++
++      endpoint@2:
++        $ref: /schemas/graph.yaml#/properties/endpoint
++        description: Output to the tertiary display pipeline
++
++    anyOf:
++      - required:
++          - endpoint@0
++      - required:
++          - endpoint@1
++      - required:
++          - endpoint@2
++
+ required:
+   - compatible
+   - reg
 -- 
 2.46.0
 
