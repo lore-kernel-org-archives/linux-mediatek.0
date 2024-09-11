@@ -4,83 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F313EE021C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 09:15:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ADEAEE498B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 09:57:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LHQzU6voJbzXuiTDRaTgUllQ8sZpGhRSONHnUPaSmxM=; b=CBdyhEo4q+GS4VDcv4aUZKMrZq
-	t2er5J/pASMz9xHGir8KKspgCecR25RIINGLlzNa3qvAnK04qTPrtKLRyX2tHeZ3cwfZ9LzfP8yPv
-	jAMr5BvZXAsvizRW/0QDeDqXMi9DaNvFMh9yVRGS7NMsgXGm6SieT2lZ75mA2Ox7Clz01d1UIIW7X
-	jxbwq8D+QaexVlmiCbvaSn/ywInN9W7zKQgpuHyZC0i1biSKCnM6kJJfjfozQmphACtXGu84vXC7N
-	7gTuX+syvvVmIW6IzLAzSJI1Nfu/c0rttQbiKfLMr9P35w7oLFpZW2ElBoXYt/eDg7Y1WM5euYxlm
-	ETmrhHSg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LQLPSb8ldyG1OVVh0BB+yFOhjzNrq/gu6sGXkPkLj9A=; b=Z1DWYyzAqzS8Op+LOz88LstzyT
+	BI6RPXZiuU06qD4cy0t9NmxCvlWAHfhigGpezm4412tWjVLK3CVYqcgBpSFzQie2JEKkO+XL/i8jJ
+	sKwmhF7hCNakXJa1shCu0+HQ+OFKVJbiLW8xapLBbYd2kp4XcrrTSMBShiqq+7mX9YKkLUCjf+ZFO
+	gPSMl75cyvLISVxobdymt0/XqaNlAuvMN4QV/yzuYiA9D70ZK4bZhNq5/diaEnH4XONHyOwCiTRkw
+	GAXtnX9FegmzbOG7oYcW6iHwdkWx0h3eh9t47kBcjybJLD/xaYu2j1QGglL3yNFaIzfpE0PbvzqZJ
+	RRsRFszw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soJRh-00000008sCb-4865;
-	Wed, 11 Sep 2024 09:15:30 +0000
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+	id 1soK5z-000000090Je-1gVF;
+	Wed, 11 Sep 2024 09:57:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soJJe-00000008pW5-2tRk
+	id 1soK5w-000000090Ij-0wEw
 	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Sep 2024 09:07:14 +0000
-Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-2055136b612so78995145ad.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 11 Sep 2024 02:07:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1726045629; x=1726650429; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=LHQzU6voJbzXuiTDRaTgUllQ8sZpGhRSONHnUPaSmxM=;
-        b=EuPZaspYnBoKl25QPXA3UNE0GrHu3eoBPQlJHd6UjjczaDRGSWrRTsug0uvHnO248U
-         NDZxhx7Pt9ahUFwtwplLFDo9dKWvjDmmKKrE8RmBQQ1/kan1KIgA+3pHMRwE8z+GU04t
-         Qx76Zl6juKO6+iFQf4We33Y8FTWLmvufb/eK8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726045629; x=1726650429;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=LHQzU6voJbzXuiTDRaTgUllQ8sZpGhRSONHnUPaSmxM=;
-        b=DwNw4NQ1627ZRN7zGCGmkeBaYr/SzEBCPZDC96Xz3VCpdyiH0NFQPjD5dEhf/B2iG/
-         XRm7nUoGgG4e8cCysXT16tDYtukCcsLQaOX79H6wQYluOW6AhFTxjmPK2NPLjaiijVKT
-         tQNYy8xR49O6GzICmKYEPYyhXBTxjP3ZJIv7agSwTYTLdhNbMoRT2Jq7BPJIPfCTIHXC
-         wJ/81us9BT6avAKtz2MXQ6RzFacre3ObdpL/Dkv1okWaRjydN0/CAW6DiHfUFMSKfNYy
-         R/nHJN2sfQLv4R6B7eRKDJHHpGfAhs0mkr22ZPIisc2H1yedndopkAwfEmfTWM4UxdRE
-         LwGg==
-X-Forwarded-Encrypted: i=1; AJvYcCXPVQdekyatP3aQBnRw0esNsi12yutZHp1IwJ/NKLca7XoOmYvWxSLf/FaXfxcQmD54AkKpzG4kcKtYx5nYKA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwwnfGkOriDQK6b2mvptQRmr6dKNVJqLKw+10IfHNGFGGwS46If
-	Q7M7zNJqlglnCouhXvknAkVkyyZeL8D4ag9RLcBdW/U0qjPYZToJ5qZWCtYX3w==
-X-Google-Smtp-Source: AGHT+IGAqhBnf0SV+Z4g8R5aeEMdIP4KrSDUmh2/nEUjwoIAX+w20TRCdHvWil8SF4ixwWnbOny16Q==
-X-Received: by 2002:a17:903:2406:b0:206:b04e:71b3 with SMTP id d9443c01a7336-2074c6e1110mr61414455ad.51.1726045628992;
-        Wed, 11 Sep 2024 02:07:08 -0700 (PDT)
-Received: from yuanhsinte.c.googlers.com (30.191.80.34.bc.googleusercontent.com. [34.80.191.30])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20710eeb39asm59572495ad.154.2024.09.11.02.07.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Sep 2024 02:07:08 -0700 (PDT)
-From: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Date: Wed, 11 Sep 2024 09:07:03 +0000
-Subject: [PATCH v2] arm64: dts: mt8183: Add encoder node
+	Wed, 11 Sep 2024 09:57:05 +0000
+X-UUID: 2f2a6c6e702411efb3adad29d29602c1-20240911
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=LQLPSb8ldyG1OVVh0BB+yFOhjzNrq/gu6sGXkPkLj9A=;
+	b=tvMjilFSsCFHVjEkQod7g1/COSBWFp2ujfF5Hp7Dv5be89ZI66BwbL9298fUddNlQYdWTlz4tHZa48tisrW8rDskgDfRtCITqhkJCowhqcwmz7g/ipfhVzyPRL2YptdtA6HP6v9UZKZRykRWn3EVWUW1VauJw7QNbQSfPIvHr8M=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:3983fc32-0b66-43c8-8396-20bec983722b,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:6dc6a47,CLOUDID:454a0ad0-7921-4900-88a1-3aef019a55ce,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 2f2a6c6e702411efb3adad29d29602c1-20240911
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1604182977; Wed, 11 Sep 2024 02:56:58 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 11 Sep 2024 17:56:24 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 11 Sep 2024 17:56:24 +0800
+From: <peter.wang@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>,
+	<quic_nguyenb@quicinc.com>, <stable@vger.kernel.org>
+Subject: [PATCH v6 1/2] ufs: core: fix the issue of ICU failure
+Date: Wed, 11 Sep 2024 17:56:21 +0800
+Message-ID: <20240911095622.19225-2-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240911095622.19225-1-peter.wang@mediatek.com>
+References: <20240911095622.19225-1-peter.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240911-venc-v2-1-5566c07756fd@chromium.org>
-X-B4-Tracking: v=1; b=H4sIALZd4WYC/y3Myw7CIBCF4VdpZi2GwVasK9/DdGG4lFkUzKBE0
- /DuYnX5n5x8K2TH5DKcuxXYFcqUYgu168CEW5ydINsalFS9HOUoiotG9FoORnvvB3uEdr2z8/T
- amOvUOlB+JH5vasHv+gdQ/oCCAoVFbb0dD2jN6WICp4Weyz7xDFOt9QPFUVXEmwAAAA==
-X-Change-ID: 20240909-venc-4705c7fff5d6
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Hsin-Te Yuan <yuanhsinte@chromium.org>
-X-Mailer: b4 0.15-dev-7be4f
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_020710_888672_E8CAE26A 
-X-CRM114-Status: GOOD (  10.05  )
+X-CRM114-CacheID: sfid-20240911_025704_272511_EF5AD56F 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,59 +91,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add encoder node.
+From: Peter Wang <peter.wang@mediatek.com>
 
-Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
----
-According to
-https://lore.kernel.org/all/184d895c-239e-3f23-970e-6a9563235cd9@gmail.com/,
-the encoder node of MT8183 should be added only after its dependency has
-been accepted. Add the encoder node in this patch.
----
-Changes in v2:
-- Fix typo in dts 
-- Rename clock-names to venc_sel to match dt-bindings
-- Remove deprecated property: mediatek,larb
-- Link to v1: https://lore.kernel.org/r/20240910-venc-v1-1-d17dfd931dc8@chromium.org
----
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+When setting the ICU bit without using read-modify-write,
+SQRTCy will restart SQ again and receive an RTC return
+error code 2 (Failure - SQ not stopped).
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index fbf145639b8c90b2c69da1cb4bac4f61ca7a1c9e..d33c0e4fdfc1132463c1d8f058a791fb2b06579c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1965,6 +1965,23 @@ larb4: larb@17010000 {
- 			power-domains = <&spm MT8183_POWER_DOMAIN_VENC>;
- 		};
+Additionally, the error log has been modified so that
+this type of error can be observed.
+
+Fixes: ab248643d3d6 ("scsi: ufs: core: Add error handling for MCQ mode")
+Cc: stable@vger.kernel.org
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+Reviewed-by: Bao D. Nguyen <quic_nguyenb@quicinc.com>
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+---
+ drivers/ufs/core/ufs-mcq.c | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+index 5891cdacd0b3..3903947dbed1 100644
+--- a/drivers/ufs/core/ufs-mcq.c
++++ b/drivers/ufs/core/ufs-mcq.c
+@@ -539,7 +539,7 @@ int ufshcd_mcq_sq_cleanup(struct ufs_hba *hba, int task_tag)
+ 	struct scsi_cmnd *cmd = lrbp->cmd;
+ 	struct ufs_hw_queue *hwq;
+ 	void __iomem *reg, *opr_sqd_base;
+-	u32 nexus, id, val;
++	u32 nexus, id, val, rtc;
+ 	int err;
  
-+		vcodec_enc: vcodec@17020000 {
-+			compatible = "mediatek,mt8183-vcodec-enc";
-+			reg = <0 0x17020000 0 0x1000>;
-+			interrupts = <GIC_SPI 247 IRQ_TYPE_LEVEL_LOW>;
-+			iommus = <&iommu M4U_PORT_VENC_REC>,
-+				 <&iommu M4U_PORT_VENC_BSDMA>,
-+				 <&iommu M4U_PORT_VENC_RD_COMV>,
-+				 <&iommu M4U_PORT_VENC_CUR_LUMA>,
-+				 <&iommu M4U_PORT_VENC_CUR_CHROMA>,
-+				 <&iommu M4U_PORT_VENC_REF_LUMA>,
-+				 <&iommu M4U_PORT_VENC_REF_CHROMA>;
-+			mediatek,scp = <&scp>;
-+			power-domains = <&spm MT8183_POWER_DOMAIN_VENC>;
-+			clocks = <&vencsys CLK_VENC_VENC>;
-+			clock-names = "venc_sel";
-+		};
-+
- 		venc_jpg: jpeg-encoder@17030000 {
- 			compatible = "mediatek,mt8183-jpgenc", "mediatek,mtk-jpgenc";
- 			reg = <0 0x17030000 0 0x1000>;
-
----
-base-commit: da3ea35007d0af457a0afc87e84fddaebc4e0b63
-change-id: 20240909-venc-4705c7fff5d6
-
-Best regards,
+ 	if (hba->quirks & UFSHCD_QUIRK_MCQ_BROKEN_RTC)
+@@ -569,17 +569,18 @@ int ufshcd_mcq_sq_cleanup(struct ufs_hba *hba, int task_tag)
+ 	opr_sqd_base = mcq_opr_base(hba, OPR_SQD, id);
+ 	writel(nexus, opr_sqd_base + REG_SQCTI);
+ 
+-	/* SQRTCy.ICU = 1 */
+-	writel(SQ_ICU, opr_sqd_base + REG_SQRTC);
++	/* Initiate Cleanup */
++	writel(readl(opr_sqd_base + REG_SQRTC) | SQ_ICU,
++		opr_sqd_base + REG_SQRTC);
+ 
+ 	/* Poll SQRTSy.CUS = 1. Return result from SQRTSy.RTC */
+ 	reg = opr_sqd_base + REG_SQRTS;
+ 	err = read_poll_timeout(readl, val, val & SQ_CUS, 20,
+ 				MCQ_POLL_US, false, reg);
+-	if (err)
+-		dev_err(hba->dev, "%s: failed. hwq=%d, tag=%d err=%ld\n",
+-			__func__, id, task_tag,
+-			FIELD_GET(SQ_ICU_ERR_CODE_MASK, readl(reg)));
++	rtc = FIELD_GET(SQ_ICU_ERR_CODE_MASK, readl(reg));
++	if (err || rtc)
++		dev_err(hba->dev, "%s: failed. hwq=%d, tag=%d err=%d RTC=%d\n",
++			__func__, id, task_tag, err, rtc);
+ 
+ 	if (ufshcd_mcq_sq_start(hba, hwq))
+ 		err = -ETIMEDOUT;
 -- 
-Hsin-Te Yuan <yuanhsinte@chromium.org>
+2.45.2
 
 
