@@ -4,68 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B750EE021F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 09:13:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F313EE021C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 09:15:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CCvBLB3OnEa66lUBuhA0905rUc/V9Cwfl/eXU7OpG7k=; b=iiKRoRiiJYaFG9PKU1YkqbxTao
-	Dr0aoI4D/BIacrVeY93Gf17fOConnvMaS26aZIcn7STminC2EeAZ6uHRzuR46EFR8aUwEn0zV2hxw
-	4Rho4KsOU7VEH2hGQFEFwR7A1bUKDQKXpck5ES4+ZzeDwRiPdk2ULyENFXmDNdLLbiZe/hxqJJTAi
-	NztzVFRRukH9erEuuJKQRGbvVCgtzFYysV/s1+ahMfqE454wfQ8kPtyOFNN2wPf6UgHpsfJBdcgO7
-	sq/eukMwxRwCsrgBdY71nnOIoflkyl5oHfywJF8vZLeV1LA1PHlbKzu8Vtdtlym1Pkwb62R3F41JK
-	Vqy+DD6A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=LHQzU6voJbzXuiTDRaTgUllQ8sZpGhRSONHnUPaSmxM=; b=CBdyhEo4q+GS4VDcv4aUZKMrZq
+	t2er5J/pASMz9xHGir8KKspgCecR25RIINGLlzNa3qvAnK04qTPrtKLRyX2tHeZ3cwfZ9LzfP8yPv
+	jAMr5BvZXAsvizRW/0QDeDqXMi9DaNvFMh9yVRGS7NMsgXGm6SieT2lZ75mA2Ox7Clz01d1UIIW7X
+	jxbwq8D+QaexVlmiCbvaSn/ywInN9W7zKQgpuHyZC0i1biSKCnM6kJJfjfozQmphACtXGu84vXC7N
+	7gTuX+syvvVmIW6IzLAzSJI1Nfu/c0rttQbiKfLMr9P35w7oLFpZW2ElBoXYt/eDg7Y1WM5euYxlm
+	ETmrhHSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soJPb-00000008rRZ-26PL;
-	Wed, 11 Sep 2024 09:13:19 +0000
-Received: from a7-43.smtp-out.eu-west-1.amazonses.com ([54.240.7.43])
+	id 1soJRh-00000008sCb-4865;
+	Wed, 11 Sep 2024 09:15:30 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soJAH-00000008nDL-03PP;
-	Wed, 11 Sep 2024 08:57:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1726045045;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding;
-	bh=vUvKnbq/uwwFGfQegRdJ5dmxcL0H9quwOS+8xA7iEFY=;
-	b=GKZiL4KyR58cJt4OY+aZDZOLi65aOmKRZvOAG3xMT3ATB5DEDXIWmUy+1g3+Ksdf
-	98DT5E0Of/U2ImWQvw6iY9kBCtyVl3vdXgvaFG8yqo4rTpVUFIP7nmbch6JKaYhKoMj
-	XEl5blNzzjzGV/fnH1LQgf+Wl2/sbwrUyj2AQlYgKFIRmw5MUSEWc6h8+AbW69Gb1DP
-	yq3utQvp9NmrcWVAOfq7hynkAjPhsLXG8gXDOjzsQYdFydRSV+r0M+5Jp64gKng7Trz
-	O1CE7dpBJTu5hBoLPbx/DJsGxGTbWUvIrSMF7otdVOOrqW/3ZLwO7/FEenBlYabNVq0
-	nWdE51ULGQ==
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1726045045;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Feedback-ID;
-	bh=vUvKnbq/uwwFGfQegRdJ5dmxcL0H9quwOS+8xA7iEFY=;
-	b=KqlpHbP/rdRsMMbXy8JfQzgiNCwzQ1fOPsccG3WEIOos+ICBS8IKxeC2DT8kvgir
-	6n/jghADEdbJNp4neaLu+f16flvIMRehDAa/ps+yjgEEviCLA0ZJqanL4pipewwIlKD
-	Haf7MlcWKpG8C5R17b5cm/TtxqLwSZsTdVbWhj38=
-Message-ID: <01020191e04d4237-204596e1-6cc1-491c-a60f-de3917af7d42-000000@eu-west-1.amazonses.com>
-Date: Wed, 11 Sep 2024 08:57:25 +0000
+	id 1soJJe-00000008pW5-2tRk
+	for linux-mediatek@lists.infradead.org;
+	Wed, 11 Sep 2024 09:07:14 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-2055136b612so78995145ad.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 11 Sep 2024 02:07:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1726045629; x=1726650429; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=LHQzU6voJbzXuiTDRaTgUllQ8sZpGhRSONHnUPaSmxM=;
+        b=EuPZaspYnBoKl25QPXA3UNE0GrHu3eoBPQlJHd6UjjczaDRGSWrRTsug0uvHnO248U
+         NDZxhx7Pt9ahUFwtwplLFDo9dKWvjDmmKKrE8RmBQQ1/kan1KIgA+3pHMRwE8z+GU04t
+         Qx76Zl6juKO6+iFQf4We33Y8FTWLmvufb/eK8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1726045629; x=1726650429;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=LHQzU6voJbzXuiTDRaTgUllQ8sZpGhRSONHnUPaSmxM=;
+        b=DwNw4NQ1627ZRN7zGCGmkeBaYr/SzEBCPZDC96Xz3VCpdyiH0NFQPjD5dEhf/B2iG/
+         XRm7nUoGgG4e8cCysXT16tDYtukCcsLQaOX79H6wQYluOW6AhFTxjmPK2NPLjaiijVKT
+         tQNYy8xR49O6GzICmKYEPYyhXBTxjP3ZJIv7agSwTYTLdhNbMoRT2Jq7BPJIPfCTIHXC
+         wJ/81us9BT6avAKtz2MXQ6RzFacre3ObdpL/Dkv1okWaRjydN0/CAW6DiHfUFMSKfNYy
+         R/nHJN2sfQLv4R6B7eRKDJHHpGfAhs0mkr22ZPIisc2H1yedndopkAwfEmfTWM4UxdRE
+         LwGg==
+X-Forwarded-Encrypted: i=1; AJvYcCXPVQdekyatP3aQBnRw0esNsi12yutZHp1IwJ/NKLca7XoOmYvWxSLf/FaXfxcQmD54AkKpzG4kcKtYx5nYKA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwwnfGkOriDQK6b2mvptQRmr6dKNVJqLKw+10IfHNGFGGwS46If
+	Q7M7zNJqlglnCouhXvknAkVkyyZeL8D4ag9RLcBdW/U0qjPYZToJ5qZWCtYX3w==
+X-Google-Smtp-Source: AGHT+IGAqhBnf0SV+Z4g8R5aeEMdIP4KrSDUmh2/nEUjwoIAX+w20TRCdHvWil8SF4ixwWnbOny16Q==
+X-Received: by 2002:a17:903:2406:b0:206:b04e:71b3 with SMTP id d9443c01a7336-2074c6e1110mr61414455ad.51.1726045628992;
+        Wed, 11 Sep 2024 02:07:08 -0700 (PDT)
+Received: from yuanhsinte.c.googlers.com (30.191.80.34.bc.googleusercontent.com. [34.80.191.30])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20710eeb39asm59572495ad.154.2024.09.11.02.07.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Sep 2024 02:07:08 -0700 (PDT)
+From: Hsin-Te Yuan <yuanhsinte@chromium.org>
+Date: Wed, 11 Sep 2024 09:07:03 +0000
+Subject: [PATCH v2] arm64: dts: mt8183: Add encoder node
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8395-genio-1200-evk: Enable GPU
-To: Pablo Sun <pablo.sun@mediatek.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-References: <20240910143245.5282-1-pablo.sun@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240910143245.5282-1-pablo.sun@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
-X-SES-Outgoing: 2024.09.11-54.240.7.43
+Message-Id: <20240911-venc-v2-1-5566c07756fd@chromium.org>
+X-B4-Tracking: v=1; b=H4sIALZd4WYC/y3Myw7CIBCF4VdpZi2GwVasK9/DdGG4lFkUzKBE0
+ /DuYnX5n5x8K2TH5DKcuxXYFcqUYgu168CEW5ydINsalFS9HOUoiotG9FoORnvvB3uEdr2z8/T
+ amOvUOlB+JH5vasHv+gdQ/oCCAoVFbb0dD2jN6WICp4Weyz7xDFOt9QPFUVXEmwAAAA==
+X-Change-ID: 20240909-venc-4705c7fff5d6
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Hsin-Te Yuan <yuanhsinte@chromium.org>
+X-Mailer: b4 0.15-dev-7be4f
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_015729_258970_1DAD3FB8 
-X-CRM114-Status: GOOD (  20.69  )
+X-CRM114-CacheID: sfid-20240911_020710_888672_E8CAE26A 
+X-CRM114-Status: GOOD (  10.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,93 +95,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/09/24 16:32, Pablo Sun ha scritto:
-> Enable the Mali Valhall GPU on Genio 1200 EVK by providing regulator
-> supply settings and enable the GPU node.
-> 
-> In addition, set the GPU related regulator voltage range:
-> 
-> 1. Set the recommended input voltage range of DVDD_GPU to (0.546V-0.787V),
->     based on Table 5-3 of MT8395 Application Processor Datasheet.
->     The regulator mt6315_7_vbuck1("Vgpu") connects to the DVDD_GPU input.
-> 2. Set the input voltage of DVDD_SRAM_GPU, supplied by
->     mt6359_vsram_others_ldo_reg, to 0.75V and set it always on for GPU SRAM.
-> 
-> This patch is tested by enabling CONFIG_DRM_PANFROST and
-> on Genio 1200 EVK it probed with following dmesg:
-> 
-> ```
-> panfrost 13000000.gpu: clock rate = 700000092
-> panfrost 13000000.gpu: mali-g57 id 0x9093 major 0x0 minor 0x1 status 0x0
-> panfrost 13000000.gpu: features: 00000000,000019f7,
-> 	               issues: 00000001,80000400
-> panfrost 13000000.gpu: Features: L2:0x07120206 Shader:0x00000000
->                         Tiler:0x00000809 Mem:0x301
-> 		       MMU:0x00002830 AS:0xff JS:0x7
-> panfrost 13000000.gpu: shader_present=0x50045 l2_present=0x1
-> [drm] Initialized panfrost 1.2.0 for 13000000.gpu on minor 0
-> ```
-> 
-> Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
-> ---
->   .../boot/dts/mediatek/mt8395-genio-1200-evk.dts  | 16 ++++++++++++++--
->   1 file changed, 14 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-> index a06610fff8ad..9b7850b0b9b4 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-> @@ -194,6 +194,11 @@ eth_phy0: eth-phy0@1 {
->   	};
->   };
->   
-> +&gpu {
-> +	mali-supply = <&mt6315_7_vbuck1>;
-> +	status = "okay";
-> +};
-> +
->   &i2c0 {
->   	clock-frequency = <400000>;
->   	pinctrl-0 = <&i2c0_pins>;
-> @@ -407,6 +412,13 @@ &mt6359_vrf12_ldo_reg {
->   	regulator-always-on;
->   };
->   
-> +/* for GPU SRAM */
-> +&mt6359_vsram_others_ldo_reg {
-> +	regulator-always-on;
+Add encoder node.
 
-No, that's not good. Like that, the GPU VSRAM will be subject to current leakage.
+Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+---
+According to
+https://lore.kernel.org/all/184d895c-239e-3f23-970e-6a9563235cd9@gmail.com/,
+the encoder node of MT8183 should be added only after its dependency has
+been accepted. Add the encoder node in this patch.
+---
+Changes in v2:
+- Fix typo in dts 
+- Rename clock-names to venc_sel to match dt-bindings
+- Remove deprecated property: mediatek,larb
+- Link to v1: https://lore.kernel.org/r/20240910-venc-v1-1-d17dfd931dc8@chromium.org
+---
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-Remove the regulator-always-on property.
-The right way of doing that is to add the vgpu to the mfg0's domain supply and
-vsram to mfg1; that way all of the GPU regulators will be off at PM suspend time.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index fbf145639b8c90b2c69da1cb4bac4f61ca7a1c9e..d33c0e4fdfc1132463c1d8f058a791fb2b06579c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1965,6 +1965,23 @@ larb4: larb@17010000 {
+ 			power-domains = <&spm MT8183_POWER_DOMAIN_VENC>;
+ 		};
+ 
++		vcodec_enc: vcodec@17020000 {
++			compatible = "mediatek,mt8183-vcodec-enc";
++			reg = <0 0x17020000 0 0x1000>;
++			interrupts = <GIC_SPI 247 IRQ_TYPE_LEVEL_LOW>;
++			iommus = <&iommu M4U_PORT_VENC_REC>,
++				 <&iommu M4U_PORT_VENC_BSDMA>,
++				 <&iommu M4U_PORT_VENC_RD_COMV>,
++				 <&iommu M4U_PORT_VENC_CUR_LUMA>,
++				 <&iommu M4U_PORT_VENC_CUR_CHROMA>,
++				 <&iommu M4U_PORT_VENC_REF_LUMA>,
++				 <&iommu M4U_PORT_VENC_REF_CHROMA>;
++			mediatek,scp = <&scp>;
++			power-domains = <&spm MT8183_POWER_DOMAIN_VENC>;
++			clocks = <&vencsys CLK_VENC_VENC>;
++			clock-names = "venc_sel";
++		};
++
+ 		venc_jpg: jpeg-encoder@17030000 {
+ 			compatible = "mediatek,mt8183-jpgenc", "mediatek,mtk-jpgenc";
+ 			reg = <0 0x17030000 0 0x1000>;
 
-> +	regulator-min-microvolt = <750000>;
-> +	regulator-max-microvolt = <750000>;
-> +};
-> +
->   &mt6359codec {
->   	mediatek,mic-type-0 = <1>; /* ACC */
->   	mediatek,mic-type-1 = <3>; /* DCC */
-> @@ -839,8 +851,8 @@ regulators {
->   			mt6315_7_vbuck1: vbuck1 {
->   				regulator-compatible = "vbuck1";
->   				regulator-name = "Vgpu";
-> -				regulator-min-microvolt = <300000>;
-> -				regulator-max-microvolt = <1193750>;
-> +				regulator-min-microvolt = <546000>;
+---
+base-commit: da3ea35007d0af457a0afc87e84fddaebc4e0b63
+change-id: 20240909-venc-4705c7fff5d6
 
-I'm okay with this constraint but are you sure that MTK-SVS won't go any lower
-than 0.546V?
-
-Cheers,
-Angelo
-
-> +				regulator-max-microvolt = <787000>;
->   				regulator-enable-ramp-delay = <256>;
->   				regulator-allowed-modes = <0 1 2>;
->   			};
-
+Best regards,
+-- 
+Hsin-Te Yuan <yuanhsinte@chromium.org>
 
 
