@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C29EEE01EE
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36E8CEE4991
 	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 11:07:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
@@ -12,69 +12,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rBK5HrwCcAQdUPHX8HmJCGl0lCk1GIRThLwD9xKBAaE=; b=13Mb4Lggvv4jUd
-	c3jhV4qNMQayRyfys2Kzjj1j6NEOo9MsTlld+ixKF/hgYrEjlSC74bEcIaALbc3VAGpJSbOvrBw3m
-	eJXXVGIpxxOgKURWhPB9wSMCgRLB3I8WfFQpW/XilsdBoa2fvYTOJAUBHKZJF9xU3WWZg2fg35n9p
-	jbqGPzuhdu6BhWoyj4YF9xL5JixNSrX37GtFlPIHO1sPtf9bYw1d1cygIr4sczTBiGyqZkB+cFqzW
-	tLTYVxlYDgEmWV1XPhlGhZzQpsmB8ZnCaS7XQgBTKjkDXMy703Ma1INIJAqzv3yWIO6qrsIQFIJNL
-	krHfy8MJ9pamJuwmD7cQ==;
+	List-Owner; bh=TRJU0t6yYHxtxWleBKO67lBHd41mlkKGaUj6trBU+Ss=; b=FTautrLFVMowIY
+	o6nQYMg9WGAVBl+5CdDp7d3O8jtjAH1T7ZB8tdt9mqTdgbE1g0uAxZFMIVS6JYTI8zmiTy5NtC8Gt
+	TLV8OIfyoWwfiRxDUv+LmIcIn5MOKYu2x+3rB7yKe3Y7H9QDzN+jATMBvUtM0jfW1VYZsOkDYpfS2
+	iETdi/KbWLASWkB6okAZ3IQ+qBCL+6bQQ8tHI2I0C+1CO0cPkNK5wtdnNARi6bQe+KyKZLzRJ9yrk
+	y2yrZrjA5CDGTLrL6SPp8zVj+6FEIrULXTDfwx4HVq9ognJyoDk11EYXS24AxTi6zspjoSNhFjJuN
+	n7BFQ4lDfZreBNLjWWDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soLCK-00000009EF8-1AwG;
-	Wed, 11 Sep 2024 11:07:44 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1soLCJ-00000009EEl-3uLO;
+	Wed, 11 Sep 2024 11:07:43 +0000
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soKxV-00000009Azn-0c4Z
+	id 1soKxS-00000009Ayy-1sXe
 	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Sep 2024 10:52:26 +0000
-Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-718d962ad64so4854928b3a.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 11 Sep 2024 03:52:24 -0700 (PDT)
+	Wed, 11 Sep 2024 10:52:23 +0000
+Received: by mail-pg1-x531.google.com with SMTP id 41be03b00d2f7-7d4ed6158bcso4615548a12.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 11 Sep 2024 03:52:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1726051944; x=1726656744; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1726051941; x=1726656741; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=rBK5HrwCcAQdUPHX8HmJCGl0lCk1GIRThLwD9xKBAaE=;
-        b=CCx7K+yz7nhbYqECjfABg927LUtauR6SNAVLoyNEkEBbROnOZgxXy63ltxG7/0sh0H
-         KV4VYCR4VTi0Mb3iR6Vi9FXDGriRNxOTm5dfIuK+9GS5yIXCxQCIPgvczSiUyh0mNImJ
-         aPvJNNJ/hGnzWqfYf3cnmz4Df2A/QiIcqqOGM=
+        bh=TRJU0t6yYHxtxWleBKO67lBHd41mlkKGaUj6trBU+Ss=;
+        b=cR/UPylYmVdvwWpSzzHPy8TrXCSFdqjuqhUv/TY7aDx9aAvhb+8atyiS+JtcwhjVjf
+         gdy4kUPzD6aEpubEChCIe04N0ierHSEmqWnaoB8EzL4oK5p9QhCEATTDbTIDijF8bgPu
+         uXncJnuIVg+MiLpCGfClVSPilf/H3mEAUA7ow=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726051944; x=1726656744;
+        d=1e100.net; s=20230601; t=1726051941; x=1726656741;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=rBK5HrwCcAQdUPHX8HmJCGl0lCk1GIRThLwD9xKBAaE=;
-        b=X2lG3z0lyVHNvDbcEYD4pJ9ldiVn60xU6YdvT30HKF0Z8VGP94cJE4F8rQDoa5abJF
-         aGvVf0HhF8UeJf+3ukZg/qFcAh0+djiIrjK51Ox0SsvRLiKAlgtNRK5AyLwU7IPtf34+
-         j4QJKvFBK+GwqNDi56WroSNhpSTeH89Ck7fPwyWZLz2pcun7VQ5Po5BU33JZv/RPDt1W
-         O6YfGrK2Kh+rDHKmuYGG/D/VsexuGQdFEFQzF7juwnaeQm0FxDDxIRNrU1xKqeTwUPk8
-         KudDOkCDBurerTXM17pf9ILi1Px29nuGN5hzLk4HTlN8Soos5gDj7NFdyDzSKZPk5Evu
-         Gv2w==
-X-Forwarded-Encrypted: i=1; AJvYcCUgT6bNtlyqNwh2bs1P6vBg6EmW7kXVy4SlBCL/8ZInS4JALkBrIzTUz+3W4Idbq8ShHKiKkbxBweOrWV8maw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzc0pLv/iXYHNEgXTUrZmt7NyYLp29Yir5+OTuGfN40HysaDCh/
-	4iScvCl8tkjmlY4QC2oG5aiuyOTX/fDcwShd1RdhGRc2WGpySLQW7I39NpICSQ==
-X-Google-Smtp-Source: AGHT+IG9YgMDxM6JH6QzsTZiuEKQdBS+aqMoSgP+yD4hhHJ4WT18x5zG3lCN0kR9XJqx6yodEhrX6Q==
-X-Received: by 2002:a05:6a00:148a:b0:70d:2e24:af75 with SMTP id d2e1a72fcca58-718d5f06932mr27638808b3a.24.1726051944217;
-        Wed, 11 Sep 2024 03:52:24 -0700 (PDT)
+        bh=TRJU0t6yYHxtxWleBKO67lBHd41mlkKGaUj6trBU+Ss=;
+        b=JcQloWl7QD4FbxJzJtfl7PoWXGfbmHt3zMDFLbNBSGmGl3jdD/lo3i/62dWYE8Wt1Q
+         Vo0ySGluQJi0wPsO+tW8oWsHNl/FMOV4TOImhK/IcGwiBO55DZS9mRDtgsOWVY2PC5jd
+         ZshhIM2ZFkQHyayxZLM41ju56Oo34Flz9ogAusVRjO81ESCZQ2+APFZN/fJFB7pbAEuE
+         DVhMaaU0tzhjiC1k/Hnh9GsZCDX7xI4eSs2WHcK5pb80aCOUm0mq4HOmSWpVSKVbZV52
+         yCTncPE5OWLx+oUrUueBiK2JEKUL/W+oFKA9aWz13k43766HWWUdC57IfOugpohQrTmi
+         3NBQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXSxnzaVdGU+4ECTATuNXNKwscbu3B6JFXCmQnYEOflvnc5aDYUKYVrDlGFAdi44Qi7epSqN4zndCpV+FbX3Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwDR0iYBWw3A+F4zrL6QfsHI02oIv05W7fay3msGdvXBG2YZcXA
+	V4BNQiF9VQOZnpZXA3vYXqgjR9Db+DBc+UOJx8M50TJiW1k3mnHTVDF5IHJ+Ig==
+X-Google-Smtp-Source: AGHT+IECm7bSQDC8ZsxIXjMTAElbncL0v7wsrCPb3dyLQVmVYtqmVb6fO9ZMVHxPt6utNaXN13eKCw==
+X-Received: by 2002:a05:6a20:cd0e:b0:1cf:50e6:fee4 with SMTP id adf61e73a8af0-1cf5e19f82fmr5867984637.49.1726051941085;
+        Wed, 11 Sep 2024 03:52:21 -0700 (PDT)
 Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:102f:d738:6069:fd4b])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7d8242b3d13sm7147352a12.52.2024.09.11.03.52.21
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7d8242b3d13sm7147352a12.52.2024.09.11.03.52.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Sep 2024 03:52:23 -0700 (PDT)
+        Wed, 11 Sep 2024 03:52:20 -0700 (PDT)
 From: Fei Shao <fshao@chromium.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v2 8/8] arm64: dts: mediatek: mt8188: Add socinfo nodes
-Date: Wed, 11 Sep 2024 18:51:13 +0800
-Message-ID: <20240911105131.4094027-9-fshao@chromium.org>
+Subject: [PATCH v2 7/8] arm64: dts: mediatek: mt8188: Add audio support
+Date: Wed, 11 Sep 2024 18:51:12 +0800
+Message-ID: <20240911105131.4094027-8-fshao@chromium.org>
 X-Mailer: git-send-email 2.46.0.598.g6f2099f65c-goog
 In-Reply-To: <20240911105131.4094027-1-fshao@chromium.org>
 References: <20240911105131.4094027-1-fshao@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_035225_207970_628BD0D3 
-X-CRM114-Status: UNSURE (   9.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240911_035222_498528_A239C820 
+X-CRM114-Status: GOOD (  10.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,37 +89,134 @@ Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetre
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add two socinfo efuse data nodes for the SoC information probing on
-MT8188.
+Add following nodes to support audio enablement on MT8188 SoC:
+- sound card
+- audio controller (AFE)
+- audio DSP and its associated mailboxes
 
 Signed-off-by: Fei Shao <fshao@chromium.org>
 ---
 
 Changes in v2:
-- Added socinfo nodes in v2
+- Replace hardcoded AFE reset ID with correct definition
 
- arch/arm64/boot/dts/mediatek/mt8188.dtsi | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8188.dtsi | 96 ++++++++++++++++++++++++
+ 1 file changed, 96 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-index f459e86d4024..37fd16691ec7 100644
+index 32e5b7108f6a..f459e86d4024 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-@@ -1904,6 +1904,14 @@ efuse: efuse@11f20000 {
- 			lvts_efuse_data1: lvts1-calib@1ac {
- 				reg = <0x1ac 0x40>;
- 			};
+@@ -429,6 +429,11 @@ psci {
+ 		method = "smc";
+ 	};
+ 
++	sound: sound {
++		mediatek,platform = <&afe>;
++		status = "disabled";
++	};
 +
-+			socinfo-data1@7a0 {
-+				reg = <0x7a0 0x4>;
-+			};
-+
-+			socinfo-data2@7e0 {
-+				reg = <0x7e0 0x4>;
-+			};
+ 	thermal_zones: thermal-zones {
+ 		cpu-little0-thermal {
+ 			polling-delay = <1000>;
+@@ -1349,6 +1354,97 @@ scp: scp@10500000 {
+ 			interrupts = <GIC_SPI 462 IRQ_TYPE_LEVEL_HIGH 0>;
  		};
  
- 		gpu: gpu@13000000 {
++		afe: audio-controller@10b10000 {
++			compatible = "mediatek,mt8188-afe";
++			reg = <0 0x10b10000 0 0x10000>;
++			assigned-clocks = <&topckgen CLK_TOP_A1SYS_HP>;
++			assigned-clock-parents =  <&clk26m>;
++			clocks = <&clk26m>,
++				 <&apmixedsys CLK_APMIXED_APLL1>,
++				 <&apmixedsys CLK_APMIXED_APLL2>,
++				 <&topckgen CLK_TOP_APLL12_CK_DIV0>,
++				 <&topckgen CLK_TOP_APLL12_CK_DIV1>,
++				 <&topckgen CLK_TOP_APLL12_CK_DIV2>,
++				 <&topckgen CLK_TOP_APLL12_CK_DIV3>,
++				 <&topckgen CLK_TOP_APLL12_CK_DIV9>,
++				 <&topckgen CLK_TOP_A1SYS_HP>,
++				 <&topckgen CLK_TOP_AUD_INTBUS>,
++				 <&topckgen CLK_TOP_AUDIO_H>,
++				 <&topckgen CLK_TOP_AUDIO_LOCAL_BUS>,
++				 <&topckgen CLK_TOP_DPTX>,
++				 <&topckgen CLK_TOP_I2SO1>,
++				 <&topckgen CLK_TOP_I2SO2>,
++				 <&topckgen CLK_TOP_I2SI1>,
++				 <&topckgen CLK_TOP_I2SI2>,
++				 <&adsp_audio26m CLK_AUDIODSP_AUDIO26M>,
++				 <&topckgen CLK_TOP_APLL1_D4>,
++				 <&topckgen CLK_TOP_APLL2_D4>,
++				 <&topckgen CLK_TOP_APLL12_CK_DIV4>,
++				 <&topckgen CLK_TOP_A2SYS>,
++				 <&topckgen CLK_TOP_AUD_IEC>;
++			clock-names = "clk26m",
++				      "apll1",
++				      "apll2",
++				      "apll12_div0",
++				      "apll12_div1",
++				      "apll12_div2",
++				      "apll12_div3",
++				      "apll12_div9",
++				      "top_a1sys_hp",
++				      "top_aud_intbus",
++				      "top_audio_h",
++				      "top_audio_local_bus",
++				      "top_dptx",
++				      "top_i2so1",
++				      "top_i2so2",
++				      "top_i2si1",
++				      "top_i2si2",
++				      "adsp_audio_26m",
++				      "apll1_d4",
++				      "apll2_d4",
++				      "apll12_div4",
++				      "top_a2sys",
++				      "top_aud_iec";
++			interrupts = <GIC_SPI 822 IRQ_TYPE_LEVEL_HIGH 0>;
++			power-domains = <&spm MT8188_POWER_DOMAIN_AUDIO>;
++			resets = <&watchdog MT8188_TOPRGU_AUDIO_SW_RST>;
++			reset-names = "audiosys";
++			mediatek,infracfg = <&infracfg_ao>;
++			mediatek,topckgen = <&topckgen>;
++			status = "disabled";
++		};
++
++		adsp: adsp@10b80000 {
++			compatible = "mediatek,mt8188-dsp";
++			reg = <0 0x10b80000 0 0x2000>,
++			      <0 0x10d00000 0 0x80000>,
++			      <0 0x10b8b000 0 0x100>,
++			      <0 0x10b8f000 0 0x1000>;
++			reg-names = "cfg", "sram", "sec", "bus";
++			assigned-clocks = <&topckgen CLK_TOP_ADSP>;
++			clocks = <&topckgen CLK_TOP_ADSP>,
++				 <&topckgen CLK_TOP_AUDIO_LOCAL_BUS>;
++			clock-names = "audiodsp", "adsp_bus";
++			mboxes = <&adsp_mailbox0>, <&adsp_mailbox1>;
++			mbox-names = "rx", "tx";
++			power-domains = <&spm MT8188_POWER_DOMAIN_ADSP>;
++			status = "disabled";
++		};
++
++		adsp_mailbox0: mailbox@10b86000 {
++			compatible = "mediatek,mt8188-adsp-mbox", "mediatek,mt8186-adsp-mbox";
++			reg = <0 0x10b86100 0 0x1000>;
++			interrupts = <GIC_SPI 478 IRQ_TYPE_LEVEL_HIGH 0>;
++			#mbox-cells = <0>;
++		};
++
++		adsp_mailbox1: mailbox@10b87000 {
++			compatible = "mediatek,mt8188-adsp-mbox", "mediatek,mt8186-adsp-mbox";
++			reg = <0 0x10b87100 0 0x1000>;
++			interrupts = <GIC_SPI 479 IRQ_TYPE_LEVEL_HIGH 0>;
++			#mbox-cells = <0>;
++		};
++
+ 		adsp_audio26m: clock-controller@10b91100 {
+ 			compatible = "mediatek,mt8188-adsp-audio26m";
+ 			reg = <0 0x10b91100 0 0x100>;
 -- 
 2.46.0.598.g6f2099f65c-goog
 
