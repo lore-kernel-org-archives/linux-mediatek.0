@@ -4,70 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B04CEE4998
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 11:30:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73DBFEE4998
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 11:37:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=18QCLPWI7G/wnPU/G2wYt8yZk3phWce1ix2lPig01EU=; b=JaRSllsHI0z3r9mr0O74mdK1iG
-	gnV2jL2twyPvuoh7Hn1FhIPtIv4qH4Re2G8/J+aPrzSauHipWYruLQerTUMOp/q3Nceaw4jGxwSlM
-	veMElNAEeUMyZlWxhQGxfrkdcrhUCvfKsB8+LruWOw4qwEpCu47AX4QDIZ+gHWI2gy749YJ/o775i
-	i10A3Khwx359FFlUQFuteGN093RkfYhiHE/9/BhmKetSsJGJWjQBWOzSq351sXbrYw3cKOjh0ilT8
-	nCghNM2I7LbdHpDDXbGTLzfSlkW3qyPUHSVKF1KTItr32jwxxVPodJHAFcKiNKgk51G76IYDZhidt
-	N0RD4fdw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EuOHph7C0cmfKRGlQa8YH44Sz/5FhEpWHdlFSJkUp78=; b=xdpqatplxKSRHHCnGBu/KJmkxY
+	US6UP5jXddG0VPQU+Qae/Vglaqio4Fv7i6G9DJKBzMwJX90JurdtJeX2g9Ha235OjZUAeo5Eqx5x2
+	jKATm8VBIskp37tC7Gan03mrUrGNDgGWSWjd17cS9M/O5k86YF1vplHoDmDO8uPGeKtXVvAV2l8CY
+	2hcbG2toH3KSZSyu50dUS3byWTndi2cIxgtkfS2FFY0s3DDMtqzYEDgb3Jq3p4SidZQA0Jk2XxJJb
+	WtkeMY1EUw8m+xypUFQ6dYT50/1rVBt5yOWTHdJwnUJ5/n46I02hSbHJFE3dozvYaPmVW1SBX9fgV
+	ThgW4D8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soLYU-00000009IiF-3Ith;
-	Wed, 11 Sep 2024 11:30:38 +0000
-Received: from a7-47.smtp-out.eu-west-1.amazonses.com ([54.240.7.47])
-	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soLW0-00000009I6G-2hHZ;
-	Wed, 11 Sep 2024 11:28:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1726054081;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding;
-	bh=PJUg0yAblESI6yzCqdB6thUEmYVWoz0i/ywFnkD3qEU=;
-	b=O/5MQImSbnQm5ykvI0kZX28YhgmTUuBRK3h+0fslxOtdaCOtmRFD3RmyIMMUav8E
-	DUIXz+Dtv5RgCHuxb9+pL0w5bqUFBTU5x7xXUemWsdNv6h1ca+o3d37cALlkR9lDdgZ
-	sLkO/CgcPgVxW4JhO/ssw1WpUaNKye3Pud/gTDgybw6ReI5tgdApgPdzZtnEg7/HO+H
-	Aa+tE6MraB69T9YBeBmH5VQDkMXh5MVujpMHQ8JJdqa9wDNz0+J4yreF8Dwzq5krd/Y
-	k4tbCzCBjmLK+cO+1SCObfasxutY8F/h68Edrb9FYxkfVTi8cB04LRY1N+tRxpPr2iq
-	MlPoQiOb7g==
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1726054081;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Feedback-ID;
-	bh=PJUg0yAblESI6yzCqdB6thUEmYVWoz0i/ywFnkD3qEU=;
-	b=YBUKxoYhmvtj7KNU2moum/kL5o/yErrcNd7pxfXfp2X823aqyBZdrE6MrhI6b1Em
-	pDY024TrWdg8WCRb9lf9TwMQu66XOob773u2bbwrX/7+7FxzY5Q3YqimWz+t56+Th3X
-	27JAVh7nhIvlfsPv/sjQ9D0U4NZhjukB1M5ufm6I=
-Message-ID: <01020191e0d72122-0c833bde-7096-4a90-b81d-84945a57b9aa-000000@eu-west-1.amazonses.com>
-Date: Wed, 11 Sep 2024 11:28:00 +0000
+	id 1soLel-00000009JtC-3zZF;
+	Wed, 11 Sep 2024 11:37:07 +0000
+Received: from m16.mail.163.com ([117.135.210.3])
+	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
+	id 1soLei-00000009Jr1-2zLU
+	for linux-mediatek@lists.infradead.org;
+	Wed, 11 Sep 2024 11:37:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:Subject:Message-ID:MIME-Version:
+	Content-Type; bh=EuOHph7C0cmfKRGlQa8YH44Sz/5FhEpWHdlFSJkUp78=;
+	b=fNhJXhPrwwfzGOT3V0zYq91zOqYugXl++GmOk20RCgQF1+5KMCmDPcIU7haxL0
+	osw9ldjnPaE2YNTRksIKmbaDCE93IEAZw2jA7XEju+PzQ0XJ09ehvtJrvB1vvZQc
+	ns3wYoiqpJvnuoOLC6zi0mlQxeVMyUhX4FF3Eg6RwNtLU=
+Received: from localhost (unknown [120.26.85.94])
+	by gzsmtp3 (Coremail) with SMTP id sigvCgAn1wbBgOFm3jcXAA--.2464S2;
+	Wed, 11 Sep 2024 19:36:34 +0800 (CST)
+Date: Wed, 11 Sep 2024 19:36:33 +0800
+From: Qianqiang Liu <qianqiang.liu@163.com>
+To: Mark Brown <broonie@kernel.org>
+Cc: amergnat@baylibre.com, angelogioacchino.delregno@collabora.com,
+	lgirdwood@gmail.com, matthias.bgg@gmail.com,
+	linux-sound@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] ASoC: mt8365: Fix using uninitialized value "i2s_data"
+ issue
+Message-ID: <ZuGAwQGPWdpO1-G9@iZbp1asjb3cy8ks0srf007Z>
+References: <20240911001516.47268-1-qianqiang.liu@163.com>
+ <9ea8731a-7888-40a2-a183-4598884bbb27@sirena.org.uk>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] ASoC: mediatek: mt8365: check validity before usage of
- i2s_data
-To: Muhammad Usama Anjum <usama.anjum@collabora.com>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	Alexandre Mergnat <amergnat@baylibre.com>
-Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-References: <20240911111317.4072349-1-usama.anjum@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240911111317.4072349-1-usama.anjum@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
-X-SES-Outgoing: 2024.09.11-54.240.7.47
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <9ea8731a-7888-40a2-a183-4598884bbb27@sirena.org.uk>
+X-CM-TRANSID: sigvCgAn1wbBgOFm3jcXAA--.2464S2
+X-Coremail-Antispam: 1Uf129KBjDUn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73
+	VFW2AGmfu7bjvjm3AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjxUIJPEUUUUU
+X-Originating-IP: [120.26.85.94]
+X-CM-SenderInfo: xtld01pldqwhxolxqiywtou0bp/1tbiRQJXamXAo2LUZAAAsu
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_042804_858450_854A8E9E 
-X-CRM114-Status: UNSURE (   7.88  )
+X-CRM114-CacheID: sfid-20240911_043705_187207_20895425 
+X-CRM114-Status: UNSURE (   9.33  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,15 +75,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/09/24 13:13, Muhammad Usama Anjum ha scritto:
-> There may be a case where i2s_data may not get initialized by the for
-> loop which will cause the kernel crash. Initialize the i2s_data to NULL
-> and abort execute if it isn't found.
+On Wed, Sep 11, 2024 at 11:52:58AM +0100, Mark Brown wrote:
+> On Wed, Sep 11, 2024 at 08:15:17AM +0800, Qianqiang Liu wrote:
 > 
-> Fixes: 402bbb13a195 ("ASoC: mediatek: mt8365: Add I2S DAI support")
-> Signed-off-by: Muhammad Usama Anjum <usama.anjum@collabora.com>
+> >  
+> >  	spin_lock_irqsave(&afe_priv->afe_ctrl_lock, flags);
+> >  
+> > +	if (!i2s_data) {
+> > +		spin_unlock_irqrestore(&afe_priv->afe_ctrl_lock, flags);
+> > +		return;
+> > +	}
+> > +
+> 
+> Why would we look up i2s_data without the lock, take the lock, then
+> check if we actually found it?  That doesn't seem right.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Just check the "i2s_data" is NULL or not.
 
+-- 
+Best,
+Qianqiang Liu
 
 
