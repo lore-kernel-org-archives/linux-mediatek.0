@@ -4,66 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20341EE4998
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 11:41:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8968FEE499A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 11:41:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IUxhqY9Y4TyEPukYlg5sAYfxkIWkJv8VMwZcg9eHpXI=; b=FiIra2pz9/9LE7JliQBtTluthQ
-	RVsGAx5+YNtElquGA3xPn1xyEtWpYEk+jTR8eEf6E57OjJEdF2SXWCvEBitsgNuzAXndJR4QqGnwG
-	F2yz0P47BDkE8dGQLq0ZEZabQsJanm0MWLTf0E6BLlzyyNDag7GoRTTU4qs1GNUfTPtoCqNAOPM9Z
-	9Mv/MjBK5Y1FSiOZQnGJR9vIHGzfgnsvBjCUCTD0JRKM/6VCHYmmClv5nHbA3TYNpnuQvYA89fNRF
-	Kil64rXgP56ANJdoLIq0BXf4vf4adUUEVEZkp00LEndRK24x475kTDSPNS0Tgwy+kFbnfQvLlUodx
-	RvNQdXTA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+Pk6bKkNRX9OMsZZfM8wXgJHg+NHv9wycYZT2Btv69c=; b=CxApxHCnh7dSlqHFSdIAOO91RO
+	dloOoFpq4uStcxWo78mbatB0NE/1QgIHuRHfqBkQv4Er+d745XixYnZl7fbaqbhrDTx2FWJO4B/TT
+	wbyt1dpqeZA71AyuyUTfHHInr3nlISo4K+buViDHHbPR5HO3NBgAThkrA7zPrj6Wpq87TZqeDtNYJ
+	MNB7NLQpkrVY397RnOrDIhK+Cmrg/OSFKXRyV88p/Rz0UJ3gaNOODAXxCHg5a522q46qZ5L+rLK01
+	V/wCCkSElm56+V4rolwF863Fi+Jz8kJJ3hlifafWonmdM2SlLs5qQg3EAor3vC+5C1OH6D7HQHF3F
+	H8zYsqpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soLiu-00000009L4B-3UBM;
-	Wed, 11 Sep 2024 11:41:24 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1soLjR-00000009LBP-0M2A;
+	Wed, 11 Sep 2024 11:41:57 +0000
+Received: from a7-28.smtp-out.eu-west-1.amazonses.com ([54.240.7.28])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soLir-00000009L3h-3nbj
-	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Sep 2024 11:41:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 518AEA44CB9;
-	Wed, 11 Sep 2024 11:41:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1FF0C4CEC5;
-	Wed, 11 Sep 2024 11:41:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1726054880;
-	bh=9Ff5CcqOR1YG6EDTYOSXZ/lMsTO4cJ1WRyPod0s+/9A=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ikvqh6Rlp/kPJjy8jzBlCQj051T+9r0X7WTLZPJ7utoxrHvi5Sip0LAdo+Thsm9v3
-	 kwdh5CALo8Ka5NiLx/SaZoyguMVGXDMag1w2JQoHPMlVpEVbjHmUIp7VhIMs1CzlT/
-	 r3JErK+tfK+KF+5BjX4gdFaAlHVrE/j6YA4zk2rf9Mm+vJP3Nm6QPsgHINBvpSQt2H
-	 DMsxshlW583pu+sjody+JZcGB9+T9b3vI0SvGs3dMWL/NJEVADyDpLmPug+4gV8RMf
-	 1MeRopd/pCbi0SnuUSgLW1ze/6YezqUsHW3unS9fzeukYA9+HR1eDW1GJBMKXshL5T
-	 45v4DNvvv/s4w==
-Date: Wed, 11 Sep 2024 12:41:15 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Qianqiang Liu <qianqiang.liu@163.com>
-Cc: amergnat@baylibre.com, angelogioacchino.delregno@collabora.com,
-	lgirdwood@gmail.com, matthias.bgg@gmail.com,
-	linux-sound@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] ASoC: mt8365: Fix using uninitialized value "i2s_data"
- issue
-Message-ID: <eb21bcab-333d-4ab3-9222-058764ced720@sirena.org.uk>
-References: <20240911001516.47268-1-qianqiang.liu@163.com>
- <9ea8731a-7888-40a2-a183-4598884bbb27@sirena.org.uk>
- <ZuGAwQGPWdpO1-G9@iZbp1asjb3cy8ks0srf007Z>
+	id 1soLjO-00000009L94-2H3I;
+	Wed, 11 Sep 2024 11:41:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1726054911;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding;
+	bh=Rk5q3BmBtUat5/52EX4J8IbXZHZ0jpHHNiGHCN+/zfY=;
+	b=gbocc47iLMfz7pURQWEuqEhhvrQRUpwmfDoYCYnsFDaT/oTyHa3D5U3Od/CLnYFR
+	/afVBd0vmN5svggiJjvWVsXKJQbQKGJgPjoFgUpNpsnOH+MosMiUYTi40cMoQJsvC+D
+	xPXAL9TlGwy9COUDj6gLTU3ICVwNVLuIl/OTWt0Nm66PypIVpp4Ed2A/Q5nc89gxlu0
+	GqmeYJ8K3R5e4x1q71hBEZUI2zngHbOypDC1ba4p5dyLyfIomjs190UoJgnMj4mPzOW
+	bB/QTPjWfHUEX3gfG25P/90/yFj9KACyiJJlG150c0vi/bQinWzTOWlRw4NWxXrWlQD
+	V+FYRzqidQ==
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1726054911;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Feedback-ID;
+	bh=Rk5q3BmBtUat5/52EX4J8IbXZHZ0jpHHNiGHCN+/zfY=;
+	b=Ug8XaR417Kv4VWAWRhaOaPCKdY/Cblr531aJfmZjGh5UQtpHoBGpcpLjle98WZG1
+	7JPT+wutVV6JXv0mLiDsuuZ6sZ/hgw15b7/dW/cK7NQMi+rfIICEFXO/g9Xt7itCPga
+	fDr8jb9075hUkOEjUzXOLFcyxrTdwHnEDeVEkzmw=
+Message-ID: <01020191e0e3cb9f-833b6cb7-1233-4b4d-9b48-bdf446d0ab70-000000@eu-west-1.amazonses.com>
+Date: Wed, 11 Sep 2024 11:41:50 +0000
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="q51in4Tbj9DzVb7D"
-Content-Disposition: inline
-In-Reply-To: <ZuGAwQGPWdpO1-G9@iZbp1asjb3cy8ks0srf007Z>
-X-Cookie: No Canadian coins.
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] ASoc: mediatek: mt8365: Print the ret value
+To: Muhammad Usama Anjum <usama.anjum@collabora.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	Alexandre Mergnat <amergnat@baylibre.com>, 
+	Nicolas Belin <nbelin@baylibre.com>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+References: <20240911111917.4091809-1-usama.anjum@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240911111917.4091809-1-usama.anjum@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
+X-SES-Outgoing: 2024.09.11-54.240.7.28
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_044122_034478_5CC8B27A 
-X-CRM114-Status: GOOD (  12.68  )
+X-CRM114-CacheID: sfid-20240911_044154_770872_B6627524 
+X-CRM114-Status: GOOD (  19.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,43 +82,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 11/09/24 13:19, Muhammad Usama Anjum ha scritto:
+> Print the ret value otherwise it is just being set without ever getting
+> used. The author may have missed printing it.
+> 
+> Fixes: 1bf6dbd75f76 ("ASoc: mediatek: mt8365: Add a specific soundcard for EVK")
+> Signed-off-by: Muhammad Usama Anjum <usama.anjum@collabora.com>
+> ---
+> If it isn't useful, the ret value assignment statement can be removed.
 
---q51in4Tbj9DzVb7D
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Nah, please just remove the ret assignment... and while you're at it, can you also
+change that dev_warn() to dev_info()?
 
-On Wed, Sep 11, 2024 at 07:36:33PM +0800, Qianqiang Liu wrote:
-> On Wed, Sep 11, 2024 at 11:52:58AM +0100, Mark Brown wrote:
-> > On Wed, Sep 11, 2024 at 08:15:17AM +0800, Qianqiang Liu wrote:
+That print is actually expected to be seen on some boards, and it may, or may not,
+be something to be warned about; this is because some the states are optional, or
+actually the only requirement is to have at least one pin group muxed to audio but
+not forcefully a specific one (so you may have i2s0 on a board, i2s1 on the other).
 
-> > >  	spin_lock_irqsave(&afe_priv->afe_ctrl_lock, flags);
+Cheers,
+Angelo
 
-> > > +	if (!i2s_data) {
-> > > +		spin_unlock_irqrestore(&afe_priv->afe_ctrl_lock, flags);
-> > > +		return;
-> > > +	}
 
-> > Why would we look up i2s_data without the lock, take the lock, then
-> > check if we actually found it?  That doesn't seem right.
+> ---
+>   sound/soc/mediatek/mt8365/mt8365-mt6357.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/sound/soc/mediatek/mt8365/mt8365-mt6357.c b/sound/soc/mediatek/mt8365/mt8365-mt6357.c
+> index fef76118f8010..412f5fdd8fc52 100644
+> --- a/sound/soc/mediatek/mt8365/mt8365-mt6357.c
+> +++ b/sound/soc/mediatek/mt8365/mt8365-mt6357.c
+> @@ -258,8 +258,8 @@ static int mt8365_mt6357_gpio_probe(struct snd_soc_card *card)
+>   							   mt8365_mt6357_pin_str[i]);
+>   		if (IS_ERR(priv->pin_states[i])) {
+>   			ret = PTR_ERR(priv->pin_states[i]);
+> -			dev_warn(card->dev, "No pin state for %s\n",
+> -				 mt8365_mt6357_pin_str[i]);
+> +			dev_warn(card->dev, "No pin state(%d) for %s\n",
+> +				 ret, mt8365_mt6357_pin_str[i]);
+>   		} else {
+>   			ret = pinctrl_select_state(priv->pinctrl,
+>   						   priv->pin_states[i]);
 
-> Just check the "i2s_data" is NULL or not.
 
-That doesn't address my question at all.
-
---q51in4Tbj9DzVb7D
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmbhgdsACgkQJNaLcl1U
-h9Dd+gf/XpYSVrJXYWSZflF2+Mnro1CePEcrfJpjk4v4ucJNLSTRozAKskqvZSff
-XEiSPDRVj7jAqLSduflUTvv8faamui4SZinWSq4v1uRg2hQChLrdoeJZy2YD+Z4r
-YAaAFfwBN1XYv1H0LDZG29/oqK0/3DKRWsU2fjkdb0AQEiZt96pQiGJR6LzXAeLK
-xTVd2ifwALsRNNFouHFtgajOyybitV80htpkLCkpnqz3kg5ApT3TK7fBqSNLss8r
-8RfcnfrCMC749oBl55oioH+uedaM+w+WXDn7BhKlz2GcU2O6AdHxBOirJOlUgJqK
-aDP1+jhRqBgYvIuZVOloGOyHyf0uQQ==
-=0dpD
------END PGP SIGNATURE-----
-
---q51in4Tbj9DzVb7D--
 
