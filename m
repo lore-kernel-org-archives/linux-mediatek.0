@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86B63EE57D7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 21:47:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C602EE57DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 21:49:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5yXk+VWPkX0pssfQ//LwNum7lUVfl4onasnP3i7/v2c=; b=sqwSGeWO/HFFfBLXzUX0Ie8HB6
-	s81brkaf9uAXXmyiI6ogETDOZnAKK4hgw3giQXXNYlVueX75WmNYIh58haXaD8FUaR+Mr5SJMmezR
-	dPDZXZcDDs7DHGqk62DrxgTsc7pyoe58+JTdZb2T9km5xiB2JUaYnEpHypwfGBJsHLkFBwm/wp26q
-	SjPpc2SOQMilDIhlRy+5eCeiKId9pfeilTakB6WwqurpU74QHV2/dTLRsCIfrSxO00F5D3LRMcT3M
-	1wEgjviiM3lX6K3XjmgTZP1xIXyc7CXMP3mlziq0/GjMzWRZHEjgkHq707MKy86io9kBPhbRAs/5o
-	jzGgukcA==;
+	bh=i4qUxtrUR734QTdfzQVITw2CJVeEuunuRo7/m22/Qos=; b=OXA2XxllF4zqQxEfxv2DnCOZsR
+	7eStnhUJomWLdTCTvTNNxXd9mrZro6Q0tMEjvTamAvnzVgNNeNtEPkvUX8i0O1tZXzH7cthJkILCE
+	M+Ydu/rZwlnhJ7wbvPtn8YjpspBMxt4pwyKKmKd5cZc6XV/6sOjexZFS/Ax7ryEZPw5dl41qvP+nQ
+	DwUahogg447UeCUx5K0kxaTjLo4IydVuhI97dYs2RAHfZgTw7WcBFeeqEuu3aVAVJI8tKvnFj76sy
+	Ws+HjYEabu30WHOGEvxZqLMgfM8Vqg9iai6vYDW4ZklfP2b9t/q5KGQdg8lMC5WTsUMDxqT+c1xmH
+	e1EB42mQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soVBJ-0000000B6RK-06kB;
-	Wed, 11 Sep 2024 21:47:21 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1soVD4-0000000B6gX-2j35;
+	Wed, 11 Sep 2024 21:49:10 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soVAE-0000000B6NM-3xpc;
-	Wed, 11 Sep 2024 21:46:16 +0000
+	id 1soVC0-0000000B6Yx-2q2m;
+	Wed, 11 Sep 2024 21:48:06 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8DFEB5C064C;
-	Wed, 11 Sep 2024 21:46:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 538A2C4CEC0;
-	Wed, 11 Sep 2024 21:46:13 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 2A737A44630;
+	Wed, 11 Sep 2024 21:47:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DBA7FC4CEC0;
+	Wed, 11 Sep 2024 21:48:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1726091173;
-	bh=9Lia/vj9NijN/dL8TFTCj2WGVi19Df2iJ9ZSaO7kFuo=;
+	s=k20201202; t=1726091283;
+	bh=8yn0zrNcPvuxbkhbLHONB+8lF/ldniej9mqHx/Rr7kU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KvRfr/8NH+Ct1+cMOOPbKuJ1Bqj8pafWXrigtRNcCMau27ZoCI8a0KI53JuhrzloG
-	 mS/faG55aLBz0350Yvmevkcr4GX7jIzO+WCamjPZaIrOTj23N3WHYb1hC3AF2OB0CV
-	 Jr1aM90ZLQTc0zDw4mQVuaKzoRpfblMF2Jf3T3GSg2BdxzjC1x1wJzEKNAetLN09ei
-	 VgT4qJVOLmBbW87kGyhVNpr23MTvRJR8LAZOKa9hD2Osk0ej5kmtltE2DsrvQGJqhz
-	 3uTMKt7cYxdzaWqT1jEV//vMtrYpkCFn5c4/si55NTr/vsRvlSMw/xTu/DO9G2XUum
-	 ay49GTYif4Raw==
-Date: Wed, 11 Sep 2024 23:46:11 +0200
+	b=l9WHzgHDyZntuHqmlInqUB3G2T8eDx64/wSgiVp7LR88Ee5pVJW0c8QeXkmG3/CxP
+	 ilVo0bc0xwXdnPmu/0piLAc9Lw9TMstUZb8mIGU4Z1rVbkTA6Xk7kGvgQsmL0xfD9B
+	 69LtNeJ5JzpWjOndI+K2o5t9yq/c4Wxu/ijlYeXYxHqGgFSNy3z8Bjf/5B6fN1IoF8
+	 Ple+NUBkDzeGY56vBQte2YJBeZViWM2pUBYankXrA6NV3NNPxETd70hY/TsaYIljfd
+	 9axJOU92G0ozi5BRlMDESaWR/5uHRd2h48OJwB8JtJyDeK6OzypOkkvlZFZMBzG/64
+	 zxlI9yvJiHnmg==
+Date: Wed, 11 Sep 2024 23:48:00 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org,
+Cc: devicetree@vger.kernel.org, Lee Jones <lee@kernel.org>,
+	linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org,
 	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-gpio@vger.kernel.org, Sean Wang <sean.wang@kernel.org>,
-	upstream@airoha.com, ansuelsmth@gmail.com,
-	linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	Linus Walleij <linus.walleij@linaro.org>,
-	Lee Jones <lee@kernel.org>, devicetree@vger.kernel.org,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
-	benjamin.larsson@genexis.eu
-Subject: Re: [PATCH v4 1/5] dt-bindings: arm: airoha: Add the chip-scu node
- for EN7581 SoC
-Message-ID: <ZuIPo8BMBVGuaGMI@lore-desk>
+	linux-mediatek@lists.infradead.org, benjamin.larsson@genexis.eu,
+	upstream@airoha.com, ansuelsmth@gmail.com,
+	Sean Wang <sean.wang@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-gpio@vger.kernel.org,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>
+Subject: Re: [PATCH v4 2/5] dt-bindings: mfd: Add support for Airoha EN7581
+ GPIO System Controller
+Message-ID: <ZuIQEC4T6a69LmIM@lore-desk>
 References: <20240911-en7581-pinctrl-v4-0-60ac93d760bb@kernel.org>
- <20240911-en7581-pinctrl-v4-1-60ac93d760bb@kernel.org>
- <172608915149.1388705.7137335166206916411.robh@kernel.org>
+ <20240911-en7581-pinctrl-v4-2-60ac93d760bb@kernel.org>
+ <172608915288.1388772.4934918553914498433.robh@kernel.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="u1VMXVgUUkR7/mdP"
+	protocol="application/pgp-signature"; boundary="hy2aa9DFi4yP9wrh"
 Content-Disposition: inline
-In-Reply-To: <172608915149.1388705.7137335166206916411.robh@kernel.org>
+In-Reply-To: <172608915288.1388772.4934918553914498433.robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_144615_142940_E6E853DC 
-X-CRM114-Status: GOOD (  21.30  )
+X-CRM114-CacheID: sfid-20240911_144804_863149_E0B9213C 
+X-CRM114-Status: GOOD (  20.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,24 +85,29 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---u1VMXVgUUkR7/mdP
+--hy2aa9DFi4yP9wrh
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
 >=20
-> On Wed, 11 Sep 2024 21:50:01 +0200, Lorenzo Bianconi wrote:
-> > This patch adds the chip-scu document bindings for EN7581 SoC.
-> > The airoha chip-scu block provides a configuration interface for clock,
-> > io-muxing and other functionalities used by multiple controllers (e.g.
-> > clock, pinctrl, ecc.) on EN7581 SoC.
+> On Wed, 11 Sep 2024 21:50:02 +0200, Lorenzo Bianconi wrote:
+> > From: Christian Marangi <ansuelsmth@gmail.com>
 > >=20
-> > Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+> > Add support for Airoha EN7581 GPIO System Controller which provide a
+> > register map for controlling the GPIO, pinctrl and PWM of the SoC.
+> >=20
+> > Schema define cells for both gpio/interrupt controller and PWM.
+> > Moreover it provides a dedicated pinctrl node for pins and config
+> > definitions.
+> >=20
+> > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> > Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > > ---
-> >  .../bindings/arm/airoha,en7581-chip-scu.yaml       | 42 ++++++++++++++=
+> >  .../bindings/mfd/airoha,en7581-gpio-sysctl.yaml    | 433 +++++++++++++=
 ++++++++
-> >  1 file changed, 42 insertions(+)
+> >  1 file changed, 433 insertions(+)
 > >=20
 >=20
 > My bot found errors running 'make dt_binding_check' on your patch:
@@ -115,7 +120,7 @@ Content-Transfer-Encoding: quoted-printable
 > doc reference errors (make refcheckdocs):
 >=20
 > See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/202409=
-11-en7581-pinctrl-v4-1-60ac93d760bb@kernel.org
+11-en7581-pinctrl-v4-2-60ac93d760bb@kernel.org
 >=20
 > The base for the series is generally the latest rc1. A different dependen=
 cy
@@ -133,17 +138,19 @@ cy
 ema.
 >=20
 
-Hi Rob,
+Similar to the previous patch, I run the following command before posting t=
+he
+series:
 
-before posting the series I run make dt_binding_check:
-
-$ make dt_binding_check DT_SCHEMA_FILES=3Dairoha
+$make dt_binding_check DT_SCHEMA_FILES=3Dairoha
   SCHEMA  Documentation/devicetree/bindings/processed-schema.json
   CHKDT   Documentation/devicetree/bindings
   LINT    Documentation/devicetree/bindings
+  DTEX    Documentation/devicetree/bindings/mfd/airoha,en7581-gpio-sysctl.e=
+xample.dts
+  DTC_CHK Documentation/devicetree/bindings/mfd/airoha,en7581-gpio-sysctl.e=
+xample.dtb
   DTC_CHK Documentation/devicetree/bindings/arm/airoha.example.dtb
-  DTEX    Documentation/devicetree/bindings/arm/airoha,en7581-chip-scu.exam=
-ple.dts
   DTC_CHK Documentation/devicetree/bindings/arm/airoha,en7581-chip-scu.exam=
 ple.dtb
   DTC_CHK Documentation/devicetree/bindings/clock/airoha,en7523-scu.example=
@@ -158,25 +165,19 @@ tb
   DTC_CHK Documentation/devicetree/bindings/phy/airoha,en7581-pcie-phy.exam=
 ple.dtb
 
-$yamllint --version
-yamllint 1.35.1
-
-dtschema is at the latest version.
-Is it a false positive or am I missing something?
-
 Regards,
 Lorenzo
 
---u1VMXVgUUkR7/mdP
+--hy2aa9DFi4yP9wrh
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZuIPowAKCRA6cBh0uS2t
-rI3AAQDUQJG6nQXvoO+NPuUzfYYc0Nq+fBM/Tx8nTeu1S8RhDQEAvxD16DVhR8J7
-Lk6V3bZBFHaqBUWfv9jl45J1LYZu7g4=
-=9EXk
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZuIQEAAKCRA6cBh0uS2t
+rC5zAP90DD/iK+dtOght4EIvssIUPWzp3Qjz6h3JqET9NgGjSAD/T5Gy0q7vNM6T
+OomZ2p89ybGeg2KELBPqQKsSmbzIfgg=
+=MyFS
 -----END PGP SIGNATURE-----
 
---u1VMXVgUUkR7/mdP--
+--hy2aa9DFi4yP9wrh--
 
