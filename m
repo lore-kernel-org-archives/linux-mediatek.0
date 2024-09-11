@@ -4,84 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BB37EDE998
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 07:46:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C8CDEE0214
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 07:51:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=As6Mh+lzj3Gz1WRcYQZrDI90Xpd0PmMaVKgj6FhuHj4=; b=30kz+NTwhhDxFzgq2wo3MWhb+Y
-	v0rI4prCSnrbqllloQlQQwz9+ADku7UpKWsgILeadU12G+pHBxVbN2EHloslgfUBauUh5wg/5fmwa
-	PVpWlLk2ZMql8RVufYNzTjx3nXDvkWw5PsM7oKbovw6XlxyUgmMhyevw2+knY3GX5ccw7QxADiI4K
-	SnXQ859gwpETbkEWfVqMaCI+8J+J3mjxY0Hk7BNv+IxaBm6qLi26DQwq28Cre61d32mMYbUF6y1bs
-	oRWFAIJYDWGqiIVlFSJeuqv5ylpOZ5it48nIm1J4P/Am3VVxFyRnDqoiGBeWAGxJ3F1sGUJtAqfv7
-	fY4saoOQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6WEQeu4V+fx9iKJCnc40U1Yxg0mi4iI1gNY/vsGlCk8=; b=omlnCkriALa0K2rulFFeG3qxJg
+	SEjzShz2ipvsq5SKWAntGrFA4S6DOnvHacOqswB9xGhnWDVFMp8n6wEaMYwJOp0PZaM5ucLM2ABmL
+	Yoq2y2Y0M865klJbDAQXN7oak2Jmfh19dsg66mOojBSxk2XivYB4U4AbQR+zxMgHcdyzAEWujKULX
+	+vtXzevGNW0mqc120wCe1B1X0dNFhUNrhYt4TUweCqILSOjOm5sTrsaBHwiySL6XTIEYmtih4qHe2
+	veSSS9fmHzCQtxnuBiUfppGlkd6Wo0EN6rQNnv6f7pBsGcYdqe870eEqBnIGv/vDdIat5fXy4RdXN
+	EMMloYIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soI3u-00000008VYo-42gi;
-	Wed, 11 Sep 2024 07:46:50 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1soI80-00000008WJv-3ynF;
+	Wed, 11 Sep 2024 07:51:04 +0000
+Received: from a7-41.smtp-out.eu-west-1.amazonses.com ([54.240.7.41])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soI0K-00000008UqE-3a3S
-	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Sep 2024 07:43:10 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-42cbbb1727eso20565545e9.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 11 Sep 2024 00:43:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1726040587; x=1726645387; darn=lists.infradead.org;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=As6Mh+lzj3Gz1WRcYQZrDI90Xpd0PmMaVKgj6FhuHj4=;
-        b=xY/TZAZbQbUlGGUEMPvPVo/BMkatTnzdTFyHfECJspEDrJv8bCfhKsj01KjVToDptl
-         uOi8jB8m0d1xPcNXUUZ+8wKpPrTDDwm724I3FCpKndRRxQSJgxvBCLCh67dylxBoZv7w
-         /3iC7xacGYWkSTZszyleniCUiTkaVvMJDwU20R/RPH+QuTc1xXEM0TWaZkynCm1S29JC
-         behzV8B52UM68TJhmkzXUNGlPMqKVguOw/e7cOrjSZM7VXlLTHtAHFpHTFCh8Rr1ilfa
-         uMjQ49o/0snSumw17R3gPKwQps1eJUgkbPPYW8XqxSjKkyIKmxdICpMbWBFYDQBhRTpK
-         XGpw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726040587; x=1726645387;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=As6Mh+lzj3Gz1WRcYQZrDI90Xpd0PmMaVKgj6FhuHj4=;
-        b=MEj5INPbkzROsUTG8vsmLzS/0IHUOpBR33UE1kK3OgGyiTd2Cyv9SEWH0caWzvQBOt
-         kHJsbuA3pJ7nZX99op7RyApl+3a8+MNbogRJHEh2zUEeUJqEB1Mj71KhiSWqRqqOlF3X
-         LoSlAoJKqxuc+xx+FyGgm+lzHs6Rsvdpg8lLM/Hi+774nz4i1qP3r9vpTOWKoMXWDa1l
-         wW91NGIOGhVuJN3FeezYEw/pQy6GNP5xK3DkvXb1dFlCeKxEdYtmJvXioyhN1YA1hwWl
-         +KP6ByzW8oxqGg/czJf2SwVQ/ftt8pkjTAaRMn1pMYmSOh3a2haba70jDQCfumokIniI
-         QiGg==
-X-Forwarded-Encrypted: i=1; AJvYcCUTsH2rZurp0Ff2NBTSmlLff/EyxVU0zWfv+puqAGsDxVkAcRT22zJt77zrMXiwwxMw4PDgmSNc2Mv5Qy8maA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyFwAcMUStDO4u8UYcv8STdVIJ5YkmKaKcM21WDBfx7A+F5KFUA
-	du2zreZGthfq8g2wm33URMrp+Kohj5AQHU9EF3+xMlUL92BJc2ia6rB/cBl6CVs=
-X-Google-Smtp-Source: AGHT+IHOJBC9xWxtEz333I412PsRAnwCCXfRzkH+Q812eYtVEcfH3PlSFuvh4othUga0PEr6w0xhXg==
-X-Received: by 2002:adf:f4cc:0:b0:371:86bc:6c05 with SMTP id ffacd0b85a97d-378895c31ddmr9796759f8f.10.1726040586743;
-        Wed, 11 Sep 2024 00:43:06 -0700 (PDT)
-Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-378956e8a98sm10786306f8f.117.2024.09.11.00.43.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Sep 2024 00:43:06 -0700 (PDT)
-Date: Wed, 11 Sep 2024 10:43:03 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Deren Wu <deren.wu@mediatek.com>, linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
-Subject: [PATCH next] wifi: mt76: mt7925: fix off by one in mt7925_load_clc()
-Message-ID: <84bf5dd2-2fe3-4410-a7af-ae841e41082a@stanley.mountain>
+	id 1soI5n-00000008W3s-05lf;
+	Wed, 11 Sep 2024 07:48:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1726040923;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding;
+	bh=QZzlqQNzP6BYEm08sf/8gxgY9/9MBXoce+m3v5e46j0=;
+	b=gfcRmcKYk3aOU2YHCJ25TmGLGGPFcwTda8Ww0AO37TqNNVawzTrs0xAmsfUVXhJA
+	ZBGKK32ivqrfeEIE8+yR+diNDPh/hJjaxCU+91M3J/Pzd1eoG9gGSzMXbCqyMq31lcU
+	KSdCkCY/9wcICn9NETKdxlU+Xv2i06lK7Bu771Rf0e5E1oKFuyxdRAGTDYnlZ3e5gVr
+	na2OSSW2KnodJ+770FZuDL06QQnaBNl2ymFaQvwZ8eJnGi9SxDp26Zy+WKssiuYPZsb
+	s3a0X/5JjZKFgZKpPegRRwafPGb9p2TGpSfmBqWr54x918d87c/Z0p8agfhcCea4p8Z
+	qfcNXzPhwA==
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1726040923;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Feedback-ID;
+	bh=QZzlqQNzP6BYEm08sf/8gxgY9/9MBXoce+m3v5e46j0=;
+	b=RDLkUYag4BqylbV6bGcG3ja+A8yMKbhNBKS+SeADKME7joIpnFLoWZoKqX43xc9+
+	jKw7uq7tuAVEHI1k2WiH48RiICmWhGH7MQE67Hjx783UKE+3Ds3OAq5WDCPnG9xNYA5
+	XdqvToUObEA9msA3hnnqkCyCLaP1/yul5R4K+xGE=
+Message-ID: <01020191e00e5b01-2762c208-54d4-459f-b81f-b9cfbf9bd569-000000@eu-west-1.amazonses.com>
+Date: Wed, 11 Sep 2024 07:48:42 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH -next v2] usb: musb: mediatek: Simplify code with
+ dev_err_probe()
+To: Lin Ruifeng <linruifeng4@huawei.com>, b-liu@ti.com, 
+	gregkh@linuxfoundation.org, matthias.bgg@gmail.com
+Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+References: <20240907081351.19879-1-linruifeng4@huawei.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240907081351.19879-1-linruifeng4@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
+X-SES-Outgoing: 2024.09.11-54.240.7.41
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_004308_956515_B46B64C0 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20240911_004847_258473_F66037E7 
+X-CRM114-Status: UNSURE (   7.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,29 +80,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This comparison should be >= instead of > to prevent an out of bounds
-read and write.
+Il 07/09/24 10:13, Lin Ruifeng ha scritto:
+> The combination of dev_err() and the returned error code could be
+> replaced by dev_err_probe() in driver's probe function.
+ >
 
-Fixes: 9679ca7326e5 ("wifi: mt76: mt7925: fix a potential array-index-out-of-bounds issue for clc")
-Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
----
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Let's,
+> converting to dev_err_probe() to make code more simple.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 748ea6adbc6b..0c2a2337c313 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -638,7 +638,7 @@ static int mt7925_load_clc(struct mt792x_dev *dev, const char *fw_name)
- 	for (offset = 0; offset < len; offset += le32_to_cpu(clc->len)) {
- 		clc = (const struct mt7925_clc *)(clc_base + offset);
- 
--		if (clc->idx > ARRAY_SIZE(phy->clc))
-+		if (clc->idx >= ARRAY_SIZE(phy->clc))
- 			break;
- 
- 		/* do not init buf again if chip reset triggered */
--- 
-2.45.2
+Convert to dev_err_probe() to simplify the code.
+
+> 
+> Signed-off-by: Lin Ruifeng <linruifeng4@huawei.com>
+
+After which,
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
