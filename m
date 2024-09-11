@@ -4,78 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72645EE49BC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 15:21:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A30A3EE57C0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 15:21:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QkiE5O2A82lLUNz3ZV+uYZ8H8Ag8HL0gFBxhfatrdvA=; b=DPUL2KaQKXAHwJLBZzCtwFQixq
-	h6SHLo2P81YOBQbXnAXMSP196zYAt4TGIwdDD2+UMmsE2X8H8t682xNuC8OXWYVZv6qH+LGF2Gu7Z
-	vGh+iEdvgNRKR6Vaz6mI3WONbpgHbW2SD+rA8Y0J3RRxjB7SYMbwEjnCkADfbzbAwmowk3MFCUrXp
-	MwIj4s3bIbWSsjlpoiUrZAiAOa9jA1zT8pk6h2PzO3TXoGuYd8OV8Mt41UHdQo8/cX14e3YATxHwM
-	vV9w1mtsens22joFDJfTFKDNBnjaKFVqISSwPtARnNCwTFhQKfEkGASj8t7YSGUIVHAfS3EP56JrA
-	MHME49YA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cjrvYaOKlSR5bbBeaM/aZ0sXBzuxccxBZHoS0yCU7+Y=; b=v3d/OOVXv1mmjNJbE4w2gmRtk1
+	7l1+0Hs7Ivexr30QPDm1SWtT3EhAl2JXcspj9/acbR6Q+HXD1+PYms0ZYU+Zr8WxSbxCmo7rV/Mkc
+	C7ybw8Teq90Psup2qDaPF0RLAe0RN2Ll1SdJn1QdKeHobo+UwYr4o14xN54cHvpl9gqAxmEFySJ+P
+	31k/MSZvml2qNloNTXQu2pTNPVndn8v+ENiqDl+WpkCZRGNgeJnAG/YEUQtIuuFaUjFqx2mDE2xBo
+	m3r9MytvQ8RrUCHnn1mTx+qBpYJwJzVYCvUHPAPtp7F2RpPFevDDKE8YdQLyPRB0EBkQAtjj1lwO6
+	Ds5uToNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soP9v-0000000A7Fa-3stv;
-	Wed, 11 Sep 2024 15:21:31 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1soP9y-0000000A7GT-16CL;
+	Wed, 11 Sep 2024 15:21:34 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soOf4-0000000A0kB-36f3;
-	Wed, 11 Sep 2024 14:49:40 +0000
+	id 1soOj9-0000000A1fV-3xdd;
+	Wed, 11 Sep 2024 14:53:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 4D49D5C01D6;
-	Wed, 11 Sep 2024 14:49:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF1A9C4CEC0;
-	Wed, 11 Sep 2024 14:49:33 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 72F63A44D90;
+	Wed, 11 Sep 2024 14:53:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D250C4CEC0;
+	Wed, 11 Sep 2024 14:53:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1726066177;
-	bh=2JdHIhcBYlO+XznGW1xNfxUvSnrmZ68daqxqk4z1Tx8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=VH/SF1r+qzueFeFY91a/5Ugk2cBwOm1vAdHvoXS2owgWYZ0bvPhqQ5OENtkbgJqpT
-	 jMZM8l52luP0ltqb8TwjWwaN8rdL0KCviRwk11e2ukUdcjSgBQFrY8tycF5XHeSyaQ
-	 o/fIEyXjbmS3Yg1uj4pVs9q+ML+8Esi/zKI8F48nWX95awjMSJD2VgPp64pRx0651x
-	 ErqzO7JUsmENZhAFGj4YNZjeJf13GaoNIs1sTiqjfSwnao0Lyp3RnicUgjtmmdoOXK
-	 c9igHap2/BslYVdPGeLYo8jgcI83wRP3PsoQimPfM965LX0tihSEUuquYQvU9Y8gkZ
-	 tX2jM2ddx+RkQ==
-Date: Wed, 11 Sep 2024 15:49:31 +0100
+	s=k20201202; t=1726066430;
+	bh=7RDEy6UcPUI2lIh8YWVdPWHQFVty7qu6W3Bb5hVMBMQ=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=iQOjXIaWD5f5+aUoneGJwYOVvaM2Dbkd7hCXqAfhjSGOP6Z6jyUiJ/UU/mjMw5fF+
+	 xEllrvDgOIbWkgd9QYvRci0QHLLKZ4Q7m62StDrDqlBRNPlh3pa34VRRRynIyl4Rrw
+	 m4vkRRIOWBDVvdGeTXU/ujw+NSIC2fyyZLu0lcoNvBgUtq+WP8cVCB5cwScU67kHRo
+	 YheXuGksQk2rcMXjGV8bcQuTQlNR2khchJ3pXuq3fkXFRPJfdhFHExnfm3kaL9WdKj
+	 CJkCmRMWQjAwiANKHSTfFvKvrLKqXlO4gFU8O2vhICnlULdD67S/DkyD+AVZTCTqj1
+	 cth2V+352kidQ==
 From: Mark Brown <broonie@kernel.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Doug Anderson <dianders@chromium.org>,
-	Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh@kernel.org>,
-	Saravana Kannan <saravanak@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wolfram Sang <wsa@kernel.org>, Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
-	linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v6 09/12] i2c: of-prober: Add regulator support
-Message-ID: <04704b5d-ae3f-488f-91a5-acdbc993efc6@sirena.org.uk>
-References: <20240904090016.2841572-1-wenst@chromium.org>
- <20240904090016.2841572-10-wenst@chromium.org>
- <CAD=FV=UGOz3Xzg7reJKP=tA1LqTxszv5w-CL9krmoXQtXdJLaQ@mail.gmail.com>
- <CAGXv+5F27K76t=ht5v75jKsNF-J+C0r5+m=czHz6PtV3t5DxcQ@mail.gmail.com>
- <CAD=FV=XVrAdQN8p9QJtt3Ah_YQAG7Y-D4wDx8_+qb1EGN7+Uig@mail.gmail.com>
- <CAGXv+5HO=POHNL_tQHCsy+8=a0gPLMDVHcWMguferahVU+BnZA@mail.gmail.com>
- <CAD=FV=U2yDGv74GQWRQuHN9sjdY5iThqpH-br-jYXMkV1cujEg@mail.gmail.com>
- <ZuGrX67LzMe9S6ce@smile.fi.intel.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Alexandre Mergnat <amergnat@baylibre.com>, 
+ Muhammad Usama Anjum <usama.anjum@collabora.com>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20240911111317.4072349-1-usama.anjum@collabora.com>
+References: <20240911111317.4072349-1-usama.anjum@collabora.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8365: check validity before usage of
+ i2s_data
+Message-Id: <172606642824.81433.11338479643338212337.b4-ty@kernel.org>
+Date: Wed, 11 Sep 2024 15:53:48 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="0YYjs5cw/PRZRTra"
-Content-Disposition: inline
-In-Reply-To: <ZuGrX67LzMe9S6ce@smile.fi.intel.com>
-X-Cookie: No Canadian coins.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-99b12
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_074938_933154_CE1CCBEA 
-X-CRM114-Status: GOOD (  30.32  )
+X-CRM114-CacheID: sfid-20240911_075352_093945_FF9F6593 
+X-CRM114-Status: GOOD (  12.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,65 +77,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, 11 Sep 2024 16:13:07 +0500, Muhammad Usama Anjum wrote:
+> There may be a case where i2s_data may not get initialized by the for
+> loop which will cause the kernel crash. Initialize the i2s_data to NULL
+> and abort execute if it isn't found.
+> 
+> 
 
---0YYjs5cw/PRZRTra
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Applied to
 
-On Wed, Sep 11, 2024 at 05:38:23PM +0300, Andy Shevchenko wrote:
-> On Tue, Sep 10, 2024 at 05:30:07PM -0700, Doug Anderson wrote:
-> > On Thu, Sep 5, 2024 at 8:45=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org=
-> wrote:
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-> > > At least for one Chromebooks it's a bit more tricky because that one
-> > > HID-over-I2C component shares the same address as a non-HID one. We
-> > > currently have different SKU IDs and thus different device trees for
-> > > them, but we could make the prober work with this. It just has be able
-> > > to tell if the component it's currently probing needs the special
-> > > prober and is it responding correctly. This bit I need to think about.
+Thanks!
 
-> > I guess Mark Brown also thought that there wouldn't be some magic
-> > register, but my gut still tells me that most i2c devices have some
-> > way to confirm that they are what you expect even if it's not an
-> > official "vendor" or "version" register. Some type of predictable
-> > register at a predictable location that you could use, at least if you
-> > knew all of the options that someone might stuff.
+[1/1] ASoC: mediatek: mt8365: check validity before usage of i2s_data
+      commit: 5c4e15e63216e7268bb2f1132ee8fad0ec46bbb7
 
-> "most" is way too optimistic to say, I believe that not even close to maj=
-ority
-> of I=C2=B2C target devices they are not reliably discoverable.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-> That's the downside of non-discoverable busses like I=C2=B2C. Maybe I=C2=
-=B3C has
-> a mechanism for that, but I am not an expert, just wondering.
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-There's no standard mechanism for I2C, however it is relatively common
-for devices to have some kind of ID registers.  This is especially true
-if you're confining yourself to a particular class of device, bigger and
-more modern devices are more likely to have this - if you want to pick
-your audio CODEC or touchscreen controller it's a lot more likely
-that'll work than something like a simple DAC or ADC for example.  You
-also have the different I2C addresses that vendors pick to help out.
-It's not an actual specified discovery mechanism, but practically
-speaking you probably can generalise some of the ID register probing.
-Though equally it's good practice for drivers to check this anyway so
-it's not clear how much benefit there is over just trying to run probe().
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
---0YYjs5cw/PRZRTra
-Content-Type: application/pgp-signature; name="signature.asc"
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
------BEGIN PGP SIGNATURE-----
+Thanks,
+Mark
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmbhrfoACgkQJNaLcl1U
-h9CmRwf/VSzg1giqNuZPz5GoiuFRE5wHodDTSi786A/EN8dxvsAsG1ssePbuaBXk
-aO6EZG/ZWCFSvhHSt21PAqohQTFpQu+WAplJXngeufmeq6oPwGAGNRnSs/eaBByC
-NXANkH0haNf3iB4QxpVUmdNH2IApfpYzw++kDzZNP6TPnyfcmnSbWREl9qqird32
-b3PKovhh+VYtDavqXpT6PeQ9Ovl39KAD/wq3WyMzJo2Kjr8JPDZ6cmFj1BBnfUHg
-Ca6F0hXH0jyPfVDJQ8j7eeOXsRNpTK786YcsaGuRbSNetxZjYsYRY8UFzN1trP90
-i52gDob4jcrCTRHr5HUhK+SmvtMggw==
-=MIYK
------END PGP SIGNATURE-----
-
---0YYjs5cw/PRZRTra--
 
