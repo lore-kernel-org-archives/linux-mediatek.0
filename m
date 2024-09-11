@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91F83EE4991
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 11:06:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C29EEE01EE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 11:07:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3HQV01fo8Eazmoun9faxS0xRrGLPbJrswKSNOP5sQk0=; b=DppvMVYTX+S2CV
-	IqY8bS82j1b4nMu4Lhsf2qgsCSaF14D4P8OsQtvD8BqvsZGgU6rC3qJCH+6gHv9XvUqYS+6b4Jss+
-	Exi1guPwedbvFRrJocuoOEr4rV2MlnwzPrUZvmhfj95golCck+tUR4vWADMZ4OJPW4Dgx8bUH81wj
-	avUDs4Lbuf5LghSiizQA3SgukXbcGBFgNVyy7Tzhr+gs51TTTftHUCiZJ84B60KLkxZd4ECPhlbi4
-	QhCkugJLCen7uEfHJUZnVWqwgWQvLF6OMWgD4zbIyHj1+yp4lxu1LZhsNH8Zuz3S5UW4vCeIh3skD
-	6LfuLcs7IMbVmQLOQOYQ==;
+	List-Owner; bh=rBK5HrwCcAQdUPHX8HmJCGl0lCk1GIRThLwD9xKBAaE=; b=13Mb4Lggvv4jUd
+	c3jhV4qNMQayRyfys2Kzjj1j6NEOo9MsTlld+ixKF/hgYrEjlSC74bEcIaALbc3VAGpJSbOvrBw3m
+	eJXXVGIpxxOgKURWhPB9wSMCgRLB3I8WfFQpW/XilsdBoa2fvYTOJAUBHKZJF9xU3WWZg2fg35n9p
+	jbqGPzuhdu6BhWoyj4YF9xL5JixNSrX37GtFlPIHO1sPtf9bYw1d1cygIr4sczTBiGyqZkB+cFqzW
+	tLTYVxlYDgEmWV1XPhlGhZzQpsmB8ZnCaS7XQgBTKjkDXMy703Ma1INIJAqzv3yWIO6qrsIQFIJNL
+	krHfy8MJ9pamJuwmD7cQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soLBJ-00000009E3u-1KpZ;
-	Wed, 11 Sep 2024 11:06:41 +0000
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+	id 1soLCK-00000009EF8-1AwG;
+	Wed, 11 Sep 2024 11:07:44 +0000
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soKxP-00000009Ay0-3AOV
+	id 1soKxV-00000009Azn-0c4Z
 	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Sep 2024 10:52:21 +0000
-Received: by mail-pg1-x529.google.com with SMTP id 41be03b00d2f7-7db12af2f31so386706a12.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 11 Sep 2024 03:52:19 -0700 (PDT)
+	Wed, 11 Sep 2024 10:52:26 +0000
+Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-718d962ad64so4854928b3a.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 11 Sep 2024 03:52:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1726051939; x=1726656739; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1726051944; x=1726656744; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=3HQV01fo8Eazmoun9faxS0xRrGLPbJrswKSNOP5sQk0=;
-        b=Af1fARgKBTR7H9ioeLobg4hFW84QU18a78+TJKTUmlraZnzDVHr1Q8OQW3KjU/Rv/l
-         QHbRtZ0yuotwg7kbng/oUtJjzmUlpNJJ7LrEnRbiXMXnREWZHQpNmtr06xZimm5tJSX3
-         /Xb1GMvwsrsGBeaFlNz8t1R81mP4qxpfWG9hQ=
+        bh=rBK5HrwCcAQdUPHX8HmJCGl0lCk1GIRThLwD9xKBAaE=;
+        b=CCx7K+yz7nhbYqECjfABg927LUtauR6SNAVLoyNEkEBbROnOZgxXy63ltxG7/0sh0H
+         KV4VYCR4VTi0Mb3iR6Vi9FXDGriRNxOTm5dfIuK+9GS5yIXCxQCIPgvczSiUyh0mNImJ
+         aPvJNNJ/hGnzWqfYf3cnmz4Df2A/QiIcqqOGM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726051939; x=1726656739;
+        d=1e100.net; s=20230601; t=1726051944; x=1726656744;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=3HQV01fo8Eazmoun9faxS0xRrGLPbJrswKSNOP5sQk0=;
-        b=Btq6H/e0YAaeJ+YTBu/1y9KtzOpFPLTkOEuQxjyviz2B9OOhnBqcdhBk4ie9Hzp23l
-         bSu9k7eNq+rV09rmSXE7sJYgRAY3c5ugF+fJwynWLslVnnxJd85a4f2R+e8Zinsm/a+F
-         ed6l7imS9iCDmlv/2hsmw0Iv1jmHl9gM/dym0gLa9lamQ69Fin1ochPCOCzgSQoPo97w
-         i+QrstmIOaUlKbFkc1PQ8blYlXDBY1mwW4ur+1JjfLNXs7OWp2z/nbQDyryFRn7u1FHX
-         AsCRhzYR+m8o/x9kA8D9K7M547St/XmiQf3W1DpkJ8lBLOxi/Hdj8DA8K6Iz+d+drS0F
-         XzqA==
-X-Forwarded-Encrypted: i=1; AJvYcCVnN8dIhHrLHXzryTQcW7NJYBlDABh3F38klCjWzqQsNRZ5sY476cQrYCXHjdX9Oy7w7s2cdCkE+G3y8Ld/LA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyJOH6dpRIsiKG6lyXCBBuTjMH9FPNWHjl0Q5BEHp0tNbhDdSv3
-	wkES1N9ncC+B955EzfEZwM9JoNtF84L+bbd6ZI+vK0wLtzikvIrt7rF7qICXAA==
-X-Google-Smtp-Source: AGHT+IGpIHc7bP/F9Qr9SpWnaJJbLZcEiPMmrVxSgqEtW06qM8RmvMPVCseAMDYizvq7I6rvYfbmIQ==
-X-Received: by 2002:a05:6a20:c703:b0:1cf:2357:df1a with SMTP id adf61e73a8af0-1cf62c8d808mr4373257637.10.1726051938654;
-        Wed, 11 Sep 2024 03:52:18 -0700 (PDT)
+        bh=rBK5HrwCcAQdUPHX8HmJCGl0lCk1GIRThLwD9xKBAaE=;
+        b=X2lG3z0lyVHNvDbcEYD4pJ9ldiVn60xU6YdvT30HKF0Z8VGP94cJE4F8rQDoa5abJF
+         aGvVf0HhF8UeJf+3ukZg/qFcAh0+djiIrjK51Ox0SsvRLiKAlgtNRK5AyLwU7IPtf34+
+         j4QJKvFBK+GwqNDi56WroSNhpSTeH89Ck7fPwyWZLz2pcun7VQ5Po5BU33JZv/RPDt1W
+         O6YfGrK2Kh+rDHKmuYGG/D/VsexuGQdFEFQzF7juwnaeQm0FxDDxIRNrU1xKqeTwUPk8
+         KudDOkCDBurerTXM17pf9ILi1Px29nuGN5hzLk4HTlN8Soos5gDj7NFdyDzSKZPk5Evu
+         Gv2w==
+X-Forwarded-Encrypted: i=1; AJvYcCUgT6bNtlyqNwh2bs1P6vBg6EmW7kXVy4SlBCL/8ZInS4JALkBrIzTUz+3W4Idbq8ShHKiKkbxBweOrWV8maw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzc0pLv/iXYHNEgXTUrZmt7NyYLp29Yir5+OTuGfN40HysaDCh/
+	4iScvCl8tkjmlY4QC2oG5aiuyOTX/fDcwShd1RdhGRc2WGpySLQW7I39NpICSQ==
+X-Google-Smtp-Source: AGHT+IG9YgMDxM6JH6QzsTZiuEKQdBS+aqMoSgP+yD4hhHJ4WT18x5zG3lCN0kR9XJqx6yodEhrX6Q==
+X-Received: by 2002:a05:6a00:148a:b0:70d:2e24:af75 with SMTP id d2e1a72fcca58-718d5f06932mr27638808b3a.24.1726051944217;
+        Wed, 11 Sep 2024 03:52:24 -0700 (PDT)
 Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:102f:d738:6069:fd4b])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7d8242b3d13sm7147352a12.52.2024.09.11.03.52.16
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7d8242b3d13sm7147352a12.52.2024.09.11.03.52.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Sep 2024 03:52:18 -0700 (PDT)
+        Wed, 11 Sep 2024 03:52:23 -0700 (PDT)
 From: Fei Shao <fshao@chromium.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v2 6/8] arm64: dts: mediatek: mt8188: Add SPMI support for PMIC control
-Date: Wed, 11 Sep 2024 18:51:11 +0800
-Message-ID: <20240911105131.4094027-7-fshao@chromium.org>
+Subject: [PATCH v2 8/8] arm64: dts: mediatek: mt8188: Add socinfo nodes
+Date: Wed, 11 Sep 2024 18:51:13 +0800
+Message-ID: <20240911105131.4094027-9-fshao@chromium.org>
 X-Mailer: git-send-email 2.46.0.598.g6f2099f65c-goog
 In-Reply-To: <20240911105131.4094027-1-fshao@chromium.org>
 References: <20240911105131.4094027-1-fshao@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_035219_819895_0D2715D1 
-X-CRM114-Status: UNSURE (   8.92  )
+X-CRM114-CacheID: sfid-20240911_035225_207970_628BD0D3 
+X-CRM114-Status: UNSURE (   9.46  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,39 +90,37 @@ Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetre
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add SPMI node for PMIC control on MT8188 SoC.
+Add two socinfo efuse data nodes for the SoC information probing on
+MT8188.
 
 Signed-off-by: Fei Shao <fshao@chromium.org>
 ---
 
-(no changes since v1)
+Changes in v2:
+- Added socinfo nodes in v2
 
- arch/arm64/boot/dts/mediatek/mt8188.dtsi | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8188.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-index 61530f8c5599..32e5b7108f6a 100644
+index f459e86d4024..37fd16691ec7 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-@@ -1306,6 +1306,18 @@ pwrap: pwrap@10024000 {
- 			clock-names = "spi", "wrap";
+@@ -1904,6 +1904,14 @@ efuse: efuse@11f20000 {
+ 			lvts_efuse_data1: lvts1-calib@1ac {
+ 				reg = <0x1ac 0x40>;
+ 			};
++
++			socinfo-data1@7a0 {
++				reg = <0x7a0 0x4>;
++			};
++
++			socinfo-data2@7e0 {
++				reg = <0x7e0 0x4>;
++			};
  		};
  
-+		spmi: spmi@10027000 {
-+			compatible = "mediatek,mt8188-spmi", "mediatek,mt8195-spmi";
-+			reg = <0 0x10027000 0 0x000e00>, <0 0x10029000 0 0x000100>;
-+			reg-names = "pmif", "spmimst";
-+			assigned-clocks = <&topckgen CLK_TOP_SPMI_M_MST>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_ULPOSC1_D10>;
-+			clocks = <&infracfg_ao CLK_INFRA_AO_PMIC_AP>,
-+				 <&infracfg_ao CLK_INFRA_AO_PMIC_TMR>,
-+				 <&topckgen CLK_TOP_SPMI_M_MST>;
-+			clock-names = "pmif_sys_ck", "pmif_tmr_ck", "spmimst_clk_mux";
-+		};
-+
- 		infra_iommu: iommu@10315000 {
- 			compatible = "mediatek,mt8188-iommu-infra";
- 			reg = <0 0x10315000 0 0x1000>;
+ 		gpu: gpu@13000000 {
 -- 
 2.46.0.598.g6f2099f65c-goog
 
