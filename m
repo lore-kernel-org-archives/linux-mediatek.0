@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E124EE49BC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 14:48:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCF98EE49BD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 14:49:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wnPQW7Y4BtUSgD7VL5z1FONolY3V9ZDMRIrGcpJjXnE=; b=baTjqrs3DFzK6w
-	ShBD4xQQAznUnORIzMAFLFKhrNS3glOMYwatbipX7ptBysLgXhFezPC5rDqTDhc8n+S7Eg1cvKUyk
-	ipzzEkBwO6ljPxITXGTfDLskziGNWoUy6HeQy/ynByZIdLzdr29utb5SK4gKjBbcnrojA/iP3xcbS
-	bF7JHqFQiyB1VjifqXrauVZxGw/a7n4RO9mq7erSyl2gGpKl1DUFisMorhrh9YP3hnOnuhrAulvq5
-	4M1oOx9d3cfGqfmzYKUmJi03Hj1Ze7ax3N21F7srDHztgJdVym4KDMFM5ektfeQ/g24eYGVAq/STP
-	psdxVe9ZcMGD468O4lOw==;
+	List-Owner; bh=flO2kMjBbd38S9uV93LXACtUKy2NNrMVAURW7PjykH0=; b=G0ASGpxHYFFhg0
+	ztnfg2RULPuUY4QNH8b4eCSP3GmNToSTx31it0BVz1c15g4F1JswMHC7cFZnTJY2hiJC6tIfQnjwi
+	eQ2vfwqfZ98ctfwY8QDISI7JvS99elubh21J6fLnYjvLgby5fZAwpLhd+gUMC87AIVMzoxzrbP4Sf
+	XXw5JIgs+H9IJl2kyLhc8crKjFZvQdM25aIxUjmwJaPaWk8a+8AfOXKrwZjhZFsFLtN2X85cASAGG
+	jDng/DqwPcfbc44ACxruJVtiAH9YZPZTUwM2letQ1Q/cmUmYjCeM36kD+onXIgvUD2ytQY2uBtkLj
+	/sC3Vs02QLpsgJ+Ka1+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soOeD-0000000A0Ub-30gb;
-	Wed, 11 Sep 2024 14:48:45 +0000
-Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
+	id 1soOfE-0000000A0n2-1cP5;
+	Wed, 11 Sep 2024 14:49:48 +0000
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soOR9-00000009w6P-1n9z
+	id 1soORB-00000009w7b-3D6H
 	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Sep 2024 14:35:16 +0000
-Received: by mail-oi1-x230.google.com with SMTP id 5614622812f47-3e033e37bc9so2519555b6e.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 11 Sep 2024 07:35:15 -0700 (PDT)
+	Wed, 11 Sep 2024 14:35:19 +0000
+Received: by mail-pf1-x42e.google.com with SMTP id d2e1a72fcca58-718e9c8bd83so691840b3a.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 11 Sep 2024 07:35:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1726065314; x=1726670114; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1726065317; x=1726670117; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=wnPQW7Y4BtUSgD7VL5z1FONolY3V9ZDMRIrGcpJjXnE=;
-        b=BiwoNjOP/mVxr/y95QN6ytz8UIW41lKcy5AgbjXIbi5NGClQWf9S48ejWQOnMI5r7x
-         GAaWNhcEX4htvGcPgpcelw6X1e8GREt9SY6KYT0G069Wjh9ktwdP0HbtwIfREg8C7UpU
-         49UgOmH+VOocA/agU/4Jixm7mxOjqLeyyN9XA=
+        bh=flO2kMjBbd38S9uV93LXACtUKy2NNrMVAURW7PjykH0=;
+        b=RbxOv1pyEEvLL2hvhTST6cmrlnDmEIyWLLtnivADF23DLJJnxfuZ4P8KzoUxNIHHeP
+         H06s4I6UDhPtjWoL31Gv6xMtaoHooRJIPmzxDtpwkb33JBphlxJvMipZsHiqndvgb+Ie
+         alis9IsdTINOSiDdaQeucPl0NckdQy7n58zFo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726065314; x=1726670114;
+        d=1e100.net; s=20230601; t=1726065317; x=1726670117;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=wnPQW7Y4BtUSgD7VL5z1FONolY3V9ZDMRIrGcpJjXnE=;
-        b=CLCmHSD5fMnoL6xABUuRhc31k7csTCIxIyHWtaSCokSoYOQOS8NNO/ur5zc44qRnOA
-         abTemBnt2PpRQRFt59yWrNSJfW1zXdywKFWCByCQKjGdlg20nSaQ7OrH62XBVURZbNhX
-         iQeRTM+C+RAjBjo+JJnqu8zf0nx+Z3/doi0mdXtxbxrntcBhI9eqIegbHXBCXje+Z55B
-         RwEim1UPs/IV5ZuOFrc+L4x8iQo7dyKC42ITqRrSgyumTFWO3xsLPEA8duAzru/3iB1s
-         BsTWlO7+xy4U9fAJpwDdZntJPl+/oylVE1e2ub/MlHfx62Hz1DezIQyp+3Eu4XT5VUYw
-         15Gg==
-X-Forwarded-Encrypted: i=1; AJvYcCVJnXNdkbMtCO0fG3+NqtFYo7Y3wG9grRqb5M/gZ+XRJBHKduNj9H2e9f2B+xR9h70PY1/CJbM7VTq7FNc59Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyYV4K7pE4uv4ESKegYkDpDJtU9JmErEvl150JntEyEInj7k+Kv
-	HHOPkaLC/FqVFWyrH4R5BjdCjaXee41ZAuHYZaPbokRpe0ekTQfj4JWnrkcNIw==
-X-Google-Smtp-Source: AGHT+IHHUCdHBp5uv6ADa0vxA18vvNpQp5qn4oDl6lTmb8iv0NjjXhkphjoMY82rsiFzMfvLj5l/lg==
-X-Received: by 2002:a05:6808:3206:b0:3e0:6a7f:4752 with SMTP id 5614622812f47-3e06a7f4a48mr875938b6e.41.1726065314162;
-        Wed, 11 Sep 2024 07:35:14 -0700 (PDT)
+        bh=flO2kMjBbd38S9uV93LXACtUKy2NNrMVAURW7PjykH0=;
+        b=tKByc/h94saEff2GgQ9bMYyl9mIMQ8FnDgDPUvRsCatnt3aRpym4GV0xLJSgm3MMCd
+         T6xWuHd1MeC4tIs+m5Q2ztytrqDE/isgc2dlavadRFdDNec7BchwiWarR0MLJU1BFi1Y
+         5E9BH1up8xf9iY/qX0n/tr9lMWe+UM4+NOS3z//qZ/+YyGURhuoRYH1pBcZbFrW0rrRf
+         LkvKifd37vMJzxxQ80qi9QOyobS2w017mcFwocHDWe/qyoOtv2bZiQVtBaS3ZRX+eyTv
+         CIgzl3X+QW5xxbdatvEjiz/8b6PZNyrcutlKb5xvV5NypH4/hlU8HFJBajuXR41hEWjL
+         mkFw==
+X-Forwarded-Encrypted: i=1; AJvYcCUsZVzsMA2lrVEE61Tb2tqssbNNAq7Ei47I5XEyd7LpZ5DehqVNOCJUvlCbUQsBrDqY5Jcy6zaNpbEirgUqLg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx6ajDWk/czyA14XHoWZEAHstaREN5i6oT3d6j4KN6GSKb+KYOA
+	dcEGUA6r86t0OSuAwfmYrQnTtOiT27RNPYGXimQNeaEWliwrN9pntsC04y+3og==
+X-Google-Smtp-Source: AGHT+IGWqqDq3WXUh183xK34Rxbjn61wnWFW93OstXI7bPArv11G83ZnspRU58x8mGmEmitA0kG5lg==
+X-Received: by 2002:a05:6a20:2443:b0:1c6:8c89:88c9 with SMTP id adf61e73a8af0-1cf5e1ae57bmr5808169637.18.1726065316653;
+        Wed, 11 Sep 2024 07:35:16 -0700 (PDT)
 Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:102f:d738:6069:fd4b])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7db1fbb5901sm46620a12.24.2024.09.11.07.35.11
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7db1fbb5901sm46620a12.24.2024.09.11.07.35.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Sep 2024 07:35:13 -0700 (PDT)
+        Wed, 11 Sep 2024 07:35:16 -0700 (PDT)
 From: Fei Shao <fshao@chromium.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v3 2/8] dt-bindings: mailbox: mtk,adsp-mbox: Add compatible for MT8188
-Date: Wed, 11 Sep 2024 22:33:55 +0800
-Message-ID: <20240911143429.850071-3-fshao@chromium.org>
+Subject: [PATCH v3 3/8] arm64: dts: mediatek: mt8188: Add CPU performance controller for CPUFreq
+Date: Wed, 11 Sep 2024 22:33:56 +0800
+Message-ID: <20240911143429.850071-4-fshao@chromium.org>
 X-Mailer: git-send-email 2.46.0.598.g6f2099f65c-goog
 In-Reply-To: <20240911143429.850071-1-fshao@chromium.org>
 References: <20240911143429.850071-1-fshao@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_073515_496262_8B947A85 
-X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-CacheID: sfid-20240911_073517_810813_FCA0FF6B 
+X-CRM114-Status: UNSURE (   8.76  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,46 +86,103 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "Rob Herring \(Arm\)" <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>, Jassi Brar <jassisinghbrar@gmail.com>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible string for ADSP mailbox on MT8188 SoC, which is
-compatible with the one used on MT8186.
+Add performance controller node and performance-domains properties for
+CPUFreq support on MT8188 SoC.
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Fei Shao <fshao@chromium.org>
 ---
 
 (no changes since v1)
 
- .../devicetree/bindings/mailbox/mtk,adsp-mbox.yaml   | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8188.dtsi | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml b/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
-index 72c1d9e82c89..8a1369df4ecb 100644
---- a/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
-+++ b/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
-@@ -17,9 +17,15 @@ description: |
+diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+index cd27966d2e3c..cdd2fe14effa 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+@@ -41,6 +41,7 @@ cpu0: cpu@0 {
+ 			d-cache-line-size = <64>;
+ 			d-cache-sets = <128>;
+ 			next-level-cache = <&l2_0>;
++			performance-domains = <&performance 0>;
+ 			#cooling-cells = <2>;
+ 		};
  
- properties:
-   compatible:
--    enum:
--      - mediatek,mt8195-adsp-mbox
--      - mediatek,mt8186-adsp-mbox
-+    oneOf:
-+      - enum:
-+          - mediatek,mt8186-adsp-mbox
-+          - mediatek,mt8195-adsp-mbox
-+      - items:
-+          - enum:
-+              - mediatek,mt8188-adsp-mbox
-+          - const: mediatek,mt8186-adsp-mbox
+@@ -59,6 +60,7 @@ cpu1: cpu@100 {
+ 			d-cache-line-size = <64>;
+ 			d-cache-sets = <128>;
+ 			next-level-cache = <&l2_0>;
++			performance-domains = <&performance 0>;
+ 			#cooling-cells = <2>;
+ 		};
+ 
+@@ -77,6 +79,7 @@ cpu2: cpu@200 {
+ 			d-cache-line-size = <64>;
+ 			d-cache-sets = <128>;
+ 			next-level-cache = <&l2_0>;
++			performance-domains = <&performance 0>;
+ 			#cooling-cells = <2>;
+ 		};
+ 
+@@ -95,6 +98,7 @@ cpu3: cpu@300 {
+ 			d-cache-line-size = <64>;
+ 			d-cache-sets = <128>;
+ 			next-level-cache = <&l2_0>;
++			performance-domains = <&performance 0>;
+ 			#cooling-cells = <2>;
+ 		};
+ 
+@@ -113,6 +117,7 @@ cpu4: cpu@400 {
+ 			d-cache-line-size = <64>;
+ 			d-cache-sets = <128>;
+ 			next-level-cache = <&l2_0>;
++			performance-domains = <&performance 0>;
+ 			#cooling-cells = <2>;
+ 		};
+ 
+@@ -131,6 +136,7 @@ cpu5: cpu@500 {
+ 			d-cache-line-size = <64>;
+ 			d-cache-sets = <128>;
+ 			next-level-cache = <&l2_0>;
++			performance-domains = <&performance 0>;
+ 			#cooling-cells = <2>;
+ 		};
+ 
+@@ -149,6 +155,7 @@ cpu6: cpu@600 {
+ 			d-cache-line-size = <64>;
+ 			d-cache-sets = <256>;
+ 			next-level-cache = <&l2_1>;
++			performance-domains = <&performance 1>;
+ 			#cooling-cells = <2>;
+ 		};
+ 
+@@ -167,6 +174,7 @@ cpu7: cpu@700 {
+ 			d-cache-line-size = <64>;
+ 			d-cache-sets = <256>;
+ 			next-level-cache = <&l2_1>;
++			performance-domains = <&performance 1>;
+ 			#cooling-cells = <2>;
+ 		};
+ 
+@@ -880,6 +888,12 @@ soc {
+ 		compatible = "simple-bus";
+ 		ranges;
+ 
++		performance: performance-controller@11bc10 {
++			compatible = "mediatek,cpufreq-hw";
++			reg = <0 0x0011bc10 0 0x120>, <0 0x0011bd30 0 0x120>;
++			#performance-domain-cells = <1>;
++		};
 +
- 
-   "#mbox-cells":
-     const: 0
+ 		gic: interrupt-controller@c000000 {
+ 			compatible = "arm,gic-v3";
+ 			#interrupt-cells = <4>;
 -- 
 2.46.0.598.g6f2099f65c-goog
 
