@@ -4,76 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 252FFEE0211
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 07:40:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15D42EDE998
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 07:41:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=waChnXwLMhRh3dlZr0LgUZgVxCRtJHDpRHsW78jjWKY=; b=z5t16GVKhgHSx+u64rbRfKLIBo
-	Z/mtkcSzKwle50iRDg6BoX7XmiJbKbdwYwouhPOqQbwlbh2Q1RaPzW+DMZUpVQA28tNOt8BGh27Nu
-	wmlG+lY00AJXusgWR9w7fGr0nsIXk0RIz9FoSgfyozyIp8ibLaK1WfG2Rnl84Fu7SsZuz4T+Q62RC
-	JzaYHbmX7DcudYhOlVlqjJt8LiJ7RIi009oRqS2v9AHRLI390KhboRXO3hhdM5ejpylb31q0Zf88i
-	Jo1eaxr32OaXvw3glEs5NPFYh6NnFTZZtOABS0wGyKLfgNtKY1UvXifIsvGUowPIVuzYq6PVqNBRK
-	5yCkEXJg==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gHsLrNkq2WhycII66SdKzjyOi2Xm+IRrwUQlFPc5gGk=; b=dsJkQ89OH3L8RgxbVuX2OKJWc8
+	pSsNzzcUg6aSedQtmGP6ZUA9Boe8eMQP6eGybPnuhFrWenG//kUIB9k1/om2gIoq3ColfqtoCyQfU
+	Y/A/LeG70Kci52ToEQHc0vE5CvBFT+O+Nc6jvnVNEagYVaC6IbkKH6AEugYFsyd+dH0xBDxpy2JNu
+	lcVv0g0IMkhKbMvqHDiRpKHBTalt5OrVmdRHYE7eq6YxIuWnCkUn3paIAEOk84xNVQwRbpqDi5UIa
+	w19z0x9GZ/EgLroTDQxuXknqXHZvQvwRipi7cUe4Ij9bBAYNUtQ0D2aQ3xAh8az5FgPfj93rcbzyq
+	AoiuGcgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soHxn-00000008U8P-33vc;
-	Wed, 11 Sep 2024 07:40:31 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1soHyo-00000008URO-3KZv;
+	Wed, 11 Sep 2024 07:41:34 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soHrJ-00000008SCc-3rhZ
+	id 1soHua-00000008Sw2-2ItZ
 	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Sep 2024 07:33:51 +0000
-Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-374c84dcc64so5021160f8f.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 11 Sep 2024 00:33:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1726040028; x=1726644828; darn=lists.infradead.org;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=waChnXwLMhRh3dlZr0LgUZgVxCRtJHDpRHsW78jjWKY=;
-        b=Svg6cqNJYm/oaSnd7twGOmsivLof5cZM3yRwLsx1rNzK6qDyRTjADlvS95frGdOWrc
-         esaBjOHPO3Ay8nDpt27QN2XioyU8wEZnpXQxlkACq9NBt6+dJL4tsxMuaKKElh/gIR28
-         u34HALJB2ZmQtlcrxG5GkdcOL3cI1PEz8+pcGY5SEjqxSqIzebLDXG9ytqyBdP2kMmv4
-         6xDF3rzXL7r5/ZTdZbM9mq+wYwPc7ZK1Zzog9y86/lqZaA/ROttmw/E/RSBLR5lfDSaQ
-         HH9ntwaDoTHGMaFvsaBbE+s3cJVFqVyAJXAshfpV7/VoIztV5CZ7Mk7ecxPBmfuPErJT
-         1TrA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726040028; x=1726644828;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=waChnXwLMhRh3dlZr0LgUZgVxCRtJHDpRHsW78jjWKY=;
-        b=JQ0FZn80gxp0mRoWuVxU1n6zEeZFDLAF9jw6dH+bJ2HPoXPP6yV4hF7vvOj1esJFxP
-         kPrmuTmx5QVxtgvEY22eurLHUdf0SpP55PUjta8knmrAkT1V1DVkG4l6UMqXjvDribuv
-         t3BsMbtJ9JWQXQ1+cfV8kfXxkBS9YqYJFQu/FJcEDUjN7te9BLukPTqfJlkYAgp2jWxO
-         jzpjs99QZcMypQ9T3ZRM1fMod7H6lbQucLRxvMEy/Lp5ZQns9Rsobyh2iXTJtbz0ZhmL
-         IX+cswdsPp7EBQOg74G9j2alZmK1aKHCgX92JghffV1G8K0QlbrJOpFwmT4nLKyhEYLY
-         mNCQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUZi/t2Nxs/XW3engC+n8ZwdbDy7zpY7vVke+TIVplfDGsaL2jn79HjPaY5M7frUZfLGiBmvDLyoc1ANx2ttA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxbPTqBuTRE7bzD2DRcN/BUosI7V192bsWi8rekftPhlsg9FyDg
-	92K+B3Lke7mO2o7js5/H/vAoV0ZmgjxpwESXeRJJ140BmoyMHdJAZIvphMBsmdo=
-X-Google-Smtp-Source: AGHT+IFMVgzPMtBRrBHgElmU/sBq1NB5UAguIy0Y4R1hUBBFHq+7IGxgt5spwjTOJVmuneLA6Zx7pA==
-X-Received: by 2002:a5d:4248:0:b0:374:c512:87ce with SMTP id ffacd0b85a97d-378922b7b58mr11531383f8f.30.1726040028125;
-        Wed, 11 Sep 2024 00:33:48 -0700 (PDT)
-Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42caeb8b050sm133397595e9.40.2024.09.11.00.33.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Sep 2024 00:33:47 -0700 (PDT)
-Date: Wed, 11 Sep 2024 10:33:43 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: linux-sound@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [bug report] ASoC: mediatek: mt8365: Add I2S DAI support
-Message-ID: <67af3580-a907-403d-8bfd-76b5c304ab99@stanley.mountain>
+	Wed, 11 Sep 2024 07:37:13 +0000
+X-UUID: a67a807e701011efb3adad29d29602c1-20240911
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=gHsLrNkq2WhycII66SdKzjyOi2Xm+IRrwUQlFPc5gGk=;
+	b=MVsHdL2tf+oomqcxi0nBgyZgsYpRoXdylfUV22p8/VuR9nxnCJeddFRJTd5MqTUhR4AImUYJ6UMnp0k9lT3hfdBUzZGkdQHAhSUCXKaxFyAQo3cTeKJ4NTGWdEocu24uF+sXs06kqXydnfeySo8xe4Kyh22wxYUPWLt9DOAe6K8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:ed890bc6-860b-4c98-81ea-a6431ae0b586,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:6dc6a47,CLOUDID:310d08d0-7921-4900-88a1-3aef019a55ce,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: a67a807e701011efb3adad29d29602c1-20240911
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 502767936; Wed, 11 Sep 2024 00:37:08 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 11 Sep 2024 00:36:34 -0700
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 11 Sep 2024 15:36:34 +0800
+From: <peter.wang@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>,
+	<quic_nguyenb@quicinc.com>, <stable@vger.kernel.org>
+Subject: [PATCH v5 2/2] ufs: core: requeue aborted request
+Date: Wed, 11 Sep 2024 15:36:31 +0800
+Message-ID: <20240911073631.32410-3-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240911073631.32410-1-peter.wang@mediatek.com>
+References: <20240911073631.32410-1-peter.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_003349_993786_CA33338E 
-X-CRM114-Status: UNSURE (   5.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240911_003712_610204_FEECF5D4 
+X-CRM114-Status: GOOD (  18.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,42 +91,124 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Alexandre Mergnat,
+From: Peter Wang <peter.wang@mediatek.com>
 
-Commit 402bbb13a195 ("ASoC: mediatek: mt8365: Add I2S DAI support")
-from Jul 22, 2024 (linux-next), leads to the following Smatch static
-checker warning:
+ufshcd_abort_all forcibly aborts all on-going commands and the host
+controller will automatically fill in the OCS field of the corresponding
+response with OCS_ABORTED based on different working modes.
 
-	sound/soc/mediatek/mt8365/mt8365-dai-i2s.c:271 get_iir_coef()
-	error: buffer overflow 'iir_coef_tbl_list' 8 <= 8
+MCQ mode: aborts a command using SQ cleanup, The host controller
+will post a Completion Queue entry with OCS = ABORTED.
 
-sound/soc/mediatek/mt8365/mt8365-dai-i2s.c
-    259         const u32 *coef = NULL;
-    260         unsigned int cnt = 0;
-    261         u32 i = freq_new_index[input_fs];
-    262         u32 j = freq_new_index[output_fs];
-    263 
-    264         if (i < 13 && j < 13) {
-    265                 u32 k = iir_coef_tbl_matrix[i][j];
-    266 
-    267                 if (k >= IIR_NO_NEED) {
-    268                 } else if (k == IIR_RATIOVER) {
-    269                 } else if (k == IIR_INV_COEF) {
+SDB mode: aborts a command using UTRLCLR. Task Management response
+which means a Transfer Request was aborted.
 
-These if statements limit "k" to the 0-8 range.
+For these two cases, set a flag to notify SCSI to requeue the
+command after receiving response with OCS_ABORTED.
 
-    270                 } else {
---> 271                         coef = iir_coef_tbl_list[k].coef;
-                                       ^^^^^^^^^^^^^^^^^^^^
-But this array has 8 elements so it's off by one.
+Fixes: ab248643d3d6 ("scsi: ufs: core: Add error handling for MCQ mode")
+Cc: stable@vger.kernel.org
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/ufs/core/ufshcd.c | 35 ++++++++++++++++++++---------------
+ include/ufs/ufshcd.h      |  3 +++
+ 2 files changed, 23 insertions(+), 15 deletions(-)
 
-    272                         cnt = iir_coef_tbl_list[k].cnt;
-    273                 }
-    274         }
-    275         *count = cnt;
-    276         return coef;
-    277 }
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index a6f818cdef0e..8380e8861d83 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -3006,6 +3006,7 @@ static int ufshcd_queuecommand(struct Scsi_Host *host, struct scsi_cmnd *cmd)
+ 	ufshcd_prepare_lrbp_crypto(scsi_cmd_to_rq(cmd), lrbp);
+ 
+ 	lrbp->req_abort_skip = false;
++	lrbp->abort_initiated_by_eh = false;
+ 
+ 	ufshcd_comp_scsi_upiu(hba, lrbp);
+ 
+@@ -5404,7 +5405,10 @@ ufshcd_transfer_rsp_status(struct ufs_hba *hba, struct ufshcd_lrb *lrbp,
+ 		}
+ 		break;
+ 	case OCS_ABORTED:
+-		result |= DID_ABORT << 16;
++		if (lrbp->abort_initiated_by_eh)
++			result |= DID_REQUEUE << 16;
++		else
++			result |= DID_ABORT << 16;
+ 		break;
+ 	case OCS_INVALID_COMMAND_STATUS:
+ 		result |= DID_REQUEUE << 16;
+@@ -6471,26 +6475,12 @@ static bool ufshcd_abort_one(struct request *rq, void *priv)
+ 	struct scsi_device *sdev = cmd->device;
+ 	struct Scsi_Host *shost = sdev->host;
+ 	struct ufs_hba *hba = shost_priv(shost);
+-	struct ufshcd_lrb *lrbp = &hba->lrb[tag];
+-	struct ufs_hw_queue *hwq;
+-	unsigned long flags;
+ 
+ 	*ret = ufshcd_try_to_abort_task(hba, tag);
+ 	dev_err(hba->dev, "Aborting tag %d / CDB %#02x %s\n", tag,
+ 		hba->lrb[tag].cmd ? hba->lrb[tag].cmd->cmnd[0] : -1,
+ 		*ret ? "failed" : "succeeded");
+ 
+-	/* Release cmd in MCQ mode if abort succeeds */
+-	if (hba->mcq_enabled && (*ret == 0)) {
+-		hwq = ufshcd_mcq_req_to_hwq(hba, scsi_cmd_to_rq(lrbp->cmd));
+-		if (!hwq)
+-			return 0;
+-		spin_lock_irqsave(&hwq->cq_lock, flags);
+-		if (ufshcd_cmd_inflight(lrbp->cmd))
+-			ufshcd_release_scsi_cmd(hba, lrbp);
+-		spin_unlock_irqrestore(&hwq->cq_lock, flags);
+-	}
+-
+ 	return *ret == 0;
+ }
+ 
+@@ -7561,6 +7551,21 @@ int ufshcd_try_to_abort_task(struct ufs_hba *hba, int tag)
+ 		goto out;
+ 	}
+ 
++	/*
++	 * When the host software receives a "FUNCTION COMPLETE", set flag
++	 * to requeue command after receive response with OCS_ABORTED
++	 * SDB mode: UTRLCLR Task Management response which means a Transfer
++	 *           Request was aborted.
++	 * MCQ mode: Host will post to CQ with OCS_ABORTED after SQ cleanup
++	 *
++	 * This flag is set because error handler ufshcd_abort_all forcibly
++	 * aborts all commands, and the host controller will automatically
++	 * fill in the OCS field of the corresponding response with OCS_ABORTED.
++	 * Therefore, upon receiving this response, it needs to be requeued.
++	 */
++	if (!err)
++		lrbp->abort_initiated_by_eh = true;
++
+ 	err = ufshcd_clear_cmd(hba, tag);
+ 	if (err)
+ 		dev_err(hba->dev, "%s: Failed clearing cmd at tag %d, err %d\n",
+diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+index 0fd2aebac728..07b5e60e6c44 100644
+--- a/include/ufs/ufshcd.h
++++ b/include/ufs/ufshcd.h
+@@ -173,6 +173,8 @@ struct ufs_pm_lvl_states {
+  * @crypto_key_slot: the key slot to use for inline crypto (-1 if none)
+  * @data_unit_num: the data unit number for the first block for inline crypto
+  * @req_abort_skip: skip request abort task flag
++ * @abort_initiated_by_eh: The flag is specifically used to handle
++ *                         ufshcd_err_handler forcibly aborts.
+  */
+ struct ufshcd_lrb {
+ 	struct utp_transfer_req_desc *utr_descriptor_ptr;
+@@ -202,6 +204,7 @@ struct ufshcd_lrb {
+ #endif
+ 
+ 	bool req_abort_skip;
++	bool abort_initiated_by_eh;
+ };
+ 
+ /**
+-- 
+2.45.2
 
-regards,
-dan carpenter
 
