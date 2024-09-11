@@ -4,78 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9C91EE57CF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 19:37:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D072EE57D0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 19:52:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E9EpBtYvSc90pvHVRZDTNXzNjSD4J58qXNz69nDxiwM=; b=DBY7OEpzQI3nPY2Rgpw7zUa2fe
-	v3Yq8cPrvc2WLxOoGzjeOMA/cnwJpbsgOU8U5R9j4skn3IqOFGX0pjc0SvcskLcRbWgK9NoOjQ5Nk
-	VGdeFXYx4/CWIr26IsI0R7bEoeffGiueYmWDCVMSJCnUXzs/ZnxYFMX3EIpUs2JdyuI4Z3nEdZ9ch
-	NpNktFnMLsgAwOk4cOYE2DlleAQFbmsORS8RsPDtHo9pFYV715hZ33A3Grq31c3r3Fl3aGONw81jH
-	6Rp+6r3EtlCxIk8f5K0TXrEUSmQybDbFFzV+ELGHlZvMzL6I1k/ZyYXFej2yvP3vFJNDUKqeCRWZ+
-	SVhLm1WQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Nhr3LHhyveFg+QmA4w2ZPDs/R26vneUnCO0E1nr2quk=; b=2By6kNDohoLAbc
+	nRlRLWLTv9AgHBPuxbdOS5CBDe/I9vDdQkw0wOxZtp6/cGY2Xb/Qn9ZgKQIlt6Vw/C/KqWf5yDsJb
+	d/gn0HaA7heqg3lUPwRLrMLIf8ssliW0CJPF2v0wx5nbblk8dZudUJn3VP/8OeaROUNlj+AdS20CX
+	Fbqf4Um6mfg5JlDjKLM2dAuMM8bx2rLWU/wzhYR9oXA9N4u3ayNIwibUTPkRIy7f1kJEBpJX/qs0s
+	GdgRf8MTv5h9lEXfEdN5eX9jZnEDPG7O6SXm7yUWuscflWxvty9wdnXL+Lt+HoMGbRF1hqjzGQ/Pt
+	fIIqGgyCSsGIaIcGWQLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soT9j-0000000Almp-1JUR;
-	Wed, 11 Sep 2024 19:37:35 +0000
-Received: from 008.lax.mailroute.net ([199.89.1.11])
+	id 1soTNt-0000000Anpz-2DBp;
+	Wed, 11 Sep 2024 19:52:13 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soT9g-0000000AlmM-1YGw
-	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Sep 2024 19:37:33 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 008.lax.mailroute.net (Postfix) with ESMTP id 4X3rSW51hBz6CmLxY;
-	Wed, 11 Sep 2024 19:37:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1726083439; x=1728675440; bh=E9EpBtYvSc90pvHVRZDTNXzN
-	jSD4J58qXNz69nDxiwM=; b=ou/b4dqVvrr7QJllkAoBXmooxYhnAXyPsxwCdkHr
-	csHy2NeWZxuto+RY08gHYjnjYTRqvN5MDdUv7bPIO5dLYNjLhGH55zJTWMxviBaY
-	Lk13EpzQOsCYl02Ejxl6fqaZYX+W+eB3HTQ3K2jGH31TaKmc2DmCpNNuFNchx8uA
-	aLg+oEUwKNOLh8SccEujFtqjQpGRqVLrhAZ85Z3nPOc2elh/+Bnmy7UzojAPJg6J
-	0KKY3uWdFec8a96Lv8A8QRMBKKWZaHECUhpPNDb9knw7AWXALdMvGspgBic4/8Xk
-	qWr6t9LKX1eQzPU97UbwfMnHZrwWveax0nQo9aUeKYheAw==
-X-Virus-Scanned: by MailRoute
-Received: from 008.lax.mailroute.net ([127.0.0.1])
- by localhost (008.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id jSx--RPVCpcz; Wed, 11 Sep 2024 19:37:19 +0000 (UTC)
-Received: from [100.66.154.22] (unknown [104.135.204.82])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 008.lax.mailroute.net (Postfix) with ESMTPSA id 4X3rSB1xyxz6ClY9P;
-	Wed, 11 Sep 2024 19:37:13 +0000 (UTC)
-Message-ID: <55d2cca5-0e30-4734-aa25-d5f5cdfbfd93@acm.org>
-Date: Wed, 11 Sep 2024 12:37:12 -0700
+	id 1soTMo-0000000Anju-0t1W;
+	Wed, 11 Sep 2024 19:51:09 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 415E15C063A;
+	Wed, 11 Sep 2024 19:51:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04F73C4CEC0;
+	Wed, 11 Sep 2024 19:51:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1726084264;
+	bh=QhWaP44oRYku9YV/Wa4TI+39wtfmff/fY2V++eyMi7w=;
+	h=From:Subject:Date:To:Cc:From;
+	b=shTd8sDPzYeJhuThXqJp7gx5+eANIuDFsl7WkAoFW10J4MMEVmTxiGDmF7Jl3tARm
+	 0yX7N2Jkcd2HypIaSpczjhvNh2oXZfY3QX/LuVs4dO7m9gJu8BQCdy9KxK/BpODeeH
+	 7v1jlVmoSQLqJ/8eRl+zihpqtgGbID8KKlkHL4Aex3pxKEMqEOOhf5s8DpymkZvZTK
+	 x3GL6VLK4smmKQUi/mFyotjNT0AF5uerSC2FQJdrlfIBwQ3Ci8ul+5nWqxiuPWIQ/0
+	 iUUKu4DSaIDD26McE6/9Y4x3i9/zLL03LCHV8IqqH1e4rcg8u1NIegPZMyOusfs+Il
+	 ukNcu+iZ0CRlg==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH v4 0/5] Add mfd, pinctrl and pwm support to EN7581 SoC
+Date: Wed, 11 Sep 2024 21:50:00 +0200
+Message-Id: <20240911-en7581-pinctrl-v4-0-60ac93d760bb@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 2/2] ufs: core: requeue aborted request
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
- qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
- eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com,
- quic_nguyenb@quicinc.com, stable@vger.kernel.org
-References: <20240911095622.19225-1-peter.wang@mediatek.com>
- <20240911095622.19225-3-peter.wang@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20240911095622.19225-3-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAGj04WYC/2WQzU6FMBBGX4V0bUl/prRl5XsYFxSm0IiUW5CoN
+ 7y7hWviVZffJOebM3MlC6aAC6mLK0m4hSXEKQd4KEg7NFOPNHQ5E8EEMMMNxUkrw+kcpnZNI+X
+ Oc8G4AoeMZGhO6MP7Wfj0nLNP8ZWuQ8LmrGGdkhqNcRUY0K4FBKtV5QRYJ9B3rQdjnRUl10JKK
+ wCg7MNajjHh9BkfXzBNOJYx9d/LEl7esvR62/jjXBensWaK+phoRTmnbva0kWDRt8x03tSbIIf
+ jEJY1po/zB3l09NzOFeLvuZugjLqGK2W5lo3290ZH1ybveMn/8TLz1iA676BrquoXv+/7F/rFF
+ s2RAQAA
+To: Lorenzo Bianconi <lorenzo@kernel.org>, 
+ Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Lee Jones <lee@kernel.org>, 
+ =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
+Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ upstream@airoha.com, benjamin.larsson@genexis.eu, ansuelsmth@gmail.com, 
+ linux-pwm@vger.kernel.org
+X-Mailer: b4 0.14.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_123732_464962_FC922359 
-X-CRM114-Status: GOOD (  18.24  )
+X-CRM114-CacheID: sfid-20240911_125106_419580_0163BEF3 
+X-CRM114-Status: GOOD (  18.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,67 +84,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/11/24 2:56 AM, peter.wang@mediatek.com wrote:
-> ufshcd_abort_all forcibly aborts all on-going commands and the host
-> controller will automatically fill in the OCS field of the corresponding
-> response with OCS_ABORTED based on different working modes.
-> 
-> MCQ mode: aborts a command using SQ cleanup, The host controller
-> will post a Completion Queue entry with OCS = ABORTED.
-> 
-> SDB mode: aborts a command using UTRLCLR. Task Management response
-> which means a Transfer Request was aborted.
+Introduce airoha-mfd driver in order to load pinctrl and pwm drivers for
+EN7581 SoC. airoha-mfd is needed since both pinctrl and pwm drivers
+needs to access the same memory block (gpio memory region) to configure
+{gio,irq}_chip and pwm functionalities respectively, so model them as
+childs of a parent mfd driver.
+Current EN7581 pinctrl driver supports the following functionalities:
+- pin multiplexing via chip_scu syscon
+- pin pull-up, pull-down, open-drain, current strength,
+  {input,output}_enable, output_{low,high} via chip_scu syscon
+- gpio controller
+- irq controller
 
-I think this is incorrect. The UFSHCI specification does not require a
-host controller to set the OCS field if a SCSI command is aborted by the
-ABORT TMF nor if its resources are freed by writing into the UTRLCLR
-register.
+---
+Changes in v4:
+- add 'Limitation' description in pwm driver
+- fix comments in pwm driver
+- rely on mfd->base __iomem pointer in pwm driver, modify register
+  offsets according to it and get rid of sgpio_cfg, flash_cfg and
+  cycle_cfg pointers
+- simplify register utility routines in pwm driver
+- use 'generator' instead of 'waveform' suffix for pwm routines
+- fix possible overflow calculating duty cycle in pwm driver
+- do not modify pwm state in free callback in pwm driver
+- cap the maximum period in pwm driver
+- do not allow inverse polarity in pwm driver
+- do not set of_xlate callback in the pwm driver and allow the stack to
+  do it
+- fix MAINTAINERS file for airoha pinctrl driver
+- fix undefined reference to __ffsdi2 in pinctrl driver
+- simplify airoha,en7581-gpio-sysctl.yam binding
+- Link to v3: https://lore.kernel.org/r/20240831-en7581-pinctrl-v3-0-98eebfb4da66@kernel.org
 
-> @@ -5404,7 +5405,10 @@ ufshcd_transfer_rsp_status(struct ufs_hba *hba, struct ufshcd_lrb *lrbp,
->   		}
->   		break;
->   	case OCS_ABORTED:
-> -		result |= DID_ABORT << 16;
-> +		if (lrbp->abort_initiated_by_eh)
-> +			result |= DID_REQUEUE << 16;
-> +		else
-> +			result |= DID_ABORT << 16;
->   		break;
+Changes in v3:
+- introduce airoha-mfd driver
+- add pwm driver to the same series
+- model pinctrl and pwm drivers as childs of a parent mfd driver.
+- access chip-scu memory region in pinctrl driver via syscon
+- introduce a single airoha,en7581-gpio-sysctl.yaml binding and get rid
+  of dedicated bindings for pinctrl and pwm
+- add airoha,en7581-chip-scu.yaml binding do the series
+- Link to v2: https://lore.kernel.org/r/20240822-en7581-pinctrl-v2-0-ba1559173a7f@kernel.org
 
-Is the above change necessary? ufshcd_abort_one() aborts commands by
-submitting an ABORT TMF. Hence, ufshcd_transfer_rsp_status() won't be
-called if aborting the command succeeds.
+Changes in v2:
+- Fix compilation errors
+- Collapse some register mappings for gpio and irq controllers
+- update dt-bindings according to new register mapping
+- fix some dt-bindings errors
+- Link to v1: https://lore.kernel.org/all/cover.1723392444.git.lorenzo@kernel.org/
 
-> @@ -7561,6 +7551,21 @@ int ufshcd_try_to_abort_task(struct ufs_hba *hba, int tag)
->   		goto out;
->   	}
->   
-> +	/*
-> +	 * When the host software receives a "FUNCTION COMPLETE", set flag
-> +	 * to requeue command after receive response with OCS_ABORTED
-> +	 * SDB mode: UTRLCLR Task Management response which means a Transfer
-> +	 *           Request was aborted.
-> +	 * MCQ mode: Host will post to CQ with OCS_ABORTED after SQ cleanup
-> +	 *
-> +	 * This flag is set because error handler ufshcd_abort_all forcibly
-> +	 * aborts all commands, and the host controller will automatically
-> +	 * fill in the OCS field of the corresponding response with OCS_ABORTED.
-> +	 * Therefore, upon receiving this response, it needs to be requeued.
-> +	 */
-> +	if (!err && ufshcd_eh_in_progress(hba))
-> +		lrbp->abort_initiated_by_eh = true;
-> +
->   	err = ufshcd_clear_cmd(hba, tag);
->   	if (err)
->   		dev_err(hba->dev, "%s: Failed clearing cmd at tag %d, err %d\n",
+---
+Benjamin Larsson (1):
+      pwm: airoha: Add support for EN7581 SoC
 
-The above change will cause lrbp->abort_initiated_by_eh to be set not
-only if the UFS error handler decides to abort a command but also if the
-SCSI core decides to abort a command. I think this is wrong.
+Christian Marangi (2):
+      dt-bindings: mfd: Add support for Airoha EN7581 GPIO System Controller
+      mfd: airoha: Add support for Airoha EN7581 MFD
 
-Is this patch 2/2 necessary or is patch 1/2 perhaps sufficient?
+Lorenzo Bianconi (2):
+      dt-bindings: arm: airoha: Add the chip-scu node for EN7581 SoC
+      pinctrl: airoha: Add support for EN7581 SoC
 
-Thanks,
+ .../bindings/arm/airoha,en7581-chip-scu.yaml       |   42 +
+ .../bindings/mfd/airoha,en7581-gpio-sysctl.yaml    |  433 +++
+ MAINTAINERS                                        |    7 +
+ drivers/mfd/Kconfig                                |    8 +
+ drivers/mfd/Makefile                               |    2 +
+ drivers/mfd/airoha-en7581-gpio-mfd.c               |   72 +
+ drivers/pinctrl/mediatek/Kconfig                   |   16 +-
+ drivers/pinctrl/mediatek/Makefile                  |    1 +
+ drivers/pinctrl/mediatek/pinctrl-airoha.c          | 2964 ++++++++++++++++++++
+ drivers/pwm/Kconfig                                |   10 +
+ drivers/pwm/Makefile                               |    1 +
+ drivers/pwm/pwm-airoha.c                           |  414 +++
+ include/linux/mfd/airoha-en7581-mfd.h              |    9 +
+ 13 files changed, 3978 insertions(+), 1 deletion(-)
+---
+base-commit: 264c13114bd71ddfd7b25c7b94f6cda4587eca25
+change-id: 20240818-en7581-pinctrl-1bf120154be0
+prerequisite-change-id: 20240705-for-6-11-bpf-a349efc08df8:v2
 
-Bart.
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
