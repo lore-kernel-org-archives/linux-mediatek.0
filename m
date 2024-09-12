@@ -4,69 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C05DAEEB59B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Sep 2024 12:12:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CBE5EEB59F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Sep 2024 12:21:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DXaVTQ5m6MG09NFO24FVUmqku7KZsPbsRL1jbFVcyl0=; b=nD2XT1gTAwRvpIT2UTZUfiTp3d
-	IWtOqDf1Iuh/wrOV8a3eql8RBicLGm0M+72oiNqgJwFmVBA3uCUig8ueDefYbfgvz6gLdyCufcEHk
-	44Ud6sz3fkOpTZV9dMXbJN7nkMzwbfrmyBLk8PftL3o6bf3BR5Sez1wqpSe1otYcndyzt2u7G3eRa
-	IJfSjiEsHlUS9ZL1d/pWEHw+nhQtY3m2EZDTyG2SpZ6gt9QWTne6b82eJm5ISo4LckbTEx4AcaC1v
-	crbRDWph0Bsa+ziM/OYrzoa4Imp+7/dQIYHjNgTaVnLUQMXxs++nfd2Q//QF6cPbjz4ykhW6OQY2Y
-	vacObDbA==;
+	bh=TIVPdywrUFGG0FkWKS+0hdfToDR9IybfnZXJF/jGVNM=; b=SNyQ0HfFW2sLAAqUzXAhMk5MIK
+	iLs4/NP7zscjrvqaAHOy6WPfdiqhaHuaJONzm3V1UnvDJW5hj3SH5/BIBEU2E4hlyaGpEtTtFuIbg
+	HK29NeHVc1XdqZDcjJx2hBM4mWdWfc32+T01i8E2mGfygP2n5OVxrVYE+b7gbr21bbJp4HJX6Fge8
+	1Pd2CwgLCfykZNxcpokUU1TiRiAwXIqTnML4QM3jq6PWt/ubHmgQpe9BwEKMEw99kFQoQ/TrNq4oi
+	p61jdS+rxyaLsnGlfKwhr7k2ETUumnZhpkk7ndtF7EYuRaXyqmDE2lkoDU4kI2VRiMzyECbyddHDI
+	VKJ1RthA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soign-0000000CyDI-0pZ7;
-	Thu, 12 Sep 2024 12:12:45 +0000
-Received: from a7-32.smtp-out.eu-west-1.amazonses.com ([54.240.7.32])
+	id 1soiox-0000000D0DU-16kk;
+	Thu, 12 Sep 2024 12:21:11 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soifI-0000000Cxjb-0EQl;
-	Thu, 12 Sep 2024 12:11:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1726143068;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding;
-	bh=2bcxoMD+cj1qNRt+Y8OhtR+SXNu5doal71FkCvDP6Ck=;
-	b=E/Mxrh4LnDaV9UEv7xbNmR8LX8sdTQ5UKY+XTFZQX8+TiAVYVa73TAI8Henff3cV
-	lTP2mUD1mqXovHW52ApZfY/1VTCBP+4Ikpmfa2htYZSFGHHxiRg7RnUwmscH3mI1YNQ
-	yPWqSCZDPs1UzFi+Dxf7JmYQynNYxzYyjcj68EOEdn5oVT34cFJ/o4mW69KEMW4CZyI
-	9+dI6tRLpvn+v8MlHiC4YnNbDrgU3gXDVXGYYQMRgktoXXkMSHl1OB19+7tR9+BhDNY
-	IYOyBtMon9Jh6366qFZuhV6E5isB3PBrWe6soT90jOlsABHwGlTse+RY4Q7bGrp+CUX
-	CWVG5dBGJQ==
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1726143068;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Feedback-ID;
-	bh=2bcxoMD+cj1qNRt+Y8OhtR+SXNu5doal71FkCvDP6Ck=;
-	b=hcVRnVhInK0IHoJFxwyNuNQRERW3LKno54/EBEuwpEUf7GAReQkyQwyshYo+O4Rs
-	W7YxHKpYOfNmKMlfDwbxEwb0+O31c92N/0CpXNpc8D6TowFCJNw8giDmjSWYEIIg4B6
-	zpb7uvQu7pVn6gOdqqdq/g4jxxIj7NI5XAMV1ME0=
-Message-ID: <01020191e624f788-d1ad3271-81ef-47ec-931a-e638927114a0-000000@eu-west-1.amazonses.com>
-Date: Thu, 12 Sep 2024 12:11:08 +0000
+	id 1soiou-0000000D0Ce-07fn
+	for linux-mediatek@lists.infradead.org;
+	Thu, 12 Sep 2024 12:21:10 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-42cbbb1727eso7357295e9.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 12 Sep 2024 05:21:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1726143665; x=1726748465; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=TIVPdywrUFGG0FkWKS+0hdfToDR9IybfnZXJF/jGVNM=;
+        b=K8z3P/ZUNdUwjJiyDgwXmqSkhcYJiXtR8cE2R8tWBJ+vbbNjmSrLdrSsiVxVRjGiNU
+         wDvvJ9G+z49UknDaaP6ivkE8eFIdX6zYRiUGtk2wfnISfVSacc7BBLJ5YsKFK3jVsreL
+         HKX6imrzQ5ietaq4rPqgUmSfvEjw2jkF+/YHqQ+5vO1aarshR+IoGM7pEx1ldtrIMWMY
+         63Sw7bjGzKvkJKsWL4WoG7DD2Q9M/vu7jDsKgLoKqbS3nM4XI/ilFNu13cmWofuIaGXx
+         YrSXwIAqSfsZ5rqKVEOzwp0183h3Bp0ucbFKkGBa6BWsVTRo6oRIUNcldHuMQkUPsAuL
+         MqcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1726143665; x=1726748465;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=TIVPdywrUFGG0FkWKS+0hdfToDR9IybfnZXJF/jGVNM=;
+        b=Hm/HtGzttdpwQs4CpIs9EYsvIwYWcNrislmKFgBI9BmbTjIQ/Dfev5B5tQMm9zMapo
+         2ezcSH8N3qd8blxsfYOw3tAKVWUrUmqtnnQbsBndWJtwz6t/cVF8npSPBz70f7H18d/H
+         s1r1w3a0VEtxeYInAjM2P3pwBAxbvXlAVbh/E+ImTuOYtx4J69FelMfexCryYPxRk8hj
+         NOAseHNFZbvJqcAbO0PDI1A3GqM2369MGT0+UEALwYi3P8Zuy4Q/43xJj0AtkQezlu7m
+         yA+svEF4gwtktAaYJgzsBtc96UAMtSxuWb4ANxuh9N9wOBkQBT2BpY2ZiBSGalJ1hP77
+         cQdg==
+X-Forwarded-Encrypted: i=1; AJvYcCXPhc2ek4Sf2abVVlnNoPRN2yTI8rg5DHcK24oziKqmOdCdfMUBnCHg0as0S54ghr/0ctqV3k6N0krMSVY9Ig==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyiu1oInf96YCV4PzLKI6G6ugftzaO57bJxtplXplyu9fcQtCs3
+	NSjZMzz0HV0GUMQ0VZimKH9pzaqF9NDxiRnNr28mUMznS5M7u4ky4W7aJCwfGUY=
+X-Google-Smtp-Source: AGHT+IE6tn+Ot7sdV8Xz9YXERqzLMkoh4GL4PglAIIkRJBCPWuSCUxcEiM52/iHe7DMNk1u2EI2g2w==
+X-Received: by 2002:a05:600c:1987:b0:42c:b4f1:f281 with SMTP id 5b1f17b1804b1-42cdb58f2bbmr21556165e9.34.1726143665103;
+        Thu, 12 Sep 2024 05:21:05 -0700 (PDT)
+Received: from [192.168.0.172] (88-127-185-239.subs.proxad.net. [88.127.185.239])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3789564aef9sm14294356f8f.5.2024.09.12.05.21.04
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 12 Sep 2024 05:21:04 -0700 (PDT)
+Message-ID: <88927a41-a49d-4560-ba73-f01d0c1601e8@baylibre.com>
+Date: Thu, 12 Sep 2024 14:21:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] arm64: dts: mediatek: mt8395-genio-1200-evk: Enable
- GPU
-To: Pablo Sun <pablo.sun@mediatek.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-References: <20240912070624.25540-1-pablo.sun@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2] ASoc: mediatek: mt8365: Remove unneeded assignment
+To: Muhammad Usama Anjum <usama.anjum@collabora.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Nicolas Belin <nbelin@baylibre.com>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20240911123629.125686-1-usama.anjum@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240912070624.25540-1-pablo.sun@mediatek.com>
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <20240911123629.125686-1-usama.anjum@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
-X-SES-Outgoing: 2024.09.12-54.240.7.32
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240912_051112_289708_77D4A20F 
-X-CRM114-Status: GOOD (  11.10  )
+X-CRM114-CacheID: sfid-20240912_052108_191462_6CAA18A6 
+X-CRM114-Status: UNSURE (   9.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,41 +101,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/09/24 09:06, Pablo Sun ha scritto:
-> Enable the Mali Valhall GPU on Genio 1200 EVK by providing regulator
-> supply settingsi to gpu and mfg1, and enable the GPU node.
-> 
-> In addition, set the GPU related regulator voltage range:
-> 
-> 1. Set the recommended input voltage range of DVDD_GPU to (0.546V-0.787V),
->     based on Table 5-3 of MT8395 Application Processor Datasheet.
->     The regulator mt6315_7_vbuck1("Vgpu") connects to the DVDD_GPU input.
->     Note that the minimum voltage in SoC eFuse data, which is read by
->     MTK-SVS to adjust the regulator voltage, does not go below
->     the recommended operating voltage in the datasheet.
-> 
-> 2. Set the input voltage of DVDD_SRAM_GPU, supplied by
->     mt6359_vsram_others_ldo_reg, to 0.75V, the recommended typical
->     operating voltage in MT8395 Application Processor Datasheet.
-> 
-> This patch is tested by enabling CONFIG_DRM_PANFROST and
-> on Genio 1200 EVK it probed with following dmesg:
-> 
-> ```
-> panfrost 13000000.gpu: clock rate = 700000092
-> panfrost 13000000.gpu: mali-g57 id 0x9093 major 0x0 minor 0x1 status 0x0
-> panfrost 13000000.gpu: features: 00000000,000019f7,
-> 					   issues: 00000001,80000400
-> panfrost 13000000.gpu: Features: L2:0x07120206 Shader:0x00000000
-> 					   Tiler:0x00000809 Mem:0x301
-> 					   MMU:0x00002830 AS:0xff JS:0x7
-> panfrost 13000000.gpu: shader_present=0x50045 l2_present=0x1
-> [drm] Initialized panfrost 1.2.0 for 13000000.gpu on minor 0
-> ```
-> 
-> Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
+Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On 11/09/2024 14:36, Muhammad Usama Anjum wrote:
+> The ret is being assigned, but not being used. Remove the assignment.
+> One of the reviewer mentioned that dev_warn should be replaced with
+> dev_info. Make this change as well.
+> 
+> Fixes: 1bf6dbd75f76 ("ASoc: mediatek: mt8365: Add a specific soundcard for EVK")
+> Signed-off-by: Muhammad Usama Anjum <usama.anjum@collabora.com>
 
-
+-- 
+Regards,
+Alexandre
 
