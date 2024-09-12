@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 501E7EED60D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3995EED60E
 	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Sep 2024 14:46:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,54 +12,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pBobOyxG7h8nS1KWtk3g4MWOyKZOXk2z2jSGYhG4DTs=; b=KOKeiMTpE7Q/4P3X+YNQOa48qx
-	MX0T9yVYqxGSQoJarBd/AM/wZB0QnLnvkl9msAZ4q0hKfmGwaBLM43l0YZNw8WvljjyIE9VEkCqf5
-	msqawFIXu9ZJtY2YzLkFlMg8mCwhKEZMbZOTMdxh8nb2YuzLBeSpTLqfNwWkla1hHKrUOV4P4cFFK
-	o07ov0EUo2bKTcvlXCVjPlNwmAWAh+8o9f/rg1wmWlsX9oDK0Wd1hWjiX468zWT2CsRqXblWaI+2P
-	thJGmWbY6m6aOeQjAx5hi8lbzHl9BOXNcctQXitW+U8VDOSulBwM+ABs783EsrsuYhymT7qj1EDRN
-	kdmW0j9A==;
+	bh=ENHzAa0J3LYULKcETMFEp8gDeg2pft3wUA50kLkpahc=; b=j+54l7nVFRp+wpnaYFlIJaLGfN
+	UpKBMUlbsuerh7NhBbUWmtnZCdtq2qWxLi/k/p4Gi9r8W/myKXAzyny39Yley+jkq1iNV+HgHIAhr
+	4WzqiZ7mYWZvaj4/y/ffS3EpArXXaak9Exai5jPm9DqCReWW98OCrHl1ncaecjabdDEM13FBT11vP
+	zb+QOd1+g1ARPJdo0n2jWpvkhsQ3q9jl6X2MUFqFfOJwJQGnYEfNQSpV6iROXw+bAjduAHMZdEHYs
+	o1ReHZ+LUR1uPZwxxdNAFLibyByhn6tlWHdbDNcn8qViVE1r6c64AxqI3BnFcBTlQJAXswuHoMVqx
+	OdkDZkgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sol5x-0000000DPsV-3e8a;
-	Thu, 12 Sep 2024 14:46:53 +0000
-Received: from mail-oo1-xc2d.google.com ([2607:f8b0:4864:20::c2d])
+	id 1sol5y-0000000DPsr-13ds;
+	Thu, 12 Sep 2024 14:46:54 +0000
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sol3q-0000000DPDa-0rvv
+	id 1sol3t-0000000DPFN-1QvW
 	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Sep 2024 14:44:45 +0000
-Received: by mail-oo1-xc2d.google.com with SMTP id 006d021491bc7-5df9433ac0cso548391eaf.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 12 Sep 2024 07:44:41 -0700 (PDT)
+	Thu, 12 Sep 2024 14:44:46 +0000
+Received: by mail-pf1-x42a.google.com with SMTP id d2e1a72fcca58-718f4fd89e5so908101b3a.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 12 Sep 2024 07:44:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1726152281; x=1726757081; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1726152284; x=1726757084; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=pBobOyxG7h8nS1KWtk3g4MWOyKZOXk2z2jSGYhG4DTs=;
-        b=FqnjfYhKmDq6Gffz3bdlRRb1fBLyBeUo8P21rXH1Rm97tqFC1ylRcE7SOwR2BnXyFE
-         gHpV3Cb17t3yD6bUGpkWfKMV7xd6xE6etLIYMSdd20HNGjtG1AxY0bZgxZzHSFELP8ld
-         YlWfQNlD4DEJ4+cxnh11ewl9FPwgMG7/xucag=
+        bh=ENHzAa0J3LYULKcETMFEp8gDeg2pft3wUA50kLkpahc=;
+        b=TYpc2HcYytKQvVfayZS/Ct/n1rYs/MFtZSV9kqcZ76b8OGkUDiThmXB2EyIGIqf0RJ
+         xybUprFnZAoD2y9PrYWByciKVbut9+rj6k3tulhSaZJ07OZcLILVvu0FcQNMcUSUCV0F
+         fdtOiVO4h8p0fsv7/rm0GECqhBAbz61IqawFc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726152281; x=1726757081;
+        d=1e100.net; s=20230601; t=1726152284; x=1726757084;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=pBobOyxG7h8nS1KWtk3g4MWOyKZOXk2z2jSGYhG4DTs=;
-        b=jrWosvoB/4V/VxAa08lqYS8eyN315zhB0N5fChrP8xwnT/r1sD6gVzjSFtNOcORwAU
-         3n3FhbWoJq14GKCITprrQhMt8zU6Ze0XhCEwf/C7wH0PSnsyJupqK6CNGXan6AX8qBAF
-         b86MPSonHnKLhFWnokTvwMB0tEa5MvQctSV/H4UkUPKfRZeGy1HLMzJ1OGaiw0AwDqbb
-         8cNptMMmxExlBqV4GjcAx3ccNG2V1AqymKFhLMkepNBTVLls300SMgAF7aNDPBnugSTh
-         VINj4XomZYqZfxRCH2o6jhiCcQct0O/35uAEYkhwqP26C7i4o6lUyeyTJhsAgw0ACiBI
-         wnkA==
-X-Forwarded-Encrypted: i=1; AJvYcCXjSwR3o38C39WDJYiSjlEGE39vKDniiG94TrSMyxuHLmcvf+0k3F2Sf0pnzlZux6xu01EkdJdQQQCJRzMaLg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwcPafAsvcpzb5Ac1tnJUQgqlWKTDv8cDNIKPhFy0BKjkrRC5V7
-	HpKwXofimbC18tbM4d2de/aGjcftlL4pJTxjHfCC8085xCZMmlFl3mxx33XwSQ==
-X-Google-Smtp-Source: AGHT+IHO/WoJUXlOGm3jql0fNBGLuC2NTWOQUgJ/i3VELhySJR9ptX7aA3pjDFcXYgWO/HiMD6f3fw==
-X-Received: by 2002:a05:6871:2b27:b0:277:c21c:8619 with SMTP id 586e51a60fabf-27c3f0e0e6fmr1795567fac.8.1726152280812;
-        Thu, 12 Sep 2024 07:44:40 -0700 (PDT)
+        bh=ENHzAa0J3LYULKcETMFEp8gDeg2pft3wUA50kLkpahc=;
+        b=w7KBj/cuYgoIyNhKU3861UB3vNf2BkVKzFCkP219hce6ULxsLqwzt8JvSTdx9Z4X/5
+         LqWSEAlTq4aTd0uM0VwZV0Cx6la10oE/PB+zV31FIZC9LFrFn7hQy2pKLaDCflRWvFO1
+         ZXD6pbkKZKyN8E+ZWg9R+8Ov30eU2YrroJAYKfjBJioj/BJj40fidR9DJJeMIXeFJmOQ
+         fXd7lx7zLMuqvQ+JJJy3Frlo1N/euSDSLjwwzEbp+50r+bdlH22T9UlGIkIjtqlkqx6z
+         zeLFAJdQJgZXF1OruVBZw/ENCxu5pnZvuL5aZIGXSoBlnCPohZR+BrAWr+349LSO0wwy
+         FDFQ==
+X-Forwarded-Encrypted: i=1; AJvYcCW0w1WNyN2QzesaQtJ1A1KB/H6VfecBYA9DN+X7w5LYKr57r7LaoOdAV3ZorUsakoiESna0seb6MongHqYcVg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxGyPE3JBppl3rupanMtNhKrOFQ4Kg2zqQlqnCBhFIX5BkZtaMj
+	tj5mGhYXR0StGMR1eJxliGeEzffH3FOpaOg5wcuqNVjVfuwaWbm9W6K0VHaqHA==
+X-Google-Smtp-Source: AGHT+IGmocmHhOdJqPoiASVWIbhrUvuzbyP0frIxr5SqJiWxgxpjRkvqPtBS2tOxjv28s+maVvPRJA==
+X-Received: by 2002:a05:6a00:1790:b0:706:a931:20da with SMTP id d2e1a72fcca58-719260654f6mr5526880b3a.3.1726152283924;
+        Thu, 12 Sep 2024 07:44:43 -0700 (PDT)
 Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:8638:897f:b6cd:8c44])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7db1fdee186sm1826269a12.85.2024.09.12.07.44.38
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7db1fdee186sm1826269a12.85.2024.09.12.07.44.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Sep 2024 07:44:40 -0700 (PDT)
+        Thu, 12 Sep 2024 07:44:43 -0700 (PDT)
 From: Pin-yen Lin <treapking@chromium.org>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	Philipp Zabel <p.zabel@pengutronix.de>,
@@ -76,19 +76,19 @@ Cc: linux-kernel@vger.kernel.org,
 	Fabien Parent <fparent@baylibre.com>,
 	Jitao shi <jitao.shi@mediatek.com>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 1/2] dt-bindings: display: mediatek: dpi: Add power-domains to the bindings
-Date: Thu, 12 Sep 2024 22:43:58 +0800
-Message-ID: <20240912144430.3161717-2-treapking@chromium.org>
+	linux-mediatek@lists.infradead.org,
+	kernel test robot <lkp@intel.com>
+Subject: [PATCH 2/2] arm64: dts: mt8183: Add port node to dpi node
+Date: Thu, 12 Sep 2024 22:43:59 +0800
+Message-ID: <20240912144430.3161717-3-treapking@chromium.org>
 X-Mailer: git-send-email 2.46.0.662.g92d0881bb0-goog
 In-Reply-To: <20240912144430.3161717-1-treapking@chromium.org>
 References: <20240912144430.3161717-1-treapking@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240912_074442_272390_ECDD4BE3 
-X-CRM114-Status: UNSURE (   9.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240912_074445_438372_E0F0E1BE 
+X-CRM114-Status: GOOD (  10.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,46 +103,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The power-domains property is used by most DT nodes using mediatek,dpi
-bindings. Add this to the bindings to fix the schema check error.
+Add the port node to fix the binding schema check.
 
+Fixes: 009d855a26fd ("arm64: dts: mt8183: add dpi node to mt8183")
 Signed-off-by: Pin-yen Lin <treapking@chromium.org>
+Reported-by: kernel test robot <lkp@intel.com>
+Closes: https://lore.kernel.org/oe-kbuild-all/202409110843.Hm5W9upr-lkp@intel.com/
+
 ---
 
- .../bindings/display/mediatek/mediatek,dpi.yaml           | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-index 5ca7679d5427..7e0bb88f5856 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-@@ -42,6 +42,12 @@ properties:
-   interrupts:
-     maxItems: 1
- 
-+  power-domains:
-+    description:
-+      A phandle and PM domain specifier as defined by bindings
-+      of the power controller specified by phandle. See
-+      Documentation/devicetree/bindings/power/power-domain.yaml for details.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 266441e999f2..0a6578aacf82 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1845,6 +1845,10 @@ dpi0: dpi@14015000 {
+ 				 <&mmsys CLK_MM_DPI_MM>,
+ 				 <&apmixedsys CLK_APMIXED_TVDPLL>;
+ 			clock-names = "pixel", "engine", "pll";
 +
-   clocks:
-     items:
-       - description: Pixel Clock
-@@ -82,11 +88,13 @@ examples:
-   - |
-     #include <dt-bindings/interrupt-controller/arm-gic.h>
-     #include <dt-bindings/clock/mt8173-clk.h>
-+    #include <dt-bindings/power/mt8173-power.h>
++			port {
++				dpi_out: endpoint { };
++			};
+ 		};
  
-     dpi0: dpi@1401d000 {
-         compatible = "mediatek,mt8173-dpi";
-         reg = <0x1401d000 0x1000>;
-         interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
-+        power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
-         clocks = <&mmsys CLK_MM_DPI_PIXEL>,
-              <&mmsys CLK_MM_DPI_ENGINE>,
-              <&apmixedsys CLK_APMIXED_TVDPLL>;
+ 		mutex: mutex@14016000 {
 -- 
 2.46.0.662.g92d0881bb0-goog
 
