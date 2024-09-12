@@ -4,91 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 618BCEEB596
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Sep 2024 11:38:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C05DAEEB59B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Sep 2024 12:12:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zMl5165Nco4nnPRdvUh/bXbQdA86zHrP4M9QbnMQj9k=; b=1nhrQSUN7SEcxOng9Y7FmakFUN
-	glNRKIYS0/Q4xyLtWpiKQMz+WFWrAzYbDjZiDw87SazVyIlMTxSglJlPP+ORavkwWrk4J5rKTHEIz
-	/DmCoElW03jyoeqa07o2BzjOh5Njp//G1qjo7ZLWSgXPeTe0tdXDNQJ4Ioa1mdOdiS1K4ZMklHerh
-	NJLBTmbesGqXyG8EmoS72Uak0Qn5S8djj8LELe+qd+kRTSAX/3UG4NXDRfEJyRm9Uju9aXrse3kc5
-	XKh+RWlnddpOeyf8LZ+jRAvnnRZAHq0SlaOKanbnPZPq97hRu/7MvNim4wX4YQs6pp8lx/eI3mGt5
-	UMoVJgjw==;
+	bh=DXaVTQ5m6MG09NFO24FVUmqku7KZsPbsRL1jbFVcyl0=; b=nD2XT1gTAwRvpIT2UTZUfiTp3d
+	IWtOqDf1Iuh/wrOV8a3eql8RBicLGm0M+72oiNqgJwFmVBA3uCUig8ueDefYbfgvz6gLdyCufcEHk
+	44Ud6sz3fkOpTZV9dMXbJN7nkMzwbfrmyBLk8PftL3o6bf3BR5Sez1wqpSe1otYcndyzt2u7G3eRa
+	IJfSjiEsHlUS9ZL1d/pWEHw+nhQtY3m2EZDTyG2SpZ6gt9QWTne6b82eJm5ISo4LckbTEx4AcaC1v
+	crbRDWph0Bsa+ziM/OYrzoa4Imp+7/dQIYHjNgTaVnLUQMXxs++nfd2Q//QF6cPbjz4ykhW6OQY2Y
+	vacObDbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soi9b-0000000Ct5d-2GIz;
-	Thu, 12 Sep 2024 11:38:27 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1soign-0000000CyDI-0pZ7;
+	Thu, 12 Sep 2024 12:12:45 +0000
+Received: from a7-32.smtp-out.eu-west-1.amazonses.com ([54.240.7.32])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soi9Y-0000000Ct46-3R4j;
-	Thu, 12 Sep 2024 11:38:26 +0000
-X-UUID: 82944cda70fb11efba0aef63c0775dbf-20240912
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=zMl5165Nco4nnPRdvUh/bXbQdA86zHrP4M9QbnMQj9k=;
-	b=latU+9OMDNRD3zIVStiqfee1ZoKpvQIhRs60H1Ip3llZ0jB1FR5hR73iXp0c5pItX8/PDlS++5TUPfsW5wQIqSSJkpGMv3a58Y6/wYPAQ+0eeu8+PIsoN8i2d9lgNnhXP4loYUcZNHqmiDOfiNAxFEmovOyKM7U36zYs/ceeDDY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:c702edf4-af23-471a-a3e7-4ddd60fddac3,IP:0,U
-	RL:25,TC:0,Content:1,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:26
-X-CID-META: VersionHash:6dc6a47,CLOUDID:54a51ad0-7921-4900-88a1-3aef019a55ce,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:4|-5,EDM:-3,IP:ni
-	l,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
-	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 82944cda70fb11efba0aef63c0775dbf-20240912
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <pablo.sun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1123867319; Thu, 12 Sep 2024 04:38:20 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 12 Sep 2024 19:38:12 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
- Transport; Thu, 12 Sep 2024 19:38:12 +0800
-Message-ID: <30184391-12a6-c095-7862-35c7677b0ede@mediatek.com>
-Date: Thu, 12 Sep 2024 19:38:10 +0800
+	id 1soifI-0000000Cxjb-0EQl;
+	Thu, 12 Sep 2024 12:11:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1726143068;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding;
+	bh=2bcxoMD+cj1qNRt+Y8OhtR+SXNu5doal71FkCvDP6Ck=;
+	b=E/Mxrh4LnDaV9UEv7xbNmR8LX8sdTQ5UKY+XTFZQX8+TiAVYVa73TAI8Henff3cV
+	lTP2mUD1mqXovHW52ApZfY/1VTCBP+4Ikpmfa2htYZSFGHHxiRg7RnUwmscH3mI1YNQ
+	yPWqSCZDPs1UzFi+Dxf7JmYQynNYxzYyjcj68EOEdn5oVT34cFJ/o4mW69KEMW4CZyI
+	9+dI6tRLpvn+v8MlHiC4YnNbDrgU3gXDVXGYYQMRgktoXXkMSHl1OB19+7tR9+BhDNY
+	IYOyBtMon9Jh6366qFZuhV6E5isB3PBrWe6soT90jOlsABHwGlTse+RY4Q7bGrp+CUX
+	CWVG5dBGJQ==
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1726143068;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Feedback-ID;
+	bh=2bcxoMD+cj1qNRt+Y8OhtR+SXNu5doal71FkCvDP6Ck=;
+	b=hcVRnVhInK0IHoJFxwyNuNQRERW3LKno54/EBEuwpEUf7GAReQkyQwyshYo+O4Rs
+	W7YxHKpYOfNmKMlfDwbxEwb0+O31c92N/0CpXNpc8D6TowFCJNw8giDmjSWYEIIg4B6
+	zpb7uvQu7pVn6gOdqqdq/g4jxxIj7NI5XAMV1ME0=
+Message-ID: <01020191e624f788-d1ad3271-81ef-47ec-931a-e638927114a0-000000@eu-west-1.amazonses.com>
+Date: Thu, 12 Sep 2024 12:11:08 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8395-genio-1200-evk: Enable GPU
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] arm64: dts: mediatek: mt8395-genio-1200-evk: Enable
+ GPU
+To: Pablo Sun <pablo.sun@mediatek.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+References: <20240912070624.25540-1-pablo.sun@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Rob
- Herring" <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, "Conor
- Dooley" <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-References: <20240910143245.5282-1-pablo.sun@mediatek.com>
- <01020191e04d4237-204596e1-6cc1-491c-a60f-de3917af7d42-000000@eu-west-1.amazonses.com>
- <2fd45240-a341-806b-f336-78d0595a8031@mediatek.com>
- <01020191e5383829-7eb375ea-ee17-419e-b173-30df46f61863-000000@eu-west-1.amazonses.com>
-From: Pablo Sun <pablo.sun@mediatek.com>
-In-Reply-To: <01020191e5383829-7eb375ea-ee17-419e-b173-30df46f61863-000000@eu-west-1.amazonses.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+In-Reply-To: <20240912070624.25540-1-pablo.sun@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--9.398400-8.000000
-X-TMASE-MatchedRID: VfovoVrt/oYNtKv7cnNXnSa1MaKuob8P2r3/CX4MlKCqvcIF1TcLYIKO
-	HgdS51oIY8pnlWhODINRVnZsGmIphSw+COFH6OKxioK033WJkCk4m0JsW63IXBKCZ+Q6yB8qy7F
-	bVebgF6C5u9/qS1btcB+SaFrhL/iTQjr0vbZGNcuWLCkl1lq7B0Crr/LkAQ46+3n3Z6rbGhNjy0
-	xoWgR6JLEwnnFnQnmnUNHYJMizeW5f2oN5IGbAjgXysW33GYMpfkXv6w7OOZIKM+BgluLK4HJZ1
-	Ae+gMbqAZ/Skj4ls4+Rk6XtYogiau9c69BWUTGwVnRXm1iHN1bEQdG7H66TyMdRT5TQAJnA0heq
-	/DjysoVjrbuJifCzbU4niEfXGAFbP/pFwct6g8CeqD9WtJkSIw==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--9.398400-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 1049EF671E4F33D3EAD7E1E3BDF8DDDA43F8B73B2326C84DD876E49E57F162052000:8
+Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
+X-SES-Outgoing: 2024.09.12-54.240.7.32
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240912_043824_904531_961D2DE3 
-X-CRM114-Status: GOOD (  18.27  )
+X-CRM114-CacheID: sfid-20240912_051112_289708_77D4A20F 
+X-CRM114-Status: GOOD (  11.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,47 +81,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
-
-On 9/12/24 15:52, AngeloGioacchino Del Regno wrote:
-[snip]
->>
+Il 12/09/24 09:06, Pablo Sun ha scritto:
+> Enable the Mali Valhall GPU on Genio 1200 EVK by providing regulator
+> supply settingsi to gpu and mfg1, and enable the GPU node.
 > 
-> The range should match the target device's Vin constraints; in this 
-> case, it
-> should be no lower than the minimum working voltage of the Vgpu-in of 
-> the Mali IP.
+> In addition, set the GPU related regulator voltage range:
 > 
-> The drivers will be responsible of setting the lowest possible voltage for
-> enhanced efficiency (power saving), taking into account the fused chip 
-> quality bits
-> (in this case, the MediaTek SVS driver!).
+> 1. Set the recommended input voltage range of DVDD_GPU to (0.546V-0.787V),
+>     based on Table 5-3 of MT8395 Application Processor Datasheet.
+>     The regulator mt6315_7_vbuck1("Vgpu") connects to the DVDD_GPU input.
+>     Note that the minimum voltage in SoC eFuse data, which is read by
+>     MTK-SVS to adjust the regulator voltage, does not go below
+>     the recommended operating voltage in the datasheet.
 > 
-> You should, at this point, check the constraints of SVS, as in, given a 
-> reference
-> voltage (in this case, located in the GPU OPP table, the voltage 
-> associated with
-> the lowest frequency of the GPU), what is the maximum voltage 
-> *subtraction* that
-> SVS will do on the VGPU?
+> 2. Set the input voltage of DVDD_SRAM_GPU, supplied by
+>     mt6359_vsram_others_ldo_reg, to 0.75V, the recommended typical
+>     operating voltage in MT8395 Application Processor Datasheet.
 > 
-> After the subtraction, may this voltage be lower than 0.546V? :-)
+> This patch is tested by enabling CONFIG_DRM_PANFROST and
+> on Genio 1200 EVK it probed with following dmesg:
+> 
+> ```
+> panfrost 13000000.gpu: clock rate = 700000092
+> panfrost 13000000.gpu: mali-g57 id 0x9093 major 0x0 minor 0x1 status 0x0
+> panfrost 13000000.gpu: features: 00000000,000019f7,
+> 					   issues: 00000001,80000400
+> panfrost 13000000.gpu: Features: L2:0x07120206 Shader:0x00000000
+> 					   Tiler:0x00000809 Mem:0x301
+> 					   MMU:0x00002830 AS:0xff JS:0x7
+> panfrost 13000000.gpu: shader_present=0x50045 l2_present=0x1
+> [drm] Initialized panfrost 1.2.0 for 13000000.gpu on minor 0
+> ```
+> 
+> Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
 
-Thanks for the clear explanation. While there are no explicit constraint 
-in the maximum voltage subtraction in the SVS driver, I have
-confirmed that the fuse data of MT8395 is written in a way that the SVS
-driver would never go lower than the minimum recommended operating
-voltage of DVDD_GPU in the datasheet[1], which supplies power to the 
-Mali IP.
-
-I have sent patch v2 to remove the always-on property and add a note
-about the fuse(eFuse) data in [2].
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
-[1]: 
-https://mediatek-marketing.files.svdcdn.com/production/documents/MTK_MT8395_Application-Processor-Datasheet_v1.8.pdf?dm=1724252510
-[2]: https://lkml.org/lkml/2024/9/12/285
-
-Many thanks,
-Pablo
 
