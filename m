@@ -4,62 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02DE3EEE241
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Sep 2024 19:00:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8033EEE258
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Sep 2024 20:29:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+6n+a3o3w3yH+jyK6rZjUC0IKcKZ0VAi0FRcOfom090=; b=iVseRSGxI7x561Ne0SAl1/LP7A
-	Vz1jsU+2K/Ztpf997F3ZQtP9ewKb5/VKfIqrou5f1joCRm/zVOCp56yhV6N0Hxm8S1akxIf6b3N/V
-	X55/t2sJt1I/6760e8bj9JZehzHlNhFuKiG6jcMQYnj6ot2Ck6MS821lnZ7V7eK+BQn+v2eTB0G1w
-	1CclLs4NdF5n8YYSRVm7SlF0bWGnHmYL60bBfDNEvL+Zcj4FbbhKckNvVHWVg94I38Sc1F9M94db3
-	jfX7RFlhRIX+ZxP57Mzz6iG/XEW6nDhV2f0Zz1EuQ8kFTrIHxZZI02qC0zsqnvKkSzDnIVz6S1gpj
-	ovO+mv7A==;
+	bh=K+Vvlq6kPIRv3v2sNDT50A07Twv9J2TV9GHlO+JqyOA=; b=umckJzb3M3c6HDpKkJN7jNwoLx
+	cPK66vuvai29h7ujYJXJygJyysN9JZLb/dXn1ADAmwFap6wMyGtwYvvpbOG2Zw6HOC1Nq6GDNHeAM
+	JxfW/Ml0AB4qFfde3mr5LItIYjeg6cABUcFVW91uF1fnf0cuZaZaoXccRBPz5kajlUYifgukqQGEN
+	esNJgMQ7nH9YCIOzH4Z7O9cpTBcTPH6e2RTueu+jDw1baGGQq+CQgctmT7tP9o0PmVgQHt11ZZpQf
+	efErRymmQN/mYa+UB6Ne2oNn21O6i6USX2xl1+IBr55lCRnoIx6oit/7GUS+KwsJUJC6OpyIyoA64
+	BSkbIM7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sop3h-0000000DzFO-29HZ;
-	Thu, 12 Sep 2024 19:00:49 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1soqRB-0000000EAd6-3yLA;
+	Thu, 12 Sep 2024 20:29:09 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sop2a-0000000DyzM-1IDA;
-	Thu, 12 Sep 2024 18:59:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0A3B65C5C0E;
-	Thu, 12 Sep 2024 18:59:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67133C4CEC3;
-	Thu, 12 Sep 2024 18:59:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1726167579;
-	bh=KD8sqECrwoDM4LaxhflSqmK1RgaQnuagu+p694T6Azw=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=h+8NQEfJp5eI6VYnVV+LZocFyCT/54Znb1rldlxfYy0YQHRCziVGfxN5uVHStD2Ay
-	 4y+3uN6WQVliYRZYtlcO/OJOHOFcLpu0DaYpGW2CGYz7t5Q0p+ItzswlPGvZeYKUzT
-	 D8NH9L3LOPrhT7UZZ5WFsPVjUrJntdvU1iQ9MmLPWw7EFzjl0KW0dpU8wn2C+0WcSd
-	 +zLxgUriGr/uA0BcSV2/oLoVKPsiXFtXa2p2KTZA6tsMCF+jFFr4otYbw8jWG5/DtN
-	 X5WxpR3VacOdnVaUoXezxPZxsC2lwWxziauuZB18dwUtXRA235BmyjkRC6d2Ms0aEx
-	 dQzMvAdWkZVUw==
-From: Mark Brown <broonie@kernel.org>
-To: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, 
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
- Tang Bin <tangbin@cmss.chinamobile.com>
-Cc: linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20240912084110.1854-1-tangbin@cmss.chinamobile.com>
-References: <20240912084110.1854-1-tangbin@cmss.chinamobile.com>
-Subject: Re: [PATCH v2] ASoC: mediatek: mt7986-afe-pcm: Remove redundant
- error message
-Message-Id: <172616757716.88520.13515459901367957704.b4-ty@kernel.org>
-Date: Thu, 12 Sep 2024 19:59:37 +0100
+	id 1soqR9-0000000EAcg-0PGN;
+	Thu, 12 Sep 2024 20:29:08 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-3787f30d892so149669f8f.0;
+        Thu, 12 Sep 2024 13:29:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1726172945; x=1726777745; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=K+Vvlq6kPIRv3v2sNDT50A07Twv9J2TV9GHlO+JqyOA=;
+        b=koxhvG1c269gYpXs1b+MU7//vSASXgotazShtKbmVbhh2SRLOl8J4bLQPCoT1f7fMG
+         bxMGPSD/gUPoN9Eph2IkfWqaHhYrvU3meDUSPQ7F+VxmJ89qCr9Rro0VHbFUyebSCjGf
+         w/NqKsuPqg8UoIgUywrRsO7cEpwpIdX1NRDksbKh3DAOTvD3Y2g7Mgmc8lukbvZvrtQq
+         s+4Uvdz8t6XIDBgxcQfz60ydTu4N9tkWITVt3GAEGwbc15+s7ElESBfzz//0Soe4mvZZ
+         BdgXI6CsyqCxYAF4YQ/htvektG1maCIEyAELfYuXLoSkqtafqhWvqfdtqvgSTrBkwomF
+         O9TQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1726172945; x=1726777745;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=K+Vvlq6kPIRv3v2sNDT50A07Twv9J2TV9GHlO+JqyOA=;
+        b=L2UjpmId3pZFiVbnIYi6yiGvxvTk0l5V9v2dewkcHWnbJqWQgNqbowsfauC31jbIjH
+         h3gCc7bGxNUUKMHMznOCgCYKOnvKAYixZ1LmJDwhOCa4tm2X9taux6f7wRU1lqy6x64b
+         V47kZKA3oaoc/rqCEZeC2K+edYDSgzW7VNESqLpn0vbCfsEviBKT9nJ5bmrFVCPBYCvd
+         GuAhCbqfS0ilXhde/7DRwTY3jYlDZXPkFhGS6PgyQCUeGQ1VqhXY0D9M/RWp/DgUIMvp
+         WMHVGwpShhiZ94kNTSDoeuIt/hefeREH1XCdkvgefmOXYuX9cBQCIsMSs8HEIEIwpqsB
+         456w==
+X-Forwarded-Encrypted: i=1; AJvYcCXsZN8+s/hhBhkqeJhZ9ydYjTdunPmGPD89zMmGdbZydmjfSkcTdTas8UDAlbkogvthcrTD9N2LiaOgYuoaV4MA@lists.infradead.org
+X-Gm-Message-State: AOJu0YzH0H3XlOvEV9pbyareFaXXgvfm6BkaRNTFcJbp0MlKmB4dJoPF
+	Fbf/H/yGbniwkXTnZ01MQcaN9RuzGJEIGkpJYLB1ECdnJDN4RiQ/CGNnNG39
+X-Google-Smtp-Source: AGHT+IF6AGfDleGr42k1egNIDn9NzhhgPE6NVPwmZsDi9VTBrErzhGtAmkQv7+/UngllSM9A8ndaPg==
+X-Received: by 2002:a05:6000:1445:b0:374:b9d7:5120 with SMTP id ffacd0b85a97d-378d61e2adcmr279407f8f.23.1726172944504;
+        Thu, 12 Sep 2024 13:29:04 -0700 (PDT)
+Received: from [192.168.0.10] ([178.233.24.52])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37895675c11sm15086968f8f.55.2024.09.12.13.29.02
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 12 Sep 2024 13:29:03 -0700 (PDT)
+Message-ID: <6c9b7f85-f92d-44ed-ae9d-00f6d55ea614@gmail.com>
+Date: Thu, 12 Sep 2024 23:29:00 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-99b12
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 0/5] Support alpha blending in MTK display driver
+To: linux-mediatek@lists.infradead.org,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Hsiao Chien Sung <shawn.sung@mediatek.com>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Hsiao Chien Sung <shawn.sung@mediatek.corp-partner.google.com>,
+ CK Hu <ck.hu@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>
+References: <20240717-alpha-blending-v4-0-4b1c806c0749@mediatek.com>
+ <CAAOTY_8ThuusfHk9Gd5pFP8VhJkG2seuJmkFiruK1rPQFZGBzg@mail.gmail.com>
+From: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+Content-Language: en-US, tr, en-GB
+In-Reply-To: <CAAOTY_8ThuusfHk9Gd5pFP8VhJkG2seuJmkFiruK1rPQFZGBzg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240912_115940_446617_E82CF4A8 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20240912_132907_191077_F5AED6B9 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,39 +101,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 12 Sep 2024 16:41:10 +0800, Tang Bin wrote:
-> In the function mt7986_afe_pcm_dev_probe, when get irq
-> failed, the function platform_get_irq() logs an error
-> message, so remove redundant one here.
+Hi,
+
+On 2024-07-31 16:34 +03:00, Chun-Kuang Hu wrote:
+> Hi, Shawn:
 > 
+> Hsiao Chien Sung via B4 Relay
+> <devnull+shawn.sung.mediatek.com@kernel.org> 於 2024年7月17日 週三 下午1:24寫道：
+>>
+>> Support "Pre-multiplied" and "None" blend mode on MediaTek's chips by
+>> adding correct blend mode property when the planes init.
+>> Before this patch, only the "Coverage" mode (default) is supported.
 > 
+> For the whole series, applied to mediatek-drm-next [1], thanks.
+> 
+> [1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/log/?h=mediatek-drm-next
 
-Applied to
+I am seeing broken colors on an MT8173 Chromebook with next-20240912,
+which goes away if I git-revert this series (commits 1f66fe62cc09
+eb17c5909481 a3f7f7ef4bfe 59e9d9de25f0 4225d5d5e779).
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+To illustrate, I took a picture [1] of some color mixing diagrams from
+Wikipedia [2]. Do you have an idea of what goes wrong?
 
-Thanks!
+(I'm busy with too many things so I don't want to debug it now...)
 
-[1/1] ASoC: mediatek: mt7986-afe-pcm: Remove redundant error message
-      commit: f6e2e7397d00192bda11166d5fb3e2e67a8cf92e
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+[1] https://i.imgur.com/tNFvovB.jpeg
+[2] https://en.wikipedia.org/wiki/Color_space#Generic
 
