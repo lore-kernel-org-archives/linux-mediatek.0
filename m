@@ -4,70 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8E1CEEB565
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Sep 2024 09:00:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D9B9EEB569
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Sep 2024 09:05:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+rkhhtJg3KI5Lb3plQrFJ8XWtOp+E8JXeRwQOxDVSCQ=; b=WmBQ7qXBus6KgD6Yphzro41edI
-	EgLtz+EUKTpgUaCKwXu9o97aWMN+z0pjd2qAF0XiNkJZyjUSk4Fby4onsQmAeJmdlNm/F+Ln6kjxp
-	otmQssW1bVo6X3iD5nomLuW8x+/U2OSR83nHqs9qv2WnTtejSkwEllHomEkNlSYHU1q7mp2D+mkP1
-	Txan1b5QoGJjPV/9uv+KAgTM44GUU8U9jpKIjQ/ZlwC8DDz/CnfUi8kZkLSIgyKuSpepNGSVaR5i9
-	IHC+9KWYX9ET2lwDTQWXvW0/JX40rRyhsob+zXBuO1yT84in1GZgQn3JRyXr88kNOSkyvY32M42rG
-	sHKQZavg==;
+	bh=UZRRQPghwhfEYPJNyUekFiihmzSHXZ9ZapW/sGjqfdU=; b=ETht8fO8bvVpULXyzQVqRh2vVI
+	XM2KlFk4SNxQSeZG+EYFjN5+ml/DKOIUBVH6wk3pLj1SYEzhoOVcEwshy/OOVX7GT4wBRNkudHJzn
+	dl7mFTkDgcJgCEobVCrbSpLE61uVHFSvXtQX29dsQqowZpKBAofGuh3Qfe1JJ2ZBIJVFNXHkFOxGp
+	hvSl4Q3eyG4ONaNl1uGGUB8w0QTWcqmI63/9RdWTm7Aa0EBgRijMb13zmU4csQ9dWx0c/rWQQyDMw
+	4qtti/NQk0lBxcHYLlcr0Rle5ZdIT6teg/ds/RtGpo3hGoXi2vzTIPrKNWztPvltriZPv19Z3ssNm
+	ZJU1S+Iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sofh3-0000000CSAI-3YUh;
-	Thu, 12 Sep 2024 09:00:49 +0000
-Received: from a7-42.smtp-out.eu-west-1.amazonses.com ([54.240.7.42])
+	id 1soflM-0000000CSzf-40zw;
+	Thu, 12 Sep 2024 09:05:16 +0000
+Received: from a7-29.smtp-out.eu-west-1.amazonses.com ([54.240.7.29])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soed2-0000000CFxi-2Taz;
-	Thu, 12 Sep 2024 07:52:38 +0000
+	id 1soflJ-0000000CSyi-3JdY;
+	Thu, 12 Sep 2024 09:05:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1726127552;
+	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1726131909;
 	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding;
-	bh=K3pm6X6uxgABerMke/w7Hi/s9E6MlhMLw0RxpeXXuic=;
-	b=DWi3/XmpM4dXcSRy3WBYeEz09HFUYETrYfN+9K+6AUsDhtV7qg7Q9s/cT+IIG6Xs
-	Xq9gdTBnDXUGedB3w4BemQNyZwGMtqk0PwIKu9ooE9m1yhriwwaqRDVYu2Dh4Ph2T+0
-	SEBmSKAl4DU2yj05P/CtjdLPe477qK5b1j3H4aeXyBQhbiQoVvOaD5ndkDidxNCK9l7
-	UrRuxDgtfLH2u67qNJZL0qblDMhtuWD708LUYjk2oXZ1V7gLK36qitqqTYudd4Z4xb8
-	Z1ir5etzgpW8f2di9Y4oFdMBbF6egCNiNfkmCq+YpokKrksWABGBka7JX0LQXTmjrrH
-	wOTu+vmRCg==
+	bh=cU5d1gV2+5V9tfSQ7PLewaaCXoMfhGGhE2QKuS1Cbb4=;
+	b=aCUFUUtoA6CaviWyQUW8BFB5LSp7jxDQJASTzRZyljZ2NGVHgwHPy+yFMvrrZkli
+	sigAY1NBIXlivAa+SiEDhWg3TOmEtvdqiww7YuI/A9aa3aLihWSbQAxVeYeQ5LxOyQ/
+	HqV2DtubHM8UH4WEuxClMOmZ6dofFu53NQdNCjoFHxGpPXe2kNBctzJauPskY0vWEnr
+	MR9A9d5JxsN8ynf6nnv/1bU1DBALmQRvc/ovzd9DDNtzaxz59fXmQbEXPEcq2wzhWmD
+	WWseEc+rRCqekmVGCbVHIV7xfCSnB/LEFNdbEll/G8HawdAe8az+PfZ6TkZMmyLUofC
+	XRULCmMBnw==
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1726127552;
+	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1726131909;
 	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Feedback-ID;
-	bh=K3pm6X6uxgABerMke/w7Hi/s9E6MlhMLw0RxpeXXuic=;
-	b=SwxBjU3Go+S1KILudUPzbepP9EQyOQNFAnh/cV1AWFJqOeJbwG0Hrkmh9HUdeBmz
-	TFb6ClOlhBj+5uLPurfx5LCPJf/5bqyI6mNBG1qmRDmzgpCRVexmBhSt7lpcjcpTbvL
-	WBuVEvh/J1RN8E9i8WGhbu39Cnr46CiQqe6EFymo=
-Message-ID: <01020191e5383829-7eb375ea-ee17-419e-b173-30df46f61863-000000@eu-west-1.amazonses.com>
-Date: Thu, 12 Sep 2024 07:52:32 +0000
+	bh=cU5d1gV2+5V9tfSQ7PLewaaCXoMfhGGhE2QKuS1Cbb4=;
+	b=XNjiDcpCvS80r6n8buYYjtUVfC+b8ki7uKSY1vF2aSJnotG1AYmi/hnkmG1WjRat
+	KLNSgdZr3+133CzYSs/PJYGlm+bC86tKUKjBbtnz93qszw4TzDKgqwrIv/Oicdyjntt
+	25hZtya2gSfxhvKHG9k5M12xVfY6bBA1VG4eILgQ=
+Message-ID: <01020191e57ab41a-424e6c2f-08fb-43db-b45a-af4aaa22ef0b-000000@eu-west-1.amazonses.com>
+Date: Thu, 12 Sep 2024 09:05:09 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8395-genio-1200-evk: Enable GPU
-To: Pablo Sun <pablo.sun@mediatek.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-References: <20240910143245.5282-1-pablo.sun@mediatek.com>
- <01020191e04d4237-204596e1-6cc1-491c-a60f-de3917af7d42-000000@eu-west-1.amazonses.com>
- <2fd45240-a341-806b-f336-78d0595a8031@mediatek.com>
+Subject: Re: [PATCH] drm/mediatek: Fix potential NULL dereference in
+ mtk_crtc_destroy()
+To: Dan Carpenter <dan.carpenter@linaro.org>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	kernel-janitors@vger.kernel.org, 
+	=?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
+References: <cc537bd6-837f-4c85-a37b-1a007e268310@stanley.mountain>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <2fd45240-a341-806b-f336-78d0595a8031@mediatek.com>
+In-Reply-To: <cc537bd6-837f-4c85-a37b-1a007e268310@stanley.mountain>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
-X-SES-Outgoing: 2024.09.12-54.240.7.42
+X-SES-Outgoing: 2024.09.12-54.240.7.29
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240912_005236_866247_7BD355F4 
-X-CRM114-Status: GOOD (  22.24  )
+X-CRM114-CacheID: sfid-20240912_020514_037906_3428B23F 
+X-CRM114-Status: UNSURE (   9.24  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,75 +84,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/09/24 12:35, Pablo Sun ha scritto:
-> Hi Angelo,
+Il 12/09/24 10:44, Dan Carpenter ha scritto:
+> In mtk_crtc_create(), if the call to mbox_request_channel() fails then we
+> set the "mtk_crtc->cmdq_client.chan" pointer to NULL.  In that situation,
+> we do not call cmdq_pkt_create().
 > 
-> Thanks for the review,
+> During the cleanup, we need to check if the "mtk_crtc->cmdq_client.chan"
+> is NULL first before calling cmdq_pkt_destroy().  Calling
+> cmdq_pkt_destroy() is unnecessary if we didn't call cmdq_pkt_create() and
+> it will result in a NULL pointer dereference.
 > 
-> On 9/11/24 16:57, AngeloGioacchino Del Regno wrote:
-> 
-> [snip]
-> 
->>> +/* for GPU SRAM */
->>> +&mt6359_vsram_others_ldo_reg {
->>> +    regulator-always-on;
->>
->> No, that's not good. Like that, the GPU VSRAM will be subject to current leakage.
->>
->> Remove the regulator-always-on property.
->> The right way of doing that is to add the vgpu to the mfg0's domain supply and
->> vsram to mfg1; that way all of the GPU regulators will be off at PM suspend time.
-> 
-> Thanks for pointing this out, I'll send v2 to fix this.
-> 
->>>   &mt6359codec {
->>>       mediatek,mic-type-0 = <1>; /* ACC */
->>>       mediatek,mic-type-1 = <3>; /* DCC */
->>> @@ -839,8 +851,8 @@ regulators {
->>>               mt6315_7_vbuck1: vbuck1 {
->>>                   regulator-compatible = "vbuck1";
->>>                   regulator-name = "Vgpu";
->>> -                regulator-min-microvolt = <300000>;
->>> -                regulator-max-microvolt = <1193750>;
->>> +                regulator-min-microvolt = <546000>;
->>
->> I'm okay with this constraint but are you sure that MTK-SVS won't go any lower 
->> than 0.546V?
-> 
-> I'll see if I could confirm the maximum voltage drop that may be lowered by mtk-svs 
-> for MT8395. There are 3 constraints that I am aware of:
-> 
-> - capability of Vgpu buck: 0.3V-1.193V
-> - sign-off voltage of the EVK board: 0.6V to 1.2V
-> - recommended operating voltage of MT8395 DVDD_GPU: 0.546V to 0.787V
-> 
-> For the device tree of the board, would you recommend set the regulator voltage 
-> constraints in narrower range (because it's safer to keep in recommended operating 
-> conditions), or in a wider range (leaving the check to driver software for 
-> potential power saving?)
-> 
+> Fixes: 7627122fd1c0 ("drm/mediatek: Add cmdq_handle in mtk_crtc")
+> Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
 
-The range should match the target device's Vin constraints; in this case, it
-should be no lower than the minimum working voltage of the Vgpu-in of the Mali IP.
-
-The drivers will be responsible of setting the lowest possible voltage for
-enhanced efficiency (power saving), taking into account the fused chip quality bits
-(in this case, the MediaTek SVS driver!).
-
-You should, at this point, check the constraints of SVS, as in, given a reference
-voltage (in this case, located in the GPU OPP table, the voltage associated with
-the lowest frequency of the GPU), what is the maximum voltage *subtraction* that
-SVS will do on the VGPU?
-
-After the subtraction, may this voltage be lower than 0.546V? :-)
-
-Cheers,
-Angelo
-
-> Thanks
-> 
-> 
-
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 
