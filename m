@@ -4,64 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C827AEE6426
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Sep 2024 02:49:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0B0EEE6456
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Sep 2024 07:06:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=CVqoeT0mnTI+LqeX7nHVPmR3flruHUYeZhjUTZwdBqI=; b=JjUKdQxf43R/dGeyzpgYWgnVlr
-	fxEnUA+rAAakfwSiGI7oxlW1zvzlBo+DO/LgwVtoDweKe47cGZ4pm4J8pey8HXbX5znwTbFcaDtWg
-	MsTalabagQlUk7xDd2ni5OHqUrr4BWyB6VZfDFPzt4W8a/MWVN36v32lSEqF3tKPZrdopLHtYGzcN
-	KAkIWEQODlFVP/hVc4RQEVZ2f7BnMcQdj6W21csIl6+qUlMw8sn/DVbcKxpI/PIzl8aFVDGQai0QP
-	QDj0CVBi6knN3Cue/Oc2VzPTwO11aAGpwECCnswcLT33VIgWTD4QAF9wFFsV6/OzrPxiDP+4kxoRz
-	MKMh83bg==;
+	bh=ycm75bx+ikCTXSypBlYTHLgbMqzoqeOexBSyfGPPesE=; b=d7S8pfhmbDi3Av9VNO1bKLPsY7
+	p5BAyj5Qtt5f1Y4IbEEr+XL23Z8W+0+wqa1fW3+8TIY/RSkrVgaTvgZjpHu0XUZw4emfCeT+71sPM
+	Ujg5I2uahRP8vgeu0oE0z/GhDqks3dWqll/mCsTKU2Cz2L9/gDsxHjGFYF423VRUKB5q1w8aNxyOp
+	v7z/yZWLVdnS8JuEpAvJnDZtW64f3NrG7DPH3Hfk6PcD7KUr6TLgxZAD3gW+jyChzN4qT+HKUxjWz
+	lG/FyxniJYoeZl7JQ9JhnILW4jMFjcC2+Z29LMpVIs8oYmmeEoVtqerkbWmzXT0CTgvWP4wS7NSrJ
+	0LBbSUJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soZtk-0000000Beaa-2fqg;
-	Thu, 12 Sep 2024 02:49:32 +0000
-Received: from smtp-relay-canonical-0.canonical.com ([185.125.188.120])
+	id 1soduY-0000000C6zX-41Jz;
+	Thu, 12 Sep 2024 07:06:38 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soZse-0000000BePV-1kTT;
-	Thu, 12 Sep 2024 02:48:26 +0000
-Received: from laptop.lan (unknown [123.123.40.168])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-relay-canonical-0.canonical.com (Postfix) with ESMTPSA id 5E1E640F8D;
-	Thu, 12 Sep 2024 02:48:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
-	s=20210705; t=1726109299;
-	bh=CVqoeT0mnTI+LqeX7nHVPmR3flruHUYeZhjUTZwdBqI=;
-	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version;
-	b=rZ50K7SY+zqczPTxHxVQRQdgPqUSyyLWXDwszPhh6uG55DP68QjO//gk4IlNHw+nI
-	 sd7GhjLx65XXjdhPBKSfePt9Bjq1bJUZcDv30zsqezUexSy7xgl8LxUe+D4HoVhCjQ
-	 Ml3YgP78mYpTv7CsittFcWR+Lua13LjKOBfpRxjbL7X7g7EtIONuZnucAnXTcnVbwH
-	 05H7u+Fg5PtQvuHd5xXfkXHpajhPDIeWcsEoj0j13/oLnecpE2O9ohrH0/o1gJwt1u
-	 gyOu0IBi2vdVSzElsIJ54OkwEvoy9eAvjA4FkuMaM+FNuhD34WfbEWV/fCRSnH+NwI
-	 FSdATTCxFXAIA==
-From: Guoqing Jiang <guoqing.jiang@canonical.com>
-To: bin.liu@mediatek.com,
-	mchehab@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	irui.wang@mediatek.com,
-	hverkuil-cisco@xs4all.nl,
-	kyrie.wu@mediatek.com
-Cc: linux-media@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] media: mtk-jpeg: Fix null-ptr-deref during unload module
-Date: Thu, 12 Sep 2024 10:48:01 +0800
-Message-Id: <20240912024801.6904-1-guoqing.jiang@canonical.com>
-X-Mailer: git-send-email 2.34.1
+	id 1soduV-0000000C6yb-3b7V;
+	Thu, 12 Sep 2024 07:06:37 +0000
+X-UUID: 88b0c0c470d511efb3adad29d29602c1-20240912
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ycm75bx+ikCTXSypBlYTHLgbMqzoqeOexBSyfGPPesE=;
+	b=osuaPkQvNj7XijnxIkR/uGQ46o7WCL6Zjr5O8BPLwPrgCtBPXxUyNW6hTeosT58VeS+jF+uTPWuDCjXm0lIUYLQfIyaGCfMjLd1qgPEPlh/dOV/5fd0gsTMdDXy2cTWaQvOIk8rhliuG2nx4kTZjLli1ZecJUQBAbPfkZ8tkZ+g=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:2f40c27d-2131-4afa-a657-afd85ce84233,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:7e43d8bf-d7af-4351-93aa-42531abf0c7b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 88b0c0c470d511efb3adad29d29602c1-20240912
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <pablo.sun@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1897111469; Thu, 12 Sep 2024 00:06:29 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 12 Sep 2024 15:06:26 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 12 Sep 2024 15:06:26 +0800
+From: Pablo Sun <pablo.sun@mediatek.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Pablo Sun <pablo.sun@mediatek.com>
+Subject: [PATCH v2] arm64: dts: mediatek: mt8395-genio-1200-evk: Enable GPU
+Date: Thu, 12 Sep 2024 15:06:24 +0800
+Message-ID: <20240912070624.25540-1-pablo.sun@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_194824_749855_CD9167F3 
-X-CRM114-Status: GOOD (  11.51  )
+X-CRM114-CacheID: sfid-20240912_000635_984617_572BF4AF 
+X-CRM114-Status: GOOD (  12.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,105 +85,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The workqueue should be destroyed in mtk_jpeg_core.c since commit
-09aea13ecf6f ("media: mtk-jpeg: refactor some variables"), otherwise
-the below calltrace can be easily triggered.
+Enable the Mali Valhall GPU on Genio 1200 EVK by providing regulator
+supply settingsi to gpu and mfg1, and enable the GPU node.
 
-[  677.862514] Unable to handle kernel paging request at virtual address dfff800000000023
-[  677.863633] KASAN: null-ptr-deref in range [0x0000000000000118-0x000000000000011f]
-...
-[  677.879654] CPU: 6 PID: 1071 Comm: modprobe Tainted: G           O       6.8.12-mtk+gfa1a78e5d24b+ #17
-...
-[  677.882838] pc : destroy_workqueue+0x3c/0x770
-[  677.883413] lr : mtk_jpegdec_destroy_workqueue+0x70/0x88 [mtk_jpeg_dec_hw]
-[  677.884314] sp : ffff80008ad974f0
-[  677.884744] x29: ffff80008ad974f0 x28: ffff0000d7115580 x27: ffff0000dd691070
-[  677.885669] x26: ffff0000dd691408 x25: ffff8000844af3e0 x24: ffff80008ad97690
-[  677.886592] x23: ffff0000e051d400 x22: ffff0000dd691010 x21: dfff800000000000
-[  677.887515] x20: 0000000000000000 x19: 0000000000000000 x18: ffff800085397ac0
-[  677.888438] x17: 0000000000000000 x16: ffff8000801b87c8 x15: 1ffff000115b2e10
-[  677.889361] x14: 00000000f1f1f1f1 x13: 0000000000000000 x12: ffff7000115b2e4d
-[  677.890285] x11: 1ffff000115b2e4c x10: ffff7000115b2e4c x9 : ffff80000aa43e90
-[  677.891208] x8 : 00008fffeea4d1b4 x7 : ffff80008ad97267 x6 : 0000000000000001
-[  677.892131] x5 : ffff80008ad97260 x4 : ffff7000115b2e4d x3 : 0000000000000000
-[  677.893054] x2 : 0000000000000023 x1 : dfff800000000000 x0 : 0000000000000118
-[  677.893977] Call trace:
-[  677.894297]  destroy_workqueue+0x3c/0x770
-[  677.894826]  mtk_jpegdec_destroy_workqueue+0x70/0x88 [mtk_jpeg_dec_hw]
-[  677.895677]  devm_action_release+0x50/0x90
-[  677.896211]  release_nodes+0xe8/0x170
-[  677.896688]  devres_release_all+0xf8/0x178
-[  677.897219]  device_unbind_cleanup+0x24/0x170
-[  677.897785]  device_release_driver_internal+0x35c/0x480
-[  677.898461]  device_release_driver+0x20/0x38
-...
-[  677.912665] ---[ end trace 0000000000000000 ]---
+In addition, set the GPU related regulator voltage range:
 
-Fixes: 09aea13ecf6f ("media: mtk-jpeg: refactor some variables")
-Signed-off-by: Guoqing Jiang <guoqing.jiang@canonical.com>
+1. Set the recommended input voltage range of DVDD_GPU to (0.546V-0.787V),
+   based on Table 5-3 of MT8395 Application Processor Datasheet.
+   The regulator mt6315_7_vbuck1("Vgpu") connects to the DVDD_GPU input.
+   Note that the minimum voltage in SoC eFuse data, which is read by
+   MTK-SVS to adjust the regulator voltage, does not go below
+   the recommended operating voltage in the datasheet.
+
+2. Set the input voltage of DVDD_SRAM_GPU, supplied by
+   mt6359_vsram_others_ldo_reg, to 0.75V, the recommended typical
+   operating voltage in MT8395 Application Processor Datasheet.
+
+This patch is tested by enabling CONFIG_DRM_PANFROST and
+on Genio 1200 EVK it probed with following dmesg:
+
+```
+panfrost 13000000.gpu: clock rate = 700000092
+panfrost 13000000.gpu: mali-g57 id 0x9093 major 0x0 minor 0x1 status 0x0
+panfrost 13000000.gpu: features: 00000000,000019f7,
+					   issues: 00000001,80000400
+panfrost 13000000.gpu: Features: L2:0x07120206 Shader:0x00000000
+					   Tiler:0x00000809 Mem:0x301
+					   MMU:0x00002830 AS:0xff JS:0x7
+panfrost 13000000.gpu: shader_present=0x50045 l2_present=0x1
+[drm] Initialized panfrost 1.2.0 for 13000000.gpu on minor 0
+```
+
+Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
 ---
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c  | 10 ++++++++++
- .../media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c    | 11 -----------
- 2 files changed, 10 insertions(+), 11 deletions(-)
+ .../dts/mediatek/mt8395-genio-1200-evk.dts    | 19 +++++++++++++++++--
+ 1 file changed, 17 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index ac48658e2de4..ff2694676355 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1293,6 +1293,11 @@ static int mtk_jpeg_single_core_init(struct platform_device *pdev,
- 	return 0;
- }
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+index a06610fff8ad..4f7d66d6d785 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+@@ -194,6 +194,11 @@ eth_phy0: eth-phy0@1 {
+ 	};
+ };
  
-+static void mtk_jpeg_destroy_workqueue(void *data)
-+{
-+	destroy_workqueue(data);
-+}
++&gpu {
++	mali-supply = <&mt6315_7_vbuck1>;
++	status = "okay";
++};
 +
- static int mtk_jpeg_probe(struct platform_device *pdev)
- {
- 	struct mtk_jpeg_dev *jpeg;
-@@ -1337,6 +1342,11 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
- 							  | WQ_FREEZABLE);
- 		if (!jpeg->workqueue)
- 			return -EINVAL;
-+		ret = devm_add_action_or_reset(&pdev->dev,
-+					       mtk_jpeg_destroy_workqueue,
-+					       jpeg->workqueue);
-+		if (ret)
-+			return ret;
- 	}
+ &i2c0 {
+ 	clock-frequency = <400000>;
+ 	pinctrl-0 = <&i2c0_pins>;
+@@ -337,6 +342,10 @@ &mfg0 {
+ 	domain-supply = <&mt6315_7_vbuck1>;
+ };
  
- 	ret = v4l2_device_register(&pdev->dev, &jpeg->v4l2_dev);
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-index 4a6ee211e18f..2c5d74939d0a 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-@@ -578,11 +578,6 @@ static int mtk_jpegdec_hw_init_irq(struct mtk_jpegdec_comp_dev *dev)
- 	return 0;
- }
++&mfg1 {
++	domain-supply = <&mt6359_vsram_others_ldo_reg>;
++};
++
+ &mmc0 {
+ 	status = "okay";
+ 	pinctrl-names = "default", "state_uhs";
+@@ -407,6 +416,12 @@ &mt6359_vrf12_ldo_reg {
+ 	regulator-always-on;
+ };
  
--static void mtk_jpegdec_destroy_workqueue(void *data)
--{
--	destroy_workqueue(data);
--}
--
- static int mtk_jpegdec_hw_probe(struct platform_device *pdev)
- {
- 	struct mtk_jpegdec_clk *jpegdec_clk;
-@@ -606,12 +601,6 @@ static int mtk_jpegdec_hw_probe(struct platform_device *pdev)
- 	dev->plat_dev = pdev;
- 	dev->dev = &pdev->dev;
- 
--	ret = devm_add_action_or_reset(&pdev->dev,
--				       mtk_jpegdec_destroy_workqueue,
--				       master_dev->workqueue);
--	if (ret)
--		return ret;
--
- 	spin_lock_init(&dev->hw_lock);
- 	dev->hw_state = MTK_JPEG_HW_IDLE;
- 
++/* for GPU SRAM */
++&mt6359_vsram_others_ldo_reg {
++	regulator-min-microvolt = <750000>;
++	regulator-max-microvolt = <750000>;
++};
++
+ &mt6359codec {
+ 	mediatek,mic-type-0 = <1>; /* ACC */
+ 	mediatek,mic-type-1 = <3>; /* DCC */
+@@ -839,8 +854,8 @@ regulators {
+ 			mt6315_7_vbuck1: vbuck1 {
+ 				regulator-compatible = "vbuck1";
+ 				regulator-name = "Vgpu";
+-				regulator-min-microvolt = <300000>;
+-				regulator-max-microvolt = <1193750>;
++				regulator-min-microvolt = <546000>;
++				regulator-max-microvolt = <787000>;
+ 				regulator-enable-ramp-delay = <256>;
+ 				regulator-allowed-modes = <0 1 2>;
+ 			};
 -- 
-2.34.1
+2.45.2
 
 
