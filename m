@@ -4,68 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAE93EE57D7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Sep 2024 22:15:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C827AEE6426
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Sep 2024 02:49:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JogCjySRC80YF0ex1UaFJSS1dp4mLwXt45S42undRuo=; b=0v6lKVXjQNZSoDn7szbS/bJDQ9
-	lRqJxkzdrQ/9vsPTXXasjTDKciQ3mpbaefv59a/104CsZY2osRDUdROdvmuQHJ5upiCCSf71/StPR
-	Gs3kKhSMOSFBkVj2jBdxrNhXax7tStcaePk7Ld5eofE4E08/+itFgIL+21RggR+alJ/EU+l9vqRjC
-	W3ltWNhx7mff55uv3CT1xhvzw1zGmjNs+LF2eRuxwr0kzCl/WRUGpy05vVk50l8SmwMXpg6lbbBBB
-	lmiXKObPzR4KBf3rK2uXDROdynr9W27HQ5Jykgv12slIK7HdQVkauVhkXyrIXX4W0vH9GiNZbEV7u
-	ZgdO8ACg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=CVqoeT0mnTI+LqeX7nHVPmR3flruHUYeZhjUTZwdBqI=; b=JjUKdQxf43R/dGeyzpgYWgnVlr
+	fxEnUA+rAAakfwSiGI7oxlW1zvzlBo+DO/LgwVtoDweKe47cGZ4pm4J8pey8HXbX5znwTbFcaDtWg
+	MsTalabagQlUk7xDd2ni5OHqUrr4BWyB6VZfDFPzt4W8a/MWVN36v32lSEqF3tKPZrdopLHtYGzcN
+	KAkIWEQODlFVP/hVc4RQEVZ2f7BnMcQdj6W21csIl6+qUlMw8sn/DVbcKxpI/PIzl8aFVDGQai0QP
+	QDj0CVBi6knN3Cue/Oc2VzPTwO11aAGpwECCnswcLT33VIgWTD4QAF9wFFsV6/OzrPxiDP+4kxoRz
+	MKMh83bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soVcm-0000000B9pD-15Wf;
-	Wed, 11 Sep 2024 22:15:44 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1soZtk-0000000Beaa-2fqg;
+	Thu, 12 Sep 2024 02:49:32 +0000
+Received: from smtp-relay-canonical-0.canonical.com ([185.125.188.120])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1soUdf-0000000B25u-2BiB;
-	Wed, 11 Sep 2024 21:12:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id D351AA40D70;
-	Wed, 11 Sep 2024 21:12:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3C7CC4CEC0;
-	Wed, 11 Sep 2024 21:12:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1726089154;
-	bh=5a0w8ihru5qeC1bAlX8IIJJGmmGbilmT8scRcWg0ahA=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
-	b=WsFpgDS29CG1HpRsl8+NLTApWl4Sk5Z/UdIDjxFdJPrjYnA7mL4/Cgl1of/aGeLJg
-	 0+HpcQ0YpWeT5UQQbj8qoFVi6G/aQtjztE+rGqMXZl2NDzCBeeP6mN/kLZSyMvMWEJ
-	 Xabm1tkV1Lc1X9kUMUtiP3H38wvx2mBXjsvO+HqdDXYC9R9Uf/BfC1iCE09iSg0Tv1
-	 jFiw7YzttU262N25tdo9BKYSIUY/QPMqXHlo9M48FrMjP2nK8g/isrVQ5UmDHaLJ0G
-	 yoH+xzzMXtfXY/9ioTlhjq46IOH61Pu8wRsp+dGcVgUU3EXcM1Jj3OzQ1Ez3CvfSCZ
-	 5B+Ys6fXPvFeA==
-Date: Wed, 11 Sep 2024 16:12:32 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1soZse-0000000BePV-1kTT;
+	Thu, 12 Sep 2024 02:48:26 +0000
+Received: from laptop.lan (unknown [123.123.40.168])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-relay-canonical-0.canonical.com (Postfix) with ESMTPSA id 5E1E640F8D;
+	Thu, 12 Sep 2024 02:48:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+	s=20210705; t=1726109299;
+	bh=CVqoeT0mnTI+LqeX7nHVPmR3flruHUYeZhjUTZwdBqI=;
+	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version;
+	b=rZ50K7SY+zqczPTxHxVQRQdgPqUSyyLWXDwszPhh6uG55DP68QjO//gk4IlNHw+nI
+	 sd7GhjLx65XXjdhPBKSfePt9Bjq1bJUZcDv30zsqezUexSy7xgl8LxUe+D4HoVhCjQ
+	 Ml3YgP78mYpTv7CsittFcWR+Lua13LjKOBfpRxjbL7X7g7EtIONuZnucAnXTcnVbwH
+	 05H7u+Fg5PtQvuHd5xXfkXHpajhPDIeWcsEoj0j13/oLnecpE2O9ohrH0/o1gJwt1u
+	 gyOu0IBi2vdVSzElsIJ54OkwEvoy9eAvjA4FkuMaM+FNuhD34WfbEWV/fCRSnH+NwI
+	 FSdATTCxFXAIA==
+From: Guoqing Jiang <guoqing.jiang@canonical.com>
+To: bin.liu@mediatek.com,
+	mchehab@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	irui.wang@mediatek.com,
+	hverkuil-cisco@xs4all.nl,
+	kyrie.wu@mediatek.com
+Cc: linux-media@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] media: mtk-jpeg: Fix null-ptr-deref during unload module
+Date: Thu, 12 Sep 2024 10:48:01 +0800
+Message-Id: <20240912024801.6904-1-guoqing.jiang@canonical.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-mediatek@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-gpio@vger.kernel.org, 
- Sean Wang <sean.wang@kernel.org>, upstream@airoha.com, ansuelsmth@gmail.com, 
- linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- Linus Walleij <linus.walleij@linaro.org>, Lee Jones <lee@kernel.org>, 
- devicetree@vger.kernel.org, 
- =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>, 
- benjamin.larsson@genexis.eu
-In-Reply-To: <20240911-en7581-pinctrl-v4-1-60ac93d760bb@kernel.org>
-References: <20240911-en7581-pinctrl-v4-0-60ac93d760bb@kernel.org>
- <20240911-en7581-pinctrl-v4-1-60ac93d760bb@kernel.org>
-Message-Id: <172608915149.1388705.7137335166206916411.robh@kernel.org>
-Subject: Re: [PATCH v4 1/5] dt-bindings: arm: airoha: Add the chip-scu node
- for EN7581 SoC
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240911_141235_647333_F35BDF71 
-X-CRM114-Status: GOOD (  12.79  )
+X-CRM114-CacheID: sfid-20240911_194824_749855_CD9167F3 
+X-CRM114-Status: GOOD (  11.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,42 +76,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The workqueue should be destroyed in mtk_jpeg_core.c since commit
+09aea13ecf6f ("media: mtk-jpeg: refactor some variables"), otherwise
+the below calltrace can be easily triggered.
 
-On Wed, 11 Sep 2024 21:50:01 +0200, Lorenzo Bianconi wrote:
-> This patch adds the chip-scu document bindings for EN7581 SoC.
-> The airoha chip-scu block provides a configuration interface for clock,
-> io-muxing and other functionalities used by multiple controllers (e.g.
-> clock, pinctrl, ecc.) on EN7581 SoC.
-> 
-> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  .../bindings/arm/airoha,en7581-chip-scu.yaml       | 42 ++++++++++++++++++++++
->  1 file changed, 42 insertions(+)
-> 
+[  677.862514] Unable to handle kernel paging request at virtual address dfff800000000023
+[  677.863633] KASAN: null-ptr-deref in range [0x0000000000000118-0x000000000000011f]
+...
+[  677.879654] CPU: 6 PID: 1071 Comm: modprobe Tainted: G           O       6.8.12-mtk+gfa1a78e5d24b+ #17
+...
+[  677.882838] pc : destroy_workqueue+0x3c/0x770
+[  677.883413] lr : mtk_jpegdec_destroy_workqueue+0x70/0x88 [mtk_jpeg_dec_hw]
+[  677.884314] sp : ffff80008ad974f0
+[  677.884744] x29: ffff80008ad974f0 x28: ffff0000d7115580 x27: ffff0000dd691070
+[  677.885669] x26: ffff0000dd691408 x25: ffff8000844af3e0 x24: ffff80008ad97690
+[  677.886592] x23: ffff0000e051d400 x22: ffff0000dd691010 x21: dfff800000000000
+[  677.887515] x20: 0000000000000000 x19: 0000000000000000 x18: ffff800085397ac0
+[  677.888438] x17: 0000000000000000 x16: ffff8000801b87c8 x15: 1ffff000115b2e10
+[  677.889361] x14: 00000000f1f1f1f1 x13: 0000000000000000 x12: ffff7000115b2e4d
+[  677.890285] x11: 1ffff000115b2e4c x10: ffff7000115b2e4c x9 : ffff80000aa43e90
+[  677.891208] x8 : 00008fffeea4d1b4 x7 : ffff80008ad97267 x6 : 0000000000000001
+[  677.892131] x5 : ffff80008ad97260 x4 : ffff7000115b2e4d x3 : 0000000000000000
+[  677.893054] x2 : 0000000000000023 x1 : dfff800000000000 x0 : 0000000000000118
+[  677.893977] Call trace:
+[  677.894297]  destroy_workqueue+0x3c/0x770
+[  677.894826]  mtk_jpegdec_destroy_workqueue+0x70/0x88 [mtk_jpeg_dec_hw]
+[  677.895677]  devm_action_release+0x50/0x90
+[  677.896211]  release_nodes+0xe8/0x170
+[  677.896688]  devres_release_all+0xf8/0x178
+[  677.897219]  device_unbind_cleanup+0x24/0x170
+[  677.897785]  device_release_driver_internal+0x35c/0x480
+[  677.898461]  device_release_driver+0x20/0x38
+...
+[  677.912665] ---[ end trace 0000000000000000 ]---
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Fixes: 09aea13ecf6f ("media: mtk-jpeg: refactor some variables")
+Signed-off-by: Guoqing Jiang <guoqing.jiang@canonical.com>
+---
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c  | 10 ++++++++++
+ .../media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c    | 11 -----------
+ 2 files changed, 10 insertions(+), 11 deletions(-)
 
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240911-en7581-pinctrl-v4-1-60ac93d760bb@kernel.org
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index ac48658e2de4..ff2694676355 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1293,6 +1293,11 @@ static int mtk_jpeg_single_core_init(struct platform_device *pdev,
+ 	return 0;
+ }
+ 
++static void mtk_jpeg_destroy_workqueue(void *data)
++{
++	destroy_workqueue(data);
++}
++
+ static int mtk_jpeg_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_jpeg_dev *jpeg;
+@@ -1337,6 +1342,11 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
+ 							  | WQ_FREEZABLE);
+ 		if (!jpeg->workqueue)
+ 			return -EINVAL;
++		ret = devm_add_action_or_reset(&pdev->dev,
++					       mtk_jpeg_destroy_workqueue,
++					       jpeg->workqueue);
++		if (ret)
++			return ret;
+ 	}
+ 
+ 	ret = v4l2_device_register(&pdev->dev, &jpeg->v4l2_dev);
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+index 4a6ee211e18f..2c5d74939d0a 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+@@ -578,11 +578,6 @@ static int mtk_jpegdec_hw_init_irq(struct mtk_jpegdec_comp_dev *dev)
+ 	return 0;
+ }
+ 
+-static void mtk_jpegdec_destroy_workqueue(void *data)
+-{
+-	destroy_workqueue(data);
+-}
+-
+ static int mtk_jpegdec_hw_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_jpegdec_clk *jpegdec_clk;
+@@ -606,12 +601,6 @@ static int mtk_jpegdec_hw_probe(struct platform_device *pdev)
+ 	dev->plat_dev = pdev;
+ 	dev->dev = &pdev->dev;
+ 
+-	ret = devm_add_action_or_reset(&pdev->dev,
+-				       mtk_jpegdec_destroy_workqueue,
+-				       master_dev->workqueue);
+-	if (ret)
+-		return ret;
+-
+ 	spin_lock_init(&dev->hw_lock);
+ 	dev->hw_state = MTK_JPEG_HW_IDLE;
+ 
+-- 
+2.34.1
 
 
