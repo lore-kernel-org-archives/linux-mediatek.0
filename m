@@ -4,72 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B82B2EED620
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Sep 2024 16:45:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ED83EED617
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Sep 2024 16:46:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rqfm9ogszy01Qwx/Eh6C5oLCFUyR0nWquRMGCl1ez9s=; b=etFGF6KSwh7Xa8n0KRHjWEgs6h
-	Mj0/If716iolzG2VuX8g0qSiEdYnAim13sgan7+AbHn/XzDv7sf1kWm39EajGjNP3M08XF9hxFfYl
-	EZmCzIhGE7aELSFlGGAingF/NUL4GWB0EUzUdzgZIVY6uoYLEq3BK9buNhmEw8fyPDETAGy3cCM9C
-	VgXWT51q7P9PHjyhr/ju+YpMzUbdxz1wyLkjpaENjFdrdlo+R/KRjpwemmt2dqd6h8vTg5KS6uVrW
-	hs4TppmDAZmsvEGByXbdeeK/UXjTAKmaJEoVNxWEu3sb9NAZUDVKy68DqZ1BzigJ2TRrrW9ilv9xy
-	+0DcOmsQ==;
+	bh=gF710t5JWz6krDpN4bAmAu6kbw+sgXtobcCu70VkUao=; b=P4v47qViyxko37VtOm8ZDh9Die
+	AVFJUYP4EMd9fMKQpHuih70o81Swjow4C3l/ldx7XRL5TM610LH43sMBGADtYdgkYSVGHM7AoXeTn
+	Prym3sCy/3nOf/Jt8mUAbBXvRmNODsQaiwcHZW910xPS5T/XfL4eLmZFz+CHkskcS7csU9HePjdxw
+	VwmVqVloZura7zJAmKK98zCwPKL9QUPx2o3Ujzho7H+5LuQbP5TZvkmy0E9kPhCw4WpQIop6Nk+Jk
+	pVH3H8As+qhm0K/fUozpD99zBp8BfH+xJzurfXca1btnhk+9+FO84fIDXpDPoC8fg3P4LkWMSY+uj
+	hKxmK8nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1somwT-0000000DkAx-1LLe;
-	Thu, 12 Sep 2024 16:45:13 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1somxV-0000000DkU1-3Fgl;
+	Thu, 12 Sep 2024 16:46:17 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1somug-0000000Djem-1Vim;
-	Thu, 12 Sep 2024 16:43:23 +0000
+	id 1somwF-0000000Dk44-3to4;
+	Thu, 12 Sep 2024 16:45:01 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id B1D98A452D1;
-	Thu, 12 Sep 2024 16:43:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56C84C4CEC4;
-	Thu, 12 Sep 2024 16:43:20 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 64FD95C5A06;
+	Thu, 12 Sep 2024 16:44:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87591C4CEC3;
+	Thu, 12 Sep 2024 16:44:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1726159400;
-	bh=jAOZmLaS86bj9s5j3+eO3YVYQkX0MvMiHQnL9QbBzJA=;
+	s=k20201202; t=1726159498;
+	bh=cQOBR1RFFJm2nw3OSuvbO0QAyXdcXwsUsCSGIOSeBZg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fITLn6YDWhfp6bpfzsNr1JXfMoSPjzBm3aRD/hH7VamK3QUvyqd7puHy+Bq67h//v
-	 v7/8bNGawMiC76RnwwHhGuA24TmAbQLT7jVdFU8TiejH0pWgakwdbME4NMpFyckM+U
-	 LPXMKuMgi/Bfon9sxpR8UJPA7rJ7MzMwUfSAWk9rMnbwQHJj7tg6YEPQ3q0wk5eU4c
-	 ZIqoKFhCWDY+PlV5iQ7YLs6B28rgvr+YtWemR0yoszDvx1Gj+1yk1iBpaI8tAVEUPB
-	 BOQFKIMn69zn/V151F0J60p5a+Bpo0cEEG94nIobU+Ik1KMSPXOxo7QYv37bNPuPHY
-	 50jFR/ceI5FJQ==
-Date: Thu, 12 Sep 2024 11:43:19 -0500
-From: Rob Herring <robh@kernel.org>
+	b=QmbP61qR54CqLXNE72/2T1Gh09yTKcsW6iN6O2WsmjMFmrZdDHukqG9VR5ZFS/ZES
+	 86oR8afTlD8zvpqzrQ7T71KSeYdkDjxwdEtY2AfoVv2qIsIoXkszp3gvpDdDa3jSki
+	 AEa2e05nQrqpVBso9AH5DmyfG5uGHRqAbW9XVJIyB8XfojTKxwsOpsddwi//yuvm1I
+	 IV0dlHj3LLObqExc0wi7Z5etE5TIUvLf682w3JxBz2N2TeN34HdUXxtjcfburwcC/o
+	 dOstkNvb8xwlR2rUW9J9adWEY/E6EbnX22a+7jahFJG3QXIxvBAYosSkU4k6VZCq7q
+	 9QopKYXzChmLg==
+Date: Thu, 12 Sep 2024 11:44:56 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-gpio@vger.kernel.org, Sean Wang <sean.wang@kernel.org>,
-	upstream@airoha.com, ansuelsmth@gmail.com,
-	linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-pwm@vger.kernel.org,
+	ansuelsmth@gmail.com, Matthias Brugger <matthias.bgg@gmail.com>,
+	benjamin.larsson@genexis.eu, linux-gpio@vger.kernel.org,
+	Sean Wang <sean.wang@kernel.org>,
 	Linus Walleij <linus.walleij@linaro.org>,
-	Lee Jones <lee@kernel.org>, devicetree@vger.kernel.org,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
-	benjamin.larsson@genexis.eu
-Subject: Re: [PATCH v4 1/5] dt-bindings: arm: airoha: Add the chip-scu node
- for EN7581 SoC
-Message-ID: <20240912164319.GA3907493-robh@kernel.org>
+	linux-mediatek@lists.infradead.org,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
+	Lee Jones <lee@kernel.org>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>
+Subject: Re: [PATCH v4 2/5] dt-bindings: mfd: Add support for Airoha EN7581
+ GPIO System Controller
+Message-ID: <172615949582.3911596.4077414513470594513.robh@kernel.org>
 References: <20240911-en7581-pinctrl-v4-0-60ac93d760bb@kernel.org>
- <20240911-en7581-pinctrl-v4-1-60ac93d760bb@kernel.org>
- <172608915149.1388705.7137335166206916411.robh@kernel.org>
- <ZuIPo8BMBVGuaGMI@lore-desk>
+ <20240911-en7581-pinctrl-v4-2-60ac93d760bb@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZuIPo8BMBVGuaGMI@lore-desk>
+In-Reply-To: <20240911-en7581-pinctrl-v4-2-60ac93d760bb@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240912_094322_555922_30DDF0BD 
-X-CRM114-Status: GOOD (  25.04  )
+X-CRM114-CacheID: sfid-20240912_094500_060764_6F5798C0 
+X-CRM114-Status: GOOD (  11.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,76 +81,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 11, 2024 at 11:46:11PM +0200, Lorenzo Bianconi wrote:
-> > 
-> > On Wed, 11 Sep 2024 21:50:01 +0200, Lorenzo Bianconi wrote:
-> > > This patch adds the chip-scu document bindings for EN7581 SoC.
-> > > The airoha chip-scu block provides a configuration interface for clock,
-> > > io-muxing and other functionalities used by multiple controllers (e.g.
-> > > clock, pinctrl, ecc.) on EN7581 SoC.
-> > > 
-> > > Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-> > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > > ---
-> > >  .../bindings/arm/airoha,en7581-chip-scu.yaml       | 42 ++++++++++++++++++++++
-> > >  1 file changed, 42 insertions(+)
-> > > 
-> > 
-> > My bot found errors running 'make dt_binding_check' on your patch:
-> > 
-> > yamllint warnings/errors:
-> > 
-> > dtschema/dtc warnings/errors:
-> > 
-> > 
-> > doc reference errors (make refcheckdocs):
-> > 
-> > See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20240911-en7581-pinctrl-v4-1-60ac93d760bb@kernel.org
-> > 
-> > The base for the series is generally the latest rc1. A different dependency
-> > should be noted in *this* patch.
-> > 
-> > If you already ran 'make dt_binding_check' and didn't see the above
-> > error(s), then make sure 'yamllint' is installed and dt-schema is up to
-> > date:
-> > 
-> > pip3 install dtschema --upgrade
-> > 
-> > Please check and re-submit after running the above command yourself. Note
-> > that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-> > your schema. However, it must be unset to test all examples with your schema.
-> > 
-> 
-> Hi Rob,
-> 
-> before posting the series I run make dt_binding_check:
-> 
-> $ make dt_binding_check DT_SCHEMA_FILES=airoha
 
-Technically, you have to run it without DT_SCHEMA_FILES as sometimes 
-there is interaction with other schemas.
-
->   SCHEMA  Documentation/devicetree/bindings/processed-schema.json
->   CHKDT   Documentation/devicetree/bindings
->   LINT    Documentation/devicetree/bindings
->   DTC_CHK Documentation/devicetree/bindings/arm/airoha.example.dtb
->   DTEX    Documentation/devicetree/bindings/arm/airoha,en7581-chip-scu.example.dts
->   DTC_CHK Documentation/devicetree/bindings/arm/airoha,en7581-chip-scu.example.dtb
->   DTC_CHK Documentation/devicetree/bindings/clock/airoha,en7523-scu.example.dtb
->   DTC_CHK Documentation/devicetree/bindings/net/airoha,en7581-eth.example.dtb
->   DTC_CHK Documentation/devicetree/bindings/net/airoha,en8811h.example.dtb
->   DTC_CHK Documentation/devicetree/bindings/gpio/airoha,en7523-gpio.example.dtb
->   DTC_CHK Documentation/devicetree/bindings/spi/airoha,en7581-snand.example.dtb
->   DTC_CHK Documentation/devicetree/bindings/phy/airoha,en7581-pcie-phy.example.dtb
+On Wed, 11 Sep 2024 21:50:02 +0200, Lorenzo Bianconi wrote:
+> From: Christian Marangi <ansuelsmth@gmail.com>
 > 
-> $yamllint --version
-> yamllint 1.35.1
+> Add support for Airoha EN7581 GPIO System Controller which provide a
+> register map for controlling the GPIO, pinctrl and PWM of the SoC.
 > 
-> dtschema is at the latest version.
-> Is it a false positive or am I missing something?
+> Schema define cells for both gpio/interrupt controller and PWM.
+> Moreover it provides a dedicated pinctrl node for pins and config
+> definitions.
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  .../bindings/mfd/airoha,en7581-gpio-sysctl.yaml    | 433 +++++++++++++++++++++
+>  1 file changed, 433 insertions(+)
+> 
 
-Looks like something went sideways. Will look into it. You can ignore 
-this.
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
-Rob
 
