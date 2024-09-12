@@ -4,82 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8876BEEB567
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Sep 2024 08:43:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 217FDEEB565
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Sep 2024 08:45:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rZ7SlFqCrlz5NcLPHVRGdLSPiYs6/Dpr+JnnW5Fq8NY=; b=GWrXC+qNJM3ALCtvzOHQYdrKTH
-	ybGPg7ThbZtiPC78BdGfl6i7poJM2u6Iv+TGvI+DZs4GdJf/JReVNXd6aAZ5Yq8bEH0YYXJjUeYWV
-	Au1Bf3VkSTwGzLn0gAaazeS8zzcjiSQWi5MkzxjE0Axqq1cNUMPoK2MIi9UtfQp8kHDR5Syw6cqkI
-	VNrQ7HrYdz4PuS1LvX2e4Tks0BYI985VTQT+0uQIw5zRSEgRTmDlOWOV925PFR87XOLurwFqugnX8
-	rYgN7UESTo+gc/FZF+gzX/WFxvtEOHc+h2AYiJemm9tyx5wKcPtqV8BKqJ7H099kbtpOq6jpH/yBy
-	6yKgLEXw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Iwn1or/bBYSNEeUGyuhOfxUWx3sWzISGdpZDtEwQt38=; b=q4Yyg7vhGbvWn2Jn/qeFuTp3BH
+	OYSj+SjMKz0TD9xiOOkOr7TDTvNCaX+tm8o/djhW5cachOOwGL88WqOALV+SXD4TDR9qyI+EYd1yO
+	cTulAHL63p4Und2Lp44o5Zm57NeAprqFyAnmaULoA9d4sgQKVIaoGMx/MWEXSuXshOlr2Ao7KG8D6
+	nrnEMsEkvZ9aob2+UUjahjcpZx4W3UjW1JdrLYikzZlB3zqH3cnAAIOnXWJkJN2eQqxdW6dcgNX4V
+	Y2S4Gg2W7GRf6TfP9hY6u7YUQ+7dnzddgnr+sOdplxn6+QcOR/Z/o2DMiEH1ov5NIjAZ3JOhEFDQN
+	zwjCkl/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sofQZ-0000000CPuc-0YwY;
-	Thu, 12 Sep 2024 08:43:47 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1sofRr-0000000CQ3Q-1UAK;
+	Thu, 12 Sep 2024 08:45:07 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sofQX-0000000CPtW-0Zab
+	id 1sofRp-0000000CQ2m-1Cdc
 	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Sep 2024 08:43:46 +0000
-Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-374b5f27cf2so532275f8f.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 12 Sep 2024 01:43:44 -0700 (PDT)
+	Thu, 12 Sep 2024 08:45:06 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-42bb7298bdeso7521205e9.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 12 Sep 2024 01:45:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1726130623; x=1726735423; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=rZ7SlFqCrlz5NcLPHVRGdLSPiYs6/Dpr+JnnW5Fq8NY=;
-        b=ZY6mxLuc/9e1DLqRfBc/4MMmqdyMnDmp3RD/NJ8H+APIqslPdq6e+xnr0Goc78iqs+
-         JFFBmDpfPkKdsHPV8aXi9OWT0NaKNdZ/B6X9YN/TKRGY7ehqJa7sYL3jL0b+DACbWOgh
-         crVPUqp15B62jqJnfdUHxHraJ2EMFxP0CNEl0nVsUf7wXN16r9nJjhFXPhexDxEe1oTk
-         4VZRvCMR5aMHUCND86UiDDqGH3vN+b1OAV+dnp1etgKny5CMXmBmI6rEBs/cxNpA0ZP4
-         d/PD5Ga8tTEhdFvMi853NcJ/2hFLZkEhvT9jiWrwxAEI3hnf1mjxHJuu+Rehf1j9tWMn
-         STjw==
+        d=linaro.org; s=google; t=1726130704; x=1726735504; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Iwn1or/bBYSNEeUGyuhOfxUWx3sWzISGdpZDtEwQt38=;
+        b=YS80CzBHEINzs9TETL4ZEcNzkZsv+LdILhTLORFPcHsT9icj1aE3uCqawyUAVRu5KX
+         JW1+hGNjVe2YkDx55IADD+vToaFArJ4exlLCM8dgROlJo9XuscNH5qWsm8Hs9kl3hikI
+         KHhZ/nC7teuEzvLhkVBc+B1R/JDpuhPSkPFRQrYgoCJ5+HYnpoBWGL/4pbd3b/JAV/2q
+         JQAKTXQ0mgfMPn0WPAH8Q1MbpPtvC1G9WCSZ5QWXXBzEuU4g9ag8ma3lrm7BflfuovGm
+         5qbM4IdrKDogpQ2KyUz4/OE90Ged08K8XN9CV0CQUQmFMKefC+T0qCsiNeC8tduHLIdL
+         ezZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726130623; x=1726735423;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        d=1e100.net; s=20230601; t=1726130704; x=1726735504;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=rZ7SlFqCrlz5NcLPHVRGdLSPiYs6/Dpr+JnnW5Fq8NY=;
-        b=LRJt2FQ8e+Zu7TBBsjwLaiHcW1NANVY10vjXhxu0F7xa8iRd/BXhYIhsIr5QFr01w/
-         IQEMSPiorNiePy/Ix/S7HpLCAz+BJ+ZqvH44c6fJbHdst69/VWu3ozgiWy94d5LDNHsr
-         ozgkiTvDtaf1zczMr4VKf2bSHt9VQRPYOfeUALYvDyqgj7YVdyXcEunS6LdKcVSKAFbZ
-         FSC+cpPnLkQ43Hi0q/4Xt7bJABdCYcnHr+6xzHAeuACzPtxpN0i7GrF/BJSdFtPd6gNf
-         F7MoV3cigkiuCAM3P2OKHYOpLeCnDqRy4wVi2OqKQ5ifucDFXdqr7fenOzONez5314Fr
-         J5fQ==
-X-Gm-Message-State: AOJu0Yzp6Il8vKYFOTwEwYsAei0SrJHDd/YaxbRPNVLjTQA2YbCjeucM
-	JAfkIeiTc0kTjqIedtgLalvCDC0q2nk0t303/4GYP1GZsT7vkO8HfRXkwmGJDI929u2TZWg4W82
-	6
-X-Google-Smtp-Source: AGHT+IGmhbfJ1vjnCPaSyOBI3vJqSx8RBkCxjzC8VNEEbV9NwHP6rgE22YqQllIqQeBTsm07mHeISg==
-X-Received: by 2002:adf:b30e:0:b0:374:c3e4:d6c5 with SMTP id ffacd0b85a97d-378c2d59673mr1104780f8f.57.1726130623243;
-        Thu, 12 Sep 2024 01:43:43 -0700 (PDT)
+        bh=Iwn1or/bBYSNEeUGyuhOfxUWx3sWzISGdpZDtEwQt38=;
+        b=aQnuYVeDxbf8PELpdZpFZp9PHzjQNBxMr1u/Dydls8+J7MVn2YEXVh9w9tvIsKZWIv
+         moHWouC8ic+Tuie8j8FpHRh1otwFq9VxDRZE783hSLxE18Bx2PRCQQNg8sFMvfFI1H+y
+         JfEl3AMZGaKykFdusWLHF3BjXVHPz4SeQJ/7LD3Y+wfTzv/f13Yx4R7QJPRVeT0NgDU3
+         gZHBLi+X7v+ET4Z4ffVdi27RE8ZIstIugnj33vdVSGIXf7ScgzqEoFPgKJiu/VR486SH
+         x3arX7081G5sy0GXnTV42V/ALcEAvfifZC2A7MFSEadVM/B0HiRAG0dUgNAIUnp5+vtm
+         vbFw==
+X-Forwarded-Encrypted: i=1; AJvYcCWDgAD8EsuvCcKOhIa2S2Gg40aOdJfJddC+qsWdSGwSUB6AxRCsPBhIGzffLVs1yhW4li9VSoJgcZCGf7ywcg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YydaBYxtfaLymvgRFG6iTUETIlr7gm0P4S+yLJNRG/QFpTamFlK
+	GfCfIH+ctPfo5KLQeXT49rR4HijLUcVQYFMLFpZaH2kqHMefcB2rK3WqwEQKSJg4B1xsXzZFwvw
+	q
+X-Google-Smtp-Source: AGHT+IE3jIKp1LsMR7cNfJjwontG8p+Vo7dQ6rcRj2YQpKpztKUglDivYbVOWQlxSgzVuxQlXUEEiQ==
+X-Received: by 2002:adf:ae51:0:b0:374:c7f8:3d50 with SMTP id ffacd0b85a97d-378c2d588d5mr1389741f8f.58.1726130703593;
+        Thu, 12 Sep 2024 01:45:03 -0700 (PDT)
 Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42cb3cb6f74sm142629615e9.23.2024.09.12.01.43.42
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-378956de262sm13712489f8f.112.2024.09.12.01.45.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Sep 2024 01:43:42 -0700 (PDT)
-Date: Thu, 12 Sep 2024 11:43:39 +0300
+        Thu, 12 Sep 2024 01:45:03 -0700 (PDT)
+Date: Thu, 12 Sep 2024 11:44:59 +0300
 From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Jason-JH Lin =?utf-8?B?KOael+edv+elpSk=?= <Jason-JH.Lin@mediatek.com>
-Cc: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-Subject: Re: [bug report] drm/mediatek: Add mbox_free_channel in
- mtk_drm_crtc_destroy
-Message-ID: <b5c51c93-633f-4f6e-84f6-e409e729c7cf@stanley.mountain>
-References: <77b85cdc-ecfe-42c7-a3f3-a757566b6f5f@stanley.mountain>
- <fd3890987a56a01be8954f3d10d6e744918c62d7.camel@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	kernel-janitors@vger.kernel.org,
+	Jason-JH Lin =?utf-8?B?KOael+edv+elpSk=?= <Jason-JH.Lin@mediatek.com>
+Subject: [PATCH] drm/mediatek: Fix potential NULL dereference in
+ mtk_crtc_destroy()
+Message-ID: <cc537bd6-837f-4c85-a37b-1a007e268310@stanley.mountain>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <fd3890987a56a01be8954f3d10d6e744918c62d7.camel@mediatek.com>
+X-Mailer: git-send-email haha only kidding
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240912_014345_216295_AE12845E 
-X-CRM114-Status: GOOD (  17.23  )
+X-CRM114-CacheID: sfid-20240912_014505_368155_B7B36DBF 
+X-CRM114-Status: GOOD (  13.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,53 +97,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 12, 2024 at 07:56:27AM +0000, Jason-JH Lin (林睿祥) wrote:
-> Hi Dan,
-> 
-> Thanks for the bug report.
-> 
-> On Wed, 2024-09-11 at 14:02 +0300, Dan Carpenter wrote:
-> >  	 
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
-> >  Hello jason-jh.lin,
-> > 
-> > Commit 593b655f0523 ("drm/mediatek: Add mbox_free_channel in
-> > mtk_drm_crtc_destroy") from Oct 28, 2021 (linux-next), leads to the
-> > following Smatch static checker warning:
-> > 
-> 
-> It's actaully caused by this Commit d7c66b5fbc70 ("drm/mediatek: Use
-> cmdq_pkt_create() and cmdq_pkt_destroy()").
-> 
-> > drivers/gpu/drm/mediatek/mtk_crtc.c:132 mtk_crtc_destroy()
-> > warn: variable dereferenced before check 'mtk_crtc->cmdq_client.chan' 
-> > (see line 130)
-> > 
-> > drivers/gpu/drm/mediatek/mtk_crtc.c
-> >     123 static void mtk_crtc_destroy(struct drm_crtc *crtc)
-> >     124 {
-> >     125         struct mtk_crtc *mtk_crtc = to_mtk_crtc(crtc);
-> >     126         int i;
-> >     127 
-> >     128         mtk_mutex_put(mtk_crtc->mutex);
-> >     129 #if IS_REACHABLE(CONFIG_MTK_CMDQ)
-> >     130         cmdq_pkt_destroy(&mtk_crtc->cmdq_client, &mtk_crtc-
-> > >cmdq_handle);
-> >                                  ^^^^^^^^^^^^^^^^^^^^^^
-> > Dereferenced without checking.  We recently refactored these so the
-> > dereference
-> > is detectable by static analysis.
-> 
-> cmdq_client is a static variable in struct mtk_crtc, it's not a
-> pointer. Do we really need to check this?
-> 
+In mtk_crtc_create(), if the call to mbox_request_channel() fails then we
+set the "mtk_crtc->cmdq_client.chan" pointer to NULL.  In that situation,
+we do not call cmdq_pkt_create().
 
-Sorry, the bug report was a bit unclear.  The issue is
-"mtk_crtc->cmdq_client.chan", not "cmdq_client".  I've done this analysis now,
-and we do need to check for NULL.  I'll send a patch.
+During the cleanup, we need to check if the "mtk_crtc->cmdq_client.chan"
+is NULL first before calling cmdq_pkt_destroy().  Calling
+cmdq_pkt_destroy() is unnecessary if we didn't call cmdq_pkt_create() and
+it will result in a NULL pointer dereference.
 
-regards,
-dan carpenter
+Fixes: 7627122fd1c0 ("drm/mediatek: Add cmdq_handle in mtk_crtc")
+Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+---
+ drivers/gpu/drm/mediatek/mtk_crtc.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
+index 175b00e5a253..c15013792583 100644
+--- a/drivers/gpu/drm/mediatek/mtk_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
+@@ -127,9 +127,8 @@ static void mtk_crtc_destroy(struct drm_crtc *crtc)
+ 
+ 	mtk_mutex_put(mtk_crtc->mutex);
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+-	cmdq_pkt_destroy(&mtk_crtc->cmdq_client, &mtk_crtc->cmdq_handle);
+-
+ 	if (mtk_crtc->cmdq_client.chan) {
++		cmdq_pkt_destroy(&mtk_crtc->cmdq_client, &mtk_crtc->cmdq_handle);
+ 		mbox_free_channel(mtk_crtc->cmdq_client.chan);
+ 		mtk_crtc->cmdq_client.chan = NULL;
+ 	}
+-- 
+2.45.2
 
 
