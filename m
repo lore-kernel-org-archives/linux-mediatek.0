@@ -4,63 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88568FA375E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Sep 2024 16:13:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C994EFC6162
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Sep 2024 16:32:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lv+4IsocrOjFMIZaS9h9WDlmQOSAmmvI4M3bsPHaujs=; b=QDs5NPvlqN0sNaB4O55I4Rj9ty
-	ed9tDf7SjW/nAwVYikE9zYD6e6VUPE1jcKmuFRVQOEn6v+SfcmfLQZNCtqdYLD8TFdRyE0xeYHLj+
-	J7UM/xulXdhZjO19KjNZ1ZPml+veQQjGJhewCVcb6LrWgohskssOnaJ3bGqoTi0vT9o/QVPTiT692
-	TB5sUTH8zZTBxPLlPegTegEpX2C6xQLwFpZCz9jNdI+5MBsD5YV0kBttAt+IxA/0CBWPXJ9UCESga
-	r1rJQ56+fkLxAzNn5zyslAXZvMbHVmbdhflukzFsQ2aDg9SHZFvfBxJwVpV9oqoZdAa2WDnX/1s3b
-	5HUK1HCg==;
+	bh=5/b8q4BoSrQ3NlAvsKLlfGTvGmk5/ocjY5IDio7BDIk=; b=TALF4uwWG3FIraRU4X0/g9VfF2
+	kaQhhJwvWS2+XkGbVUYr7QWBk3OlON3dldaL6fFf1Vy0SeI+bsrRaLQqcAlRRoQFpOrIiyJBjdJPI
+	WOXmpNal2x04VBRWsGGL2y7JHc1ZluZO4ytyCiIjcgf0D8hJ/tsowmy+u5IbwkiNgkGbRiq05jCis
+	5Jn5ZE6ua97jISzii1Wwc6+WSkH6Llr7CkXYcZnnP1Y8SrkRKDJSPYDDnVY4ulkhoxNbcm1UvOSz/
+	rQ4U0lFzuIf4szielnLMdB18DGJO06O3SVmPZerbpk5jzRgLwwAVuOnQcrc1puD/Ls6ZDV8LQ859g
+	agFOCFdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sp8uv-0000000GWQ0-0H1G;
-	Fri, 13 Sep 2024 16:13:05 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sp9DU-0000000GYtL-11OA;
+	Fri, 13 Sep 2024 16:32:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sp8tp-0000000GWGx-0mmD;
-	Fri, 13 Sep 2024 16:11:58 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id D07805C59BE;
-	Fri, 13 Sep 2024 16:11:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF506C4CEC5;
-	Fri, 13 Sep 2024 16:11:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1726243916;
-	bh=jdzxRMKd10hz0CycLMLXK8JpPArhP0NbkFeexl+6qUQ=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=Tq9tG5HPoD4FMiTGhwiRgWdiqHJhFr1TzGcKQxuVTnECCnxdkeEHTVk5yqPe1GUvY
-	 FD8MjZmeBDwPuYP4l12NwyBd9HPWO78n3tn/pVF2tk3qdd91uLCBwmuNBE7/4rDrdB
-	 874Fo5WFHF70886PXH9rqJ6EkkEvGc+XF4YhojdouO31IplQABkuJCutd7kLDu94oI
-	 iOGUAYuQMK2sV+c4mdRcXNf9EsO8cvSFpRkFoh5YQWpPsxkaeAzxDABK/p9RaDIPsH
-	 dG/JJRGPy94SpNGxDnro4tkmE+QXCwenMchIi8gXje86J+eXsfe3BipJ/knXoUEv+m
-	 ozAxbmBOZJBkw==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- =?utf-8?q?Andr=C3=A9_Draszik?= <andre.draszik@linaro.org>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20240913-regulator-typos-v1-1-92781c93f638@linaro.org>
-References: <20240913-regulator-typos-v1-1-92781c93f638@linaro.org>
-Subject: Re: [PATCH] regulator: update some comments ([gs]et_voltage_vsel
- vs [gs]et_voltage_sel)
-Message-Id: <172624391451.49323.15305955333400059916.b4-ty@kernel.org>
-Date: Fri, 13 Sep 2024 17:11:54 +0100
+	id 1sp9CO-0000000GYoS-49GI;
+	Fri, 13 Sep 2024 16:31:10 +0000
+X-UUID: 91343c4e71ed11efba0aef63c0775dbf-20240913
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=5/b8q4BoSrQ3NlAvsKLlfGTvGmk5/ocjY5IDio7BDIk=;
+	b=NHnBJTquKlPLrnfIzK6mPmMknXBJBhSWyH7Jg3GU1n3lOvXOyjSPbc5Tbdj2Oosvb1Lwf1nu+yUIaa6e3pqJjc16Swlf7Rli+aL5y6nijsJx6p6Mjj5o0gOpsTFQmo8HBinSCxz6/PNd+QWzhYQb5IRE14fX37lcxaLcXu5piq0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:ece4b568-fe76-4ae3-b8c0-816127a2c5e7,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:c456efbf-d7af-4351-93aa-42531abf0c7b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|-5,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 91343c4e71ed11efba0aef63c0775dbf-20240913
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1976670684; Fri, 13 Sep 2024 09:31:02 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Sat, 14 Sep 2024 00:30:25 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Sat, 14 Sep 2024 00:29:53 +0800
+Message-ID: <d77b6a8c-f499-7980-868d-7717046ec3e3@mediatek.com>
+Date: Sat, 14 Sep 2024 00:29:48 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.15-dev-99b12
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH v2 3/7] dt-bindings: rtc: mt6397: merge to MFD
+ mediatek,mt6397 DT schema
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>
+CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski
+	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	<linux-leds@vger.kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown
+	<broonie@kernel.org>, Sebastian Reichel <sre@kernel.org>, Pavel Machek
+	<pavel@ucw.cz>, Sean Wang <sean.wang@mediatek.com>, Lee Jones
+	<lee@kernel.org>, Alexandre Mergnat <amergnat@baylibre.com>, Flora Fu
+	<flora.fu@mediatek.com>, Bear Wang <bear.wang@mediatek.com>, Pablo Sun
+	<pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, Sen Chu
+	<sen.chu@mediatek.com>, Chris-qj chen <chris-qj.chen@mediatek.com>, MediaTek
+ Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-pm@vger.kernel.org>,
+	<linux-rtc@vger.kernel.org>, <linux-sound@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, Chen-Yu Tsai <wenst@chromium.org>
+References: <20240830110732.30080-1-macpaul.lin@mediatek.com>
+ <20240830110732.30080-3-macpaul.lin@mediatek.com>
+ <20240830153437.GB4175444-robh@kernel.org>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <20240830153437.GB4175444-robh@kernel.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240913_091157_317032_88FCC22A 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20240913_093109_053776_7C00EE9D 
+X-CRM114-Status: GOOD (  14.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,42 +101,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 13 Sep 2024 12:43:58 +0100, André Draszik wrote:
-> Some comments here are referring to a non-existent
-> regulator_ops::get_voltage_vsel() where ::get_voltage_sel() is meant,
-> and similar for ::set_voltage_vsel() / ::set_voltage_sel().
+
+On 8/30/24 23:34, Rob Herring wrote:
+> 	
 > 
-> Update the comments.
+> External email : Please do not click links or open attachments until you 
+> have verified the sender or the content.
 > 
+> On Fri, Aug 30, 2024 at 07:07:28PM +0800, Macpaul Lin wrote:
+>> Convert rtc-mt6397.txt be compatible with the DT schema.
+>> Since this is a simple RTC device node, merge it into parent
+>> mediatek,mt6397.yaml. Subsequently, remove rtc-mt6397.txt with a
+>> separate patch.
 > 
-> [...]
+> This doesn't match what the patch does. You can just squash this into
+> the MFD patch where you add the schema.
+> 
 
-Applied to
+[snip]
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+Will squash the other patches for removing text format files in to the 
+MFD patch in next (v3) version. Thanks!
 
-Thanks!
-
-[1/1] regulator: update some comments ([gs]et_voltage_vsel vs [gs]et_voltage_sel)
-      commit: fb9ce84a01582c9d67dc51d5330136ea684172ef
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+Regards,
+Macpaul Lin
 
