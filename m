@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5675FC6181
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Sep 2024 21:38:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64195FC6172
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Sep 2024 21:40:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wfk0i+iHLhvJ3k9z3I3WUDqMwnqUv2LP4qomLd8DLTY=; b=ochQoa7zDbGZMN/LnU2aFmCA8r
-	ZrryLBRuhQce26y4RAlxP9OvOLNZ/vRJFHK4ws152zavq9NzWOok/oOUZU4DB+vi3/jg/+Gu+Lsvb
-	jXkkUHUv8SKiZRZTc58OtJaBbJMbfpNcsEQpqA7F6QU9pVwG+DppBcOEQbw0Xuy8Y/i7/5Obt2DOP
-	gjaKgtzC/aOIFXpoSZegha3F2NoO1b84jOLxP5DFQWAUFIcFIx5wh8FwqE/gwiSk1zfmGqgGMbOjc
-	hNkJztmi7qbqar0/OXc2wFnT5oEXPZReGq4aQdCcX7znyuOOHyunAcTsF+Dq0e3WEwKi7mI+MXh0s
-	SLOlpdQA==;
+	bh=e56nDrFieiCTBDgxXmT/FytGRRsnLD6iRgK6+csFd+4=; b=K+/QQkn2k9mRj8VR/Fv6KgxbhH
+	IVFBZ14M3NjxO8V29+Gf7FOAmaAJBWXymke1RTIONEPgKnkN7FJW5082hSh8pgnyVaqieYZ3ndYUy
+	q/wybIbPZ4OSz9UwBYnwACQEOHzZKj47SVArP1W92k3Qae62kX/kyaK34EA+zLF1Cfma/sttesOtL
+	MI0jhecHdfPOoCye1cYEmGZ6CwTGEz+Nd4mlCoaxmKMIjsV9SerLMWj/fiM+GxrQeZNPSXErZhGbH
+	EDQ57W47KQLznon2j46b62VCvbxz3aL6kR9CscZt2z3Kz2bAAgn8AqML4DqLUF+b5Bbc8e6HMxq08
+	sITs48cg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1spDzx-0000000HBAl-0nX8;
-	Fri, 13 Sep 2024 21:38:37 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1spE1r-0000000HBWY-3sWb;
+	Fri, 13 Sep 2024 21:40:35 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1spDyr-0000000HB59-3bqK;
-	Fri, 13 Sep 2024 21:37:31 +0000
+	id 1spE0i-0000000HBJa-3sFV;
+	Fri, 13 Sep 2024 21:39:26 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 13DA5A45A2A;
-	Fri, 13 Sep 2024 21:37:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E9EAAC4CED1;
-	Fri, 13 Sep 2024 21:37:27 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 56241A416FF;
+	Fri, 13 Sep 2024 21:39:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B20D4C4AF09;
+	Fri, 13 Sep 2024 21:39:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1726263447;
-	bh=manW/XLXA8gVmKWJwstgFB2hSWZWCj5W3+3ArJJtYCg=;
+	s=k20201202; t=1726263563;
+	bh=29lldcaIiks9/LfCKap1Yktuq2JC3H3MvPcdHX/euBs=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=WmHtDYoRSLlStBr4+JqA3TLmkSnIto885ESxtd3uz4a9nOn2Dj0z+8Hof6ptOTjI7
-	 9m8nWQryaXnu6DnH/3uWVEnx30IdftMZNPr1tiJ42oUowZtob63ACpkc9yO6EFqMOS
-	 +BllsiEAgEnvh3ABvMuyTVjLF7h0btiqfOeTAW10y1VPe1ac4j9BzOg83TwR84yEES
-	 C+eZikkDPtBRpZd35Onmbhw3WBqUa6faarQAoksnG2KlTDMX+CYORgLuw6C0iJYIOv
-	 apvuyhjH0XIg8qEY7hdnGE6vcoiX2izuA+JyiC5uyN3w+JRHZLMUPMNh3YmaoAkJFF
-	 l5j37iToF4qJQ==
-Received: by mail-lj1-f179.google.com with SMTP id 38308e7fff4ca-2f78b28ddb6so22852981fa.0;
-        Fri, 13 Sep 2024 14:37:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUgG1miP4wbX9JeeXYCODD9cF4JgabkcDrb1Rh3244QiXkBfbTBTevb87ZZ3X5EzJaCJBuViCe1TYFaAwGUYq0=@lists.infradead.org, AJvYcCVlvPQUywqi8jKho3ir0gy+HU41P7QjyWAwfRLJCjUh3VzOrQvr/Kt/HcjSM05F90k97/tab/B7cRTojgnZnySi@lists.infradead.org
-X-Gm-Message-State: AOJu0YzaSrqZKxKA5BYPvEOjtGlHs2gfh7R6tjVhdj+bUum6ChskLhPa
-	fjEhbH3MepIzyTfFvs5sLPuJUI3biQryww9V2EKpSUrFLNhURY7q76aCbTMnBsTc6zljNDesL3T
-	K7plm2t67hnwPWhbfG1GKApx4HA==
-X-Google-Smtp-Source: AGHT+IF3i2ra1hDCoZJWXdELHFse3nu1BoApDVkgvdYBd1QEEsCBiERlIo516YbDjDMsGqLm6EgWpki4O1VGoMBcV4M=
-X-Received: by 2002:a05:6512:b96:b0:52c:e133:7b2e with SMTP id
- 2adb3069b0e04-53678fc9930mr5368033e87.35.1726263446242; Fri, 13 Sep 2024
- 14:37:26 -0700 (PDT)
+	b=TnskXcutylpvBl9psxUrUfUCRPAzJGzmd8y9uJnn49340vS09VnNflnBAhFARrcMn
+	 IeSpHw6/nWrPg1N6jtMkHHEJpBw96cHY8PioWhedzjHpsV3dwmsC2vTS8f9vlANP5p
+	 +HoUS4oiP2V76PpFhUocCnKBbWUPVpSkWJAOgahqgRMzQ9pkJy/TUgljsiqiOHeWj/
+	 fu6o5gKxrN51JtIBvAdl8ErSWEHkk/S9RiuQ6CZapIx8/DrqfSYzBAACLCSsdgblPm
+	 6TFJvXE/t+34KGDYtsxzIHLLGK5ePjSCFibY6KWREM9KQP4r5wyoCIO35Q1RDacKa+
+	 bfRvrVFijIrcg==
+Received: by mail-lf1-f53.google.com with SMTP id 2adb3069b0e04-53660856a21so1380995e87.2;
+        Fri, 13 Sep 2024 14:39:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCWEf9yJv/OTMShbtL/i+I4WUB4QAJQ47jJ8yin3d4Yu86Byfygn09S5aqsIcvrCGFNfVSKfC6ensifq17eBV/g8@lists.infradead.org, AJvYcCXd0mGDjeFEwphDjOLxmecEcMPIcDrPsAQaSpUIwNeOFavUq+n6MuC4mMNd1Bmqaq3TpcMFc6Vlne0h8dQwABo=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzDoyXaHlCUmvD2EGfkC4XukMsUP2EFo7bVL+fKGbTAv2/IRu9N
+	hGTZeJ3GHTqkwmal074QY8q9aA6uaMqzap/GSX1GAobAPjcdcDqN+KxoW1Dlm174nj2HNdseg3f
+	nv94Hep4x3NSPweY2yu4+rRNFlA==
+X-Google-Smtp-Source: AGHT+IHja0EdX+FTr55htGcN7Jpd0i8VmeMa2FJm1kpulhqYl5C0BU8PCxBt6UcQdsqHXvue4VOMzQdKb8SnPRakjGM=
+X-Received: by 2002:a05:6512:2393:b0:52e:98f6:c21f with SMTP id
+ 2adb3069b0e04-5367fec3915mr2947015e87.16.1726263562116; Fri, 13 Sep 2024
+ 14:39:22 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240912144430.3161717-1-treapking@chromium.org> <20240912144430.3161717-3-treapking@chromium.org>
-In-Reply-To: <20240912144430.3161717-3-treapking@chromium.org>
+References: <20240912144430.3161717-1-treapking@chromium.org> <20240912144430.3161717-2-treapking@chromium.org>
+In-Reply-To: <20240912144430.3161717-2-treapking@chromium.org>
 From: Rob Herring <robh@kernel.org>
-Date: Fri, 13 Sep 2024 16:37:14 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqJngFLbNtT3m--xi5nNt9o7M=se8Qkhf20TxRCj-G=6dA@mail.gmail.com>
-Message-ID: <CAL_JsqJngFLbNtT3m--xi5nNt9o7M=se8Qkhf20TxRCj-G=6dA@mail.gmail.com>
-Subject: Re: [PATCH 2/2] arm64: dts: mt8183: Add port node to dpi node
+Date: Fri, 13 Sep 2024 16:39:10 -0500
+X-Gmail-Original-Message-ID: <CAL_JsqLhnuqASgOab7RjdrUxGs4ags8CutL0K9Vr_57HmL+TpQ@mail.gmail.com>
+Message-ID: <CAL_JsqLhnuqASgOab7RjdrUxGs4ags8CutL0K9Vr_57HmL+TpQ@mail.gmail.com>
+Subject: Re: [PATCH 1/2] dt-bindings: display: mediatek: dpi: Add
+ power-domains to the bindings
 To: Pin-yen Lin <treapking@chromium.org>
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
@@ -67,12 +68,12 @@ Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.
 	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
 	devicetree@vger.kernel.org, Fabien Parent <fparent@baylibre.com>, 
 	Jitao shi <jitao.shi@mediatek.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, kernel test robot <lkp@intel.com>
+	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240913_143730_044186_3245317F 
-X-CRM114-Status: GOOD (  15.36  )
+X-CRM114-CacheID: sfid-20240913_143925_119844_4858F333 
+X-CRM114-Status: GOOD (  14.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,38 +91,36 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Thu, Sep 12, 2024 at 9:44=E2=80=AFAM Pin-yen Lin <treapking@chromium.org=
 > wrote:
 >
-> Add the port node to fix the binding schema check.
-
-The dsi node has the same issue.
-
-> Fixes: 009d855a26fd ("arm64: dts: mt8183: add dpi node to mt8183")
-> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-> Reported-by: kernel test robot <lkp@intel.com>
-> Closes: https://lore.kernel.org/oe-kbuild-all/202409110843.Hm5W9upr-lkp@i=
-ntel.com/
+> The power-domains property is used by most DT nodes using mediatek,dpi
+> bindings. Add this to the bindings to fix the schema check error.
 >
+> Signed-off-by: Pin-yen Lin <treapking@chromium.org>
 > ---
 >
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 4 ++++
->  1 file changed, 4 insertions(+)
+>  .../bindings/display/mediatek/mediatek,dpi.yaml           | 8 ++++++++
+>  1 file changed, 8 insertions(+)
 >
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/d=
-ts/mediatek/mt8183.dtsi
-> index 266441e999f2..0a6578aacf82 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -1845,6 +1845,10 @@ dpi0: dpi@14015000 {
->                                  <&mmsys CLK_MM_DPI_MM>,
->                                  <&apmixedsys CLK_APMIXED_TVDPLL>;
->                         clock-names =3D "pixel", "engine", "pll";
-> +
-> +                       port {
-> +                               dpi_out: endpoint { };
-> +                       };
->                 };
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.=
+yaml
+> index 5ca7679d5427..7e0bb88f5856 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam=
+l
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam=
+l
+> @@ -42,6 +42,12 @@ properties:
+>    interrupts:
+>      maxItems: 1
 >
->                 mutex: mutex@14016000 {
-> --
-> 2.46.0.662.g92d0881bb0-goog
->
+> +  power-domains:
+> +    description:
+> +      A phandle and PM domain specifier as defined by bindings
+> +      of the power controller specified by phandle. See
+> +      Documentation/devicetree/bindings/power/power-domain.yaml for deta=
+ils.
+
+power-domains was already added recently, but mt8183 was not included.
+So you'll need to adjust the if/then schema for it.
+
+Rob
 
