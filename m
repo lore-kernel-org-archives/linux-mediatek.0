@@ -4,82 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E4AEFA3736
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Sep 2024 09:38:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1DCCFA3740
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Sep 2024 10:26:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g4RqOsNL6IvtloUXZrR1fdZjlsz7yR52eaJwMIl6Ajk=; b=e4XhNI6O8a0MDOC4MdDEMiICaP
-	uspeX4dpObqIpaQRNkL7TtX3wIRhdHGdwm916IHs8OZrrV02ROK2ZOv9Dc4tCtMT/zFx/tlirXNr4
-	nGJ5DDr2DBcUpBxPxS5xAlBcwA5BOnA5CheZqbDMMQkF562313cEwqjeEYcM5NLdEIIr7jXPEUbaT
-	hP/KoqSEDO5sXP5k509AyYETvrrmjBCUgDYy63uQSpe/O0mvcSkAW93IMgMivxHMcYEVCMayQR9Hb
-	X5plh8xkeMz9gXQhoOo8OE20+cJ9Cdc2Y1op/SMdpMqXXo7gOfifTrlxQXSS5xPRzZR7n+6mBwUAa
-	ZobQ5q6w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mv2yIWBbfjFcYUbFMFbENVFXPZFrSHsv8WArrS8dKzs=; b=D7GIvCy0e+ClBzm0YD20ThIn57
+	pUhRd2+hh5aojI3SrK8Pvip559h1YkKLmA38EpLQZkiRWqDBtthxHzMe8eRdH1hm2KsKfcKAl7Ab+
+	yqy8AxNzERGdv2yUOzUOSoGZbfD5XoDx8ELeNA4TL9G3iEF8riz+sghN0cIjJM6cJwykQOBQP3KXO
+	sR/wuQw4fiCwmE65sp0tP6cOy7OOZzFq2HZpJRBjUbRzV3QwbyJQebruzFNRjpELlAqBPCwCbYN0I
+	+89NKfmoekfu9bAC0lIb763IFs+uJbSPIoBa1EjeoaNZIQk+VWRU8IotoX4vufeQOsD4K/+bEPd90
+	pEJTckzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sp2kf-0000000FUrd-0gD1;
-	Fri, 13 Sep 2024 09:38:05 +0000
-Received: from szxga04-in.huawei.com ([45.249.212.190])
+	id 1sp3Vj-0000000FbWG-1v2l;
+	Fri, 13 Sep 2024 10:26:43 +0000
+Received: from mgamail.intel.com ([192.198.163.15])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sp2ie-0000000FUZD-0SQu;
-	Fri, 13 Sep 2024 09:36:02 +0000
-Received: from mail.maildlp.com (unknown [172.19.162.112])
-	by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4X4q0m4b9zz2CpYn;
-	Fri, 13 Sep 2024 17:35:20 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
-	by mail.maildlp.com (Postfix) with ESMTPS id 79E181402CE;
-	Fri, 13 Sep 2024 17:35:52 +0800 (CST)
-Received: from [10.67.120.129] (10.67.120.129) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Fri, 13 Sep 2024 17:35:51 +0800
-Message-ID: <00c41a5b-6a5b-4ee1-b0e2-eae819e3cf3b@huawei.com>
-Date: Fri, 13 Sep 2024 17:35:51 +0800
+	id 1sp3Ue-0000000FbR5-24pD;
+	Fri, 13 Sep 2024 10:25:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1726223136; x=1757759136;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=lt83t51ZsHqvSfIdV0RclKGYyXqJEVdfzYc8IAcGfMI=;
+  b=Y6mNeWg4b2frFbIDRkz36c+5xclQpx4mduw7t7qHiu38zlcrRwbWdZet
+   uC9qUG2Yf2rJE+lOpAkx6OS8imtIl08q8VkBuIbrMnsQTWe+ZoAbCQUBl
+   OhxJl2geY3wUCE6yYPSVK2GScDNkjRrQ8jBtSVwan4ygHTSY6kpNvUaIO
+   /V3QSK/T/qKet1L/tame1oy6ycjH9yYpM3vh9HdyF5E5DtTMlNrYfiXmB
+   2LjdKu9Pk6JI2Uo/v1c8dDm2HY6OZ5sja3YuqI9s0pKBtBw9NWIfGQVsW
+   bS+22pjO0gIA1cFeg1o2Nf/BgZjyc7JvPygllPOvsxhTxitJxifUEIQml
+   A==;
+X-CSE-ConnectionGUID: JM8Z/uWAT3mWv9qWrd7JeA==
+X-CSE-MsgGUID: EBz+4qpTTOiNdo/adJHxfg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11193"; a="25271733"
+X-IronPort-AV: E=Sophos;i="6.10,225,1719903600"; 
+   d="scan'208";a="25271733"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Sep 2024 03:25:32 -0700
+X-CSE-ConnectionGUID: 8QVI6aEsTCe+hCX64HmrqQ==
+X-CSE-MsgGUID: EP8F7RfqRk6pAL0aOhSVoQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,225,1719903600"; 
+   d="scan'208";a="68096162"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by fmviesa008.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Sep 2024 03:25:28 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.98)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1sp3UT-00000008GAC-2BYS;
+	Fri, 13 Sep 2024 13:25:25 +0300
+Date: Fri, 13 Sep 2024 13:25:25 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wolfram Sang <wsa@kernel.org>, Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>, Mark Brown <broonie@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Douglas Anderson <dianders@chromium.org>,
+	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
+	linux-i2c@vger.kernel.org
+Subject: Re: [PATCH v7 06/10] i2c: Introduce OF component probe function
+Message-ID: <ZuQTFTNTBLCziD05@smile.fi.intel.com>
+References: <20240911072751.365361-1-wenst@chromium.org>
+ <20240911072751.365361-7-wenst@chromium.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 2/2] page_pool: fix IOMMU crash when driver has already
- unbound
-To: Mina Almasry <almasrymina@google.com>
-CC: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>,
-	<liuyonglong@huawei.com>, <fanghaiqing@huawei.com>, Robin Murphy
-	<robin.murphy@arm.com>, Alexander Duyck <alexander.duyck@gmail.com>, IOMMU
-	<iommu@lists.linux.dev>, Wei Fang <wei.fang@nxp.com>, Shenwei Wang
-	<shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, Eric Dumazet
-	<edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek
- Kitszel <przemyslaw.kitszel@intel.com>, Alexander Lobakin
-	<aleksander.lobakin@intel.com>, Alexei Starovoitov <ast@kernel.org>, Daniel
- Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
-	John Fastabend <john.fastabend@gmail.com>, Saeed Mahameed
-	<saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Tariq Toukan
-	<tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
-	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Kalle Valo
-	<kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andrew
- Morton <akpm@linux-foundation.org>, Ilias Apalodimas
-	<ilias.apalodimas@linaro.org>, <imx@lists.linux.dev>,
-	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<intel-wired-lan@lists.osuosl.org>, <bpf@vger.kernel.org>,
-	<linux-rdma@vger.kernel.org>, <linux-wireless@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-mm@kvack.org>
-References: <20240912124514.2329991-1-linyunsheng@huawei.com>
- <20240912124514.2329991-3-linyunsheng@huawei.com>
- <CAHS8izPc8fy08mL1RJtnxiOvTx=Uk037Q5SKobC80jQocEKMJQ@mail.gmail.com>
-Content-Language: en-US
-From: Yunsheng Lin <linyunsheng@huawei.com>
-In-Reply-To: <CAHS8izPc8fy08mL1RJtnxiOvTx=Uk037Q5SKobC80jQocEKMJQ@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.67.120.129]
-X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
- dggpemf200006.china.huawei.com (7.185.36.61)
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240911072751.365361-7-wenst@chromium.org>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240913_023600_621944_BAFAAC54 
-X-CRM114-Status: GOOD (  34.99  )
+X-CRM114-CacheID: sfid-20240913_032536_579729_8CDA222B 
+X-CRM114-Status: GOOD (  44.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,109 +98,252 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2024/9/12 22:25, Mina Almasry wrote:
-> On Thu, Sep 12, 2024 at 5:51 AM Yunsheng Lin <linyunsheng@huawei.com> wrote:
->>
->> Networking driver with page_pool support may hand over page
->> still with dma mapping to network stack and try to reuse that
->> page after network stack is done with it and passes it back
->> to page_pool to avoid the penalty of dma mapping/unmapping.
->> With all the caching in the network stack, some pages may be
->> held in the network stack without returning to the page_pool
->> soon enough, and with VF disable causing the driver unbound,
->> the page_pool does not stop the driver from doing it's
->> unbounding work, instead page_pool uses workqueue to check
->> if there is some pages coming back from the network stack
->> periodically, if there is any, it will do the dma unmmapping
->> related cleanup work.
->>
->> As mentioned in [1], attempting DMA unmaps after the driver
->> has already unbound may leak resources or at worst corrupt
->> memory. Fundamentally, the page pool code cannot allow DMA
->> mappings to outlive the driver they belong to.
->>
->> Currently it seems there are at least two cases that the page
->> is not released fast enough causing dma unmmapping done after
->> driver has already unbound:
->> 1. ipv4 packet defragmentation timeout: this seems to cause
->>    delay up to 30 secs:
->>
->> 2. skb_defer_free_flush(): this may cause infinite delay if
->>    there is no triggering for net_rx_action().
->>
->> In order not to do the dma unmmapping after driver has already
->> unbound and stall the unloading of the networking driver, add
->> the pool->items array to record all the pages including the ones
->> which are handed over to network stack, so the page_pool can
->> do the dma unmmapping for those pages when page_pool_destroy()
->> is called.
->>
+On Wed, Sep 11, 2024 at 03:27:44PM +0800, Chen-Yu Tsai wrote:
+> Some devices are designed and manufactured with some components having
+> multiple drop-in replacement options. These components are often
+> connected to the mainboard via ribbon cables, having the same signals
+> and pin assignments across all options. These may include the display
+> panel and touchscreen on laptops and tablets, and the trackpad on
+> laptops. Sometimes which component option is used in a particular device
+> can be detected by some firmware provided identifier, other times that
+> information is not available, and the kernel has to try to probe each
+> device.
 > 
-> The approach in this patch is a bit complicated. I wonder if there is
-> something simpler that we can do. From reading the thread, it seems
-> the issue is that in __page_pool_release_page_dma we're calling
-> dma_unmap_page_attrs() on a pool->p.dev that has been deleted via
-> device_del, right?
+> This change attempts to make the "probe each device" case cleaner. The
+> current approach is to have all options added and enabled in the device
+> tree. The kernel would then bind each device and run each driver's probe
+> function. This works, but has been broken before due to the introduction
+> of asynchronous probing, causing multiple instances requesting "shared"
+> resources, such as pinmuxes, GPIO pins, interrupt lines, at the same
+> time, with only one instance succeeding. Work arounds for these include
+> moving the pinmux to the parent I2C controller, using GPIO hogs or
+> pinmux settings to keep the GPIO pins in some fixed configuration, and
+> requesting the interrupt line very late. Such configurations can be seen
+> on the MT8183 Krane Chromebook tablets, and the Qualcomm sc8280xp-based
+> Lenovo Thinkpad 13S.
 > 
-> Why not consider pool->p.dev unusable if pool->destroy_cnt > 0? I.e.
-> in __page_pool_release_page_dma, we can skip dma_unmap_page_attrs() if
-> destry_cnt > 0?
-
-The skipping is already done for __dma_sync_single_for_device() in this
-patch, but not for dma_unmap_page_attrs(), see the clearing of dma_sync
-in page_pool_destroy().
-
+> Instead of this delicate dance between drivers and device tree quirks,
+> this change introduces a simple I2C component probe. function For a
+> given class of devices on the same I2C bus, it will go through all of
+> them, doing a simple I2C read transfer and see which one of them responds.
+> It will then enable the device that responds.
 > 
-> More generally, probably any use of pool->p.dev may be invalid if
-> page_pool_destroy has been called. The call sites can be scrubbed for
-> latent bugs.
+> This requires some minor modifications in the existing device tree. The
+> status for all the device nodes for the component options must be set
+> to "failed-needs-probe". This makes it clear that some mechanism is
+> needed to enable one of them, and also prevents the prober and device
+> drivers running at the same time.
 
-As mentioned in commit log, attempting DMA unmaps after the driver has
-already unbound may leak resources or at worst corrupt memory.
-The skipping only avoid corrupting memory, but not leaking resources, as
-there may be bounce buffer or iova resources before the dma mapping as my
-understanding.
+...
 
-And when page_pool_destroy() is called, there is currently no way to
-tell if the device is going to be invalid or not.
+> +static int i2c_of_probe_enable_node(struct device *dev, struct device_node *node)
+> +{
+> +	int ret;
 
-> 
-> The hard part is handling the concurrency. I'm not so sure we can fix
-> this without introducing some synchronization between the
-> page_pool_destroy seeing the device go away and the code paths using
-> the device. Are these being called from the fast paths? Jespers
-> benchmark can tell for sure if there is any impact on the fast path.
+> +	dev_info(dev, "Enabling %pOF\n", node);
 
-It depends on what your definition of fast path here, there are three
-kinds of fast path for page pool as my understanding.
+Is it important to be on INFO level?
 
-For the first and second fast path, the synchronization cost is the
-rcu read lock overhead introduced in patch 1.
+> +	struct of_changeset *ocs __free(kfree) = kzalloc(sizeof(*ocs), GFP_KERNEL);
+> +	if (!ocs)
+> +		return -ENOMEM;
+> +
+> +	of_changeset_init(ocs);
+> +	ret = of_changeset_update_prop_string(ocs, node, "status", "okay");
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = of_changeset_apply(ocs);
+> +	if (ret) {
+> +		/* ocs needs to be explicitly cleaned up before being freed. */
+> +		of_changeset_destroy(ocs);
+> +	} else {
+> +		/*
+> +		 * ocs is intentionally kept around as it needs to
+> +		 * exist as long as the change is applied.
+> +		 */
+> +		void *ptr __always_unused = no_free_ptr(ocs);
+> +	}
+> +
+> +	return ret;
+> +}
 
-For the third fast path when we need to refill from or flush to the
-page allocator, the added overhead is the page_pool_item_add() and
-page_pool_item_del() calling as my understanding.
+...
 
-Will provide the performance data in the next version.
+> +int i2c_of_probe_component(struct device *dev, const struct i2c_of_probe_cfg *cfg, void *ctx)
+> +{
+> +	const struct i2c_of_probe_ops *ops;
+> +	const char *type;
+> +	struct device_node *i2c_node;
+> +	struct i2c_adapter *i2c;
+> +	int ret;
+> +
+> +	if (!cfg)
+> +		return -EINVAL;
+> +
+> +	ops = cfg->ops ?: &i2c_of_probe_dummy_ops;
+> +	type = cfg->type;
+> +
+> +	i2c_node = i2c_of_probe_get_i2c_node(dev, type);
 
-> 
->> Note, the devmem patchset seems to make the bug harder to fix
->> and to backport too, this patch does not consider fixing the
->> case for devmem yet.
->>
-> 
-> FWIW from a quick look I did not see anything in this patch that is
-> extremely hard to port to netmem. AFAICT the issue is that you skipped
-> changing page_pool to page_pool_items in net_iov. Once that is done, I
-> think the rest should be straightforward.
 
-Does page_pool_item_uninit() need to handle 'netmem' case?
+	struct device_node *i2c_node __free(of_node_put) =
+		i2c_...;
 
-How does the devmem handle the case net_iov being cached in network stack
-when the driver has already unbound? I am supposing there is a device for
-dma_buf_unmap_attachment_unlocked(), and is it possible that the device
-become invalid too when the driver has unbound? If yes, doesn't it have a
-similar problem as the case of normal page?
+> +	if (IS_ERR(i2c_node))
+> +		return PTR_ERR(i2c_node);
+> +
+> +	for_each_child_of_node_with_prefix(i2c_node, node, type) {
+> +		if (!of_device_is_available(node))
+> +			continue;
+> +
+> +		/*
+> +		 * Device tree has component already enabled. Either the
+> +		 * device tree isn't supported or we already probed once.
+> +		 */
+> +		ret = 0;
 
-> 
+Shouldn't you drop reference count for "node"? (See also below)
+
+> +		goto out_put_i2c_node;
+> +	}
+> +
+> +	i2c = of_get_i2c_adapter_by_node(i2c_node);
+> +	if (!i2c) {
+> +		ret = dev_err_probe(dev, -EPROBE_DEFER, "Couldn't get I2C adapter\n");
+> +		goto out_put_i2c_node;
+> +	}
+> +
+> +	/* Grab resources */
+> +	ret = 0;
+> +	if (ops->get_resources)
+> +		ret = ops->get_resources(dev, i2c_node, ctx);
+> +	if (ret)
+> +		goto out_put_i2c_adapter;
+> +
+> +	/* Enable resources */
+> +	if (ops->enable)
+> +		ret = ops->enable(dev, ctx);
+> +	if (ret)
+> +		goto out_release_resources;
+> +
+> +	ret = 0;
+> +	for_each_child_of_node_with_prefix(i2c_node, node, type) {
+> +		union i2c_smbus_data data;
+> +		u32 addr;
+> +
+> +		if (of_property_read_u32(node, "reg", &addr))
+> +			continue;
+> +		if (i2c_smbus_xfer(i2c, addr, 0, I2C_SMBUS_READ, 0, I2C_SMBUS_BYTE, &data) < 0)
+> +			continue;
+> +
+> +		/* Found a device that is responding */
+> +		if (ops->free_resources_early)
+> +			ops->free_resources_early(ctx);
+> +		ret = i2c_of_probe_enable_node(dev, node);
+
+Hmm... Is "node" reference count left bumped up for a reason?
+
+> +		break;
+> +	}
+> +
+> +	if (ops->cleanup)
+> +		ops->cleanup(dev, ctx);
+> +out_release_resources:
+> +	if (ops->free_resources_late)
+> +		ops->free_resources_late(ctx);
+> +out_put_i2c_adapter:
+> +	i2c_put_adapter(i2c);
+> +out_put_i2c_node:
+> +	of_node_put(i2c_node);
+> +
+> +	return ret;
+> +}
+
+...
+
+> +/*
+> + * i2c-of-prober.h - definitions for the Linux I2C OF component prober
+
+Please avoid putting filenames inside files. In the possible future event of
+file renaming this may become a burden and sometimes even forgotten.
+
+> + * Copyright (C) 2024 Google LLC
+> + */
+> +
+> +#ifndef _LINUX_I2C_OF_PROBER_H
+> +#define _LINUX_I2C_OF_PROBER_H
+
+> +#if IS_ENABLED(CONFIG_OF_DYNAMIC)
+
+Do you really need to hide data types with this? Wouldn't be enough to hide
+APIs only?
+
+> +struct device;
+> +struct device_node;
+> +
+> +/**
+> + * struct i2c_of_probe_ops - I2C OF component prober callbacks
+> + *
+> + * A set of callbacks to be used by i2c_of_probe_component().
+> + *
+> + * All callbacks are optional. Callbacks are called only once per run, and are
+> + * used in the order they are defined in this structure.
+> + *
+> + * All callbacks that have return values shall return %0 on success,
+> + * or a negative error number on failure.
+> + *
+> + * The @dev parameter passed to the callbacks is the same as @dev passed to
+> + * i2c_of_probe_component(). It should only be used for dev_printk() calls
+> + * and nothing else, especially not managed device resource (devres) APIs.
+> + */
+> +struct i2c_of_probe_ops {
+> +	/** @get_resources: Retrieve resources for components. */
+> +	int (*get_resources)(struct device *dev, struct device_node *bus_node, void *data);
+> +
+> +	/** @free_resources_early: Release exclusive resources prior to enabling component. */
+> +	void (*free_resources_early)(void *data);
+> +
+> +	/**
+> +	 * @enable: Enable resources so that the components respond to probes.
+> +	 *
+> +	 * Resources should be reverted to their initial state before returning if this fails.
+> +	 */
+> +	int (*enable)(struct device *dev, void *data);
+> +
+> +	/**
+> +	 * @cleanup: Opposite of @enable to balance refcounts after probing.
+> +	 *
+> +	 * Can not operate on resources already freed in @free_resources_early.
+> +	 */
+> +	int (*cleanup)(struct device *dev, void *data);
+> +
+> +	/**
+> +	 * @free_resources_late: Release all resources, including those that would have
+> +	 *                       been released by @free_resources_early.
+> +	 */
+> +	void (*free_resources_late)(void *data);
+> +};
+> +
+> +/**
+> + * struct i2c_of_probe_cfg - I2C OF component prober configuration
+> + * @ops: Callbacks for the prober to use.
+> + * @type: A string to match the device node name prefix to probe for.
+> + */
+> +struct i2c_of_probe_cfg {
+> +	const struct i2c_of_probe_ops *ops;
+> +	const char *type;
+> +};
+> +
+> +int i2c_of_probe_component(struct device *dev, const struct i2c_of_probe_cfg *cfg, void *ctx);
+> +
+> +#endif /* IS_ENABLED(CONFIG_OF_DYNAMIC) */
+> +
+> +#endif /* _LINUX_I2C_OF_PROBER_H */
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
 
