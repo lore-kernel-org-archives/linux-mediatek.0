@@ -4,86 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C904FA373F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Sep 2024 10:28:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D89EAFA373F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Sep 2024 10:39:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w/1QsP0hsT70oKJN6+h5TtodoxkV9YN38i7uu4UVbsM=; b=pbnbihnPetoHxFwRrmC/XUiYFr
-	LQkLUXXgJPKWm0NmXj8DtzC8BTYBHCFTRO6irgQ4DfXLiAWT0bZD7KtjQT8Kl5tCl0vyizVenLurE
-	DKXtK3M04zfcKE/vFKWaq35mcCCnnQSUDIexDScKXBA+3p3QAq+QukFnlW846ytWUvo9i8w+yOgAX
-	J7acAqh6QUxiwolEAmR5PT+l1KkAJl7GpGl7J3h70VGD42Mpu40N0AI3zDBWT+exVTg6Vk+Ac0kJT
-	ac2UfwU1+u9AMv438twnpMOKMaq7XWZOF5FET0MzK41vNIfAYJCCrwg6cwNfioAU5NaPMgqC/A+YC
-	bbqsoeqA==;
+	bh=pS/YBV545XadShzl+JV3iEXwq0ukjSd6qB95fLU6jtM=; b=phH1jeFwrHKCQ3PECmhdynS8z3
+	ZpIEX0oioRTW7GFpaI/+7bCWSOE3goc2P7PWHfq3nIK/yRIjqOuECUCCHdzXnIE9t3bomud9ueDem
+	MtvWfDHu+NiSlgSi3j4jfKhBBk/ZUk1wC5hDqGkQhnVrBaO86OuK1aOmXV200l8zUo8S9xsO/Ng8/
+	3sLFsn9qLHKPelZp+x7CB7X5xMfiqGoBOJqL/T9ml0nr58e5kraw/yOy9M2Wu9GDbYuzAsA5XO7qY
+	oyhVWeZtvV1HJVXVfjClHjcng2K8ql4i9IRyz+IqdpV8MZQmMTbkNFe4UQbxR7CNMNXXWWcA8nAtP
+	TZMKNx9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sp3XQ-0000000Fbml-2iEV;
-	Fri, 13 Sep 2024 10:28:28 +0000
-Received: from mgamail.intel.com ([198.175.65.15])
+	id 1sp3iO-0000000FeLi-0gNk;
+	Fri, 13 Sep 2024 10:39:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.97.1 #2 (Red Hat Linux))
-	id 1sp3WK-0000000Fbb9-0XBH;
-	Fri, 13 Sep 2024 10:27:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1726223240; x=1757759240;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=TrwaSnGSZr2bfjo3SWe2U7AL25TlCBVEkrZRf6lgy8A=;
-  b=iO75FJDiOU9imPJqYvx05WtFszyJy0NZyfMyzxmBBz1bv4ZNt2T2qfro
-   nwphJXJSRN5LuU2gAsstjkgNxYy8NdgD9eUPGuIwz/ZfZlj/6uvj1Kroy
-   pW5ViF0AeMCbOEwgZLQhwg1HuPUHJS0lDrfIot8ag9YqzA3arLvggZgj5
-   4V0DUg0U2wfqIaCSyn7qG0MMkcwkrwTmzGxU34a6ydqUzi18jyuOyxrMY
-   UGrcC1f6xnadUvQWGyO9BcHwY5elBxcAEl2gmciOulLB2JCH4HTMNjGCw
-   19QmEUkx7sYHh4/LFjmRA4wGzGfFcq//uUQthrx/MIpxp2ALFZmjE6fvv
-   A==;
-X-CSE-ConnectionGUID: OXjrG9NSQZ6YO1wrBkhT+Q==
-X-CSE-MsgGUID: Df4oh0IERG2Al1w8dbuHoA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11193"; a="28863701"
-X-IronPort-AV: E=Sophos;i="6.10,225,1719903600"; 
-   d="scan'208";a="28863701"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Sep 2024 03:27:18 -0700
-X-CSE-ConnectionGUID: oXOdqqt7RNywTmc/BAEEVQ==
-X-CSE-MsgGUID: wq3nQX7HT92g5GEvSvGEoQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,225,1719903600"; 
-   d="scan'208";a="72813103"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orviesa005.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Sep 2024 03:27:14 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1sp3WB-00000008GC9-1PTf;
-	Fri, 13 Sep 2024 13:27:11 +0300
-Date: Fri, 13 Sep 2024 13:27:11 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wolfram Sang <wsa@kernel.org>, Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, Mark Brown <broonie@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Douglas Anderson <dianders@chromium.org>,
-	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
-	linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v7 03/10] regulator: Split up _regulator_get()
-Message-ID: <ZuQTf0MiktCGAELP@smile.fi.intel.com>
-References: <20240911072751.365361-1-wenst@chromium.org>
- <20240911072751.365361-4-wenst@chromium.org>
+	id 1sp3iM-0000000FeKj-0Ks2;
+	Fri, 13 Sep 2024 10:39:47 +0000
+X-UUID: 7bd8606871bc11efba0aef63c0775dbf-20240913
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=pS/YBV545XadShzl+JV3iEXwq0ukjSd6qB95fLU6jtM=;
+	b=Mra8e86eMMtRYc3VYJRBmjPMikAnzYwCqhF/jlOFcoLVhVyDiZZPm/zL494DcvDxfpKBIBquXe+FPuvyDnN468WuNKjKQCJw5jvIF9igUdPOA0g0uXHh4eG7T1JAlIq7U4yis5+q7gWMzWbksv9r1pLJwnBlXTG6JJKV1qN6YaQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:d83b787a-cc3d-424a-81f0-d5a82c29af13,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:8fdaf8b6-8c4d-4743-b649-83c6f3b849d4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 7bd8606871bc11efba0aef63c0775dbf-20240913
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <chun-jen.tseng@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1399959907; Fri, 13 Sep 2024 03:39:41 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 13 Sep 2024 18:39:37 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 13 Sep 2024 18:39:37 +0800
+From: Mark Tseng <chun-jen.tseng@mediatek.com>
+To: "Rafael J . Wysocki" <rafael@kernel.org>, Viresh Kumar
+	<viresh.kumar@linaro.org>, MyungJoo Ham <myungjoo.ham@samsung.com>, "Kyungmin
+ Park" <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<chun-jen.tseng@mediatek.com>
+Subject: [PATCH v1 2/2] cpufreq: mediatek: Fixed cpufreq has 2 policy will cause concurrency
+Date: Fri, 13 Sep 2024 18:39:33 +0800
+Message-ID: <20240913103933.30895-3-chun-jen.tseng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240913103933.30895-1-chun-jen.tseng@mediatek.com>
+References: <20240913103933.30895-1-chun-jen.tseng@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240911072751.365361-4-wenst@chromium.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--13.646400-8.000000
+X-TMASE-MatchedRID: NRO3hbO9xfYsJluZlyHlY8AmcZEx8XHJnQkHrAHoKqYA6s2mIXI3kAQH
+	T64gg+vfhbvmKbpIiCZEzxsFM1euZkzhWNnvpqvYXP5rFAucBUEjs7F41+YP7NSVUkz9BPXec1B
+	UAZEsVDboMHvInt5RM8tR/vbsBoBQ7DvDbr7RMEril2r2x2PwtQrefVId6fzVdxcn1spsVVkoSp
+	oF9H5fPdQPqLBIkXdW57+d6CGh74J/Kgj3tMS/EMFHAfWALUlhAn4P7FuKVFAiPSULBgbDb+g6D
+	D179VtATIPFmUsu9TBMwbPxIFtiF7MywGOaB4QQngIgpj8eDcAZ1CdBJOsoY8RB0bsfrpPIXzYx
+	eQR1Dvteoc8+S50jzaLdGITE8Df+vw7wTiLlKfCj07KR8K62ZL1knp3UBvYm
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--13.646400-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 5968523419A560E3B6635D9CEC4A214E18E49A95633F58B26A814CDDCA359DDB2000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240913_032720_238697_49CD75CC 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20240913_033946_150467_4E9BB155 
+X-CRM114-Status: GOOD (  19.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,22 +101,186 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 11, 2024 at 03:27:41PM +0800, Chen-Yu Tsai wrote:
-> _regulator_get() contains a lot of common code doing checks prior to the
-> regulator lookup and housekeeping work after the lookup. Almost all the
-> code could be shared with a OF-specific variant of _regulator_get().
-> 
-> Split out the common parts so that they can be reused. The OF-specific
-> version of _regulator_get() will be added in a subsequent patch.
-> No functional changes were made.
+mtk_cpufreq_set_target() is re-enter function but the mutex lock decalre
+in mtk_cpu_dvfs_info structure for each policy. It should change to
+global variable for critical session avoid policy get wrong OPP.
 
-I think this patch makes sense on its own, but it of course up to Mark.
-FWIW,
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+SoC with CCI architecture should set transition_delay to 10 ms
+because cpufreq need to call devfreq notifier in async mode. if delay
+less than 10ms may get wrong OPP-level in CCI driver.
 
+Add CPUFREQ_ASYNC_NOTIFICATION flages for cpufreq policy because some of
+process will get CPU frequency by cpufreq sysfs node. It may get wrong
+frequency then call cpufreq_out_of_sync() to fixed frequency.
+
+Signed-off-by: Mark Tseng <chun-jen.tseng@mediatek.com>
+---
+ drivers/cpufreq/mediatek-cpufreq.c | 65 ++++++++++++++++++++++--------
+ 1 file changed, 49 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+index 663f61565cf7..3303b6d72ea7 100644
+--- a/drivers/cpufreq/mediatek-cpufreq.c
++++ b/drivers/cpufreq/mediatek-cpufreq.c
+@@ -49,8 +49,6 @@ struct mtk_cpu_dvfs_info {
+ 	bool need_voltage_tracking;
+ 	int vproc_on_boot;
+ 	int pre_vproc;
+-	/* Avoid race condition for regulators between notify and policy */
+-	struct mutex reg_lock;
+ 	struct notifier_block opp_nb;
+ 	unsigned int opp_cpu;
+ 	unsigned long current_freq;
+@@ -59,6 +57,9 @@ struct mtk_cpu_dvfs_info {
+ 	bool ccifreq_bound;
+ };
+ 
++/* Avoid race condition for regulators between notify and policy */
++static DEFINE_MUTEX(mtk_policy_lock);
++
+ static struct platform_device *cpufreq_pdev;
+ 
+ static LIST_HEAD(dvfs_info_list);
+@@ -200,20 +201,29 @@ static bool is_ccifreq_ready(struct mtk_cpu_dvfs_info *info)
+ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
+ 				  unsigned int index)
+ {
+-	struct cpufreq_frequency_table *freq_table = policy->freq_table;
+-	struct clk *cpu_clk = policy->clk;
+-	struct clk *armpll = clk_get_parent(cpu_clk);
+-	struct mtk_cpu_dvfs_info *info = policy->driver_data;
+-	struct device *cpu_dev = info->cpu_dev;
++	struct cpufreq_frequency_table *freq_table;
++	struct clk *cpu_clk;
++	struct clk *armpll;
++	struct mtk_cpu_dvfs_info *info;
++	struct device *cpu_dev;
+ 	struct dev_pm_opp *opp;
+ 	long freq_hz, pre_freq_hz;
+ 	int vproc, pre_vproc, inter_vproc, target_vproc, ret;
++	struct cpufreq_freqs freqs;
+ 
+-	inter_vproc = info->intermediate_voltage;
++	mutex_lock(&mtk_policy_lock);
+ 
+-	pre_freq_hz = clk_get_rate(cpu_clk);
++	freq_table = policy->freq_table;
++	cpu_clk = policy->clk;
++	armpll = clk_get_parent(cpu_clk);
++	info = policy->driver_data;
++	cpu_dev = info->cpu_dev;
++	inter_vproc = info->intermediate_voltage;
++	pre_freq_hz = policy->cur * 1000;
+ 
+-	mutex_lock(&info->reg_lock);
++	freqs.old = policy->cur;
++	freqs.new = freq_table[index].frequency;
++	cpufreq_freq_transition_begin(policy, &freqs);
+ 
+ 	if (unlikely(info->pre_vproc <= 0))
+ 		pre_vproc = regulator_get_voltage(info->proc_reg);
+@@ -308,7 +318,8 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
+ 	info->current_freq = freq_hz;
+ 
+ out:
+-	mutex_unlock(&info->reg_lock);
++	cpufreq_freq_transition_end(policy, &freqs, false);
++	mutex_unlock(&mtk_policy_lock);
+ 
+ 	return ret;
+ }
+@@ -316,19 +327,20 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
+ static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
+ 				    unsigned long event, void *data)
+ {
+-	struct dev_pm_opp *opp = data;
++	struct dev_pm_opp *opp;
+ 	struct dev_pm_opp *new_opp;
+ 	struct mtk_cpu_dvfs_info *info;
+ 	unsigned long freq, volt;
+ 	struct cpufreq_policy *policy;
+ 	int ret = 0;
+ 
++	mutex_lock(&mtk_policy_lock);
++	opp = data;
+ 	info = container_of(nb, struct mtk_cpu_dvfs_info, opp_nb);
+ 
+ 	if (event == OPP_EVENT_ADJUST_VOLTAGE) {
+ 		freq = dev_pm_opp_get_freq(opp);
+ 
+-		mutex_lock(&info->reg_lock);
+ 		if (info->current_freq == freq) {
+ 			volt = dev_pm_opp_get_voltage(opp);
+ 			ret = mtk_cpufreq_set_voltage(info, volt);
+@@ -336,7 +348,6 @@ static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
+ 				dev_err(info->cpu_dev,
+ 					"failed to scale voltage: %d\n", ret);
+ 		}
+-		mutex_unlock(&info->reg_lock);
+ 	} else if (event == OPP_EVENT_DISABLE) {
+ 		freq = dev_pm_opp_get_freq(opp);
+ 
+@@ -361,6 +372,7 @@ static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
+ 			}
+ 		}
+ 	}
++	mutex_unlock(&mtk_policy_lock);
+ 
+ 	return notifier_from_errno(ret);
+ }
+@@ -495,7 +507,6 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+ 	info->intermediate_voltage = dev_pm_opp_get_voltage(opp);
+ 	dev_pm_opp_put(opp);
+ 
+-	mutex_init(&info->reg_lock);
+ 	info->current_freq = clk_get_rate(info->cpu_clk);
+ 
+ 	info->opp_cpu = cpu;
+@@ -597,6 +608,9 @@ static int mtk_cpufreq_init(struct cpufreq_policy *policy)
+ 	policy->driver_data = info;
+ 	policy->clk = info->cpu_clk;
+ 
++	if (info->soc_data->ccifreq_supported)
++		policy->transition_delay_us = 10000;
++
+ 	return 0;
+ }
+ 
+@@ -607,13 +621,32 @@ static void mtk_cpufreq_exit(struct cpufreq_policy *policy)
+ 	dev_pm_opp_free_cpufreq_table(info->cpu_dev, &policy->freq_table);
+ }
+ 
++static unsigned int mtk_cpufreq_get(unsigned int cpu)
++{
++	struct mtk_cpu_dvfs_info *info;
++	unsigned long current_freq;
++
++	mutex_lock(&mtk_policy_lock);
++	info = mtk_cpu_dvfs_info_lookup(cpu);
++	if (!info) {
++		mutex_unlock(&mtk_policy_lock);
++		return 0;
++	}
++
++	current_freq = info->current_freq / 1000;
++	mutex_unlock(&mtk_policy_lock);
++
++	return current_freq;
++}
++
+ static struct cpufreq_driver mtk_cpufreq_driver = {
+ 	.flags = CPUFREQ_NEED_INITIAL_FREQ_CHECK |
+ 		 CPUFREQ_HAVE_GOVERNOR_PER_POLICY |
++		 CPUFREQ_ASYNC_NOTIFICATION |
+ 		 CPUFREQ_IS_COOLING_DEV,
+ 	.verify = cpufreq_generic_frequency_table_verify,
+ 	.target_index = mtk_cpufreq_set_target,
+-	.get = cpufreq_generic_get,
++	.get = mtk_cpufreq_get,
+ 	.init = mtk_cpufreq_init,
+ 	.exit = mtk_cpufreq_exit,
+ 	.register_em = cpufreq_register_em_with_opp,
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.45.2
 
 
