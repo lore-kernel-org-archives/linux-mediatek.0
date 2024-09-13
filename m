@@ -4,99 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FF54EEEC17
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Sep 2024 17:41:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9407FC616B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Sep 2024 17:49:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xqyDQIoqZjQ2fEbsTKhOiFFnqZZY5hTOfZg9GgG1tyQ=; b=gVTcQPJIOIg2AHz7pvNehxiZF9
-	bJcnPKu744QaWqxR3XvDEF8MQzSa7L9ESVVdPzuQwy4Hbut0Nd94gdWxVkn2HbYRW5+gud8Vn57tb
-	baZvXCsBswbElyECinYYdNCTnzBSdrs7yT5vD6ak+RUSh5teTn//kumuKUkVK3lVtpB6w0Vs7hF4X
-	Z8tUS6oFoC5SpodbF1eulJIkonZrKHmYzF6LfjuHBy9qNuDejXCTPimv544vdNKOxNx8B9JD24YdP
-	MNhDQ0DpBlvCA5UbTg9VseoVUKqE3kwfWiWyWDxEIvWz4egf2Q0oZtLNP6dJ25kUYWW/w0LtsZFd4
-	fIa5cJgQ==;
+	bh=xotAzUqezhsD17X56wb62uKRJaTQRcsCpG1PKAuJkiA=; b=R/GKuv6fhdHlM7PZJDU8MhmGz0
+	BYeAp1fYeInkMi/K3zw2+NCEYuEuFG/S/FjM2sloGzJ82pKxDmGJmSvw6kbbYoTqIEuX429RORSaH
+	zncfdKvwMtE9OBHR9ESfgelNtQCl3Oj1F6SvfuZrO5zMDyGbAq/z7gbFtIAFbfRSjJ14vMzMbjcY2
+	Rj81U86FmHR3DhjiG+MXQ+QRBEv8y/eyquR78NZrxNV4cS6yvkq3Ej0aDvTs/7/oB38ACf46IVH8K
+	wFX3zuXMgXPzL6eGIzstt2qGj3n9rnZOWCPzMQ1h3ztMyikAVRTmqrpFH0bq3W2KKxw6ZVyzN0byQ
+	bEfMHfJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1spAIj-0000000GhKi-0vwR;
-	Fri, 13 Sep 2024 17:41:45 +0000
-Received: from 008.lax.mailroute.net ([199.89.1.11])
+	id 1spAQd-0000000GiE4-0iNT;
+	Fri, 13 Sep 2024 17:49:55 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1spAIf-0000000GhKK-3kHS
-	for linux-mediatek@lists.infradead.org;
-	Fri, 13 Sep 2024 17:41:43 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 008.lax.mailroute.net (Postfix) with ESMTP id 4X51nx1CHfz6ClY9v;
-	Fri, 13 Sep 2024 17:41:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1726249292; x=1728841293; bh=xqyDQIoqZjQ2fEbsTKhOiFFn
-	qZZY5hTOfZg9GgG1tyQ=; b=AatjiUj2NlM3NO69WMmWLryosaRyL6sPhQIFWG6n
-	RMFdM6KJA2CbWS0o3qda86OPVmNHcFWrW7fd8iLaB1WoiDOIgTWnSWT1GlkLW36e
-	YcRNonztC87ZocwB8RFYXUE+xwhViBd+nOlVFGK9Or2nKC6sNggVSqhzgdjzWFnn
-	2SSABOPCCOVFYLl1P+WMrQl/jChUAHk2iZy9U4ajc02Jte6dTsdcWUo7+mJ0Mrdy
-	NDIrXqpuEN5ShhHB/VVRa0OXszpdmiQ5PXaAUkOYrU61cIXV7Dw3YGE2KvzezpA/
-	dKbdQ1IkDjog0PaQjJ2Q1VG/QU7yrbRW/pYa3bK/s612dw==
-X-Virus-Scanned: by MailRoute
-Received: from 008.lax.mailroute.net ([127.0.0.1])
- by localhost (008.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id lhkbSclY8FRY; Fri, 13 Sep 2024 17:41:32 +0000 (UTC)
-Received: from [192.168.51.14] (c-73-231-117-72.hsd1.ca.comcast.net [73.231.117.72])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 008.lax.mailroute.net (Postfix) with ESMTPSA id 4X51nh3RLbz6ClY9t;
-	Fri, 13 Sep 2024 17:41:28 +0000 (UTC)
-Message-ID: <46d8be04-10db-4de1-8a59-6cd402bcecb1@acm.org>
-Date: Fri, 13 Sep 2024 10:41:27 -0700
+	id 1spAPW-0000000Gi3R-3I4O;
+	Fri, 13 Sep 2024 17:48:48 +0000
+X-UUID: 69e61e7c71f811efba0aef63c0775dbf-20240913
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=xotAzUqezhsD17X56wb62uKRJaTQRcsCpG1PKAuJkiA=;
+	b=bLXyoRaoG2BWcPSJ/Lob/YGLmHH4jbYR3bk0ORhMvifoOAmUaBlAx6bHj6/nV1/gzH0pPf1djrTf1weAV0tC6/tEpJIFJ93cPXAaiu6cberu/CQ1x3hEI3RwJcQmMKOFE6KcDyKPU1wwt6G6AWFtgAJ4PdIBznlj4kQQ+79uViw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:ecf774e9-f972-45f1-91d9-6c135d3007b3,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:0dc8fcb6-8c4d-4743-b649-83c6f3b849d4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|-5,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 69e61e7c71f811efba0aef63c0775dbf-20240913
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 511957562; Fri, 13 Sep 2024 10:48:41 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Sat, 14 Sep 2024 01:48:04 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Sat, 14 Sep 2024 01:47:53 +0800
+Message-ID: <f6050fa5-4cb5-9283-263b-bcd0d97a09bc@mediatek.com>
+Date: Sat, 14 Sep 2024 01:47:52 +0800
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/2] ufs: core: requeue aborted request
-To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
- "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "avri.altman@wdc.com" <avri.altman@wdc.com>,
- "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>
-Cc: "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
- =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
- =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
- =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
- "quic_nguyenb@quicinc.com" <quic_nguyenb@quicinc.com>,
- wsd_upstream <wsd_upstream@mediatek.com>,
- =?UTF-8?B?RWQgVHNhaSAo6JSh5a6X6LuSKQ==?= <Ed.Tsai@mediatek.com>,
- "stable@vger.kernel.org" <stable@vger.kernel.org>,
- =?UTF-8?B?TGluIEd1aSAo5qGC5p6XKQ==?= <Lin.Gui@mediatek.com>,
- =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
- =?UTF-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>,
- =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
- <Chaotian.Jing@mediatek.com>, =?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?=
- <Powen.Kao@mediatek.com>, =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
- <Naomi.Chu@mediatek.com>, =?UTF-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
- <Qilin.Tan@mediatek.com>
-References: <20240910073035.25974-1-peter.wang@mediatek.com>
- <20240910073035.25974-3-peter.wang@mediatek.com>
- <e42abf07-ba6b-4301-8717-8d5b01d56640@acm.org>
- <04e392c00986ac798e881dcd347ff5045cf61708.camel@mediatek.com>
- <858c4b6b-fcbc-4d51-8641-051aeda387c5@acm.org>
- <524e9da9196cc0acf497ff87eba3a8043b780332.camel@mediatek.com>
- <6203d7c9-b33c-4bf1-aca3-5fc8ba5636b9@acm.org>
- <6fc025d7ffb9d702a117381fb5da318b40a24246.camel@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH v2 1/7] regulator: dt-bindings: mt6323: Convert to DT
+ schema
 Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <6fc025d7ffb9d702a117381fb5da318b40a24246.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+To: Rob Herring <robh@kernel.org>
+CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski
+	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	<linux-leds@vger.kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown
+	<broonie@kernel.org>, Sebastian Reichel <sre@kernel.org>, Pavel Machek
+	<pavel@ucw.cz>, Sean Wang <sean.wang@mediatek.com>, Lee Jones
+	<lee@kernel.org>, Alexandre Mergnat <amergnat@baylibre.com>, Flora Fu
+	<flora.fu@mediatek.com>, Bear Wang <bear.wang@mediatek.com>, Pablo Sun
+	<pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, Sen Chu
+	<sen.chu@mediatek.com>, Chris-qj chen <chris-qj.chen@mediatek.com>, "MediaTek
+ Chromebook Upstream" <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-pm@vger.kernel.org>,
+	<linux-rtc@vger.kernel.org>, <linux-sound@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, Chen-Yu Tsai <wenst@chromium.org>
+References: <20240830110732.30080-1-macpaul.lin@mediatek.com>
+ <20240830145056.GA4170065-robh@kernel.org>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <20240830145056.GA4170065-robh@kernel.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--14.924800-8.000000
+X-TMASE-MatchedRID: oTBA/+sdKaYOwH4pD14DsPHkpkyUphL9meN8m2FdGic3xO2R3boBWFbu
+	qIY+/skQkABPgKBt/0rdkc3IJsq77y9FtW7XfHueU+OjsPhIWDiwR/wKmchi2X3ikYeDnk/KepZ
+	UyQ6EeDXoapbtUvkIf+xNbFV/iNBgt3ZVSPV8VOi0sO72q2op4f+UEb65dgmQEB/Asc4oaYEfg0
+	sA1HT2xmQQJkXF7hk6vMxSxMv7UnmPLG+A0qvEpp4CIKY/Hg3AtOt1ofVlaoLUHQeTVDUrItRnE
+	QCUU+jzjoczmuoPCq0Bv7xhCXsjZm/ZfgvjZa1rh9ifqkpf8qhcEkm/83qnHz1B6iuMVH+d
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--14.924800-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: BAB98BC90D7C6C90416F4D37BF8B8CF0C1790B6C68AB3A968115B29A6A8B76452000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240913_104141_987357_C29B783C 
-X-CRM114-Status: GOOD (  11.60  )
+X-CRM114-CacheID: sfid-20240913_104846_854689_5EE7C989 
+X-CRM114-Status: GOOD (  14.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,32 +112,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/13/24 12:10 AM, Peter Wang (=E7=8E=8B=E4=BF=A1=E5=8F=8B) wrote:
-> Because the MediaTek UFS controller uses UTRLCLR to clear
-> commands and fills OCS with ABORTED.
->=20
-> Regarding the specification of UTRCS:
-> This bit is set to '1' by the host controller upon one of the
-> following:
-> 	Overall command Status (OCS) of the completed command is not
-> 	equal to 'SUCCESS' even if its UTRD Interrupt bit set to '0'
->=20
-> So, MediaTek host controller will send interrupt in this case.
+On 8/30/24 22:50, Rob Herring wrote:
+> 	
+> 
+> External email : Please do not click links or open attachments until you 
+> have verified the sender or the content.
+> 
+> On Fri, Aug 30, 2024 at 07:07:26PM +0800, Macpaul Lin wrote:
+>> Convert this from the old style text based binding to the new DT schema
+>> style.
+>> 
+>> The examples have been trimmed down and move to parent schema
+>> mfd/mediatek,mt6397.yaml.
+>> 
+>> Add new maintainers and submitter from MediaTek.
+>> 
+>> Signed-off-by: Sen Chu <sen.chu@mediatek.com>
+>> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 
-Hi Peter,
+[snip]
 
-Thank you for having shared this information. Please consider
-introducing a quirk for ignoring completions triggered by clearing
-a command, e.g. as follows (there may be better approaches):
-* In ufshcd_clear_cmd(), before a command is cleared, initialize
-   the completion that will be used for waiting for the completion
-   interrupt. After a command has been cleared, call
-   wait_for_completion_timeout().
-* In ufshcd_compl_one_cqe(), check whether the completion is the
-   result of a command being cleared. If so, call complete() instead
-   of executing the regular completion code.
+>> +
+>> +patternProperties:
+>> +  "^(buck_)?v(pa|proc|sys)$":
+>> +    description: Buck regulators
+>> +    type: object
+>> +    $ref: regulator.yaml#
+>> +    properties:
+>> +      regulator-allowed-modes: false
+>> +    unevaluatedProperties: false
+>> +
+>> +  "^(ldo_)?v(camio|cn18)$":
+> 
+> Why are buck_ and ldo_ prefixes optional? The old binding didn't reflect
+> actual (upstream) users? If so, that's fine, but mention that in the
+> commit message.
+> 
+> Rob
+> 
 
-Thanks,
+Will use "^buck_v" and "^ldo_v" as the prefixes of each items in 
+patternProperties. Thanks!
 
-Bart.
+Regards,
+Macpaul Lin
 
