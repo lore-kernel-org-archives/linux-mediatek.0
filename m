@@ -4,78 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23C2AFC6184
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Sep 2024 23:45:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFB4EFC6172
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Sep 2024 23:45:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QgrnQAkPxnP9xr/uHfnesOWhy4bQylWu/nCRFkQoiTg=; b=stlPXKwMFPjRy9MRhV84ecvBlW
-	ZI2OabQxNfhCvSW6NqRTL8abOi9Yl3Pc5zhj7VsILqCZxn4vxisX9QAAC5qoVhJGUcs8OgTQPygHZ
-	HUy8iQzpMIecw+C8rvuGtX5i1NSuDD8N+JkJCQ/ZZJZUdJZeoN/zILshv5P9mqzHP0Le9eGoJlTz7
-	a2gVrWgerNo3ABnp9DiV4nMxc0aSyowZjTyLzo1A0ggWrFZxhjUQ7yKuAO1cPPYYumqP6uxEboStW
-	U5Yeo0O/IZG2TpiDxXJwudKiPuhY1dVRFHzAq6Urmj+oAkWlCS8qrU20ogMk/sk1hbgObd8WQnLhX
-	LPCr9oFg==;
+	bh=EGpao8Kwq4txpjKiG0IecbBKjp+Vjjk+9Rmjd0MdGw0=; b=Akm4sS3sFMtdkTMr7BCJ4j/xXH
+	r2OiL1JoDoAztV4fDKV0qGXywGsOKIpAydiCPMXkQspviyTyFqqHhj1KlvnFnjfSda+vM1vqH9uoI
+	1uoKJmYhjLPrF/vh2eG2hrPA2mHmIhRdRJovT5XbBu8CdEq+yddH1v5qh4xe5Mma70HvUB9mv+l4c
+	x4O0I/ve1jTQDtmbMIER8qwNBCnG3fUdS2GOGrJDwHtxKpGKv0s4IAWft7UAC606yFaANico9WiEw
+	R9SAvJL+DUPgW74kutqS3RZ1HsFrtQUjyqZ9E0JDN+wNeIYBl5X1QIJnV8WKI+QwT1ckWA9L1cGpM
+	9FpcNj2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1spFyo-0000000HNIl-39Eh;
+	id 1spFyo-0000000HNIV-1lWB;
 	Fri, 13 Sep 2024 23:45:34 +0000
-Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
+Received: from mail-qv1-xf2d.google.com ([2607:f8b0:4864:20::f2d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1spFx0-0000000HN2M-1797
+	id 1spFwt-0000000HN0G-3GIF
 	for linux-mediatek@lists.infradead.org;
-	Fri, 13 Sep 2024 23:43:43 +0000
-Received: by mail-qt1-x831.google.com with SMTP id d75a77b69052e-458366791aaso14110491cf.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 13 Sep 2024 16:43:41 -0700 (PDT)
+	Fri, 13 Sep 2024 23:43:37 +0000
+Received: by mail-qv1-xf2d.google.com with SMTP id 6a1803df08f44-6c524b4a3aeso19239976d6.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 13 Sep 2024 16:43:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1726271017; x=1726875817; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1726271010; x=1726875810; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=QgrnQAkPxnP9xr/uHfnesOWhy4bQylWu/nCRFkQoiTg=;
-        b=V5YKf/vCkGtyopCNVl4Mv4cy8t2ntrx3eSACbtoAZlb4+JiYHUCahwFzbz8CxTwH87
-         2HaCkYChX2mGIjoBZJyt0oZr4iSiJPieo4EwNqyJANi30QjctcKbRqAbblxhgNYZBXXb
-         4LIMam51zHXGCnrI4wj5iI+7QEouRbf09Wq8Q=
+        bh=EGpao8Kwq4txpjKiG0IecbBKjp+Vjjk+9Rmjd0MdGw0=;
+        b=QbQHhgjGZS9eD/P0IIEmkdYyTRsWhpfm+iABz0ccj8hwv629zOprZbWsmbqAqOCcnw
+         JZq69tBe/FPF7Eg5ffdMpbhLnokoA5E7+ZGyheI1svFfghXRcK+04783xLcVrYGVX2FW
+         XG0ITosAU9SIU1ZuiTb+em71GMU1uVwoIm42U=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726271017; x=1726875817;
+        d=1e100.net; s=20230601; t=1726271010; x=1726875810;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=QgrnQAkPxnP9xr/uHfnesOWhy4bQylWu/nCRFkQoiTg=;
-        b=cv2ln+7GiaG/g8eOw6hFyeh0+z7X3VrhlC22vYTl2prOckuD9+476KjnC6wuAXA/Ds
-         1PK0CV685jc7MKtLbF07sCHUx9UqNF8B6QM0y6Krw6PNN5KInMaHP+Pk/QH/hPcxgvrC
-         6imK/wVGEFAd41w6qVKi9z1vPF+AfSTj/PcByRKbdjdheHqDZQeMdQJNZrRcMJGuR/Du
-         E1apU1k0pBB75OnaTHJK9q0oKvS+Jowz+A7pPXU/CcBKOPR5Hsuno79HwM8NnJKD1Oxg
-         /CwMmojMMOaQZ2Vk4uvHoTEko0zOBSnK+g+ftV1agGNz2Jao4fsA6hluUNxOpoLYIso4
-         yMtg==
-X-Forwarded-Encrypted: i=1; AJvYcCWNO7SsjC0YpX8832uePwXlU3vOfqnejcrwoRfDFKxLtbqlgK4bFbn9J2mDtlyNzaWYjRZfLg/KEEvD1u9hfA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzTUXQnsP1eFYp9TRdzb1IRS4/ydh+Fl/CVGtjAtMLKcDWdy9QD
-	BO3gL+18ssJEXSzzhlRL5cvLIiQSAEK1gmQG3WxXW7ZGDUpvGdeOtPH0K56h70u3VhwMUzeEgH8
+        bh=EGpao8Kwq4txpjKiG0IecbBKjp+Vjjk+9Rmjd0MdGw0=;
+        b=kowQO/eWDTjSiRznl8CeDtT2yk1DuWajwaNOY76lHVZ5mTGSlmfsA6GCEfBEIniMOO
+         63rRoajgqnmLDh6vsdrOKTwtG3veyWw4Fi0nfPidYx/CHxtwAVwCuCqPCmBfpiNujLnJ
+         y3Ph+PWWQeS4y0w5I0vOQP1x6BVqBazPm6aEzTLzVNYzCBR3Bu5PHyMQfJ9mBIzzkOe3
+         mBKUmFwo42nCSR5uhVd0Va8e0Xaf6DrSo8/rSGl7PpNRE3gkioMVKhwMqhXfrCKao0eh
+         7XAgCmF4XtmuCwgO3ltTsxww+CeHbRYxpB8HMKsDsrYOs8P7cuZbfKvmf8iK/2Od828x
+         Sg8A==
+X-Forwarded-Encrypted: i=1; AJvYcCXJbIJmEdP8W0Io4ZX/Msc+j3iLSbAYvzYv4+0c6cFzESRNXKce1O2apzOcgfkEeLTgrERCGNx7m86WnKhEaA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxeE2njME6oBQvt/UivnyEMqUdPV8omiUumhVtY5oti2B0VSgVk
+	h9nYKoDkwmOToD9h4hWfo/DY5x7nEAhp2HQ43xCY6zPXOM+9xYKusfcw1pcFoVFp95XQRWLn8tA
 	=
-X-Google-Smtp-Source: AGHT+IG2viS6/v0vgNNYFbu8ectjaafW1wzqYXokbJ959G/xpuv60O2dettJ5/yrilRV51SvqiRi6g==
-X-Received: by 2002:a05:6214:3da0:b0:6c5:517a:56d0 with SMTP id 6a1803df08f44-6c57355a87bmr135341926d6.13.1726271016975;
-        Fri, 13 Sep 2024 16:43:36 -0700 (PDT)
-Received: from mail-qv1-f54.google.com (mail-qv1-f54.google.com. [209.85.219.54])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6c58c6421b7sm1357326d6.58.2024.09.13.16.43.32
+X-Google-Smtp-Source: AGHT+IEO1EjiZbmvaZWyvUCwQQ9oxSwPdyAm8hJb4tapglLNzdCqGa7bMIW5Stoedhy8egCO0xOy/g==
+X-Received: by 2002:a05:6214:588a:b0:6c5:1667:baa2 with SMTP id 6a1803df08f44-6c5735198f8mr113157556d6.18.1726271009608;
+        Fri, 13 Sep 2024 16:43:29 -0700 (PDT)
+Received: from mail-qv1-f49.google.com (mail-qv1-f49.google.com. [209.85.219.49])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6c58c691a97sm1319636d6.86.2024.09.13.16.43.23
         for <linux-mediatek@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Sep 2024 16:43:35 -0700 (PDT)
-Received: by mail-qv1-f54.google.com with SMTP id 6a1803df08f44-6c352bcb569so14293216d6.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 13 Sep 2024 16:43:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVXt2ZXqNQoCaF0IgS/jWYcZEHTA1w5Rc7QZNg9fHjSNKTVh1PY+0EthOH/26e69KQjf6IGYXSpDWsMU8t+Ng==@lists.infradead.org
-X-Received: by 2002:a05:6214:5f07:b0:6c5:de4:3edb with SMTP id
- 6a1803df08f44-6c5735881a8mr122878276d6.29.1726271012120; Fri, 13 Sep 2024
- 16:43:32 -0700 (PDT)
+        Fri, 13 Sep 2024 16:43:24 -0700 (PDT)
+Received: by mail-qv1-f49.google.com with SMTP id 6a1803df08f44-6c524b4a3aeso19238716d6.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 13 Sep 2024 16:43:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCUWGPhTPv4UlkAVVCnElu6jtk5C96hCRPEWGpB/rlTJshoN8uKt65jj3SwzFf892+ibV9i/zxxWrfL6di6muw==@lists.infradead.org
+X-Received: by 2002:a05:6214:390a:b0:6bf:7d3c:a64d with SMTP id
+ 6a1803df08f44-6c573570b31mr113649466d6.32.1726271002581; Fri, 13 Sep 2024
+ 16:43:22 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240911072751.365361-1-wenst@chromium.org> <20240911072751.365361-10-wenst@chromium.org>
-In-Reply-To: <20240911072751.365361-10-wenst@chromium.org>
+References: <20240911072751.365361-1-wenst@chromium.org> <20240911072751.365361-8-wenst@chromium.org>
+In-Reply-To: <20240911072751.365361-8-wenst@chromium.org>
 From: Doug Anderson <dianders@chromium.org>
-Date: Fri, 13 Sep 2024 16:43:20 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=WtVSQ5GX6H5CtxNPTdOAJVMj_xNRvG9siZB6_ePZr7CQ@mail.gmail.com>
-Message-ID: <CAD=FV=WtVSQ5GX6H5CtxNPTdOAJVMj_xNRvG9siZB6_ePZr7CQ@mail.gmail.com>
-Subject: Re: [PATCH v7 09/10] platform/chrome: Introduce device tree hardware prober
+Date: Fri, 13 Sep 2024 16:43:10 -0700
+X-Gmail-Original-Message-ID: <CAD=FV=VL3nA8hwC8Ejy9T0ZWdYKxMjts8fgF7Y3CO507njOKkg@mail.gmail.com>
+Message-ID: <CAD=FV=VL3nA8hwC8Ejy9T0ZWdYKxMjts8fgF7Y3CO507njOKkg@mail.gmail.com>
+Subject: Re: [PATCH v7 07/10] i2c: of-prober: Add simple helpers for regulator support
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -90,8 +90,8 @@ Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240913_164342_327572_8B7AFDB3 
-X-CRM114-Status: GOOD (  15.83  )
+X-CRM114-CacheID: sfid-20240913_164335_829886_70CDF603 
+X-CRM114-Status: GOOD (  21.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,61 +108,79 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi,
 
-On Wed, Sep 11, 2024 at 12:29=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> =
+On Wed, Sep 11, 2024 at 12:28=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> =
 wrote:
 >
-> @@ -8,6 +8,7 @@ obj-$(CONFIG_CHROMEOS_ACPI)             +=3D chromeos_acp=
-i.o
->  obj-$(CONFIG_CHROMEOS_LAPTOP)          +=3D chromeos_laptop.o
->  obj-$(CONFIG_CHROMEOS_PRIVACY_SCREEN)  +=3D chromeos_privacy_screen.o
->  obj-$(CONFIG_CHROMEOS_PSTORE)          +=3D chromeos_pstore.o
-> +obj-$(CONFIG_CHROMEOS_OF_HW_PROBER)    +=3D chromeos_of_hw_prober.o
-
-"o" sorts before "p" so "of" should sort before "privacy"?
-
-I guess it's not exactly all sorted, but this small section is. Since
-it's arbitrary you could preserve the existing sorting. :-P
-
-
-> +static const struct hw_prober_entry hw_prober_platforms[] =3D {
-> +       { .compatible =3D "google,hana", .prober =3D chromeos_i2c_compone=
-nt_prober, .data =3D &chromeos_i2c_probe_dumb_touchscreen },
-> +       { .compatible =3D "google,hana", .prober =3D chromeos_i2c_compone=
-nt_prober, .data =3D &chromeos_i2c_probe_dumb_trackpad },
-
-The fact that the example is only using "dumb" probers doesn't make it
-quite as a compelling proof that the code will scale up. Any chance
-you could add something that requires a bit more oomph? ;-)
-
-
-> +static int chromeos_of_hw_prober_driver_init(void)
+> +static int i2c_of_probe_simple_enable_regulator(struct device *dev, stru=
+ct i2c_of_probe_simple_ctx *ctx)
 > +{
-> +       size_t i;
 > +       int ret;
 > +
-> +       for (i =3D 0; i < ARRAY_SIZE(hw_prober_platforms); i++)
-> +               if (of_machine_is_compatible(hw_prober_platforms[i].compa=
-tible))
-> +                       break;
-> +       if (i =3D=3D ARRAY_SIZE(hw_prober_platforms))
-> +               return -ENODEV;
+> +       if (!ctx->supply)
+> +               return 0;
 > +
-> +       ret =3D platform_driver_register(&chromeos_of_hw_prober_driver);
+> +       dev_dbg(dev, "Enabling regulator supply \"%s\"\n", ctx->opts->sup=
+ply_name);
+> +
+> +       ret =3D regulator_enable(ctx->supply);
 > +       if (ret)
 > +               return ret;
 > +
-> +       chromeos_of_hw_prober_pdev =3D
-> +                       platform_device_register_simple(DRV_NAME, PLATFOR=
-M_DEVID_NONE, NULL, 0);
-> +       if (IS_ERR(chromeos_of_hw_prober_pdev))
-> +               goto err;
+> +       msleep(ctx->opts->post_power_on_delay_ms);
 
-FWIW if you didn't want to see your prober called over and over again
-if one of the devices deferred you could just register one device per
-type, right? Then each device would be able to defer separately. Dunno
-if it's worth it but figured I'd mention it...
+Presumably you want an "if (ctx->opts->post_power_on_delay_ms)" before
+the call to msleep() since it doesn't check that for you.
 
 
-Also: as a high level comment, this all looks much nicer to me now
-that it's parameterized. :-)
+> +/**
+> + * i2c_of_probe_simple_enable - Enable resources for I2C OF prober simpl=
+e helpers
+> + * @dev: Pointer to the &struct device of the caller, only used for dev_=
+printk() messages
+> + * @data: Pointer to &struct i2c_of_probe_simple_ctx helper context.
+> + *
+> + * If a regulator supply was found, enable that regulator.
+> + *
+> + * Return: %0 on success or no-op, or a negative error number on failure=
+.
+> + */
+> +int i2c_of_probe_simple_enable(struct device *dev, void *data)
+> +{
+> +       struct i2c_of_probe_simple_ctx *ctx =3D data;
+> +       int ret;
+> +
+> +       ret =3D i2c_of_probe_simple_enable_regulator(dev, ctx);
+> +       if (ret)
+> +               return ret;
+> +
+> +       return 0;
+
+Instead of the above, just:
+
+return i2c_of_probe_simple_enable_regulator(dev, ctx);
+
+I guess maybe you'd have to undo it in the next patch, but it does
+make this patch stand by itself better..
+
+Although I'd also say that if it were me I might just get rid of the
+helpers and inline the stuff. The helpers don't _really_ add too much.
+3 of the 4 callers are just simple wrappers of the helper and I don't
+think it would be terrible to inline the last one. I guess with the
+next patch when you add GPIOs it maybe makes more sense, but even then
+it feels like a stretch to me. Anyway, feel free to ignore if you
+want.
+
+> +/**
+> + * DOC: I2C OF component prober simple helpers
+> + *
+> + * Components such as trackpads are commonly connected to a devices base=
+board
+> + * with a 6-pin ribbon cable. That gives at most one voltage supply and =
+one
+> + * GPIO besides the I2C bus, interrupt pin, and common ground. Touchscre=
+ens,
+
+Maybe speculate here that the GPIO is often an enable or reset line?
+Otherwise you leave the reader wondering what this mysterious GPIO is
+for.
 
