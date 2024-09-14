@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F0C3C02180
-	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Sep 2024 07:36:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD27FC0218E
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Sep 2024 09:45:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:References:CC:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RRzjjCjxMrZMuVkofMLoApDTjN0xU6WSzacOzaOb9YQ=; b=qO3+wbBaibGYbhnICTA93R9MSi
-	KQFSAFzevK/vrgwcP6WeC9HfuNrbPK11tvWwOPLvslqKQOkhrOf14ubld2w7miZt+U0l7jgmj+3Yw
-	6ZFWEf/xce3eNhD0nuUREQ17EvFIkmnQsh3jLlvQ406pR7d8shz1RnQwT8vGvrL/S7juKNSRwZW0q
-	yrB2EXogEgrWm5E1yc+CYOl3eR6zXxIg1VJdNgwbYL/HvHNRXUPB18sy9gh6Dg0MAScfzKA8XkYx3
-	OyJs4FJjs/Uf+Vqk/LT7YIUke9GJ36QhAdDHkItV71i8DuCpQFfJGp1K7xgYtSsprVvoPWtUreAQ/
-	Ezj+4Byw==;
+	bh=td6W5BqS/w7GJGWIguOqNkiPUX+ROKcwQb3R/eDFAI0=; b=kUS1segBFsdD2qpshWnc1b1+y5
+	IOE52jsKkDB6a01wD/iJOtVJunS7cDycxudw7HRiZOS059aFjxFJ9NZNrEidwvgbssULwmxY0zhGA
+	F1HrEvMbRIRHGQ8B7N+GCr6uWG+ceqm8UhgaPPaSikpaaK1HUdbHjy34XlTn6gHGJOVHeU3auUqjK
+	IycUy1uYW/xoSg7Qp9tAasPTQaljGWjhoFIm1t0tATbDJSTsAPWAzt8+DQW3//tpsdT5zVt9drqsN
+	EWV6ACOpbEPkbrrnZgkpQvwRdI9cVwaCOZx0adkpbvIU9XFt6+7qwi6zoZuWhxh9GndCVci41FVpj
+	oukGX2Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1spNK7-00000000ImA-2y3J;
-	Sat, 14 Sep 2024 07:36:03 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1spPLj-00000000SsW-0tLo;
+	Sat, 14 Sep 2024 09:45:51 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1spNK4-00000000Ile-36mr;
-	Sat, 14 Sep 2024 07:36:02 +0000
-X-UUID: f93cc620726b11efb3adad29d29602c1-20240914
+	id 1spPLh-00000000Ss8-0Dg6;
+	Sat, 14 Sep 2024 09:45:50 +0000
+X-UUID: 1be661f6727e11efba0aef63c0775dbf-20240914
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:References:CC:To:From:Subject:MIME-Version:Date:Message-ID; bh=RRzjjCjxMrZMuVkofMLoApDTjN0xU6WSzacOzaOb9YQ=;
-	b=FTjLiNSECw6I1YTBPpUQBSIVRVKuaTiPZmLKxxS43RtRjACohI2vF2a4X5Url498rz8zUje/4ucQByT91bYBoO7LwDGTt0SCKiBCdNbtSVY+H+yYmpDucVLrDsxdo0N+bUbtYb4u28rXFLk/0mOEJdC4zRG2EonT+81Eo39kTz0=;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:References:CC:To:From:Subject:MIME-Version:Date:Message-ID; bh=td6W5BqS/w7GJGWIguOqNkiPUX+ROKcwQb3R/eDFAI0=;
+	b=dCTCFO0L1H0bx1lR4E4FH4Mbf5IxigQ5QTIMahA90uYSzPP/Ln24ubkmDOboP2skNe0A4e61h/88mPd18zRiOamP+uPZcQxv8+LDCLOmYX4ILPaMeX2k+r4bIR2TdwS/btNt8SqQe32H/uH//FG9INiCeQsRPKgK/jLz1YAI/50=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:560ceffc-4791-4ce5-8f86-d19dce7c7e14,IP:0,U
+X-CID-O-INFO: VERSION:1.1.41,REQID:6a81a1df-2074-4e54-9a4e-f6693349e1fa,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:1aee01b7-8c4d-4743-b649-83c6f3b849d4,B
+X-CID-META: VersionHash:6dc6a47,CLOUDID:4f6334d0-7921-4900-88a1-3aef019a55ce,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|-5,EDM:-3,IP:ni
 	l,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: f93cc620726b11efb3adad29d29602c1-20240914
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 1be661f6727e11efba0aef63c0775dbf-20240914
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <macpaul.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1813505830; Sat, 14 Sep 2024 00:35:54 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+	with ESMTP id 1243741034; Sat, 14 Sep 2024 02:45:43 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 14 Sep 2024 15:25:49 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ 15.2.1118.26; Sat, 14 Sep 2024 17:45:38 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
- Transport; Sat, 14 Sep 2024 15:25:49 +0800
-Message-ID: <4a396c65-2353-da09-4dd2-71b822237920@mediatek.com>
-Date: Sat, 14 Sep 2024 15:25:46 +0800
+ Transport; Sat, 14 Sep 2024 17:45:38 +0800
+Message-ID: <9a120bc4-f671-dd35-a1f9-b9ae7031bdd1@mediatek.com>
+Date: Sat, 14 Sep 2024 17:45:34 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.9.1
@@ -83,25 +83,27 @@ CC: Bear Wang <bear.wang@mediatek.com>, Conor Dooley <conor+dt@kernel.org>,
 References: <20240913175926.7443-1-macpaul.lin@mediatek.com>
  <172625540069.478205.2893721075637493498.robh@kernel.org>
  <099c4f3e-0772-3d30-79f7-8b996142cd7c@mediatek.com>
-In-Reply-To: <099c4f3e-0772-3d30-79f7-8b996142cd7c@mediatek.com>
+ <4a396c65-2353-da09-4dd2-71b822237920@mediatek.com>
+In-Reply-To: <4a396c65-2353-da09-4dd2-71b822237920@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 7bit
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--15.756400-8.000000
-X-TMASE-MatchedRID: HXSqh3WYKfsOwH4pD14DsPHkpkyUphL9meN8m2FdGic3xO2R3boBWFbu
+X-TM-AS-Result: No-10--18.448200-8.000000
+X-TMASE-MatchedRID: 6otD/cJAac0OwH4pD14DsPHkpkyUphL9meN8m2FdGic3xO2R3boBWFbu
 	qIY+/skQkABPgKBt/0r/bIpz2qRIjbvjKWK1iQnHSHCU59h5KrHWSrKtwxqWpU+u3rM3lFPnCkE
 	raFSKEBfgwC+tMY7byJTQ/2UxBcQVxAFMYEMzeR2+dJWHbg4ITpPFJV0Myxm8BUe+Zw5ql5RljC
-	/GdRjZi6wHHwdmt++AY44xtvjJ5ninykMun0J1wp4CIKY/Hg3AtOt1ofVlaoLUHQeTVDUrIim3J
-	iZU/IeW5MIx11wv+CM7AFczfjr/7Js2nJP/TBEf7zzlbeQx+6obMO7jRDhYejeCelNBvicJfykA
-	wdsjhlY=
+	/GdRjZi6wHHwdmt++AY44xtvjJ5nioB6BkKpx1kfSG/+sPtZVk4mC51qavDrQ2ANpk6Ruu/cJ0s
+	YMUJ2E10s4PPEfk7xPV55op6HGBQmyeGFxbrq7l5gCHftmwEMJ9LQinZ4QefL6qvLNjDYTwsuf7
+	RWbvUtyrusVRy4an8SAHAopEd76vF7r821BSEoHux3p95mrDUygbh3X/XOfuagda0wu3hd8CCEh
+	VFxWr8g==
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--15.756400-8.000000
+X-TMASE-Result: 10--18.448200-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 1F09D541324631173BB6E61E34600C8115661A49623ECD40C5A8504DD98134082000:8
+X-TM-SNTS-SMTP: F43395B9D1A6CB275AE5AF30E52C01AC9CD434BD27F2C2F01DD624AA796E78802000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240914_003600_833812_6ACE7169 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20240914_024549_141000_BDFDAD9B 
+X-CRM114-Status: GOOD (  14.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,41 +118,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/14/24 15:06, Macpaul Lin wrote:
-> 
-> 
-> On 9/14/24 03:23, Rob Herring (Arm) wrote:
+
+On 9/14/24 15:25, Macpaul Lin wrote:
+> On 9/14/24 15:06, Macpaul Lin wrote:
 >>
 >>
->> External email : Please do not click links or open attachments until 
->> you have verified the sender or the content.
->>
->> On Sat, 14 Sep 2024 01:59:26 +0800, Macpaul Lin wrote:
->>> Convert the mfd: mediatek: mt6397 binding to DT schema format.
+>> On 9/14/24 03:23, Rob Herring (Arm) wrote:
 >>>
-> 
-> [snip]
-> 
 >>>
+>>> External email : Please do not click links or open attachments until 
+>>> you have verified the sender or the content.
+>>>
+>>> On Sat, 14 Sep 2024 01:59:26 +0800, Macpaul Lin wrote:
+>>>> Convert the mfd: mediatek: mt6397 binding to DT schema format.
+>>>>
 >>
->> My bot found errors running 'make dt_binding_check' on your patch:
+>> [snip]
 >>
->> yamllint warnings/errors:
+>>>>
+>>>
+>>> My bot found errors running 'make dt_binding_check' on your patch:
+>>>
+>>> yamllint warnings/errors:
+>>>
+>>> dtschema/dtc warnings/errors:
+>>> Warning: Duplicate compatible "mediatek,mt6357" found in schemas 
+>>> matching "$id":
 >>
->> dtschema/dtc warnings/errors:
->> Warning: Duplicate compatible "mediatek,mt6357" found in schemas 
->> matching "$id":
+>> I'm using dtschema 2024.09 and the dt_bindings_check didn't report 
+>> this issue even the full check has been run.
 > 
-> I'm using dtschema 2024.09 and the dt_bindings_check didn't report this 
-> issue even the full check has been run.
+> Hopefully I've found a way to update latest dtschema without bothering 
+> IT. ;)
+> 
+> pip3 install -U git+https://github.com/devicetree-org/dt-schema.git@main
+> 
+> I'll run latest dt_bindings_check for v4 version.
+> 
+Dear Rob,
 
-Hopefully I've found a way to update latest dtschema without bothering 
-IT. ;)
+Just want to leave a note here.
 
-pip3 install -U git+https://github.com/devicetree-org/dt-schema.git@main
+After I've updated to dtschema 2024.10.dev3+gdc4787b,
+the 'make dt_bindings_check' still reported no error with this patch v3.
 
-I'll run latest dt_bindings_check for v4 version.
+pip show dtschema
 
-Thanks.
+Name: dtschema
+Version: 2024.10.dev3+gdc4787b
+Summary: DeviceTree validation schema and tools
+Home-page: https://github.com/devicetree-org/dt-schema
+
+python: 3.10
+pip: 24.2
+
+If you have any clue about root cause or any other dependencies
+of this environment issue, please let me know. I'll try to check if
+there is a fix. Thanks.
+
+Regards,
 Macpaul Lin
 
