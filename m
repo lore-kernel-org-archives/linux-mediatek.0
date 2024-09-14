@@ -4,94 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9947CFC6184
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Sep 2024 23:49:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 050B7FC6197
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Sep 2024 05:59:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TI7TITmGzIQHc7WsNOaVJ244cb5V1Nwa651mKiB3q/E=; b=MRG/HMlg5SEM5Rqz5J/yQ9tVbc
-	wMzQebZ9N5+W+spQaeIYy9FssamGwz6Y1zx31kQTf/Ipve9bhgzF0EC8kcaUPBu7grgYvIx5XyOAS
-	9rLJ+qiuQjousvvXKtZcTU2FGqV9EttQqlfYV1KOK2HUajt206YgHA+twslCScS1elxpvI20vxTER
-	yqpO25edzqYWGl+paOF4vXuK3YwlW+xKy11F+cRzwv9fp8+SpH056pBHKlUM7dJgIsup/LQKg0Bh8
-	8cOkI0wnA+bg2oLs5ndo13N/2HxhJ5ciFZDtybEFN5NH6V10nqwVBF//fxvK+lVo21ifmphLIJ2si
-	a2HvN1PQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=r1M7ruRNRUYjRohbwuaCuLvbF8h8qL/m91LCjTsa0pY=; b=Cij1adzqz4QooKu2klWquuMzIH
+	cuRFl9qx0qzB6zJRM24CJ72AC+Vuo/yH68nCg1+ftNBdd4FAERBD0epvsd4cZYqrcwlqIX8+++cV/
+	NvKMFcjTaaOALgkdcAm8Odnt1Z5699SmzC2QF4Z8DKG8XEj+p11mE5YnwDNztgxPJN4pebopmqB29
+	0et5EJVlTb4upUlyOmJziAM3gSNKTvY4ZWI6zWiQ4BOQje3CgmpKuUxfyn2VpUaSr9zlYsi0SZkEG
+	u+XeyA3nhZx0LrikuczauKWEJIR2iPo5gIBPl0YNyoI8oD7ExmOyWmuXVnLSv4BDcmHDBt4c/OO+4
+	cYiGUUzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1spG2c-0000000HNYs-0sr7;
-	Fri, 13 Sep 2024 23:49:30 +0000
-Received: from mail-qv1-xf2d.google.com ([2607:f8b0:4864:20::f2d])
+	id 1spLoY-00000000AdP-2gDq;
+	Sat, 14 Sep 2024 05:59:22 +0000
+Received: from flow7-smtp.messagingengine.com ([103.168.172.142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1spG2Y-0000000HNYE-3cZd
+	id 1spLmF-00000000AKZ-3q2o
 	for linux-mediatek@lists.infradead.org;
-	Fri, 13 Sep 2024 23:49:28 +0000
-Received: by mail-qv1-xf2d.google.com with SMTP id 6a1803df08f44-6c524b4a3aeso19270796d6.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 13 Sep 2024 16:49:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1726271365; x=1726876165; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=TI7TITmGzIQHc7WsNOaVJ244cb5V1Nwa651mKiB3q/E=;
-        b=DuCt0m3nktwLoN+ZZTadqaBEnfvvjSFPa/14sVs7vHLeZgOxf1NGu7R/9s2GOHX9+T
-         hFsVWydyMusoap6+wXgpiExj5xovoWQIeZ0jM4PykpZgP3FXiTlq4lrO71T6/9P2yWM8
-         gtZgAXIgx3DAlgEsN/S37ON9G+gudrJgli3HM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726271365; x=1726876165;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=TI7TITmGzIQHc7WsNOaVJ244cb5V1Nwa651mKiB3q/E=;
-        b=ZkSFr5bJVkh2CiCw0RRs67PAYfz0eiEhyCs0VO2MZy11+abN1xgmiZaaXqbt2v2C/z
-         4cQuyyNOQZoyLyHQ3vrdfjiRQLuKSUwasNar/+u0aYR+anRM8rkXZqiv4rDbIFwsOekc
-         3/lzu8UKPTX3QqEQzQiTrnU8ObyqgUQGxRfqnwhzWrNy3Lv1mWkd6wFE8wmmwqaung3z
-         LCfx1HBDohmFjudBcv4gDWnpfmQ9+YZ3jeku7pDkcfpxkADbRAXz0Q94mfF/Br02MNun
-         roZOlxMP3jrKAHyGoiGtpDUekqoLbtXvWa582lRdqHB8FlRBM4ZN7o5hZBZgXkxcInI+
-         wiqQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWrWMf79ckF2C6APgw6da46AxZZ/CDFuW3KhjwwpGRoFUFAorBBr3zDdXTUXdRva/tIsYjIQvSg8vRPxbJ4rQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyvbgwPBB7qIu8nnbrnkkz9/qxPtPyjJlJrElDusFUZytZCf78n
-	c58xgo1hwa5Vks0CBNg9RVNTJj7uc0Yy8BGMSyak7nn+ck/RV0Z0M9rppl4yskAZJduYUshFrH4
-	=
-X-Google-Smtp-Source: AGHT+IGsvFJOiHF8YBL6Nlm8cI4QzyVtLADTCkawe/odJwzhvytIVtqeJI7ROA4R+gILT3joOLX8/w==
-X-Received: by 2002:a0c:f208:0:b0:6c5:540c:82b0 with SMTP id 6a1803df08f44-6c57350c38amr111829666d6.4.1726271365021;
-        Fri, 13 Sep 2024 16:49:25 -0700 (PDT)
-Received: from mail-qk1-f174.google.com (mail-qk1-f174.google.com. [209.85.222.174])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6c58c64237asm1383886d6.64.2024.09.13.16.49.24
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Sep 2024 16:49:24 -0700 (PDT)
-Received: by mail-qk1-f174.google.com with SMTP id af79cd13be357-7a9ae8fc076so281232785a.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 13 Sep 2024 16:49:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUVXO9s1i6nqB3XYNlOIJJW0aKFcRoNaaqjcv/HghZFFOxJs+F77Dp4w6lcQLlYvxHrVWaZwQPQy/1xLhBgRA==@lists.infradead.org
-X-Received: by 2002:a05:6214:448c:b0:6c3:5599:93a0 with SMTP id
- 6a1803df08f44-6c57347d602mr144060086d6.0.1726271006617; Fri, 13 Sep 2024
- 16:43:26 -0700 (PDT)
+	Sat, 14 Sep 2024 05:57:01 +0000
+Received: from phl-compute-12.internal (phl-compute-12.phl.internal [10.202.2.52])
+	by mailflow.phl.internal (Postfix) with ESMTP id 946DF2000B1;
+	Sat, 14 Sep 2024 01:56:56 -0400 (EDT)
+Received: from phl-mailfrontend-01 ([10.202.2.162])
+  by phl-compute-12.internal (MEProxy); Sat, 14 Sep 2024 01:56:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=cc
+	:cc:content-type:content-type:date:date:from:from:in-reply-to
+	:in-reply-to:message-id:mime-version:references:reply-to:subject
+	:subject:to:to; s=fm1; t=1726293416; x=1726300616; bh=r1M7ruRNRU
+	YjRohbwuaCuLvbF8h8qL/m91LCjTsa0pY=; b=oiKgM+gD3RT2ib83IZzlMUM41J
+	1QbbZbmqBdJBHGGq2WpIaVCB+Ge+quoKsOMtuTLjJU5FPrpf3AWVOSXUWufjkobc
+	Ux0gg/ailm0C6haQPKngJlphanol8xtASqkbxiRNz99xBSdrvitByIwdSb21ynUP
+	KjVrk8hB3bAQpmUgemoRUpsK+bKiiAIPPDWPapZSagCdKMQ5ge1AW/XrsWFQTwMP
+	F4RDYSkfDl+Wcd9dVsnrVtym0x6XIZOrwiCRwgvpIx5h5j55RnWUnbhFUG9s3cog
+	fjUNDG1LVo+t1N5W4dgZuvH1AcytA0fLz8imKR9A7wp7OTVZzKxu1ycFvz5w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:content-type:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:subject:subject:to
+	:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm1; t=1726293416; x=1726300616; bh=r1M7ruRNRUYjRohbwuaCuLvbF8h8
+	qL/m91LCjTsa0pY=; b=dTvhx3KGz7lzodcLtN7FWvG6iRBbtM/oQwdQbCu5H/2C
+	jj8ghPZhTT6JIuj2tIKfeGxBj2IkfRK80+ExL484EeqmZrhVsLg2l5vPGtYnwfZl
+	EVZXr9lnXwWosTTY/s9V1mZvmdv8K7qvLZPitDJgcFCDukmM9kHRZIi5FSJjIJRA
+	mIi6qaWZGknB3hgZRpwuTqTJmdERu+HLupSUz6isZMqog5g5W0OhIwa7l05Btgp4
+	w8+NRO/8sdktwMl7uD2jW1PioE3Cm4rp/uFIAP80+aDpYxZIPnGhlRCDMOyX0zlh
+	CtLZcLuqnQHFPbX/qEDrcG1yXxIikp/CeVIlURxUQA==
+X-ME-Sender: <xms:pyXlZo0ykIxWD-4xYHvIY8eHb8ErwcjcJqz8nEN6qGnQDD666ZKqzA>
+    <xme:pyXlZjFQwo4CElZ8_eq9qnVJabBqGqA7P5ZN70N1B-o4yxzh64J8yLDgtIt349CEW
+    ShDLB750snMgg>
+X-ME-Received: <xmr:pyXlZg6DVL-59vM29UlEnostWe8LhObGPwQ0ImNW3zzeSuwEgVOTX6MYjnCPYFq_07wWuALjworwc3bgLKYrESsBxw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrudejledguddtudcutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpggftfghnshhusghstghrihgsvgdp
+    uffrtefokffrpgfnqfghnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivg
+    hnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfhfgggtuggjsehttdertddttddv
+    necuhfhrohhmpefirhgvghcumffjuceoghhrvghgsehkrhhorghhrdgtohhmqeenucggtf
+    frrghtthgvrhhnpeegheeuhefgtdeluddtleekfeegjeetgeeikeehfeduieffvddufeef
+    leevtddtvdenucffohhmrghinhepkhgvrhhnvghlrdhorhhgnecuvehluhhsthgvrhfuih
+    iivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepghhrvghgsehkrhhorghhrdgtohhm
+    pdhnsggprhgtphhtthhopeehgedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtoheprg
+    hnughrvgifsehluhhnnhdrtghhpdhrtghpthhtohepohhlthgvrghnvhesghhmrghilhdr
+    tghomhdprhgtphhtthhopegrlhgvgigrnhguvghrrdhsvhgvrhgulhhinhesshhivghmvg
+    hnshdrtghomhdprhgtphhtthhopehnvghtuggvvhesvhhgvghrrdhkvghrnhgvlhdrohhr
+    ghdprhgtphhtthhopegrrhhinhgtrdhunhgrlhesrghrihhntgelrdgtohhmpdhrtghpth
+    htohepuggrnhhivghlsehmrghkrhhothhophhirgdrohhrghdprhgtphhtthhopeguqhhf
+    vgigthesghhmrghilhdrtghomhdprhgtphhtthhopehsvggrnhdrfigrnhhgsehmvgguih
+    grthgvkhdrtghomhdprhgtphhtthhopehfrdhfrghinhgvlhhlihesghhmrghilhdrtgho
+    mh
+X-ME-Proxy: <xmx:pyXlZh3NhZ47W8ot1yzi438QqhshqQMC_t9XFoqvfNOTSMt5VhKiEw>
+    <xmx:pyXlZrEnQC7yKvdjSbHpNdDdDCFjizNJ7TGZIjnSiciYgqbskDAwaA>
+    <xmx:pyXlZq-IDOu97cyMH9awHz4QyfjAFCflPRcJso-FJKiv2wBdSj1ksw>
+    <xmx:pyXlZgn-FI0AoKPDAFRSg9cIKczVtuMSzJNK60Ux6G4dAS_2JdCfYw>
+    <xmx:qCXlZlD-5VlMMQYk06m3uJiE1IpLx5akx0bxavQG_4jtn2jPM_iELKKW>
+Feedback-ID: i787e41f1:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
+ 14 Sep 2024 01:56:54 -0400 (EDT)
+Date: Sat, 14 Sep 2024 07:56:52 +0200
+From: Greg KH <greg@kroah.com>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Vladimir Oltean <olteanv@gmail.com>,
+	"A. Sverdlin" <alexander.sverdlin@siemens.com>,	netdev@vger.kernel.org,
+	=?iso-8859-1?Q?Ar1n=E7_=DCNAL?= <arinc.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,	Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	UNGLinuxDriver@microchip.com,
+	Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
+	linux-mediatek@lists.infradead.org, bridge@lists.linux.dev,
+	stable@vger.kernel.org
+Subject: Re: [PATCH 1/2] net: dsa: RCU-protect dsa_ptr in struct net_device
+Message-ID: <2024091436-gas-phonebook-0018@gregkh>
+References: <20240910130321.337154-1-alexander.sverdlin@siemens.com>
+ <20240910130321.337154-2-alexander.sverdlin@siemens.com>
+ <20240913190326.xv5qkxt7b3sjuroz@skbuf>
+ <28d0a7a5-ead6-4ce0-801c-096038823259@lunn.ch>
 MIME-Version: 1.0
-References: <20240911072751.365361-1-wenst@chromium.org> <20240911072751.365361-9-wenst@chromium.org>
-In-Reply-To: <20240911072751.365361-9-wenst@chromium.org>
-From: Doug Anderson <dianders@chromium.org>
-Date: Fri, 13 Sep 2024 16:43:15 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=XvPA0UC87fQ+RvFzPv9qRSEP6eQhT79JOx9Arj87i9Mg@mail.gmail.com>
-Message-ID: <CAD=FV=XvPA0UC87fQ+RvFzPv9qRSEP6eQhT79JOx9Arj87i9Mg@mail.gmail.com>
-Subject: Re: [PATCH v7 08/10] i2c: of-prober: Add GPIO support to simple helpers
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
-	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
-	Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
-	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>, 
-	Jiri Kosina <jikos@kernel.org>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
-	linux-i2c@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <28d0a7a5-ead6-4ce0-801c-096038823259@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240913_164926_926459_158EAB58 
-X-CRM114-Status: GOOD (  17.93  )
+X-CRM114-CacheID: sfid-20240913_225700_263297_7DEF0F85 
+X-CRM114-Status: GOOD (  15.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,84 +134,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Fri, Sep 13, 2024 at 09:27:23PM +0200, Andrew Lunn wrote:
+> > >  drivers/net/dsa/mt7530.c                    |   3 +-
+> > >  drivers/net/dsa/ocelot/felix.c              |   3 +-
+> > >  drivers/net/dsa/qca/qca8k-8xxx.c            |   3 +-
+> > >  drivers/net/ethernet/broadcom/bcmsysport.c  |   8 +-
+> > >  drivers/net/ethernet/mediatek/airoha_eth.c  |   2 +-
+> > >  drivers/net/ethernet/mediatek/mtk_eth_soc.c |  22 +++--
+> > >  drivers/net/ethernet/mediatek/mtk_ppe.c     |  15 ++-
+> > >  include/linux/netdevice.h                   |   2 +-
+> > >  include/net/dsa.h                           |  36 +++++--
+> > >  include/net/dsa_stubs.h                     |   6 +-
+> > >  net/bridge/br_input.c                       |   2 +-
+> > >  net/core/dev.c                              |   3 +-
+> > >  net/core/flow_dissector.c                   |  19 ++--
+> > >  net/dsa/conduit.c                           |  66 ++++++++-----
+> > >  net/dsa/dsa.c                               |  19 ++--
+> > >  net/dsa/port.c                              |   3 +-
+> > >  net/dsa/tag.c                               |   3 +-
+> > >  net/dsa/tag.h                               |  19 ++--
+> > >  net/dsa/tag_8021q.c                         |  10 +-
+> > >  net/dsa/tag_brcm.c                          |   2 +-
+> > >  net/dsa/tag_dsa.c                           |   8 +-
+> > >  net/dsa/tag_qca.c                           |  10 +-
+> > >  net/dsa/tag_sja1105.c                       |  22 +++--
+> > >  net/dsa/user.c                              | 104 +++++++++++---------
+> > >  net/ethernet/eth.c                          |   2 +-
+> > >  25 files changed, 240 insertions(+), 152 deletions(-)
+> > 
+> > Thank you for the patch, and I would like you to not give up on it, even
+> > if we will go for a different bug fix for 'stable'.
+> > 
+> > It's just that it makes me a bit uneasy to have this as the bug fix.
+> 
+> +1
+> 
+> We should try for a minimal fix for stable, and keep this for
+> net-next, given its size.
+> 
+> https://www.kernel.org/doc/html/latest/process/stable-kernel-rules.html
+> 
+> * It must be obviously correct and tested.
+> * It cannot be bigger than 100 lines, with context.
 
-On Wed, Sep 11, 2024 at 12:29=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> =
-wrote:
->
-> +static int i2c_of_probe_simple_set_gpio(struct device *dev, struct i2c_o=
-f_probe_simple_ctx *ctx)
-> +{
-> +       int ret;
-> +
-> +       if (!ctx->gpiod)
-> +               return 0;
-> +
-> +       dev_dbg(dev, "Setting GPIO\n");
-> +
-> +       ret =3D gpiod_direction_output_raw(ctx->gpiod, ctx->opts->gpio_hi=
-gh_to_enable ? 1 : 0);
-> +       if (ret)
-> +               return ret;
-> +
-> +       msleep(ctx->opts->post_reset_deassert_delay_ms);
-
-Like in the previous patch, you need an "if
-(ctx->opts->post_reset_deassert_delay_ms)" before the msleep().
-
-
-> +static void i2c_of_probe_simple_disable_gpio(struct device *dev, struct =
-i2c_of_probe_simple_ctx *ctx)
-> +{
-> +       if (!ctx->gpiod)
-> +               return;
-> +
-> +       dev_dbg(dev, "Setting GPIO to input\n");
-> +
-> +       gpiod_direction_input(ctx->gpiod);
-
-This is weird. Why set it to input?
-
-
-> @@ -347,6 +438,7 @@ int i2c_of_probe_simple_cleanup(struct device *dev, v=
-oid *data)
->  {
->         struct i2c_of_probe_simple_ctx *ctx =3D data;
->
-> +       i2c_of_probe_simple_disable_gpio(dev, ctx);
-
-Maybe add a comment before the GPIO call that it's a noop if we found
-something and i2c_of_probe_simple_free_res_early() was already called?
-Otherwise you need to read into the function to understand why this
-doesn't crash if the early call was made. To me, that makes the
-abstraction add confusion instead of simplifying things.
-
-
-> @@ -92,24 +93,33 @@ int i2c_of_probe_component(struct device *dev, const =
-struct i2c_of_probe_cfg *cf
->   * struct i2c_of_probe_simple_opts - Options for simple I2C component pr=
-ober callbacks
->   * @res_node_compatible: Compatible string of device node to retrieve re=
-sources from.
->   * @supply_name: Name of regulator supply.
-> + * @gpio_name: Name of GPIO.
-
-Talk about the fact that gpio_name can be NULL or an empty string and
-that they mean different things.
-
-
->   * @post_power_on_delay_ms: Delay in ms after regulators are powered on.=
- Passed to msleep().
-> + * @post_reset_deassert_delay_ms: Delay in ms after GPIOs are set. Passe=
-d to msleep().
-> + * @gpio_high_to_enable: %true if GPIO should be set to electrical high =
-to enable component.
-
-Now that you've added the GPIOs and more delays, the description of
-this structure needs to list exactly what the power sequence your
-simple functions assume.
-
-I would also say: given that you're providing a parameter anyway and
-you're giving the GPIO name, can you please move away from the "raw"
-values and move to "logical" values?
+It's fine if it fixes something properly, to go over those limits.
 
