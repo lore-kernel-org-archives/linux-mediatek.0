@@ -4,86 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3E2CC3ABA0
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Sep 2024 16:14:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE561C3ABA3
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Sep 2024 19:35:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=hNZ1r0i2EWsUM1gTtvTP6iHnQAcCgxDwEygERSSrjaI=; b=GRn+MlPc63PcjMGM7ejEULpvHd
-	Vjb8TKcULR9MKFHFqHy/budnhP7gLCloh9aET3gQr44o3cj/0ezDcjAQI0IkfNMQND3Mb2UCoMteB
-	2e0vtw8SrKUy4fk2PJipOrDCJtpJjd1LF/AY7KYFjS8VYb1VaD7L3ZCPohdbVZ6Pd6iVC0+W9z0pk
-	3zSpCeu/MXmNMPZL1wCsZTwJznt9xcIPczwLhdCx5ZvwoFdEtHw8sEIaTcSDEcdiDuDMA/Wmt3gB5
-	zLB/3FN88Jc3KhXvyUdNGtMX/yIIv3i77/9q/v0IKN1OfoND7IC9SAzqQLJfl+WWCO7iUBCYIQM1y
-	sCM0X0UQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nRpxdaFIHzOzVsYksVQ0yHwIyLAz6RoLwdsQAhW66Vo=; b=gwla9z8AUFLLN23SBEJaq05Fio
+	851U+qPRtF/azu7JzHUWFn4UJEcPHT8OdkBVWG69YbAEVpTRw8ViglrT+PxYuQdsoXk1xylQhbNhF
+	zBTYd7pj6rWeapkiyPFahr/Yp8ePusf7JT36hiOIg8zQb9ADxP2sxZjTtl/HVSQ5v9GmGDp7hAZXx
+	b/evXt6E5mhS5ZTbMsEpU+aD9Xj63FXqdyQ5aDnCN0wZIiWclloM4rUOsuZxNpSjPQwp7Cg6J04xX
+	CLsD1T4QLwUCrHSKFgUbh8YPlkj11NJSIe6fk3gvOgmtyRYUrZ/V3FwRTNTFvskjUrAU3fk/frXb9
+	j65CT9DQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sprsz-00000002L0g-21hZ;
-	Sun, 15 Sep 2024 16:14:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1spv2I-00000002aFF-2kIb;
+	Sun, 15 Sep 2024 19:35:54 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sprru-00000002Kw8-16ch;
-	Sun, 15 Sep 2024 16:12:59 +0000
-X-UUID: 5b214ebc737d11efba0aef63c0775dbf-20240915
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=hNZ1r0i2EWsUM1gTtvTP6iHnQAcCgxDwEygERSSrjaI=;
-	b=UELd1nZ5jD+Sdu8QtRm2jq0SlkATlSBA93Xi0Wj7Uz9ie8spnXQeiXowEA5vLN9kYlPVCbPWkvYsYFlXvtGaQOVtJady5Kp6ColTINfIBoMHezbvbWRcaVqeJJHezkwqcE7zBWLNDi+ndJR1JWspfz5hTMgmR5M7PKDd9qXiUi0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:d640dbdf-91f9-402c-9f35-2ba5b0c85307,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:34aa3dd0-7921-4900-88a1-3aef019a55ce,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 5b214ebc737d11efba0aef63c0775dbf-20240915
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 831237877; Sun, 15 Sep 2024 09:12:50 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 16 Sep 2024 00:12:46 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 16 Sep 2024 00:12:46 +0800
-From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-To: Alper Nebi Yasak <alpernebiyasak@gmail.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: Shawn Sung <shawn.sung@mediatek.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, "Jason-JH . Lin"
-	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, "Nancy
- Lin" <nancy.lin@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2] drm/mediatek: ovl: Add fmt_support_man for MT8192 and MT8195
-Date: Mon, 16 Sep 2024 00:12:45 +0800
-Message-ID: <20240915161245.30296-1-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1spv1B-00000002a1L-0UTs;
+	Sun, 15 Sep 2024 19:34:46 +0000
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-201d5af11a4so42310955ad.3;
+        Sun, 15 Sep 2024 12:34:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlemail.com; s=20230601; t=1726428884; x=1727033684; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=nRpxdaFIHzOzVsYksVQ0yHwIyLAz6RoLwdsQAhW66Vo=;
+        b=K6vbwREoKdA4Vu3d8fC48V1XV03QwtzrUS2M1BLbmWGaGNttnBIj0N5y3O6PNOTniV
+         +2wTYYdBPt5UCvQhM1Bf/43obJ9jv68xLg7grtYmOaYyf4Jbf4pSLZ7f3qKtSGol76+d
+         AK1Y32wrzJtt23CdrGi+O4bKXG84JPOicKCSanVJTHo0ythovY4sCcV2UziS0WiRIvxY
+         5kM5vl40r8mntTFUo0T5ECLikeHI0RRSWCPFOAjvcP5aKB1O/SFOzCxjQ1W1m+TRBxld
+         YEEDijwZRVHrzQ/oHcl8qwju0QYrspU5mhl+QPfV1QZ7S6YDlwwVX4vUa4E3+NX/oPkW
+         9QJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1726428884; x=1727033684;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=nRpxdaFIHzOzVsYksVQ0yHwIyLAz6RoLwdsQAhW66Vo=;
+        b=JCXWfaqF2qVkpzAgtTbIAziN7drWwGaCQFJ+UdZpd0yloBVu1VUzsEn+vjrjT6A3dY
+         rdjcllhkwfBoL03JxVr9VdmCB+845pTYGHeYY5lgHWVpXIUaw3EkU5VyDoXSt6AKcaOL
+         fprVjAjKmAgJkKNHu3r9KBD/gvX/QWUfL3SuJLAfr3jDDjneTejWW7N2rZMdXl9cWvvQ
+         0aHmYjIvrA+/8iuaSCT4ldYhRftVaypG6beoEC8hEOM8b/JapIME0VjntB1nCRey5q1K
+         m9uDgYxHIftrzQxW/WvIgn18d6TmRHS+oRAwYXpUkqA1YiSI5KlO6Q6ETXrWNl+TqgQC
+         H3WA==
+X-Forwarded-Encrypted: i=1; AJvYcCUk1ryua3L1UH9AuX+H6xsfrIZbKsjLpXT9DEc7vtO363/GXp/7M6Euf8BH6sgKpWg+7HlDxXsqWmYNNn8KTKpaNg==@lists.infradead.org, AJvYcCVKlwJj5wEg12fW5B4kvTS2vmKofHkVLqjSLBmbFx3ZRz6qBD0K5afGgcmk+Y9mOqwP04oYwejSJF0IC73CNTc=@lists.infradead.org, AJvYcCVRq6SOH+aQXKd79FeUN5OWH1rIbPXQlTy0d+c3U7p2l63bPFir1fMfUKc53wER3zUOUhKXx8ncvcJWLq8a@lists.infradead.org
+X-Gm-Message-State: AOJu0Yype78H+Vo9YhJZIt5ooEykt5tzuLWJCdpA5JIeu7AfJgFGp0Fo
+	Kxrz0E4Zm6GMlMpEB015fybGWsf3b3Qka7unKvuEajRau/2WcwbtwZDrV3wRuqHe/M8sqbtGbAR
+	560SqdouuVS5Ot0S6quLTM1iHKoM=
+X-Google-Smtp-Source: AGHT+IEwWAUsKsReKqUwRX6bFUHcxg5LdPrAbDWpBlNKgtnCiuqZNg9QIOcYa1yarrAewo3Icr/xRF2g9uLNksk5XsM=
+X-Received: by 2002:a17:902:ecc4:b0:202:508c:b598 with SMTP id
+ d9443c01a7336-2076e447f9cmr210991925ad.59.1726428884437; Sun, 15 Sep 2024
+ 12:34:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--12.635900-8.000000
-X-TMASE-MatchedRID: LIcGYmSXSDozP1+hKLmUcMu00lnG8+PWIaLR+2xKRDLb6Y+fnTZUL0/3
-	ZkXeY1OA6eS1Op7zNynNm52TpbFN7NMd/xz9OgvcA9lly13c/gHmELBDcs0dnQqiCYa6w8tv5sZ
-	TwYHfBM5BHv20aQGKCx1+KsAVmYZiXHEPHmpuRH0URSScn+QSXt0H8LFZNFG7bkV4e2xSge79/t
-	TnQt11ajNTj3nkQ/kevBS707Nog9ImKZteJCYG+0sMHBii02BH
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--12.635900-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 8B727294A5D89EEAA7E4A3D476C35C50F3980071A25ADD2361203F28CC166F6F2000:8
-X-MTK: N
+References: <20240908-regmap-config-const-v1-0-28f349004811@linaro.org> <20240908-regmap-config-const-v1-1-28f349004811@linaro.org>
+In-Reply-To: <20240908-regmap-config-const-v1-1-28f349004811@linaro.org>
+From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Date: Sun, 15 Sep 2024 21:34:33 +0200
+Message-ID: <CAFBinCB=4MtDSc94N-ijgjd0T6-O9pe26Wg+B44miX=iY1vmow@mail.gmail.com>
+Subject: Re: [PATCH 1/5] drm/meson: drop unused staitc dw_hdmi_dwc_write_bits
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+	Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@nxp.com>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Jagan Teki <jagan@amarulasolutions.com>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	dri-devel@lists.freedesktop.org, linux-amlogic@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240915_091258_313944_E8810B1A 
-X-CRM114-Status: GOOD (  12.98  )
+X-CRM114-CacheID: sfid-20240915_123445_177117_BE937483 
+X-CRM114-Status: UNSURE (   8.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,133 +102,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-OVL_CON_CLRFMT_MAN is an configuration for extending color format
-settings of DISP_REG_OVL_CON(n).
-It will change some of the original color format settings.
+On Sun, Sep 8, 2024 at 4:21=E2=80=AFPM Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
+>
+> static inline dw_hdmi_dwc_write_bits() function is not used at all:
+>
+>   drivers/gpu/drm/meson/meson_dw_hdmi.c:276:20: error: unused function 'd=
+w_hdmi_dwc_write_bits' [-Werror,-Wunused-function]
+>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 
-Take the settings of (3 << 12) for example.
-- If OVL_CON_CLRFMT_MAN = 0 means OVL_CON_CLRFMT_RGBA8888.
-- If OVL_CON_CLRFMT_MAN = 1 means OVL_CON_CLRFMT_PARGB8888.
+maybe s/staitc/static/ can be applied to $SUBJECT when applying this patch
 
-Since OVL_CON_CLRFMT_MAN is not supported on previous SoCs,
-It breaks the OVL color format setting of MT8173.
-So add fmt_support_man to the driver data of MT8192 and MT8195
-to solve the downgrade problem.
 
-Fixes: a3f7f7ef4bfe ("drm/mediatek: Support "Pre-multiplied" blending in OVL")
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 43 ++++++++++++++++++++-----
- 1 file changed, 35 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 89b439dcf3a6..7b053ca25b10 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -70,10 +70,33 @@
- #define OVL_CON_CLRFMT_UYVY	(4 << 12)
- #define OVL_CON_CLRFMT_YUYV	(5 << 12)
- #define OVL_CON_MTX_YUV_TO_RGB	(6 << 16)
--#define OVL_CON_CLRFMT_PARGB8888 ((3 << 12) | OVL_CON_CLRFMT_MAN)
--#define OVL_CON_CLRFMT_PABGR8888 (OVL_CON_CLRFMT_PARGB8888 | OVL_CON_RGB_SWAP)
--#define OVL_CON_CLRFMT_PBGRA8888 (OVL_CON_CLRFMT_PARGB8888 | OVL_CON_BYTE_SWAP)
--#define OVL_CON_CLRFMT_PRGBA8888 (OVL_CON_CLRFMT_PABGR8888 | OVL_CON_BYTE_SWAP)
-+
-+#define OVL_CON_CLRFMT_PARGB8888(ovl)  ({ \
-+	struct mtk_disp_ovl *_ovl = (ovl); \
-+	(_ovl->data->fmt_support_man ? \
-+	((3 << 12) | OVL_CON_CLRFMT_MAN) : OVL_CON_CLRFMT_ARGB8888); \
-+})
-+
-+#define OVL_CON_CLRFMT_PABGR8888(ovl)  ({ \
-+	struct mtk_disp_ovl *_ovl = (ovl); \
-+	(_ovl->data->fmt_support_man ? \
-+	(OVL_CON_CLRFMT_PARGB8888(_ovl) | OVL_CON_RGB_SWAP) : OVL_CON_CLRFMT_ABGR8888); \
-+})
-+
-+#define OVL_CON_CLRFMT_PBGRA8888(ovl)  ({ \
-+	struct mtk_disp_ovl *_ovl = (ovl); \
-+	(_ovl->data->fmt_support_man ? \
-+	(OVL_CON_CLRFMT_PARGB8888(_ovl) | OVL_CON_BYTE_SWAP) : \
-+	 OVL_CON_CLRFMT_BGRA8888); \
-+})
-+
-+#define OVL_CON_CLRFMT_PRGBA8888(ovl)  ({ \
-+	struct mtk_disp_ovl *_ovl = (ovl); \
-+	(_ovl->data->fmt_support_man ? \
-+	(OVL_CON_CLRFMT_PABGR8888(_ovl) | OVL_CON_BYTE_SWAP) : \
-+	OVL_CON_CLRFMT_RGBA8888); \
-+})
-+
- #define OVL_CON_CLRFMT_RGB565(ovl)	((ovl)->data->fmt_rgb565_is_0 ? \
- 					0 : OVL_CON_CLRFMT_RGB)
- #define OVL_CON_CLRFMT_RGB888(ovl)	((ovl)->data->fmt_rgb565_is_0 ? \
-@@ -144,6 +167,7 @@ struct mtk_disp_ovl_data {
- 	unsigned int gmc_bits;
- 	unsigned int layer_nr;
- 	bool fmt_rgb565_is_0;
-+	bool fmt_support_man;
- 	bool smi_id_en;
- 	bool supports_afbc;
- 	const u32 *formats;
-@@ -410,28 +434,28 @@ static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt,
- 	case DRM_FORMAT_RGBA1010102:
- 		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
- 		       OVL_CON_CLRFMT_RGBA8888 :
--		       OVL_CON_CLRFMT_PRGBA8888;
-+		       OVL_CON_CLRFMT_PRGBA8888(ovl);
- 	case DRM_FORMAT_BGRX8888:
- 	case DRM_FORMAT_BGRA8888:
- 	case DRM_FORMAT_BGRX1010102:
- 	case DRM_FORMAT_BGRA1010102:
- 		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
- 		       OVL_CON_CLRFMT_BGRA8888 :
--		       OVL_CON_CLRFMT_PBGRA8888;
-+		       OVL_CON_CLRFMT_PBGRA8888(ovl);
- 	case DRM_FORMAT_XRGB8888:
- 	case DRM_FORMAT_ARGB8888:
- 	case DRM_FORMAT_XRGB2101010:
- 	case DRM_FORMAT_ARGB2101010:
- 		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
- 		       OVL_CON_CLRFMT_ARGB8888 :
--		       OVL_CON_CLRFMT_PARGB8888;
-+		       OVL_CON_CLRFMT_PARGB8888(ovl);
- 	case DRM_FORMAT_XBGR8888:
- 	case DRM_FORMAT_ABGR8888:
- 	case DRM_FORMAT_XBGR2101010:
- 	case DRM_FORMAT_ABGR2101010:
- 		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
- 		       OVL_CON_CLRFMT_ABGR8888 :
--		       OVL_CON_CLRFMT_PABGR8888;
-+		       OVL_CON_CLRFMT_PABGR8888(ovl);
- 	case DRM_FORMAT_UYVY:
- 		return OVL_CON_CLRFMT_UYVY | OVL_CON_MTX_YUV_TO_RGB;
- 	case DRM_FORMAT_YUYV:
-@@ -662,6 +686,7 @@ static const struct mtk_disp_ovl_data mt8192_ovl_driver_data = {
- 	.gmc_bits = 10,
- 	.layer_nr = 4,
- 	.fmt_rgb565_is_0 = true,
-+	.fmt_support_man = true,
- 	.smi_id_en = true,
- 	.formats = mt8173_formats,
- 	.num_formats = ARRAY_SIZE(mt8173_formats),
-@@ -672,6 +697,7 @@ static const struct mtk_disp_ovl_data mt8192_ovl_2l_driver_data = {
- 	.gmc_bits = 10,
- 	.layer_nr = 2,
- 	.fmt_rgb565_is_0 = true,
-+	.fmt_support_man = true,
- 	.smi_id_en = true,
- 	.formats = mt8173_formats,
- 	.num_formats = ARRAY_SIZE(mt8173_formats),
-@@ -682,6 +708,7 @@ static const struct mtk_disp_ovl_data mt8195_ovl_driver_data = {
- 	.gmc_bits = 10,
- 	.layer_nr = 4,
- 	.fmt_rgb565_is_0 = true,
-+	.fmt_support_man = true,
- 	.smi_id_en = true,
- 	.supports_afbc = true,
- 	.formats = mt8195_formats,
--- 
-2.43.0
-
+Best regards,
+Martin
 
