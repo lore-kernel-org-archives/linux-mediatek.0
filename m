@@ -4,84 +4,202 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C39CC35FE4
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Sep 2024 11:33:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF52AC3ABA1
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Sep 2024 14:57:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3jqgD7JGOh3XQ9WV2JGG8COEbPlsIIfrvC/7Hdf1d4I=; b=TWG+O39zfcHhjI2f6gKgN50Pae
-	ye/2RbnDko/qsEwI4zOd4FytQY5NP86mCqw0PSj7uFshl0gHFEjUPHSt/jPVrt2kaHB5MjDvyrLGG
-	ulnmzCCLSPqAqVcohqAQ76J+NnBwzWFY1gdFr94l16Nh60q98115hsUq0SmR/8uRrlQmp/pCAs+vN
-	hD3wn34P7saKBgvzIn6rLFHZGCby+k2DdxF1yIMZLLft8Lw1pQk70UDbOamuYH9Beq9szhawAPJux
-	pwpvxi3qNIezyGHzF56qdrVanPKY5Z3YWWm3we42pkbsQs4Qk74Iz4xJRSVc9FTy26ywn5rOEsRGz
-	vccVv6cw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aG02h23OiCM7iE6kpBhZuwZmMQn8maibJrMqcAo9BVg=; b=lzDaEmTluryvE9uJKrfXg/hKcd
+	ADlOR4iXNoSckhEwjLI8KDi7fsAa/4W0+w7zCYMRUcoOaDQegRyIDOLG7IGbcHiDB2IBvj7deSCG5
+	A35Ge52jWgTvo/dIDzfDi0uDmyZ78gFD882duI2iwBwbvUaDATcG0YcqArKQRrnZRjAnL/vR8z5b0
+	iiMt+JCsxl9jFsie272J76m51TTP5NYfdXyoe4qSmJdJSzETCowUuYJN8xVGSORCXF9+t+kmKOJ42
+	FYci8Uk+DfefdUSv85lwAQDutAgGMxt9G+Eu6NlPajua0m6Q4ZIOJE178rezS3/7BI/35LSR3B+0I
+	OzZfclEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1spnVq-000000021Mh-3JTL;
-	Sun, 15 Sep 2024 11:33:54 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1spqgm-00000002Fmb-01W6;
+	Sun, 15 Sep 2024 14:57:24 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1spnUk-000000021Hc-0JlL
-	for linux-mediatek@lists.infradead.org;
-	Sun, 15 Sep 2024 11:32:48 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-5356bb5522bso2905706e87.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 15 Sep 2024 04:32:45 -0700 (PDT)
+	id 1spqfg-00000002Fem-05I8;
+	Sun, 15 Sep 2024 14:56:17 +0000
+X-UUID: a3bbf7fe737211efb3adad29d29602c1-20240915
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=aG02h23OiCM7iE6kpBhZuwZmMQn8maibJrMqcAo9BVg=;
+	b=Ri6GnfwmPZfWcSasy4vGLce/MPMKwzfveFlm77jvmLNG4FX2soJ1M+DxhJ2k5bBr6uBJIgt5apvCR820B9WN8Z8IFYSs6EY5zP8iU67xeK3UYiQ8XgipvcNJoj6BZ2iMOrvBls+kMSM9Ve4Zch8ktVWODoD8vVNQkHD9foxd9U8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:1f950945-d8d2-4e79-b7e0-442aa982f486,IP:0,U
+	RL:0,TC:0,Content:2,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:2
+X-CID-META: VersionHash:6dc6a47,CLOUDID:baaefebf-d7af-4351-93aa-42531abf0c7b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:4|-5,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: a3bbf7fe737211efb3adad29d29602c1-20240915
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1755492393; Sun, 15 Sep 2024 07:56:08 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Sun, 15 Sep 2024 22:56:05 +0800
+Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Sun, 15 Sep 2024 22:56:05 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=GYQ9orW8Fi8kJDYl+Hr1+vbvJKz4r42jrPnzdroS+FgrAWtLF5ZyGHYKbe8dXEJGuptW1GwNRGIHjPNQJdRLtGUcdQiXVG6Jrmu10Dc5LyQotJDNQI9iFtB+hokrtYTKGmDKxIPijgD+wM0zC65FoTTfwn7Ao4GjR+ww8Fw81TXzhnx0P83j3mAABQbsZZ2gmu3XZdZTnhpkGQNKrpI5ObITI6z/cAY4/j8h/9CPhHfdsPNHa6wdg+RsaudYrtElN8rZeUmT5Wma12vSE29QiPi11MaBHcBMKtHR3FoGeYFVgXNW8bVkjlEH7tpmhCopbpWQRq09NtuIrRnVr+p/8Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=aG02h23OiCM7iE6kpBhZuwZmMQn8maibJrMqcAo9BVg=;
+ b=Qt0nSSWI3aFo4043fOTJ7se0H3qT0pkK1kzTKadFfWN0SeDaR9s08UNH0HdtdZUgAVncU390HvzfnhWGa0NyVOIrO9b8tIn+UCkbQccWkoNKcfCkoAjQO6XZVs8N6Z/80QeTuv7tj+MXNgvGfcst7dtY2slpZ14x0jps3R9NakDK0oKYBzP0iWUCSElxR38hIDIb/D4g1UoOazpBMI5elf0vh3ryqv9dRMFY9D2piMSyjW29INds2AMkkguUU1Rg9k5VYYieq4v0980IC6N9mLyIAa2lXM3g4Q8HI1Hv/X8Y2K/RgUDnZeQDdLoIxsTCjsSxd1rIr+Dikl2ront9Dw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1726399964; x=1727004764; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=3jqgD7JGOh3XQ9WV2JGG8COEbPlsIIfrvC/7Hdf1d4I=;
-        b=eH3p9/Ycy1cyUA7/m6Y/pUD3UIskqSRGoFuPKiIrzGcey0T2ovTdZhSntsdImqsIpv
-         OVc7qErUWKO7LMfLqWgPDkSa/F64GSNAnaW3GIPLDfjT44/gf6jX77geK5/VV16MRCwu
-         P+N/jgZfDYaQpgt44exZHmgKfMAqkmE3QPdu0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726399964; x=1727004764;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=3jqgD7JGOh3XQ9WV2JGG8COEbPlsIIfrvC/7Hdf1d4I=;
-        b=gxYfA+xkqDaNvk8Y3RYF/MsuPRPhO3CooOZlixDxnQ4jpFwQs2+855Lf+4+2O19Lh3
-         IEpO9w9CF7EFkdsitQwCUNnn8Uy/Xr+LMnSu9f1SYMOA+HLwEnlBPacgMF17hXrqyz+J
-         WgN5jnRKdFuR6RAvGeXBzja1uY+M4cQVzChzsbNVEXO5YXfCZDu/IvgJ8Z+vjy1j+w0G
-         tVa1A2pxjLY2n6+hDHuMxzigVKAzLV7tgRGnP5WKwLVgAKXMnNUhlaw6io5mG3Obubpd
-         +P4R5gesssPvatbfRReZhxgYs+Dygbcxi5geI8hwTCQlCjGXCbp32KqeTVvthnvafhCt
-         JdWg==
-X-Forwarded-Encrypted: i=1; AJvYcCVbFEkoBBsASn1SJcG12wt0G8/F7TsZKuIyB0thTjW0cHvj3ObjcGkuADnevjydITODTSCADDHZR/ca3jUwQg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwDNJUh96orjtFbA438oJYE8uhD4VKWLxVA5m/UbrvkVTSKQg5p
-	l/ASTLhbsL4+5hmY5wo9NJq2ld2o0aKz6ZzMrnG9NNQYy4Z0+dGVwgMZMLWllHV8sBUfnpVgXdY
-	xu06bUWM7Ze6CM4JHVEIpy67p/oJjwD7k6JZy
-X-Google-Smtp-Source: AGHT+IFwmiQcKMAA0cM4UP9yt10EN0wVUgbSokaKnMqT+tBazXs/fmJfvGPNeXWF3G9iOi3lB19695luyPtvvpRK0xc=
-X-Received: by 2002:a05:6512:a90:b0:535:3dae:a14b with SMTP id
- 2adb3069b0e04-5367feba05emr4032845e87.2.1726399963747; Sun, 15 Sep 2024
- 04:32:43 -0700 (PDT)
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=aG02h23OiCM7iE6kpBhZuwZmMQn8maibJrMqcAo9BVg=;
+ b=brAADTaTALOPkzP145ugaE/CAzQbGhHfbrlm7rtQFBBSnG+HxybfI5ydUP/JAtlsv5lLEFfL2+GKF+3M65/MXoVYcsXRW7C/KJzuAiTW3JjMaqTTbhcCdljSlDKqhUTTct58Nl/iPokyXKCHGG6YMuub2z7uYwX2EdvFFAa9x9s=
+Received: from SEYPR03MB7682.apcprd03.prod.outlook.com (2603:1096:101:149::11)
+ by TYZPR03MB7603.apcprd03.prod.outlook.com (2603:1096:400:424::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7962.22; Sun, 15 Sep
+ 2024 14:56:02 +0000
+Received: from SEYPR03MB7682.apcprd03.prod.outlook.com
+ ([fe80::c6cc:cbf7:59cf:62b6]) by SEYPR03MB7682.apcprd03.prod.outlook.com
+ ([fe80::c6cc:cbf7:59cf:62b6%5]) with mapi id 15.20.7939.022; Sun, 15 Sep 2024
+ 14:56:02 +0000
+From: =?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
+To: "alpernebiyasak@gmail.com" <alpernebiyasak@gmail.com>,
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+	"angelogioacchino.delregno@collabora.com"
+	<angelogioacchino.delregno@collabora.com>
+CC: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	=?utf-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
+	=?utf-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
+	=?utf-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	Project_Global_Chrome_Upstream_Group
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [PATCH] drm/mediatek: ovl: Add fmt_support_man for MT8192 and
+ MT8195
+Thread-Topic: [PATCH] drm/mediatek: ovl: Add fmt_support_man for MT8192 and
+ MT8195
+Thread-Index: AQHbBuNDcX8t2xL/w0KKblb8EZpDN7JYraOAgABDWIA=
+Date: Sun, 15 Sep 2024 14:56:02 +0000
+Message-ID: <dfe83cde23f263f4d791da093c5655f10d56577a.camel@mediatek.com>
+References: <20240914201819.3357-1-jason-jh.lin@mediatek.com>
+	 <c8f8d556-77bf-4b60-abd9-bfcf7ac40ac5@gmail.com>
+In-Reply-To: <c8f8d556-77bf-4b60-abd9-bfcf7ac40ac5@gmail.com>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEYPR03MB7682:EE_|TYZPR03MB7603:EE_
+x-ms-office365-filtering-correlation-id: 38b0618f-f7c1-4dfa-17bd-08dcd596848c
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|376014|366016|38070700018;
+x-microsoft-antispam-message-info: =?utf-8?B?S2VoUUQ2VG1xWFVNcXFOMHdIbEJFTHdDbTBiT2FmODdnVnY5d1dLUmF2dGZR?=
+ =?utf-8?B?THdIMllEdnU2SCtOTVd2dys1bzFMd05sdlQ3MDRPWDVWTlZuZVhnVmoyZFNz?=
+ =?utf-8?B?ZnBqWGp2bEpleGlMakk4SFozaG8wSTBlQ2Z4SitlNlpzckpsYkdPci96V1FE?=
+ =?utf-8?B?a2ZRc0JRaE1KQ2tOZlFEQm4wL1Q3UFJIeURJSW4yUnBSV1dVKzE4OVVZd3Yy?=
+ =?utf-8?B?c205REFOVnBBRWhCSURqRStqZFJPZzViQmxwM1ZIZzJZckRGWWtucGNoZ3Ez?=
+ =?utf-8?B?M3dPbXJKR1MxSzRBWENjbWs0QlhTa2FiSjJnM29uWVhQMnh4OEZPSW9oQUZi?=
+ =?utf-8?B?V2ZkYzNwd0RHUG4vektZOG5NNXNBRVlETHJUT2VZcVdIbEM4WURjSWlSYTc0?=
+ =?utf-8?B?dEljMG5zR2ZFQnVGU28yeEswcFNxYzl4Y0VTZ2pGY28vek83bmJkNWVFekFR?=
+ =?utf-8?B?R0JaYnVBQjB5VUU5VDQxS3ZMb2hzSnpDenNBM3hIT3hnSHVRR3loYjdFT3BV?=
+ =?utf-8?B?blV0Tk9jaUN3a0h0dkFjU0FaQkdHNlJGNTZLNGU4cjFKZG11TGtZZnNIalM3?=
+ =?utf-8?B?c2R5ZlpxRWt5aEJXRW1aVjJvSmxlZStFY0YxQ1dWZUNMbVJONGhGSklBMy9H?=
+ =?utf-8?B?Tmx1NUNSZzBxd1dUL2hBbGpINDEvVE94SnpwM0haS3pHZEJOelFUbW12ZUp6?=
+ =?utf-8?B?dWZSWi9hSkkrVTRycDZYdHN0RWlXdnJmZGh2VW1BbkFCVnM3TUxCVUhKWFZq?=
+ =?utf-8?B?VFRlNVpvUWFZQUVVQ3dPU3hQNkFmai9hRkQ0aml1S1RYblFGOWJmNE9sWVRt?=
+ =?utf-8?B?NkZpR1AwMTZrN1B1dCtVOUpTM3pycmlZaWZWUVFRQWlGZnhsYkZiUzROM3JN?=
+ =?utf-8?B?eTVYckFaU0w4aFB3UzRqdHAxeFhGbjY1dU5teTFXRHF6ZERyb3VJdFY2UjJL?=
+ =?utf-8?B?UndlY04zZkVhbEdVQzhQVjh4QkFKYjdvdGFvYzhFaGxjb3Y1ZHY1TmlldHVz?=
+ =?utf-8?B?a0RvVlpiUUZpUVBCbStVU1lGQXZUa1hObmhqcFBPTDVYdmtrcm5NdjdFbzlk?=
+ =?utf-8?B?Z0xoRWFQdWVzTGovMjluTXV1L1M0akFPRGg1dEtXejBhVG1odUFwMUdiWWlU?=
+ =?utf-8?B?TU5RMTZTOHR6M3JhMytCcVdmZHVBSnBKTlg0UGVSaElVU3pEUUNFa1RBUENv?=
+ =?utf-8?B?MVVHQVlXU2FvdnBNZC9LZ3JacGZNRUZkRmoxbm5USDg0Z21IZzJmNFNmd1ZK?=
+ =?utf-8?B?L1FSKzMxYXZlUkovOGVUNTVjSER2ZFFLY3BabEVESDdkaFVxckVXYzl6TDVy?=
+ =?utf-8?B?Yi9TcUgyYUdPN3dIMkI3WHJOcU0zTDQzaUdjU2JnUEVqUEJsMzBtSXFsSDlw?=
+ =?utf-8?B?Qno4elVlaHM4TXk1ME51alk0VEFlaGg5WU5FeE53SmszTGNKY0ZrZG40TDlE?=
+ =?utf-8?B?R1lKYnBXcWR4ZkQvTkVJSjZZeDZ3MndHNDJrY01NV2FtOHN2UmE5YUJQd25C?=
+ =?utf-8?B?OEE2MVV1cmVoK2F0TFhPOUhMMWFYcUMxek4zMXZ6SzhuZHRYWUFGZXZXdjVt?=
+ =?utf-8?B?RysyS2xNbHZBbUl3MWV6RFpZc1I2QnZFRHZtcW9RbS9vZ3p4OVEwNk9SaCtw?=
+ =?utf-8?B?Mjc2YlNGc3pXOHhjOFpYTkNwSVZtSHpMcko1b2IxS0ZkYTVpMnV2SEdqcEdH?=
+ =?utf-8?B?S0grNEF0T1doNkpnWmZSeGg1VG1peXhicklpTm4vNjNQMy8xS1FNNFNOMENl?=
+ =?utf-8?B?ZlFkdy9mRks3akRUa2kxbHAwZ3Jsd2t3T3FzbEtCNEtpN0lFSXpoZFZ5cHNt?=
+ =?utf-8?B?R29mZ3FrWHZzY0QrWCtMdz09?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEYPR03MB7682.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(366016)(38070700018);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?anZvZ2V3ZExYbFFieTN6RW1zbytod09mUFpEVFVJV1p0eXpuMkZnemJDY0pJ?=
+ =?utf-8?B?L0NhWUhWN3duNEZYREJEVjlDQ0NndzJsQzNPWG83R3ZTS215YVQwSjFPMndr?=
+ =?utf-8?B?empJQmpLMmhZaCs3MUJhUUFqN0JlU2tZSWMrb1hocitlMzJSbnlWZFpNcFdh?=
+ =?utf-8?B?a1JONExtbG5QY01IWVNoZlc4U2hVSGtrT3dlTVdMKzNMV3dBYjMyQ2RtbjB4?=
+ =?utf-8?B?UkhjRXlqOG9HSUgyTGY3RklsdnV3QzYzc29QZVVHenVrRWtyNXVPdUc2V080?=
+ =?utf-8?B?M1ZzTHZLVStEU2FRNXl6UmF6K2JoaGxjYU9zZWRkZSs5bTkyUmNXWU9McnBM?=
+ =?utf-8?B?bnEzYUZjU3Zsa0FtdG5tL1ovNVdob3dWeEdDcjBjc25rMzRBbDc1bjE1SE83?=
+ =?utf-8?B?cGV0NVNXV3lzallIWTZyMGtwTTZ4dTBkNThURmxSUE9OOWRPaVR5RDNqbzRF?=
+ =?utf-8?B?VjhTMnhIRzFTa0VrWGEzZkYzWldNWkk0Q25qeVhlQUxMS0Y5NkpNT3lSbDRC?=
+ =?utf-8?B?TFVTMW51aEh5eDAwV0trUGIrVG1tWVlNemJFTHhxcDE0WE4rYklnUnR0bVM3?=
+ =?utf-8?B?Ykt2NldYTU0wRFV6T0J1V2IwUW0vOTQ2T2dYTSs0emxVTHNtVU5aa1c5Qmc0?=
+ =?utf-8?B?aEFDcHV3NVNJam56WXpJdTUrSXQwR3FGTFFDV1FqQlNQdUdzK3Y5ZmhsRmps?=
+ =?utf-8?B?YUhnZGRLa2lKWEM4by9DSmFLTmJHcmttdVNMcHZOVi81cjVxbUdYK1FVck9Z?=
+ =?utf-8?B?UUdpenJNOEw4RUVDN2pkbmtRUE5ZRkttTUpmWGhxTDdFSFliWWU2c0h2YUJ2?=
+ =?utf-8?B?NWdyQ3BEQndzNS9nT3Y5UkdyQnVsMEVCK1NBOElteUQ1YkpSRUR6bkNhc09y?=
+ =?utf-8?B?RUVsT211UmN0d0IrdG9ETnFBU1E1cGhnVW1aTjYwMnlhWlZuWEk5dDMwY1p6?=
+ =?utf-8?B?VDUrZkZHTXdWRnUrbnFaQUhycUx1Uk9EVDVEamNqc3RteCtxL0lQb0RxSk56?=
+ =?utf-8?B?QmdrSkMzeGpadDNwMVJyWTJYYmo0M2o5YW4yTzZSTGxzQVkvcjhUWTRWZGlP?=
+ =?utf-8?B?RHIvWmpFVS90eGRCb3B4c08xbGdBRm5pdUdjekY1K0Z3M2F0cEM3NFhXSWNa?=
+ =?utf-8?B?Q0l0QWtiaVRwVFhsb3plcmJUVm8ydWJraFpUK0ZPcWQyRHZnRUM2U2MyeGM5?=
+ =?utf-8?B?WVF3MlNYK1pYdTI0RnRJTm9KblZYYkVDMmw1ajdia0M5c0NRNExEck9INmFJ?=
+ =?utf-8?B?N1RmaVFvOWxSUDBFSUtacXhSY3Z1dmhteStVSzNEK3BJVVJSYlU5R3dIaU93?=
+ =?utf-8?B?bTlxOUg4ZGpBVngyYTlrbVBGN1NNMDBwL09QVGZ1QjVzZkRpZ3RKdVhYVzZJ?=
+ =?utf-8?B?NGs5MmJ2MFNpVVVveWE1eHlRVllMZXJ3T0VWM203aEc3Wk9aVktCUjM5N1VC?=
+ =?utf-8?B?YnpiL1RYd2pVYkFlTHUrbEcvdDRkNjV3QmRuSGZSc1JXWWRkOERLMjZKY0VC?=
+ =?utf-8?B?TTZWelNVMktVdnpoNEtWcjRQVFZZR1ZhQTFYV3Ryay9yOGZucllOMHhoMkc3?=
+ =?utf-8?B?TXlUc3UrNis5WGJodFFEbWwyZHp4NzFRU2QrS01TaDllM0VQTUdjb1JiWDJr?=
+ =?utf-8?B?T1NwRHM4SThBMCtnemorcW00Q0M2ZHJpUE51T3h3VS9yT2JrWldlQklSeWx4?=
+ =?utf-8?B?NzJjT2gwMlJZWlZwK0hIc1pWZklzQVRDV2d0YUVVNVlrYmVGaUpiWFBJSit4?=
+ =?utf-8?B?NmR4OU5sYWFCeitsVmx0RGFrWlNVTkdic3NYSlVpbnFhaUE2dnRhWFByaWdX?=
+ =?utf-8?B?VitLa24vWFh5WUhhalNnZDhqUm9KZlk4bWdNbmwvWGtRNDc4YU1wc3JvYUVT?=
+ =?utf-8?B?Yk5LcDJIdnFGVlZXREJiQlhBZ3dwRzZXZ3F0VjFGNVA0cTljRklNeUJiY1VD?=
+ =?utf-8?B?R3Z2V2t4MUt1SitKK0FjNVNIZGRoRC9HM3VsSEg2Y1UrMTlHV1dDUVRMSnIr?=
+ =?utf-8?B?TE5teVRrZ200VUlhR3BaYXAyTjg4WGt4Tm9rbGY5Q2pZQWt5RWtuMTlkKzlv?=
+ =?utf-8?B?MmUvRU9iZlJXa1plRkVhTU91K1lKbG1IcmMveEcvNzNvRlMzR0RNTDhRYUNI?=
+ =?utf-8?B?a1ZTcDVBaE41cGpFTXoyQm5PbW9Gcjk4aTRRZXdoL1BkaXZYbW81dTMzb2N6?=
+ =?utf-8?B?SHc9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <5DCFA9F75339DE4CA0626205EA561AAC@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20240911072751.365361-1-wenst@chromium.org> <20240911072751.365361-7-wenst@chromium.org>
- <CAD=FV=Udc9aP7bSzTWP82zsaztRD2YnVNpSDA54FC0dKQ-Nz2A@mail.gmail.com>
-In-Reply-To: <CAD=FV=Udc9aP7bSzTWP82zsaztRD2YnVNpSDA54FC0dKQ-Nz2A@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Sun, 15 Sep 2024 13:32:32 +0200
-Message-ID: <CAGXv+5FRoiv+TPyeFTcuRanRuSh2-xUo6ttVPkW6o3tktUmcFA@mail.gmail.com>
-Subject: Re: [PATCH v7 06/10] i2c: Introduce OF component probe function
-To: Doug Anderson <dianders@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
-	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
-	Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
-	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>, 
-	Jiri Kosina <jikos@kernel.org>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
-	linux-i2c@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEYPR03MB7682.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 38b0618f-f7c1-4dfa-17bd-08dcd596848c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Sep 2024 14:56:02.5154
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: WivV2pKP0/OJqmvx7LJ/uFhfpRkh5+vPSD3CM2IHbdgirTTpkhfjEJd8WG+c3PEo1jD+iwvPc3rjy/OlEa28tobsr2sbLGwtrv4nyyJUeHs=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB7603
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240915_043246_173077_09675779 
-X-CRM114-Status: GOOD (  63.37  )
+X-CRM114-CacheID: sfid-20240915_075616_077084_D2CFB3DC 
+X-CRM114-Status: GOOD (  21.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,281 +214,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Sep 14, 2024 at 1:44=E2=80=AFAM Doug Anderson <dianders@chromium.or=
-g> wrote:
->
-> Hi,
->
-> On Wed, Sep 11, 2024 at 12:28=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org=
-> wrote:
-> >
-> > Some devices are designed and manufactured with some components having
-> > multiple drop-in replacement options. These components are often
-> > connected to the mainboard via ribbon cables, having the same signals
-> > and pin assignments across all options. These may include the display
-> > panel and touchscreen on laptops and tablets, and the trackpad on
-> > laptops. Sometimes which component option is used in a particular devic=
-e
-> > can be detected by some firmware provided identifier, other times that
-> > information is not available, and the kernel has to try to probe each
-> > device.
-> >
-> > This change attempts to make the "probe each device" case cleaner. The
-> > current approach is to have all options added and enabled in the device
-> > tree. The kernel would then bind each device and run each driver's prob=
-e
-> > function. This works, but has been broken before due to the introductio=
-n
-> > of asynchronous probing, causing multiple instances requesting "shared"
-> > resources, such as pinmuxes, GPIO pins, interrupt lines, at the same
-> > time, with only one instance succeeding. Work arounds for these include
-> > moving the pinmux to the parent I2C controller, using GPIO hogs or
-> > pinmux settings to keep the GPIO pins in some fixed configuration, and
-> > requesting the interrupt line very late. Such configurations can be see=
-n
-> > on the MT8183 Krane Chromebook tablets, and the Qualcomm sc8280xp-based
-> > Lenovo Thinkpad 13S.
-> >
-> > Instead of this delicate dance between drivers and device tree quirks,
-> > this change introduces a simple I2C component probe. function For a
->
-> s/probe. function/probe function./
-
-Ack.
-
-> > +static int i2c_of_probe_enable_node(struct device *dev, struct device_=
-node *node)
-> > +{
-> > +       int ret;
-> > +
-> > +       dev_info(dev, "Enabling %pOF\n", node);
-> > +
-> > +       struct of_changeset *ocs __free(kfree) =3D kzalloc(sizeof(*ocs)=
-, GFP_KERNEL);
-> > +       if (!ocs)
-> > +               return -ENOMEM;
->
-> I guess the kernel lets you mix code and declarations now? I'm still
-> used to all declarations being together but maybe I'm old school... I
-> would have put the "dev_info" below the allocation...
-
-AFAIK this is an exception. Excerpt from include/linux/cleanup.h:
-
-    When the unwind order matters it requires that variables be defined
-    mid-function scope rather than at the top of the file.
-
-and
-
-    Given that the "__free(...) =3D NULL" pattern for variables defined at
-    the top of the function poses this potential interdependency problem
-    the recommendation is to always define and assign variables in one
-    statement and not group variable definitions at the top of the
-    function when __free() is used.
-
-
->
-> > +/**
-> > + * i2c_of_probe_component() - probe for devices of "type" on the same =
-i2c bus
-> > + * @dev: Pointer to the &struct device of the caller, only used for de=
-v_printk() messages.
-> > + * @cfg: Pointer to the &struct i2c_of_probe_cfg containing callbacks =
-and other options
-> > + *       for the prober.
-> > + * @ctx: Context data for callbacks.
-> > + *
-> > + * Probe for possible I2C components of the same "type" (&i2c_of_probe=
-_cfg->type)
-> > + * on the same I2C bus that have their status marked as "fail".
->
-> I may have missed it, but originally this was ones marked
-> "fail-needs-probe", right? Now it tries all types of fail?
->
->
-> > + * Assumes that across the entire device tree the only instances of no=
-des
-> > + * prefixed with "type" are the ones that need handling for second sou=
-rce
-> > + * components. In other words, if "type" is "touchscreen", then all de=
-vice
-> > + * nodes named "touchscreen*" are the ones that need probing. There ca=
-nnot
->
-> "touchscreen*" implies that it can have an arbitrary suffix. Can it?
-
-That is the idea. The use case is for components that have conflicting
-addresses and need special probing. Such device nodes obviously can't
-have the same node name. This is planned but not implemented in this
-series.
-
-> ...or can it just have a unit address?
-
-IIUC in DT jargon the "node name" does not include the address. The name
-including the address is the "full name".
-
-> > + * be another "touchscreen" node that is already enabled.
-> > + *
-> > + * Assumes that for each "type" of component, only one actually exists=
-. In
-> > + * other words, only one matching and existing device will be enabled.
-> > + *
-> > + * Context: Process context only. Does non-atomic I2C transfers.
-> > + *          Should only be used from a driver probe function, as the f=
-unction
-> > + *          can return -EPROBE_DEFER if the I2C adapter or other resou=
-rces
-> > + *          are unavailable.
-> > + * Return: 0 on success or no-op, error code otherwise.
-> > + *         A no-op can happen when it seems like the device tree alrea=
-dy
-> > + *         has components of the type to be probed already enabled. Th=
-is
-> > + *         can happen when the device tree had not been updated to mar=
-k
-> > + *         the status of the to-be-probed components as "fail". Or thi=
-s
-> > + *         function was already run with the same parameters and succe=
-eded
-> > + *         in enabling a component. The latter could happen if the use=
-r
->
-> s/latter/later
-
-Are you sure?
-
-> > + *         had multiple types of components to probe, and one of them =
-down
-> > + *         the list caused a deferred probe. This is expected behavior=
-.
-> > + */
-> > +int i2c_of_probe_component(struct device *dev, const struct i2c_of_pro=
-be_cfg *cfg, void *ctx)
-> > +{
-> > +       const struct i2c_of_probe_ops *ops;
-> > +       const char *type;
-> > +       struct device_node *i2c_node;
-> > +       struct i2c_adapter *i2c;
-> > +       int ret;
-> > +
-> > +       if (!cfg)
-> > +               return -EINVAL;
->
-> Drop extra check of "!cfg". In general kernel conventions don't check
-> for NULL pointers passed by caller unless it's an expected case. You
-> don't check for a NULL "dev" and you shouldn't need to check for a
-> NULL "cfg". They are both simply required parameters.
-
-"dev" is only passed to dev_printk(), and that can handle "dev" being
-NULL. Same can't be said for "cfg".
-
-I don't know what the preference is though. Crashing is probably not the
-nicest thing, even if it only happens to developers.
-
-> There are a few other places in the patch series where it feels like
-> there are extra arg checks that aren't really needed...
->
->
-> > +       ops =3D cfg->ops ?: &i2c_of_probe_dummy_ops;
-> > +       type =3D cfg->type;
-> > +
-> > +       i2c_node =3D i2c_of_probe_get_i2c_node(dev, type);
-> > +       if (IS_ERR(i2c_node))
-> > +               return PTR_ERR(i2c_node);
-> > +
-> > +       for_each_child_of_node_with_prefix(i2c_node, node, type) {
->
-> I wouldn't object to a comment before this for loop:
->
-> /* If any devices of this type are already enabled then the function
-> is a noop */
->
-> ...or it could be a helper function.
-
-That is what the commeet within the loop is trying to say. I'll move
-it before the loop and incorporate your words. The loop can then be
-rewritten to return early.
-
-> > +               if (!of_device_is_available(node))
-> > +                       continue;
-> > +
-> > +               /*
-> > +                * Device tree has component already enabled. Either th=
-e
-> > +                * device tree isn't supported or we already probed onc=
-e.
-> > +                */
-> > +               ret =3D 0;
-> > +               goto out_put_i2c_node;
-> > +       }
-> > +
-> > +       i2c =3D of_get_i2c_adapter_by_node(i2c_node);
-> > +       if (!i2c) {
-> > +               ret =3D dev_err_probe(dev, -EPROBE_DEFER, "Couldn't get=
- I2C adapter\n");
-> > +               goto out_put_i2c_node;
-> > +       }
-> > +
-> > +       /* Grab resources */
-> > +       ret =3D 0;
-> > +       if (ops->get_resources)
-> > +               ret =3D ops->get_resources(dev, i2c_node, ctx);
-> > +       if (ret)
-> > +               goto out_put_i2c_adapter;
-> > +
-> > +       /* Enable resources */
-> > +       if (ops->enable)
-> > +               ret =3D ops->enable(dev, ctx);
-> > +       if (ret)
-> > +               goto out_release_resources;
->
-> I won't insist, but a part of me wonders whether we should just
-> combine "get_resources" and "enable" and then combine "cleanup" and
-> "free_resources_late". They are always paired one after another and
-> I'm having a hard time seeing why they need to be separate. It's not
-> like you'll ever get the resources and then enable/disable multiple
-> times.
-
-Maybe. The structure was carried over from the original non-callback
-version. I think it's easier to reason about if they are kept separate,
-especially since the outgoing path is slightly different when no working
-component is found and one of the callbacks ends up not getting called.
-
-> > +/**
-> > + * struct i2c_of_probe_ops - I2C OF component prober callbacks
-> > + *
-> > + * A set of callbacks to be used by i2c_of_probe_component().
-> > + *
-> > + * All callbacks are optional. Callbacks are called only once per run,=
- and are
-> > + * used in the order they are defined in this structure.
-> > + *
-> > + * All callbacks that have return values shall return %0 on success,
-> > + * or a negative error number on failure.
-> > + *
-> > + * The @dev parameter passed to the callbacks is the same as @dev pass=
-ed to
-> > + * i2c_of_probe_component(). It should only be used for dev_printk() c=
-alls
-> > + * and nothing else, especially not managed device resource (devres) A=
-PIs.
-> > + */
-> > +struct i2c_of_probe_ops {
-> > +       /** @get_resources: Retrieve resources for components. */
-> > +       int (*get_resources)(struct device *dev, struct device_node *bu=
-s_node, void *data);
-> > +
-> > +       /** @free_resources_early: Release exclusive resources prior to=
- enabling component. */
-> > +       void (*free_resources_early)(void *data);
->
-> It would be good if the doc here mentioned what happened if no
-> components were found and thus nothing was enabled. Is the function
-> still called? It looks like "no" and "cleanup" is in charge of
-> cleaning in this case. Feels like the docs need to be more explicit.
-
-Ack.
-
-
-Thanks
-ChenYu
+SGkgQWxwZXIsDQoNCk9uIFN1biwgMjAyNC0wOS0xNSBhdCAxMzo1NCArMDMwMCwgQWxwZXIgTmVi
+aSBZYXNhayB3cm90ZToNCj4gIAkgDQo+IEV4dGVybmFsIGVtYWlsIDogUGxlYXNlIGRvIG5vdCBj
+bGljayBsaW5rcyBvciBvcGVuIGF0dGFjaG1lbnRzIHVudGlsDQo+IHlvdSBoYXZlIHZlcmlmaWVk
+IHRoZSBzZW5kZXIgb3IgdGhlIGNvbnRlbnQuDQo+ICBIaSwNCj4gDQo+IE9uIDIwMjQtMDktMTQg
+MjM6MTggKzAzOjAwLCBKYXNvbi1KSC5MaW4gd3JvdGU6DQo+ID4gT1ZMX0NPTl9DTFJGTVRfTUFO
+IGlzIGFuIGNvbmZpZ3VyYXRpb24gZm9yIGV4dGVuZGluZyBjb2xvciBmb3JtYXQNCj4gPiBzZXR0
+aW5ncyBvZiBESVNQX1JFR19PVkxfQ09OKG4pLg0KPiA+IEl0IHdpbGwgY2hhbmdlIHNvbWUgb2Yg
+dGhlIG9yaWdpbmFsIGNvbG9yIGZvcm1hdCBzZXR0aW5ncy4NCj4gPiANCj4gPiBUYWtlIHRoZSBz
+ZXR0aW5ncyBvZiAoMyA8PCAxMikgZm9yIGV4YW1wbGUuDQo+ID4gLSBJZiBPVkxfQ09OX0NMUkZN
+VF9NQU4gPSAwIG1lYW5zIE9WTF9DT05fQ0xSRk1UX1JHQkE4ODg4Lg0KPiA+IC0gSWYgT1ZMX0NP
+Tl9DTFJGTVRfTUFOID0gMSBtZWFucyBPVkxfQ09OX0NMUkZNVF9QQVJHQjg4ODguDQo+ID4gDQo+
+ID4gU2luY2UgT1ZMX0NPTl9DTFJGTVRfTUFOIGlzIG5vdCBzdXBwb3J0ZWQgb24gcHJldmlvdXMg
+U29DcywNCj4gPiBJdCBicmVha3MgdGhlIE9WTCBjb2xvciBmb3JtYXQgc2V0dGluZyBvZiBNVDgx
+NzMuDQo+ID4gU28gYWRkIGZtdF9zdXBwb3J0X21hbiB0byB0aGUgZHJpdmVyIGRhdGEgb2YgTVQ4
+MTkyIGFuZCBNVDgxOTUNCj4gPiB0byBzb2x2ZSB0aGUgZG93bmdyYWRlIHByb2JsZW0uDQo+ID4g
+DQo+ID4gRml4ZXM6IGEzZjdmN2VmNGJmZSAoImRybS9tZWRpYXRlazogU3VwcG9ydCAiUHJlLW11
+bHRpcGxpZWQiDQo+IGJsZW5kaW5nIGluIE9WTCIpDQo+ID4gU2lnbmVkLW9mZi1ieTogSmFzb24t
+SkguTGluIDxqYXNvbi1qaC5saW5AbWVkaWF0ZWsuY29tPg0KPiA+IC0tLQ0KPiA+ICBkcml2ZXJz
+L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMgfCAyOCArKysrKysrKysrKysrKysrKyst
+LS0NCj4gLS0tLQ0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMjAgaW5zZXJ0aW9ucygrKSwgOCBkZWxl
+dGlvbnMoLSkNCj4gPiANCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kaXNwX292bC5jDQo+IGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292
+bC5jDQo+ID4gaW5kZXggODliNDM5ZGNmM2E2Li5hYTU3NTU2OWY5OTYgMTAwNjQ0DQo+ID4gLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jDQo+ID4gKysrIGIvZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jDQo+ID4gQEAgLTcwLDEwICs3MCwx
+OCBAQA0KPiA+ICAjZGVmaW5lIE9WTF9DT05fQ0xSRk1UX1VZVlkoNCA8PCAxMikNCj4gPiAgI2Rl
+ZmluZSBPVkxfQ09OX0NMUkZNVF9ZVVlWKDUgPDwgMTIpDQo+ID4gICNkZWZpbmUgT1ZMX0NPTl9N
+VFhfWVVWX1RPX1JHQig2IDw8IDE2KQ0KPiA+IC0jZGVmaW5lIE9WTF9DT05fQ0xSRk1UX1BBUkdC
+ODg4OCAoKDMgPDwgMTIpIHwgT1ZMX0NPTl9DTFJGTVRfTUFOKQ0KPiA+IC0jZGVmaW5lIE9WTF9D
+T05fQ0xSRk1UX1BBQkdSODg4OCAoT1ZMX0NPTl9DTFJGTVRfUEFSR0I4ODg4IHwNCj4gT1ZMX0NP
+Tl9SR0JfU1dBUCkNCj4gPiAtI2RlZmluZSBPVkxfQ09OX0NMUkZNVF9QQkdSQTg4ODggKE9WTF9D
+T05fQ0xSRk1UX1BBUkdCODg4OCB8DQo+IE9WTF9DT05fQllURV9TV0FQKQ0KPiA+IC0jZGVmaW5l
+IE9WTF9DT05fQ0xSRk1UX1BSR0JBODg4OCAoT1ZMX0NPTl9DTFJGTVRfUEFCR1I4ODg4IHwNCj4g
+T1ZMX0NPTl9CWVRFX1NXQVApDQo+ID4gKyNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfUEFSR0I4ODg4
+KG92bCkoKG92bCktPmRhdGEtPmZtdF9zdXBwb3J0X21hbiANCj4gPyBcDQo+ID4gKygoMyA8PCAx
+MikgfCBPVkxfQ09OX0NMUkZNVF9NQU4pIDogXA0KPiA+ICtPVkxfQ09OX0NMUkZNVF9BQkdSODg4
+OCkNCj4gDQo+IFNob3VsZCBiZSBPVkxfQ09OX0NMUkZNVF9BUkdCODg4OCAoKlJHQiogdnMgKkJH
+UiopPw0KPiANCj4gT3RoZXJ3aXNlIEkgc3RpbGwgc2VlIGJyb2tlbiBjb2xvcnMsIGJ1dCBpbiBi
+bHVlIGluc3RlYWQgb2YgcmVkLg0KPiANCg0KWWVzLCB0aGF0IHdhcyBhIHR5cG8uIEl0IHNob3Vs
+ZCBiZSBvcmlnaW5hbCBzZXR0aW5ncyAoQVJHQjg4ODgpLg0KDQo+ID4gKyNkZWZpbmUgT1ZMX0NP
+Tl9DTFJGTVRfUEFCR1I4ODg4KG92bCkoKG92bCktPmRhdGEtPmZtdF9zdXBwb3J0X21hbiANCj4g
+PyBcDQo+ID4gKyhPVkxfQ09OX0NMUkZNVF9QQVJHQjg4ODggfCBPVkxfQ09OX1JHQl9TV0FQKSA6
+IFwNCj4gDQo+IENvbXBpbGUgZXJyb3IsIGxpa2VseSAoT1ZMX0NPTl9DTFJGTVRfUEFSR0I4ODg4
+KG92bCkgfCAuLi4pPw0KPiANCg0KWWVzLCBteSBtaXN0YWtlLi4uDQoNCj4gPiArT1ZMX0NPTl9D
+TFJGTVRfQUJHUjg4ODgpDQo+ID4gKyNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfUEJHUkE4ODg4KG92
+bCkoKG92bCktPmRhdGEtPmZtdF9zdXBwb3J0X21hbiANCj4gPyBcDQo+ID4gKyhPVkxfQ09OX0NM
+UkZNVF9QQVJHQjg4ODggfCBPVkxfQ09OX0JZVEVfU1dBUCkgOiBcDQo+IA0KPiBTYW1lIGFzIGFi
+b3ZlLCBPVkxfQ09OX0NMUkZNVF9QQVJHQjg4ODgob3ZsKQ0KPiANCj4gPiArT1ZMX0NPTl9DTFJG
+TVRfQkdSQTg4ODgpDQo+ID4gKyNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfUFJHQkE4ODg4KG92bCko
+KG92bCktPmRhdGEtPmZtdF9zdXBwb3J0X21hbiANCj4gPyBcDQo+ID4gKyhPVkxfQ09OX0NMUkZN
+VF9QQUJHUjg4ODggfCBPVkxfQ09OX0JZVEVfU1dBUCkgOiBcDQo+IA0KPiBTYW1lIGFzIGFib3Zl
+LCBPVkxfQ09OX0NMUkZNVF9QQUJHUjg4ODgob3ZsKQ0KPiANCj4gPiArT1ZMX0NPTl9DTFJGTVRf
+UkdCQTg4ODgpDQo+ID4gICNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfUkdCNTY1KG92bCkoKG92bCkt
+PmRhdGEtPmZtdF9yZ2I1NjVfaXNfMCA/DQo+IFwNCj4gPiAgMCA6IE9WTF9DT05fQ0xSRk1UX1JH
+QikNCj4gPiAgI2RlZmluZSBPVkxfQ09OX0NMUkZNVF9SR0I4ODgob3ZsKSgob3ZsKS0+ZGF0YS0+
+Zm10X3JnYjU2NV9pc18wID8NCj4gXA0KPiANCj4gV2l0aCB0aG9zZSBjaGFuZ2VzLCBjb2xvcnMg
+YXJlIGZpbmUgb24gbXkgTVQ4MTczLCBNVDgxODMsIE1UODE4NiANCj4gQ2hyb21lYm9va3MuDQoN
+ClRoYW5rcyBmb3IgeW91ciB2ZXJpZmljYXRpb24uDQpJJ2xsIGZpeCB0aGVtIGFuZCBzZW5kIHYy
+IHNvb24uDQoNClJlZ2FyZHMsDQpKYXNvbi1KSC5MaW4NCg0K
 
