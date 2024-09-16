@@ -4,71 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D401CC3ABB2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Sep 2024 11:25:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AABB9C3ABB2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Sep 2024 11:39:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vsF7fdyTdEEDWvs454NS9wILn1VWIkjSyAN7D+we2oI=; b=2jJ/UplUcc/h95FfifyD7YxGYt
-	C3sEKhtgY6tv++YpQwLtZe9OvUL46DG+oF411SNJI8TguMcZBtfQ7Dvo0ROnHVbxv5drebmklY2qi
-	KK6KdqrnZNQVtFQH+zvVDReWDoKFCLzqp2AuRoSTLPX9COga6mcYgsvWc0y+41uGNFDUZD2vdMquL
-	8QA9J2UFF7v3Kli12cW+n/pqCKoudumZ1ftJL3YYHYYhBUj0xOy3Y3gYLX0YUEG7FbH7JxxF+hQvQ
-	VVZT3OnzbYJ9yJez8FC6iDvK16edyl8unjLyciU+h1ld7z0mzdO23AyfnQq1BZQ16g6r2t7IyBNTd
-	HnwBRAWA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=38IMJE5WIH2ScTHkA+IUKdspIObV4usS2GG6oZTIqTY=; b=CLT9Ro5yhXTPKkyuiTy+SM9lrL
+	YdIHY7GKxfgKzyAy5H44SnEoW88GAqQjwJBdScWryzQtoPKGYrZzpfEsAmslpstWOx3Trj5LWTlGn
+	4NpAdDAMvvhNPurOxriH9GUe3c8caX4n3HUricdwjU0gmmQuKAb2vaYBaQ3aSEt1BsKdfvDYSWvNN
+	dG0CqROGc7VdeCv45vgTzwXqTg1bvNwKfEVttIUEPvmZWDd8S8eLWQOhQHJnHaktJ3j/Ev8rfOPyz
+	+b/OprBMRsHwxZVq3HVg5IHtq36nWrxrI65JkUEgLEAtNUdpZ94w7H178QbjTgApk350RKPxMThkL
+	52y1KVSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sq9rF-00000003rRS-18D8;
-	Mon, 16 Sep 2024 11:25:29 +0000
-Received: from a7-44.smtp-out.eu-west-1.amazonses.com ([54.240.7.44])
+	id 1sqA5B-00000003tYV-0sQd;
+	Mon, 16 Sep 2024 11:39:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sq9rB-00000003rQv-3fY0;
-	Mon, 16 Sep 2024 11:25:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=4232tfv5ebdrjdwkr5zzm7kytdkokgug; d=collabora.com; t=1726485922;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding;
-	bh=b9Hf0NECwv6s4gGRA/67nmC+RMiiR+WL6ff+gNaTGFc=;
-	b=BZueL9mOjk5xk7PC5qDjDTkwysiPwIyXsqlslCaSG9+wfh3sZ+nABRost96K3U2v
-	7SiI5EJMbbaEWeSRvtB/0vU9Xdp/I93zkvyBJI11IjP0EIK1h6FB9aAuqoGld234Lck
-	nJDUMZ87HAoNE8xuf5CAkzgqIgJLx8z+Y5GbFAhcZVZz+2kZBfOS6v3/rkaOq9dB7WN
-	GwhC6ZwX5rFMJfXo6H6JX5X29q4+N0XXcK48c8M+aAkdcyKw3/yubaffHfrOIhuqV8S
-	pVz5kNFkRxYNqu4sohFlQ40+7aQdPI5dfiu91Y9oHCqNzdjL7L6wRES0M9u4Th5NC+d
-	9hNZ68/gxQ==
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=uku4taia5b5tsbglxyj6zym32efj7xqv; d=amazonses.com; t=1726485922;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Feedback-ID;
-	bh=b9Hf0NECwv6s4gGRA/67nmC+RMiiR+WL6ff+gNaTGFc=;
-	b=H8lr6C6dl4gKSzaI8NydjIkyMViIKZ/rVmiM21lWDsJBI9kAYtCoWjTOULZTXO4x
-	4Rvw4TJWHk1IrfCDaGsANbf1h7yAmf4dFb6rLtwTTE6CY+OQiKppLzbYiJ5OAFXexgA
-	DFFSKdAwAu3KB01ps38dAeNFCrhxz/Daw3JD2Gjw=
-Message-ID: <01020191fa9480c6-b4e6cdff-4134-4713-b255-1c65e0a97f87-000000@eu-west-1.amazonses.com>
-Date: Mon, 16 Sep 2024 11:25:22 +0000
+	id 1sqA58-00000003tXr-33nC
+	for linux-mediatek@lists.infradead.org;
+	Mon, 16 Sep 2024 11:39:52 +0000
+X-UUID: 5e5e10c6742011efb3adad29d29602c1-20240916
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=38IMJE5WIH2ScTHkA+IUKdspIObV4usS2GG6oZTIqTY=;
+	b=jhxDCcUQfj8x1AKi4hfzAODBlr8VP2hVuJ/6phat2W4ZkOQMQ5eYNpqQrTUULMLD3K8f55nmec3VfvdqAKHuRbhtl82MumcyCuOQag8bP966h52AMdMXNZoXyaSObwlv0AHBA2MkiedNQlzAG/hNpubbeqWga7anHYDOO//1h9g=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:21296158-1ec0-45a7-b8d5-1d4e861780ea,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:f2fa48d0-7921-4900-88a1-3aef019a55ce,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 5e5e10c6742011efb3adad29d29602c1-20240916
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2117794428; Mon, 16 Sep 2024 04:39:44 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 16 Sep 2024 19:39:41 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 16 Sep 2024 19:39:41 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>,
+	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth
+	<linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
+Subject: [PATCH 0/4] Bluetooth: btusb: Mediatek ISO interface cliam/release adjustment
+Date: Mon, 16 Sep 2024 19:39:34 +0800
+Message-ID: <20240916113938.30285-1-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] drm/mediatek: ovl: Add fmt_support_man for MT8192 and
- MT8195
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>, 
-	Alper Nebi Yasak <alpernebiyasak@gmail.com>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Shawn Sung <shawn.sung@mediatek.com>, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	Singo Chang <singo.chang@mediatek.com>, 
-	Nancy Lin <nancy.lin@mediatek.com>, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20240915161245.30296-1-jason-jh.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240915161245.30296-1-jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Feedback-ID: ::1.eu-west-1.YpP9ZbxnARFfy3Cb5pfsLd/pdsXBCNK0KEM7HforL4k=:AmazonSES
-X-SES-Outgoing: 2024.09.16-54.240.7.44
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240916_042526_148917_0857633C 
-X-CRM114-Status: GOOD (  20.51  )
+X-CRM114-CacheID: sfid-20240916_043950_800953_037196FC 
+X-CRM114-Status: UNSURE (   7.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,156 +86,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/09/24 18:12, Jason-JH.Lin ha scritto:
-> OVL_CON_CLRFMT_MAN is an configuration for extending color format
-> settings of DISP_REG_OVL_CON(n).
-> It will change some of the original color format settings.
-> 
-> Take the settings of (3 << 12) for example.
-> - If OVL_CON_CLRFMT_MAN = 0 means OVL_CON_CLRFMT_RGBA8888.
-> - If OVL_CON_CLRFMT_MAN = 1 means OVL_CON_CLRFMT_PARGB8888.
-> 
-> Since OVL_CON_CLRFMT_MAN is not supported on previous SoCs,
-> It breaks the OVL color format setting of MT8173.
-> So add fmt_support_man to the driver data of MT8192 and MT8195
-> to solve the downgrade problem.
-> 
-> Fixes: a3f7f7ef4bfe ("drm/mediatek: Support "Pre-multiplied" blending in OVL")
-> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-> ---
->   drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 43 ++++++++++++++++++++-----
->   1 file changed, 35 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> index 89b439dcf3a6..7b053ca25b10 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> @@ -70,10 +70,33 @@
->   #define OVL_CON_CLRFMT_UYVY	(4 << 12)
->   #define OVL_CON_CLRFMT_YUYV	(5 << 12)
->   #define OVL_CON_MTX_YUV_TO_RGB	(6 << 16)
-> -#define OVL_CON_CLRFMT_PARGB8888 ((3 << 12) | OVL_CON_CLRFMT_MAN)
-> -#define OVL_CON_CLRFMT_PABGR8888 (OVL_CON_CLRFMT_PARGB8888 | OVL_CON_RGB_SWAP)
-> -#define OVL_CON_CLRFMT_PBGRA8888 (OVL_CON_CLRFMT_PARGB8888 | OVL_CON_BYTE_SWAP)
-> -#define OVL_CON_CLRFMT_PRGBA8888 (OVL_CON_CLRFMT_PABGR8888 | OVL_CON_BYTE_SWAP)
-> +
-> +#define OVL_CON_CLRFMT_PARGB8888(ovl)  ({ \
-> +	struct mtk_disp_ovl *_ovl = (ovl); \
-> +	(_ovl->data->fmt_support_man ? \
-> +	((3 << 12) | OVL_CON_CLRFMT_MAN) : OVL_CON_CLRFMT_ARGB8888); \
-> +})
+MediaTek performs some test on the platform which can support LE audio and
+ISO data transmission with kernel driver. We found the additional interface
+claim and release flow issue need some adjustment.
 
-Isn't it just simpler to pass an "extended input format selection" flag to
-these macros, instead of the entire mtk_disp_ovl structure?
+These patches mainly add a callback function within the usb_disconnect function
+to prevent a kernel panic caused by interfaces not being released when the BT USB
+dongle is physically removed. Additionally, the condition for claiming/releasing
+ISO usb interface have also been adjusted to make driver works as expected.
 
-Something like...
+Chris Lu (4):
+  Bluetooth: btusb: mediatek: move Bluetooth power off in
+    btusb_mtk_shutdown
+  Bluetooth: btusb: add callback function in btusb_disconnect
+  Bluetooth: btusb: mediatek: add intf release flow in usb disconnect
+  Bluetooth: btusb: mediatek: change the conditions for
+    claiming/releasing iso interface
 
-#define OVL_CON_CLRFMT_PARGB8888(fmt_support_man)
+ drivers/bluetooth/btusb.c | 32 +++++++++++++++++++++-----------
+ 1 file changed, 21 insertions(+), 11 deletions(-)
 
-...or alternatively, it's probably simply more straightforward to assign
-function pointers to struct mtk_disp_ovl_data:
-
-`.fmt_convert = ovl_fmt_convert_mt8173` for MT8173-style controllers and
-`.fmt_convert = ovl_fmt_convert_mt8195` for MT8195-style controllers,
-
-so that you can simply call `con = ovl->data->fmt_convert(ovl, fmt, blend_mode)`
-in mtk_ovl_layer_config().
-
-The thing is - those macros seem to be unnecessarily complicated, and it's at
-least impacting on readability... :-)
-
-Cheers,
-Angelo
-
-> +
-> +#define OVL_CON_CLRFMT_PABGR8888(ovl)  ({ \
-> +	struct mtk_disp_ovl *_ovl = (ovl); \
-> +	(_ovl->data->fmt_support_man ? \
-> +	(OVL_CON_CLRFMT_PARGB8888(_ovl) | OVL_CON_RGB_SWAP) : OVL_CON_CLRFMT_ABGR8888); \
-> +})
-> +
-> +#define OVL_CON_CLRFMT_PBGRA8888(ovl)  ({ \
-> +	struct mtk_disp_ovl *_ovl = (ovl); \
-> +	(_ovl->data->fmt_support_man ? \
-> +	(OVL_CON_CLRFMT_PARGB8888(_ovl) | OVL_CON_BYTE_SWAP) : \
-> +	 OVL_CON_CLRFMT_BGRA8888); \
-> +})
-> +
-> +#define OVL_CON_CLRFMT_PRGBA8888(ovl)  ({ \
-> +	struct mtk_disp_ovl *_ovl = (ovl); \
-> +	(_ovl->data->fmt_support_man ? \
-> +	(OVL_CON_CLRFMT_PABGR8888(_ovl) | OVL_CON_BYTE_SWAP) : \
-> +	OVL_CON_CLRFMT_RGBA8888); \
-> +})
-> +
->   #define OVL_CON_CLRFMT_RGB565(ovl)	((ovl)->data->fmt_rgb565_is_0 ? \
->   					0 : OVL_CON_CLRFMT_RGB)
->   #define OVL_CON_CLRFMT_RGB888(ovl)	((ovl)->data->fmt_rgb565_is_0 ? \
-> @@ -144,6 +167,7 @@ struct mtk_disp_ovl_data {
->   	unsigned int gmc_bits;
->   	unsigned int layer_nr;
->   	bool fmt_rgb565_is_0;
-> +	bool fmt_support_man;
->   	bool smi_id_en;
->   	bool supports_afbc;
->   	const u32 *formats;
-> @@ -410,28 +434,28 @@ static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt,
->   	case DRM_FORMAT_RGBA1010102:
->   		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
->   		       OVL_CON_CLRFMT_RGBA8888 :
-> -		       OVL_CON_CLRFMT_PRGBA8888;
-> +		       OVL_CON_CLRFMT_PRGBA8888(ovl);
->   	case DRM_FORMAT_BGRX8888:
->   	case DRM_FORMAT_BGRA8888:
->   	case DRM_FORMAT_BGRX1010102:
->   	case DRM_FORMAT_BGRA1010102:
->   		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
->   		       OVL_CON_CLRFMT_BGRA8888 :
-> -		       OVL_CON_CLRFMT_PBGRA8888;
-> +		       OVL_CON_CLRFMT_PBGRA8888(ovl);
->   	case DRM_FORMAT_XRGB8888:
->   	case DRM_FORMAT_ARGB8888:
->   	case DRM_FORMAT_XRGB2101010:
->   	case DRM_FORMAT_ARGB2101010:
->   		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
->   		       OVL_CON_CLRFMT_ARGB8888 :
-> -		       OVL_CON_CLRFMT_PARGB8888;
-> +		       OVL_CON_CLRFMT_PARGB8888(ovl);
->   	case DRM_FORMAT_XBGR8888:
->   	case DRM_FORMAT_ABGR8888:
->   	case DRM_FORMAT_XBGR2101010:
->   	case DRM_FORMAT_ABGR2101010:
->   		return blend_mode == DRM_MODE_BLEND_COVERAGE ?
->   		       OVL_CON_CLRFMT_ABGR8888 :
-> -		       OVL_CON_CLRFMT_PABGR8888;
-> +		       OVL_CON_CLRFMT_PABGR8888(ovl);
->   	case DRM_FORMAT_UYVY:
->   		return OVL_CON_CLRFMT_UYVY | OVL_CON_MTX_YUV_TO_RGB;
->   	case DRM_FORMAT_YUYV:
-> @@ -662,6 +686,7 @@ static const struct mtk_disp_ovl_data mt8192_ovl_driver_data = {
->   	.gmc_bits = 10,
->   	.layer_nr = 4,
->   	.fmt_rgb565_is_0 = true,
-> +	.fmt_support_man = true,
->   	.smi_id_en = true,
->   	.formats = mt8173_formats,
->   	.num_formats = ARRAY_SIZE(mt8173_formats),
-> @@ -672,6 +697,7 @@ static const struct mtk_disp_ovl_data mt8192_ovl_2l_driver_data = {
->   	.gmc_bits = 10,
->   	.layer_nr = 2,
->   	.fmt_rgb565_is_0 = true,
-> +	.fmt_support_man = true,
->   	.smi_id_en = true,
->   	.formats = mt8173_formats,
->   	.num_formats = ARRAY_SIZE(mt8173_formats),
-> @@ -682,6 +708,7 @@ static const struct mtk_disp_ovl_data mt8195_ovl_driver_data = {
->   	.gmc_bits = 10,
->   	.layer_nr = 4,
->   	.fmt_rgb565_is_0 = true,
-> +	.fmt_support_man = true,
->   	.smi_id_en = true,
->   	.supports_afbc = true,
->   	.formats = mt8195_formats,
-
+-- 
+2.18.0
 
 
