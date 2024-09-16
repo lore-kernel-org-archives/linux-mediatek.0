@@ -4,89 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE561C3ABA3
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Sep 2024 19:35:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10994C3ABCB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Sep 2024 03:22:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nRpxdaFIHzOzVsYksVQ0yHwIyLAz6RoLwdsQAhW66Vo=; b=gwla9z8AUFLLN23SBEJaq05Fio
-	851U+qPRtF/azu7JzHUWFn4UJEcPHT8OdkBVWG69YbAEVpTRw8ViglrT+PxYuQdsoXk1xylQhbNhF
-	zBTYd7pj6rWeapkiyPFahr/Yp8ePusf7JT36hiOIg8zQb9ADxP2sxZjTtl/HVSQ5v9GmGDp7hAZXx
-	b/evXt6E5mhS5ZTbMsEpU+aD9Xj63FXqdyQ5aDnCN0wZIiWclloM4rUOsuZxNpSjPQwp7Cg6J04xX
-	CLsD1T4QLwUCrHSKFgUbh8YPlkj11NJSIe6fk3gvOgmtyRYUrZ/V3FwRTNTFvskjUrAU3fk/frXb9
-	j65CT9DQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+IOqEcyF+wRptElaCc4CaDiaFX9JHaL86p00XiKcQ6E=; b=fqrfVdkcukJIDjpkRZrqD0WYyM
+	0yvMtQLRQ/2zh/zx2863DcDAlmZiEO0cSjrw58QTEpweJl5TeUMYyPcG3knBPoj/PkW0wb8O6p3aP
+	ABRj8l83RD+P3EY7uY+3ZqEq+uof94eil+aT3Volt+56D1XLhq2AZUEU3ZT+W+SyZ7sUSY0FZD3gc
+	0kHis3wMYmxZqaBchdb+QvGHBFX7FbJMUl/ZNimvR+BmcZFB7SZ7QIFxbRUrVkdCCpXEXgFoFBjdg
+	OFCXh6VOxakrLheJh+IuzT7bNfc2IY5AcSJl0VbgHxRZcHb/3ayvrbaVOA0kQQp23V20dGryFVYkO
+	SpMUI+jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1spv2I-00000002aFF-2kIb;
-	Sun, 15 Sep 2024 19:35:54 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1sq2KD-00000002zgI-2nF0;
+	Mon, 16 Sep 2024 03:22:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1spv1B-00000002a1L-0UTs;
-	Sun, 15 Sep 2024 19:34:46 +0000
-Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-201d5af11a4so42310955ad.3;
-        Sun, 15 Sep 2024 12:34:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=googlemail.com; s=20230601; t=1726428884; x=1727033684; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=nRpxdaFIHzOzVsYksVQ0yHwIyLAz6RoLwdsQAhW66Vo=;
-        b=K6vbwREoKdA4Vu3d8fC48V1XV03QwtzrUS2M1BLbmWGaGNttnBIj0N5y3O6PNOTniV
-         +2wTYYdBPt5UCvQhM1Bf/43obJ9jv68xLg7grtYmOaYyf4Jbf4pSLZ7f3qKtSGol76+d
-         AK1Y32wrzJtt23CdrGi+O4bKXG84JPOicKCSanVJTHo0ythovY4sCcV2UziS0WiRIvxY
-         5kM5vl40r8mntTFUo0T5ECLikeHI0RRSWCPFOAjvcP5aKB1O/SFOzCxjQ1W1m+TRBxld
-         YEEDijwZRVHrzQ/oHcl8qwju0QYrspU5mhl+QPfV1QZ7S6YDlwwVX4vUa4E3+NX/oPkW
-         9QJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726428884; x=1727033684;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=nRpxdaFIHzOzVsYksVQ0yHwIyLAz6RoLwdsQAhW66Vo=;
-        b=JCXWfaqF2qVkpzAgtTbIAziN7drWwGaCQFJ+UdZpd0yloBVu1VUzsEn+vjrjT6A3dY
-         rdjcllhkwfBoL03JxVr9VdmCB+845pTYGHeYY5lgHWVpXIUaw3EkU5VyDoXSt6AKcaOL
-         fprVjAjKmAgJkKNHu3r9KBD/gvX/QWUfL3SuJLAfr3jDDjneTejWW7N2rZMdXl9cWvvQ
-         0aHmYjIvrA+/8iuaSCT4ldYhRftVaypG6beoEC8hEOM8b/JapIME0VjntB1nCRey5q1K
-         m9uDgYxHIftrzQxW/WvIgn18d6TmRHS+oRAwYXpUkqA1YiSI5KlO6Q6ETXrWNl+TqgQC
-         H3WA==
-X-Forwarded-Encrypted: i=1; AJvYcCUk1ryua3L1UH9AuX+H6xsfrIZbKsjLpXT9DEc7vtO363/GXp/7M6Euf8BH6sgKpWg+7HlDxXsqWmYNNn8KTKpaNg==@lists.infradead.org, AJvYcCVKlwJj5wEg12fW5B4kvTS2vmKofHkVLqjSLBmbFx3ZRz6qBD0K5afGgcmk+Y9mOqwP04oYwejSJF0IC73CNTc=@lists.infradead.org, AJvYcCVRq6SOH+aQXKd79FeUN5OWH1rIbPXQlTy0d+c3U7p2l63bPFir1fMfUKc53wER3zUOUhKXx8ncvcJWLq8a@lists.infradead.org
-X-Gm-Message-State: AOJu0Yype78H+Vo9YhJZIt5ooEykt5tzuLWJCdpA5JIeu7AfJgFGp0Fo
-	Kxrz0E4Zm6GMlMpEB015fybGWsf3b3Qka7unKvuEajRau/2WcwbtwZDrV3wRuqHe/M8sqbtGbAR
-	560SqdouuVS5Ot0S6quLTM1iHKoM=
-X-Google-Smtp-Source: AGHT+IEwWAUsKsReKqUwRX6bFUHcxg5LdPrAbDWpBlNKgtnCiuqZNg9QIOcYa1yarrAewo3Icr/xRF2g9uLNksk5XsM=
-X-Received: by 2002:a17:902:ecc4:b0:202:508c:b598 with SMTP id
- d9443c01a7336-2076e447f9cmr210991925ad.59.1726428884437; Sun, 15 Sep 2024
- 12:34:44 -0700 (PDT)
+	id 1sq2K9-00000002zfc-46v2
+	for linux-mediatek@lists.infradead.org;
+	Mon, 16 Sep 2024 03:22:52 +0000
+X-UUID: eef92f5873da11efb3adad29d29602c1-20240915
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=+IOqEcyF+wRptElaCc4CaDiaFX9JHaL86p00XiKcQ6E=;
+	b=uvLnKRca4Inmnjs7HUfRPC5S0nBwysgRqkOeuBeNbO30LKj5KRXlxVQFQuEazbu561lh7Ze9Liqf8JlXvBBdcH2FRqJ+yAQgswdjq850nLHXavIiEo/EFQjrzAW310QM4mRiUJuBdRSNXpDMUAV8P8e+ivsifezMMUneBlCfuPI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:10c16e7f-8660-4055-ad51-db8574cbb023,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:7b5b11b7-8c4d-4743-b649-83c6f3b849d4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: eef92f5873da11efb3adad29d29602c1-20240915
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <jiande.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 197909793; Sun, 15 Sep 2024 20:22:42 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 16 Sep 2024 11:22:39 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 16 Sep 2024 11:22:39 +0800
+From: Jiande Lu <jiande.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Chris Lu <chris.lu@mediatek.com>,
+	Deren Wu <deren.Wu@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>, Steve
+ Lee <steve.lee@mediatek.com>, linux-bluetooth
+	<linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Jiande Lu <jiande.lu@mediatek.com>
+Subject: [PATCH] Bluetooth: btusb: Add USB HW IDs for MT7920/MT7925
+Date: Mon, 16 Sep 2024 11:22:28 +0800
+Message-ID: <20240916032228.6601-1-jiande.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20240908-regmap-config-const-v1-0-28f349004811@linaro.org> <20240908-regmap-config-const-v1-1-28f349004811@linaro.org>
-In-Reply-To: <20240908-regmap-config-const-v1-1-28f349004811@linaro.org>
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Date: Sun, 15 Sep 2024 21:34:33 +0200
-Message-ID: <CAFBinCB=4MtDSc94N-ijgjd0T6-O9pe26Wg+B44miX=iY1vmow@mail.gmail.com>
-Subject: Re: [PATCH 1/5] drm/meson: drop unused staitc dw_hdmi_dwc_write_bits
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Neil Armstrong <neil.armstrong@linaro.org>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@nxp.com>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Jagan Teki <jagan@amarulasolutions.com>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	dri-devel@lists.freedesktop.org, linux-amlogic@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240915_123445_177117_BE937483 
-X-CRM114-Status: UNSURE (   8.61  )
+X-CRM114-CacheID: sfid-20240915_202251_092996_0D71EEC3 
+X-CRM114-Status: UNSURE (   9.76  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,20 +88,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Sep 8, 2024 at 4:21=E2=80=AFPM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
->
-> static inline dw_hdmi_dwc_write_bits() function is not used at all:
->
->   drivers/gpu/drm/meson/meson_dw_hdmi.c:276:20: error: unused function 'd=
-w_hdmi_dwc_write_bits' [-Werror,-Wunused-function]
->
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Reviewed-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Add HW IDs for wireless module. These HW IDs are extracted from
+Windows driver inf file and the test for card bring up successful.
 
-maybe s/staitc/static/ can be applied to $SUBJECT when applying this patch
+Signed-off-by: Jiande Lu <jiande.lu@mediatek.com>
+---
+ drivers/bluetooth/btusb.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 6c9c761d5b93..8946aafae640 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -563,6 +563,16 @@ static const struct usb_device_id quirks_table[] = {
+ 	{ USB_DEVICE(0x043e, 0x3109), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 
++	/* Additional MediaTek MT7920 Bluetooth devices */
++	{ USB_DEVICE(0x0489, 0xe134), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x13d3, 0x3620), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x13d3, 0x3621), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x13d3, 0x3622), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
++
+ 	/* Additional MediaTek MT7921 Bluetooth devices */
+ 	{ USB_DEVICE(0x0489, 0xe0c8), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
+@@ -636,6 +646,8 @@ static const struct usb_device_id quirks_table[] = {
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x0489, 0xe11e), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x0489, 0xe139), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x13d3, 0x3602), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x13d3, 0x3603), .driver_info = BTUSB_MEDIATEK |
+-- 
+2.45.2
 
-Best regards,
-Martin
 
