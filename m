@@ -4,64 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84B0BC3ABA2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Sep 2024 09:41:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEBB3C3ABA2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Sep 2024 10:04:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mer/t1aUZ3FRSNlEO+AwG0dMz5gbw++dNkMyrkDAUqc=; b=hxsxUyUgn6ZganYomFRHMA59Mj
-	Jhz4hg1MWPGtB0p/u//t9jIuIxgCNYoZLfDA6lWJrVwvyfkv42bTACCbDfo/n+1tBx1aDeg+MwAkz
-	OmGmiwecF+BF8N47tnO5oURUBnvsDTw2JkTBom5azNGwFNyHVMhCRgRrIuEEF/m9KX9tTy7WvEe3u
-	ERekAwiMLRSj4dJrWa2XhOxpNTJ2wCe9Xx5MaxIGlJPR2/yEBjAnJ9aAcVdIz3DW77CoA+90l6EpE
-	o7m+JVeVRAJo+F59tu1n+X81xvdMVm1mQowXChyN3deYyodYLwpBHPCn0DQeMxsg6C+1uXQJVnp2a
-	WUg+Dlng==;
+	bh=tGrOs7s46auXf4ImwdwcOLvUYr6VHEpCVeUM2SaB9uc=; b=S9iq5nClHcqfbfZS4d27DyFjb3
+	8ntf9AcfdHHS0Jej7FN6NqMtKTdc+Cs1BrZ+/CmOoR/ueafxJJ4R956gr0m+G9Yg3oBBx+qH2WUf0
+	GMz4QVUtQNQq/q2PPzld9FY0zywFm8beFGLEqu4B5m+xFT7XaJ5hhIjT+jCh14ZerPyeUVPPRY1Zp
+	IS3i5vQngO1/4PB1HakzHHt6U8S7sLaK1PYwb/K8CSSdbcdVl/78eVE4iK8EOSZEPvRcc75PJ2ESk
+	3pPHoq4LAmOdcVJjki8AYRIhsF2w3Xy6FKFCluMX1tTD2UP2eoo9BnLARhJuTEzxxx/UZFpjoW6L0
+	5dVJQ1Qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sq8EI-00000003bDc-0pkr;
-	Mon, 16 Sep 2024 09:41:10 +0000
+	id 1sq8aW-00000003eAH-1Gva;
+	Mon, 16 Sep 2024 10:04:08 +0000
 Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sq8DB-00000003b8u-0OOC;
-	Mon, 16 Sep 2024 09:40:03 +0000
+	id 1sq8ZK-00000003e4Y-36rN;
+	Mon, 16 Sep 2024 10:02:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 5210AA41C3C;
-	Mon, 16 Sep 2024 09:39:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 60DA8C4CEC4;
-	Mon, 16 Sep 2024 09:39:55 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 13783A41C54;
+	Mon, 16 Sep 2024 10:02:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8E07C4CEC7;
+	Mon, 16 Sep 2024 10:02:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1726479599;
-	bh=9hHrXVGNMzBUBk+Kjif8LZHfSPqln+0frZ1fgVO54fo=;
+	s=k20201202; t=1726480973;
+	bh=2JAcUazpILyjWEBfKP9J2vMMoWzkdvtOE73YS/HthaQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nE+1lr3q5XxILv9LWlZvZ4Ph87TAjsMmUXS0iNdqQxxhVS0ckfnRPfie9Me9c2TA3
-	 /j5oMKTWCbUcLWlP2/3ExB6NHs2ffObvMewZ28+t+5NiLjDQrqLIafNxVxqPmUlW5v
-	 r4vijYOrxbxFzVHcDVZ4DhKdcIC77VIyopD8j5e+zBdQJQH9p/PeE6aJBqkfgSs3AW
-	 s6HOxPBoVwlgC6Pa642T1pBO+ZSJ4oLQrUQYmURGNZdUWexaKM3z22sX3PyooF5KSM
-	 t9iYruRd7X9PvEcpKEUNUGzTOUMmPCTZ18RpmjMIfEm5Dw0WYH3mrOVsTiVWjN/t0x
-	 7yqmFc893fiag==
-Message-ID: <1d880cca-e847-4b8c-b517-bac36e5ec54a@kernel.org>
-Date: Mon, 16 Sep 2024 11:39:53 +0200
+	b=SmCKTdx4BqPrZ9VjlAHhbQRyex+r4GiqztP/6IvBFfAy4strRwH3ZMUzxbr9E+YKz
+	 GcnaQ2bgwtWgQRYvgU097TVr3MxD94YrzwCdO/Z/sRyHYKG2KzF+9e71PzqNIS0rMg
+	 TzFEOu7KodZ6FAdIVWr3cVmBM7LSenM8qk3LNmHxfWcPETC0cu3h/XtCR9TTxKezLa
+	 mK7b32Z/67G46n1xMcRAgMScpVZ5UqTeD8OuZfxULJ/kCwAosbCsk7JrqnYuth8q1W
+	 4JgYiGiY0xQorr6MM0KxGjSorKnfznieJcNF9uVxY8kz+onWNrEYZquD0VMGa/4gbE
+	 NY/vM+m5dovDw==
+Message-ID: <a9a7038c-4478-4366-831a-81dca8fa5afc@kernel.org>
+Date: Mon, 16 Sep 2024 12:02:46 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 3/3] regulator: dt-bindings: mt6397: move examples to
- parent PMIC mt6397
-To: Macpaul Lin <macpaul.lin@mediatek.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sen Chu <sen.chu@mediatek.com>, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
- Macpaul Lin <macpaul@gmail.com>, Chris-qj chen <chris-qj.chen@mediatek.com>,
- MediaTek Chromebook Upstream
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-References: <20240914132833.9882-1-macpaul.lin@mediatek.com>
+Subject: Re: [PATCH 06/13] arm64: dts: mediatek: mt8188: Update VPPSYS node
+ name and compatible
+To: Fei Shao <fshao@chromium.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Conor Dooley
+ <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20240909111535.528624-1-fshao@chromium.org>
+ <20240909111535.528624-7-fshao@chromium.org>
+ <11bc2522-bc10-4dcf-8142-708b57d181cf@kernel.org>
+ <CAC=S1nhiJ=7yAucJsaYKUUBrwrxOVBMB2CF=bFwyLa2o-5RmWw@mail.gmail.com>
+ <64cc35c8-30df-4882-a933-f42119270f48@kernel.org>
+ <CAC=S1ni+pJJZhbjvVqhba5u1JqGv=dZTv8+KH4xburea2AG4Qg@mail.gmail.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -107,13 +105,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240914132833.9882-1-macpaul.lin@mediatek.com>
+In-Reply-To: <CAC=S1ni+pJJZhbjvVqhba5u1JqGv=dZTv8+KH4xburea2AG4Qg@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240916_024001_297032_C2F1CB72 
-X-CRM114-Status: UNSURE (   7.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240916_030254_933510_40333A37 
+X-CRM114-Status: GOOD (  18.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,18 +125,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14/09/2024 15:28, Macpaul Lin wrote:
-> Since the DT schema of multiple function PMIC mt6397 has been converted,
-> move the examples in "mediatek,mt6397-regulator.yaml" to the parent schema
-> "mediatek,mt6397.yaml".
+On 10/09/2024 13:06, Fei Shao wrote:
+> On Tue, Sep 10, 2024 at 3:19 PM Krzysztof Kozlowski <krzk@kernel.org> wrote:
+>>
+>> On 10/09/2024 07:12, Fei Shao wrote:
+>>> On Mon, Sep 9, 2024 at 7:41 PM Krzysztof Kozlowski <krzk@kernel.org> wrote:
+>>>>
+>>>> On 09/09/2024 13:14, Fei Shao wrote:
+>>>>> Use and add "syscon" in VPPSYS node names and compatible to fix errors
+>>>>> from `make CHECK_DTBS=y mediatek/mt8188-evb.dtb`.
+>>>>>
+>>>>> Signed-off-by: Fei Shao <fshao@chromium.org>
+>>>>> ---
+>>>>>
+>>>>>  arch/arm64/boot/dts/mediatek/mt8188.dtsi | 8 ++++----
+>>>>>  1 file changed, 4 insertions(+), 4 deletions(-)
+>>>>>
+>>>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+>>>>> index 2900d78b7ceb..14e51a11f688 100644
+>>>>> --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+>>>>> +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+>>>>> @@ -1799,8 +1799,8 @@ mfgcfg: clock-controller@13fbf000 {
+>>>>>                       #clock-cells = <1>;
+>>>>>               };
+>>>>>
+>>>>> -             vppsys0: clock-controller@14000000 {
+>>>>> -                     compatible = "mediatek,mt8188-vppsys0";
+>>>>> +             vppsys0: syscon@14000000 {
+>>>>> +                     compatible = "mediatek,mt8188-vppsys0", "syscon";
+>>>>
+>>>> If this was working before, it looks like this is not a syscon and
+>>>> bindings need to be fixed.
+>>>
+>>> I guess it's because the binding was later updated in commit
+>>> 26bcd8a53098 ("dt-bindings: arm: mediatek: mmsys: Add VPPSYS
+>>> compatible for MT8188"), and the corresponding DT update was unnoticed
+>>> at the time.
+>>> If that makes sense then this should be a valid fix.
+>>
+>> Not necessarily. Why not fixing bindings? Prove that bindings are
+>> correct, not DTS, first.
 > 
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> ---
->  .../regulator/mediatek,mt6397-regulator.yaml  | 173 ------------------
->  1 file changed, 173 deletions(-)
+> MediaTek's mmsys doesn't merely control clocks, it also provides
+> display pipeline routing control and other misc control registers, so
+> it's appropriate to categorize it as a system controller over a clock
+> controller.
+> As for vdosys and vppsys, they are likely variants or aliases of mmsys
+> introduced in their newer SoCs.
 
-Your threading is completely broken. I don't understand where this
-belongs. There were several patchsets from you.
+Nothing like that was in the commit msg...
+
+> 
+> That description was updated in commit 1a680aa888d6 ("dt-bindings:
+> mediatek: Update mmsys binding to reflect it is a system controller"),
+> so I just assumed it's correct without thinking much...
+
 
 Best regards,
 Krzysztof
