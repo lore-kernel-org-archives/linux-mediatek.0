@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E928C3ABB2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Sep 2024 14:31:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51244C3ABA2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Sep 2024 14:59:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HEjVxo0CmyP05sESlkGQPWhlG2jLiBb3+PXO6NFhtwk=; b=yuJc9cPyypN1svqhhsjU/AVxN9
-	bXbh8wkOJ/k0VJaq/t8FGA9xY3cGxotsHU4NflV3+MGWbFm8XKZBU3+6vIm/bgclU5l7OA70GIH0p
-	NuUYqGaS6zT6c983fQEbREtVA4eZ8VehpiiKyNTo92q12Ifekv6CmJdN9RGx9VOpt52zdT+LQV1ZA
-	j4EJFYuJap8xWfo4jPR0Mu9pykA2H8omAIZ51VWHkQHNtyAWCvcC3rc9ap4JqDTG3aoAOIc1thAqP
-	wM6djp66YB0rJzt6XxRYiYdD/DNNV52lbqWr1HbgDW1bujdXDOSMW/tX8KekBdfGM9b0KKAyQUX4s
-	pjlB5SoQ==;
+	bh=7mKFbvl3FRfknVVQd9F2VGjZGmbz4CE84EcQSXZolvo=; b=X2IFDh1w9M9qWS2Aav6GYQipCD
+	+IRynKeuZDxzUzXhIV5HVnxik2L4gzsczWGSovsEfgTiqbhrU7cTSbKAnALUwhUnntXXZlGR41iQY
+	kdsaQz3E3S+e5iryhmnwI4g8ucnC5D6FqVB4xCGljSPB2FqXHRd/fF0/r7E7mPdDTzfvVuq87OfG4
+	gBfQqwYKdiymrtX9HmCqnTicciCbrPGIQnA6enlo1fVU3Wo9DJf7szvVc4FR7W85QUdXX7I5AgbV+
+	BIKZAkBZYsoKVAIr8NYAvb3GW4TJiGX9bw2gQ9URxN1FLLiK958hi9JTga5ghkySEkf0Q47dKn8bv
+	5dkZuu1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqClD-00000004Deu-2esF;
-	Mon, 16 Sep 2024 14:31:27 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1sqDBz-00000004H8D-3gRV;
+	Mon, 16 Sep 2024 14:59:07 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqClA-00000004De5-0dMj
+	id 1sqDBx-00000004H7O-1k8j
 	for linux-mediatek@lists.infradead.org;
-	Mon, 16 Sep 2024 14:31:25 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-53568ffc525so5221181e87.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 16 Sep 2024 07:31:22 -0700 (PDT)
+	Mon, 16 Sep 2024 14:59:06 +0000
+Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-536748c7e9aso5375613e87.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 16 Sep 2024 07:59:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1726497081; x=1727101881; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1726498743; x=1727103543; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=HEjVxo0CmyP05sESlkGQPWhlG2jLiBb3+PXO6NFhtwk=;
-        b=NsadmDI6ZJvrXadpydBKfSko+ZudYoRv51ZtjHG+SGNnH04tnmqazgWmMX1P+dogbo
-         pXnRoyRtSrcmmhtcgl2wWhwlSlOYNe+B7U1lYPDeI7BWNQTHoVYmy8sPdRla+zEk1ki/
-         dXnLeekONvKM6t26GyHFco17RrafR4qQdcSNw=
+        bh=7mKFbvl3FRfknVVQd9F2VGjZGmbz4CE84EcQSXZolvo=;
+        b=O8uDIwibqFffXNjj/uGzMI0eiZC0yiDrJl5jN3xNwZ2AXHhNxUhrHQTo7J06thK4Iw
+         eY0Stain3wjwzeO3Es9hszBtze3WhfhUKJ1p48Nu3icCTHKELR/hWMChSHo+QxokpTpY
+         +yVhjHvw7+iUsZNrHLcKvebSK/KLQXlGGP3WU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726497081; x=1727101881;
+        d=1e100.net; s=20230601; t=1726498743; x=1727103543;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=HEjVxo0CmyP05sESlkGQPWhlG2jLiBb3+PXO6NFhtwk=;
-        b=WA+vf1oEqT23ulA//XYra18w8DQzTCMxy9VkwtPL0wcEX7OxKp+6CFupqGb51QY1FW
-         mEWO3OHIOIIvykOgATAKEZLeGHrp6mya93tIsR9Y2K8FER/z9ab77bF8YHu/OnnEM/J+
-         m+Z9elr4OG+EgGwMU6Tg2Dqcu+HPywuauSMsft4S9xqE11SLxT5DAgnUFVD8D/Nb7BJT
-         RemwSm0kTcp5XvsAiy2SCSREjnNq7l1FuMUV2fQeG4HixdQ5Q/JUWV7rArEnjJ5Yq8qp
-         u31QkGb0ALvJsC+tdYckXK8GoiRWqzQ9yb5eFDWXH2Ab1dIsQdPRTzrkD3+wkqkIBU7Y
-         C5ZA==
-X-Forwarded-Encrypted: i=1; AJvYcCWCTNJS2uCGvVkxZxBYVL+flq7PM30nHdhSm4g0kjVAUOhK3Jla8GKjlZzlakbfQYWjAzBy8/7lenyYYRyZyw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyjqZRBq6Axe1aoqwODCx/anXn+jS/Wkj5GKcwoONOVHczuGHhO
-	XF7J4q4zzvx4SRDBuKyZeCr32llgeNf4OBqoRprYkflcPiYwBTgEu4p2AdLtva5GEHCku2XLWa8
-	iZYGy1KG8yHYPKYv/Lc0Ao29OGq+ZzovVB9Tj
-X-Google-Smtp-Source: AGHT+IF2gZvo4YLNzvfNxlnTgC8reRT76wxDzBx5nebPrFcFPFYPCHPUrhTxpiZOy4gaju7avMHM0oeFH4FKcyH9Q+Y=
-X-Received: by 2002:ac2:4c49:0:b0:536:56d8:24b4 with SMTP id
- 2adb3069b0e04-53678fb1d9emr7650183e87.5.1726497081139; Mon, 16 Sep 2024
- 07:31:21 -0700 (PDT)
+        bh=7mKFbvl3FRfknVVQd9F2VGjZGmbz4CE84EcQSXZolvo=;
+        b=Mdta68VLa2ySwBLJ//5oqDEKnJ0OBLtuAjUms/+QmJwEkZ9hwEWSdnTdwyfmZHr6bM
+         XUlgWXccsvYFozW0QG8FQcKnMl53S4ztMT5pvUp/0y2O++uclvoISudW9qBddlyJqPuj
+         yn8nOHCQo/zbe83tVeR0qmh8ZkybayegYzJf10Ndm3fHGcTJm5K1KFG2k7uFCafQAdxo
+         o9ZFzJd9BitKyjhP7wBa+BGuVn4gdj8aTH+VdI7tGA5uV76wKPSoBI99KYKGcQGT+pui
+         fGqrK8vJJxJo/aAyNfVlUNDxA5iUDL/wUreH5DLYWXpFkDr506GlrdB2VaS8vvzXryA8
+         I+dQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVyBK/DAcIhSxrIC+YqizLojStRU3NJliHOA3mNaDygNWo3Hbohp3LgTwhC9HJi1e4kc03HvQaI/p04wOOA1w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzrTPPorji/qWUwtDw48ehp2edN4L/53t6qNvpsVVuGEKst8vdW
+	OIevCFY6N37nz/9uTsgTZ6XPp7ALtnfXnhqb3S+zSfeQm0lJuP2a2Q27fp90LokCxgmKxZJPXaN
+	qKCvMgPQLWYV6mS0eCY446IogmqxPREZP+zxF
+X-Google-Smtp-Source: AGHT+IFzocyQXiHJ7IGC6/o9lODvUjZ8bZDDkxYaKMNeJriFadvyYRFY1CoEermaKv4PHMS4vAciuIhFJjjOmqh9esA=
+X-Received: by 2002:a05:6512:3f18:b0:536:52ec:2870 with SMTP id
+ 2adb3069b0e04-53678fcd14cmr8312496e87.28.1726498742804; Mon, 16 Sep 2024
+ 07:59:02 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240911072751.365361-1-wenst@chromium.org> <20240911072751.365361-7-wenst@chromium.org>
- <CAD=FV=Udc9aP7bSzTWP82zsaztRD2YnVNpSDA54FC0dKQ-Nz2A@mail.gmail.com>
- <CAGXv+5FRoiv+TPyeFTcuRanRuSh2-xUo6ttVPkW6o3tktUmcFA@mail.gmail.com> <CAD=FV=UDoaBN4OLZhEB4uvs6vDRVS0ZAsce2=3rJOn5sKEu-hw@mail.gmail.com>
-In-Reply-To: <CAD=FV=UDoaBN4OLZhEB4uvs6vDRVS0ZAsce2=3rJOn5sKEu-hw@mail.gmail.com>
+References: <20240911072751.365361-1-wenst@chromium.org> <20240911072751.365361-10-wenst@chromium.org>
+ <CAD=FV=WtVSQ5GX6H5CtxNPTdOAJVMj_xNRvG9siZB6_ePZr7CQ@mail.gmail.com>
+In-Reply-To: <CAD=FV=WtVSQ5GX6H5CtxNPTdOAJVMj_xNRvG9siZB6_ePZr7CQ@mail.gmail.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 16 Sep 2024 16:31:09 +0200
-Message-ID: <CAGXv+5Eo3r6WPDnHwEZPFz7PBd5v48n32iXXWy=Vr-v1H2zEoQ@mail.gmail.com>
-Subject: Re: [PATCH v7 06/10] i2c: Introduce OF component probe function
+Date: Mon, 16 Sep 2024 16:58:51 +0200
+Message-ID: <CAGXv+5HRLHV2tDZxiqFRhz1p+_bhMzMXoJMBnhy-R=8C4hBjnQ@mail.gmail.com>
+Subject: Re: [PATCH v7 09/10] platform/chrome: Introduce device tree hardware prober
 To: Doug Anderson <dianders@chromium.org>
 Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -81,8 +80,8 @@ Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240916_073124_232785_556896C2 
-X-CRM114-Status: GOOD (  43.88  )
+X-CRM114-CacheID: sfid-20240916_075905_514667_B246119E 
+X-CRM114-Status: GOOD (  23.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,165 +96,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 16, 2024 at 4:16=E2=80=AFPM Doug Anderson <dianders@chromium.or=
+On Sat, Sep 14, 2024 at 1:43=E2=80=AFAM Doug Anderson <dianders@chromium.or=
 g> wrote:
 >
 > Hi,
 >
-> On Sun, Sep 15, 2024 at 4:32=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org>=
- wrote:
+> On Wed, Sep 11, 2024 at 12:29=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org=
+> wrote:
 > >
-> > > > + * Assumes that across the entire device tree the only instances o=
-f nodes
-> > > > + * prefixed with "type" are the ones that need handling for second=
- source
-> > > > + * components. In other words, if "type" is "touchscreen", then al=
-l device
-> > > > + * nodes named "touchscreen*" are the ones that need probing. Ther=
-e cannot
-> > >
-> > > "touchscreen*" implies that it can have an arbitrary suffix. Can it?
-> >
-> > That is the idea. The use case is for components that have conflicting
-> > addresses and need special probing. Such device nodes obviously can't
-> > have the same node name. This is planned but not implemented in this
-> > series.
+> > @@ -8,6 +8,7 @@ obj-$(CONFIG_CHROMEOS_ACPI)             +=3D chromeos_a=
+cpi.o
+> >  obj-$(CONFIG_CHROMEOS_LAPTOP)          +=3D chromeos_laptop.o
+> >  obj-$(CONFIG_CHROMEOS_PRIVACY_SCREEN)  +=3D chromeos_privacy_screen.o
+> >  obj-$(CONFIG_CHROMEOS_PSTORE)          +=3D chromeos_pstore.o
+> > +obj-$(CONFIG_CHROMEOS_OF_HW_PROBER)    +=3D chromeos_of_hw_prober.o
 >
-> Maybe "touchscreen@*" instead of "touchscreen*" if I'm understanding corr=
-ectly.
+> "o" sorts before "p" so "of" should sort before "privacy"?
+>
+> I guess it's not exactly all sorted, but this small section is. Since
+> it's arbitrary you could preserve the existing sorting. :-P
 
-Then it would be "touchscreen*@*".
+To me it seemed more like they are just sorted in the order they were
+added.
 
-> > > > + * be another "touchscreen" node that is already enabled.
-> > > > + *
-> > > > + * Assumes that for each "type" of component, only one actually ex=
-ists. In
-> > > > + * other words, only one matching and existing device will be enab=
-led.
-> > > > + *
-> > > > + * Context: Process context only. Does non-atomic I2C transfers.
-> > > > + *          Should only be used from a driver probe function, as t=
-he function
-> > > > + *          can return -EPROBE_DEFER if the I2C adapter or other r=
-esources
-> > > > + *          are unavailable.
-> > > > + * Return: 0 on success or no-op, error code otherwise.
-> > > > + *         A no-op can happen when it seems like the device tree a=
-lready
-> > > > + *         has components of the type to be probed already enabled=
-. This
-> > > > + *         can happen when the device tree had not been updated to=
- mark
-> > > > + *         the status of the to-be-probed components as "fail". Or=
- this
-> > > > + *         function was already run with the same parameters and s=
-ucceeded
-> > > > + *         in enabling a component. The latter could happen if the=
- user
-> > >
-> > > s/latter/later
-> >
-> > Are you sure?
+> > +static const struct hw_prober_entry hw_prober_platforms[] =3D {
+> > +       { .compatible =3D "google,hana", .prober =3D chromeos_i2c_compo=
+nent_prober, .data =3D &chromeos_i2c_probe_dumb_touchscreen },
+> > +       { .compatible =3D "google,hana", .prober =3D chromeos_i2c_compo=
+nent_prober, .data =3D &chromeos_i2c_probe_dumb_trackpad },
 >
-> No. latter looked weird to me and I searched quickly and thought I was
-> right. With a more full search looks like you're right.
->
->
-> > > > +int i2c_of_probe_component(struct device *dev, const struct i2c_of=
-_probe_cfg *cfg, void *ctx)
-> > > > +{
-> > > > +       const struct i2c_of_probe_ops *ops;
-> > > > +       const char *type;
-> > > > +       struct device_node *i2c_node;
-> > > > +       struct i2c_adapter *i2c;
-> > > > +       int ret;
-> > > > +
-> > > > +       if (!cfg)
-> > > > +               return -EINVAL;
-> > >
-> > > Drop extra check of "!cfg". In general kernel conventions don't check
-> > > for NULL pointers passed by caller unless it's an expected case. You
-> > > don't check for a NULL "dev" and you shouldn't need to check for a
-> > > NULL "cfg". They are both simply required parameters.
-> >
-> > "dev" is only passed to dev_printk(), and that can handle "dev" being
-> > NULL. Same can't be said for "cfg".
-> >
-> > I don't know what the preference is though. Crashing is probably not th=
-e
-> > nicest thing, even if it only happens to developers.
->
-> Honestly as a developer I'd prefer the crash. It points out the exact
-> line where I had an invalid NULL. Returning an error code means I've
-> got to compile/boot several more times to track down where the error
-> code is coming from.
->
-> I'm fairly certain that the kernel convention is to only check things
-> for NULL if it's part of the API to accept NULL or if the value can be
-> NULL due to untrusted data. If the only way it can be NULL is due to
-> buggy code elsewhere in the kernel then you should omit the error
-> checks.
+> The fact that the example is only using "dumb" probers doesn't make it
+> quite as a compelling proof that the code will scale up. Any chance
+> you could add something that requires a bit more oomph? ;-)
 
-Make sense.
+I only have a hacked up thing right now.
 
-> > > > +               if (!of_device_is_available(node))
-> > > > +                       continue;
-> > > > +
-> > > > +               /*
-> > > > +                * Device tree has component already enabled. Eithe=
-r the
-> > > > +                * device tree isn't supported or we already probed=
- once.
-> > > > +                */
-> > > > +               ret =3D 0;
-> > > > +               goto out_put_i2c_node;
-> > > > +       }
-> > > > +
-> > > > +       i2c =3D of_get_i2c_adapter_by_node(i2c_node);
-> > > > +       if (!i2c) {
-> > > > +               ret =3D dev_err_probe(dev, -EPROBE_DEFER, "Couldn't=
- get I2C adapter\n");
-> > > > +               goto out_put_i2c_node;
-> > > > +       }
-> > > > +
-> > > > +       /* Grab resources */
-> > > > +       ret =3D 0;
-> > > > +       if (ops->get_resources)
-> > > > +               ret =3D ops->get_resources(dev, i2c_node, ctx);
-> > > > +       if (ret)
-> > > > +               goto out_put_i2c_adapter;
-> > > > +
-> > > > +       /* Enable resources */
-> > > > +       if (ops->enable)
-> > > > +               ret =3D ops->enable(dev, ctx);
-> > > > +       if (ret)
-> > > > +               goto out_release_resources;
-> > >
-> > > I won't insist, but a part of me wonders whether we should just
-> > > combine "get_resources" and "enable" and then combine "cleanup" and
-> > > "free_resources_late". They are always paired one after another and
-> > > I'm having a hard time seeing why they need to be separate. It's not
-> > > like you'll ever get the resources and then enable/disable multiple
-> > > times.
-> >
-> > Maybe. The structure was carried over from the original non-callback
-> > version. I think it's easier to reason about if they are kept separate,
-> > especially since the outgoing path is slightly different when no workin=
-g
-> > component is found and one of the callbacks ends up not getting called.
+This is the one I'm using to test things:
+http://git.kernel.org/wens/c/5c2c920429167a15b990a7cf8427705eec321134
+
+About this one, it seems we can at least merge the device trees of
+each product into just one. The touchscreen or trackpad (or lack thereof)
+is probed by the kernel.
+
+
+This one I only started looking into:
+http://git.kernel.org/wens/c/42c21929aeb3c7ca7b0ce9cacb1d0ff915d3c783
+
+About the second one, AFAIK the device tree descriptions are incomplete.
+Only one of the trackpad options has the regulator supply described.
+The regulator itself is marked as always on, so things currently work.
+Some work will need to be put in to research the schematics and test
+whether things do work correctly.
+
+> > +static int chromeos_of_hw_prober_driver_init(void)
+> > +{
+> > +       size_t i;
+> > +       int ret;
+> > +
+> > +       for (i =3D 0; i < ARRAY_SIZE(hw_prober_platforms); i++)
+> > +               if (of_machine_is_compatible(hw_prober_platforms[i].com=
+patible))
+> > +                       break;
+> > +       if (i =3D=3D ARRAY_SIZE(hw_prober_platforms))
+> > +               return -ENODEV;
+> > +
+> > +       ret =3D platform_driver_register(&chromeos_of_hw_prober_driver)=
+;
+> > +       if (ret)
+> > +               return ret;
+> > +
+> > +       chromeos_of_hw_prober_pdev =3D
+> > +                       platform_device_register_simple(DRV_NAME, PLATF=
+ORM_DEVID_NONE, NULL, 0);
+> > +       if (IS_ERR(chromeos_of_hw_prober_pdev))
+> > +               goto err;
 >
-> Actually, both of the outgoing callbacks are always called. It's only
-> the 3rd callback (the "early" one) that's called sometimes.
+> FWIW if you didn't want to see your prober called over and over again
+> if one of the devices deferred you could just register one device per
+> type, right? Then each device would be able to defer separately. Dunno
+> if it's worth it but figured I'd mention it...
 
-So IIRC do "get + enable" and "cleanup + release_late", and leave
-"release_early" alone?
+I think that adds some unnecessary complexity, and more lingering devices
+in the system. These platform devices are not removed.
+
+> Also: as a high level comment, this all looks much nicer to me now
+> that it's parameterized. :-)
+
+Thanks!
 
 ChenYu
-
-> I won't insist on combining them, but I still feel like combining them
-> would be better. I'd be interested in other opinions, though.
->
->
-> -Doug
->
 
