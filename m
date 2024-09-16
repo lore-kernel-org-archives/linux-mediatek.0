@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51244C3ABA2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Sep 2024 14:59:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DC2CC3ABB2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Sep 2024 15:01:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7mKFbvl3FRfknVVQd9F2VGjZGmbz4CE84EcQSXZolvo=; b=X2IFDh1w9M9qWS2Aav6GYQipCD
-	+IRynKeuZDxzUzXhIV5HVnxik2L4gzsczWGSovsEfgTiqbhrU7cTSbKAnALUwhUnntXXZlGR41iQY
-	kdsaQz3E3S+e5iryhmnwI4g8ucnC5D6FqVB4xCGljSPB2FqXHRd/fF0/r7E7mPdDTzfvVuq87OfG4
-	gBfQqwYKdiymrtX9HmCqnTicciCbrPGIQnA6enlo1fVU3Wo9DJf7szvVc4FR7W85QUdXX7I5AgbV+
-	BIKZAkBZYsoKVAIr8NYAvb3GW4TJiGX9bw2gQ9URxN1FLLiK958hi9JTga5ghkySEkf0Q47dKn8bv
-	5dkZuu1g==;
+	bh=AXbO+D2mVI+UBDU39q5KHUW0ColIXLF8fjiXY9cUqkk=; b=xtHx4bgd40fT+kxY9XPitKpKK9
+	NK8F8sBS9Di/ypJ0Xvl3rGdCI/cSL7aUz/8YqVg4HZtB4wPHJYk1uJwOmt20zGsU9NQWucMEoKgWl
+	rxlLJhpdw45hNPZW/y3nVuan3FiepaTpm0bF+vIYtfojsQ6O1QzMvynImXNXNVTb5I4WgP0PLvLia
+	EKy23eGFvC0mRI38L9jR1c/M+7++rvWD7XwAoJEFsOlffYwDKZaPdMP6upebImzgl5F/teBhH3kCI
+	17kvXDZRD+D2T8OWb9nje7U1nvIaqNI3lp2yiFOUNip+m+uPdIP+AoGLN/qnXO2eq76Hfnyblw3Ic
+	AjDE70rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqDBz-00000004H8D-3gRV;
-	Mon, 16 Sep 2024 14:59:07 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1sqDEH-00000004HcU-2jcy;
+	Mon, 16 Sep 2024 15:01:29 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqDBx-00000004H7O-1k8j
+	id 1sqDD3-00000004HI8-0sev
 	for linux-mediatek@lists.infradead.org;
-	Mon, 16 Sep 2024 14:59:06 +0000
-Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-536748c7e9aso5375613e87.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 16 Sep 2024 07:59:04 -0700 (PDT)
+	Mon, 16 Sep 2024 15:00:15 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-5365d3f9d34so3563605e87.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 16 Sep 2024 08:00:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1726498743; x=1727103543; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1726498811; x=1727103611; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=7mKFbvl3FRfknVVQd9F2VGjZGmbz4CE84EcQSXZolvo=;
-        b=O8uDIwibqFffXNjj/uGzMI0eiZC0yiDrJl5jN3xNwZ2AXHhNxUhrHQTo7J06thK4Iw
-         eY0Stain3wjwzeO3Es9hszBtze3WhfhUKJ1p48Nu3icCTHKELR/hWMChSHo+QxokpTpY
-         +yVhjHvw7+iUsZNrHLcKvebSK/KLQXlGGP3WU=
+        bh=AXbO+D2mVI+UBDU39q5KHUW0ColIXLF8fjiXY9cUqkk=;
+        b=MJZfFKDdg4WZHYHW2CHEnUi57OwZAF3o/qLJsmCwczDpjlB0kkfWJlZ4E5rnKghvrR
+         DB8I33NOmW3iitWovQ+RDv4atLBtmERsIR0TbjIh6HHKKfaq2IfCE6UTxRBuL1NwhzoQ
+         Ze9TyBL8WCjrqahNaRS0xCSdc3dql3cQi+jSg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726498743; x=1727103543;
+        d=1e100.net; s=20230601; t=1726498811; x=1727103611;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=7mKFbvl3FRfknVVQd9F2VGjZGmbz4CE84EcQSXZolvo=;
-        b=Mdta68VLa2ySwBLJ//5oqDEKnJ0OBLtuAjUms/+QmJwEkZ9hwEWSdnTdwyfmZHr6bM
-         XUlgWXccsvYFozW0QG8FQcKnMl53S4ztMT5pvUp/0y2O++uclvoISudW9qBddlyJqPuj
-         yn8nOHCQo/zbe83tVeR0qmh8ZkybayegYzJf10Ndm3fHGcTJm5K1KFG2k7uFCafQAdxo
-         o9ZFzJd9BitKyjhP7wBa+BGuVn4gdj8aTH+VdI7tGA5uV76wKPSoBI99KYKGcQGT+pui
-         fGqrK8vJJxJo/aAyNfVlUNDxA5iUDL/wUreH5DLYWXpFkDr506GlrdB2VaS8vvzXryA8
-         I+dQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVyBK/DAcIhSxrIC+YqizLojStRU3NJliHOA3mNaDygNWo3Hbohp3LgTwhC9HJi1e4kc03HvQaI/p04wOOA1w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzrTPPorji/qWUwtDw48ehp2edN4L/53t6qNvpsVVuGEKst8vdW
-	OIevCFY6N37nz/9uTsgTZ6XPp7ALtnfXnhqb3S+zSfeQm0lJuP2a2Q27fp90LokCxgmKxZJPXaN
-	qKCvMgPQLWYV6mS0eCY446IogmqxPREZP+zxF
-X-Google-Smtp-Source: AGHT+IFzocyQXiHJ7IGC6/o9lODvUjZ8bZDDkxYaKMNeJriFadvyYRFY1CoEermaKv4PHMS4vAciuIhFJjjOmqh9esA=
-X-Received: by 2002:a05:6512:3f18:b0:536:52ec:2870 with SMTP id
- 2adb3069b0e04-53678fcd14cmr8312496e87.28.1726498742804; Mon, 16 Sep 2024
- 07:59:02 -0700 (PDT)
+        bh=AXbO+D2mVI+UBDU39q5KHUW0ColIXLF8fjiXY9cUqkk=;
+        b=HDUbFwxmjXKl4kDLyufURsw0RgyCDZxqQiD6VVU1rGs32glbcpITMVQ5g9JdKThedY
+         6R6rELe/tgwulPjuTgI9itQgNUt8pxep5ZUtKnMgcc9RohY2P2L2mvngs5b9c8chZvvR
+         V9SJ036JxElKlAp34GdFmBeQoyPLbMhfb38i4CoPJ+JV0GuwmHYG4epF+dVCerA0sPSx
+         YAzHAahAohhG8IeCgO/UzWb+JbLtE+0c6FpyG3WMhzrP4JWoD0M/FnAZahYwM0lMecB9
+         K+jLHnX7+ExkeKfHZZNepwfNinZO+smRdAFp7FEuJnSvojeaBaZE1mU5Mp4/DZythMnb
+         LIaQ==
+X-Forwarded-Encrypted: i=1; AJvYcCW44S2tO0JbIj9JQMBFF3QwUTP9W+K4kYmgHLv6umxA+mhfPPC4Y7GcSV8nVd1qhV3PcJ6/bkv64kr7yqZQ0w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxCeyu5+WsR0zDB9fCqmzQr8YI6xb/o8CMwNJP2M9UzAWglziWl
+	XKWRX8q4HzXmDb7BgzyGnrD1dBhsVXixKJ0IXDetCTuEugorRAhsYLJXQrUQrNcvuDfc3UGlrJc
+	PkDcwlcAbZa0hP3IzlPx+Q/Bgi4keHFCLLQW5
+X-Google-Smtp-Source: AGHT+IExxtSOdUaIDWYWqE4hbqGtSDreuAB4hMGiJcyjVPhu0E40r8ul9HIo9VA3zWefCMXKc/icuLN8A8D0fAPnWL0=
+X-Received: by 2002:a05:6512:10d0:b0:536:5515:e9b5 with SMTP id
+ 2adb3069b0e04-5367ff3230fmr5531071e87.52.1726498810983; Mon, 16 Sep 2024
+ 08:00:10 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240911072751.365361-1-wenst@chromium.org> <20240911072751.365361-10-wenst@chromium.org>
- <CAD=FV=WtVSQ5GX6H5CtxNPTdOAJVMj_xNRvG9siZB6_ePZr7CQ@mail.gmail.com>
-In-Reply-To: <CAD=FV=WtVSQ5GX6H5CtxNPTdOAJVMj_xNRvG9siZB6_ePZr7CQ@mail.gmail.com>
+References: <20240911072751.365361-1-wenst@chromium.org> <20240911072751.365361-7-wenst@chromium.org>
+ <ZuQTFTNTBLCziD05@smile.fi.intel.com> <CAGXv+5HgkCZ=vdHGgvCW1U-nid=cQrVaxC+V+H2Gknf2pnTbYA@mail.gmail.com>
+ <ZugKHrzs5BWoDr1c@smile.fi.intel.com>
+In-Reply-To: <ZugKHrzs5BWoDr1c@smile.fi.intel.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 16 Sep 2024 16:58:51 +0200
-Message-ID: <CAGXv+5HRLHV2tDZxiqFRhz1p+_bhMzMXoJMBnhy-R=8C4hBjnQ@mail.gmail.com>
-Subject: Re: [PATCH v7 09/10] platform/chrome: Introduce device tree hardware prober
-To: Doug Anderson <dianders@chromium.org>
+Date: Mon, 16 Sep 2024 16:59:59 +0200
+Message-ID: <CAGXv+5E09LH5UKXh0wHrsqAp-ps8xaGfSZ37GWZ6sbyoaOczfQ@mail.gmail.com>
+Subject: Re: [PATCH v7 06/10] i2c: Introduce OF component probe function
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
@@ -74,14 +75,13 @@ Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
 	Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
 	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>, 
-	Jiri Kosina <jikos@kernel.org>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
-	linux-i2c@vger.kernel.org
+	linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, 
+	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>, linux-i2c@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240916_075905_514667_B246119E 
-X-CRM114-Status: GOOD (  23.95  )
+X-CRM114-CacheID: sfid-20240916_080013_276784_FF3A66BF 
+X-CRM114-Status: GOOD (  26.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,93 +96,150 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Sep 14, 2024 at 1:43=E2=80=AFAM Doug Anderson <dianders@chromium.or=
-g> wrote:
+On Mon, Sep 16, 2024 at 12:36=E2=80=AFPM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
 >
-> Hi,
+> On Sun, Sep 15, 2024 at 12:44:13PM +0200, Chen-Yu Tsai wrote:
+> > On Fri, Sep 13, 2024 at 12:25=E2=80=AFPM Andy Shevchenko
+> > <andriy.shevchenko@linux.intel.com> wrote:
+> > > On Wed, Sep 11, 2024 at 03:27:44PM +0800, Chen-Yu Tsai wrote:
 >
-> On Wed, Sep 11, 2024 at 12:29=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org=
-> wrote:
+> ...
+>
+> > > > +int i2c_of_probe_component(struct device *dev, const struct i2c_of=
+_probe_cfg *cfg, void *ctx)
+> > > > +{
+> > > > +     const struct i2c_of_probe_ops *ops;
+> > > > +     const char *type;
+> > > > +     struct device_node *i2c_node;
+> > > > +     struct i2c_adapter *i2c;
+> > > > +     int ret;
+> > > > +
+> > > > +     if (!cfg)
+> > > > +             return -EINVAL;
+> > > > +
+> > > > +     ops =3D cfg->ops ?: &i2c_of_probe_dummy_ops;
+> > > > +     type =3D cfg->type;
+> > > > +
+> > > > +     i2c_node =3D i2c_of_probe_get_i2c_node(dev, type);
+> > >
+> > >
+> > >         struct device_node *i2c_node __free(of_node_put) =3D
+> > >                 i2c_...;
 > >
-> > @@ -8,6 +8,7 @@ obj-$(CONFIG_CHROMEOS_ACPI)             +=3D chromeos_a=
-cpi.o
-> >  obj-$(CONFIG_CHROMEOS_LAPTOP)          +=3D chromeos_laptop.o
-> >  obj-$(CONFIG_CHROMEOS_PRIVACY_SCREEN)  +=3D chromeos_privacy_screen.o
-> >  obj-$(CONFIG_CHROMEOS_PSTORE)          +=3D chromeos_pstore.o
-> > +obj-$(CONFIG_CHROMEOS_OF_HW_PROBER)    +=3D chromeos_of_hw_prober.o
+> > cleanup.h says to not mix the two styles (scoped vs goto). I was trying
+> > to follow that, though I realize now that with the scoped loops it
+> > probably doesn't help.
+> >
+> > I'll revert back to having __free().
+> >
+> > > > +     if (IS_ERR(i2c_node))
+> > > > +             return PTR_ERR(i2c_node);
+> > > > +
+> > > > +     for_each_child_of_node_with_prefix(i2c_node, node, type) {
+> > > > +             if (!of_device_is_available(node))
+> > > > +                     continue;
+> > > > +
+> > > > +             /*
+> > > > +              * Device tree has component already enabled. Either =
+the
+> > > > +              * device tree isn't supported or we already probed o=
+nce.
+> > > > +              */
+> > > > +             ret =3D 0;
+> > >
+> > > Shouldn't you drop reference count for "node"? (See also below)
+> >
+> > This for-each loop the "scoped". It just doesn't have the prefix anymor=
+e.
+> > I believe you asked if the prefix could be dropped and then Rob agreed.
 >
-> "o" sorts before "p" so "of" should sort before "privacy"?
->
-> I guess it's not exactly all sorted, but this small section is. Since
-> it's arbitrary you could preserve the existing sorting. :-P
+> Hmm... I have looked into the implementation and I haven't found the evid=
+ence
+> that this is anyhow scoped. Can you point out what I have missed?
 
-To me it seemed more like they are just sorted in the order they were
-added.
+From patch 2:
 
-> > +static const struct hw_prober_entry hw_prober_platforms[] =3D {
-> > +       { .compatible =3D "google,hana", .prober =3D chromeos_i2c_compo=
-nent_prober, .data =3D &chromeos_i2c_probe_dumb_touchscreen },
-> > +       { .compatible =3D "google,hana", .prober =3D chromeos_i2c_compo=
-nent_prober, .data =3D &chromeos_i2c_probe_dumb_trackpad },
->
-> The fact that the example is only using "dumb" probers doesn't make it
-> quite as a compelling proof that the code will scale up. Any chance
-> you could add something that requires a bit more oomph? ;-)
++#define for_each_child_of_node_with_prefix(parent, child, prefix)      \
++       for (struct device_node *child __free(device_node) =3D            \
 
-I only have a hacked up thing right now.
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^ scoped here
 
-This is the one I'm using to test things:
-http://git.kernel.org/wens/c/5c2c920429167a15b990a7cf8427705eec321134
++            of_get_next_child_with_prefix(parent, NULL, prefix);       \
++            child !=3D NULL;                                             \
++            child =3D of_get_next_child_with_prefix(parent, child, prefix)=
+)
++
 
-About this one, it seems we can at least merge the device trees of
-each product into just one. The touchscreen or trackpad (or lack thereof)
-is probed by the kernel.
+"node", or "child" in this snippet is scoped within the for loop.
 
-
-This one I only started looking into:
-http://git.kernel.org/wens/c/42c21929aeb3c7ca7b0ce9cacb1d0ff915d3c783
-
-About the second one, AFAIK the device tree descriptions are incomplete.
-Only one of the trackpad options has the regulator supply described.
-The regulator itself is marked as always on, so things currently work.
-Some work will need to be put in to research the schematics and test
-whether things do work correctly.
-
-> > +static int chromeos_of_hw_prober_driver_init(void)
-> > +{
-> > +       size_t i;
-> > +       int ret;
-> > +
-> > +       for (i =3D 0; i < ARRAY_SIZE(hw_prober_platforms); i++)
-> > +               if (of_machine_is_compatible(hw_prober_platforms[i].com=
-patible))
-> > +                       break;
-> > +       if (i =3D=3D ARRAY_SIZE(hw_prober_platforms))
-> > +               return -ENODEV;
-> > +
-> > +       ret =3D platform_driver_register(&chromeos_of_hw_prober_driver)=
-;
-> > +       if (ret)
-> > +               return ret;
-> > +
-> > +       chromeos_of_hw_prober_pdev =3D
-> > +                       platform_device_register_simple(DRV_NAME, PLATF=
-ORM_DEVID_NONE, NULL, 0);
-> > +       if (IS_ERR(chromeos_of_hw_prober_pdev))
-> > +               goto err;
->
-> FWIW if you didn't want to see your prober called over and over again
-> if one of the devices deferred you could just register one device per
-> type, right? Then each device would be able to defer separately. Dunno
-> if it's worth it but figured I'd mention it...
-
-I think that adds some unnecessary complexity, and more lingering devices
-in the system. These platform devices are not removed.
-
-> Also: as a high level comment, this all looks much nicer to me now
-> that it's parameterized. :-)
-
-Thanks!
 
 ChenYu
+
+> > > > +             goto out_put_i2c_node;
+> > > > +     }
+> > > > +
+> > > > +     i2c =3D of_get_i2c_adapter_by_node(i2c_node);
+> > > > +     if (!i2c) {
+> > > > +             ret =3D dev_err_probe(dev, -EPROBE_DEFER, "Couldn't g=
+et I2C adapter\n");
+> > > > +             goto out_put_i2c_node;
+> > > > +     }
+> > > > +
+> > > > +     /* Grab resources */
+> > > > +     ret =3D 0;
+> > > > +     if (ops->get_resources)
+> > > > +             ret =3D ops->get_resources(dev, i2c_node, ctx);
+> > > > +     if (ret)
+> > > > +             goto out_put_i2c_adapter;
+> > > > +
+> > > > +     /* Enable resources */
+> > > > +     if (ops->enable)
+> > > > +             ret =3D ops->enable(dev, ctx);
+> > > > +     if (ret)
+> > > > +             goto out_release_resources;
+> > > > +
+> > > > +     ret =3D 0;
+> > > > +     for_each_child_of_node_with_prefix(i2c_node, node, type) {
+> > > > +             union i2c_smbus_data data;
+> > > > +             u32 addr;
+> > > > +
+> > > > +             if (of_property_read_u32(node, "reg", &addr))
+> > > > +                     continue;
+> > > > +             if (i2c_smbus_xfer(i2c, addr, 0, I2C_SMBUS_READ, 0, I=
+2C_SMBUS_BYTE, &data) < 0)
+> > > > +                     continue;
+> > > > +
+> > > > +             /* Found a device that is responding */
+> > > > +             if (ops->free_resources_early)
+> > > > +                     ops->free_resources_early(ctx);
+> > > > +             ret =3D i2c_of_probe_enable_node(dev, node);
+> > >
+> > > Hmm... Is "node" reference count left bumped up for a reason?
+> >
+> > Same as above.
+>
+> Same as above.
+>
+> > > > +             break;
+> > > > +     }
+> > > > +
+> > > > +     if (ops->cleanup)
+> > > > +             ops->cleanup(dev, ctx);
+> > > > +out_release_resources:
+> > > > +     if (ops->free_resources_late)
+> > > > +             ops->free_resources_late(ctx);
+> > > > +out_put_i2c_adapter:
+> > > > +     i2c_put_adapter(i2c);
+> > > > +out_put_i2c_node:
+> > > > +     of_node_put(i2c_node);
+> > > > +
+> > > > +     return ret;
+> > > > +}
+>
+> --
+> With Best Regards,
+> Andy Shevchenko
+>
+>
 
