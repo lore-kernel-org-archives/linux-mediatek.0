@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3850DC3ABB2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Sep 2024 17:12:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFDDDC3ABB2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Sep 2024 17:20:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wDmKI0hptFm/NKvCZoGXYQBg1gPn6MbbFnWzygvJU1s=; b=RWCImaX/gwHBk1lKDj6fBqDZp4
-	YdwK1o40BQH2+DLqFrVbt7sAE01/8+dMo7m4um5LZ+ZO0NYe0s0Or6IMw7zZYdnvVDelwOSICFXD9
-	Csi9oC6ukGTKTAXY3HnIL8hB5S8b0SIST7CFszM2LbNlaNWHPPEXXia4PDFpzzFZ9f7/BXnaQaNvC
-	EKWnjkKQBVfxkhavs5w9x3xHTrHqkM0jsZjB8xl9T/oTJ/h0ikYoMutLp5eKGWhcqcIdFPqXlbvAk
-	Uv1HKpQTz6GbhQ+TyG68zJU/uWQQumePkwpqB0681QOhTlPBO1UmPFd/6RoaZQpVfE9SmbNL2shwu
-	WK06TmhA==;
+	bh=LXj06sjT6JD6J+KkgVlsc2m/5C87BrmaByrMq2gcY5U=; b=IAVKjPZsXix/Y5kR7YuyUdk2Hf
+	oLp5YIYyts7r7xA35w9IsqONG7qktStN//mu0KwoJ5mB/MZ9SpPYzhNLrA25MqclLhad2R/pJqats
+	ndxBrXm4lAYTgu0IgZk/FpAcK0RCl2qtJvdNUAJO3EFcTciPASwEgJP0a450snEy1skaF7JmC3WjI
+	1+VgSikdH0IucRe7+k2YTnszzQKWNNKP0RlSMdy5o2BCNHm0mnb6v6rdifcass/A2aSnjG51+uLYR
+	+kXRVVSKKkhsbrKb/zp+S1Xc+4PV7ifwN9SHmmuRRv/v8FiRdyqjIZ6oQpILzva70WwbHKN4uZjMy
+	S1Qyc52g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqFGs-00000004Ymo-3Sha;
-	Mon, 16 Sep 2024 17:12:18 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sqFOP-00000004ZsV-0u2O;
+	Mon, 16 Sep 2024 17:20:05 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqFFm-00000004Yde-0TEI;
-	Mon, 16 Sep 2024 17:11:12 +0000
+	id 1sqFOM-00000004ZrR-1Inq
+	for linux-mediatek@lists.infradead.org;
+	Mon, 16 Sep 2024 17:20:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A83C65C5C6C;
-	Mon, 16 Sep 2024 17:11:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DECC5C4CEC4;
-	Mon, 16 Sep 2024 17:11:08 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8A3575C5C9E;
+	Mon, 16 Sep 2024 17:19:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B610EC4CEC5;
+	Mon, 16 Sep 2024 17:20:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1726506669;
-	bh=At1Pr7PthC5cR3eEm4LyYtKE8cs9rEAJIqeU0f1G/fc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gpq59S3gZdEPOMG+cSrM2MZyeEgLgRN00IshBx+pgdBrAHOEdij6WUJlapjW7nfRy
-	 S8j3B+V4QSvhZjy4haX6D1fs+l5Q6ZEOQS/o/8/YqDIT0uTUMX4WVzqbH365RyZmhL
-	 RIeWbNwmnhXeaQFUzKc0DQs/E5DNljCxJlFgw35aSLuEpV+JvXwZoZF0ElB+3ODHOG
-	 L43MbAlf4pLUsccqgxId18XQdg7yawyEEZM4jwhqPjQAZLSAGD3n6DZOIK/IALKzjz
-	 2BuPwLHzeyZja8n/AB50Vt93p4imZxtA/kKdoMEjl2iWDVBQ4lR74fvmEnM7PpbtKA
-	 T0ag2z9rV9Ujg==
-Date: Mon, 16 Sep 2024 12:11:07 -0500
-From: Rob Herring <robh@kernel.org>
-To: Rohit Agarwal <rohiagar@chromium.org>
-Cc: chunkuang.hu@kernel.org, krzk+dt@kernel.org, ck.hu@mediatek.com,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	kernel test robot <lkp@intel.com>
-Subject: Re: [PATCH] dt-bindings: display: mediatek: dpi: Add power domain
- for MT8195 DP_INTF
-Message-ID: <20240916171107.GA605353-robh@kernel.org>
-References: <20240911071722.558960-1-rohiagar@chromium.org>
+	s=k20201202; t=1726507201;
+	bh=HEVyZN8Y1qi8flRxY88Etdy1tq7GDjdM0Kqg/1HQTFo=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=q6jCs0jKJWHlgV1CBh/9eypvIKNLL9lM4L3Vxjo2tlav5+FGs2fv0YTSwusR4l0bQ
+	 8hNcvmdD9inmvcKqFLh1o7H1/aKyNS26x4SK18nskKrGLIxh965HFnYo7gxJZuTnJS
+	 ViwsZilkaYU4ECImAnl18Spzz4MTqu+HJ9ncxJIN3z+zvZa4+m8Vbzn78bo9MVzhSS
+	 10SAiS6YhNYARECOnFbLDK/54Jtfk8PpV1C6sSYCIIEQk4T/lovkSnW8bzB9uE8hfq
+	 ZNEP1Bd3n326xAqGIy0lXpKWjbgP+0q081Aioj0x+VkRTPrz45VfvK1XHfSomPGl1v
+	 jQnh4WUIr7iSQ==
+Date: Mon, 16 Sep 2024 12:19:59 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240911071722.558960-1-rohiagar@chromium.org>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ hsinyi@google.com, dri-devel@lists.freedesktop.org, conor+dt@kernel.org, 
+ angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, 
+ knoxchiou@google.com, devicetree@vger.kernel.org, krzk+dt@kernel.org
+In-Reply-To: <20240914063122.1622196-1-cengjianeng@huaqin.corp-partner.google.com>
+References: <20240914063122.1622196-1-cengjianeng@huaqin.corp-partner.google.com>
+Message-Id: <172650686036.806282.435049873625711480.robh@kernel.org>
+Subject: Re: [PATCH v8 0/2] arm64: dts: mediatek: Add MT8186 Ponyta
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240916_101110_241232_2DB93827 
-X-CRM114-Status: GOOD (  14.57  )
+X-CRM114-CacheID: sfid-20240916_102002_468210_BF001CBE 
+X-CRM114-Status: GOOD (  13.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,39 +73,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 11, 2024 at 07:17:21AM +0000, Rohit Agarwal wrote:
-> Add power domain binding for MT8195 DP_INTF that resolves the following
-> error and many more similar ones:
-> 
-> arch/arm64/boot/dts/mediatek/mt8195-cherry-dojo-r1.dtb: dp-intf@1c113000:
-> power-domains: False schema does not allow [[55, 18]]
-> 
-> Reported-by: kernel test robot <lkp@intel.com>
-> Closes: https://lore.kernel.org/oe-kbuild-all/202409102119.AYvaTjUi-lkp@intel.com/
 
-Fixes?
-
-> Signed-off-by: Rohit Agarwal <rohiagar@chromium.org>
+On Sat, 14 Sep 2024 14:31:20 +0800, Jianeng Ceng wrote:
+> This is v8 of the MT8186 Chromebook device tree series.
 > ---
->  .../devicetree/bindings/display/mediatek/mediatek,dpi.yaml       | 1 +
->  1 file changed, 1 insertion(+)
+> Changes in v8:
+> - PATCH 1/2: Remove custom label.
+> - PATCH 2/2: Change the commit about ponyta.
+> - Link to v7:https://lore.kernel.org/all/20240913031505.372868-1-cengjianeng@huaqin.corp-partner.google.com/
 > 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-> index 3a82aec9021c..07acc8a76bfc 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-> @@ -89,6 +89,7 @@ allOf:
->                  - mediatek,mt6795-dpi
->                  - mediatek,mt8173-dpi
->                  - mediatek,mt8186-dpi
-> +                - mediatek,mt8195-dp-intf
+> Changes in v7:
+> - PATCH 2/2: Remove prototype sku.
+> - PATCH 2/2: Disable the other trackpad to enable one of them.
+> - Link to v5:https://lore.kernel.org/all/20240913015503.4192806-1-cengjianeng@huaqin.corp-partner.google.com/
+> 
+> Changes in v6:
+> - No change.
+> 
+> Changes in v5:
+> - PATCH 1/2: Remove sku2147483647.
+> - PATCH 2/2: Remove sku2147483647.
+> - Link to v4:https://lore.kernel.org/all/20240906085739.1322676-1-cengjianeng@huaqin.corp-partner.google.com/
+> 
+> Changes in v4:
+> - PATCH 1/2: Add more info for Ponyta custom label in commit.
+> - Link to v3:https://lore.kernel.org/all/20240904081501.2060933-1-cengjianeng@huaqin.corp-partner.google.com/
+> 
+> Changes in v3:
+> - PATCH 0/2: Add the modify records.
+> - PATCH 1/2: Modify lable to label.
+> - Link to v2:https://lore.kernel.org/all/20240903061603.3007289-1-cengjianeng@huaqin.corp-partner.google.com/
+> 
+> Changes in v2:
+> - PATCH 2/2: Modify the dtb name without rev2.
+> - Link to v1:https://lore.kernel.org/all/20240902125502.1844374-1-cengjianeng@huaqin.corp-partner.google.com/
+> 
+> Jianeng Ceng (2):
+>   dt-bindings: arm: mediatek: Add MT8186 Ponyta Chromebook
+>   arm64: dts: mediatek: Add MT8186 Ponyta Chromebooks
+> 
+>  .../devicetree/bindings/arm/mediatek.yaml     | 10 +++++
+>  arch/arm64/boot/dts/mediatek/Makefile         |  2 +
+>  .../mediatek/mt8186-corsola-ponyta-sku0.dts   | 18 ++++++++
+>  .../mediatek/mt8186-corsola-ponyta-sku1.dts   | 22 ++++++++++
+>  .../dts/mediatek/mt8186-corsola-ponyta.dtsi   | 44 +++++++++++++++++++
+>  5 files changed, 96 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta.dtsi
+> 
+> --
+> 2.34.1
+> 
+> 
+> 
 
-mt8183 is also missing. There's a patch[1] to fix it, but it's wrong 
-given the recent changes. It would be best to fix both in one 
-patch/series as 2 separate patches will have conflicts.
 
-Rob
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
 
 
-[1] https://lore.kernel.org/all/20240912144430.3161717-2-treapking@chromium.org/
+New warnings running 'make CHECK_DTBS=y mediatek/mt8186-corsola-ponyta-sku0.dtb mediatek/mt8186-corsola-ponyta-sku1.dtb' for 20240914063122.1622196-1-cengjianeng@huaqin.corp-partner.google.com:
+
+arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dtb: /soc/pwrap@1000d000/pmic: failed to match any schema with compatible: ['mediatek,mt6366', 'mediatek,mt6358']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dtb: /soc/pwrap@1000d000/pmic: failed to match any schema with compatible: ['mediatek,mt6366', 'mediatek,mt6358']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dtb: /soc/pwrap@1000d000/pmic/codec: failed to match any schema with compatible: ['mediatek,mt6366-sound', 'mediatek,mt6358-sound']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dtb: /soc/pwrap@1000d000/pmic/codec: failed to match any schema with compatible: ['mediatek,mt6366-sound', 'mediatek,mt6358-sound']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dtb: /soc/pwrap@1000d000/pmic: failed to match any schema with compatible: ['mediatek,mt6366', 'mediatek,mt6358']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dtb: /soc/pwrap@1000d000/pmic: failed to match any schema with compatible: ['mediatek,mt6366', 'mediatek,mt6358']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dtb: /soc/pwrap@1000d000/pmic/codec: failed to match any schema with compatible: ['mediatek,mt6366-sound', 'mediatek,mt6358-sound']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dtb: /soc/pwrap@1000d000/pmic/codec: failed to match any schema with compatible: ['mediatek,mt6366-sound', 'mediatek,mt6358-sound']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dtb: /soc/pwrap@1000d000/pmic/rtc: failed to match any schema with compatible: ['mediatek,mt6366-rtc', 'mediatek,mt6358-rtc']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dtb: /soc/pwrap@1000d000/pmic/rtc: failed to match any schema with compatible: ['mediatek,mt6366-rtc', 'mediatek,mt6358-rtc']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dtb: /soc/pwrap@1000d000/pmic/rtc: failed to match any schema with compatible: ['mediatek,mt6366-rtc', 'mediatek,mt6358-rtc']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dtb: /soc/pwrap@1000d000/pmic/rtc: failed to match any schema with compatible: ['mediatek,mt6366-rtc', 'mediatek,mt6358-rtc']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dtb: dp-bridge@5c: 'extcon' is a required property
+	from schema $id: http://devicetree.org/schemas/display/bridge/ite,it6505.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dtb: dp-bridge@5c: 'extcon' is a required property
+	from schema $id: http://devicetree.org/schemas/display/bridge/ite,it6505.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dtb: sound: 'model' is a required property
+	from schema $id: http://devicetree.org/schemas/sound/mt8186-mt6366-rt1019-rt5682s.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dtb: sound: 'model' is a required property
+	from schema $id: http://devicetree.org/schemas/sound/mt8186-mt6366-rt1019-rt5682s.yaml#
+
+
+
+
+
 
