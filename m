@@ -4,71 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FA6EC3ABB2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Sep 2024 09:26:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84B0BC3ABA2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Sep 2024 09:41:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ICVkO155Bp7n9e6nsmepH4m95gK3Ker1+yTqAskJHCA=; b=u5b7FO/K2EN3sWnBWv6Iwh+hVP
-	dqXRMCO3XIblbPDt5IkWJzBjklbSJqk/d+O+HHQsVO7TysrFTwRgkuRJWQdB/NxBQNQA94oJ21owE
-	d+jcRwbhpYzrUlqJPy97vwntpyfeLFpVYq/Kp09l2dFpKPpizekcYlBZRTdZ+rsXKsvrBENWVPWL9
-	uzro3e8OXYpuKAcuubbZkw7RyhLhgTwnCRMP1OARwsnUYQKC01sI3C/oj04IEGchw3jhEV8UwS67g
-	nLerFSf+rmVpjQe30jp8ekNgHxTgRwxTV9tc3D75sXn4UPl8Lx7rvgEU14t1OsIavcxjHMKfSpaV9
-	eBR6Ohbg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mer/t1aUZ3FRSNlEO+AwG0dMz5gbw++dNkMyrkDAUqc=; b=hxsxUyUgn6ZganYomFRHMA59Mj
+	Jhz4hg1MWPGtB0p/u//t9jIuIxgCNYoZLfDA6lWJrVwvyfkv42bTACCbDfo/n+1tBx1aDeg+MwAkz
+	OmGmiwecF+BF8N47tnO5oURUBnvsDTw2JkTBom5azNGwFNyHVMhCRgRrIuEEF/m9KX9tTy7WvEe3u
+	ERekAwiMLRSj4dJrWa2XhOxpNTJ2wCe9Xx5MaxIGlJPR2/yEBjAnJ9aAcVdIz3DW77CoA+90l6EpE
+	o7m+JVeVRAJo+F59tu1n+X81xvdMVm1mQowXChyN3deYyodYLwpBHPCn0DQeMxsg6C+1uXQJVnp2a
+	WUg+Dlng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sq7zy-00000003Zm6-3ZTT;
-	Mon, 16 Sep 2024 09:26:22 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1sq8EI-00000003bDc-0pkr;
+	Mon, 16 Sep 2024 09:41:10 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sq7yt-00000003ZZU-3htt;
-	Mon, 16 Sep 2024 09:25:17 +0000
+	id 1sq8DB-00000003b8u-0OOC;
+	Mon, 16 Sep 2024 09:40:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 2D3B9A41B40;
-	Mon, 16 Sep 2024 09:25:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C7B1C4CECC;
-	Mon, 16 Sep 2024 09:25:13 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 5210AA41C3C;
+	Mon, 16 Sep 2024 09:39:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 60DA8C4CEC4;
+	Mon, 16 Sep 2024 09:39:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1726478714;
-	bh=vLrfIzpNtpqTfCOqfCAt9jt7gKeQhXhVTLWVC2YKFFw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Ab148Y7b3rAN2wJtP+0rs6F8WuJGUh+t4Q+569KNaWahtaZZwazP8kXLyw3e2Pq5s
-	 E4Ali9Ca/76F+iWaRO1GR0VntlhPOO9eNPDFQM8W8Xrb15bRuNylTRKskKGf0/EFya
-	 EHajF3wzpfJCAD6Au6J3E3EnoULv/jh/Asm/jLcD9SUq4eRD3wOVIabIH/HqGkz/QO
-	 wdTOlBGvJKi1KrEhPe6qJI6PVrRvmcXhz6YGf/eWTVa1OmJCF9nXrKcOR1N/3L6pgg
-	 mKPJWTmsVlyLnlKewrnw0W+JbVPnyQuix1GEhHiBr2mIZGlO0oQ8ckLfgu0MCoiuDG
-	 mY9JrPkt9zTbg==
-Date: Mon, 16 Sep 2024 11:25:11 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, 
-	Vladimir Oltean <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
-	Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Sean Wang <sean.wang@mediatek.com>, 
-	Sen Chu <sen.chu@mediatek.com>, netdev@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Alexandre Mergnat <amergnat@baylibre.com>, 
-	Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>, 
-	Macpaul Lin <macpaul@gmail.com>, Chris-qj chen <chris-qj.chen@mediatek.com>, 
-	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>
-Subject: Re: [PATCH v4 1/3] regulator: dt-bindings: mt6323: Convert to DT
- schema
-Message-ID: <iv2v4ywijimac7l336sgqqm4rfxpx73tgmsil63z7l2xilpivz@vmpff3oitslw>
-References: <20240914132731.9211-1-macpaul.lin@mediatek.com>
+	s=k20201202; t=1726479599;
+	bh=9hHrXVGNMzBUBk+Kjif8LZHfSPqln+0frZ1fgVO54fo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=nE+1lr3q5XxILv9LWlZvZ4Ph87TAjsMmUXS0iNdqQxxhVS0ckfnRPfie9Me9c2TA3
+	 /j5oMKTWCbUcLWlP2/3ExB6NHs2ffObvMewZ28+t+5NiLjDQrqLIafNxVxqPmUlW5v
+	 r4vijYOrxbxFzVHcDVZ4DhKdcIC77VIyopD8j5e+zBdQJQH9p/PeE6aJBqkfgSs3AW
+	 s6HOxPBoVwlgC6Pa642T1pBO+ZSJ4oLQrUQYmURGNZdUWexaKM3z22sX3PyooF5KSM
+	 t9iYruRd7X9PvEcpKEUNUGzTOUMmPCTZ18RpmjMIfEm5Dw0WYH3mrOVsTiVWjN/t0x
+	 7yqmFc893fiag==
+Message-ID: <1d880cca-e847-4b8c-b517-bac36e5ec54a@kernel.org>
+Date: Mon, 16 Sep 2024 11:39:53 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20240914132731.9211-1-macpaul.lin@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 3/3] regulator: dt-bindings: mt6397: move examples to
+ parent PMIC mt6397
+To: Macpaul Lin <macpaul.lin@mediatek.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sen Chu <sen.chu@mediatek.com>, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+ Macpaul Lin <macpaul@gmail.com>, Chris-qj chen <chris-qj.chen@mediatek.com>,
+ MediaTek Chromebook Upstream
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ Chen-Yu Tsai <wenst@chromium.org>
+References: <20240914132833.9882-1-macpaul.lin@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20240914132833.9882-1-macpaul.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240916_022516_012070_74430B1F 
-X-CRM114-Status: GOOD (  12.35  )
+X-CRM114-CacheID: sfid-20240916_024001_297032_C2F1CB72 
+X-CRM114-Status: UNSURE (   7.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,23 +128,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Sep 14, 2024 at 09:27:31PM +0800, Macpaul Lin wrote:
-> Convert the MT6323 regulator binding from the old text-based format to
-> the new DT schema style. The property "regulator-name" has been added
-> as required property to reflect current usage in mt6323.dtsi.
+On 14/09/2024 15:28, Macpaul Lin wrote:
+> Since the DT schema of multiple function PMIC mt6397 has been converted,
+> move the examples in "mediatek,mt6397-regulator.yaml" to the parent schema
+> "mediatek,mt6397.yaml".
 > 
-> Examples have been streamlined and relocated to the parent schema file:
->   mfd/mediatek,mt6397.yaml.
-> 
-> Update maintainer and submitter information with new entries from MediaTek.
-> 
-> The reference document cited in "mediatek,mt7530.yaml" has been updated
-> to point to this new DT schema file
-> 
-> Signed-off-by: Sen Chu <sen.chu@mediatek.com>
 > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> ---
+>  .../regulator/mediatek,mt6397-regulator.yaml  | 173 ------------------
+>  1 file changed, 173 deletions(-)
 
-Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
+Your threading is completely broken. I don't understand where this
+belongs. There were several patchsets from you.
 
 Best regards,
 Krzysztof
