@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E2A1C35FEA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Sep 2024 07:01:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7142AC35FEB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Sep 2024 07:02:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3iLbLomyZlJW0ECeLLAcxf4FS7ClALn0nW1BK89+3cg=; b=YK+Oe/MDe0DOzJwuucN4ezR5sF
-	XIMo6d63uFEwLJpT5u1mDY/kONnCdsRzzsbVnnonLDjvTSEojh2FOlkKFh7eF3HSDzWVPeoWZd1TN
-	rsqqXE5dBLyUtgWj+0G9bZ7h3ErUYZcFDdPOVwydnvl4K+DKEe32pOMQ+x21tqh3sh/78zBia0vZg
-	tyotsLSjnsLgzyeUrBBxaUqnKT/M2TIFKjz5B4F4Lyxi9cahgXt4hVMYEpHClDXYnfzfKB1/f8RPm
-	wkjo3t4RvxQXcfY8xAWLHUvuR+50Iz+sCkpISM/9AkvBBAGzKF+LP4RfUip+3euQwd3aDI9bdkB4L
-	LxUKM/rQ==;
+	bh=wL7bb6z2iPwWqy6wScaLnhBW8fFzb85kAzY2JZAjutM=; b=jH+I5qjOjgN9YCW8IkJfD/mkpk
+	zhXDa4Gg6XjTLcV60Etii29+9Z0HN5Njbm/PCu0jMuI/Wj4XC8HzDntenfwg4U5eIrjTIl1e//6cI
+	ejXEpUmDSESXV9sFLlXSEz+grCjv1xFAjm3uwKO3QWqOAbZHCnyXPUgoGWlSl1t2a3aueOQR9lTF8
+	htasB7JHm1zZMaIB4KfQWfK3ZEEtiK8xXnqKRofN7HnOhR71lPFUzmSIOcpWTHsnMzLetrAHpRhMg
+	dAXMzttVc86LVQjQyW6K78efUfSV07Jp/inXhP9iNEDNK5Xx9ez5gpz8XOmJenJudOthjz2mHJqXk
+	BgX/jl3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqSDR-00000005XgI-2l5i;
-	Tue, 17 Sep 2024 07:01:37 +0000
+	id 1sqSEV-00000005Xrf-3gBG;
+	Tue, 17 Sep 2024 07:02:44 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqSCK-00000005XTX-1NUG;
-	Tue, 17 Sep 2024 07:00:29 +0000
+	id 1sqSD4-00000005Xbm-30vr;
+	Tue, 17 Sep 2024 07:01:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 053555C5932;
-	Tue, 17 Sep 2024 07:00:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7AA3FC4CEC6;
-	Tue, 17 Sep 2024 07:00:25 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 503645C5798;
+	Tue, 17 Sep 2024 07:01:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A480C4CEC6;
+	Tue, 17 Sep 2024 07:01:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1726556426;
-	bh=xYXjLgKIgVQVJl/mI7hl5hLIk1cdSp8r/KFLQ4nwxgM=;
+	s=k20201202; t=1726556473;
+	bh=wL7bb6z2iPwWqy6wScaLnhBW8fFzb85kAzY2JZAjutM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=nXJ/DXixRjjDtOwXrUIh1eVPfuQ3jMIC7ZCco3EQFL4PNFnS8+SNHzXil7GkmG+Wv
-	 +re5wFT9lDF+2K3ZmYXDhGY5uViKGt3AbEyjhQXiYGsoY4Rn4BGgLwoZw29/zpzAiD
-	 W+tWDKUdHWrKr86gPrfGplJnUJh1TQ1Oed4gUl6BjTWgFzk+wX2l7J+Pbujqf+umyW
-	 2IjmIzCBf2BnvnOtGycrodoh6oCQ53Id2Mphp5LZ7U2yg41Elqezl29tbDEEuKlp9h
-	 T8dvp/BY5tcBunj6V+MSfFDgD8IxctyDLW0kgRSjsgCyhZxeuTVb0l0zNpAq32q0u5
-	 envyKvvKyTDtg==
-Date: Tue, 17 Sep 2024 09:00:23 +0200
+	b=Sq9vfbO9nxUpSGNrYLqj2Q8lgo2euizIAqPcu+2RYfv9Qy3Xi2to2W8G0453aZgEc
+	 gyRJPwKRSdpoyxSS3nybDQAy6L0+yiQFLBZwEOKaqFabevwP3eAwvuBkC2PR07sLlc
+	 tdfPOcXthy+/W+VBtKl/10ApKOWKuVMlLQbddbD5x79MMNBxJkUEPa9xduBmI2O+4Q
+	 10OzeyGNN4KwiGQRZMx8NSk43PUjg2pSgZiF7cgpmecnNknHIG56/r4GwIrHSXI7qX
+	 hJZBX1ANS2kKMrC0YgPjonPKpAvKBQIpQnCTAGjsSUUrh22ejpWEeBjoyvk+UbB5uG
+	 y0jWIJh4ltyXg==
+Date: Tue, 17 Sep 2024 09:01:10 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Macpaul Lin <macpaul.lin@mediatek.com>
 Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, 
@@ -63,18 +63,19 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
 	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, 
 	Chris-qj chen <chris-qj.chen@mediatek.com>, 
 	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>
-Subject: Re: [PATCH v5 2/3] dt-bindings: mfd: mediatek: mt6397: Convert to DT
- schema format
-Message-ID: <iudkiamza3lsl33tsby3sghfy66rj2tgg3kqjjwzeba46oxtpi@yrri5m5skjld>
+Subject: Re: [PATCH v5 3/3] regulator: dt-bindings: mt6397: move examples to
+ parent PMIC mt6397
+Message-ID: <ev4kqtbjwglrti3mk2cnayilj4muy7ll7ux2uwlekcwu73dy5e@h4wvpucmyepw>
 References: <20240916151132.32321-1-macpaul.lin@mediatek.com>
- <20240916151132.32321-2-macpaul.lin@mediatek.com>
+ <20240916151132.32321-3-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20240916151132.32321-2-macpaul.lin@mediatek.com>
+In-Reply-To: <20240916151132.32321-3-macpaul.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240917_000028_537786_7B9BDFD3 
-X-CRM114-Status: GOOD (  12.70  )
+X-CRM114-CacheID: sfid-20240917_000114_849557_08CAC373 
+X-CRM114-Status: UNSURE (   9.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,277 +90,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 16, 2024 at 11:11:31PM +0800, Macpaul Lin wrote:
-> Convert the mfd: mediatek: mt6397 binding to DT schema format.
-> 
-> MT6323, MT6358, and MT6397 are PMIC devices with multiple function
-> subdevices. They share a common PMIC design but have variations in
-> subdevice combinations.
-> 
-> Key updates in this conversion:
+On Mon, Sep 16, 2024 at 11:11:32PM +0800, Macpaul Lin wrote:
+> Since the DT schema of multiple function PMIC mt6397 has been converted,
+> move the examples in "mediatek,mt6397-regulator.yaml" to the parent schema
+> "mediatek,mt6397.yaml".
 
-...
-
-> +                regulator-name = "vproc";
-> +                regulator-min-microvolt = < 700000>;
-> +                regulator-max-microvolt = <1350000>;
-> +                regulator-ramp-delay = <12500>;
-> +                regulator-always-on;
-> +                regulator-boot-on;
-> +            };
-> +
-> +            buck_vsys {
-> +                regulator-name = "vsys";
-> +                regulator-min-microvolt = <1400000>;
-> +                regulator-max-microvolt = <2987500>;
-> +                regulator-ramp-delay = <25000>;
-> +                regulator-always-on;
-> +                regulator-boot-on;
-> +            };
-> +
-> +            buck_vpa {
-> +                regulator-name = "vpa";
-> +                regulator-min-microvolt = < 500000>;
-> +                regulator-max-microvolt = <3650000>;
-> +            };
-> +
-> +            ldo_vtcxo {
-> +                regulator-name = "vtcxo";
-> +                regulator-min-microvolt = <2800000>;
-> +                regulator-max-microvolt = <2800000>;
-> +                regulator-enable-ramp-delay = <90>;
-> +                regulator-always-on;
-> +                regulator-boot-on;
-> +            };
-> +
-> +            ldo_vcn28 {
-> +                regulator-name = "vcn28";
-> +                regulator-min-microvolt = <2800000>;
-> +                regulator-max-microvolt = <2800000>;
-> +                regulator-enable-ramp-delay = <185>;
-> +            };
-> +
-> +            ldo_vcn33_bt {
-> +                regulator-name = "vcn33_bt";
-> +                regulator-min-microvolt = <3300000>;
-> +                regulator-max-microvolt = <3600000>;
-> +                regulator-enable-ramp-delay = <185>;
-> +            };
-> +
-> +            ldo_vcn33_wifi {
-> +                regulator-name = "vcn33_wifi";
-> +                regulator-min-microvolt = <3300000>;
-> +                regulator-max-microvolt = <3600000>;
-> +                regulator-enable-ramp-delay = <185>;
-> +            };
-> +
-> +            ldo_va {
-> +                regulator-name = "va";
-> +                regulator-min-microvolt = <2800000>;
-> +                regulator-max-microvolt = <2800000>;
-> +                regulator-enable-ramp-delay = <216>;
-> +                regulator-always-on;
-> +                regulator-boot-on;
-> +            };
-> +
-> +            ldo_vcama {
-> +                regulator-name = "vcama";
-> +                regulator-min-microvolt = <1500000>;
-> +                regulator-max-microvolt = <2800000>;
-> +                regulator-enable-ramp-delay = <216>;
-> +            };
-> +
-> +            ldo_vio28 {
-> +                regulator-name = "vio28";
-> +                regulator-min-microvolt = <2800000>;
-> +                regulator-max-microvolt = <2800000>;
-> +                regulator-enable-ramp-delay = <216>;
-> +                regulator-always-on;
-> +                regulator-boot-on;
-> +            };
-> +
-> +            ldo_vusb {
-> +                regulator-name = "vusb";
-> +                regulator-min-microvolt = <3300000>;
-> +                regulator-max-microvolt = <3300000>;
-> +                regulator-enable-ramp-delay = <216>;
-> +                regulator-boot-on;
-> +            };
-> +
-> +            ldo_vmc {
-> +                regulator-name = "vmc";
-> +                regulator-min-microvolt = <1800000>;
-> +                regulator-max-microvolt = <3300000>;
-> +                regulator-enable-ramp-delay = <36>;
-> +                regulator-boot-on;
-> +            };
-> +
-> +            ldo_vmch {
-> +                regulator-name = "vmch";
-> +                regulator-min-microvolt = <3000000>;
-> +                regulator-max-microvolt = <3300000>;
-> +                regulator-enable-ramp-delay = <36>;
-> +                regulator-boot-on;
-> +            };
-> +
-> +            ldo_vemc3v3 {
-> +                regulator-name = "vemc3v3";
-> +                regulator-min-microvolt = <3000000>;
-> +                regulator-max-microvolt = <3300000>;
-> +                regulator-enable-ramp-delay = <36>;
-> +                regulator-boot-on;
-> +            };
-> +
-> +            ldo_vgp1 {
-> +                regulator-name = "vgp1";
-> +                regulator-min-microvolt = <1200000>;
-> +                regulator-max-microvolt = <3300000>;
-> +                regulator-enable-ramp-delay = <216>;
-> +            };
-> +
-> +            ldo_vgp2 {
-> +                regulator-name = "vgp2";
-> +                regulator-min-microvolt = <1200000>;
-> +                regulator-max-microvolt = <3000000>;
-> +                regulator-enable-ramp-delay = <216>;
-> +            };
-> +
-> +            ldo_vgp3 {
-> +                regulator-name = "vgp3";
-> +                regulator-min-microvolt = <1200000>;
-> +                regulator-max-microvolt = <1800000>;
-> +                regulator-enable-ramp-delay = <216>;
-> +            };
-> +
-> +            ldo_vcn18 {
-> +                regulator-name = "vcn18";
-> +                regulator-min-microvolt = <1800000>;
-> +                regulator-max-microvolt = <1800000>;
-> +                regulator-enable-ramp-delay = <216>;
-> +            };
-> +
-> +            ldo_vsim1 {
-> +                regulator-name = "vsim1";
-> +                regulator-min-microvolt = <1800000>;
-> +                regulator-max-microvolt = <3000000>;
-> +                regulator-enable-ramp-delay = <216>;
-> +            };
-> +
-> +            ldo_vsim2 {
-> +                regulator-name = "vsim2";
-> +                regulator-min-microvolt = <1800000>;
-> +                regulator-max-microvolt = <3000000>;
-> +                regulator-enable-ramp-delay = <216>;
-> +            };
-> +
-> +            ldo_vrtc {
-> +                regulator-name = "vrtc";
-> +                regulator-min-microvolt = <2800000>;
-> +                regulator-max-microvolt = <2800000>;
-> +                regulator-always-on;
-> +                regulator-boot-on;
-> +            };
-> +
-> +            ldo_vcamaf {
-> +                regulator-name = "vcamaf";
-> +                regulator-min-microvolt = <1200000>;
-> +                regulator-max-microvolt = <3300000>;
-> +                regulator-enable-ramp-delay = <216>;
-> +            };
-> +
-> +            ldo_vibr {
-> +                regulator-name = "vibr";
-> +                regulator-min-microvolt = <1200000>;
-> +                regulator-max-microvolt = <3300000>;
-> +                regulator-enable-ramp-delay = <36>;
-> +            };
-> +
-> +            ldo_vrf18 {
-> +                regulator-name = "vrf18";
-> +                regulator-min-microvolt = <1825000>;
-> +                regulator-max-microvolt = <1825000>;
-> +                regulator-enable-ramp-delay = <187>;
-> +            };
-> +
-> +            ldo_vm {
-> +                regulator-name = "vm";
-> +                regulator-min-microvolt = <1200000>;
-> +                regulator-max-microvolt = <1800000>;
-> +                regulator-enable-ramp-delay = <216>;
-> +                regulator-always-on;
-> +                regulator-boot-on;
-> +            };
-> +
-> +            ldo_vio18 {
-> +                regulator-name = "vio18";
-> +                regulator-min-microvolt = <1800000>;
-> +                regulator-max-microvolt = <1800000>;
-> +                regulator-enable-ramp-delay = <216>;
-> +                regulator-always-on;
-> +                regulator-boot-on;
-> +            };
-> +
-> +           ldo_vcamd {
-> +                regulator-name = "vcamd";
-> +                regulator-min-microvolt = <1200000>;
-> +                regulator-max-microvolt = <1800000>;
-> +                regulator-enable-ramp-delay = <216>;
-> +            };
-> +
-> +            ldo_vcamio {
-> +                regulator-name = "vcamio";
-> +                regulator-min-microvolt = <1800000>;
-> +                regulator-max-microvolt = <1800000>;
-> +                regulator-enable-ramp-delay = <216>;
-> +            };
-> +        };
-> +
-> +        keys {
-> +            compatible = "mediatek,mt6323-keys";
-> +            mediatek,long-press-mode = <1>;
-> +            power-off-time-sec = <0>;
-> +
-> +            power {
-> +                    linux,keycodes = <116>;
-
-Messed indentation.
-
-> +                    wakeup-source;
-> +            };
-> +
-> +            home {
-> +                    linux,keycodes = <114>;
-> +            };
-> +        };
-> +
-> +        power-controller {
-> +            compatible = "mediatek,mt6323-pwrc";
-> +            #power-domain-cells = <0>;
-> +        };
-> +
-> +        rtc {
-> +            compatible = "mediatek,mt6323-rtc";
-> +        };
-> +    };
-
-Keep one complete example. Maybye two if they are significantly
-different, but I don't see these differences.
-
-
-> +
-> +  - |
-> +    #include <dt-bindings/input/input.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +
-> +    pmic {
-> +        compatible = "mediatek,mt6358">
-
-
-....
-
-> -	Required properties:
-> -		- compatible: "mediatek,mt6397-pinctrl"
-> -	For details, see ../pinctrl/pinctrl-mt65xx.txt
+Is there any error otherwise? Why this cannot stay here, since it is
+already there?
 
 Best regards,
 Krzysztof
