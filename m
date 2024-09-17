@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBE52C35FFC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Sep 2024 09:12:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5712BC35FFC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Sep 2024 09:13:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=2ohLUN7DOnyEI3NWAO8wypBaON48U9+peQySTwVRgJc=; b=pSQvqwizaW0NCqAfcrh/3RHBR4
-	GLK7KLDGpmHWJcKpXn6vNjBTgv0G3nHU+sSb+nK+ihcbPArjundpmgbBSOqhcaqTaMdDC+YWo+3Xy
-	4eIu4+mt3NMt7HyQKENYh0woepUeUhDXIvhe1d3gTu96p0MzoSzakSKWFL1LG/OFfN34LPeF3vc1j
-	KszBU7YzVkKmWgWsSN9ImvU68Wggf5oJTzMDj/bjxH0M8rRf5QwWe4QtPFpnKm14W0CdycWH1yXwy
-	OfkuPlFQJsV6Ww4Kr4c9r57PtOGh/W1oI6Q+5RWyS814k7fQDvGUWEA6tM4xG/piNlzdGU0dylXw+
-	Uu5mY75Q==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2kS2+TsaNzx2y4bTT92ZOjUNjg3eh12p7En1G5b4BeM=; b=SzAK4euNmCZJygMj2KcwOhTA1R
+	1pXZPXdXV5sYSxiaob5EiomG3yui/u573yprutleKrpVFgJjGuBd26nc4Zf2V+nTRep4XvwYhyc74
+	lI60cpDJRg+fI7yJ/rnNa6rq/dT4XPSjWMa199M4dejCX3C7k4We82lN6QWXakf/LkHlhUCR7+S6y
+	xa/mP8/qIFfu7Y6cJWRwiUCPsMViyTTtgWlsrNuR4LfaRd0QeE4RfGt7kJ+mr90WrHO1Np+dG4JTG
+	cJEDIEoYf5xUlaUESV5AdzjB3BnbpQst05XvGXD1AtikdfMBlH4b4NooTJZqMejEoP7mhNAMXB3MJ
+	w2dGmb3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqUGN-00000005nEI-1KaI;
-	Tue, 17 Sep 2024 09:12:47 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1sqUHQ-00000005nOW-3xKQ;
+	Tue, 17 Sep 2024 09:13:52 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqUFG-00000005myp-0ipb;
-	Tue, 17 Sep 2024 09:11:39 +0000
+	id 1sqUFG-00000005myr-2IOa;
+	Tue, 17 Sep 2024 09:11:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1726564296;
-	bh=58lPaXcY3g+9HNzDYS6D7c9jH1qiDF3Ci+34DHi5/VE=;
-	h=From:To:Cc:Subject:Date:From;
-	b=GMUa/pPXwwgAJ5nhu3kpb/IFFI7eIclKibLfPmOyBaUkSuH5jecsvH1+6CCqTx8GB
-	 iC5X6nZpS0r8/usRgxtpNN7B115yGu5NWt9JpEozbqhtpUswtUbVWWdTjd0+qg/IfN
-	 TyjqwfiXoWuvpJpHUbdOfOSjAIB4aAOAW5N1uH4qHR6T7SnD81eD/hBaoZuHdkBSUH
-	 olg7EEpN/Ajn4nMaeNuS++G5NCrvy/HE1BhxrU7mGLTmyHhkH7iQl2Jo9lEkXPHYop
-	 fbhbiScF91DvpAWZj1UFFxUrMektIN5xiYneD0QZ6TwOCK7CfPZBYsJdBxsZ/TLzHD
-	 5adlB7soSivPQ==
+	bh=DDGjXLDt//obUfmTFGsB6+P0sXaVu0K/ZWJn0M/7/2c=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=FKYBUF4HcL6O+OunGAoUQV8jZUV8s911znNM7ipN2CqyUhczbvyp6oDzw6rgAMowP
+	 A8lS+hRu+jrk3y6do7aB3ScwnRUx48R9skG+CcDeP98ahDySyfTVfXdVeG9rXMyb19
+	 +/CiE4/ADD3+LgjAbm2dyg2YYjFv+y8PB19YJ4dqhpnrc3VfZSzZ0aVbzb9QdpnXUx
+	 zVMZEzokYXH5zVC+5uk7xPybQ9+VKUq7FUb9CMkvkuD1H+2P5gXKNf9Yl1Y0+Lm13J
+	 WV6uGcjfB8khggbvxTMdRGJ7IQX0MhMBTKdJNOfWv5pei2NCtB84uND1odAC3QjTGE
+	 iDAAN6zYzQZug==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9268E17E1080;
-	Tue, 17 Sep 2024 11:11:35 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 367A917E1088;
+	Tue, 17 Sep 2024 11:11:36 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-pci@vger.kernel.org
 Cc: ryder.lee@mediatek.com,
@@ -57,16 +57,17 @@ Cc: ryder.lee@mediatek.com,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v2 0/2] PCI: mediatek-gen3: Support limiting link speed and width
-Date: Tue, 17 Sep 2024 11:11:30 +0200
-Message-ID: <20240917091132.286582-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 1/2] PCI: mediatek-gen3: Add support for setting max-link-speed limit
+Date: Tue, 17 Sep 2024 11:11:31 +0200
+Message-ID: <20240917091132.286582-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20240917091132.286582-1-angelogioacchino.delregno@collabora.com>
+References: <20240917091132.286582-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240917_021138_378966_37779B7B 
-X-CRM114-Status: UNSURE (   9.07  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240917_021138_783812_9E619F11 
+X-CRM114-Status: GOOD (  17.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,31 +82,136 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v2:
- - Rebased on next-20240917
+Add support for respecting the max-link-speed devicetree property,
+forcing a maximum speed (Gen) for a PCI-Express port.
 
-This series adds support for limiting the PCI-Express link speed
-(or PCIe gen restriction) and link width (number of lanes) in the
-pcie-mediatek-gen3 driver.
+Since the MediaTek PCIe Gen3 controllers also expose the maximum
+supported link speed in the PCIE_BASE_CFG register, if property
+max-link-speed is specified in devicetree, validate it against the
+controller capabilities and proceed setting the limitations only
+if the wanted Gen is lower than the maximum one that is supported
+by the controller itself (otherwise it makes no sense!).
 
-The maximum supported pcie gen is read from the controller itself,
-so defining a max gen through platform data for each SoC is avoided.
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/pci/controller/pcie-mediatek-gen3.c | 55 ++++++++++++++++++++-
+ 1 file changed, 53 insertions(+), 2 deletions(-)
 
-Both are done by adding support for the standard devicetree properties
-`max-link-speed` and `num-lanes`.
-
-Please note that changing the bindings is not required, as those do
-already allow specifying those properties for this controller.
-
-
-
-AngeloGioacchino Del Regno (2):
-  PCI: mediatek-gen3: Add support for setting max-link-speed limit
-  PCI: mediatek-gen3: Add support for restricting link width
-
- drivers/pci/controller/pcie-mediatek-gen3.c | 75 ++++++++++++++++++++-
- 1 file changed, 73 insertions(+), 2 deletions(-)
-
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index 66ce4b5d309b..e1d1fb39d5c6 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -28,7 +28,11 @@
+ 
+ #include "../pci.h"
+ 
++#define PCIE_BASE_CFG_REG		0x14
++#define PCIE_BASE_CFG_SPEED_MASK	GENMASK(15, 8)
++
+ #define PCIE_SETTING_REG		0x80
++#define PCIE_SETTING_GEN_SUPPORT_MASK	GENMASK(14, 12)
+ #define PCIE_PCI_IDS_1			0x9c
+ #define PCI_CLASS(class)		(class << 8)
+ #define PCIE_RC_MODE			BIT(0)
+@@ -125,6 +129,9 @@
+ 
+ struct mtk_gen3_pcie;
+ 
++#define PCIE_CONF_LINK2_CTL_STS		0x10b0
++#define PCIE_CONF_LINK2_LCR2_LINK_SPEED	GENMASK(3, 0)
++
+ /**
+  * struct mtk_gen3_pcie_pdata - differentiate between host generations
+  * @power_up: pcie power_up callback
+@@ -160,6 +167,7 @@ struct mtk_msi_set {
+  * @phy: PHY controller block
+  * @clks: PCIe clocks
+  * @num_clks: PCIe clocks count for this port
++ * @max_link_speed: Maximum link speed (PCIe Gen) for this port
+  * @irq: PCIe controller interrupt number
+  * @saved_irq_state: IRQ enable state saved at suspend time
+  * @irq_lock: lock protecting IRQ register access
+@@ -180,6 +188,7 @@ struct mtk_gen3_pcie {
+ 	struct phy *phy;
+ 	struct clk_bulk_data *clks;
+ 	int num_clks;
++	u8 max_link_speed;
+ 
+ 	int irq;
+ 	u32 saved_irq_state;
+@@ -381,11 +390,27 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
+ 	int err;
+ 	u32 val;
+ 
+-	/* Set as RC mode */
++	/* Set as RC mode and set controller PCIe Gen speed restriction, if any*/
+ 	val = readl_relaxed(pcie->base + PCIE_SETTING_REG);
+ 	val |= PCIE_RC_MODE;
++	if (pcie->max_link_speed) {
++		val &= ~PCIE_SETTING_GEN_SUPPORT_MASK;
++
++		/* Can enable link speed support only from Gen2 onwards */
++		if (pcie->max_link_speed >= 2)
++			val |= FIELD_PREP(PCIE_SETTING_GEN_SUPPORT_MASK,
++					  GENMASK(pcie->max_link_speed - 2, 0));
++	}
+ 	writel_relaxed(val, pcie->base + PCIE_SETTING_REG);
+ 
++	/* Set Link Control 2 (LNKCTL2) speed restriction, if any */
++	if (pcie->max_link_speed) {
++		val = readl_relaxed(pcie->base + PCIE_CONF_LINK2_CTL_STS);
++		val &= PCIE_CONF_LINK2_LCR2_LINK_SPEED;
++		val |= FIELD_PREP(PCIE_CONF_LINK2_LCR2_LINK_SPEED, pcie->max_link_speed);
++		writel_relaxed(val, pcie->base + PCIE_CONF_LINK2_CTL_STS);
++	}
++
+ 	/* Set class code */
+ 	val = readl_relaxed(pcie->base + PCIE_PCI_IDS_1);
+ 	val &= ~GENMASK(31, 8);
+@@ -1004,9 +1029,21 @@ static void mtk_pcie_power_down(struct mtk_gen3_pcie *pcie)
+ 	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets, pcie->phy_resets);
+ }
+ 
++static int mtk_pcie_get_controller_max_link_speed(struct mtk_gen3_pcie *pcie)
++{
++	u32 val;
++	int ret;
++
++	val = readl_relaxed(pcie->base + PCIE_BASE_CFG_REG);
++	val = FIELD_GET(PCIE_BASE_CFG_SPEED_MASK, val);
++	ret = fls(val);
++
++	return ret > 0 ? ret : -EINVAL;
++}
++
+ static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
+ {
+-	int err;
++	int max_speed, err;
+ 
+ 	err = mtk_pcie_parse_port(pcie);
+ 	if (err)
+@@ -1031,6 +1068,20 @@ static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
+ 	if (err)
+ 		return err;
+ 
++	err = of_pci_get_max_link_speed(pcie->dev->of_node);
++	if (err > 0) {
++		/* Get the maximum speed supported by the controller */
++		max_speed = mtk_pcie_get_controller_max_link_speed(pcie);
++
++		/* Set max_link_speed only if the controller supports it */
++		if (max_speed >= 0 && max_speed <= err) {
++			pcie->max_link_speed = err;
++			dev_dbg(pcie->dev,
++				"Max controller link speed Gen%u, override to Gen%u",
++				max_speed, pcie->max_link_speed);
++		}
++	}
++
+ 	/* Try link up */
+ 	err = mtk_pcie_startup_port(pcie);
+ 	if (err)
 -- 
 2.46.0
 
