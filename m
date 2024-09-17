@@ -4,70 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05285C35FFC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Sep 2024 09:14:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65D72C35FF9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Sep 2024 09:16:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zRmbq8ky6Rk0k+k9PALa2kPNaZiR9ktue+7R8+Hd1fg=; b=X8522//ErCCghYBKN9VZv5GPVP
-	Iz8z6IdDmzWnhqQwPCDsrp7OnrJaSB68I4hyWgM+BkHPDjqRsFvW//6qrGd3WNs9whqbADHTSooxf
-	qgTpMLR0U2rOjdS06fqW4lMx3Hwuq6dmnM4UlJOhdD8YNDpvbSYFagJ4F1JTN4xmQ9EqrX4cENeVX
-	iaVt4pfcNAHqT3TinR6ulb5WjbpygN7TQArrZSzEyQdmdzkAdJiP6ivbn2oCymaxomSx1opYuJTWJ
-	7peSxAREV1SkketzsYj2aqlWIH3KAOs+n4+kZC5VS6kFYsSFLHZIjZnmx5gOc0VshW9WaseuxTAdt
-	4ZenPoXA==;
+	bh=HST9OpIy3x68Lk4v6EQj7GCYN2CImIYndaq80kHZXJM=; b=SA5zfBPadRBM6jo8nbEqIonZFK
+	KviStLB/mNO0Tblij56tD7uOUhQaF5EXIbnq/v1lZ8yUp9v2vaqcNPXa9U/v+liExRAVQd9knS3sP
+	QIGLnpbCnkXHME8GxzcUlubESigHYKzsn29vN+LvE/h4lXg11G2pkdZfpfE0sWksj+QdduEJu4/1X
+	JPFBJHiM9qvKnpVpNZrKPxQU6XXUZGJLrMlbLfQUVfsLn44z63a4/64WfN1I1q5lO18W//6exC0e5
+	+Ooc/A04nsLk7/Qw/8IKn63wd+xHih0NS230VYARLOweI8Hocx3KSRsBd2ZobqwmyILtNhh+SNUrE
+	6t2yJCCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqUIU-00000005nYD-2btn;
-	Tue, 17 Sep 2024 09:14:58 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1sqUJg-00000005np8-3kl2;
+	Tue, 17 Sep 2024 09:16:12 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqUFG-00000005myu-4B3y;
-	Tue, 17 Sep 2024 09:11:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1726564297;
-	bh=CmBOrOWMOO93CuLcWjDRjEaUDrbCyW9xdULFfDPOC8E=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=mUjkdxI92OKogmFv2ioV4lARuuwB/8U1GJ6Odx4FuHWDrfD2G401S6ZXXHrN9I4f+
-	 Ajeu+j8suXW0DGcWDPxKJKksXOT7m3pb+PPebwGjwprHd65/UpHmqLFccxApj9DmJN
-	 yWUbTjpgbZ2n8e9JIeUk6aVuCcJel9ARttKnrJmo40Pz53b6ZTqImR2oEGvvOqMIYY
-	 Ilr8VYo/BmSo9jiAMDnQrd/5vbD8arWg+kWfkprdIVNDn/8cT7fOWtEADW4UuKoW1q
-	 kXs4FMXvhpY1BqLKW5o5mjzOvwt+yBwruLAxKip/ahD3K8v1aF0fKH1tvtZruS09sE
-	 lLKMuMuN5N56g==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CB01F17E1097;
-	Tue, 17 Sep 2024 11:11:36 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: linux-pci@vger.kernel.org
-Cc: ryder.lee@mediatek.com,
-	jianjun.wang@mediatek.com,
-	lpieralisi@kernel.org,
-	kw@linux.com,
-	robh@kernel.org,
-	bhelgaas@google.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH v2 2/2] PCI: mediatek-gen3: Add support for restricting link width
-Date: Tue, 17 Sep 2024 11:11:32 +0200
-Message-ID: <20240917091132.286582-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20240917091132.286582-1-angelogioacchino.delregno@collabora.com>
-References: <20240917091132.286582-1-angelogioacchino.delregno@collabora.com>
+	id 1sqUJR-00000005nhj-3JL9;
+	Tue, 17 Sep 2024 09:16:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=HST9OpIy3x68Lk4v6EQj7GCYN2CImIYndaq80kHZXJM=; b=Qnt0MWAhTxV2cyna1zORX+ShPB
+	8W5L8IOtlxaZF7Qfq8S3Uv8HQoNv1C12spp+hG2TfEDtwPj+0LA3DIdNrsQ4u10nNv1x2epemyTY2
+	dj5Cm6XN73Z3QesBTYYuJw+5U1i+IWGqv9g8ZlnF3JUndZbkyOtdT+S5vCBJba1s0xfg=;
+Received: from p4ff1376f.dip0.t-ipconnect.de ([79.241.55.111] helo=nf.local)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.96)
+	(envelope-from <nbd@nbd.name>)
+	id 1sqUJA-00EK9i-08;
+	Tue, 17 Sep 2024 11:15:40 +0200
+Message-ID: <b8e11bbc-c718-4acf-acc0-6b31f25fae27@nbd.name>
+Date: Tue, 17 Sep 2024 11:15:38 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: BUG and WARNINGs from mt7921s on next-20240916
+To: Kalle Valo <kvalo@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Alper Nebi Yasak <alpernebiyasak@gmail.com>,
+ linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org,
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Deren Wu
+ <deren.wu@mediatek.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Ma Ke <make24@iscas.ac.cn>,
+ regressions@lists.linux.dev
+References: <144fbf79-950c-4cd1-bc68-4e00b47b03e9@gmail.com>
+ <ZujCwvd4XiwljDyv@lore-desk> <87ldzqdcsv.fsf@kernel.org>
+From: Felix Fietkau <nbd@nbd.name>
+Content-Language: en-US
+Autocrypt: addr=nbd@nbd.name; keydata=
+ xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
+ ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
+ Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
+ AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
+ vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
+ wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
+ TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
+ l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
+ dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
+ HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
+ VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
+ CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
+ VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
+ Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
+ DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
+ wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
+ f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
+ aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
+ FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
+ TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
+ GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
+ cL98efvrjdstUfTCP2pfetyN
+In-Reply-To: <87ldzqdcsv.fsf@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240917_021139_229518_4D163A99 
-X-CRM114-Status: GOOD (  16.68  )
+X-CRM114-CacheID: sfid-20240917_021557_967575_B38E1E85 
+X-CRM114-Status: GOOD (  13.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,94 +104,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for restricting the port's link width by specifying
-the num-lanes devicetree property in the PCIe node.
+On 17.09.24 08:17, Kalle Valo wrote:
+> Lorenzo Bianconi <lorenzo@kernel.org> writes:
+> 
+>>> Hi,
+>>> 
+>>> I ran into some bug messages while testing linux-next on a MT8186
+>>> Magneton Chromebook (mt8186-corsola-magneton-sku393218). It boots 
+>>> to the OS, but at least Wi-Fi and Bluetooth are unavailable.
+>>> 
+>>> As a start, I tried reverting commit abbd838c579e ("Merge tag 
+>>> 'mt76-for-kvalo-2024-09-06' of https://github.com/nbd168/wireless")
+>>> and it works fine after that. Didn't have time to do a full bisect, 
+>>> but will try if nobody has any immediate opinions.
+>>> 
+>>> There are a few traces, here's some select lines to catch your attention,
+>>> not sure how informational they are:
+>>> 
+>>> [   16.040525] kernel BUG at net/core/skbuff.c:2268!
+>>> [   16.040531] Internal error: Oops - BUG: 00000000f2000800 [#1] SMP
+>>> [ 16.040803] CPU: 3 UID: 0 PID: 526 Comm: mt76-sdio-txrx Not tainted
+>>> 6.11.0-next-20240916-deb-00002-g7b544e01c649 #1
+>>> [   16.040897] Call trace:
+>>> [   16.040899]  pskb_expand_head+0x2b0/0x3c0
+>>> [   16.040905]  mt76s_tx_run_queue+0x274/0x410 [mt76_sdio]
+>>> [   16.040909]  mt76s_txrx_worker+0xe4/0xac8 [mt76_sdio]
+>>> [   16.040914]  mt7921s_txrx_worker+0x98/0x1e0 [mt7921s]
+>>> [   16.040924]  __mt76_worker_fn+0x80/0x128 [mt76]
+>>> [   16.040934]  kthread+0xe8/0xf8
+>>> [   16.040940]  ret_from_fork+0x10/0x20
+>>
+>> Hi,
+>>
+>> I guess this issue has been introduced by the following commit:
+>>
+>> commit 3688c18b65aeb2a1f2fde108400afbab129a8cc1
+>> Author: Felix Fietkau <nbd@nbd.name>
+>> Date:   Tue Aug 27 11:30:01 2024 +0200                  
+>>
+>>     wifi: mt76: mt7915: retry mcu messages                                            
+>>                         
+>>     In some cases MCU messages can get lost. Instead of failing completely,
+>>     attempt to recover by re-sending them.
+>>      
+>>     Link: https://patch.msgid.link/20240827093011.18621-14-nbd@nbd.name
+>>     Signed-off-by: Felix Fietkau <nbd@nbd.name>
+>>
+>>
+>> In particular, skb_get() in mt76_mcu_skb_send_and_get_msg() is bumping skb users
+>> refcount (making the skb shared) and pskb_expand_head() (run by __skb_grow() in
+>> mt76s_tx_run_queue()) does not like shared skbs.
+>>
+>> @Felix: any input on it?
 
-The setting is done in the GEN_SETTINGS register (in the driver
-named as PCIE_SETTING_REG), where each set bit in [11:8] activates
-a set of lanes (from bits 11 to 8 respectively, x16/x8/x4/x2).
+Sorry about that. Please try this patch, it should probably resolve this issue:
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/pci/controller/pcie-mediatek-gen3.c | 22 ++++++++++++++++++++-
- 1 file changed, 21 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index e1d1fb39d5c6..e2c9802a230c 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -32,6 +32,7 @@
- #define PCIE_BASE_CFG_SPEED_MASK	GENMASK(15, 8)
- 
- #define PCIE_SETTING_REG		0x80
-+#define PCIE_SETTING_LINK_WIDTH		GENMASK(11, 8)
- #define PCIE_SETTING_GEN_SUPPORT_MASK	GENMASK(14, 12)
- #define PCIE_PCI_IDS_1			0x9c
- #define PCI_CLASS(class)		(class << 8)
-@@ -168,6 +169,7 @@ struct mtk_msi_set {
-  * @clks: PCIe clocks
-  * @num_clks: PCIe clocks count for this port
-  * @max_link_speed: Maximum link speed (PCIe Gen) for this port
-+ * @num_lanes: Number of PCIe lanes for this port
-  * @irq: PCIe controller interrupt number
-  * @saved_irq_state: IRQ enable state saved at suspend time
-  * @irq_lock: lock protecting IRQ register access
-@@ -189,6 +191,7 @@ struct mtk_gen3_pcie {
- 	struct clk_bulk_data *clks;
- 	int num_clks;
- 	u8 max_link_speed;
-+	u8 num_lanes;
- 
- 	int irq;
- 	u32 saved_irq_state;
-@@ -390,7 +393,7 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
- 	int err;
- 	u32 val;
- 
--	/* Set as RC mode and set controller PCIe Gen speed restriction, if any*/
-+	/* Set as RC mode and set controller PCIe Gen speed/lanes restriction, if any */
- 	val = readl_relaxed(pcie->base + PCIE_SETTING_REG);
- 	val |= PCIE_RC_MODE;
- 	if (pcie->max_link_speed) {
-@@ -401,6 +404,14 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
- 			val |= FIELD_PREP(PCIE_SETTING_GEN_SUPPORT_MASK,
- 					  GENMASK(pcie->max_link_speed - 2, 0));
- 	}
-+	if (pcie->num_lanes) {
-+		val &= ~PCIE_SETTING_LINK_WIDTH;
-+
-+		/* Zero means one lane, each bit activates x2/x4/x8/x16 */
-+		if (pcie->num_lanes > 1)
-+			val |= FIELD_PREP(PCIE_SETTING_LINK_WIDTH,
-+					  GENMASK(pcie->num_lanes >> 1, 0));
-+	};
- 	writel_relaxed(val, pcie->base + PCIE_SETTING_REG);
- 
- 	/* Set Link Control 2 (LNKCTL2) speed restriction, if any */
-@@ -838,6 +849,7 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
- 	struct device *dev = pcie->dev;
- 	struct platform_device *pdev = to_platform_device(dev);
- 	struct resource *regs;
-+	u32 num_lanes;
- 
- 	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "pcie-mac");
- 	if (!regs)
-@@ -883,6 +895,14 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
- 		return pcie->num_clks;
- 	}
- 
-+	ret = of_property_read_u32(dev->of_node, "num-lanes", &num_lanes);
-+	if (ret == 0) {
-+		if (num_lanes == 0 || num_lanes > 16 || (num_lanes != 1 && num_lanes % 2))
-+			dev_warn(dev, "Invalid num-lanes, using controller defaults\n");
-+		else
-+			pcie->num_lanes = num_lanes;
-+	}
-+
- 	return 0;
- }
- 
--- 
-2.46.0
+--- a/drivers/net/wireless/mediatek/mt76/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mcu.c
+@@ -84,13 +84,15 @@ int mt76_mcu_skb_send_and_get_msg(struct mt76_dev *dev, struct sk_buff *skb,
+  	mutex_lock(&dev->mcu.mutex);
+  
+  	if (dev->mcu_ops->mcu_skb_prepare_msg) {
++		orig_skb = skb;
+  		ret = dev->mcu_ops->mcu_skb_prepare_msg(dev, skb, cmd, &seq);
+  		if (ret < 0)
+  			goto out;
+  	}
+  
+  retry:
+-	orig_skb = skb_get(skb);
++	if (orig_skb)
++		skb_get(orig_skb);
+  	ret = dev->mcu_ops->mcu_skb_send_msg(dev, skb, cmd, &seq);
+  	if (ret < 0)
+  		goto out;
+@@ -105,7 +107,7 @@ int mt76_mcu_skb_send_and_get_msg(struct mt76_dev *dev, struct sk_buff *skb,
+  	do {
+  		skb = mt76_mcu_get_response(dev, expires);
+  		if (!skb && !test_bit(MT76_MCU_RESET, &dev->phy.state) &&
+-		    retry++ < dev->mcu_ops->max_retry) {
++		    orig_skb && retry++ < dev->mcu_ops->max_retry) {
+  			dev_err(dev->dev, "Retry message %08x (seq %d)\n",
+  				cmd, seq);
+  			skb = orig_skb;
 
 
