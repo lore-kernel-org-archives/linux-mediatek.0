@@ -4,84 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61215C35FFF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Sep 2024 12:43:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B566FCAC58E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Sep 2024 16:16:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CpWMPlfIX7YhBeWJyNbMe8FzyW4Hu7Wcs9fzjKwOIrA=; b=VxMZWa8YfS/wUlXVdJQD6CuJu4
-	0h6Y3Qov+expsWb248AJvazCHmLmufwjS3YZnhLain9Zz9SdeoVkc+BRRnm+5+1Bla0/CTx/AloWO
-	p1CYqN6+eisRQQ1EPOj9BiQSIbFd6BglgEjMP66a5NUxzzeM/+6tP8UTqPPmQmDviVA/RGasTWfxM
-	iRaf+OxHAO1Rfhbc4x612KaJrUSezSjlSB1vd19QC83vFX9MAdAQao6wSyKA0X8a3VSWf4bMGgIwi
-	xTeCH6qUQ8L/CzrBKb0G1t0Ttq0XK5+9NFtm5p5+UrzgMMZMTC/0JoAjpPSH7PjoLDQmVc6mB4YmE
-	JdHIcxnA==;
+	bh=ZOViShtMlEZDSnvKkZ21snYzhKVQ7eVObFNfJXc64zE=; b=MD2Hdk69/EMXNzQFm5oLblvPZb
+	Hr38az+aBG2thHv940EZSoP6RP9aqfecMvjc4eJpaUHtckLHXZ4iUJJER5OFmMQldM7HH7S+JyiQI
+	fiOaKinIWRCYu1d816VNi0/nYMays/CRV2x+0GnLkKrarRaGbBoAi3ev48V4OrgQbmVeFs9xNBYLM
+	DoZiFonFOCAQl0HWTKaCPpEx3ciRjX/PwS5oCMdWU9yXdpdyE21czrTLJoBQrvx2Z3dbAO8EX5ewE
+	VdbOphHUlYsbldRGpQCadaYlByyro2HStUAdwLeu4in0GngwaaV/DHNOEQlXV6y1mdm6x6HjRMQGY
+	9XiAYjpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqXYE-000000069Pr-0Jfy;
-	Tue, 17 Sep 2024 12:43:26 +0000
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+	id 1sqas6-00000006TyW-1jNG;
+	Tue, 17 Sep 2024 16:16:10 +0000
+Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqXWX-000000069Dq-1tkF
+	id 1sqas4-00000006Txq-0UWE
 	for linux-mediatek@lists.infradead.org;
-	Tue, 17 Sep 2024 12:42:44 +0000
-Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-2f74e468aa8so57422031fa.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 17 Sep 2024 05:41:40 -0700 (PDT)
+	Tue, 17 Sep 2024 16:16:09 +0000
+Received: by mail-oi1-x22b.google.com with SMTP id 5614622812f47-3e049185cfeso1475331b6e.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 17 Sep 2024 09:16:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1726576899; x=1727181699; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1726589765; x=1727194565; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=CpWMPlfIX7YhBeWJyNbMe8FzyW4Hu7Wcs9fzjKwOIrA=;
-        b=ScyaszdQvFv6KX3VM7IxtBwGi/WI4Ke1YPh+xc8Adh7Fck7JUD2WPFYJncQDQZjJV2
-         KXlrvt+6fyisMOyTp7ANIQ2Wo3QGqSVtC3LAPt3RhcdvmXev92XYxt906iqfchxvlb9y
-         kAtFj9p9yPB5f0LuKS0QJbDA3e5hGRoqongfM=
+        bh=ZOViShtMlEZDSnvKkZ21snYzhKVQ7eVObFNfJXc64zE=;
+        b=odui5qWBVKe5fAOQGJTRRx189ju7ttfD84Q1EY6gK0AdPSCqByLY5urBTIfjahXD4C
+         xIhi/VDiYir4xTH3wNVXSQ3U8bzrnuk+8ahnPCXPULIswQyQJA0iXQAPFplVR0LuC+KY
+         KzeZfKBoTPh2er51o+5+hWkTtxu0k6JmV1/gc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726576899; x=1727181699;
+        d=1e100.net; s=20230601; t=1726589765; x=1727194565;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=CpWMPlfIX7YhBeWJyNbMe8FzyW4Hu7Wcs9fzjKwOIrA=;
-        b=kT6PmcE/PscxyN+hfNQVB7+Q19YwjmSlajMka96vmCjeCRZ6x6e+uiFPAPH/VER6ng
-         SikEQlJKew1A/o0dB+XbMkE5jq2jSiVFiletU91VrOFxKGdQjQS8opB6sL3C5mwOvw8y
-         CB4/yxFYlz8bAp+TIZk3usbFgnQm8lTwmi8LTXJC29v02XqbtcnoSFGdschouNkCI6GE
-         Ejam174haPUhsQ/n+skrLuymDvZLUejsFHx2Lgd2TJZjflkwxLupNaXwPIUGcw8bgUtE
-         Zf7U2JnxjjetKtpnsCUeZstQ7OFDg2vYO8sZOkpLogY2UEKOLINrWH8nxRqbw3NitTy9
-         IKXA==
-X-Forwarded-Encrypted: i=1; AJvYcCXDhkyZVZ9pOrFFiLSX7frIqs3eT5BSAdTHUmai+HiV7x20wwXOJAn8eulc9GEJCTAIZxV0PUjk4xylpvBh/A==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxc+ypJKuXcRi0pUuNWzf7ANZxCbbQIKeMhVTaJ88BH9bPSqfv6
-	XMKUh0sK/+aMA8/croOV8r5JjGX+cX++T0qufGg2Tr/0oBWLNyRuIqiqW9WNohKn+atTYXcfPKx
-	sYF+9KHvYkdSrdO8MisEcqY/7zlm6sxPxENZb
-X-Google-Smtp-Source: AGHT+IFn3m+495dQ3DEAPrBhGOQnGwVGdz2fTnahxh2yXDyCOMPHxLysb0zN6DNlW9fowNODvzSDvoxEfUfwPvjJvLE=
-X-Received: by 2002:a05:6512:3f18:b0:52e:7542:f469 with SMTP id
- 2adb3069b0e04-53678f6143cmr9822670e87.0.1726576898996; Tue, 17 Sep 2024
- 05:41:38 -0700 (PDT)
+        bh=ZOViShtMlEZDSnvKkZ21snYzhKVQ7eVObFNfJXc64zE=;
+        b=TWVw0f9jganfLvpjo60wb6dQzs5/oQcbfx+OrzKm1chh529H8DBaD0jnK8xDnz9gfF
+         hxFcnd1uGAaBKMguetK/rG8X2h3wX+7htStXQ1xM52VNsExT07aazHTkT/mxXsoUIB3J
+         49ehHnmteuNVIx881G8Pg6U5WsbkChfOmyyAeVZiWedtQv1wn82+ZKF2Y7YI16FqXcTu
+         z44y8PD/L54yM+b4VCHY34MCZjAmegWnj8jCU7iziwZfprrfcgIrWO0XlJifQZQ6QATo
+         b4stYe/Bzs42qsAgVifbVk6vuhgCGnQeKuYrb0OgB9xRAfSg/7tlc24Ltglt1z70dDEo
+         kt5A==
+X-Forwarded-Encrypted: i=1; AJvYcCW1BrprG8wzTENbf9zugHpIwH0fDFjZufBDGoyHS4oegozxHdiAORITuQ/YKoLhFAOPkzheZ672yhlpRp8uVA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz4YTwYTvC5cahpKTKxRcRf68ry2rdQwZiAR/NpojOvnZFj3zhk
+	Ju2gJFaumG980IbfAzg9PZDGkQ6Au18bnSD48hcqOsYWwwHtiMrck0NypNsarY5DlM5GhpQg1YM
+	=
+X-Google-Smtp-Source: AGHT+IEOZUiFUNM98/ti775EUW0YJkzxzDzVs8DXW31H7PkaJut2NuXjLhK/F41yC1ZeNr3XqKFnfw==
+X-Received: by 2002:a05:6808:229e:b0:3e0:3fa1:29ee with SMTP id 5614622812f47-3e07a11e38fmr8773445b6e.26.1726589765461;
+        Tue, 17 Sep 2024 09:16:05 -0700 (PDT)
+Received: from mail-ot1-f43.google.com (mail-ot1-f43.google.com. [209.85.210.43])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-3e166f8a06asm1465596b6e.39.2024.09.17.09.16.04
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 17 Sep 2024 09:16:05 -0700 (PDT)
+Received: by mail-ot1-f43.google.com with SMTP id 46e09a7af769-710dad96bf7so1093883a34.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 17 Sep 2024 09:16:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCULIlupYLabc7RLrCpcSWeI53PcRu1jd+Fhqw93lPn1gql1kQso0kebhs4MVT9C67v6vSjOhW16ZYY4R9EmaA==@lists.infradead.org
+X-Received: by 2002:a05:6830:65c1:b0:710:fbce:8b5e with SMTP id
+ 46e09a7af769-71116bd1b24mr10727787a34.11.1726589763706; Tue, 17 Sep 2024
+ 09:16:03 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240911072751.365361-1-wenst@chromium.org> <20240911072751.365361-9-wenst@chromium.org>
- <CAD=FV=XvPA0UC87fQ+RvFzPv9qRSEP6eQhT79JOx9Arj87i9Mg@mail.gmail.com>
-In-Reply-To: <CAD=FV=XvPA0UC87fQ+RvFzPv9qRSEP6eQhT79JOx9Arj87i9Mg@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 17 Sep 2024 14:41:26 +0200
-Message-ID: <CAGXv+5EcxGfdzvarg8hmk1zR9X0s8KUzayQdxfWTrasEGpj=1g@mail.gmail.com>
-Subject: Re: [PATCH v7 08/10] i2c: of-prober: Add GPIO support to simple helpers
-To: Doug Anderson <dianders@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
-	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
-	Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
-	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>, 
-	Jiri Kosina <jikos@kernel.org>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
-	linux-i2c@vger.kernel.org
+References: <20240917091132.286582-1-angelogioacchino.delregno@collabora.com> <20240917091132.286582-2-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240917091132.286582-2-angelogioacchino.delregno@collabora.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Wed, 18 Sep 2024 00:15:26 +0800
+X-Gmail-Original-Message-ID: <CAC=S1nhp_3EfG7g7GyLHQGPk_2mrfzj3Kqgi4u_gsA7-Wq8Zgg@mail.gmail.com>
+Message-ID: <CAC=S1nhp_3EfG7g7GyLHQGPk_2mrfzj3Kqgi4u_gsA7-Wq8Zgg@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] PCI: mediatek-gen3: Add support for setting
+ max-link-speed limit
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-pci@vger.kernel.org, ryder.lee@mediatek.com, 
+	jianjun.wang@mediatek.com, lpieralisi@kernel.org, kw@linux.com, 
+	robh@kernel.org, bhelgaas@google.com, matthias.bgg@gmail.com, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240917_054141_547592_AE608F3F 
-X-CRM114-Status: GOOD (  25.39  )
+X-CRM114-CacheID: sfid-20240917_091608_210860_53F366D7 
+X-CRM114-Status: GOOD (  29.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,107 +102,177 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Sep 14, 2024 at 1:49=E2=80=AFAM Doug Anderson <dianders@chromium.or=
-g> wrote:
+On Tue, Sep 17, 2024 at 5:13=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
 >
-> Hi,
+> Add support for respecting the max-link-speed devicetree property,
+> forcing a maximum speed (Gen) for a PCI-Express port.
 >
-> On Wed, Sep 11, 2024 at 12:29=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org=
-> wrote:
-> >
-> > +static int i2c_of_probe_simple_set_gpio(struct device *dev, struct i2c=
-_of_probe_simple_ctx *ctx)
-> > +{
-> > +       int ret;
-> > +
-> > +       if (!ctx->gpiod)
-> > +               return 0;
-> > +
-> > +       dev_dbg(dev, "Setting GPIO\n");
-> > +
-> > +       ret =3D gpiod_direction_output_raw(ctx->gpiod, ctx->opts->gpio_=
-high_to_enable ? 1 : 0);
-> > +       if (ret)
-> > +               return ret;
-> > +
-> > +       msleep(ctx->opts->post_reset_deassert_delay_ms);
+> Since the MediaTek PCIe Gen3 controllers also expose the maximum
+> supported link speed in the PCIE_BASE_CFG register, if property
+> max-link-speed is specified in devicetree, validate it against the
+> controller capabilities and proceed setting the limitations only
+> if the wanted Gen is lower than the maximum one that is supported
+> by the controller itself (otherwise it makes no sense!).
 >
-> Like in the previous patch, you need an "if
-> (ctx->opts->post_reset_deassert_delay_ms)" before the msleep().
-
-Ack.
-
-> > +static void i2c_of_probe_simple_disable_gpio(struct device *dev, struc=
-t i2c_of_probe_simple_ctx *ctx)
-> > +{
-> > +       if (!ctx->gpiod)
-> > +               return;
-> > +
-> > +       dev_dbg(dev, "Setting GPIO to input\n");
-> > +
-> > +       gpiod_direction_input(ctx->gpiod);
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
+>  drivers/pci/controller/pcie-mediatek-gen3.c | 55 ++++++++++++++++++++-
+>  1 file changed, 53 insertions(+), 2 deletions(-)
 >
-> This is weird. Why set it to input?
-
-It seemed to me this would be more like the initial state, without knowing
-the actual initial state.
-
-> > @@ -347,6 +438,7 @@ int i2c_of_probe_simple_cleanup(struct device *dev,=
- void *data)
-> >  {
-> >         struct i2c_of_probe_simple_ctx *ctx =3D data;
-> >
-> > +       i2c_of_probe_simple_disable_gpio(dev, ctx);
+> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/co=
+ntroller/pcie-mediatek-gen3.c
+> index 66ce4b5d309b..e1d1fb39d5c6 100644
+> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> @@ -28,7 +28,11 @@
 >
-> Maybe add a comment before the GPIO call that it's a noop if we found
-> something and i2c_of_probe_simple_free_res_early() was already called?
-> Otherwise you need to read into the function to understand why this
-> doesn't crash if the early call was made. To me, that makes the
-> abstraction add confusion instead of simplifying things.
-
-Ack.
-
-> > @@ -92,24 +93,33 @@ int i2c_of_probe_component(struct device *dev, cons=
-t struct i2c_of_probe_cfg *cf
-> >   * struct i2c_of_probe_simple_opts - Options for simple I2C component =
-prober callbacks
-> >   * @res_node_compatible: Compatible string of device node to retrieve =
-resources from.
-> >   * @supply_name: Name of regulator supply.
-> > + * @gpio_name: Name of GPIO.
+>  #include "../pci.h"
 >
-> Talk about the fact that gpio_name can be NULL or an empty string and
-> that they mean different things.
-
-Ack.
-
-> >   * @post_power_on_delay_ms: Delay in ms after regulators are powered o=
-n. Passed to msleep().
-> > + * @post_reset_deassert_delay_ms: Delay in ms after GPIOs are set. Pas=
-sed to msleep().
-> > + * @gpio_high_to_enable: %true if GPIO should be set to electrical hig=
-h to enable component.
+> +#define PCIE_BASE_CFG_REG              0x14
+> +#define PCIE_BASE_CFG_SPEED_MASK       GENMASK(15, 8)
+> +
+>  #define PCIE_SETTING_REG               0x80
+> +#define PCIE_SETTING_GEN_SUPPORT_MASK  GENMASK(14, 12)
+>  #define PCIE_PCI_IDS_1                 0x9c
+>  #define PCI_CLASS(class)               (class << 8)
+>  #define PCIE_RC_MODE                   BIT(0)
+> @@ -125,6 +129,9 @@
 >
-> Now that you've added the GPIOs and more delays, the description of
-> this structure needs to list exactly what the power sequence your
-> simple functions assume.
+>  struct mtk_gen3_pcie;
+>
+> +#define PCIE_CONF_LINK2_CTL_STS                0x10b0
+> +#define PCIE_CONF_LINK2_LCR2_LINK_SPEED        GENMASK(3, 0)
+> +
+>  /**
+>   * struct mtk_gen3_pcie_pdata - differentiate between host generations
+>   * @power_up: pcie power_up callback
+> @@ -160,6 +167,7 @@ struct mtk_msi_set {
+>   * @phy: PHY controller block
+>   * @clks: PCIe clocks
+>   * @num_clks: PCIe clocks count for this port
+> + * @max_link_speed: Maximum link speed (PCIe Gen) for this port
+>   * @irq: PCIe controller interrupt number
+>   * @saved_irq_state: IRQ enable state saved at suspend time
+>   * @irq_lock: lock protecting IRQ register access
+> @@ -180,6 +188,7 @@ struct mtk_gen3_pcie {
+>         struct phy *phy;
+>         struct clk_bulk_data *clks;
+>         int num_clks;
+> +       u8 max_link_speed;
+>
+>         int irq;
+>         u32 saved_irq_state;
+> @@ -381,11 +390,27 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pc=
+ie *pcie)
+>         int err;
+>         u32 val;
+>
+> -       /* Set as RC mode */
+> +       /* Set as RC mode and set controller PCIe Gen speed restriction, =
+if any*/
 
-Ack.
+NIt: one space before ending the comment.
 
-> I would also say: given that you're providing a parameter anyway and
-> you're giving the GPIO name, can you please move away from the "raw"
-> values and move to "logical" values?
+>         val =3D readl_relaxed(pcie->base + PCIE_SETTING_REG);
+>         val |=3D PCIE_RC_MODE;
+> +       if (pcie->max_link_speed) {
+> +               val &=3D ~PCIE_SETTING_GEN_SUPPORT_MASK;
+> +
+> +               /* Can enable link speed support only from Gen2 onwards *=
+/
+> +               if (pcie->max_link_speed >=3D 2)
+> +                       val |=3D FIELD_PREP(PCIE_SETTING_GEN_SUPPORT_MASK=
+,
+> +                                         GENMASK(pcie->max_link_speed - =
+2, 0));
+> +       }
+>         writel_relaxed(val, pcie->base + PCIE_SETTING_REG);
+>
+> +       /* Set Link Control 2 (LNKCTL2) speed restriction, if any */
+> +       if (pcie->max_link_speed) {
+> +               val =3D readl_relaxed(pcie->base + PCIE_CONF_LINK2_CTL_ST=
+S);
+> +               val &=3D PCIE_CONF_LINK2_LCR2_LINK_SPEED;
 
-I disagree. When hardware engineers design for swappable components, they
-likely look at the electrical compatibility of them. In this case, an
-active-high "enable" pin is electrically compatible with an active-low
-"reset" pin. If we use the logical value here, then we would need more
-logic to know when the logical polarity has to be reversed.
+I guess it needs a bitwise NOT operator over the mask.
+    val &=3D ~PCIE_CONF_LINK2_LCR2_LINK_SPEED;
 
-Note that this doesn't work for components that are electrically
-incompatible. But in that case a lot more board dependent code would be
-needed anyway.
+Apart from that, I think appending _MASK to the name makes its usage
+clearer and consistent with other masks.
+(although the name gets even more lengthy...)
+
+> +               val |=3D FIELD_PREP(PCIE_CONF_LINK2_LCR2_LINK_SPEED, pcie=
+->max_link_speed);
+> +               writel_relaxed(val, pcie->base + PCIE_CONF_LINK2_CTL_STS)=
+;
+> +       }
+> +
+>         /* Set class code */
+>         val =3D readl_relaxed(pcie->base + PCIE_PCI_IDS_1);
+>         val &=3D ~GENMASK(31, 8);
+> @@ -1004,9 +1029,21 @@ static void mtk_pcie_power_down(struct mtk_gen3_pc=
+ie *pcie)
+>         reset_control_bulk_assert(pcie->soc->phy_resets.num_resets, pcie-=
+>phy_resets);
+>  }
+>
+> +static int mtk_pcie_get_controller_max_link_speed(struct mtk_gen3_pcie *=
+pcie)
+> +{
+> +       u32 val;
+> +       int ret;
+> +
+> +       val =3D readl_relaxed(pcie->base + PCIE_BASE_CFG_REG);
+> +       val =3D FIELD_GET(PCIE_BASE_CFG_SPEED_MASK, val);
+> +       ret =3D fls(val);
+> +
+> +       return ret > 0 ? ret : -EINVAL;
+> +}
+> +
+>  static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
+>  {
+> -       int err;
+> +       int max_speed, err;
+>
+>         err =3D mtk_pcie_parse_port(pcie);
+>         if (err)
+> @@ -1031,6 +1068,20 @@ static int mtk_pcie_setup(struct mtk_gen3_pcie *pc=
+ie)
+>         if (err)
+>                 return err;
+>
+> +       err =3D of_pci_get_max_link_speed(pcie->dev->of_node);
+> +       if (err > 0) {
+> +               /* Get the maximum speed supported by the controller */
+> +               max_speed =3D mtk_pcie_get_controller_max_link_speed(pcie=
+);
+> +
+> +               /* Set max_link_speed only if the controller supports it =
+*/
+> +               if (max_speed >=3D 0 && max_speed <=3D err) {
+> +                       pcie->max_link_speed =3D err;
+> +                       dev_dbg(pcie->dev,
+> +                               "Max controller link speed Gen%u, overrid=
+e to Gen%u",
+> +                               max_speed, pcie->max_link_speed);
+
+Convert max_speed to an unsigned type to avoid potential typecheck warnings=
+?
+
+Regards,
+Fei
 
 
-ChenYu
+> +               }
+> +       }
+> +
+>         /* Try link up */
+>         err =3D mtk_pcie_startup_port(pcie);
+>         if (err)
+> --
+> 2.46.0
+>
+>
 
