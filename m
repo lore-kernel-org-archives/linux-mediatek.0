@@ -4,78 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27C1CCCD19A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Sep 2024 11:27:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA104CCD1A3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Sep 2024 11:53:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D/3C/fdQpBpxCQ8k5Q8C1X3ZruQrGwhUN7sWD6G7qFQ=; b=SdJ63vlsosIWZgk/gJVCaMp6oo
-	UKtgHlaaMaz+eiuUUYxoohC95P4VvJ3vjg8wsdWntB8gUex7+aXNxL27QJLK31l5RSCT+0uZwttpb
-	NnqCqX9MGfTA9dAYSI4v8cYcnnCYHP+/hYjfKo4qjOKHBEyJYABcePr/AET+75VMHFnXJQmZlkDmk
-	2YQIc0MfVZ1gmudrQ35DmsxWrQno+nvA/aR5oLmMDa0Utc/H/mE8CH/Jar35C6zTTYZR7h8KyQ377
-	6TpzF45eOuEvexe+BZmLBtUVum81t3reWdv+ueofsZ9U04ghAwoEzTmtjKTg4Fj98TiVhSlkIM2Yu
-	llSAbiuQ==;
+	bh=HCsc9wjZUVMag0odDTdtmtN4rMYjRxOTW7ifHwfzphM=; b=vb/jMvq3Y3Ol1lRyf1qjA6RDJN
+	XJrlXR5rcGDIT01m/P7Ui/BN2MsVfe3nawIRY0Qii8EuKBGH9NGqmA0wgcxlSXQ9cpdCxg6dfGi1R
+	goW+JiIq4acgNgNq4ql1sLABkSWtXXRdfwtPtX+RDdwEeCauPxyuW6uBBa00Tk5EfZgdB2oUPmsJ4
+	j8Q6tkvlSNt8leL8ohTtzeZvpAClmvjkUV3kh4XOn7r4662Kvm0zAqT66SYm+CcjI44Q6y76V819L
+	W4oo3wLtJNwNP6YKs4bf1rOczwwWwoeceIyWscEbIxB3w6tGCfoxx56NqAIBlW2r6ko9boPjUYFdP
+	MXu7GYuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqspr-000000088eZ-3IY5;
-	Wed, 18 Sep 2024 11:27:03 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1sqtFC-00000008B2D-0Rk8;
+	Wed, 18 Sep 2024 11:53:14 +0000
+Received: from relay8-d.mail.gandi.net ([217.70.183.201])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqsnV-000000087vy-1zdu;
-	Wed, 18 Sep 2024 11:24:42 +0000
-Received: from mail.maildlp.com (unknown [172.19.162.254])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4X7x90742RzyRhW;
-	Wed, 18 Sep 2024 19:23:16 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
-	by mail.maildlp.com (Postfix) with ESMTPS id 1981B1800FF;
-	Wed, 18 Sep 2024 19:24:33 +0800 (CST)
-Received: from localhost.localdomain (10.90.30.45) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Wed, 18 Sep 2024 19:24:32 +0800
-From: Yunsheng Lin <linyunsheng@huawei.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <liuyonglong@huawei.com>, <fanghaiqing@huawei.com>,
-	<zhangkun09@huawei.com>, Yunsheng Lin <linyunsheng@huawei.com>, Robin Murphy
-	<robin.murphy@arm.com>, Alexander Duyck <alexander.duyck@gmail.com>, IOMMU
-	<iommu@lists.linux.dev>, Wei Fang <wei.fang@nxp.com>, Shenwei Wang
-	<shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, Eric Dumazet
-	<edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek
- Kitszel <przemyslaw.kitszel@intel.com>, Alexander Lobakin
-	<aleksander.lobakin@intel.com>, Alexei Starovoitov <ast@kernel.org>, Daniel
- Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
-	John Fastabend <john.fastabend@gmail.com>, Saeed Mahameed
-	<saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Tariq Toukan
-	<tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
-	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Kalle Valo
-	<kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andrew
- Morton <akpm@linux-foundation.org>, Ilias Apalodimas
-	<ilias.apalodimas@linaro.org>, <imx@lists.linux.dev>,
-	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<intel-wired-lan@lists.osuosl.org>, <bpf@vger.kernel.org>,
-	<linux-rdma@vger.kernel.org>, <linux-wireless@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-mm@kvack.org>
-Subject: [PATCH net 2/2] page_pool: fix IOMMU crash when driver has already unbound
-Date: Wed, 18 Sep 2024 19:18:25 +0800
-Message-ID: <20240918111826.863596-3-linyunsheng@huawei.com>
-X-Mailer: git-send-email 2.30.0
-In-Reply-To: <20240918111826.863596-1-linyunsheng@huawei.com>
-References: <20240918111826.863596-1-linyunsheng@huawei.com>
+	id 1sqtDy-00000008Aot-3dQU;
+	Wed, 18 Sep 2024 11:52:02 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 08C351BF206;
+	Wed, 18 Sep 2024 11:51:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1726660315;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=HCsc9wjZUVMag0odDTdtmtN4rMYjRxOTW7ifHwfzphM=;
+	b=l6wMCckVo7zxS+K/WQJA0q87g5pBqR8Wme+qTE3eKNuxtj4gs2B464Qk3mNl90C1ZGYy8+
+	pMyAwwTwIfjDGEmjrNpYeuuO4afSHFtFPmwChuPjE9hyICqNfyOmd/A5UNTOb8tsK+3sto
+	HRoyB672oHBXMIrpBHNw37iD2At8ZOMicn67KqKTR6brJTiiOlEZPzojN5V1hSo64gxs+5
+	Asg/kxPIW1L1aRPX53sJdnTkajNmdDbh3qrxAACOtLCosmNdgUGc6Wmq7fRTgzWvVhZA2a
+	OnZOjfkbKBOZkzwg8N5ZmKGeP5mMDmUj+azCgmDi/z4UznPBtONXIprKjhCdOg==
+Date: Wed, 18 Sep 2024 13:51:51 +0200
+From: Alexandre Belloni <alexandre.belloni@bootlin.com>
+To: Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>, Sean Wang <sean.wang@mediatek.com>,
+	Sen Chu <sen.chu@mediatek.com>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>,
+	Sebastian Reichel <sre@kernel.org>,
+	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
+	linux-leds@vger.kernel.org, linux-pm@vger.kernel.org,
+	linux-rtc@vger.kernel.org, linux-sound@vger.kernel.org,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Bear Wang <bear.wang@mediatek.com>,
+	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
+	Chris-qj chen <chris-qj.chen@mediatek.com>,
+	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	Chen-Yu Tsai <wenst@chromium.org>
+Subject: Re: [PATCH v6 2/2] dt-bindings: mfd: mediatek: mt6397: Convert to DT
+ schema format
+Message-ID: <20240918115151c896f33f@mail.local>
+References: <20240918064955.6518-1-macpaul.lin@mediatek.com>
+ <20240918064955.6518-2-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.90.30.45]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- dggpemf200006.china.huawei.com (7.185.36.61)
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240918064955.6518-2-macpaul.lin@mediatek.com>
+X-GND-Sasl: alexandre.belloni@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240918_042438_754688_8F8DACB8 
-X-CRM114-Status: GOOD (  28.33  )
+X-CRM114-CacheID: sfid-20240918_045159_602642_E34D507A 
+X-CRM114-Status: GOOD (  42.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,802 +97,1096 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Networking driver with page_pool support may hand over page
-still with dma mapping to network stack and try to reuse that
-page after network stack is done with it and passes it back
-to page_pool to avoid the penalty of dma mapping/unmapping.
-With all the caching in the network stack, some pages may be
-held in the network stack without returning to the page_pool
-soon enough, and with VF disable causing the driver unbound,
-the page_pool does not stop the driver from doing it's
-unbounding work, instead page_pool uses workqueue to check
-if there is some pages coming back from the network stack
-periodically, if there is any, it will do the dma unmmapping
-related cleanup work.
+On 18/09/2024 14:49:55+0800, Macpaul Lin wrote:
+> Convert the mfd: mediatek: mt6397 binding to DT schema format.
+> 
+> MT6323, MT6358, and MT6397 are PMIC devices with multiple function
+> subdevices. They share a common PMIC design but have variations in
+> subdevice combinations.
+> 
+> Key updates in this conversion:
+> 
+> 1. RTC:
+>    - Convert rtc-mt6397.txt and merge into parent MT6397 PMIC DT schema.
+> 
+> 2. Regulators:
+>    - Align to generic name "regulators".
+>    - Update references from .txt to .yaml for mt6323, mt6358, and mt6397
+>      regulators.
+>    - Simplify regulator name labels in device tree examples.
+> 
+> 3. Audio Codec:
+>    - Convert sound/mt6358.txt and merge into parent MT6397 PMIC DT schema.
+>    - Align to generic name "audio-codec" for codec and sound subdevices.
+>    - Add "mediatek,dmic-mode" and "Avdd-supply" properties.
+> 
+> 4. Clocks:
+>    - Align to generic name "clocks" for clockbuffer subdevices.
+> 
+> 5. LEDs:
+>    - Convert leds-mt6323.txt and merge into parent MT6397 PMIC DT schema.
+>    - Update LED binding.
+> 
+> 6. Keys:
+>    - Add detailed descriptions for power and home keys.
+>    - Add compatible: mediatek,mt6358-keys.
+> 
+> 7. Power Controller:
+>    - Convert mt6323-poweroff.txt and merge into parent MT6397 PMIC DT
+>      schema.
+>    - Add #power-domain-cells property to fix dt-binding check error.
+>    - Clarify "BBPU" as "Baseband power up".
+> 
+> 8. Pinctrl:
+>    - Align to generic name "pinctrl" instead of "pin-controller".
+> 
+> 9. Compatible:
+>    - Drop "mediatek,mt6357" since there is a separated DT Schema
+>      for PMIC MT6357.
+> 
+> 10. Examples:
+>    - MT6323: Retain complete examples for this PMIC.
+>    - MT6358 and MT6397: simplify settings in regulators.
+>     - Preserve "audio-codec", "clocks", "pinctrl", "rtc", and "keys"
+>       sections as they contain typical settings for different PMICs.
+> 
+> Additional updates:
+> - MAINTAINERS: Add co-maintainers and reference to
+>   mfd/mediatek,mt6397.yaml for LED and power-controller drivers.
+> - input/mediatek,pmic-keys.yaml: Update reference to
+>   mfd/mediatek,mt6397.yaml.
+> 
+> Signed-off-by: Sen Chu <sen.chu@mediatek.com>
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> ---
+>  .../bindings/input/mediatek,pmic-keys.yaml    |   2 +-
+>  .../devicetree/bindings/leds/leds-mt6323.txt  |  63 --
+>  .../bindings/mfd/mediatek,mt6397.yaml         | 601 ++++++++++++++++++
+>  .../devicetree/bindings/mfd/mt6397.txt        | 110 ----
+>  .../bindings/power/reset/mt6323-poweroff.txt  |  20 -
+>  .../devicetree/bindings/rtc/rtc-mt6397.txt    |  31 -
+>  .../devicetree/bindings/sound/mt6358.txt      |  26 -
+>  MAINTAINERS                                   |   8 +-
+>  8 files changed, 608 insertions(+), 253 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/leds/leds-mt6323.txt
+>  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/mfd/mt6397.txt
+>  delete mode 100644 Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
+>  delete mode 100644 Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
+>  delete mode 100644 Documentation/devicetree/bindings/sound/mt6358.txt
+> 
+> Changes for v1:
+>  - This patch depends on conversion of mediatek,mt6397-regulator.yaml
+>    [1] https://lore.kernel.org/lkml/20240807091738.18387-1-macpaul.lin@mediatek.com/T/
+> 
+> Changes for v2:
+>  - This patch has been made base on linux-next/master git repo.
+>  - Keep the parent and child relationship with mediatek,pwrap in description.
+>    [2] https://lore.kernel.org/all/20240826-slurp-earphone-0d5173923ae8@spud/
+>  - Keep the $ref for regulators since dt_binding_check didn't report any issue
+>    based on linux-next/master repo.
+>  - Fix description of mt6397/mt6323 devices, use "power management chip"
+>    instead of "multifunction device"
+>  - Drop unnecessary comments or description according to the review.
+>  - Convert sub-modules to DT Schema:
+>   - RTC, LEDs, power-controllers, regulators
+>  - Drop duplicate sub node name and description for sub-modules
+>   - RTC, Keys
+>  - examples:
+>   - drop parent pwrap node
+>   - Add examples from mediatek,mt6323-regulator.yaml
+>   - Add examples from mediatek,mt6358-regulator.yaml
+>   - Add examples from mediatek,mt6397-regulator.yaml
+>   - Complete the examples as could as possible.
+> 
+> Changes for v3:
+>  - Rebased on linux-next/master git repo near next-20240906.
+>  - Revise commit message.
+>  - Regulators:
+>   - Use "additionalProperties: true" and add "contains" for matching
+>     $ref DT bindings.
+>   - Simplify regulator name labels in device tree examples.
+>  - LEDs:
+>   - Use LED bindings.
+>  - Squash following patches in v2 for removing old text format DT bindings
+>    into this patch, includes:
+>   - leds-mt6323.txt, mt6323-poweroff.txt, rtc-mt6397.txt, sound/mt6358.txt.
+>  - Fix file format of DT schemas, add blank between properties.
+>  - Fix 'make checkrefdoc' errors, update reference in mediatek,pmic-keys.yaml.
+> 
+> Changes for v4:
+>  - Remove "mediatek,mt6357" from PMIC's compatible string since there is a
+>    seperated DT schema for PMIC mt6357.
+> 
+> Changes for v5:
+>  - Rebase to next-20240913 (linux-next/master).
+>  - Fix the "title" (device type) of mfd/mediatek,mt6397.yaml to "PMIC".
+>  - RTC:
+>   - Drop "start-year"
 
-As mentioned in [1], attempting DMA unmaps after the driver
-has already unbound may leak resources or at worst corrupt
-memory. Fundamentally, the page pool code cannot allow DMA
-mappings to outlive the driver they belong to.
+Maybe, instead of dropping the property, you should add support in the
+driver by setting range_min and range_max.
 
-Currently it seems there are at least two cases that the page
-is not released fast enough causing dma unmmapping done after
-driver has already unbound:
-1. ipv4 packet defragmentation timeout: this seems to cause
-   delay up to 30 secs:
+>  - Regulators:
+>   - Add blank lines between description and properties.
+>   - Drop allOf for the $ref section on property.
+>  - clocks:
+>   - Fix no need '|' in descriptoin.
+>   - Add blank lines between description and properties.
+>  - Keys:
+>   - Drop compatible since these enums are already in $ref.
+>  - pinctrl:
+>   - Drop compatible since it is already in $ref.
+>  - examples:
+>   - Fix indentations for leds and keys.
+> 
+> Changes for v6:
+>  - Commit message:
+>   - Add note for simplifying examples of mt6358 and mt6397.
+>  - examples:
+>   - Fix indentations for mt6323-keys.
+>   - MT6358 and MT6397: simplify settings in regulators.
+>    - Preserve "audio-codec", "clocks", "pinctrl", "rtc", and "keys"
+>      sections as they contain typical settings for different PMICs.
+> 
+> diff --git a/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml b/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
+> index 70567d9..466566a 100644
+> --- a/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
+> +++ b/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
+> @@ -19,7 +19,7 @@ description: |
+>    by the PMIC that is defined as a Multi-Function Device (MFD).
+>  
+>    For MediaTek MT6323/MT6397 PMIC bindings see
+> -  Documentation/devicetree/bindings/mfd/mt6397.txt
+> +  Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+>  
+>  properties:
+>    compatible:
+> diff --git a/Documentation/devicetree/bindings/leds/leds-mt6323.txt b/Documentation/devicetree/bindings/leds/leds-mt6323.txt
+> deleted file mode 100644
+> index 052dccb8..0000000
+> --- a/Documentation/devicetree/bindings/leds/leds-mt6323.txt
+> +++ /dev/null
+> @@ -1,63 +0,0 @@
+> -Device Tree Bindings for LED support on MT6323 PMIC
+> -
+> -MT6323 LED controller is subfunction provided by MT6323 PMIC, so the LED
+> -controllers are defined as the subnode of the function node provided by MT6323
+> -PMIC controller that is being defined as one kind of Muti-Function Device (MFD)
+> -using shared bus called PMIC wrapper for each subfunction to access remote
+> -MT6323 PMIC hardware.
+> -
+> -For MT6323 MFD bindings see:
+> -Documentation/devicetree/bindings/mfd/mt6397.txt
+> -For MediaTek PMIC wrapper bindings see:
+> -Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
+> -
+> -Required properties:
+> -- compatible : Must be one of
+> -  - "mediatek,mt6323-led"
+> -  - "mediatek,mt6331-led"
+> -  - "mediatek,mt6332-led"
+> -- address-cells : Must be 1
+> -- size-cells : Must be 0
+> -
+> -Each led is represented as a child node of the mediatek,mt6323-led that
+> -describes the initial behavior for each LED physically and currently only four
+> -LED child nodes can be supported.
+> -
+> -Required properties for the LED child node:
+> -- reg : LED channel number (0..3)
+> -
+> -Optional properties for the LED child node:
+> -- label : See Documentation/devicetree/bindings/leds/common.txt
+> -- linux,default-trigger : See Documentation/devicetree/bindings/leds/common.txt
+> -- default-state: See Documentation/devicetree/bindings/leds/common.txt
+> -
+> -Example:
+> -
+> -	mt6323: pmic {
+> -		compatible = "mediatek,mt6323";
+> -
+> -		...
+> -
+> -		mt6323led: leds {
+> -			compatible = "mediatek,mt6323-led";
+> -			#address-cells = <1>;
+> -			#size-cells = <0>;
+> -
+> -			led@0 {
+> -				reg = <0>;
+> -				label = "LED0";
+> -				linux,default-trigger = "timer";
+> -				default-state = "on";
+> -			};
+> -			led@1 {
+> -				reg = <1>;
+> -				label = "LED1";
+> -				default-state = "off";
+> -			};
+> -			led@2 {
+> -				reg = <2>;
+> -				label = "LED2";
+> -				default-state = "on";
+> -			};
+> -		};
+> -	};
+> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> new file mode 100644
+> index 0000000..953358b
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> @@ -0,0 +1,601 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek MT6397/MT6323 PMIC
+> +
+> +maintainers:
+> +  - Sen Chu <sen.chu@mediatek.com>
+> +  - Macpaul Lin <macpaul.lin@mediatek.com>
+> +
+> +description: |
+> +  MT6397/MT6323 is a power management system chip.
+> +  Please see the sub-modules below for supported features.
+> +
+> +  MT6397/MT6323 is a multifunction device with the following sub modules:
+> +  - Regulators
+> +  - RTC
+> +  - Audio codec
+> +  - GPIO
+> +  - Clock
+> +  - LED
+> +  - Keys
+> +  - Power controller
+> +
+> +  It is interfaced to host controller using SPI interface by a proprietary hardware
+> +  called PMIC wrapper or pwrap. MT6397/MT6323 PMIC is a child device of pwrap.
+> +  See the following for pwrap node definitions:
+> +  Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - enum:
+> +          - mediatek,mt6323
+> +          - mediatek,mt6331 # "mediatek,mt6331" for PMIC MT6331 and MT6332.
+> +          - mediatek,mt6358
+> +          - mediatek,mt6359
+> +          - mediatek,mt6397
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt6366
+> +          - const: mediatek,mt6358
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  interrupt-controller: true
+> +
+> +  "#interrupt-cells":
+> +    const: 2
+> +
+> +  rtc:
+> +    type: object
+> +    $ref: /schemas/rtc/rtc.yaml#
+> +    unevaluatedProperties: false
+> +    description:
+> +      MT6397 Real Time Clock.
+> +
+> +    properties:
+> +      compatible:
+> +        oneOf:
+> +          - enum:
+> +              - mediatek,mt6323-rtc
+> +              - mediatek,mt6331-rtc
+> +              - mediatek,mt6358-rtc
+> +              - mediatek,mt6397-rtc
+> +          - items:
+> +              - enum:
+> +                  - mediatek,mt6366-rtc
+> +              - const: mediatek,mt6358-rtc
+> +
+> +    required:
+> +      - compatible
+> +
+> +  regulators:
+> +    type: object
+> +    description:
+> +      List of child nodes that specify the regulators.
+> +    additionalProperties: true
+> +
+> +    properties:
+> +      compatible:
+> +        oneOf:
+> +          - enum:
+> +              - mediatek,mt6323-regulator
+> +              - mediatek,mt6358-regulator
+> +              - mediatek,mt6397-regulator
+> +          - items:
+> +              - enum:
+> +                  - mediatek,mt6366-regulator
+> +              - const: mediatek,mt6358-regulator
+> +
+> +    required:
+> +      - compatible
+> +
+> +  audio-codec:
+> +    type: object
+> +    additionalProperties: false
+> +    description:
+> +      Audio codec support with MT6397 and MT6358.
+> +
+> +    properties:
+> +      compatible:
+> +        oneOf:
+> +          - enum:
+> +              - mediatek,mt6397-codec
+> +              - mediatek,mt6358-sound
+> +          - items:
+> +              - enum:
+> +                  - mediatek,mt6366-sound
+> +              - const: mediatek,mt6358-sound
+> +
+> +      mediatek,dmic-mode:
+> +        description: |
+> +          Indicates how many data pins are used to transmit two channels of PDM
+> +          signal.
+> +          0 - two wires;
+> +          1 - one wire;
+> +          Default value is 0.
+> +        enum: [0, 1]
+> +        default: 0
+> +
+> +      Avdd-supply:
+> +        description: Power source of AVDD.
+> +
+> +    required:
+> +      - compatible
+> +
+> +  clocks:
+> +    type: object
+> +    additionalProperties: false
+> +    description:
+> +      This is a clock buffer node for mt6397. However, there are no sub nodes
+> +      or any public document exposed in public.
+> +
+> +    properties:
+> +      compatible:
+> +        const: mediatek,mt6397-clk
+> +
+> +      '#clock-cells':
+> +        const: 1
+> +
+> +    required:
+> +      - compatible
+> +
+> +  leds:
+> +    type: object
+> +    additionalProperties: false
+> +    description: |
+> +      MT6323 LED controller is subfunction provided by MT6323 PMIC, so the LED
+> +      controllers are defined as the subnode of the function node provided by MT6323
+> +      PMIC controller that is being defined as one kind of Muti-Function Device (MFD)
+> +      using shared bus called PMIC wrapper for each subfunction to access remote
+> +      MT6323 PMIC hardware.
+> +
+> +      Each led is represented as a child node of the mediatek,mt6323-led that
+> +      describes the initial behavior for each LED physically and currently only four
+> +      LED child nodes can be supported.
+> +
+> +    properties:
+> +      compatible:
+> +        enum:
+> +          - mediatek,mt6323-led
+> +          - mediatek,mt6331-led
+> +          - mediatek,mt6332-led
+> +
+> +      reg:
+> +        maxItems: 1
+> +
+> +      "#address-cells":
+> +        const: 1
+> +
+> +      "#size-cells":
+> +        const: 0
+> +
+> +    patternProperties:
+> +      "^led@[0-3]$":
+> +        type: object
+> +        $ref: /schemas/leds/common.yaml#
+> +        unevaluatedProperties: false
+> +
+> +        properties:
+> +          reg:
+> +            description:
+> +              LED channel number (0..3)
+> +            minimum: 0
+> +            maximum: 3
+> +
+> +        required:
+> +          - reg
+> +
+> +    required:
+> +      - compatible
+> +      - "#address-cells"
+> +      - "#size-cells"
+> +
+> +  keys:
+> +    type: object
+> +    $ref: /schemas/input/mediatek,pmic-keys.yaml
+> +    unevaluatedProperties: false
+> +    description:
+> +      Power and Home keys.
+> +
+> +  power-controller:
+> +    type: object
+> +    additionalProperties: false
+> +    description:
+> +      The power controller which could be found on PMIC is responsible for
+> +      externally powering off or on the remote MediaTek SoC through the
+> +      circuit BBPU (baseband power up).
+> +
+> +    properties:
+> +      compatible:
+> +        const: mediatek,mt6323-pwrc
+> +
+> +      '#power-domain-cells':
+> +        const: 0
+> +
+> +  pinctrl:
+> +    type: object
+> +    $ref: /schemas/pinctrl/mediatek,mt65xx-pinctrl.yaml
+> +    unevaluatedProperties: false
+> +    description:
+> +      Pin controller
+> +
+> +required:
+> +  - compatible
+> +  - regulators
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/leds/common.h>
+> +
+> +    pmic {
+> +        compatible = "mediatek,mt6323";
+> +        interrupt-parent = <&pio>;
+> +        interrupts = <150 IRQ_TYPE_LEVEL_HIGH>;
+> +        interrupt-controller;
+> +        #interrupt-cells = <2>;
+> +
+> +        leds {
+> +            compatible = "mediatek,mt6323-led";
+> +            #address-cells = <1>;
+> +            #size-cells = <0>;
+> +        };
+> +
+> +        regulators {
+> +            compatible = "mediatek,mt6323-regulator";
+> +
+> +            buck_vproc {
+> +                regulator-name = "vproc";
+> +                regulator-min-microvolt = < 700000>;
+> +                regulator-max-microvolt = <1350000>;
+> +                regulator-ramp-delay = <12500>;
+> +                regulator-always-on;
+> +                regulator-boot-on;
+> +            };
+> +
+> +            buck_vsys {
+> +                regulator-name = "vsys";
+> +                regulator-min-microvolt = <1400000>;
+> +                regulator-max-microvolt = <2987500>;
+> +                regulator-ramp-delay = <25000>;
+> +                regulator-always-on;
+> +                regulator-boot-on;
+> +            };
+> +
+> +            buck_vpa {
+> +                regulator-name = "vpa";
+> +                regulator-min-microvolt = < 500000>;
+> +                regulator-max-microvolt = <3650000>;
+> +            };
+> +
+> +            ldo_vtcxo {
+> +                regulator-name = "vtcxo";
+> +                regulator-min-microvolt = <2800000>;
+> +                regulator-max-microvolt = <2800000>;
+> +                regulator-enable-ramp-delay = <90>;
+> +                regulator-always-on;
+> +                regulator-boot-on;
+> +            };
+> +
+> +            ldo_vcn28 {
+> +                regulator-name = "vcn28";
+> +                regulator-min-microvolt = <2800000>;
+> +                regulator-max-microvolt = <2800000>;
+> +                regulator-enable-ramp-delay = <185>;
+> +            };
+> +
+> +            ldo_vcn33_bt {
+> +                regulator-name = "vcn33_bt";
+> +                regulator-min-microvolt = <3300000>;
+> +                regulator-max-microvolt = <3600000>;
+> +                regulator-enable-ramp-delay = <185>;
+> +            };
+> +
+> +            ldo_vcn33_wifi {
+> +                regulator-name = "vcn33_wifi";
+> +                regulator-min-microvolt = <3300000>;
+> +                regulator-max-microvolt = <3600000>;
+> +                regulator-enable-ramp-delay = <185>;
+> +            };
+> +
+> +            ldo_va {
+> +                regulator-name = "va";
+> +                regulator-min-microvolt = <2800000>;
+> +                regulator-max-microvolt = <2800000>;
+> +                regulator-enable-ramp-delay = <216>;
+> +                regulator-always-on;
+> +                regulator-boot-on;
+> +            };
+> +
+> +            ldo_vcama {
+> +                regulator-name = "vcama";
+> +                regulator-min-microvolt = <1500000>;
+> +                regulator-max-microvolt = <2800000>;
+> +                regulator-enable-ramp-delay = <216>;
+> +            };
+> +
+> +            ldo_vio28 {
+> +                regulator-name = "vio28";
+> +                regulator-min-microvolt = <2800000>;
+> +                regulator-max-microvolt = <2800000>;
+> +                regulator-enable-ramp-delay = <216>;
+> +                regulator-always-on;
+> +                regulator-boot-on;
+> +            };
+> +
+> +            ldo_vusb {
+> +                regulator-name = "vusb";
+> +                regulator-min-microvolt = <3300000>;
+> +                regulator-max-microvolt = <3300000>;
+> +                regulator-enable-ramp-delay = <216>;
+> +                regulator-boot-on;
+> +            };
+> +
+> +            ldo_vmc {
+> +                regulator-name = "vmc";
+> +                regulator-min-microvolt = <1800000>;
+> +                regulator-max-microvolt = <3300000>;
+> +                regulator-enable-ramp-delay = <36>;
+> +                regulator-boot-on;
+> +            };
+> +
+> +            ldo_vmch {
+> +                regulator-name = "vmch";
+> +                regulator-min-microvolt = <3000000>;
+> +                regulator-max-microvolt = <3300000>;
+> +                regulator-enable-ramp-delay = <36>;
+> +                regulator-boot-on;
+> +            };
+> +
+> +            ldo_vemc3v3 {
+> +                regulator-name = "vemc3v3";
+> +                regulator-min-microvolt = <3000000>;
+> +                regulator-max-microvolt = <3300000>;
+> +                regulator-enable-ramp-delay = <36>;
+> +                regulator-boot-on;
+> +            };
+> +
+> +            ldo_vgp1 {
+> +                regulator-name = "vgp1";
+> +                regulator-min-microvolt = <1200000>;
+> +                regulator-max-microvolt = <3300000>;
+> +                regulator-enable-ramp-delay = <216>;
+> +            };
+> +
+> +            ldo_vgp2 {
+> +                regulator-name = "vgp2";
+> +                regulator-min-microvolt = <1200000>;
+> +                regulator-max-microvolt = <3000000>;
+> +                regulator-enable-ramp-delay = <216>;
+> +            };
+> +
+> +            ldo_vgp3 {
+> +                regulator-name = "vgp3";
+> +                regulator-min-microvolt = <1200000>;
+> +                regulator-max-microvolt = <1800000>;
+> +                regulator-enable-ramp-delay = <216>;
+> +            };
+> +
+> +            ldo_vcn18 {
+> +                regulator-name = "vcn18";
+> +                regulator-min-microvolt = <1800000>;
+> +                regulator-max-microvolt = <1800000>;
+> +                regulator-enable-ramp-delay = <216>;
+> +            };
+> +
+> +            ldo_vsim1 {
+> +                regulator-name = "vsim1";
+> +                regulator-min-microvolt = <1800000>;
+> +                regulator-max-microvolt = <3000000>;
+> +                regulator-enable-ramp-delay = <216>;
+> +            };
+> +
+> +            ldo_vsim2 {
+> +                regulator-name = "vsim2";
+> +                regulator-min-microvolt = <1800000>;
+> +                regulator-max-microvolt = <3000000>;
+> +                regulator-enable-ramp-delay = <216>;
+> +            };
+> +
+> +            ldo_vrtc {
+> +                regulator-name = "vrtc";
+> +                regulator-min-microvolt = <2800000>;
+> +                regulator-max-microvolt = <2800000>;
+> +                regulator-always-on;
+> +                regulator-boot-on;
+> +            };
+> +
+> +            ldo_vcamaf {
+> +                regulator-name = "vcamaf";
+> +                regulator-min-microvolt = <1200000>;
+> +                regulator-max-microvolt = <3300000>;
+> +                regulator-enable-ramp-delay = <216>;
+> +            };
+> +
+> +            ldo_vibr {
+> +                regulator-name = "vibr";
+> +                regulator-min-microvolt = <1200000>;
+> +                regulator-max-microvolt = <3300000>;
+> +                regulator-enable-ramp-delay = <36>;
+> +            };
+> +
+> +            ldo_vrf18 {
+> +                regulator-name = "vrf18";
+> +                regulator-min-microvolt = <1825000>;
+> +                regulator-max-microvolt = <1825000>;
+> +                regulator-enable-ramp-delay = <187>;
+> +            };
+> +
+> +            ldo_vm {
+> +                regulator-name = "vm";
+> +                regulator-min-microvolt = <1200000>;
+> +                regulator-max-microvolt = <1800000>;
+> +                regulator-enable-ramp-delay = <216>;
+> +                regulator-always-on;
+> +                regulator-boot-on;
+> +            };
+> +
+> +            ldo_vio18 {
+> +                regulator-name = "vio18";
+> +                regulator-min-microvolt = <1800000>;
+> +                regulator-max-microvolt = <1800000>;
+> +                regulator-enable-ramp-delay = <216>;
+> +                regulator-always-on;
+> +                regulator-boot-on;
+> +            };
+> +
+> +           ldo_vcamd {
+> +                regulator-name = "vcamd";
+> +                regulator-min-microvolt = <1200000>;
+> +                regulator-max-microvolt = <1800000>;
+> +                regulator-enable-ramp-delay = <216>;
+> +            };
+> +
+> +            ldo_vcamio {
+> +                regulator-name = "vcamio";
+> +                regulator-min-microvolt = <1800000>;
+> +                regulator-max-microvolt = <1800000>;
+> +                regulator-enable-ramp-delay = <216>;
+> +            };
+> +        };
+> +
+> +        keys {
+> +            compatible = "mediatek,mt6323-keys";
+> +            mediatek,long-press-mode = <1>;
+> +            power-off-time-sec = <0>;
+> +
+> +            power {
+> +                linux,keycodes = <116>;
+> +                wakeup-source;
+> +            };
+> +
+> +            home {
+> +                linux,keycodes = <114>;
+> +            };
+> +        };
+> +
+> +        power-controller {
+> +            compatible = "mediatek,mt6323-pwrc";
+> +            #power-domain-cells = <0>;
+> +        };
+> +
+> +        rtc {
+> +            compatible = "mediatek,mt6323-rtc";
+> +        };
+> +    };
+> +
+> +  - |
+> +    #include <dt-bindings/input/input.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +
+> +    pmic {
+> +        compatible = "mediatek,mt6358";
+> +        interrupt-controller;
+> +        #interrupt-cells = <2>;
+> +
+> +        audio-codec {
+> +            compatible = "mediatek,mt6358-sound";
+> +            Avdd-supply = <&mt6358_vaud28_reg>;
+> +            mediatek,dmic-mode = <0>;
+> +        };
+> +
+> +        regulators {
+> +            compatible = "mediatek,mt6358-regulator";
+> +
+> +            buck_vdram1 {
+> +                regulator-name = "vdram1";
+> +                regulator-min-microvolt = <500000>;
+> +                regulator-max-microvolt = <2087500>;
+> +                regulator-ramp-delay = <12500>;
+> +                regulator-enable-ramp-delay = <0>;
+> +                regulator-always-on;
+> +                regulator-allowed-modes = <0 1>;
+> +            };
+> +
+> +            // ...
+> +
+> +            ldo_vsim2 {
+> +                regulator-name = "vsim2";
+> +                regulator-min-microvolt = <1700000>;
+> +                regulator-max-microvolt = <3100000>;
+> +                regulator-enable-ramp-delay = <540>;
+> +            };
+> +        };
+> +
+> +        rtc {
+> +            compatible = "mediatek,mt6358-rtc";
+> +        };
+> +
+> +        keys {
+> +            compatible = "mediatek,mt6358-keys";
+> +
+> +            power {
+> +                linux,keycodes = <KEY_POWER>;
+> +                wakeup-source;
+> +            };
+> +
+> +            home {
+> +                linux,keycodes = <KEY_HOME>;
+> +            };
+> +        };
+> +    };
+> +
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +
+> +    pmic {
+> +        compatible = "mediatek,mt6397";
+> +
+> +        interrupt-parent = <&pio>;
+> +        interrupts-extended = <&pio 222 IRQ_TYPE_LEVEL_HIGH>;
+> +        interrupt-controller;
+> +        #interrupt-cells = <2>;
+> +
+> +        audio-codec {
+> +            compatible = "mediatek,mt6397-codec";
+> +        };
+> +
+> +        clocks {
+> +            compatible = "mediatek,mt6397-clk";
+> +            #clock-cells = <1>;
+> +        };
+> +
+> +        pinctrl {
+> +            compatible = "mediatek,mt6397-pinctrl";
+> +            gpio-controller;
+> +            #gpio-cells = <2>;
+> +        };
+> +
+> +        regulators {
+> +            compatible = "mediatek,mt6397-regulator";
+> +
+> +            buck_vpca15 {
+> +                regulator-name = "vpca15";
+> +                regulator-min-microvolt = < 850000>;
+> +                regulator-max-microvolt = <1350000>;
+> +                regulator-ramp-delay = <12500>;
+> +                regulator-enable-ramp-delay = <200>;
+> +            };
+> +
+> +            // ...
+> +
+> +            ldo_vibr {
+> +                regulator-name = "vibr";
+> +                regulator-min-microvolt = <1200000>;
+> +                regulator-max-microvolt = <3300000>;
+> +                regulator-enable-ramp-delay = <218>;
+> +            };
+> +        };
+> +
+> +        rtc {
+> +            compatible = "mediatek,mt6397-rtc";
+> +        };
+> +    };
+> diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
+> deleted file mode 100644
+> index 10540aa..0000000
+> --- a/Documentation/devicetree/bindings/mfd/mt6397.txt
+> +++ /dev/null
+> @@ -1,110 +0,0 @@
+> -MediaTek MT6397/MT6323 Multifunction Device Driver
+> -
+> -MT6397/MT6323 is a multifunction device with the following sub modules:
+> -- Regulator
+> -- RTC
+> -- Audio codec
+> -- GPIO
+> -- Clock
+> -- LED
+> -- Keys
+> -- Power controller
+> -
+> -It is interfaced to host controller using SPI interface by a proprietary hardware
+> -called PMIC wrapper or pwrap. MT6397/MT6323 MFD is a child device of pwrap.
+> -See the following for pwarp node definitions:
+> -../soc/mediatek/mediatek,pwrap.yaml
+> -
+> -This document describes the binding for MFD device and its sub module.
+> -
+> -Required properties:
+> -compatible:
+> -	"mediatek,mt6323" for PMIC MT6323
+> -	"mediatek,mt6331" for PMIC MT6331 and MT6332
+> -	"mediatek,mt6357" for PMIC MT6357
+> -	"mediatek,mt6358" for PMIC MT6358
+> -	"mediatek,mt6359" for PMIC MT6359
+> -	"mediatek,mt6366", "mediatek,mt6358" for PMIC MT6366
+> -	"mediatek,mt6397" for PMIC MT6397
+> -
+> -Optional subnodes:
+> -
+> -- rtc
+> -	Required properties: Should be one of follows
+> -		- compatible: "mediatek,mt6323-rtc"
+> -		- compatible: "mediatek,mt6331-rtc"
+> -		- compatible: "mediatek,mt6358-rtc"
+> -		- compatible: "mediatek,mt6397-rtc"
+> -	For details, see ../rtc/rtc-mt6397.txt
+> -- regulators
+> -	Required properties:
+> -		- compatible: "mediatek,mt6323-regulator"
+> -	see ../regulator/mt6323-regulator.txt
+> -		- compatible: "mediatek,mt6358-regulator"
+> -		- compatible: "mediatek,mt6366-regulator", "mediatek-mt6358-regulator"
+> -	see ../regulator/mt6358-regulator.txt
+> -		- compatible: "mediatek,mt6397-regulator"
+> -	see ../regulator/mt6397-regulator.txt
+> -- codec
+> -	Required properties:
+> -		- compatible: "mediatek,mt6397-codec" or "mediatek,mt6358-sound"
+> -- clk
+> -	Required properties:
+> -		- compatible: "mediatek,mt6397-clk"
+> -- led
+> -	Required properties:
+> -		- compatible: "mediatek,mt6323-led"
+> -	see ../leds/leds-mt6323.txt
+> -
+> -- keys
+> -	Required properties: Should be one of the following
+> -		- compatible: "mediatek,mt6323-keys"
+> -		- compatible: "mediatek,mt6331-keys"
+> -		- compatible: "mediatek,mt6397-keys"
+> -	see ../input/mtk-pmic-keys.txt
+> -
+> -- power-controller
+> -	Required properties:
+> -		- compatible: "mediatek,mt6323-pwrc"
+> -	For details, see ../power/reset/mt6323-poweroff.txt
+> -
+> -- pin-controller
+> -	Required properties:
+> -		- compatible: "mediatek,mt6397-pinctrl"
+> -	For details, see ../pinctrl/pinctrl-mt65xx.txt
+> -
+> -Example:
+> -	pwrap: pwrap@1000f000 {
+> -		compatible = "mediatek,mt8135-pwrap";
+> -
+> -		...
+> -
+> -		pmic {
+> -			compatible = "mediatek,mt6397";
+> -
+> -			codec: mt6397codec {
+> -				compatible = "mediatek,mt6397-codec";
+> -			};
+> -
+> -			regulators {
+> -				compatible = "mediatek,mt6397-regulator";
+> -
+> -				mt6397_vpca15_reg: buck_vpca15 {
+> -					regulator-compatible = "buck_vpca15";
+> -					regulator-name = "vpca15";
+> -					regulator-min-microvolt = <850000>;
+> -					regulator-max-microvolt = <1400000>;
+> -					regulator-ramp-delay = <12500>;
+> -					regulator-always-on;
+> -				};
+> -
+> -				mt6397_vgp4_reg: ldo_vgp4 {
+> -					regulator-compatible = "ldo_vgp4";
+> -					regulator-name = "vgp4";
+> -					regulator-min-microvolt = <1200000>;
+> -					regulator-max-microvolt = <3300000>;
+> -					regulator-enable-ramp-delay = <218>;
+> -				};
+> -			};
+> -		};
+> -	};
+> diff --git a/Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt b/Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
+> deleted file mode 100644
+> index 933f0c4..0000000
+> --- a/Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
+> +++ /dev/null
+> @@ -1,20 +0,0 @@
+> -Device Tree Bindings for Power Controller on MediaTek PMIC
+> -
+> -The power controller which could be found on PMIC is responsible for externally
+> -powering off or on the remote MediaTek SoC through the circuit BBPU.
+> -
+> -Required properties:
+> -- compatible: Should be one of follows
+> -       "mediatek,mt6323-pwrc": for MT6323 PMIC
+> -
+> -Example:
+> -
+> -       pmic {
+> -               compatible = "mediatek,mt6323";
+> -
+> -               ...
+> -
+> -               power-controller {
+> -                       compatible = "mediatek,mt6323-pwrc";
+> -               };
+> -       }
+> diff --git a/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt b/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
+> deleted file mode 100644
+> index 7212076..0000000
+> --- a/Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
+> +++ /dev/null
+> @@ -1,31 +0,0 @@
+> -Device-Tree bindings for MediaTek PMIC based RTC
+> -
+> -MediaTek PMIC based RTC is an independent function of MediaTek PMIC that works
+> -as a type of multi-function device (MFD). The RTC can be configured and set up
+> -with PMIC wrapper bus which is a common resource shared with the other
+> -functions found on the same PMIC.
+> -
+> -For MediaTek PMIC MFD bindings, see:
+> -../mfd/mt6397.txt
+> -
+> -For MediaTek PMIC wrapper bus bindings, see:
+> -../soc/mediatek/pwrap.txt
+> -
+> -Required properties:
+> -- compatible: Should be one of follows
+> -       "mediatek,mt6323-rtc": for MT6323 PMIC
+> -       "mediatek,mt6358-rtc": for MT6358 PMIC
+> -       "mediatek,mt6366-rtc", "mediatek,mt6358-rtc": for MT6366 PMIC
+> -       "mediatek,mt6397-rtc": for MT6397 PMIC
+> -
+> -Example:
+> -
+> -       pmic {
+> -               compatible = "mediatek,mt6323";
+> -
+> -               ...
+> -
+> -               rtc {
+> -                       compatible = "mediatek,mt6323-rtc";
+> -               };
+> -       };
+> diff --git a/Documentation/devicetree/bindings/sound/mt6358.txt b/Documentation/devicetree/bindings/sound/mt6358.txt
+> deleted file mode 100644
+> index fbe9e55..0000000
+> --- a/Documentation/devicetree/bindings/sound/mt6358.txt
+> +++ /dev/null
+> @@ -1,26 +0,0 @@
+> -Mediatek MT6358 Audio Codec
+> -
+> -The communication between MT6358 and SoC is through Mediatek PMIC wrapper.
+> -For more detail, please visit Mediatek PMIC wrapper documentation.
+> -
+> -Must be a child node of PMIC wrapper.
+> -
+> -Required properties:
+> -
+> -- compatible - "string" - One of:
+> -    "mediatek,mt6358-sound"
+> -    "mediatek,mt6366-sound"
+> -- Avdd-supply : power source of AVDD
+> -
+> -Optional properties:
+> -- mediatek,dmic-mode : Indicates how many data pins are used to transmit two
+> -	channels of PDM signal. 0 means two wires, 1 means one wire. Default
+> -	value is 0.
+> -
+> -Example:
+> -
+> -mt6358_snd {
+> -	compatible = "mediatek,mt6358-sound";
+> -	Avdd-supply = <&mt6358_vaud28_reg>;
+> -	mediatek,dmic-mode = <0>;
+> -};
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 2cdd7ca..e97b5ae 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -14418,10 +14418,12 @@ F:	Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7921s-bluetooth.ya
+>  F:	drivers/bluetooth/btmtkuart.c
+>  
+>  MEDIATEK BOARD LEVEL SHUTDOWN DRIVERS
+> +M:	Sen Chu <sen.chu@mediatek.com>
+>  M:	Sean Wang <sean.wang@mediatek.com>
+> +M:	Macpaul Lin <macpaul.lin@mediatek.com>
+>  L:	linux-pm@vger.kernel.org
+>  S:	Maintained
+> -F:	Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
+> +F:	Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+>  F:	drivers/power/reset/mt6323-poweroff.c
+>  
+>  MEDIATEK CIR DRIVER
+> @@ -14582,9 +14584,11 @@ F:	Documentation/devicetree/bindings/mtd/mediatek,mtk-nfc.yaml
+>  F:	drivers/mtd/nand/raw/mtk_*
+>  
+>  MEDIATEK PMIC LED DRIVER
+> +M:	Sen Chu <sen.chu@mediatek.com>
+>  M:	Sean Wang <sean.wang@mediatek.com>
+> +M:	Macpaul Lin <macpaul.lin@mediatek.com>
+>  S:	Maintained
+> -F:	Documentation/devicetree/bindings/leds/leds-mt6323.txt
+> +F:	Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+>  F:	drivers/leds/leds-mt6323.c
+>  
+>  MEDIATEK RANDOM NUMBER GENERATOR SUPPORT
+> -- 
+> 2.45.2
+> 
+> 
 
-2. skb_defer_free_flush(): this may cause infinite delay if
-   there is no triggering for net_rx_action().
-
-In order not to do the dma unmmapping after driver has already
-unbound and stall the unloading of the networking driver, add
-the pool->items array to record all the pages including the ones
-which are handed over to network stack, so the page_pool can
-do the dma unmmapping for those pages when page_pool_destroy()
-is called.
-
-Note, the devmem patchset seems to make the bug harder to fix,
-and may make backporting harder too. As there is no actual user
-for the devmem and the fixing for devmem is unclear for now,
-this patch does not consider fixing the case for devmem yet.
-
-1. https://lore.kernel.org/lkml/8067f204-1380-4d37-8ffd-007fc6f26738@kernel.org/T/
-
-Fixes: f71fec47c2df ("page_pool: make sure struct device is stable")
-Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
-CC: Robin Murphy <robin.murphy@arm.com>
-CC: Alexander Duyck <alexander.duyck@gmail.com>
-CC: IOMMU <iommu@lists.linux.dev>
----
- drivers/net/ethernet/freescale/fec_main.c     |   8 +-
- drivers/net/ethernet/intel/iavf/iavf_txrx.c   |   6 +-
- drivers/net/ethernet/intel/idpf/idpf_txrx.c   |  14 +-
- drivers/net/ethernet/intel/libeth/rx.c        |   2 +-
- .../net/ethernet/mellanox/mlx5/core/en/xdp.c  |   3 +-
- drivers/net/netdevsim/netdev.c                |   6 +-
- drivers/net/wireless/mediatek/mt76/mt76.h     |   2 +-
- include/linux/mm_types.h                      |   2 +-
- include/linux/skbuff.h                        |   1 +
- include/net/libeth/rx.h                       |   3 +-
- include/net/netmem.h                          |  10 +-
- include/net/page_pool/helpers.h               |  11 ++
- include/net/page_pool/types.h                 |  15 +-
- net/core/devmem.c                             |   4 +-
- net/core/netmem_priv.h                        |   5 +-
- net/core/page_pool.c                          | 161 +++++++++++++++---
- net/core/page_pool_priv.h                     |  10 +-
- net/core/skbuff.c                             |   3 +-
- net/core/xdp.c                                |   3 +-
- 19 files changed, 212 insertions(+), 57 deletions(-)
-
-diff --git a/drivers/net/ethernet/freescale/fec_main.c b/drivers/net/ethernet/freescale/fec_main.c
-index acbb627d51bf..c00f8c460759 100644
---- a/drivers/net/ethernet/freescale/fec_main.c
-+++ b/drivers/net/ethernet/freescale/fec_main.c
-@@ -1009,7 +1009,8 @@ static void fec_enet_bd_init(struct net_device *dev)
- 				struct page *page = txq->tx_buf[i].buf_p;
- 
- 				if (page)
--					page_pool_put_page(page->pp, page, 0, false);
-+					page_pool_put_page(page_pool_to_pp(page),
-+							   page, 0, false);
- 			}
- 
- 			txq->tx_buf[i].buf_p = NULL;
-@@ -1538,7 +1539,7 @@ fec_enet_tx_queue(struct net_device *ndev, u16 queue_id, int budget)
- 			xdp_return_frame_rx_napi(xdpf);
- 		} else { /* recycle pages of XDP_TX frames */
- 			/* The dma_sync_size = 0 as XDP_TX has already synced DMA for_device */
--			page_pool_put_page(page->pp, page, 0, true);
-+			page_pool_put_page(page_pool_to_pp(page), page, 0, true);
- 		}
- 
- 		txq->tx_buf[index].buf_p = NULL;
-@@ -3300,7 +3301,8 @@ static void fec_enet_free_buffers(struct net_device *ndev)
- 			} else {
- 				struct page *page = txq->tx_buf[i].buf_p;
- 
--				page_pool_put_page(page->pp, page, 0, false);
-+				page_pool_put_page(page_pool_to_pp(page),
-+						   page, 0, false);
- 			}
- 
- 			txq->tx_buf[i].buf_p = NULL;
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-index 26b424fd6718..658d8f9a6abb 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-@@ -1050,7 +1050,8 @@ static void iavf_add_rx_frag(struct sk_buff *skb,
- 			     const struct libeth_fqe *rx_buffer,
- 			     unsigned int size)
- {
--	u32 hr = rx_buffer->page->pp->p.offset;
-+	struct page_pool *pool = page_pool_to_pp(rx_buffer->page);
-+	u32 hr = pool->p.offset;
- 
- 	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buffer->page,
- 			rx_buffer->offset + hr, size, rx_buffer->truesize);
-@@ -1067,7 +1068,8 @@ static void iavf_add_rx_frag(struct sk_buff *skb,
- static struct sk_buff *iavf_build_skb(const struct libeth_fqe *rx_buffer,
- 				      unsigned int size)
- {
--	u32 hr = rx_buffer->page->pp->p.offset;
-+	struct page_pool *pool = page_pool_to_pp(rx_buffer->page);
-+	u32 hr = pool->p.offset;
- 	struct sk_buff *skb;
- 	void *va;
- 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-index d4e6f0e10487..e3389f1a215f 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-@@ -385,7 +385,8 @@ static void idpf_rx_page_rel(struct libeth_fqe *rx_buf)
- 	if (unlikely(!rx_buf->page))
- 		return;
- 
--	page_pool_put_full_page(rx_buf->page->pp, rx_buf->page, false);
-+	page_pool_put_full_page(page_pool_to_pp(rx_buf->page), rx_buf->page,
-+				false);
- 
- 	rx_buf->page = NULL;
- 	rx_buf->offset = 0;
-@@ -3097,7 +3098,8 @@ idpf_rx_process_skb_fields(struct idpf_rx_queue *rxq, struct sk_buff *skb,
- void idpf_rx_add_frag(struct idpf_rx_buf *rx_buf, struct sk_buff *skb,
- 		      unsigned int size)
- {
--	u32 hr = rx_buf->page->pp->p.offset;
-+	struct page_pool *pool = page_pool_to_pp(rx_buf->page);
-+	u32 hr = pool->p.offset;
- 
- 	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buf->page,
- 			rx_buf->offset + hr, size, rx_buf->truesize);
-@@ -3129,8 +3131,10 @@ static u32 idpf_rx_hsplit_wa(const struct libeth_fqe *hdr,
- 	if (!libeth_rx_sync_for_cpu(buf, copy))
- 		return 0;
- 
--	dst = page_address(hdr->page) + hdr->offset + hdr->page->pp->p.offset;
--	src = page_address(buf->page) + buf->offset + buf->page->pp->p.offset;
-+	dst = page_address(hdr->page) + hdr->offset +
-+		page_pool_to_pp(hdr->page)->p.offset;
-+	src = page_address(buf->page) + buf->offset +
-+		page_pool_to_pp(buf->page)->p.offset;
- 	memcpy(dst, src, LARGEST_ALIGN(copy));
- 
- 	buf->offset += copy;
-@@ -3148,7 +3152,7 @@ static u32 idpf_rx_hsplit_wa(const struct libeth_fqe *hdr,
-  */
- struct sk_buff *idpf_rx_build_skb(const struct libeth_fqe *buf, u32 size)
- {
--	u32 hr = buf->page->pp->p.offset;
-+	u32 hr = page_pool_to_pp(buf->page)->p.offset;
- 	struct sk_buff *skb;
- 	void *va;
- 
-diff --git a/drivers/net/ethernet/intel/libeth/rx.c b/drivers/net/ethernet/intel/libeth/rx.c
-index f20926669318..385afca0e61d 100644
---- a/drivers/net/ethernet/intel/libeth/rx.c
-+++ b/drivers/net/ethernet/intel/libeth/rx.c
-@@ -207,7 +207,7 @@ EXPORT_SYMBOL_NS_GPL(libeth_rx_fq_destroy, LIBETH);
-  */
- void libeth_rx_recycle_slow(struct page *page)
- {
--	page_pool_recycle_direct(page->pp, page);
-+	page_pool_recycle_direct(page_pool_to_pp(page), page);
- }
- EXPORT_SYMBOL_NS_GPL(libeth_rx_recycle_slow, LIBETH);
- 
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-index 4610621a340e..83511a45a6dc 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-@@ -716,7 +716,8 @@ static void mlx5e_free_xdpsq_desc(struct mlx5e_xdpsq *sq,
- 				/* No need to check ((page->pp_magic & ~0x3UL) == PP_SIGNATURE)
- 				 * as we know this is a page_pool page.
- 				 */
--				page_pool_recycle_direct(page->pp, page);
-+				page_pool_recycle_direct(page_pool_to_pp(page),
-+							 page);
- 			} while (++n < num);
- 
- 			break;
-diff --git a/drivers/net/netdevsim/netdev.c b/drivers/net/netdevsim/netdev.c
-index 017a6102be0a..9bfa593cd5dd 100644
---- a/drivers/net/netdevsim/netdev.c
-+++ b/drivers/net/netdevsim/netdev.c
-@@ -593,7 +593,8 @@ nsim_pp_hold_write(struct file *file, const char __user *data,
- 		if (!ns->page)
- 			ret = -ENOMEM;
- 	} else {
--		page_pool_put_full_page(ns->page->pp, ns->page, false);
-+		page_pool_put_full_page(page_pool_to_pp(ns->page), ns->page,
-+					false);
- 		ns->page = NULL;
- 	}
- 	rtnl_unlock();
-@@ -788,7 +789,8 @@ void nsim_destroy(struct netdevsim *ns)
- 
- 	/* Put this intentionally late to exercise the orphaning path */
- 	if (ns->page) {
--		page_pool_put_full_page(ns->page->pp, ns->page, false);
-+		page_pool_put_full_page(page_pool_to_pp(ns->page), ns->page,
-+					false);
- 		ns->page = NULL;
- 	}
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 0b75a45ad2e8..94a277290909 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -1688,7 +1688,7 @@ static inline void mt76_put_page_pool_buf(void *buf, bool allow_direct)
- {
- 	struct page *page = virt_to_head_page(buf);
- 
--	page_pool_put_full_page(page->pp, page, allow_direct);
-+	page_pool_put_full_page(page_pool_to_pp(page), page, allow_direct);
- }
- 
- static inline void *
-diff --git a/include/linux/mm_types.h b/include/linux/mm_types.h
-index 485424979254..410187133d27 100644
---- a/include/linux/mm_types.h
-+++ b/include/linux/mm_types.h
-@@ -120,7 +120,7 @@ struct page {
- 			 * page_pool allocated pages.
- 			 */
- 			unsigned long pp_magic;
--			struct page_pool *pp;
-+			struct page_pool_item *pp_item;
- 			unsigned long _pp_mapping_pad;
- 			unsigned long dma_addr;
- 			atomic_long_t pp_ref_count;
-diff --git a/include/linux/skbuff.h b/include/linux/skbuff.h
-index 39f1d16f3628..64d1ecb7a7fc 100644
---- a/include/linux/skbuff.h
-+++ b/include/linux/skbuff.h
-@@ -38,6 +38,7 @@
- #include <net/net_debug.h>
- #include <net/dropreason-core.h>
- #include <net/netmem.h>
-+#include <net/page_pool/types.h>
- 
- /**
-  * DOC: skb checksums
-diff --git a/include/net/libeth/rx.h b/include/net/libeth/rx.h
-index 43574bd6612f..beee7ddd77a5 100644
---- a/include/net/libeth/rx.h
-+++ b/include/net/libeth/rx.h
-@@ -137,7 +137,8 @@ static inline bool libeth_rx_sync_for_cpu(const struct libeth_fqe *fqe,
- 		return false;
- 	}
- 
--	page_pool_dma_sync_for_cpu(page->pp, page, fqe->offset, len);
-+	page_pool_dma_sync_for_cpu(page_pool_to_pp(page), page, fqe->offset,
-+				   len);
- 
- 	return true;
- }
-diff --git a/include/net/netmem.h b/include/net/netmem.h
-index 8a6e20be4b9d..27f5d284285e 100644
---- a/include/net/netmem.h
-+++ b/include/net/netmem.h
-@@ -23,7 +23,7 @@ DECLARE_STATIC_KEY_FALSE(page_pool_mem_providers);
- struct net_iov {
- 	unsigned long __unused_padding;
- 	unsigned long pp_magic;
--	struct page_pool *pp;
-+	struct page_pool_item *pp_item;
- 	struct dmabuf_genpool_chunk_owner *owner;
- 	unsigned long dma_addr;
- 	atomic_long_t pp_ref_count;
-@@ -33,7 +33,7 @@ struct net_iov {
-  *
-  *        struct {
-  *                unsigned long pp_magic;
-- *                struct page_pool *pp;
-+ *                struct page_pool *pp_item;
-  *                unsigned long _pp_mapping_pad;
-  *                unsigned long dma_addr;
-  *                atomic_long_t pp_ref_count;
-@@ -49,7 +49,7 @@ struct net_iov {
- 	static_assert(offsetof(struct page, pg) == \
- 		      offsetof(struct net_iov, iov))
- NET_IOV_ASSERT_OFFSET(pp_magic, pp_magic);
--NET_IOV_ASSERT_OFFSET(pp, pp);
-+NET_IOV_ASSERT_OFFSET(pp_item, pp_item);
- NET_IOV_ASSERT_OFFSET(dma_addr, dma_addr);
- NET_IOV_ASSERT_OFFSET(pp_ref_count, pp_ref_count);
- #undef NET_IOV_ASSERT_OFFSET
-@@ -127,9 +127,9 @@ static inline struct net_iov *__netmem_clear_lsb(netmem_ref netmem)
- 	return (struct net_iov *)((__force unsigned long)netmem & ~NET_IOV);
- }
- 
--static inline struct page_pool *netmem_get_pp(netmem_ref netmem)
-+static inline struct page_pool_item *netmem_get_pp_item(netmem_ref netmem)
- {
--	return __netmem_clear_lsb(netmem)->pp;
-+	return __netmem_clear_lsb(netmem)->pp_item;
- }
- 
- static inline atomic_long_t *netmem_get_pp_ref_count_ref(netmem_ref netmem)
-diff --git a/include/net/page_pool/helpers.h b/include/net/page_pool/helpers.h
-index 793e6fd78bc5..ed068b3cee3b 100644
---- a/include/net/page_pool/helpers.h
-+++ b/include/net/page_pool/helpers.h
-@@ -83,6 +83,17 @@ static inline u64 *page_pool_ethtool_stats_get(u64 *data, const void *stats)
- }
- #endif
- 
-+static inline struct page_pool *page_pool_to_pp(struct page *page)
-+{
-+	struct page_pool_item *item = page->pp_item;
-+	struct page_pool *pool;
-+
-+	item -= item->pp_idx;
-+	pool = (struct page_pool *)item;
-+
-+	return --pool;
-+}
-+
- /**
-  * page_pool_dev_alloc_pages() - allocate a page.
-  * @pool:	pool from which to allocate
-diff --git a/include/net/page_pool/types.h b/include/net/page_pool/types.h
-index c022c410abe3..526250ed812a 100644
---- a/include/net/page_pool/types.h
-+++ b/include/net/page_pool/types.h
-@@ -142,6 +142,11 @@ struct page_pool_stats {
- };
- #endif
- 
-+struct page_pool_item {
-+	netmem_ref pp_netmem;
-+	unsigned int pp_idx;
-+};
-+
- /* The whole frag API block must stay within one cacheline. On 32-bit systems,
-  * sizeof(long) == sizeof(int), so that the block size is ``3 * sizeof(long)``.
-  * On 64-bit systems, the actual size is ``2 * sizeof(long) + sizeof(int)``.
-@@ -161,6 +166,8 @@ struct page_pool {
- 
- 	int cpuid;
- 	u32 pages_state_hold_cnt;
-+	unsigned int item_mask;
-+	unsigned int item_idx;
- 
- 	bool has_init_callback:1;	/* slow::init_callback is set */
- 	bool dma_map:1;			/* Perform DMA mapping */
-@@ -228,7 +235,11 @@ struct page_pool {
- 	 */
- 	refcount_t user_cnt;
- 
--	u64 destroy_cnt;
-+	/* Lock to avoid doing dma unmapping concurrently when
-+	 * destroy_cnt > 0.
-+	 */
-+	spinlock_t destroy_lock;
-+	unsigned int destroy_cnt;
- 
- 	/* Slow/Control-path information follows */
- 	struct page_pool_params_slow slow;
-@@ -239,6 +250,8 @@ struct page_pool {
- 		u32 napi_id;
- 		u32 id;
- 	} user;
-+
-+	struct page_pool_item items[] ____cacheline_aligned_in_smp;
- };
- 
- struct page *page_pool_alloc_pages(struct page_pool *pool, gfp_t gfp);
-diff --git a/net/core/devmem.c b/net/core/devmem.c
-index 11b91c12ee11..09c5aa83f12a 100644
---- a/net/core/devmem.c
-+++ b/net/core/devmem.c
-@@ -85,7 +85,7 @@ net_devmem_alloc_dmabuf(struct net_devmem_dmabuf_binding *binding)
- 	niov = &owner->niovs[index];
- 
- 	niov->pp_magic = 0;
--	niov->pp = NULL;
-+	niov->pp_item = NULL;
- 	atomic_long_set(&niov->pp_ref_count, 0);
- 
- 	return niov;
-@@ -380,7 +380,7 @@ bool mp_dmabuf_devmem_release_page(struct page_pool *pool, netmem_ref netmem)
- 	if (WARN_ON_ONCE(refcount != 1))
- 		return false;
- 
--	page_pool_clear_pp_info(netmem);
-+	page_pool_clear_pp_info(pool, netmem);
- 
- 	net_devmem_free_dmabuf(netmem_to_net_iov(netmem));
- 
-diff --git a/net/core/netmem_priv.h b/net/core/netmem_priv.h
-index 7eadb8393e00..3173f6070cf7 100644
---- a/net/core/netmem_priv.h
-+++ b/net/core/netmem_priv.h
-@@ -18,9 +18,10 @@ static inline void netmem_clear_pp_magic(netmem_ref netmem)
- 	__netmem_clear_lsb(netmem)->pp_magic = 0;
- }
- 
--static inline void netmem_set_pp(netmem_ref netmem, struct page_pool *pool)
-+static inline void netmem_set_pp_item(netmem_ref netmem,
-+				      struct page_pool_item *item)
- {
--	__netmem_clear_lsb(netmem)->pp = pool;
-+	__netmem_clear_lsb(netmem)->pp_item = item;
- }
- 
- static inline void netmem_set_dma_addr(netmem_ref netmem,
-diff --git a/net/core/page_pool.c b/net/core/page_pool.c
-index bec6e717cd22..1f3017a2e0a0 100644
---- a/net/core/page_pool.c
-+++ b/net/core/page_pool.c
-@@ -267,14 +267,12 @@ static int page_pool_init(struct page_pool *pool,
- 		return -ENOMEM;
- 	}
- 
-+	spin_lock_init(&pool->destroy_lock);
- 	atomic_set(&pool->pages_state_release_cnt, 0);
- 
- 	/* Driver calling page_pool_create() also call page_pool_destroy() */
- 	refcount_set(&pool->user_cnt, 1);
- 
--	if (pool->dma_map)
--		get_device(pool->p.dev);
--
- 	if (pool->slow.flags & PP_FLAG_ALLOW_UNREADABLE_NETMEM) {
- 		/* We rely on rtnl_lock()ing to make sure netdev_rx_queue
- 		 * configuration doesn't change while we're initializing
-@@ -312,15 +310,93 @@ static void page_pool_uninit(struct page_pool *pool)
- {
- 	ptr_ring_cleanup(&pool->ring, NULL);
- 
--	if (pool->dma_map)
--		put_device(pool->p.dev);
--
- #ifdef CONFIG_PAGE_POOL_STATS
- 	if (!pool->system)
- 		free_percpu(pool->recycle_stats);
- #endif
- }
- 
-+static void page_pool_item_init(struct page_pool *pool, unsigned int item_cnt)
-+{
-+	struct page_pool_item *items = pool->items;
-+	unsigned int i;
-+
-+	WARN_ON_ONCE(!is_power_of_2(item_cnt));
-+
-+	for (i = 0; i < item_cnt; i++)
-+		items[i].pp_idx = i;
-+
-+	pool->item_mask = item_cnt - 1;
-+}
-+
-+static void page_pool_item_uninit(struct page_pool *pool)
-+{
-+	struct page_pool_item *items = pool->items;
-+	unsigned int mask = pool->item_mask;
-+	unsigned int i;
-+
-+	if (!pool->dma_map || pool->mp_priv)
-+		return;
-+
-+	spin_lock_bh(&pool->destroy_lock);
-+
-+	for (i = 0; i <= mask; i++) {
-+		struct page *page;
-+
-+		page = netmem_to_page(READ_ONCE(items[i].pp_netmem));
-+		if (!page)
-+			continue;
-+
-+		WARN_ONCE(1, "dma unmapping in %s: %p for %p\n", __func__, page,
-+			  pool);
-+
-+		dma_unmap_page_attrs(pool->p.dev, page_pool_get_dma_addr(page),
-+				     PAGE_SIZE << pool->p.order,
-+				     pool->p.dma_dir, DMA_ATTR_SKIP_CPU_SYNC |
-+				     DMA_ATTR_WEAK_ORDERING);
-+		page_pool_set_dma_addr(page, 0);
-+	}
-+
-+	pool->dma_map = false;
-+	spin_unlock_bh(&pool->destroy_lock);
-+}
-+
-+static bool page_pool_item_add(struct page_pool *pool, netmem_ref netmem)
-+{
-+	struct page_pool_item *items = pool->items;
-+	unsigned int mask = pool->item_mask;
-+	unsigned int idx = pool->item_idx;
-+	unsigned int i;
-+
-+	for (i = 0; i <= mask; i++) {
-+		unsigned int mask_idx = idx++ & mask;
-+
-+		if (!READ_ONCE(items[mask_idx].pp_netmem)) {
-+			WRITE_ONCE(items[mask_idx].pp_netmem, netmem);
-+			netmem_set_pp_item(netmem, &items[mask_idx]);
-+			pool->item_idx = idx;
-+			return true;
-+		}
-+	}
-+
-+	pool->item_idx = idx;
-+	DEBUG_NET_WARN_ON_ONCE(true);
-+	return false;
-+}
-+
-+static void page_pool_item_del(struct page_pool *pool, netmem_ref netmem)
-+{
-+	struct page_pool_item *item = netmem_to_page(netmem)->pp_item;
-+	struct page_pool_item *items = pool->items;
-+	unsigned int idx = item->pp_idx;
-+
-+	DEBUG_NET_WARN_ON_ONCE(items[idx].pp_netmem != netmem);
-+	WRITE_ONCE(items[idx].pp_netmem, (unsigned long __bitwise)NULL);
-+	netmem_set_pp_item(netmem, NULL);
-+}
-+
-+#define PAGE_POOL_MIN_ITEM_CNT	512
-+
- /**
-  * page_pool_create_percpu() - create a page pool for a given cpu.
-  * @params: parameters, see struct page_pool_params
-@@ -329,10 +405,14 @@ static void page_pool_uninit(struct page_pool *pool)
- struct page_pool *
- page_pool_create_percpu(const struct page_pool_params *params, int cpuid)
- {
-+	unsigned int item_cnt = (params->pool_size ? : 1024) +
-+				PP_ALLOC_CACHE_SIZE + PAGE_POOL_MIN_ITEM_CNT;
- 	struct page_pool *pool;
- 	int err;
- 
--	pool = kzalloc_node(sizeof(*pool), GFP_KERNEL, params->nid);
-+	item_cnt = roundup_pow_of_two(item_cnt);
-+	pool = kvzalloc_node(struct_size(pool, items, item_cnt), GFP_KERNEL,
-+			     params->nid);
- 	if (!pool)
- 		return ERR_PTR(-ENOMEM);
- 
-@@ -340,6 +420,8 @@ page_pool_create_percpu(const struct page_pool_params *params, int cpuid)
- 	if (err < 0)
- 		goto err_free;
- 
-+	page_pool_item_init(pool, item_cnt);
-+
- 	err = page_pool_list(pool);
- 	if (err)
- 		goto err_uninit;
-@@ -350,7 +432,7 @@ page_pool_create_percpu(const struct page_pool_params *params, int cpuid)
- 	page_pool_uninit(pool);
- err_free:
- 	pr_warn("%s() gave up with errno %d\n", __func__, err);
--	kfree(pool);
-+	kvfree(pool);
- 	return ERR_PTR(err);
- }
- EXPORT_SYMBOL(page_pool_create_percpu);
-@@ -499,19 +581,24 @@ static struct page *__page_pool_alloc_page_order(struct page_pool *pool,
- 	if (unlikely(!page))
- 		return NULL;
- 
--	if (pool->dma_map && unlikely(!page_pool_dma_map(pool, page_to_netmem(page)))) {
--		put_page(page);
--		return NULL;
--	}
-+	if (unlikely(!page_pool_set_pp_info(pool, page_to_netmem(page))))
-+		goto err_alloc;
-+
-+	if (pool->dma_map && unlikely(!page_pool_dma_map(pool, page_to_netmem(page))))
-+		goto err_set_info;
- 
- 	alloc_stat_inc(pool, slow_high_order);
--	page_pool_set_pp_info(pool, page_to_netmem(page));
- 
- 	/* Track how many pages are held 'in-flight' */
- 	pool->pages_state_hold_cnt++;
- 	trace_page_pool_state_hold(pool, page_to_netmem(page),
- 				   pool->pages_state_hold_cnt);
- 	return page;
-+err_set_info:
-+	page_pool_clear_pp_info(pool, page_to_netmem(page));
-+err_alloc:
-+	put_page(page);
-+	return NULL;
- }
- 
- /* slow path */
-@@ -546,12 +633,18 @@ static noinline netmem_ref __page_pool_alloc_pages_slow(struct page_pool *pool,
- 	 */
- 	for (i = 0; i < nr_pages; i++) {
- 		netmem = pool->alloc.cache[i];
-+
-+		if (unlikely(!page_pool_set_pp_info(pool, netmem))) {
-+			put_page(netmem_to_page(netmem));
-+			continue;
-+		}
-+
- 		if (dma_map && unlikely(!page_pool_dma_map(pool, netmem))) {
-+			page_pool_clear_pp_info(pool, netmem);
- 			put_page(netmem_to_page(netmem));
- 			continue;
- 		}
- 
--		page_pool_set_pp_info(pool, netmem);
- 		pool->alloc.cache[pool->alloc.count++] = netmem;
- 		/* Track how many pages are held 'in-flight' */
- 		pool->pages_state_hold_cnt++;
-@@ -623,9 +716,13 @@ s32 page_pool_inflight(const struct page_pool *pool, bool strict)
- 	return inflight;
- }
- 
--void page_pool_set_pp_info(struct page_pool *pool, netmem_ref netmem)
-+bool page_pool_set_pp_info(struct page_pool *pool, netmem_ref netmem)
- {
--	netmem_set_pp(netmem, pool);
-+	if (unlikely(!page_pool_item_add(pool, netmem)))
-+		return false;
-+
-+	DEBUG_NET_WARN_ON_ONCE(page_pool_to_pp(netmem_to_page(netmem)) != pool);
-+
- 	netmem_or_pp_magic(netmem, PP_SIGNATURE);
- 
- 	/* Ensuring all pages have been split into one fragment initially:
-@@ -637,12 +734,14 @@ void page_pool_set_pp_info(struct page_pool *pool, netmem_ref netmem)
- 	page_pool_fragment_netmem(netmem, 1);
- 	if (pool->has_init_callback)
- 		pool->slow.init_callback(netmem, pool->slow.init_arg);
-+
-+	return true;
- }
- 
--void page_pool_clear_pp_info(netmem_ref netmem)
-+void page_pool_clear_pp_info(struct page_pool *pool, netmem_ref netmem)
- {
- 	netmem_clear_pp_magic(netmem);
--	netmem_set_pp(netmem, NULL);
-+	page_pool_item_del(pool, netmem);
- }
- 
- static __always_inline void __page_pool_release_page_dma(struct page_pool *pool,
-@@ -672,9 +771,13 @@ static __always_inline void __page_pool_release_page_dma(struct page_pool *pool,
-  */
- void page_pool_return_page(struct page_pool *pool, netmem_ref netmem)
- {
-+	unsigned int destroy_cnt = READ_ONCE(pool->destroy_cnt);
- 	int count;
- 	bool put;
- 
-+	if (unlikely(destroy_cnt))
-+		spin_lock_bh(&pool->destroy_lock);
-+
- 	put = true;
- 	if (static_branch_unlikely(&page_pool_mem_providers) && pool->mp_priv)
- 		put = mp_dmabuf_devmem_release_page(pool, netmem);
-@@ -688,9 +791,13 @@ void page_pool_return_page(struct page_pool *pool, netmem_ref netmem)
- 	trace_page_pool_state_release(pool, netmem, count);
- 
- 	if (put) {
--		page_pool_clear_pp_info(netmem);
-+		page_pool_clear_pp_info(pool, netmem);
- 		put_page(netmem_to_page(netmem));
- 	}
-+
-+	if (unlikely(destroy_cnt))
-+		spin_unlock_bh(&pool->destroy_lock);
-+
- 	/* An optimization would be to call __free_pages(page, pool->p.order)
- 	 * knowing page is not part of page-cache (thus avoiding a
- 	 * __page_cache_release() call).
-@@ -1034,14 +1141,14 @@ static void __page_pool_destroy(struct page_pool *pool)
- 		static_branch_dec(&page_pool_mem_providers);
- 	}
- 
--	kfree(pool);
-+	kvfree(pool);
- }
- 
- static void page_pool_empty_alloc_cache_once(struct page_pool *pool)
- {
- 	netmem_ref netmem;
- 
--	if (pool->destroy_cnt)
-+	if (pool->destroy_cnt > 1)
- 		return;
- 
- 	/* Empty alloc cache, assume caller made sure this is
-@@ -1057,7 +1164,7 @@ static void page_pool_empty_alloc_cache_once(struct page_pool *pool)
- static void page_pool_scrub(struct page_pool *pool)
- {
- 	page_pool_empty_alloc_cache_once(pool);
--	pool->destroy_cnt++;
-+	WRITE_ONCE(pool->destroy_cnt, pool->destroy_cnt + 1);
- 
- 	/* No more consumers should exist, but producers could still
- 	 * be in-flight.
-@@ -1139,10 +1246,14 @@ void page_pool_destroy(struct page_pool *pool)
- 	if (!page_pool_put(pool))
- 		return;
- 
-+	/* disable dma_sync_for_device */
-+	pool->dma_sync = false;
-+
- 	page_pool_disable_direct_recycling(pool);
-+	WRITE_ONCE(pool->destroy_cnt, 1);
- 
--	/* Wait for the freeing side see the disabling direct recycling setting
--	 * to avoid the concurrent access to the pool->alloc cache.
-+	/* Wait for the freeing side to see the new pool->dma_sync,
-+	 * disable_direct and pool->destroy_cnt in page_pool_put_page.
- 	 */
- 	synchronize_rcu();
- 
-@@ -1151,6 +1262,8 @@ void page_pool_destroy(struct page_pool *pool)
- 	if (!page_pool_release(pool))
- 		return;
- 
-+	page_pool_item_uninit(pool);
-+
- 	page_pool_detached(pool);
- 	pool->defer_start = jiffies;
- 	pool->defer_warn  = jiffies + DEFER_WARN_INTERVAL;
-diff --git a/net/core/page_pool_priv.h b/net/core/page_pool_priv.h
-index 57439787b9c2..5d85f862a30a 100644
---- a/net/core/page_pool_priv.h
-+++ b/net/core/page_pool_priv.h
-@@ -36,16 +36,18 @@ static inline bool page_pool_set_dma_addr(struct page *page, dma_addr_t addr)
- }
- 
- #if defined(CONFIG_PAGE_POOL)
--void page_pool_set_pp_info(struct page_pool *pool, netmem_ref netmem);
--void page_pool_clear_pp_info(netmem_ref netmem);
-+bool page_pool_set_pp_info(struct page_pool *pool, netmem_ref netmem);
-+void page_pool_clear_pp_info(struct page_pool *pool, netmem_ref netmem);
- int page_pool_check_memory_provider(struct net_device *dev,
- 				    struct netdev_rx_queue *rxq);
- #else
--static inline void page_pool_set_pp_info(struct page_pool *pool,
-+static inline bool page_pool_set_pp_info(struct page_pool *pool,
- 					 netmem_ref netmem)
- {
-+	return true;
- }
--static inline void page_pool_clear_pp_info(netmem_ref netmem)
-+static inline void page_pool_clear_pp_info(struct page_pool *pool,
-+					   netmem_ref netmem)
- {
- }
- static inline int page_pool_check_memory_provider(struct net_device *dev,
-diff --git a/net/core/skbuff.c b/net/core/skbuff.c
-index 74149dc4ee31..d4295353ca6e 100644
---- a/net/core/skbuff.c
-+++ b/net/core/skbuff.c
-@@ -1033,7 +1033,8 @@ bool napi_pp_put_page(netmem_ref netmem)
- 	if (unlikely(!is_pp_netmem(netmem)))
- 		return false;
- 
--	page_pool_put_full_netmem(netmem_get_pp(netmem), netmem, false);
-+	page_pool_put_full_netmem(page_pool_to_pp(netmem_to_page(netmem)),
-+				  netmem, false);
- 
- 	return true;
- }
-diff --git a/net/core/xdp.c b/net/core/xdp.c
-index bcc5551c6424..e8582036b411 100644
---- a/net/core/xdp.c
-+++ b/net/core/xdp.c
-@@ -384,7 +384,8 @@ void __xdp_return(void *data, struct xdp_mem_info *mem, bool napi_direct,
- 		/* No need to check ((page->pp_magic & ~0x3UL) == PP_SIGNATURE)
- 		 * as mem->type knows this a page_pool page
- 		 */
--		page_pool_put_full_page(page->pp, page, napi_direct);
-+		page_pool_put_full_page(page_pool_to_pp(page), page,
-+					napi_direct);
- 		break;
- 	case MEM_TYPE_PAGE_SHARED:
- 		page_frag_free(data);
 -- 
-2.33.0
-
+Alexandre Belloni, co-owner and COO, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
