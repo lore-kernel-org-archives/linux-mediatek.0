@@ -4,63 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BA74CCD192
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Sep 2024 10:11:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A8EBCCD195
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Sep 2024 10:16:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UpUGZ1nElwcecjhKLohgA58SEfTfonsgyulUNp5JXMo=; b=uERF4NGqq2UUl91pcdgutnAeBc
-	16IHb+HiWsPqhvPYU6+U8bdH4Nz9WROkLr9FEEHyqnH71CVJjvPI9K28lUvdcperMy5XKYjgNCAXf
-	+PIyZhjhLul5KrXL6f9UjXoarjG8V11X+KttgTPM89bNCjSCfTbG3y+T8St/9IO1UUdp3AALoGqDI
-	uDBqdqWRmlfUuu1+Wr3HVpAQvAgDrEPDf0Grqmk7LU635Pf/3faujEPLSvsfBfhOANWG7jbg5iQi/
-	oiPM7dEjvMEna+290h+VV8j6z1F1DuE9HmDAnANA6Qn98eF8UxNqwmqlD422C7lvqrZGb4U/+HcW8
-	W/3tqDMQ==;
+	bh=TCJasSYKVjow3JC40yzY2SOXT8i1dE0D2/d7NAXdL7g=; b=UduepPCz55s/xlI1jNqwExUl2Y
+	B5X3vdLfRm+p6loFXQvx+rRgQ8UJz20z73xMojaaxhUJi1ZrFvj2w4EIMUbOgIbe0VwiLUVCUOpem
+	vaW8GQUDLi0FDQwri4bHCSPHkkWXnzYLiLoy+F0kKK2iXS3fln1/uiuuga12dtO/yent+wfnpdpPu
+	3T0CQsK6mehYLVTKDp3sC66+e41fE6Vot3YbisbUd1HwBYM/sQr3kuoidKSpchUePWbqvfTkeB5H4
+	s8DHxpZfL4M5Bpfb6V3aODFKScaUK/dIX/2riYuQdA8r9iqrZ/ncsPSTSaDZ/F4WK1xfPN1gbaouh
+	/t1ul6rA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqreI-00000007znd-0L5g;
-	Wed, 18 Sep 2024 10:11:02 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1sqrjb-000000080DK-0Zdk;
+	Wed, 18 Sep 2024 10:16:31 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sqrZz-00000007z8Z-47GK;
-	Wed, 18 Sep 2024 10:06:38 +0000
+	id 1sqriU-0000000806Y-3EtG;
+	Wed, 18 Sep 2024 10:15:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1726653993;
-	bh=oQOnfwsjdUWCC5mJL+lquIf7uyFH9YrXYXAl2LUYApw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lQoaoIs/x96njIYg71YCnVd3TrIcdPXQkblg8hVHArgJAANpjdqDxC7ApRnY2w/tp
-	 fFtZGCZftubxmlWxWf5VDpRWQUfp7g8pgMVIvENfPPT0iLeXh/3t2UWSnWQRnDonwK
-	 ugWKXt6Kdi937ePf///4/Mhw8rymTet/xgA0egPqjMGRi6xeyXB2XUR/gi/MAU3l+U
-	 ftk0cL3A+hQ86r2zzxUGOYQCl4Q2B4dh+0feEuKnvSeMJZvvYyFFuLtTWyKayRcULi
-	 3vm1iRI/m6cRkbIq/hwN5j50sMjIr8LRK0pHRiwOAURP5OFZVMy3qWDVi4waCQYSx5
-	 uSGPZPrYl7gsA==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1726654521;
+	bh=ngZrcRDlM5CWBR80rje1RK9nTLokmmBXmMbbHkuM5P0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=g7h4R+JPJFvG4wo1gZY7K4fOAOoEr3AxH6k0hlsP107hvZuoX1yw40g28rTlRMLAN
+	 WrMwDCBsKpC6YBCS6pdHcSDj2039i+wY8tlhox3wumHROkpM2QIFLnJA6F3ubh6ofZ
+	 AOX/MIr13YAAHxA0O/LKMCr1HDR3K5wHnVuQcgVWe3exr60QqdcGuTl55e+I9wwg1I
+	 VK0e25qb0YzPKbNRZRxXsMKSx/IP2D1pvgCH3l8vW9AaTOIMT0Qdvo77Hkyu0kpY6M
+	 fwx9hxH0scgNWr+4weo+1aFK8+DLQ1sk+cdUpeFmy6wPeTKNvZ/90DvMDr31VZXm5y
+	 HyJgXpMIkZqpw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 99D4817E10D2;
-	Wed, 18 Sep 2024 12:06:33 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: linux-mediatek@lists.infradead.org
-Cc: matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH v1 3/3] soc: mediatek: mtk-cmdq: Move cmdq_instruction init to declaration
-Date: Wed, 18 Sep 2024 12:06:20 +0200
-Message-ID: <20240918100620.103536-4-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20240918100620.103536-1-angelogioacchino.delregno@collabora.com>
-References: <20240918100620.103536-1-angelogioacchino.delregno@collabora.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B497917E10AE;
+	Wed, 18 Sep 2024 12:15:20 +0200 (CEST)
+Message-ID: <92a8d48f-e109-461b-bb6a-29da98a444ad@collabora.com>
+Date: Wed, 18 Sep 2024 12:15:20 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3] drm/mediatek: ovl: Add fmt_convert function pointer to
+ driver data
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Alper Nebi Yasak <alpernebiyasak@gmail.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Shawn Sung <shawn.sung@mediatek.com>, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Singo Chang
+ <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20240917164434.17794-1-jason-jh.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240917164434.17794-1-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240918_030636_201115_BCD6BBBE 
-X-CRM114-Status: GOOD (  14.26  )
+X-CRM114-CacheID: sfid-20240918_031523_040437_3714249F 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,395 +80,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Move, where possible, the initialization of struct cmdq_instruction
-variables to their declaration to compress the code.
+Il 17/09/24 18:44, Jason-JH.Lin ha scritto:
+> OVL_CON_CLRFMT_MAN is a configuration for extending color format
+> settings of DISP_REG_OVL_CON(n).
+> It will change some of the original color format settings.
+> 
+> Take the settings of (3 << 12) for example.
+> - If OVL_CON_CLRFMT_MAN = 0 means OVL_CON_CLRFMT_RGBA8888.
+> - If OVL_CON_CLRFMT_MAN = 1 means OVL_CON_CLRFMT_PARGB8888.
+> 
+> Since OVL_CON_CLRFMT_MAN is not supported on previous SoCs,
+> It breaks the OVL color format setting of MT8173.
+> 
+> Therefore, the fmt_convert function pointer is added to the driver data
+> and mtk_ovl_fmt_convert_with_blend is implemented for MT8192 and MT8195
+> that support OVL_CON_CLRFMT_MAN, and mtk_ovl_fmt_convert is implemented
+> for other SoCs that do not support it to solve the degradation problem.
+> 
+> Fixes: a3f7f7ef4bfe ("drm/mediatek: Support "Pre-multiplied" blending in OVL")
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+> Tested-by: Alper Nebi Yasak <alpernebiyasak@gmail.com>
 
-While at it, also change an instance of open-coded mask to use the
-GENMASK() macro instead, and instances of `ret = func(); return ret;`
-to the equivalent (but shorter) `return func()`.
+Awesome.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/soc/mediatek/mtk-cmdq-helper.c | 200 ++++++++++++-------------
- 1 file changed, 93 insertions(+), 107 deletions(-)
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-index 4ffd1a35df87..0b274b0fb44f 100644
---- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-+++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-@@ -191,13 +191,12 @@ static int cmdq_pkt_mask(struct cmdq_pkt *pkt, u32 mask)
- 
- int cmdq_pkt_write(struct cmdq_pkt *pkt, u8 subsys, u16 offset, u32 value)
- {
--	struct cmdq_instruction inst;
--
--	inst.op = CMDQ_CODE_WRITE;
--	inst.value = value;
--	inst.offset = offset;
--	inst.subsys = subsys;
--
-+	struct cmdq_instruction inst = {
-+		.op = CMDQ_CODE_WRITE,
-+		.value = value,
-+		.offset = offset,
-+		.subsys = subsys
-+	};
- 	return cmdq_pkt_append_command(pkt, inst);
- }
- EXPORT_SYMBOL(cmdq_pkt_write);
-@@ -208,30 +207,27 @@ int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u8 subsys,
- 	u16 offset_mask = offset;
- 	int err;
- 
--	if (mask != 0xffffffff) {
-+	if (mask != GENMASK(31, 0)) {
- 		err = cmdq_pkt_mask(pkt, mask);
- 		if (err < 0)
- 			return err;
- 
- 		offset_mask |= CMDQ_WRITE_ENABLE_MASK;
- 	}
--	err = cmdq_pkt_write(pkt, subsys, offset_mask, value);
--
--	return err;
-+	return cmdq_pkt_write(pkt, subsys, offset_mask, value);
- }
- EXPORT_SYMBOL(cmdq_pkt_write_mask);
- 
- int cmdq_pkt_read_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx, u16 addr_low,
- 		    u16 reg_idx)
- {
--	struct cmdq_instruction inst = {};
--
--	inst.op = CMDQ_CODE_READ_S;
--	inst.dst_t = CMDQ_REG_TYPE;
--	inst.sop = high_addr_reg_idx;
--	inst.reg_dst = reg_idx;
--	inst.src_reg = addr_low;
--
-+	struct cmdq_instruction inst = {
-+		.op = CMDQ_CODE_READ_S,
-+		.dst_t = CMDQ_REG_TYPE,
-+		.sop = high_addr_reg_idx,
-+		.reg_dst = reg_idx,
-+		.src_reg = addr_low
-+	};
- 	return cmdq_pkt_append_command(pkt, inst);
- }
- EXPORT_SYMBOL(cmdq_pkt_read_s);
-@@ -239,14 +235,14 @@ EXPORT_SYMBOL(cmdq_pkt_read_s);
- int cmdq_pkt_write_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
- 		     u16 addr_low, u16 src_reg_idx)
- {
--	struct cmdq_instruction inst = {};
--
--	inst.op = CMDQ_CODE_WRITE_S;
--	inst.src_t = CMDQ_REG_TYPE;
--	inst.sop = high_addr_reg_idx;
--	inst.offset = addr_low;
--	inst.src_reg = src_reg_idx;
--
-+	struct cmdq_instruction inst = {
-+		.op = CMDQ_CODE_WRITE_S,
-+		.mask = 0,
-+		.src_t = CMDQ_REG_TYPE,
-+		.sop = high_addr_reg_idx,
-+		.offset = addr_low,
-+		.src_reg = src_reg_idx
-+	};
- 	return cmdq_pkt_append_command(pkt, inst);
- }
- EXPORT_SYMBOL(cmdq_pkt_write_s);
-@@ -254,20 +250,19 @@ EXPORT_SYMBOL(cmdq_pkt_write_s);
- int cmdq_pkt_write_s_mask(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
- 			  u16 addr_low, u16 src_reg_idx, u32 mask)
- {
--	struct cmdq_instruction inst = {};
-+	struct cmdq_instruction inst = {
-+		.op = CMDQ_CODE_WRITE_S_MASK,
-+		.src_t = CMDQ_REG_TYPE,
-+		.sop = high_addr_reg_idx,
-+		.offset = addr_low,
-+		.src_reg = src_reg_idx,
-+	};
- 	int err;
- 
- 	err = cmdq_pkt_mask(pkt, mask);
- 	if (err < 0)
- 		return err;
- 
--	inst.mask = 0;
--	inst.op = CMDQ_CODE_WRITE_S_MASK;
--	inst.src_t = CMDQ_REG_TYPE;
--	inst.sop = high_addr_reg_idx;
--	inst.offset = addr_low;
--	inst.src_reg = src_reg_idx;
--
- 	return cmdq_pkt_append_command(pkt, inst);
- }
- EXPORT_SYMBOL(cmdq_pkt_write_s_mask);
-@@ -275,13 +270,12 @@ EXPORT_SYMBOL(cmdq_pkt_write_s_mask);
- int cmdq_pkt_write_s_value(struct cmdq_pkt *pkt, u8 high_addr_reg_idx,
- 			   u16 addr_low, u32 value)
- {
--	struct cmdq_instruction inst = {};
--
--	inst.op = CMDQ_CODE_WRITE_S;
--	inst.sop = high_addr_reg_idx;
--	inst.offset = addr_low;
--	inst.value = value;
--
-+	struct cmdq_instruction inst = {
-+		.op = CMDQ_CODE_WRITE_S,
-+		.sop = high_addr_reg_idx,
-+		.offset = addr_low,
-+		.value = value
-+	};
- 	return cmdq_pkt_append_command(pkt, inst);
- }
- EXPORT_SYMBOL(cmdq_pkt_write_s_value);
-@@ -289,18 +283,18 @@ EXPORT_SYMBOL(cmdq_pkt_write_s_value);
- int cmdq_pkt_write_s_mask_value(struct cmdq_pkt *pkt, u8 high_addr_reg_idx,
- 				u16 addr_low, u32 value, u32 mask)
- {
--	struct cmdq_instruction inst = {};
-+	struct cmdq_instruction inst = {
-+		.op = CMDQ_CODE_WRITE_S_MASK,
-+		.sop = high_addr_reg_idx,
-+		.offset = addr_low,
-+		.value = value
-+	};
- 	int err;
- 
- 	err = cmdq_pkt_mask(pkt, mask);
- 	if (err < 0)
- 		return err;
- 
--	inst.op = CMDQ_CODE_WRITE_S_MASK;
--	inst.sop = high_addr_reg_idx;
--	inst.offset = addr_low;
--	inst.value = value;
--
- 	return cmdq_pkt_append_command(pkt, inst);
- }
- EXPORT_SYMBOL(cmdq_pkt_write_s_mask_value);
-@@ -333,61 +327,61 @@ EXPORT_SYMBOL(cmdq_pkt_mem_move);
- 
- int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear)
- {
--	struct cmdq_instruction inst = { {0} };
- 	u32 clear_option = clear ? CMDQ_WFE_UPDATE : 0;
-+	struct cmdq_instruction inst = {
-+		.op = CMDQ_CODE_WFE,
-+		.value = CMDQ_WFE_OPTION | clear_option,
-+		.event = event
-+	};
- 
- 	if (unlikely(event >= CMDQ_MAX_EVENT))
- 		return -EINVAL;
- 
--	inst.op = CMDQ_CODE_WFE;
--	inst.value = CMDQ_WFE_OPTION | clear_option;
--	inst.event = event;
--
- 	return cmdq_pkt_append_command(pkt, inst);
- }
- EXPORT_SYMBOL(cmdq_pkt_wfe);
- 
- int cmdq_pkt_acquire_event(struct cmdq_pkt *pkt, u16 event)
- {
--	struct cmdq_instruction inst = {};
-+	struct cmdq_instruction inst = {
-+		.op = CMDQ_CODE_WFE,
-+		.value = CMDQ_WFE_UPDATE | CMDQ_WFE_UPDATE_VALUE | CMDQ_WFE_WAIT,
-+		.event = event
-+	};
- 
- 	if (unlikely(event >= CMDQ_MAX_EVENT))
- 		return -EINVAL;
- 
--	inst.op = CMDQ_CODE_WFE;
--	inst.value = CMDQ_WFE_UPDATE | CMDQ_WFE_UPDATE_VALUE | CMDQ_WFE_WAIT;
--	inst.event = event;
--
- 	return cmdq_pkt_append_command(pkt, inst);
- }
- EXPORT_SYMBOL(cmdq_pkt_acquire_event);
- 
- int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u16 event)
- {
--	struct cmdq_instruction inst = { {0} };
-+	struct cmdq_instruction inst = {
-+		.op = CMDQ_CODE_WFE,
-+		.value = CMDQ_WFE_UPDATE,
-+		.event = event
-+	};
- 
- 	if (unlikely(event >= CMDQ_MAX_EVENT))
- 		return -EINVAL;
- 
--	inst.op = CMDQ_CODE_WFE;
--	inst.value = CMDQ_WFE_UPDATE;
--	inst.event = event;
--
- 	return cmdq_pkt_append_command(pkt, inst);
- }
- EXPORT_SYMBOL(cmdq_pkt_clear_event);
- 
- int cmdq_pkt_set_event(struct cmdq_pkt *pkt, u16 event)
- {
--	struct cmdq_instruction inst = {};
-+	struct cmdq_instruction inst = {
-+		.op = CMDQ_CODE_WFE,
-+		.value = CMDQ_WFE_UPDATE | CMDQ_WFE_UPDATE_VALUE,
-+		.event = event
-+	};
- 
- 	if (unlikely(event >= CMDQ_MAX_EVENT))
- 		return -EINVAL;
- 
--	inst.op = CMDQ_CODE_WFE;
--	inst.value = CMDQ_WFE_UPDATE | CMDQ_WFE_UPDATE_VALUE;
--	inst.event = event;
--
- 	return cmdq_pkt_append_command(pkt, inst);
- }
- EXPORT_SYMBOL(cmdq_pkt_set_event);
-@@ -395,16 +389,13 @@ EXPORT_SYMBOL(cmdq_pkt_set_event);
- int cmdq_pkt_poll(struct cmdq_pkt *pkt, u8 subsys,
- 		  u16 offset, u32 value)
- {
--	struct cmdq_instruction inst = { {0} };
--	int err;
--
--	inst.op = CMDQ_CODE_POLL;
--	inst.value = value;
--	inst.offset = offset;
--	inst.subsys = subsys;
--	err = cmdq_pkt_append_command(pkt, inst);
--
--	return err;
-+	struct cmdq_instruction inst = {
-+		.op = CMDQ_CODE_POLL,
-+		.value = value,
-+		.offset = offset,
-+		.subsys = subsys
-+	};
-+	return cmdq_pkt_append_command(pkt, inst);
- }
- EXPORT_SYMBOL(cmdq_pkt_poll);
- 
-@@ -418,9 +409,7 @@ int cmdq_pkt_poll_mask(struct cmdq_pkt *pkt, u8 subsys,
- 		return err;
- 
- 	offset = offset | CMDQ_POLL_ENABLE_MASK;
--	err = cmdq_pkt_poll(pkt, subsys, offset, value);
--
--	return err;
-+	return cmdq_pkt_poll(pkt, subsys, offset, value);
- }
- EXPORT_SYMBOL(cmdq_pkt_poll_mask);
- 
-@@ -474,11 +463,12 @@ int cmdq_pkt_logic_command(struct cmdq_pkt *pkt, u16 result_reg_idx,
- 			   enum cmdq_logic_op s_op,
- 			   struct cmdq_operand *right_operand)
- {
--	struct cmdq_instruction inst = { {0} };
-+	struct cmdq_instruction inst;
- 
- 	if (unlikely(!left_operand || !right_operand || s_op >= CMDQ_LOGIC_MAX))
- 		return -EINVAL;
- 
-+	inst.value = 0;
- 	inst.op = CMDQ_CODE_LOGIC;
- 	inst.dst_t = CMDQ_REG_TYPE;
- 	inst.src_t = cmdq_operand_get_type(left_operand);
-@@ -494,43 +484,43 @@ EXPORT_SYMBOL(cmdq_pkt_logic_command);
- 
- int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value)
- {
--	struct cmdq_instruction inst = {};
--
--	inst.op = CMDQ_CODE_LOGIC;
--	inst.dst_t = CMDQ_REG_TYPE;
--	inst.reg_dst = reg_idx;
--	inst.value = value;
-+	struct cmdq_instruction inst = {
-+		.op = CMDQ_CODE_LOGIC,
-+		.dst_t = CMDQ_REG_TYPE,
-+		.reg_dst = reg_idx,
-+		.value = value
-+	};
- 	return cmdq_pkt_append_command(pkt, inst);
- }
- EXPORT_SYMBOL(cmdq_pkt_assign);
- 
- int cmdq_pkt_jump_abs(struct cmdq_pkt *pkt, dma_addr_t addr, u8 shift_pa)
- {
--	struct cmdq_instruction inst = {};
--
--	inst.op = CMDQ_CODE_JUMP;
--	inst.offset = CMDQ_JUMP_ABSOLUTE;
--	inst.value = addr >> shift_pa;
-+	struct cmdq_instruction inst = {
-+		.op = CMDQ_CODE_JUMP,
-+		.offset = CMDQ_JUMP_ABSOLUTE,
-+		.value = addr >> shift_pa
-+	};
- 	return cmdq_pkt_append_command(pkt, inst);
- }
- EXPORT_SYMBOL(cmdq_pkt_jump_abs);
- 
- int cmdq_pkt_jump_rel(struct cmdq_pkt *pkt, s32 offset, u8 shift_pa)
- {
--	struct cmdq_instruction inst = { {0} };
--
--	inst.op = CMDQ_CODE_JUMP;
--	inst.value = (u32)offset >> shift_pa;
-+	struct cmdq_instruction inst = {
-+		.op = CMDQ_CODE_JUMP,
-+		.value = (u32)offset >> shift_pa
-+	};
- 	return cmdq_pkt_append_command(pkt, inst);
- }
- EXPORT_SYMBOL(cmdq_pkt_jump_rel);
- 
- int cmdq_pkt_eoc(struct cmdq_pkt *pkt)
- {
--	struct cmdq_instruction inst = { {0} };
--
--	inst.op = CMDQ_CODE_EOC;
--	inst.value = CMDQ_EOC_IRQ_EN;
-+	struct cmdq_instruction inst = {
-+		.op = CMDQ_CODE_EOC,
-+		.value = CMDQ_EOC_IRQ_EN
-+	};
- 	return cmdq_pkt_append_command(pkt, inst);
- }
- EXPORT_SYMBOL(cmdq_pkt_eoc);
-@@ -541,9 +531,7 @@ int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
- 	int err;
- 
- 	/* insert EOC and generate IRQ for each command iteration */
--	inst.op = CMDQ_CODE_EOC;
--	inst.value = CMDQ_EOC_IRQ_EN;
--	err = cmdq_pkt_append_command(pkt, inst);
-+	err = cmdq_pkt_eoc(pkt);
- 	if (err < 0)
- 		return err;
- 
-@@ -551,9 +539,7 @@ int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
- 	inst.op = CMDQ_CODE_JUMP;
- 	inst.value = CMDQ_JUMP_PASS >>
- 		cmdq_get_shift_pa(((struct cmdq_client *)pkt->cl)->chan);
--	err = cmdq_pkt_append_command(pkt, inst);
--
--	return err;
-+	return cmdq_pkt_append_command(pkt, inst);
- }
- EXPORT_SYMBOL(cmdq_pkt_finalize);
- 
--- 
-2.46.0
 
 
