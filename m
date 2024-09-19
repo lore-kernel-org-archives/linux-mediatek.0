@@ -4,103 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8C35CF3962
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Sep 2024 18:49:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7837FCF3971
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Sep 2024 21:06:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W4NpPLc14tJ/Fx1/86QfUQVW/u1BXw8j2afYzA93uxk=; b=Ag0ieKeAzVWv3SqZmJT1kdoMt6
-	/AZ+XgP9rpQB+pMHzu2Xh93pjDHqYc0+C0pCIyJiTCLQp1Pq875OLsjxVCp1Kr2DFG1/CP0jOQZMz
-	3XYv1SogCtWy9P7U1n8nzNbuW2GTmoqxBYRN9ltVh+pekg2950Z1erF4oAbDXGvYzm1Z9sxeLZhkd
-	J+YSaAHZp48h/ypOApF0fAv7bJ4XKr2+zm1pQORl+qmGORYkEtFT0zE1S2FkG7LEcTvqzUB0yHDWZ
-	VaPx8OI9XxvBhKmQaEvABVc/VY4aadeCuoTGEfVf+nQSsLAWdl1dBjLyaxkIbGBUGX3yDwWmesQpd
-	0nWgdqsA==;
+	bh=Pxg58DPzXB9acbZyYMxUEK4m0+lTrXC3I0bp/sxqe7g=; b=VLn8W3VJ8Zs8OQn5zak6uPXw60
+	a5sWe2wwTv+1/a5Ay+3tT4cMCcHSrFK19RUlhdle+7fx83Gp+aaCZlDeH6CvwO3hnCfl6QJuI3PDd
+	K7REk7NVjyIT919k2ISeUkFh+UDuHzscFrX2G3RiNSO2pQqdEoeFCWgxteMzBQBrUdQ8qQy5CWVHB
+	fD2JxV+x5yPSENu5agPwZCYqj8Jw+0Qu0e00eKWBCmlPlE2Souvq6pGs1FpIdcgval+c6LPwWodUa
+	4Cg2SdTeNWnbXPwBsBk9gwfWyjq6UjNnHCZxpiyILPB1D16Q6Zyz0Xi7U10dgVQ9ccZ6ht0bxl9PE
+	hK42UxOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1srME1-0000000ArJ0-1xAm;
-	Thu, 19 Sep 2024 18:49:57 +0000
-Received: from 009.lax.mailroute.net ([199.89.1.12])
+	id 1srOLm-0000000B0x6-1rur;
+	Thu, 19 Sep 2024 21:06:06 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1srMDy-0000000ArIE-0CRb
-	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Sep 2024 18:49:55 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 009.lax.mailroute.net (Postfix) with ESMTP id 4X8l1r4CGBzlgMVg;
-	Thu, 19 Sep 2024 18:49:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1726771778; x=1729363779; bh=W4NpPLc14tJ/Fx1/86QfUQVW
-	/u1BXw8j2afYzA93uxk=; b=hmfFxqyKHDBG8IlPa8uJvSA1zi5bkTIB6X/FnLIw
-	jblAt5xmpnmiJE8IvgigjJ5bXJlUH0/SFqDmyxT9Nr5oMbQg46tOP/5iy9LQBPef
-	kzdP0aqnadp9R+hECPuOL5nNaxM2RmAX5gD7vMXgEeKqFTbL+tfMs3quXpnVFmmM
-	0ueWAuOod6QbVMpZGyg3iiUjUxECqn2PwD2u2gbqzA/JFq4sQtC1UiCr+eoqn7Pz
-	ix8bDu9+FCWx1L918OxujiKJBtHkuW21wj7gKAcqu7BNbvaHxNfbX28tSUud/T8c
-	dpOXzMAaIi1H7VEgj82gAi4hi9t7EFOgxeomTDbxD0DnWQ==
-X-Virus-Scanned: by MailRoute
-Received: from 009.lax.mailroute.net ([127.0.0.1])
- by localhost (009.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id U8-ZFBmmmX41; Thu, 19 Sep 2024 18:49:38 +0000 (UTC)
-Received: from [100.66.154.22] (unknown [104.135.204.82])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 009.lax.mailroute.net (Postfix) with ESMTPSA id 4X8l1X2YGnzlgMVY;
-	Thu, 19 Sep 2024 18:49:36 +0000 (UTC)
-Message-ID: <beeec868-b4ac-4025-859b-35a828cd2f8e@acm.org>
-Date: Thu, 19 Sep 2024 11:49:35 -0700
+	id 1srOKd-0000000B0oB-0C8N;
+	Thu, 19 Sep 2024 21:04:56 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id C32F2A4402D;
+	Thu, 19 Sep 2024 21:04:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A7DAEC4CEC4;
+	Thu, 19 Sep 2024 21:04:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1726779893;
+	bh=8rmdkhy7mle9GnzKV59Fez0ZiYJ5ItopN5knD5heul0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=tMIiZugOhjzqgyUpW7HkIMb94kB3G/IoEOWJvEfIibHaCL2W6lxj/6dAy50ww3Upd
+	 5BuV7yd7+xf0LnJlLA6shnOsl4ybtmmnw4qRRAcxcVdTlQQO8CjzRoHuaAPl0cnLci
+	 KyO838TcaL8c8mfnqC3Fcz2LQ0BjvUfx2U9ux0XAeez0raNOeRSjsGu9186hqHSozD
+	 ekcF76hWo/vt3sl8iQ7tBHFkSTET2nmVrmZCljeeCkxJkkq5cSQY3mp+XWQ6e0oYMf
+	 Qo62AxytxEW4fp+yzCDxcmUUB+Wme/iNSXIqef4vFQ/XRD6jqsRg+/Yl4tOtEC8q6k
+	 c8Ol4+tfmgDUA==
+Message-ID: <0e8c7a7a-0e2a-42ec-adbc-b29f6a514517@kernel.org>
+Date: Thu, 19 Sep 2024 23:04:43 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/2] ufs: core: requeue aborted request
-To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
- "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "avri.altman@wdc.com" <avri.altman@wdc.com>,
- "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>
-Cc: "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
- =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
- =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
- =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
- "quic_nguyenb@quicinc.com" <quic_nguyenb@quicinc.com>,
- wsd_upstream <wsd_upstream@mediatek.com>,
- =?UTF-8?B?RWQgVHNhaSAo6JSh5a6X6LuSKQ==?= <Ed.Tsai@mediatek.com>,
- "stable@vger.kernel.org" <stable@vger.kernel.org>,
- =?UTF-8?B?TGluIEd1aSAo5qGC5p6XKQ==?= <Lin.Gui@mediatek.com>,
- =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
- =?UTF-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>,
- =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
- <Chaotian.Jing@mediatek.com>, =?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?=
- <Powen.Kao@mediatek.com>, =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
- <Naomi.Chu@mediatek.com>, =?UTF-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
- <Qilin.Tan@mediatek.com>
-References: <20240910073035.25974-1-peter.wang@mediatek.com>
- <20240910073035.25974-3-peter.wang@mediatek.com>
- <e42abf07-ba6b-4301-8717-8d5b01d56640@acm.org>
- <04e392c00986ac798e881dcd347ff5045cf61708.camel@mediatek.com>
- <858c4b6b-fcbc-4d51-8641-051aeda387c5@acm.org>
- <524e9da9196cc0acf497ff87eba3a8043b780332.camel@mediatek.com>
- <6203d7c9-b33c-4bf1-aca3-5fc8ba5636b9@acm.org>
- <6fc025d7ffb9d702a117381fb5da318b40a24246.camel@mediatek.com>
- <46d8be04-10db-4de1-8a59-6cd402bcecb1@acm.org>
- <61a1678cad16dcb15f1e215ff1c47476666f0ee8.camel@mediatek.com>
- <78c7fc74-81c2-40e4-b050-1d65dec96d0a@acm.org>
- <f350a1dee5a03347b5e88b9d7249223ce7b72c08.camel@mediatek.com>
+Subject: Re: [PATCH net 2/2] page_pool: fix IOMMU crash when driver has
+ already unbound
+To: Yunsheng Lin <linyunsheng@huawei.com>,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>
+Cc: davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com,
+ liuyonglong@huawei.com, fanghaiqing@huawei.com, zhangkun09@huawei.com,
+ Robin Murphy <robin.murphy@arm.com>,
+ Alexander Duyck <alexander.duyck@gmail.com>, IOMMU <iommu@lists.linux.dev>,
+ Wei Fang <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>,
+ Clark Wang <xiaoning.wang@nxp.com>, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ John Fastabend <john.fastabend@gmail.com>, Saeed Mahameed
+ <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>,
+ Tariq Toukan <tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Andrew Morton <akpm@linux-foundation.org>, imx@lists.linux.dev,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
+ linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-mm@kvack.org
+References: <20240918111826.863596-1-linyunsheng@huawei.com>
+ <20240918111826.863596-3-linyunsheng@huawei.com>
+ <CAC_iWjK=G7Oo5=pN2QunhasgDC6NyC1L+96jigX7u9ad+PbYng@mail.gmail.com>
+ <894a3c2c-22f9-45b9-a82b-de7320066b42@kernel.org>
+ <cdfecd37-31d7-42d2-a8d8-92008285b42e@huawei.com>
 Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <f350a1dee5a03347b5e88b9d7249223ce7b72c08.camel@mediatek.com>
+From: Jesper Dangaard Brouer <hawk@kernel.org>
+In-Reply-To: <cdfecd37-31d7-42d2-a8d8-92008285b42e@huawei.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240919_114954_131949_59451051 
-X-CRM114-Status: GOOD (  24.68  )
+X-CRM114-CacheID: sfid-20240919_140455_235034_2DBA62A9 
+X-CRM114-Status: GOOD (  19.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,169 +99,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/19/24 5:16 AM, Peter Wang (=E7=8E=8B=E4=BF=A1=E5=8F=8B) wrote:
-> The four case flows for abort are as follows:
-> ----------------------------------------------------------------
->=20
-> Case1: DBR ufshcd_abort
 
-Please follow the terminology from the UFSHCI 4.0 standard and use the
-word "legacy" instead of "DBR".
 
-> In this case, you can see that ufshcd_release_scsi_cmd will
-> definitely be called.
->=20
-> ufshcd_abort()
->    ufshcd_try_to_abort_task()		// It should trigger an
-> interrupt, but the tensor might not
->    get outstanding_lock
->    clear outstanding_reqs tag
->    ufshcd_release_scsi_cmd()
->    release outstanding_lock
->=20
-> ufshcd_intr()
->    ufshcd_sl_intr()
->      ufshcd_transfer_req_compl()
->        ufshcd_poll()
->          get outstanding_lock
->          clear outstanding_reqs tag
->          release outstanding_lock		=09
->          __ufshcd_transfer_req_compl()
->            ufshcd_compl_one_cqe()
->            cmd->result =3D DID_REQUEUE	// mediatek may need quirk
-> change DID_ABORT to DID_REQUEUE
->            ufshcd_release_scsi_cmd()
->            scsi_done();
->=20
-> In most cases, ufshcd_intr will not reach scsi_done because the
-> outstanding_reqs tag is cleared by the original thread.
-> Therefore, whether there is an interrupt or not doesn't affect
-> the result because the ISR will do nothing in most cases.
->=20
-> In a very low chance, the ISR will reach scsi_done and notify
-> SCSI to requeue, and the original thread will not
-> call ufshcd_release_scsi_cmd.
-> MediaTek may need to change DID_ABORT to DID_REQUEUE in this
-> situation, or perhaps not handle this ISR at all.
+On 19/09/2024 13.15, Yunsheng Lin wrote:
+> On 2024/9/19 17:42, Jesper Dangaard Brouer wrote:
+>>
+>> On 18/09/2024 19.06, Ilias Apalodimas wrote:
+>>>> In order not to do the dma unmmapping after driver has already
+>>>> unbound and stall the unloading of the networking driver, add
+>>>> the pool->items array to record all the pages including the ones
+>>>> which are handed over to network stack, so the page_pool can
+>>>> do the dma unmmapping for those pages when page_pool_destroy()
+>>>> is called.
+>>>
+>>> So, I was thinking of a very similar idea. But what do you mean by
+>>> "all"? The pages that are still in caches (slow or fast) of the pool
+>>> will be unmapped during page_pool_destroy().
+>>
+>> I really dislike this idea of having to keep track of all outstanding pages.
+>>
+>> I liked Jakub's idea of keeping the netdev around for longer.
+>>
+>> This is all related to destroying the struct device that have points to
+>> the DMA engine, right?
+> 
+> Yes, the problem seems to be that when device_del() is called, there is
+> no guarantee hw behind the 'struct device ' will be usable even if we
+> call get_device() on it.
+> 
+>>
+>> Why don't we add an API that allow netdev to "give" struct device to
+>> page_pool.  And then the page_poll will take over when we can safely
+>> free the stuct device?
+> 
+> By 'allow netdev to "give" struct device to page_pool', does it mean
+> page_pool become the driver for the device?
+> If yes, it seems that is similar to jakub's idea, as both seems to stall
+> the calling of device_del() by not returning when the driver unloading.
 
-Please modify ufshcd_compl_one_cqe() such that it ignores commands
-with status OCS_ABORTED. This will make the UFSHCI driver behave in
-the same way for all UFSHCI controllers, whether or not clearing a
-command triggers a completion interrupt.
+Yes, this is what I mean. (That is why I mentioned Jakub's idea).
 
-> ----------------------------------------------------------------
->=20
-> Case2: MCQ ufshcd_abort
->=20
-> In the case of MCQ ufshcd_abort, you can also see that
-> ufshcd_release_scsi_cmd will definitely be called too.
-> However, there seems to be a problem here, as
-> ufshcd_release_scsi_cmd might be called twice.
-> This is because cmd is not null in ufshcd_release_scsi_cmd,
-> which the previous version would set cmd to null.
-> Skipping OCS: ABORTED in ufshcd_compl_one_cqe indeed
-> can avoid this problem. This part needs further
-> consideration on how to handle it.
->=20
-> ufshcd_abort()
->    ufshcd_mcq_abort()
->      ufshcd_try_to_abort_task()	// will trigger ISR
->      ufshcd_release_scsi_cmd()
->=20
-> ufs_mtk_mcq_intr()
->    ufshcd_mcq_poll_cqe_lock()
->      ufshcd_mcq_process_cqe()
->        ufshcd_compl_one_cqe()
->          cmd->result =3D DID_ABORT
->          ufshcd_release_scsi_cmd() // will release twice
->          scsi_done()
 
-Do you agree that this case can be addressed with the
-ufshcd_compl_one_cqe() change proposed above?
-
-> ----------------------------------------------------------------
->=20
-> Case3: DBR ufshcd_err_handler
->=20
-> In the case of the DBR mode error handler, it's the same;
-> ufshcd_release_scsi_cmd will also be executed, and scsi_done
-> will definitely be used to notify SCSI to requeue.
->=20
-> ufshcd_err_handler()
->    ufshcd_abort_all()
->      ufshcd_abort_one()
->        ufshcd_try_to_abort_task()	// It should trigger an
-> interrupt, but the tensor might not
->      ufshcd_complete_requests()
->        ufshcd_transfer_req_compl()
->          ufshcd_poll()
->            get outstanding_lock
->            clear outstanding_reqs tag
->            release outstanding_lock=09
->            __ufshcd_transfer_req_compl()
->              ufshcd_compl_one_cqe()
->                cmd->result =3D DID_REQUEUE // mediatek may need quirk
-> change DID_ABORT to DID_REQUEUE
->                ufshcd_release_scsi_cmd()
->                scsi_done()
->=20
-> ufshcd_intr()
->    ufshcd_sl_intr()
->      ufshcd_transfer_req_compl()
->        ufshcd_poll()
->          get outstanding_lock
->          clear outstanding_reqs tag
->          release outstanding_lock		=09
->          __ufshcd_transfer_req_compl()
->            ufshcd_compl_one_cqe()
->            cmd->result =3D DID_REQUEUE // mediatek may need quirk chang=
-e
-> DID_ABORT to DID_REQUEUE
->            ufshcd_release_scsi_cmd()
->            scsi_done();
->=20
-> At this time, the same actions are taken regardless of whether
-> there is an ISR, and with the protection of outstanding_lock,
-> only one thread will execute ufshcd_release_scsi_cmd and scsi_done.
-> ----------------------------------------------------------------
->=20
-> Case4: MCQ ufshcd_err_handler
->=20
-> It's the same with MCQ mode; there is protection from the cqe lock,
-> so only one thread will execute. What my patch 2 aims to do is to
-> change DID_ABORT to DID_REQUEUE in this situation.
->=20
-> ufshcd_err_handler()
->    ufshcd_abort_all()
->      ufshcd_abort_one()
->        ufshcd_try_to_abort_task()	// will trigger irq thread
->      ufshcd_complete_requests()
->        ufshcd_mcq_compl_pending_transfer()
->          ufshcd_mcq_poll_cqe_lock()
->            ufshcd_mcq_process_cqe()
->              ufshcd_compl_one_cqe()
->                cmd->result =3D DID_ABORT // should change to DID_REQUEU=
-E
->                ufshcd_release_scsi_cmd()
->                scsi_done()
->=20
-> ufs_mtk_mcq_intr()
->    ufshcd_mcq_poll_cqe_lock()
->      ufshcd_mcq_process_cqe()
->        ufshcd_compl_one_cqe()
->          cmd->result =3D DID_ABORT  // should change to DID_REQUEUE
->          ufshcd_release_scsi_cmd()
->          scsi_done()
-
-For legacy and MCQ mode, I prefer the following behavior for
-ufshcd_abort_all():
-* ufshcd_compl_one_cqe() ignores commands with status OCS_ABORTED.
-* ufshcd_release_scsi_cmd() is called either by ufshcd_abort_one() or
-   by ufshcd_abort_all().
-
-Do you agree with making the changes proposed above?
-
-Thank you,
-
-Bart.
+> If no, it seems that the problem is still existed when the driver for
+> the device has unbound after device_del() is called.
 
