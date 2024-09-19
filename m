@@ -4,81 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9DA5CDD578
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Sep 2024 13:26:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 753E0CF3941
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Sep 2024 13:55:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CxqgBeByiqEGN7btCj/bU6+qAg4akgJ/31iLPDvaLhw=; b=js1NPi7nxzy8kvKkQJxj3TF+i1
-	2dAR5atbRkmeJeKV86Z12CpnbmkbUE8svigZHk296QrqmRpX+RyOpkSeF7F8Q1VERD3+5VfbX+fc5
-	11i1ZRbeivAJ9Rw/g3QXCAhv5grBiSGMRSlp7A0Zo8AGDt3dffjQO4Uoi++PkGrO0UP8YWS7jEnD/
-	00t4wHVXHFtUTqQhfxfoESq3BRGnK/7TkAzQumsHGAakFGzsBTsao4zhUvUmLsSCnQEOwUol2dzvP
-	Gppe5l3Sn6BoHui8r/5a/NQJGjGahyv8Kjvyn1QJd9+76PMeOssfOexoSpYFJuWUzYpJwDhDxvUOL
-	A2WBhcdA==;
+	bh=v5JzKRqFaPOEb4Gzm+JhyGuBGDDhLvBoijaHqdUNzjI=; b=ycfXHnc7p+VtXTIj/I2+LxKVK1
+	CgZ3PpmjZGa1zSM2+m5jufO7RQklopdHuh5P9R3Qd5ZD+9YGa8X/FHH64alvWLhiNK0Z8SFKDz6t9
+	5rMXGfsn9nakc0sccTqubCC77W2y7nYCGub56okwKBLjq5blrC+1IchYgB1td6zYTEZdUhn8Wjmtz
+	Cp+5V5UZ56k8PQIyE6ChE3YBnk7fIU6VHPgmuqWZRjyez+KjtOsyzvtJb5IwaHV7N2uwrv2+D+jCT
+	9vXZAOJr0+JxyqQAgRgxgKkO6gVADpGZOj8swL06YvSouQrokNhh16hkyeF8vFo0cm1T+I7iDiK0v
+	FIoREnYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1srHAz-0000000ALFU-1n4d;
-	Thu, 19 Sep 2024 13:26:29 +0000
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+	id 1srHdU-0000000AOGF-0VI5;
+	Thu, 19 Sep 2024 13:55:56 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1srHAw-0000000ALEp-1ctE
-	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Sep 2024 13:26:27 +0000
-Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-5c24ebaa427so3009430a12.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 19 Sep 2024 06:26:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1726752384; x=1727357184; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=CxqgBeByiqEGN7btCj/bU6+qAg4akgJ/31iLPDvaLhw=;
-        b=O/0YJ6IOSj0xSFoYintjqNijxn2uiqAAcLd0XIk9kHookK16vci07Zhm0LU5mpz3iW
-         ncBiLfu0MpU2EHpBPy4eHKzIJtrRui5PzGC6ECO7Ye/WF87B9OPekZA9TeWymRe2sh88
-         dGI9E2va8NUSX//rq4ki4OdcspRPEZ13fAxsn+dLMEC/gi1ly0Uvp01GlXJ7Ql1e0WSk
-         FaZXrj8jQWCA8jpuX1i39jRxcyBtXzRn4he3tThI0lDFDv/YIKRVHjnOuhPjN3uQ4/z4
-         cxii/1hLBUSC0fu5VNPuRLz/GJwJcvWiTkLj7YW8rootoi2t8YZlI/mvMiqyAA3rH3+y
-         /cQg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726752384; x=1727357184;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=CxqgBeByiqEGN7btCj/bU6+qAg4akgJ/31iLPDvaLhw=;
-        b=bLvd1Rgd9XrMVH8C0y/fFrjYUlRLDR9qFKWp/+aeUOubD4ftoEyJK8aGHH5zEp6rBT
-         JgcN+kbcHCAoVYIi+7RyBXl9n1SLD0t3e2+01bFXqDj0u7xIeHtPoKVAK5YpX7zPLAmJ
-         7L/pf9mDkI62Bc/JOw9AOj1nOfNlMT84L+8RAP07gZB32BHNGTUBWfYqNN4Kg+pcPLzu
-         J8TGqqjwHwOad5hFjQWh7h/XpXzvYVIZmT4Xy6Ms1tMnNJxOsFZZyfv937yDt6NQ6H7d
-         qfjryw1DFkMzfOmlh7DHFZVY9kMTIIO2Fay7FxvYYcU2qvz8ko2+XmqT7ypqUBBtj3rW
-         a4hA==
-X-Gm-Message-State: AOJu0YzyCopN6CBq+4xvhjZ0uE9m4hlOtB/SawvIyWTjBRjlRaIZXvIo
-	SSThVMliM36oqXGfMOClM/VL95ILIuRblibmFimXU6YNzypqqfj1oOhnWbClst2uxRMor7N43dB
-	+
-X-Google-Smtp-Source: AGHT+IFLarCnOacvRt1Pc8xDIhYuWcNW+sbuUln+ZBlKC/vL9ZzdFB4p9yXoeNYHkl4c9QklvQ4Zlg==
-X-Received: by 2002:a17:907:94d4:b0:a90:126f:bcbf with SMTP id a640c23a62f3a-a90c1c77f83mr274686966b.10.1726752384267;
-        Thu, 19 Sep 2024 06:26:24 -0700 (PDT)
-Received: from localhost ([2a02:8071:b783:6940:3d88:df0a:afe5:8794])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a90612e7c72sm720216966b.187.2024.09.19.06.26.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Sep 2024 06:26:23 -0700 (PDT)
-Date: Thu, 19 Sep 2024 15:26:21 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, 
-	gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH] firmware: mtk-adsp-ipc: Switch to using dev_err_probe()
-Message-ID: <4426qubj6oy3kwrxtzjyc5imhxhmgapjibbv55gig22pxfrjrm@qhk7larn3qnk>
-References: <20240919120208.152987-1-angelogioacchino.delregno@collabora.com>
+	id 1srHa9-0000000ANkE-1yOK;
+	Thu, 19 Sep 2024 13:52:30 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 790015C308B;
+	Thu, 19 Sep 2024 13:52:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F0C5DC4CEC4;
+	Thu, 19 Sep 2024 13:52:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1726753947;
+	bh=gP3LMpD1WBhkOoq19t4rJZisO7I+afdMCW4t9vEvs8w=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=W3XjLe0DEBS2HPrqWy5Mjnqhu1yn31qz7AFiKDyvc4ERag2NTwERrtcWq8+AC+DH5
+	 eNy1OiSIK9ROxY4UlGdm8dpshHvR/DLpT/PnQ7j9D3jEMTnXbWf1S+c9S542D9+E3o
+	 dHZ7a6mEceYIPS18M00IEZMpDOW60bgatoJOSs4K7FUKgTsTemUY6w8OcK0ou8MWNQ
+	 z3m37YI+r063wKP5BYrfaPFIZXH7Gn89zUdhWDftlg1d6B9Uw9OlFV2ihaIovoj/iq
+	 T7SvvdlTnVG7RNKfi2c8w5Ia0wfornwZHYNTrotTXKuDKy5Z3tYqhOMYwDzsS0v1+4
+	 yglWWSzSYh1Dg==
+Date: Thu, 19 Sep 2024 14:52:22 +0100
+From: Simon Horman <horms@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	upstream@airoha.com, Sayantan Nandy <sayantan.nandy@airoha.com>
+Subject: Re: [PATCH net] net: airoha: fix PSE memory configuration in
+ airoha_fe_pse_ports_init()
+Message-ID: <20240919135222.GC1571683@kernel.org>
+References: <20240918-airoha-eth-pse-fix-v1-1-7b61f26cd2fd@kernel.org>
+ <20240919074210.GE1044577@kernel.org>
+ <Zuwf57d09WBYKtSS@lore-desk>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="x5s3i6p4o36fjocm"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240919120208.152987-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <Zuwf57d09WBYKtSS@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240919_062626_452248_267432F7 
-X-CRM114-Status: GOOD (  19.57  )
+X-CRM114-CacheID: sfid-20240919_065229_581912_C000054B 
+X-CRM114-Status: GOOD (  24.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,66 +81,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Sep 19, 2024 at 02:58:15PM +0200, Lorenzo Bianconi wrote:
+> > On Wed, Sep 18, 2024 at 04:37:30PM +0200, Lorenzo Bianconi wrote:
+> > > Align PSE memory configuration to vendor SDK. In particular, increase
+> > > initial value of PSE reserved memory in airoha_fe_pse_ports_init()
+> > > routine by the value used for the second Packet Processor Engine (PPE2)
+> > > and do not overwrite the default value.
+> > > Moreover, store the initial value for PSE reserved memory in orig_val
+> > > before running airoha_fe_set_pse_queue_rsv_pages() in
+> > > airoha_fe_set_pse_oq_rsv routine.
+> > 
+> > Hi Lorenzo,
+> 
+> Hi Simon,
 
---x5s3i6p4o36fjocm
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Hi Lorenzo,
 
-Hello
+> > 
+> > This patch seems to be addressing two issues, perhaps it would be best
+> > to split it into two patches?
+> 
+> ack, I will do.
 
-On Thu, Sep 19, 2024 at 02:02:08PM +0200, AngeloGioacchino Del Regno wrote:
-> There is an error path that checks whether the return value is
-> -EPROBE_DEFER to decide whether to print the error message: that
-> is exactly open-coding dev_err_probe(), so, switch to that.
->=20
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> ---
->  drivers/firmware/mtk-adsp-ipc.c | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
->=20
-> diff --git a/drivers/firmware/mtk-adsp-ipc.c b/drivers/firmware/mtk-adsp-=
-ipc.c
-> index a762302978de..fdb083f42ebf 100644
-> --- a/drivers/firmware/mtk-adsp-ipc.c
-> +++ b/drivers/firmware/mtk-adsp-ipc.c
-> @@ -95,10 +95,9 @@ static int mtk_adsp_ipc_probe(struct platform_device *=
-pdev)
->  		adsp_chan->idx =3D i;
->  		adsp_chan->ch =3D mbox_request_channel_byname(cl, adsp_mbox_ch_names[i=
-]);
->  		if (IS_ERR(adsp_chan->ch)) {
-> -			ret =3D PTR_ERR(adsp_chan->ch);
-> -			if (ret !=3D -EPROBE_DEFER)
-> -				dev_err(dev, "Failed to request mbox chan %s ret %d\n",
-> -					adsp_mbox_ch_names[i], ret);
-> +			ret =3D dev_err_probe(dev, PTR_ERR(adsp_chan->ch),
-> +					    "Failed to request mbox channel %s\n",
-> +					    adsp_mbox_ch_names[i]);
-> =20
+Thanks.
 
-Looks good to me:
+> > And as a fix (or fixes) I think it would be best to describe the
+> > problem, typically a user-visible bug, that is being addressed.
+> 
+> This is not a user-visible bug, do you think it is better to post it to
+> net-next (when it is open)?
 
-Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@baylibre.com>
+Yes, I think that would be best.
 
-Best regards
-Uwe
+If you do so please don't included any Fixes tags.
+Instead, if you want to refer to a patch, use the
+following syntax within the patch description.
+AFAIK, unlike Fixes tags, it may be line wrapped as appropriate.
 
---x5s3i6p4o36fjocm
-Content-Type: application/pgp-signature; name="signature.asc"
+commit 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
 
------BEGIN PGP SIGNATURE-----
+> 
+> Regards,
+> Lorenzo
+> 
+> > 
+> > > Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
+> > > Tested-by: Sayantan Nandy <sayantan.nandy@airoha.com>
+> > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > 
+> > ...
 
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmbsJnoACgkQj4D7WH0S
-/k6JyAgAs8EPVGdHwR2cB7KuBTWmMoG7vZXS/QNTBCOM2liWpNQWO3y8vgj+52UQ
-cRsevvScsmaqeEYiot0086YWIUKSQbdjN5s51QXWDI3Jys4jU/T1f67zoD7tY1Xi
-FtOzWIp28KYnKEYdQ44oAA18QCNAj1A61PUHyZEgcM1SMJKq5B71xq0c3rjz4MXW
-eDiIARnloVG3n2kZ96CM1e1OwfkaOChFG+1aQwZX5bU3NNJAjTXAuvNI0jqEIiOt
-doQTaQU2nTsDSMsySjzzZKUNv/eiaNGrfuFmThYrslPo3/dIRkUaxyIp4EP5lmBp
-iDa9Eph0rYL3PLm+lXexsm3J+bcmdg==
-=NQRs
------END PGP SIGNATURE-----
 
---x5s3i6p4o36fjocm--
 
