@@ -4,83 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B7C1CE8D64
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Sep 2024 09:42:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29CE0CE8D64
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Sep 2024 09:44:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=dDumzV+jL/bjpzSzdfVGLcrQ8rzaUr73VYrD39mPLZs=; b=h1qGaTzgngvAzvcGBg+EGAYqXj
-	x7cxCCP9qnAljZV6dY/lXmo2KcEbRc7DmDcIdOMeddtXU8aHLvrPG3dcbJ02a1axQl6C1cHRsVVTl
-	tzvSNgVw1H5s5VsmOJ566W5mzVa21669wLUjwjabzVCnwehMuevfLz4VKGYXFGc97wk7QM0ZqdMYI
-	UFbCFW9qvg2sOGvtKmDR6ZH5CVdwpVH+HOViGMhQIa3t9u2uPliWhHFHTahOO5CDbxgQBac63ZI+X
-	Qm0dGXoNRPZMrjB3BWNaeiITIBozAZT3oVAmtu+ahdy2tOsfUWq43Oukr5cwKk3SVpCaT3NRmgLqP
-	p/oZII1g==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Eg0aw/JsSDa801QveFhK5iGJwVmtnC/bbMMJdc1DKK4=; b=BSkFUFecvlCRuuHCIOiOFvLd7P
+	drp94Ft83yHV/OwSmW3Hu7zbr7PNeDqTck5iJolBHYQfQrCAkQqM/89QqpHAtlI0pbVxUleHQxfDR
+	Woe3moNJmOd/oIWpzaBwvhbwR+8KBdNPqgypDXltPB+cA+W1de0F4aQPS4P89I33MR1cJUbb3DBi8
+	2qNQgkxB9xayPfepryxGxUoltHl+8t7dekwCLddrA8cfI8qZnQgRaW302KXAJLqG/epToM15C2Zo8
+	j7XwvYOGD2T1tu0MXNHl8X16yiNKe2YduQqmLzFUFXEJp6mdfBw8r3MOhTXwxWScGNqMtE8jsUfpd
+	2rFatRUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1srDgA-00000009x41-2NiB;
-	Thu, 19 Sep 2024 09:42:26 +0000
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
+	id 1srDiL-00000009xfh-3IoB;
+	Thu, 19 Sep 2024 09:44:41 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1srDg8-00000009x3H-0dUl
-	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Sep 2024 09:42:25 +0000
-Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-7191df6b5f5so447239b3a.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 19 Sep 2024 02:42:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1726738942; x=1727343742; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=dDumzV+jL/bjpzSzdfVGLcrQ8rzaUr73VYrD39mPLZs=;
-        b=VrpLh22D47fy9KNe1SGV4j+Qn4fhASvMWEK9/gJ4Ob4LKkn+1u8t4mk6DF2W2Mw71i
-         kgWyQa1umYy1pAv2aD0o1a3biZAq0kaThD3OD+EXMzvOG75lsx54+T8vLeOhx8SRa5Q0
-         t0rndBJDJvpZC+rhauwpXkfP63HYWQzxMLKno=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726738942; x=1727343742;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=dDumzV+jL/bjpzSzdfVGLcrQ8rzaUr73VYrD39mPLZs=;
-        b=CodYZ+jg6OEejazQ4pr7WJMZX0rWiHx/dr60svr6wdMZ0e+tXrDl0a/+YKzrevFn1j
-         xZNJANoTd1RNHICMGCRhUcv/f+FKYTQsApvj2BZbILnWi5uNLKNQFO0C0O6PCO0ukarK
-         SnEcLDoNSbLGn8/aEER0buAsUKUFzEygIEvj/rSAnjg26UE+AlhyCh0E2jumbqydxkjP
-         asO9/hYtIx8xc8O/bRZgHvZ8fkszaAXzgnAj+px6Nuk1CnP0a26Ty3acPk/0RKzW3npp
-         5bz0+ma4Nl7ajMpWPpYCis1pR2pr3bK15Ju4z7GEpTg8ltjluqOKsODsvVWJ2f0uenok
-         /JJA==
-X-Gm-Message-State: AOJu0YzeoVZ9jrXknJiEQYHIR7fZkm3ktIKxoRD/cxcZL9u5clShvv4P
-	+q1u3GEeC6mHKBu6S+cNagQSJrumJw6oeFfXs3OYCa8KT106MFO7/47x3sBuCw==
-X-Google-Smtp-Source: AGHT+IF2vMJ+2AOCj5R87zBh9VHuLayxTQFzkC/Vn/4crABU7xxMMc8HPnxxeHtzrF1F0wZet9xAAw==
-X-Received: by 2002:a05:6a21:398b:b0:1cf:658e:50fe with SMTP id adf61e73a8af0-1cf75efe88dmr36657324637.29.1726738942615;
-        Thu, 19 Sep 2024 02:42:22 -0700 (PDT)
-Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:457c:125e:bb1f:8cd1])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71944b7ad2dsm7913170b3a.101.2024.09.19.02.42.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Sep 2024 02:42:22 -0700 (PDT)
-From: Pin-yen Lin <treapking@chromium.org>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Fabien Parent <fparent@baylibre.com>,
-	Pin-yen Lin <treapking@chromium.org>,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
-Subject: [PATCH v3] arm64: dts: mediatek: mt8183-pumpkin: add HDMI support
-Date: Thu, 19 Sep 2024 17:41:49 +0800
-Message-ID: <20240919094212.1902073-1-treapking@chromium.org>
-X-Mailer: git-send-email 2.46.0.662.g92d0881bb0-goog
+	id 1srDga-00000009x6N-1ZlF;
+	Thu, 19 Sep 2024 09:42:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id BDBC35C57F2;
+	Thu, 19 Sep 2024 09:42:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DBC7FC4CEC4;
+	Thu, 19 Sep 2024 09:42:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1726738970;
+	bh=4mBPJ1/8ZHYMdSjeFFRdSDpez+20eaW5Qpk0ZxpyplE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=WNvFUZlIeZCdtFKQ6JJfXg22qRTupBYLgnu8Znpgj7u9GzB9cb+oCuqkGaUUFXqZg
+	 u3FLl6T6Dc6z14wmNEhM9sxXlKK/hnTLT7l41VAHBzniRkxJuoPGhWwQEozIgpKcqn
+	 e0kS1YGW5Ob7pUpRgtI7MbGmwk2xVRYMaz+rj6ubfII71lcBL9BipnzLBPVQDxC0s+
+	 6tii01Hw8+gMcMOU9sr4JhVfid9pQ8djWVDTMMnYh2tWVR7phPjsbZwqdPYB+N9hdB
+	 cnocJ45KkOqJzUN/IKhO7vvYPYCr6HhVzm91jSPJ6/m++FZ0VQT1lV4F/UgLqGCLlU
+	 /zO3c8TS5wTbA==
+Message-ID: <894a3c2c-22f9-45b9-a82b-de7320066b42@kernel.org>
+Date: Thu, 19 Sep 2024 11:42:40 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net 2/2] page_pool: fix IOMMU crash when driver has
+ already unbound
+To: Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+ Yunsheng Lin <linyunsheng@huawei.com>
+Cc: davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com,
+ liuyonglong@huawei.com, fanghaiqing@huawei.com, zhangkun09@huawei.com,
+ Robin Murphy <robin.murphy@arm.com>,
+ Alexander Duyck <alexander.duyck@gmail.com>, IOMMU <iommu@lists.linux.dev>,
+ Wei Fang <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>,
+ Clark Wang <xiaoning.wang@nxp.com>, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ John Fastabend <john.fastabend@gmail.com>, Saeed Mahameed
+ <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>,
+ Tariq Toukan <tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Andrew Morton <akpm@linux-foundation.org>, imx@lists.linux.dev,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
+ linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-mm@kvack.org
+References: <20240918111826.863596-1-linyunsheng@huawei.com>
+ <20240918111826.863596-3-linyunsheng@huawei.com>
+ <CAC_iWjK=G7Oo5=pN2QunhasgDC6NyC1L+96jigX7u9ad+PbYng@mail.gmail.com>
+Content-Language: en-US
+From: Jesper Dangaard Brouer <hawk@kernel.org>
+In-Reply-To: <CAC_iWjK=G7Oo5=pN2QunhasgDC6NyC1L+96jigX7u9ad+PbYng@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240919_024224_203547_FBAF0128 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20240919_024252_561749_C6729E00 
+X-CRM114-Status: GOOD (  12.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,180 +97,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Fabien Parent <fparent@baylibre.com>
 
-The MT8183 Pumpkin board has a micro-HDMI connector. HDMI support is
-provided by an IT66121 DPI <-> HDMI bridge.
+On 18/09/2024 19.06, Ilias Apalodimas wrote:
+>> In order not to do the dma unmmapping after driver has already
+>> unbound and stall the unloading of the networking driver, add
+>> the pool->items array to record all the pages including the ones
+>> which are handed over to network stack, so the page_pool can
+>> do the dma unmmapping for those pages when page_pool_destroy()
+>> is called.
+>
+> So, I was thinking of a very similar idea. But what do you mean by
+> "all"? The pages that are still in caches (slow or fast) of the pool
+> will be unmapped during page_pool_destroy().
 
-Enable the DPI and add the node for the IT66121 bridge.
+I really dislike this idea of having to keep track of all outstanding pages.
 
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
-Co-developed-by: Pin-yen Lin <treapking@chromium.org>
-Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+I liked Jakub's idea of keeping the netdev around for longer.
 
----
+This is all related to destroying the struct device that have points to
+the DMA engine, right?
 
-Changes in v3:
-- Update commit message and fix formatting issues
-- Fix the label name of vcn33 regulator
+Why don't we add an API that allow netdev to "give" struct device to
+page_pool.  And then the page_poll will take over when we can safely
+free the stuct device?
 
- .../boot/dts/mediatek/mt8183-pumpkin.dts      | 123 ++++++++++++++++++
- 1 file changed, 123 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-index 1aa668c3ccf9..61a6f66914b8 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-@@ -63,6 +63,18 @@ thermistor {
- 		pulldown-ohm = <0>;
- 		io-channels = <&auxadc 0>;
- 	};
-+
-+	connector {
-+		compatible = "hdmi-connector";
-+		label = "hdmi";
-+		type = "d";
-+
-+		port {
-+			hdmi_connector_in: endpoint {
-+				remote-endpoint = <&hdmi_connector_out>;
-+			};
-+		};
-+	};
- };
- 
- &auxadc {
-@@ -120,6 +132,43 @@ &i2c6 {
- 	pinctrl-0 = <&i2c6_pins>;
- 	status = "okay";
- 	clock-frequency = <100000>;
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+
-+	it66121hdmitx: hdmitx@4c {
-+		compatible = "ite,it66121";
-+		reg = <0x4c>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&ite_pins>;
-+		reset-gpios = <&pio 160 GPIO_ACTIVE_LOW>;
-+		interrupt-parent = <&pio>;
-+		interrupts = <4 IRQ_TYPE_LEVEL_LOW>;
-+		vcn33-supply = <&mt6358_vcn33_reg>;
-+		vcn18-supply = <&mt6358_vcn18_reg>;
-+		vrf12-supply = <&mt6358_vrf12_reg>;
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			port@0 {
-+				reg = <0>;
-+
-+				it66121_in: endpoint {
-+					bus-width = <12>;
-+					remote-endpoint = <&dpi_out>;
-+				};
-+			};
-+
-+			port@1 {
-+				reg = <1>;
-+
-+				hdmi_connector_out: endpoint {
-+					remote-endpoint = <&hdmi_connector_in>;
-+				};
-+			};
-+		};
-+	};
- };
- 
- &keyboard {
-@@ -362,6 +411,67 @@ pins_clk {
- 			input-enable;
- 		};
- 	};
-+
-+	ite_pins: ite-pins {
-+		pins-irq {
-+			pinmux = <PINMUX_GPIO4__FUNC_GPIO4>;
-+			input-enable;
-+			bias-pull-up;
-+		};
-+
-+		pins-rst {
-+			pinmux = <PINMUX_GPIO160__FUNC_GPIO160>;
-+			output-high;
-+		};
-+	};
-+
-+	dpi_func_pins: dpi-func-pins {
-+		pins-dpi {
-+			pinmux = <PINMUX_GPIO12__FUNC_I2S5_BCK>,
-+				 <PINMUX_GPIO46__FUNC_I2S5_LRCK>,
-+				 <PINMUX_GPIO47__FUNC_I2S5_DO>,
-+				 <PINMUX_GPIO13__FUNC_DBPI_D0>,
-+				 <PINMUX_GPIO14__FUNC_DBPI_D1>,
-+				 <PINMUX_GPIO15__FUNC_DBPI_D2>,
-+				 <PINMUX_GPIO16__FUNC_DBPI_D3>,
-+				 <PINMUX_GPIO17__FUNC_DBPI_D4>,
-+				 <PINMUX_GPIO18__FUNC_DBPI_D5>,
-+				 <PINMUX_GPIO19__FUNC_DBPI_D6>,
-+				 <PINMUX_GPIO20__FUNC_DBPI_D7>,
-+				 <PINMUX_GPIO21__FUNC_DBPI_D8>,
-+				 <PINMUX_GPIO22__FUNC_DBPI_D9>,
-+				 <PINMUX_GPIO23__FUNC_DBPI_D10>,
-+				 <PINMUX_GPIO24__FUNC_DBPI_D11>,
-+				 <PINMUX_GPIO25__FUNC_DBPI_HSYNC>,
-+				 <PINMUX_GPIO26__FUNC_DBPI_VSYNC>,
-+				 <PINMUX_GPIO27__FUNC_DBPI_DE>,
-+				 <PINMUX_GPIO28__FUNC_DBPI_CK>;
-+		};
-+	};
-+
-+	dpi_idle_pins: dpi-idle-pins {
-+		pins-idle {
-+			pinmux = <PINMUX_GPIO12__FUNC_GPIO12>,
-+				 <PINMUX_GPIO46__FUNC_GPIO46>,
-+				 <PINMUX_GPIO47__FUNC_GPIO47>,
-+				 <PINMUX_GPIO13__FUNC_GPIO13>,
-+				 <PINMUX_GPIO14__FUNC_GPIO14>,
-+				 <PINMUX_GPIO15__FUNC_GPIO15>,
-+				 <PINMUX_GPIO16__FUNC_GPIO16>,
-+				 <PINMUX_GPIO17__FUNC_GPIO17>,
-+				 <PINMUX_GPIO18__FUNC_GPIO18>,
-+				 <PINMUX_GPIO19__FUNC_GPIO19>,
-+				 <PINMUX_GPIO20__FUNC_GPIO20>,
-+				 <PINMUX_GPIO21__FUNC_GPIO21>,
-+				 <PINMUX_GPIO22__FUNC_GPIO22>,
-+				 <PINMUX_GPIO23__FUNC_GPIO23>,
-+				 <PINMUX_GPIO24__FUNC_GPIO24>,
-+				 <PINMUX_GPIO25__FUNC_GPIO25>,
-+				 <PINMUX_GPIO26__FUNC_GPIO26>,
-+				 <PINMUX_GPIO27__FUNC_GPIO27>,
-+				 <PINMUX_GPIO28__FUNC_GPIO28>;
-+		};
-+	};
- };
- 
- &pmic {
-@@ -415,3 +525,16 @@ &scp {
- &dsi0 {
- 	status = "disabled";
- };
-+
-+&dpi0 {
-+	pinctrl-names = "default", "sleep";
-+	pinctrl-0 = <&dpi_func_pins>;
-+	pinctrl-1 = <&dpi_idle_pins>;
-+	status = "okay";
-+
-+	port {
-+		dpi_out: endpoint {
-+			remote-endpoint = <&it66121_in>;
-+		};
-+	};
-+};
--- 
-2.46.0.662.g92d0881bb0-goog
-
+--Jesper
 
