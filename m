@@ -4,68 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B305CDD578
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Sep 2024 13:15:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9DA5CDD578
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Sep 2024 13:26:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NOwF8ltACD0eMc8JWUcGFcXuRptmCsExZblDNBugkUU=; b=38obvZE8+8K8vhNZonNh8qXM/2
-	7c6DSj1Vk4czfdYOd4GMhUM5Wx/HDbINqDkhttOPTBl/Qw28UOErxZiS5DEHL2M9iZcHxMKrzSSzW
-	hUZ3SqLzMIZsBGW46Og1E0onCY5+IKLnJhiK3YvVR1jwBLODaNebcXpaKt9hnhp8+5x/jXF43megI
-	TxRWAqPqrio1yt9Zx78eAJRtSgde2ZmuxCf0W6tc4edg15Gv9mILKrqM7oYjmZpNsRSKfTc6uTzj2
-	uRn+GFUeVPXUVjx/gPmPE6nB928Qxu5R9EOvZGh4gtwAkKqlEz0AV78gHxWdBnjI7fqrrgM2sOlgn
-	QmEKa60w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CxqgBeByiqEGN7btCj/bU6+qAg4akgJ/31iLPDvaLhw=; b=js1NPi7nxzy8kvKkQJxj3TF+i1
+	2dAR5atbRkmeJeKV86Z12CpnbmkbUE8svigZHk296QrqmRpX+RyOpkSeF7F8Q1VERD3+5VfbX+fc5
+	11i1ZRbeivAJ9Rw/g3QXCAhv5grBiSGMRSlp7A0Zo8AGDt3dffjQO4Uoi++PkGrO0UP8YWS7jEnD/
+	00t4wHVXHFtUTqQhfxfoESq3BRGnK/7TkAzQumsHGAakFGzsBTsao4zhUvUmLsSCnQEOwUol2dzvP
+	Gppe5l3Sn6BoHui8r/5a/NQJGjGahyv8Kjvyn1QJd9+76PMeOssfOexoSpYFJuWUzYpJwDhDxvUOL
+	A2WBhcdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1srH0A-0000000AK4K-2v8t;
-	Thu, 19 Sep 2024 13:15:18 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1srHAz-0000000ALFU-1n4d;
+	Thu, 19 Sep 2024 13:26:29 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1srGz1-0000000AJn4-14Ul;
-	Thu, 19 Sep 2024 13:14:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1726751645;
-	bh=lVpBhjn/lwbFw1fgMeadNurIObhRHR8S3Xp7BExSnJc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=BMfBjYxSZUtylya1Dy1KCbuAOar8fp3lQNYaP5lzmtN4ADZ5OFMoSwyvV66BvUwUJ
-	 FO0F0Lc/2v3lnr7zQYj0a1L7+kTvgKNcWWhejqNlFPQUU6QvdWuSVnZBR6zz51USIw
-	 YkFQkysbTl/ZYYKPea7zEPvtp6yJqY3zQfOyUXGVzE+Yul9rXGk9YYauef8bXfrz9N
-	 qnu5u1pqUYGMyVGRPcB4wMpd28Ncd/f75prTefG5Ktxd8O42LnunbWmwt6B6DvI4j9
-	 T2ynEQIIJaS8O6f4kxFjiEiuN84HhwFB4f48vBMOiCEkRJmWBPO+5A0CTHzgSqltwy
-	 LpVqf06RQ8vRQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F1D8D17E1516;
-	Thu, 19 Sep 2024 15:14:04 +0200 (CEST)
-Message-ID: <0a78959a-2d72-47a0-83f1-89065ff48d0a@collabora.com>
-Date: Thu, 19 Sep 2024 15:14:04 +0200
+	id 1srHAw-0000000ALEp-1ctE
+	for linux-mediatek@lists.infradead.org;
+	Thu, 19 Sep 2024 13:26:27 +0000
+Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-5c24ebaa427so3009430a12.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 19 Sep 2024 06:26:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1726752384; x=1727357184; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=CxqgBeByiqEGN7btCj/bU6+qAg4akgJ/31iLPDvaLhw=;
+        b=O/0YJ6IOSj0xSFoYintjqNijxn2uiqAAcLd0XIk9kHookK16vci07Zhm0LU5mpz3iW
+         ncBiLfu0MpU2EHpBPy4eHKzIJtrRui5PzGC6ECO7Ye/WF87B9OPekZA9TeWymRe2sh88
+         dGI9E2va8NUSX//rq4ki4OdcspRPEZ13fAxsn+dLMEC/gi1ly0Uvp01GlXJ7Ql1e0WSk
+         FaZXrj8jQWCA8jpuX1i39jRxcyBtXzRn4he3tThI0lDFDv/YIKRVHjnOuhPjN3uQ4/z4
+         cxii/1hLBUSC0fu5VNPuRLz/GJwJcvWiTkLj7YW8rootoi2t8YZlI/mvMiqyAA3rH3+y
+         /cQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1726752384; x=1727357184;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=CxqgBeByiqEGN7btCj/bU6+qAg4akgJ/31iLPDvaLhw=;
+        b=bLvd1Rgd9XrMVH8C0y/fFrjYUlRLDR9qFKWp/+aeUOubD4ftoEyJK8aGHH5zEp6rBT
+         JgcN+kbcHCAoVYIi+7RyBXl9n1SLD0t3e2+01bFXqDj0u7xIeHtPoKVAK5YpX7zPLAmJ
+         7L/pf9mDkI62Bc/JOw9AOj1nOfNlMT84L+8RAP07gZB32BHNGTUBWfYqNN4Kg+pcPLzu
+         J8TGqqjwHwOad5hFjQWh7h/XpXzvYVIZmT4Xy6Ms1tMnNJxOsFZZyfv937yDt6NQ6H7d
+         qfjryw1DFkMzfOmlh7DHFZVY9kMTIIO2Fay7FxvYYcU2qvz8ko2+XmqT7ypqUBBtj3rW
+         a4hA==
+X-Gm-Message-State: AOJu0YzyCopN6CBq+4xvhjZ0uE9m4hlOtB/SawvIyWTjBRjlRaIZXvIo
+	SSThVMliM36oqXGfMOClM/VL95ILIuRblibmFimXU6YNzypqqfj1oOhnWbClst2uxRMor7N43dB
+	+
+X-Google-Smtp-Source: AGHT+IFLarCnOacvRt1Pc8xDIhYuWcNW+sbuUln+ZBlKC/vL9ZzdFB4p9yXoeNYHkl4c9QklvQ4Zlg==
+X-Received: by 2002:a17:907:94d4:b0:a90:126f:bcbf with SMTP id a640c23a62f3a-a90c1c77f83mr274686966b.10.1726752384267;
+        Thu, 19 Sep 2024 06:26:24 -0700 (PDT)
+Received: from localhost ([2a02:8071:b783:6940:3d88:df0a:afe5:8794])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a90612e7c72sm720216966b.187.2024.09.19.06.26.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Sep 2024 06:26:23 -0700 (PDT)
+Date: Thu, 19 Sep 2024 15:26:21 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, 
+	gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH] firmware: mtk-adsp-ipc: Switch to using dev_err_probe()
+Message-ID: <4426qubj6oy3kwrxtzjyc5imhxhmgapjibbv55gig22pxfrjrm@qhk7larn3qnk>
+References: <20240919120208.152987-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8183-kukui: Disable DPI display
- interface
-To: Alper Nebi Yasak <alpernebiyasak@gmail.com>,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-Cc: Pi-Hsun Shih <pihsun@chromium.org>, linux-arm-kernel@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>, Fabien Parent <fparent@baylibre.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Jitao Shi
- <jitao.shi@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Pin-yen Lin <treapking@chromium.org>, linux-kernel@vger.kernel.org,
- Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-References: <20240916162956.267340-1-alpernebiyasak@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240916162956.267340-1-alpernebiyasak@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="x5s3i6p4o36fjocm"
+Content-Disposition: inline
+In-Reply-To: <20240919120208.152987-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240919_061407_480554_313867B0 
-X-CRM114-Status: GOOD (  11.75  )
+X-CRM114-CacheID: sfid-20240919_062626_452248_267432F7 
+X-CRM114-Status: GOOD (  19.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,26 +93,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/09/24 18:29, Alper Nebi Yasak ha scritto:
-> Commit 009d855a26fd ("arm64: dts: mt8183: add dpi node to mt8183") adds
-> a device-tree node for the DPI display interface that feeds the external
-> display pipeline, to enable HDMI support on the Pumpkin board.
-> 
-> However, the external display is not fully described on Chrome devices,
-> blocked by further work on DP / USB-C muxing graph bindings. This
-> incomplete description currently breaks internal display at least on the
-> Cozmo board. The same issue was found and fixed on MT8186 devices with
-> commit 3079fb09ddac ("arm64: dts: mediatek: mt8186-corsola: Disable DPI
-> display interface"), but the MT8183 change wasn't merged until then.
-> 
-> Disable the external display interface for the Kukui device family until
-> the necessary work is done, like in the MT8186 Corsola case.
-> 
-> Fixes: 009d855a26fd ("arm64: dts: mt8183: add dpi node to mt8183")
-> Link: https://lore.kernel.org/linux-mediatek/20240821042836.2631815-1-wenst@chromium.org/
-> Signed-off-by: Alper Nebi Yasak <alpernebiyasak@gmail.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+--x5s3i6p4o36fjocm
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+Hello
 
+On Thu, Sep 19, 2024 at 02:02:08PM +0200, AngeloGioacchino Del Regno wrote:
+> There is an error path that checks whether the return value is
+> -EPROBE_DEFER to decide whether to print the error message: that
+> is exactly open-coding dev_err_probe(), so, switch to that.
+>=20
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
+>  drivers/firmware/mtk-adsp-ipc.c | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/firmware/mtk-adsp-ipc.c b/drivers/firmware/mtk-adsp-=
+ipc.c
+> index a762302978de..fdb083f42ebf 100644
+> --- a/drivers/firmware/mtk-adsp-ipc.c
+> +++ b/drivers/firmware/mtk-adsp-ipc.c
+> @@ -95,10 +95,9 @@ static int mtk_adsp_ipc_probe(struct platform_device *=
+pdev)
+>  		adsp_chan->idx =3D i;
+>  		adsp_chan->ch =3D mbox_request_channel_byname(cl, adsp_mbox_ch_names[i=
+]);
+>  		if (IS_ERR(adsp_chan->ch)) {
+> -			ret =3D PTR_ERR(adsp_chan->ch);
+> -			if (ret !=3D -EPROBE_DEFER)
+> -				dev_err(dev, "Failed to request mbox chan %s ret %d\n",
+> -					adsp_mbox_ch_names[i], ret);
+> +			ret =3D dev_err_probe(dev, PTR_ERR(adsp_chan->ch),
+> +					    "Failed to request mbox channel %s\n",
+> +					    adsp_mbox_ch_names[i]);
+> =20
+
+Looks good to me:
+
+Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@baylibre.com>
+
+Best regards
+Uwe
+
+--x5s3i6p4o36fjocm
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmbsJnoACgkQj4D7WH0S
+/k6JyAgAs8EPVGdHwR2cB7KuBTWmMoG7vZXS/QNTBCOM2liWpNQWO3y8vgj+52UQ
+cRsevvScsmaqeEYiot0086YWIUKSQbdjN5s51QXWDI3Jys4jU/T1f67zoD7tY1Xi
+FtOzWIp28KYnKEYdQ44oAA18QCNAj1A61PUHyZEgcM1SMJKq5B71xq0c3rjz4MXW
+eDiIARnloVG3n2kZ96CM1e1OwfkaOChFG+1aQwZX5bU3NNJAjTXAuvNI0jqEIiOt
+doQTaQU2nTsDSMsySjzzZKUNv/eiaNGrfuFmThYrslPo3/dIRkUaxyIp4EP5lmBp
+iDa9Eph0rYL3PLm+lXexsm3J+bcmdg==
+=NQRs
+-----END PGP SIGNATURE-----
+
+--x5s3i6p4o36fjocm--
 
