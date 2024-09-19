@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 619A4CE8D7A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Sep 2024 11:23:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE1FDCE8D7A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Sep 2024 11:24:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TwMdY8rdxam8QM2rdLhELR6drCqsB9RkOgkWUwEo4Nc=; b=ycJzLWFewkM+LOdNHb4kDvlaAC
-	G02KDTZFTdJyVtFmC4YLxKnxrgI7LGBMIV498UeeKwS/3JJMMaJT8KA+ncU3A4YMIKaBJr4g3itax
-	ZUztYZlrSMrGhvrcMQbVVbUtRnVkqL7sWVB9gl4vKqeod/Pbs0KOlHsTWua8znyvByzsO/7s52Z2s
-	CAR6aVcZtRuFBk8Zn3HYrJASXbDxivRntlUzJ0AkCRZJ5lnCtpJikq2fBv5ZULrMXXWUagBop+FsF
-	78bsOLMTkTgv72lxiFyu8UTiq8LKPUdiBp46fKUNtTPXkCA15BBflavu2WAKuMOVqVJKJz+yViZrj
-	Y/2nhA8A==;
+	bh=dMIeIkBw/sEwhttTsHHImWJDak9J5XbBMV3Q0L0EynM=; b=dwEF6zU27eRsTSGRoox9nWszaR
+	bnDQYXoGVQCqmLcaW2AaE/ss1Gv1BKubiznyx5Wdsg6A9Ub0+X9pLjUFAVMWcuSl4mRuw8GK9E3gG
+	n7sJ5mxuqFBCXCJRdgfS+Bel8eb9bh36KFTyZ2KRH4xhg3k0WTNNqn1rmd6wWoWMEz213IKPqmoXF
+	u4PQrUs1d2qsrBuf13kybrdhLNtWXzTTky5YsoKVwFGSOJVNumBrO+TfIrmKIEmqEf4ysJM5bJ8Sn
+	5A2dbIJHz6JkeraxVMDN/GDeAv5BJfj7qr8e0vn7gBagDLa8XFjjGXFDlxpvzKh88rVDghEj84fFg
+	LlXU+Zhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1srFFj-0000000A9GM-49j9;
-	Thu, 19 Sep 2024 11:23:15 +0000
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+	id 1srFGn-0000000A9Oy-2c1v;
+	Thu, 19 Sep 2024 11:24:21 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1srFEc-0000000A91K-3HNS
+	id 1srFEg-0000000A92h-0iMR
 	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Sep 2024 11:22:08 +0000
-Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-205659dc63aso6504115ad.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 19 Sep 2024 04:22:06 -0700 (PDT)
+	Thu, 19 Sep 2024 11:22:11 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-205909afad3so9073595ad.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 19 Sep 2024 04:22:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1726744926; x=1727349726; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1726744929; x=1727349729; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=TwMdY8rdxam8QM2rdLhELR6drCqsB9RkOgkWUwEo4Nc=;
-        b=BFmNBLqY2yqLorqnIX8oBgfPmAeGFbpEtavEvsjaeMNeZ55dcoiNCA/DyhMigmzIaM
-         7muTxK+dkz6NZBUk1ff6H0zfk1nZtA6uePzrGdwfkFF9j9Z/7xV7vdR2bTVmnxY/4p3h
-         m3+CsvOjS/1XGGHslWgjfmi5C545wqLWbVaPw=
+        bh=dMIeIkBw/sEwhttTsHHImWJDak9J5XbBMV3Q0L0EynM=;
+        b=fp4GSj2ji5d0Fpuu7kPapySnKbnlxFzBF/+ksf+TCwHNpvROSCTwuemulmMTjlWqKy
+         QITSe/v+oc01CM97hDOY6xqeD0h04w10hwzLk8cMevzoqvCRgRLK7DE5a85V9rgq5TfE
+         YUqxV3bmXXjMgqKoN3hphEjxYuRtLkXDrliT0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726744926; x=1727349726;
+        d=1e100.net; s=20230601; t=1726744929; x=1727349729;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=TwMdY8rdxam8QM2rdLhELR6drCqsB9RkOgkWUwEo4Nc=;
-        b=WiSwQgkev9BBh0oj8SWYGBy8wzmfxSSEcyjHyV3R27DZGYsQd1WBviV33bDswPVdtn
-         N5GnH6ixI71ofV1DkG0PKe8oeEXPFJS1mHyY7eS97yVVuCtsxD1r+hb1pEqMwr6IUpe5
-         0q9j9RBi5i+YdZsaQzeXGETbzFbhDLJ9ufdtOwanGnqM8SmCx0+uQ+rvGPR9Cub3iGPA
-         XJmCdV5LjNMXvdJno/JFSG9w/5CKtXwfM+IS4CuSmcf0/X3Ho0RFenTJRgMKyJ5HD4Ia
-         AZXekcxfEmBzAmpSYKl5z5JT9M3Io9U0LdQXxNSIHPbi5HlF/k6NoowmEUif0JnwQw2b
-         gvYA==
-X-Gm-Message-State: AOJu0Yy5eEX7n6XVpXmu19M7drmHCGZmhCje4mkzQCEfDFIsP9nyxjeY
-	N8hFBGnUdmG3kq2/OBCbUN9vhdgJnSVCt0W9DrpHFTQw2yZpr0RsGG7o9tixjHrw6Ih04TihksY
-	=
-X-Google-Smtp-Source: AGHT+IF7NZIzRSvq4SPW/ooEciWdwOfEcj6TQwh8am9csyrkRhBcF6KyEh38R7s9Np38/enguUBOVw==
-X-Received: by 2002:a17:902:b416:b0:207:3a45:2be1 with SMTP id d9443c01a7336-2076e4854d2mr294228205ad.51.1726744926008;
-        Thu, 19 Sep 2024 04:22:06 -0700 (PDT)
+        bh=dMIeIkBw/sEwhttTsHHImWJDak9J5XbBMV3Q0L0EynM=;
+        b=Q3iBnmZKxcp2cZukI+ibYsn8QvawI2PbuulJGl883omXeiqC+ntMI8OwARtVergX1B
+         ffxq/HBxs+LW4PrF5wsgTYTwORQm6iydHqAqKNAUwkDp5bNZ9teb7W5uItlAgyvQqO1C
+         P6ajp38ney3u1e1EoB3V/RSKrmwZhQ05Npx5Iy4Mbn6SRpPKndr0WwLTEcvuyF+Na1K7
+         FZ7mytUzJh5cOp4KtrCEBb8eMxl3l2oDmBoT/QEAXIxaYBVeVJWbo2wtZBBuvRRoN235
+         Xuxs3NmaMLYGRNcMFSMFbGR7NwFM4gyW8nVdFYxJxr5hTENkuVlnUxT4nLQa0tjdOUlH
+         UAlQ==
+X-Gm-Message-State: AOJu0YxPPyXpVJZx1lKr8CM1tz2+h8/csrpoMgVnNCODoZn7fAAsEmAB
+	7DtNVo9+ZJ+iac/E/MhM1b8eLpqxPn+oaFrPOpn3RkCMNtWx0epk4MGOP8yAqg==
+X-Google-Smtp-Source: AGHT+IFk5QDD/1gNzdKSfHXjASXaeXEteAWqOOFjRzNyDZr+9gLzrRtZ1AYty5vAcEPcBwRhs9emFQ==
+X-Received: by 2002:a17:902:ced0:b0:205:937f:3ae3 with SMTP id d9443c01a7336-2076e3ea569mr391568935ad.44.1726744929503;
+        Thu, 19 Sep 2024 04:22:09 -0700 (PDT)
 Received: from localhost (117.196.142.34.bc.googleusercontent.com. [34.142.196.117])
-        by smtp.gmail.com with UTF8SMTPSA id d9443c01a7336-207946dff96sm78417475ad.128.2024.09.19.04.22.04
+        by smtp.gmail.com with UTF8SMTPSA id d9443c01a7336-207946fb724sm78146305ad.200.2024.09.19.04.22.07
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 19 Sep 2024 04:22:05 -0700 (PDT)
+        Thu, 19 Sep 2024 04:22:09 -0700 (PDT)
 From: Rohit Agarwal <rohiagar@chromium.org>
 To: chunkuang.hu@kernel.org,
 	krzk+dt@kernel.org,
@@ -69,18 +68,19 @@ Cc: linux-mediatek@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	Rohit Agarwal <rohiagar@chromium.org>
-Subject: [PATCH v2 1/2] dt-bindings: display: mediatek: dpi: Add power domain for MT8183
-Date: Thu, 19 Sep 2024 11:21:51 +0000
-Message-ID: <20240919112152.2829765-2-rohiagar@chromium.org>
+	Rohit Agarwal <rohiagar@chromium.org>,
+	kernel test robot <lkp@intel.com>
+Subject: [PATCH v2 2/2] dt-bindings: display: mediatek: dpi: Add power domain for MT8195 DP_INTF
+Date: Thu, 19 Sep 2024 11:21:52 +0000
+Message-ID: <20240919112152.2829765-3-rohiagar@chromium.org>
 X-Mailer: git-send-email 2.46.0.792.g87dc391469-goog
 In-Reply-To: <20240919112152.2829765-1-rohiagar@chromium.org>
 References: <20240919112152.2829765-1-rohiagar@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240919_042206_856941_45ACD1EA 
-X-CRM114-Status: UNSURE (   9.81  )
+X-CRM114-CacheID: sfid-20240919_042210_236038_16BFECCB 
+X-CRM114-Status: UNSURE (   9.12  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,26 +96,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add power domain binding to the mediatek DPI controller
-for MT8183 that already had the property in DT.
+Add power domain binding for MT8195 DP_INTF that resolves the following
+error and many more similar ones:
 
+arch/arm64/boot/dts/mediatek/mt8195-cherry-dojo-r1.dtb: dp-intf@1c113000:
+power-domains: False schema does not allow [[55, 18]]
+
+Reported-by: kernel test robot <lkp@intel.com>
+Closes: https://lore.kernel.org/oe-kbuild-all/202409102119.AYvaTjUi-lkp@intel.com/
+Fixes: 5474d49b2f79 ("dt-bindings: display: mediatek: dpi: Add power domains")
 Signed-off-by: Rohit Agarwal <rohiagar@chromium.org>
 ---
  .../devicetree/bindings/display/mediatek/mediatek,dpi.yaml       | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-index 3a82aec9021c..1e748ee23fc7 100644
+index 1e748ee23fc7..201f1696854f 100644
 --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
 +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-@@ -88,6 +88,7 @@ allOf:
-               enum:
-                 - mediatek,mt6795-dpi
+@@ -90,6 +90,7 @@ allOf:
                  - mediatek,mt8173-dpi
-+                - mediatek,mt8183-dpi
+                 - mediatek,mt8183-dpi
                  - mediatek,mt8186-dpi
++                - mediatek,mt8195-dp-intf
      then:
        properties:
+         power-domains: false
 -- 
 
 
