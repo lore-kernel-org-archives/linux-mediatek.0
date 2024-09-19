@@ -4,76 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24637CE8D5D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Sep 2024 08:17:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B7C1CE8D64
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Sep 2024 09:42:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=a6TusFy2ir91gPNlwrF+20GciCGq3HpbhHGPX9zl1lg=; b=RrZT4Gm3zVUqh8dnNv/6IgI3V/
-	mw4G7lNcvCxX81RULUXXhd7GG+BY+F8k9CDcfY3+cWl8iny3D7i0bwJfMJyImEZq6Y09gOMvUIDAk
-	GbuSvhnSzlgCUiKuSkUuN0YA//fsh7zUgY9cR8TmsuyVQR3NjSD3maVyxvmotLJV0cgxhGrNJnoWW
-	352Weh3ekbht0j+poH8mFlVHemTExfdVBlrXHe/ixvfTr0q5xm6IsPKT9eoT9mEeNGfEOLuVFMCPi
-	PGphndLr2qPh/0iuG0UHm+xZcFV+tpcFiUKxLc3QR2qV7fIK6KPA1FBsn5TwwuM5a/wcKRbVSv0Ov
-	Dp7B24Iw==;
+	bh=dDumzV+jL/bjpzSzdfVGLcrQ8rzaUr73VYrD39mPLZs=; b=h1qGaTzgngvAzvcGBg+EGAYqXj
+	x7cxCCP9qnAljZV6dY/lXmo2KcEbRc7DmDcIdOMeddtXU8aHLvrPG3dcbJ02a1axQl6C1cHRsVVTl
+	tzvSNgVw1H5s5VsmOJ566W5mzVa21669wLUjwjabzVCnwehMuevfLz4VKGYXFGc97wk7QM0ZqdMYI
+	UFbCFW9qvg2sOGvtKmDR6ZH5CVdwpVH+HOViGMhQIa3t9u2uPliWhHFHTahOO5CDbxgQBac63ZI+X
+	Qm0dGXoNRPZMrjB3BWNaeiITIBozAZT3oVAmtu+ahdy2tOsfUWq43Oukr5cwKk3SVpCaT3NRmgLqP
+	p/oZII1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1srCLt-00000009lEn-21j1;
-	Thu, 19 Sep 2024 08:17:25 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1srDgA-00000009x41-2NiB;
+	Thu, 19 Sep 2024 09:42:26 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1srCLq-00000009lDw-0wWQ
+	id 1srDg8-00000009x3H-0dUl
 	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Sep 2024 08:17:23 +0000
-X-UUID: 959dabdc765f11efba0aef63c0775dbf-20240919
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=a6TusFy2ir91gPNlwrF+20GciCGq3HpbhHGPX9zl1lg=;
-	b=uPRdmkOKdYGlQQceGVXt70X5GG5o/kQIVJ+5KAOXBJ3ELed9K7CumuPO8u0qmd6JEmJx0wVCWf/JmUO6EfHS3eo5GVnGqyr+IG+1QEJ/qk06b9Sge5YCFLUkS8iOHzp4jKpOfZlybT4lUW/jQiO0R/7c/VtLKZdTz8EGIVqkOJc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:a95b2342-18dd-479c-8eb8-71be0baf8f8d,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6dc6a47,CLOUDID:eb02ec17-b42d-49a6-94d2-a75fa0df01d2,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 959dabdc765f11efba0aef63c0775dbf-20240919
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1549618417; Thu, 19 Sep 2024 01:17:17 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 19 Sep 2024 16:17:15 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 19 Sep 2024 16:17:15 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Michael.Lo@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
-	<km.lin@mediatek.com>, <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>,
-	<posh.sun@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Hao Zhang
-	<hao.zhang.mediatek@gmail.com>, "allan . wang" <allan.wang@mediatek.com>,
-	Ming Yen Hsieh <MingYen.Hsieh@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt792x: add P2P_DEVICE support
-Date: Thu, 19 Sep 2024 16:17:13 +0800
-Message-ID: <20240919081713.23787-1-mingyen.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	Thu, 19 Sep 2024 09:42:25 +0000
+Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-7191df6b5f5so447239b3a.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 19 Sep 2024 02:42:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1726738942; x=1727343742; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=dDumzV+jL/bjpzSzdfVGLcrQ8rzaUr73VYrD39mPLZs=;
+        b=VrpLh22D47fy9KNe1SGV4j+Qn4fhASvMWEK9/gJ4Ob4LKkn+1u8t4mk6DF2W2Mw71i
+         kgWyQa1umYy1pAv2aD0o1a3biZAq0kaThD3OD+EXMzvOG75lsx54+T8vLeOhx8SRa5Q0
+         t0rndBJDJvpZC+rhauwpXkfP63HYWQzxMLKno=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1726738942; x=1727343742;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=dDumzV+jL/bjpzSzdfVGLcrQ8rzaUr73VYrD39mPLZs=;
+        b=CodYZ+jg6OEejazQ4pr7WJMZX0rWiHx/dr60svr6wdMZ0e+tXrDl0a/+YKzrevFn1j
+         xZNJANoTd1RNHICMGCRhUcv/f+FKYTQsApvj2BZbILnWi5uNLKNQFO0C0O6PCO0ukarK
+         SnEcLDoNSbLGn8/aEER0buAsUKUFzEygIEvj/rSAnjg26UE+AlhyCh0E2jumbqydxkjP
+         asO9/hYtIx8xc8O/bRZgHvZ8fkszaAXzgnAj+px6Nuk1CnP0a26Ty3acPk/0RKzW3npp
+         5bz0+ma4Nl7ajMpWPpYCis1pR2pr3bK15Ju4z7GEpTg8ltjluqOKsODsvVWJ2f0uenok
+         /JJA==
+X-Gm-Message-State: AOJu0YzeoVZ9jrXknJiEQYHIR7fZkm3ktIKxoRD/cxcZL9u5clShvv4P
+	+q1u3GEeC6mHKBu6S+cNagQSJrumJw6oeFfXs3OYCa8KT106MFO7/47x3sBuCw==
+X-Google-Smtp-Source: AGHT+IF2vMJ+2AOCj5R87zBh9VHuLayxTQFzkC/Vn/4crABU7xxMMc8HPnxxeHtzrF1F0wZet9xAAw==
+X-Received: by 2002:a05:6a21:398b:b0:1cf:658e:50fe with SMTP id adf61e73a8af0-1cf75efe88dmr36657324637.29.1726738942615;
+        Thu, 19 Sep 2024 02:42:22 -0700 (PDT)
+Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:457c:125e:bb1f:8cd1])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71944b7ad2dsm7913170b3a.101.2024.09.19.02.42.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Sep 2024 02:42:22 -0700 (PDT)
+From: Pin-yen Lin <treapking@chromium.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	Fabien Parent <fparent@baylibre.com>,
+	Pin-yen Lin <treapking@chromium.org>,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>
+Subject: [PATCH v3] arm64: dts: mediatek: mt8183-pumpkin: add HDMI support
+Date: Thu, 19 Sep 2024 17:41:49 +0800
+Message-ID: <20240919094212.1902073-1-treapking@chromium.org>
+X-Mailer: git-send-email 2.46.0.662.g92d0881bb0-goog
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240919_011722_621062_7169CC1D 
-X-CRM114-Status: GOOD (  11.75  )
+X-CRM114-CacheID: sfid-20240919_024224_203547_FBAF0128 
+X-CRM114-Status: GOOD (  12.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,68 +95,180 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hao Zhang <hao.zhang.mediatek@gmail.com>
+From: Fabien Parent <fparent@baylibre.com>
 
-Regist the NL80211_IFTYPE_P2P_DEVICE to support p2p device
-for mt792x chips
+The MT8183 Pumpkin board has a micro-HDMI connector. HDMI support is
+provided by an IT66121 DPI <-> HDMI bridge.
 
-Signed-off-by: Hao Zhang <hao.zhang.mediatek@gmail.com>
-Signed-off-by: allan.wang <allan.wang@mediatek.com>
-Signed-off-by: Ming Yen Hsieh <MingYen.Hsieh@mediatek.com>
+Enable the DPI and add the node for the IT66121 bridge.
+
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Co-developed-by: Pin-yen Lin <treapking@chromium.org>
+Signed-off-by: Pin-yen Lin <treapking@chromium.org>
+Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
 ---
- drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 3 +++
- drivers/net/wireless/mediatek/mt76/mt792x_core.c     | 9 +++++++--
- 2 files changed, 10 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-index 864246f94088..77f3e92d581a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -1202,6 +1202,9 @@ int mt76_connac_mcu_uni_add_dev(struct mt76_phy *phy,
- 	case NL80211_IFTYPE_STATION:
- 		basic_req.basic.conn_type = cpu_to_le32(CONNECTION_INFRA_STA);
- 		break;
-+	case NL80211_IFTYPE_P2P_DEVICE:
-+		basic_req.basic.conn_type = cpu_to_le32(CONNECTION_P2P_GO);
-+		break;
- 	case NL80211_IFTYPE_ADHOC:
- 		basic_req.basic.conn_type = cpu_to_le32(CONNECTION_IBSS_ADHOC);
- 		break;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-index 78fe37c2e07b..042aa8d1b6e7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-@@ -38,6 +38,10 @@ static const struct ieee80211_iface_limit if_limits_chanctx[] = {
- 		.max = 1,
- 		.types = BIT(NL80211_IFTYPE_AP) |
- 			 BIT(NL80211_IFTYPE_P2P_GO)
-+	},
-+	{
-+		.max = 1,
-+		.types = BIT(NL80211_IFTYPE_P2P_DEVICE)
- 	}
+Changes in v3:
+- Update commit message and fix formatting issues
+- Fix the label name of vcn33 regulator
+
+ .../boot/dts/mediatek/mt8183-pumpkin.dts      | 123 ++++++++++++++++++
+ 1 file changed, 123 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
+index 1aa668c3ccf9..61a6f66914b8 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
+@@ -63,6 +63,18 @@ thermistor {
+ 		pulldown-ohm = <0>;
+ 		io-channels = <&auxadc 0>;
+ 	};
++
++	connector {
++		compatible = "hdmi-connector";
++		label = "hdmi";
++		type = "d";
++
++		port {
++			hdmi_connector_in: endpoint {
++				remote-endpoint = <&hdmi_connector_out>;
++			};
++		};
++	};
  };
  
-@@ -45,7 +49,7 @@ static const struct ieee80211_iface_combination if_comb_chanctx[] = {
- 	{
- 		.limits = if_limits_chanctx,
- 		.n_limits = ARRAY_SIZE(if_limits_chanctx),
--		.max_interfaces = 2,
-+		.max_interfaces = 3,
- 		.num_different_channels = 2,
- 		.beacon_int_infra_match = false,
- 	}
-@@ -614,7 +618,8 @@ int mt792x_init_wiphy(struct ieee80211_hw *hw)
- 	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION) |
- 				 BIT(NL80211_IFTYPE_AP) |
- 				 BIT(NL80211_IFTYPE_P2P_CLIENT) |
--				 BIT(NL80211_IFTYPE_P2P_GO);
-+				 BIT(NL80211_IFTYPE_P2P_GO) |
-+				 BIT(NL80211_IFTYPE_P2P_DEVICE);
- 	wiphy->max_remain_on_channel_duration = 5000;
- 	wiphy->max_scan_ie_len = MT76_CONNAC_SCAN_IE_LEN;
- 	wiphy->max_scan_ssids = 4;
+ &auxadc {
+@@ -120,6 +132,43 @@ &i2c6 {
+ 	pinctrl-0 = <&i2c6_pins>;
+ 	status = "okay";
+ 	clock-frequency = <100000>;
++	#address-cells = <1>;
++	#size-cells = <0>;
++
++	it66121hdmitx: hdmitx@4c {
++		compatible = "ite,it66121";
++		reg = <0x4c>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&ite_pins>;
++		reset-gpios = <&pio 160 GPIO_ACTIVE_LOW>;
++		interrupt-parent = <&pio>;
++		interrupts = <4 IRQ_TYPE_LEVEL_LOW>;
++		vcn33-supply = <&mt6358_vcn33_reg>;
++		vcn18-supply = <&mt6358_vcn18_reg>;
++		vrf12-supply = <&mt6358_vrf12_reg>;
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			port@0 {
++				reg = <0>;
++
++				it66121_in: endpoint {
++					bus-width = <12>;
++					remote-endpoint = <&dpi_out>;
++				};
++			};
++
++			port@1 {
++				reg = <1>;
++
++				hdmi_connector_out: endpoint {
++					remote-endpoint = <&hdmi_connector_in>;
++				};
++			};
++		};
++	};
+ };
+ 
+ &keyboard {
+@@ -362,6 +411,67 @@ pins_clk {
+ 			input-enable;
+ 		};
+ 	};
++
++	ite_pins: ite-pins {
++		pins-irq {
++			pinmux = <PINMUX_GPIO4__FUNC_GPIO4>;
++			input-enable;
++			bias-pull-up;
++		};
++
++		pins-rst {
++			pinmux = <PINMUX_GPIO160__FUNC_GPIO160>;
++			output-high;
++		};
++	};
++
++	dpi_func_pins: dpi-func-pins {
++		pins-dpi {
++			pinmux = <PINMUX_GPIO12__FUNC_I2S5_BCK>,
++				 <PINMUX_GPIO46__FUNC_I2S5_LRCK>,
++				 <PINMUX_GPIO47__FUNC_I2S5_DO>,
++				 <PINMUX_GPIO13__FUNC_DBPI_D0>,
++				 <PINMUX_GPIO14__FUNC_DBPI_D1>,
++				 <PINMUX_GPIO15__FUNC_DBPI_D2>,
++				 <PINMUX_GPIO16__FUNC_DBPI_D3>,
++				 <PINMUX_GPIO17__FUNC_DBPI_D4>,
++				 <PINMUX_GPIO18__FUNC_DBPI_D5>,
++				 <PINMUX_GPIO19__FUNC_DBPI_D6>,
++				 <PINMUX_GPIO20__FUNC_DBPI_D7>,
++				 <PINMUX_GPIO21__FUNC_DBPI_D8>,
++				 <PINMUX_GPIO22__FUNC_DBPI_D9>,
++				 <PINMUX_GPIO23__FUNC_DBPI_D10>,
++				 <PINMUX_GPIO24__FUNC_DBPI_D11>,
++				 <PINMUX_GPIO25__FUNC_DBPI_HSYNC>,
++				 <PINMUX_GPIO26__FUNC_DBPI_VSYNC>,
++				 <PINMUX_GPIO27__FUNC_DBPI_DE>,
++				 <PINMUX_GPIO28__FUNC_DBPI_CK>;
++		};
++	};
++
++	dpi_idle_pins: dpi-idle-pins {
++		pins-idle {
++			pinmux = <PINMUX_GPIO12__FUNC_GPIO12>,
++				 <PINMUX_GPIO46__FUNC_GPIO46>,
++				 <PINMUX_GPIO47__FUNC_GPIO47>,
++				 <PINMUX_GPIO13__FUNC_GPIO13>,
++				 <PINMUX_GPIO14__FUNC_GPIO14>,
++				 <PINMUX_GPIO15__FUNC_GPIO15>,
++				 <PINMUX_GPIO16__FUNC_GPIO16>,
++				 <PINMUX_GPIO17__FUNC_GPIO17>,
++				 <PINMUX_GPIO18__FUNC_GPIO18>,
++				 <PINMUX_GPIO19__FUNC_GPIO19>,
++				 <PINMUX_GPIO20__FUNC_GPIO20>,
++				 <PINMUX_GPIO21__FUNC_GPIO21>,
++				 <PINMUX_GPIO22__FUNC_GPIO22>,
++				 <PINMUX_GPIO23__FUNC_GPIO23>,
++				 <PINMUX_GPIO24__FUNC_GPIO24>,
++				 <PINMUX_GPIO25__FUNC_GPIO25>,
++				 <PINMUX_GPIO26__FUNC_GPIO26>,
++				 <PINMUX_GPIO27__FUNC_GPIO27>,
++				 <PINMUX_GPIO28__FUNC_GPIO28>;
++		};
++	};
+ };
+ 
+ &pmic {
+@@ -415,3 +525,16 @@ &scp {
+ &dsi0 {
+ 	status = "disabled";
+ };
++
++&dpi0 {
++	pinctrl-names = "default", "sleep";
++	pinctrl-0 = <&dpi_func_pins>;
++	pinctrl-1 = <&dpi_idle_pins>;
++	status = "okay";
++
++	port {
++		dpi_out: endpoint {
++			remote-endpoint = <&it66121_in>;
++		};
++	};
++};
 -- 
-2.45.2
+2.46.0.662.g92d0881bb0-goog
 
 
