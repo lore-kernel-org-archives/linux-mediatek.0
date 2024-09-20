@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 628EFCF58F1
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89D6FCF58F4
 	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Sep 2024 09:06:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zwo4xBU6lj3FjG+IfMoGyS13z9c2D1Xz4JKX3Twas+Y=; b=DRuiLoeEPvuzFyf6bLpAA/IJ5Y
-	OrOweFQV1QidBi08sYKMi88U0ISaxscs2RMq4B6d3YQgFcaQomwXLwlp8nmfLGJUekulGLLDGrDcd
-	iFiEPmdA5sHea9LLq6mA0Ns1bcqIUqw6DgxHFTCf9MZ6lWgXK6QlwpKQvUF6sWgDCJYiVXG6y4zRu
-	WbUjNuJQP4f5uzTBYkb/lePdp+UIMVDUEQImQzNilr1F8bQgS2svbUCHv5Z0Srt/IgM7XnQZtwKnP
-	yKZ9ZoHMK3hqe2MCdcsBD2YbRVVINmxjpeDloywFI3VjZdlo7Fmnaa8uWoaseavpfibaGH6muTyoV
-	6dMqd08g==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=u4GTLoVuO7Bft9IHUdKhStH8Q38r+FyR4qW51Ikzg7M=; b=dvEuxJLbttWfF5NKrhAJB34TNn
+	tdNMxG/KsQRQlR0yfCYsGhnXSXb3CnpUcp/GmQmJIfvYJuSKqckbWowrXfFar+7vGDVUvYfHPXGTM
+	31A3s4ZaAeSD3BcgjetTDmpe0XrL6V+UNzu9YdsQA93J76sPXusE35wS7gDzRAOCbwprvwEGgEb1a
+	KPwfk6jrqn/Qxtn2LTpYQ8PHfoCGST1JaXWu+vcwmtzFSjnA5aKjdcMU7boSc8b/+7HUZKwK0Y6oD
+	iT5MOZtTCDb510x1/HP52YhV5Ixl2ua+8X7emEaaKS3T79LVtPHMiuBzddLlBwmGDR9PVmskEPbYY
+	GetAnq/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1srZbK-0000000BsxQ-3Rq1;
-	Fri, 20 Sep 2024 09:06:54 +0000
+	id 1srZbL-0000000Bsxc-12rc;
+	Fri, 20 Sep 2024 09:06:55 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1srZbH-0000000Bsvy-2dZr
+	id 1srZbI-0000000BswB-18Bw
 	for linux-mediatek@lists.infradead.org;
-	Fri, 20 Sep 2024 09:06:52 +0000
-X-UUID: a9cce2be772f11efba0aef63c0775dbf-20240920
+	Fri, 20 Sep 2024 09:06:53 +0000
+X-UUID: aa6a9a2c772f11efba0aef63c0775dbf-20240920
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=zwo4xBU6lj3FjG+IfMoGyS13z9c2D1Xz4JKX3Twas+Y=;
-	b=By16Ey9m2O/BJy6VmFZjyGdrNHGkz7+z3+zU/r5tDnNryP18OdvTtztV7nGlMA4OtrisHks3o7mGSZj8dv4iTOPrBR+zn0w6quuWwGd9HRebCv6covAXWY5hanQsd4dSjD0Bx8mkIRUhXXUvKyCuuS22LLIKcEvFiFgAlO5RNIk=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=u4GTLoVuO7Bft9IHUdKhStH8Q38r+FyR4qW51Ikzg7M=;
+	b=Q9EnDM8G1AYE0idaqOvR09Pev2WiCnaTPKKhPSulo5DSmksrRFZVRVVBAmtBBGpvPQ8m4B6heMdvF+hsBtWQw362L6QNMVmOZcYe+J2zXHovZrgQp9iI5kkxwgIAcEbLQnnAuPnpyyj0Si9n0TP4JaoWQ+j7ksnF2G5DK7XNPGo=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:37502b44-143c-408e-be86-ccbfab0e0000,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:67ec7fd0-7921-4900-88a1-3aef019a55ce,B
+X-CID-O-INFO: VERSION:1.1.41,REQID:a231022e-0a39-4268-88aa-f479fcfddc5d,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:6dc6a47,CLOUDID:789bfc17-b42d-49a6-94d2-a75fa0df01d2,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: a9cce2be772f11efba0aef63c0775dbf-20240920
+X-UUID: aa6a9a2c772f11efba0aef63c0775dbf-20240920
 Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
 	(envelope-from <peter.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2001991126; Fri, 20 Sep 2024 02:06:46 -0700
+	with ESMTP id 1109006169; Fri, 20 Sep 2024 02:06:47 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
@@ -64,18 +64,19 @@ CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
 	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
 	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
 	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>,
-	<quic_nguyenb@quicinc.com>
-Subject: [PATCH v7 0/4] fix abort defect
-Date: Fri, 20 Sep 2024 17:06:39 +0800
-Message-ID: <20240920090643.3566-1-peter.wang@mediatek.com>
+	<quic_nguyenb@quicinc.com>, <stable@vger.kernel.org>
+Subject: [PATCH v7 2/4] ufs: core: requeue aborted request
+Date: Fri, 20 Sep 2024 17:06:41 +0800
+Message-ID: <20240920090643.3566-3-peter.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240920090643.3566-1-peter.wang@mediatek.com>
+References: <20240920090643.3566-1-peter.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240920_020651_705589_A62BB646 
-X-CRM114-Status: UNSURE (   9.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240920_020652_344357_41730468 
+X-CRM114-Status: GOOD (  19.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,47 +93,193 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Peter Wang <peter.wang@mediatek.com>
 
-This series fixes MCQ and SDB abort defect.
+Regarding the specification of MCQ:
+Aborts a command using SQ cleanup, The host controller
+will post a Completion Queue entry with OCS = ABORTED.
 
-V7:
- - Use a variable instead of a flag.
- - Add a check for MCQ mode when setting this variable to UFS_ERR_HANDLER.
- - Print OCS information for OCS_ABORTED and OCS_INVALID_COMMAND_STATUS.
- - Add a MediaTek quirk for handling OCS_ABORTED in SDB mode.
- - Skip notifying SCSI from ISR during SCSI abort (ufshcd_abort()).
+ufshcd_abort_all forcibly aborts all on-going commands.
+In MCQ mode, set a variable to notify SCSI to requeue the
+command after receiving response with OCS_ABORTED.
+This approach would then be consistent with legacy SDB mode.
 
-V6:
- - Add err handler check before set flag true.
+Below is ufshcd_err_handler legacy SDB flow:
+ufshcd_err_handler()
+  ufshcd_abort_all()
+    ufshcd_abort_one()
+      ufshcd_try_to_abort_task()
+    ufshcd_complete_requests()
+      ufshcd_transfer_req_compl()
+        ufshcd_poll()
+          get outstanding_lock
+          clear outstanding_reqs tag
+          release outstanding_lock
+          __ufshcd_transfer_req_compl()
+            ufshcd_compl_one_cqe()
+              cmd->result = DID_REQUEUE
+              ufshcd_release_scsi_cmd()
+              scsi_done()
 
-V5:
- - Change flag name.
- - Amend comment and patch description.
+ufshcd_intr()
+  ufshcd_sl_intr()
+    ufshcd_transfer_req_compl()
+      ufshcd_poll()
+        get outstanding_lock
+        clear outstanding_reqs tag
+        release outstanding_lock
+        __ufshcd_transfer_req_compl()
+          ufshcd_compl_one_cqe()
+          cmd->result = DID_REQUEUE
+          ufshcd_release_scsi_cmd()
+          scsi_done();
 
-V4:
- - Remove nullify SQ entry abort requeue.
- - Add more comment for flag usage and set description.
- - Fix build warning.
+Below is ufshcd_err_handler MCQ flow:
 
-V3:
- - Change comment and use variable(rtc) for error print
- - Change flag name and move flag set before ufshcd_clear_cmd
- - Add SDB mode clear UTRLCLR tag receive OCS_ABORTED requeue
+ufshcd_err_handler()
+  ufshcd_abort_all()
+    ufshcd_abort_one()
+      ufshcd_try_to_abort_task()
+    ufshcd_complete_requests()
+      ufshcd_mcq_compl_pending_transfer()
+        ufshcd_mcq_poll_cqe_lock()
+          ufshcd_mcq_process_cqe()
+            ufshcd_compl_one_cqe()
+              cmd->result = DID_ABORT // should change to DID_REQUEUE
+              ufshcd_release_scsi_cmd()
+              scsi_done()
 
-V2:
- - Fix mcq_enabled build error.
+ufs_mtk_mcq_intr()
+  ufshcd_mcq_poll_cqe_lock()
+    ufshcd_mcq_process_cqe()
+      ufshcd_compl_one_cqe()
+        cmd->result = DID_ABORT  // should change to DID_REQUEUE
+        ufshcd_release_scsi_cmd()
+        scsi_done()
 
-Peter Wang (4):
-  ufs: core: fix the issue of ICU failure
-  ufs: core: requeue aborted request
-  ufs: core: add a quirk for MediaTek SDB mode aborted
-  ufs: core: skip ISR notifying scsi when ufshcd_abort
+So what we need to correct is to notify SCSI to requeue
+when MCQ mode receives OCS: ABORTED.
 
- drivers/ufs/core/ufs-mcq.c      | 21 ++++++----
- drivers/ufs/core/ufshcd.c       | 68 +++++++++++++++++++++++++--------
- drivers/ufs/host/ufs-mediatek.c |  1 +
- include/ufs/ufshcd.h            | 15 ++++++++
- 4 files changed, 83 insertions(+), 22 deletions(-)
+Fixes: ab248643d3d6 ("scsi: ufs: core: Add error handling for MCQ mode")
+Cc: stable@vger.kernel.org
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/ufs/core/ufshcd.c | 40 ++++++++++++++++++++++++---------------
+ include/ufs/ufshcd.h      |  8 ++++++++
+ 2 files changed, 33 insertions(+), 15 deletions(-)
 
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index a6f818cdef0e..4f9c7a632465 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -3006,6 +3006,7 @@ static int ufshcd_queuecommand(struct Scsi_Host *host, struct scsi_cmnd *cmd)
+ 	ufshcd_prepare_lrbp_crypto(scsi_cmd_to_rq(cmd), lrbp);
+ 
+ 	lrbp->req_abort_skip = false;
++	lrbp->abort_initiated_by = UFS_NO_ABORT;
+ 
+ 	ufshcd_comp_scsi_upiu(hba, lrbp);
+ 
+@@ -5404,10 +5405,19 @@ ufshcd_transfer_rsp_status(struct ufs_hba *hba, struct ufshcd_lrb *lrbp,
+ 		}
+ 		break;
+ 	case OCS_ABORTED:
+-		result |= DID_ABORT << 16;
++		if (lrbp->abort_initiated_by == UFS_ERR_HANDLER)
++			result |= DID_REQUEUE << 16;
++		else
++			result |= DID_ABORT << 16;
++		dev_warn(hba->dev,
++				"OCS aborted from controller = %x for tag %d\n",
++				ocs, lrbp->task_tag);
+ 		break;
+ 	case OCS_INVALID_COMMAND_STATUS:
+ 		result |= DID_REQUEUE << 16;
++		dev_warn(hba->dev,
++				"OCS invaild from controller = %x for tag %d\n",
++				ocs, lrbp->task_tag);
+ 		break;
+ 	case OCS_INVALID_CMD_TABLE_ATTR:
+ 	case OCS_INVALID_PRDT_ATTR:
+@@ -6471,26 +6481,12 @@ static bool ufshcd_abort_one(struct request *rq, void *priv)
+ 	struct scsi_device *sdev = cmd->device;
+ 	struct Scsi_Host *shost = sdev->host;
+ 	struct ufs_hba *hba = shost_priv(shost);
+-	struct ufshcd_lrb *lrbp = &hba->lrb[tag];
+-	struct ufs_hw_queue *hwq;
+-	unsigned long flags;
+ 
+ 	*ret = ufshcd_try_to_abort_task(hba, tag);
+ 	dev_err(hba->dev, "Aborting tag %d / CDB %#02x %s\n", tag,
+ 		hba->lrb[tag].cmd ? hba->lrb[tag].cmd->cmnd[0] : -1,
+ 		*ret ? "failed" : "succeeded");
+ 
+-	/* Release cmd in MCQ mode if abort succeeds */
+-	if (hba->mcq_enabled && (*ret == 0)) {
+-		hwq = ufshcd_mcq_req_to_hwq(hba, scsi_cmd_to_rq(lrbp->cmd));
+-		if (!hwq)
+-			return 0;
+-		spin_lock_irqsave(&hwq->cq_lock, flags);
+-		if (ufshcd_cmd_inflight(lrbp->cmd))
+-			ufshcd_release_scsi_cmd(hba, lrbp);
+-		spin_unlock_irqrestore(&hwq->cq_lock, flags);
+-	}
+-
+ 	return *ret == 0;
+ }
+ 
+@@ -7561,6 +7557,20 @@ int ufshcd_try_to_abort_task(struct ufs_hba *hba, int tag)
+ 		goto out;
+ 	}
+ 
++	/*
++	 * When the host software receives a "FUNCTION COMPLETE", set this
++	 * variable to requeue command after receive response with OCS_ABORTED
++	 *
++	 * MCQ mode: Host will post to CQ with OCS_ABORTED after SQ cleanup
++	 *
++	 * This variable is set because error handler ufshcd_abort_all forcibly
++	 * aborts all commands, and the host controller will automatically
++	 * fill in the OCS field of the corresponding response with OCS_ABORTED.
++	 * Therefore, upon receiving this response, it needs to be requeued.
++	 */
++	if (!err && hba->mcq_enabled && ufshcd_eh_in_progress(hba))
++		lrbp->abort_initiated_by = UFS_ERR_HANDLER;
++
+ 	err = ufshcd_clear_cmd(hba, tag);
+ 	if (err)
+ 		dev_err(hba->dev, "%s: Failed clearing cmd at tag %d, err %d\n",
+diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+index 0fd2aebac728..61a7dc489511 100644
+--- a/include/ufs/ufshcd.h
++++ b/include/ufs/ufshcd.h
+@@ -145,6 +145,11 @@ enum ufs_pm_level {
+ 	UFS_PM_LVL_MAX
+ };
+ 
++enum ufs_abort_by {
++	UFS_NO_ABORT,
++	UFS_ERR_HANDLER,
++};
++
+ struct ufs_pm_lvl_states {
+ 	enum ufs_dev_pwr_mode dev_state;
+ 	enum uic_link_state link_state;
+@@ -173,6 +178,8 @@ struct ufs_pm_lvl_states {
+  * @crypto_key_slot: the key slot to use for inline crypto (-1 if none)
+  * @data_unit_num: the data unit number for the first block for inline crypto
+  * @req_abort_skip: skip request abort task flag
++ * @abort_initiated_by: This variable is used to store the scenario in
++ *                      which the abort occurs
+  */
+ struct ufshcd_lrb {
+ 	struct utp_transfer_req_desc *utr_descriptor_ptr;
+@@ -202,6 +209,7 @@ struct ufshcd_lrb {
+ #endif
+ 
+ 	bool req_abort_skip;
++	int abort_initiated_by;
+ };
+ 
+ /**
 -- 
 2.45.2
 
