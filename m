@@ -4,79 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23265CF58F8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Sep 2024 09:06:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 951FBCF58F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Sep 2024 09:17:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tbwcydwDUBTubr2Um38bHOO3yWTV5YSyXpU3VXJrRXY=; b=ihMO9KBLS3sbb+D7yzjKd6APsa
-	SDKnuaVQRoGolHS//qmgw+SgwHuvRWrFtALpM64lTFO/LyQIZjKGrb/4cpDaN8BZ4Pl4aQxtV9sSJ
-	0kr6VGkj/txuVW+3HaFDV5mBkAeJ22D3x1Tj5Ayr+xjolmyy9HJBg/uj0McEtb2dV7E0AwIrRbLgy
-	gwl+oVeAaEEw+ui1r1QfoeVfc7sKuc2zlqrvJXPuNbqVi2x99+VCVnnaMLmKgMFAnYUi9K+2I7aWx
-	PHrOUxABoFnzwFLQQnrXAhDIExTeWMHmezgoMENqqBBWgPMDrSpaE/ocSAYgrSaxSOMVv2xZbmtOl
-	H8pGq/Cg==;
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=fRe1VZ/Qwt/rmp6qCSIHfvjAQpuxXapDK6bFJMZDscY=; b=EtDbKj3GOflokhV3t4rkbcP+Jk
+	fKMzaGcZwjpwVEpBpFlmwSQ1Z/7QnQuNoth2fYm+B1MJJ/TO0/xip5jPEggJNoxMwrWyotX8gIzRe
+	Y9oIwq9udhbOuSB1LLU/cR18VkzK6bXwK75glTK5GHoT4SxBXCcH6sUpgA9PTCEcOw6+cnud/z23o
+	/9e7PJFItEaoQTjWXKWpQ5iMb/hK0ayIwMMSwMNLyWne84dK2uaosvy94NQM8gqK9CrwGfBX93b1u
+	CoidB+wsCRIRL38KS9CzKGuMzK+Pt6sUU4LQ9dz4WW6Xph6GfBn0psB3J9MfJCuwXOMxpvFyU6IaO
+	v1Rca0Wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1srZbM-0000000Bsyu-3Tyq;
-	Fri, 20 Sep 2024 09:06:56 +0000
+	id 1srZlL-0000000BuUK-0j04;
+	Fri, 20 Sep 2024 09:17:15 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1srZbJ-0000000BswB-2xSN
-	for linux-mediatek@lists.infradead.org;
-	Fri, 20 Sep 2024 09:06:55 +0000
-X-UUID: ab087044772f11efba0aef63c0775dbf-20240920
+	id 1srZlI-0000000BuTp-47zT;
+	Fri, 20 Sep 2024 09:17:14 +0000
+X-UUID: 1c1cb7d0773111efba0aef63c0775dbf-20240920
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=tbwcydwDUBTubr2Um38bHOO3yWTV5YSyXpU3VXJrRXY=;
-	b=jV4AP/TMEdlv4hIdqQcfA/p68j+MyJerK6n6klUXhvSR8AgI6Of/aN1Lp1Vzg1IxO0Y02FzvM1EITaEumx6p6wZNntTKg1vwQ8uxHvHiSmrp/QdwwufNXfaputJqlany/vvQ8robDQtU1nKwH0Bx0nNiP/Zk7vaOTdJewHnViyw=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=fRe1VZ/Qwt/rmp6qCSIHfvjAQpuxXapDK6bFJMZDscY=;
+	b=WYcoQKGRU+nF4dpO1oaiIEron4EDROPJuuL+E6NSZsXwx+xUfRwyE9ORc/lDBRzVxg1ubZ/nsee4371DrBj6uVEUV3SpH1eIdBjryns4owjCZvVDt0/XsExprpwBcJEqDXMPXKJ6JPC2kkdqY6q/cYzcj/6yR1h/4LVen+J5y4k=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:7da4e720-1dae-4cab-9c23-b7e06fff7a8d,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:cae84b9e-8e9a-4ac1-b510-390a86b53c0a,B
+X-CID-O-INFO: VERSION:1.1.41,REQID:907c63e8-e6c4-4ede-944a-7ca9668468b4,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:6dc6a47,CLOUDID:e3c6fc17-b42d-49a6-94d2-a75fa0df01d2,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: ab087044772f11efba0aef63c0775dbf-20240920
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 1c1cb7d0773111efba0aef63c0775dbf-20240920
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <mark-pk.tsai@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 92727965; Fri, 20 Sep 2024 02:06:48 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+	with ESMTP id 2061067278; Fri, 20 Sep 2024 02:17:08 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 20 Sep 2024 02:06:45 -0700
+ 15.2.1118.26; Fri, 20 Sep 2024 17:17:03 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 20 Sep 2024 17:06:45 +0800
-From: <peter.wang@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
-	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>,
-	<quic_nguyenb@quicinc.com>
-Subject: [PATCH v7 4/4] ufs: core: skip ISR notifying scsi when ufshcd_abort
-Date: Fri, 20 Sep 2024 17:06:43 +0800
-Message-ID: <20240920090643.3566-5-peter.wang@mediatek.com>
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 20 Sep 2024 17:17:03 +0800
+From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: <yj.chiang@mediatek.com>, <jy.ho@mediatek.com>, Mark-PK Tsai
+	<mark-pk.tsai@mediatek.com>, <linux-remoteproc@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH] remoteproc: virtio: Add synchronize_cbs to remoteproc_virtio
+Date: Fri, 20 Sep 2024 17:16:51 +0800
+Message-ID: <20240920091659.3933-1-mark-pk.tsai@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240920090643.3566-1-peter.wang@mediatek.com>
-References: <20240920090643.3566-1-peter.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--4.256200-8.000000
+X-TMASE-MatchedRID: XAa2d/45j8TxoFpSGnAM9UKcYi5Qw/RVMVx/3ZYby7+167wFD1iaKCMO
+	uGtF4L1EbgqpvRqEHYk5Q3MXYJcEPa9VPpt+QVb+uHNkj91+t06y4iyjvVWToiz+5QCTrE/s+Vi
+	hXqn9xLHBfR/WU+6YOHoyMsz8I0FQ1u8gqr2ks0XJ5W6OZe5hhSz3IJiNRHpLEB/Asc4oaYGbYz
+	0jngQCJe7oid8NU9FAhiP008Dj4sgfE8yM4pjsDwtuKBGekqUpOlxBO2IcOBarhi1Jehn9vCTrR
+	OMfzR3Se5e3W4VU1suoDdfoNQDR8uTW6GQajoDi1uSsQLBEGz0QKZBcLpl2MqeKDnSxteKciYxc
+	+Xu5AWXBkGBTIlURuXoXDz8+lMxFpW+aIDJ4DaRzkxJ+SIkUjlAEm1wpw5h+lExlQIQeRG0=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--4.256200-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: EC54C13B8C08C7F17351EC38C392DE2B6C3BA37345CE0C8721E3E72B41C4F3142000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240920_020653_965645_D6EF1AE9 
-X-CRM114-Status: GOOD (  16.66  )
+X-CRM114-CacheID: sfid-20240920_021713_056576_012BE997 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,145 +98,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+Add synchornize_cbs to rproc_virtio_config_ops and a
+synchronize_vqs callback to the rproc_ops to ensure vqs'
+state changes are visible in vring_interrupts when the vq is
+broken or removed.
 
-When a SCSI abort occurs, ufshcd_try_to_abort_task may trigger
-the ISR, and the ISR may release the command and notify SCSI
-via scsi_done. This patch prevents the ISR from notifying
-SCSI to requeue, allowing SCSI to decide whether to requeue.
+And when VIRTIO_HARDEN_NOTIFICATION is not set, call
+rproc_virtio_synchronize_cbs directly in __rproc_virtio_del_vqs
+before virtqueue is free to ensure that rproc_vq_interrupt is
+aware of the virtqueue removal.
 
-Below is ufshcd_abort legacy SDB flow:
+The synchronized_vqs is expected to be implemented in rproc
+driver to ensure that all previous vring_interrupts are handled
+before the vqs are marked as broken or removed.
 
-ufshcd_abort()
-  ufshcd_try_to_abort_task() // will trigger ISR
-  get outstanding_lock
-  clear outstanding_reqs tag
-  ufshcd_release_scsi_cmd()
-  release outstanding_lock
-
-ufshcd_intr()
-  ufshcd_sl_intr()
-    ufshcd_transfer_req_compl()
-      ufshcd_poll()
-        get outstanding_lock
-        clear outstanding_reqs tag
-        release outstanding_lock
-        __ufshcd_transfer_req_compl()
-          ufshcd_compl_one_cqe()
-          cmd->result = DID_REQUEUE
-          ufshcd_release_scsi_cmd()
-          scsi_done();
-
-In most cases, ufshcd_intr will not reach scsi_done because the
-outstanding_reqs tag is cleared by the original thread.
-Therefore, whether there is an interrupt or not doesn't affect
-the result because the ISR will do nothing in most cases.
-
-In a very low chance, the ISR will reach scsi_done and notify
-SCSI to requeue, and the original thread will not
-call ufshcd_release_scsi_cmd. So should release because
-outstanding_reqs is clear by ISR.
-
-Below is ufshcd_abort MCQ flow:
-
-ufshcd_abort()
-  ufshcd_mcq_abort()
-    ufshcd_try_to_abort_task()	// will trigger ISR
-    ufshcd_release_scsi_cmd()
-
-ufs_mtk_mcq_intr()
-  ufshcd_mcq_poll_cqe_lock()
-    ufshcd_mcq_process_cqe()
-      ufshcd_compl_one_cqe()
-        cmd->result = DID_ABORT
-        ufshcd_release_scsi_cmd() // will release twice
-        scsi_done()
-
-In the case of MCQ ufshcd_abort, there is an issue where
-ufshcd_release_scsi_cmd might be called twice. We could simply
-skip the ISR release and scsi_done.
-
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
 ---
- drivers/ufs/core/ufs-mcq.c |  6 ++++++
- drivers/ufs/core/ufshcd.c  | 27 +++++++++++++++++++++++++++
- include/ufs/ufshcd.h       |  1 +
- 3 files changed, 34 insertions(+)
+ drivers/remoteproc/remoteproc_virtio.c | 12 ++++++++++++
+ include/linux/remoteproc.h             |  4 ++++
+ 2 files changed, 16 insertions(+)
 
-diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-index 3903947dbed1..73d7cf337e2f 100644
---- a/drivers/ufs/core/ufs-mcq.c
-+++ b/drivers/ufs/core/ufs-mcq.c
-@@ -699,6 +699,12 @@ int ufshcd_mcq_abort(struct scsi_cmnd *cmd)
- 		return FAILED;
- 	}
+diff --git a/drivers/remoteproc/remoteproc_virtio.c b/drivers/remoteproc/remoteproc_virtio.c
+index d3f39009b28e..e18258b69851 100644
+--- a/drivers/remoteproc/remoteproc_virtio.c
++++ b/drivers/remoteproc/remoteproc_virtio.c
+@@ -74,6 +74,14 @@ static bool rproc_virtio_notify(struct virtqueue *vq)
+ 	return true;
+ }
  
-+	/*
-+	 * In MCQ mode, set this variable so that the ISR posted by
-+	 * the host controller can be skipped.
-+	 */
-+	lrbp->abort_initiated_by = UFS_SCSI_ABORT;
++static void rproc_virtio_synchronize_cbs(struct virtio_device *vdev)
++{
++	struct rproc *rproc = vdev_to_rproc(vdev);
 +
- 	/*
- 	 * The command is not in the submission queue, and it is not
- 	 * in the completion queue either. Query the device to see if
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index b34125238a70..21091b11b4ba 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -5537,6 +5537,27 @@ void ufshcd_compl_one_cqe(struct ufs_hba *hba, int task_tag,
- 			ufshcd_update_monitor(hba, lrbp);
- 		ufshcd_add_command_trace(hba, task_tag, UFS_CMD_COMP);
- 		cmd->result = ufshcd_transfer_rsp_status(hba, lrbp, cqe);
++	if (rproc->ops->synchronize_vqs)
++		rproc->ops->synchronize_vqs(rproc);
++}
 +
-+		/*
-+		 * Let the SCSI layer decide how to handle the ufshcd_abort
-+		 * situation, neither releasing nor notifying scsi_done in MCQ
-+		 * mode. SDB mode should release because outstanding_reqs is
-+		 * clear by ISR.
-+		 */
-+		if (lrbp->abort_initiated_by == UFS_SCSI_ABORT) {
-+			ocs = ufshcd_get_tr_ocs(lrbp, cqe);
-+			if ((hba->mcq_enabled) && (ocs == OCS_ABORTED))
-+				 return;
-+
-+			if ((!hba->mcq_enabled) &&
-+			    ((ocs == OCS_INVALID_COMMAND_STATUS) ||
-+			     ((hba->quirks & UFSHCD_QUIRK_OCS_ABORTED) &&
-+			      (ocs == OCS_ABORTED)))) {
-+				ufshcd_release_scsi_cmd(hba, lrbp);
-+				return;
-+			}
-+		}
-+
- 		ufshcd_release_scsi_cmd(hba, lrbp);
- 		/* Do not touch lrbp after scsi done */
- 		scsi_done(cmd);
-@@ -7673,6 +7694,12 @@ static int ufshcd_abort(struct scsi_cmnd *cmd)
- 		goto release;
+ /**
+  * rproc_vq_interrupt() - tell remoteproc that a virtqueue is interrupted
+  * @rproc: handle to the remote processor
+@@ -171,6 +179,9 @@ static void __rproc_virtio_del_vqs(struct virtio_device *vdev)
+ 	list_for_each_entry_safe(vq, n, &vdev->vqs, list) {
+ 		rvring = vq->priv;
+ 		rvring->vq = NULL;
++#ifndef CONFIG_VIRTIO_HARDEN_NOTIFICATION
++		rproc_virtio_synchronize_cbs(vdev);
++#endif
+ 		vring_del_virtqueue(vq);
  	}
- 
-+	/*
-+	 * In SDB mode, set this variable so that the ISR posted by
-+	 * the host controller clear UTRLCLR can be skipped.
-+	 */
-+	lrbp->abort_initiated_by = UFS_SCSI_ABORT;
-+
- 	err = ufshcd_try_to_abort_task(hba, tag);
- 	if (err) {
- 		dev_err(hba->dev, "%s: failed with err %d\n", __func__, err);
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index 4d17a13ac558..4785a45040eb 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -148,6 +148,7 @@ enum ufs_pm_level {
- enum ufs_abort_by {
- 	UFS_NO_ABORT,
- 	UFS_ERR_HANDLER,
-+	UFS_SCSI_ABORT
+ }
+@@ -334,6 +345,7 @@ static const struct virtio_config_ops rproc_virtio_config_ops = {
+ 	.get_status	= rproc_virtio_get_status,
+ 	.get		= rproc_virtio_get,
+ 	.set		= rproc_virtio_set,
++	.synchronize_cbs = rproc_virtio_synchronize_cbs,
  };
  
- struct ufs_pm_lvl_states {
+ /*
+diff --git a/include/linux/remoteproc.h b/include/linux/remoteproc.h
+index b4795698d8c2..73901678ac7d 100644
+--- a/include/linux/remoteproc.h
++++ b/include/linux/remoteproc.h
+@@ -381,6 +381,9 @@ enum rsc_handling_status {
+  * @panic:	optional callback to react to system panic, core will delay
+  *		panic at least the returned number of milliseconds
+  * @coredump:	  collect firmware dump after the subsystem is shutdown
++ * @synchronize_vqs:	optional callback to guarantee all memory operations
++ *			on the virtqueue before it are visible to the
++ *			rproc_vq_interrupt().
+  */
+ struct rproc_ops {
+ 	int (*prepare)(struct rproc *rproc);
+@@ -403,6 +406,7 @@ struct rproc_ops {
+ 	u64 (*get_boot_addr)(struct rproc *rproc, const struct firmware *fw);
+ 	unsigned long (*panic)(struct rproc *rproc);
+ 	void (*coredump)(struct rproc *rproc);
++	void (*synchronize_vqs)(struct rproc *rproc);
+ };
+ 
+ /**
 -- 
 2.45.2
 
