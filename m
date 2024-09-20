@@ -4,82 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9230C78853
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Sep 2024 14:55:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43FCECF9C60
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Sep 2024 18:39:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Urf9epkit9Wnq7mh+mMh5qFW8LtYH5Rj1D3J2QjXNes=; b=SwpaYn4fcGkVKs5MrgqtsnIIyF
-	QkaNtBs3qDelz3uYRSF+fOVy40SEY3rFHez35IlKtQO/xVjDoVTKYVsnbygHbAqDbW+U77eBBrmLP
-	XN7UoKd6Kx7xpt1vE3RBEDJ6uOjpUnjOJLXNzbEsoFVNYAUfgf8DZ2zhet/gG/xWBiqPtvhhWOatX
-	KWExRbjU6lU6roJ0ttiIYWCrWy2GqhPKc4lLjeTUaBtr0lXUbMI2l2P+W/Y1A0V9W9foZ8B2zed9W
-	TaxdG1u7HpbqGRydDjE3rDWT2rpdfIBDWeE8U+7U0lw/Tada9VCpdMgzZLfKOAWspDRUSl8eQmLKt
-	9o1l3jRQ==;
+	bh=AdEEt3u0eY6KT/KDZt7EFUB/vvIuBAZCZRyYfatoQtQ=; b=SfqoJo+QaZe2amp9bXFCXbFr2v
+	rLfBufFdIyMDm2uPpyjSnRGVjUwWH7XSKNx2APt61RkF42o6WwgvbGx2TpGNCVsZzZmP2Z6TZzgEs
+	YsD7tsLnl7kHDfujigZu3+nLcxpGOZ7NCnFsxz3YskTrG4JAdVWRtotGLxp706Iw/4Zx6nmIT51KS
+	W5u4LMB8zBk2LmOIFbjFV3vtXDweNbu+a1jnzR3F6sjXyutBEDPlucpuk+DmXyCXfmCPnguTy/DJ6
+	Rfv+R4msyYtAG5y8/BtvpugmM/pliE29DpbFbD2oLC455bMLrtNQHtIJgMVHGPz2Pks3A5iCi4mSP
+	3EcJpOTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1srf2M-0000000CQKq-2j8U;
-	Fri, 20 Sep 2024 14:55:10 +0000
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+	id 1sriXL-0000000CofE-2uDU;
+	Fri, 20 Sep 2024 18:39:23 +0000
+Received: from 008.lax.mailroute.net ([199.89.1.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1srf2J-0000000CQK7-2yOP
+	id 1sriXJ-0000000Coeu-1NMG
 	for linux-mediatek@lists.infradead.org;
-	Fri, 20 Sep 2024 14:55:09 +0000
-Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-2f75428b9f8so31619901fa.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 20 Sep 2024 07:55:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1726844105; x=1727448905; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Urf9epkit9Wnq7mh+mMh5qFW8LtYH5Rj1D3J2QjXNes=;
-        b=je2kgwYmW1b2lQEtCA1lj5JJ3jCr0zT1PjWp3QbhoF7cRso4gJ/tGqJEpwVraQEzFo
-         +1ZS7ZwX7Vg0HvOYM2/k6UqPMOjhBYa2MqTD9U3JxF+ZQPcLp3c2acslE5ub39FAcuyW
-         duoeG7n4jVkHh3WF0yxjTpNlNcB3m9qmMLjoHVpaiMu9YKRsAy0gWxeJR7LdjLLwfWy2
-         lyOO+874PY8e4ptlUmsO+7ooGFb2TH2Lf7/s/jqkdm8G585AcvKSWlpmwRjBO7sI/poi
-         iNwkROk8EiwtU1/c/bw7fVCkwmVvtMH7fhk9aG5BJzN6EB8MIXPm73XVWvmTX1j6L3K5
-         VBdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1726844105; x=1727448905;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Urf9epkit9Wnq7mh+mMh5qFW8LtYH5Rj1D3J2QjXNes=;
-        b=Itru8dpUnn+Sb6q0iUluqaU9dXzUpjMQqbV83ejiSRoZzucuFJEynnmcL3yvfVYG3z
-         qQAkMCauT5k3KtKyOtOPM5ZJYvY6jmm7btxTWc73NlgTKFuPIPxP1eaXh3vcfQtl2NHp
-         tc2JdIDBVA/oCeJCYg2Q2KsXMC/EGwcS/Ayj6IHtCJaynZCYRamt+D+SMnDUvUE02vO8
-         h4Wc+Zkt9XyZ6vF1bObHpfhNY78Qz+r01Y8il1ltMROrh8kYdE9zX1XlBBp821byHE9n
-         9asaMK1vQPxV5aDKTnNRBixVQRG8c184rn1aOKGFLyfdxOGrVBBNFK5w3co+lgb2J+M4
-         WEdg==
-X-Forwarded-Encrypted: i=1; AJvYcCXNweEELd5AGbZHCn3Zk4PUoZk6MIA5f7MiYIuUwhygKAC1bWbV/VPCljMe6V7c8sI/1acea0ETYwFUEPaw0w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwTD9U0f+HTvSC2PuNcPwvv7dNIuLwS/WDnjPT8PESidzbIyok9
-	874CiSG92u4iP152/2CVr6eAexmO814bS/FXCABwyDteSskERw7+A/eDwk1umsWDq+kLOaiRbTw
-	D4C6PyasUl2KvvpQCxnLV3GeYOIw=
-X-Google-Smtp-Source: AGHT+IGRMbJOtLIe11lU8+yttfrugpnh34xPWQlgkz2BjnvZmPECE9B5LY05OCCCUvgqw8AZro92Tf2rVv9ya4d944k=
-X-Received: by 2002:a2e:a9a2:0:b0:2ef:1b1b:7f42 with SMTP id
- 38308e7fff4ca-2f7cb367bf3mr29478471fa.36.1726844104528; Fri, 20 Sep 2024
- 07:55:04 -0700 (PDT)
+	Fri, 20 Sep 2024 18:39:22 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 008.lax.mailroute.net (Postfix) with ESMTP id 4X9LlD5KGHz6ClY9H;
+	Fri, 20 Sep 2024 18:39:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1726857552; x=1729449553; bh=AdEEt3u0eY6KT/KDZt7EFUB/
+	vvIuBAZCZRyYfatoQtQ=; b=QC6KPhG50IMXHhtddPfTQobHuMeducQhYT/Csx3/
+	5BFtDYko6WTw45NrlhTVJGdZE91nndwEZU9TIpLDwnrRCfRCsaOgf4B1U2e6lozd
+	GljV4rCls8+GHcTm3qX/K8jgWT+CwUM3ONKiZjDx/q3Lqa99Pazg9nu10Nbqt2ky
+	jwLzcPq8MtTijyIcG41XOKaw401plORhIaRfNs6AVPTsNJx6tjTXMMi4QIj8Ytcp
+	eEaM33s2vM4XVfFWm9u0lUmImKWrwJ5h0uVRqbz+mHgb75EBiD0JvuTDQESM4nXX
+	D091BuufdWJXO0c2lbxj6OhrA36e8xe6H2F/BEQvLi/Zww==
+X-Virus-Scanned: by MailRoute
+Received: from 008.lax.mailroute.net ([127.0.0.1])
+ by localhost (008.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id RZSk16_plGrt; Fri, 20 Sep 2024 18:39:12 +0000 (UTC)
+Received: from [100.66.154.22] (unknown [104.135.204.82])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 008.lax.mailroute.net (Postfix) with ESMTPSA id 4X9Ll20h3fz6ClY9C;
+	Fri, 20 Sep 2024 18:39:09 +0000 (UTC)
+Message-ID: <ec301d5f-cfee-41ce-ae1a-5679b2da2cce@acm.org>
+Date: Fri, 20 Sep 2024 11:39:09 -0700
 MIME-Version: 1.0
-References: <20240919074925.22860-1-chris.lu@mediatek.com> <20240919074925.22860-4-chris.lu@mediatek.com>
-In-Reply-To: <20240919074925.22860-4-chris.lu@mediatek.com>
-From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Date: Fri, 20 Sep 2024 10:54:52 -0400
-Message-ID: <CABBYNZJ62dw0JHTrNK7xe9_kO61_gH9+XGPm+UEWw4CGRVCnnQ@mail.gmail.com>
-Subject: Re: [PATCH v2 3/4] Bluetooth: btusb: mediatek: add intf release flow
- when usb disconnect
-To: Chris Lu <chris.lu@mediatek.com>
-Cc: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>, 
-	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>, 
-	linux-kernel <linux-kernel@vger.kernel.org>, 
-	linux-mediatek <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 2/2] ufs: core: requeue aborted request
+To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>
+Cc: "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
+ =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
+ =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
+ =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
+ "quic_nguyenb@quicinc.com" <quic_nguyenb@quicinc.com>,
+ wsd_upstream <wsd_upstream@mediatek.com>,
+ =?UTF-8?B?RWQgVHNhaSAo6JSh5a6X6LuSKQ==?= <Ed.Tsai@mediatek.com>,
+ "stable@vger.kernel.org" <stable@vger.kernel.org>,
+ =?UTF-8?B?TGluIEd1aSAo5qGC5p6XKQ==?= <Lin.Gui@mediatek.com>,
+ =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
+ =?UTF-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>,
+ =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
+ <Chaotian.Jing@mediatek.com>, =?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?=
+ <Powen.Kao@mediatek.com>, =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
+ <Naomi.Chu@mediatek.com>, =?UTF-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
+ <Qilin.Tan@mediatek.com>
+References: <20240910073035.25974-1-peter.wang@mediatek.com>
+ <20240910073035.25974-3-peter.wang@mediatek.com>
+ <e42abf07-ba6b-4301-8717-8d5b01d56640@acm.org>
+ <04e392c00986ac798e881dcd347ff5045cf61708.camel@mediatek.com>
+ <858c4b6b-fcbc-4d51-8641-051aeda387c5@acm.org>
+ <524e9da9196cc0acf497ff87eba3a8043b780332.camel@mediatek.com>
+ <6203d7c9-b33c-4bf1-aca3-5fc8ba5636b9@acm.org>
+ <6fc025d7ffb9d702a117381fb5da318b40a24246.camel@mediatek.com>
+ <46d8be04-10db-4de1-8a59-6cd402bcecb1@acm.org>
+ <61a1678cad16dcb15f1e215ff1c47476666f0ee8.camel@mediatek.com>
+ <78c7fc74-81c2-40e4-b050-1d65dec96d0a@acm.org>
+ <f350a1dee5a03347b5e88b9d7249223ce7b72c08.camel@mediatek.com>
+ <beeec868-b4ac-4025-859b-35a828cd2f8e@acm.org>
+ <4f9e2ac99bcb981b11dc6454165818c5de6fd4d6.camel@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <4f9e2ac99bcb981b11dc6454165818c5de6fd4d6.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240920_075507_778029_E80BF4BB 
-X-CRM114-Status: GOOD (  18.67  )
+X-CRM114-CacheID: sfid-20240920_113921_405360_2CCFB793 
+X-CRM114-Status: GOOD (  10.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,99 +117,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chris,
+On 9/19/24 7:02 PM, Peter Wang (=E7=8E=8B=E4=BF=A1=E5=8F=8B) wrote:
+> On Thu, 2024-09-19 at 11:49 -0700, Bart Van Assche wrote:
+>> For legacy and MCQ mode, I prefer the following behavior for
+>> ufshcd_abort_all():
+>> * ufshcd_compl_one_cqe() ignores commands with status OCS_ABORTED.
+>> * ufshcd_release_scsi_cmd() is called either by ufshcd_abort_one() or
+>>     by ufshcd_abort_all().
+>>
+>> Do you agree with making the changes proposed above?
+>=20
+> This might not work, as SDB mode doesn't ignore
+> OCS: INVALID_OCS_VALUE but rather notifies SCSI to requeue.
 
-On Thu, Sep 19, 2024 at 3:49=E2=80=AFAM Chris Lu <chris.lu@mediatek.com> wr=
-ote:
->
-> MediaTek claim an special usb intr interface for ISO data transmission.
-> The interface need to be released before unregistering hci device when
-> usb disconnect. Removing BT usb dongle without properly releasing the
-> interface may cause Kernel panic while unregister hci device.
->
-> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
-> ---
->  drivers/bluetooth/btusb.c | 12 +++++++-----
->  1 file changed, 7 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-> index dfc42bdc8aaf..37e67b451b34 100644
-> --- a/drivers/bluetooth/btusb.c
-> +++ b/drivers/bluetooth/btusb.c
-> @@ -2614,9 +2614,9 @@ static void btusb_mtk_claim_iso_intf(struct btusb_d=
-ata *data)
->         set_bit(BTMTK_ISOPKT_OVER_INTR, &btmtk_data->flags);
->  }
->
-> -static void btusb_mtk_release_iso_intf(struct btusb_data *data)
-> +static int btusb_mtk_release_iso_intf(struct hci_dev *hdev)
->  {
-> -       struct btmtk_data *btmtk_data =3D hci_get_priv(data->hdev);
-> +       struct btmtk_data *btmtk_data =3D hci_get_priv(hdev);
->
->         if (btmtk_data->isopkt_intf) {
->                 usb_kill_anchored_urbs(&btmtk_data->isopkt_anchor);
-> @@ -2630,6 +2630,8 @@ static void btusb_mtk_release_iso_intf(struct btusb=
-_data *data)
->         }
->
->         clear_bit(BTMTK_ISOPKT_OVER_INTR, &btmtk_data->flags);
-> +
-> +       return 0;
->  }
->
->  static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
-> @@ -2649,7 +2651,7 @@ static int btusb_mtk_reset(struct hci_dev *hdev, vo=
-id *rst_data)
->                 return err;
->
->         if (test_bit(BTMTK_ISOPKT_RUNNING, &btmtk_data->flags))
-> -               btusb_mtk_release_iso_intf(data);
-> +               btusb_mtk_release_iso_intf(hdev);
+cmd->result should be ignored for aborted commands. Hence,
+how OCS_INVALID_COMMAND_STATUS is translated by
+ufshcd_transfer_rsp_status() is not relevant for aborted commands.
 
-We can probably move the check for BTMTK_ISOPKT_RUNNING into
-btusb_mtk_release_iso_intf to avoid having to duplicate it whenever
-calling btusb_mtk_release_iso_intf.
+> So what we need to correct is to notify SCSI to requeue
+> when MCQ mode receives OCS: ABORTED as well.
 
->
->         btusb_stop_traffic(data);
->         usb_kill_anchored_urbs(&data->tx_anchor);
-> @@ -2703,14 +2705,13 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
->
->  static int btusb_mtk_shutdown(struct hci_dev *hdev)
->  {
-> -       struct btusb_data *data =3D hci_get_drvdata(hdev);
->         struct btmtk_data *btmtk_data =3D hci_get_priv(hdev);
->         int ret;
->
->         ret =3D btmtk_usb_shutdown(hdev);
->
->         if (test_bit(BTMTK_ISOPKT_RUNNING, &btmtk_data->flags))
-> -               btusb_mtk_release_iso_intf(data);
-> +               btusb_mtk_release_iso_intf(hdev);
+Unless the host controller violates the UFSHCI specification, the
+command status is not set for aborted commands in legacy mode. Let's
+keep the code uniform for legacy mode, MCQ mode, compliant and non-
+ompliant controllers and not rely on the command status for aborted
+commands.
 
-Ditto.
+Thanks,
 
->         return ret;
->  }
-> @@ -3824,6 +3825,7 @@ static int btusb_probe(struct usb_interface *intf,
->                 data->recv_acl =3D btmtk_usb_recv_acl;
->                 data->suspend =3D btmtk_usb_suspend;
->                 data->resume =3D btmtk_usb_resume;
-> +               data->disconnect =3D btusb_mtk_release_iso_intf;
+Bart.
 
-I'd wrap (e.g. btmtk_usb_disconnect) the call to
-btusb_mtk_release_iso_intf since that is only meant to release the ISO
-endpoint.
-
->         }
->
->         if (id->driver_info & BTUSB_SWAVE) {
-> --
-> 2.18.0
->
-
-
---=20
-Luiz Augusto von Dentz
 
