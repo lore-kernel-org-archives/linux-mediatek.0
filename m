@@ -4,80 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45DE3CF9C5C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Sep 2024 00:06:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7CBFCF9C5B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Sep 2024 21:13:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zcrw/urvHboN+ojXnHKkeqHrxa41BI3Q3cVQ1Lz1j/4=; b=4fvpbUDP8khAQofnphFOyIkRXd
-	yNxOOPr0p7DAgU+aeOZJRSwQwTUniYsfthsPTfI9ylToKgT1dX0QJoK1v9rSJUTFqoUmG7ZSkVSh+
-	ATgamPQ2C7AcGeaDfGd6Jng95JUi5V2NSaZrfSS/mAv6XRoejagVLOX6ewD8/rRpAm3/GY9RC8Tit
-	0DqbAe3O0wnOCB4tbCmU5FMaELsWKhTquhbfmD1pA09ExUIxeOKolWmSLZg54XgcFrYzBWQaQ92xC
-	8UPtSpbToBjBd/a/n9S7gGwLsrar800/z/4yZafq+g4KaW0Hj1pji4dBe1Szywz1KrXIjeyMrTUZ1
-	SBmT33Dg==;
+	bh=phXqp9sx1SQ3XnHPFtM1vPkRhWKw5lBZejOf6LQt9ao=; b=tB5zaMcMhW5hTCeyMGngS3HInR
+	RMQXdkVXNeK5cAe9GxGo73Ru8dzYUp5ZnQ8vGJ92SnIsaBwj6YgGyhrLa2/TRiZxvFcxLlMe3KQt/
+	SHOUWVXdHJDpkXTQlwWEj7Kp8g7eOig0mD+aIVIRtlCOIVV3v/GblnH/LVsc77zQ3DZDHZAs7HjhA
+	pcpsk45HUBi/1jZ8bq4NUkrOtnSAW37lLeP/qDwIXqomJgxS/QdYz2Y/8wVPtJkNjGtqQuFKrSsNF
+	anUpwEX2BwDD2tiuKeJkDrR551x3MCq04XOAfvDEOYmNOFivmKx9q5iIMbaq/l6LMvFn52hkDH4a3
+	HUGDpHzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1srnde-0000000D5sL-47DQ;
-	Sat, 21 Sep 2024 00:06:14 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1ss7QK-0000000EFJA-0ano;
+	Sat, 21 Sep 2024 21:13:48 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1srncW-0000000D5id-2roA
-	for linux-mediatek@lists.infradead.org;
-	Sat, 21 Sep 2024 00:05:06 +0000
+	id 1ss7PB-0000000EFEC-4483;
+	Sat, 21 Sep 2024 21:12:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 40295A43E07
-	for <linux-mediatek@lists.infradead.org>; Sat, 21 Sep 2024 00:04:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D924EC4CEC3
-	for <linux-mediatek@lists.infradead.org>; Sat, 21 Sep 2024 00:05:02 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id CEE035C03B2;
+	Sat, 21 Sep 2024 21:12:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4BF62C4CEC2;
+	Sat, 21 Sep 2024 21:12:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1726877102;
-	bh=INlKS5tNGyAIUwftuVV4YHTl+jDewLLG5i9G1VOSdhM=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=u5+LehS58NQuczqxX0Rx8/hXqC32CxQTiOKtwz84OVGuwoZtTdrP/4+BeI3xuTtN6
-	 z/OOcgiiXo8X/PQ0cyuFBsASo82ztW65Nr5xbC28JeldGKsyiaNvgsFVlxZnuhxuhr
-	 SG5zlrs00CWe9FpQ+zjew4WTCAUrMOjUz1WcKxzSQ7ioPjy02wNQymiWwXDmKBqNkA
-	 YdJqhMCzHaubASX6Hi1qCKrKyGVos9spL+Xk3LN2wl+He3ovOmtvTB95OBF4y9jTio
-	 EjA9WuYfBhZvFxQrchJ62kYgPaPLN05ZY5/pCoA6czn3XdRouyaYIuC4YTTthdyg4w
-	 iC3iThbr0J8vA==
-Received: by mail-yb1-f174.google.com with SMTP id 3f1490d57ef6-e0b7efa1c1bso2597978276.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 20 Sep 2024 17:05:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVacUj4cz4e+9DX2TB8WkryqJ4KuDI8eVLHrh95P3Iewp2xi0pye7xHasBhRNr/zQBfZOtPQV2Iq0FnLn+Jsw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyQV+ZuXt7QyFtcl7iD6pEu35iXk5q5a6YBLp7uMG0qhWy34cFx
-	UraoF6AvQdeNveifYCXS9ezzamVQ2Z8uZ9RpJiuahavJ3MO7+f2e0/gif1MpMnz/FYvwD5y9vRs
-	5X1JDYiXocx15hWorNJDGwjLFRPVfzaGsIIIRkw==
-X-Google-Smtp-Source: AGHT+IFTgD18lT/k5y3/uFsZmumRkstI4L4Woj+Ow1MTZJ00Q7iFIujz/YsqJe0xXL7E4JJ1Hut1lEDJr9Sp5F5cVxQ=
-X-Received: by 2002:a05:690c:6506:b0:6dd:bc2b:2aa4 with SMTP id
- 00721157ae682-6dfeeff826dmr53781547b3.39.1726877101859; Fri, 20 Sep 2024
- 17:05:01 -0700 (PDT)
+	s=k20201202; t=1726953156;
+	bh=phXqp9sx1SQ3XnHPFtM1vPkRhWKw5lBZejOf6LQt9ao=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=HPfuKriUJ7XdvindCQ93kJOi52p/hb4yEY19k6ESAe5MkEtBmJzu1PVvFJG1LoVLP
+	 wt2gbB1hm8mXSgJ9yO9wDdJIgVrhnjL6MVQVoDQx5VYg2H+cNvLKGaTlLdcm/0F9iq
+	 jOQTk9vsaQgUwOuDDUMLYeA6DfZceX5/WoleSw5xz1AURC+vIslXn6+LqnhKmaQUYA
+	 cSMriGt6YbVN6H0msczVVKOSyNe6LmyAHERtIuW1Gld5uDFeDTwM7xayTORfk4IYUn
+	 UvMSFvyEdL1tKjtYhCNEpMMYtSlvDkTCLNllo+OW+Vc1BQTTK1KvaMNDNiBlZRB4nK
+	 R/h+nnCFE873g==
+Message-ID: <1a96db1609b5b3b26584d8f823d85b7f.sboyd@kernel.org>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-References: <20240919112952.981-1-qun-wei.lin@mediatek.com> <ZuwM-aEEo7DE-qXw@infradead.org>
-In-Reply-To: <ZuwM-aEEo7DE-qXw@infradead.org>
-From: Chris Li <chrisl@kernel.org>
-Date: Fri, 20 Sep 2024 17:04:51 -0700
-X-Gmail-Original-Message-ID: <CACePvbUCNxy3sf6+7hk9HPGTNtTMbA2=Entu0xbV7TbwX4M2WQ@mail.gmail.com>
-Message-ID: <CACePvbUCNxy3sf6+7hk9HPGTNtTMbA2=Entu0xbV7TbwX4M2WQ@mail.gmail.com>
-Subject: Re: [PATCH 0/2] Add BLK_FEAT_READ_SYNCHRONOUS and SWP_READ_SYNCHRONOUS_IO
-To: Christoph Hellwig <hch@infradead.org>
-Cc: Qun-Wei Lin <qun-wei.lin@mediatek.com>, Andrew Morton <akpm@linux-foundation.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Ryan Roberts <ryan.roberts@arm.com>, "Huang, Ying" <ying.huang@intel.com>, 
-	David Hildenbrand <david@redhat.com>, "Matthew Wilcox (Oracle)" <willy@infradead.org>, 
-	Al Viro <viro@zeniv.linux.org.uk>, Dan Schatzberg <schatzberg.dan@gmail.com>, 
-	Kairui Song <kasong@tencent.com>, Barry Song <baohua@kernel.org>, Jens Axboe <axboe@kernel.dk>, 
-	linux-kernel@vger.kernel.org, linux-mm@kvack.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-block@vger.kernel.org, Casper Li <casper.li@mediatek.com>, 
-	Chinwen Chang <chinwen.chang@mediatek.com>, Andrew Yang <andrew.yang@mediatek.com>, 
-	John Hsu <john.hsu@mediatek.com>, wsd_upstream@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20240909144026.870565-2-u.kleine-koenig@baylibre.com>
+References: <20240909144026.870565-2-u.kleine-koenig@baylibre.com>
+Subject: Re: [PATCH] clk: Switch back to struct platform_driver::remove()
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, arm-scmi@vger.kernel.org, imx@lists.linux.dev, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, linux-omap@vger.kernel.org
+To: Michael Turquette <mturquette@baylibre.com>, Uwe =?utf-8?q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+Date: Sat, 21 Sep 2024 14:12:34 -0700
+User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240920_170504_863361_8697C8ED 
-X-CRM114-Status: GOOD (  16.37  )
+X-CRM114-CacheID: sfid-20240921_141238_073501_ABD5CD49 
+X-CRM114-Status: UNSURE (   7.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,48 +71,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Qun-Wei,
+Quoting Uwe Kleine-K=C3=B6nig (2024-09-09 07:40:25)
+> After commit 0edb555a65d1 ("platform: Make platform_driver::remove()
+> return void") .remove() is (again) the right callback to implement for
+> platform drivers.
+>=20
+> Convert all clk drivers to use .remove(), with the eventual goal to drop
+> struct platform_driver::remove_new(). As .remove() and .remove_new() have
+> the same prototypes, conversion is done by just changing the structure
+> member name in the driver initializer.
+>=20
+> Signed-off-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@baylibre.com>
+> ---
 
-Agree with Christoph that BLK_FEAT_READ_SYNCHRONOUS is not set
-anywhere. That needs to be fixed.
-
-Having a flag for BLK_FEAT_READ_SYNCHRONOUS and another flag for
-BLK_FEAT_SYNCHRONOUS is just confusing.
-for example, read path need to test two bits: "sis->flags &
-(SWP_SYNCHRONOUS_IO | SWP_READ_SYNCHRONOUS_IO)"
-
-There is only one caller of the bdev_synchronous(), which is in swapfile.c.
-
-I suggest if you have  BLK_FEAT_READ_SYNCHRONOUS, you should have a
-BLK_FEAT_WRITE_SYNCHRONOUS for writing.
-The previous path that test the SWP_SYNCHRONOUS_IO should convert into
-one of tests of SWP_READ_SYNCHRONOUS_IO or  SWP_WRITE_SYNCHRONOUS_IO
-depend on the read or write path (never both).
-
-"sis->flags & (SWP_SYNCHRONOUS_IO | SWP_READ_SYNCHRONOUS_IO)" will
-change into "sis->flags & SWP_READ_SYNCHRONOUS_IO"
-
-Then you can have  bdev_synchronous() just return the
-SWP_READ_SYNCHRONOUS_IO | SWP_WRITE_SYNCHRONOUS_IO if both are set.
-You don't need to have just bdev_synchronous() and
-bdev_read_synchronous(). That is more boilerplate code which is
-unnecessary.
-
-I also suggest you squish your two patches into one because there is
-no user of bdev_read_synchronous() in the first patch.
-You should introduce the function with the code that uses it. Yes,
-yes, I know you want to have a seperate patch for define vs another
-patch for using it. In this case there is no good reason for that.
-
-Best regards,
-
-Chris
-
-
-On Thu, Sep 19, 2024 at 4:37=E2=80=AFAM Christoph Hellwig <hch@infradead.or=
-g> wrote:
->
-> Well, you're not actually setting your new flags anywhere, which -
-> as you might know - is an reson for an insta-NAK.
->
+Applied to clk-next
 
