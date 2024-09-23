@@ -4,85 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C022CF9C6F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37518CF9C5B
 	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Sep 2024 09:54:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Aw0qd8Ni+woZVGXjg9Pgz8GBGjcwL4RrpHgRr4J2D48=; b=gnnm4pNYKS2coYKoOru5EkvnZw
-	a/D2eDm2U9t3Pobke0SJuJDQf//Kr7jPMwGUyHVPmzilpRIZ5NzcgX9KGagDPlJJhRXEOYO+s/n4R
-	Jk2paenUMhGKAjKEPuUffrKRonydP02L0+Xe8VGMYz1JbjLEGo7VoSD80xhfvUFjnVveRC9GuXn3A
-	GpEmhCjFdt394BB0IJKyirTK+sNLL/acq50NE7Lz5IkDGLk/h3e7c0IEEwZAicUTA5+iNKNT/Kohv
-	pqqv8/l/hpXmhHAV01gw9yfheuzlhAkFGQdRKHt0EO2tuCTPEBlUKDvVVLj7JJD6kHwy4S2Ysgkz/
-	vfCBbL+Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=W/G5Y1Yc2GdbX/HaGBtPNbObghnd/ierGxsK5LlHR+M=; b=mDmAb8AWgTcoKDVaSBSvj/mwxn
+	MfOyTLo2H/3bNLcpjuKYpspEiVN7ER49JbzhQ5lQ8MV8wgCM/BW1oRr6ceiP7OkawZMURpft95FtD
+	Dy2hmoZ2aEMhuXYyONsvYCg1uUlNS3LS1YspZEw45zZF3ffBbRylW/8D8HH5lU08TGYlHlX5UANTC
+	avxi1CcbcAqTVBQPAjAGgVHxeb96QrhEvypmmnkWbpW70Xs0ymwdLxpS+kgK4DQBmyN+0roLayqT0
+	W1HJoNktS+K1SkxnSj0YHGAaM0xsHpmtGplnJK+iEu3elwcT6HDVrpvxYqVbaNV9sRAx4/7Co+8J8
+	WyUybciA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssfls-0000000GtI3-4BOd;
+	id 1ssflt-0000000GtID-1JfO;
 	Mon, 23 Sep 2024 09:54:21 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssfkj-0000000Gt9g-23lG;
-	Mon, 23 Sep 2024 09:53:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727085187;
-	bh=oZq/tJZEKhLPOMgfoJYimVhT73cmX0YvXhNZwch10fw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MZ+hq6OINW90+WpTkHHmPOoq2HKPAuvI+1xkqbswtdYsklz/MSFzr68+Q+giSL+I5
-	 OzP9T9Zr4wDKneB6nMIYOUVE4Fm3bAbN3ouV21gTJTi2xXnyp7DzwK9oRCcafr5ody
-	 WFj5GYNdLHfbZbXWSmPRUUGE0etUK0yOuZdYIbdXxTfyrvzezFQV8LHaNU197eITR9
-	 +c9hdBh2po9xsq8ZwmGclZ597SEZhcqwtqv3bVRGUxKmfMJ8PQbFuYjZBdEa1LsKZB
-	 wydLnlk5Im0F2Q9H+qjKlLAFoanlLXpwwrXA2ndHDXHHaqAx/wicl937ots20axw9F
-	 cIAGwuzXBkXfA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 57D9417E10C2;
-	Mon, 23 Sep 2024 11:53:06 +0200 (CEST)
-Message-ID: <122e5099-4f0b-41cc-93c9-7ccdfc0207ad@collabora.com>
-Date: Mon, 23 Sep 2024 11:53:06 +0200
+	id 1ssflT-0000000GtFw-2MYi;
+	Mon, 23 Sep 2024 09:53:57 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-42e748f78d6so32667135e9.0;
+        Mon, 23 Sep 2024 02:53:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1727085233; x=1727690033; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=W/G5Y1Yc2GdbX/HaGBtPNbObghnd/ierGxsK5LlHR+M=;
+        b=SO/oiA282Lkb+b0iWhoYacYQazIU4N5ihuCsJ8+VifVCZEiPA0k5artWiQvhkU7VXT
+         hzgHcVJutJSHpbHD1Jxs4wuqMtERwHrPdZOJ+LjX8xTutcW4dDcY6FPO40LNEgLqyRnc
+         1cB0+cFCqRP57P5nIOEo77itwbf5VdYw2gaGOteEh6hpxtPgeGlDOyx01NgS/3hCHaFe
+         cvNCtt+G1079bFSpdSlHNdoW+BhXAUXpFkt96XRSTn/SoRGUU8q7bUHFVD/MradVo+In
+         GBk/l7XvIw4g+Xax1h2lweIBizK8oTy6RqLdsaJJFSzIOJFZUgEk+85GLhL8iAQjv6CK
+         Atsg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727085233; x=1727690033;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=W/G5Y1Yc2GdbX/HaGBtPNbObghnd/ierGxsK5LlHR+M=;
+        b=OY31goKVuUq0lLexH6VEE3icYwPPEjavkonNxeXKlKY2VBq8HQGxA/VBbfHQx8TcQe
+         +ESKY0hjCmVuZAVcBWTBEU/uVaqY/xSoa6xtdQr0QuUeuBka7ZSybrFkg7njnnlj2N/P
+         bkZZ3+MYoxbcJ3yzuimj6NRQBm84gv62Q2Zt39IKTjo+MkZyRnB/Ir3AWq6Iuvf+tVe1
+         7ZFdnpUdTLfeW5sAmS5qFwn8WqGNgNI8ITXK0JWhYM1BYf0hI1yLcoHotNQM1JkMJjlM
+         FWd2Z2AK8lBFEyHVjoc0W5tKsICdJMld4j7Zt9RSNailWGFy9EJ8hLlY9wjUlM5NHtIn
+         bvBw==
+X-Forwarded-Encrypted: i=1; AJvYcCUX5wPNsP33JdsQR5KKF7NQ6XkD/mudU1rXbVLffLaDAHKbvzazWhOTs+o2e8LJp2n8twm6YHiQW2+oaKKTg7A=@lists.infradead.org, AJvYcCWZnNg6A0qSWmOUZ6jDgJr276CwgnpAjvpZeIGWJDdyR/dOpdizXTKZftpHJ9vw9OROVF9nKe63w2lEEZBihqNY@lists.infradead.org
+X-Gm-Message-State: AOJu0YzdrgvP1uup3pWgwUoudGQ+ZS7jAe9wdWVwsTJ+zyT+jiu5fegq
+	VLTQv2Loy/qcvNUbnefi9fic5U/HerO66pes81ejfP4N+wRe6eKg
+X-Google-Smtp-Source: AGHT+IHFcRqze8NF48rSN4RfnRVSC5MCHRlQsylzZ05QxbfMJ+tA5vQe9UKElu6ng0HSNIhzNc4qfQ==
+X-Received: by 2002:a5d:5f83:0:b0:374:c977:363 with SMTP id ffacd0b85a97d-37a43154e86mr7174926f8f.24.1727085233174;
+        Mon, 23 Sep 2024 02:53:53 -0700 (PDT)
+Received: from Ansuel-XPS. (93-34-90-105.ip49.fastwebnet.it. [93.34.90.105])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-378e7805193sm23850774f8f.98.2024.09.23.02.53.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 23 Sep 2024 02:53:52 -0700 (PDT)
+Message-ID: <66f13ab0.5d0a0220.b0c27.b441@mx.google.com>
+X-Google-Original-Message-ID: <ZvE6rpnzlrUJHKLx@Ansuel-XPS.>
+Date: Mon, 23 Sep 2024 11:53:50 +0200
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lee Jones <lee@kernel.org>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	upstream@airoha.com, benjamin.larsson@genexis.eu,
+	linux-pwm@vger.kernel.org
+Subject: Re: [PATCH v4 0/5] Add mfd, pinctrl and pwm support to EN7581 SoC
+References: <20240911-en7581-pinctrl-v4-0-60ac93d760bb@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 2/2] dt-bindings: mfd: mediatek: mt6397: Convert to DT
- schema format
-To: Macpaul Lin <macpaul.lin@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Sean Wang <sean.wang@mediatek.com>, Sen Chu <sen.chu@mediatek.com>,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>, Pavel Machek <pavel@ucw.cz>,
- Lee Jones <lee@kernel.org>, Sebastian Reichel <sre@kernel.org>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
- linux-leds@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-rtc@vger.kernel.org, linux-sound@vger.kernel.org,
- Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
- Macpaul Lin <macpaul@gmail.com>, Chris-qj chen <chris-qj.chen@mediatek.com>,
- MediaTek Chromebook Upstream
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-References: <20240918064955.6518-1-macpaul.lin@mediatek.com>
- <20240918064955.6518-2-macpaul.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240918064955.6518-2-macpaul.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240911-en7581-pinctrl-v4-0-60ac93d760bb@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240923_025309_716612_0C1468A1 
-X-CRM114-Status: GOOD (  13.72  )
+X-CRM114-CacheID: sfid-20240923_025355_628181_106B343E 
+X-CRM114-Status: GOOD (  27.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,69 +101,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/09/24 08:49, Macpaul Lin ha scritto:
-> Convert the mfd: mediatek: mt6397 binding to DT schema format.
+On Wed, Sep 11, 2024 at 09:50:00PM +0200, Lorenzo Bianconi wrote:
+> Introduce airoha-mfd driver in order to load pinctrl and pwm drivers for
+> EN7581 SoC. airoha-mfd is needed since both pinctrl and pwm drivers
+> needs to access the same memory block (gpio memory region) to configure
+> {gio,irq}_chip and pwm functionalities respectively, so model them as
+> childs of a parent mfd driver.
+> Current EN7581 pinctrl driver supports the following functionalities:
+> - pin multiplexing via chip_scu syscon
+> - pin pull-up, pull-down, open-drain, current strength,
+>   {input,output}_enable, output_{low,high} via chip_scu syscon
+> - gpio controller
+> - irq controller
 > 
-> MT6323, MT6358, and MT6397 are PMIC devices with multiple function
-> subdevices. They share a common PMIC design but have variations in
-> subdevice combinations.
+> ---
+> Changes in v4:
+> - add 'Limitation' description in pwm driver
+> - fix comments in pwm driver
+> - rely on mfd->base __iomem pointer in pwm driver, modify register
+>   offsets according to it and get rid of sgpio_cfg, flash_cfg and
+>   cycle_cfg pointers
+> - simplify register utility routines in pwm driver
+> - use 'generator' instead of 'waveform' suffix for pwm routines
+> - fix possible overflow calculating duty cycle in pwm driver
+> - do not modify pwm state in free callback in pwm driver
+> - cap the maximum period in pwm driver
+> - do not allow inverse polarity in pwm driver
+> - do not set of_xlate callback in the pwm driver and allow the stack to
+>   do it
+> - fix MAINTAINERS file for airoha pinctrl driver
+> - fix undefined reference to __ffsdi2 in pinctrl driver
+> - simplify airoha,en7581-gpio-sysctl.yam binding
+> - Link to v3: https://lore.kernel.org/r/20240831-en7581-pinctrl-v3-0-98eebfb4da66@kernel.org
 > 
-> Key updates in this conversion:
+> Changes in v3:
+> - introduce airoha-mfd driver
+> - add pwm driver to the same series
+> - model pinctrl and pwm drivers as childs of a parent mfd driver.
+> - access chip-scu memory region in pinctrl driver via syscon
+> - introduce a single airoha,en7581-gpio-sysctl.yaml binding and get rid
+>   of dedicated bindings for pinctrl and pwm
+> - add airoha,en7581-chip-scu.yaml binding do the series
+> - Link to v2: https://lore.kernel.org/r/20240822-en7581-pinctrl-v2-0-ba1559173a7f@kernel.org
 > 
-> 1. RTC:
->     - Convert rtc-mt6397.txt and merge into parent MT6397 PMIC DT schema.
+> Changes in v2:
+> - Fix compilation errors
+> - Collapse some register mappings for gpio and irq controllers
+> - update dt-bindings according to new register mapping
+> - fix some dt-bindings errors
+> - Link to v1: https://lore.kernel.org/all/cover.1723392444.git.lorenzo@kernel.org/
 > 
-> 2. Regulators:
->     - Align to generic name "regulators".
->     - Update references from .txt to .yaml for mt6323, mt6358, and mt6397
->       regulators.
->     - Simplify regulator name labels in device tree examples.
+> ---
+> Benjamin Larsson (1):
+>       pwm: airoha: Add support for EN7581 SoC
 > 
-> 3. Audio Codec:
->     - Convert sound/mt6358.txt and merge into parent MT6397 PMIC DT schema.
->     - Align to generic name "audio-codec" for codec and sound subdevices.
->     - Add "mediatek,dmic-mode" and "Avdd-supply" properties.
+> Christian Marangi (2):
+>       dt-bindings: mfd: Add support for Airoha EN7581 GPIO System Controller
+>       mfd: airoha: Add support for Airoha EN7581 MFD
 > 
-> 4. Clocks:
->     - Align to generic name "clocks" for clockbuffer subdevices.
+> Lorenzo Bianconi (2):
+>       dt-bindings: arm: airoha: Add the chip-scu node for EN7581 SoC
+>       pinctrl: airoha: Add support for EN7581 SoC
 > 
-> 5. LEDs:
->     - Convert leds-mt6323.txt and merge into parent MT6397 PMIC DT schema.
->     - Update LED binding.
+>  .../bindings/arm/airoha,en7581-chip-scu.yaml       |   42 +
+>  .../bindings/mfd/airoha,en7581-gpio-sysctl.yaml    |  433 +++
+>  MAINTAINERS                                        |    7 +
+>  drivers/mfd/Kconfig                                |    8 +
+>  drivers/mfd/Makefile                               |    2 +
+>  drivers/mfd/airoha-en7581-gpio-mfd.c               |   72 +
+>  drivers/pinctrl/mediatek/Kconfig                   |   16 +-
+>  drivers/pinctrl/mediatek/Makefile                  |    1 +
+>  drivers/pinctrl/mediatek/pinctrl-airoha.c          | 2964 ++++++++++++++++++++
+>  drivers/pwm/Kconfig                                |   10 +
+>  drivers/pwm/Makefile                               |    1 +
+>  drivers/pwm/pwm-airoha.c                           |  414 +++
+>  include/linux/mfd/airoha-en7581-mfd.h              |    9 +
+>  13 files changed, 3978 insertions(+), 1 deletion(-)
+> ---
+> base-commit: 264c13114bd71ddfd7b25c7b94f6cda4587eca25
+> change-id: 20240818-en7581-pinctrl-1bf120154be0
+> prerequisite-change-id: 20240705-for-6-11-bpf-a349efc08df8:v2
 > 
-> 6. Keys:
->     - Add detailed descriptions for power and home keys.
->     - Add compatible: mediatek,mt6358-keys.
-> 
-> 7. Power Controller:
->     - Convert mt6323-poweroff.txt and merge into parent MT6397 PMIC DT
->       schema.
->     - Add #power-domain-cells property to fix dt-binding check error.
->     - Clarify "BBPU" as "Baseband power up".
-> 
-> 8. Pinctrl:
->     - Align to generic name "pinctrl" instead of "pin-controller".
-> 
-> 9. Compatible:
->     - Drop "mediatek,mt6357" since there is a separated DT Schema
->       for PMIC MT6357.
-> 
-> 10. Examples:
->     - MT6323: Retain complete examples for this PMIC.
->     - MT6358 and MT6397: simplify settings in regulators.
->      - Preserve "audio-codec", "clocks", "pinctrl", "rtc", and "keys"
->        sections as they contain typical settings for different PMICs.
-> 
-> Additional updates:
-> - MAINTAINERS: Add co-maintainers and reference to
->    mfd/mediatek,mt6397.yaml for LED and power-controller drivers.
-> - input/mediatek,pmic-keys.yaml: Update reference to
->    mfd/mediatek,mt6397.yaml.
-> 
-> Signed-off-by: Sen Chu <sen.chu@mediatek.com>
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Hi,
 
+any news with this? Rob reviewed the DT schemas and he is ok with them.
 
+Any other comments for the MFD driver and/or the pinctrl or PWM driver?
+
+-- 
+	Ansuel
 
