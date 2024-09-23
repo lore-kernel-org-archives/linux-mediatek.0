@@ -4,79 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD679CF9C6F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Sep 2024 08:04:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB417CF9C5B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Sep 2024 08:15:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YXMhltoMgmQLzO3ZdYxVrwS8dLFOJK+GrAHZ492TEhs=; b=WS8qS/lRFkd56Be3gNqrd9oLOP
-	jPDGHImKfxaX+JvGO8O9C8nh31R10GjEGMLb9PI8UbsOvOODHQppBcCa0i+M7MN2KFM9pzd0SDglt
-	+csSPVQQlsPnYqkcg97L+nU7k8TNp5Jffp/yqu84Thz8r7Z/1a9Jvy3WrThb9ZZqx5XOjFBe+d6uu
-	OEjukzbhs8/3GAMVzzyNMC2iepb9uUcVDJfVD897VI5DUPDRjDN29nqoayOuBUMNYQ4Gma8icm0hv
-	9zQssfiFOVJzxujJH56NcRIFDFyZ2ZCNiXchcv7jhFoDlaeW9nEZFyyQnycdXZa/QmANHPSj7g97/
-	q+x6ROXw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pQy8Dxfmu7fap2VOihFGL73YkwS/WJ5DNXUiPdnsd/I=; b=tSTq+6ONT3tzy//8+Fs8XbhOff
+	5qyfwbZnGBW7oxS6X7Twl7BKRQR29zFDZEz2lF0KyBuhWwNQE63U7nOkPhU44bb1WrP7go5cItBPo
+	Gu0OnbM3MyHQflZcpG9qCQlgEj8J1aa3UlUiNNLv3zU+oGg6mFm/2r8YDcY1TioYcvnyJBiG2Vfrg
+	KRRjr89pTb8GwqTs55AxdG+sRbRuUhGMpoyEyTIhsFh/n3Eff/qimeik9C9ncUaYJYYPmAuEiJGU9
+	hDFZoyJiFdmzHrIPw3ka7KvSAIybL24+kCKqEUQfSzk6Z2rcgaK+yFBFQ0FQMXQ6pG4/HwFc/beO2
+	oiheJ+2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sse36-0000000GcD2-2Qlw;
-	Mon, 23 Sep 2024 08:04:00 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sseDs-0000000Gdtf-3MWp;
+	Mon, 23 Sep 2024 08:15:08 +0000
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sse32-0000000Gc8z-0488
+	id 1sseCj-0000000Gdhz-0AZm
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Sep 2024 08:03:57 +0000
-X-UUID: 5d2f26d8798211efb3adad29d29602c1-20240923
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=YXMhltoMgmQLzO3ZdYxVrwS8dLFOJK+GrAHZ492TEhs=;
-	b=QOpNPpNRFw0mxdhNOYOd6iJq+L5shnPn915X/LSbiOrcKJ6smyuBwsPn1s8tYwTLIwNBd047wK7IXSGroaWoxhO2nRTpqZc5EWfhaIsxdev4WWogkwj6msy8ls4Ri0/E0g51wjlMNspa5JXjpg9PSu07KqpuDw3hGK/XJjyjxDc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:eba75238-81d2-45e8-a7a7-a7e184b5cf68,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:6dc6a47,CLOUDID:056b699e-8e9a-4ac1-b510-390a86b53c0a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 5d2f26d8798211efb3adad29d29602c1-20240923
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 613914916; Mon, 23 Sep 2024 01:03:48 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 23 Sep 2024 01:03:46 -0700
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 23 Sep 2024 16:03:45 +0800
-From: <peter.wang@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
-	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>,
-	<quic_nguyenb@quicinc.com>
-Subject: [PATCH v8 3/3] ufs: core: add a quirk for MediaTek SDB mode aborted
-Date: Mon, 23 Sep 2024 16:03:44 +0800
-Message-ID: <20240923080344.19084-4-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240923080344.19084-1-peter.wang@mediatek.com>
-References: <20240923080344.19084-1-peter.wang@mediatek.com>
+	Mon, 23 Sep 2024 08:13:58 +0000
+Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-20536dcc6e9so25625635ad.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Sep 2024 01:13:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=compal-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1727079235; x=1727684035; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=pQy8Dxfmu7fap2VOihFGL73YkwS/WJ5DNXUiPdnsd/I=;
+        b=YalaXfMYfupdfHmFHgfle69+1W+X0ImuXiHdaqGfWY4o5u05/AxKKzwXeOhP94DjqN
+         r3Vlwfwxs4qZu+P/l/yyJ2WMCNPDo0Q5RI5kjUXj4pIxXFe1lLyStlfR0trVj23qTL16
+         p3z5dvylt25CyOGDa8njzZf7Wo7MVu4lo91uOD+M6Uq2PPLryvJ7MrnVyZE3ySiweTOg
+         /8i7oCNDCpBdpgubYuABSIZvMY1kunXtehCIA+rRQT25284Cjwc9KyC8dUJtHLF5huCN
+         OSE2zSxLkUP9+vdcAucExuJFWl8KdBbQEEJ3nhOrOq/Vao4TkM7zj3iCfv5T/g6cge8u
+         WJ3w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727079235; x=1727684035;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=pQy8Dxfmu7fap2VOihFGL73YkwS/WJ5DNXUiPdnsd/I=;
+        b=OzJL13/HqjbdPeaWXGr/Fl48AEj7DzhlzxiXmmZtcmsAY9LvpODBS37PkH06ZwerpP
+         sHiVzxRxqphbSvSeegC91X4+3AN3rNyhlhlaGfVL03HihY2HMrIcBNmIwgJDf2gLYWRI
+         pSe+9E24zQKINOJoh1HmVp4hD+13urDxha0CAoyQx/Y/OF1kYdfJZzj2erVsE468tNJq
+         lp3bk8W+L3JsiYqxlvU6yQ4aGtepgjGfP9d90cVdwE7JyRNmeeooiylCBVTFunldNQ0U
+         7A4U9M7Nm7ZO6H8fj52CySajrKx4SDNpb2lh0hzf4a4JeXiCugdVGLApe4dhqNY76NrV
+         uaPA==
+X-Forwarded-Encrypted: i=1; AJvYcCWFb2ouUdD+ITdcjwAq2V3WlCq7MK/9anez5CzoM17rZkJvRLl4xz1y03oc21uCOMeYzWIuKlCqy8dVbpT5cQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx/e25n8S1OIdjUUgpO7eVB1lc0VWwmCc2YA7Mm7xcWeoehJGnk
+	g2e8C9MuP7zARtdF5ybhATBwF/6uXB3kW6h8/1Y8hZSyIxV5z1bcJHzGz/MUF0M=
+X-Google-Smtp-Source: AGHT+IE26gx2jgT7LO3ISI0SJ9dTEoWLtDfoJJBXr1rZ4bhzlohyJeU/p7j2+b//vCf8oO67DUUqNw==
+X-Received: by 2002:a17:902:da85:b0:205:5427:2231 with SMTP id d9443c01a7336-208d840d687mr139802545ad.47.1727079235519;
+        Mon, 23 Sep 2024 01:13:55 -0700 (PDT)
+Received: from maxweng-Latitude-7410.. (2001-b030-0251-0200-ae0b-14c1-5918-69cd.hinet-ip6.hinet.net. [2001:b030:251:200:ae0b:14c1:5918:69cd])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2079470f38csm128256985ad.205.2024.09.23.01.13.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 23 Sep 2024 01:13:54 -0700 (PDT)
+From: Max Weng <max_weng@compal.corp-partner.google.com>
+To: linux-kernel@vger.kernel.org
+Cc: max_weng@compal.corp-partner.google.com,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v1] arm64: dts: mediatek: mt8186: add FHCTL node
+Date: Mon, 23 Sep 2024 16:13:40 +0800
+Message-Id: <20240923081340.860715-1-max_weng@compal.corp-partner.google.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240923_010356_098333_538D5CDF 
-X-CRM114-Status: GOOD (  12.42  )
+X-CRM114-CacheID: sfid-20240923_011357_286325_E5B931B1 
+X-CRM114-Status: UNSURE (   7.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,65 +97,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+From: max_weng <max_weng@compal.corp-partner.google.com>
 
-Because the MediaTek UFS controller uses UTRLCLR to clear commands
-and fills the OCS with ABORTED, this patch introduces a quirk to
-treat ABORTED as INVALID_OCS_VALUE.
+add fhctl device node.
 
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+Signed-off-by: max_weng <max_weng@compal.corp-partner.google.com>
 ---
- drivers/ufs/core/ufshcd.c       | 5 ++++-
- drivers/ufs/host/ufs-mediatek.c | 1 +
- include/ufs/ufshcd.h            | 6 ++++++
- 3 files changed, 11 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index b5c7bc50a27e..b42079c3d634 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -5404,7 +5404,10 @@ ufshcd_transfer_rsp_status(struct ufs_hba *hba, struct ufshcd_lrb *lrbp,
- 		}
- 		break;
- 	case OCS_ABORTED:
--		result |= DID_ABORT << 16;
-+		if (hba->quirks & UFSHCD_QUIRK_OCS_ABORTED)
-+			result |= DID_REQUEUE << 16;
-+		else
-+			result |= DID_ABORT << 16;
- 		dev_warn(hba->dev,
- 				"OCS aborted from controller = %x for tag %d\n",
- 				ocs, lrbp->task_tag);
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index 02c9064284e1..8a4c1b8f5a26 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -1021,6 +1021,7 @@ static int ufs_mtk_init(struct ufs_hba *hba)
- 	hba->quirks |= UFSHCI_QUIRK_SKIP_MANUAL_WB_FLUSH_CTRL;
- 	hba->quirks |= UFSHCD_QUIRK_MCQ_BROKEN_INTR;
- 	hba->quirks |= UFSHCD_QUIRK_MCQ_BROKEN_RTC;
-+	hba->quirks |= UFSHCD_QUIRK_OCS_ABORTED;
- 	hba->vps->wb_flush_threshold = UFS_WB_BUF_REMAIN_PERCENT(80);
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+index 148c332018b0..d3c3c2a40adc 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+@@ -29,6 +29,13 @@ aliases {
+ 		rdma1 = &rdma1;
+ 	};
  
- 	if (host->caps & UFS_MTK_CAP_DISABLE_AH8)
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index 0fd2aebac728..8f156803d703 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -684,6 +684,12 @@ enum ufshcd_quirks {
- 	 * single doorbell mode.
- 	 */
- 	UFSHCD_QUIRK_BROKEN_LSDBS_CAP			= 1 << 25,
++	fhctl: fhctl@1000ce00 {
++		compatible = "mediatek,mt8186-fhctl";
++		clocks = <&apmixedsys CLK_APMIXED_TVDPLL>;
++		reg = <0 0x1000ce00 0 0x200>;
++		status = "disabled";
++	};
 +
-+	/*
-+	 * Some host controllers set OCS_ABORTED after UTRLCLR (SDB mode),
-+	 * this quirk is set to treat OCS: ABORTED as INVALID_OCS_VALUE
-+	 */
-+	UFSHCD_QUIRK_OCS_ABORTED			= 1 << 26,
- };
- 
- enum ufshcd_caps {
+ 	cci: cci {
+ 		compatible = "mediatek,mt8186-cci";
+ 		clocks = <&mcusys CLK_MCU_ARMPLL_BUS_SEL>,
 -- 
-2.45.2
+2.34.1
 
 
