@@ -4,70 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22BB9CF9C71
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Sep 2024 21:30:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7030BCF9C73
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Sep 2024 23:47:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Msr4e2aktGMwp7wsjBm8wr8s1DK/j+37ksdEXI7Qv90=; b=XajVbryIYu6TvD2PVpsroPRi9O
-	ZUlsaOYb31Pg6Qj5AbMCcx/O0c/c3mp4iYaxnIxUrIvgsUjtda5rhAnQNRPQ26hdNUtV56sVAmfxl
-	m0P7wAZ4N2uvZ65XDTJ5vSvyakg5WmkzEVouQ5U1QIPVESPJA6yEofbx4gaScRfZOa9qzVQxRilTm
-	HFSEx6ZRjfpuDF9idwtTFivtx7FiZQ/RE0b5YWcMzvY07kUsaQIEonIqN6IrPQlXlk9KTlVjlmPeo
-	ukZx6tsDPEZ4x+5swPdt7S+D1KgWW8BFZa7+yGFgpQfTHX47a4KjOEFahWg/heVV7Cddk23z09WM5
-	q1VCZ91g==;
+	bh=I+TXKENwJdpA9K3H+iyalOFiLAdWjJ32cVOqriXKvCw=; b=LDId65yvVqF2XWVWz5lw842Ubb
+	ycLRNxaMDRp/wmeHwjf7UfGPhUnsHtb8fwuwBVnh/vBBS2uPjGMA1qnL4QEJZ2yv2MvemVvLxny6T
+	7Pd1iIodWQlR7Ah7p66UJyI56Cy7ftlxi4u34Nsejs9qt+v6iZzowSTc3K2E7BHYDiAU6t4uhU3Ll
+	m+mvKnkctAo8qDFvyClVROmcsVAd8UXEf2RpfGkWW2dmfpzktJn3Z9SJIALXan3l3GCDD4Q8bIPz8
+	ewh0ouzP4yqe62E52v2rcOxfimAuHMFE6PAprWpkRMuk6et50dRFJyF/pSJlnSdWKzwq8KQBsmLW1
+	jLFlSTDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssqdd-00000000Vwp-3s5W;
-	Mon, 23 Sep 2024 21:30:33 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1sssm9-00000000idR-2glf;
+	Mon, 23 Sep 2024 23:47:29 +0000
+Received: from mgamail.intel.com ([198.175.65.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssqcV-00000000VsJ-2NUR;
-	Mon, 23 Sep 2024 21:29:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id D5477A42857;
-	Mon, 23 Sep 2024 21:29:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8551C4CEC4;
-	Mon, 23 Sep 2024 21:29:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727126961;
-	bh=aPsXlsQTc4iQomHCqP6FGAc3aR0AhJ/h9kmcL5q8DMQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=pZBBLzsnMF6VS0JNZsP3ofiiVwXFaZtz84STcAEp+Xv/m3w39J39wh4dpHhrPsoGU
-	 NRGrrev2gSKkyM08YBIpjf5+KRcDD2ZKFLOz0yRhHZ9cRzp30aLb/U0H0L/ZwTSyg1
-	 NJzxxGp5v/GqYyYY34E2dPdLH6hDPnQCCQq/RYw28hJcGSCRAD3tYbr8alBpnosMe4
-	 H9qHnUxNoNtGmcaTCHtUoHKCqn3lRaR561QimVpdE2xqeiKOo4DsemGjdJxP2lPP1r
-	 vyf8qu3GiTzlkOiOZRetxMjXjDyC2tng226uUnKUrnCm7l2hqoAkEdH11Ewh9Nn6cI
-	 tqmnHk5YiDaDg==
-Date: Mon, 23 Sep 2024 23:29:18 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Christian Marangi <ansuelsmth@gmail.com>, linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
-	Hui Ma <hui.ma@airoha.com>
-Subject: Re: [PATCH] PCI: mediatek-gen3: Avoid PCIe resetting for Airoha
- EN7581 SoC
-Message-ID: <ZvHdrsx0PZhKWU_6@lore-desk>
-References: <20240920-pcie-en7581-rst-fix-v1-1-1043fb63ffc9@kernel.org>
- <20240923171041.GA1158802@bhelgaas>
+	id 1sssm6-00000000ici-1bN7;
+	Mon, 23 Sep 2024 23:47:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1727135247; x=1758671247;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=5Uj5mtdoOAx4kTnVRoWRzMXPTIVr/7eKH1rcTgJl9kw=;
+  b=ANZa1RzS8Z3CVhcoZCnTjimQQqJcm5/+rNHRjtObtMIV/jwSK0H5sZVo
+   lpaOb3zhDOfzCeXLfWZ56oT59aa8A4+bEd34gYkzvGfhfupH7sbu6AlBr
+   yXrYhP8Lhkj6roZlhq96fUsevZ4RArvw8I/F9Uo8hG9yz3WsKsNrSPuBb
+   3psbn0Tz/0TFslKILFJ8F64mFKVxV5oXdtn06EYI3vZvVLV5zSL5HdNrt
+   B1AZiWkS6C4MUNOpoSRan434q5gimNiOGQYbPUPFtX6Pmc+7ADOv6AVh/
+   sjIAxKD4SFexp3cUlaIk9TOv/EFJl2GWjK5aVMOIuUVzKpTqf61LaYsbW
+   w==;
+X-CSE-ConnectionGUID: PevOyKxgSBmUgahma7XH+A==
+X-CSE-MsgGUID: 797eWArhQ3+BQE98yDb74A==
+X-IronPort-AV: E=McAfee;i="6700,10204,11204"; a="26201990"
+X-IronPort-AV: E=Sophos;i="6.10,252,1719903600"; 
+   d="scan'208";a="26201990"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Sep 2024 16:47:25 -0700
+X-CSE-ConnectionGUID: Ka2oBSuyTKOd3Z5PG+7EYQ==
+X-CSE-MsgGUID: ZyAwx6NvSC2ErgBnx4lVTA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,252,1719903600"; 
+   d="scan'208";a="94575117"
+Received: from lkp-server01.sh.intel.com (HELO 53e96f405c61) ([10.239.97.150])
+  by fmviesa002.fm.intel.com with ESMTP; 23 Sep 2024 16:44:51 -0700
+Received: from kbuild by 53e96f405c61 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1sssjX-000HhL-0L;
+	Mon, 23 Sep 2024 23:44:47 +0000
+Date: Tue, 24 Sep 2024 07:44:06 +0800
+From: kernel test robot <lkp@intel.com>
+To: Liankun Yang <liankun.yang@mediatek.com>, chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de, airlied@gmail.com, simona@ffwll.ch,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	jitao.shi@mediatek.com, mac.shen@mediatek.com,
+	peng.liu@mediatek.com
+Cc: oe-kbuild-all@lists.linux.dev,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v1 1/1] drm/mediatek: dp: Add sdp path reset
+Message-ID: <202409240700.ARp9pDUk-lkp@intel.com>
+References: <20240923133610.23728-1-liankun.yang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="CeZNBjXD8FkiuUtc"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240923171041.GA1158802@bhelgaas>
+In-Reply-To: <20240923133610.23728-1-liankun.yang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240923_142923_764290_345D0C12 
-X-CRM114-Status: GOOD (  30.81  )
+X-CRM114-CacheID: sfid-20240923_164726_499284_E77805AA 
+X-CRM114-Status: GOOD (  14.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,153 +92,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Liankun,
 
---CeZNBjXD8FkiuUtc
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+kernel test robot noticed the following build errors:
 
-> On Fri, Sep 20, 2024 at 10:26:28AM +0200, Lorenzo Bianconi wrote:
-> > The PCIe controller available on the EN7581 SoC does not support reset
-> > via the following lines:
-> > - PCIE_MAC_RSTB
-> > - PCIE_PHY_RSTB
-> > - PCIE_BRG_RSTB
-> > - PCIE_PE_RSTB
-> >=20
-> > Introduce the reset callback in order to avoid resetting the PCIe port
-> > for Airoha EN7581 SoC.
-> >=20
-> > Tested-by: Hui Ma <hui.ma@airoha.com>
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > ---
-> >  drivers/pci/controller/pcie-mediatek-gen3.c | 44 ++++++++++++++++++---=
---------
-> >  1 file changed, 28 insertions(+), 16 deletions(-)
-> >=20
-> > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/=
-controller/pcie-mediatek-gen3.c
-> > index 5c19abac74e8..9cea67e92d98 100644
-> > --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> > @@ -128,10 +128,12 @@ struct mtk_gen3_pcie;
-> >  /**
-> >   * struct mtk_gen3_pcie_pdata - differentiate between host generations
-> >   * @power_up: pcie power_up callback
-> > + * @reset: pcie reset callback
-> >   * @phy_resets: phy reset lines SoC data.
-> >   */
-> >  struct mtk_gen3_pcie_pdata {
-> >  	int (*power_up)(struct mtk_gen3_pcie *pcie);
-> > +	void (*reset)(struct mtk_gen3_pcie *pcie);
-> >  	struct {
-> >  		const char *id[MAX_NUM_PHY_RESETS];
-> >  		int num_resets;
-> > @@ -373,6 +375,28 @@ static void mtk_pcie_enable_msi(struct mtk_gen3_pc=
-ie *pcie)
-> >  	writel_relaxed(val, pcie->base + PCIE_INT_ENABLE_REG);
-> >  }
-> > =20
-> > +static void mtk_pcie_reset(struct mtk_gen3_pcie *pcie)
-> > +{
-> > +	u32 val;
-> > +
-> > +	/* Assert all reset signals */
-> > +	val =3D readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
-> > +	val |=3D PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
-> > +	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> > +
-> > +	/*
-> > +	 * Described in PCIe CEM specification sections 2.2 (PERST# Signal)
-> > +	 * and 2.2.1 (Initial Power-Up (G3 to S0)).
-> > +	 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
-> > +	 * for the power and clock to become stable.
-> > +	 */
-> > +	msleep(100);
->=20
-> I see you're just moving this, but it's a good chance to use
-> PCIE_T_PVPERL_MS.
+[auto build test ERROR on pza/reset/next]
+[also build test ERROR on linus/master v6.11 next-20240923]
+[cannot apply to pza/imx-drm/next]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-ack, I will add it.
+url:    https://github.com/intel-lab-lkp/linux/commits/Liankun-Yang/drm-mediatek-dp-Add-sdp-path-reset/20240923-213747
+base:   https://git.pengutronix.de/git/pza/linux reset/next
+patch link:    https://lore.kernel.org/r/20240923133610.23728-1-liankun.yang%40mediatek.com
+patch subject: [PATCH v1 1/1] drm/mediatek: dp: Add sdp path reset
+config: arm-allmodconfig (https://download.01.org/0day-ci/archive/20240924/202409240700.ARp9pDUk-lkp@intel.com/config)
+compiler: arm-linux-gnueabi-gcc (GCC) 14.1.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240924/202409240700.ARp9pDUk-lkp@intel.com/reproduce)
 
->=20
-> > +
-> > +	/* De-assert reset signals */
-> > +	val &=3D ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RS=
-TB);
-> > +	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> > +}
-> > +
-> >  static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
-> >  {
-> >  	struct resource_entry *entry;
-> > @@ -402,22 +426,9 @@ static int mtk_pcie_startup_port(struct mtk_gen3_p=
-cie *pcie)
-> >  	val |=3D PCIE_DISABLE_DVFSRC_VLT_REQ;
-> >  	writel_relaxed(val, pcie->base + PCIE_MISC_CTRL_REG);
-> > =20
-> > -	/* Assert all reset signals */
-> > -	val =3D readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
-> > -	val |=3D PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
-> > -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> > -
-> > -	/*
-> > -	 * Described in PCIe CEM specification sections 2.2 (PERST# Signal)
-> > -	 * and 2.2.1 (Initial Power-Up (G3 to S0)).
-> > -	 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
-> > -	 * for the power and clock to become stable.
-> > -	 */
-> > -	msleep(100);
-> > -
-> > -	/* De-assert reset signals */
-> > -	val &=3D ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RS=
-TB);
-> > -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> > +	/* Reset the PCIe port if requested by the hw */
->=20
-> I don't see any real "request" from the hardware.  IIUC, this is more
-> like "assert reset if this hardware supports it".
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202409240700.ARp9pDUk-lkp@intel.com/
 
-ack, %s/requested/supported. I will fix it.
+All errors (new ones prefixed by >>):
 
-Regards,
-Lorenzo
+   drivers/gpu/drm/mediatek/mtk_dp.c: In function 'mtk_dp_sdp_path_reset':
+>> drivers/gpu/drm/mediatek/mtk_dp.c:1058:33: error: 'SDP_RESET_SW_DP_ENC0_P0' undeclared (first use in this function); did you mean 'SDP_PACKET_W_DP_ENC1_P0'?
+    1058 |                                 SDP_RESET_SW_DP_ENC0_P0,
+         |                                 ^~~~~~~~~~~~~~~~~~~~~~~
+         |                                 SDP_PACKET_W_DP_ENC1_P0
+   drivers/gpu/drm/mediatek/mtk_dp.c:1058:33: note: each undeclared identifier is reported only once for each function it appears in
 
->=20
-> > +	if (pcie->soc->reset)
-> > +		pcie->soc->reset(pcie);
-> > =20
-> >  	/* Check if the link is up or not */
-> >  	err =3D readl_poll_timeout(pcie->base + PCIE_LINK_STATUS_REG, val,
-> > @@ -1207,6 +1218,7 @@ static const struct dev_pm_ops mtk_pcie_pm_ops =
-=3D {
-> > =20
-> >  static const struct mtk_gen3_pcie_pdata mtk_pcie_soc_mt8192 =3D {
-> >  	.power_up =3D mtk_pcie_power_up,
-> > +	.reset =3D mtk_pcie_reset,
-> >  	.phy_resets =3D {
-> >  		.id[0] =3D "phy",
-> >  		.num_resets =3D 1,
-> >=20
-> > ---
-> > base-commit: f2024903cb387971abdbc6398a430e735a9b394c
-> > change-id: 20240920-pcie-en7581-rst-fix-8161658c13c4
-> >=20
-> > Best regards,
-> > --=20
-> > Lorenzo Bianconi <lorenzo@kernel.org>
-> >=20
 
---CeZNBjXD8FkiuUtc
-Content-Type: application/pgp-signature; name="signature.asc"
+vim +1058 drivers/gpu/drm/mediatek/mtk_dp.c
 
------BEGIN PGP SIGNATURE-----
+  1054	
+  1055	static void mtk_dp_sdp_path_reset(struct mtk_dp *mtk_dp)
+  1056	{
+  1057		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3004,
+> 1058					SDP_RESET_SW_DP_ENC0_P0,
+  1059					SDP_RESET_SW_DP_ENC0_P0);
+  1060	
+  1061		/* Wait for sdp path reset to complete */
+  1062		usleep_range(1000, 5000);
+  1063		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3004,
+  1064					0, SDP_RESET_SW_DP_ENC0_P0);
+  1065	}
+  1066	
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZvHdrgAKCRA6cBh0uS2t
-rEONAP4qiHrP6to/gC9PCjS4UG9xJ16SJrG/IlXBo0VmZrPJtAD7B2K8bXfQksAS
-+/PGKL0/4VYtA7fNZEnlTYRxqoOQVw0=
-=OoIH
------END PGP SIGNATURE-----
-
---CeZNBjXD8FkiuUtc--
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
