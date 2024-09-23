@@ -4,88 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A48CCF9C5B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Sep 2024 06:34:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 537F1CF9C5B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Sep 2024 07:03:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y5jTK+r41Ph8334euEi90MC38DwR8Kznsi20eXBe15E=; b=CkhhOVQozHxTKkf79EUggaGc6l
-	TWN3T+OUVWmYvmIV1KHd3SdYTCsMCuiYf819oyE5XxH/ymc55Y53h7sY3OwJLxPTJVBrBmmiIIhdm
-	j7E5IAuNitYmzo9HeKDRlydizvrzAlJTfN2aG5oXFOTnbYmyVSQgWilAst5kLWezJcckHcjxLHymr
-	xSdhG69J1iwHlYeOtlIFCWb0N+Ya/ubdGivxSE1+0kaDWlRuo3dnObXOw9hG4KIfAGDMzUcsxc0eZ
-	aPMQnIYCfA/IiUcKrqmuBkKhrBXVnN3Np8tiUgRXyn8O4v/KUiZtXMODX+lScSXqFedo0g8i9atYg
-	6fDVGzIQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:References:CC:To:From:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SvHXEKnklcWRc5WpOcCs0OhOTmMRy5vRLxuwBAoMX+w=; b=FzaEw6qO0PSsRefaG23Q/vYBC6
+	Fe26mrmObcU44Zswgxjq5ZJIWc7yLHe7JBJZ8SF5AHHNFSKw/f+GbdG4gY7RI2Q0vkmgBuscAhNM7
+	N7h/qA7JDli1NRIk32RHhx0Uc2gSJz7AGblIwfUgSCLYcT/44R6omA1YaxS66MiSbNIvWXsnkZ3Lm
+	z812mMV//kVslUp94sxct9dzdPm0+DrG9PZGCmmUcumEqJAYAMq6fqdB+XDyi32ENKV5a1J3Q6mbB
+	whUyqenEdfLz4HBhQxZ7DJ3eR3306TYHqE6BMcLS2sCRK4buDEqQgMtwZToh3mqN3Kh9uesaeTEto
+	VvsURPsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sscek-0000000GQix-1Zk4;
-	Mon, 23 Sep 2024 06:34:46 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1ssd66-0000000GULC-1Hpt;
+	Mon, 23 Sep 2024 07:03:02 +0000
+Received: from szxga06-in.huawei.com ([45.249.212.32])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sscdb-0000000GQVo-0TNu
-	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Sep 2024 06:33:36 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-5365928acd0so4139941e87.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 22 Sep 2024 23:33:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1727073212; x=1727678012; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=y5jTK+r41Ph8334euEi90MC38DwR8Kznsi20eXBe15E=;
-        b=g/KQ30Nx/Y10yFtjQoV0NM7rHsHVNYPgDB2nZvztBHPNebdVXr0A53T72R3eo+mSn1
-         rIRqGu3ALf/sR8X/18NwxtHjCkx1W5rnJZz9yu+Dwi7ktnZnWR8g/ViPF0GFSiAgyvNx
-         WLtaET3Z88BSR7LoZUFYCZ0qVzu3DELeTo1foveD9axV6z3gD7GGsnqBdSQEnIo0cKqH
-         vmBeawzWFqp6SkdHRJnOlBZWJp8hp2tiJ4l1BhQwiAR9DPpBbteR/CzIQIoPLbi+WKy8
-         oG1SUwrfByEiOo8xxj/7SS5kws8qKZjAGbdNup1qdoTxoRI5fCTNZfbxMOap1Kl+n4qf
-         qxbg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727073212; x=1727678012;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=y5jTK+r41Ph8334euEi90MC38DwR8Kznsi20eXBe15E=;
-        b=llkDQjsTxcZXJvEbgicTSGIKCC90qNZ/7WbsAppuampfBEvxmiPVkmyhh09rw4ei2O
-         YtFVF91iqgVbiIx1HolOPvWCXnbhA0/hLYAnbhoK/0qVAoU8CqkdWHtxY+hitdIXmWF8
-         fBPlqFNn0NhuXDdqmydwMQdhBW4NGJ68qhyMrPu21asFruq1BaDr90MZF7g8ecsRhfzn
-         2+pK6gddq9oqMwhnera60tu/QrQ6LsdogDmqjwDfHmEqZ/Xz4ax5XKwTy5db50PSgOZP
-         PxfKTWVO52Z2X1P5aWhIdExbMxaMneg6o1NEFJtw3MoK3H00A6WFhp31IQ8wzF77aJCV
-         +NHg==
-X-Forwarded-Encrypted: i=1; AJvYcCU2y9xpyYaFVVpMrnbrlgKx4M+rv1kkTw8KsITuPNXFwCxXcsyTYdYMKVTHO5EU2mgqbse4vBkDtYC7kUelEQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxwotVRfPKEgfd60QKizJdwGoRHaIuXCeq9DgT1FnsL+Ym9Apg1
-	2ZI5jBbjR/cP4SdxKdlkQdUSCcYPLUs8kF6qKm4zk8NtdEUsB112ebwS+LkVvGc=
-X-Google-Smtp-Source: AGHT+IF0SSg0hB/gqsdKj0/yr4GTl2yjAfBCnM5NlEWIac3bv4HTXek3j/tUDFkeNkN6x6DTtY/72Q==
-X-Received: by 2002:a05:6512:110c:b0:52e:be1f:bf7f with SMTP id 2adb3069b0e04-536ad1808d1mr4286439e87.27.1727073212004;
-        Sun, 22 Sep 2024 23:33:32 -0700 (PDT)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--7a1.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::7a1])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-536870b4255sm3165429e87.259.2024.09.22.23.33.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 22 Sep 2024 23:33:31 -0700 (PDT)
-Date: Mon, 23 Sep 2024 09:33:29 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Jens Wiklander <jens.wiklander@linaro.org>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
-	op-tee@lists.trustedfirmware.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Olivier Masse <olivier.masse@nxp.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Yong Wu <yong.wu@mediatek.com>, 
-	Sumit Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
-	Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, 
-	"T . J . Mercier" <tjmercier@google.com>, Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, 
-	Sumit Garg <sumit.garg@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-Subject: Re: [RFC PATCH 0/4] Linaro restricted heap
-Message-ID: <dhxvyshwi4qmcmwceokhqey2ww4azjcs6qrpnkgivdj7tv5cke@r36srvvbof6q>
-References: <20240830070351.2855919-1-jens.wiklander@linaro.org>
+	id 1ssd4V-0000000GU15-11CO;
+	Mon, 23 Sep 2024 07:01:25 +0000
+Received: from mail.maildlp.com (unknown [172.19.162.112])
+	by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4XBv6L5xx7z1ymGS;
+	Mon, 23 Sep 2024 15:01:14 +0800 (CST)
+Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
+	by mail.maildlp.com (Postfix) with ESMTPS id 9CD3A1400F4;
+	Mon, 23 Sep 2024 15:01:13 +0800 (CST)
+Received: from [10.67.120.129] (10.67.120.129) by
+ dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.11; Mon, 23 Sep 2024 15:01:13 +0800
+Message-ID: <2fb8d278-62e0-4a81-a537-8f601f61e81d@huawei.com>
+Date: Mon, 23 Sep 2024 15:01:12 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240830070351.2855919-1-jens.wiklander@linaro.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net 2/2] page_pool: fix IOMMU crash when driver has
+ already unbound
+From: Yunsheng Lin <linyunsheng@huawei.com>
+To: Ilias Apalodimas <ilias.apalodimas@linaro.org>
+CC: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>,
+	<liuyonglong@huawei.com>, <fanghaiqing@huawei.com>, <zhangkun09@huawei.com>,
+	Robin Murphy <robin.murphy@arm.com>, Alexander Duyck
+	<alexander.duyck@gmail.com>, IOMMU <iommu@lists.linux.dev>, Wei Fang
+	<wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang
+	<xiaoning.wang@nxp.com>, Eric Dumazet <edumazet@google.com>, Tony Nguyen
+	<anthony.l.nguyen@intel.com>, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+	Alexander Lobakin <aleksander.lobakin@intel.com>, Alexei Starovoitov
+	<ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard
+ Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, Saeed
+ Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Tariq Toukan
+	<tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Kalle Valo
+	<kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andrew
+ Morton <akpm@linux-foundation.org>, <imx@lists.linux.dev>,
+	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<intel-wired-lan@lists.osuosl.org>, <bpf@vger.kernel.org>,
+	<linux-rdma@vger.kernel.org>, <linux-wireless@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-mm@kvack.org>
+References: <20240918111826.863596-1-linyunsheng@huawei.com>
+ <20240918111826.863596-3-linyunsheng@huawei.com>
+ <CAC_iWjK=G7Oo5=pN2QunhasgDC6NyC1L+96jigX7u9ad+PbYng@mail.gmail.com>
+ <50a463d5-a5a1-422f-a4f7-d3587b12c265@huawei.com>
+Content-Language: en-US
+In-Reply-To: <50a463d5-a5a1-422f-a4f7-d3587b12c265@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.67.120.129]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ dggpemf200006.china.huawei.com (7.185.36.61)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240922_233335_164008_5ED11228 
-X-CRM114-Status: GOOD (  29.90  )
+X-CRM114-CacheID: sfid-20240923_000123_884624_6FD684E8 
+X-CRM114-Status: GOOD (  35.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,110 +94,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On 2024/9/19 18:54, Yunsheng Lin wrote:
+> On 2024/9/19 1:06, Ilias Apalodimas wrote:
+>> Hi Yunsheng,
+>>
+>> Thanks for looking into this!
+>>
+>> On Wed, 18 Sept 2024 at 14:24, Yunsheng Lin <linyunsheng@huawei.com> wrote:
+>>>
+>>> Networking driver with page_pool support may hand over page
+>>> still with dma mapping to network stack and try to reuse that
+>>> page after network stack is done with it and passes it back
+>>> to page_pool to avoid the penalty of dma mapping/unmapping.
+>>
+>> I think you can shorten this to "If recycling and DMA mapping are
+>> enabled during the pool creation"
+> 
+> I am not sure if I understand the 'recycling' part here. Is the
+> 'recycling' part referring to whether skb_mark_for_recycle() is
+> called to enable recycling for the skb? Is there still any driver
+> with page_pool support but doesn't call skb_mark_for_recycle()
+> when handing over page to network stack?
+> 
+> For the 'DMA mapping' part, as there is no space in 'struct
+> page' to track the inflight pages, so 'pp' in 'struct page'
+> is renamed to 'pp_item' to enable the tracking of inflight
+> page. I tried shortening this for 'pool->dma_map being false'
+> when coding, but it seems differentiating the same field in
+> 'struct page' doesn't make much sense according to 'pool->dma_map'
+> as it means we might need to add an union in 'struct page' for
+> that to work and add additional checking to decide if it is 'pp'
+> or 'pp_item'.
+> 
+>>
+>>> With all the caching in the network stack, some pages may be
+>>> held in the network stack without returning to the page_pool
+>>> soon enough, and with VF disable causing the driver unbound,
+>>> the page_pool does not stop the driver from doing it's
+>>> unbounding work, instead page_pool uses workqueue to check
+>>> if there is some pages coming back from the network stack
+>>> periodically, if there is any, it will do the dma unmmapping
+>>> related cleanup work.
+>>>
+>>> As mentioned in [1], attempting DMA unmaps after the driver
+>>> has already unbound may leak resources or at worst corrupt
+>>> memory. Fundamentally, the page pool code cannot allow DMA
+>>> mappings to outlive the driver they belong to.
+>>>
+>>> Currently it seems there are at least two cases that the page
+>>> is not released fast enough causing dma unmmapping done after
+>>> driver has already unbound:
+>>> 1. ipv4 packet defragmentation timeout: this seems to cause
+>>>    delay up to 30 secs:
+>>>
+>>> 2. skb_defer_free_flush(): this may cause infinite delay if
+>>>    there is no triggering for net_rx_action().
+>>>
+>>> In order not to do the dma unmmapping after driver has already
+>>> unbound and stall the unloading of the networking driver, add
+>>> the pool->items array to record all the pages including the ones
+>>> which are handed over to network stack, so the page_pool can
+>>> do the dma unmmapping for those pages when page_pool_destroy()
+>>> is called.
+>>
+>> So, I was thinking of a very similar idea. But what do you mean by
+>> "all"? The pages that are still in caches (slow or fast) of the pool
+>> will be unmapped during page_pool_destroy().
+> 
+> Yes, it includes the one in pool->alloc and pool->ring.
 
-On Fri, Aug 30, 2024 at 09:03:47AM GMT, Jens Wiklander wrote:
-> Hi,
-> 
-> This patch set is based on top of Yong Wu's restricted heap patch set [1].
-> It's also a continuation on Olivier's Add dma-buf secure-heap patch set [2].
-> 
-> The Linaro restricted heap uses genalloc in the kernel to manage the heap
-> carvout. This is a difference from the Mediatek restricted heap which
-> relies on the secure world to manage the carveout.
-> 
-> I've tried to adress the comments on [2], but [1] introduces changes so I'm
-> afraid I've had to skip some comments.
+It worths mentioning that there is a semantics changing here:
+Before this patch, there can be almost unlimited inflight pages used by
+driver and network stack, as page_pool doesn't really track those pages.
+After this patch, as we use a fixed-size pool->items array to track the
+inflight pages, the inflight pages is limited by the pool->items, currently
+the size of pool->items array is calculated as below in this patch:
 
-I know I have raised the same question during LPC (in connection to
-Qualcomm's dma-heap implementation). Is there any reason why we are
-using generic heaps instead of allocating the dma-bufs on the device
-side?
++#define PAGE_POOL_MIN_ITEM_CNT	512
++	unsigned int item_cnt = (params->pool_size ? : 1024) +
++				PP_ALLOC_CACHE_SIZE + PAGE_POOL_MIN_ITEM_CNT;
 
-In your case you already have TEE device, you can use it to allocate and
-export dma-bufs, which then get imported by the V4L and DRM drivers.
-
-I have a feeling (I might be completely wrong here) that by using
-generic dma-buf heaps we can easily end up in a situation when the
-userspace depends heavily on the actual platform being used (to map the
-platform to heap names). I think we should instead depend on the
-existing devices (e.g. if there is a TEE device, use an IOCTL to
-allocate secured DMA BUF from it, otherwise check for QTEE device,
-otherwise check for some other vendor device).
-
-The mental experiment to check if the API is correct is really simple:
-Can you use exactly the same rootfs on several devices without
-any additional tuning (e.g. your QEMU, HiKey, a Mediatek board, Qualcomm
-laptop, etc)?
+Personally I would consider it is an advantage to limit how many pages which
+are used by the driver and network stack, the problem seems to how to decide
+the limited number of page used by network stack so that performance is not
+impacted.
 
 > 
-> This can be tested on QEMU with the following steps:
-> repo init -u https://github.com/jenswi-linaro/manifest.git -m qemu_v8.xml \
->         -b prototype/sdp-v1
-> repo sync -j8
-> cd build
-> make toolchains -j4
-> make all -j$(nproc)
-> make run-only
-> # login and at the prompt:
-> xtest --sdp-basic
+>> Don't we 'just' need a list of the inflight packets and their pages or
+>> fragments? What we could do is go through that list and unmap these
+>> pages during page_pool_destroy().
 > 
-> https://optee.readthedocs.io/en/latest/building/prerequisites.html
-> list dependencies needed to build the above.
+> The main reason for that is to avoid the overhead of page_pool_item_del()
+> and page_pool_item_add() when allocing/freeing page from/to pool->alloc
+> and pool->ring.
 > 
-> The tests are pretty basic, mostly checking that a Trusted Application in
-> the secure world can access and manipulate the memory.
-
-- Can we test that the system doesn't crash badly if user provides
-  non-secured memory to the users which expect a secure buffer?
-
-- At the same time corresponding entities shouldn't decode data to the
-  buffers accessible to the rest of the sytem.
-
+> Yes, including the pages in pool->ring seems to make the pool->ring
+> somewhat duplicated, maybe we can remove pool->ring if we can make
+> and prove 'pool->items' is performing better than pool->ring in the
+> future?
 > 
-> Cheers,
-> Jens
+>>
+>> I'll have a closer look at the patch tomorrow
 > 
-> [1] https://lore.kernel.org/dri-devel/20240515112308.10171-1-yong.wu@mediatek.com/
-> [2] https://lore.kernel.org/lkml/20220805135330.970-1-olivier.masse@nxp.com/
+> Thanks for the reviewing.
 > 
-> Changes since Olivier's post [2]:
-> * Based on Yong Wu's post [1] where much of dma-buf handling is done in
->   the generic restricted heap
-> * Simplifications and cleanup
-> * New commit message for "dma-buf: heaps: add Linaro restricted dmabuf heap
->   support"
-> * Replaced the word "secure" with "restricted" where applicable
+>>
+>> Thanks!
+>> /Ilias
+>>
 > 
-> Etienne Carriere (1):
->   tee: new ioctl to a register tee_shm from a dmabuf file descriptor
-> 
-> Jens Wiklander (2):
->   dma-buf: heaps: restricted_heap: add no_map attribute
->   dma-buf: heaps: add Linaro restricted dmabuf heap support
-> 
-> Olivier Masse (1):
->   dt-bindings: reserved-memory: add linaro,restricted-heap
-> 
->  .../linaro,restricted-heap.yaml               |  56 ++++++
->  drivers/dma-buf/heaps/Kconfig                 |  10 ++
->  drivers/dma-buf/heaps/Makefile                |   1 +
->  drivers/dma-buf/heaps/restricted_heap.c       |  17 +-
->  drivers/dma-buf/heaps/restricted_heap.h       |   2 +
->  .../dma-buf/heaps/restricted_heap_linaro.c    | 165 ++++++++++++++++++
->  drivers/tee/tee_core.c                        |  38 ++++
->  drivers/tee/tee_shm.c                         | 104 ++++++++++-
->  include/linux/tee_drv.h                       |  11 ++
->  include/uapi/linux/tee.h                      |  29 +++
->  10 files changed, 426 insertions(+), 7 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/reserved-memory/linaro,restricted-heap.yaml
->  create mode 100644 drivers/dma-buf/heaps/restricted_heap_linaro.c
-> 
-> -- 
-> 2.34.1
-> 
-
--- 
-With best wishes
-Dmitry
 
