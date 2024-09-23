@@ -4,75 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E61DCF9C71
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Sep 2024 08:47:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E45B5CF9C5B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Sep 2024 09:09:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YrLQBkr+4O7imCtu0pzv5R4puxbMisvPpZU/zFZINAI=; b=Q/DedUjlBRHRG0J+to6uA3A4vw
-	INGyicE4hh+gpXSGTff8UQhf5UwFobcVAi9x/Mj+594jjBrY+xkVeGBmEHqxoKkXGXyQ5Z2p2lmQF
-	cgPHUWaHgG15+6cNRUgcdESuevW7xmEiDn5jasvCDUCK3ur5qLw9VwjGjay5DQSouU6EMQjQoIGMT
-	vHmDt/bagOBiLVvdqu3pehAr7FuTyNNkBCa0uVxvQUkESMhvKunXpi4bRc7YjsbSqrIkJpQogNtQH
-	BgHHbKDzVSltOYNb5i4l8RW2RCQ9tj8GI7yTIQpPjfgxSKNpZjGZ0JRlChlqXZA67KotnyFhz6So8
-	UIBbDvaw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=o0Ef2pUJCIL3aYIls9LM/0/HuZV6sRLvGWfXRnJJRsg=; b=tFIhJQ9sV4jGxaz8dAUx7n3BAN
+	rp9Z+x0RbeTigtmWNRyKLaaSOw03OVjVZ7kIAYnmp25ev/WhnIvhVOaNuiiVKlcjiq2/uf/k1kX6h
+	ivN39r6iw+cR4T62uvnSDtVs08SK2KtcMzFpUZ4w+MNb0o2cS8JITVHm0FPAkWKTmUYUt9yezhuOR
+	CsANPvbxBaeeOzIt9XktMGwqQdUtQ3HcvJQHuwxY8Dbg6ZxjnLxe2Dko8g8nSVU7JqDz+UmrD07Au
+	u74cmj+ecpG8MVU7D3wDYBMklW/ObeWNRjE6EyAnoG/TVzy8X6ACQHyGPr4XSAq36g55spgLUkeVe
+	yuRQrV6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssej3-0000000GisK-0ehl;
-	Mon, 23 Sep 2024 08:47:21 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ssf4e-0000000GmGy-3VBg;
+	Mon, 23 Sep 2024 09:09:40 +0000
+Received: from mail-ua1-x92e.google.com ([2607:f8b0:4864:20::92e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssej0-0000000Gipw-2BFk
+	id 1ssf3O-0000000Glpb-0ruO
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Sep 2024 08:47:19 +0000
-X-UUID: 6c5d1be6798811efb3adad29d29602c1-20240923
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=YrLQBkr+4O7imCtu0pzv5R4puxbMisvPpZU/zFZINAI=;
-	b=gB0nzu+RJ9z7B9RMTB8UVzV5axbU5sPQMvt6kHSto4DP7JKLMJKZSj5X0+C77qmcsRLkUNZlyz4W+8KT/a6qsWPKz81T46DddCRDv4gAb3fvMvX8G2CH6QR1Xda8cB/V2gDt1m9NFKNrr9ncCpdT9QTFlwzjhkgaqV5Ix9vOTeE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:31040a6c-8c99-4d2b-8f8d-6809d17bc873,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:54209ed0-7921-4900-88a1-3aef019a55ce,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 6c5d1be6798811efb3adad29d29602c1-20240923
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 778979801; Mon, 23 Sep 2024 01:47:11 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 23 Sep 2024 16:47:08 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 23 Sep 2024 16:47:08 +0800
-From: Chris Lu <chris.lu@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>,
-	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth
-	<linux-bluetooth@vger.kernel.org>, linux-kernel
-	<linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v3 3/4] Bluetooth: btusb: mediatek: add intf release flow when usb disconnect
-Date: Mon, 23 Sep 2024 16:47:04 +0800
-Message-ID: <20240923084705.14123-4-chris.lu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240923084705.14123-1-chris.lu@mediatek.com>
-References: <20240923084705.14123-1-chris.lu@mediatek.com>
+	Mon, 23 Sep 2024 09:08:23 +0000
+Received: by mail-ua1-x92e.google.com with SMTP id a1e0cc1a2514c-846c588fa63so874907241.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Sep 2024 02:08:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1727082500; x=1727687300; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=o0Ef2pUJCIL3aYIls9LM/0/HuZV6sRLvGWfXRnJJRsg=;
+        b=mBzdo6GA4MWnmgq2KVGdWKJukWN65Wf4RV1qEuSZUgm84WvWRY1E+B/ny0QD3jMXeZ
+         gfKWayvn5zWiVcf1zjatPTgu1kcRll6K4W+XTA1wa4byAVJbhg77NNNX3ruFyNLhq2vz
+         pzC+dE8hMqeGItQHvL/ZnT8f+QOe93zoN3jnM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727082500; x=1727687300;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=o0Ef2pUJCIL3aYIls9LM/0/HuZV6sRLvGWfXRnJJRsg=;
+        b=I+764adVrUnE6aGXFCx7DpL4drfaFPIj3dt2dq5afkP2YSB0OaNwJL8bSdY4AR94Iv
+         3MQxK2KkOfbJ6RwgphGBx1/PqfIgScqKTVaPSaxnoKRfzQaY5HWaqn269gyGkmJS2AKa
+         jcmvlQa0CA87r+hV7PuVQbToyMrZKKsed0ZmylzWKPBbfRtk0CQqL8yuRhLwYQQCAQRE
+         3FhqT8QdMMi37ufzErERlBHdBtAcQn0GXJBjJPkvuBhyazJXUT5nVcgKIvF9YxauArur
+         3M7X0BzHaskMaabaD6E6Ckg/VhceLo0ZS+OqboTWtOwWSlPDUNF+Jc1TpWzQho6XFgMu
+         IfTA==
+X-Forwarded-Encrypted: i=1; AJvYcCVHdW28gBySz4YxU0fL+ucxdt8RE4muOSlVhFJAGo0oBqcWoPyXMGWlAWvV/FQwv599n+ew5fZljkKmX4jiOw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YweGhAtiG37F2LuvzFRO7Xg1sLA85+yQC1znkTKQsiifVa9t+yi
+	ZlZwDaZ5MUmzVR2zCPXdTiqMnQwtszuhtM9dQt4sa6DdtHh8mLYlTnb+Wkih0BHbmPwRbjPaTEI
+	=
+X-Google-Smtp-Source: AGHT+IGcWbXOaKMtpqLdLZ89YMkYmIX7fGwV5BrUkYxvVNxehpEXqbRICJ4DCew74E5911++0dte8w==
+X-Received: by 2002:a05:6102:304d:b0:49b:ccfc:6b5 with SMTP id ada2fe7eead31-49fc7547155mr6890849137.9.1727082500227;
+        Mon, 23 Sep 2024 02:08:20 -0700 (PDT)
+Received: from mail-vs1-f52.google.com (mail-vs1-f52.google.com. [209.85.217.52])
+        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-49e6b4403e9sm3375372137.23.2024.09.23.02.08.18
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 23 Sep 2024 02:08:19 -0700 (PDT)
+Received: by mail-vs1-f52.google.com with SMTP id ada2fe7eead31-49d385e7549so1536405137.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Sep 2024 02:08:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCXqi7G3Nl2ZAC8aX8uqH3za4vTw+v4iD1QA1O/hBbrDTQdFODC5AyoSQSvqDgoYs9R9C4vjwaGwWcZtmxMlGg==@lists.infradead.org
+X-Received: by 2002:a05:6102:5088:b0:49b:a93d:3d0 with SMTP id
+ ada2fe7eead31-49fc7511684mr6579342137.1.1727082497908; Mon, 23 Sep 2024
+ 02:08:17 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
+References: <20240831055328.22482-1-zhi.mao@mediatek.com>
+In-Reply-To: <20240831055328.22482-1-zhi.mao@mediatek.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Mon, 23 Sep 2024 17:07:40 +0800
+X-Gmail-Original-Message-ID: <CAC=S1nh76iKhMV4roBe4mLTrq-eHqz-3-fYWzNcWAETvj-JETA@mail.gmail.com>
+Message-ID: <CAC=S1nh76iKhMV4roBe4mLTrq-eHqz-3-fYWzNcWAETvj-JETA@mail.gmail.com>
+Subject: Re: [PATCH] media: i2c: improve suspend/resume switch performance for
+ GT9769 VCM driver
+To: Zhi Mao <zhi.mao@mediatek.com>
+Cc: Sakari Ailus <sakari.ailus@linux.intel.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-media@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, shengnan.wang@mediatek.com, 
+	yaya.chang@mediatek.com, teddy.chen@mediatek.com, yunkec@chromium.org, 
+	10572168@qq.com, ot_xiaofeiw.wang@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240923_014718_588096_C1CE79F9 
-X-CRM114-Status: GOOD (  11.91  )
+X-CRM114-CacheID: sfid-20240923_020822_256600_5EBFD030 
+X-CRM114-Status: GOOD (  20.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,83 +104,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MediaTek claim an special usb intr interface for ISO data transmission.
-The interface need to be released before unregistering hci device when
-usb disconnect. Removing BT usb dongle without properly releasing the
-interface may cause Kernel panic while unregister hci device.
+Hi Zhi,
 
-Signed-off-by: Chris Lu <chris.lu@mediatek.com>
----
- drivers/bluetooth/btusb.c | 20 +++++++++++++++-----
- 1 file changed, 15 insertions(+), 5 deletions(-)
+On Sat, Aug 31, 2024 at 1:54=E2=80=AFPM Zhi Mao <zhi.mao@mediatek.com> wrot=
+e:
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index dfc42bdc8aaf..a434aefe68f2 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -2614,9 +2614,9 @@ static void btusb_mtk_claim_iso_intf(struct btusb_data *data)
- 	set_bit(BTMTK_ISOPKT_OVER_INTR, &btmtk_data->flags);
- }
- 
--static void btusb_mtk_release_iso_intf(struct btusb_data *data)
-+static void btusb_mtk_release_iso_intf(struct hci_dev *hdev)
- {
--	struct btmtk_data *btmtk_data = hci_get_priv(data->hdev);
-+	struct btmtk_data *btmtk_data = hci_get_priv(hdev);
- 
- 	if (btmtk_data->isopkt_intf) {
- 		usb_kill_anchored_urbs(&btmtk_data->isopkt_anchor);
-@@ -2632,6 +2632,16 @@ static void btusb_mtk_release_iso_intf(struct btusb_data *data)
- 	clear_bit(BTMTK_ISOPKT_OVER_INTR, &btmtk_data->flags);
- }
- 
-+static int btusb_mtk_disconnect(struct hci_dev *hdev)
-+{
-+	/* This function describes the specific additional steps taken by MediaTek
-+	 * when Bluetooth usb driver's resume function is called.
-+	 */
-+	btusb_mtk_release_iso_intf(hdev);
-+
-+	return 0;
-+}
-+
- static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
- {
- 	struct btusb_data *data = hci_get_drvdata(hdev);
-@@ -2649,7 +2659,7 @@ static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
- 		return err;
- 
- 	if (test_bit(BTMTK_ISOPKT_RUNNING, &btmtk_data->flags))
--		btusb_mtk_release_iso_intf(data);
-+		btusb_mtk_release_iso_intf(hdev);
- 
- 	btusb_stop_traffic(data);
- 	usb_kill_anchored_urbs(&data->tx_anchor);
-@@ -2703,14 +2713,13 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
- 
- static int btusb_mtk_shutdown(struct hci_dev *hdev)
- {
--	struct btusb_data *data = hci_get_drvdata(hdev);
- 	struct btmtk_data *btmtk_data = hci_get_priv(hdev);
- 	int ret;
- 
- 	ret = btmtk_usb_shutdown(hdev);
- 
- 	if (test_bit(BTMTK_ISOPKT_RUNNING, &btmtk_data->flags))
--		btusb_mtk_release_iso_intf(data);
-+		btusb_mtk_release_iso_intf(hdev);
- 
- 	return ret;
- }
-@@ -3824,6 +3833,7 @@ static int btusb_probe(struct usb_interface *intf,
- 		data->recv_acl = btmtk_usb_recv_acl;
- 		data->suspend = btmtk_usb_suspend;
- 		data->resume = btmtk_usb_resume;
-+		data->disconnect = btusb_mtk_disconnect;
- 	}
- 
- 	if (id->driver_info & BTUSB_SWAVE) {
--- 
-2.18.0
+Suggestion for the new patch title:
+  media: i2c: dw9768: Use runtime PM autosuspend
 
+to better describe "what" this patch does to the DW9768 driver, not "why".
+Also there's nothing to do with GT9769 in this patch.
+
+>
+> Chromebook camera AP can switch between video and photo mode,
+> the behavior corresponding to VCM is suspend and resume,
+> it will cause camera preview is not smooth during switching operation.
+> We use autosuspend function can fix this issue.
+>
+> Signed-off-by: Zhi Mao <zhi.mao@mediatek.com>
+> ---
+>  drivers/media/i2c/dw9768.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/media/i2c/dw9768.c b/drivers/media/i2c/dw9768.c
+> index 18ef2b35c9aa..7449d29df901 100644
+> --- a/drivers/media/i2c/dw9768.c
+> +++ b/drivers/media/i2c/dw9768.c
+> @@ -374,7 +374,7 @@ static int dw9768_open(struct v4l2_subdev *sd, struct=
+ v4l2_subdev_fh *fh)
+>
+>  static int dw9768_close(struct v4l2_subdev *sd, struct v4l2_subdev_fh *f=
+h)
+>  {
+> -       pm_runtime_put(sd->dev);
+
+Call pm_runtime_mark_last_busy() to update the power.last_busy field
+for autosuspend to work properly.
+
+> +       pm_runtime_put_sync_autosuspend(sd->dev);
+
+Use pm_runtime_put_autosuspend().
+Don't switch to the synchronized variant without reasons.
+
+>
+>         return 0;
+>  }
+> @@ -490,6 +490,7 @@ static int dw9768_probe(struct i2c_client *client)
+>                 goto err_power_off;
+>         }
+>
+> +       pm_runtime_use_autosuspend(dev);
+
+Add pm_runtime_set_autosuspend_delay() before calling
+pm_runtime_use_autosuspend() to avoid rapid power state bouncing.
+
+Regards,
+Fei
+
+
+
+>         pm_runtime_idle(dev);
+>
+>         return 0;
+> --
+> 2.46.0
+>
+>
 
