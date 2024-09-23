@@ -4,74 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E77F2CF9C69
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Sep 2024 13:37:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E452CF9C70
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Sep 2024 14:47:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=awc4i9nMPrTPIYiJ1Q5PrfLytY/PFn2fXwvwl1Rwcs4=; b=VtZAHchmt4W1ZYM56WgMqZkmhV
-	99ZkQVPQaAomgUjYPuNo79SXcrmBlC7MTlftCLF+KeQ6njJCKeu0CjPYSDbN/bTriGSHaYBD6jZ7i
-	Vny5INrvSrR+RWaUObDplXGi5hME1W/tOOUcuv6dVJdr4EebHUg53OrVlYYM2YAs3kN7zWWe8FzWA
-	C0C+HOkAileT/UFrMaBBVlNzHI8Cog1a66ceEP/J04PK8t722fsX0J6HQFcNSotuuYIXEvNmgwpaG
-	8LWfD2S2qeBgpOH1V6IUbUPGs3uilOvx1HoAGlyr6a/kX9kMsRnfqk4ieZIU262Dnp8BKYSaCgUNT
-	PrGT0beA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Ah1pOvFlUWHq7/p7TdIR1C+iDmXhaSnb5086tRuytuw=; b=VdIhK5BqGVO9mhlqMHbuzdBrnh
+	WWj2ZwmqEg/BvScG9Vvdg4gL5omg0KUuniamHYpJ8uds1p4sPTzblN3Xa6VUJv2Wp2Gjq20Mb7sIs
+	n7BrAXpkJjWnj31axuNoeg4z7cNv4LUj0UJzZzLuvPVC8PUkeXWRkKdM6+5YQd4JR4zn/+2ilqqr/
+	a36U36Xulp3m+PJjCJWZxYKB0FNe9nsrzu4S3ytjRhlRD7RAOfCWdA6LvLhwlBkaykVzaI5b5rWlX
+	WSpTi4IjSushZHrL4AWC/KnrVx5IQqUJ3EmBcyQp9wVlyd3I4a1At2QDL0vQN+8XVSLG9l8i2K1UA
+	stLIC2iQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssjFs-0000000HI6Z-3tEN;
-	Mon, 23 Sep 2024 13:37:32 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sskLm-0000000HPXI-1nrS;
+	Mon, 23 Sep 2024 14:47:42 +0000
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssjEl-0000000HHxP-0Q9t;
-	Mon, 23 Sep 2024 13:36:24 +0000
-X-UUID: cf12bfc079b011efb3adad29d29602c1-20240923
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=awc4i9nMPrTPIYiJ1Q5PrfLytY/PFn2fXwvwl1Rwcs4=;
-	b=EPjRaj/66gUq8kBfjkydiip+a4gjSZZF2DN7Dx8UJrtl0dsG/d89y+s5wy9NAhrVHvrCZT4aNnhP7knq7PLLtT21Mbir7ZgD9/FpsxQ7q4qOFfn5rAb0NYQU52mO+E52F0lkw+vaHhSW1RKZG67/yZytnw6wllCtqnOuGmJr8vE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:7128783c-e1c0-4be8-87a1-7289a8ca2b93,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:c0536d9e-8e9a-4ac1-b510-390a86b53c0a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: cf12bfc079b011efb3adad29d29602c1-20240923
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <liankun.yang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1463980539; Mon, 23 Sep 2024 06:36:16 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 23 Sep 2024 21:36:13 +0800
-Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 23 Sep 2024 21:36:13 +0800
-From: Liankun Yang <liankun.yang@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
-	<simona@ffwll.ch>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <jitao.shi@mediatek.com>,
-	<mac.shen@mediatek.com>, <peng.liu@mediatek.com>, <liankun.yang@mediatek.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>
-Subject: [PATCH v1 1/1] drm/mediatek: dp: Add sdp path reset
-Date: Mon, 23 Sep 2024 21:35:44 +0800
-Message-ID: <20240923133610.23728-1-liankun.yang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1sskLj-0000000HPWd-1E7F
+	for linux-mediatek@lists.infradead.org;
+	Mon, 23 Sep 2024 14:47:40 +0000
+Received: by mail-pf1-x431.google.com with SMTP id d2e1a72fcca58-718d91eef2eso2815928b3a.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Sep 2024 07:47:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=compal-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1727102858; x=1727707658; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Ah1pOvFlUWHq7/p7TdIR1C+iDmXhaSnb5086tRuytuw=;
+        b=fzE+nJSRWJmTWnANquoFhLe7hfFhknqe6Ut+/1IcMIDRHFKjvYr5hDZbOpKXhOTwg1
+         MpJPP7JXSNxvv4HArt2DpI/sN6qeEuH2DMZdXbkBj6MVmwjbnrjMwabZz9fdpfmATYOw
+         AuyLaT6AbQvgjUl/rotVYMdUIK9hvFN14AzEnhcbFW+wYJxQYlj3pJwH36jkaQAaGN8w
+         3VP6sVQOrf3JQMKH8mvYlbn3mf1c6Qb2LYWTYkq8mfFi6sl18xluGBHxq4mjvuKOmD0B
+         VWuQCfjWaN84VOAVncPlHm0BN8cqaowW7+bjV/hfHSkPQKHh0r1L5Scmjz6PCcoZVyQq
+         PYKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727102858; x=1727707658;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Ah1pOvFlUWHq7/p7TdIR1C+iDmXhaSnb5086tRuytuw=;
+        b=wHQsYkMQ48Y0JWBmCSU33Ob+e5DkU3ZpIa1ou+bNnUjapWs4ecAq+8CKXpYuPwjX4I
+         X5A8Fc5J2oM9iMXKuPXww96xpLpidi78QOVSVyi074Q6u/X4mmiIZ8FINIdurHVZmvk3
+         Svr5c3IJ1MLU0hSNwBn0sjYweE+II0Sq6g8mv55xXZKo9h8dTqUiHHrxML9ipWpNinbc
+         r3H9XQu18/YpBPQ/ugPtN50F8bNzMY79bQDAH+GKDb1l4EHXahWlbxhLCgaIf2yqkTij
+         ytzmkR8+6mJmSdgUx9BYEM5OkTj8PlewpRARaMAI1Msdrj1df64JChYLhm6QtH7gt2KW
+         aEuw==
+X-Forwarded-Encrypted: i=1; AJvYcCWpH4Nh66mRlPTsWg00QUCq5oyAwBXxWlF7YCg3ac9M8cH6ojqzrv2AjHLQhxobhi3+W3JhTW8jRByyX/HtfA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyxEh2rXrekMPSgNbT1p4MPjJQsI+h6xtzHtn02185s9D6q0rRT
+	A27Ymp0kNXYdCf2n3eHrxtLDZ9Ht/y2MioQ/UsUAzvxqEz1uXujsAhVlEOe416c=
+X-Google-Smtp-Source: AGHT+IGnzbB8vGG9Sm8T5RN6ljJ6BCzgDbeKgiBqIATXey8B3rBl6Yt3vZdISaSG9UHRAnN3Jn9N7g==
+X-Received: by 2002:a05:6a00:4b0d:b0:719:24a3:2a8b with SMTP id d2e1a72fcca58-7199b14832amr16818922b3a.12.1727102858079;
+        Mon, 23 Sep 2024 07:47:38 -0700 (PDT)
+Received: from maxweng-Latitude-7410.. (2001-b011-6c08-d055-c470-c180-5435-2e25.dynamic-ip6.hinet.net. [2001:b011:6c08:d055:c470:c180:5435:2e25])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71944a974dcsm13991122b3a.32.2024.09.23.07.47.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 23 Sep 2024 07:47:37 -0700 (PDT)
+From: Max Weng <max_weng@compal.corp-partner.google.com>
+To: linux-kernel@vger.kernel.org
+Cc: max_weng@compal.corp-partner.google.com,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v2] arm64: dts: mediatek: mt8186: add FHCTL node
+Date: Mon, 23 Sep 2024 22:47:28 +0800
+Message-Id: <20240923144728.870285-1-max_weng@compal.corp-partner.google.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240923_063623_167792_253F6DE5 
-X-CRM114-Status: GOOD (  10.32  )
+X-CRM114-CacheID: sfid-20240923_074739_622748_DA3947E2 
+X-CRM114-Status: UNSURE (   8.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,55 +97,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When using type-c to type-c to connect to the monitor,
-the sound plays normally. If you unplug the type-c and
-connect the type-c to hdmi dongle to the monitor, there will be noise.
+From: max_weng <max_weng@compal.corp-partner.google.com>
 
-By capturing the audio data, it is found that
-the data position is messy, and there is no error in the data.
+add FHCTL device node for Frequency Hopping and Spread Spectrum clock function.
 
-Through experiments, it can be restored by resetting the SDP path
-when unplugging it.
-
-Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
+Change-Id: I7f9f2991978df7d5d3a6a8bc78f6f443f2f0460d
+Signed-off-by: Max Weng <max_weng@compal.corp-partner.google.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dp.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ Change frome v1 to v2
+ * Modify the commit description
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index d8796a904eca..4003bd83f64e 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -1052,6 +1052,18 @@ static void mtk_dp_digital_sw_reset(struct mtk_dp *mtk_dp)
- 			   0, DP_TX_TRANSMITTER_4P_RESET_SW_DP_TRANS_P0);
- }
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+index 148c332018b0..d3c3c2a40adc 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+@@ -29,6 +29,13 @@ aliases {
+ 		rdma1 = &rdma1;
+ 	};
  
-+static void mtk_dp_sdp_path_reset(struct mtk_dp *mtk_dp)
-+{
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3004,
-+				SDP_RESET_SW_DP_ENC0_P0,
-+				SDP_RESET_SW_DP_ENC0_P0);
++	fhctl: fhctl@1000ce00 {
++		compatible = "mediatek,mt8186-fhctl";
++		clocks = <&apmixedsys CLK_APMIXED_TVDPLL>;
++		reg = <0 0x1000ce00 0 0x200>;
++		status = "disabled";
++	};
 +
-+	/* Wait for sdp path reset to complete */
-+	usleep_range(1000, 5000);
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3004,
-+				0, SDP_RESET_SW_DP_ENC0_P0);
-+}
-+
- static void mtk_dp_set_lanes(struct mtk_dp *mtk_dp, int lanes)
- {
- 	mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_35F0,
-@@ -2314,6 +2326,9 @@ static void mtk_dp_bridge_atomic_disable(struct drm_bridge *bridge,
- 			   DP_PWR_STATE_BANDGAP_TPLL,
- 			   DP_PWR_STATE_MASK);
- 
-+	/* SDP path reset sw*/
-+	mtk_dp_sdp_path_reset(mtk_dp);
-+
- 	/* Ensure the sink is muted */
- 	msleep(20);
- }
+ 	cci: cci {
+ 		compatible = "mediatek,mt8186-cci";
+ 		clocks = <&mcusys CLK_MCU_ARMPLL_BUS_SEL>,
 -- 
-2.45.2
+2.34.1
 
 
