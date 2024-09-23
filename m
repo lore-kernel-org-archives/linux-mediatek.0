@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73732CF9C5B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Sep 2024 08:42:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6C6ACF9C71
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Sep 2024 08:42:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cyxfB4QaS1+FcvkmPe6fxmNpBn2L3coWLjf8uFLXULg=; b=ehSs3bC0U/S+FGuL51ylBS16G5
-	EmId+agvinmdbcMFB0PE/E+4n2kcDR9+Dz5zNRkvWkYlMkEDFB1aAR1EVJqAWDHn2ug9c2DdCFaYV
-	fMXOBEuo2wSJbciZHkKI/fMeDOVjWQeeW4QPWVQX4byp/ZemxSuLVBPtF5wbxGJorKjIMBhCEYApJ
-	j/0Y+y364HxTHchFu8Sj6yTxH6TDzVoe9ZW8f9RWGfY7iZHTxzhh4YkQSmd33m4aNxXEHmt7+/081
-	tXTwelPJSEHlNnM3c0gobgt0w8Hkub39RA6EpziHRsLpT8J5NVYclvB/orVSkr3feKtbk/+xekQO1
-	4UAKKDWQ==;
+	bh=h3NHiz5LFGdaMdwKqUkEmFWEXWZKJIwAQAFp2oWwr/0=; b=34F76QC1sGn0V4j00OHXM5cbkd
+	aS9/4ju1wWcZP1P9ijyI7MB9MszbEh/jewzQQQ1pupW9OKDtYRJMz/7iXF3Lg4MaPL9Bm48ZqVAI3
+	IZoB1hNbQi305BN50zF9cNOeOEhlUjXsaHLgeiAa5ZUMDjeIiUZgHQvosCHf9P3SS0AMA3dh71c21
+	SqBZouWE3sGyqQ9l/jGUz8D3YReQe9KzNVPDr2PO7uOkbQdADrJvEC9Ac+kgpSZjyqD5i+KgAeHtF
+	KafVk0LJKGc5pnlpxr9lDWXcay59RijzeC+DWWvdeAodlf27towx+els9gymCj4k8UaXloTOhbkxd
+	OX5sKP/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sseee-0000000GhjP-2GH9;
-	Mon, 23 Sep 2024 08:42:48 +0000
+	id 1sseef-0000000GhkK-2sS3;
+	Mon, 23 Sep 2024 08:42:49 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sseaM-0000000GgqN-0GQi;
-	Mon, 23 Sep 2024 08:38:23 +0000
+	id 1ssebh-0000000GhJP-0gtE;
+	Mon, 23 Sep 2024 08:39:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727080700;
-	bh=rcivXolReutd/1EqUvrpD3Vx/mkT+TgRwYLp20qEAFg=;
+	s=mail; t=1727080783;
+	bh=bSnbgZUAu2nk9hGR+H3RrZqnwocCi9HL5rpRcPXtGaI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Yc4yh4IIsBOEZ8VMS85XjlBoF93yTvLouVXm+ZJRDYk4ufZtVgvE2QZvOVey8j4Yz
-	 39B+x6EbQFr4+Nmqnx7BMgqzq9wnQ5H/Aw6YYuLQuARSI2miIbjsX0Uyq19+ri2Ic8
-	 YgzfivkH9sHlcTUNxZwHh6EQP7sfFCr12AdJSdoiNzL6F8U0YIhHa0l7e6JfJHWoE9
-	 tWaH+AsYq4/5K2wS8MkDOySW7M/tT63ugKatzUNj7wuNh0sJSH9d/mXo0BvQDMwwlr
-	 BvC9I1zp4fucbr2DLmAKE6xi76HWw1lARPGt3iml6xw2qTUugYKRTmAN4BDoK8MX2i
-	 oX9Mk+szMRFhQ==
+	b=JkzibY8yNoTP0KVx9uvdQYEKOluf/YYmnFnjWXH9RkneDbndgYynZYAtEgd3JDo4+
+	 1iLmgiTGCcZyz24ISK1uM9G1+G9+VR/4jX6qADGbfXGSiL4vK5cLYeFv4OiPaYA5Wz
+	 sHWpRtI0o899VRGs6shQ9/z5cDA6PW/m+vmj2EAIpfVmHOmlL5tpmapKkpE29JioCa
+	 y2zj87+GisB5Y36KWf/f3dFD4JolE8beUs7dddk68Rmo6pUzyy7XFztVv42mA1v/bi
+	 x7CJHSQErAy5x4gAL1CWENK599Fi5MvsCnJg+Rg4ZflyeLhpksz0ATwdC40keXqL2a
+	 svVCitdpgG9RA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F26E717E1060;
-	Mon, 23 Sep 2024 10:38:19 +0200 (CEST)
-Message-ID: <3f5055ad-924b-423e-88a6-9e5d46cd8c13@collabora.com>
-Date: Mon, 23 Sep 2024 10:38:19 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4E0DC17E1060;
+	Mon, 23 Sep 2024 10:39:43 +0200 (CEST)
+Message-ID: <ae69d0f6-97ff-478f-8e58-662fe4a923f4@collabora.com>
+Date: Mon, 23 Sep 2024 10:39:43 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/5] clk: mediatek: clk-mt8188-topckgen: Remove univpll
- from parents of mfg_core_tmp
+Subject: Re: [PATCH 4/5] arm64: dts: mediatek: mt8188: Add efuse for GPU speed
+ binning
 To: Pablo Sun <pablo.sun@mediatek.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
@@ -58,15 +58,16 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-clk@vger.kernel.org
 References: <20240920134111.19744-1-pablo.sun@mediatek.com>
- <20240920134111.19744-3-pablo.sun@mediatek.com>
+ <20240920134111.19744-5-pablo.sun@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240920134111.19744-3-pablo.sun@mediatek.com>
+In-Reply-To: <20240920134111.19744-5-pablo.sun@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240923_013822_287632_427FC8A0 
-X-CRM114-Status: GOOD (  10.27  )
+X-CRM114-CacheID: sfid-20240923_013945_384869_F14BA9D1 
+X-CRM114-Status: UNSURE (   8.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,26 +83,12 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 20/09/24 15:41, Pablo Sun ha scritto:
-> Same as MT8195, MT8188 GPU clock is primarly supplied by the dedicated
-> mfgpll. The clock "mfg_core_tmp" is only used as an alt clock when
-> setting mfgpll clock rate.
+> The OPP table of mt8188 GPU contains duplicated frequencies
+> for different speed bins.
 > 
-> If we keep the univpll parents from mfg_core_tmp, when setting
-> GPU frequency to 390000000, the common clock framework would switch
-> the parent to univpll, instead of setting mfgpll to 390000000:
-> 
->      mfgpll                            0        0        0   949999756
->      univpll                           2        2        0  2340000000
->         univpll_d6                     1        1        0   390000000
->            top_mfg_core_tmp            1        1        0   390000000
->               mfg_ck_fast_ref          1        1        0   390000000
->                  mfgcfg_bg3d           1        1        0   390000000
-> 
-> This results in failures when subsequent devfreq operations need to
-> switch to other frequencies. So remove univpll from the parent list.
-> 
-> This solution is taken from commit 72d38ed720e9 ("clk: mediatek:
-> clk-mt8195-topckgen: Drop univplls from mfg mux parents")
+> In order to support OPP table, we need to provide the speed bin info
+> in the efuse data so the GPU driver could properly set the
+> supported hardware speed bin.
 > 
 > Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
 
