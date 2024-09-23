@@ -4,119 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70EA5CF9C6F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Sep 2024 17:53:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9305CF9C71
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Sep 2024 18:15:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=d012RvO8FEt4oNV/hdC2ORp0abycOdoKV3NqdL6MFLw=; b=Th1SjSOMthTBS365fvxT8dlwCw
-	DUQHhUL+ZuWtt/cp+R/RGgSme6snRAeSb0cJsWvEhAM6emnFmv44rfyIfHNhAHqP74Svvj2bIK0KW
-	hiXEjg2FXWSTE1gZX4WJELQCLhQaTJNB3Snhq2c0BypipR8vkjJHl0FhHmTYuyWAiYmQGf5Md5Nbf
-	V00WvmFMV9BhL63c9nceUJACURFnCCc00QQXf0frmyteKEUGG47VAV6WyY81W0pFoKWXnLf78NNxm
-	euLUDP1APU4enZ6sHSTu+oS9kp/XBu1ZeORXhQtQmaAlgr/KwpNbzI5ywQyApmVxZm+sEPLJImthy
-	JcNDU0vg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CSN9wksjI0Zc9uZFbnMPMbYZ8Lq94uSxRXXykLs0YWc=; b=B0AIoIkWGKpZ3fLjDlpx09GQaD
+	VlxjsYaNpGpYVjoBBnloN+/7htyt8Ei67HbxbpYORds0w8A2kHWSHH5S5UMSZfxXh9BlDTYx9HiD5
+	T8ZxB67B6bJCZGs/GQgu+s8frRzpv/yYuNrX6roaneqQcZ9k9CLRQYejsX2FxwY9GHO4rR4JQWW4Q
+	smaepd2WGOTClu9WPWMDOKkZxrY+P/mwQpcgDX19nda4EzuU5GNiHq+jZY53+gZ+FkMMiAsKFOBz+
+	bUrWd4Aev44HLFxb49SESEeHgXD8E1z8HJiKypKuvOy8jf5dtcZEUm8+8dWtgCsfnEMc0UPaBloEJ
+	YT9E44+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssnFk-00000000CCt-11Sr;
-	Mon, 23 Sep 2024 17:53:40 +0000
-Received: from mail-qt1-x82d.google.com ([2607:f8b0:4864:20::82d])
+	id 1ssnbK-00000000Ean-2zCP;
+	Mon, 23 Sep 2024 18:15:58 +0000
+Received: from 008.lax.mailroute.net ([199.89.1.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssnEb-00000000C1J-2Jb4
+	id 1ssnbH-00000000EYz-37km
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Sep 2024 17:52:32 +0000
-Received: by mail-qt1-x82d.google.com with SMTP id d75a77b69052e-45821ebb4e6so36845041cf.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Sep 2024 10:52:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ziepe.ca; s=google; t=1727113947; x=1727718747; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=d012RvO8FEt4oNV/hdC2ORp0abycOdoKV3NqdL6MFLw=;
-        b=lXubrfge6+t3+8cyasHROWLpNKOhfTaaSzOunMLa/2/s6loixDZ0WHJVRcGBinFSOS
-         sX4o8W7aCL387GHuZlNWDJnjKEPtEeQMlp8AHzx6EANdTt5EtJaFCmm3XcJu8T8C0fUG
-         wS/UQSufn3WCeUXsaXihU55u7JqhpzZfjfobgupEZ/8oQuO85FQXJ5y8HMSswYY7nxNS
-         J2kOkTiSypEe3pfeCmlMp8YVaJ2fmmX2n+MdAAndBE0V27ZiXx4Hi3ZrSLZlSjGT65zY
-         atojlJZ+1CCzZ9dtHncVZViUgLTK4RVkzMRbUCjr4Vms3W6AlGDWu0q4eH8uiBeIxTJr
-         +7Lw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727113947; x=1727718747;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=d012RvO8FEt4oNV/hdC2ORp0abycOdoKV3NqdL6MFLw=;
-        b=k8CQFWERsLCpMWbyHnMlNauiBmGgcJon7MUdDiN4mmxFB0DM/5LdMfcYBNZQAMlbdA
-         +IHNGsqiCxj7ma5jwk0kaap8elGQm3ZnceOiX/mHHUiWOjgFwB5hMKXaW0s7Ihj0SIeQ
-         EAsrcaHf7B1TaE6Y0jwsytlXf8bbovrwBPAK/YAc0Gfos8ZtC5lfzGy6V9uQFgLA3te1
-         m7gbKdlNR60zeNQfbyO+fhQ7qO+OsLej85azOC5NvHnBpUPPxCTfXQ59MbHFC/YE4kAp
-         zg7z9FAUYDO5S0JKncILkqe1ZC+mqKxewGlPnRUILFYZ3OqodtSXmCTze09BZEWNSzGM
-         JxLw==
-X-Forwarded-Encrypted: i=1; AJvYcCWwcO+7QtXBZqYTWTiti4UpEhaPd23BozL0R8ojSVSgQrg3yqTHZWARqd/aofI/pqt5qHZt+Wk5YpiOK6H/1w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwfDUAq36I56oRhBL79KV7WMd2NJirY3szc/oN5v5QGlYM2x9C9
-	k9y8VzGC+E0PiDOv3RIPRK3poghFU4+SDX1XI1VDaUJxjTFgeV+yz06iPcnB6gc=
-X-Google-Smtp-Source: AGHT+IHVrqHIowyi3PGsNMuzErMWdcwmU1SRIkTjY6Vp086kbtdmtvbVDAGc60f4mvoOr4wDyCS+5A==
-X-Received: by 2002:a05:622a:107:b0:458:35f7:3950 with SMTP id d75a77b69052e-45b226f380cmr178883201cf.17.1727113947576;
-        Mon, 23 Sep 2024 10:52:27 -0700 (PDT)
-Received: from ziepe.ca (hlfxns017vw-142-68-128-5.dhcp-dynamic.fibreop.ns.bellaliant.net. [142.68.128.5])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-45b17888cdbsm49348071cf.49.2024.09.23.10.52.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Sep 2024 10:52:26 -0700 (PDT)
-Received: from jgg by wakko with local (Exim 4.95)
-	(envelope-from <jgg@ziepe.ca>)
-	id 1ssnEY-000LlC-32;
-	Mon, 23 Sep 2024 14:52:26 -0300
-Date: Mon, 23 Sep 2024 14:52:26 -0300
-From: Jason Gunthorpe <jgg@ziepe.ca>
-To: Yunsheng Lin <linyunsheng@huawei.com>
-Cc: Ilias Apalodimas <ilias.apalodimas@linaro.org>,
-	Jesper Dangaard Brouer <hawk@kernel.org>, davem@davemloft.net,
-	kuba@kernel.org, pabeni@redhat.com, liuyonglong@huawei.com,
-	fanghaiqing@huawei.com, zhangkun09@huawei.com,
-	Robin Murphy <robin.murphy@arm.com>,
-	Alexander Duyck <alexander.duyck@gmail.com>,
-	IOMMU <iommu@lists.linux.dev>, Wei Fang <wei.fang@nxp.com>,
-	Shenwei Wang <shenwei.wang@nxp.com>,
-	Clark Wang <xiaoning.wang@nxp.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Tony Nguyen <anthony.l.nguyen@intel.com>,
-	Przemek Kitszel <przemyslaw.kitszel@intel.com>,
-	Alexander Lobakin <aleksander.lobakin@intel.com>,
-	Alexei Starovoitov <ast@kernel.org>,
-	Daniel Borkmann <daniel@iogearbox.net>,
-	John Fastabend <john.fastabend@gmail.com>,
-	Saeed Mahameed <saeedm@nvidia.com>,
-	Leon Romanovsky <leon@kernel.org>, Tariq Toukan <tariqt@nvidia.com>,
-	Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andrew Morton <akpm@linux-foundation.org>, imx@lists.linux.dev,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
-	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-mm@kvack.org
-Subject: Re: [PATCH net 2/2] page_pool: fix IOMMU crash when driver has
- already unbound
-Message-ID: <20240923175226.GC9634@ziepe.ca>
-References: <20240918111826.863596-1-linyunsheng@huawei.com>
- <20240918111826.863596-3-linyunsheng@huawei.com>
- <CAC_iWjK=G7Oo5=pN2QunhasgDC6NyC1L+96jigX7u9ad+PbYng@mail.gmail.com>
- <894a3c2c-22f9-45b9-a82b-de7320066b42@kernel.org>
- <cdfecd37-31d7-42d2-a8d8-92008285b42e@huawei.com>
- <0e8c7a7a-0e2a-42ec-adbc-b29f6a514517@kernel.org>
- <CAC_iWj+3JvPY2oqVOdu0T1Wt6-ukoy=dLc72u1f55yY23uOTbA@mail.gmail.com>
- <2c5ccfff-6ab4-4aea-bff6-3679ff72cc9a@huawei.com>
+	Mon, 23 Sep 2024 18:15:57 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 008.lax.mailroute.net (Postfix) with ESMTP id 4XCB4b2bp7z6ClY9Y;
+	Mon, 23 Sep 2024 18:15:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1727115334; x=1729707335; bh=CSN9wksjI0Zc9uZFbnMPMbYZ
+	8Lq94uSxRXXykLs0YWc=; b=PiDo9uEEr0whAr7wXkNAKkjfUXi2phD+Vk7fuOuv
+	mlp+xxk0sNUtyKrgz+GwmFTEpQTX91h/dFyh+2kNwporsPOotHI8t9ozpK6hYejr
+	dbfgJMmNvzhD0erWi+OihrT1ZJgBKEEw441yXOKrsObSudsN9wSA54l1epCPH9vW
+	nDMvG4vy44ewaNOic4cp3DD72DA94zqySzwxGbYkvlO9do9h5qD6vmqWKrXgIMiH
+	STJ3wpeHpUtLpcZtEDn8B9DZIHT3AERnPoGGwJo/vzjNVAwUEeKQi9KuPcpjSUUL
+	rH/wPcjzCEbiEXVf6mpvoabqfJBU6cxzzrqLYCO1qTYO4g==
+X-Virus-Scanned: by MailRoute
+Received: from 008.lax.mailroute.net ([127.0.0.1])
+ by localhost (008.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id vMvZEHa-SM8i; Mon, 23 Sep 2024 18:15:34 +0000 (UTC)
+Received: from [100.66.154.22] (unknown [104.135.204.82])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 008.lax.mailroute.net (Postfix) with ESMTPSA id 4XCB4L1BmVz6ClY9X;
+	Mon, 23 Sep 2024 18:15:29 +0000 (UTC)
+Message-ID: <ce42d310-2a23-453f-bd14-71eeaf9f5664@acm.org>
+Date: Mon, 23 Sep 2024 11:15:28 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <2c5ccfff-6ab4-4aea-bff6-3679ff72cc9a@huawei.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 3/3] ufs: core: add a quirk for MediaTek SDB mode
+ aborted
+To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
+ jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com,
+ quic_nguyenb@quicinc.com
+References: <20240923080344.19084-1-peter.wang@mediatek.com>
+ <20240923080344.19084-4-peter.wang@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20240923080344.19084-4-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240923_105229_801943_1B0D1C33 
-X-CRM114-Status: GOOD (  11.65  )
+X-CRM114-CacheID: sfid-20240923_111555_798930_310E8FE5 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,23 +91,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 20, 2024 at 02:14:02PM +0800, Yunsheng Lin wrote:
+On 9/23/24 1:03 AM, peter.wang@mediatek.com wrote:
+> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+> index b5c7bc50a27e..b42079c3d634 100644
+> --- a/drivers/ufs/core/ufshcd.c
+> +++ b/drivers/ufs/core/ufshcd.c
+> @@ -5404,7 +5404,10 @@ ufshcd_transfer_rsp_status(struct ufs_hba *hba, struct ufshcd_lrb *lrbp,
+>   		}
+>   		break;
+>   	case OCS_ABORTED:
+> -		result |= DID_ABORT << 16;
+> +		if (hba->quirks & UFSHCD_QUIRK_OCS_ABORTED)
+> +			result |= DID_REQUEUE << 16;
+> +		else
+> +			result |= DID_ABORT << 16;
+>   		dev_warn(hba->dev,
+>   				"OCS aborted from controller = %x for tag %d\n",
+>   				ocs, lrbp->task_tag);
 
-> I am not sure what dose the API that allows netdev to "give" struct device
-> to page_pool look like or how to implement the API yet, but the obvious way
-> to stall the calling of device_del() is to wait for the inflight
-> page to
+I think the approach of this patch is racy: the cmd->result assignment
+by ufshcd_transfer_rsp_status() races with the cmd->result assignment by
+ufshcd_abort_one(). How about addressing this race as follows?
+* In ufshcd_compl_one_cqe(), if the OCS_ABORTED status is encountered,
+   set a completion.
+* In the code that aborts SCSI commands, for MediaTek controllers only,
+   wait for that completion (based on a quirk).
+* Instead of introducing an if-statement in
+   ufshcd_transfer_rsp_status(), rely on the cmd->result value assigned
+   by ufshcd_abort_one().
 
-It is not device_del() you need to stall, but the remove() function of
-the device driver.
+Thanks,
 
-Once all drivers have been unbound the DMA API can be reconfigured and
-all existing DMA mappings must be concluded before this happens,
-otherwise there will be problems.
+Bart.
 
-So, stalling something like unregister_netdevice() would be a better
-target - though stalling forever on driver unbind would not be
-acceptable.
-
-Jason
 
