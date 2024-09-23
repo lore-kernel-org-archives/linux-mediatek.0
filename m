@@ -4,69 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A5BCCF9C5B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Sep 2024 09:42:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C022CF9C6F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Sep 2024 09:54:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dCzLuOcme9U2o1KqHq1c0hgXllBvyJ5BADQSp+Pqu9U=; b=mHI0YKeur2k8zHgZfsSD9ouJ2+
-	9KHSreBffSQJqI2BhgZJyewC/UXxNihfJMT/pJiDy0NBuYAu8xCiFCGum+94iUy/H6x93RqWvhNtR
-	/UYju9MxgzpNcuNgYsdrnb+t9mer8N33fI4KwQwSJPWWS86GUEV5dpjc5CpZ0FcaKQAGzr6FJCYLi
-	LbFTBbe8mJE3yv9YuqhWewdLHodse73BdrgpJzB8whXcgVtfoZQn6+JthKoqLYHjKbA+Wddcxj9Kb
-	oGzBcoLjSAqcwqy0hf19C9Ko37OkUxhdbWc0ivGm3gVRSRdceWk/AD6zINGDsLYbWLMD3oVaL8/4R
-	TAMJgFyg==;
+	bh=Aw0qd8Ni+woZVGXjg9Pgz8GBGjcwL4RrpHgRr4J2D48=; b=gnnm4pNYKS2coYKoOru5EkvnZw
+	a/D2eDm2U9t3Pobke0SJuJDQf//Kr7jPMwGUyHVPmzilpRIZ5NzcgX9KGagDPlJJhRXEOYO+s/n4R
+	Jk2paenUMhGKAjKEPuUffrKRonydP02L0+Xe8VGMYz1JbjLEGo7VoSD80xhfvUFjnVveRC9GuXn3A
+	GpEmhCjFdt394BB0IJKyirTK+sNLL/acq50NE7Lz5IkDGLk/h3e7c0IEEwZAicUTA5+iNKNT/Kohv
+	pqqv8/l/hpXmhHAV01gw9yfheuzlhAkFGQdRKHt0EO2tuCTPEBlUKDvVVLj7JJD6kHwy4S2Ysgkz/
+	vfCBbL+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssfap-0000000GrQu-1FxV;
-	Mon, 23 Sep 2024 09:42:55 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1ssfls-0000000GtI3-4BOd;
+	Mon, 23 Sep 2024 09:54:21 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssfZg-0000000GrMH-161p;
-	Mon, 23 Sep 2024 09:41:45 +0000
+	id 1ssfkj-0000000Gt9g-23lG;
+	Mon, 23 Sep 2024 09:53:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727084502;
-	bh=GRnjXSpl7frDI6cTVufd4Tb5HHjLXwrTKQEtkTBHYxs=;
+	s=mail; t=1727085187;
+	bh=oZq/tJZEKhLPOMgfoJYimVhT73cmX0YvXhNZwch10fw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SbsPVhNG82UW0fgWeME1nVKz+9KnUBEZGROHGCQrTfFS54sPGJdiut28l3814a0zi
-	 0ELjx/zvnArs3teaxH4zZzlVV11968VV4B5GIJi3wOaWBb6Hjc3y1kBCfELbFsiMvi
-	 FX8ZNZrareec+lPJ6E4X5gz7pdZRp+TAiHXlGXxM5IxL8K5SAu/m12aStqXRkEWy09
-	 B0XV7VK3/xwVF5kTioR1kx7ebmIdolLKTLtobssQypHNQZJgaYJGj/XWDgzYjp4C1H
-	 dx5uaX4k8UvWgW/lTvKNT7EhULas+6uiGcPT4NOrao5sXK9+z2OpJFp+m4dgO1a5CT
-	 SJLmSZ7rYUgeQ==
+	b=MZ+hq6OINW90+WpTkHHmPOoq2HKPAuvI+1xkqbswtdYsklz/MSFzr68+Q+giSL+I5
+	 OzP9T9Zr4wDKneB6nMIYOUVE4Fm3bAbN3ouV21gTJTi2xXnyp7DzwK9oRCcafr5ody
+	 WFj5GYNdLHfbZbXWSmPRUUGE0etUK0yOuZdYIbdXxTfyrvzezFQV8LHaNU197eITR9
+	 +c9hdBh2po9xsq8ZwmGclZ597SEZhcqwtqv3bVRGUxKmfMJ8PQbFuYjZBdEa1LsKZB
+	 wydLnlk5Im0F2Q9H+qjKlLAFoanlLXpwwrXA2ndHDXHHaqAx/wicl937ots20axw9F
+	 cIAGwuzXBkXfA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D2B0A17E10AA;
-	Mon, 23 Sep 2024 11:41:41 +0200 (CEST)
-Message-ID: <d8941149-9125-4fe2-a1c0-ab29223a0c87@collabora.com>
-Date: Mon, 23 Sep 2024 11:41:41 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 57D9417E10C2;
+	Mon, 23 Sep 2024 11:53:06 +0200 (CEST)
+Message-ID: <122e5099-4f0b-41cc-93c9-7ccdfc0207ad@collabora.com>
+Date: Mon, 23 Sep 2024 11:53:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] PCI: mediatek-gen3: Avoid PCIe resetting for Airoha
- EN7581 SoC
-To: Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee
- <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Christian Marangi <ansuelsmth@gmail.com>, linux-pci@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- upstream@airoha.com, Hui Ma <hui.ma@airoha.com>
-References: <20240920-pcie-en7581-rst-fix-v1-1-1043fb63ffc9@kernel.org>
+Subject: Re: [PATCH v6 2/2] dt-bindings: mfd: mediatek: mt6397: Convert to DT
+ schema format
+To: Macpaul Lin <macpaul.lin@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
+ <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Sean Wang <sean.wang@mediatek.com>, Sen Chu <sen.chu@mediatek.com>,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, Pavel Machek <pavel@ucw.cz>,
+ Lee Jones <lee@kernel.org>, Sebastian Reichel <sre@kernel.org>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
+ linux-leds@vger.kernel.org, linux-pm@vger.kernel.org,
+ linux-rtc@vger.kernel.org, linux-sound@vger.kernel.org,
+ Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+ Macpaul Lin <macpaul@gmail.com>, Chris-qj chen <chris-qj.chen@mediatek.com>,
+ MediaTek Chromebook Upstream
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ Chen-Yu Tsai <wenst@chromium.org>
+References: <20240918064955.6518-1-macpaul.lin@mediatek.com>
+ <20240918064955.6518-2-macpaul.lin@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240920-pcie-en7581-rst-fix-v1-1-1043fb63ffc9@kernel.org>
+In-Reply-To: <20240918064955.6518-2-macpaul.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240923_024144_517568_E33996EF 
-X-CRM114-Status: GOOD (  21.96  )
+X-CRM114-CacheID: sfid-20240923_025309_716612_0C1468A1 
+X-CRM114-Status: GOOD (  13.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,117 +97,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/09/24 10:26, Lorenzo Bianconi ha scritto:
-> The PCIe controller available on the EN7581 SoC does not support reset
-> via the following lines:
-> - PCIE_MAC_RSTB
-> - PCIE_PHY_RSTB
-> - PCIE_BRG_RSTB
-> - PCIE_PE_RSTB
+Il 18/09/24 08:49, Macpaul Lin ha scritto:
+> Convert the mfd: mediatek: mt6397 binding to DT schema format.
 > 
-> Introduce the reset callback in order to avoid resetting the PCIe port
-> for Airoha EN7581 SoC.
+> MT6323, MT6358, and MT6397 are PMIC devices with multiple function
+> subdevices. They share a common PMIC design but have variations in
+> subdevice combinations.
 > 
+> Key updates in this conversion:
+> 
+> 1. RTC:
+>     - Convert rtc-mt6397.txt and merge into parent MT6397 PMIC DT schema.
+> 
+> 2. Regulators:
+>     - Align to generic name "regulators".
+>     - Update references from .txt to .yaml for mt6323, mt6358, and mt6397
+>       regulators.
+>     - Simplify regulator name labels in device tree examples.
+> 
+> 3. Audio Codec:
+>     - Convert sound/mt6358.txt and merge into parent MT6397 PMIC DT schema.
+>     - Align to generic name "audio-codec" for codec and sound subdevices.
+>     - Add "mediatek,dmic-mode" and "Avdd-supply" properties.
+> 
+> 4. Clocks:
+>     - Align to generic name "clocks" for clockbuffer subdevices.
+> 
+> 5. LEDs:
+>     - Convert leds-mt6323.txt and merge into parent MT6397 PMIC DT schema.
+>     - Update LED binding.
+> 
+> 6. Keys:
+>     - Add detailed descriptions for power and home keys.
+>     - Add compatible: mediatek,mt6358-keys.
+> 
+> 7. Power Controller:
+>     - Convert mt6323-poweroff.txt and merge into parent MT6397 PMIC DT
+>       schema.
+>     - Add #power-domain-cells property to fix dt-binding check error.
+>     - Clarify "BBPU" as "Baseband power up".
+> 
+> 8. Pinctrl:
+>     - Align to generic name "pinctrl" instead of "pin-controller".
+> 
+> 9. Compatible:
+>     - Drop "mediatek,mt6357" since there is a separated DT Schema
+>       for PMIC MT6357.
+> 
+> 10. Examples:
+>     - MT6323: Retain complete examples for this PMIC.
+>     - MT6358 and MT6397: simplify settings in regulators.
+>      - Preserve "audio-codec", "clocks", "pinctrl", "rtc", and "keys"
+>        sections as they contain typical settings for different PMICs.
+> 
+> Additional updates:
+> - MAINTAINERS: Add co-maintainers and reference to
+>    mfd/mediatek,mt6397.yaml for LED and power-controller drivers.
+> - input/mediatek,pmic-keys.yaml: Update reference to
+>    mfd/mediatek,mt6397.yaml.
+> 
+> Signed-off-by: Sen Chu <sen.chu@mediatek.com>
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 
-EN7581 doesn't support pulling up/down PERST#?!
-That looks definitely odd, as that signal is part of the PCI-Express CEM spec.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Besides, there's another PERST# assertion at mtk_pcie_suspend_noirq()...
-
-Cheers,
-Angelo
-
-> Tested-by: Hui Ma <hui.ma@airoha.com>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->   drivers/pci/controller/pcie-mediatek-gen3.c | 44 ++++++++++++++++++-----------
->   1 file changed, 28 insertions(+), 16 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-> index 5c19abac74e8..9cea67e92d98 100644
-> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> @@ -128,10 +128,12 @@ struct mtk_gen3_pcie;
->   /**
->    * struct mtk_gen3_pcie_pdata - differentiate between host generations
->    * @power_up: pcie power_up callback
-> + * @reset: pcie reset callback
->    * @phy_resets: phy reset lines SoC data.
->    */
->   struct mtk_gen3_pcie_pdata {
->   	int (*power_up)(struct mtk_gen3_pcie *pcie);
-> +	void (*reset)(struct mtk_gen3_pcie *pcie);
->   	struct {
->   		const char *id[MAX_NUM_PHY_RESETS];
->   		int num_resets;
-> @@ -373,6 +375,28 @@ static void mtk_pcie_enable_msi(struct mtk_gen3_pcie *pcie)
->   	writel_relaxed(val, pcie->base + PCIE_INT_ENABLE_REG);
->   }
->   
-> +static void mtk_pcie_reset(struct mtk_gen3_pcie *pcie)
-> +{
-> +	u32 val;
-> +
-> +	/* Assert all reset signals */
-> +	val = readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
-> +	val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
-> +	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> +
-> +	/*
-> +	 * Described in PCIe CEM specification sections 2.2 (PERST# Signal)
-> +	 * and 2.2.1 (Initial Power-Up (G3 to S0)).
-> +	 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
-> +	 * for the power and clock to become stable.
-> +	 */
-> +	msleep(100);
-> +
-> +	/* De-assert reset signals */
-> +	val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB);
-> +	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> +}
-> +
->   static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
->   {
->   	struct resource_entry *entry;
-> @@ -402,22 +426,9 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
->   	val |= PCIE_DISABLE_DVFSRC_VLT_REQ;
->   	writel_relaxed(val, pcie->base + PCIE_MISC_CTRL_REG);
->   
-> -	/* Assert all reset signals */
-> -	val = readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
-> -	val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
-> -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> -
-> -	/*
-> -	 * Described in PCIe CEM specification sections 2.2 (PERST# Signal)
-> -	 * and 2.2.1 (Initial Power-Up (G3 to S0)).
-> -	 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
-> -	 * for the power and clock to become stable.
-> -	 */
-> -	msleep(100);
-> -
-> -	/* De-assert reset signals */
-> -	val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB);
-> -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> +	/* Reset the PCIe port if requested by the hw */
-> +	if (pcie->soc->reset)
-> +		pcie->soc->reset(pcie);
->   
->   	/* Check if the link is up or not */
->   	err = readl_poll_timeout(pcie->base + PCIE_LINK_STATUS_REG, val,
-> @@ -1207,6 +1218,7 @@ static const struct dev_pm_ops mtk_pcie_pm_ops = {
->   
->   static const struct mtk_gen3_pcie_pdata mtk_pcie_soc_mt8192 = {
->   	.power_up = mtk_pcie_power_up,
-> +	.reset = mtk_pcie_reset,
->   	.phy_resets = {
->   		.id[0] = "phy",
->   		.num_resets = 1,
-> 
-> ---
-> base-commit: f2024903cb387971abdbc6398a430e735a9b394c
-> change-id: 20240920-pcie-en7581-rst-fix-8161658c13c4
-> 
-> Best regards,
 
 
