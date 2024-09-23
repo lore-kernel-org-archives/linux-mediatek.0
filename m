@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7622ACF9C5B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Sep 2024 08:03:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A94CCF9C71
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Sep 2024 08:03:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TTktZ6zh7dUMwYiHLZ3lOy4Zva+vrBP4sje0RFE/uJI=; b=vItumMPYZ90ifKsvOBaOlXVPg8
-	98dZ0sl60sKh+Y12pMfBjRLpkbF3i87uV4wrcTiT55RFou0g1Ns1QxVVMl6qxdvHRsp2tL2SOkCCY
-	JNk1Mv5OOnliMcHAkekAn0818jHFq/NfO/9X1bUNNkgx2PXtfNu+jF64uazWwqPi16gtKFwkAUrbG
-	R+QkUUlN2TOXNom49VGSrWJtRym9aE6JreWZQIeFTaIH97o6Nzr3CyD21S2EMw6WI01d3Fg3tZdJn
-	dAvL6h0QYOdN6jRoj1WSPx31+KVosD1SAKze0DwKetSz2gpSJd5wNHNWy5ALXCj7cC8F1Ro1O634o
-	/QqvV3OQ==;
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LQLPSb8ldyG1OVVh0BB+yFOhjzNrq/gu6sGXkPkLj9A=; b=XgEbWLeGg8S9GfT77pBpt0vPEQ
+	AtJHUYZpT1UUgv/HTQl//tQ9Di24WK3OMmr13vbXdw3/cp6ym2V+c5sSm8Xh0BmLI63FIt9+20+wl
+	JR5xr8oplsuHAXzwoK24ELvSTa0ikACQgaa4q34PM+bs2LxUgjXeoA5FUnGyyzc6+TPY+BTOakLC2
+	6rtale1SKWgB6uMRYPM0Bd2GRrCzTTQsm9TOHBOkHEu6f5u+v8c5WirvYdj1cPyuUwPeK9sqQM7ts
+	RpY0KvGwpyrxk1BmBufdhnDr1sawuP8DUtT9RM1F7ZyJwfOa65TRu+iDLhE+o8Vs48H5mFA5gV5a6
+	1jH+iFdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sse30-0000000Gc9I-2Jmz;
-	Mon, 23 Sep 2024 08:03:55 +0000
+	id 1sse34-0000000GcBI-0YXr;
+	Mon, 23 Sep 2024 08:03:58 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sse2x-0000000Gc7m-432w
+	id 1sse31-0000000Gc9N-18fl
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Sep 2024 08:03:53 +0000
-X-UUID: 5ca7891c798211efb3adad29d29602c1-20240923
+	Mon, 23 Sep 2024 08:03:56 +0000
+X-UUID: 5cf651f0798211efb3adad29d29602c1-20240923
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=TTktZ6zh7dUMwYiHLZ3lOy4Zva+vrBP4sje0RFE/uJI=;
-	b=idoHr4XZQi+z/7/haNp7c+rN1TrPCQOY0sxeuw3gXDTX/+OIEjQov/rnYBU3/miRbQ/eepGHXT8SOjyyniyF4HM5BNOkgxmDYUVWMyswMcZV+sSew4Hd+HaNZ+5f7eXdaLv/MQDmGIchm5tOpulMeKlmsx78AgZhdTlIDR+3dqE=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=LQLPSb8ldyG1OVVh0BB+yFOhjzNrq/gu6sGXkPkLj9A=;
+	b=U4J09e/57QQPgf1VzqWeHfLyTSIUvSg+iEo5rQ/L6xJJVLdi9VL94l2W8faiOgRpTq9wZfnmX8HkO1Qg6iXSoVseuQKBuW6ONdGjDGrzT16APy02STAccpTLrE8JCc97sSQ4wz3rP8Zr6H3gNtf0HIZgZKjhMexrJTdj2SU9QZc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:de9a4da3-22f2-4cf7-bf39-e9440a1ff534,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:d1161a18-b42d-49a6-94d2-a75fa0df01d2,B
+X-CID-O-INFO: VERSION:1.1.41,REQID:40e8d262-c144-432c-bdc8-3793fa10b540,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:6dc6a47,CLOUDID:28649dd0-7921-4900-88a1-3aef019a55ce,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 5ca7891c798211efb3adad29d29602c1-20240923
+X-UUID: 5cf651f0798211efb3adad29d29602c1-20240923
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <peter.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 880414116; Mon, 23 Sep 2024 01:03:47 -0700
+	with ESMTP id 1337530728; Mon, 23 Sep 2024 01:03:48 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
@@ -64,18 +64,19 @@ CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
 	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
 	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
 	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>,
-	<quic_nguyenb@quicinc.com>
-Subject: [PATCH v8 0/3] fix abort defect
-Date: Mon, 23 Sep 2024 16:03:41 +0800
-Message-ID: <20240923080344.19084-1-peter.wang@mediatek.com>
+	<quic_nguyenb@quicinc.com>, <stable@vger.kernel.org>
+Subject: [PATCH v8 1/3] ufs: core: fix the issue of ICU failure
+Date: Mon, 23 Sep 2024 16:03:42 +0800
+Message-ID: <20240923080344.19084-2-peter.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240923080344.19084-1-peter.wang@mediatek.com>
+References: <20240923080344.19084-1-peter.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240923_010352_036837_4A2BC64D 
-X-CRM114-Status: UNSURE (   9.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240923_010355_353852_29385054 
+X-CRM114-Status: GOOD (  11.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,49 +93,60 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Peter Wang <peter.wang@mediatek.com>
 
-V8:
- - Remove the abort variable to simplify the abort process.
- - Correct error handler successfully aborts release flow.
- - Ingore MCQ OCS: ABORTED.
+When setting the ICU bit without using read-modify-write,
+SQRTCy will restart SQ again and receive an RTC return
+error code 2 (Failure - SQ not stopped).
 
-V7:
- - Use a variable instead of a flag.
- - Add a check for MCQ mode when setting this variable to UFS_ERR_HANDLER.
- - Print OCS information for OCS_ABORTED and OCS_INVALID_COMMAND_STATUS.
- - Add a MediaTek quirk for handling OCS_ABORTED in SDB mode.
- - Skip notifying SCSI from ISR during SCSI abort (ufshcd_abort()).
+Additionally, the error log has been modified so that
+this type of error can be observed.
 
-V6:
- - Add err handler check before set flag true.
+Fixes: ab248643d3d6 ("scsi: ufs: core: Add error handling for MCQ mode")
+Cc: stable@vger.kernel.org
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+Reviewed-by: Bao D. Nguyen <quic_nguyenb@quicinc.com>
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+---
+ drivers/ufs/core/ufs-mcq.c | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
 
-V5:
- - Change flag name.
- - Amend comment and patch description.
-
-V4:
- - Remove nullify SQ entry abort requeue.
- - Add more comment for flag usage and set description.
- - Fix build warning.
-
-V3:
- - Change comment and use variable(rtc) for error print
- - Change flag name and move flag set before ufshcd_clear_cmd
- - Add SDB mode clear UTRLCLR tag receive OCS_ABORTED requeue
-
-V2:
- - Fix mcq_enabled build error.
-
-Peter Wang (3):
-  ufs: core: fix the issue of ICU failure
-  ufs: core: fix error handler process for MCQ abort
-  ufs: core: add a quirk for MediaTek SDB mode aborted
-
- drivers/ufs/core/ufs-mcq.c      | 15 ++++++++-------
- drivers/ufs/core/ufshcd.c       | 28 ++++++++++++++++++++++++++--
- drivers/ufs/host/ufs-mediatek.c |  1 +
- include/ufs/ufshcd.h            |  6 ++++++
- 4 files changed, 41 insertions(+), 9 deletions(-)
-
+diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+index 5891cdacd0b3..3903947dbed1 100644
+--- a/drivers/ufs/core/ufs-mcq.c
++++ b/drivers/ufs/core/ufs-mcq.c
+@@ -539,7 +539,7 @@ int ufshcd_mcq_sq_cleanup(struct ufs_hba *hba, int task_tag)
+ 	struct scsi_cmnd *cmd = lrbp->cmd;
+ 	struct ufs_hw_queue *hwq;
+ 	void __iomem *reg, *opr_sqd_base;
+-	u32 nexus, id, val;
++	u32 nexus, id, val, rtc;
+ 	int err;
+ 
+ 	if (hba->quirks & UFSHCD_QUIRK_MCQ_BROKEN_RTC)
+@@ -569,17 +569,18 @@ int ufshcd_mcq_sq_cleanup(struct ufs_hba *hba, int task_tag)
+ 	opr_sqd_base = mcq_opr_base(hba, OPR_SQD, id);
+ 	writel(nexus, opr_sqd_base + REG_SQCTI);
+ 
+-	/* SQRTCy.ICU = 1 */
+-	writel(SQ_ICU, opr_sqd_base + REG_SQRTC);
++	/* Initiate Cleanup */
++	writel(readl(opr_sqd_base + REG_SQRTC) | SQ_ICU,
++		opr_sqd_base + REG_SQRTC);
+ 
+ 	/* Poll SQRTSy.CUS = 1. Return result from SQRTSy.RTC */
+ 	reg = opr_sqd_base + REG_SQRTS;
+ 	err = read_poll_timeout(readl, val, val & SQ_CUS, 20,
+ 				MCQ_POLL_US, false, reg);
+-	if (err)
+-		dev_err(hba->dev, "%s: failed. hwq=%d, tag=%d err=%ld\n",
+-			__func__, id, task_tag,
+-			FIELD_GET(SQ_ICU_ERR_CODE_MASK, readl(reg)));
++	rtc = FIELD_GET(SQ_ICU_ERR_CODE_MASK, readl(reg));
++	if (err || rtc)
++		dev_err(hba->dev, "%s: failed. hwq=%d, tag=%d err=%d RTC=%d\n",
++			__func__, id, task_tag, err, rtc);
+ 
+ 	if (ufshcd_mcq_sq_start(hba, hwq))
+ 		err = -ETIMEDOUT;
 -- 
 2.45.2
 
