@@ -4,71 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82B2FCF9C69
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 21:23:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C4EFCF9C6B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 22:04:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6gaEYB+KzM6+wt+fJ2GZmc5Y9zQKnpzU/3Crhzo6shY=; b=JYlO59t/12A1Uqo6cezod6s4x2
-	DvGsMOolkg87hQurT5QVk6OSSs6Hl2vuhRbkF8UpDpYYJmSl8/X5DeQ1WNeewfbjRYfQ5zp4WBDUH
-	p4OXr57Cw0awsnBwX0QbDcVl5Hnl+kI7GsYbpoiH13mCXfvijNQd4Vy03CbsjOTSqy/OLLmRGPJ3B
-	1MnnnTR9tKN5VgrHX/VN7grDvAfhvNA2YzTDgIVHy+SWbc8QPo9r6OpXeaXlO2TcZnZJlmvJCag1v
-	SNGpr56cf3Jo2PcInJOKt7wpitW2CjDlT5tw6Enbbam3GCswDWlNP7gyHPiH/Lu0qLVZB2dqJc5HE
-	FJ51UOSw==;
+	bh=NsZrdsG+uwrLVvS5FWIhBRuHHog4+l/Yf5EAxQLtzhs=; b=AcFyq85SOaVCNvw/TZW311ssFo
+	PuuF/BgMxHHQPiBUadhJnsi5ctsTIdesVk4JfHJNr3li4cfUV+axbhurhnaeI8+karBV1MCgF6hP+
+	40ASsw1ujCsy5hO0Kv4XPKICvp6223aW/fha6N2PCaKOwo9M7YPt24I8LxVl9J/UbDIj26qxus6Fx
+	TPntzNOIO1uCD0FbuFla2858APBLb8IaUgZwU2vrZArZDAqMUhfOf8cKLdJrqccOWkMa3DX2pNL6w
+	f+rOuTdIkb48RCGtba5Y+5BHDhODl998GV1WGmUZ4P39FAvE6V1DGDv/GvCtyW1OtVzprTnHCW+7A
+	Ddc10gJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stD0a-00000003KuQ-0ySe;
-	Tue, 24 Sep 2024 21:23:44 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1stDdX-00000003OYz-3Oez;
+	Tue, 24 Sep 2024 22:03:59 +0000
+Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stCzQ-00000003KfX-1EX1;
-	Tue, 24 Sep 2024 21:22:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 8AA695C41D6;
-	Tue, 24 Sep 2024 21:22:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F545C4CECD;
-	Tue, 24 Sep 2024 21:22:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727212951;
-	bh=ORN8sDOxLyn58T65c1ZiKJe2Tx746oGRCmfs/xV060s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LC3r0AjpUcP/CLjxzfq8ze/z2K+GqMsZdPos87MLlSua4xCqhNuyX2SlqI5yScJwk
-	 dckS1FF9q73Ewk6gV1EpMgnMMNQxx7IxS0FzW1RNuH2Q4qRr/VBCru+sSvVMxsk0ET
-	 +2HuJtamH6NeE6sRNsY4A7sfU1xysodQI3aEujAuSIP2mEOK3cX//30wW+6/p3ewby
-	 APDVXz+UsumblA4hVP0vseua2oMIB1sdvTkxdFQHKjpsbfLR43uNGTWZMqKuEHLuXv
-	 HWEigbUrdGVC1MPYmSS4aLSQPZX4bzpS9+vVCJKwGkFvzR9CTxtSqfQyadZugkHdmS
-	 HoUAIt3yGrUCw==
-Date: Tue, 24 Sep 2024 23:22:28 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lee Jones <lee@kernel.org>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	upstream@airoha.com, benjamin.larsson@genexis.eu,
-	ansuelsmth@gmail.com, linux-pwm@vger.kernel.org
-Subject: Re: [PATCH v4 4/5] pinctrl: airoha: Add support for EN7581 SoC
-Message-ID: <ZvMtlJN1xAMHoW-E@lore-desk>
-References: <20240911-en7581-pinctrl-v4-0-60ac93d760bb@kernel.org>
- <20240911-en7581-pinctrl-v4-4-60ac93d760bb@kernel.org>
- <CACRpkdZbyQ5bk8oR+Q4UmQCdM5h1mF1ztBc26YzqNsze_B=ehA@mail.gmail.com>
- <ZvKQe73ZKIFy4fny@lore-desk>
+	id 1stDci-00000003OQt-1aV9
+	for linux-mediatek@lists.infradead.org;
+	Tue, 24 Sep 2024 22:03:09 +0000
+Received: by mail-qk1-x72a.google.com with SMTP id af79cd13be357-7a99e8d5df1so604054085a.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 24 Sep 2024 15:03:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fooishbar.org; s=google; t=1727215386; x=1727820186; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=NsZrdsG+uwrLVvS5FWIhBRuHHog4+l/Yf5EAxQLtzhs=;
+        b=jNx8hzOPp0H6qwGfhoI+GoQ7vjF9Io/SAniHe7EDc/9aovASG+iRuxVCl778OhrO23
+         BkJtt8Kzw/GRBnyJ9da4zxTmHCsG4pbGoKBZT9CA35oypeaeNTNTjKSmgPmuP3zMmi6u
+         Q7VCsB6MSVRBngWOPEP0U//nd11CZJt+SoIZP09/Xy2SR8+Sn5y6YaGC6cs/45qN0z9x
+         Hj9uCsJ10IEg0cHLkPF9OSQm0VHpWLBLq8DFpYMnqbKDbnilIb5mGfi3YYh2A1J1nu+v
+         4uIemj6IEaBfZql+ZWlph9VKhVFM3AtOw3gNRmol2qwYxIIrDSTU5QvQQ3qY7gHmVkPA
+         Nbfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727215386; x=1727820186;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=NsZrdsG+uwrLVvS5FWIhBRuHHog4+l/Yf5EAxQLtzhs=;
+        b=rloQ+KxYLFd39llw9WlNsvFGRdqHyeXm46tlInaXVudPQ43IyQ8pkh/mEEQ91XuOqx
+         HZUofrccEWkusqX47h5ItB2rLrNdstvEAUgpjdyjbFjwp8BwC2an505aILLBy4IRaurC
+         PPvsUfyLjou3EH34qnplQgA0KXH/E4yOWe+d/4nucyW6dSru0tFprj3dE9xJmPIPNvbb
+         y4tAFk50jYSLw0Y1PfkpPEdrEkVPB/joNO/UQpH+gtRVNoPG3a+kDn7kDNgpJBtmXNWJ
+         rdR7VCz8jmM90TZLSl84SV/TzJxGCBxC3HOEqcQ6ySVUOja1lUn128wSj4ShHr9cOS0S
+         sLNA==
+X-Forwarded-Encrypted: i=1; AJvYcCXU8hce2ztEtwCAwpv6anzljbHMZjrje4LRv9GQ04z4doYTKX9tKW3Bc5iu7ywh7UfYyjIvYL9NLUlQXrrX7Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yztm3PExidOxThxeNFbkMzTPpP/y+NcnZFjSfD1LwKViTau3YdR
+	AmAOuJPscXXvoKzQ9sR5Az+HliHpD1AadZnbYzgjmx4ZJ1VDQqGK1n0lEuP6y2vjVj85mthPw2M
+	plkVuR/73C8jbuX830imIZRelnKJuV/qM6kXTCw==
+X-Google-Smtp-Source: AGHT+IElqfXPuPng8AojlDDF2C6GLMgjgq9uYfkfDW9uAzUUN373GhIZBRXCnSZ4eftp7Scr+RM/AU3bO+2aPn4itIQ=
+X-Received: by 2002:a05:620a:179e:b0:7a9:be7a:9220 with SMTP id
+ af79cd13be357-7ace745d94emr87761585a.60.1727215386507; Tue, 24 Sep 2024
+ 15:03:06 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="NZtxAZ5/yN8ueZoO"
-Content-Disposition: inline
-In-Reply-To: <ZvKQe73ZKIFy4fny@lore-desk>
+References: <20240830070351.2855919-1-jens.wiklander@linaro.org>
+In-Reply-To: <20240830070351.2855919-1-jens.wiklander@linaro.org>
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Tue, 24 Sep 2024 23:02:54 +0100
+Message-ID: <CAPj87rM5LSBEdMECyh0WTkjWWySDv2_eyqj7ew_qU7xQ5LEdgA@mail.gmail.com>
+Subject: Re: [RFC PATCH 0/4] Linaro restricted heap
+To: Jens Wiklander <jens.wiklander@linaro.org>
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linaro-mm-sig@lists.linaro.org, op-tee@lists.trustedfirmware.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Olivier Masse <olivier.masse@nxp.com>, Thierry Reding <thierry.reding@gmail.com>, 
+	Yong Wu <yong.wu@mediatek.com>, Sumit Semwal <sumit.semwal@linaro.org>, 
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>, 
+	John Stultz <jstultz@google.com>, "T . J . Mercier" <tjmercier@google.com>, 
+	=?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+	Sumit Garg <sumit.garg@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240924_142232_497499_2EE67312 
-X-CRM114-Status: GOOD (  40.80  )
+X-CRM114-CacheID: sfid-20240924_150308_562551_1A1AF58C 
+X-CRM114-Status: GOOD (  10.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,311 +98,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Jens,
 
---NZtxAZ5/yN8ueZoO
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Fri, 30 Aug 2024 at 08:04, Jens Wiklander <jens.wiklander@linaro.org> wrote:
+> This patch set is based on top of Yong Wu's restricted heap patch set [1].
+> It's also a continuation on Olivier's Add dma-buf secure-heap patch set [2].
+>
+> The Linaro restricted heap uses genalloc in the kernel to manage the heap
+> carvout. This is a difference from the Mediatek restricted heap which
+> relies on the secure world to manage the carveout.
 
-[...]
->=20
-> I am fine to switch to regmap but I guess we need to enable fast_io
-> since it can run even in interrupt context. Btw, I figured out even
-> airoha_pinctrl_rmw needs to grab a spin_lock since we can exec a led
-> trigger (like timer) where we run airoha_pinctrl_rmw in interrupt context
-> (so it should be fine to use a single regmap for it).
-> However, I guess we need to keep the spin_lock in airoha_pinctrl_gpiochip
-> since we need to grab it in airoha_pinctrl_gpio_irq_unmask() and
-> airoha_pinctrl_gpio_irq_type() (we access irq_type array there).
-> A possible solution would be to keep the local spin_lock and set
-> disable_locking. What do you think? Do you prefer to switch to regmap or
-> keep the current implementation using 'guard(spinlock_irqsave)' instead?
+Calling this the 'genalloc heap' would be much more clear.
 
-I reworked the code using regmap APIs and setting disable_locking flag
-in order to keep the spinlock local (I switch to guard(spinlock) as
-well). Thx for pointing this out, the code is simpler and more readable,
-I will add it in v5.
-
->=20
-> >=20
-> > > +static int airoha_pinctrl_get_gpio_from_pin(struct pinctrl_dev *pctr=
-l_dev,
-> > > +                                           int pin)
-> > > +{
-> > > +       struct pinctrl_gpio_range *range;
-> > > +       int gpio;
-> > > +
-> > > +       range =3D pinctrl_find_gpio_range_from_pin_nolock(pctrl_dev, =
-pin);
-> > > +       if (!range)
-> > > +               return -EINVAL;
-> > > +
-> > > +       gpio =3D pin - range->pin_base;
-> > > +       if (gpio < 0)
-> > > +               return -EINVAL;
-> > > +
-> > > +       return gpio;
-> > > +}
-> >=20
-> > This function is just used here:
->=20
-> it is used in airoha_pinconf_get()/airoha_pinconf_set()
->=20
-> >=20
-
-[...]
-
-> > > +       case PIN_CONFIG_OUTPUT_ENABLE:
-> > > +       case PIN_CONFIG_INPUT_ENABLE: {
-> > > +               int gpio =3D airoha_pinctrl_get_gpio_from_pin(pctrl_d=
-ev, pin);
-> > > +
-> > > +               if (gpio < 0)
-> > > +                       return gpio;
-> > > +
-> > > +               arg =3D airoha_pinctrl_gpio_get_direction(pinctrl, gp=
-io);
-> >=20
-> > I don't see why a pin would have to exist in a GPIO range in order to
-> > be set as output or input?
-> >=20
-> > Can't you just set up the pin as requested and not care whether
-> > it has a corresponding GPIO range?
-> >=20
-> > Is it over-reuse of the GPIO code? I'd say just set up the pin instead.
->=20
-> Do you mean to get rid of PIN_CONFIG_OUTPUT_ENABLE, PIN_CONFIG_INPUT_ENAB=
-LE
-> (and even PIN_CONFIG_OUTPUT in airoha_pinconf_set()) here?
-> E.g. we need PIN_CONFIG_OUTPUT_ENABLE to enable pwm for pwm-leds:
->=20
-> &mfd {
-> 	...
-> 	pio: pinctrl {
-> 		...
-> 		pwm_gpio18_idx10_pins: pwm-gpio18-idx10-pins {
-> 			function =3D "pwm";
-> 			pins =3D "gpio18";
-> 			output-enable;
-> 		};
-> 	};
-> };
-
-I reworked the code here in order to not explicitly use gpio value in
-airoha_pinconf_get/airoha_pinconf_set routines. However, we need to switch
-=66rom pin to gpio configuring data/direction/out hw registers since:
-- not all pins can be used as gpio (actually we can configure just pins in =
-the
-  range [13, 59])
-- data, dir and out hw register are indexed using gpio id and not pin one.
-  (e.g BIT(0) in data[0] refers to GPIO0 and not to PIN0).
-
-Regards,
-Lorenzo
-
->=20
-> >=20
-> > > +static int airoha_pinconf_set(struct pinctrl_dev *pctrl_dev,
-> > > +                             unsigned int pin, unsigned long *config=
-s,
-> > > +                             unsigned int num_configs)
-> > > +{
-> > > +       struct airoha_pinctrl *pinctrl =3D pinctrl_dev_get_drvdata(pc=
-trl_dev);
-> > > +       int i;
-> > > +
-> > > +       for (i =3D 0; i < num_configs; i++) {
-> > > +               u32 param =3D pinconf_to_config_param(configs[i]);
-> > > +               u32 arg =3D pinconf_to_config_argument(configs[i]);
-> > > +
-> > > +               switch (param) {
-> > > +               case PIN_CONFIG_BIAS_DISABLE:
-> > > +                       airoha_pinctrl_set_pulldown_conf(pinctrl, pin=
-, 0);
-> > > +                       airoha_pinctrl_set_pullup_conf(pinctrl, pin, =
-0);
-> > > +                       break;
-> > > +               case PIN_CONFIG_BIAS_PULL_UP:
-> > > +                       airoha_pinctrl_set_pulldown_conf(pinctrl, pin=
-, 0);
-> > > +                       airoha_pinctrl_set_pullup_conf(pinctrl, pin, =
-1);
-> > > +                       break;
-> > > +               case PIN_CONFIG_BIAS_PULL_DOWN:
-> > > +                       airoha_pinctrl_set_pulldown_conf(pinctrl, pin=
-, 1);
-> > > +                       airoha_pinctrl_set_pullup_conf(pinctrl, pin, =
-0);
-> > > +                       break;
-> > > +               case PIN_CONFIG_DRIVE_STRENGTH: {
-> > > +                       u32 e2 =3D 0, e4 =3D 0;
-> > > +
-> > > +                       switch (arg) {
-> > > +                       case MTK_DRIVE_2mA:
-> > > +                               break;
-> > > +                       case MTK_DRIVE_4mA:
-> > > +                               e2 =3D 1;
-> > > +                               break;
-> > > +                       case MTK_DRIVE_6mA:
-> > > +                               e4 =3D 1;
-> > > +                               break;
-> > > +                       case MTK_DRIVE_8mA:
-> > > +                               e2 =3D 1;
-> > > +                               e4 =3D 1;
-> > > +                               break;
-> > > +                       default:
-> > > +                               return -EINVAL;
-> > > +                       }
-> > > +
-> > > +                       airoha_pinctrl_set_drive_e2_conf(pinctrl, pin=
-, e2);
-> > > +                       airoha_pinctrl_set_drive_e4_conf(pinctrl, pin=
-, e4);
-> > > +                       break;
-> > > +               }
-> > > +               case PIN_CONFIG_DRIVE_OPEN_DRAIN:
-> > > +                       airoha_pinctrl_set_pcie_rst_od_conf(pinctrl, =
-pin, !!arg);
-> > > +                       break;
-> > > +               case PIN_CONFIG_OUTPUT_ENABLE:
-> > > +               case PIN_CONFIG_INPUT_ENABLE:
-> > > +               case PIN_CONFIG_OUTPUT: {
-> > > +                       int gpio =3D airoha_pinctrl_get_gpio_from_pin=
-(pctrl_dev, pin);
-> > > +                       bool input =3D param =3D=3D PIN_CONFIG_INPUT_=
-ENABLE;
-> > > +
-> > > +                       if (gpio < 0)
-> > > +                               return gpio;
-> > > +
-> > > +                       airoha_pinctrl_gpio_set_direction(pinctrl, gp=
-io, input);
-> > > +                       if (param =3D=3D PIN_CONFIG_OUTPUT)
-> > > +                               airoha_pinctrl_gpio_set_value(pinctrl=
-, gpio, !!arg);
-> > > +                       break;
-> >=20
-> > Dito. No need to reuse the GPIO set direction function. Make a helper
-> > that just work on the pin instead, and perhaps the GPIO set direction
-> > can use that instead.
->=20
-> ack, I will fix it in v5.
->=20
-> >=20
-> > > +static int airoha_pinctrl_gpio_direction_output(struct gpio_chip *ch=
-ip,
-> > > +                                               unsigned int gpio, in=
-t value)
-> > > +{
-> > > +       int err;
-> > > +
-> > > +       err =3D pinctrl_gpio_direction_output(chip, gpio);
-> > > +       if (err)
-> > > +               return err;
-> > > +
-> > > +       airoha_pinctrl_gpio_set(chip, gpio, value);
-> >=20
-> > Hm I get a bit confused by the similarly named helpers I guess...
->=20
-> Naming is always hard, I will try to improve :)
->=20
-> >=20
-> > > +static void airoha_pinctrl_gpio_irq_unmask(struct irq_data *data)
-> > > +{
-> > > +       u8 offset =3D data->hwirq % AIROHA_REG_GPIOCTRL_NUM_GPIO;
-> > > +       u8 index =3D data->hwirq / AIROHA_REG_GPIOCTRL_NUM_GPIO;
-> > > +       u32 mask =3D GENMASK(2 * offset + 1, 2 * offset);
-> > > +       struct airoha_pinctrl_gpiochip *gpiochip;
-> > > +       u32 val =3D BIT(2 * offset);
-> > > +       unsigned long flags;
-> > > +
-> > > +       gpiochip =3D irq_data_get_irq_chip_data(data);
-> > > +       if (WARN_ON_ONCE(data->hwirq >=3D ARRAY_SIZE(gpiochip->irq_ty=
-pe)))
-> > > +               return;
-> > > +
-> > > +       spin_lock_irqsave(&gpiochip->lock, flags);
-> >=20
-> > Use a scoped guard here
-> >=20
-> > guard(spinlock_irqsave)(&gpiochip->lock);
-> >=20
-> > > +static void airoha_pinctrl_gpio_irq_mask(struct irq_data *data)
-> > > +{
-> > > +       u8 offset =3D data->hwirq % AIROHA_REG_GPIOCTRL_NUM_GPIO;
-> > > +       u8 index =3D data->hwirq / AIROHA_REG_GPIOCTRL_NUM_GPIO;
-> > > +       u32 mask =3D GENMASK(2 * offset + 1, 2 * offset);
-> > > +       struct airoha_pinctrl_gpiochip *gpiochip;
-> > > +       unsigned long flags;
-> > > +
-> > > +       gpiochip =3D irq_data_get_irq_chip_data(data);
-> > > +
-> > > +       spin_lock_irqsave(&gpiochip->lock, flags);
-> >=20
-> > Dito
-> >=20
-> > > +static int airoha_pinctrl_gpio_irq_type(struct irq_data *data,
-> > > +                                       unsigned int type)
-> > > +{
-> > > +       struct airoha_pinctrl_gpiochip *gpiochip;
-> > > +       unsigned long flags;
-> > > +
-> > > +       gpiochip =3D irq_data_get_irq_chip_data(data);
-> > > +       if (data->hwirq >=3D ARRAY_SIZE(gpiochip->irq_type))
-> > > +               return -EINVAL;
-> > > +
-> > > +       spin_lock_irqsave(&gpiochip->lock, flags);
-> >=20
-> > Dito
-> >=20
-> > > +       girq->chip =3D devm_kzalloc(dev, sizeof(*girq->chip), GFP_KER=
-NEL);
-> > > +       if (!girq->chip)
-> > > +               return -ENOMEM;
-> > > +
-> > > +       girq->chip->name =3D dev_name(dev);
-> > > +       girq->chip->irq_unmask =3D airoha_pinctrl_gpio_irq_unmask;
-> > > +       girq->chip->irq_mask =3D airoha_pinctrl_gpio_irq_mask;
-> > > +       girq->chip->irq_mask_ack =3D airoha_pinctrl_gpio_irq_mask;
-> > > +       girq->chip->irq_set_type =3D airoha_pinctrl_gpio_irq_type;
-> > > +       girq->chip->flags =3D IRQCHIP_SET_TYPE_MASKED | IRQCHIP_IMMUT=
-ABLE;
-> > > +       girq->default_type =3D IRQ_TYPE_NONE;
-> > > +       girq->handler =3D handle_simple_irq;
-> >=20
-> > If the irqchip is immutable it is const and there is no point to malloc=
- it.
-> >=20
-> > Just
-> >=20
-> > static const struct irq_chip airoha_gpio_irq_chip =3D {...
-> >=20
-> > And assign it:
-> >=20
-> > girq =3D &g->gc.irq;
-> > gpio_irq_chip_set_chip(girq, &airoha_gpio_irq_chip);
->=20
-> ack, I will fix it in v5.
->=20
-> Regards,
-> Lorenzo
->=20
-> >=20
-> > Yours,
-> > Linus Walleij
-
-
-
---NZtxAZ5/yN8ueZoO
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZvMtlAAKCRA6cBh0uS2t
-rNZFAQDh1TQOTGsS6AJYn4S0E1QSvJxVk5y3yGM385PlB1UoHAEA8edZ+wyz5q9H
-yo2JKGgyRdNvxRP0tcPbnjEYEvDbnAg=
-=6/CL
------END PGP SIGNATURE-----
-
---NZtxAZ5/yN8ueZoO--
+Cheers,
+Daniel
 
