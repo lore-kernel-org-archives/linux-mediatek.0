@@ -4,71 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F0FBCF9C71
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 09:33:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00B05CF9C6B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 09:40:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VEBhq/LPQAaFF8KYFSfAc7ONrOrGLhM/G7XwaqHNSAo=; b=BSV+dr1zxJVEUr+r+d3qdNUNdN
-	l0SNJb1wDovO7ibFOWFpODKFALnEq/RfbZHawUP6SPj9tZUCMnUsJ7nAKIjZ0Vq1CQm10xdwRwhQS
-	cq/5YaVrhztIY80Gqy8oI/slqg6tH9qUUEapwIblWz08wrYX8Zeph6JNZob+4CU/hHS8HIw4ena87
-	7D0wdGnUcud9azmxUgqjiasOnIqqClq8OWPoWf0pI992DFYTqsC2z8FDXL/dJHIBV7lGtoMUOAOuE
-	yIgJKTno4leS0U806w1+LFCZkn9nVRaCc+lHo953cWeshHNyiSptICzbNcBfJWIjgglfm1zqU7Myu
-	5OrPiYjg==;
+	bh=sFjREwfqAJH9grPOMD/xx4/Kbi2oQ3OgpbxjWZn/p1Y=; b=dAYs4c1CS1jc67iyjz/qUcEZq5
+	IGFgau3sxXLjsKpzIkNx7HRNcFWVNxRgLxjY6By5yS7Kxur1cqD+8Hsg/a60swNSE3yNS/zSR8daS
+	RRa/C6XjSFjSz1+chxc/VZCbqmf1aFJoz0PNV5B4OFL2OP/DdtagUTTL4sJdw1cizQnoqF5jH/2Cm
+	idpl8GY9SaHKEr8vK/OViur9ame63b/yZNB1TthMAhOTUTZX5Haiz5udYRpbb5wft55PZzmQfRDs1
+	EsxT3TUT8P6lNZEppxD7enZT8PDNuZPwQyI6szExmwsVH1WEcwcFCKD/2UgwdvwR7zNzy6ektgDdG
+	GD3YuvTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1st1ut-00000001ozJ-2uKD;
-	Tue, 24 Sep 2024 09:33:07 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1st227-00000001qVV-3xtW;
+	Tue, 24 Sep 2024 09:40:35 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1st1sK-00000001ntI-1VKq;
-	Tue, 24 Sep 2024 09:30:29 +0000
+	id 1st1uA-00000001oTM-0VrQ;
+	Tue, 24 Sep 2024 09:32:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727170226;
-	bh=yYGyQa85Hiy1PX0vqwd7dAOmJNDEEsVqTrx6k8biPY0=;
+	s=mail; t=1727170340;
+	bh=Z3JCLYjzNd7msx1Ny3RqtXTqySQaWsTVeh5jTNek024=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=JmAz/RIMcfvnkfrzc76Ve42Qwh1mrdn89jlizJg0cYIOINFLr+kOfLxDbtn0fs3u8
-	 4C5At/kPvKrNwaHCBU90aVOFzE03G6vd9Wo4u+Q7SZula5SDL7lMK1rjztXLm5l7QZ
-	 DmhRUtN0KEP/DlFZULU20Gz8ucEb7FEGqaQYPd852giT16O8fXik2ff3BQT72XIBd8
-	 zbiNL9HGNPhpTvZaplBZmMo0vipYN72q3OckbhUEOjALMmeax5aR4k0ACtshCC2vPL
-	 3KbUCcuc5xfh3VwzuWx57oXXpu3VIa7a9vH/9skGPjGJXhw9rN2LieXPc+Raab7uiQ
-	 kzxm9x570OxHQ==
+	b=d/ABPmBUR09eEP/LirFN0dkQQzs9I3bLKAUGBUz7P7tYZ7ZEV2NVQyPWPWMvQWeGP
+	 ram4NjwrVp7G95RkMxaQqzwb22+fC84CqJzuWj3GSwRiiSwWj0hmKyCGUGINXEVu/Z
+	 URA5sGE3z/buVmkeXTLYRKn8nGzBBoxIUmDhkvQvAqP0JN57/RVgEr3mmKCURvTkDV
+	 fAYlu+vQqMn3wNEYFIMRicm7T3CIPtdroONx86x3ctg32+xSiXh/wd0gAa3Bch04/s
+	 MlLNi9Td9oK6nBWHO/9hhTQhc+/+5aDuCLHlAdHTYXwibcx1oZbY6Z3N2mxXrNDwsA
+	 x69RXAyDlBFtw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2E1AA17E10AA;
-	Tue, 24 Sep 2024 11:30:26 +0200 (CEST)
-Message-ID: <72ce817e-63de-40a7-b7e9-a5b44b67e207@collabora.com>
-Date: Tue, 24 Sep 2024 11:30:25 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EB63C17E10AA;
+	Tue, 24 Sep 2024 11:32:19 +0200 (CEST)
+Message-ID: <f6f40eb2-83e0-4588-baa7-eaf8c41bebb8@collabora.com>
+Date: Tue, 24 Sep 2024 11:32:19 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/3] rtc: mt6359: Add RTC hardware range and add
- support for start-year
-To: Macpaul Lin <macpaul.lin@mediatek.com>, lee@kernel.org,
- ZhanZhan.ge@mediatek.com
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, eddie.huang@mediatek.com, sean.wang@mediatek.com,
- alexandre.belloni@bootlin.com, sen.chu@mediatek.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-rtc@vger.kernel.org, kernel@collabora.com, yong.mao@mediatek.com
-References: <20240923100010.97470-1-angelogioacchino.delregno@collabora.com>
- <20240923100010.97470-3-angelogioacchino.delregno@collabora.com>
- <0748868d-4789-fcaa-e70f-6a4508411b36@mediatek.com>
- <247abc15-d82f-3e8f-5202-edc6099707df@mediatek.com>
+Subject: Re: [PATCH v2 1/1] drm/mediatek: dp: Add sdp path reset
+To: Liankun Yang <liankun.yang@mediatek.com>, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, airlied@gmail.com, simona@ffwll.ch,
+ matthias.bgg@gmail.com, jitao.shi@mediatek.com, mac.shen@mediatek.com,
+ peng.liu@mediatek.com
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20240924083715.18620-1-liankun.yang@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <247abc15-d82f-3e8f-5202-edc6099707df@mediatek.com>
+In-Reply-To: <20240924083715.18620-1-liankun.yang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240924_023028_566678_1FE95335 
-X-CRM114-Status: GOOD (  17.70  )
+X-CRM114-CacheID: sfid-20240924_023222_346665_D4B10E6A 
+X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,76 +79,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/09/24 09:05, Macpaul Lin ha scritto:
+Il 24/09/24 10:36, Liankun Yang ha scritto:
+> When using type-c to type-c to connect to the monitor,
+> the sound plays normally. If you unplug the type-c and
+> connect the type-c to hdmi dongle to the monitor, there will be noise.
 > 
-> On 9/24/24 12:08, Macpaul Lin wrote:
->>
->> On 9/23/24 18:00, AngeloGioacchino Del Regno wrote:
->>> Add the RTC hardware range parameters to enable the possibility
->>> of using the `start-year` devicetree property which, if present,
->>> will set the start_secs parameter by overriding the defaults
->>> that this driver is setting;
->>>
->>> To keep compatibility with (hence have the same date/time reading
->>> as) the old behavior, set:
->>>   - range_min to 1900-01-01 00:00:00
->>>   - range_max to 2027-12-31 23:59:59 (HW year max range is 0-127)
->>>   - start_secs defaulting to 1968-01-02 00:00:00
->>>
->>> Please note that the oddness of starting from January 2nd is not
->>> a hardware quirk and it's done only to get the same date/time
->>> reading as an RTC which time was set before this commit.
->>>
->>> Also remove the RTC_MIN_YEAR_OFFSET addition and subtraction in
->>> callbacks set_time() and read_time() respectively, as now this
->>> is already done by the API.
->>>
->>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>> ---
->>>   drivers/rtc/rtc-mt6397.c | 13 ++++---------
->>>   1 file changed, 4 insertions(+), 9 deletions(-)
->>
->> [snip]
->>
->> Thanks for helping add new patch fix for RTC.
->>
->>> @@ -302,6 +293,10 @@ static int mtk_rtc_probe(struct platform_device *pdev)
->>>       device_init_wakeup(&pdev->dev, 1);
->>>       rtc->rtc_dev->ops = &mtk_rtc_ops;
->>> +    rtc->rtc_dev->range_min = RTC_TIMESTAMP_BEGIN_1900;
->>> +    rtc->rtc_dev->range_max = mktime64(2027, 12, 31, 23, 59, 59);
->>> +    rtc->rtc_dev->start_secs = mktime64(1968, 1, 2, 0, 0, 0);
->>> +    rtc->rtc_dev->set_start_time = true;
->>>       return devm_rtc_register_device(rtc->rtc_dev);
->>>   }
->>
->> Dear @Zhanhan, Please help to leave comment if you think there is something need 
->> to be clarify. For example, I've found some relate origin defines
->> in "include/linux/mfd/mt6397/rtc.h"
->> #define RTC_MIN_YEAR    1968
->> #define RTC_BASE_YEAR    1900
->> #define RTC_NUM_YEAR    128
->> #define RTC_MIN_YEAR_OFFSET    (RTC_MIN_YEAR - RTC_BASE_YEAR)
->>
->> Should MediaTek remove RTC_MIN_YEAR and RTC_BASE_YEAR in next patch?
->> And since there may not exist any smartphone/tablet/TV using mt6397
->> RTC earlier than 2010? Is it possible to change
->> RTC_TIMESTAMP_BEGIN_1900 to RTC_TIMESTAMP_BEGIN_2000 without breaking
->> compatibility for these devices?
->>
->> Thanks
->> Macpaul Lin
->>
+> By capturing the audio data, it is found that
+> the data position is messy, and there is no error in the data.
 > 
-> After discussing these change with ZhanZhan, MediaTek think use 
-> RTC_TIMESTAMP_BEGIN_1900 and the other changes are okay.
+> Through experiments, it can be restored by resetting the SDP path
+> when unplugging it.
 > 
-> Reviewed-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> Reviewed-by: ZhanZhan Ge <zhanzhan.ge@mediatek.com>
-> 
+> Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
 
-Thank you Macpaul, ZhanZhan :-)
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Cheers,
-Angelo
 
