@@ -4,70 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FD43CF9C71
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 08:05:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FDCFCF9C71
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 08:40:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C7AWdhBxo0Q6eONDveJsKp6OeRcbxJ3rie5SKREQmj4=; b=SR2GKAEzFvUENoWdVlk9VCzMSW
-	hi+DabaN+FZd0g4fEJrUOg/vVk3vvAbfSDNwPxUtXRgCCB6Nr8Y++glglii+I40V86Wsmzfvlwl8y
-	LpCboV9ATeqUudbDu6Xy5Ko5YccyIH2mJpBDe+hO2KJZ+B2fn9H/QT8oRu2ydD/8FG6tUXiDEPQdy
-	U1QElwIQV2kqd4jlNp2lz7nlaXwjZ+UGf/1yIGXe1nPHc3teRSy2WOoIg3pkNyFpOONrmjdXQNyok
-	UEuyq/ADBbhR5SgvJHgfMgHOXUHsbQ9tj98FNODvEDSsfg9BzAu+tfLaqmThOeG7dgabtsYzbFZJy
-	SggT/IhA==;
+	bh=8MdrtNaF5OgPSHPkcRemzArzwAaClOLpiqbZVfahNHY=; b=DYu2t0wECwi09qFSOHh60La+1H
+	Jf3ImJLbIN108j/P/BYDW7iOuzv6uSylCJgqSJuNqT3MpWG8xgWXfs+VMeep7tLaFBKMaszYw8XLH
+	nkpj/ztrAjbVZd+CMKvGdAGVuVUwQjA7oIDUpB6fAGcF4B1ZkO2psdZsptE0SbMXCQzdF+78g2dks
+	nV0rAA7LG9QDOwAcmqyhh4z0pjSGxOV9c7kzDgwt7xUQdUTmvA3tENFntqNPJY3WH+7JZdkwaoc1v
+	+7nWdJ15b1xoJydwzi2Ov5Gx35FxfvNyjV7tYAbe6eHp/y837TBBAKc+nRmGfJedtXkMPH/s84qXD
+	ZzbXcoSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1st0Xn-00000001WZw-0xDW;
-	Tue, 24 Sep 2024 08:05:11 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1st15n-00000001dBQ-0dBA;
+	Tue, 24 Sep 2024 08:40:19 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1st0Xj-00000001WYS-2Scg;
-	Tue, 24 Sep 2024 08:05:09 +0000
+	id 1st14d-00000001cyu-148Z;
+	Tue, 24 Sep 2024 08:39:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727165105;
-	bh=bkob+FdVbT5JvRwKp/3RFu5HC+yR0/AGxmQWAMBAfxw=;
+	s=mail; t=1727167144;
+	bh=rF2hSvRoH7iIqmTjIrJJBZHPbGoS+9IepCXUIvhaqDA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=CvuFzrI0AhizshttZzgCNh2wASf80PcmQTwldXXkfRp3FLPhvWPKcfrWEvbKo1Xfl
-	 pYUdAvUXHnxCiRj+ansAs1Y/4qEBT2Zw5XVVCJNP0uIbVQ8vrmon7R8FFrcoXCUH6s
-	 9pJCTeDwuMeOV60sdTU3fT/wzcFnRngPhHowoQrpxGM+RtY4qCuVp/9cxh0gpJy1qA
-	 vosjvZo289g0RSv045JmPKfysGhGUkc9uWvpxbNbbTk4ORi2A8gXcPDYXBJXyeGyMz
-	 H+BP1y/ML/KeP7+lTIDUgycgFbxCGaC693LhuQAEtPJhFvvXYKON7YacpsDKrw3Ovw
-	 10HNVyTURjyPg==
-Received: from [192.168.50.250] (unknown [171.76.80.125])
+	b=ex3wrTgzUqRZpy/PtVqb9ldugnriMbN9ON1rq0Pq8yX2ssvtIGOCB1ZHH5AzxAIpr
+	 oG2dKkORcA7S/CbRsWQo8OH9u8n13l29EslszFJZeaXyuqZ1bg+1xZCiAHPkwU5ZAg
+	 rLsjEE0/sPU6D4osnIZrfCDZ2ze7PBQbSJMuYIU+RUYsBBhmFhGiN24kGoV+uvrToh
+	 3YbCO5aG1jRvqP8IkKlHs/A6thpsiN4chBRbOJFx0fDqRCwH8OfuZrhvHYfmyKJrla
+	 UfOfquZBvhIHUaWG0DE5gmHI2WTZoC8qqCsT+3lkC7vGKrCxBvHY9UTwDZcbi53AGF
+	 LIwW4hjW6A5PA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3D1CC17E1045;
-	Tue, 24 Sep 2024 10:05:02 +0200 (CEST)
-Message-ID: <58a9334d-26eb-4106-806a-59e5e728aed5@collabora.com>
-Date: Tue, 24 Sep 2024 13:35:00 +0530
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1154D17E1067;
+	Tue, 24 Sep 2024 10:39:04 +0200 (CEST)
+Message-ID: <33dc7f60-4364-4d7a-a66b-4bd881b41675@collabora.com>
+Date: Tue, 24 Sep 2024 10:39:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] docs/gpu: ci: update flake tests requirements
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
- helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
- robdclark@gmail.com, guilherme.gallo@collabora.com,
- sergi.blanch.torne@collabora.com, deborah.brouwer@collabora.com,
- mripard@kernel.org, rodrigo.vivi@intel.com,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- virtualization@lists.linux.dev, linux-kernel@vger.kernel.org
-References: <20240924022600.1441969-1-vignesh.raman@collabora.com>
- <CAA8EJprUUUc0iDph-HPrW1anrdnzYju7+JERQdHbwxvznq=H4w@mail.gmail.com>
+Subject: Re: [v1,1/1] i2c: mediatek: add runtime PM operations and bus
+ regulator control
+To: "zoie.lin" <zoie.lin@mediatek.com>, Qii Wang <qii.wang@mediatek.com>,
+ Andi Shyti <andi.shyti@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240920143627.23811-1-zoie.lin@mediatek.com>
+ <20240920143627.23811-2-zoie.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <CAA8EJprUUUc0iDph-HPrW1anrdnzYju7+JERQdHbwxvznq=H4w@mail.gmail.com>
+In-Reply-To: <20240920143627.23811-2-zoie.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240924_010507_815459_5970AAA6 
-X-CRM114-Status: GOOD (  17.39  )
+X-CRM114-CacheID: sfid-20240924_013907_633618_C4549D03 
+X-CRM114-Status: GOOD (  25.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,68 +78,243 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
+Il 20/09/24 16:36, zoie.lin ha scritto:
+> This commit introduces support for runtime PM operations in
+> the I2C driver, enabling runtime suspend and resume functionality.
+> 
+> Although in the most platforms, the bus power of i2c are always
+> on, some platforms disable the i2c bus power in order to meet
+> low power request.
+> 
+> This implementation includes bus regulator control to facilitate
+> proper handling of the bus power based on platform requirements.
+> 
+> Signed-off-by: zoie.lin <zoie.lin@mediatek.com>
 
-On 24/09/24 11:46, Dmitry Baryshkov wrote:
-> On Tue, 24 Sept 2024 at 04:26, Vignesh Raman
-> <vignesh.raman@collabora.com> wrote:
->>
->> Update the documentation to require linking to a relevant GitLab
->> issue for each new flake entry instead of an email report. Added
->> specific GitLab issue URLs for i915, xe and other drivers.
->>
->> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
->> ---
->>   Documentation/gpu/automated_testing.rst | 15 ++++++++++-----
->>   1 file changed, 10 insertions(+), 5 deletions(-)
->>
->> diff --git a/Documentation/gpu/automated_testing.rst b/Documentation/gpu/automated_testing.rst
->> index 2d5a28866afe..f73b8939dc3a 100644
->> --- a/Documentation/gpu/automated_testing.rst
->> +++ b/Documentation/gpu/automated_testing.rst
->> @@ -67,20 +67,25 @@ Lists the tests that for a given driver on a specific hardware revision are
->>   known to behave unreliably. These tests won't cause a job to fail regardless of
->>   the result. They will still be run.
->>
->> -Each new flake entry must be associated with a link to the email reporting the
->> -bug to the author of the affected driver, the board name or Device Tree name of
->> -the board, the first kernel version affected, the IGT version used for tests,
->> -and an approximation of the failure rate.
->> +Each new flake entry must include a link to the relevant GitLab issue, the board
->> +name or Device Tree name, the first kernel version affected, the IGT version used
->> +for tests and an approximation of the failure rate.
->>
->>   They should be provided under the following format::
->>
->> -  # Bug Report: $LORE_OR_PATCHWORK_URL
->> +  # Bug Report: $GITLAB_ISSUE
->>     # Board Name: broken-board.dtb
->>     # Linux Version: 6.6-rc1
->>     # IGT Version: 1.28-gd2af13d9f
->>     # Failure Rate: 100
->>     flaky-test
->>
->> +The GitLab issue must include the logs and the pipeline link. Use the appropriate
->> +link below to create an issue.
->> +https://gitlab.freedesktop.org/drm/i915/kernel/-/issues/ for i915 drivers
->> +https://gitlab.freedesktop.org/drm/xe/kernel/-/issues/ for xe drivers
-> 
-> drm/msm for msm driver, please. Otherwise we can easily miss such issues.
+Hello Zoie,
 
-Sure, will add it in v2. Thanks.
+Your name does not technically have any "." inside, so please fix it
+so that it reads `Zoie Lin <zoie.lin@mediatek.com>`.
 
+Moreover, this implementation can be improved. Check below:
+
+You missed pm_runtime_status_suspended() checks in suspend/resume callbacks
+and, if the bus wasn't already runtime suspended when reaching suspend(), that
+will not get the bus regulators powered off when suspending; analogously, if
+the device was runtime suspended, the regulators and clocks will stay on when
+resuming from system sleep until first usage.
+
+So add the checks:
+
+static int mtk_i2c_suspend_noirq(struct device *dev)
+{
+	struct mtk_i2c *i2c = dev_get_drvdata(dev);
+
+	i2c_mark_adapter_suspended(&i2c->adap);
+
+	if (!pm_runtime_status_suspended(dev))
+		mtk_i2c_runtime_suspend(dev);
+
+	clk_bulk_unprepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
+	return 0;
+}
+
+static int mtk_i2c_resume_noirq(struct device *dev)
+{
+	int ret;
+	struct mtk_i2c *i2c = dev_get_drvdata(dev);
+
+	ret = clk_bulk_prepare_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+	if (ret) {
+		dev_err(dev, "clock enable failed!\n");
+		return ret;
+	}
+
+	mtk_i2c_init_hw(i2c);
+
+	if (pm_runtime_status_suspended(dev))
+		ret = mtk_i2c_runtime_suspend(dev);
+
+	i2c_mark_adapter_resumed(&i2c->adap);
+
+	return 0;
+}
+
+> ---
+>   drivers/i2c/busses/i2c-mt65xx.c | 72 ++++++++++++++++++++++++++++-----
+>   1 file changed, 61 insertions(+), 11 deletions(-)
 > 
->> +https://gitlab.freedesktop.org/drm/misc/kernel/-/issues for other drivers
->> +
->>   drivers/gpu/drm/ci/${DRIVER_NAME}-${HW_REVISION}-skips.txt
->>   -----------------------------------------------------------
->>
->> --
->> 2.43.0
->>
-> 
-> 
+> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> index e0ba653dec2d..aae0189ba210 100644
+> --- a/drivers/i2c/busses/i2c-mt65xx.c
+> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> @@ -21,6 +21,7 @@
+>   #include <linux/module.h>
+>   #include <linux/of.h>
+>   #include <linux/platform_device.h>
+> +#include <linux/pm_runtime.h>
+>   #include <linux/scatterlist.h>
+>   #include <linux/sched.h>
+>   #include <linux/slab.h>
+> @@ -1245,8 +1246,8 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+>   	int left_num = num;
+>   	struct mtk_i2c *i2c = i2c_get_adapdata(adap);
+>   
+> -	ret = clk_bulk_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+> -	if (ret)
+> +	ret = pm_runtime_get_sync(i2c->dev);
+
+ret = pm_runtime_resume_and_get(i2c->dev);
+
+> +	if (ret < 0)
+>   		return ret;
+>   
+>   	i2c->auto_restart = i2c->dev_comp->auto_restart;
+> @@ -1299,7 +1300,9 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+>   	ret = num;
+>   
+>   err_exit:
+> -	clk_bulk_disable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+> +	pm_runtime_mark_last_busy(i2c->dev);
+> +	pm_runtime_put_autosuspend(i2c->dev);
+> +
+>   	return ret;
+>   }
+>   
+> @@ -1370,6 +1373,41 @@ static int mtk_i2c_parse_dt(struct device_node *np, struct mtk_i2c *i2c)
+>   	return 0;
+>   }
+>   
+> +static int mtk_i2c_runtime_suspend(struct device *dev)
+> +{
+> +	struct mtk_i2c *i2c = dev_get_drvdata(dev);
+> +
+> +	clk_bulk_disable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+> +	if (i2c->adap.bus_regulator)
+> +		regulator_disable(i2c->adap.bus_regulator);
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_i2c_runtime_resume(struct device *dev)
+> +{
+> +	int ret = 0;
+> +	struct mtk_i2c *i2c = dev_get_drvdata(dev);
+
+struct mtk_i2c *i2c = dev_get_drvdata(dev);
+int ret;
+
+> +
+> +	if (i2c->adap.bus_regulator) {
+> +		ret = regulator_enable(i2c->adap.bus_regulator);
+> +		if (ret < 0) {
+
+`ret` can't be > 0. `if (ret) {` is enough.
+
+> +			dev_err(dev, "enable regulator failed!\n");
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	ret = clk_bulk_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+> +	if (ret < 0) {
+
+if (ret) {
+
+> +		dev_err(dev, "clock enable failed!\n");
+
+This print is unnecessary.
+
+> +		if (i2c->adap.bus_regulator)
+> +			regulator_disable(i2c->adap.bus_regulator);
+> +		return ret;
+> +	}
+> +
+> +	return ret;
+
+return 0;
+
+> +}
+> +
+>   static int mtk_i2c_probe(struct platform_device *pdev)
+>   {
+>   	int ret = 0;
+> @@ -1472,13 +1510,19 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+>   		}
+>   	}
+>   
+> -	ret = clk_bulk_prepare_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+> +	ret = clk_bulk_prepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
+>   	if (ret) {
+> -		dev_err(&pdev->dev, "clock enable failed!\n");
+> +		dev_err(&pdev->dev, "clk_bulk_prepare failed\n");
+
+This print is anyway redundant, as clk_bulk_prepare() already prints upon failures,
+so you can as well simply remove it instead of changing it.
+
+>   		return ret;
+>   	}
+> +
+> +	platform_set_drvdata(pdev, i2c);
+> +
+> +	ret = mtk_i2c_runtime_resume(i2c->dev);
+> +	if (ret < 0)
+> +		goto err_clk_bulk_unprepare;
+>   	mtk_i2c_init_hw(i2c);
+> -	clk_bulk_disable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+> +	mtk_i2c_runtime_suspend(i2c->dev);
+>   
+>   	ret = devm_request_irq(&pdev->dev, irq, mtk_i2c_irq,
+>   			       IRQF_NO_SUSPEND | IRQF_TRIGGER_NONE,
+> @@ -1486,19 +1530,22 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+>   	if (ret < 0) {
+>   		dev_err(&pdev->dev,
+>   			"Request I2C IRQ %d fail\n", irq);
+> -		goto err_bulk_unprepare;
+> +		goto err_clk_bulk_unprepare;
+>   	}
+> +	pm_runtime_set_autosuspend_delay(&pdev->dev, 1000);
+
+One full second as autosuspend delay? Can this be shortened to 500? 250?
+
+How was the one second wait chosen?
+
+How much time does mtk_i2c_runtime_resume() take to resume the bus?
+
+> +	pm_runtime_use_autosuspend(&pdev->dev);
+> +	pm_runtime_enable(&pdev->dev);
+>   
+>   	i2c_set_adapdata(&i2c->adap, i2c);
+>   	ret = i2c_add_adapter(&i2c->adap);
+>   	if (ret)
+> -		goto err_bulk_unprepare;
+> -
+> -	platform_set_drvdata(pdev, i2c);
+> +		goto err_pm_runtime_disable;
+>   
+>   	return 0;
+>   
+> -err_bulk_unprepare:
+> +err_pm_runtime_disable:
+> +	pm_runtime_disable(&pdev->dev);
+> +err_clk_bulk_unprepare:
+>   	clk_bulk_unprepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
+>   
+>   	return ret;
+> @@ -1510,6 +1557,7 @@ static void mtk_i2c_remove(struct platform_device *pdev)
+>   
+>   	i2c_del_adapter(&i2c->adap);
+>   
+> +	pm_runtime_disable(&pdev->dev);
+
+pm_runtime_set_suspended(&pdev->dev);
+
+>   	clk_bulk_unprepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
+>   }
+>   
 
 Regards,
-Vignesh
+Angelo
+
+
 
