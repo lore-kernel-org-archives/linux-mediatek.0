@@ -4,85 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBA36CF9C71
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 07:35:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72208CF9C71
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 07:56:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x6jC7dLYj5DhEJuVDkwTLOL7wYPS+ONiODGiB9WMaMM=; b=bDPgrmvt+pv0JK05YynEzswl6v
-	gbKjj3IxHdS8H+JtBAI9IKxfukdYJFgtxLINHn8NQQUez82hwH7OHlmKKeqn21C+0Epo/tevF/W3c
-	tkB38muYfDgVg9TjMzjF5tTkUUCTYsw9/PLUy1IJpkctewJlPSUvy4zu7YqpPI7XvPw+BiFCUd4ve
-	+ryrvoe5F+EKGXWtctWAASUs3c8vvg2nvP+fiR32YPrV7Z0/0eDBTOgcAQfKjR80My5mnvieipt4W
-	qSFtl/YsqPl804mpiJ9FijKFaIv+v2Xq6VPZv8xV1g+v/FJarhNciySKkw3ixtfkrypuA2LqFpSyJ
-	P1AFkQyQ==;
+	bh=tAozLf9c+aDQa0XZQSewQFQRCpRH0y+FGJ/8Jcm6PUo=; b=dB83bIjWHAvqhGR30zjUNqo6lK
+	Q9PzWId1utRziIcYdZ7xdby5mqlEKFotGKC+IQDnjZHBPy9+rhyClKXbqWUFaa+jclqwFyv23n3iG
+	B61xjbbWoB9xktVmrmanwd99PEE+HUppAVPh0F4T1oH/YH1I+otsMZdHOyeQk6HhHI2wihbGDr2V4
+	PC3s7Mj+TPa+uQ4E7nD9Jns9jH89MgL4EaOiCW/Ga3Kpi429QiZojZ2iqlsFD5UCNOFftSq+XoQl6
+	zJWsqQm9XXSktT5HRY0ZRyWo0G0+wfMT+kSDPC8fnMgg4vyTb5oqRLIXOx+cfqG4iQnyJdN7ISvMH
+	mHto1CnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1st04o-00000001QeZ-2p02;
-	Tue, 24 Sep 2024 07:35:14 +0000
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+	id 1st0Ow-00000001VOb-1gKF;
+	Tue, 24 Sep 2024 07:56:02 +0000
+Received: from szxga05-in.huawei.com ([45.249.212.191])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1st04m-00000001QdH-1eWt
-	for linux-mediatek@lists.infradead.org;
-	Tue, 24 Sep 2024 07:35:13 +0000
-Received: by mail-lj1-x234.google.com with SMTP id 38308e7fff4ca-2f8ca33ef19so21529461fa.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 24 Sep 2024 00:35:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1727163310; x=1727768110; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=x6jC7dLYj5DhEJuVDkwTLOL7wYPS+ONiODGiB9WMaMM=;
-        b=WFY/iVSwzWejKjcIRN/azxlN9clGNEJFfeUDJPQXkhA36Zj7afw5+3KSB0OpQ83gyu
-         33hXZLI1d0kCbhfWCia0YBLhjtMO6ApdsHSuTy+MN9BRhcdoxRX82XJVM5nB/0qW+ToA
-         I58gTH4ptQxhfKnunrINo7OIKbUcp8ku9C+4xJtJ5f1wJ1g/ow0Vt2GCMWLYQHpXWz8w
-         lgkKHP1DL2QxsT5czekQgIkGney/2ZdxPlGlWsDYsSrQtwI8Jo2phoSwOcbqLs6IKpmR
-         sONrYzMvOlsiAa7UtwkeCsplst94yCzqhFxXUVEdOEXfg30UDbbzF9q9/7IgkNg8hM3V
-         wW3A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727163310; x=1727768110;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=x6jC7dLYj5DhEJuVDkwTLOL7wYPS+ONiODGiB9WMaMM=;
-        b=pF0t2HXmwkTC3K/MU1l1u48NJz9knKTSN8My5fjNSNAAHrwSSTuesCVy3i2Ki9ct0X
-         ntwvu+BuZT848KbWzV6Ad6q6JBkoR/rvejK4AOvfWYLgvooSDNRyTjNvSgDJUmlN+zOr
-         UGLYKCr4m/P4xhVQ7i3uKKePs+gKEtJ8R2HNUMs1NPfGqgAjAkeEFzjTcg0wzwfV7HhY
-         vF6fOf/H1eqmbr1KdJdYw9/KAGoNE4KAayoVmSvwodpI9g7Pf7ikn5Ixj6niXQDJl1rv
-         CIcFZ/nBQw2fniuM18iCDmq4niF6hq9VfwkQaDGb505++cWRfwdtbsWgklF0ICmSVAbV
-         TqYA==
-X-Forwarded-Encrypted: i=1; AJvYcCWft1tlNEvz/L97LhjcSDvkrSMcPu0KKrq+vSSf+VZ2GOOjEiG0WOtAltSVgTIXspwdDYoBlttRhmQ4smrRpg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy6tgU0EAlQqqvrfwvS86rDIDwioIAv4nEfjUq26dmjyDuws6xU
-	L5IQi/kzAoZYlaIji7M/Mwm9dCt6pkAMewVsTPElCSCgYK4xLJZQayQnaqo2jnkI3nmDlFxlzsg
-	Ydzq6NDEOw+e8oQMkTJGFRj7ZbJYGKen52mQdtA==
-X-Google-Smtp-Source: AGHT+IEdre6uDn55gw82LdZ2pu50IDPqSAXWNGKnyTnveP66xuQ0JFOZY4LGtLABBGvFkj0anWjqmCFJ+EhaGSJNf7U=
-X-Received: by 2002:a2e:5149:0:b0:2f0:27da:6864 with SMTP id
- 38308e7fff4ca-2f7cb30dbabmr76774681fa.17.1727163310389; Tue, 24 Sep 2024
- 00:35:10 -0700 (PDT)
+	id 1st0Hf-00000001TuB-0OP0;
+	Tue, 24 Sep 2024 07:48:33 +0000
+Received: from mail.maildlp.com (unknown [172.19.88.214])
+	by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4XCX5H6pvcz2QTxJ;
+	Tue, 24 Sep 2024 15:47:31 +0800 (CST)
+Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
+	by mail.maildlp.com (Postfix) with ESMTPS id A6BD31A016C;
+	Tue, 24 Sep 2024 15:48:17 +0800 (CST)
+Received: from [10.67.120.129] (10.67.120.129) by
+ dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.11; Tue, 24 Sep 2024 15:48:17 +0800
+Message-ID: <64730d70-e5b7-4117-9ee8-43f23543eafd@huawei.com>
+Date: Tue, 24 Sep 2024 15:48:16 +0800
 MIME-Version: 1.0
-References: <20240911-en7581-pinctrl-v4-0-60ac93d760bb@kernel.org> <20240911-en7581-pinctrl-v4-4-60ac93d760bb@kernel.org>
-In-Reply-To: <20240911-en7581-pinctrl-v4-4-60ac93d760bb@kernel.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 24 Sep 2024 09:34:57 +0200
-Message-ID: <CACRpkdZbyQ5bk8oR+Q4UmQCdM5h1mF1ztBc26YzqNsze_B=ehA@mail.gmail.com>
-Subject: Re: [PATCH v4 4/5] pinctrl: airoha: Add support for EN7581 SoC
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lee Jones <lee@kernel.org>, 
-	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <ukleinek@kernel.org>, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	upstream@airoha.com, benjamin.larsson@genexis.eu, ansuelsmth@gmail.com, 
-	linux-pwm@vger.kernel.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net 2/2] page_pool: fix IOMMU crash when driver has
+ already unbound
+To: Gur Stavi <gur.stavi@huawei.com>
+CC: <akpm@linux-foundation.org>, <aleksander.lobakin@intel.com>,
+	<alexander.duyck@gmail.com>, <angelogioacchino.delregno@collabora.com>,
+	<anthony.l.nguyen@intel.com>, <ast@kernel.org>, <bpf@vger.kernel.org>,
+	<daniel@iogearbox.net>, <davem@davemloft.net>, <edumazet@google.com>,
+	<fanghaiqing@huawei.com>, <hawk@kernel.org>, <ilias.apalodimas@linaro.org>,
+	<imx@lists.linux.dev>, <intel-wired-lan@lists.osuosl.org>,
+	<iommu@lists.linux.dev>, <john.fastabend@gmail.com>, <kuba@kernel.org>,
+	<kvalo@kernel.org>, <leon@kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-mm@kvack.org>,
+	<linux-rdma@vger.kernel.org>, <linux-wireless@vger.kernel.org>,
+	<liuyonglong@huawei.com>, <lorenzo@kernel.org>, <matthias.bgg@gmail.com>,
+	<nbd@nbd.name>, <netdev@vger.kernel.org>, <pabeni@redhat.com>,
+	<przemyslaw.kitszel@intel.com>, <robin.murphy@arm.com>,
+	<ryder.lee@mediatek.com>, <saeedm@nvidia.com>, <sean.wang@mediatek.com>,
+	<shayne.chen@mediatek.com>, <shenwei.wang@nxp.com>, <tariqt@nvidia.com>,
+	<wei.fang@nxp.com>, <xiaoning.wang@nxp.com>, <zhangkun09@huawei.com>
+References: <2fb8d278-62e0-4a81-a537-8f601f61e81d@huawei.com>
+ <20240924064559.1681488-1-gur.stavi@huawei.com>
+Content-Language: en-US
+From: Yunsheng Lin <linyunsheng@huawei.com>
+In-Reply-To: <20240924064559.1681488-1-gur.stavi@huawei.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.67.120.129]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ dggpemf200006.china.huawei.com (7.185.36.61)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240924_003512_468075_C67A659B 
-X-CRM114-Status: GOOD (  28.39  )
+X-CRM114-CacheID: sfid-20240924_004831_671614_A4A4DA30 
+X-CRM114-Status: GOOD (  21.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,354 +87,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Lorenzo / Benjamin,
+On 2024/9/24 14:45, Gur Stavi wrote:
+>>>>> With all the caching in the network stack, some pages may be
+>>>>> held in the network stack without returning to the page_pool
+>>>>> soon enough, and with VF disable causing the driver unbound,
+>>>>> the page_pool does not stop the driver from doing it's
+>>>>> unbounding work, instead page_pool uses workqueue to check
+>>>>> if there is some pages coming back from the network stack
+>>>>> periodically, if there is any, it will do the dma unmmapping
+>>>>> related cleanup work.
+>>>>>
+>>>>> As mentioned in [1], attempting DMA unmaps after the driver
+>>>>> has already unbound may leak resources or at worst corrupt
+>>>>> memory. Fundamentally, the page pool code cannot allow DMA
+>>>>> mappings to outlive the driver they belong to.
+>>>>>
+>>>>> Currently it seems there are at least two cases that the page
+>>>>> is not released fast enough causing dma unmmapping done after
+>>>>> driver has already unbound:
+>>>>> 1. ipv4 packet defragmentation timeout: this seems to cause
+>>>>>    delay up to 30 secs:
+>>>>>
+>>>>> 2. skb_defer_free_flush(): this may cause infinite delay if
+>>>>>    there is no triggering for net_rx_action().
+>>>>>
+>>>>> In order not to do the dma unmmapping after driver has already
+>>>>> unbound and stall the unloading of the networking driver, add
+>>>>> the pool->items array to record all the pages including the ones
+>>>>> which are handed over to network stack, so the page_pool can
+>>>>> do the dma unmmapping for those pages when page_pool_destroy()
+>>>>> is called.
+>>>>
+>>>> So, I was thinking of a very similar idea. But what do you mean by
+>>>> "all"? The pages that are still in caches (slow or fast) of the pool
+>>>> will be unmapped during page_pool_destroy().
+>>>
+>>> Yes, it includes the one in pool->alloc and pool->ring.
+>>
+>> It worths mentioning that there is a semantics changing here:
+>> Before this patch, there can be almost unlimited inflight pages used by
+>> driver and network stack, as page_pool doesn't really track those pages.
+>> After this patch, as we use a fixed-size pool->items array to track the
+>> inflight pages, the inflight pages is limited by the pool->items, currently
+>> the size of pool->items array is calculated as below in this patch:
+>>
+>> +#define PAGE_POOL_MIN_ITEM_CNT	512
+>> +	unsigned int item_cnt = (params->pool_size ? : 1024) +
+>> +				PP_ALLOC_CACHE_SIZE + PAGE_POOL_MIN_ITEM_CNT;
+>>
+>> Personally I would consider it is an advantage to limit how many pages which
+>> are used by the driver and network stack, the problem seems to how to decide
+>> the limited number of page used by network stack so that performance is not
+>> impacted.
+> 
+> In theory, with respect to the specific problem at hand, you only have
+> a limit on the number of mapped pages inflight. Once you reach this
+> limit you can unmap these old pages, forget about them and remember
+> new ones.
 
-thanks for your patch!
+Yes, it can be done theoretically.
+The tricky part seems to be how to handle the concurrency problem when
+we evict the old pages and the old pages are also returned back to the
+page_pool concurrently without any locking or lockless operation.
 
-This is a real nice driver, I like the design of the pin database to suppor=
-t
-this pretty complex pin controller.
-
-Some comments and nits:
-
-On Wed, Sep 11, 2024 at 9:51=E2=80=AFPM Lorenzo Bianconi <lorenzo@kernel.or=
-g> wrote:
-
-> Introduce pinctrl driver for EN7581 SoC. Current EN7581 pinctrl driver
-> supports the following functionalities:
-> - pin multiplexing
-> - pin pull-up, pull-down, open-drain, current strength,
->   {input,output}_enable, output_{low,high}
-> - gpio controller
-> - irq controller
->
-> Tested-by: Benjamin Larsson <benjamin.larsson@genexis.eu>
-> Co-developed-by: Benjamin Larsson <benjamin.larsson@genexis.eu>
-> Signed-off-by: Benjamin Larsson <benjamin.larsson@genexis.eu>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
-(...)
-
-> +#include <dt-bindings/pinctrl/mt65xx.h>
-> +#include <linux/bitfield.h>
-
-Isn't just <linux/bits.h> enough for what you're using?
-
-> +#include <linux/gpio/driver.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/io.h>
-> +#include <linux/irq.h>
-> +#include <linux/irqdomain.h>
-> +#include <linux/kernel.h>
-
-What do you use from kernel.h? We usually use more fingrained
-headers these days.
-
-(...)
-
-> +#include <linux/mfd/airoha-en7581-mfd.h>
-> +#include <linux/mfd/syscon.h>
-> +#include <linux/of.h>
-> +#include <linux/of_irq.h>
-> +#include <linux/of_platform.h>
-> +#include <linux/pinctrl/consumer.h>
-
-Why do you need the consumer header?
-
-(...)
-
-> +static u32 airoha_pinctrl_rmw_unlock(void __iomem *addr, u32 mask, u32 v=
-al)
-> +{
-> +       val |=3D (readl(addr) & ~mask);
-> +       writel(val, addr);
-> +
-> +       return val;
-> +}
-> +
-> +#define airoha_pinctrl_set_unlock(addr, val)                            =
-       \
-> +       airoha_pinctrl_rmw_unlock((addr), 0, (val))
-> +#define airoha_pinctrl_clear_unlock(addr, mask)                         =
-               \
-> +       airoha_pinctrl_rmw_unlock((addr), (mask), (0))
-> +
-> +static u32 airoha_pinctrl_rmw(struct airoha_pinctrl *pinctrl,
-> +                             void __iomem *addr, u32 mask, u32 val)
-> +{
-> +       mutex_lock(&pinctrl->mutex);
-> +       val =3D airoha_pinctrl_rmw_unlock(addr, mask, val);
-> +       mutex_unlock(&pinctrl->mutex);
-> +
-> +       return val;
-> +}
-
-Thus looks like a reimplementation of regmap-mmio, can't you just use
-regmap MMIO? You use it for the SCU access already...
-
-If you persist with this solution, please use a guard:
-
-#include <linux/cleanup.h>
-
-guard(mutex)(&pinctrl->mutex);
-
-And the lock will be released when you exit the function.
-
-> +static int airoha_pinctrl_get_gpio_from_pin(struct pinctrl_dev *pctrl_de=
-v,
-> +                                           int pin)
-> +{
-> +       struct pinctrl_gpio_range *range;
-> +       int gpio;
-> +
-> +       range =3D pinctrl_find_gpio_range_from_pin_nolock(pctrl_dev, pin)=
-;
-> +       if (!range)
-> +               return -EINVAL;
-> +
-> +       gpio =3D pin - range->pin_base;
-> +       if (gpio < 0)
-> +               return -EINVAL;
-> +
-> +       return gpio;
-> +}
-
-This function is just used here:
-
-> +static int airoha_pinconf_get(struct pinctrl_dev *pctrl_dev,
-> +                             unsigned int pin, unsigned long *config)
-> +{
-> +       struct airoha_pinctrl *pinctrl =3D pinctrl_dev_get_drvdata(pctrl_=
-dev);
-> +       enum pin_config_param param =3D pinconf_to_config_param(*config);
-> +       u32 arg;
-> +
-> +       switch (param) {
-> +       case PIN_CONFIG_BIAS_PULL_DOWN:
-> +       case PIN_CONFIG_BIAS_DISABLE:
-> +       case PIN_CONFIG_BIAS_PULL_UP: {
-> +               u32 pull_up, pull_down;
-> +
-> +               if (airoha_pinctrl_get_pullup_conf(pinctrl, pin, &pull_up=
-) ||
-> +                   airoha_pinctrl_get_pulldown_conf(pinctrl, pin, &pull_=
-down))
-> +                       return -EINVAL;
-> +
-> +               if (param =3D=3D PIN_CONFIG_BIAS_PULL_UP &&
-> +                   !(pull_up && !pull_down))
-> +                       return -EINVAL;
-> +               else if (param =3D=3D PIN_CONFIG_BIAS_PULL_DOWN &&
-> +                        !(pull_down && !pull_up))
-> +                       return -EINVAL;
-> +               else if (pull_up || pull_down)
-> +                       return -EINVAL;
-> +
-> +               arg =3D 1;
-> +               break;
-> +       }
-> +       case PIN_CONFIG_DRIVE_STRENGTH: {
-> +               u32 e2, e4;
-> +
-> +               if (airoha_pinctrl_get_drive_e2_conf(pinctrl, pin, &e2) |=
-|
-> +                   airoha_pinctrl_get_drive_e4_conf(pinctrl, pin, &e4))
-> +                       return -EINVAL;
-> +
-> +               arg =3D e4 << 1 | e2;
-> +               break;
-> +       }
-> +       case PIN_CONFIG_DRIVE_OPEN_DRAIN:
-> +               if (airoha_pinctrl_get_pcie_rst_od_conf(pinctrl, pin, &ar=
-g))
-> +                       return -EINVAL;
-> +               break;
-> +       case PIN_CONFIG_OUTPUT_ENABLE:
-> +       case PIN_CONFIG_INPUT_ENABLE: {
-> +               int gpio =3D airoha_pinctrl_get_gpio_from_pin(pctrl_dev, =
-pin);
-> +
-> +               if (gpio < 0)
-> +                       return gpio;
-> +
-> +               arg =3D airoha_pinctrl_gpio_get_direction(pinctrl, gpio);
-
-I don't see why a pin would have to exist in a GPIO range in order to
-be set as output or input?
-
-Can't you just set up the pin as requested and not care whether
-it has a corresponding GPIO range?
-
-Is it over-reuse of the GPIO code? I'd say just set up the pin instead.
-
-> +static int airoha_pinconf_set(struct pinctrl_dev *pctrl_dev,
-> +                             unsigned int pin, unsigned long *configs,
-> +                             unsigned int num_configs)
-> +{
-> +       struct airoha_pinctrl *pinctrl =3D pinctrl_dev_get_drvdata(pctrl_=
-dev);
-> +       int i;
-> +
-> +       for (i =3D 0; i < num_configs; i++) {
-> +               u32 param =3D pinconf_to_config_param(configs[i]);
-> +               u32 arg =3D pinconf_to_config_argument(configs[i]);
-> +
-> +               switch (param) {
-> +               case PIN_CONFIG_BIAS_DISABLE:
-> +                       airoha_pinctrl_set_pulldown_conf(pinctrl, pin, 0)=
-;
-> +                       airoha_pinctrl_set_pullup_conf(pinctrl, pin, 0);
-> +                       break;
-> +               case PIN_CONFIG_BIAS_PULL_UP:
-> +                       airoha_pinctrl_set_pulldown_conf(pinctrl, pin, 0)=
-;
-> +                       airoha_pinctrl_set_pullup_conf(pinctrl, pin, 1);
-> +                       break;
-> +               case PIN_CONFIG_BIAS_PULL_DOWN:
-> +                       airoha_pinctrl_set_pulldown_conf(pinctrl, pin, 1)=
-;
-> +                       airoha_pinctrl_set_pullup_conf(pinctrl, pin, 0);
-> +                       break;
-> +               case PIN_CONFIG_DRIVE_STRENGTH: {
-> +                       u32 e2 =3D 0, e4 =3D 0;
-> +
-> +                       switch (arg) {
-> +                       case MTK_DRIVE_2mA:
-> +                               break;
-> +                       case MTK_DRIVE_4mA:
-> +                               e2 =3D 1;
-> +                               break;
-> +                       case MTK_DRIVE_6mA:
-> +                               e4 =3D 1;
-> +                               break;
-> +                       case MTK_DRIVE_8mA:
-> +                               e2 =3D 1;
-> +                               e4 =3D 1;
-> +                               break;
-> +                       default:
-> +                               return -EINVAL;
-> +                       }
-> +
-> +                       airoha_pinctrl_set_drive_e2_conf(pinctrl, pin, e2=
-);
-> +                       airoha_pinctrl_set_drive_e4_conf(pinctrl, pin, e4=
-);
-> +                       break;
-> +               }
-> +               case PIN_CONFIG_DRIVE_OPEN_DRAIN:
-> +                       airoha_pinctrl_set_pcie_rst_od_conf(pinctrl, pin,=
- !!arg);
-> +                       break;
-> +               case PIN_CONFIG_OUTPUT_ENABLE:
-> +               case PIN_CONFIG_INPUT_ENABLE:
-> +               case PIN_CONFIG_OUTPUT: {
-> +                       int gpio =3D airoha_pinctrl_get_gpio_from_pin(pct=
-rl_dev, pin);
-> +                       bool input =3D param =3D=3D PIN_CONFIG_INPUT_ENAB=
-LE;
-> +
-> +                       if (gpio < 0)
-> +                               return gpio;
-> +
-> +                       airoha_pinctrl_gpio_set_direction(pinctrl, gpio, =
-input);
-> +                       if (param =3D=3D PIN_CONFIG_OUTPUT)
-> +                               airoha_pinctrl_gpio_set_value(pinctrl, gp=
-io, !!arg);
-> +                       break;
-
-Dito. No need to reuse the GPIO set direction function. Make a helper
-that just work on the pin instead, and perhaps the GPIO set direction
-can use that instead.
-
-> +static int airoha_pinctrl_gpio_direction_output(struct gpio_chip *chip,
-> +                                               unsigned int gpio, int va=
-lue)
-> +{
-> +       int err;
-> +
-> +       err =3D pinctrl_gpio_direction_output(chip, gpio);
-> +       if (err)
-> +               return err;
-> +
-> +       airoha_pinctrl_gpio_set(chip, gpio, value);
-
-Hm I get a bit confused by the similarly named helpers I guess...
-
-> +static void airoha_pinctrl_gpio_irq_unmask(struct irq_data *data)
-> +{
-> +       u8 offset =3D data->hwirq % AIROHA_REG_GPIOCTRL_NUM_GPIO;
-> +       u8 index =3D data->hwirq / AIROHA_REG_GPIOCTRL_NUM_GPIO;
-> +       u32 mask =3D GENMASK(2 * offset + 1, 2 * offset);
-> +       struct airoha_pinctrl_gpiochip *gpiochip;
-> +       u32 val =3D BIT(2 * offset);
-> +       unsigned long flags;
-> +
-> +       gpiochip =3D irq_data_get_irq_chip_data(data);
-> +       if (WARN_ON_ONCE(data->hwirq >=3D ARRAY_SIZE(gpiochip->irq_type))=
-)
-> +               return;
-> +
-> +       spin_lock_irqsave(&gpiochip->lock, flags);
-
-Use a scoped guard here
-
-guard(spinlock_irqsave)(&gpiochip->lock);
-
-> +static void airoha_pinctrl_gpio_irq_mask(struct irq_data *data)
-> +{
-> +       u8 offset =3D data->hwirq % AIROHA_REG_GPIOCTRL_NUM_GPIO;
-> +       u8 index =3D data->hwirq / AIROHA_REG_GPIOCTRL_NUM_GPIO;
-> +       u32 mask =3D GENMASK(2 * offset + 1, 2 * offset);
-> +       struct airoha_pinctrl_gpiochip *gpiochip;
-> +       unsigned long flags;
-> +
-> +       gpiochip =3D irq_data_get_irq_chip_data(data);
-> +
-> +       spin_lock_irqsave(&gpiochip->lock, flags);
-
-Dito
-
-> +static int airoha_pinctrl_gpio_irq_type(struct irq_data *data,
-> +                                       unsigned int type)
-> +{
-> +       struct airoha_pinctrl_gpiochip *gpiochip;
-> +       unsigned long flags;
-> +
-> +       gpiochip =3D irq_data_get_irq_chip_data(data);
-> +       if (data->hwirq >=3D ARRAY_SIZE(gpiochip->irq_type))
-> +               return -EINVAL;
-> +
-> +       spin_lock_irqsave(&gpiochip->lock, flags);
-
-Dito
-
-> +       girq->chip =3D devm_kzalloc(dev, sizeof(*girq->chip), GFP_KERNEL)=
-;
-> +       if (!girq->chip)
-> +               return -ENOMEM;
-> +
-> +       girq->chip->name =3D dev_name(dev);
-> +       girq->chip->irq_unmask =3D airoha_pinctrl_gpio_irq_unmask;
-> +       girq->chip->irq_mask =3D airoha_pinctrl_gpio_irq_mask;
-> +       girq->chip->irq_mask_ack =3D airoha_pinctrl_gpio_irq_mask;
-> +       girq->chip->irq_set_type =3D airoha_pinctrl_gpio_irq_type;
-> +       girq->chip->flags =3D IRQCHIP_SET_TYPE_MASKED | IRQCHIP_IMMUTABLE=
-;
-> +       girq->default_type =3D IRQ_TYPE_NONE;
-> +       girq->handler =3D handle_simple_irq;
-
-If the irqchip is immutable it is const and there is no point to malloc it.
-
-Just
-
-static const struct irq_chip airoha_gpio_irq_chip =3D {...
-
-And assign it:
-
-girq =3D &g->gc.irq;
-gpio_irq_chip_set_chip(girq, &airoha_gpio_irq_chip);
-
-Yours,
-Linus Walleij
+For now each item has only one producer and one consumer, so we don't
+really have to worry about the concurrency problem before calling
+page_pool_item_uninit() in page_pool_destroy() to do the unmapping
+for the inflight pages by using a newly added 'destroy_lock' lock.
 
