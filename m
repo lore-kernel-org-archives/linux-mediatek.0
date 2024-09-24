@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E536ACF9C6B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 10:34:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B047ACF9C71
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 10:35:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OIJtHY07x0xQDRMRvpKLkpZjBGE+h4vENl+um8MjE4c=; b=Oee+6GNwepgSpXlJQPJ21BmmS3
-	gEVvjc4+1KD5wlkBB4yV4qDKAPTWDi4RJYo7xsP6iP35Lr1nm/v2bQpZWyvzfG/6c8kUebF4Jm8ry
-	rtJ/UsVG0a76vTZgi7bN90ThVR29PW5Lbz11DLeawAw4GWVnwHdu/TpX0r3dvPoU4URlHKns7Ouj2
-	TlNEDWAowQYo9jsJk1ydICLNdwqfEiHj5ViEStpduS/jJkc+xeEKdIw7i90oMhx6KE9nlxO5tX21t
-	CJ3031yLuuP6sF6KPJnwGxgp6W/oMB4dwXWQLNtHMbRQR66PUfK2Sz9G0j5xRjhgmleDE4U21VtnI
-	2R4pWROw==;
+	bh=vToQqSYhxoNIBKcHix7YuNNJbigjNkYAawVdnpO/pFY=; b=xuDEB8XaP0NqWbxcRATRkTMu+/
+	crYGlWtI7hpwn2AQUsqTXYgig5mcdFOo1myqojk6orn/ayPP7BSOzr+rwrXgevGP+/VJZuTWI5Zdz
+	O4m1Dw2sP8j26vQ/ZoP+UUl0NzbCCd066AJ8JMtme7eJmrUZFVxNg7cUfBlYE7poes8/ngyhn3TUp
+	Bm8XseCtLGtzeXDsDMxyrj1YYpCMq3L0B+8hm/8TKd2v9IvOsq+icg012x+vQ6Cc36kDo1RC64LuX
+	MMLe2YeYq49zDMeBEQwlFi+t+GmCHEd/bZ9Q14Kqh9wPsj1TUsMJL6eT21+6+9MKKSIZ3SPBS/40w
+	AvFtFevQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1st2sM-000000021EO-3cRQ;
-	Tue, 24 Sep 2024 10:34:34 +0000
+	id 1st2tT-000000021NG-38xQ;
+	Tue, 24 Sep 2024 10:35:43 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1st2q5-000000020ck-3oYO;
-	Tue, 24 Sep 2024 10:32:15 +0000
-X-UUID: 3fb7bd5c7a6011efba0aef63c0775dbf-20240924
+	id 1st2q6-000000020dc-1BD4;
+	Tue, 24 Sep 2024 10:32:16 +0000
+X-UUID: 40cbe1be7a6011efba0aef63c0775dbf-20240924
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=OIJtHY07x0xQDRMRvpKLkpZjBGE+h4vENl+um8MjE4c=;
-	b=pwfO9G3NvJfDkRb2jiSuuXddOAB/hd2ccqG+i/n1dWl+6xpmClRkwdLH9k15QnIOYxcAZfR30eHiMGsQxRbvN6YlTtIFDeU2zDTVUFX1XZnFjan1M8VqiPX1P+++cFS0iD6HtnDSiZGVBacpZMHT2cLHAx9gSwwFF4Yxu2MoN50=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=vToQqSYhxoNIBKcHix7YuNNJbigjNkYAawVdnpO/pFY=;
+	b=LRuCdmWIG1+iUTP0SKCDZCV30F+iufAYypBygxoHJ/dks4q75b5n0UxFoBtgliq9gTln/BCukPdxsDDxa45Fu/aNji/4S9uHImdn1eoFszXQ+4GXPptSpxVxarveDADOyoSP8tfeTfqdlYMq27IpCFKC/G7/tZgw2w/d5nfW5tY=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:ef8528f6-8b25-4462-aff1-6c6798568633,IP:0,U
+X-CID-O-INFO: VERSION:1.1.41,REQID:44ba3285-3939-45a9-a743-22ece5a16502,IP:0,U
 	RL:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-30
-X-CID-META: VersionHash:6dc6a47,CLOUDID:c0302c18-b42d-49a6-94d2-a75fa0df01d2,B
+X-CID-META: VersionHash:6dc6a47,CLOUDID:e07eafd0-7921-4900-88a1-3aef019a55ce,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:2,IP:nil,UR
 	L:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,S
 	PR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 3fb7bd5c7a6011efba0aef63c0775dbf-20240924
+X-UUID: 40cbe1be7a6011efba0aef63c0775dbf-20240924
 Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
 	(envelope-from <macpaul.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1987098246; Tue, 24 Sep 2024 03:32:07 -0700
+	with ESMTP id 1544977082; Tue, 24 Sep 2024 03:32:09 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 24 Sep 2024 18:32:04 +0800
+ 15.2.1118.26; Tue, 24 Sep 2024 18:32:05 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 24 Sep 2024 18:32:04 +0800
+ 15.2.1118.26 via Frontend Transport; Tue, 24 Sep 2024 18:32:05 +0800
 From: Macpaul Lin <macpaul.lin@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
 	<p.zabel@pengutronix.de>, Maarten Lankhorst
@@ -74,9 +74,9 @@ CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
 	MediaTek Chromebook Upstream
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
 	<wenst@chromium.org>
-Subject: [PATCH 2/6] dt-bindings: iommu: mediatek: Fix interrupt count constraint for new SoCs
-Date: Tue, 24 Sep 2024 18:31:52 +0800
-Message-ID: <20240924103156.13119-2-macpaul.lin@mediatek.com>
+Subject: [PATCH 6/6] dt-bindings: display: mediatek: dpi: Add mt8195 support in power domains
+Date: Tue, 24 Sep 2024 18:31:56 +0800
+Message-ID: <20240924103156.13119-6-macpaul.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240924103156.13119-1-macpaul.lin@mediatek.com>
 References: <20240924103156.13119-1-macpaul.lin@mediatek.com>
@@ -85,8 +85,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240924_033213_975570_8C80772D 
-X-CRM114-Status: GOOD (  12.32  )
+X-CRM114-CacheID: sfid-20240924_033214_346152_23EA1E7C 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,38 +101,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The infra-iommu node in mt8195.dtsi was triggering a CHECK_DTBS error due
-to an excessively long 'interrupts' property. The error message was:
+Add power domain binding to the mediatek DPI controller for MT8185.
 
-  infra-iommu@10315000: interrupts: [[0, 795, 4, 0], [0, 796, 4, 0],
-                     [0, 797, 4, 0], [0, 798, 4, 0], [0, 799, 4, 0]]
-                     is too long
+The dpi node in mt8195.dtsi was triggering a dtbs_check error:
+  dp-intf@1c113000: power-domains: False schema does not allow [[44, 18]]
 
-To address this issue, add "minItems: 1" and "maxItems: 5" constraints to
-the 'interrupts' property in the DT binding schema. This change allows for
-flexibility in the number of interrupts for new SoCs
-
-Fixes: bca28426805d ("dt-bindings: iommu: mediatek: Convert IOMMU to DT schema")
-
+Fixes: 5474d49b2f79 ("dt-bindings: display: mediatek: dpi: Add power domains")
 Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 ---
- Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ .../devicetree/bindings/display/mediatek/mediatek,dpi.yaml       | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-index ea6b0f5f24de..a00f1f0045b1 100644
---- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-+++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-@@ -96,7 +96,8 @@ properties:
-     maxItems: 1
- 
-   interrupts:
--    maxItems: 1
-+    minItems: 1
-+    maxItems: 5
- 
-   clocks:
-     items:
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+index 3a82aec9021c..07acc8a76bfc 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+@@ -89,6 +89,7 @@ allOf:
+                 - mediatek,mt6795-dpi
+                 - mediatek,mt8173-dpi
+                 - mediatek,mt8186-dpi
++                - mediatek,mt8195-dp-intf
+     then:
+       properties:
+         power-domains: false
 -- 
 2.45.2
 
