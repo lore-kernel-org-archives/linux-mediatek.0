@@ -4,75 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72208CF9C71
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 07:56:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FD43CF9C71
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 08:05:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tAozLf9c+aDQa0XZQSewQFQRCpRH0y+FGJ/8Jcm6PUo=; b=dB83bIjWHAvqhGR30zjUNqo6lK
-	Q9PzWId1utRziIcYdZ7xdby5mqlEKFotGKC+IQDnjZHBPy9+rhyClKXbqWUFaa+jclqwFyv23n3iG
-	B61xjbbWoB9xktVmrmanwd99PEE+HUppAVPh0F4T1oH/YH1I+otsMZdHOyeQk6HhHI2wihbGDr2V4
-	PC3s7Mj+TPa+uQ4E7nD9Jns9jH89MgL4EaOiCW/Ga3Kpi429QiZojZ2iqlsFD5UCNOFftSq+XoQl6
-	zJWsqQm9XXSktT5HRY0ZRyWo0G0+wfMT+kSDPC8fnMgg4vyTb5oqRLIXOx+cfqG4iQnyJdN7ISvMH
-	mHto1CnA==;
+	bh=C7AWdhBxo0Q6eONDveJsKp6OeRcbxJ3rie5SKREQmj4=; b=SR2GKAEzFvUENoWdVlk9VCzMSW
+	hi+DabaN+FZd0g4fEJrUOg/vVk3vvAbfSDNwPxUtXRgCCB6Nr8Y++glglii+I40V86Wsmzfvlwl8y
+	LpCboV9ATeqUudbDu6Xy5Ko5YccyIH2mJpBDe+hO2KJZ+B2fn9H/QT8oRu2ydD/8FG6tUXiDEPQdy
+	U1QElwIQV2kqd4jlNp2lz7nlaXwjZ+UGf/1yIGXe1nPHc3teRSy2WOoIg3pkNyFpOONrmjdXQNyok
+	UEuyq/ADBbhR5SgvJHgfMgHOXUHsbQ9tj98FNODvEDSsfg9BzAu+tfLaqmThOeG7dgabtsYzbFZJy
+	SggT/IhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1st0Ow-00000001VOb-1gKF;
-	Tue, 24 Sep 2024 07:56:02 +0000
-Received: from szxga05-in.huawei.com ([45.249.212.191])
+	id 1st0Xn-00000001WZw-0xDW;
+	Tue, 24 Sep 2024 08:05:11 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1st0Hf-00000001TuB-0OP0;
-	Tue, 24 Sep 2024 07:48:33 +0000
-Received: from mail.maildlp.com (unknown [172.19.88.214])
-	by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4XCX5H6pvcz2QTxJ;
-	Tue, 24 Sep 2024 15:47:31 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
-	by mail.maildlp.com (Postfix) with ESMTPS id A6BD31A016C;
-	Tue, 24 Sep 2024 15:48:17 +0800 (CST)
-Received: from [10.67.120.129] (10.67.120.129) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Tue, 24 Sep 2024 15:48:17 +0800
-Message-ID: <64730d70-e5b7-4117-9ee8-43f23543eafd@huawei.com>
-Date: Tue, 24 Sep 2024 15:48:16 +0800
+	id 1st0Xj-00000001WYS-2Scg;
+	Tue, 24 Sep 2024 08:05:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1727165105;
+	bh=bkob+FdVbT5JvRwKp/3RFu5HC+yR0/AGxmQWAMBAfxw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=CvuFzrI0AhizshttZzgCNh2wASf80PcmQTwldXXkfRp3FLPhvWPKcfrWEvbKo1Xfl
+	 pYUdAvUXHnxCiRj+ansAs1Y/4qEBT2Zw5XVVCJNP0uIbVQ8vrmon7R8FFrcoXCUH6s
+	 9pJCTeDwuMeOV60sdTU3fT/wzcFnRngPhHowoQrpxGM+RtY4qCuVp/9cxh0gpJy1qA
+	 vosjvZo289g0RSv045JmPKfysGhGUkc9uWvpxbNbbTk4ORi2A8gXcPDYXBJXyeGyMz
+	 H+BP1y/ML/KeP7+lTIDUgycgFbxCGaC693LhuQAEtPJhFvvXYKON7YacpsDKrw3Ovw
+	 10HNVyTURjyPg==
+Received: from [192.168.50.250] (unknown [171.76.80.125])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3D1CC17E1045;
+	Tue, 24 Sep 2024 10:05:02 +0200 (CEST)
+Message-ID: <58a9334d-26eb-4106-806a-59e5e728aed5@collabora.com>
+Date: Tue, 24 Sep 2024 13:35:00 +0530
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net 2/2] page_pool: fix IOMMU crash when driver has
- already unbound
-To: Gur Stavi <gur.stavi@huawei.com>
-CC: <akpm@linux-foundation.org>, <aleksander.lobakin@intel.com>,
-	<alexander.duyck@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<anthony.l.nguyen@intel.com>, <ast@kernel.org>, <bpf@vger.kernel.org>,
-	<daniel@iogearbox.net>, <davem@davemloft.net>, <edumazet@google.com>,
-	<fanghaiqing@huawei.com>, <hawk@kernel.org>, <ilias.apalodimas@linaro.org>,
-	<imx@lists.linux.dev>, <intel-wired-lan@lists.osuosl.org>,
-	<iommu@lists.linux.dev>, <john.fastabend@gmail.com>, <kuba@kernel.org>,
-	<kvalo@kernel.org>, <leon@kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-mm@kvack.org>,
-	<linux-rdma@vger.kernel.org>, <linux-wireless@vger.kernel.org>,
-	<liuyonglong@huawei.com>, <lorenzo@kernel.org>, <matthias.bgg@gmail.com>,
-	<nbd@nbd.name>, <netdev@vger.kernel.org>, <pabeni@redhat.com>,
-	<przemyslaw.kitszel@intel.com>, <robin.murphy@arm.com>,
-	<ryder.lee@mediatek.com>, <saeedm@nvidia.com>, <sean.wang@mediatek.com>,
-	<shayne.chen@mediatek.com>, <shenwei.wang@nxp.com>, <tariqt@nvidia.com>,
-	<wei.fang@nxp.com>, <xiaoning.wang@nxp.com>, <zhangkun09@huawei.com>
-References: <2fb8d278-62e0-4a81-a537-8f601f61e81d@huawei.com>
- <20240924064559.1681488-1-gur.stavi@huawei.com>
+Subject: Re: [PATCH v1] docs/gpu: ci: update flake tests requirements
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
+ helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
+ robdclark@gmail.com, guilherme.gallo@collabora.com,
+ sergi.blanch.torne@collabora.com, deborah.brouwer@collabora.com,
+ mripard@kernel.org, rodrigo.vivi@intel.com,
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org,
+ linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ virtualization@lists.linux.dev, linux-kernel@vger.kernel.org
+References: <20240924022600.1441969-1-vignesh.raman@collabora.com>
+ <CAA8EJprUUUc0iDph-HPrW1anrdnzYju7+JERQdHbwxvznq=H4w@mail.gmail.com>
 Content-Language: en-US
-From: Yunsheng Lin <linyunsheng@huawei.com>
-In-Reply-To: <20240924064559.1681488-1-gur.stavi@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
+From: Vignesh Raman <vignesh.raman@collabora.com>
+In-Reply-To: <CAA8EJprUUUc0iDph-HPrW1anrdnzYju7+JERQdHbwxvznq=H4w@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.67.120.129]
-X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
- dggpemf200006.china.huawei.com (7.185.36.61)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240924_004831_671614_A4A4DA30 
-X-CRM114-Status: GOOD (  21.29  )
+X-CRM114-CacheID: sfid-20240924_010507_815459_5970AAA6 
+X-CRM114-Status: GOOD (  17.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,71 +82,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2024/9/24 14:45, Gur Stavi wrote:
->>>>> With all the caching in the network stack, some pages may be
->>>>> held in the network stack without returning to the page_pool
->>>>> soon enough, and with VF disable causing the driver unbound,
->>>>> the page_pool does not stop the driver from doing it's
->>>>> unbounding work, instead page_pool uses workqueue to check
->>>>> if there is some pages coming back from the network stack
->>>>> periodically, if there is any, it will do the dma unmmapping
->>>>> related cleanup work.
->>>>>
->>>>> As mentioned in [1], attempting DMA unmaps after the driver
->>>>> has already unbound may leak resources or at worst corrupt
->>>>> memory. Fundamentally, the page pool code cannot allow DMA
->>>>> mappings to outlive the driver they belong to.
->>>>>
->>>>> Currently it seems there are at least two cases that the page
->>>>> is not released fast enough causing dma unmmapping done after
->>>>> driver has already unbound:
->>>>> 1. ipv4 packet defragmentation timeout: this seems to cause
->>>>>    delay up to 30 secs:
->>>>>
->>>>> 2. skb_defer_free_flush(): this may cause infinite delay if
->>>>>    there is no triggering for net_rx_action().
->>>>>
->>>>> In order not to do the dma unmmapping after driver has already
->>>>> unbound and stall the unloading of the networking driver, add
->>>>> the pool->items array to record all the pages including the ones
->>>>> which are handed over to network stack, so the page_pool can
->>>>> do the dma unmmapping for those pages when page_pool_destroy()
->>>>> is called.
->>>>
->>>> So, I was thinking of a very similar idea. But what do you mean by
->>>> "all"? The pages that are still in caches (slow or fast) of the pool
->>>> will be unmapped during page_pool_destroy().
->>>
->>> Yes, it includes the one in pool->alloc and pool->ring.
+Hi Dmitry,
+
+On 24/09/24 11:46, Dmitry Baryshkov wrote:
+> On Tue, 24 Sept 2024 at 04:26, Vignesh Raman
+> <vignesh.raman@collabora.com> wrote:
 >>
->> It worths mentioning that there is a semantics changing here:
->> Before this patch, there can be almost unlimited inflight pages used by
->> driver and network stack, as page_pool doesn't really track those pages.
->> After this patch, as we use a fixed-size pool->items array to track the
->> inflight pages, the inflight pages is limited by the pool->items, currently
->> the size of pool->items array is calculated as below in this patch:
+>> Update the documentation to require linking to a relevant GitLab
+>> issue for each new flake entry instead of an email report. Added
+>> specific GitLab issue URLs for i915, xe and other drivers.
 >>
->> +#define PAGE_POOL_MIN_ITEM_CNT	512
->> +	unsigned int item_cnt = (params->pool_size ? : 1024) +
->> +				PP_ALLOC_CACHE_SIZE + PAGE_POOL_MIN_ITEM_CNT;
+>> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+>> ---
+>>   Documentation/gpu/automated_testing.rst | 15 ++++++++++-----
+>>   1 file changed, 10 insertions(+), 5 deletions(-)
 >>
->> Personally I would consider it is an advantage to limit how many pages which
->> are used by the driver and network stack, the problem seems to how to decide
->> the limited number of page used by network stack so that performance is not
->> impacted.
+>> diff --git a/Documentation/gpu/automated_testing.rst b/Documentation/gpu/automated_testing.rst
+>> index 2d5a28866afe..f73b8939dc3a 100644
+>> --- a/Documentation/gpu/automated_testing.rst
+>> +++ b/Documentation/gpu/automated_testing.rst
+>> @@ -67,20 +67,25 @@ Lists the tests that for a given driver on a specific hardware revision are
+>>   known to behave unreliably. These tests won't cause a job to fail regardless of
+>>   the result. They will still be run.
+>>
+>> -Each new flake entry must be associated with a link to the email reporting the
+>> -bug to the author of the affected driver, the board name or Device Tree name of
+>> -the board, the first kernel version affected, the IGT version used for tests,
+>> -and an approximation of the failure rate.
+>> +Each new flake entry must include a link to the relevant GitLab issue, the board
+>> +name or Device Tree name, the first kernel version affected, the IGT version used
+>> +for tests and an approximation of the failure rate.
+>>
+>>   They should be provided under the following format::
+>>
+>> -  # Bug Report: $LORE_OR_PATCHWORK_URL
+>> +  # Bug Report: $GITLAB_ISSUE
+>>     # Board Name: broken-board.dtb
+>>     # Linux Version: 6.6-rc1
+>>     # IGT Version: 1.28-gd2af13d9f
+>>     # Failure Rate: 100
+>>     flaky-test
+>>
+>> +The GitLab issue must include the logs and the pipeline link. Use the appropriate
+>> +link below to create an issue.
+>> +https://gitlab.freedesktop.org/drm/i915/kernel/-/issues/ for i915 drivers
+>> +https://gitlab.freedesktop.org/drm/xe/kernel/-/issues/ for xe drivers
 > 
-> In theory, with respect to the specific problem at hand, you only have
-> a limit on the number of mapped pages inflight. Once you reach this
-> limit you can unmap these old pages, forget about them and remember
-> new ones.
+> drm/msm for msm driver, please. Otherwise we can easily miss such issues.
 
-Yes, it can be done theoretically.
-The tricky part seems to be how to handle the concurrency problem when
-we evict the old pages and the old pages are also returned back to the
-page_pool concurrently without any locking or lockless operation.
+Sure, will add it in v2. Thanks.
 
-For now each item has only one producer and one consumer, so we don't
-really have to worry about the concurrency problem before calling
-page_pool_item_uninit() in page_pool_destroy() to do the unmapping
-for the inflight pages by using a newly added 'destroy_lock' lock.
+> 
+>> +https://gitlab.freedesktop.org/drm/misc/kernel/-/issues for other drivers
+>> +
+>>   drivers/gpu/drm/ci/${DRIVER_NAME}-${HW_REVISION}-skips.txt
+>>   -----------------------------------------------------------
+>>
+>> --
+>> 2.43.0
+>>
+> 
+> 
+
+Regards,
+Vignesh
 
