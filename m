@@ -4,80 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D3A0CF9C5B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 01:10:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB695CF9C5B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 02:06:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IBzMsN5RHfPhudOYqJs3hdHWT2zf6o3BRLLDwtCh/wg=; b=Ex86/dnXflDs1Uc8DKmytK/x6C
-	zD7zJT9JqMJhmSZ3X6Z8h3nISj7K6c7Uu/wsGCUNdwKoaEO4JHHyzRMlsXcENjE2/6OGidw9tl3Rs
-	PG7H9rlUFUduyAg6k24kctmOHMJZLzS0E+B80jn2mKRw+wN8+cOiY+xU0ABqMNDY88hHalccH6uEB
-	X/qPn7/7dLblcuf8uv5C/LS7X36pq6zb1GMO+/4PfECUHimqj+CDsfK8XKC/Pv6NlvOJLkA+qQS2w
-	ceYj6D8GElKB+f/4i7H54rB60IHiMQ26tuvlgnQqQTcVS40BEZYST6WPbLyoj2Bk5r4poskVm5dIf
-	A/p8EayQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=B8218B7DehUr2ietcrp6KmJFM8zUO8rTNnk7SKM5UbQ=; b=oDUYmCxLwbKflwnGgNYuxGXJMc
+	6NttHS8j0D3CXCdhYcXwRUI9IcD4rq0uVmXQ+6xYdLx2O1Awr5z1qaI1nswt7XxoDRnyDhMKbWt/+
+	BHCg2OnxCigNRg5e/owLIoQFxKzzggLBBUkZCQ7Dw3y01gLewP4pf4X2TAsdPs6NumCs/dGlTyg0y
+	2XKjExuiH/YsvC67j83ZfzUepTmfM09CJ7hfsWG86CVcPdLehk9haIQpOfi/yVdyLMmYsV3/WQEir
+	JWNbsGIVR4YBo7IDy9QPalDSfo6jET0U+WkP16JV2WVnQLpuXLoDdLEt6ECQAogD1HY9/B3ZAFSuU
+	5CTums7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssu42-00000000myi-1Ive;
-	Tue, 24 Sep 2024 01:10:02 +0000
-Received: from mgamail.intel.com ([192.198.163.10])
+	id 1ssuwQ-00000000rG3-2qku;
+	Tue, 24 Sep 2024 02:06:14 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1ssu3z-00000000mxt-1P1e;
-	Tue, 24 Sep 2024 01:10:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1727140199; x=1758676199;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=moV2zLeHFU9ICjjabYswCIKJ83Q3EhyizzysDPkZHb4=;
-  b=cb81UliDYNT4Ijozg+6ZSMvQobG7M38yRAhu3UUZ2C+uUIl0D/5d00/K
-   p599ac1EpLvsvgFiu2ruNJWro98QejE7I07LQr7ymw6c6MZOMpaBf2nfN
-   oQ2Ve9yG12f/vjsXzhV5l85JPl/KTDOblfj/qn4Xttge2dY7grDuu0LMJ
-   sp7sJt1NkufIZeHibw4/aI8pw6TWfFWNS+Aoml8JOlxC1Eofz8lAHAp2G
-   pDEdN7dP5nRiQfLKLfQUjL/YMHjpL8uM0UgfF+CoP6vVEOOLy8hJ9BIQO
-   mceQA6ub2FMcsRt0lf/P5jYQPBH2/hZ2S/Q4U8+w9yH1LwKslWwjjG9kD
-   A==;
-X-CSE-ConnectionGUID: gLzyiWN8SHeTcqnIONHtVA==
-X-CSE-MsgGUID: JqAKg5UWRyW2DCfdB3IQJQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11204"; a="37479261"
-X-IronPort-AV: E=Sophos;i="6.10,253,1719903600"; 
-   d="scan'208";a="37479261"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Sep 2024 18:09:56 -0700
-X-CSE-ConnectionGUID: zxpuOZbGTD+sVOcZfs4p5A==
-X-CSE-MsgGUID: 0LmOncA4T92wi79gKfhj1w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,253,1719903600"; 
-   d="scan'208";a="71292986"
-Received: from lkp-server01.sh.intel.com (HELO 53e96f405c61) ([10.239.97.150])
-  by orviesa009.jf.intel.com with ESMTP; 23 Sep 2024 18:09:52 -0700
-Received: from kbuild by 53e96f405c61 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1ssu3p-000HlT-2m;
-	Tue, 24 Sep 2024 01:09:49 +0000
-Date: Tue, 24 Sep 2024 09:09:08 +0800
-From: kernel test robot <lkp@intel.com>
-To: Liankun Yang <liankun.yang@mediatek.com>, chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de, airlied@gmail.com, simona@ffwll.ch,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	jitao.shi@mediatek.com, mac.shen@mediatek.com,
-	peng.liu@mediatek.com
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v1 1/1] drm/mediatek: dp: Add sdp path reset
-Message-ID: <202409240818.3cqdkw5o-lkp@intel.com>
-References: <20240923133610.23728-1-liankun.yang@mediatek.com>
+	id 1ssuvG-00000000r57-44Vu;
+	Tue, 24 Sep 2024 02:05:05 +0000
+X-UUID: 67604e927a1911efba0aef63c0775dbf-20240923
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=B8218B7DehUr2ietcrp6KmJFM8zUO8rTNnk7SKM5UbQ=;
+	b=d07HBPfft4x11DiIxy9VbXmftrRgW2FIVqp8eoXwrkSkrsV4drmMwIA+QoOsXPaMr4wu8x+6k+X7mkGC0hEf45+X4WmEnjbv/qd2ztO/OBPBEUbTGoZwaO0uGqz/fo5+9zEr0QqTM/ZQIo8zvcSahDqLAQynvV/vlqYt6kK87ac=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:d0977525-16b2-4cab-8802-d2e30103c543,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:6dc6a47,CLOUDID:d874a7d0-7921-4900-88a1-3aef019a55ce,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 67604e927a1911efba0aef63c0775dbf-20240923
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1249750186; Mon, 23 Sep 2024 19:04:59 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 24 Sep 2024 10:04:56 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 24 Sep 2024 10:04:55 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Alper Nebi Yasak <alpernebiyasak@gmail.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Shawn Sung <shawn.sung@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, "Jason-JH . Lin"
+	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, "Nancy
+ Lin" <nancy.lin@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v4] drm/mediatek: ovl: Add fmt_convert function pointer to driver data
+Date: Tue, 24 Sep 2024 09:49:35 +0800
+Message-ID: <20240924014935.23677-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240923133610.23728-1-liankun.yang@mediatek.com>
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--11.194400-8.000000
+X-TMASE-MatchedRID: X21X7NJsxRozP1+hKLmUcMu00lnG8+PWIaLR+2xKRDLb6Y+fnTZULz94
+	HX24gqtCCInppypKAT/VoxB0j4x40LQ9EkyAW8JW2OSj4qJA9Qay+WUX/nOlPf96+aVV/3FmpSh
+	LJWs0HZyjmrD+IUq29vOsv2OU4IcBGAS4UVZrvjbuykw7cfAoILYxxljjfMnjwDR44lliPu0MhQ
+	WlzVDAVVFj1/uHZfKSLWdAixtFboZIm8dlggjEyEZ5oFjxiFLj5hCwQ3LNHZ0E6M1YtcX6vN5NR
+	zJ0gz5H1uNt11toaXts5SwFsix2Ux8TzIzimOwPC24oEZ6SpSkj80Za3RRg8L8PLM98nd4qrbsh
+	v5iqbAtu59sc4H8RHBlnibairbi9MRDTmRqHsPw=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--11.194400-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 4E191A892E49690384F14C7B42A4A5B96D2BFB73389C571CA3B3A501A28142D72000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240923_180959_418055_DE217432 
-X-CRM114-Status: GOOD (  12.46  )
+X-CRM114-CacheID: sfid-20240923_190503_061617_531D994F 
+X-CRM114-Status: GOOD (  16.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,87 +100,174 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Liankun,
+OVL_CON_CLRFMT_MAN is a configuration for extending color format
+settings of DISP_REG_OVL_CON(n).
+It will change some of the original color format settings.
 
-kernel test robot noticed the following build errors:
+Take the settings of (3 << 12) for example.
+- If OVL_CON_CLRFMT_MAN = 0 means OVL_CON_CLRFMT_RGBA8888.
+- If OVL_CON_CLRFMT_MAN = 1 means OVL_CON_CLRFMT_PARGB8888.
 
-[auto build test ERROR on pza/reset/next]
-[also build test ERROR on linus/master v6.11 next-20240923]
-[cannot apply to pza/imx-drm/next]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Since OVL_CON_CLRFMT_MAN is not supported on previous SoCs,
+It breaks the OVL color format setting of MT8173.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Liankun-Yang/drm-mediatek-dp-Add-sdp-path-reset/20240923-213747
-base:   https://git.pengutronix.de/git/pza/linux reset/next
-patch link:    https://lore.kernel.org/r/20240923133610.23728-1-liankun.yang%40mediatek.com
-patch subject: [PATCH v1 1/1] drm/mediatek: dp: Add sdp path reset
-config: arm64-allmodconfig (https://download.01.org/0day-ci/archive/20240924/202409240818.3cqdkw5o-lkp@intel.com/config)
-compiler: clang version 20.0.0git (https://github.com/llvm/llvm-project 8663a75fa2f31299ab8d1d90288d9df92aadee88)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240924/202409240818.3cqdkw5o-lkp@intel.com/reproduce)
+Therefore, the fmt_convert function pointer is added to the driver data
+and mtk_ovl_fmt_convert_with_blend is implemented for MT8192 and MT8195
+that support OVL_CON_CLRFMT_MAN, and mtk_ovl_fmt_convert is implemented
+for other SoCs that do not support it to solve the degradation problem.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202409240818.3cqdkw5o-lkp@intel.com/
+Fixes: a3f7f7ef4bfe ("drm/mediatek: Support "Pre-multiplied" blending in OVL")
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Tested-by: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 68 ++++++++++++++++++++++---
+ 1 file changed, 61 insertions(+), 7 deletions(-)
 
-All errors (new ones prefixed by >>):
-
-   In file included from drivers/gpu/drm/mediatek/mtk_dp.c:9:
-   In file included from include/drm/display/drm_dp_helper.h:27:
-   In file included from include/linux/i2c.h:13:
-   In file included from include/linux/acpi.h:39:
-   In file included from include/acpi/acpi_io.h:7:
-   In file included from arch/arm64/include/asm/acpi.h:14:
-   In file included from include/linux/memblock.h:12:
-   In file included from include/linux/mm.h:2228:
-   include/linux/vmstat.h:503:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
-     503 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
-         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
-     504 |                            item];
-         |                            ~~~~
-   include/linux/vmstat.h:510:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
-     510 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
-         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
-     511 |                            NR_VM_NUMA_EVENT_ITEMS +
-         |                            ~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/vmstat.h:517:36: warning: arithmetic between different enumeration types ('enum node_stat_item' and 'enum lru_list') [-Wenum-enum-conversion]
-     517 |         return node_stat_name(NR_LRU_BASE + lru) + 3; // skip "nr_"
-         |                               ~~~~~~~~~~~ ^ ~~~
-   include/linux/vmstat.h:523:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
-     523 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
-         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
-     524 |                            NR_VM_NUMA_EVENT_ITEMS +
-         |                            ~~~~~~~~~~~~~~~~~~~~~~
->> drivers/gpu/drm/mediatek/mtk_dp.c:1058:5: error: use of undeclared identifier 'SDP_RESET_SW_DP_ENC0_P0'
-    1058 |                                 SDP_RESET_SW_DP_ENC0_P0,
-         |                                 ^
-   drivers/gpu/drm/mediatek/mtk_dp.c:1059:5: error: use of undeclared identifier 'SDP_RESET_SW_DP_ENC0_P0'
-    1059 |                                 SDP_RESET_SW_DP_ENC0_P0);
-         |                                 ^
-   drivers/gpu/drm/mediatek/mtk_dp.c:1064:8: error: use of undeclared identifier 'SDP_RESET_SW_DP_ENC0_P0'
-    1064 |                                 0, SDP_RESET_SW_DP_ENC0_P0);
-         |                                    ^
-   4 warnings and 3 errors generated.
-
-
-vim +/SDP_RESET_SW_DP_ENC0_P0 +1058 drivers/gpu/drm/mediatek/mtk_dp.c
-
-  1054	
-  1055	static void mtk_dp_sdp_path_reset(struct mtk_dp *mtk_dp)
-  1056	{
-  1057		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3004,
-> 1058					SDP_RESET_SW_DP_ENC0_P0,
-  1059					SDP_RESET_SW_DP_ENC0_P0);
-  1060	
-  1061		/* Wait for sdp path reset to complete */
-  1062		usleep_range(1000, 5000);
-  1063		mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3004,
-  1064					0, SDP_RESET_SW_DP_ENC0_P0);
-  1065	}
-  1066	
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index 89b439dcf3a6..8f7b7e07aeb1 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -143,6 +143,7 @@ struct mtk_disp_ovl_data {
+ 	unsigned int addr;
+ 	unsigned int gmc_bits;
+ 	unsigned int layer_nr;
++	unsigned int (*fmt_convert)(struct device *dev, struct mtk_plane_state *state);
+ 	bool fmt_rgb565_is_0;
+ 	bool smi_id_en;
+ 	bool supports_afbc;
+@@ -386,13 +387,59 @@ void mtk_ovl_layer_off(struct device *dev, unsigned int idx,
+ 		      DISP_REG_OVL_RDMA_CTRL(idx));
+ }
+ 
+-static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt,
+-				    unsigned int blend_mode)
++static unsigned int mtk_ovl_fmt_convert(struct device *dev, struct mtk_plane_state *state)
+ {
+-	/* The return value in switch "MEM_MODE_INPUT_FORMAT_XXX"
+-	 * is defined in mediatek HW data sheet.
+-	 * The alphabet order in XXX is no relation to data
+-	 * arrangement in memory.
++	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
++	unsigned int fmt = state->pending.format;
++
++	switch (fmt) {
++	default:
++	case DRM_FORMAT_RGB565:
++		return OVL_CON_CLRFMT_RGB565(ovl);
++	case DRM_FORMAT_BGR565:
++		return OVL_CON_CLRFMT_RGB565(ovl) | OVL_CON_BYTE_SWAP;
++	case DRM_FORMAT_RGB888:
++		return OVL_CON_CLRFMT_RGB888(ovl);
++	case DRM_FORMAT_BGR888:
++		return OVL_CON_CLRFMT_RGB888(ovl) | OVL_CON_BYTE_SWAP;
++	case DRM_FORMAT_RGBX8888:
++	case DRM_FORMAT_RGBA8888:
++	case DRM_FORMAT_RGBX1010102:
++	case DRM_FORMAT_RGBA1010102:
++		return OVL_CON_CLRFMT_RGBA8888;
++	case DRM_FORMAT_BGRX8888:
++	case DRM_FORMAT_BGRA8888:
++	case DRM_FORMAT_BGRX1010102:
++	case DRM_FORMAT_BGRA1010102:
++		return OVL_CON_CLRFMT_BGRA8888;
++	case DRM_FORMAT_XRGB8888:
++	case DRM_FORMAT_ARGB8888:
++	case DRM_FORMAT_XRGB2101010:
++	case DRM_FORMAT_ARGB2101010:
++		return OVL_CON_CLRFMT_ARGB8888;
++	case DRM_FORMAT_XBGR8888:
++	case DRM_FORMAT_ABGR8888:
++	case DRM_FORMAT_XBGR2101010:
++	case DRM_FORMAT_ABGR2101010:
++		return OVL_CON_CLRFMT_ABGR8888;
++	case DRM_FORMAT_UYVY:
++		return OVL_CON_CLRFMT_UYVY | OVL_CON_MTX_YUV_TO_RGB;
++	case DRM_FORMAT_YUYV:
++		return OVL_CON_CLRFMT_YUYV | OVL_CON_MTX_YUV_TO_RGB;
++	}
++}
++
++static unsigned int mtk_ovl_fmt_convert_with_blend(struct device *dev,
++						   struct mtk_plane_state *state)
++{
++	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
++	unsigned int fmt = state->pending.format;
++	unsigned int blend_mode = state->base.pixel_blend_mode;
++
++	/*
++	 * For the platforms where OVL_CON_CLRFMT_MAN is defined in the
++	 * hardware data sheet and supports premultiplied color formats
++	 * such as OVL_CON_CLRFMT_PARGB8888.
+ 	 */
+ 	switch (fmt) {
+ 	default:
+@@ -471,7 +518,7 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+ 		return;
+ 	}
+ 
+-	con = ovl_fmt_convert(ovl, fmt, blend_mode);
++	con = ovl->data->fmt_convert(dev, state);
+ 	if (state->base.fb) {
+ 		con |= OVL_CON_AEN;
+ 		con |= state->base.alpha & OVL_CON_ALPHA;
+@@ -625,6 +672,7 @@ static const struct mtk_disp_ovl_data mt2701_ovl_driver_data = {
+ 	.addr = DISP_REG_OVL_ADDR_MT2701,
+ 	.gmc_bits = 8,
+ 	.layer_nr = 4,
++	.fmt_convert = mtk_ovl_fmt_convert,
+ 	.fmt_rgb565_is_0 = false,
+ 	.formats = mt8173_formats,
+ 	.num_formats = ARRAY_SIZE(mt8173_formats),
+@@ -634,6 +682,7 @@ static const struct mtk_disp_ovl_data mt8173_ovl_driver_data = {
+ 	.addr = DISP_REG_OVL_ADDR_MT8173,
+ 	.gmc_bits = 8,
+ 	.layer_nr = 4,
++	.fmt_convert = mtk_ovl_fmt_convert,
+ 	.fmt_rgb565_is_0 = true,
+ 	.formats = mt8173_formats,
+ 	.num_formats = ARRAY_SIZE(mt8173_formats),
+@@ -643,6 +692,7 @@ static const struct mtk_disp_ovl_data mt8183_ovl_driver_data = {
+ 	.addr = DISP_REG_OVL_ADDR_MT8173,
+ 	.gmc_bits = 10,
+ 	.layer_nr = 4,
++	.fmt_convert = mtk_ovl_fmt_convert,
+ 	.fmt_rgb565_is_0 = true,
+ 	.formats = mt8173_formats,
+ 	.num_formats = ARRAY_SIZE(mt8173_formats),
+@@ -652,6 +702,7 @@ static const struct mtk_disp_ovl_data mt8183_ovl_2l_driver_data = {
+ 	.addr = DISP_REG_OVL_ADDR_MT8173,
+ 	.gmc_bits = 10,
+ 	.layer_nr = 2,
++	.fmt_convert = mtk_ovl_fmt_convert,
+ 	.fmt_rgb565_is_0 = true,
+ 	.formats = mt8173_formats,
+ 	.num_formats = ARRAY_SIZE(mt8173_formats),
+@@ -661,6 +712,7 @@ static const struct mtk_disp_ovl_data mt8192_ovl_driver_data = {
+ 	.addr = DISP_REG_OVL_ADDR_MT8173,
+ 	.gmc_bits = 10,
+ 	.layer_nr = 4,
++	.fmt_convert = mtk_ovl_fmt_convert_with_blend,
+ 	.fmt_rgb565_is_0 = true,
+ 	.smi_id_en = true,
+ 	.formats = mt8173_formats,
+@@ -671,6 +723,7 @@ static const struct mtk_disp_ovl_data mt8192_ovl_2l_driver_data = {
+ 	.addr = DISP_REG_OVL_ADDR_MT8173,
+ 	.gmc_bits = 10,
+ 	.layer_nr = 2,
++	.fmt_convert = mtk_ovl_fmt_convert_with_blend,
+ 	.fmt_rgb565_is_0 = true,
+ 	.smi_id_en = true,
+ 	.formats = mt8173_formats,
+@@ -681,6 +734,7 @@ static const struct mtk_disp_ovl_data mt8195_ovl_driver_data = {
+ 	.addr = DISP_REG_OVL_ADDR_MT8173,
+ 	.gmc_bits = 10,
+ 	.layer_nr = 4,
++	.fmt_convert = mtk_ovl_fmt_convert_with_blend,
+ 	.fmt_rgb565_is_0 = true,
+ 	.smi_id_en = true,
+ 	.supports_afbc = true,
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.43.0
+
 
