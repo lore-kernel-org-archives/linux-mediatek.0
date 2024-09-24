@@ -4,71 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F365CF9C6B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 12:07:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24E57CF9C6B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 14:37:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zNyTwspsagySQ2ipFBzwZm5ttcMHA9sdb99SmYxDElU=; b=POGH6gtvsdFKBJC9h6oIBfX+S+
-	sdwRPwplQsWgatQJtYrGUyVax/iJAG5RLryYqS1Rmvz1X2xjgpWJyjGujPoNazXk61Lj1xMpg4MFB
-	qxJWAVVe3+7ECIOFh9aN+6EjodVBuI891NmmlHYEx94XpAe1dVaVr/bbSbkKqdlhvEGEoQOijPlRk
-	189bsRHC2o/k8rqTrPc5BRL74iN6KPMNAcHUtw9LHCEpmfQSYiFFf06T/+M9b5plQQooQGrqRoDc2
-	d2k7UXq4+Xj/C2/bO9TWqMcikSOaRVD3mK4Y3q4jBuRR9uc2OD5NQZEcMdG6Mm89f767FES1N61g1
-	tk4e2e+A==;
+	bh=hsQoCD7nt+kXzq9WRw11BBd3dSUqlfD/BOkGLN3L+0I=; b=cSm43DzqJ+mSziS0Oj+893UiBu
+	SRTsj5LxfNY8QlD4Q7cjs6Sw4t1iw7OsTDZVd5uuJ/Nma+HsCkf7AfnHQQy+IsIFzogqm2r1Oo9Y9
+	4nsFiRoJit+Cl4uRmQviBGu35DNfwJxl+0F02n88wf6n+A+b/04heIRMMVuSYcrvlAoZenrskwnPK
+	FLEjy7XO5CFejAfpo5U9izsyOJXc2grNHaG/iANwlAlXMKI/5XLPCzYz/X2IvljquMvHD1/o5Bhh1
+	6xFTmmmYZ0Mc6KhKYTarc/O9/qDXDfSGzGtfseqfNeCG4/cmJEez2ObdDVSPq8I2Rw09+Q6WXOq03
+	ArFqNbJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1st4K5-00000002GbD-3rS6;
-	Tue, 24 Sep 2024 12:07:17 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1st6fm-00000002Z7b-37AV;
+	Tue, 24 Sep 2024 14:37:50 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1st4Iv-00000002GQo-1KM7;
-	Tue, 24 Sep 2024 12:06:06 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id DDF6E5C5C3C;
-	Tue, 24 Sep 2024 12:06:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10BE8C4CEC7;
-	Tue, 24 Sep 2024 12:06:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727179564;
-	bh=LBRldiJIOcrY+GP5MEjXsrQ804qeSK1W9On1aa+/+XM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dcGRmoAT3CedDgrL64QYhquF/99N1h92a+oStk9s0T2+NNXKo6BZnLwFGc13qEC4Q
-	 rHQH3XbvSShxU5vtNX2N4AEm9f0JsubU1MhmNjuNlixrJ0tOQhv+0Uq3keNhWuD2C1
-	 mmmg17yYGxBibA61PpACNoT0StTkba8LnfUN61C11G9ziw2f6xsb5Ij5PnJmHXrBgd
-	 e7NyOZLvtS5ji2RIrufma7BAACZuiH94pJw4KdogK/p6uvXpNczfqfX//lxuPTQZcM
-	 R6st9Wz+3GXpC7skvwHakXVL1zQMP+8bAI1DEagcJu2MelwCnR2Ea265NEnhz8C5ld
-	 NNijYSPdL4/Pw==
-Date: Tue, 24 Sep 2024 14:05:59 +0200
-From: Mark Brown <broonie@kernel.org>
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: amergnat@baylibre.com, Liam Girdwood <lgirdwood@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	id 1st6ec-00000002YxX-2Br3
+	for linux-mediatek@lists.infradead.org;
+	Tue, 24 Sep 2024 14:36:39 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-42cb1e623d1so53977815e9.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 24 Sep 2024 07:36:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1727188596; x=1727793396; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=hsQoCD7nt+kXzq9WRw11BBd3dSUqlfD/BOkGLN3L+0I=;
+        b=DjC+rNNueHNmpKJlAAUkGt/Y8ZvzVIP4Wz60jsOpkdfoRPHeduP7K/ZD+NtaF865Fm
+         H1p94r0RtFbXIIuKwyt7AjXn+vqpXvarHReo6klI9OD8ruFYuIxN4khxf9xKuPFbDp6X
+         l3O3zqcYGreFGplpx3lRI48yjeZvzxABgxZ1XZD/vB6jgJQ8QH9dIoUAO3KC7iH++1EW
+         nrjaRBwRzlNngx7ZRDUA3DR3cBz4GKENwTiRhMJCz/DlHHYyy4pKT0e4jmnzLLjygpho
+         gXzfaKS6eiTN5nMolCKvLrFi1aP9+RyojFe6pXnyrHYMnTVaS36gm7m0/TSYGZ59ORGC
+         Cn+g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727188596; x=1727793396;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=hsQoCD7nt+kXzq9WRw11BBd3dSUqlfD/BOkGLN3L+0I=;
+        b=XDZdW88KL4tyjtJ9aQi5JNfDmwIehayzIYIjykWCL3nS5wHgOcKaYaFbtiYwUCZiIg
+         SAYd7I1WWY43sZc682vKSqykwjCYNS7YPeUzINT2ztF2RpfoRqwvFwqblKpgyb+bhjNg
+         OPoyS0Hjj1VmXqAZrvczPwkKZVvKYWj+Dh53IOxcZhPZO6ELSVypOiC5duR43xeRXcIc
+         /cKdtq/l8PaE0wTqn4DyxL6hEi2NsuAM0/QuqZF2iCqyRcGzYK3lAn9d7da2BK/gldvK
+         yAQAUWBmpgHT/d9dkYN7iILvNHFU9VepAQOmSXS62F46FlU6BwuiabJY/YBt5kPgTdhK
+         QVkQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXkudCxf/BEWhcfeRaGUGAdFHKGhGrYqUU4bl7UDnOeoVm25RHb3ZZ2XSzZdCtF3uSib8HW7myCNEI3waPmMQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw00Uyia29W+Hhajc1bfAqVQVAyftNSZBKtQ+iTwMUx612M9zHp
+	+wORimAgM242vwxYC2w6sT/ueXcWNYbikMZhwymvJhn9iK/fv8NUSZeZ9WHmcg==
+X-Google-Smtp-Source: AGHT+IFN85rvCU/A9zmRJhSH2USWFhIw9IW1vh5sN+JWuThrPkD39MtliW2jnnO6qPRDmIjAZMG5dA==
+X-Received: by 2002:a05:6000:151:b0:374:b71f:72c0 with SMTP id ffacd0b85a97d-37a4227805bmr9321610f8f.21.1727188596428;
+        Tue, 24 Sep 2024 07:36:36 -0700 (PDT)
+Received: from thinkpad ([62.67.186.33])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37cbc3187a4sm1763135f8f.90.2024.09.24.07.36.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 24 Sep 2024 07:36:35 -0700 (PDT)
+Date: Tue, 24 Sep 2024 16:36:34 +0200
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Russell King <linux@armlinux.org.uk>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
-	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	Nicolas Belin <nbelin@baylibre.com>
-Subject: Re: [PATCH v8 1/5] ASoC: codecs: add MT6357 support
-Message-ID: <ZvKrJx0sMXIxCfBZ@finisterre.sirena.org.uk>
-References: <20240226-audio-i350-v8-0-e80a57d026ce@baylibre.com>
- <20240226-audio-i350-v8-1-e80a57d026ce@baylibre.com>
- <CAMuHMdXtm+jGbbLXnCjPZZu_ZwpR-tCRuwbz0iQxUPkXG=g09A@mail.gmail.com>
+	Jingoo Han <jingoohan1@gmail.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>, kernel@collabora.com,
+	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org
+Subject: Re: [PATCH 0/4] Provide devm_clk_bulk_get_all_enabled() helper
+Message-ID: <20240924143634.pqpdsewoqxn3liqi@thinkpad>
+References: <20240914-clk_bulk_ena_fix-v1-0-ce3537585c06@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="09XdXeePKsAeqisk"
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <CAMuHMdXtm+jGbbLXnCjPZZu_ZwpR-tCRuwbz0iQxUPkXG=g09A@mail.gmail.com>
-X-Cookie: Editing is a rewording activity.
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240914-clk_bulk_ena_fix-v1-0-ce3537585c06@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240924_050605_420350_C5D49674 
-X-CRM114-Status: GOOD (  12.77  )
+X-CRM114-CacheID: sfid-20240924_073638_568655_DD172D13 
+X-CRM114-Status: GOOD (  21.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,37 +106,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Sat, Sep 14, 2024 at 09:04:53PM +0300, Cristian Ciocaltea wrote:
+> Commit 265b07df758a ("clk: Provide managed helper to get and enable bulk
+> clocks") added devm_clk_bulk_get_all_enable() function, but missed to
+> return the number of clocks stored in the clk_bulk_data table referenced
+> by the clks argument.
+> 
+> That is required in case there is a need to iterate these clocks later,
+> therefore I couldn't see any use case of this parameter and should have
+> been simply removed from the function declaration.
+> 
 
---09XdXeePKsAeqisk
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Is there an user that currerntly does this?
 
-On Tue, Sep 24, 2024 at 01:44:05PM +0200, Geert Uytterhoeven wrote:
-> On Thu, Sep 5, 2024 at 11:08=E2=80=AFAM <amergnat@baylibre.com> wrote:
+- Mani
 
-> > +config SND_SOC_MT6357
-> > +       tristate "MediaTek MT6357 Codec"
+> The first patch in the series provides devm_clk_bulk_get_all_enabled()
+> variant, which is consistent with devm_clk_bulk_get_all() in terms of
+> the returned value:
+> 
+>  > 0 if one or more clocks have been stored
+>  = 0 if there are no clocks
+>  < 0 if an error occurred
+> 
+> Moreover, the naming is consistent with devm_clk_get_enabled(), i.e. use
+> the past form of 'enable'.
+> 
+> The next two patches switch existing users of devm_clk_get_enable() to
+> the new helper - there were only two, as of next-20240913.
+> 
+> The last patch drops the now obsolete devm_clk_bulk_get_all_enable()
+> helper.
+> 
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
+> Cristian Ciocaltea (4):
+>       clk: Provide devm_clk_bulk_get_all_enabled() helper
+>       soc: mediatek: pwrap: Switch to devm_clk_bulk_get_all_enabled()
+>       PCI: exynos: Switch to devm_clk_bulk_get_all_enabled()
+>       clk: Drop obsolete devm_clk_bulk_get_all_enable() helper
+> 
+>  drivers/clk/clk-devres.c                | 30 ++++++++++++++++--------------
+>  drivers/pci/controller/dwc/pci-exynos.c |  2 +-
+>  drivers/soc/mediatek/mtk-pmic-wrap.c    |  4 ++--
+>  include/linux/clk.h                     | 12 +++++++-----
+>  4 files changed, 26 insertions(+), 22 deletions(-)
+> ---
+> base-commit: 5acd9952f95fb4b7da6d09a3be39195a80845eb6
+> change-id: 20240912-clk_bulk_ena_fix-16ba77358ddf
+> 
 
-> Does this need dependencies?  The driver uses regmap, but it's not
-> immediately clear to me what is the backend (SPI?).
-
-It's a MFD so it'll be whatever the MFD for the device is.
-
---09XdXeePKsAeqisk
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmbyqxkACgkQJNaLcl1U
-h9Aeegf+JlTmfotEapBhCwzCkHyhP4vzPARCPqemBP0WpYEFPPpC/tpJ+APyZYKd
-YLrBxlIJuHmEv9wDQiP7Yimltm2/e7iEV5ktOKbMtRtai5ELWUu10HBbuyVFhExm
-dERrGNUi+7PDaO58V30yMlwb1jg/1cq4UcvsAYyNWLTfgyJpD/0LvOuy/Hdxu1SL
-CZoS/ED1dSbObIAlLSDbHtwyljTJpMitkhSaqID293jpeg4XDbpy8VUpj+Hkg3wH
-cE06JgnWqwMjIw+Ft6GaCvrrIHMSoIQAfJasq1K8LPU/KLm7Uw6QpdZadU7exPiG
-pKxXuXApL4U03KfdsV9J9a7VAdzwkQ==
-=NlQ4
------END PGP SIGNATURE-----
-
---09XdXeePKsAeqisk--
+-- 
+மணிவண்ணன் சதாசிவம்
 
