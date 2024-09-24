@@ -4,66 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FDCFCF9C71
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 08:40:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D90A9CF9C6B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 08:47:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8MdrtNaF5OgPSHPkcRemzArzwAaClOLpiqbZVfahNHY=; b=DYu2t0wECwi09qFSOHh60La+1H
-	Jf3ImJLbIN108j/P/BYDW7iOuzv6uSylCJgqSJuNqT3MpWG8xgWXfs+VMeep7tLaFBKMaszYw8XLH
-	nkpj/ztrAjbVZd+CMKvGdAGVuVUwQjA7oIDUpB6fAGcF4B1ZkO2psdZsptE0SbMXCQzdF+78g2dks
-	nV0rAA7LG9QDOwAcmqyhh4z0pjSGxOV9c7kzDgwt7xUQdUTmvA3tENFntqNPJY3WH+7JZdkwaoc1v
-	+7nWdJ15b1xoJydwzi2Ov5Gx35FxfvNyjV7tYAbe6eHp/y837TBBAKc+nRmGfJedtXkMPH/s84qXD
-	ZzbXcoSQ==;
+	bh=2WxSvbcWzJgLOqN2eXg2hlqPp9V0yj7cO3R5FjeUP8w=; b=AxdKuwl1ikVgjQDIJSdyA/6PxD
+	56DgyoxN/a1XS+veWSTsRpr0xQdC+8bjKDVd4GTxlHDm2z30XrR2vfrHLn8IKZ/qIE6EsTeHAvR59
+	pxq2bgSTIG3moMmdamTsAsgAl3azlJEX0vjAdrFns6hrfb4bvy6r0rnNHlxt9TzYWYHIIF3uQ/G2q
+	cXIaq31VzS1Yq5D+rfspERhFwyXGM9hlCQq4tqzFuQDhL4rPOqbyVI2YjlHEFw3+vB19nMDKBTj95
+	PnMXcqefATQzxcyAJl2NfJFEsXPHTFN4k3a8o5qkd7P6AvjBQe4T3D/mKjsHdXcdJzjiJ9zudSVQS
+	krQRYyXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1st15n-00000001dBQ-0dBA;
-	Tue, 24 Sep 2024 08:40:19 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1st1Cs-00000001ehN-2wpQ;
+	Tue, 24 Sep 2024 08:47:38 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1st14d-00000001cyu-148Z;
-	Tue, 24 Sep 2024 08:39:08 +0000
+	id 1st1BW-00000001eJO-0Uns;
+	Tue, 24 Sep 2024 08:46:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727167144;
-	bh=rF2hSvRoH7iIqmTjIrJJBZHPbGoS+9IepCXUIvhaqDA=;
+	s=mail; t=1727167571;
+	bh=nGDzu/0Mn1eGGrYd8jEPlVx2PsirGUvhYIZqwNI7mtQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ex3wrTgzUqRZpy/PtVqb9ldugnriMbN9ON1rq0Pq8yX2ssvtIGOCB1ZHH5AzxAIpr
-	 oG2dKkORcA7S/CbRsWQo8OH9u8n13l29EslszFJZeaXyuqZ1bg+1xZCiAHPkwU5ZAg
-	 rLsjEE0/sPU6D4osnIZrfCDZ2ze7PBQbSJMuYIU+RUYsBBhmFhGiN24kGoV+uvrToh
-	 3YbCO5aG1jRvqP8IkKlHs/A6thpsiN4chBRbOJFx0fDqRCwH8OfuZrhvHYfmyKJrla
-	 UfOfquZBvhIHUaWG0DE5gmHI2WTZoC8qqCsT+3lkC7vGKrCxBvHY9UTwDZcbi53AGF
-	 LIwW4hjW6A5PA==
+	b=JvmBVifEXHe67RfNDQ1bcVV3X4iffDdzY05u9F0Nqzx2nCf5GUhMMwKWDKSt5PGL3
+	 83yxSam5NrEmI880ihsFhfyaO4PeYw9+D1I9ly3e/QW80JCGjoJ6O7v6U8PrJ6/M0L
+	 t2Y0bMe8tOG7BKJkgwHBodHdom511MkZBwP7j++jqH+8dL2Y742suaeKGkzaSDnJDl
+	 j8ge0NB+219O42x/pzpM2lvssF8HUFaWJExfTdR+quY5QBzexxR3plJ+kb7lfXtgl9
+	 wpfoaoVklTteV1VdChgiWfRcNo2D4lSJJl81ZdU3mzBSd2qmca8q7z2ZYWtOT3fort
+	 TyHcVFC5cShpA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1154D17E1067;
-	Tue, 24 Sep 2024 10:39:04 +0200 (CEST)
-Message-ID: <33dc7f60-4364-4d7a-a66b-4bd881b41675@collabora.com>
-Date: Tue, 24 Sep 2024 10:39:03 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BBCAE17E1068;
+	Tue, 24 Sep 2024 10:46:10 +0200 (CEST)
+Message-ID: <69fcaf74-ddf5-4bd8-8f0b-3d1a1793c0f7@collabora.com>
+Date: Tue, 24 Sep 2024 10:46:10 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [v1,1/1] i2c: mediatek: add runtime PM operations and bus
- regulator control
-To: "zoie.lin" <zoie.lin@mediatek.com>, Qii Wang <qii.wang@mediatek.com>,
- Andi Shyti <andi.shyti@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org,
+Subject: Re: [PATCH v2] arm64: dts: mediatek: mt8186: add FHCTL node
+To: Max Weng <max_weng@compal.corp-partner.google.com>,
+ linux-kernel@vger.kernel.org
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240920143627.23811-1-zoie.lin@mediatek.com>
- <20240920143627.23811-2-zoie.lin@mediatek.com>
+References: <20240923144728.870285-1-max_weng@compal.corp-partner.google.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240920143627.23811-2-zoie.lin@mediatek.com>
+In-Reply-To: <20240923144728.870285-1-max_weng@compal.corp-partner.google.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240924_013907_633618_C4549D03 
-X-CRM114-Status: GOOD (  25.00  )
+X-CRM114-CacheID: sfid-20240924_014614_448571_54790603 
+X-CRM114-Status: GOOD (  12.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,243 +76,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/09/24 16:36, zoie.lin ha scritto:
-> This commit introduces support for runtime PM operations in
-> the I2C driver, enabling runtime suspend and resume functionality.
+Il 23/09/24 16:47, Max Weng ha scritto:
+> From: max_weng <max_weng@compal.corp-partner.google.com>
 > 
-> Although in the most platforms, the bus power of i2c are always
-> on, some platforms disable the i2c bus power in order to meet
-> low power request.
+> add FHCTL device node for Frequency Hopping and Spread Spectrum clock function.
 > 
-> This implementation includes bus regulator control to facilitate
-> proper handling of the bus power based on platform requirements.
-> 
-> Signed-off-by: zoie.lin <zoie.lin@mediatek.com>
+> Change-Id: I7f9f2991978df7d5d3a6a8bc78f6f443f2f0460d
 
-Hello Zoie,
+Please remove the useless Change-Id tag, this means nothing upstream, after which,
+on V3:
 
-Your name does not technically have any "." inside, so please fix it
-so that it reads `Zoie Lin <zoie.lin@mediatek.com>`.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Moreover, this implementation can be improved. Check below:
-
-You missed pm_runtime_status_suspended() checks in suspend/resume callbacks
-and, if the bus wasn't already runtime suspended when reaching suspend(), that
-will not get the bus regulators powered off when suspending; analogously, if
-the device was runtime suspended, the regulators and clocks will stay on when
-resuming from system sleep until first usage.
-
-So add the checks:
-
-static int mtk_i2c_suspend_noirq(struct device *dev)
-{
-	struct mtk_i2c *i2c = dev_get_drvdata(dev);
-
-	i2c_mark_adapter_suspended(&i2c->adap);
-
-	if (!pm_runtime_status_suspended(dev))
-		mtk_i2c_runtime_suspend(dev);
-
-	clk_bulk_unprepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
-	return 0;
-}
-
-static int mtk_i2c_resume_noirq(struct device *dev)
-{
-	int ret;
-	struct mtk_i2c *i2c = dev_get_drvdata(dev);
-
-	ret = clk_bulk_prepare_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
-	if (ret) {
-		dev_err(dev, "clock enable failed!\n");
-		return ret;
-	}
-
-	mtk_i2c_init_hw(i2c);
-
-	if (pm_runtime_status_suspended(dev))
-		ret = mtk_i2c_runtime_suspend(dev);
-
-	i2c_mark_adapter_resumed(&i2c->adap);
-
-	return 0;
-}
-
+> Signed-off-by: Max Weng <max_weng@compal.corp-partner.google.com>
 > ---
->   drivers/i2c/busses/i2c-mt65xx.c | 72 ++++++++++++++++++++++++++++-----
->   1 file changed, 61 insertions(+), 11 deletions(-)
+>   Change frome v1 to v2
+>   * Modify the commit description
+>   arch/arm64/boot/dts/mediatek/mt8186.dtsi | 7 +++++++
+>   1 file changed, 7 insertions(+)
 > 
-> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-> index e0ba653dec2d..aae0189ba210 100644
-> --- a/drivers/i2c/busses/i2c-mt65xx.c
-> +++ b/drivers/i2c/busses/i2c-mt65xx.c
-> @@ -21,6 +21,7 @@
->   #include <linux/module.h>
->   #include <linux/of.h>
->   #include <linux/platform_device.h>
-> +#include <linux/pm_runtime.h>
->   #include <linux/scatterlist.h>
->   #include <linux/sched.h>
->   #include <linux/slab.h>
-> @@ -1245,8 +1246,8 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
->   	int left_num = num;
->   	struct mtk_i2c *i2c = i2c_get_adapdata(adap);
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> index 148c332018b0..d3c3c2a40adc 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+> @@ -29,6 +29,13 @@ aliases {
+>   		rdma1 = &rdma1;
+>   	};
 >   
-> -	ret = clk_bulk_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
-> -	if (ret)
-> +	ret = pm_runtime_get_sync(i2c->dev);
-
-ret = pm_runtime_resume_and_get(i2c->dev);
-
-> +	if (ret < 0)
->   		return ret;
->   
->   	i2c->auto_restart = i2c->dev_comp->auto_restart;
-> @@ -1299,7 +1300,9 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
->   	ret = num;
->   
->   err_exit:
-> -	clk_bulk_disable(I2C_MT65XX_CLK_MAX, i2c->clocks);
-> +	pm_runtime_mark_last_busy(i2c->dev);
-> +	pm_runtime_put_autosuspend(i2c->dev);
+> +	fhctl: fhctl@1000ce00 {
+> +		compatible = "mediatek,mt8186-fhctl";
+> +		clocks = <&apmixedsys CLK_APMIXED_TVDPLL>;
+> +		reg = <0 0x1000ce00 0 0x200>;
+> +		status = "disabled";
+> +	};
 > +
->   	return ret;
->   }
->   
-> @@ -1370,6 +1373,41 @@ static int mtk_i2c_parse_dt(struct device_node *np, struct mtk_i2c *i2c)
->   	return 0;
->   }
->   
-> +static int mtk_i2c_runtime_suspend(struct device *dev)
-> +{
-> +	struct mtk_i2c *i2c = dev_get_drvdata(dev);
-> +
-> +	clk_bulk_disable(I2C_MT65XX_CLK_MAX, i2c->clocks);
-> +	if (i2c->adap.bus_regulator)
-> +		regulator_disable(i2c->adap.bus_regulator);
-> +
-> +	return 0;
-> +}
-> +
-> +static int mtk_i2c_runtime_resume(struct device *dev)
-> +{
-> +	int ret = 0;
-> +	struct mtk_i2c *i2c = dev_get_drvdata(dev);
-
-struct mtk_i2c *i2c = dev_get_drvdata(dev);
-int ret;
-
-> +
-> +	if (i2c->adap.bus_regulator) {
-> +		ret = regulator_enable(i2c->adap.bus_regulator);
-> +		if (ret < 0) {
-
-`ret` can't be > 0. `if (ret) {` is enough.
-
-> +			dev_err(dev, "enable regulator failed!\n");
-> +			return ret;
-> +		}
-> +	}
-> +
-> +	ret = clk_bulk_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
-> +	if (ret < 0) {
-
-if (ret) {
-
-> +		dev_err(dev, "clock enable failed!\n");
-
-This print is unnecessary.
-
-> +		if (i2c->adap.bus_regulator)
-> +			regulator_disable(i2c->adap.bus_regulator);
-> +		return ret;
-> +	}
-> +
-> +	return ret;
-
-return 0;
-
-> +}
-> +
->   static int mtk_i2c_probe(struct platform_device *pdev)
->   {
->   	int ret = 0;
-> @@ -1472,13 +1510,19 @@ static int mtk_i2c_probe(struct platform_device *pdev)
->   		}
->   	}
->   
-> -	ret = clk_bulk_prepare_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
-> +	ret = clk_bulk_prepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
->   	if (ret) {
-> -		dev_err(&pdev->dev, "clock enable failed!\n");
-> +		dev_err(&pdev->dev, "clk_bulk_prepare failed\n");
-
-This print is anyway redundant, as clk_bulk_prepare() already prints upon failures,
-so you can as well simply remove it instead of changing it.
-
->   		return ret;
->   	}
-> +
-> +	platform_set_drvdata(pdev, i2c);
-> +
-> +	ret = mtk_i2c_runtime_resume(i2c->dev);
-> +	if (ret < 0)
-> +		goto err_clk_bulk_unprepare;
->   	mtk_i2c_init_hw(i2c);
-> -	clk_bulk_disable(I2C_MT65XX_CLK_MAX, i2c->clocks);
-> +	mtk_i2c_runtime_suspend(i2c->dev);
->   
->   	ret = devm_request_irq(&pdev->dev, irq, mtk_i2c_irq,
->   			       IRQF_NO_SUSPEND | IRQF_TRIGGER_NONE,
-> @@ -1486,19 +1530,22 @@ static int mtk_i2c_probe(struct platform_device *pdev)
->   	if (ret < 0) {
->   		dev_err(&pdev->dev,
->   			"Request I2C IRQ %d fail\n", irq);
-> -		goto err_bulk_unprepare;
-> +		goto err_clk_bulk_unprepare;
->   	}
-> +	pm_runtime_set_autosuspend_delay(&pdev->dev, 1000);
-
-One full second as autosuspend delay? Can this be shortened to 500? 250?
-
-How was the one second wait chosen?
-
-How much time does mtk_i2c_runtime_resume() take to resume the bus?
-
-> +	pm_runtime_use_autosuspend(&pdev->dev);
-> +	pm_runtime_enable(&pdev->dev);
->   
->   	i2c_set_adapdata(&i2c->adap, i2c);
->   	ret = i2c_add_adapter(&i2c->adap);
->   	if (ret)
-> -		goto err_bulk_unprepare;
-> -
-> -	platform_set_drvdata(pdev, i2c);
-> +		goto err_pm_runtime_disable;
->   
->   	return 0;
->   
-> -err_bulk_unprepare:
-> +err_pm_runtime_disable:
-> +	pm_runtime_disable(&pdev->dev);
-> +err_clk_bulk_unprepare:
->   	clk_bulk_unprepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
->   
->   	return ret;
-> @@ -1510,6 +1557,7 @@ static void mtk_i2c_remove(struct platform_device *pdev)
->   
->   	i2c_del_adapter(&i2c->adap);
->   
-> +	pm_runtime_disable(&pdev->dev);
-
-pm_runtime_set_suspended(&pdev->dev);
-
->   	clk_bulk_unprepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
->   }
->   
-
-Regards,
-Angelo
-
+>   	cci: cci {
+>   		compatible = "mediatek,mt8186-cci";
+>   		clocks = <&mcusys CLK_MCU_ARMPLL_BUS_SEL>,
 
 
