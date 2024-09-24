@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 233FDCF9C6F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 11:46:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC511CF9C6F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Sep 2024 11:48:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HDv/s0tphP++G1YhW6WMEbdbTW7+oEw4btTGXOf+YTs=; b=16IacmwL/qHs1KRu4mzletOEbG
-	x/RsB8OgoB0n+HB0glI2SLCMy0vOas/5cWQpTzJ4m+2kCFyWg/G3rRz70uc8MD1oFLQvUOGQEIjLM
-	aGj0Hyu9wVsbqPe0IbFkHiiopZfJ56i1FuLh9II11WbRVvaF8puZti6M3o2wHPeeNqR/hiQBW3HQe
-	KqvqHUzfXmVA9h2ejrkjcKh907LuwNI4P/nImSWfBWAXqTWZuB43ieCojO8fwuNxcp4QgoFjJccX+
-	Mvtl1c96vsnOh+VGMnT3yZ4bU/ebxpwC8nkDHLniOqeblK27U3PZgQkVEXfvQ8IaC3C3ZSpsoYSsU
-	rhkob1Ig==;
+	bh=vfINCI0Nv4qEGkUKDJalDbhQLNyKDyfzRJYai1vsKVA=; b=T96dTxE2YgTw3EMMqq1V+9hA4T
+	S0p8G7bFIRJADS3ZyykACzyQhoX0unO3v8+lkALSLW9tAI+1JU+6c/aLerh74imCR47eNgJ3bK2qC
+	j+7th6L/A1C6e1Go/Y+lK3Tfw/xzWXjQN14y6DJFcpUNndP4F98ilPHPLR8SplvoVmyJYDYJB3Nue
+	4KVyataKunUvvrdanECLyMgDXV0fkp9pdW64sf7ApgrBMvPkf3Urb4zJsWzyTCv4ntA4N8nEE3tAD
+	J4Y5XGYdA2VNAALc4e7t008yyhFeXOvPveSw1MV3KqhrfXeVU8vddtTf3w930e8YoeiK3VmvNKsxX
+	jTk/td2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1st40M-00000002Dih-3Vm9;
-	Tue, 24 Sep 2024 11:46:54 +0000
+	id 1st41T-00000002DrG-3dpZ;
+	Tue, 24 Sep 2024 11:48:03 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1st3w6-00000002Crs-1t9e;
-	Tue, 24 Sep 2024 11:42:31 +0000
+	id 1st3wq-00000002D5k-3IOw;
+	Tue, 24 Sep 2024 11:43:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727178148;
-	bh=vEVQ1f1TFqVzooCmasQpj1OQzFxx1dYbcywfThJVzsE=;
+	s=mail; t=1727178195;
+	bh=SU5MDVugN9wq2UPurRQrLx+qX4c0j5tAS7Phiv68XM0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=XgFCXLMqrcqtfoN3RKT49uczLvlSssCt+YWhHFYwmQiBihgZUB48mN8r9hgK+nvvI
-	 Oi8Urng0owrUnadvk7pkdNBvqNHN6vMCTq4qWjlLvAU1HeMH9EELT6+T5ggZcS/Rgl
-	 kD7YVlq7VbhzCbD8EhGMycN+nrD+iSlc9Yp8Nf8r/nGw8oMht4ynaDmr7hyxSe2FRo
-	 wO5JVhlt/Q5/ISSUaP83Evlde+JkTlT5aopZ4CKwA8ze9sB7uLI/t31cL90nJXVUQx
-	 pMr7czP5yTAWnz/74pmTo21E8ifLIgX7uzN7iuKU6dqduORvnYUv2GeYgapB/HToGp
-	 ITTQyihtTO28Q==
+	b=Wi77O6rqSD6tSZk8btni0aIKEOC6piGPVcqP1Heu5337fwpUGa50wSEojpHyHu87I
+	 atAAuVDZFLKRV3Nud4DRyR7k7HryJuTUsY5sP8urmJXVzk4M0KE+C4PYEJG7CGalHW
+	 aEi701FKGVKOOKWrqwg3RSkkW3OaVOWX3u9TmDhQ735c68De37y5Cy4UYyVsqkrcXm
+	 4njlzguOP3/pRQCtKNk9TbjkqwZq/vLFKjqXe63ZuchL/jCQaawX0z3WDCfKLdypzs
+	 rdFAywR+ocmuqagsyGYhs8cHnTKNn1azKASnWgt4rD1gg+SglTyfnTIB0O2yCXz0kj
+	 oUtc6ybxbechQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C366B17E107A;
-	Tue, 24 Sep 2024 13:42:27 +0200 (CEST)
-Message-ID: <04280899-ceec-4083-8f94-0fe8535961d1@collabora.com>
-Date: Tue, 24 Sep 2024 13:42:27 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2505217E1250;
+	Tue, 24 Sep 2024 13:43:14 +0200 (CEST)
+Message-ID: <0b573e20-e08b-42e3-bc45-7db07fc6cf57@collabora.com>
+Date: Tue, 24 Sep 2024 13:43:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/6] arm64: dts: mediatek: mt8395-genio-1200-evk: Fix
- dtbs_check error for phy
+Subject: Re: [PATCH 5/6] arm64: dts: mt8195: Fix dtbs_check error for mutex
+ node
 To: Macpaul Lin <macpaul.lin@mediatek.com>,
  Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  Philipp Zabel <p.zabel@pengutronix.de>,
@@ -71,15 +71,15 @@ Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  Chen-Yu Tsai <wenst@chromium.org>
 References: <20240924103156.13119-1-macpaul.lin@mediatek.com>
- <20240924103156.13119-4-macpaul.lin@mediatek.com>
+ <20240924103156.13119-5-macpaul.lin@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240924103156.13119-4-macpaul.lin@mediatek.com>
+In-Reply-To: <20240924103156.13119-5-macpaul.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240924_044230_676504_4B9B059F 
-X-CRM114-Status: UNSURE (   7.99  )
+X-CRM114-CacheID: sfid-20240924_044317_009153_E5A94BC9 
+X-CRM114-Status: UNSURE (   9.09  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,13 +96,14 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 24/09/24 12:31, Macpaul Lin ha scritto:
-> The ethernet-phy node in mt8395-genio-1200-evk.dts was triggering a
-> dtbs_check error. The error message was:
->    eth-phy0@1: $nodename:0: 'eth-phy0@1' does not match
->                '^ethernet-phy(@[a-f0-9]+)?$'
-> Fix this issue by replacing 'eth-phy' node to generic 'ethernet-phy'.
+> The mutex node in mt8195.dtsi was triggering a dtbs_check error:
+>    mutex@1c101000: 'clock-names', 'reg-names' do not match any of the
+>                    regexes: 'pinctrl-[0-9]+'
 > 
-> Fixes: f2b543a191b6 ("arm64: dts: mediatek: add device-tree for Genio 1200 EVK board")
+> This seems no need by inspecting the DT schemas and other reference boards,
+> so drop 'clock-names' and 'reg-names' in mt8195.dtsi.
+> 
+> Fixes: 92d2c23dc269 ("arm64: dts: mt8195: add display node for vdosys1")
 > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
