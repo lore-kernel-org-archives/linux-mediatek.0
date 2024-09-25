@@ -4,83 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E764C369A8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 08:38:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC7ACC369AB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 08:42:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4LFFK30ORGOB8opISAVi2/AjiV23wsDk5moHBmYPz9c=; b=jGCtDSEyochZTwPWGFFtHIyB4c
-	NZbxes8TdbTsfSbjPzCsyEJtbrodvZ3/T9L4JjAEKz/1uGQJBDgXUV4u95f6MC11D1Q8oOKYcKrui
-	ab2cy4rKM9bMnGPzMiyt0ncYskdo3Mdgm33F0UjaOdScUy4bq8U8A+OmNba6KMdmbSTJ61Kl5YGNU
-	O6mz/4y5rfVD7LI5b5o8nitngi4usp+++wb/RTLc+LikcNB5RE+Lw/PaUsk4zaQgsG8YL64jx1nqo
-	xsknAaqm9uJEe0cVY3z2hlytyXc44ZwROS0rXJg2uTwbq9Fp47Hp++Ili4xHgOayhJcpF+g3A8YkI
-	Jidzp5AA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=r7DM1OmTlAwvtjukMDEk3ahsIfChXG9XjEPCHP7QFb8=; b=uo0/UnkCPQWTP8W4LwnDDeLoSd
+	D3l1hTB3K8k1bgn1CBfRo8egKXatxaDHM2RuPH9LnTlySBS7CHD8asl2hmmjoT0uGrWOSk/B/Ih/s
+	henzeGv8UBd9cE9oHez8kOeaLyhQMEX5MEDi/nCCWFe7jvmZoxLVBbkXuWiHZpDHPw8vWzDy42Kbz
+	FlRoMpiqC/HGa+TjyKBGuIIwSo4fP5kAq1eWTJsJEA4ZXj2v+yB5jTcJmcCXkDQpSy8cXjopVlj57
+	T6fqoRJ4SDrlBPM1/RONN4IAYHOvxmVMnm+72/ng+IQq8AnF8YfFT78rxQHfeWVj8BspZVjTraP3t
+	oFCbBWVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stNXB-00000004W4z-0CHy;
-	Wed, 25 Sep 2024 08:38:05 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1stNbe-00000004WhC-3kYt;
+	Wed, 25 Sep 2024 08:42:42 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stNW0-00000004VsY-0iO3
-	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Sep 2024 08:36:54 +0000
-Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-5356bb5522bso7655992e87.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Sep 2024 01:36:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1727253410; x=1727858210; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=4LFFK30ORGOB8opISAVi2/AjiV23wsDk5moHBmYPz9c=;
-        b=uqohlrcfnZOOwW1xpTrgwQTy034mOJObeLOflubeciGxj8qP2Jmk9dJdTstcXvg48B
-         0JqzE4SCzn8zroqlytTvyvLWps3Gc0LEFO1EGvHNXPFdOTwMvbMuI/kjBhIB53GvTzNC
-         n8lUE1NfXAnnD9EQ9Pspr+Fg09DAnupf/y1fL0f/Ah6tLkFC3qb5RCU+0gamYfjN0Lwd
-         VdhoHO0B2dMDWqJ9/IWIgAjJwu95jxV1NH6JRQ7NZuXRA9R5vcoNfx0eu6pup/ei6uaP
-         IZVJdbfqfghbmwdRw3rsyyWlfY8ujHwb716xGRKJwAA8GhWV/jB2Qgp/ibHs3Z0EwlJL
-         9GvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727253410; x=1727858210;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=4LFFK30ORGOB8opISAVi2/AjiV23wsDk5moHBmYPz9c=;
-        b=D2jFZSqdMROxLkm50t5TP94HecZ8DAT6G66TYUchHUUdiNbmL+mK3l9PjefhbJNzZ9
-         fzeb9biFd0x7XKPJjl8J/y3WDC25J9QpFwtfNjq07YSyP3F5q8leqMCdAsagdSI8MIWy
-         6kTcOtlcWNPJ4rFgpTZ8bIicJ/cZyInlySI0HDP7B928iVDt5RV1ZVcp3nS8MbgwBeyr
-         dEBGWtIfMf+buOy3snh28xluBCUb61+AVfIBF+ukPvuapwlfb8T10zTmYwme+v5ByY3o
-         VSugpZ6fqpGd9r+Z3GvivC+f22OD9HxRyxcjEJvYRf8YhpqSNLpjfn4CnoNKMArkZ08M
-         DJUw==
-X-Forwarded-Encrypted: i=1; AJvYcCU+OEsyTizgc548SL7RJTaqd2l504/aMxQah9Uc7/N9D03vglyteBLV92Rmdd0PsyawoWf+FHTmhmlDUjgagA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyV6Mltv4YXf85zFR5iiS1/VEB9u3rdIiQkYp8h4XWG3kOiZyQN
-	pezA9wmdC5tmWf/ofjN+vd0Fg15kqxt4GM7mycXnNxu2Aq1LEleoRv2io8zuACE=
-X-Google-Smtp-Source: AGHT+IFzrCK0VcF5jVceh0qZQhYC3c4kXM0RNJ7sHMGDqRBw1Dr0li2TBcCq7sjXdcDnOzH2DHlX+w==
-X-Received: by 2002:a05:6512:110e:b0:52c:e3ad:3fbf with SMTP id 2adb3069b0e04-5387755cb9cmr1098457e87.42.1727253410148;
-        Wed, 25 Sep 2024 01:36:50 -0700 (PDT)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-537a85e0ba7sm457699e87.52.2024.09.25.01.36.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Sep 2024 01:36:48 -0700 (PDT)
-Date: Wed, 25 Sep 2024 11:36:47 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-To: Liankun Yang <liankun.yang@mediatek.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
-	simona@ffwll.ch, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
-	jitao.shi@mediatek.com, mac.shen@mediatek.com, peng.liu@mediatek.com, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v3 1/1] drm/mediatek: dp: Add sdp path reset
-Message-ID: <ybnnqysm2ptvclaal3kw26ttqkgbicn45cwxkkchl72vuzwtt2@el7c34zqxmjl>
-References: <20240925064854.23065-1-liankun.yang@mediatek.com>
+	id 1stNaT-00000004WUp-2VO5;
+	Wed, 25 Sep 2024 08:41:30 +0000
+X-UUID: f11eb5647b1911efb3adad29d29602c1-20240925
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=r7DM1OmTlAwvtjukMDEk3ahsIfChXG9XjEPCHP7QFb8=;
+	b=r0iPZGwZFUbGpu8UKobqoePl7TIAvPreNeKEbZ1K+Xs24qHrWm3YvIeTKb5DtrowUsIrRSN2lkBt5yAPjK5zKNVVN4lzcDmn5hHZl7Yrz8/svdsGfp9eQ/j2YuMtk+QctE16SjX+IJdE0tRcWPcJk8BYx/NCpNgorKgI5fMT1HQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:f45f346a-cd2a-4505-a71e-05ff2972ad34,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:6dc6a47,CLOUDID:147fbdd0-7921-4900-88a1-3aef019a55ce,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: f11eb5647b1911efb3adad29d29602c1-20240925
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+	(envelope-from <liankun.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1746190837; Wed, 25 Sep 2024 01:41:22 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 25 Sep 2024 16:41:17 +0800
+Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 25 Sep 2024 16:41:17 +0800
+From: Liankun Yang <liankun.yang@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+	<simona@ffwll.ch>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <rex-bc.chen@mediatek.com>,
+	<msp@baylibre.com>, <granquet@baylibre.com>, <dmitry.osipenko@collabora.com>,
+	<jitao.shi@mediatek.com>, <mac.shen@mediatek.com>, <peng.liu@mediatek.com>,
+	<liankun.yang@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>
+Subject: [PATCH v1 1/1] drm/mediatek: Fix wrong check of nvmem_cell_read
+Date: Wed, 25 Sep 2024 16:40:24 +0800
+Message-ID: <20240925084116.28848-1-liankun.yang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240925064854.23065-1-liankun.yang@mediatek.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--5.492400-8.000000
+X-TMASE-MatchedRID: SuWkWSV/ibcryFHbNnBLG0KcYi5Qw/RVsEf8CpnIYtnfc2Xd6VJ+ynOQ
+	FTxg7zBiief1bXK4Giqi5055Kxg7KbBAQLqGlKiv4pdq9sdj8LUFHCcDXik5Rpsoi2XrUn/Js98
+	n9dYnJNNQSFbL1bvQASAHAopEd76vrTCa7ZKhhkhBggx/bFjh7r0Dqq+NSXuwaGjbsK/Gvmg8gV
+	7uQwboPw==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--5.492400-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 13CCA0BB40EB3E96C6F46EEAE16D8E08228DAD574439DD1B6B754A5BEAC8938E2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240925_013652_233802_0C53B042 
-X-CRM114-Status: GOOD (  17.15  )
+X-CRM114-CacheID: sfid-20240925_014129_670596_C2AAE93E 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,43 +99,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 25, 2024 at 02:48:22PM GMT, Liankun Yang wrote:
-> When using type-c to type-c to connect to the monitor,
-> the sound plays normally. If you unplug the type-c and
-> connect the type-c to hdmi dongle to the monitor, there will be noise.
-> 
-> By capturing the audio data, it is found that
-> the data position is messy, and there is no error in the data.
-> 
-> Through experiments, it can be restored by resetting the SDP path
-> when unplugging it.
-> 
-> Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
-> Changes in V3:
-> - No change.
+If the len is 0, kernel crash will occur when performing operations.
+Add the len check conditions to prevent kernel crash.
 
-If there are no changes, why did you increase the revision?
+Fixes: f70ac097a2cf ("drm/mediatek: Add MT8195 Embedded DisplayPort driver")
 
-> Per suggestion from the previous thread:
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20240923132521.22785-1-liankun.yang@mediatek.com/
+Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-The link points to some other patch. Please consider using b4 tool, it
-will manage changelogs and links for you.
-
-> 
-> Changes in V2:
-> - Fix build error.
-> Per suggestion from the previous thread:
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20240923133610.23728-1-liankun.yang@mediatek.com/
-> ---
->  drivers/gpu/drm/mediatek/mtk_dp.c     | 15 +++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_dp_reg.h |  1 +
->  2 files changed, 16 insertions(+)
-> 
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+index d8796a904eca..0cc75ba96b98 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -1082,7 +1082,7 @@ static void mtk_dp_get_calibration_data(struct mtk_dp *mtk_dp)
+ 	buf = (u32 *)nvmem_cell_read(cell, &len);
+ 	nvmem_cell_put(cell);
+ 
+-	if (IS_ERR(buf) || ((len / sizeof(u32)) != 4)) {
++	if (IS_ERR(buf) || (len == 0) || ((len / sizeof(u32)) != 4)) {
+ 		dev_warn(dev, "Failed to read nvmem_cell_read\n");
+ 
+ 		if (!IS_ERR(buf))
 -- 
-With best wishes
-Dmitry
+2.45.2
+
 
