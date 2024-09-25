@@ -4,106 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88747CCF9E4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 15:50:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A176CCF9E8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 16:49:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Au0IxjjfAh+IrGj2ay54oiQohRBhlUlTthFZL3EgcLw=; b=0EuXm321rpR4DTnmKkQZDAhtyE
-	lbnFKTWSkuqaf+V4M6zN0J9yUtmZEkA/4S2j9pKmU3z3f6WeXCALv2kNhzIF7qvnNHYC5U7DBGvgi
-	iLa/nHi6u1Z53OPP9hnZIgJpyIpbqFpA++FkjTjBy9pb4OrxPCm7DRZe+/buihpYrzXyhxqktR+WG
-	Jysl9jyozOvl4B4+EBgMbo0GFCyUimUpqtaRW8cEjLt3+/qEE32n3evIDM01IKxV4QoYC9VbNeuMg
-	JizKvs7P3vay0xIwlQOBjBKSOc3Nbr/8Sqv17kXwMT1NiZXWt8dpbAen5lPNmt5j9uS5YQzGAw74K
-	5aesURLw==;
+	bh=aoIJQ5MhiObxL7pikGsoI1ZJdDV3AuLGWymzLJx4lOo=; b=M8AYBQXOVH5Eo3muCHeb0uCiQM
+	5BB4lZ5ROsFKdJkcTLqdTwhjJJRCxy0gk+uMkuVogG7KHoPC9yBAZAySDaGGUwbTsA+7OULQjQfNY
+	1dgwqd14NC6wN/xmaK4f7n3tu0+276is1c8WqOdN9xBXzRrOL/OpkkAEsIBd/6vsW7EaMvEKj1xyK
+	pWWCByjd53J0xXDos8jI1G/VR/BERqPGHWzqMEmZKa+onH3uISdMRv1EofiLUT0ACP1uhSaVdzFPw
+	JeWlPDCIrTzWg53MWUL5pVjv6DjGwUMcMx9YPMN8ms8jMavx8R4NqLNyb1ABO0zlEcOrdTkm5zTEm
+	3dqcnL+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stUHM-00000005x0J-15Z9;
-	Wed, 25 Sep 2024 15:50:12 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+	id 1stVD9-0000000675s-1J6Z;
+	Wed, 25 Sep 2024 16:49:55 +0000
+Received: from 008.lax.mailroute.net ([199.89.1.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stUAg-00000005v34-0NCT;
-	Wed, 25 Sep 2024 15:43:20 +0000
-Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-2f75c0b78fbso70223461fa.1;
-        Wed, 25 Sep 2024 08:43:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1727278996; x=1727883796; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Au0IxjjfAh+IrGj2ay54oiQohRBhlUlTthFZL3EgcLw=;
-        b=jbkAR8d+ee/QuibbBWSnAUhEgwA5l7C1iaWugOAWryG03N5loMTvKvp5wHz8V07RJH
-         d52W052a5KDS+Hp7rRE//Zun9Hcf9sAAFqfDrqlb7y4K7Y8MqgpG/jycHGcz/x6udkJj
-         FlIfKIV/qFKyCeGu2/46zzMRBrdyG6WzMsqoQLTPyuaufyvkLGJqyjI2fNfcxm7tarsA
-         c8aznyBgWduUDuBsmg0tA/tneMHhUSL1zxPpduWMdB4p1fylPqoCy3lFdqSHuXajk7Ax
-         y8xeqs3Zsy6rOr6kYwgclZSVuS9ezOgO8vH1C+Fhm8NQsZuOL718wn+JNf6mzN9rFsRJ
-         J6OQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727278996; x=1727883796;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Au0IxjjfAh+IrGj2ay54oiQohRBhlUlTthFZL3EgcLw=;
-        b=Su+MIxvMTpo3XYySJ4OjtNwEF81/AADNC3b1mZIISRapR84ipC2Mm5Kuj8MxYZxfdU
-         YjffUbzK1tkec2GEU+UPBG0zCVWQanOAD6qu/Nodaf2/pabkFA643GRU2PVFIPGEE+pw
-         TN6frDZgrZLvbSMTb/kRZvpaNXWonnoPyGi4iT+2OY59fweBoddtP1FwnV4gsnSdVwo+
-         OwF4PTtMFTPFDjlXwffEWsCYHD4XJyX0h0Z+vPIPd55/ttw7Oeuhfp6MhEjQZICueDtv
-         kEnUXJ0LqLQarmRqkNJ+2pH/0y9+Sh1AwRexak/TEH1yx+fV7bcBreDxkrNa5ivkEqKD
-         QMWQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVbEkTJBwacEAh0MBMcd0khAOwcIlihaDI1pEcoxHAgZtpEan6RD0jaVPhbaoIPXSfa82gOYza8KPE9H6Yi@lists.infradead.org, AJvYcCW3xk7zhXmgnAvlT0jch+5Fay7tLYzx8gonTCtIkSk0tbOMPpZwknjip88GJRSxBpWOZkNSkpuKRypKXQTEQ98=@lists.infradead.org, AJvYcCWPAHP1HIrP6oTGKoT0G7isfLq8sMK0mbeMTbgqx5f7JDlAp9bjYxRqM1I0egjOnFVBZydBoY8Z/19yCOIxV75JEA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyylohOnG/FtuXOJMbeOi3HQjjQpF6R4kjcKS/F4Iyc4oJWnjcn
-	F3ob2YduWXiAt8M51o6NwICRDvpvMOIeFcIGVe75l2osptvsR5bZnzXLfy1o
-X-Google-Smtp-Source: AGHT+IFCWYzAdpSpjVAnQ4BizrMtQKpfIddRrw3ocd29W6scUx1jmeEcp42KXRhfT3R4QSqzAie8lw==
-X-Received: by 2002:a05:6512:3b92:b0:535:6a83:86f9 with SMTP id 2adb3069b0e04-538804c7028mr1863446e87.60.1727278995522;
-        Wed, 25 Sep 2024 08:43:15 -0700 (PDT)
-Received: from [127.0.1.1] ([213.208.157.67])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9392f3420esm221803466b.40.2024.09.25.08.43.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Sep 2024 08:43:15 -0700 (PDT)
-From: Javier Carrasco <javier.carrasco.cruz@gmail.com>
-Date: Wed, 25 Sep 2024 17:42:45 +0200
-Subject: [PATCH 6/6] drm/sprd: Constify struct regmap_bus
+	id 1stVD6-0000000675J-1Oz2
+	for linux-mediatek@lists.infradead.org;
+	Wed, 25 Sep 2024 16:49:53 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 008.lax.mailroute.net (Postfix) with ESMTP id 4XDN4Z4lRpz6ClY9Q;
+	Wed, 25 Sep 2024 16:49:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1727282984; x=1729874985; bh=aoIJQ5MhiObxL7pikGsoI1ZJ
+	dDV3AuLGWymzLJx4lOo=; b=3Bkq9HbX1dTOLg49btZVqXOEt7AQTA0ac89ZsCyp
+	7YR1eRoLBc31JQejisIixFL4mWWHs+ec4OCQRu1Si8Ek+1fjlkx8cwqevtSoUbvl
+	zzfzJw03HdAlnTyovvbjPMNqFHV0Amfn50IJlnYtIQ99m+aGZHWHSO7oTH1QHLkG
+	WVIV7Lo8cQaTX7DuWGtyvNIhttR7RNNOPSHm8mzlnxCnnqlAkFSA9llyA88VcDCy
+	aXcRlEEX5ObYb4zohkJNRB+aIhmcA9uFDj1YTwg8j3fbifndCwN8FFl/TcRJV1EI
+	nSBm3/ryYFNcbFTciaBiMBXR4Du5LciY1MxNQlvFIkXmfA==
+X-Virus-Scanned: by MailRoute
+Received: from 008.lax.mailroute.net ([127.0.0.1])
+ by localhost (008.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id gA5KYz7Ednql; Wed, 25 Sep 2024 16:49:44 +0000 (UTC)
+Received: from [100.66.154.22] (unknown [104.135.204.82])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 008.lax.mailroute.net (Postfix) with ESMTPSA id 4XDN4M3CHcz6ClY9N;
+	Wed, 25 Sep 2024 16:49:39 +0000 (UTC)
+Message-ID: <949fb86d-6b61-4a1a-bc04-c05bb30522b9@acm.org>
+Date: Wed, 25 Sep 2024 09:49:36 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v9 2/3] ufs: core: fix error handler process for MCQ abort
+To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
+ jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com,
+ quic_nguyenb@quicinc.com
+References: <20240925095546.19492-1-peter.wang@mediatek.com>
+ <20240925095546.19492-3-peter.wang@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20240925095546.19492-3-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240925-drm-const-regmap-v1-6-e609d502401b@gmail.com>
-References: <20240925-drm-const-regmap-v1-0-e609d502401b@gmail.com>
-In-Reply-To: <20240925-drm-const-regmap-v1-0-e609d502401b@gmail.com>
-To: Jagan Teki <jagan@amarulasolutions.com>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@nxp.com>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
- Jessica Zhang <quic_jesszhan@quicinc.com>, Orson Zhai <orsonzhai@gmail.com>, 
- Baolin Wang <baolin.wang@linux.alibaba.com>, 
- Chunyan Zhang <zhang.lyra@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-amlogic@lists.infradead.org, 
- Javier Carrasco <javier.carrasco.cruz@gmail.com>
-X-Mailer: b4 0.14-dev
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1727278971; l=759;
- i=javier.carrasco.cruz@gmail.com; s=20240312; h=from:subject:message-id;
- bh=/dTvDzTxw0elKvCO5X9KGGNdTLXj/tisL/crl9vaUr8=;
- b=373HrRNVvIqo811qw5A1e2uUKIh5z7ThMB7W+u2ouyWfcNGoTkirPUv/a3k0By1E45+/+k9nu
- s2jBMDDp7dTCURqw9nlmEGjS03N0BqfD1AngIvdPXCsiLl6HtBQDhfN
-X-Developer-Key: i=javier.carrasco.cruz@gmail.com; a=ed25519;
- pk=lzSIvIzMz0JhJrzLXI0HAdPwsNPSSmEn6RbS+PTS9aQ=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240925_084318_298329_EFA523CF 
-X-CRM114-Status: GOOD (  12.46  )
+X-CRM114-CacheID: sfid-20240925_094952_427650_7DC69350 
+X-CRM114-Status: UNSURE (   5.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,29 +91,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-`regmap_txt_io` is not modified and can be declared as const to
-move its data to a read-only section.
+On 9/25/24 2:55 AM, peter.wang@mediatek.com wrote:
+>   	case OCS_INVALID_COMMAND_STATUS:
+>   		result |= DID_REQUEUE << 16;
+> +		dev_warn(hba->dev,
+> +				"OCS invaild from controller for tag %d\n",
+> +				lrbp->task_tag);
 
-Signed-off-by: Javier Carrasco <javier.carrasco.cruz@gmail.com>
----
- drivers/gpu/drm/sprd/sprd_dsi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Please change "invaild" into "invalid". Once that change has been made,
+feel free to add:
 
-diff --git a/drivers/gpu/drm/sprd/sprd_dsi.c b/drivers/gpu/drm/sprd/sprd_dsi.c
-index 0b69c140eab3..44a7a579660f 100644
---- a/drivers/gpu/drm/sprd/sprd_dsi.c
-+++ b/drivers/gpu/drm/sprd/sprd_dsi.c
-@@ -209,7 +209,7 @@ static int regmap_tst_io_read(void *context, u32 reg, u32 *val)
- 	return 0;
- }
- 
--static struct regmap_bus regmap_tst_io = {
-+static const struct regmap_bus regmap_tst_io = {
- 	.reg_write = regmap_tst_io_write,
- 	.reg_read = regmap_tst_io_read,
- };
-
--- 
-2.43.0
-
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
