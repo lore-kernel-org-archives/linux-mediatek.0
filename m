@@ -4,108 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AE97CF9C6B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 14:25:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6491FCF9C74
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 14:36:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9wi5z7WRRaPUXY3u8i47JW6RejIPspXvQqwz0P8oD6k=; b=hhx83DpOMeG5HFcZcKojIX3/by
-	f6HsBM/gA7xE7cZ2nOM5cYsW3gKAsNHT7OnAGpRU7fNQ9kE1Kw4Z2Wl1Ez5t3xPXee1lTd2NLJmIY
-	cOdfbEeezSepnO1OaEkVROiyDNZ5LJX20neFPptL+huf6DN4W7do7tRBgNL15xYSmJKHNvYZCAtYA
-	t3K5CTBQMHbuNw1icYveJKcC2C0yD3jF+vyZDgIcX7CkjN2qmldleRo1qaRG/6oW/1xLtvQdto4gy
-	rZsy7fGn3oRKKcv4NNistW9YsKoi4/GWv8/jgCMRgBZJTFM3klmbV5hmDvdhIlGPBF+cG3RwGze6u
-	sedIAT2A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Un/KFXWdYntWGN707WXHyzev+dTdkbaLVWUfFJwkvBI=; b=UE+K4uYyILBEsSouEk0hEbElIG
+	ODjt1HahpAGaDtWm+Oe9108LlgeQYtP9DBDXkApqY0k6bv3LPXOCkEcC8oYoZvFJ40zXd88PxHgph
+	lJgGBMxfwqgJgAOfkYQIPPraPreHxA6qjX70f2iRkDVezEVhhLDVr/V/G0pEqk6ttTC8sUJUf8kHL
+	KID9fP/PlwKqLZ1AgoTx1BOFAdKdFFhvsFTndUm27nJlfjHC1s0TpQu0GuVsJgEX5re31faIItYbP
+	0hlPPwj0M/Q6ft3VNskCTNyoFUjo8+UG08Bf9W4KZ7QhwPHKN6cYdVCZRhIqTxKNNlcRZQQ7ifV1P
+	kZAR3PqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stSxT-00000005cGe-0X8F;
-	Wed, 25 Sep 2024 14:25:35 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1stT7e-00000005ewo-15xZ;
+	Wed, 25 Sep 2024 14:36:06 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stSq7-00000005aHj-2Etr;
-	Wed, 25 Sep 2024 14:18:00 +0000
+	id 1stT6R-00000005eZw-3SVM;
+	Wed, 25 Sep 2024 14:34:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id DD5AB5C5DC0;
-	Wed, 25 Sep 2024 14:17:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07E06C4CEC3;
-	Wed, 25 Sep 2024 14:17:53 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id C7CEBA401DB;
+	Wed, 25 Sep 2024 14:34:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7A959C4CEC3;
+	Wed, 25 Sep 2024 14:34:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727273878;
-	bh=aP2xA/mU4mwmMWMTZ/93f2YWj6d5WLLwRn9OKUwSK9s=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=myB6Alc/fTtah6PgE13bhUk+7d3j7LjshuCjurFn6SydOet6O9ZP/hTmgzkTZc3m2
-	 ILRAJ/DNiziMWrXn8K9V7EGd8c6AEuqVlsOd2ujoIwVT6FTydBe7eJrrudTVfLwEOK
-	 6uuhVRdrHwJLdH3toHrwGsmTg8slN7mD2wWa5i1QbGeQ6fYsc+/CdAqYlFDqxMevjV
-	 xZdKRlLy1i/gBdv6uPlB4ITjcsNoHqMhSdv0rwBcYxGIbgAsrYK9oa1xcKc9XE8vCE
-	 BuIB48joHqfuKunmpXjtk3BbdLb+ylgpNfItLMOEqY0MHqL7+cnt/AMyGkv7xDKD4n
-	 mBPlcGWXJucrw==
-Message-ID: <16ce3558-7733-4c38-b514-c89525faec06@kernel.org>
-Date: Wed, 25 Sep 2024 16:17:52 +0200
+	s=k20201202; t=1727274890;
+	bh=dpQ/czRVTd2i1LaIRTZfUT2aSTnHS8M++kos8GBDjMI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=oq2W/6ik4uHLxVqum7YpvzS6LKLKV+OtW5nJejIsnO+dt6aPiWsX6Iu72+JNHxp5c
+	 plKWY3hpOzeu/5aI9yuTbcd7R6afZgYPnp9EhpBs3UmUIqcnAa9pQfBSbI6ZyjuASL
+	 efhuhosNlwbOgW2Jc5mprIaPgqH3LNfsln3GtwEqYN2FTANtuYgXovIdp9OiTGlbk+
+	 AeOi7fNWgTc28lIOEiUBafHDcjJKWPe57zxZMlcSreeVvuGqz7bJFvjjWs3EQaesL/
+	 /5Rv3qZ/D64TvEObsrENGUlIpm2ricXIpygIvJX/H3tluPMBOqQNisr9N0biGpU/1Q
+	 04m4OM2IV/SWA==
+Date: Wed, 25 Sep 2024 15:34:42 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	moudy.ho@mediatek.com, macross.chen@mediatek.com,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+	Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Bear Wang <bear.wang@mediatek.com>,
+	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
+	Sen Chu <sen.chu@mediatek.com>,
+	Chris-qj chen <chris-qj.chen@mediatek.com>,
+	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	Chen-Yu Tsai <wenst@chromium.org>
+Subject: Re: [PATCH 3/6] dt-bindings: display: mediatek: Fix clocks count
+ constraint for new SoCs
+Message-ID: <20240925-satisfy-epidermal-bd414891479a@spud>
+References: <20240924103156.13119-1-macpaul.lin@mediatek.com>
+ <20240924103156.13119-3-macpaul.lin@mediatek.com>
+ <ffc1900b-3921-48ca-a2b2-1b798c57e572@collabora.com>
+ <20240924-commute-collision-13ad39717d31@spud>
+ <2821ef09-1b32-082d-69d1-e09a3a302447@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: arm: mediatek: Add MT8186
- Chinchou/Chinchou360 Chromebooks
-To: =?UTF-8?Q?Albert_Jakie=C5=82a?= <jakiela@google.com>, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, wenst@chromium.org,
- rafal@milecki.pl, hsinyi@chromium.org, nfraprado@collabora.com,
- macpaul.lin@mediatek.com, sean.wang@mediatek.com
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240925080353.2362879-1-jakiela@google.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20240925080353.2362879-1-jakiela@google.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="J8wSVO8x24H35hg9"
+Content-Disposition: inline
+In-Reply-To: <2821ef09-1b32-082d-69d1-e09a3a302447@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240925_071759_723250_0C9F6112 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20240925_073452_012913_8D35C109 
+X-CRM114-Status: GOOD (  30.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,36 +98,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25/09/2024 10:03, Albert Jakieła wrote:
-> Add entries for MT8186 based Chinchou/Chinchou360 Chromebooks.
-> These two are clamshell or convertible with touchscreen, stylus
-> and extra buttons.
-> 
-> Signed-off-by: Albert Jakieła <jakiela@google.com>
-> ---
->  .../devicetree/bindings/arm/mediatek.yaml     | 23 +++++++++++++++++++
->  1 file changed, 23 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> index 1d4bb50fcd8d..110149f5d748 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -239,6 +239,29 @@ properties:
->            - enum:
->                - mediatek,mt8183-pumpkin
->            - const: mediatek,mt8183
-> +      - description: Google Chinchou360 (Asus Chromebook CZ11 Flip CZ1104F)
-> +        items:
-> +          - const: google,chinchou-sku16
-> +          - const: google,chinchou-sku18
-> +          - const: google,chinchou-sku19
-> +          - const: google,chinchou-sku21
-> +          - const: google,chinchou-sku2147483647
 
-Wasn't sku-maxint removed? I recall same discussion recently... If yes,
-then please use same rules for all future Chromebook submissions.
+--J8wSVO8x24H35hg9
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Best regards,
-Krzysztof
+On Wed, Sep 25, 2024 at 04:42:59PM +0800, Macpaul Lin wrote:
+>=20
+> On 9/25/24 00:00, Conor Dooley wrote:
+> > On Tue, Sep 24, 2024 at 01:42:01PM +0200, AngeloGioacchino Del Regno wr=
+ote:
+> > > Il 24/09/24 12:31, Macpaul Lin ha scritto:
+> > > > The display node in mt8195.dtsi was triggering a CHECK_DTBS error d=
+ue
+> > > > to an excessively long 'clocks' property:
+> > > >     display@14f06000: clocks: [[31, 14], [31, 43], [31, 44]] is too=
+ long
+> > > >=20
+> > > > To resolve this issue, add "maxItems: 3" to the 'clocks' property in
+> > > > the DT schema.
+> > > >=20
+> > > > Fixes: 4ed545e7d100 ("dt-bindings: display: mediatek: disp: split e=
+ach block to individual yaml")
+> > > > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> > > > ---
+> > > >    .../devicetree/bindings/display/mediatek/mediatek,split.yaml    =
+ | 1 +
+> > > >    1 file changed, 1 insertion(+)
+> > > >=20
+> > > > diff --git a/Documentation/devicetree/bindings/display/mediatek/med=
+iatek,split.yaml b/Documentation/devicetree/bindings/display/mediatek/media=
+tek,split.yaml
+> > > > index e4affc854f3d..42d2d483cc29 100644
+> > > > --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,s=
+plit.yaml
+> > > > +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,s=
+plit.yaml
+> > > > @@ -57,6 +57,7 @@ properties:
+> > > >      clocks:
+> > > >        items:
+> > > >          - description: SPLIT Clock
+> > >=20
+> > > That's at least confusing (granted that it works) - either add a desc=
+ription for
+> > > each clock and then set `minItems: 1` (preferred), or remove this "SP=
+LIT Clock"
+> > > description and allow a maximum of 3 clocks.
+> > >=20
+> > > Removing the description can be done - IMO - because "SPLIT Clock" is=
+, well,
+> > > saying that the SPLIT block gets a SPLIT clock ... stating the obviou=
+s, anyway.
+> >=20
+> > Right, but what are the other two new clocks? Are they as obvious?
+> > There's no clock-names here to give any more information as to what the
+> > other clocks are supposed to be.
+> >=20
+> > Kinda unrelated, but I think that "SPLIT Clock" probably isn't what the
+> > name of the clock in the IP block is anyway, sounds more like the name
+> > for it on the provider end..
+>=20
+> Thanks for the suggestions. I think Moudy could help on the new fixes
+> for both DT schem and mt8195.dtsi. This patch could be separated from
+> origin patch set.
 
+Not sure what you mean about separating it, if you mean correcting the
+description for the split clock sure. The other stuff I mentioned needs
+to be resolved before I'm willing to ack this.
+
+--J8wSVO8x24H35hg9
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZvQfggAKCRB4tDGHoIJi
+0kZaAQDow3QEAY+WQ0ufqkVPpT6Klr1sLJA3DGBOMb0OR2mFBAD+LZNm99NaPFvR
+YY8n+V0cs0h8KfWB99zY2q0PPvHvNwc=
+=5wf9
+-----END PGP SIGNATURE-----
+
+--J8wSVO8x24H35hg9--
 
