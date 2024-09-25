@@ -4,98 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68141C369A0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 07:15:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B582FC369A2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 07:16:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TDaNdhjF6czZwZ8GYJQ+xlqUWHjP+ROLSrQsWDOJZts=; b=Ofd+KOxsgKnn1mFg1tlZBYvnxh
-	Pf987egFKKlh6g+apXiOLiz2opW7gk3rbzDWLw03whlx1e6GsyvW4Uw6TtFGbW+FBOl7b6KeJenTm
-	UhUqqEFe8OKMnKgCo2DP5HEUh4Lb6lzTHqFSjp1ogm9d8KQ/qWYzh6ldF7AwM/R7zcv0W/hDl+IhN
-	tmwwxNzDDgJqmpWbZUoiF3PHBTZVXNfsMDk5HLu8gYfOPdLOOQWhp1x2P7zinwWJCYMNSoCN3yOQE
-	rZoGQ0gVNFlMZqOeodDB2zyi+RqMzCUO8kJ9nLEwGF3bGA9PHxZZ+AqY1dB948c2AQ0q0YMkgPL3C
-	G4VTg9oA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=yaIodi5uj4km3VKABv1O17zLQr709EqtZWRmv7oakJc=; b=q0mzhiOyvFwsuHW7mssrLVZJ4T
+	0kL6eCfSJvpl2E6nUANSZldquaKE0pr1AaQaNZFX8VU4LvbxUY+bQuhBorPAye+w4axwn8hnnCevR
+	W3myIK0/Z9rQlG8VLNkRs5TFjG1etix2JTEl/4f98HrHEUl7lesGCb4GUXEPx922iBZz7MBVvV3YB
+	JvabLiGJmLJ1/pzz2xaqZG85+0yNcrjVjavWgGJQT/mtd8kZv/PQ7O6EsX27BXc4T/ba8Pp9Tv3RP
+	pr75YlAa/Gcea3pASsXzEE4xfJ5S9uRg/JlNvpJqMRFbkN5edcF9OX2+Ek2SRaC8L+YRYzCe0DYT9
+	BA2e3AmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stMEz-00000004H4T-1VJ3;
-	Wed, 25 Sep 2024 07:15:13 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1stMG8-00000004HMC-2bGw;
+	Wed, 25 Sep 2024 07:16:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stMEw-00000004H3c-2Jb3
-	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Sep 2024 07:15:12 +0000
-Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-a8d2b4a5bf1so889791966b.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Sep 2024 00:15:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1727248508; x=1727853308; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=TDaNdhjF6czZwZ8GYJQ+xlqUWHjP+ROLSrQsWDOJZts=;
-        b=V7ejo840Um9q0EbEPGnoNxd4Xhn2C5Z85QN3RmX2V3x0+sjRC9vsc5VtdCxeY/wLnc
-         c41gd8ZO9GggtVbJuLBa2PqxYpqKsipajGS+aF+iYWauZ7pTWYG7hJoB5uMhYGYoManI
-         3cXuB3nIl/Qj/VWccrUYRKVx0G29CMhr/P2h1OhBGsTj1pD46NX0A64nZyDg/100EJ51
-         I5eRXRXhd1subdlfJm5hxcVkSkEL5yf3etAoG06Wp70BDniop0F0TldjUp9dVR2A79JP
-         y7JVjFvsbsFIBXqEd/6tYlTG7LOk67DqXcqSI9h6pcFKtIj0GLhwqZyI4ZJOkrMbL4Up
-         sGjA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727248508; x=1727853308;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=TDaNdhjF6czZwZ8GYJQ+xlqUWHjP+ROLSrQsWDOJZts=;
-        b=H2z1nDu3aErlUeXs5m1uKIhMc2LufZWbBWAgAcRJGsiyTuG72oDZrJoxQSsfcgVGnw
-         BxoKI2j7Dsh3aaMverPmcaBWfURILNd33xBH12noDgZQzYCWhKOrjIYamUjjSSyMA8sd
-         6S5UTcycFxWLVWl1RfDdq5TsM+ohD+NE7afDFJR7HGTD3U8yjrbSr9yqek0ossjV6AD/
-         UfCOLWxb05eN42AUNlyDfFh1fXnH3ZRskqueB81GJ5DyMZ7IpcENbDIIc2Jh+eWCUnlj
-         SztiheHblTWW+garPzgxHv21E3sxZs7rWQEigXiYq7vhtLyuEe7yBk+r402SqsOc5VCl
-         iQfA==
-X-Forwarded-Encrypted: i=1; AJvYcCV1CUxfNUN1sBgfkbF8STAf1o5pDNoTzp/yG9MFmypyYXbR1t5brrG1t3y3ocK0rhb3lOtnsHgDNywKGqT6Ew==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwUKlHJasKsQ6VDp8Q0cRZgGFKLtPMuFqyliMV7l9l+ySIcMzrL
-	90pxpdEGE6GX2mHRUr1M8nRuk6OOkyawlI71bJqTYrD/pejl+UJ4k6xMn5qOPUk=
-X-Google-Smtp-Source: AGHT+IHv93X+9j84xZuTxFkaqtse2mqrU5kPecB2WQv7iIqPArSVbHN4jb/WWw/ItxeQzBtjVNzB3Q==
-X-Received: by 2002:a17:907:e656:b0:a86:9644:2a60 with SMTP id a640c23a62f3a-a93a03200d0mr161368666b.6.1727248508395;
-        Wed, 25 Sep 2024 00:15:08 -0700 (PDT)
-Received: from rayden (h-217-31-164-171.A175.priv.bahnhof.se. [217.31.164.171])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9393138bd5sm174570466b.205.2024.09.25.00.15.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Sep 2024 00:15:06 -0700 (PDT)
-Date: Wed, 25 Sep 2024 09:15:04 +0200
-From: Jens Wiklander <jens.wiklander@linaro.org>
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	linaro-mm-sig@lists.linaro.org, op-tee@lists.trustedfirmware.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Olivier Masse <olivier.masse@nxp.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Yong Wu <yong.wu@mediatek.com>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Brian Starkey <Brian.Starkey@arm.com>,
-	John Stultz <jstultz@google.com>,
-	"T . J . Mercier" <tjmercier@google.com>,
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>,
-	Sumit Garg <sumit.garg@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Subject: Re: [RFC PATCH 0/4] Linaro restricted heap
-Message-ID: <20240925071504.GA3519798@rayden>
-References: <20240830070351.2855919-1-jens.wiklander@linaro.org>
- <dhxvyshwi4qmcmwceokhqey2ww4azjcs6qrpnkgivdj7tv5cke@r36srvvbof6q>
+	id 1stMFD-00000004H9B-3nDr;
+	Wed, 25 Sep 2024 07:15:29 +0000
+X-UUID: edc3276c7b0d11efba0aef63c0775dbf-20240925
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=yaIodi5uj4km3VKABv1O17zLQr709EqtZWRmv7oakJc=;
+	b=JTVmZmXyBKy9U+J/OgN/DL1UfcssvqXfk+5CLxRD4zQauAhWvSryk4LaGGn/jTOiA8/+fXBLRj3cyTT85SNDzkIKR2zr+9iojh1fj4Gvi3UEupNL3UBka+u+eCEbeHJAxWOBIsXb9RIX1LZ9prLHgPKq0SFwf153qiVy45iFMr8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:b2601e31-cfc5-44f2-9c40-a470082fbfef,IP:0,U
+	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:6dc6a47,CLOUDID:570dbcd0-7921-4900-88a1-3aef019a55ce,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-UUID: edc3276c7b0d11efba0aef63c0775dbf-20240925
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1352397805; Wed, 25 Sep 2024 00:15:22 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 25 Sep 2024 15:15:19 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 25 Sep 2024 15:15:19 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Alexandre Mergnat
+	<amergnat@baylibre.com>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, Sen
+ Chu <sen.chu@mediatek.com>, Chris-qj chen <chris-qj.chen@mediatek.com>,
+	MediaTek Chromebook Upstream
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
+	<wenst@chromium.org>, Tommy Chen <tommytl.chen@mediatek.com>
+Subject: [PATCH] arm64: dts: mediatek: mt8195: Add power domain for dp_intf0
+Date: Wed, 25 Sep 2024 15:15:14 +0800
+Message-ID: <20240925071514.17626-1-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <dhxvyshwi4qmcmwceokhqey2ww4azjcs6qrpnkgivdj7tv5cke@r36srvvbof6q>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240925_001510_634495_F11846C0 
-X-CRM114-Status: GOOD (  42.95  )
+X-CRM114-CacheID: sfid-20240925_001527_986399_D030EA5E 
+X-CRM114-Status: GOOD (  11.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,129 +92,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 23, 2024 at 09:33:29AM +0300, Dmitry Baryshkov wrote:
-> Hi,
-> 
-> On Fri, Aug 30, 2024 at 09:03:47AM GMT, Jens Wiklander wrote:
-> > Hi,
-> > 
-> > This patch set is based on top of Yong Wu's restricted heap patch set [1].
-> > It's also a continuation on Olivier's Add dma-buf secure-heap patch set [2].
-> > 
-> > The Linaro restricted heap uses genalloc in the kernel to manage the heap
-> > carvout. This is a difference from the Mediatek restricted heap which
-> > relies on the secure world to manage the carveout.
-> > 
-> > I've tried to adress the comments on [2], but [1] introduces changes so I'm
-> > afraid I've had to skip some comments.
-> 
-> I know I have raised the same question during LPC (in connection to
-> Qualcomm's dma-heap implementation). Is there any reason why we are
-> using generic heaps instead of allocating the dma-bufs on the device
-> side?
-> 
-> In your case you already have TEE device, you can use it to allocate and
-> export dma-bufs, which then get imported by the V4L and DRM drivers.
-> 
-> I have a feeling (I might be completely wrong here) that by using
-> generic dma-buf heaps we can easily end up in a situation when the
-> userspace depends heavily on the actual platform being used (to map the
-> platform to heap names). I think we should instead depend on the
-> existing devices (e.g. if there is a TEE device, use an IOCTL to
-> allocate secured DMA BUF from it, otherwise check for QTEE device,
-> otherwise check for some other vendor device).
+During inspecting dtbs_check errors, we found the power domain
+setting of DPI node "dp_intf0" is missing. Add power domain setting
+to "MT8195_POWER_DOMAIN_VDOSYS0" for "dp_intf0"
 
-That makes sense, it's similar to what we do with TEE_IOC_SHM_ALLOC
-where we allocate from a carveout reserverd for shared memory with the
-secure world. It was even based on dma-buf until commit dfd0743f1d9e
-("tee: handle lookup of shm with reference count 0").
+Signed-off-by: Tommy Chen <tommytl.chen@mediatek.com>
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-We should use a new TEE_IOC_*_ALLOC for these new dma-bufs to avoid
-confusion and to have more freedom when designing the interface.
+Changes for v1:
+ - This patch is related to adding mt8195-dp-intf to DT schema fix for
+  - http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml 
+  - patch: https://lore.kernel.org/all/20240924103156.13119-6-macpaul.lin@mediatek.com/
 
-> 
-> The mental experiment to check if the API is correct is really simple:
-> Can you use exactly the same rootfs on several devices without
-> any additional tuning (e.g. your QEMU, HiKey, a Mediatek board, Qualcomm
-> laptop, etc)?
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index ade685ed2190..6218bd7abb05 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -3252,6 +3252,7 @@ dp_intf0: dp-intf@1c015000 {
+ 			compatible = "mediatek,mt8195-dp-intf";
+ 			reg = <0 0x1c015000 0 0x1000>;
+ 			interrupts = <GIC_SPI 657 IRQ_TYPE_LEVEL_HIGH 0>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
+ 			clocks = <&vdosys0 CLK_VDO0_DP_INTF0_DP_INTF>,
+ 				 <&vdosys0  CLK_VDO0_DP_INTF0>,
+ 				 <&apmixedsys CLK_APMIXED_TVDPLL1>;
+-- 
+2.45.2
 
-No, I don't think so.
-
-> 
-> > 
-> > This can be tested on QEMU with the following steps:
-> > repo init -u https://github.com/jenswi-linaro/manifest.git -m qemu_v8.xml \
-> >         -b prototype/sdp-v1
-> > repo sync -j8
-> > cd build
-> > make toolchains -j4
-> > make all -j$(nproc)
-> > make run-only
-> > # login and at the prompt:
-> > xtest --sdp-basic
-> > 
-> > https://optee.readthedocs.io/en/latest/building/prerequisites.html
-> > list dependencies needed to build the above.
-> > 
-> > The tests are pretty basic, mostly checking that a Trusted Application in
-> > the secure world can access and manipulate the memory.
-> 
-> - Can we test that the system doesn't crash badly if user provides
->   non-secured memory to the users which expect a secure buffer?
-> 
-> - At the same time corresponding entities shouldn't decode data to the
->   buffers accessible to the rest of the sytem.
-
-I'll a few tests along that.
-
-Thanks,
-Jens
-
-> 
-> > 
-> > Cheers,
-> > Jens
-> > 
-> > [1] https://lore.kernel.org/dri-devel/20240515112308.10171-1-yong.wu@mediatek.com/
-> > [2] https://lore.kernel.org/lkml/20220805135330.970-1-olivier.masse@nxp.com/
-> > 
-> > Changes since Olivier's post [2]:
-> > * Based on Yong Wu's post [1] where much of dma-buf handling is done in
-> >   the generic restricted heap
-> > * Simplifications and cleanup
-> > * New commit message for "dma-buf: heaps: add Linaro restricted dmabuf heap
-> >   support"
-> > * Replaced the word "secure" with "restricted" where applicable
-> > 
-> > Etienne Carriere (1):
-> >   tee: new ioctl to a register tee_shm from a dmabuf file descriptor
-> > 
-> > Jens Wiklander (2):
-> >   dma-buf: heaps: restricted_heap: add no_map attribute
-> >   dma-buf: heaps: add Linaro restricted dmabuf heap support
-> > 
-> > Olivier Masse (1):
-> >   dt-bindings: reserved-memory: add linaro,restricted-heap
-> > 
-> >  .../linaro,restricted-heap.yaml               |  56 ++++++
-> >  drivers/dma-buf/heaps/Kconfig                 |  10 ++
-> >  drivers/dma-buf/heaps/Makefile                |   1 +
-> >  drivers/dma-buf/heaps/restricted_heap.c       |  17 +-
-> >  drivers/dma-buf/heaps/restricted_heap.h       |   2 +
-> >  .../dma-buf/heaps/restricted_heap_linaro.c    | 165 ++++++++++++++++++
-> >  drivers/tee/tee_core.c                        |  38 ++++
-> >  drivers/tee/tee_shm.c                         | 104 ++++++++++-
-> >  include/linux/tee_drv.h                       |  11 ++
-> >  include/uapi/linux/tee.h                      |  29 +++
-> >  10 files changed, 426 insertions(+), 7 deletions(-)
-> >  create mode 100644 Documentation/devicetree/bindings/reserved-memory/linaro,restricted-heap.yaml
-> >  create mode 100644 drivers/dma-buf/heaps/restricted_heap_linaro.c
-> > 
-> > -- 
-> > 2.34.1
-> > 
-> 
-> -- 
-> With best wishes
-> Dmitry
 
