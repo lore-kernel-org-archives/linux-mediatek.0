@@ -4,85 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53716C369A8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 08:01:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC3A7C369A8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 08:02:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Do3ooaQZNXtQMdr7rWT9aLKM/O1qU46ww0/Lu6tZOpU=; b=E7bTPY1IsFHUOIoiSiYe7QPHGz
-	ihS5GYXR6GQtv+EuKcXX2LUo/Dr9HuDVui+1tYaXxg5v8PmT2RQ/b2fIBH6ZZykk4zX+PIQA/gCFe
-	fQEmhVomJIcUhsvtwwDNtT+ObV1VjIxHo3BAxkqKpU6gE/1TbqABZtpKafjWyqeghXSG4IWR4veJR
-	O3y7mIUtlq4+AZJooQI4mVqtuw0qfqgGNQ/MuJqq07GWEcgAzrVtrZ8/kZggiBkczGnxZ6WFSvsLM
-	LG3Prz7GPI+TATwE9s2Xydsqz3xIJaw0tEA/fDjxEJR5ZjlrOlGJhv4dios79xI0jQyEekNjQtDI6
-	SpHae0IQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ex1eFr4hS+ZGn1Z31JmBv4PhcgqRDO/Hbk8Px9C2Jek=; b=t6PeoxIWovBJfBh4Wjfz8FiyNv
+	R04Qk5S1XjcQ0ReI11HyZzFAA+dTBgHnlgpNC8Kksac0urH1GapHEu78JELVsx3lkPrl7DkJe9Pzs
+	XvpxRDxvOONs6pQ3kmKpB+Hf9HAX1fO93/9D7P76EJHbT0nLRV1G9KGGu2eXIghEYtb+NfbIZXwRY
+	XluE0B8lIZgOBTcB7Zp/+KZTtPuAVgViDA5zgRL4+8ImD3SPme/6AggPmcUicUhMzT0eBq0K7i7no
+	bpwpZA+JZpjEUZbDGDs4gMHcrXB8UhPcCE3Zg5yvWebaBkT3COoAeEj3i3fKD/QekyrgOgPTKlRp8
+	MjjFyk1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stMxf-00000004Qgs-19t2;
-	Wed, 25 Sep 2024 08:01:23 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1stMyp-00000004R4i-26GE;
+	Wed, 25 Sep 2024 08:02:35 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stMtI-00000004PlQ-1giq;
-	Wed, 25 Sep 2024 07:56:53 +0000
-X-UUID: b6c78fd67b1311efba0aef63c0775dbf-20240925
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=Do3ooaQZNXtQMdr7rWT9aLKM/O1qU46ww0/Lu6tZOpU=;
-	b=eolPzsRX6ymMk2kChZd9SCjYjnvogbJzAwU0QHzz+CsFsgdJtdaONWq+t+wqIow6DG2kSWGV6jVdbjZt31EMtbpx3gKeVb9C7YVJXeBmW9mfmqbjmoChUIvsWoz6RjL5Af4aea+vYqlytJayKt1OeIeVKOV2hj6yUNeBI4OFnqs=;
-X-CID-CACHE: Type:Local,Time:202409250022-07,HitQuantity:1
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:32551689-05e4-4c2e-9750-5971dc7ffb57,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:a02cbcd0-7921-4900-88a1-3aef019a55ce,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|-5,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: b6c78fd67b1311efba0aef63c0775dbf-20240925
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 796739442; Wed, 25 Sep 2024 00:56:47 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 25 Sep 2024 15:56:44 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
- Transport; Wed, 25 Sep 2024 15:56:43 +0800
-Message-ID: <9e51fdad-382c-5889-7986-7e0373eb0918@mediatek.com>
-Date: Wed, 25 Sep 2024 15:56:42 +0800
+	id 1stMtO-00000004Pn7-0Dj4
+	for linux-mediatek@lists.infradead.org;
+	Wed, 25 Sep 2024 07:56:59 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-374b5f27cf2so3734714f8f.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Sep 2024 00:56:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1727251016; x=1727855816; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=ex1eFr4hS+ZGn1Z31JmBv4PhcgqRDO/Hbk8Px9C2Jek=;
+        b=voPwJy3zCT3a+QIJSJxTlHl1vp44btcIL4lVqNFpVRDHSa9c3QB9wcGT/qnGDFtUDr
+         eSG28NHmjswsAz61RYdj/fhxwVrJ6JfM5igkPU82Sg2qsO2l4sYPh05u0gjcm9Zo5sou
+         4M9jaK3jpaPuRnL6YG3zGPYuMP+0RztqDWW8ntqreO+jG4o6ZEcBCNBg9iVcoKwIDcl/
+         O5DhkC4K+D9nBJPk0a112Na1GbTWNKJJsKSPOVjdunAmWcK7hoBzsAvFndlZXOqEVylI
+         2h71rGDBvpBOWl3LwI+aAvU5eq7yBXdSS8a48qZNIDHGpEpgTtkfleNGwdmYX83jlM1B
+         ZhyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727251016; x=1727855816;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ex1eFr4hS+ZGn1Z31JmBv4PhcgqRDO/Hbk8Px9C2Jek=;
+        b=oSlIBKvTzaH4NGbmbNGUeZ4pzgdsxY+ZOgux3+DW/4n4WfN/3cAyAHdk1/pVHrMtUt
+         l+X8DmxGGWaJQewr/E3K2Zn69YOzCBO48+nq17qamz+iHbKjCYAws5nCs4mvcn3XovJe
+         Ru8pB2eBNWaBAuBz5aW6lJZWQeMMiYTFBnF5ken+DvpCA0ihUMBrx9tPnbyludATd84g
+         qIJ1NmlX3tPFCHvHqDeoslOl5aWU9ePVWbmoT7nubroFREq+Bt81sZJkb1qt36mP+txI
+         Fbswdl37EntjsCurGfiFw+EGGsJJfOuw1BQZ7IagJ2Y/W59hBzir6/pFVuJt6jL+Flpu
+         ADAg==
+X-Forwarded-Encrypted: i=1; AJvYcCUITzJK2vnYUwxxJwtcZBCzf6FRydgZP3eI3cutfQAW2IJ8wPufc7sihvIarLbpsMkkz4t9MBdDc/X0FRqtqA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxJaooWgMrXYAWFUSXxqYphgPaP03+28/xEbPegl/Z7sfbrQuQR
+	y8QxxCrinMXs78ycPleg9seZltPydFaAe9B35/Vkra0rLTDk6yQPLiUT7QcRGQ==
+X-Google-Smtp-Source: AGHT+IF2WTBpi0WKM13oYD6g9v8s+vSbS1vZ7h85OwPzdWyievegW/qIqe69gYQpJLdHkgY2OvXiUQ==
+X-Received: by 2002:a5d:64c9:0:b0:368:7f4f:9ead with SMTP id ffacd0b85a97d-37cc246b30emr1075354f8f.7.1727251016023;
+        Wed, 25 Sep 2024 00:56:56 -0700 (PDT)
+Received: from thinkpad ([80.66.138.17])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42e96a1682csm10166775e9.36.2024.09.25.00.56.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Sep 2024 00:56:55 -0700 (PDT)
+Date: Wed, 25 Sep 2024 09:56:54 +0200
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Russell King <linux@armlinux.org.uk>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>, kernel@collabora.com,
+	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org
+Subject: Re: [PATCH 0/4] Provide devm_clk_bulk_get_all_enabled() helper
+Message-ID: <20240925075654.f2pefosdspqiakvj@thinkpad>
+References: <20240914-clk_bulk_ena_fix-v1-0-ce3537585c06@collabora.com>
+ <20240924143634.pqpdsewoqxn3liqi@thinkpad>
+ <70a24964-990b-4606-bdc8-4dd42c44785a@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Add power domain for
- dp_intf0
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob
- Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
- Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Alexandre Mergnat <amergnat@baylibre.com>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>, Chris-qj
- chen <chris-qj.chen@mediatek.com>, MediaTek Chromebook Upstream
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
-	<wenst@chromium.org>, Tommy Chen <tommytl.chen@mediatek.com>
-References: <20240925071514.17626-1-macpaul.lin@mediatek.com>
- <7e57ea01-f881-4c6a-95e7-96ab56dbc455@collabora.com>
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-In-Reply-To: <7e57ea01-f881-4c6a-95e7-96ab56dbc455@collabora.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <70a24964-990b-4606-bdc8-4dd42c44785a@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240925_005652_485616_A309EFF9 
-X-CRM114-Status: UNSURE (   9.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240925_005658_156177_7CFDE13D 
+X-CRM114-Status: GOOD (  28.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,27 +108,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 9/25/24 15:54, AngeloGioacchino Del Regno wrote:
-> Il 25/09/24 09:15, Macpaul Lin ha scritto:
->> During inspecting dtbs_check errors, we found the power domain
->> setting of DPI node "dp_intf0" is missing. Add power domain setting
->> to "MT8195_POWER_DOMAIN_VDOSYS0" for "dp_intf0"
->>
->> Signed-off-by: Tommy Chen <tommytl.chen@mediatek.com>
->> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+On Wed, Sep 25, 2024 at 09:52:44AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 24/09/24 16:36, Manivannan Sadhasivam ha scritto:
+> > On Sat, Sep 14, 2024 at 09:04:53PM +0300, Cristian Ciocaltea wrote:
+> > > Commit 265b07df758a ("clk: Provide managed helper to get and enable bulk
+> > > clocks") added devm_clk_bulk_get_all_enable() function, but missed to
+> > > return the number of clocks stored in the clk_bulk_data table referenced
+> > > by the clks argument.
+> > > 
+> > > That is required in case there is a need to iterate these clocks later,
+> > > therefore I couldn't see any use case of this parameter and should have
+> > > been simply removed from the function declaration.
+> > > 
+> > 
+> > Is there an user that currerntly does this?
+> > 
 > 
-> You missed a Suggested-by tag here :-)
-> 
-> after which,
-> 
-> Reviewed-by: AngeloGioacchino Del Regno 
-> <angelogioacchino.delregno@collabora.com>
+> Yes and the patch wasn't sent upstream yet, but anyway, regardless of that,
+> this series is fixing inconsistency with both naming and usage between the
+> clock (bulk) API functions, with that being the only function acting
+> different from the others, at best confusing people.
 > 
 
-Got it! I'll send v3 update later.
+I agree with the 'inconsistency' part of the API, but I wouldn't call it as
+*broken* as this series does. Please fix that and you can have my:
 
-Thanks
-Macpaul Lin
+Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+
+- Mani
+
+> Cheers,
+> Angelo
+> 
+> > - Mani
+> > 
+> > > The first patch in the series provides devm_clk_bulk_get_all_enabled()
+> > > variant, which is consistent with devm_clk_bulk_get_all() in terms of
+> > > the returned value:
+> > > 
+> > >   > 0 if one or more clocks have been stored
+> > >   = 0 if there are no clocks
+> > >   < 0 if an error occurred
+> > > 
+> > > Moreover, the naming is consistent with devm_clk_get_enabled(), i.e. use
+> > > the past form of 'enable'.
+> > > 
+> > > The next two patches switch existing users of devm_clk_get_enable() to
+> > > the new helper - there were only two, as of next-20240913.
+> > > 
+> > > The last patch drops the now obsolete devm_clk_bulk_get_all_enable()
+> > > helper.
+> > > 
+> > > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> > > ---
+> > > Cristian Ciocaltea (4):
+> > >        clk: Provide devm_clk_bulk_get_all_enabled() helper
+> > >        soc: mediatek: pwrap: Switch to devm_clk_bulk_get_all_enabled()
+> > >        PCI: exynos: Switch to devm_clk_bulk_get_all_enabled()
+> > >        clk: Drop obsolete devm_clk_bulk_get_all_enable() helper
+> > > 
+> > >   drivers/clk/clk-devres.c                | 30 ++++++++++++++++--------------
+> > >   drivers/pci/controller/dwc/pci-exynos.c |  2 +-
+> > >   drivers/soc/mediatek/mtk-pmic-wrap.c    |  4 ++--
+> > >   include/linux/clk.h                     | 12 +++++++-----
+> > >   4 files changed, 26 insertions(+), 22 deletions(-)
+> > > ---
+> > > base-commit: 5acd9952f95fb4b7da6d09a3be39195a80845eb6
+> > > change-id: 20240912-clk_bulk_ena_fix-16ba77358ddf
+> > > 
+> > 
+> 
+> 
+
+-- 
+மணிவண்ணன் சதாசிவம்
 
