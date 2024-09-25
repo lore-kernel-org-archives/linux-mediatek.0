@@ -4,56 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78FFDC369A3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 07:20:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9B32C369A4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 07:46:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VpzhxiIWGVCS4kVdPRp582B1kElY78w2rnCabRZFkD0=; b=T1NDkd4E9IPoksp1tutZCKDFIB
-	qIjX2hbyUKnPFt7/UMdzt7BIdGamu7u8o6bZDXPYRFuyoigT4MGTz/vdNCDj/K8/7P4IHub7HkRDv
-	0Qd2lgN5v0sXIkJDGU1Mu03B50QzNS/LmKAG07drMMz2dUivAld7twpIFtHH3czWAERfkVRDYGaKp
-	JEczqXX+WeX8x0v3nYwf7Cka1jd3bIgLxeNIxImmN+bPx4DDdYjLrOJTzYmK5a00LhFny+Ce4D/OP
-	VYVPmNoV9WEcG4GnrtfspzXOl06UjveDaqrFI8tKQvtvo7cvByrF9qfLhmUFtdyvrj6LPWR5skELc
-	+IKN9kUQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xl0YbQNchGMDcxT/riTMU37tGxjdInutMd+47zW0twk=; b=RdSL4rKt6dQ2A0KyT//hAesAp4
+	iHOUlI65Meuwp6rGOlhlrhct4u1OaS4/wQoXfEH4q0DOqf5vFaFSzmGdVwuAgi/Ggu9QmATWphK2V
+	TTvlbdt/Vv8hPHrtekFOCEu3USuF7Sdx3hI1VEqMoBEPsgwwL8dVySScrHF0xuYW6GTuZmtu7QtQz
+	HhLi1TsEYQUOG8MJ1Zkz/VGHGrXFkDJhi463F0nMjqWu3793OXhG0ugaeCMxO7mCDIlKjbhnxsfIS
+	j21vBu9zt3ogOmmw2GXePPR8oVmhUHBVa8CiphQ6X/VXopnoo6Fj8Geeobavn7gQMwJ7+/aTXBIbg
+	RdYaxxHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stMJh-00000004IRd-0z9c;
-	Wed, 25 Sep 2024 07:20:05 +0000
+	id 1stMjV-00000004NbD-2qEm;
+	Wed, 25 Sep 2024 07:46:45 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stMHv-00000004HkP-3GWY;
-	Wed, 25 Sep 2024 07:18:18 +0000
-X-UUID: 530c8c3a7b0e11efba0aef63c0775dbf-20240925
+	id 1stMMG-00000004JAK-0Q05;
+	Wed, 25 Sep 2024 07:22:45 +0000
+X-UUID: f190c18c7b0e11efba0aef63c0775dbf-20240925
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=VpzhxiIWGVCS4kVdPRp582B1kElY78w2rnCabRZFkD0=;
-	b=rzuZoIok7Qo2pKmUA3pbSbMPKK5TPSQt6gmR2YwnY1tqP8TwvzJsmUhzu0Jj2KCre+MKcbW1tyHB4Vfy0KTjqTY+NZoUnGtfQeGI0f1hfVPQqaz/wuU1NxqJ/xBgXgOZ+rDyOZD+z1oClfWCg7woynzN2w3bMIHkGI/X+WVkPzY=;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=xl0YbQNchGMDcxT/riTMU37tGxjdInutMd+47zW0twk=;
+	b=S+DTkOq0tHsWBT2f7xSVhqDnupaPlSY26O1XFuhyxOsZ25lrSOjQDCR8EevL3Ab29VdIYF60lc6LajscoN+9LshhU+J/Vi4FWx1aZAUpO79dl6uU5qKngbNHJapnqBEvDpBeAfqilI9YILmxtQ9l7bTQeihQESs1Zmk84bAuKuk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:3cd61c4b-404e-44d5-9589-0c02e9037c1d,IP:0,U
-	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:25
-X-CID-META: VersionHash:6dc6a47,CLOUDID:3dd03818-b42d-49a6-94d2-a75fa0df01d2,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+X-CID-O-INFO: VERSION:1.1.41,REQID:344a202f-36d4-4ed7-8448-a339e7ad27b9,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:a02cbcd0-7921-4900-88a1-3aef019a55ce,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|-5,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 530c8c3a7b0e11efba0aef63c0775dbf-20240925
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: f190c18c7b0e11efba0aef63c0775dbf-20240925
 Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
 	(envelope-from <macpaul.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2012001247; Wed, 25 Sep 2024 00:18:12 -0700
+	with ESMTP id 294732140; Wed, 25 Sep 2024 00:22:38 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 25 Sep 2024 00:18:09 -0700
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 25 Sep 2024 15:18:09 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
+ 15.2.1118.26; Wed, 25 Sep 2024 00:22:35 -0700
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Wed, 25 Sep 2024 15:22:35 +0800
+Message-ID: <47c4b502-0c8d-126e-699f-b59a55d895c3@mediatek.com>
+Date: Wed, 25 Sep 2024 15:22:33 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Add power domain for
+ dp_intf0
+Content-Language: en-US
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
@@ -62,22 +69,18 @@ To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	<linux-mediatek@lists.infradead.org>, Alexandre Mergnat
 	<amergnat@baylibre.com>
 CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, Sen
- Chu <sen.chu@mediatek.com>, Chris-qj chen <chris-qj.chen@mediatek.com>,
-	MediaTek Chromebook Upstream
+	Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>, Chris-qj
+ chen <chris-qj.chen@mediatek.com>, MediaTek Chromebook Upstream
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
-	<wenst@chromium.org>, Tommy Chen <tommyyl.chen@mediatek.com>
-Subject: [PATCH v2] arm64: dts: mediatek: mt8195: Add power domain for dp_intf0
-Date: Wed, 25 Sep 2024 15:18:07 +0800
-Message-ID: <20240925071807.19603-1-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+	<wenst@chromium.org>, Tommy Chen <tommytl.chen@mediatek.com>
+References: <20240925071514.17626-1-macpaul.lin@mediatek.com>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <20240925071514.17626-1-macpaul.lin@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240925_001815_842841_430D463C 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20240925_002244_180046_D0093A7D 
+X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,37 +95,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-During inspecting dtbs_check errors, we found the power domain
-setting of DPI node "dp_intf0" is missing. Add power domain setting
-to "MT8195_POWER_DOMAIN_VDOSYS0" for "dp_intf0"
 
-Signed-off-by: Tommy Chen <tommyyl.chen@mediatek.com>
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+On 9/25/24 15:15, Macpaul Lin wrote:
+> During inspecting dtbs_check errors, we found the power domain
+> setting of DPI node "dp_intf0" is missing. Add power domain setting
+> to "MT8195_POWER_DOMAIN_VDOSYS0" for "dp_intf0"
+> 
+> Signed-off-by: Tommy Chen <tommytl.chen@mediatek.com>
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 
-Changes for v1:
- - This patch is related to adding mt8195-dp-intf to DT schema fix for
-  - http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml 
-  - patch: https://lore.kernel.org/all/20240924103156.13119-6-macpaul.lin@mediatek.com/
+[snip]
 
-Changes for v2:
- - Fix typo for Tommy's email address. Others remains no change.
+Sorry there is a typo in the Signed-off-by.
+I'll send v2 to correct this.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index ade685ed2190..6218bd7abb05 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -3252,6 +3252,7 @@ dp_intf0: dp-intf@1c015000 {
- 			compatible = "mediatek,mt8195-dp-intf";
- 			reg = <0 0x1c015000 0 0x1000>;
- 			interrupts = <GIC_SPI 657 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
- 			clocks = <&vdosys0 CLK_VDO0_DP_INTF0_DP_INTF>,
- 				 <&vdosys0  CLK_VDO0_DP_INTF0>,
- 				 <&apmixedsys CLK_APMIXED_TVDPLL1>;
--- 
-2.45.2
+Thanks
+Macpaul Lin
+
 
 
