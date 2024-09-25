@@ -4,76 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0786C369D9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 13:00:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 606B5C7882B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 13:00:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ybNwTs+ssYc5Tr4V968nCw3iJyQ5siWelTcxDkie7AI=; b=IguB5FLBET2FGQ8UzjT87JHLfw
-	V9i+82/Sa4zXRaJPzav2pW9V3MHwM5JdkP0G9YMfdJH0ixNwfZ03BIudAQqn2nWYnQbB5Vfqx1Svr
-	UBtk+iEPCbUU75HyV9Yf87FmQPnRxJj1lsdt7RtrAIKX2ni/q0L2M/l6uCmMialqoEAK62Xw/JEwU
-	ogxhweROHwTLqhBypvzI+sbjzBCaNRNgTx0pLRQpzjza4hl/ISkcaPegoC5brkFJnmWJHzpat+c9F
-	eXLsn/9T33xzljnCkkjii413/hYToASwcpFVJGEx/hzKO6ImQQLFcFGlVvqjc816GIuzA66kkGTNr
-	oHVZQrhg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eq5kqVdxIPnr1qj+gRKTOVccfM5+TlCgxfIme/nC8tk=; b=ZSxndjTciNZj64HzcN1IYJa0rR
+	5k2P0BhuozborUIwJ27KnEC+sPRPVVmt13KhcDvbIUoy6iGe5Jb4xuyLC52mK8/JmeNehkhMUW8kB
+	+buKNQPjk+FcSdvJKGzlRql/lDP/4SqFf/Qc2IfA61GMBZ3UH/bXVbIMQJYwv2wPqj4Z9yPBRlDU3
+	7wz9xZalEhqSKhVl9eIvoKovOamdZloJZB7H3oaV4FM9a+/qoy1dUt95nhv61eYeT8eqpEVhWWYWC
+	cIKcdwbDUdYzZ+4f7uCOvlqZbOCbWm4VjNM3z9eUCEJK+uGg3T6r3922Gi7r1R65onlrPJyoXGPOm
+	SqhKkpQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stRdI-00000005H0R-2LQy;
+	id 1stRdI-00000005H0o-3sBb;
 	Wed, 25 Sep 2024 13:00:40 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stQNK-00000004uca-3qC2;
-	Wed, 25 Sep 2024 11:40:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 492E45C5677;
-	Wed, 25 Sep 2024 11:40:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E9C91C4CEC3;
-	Wed, 25 Sep 2024 11:40:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727264405;
-	bh=VEIQZWdTQ9dg2khM6hUR5xSlsXQRX0LggRkXcpNBBSs=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=b+GjdMRdfoLjpW0DyKpkag3fWOh8wCZm61Qqqr7uAzM9Lj/ON6rmoHPxexeIChgM3
-	 3kwGZMLrmA4+MdUu8RYZetLcvwrtpTyEEjk6h1uH4GJk4yGdnjwxFiYpd4svRSkAf5
-	 sXGN/pcbfbKcqcJUEDISF4MEcTp7mHB7TK0vFz/+QM8EH70F1se4V4O6kEB3hx42Bl
-	 9ILjF7kBVPtD2BlA8OSzqBngaqSmDKee27Ju6vWRVur9FGIfWrZNFXL+a4Mi3tYv6T
-	 idTJWjAUzRZN3yu4zM0KecID6JCq1TBQito0wlFvdr0CJ2q8z+0zOe8XE5MNiqikll
-	 zvInGSyS7t2pw==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>,
-	Sasha Levin <sashal@kernel.org>,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	kvalo@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	shayne.chen@mediatek.com,
-	henry.yen@mediatek.com,
-	allen.ye@mediatek.com,
-	yunchuan@nfschina.com,
-	Bo.Jiao@mediatek.com,
-	linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.11 083/244] wifi: mt76: mt7915: hold dev->mt76.mutex while disabling tx worker
-Date: Wed, 25 Sep 2024 07:25:04 -0400
-Message-ID: <20240925113641.1297102-83-sashal@kernel.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240925113641.1297102-1-sashal@kernel.org>
-References: <20240925113641.1297102-1-sashal@kernel.org>
+	id 1stQOP-00000004v5t-0Dpg
+	for linux-mediatek@lists.infradead.org;
+	Wed, 25 Sep 2024 11:41:14 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-53653682246so1116929e87.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Sep 2024 04:41:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1727264471; x=1727869271; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=eq5kqVdxIPnr1qj+gRKTOVccfM5+TlCgxfIme/nC8tk=;
+        b=u//XwytURqnuAJ0JNxNH6kPRD7CWE9IQtHMmi5z2zAj5gGf6NwmB3j+mAttxhRRPRQ
+         GJq0YMVm0605h9w8kLkOX2OEmeU7hNS7dSsKmytgWMWaQf2g0Ncy6qbMGkS2evXn+KDE
+         EQt30uon1CYw41sBjNFbPf3CnseiItSBotucJrT20AGBIe1BB3OMrPnE6lf4R+W9a+93
+         hlTRVTT9deIpyzVCncbSOVDBHs0PdQsEp3OOxgXggpEuR8tp95U5On9F9n9fcog0Q+Qr
+         mHXWOm7ndum9DcvQs1yKWMnS67wYU0j4KsCOQXwudwFEHeIxS5pvJ0Buaz9Cc6aI1v3F
+         Yeow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727264471; x=1727869271;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=eq5kqVdxIPnr1qj+gRKTOVccfM5+TlCgxfIme/nC8tk=;
+        b=ekZaeEPNnJcUyxCNGZ60lpsXtK5sJguxaMeU9RIKBX5dhNgf/GzHaKotoLucQVIrE8
+         KzitIzTp8Csck5vHBpXzDn0Dz94iwSHcaDI1XqewuBprBlmv6Mx+AXkNVxII2syKKrJf
+         V1F8JtKlYVOT5wgrk7lPN/zm3Zu2CbUA+/WCIHNie0LBVHXMkjm6rM+DyTdolQlktzaA
+         jNsnEk/1c6WNCtdSR6Q4OiWzsEifnvZQ8PIDdA4B9C0/5rHpJ4jcFuP47cj0VG+DQEK+
+         jagV+amXksh5JPdtU1swRB5w/RNBzyg5nv9VIRgS8cfs3D4oI3HeZnBCHmFPKK4LSF6f
+         4XvA==
+X-Forwarded-Encrypted: i=1; AJvYcCVVNo6xzZcXAZ1ZS1Gt/XFUeo57bAzy09Bk3oEm8sgLKlLyYO/+N0dEu//MSaV4cJLNxqo54kV1PPGnObXjXw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyujh6oksgNkdQ4NgIDe79svCZgm/19NM2eSaY8cjiXAD7tpxVx
+	h71PKF2ayE48tWXK7bDQKsSGjlfmt5sl4WlQ1ZMDq4IaBoHxiOv3UfaglDBIqDw=
+X-Google-Smtp-Source: AGHT+IHqv2IMWN3oXR6umOJo26p2rI5FNSuQAxfP5Ks/Hkq3jsOKqQQKyJ6wBA/PwN9+yj2xFK6XGw==
+X-Received: by 2002:a05:6512:3d0a:b0:52e:74d5:89ae with SMTP id 2adb3069b0e04-5387c7799d8mr1295841e87.39.1727264470164;
+        Wed, 25 Sep 2024 04:41:10 -0700 (PDT)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--b8c.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::b8c])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-537a85e5bf3sm500872e87.75.2024.09.25.04.41.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Sep 2024 04:41:09 -0700 (PDT)
+Date: Wed, 25 Sep 2024 14:41:07 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Jens Wiklander <jens.wiklander@linaro.org>
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
+	op-tee@lists.trustedfirmware.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Olivier Masse <olivier.masse@nxp.com>, 
+	Thierry Reding <thierry.reding@gmail.com>, Yong Wu <yong.wu@mediatek.com>, 
+	Sumit Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+	Brian Starkey <Brian.Starkey@arm.com>, John Stultz <jstultz@google.com>, 
+	"T . J . Mercier" <tjmercier@google.com>, Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, 
+	Sumit Garg <sumit.garg@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
+Subject: Re: [RFC PATCH 0/4] Linaro restricted heap
+Message-ID: <bktt4yanmfn4gjljy2wxmigj6mncpga237oxyf4g4h2vxu2a3q@asnsn7smi4u2>
+References: <20240830070351.2855919-1-jens.wiklander@linaro.org>
+ <dhxvyshwi4qmcmwceokhqey2ww4azjcs6qrpnkgivdj7tv5cke@r36srvvbof6q>
+ <20240925071504.GA3519798@rayden>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.11
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240925071504.GA3519798@rayden>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240925_044007_105189_3492A04F 
-X-CRM114-Status: UNSURE (   9.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240925_044113_145291_E37CEA85 
+X-CRM114-Status: GOOD (  51.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,40 +102,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Felix Fietkau <nbd@nbd.name>
+On Wed, Sep 25, 2024 at 09:15:04AM GMT, Jens Wiklander wrote:
+> On Mon, Sep 23, 2024 at 09:33:29AM +0300, Dmitry Baryshkov wrote:
+> > Hi,
+> > 
+> > On Fri, Aug 30, 2024 at 09:03:47AM GMT, Jens Wiklander wrote:
+> > > Hi,
+> > > 
+> > > This patch set is based on top of Yong Wu's restricted heap patch set [1].
+> > > It's also a continuation on Olivier's Add dma-buf secure-heap patch set [2].
+> > > 
+> > > The Linaro restricted heap uses genalloc in the kernel to manage the heap
+> > > carvout. This is a difference from the Mediatek restricted heap which
+> > > relies on the secure world to manage the carveout.
+> > > 
+> > > I've tried to adress the comments on [2], but [1] introduces changes so I'm
+> > > afraid I've had to skip some comments.
+> > 
+> > I know I have raised the same question during LPC (in connection to
+> > Qualcomm's dma-heap implementation). Is there any reason why we are
+> > using generic heaps instead of allocating the dma-bufs on the device
+> > side?
+> > 
+> > In your case you already have TEE device, you can use it to allocate and
+> > export dma-bufs, which then get imported by the V4L and DRM drivers.
+> > 
+> > I have a feeling (I might be completely wrong here) that by using
+> > generic dma-buf heaps we can easily end up in a situation when the
+> > userspace depends heavily on the actual platform being used (to map the
+> > platform to heap names). I think we should instead depend on the
+> > existing devices (e.g. if there is a TEE device, use an IOCTL to
+> > allocate secured DMA BUF from it, otherwise check for QTEE device,
+> > otherwise check for some other vendor device).
+> 
+> That makes sense, it's similar to what we do with TEE_IOC_SHM_ALLOC
+> where we allocate from a carveout reserverd for shared memory with the
+> secure world. It was even based on dma-buf until commit dfd0743f1d9e
+> ("tee: handle lookup of shm with reference count 0").
+> 
+> We should use a new TEE_IOC_*_ALLOC for these new dma-bufs to avoid
+> confusion and to have more freedom when designing the interface.
+> 
+> > 
+> > The mental experiment to check if the API is correct is really simple:
+> > Can you use exactly the same rootfs on several devices without
+> > any additional tuning (e.g. your QEMU, HiKey, a Mediatek board, Qualcomm
+> > laptop, etc)?
+> 
+> No, I don't think so.
 
-[ Upstream commit 8f7152f10cb434f954aeff85ca1be9cd4d01912b ]
+Then the API needs to be modified.
 
-Prevent racing against other functions disabling the same worker
+Or the userspace needs to be modified in the way similar to Vulkan /
+OpenCL / glvnd / VA / VDPU: platform-specific backends, coexisting on a
+single rootfs.
 
-Link: https://patch.msgid.link/20240827093011.18621-17-nbd@nbd.name
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7915/mac.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+It is more or less fine to have platform-specific rootfs when we are
+talking about the embedded, resource-limited devices. But for the
+end-user devices we must be able to install a generic distro with no
+device-specific packages being selected.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 8008ce3fa6c7e..387d47e9fcd38 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -1537,12 +1537,14 @@ void mt7915_mac_reset_work(struct work_struct *work)
- 		set_bit(MT76_RESET, &phy2->mt76->state);
- 		cancel_delayed_work_sync(&phy2->mt76->mac_work);
- 	}
-+
-+	mutex_lock(&dev->mt76.mutex);
-+
- 	mt76_worker_disable(&dev->mt76.tx_worker);
- 	mt76_for_each_q_rx(&dev->mt76, i)
- 		napi_disable(&dev->mt76.napi[i]);
- 	napi_disable(&dev->mt76.tx_napi);
- 
--	mutex_lock(&dev->mt76.mutex);
- 
- 	if (mtk_wed_device_active(&dev->mt76.mmio.wed))
- 		mtk_wed_device_stop(&dev->mt76.mmio.wed);
+> 
+> > 
+> > > 
+> > > This can be tested on QEMU with the following steps:
+> > > repo init -u https://github.com/jenswi-linaro/manifest.git -m qemu_v8.xml \
+> > >         -b prototype/sdp-v1
+> > > repo sync -j8
+> > > cd build
+> > > make toolchains -j4
+> > > make all -j$(nproc)
+> > > make run-only
+> > > # login and at the prompt:
+> > > xtest --sdp-basic
+> > > 
+> > > https://optee.readthedocs.io/en/latest/building/prerequisites.html
+> > > list dependencies needed to build the above.
+> > > 
+> > > The tests are pretty basic, mostly checking that a Trusted Application in
+> > > the secure world can access and manipulate the memory.
+> > 
+> > - Can we test that the system doesn't crash badly if user provides
+> >   non-secured memory to the users which expect a secure buffer?
+> > 
+> > - At the same time corresponding entities shouldn't decode data to the
+> >   buffers accessible to the rest of the sytem.
+> 
+> I'll a few tests along that.
+> 
+> Thanks,
+> Jens
+> 
+> > 
+> > > 
+> > > Cheers,
+> > > Jens
+> > > 
+> > > [1] https://lore.kernel.org/dri-devel/20240515112308.10171-1-yong.wu@mediatek.com/
+> > > [2] https://lore.kernel.org/lkml/20220805135330.970-1-olivier.masse@nxp.com/
+> > > 
+> > > Changes since Olivier's post [2]:
+> > > * Based on Yong Wu's post [1] where much of dma-buf handling is done in
+> > >   the generic restricted heap
+> > > * Simplifications and cleanup
+> > > * New commit message for "dma-buf: heaps: add Linaro restricted dmabuf heap
+> > >   support"
+> > > * Replaced the word "secure" with "restricted" where applicable
+> > > 
+> > > Etienne Carriere (1):
+> > >   tee: new ioctl to a register tee_shm from a dmabuf file descriptor
+> > > 
+> > > Jens Wiklander (2):
+> > >   dma-buf: heaps: restricted_heap: add no_map attribute
+> > >   dma-buf: heaps: add Linaro restricted dmabuf heap support
+> > > 
+> > > Olivier Masse (1):
+> > >   dt-bindings: reserved-memory: add linaro,restricted-heap
+> > > 
+> > >  .../linaro,restricted-heap.yaml               |  56 ++++++
+> > >  drivers/dma-buf/heaps/Kconfig                 |  10 ++
+> > >  drivers/dma-buf/heaps/Makefile                |   1 +
+> > >  drivers/dma-buf/heaps/restricted_heap.c       |  17 +-
+> > >  drivers/dma-buf/heaps/restricted_heap.h       |   2 +
+> > >  .../dma-buf/heaps/restricted_heap_linaro.c    | 165 ++++++++++++++++++
+> > >  drivers/tee/tee_core.c                        |  38 ++++
+> > >  drivers/tee/tee_shm.c                         | 104 ++++++++++-
+> > >  include/linux/tee_drv.h                       |  11 ++
+> > >  include/uapi/linux/tee.h                      |  29 +++
+> > >  10 files changed, 426 insertions(+), 7 deletions(-)
+> > >  create mode 100644 Documentation/devicetree/bindings/reserved-memory/linaro,restricted-heap.yaml
+> > >  create mode 100644 drivers/dma-buf/heaps/restricted_heap_linaro.c
+> > > 
+> > > -- 
+> > > 2.34.1
+> > > 
+> > 
+> > -- 
+> > With best wishes
+> > Dmitry
+
 -- 
-2.43.0
-
+With best wishes
+Dmitry
 
