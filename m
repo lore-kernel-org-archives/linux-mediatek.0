@@ -4,92 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3876C369BA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 09:51:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A77F3C369C8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 10:12:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dDln4KXF/7+F5/JQmkbmDgtFCiDcW7/b23N8sYic+uc=; b=saAOFE/hXGGVRgW0wiXjojqBrr
-	e12XGkYhDncL3sM6uIge1pyUp5bkci3LaVMAuSKlgp6EMKOrCW4GWJIMnFS0IAGsCuYOWpJXmAP0u
-	LbLq69FZwl3wocSNksqCxGPIepxYi9Mlrx2c57GG7uWyvPqQml6qzliw+gUYFQc98jXk8AtfZbm7v
-	rG7xFbxRoB3CacFBHjVxsn34mzq6uVYKBk6+uzHaqHkSwS0XU3zzZbDn2zdxVgfpsHEXFqSa2cBTL
-	zjipothRtJ8/VZ6VAmrgiQpkAZmq3sVMLtfFURn7/XhKGVbk1yEZ9S6JbK4xxiiM5rIWs4S6kto3J
-	eZ9JQoHg==;
+	bh=MJnQKK/9GVFCpol62/YKdi7Bop9r1f03D07/z2b8dVI=; b=0Wqpb35lk6Gsv20z2+2ou6LJT7
+	2SRh3vfBvM4qQgkb3Do5ZdRTAbK8L8sJifBEQBvwHcxz/dneCwgouuZSc8LMZc2/A5d5LcIGRLbte
+	zI0RoiCAArWTFJtFE2Pizbafl9Fogrx84qdsKVuMC9N3QbdxR4CwOPl2gu7JQSkSZEvFU03YVQWFh
+	KzUy8aoOQYK2Foxo4XpZk73wWyuEbuXntym+JHa3fZIiqHPyHmsv9qd4X7GVzVtbjqKvoFG5uL0P4
+	WUD9tm4qkT6l2wnazjTbx/peUrJxPui3yuGMrJZlVKLCWYy95xl6Su4s8/K+K0KTIhbf+i5P6j8l/
+	jJeUmQlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stOg3-00000004fNQ-1MSh;
-	Wed, 25 Sep 2024 09:51:19 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1stP03-00000004iXN-2esb;
+	Wed, 25 Sep 2024 10:11:59 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stOg0-00000004fMt-1BBe;
-	Wed, 25 Sep 2024 09:51:17 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-42cacabd2e0so56634525e9.3;
-        Wed, 25 Sep 2024 02:51:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1727257874; x=1727862674; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=dDln4KXF/7+F5/JQmkbmDgtFCiDcW7/b23N8sYic+uc=;
-        b=dJcx21DL5DEn4I+nVFesKRmCNnnlEZ9z+a2NLawpOxL1hOYIqfSlDzjh4SpvTiXgx+
-         Hy+Fh2m1s3Ibh8MkR/KLc4t19C8AL8/Fhonq43I0BbT1m/h9l5dVPke5yn0wfQGxmCtq
-         qtCFDfxzTbLg+BNK6Mq7z7HeXBAD3pNHU7XnPO6cF5NdP89Hfq0UM2ZeZFryFQ+Vl+my
-         rYLV+4cbFU+gy45YOxZj5+SN7D4+M4Fr8dgIYOl2tKNBGYn3k7vRPtbaWfTnC8+kJE7x
-         qT93WrkwlNg13jvuJGCPlv08W8MZ2YcOY0XwVFIIf5qok6hj91E5DHiSVkSl/as4lU8u
-         ThDA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727257874; x=1727862674;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=dDln4KXF/7+F5/JQmkbmDgtFCiDcW7/b23N8sYic+uc=;
-        b=ZZFbFs1FKf8cW2dYBk5QdvZRACYUF0vYngBF0ZpeYdggHuoOT93Z9tCZ4oNRbG5H1J
-         exAHfr/By0XnAwzIzElKFtU7yK36JT6JfVmQY8OjjDndsnuLuIWZDiX5o1q1Vr+5AHd3
-         9+UPkEC5HRrEsC5vkvsrCzcQ8E7K+GG8UGWrYE37sMktHX9qre72tBGmSbOS3cfIqIlt
-         azqgdnYLeDdBqWu3Bkweiob4XCuhVLO2rmSKqkqzr6x1nruDOWAKlJjQh36Q/Dkebkrv
-         4HUD78BU35fvBugLj4C9EqmDZkOujZ+6EERqe8BgBmKJ/FJJK1XSvGYsDVyFLD7Hm1zT
-         gsFg==
-X-Forwarded-Encrypted: i=1; AJvYcCXpg8MK9TAsiDM/2maUGvaeaO8pjiiEhG/jOvh6qB7+ngy/Bi0q4+gbX3DPOuJDaOH2luMXRv48jAB3S69ioOXy@lists.infradead.org, AJvYcCXxGDUtdjvjxGfUH5IJVkAtLZwNWFQrBEcltmPeMatyQHdYOMZyyGdX6WFAe4TRbbrj+q8V7B3JC3ZSnzvJdYc=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx12A3SKlIw0Rt7lqVTzk88yFxIQXFxqEllw1tuvv9gixcyyyfN
-	nizq+ZSwZXzu9Ds8e5y0ud5FvJMJOyMLrvBwnjw0w8rvmJrA/YXnXfCfFgAu
-X-Google-Smtp-Source: AGHT+IHDUsmFcuyEuiXMU148+jNbNpI9r1/wqGCcgHuH7haynKQZFs61GjDI7QM15qHBWVStwTWHaw==
-X-Received: by 2002:a05:600c:3b29:b0:42c:bd4d:e8ba with SMTP id 5b1f17b1804b1-42e9610a6famr13626365e9.8.1727257874435;
-        Wed, 25 Sep 2024 02:51:14 -0700 (PDT)
-Received: from Ansuel-XPS. (93-34-90-105.ip49.fastwebnet.it. [93.34.90.105])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37cbc1560a7sm3576976f8f.0.2024.09.25.02.51.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Sep 2024 02:51:14 -0700 (PDT)
-Message-ID: <66f3dd12.5d0a0220.8f8b6.af43@mx.google.com>
-X-Google-Original-Message-ID: <ZvPdDqLlCVrf5k9R@Ansuel-XPS.>
-Date: Wed, 25 Sep 2024 11:51:10 +0200
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Lee Jones <lee@kernel.org>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	upstream@airoha.com, benjamin.larsson@genexis.eu,
-	linux-pwm@vger.kernel.org
-Subject: Re: [PATCH v4 0/5] Add mfd, pinctrl and pwm support to EN7581 SoC
-References: <20240911-en7581-pinctrl-v4-0-60ac93d760bb@kernel.org>
- <66f13ab0.5d0a0220.b0c27.b441@mx.google.com>
- <20240925094738.GD7545@google.com>
+	id 1stP00-00000004iVF-0pMS
+	for linux-mediatek@lists.infradead.org;
+	Wed, 25 Sep 2024 10:11:57 +0000
+X-UUID: 952fbd5e7b2611efba0aef63c0775dbf-20240925
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=MJnQKK/9GVFCpol62/YKdi7Bop9r1f03D07/z2b8dVI=;
+	b=GY15UL5rFPRXr/Z1SUYsyi2gzkEUAUsz89RqWiXIaWS8bZULjvztgqIkodx7EEozSUB5Zi4iHVJ7oKe8S7kibXs0ZzJ+STqQBEg/ow7W8K+jqIiHT85ab1YoPeoYIT7QzOZetXa+ql8eRo4IM1vNV+fIKJJT/UP1PRtXfCSkjco=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:1c81c1a8-928e-44ff-ae7f-fe9ca854e6ba,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:6dc6a47,CLOUDID:e8ddbed0-7921-4900-88a1-3aef019a55ce,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 952fbd5e7b2611efba0aef63c0775dbf-20240925
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 470723533; Wed, 25 Sep 2024 03:11:51 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 25 Sep 2024 03:11:47 -0700
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 25 Sep 2024 18:11:47 +0800
+From: <peter.wang@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+	<powen.kao@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
+	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>,
+	<quic_nguyenb@quicinc.com>
+Subject: [PATCH v9 3/3] ufs: core: add a quirk for MediaTek SDB mode aborted
+Date: Wed, 25 Sep 2024 17:55:46 +0800
+Message-ID: <20240925095546.19492-4-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240925095546.19492-1-peter.wang@mediatek.com>
+References: <20240925095546.19492-1-peter.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240925094738.GD7545@google.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240925_025116_344534_912E4614 
-X-CRM114-Status: GOOD (  37.41  )
+X-CRM114-CacheID: sfid-20240925_031156_272071_25ECDB7C 
+X-CRM114-Status: GOOD (  13.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,106 +91,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 25, 2024 at 10:47:38AM +0100, Lee Jones wrote:
-> On Mon, 23 Sep 2024, Christian Marangi wrote:
-> 
-> > On Wed, Sep 11, 2024 at 09:50:00PM +0200, Lorenzo Bianconi wrote:
-> > > Introduce airoha-mfd driver in order to load pinctrl and pwm drivers for
-> > > EN7581 SoC. airoha-mfd is needed since both pinctrl and pwm drivers
-> > > needs to access the same memory block (gpio memory region) to configure
-> > > {gio,irq}_chip and pwm functionalities respectively, so model them as
-> > > childs of a parent mfd driver.
-> > > Current EN7581 pinctrl driver supports the following functionalities:
-> > > - pin multiplexing via chip_scu syscon
-> > > - pin pull-up, pull-down, open-drain, current strength,
-> > >   {input,output}_enable, output_{low,high} via chip_scu syscon
-> > > - gpio controller
-> > > - irq controller
-> > > 
-> > > ---
-> > > Changes in v4:
-> > > - add 'Limitation' description in pwm driver
-> > > - fix comments in pwm driver
-> > > - rely on mfd->base __iomem pointer in pwm driver, modify register
-> > >   offsets according to it and get rid of sgpio_cfg, flash_cfg and
-> > >   cycle_cfg pointers
-> > > - simplify register utility routines in pwm driver
-> > > - use 'generator' instead of 'waveform' suffix for pwm routines
-> > > - fix possible overflow calculating duty cycle in pwm driver
-> > > - do not modify pwm state in free callback in pwm driver
-> > > - cap the maximum period in pwm driver
-> > > - do not allow inverse polarity in pwm driver
-> > > - do not set of_xlate callback in the pwm driver and allow the stack to
-> > >   do it
-> > > - fix MAINTAINERS file for airoha pinctrl driver
-> > > - fix undefined reference to __ffsdi2 in pinctrl driver
-> > > - simplify airoha,en7581-gpio-sysctl.yam binding
-> > > - Link to v3: https://lore.kernel.org/r/20240831-en7581-pinctrl-v3-0-98eebfb4da66@kernel.org
-> > > 
-> > > Changes in v3:
-> > > - introduce airoha-mfd driver
-> > > - add pwm driver to the same series
-> > > - model pinctrl and pwm drivers as childs of a parent mfd driver.
-> > > - access chip-scu memory region in pinctrl driver via syscon
-> > > - introduce a single airoha,en7581-gpio-sysctl.yaml binding and get rid
-> > >   of dedicated bindings for pinctrl and pwm
-> > > - add airoha,en7581-chip-scu.yaml binding do the series
-> > > - Link to v2: https://lore.kernel.org/r/20240822-en7581-pinctrl-v2-0-ba1559173a7f@kernel.org
-> > > 
-> > > Changes in v2:
-> > > - Fix compilation errors
-> > > - Collapse some register mappings for gpio and irq controllers
-> > > - update dt-bindings according to new register mapping
-> > > - fix some dt-bindings errors
-> > > - Link to v1: https://lore.kernel.org/all/cover.1723392444.git.lorenzo@kernel.org/
-> > > 
-> > > ---
-> > > Benjamin Larsson (1):
-> > >       pwm: airoha: Add support for EN7581 SoC
-> > > 
-> > > Christian Marangi (2):
-> > >       dt-bindings: mfd: Add support for Airoha EN7581 GPIO System Controller
-> > >       mfd: airoha: Add support for Airoha EN7581 MFD
-> > > 
-> > > Lorenzo Bianconi (2):
-> > >       dt-bindings: arm: airoha: Add the chip-scu node for EN7581 SoC
-> > >       pinctrl: airoha: Add support for EN7581 SoC
-> > > 
-> > >  .../bindings/arm/airoha,en7581-chip-scu.yaml       |   42 +
-> > >  .../bindings/mfd/airoha,en7581-gpio-sysctl.yaml    |  433 +++
-> > >  MAINTAINERS                                        |    7 +
-> > >  drivers/mfd/Kconfig                                |    8 +
-> > >  drivers/mfd/Makefile                               |    2 +
-> > >  drivers/mfd/airoha-en7581-gpio-mfd.c               |   72 +
-> > >  drivers/pinctrl/mediatek/Kconfig                   |   16 +-
-> > >  drivers/pinctrl/mediatek/Makefile                  |    1 +
-> > >  drivers/pinctrl/mediatek/pinctrl-airoha.c          | 2964 ++++++++++++++++++++
-> > >  drivers/pwm/Kconfig                                |   10 +
-> > >  drivers/pwm/Makefile                               |    1 +
-> > >  drivers/pwm/pwm-airoha.c                           |  414 +++
-> > >  include/linux/mfd/airoha-en7581-mfd.h              |    9 +
-> > >  13 files changed, 3978 insertions(+), 1 deletion(-)
-> > > ---
-> > > base-commit: 264c13114bd71ddfd7b25c7b94f6cda4587eca25
-> > > change-id: 20240818-en7581-pinctrl-1bf120154be0
-> > > prerequisite-change-id: 20240705-for-6-11-bpf-a349efc08df8:v2
-> > > 
-> > >
-> > 
-> > Hi,
-> > 
-> > any news with this? Rob reviewed the DT schemas and he is ok with them.
-> > 
-> > Any other comments for the MFD driver and/or the pinctrl or PWM driver?
-> 
-> Note that the merge-window is still open.  Some maintainers, myself
-> included, use this lull to prioritise other things.  This set is on my
-> list and will be dealt with shortly.
-> 
+From: Peter Wang <peter.wang@mediatek.com>
 
-Wasn't aware the merge window was still open and sorry for the noise.
-Thanks for the feedback!
+Because the MediaTek UFS controller uses UTRLCLR to clear commands
+and fills the OCS with ABORTED, this patch introduces a quirk to
+treat ABORTED as INVALID_OCS_VALUE.
 
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/ufs/core/ufshcd.c       | 5 ++++-
+ drivers/ufs/host/ufs-mediatek.c | 1 +
+ include/ufs/ufshcd.h            | 6 ++++++
+ 3 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 4fff929b70d6..d429817fca94 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -5404,7 +5404,10 @@ ufshcd_transfer_rsp_status(struct ufs_hba *hba, struct ufshcd_lrb *lrbp,
+ 		}
+ 		break;
+ 	case OCS_ABORTED:
+-		result |= DID_ABORT << 16;
++		if (hba->quirks & UFSHCD_QUIRK_OCS_ABORTED)
++			result |= DID_REQUEUE << 16;
++		else
++			result |= DID_ABORT << 16;
+ 		dev_warn(hba->dev,
+ 				"OCS aborted from controller for tag %d\n",
+ 				lrbp->task_tag);
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index 02c9064284e1..8a4c1b8f5a26 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -1021,6 +1021,7 @@ static int ufs_mtk_init(struct ufs_hba *hba)
+ 	hba->quirks |= UFSHCI_QUIRK_SKIP_MANUAL_WB_FLUSH_CTRL;
+ 	hba->quirks |= UFSHCD_QUIRK_MCQ_BROKEN_INTR;
+ 	hba->quirks |= UFSHCD_QUIRK_MCQ_BROKEN_RTC;
++	hba->quirks |= UFSHCD_QUIRK_OCS_ABORTED;
+ 	hba->vps->wb_flush_threshold = UFS_WB_BUF_REMAIN_PERCENT(80);
+ 
+ 	if (host->caps & UFS_MTK_CAP_DISABLE_AH8)
+diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+index 0fd2aebac728..8f156803d703 100644
+--- a/include/ufs/ufshcd.h
++++ b/include/ufs/ufshcd.h
+@@ -684,6 +684,12 @@ enum ufshcd_quirks {
+ 	 * single doorbell mode.
+ 	 */
+ 	UFSHCD_QUIRK_BROKEN_LSDBS_CAP			= 1 << 25,
++
++	/*
++	 * Some host controllers set OCS_ABORTED after UTRLCLR (SDB mode),
++	 * this quirk is set to treat OCS: ABORTED as INVALID_OCS_VALUE
++	 */
++	UFSHCD_QUIRK_OCS_ABORTED			= 1 << 26,
+ };
+ 
+ enum ufshcd_caps {
 -- 
-	Ansuel
+2.45.2
+
 
