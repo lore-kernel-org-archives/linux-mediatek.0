@@ -4,82 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DE3ACF9C7A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 15:04:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71A35CCF9E4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 15:43:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WyPp28NYrJbi33YU5dd0/uz1wt5cUJUmG1p8KF+fEHg=; b=g7jAr1iZrRwU1GbbZYeykLRH2I
-	PLfI9RB1jvXGhXf2ppymiFFwh08CcDav2Wi478AL+d47DFGqbpAN1GJiwUnxSfPz7O273MmRZ+ZeJ
-	qdS5PmI5xekQJaZxjpPJrPhLTVLTuh3C77IyXsFoWpVdUTKE5k2IUVKvvqsKf9HQuyH7705gV9JX/
-	hLtZoVKpGMmBwQUls0dUdf8H4s5B5skM3kIrs0Oinl82mYzM8foTPkT/rOQORD78+yLWsKI9NCGCb
-	eL7kmdZ7/eUjO3quddWdYzOyW5iyOYWd6Oba0wW8m2mq/kQ97KSmBK8PLYzKwzDzfqt/ivLiMNaMn
-	Cb+gGYrA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tgLjgsBATCSWM6XL4qorkL1lHK3PtUuXoapmBEAcGck=; b=Pj7LUh3LLXun0U
+	iHvlXQzAFgI8nxNway7Cggb4y1POBcCjSbRRwAgy3O1MTWUcFCczstqWoopadFY2IaKzWbkW3pEsr
+	7w9ej9nFBy1WwUUcJZhhA8TH1U/mEMW60XFTYB50uaPnn4X6pvl9/8ggLtzuQCngYRO5Xmf5zp/qp
+	j3+eIzjA+ckCC/riucJAGgbcyW8gsGqDupFEMFPTh4LhZIZGbjRX0+B8jgRNwQ6TWT2DgBlDCDXdL
+	yOOdzNmGflXllwNnKoVVKMNV3auoBoLhO4nCWrUVYFmtbMmCTmzS0Pf6VeblJ2AWeHp52Vj1EDJ8v
+	7UA4lX6sD99zDuQ3pwCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stTZN-00000005mLe-0Qmd;
-	Wed, 25 Sep 2024 15:04:45 +0000
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	id 1stUAR-00000005usD-0osD;
+	Wed, 25 Sep 2024 15:43:03 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stTY9-00000005lqY-1cEJ
-	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Sep 2024 15:03:30 +0000
-Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-2f75f116d11so70888301fa.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Sep 2024 08:03:28 -0700 (PDT)
+	id 1stUAN-00000005uqT-29uU;
+	Wed, 25 Sep 2024 15:43:01 +0000
+Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-a8d3cde1103so660672066b.2;
+        Wed, 25 Sep 2024 08:42:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1727276606; x=1727881406; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=WyPp28NYrJbi33YU5dd0/uz1wt5cUJUmG1p8KF+fEHg=;
-        b=R5tD+TZdnpt+PgmSrkkPGAg1ZDErD3DNu+45eh4zrECqBVjgRKz2AgnDT14CTcWNNw
-         ogMisPsxig96ngWRe2FpbLTpqoHZxTaV4Jp4d60k9Wp2ixaENqyIlYK+R6IOWQOEiwcg
-         gOKBcef70UrEe/iaIEW9clTE3OZ2/BwIR+8zhv26/o7oeQCDGFUYSwzkWvNEX7OZuIOn
-         tLnEd6A94/zhLZPTIhtzJ388JtyvFm4B8B10jud+SnAx6+f1B/v7a08EI63ckoKU4Zje
-         agJ2u4BHS/IxtH9chIHE43nY2YzHSjUJC03vyVVMeEJzAG7ggvbsDRLK1ZGeYI8rP9MG
-         XaeA==
+        d=gmail.com; s=20230601; t=1727278977; x=1727883777; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=tgLjgsBATCSWM6XL4qorkL1lHK3PtUuXoapmBEAcGck=;
+        b=aubsKbhXOgGV7GkxgNFN8tGs/20kbQtz4aXlklGs3aAg7u9VchHTq/YV0rDcjJMajG
+         OY3VJwkeeicS1ADD6YsrCLxHp9FvnJVmjQ5ptTDfDG334TdQy8tx7h8TZ++xpWKA07ph
+         fcUUQzrZjP2RUvO0TaRDwNOk3hDkYEhEdjfr5WrOe7fcjVpWhzkuKDvLsp7+7fbdAnH6
+         sSS62kMdg4/odbSXyNay6cgINWZhwtrNXkPGtWm0Uj1jfkdbx72WqVt3LBob9V62rBg8
+         YDIcLZ2X3IEJPNWMWNwBgRxFasJEy4VAssUpxQCJJZV4CE7V2Uw5/XP3t5LVLrhk7qQR
+         G/vg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727276606; x=1727881406;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=WyPp28NYrJbi33YU5dd0/uz1wt5cUJUmG1p8KF+fEHg=;
-        b=heA/83fP84PCpFDjn7YpRWhBX/jsYloj7kZKDXUCLquavuJ3a7RDq8XKsY2id4Cz1b
-         H+GeDg1xZOxpOt0RYFwbtoi0YO/lNm5i62fMtTg/r+GT5L3lEnIRDbuy9BDVilq3ERi7
-         2I/Ezv49owDhd3uAwHK6Uq++V1YYMkpYdY+3CzghxPE3+7viGphAIPStgWnXPq9HHJHq
-         ggA8xu3pFPNx0oVN8IzQ1YdZx8yr3wGD8G/FXuXFjh+5rITs1RTi0BmrTUhWsuopFKTd
-         rl9DfAaBSEZSTYfHGyHYxrMNl5yWQR1tzyU4Xy3nnn5VhjoOXAAzmJgzKzALMrVR+IAS
-         yVsQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVCsKTWfJIa3ZdU+j6ae/UgVEdKru+Gv7X8+g81UO3aEXPDQu5jRJMp16Ter8WRGJDOB9pVgzHXd34ba/v7ZQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzsRCXE0HR/XWuuooErGUX57WnHXf6/GhUSMyzZg2lDZFBxHsya
-	fJmVETcAr+0rBDdSZ9Dhbdh6WSBc7zdppDVYn+KesJr0LcIGsW/v0hfGRvn9gQ8MFyeeABUDEe7
-	5EnavpgcWm/6HqU9d5E1DFHOojJk=
-X-Google-Smtp-Source: AGHT+IHclq8G6lZmqiClsVpYhUU8uH4PHhqZcQ11/na9kXhX5DTaYq0EOx8xyP3fN0UlxUQFfY9EZIk5HvE68VZXH/k=
-X-Received: by 2002:a05:651c:b14:b0:2f7:90b9:7534 with SMTP id
- 38308e7fff4ca-2f915fe4a35mr20741691fa.11.1727276606111; Wed, 25 Sep 2024
- 08:03:26 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1727278977; x=1727883777;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=tgLjgsBATCSWM6XL4qorkL1lHK3PtUuXoapmBEAcGck=;
+        b=w+qDlUXkrQenQyNPcW5F90A10xQhbh6Yl6tHG0ZzGjmbddsYU21yL2ny2v2eGiEtFY
+         YgiMpA3jp0IEGTmHq8xbXMLE0+arSE3n8E969dorS8h13cqgXkR1tDFO4LqG/F9XI4OL
+         tIZGCDZTZRD12TThHdy4sD232AO/ZBLKZqfMqAMyPKrLaT0lLwZ+ICeZV8wsGfr/FHMJ
+         GoftKnNEKG0vZ9mJkj9NmzYmtqopkeElywc6368LuzoEoHFb+ixf6jxLPM3H4/qYXl0b
+         4idFHc1D/3TLjipvHvVrCGCsU5buFHsxy5S+/iSNx71d3s94pYVoZJDZAIPnBwxYet+U
+         w3UQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUtREnf28zKOaBn1UqJW4Ce6DG3ENJ+CkdYkdC9Cb02qM/dMF5sIvSsizuoabf5Uqg9cUNXlLyCasoAQ0vt@lists.infradead.org, AJvYcCW3bZlDcytwgGgQxmbu7doSwwCyx+WS3kpeRWRQKArEvItP+cZXT3/7/b9hp60MyHtRKZktjOMM4n8Jmq4Sd/E=@lists.infradead.org, AJvYcCX2/NFMUcK6ipyT+qZ+KRHNrO8cSQY32lIy4G76lg5xL616Tw42/pwt43RkJFLAii4igUBFFcA0vm+Oq7iWuKIGJQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxOLwl5Ujz8QZCt2+38Gxe4JFwnlYBAQI0lf49B8Az01WwWMqs/
+	UcXtkhBIMv6x/STXenH4nWnbHSxKDWMF82s07ZBSqUFLcZBpStAkvfHGiraO
+X-Google-Smtp-Source: AGHT+IFkZ1n37tP3Rc2/BMb8UIyY4klrs21gwIaq2A7G/dBjrAoB3ccE5EDVcggDj2gmdvtj2kWRUg==
+X-Received: by 2002:a17:907:7da7:b0:a8c:d6a3:d038 with SMTP id a640c23a62f3a-a93a03e3095mr316176266b.37.1727278976983;
+        Wed, 25 Sep 2024 08:42:56 -0700 (PDT)
+Received: from [127.0.1.1] ([213.208.157.67])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9392f3420esm221803466b.40.2024.09.25.08.42.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Sep 2024 08:42:56 -0700 (PDT)
+From: Javier Carrasco <javier.carrasco.cruz@gmail.com>
+Subject: [PATCH 0/6] drm: constify read-only regmap structs
+Date: Wed, 25 Sep 2024 17:42:39 +0200
+Message-Id: <20240925-drm-const-regmap-v1-0-e609d502401b@gmail.com>
 MIME-Version: 1.0
-References: <20240916032228.6601-1-jiande.lu@mediatek.com>
-In-Reply-To: <20240916032228.6601-1-jiande.lu@mediatek.com>
-From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Date: Wed, 25 Sep 2024 11:03:13 -0400
-Message-ID: <CABBYNZJQ4WVAgTPpQBsPp+wBqymN_inisdFZXoMT_b9YdXf2Jw@mail.gmail.com>
-Subject: Re: [PATCH] Bluetooth: btusb: Add USB HW IDs for MT7920/MT7925
-To: Jiande Lu <jiande.lu@mediatek.com>
-Cc: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, 
-	Deren Wu <deren.Wu@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>, 
-	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>, 
-	linux-kernel <linux-kernel@vger.kernel.org>, 
-	linux-mediatek <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAG8v9GYC/x3MTQqAIBBA4avIrBswK/q5SrQInWoWmowRgXT3p
+ OW3eC9DImFKMKkMQjcnPkNBXSmwxxp2QnbFYLRp9Wg6dOLRniFdKLT7NWKj+83YphtcraFkUWj
+ j51/Oy/t+aWaESWIAAAA=
+To: Jagan Teki <jagan@amarulasolutions.com>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@nxp.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Jessica Zhang <quic_jesszhan@quicinc.com>, Orson Zhai <orsonzhai@gmail.com>, 
+ Baolin Wang <baolin.wang@linux.alibaba.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-amlogic@lists.infradead.org, 
+ Javier Carrasco <javier.carrasco.cruz@gmail.com>
+X-Mailer: b4 0.14-dev
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1727278971; l=1173;
+ i=javier.carrasco.cruz@gmail.com; s=20240312; h=from:subject:message-id;
+ bh=mV011lLjGh5QUEeOXJ02JFFzg3GXgCu8+SSQahiHbas=;
+ b=myNkjRQ3PFvNNvW6MYUDscCs4qRnSff9r34U0SADdEuPuz6/EHK14GRk3jXV4EQhRuDrFFBYk
+ q/5VY5I1EZoCwxtXU4F47W872f6MFmFLNx3SrzjZfC9qmsxNSZ5SlmM
+X-Developer-Key: i=javier.carrasco.cruz@gmail.com; a=ed25519;
+ pk=lzSIvIzMz0JhJrzLXI0HAdPwsNPSSmEn6RbS+PTS9aQ=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240925_080329_452705_CFBD0FAA 
-X-CRM114-Status: GOOD (  17.45  )
+X-CRM114-CacheID: sfid-20240925_084259_588851_D7D949A4 
+X-CRM114-Status: UNSURE (   8.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,71 +119,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jiande,
+This series adds the const modifier to the remaining regmap_bus and
+regmap_config structs under drm/ that are effectively used as const
+(i.e., only read after their declaration), but kept ad writtable data.
 
-On Sun, Sep 15, 2024 at 11:22=E2=80=AFPM Jiande Lu <jiande.lu@mediatek.com>=
- wrote:
->
-> Add HW IDs for wireless module. These HW IDs are extracted from
-> Windows driver inf file and the test for card bring up successful.
+Signed-off-by: Javier Carrasco <javier.carrasco.cruz@gmail.com>
+---
+Javier Carrasco (6):
+      drm/bridge: dpc3433: Constify struct regmap_config
+      drm/fsl-dcu: Constify struct regmap_config
+      drm/mediatek: dp: Constify struct regmap_config
+      drm/meson: Constify struct regmap_config
+      drm/panel: ili9322: Constify struct regmap_bus
+      drm/sprd: Constify struct regmap_bus
 
-Well this is not enough if we don't have firmware published for them,
-or you have confirmed that firmware is available and it does load
-properly? In that case please add the information about the firmware
-as well and perhaps some logs that it can be loaded properly.
+ drivers/gpu/drm/bridge/ti-dlpc3433.c         | 2 +-
+ drivers/gpu/drm/fsl-dcu/fsl_tcon.c           | 2 +-
+ drivers/gpu/drm/mediatek/mtk_dp.c            | 2 +-
+ drivers/gpu/drm/meson/meson_drv.c            | 2 +-
+ drivers/gpu/drm/panel/panel-ilitek-ili9322.c | 2 +-
+ drivers/gpu/drm/sprd/sprd_dsi.c              | 2 +-
+ 6 files changed, 6 insertions(+), 6 deletions(-)
+---
+base-commit: 2b7275670032a98cba266bd1b8905f755b3e650f
+change-id: 20240925-drm-const-regmap-307f2c358d10
 
-> Signed-off-by: Jiande Lu <jiande.lu@mediatek.com>
-> ---
->  drivers/bluetooth/btusb.c | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
->
-> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-> index 6c9c761d5b93..8946aafae640 100644
-> --- a/drivers/bluetooth/btusb.c
-> +++ b/drivers/bluetooth/btusb.c
-> @@ -563,6 +563,16 @@ static const struct usb_device_id quirks_table[] =3D=
- {
->         { USB_DEVICE(0x043e, 0x3109), .driver_info =3D BTUSB_MEDIATEK |
->                                                      BTUSB_WIDEBAND_SPEEC=
-H },
->
-> +       /* Additional MediaTek MT7920 Bluetooth devices */
-> +       { USB_DEVICE(0x0489, 0xe134), .driver_info =3D BTUSB_MEDIATEK |
-> +                                                    BTUSB_WIDEBAND_SPEEC=
-H },
-> +       { USB_DEVICE(0x13d3, 0x3620), .driver_info =3D BTUSB_MEDIATEK |
-> +                                                    BTUSB_WIDEBAND_SPEEC=
-H },
-> +       { USB_DEVICE(0x13d3, 0x3621), .driver_info =3D BTUSB_MEDIATEK |
-> +                                                    BTUSB_WIDEBAND_SPEEC=
-H },
-> +       { USB_DEVICE(0x13d3, 0x3622), .driver_info =3D BTUSB_MEDIATEK |
-> +                                                    BTUSB_WIDEBAND_SPEEC=
-H },
-> +
->         /* Additional MediaTek MT7921 Bluetooth devices */
->         { USB_DEVICE(0x0489, 0xe0c8), .driver_info =3D BTUSB_MEDIATEK |
->                                                      BTUSB_WIDEBAND_SPEEC=
-H },
-> @@ -636,6 +646,8 @@ static const struct usb_device_id quirks_table[] =3D =
-{
->                                                      BTUSB_WIDEBAND_SPEEC=
-H },
->         { USB_DEVICE(0x0489, 0xe11e), .driver_info =3D BTUSB_MEDIATEK |
->                                                      BTUSB_WIDEBAND_SPEEC=
-H },
-> +       { USB_DEVICE(0x0489, 0xe139), .driver_info =3D BTUSB_MEDIATEK |
-> +                                                    BTUSB_WIDEBAND_SPEEC=
-H },
->         { USB_DEVICE(0x13d3, 0x3602), .driver_info =3D BTUSB_MEDIATEK |
->                                                      BTUSB_WIDEBAND_SPEEC=
-H },
->         { USB_DEVICE(0x13d3, 0x3603), .driver_info =3D BTUSB_MEDIATEK |
-> --
-> 2.45.2
->
+Best regards,
+-- 
+Javier Carrasco <javier.carrasco.cruz@gmail.com>
 
-
---=20
-Luiz Augusto von Dentz
 
