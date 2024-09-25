@@ -4,63 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC91BCF9C6B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 14:00:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AE97CF9C6B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 14:25:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YFykssPCAGqlrkRQwCm0bemY5mbA0vsHAyEWNt0fQwk=; b=MfgFyF4bU+BFzldM9pGgcpC7+f
-	ZGQHvtYFDpm6cdKwLhwqgckY9zQEvzhAZ+avi+rozg4IvjHtdKUxFC2pTdMZz5ITUXYmqyS7p8UhV
-	WhhjcE8zkkn2Lg+jXUy5KJC+7V923DpXni0WehCoXDykxT8qmXtkZXVtXicp3uQLP+n7c+3oVC3pb
-	nu6xEw198Gww60twu1bhrsHpb0+xyohacC8S5wD9ZbJe9Iwh4RcrhMd+f0I81AdyJzR4/0WJWtaLp
-	zqZaupGpSZcJpSI66WFaiA4zghVRuugNmnLxFdJEJTpQ8P6XFdz6ZSoQ3KhdDTMB2LIS6vc4WZvpI
-	DGt4lwWg==;
+	bh=9wi5z7WRRaPUXY3u8i47JW6RejIPspXvQqwz0P8oD6k=; b=hhx83DpOMeG5HFcZcKojIX3/by
+	f6HsBM/gA7xE7cZ2nOM5cYsW3gKAsNHT7OnAGpRU7fNQ9kE1Kw4Z2Wl1Ez5t3xPXee1lTd2NLJmIY
+	cOdfbEeezSepnO1OaEkVROiyDNZ5LJX20neFPptL+huf6DN4W7do7tRBgNL15xYSmJKHNvYZCAtYA
+	t3K5CTBQMHbuNw1icYveJKcC2C0yD3jF+vyZDgIcX7CkjN2qmldleRo1qaRG/6oW/1xLtvQdto4gy
+	rZsy7fGn3oRKKcv4NNistW9YsKoi4/GWv8/jgCMRgBZJTFM3klmbV5hmDvdhIlGPBF+cG3RwGze6u
+	sedIAT2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stSZF-00000005VJH-3Cdx;
-	Wed, 25 Sep 2024 14:00:33 +0000
+	id 1stSxT-00000005cGe-0X8F;
+	Wed, 25 Sep 2024 14:25:35 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stSY5-00000005V3Z-0IlC;
-	Wed, 25 Sep 2024 13:59:22 +0000
+	id 1stSq7-00000005aHj-2Etr;
+	Wed, 25 Sep 2024 14:18:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id BFA765C5DA0;
-	Wed, 25 Sep 2024 13:59:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74660C4CEC3;
-	Wed, 25 Sep 2024 13:59:15 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id DD5AB5C5DC0;
+	Wed, 25 Sep 2024 14:17:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07E06C4CEC3;
+	Wed, 25 Sep 2024 14:17:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727272759;
-	bh=lJm+ObDEXANZOJHKSXCxL3oLlApQe9ehHdbO7nUzBeQ=;
+	s=k20201202; t=1727273878;
+	bh=aP2xA/mU4mwmMWMTZ/93f2YWj6d5WLLwRn9OKUwSK9s=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MKypVRSJR2Epc9UNqTi9FKghSRchqTYo99hNGU+4I7Yyt/mMUzde6QBL88TWRAopy
-	 e+dVxlIh6CSF/ulKmbwvFp7ISXWJSa4CUzzGfJdreOI943MQjw3EEd0ujTbFrPfEyM
-	 7HeKJEqXIdWc1DEqlbqut4zuL1GahJ7XXy1RQ8pgpMrglQv5iQk662F0IQ4sg6SBzR
-	 GKOuYzTLlPqIsED3YlvCRrhp1UbcDOpdbjUGllldpFITc55ZSu0h+BHBrjOE7h+ZQr
-	 70njrKzilu5TCLRYh6WjUAUQrzbpjKRqQ5qN/Fvzgs/Qm3CcxvCy4daOZp5Y3SRTKy
-	 fHux3grZC08XA==
-Message-ID: <6b5b463a-cf01-4e02-bb4e-292f5bd8b7f2@kernel.org>
-Date: Wed, 25 Sep 2024 15:59:13 +0200
+	b=myB6Alc/fTtah6PgE13bhUk+7d3j7LjshuCjurFn6SydOet6O9ZP/hTmgzkTZc3m2
+	 ILRAJ/DNiziMWrXn8K9V7EGd8c6AEuqVlsOd2ujoIwVT6FTydBe7eJrrudTVfLwEOK
+	 6uuhVRdrHwJLdH3toHrwGsmTg8slN7mD2wWa5i1QbGeQ6fYsc+/CdAqYlFDqxMevjV
+	 xZdKRlLy1i/gBdv6uPlB4ITjcsNoHqMhSdv0rwBcYxGIbgAsrYK9oa1xcKc9XE8vCE
+	 BuIB48joHqfuKunmpXjtk3BbdLb+ylgpNfItLMOEqY0MHqL7+cnt/AMyGkv7xDKD4n
+	 mBPlcGWXJucrw==
+Message-ID: <16ce3558-7733-4c38-b514-c89525faec06@kernel.org>
+Date: Wed, 25 Sep 2024 16:17:52 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/6] dt-bindings: PCI: mediatek-gen3: Allow exact number
- of clocks only
-To: Fei Shao <fshao@chromium.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Conor Dooley <conor+dt@kernel.org>,
- Jianjun Wang <jianjun.wang@mediatek.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84s?=
- =?UTF-8?Q?ki?= <kw@linux.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org
-References: <20240925110044.3678055-1-fshao@chromium.org>
- <20240925110044.3678055-3-fshao@chromium.org>
+Subject: Re: [PATCH 1/2] dt-bindings: arm: mediatek: Add MT8186
+ Chinchou/Chinchou360 Chromebooks
+To: =?UTF-8?Q?Albert_Jakie=C5=82a?= <jakiela@google.com>, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, wenst@chromium.org,
+ rafal@milecki.pl, hsinyi@chromium.org, nfraprado@collabora.com,
+ macpaul.lin@mediatek.com, sean.wang@mediatek.com
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240925080353.2362879-1-jakiela@google.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -106,13 +100,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240925110044.3678055-3-fshao@chromium.org>
+In-Reply-To: <20240925080353.2362879-1-jakiela@google.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240925_065921_277676_57CDD11D 
-X-CRM114-Status: UNSURE (   8.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240925_071759_723250_0C9F6112 
+X-CRM114-Status: GOOD (  11.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,23 +120,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25/09/2024 12:57, Fei Shao wrote:
-> In MediaTek PCIe gen3 bindings, "clocks" accepts a range of 1-6 clocks
-> across all SoCs. But in practice, each SoC requires a particular number
-> of clocks as defined in "clock-names", and the length of "clocks" and
-> "clock-names" can be inconsistent with current bindings.
+On 25/09/2024 10:03, Albert Jakieła wrote:
+> Add entries for MT8186 based Chinchou/Chinchou360 Chromebooks.
+> These two are clamshell or convertible with touchscreen, stylus
+> and extra buttons.
 > 
-> For example:
-> - MT8188, MT8192 and MT8195 all require 6 clocks, while the bindings
->   accept 4-6 clocks.
-> - MT7986 requires 4 clocks, while the bindings accept 4-6 clocks.
+> Signed-off-by: Albert Jakieła <jakiela@google.com>
+> ---
+>  .../devicetree/bindings/arm/mediatek.yaml     | 23 +++++++++++++++++++
+>  1 file changed, 23 insertions(+)
 > 
-> Update minItems and maxItems properties for individual SoCs as needed to
-> only accept the correct number of clocks.
-> 
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> index 1d4bb50fcd8d..110149f5d748 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> @@ -239,6 +239,29 @@ properties:
+>            - enum:
+>                - mediatek,mt8183-pumpkin
+>            - const: mediatek,mt8183
+> +      - description: Google Chinchou360 (Asus Chromebook CZ11 Flip CZ1104F)
+> +        items:
+> +          - const: google,chinchou-sku16
+> +          - const: google,chinchou-sku18
+> +          - const: google,chinchou-sku19
+> +          - const: google,chinchou-sku21
+> +          - const: google,chinchou-sku2147483647
 
-
-Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
+Wasn't sku-maxint removed? I recall same discussion recently... If yes,
+then please use same rules for all future Chromebook submissions.
 
 Best regards,
 Krzysztof
