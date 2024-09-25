@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5000C369CC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 10:54:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A0BFC369C7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 10:58:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wNB11M0iw96JFsI3NeD4d9INw4bMHLX226YBdsnQT5c=; b=XSD4wKoErDgK8e54DrBZb1VEcI
-	Gt8JiQ5Yur61Laake5xP5b0YNn3TaK3oPAQ7wD7Bpz1J9PMlF2E9Bg0DscJ+WxiRVni3SViRWl+LK
-	cKyb8/3r2m4UlbqGA9AMSiUv0ZEaOUttVTqBVfwA45l6HeELDnxgOxXFzzgVYMhpaAMMYGlyf7NGh
-	sLrQ6K1Cv3YwAukYLMFAEBX6KpXEO6bOwjVwmjzAqnZSj3fDICfC/eOn8YR0YXL8Zgh2IaF9FJBR+
-	C7sHJ4RlJ63UM6koA0wqkNzzq3A7fo1aHbOqnPbIt2MINuADCwFGSM19mc84eyaIFZKYEm1oefbOW
-	DUdW4E2Q==;
+	bh=UYoFa/T7uCa2kYYpkiIDLbmeUTNAteKbhE2v5yCdiLI=; b=HUknMWox/OON3mY8eWaIwgg0rx
+	0nUkh2csvxRkVXHrdjyMxWC/A8zlN0xWK/sEL5CvkVb7lIkEeSQEPXoYkpMLcGTRzocvmNI5noiS0
+	2PDb9zT3c7XLQDG7Rp050/Jw082figPvPDNunwVCGkmyPvgLpqBxID6BU+VABygnTcA1IVq1sMOHG
+	dRYZiQ0YdIsjD8ozVsSOvmfbfEHyZfmsZdggDGvlBle8UJ6X/XuIBbxv7+hCDmrDGVII74GTRygqQ
+	DmqwycFs0uDPG5eTxJQT+BIgMqOFBDs14jOkTY/aECy+v/thnnQQoG2uj04NVK83Q2KjnAaONg05N
+	+He048Mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stPfE-00000004nN0-3tWs;
-	Wed, 25 Sep 2024 10:54:32 +0000
-Received: from mgamail.intel.com ([198.175.65.10])
+	id 1stPil-00000004nuU-0u4F;
+	Wed, 25 Sep 2024 10:58:11 +0000
+Received: from mgamail.intel.com ([192.198.163.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stPe4-00000004nH8-1vNK;
-	Wed, 25 Sep 2024 10:53:21 +0000
+	id 1stPha-00000004ni1-0zL4;
+	Wed, 25 Sep 2024 10:56:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1727261600; x=1758797600;
+  t=1727261818; x=1758797818;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=UrggVek0lwhDuqSp26+4KJb/uG5YqBJR8jmgQcSwkr0=;
-  b=CSibQZSzRK4IAF2pnryeCYY9BqjUN+L7sIJ1HgpuA3PBBRrA+iXg6fT2
-   C7K1kTpGeVjW5APXztyNZk9zP/7FaQzBQtqzf5BDY0e9ofqyAVu/AMptx
-   b8ygCN6cTDuZzAIxOTjU0+uHr8m7hmS+O2txQUJrIKYyDaJDaYS1AAvC4
-   iohCyWKj85Lg2Kf314MfvFkfAag2yYJdJjaTYSq7XqgJFeYD0nURRvWwY
-   KKbxo0aXPo/JTc3KRYWUinTIPqY28IjKTiZJtUZZq+GCrpUdjV7mtarVw
-   XIguB9QvUVxqYKUUhFkzVTFb/LgpvZlFMu2hQWVJRoTjKPUppx1Ru5sNb
-   Q==;
-X-CSE-ConnectionGUID: +4zWE3EPRmit+Z5tmzwWLw==
-X-CSE-MsgGUID: pvD7En8gQ9a15eHLgABYCQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11205"; a="43778481"
+  bh=S48zw2Thvj9X/sYDLC/eM5MCODm3HulyKneN0EYbB5w=;
+  b=L9AMSzktJRf8XRGcG4s7nCbFRVX23BiSDB4HyGYr5iRhP7TZD68xCc8l
+   QTAYekBpFxXe8Rj1GSRk0/zaSKtzNOppxDPOLr0Fm7Tj+dPll9plYgIMX
+   2myQTT/QidO/R+dAOsThbjF1FO2/U8qvMOFv+1XygaGPtU+iVfCn0ZY9a
+   nBH6sTg6Tj1+j0WKc+Cyym5p2iiSe7b2STIRB57Cnqb5DspVTZR/cFwiU
+   pIhToVy4vKr3UZTpH6SYx7VQkMq7iZSA+AM4SphAuqoWPZWPU0r8Et3nW
+   RUz9eyuj9HA/luFIf/Pfkyqb8DZN8hVsZYeMsRMHzT7fa1pq4rCGqOt0w
+   g==;
+X-CSE-ConnectionGUID: YGXpm+7ZQhy2l4pE8hxCTg==
+X-CSE-MsgGUID: C5o+Uyq4TCeRHu90RtioNQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11205"; a="36966628"
 X-IronPort-AV: E=Sophos;i="6.10,257,1719903600"; 
-   d="scan'208";a="43778481"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
-  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Sep 2024 03:53:19 -0700
-X-CSE-ConnectionGUID: tE8JEtRNTYaDYeepXkZmYg==
-X-CSE-MsgGUID: F12ogL8UTO6fX6+00sK67A==
+   d="scan'208";a="36966628"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Sep 2024 03:56:56 -0700
+X-CSE-ConnectionGUID: kgu1xSJ6TYKBTwpGW5WPQg==
+X-CSE-MsgGUID: tZk4416rRMmvd+xhYjxAmQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.10,257,1719903600"; 
-   d="scan'208";a="102491039"
+   d="scan'208";a="76237879"
 Received: from smile.fi.intel.com ([10.237.72.54])
-  by orviesa002.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Sep 2024 03:53:16 -0700
+  by fmviesa004.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Sep 2024 03:56:53 -0700
 Received: from andy by smile.fi.intel.com with local (Exim 4.98)
 	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1stPdw-0000000Cmma-3y2V;
-	Wed, 25 Sep 2024 13:53:12 +0300
-Date: Wed, 25 Sep 2024 13:53:12 +0300
+	id 1stPhR-0000000CmpQ-3nEN;
+	Wed, 25 Sep 2024 13:56:49 +0300
+Date: Wed, 25 Sep 2024 13:56:49 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Ulf Hansson <ulf.hansson@linaro.org>,
@@ -70,19 +70,19 @@ Cc: Ulf Hansson <ulf.hansson@linaro.org>,
 	Johan Hovold <johan@kernel.org>, Pablo Sun <pablo.sun@mediatek.com>,
 	Macpaul Lin <macpaul.lin@mediatek.com>,
 	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: Re: [PATCH v8 1/3] regulator: Add of_regulator_get_optional() for
- pure DT regulator lookup
-Message-ID: <ZvPrmJo5WWqAHrhb@smile.fi.intel.com>
+Subject: Re: [PATCH v8 2/3] regulator: Add devres version of
+ of_regulator_get_optional()
+Message-ID: <ZvPscRdWlFPmtCyR@smile.fi.intel.com>
 References: <20240925093807.1026949-1-wenst@chromium.org>
- <20240925093807.1026949-2-wenst@chromium.org>
+ <20240925093807.1026949-3-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240925093807.1026949-2-wenst@chromium.org>
+In-Reply-To: <20240925093807.1026949-3-wenst@chromium.org>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240925_035320_573181_3E86ADEE 
-X-CRM114-Status: GOOD (  15.49  )
+X-CRM114-CacheID: sfid-20240925_035658_307703_8076697D 
+X-CRM114-Status: GOOD (  20.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,26 +97,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 25, 2024 at 05:38:04PM +0800, Chen-Yu Tsai wrote:
-> The to-be-introduced I2C component prober needs to enable regulator
-> supplies (and toggle GPIO pins) for the various components it intends
-> to probe. To support this, a new "pure DT lookup" method for getting
-> regulator supplies is needed, since the device normally requesting
-> the supply won't get created until after the component is probed to
-> be available.
+On Wed, Sep 25, 2024 at 05:38:05PM +0800, Chen-Yu Tsai wrote:
+> There are existing uses for a devres version of of_regulator_get_optional()
+> in power domain drivers. On MediaTek platforms, power domains may have
+> regulator supplies tied to them. The driver currently tries to use
+> devm_regulator_get() to not have to manage the lifecycle, but ends up
+> doing it in a very hacky way by replacing the device node of the power
+> domain controller device to the device node of the power domain that is
+> currently being registered, getting the supply, and reverting the device
+> node.
 > 
-> Add a new of_regulator_get_optional() function for this. This mirrors
-> the existing regulator_get_optional() function, but is OF-specific.
-> The underlying code that supports the existing regulator_get*()
-> functions has been reworked in previous patches to support this
-> specific case.
-> 
-> Also convert an existing usage of "dev && dev->of_node" to
-> "dev_of_node(dev)".
+> Provide a better API so that the hack can be replaced.
 
-I thought I gave a tag already...
-Whatever, FWIW,
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+...
+
+> +#if IS_ENABLED(CONFIG_OF)
+
+Do we really need this?
+
+> +static struct regulator *_devm_of_regulator_get(struct device *dev, struct device_node *node,
+> +						const char *id, int get_type)
+> +{
+> +	struct regulator **ptr, *regulator;
+> +
+> +	ptr = devres_alloc(devm_regulator_release, sizeof(*ptr), GFP_KERNEL);
+> +	if (!ptr)
+> +		return ERR_PTR(-ENOMEM);
+> +
+> +	regulator = _of_regulator_get(dev, node, id, get_type);
+> +	if (!IS_ERR(regulator)) {
+> +		*ptr = regulator;
+> +		devres_add(dev, ptr);
+> +	} else {
+> +		devres_free(ptr);
+> +	}
+> +
+> +	return regulator;
+
+Why not using devm_add_action() / devm_add_action_or_reset()
+(whichever suits better here)?
+
+> +}
+
+> +#endif
+
+...
+
+> +static inline struct regulator *__must_check devm_of_regulator_get_optional(struct device *dev,
+> +									    struct device_node *node,
+> +									    const char *id)
+
+I don't know the conventions here, but I find better to have it as
+
+static inline __must_check struct regulator *
+devm_of_regulator_get_optional(struct device *dev, struct device_node *node, const char *id)
+
+Similar to other stubs and declarations.
 
 -- 
 With Best Regards,
