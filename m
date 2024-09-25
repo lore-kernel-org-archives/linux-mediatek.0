@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A788C369A9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 07:57:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD5F9C369AA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 07:59:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VVyhhhkEl4zSrHVn0wrGDl+rurJ54yzW0NixotEwWG4=; b=0TpeTrs/rb/4BteY9j4miBwMIZ
-	nHfN3D+Abyg5VyzCXLSFKWoLfy7VKAtXLjeD6QmP4cfdlQUW0DYGNOqPh9E5or7fp+3X5kIMZX00Q
-	AwfpveHM+XzE4yBpoY1vkjq70hF3qlp8Rj5kwaZi/HDTt9d8d8JfdqP5moNHLaza6Opq1jKHLgS5w
-	/1vf/ub0L34m1CnzGdhRieUHte5xck4TkV3j26/jxH+7fdmLrl0dhwBhl7qRANP9IlESpU9wu7RTo
-	Rk38/YLf/snPEQmi/a0tvRFcbyN8PVJQEllKVq4fwMKwmwQfNnc4KfuP7B5jTw1cGvm9zo19QzH6m
-	GCkLyEng==;
+	bh=sxjWCrCKM0GR7BC/smkaOo8VxvgeDk6SlyT2ywKakPQ=; b=W6SGDSBjaMClQd7Z4g3C4R6YJW
+	ot4PRoxlBqVSY6J7Mr46XZpih0TVhkRuxSj43uXukyIBmpaWqisQwyUwaARRqcqWrXZbTEGig6DBp
+	Igx3oTTLZkvkix9R7o/DrMPH90raH2MmAS26fINITf/XPWEn97L4U6WsxNN/a8NyIIzbLRM5wPzC/
+	xWMWFzezR6keKidjbf4IFhZ8VXhcWUv+IdvnbyvbDwq9eyvnm9yIbUEA2Ww8oqQttjx1Arfz6gHnA
+	eIpVCYf4bs6Zy3VfDeibkg4v7gcpAXno+UVM6qk/BijviJ2fXoA2CPOLidvr61kqulkTc47oHecfq
+	9pJ4H7CQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stMuG-00000004Pz9-2DNx;
-	Wed, 25 Sep 2024 07:57:52 +0000
+	id 1stMvN-00000004QBK-3Nla;
+	Wed, 25 Sep 2024 07:59:01 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stMpL-00000004P0h-0y9j;
-	Wed, 25 Sep 2024 07:52:50 +0000
+	id 1stMqm-00000004PIp-2wJS;
+	Wed, 25 Sep 2024 07:54:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727250765;
-	bh=HaGjCo2JkmzWG5vS1IbRUjPXbfLtQiEoKu06nA0Sy8E=;
+	s=mail; t=1727250855;
+	bh=T6k9dVIsBwrFxk5lHbMHpvg1G0w4z/IStCeKOVMeHQ0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=CwS0OhQxMMFoCFIS6sWAgehLjs+WK4NyXWcz5SdQxnF2oNJwCpRne9wX7fynkCv8j
-	 iPauMQi2R6OYgNdiJWrC7ivCyzeni29NvIX+2iNMItm4zxgeLqMMHFmBlzNt0KDTod
-	 0qTbNIOnOFmBAbXWk6uFWt3MGjFIjjJDLY4mseWzeLuvZ/gv1IyMoEKN3eIde1r+8b
-	 P9v4oBY1TCCKBxIM8xMKwP4ZE3JJun1fXde27hUjvjb0XhsqPuQAbWG32d5haO4+0S
-	 nuk0wGZKjuMb0BPSwBOgCD0ShW8+PZONX5VygD0/n7R0vgLgNgXp/MS/C+o6NdKm79
-	 6fQ5I9D047oOA==
+	b=erpyU75kancqIbh7jqa011BZ7v+l6n1lr/aqaLNpLRFBP+En066UOFqnULkXpQGkJ
+	 13IITw9mGRAundN1yAz2QT2diuiXdBX5vgrZTGTj86JH4OkUfkXu9FVI4wFmpomexU
+	 XjcmycMarAUufrK2BqN0YU/irMlKkmgeF9wIeF07Qq0Ew05B/ngYAS+uDVvSBc7mnR
+	 Jv2ymxQQAbc0Xd48umtz1m4aur/oalSEkffp2Ih/OjYLY6jHTF1G4OdZz9+G8YMThH
+	 MAlw1NCvEe2/qdVEfCbeaDr+I1rcGX7f/1WaampLK6qxfZ9uAn4+6/fAEjmB1qn+uZ
+	 n3WPCfy35GdtA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8408617E1045;
-	Wed, 25 Sep 2024 09:52:44 +0200 (CEST)
-Message-ID: <70a24964-990b-4606-bdc8-4dd42c44785a@collabora.com>
-Date: Wed, 25 Sep 2024 09:52:44 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5E00017E1046;
+	Wed, 25 Sep 2024 09:54:14 +0200 (CEST)
+Message-ID: <7e57ea01-f881-4c6a-95e7-96ab56dbc455@collabora.com>
+Date: Wed, 25 Sep 2024 09:54:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/4] Provide devm_clk_bulk_get_all_enabled() helper
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Russell King <linux@armlinux.org.uk>,
- Matthias Brugger <matthias.bgg@gmail.com>, Jingoo Han
- <jingoohan1@gmail.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar
- <alim.akhtar@samsung.com>, kernel@collabora.com, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org
-References: <20240914-clk_bulk_ena_fix-v1-0-ce3537585c06@collabora.com>
- <20240924143634.pqpdsewoqxn3liqi@thinkpad>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8195: Add power domain for
+ dp_intf0
+To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+ Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>,
+ Chris-qj chen <chris-qj.chen@mediatek.com>,
+ MediaTek Chromebook Upstream
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, Tommy Chen <tommytl.chen@mediatek.com>
+References: <20240925071514.17626-1-macpaul.lin@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240924143634.pqpdsewoqxn3liqi@thinkpad>
+In-Reply-To: <20240925071514.17626-1-macpaul.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240925_005247_615633_F20470C3 
-X-CRM114-Status: GOOD (  20.48  )
+X-CRM114-CacheID: sfid-20240925_005416_919112_6592F791 
+X-CRM114-Status: UNSURE (   7.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,66 +85,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/09/24 16:36, Manivannan Sadhasivam ha scritto:
-> On Sat, Sep 14, 2024 at 09:04:53PM +0300, Cristian Ciocaltea wrote:
->> Commit 265b07df758a ("clk: Provide managed helper to get and enable bulk
->> clocks") added devm_clk_bulk_get_all_enable() function, but missed to
->> return the number of clocks stored in the clk_bulk_data table referenced
->> by the clks argument.
->>
->> That is required in case there is a need to iterate these clocks later,
->> therefore I couldn't see any use case of this parameter and should have
->> been simply removed from the function declaration.
->>
+Il 25/09/24 09:15, Macpaul Lin ha scritto:
+> During inspecting dtbs_check errors, we found the power domain
+> setting of DPI node "dp_intf0" is missing. Add power domain setting
+> to "MT8195_POWER_DOMAIN_VDOSYS0" for "dp_intf0"
 > 
-> Is there an user that currerntly does this?
-> 
+> Signed-off-by: Tommy Chen <tommytl.chen@mediatek.com>
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 
-Yes and the patch wasn't sent upstream yet, but anyway, regardless of that,
-this series is fixing inconsistency with both naming and usage between the
-clock (bulk) API functions, with that being the only function acting
-different from the others, at best confusing people.
+You missed a Suggested-by tag here :-)
 
-Cheers,
-Angelo
+after which,
 
-> - Mani
-> 
->> The first patch in the series provides devm_clk_bulk_get_all_enabled()
->> variant, which is consistent with devm_clk_bulk_get_all() in terms of
->> the returned value:
->>
->>   > 0 if one or more clocks have been stored
->>   = 0 if there are no clocks
->>   < 0 if an error occurred
->>
->> Moreover, the naming is consistent with devm_clk_get_enabled(), i.e. use
->> the past form of 'enable'.
->>
->> The next two patches switch existing users of devm_clk_get_enable() to
->> the new helper - there were only two, as of next-20240913.
->>
->> The last patch drops the now obsolete devm_clk_bulk_get_all_enable()
->> helper.
->>
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->> Cristian Ciocaltea (4):
->>        clk: Provide devm_clk_bulk_get_all_enabled() helper
->>        soc: mediatek: pwrap: Switch to devm_clk_bulk_get_all_enabled()
->>        PCI: exynos: Switch to devm_clk_bulk_get_all_enabled()
->>        clk: Drop obsolete devm_clk_bulk_get_all_enable() helper
->>
->>   drivers/clk/clk-devres.c                | 30 ++++++++++++++++--------------
->>   drivers/pci/controller/dwc/pci-exynos.c |  2 +-
->>   drivers/soc/mediatek/mtk-pmic-wrap.c    |  4 ++--
->>   include/linux/clk.h                     | 12 +++++++-----
->>   4 files changed, 26 insertions(+), 22 deletions(-)
->> ---
->> base-commit: 5acd9952f95fb4b7da6d09a3be39195a80845eb6
->> change-id: 20240912-clk_bulk_ena_fix-16ba77358ddf
->>
-> 
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 
