@@ -4,79 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72424CCF9E8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 16:56:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85D84CCF9E8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 17:13:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W1uARAEtCZ8e6OEALGT3Y0Ul/ZUS/KuncBTF6dONDlI=; b=z9hRdvozjJee5YkT2DUcos3lRm
-	IxUQx2e7LApD34wsUph3NQIW37X1BQsTCv4VDsdmZrJVbXJUO9z7Ge/4dkOxrgFQDVfrRLZvQVdMo
-	eAiCzE66+7s+RBLYT6SGTv+Ae+pqVt410oqeZQ1yOahp7gVpKrH6GCQa7+ZeTU6530qIztuXSRgL4
-	E1FJvCNjCx5FlQS1oGJZUgtaOp5NmiufRHh/A8Ustl73NaIN7WMkzeuPLRdNFHXaCtIbsTfiNMmlv
-	m4GADaFn48Hv6oH/+9ovn8kwm3RFODjV0wM45fb0kTwMewclxhgMfo8UwYHJg/bNnHbYB9SZSLGnM
-	kEriLM2A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=QoTT/6NBpLK4C3nKaQBc7mw+Qc83kZKYIzQinskh5z4=; b=uT6V1cAphc3SoaPOgfCINY3oD4
+	OtwqJNDOIpetpu/XjGlBh0LU2f+b04NQGS2pKv2Tr3fy/jv3HMk47olu2IqCWd5WY6BgWxWvsNmpL
+	GgQCpgd1FUd1Q2FgFROdXmIegQT5o6HRWw+BlOlpRkyo/23AX0ykGIoFA39Bll9UsurjTp2OhOz1D
+	wQNK/SbOIKgp+Wjk6yBPiorYv58toCef7pLhJvW9Hu+RJQaKxK3lpS/lxqCDN84zp4si+w9RROHN9
+	oFc8KCUyFOH+WYbAk1L3Jw3+PBzYKc6+1K+XdUGmorT9GD1XOvWfRkAQ3zthX3kd4tnCLgo6cHpbX
+	AJ5C0cIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stVJZ-000000067g0-1a8P;
-	Wed, 25 Sep 2024 16:56:33 +0000
-Received: from 009.lax.mailroute.net ([199.89.1.12])
+	id 1stVa1-000000069rR-1kVi;
+	Wed, 25 Sep 2024 17:13:33 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stVJW-000000067fX-3MgW
-	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Sep 2024 16:56:32 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 009.lax.mailroute.net (Postfix) with ESMTP id 4XDNDF5ffhzlgTWQ;
-	Wed, 25 Sep 2024 16:56:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1727283380; x=1729875381; bh=W1uARAEtCZ8e6OEALGT3Y0Ul
-	/ZUS/KuncBTF6dONDlI=; b=knUhiyHLVbFzyYlAwrAT6d8/3aeP5MhmDlNCPNdn
-	h7qhOz8b9M9+Ye7ofQa/bSObAG79D/TtWhmP4u/cJxB97P4F9qbo51VBx7x2v2I/
-	7O/jXpIYAiGYl80StA3EIxUEHP7Udjg3mR5jCcVN9ds1OtludtxRkJKH+/wDVT8m
-	9WKXqKbc1ri4qIdHUlW/Oklfa9082LMGeUfYxg5h0mqmxGEl0G16WLVqqRB5A91D
-	IhnLZvpSmu7v0jmKFRYFTq4iQgi1EywILGwQA6D9Gv++orCFNwnton1674/vXDz+
-	JFTYvX74BTUt8o5Ac1NVMyBJeVjFW4qg9ad5RSscDqFR+A==
-X-Virus-Scanned: by MailRoute
-Received: from 009.lax.mailroute.net ([127.0.0.1])
- by localhost (009.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id CGrYvXZT-pvp; Wed, 25 Sep 2024 16:56:20 +0000 (UTC)
-Received: from [100.66.154.22] (unknown [104.135.204.82])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 009.lax.mailroute.net (Postfix) with ESMTPSA id 4XDNCz56jPzlgTWK;
-	Wed, 25 Sep 2024 16:56:15 +0000 (UTC)
-Message-ID: <03b34628-d70b-4ce6-ad87-3c2070105bfa@acm.org>
-Date: Wed, 25 Sep 2024 09:56:13 -0700
+	id 1stVYp-000000069XE-1bE3;
+	Wed, 25 Sep 2024 17:12:20 +0000
+X-UUID: 4f7b02887b6111efba0aef63c0775dbf-20240925
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=QoTT/6NBpLK4C3nKaQBc7mw+Qc83kZKYIzQinskh5z4=;
+	b=E3YYUJP3qFE9CEzvkSi92QwQmgSvurO67cJMihMVaMXQhNG6Bu0BB0IjHL5eOAD+aoSbC6YEOER/of2D6ymuRTWRJ1GW/7LaKl6g3dCjiWBQ5DGwOU1imvfwFUTPSYwR4pudx4p3FaJPVGFuel+P6XDYteG/eL9VVm07iZE4WPU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:aec97752-dbbf-46a2-b1f2-1b2731aed4c6,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:a478c2d0-7921-4900-88a1-3aef019a55ce,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 4f7b02887b6111efba0aef63c0775dbf-20240925
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1980930512; Wed, 25 Sep 2024 10:12:14 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 26 Sep 2024 01:12:08 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 26 Sep 2024 01:12:08 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, "Rob
+ Herring" <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, "Conor
+ Dooley" <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	<linux-pm@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Alexandre Mergnat
+	<amergnat@baylibre.com>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, Chris-qj chen <chris-qj.chen@mediatek.com>,
+	MediaTek Chromebook Upstream
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
+	<wenst@chromium.org>
+Subject: [PATCH 1/2] dt-bindings: mfd: mediatek: mt6397: add adc and regulators for mt6359
+Date: Thu, 26 Sep 2024 01:11:55 +0800
+Message-ID: <20240925171156.9115-1-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 3/3] ufs: core: add a quirk for MediaTek SDB mode
- aborted
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
- qilin.tan@mediatek.com, lin.gui@mediatek.com, tun-yu.yu@mediatek.com,
- eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com,
- quic_nguyenb@quicinc.com
-References: <20240925095546.19492-1-peter.wang@mediatek.com>
- <20240925095546.19492-4-peter.wang@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20240925095546.19492-4-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--4.079200-8.000000
+X-TMASE-MatchedRID: SsmlBu/h5g26lIBLPjRk6RWCVBr+Ay98wQ0CCpqVHSz98u70/pR9Gpas
+	fA8Y/RCFDGo03EdVgDKjp64yUKGpZGaAyMVnPatL6/xAZojbl7cP4vBWNr0zgZsoi2XrUn/Jn6K
+	dMrRsL14qtq5d3cxkNSjkRB+q9uV+Jsb3yTJxofTGAeY87hnlSO/NyqpYUkJBsqIjn1nHtvvMuU
+	MG5xRFzczHQD4nSrHNeHsfn6gZqBMJzWjfPdXPzo7NPt9DnHpk82Gj2QC3yG0smXVK/H8eHzG7s
+	r7xobSAsPEFD+rZA81DDKa3G4nrLQ==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--4.079200-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: B3DCA1ED930D0C66E8405AD4634D85CB39EA432A4B1306D31E1ACE828E230CF82000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240925_095630_887327_80733B7A 
-X-CRM114-Status: GOOD (  19.78  )
+X-CRM114-CacheID: sfid-20240925_101219_449564_96E45DB5 
+X-CRM114-Status: UNSURE (   9.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,73 +106,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/25/24 2:55 AM, peter.wang@mediatek.com wrote:
-> From: Peter Wang <peter.wang@mediatek.com>
-> 
-> Because the MediaTek UFS controller uses UTRLCLR to clear commands
-> and fills the OCS with ABORTED, this patch introduces a quirk to
-> treat ABORTED as INVALID_OCS_VALUE.
-> 
-> Signed-off-by: Peter Wang <peter.wang@mediatek.com>
-> ---
->   drivers/ufs/core/ufshcd.c       | 5 ++++-
->   drivers/ufs/host/ufs-mediatek.c | 1 +
->   include/ufs/ufshcd.h            | 6 ++++++
->   3 files changed, 11 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-> index 4fff929b70d6..d429817fca94 100644
-> --- a/drivers/ufs/core/ufshcd.c
-> +++ b/drivers/ufs/core/ufshcd.c
-> @@ -5404,7 +5404,10 @@ ufshcd_transfer_rsp_status(struct ufs_hba *hba, struct ufshcd_lrb *lrbp,
->   		}
->   		break;
->   	case OCS_ABORTED:
-> -		result |= DID_ABORT << 16;
-> +		if (hba->quirks & UFSHCD_QUIRK_OCS_ABORTED)
-> +			result |= DID_REQUEUE << 16;
-> +		else
-> +			result |= DID_ABORT << 16;
->   		dev_warn(hba->dev,
->   				"OCS aborted from controller for tag %d\n",
->   				lrbp->task_tag);
-> diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-> index 02c9064284e1..8a4c1b8f5a26 100644
-> --- a/drivers/ufs/host/ufs-mediatek.c
-> +++ b/drivers/ufs/host/ufs-mediatek.c
-> @@ -1021,6 +1021,7 @@ static int ufs_mtk_init(struct ufs_hba *hba)
->   	hba->quirks |= UFSHCI_QUIRK_SKIP_MANUAL_WB_FLUSH_CTRL;
->   	hba->quirks |= UFSHCD_QUIRK_MCQ_BROKEN_INTR;
->   	hba->quirks |= UFSHCD_QUIRK_MCQ_BROKEN_RTC;
-> +	hba->quirks |= UFSHCD_QUIRK_OCS_ABORTED;
->   	hba->vps->wb_flush_threshold = UFS_WB_BUF_REMAIN_PERCENT(80);
->   
->   	if (host->caps & UFS_MTK_CAP_DISABLE_AH8)
-> diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-> index 0fd2aebac728..8f156803d703 100644
-> --- a/include/ufs/ufshcd.h
-> +++ b/include/ufs/ufshcd.h
-> @@ -684,6 +684,12 @@ enum ufshcd_quirks {
->   	 * single doorbell mode.
->   	 */
->   	UFSHCD_QUIRK_BROKEN_LSDBS_CAP			= 1 << 25,
-> +
-> +	/*
-> +	 * Some host controllers set OCS_ABORTED after UTRLCLR (SDB mode),
-> +	 * this quirk is set to treat OCS: ABORTED as INVALID_OCS_VALUE
-> +	 */
-> +	UFSHCD_QUIRK_OCS_ABORTED			= 1 << 26,
->   };
->   
->   enum ufshcd_caps {
+Since MT6359 PMIC has been added as one of the compatibles of
+"mediatek,mt6397.yaml", the sub-device node of "MT6359 PMIC AUXADC" and
+"MT6359 PMIC Regulators" should also be contained in this DT Schema as
+well.
 
-ufshcd_transfer_rsp_status() only has one caller, namely 
-ufshcd_compl_one_cqe(). The previous patch makes sure that that 
-ufshcd_compl_one_cqe() is not called if a SCSI command is aborted. So
-why does this patch modify how OCS_ABORTED is processed? Is this patch
-necessary or can it perhaps be dropped?
+This patch includes:
+ - add 'adc' property and $ref for 'mediatek,mt6359-auxadc'.
+ - add 'mt6359-regulator' to the compatibles of regulators.
 
-Thanks,
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+---
+ Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-Bart.
+diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+index 953358bc997a..40cabaf60d0d 100644
+--- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
++++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+@@ -17,6 +17,7 @@ description: |
+   MT6397/MT6323 is a multifunction device with the following sub modules:
+   - Regulators
+   - RTC
++  - ADC
+   - Audio codec
+   - GPIO
+   - Clock
+@@ -86,6 +87,7 @@ properties:
+           - enum:
+               - mediatek,mt6323-regulator
+               - mediatek,mt6358-regulator
++              - mediatek,mt6359-regulator
+               - mediatek,mt6397-regulator
+           - items:
+               - enum:
+@@ -95,6 +97,11 @@ properties:
+     required:
+       - compatible
+ 
++  adc:
++    type: object
++    $ref: /schemas/iio/adc/mediatek,mt6359-auxadc.yaml#
++    unevaluatedProperties: false
++
+   audio-codec:
+     type: object
+     additionalProperties: false
+-- 
+2.45.2
+
 
