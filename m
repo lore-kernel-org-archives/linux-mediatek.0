@@ -4,79 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FB25C369C8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 10:48:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5000C369CC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Sep 2024 10:54:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p18jL2hLutiaep38fb0ejRXREkRooHh3eI3tmn6pG+o=; b=ZWOGpa/gPIT5OaeD/NdvTbHTVF
-	/1x67rM8APMgzxpNycwPPyLLRD0fQ5ZDD2SrrZTKabwWJsOFF2tQURAyO3CQIbg2qZDWhjH7iGyme
-	fGX2fSEGgNcCIL/ME5KZvDD+xZOZtdH4fn6ykIGr2xM5nbLib68YgKiNVMoBr+9t2hDhNtqlF4cd8
-	zTHd7Xuyjsss1l1TktpfZHbyV/NNsawjed4NzmRstl4Ohn+LPE9B0sE0N6nv2mqDXYGn/fH+62zic
-	CLWQ9Tdxrswz8/18lf1UYkst6H5qtOGBGG0Q9pBY3vehYIPBtB+9MLtRlRbrX45Ru7gdnNaXgJvmx
-	AfLMqzPQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wNB11M0iw96JFsI3NeD4d9INw4bMHLX226YBdsnQT5c=; b=XSD4wKoErDgK8e54DrBZb1VEcI
+	Gt8JiQ5Yur61Laake5xP5b0YNn3TaK3oPAQ7wD7Bpz1J9PMlF2E9Bg0DscJ+WxiRVni3SViRWl+LK
+	cKyb8/3r2m4UlbqGA9AMSiUv0ZEaOUttVTqBVfwA45l6HeELDnxgOxXFzzgVYMhpaAMMYGlyf7NGh
+	sLrQ6K1Cv3YwAukYLMFAEBX6KpXEO6bOwjVwmjzAqnZSj3fDICfC/eOn8YR0YXL8Zgh2IaF9FJBR+
+	C7sHJ4RlJ63UM6koA0wqkNzzq3A7fo1aHbOqnPbIt2MINuADCwFGSM19mc84eyaIFZKYEm1oefbOW
+	DUdW4E2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stPZa-00000004mZC-0TeU;
-	Wed, 25 Sep 2024 10:48:42 +0000
-Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
+	id 1stPfE-00000004nN0-3tWs;
+	Wed, 25 Sep 2024 10:54:32 +0000
+Received: from mgamail.intel.com ([198.175.65.10])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stPVH-00000004lqN-0v9F
-	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Sep 2024 10:44:18 +0000
-Received: by mail-ot1-x32c.google.com with SMTP id 46e09a7af769-710e910dd7dso3649358a34.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Sep 2024 03:44:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1727261053; x=1727865853; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=p18jL2hLutiaep38fb0ejRXREkRooHh3eI3tmn6pG+o=;
-        b=khQY2ktPi/UuISKiBOHZK1dldbrX3w7tXmtX5Omh/qvy/OvPF7ktb0eF4g9FcGM+h0
-         WyGzm/i9lcy0Z3KhmaZvGerekp5kcMZ4Ck5Mo9t0kn0HByxSQEZXXBhXP6Ak7iU+/Pnr
-         rRUoxIFpB/C8Q8K0Ltkzd7KuKMWztBaSDaa8M=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727261053; x=1727865853;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=p18jL2hLutiaep38fb0ejRXREkRooHh3eI3tmn6pG+o=;
-        b=tBQ2oT4fUDfjygNmoFX+kPc0NhjTTMxD8shf0mSmckxwGcZsbl+G5V9KA+eOsK2+X+
-         CvkUIrxc0gxt612lHeB/2H4TknZ112TLrCEkDGdtxo9ReSZgkULIwaat24WmEoTHmSaA
-         EO3MUw1srTV0Noy2VyguQFyZY+7m5yZtqdAQIg9SE2P+oYHqOFYuVky7YpH1nA8Ov31Y
-         V18lj7+xGKf8Ay0iFbPp4yr03zYdk1fx//PrZ0ZrCGfhV1eNJZwQq95dPZK71rHzd/1A
-         quYBfkenXweK7X+IVqOxu05QtKIQmL7AyFZIn+BB+G7p447Y8RYmAl08VY41rnsPxSyY
-         QaRw==
-X-Forwarded-Encrypted: i=1; AJvYcCVxJvrnH35S6WsxatJ5Q2UxVlXGDYtjOJiCeQPm+EdT+W1KhjIuc/FJpmBwqLGeSJFGXzihYcsxFH6F3rUp/w==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz4gdPWpT3kHehe0Z/uW6WVT22Umg1ZtrOl8gV5b4eHHZTHGcIq
-	IA6oHi9ygqII6/GI6b3Ojr9KO7cqUATfflMEGu1tJ0jTmGaFH9bMbouuZSyOQuWBzJvhGcx53t6
-	OOeYP+nVhWojJW6GqeDe0GsDVfor3otshEoujZSSZzNhe8ZXajw==
-X-Google-Smtp-Source: AGHT+IGhoxWoyLCZ1aRxjjHIcUx8YFuna6OqcImZMuxL9OA/2tyXvCgmuAskMzvWBQ9WRNUkhBGHynShOaLw7Va2Cdk=
-X-Received: by 2002:a05:6830:3894:b0:70f:6f4f:e8d9 with SMTP id
- 46e09a7af769-713c7e2e146mr2486302a34.20.1727261053556; Wed, 25 Sep 2024
- 03:44:13 -0700 (PDT)
+	id 1stPe4-00000004nH8-1vNK;
+	Wed, 25 Sep 2024 10:53:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1727261600; x=1758797600;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=UrggVek0lwhDuqSp26+4KJb/uG5YqBJR8jmgQcSwkr0=;
+  b=CSibQZSzRK4IAF2pnryeCYY9BqjUN+L7sIJ1HgpuA3PBBRrA+iXg6fT2
+   C7K1kTpGeVjW5APXztyNZk9zP/7FaQzBQtqzf5BDY0e9ofqyAVu/AMptx
+   b8ygCN6cTDuZzAIxOTjU0+uHr8m7hmS+O2txQUJrIKYyDaJDaYS1AAvC4
+   iohCyWKj85Lg2Kf314MfvFkfAag2yYJdJjaTYSq7XqgJFeYD0nURRvWwY
+   KKbxo0aXPo/JTc3KRYWUinTIPqY28IjKTiZJtUZZq+GCrpUdjV7mtarVw
+   XIguB9QvUVxqYKUUhFkzVTFb/LgpvZlFMu2hQWVJRoTjKPUppx1Ru5sNb
+   Q==;
+X-CSE-ConnectionGUID: +4zWE3EPRmit+Z5tmzwWLw==
+X-CSE-MsgGUID: pvD7En8gQ9a15eHLgABYCQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11205"; a="43778481"
+X-IronPort-AV: E=Sophos;i="6.10,257,1719903600"; 
+   d="scan'208";a="43778481"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Sep 2024 03:53:19 -0700
+X-CSE-ConnectionGUID: tE8JEtRNTYaDYeepXkZmYg==
+X-CSE-MsgGUID: F12ogL8UTO6fX6+00sK67A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,257,1719903600"; 
+   d="scan'208";a="102491039"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by orviesa002.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Sep 2024 03:53:16 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.98)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1stPdw-0000000Cmma-3y2V;
+	Wed, 25 Sep 2024 13:53:12 +0300
+Date: Wed, 25 Sep 2024 13:53:12 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Mark Brown <broonie@kernel.org>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org, Douglas Anderson <dianders@chromium.org>,
+	Johan Hovold <johan@kernel.org>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: Re: [PATCH v8 1/3] regulator: Add of_regulator_get_optional() for
+ pure DT regulator lookup
+Message-ID: <ZvPrmJo5WWqAHrhb@smile.fi.intel.com>
+References: <20240925093807.1026949-1-wenst@chromium.org>
+ <20240925093807.1026949-2-wenst@chromium.org>
 MIME-Version: 1.0
-References: <20240919094212.1902073-1-treapking@chromium.org> <172676985046.765320.3471835988677145017.robh@kernel.org>
-In-Reply-To: <172676985046.765320.3471835988677145017.robh@kernel.org>
-From: Pin-yen Lin <treapking@chromium.org>
-Date: Wed, 25 Sep 2024 18:44:02 +0800
-Message-ID: <CAEXTbpeATBYmHpCYAGhiecVeH=+R8=E0aLLscnKV4QyVbfrWJw@mail.gmail.com>
-Subject: Re: [PATCH v3] arm64: dts: mediatek: mt8183-pumpkin: add HDMI support
-To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Fabien Parent <fparent@baylibre.com>, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240925093807.1026949-2-wenst@chromium.org>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240925_034415_333258_D274DFC5 
-X-CRM114-Status: GOOD (  22.56  )
+X-CRM114-CacheID: sfid-20240925_035320_573181_3E86ADEE 
+X-CRM114-Status: GOOD (  15.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,66 +97,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 20, 2024 at 2:18=E2=80=AFAM Rob Herring (Arm) <robh@kernel.org>=
- wrote:
->
->
-> On Thu, 19 Sep 2024 17:41:49 +0800, Pin-yen Lin wrote:
-> > From: Fabien Parent <fparent@baylibre.com>
-> >
-> > The MT8183 Pumpkin board has a micro-HDMI connector. HDMI support is
-> > provided by an IT66121 DPI <-> HDMI bridge.
-> >
-> > Enable the DPI and add the node for the IT66121 bridge.
-> >
-> > Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> > Co-developed-by: Pin-yen Lin <treapking@chromium.org>
-> > Signed-off-by: Pin-yen Lin <treapking@chromium.org>
-> > Reviewed-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-> >
-> > ---
-> >
-> > Changes in v3:
-> > - Update commit message and fix formatting issues
-> > - Fix the label name of vcn33 regulator
-> >
-> >  .../boot/dts/mediatek/mt8183-pumpkin.dts      | 123 ++++++++++++++++++
-> >  1 file changed, 123 insertions(+)
-> >
->
->
-> My bot found new DTB warnings on the .dts files added or changed in this
-> series.
->
-> Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-> are fixed by another series. Ultimately, it is up to the platform
-> maintainer whether these warnings are acceptable or not. No need to reply
-> unless the platform maintainer has comments.
->
-> If you already ran DT checks and didn't see these error(s), then
-> make sure dt-schema is up to date:
->
->   pip3 install dtschema --upgrade
->
->
-> New warnings running 'make CHECK_DTBS=3Dy mediatek/mt8183-pumpkin.dtb' fo=
-r 20240919094212.1902073-1-treapking@chromium.org:
->
-> arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dtb: dpi@14015000: power-doma=
-ins: False schema does not allow [[76, 7]]
->         from schema $id: http://devicetree.org/schemas/display/mediatek/m=
-ediatek,dpi.yaml#
+On Wed, Sep 25, 2024 at 05:38:04PM +0800, Chen-Yu Tsai wrote:
+> The to-be-introduced I2C component prober needs to enable regulator
+> supplies (and toggle GPIO pins) for the various components it intends
+> to probe. To support this, a new "pure DT lookup" method for getting
+> regulator supplies is needed, since the device normally requesting
+> the supply won't get created until after the component is probed to
+> be available.
+> 
+> Add a new of_regulator_get_optional() function for this. This mirrors
+> the existing regulator_get_optional() function, but is OF-specific.
+> The underlying code that supports the existing regulator_get*()
+> functions has been reworked in previous patches to support this
+> specific case.
+> 
+> Also convert an existing usage of "dev && dev->of_node" to
+> "dev_of_node(dev)".
 
-This warning will be addressed by
-https://lore.kernel.org/all/20240919112152.2829765-2-rohiagar@chromium.org/=
-,
-and it comes from the dtsi file this patch includes.
+I thought I gave a tag already...
+Whatever, FWIW,
+Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
-Regards,
-Pin-yen
->
->
->
->
->
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
 
