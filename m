@@ -4,79 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F7B9CDE020
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 16:07:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B242DCDE020
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 16:17:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6a3bqDo+U4pxk0SWof+/bNRjfqha9gLkB8Zcqr/+ZfY=; b=F/Cks1IaieLoPtxdi4J0zMICgv
-	T6b/2LPSM+w2eP43HPaB2SigRdrBfI7HFmsqAy4ANws6+Uxf1Ytlt7CwfiYLWsY2B6GvN9pPRbf2F
-	wdtGeMDK2VnwFQqrahxR4CxCE35SejgZGB3rJxWzjnPjEGI16/Ko7cYsTwep92ovJMk4DCXzwrjQT
-	c9VkccVgxqs4Sq3ETXZj08o2zNHWUbxWGvnAWV8HkE3EP/+T3sCrBEmZWJJLFOmsa2QzKYMzsP6P0
-	OmO1vwHcE9Mqa1w8Zwma5s8za/UrZvzju0V7gCVmrCew7zL2eKwTDGLm7ZB7RsiwkiZEvVLvpAVYI
-	JG5DzSIA==;
+	bh=8kj3gY+E0GvmI9il9mQVeUHLdw9P3P5lNxkLG0QHpis=; b=mYJD7lEaZ1Rr8IYB8NRdDpScQA
+	atEF7KczCQjVVZ0Cwq152zQaEZIxFdy7ShlTOkyU5OgHlN3QYMEJiG7XEdj0hVqI++/yYogNWKEUm
+	a9NXgSthdr1cMSjJjGsvsh0ZMSF43H5i/+DcQrxy3V9zV/OwdBN2Jp0grX9W/iDN+9N0YMJU83u1Y
+	CjfQuG/lMCBOkxiy/S1WLy35+F+KwK22LFbC7gEiXIaGZmOi04215WIaozc5tMfTg3gA3QsdteNF4
+	USZhmI8GWS1cP6l7ESSKGtq9CEvAOIGIdhgelsqX/0lNqZW+NVheoG2rVNqgK5uPqm1SaXnZThMJZ
+	gBRZMbzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1str1e-00000008qDv-04Km;
-	Thu, 26 Sep 2024 16:07:30 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1strBZ-00000008rmu-1jvi;
+	Thu, 26 Sep 2024 16:17:45 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stqzL-00000008poq-1dXD;
-	Thu, 26 Sep 2024 16:05:08 +0000
+	id 1str7x-00000008rKO-03pl;
+	Thu, 26 Sep 2024 16:14:02 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 356405C5EC7;
-	Thu, 26 Sep 2024 16:05:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C7F23C4CECE;
-	Thu, 26 Sep 2024 16:05:00 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id D42C6A40F52;
+	Thu, 26 Sep 2024 16:13:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 66511C4CEC5;
+	Thu, 26 Sep 2024 16:13:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727366705;
-	bh=8oF862eULQ8YFoJtKU6F4+GDmwMiUNpW0n24amXJv4A=;
+	s=k20201202; t=1727367239;
+	bh=7vn8F+i4bEeKF3b0bUuklVycjsEm0yuEh18P9WeIlLc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=i7HvlSFAY1HpayQkyF0ijnpGCTEfRC6oQ8lepirwQIRabQuVyr4k7Zzcja9HKmqns
-	 qEXlzEiGWQNyb51qNuW1buk6zlOnjz6AjfNry3FfJXnvsucsFAX/ef5PPnhepd0yTF
-	 AkQa0VVTifqwh1JO7LbhkCMLBmV+zkDrKfABvzFZYYmbWmI2TZ76y0DzHzZZBCb6NH
-	 gCrn/Dnjwp8evthCeCve3uNResHbQiJ1nsE7zcBoRsyruP478/CvfdqeM0NDg7o+v6
-	 uW9mjXvFiPkh3cpANJ2YUsIu+sqww1y4UJATUIBGnX6jR+F4+CHmY4850FpHo2/tFz
-	 QeSU6xNxdFMOQ==
-Date: Thu, 26 Sep 2024 17:04:58 +0100
+	b=efMmBCXCAt1k+tJ4J0c/ZlREBJtvswL3y3/vVBLcHSZTL9+uM0q+u9ekHfDC6Ax1N
+	 WUqY3S66gL3mnDjul84umvldE8zXjRdmgR3AK5EUlgUT+1058rPS+jDh39+D2im9Tw
+	 v5QVVtWC4R+a/zNPyVgmMDo7w9xrJCQvM3QMpJBMRiIBveZAz8RbQL6OOB0gxzRnlC
+	 sF6TaBckQw7KgwCKQgQfkUHevZc8SzRyCGntesISjkGJkNeWcS53ExkdamzUj7qfYl
+	 u1lDUL4nktfZJ/2IdUT8TYGuD75MYFzwHovmvD6iyYKsP0a+jBNQVrNa1SfSY1kRPb
+	 OJVlmVuK3UnAg==
+Date: Thu, 26 Sep 2024 17:13:55 +0100
 From: Conor Dooley <conor@kernel.org>
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
-	Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Eason Yen <eason.yen@mediatek.com>,
-	Jiaxin Yu <jiaxin.yu@mediatek.com>,
-	Shane Chien <shane.chien@mediatek.com>,
-	Hui Liu <hui.liu@mediatek.com>, linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	Bear Wang <bear.wang@mediatek.com>,
-	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
-	Chris-qj chen <chris-qj.chen@mediatek.com>,
-	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	Chen-Yu Tsai <wenst@chromium.org>
-Subject: Re: [PATCH 2/3] dt-bindings: mfd: mediatek: mt6397: add compatible
- for mt6359-codec
-Message-ID: <20240926-smokeless-clobber-0fb8a1cdc7ab@spud>
-References: <20240926092519.6556-1-macpaul.lin@mediatek.com>
- <20240926092519.6556-2-macpaul.lin@mediatek.com>
+To: Andy-ld Lu <andy-ld.lu@mediatek.com>
+Cc: ulf.hansson@linaro.org, robh@kernel.org, krzk+dt@kernel.org,
+	matthias.bgg@gmail.com, wenbin.mei@mediatek.com,
+	linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 2/2] dt-bindings: mmc: mtk-sd: Add support for MT8196
+Message-ID: <20240926-footprint-faster-4263120d0b83@spud>
+References: <20240926070405.20212-1-andy-ld.lu@mediatek.com>
+ <20240926070405.20212-3-andy-ld.lu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="gtFGL1RUPZo9Sk8n"
+	protocol="application/pgp-signature"; boundary="rTdKX9h0An540zaG"
 Content-Disposition: inline
-In-Reply-To: <20240926092519.6556-2-macpaul.lin@mediatek.com>
+In-Reply-To: <20240926070405.20212-3-andy-ld.lu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_090507_676144_8F7E47C3 
-X-CRM114-Status: GOOD (  18.32  )
+X-CRM114-CacheID: sfid-20240926_091401_207070_17CCF413 
+X-CRM114-Status: GOOD (  21.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,67 +76,113 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---gtFGL1RUPZo9Sk8n
+--rTdKX9h0An540zaG
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Sep 26, 2024 at 05:25:18PM +0800, Macpaul Lin wrote:
-> This patch updates the audio-codec properties includes:
->  - compatible:
->   - Re-order the supported device items.
->   - Add 'mt6359-codec' to compatible since MT6359 PMIC has been included
->     in this DT Schema.
-
->   - Set 'additionalProperties: true' for 'mt6359-codec'.
-
-Why?
-
+On Thu, Sep 26, 2024 at 03:03:18PM +0800, Andy-ld Lu wrote:
+> Extend the devicetree bindings to include the MT8196 mmc controller
+> by adding the compatible string 'mediatek,msdc-v2', which could be
+> also used for future compatible SoCs that support new tx/rx.
 >=20
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> Add three properties for MT8196 settings:
+> - 'mediatek,prohibit-gate-cg', indicate if the source clock CG could
+>   be disabled when CPU access IP registers.
+>=20
+> - 'mediatek,stop-dly-sel', configure read data clock stops at block gap.
+>=20
+> - 'mediatek,pop-en-cnt', configure the margins of write and read
+>   pointers while begin to pop data transfer.
+>=20
+> Signed-off-by: Andy-ld Lu <andy-ld.lu@mediatek.com>
 > ---
->  Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
+>  .../devicetree/bindings/mmc/mtk-sd.yaml       | 26 +++++++++++++++++++
+>  1 file changed, 26 insertions(+)
 >=20
-> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b=
-/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-> index 40cabaf60d0d..ffb5848a96d5 100644
-> --- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-> @@ -104,7 +104,7 @@ properties:
+> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Document=
+ation/devicetree/bindings/mmc/mtk-sd.yaml
+> index c532ec92d2d9..82d1a9fac67c 100644
+> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> @@ -25,6 +25,7 @@ properties:
+>            - mediatek,mt8173-mmc
+>            - mediatek,mt8183-mmc
+>            - mediatek,mt8516-mmc
+> +          - mediatek,msdc-v2
+>        - items:
+>            - const: mediatek,mt7623-mmc
+>            - const: mediatek,mt2701-mmc
+> @@ -154,6 +155,30 @@ properties:
+>      enum: [32, 64]
+>      default: 32
 > =20
->    audio-codec:
->      type: object
-> -    additionalProperties: false
-> +    additionalProperties: true
->      description:
->        Audio codec support with MT6397 and MT6358.
+> +  mediatek,stop-dly-sel:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description:
+> +      Some SoCs need to set appropriate stop-dly-sel to configure read d=
+ata clock
+> +      stops at block gap. The valid range is from 0 to 0xf.
+
+If you used a specific compatible for these devices, which you should,
+you would not require either this or "pop-en-cnt".
+
+> +    minimum: 0
+> +    maximum: 0xf
+> +
+> +  mediatek,pop-en-cnt:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description:
+> +      Some SoCs need to set appropriate pop-en-cnt to configure the marg=
+ins of write
+> +      and read pointers while begin to pop data transfer. The valid rang=
+e is from 0
+> +      to 0xf.
+> +    minimum: 0
+> +    maximum: 0xf
+> +
+> +  mediatek,prohibit-gate-cg:
+
+This is also probably detectable from a specific compatible, if you had
+one?
+TL;DR specific compatibles please, non of this "msdc-v2" stuff, sorry.
+
+Thanks,
+Conor.
+
+> +    $ref: /schemas/types.yaml#/definitions/flag
+> +    description:
+> +      Decide if source clock CG could be disabled when CPU access IP reg=
+isters.
+> +      If present, source clock CG could not be disabled.
+> +      If not present, source clock CG could be disabled.
+> +
+>    resets:
+>      maxItems: 1
 > =20
-> @@ -112,8 +112,9 @@ properties:
->        compatible:
->          oneOf:
->            - enum:
-> -              - mediatek,mt6397-codec
->                - mediatek,mt6358-sound
-> +              - mediatek,mt6359-codec
-> +              - mediatek,mt6397-codec
->            - items:
->                - enum:
->                    - mediatek,mt6366-sound
+> @@ -191,6 +216,7 @@ allOf:
+>              - mediatek,mt8188-mmc
+>              - mediatek,mt8195-mmc
+>              - mediatek,mt8516-mmc
+> +            - mediatek,msdc-v2
+>      then:
+>        properties:
+>          clocks:
 > --=20
-> 2.45.2
+> 2.46.0
+>=20
 >=20
 
---gtFGL1RUPZo9Sk8n
+--rTdKX9h0An540zaG
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZvWGKgAKCRB4tDGHoIJi
-0nLMAPwNICZFxiXu4ZhvDLmOlTakmKiEVOTVZu/0hCQuyldZZQD+LrT5WwoJnbMH
-g+uamV5Vyo9o/jF8L1GRHbGmPCz4kg4=
-=sQf+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZvWIQwAKCRB4tDGHoIJi
+0p62AQC7zWy8sxC+DpKsViZDlAuVYx19RGJZLpxLCCMrqTjtggEA47f0DiCOzh8l
+0cDhA/a8DytL3SRUlW08RURFaOLoWAo=
+=qF+N
 -----END PGP SIGNATURE-----
 
---gtFGL1RUPZo9Sk8n--
+--rTdKX9h0An540zaG--
 
