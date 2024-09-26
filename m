@@ -4,67 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D7E6CCF9E9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 08:38:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B5B6CCF9E9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 08:48:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ss1DfJlgfc8UctGL9Snva1Bl2rjj53WlXFect8oYkN0=; b=qOMhFQX4Q2UVcoAQh0+Wm+iUrP
-	7Rcs/c90jPTE5c0p60/OciEljzgGf58MerhzAFfOwJbmSPDXgeX14Oa/lxi5XGZHDCMur+IE1n+P0
-	29kOUKM7GGli/7XJ9aeVSiExMNN9tV0lVnpTKXPRkeq7+uUU3iPErvbnpjta4RVbjFvgzJ2GThx8d
-	RjxX6uQkYpbrWP+XnytH91rSzbA0Ik5ZY+N5zabdrO8hv3QEbB6wEuhFXpN12sgpd6/ho8HxoffG0
-	3jduVxgTOWRRmY+lsjP4ouirOiB3v9Ek8T9p8s8I3Xv2bQGIbmhe6XbfpLLRRyMV+N5p6vbM4HWIG
-	oEGGHVsA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mUIEIOTVEOxWCkdNGpdYL1C7JlQvaQX1nk+/uj7MHS0=; b=YS5kssEH3MFJIK3rBj9ZZonHsm
+	RpRMFRpwsYDdrqYJapoEMvquprFYoSaM6SwIIw6XQlO9gWm3N1NNsFvPHt882vzz/CYIySrXgKIq3
+	ZGaKtALquuIUPlXQDqV+uC3sZkXMPQA7gwPjb3KfFRCy1FpnpgtGTzuzuNWrLjJnJhLPE+fBlzUbp
+	Tt08nPUEyrnOs/3jMoOhomrcjV1U7fBr0pOKxVW7L1ziFdnAAyqEm+hQ/bCeQrZACK34zMq+LenH+
+	JrGc6XQ1AfkPQrxX1XnX/ecl8ZmpTJ5L67tk1HhWcNLe8uBXXH0s9iTK/itQB/2/wi0aIPngJVH7z
+	tU1RXVWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stk18-00000007iIC-2xQ9;
-	Thu, 26 Sep 2024 08:38:30 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1stkAL-00000007kOy-1aIL;
+	Thu, 26 Sep 2024 08:48:01 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stjwS-00000007h31-1MD8;
-	Thu, 26 Sep 2024 08:33:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727339618;
-	bh=NpmX2svJJ4CDW8F4r8nC7PPzPmar7GK9o77BlzQWdfA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=l33DEuPa37wbIu4/YTxgFXOpuv2+j9FQdVilxgCsG8RI9RKwwN0HlPCfcrhB0K8nU
-	 7yrga93CjN7+86ZbMlgVApQ2mGcvyRaGs//EAe3O2/ZjR6vnBOqBAlyBzujhGhIPap
-	 zCFTBZnuOaaivCMHHpbXVWvllqF34bM6MFN6JDf6JXo4S+87A/XBb0Ansfi/Oq4Zso
-	 oNoJ5oKT92Q2sH7RGAJgNj9T9zqeimYaJeE1Zypg+V4q0CAIjBD4xKOZiPCsCFUKxN
-	 E0sTKdwxfMo2dvCH1k9giTF8nR6wnNZiEfp4Y1FQ82mazKSk2Kaw1jeXgZWk5zG8vC
-	 gtceF0la5YUfQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6715017E1048;
-	Thu, 26 Sep 2024 10:33:38 +0200 (CEST)
-Message-ID: <fbdbe9ff-586a-429c-a987-b8ec39b485e8@collabora.com>
-Date: Thu, 26 Sep 2024 10:33:38 +0200
+	id 1stjz1-00000007hcB-1In7;
+	Thu, 26 Sep 2024 08:36:20 +0000
+X-UUID: 642b80c87be211efb3adad29d29602c1-20240926
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=mUIEIOTVEOxWCkdNGpdYL1C7JlQvaQX1nk+/uj7MHS0=;
+	b=YSCmne2ZwQT1lDJo0+yn/tlrQg4uRf3XqKSgLnsn/HDpm01TehPjM/IxXj1aSljvbsHDq3UzE8iltSFLe3gll9nOZUZG1fNaMQcSxQ/6r9va6CmxXuKO/OuqmI2haRAt1MBhWHrFdeF/nAxMQR02BAT3rFSkYnrJv7p4b8Er314=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:eb7e01a6-2e0c-43db-8f05-45c3fd958ea0,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:f5e1989e-8e9a-4ac1-b510-390a86b53c0a,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 642b80c87be211efb3adad29d29602c1-20240926
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1432897284; Thu, 26 Sep 2024 01:36:14 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 26 Sep 2024 16:36:11 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 26 Sep 2024 16:36:11 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Alper Nebi Yasak <alpernebiyasak@gmail.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Shawn Sung <shawn.sung@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, "Jason-JH . Lin"
+	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Nancy
+ Lin <nancy.lin@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v6 0/2] Fix degradation problem of alpha blending series
+Date: Thu, 26 Sep 2024 16:35:24 +0800
+Message-ID: <20240926083526.24629-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/6] arm64: dts: mediatek: mt8188: Define CPU big core
- cluster
-To: Fei Shao <fshao@chromium.org>
-Cc: Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20240925110044.3678055-1-fshao@chromium.org>
- <20240925110044.3678055-4-fshao@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240925110044.3678055-4-fshao@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_013340_559392_1DAA5DB7 
-X-CRM114-Status: GOOD (  13.38  )
+X-CRM114-CacheID: sfid-20240926_013619_388499_7F19DBDD 
+X-CRM114-Status: GOOD (  10.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,53 +87,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/09/24 12:57, Fei Shao ha scritto:
-> The MT8188 SoC features two CPU clusters: one with 6 little Cortex-A55
-> cores, and the other with 2 big Cortex-A78 cores.
+Some SoCs not support pre-multiplied pixel formats and extending
+configuration of OVL pre-multiplied color formats, such as MT8173.
 
-No, it doesn't. It features only one cluster, so...
+Fix the SoC degradation problem by this sreies.
 
-> 
-> Update the CPU topology to reflect the actual hardware configurations.
+---
 
-...the actual hardware configuration is already reflected by the currently
-declared CPU topology, so for this commit: NAK.
+Chnage in v6:
+1. Use blend_modes instead of function pointer in OVL
+2. Use ethdr instead of mdp_rdma to get blend_modes
+3. Add 0 checking for adding blend_mode property for mtk_plane
 
-This SoC uses the ARM DynamIQ technology and embeds both LITTLE and big
-cores in one single cluster.
-Check the MT8188 datasheet for more information :-)
+Change in v5:
+Add fix patch for mtk_plane
 
-Cheers,
-Angelo
+Change in v4:
+Add lost cases of mtk_ovl_fmt_convert_with_blend
 
-> 
-> Signed-off-by: Fei Shao <fshao@chromium.org>
-> ---
-> 
->   arch/arm64/boot/dts/mediatek/mt8188.dtsi | 6 ++++--
->   1 file changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> index cd27966d2e3c..51bf08b2ff9b 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> @@ -195,12 +195,14 @@ core4 {
->   				core5 {
->   					cpu = <&cpu5>;
->   				};
-> +			};
->   
-> -				core6 {
-> +			cluster1 {
-> +				core0 {
->   					cpu = <&cpu6>;
->   				};
->   
-> -				core7 {
-> +				core1 {
->   					cpu = <&cpu7>;
->   				};
->   			};
+Change in v3:
+Change MACRO approach to function pointer in driver data
 
+Change in v2:
+Fix build error and typo
+
+Change in v1:
+Add fix patch for OVL unsupport color format settings by driver data
+
+---
+
+Jason-JH.Lin (2):
+  drm/mediatek: ovl: Add blend_modes to driver data
+  drm/mediatek: Add blend_modes to mtk_plane_init() for different SoCs
+
+ drivers/gpu/drm/mediatek/mtk_crtc.c           |  1 +
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c       |  2 +
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h       | 10 ++++
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  2 +
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c       | 48 ++++++++++++++++---
+ .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   |  7 +++
+ drivers/gpu/drm/mediatek/mtk_ethdr.c          |  7 +++
+ drivers/gpu/drm/mediatek/mtk_ethdr.h          |  1 +
+ drivers/gpu/drm/mediatek/mtk_plane.c          | 15 +++---
+ drivers/gpu/drm/mediatek/mtk_plane.h          |  4 +-
+ 10 files changed, 80 insertions(+), 17 deletions(-)
+
+-- 
+2.43.0
 
 
