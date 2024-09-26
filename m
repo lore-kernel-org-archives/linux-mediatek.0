@@ -4,87 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44DE2CCF9E9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 09:49:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42C69CCF9E9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 09:51:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8n4f/MNU6PdyrqjwwNR0UezilcDUrUATtxP6Vw3eAXQ=; b=R5NQX/Gvq3PhBhpGmlXijHgzw8
-	LBm9qlFnK8SKLnxORVAtD+rbH8GnoKDMDL08NGplakSCV0xOMEaryJGO6jZw1PzwlR8HCfRlMuHhC
-	vTX5CGES3hvy7OoiGtjXwySdAz/nnBdYFAFLeNYF9TpMK+mxsuJkxoecgZbbpd6xV9zmr7x+Ij214
-	8QwEVZvaNomLDKd/B3emzSw5wPMxcqLNf/32nE1JFUvRdZKzBTMQuS9l+zHAg+DcXXTLJMaRBKNer
-	ViPZv7q+CFTrchHLs2+F3TT3LevsPcHVvVQO2qQX0aSpZHt4JSe7fMWT3Yxmrwqxf7gTMp66D98bm
-	NImGhk4g==;
+	bh=OtDrNzBVfph4kbo0tkgPVJTNDHU2rNCkHw/yRblU4M0=; b=zi7czJm+3pDfznwqSDfEYgvcAm
+	2/g3jLqGQA2Ek8LF0JRHcT9VJp2Vv/JhmPFDFziOQGNsWXPVKZZPmj5DfflH+aBemO34gB+XO1cMn
+	hK1UwJoMneO3oifIZEvYAqFkLhi5QxJyPX3ZQMYP13CFYhbkdUUD9YsKPu+zQ4RFKq0VfnlcjUMs5
+	e8oTo5BFR8WZN7MBSaENfZvQDE5oUzHHu1oAos5agup2ei79jtZi6vCPvr6I5DJ5p3A7m3ZxXvZ6Q
+	XvzTARvl5+/Jaeo+13nnkurVOAVxpau6yg3ZVnrC7PVshpGSAKLkS2LZseQayltfX36pLIemohFjl
+	0nYiyc2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stl7M-00000007x1X-1Idu;
-	Thu, 26 Sep 2024 09:49:00 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1stl9h-00000007xcE-0FfN;
+	Thu, 26 Sep 2024 09:51:25 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stkx6-00000007ui1-3ei8;
-	Thu, 26 Sep 2024 09:38:26 +0000
+	id 1stkyY-00000007v1W-0ZIs;
+	Thu, 26 Sep 2024 09:39:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727343503;
-	bh=7p82Z+0K/eh4XfuDiQGpTvGvbH3Kqj994es0zyo9h2o=;
+	s=mail; t=1727343592;
+	bh=TDiXybMeYtcjqjBx92AhyDoKNyIG5PotfOZAabaX1Gw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=HZGLDGGcTzSqmFrsD6xl58A2Yj+XdU/wYAjesI8ExXUhHFBFFPXDYHLguwq/Qmh9j
-	 zhw+ZoLkrcGpwTWsV9LzzD0CUaZUKZI+6V4BbdiaAj0pKYa1PiFfBmgliB8/c74O0C
-	 j468Yl+8mDdbBU9b0OsZcPfwd5/CqnNCfp91OauB6YwsUc486MARmTYQPeIoweIgWU
-	 5oG7xbgOX0pwfO0n2eJlL8gBwpwQKqaOZwoyWuaYbig1wcFpPn16FEGhIkSmsNqJgV
-	 qbopcnutnivTro5SNGl4CssyrbK3dO7XkhLD3qL+K1BvLqKxUpZW/jcUexE012XBoM
-	 elcSX6ScQOYFg==
+	b=c5d60WBkFGQ5Akzoc/3uBQvHv1XDYHqt+L6fd+vwLMzBBq7UyumanL8oemFcKR+hC
+	 qA4ViIZHHhqPYszePwYdkE/dKfYbFRAeCC0RqRy9BwqnkkOp4p6Is+BcgshOjRZiqN
+	 YXNU3dsDAidYj28SV846xUFQ7kXBNqjADZCJnbTzGCN0Cs2EVbr+7K8zokSI8jRksP
+	 aciFZdCUEh5kzI/uFJ7QNvFkdTe9dNYXoSKY3tSIiIujXrfUOo95HZr74habGRxVZU
+	 T59unfzI7Lv7SWJDWhigLdnkAh6ys+O5c0AMrOeYt+SZSdy5GqLxatfIBzHgjll7hw
+	 E0t8U8Vo7zwvQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 36D2117E10AF;
-	Thu, 26 Sep 2024 11:38:22 +0200 (CEST)
-Message-ID: <7a1315ef-4be5-4528-858b-9f07c814636d@collabora.com>
-Date: Thu, 26 Sep 2024 11:38:21 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7A3F217E10AF;
+	Thu, 26 Sep 2024 11:39:51 +0200 (CEST)
+Message-ID: <9f637af5-9836-487a-88b6-1d1ac46e6976@collabora.com>
+Date: Thu, 26 Sep 2024 11:39:51 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/6] dt-bindings: display: mediatek: Fix clocks count
- constraint for new SoCs
-To: Conor Dooley <conor@kernel.org>, Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: moudy.ho@mediatek.com, macross.chen@mediatek.com,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
+Subject: Re: [PATCH 0/6] drm: constify read-only regmap structs
+To: Javier Carrasco <javier.carrasco.cruz@gmail.com>,
+ Jagan Teki <jagan@amarulasolutions.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
  David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
- Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, iommu@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org,
- Alexandre Mergnat <amergnat@baylibre.com>, Bear Wang
- <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
- Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>,
- Chris-qj chen <chris-qj.chen@mediatek.com>,
- MediaTek Chromebook Upstream
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-References: <20240924103156.13119-1-macpaul.lin@mediatek.com>
- <20240924103156.13119-3-macpaul.lin@mediatek.com>
- <ffc1900b-3921-48ca-a2b2-1b798c57e572@collabora.com>
- <20240924-commute-collision-13ad39717d31@spud>
- <2821ef09-1b32-082d-69d1-e09a3a302447@mediatek.com>
- <20240925-satisfy-epidermal-bd414891479a@spud>
+ Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@nxp.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Jessica Zhang <quic_jesszhan@quicinc.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-amlogic@lists.infradead.org
+References: <20240925-drm-const-regmap-v1-0-e609d502401b@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240925-satisfy-epidermal-bd414891479a@spud>
+In-Reply-To: <20240925-drm-const-regmap-v1-0-e609d502401b@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_023825_134197_F17B86CE 
-X-CRM114-Status: GOOD (  20.27  )
+X-CRM114-CacheID: sfid-20240926_023954_381097_2112EB8F 
+X-CRM114-Status: UNSURE (   8.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,62 +93,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/09/24 16:34, Conor Dooley ha scritto:
-> On Wed, Sep 25, 2024 at 04:42:59PM +0800, Macpaul Lin wrote:
->>
->> On 9/25/24 00:00, Conor Dooley wrote:
->>> On Tue, Sep 24, 2024 at 01:42:01PM +0200, AngeloGioacchino Del Regno wrote:
->>>> Il 24/09/24 12:31, Macpaul Lin ha scritto:
->>>>> The display node in mt8195.dtsi was triggering a CHECK_DTBS error due
->>>>> to an excessively long 'clocks' property:
->>>>>      display@14f06000: clocks: [[31, 14], [31, 43], [31, 44]] is too long
->>>>>
->>>>> To resolve this issue, add "maxItems: 3" to the 'clocks' property in
->>>>> the DT schema.
->>>>>
->>>>> Fixes: 4ed545e7d100 ("dt-bindings: display: mediatek: disp: split each block to individual yaml")
->>>>> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
->>>>> ---
->>>>>     .../devicetree/bindings/display/mediatek/mediatek,split.yaml     | 1 +
->>>>>     1 file changed, 1 insertion(+)
->>>>>
->>>>> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
->>>>> index e4affc854f3d..42d2d483cc29 100644
->>>>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
->>>>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
->>>>> @@ -57,6 +57,7 @@ properties:
->>>>>       clocks:
->>>>>         items:
->>>>>           - description: SPLIT Clock
->>>>
->>>> That's at least confusing (granted that it works) - either add a description for
->>>> each clock and then set `minItems: 1` (preferred), or remove this "SPLIT Clock"
->>>> description and allow a maximum of 3 clocks.
->>>>
->>>> Removing the description can be done - IMO - because "SPLIT Clock" is, well,
->>>> saying that the SPLIT block gets a SPLIT clock ... stating the obvious, anyway.
->>>
->>> Right, but what are the other two new clocks? Are they as obvious?
->>> There's no clock-names here to give any more information as to what the
->>> other clocks are supposed to be.
->>>
->>> Kinda unrelated, but I think that "SPLIT Clock" probably isn't what the
->>> name of the clock in the IP block is anyway, sounds more like the name
->>> for it on the provider end..
->>
->> Thanks for the suggestions. I think Moudy could help on the new fixes
->> for both DT schem and mt8195.dtsi. This patch could be separated from
->> origin patch set.
+Il 25/09/24 17:42, Javier Carrasco ha scritto:
+> This series adds the const modifier to the remaining regmap_bus and
+> regmap_config structs under drm/ that are effectively used as const
+> (i.e., only read after their declaration), but kept ad writtable data.
 > 
-> Not sure what you mean about separating it, if you mean correcting the
-> description for the split clock sure. The other stuff I mentioned needs
-> to be resolved before I'm willing to ack this.
+> Signed-off-by: Javier Carrasco <javier.carrasco.cruz@gmail.com>
 
-He means separating this patch from the rest of the series that he pushed - which
-is okay, as it's a bit mixed anyway :-)
+For the entire series:
 
-Besides ... Moudy, can you please help to clarify the description of those clocks?
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Cheers,
-Angelo
+> ---
+> Javier Carrasco (6):
+>        drm/bridge: dpc3433: Constify struct regmap_config
+>        drm/fsl-dcu: Constify struct regmap_config
+>        drm/mediatek: dp: Constify struct regmap_config
+>        drm/meson: Constify struct regmap_config
+>        drm/panel: ili9322: Constify struct regmap_bus
+>        drm/sprd: Constify struct regmap_bus
+> 
+>   drivers/gpu/drm/bridge/ti-dlpc3433.c         | 2 +-
+>   drivers/gpu/drm/fsl-dcu/fsl_tcon.c           | 2 +-
+>   drivers/gpu/drm/mediatek/mtk_dp.c            | 2 +-
+>   drivers/gpu/drm/meson/meson_drv.c            | 2 +-
+>   drivers/gpu/drm/panel/panel-ilitek-ili9322.c | 2 +-
+>   drivers/gpu/drm/sprd/sprd_dsi.c              | 2 +-
+>   6 files changed, 6 insertions(+), 6 deletions(-)
+> ---
+> base-commit: 2b7275670032a98cba266bd1b8905f755b3e650f
+> change-id: 20240925-drm-const-regmap-307f2c358d10
+> 
+> Best regards,
+
+
 
