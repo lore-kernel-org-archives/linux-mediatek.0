@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41AA6CCFA13
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 08:36:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98863CCF9E9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 08:37:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c5LSVu8jRkEWvVZm3dz45JbpTEmlGY2VIHQReDIMSSw=; b=S4Y8vIsnni5n31cAY6QcY27Ffy
-	DEtUo/ji0/mR4PXvNA1P1VVAbDSSA6iAZws/RcxAC0PFtpZWPNO54yCM2Keu9X3LCdpGgQPAuK6gx
-	4XXKGm5FDeczTwzFm0aFPHPw5aVTQr/gjfnWlpGciWbMkokXF/V5XapXJLXm6dcYJfO6bd/kMxp0b
-	srtksElZPJ4TwhWt8cv/1snr2VQZBRokIH4R3A/ecrPoYapRUvU+59l0PLS3h44nhgpPI19n9GQwV
-	+hCKtHN5grAMywwdD8KVyo/LdfAMQfYaSafr2s9TB5R+emEgzcVCQRhaKFqUnm3TQYwo4PpfI3Neh
-	r7qPzatA==;
+	bh=PRb5pSbbkzsuH8HC/XhqG/4K6Fisz6elHgdVGaMTbxs=; b=NtUF/eT75TR9NBdzGu9LfvHIMh
+	wnKvbthzWqfW5WtE7h4wQMhWudbhjKMNj8cjRXYwD1DsXqEF3FyJfgLUSWSUvQ/vbxKHQ3dceq1Hn
+	nkJybePj/GeAsL3YokSvenjXbl7vOfiBIe2OTKXxvuZNj6PQ+fhK7K0H4p8lsg1KeHrbC19jQ0p+H
+	7sElZLKM18rQt/9/efO5MqWuiNkJHM1E6HLMnzhHagPJ7BjRM1uuyt0PESrdQsJZIX4YKsisKcy7j
+	S0LELQIyLXbbPUU9yTADCVRoCiFRPdlY7uDryHracnfitkfUsoi2tPwVAKssXb9jEcNCOe74ipzYp
+	hR7V0X0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stjyl-00000007hWC-3jlh;
-	Thu, 26 Sep 2024 08:36:03 +0000
+	id 1stjzx-00000007huP-1JVZ;
+	Thu, 26 Sep 2024 08:37:17 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stjwO-00000007h1Z-1Olg;
-	Thu, 26 Sep 2024 08:33:38 +0000
+	id 1stjwQ-00000007h2F-0eXj;
+	Thu, 26 Sep 2024 08:33:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727339614;
-	bh=S6mhnUAdxSZYqgIm5tzaZNXTWNywHxWkmZKl1Y251wQ=;
+	s=mail; t=1727339616;
+	bh=kMQ9AayeBKAG8ZAFHg7xt8cXjGqj9KatwkRbtyERWiI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FVPK6/49EBKk+3yP4S0pE4zTe+I2NrFliN+vD9UE6G8k35VBezqT2yNH39ohqblFj
-	 gnqrV8CU9G5hRJT/pPDfRF8Gg6kMcuix5bvALohHmtWVelaYtokCHpA6TaFZEZFhxy
-	 jp2Dk0jI24vfNwkQPgpwsl98UXJHBNUBoXB6IbHYxnLp/tIOQcUUdl81jCjkOKEct8
-	 kuAxyl4Jt77NMA6+6fPRgvXZLH53TF3A5BN1UdG8JTp6lcxVtYVzczT/+icVgmvAFC
-	 Brg6QMctLCYzDLxXT0LydXsa5Cj2qBbK9sC8WSel7BojnnDhRV6WwCbjKn5Y2uwU3t
-	 yQlA2D/5KGS1w==
+	b=O8ISMLjXw8XkW2m7YYdxEU20NKBIZ8sfkClchsTPT51Pv56kTqRE/wyLcBbibcTlz
+	 Ic/bSzkHOTZj08ZoivPD1R669H2g0DafZgumX1G6nXQJzqPDSFW+4gZtGe9LKmVYRa
+	 Sser/d1MjB94czNP/Sk8D0yyXG0q5hZvhQOM/XY4XlMs9o2uqxMZqNo0SuKlq9MgDz
+	 tbmnmHvIvgauLJWVZmdSGswQJBC9sd/Pblwp18PjXip+Ci0usTeYu5K61hcNeyFxVb
+	 d2en1Qyx2o+wUIqgj/FnK/wDbOgCK00AjUMNOuEfVMvtwuHA54hgeTlJgOwyf5xkB/
+	 nsYOZa9FUZ5IA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7D5E917E1060;
-	Thu, 26 Sep 2024 10:33:34 +0200 (CEST)
-Message-ID: <e3315457-a969-4890-807b-50a4bd02a333@collabora.com>
-Date: Thu, 26 Sep 2024 10:33:34 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 604CA17E1080;
+	Thu, 26 Sep 2024 10:33:36 +0200 (CEST)
+Message-ID: <b3842173-7074-4bcb-80f4-1f6f8cb38a52@collabora.com>
+Date: Thu, 26 Sep 2024 10:33:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/6] arm64: dts: mediatek: mt8188: Add missing dma-ranges
- to soc node
+Subject: Re: [PATCH 5/6] arm64: dts: mediatek: mt8188: Move vdec1 power domain
+ under vdec0
 To: Fei Shao <fshao@chromium.org>
 Cc: Conor Dooley <conor+dt@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -56,16 +56,15 @@ Cc: Conor Dooley <conor+dt@kernel.org>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 References: <20240925110044.3678055-1-fshao@chromium.org>
- <20240925110044.3678055-5-fshao@chromium.org>
+ <20240925110044.3678055-6-fshao@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240925110044.3678055-5-fshao@chromium.org>
+In-Reply-To: <20240925110044.3678055-6-fshao@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_013336_771733_0B7BE289 
-X-CRM114-Status: UNSURE (   7.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240926_013338_404241_2A0A0692 
+X-CRM114-Status: GOOD (  17.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,15 +80,80 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 25/09/24 12:57, Fei Shao ha scritto:
-> Add the missing dma-ranges property to the soc node, similar to how it
-> was done for MT8195 and MT8192.
+> There are two hardware IP blocks in MT8188 video decoder pipeline:
+> vdec-lat and vdec-core, which are powered by vdec0 and vdec1 power
+> domains respectively.
 > 
-> This allows the entire 16GB of iova range to be used and enables
-> multimedia processing usages, like vcodec and MIPI camera.
+> We noticed that vdec-core needs to be powered down before vdec-lat
+> during suspend to prevent failures. It's unclear if it's an intended
+> hardware design or due to power isolation glitch. But in any case, we
+> observed a power-off sequence here, and it can be considered as an
+> indirect dependency implication between the vdec0 and vdec1 domains.
 > 
-> Signed-off-by: Fei Shao <fshao@chromium.org>
+> Given that, update vdec1 as a sub-domain of vdec0 to enforce the
+> sequence. Also, use more specific clock names for both power domains.
+> 
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+As far as I know, yes, there is a sequence:
+  - Cores (mtk-vcodec-core) gets suspended first
+  - Then the LATs gets suspended (mtk-vcodec-lat)
+  - Finally, the LAT SoC gets suspended (mtk-vcodec-lat-soc)
+
+...but you checked that downstream, and your downstream misses the lat-soc HW
+instance, and only has the lat one.
+
+Are you sure that this is not the reason why you're getting this issue? :-)
+
+Otherwise, I feel like we must ask for some clarification from MediaTek, as
+I'm mostly sure that the two cores are independent from each other (but I
+might, of course, be wrong!).
+
+Cheers,
+Angelo
+
+> Signed-off-by: Fei Shao <fshao@chromium.org>
+> ---
+> 
+>   arch/arm64/boot/dts/mediatek/mt8188.dtsi | 22 ++++++++++++----------
+>   1 file changed, 12 insertions(+), 10 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+> index ff5c8e0597f9..a6cd08ea74eb 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+> @@ -1064,20 +1064,22 @@ power-domain@MT8188_POWER_DOMAIN_VPPSYS1 {
+>   							#power-domain-cells = <0>;
+>   						};
+>   
+> -						power-domain@MT8188_POWER_DOMAIN_VDEC1 {
+> -							reg = <MT8188_POWER_DOMAIN_VDEC1>;
+> -							clocks = <&vdecsys CLK_VDEC2_LARB1>;
+> -							clock-names = "ss-vdec";
+> -							mediatek,infracfg = <&infracfg_ao>;
+> -							#power-domain-cells = <0>;
+> -						};
+> -
+>   						power-domain@MT8188_POWER_DOMAIN_VDEC0 {
+>   							reg = <MT8188_POWER_DOMAIN_VDEC0>;
+>   							clocks = <&vdecsys_soc CLK_VDEC1_SOC_LARB1>;
+> -							clock-names = "ss-vdec";
+> +							clock-names = "ss-vdec1-soc-l1";
+>   							mediatek,infracfg = <&infracfg_ao>;
+> -							#power-domain-cells = <0>;
+> +							#address-cells = <1>;
+> +							#size-cells = <0>;
+> +							#power-domain-cells = <1>;
+> +
+> +							power-domain@MT8188_POWER_DOMAIN_VDEC1 {
+> +								reg = <MT8188_POWER_DOMAIN_VDEC1>;
+> +								clocks = <&vdecsys CLK_VDEC2_LARB1>;
+> +								clock-names = "ss-vdec2-l1";
+> +								mediatek,infracfg = <&infracfg_ao>;
+> +								#power-domain-cells = <0>;
+> +							};
+>   						};
+>   
+>   						cam_vcore: power-domain@MT8188_POWER_DOMAIN_CAM_VCORE {
 
 
 
