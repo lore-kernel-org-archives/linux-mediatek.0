@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5918CEBF61
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 23:23:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8577CEBF61
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 23:24:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HGJHwDpR/ji/cnkncpEc2TmRR9IZ/lolVNsmw4iGQAY=; b=obd0uiT+2KAV4XwdFqF9Th44ZF
-	qlaFXWv7AzYqVSjBx5N+7HOG099GtjREztCw14kgcqTLC6Su3+6JbEAr+8Gmml7CAUbbrmQgx114p
-	MyOOAI2GPpZjqejhfvANG0LmgMMEXTcD+omfFFwAopqqnO8DvdctPqxJlDdONSo2a+61HuSE8QtXZ
-	7AshX82CRFCk+AE/7ltrYDd0fKSiPPM3WTkBcyb7WFVgvDXz2V0iYn87r8H42WY1F1w1Mc896w18P
-	5aqZqT3TPIWd+GGxaxWPUe0Ts2sLCzPyO/9COAkimp5Grv5LQaILNYEOT2lrtAKLoiL6IMLmOHnuD
-	XzEw+Pyw==;
+	bh=SRhQyVKcgRlVjIYoZT+41pIKZJrgjINAhed1beNUQXI=; b=k8tw3/qyV07If+vPuM6YeP4o2D
+	Lkh2EtzwWyxuOz1F81lbP3WuC6h03lQ0ltd2uVnsL/hqPcjte8+d+KmYjtPUO7OCY0c6gq0cVqyGH
+	Ge7z+7sVnNMmjAJ2TbA/t37PRkGOUcStPuRs0CWXErNs0nf+9zzgYy8XhnNqQS4/NceddGKI5yrJ1
+	zyRZ9XExwggUMDetlQYtfnMJrGWszOiOLAc8BtgAU//AfnwrdfrrC36ZUhGrABxSeaMgRX1iPCRrh
+	mDQMcWMBpqIPanZrpnulEonnIWboSbo0ENrNm0ZQWg9Nu2kv/i/D8f9nktTtMgRGpuJdxMIscdmQn
+	LSuY4r6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stxpq-00000009ZcD-3byM;
-	Thu, 26 Sep 2024 23:23:46 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1stxr0-00000009Zxk-3kPZ;
+	Thu, 26 Sep 2024 23:24:58 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stxnU-00000009YrT-3jB6;
-	Thu, 26 Sep 2024 23:21:22 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-a8d6d0fe021so244076466b.1;
-        Thu, 26 Sep 2024 16:21:20 -0700 (PDT)
+	id 1stxnX-00000009YsD-3pCD;
+	Thu, 26 Sep 2024 23:21:25 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-5c42f406e29so1905548a12.2;
+        Thu, 26 Sep 2024 16:21:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1727392879; x=1727997679; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1727392882; x=1727997682; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=HGJHwDpR/ji/cnkncpEc2TmRR9IZ/lolVNsmw4iGQAY=;
-        b=Q4Humw6c9oLMoIjMIu3RO/Tjdw3/jraIZtf5/IT6GgfKZDQ9qOX8AGn203R9IKTbls
-         IAb/inU+vRzYgRaJAtTUhQ3FNAJjc+12ZqX9WzrmV1abe9uvKEYlyWaFIF/mb8xiLGmK
-         YIw0Z0QtZPSg82jGeUMsopqrI5BiGUcG+hSHJ+dr7spKAummSdtRDfjMPcrvFo5zH3XM
-         2zMNPRs4yzJ67bpr7kV99kjOs18K59aQp5jxSE0ffgMesay43RPJyGQoqLVQWM6PsDVT
-         N1c/cOnVgt2x0V6/4tnO4nIeX8SA3UABla+3y0Yj643MtBnmhEaowD4EScWnkRWH1XTX
-         QwLw==
+        bh=SRhQyVKcgRlVjIYoZT+41pIKZJrgjINAhed1beNUQXI=;
+        b=EDLf70HBrXNElX2K3DSXwqPkY7Ol9vq+UYY1U6XDOInYVAVSyt0OSchzNF8H2xDTUb
+         R8I/l/JPv/oS3XK9xMMdr8jLc5EZKbqoAsJ4W3KB2e1Q6k6K/dh8T2fBaFAzVOfehrs6
+         H4yI5uWTXPy68xq0SE7qWqaBie+g/5iupOk7ZS4wiult0l4l0DqnafGJEXX8D8f47+eV
+         ooFYkGZqVQ+tdWanAtGnpJPT51wjalGVnN3Cn6QTLaEdq946LIE6eBWRHyrhlOGvF88X
+         k1jwsr/x89xk9yvl4HCwNODelFWRTyYqTzHGFOM5d7XSCVoolU6AEh4fWMC0NFvOtsNu
+         9NDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727392879; x=1727997679;
+        d=1e100.net; s=20230601; t=1727392882; x=1727997682;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=HGJHwDpR/ji/cnkncpEc2TmRR9IZ/lolVNsmw4iGQAY=;
-        b=txJqfybt8NLoaJEdygLMbooc86UX91PM3N/OE0mndq3G+DnesY73SJAW+tm6ksZ1Je
-         O1wYYdwb7UvEf6bPhkH8/vEIowslYRFHOuh7IaHn42aBbLn/ZAx66hJfdpd2JzF8CTDR
-         GtPGvIujMOg9xKJAfdS01PqnoK0d4FvMwlg+b3nV82sh27drcs6EM2Ln2rcfoklsZZ2u
-         yfumMXIK1V+dhRHRBq3zcM5/1UHZVznqKWadKnO9CV2Cl41hqj2KwKVqLT5VdNpGagM7
-         qoTS2nBMDUsqh0fdtf8CVpiSwT1rhW1Cp7/+ErbqPWzh9hcmAayMEY8hHCmJPXU8/x3r
-         +ALg==
-X-Forwarded-Encrypted: i=1; AJvYcCUpRo2xWbqgXUZo6xRseHpG1Ffk1rrYMBsLXrPSL1AdNGRvsv6qm6ru2Da372ZUS/GwuZVyoBXQd9C7ibpsPoo=@lists.infradead.org, AJvYcCVSStKCugo+ODfBy6GWIKc7VQpCA9ZYSEjezj2PgNQxs7aeL/MuLqqUtG7BGeG6dMJF2eunyblYAzHXZNM/PX2l@lists.infradead.org
-X-Gm-Message-State: AOJu0YzZwx4AtnHhkEvJ8Pu7yUy0z6cJTRgyizS1D+eoWQ0lmlVDOP2I
-	8vqllNOsGANKevoFmgmnPGhlA+a4sthGXB91UT2+GDpfocHU3ZAvnKgJ0SMB
-X-Google-Smtp-Source: AGHT+IGY5Dz4pgmEK6u+H4dMIOw35D4e/9hhSxXD8+4Iw9UMbO9AvkfpZ6JWD1p0Ig/DDcHSjiCZSw==
-X-Received: by 2002:a17:907:a41:b0:a86:91c3:9517 with SMTP id a640c23a62f3a-a93c496167fmr87272966b.35.1727392878703;
-        Thu, 26 Sep 2024 16:21:18 -0700 (PDT)
+        bh=SRhQyVKcgRlVjIYoZT+41pIKZJrgjINAhed1beNUQXI=;
+        b=mIAbb8PBYi0QS+ItITBQyv2ubBDc/oBFsPy/kcvmcgnSatYiU6xi87WXIPX+Nn8z24
+         slJjI+gDlTXfFRob0d/SxgqxxxzdW2morMh1A4JWTveNd+z7tlV1z0YLO+XvSjsBLdjK
+         LL8FHA1TzWAV1II3L79rhBtyCXWW7qhvokAUpaQrLKtCfRMMXpLI1/aLu1tsa8a9VVZb
+         BczvJ5kBE2uFOmioiWP3YIdtquxfveuldHiue+JojrigO969KJrtIGrET8uv2Hyg4gcI
+         0Kt9eQB0fYKaFvVeEB/k5HqHDNGWgOnvg+HD1iz9ECauehk0DBQ6SXKL9BXrr1Lilk/i
+         eC9w==
+X-Forwarded-Encrypted: i=1; AJvYcCU+L0l2PoE3Y4MC0TCJIvf3Eo49xf88p4Idh0Kg3ppVm975f/jRFzU/e9J+RCvx+qMBkg5KAJUnnvrNW/B4uVWJ@lists.infradead.org, AJvYcCW3vAikN1SY/ewcimPzVYyC6g8WiE52NCUAZzUPLMF8OXsYhRGmt+u9AtTagpAq7Qk3X+bFpgvB8OjiTfu+8gI=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzQsUr/SvylunnphwjC2/3ERdVQi+2oFzFzJ/x89Cc80hbUgJw4
+	JUqRqRUP8MsQEAMLcl7z/HRvXq6/N2HcUL5w7f+9x3DfgpBzjTCxe+Gs7fBF
+X-Google-Smtp-Source: AGHT+IGd2PJRYpLODXkVXKvFBOHOE+/1R0umomGP/eN5VLC0TMztnCr42izK4H4rLnfkXKxJDXG3EA==
+X-Received: by 2002:a17:907:2d90:b0:a8d:510b:4f48 with SMTP id a640c23a62f3a-a93c491952fmr82476866b.22.1727392881724;
+        Thu, 26 Sep 2024 16:21:21 -0700 (PDT)
 Received: from [127.0.1.1] (2a02-8389-41cf-e200-3989-b03c-7705-998b.cable.dynamic.v6.surfer.at. [2a02:8389:41cf:e200:3989:b03c:7705:998b])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a93c27773c0sm50368166b.1.2024.09.26.16.21.16
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a93c27773c0sm50368166b.1.2024.09.26.16.21.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Sep 2024 16:21:18 -0700 (PDT)
+        Thu, 26 Sep 2024 16:21:21 -0700 (PDT)
 From: Javier Carrasco <javier.carrasco.cruz@gmail.com>
-Date: Fri, 27 Sep 2024 01:20:52 +0200
-Subject: [PATCH 01/18] leds: flash: mt6360: fix
- device_for_each_child_node() refcounting in error paths
+Date: Fri, 27 Sep 2024 01:20:53 +0200
+Subject: [PATCH 02/18] leds: flash: mt6370: switch to
+ device_for_each_child_node_scoped()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240927-leds_device_for_each_child_node_scoped-v1-1-95c0614b38c8@gmail.com>
+Message-Id: <20240927-leds_device_for_each_child_node_scoped-v1-2-95c0614b38c8@gmail.com>
 References: <20240927-leds_device_for_each_child_node_scoped-v1-0-95c0614b38c8@gmail.com>
 In-Reply-To: <20240927-leds_device_for_each_child_node_scoped-v1-0-95c0614b38c8@gmail.com>
 To: Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>, 
@@ -84,18 +84,18 @@ To: Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>,
 Cc: linux-leds@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, 
- Javier Carrasco <javier.carrasco.cruz@gmail.com>, stable@vger.kernel.org
+ Javier Carrasco <javier.carrasco.cruz@gmail.com>
 X-Mailer: b4 0.14-dev
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1727392874; l=1575;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1727392874; l=1546;
  i=javier.carrasco.cruz@gmail.com; s=20240312; h=from:subject:message-id;
- bh=1/lxG5uyf8ycEv9Q6sKFSvHVcULTiG1X47zomtk2GFw=;
- b=l7jxa1PVRIFHMQnforadtxXgycvAan+1W9FAPjf/oLjtSQJykU+rNGG9xia/dfVKvn20xfSza
- 2IKbNR03aEtAABYWTigl5u7JrFYAD61XGGxXgkaMcyX799cHVY4tp95
+ bh=da+yiLrVSVhzxfXeLXUvwNG1cBTZv5IPC9inOzFUOgI=;
+ b=+HkfaGOfTwfbLA3hl6LrR4cqzOrg7pu6sEXSeJ1n0Dv/N3Wgj5+SYNtD9fefjVYJnlMGIaRy1
+ uy9KHs3e49mDqhgLOoZkQSYwrgF26sZfTIiULhEDZkfR2xEXsDOl9l8
 X-Developer-Key: i=javier.carrasco.cruz@gmail.com; a=ed25519;
  pk=lzSIvIzMz0JhJrzLXI0HAdPwsNPSSmEn6RbS+PTS9aQ=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_162120_965004_907F2D2E 
-X-CRM114-Status: GOOD (  14.75  )
+X-CRM114-CacheID: sfid-20240926_162124_026875_753CC1CE 
+X-CRM114-Status: GOOD (  13.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,46 +110,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The device_for_each_child_node() macro requires explicit calls to
-fwnode_handle_put() upon early exits to avoid memory leaks, and in
-this case the error paths are handled after jumping to
-'out_flash_realease', which misses that required call to
-to decrement the refcount of the child node.
+Switch to device_for_each_child_node_scoped() to simplify the code by
+removing the need for calls to fwnode_handle_put() in the error paths.
 
-A more elegant and robust solution is using the scoped variant of the
-loop, which automatically handles such early exits.
+This also prevents possible memory leaks if new error paths are added
+without the required call to fwnode_handle_put().
 
-Fix the child node refcounting in the error paths by using
-device_for_each_child_node_scoped().
-
-Cc: stable@vger.kernel.org
-Fixes: 679f8652064b ("leds: Add mt6360 driver")
 Signed-off-by: Javier Carrasco <javier.carrasco.cruz@gmail.com>
 ---
- drivers/leds/flash/leds-mt6360.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/leds/flash/leds-mt6370-flash.c | 11 +++--------
+ 1 file changed, 3 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/leds/flash/leds-mt6360.c b/drivers/leds/flash/leds-mt6360.c
-index 4c74f1cf01f0..676236c19ec4 100644
---- a/drivers/leds/flash/leds-mt6360.c
-+++ b/drivers/leds/flash/leds-mt6360.c
-@@ -784,7 +784,6 @@ static void mt6360_v4l2_flash_release(struct mt6360_priv *priv)
- static int mt6360_led_probe(struct platform_device *pdev)
+diff --git a/drivers/leds/flash/leds-mt6370-flash.c b/drivers/leds/flash/leds-mt6370-flash.c
+index 912d9d622320..dbdbe92309db 100644
+--- a/drivers/leds/flash/leds-mt6370-flash.c
++++ b/drivers/leds/flash/leds-mt6370-flash.c
+@@ -509,7 +509,6 @@ static int mt6370_led_probe(struct platform_device *pdev)
  {
- 	struct mt6360_priv *priv;
+ 	struct device *dev = &pdev->dev;
+ 	struct mt6370_priv *priv;
 -	struct fwnode_handle *child;
  	size_t count;
  	int i = 0, ret;
  
-@@ -811,7 +810,7 @@ static int mt6360_led_probe(struct platform_device *pdev)
- 		return -ENODEV;
- 	}
+@@ -529,22 +528,18 @@ static int mt6370_led_probe(struct platform_device *pdev)
+ 	if (!priv->regmap)
+ 		return dev_err_probe(dev, -ENODEV, "Failed to get parent regmap\n");
  
--	device_for_each_child_node(&pdev->dev, child) {
-+	device_for_each_child_node_scoped(&pdev->dev, child) {
- 		struct mt6360_led *led = priv->leds + i;
- 		struct led_init_data init_data = { .fwnode = child, };
- 		u32 reg, led_color;
+-	device_for_each_child_node(dev, child) {
++	device_for_each_child_node_scoped(dev, child) {
+ 		struct mt6370_led *led = priv->leds + i;
+ 
+ 		led->priv = priv;
+ 
+ 		ret = mt6370_init_flash_properties(dev, led, child);
+-		if (ret) {
+-			fwnode_handle_put(child);
++		if (ret)
+ 			return ret;
+-		}
+ 
+ 		ret = mt6370_led_register(dev, led, child);
+-		if (ret) {
+-			fwnode_handle_put(child);
++		if (ret)
+ 			return ret;
+-		}
+ 
+ 		i++;
+ 	}
 
 -- 
 2.43.0
