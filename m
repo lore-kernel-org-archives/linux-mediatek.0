@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A377ACCF9E9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 09:04:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 211FECCF9E9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 09:05:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q/Mp6TTSyQD87OETgjb76qipVNK2zdUJJ01F9CITzdk=; b=w47KcZ7lWbmAr5iiirf4XpZdSp
-	zAXbSr0pzDdeZ25FAakVpIATc/vb65v0mGjl00JGmEKKoa+5/cqs9MC8t8AUneo59xwqzxFJ4CFGR
-	tAKj3a/C6fC+9f0NwsxhLKLouSDcrHl/7PscRzZMkIhqRCtIhMpkWFNWnSi0F0YG3w71zCmU/aORl
-	jZkesmWbsb4AK/sv1NgPcnOWFy+FDnir0MISWz5wITZ8Pc2oSzQqwfxnuB/mOIr05PRcgZTtWy5oA
-	T7BJ02vsx9vgWauzAAZP608VFlv8HV/0NADOlxRKOjEuy1KrP5LVOaM5r6N/UWYxGHeo/rwZjIOZJ
-	SH/4LTHg==;
+	bh=vIXBsuFqR2mRpGvMWg64Ws9HPUNsYuIsMBIi6QUh2Gs=; b=LF//sU52aPr1Fu9h7nINgEkWrB
+	v2gC5+MSZIJTmQyg1lRmenMUUxCo94IQfIS1twt8kxJrLEp0Z5yCfi0Whi1O+xOzvxQhXkNbGv2Ri
+	jHs323ERQ8XBCQ3Z68XcAb4QimZaHUXMyCYmfpL4alF6s2wif+BSR3VRCyyJp0FCGWiaddVf+gXLy
+	wP7sS9lE4cB+xTcKs8ITIwVGxPZvBjLIH4ch8RjRbmsdMoFFY7WwPRaLQ5fAwUh2exX4subGBnuOn
+	xwqqyZsT2aWvpfSx2+ifrEAKm8jeL9gabuXGAIn9HJM+F9vRK1CIVmZquJU047M8L7ChCQdupM2ZF
+	G1q4WJBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stkQV-00000007nh0-0rBQ;
-	Thu, 26 Sep 2024 09:04:43 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1stkQp-00000007nse-0FMs;
+	Thu, 26 Sep 2024 09:05:03 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stk9z-00000007kGp-2N2S;
-	Thu, 26 Sep 2024 08:47:41 +0000
+	id 1stkBG-00000007kYf-3g46;
+	Thu, 26 Sep 2024 08:49:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727340457;
-	bh=Vvzgd1LgiFFFjFTb0+aUplSVjTmllj9XrlLOmFGWpvw=;
+	s=mail; t=1727340537;
+	bh=0H4dM9NzilQ5XHmjN1qEbEUXxix/9JrmttrPTQq+uvI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=W7qGOs/WXTcXx3RVTvEB2eSz0bFlxfIYGcY9VZKLpS7wzZyyKhJEQKdhfCBCZWKv9
-	 9M5yQ2aIMD9mnlwpL3oETbnJqGqSCa7DWtGW9smRY1pQ9sA2H6SXCxDrGePgnGnV6B
-	 G7LV/i6hn/yhLeyBfU5SgJw4bZrVOAfBb/FVNK2qn08z9tV1PotXjmwBrJxNjvEv+O
-	 C0DoHfqKT8zEw7l+OIobUsRFyHZTP5RgvXDTRAmsqOnK8I+f4QN33YFAnmdJL8ykb+
-	 X8sROyY544rjCZ5yvcOvQdlCNze3jQuNlxypIAGUuOIi+k4iULFsbHZFUgYhmh4Qn/
-	 sPYjix2VxY4Vg==
-Received: from [192.168.50.250] (unknown [171.76.80.165])
+	b=IGGNyu2GGhL861wp8iuj8doPxLtpFHdGi+14N43mzCZfjm5A5rwcPIYKHY1VMQXhr
+	 aggqvQMkA7uulzyzM1aBKZZ2yRP2uF3rjA8qHkaRJxSRzjrkFsWai5YAkG5Cqqeg45
+	 3Ycgkq5ttycO9PjosJ+zp6gIxNP3cNYhNEAFHKNTfZ/xGP+6AFnBbn6jq5rHF/Tl4p
+	 6E1XqaooOWMIA3YoFskEJkzmczduIivnTIqspTnh1tuRShqiTcFmrqlYGWCyb4X5HS
+	 IN75tPtPoNPClqOcM7CNdas3CVEC+40k9KEK4+3vVMTzeMBQ4x/sdlWJMD/yEvPAP9
+	 aZceBE4nfxWag==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 50E1317E1048;
-	Thu, 26 Sep 2024 10:47:34 +0200 (CEST)
-Message-ID: <9470f582-7873-42c6-b5a5-35f841e4f693@collabora.com>
-Date: Thu, 26 Sep 2024 14:17:04 +0530
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A9D5717E107A;
+	Thu, 26 Sep 2024 10:48:56 +0200 (CEST)
+Message-ID: <e3eabcc4-1174-4a58-a084-d37467f63ced@collabora.com>
+Date: Thu, 26 Sep 2024 10:48:56 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] docs/gpu: ci: update flake tests requirements
-To: Maxime Ripard <mripard@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
- helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
- robdclark@gmail.com, guilherme.gallo@collabora.com,
- sergi.blanch.torne@collabora.com, deborah.brouwer@collabora.com,
- dmitry.baryshkov@linaro.org, rodrigo.vivi@intel.com,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- virtualization@lists.linux.dev, linux-kernel@vger.kernel.org
-References: <20240926070653.1773597-1-vignesh.raman@collabora.com>
- <20240926-athletic-gregarious-markhor-cc78ac@houat>
+Subject: Re: [PATCH v8 3/3] pmdomain: mediatek: Use OF-specific regulator API
+ to get power domain supply
+To: Chen-Yu Tsai <wenst@chromium.org>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org, Douglas Anderson <dianders@chromium.org>,
+ Johan Hovold <johan@kernel.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+References: <20240925093807.1026949-1-wenst@chromium.org>
+ <20240925093807.1026949-4-wenst@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <20240926-athletic-gregarious-markhor-cc78ac@houat>
+In-Reply-To: <20240925093807.1026949-4-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_014739_793453_1147538A 
-X-CRM114-Status: GOOD (  17.92  )
+X-CRM114-CacheID: sfid-20240926_014859_272169_06D47CBA 
+X-CRM114-Status: GOOD (  32.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,67 +82,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
-
-On 26/09/24 12:56, Maxime Ripard wrote:
-> On Thu, Sep 26, 2024 at 12:36:49PM GMT, Vignesh Raman wrote:
->> Update the documentation to require linking to a relevant GitLab
->> issue for each new flake entry instead of an email report. Added
->> specific GitLab issue URLs for i915, xe and other drivers.
->>
->> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
->> ---
->>
->> v2:
->> - Add gitlab issue link for msm driver.
->>
->> ---
->>   Documentation/gpu/automated_testing.rst | 16 +++++++++++-----
->>   1 file changed, 11 insertions(+), 5 deletions(-)
->>
->> diff --git a/Documentation/gpu/automated_testing.rst b/Documentation/gpu/automated_testing.rst
->> index 2d5a28866afe..f918fe56f2b0 100644
->> --- a/Documentation/gpu/automated_testing.rst
->> +++ b/Documentation/gpu/automated_testing.rst
->> @@ -67,20 +67,26 @@ Lists the tests that for a given driver on a specific hardware revision are
->>   known to behave unreliably. These tests won't cause a job to fail regardless of
->>   the result. They will still be run.
->>   
->> -Each new flake entry must be associated with a link to the email reporting the
->> -bug to the author of the affected driver, the board name or Device Tree name of
->> -the board, the first kernel version affected, the IGT version used for tests,
->> -and an approximation of the failure rate.
->> +Each new flake entry must include a link to the relevant GitLab issue, the board
->> +name or Device Tree name, the first kernel version affected, the IGT version used
->> +for tests and an approximation of the failure rate.
->>   
->>   They should be provided under the following format::
->>   
->> -  # Bug Report: $LORE_OR_PATCHWORK_URL
->> +  # Bug Report: $GITLAB_ISSUE
->>     # Board Name: broken-board.dtb
->>     # Linux Version: 6.6-rc1
->>     # IGT Version: 1.28-gd2af13d9f
->>     # Failure Rate: 100
->>     flaky-test
->>   
->> +The GitLab issue must include the logs and the pipeline link. Use the appropriate
->> +link below to create an issue.
->> +https://gitlab.freedesktop.org/drm/i915/kernel/-/issues for i915 driver
->> +https://gitlab.freedesktop.org/drm/xe/kernel/-/issues for xe driver
->> +https://gitlab.freedesktop.org/drm/msm/-/issues for msm driver
->> +https://gitlab.freedesktop.org/drm/misc/kernel/-/issues for other drivers
->> +
+Il 25/09/24 11:38, Chen-Yu Tsai ha scritto:
+> The MediaTek power domain driver contains a hack that assigns the device
+> node of the power domain to the struct device of the power domain
+> controller in order to use the devres regulator API.
 > 
-> I can't comment for the others, but drm-misc at least still requires
-> reporting issues by mail, so, no, sorry, we can't switch to gitlab only
-> for now.
+> Now that there is a proper OF-specific regulator API, and even a devres
+> version, replace the hack with proper code.
+> 
+> This change is incompatible with incomplete device trees. Instead of
+> assigning the dummy regulator in cases where the power domain requires
+> a supply but the device tree does not provide one, the driver will just
+> error out. This will be seen on the MT8390 EVK, which is missing
+> supplies for the IMG_VCORE and CAM_VCORE domains. And likely all the
+> MediaTek EVBs, which have no power domain supplies specified. This is
+> however the correct behavior. If the power domain's supply is missing,
+> then it should not work. Relying on other parts of the system to keep
+> the unattached regulator enabled is likely to break in ways less easier
+> to understand.
+> 
 
-In https://gitlab.freedesktop.org/drm/ we have xe, i915, msm, nouveau, 
-and amd (only for issues). In drm-ci we test i915, msm and amd.
-So I will add GitLab links for these and for other drivers use email 
-reporting. I will reword this section. Thanks.
+Breaking something that was "working" (not really working though) before is a
+hard thing to justify, but I feel like this is one of the cases in which we
+have to swallow the pill.
 
-Regards,
-Vignesh
+This is a hack that I've always been angry about, and causing all sorts of
+random issues on MediaTek SoCs from time to time... that was fixed multiple
+times by hacking the previous hack which was needed for this hack to still
+work in a way or another.
+
+I am tempted to give you a R-b right now, but let me carefully test this on
+multiple devices before that.
+
+Meanwhile, I just wanted to say that I agree with you about this commit and
+wanted to give a bit more context to people reading "this breaks things" so
+that they can understand what's going on (and that we're not crazy! ..or at
+least, not *that* much :-P).
+
+Cheers,
+Angelo
+
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+> Changes since v7:
+> - New patch
+> 
+> The other option is to follow what Rockchip will be doing: getting the
+> regulator supply upon first use / enable [1]. This will result in less
+> breakage: only the power domain that is missing its supplies will fail
+> to be attached.
+> 
+> [1] https://lore.kernel.org/all/20240919091834.83572-6-sebastian.reichel@collabora.com/
+> ---
+>   drivers/pmdomain/mediatek/mtk-pm-domains.c | 12 +-----------
+>   1 file changed, 1 insertion(+), 11 deletions(-)
+> 
+> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> index 88406e9ac63c..3580913f25d3 100644
+> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> @@ -353,7 +353,6 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+>   {
+>   	const struct scpsys_domain_data *domain_data;
+>   	struct scpsys_domain *pd;
+> -	struct device_node *root_node = scpsys->dev->of_node;
+>   	struct device_node *smi_node;
+>   	struct property *prop;
+>   	const char *clk_name;
+> @@ -388,16 +387,7 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+>   	pd->scpsys = scpsys;
+>   
+>   	if (MTK_SCPD_CAPS(pd, MTK_SCPD_DOMAIN_SUPPLY)) {
+> -		/*
+> -		 * Find regulator in current power domain node.
+> -		 * devm_regulator_get() finds regulator in a node and its child
+> -		 * node, so set of_node to current power domain node then change
+> -		 * back to original node after regulator is found for current
+> -		 * power domain node.
+> -		 */
+> -		scpsys->dev->of_node = node;
+> -		pd->supply = devm_regulator_get(scpsys->dev, "domain");
+> -		scpsys->dev->of_node = root_node;
+> +		pd->supply = devm_of_regulator_get_optional(scpsys->dev, node, "domain");
+>   		if (IS_ERR(pd->supply))
+>   			return dev_err_cast_probe(scpsys->dev, pd->supply,
+>   				      "%pOF: failed to get power supply.\n",
+
+
+
 
