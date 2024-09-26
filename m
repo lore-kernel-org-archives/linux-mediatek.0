@@ -4,70 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 211FECCF9E9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 09:05:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86EDECCF9E9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 09:11:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vIXBsuFqR2mRpGvMWg64Ws9HPUNsYuIsMBIi6QUh2Gs=; b=LF//sU52aPr1Fu9h7nINgEkWrB
-	v2gC5+MSZIJTmQyg1lRmenMUUxCo94IQfIS1twt8kxJrLEp0Z5yCfi0Whi1O+xOzvxQhXkNbGv2Ri
-	jHs323ERQ8XBCQ3Z68XcAb4QimZaHUXMyCYmfpL4alF6s2wif+BSR3VRCyyJp0FCGWiaddVf+gXLy
-	wP7sS9lE4cB+xTcKs8ITIwVGxPZvBjLIH4ch8RjRbmsdMoFFY7WwPRaLQ5fAwUh2exX4subGBnuOn
-	xwqqyZsT2aWvpfSx2+ifrEAKm8jeL9gabuXGAIn9HJM+F9vRK1CIVmZquJU047M8L7ChCQdupM2ZF
-	G1q4WJBg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=B2aHoTI5V+zV5yw/uMgC65zUMXg/CTU9Y47L8pUA05Y=; b=zJOZ9kI/bZkwsLLazmWbKJo7cg
+	Kx/td2YkKfaU6St3HM10Fxyzr0SrF7eWSeAb7NEmQm7ep7BdApI/pLignh3iUzy/4XMl3liBApHNK
+	BFSzR6o3RzN9zF8NJr35sQZ3cw0+gBrROlZkR88xHIZ3R1cafyP1VplYEE1oFcVNFRtmbeRLtYOR2
+	hwwRl7PogO2lZiJOlEKxcc+KIZGxLDGlCA8NBMx14AMVRHKLMQmXN1sdk63IIBcghPkVBmKiAVoU2
+	bWsY4WvVeFy2T/r+o9957KSdebKMHygY/ApAwgJWyj5IISw7tr8qo/lUd/0/HSdoBtmjTZWvMK6xx
+	JIA6Osqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stkQp-00000007nse-0FMs;
-	Thu, 26 Sep 2024 09:05:03 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1stkXR-00000007pS1-1nIF;
+	Thu, 26 Sep 2024 09:11:53 +0000
+Received: from mgamail.intel.com ([198.175.65.19])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stkBG-00000007kYf-3g46;
-	Thu, 26 Sep 2024 08:49:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727340537;
-	bh=0H4dM9NzilQ5XHmjN1qEbEUXxix/9JrmttrPTQq+uvI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=IGGNyu2GGhL861wp8iuj8doPxLtpFHdGi+14N43mzCZfjm5A5rwcPIYKHY1VMQXhr
-	 aggqvQMkA7uulzyzM1aBKZZ2yRP2uF3rjA8qHkaRJxSRzjrkFsWai5YAkG5Cqqeg45
-	 3Ycgkq5ttycO9PjosJ+zp6gIxNP3cNYhNEAFHKNTfZ/xGP+6AFnBbn6jq5rHF/Tl4p
-	 6E1XqaooOWMIA3YoFskEJkzmczduIivnTIqspTnh1tuRShqiTcFmrqlYGWCyb4X5HS
-	 IN75tPtPoNPClqOcM7CNdas3CVEC+40k9KEK4+3vVMTzeMBQ4x/sdlWJMD/yEvPAP9
-	 aZceBE4nfxWag==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A9D5717E107A;
-	Thu, 26 Sep 2024 10:48:56 +0200 (CEST)
-Message-ID: <e3eabcc4-1174-4a58-a084-d37467f63ced@collabora.com>
-Date: Thu, 26 Sep 2024 10:48:56 +0200
+	id 1stkQu-00000007ntl-22pT;
+	Thu, 26 Sep 2024 09:05:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1727341509; x=1758877509;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=b6+jCnC/FvdrNVDaDF8tNm/ESaNNunVryxNFP3hGpHE=;
+  b=lRGws5sTDiilQDSSiqNhhYcEk2zSnjoXIVe+PN4wmAHo/DO3IvH+s7Q7
+   r7Q3xq4UcimK+x8i4QBNqAAgYly1JGgbvBcL47FqsSkCJWkg+FGp4djvR
+   pv8PezeeNYj/YAm/y2Rxrs/kP9yPHDfTpRANIcEYdXnJNfP2494I+lyUC
+   Steyc1O0yVLqPakZ/eVoT4LqgvxwvnTLBg5o5Y7xZX5wt1f923qHsxSR3
+   8x8QnhErEqGcie4NuaAD33F8fms09fQ6NxCNNPbt0sZmxK+zsR62SLVux
+   2Ze4JRshFe9HFnj0/6wQM+5B8y5Ug3OVJ+4GsASsUaZXC4LP1JrUy7K1v
+   w==;
+X-CSE-ConnectionGUID: /uQ3Zuu9QnSwrQHyNoE1kw==
+X-CSE-MsgGUID: ChXUCYwISdGTW9AzR5kvVg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11206"; a="26291592"
+X-IronPort-AV: E=Sophos;i="6.10,259,1719903600"; 
+   d="scan'208";a="26291592"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Sep 2024 02:04:09 -0700
+X-CSE-ConnectionGUID: t6xjhyVyQwGjSswn/cVXqQ==
+X-CSE-MsgGUID: HeO2LAgeQzupJqZuXX6N8w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,260,1719903600"; 
+   d="scan'208";a="72877919"
+Received: from lkp-server01.sh.intel.com (HELO 53e96f405c61) ([10.239.97.150])
+  by orviesa008.jf.intel.com with ESMTP; 26 Sep 2024 02:04:05 -0700
+Received: from kbuild by 53e96f405c61 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1stkPr-000KUr-09;
+	Thu, 26 Sep 2024 09:04:03 +0000
+Date: Thu, 26 Sep 2024 17:03:37 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+	Alper Nebi Yasak <alpernebiyasak@gmail.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	Shawn Sung <shawn.sung@mediatek.com>,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
+	Singo Chang <singo.chang@mediatek.com>,
+	Nancy Lin <nancy.lin@mediatek.com>,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v5 2/2] drm/mediatek: Add blend_modes to mtk_plane_init()
+ for different SoCs
+Message-ID: <202409261653.FyqBL1w8-lkp@intel.com>
+References: <20240925101927.17042-3-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 3/3] pmdomain: mediatek: Use OF-specific regulator API
- to get power domain supply
-To: Chen-Yu Tsai <wenst@chromium.org>, Ulf Hansson <ulf.hansson@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, Douglas Anderson <dianders@chromium.org>,
- Johan Hovold <johan@kernel.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>
-References: <20240925093807.1026949-1-wenst@chromium.org>
- <20240925093807.1026949-4-wenst@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240925093807.1026949-4-wenst@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240925101927.17042-3-jason-jh.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_014859_272169_06D47CBA 
-X-CRM114-Status: GOOD (  32.16  )
+X-CRM114-CacheID: sfid-20240926_020508_694189_5D51AA2C 
+X-CRM114-Status: GOOD (  12.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,92 +96,322 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/09/24 11:38, Chen-Yu Tsai ha scritto:
-> The MediaTek power domain driver contains a hack that assigns the device
-> node of the power domain to the struct device of the power domain
-> controller in order to use the devres regulator API.
-> 
-> Now that there is a proper OF-specific regulator API, and even a devres
-> version, replace the hack with proper code.
-> 
-> This change is incompatible with incomplete device trees. Instead of
-> assigning the dummy regulator in cases where the power domain requires
-> a supply but the device tree does not provide one, the driver will just
-> error out. This will be seen on the MT8390 EVK, which is missing
-> supplies for the IMG_VCORE and CAM_VCORE domains. And likely all the
-> MediaTek EVBs, which have no power domain supplies specified. This is
-> however the correct behavior. If the power domain's supply is missing,
-> then it should not work. Relying on other parts of the system to keep
-> the unattached regulator enabled is likely to break in ways less easier
-> to understand.
-> 
+Hi Jason-JH.Lin,
 
-Breaking something that was "working" (not really working though) before is a
-hard thing to justify, but I feel like this is one of the cases in which we
-have to swallow the pill.
+kernel test robot noticed the following build warnings:
 
-This is a hack that I've always been angry about, and causing all sorts of
-random issues on MediaTek SoCs from time to time... that was fixed multiple
-times by hacking the previous hack which was needed for this hack to still
-work in a way or another.
+[auto build test WARNING on drm/drm-next]
+[also build test WARNING on linus/master next-20240926]
+[cannot apply to v6.11]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-I am tempted to give you a R-b right now, but let me carefully test this on
-multiple devices before that.
+url:    https://github.com/intel-lab-lkp/linux/commits/Jason-JH-Lin/drm-mediatek-ovl-Add-fmt_convert-function-pointer-to-driver-data/20240925-182056
+base:   git://anongit.freedesktop.org/drm/drm drm-next
+patch link:    https://lore.kernel.org/r/20240925101927.17042-3-jason-jh.lin%40mediatek.com
+patch subject: [PATCH v5 2/2] drm/mediatek: Add blend_modes to mtk_plane_init() for different SoCs
+config: arm64-allmodconfig (https://download.01.org/0day-ci/archive/20240926/202409261653.FyqBL1w8-lkp@intel.com/config)
+compiler: clang version 20.0.0git (https://github.com/llvm/llvm-project 7773243d9916f98ba0ffce0c3a960e4aa9f03e81)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240926/202409261653.FyqBL1w8-lkp@intel.com/reproduce)
 
-Meanwhile, I just wanted to say that I agree with you about this commit and
-wanted to give a bit more context to people reading "this breaks things" so
-that they can understand what's going on (and that we're not crazy! ..or at
-least, not *that* much :-P).
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202409261653.FyqBL1w8-lkp@intel.com/
 
-Cheers,
-Angelo
+All warnings (new ones prefixed by >>):
 
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
-> Changes since v7:
-> - New patch
-> 
-> The other option is to follow what Rockchip will be doing: getting the
-> regulator supply upon first use / enable [1]. This will result in less
-> breakage: only the power domain that is missing its supplies will fail
-> to be attached.
-> 
-> [1] https://lore.kernel.org/all/20240919091834.83572-6-sebastian.reichel@collabora.com/
-> ---
->   drivers/pmdomain/mediatek/mtk-pm-domains.c | 12 +-----------
->   1 file changed, 1 insertion(+), 11 deletions(-)
-> 
-> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> index 88406e9ac63c..3580913f25d3 100644
-> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> @@ -353,7 +353,6 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
->   {
->   	const struct scpsys_domain_data *domain_data;
->   	struct scpsys_domain *pd;
-> -	struct device_node *root_node = scpsys->dev->of_node;
->   	struct device_node *smi_node;
->   	struct property *prop;
->   	const char *clk_name;
-> @@ -388,16 +387,7 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
->   	pd->scpsys = scpsys;
->   
->   	if (MTK_SCPD_CAPS(pd, MTK_SCPD_DOMAIN_SUPPLY)) {
-> -		/*
-> -		 * Find regulator in current power domain node.
-> -		 * devm_regulator_get() finds regulator in a node and its child
-> -		 * node, so set of_node to current power domain node then change
-> -		 * back to original node after regulator is found for current
-> -		 * power domain node.
-> -		 */
-> -		scpsys->dev->of_node = node;
-> -		pd->supply = devm_regulator_get(scpsys->dev, "domain");
-> -		scpsys->dev->of_node = root_node;
-> +		pd->supply = devm_of_regulator_get_optional(scpsys->dev, node, "domain");
->   		if (IS_ERR(pd->supply))
->   			return dev_err_cast_probe(scpsys->dev, pd->supply,
->   				      "%pOF: failed to get power supply.\n",
+   In file included from drivers/gpu/drm/mediatek/mtk_crtc.c:7:
+   In file included from include/linux/dma-mapping.h:11:
+   In file included from include/linux/scatterlist.h:8:
+   In file included from include/linux/mm.h:2232:
+   include/linux/vmstat.h:503:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
+     503 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
+     504 |                            item];
+         |                            ~~~~
+   include/linux/vmstat.h:510:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
+     510 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
+     511 |                            NR_VM_NUMA_EVENT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/vmstat.h:517:36: warning: arithmetic between different enumeration types ('enum node_stat_item' and 'enum lru_list') [-Wenum-enum-conversion]
+     517 |         return node_stat_name(NR_LRU_BASE + lru) + 3; // skip "nr_"
+         |                               ~~~~~~~~~~~ ^ ~~~
+   include/linux/vmstat.h:523:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
+     523 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
+     524 |                            NR_VM_NUMA_EVENT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~~
+   In file included from drivers/gpu/drm/mediatek/mtk_crtc.c:22:
+   In file included from drivers/gpu/drm/mediatek/mtk_crtc.h:10:
+>> drivers/gpu/drm/mediatek/mtk_ddp_comp.h:83:2: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+      83 |         const u32 (*get_blend_modes)(struct device *dev);
+         |         ^~~~~
+   drivers/gpu/drm/mediatek/mtk_ddp_comp.h:271:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     271 | const u32 mtk_ddp_comp_get_blend_modes(struct mtk_ddp_comp *comp)
+         | ^~~~~
+   6 warnings generated.
+--
+   In file included from drivers/gpu/drm/mediatek/mtk_ddp_comp.c:17:
+   In file included from drivers/gpu/drm/mediatek/mtk_crtc.h:9:
+   In file included from include/drm/drm_crtc.h:32:
+   In file included from include/drm/drm_modes.h:33:
+   In file included from include/drm/drm_connector.h:32:
+   In file included from include/drm/drm_util.h:36:
+   In file included from include/linux/kgdb.h:19:
+   In file included from include/linux/kprobes.h:28:
+   In file included from include/linux/ftrace.h:13:
+   In file included from include/linux/kallsyms.h:13:
+   In file included from include/linux/mm.h:2232:
+   include/linux/vmstat.h:503:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
+     503 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
+     504 |                            item];
+         |                            ~~~~
+   include/linux/vmstat.h:510:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
+     510 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
+     511 |                            NR_VM_NUMA_EVENT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/vmstat.h:517:36: warning: arithmetic between different enumeration types ('enum node_stat_item' and 'enum lru_list') [-Wenum-enum-conversion]
+     517 |         return node_stat_name(NR_LRU_BASE + lru) + 3; // skip "nr_"
+         |                               ~~~~~~~~~~~ ^ ~~~
+   include/linux/vmstat.h:523:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
+     523 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
+     524 |                            NR_VM_NUMA_EVENT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~~
+   In file included from drivers/gpu/drm/mediatek/mtk_ddp_comp.c:17:
+   In file included from drivers/gpu/drm/mediatek/mtk_crtc.h:10:
+>> drivers/gpu/drm/mediatek/mtk_ddp_comp.h:83:2: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+      83 |         const u32 (*get_blend_modes)(struct device *dev);
+         |         ^~~~~
+   drivers/gpu/drm/mediatek/mtk_ddp_comp.h:271:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     271 | const u32 mtk_ddp_comp_get_blend_modes(struct mtk_ddp_comp *comp)
+         | ^~~~~
+   In file included from drivers/gpu/drm/mediatek/mtk_ddp_comp.c:19:
+>> drivers/gpu/drm/mediatek/mtk_disp_drv.h:106:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     106 | const u32 mtk_ovl_get_blend_modes(struct device *dev);
+         | ^~~~~
+   drivers/gpu/drm/mediatek/mtk_disp_drv.h:135:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     135 | const u32 mtk_ovl_adaptor_get_blend_modes(struct device *dev);
+         | ^~~~~
+   drivers/gpu/drm/mediatek/mtk_disp_drv.h:170:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     170 | const u32 mtk_mdp_rdma_get_blend_modes(struct device *dev);
+         | ^~~~~
+   9 warnings generated.
+--
+   In file included from drivers/gpu/drm/mediatek/mtk_disp_ovl.c:18:
+   In file included from drivers/gpu/drm/mediatek/mtk_crtc.h:9:
+   In file included from include/drm/drm_crtc.h:32:
+   In file included from include/drm/drm_modes.h:33:
+   In file included from include/drm/drm_connector.h:32:
+   In file included from include/drm/drm_util.h:36:
+   In file included from include/linux/kgdb.h:19:
+   In file included from include/linux/kprobes.h:28:
+   In file included from include/linux/ftrace.h:13:
+   In file included from include/linux/kallsyms.h:13:
+   In file included from include/linux/mm.h:2232:
+   include/linux/vmstat.h:503:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
+     503 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
+     504 |                            item];
+         |                            ~~~~
+   include/linux/vmstat.h:510:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
+     510 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
+     511 |                            NR_VM_NUMA_EVENT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/vmstat.h:517:36: warning: arithmetic between different enumeration types ('enum node_stat_item' and 'enum lru_list') [-Wenum-enum-conversion]
+     517 |         return node_stat_name(NR_LRU_BASE + lru) + 3; // skip "nr_"
+         |                               ~~~~~~~~~~~ ^ ~~~
+   include/linux/vmstat.h:523:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
+     523 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
+     524 |                            NR_VM_NUMA_EVENT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~~
+   In file included from drivers/gpu/drm/mediatek/mtk_disp_ovl.c:18:
+   In file included from drivers/gpu/drm/mediatek/mtk_crtc.h:10:
+>> drivers/gpu/drm/mediatek/mtk_ddp_comp.h:83:2: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+      83 |         const u32 (*get_blend_modes)(struct device *dev);
+         |         ^~~~~
+   drivers/gpu/drm/mediatek/mtk_ddp_comp.h:271:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     271 | const u32 mtk_ddp_comp_get_blend_modes(struct mtk_ddp_comp *comp)
+         | ^~~~~
+   In file included from drivers/gpu/drm/mediatek/mtk_disp_ovl.c:20:
+>> drivers/gpu/drm/mediatek/mtk_disp_drv.h:106:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     106 | const u32 mtk_ovl_get_blend_modes(struct device *dev);
+         | ^~~~~
+   drivers/gpu/drm/mediatek/mtk_disp_drv.h:135:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     135 | const u32 mtk_ovl_adaptor_get_blend_modes(struct device *dev);
+         | ^~~~~
+   drivers/gpu/drm/mediatek/mtk_disp_drv.h:170:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     170 | const u32 mtk_mdp_rdma_get_blend_modes(struct device *dev);
+         | ^~~~~
+>> drivers/gpu/drm/mediatek/mtk_disp_ovl.c:219:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     219 | const u32 mtk_ovl_get_blend_modes(struct device *dev)
+         | ^~~~~
+   10 warnings generated.
+--
+   In file included from drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c:7:
+   In file included from include/drm/drm_of.h:8:
+   In file included from include/drm/drm_bridge.h:30:
+   In file included from include/drm/drm_atomic.h:31:
+   In file included from include/drm/drm_crtc.h:32:
+   In file included from include/drm/drm_modes.h:33:
+   In file included from include/drm/drm_connector.h:32:
+   In file included from include/drm/drm_util.h:36:
+   In file included from include/linux/kgdb.h:19:
+   In file included from include/linux/kprobes.h:28:
+   In file included from include/linux/ftrace.h:13:
+   In file included from include/linux/kallsyms.h:13:
+   In file included from include/linux/mm.h:2232:
+   include/linux/vmstat.h:503:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
+     503 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
+     504 |                            item];
+         |                            ~~~~
+   include/linux/vmstat.h:510:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
+     510 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
+     511 |                            NR_VM_NUMA_EVENT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/vmstat.h:517:36: warning: arithmetic between different enumeration types ('enum node_stat_item' and 'enum lru_list') [-Wenum-enum-conversion]
+     517 |         return node_stat_name(NR_LRU_BASE + lru) + 3; // skip "nr_"
+         |                               ~~~~~~~~~~~ ^ ~~~
+   include/linux/vmstat.h:523:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
+     523 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
+     524 |                            NR_VM_NUMA_EVENT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~~
+   In file included from drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c:20:
+>> drivers/gpu/drm/mediatek/mtk_ddp_comp.h:83:2: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+      83 |         const u32 (*get_blend_modes)(struct device *dev);
+         |         ^~~~~
+   drivers/gpu/drm/mediatek/mtk_ddp_comp.h:271:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     271 | const u32 mtk_ddp_comp_get_blend_modes(struct mtk_ddp_comp *comp)
+         | ^~~~~
+   In file included from drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c:21:
+>> drivers/gpu/drm/mediatek/mtk_disp_drv.h:106:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     106 | const u32 mtk_ovl_get_blend_modes(struct device *dev);
+         | ^~~~~
+   drivers/gpu/drm/mediatek/mtk_disp_drv.h:135:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     135 | const u32 mtk_ovl_adaptor_get_blend_modes(struct device *dev);
+         | ^~~~~
+   drivers/gpu/drm/mediatek/mtk_disp_drv.h:170:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     170 | const u32 mtk_mdp_rdma_get_blend_modes(struct device *dev);
+         | ^~~~~
+>> drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c:403:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     403 | const u32 mtk_ovl_adaptor_get_blend_modes(struct device *dev)
+         | ^~~~~
+   10 warnings generated.
+--
+   In file included from drivers/gpu/drm/mediatek/mtk_mdp_rdma.c:15:
+   In file included from drivers/gpu/drm/mediatek/mtk_disp_drv.h:13:
+   In file included from drivers/gpu/drm/mediatek/mtk_plane.h:10:
+   In file included from include/drm/drm_crtc.h:32:
+   In file included from include/drm/drm_modes.h:33:
+   In file included from include/drm/drm_connector.h:32:
+   In file included from include/drm/drm_util.h:36:
+   In file included from include/linux/kgdb.h:19:
+   In file included from include/linux/kprobes.h:28:
+   In file included from include/linux/ftrace.h:13:
+   In file included from include/linux/kallsyms.h:13:
+   In file included from include/linux/mm.h:2232:
+   include/linux/vmstat.h:503:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
+     503 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
+     504 |                            item];
+         |                            ~~~~
+   include/linux/vmstat.h:510:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
+     510 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
+     511 |                            NR_VM_NUMA_EVENT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/vmstat.h:517:36: warning: arithmetic between different enumeration types ('enum node_stat_item' and 'enum lru_list') [-Wenum-enum-conversion]
+     517 |         return node_stat_name(NR_LRU_BASE + lru) + 3; // skip "nr_"
+         |                               ~~~~~~~~~~~ ^ ~~~
+   include/linux/vmstat.h:523:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
+     523 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
+     524 |                            NR_VM_NUMA_EVENT_ITEMS +
+         |                            ~~~~~~~~~~~~~~~~~~~~~~
+   In file included from drivers/gpu/drm/mediatek/mtk_mdp_rdma.c:15:
+>> drivers/gpu/drm/mediatek/mtk_disp_drv.h:106:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     106 | const u32 mtk_ovl_get_blend_modes(struct device *dev);
+         | ^~~~~
+   drivers/gpu/drm/mediatek/mtk_disp_drv.h:135:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     135 | const u32 mtk_ovl_adaptor_get_blend_modes(struct device *dev);
+         | ^~~~~
+   drivers/gpu/drm/mediatek/mtk_disp_drv.h:170:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     170 | const u32 mtk_mdp_rdma_get_blend_modes(struct device *dev);
+         | ^~~~~
+   In file included from drivers/gpu/drm/mediatek/mtk_mdp_rdma.c:16:
+   In file included from drivers/gpu/drm/mediatek/mtk_drm_drv.h:10:
+>> drivers/gpu/drm/mediatek/mtk_ddp_comp.h:83:2: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+      83 |         const u32 (*get_blend_modes)(struct device *dev);
+         |         ^~~~~
+   drivers/gpu/drm/mediatek/mtk_ddp_comp.h:271:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     271 | const u32 mtk_ddp_comp_get_blend_modes(struct mtk_ddp_comp *comp)
+         | ^~~~~
+>> drivers/gpu/drm/mediatek/mtk_mdp_rdma.c:236:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
+     236 | const u32 mtk_mdp_rdma_get_blend_modes(struct device *dev)
+         | ^~~~~
+   10 warnings generated.
 
 
+vim +/const +83 drivers/gpu/drm/mediatek/mtk_ddp_comp.h
 
+    48	
+    49	struct mtk_ddp_comp;
+    50	struct cmdq_pkt;
+    51	struct mtk_ddp_comp_funcs {
+    52		int (*power_on)(struct device *dev);
+    53		void (*power_off)(struct device *dev);
+    54		int (*clk_enable)(struct device *dev);
+    55		void (*clk_disable)(struct device *dev);
+    56		void (*config)(struct device *dev, unsigned int w,
+    57			       unsigned int h, unsigned int vrefresh,
+    58			       unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
+    59		void (*start)(struct device *dev);
+    60		void (*stop)(struct device *dev);
+    61		void (*register_vblank_cb)(struct device *dev,
+    62					   void (*vblank_cb)(void *),
+    63					   void *vblank_cb_data);
+    64		void (*unregister_vblank_cb)(struct device *dev);
+    65		void (*enable_vblank)(struct device *dev);
+    66		void (*disable_vblank)(struct device *dev);
+    67		unsigned int (*supported_rotations)(struct device *dev);
+    68		unsigned int (*layer_nr)(struct device *dev);
+    69		int (*layer_check)(struct device *dev,
+    70				   unsigned int idx,
+    71				   struct mtk_plane_state *state);
+    72		void (*layer_config)(struct device *dev, unsigned int idx,
+    73				     struct mtk_plane_state *state,
+    74				     struct cmdq_pkt *cmdq_pkt);
+    75		unsigned int (*gamma_get_lut_size)(struct device *dev);
+    76		void (*gamma_set)(struct device *dev,
+    77				  struct drm_crtc_state *state);
+    78		void (*bgclr_in_on)(struct device *dev);
+    79		void (*bgclr_in_off)(struct device *dev);
+    80		void (*ctm_set)(struct device *dev,
+    81				struct drm_crtc_state *state);
+    82		struct device * (*dma_dev_get)(struct device *dev);
+  > 83		const u32 (*get_blend_modes)(struct device *dev);
+    84		const u32 *(*get_formats)(struct device *dev);
+    85		size_t (*get_num_formats)(struct device *dev);
+    86		void (*connect)(struct device *dev, struct device *mmsys_dev, unsigned int next);
+    87		void (*disconnect)(struct device *dev, struct device *mmsys_dev, unsigned int next);
+    88		void (*add)(struct device *dev, struct mtk_mutex *mutex);
+    89		void (*remove)(struct device *dev, struct mtk_mutex *mutex);
+    90		unsigned int (*encoder_index)(struct device *dev);
+    91		enum drm_mode_status (*mode_valid)(struct device *dev, const struct drm_display_mode *mode);
+    92	};
+    93	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
