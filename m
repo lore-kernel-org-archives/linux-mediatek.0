@@ -4,82 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A82E8CCF9E9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 09:01:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A377ACCF9E9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 09:04:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gznSMtiYcyR3w+ziWE7zvvdEk/47hMv313+7HUPIjik=; b=KMVThjmx2ZK72G8BLClY2QGI/c
-	v7zrGvBkmCIlEnp1pZcxjbIKX9K18TbAPcnla2ZKl3vuxxM365zUMM5cowe/gdrSorDHo2pKrBqkH
-	EmoXsmZCZDYb5BV+g/HqwKNq/UBcBCpEeo7Jni3v3/fVeBWy9qF0fP7jcD0aFOjscWEn73kabPYAn
-	UpcUKqU/DhanasqVPZIrvK1fCXhmsYZI5RfxybyORDpkRNbGfLVwhksK75E++1TgIYzFRmNxaDeiZ
-	lo/32/NbuORQQF37SHy7C7+8mmX9tiS6UgSVJ1ztIXCQSwPX6+BgDTU49sW2Q3/x6MhEkVfYXnvhe
-	B+L+e52g==;
+	bh=q/Mp6TTSyQD87OETgjb76qipVNK2zdUJJ01F9CITzdk=; b=w47KcZ7lWbmAr5iiirf4XpZdSp
+	zAXbSr0pzDdeZ25FAakVpIATc/vb65v0mGjl00JGmEKKoa+5/cqs9MC8t8AUneo59xwqzxFJ4CFGR
+	tAKj3a/C6fC+9f0NwsxhLKLouSDcrHl/7PscRzZMkIhqRCtIhMpkWFNWnSi0F0YG3w71zCmU/aORl
+	jZkesmWbsb4AK/sv1NgPcnOWFy+FDnir0MISWz5wITZ8Pc2oSzQqwfxnuB/mOIr05PRcgZTtWy5oA
+	T7BJ02vsx9vgWauzAAZP608VFlv8HV/0NADOlxRKOjEuy1KrP5LVOaM5r6N/UWYxGHeo/rwZjIOZJ
+	SH/4LTHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stkN3-00000007n8G-0vdt;
-	Thu, 26 Sep 2024 09:01:09 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1stkQV-00000007nh0-0rBQ;
+	Thu, 26 Sep 2024 09:04:43 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stk6X-00000007je3-2f44
-	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Sep 2024 08:44:07 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-53659867cbdso1135506e87.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Sep 2024 01:44:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1727340244; x=1727945044; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gznSMtiYcyR3w+ziWE7zvvdEk/47hMv313+7HUPIjik=;
-        b=NyBITWhhdwPitHEpfBfL7IFgnlQY5sbqRhK5lryXGcbLnx0XiUzbXLflsIxS0WMGtF
-         cvyPKOb2zyMtaieRGoSQijwT9Sc8x9xY/HzDumApGHdDQIV6wL03H5IBDEUPF+nUdCIq
-         vXazpDSiMidXHaegM5tMCUqpO09TcZN+D4jRQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727340244; x=1727945044;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=gznSMtiYcyR3w+ziWE7zvvdEk/47hMv313+7HUPIjik=;
-        b=J30K8OnyAzlkYrBOCv0IE6ZyN9CFM4KywLliQOzskbEvUxpXgxG1x7XK31l1DZEIOg
-         cv2xmbhAHoqEN1zpNwhBfmPVQe2O/9BxYkNrByGq1HP0MqsA7m2skRHa1/l+VefwTxdg
-         j8Y4CV1y++oWoHQ2JHmPVHES+lLgcA6K+MbWo2z5i5xcvGErTMovNUmj1iQFgnVqddh0
-         3CxaJ4BMbFeMIaMBHNGZHV/JwGKmAveiZ7auhOiZiX9x2wiD00eAUUByEFliB/ycYzTs
-         zPV5ENWzZMTMBrRVBBRScuewWasjE2GQFLJhgwW+JMCBK+i1s8Tqy5mLjdJJIWYw/P/l
-         X1HA==
-X-Forwarded-Encrypted: i=1; AJvYcCXqQyG4eppPbzC0PnuanQs/OMiNIHHsqW6SMAjaXGPRRCpD8MgSbNVo7BmRQXLRUCQMLs1jL0i9f97+p+F/8w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YysuL/hdgcytUwQAtchpFvB3E9hVkMoZ2J1+sVqNITGm72aKKrm
-	VkMLNg7hpbCedJLIARNgM883hlYoS9RnNCjgR5/JTI1gUAT2CEK1bB6UjAYTsRo4KqMzXfhPDG4
-	l9PUdYJA93C+E8NILOgtUzHzsSoleBuoveFcD
-X-Google-Smtp-Source: AGHT+IHaqH2XD1kwP3As68zb4RqTHQB3YnbJsTJoL46ahD760ygreD1XSQDeJe/F8UpUYLGLJ5vsf+1cWC0dd7Zm+uM=
-X-Received: by 2002:a05:6512:1310:b0:533:483f:9562 with SMTP id
- 2adb3069b0e04-5387755ce6dmr5254176e87.42.1727340243659; Thu, 26 Sep 2024
- 01:44:03 -0700 (PDT)
+	id 1stk9z-00000007kGp-2N2S;
+	Thu, 26 Sep 2024 08:47:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1727340457;
+	bh=Vvzgd1LgiFFFjFTb0+aUplSVjTmllj9XrlLOmFGWpvw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=W7qGOs/WXTcXx3RVTvEB2eSz0bFlxfIYGcY9VZKLpS7wzZyyKhJEQKdhfCBCZWKv9
+	 9M5yQ2aIMD9mnlwpL3oETbnJqGqSCa7DWtGW9smRY1pQ9sA2H6SXCxDrGePgnGnV6B
+	 G7LV/i6hn/yhLeyBfU5SgJw4bZrVOAfBb/FVNK2qn08z9tV1PotXjmwBrJxNjvEv+O
+	 C0DoHfqKT8zEw7l+OIobUsRFyHZTP5RgvXDTRAmsqOnK8I+f4QN33YFAnmdJL8ykb+
+	 X8sROyY544rjCZ5yvcOvQdlCNze3jQuNlxypIAGUuOIi+k4iULFsbHZFUgYhmh4Qn/
+	 sPYjix2VxY4Vg==
+Received: from [192.168.50.250] (unknown [171.76.80.165])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 50E1317E1048;
+	Thu, 26 Sep 2024 10:47:34 +0200 (CEST)
+Message-ID: <9470f582-7873-42c6-b5a5-35f841e4f693@collabora.com>
+Date: Thu, 26 Sep 2024 14:17:04 +0530
 MIME-Version: 1.0
-References: <20240925093807.1026949-1-wenst@chromium.org> <20240925093807.1026949-3-wenst@chromium.org>
- <ZvPscRdWlFPmtCyR@smile.fi.intel.com>
-In-Reply-To: <ZvPscRdWlFPmtCyR@smile.fi.intel.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 26 Sep 2024 16:43:52 +0800
-Message-ID: <CAGXv+5Gf9+rc+vLcr-JFhO561G8dw38ksV3drat+DyCfWEVakQ@mail.gmail.com>
-Subject: Re: [PATCH v8 2/3] regulator: Add devres version of of_regulator_get_optional()
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Mark Brown <broonie@kernel.org>, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, 
-	Johan Hovold <johan@kernel.org>, Pablo Sun <pablo.sun@mediatek.com>, 
-	Macpaul Lin <macpaul.lin@mediatek.com>, 
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] docs/gpu: ci: update flake tests requirements
+To: Maxime Ripard <mripard@kernel.org>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
+ helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
+ robdclark@gmail.com, guilherme.gallo@collabora.com,
+ sergi.blanch.torne@collabora.com, deborah.brouwer@collabora.com,
+ dmitry.baryshkov@linaro.org, rodrigo.vivi@intel.com,
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org,
+ linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ virtualization@lists.linux.dev, linux-kernel@vger.kernel.org
+References: <20240926070653.1773597-1-vignesh.raman@collabora.com>
+ <20240926-athletic-gregarious-markhor-cc78ac@houat>
+Content-Language: en-US
+From: Vignesh Raman <vignesh.raman@collabora.com>
+In-Reply-To: <20240926-athletic-gregarious-markhor-cc78ac@houat>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_014405_734838_C7ED38DE 
-X-CRM114-Status: GOOD (  28.85  )
+X-CRM114-CacheID: sfid-20240926_014739_793453_1147538A 
+X-CRM114-Status: GOOD (  17.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,96 +82,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 25, 2024 at 6:56=E2=80=AFPM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
->
-> On Wed, Sep 25, 2024 at 05:38:05PM +0800, Chen-Yu Tsai wrote:
-> > There are existing uses for a devres version of of_regulator_get_option=
-al()
-> > in power domain drivers. On MediaTek platforms, power domains may have
-> > regulator supplies tied to them. The driver currently tries to use
-> > devm_regulator_get() to not have to manage the lifecycle, but ends up
-> > doing it in a very hacky way by replacing the device node of the power
-> > domain controller device to the device node of the power domain that is
-> > currently being registered, getting the supply, and reverting the devic=
-e
-> > node.
-> >
-> > Provide a better API so that the hack can be replaced.
->
-> ...
->
-> > +#if IS_ENABLED(CONFIG_OF)
->
-> Do we really need this?
+Hi Maxime,
 
-What's the point of going through devres_* stuff if we already know
-_of_regulator_get() is going to fail anyway?
+On 26/09/24 12:56, Maxime Ripard wrote:
+> On Thu, Sep 26, 2024 at 12:36:49PM GMT, Vignesh Raman wrote:
+>> Update the documentation to require linking to a relevant GitLab
+>> issue for each new flake entry instead of an email report. Added
+>> specific GitLab issue URLs for i915, xe and other drivers.
+>>
+>> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+>> ---
+>>
+>> v2:
+>> - Add gitlab issue link for msm driver.
+>>
+>> ---
+>>   Documentation/gpu/automated_testing.rst | 16 +++++++++++-----
+>>   1 file changed, 11 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/Documentation/gpu/automated_testing.rst b/Documentation/gpu/automated_testing.rst
+>> index 2d5a28866afe..f918fe56f2b0 100644
+>> --- a/Documentation/gpu/automated_testing.rst
+>> +++ b/Documentation/gpu/automated_testing.rst
+>> @@ -67,20 +67,26 @@ Lists the tests that for a given driver on a specific hardware revision are
+>>   known to behave unreliably. These tests won't cause a job to fail regardless of
+>>   the result. They will still be run.
+>>   
+>> -Each new flake entry must be associated with a link to the email reporting the
+>> -bug to the author of the affected driver, the board name or Device Tree name of
+>> -the board, the first kernel version affected, the IGT version used for tests,
+>> -and an approximation of the failure rate.
+>> +Each new flake entry must include a link to the relevant GitLab issue, the board
+>> +name or Device Tree name, the first kernel version affected, the IGT version used
+>> +for tests and an approximation of the failure rate.
+>>   
+>>   They should be provided under the following format::
+>>   
+>> -  # Bug Report: $LORE_OR_PATCHWORK_URL
+>> +  # Bug Report: $GITLAB_ISSUE
+>>     # Board Name: broken-board.dtb
+>>     # Linux Version: 6.6-rc1
+>>     # IGT Version: 1.28-gd2af13d9f
+>>     # Failure Rate: 100
+>>     flaky-test
+>>   
+>> +The GitLab issue must include the logs and the pipeline link. Use the appropriate
+>> +link below to create an issue.
+>> +https://gitlab.freedesktop.org/drm/i915/kernel/-/issues for i915 driver
+>> +https://gitlab.freedesktop.org/drm/xe/kernel/-/issues for xe driver
+>> +https://gitlab.freedesktop.org/drm/msm/-/issues for msm driver
+>> +https://gitlab.freedesktop.org/drm/misc/kernel/-/issues for other drivers
+>> +
+> 
+> I can't comment for the others, but drm-misc at least still requires
+> reporting issues by mail, so, no, sorry, we can't switch to gitlab only
+> for now.
 
-Also, _of_regulator_get() does not have a stub version for !CONFIG_OF.
+In https://gitlab.freedesktop.org/drm/ we have xe, i915, msm, nouveau, 
+and amd (only for issues). In drm-ci we test i915, msm and amd.
+So I will add GitLab links for these and for other drivers use email 
+reporting. I will reword this section. Thanks.
 
-> > +static struct regulator *_devm_of_regulator_get(struct device *dev, st=
-ruct device_node *node,
-> > +                                             const char *id, int get_t=
-ype)
-> > +{
-> > +     struct regulator **ptr, *regulator;
-> > +
-> > +     ptr =3D devres_alloc(devm_regulator_release, sizeof(*ptr), GFP_KE=
-RNEL);
-> > +     if (!ptr)
-> > +             return ERR_PTR(-ENOMEM);
-> > +
-> > +     regulator =3D _of_regulator_get(dev, node, id, get_type);
-> > +     if (!IS_ERR(regulator)) {
-> > +             *ptr =3D regulator;
-> > +             devres_add(dev, ptr);
-> > +     } else {
-> > +             devres_free(ptr);
-> > +     }
-> > +
-> > +     return regulator;
->
-> Why not using devm_add_action() / devm_add_action_or_reset()
-> (whichever suits better here)?
-
-Cargo cult from _devm_regulator_get() in this file. However since this is
-meant to share the same release function, both functions need to use the
-same mechanism.
-
-I could also argue that this is not an action, but an allocation, and so
-devres_alloc() seems to make more sense.
-
-
-ChenYu
-
-> > +}
->
-> > +#endif
->
-> ...
->
-> > +static inline struct regulator *__must_check devm_of_regulator_get_opt=
-ional(struct device *dev,
-> > +                                                                      =
-   struct device_node *node,
-> > +                                                                      =
-   const char *id)
->
-> I don't know the conventions here, but I find better to have it as
->
-> static inline __must_check struct regulator *
-> devm_of_regulator_get_optional(struct device *dev, struct device_node *no=
-de, const char *id)
->
-> Similar to other stubs and declarations.
-
-I don't think there are any conventions. This file already has three types:
-
-1. Wrap the line with the function name on the second line
-2. Wrap the arguments; wrapped arguments aligned to the left parenthesis.
-3. Wrap the arguments; wrapped arguments aligned with aribtrary number of
-   tabs.
-
-I prefer the way I have put them.
+Regards,
+Vignesh
 
