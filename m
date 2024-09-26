@@ -4,79 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67C5ECCF9E9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 10:42:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7063CCF9E9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 10:43:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yX4eW2hLFE+pD/0oU3sBpz42gUQTQtE0boReuMH0kxY=; b=ggsMBdNTMdO2rodCSAGOO3m0V6
-	PIjViGjvuisR7mvrxCFXa7jgYErmVRBtyR0cFjXaVtWoifppxHKjnknDN2pUpn6OGPC6yxLRlA9kT
-	nJdEA9Tm4BwQxMZgANeknrzUY1cD4abYSLf7em9z4GwBgdKNSruYfjyRCcDzlsgad9KlTOrFP6JmR
-	L60u4dI3ICwwNq9zFBUjwEAXLIvcM5+hgFoYmOcK1UDadCKjmg+lKFwenjKQbWhGbIGU6rv2iHSTT
-	2l86Rg4uk6NwNqywqrnDOCHyXo1MhFSsxknkb1kWpm3qq7S09FE5azjbNxfDjw8Y3jDxS2uMofJEr
-	TScOsfaA==;
+	bh=U3BXOWLdZ3ZYTaPWPPVpqTruEaQT+RzavUhoQtzfsW8=; b=u2NfBPlMu6DAUcHZXImkbsrA3K
+	PUZgOwXtzEMlbD+naFpfB9qVk6e19h8bF7UIkyve7GhZM4wdzK3pRlpX8humu+WWuXXw7r0s3y2aA
+	RABPOs/1T6BEfcg1Mkor1HctfGKaR6camhJuLqvj4QWedbI7Dlfu9tL7QwbvmablHgg9TNgyegtyb
+	kh3i+H1aKA5JUqVQimMrzPZhoUHaqmUpGALN1BaUFfd5clx7O0MglOOghJLKcVaeLx0nP/b08wheI
+	zjq6LsCZIwuDpTC4pas6kd5Uw7sHSL2JWuYA1EjASCYls6DSlsppxTZtYhPJL1wmBDS/foCqx8LFm
+	JTMbXMOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stlx0-0000000864m-0qp7;
-	Thu, 26 Sep 2024 10:42:22 +0000
-Received: from mail-ua1-x92b.google.com ([2607:f8b0:4864:20::92b])
+	id 1stlyC-000000086Qk-37MF;
+	Thu, 26 Sep 2024 10:43:36 +0000
+Received: from mail-ua1-x92f.google.com ([2607:f8b0:4864:20::92f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stlwx-0000000863Q-2bqc
+	id 1stlxb-000000086Gs-2w49
 	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Sep 2024 10:42:21 +0000
-Received: by mail-ua1-x92b.google.com with SMTP id a1e0cc1a2514c-84e962c9a99so307267241.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Sep 2024 03:42:19 -0700 (PDT)
+	Thu, 26 Sep 2024 10:43:01 +0000
+Received: by mail-ua1-x92f.google.com with SMTP id a1e0cc1a2514c-84e8e8f1e9dso228989241.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 Sep 2024 03:42:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1727347338; x=1727952138; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1727347378; x=1727952178; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=yX4eW2hLFE+pD/0oU3sBpz42gUQTQtE0boReuMH0kxY=;
-        b=BA9IMHBlUukFCndsm3TwBBzmzc2ysTQwEsIeJIczPbH14PyuPJhkglI4evvSvhMKOZ
-         66cnIGNIpGgA+CGK0LtHQEBPlGLKBCAPUIK6R/SQSNiqVptqHji1WOZ6VcM7rbNnCOki
-         r2qEq4eO5Acpn4haYVntRlg7KoLyMRbLX4TOM=
+        bh=U3BXOWLdZ3ZYTaPWPPVpqTruEaQT+RzavUhoQtzfsW8=;
+        b=PoiPNy4j1V/YSmCFq5xDkSiC5N2YgizddWtueHrN+FPSoOV4Hx/QchvF1rTyv0qFGG
+         beQqOwh1fDnlZiyuuPV//FRGljOZXN05C77KQvZpNrZflv4x1wDuS0/xKCOJEjSiAuqd
+         +vMNT/hMlZ79tl/kcxJEzf8IpU+jg6NF80Gjg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727347338; x=1727952138;
+        d=1e100.net; s=20230601; t=1727347378; x=1727952178;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=yX4eW2hLFE+pD/0oU3sBpz42gUQTQtE0boReuMH0kxY=;
-        b=r6gyynTkGT9H8z88S+12lFed/4UF45mFfFhx2nRJWy5ZE3KuyvAqe1BqrpVvz4lqOj
-         otVPt/yvkWbGxWoy7AW6xEHf/2IsfcvEbGy3VXj3pgF+rmdxmSSAWYUSEUbPlucvuLr4
-         bWrMCk8FQfCiVhyk4d9qSQQDPkz+otIyn++Y34fRBlB1q49fJnk83aQMHadChVHo21CQ
-         URunjA5qX2axlfuYxOU+5S1uQQ71pLXQK6LBc5hfNesJsUfYvGFKMoGJJmuLaT2RV9wn
-         tbq8z6CHfAJOVySUOMOhuHTUZLw033do+XYD9eTFvM1WIIxk3FF0FIEtFhGGnC+fiAs1
-         gjfg==
-X-Forwarded-Encrypted: i=1; AJvYcCWBWk0FHIt11DemdPetrLfGxS926YmqW+Z0nObpR7rEgGnV1khTDJNOhy0IxZyoTkvFtNkhiEcpjA3mX2Wryg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyT29FPB63cLl/JXU+fbxGgAdhpumBSxd1YeusqKZ3q/9e1EU7T
-	3CC1Rkk/d/zHVOTGTkiVUGJZameirSmScIq53awhmJZlnd1NG4BI4S8s+umaAkIEl20COoHXWqV
-	/8g==
-X-Google-Smtp-Source: AGHT+IGDJ0vEX7LJs4Hy0NAdxKdRWIBJnPY5UZh5a6vSvEIZX1NsQluCZcqvbj/Kfkx6xNd1EtAD0g==
-X-Received: by 2002:a05:6102:5122:b0:49b:e7d7:3e1b with SMTP id ada2fe7eead31-4a15dc3867amr6612625137.3.1727347337700;
-        Thu, 26 Sep 2024 03:42:17 -0700 (PDT)
-Received: from mail-vk1-f176.google.com (mail-vk1-f176.google.com. [209.85.221.176])
-        by smtp.gmail.com with ESMTPSA id a1e0cc1a2514c-84e73cc4f23sm2734000241.32.2024.09.26.03.42.16
+        bh=U3BXOWLdZ3ZYTaPWPPVpqTruEaQT+RzavUhoQtzfsW8=;
+        b=Ph4Tr7mpOUQ4CJwCE2J+nQaZmx6127WjAHay5zl3fqH95ktVverswP49N9KwS9k/Wh
+         jRY1ggjm3N8tGmo+Dteglb4zMmd08+iQzXs2Z62HxqKweGxRgCpilG9Z+86G12IKhB0j
+         2872ZYzyarZp7fmtC63b2BC0/Swp7ZXQDy1NKIEzy/4N4vzGgxDVfslTigI2+rDgVBz+
+         vhIotOKJfKwBERJkhfd+eP+YUlRwR8wUCgjQxRPuKepU0lLRh93JKTkLJqipkbmdxanM
+         RrrPhfG4aCHkIt7gn7hC98G3bksrPkVy4LQ0aeuqEdvJ1+SS7QDwMMUnRxFHMmAWC5Vw
+         TJ7w==
+X-Forwarded-Encrypted: i=1; AJvYcCW3lrTCrySUVluY/EhWZBFxZv8BwsRU7lQkiJHQ92vbtY/UTUorMINcMOef+2FqyNg4csLGrdSmihJ8HJgIwQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxWuMTsgqkaaBNucdG1LeRMUsX/FG4aagFa1WcvH5SifUrfyOBl
+	NNuhCnxfq/iURL5v7ACjEvSL0T/01woH5AGraGlI5yBZhA90sBz47B6LtGf5nOkFUwLdaIXNEZF
+	rKQ==
+X-Google-Smtp-Source: AGHT+IEwrKn72ARxVoIbKMOCue/rtQBFcEeAI5Cme+6LpIQqcwHuAwxcjWyurinxVWK8dZxd4LLPZQ==
+X-Received: by 2002:a05:6102:f0b:b0:493:bcbd:4633 with SMTP id ada2fe7eead31-4a15dc398e5mr4549948137.3.1727347377954;
+        Thu, 26 Sep 2024 03:42:57 -0700 (PDT)
+Received: from mail-vk1-f180.google.com (mail-vk1-f180.google.com. [209.85.221.180])
+        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-4a1517c0e1asm3251754137.17.2024.09.26.03.42.57
         for <linux-mediatek@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 26 Sep 2024 03:42:17 -0700 (PDT)
-Received: by mail-vk1-f176.google.com with SMTP id 71dfb90a1353d-503f944f174so303233e0c.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Sep 2024 03:42:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVR2QVUU8sJDNzTB4Tq4RrhnAQagIVkkO43z7QLQeGgOBIym1lHZErvdJj0OoJpURKIUzzt+P+1Up5CWyP8LQ==@lists.infradead.org
-X-Received: by 2002:a05:6122:2a05:b0:4f2:ffa9:78b5 with SMTP id
- 71dfb90a1353d-505c20ddd0fmr7058726e0c.11.1727347336501; Thu, 26 Sep 2024
- 03:42:16 -0700 (PDT)
+        Thu, 26 Sep 2024 03:42:57 -0700 (PDT)
+Received: by mail-vk1-f180.google.com with SMTP id 71dfb90a1353d-502b8d7033cso263880e0c.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 Sep 2024 03:42:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCWAXKBgSIk3q9pTabDnGPyofMYpZaE0ZH3W6eBN8Ux/wDO8h/iOUj/+dO1toF6amqcxnDKw6mIj3SqwbI6dUw==@lists.infradead.org
+X-Received: by 2002:a05:6122:1352:b0:4f6:aa3e:aa4c with SMTP id
+ 71dfb90a1353d-505c1d368ccmr5013070e0c.3.1727347376895; Thu, 26 Sep 2024
+ 03:42:56 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240925110044.3678055-1-fshao@chromium.org> <20240925110044.3678055-4-fshao@chromium.org>
- <fbdbe9ff-586a-429c-a987-b8ec39b485e8@collabora.com>
-In-Reply-To: <fbdbe9ff-586a-429c-a987-b8ec39b485e8@collabora.com>
+References: <20240925110044.3678055-1-fshao@chromium.org> <20240925110044.3678055-6-fshao@chromium.org>
+ <b3842173-7074-4bcb-80f4-1f6f8cb38a52@collabora.com>
+In-Reply-To: <b3842173-7074-4bcb-80f4-1f6f8cb38a52@collabora.com>
 From: Fei Shao <fshao@chromium.org>
-Date: Thu, 26 Sep 2024 18:41:39 +0800
-X-Gmail-Original-Message-ID: <CAC=S1njehOqkM26o=vfirZ9L8bec0jbtnvH0J2miYR_qEDeSVA@mail.gmail.com>
-Message-ID: <CAC=S1njehOqkM26o=vfirZ9L8bec0jbtnvH0J2miYR_qEDeSVA@mail.gmail.com>
-Subject: Re: [PATCH 3/6] arm64: dts: mediatek: mt8188: Define CPU big core cluster
+Date: Thu, 26 Sep 2024 18:42:21 +0800
+X-Gmail-Original-Message-ID: <CAC=S1nhs4EUR78HunNnz=Z-cG4GgAZ=7JFyJmj6he96Z=GuxOQ@mail.gmail.com>
+Message-ID: <CAC=S1nhs4EUR78HunNnz=Z-cG4GgAZ=7JFyJmj6he96Z=GuxOQ@mail.gmail.com>
+Subject: Re: [PATCH 5/6] arm64: dts: mediatek: mt8188: Move vdec1 power domain
+ under vdec0
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org, 
@@ -85,8 +86,8 @@ Cc: Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_034219_809839_38A59178 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20240926_034259_764520_A81FC29D 
+X-CRM114-Status: GOOD (  22.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,25 +106,47 @@ On Thu, Sep 26, 2024 at 4:33=E2=80=AFPM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
 > Il 25/09/24 12:57, Fei Shao ha scritto:
-> > The MT8188 SoC features two CPU clusters: one with 6 little Cortex-A55
-> > cores, and the other with 2 big Cortex-A78 cores.
->
-> No, it doesn't. It features only one cluster, so...
->
+> > There are two hardware IP blocks in MT8188 video decoder pipeline:
+> > vdec-lat and vdec-core, which are powered by vdec0 and vdec1 power
+> > domains respectively.
 > >
-> > Update the CPU topology to reflect the actual hardware configurations.
+> > We noticed that vdec-core needs to be powered down before vdec-lat
+> > during suspend to prevent failures. It's unclear if it's an intended
+> > hardware design or due to power isolation glitch. But in any case, we
+> > observed a power-off sequence here, and it can be considered as an
+> > indirect dependency implication between the vdec0 and vdec1 domains.
+> >
+> > Given that, update vdec1 as a sub-domain of vdec0 to enforce the
+> > sequence. Also, use more specific clock names for both power domains.
+> >
 >
-> ...the actual hardware configuration is already reflected by the currentl=
-y
-> declared CPU topology, so for this commit: NAK.
+> As far as I know, yes, there is a sequence:
+>   - Cores (mtk-vcodec-core) gets suspended first
+>   - Then the LATs gets suspended (mtk-vcodec-lat)
+>   - Finally, the LAT SoC gets suspended (mtk-vcodec-lat-soc)
 >
-> This SoC uses the ARM DynamIQ technology and embeds both LITTLE and big
-> cores in one single cluster.
-> Check the MT8188 datasheet for more information :-)
+> ...but you checked that downstream, and your downstream misses the lat-so=
+c HW
+> instance, and only has the lat one.
+>
+> Are you sure that this is not the reason why you're getting this issue? :=
+-)
+>
+> Otherwise, I feel like we must ask for some clarification from MediaTek, =
+as
+> I'm mostly sure that the two cores are independent from each other (but I
+> might, of course, be wrong!).
 
-You are absolutely right. I found that description in the datasheet,
-and this patch is completely wrong.
-Thanks for pointing it out!
+Yes I think I should... this is actually based on a downstream patch of the=
+irs.
+My understanding is that LAT SoC is not always in the vdec pipeline
+for every MediaTek SoCs. Although the MT8188 and MT8195 have much in
+common, I have a vague impression that MT8188 doesn't have a LAT SoC
+HW, so the downstream video decoding works smoothly without describing
+that in DT... but still, I could be wrong, and things just happen to work.
+
+Anyway, I'll find someone on the MediaTek side for clarification. The
+datasheet I have doesn't seem to contain such information.
 
 Regards,
 Fei
