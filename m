@@ -4,86 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 845EBCCFA13
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 09:33:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87EDBCCFA13
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 09:34:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i5snM/nFply1NNugAmwrhCRtbaU5ipOp84EtryAqvqE=; b=hDe+M8Qdai75hNl4bdjz5Nvszb
-	iRvKb66l6dnsC5cvh0xJrAX9SxGWDjjXBmjqw9JJ5xM31n6xZFNLC4y5UYCbv6ppG9T01Mi/bgJ1S
-	62kukpspfMaqEysOZf+Id8GZZak1yLvE13ouvyHt9O0+uBwdZ3D1Of0A8t5zzhFL7jEp3QHAzlUfV
-	k4dNt/1fBkTGhgeQHwCsMAFcgG4p8W9OH5EZJx3NOS30/49OuamZ1bG9BjajIkuTnyQtoqDBD4xdh
-	iGckvmB8i35duPuKTZzL1w3YzjXqzSIJd3l8UL58s/y46qi8I92FJZK4bg3mDKPlsuHNdJRKtU5sk
-	now9jdHw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vDU3F9Pj1e3UIjw3VkDzlFBmg37IEANG0rlQja51emY=; b=SDKWxEAQVSZ8tCkf5DvJx4hJxv
+	rXEK/sMRYR6HCdAiO3MF6USKPJA4B47HURfQ6ceHzlOvkEM48kjr/m/wYkOnBxaN07x7gvcAG1eK+
+	IyBkKlKT+X/dlVswTFsdFbRdwIrzIPWm5U7yWsQ6xVFPX3EEtW36WDdzBC1CGSVkWQ0ioshsvqHwM
+	Eve3R2Ge2mHspgiTV0Q5c2aiAOcLgDiiNBQwZF69igu/D2B750vyFjq4NpyJqC2ssU8SspPWTo5e2
+	UR9WmHRT9YCLzfEAEOfT3oWHyP4QRAZnzKE0YlSTgtTzKayJ5ShPELM+6HgFtNghpnrkNgipJc437
+	7Jv1499g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stksM-00000007tq1-1jEF;
-	Thu, 26 Sep 2024 09:33:30 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1stktX-00000007u8z-2H8j;
+	Thu, 26 Sep 2024 09:34:43 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stkki-00000007s9k-2Cdd;
-	Thu, 26 Sep 2024 09:25:39 +0000
-X-UUID: 44d2a3767be911efb3adad29d29602c1-20240926
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=i5snM/nFply1NNugAmwrhCRtbaU5ipOp84EtryAqvqE=;
-	b=GnrWC1cceBfdBZ7PG3M1cePx+F8ecaei+us6DVGfPl7Pn+WLtrSY4t1j6s/z7gMkNNXvEYKZi2wrcpnCKm/J93LwzUODkFZvXGtVau9YN0tKfmDbX3LoYj63RncBOac3MXDELF9+531v+MoEhIn6xUU2jYorAZYM5K1XMAOEbH4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:0c673ca5-bdf9-451a-98ec-7d3f94ca2c34,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:2ca6cdd0-7921-4900-88a1-3aef019a55ce,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 44d2a3767be911efb3adad29d29602c1-20240926
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 335166074; Thu, 26 Sep 2024 02:25:28 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 26 Sep 2024 17:25:25 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 26 Sep 2024 17:25:25 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, Rob
- Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
- Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Liam
- Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Eason Yen
-	<eason.yen@mediatek.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>, Shane Chien
-	<shane.chien@mediatek.com>, Hui Liu <hui.liu@mediatek.com>,
-	<linux-pm@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-sound@vger.kernel.org>,
-	Alexandre Mergnat <amergnat@baylibre.com>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul@gmail.com>, Chris-qj chen <chris-qj.chen@mediatek.com>,
-	MediaTek Chromebook Upstream
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
-	<wenst@chromium.org>
-Subject: [PATCH 2/3] dt-bindings: mfd: mediatek: mt6397: add compatible for mt6359-codec
-Date: Thu, 26 Sep 2024 17:25:18 +0800
-Message-ID: <20240926092519.6556-2-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240926092519.6556-1-macpaul.lin@mediatek.com>
-References: <20240926092519.6556-1-macpaul.lin@mediatek.com>
+	id 1stkma-00000007sXJ-3UQp;
+	Thu, 26 Sep 2024 09:27:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1727342851;
+	bh=WszBCde+EyMT4WBEAxT2xIQ69xHlvKCrC89Es5BKJOo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=PUWd1cqesMv/VLO1Bg+GaG4NUi08+6S/4GRiWxRBlFTqF3na0Vml5mu4v0NL/p2o7
+	 Dp0eOYFUN7+Y7p1S/30vgv8WI8XaxtsVk+AJMSV6wfPQa+aeufzfr/E+EJJOiz37wb
+	 h3wtN0+vob2qHBMrx87IEtPnoXleQom91jT1mDL1VWHG/kCq3Q2nQhLu5fBGvZXfPu
+	 4A9gfEnGeQj8xt4pLhHqKG7Xus/2/vuds9JtvNN0ttAAwQNJ6FFFBiGte0FD6hRduW
+	 RHT7OMVxuoJBktRCciyuJz9U6W0oF5HMTJRwB5OGSCf4iLR4hdDRPqVpGm38aqGyYy
+	 dUB3LOdERVeNQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AD1EC17E1063;
+	Thu, 26 Sep 2024 11:27:30 +0200 (CEST)
+Message-ID: <bbf023c7-f08b-4f9d-8770-08e63074fb4c@collabora.com>
+Date: Thu, 26 Sep 2024 11:27:30 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] arm64: dts: mediate: Introduce MT8186
+ Chinchou/Chinchou360 Chromebooks
+To: =?UTF-8?Q?Albert_Jakie=C5=82a?= <jakiela@google.com>, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+ wenst@chromium.org, rafal@milecki.pl, hsinyi@chromium.org,
+ nfraprado@collabora.com, macpaul.lin@mediatek.com, sean.wang@mediatek.com
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20240925080353.2362879-1-jakiela@google.com>
+ <20240925080353.2362879-2-jakiela@google.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240925080353.2362879-2-jakiela@google.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_022536_625139_603B432D 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20240926_022733_194944_72ABD702 
+X-CRM114-Status: GOOD (  20.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,43 +79,246 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch updates the audio-codec properties includes:
- - compatible:
-  - Re-order the supported device items.
-  - Add 'mt6359-codec' to compatible since MT6359 PMIC has been included
-    in this DT Schema.
-  - Set 'additionalProperties: true' for 'mt6359-codec'.
+Il 25/09/24 10:03, Albert Jakieła ha scritto:
+> The MT8186 Chinchou/Chinchou360, also known as the Asus Chromebook
+> CZ12/CZ11 Flip, is a clamshell or convertible device with touchscreen,
+> stylus and extra buttons.
+> 
+> Signed-off-by: Albert Jakieła <jakiela@google.com>
+> ---
+>   arch/arm64/boot/dts/mediatek/Makefile         |   3 +
+>   .../mediatek/mt8186-corsola-chinchou-sku0.dts |  18 +
+>   .../mediatek/mt8186-corsola-chinchou-sku1.dts |  34 ++
+>   .../mt8186-corsola-chinchou-sku16.dts         |  28 ++
+>   .../dts/mediatek/mt8186-corsola-chinchou.dtsi | 445 ++++++++++++++++++
+>   5 files changed, 528 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> index 8fd7b2bb7a15..0db7770e8907 100644
+> --- a/arch/arm64/boot/dts/mediatek/Makefile
+> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> @@ -55,6 +55,9 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku32.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-pumpkin.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-chinchou-sku0.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-chinchou-sku1.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-chinchou-sku16.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393216.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393217.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393218.dtb
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts
+> new file mode 100644
+> index 000000000000..29dd92318da1
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts
+> @@ -0,0 +1,18 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright 2023 Google LLC
+> + */
+> +
+> +/dts-v1/;
+> +#include "mt8186-corsola-chinchou.dtsi"
+> +
+> +/ {
+> +	model = "Google chinchou sku0 board";
+> +	compatible = "google,chinchou-sku0", "google,chinchou-sku2",
+> +			"google,chinchou-sku4", "google,chinchou-sku5",
+> +			"google,chinchou", "mediatek,mt8186";
+> +};
+> +
+> +&gpio_keys {
+> +	status = "disabled";
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts
+> new file mode 100644
+> index 000000000000..8ba31f81d9ad
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts
+> @@ -0,0 +1,34 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright 2023 Google LLC
+> + */
+> +
+> +/dts-v1/;
+> +#include "mt8186-corsola-chinchou.dtsi"
+> +
+> +/ {
+> +	model = "Google chinchou sku1/sku17 board";
+> +	compatible = "google,chinchou-sku1", "google,chinchou-sku17",
+> +			"google,chinchou-sku3", "google,chinchou-sku6",
+> +			"google,chinchou-sku7", "google,chinchou-sku20",
+> +			"google,chinchou-sku22", "google,chinchou-sku23",
+> +			"mediatek,mt8186";
+> +};
+> +
+> +&i2c1 {
+> +	i2c-scl-internal-delay-ns = <10000>;
+> +
+> +	touchscreen: touchscreen@41 {
+> +		compatible = "ilitek,ili2901";
+> +		reg = <0x41>;
+> +		interrupts-extended = <&pio 12 IRQ_TYPE_LEVEL_LOW>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&touchscreen_pins>;
+> +		reset-gpios = <&pio 60 GPIO_ACTIVE_LOW>;
+> +		vccio-supply = <&pp1800_tchscr_report_disable>;
+> +	};
+> +};
+> +
+> +&gpio_keys {
+> +	status = "disabled";
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts
+> new file mode 100644
+> index 000000000000..d3378d7ad096
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts
+> @@ -0,0 +1,28 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright 2023 Google LLC
+> + */
+> +
+> +/dts-v1/;
+> +#include "mt8186-corsola-chinchou.dtsi"
+> +
+> +/ {
+> +	model = "Google chinchou sku16/sku2147483647 board";
+> +	compatible = "google,chinchou-sku16", "google,chinchou-sku18",
+> +			"google,chinchou-sku19", "google,chinchou-sku21",
+> +			"google,chinchou-sku2147483647", "mediatek,mt8186";
+> +};
+> +
+> +&i2c1 {
+> +	i2c-scl-internal-delay-ns = <10000>;
+> +
+> +	touchscreen: touchscreen@41 {
+> +		compatible = "ilitek,ili2901";
+> +		reg = <0x41>;
+> +		interrupts-extended = <&pio 12 IRQ_TYPE_LEVEL_LOW>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&touchscreen_pins>;
+> +		reset-gpios = <&pio 60 GPIO_ACTIVE_LOW>;
+> +		vccio-supply = <&pp1800_tchscr_report_disable>;
+> +	};
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
+> new file mode 100644
+> index 000000000000..c77cc43f8442
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
 
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
----
- Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+..snip..
 
-diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-index 40cabaf60d0d..ffb5848a96d5 100644
---- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-+++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-@@ -104,7 +104,7 @@ properties:
- 
-   audio-codec:
-     type: object
--    additionalProperties: false
-+    additionalProperties: true
-     description:
-       Audio codec support with MT6397 and MT6358.
- 
-@@ -112,8 +112,9 @@ properties:
-       compatible:
-         oneOf:
-           - enum:
--              - mediatek,mt6397-codec
-               - mediatek,mt6358-sound
-+              - mediatek,mt6359-codec
-+              - mediatek,mt6397-codec
-           - items:
-               - enum:
-                   - mediatek,mt6366-sound
--- 
-2.45.2
+> +
+> +&mmc1_pins_default {
+> +	pins-clk {
+> +		drive-strength = <MTK_DRIVE_8mA>;
+
+Please stop using the meaningless MTK_DRIVE_(x)mA macro.
+
+drive-strength = <8>; is enough :-)
+
+Cheers,
+Angelo
+
+> +	};
+> +
+> +	pins-cmd-dat {
+> +		drive-strength = <MTK_DRIVE_8mA>;
+> +	};
+> +};
+> +
+> +&mmc1_pins_uhs {
+> +	pins-clk {
+> +		drive-strength = <MTK_DRIVE_8mA>;
+> +	};
+> +
+> +	pins-cmd-dat {
+> +		drive-strength = <MTK_DRIVE_8mA>;
+> +	};
+> +};
+> +
+> +&sound {
+> +	status = "okay";
+> +
+> +	compatible = "mediatek,mt8186-mt6366-rt5650-sound";
+
+You don't need to change this compatible, as the only thing that changes in the
+actual driver are the dapm_routes. I implemented support for that nice dai-link
+(standard, kind of) graph so that we stop getting a thousand compatibles for no
+reason other than routing :-)
+
+This should work with (99.9% confident it will, but please test):
+
+	model = "mt8186_rt5650";
+	status = "okay";
+
+> +	mediatek,adsp = <&adsp>;
+
+This property is already set in the node that you're inheriting from
+mt8186-corsola.dtsi, please drop.
+
+> +
+> +	audio-routing =
+> +		"Headphone", "HPOL",
+> +		"Headphone", "HPOR",
+> +		"HDMI1", "TX";
+> +
+> +	hs-playback-dai-link {
+> +		codec {
+> +			sound-dai = <&rt5650>;
+> +		};
+> +	};
+> +
+> +	hs-capture-dai-link {
+> +		codec {
+> +			sound-dai = <&rt5650>;
+> +		};
+> +	};
+> +
+> +	spk-share-dai-link {
+> +	};
+
+Empty nodes are meaningless (and you're inheriting this dai link from
+mt8186-corsola.dtsi as well). Drop.
+
+> +
+> +	spk-hdmi-playback-dai-link {
+> +		codec {
+> +			sound-dai = <&it6505dptx>;
+> +		};
+> +	};
+> +};
+> +
+> +&wifi_enable_pin {
+> +	pins-wifi-enable {
+> +		pinmux = <PINMUX_GPIO51__FUNC_GPIO51>;
+> +	};
+> +};
+> +
+> +&wifi_pwrseq {
+> +	reset-gpios = <&pio 51 GPIO_ACTIVE_LOW>;
+> +};
+> +
+
+..snip..
+
+> +
+> +&pen_insert {
+> +	wakeup-event-action = <EV_ACT_ANY>;
+
+Why is this set to EV_ACT_ANY on Chinchou but not on the other Corsola devices?
+Is there any specific reason?
+
+Cheers,
+Angelo
 
 
