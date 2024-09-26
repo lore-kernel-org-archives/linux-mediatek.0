@@ -4,81 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EC89CDE03E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 23:04:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CE83CEBF61
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 23:22:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l++ZOmowKHw8XyXDDkEXLL9vXkRtvvkj5VB0cxq2xZk=; b=yRLiFuGkDoxivhAIfrvVcZC2JJ
-	SW0ug8NIQeI6KD8l7PSJU7kvuSJpqBkT4vqxDzei/Z/lhrvhJRQyUD6uEqc8srvRi26gUiQh19qO3
-	iJ2F8SJ0T1Fl8Kr532z+yWPFKZlkp+Bmd00rTtModSYz4eKJDX1K+Wf2Wa3hoQRm8TNMbDSSa0zJp
-	0emvNXd2jsEPL+Tn9nKHfEf4yf3QgBXtQiQLiLzZOBgjsWGJDwr/JO8pKYR602UriNW4SF1gOyxe7
-	VB2FzKIX5p4MqjKjt5w8yHB6Gj1FhO5MaEjV5WYKBIhi89GiG60b56Z3KQfi98/GmsV9fuDr4wFcG
-	9ApTuHWQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Bu40LWj131EvrXy4hSGWlLWhDgrzKYj+PB2hYeDUiWQ=; b=SfeZmTs967uPO+
+	yethrNk686Zjc+y7jxrQuirI6BgEuwgKZHmVRlpa7TiGu45EvNnHFytu1ytjT1saEIHtr5uisqPZb
+	Ah2ePqVv9cDBaRgxGr50phgfyiXRw4MsdGi+FRSU64CaDGzp3whg8WHKg5bXA4gsVNc7+7WzC8CH5
+	IMT2s9wyUyahx35L0D2q1kF9HfcE8Cq/8wvvXZciuLo3ltifXe/r7igR+gT3k36ZC5LeQvJZIPJ02
+	mOP8/BMfipjxUot8dh26Q9usojJJe8YNR0hZ+dNgmkeeBJJlMi08ydzErnN2+PbDRoP9mu/ey1QRY
+	V82NAV7Ch2h78W4wuCAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stxWs-00000009XWB-1zuf;
-	Thu, 26 Sep 2024 23:04:10 +0000
-Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
+	id 1stxoh-00000009ZIb-20Tu;
+	Thu, 26 Sep 2024 23:22:35 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stxVf-00000009XM8-2i55
-	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Sep 2024 23:02:57 +0000
-Received: by mail-yb1-xb30.google.com with SMTP id 3f1490d57ef6-e25cf3c7278so1282852276.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Sep 2024 16:02:54 -0700 (PDT)
+	id 1stxnS-00000009Yr5-1x5o;
+	Thu, 26 Sep 2024 23:21:19 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-a8d3cde1103so195631766b.2;
+        Thu, 26 Sep 2024 16:21:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1727391774; x=1727996574; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=l++ZOmowKHw8XyXDDkEXLL9vXkRtvvkj5VB0cxq2xZk=;
-        b=jDuw+rApOAwZvytfAO5WN0dulYQXTgvQ9fPddKwbdEc6WJoqfhyc9gnIOiKV+34ADR
-         X/bRDXXXFCbRN4Pv/BOBg+20iCfDHLdj5b/PQmgS8pJkHUHgY/qyuI3iADN1ToVK4A8G
-         ssSUjirKkKNttl9Y7yBCjNg/SFW/LOeTDyIRs=
+        d=gmail.com; s=20230601; t=1727392876; x=1727997676; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Bu40LWj131EvrXy4hSGWlLWhDgrzKYj+PB2hYeDUiWQ=;
+        b=kdQxVEHOz2vptK67RUlshQ5hRhKAhiIuDEoQl5KT8a5mWnfUZy0tWYJynQMGK7r1wn
+         97rYDtdk/FwvNf4Od+873wvbstPyzIg3y66ITsgMy0E+a6WHvsBAO2y1keIs4PYAzyn7
+         EQI3KNLtGoDVoRKZj3n/+WCZm7eoIg1kp/Dh5eJadyCb/yhh8o5bXsc2diZHFRHpF1vj
+         9GZ065ec7+sKJ6Wb5eFWRBNa1bkGrQLicaJ9MzFx5tDsdUz8+64uy0kRivjMMTrbKZLb
+         qsSVhnTZmXuyWVOHO8xMD5sxglRChiAo69bUWeReidtxocI0ARe00m/CDPMEExGdV4Z6
+         cx4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727391774; x=1727996574;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=l++ZOmowKHw8XyXDDkEXLL9vXkRtvvkj5VB0cxq2xZk=;
-        b=IHYU9kc57Pop+0j2dgwoEop6O+e/wkEeE1CD9l/UzwS5JqgZg4zCwqOkJY7g0SQLQY
-         ybnSVjBlqJi1cDqB334LnGiOgBAGQdx3+JxgU5THI5ULpveFbGAYju+V2O2ueiuTGl3p
-         uGDT9bZAiC3RGlGJsTMtb6PSIn1NM2IlkQFROLgJCbcucKan86ZSiy7jGFyW4y9puKMR
-         HUUILvTtGk+c5nqyesr62XlOXio+BWAq5EVqqoEs8JmEIObg0aZelortyuyj9+dkFOYA
-         d/jF/zCBXFm+TszoCu66cTEHCqAX6p0cRndtpLiFCjZkbPWsP7/zLKAnuzmhAyYGeiWo
-         dcCQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX7Z+/1qfncw225XsRf80RdcULE6KmD5sPQS+b3YJ7QD+LOzACUWytspJ6xex3lvSP/1GaM2PElMNp8LBwXMg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxbKSkzOPfQOXV1zytWIH4TlhRESCd32YugOgR6mXubbALbn86R
-	MwOggF3Tbx6aqgNKgT0tBb68p5WAm4EM+ETYb1z+fXPTcVuyQhje6ta/7BS8WOcRX3xf3i95w6v
-	bbO72OUigLJ/ktU/OViroN2PwGhrbzdjEfMvg
-X-Google-Smtp-Source: AGHT+IHvR0iPjqZka/TBZbcQc4sKK1GUE3B8UbLiK9wUGx6AXR3PAOEAsvGzErlfJJhebhQbh6Ajaz7zXKrEw/n/UGk=
-X-Received: by 2002:a05:690c:6303:b0:6b0:52a6:6515 with SMTP id
- 00721157ae682-6e2474d1f72mr12375437b3.6.1727391773882; Thu, 26 Sep 2024
- 16:02:53 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1727392876; x=1727997676;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Bu40LWj131EvrXy4hSGWlLWhDgrzKYj+PB2hYeDUiWQ=;
+        b=NPy5+1oO3GHEGaww93mTV5L+0vof7FMQFTtIdtAioiT/ZEVzi1iXZgSxfst0+b86R4
+         BgIVHY1UPZ/habqEY7e3sl88Hw0fLXhjwP4nauRRd42jvQUj1MLvXfNGmGqkH7CiWZt8
+         HuwCcLWzkNFoH/AvVbkY8IL3Ix4WADWCNek4EL39ruxLNNjGxrO7gf/aru8+HUGBl1Ik
+         SvxqHkTY6tvWiBBrR1qbdJvB8QDbxcevMyOY9eaeZ/IOcJRyeQSImLT1Kadam3lkdFfy
+         a4VowV8+4om3LbhZDvz/WcFGp8FhowMZVlyFwD2hm1v8DfEeY3ioOp4aQA5rgmJ+SQQK
+         Ls9g==
+X-Forwarded-Encrypted: i=1; AJvYcCVIPsUBiGHj7kGYyOXePSbtqj3giNR3FeW5VN04RvMFhTotBncjs2648gHNG/9J7yT2xATC6nRtbxuzwcRLyBkE@lists.infradead.org, AJvYcCXZBH3YieP1cD0o6mwbKicFEiJJJBdTuw+LRWcOcJGbsH5JYCgU3lAXNJBCXE63151YufWmYYLWuchMZ+FAKSY=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzVaCM0vDPy4bRMH6h9zgN6v2KGagKDkrY4x55hUTiIX2eSnKEX
+	j21kWJyijeGWP6TpDAU3iK7dm5Vdah/xyMOiMv7OBW91AfgadGg0isgw+YgR
+X-Google-Smtp-Source: AGHT+IHhqjy8WeTtGJCjL8APo5icRaeNMZCgJdUWodmCHHiaovrWOaRpdybBZblfcBNu/LZxuuDbbQ==
+X-Received: by 2002:a17:907:9488:b0:a8c:d6a3:d038 with SMTP id a640c23a62f3a-a93c492a74emr81977066b.37.1727392875801;
+        Thu, 26 Sep 2024 16:21:15 -0700 (PDT)
+Received: from [127.0.1.1] (2a02-8389-41cf-e200-3989-b03c-7705-998b.cable.dynamic.v6.surfer.at. [2a02:8389:41cf:e200:3989:b03c:7705:998b])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a93c27773c0sm50368166b.1.2024.09.26.16.21.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 26 Sep 2024 16:21:15 -0700 (PDT)
+From: Javier Carrasco <javier.carrasco.cruz@gmail.com>
+Subject: [PATCH 00/18] leds: switch to device_for_each_child_node_scoped()
+Date: Fri, 27 Sep 2024 01:20:51 +0200
+Message-Id: <20240927-leds_device_for_each_child_node_scoped-v1-0-95c0614b38c8@gmail.com>
 MIME-Version: 1.0
-References: <20240925080353.2362879-1-jakiela@google.com> <20240925080353.2362879-2-jakiela@google.com>
- <bbf023c7-f08b-4f9d-8770-08e63074fb4c@collabora.com>
-In-Reply-To: <bbf023c7-f08b-4f9d-8770-08e63074fb4c@collabora.com>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Thu, 26 Sep 2024 16:02:27 -0700
-Message-ID: <CAJMQK-g4BdJPPU59s4X3yuAU+Gy-hTm9bCnSHFfDEbtKv6Xr1A@mail.gmail.com>
-Subject: Re: [PATCH 2/2] arm64: dts: mediate: Introduce MT8186
- Chinchou/Chinchou360 Chromebooks
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: =?UTF-8?Q?Albert_Jakie=C5=82a?= <jakiela@google.com>, robh@kernel.org, 
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
-	wenst@chromium.org, rafal@milecki.pl, nfraprado@collabora.com, 
-	macpaul.lin@mediatek.com, sean.wang@mediatek.com, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAFPs9WYC/x2N0QqDMAwAf0XyvIJ2duB+ZYxQktQGpJUGhiD++
+ 4qPB8fdCSZNxeA9nNDkp6a1dJgeA1COZRWn3Bn86Odx8S+3CRtyN0kw1YYSKSNl3RhLZUGjugu
+ 7EJfgQ5inZ4rQY3uTpMc9+nyv6w9hSLI6eAAAAA==
+To: Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Gene Chen <gene_chen@richtek.com>, 
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>, 
+ Bartosz Golaszewski <brgl@bgdev.pl>, Chen-Yu Tsai <wens@csie.org>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, 
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: linux-leds@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-sunxi@lists.linux.dev, 
+ Javier Carrasco <javier.carrasco.cruz@gmail.com>, stable@vger.kernel.org
+X-Mailer: b4 0.14-dev
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1727392874; l=3800;
+ i=javier.carrasco.cruz@gmail.com; s=20240312; h=from:subject:message-id;
+ bh=ls6STftDXgqEjSON3lpk60MstLtR+0wj4jS0gZeSDb0=;
+ b=TYJknx8sMFUvP50SESSmj7bX6NpKm2bRxPVZmfQ4I0CTAI78hmnfsvCgYNyfMfsr3Zzok4S+j
+ J2NN3jjMDyzDfwjCYYydsp8LC3zBAjJbrjq41NeJcSn3DU93waqFbfe
+X-Developer-Key: i=javier.carrasco.cruz@gmail.com; a=ed25519;
+ pk=lzSIvIzMz0JhJrzLXI0HAdPwsNPSSmEn6RbS+PTS9aQ=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_160255_760566_352E4D92 
-X-CRM114-Status: GOOD (  26.29  )
+X-CRM114-CacheID: sfid-20240926_162118_546259_1EA31850 
+X-CRM114-Status: GOOD (  12.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,272 +109,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 26, 2024 at 2:27=E2=80=AFAM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 25/09/24 10:03, Albert Jakie=C5=82a ha scritto:
-> > The MT8186 Chinchou/Chinchou360, also known as the Asus Chromebook
-> > CZ12/CZ11 Flip, is a clamshell or convertible device with touchscreen,
-> > stylus and extra buttons.
-> >
-> > Signed-off-by: Albert Jakie=C5=82a <jakiela@google.com>
-> > ---
-> >   arch/arm64/boot/dts/mediatek/Makefile         |   3 +
-> >   .../mediatek/mt8186-corsola-chinchou-sku0.dts |  18 +
-> >   .../mediatek/mt8186-corsola-chinchou-sku1.dts |  34 ++
-> >   .../mt8186-corsola-chinchou-sku16.dts         |  28 ++
-> >   .../dts/mediatek/mt8186-corsola-chinchou.dtsi | 445 +++++++++++++++++=
-+
-> >   5 files changed, 528 insertions(+)
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinch=
-ou-sku0.dts
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinch=
-ou-sku1.dts
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinch=
-ou-sku16.dts
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinch=
-ou.dtsi
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dt=
-s/mediatek/Makefile
-> > index 8fd7b2bb7a15..0db7770e8907 100644
-> > --- a/arch/arm64/boot/dts/mediatek/Makefile
-> > +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> > @@ -55,6 +55,9 @@ dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-kukui-kodama-=
-sku32.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-kukui-krane-sku0.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-kukui-krane-sku176.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-pumpkin.dtb
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-chinchou-sku0.dtb
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-chinchou-sku1.dtb
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-chinchou-sku16.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-magneton-sku393216.dt=
-b
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-magneton-sku393217.dt=
-b
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-magneton-sku393218.dt=
-b
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.=
-dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts
-> > new file mode 100644
-> > index 000000000000..29dd92318da1
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts
-> > @@ -0,0 +1,18 @@
-> > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> > +/*
-> > + * Copyright 2023 Google LLC
-> > + */
-> > +
-> > +/dts-v1/;
-> > +#include "mt8186-corsola-chinchou.dtsi"
-> > +
-> > +/ {
-> > +     model =3D "Google chinchou sku0 board";
-> > +     compatible =3D "google,chinchou-sku0", "google,chinchou-sku2",
-> > +                     "google,chinchou-sku4", "google,chinchou-sku5",
-> > +                     "google,chinchou", "mediatek,mt8186";
-> > +};
-> > +
-> > +&gpio_keys {
-> > +     status =3D "disabled";
-> > +};
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.=
-dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts
-> > new file mode 100644
-> > index 000000000000..8ba31f81d9ad
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts
-> > @@ -0,0 +1,34 @@
-> > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> > +/*
-> > + * Copyright 2023 Google LLC
-> > + */
-> > +
-> > +/dts-v1/;
-> > +#include "mt8186-corsola-chinchou.dtsi"
-> > +
-> > +/ {
-> > +     model =3D "Google chinchou sku1/sku17 board";
-> > +     compatible =3D "google,chinchou-sku1", "google,chinchou-sku17",
-> > +                     "google,chinchou-sku3", "google,chinchou-sku6",
-> > +                     "google,chinchou-sku7", "google,chinchou-sku20",
-> > +                     "google,chinchou-sku22", "google,chinchou-sku23",
-> > +                     "mediatek,mt8186";
-> > +};
-> > +
-> > +&i2c1 {
-> > +     i2c-scl-internal-delay-ns =3D <10000>;
-> > +
-> > +     touchscreen: touchscreen@41 {
-> > +             compatible =3D "ilitek,ili2901";
-> > +             reg =3D <0x41>;
-> > +             interrupts-extended =3D <&pio 12 IRQ_TYPE_LEVEL_LOW>;
-> > +             pinctrl-names =3D "default";
-> > +             pinctrl-0 =3D <&touchscreen_pins>;
-> > +             reset-gpios =3D <&pio 60 GPIO_ACTIVE_LOW>;
-> > +             vccio-supply =3D <&pp1800_tchscr_report_disable>;
-> > +     };
-> > +};
-> > +
-> > +&gpio_keys {
-> > +     status =3D "disabled";
-> > +};
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16=
-.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts
-> > new file mode 100644
-> > index 000000000000..d3378d7ad096
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts
-> > @@ -0,0 +1,28 @@
-> > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> > +/*
-> > + * Copyright 2023 Google LLC
-> > + */
-> > +
-> > +/dts-v1/;
-> > +#include "mt8186-corsola-chinchou.dtsi"
-> > +
-> > +/ {
-> > +     model =3D "Google chinchou sku16/sku2147483647 board";
-> > +     compatible =3D "google,chinchou-sku16", "google,chinchou-sku18",
-> > +                     "google,chinchou-sku19", "google,chinchou-sku21",
-> > +                     "google,chinchou-sku2147483647", "mediatek,mt8186=
-";
-> > +};
-> > +
-> > +&i2c1 {
-> > +     i2c-scl-internal-delay-ns =3D <10000>;
-> > +
-> > +     touchscreen: touchscreen@41 {
-> > +             compatible =3D "ilitek,ili2901";
-> > +             reg =3D <0x41>;
-> > +             interrupts-extended =3D <&pio 12 IRQ_TYPE_LEVEL_LOW>;
-> > +             pinctrl-names =3D "default";
-> > +             pinctrl-0 =3D <&touchscreen_pins>;
-> > +             reset-gpios =3D <&pio 60 GPIO_ACTIVE_LOW>;
-> > +             vccio-supply =3D <&pp1800_tchscr_report_disable>;
-> > +     };
-> > +};
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi =
-b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
-> > new file mode 100644
-> > index 000000000000..c77cc43f8442
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
->
-> ..snip..
->
-> > +
-> > +&mmc1_pins_default {
-> > +     pins-clk {
-> > +             drive-strength =3D <MTK_DRIVE_8mA>;
->
-> Please stop using the meaningless MTK_DRIVE_(x)mA macro.
->
-> drive-strength =3D <8>; is enough :-)
->
-> Cheers,
-> Angelo
->
-> > +     };
-> > +
-> > +     pins-cmd-dat {
-> > +             drive-strength =3D <MTK_DRIVE_8mA>;
-> > +     };
-> > +};
-> > +
-> > +&mmc1_pins_uhs {
-> > +     pins-clk {
-> > +             drive-strength =3D <MTK_DRIVE_8mA>;
-> > +     };
-> > +
-> > +     pins-cmd-dat {
-> > +             drive-strength =3D <MTK_DRIVE_8mA>;
-> > +     };
-> > +};
-> > +
-> > +&sound {
-> > +     status =3D "okay";
-> > +
-> > +     compatible =3D "mediatek,mt8186-mt6366-rt5650-sound";
->
-> You don't need to change this compatible, as the only thing that changes =
-in the
-> actual driver are the dapm_routes. I implemented support for that nice da=
-i-link
-> (standard, kind of) graph so that we stop getting a thousand compatibles =
-for no
-> reason other than routing :-)
->
-> This should work with (99.9% confident it will, but please test):
->
->         model =3D "mt8186_rt5650";
->         status =3D "okay";
->
-> > +     mediatek,adsp =3D <&adsp>;
->
-> This property is already set in the node that you're inheriting from
-> mt8186-corsola.dtsi, please drop.
->
-> > +
-> > +     audio-routing =3D
-> > +             "Headphone", "HPOL",
-> > +             "Headphone", "HPOR",
-> > +             "HDMI1", "TX";
-> > +
-> > +     hs-playback-dai-link {
-> > +             codec {
-> > +                     sound-dai =3D <&rt5650>;
-> > +             };
-> > +     };
-> > +
-> > +     hs-capture-dai-link {
-> > +             codec {
-> > +                     sound-dai =3D <&rt5650>;
-> > +             };
-> > +     };
-> > +
-> > +     spk-share-dai-link {
-> > +     };
->
-> Empty nodes are meaningless (and you're inheriting this dai link from
-> mt8186-corsola.dtsi as well). Drop.
->
-> > +
-> > +     spk-hdmi-playback-dai-link {
-> > +             codec {
-> > +                     sound-dai =3D <&it6505dptx>;
-> > +             };
-> > +     };
-> > +};
-> > +
-> > +&wifi_enable_pin {
-> > +     pins-wifi-enable {
-> > +             pinmux =3D <PINMUX_GPIO51__FUNC_GPIO51>;
-> > +     };
-> > +};
-> > +
-> > +&wifi_pwrseq {
-> > +     reset-gpios =3D <&pio 51 GPIO_ACTIVE_LOW>;
-> > +};
-> > +
->
-> ..snip..
->
-> > +
-> > +&pen_insert {
-> > +     wakeup-event-action =3D <EV_ACT_ANY>;
->
-> Why is this set to EV_ACT_ANY on Chinchou but not on the other Corsola de=
-vices?
-> Is there any specific reason?
+This series switches from the device_for_each_child_node() macro to its
+scoped variant, which in general makes the code more robust if new early
+exits are added to the loops, because there is no need for explicit
+calls to fwnode_handle_put(). Depending on the complexity of the loop
+and its error handling, the code gets simplified and it gets easier to
+follow.
 
-Default it's set to EV_ACT_DEASSERTED. Some OEMs want to wake up on
-both assert and deassert.
+The non-scoped variant of the macro is error-prone, and it has been the
+source of multiple bugs where the child node refcount was not
+decremented accordingly in error paths within the loops. The first patch
+of this series is a good example, which fixes that kind of bug that is
+regularly found in node iterators.
 
->
-> Cheers,
-> Angelo
->
+The uses of device_for_each_child_node() with no early exits have been
+left untouched because their simpilicty justifies the non-scoped
+variant.
+
+Note that the child node is now declared in the macro, and therefore the
+explicit declaration is no longer required.
+
+The general functionality should not be affected by this modification.
+If functional changes are found, please report them back as errors.
+
+Signed-off-by: Javier Carrasco <javier.carrasco.cruz@gmail.com>
+---
+Javier Carrasco (18):
+      leds: flash: mt6360: fix device_for_each_child_node() refcounting in error paths
+      leds: flash: mt6370: switch to device_for_each_child_node_scoped()
+      leds: flash: leds-qcom-flash: switch to device_for_each_child_node_scoped()
+      leds: aw200xx: switch to device_for_each_child_node_scoped()
+      leds: cr0014114: switch to device_for_each_child_node_scoped()
+      leds: el15203000: switch to device_for_each_child_node_scoped()
+      leds: gpio: switch to device_for_each_child_node_scoped()
+      leds: lm3532: switch to device_for_each_child_node_scoped()
+      leds: lm3697: switch to device_for_each_child_node_scoped()
+      leds: lp50xx: switch to device_for_each_child_node_scoped()
+      leds: max77650: switch to device_for_each_child_node_scoped()
+      leds: ns2: switch to device_for_each_child_node_scoped()
+      leds: pca963x: switch to device_for_each_child_node_scoped()
+      leds: pwm: switch to device_for_each_child_node_scoped()
+      leds: sun50i-a100: switch to device_for_each_child_node_scoped()
+      leds: tca6507: switch to device_for_each_child_node_scoped()
+      leds: rgb: ktd202x: switch to device_for_each_child_node_scoped()
+      leds: rgb: mt6370: switch to device_for_each_child_node_scoped()
+
+ drivers/leds/flash/leds-mt6360.c       |  3 +--
+ drivers/leds/flash/leds-mt6370-flash.c | 11 +++-------
+ drivers/leds/flash/leds-qcom-flash.c   |  4 +---
+ drivers/leds/leds-aw200xx.c            |  7 ++-----
+ drivers/leds/leds-cr0014114.c          |  4 +---
+ drivers/leds/leds-el15203000.c         | 14 ++++---------
+ drivers/leds/leds-gpio.c               |  9 +++------
+ drivers/leds/leds-lm3532.c             | 18 +++++++----------
+ drivers/leds/leds-lm3697.c             | 18 ++++++-----------
+ drivers/leds/leds-lp50xx.c             | 21 +++++++------------
+ drivers/leds/leds-max77650.c           | 18 ++++++-----------
+ drivers/leds/leds-ns2.c                |  7 ++-----
+ drivers/leds/leds-pca963x.c            | 11 +++-------
+ drivers/leds/leds-pwm.c                | 15 ++++----------
+ drivers/leds/leds-sun50i-a100.c        | 27 +++++++++----------------
+ drivers/leds/leds-tca6507.c            |  7 ++-----
+ drivers/leds/rgb/leds-ktd202x.c        |  8 +++-----
+ drivers/leds/rgb/leds-mt6370-rgb.c     | 37 ++++++++++------------------------
+ 18 files changed, 75 insertions(+), 164 deletions(-)
+---
+base-commit: 92fc9636d1471b7f68bfee70c776f7f77e747b97
+change-id: 20240926-leds_device_for_each_child_node_scoped-5a95255413fa
+
+Best regards,
+-- 
+Javier Carrasco <javier.carrasco.cruz@gmail.com>
+
 
