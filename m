@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FBE2CEBF61
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 23:39:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36FB8CEBF61
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 23:40:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TyRYSLB4FUMG7ZQozSGEenWyDF3XZ2iz0mCpEEN+5z4=; b=3YZyIoY0Uhc0CdNuxN11dLKtGG
-	b7/ojWgSEPImGhuS+9bVuZ3WiphtSLlUiBJUzszW0C6xGYWNPG0vK2ZAWkyQeQKDoeHmwXMEWjL0u
-	2+vu31LWBO636fS+N2i+fzRe6x/tm5BBPBxOOtbSdd7ke40FsEPgpx/sNWcMT2MxoC4BfHdMRcGL3
-	MTqr2Dl8rVBhyrjMpC7l+dKuAHma7THXYCQC0oplz/Ga70R9wprE11H0mQnyvp0rsI0ox3LKGTy+B
-	VheDVuf8N97PPyTmV/Q+5VgtRzgae4hIBSlBJW2Y8DTe6Z1jyy/R+p/kTDcHw1ByCSTc1XPzJVqbL
-	OtvrzkUw==;
+	bh=hHGLYSMhagE5fSOewtprIrN3fA4YzjKM29kt0KG+UpM=; b=ohVtjKR/NfxJvNTQ9p5ROEVOV3
+	zNmpU3yB6f2HvruaN8qTmVlkmvF6o7qg4Af05CJmPGPSzNBJYUkw2dtzqg0gKcMIm1WB4vgQDXQqw
+	bK5IMa1wi19IDJlxRZHsvBCL8ikMYoxiDPGyoG9hJiSSDKQ/Fhj+P6CuiVaqEqvT4kDIoGe5MgyA8
+	3Uqe8XEkIZAsPNA2lW+x7DgJRHJPmozybXz35TWKLciWsZGUa+ytGDMKoDgqNnWkd690+H47guJ23
+	9KNvOwpeim/TU28RNIjvoTDfcQTROCkAYPVoyOqW/MvYn4mpTWZE1+c9QqqvhrmXPYbPTk2siOivU
+	Vkp+QeCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sty4n-00000009cAE-0peZ;
-	Thu, 26 Sep 2024 23:39:13 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1sty61-00000009cZK-0Kiy;
+	Thu, 26 Sep 2024 23:40:29 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stxnw-00000009Z4b-2b9U;
-	Thu, 26 Sep 2024 23:21:50 +0000
-Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-5c241feb80dso4774528a12.0;
-        Thu, 26 Sep 2024 16:21:48 -0700 (PDT)
+	id 1stxny-00000009Z5R-2h4q;
+	Thu, 26 Sep 2024 23:21:51 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-5356aa9a0afso2430702e87.2;
+        Thu, 26 Sep 2024 16:21:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1727392906; x=1727997706; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1727392908; x=1727997708; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=TyRYSLB4FUMG7ZQozSGEenWyDF3XZ2iz0mCpEEN+5z4=;
-        b=hZEKYDhFjC7yXwskyJdyRDCc/AMDu55GKvlTfzj+ugvw4PQzB3P44lDkhJlyDbk8I1
-         w1IwRUqwMtQ0FqUfDR47jdoDmT1pfo3V36/wQtuyZNbeAKXcKTL+ZpfBi3w/EA1hkWBN
-         y1RONobm2U5C7Kry+THuO1TLJ0Kl0U/TPIiUaAfjp4PmrSCJYxusgOjoqwdXDOaUZ2dW
-         LmyDpPODIeKX7kZR92us059YDueqFcBgZkJeod6dpqYqeicD0P3FTxVyvAJ628Lw2Ob9
-         F7paA8GFNW4ncIy8D0HlJBKJPcdjd9ja2x66F+j0u41iEDsix3IwFoEbGepVpqcH/y/K
-         5YkQ==
+        bh=hHGLYSMhagE5fSOewtprIrN3fA4YzjKM29kt0KG+UpM=;
+        b=nPWU6mDFJr/znNxSpxt6AXwI6AH/8HUgj2nBTcBk32PLW2WpC641RxNN7t62fPKjPM
+         xX7llylUoQ/pegngCXVbwidEWXkaQbxej7Bf9d/VwEROKnV8XQjRa5e/wRVvKiE+GUho
+         7fyN8idu/XRz1cy5GJtlotU0SGJ0TcotHXI0BX9LNgB3E/kCwpltaX1qXw/onXgZ5409
+         Xm40UGRMVGPVjy9vFnmjxBqjU8BwSnQjy+ULWe3hwQpYtyBzF3s/cmD5/8FE2dknCQxm
+         /zTLgCSfkFSLGRRdQelNNi3UMOi9zwAghqXT4HhRbIr5W/FW5sbdCJ6iAhzBlRNSsSGJ
+         V/6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727392906; x=1727997706;
+        d=1e100.net; s=20230601; t=1727392908; x=1727997708;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=TyRYSLB4FUMG7ZQozSGEenWyDF3XZ2iz0mCpEEN+5z4=;
-        b=DJdxjyjBBKFMwVkA1Unu3JJMfZjXpEEkhp1ZCcClgUK35jTyBuRGZfYs//28nRLQcS
-         iCEU9oraNHRA2ooDcfT41pDU6DPUULG1jUYmCnLt6xK/G0fVmHtqY6MQNvdsbsduDdI9
-         HMpJe5fbUkLquhc5UPl8rOjTsgJfF3HMHi4EmGBF8mB+rqVVMMrDmN+7SzzqhurrZGJL
-         PRhUauNH5JnHN0S2YreHhctgfgd8wl10Xe8Qv2g48XVETafhkHrRadYNcB+7PX0MtLSQ
-         RAjUltM017EqJDu0zs/95klZBOeGrGmwDfZ7zd2QA31bG4YKyJStmCq/yU39rsCafiHe
-         1WNA==
-X-Forwarded-Encrypted: i=1; AJvYcCUFME3JINsTQsFfChIl0+L+i1g4LbWywkVHMuRad8Y/rpjFYFkzbJhVamQRvSrIi8HMzO1nTmKIfzDRzGM/5oc=@lists.infradead.org, AJvYcCVWvwG+5clNMA3kqj7vM++6SCEBnaZGuZ6lHPZmqvCGCmq4lMYfNN6ERNJsaTL1eurEKOoo8MBHtYSCk9xl/wan@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyp38q2+2WLx2FlSEPwx+p+Co+dyYthr3NuRmaKgGslS77idfCl
-	thPsMeno+tHbW85CqEffwzmyhpAC2pRBMwwiF8JJowNadLSLpkj7F7OyyNjh
-X-Google-Smtp-Source: AGHT+IF2h6rfpoYNPcv3IJUyf/0VxJB+Tzg7enQ3X9qTLHoriZAfUF5SXe05FRA9//n3nOpoi2FKjQ==
-X-Received: by 2002:a17:907:36cd:b0:a7a:acae:340b with SMTP id a640c23a62f3a-a93c32119afmr152457166b.31.1727392906224;
-        Thu, 26 Sep 2024 16:21:46 -0700 (PDT)
+        bh=hHGLYSMhagE5fSOewtprIrN3fA4YzjKM29kt0KG+UpM=;
+        b=Wnlk1QC7WnV4pVmGYRPSPv5AGf3fwrggT1hspjCgBrZlwlRMweKvIAOoAfDxfqOr0g
+         It1t3LGde1ZO8/IBcJ9kBqvEmO8uplXp1aVVC97lmxAXZY5xQrGrpACJ8UnD7lcrjnYW
+         vg1tu17SY+ybNn8bwnbDBqQXJosDW9XsKw6VhCFz9zKIYq5rQtvW4lP7STHI+iwvWbmK
+         B+3Ib+cE+ZKg82oX6FzPwyN0No9rD6zazC6JABLSfizfWd0xk0zSUnq7Fb02FzV8LWX0
+         W95pGJH9KmdrtJhPI/jFVVriri69c35APvvOYBUvtnnNcWOIQkQ0HRJsV3bcm3LNCJp6
+         TiRQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVOqytM1HcxT6CX5+gpYkEH6tBB3JCDJv3bp8BO0KNT2isv9Gd+n5RTUr12bB3d+S3Hh0YClNmOtXYNVn7DL9U=@lists.infradead.org, AJvYcCWs4nsGyGxAzmhecR6/DcSBJAlstep0fcMlp3JpVMSVxCTwyNNrL7Wx/fNw4lfzfNqO4B0CDpXHljfQPPRIw3Ut@lists.infradead.org
+X-Gm-Message-State: AOJu0YxMkusHQf183oYWssU0znP05UIDcDX3lYtdThaxbYX7tCzh0jg4
+	JhU94UFKkc9g606em++Jw6cRa+S4nbfVp0FRQoCnbnL5gWwJpNKp3P85sV3P
+X-Google-Smtp-Source: AGHT+IHlD2G2E7GSRoMpuBNsI0X5mi6Ua8JvRQEFmnFC/8WxUbT+wMtBf0onF8DjiKH20jT0Ia2fqA==
+X-Received: by 2002:a05:6512:3d8d:b0:52c:9877:71b7 with SMTP id 2adb3069b0e04-5389fca4475mr1025221e87.59.1727392908032;
+        Thu, 26 Sep 2024 16:21:48 -0700 (PDT)
 Received: from [127.0.1.1] (2a02-8389-41cf-e200-3989-b03c-7705-998b.cable.dynamic.v6.surfer.at. [2a02:8389:41cf:e200:3989:b03c:7705:998b])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a93c27773c0sm50368166b.1.2024.09.26.16.21.42
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a93c27773c0sm50368166b.1.2024.09.26.16.21.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Sep 2024 16:21:44 -0700 (PDT)
+        Thu, 26 Sep 2024 16:21:47 -0700 (PDT)
 From: Javier Carrasco <javier.carrasco.cruz@gmail.com>
-Date: Fri, 27 Sep 2024 01:21:04 +0200
-Subject: [PATCH 13/18] leds: pca963x: switch to
+Date: Fri, 27 Sep 2024 01:21:05 +0200
+Subject: [PATCH 14/18] leds: pwm: switch to
  device_for_each_child_node_scoped()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240927-leds_device_for_each_child_node_scoped-v1-13-95c0614b38c8@gmail.com>
+Message-Id: <20240927-leds_device_for_each_child_node_scoped-v1-14-95c0614b38c8@gmail.com>
 References: <20240927-leds_device_for_each_child_node_scoped-v1-0-95c0614b38c8@gmail.com>
 In-Reply-To: <20240927-leds_device_for_each_child_node_scoped-v1-0-95c0614b38c8@gmail.com>
 To: Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>, 
@@ -86,16 +86,16 @@ Cc: linux-leds@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, 
  Javier Carrasco <javier.carrasco.cruz@gmail.com>
 X-Mailer: b4 0.14-dev
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1727392874; l=1968;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1727392874; l=1845;
  i=javier.carrasco.cruz@gmail.com; s=20240312; h=from:subject:message-id;
- bh=Pv0inpasEwKB4z2yQMzZWyX6wkHoCypZJXtRjmgK+mU=;
- b=4OyN2lOQijDJ7XTOSToVZf5Jm5nLKGku+MN88b0WkN8LPNF8MQ75n8vIksJCldHP70NcDZrab
- N/kVJn2HWk2DcMaBUelGlqT9fiv7ll/wbB/w8wUBdi5v4GKnZbdtw3R
+ bh=h1wO2Y5y3snunIjQvp9wEO38mWmGcGSDzqEh5GMe7fI=;
+ b=J1kuyS1rctHLvv769c4EZm6T2XBPkiw9ibZoWkMdEGXw3txrJVIYnZXZTRhRj50ABFFbr7IzF
+ VoKASt4M5y0BuAGDuF4YB9A9l9nGY60szrd+yDBg2/dQb2i/6z43d4J
 X-Developer-Key: i=javier.carrasco.cruz@gmail.com; a=ed25519;
  pk=lzSIvIzMz0JhJrzLXI0HAdPwsNPSSmEn6RbS+PTS9aQ=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_162148_697422_E895649B 
-X-CRM114-Status: GOOD (  14.29  )
+X-CRM114-CacheID: sfid-20240926_162150_718474_515D19D6 
+X-CRM114-Status: GOOD (  14.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,62 +117,58 @@ This also prevents possible memory leaks if new error paths are added
 without the required call to fwnode_handle_put().
 
 After switching to the scoped variant, there is no longer need for a
-jump to 'err', as an immediate return is possible.
+jump to 'err_child_out', as an immediate return is possible.
 
 Signed-off-by: Javier Carrasco <javier.carrasco.cruz@gmail.com>
 ---
- drivers/leds/leds-pca963x.c | 11 +++--------
- 1 file changed, 3 insertions(+), 8 deletions(-)
+ drivers/leds/leds-pwm.c | 15 ++++-----------
+ 1 file changed, 4 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/leds/leds-pca963x.c b/drivers/leds/leds-pca963x.c
-index b53905da3592..050e93b04884 100644
---- a/drivers/leds/leds-pca963x.c
-+++ b/drivers/leds/leds-pca963x.c
-@@ -306,7 +306,6 @@ static int pca963x_register_leds(struct i2c_client *client,
- 	struct pca963x_chipdef *chipdef = chip->chipdef;
- 	struct pca963x_led *led = chip->leds;
- 	struct device *dev = &client->dev;
--	struct fwnode_handle *child;
- 	bool hw_blink;
- 	s32 mode2;
- 	u32 reg;
-@@ -338,7 +337,7 @@ static int pca963x_register_leds(struct i2c_client *client,
- 	if (ret < 0)
- 		return ret;
+diff --git a/drivers/leds/leds-pwm.c b/drivers/leds/leds-pwm.c
+index e1b414b40353..7961dca0db2f 100644
+--- a/drivers/leds/leds-pwm.c
++++ b/drivers/leds/leds-pwm.c
+@@ -140,21 +140,18 @@ static int led_pwm_add(struct device *dev, struct led_pwm_priv *priv,
  
--	device_for_each_child_node(dev, child) {
-+	device_for_each_child_node_scoped(dev, child) {
- 		struct led_init_data init_data = {};
- 		char default_label[32];
+ static int led_pwm_create_fwnode(struct device *dev, struct led_pwm_priv *priv)
+ {
+-	struct fwnode_handle *fwnode;
+ 	struct led_pwm led;
+ 	int ret;
  
-@@ -346,8 +345,7 @@ static int pca963x_register_leds(struct i2c_client *client,
- 		if (ret || reg >= chipdef->n_leds) {
- 			dev_err(dev, "Invalid 'reg' property for node %pfw\n",
- 				child);
+-	device_for_each_child_node(dev, fwnode) {
++	device_for_each_child_node_scoped(dev, fwnode) {
+ 		memset(&led, 0, sizeof(led));
+ 
+ 		ret = fwnode_property_read_string(fwnode, "label", &led.name);
+ 		if (ret && is_of_node(fwnode))
+ 			led.name = to_of_node(fwnode)->name;
+ 
+-		if (!led.name) {
 -			ret = -EINVAL;
--			goto err;
+-			goto err_child_out;
+-		}
++		if (!led.name)
 +			return -EINVAL;
- 		}
  
- 		led->led_num = reg;
-@@ -369,16 +367,13 @@ static int pca963x_register_leds(struct i2c_client *client,
- 		if (ret) {
- 			dev_err(dev, "Failed to register LED for node %pfw\n",
- 				child);
--			goto err;
+ 		led.active_low = fwnode_property_read_bool(fwnode,
+ 							   "active-low");
+@@ -165,14 +162,10 @@ static int led_pwm_create_fwnode(struct device *dev, struct led_pwm_priv *priv)
+ 
+ 		ret = led_pwm_add(dev, priv, &led, fwnode);
+ 		if (ret)
+-			goto err_child_out;
 +			return ret;
- 		}
- 
- 		++led;
  	}
  
  	return 0;
--err:
--	fwnode_handle_put(child);
+-
+-err_child_out:
+-	fwnode_handle_put(fwnode);
 -	return ret;
  }
  
- static int pca963x_suspend(struct device *dev)
+ static int led_pwm_probe(struct platform_device *pdev)
 
 -- 
 2.43.0
