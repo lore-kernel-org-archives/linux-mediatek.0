@@ -4,98 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2653DCDE02A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 18:16:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47A84CDE02E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 18:26:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ghI5wl9Rodk/qOTN/GXzEVkvMG0ZFbywRGFDuKaTQGk=; b=u5dub5QtnNRa0E3UApixNdMtBO
-	ORTPApG0oZvHyJScMl20uGbCpElgvxRJe5ug5lNUES8fEsZvZYS0C1RCbt4hG/diQ2230vdQHds9E
-	ak31h4b7JnzKi2ZVj27wTNXp3FoE4tMYG9YWFS6OONoNwTte+o4DIVpnkG8x0nAwrj/mZrEHbJfR0
-	bViHw96cle3OjEatr2HZuGC/CewQu+WXZh7aFzruRcVzVs9weAHX9mxqUvP0Z5oiQaUqxqtAMgWdr
-	86lVzTzw8gpyMmj43tyT7FUZI9BpnCLKhjRSsMhocgGEifngjooy7ZCDTsnaW/Xgcf2ssWauv/BIR
-	5laFNyHQ==;
+	bh=OYklb0bp4yN/e2qRJsDEQnLw8TXWnh2IpfNp7uNz9UE=; b=PT8ns6GyWU9vpai6cjqz11y934
+	8BNOtWrqIAkl7L0gUDexoW5xXDvDy+Cw5c0VJ6yMpcQogYv5T/Gj3vclabGz2p2aE544v1A7SZ6aX
+	rNXavaX1I9acSrZnl3WNBxGyD9j6XJw5VBy+oihQp0Sgvr2ZPZSu2UffEbhRdZfZzCOgKghWo+qjY
+	msViCJyelxl6VQm2v2ebBr7fjzftsICSwWGyjSdrLgJQmVOdIr5N+JjYpfjYgRNaZIh+zJUTIieL3
+	G9ZxKYU4Qp1JepGZEJBig6XCKoyD59tZtiQw5/n7Y/mbY55aoKxscnK24+8rgrBWMmMitIq4X9NT7
+	ohmfFRIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stt2o-000000096UC-444M;
-	Thu, 26 Sep 2024 18:16:50 +0000
-Received: from mail-qt1-x829.google.com ([2607:f8b0:4864:20::829])
+	id 1sttCQ-000000097wm-4763;
+	Thu, 26 Sep 2024 18:26:47 +0000
+Received: from 009.lax.mailroute.net ([199.89.1.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stt1a-000000096DN-2w8Q
+	id 1sttCM-000000097vb-2ei0
 	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Sep 2024 18:15:36 +0000
-Received: by mail-qt1-x829.google.com with SMTP id d75a77b69052e-4582a5b495cso35641cf.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Sep 2024 11:15:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1727374532; x=1727979332; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ghI5wl9Rodk/qOTN/GXzEVkvMG0ZFbywRGFDuKaTQGk=;
-        b=h638pU2ICFwCXS2jPD/QzXzqAhGzx68BhPUPYFXXz0H5eSBS9UsFrBJv4HvZ6HztiU
-         jOukIVLYWzevKKtkRNxlUpQKxJ5+Qi2amW/24jIUD9RbiaAjugVvS/U8BjArvAJ0VWc3
-         HhNZBoT9OHEOx4Go38KFhvGffxYE9BEA+QmBjNOmiyr/FwLre+KPyuOdPvIQUI113E8O
-         rw1cIXap+R2iILwhL7cPDR5w8cFmNndl64XX8AigNYiWt+NTFa59YiQCFpqbkMamWzM4
-         Fx497fuaY8OvP2uwb10TltOP0Pq3eubcbOUHEEA9tMrHOWnoyVY9jsWSatWPwKtHSi0Y
-         cIgg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727374532; x=1727979332;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ghI5wl9Rodk/qOTN/GXzEVkvMG0ZFbywRGFDuKaTQGk=;
-        b=r4bzfTPHWaH441oZugcYuB836ZR9FnAsuNT3wDYa+cUbVNPH/Oe4+7K37HlewhCZmr
-         woYjSyIWlT1Hx3I12mq1IKN2JyHggbs1lqK7XYc25V1AQ2CX0Nn2m8J/r6HewDb5dIRa
-         Q/T4+KSUMtx0mwm+/0lY8a1WPocDnoV/ISGp1ZIn35N2cl9jQ4X6UGmyKi8APTzrNhu1
-         XevbqdFvLapZHNQ/DSRAoS+J9b/MzY62WdHyWlFbwSxSsCKCvrGi4HVYhFYXeB2WDFBv
-         Xz65z5gZgP9Wl1ivcFBiEsphfM95wfRbg1fc6Tpvea7iHCP+4+UY0KyMEbiiEU5oFY0Q
-         URqA==
-X-Forwarded-Encrypted: i=1; AJvYcCUN8gLWsENK64Wt6v1f25+MnSuDigB1ydl59zCFhdXVD5YW+SYx8oGs7HUIdVB7UUw0JJSYTnfzssh4EOl4Rg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwrVyBrOmtHJ6635lCDLc0AZypSXaXZ60yC8JqPwmd6va6pMv4g
-	wq1VtFhQK4+LZieGSpjnLnXMWGFNZ+iU1uwTCBW0CKQhWl2LbizqXRoHjtbIA6/BRHEWjEhv23w
-	G+v/TU9uFkvuHgFex0CSPkQEnFyqHN+VYC4DT
-X-Google-Smtp-Source: AGHT+IEKskNfWv42/OYoUzFnd0ZbE37pwmmbLc0UUgMIXvnGdU5BvAly31C36TplRHtvwCbfAj6CwKAwWZwa5Zx659M=
-X-Received: by 2002:a05:622a:24a:b0:453:62ee:3fe with SMTP id
- d75a77b69052e-45ca03e60f6mr134981cf.17.1727374531410; Thu, 26 Sep 2024
- 11:15:31 -0700 (PDT)
+	Thu, 26 Sep 2024 18:26:44 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 009.lax.mailroute.net (Postfix) with ESMTP id 4XF29q24MZzlgVnN;
+	Thu, 26 Sep 2024 18:26:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1727375189; x=1729967190; bh=OYklb0bp4yN/e2qRJsDEQnLw
+	8TXWnh2IpfNp7uNz9UE=; b=dsLzhYiMFmO7Ml6KbEKtZHDG5NeuFJIrsZI2ZeBT
+	NWHdEsw5IcgfaHaMc6tRxMDzUIAWZsuWPemp5D4wdMrgYZC7SM7dx418aGB20A2E
+	B7LUPIHbDzcxkBWAzruU3Qf2GknQHVO1eLnNIScS/+TG5lVC1Ig9jwC56Wq143X2
+	UYPfmNreeKpmVidOs41M8I8KgpO6Nhl9dvmPORKLJq7eS9AtnYkS+4YkPLf1kd2r
+	yvNoDaKwDBQffEWhBDju91W1FLdQbyaYbHcUp7mNDnCkm0A+Ke80AqML2B+h6mEU
+	grbYoSh1dv85/ifPFDcPghlgwidn8HkMbrjsQwh+iOLzNg==
+X-Virus-Scanned: by MailRoute
+Received: from 009.lax.mailroute.net ([127.0.0.1])
+ by localhost (009.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id TtPzkeKFogIk; Thu, 26 Sep 2024 18:26:29 +0000 (UTC)
+Received: from [100.66.154.22] (unknown [104.135.204.82])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 009.lax.mailroute.net (Postfix) with ESMTPSA id 4XF29X579FzlgVXv;
+	Thu, 26 Sep 2024 18:26:24 +0000 (UTC)
+Message-ID: <108a707e-1118-42f4-8cc9-c1bda9fab451@acm.org>
+Date: Thu, 26 Sep 2024 11:26:22 -0700
 MIME-Version: 1.0
-References: <20240925075707.3970187-1-linyunsheng@huawei.com> <20240925075707.3970187-3-linyunsheng@huawei.com>
-In-Reply-To: <20240925075707.3970187-3-linyunsheng@huawei.com>
-From: Mina Almasry <almasrymina@google.com>
-Date: Thu, 26 Sep 2024 11:15:15 -0700
-Message-ID: <CAHS8izOxugzWJDTc-4CWqaKABTj=J4OHs=Lcb=SE9r8gX0J+yg@mail.gmail.com>
-Subject: Re: [PATCH net v2 2/2] page_pool: fix IOMMU crash when driver has
- already unbound
-To: Yunsheng Lin <linyunsheng@huawei.com>
-Cc: davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com, 
-	liuyonglong@huawei.com, fanghaiqing@huawei.com, zhangkun09@huawei.com, 
-	Robin Murphy <robin.murphy@arm.com>, Alexander Duyck <alexander.duyck@gmail.com>, 
-	IOMMU <iommu@lists.linux.dev>, Wei Fang <wei.fang@nxp.com>, 
-	Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, 
-	Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, 
-	Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
-	Alexander Lobakin <aleksander.lobakin@intel.com>, Alexei Starovoitov <ast@kernel.org>, 
-	Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, 
-	John Fastabend <john.fastabend@gmail.com>, Saeed Mahameed <saeedm@nvidia.com>, 
-	Leon Romanovsky <leon@kernel.org>, Tariq Toukan <tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Andrew Morton <akpm@linux-foundation.org>, Ilias Apalodimas <ilias.apalodimas@linaro.org>, 
-	imx@lists.linux.dev, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org, 
-	linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-mm@kvack.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v9 2/3] ufs: core: fix error handler process for MCQ abort
+To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>
+Cc: "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
+ =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
+ =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
+ =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
+ =?UTF-8?B?RWQgVHNhaSAo6JSh5a6X6LuSKQ==?= <Ed.Tsai@mediatek.com>,
+ wsd_upstream <wsd_upstream@mediatek.com>,
+ "quic_nguyenb@quicinc.com" <quic_nguyenb@quicinc.com>,
+ =?UTF-8?B?TGluIEd1aSAo5qGC5p6XKQ==?= <Lin.Gui@mediatek.com>,
+ =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
+ =?UTF-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>,
+ =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
+ <Chaotian.Jing@mediatek.com>, =?UTF-8?B?UG93ZW4gS2FvICjpq5jkvK/mlocp?=
+ <Powen.Kao@mediatek.com>, =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
+ <Naomi.Chu@mediatek.com>, =?UTF-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
+ <Qilin.Tan@mediatek.com>
+References: <20240925095546.19492-1-peter.wang@mediatek.com>
+ <20240925095546.19492-3-peter.wang@mediatek.com>
+ <949fb86d-6b61-4a1a-bc04-c05bb30522b9@acm.org>
+ <4bc08986190aecb394f07997b2ad31e301567496.camel@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <4bc08986190aecb394f07997b2ad31e301567496.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_111534_746525_64BE4CE9 
-X-CRM114-Status: GOOD (  35.66  )
+X-CRM114-CacheID: sfid-20240926_112642_722023_03E72AF9 
+X-CRM114-Status: GOOD (  17.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,81 +106,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 25, 2024 at 1:03=E2=80=AFAM Yunsheng Lin <linyunsheng@huawei.co=
-m> wrote:
->
-> Networking driver with page_pool support may hand over page
-> still with dma mapping to network stack and try to reuse that
-> page after network stack is done with it and passes it back
-> to page_pool to avoid the penalty of dma mapping/unmapping.
-> With all the caching in the network stack, some pages may be
-> held in the network stack without returning to the page_pool
-> soon enough, and with VF disable causing the driver unbound,
-> the page_pool does not stop the driver from doing it's
-> unbounding work, instead page_pool uses workqueue to check
-> if there is some pages coming back from the network stack
-> periodically, if there is any, it will do the dma unmmapping
-> related cleanup work.
->
-> As mentioned in [1], attempting DMA unmaps after the driver
-> has already unbound may leak resources or at worst corrupt
-> memory. Fundamentally, the page pool code cannot allow DMA
-> mappings to outlive the driver they belong to.
->
-> Currently it seems there are at least two cases that the page
-> is not released fast enough causing dma unmmapping done after
-> driver has already unbound:
-> 1. ipv4 packet defragmentation timeout: this seems to cause
->    delay up to 30 secs.
-> 2. skb_defer_free_flush(): this may cause infinite delay if
->    there is no triggering for net_rx_action().
->
+On 9/25/24 8:45 PM, Peter Wang (=E7=8E=8B=E4=BF=A1=E5=8F=8B) wrote:
+> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+> index 24a32e2fd75e..06aa4ed1a9e6 100644
+> --- a/drivers/ufs/core/ufshcd.c
+> +++ b/drivers/ufs/core/ufshcd.c
+> @@ -5417,10 +5417,12 @@ ufshcd_transfer_rsp_status(struct ufs_hba *hba,
+> struct ufshcd_lrb *lrbp,
+>   		}
+>   		break;
+>   	case OCS_ABORTED:
+> -		result |=3D DID_ABORT << 16;
+> -		break;
+>   	case OCS_INVALID_COMMAND_STATUS:
+>   		result |=3D DID_REQUEUE << 16;
+> +		dev_warn(hba->dev,
+> +				"OCS %s from controller for tag %d\n",
+> +				(ocs =3D=3D OCS_ABORTED? "aborted" :
+> "invalid"),
+> +				lrbp->task_tag);
+>   		break;
+>   	case OCS_INVALID_CMD_TABLE_ATTR:
+>   	case OCS_INVALID_PRDT_ATTR:
+> @@ -6466,26 +6468,12 @@ static bool ufshcd_abort_one(struct request
+> *rq, void *priv)
+>   	struct scsi_device *sdev =3D cmd->device;
+>   	struct Scsi_Host *shost =3D sdev->host;
+>   	struct ufs_hba *hba =3D shost_priv(shost);
+> -	struct ufshcd_lrb *lrbp =3D &hba->lrb[tag];
+> -	struct ufs_hw_queue *hwq;
+> -	unsigned long flags;
+>  =20
+>   	*ret =3D ufshcd_try_to_abort_task(hba, tag);
+>   	dev_err(hba->dev, "Aborting tag %d / CDB %#02x %s\n", tag,
+>   		hba->lrb[tag].cmd ? hba->lrb[tag].cmd->cmnd[0] : -1,
+>   		*ret ? "failed" : "succeeded");
+>  =20
+> -	/* Release cmd in MCQ mode if abort succeeds */
+> -	if (hba->mcq_enabled && (*ret =3D=3D 0)) {
+> -		hwq =3D ufshcd_mcq_req_to_hwq(hba, scsi_cmd_to_rq(lrbp-
+>> cmd));
+> -		if (!hwq)
+> -			return 0;
+> -		spin_lock_irqsave(&hwq->cq_lock, flags);
+> -		if (ufshcd_cmd_inflight(lrbp->cmd))
+> -			ufshcd_release_scsi_cmd(hba, lrbp);
+> -		spin_unlock_irqrestore(&hwq->cq_lock, flags);
+> -	}
+> -
+>   	return *ret =3D=3D 0;
+>   }
+>  =20
+> ---------------------------------------------------------------------
+>=20
+>=20
+> This patch has several advantages:
+>=20
+> 1. It makes the patch 'ufs: core: fix the issue of ICU failure'
+>     seem valuable.
+> 2. The patch is more concise.
+> 3. There is no need to fetch OCS to determine OCS: ABORTED
+>     on every CQ completion, which increases ISR time.
+> 4. The err_handler flow for SDB and MCQ would be consistent.
+> 5. There is no need for the MediaTek SDB quirk.
+>=20
+>=20
+> What do you think?"
 
-I think additionally this is dependent on user behavior, right? AFAIU,
-frags allocated by the page_pool will remain in the socket receive
-queue until the user calls recvmsg(), and AFAIU they are stuck there
-arbitrarily long.
+Hi Peter,
 
-> In order not to do the dma unmmapping after driver has already
-> unbound and stall the unloading of the networking driver, add
-> the pool->items array to record all the pages including the ones
-> which are handed over to network stack, so the page_pool can
-> do the dma unmmapping for those pages when page_pool_destroy()
-> is called.
+Is the above patch sufficient? In MCQ mode, aborting a command happens
+as follows (simplified):
+(1) Send the ABORT TASK TMF. If this TMF succeeds, no SQE will be
+     generated. If this TMF succeeds it means that the SCSI command has
+     reached the UFS device and hence is no longer present in any
+     submission queue (SQ).
+(2) If the command is still in a submission queue, nullify the SQE. In
+     this case a CQE will be generated with status ABORTED.
 
-One thing I could not understand from looking at the code: if the
-items array is in the struct page_pool, why do you need to modify the
-page_pool entry in the struct page and in the struct net_iov? I think
-the code could be made much simpler if you can remove these changes,
-and you wouldn't need to modify the public api of the page_pool.
+It seems to me that the above patch handles (2) but not (1)?
 
-> As the pool->items need to be large enough to avoid
-> performance degradation, add a 'item_full' stat to indicate the
-> allocation failure due to unavailability of pool->items.
->
-
-I'm not sure there is any way to size the pool->items array correctly.
-Can you use a data structure here that can grow? Linked list or
-xarray?
-
-AFAIU what we want is when the page pool allocates a netmem it will
-add the netmem to the items array, and when the pp releases a netmem
-it will remove it from the array. Both of these operations are slow
-paths, right? So the performance of a data structure more complicated
-than an array may be ok. bench_page_pool_simple will tell for sure.
-
-> Note, the devmem patchset seems to make the bug harder to fix,
-> and may make backporting harder too. As there is no actual user
-> for the devmem and the fixing for devmem is unclear for now,
-> this patch does not consider fixing the case for devmem yet.
->
-
-net_iovs don't hit this bug, dma_unmap_page_attrs() is never called on
-them, so no special handling is needed really. However for code
-quality reasons lets try to minimize the number of devmem or memory
-provider checks in the code, if possible.
-
---=20
 Thanks,
-Mina
+
+Bart.
 
