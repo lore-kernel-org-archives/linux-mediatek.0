@@ -4,77 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F286CCFA13
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 10:27:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67C5ECCF9E9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 10:42:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SBLgazKKu5NNUnfSeMimzYpwU2tCfmGxSFJ9nTX9DwI=; b=0ZtAZNAGhMAZ9fTvkY9GY2lmNZ
-	wq1z0D2jRKlB9lQJ2gI3fIOsxtpHJcPGt4riperuMsxIENTrBNV+T7J8ASHMIR61PCCW8AdsZ+0qf
-	BUwQh3EKxNU/mFlU7hdilxCZA2hYBkMTQMrdtVv38ChH7m0uQ270eWQlVHwpeVrSDluOpedPKDqE4
-	BfqJ07dNv6S5LvaUKTRGF2tg3HMUp8NWDiw12O3GY8DoOpuNJ4/mXsYU0D5gC0N0hlwVwoxtR+JU4
-	vtstrPw0h6zyqlK4aLA3LorEJHMQMFpRaLrNn+icnwSdUlWnyk4Nrx/FA8aZIdA8WFxiGpGL47Uii
-	2KP659mQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yX4eW2hLFE+pD/0oU3sBpz42gUQTQtE0boReuMH0kxY=; b=ggsMBdNTMdO2rodCSAGOO3m0V6
+	PIjViGjvuisR7mvrxCFXa7jgYErmVRBtyR0cFjXaVtWoifppxHKjnknDN2pUpn6OGPC6yxLRlA9kT
+	nJdEA9Tm4BwQxMZgANeknrzUY1cD4abYSLf7em9z4GwBgdKNSruYfjyRCcDzlsgad9KlTOrFP6JmR
+	L60u4dI3ICwwNq9zFBUjwEAXLIvcM5+hgFoYmOcK1UDadCKjmg+lKFwenjKQbWhGbIGU6rv2iHSTT
+	2l86Rg4uk6NwNqywqrnDOCHyXo1MhFSsxknkb1kWpm3qq7S09FE5azjbNxfDjw8Y3jDxS2uMofJEr
+	TScOsfaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stliw-000000083qg-1WHk;
-	Thu, 26 Sep 2024 10:27:50 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1stlx0-0000000864m-0qp7;
+	Thu, 26 Sep 2024 10:42:22 +0000
+Received: from mail-ua1-x92b.google.com ([2607:f8b0:4864:20::92b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stle3-000000082ec-2bQE;
-	Thu, 26 Sep 2024 10:22:49 +0000
-X-UUID: 437f620e7bf111efba0aef63c0775dbf-20240926
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=SBLgazKKu5NNUnfSeMimzYpwU2tCfmGxSFJ9nTX9DwI=;
-	b=n8818H+QyRS/ogfLSsFgELPmkiYbx1xy1hgb62yDVL0jB3QHd54oOLBRBeJvyCvFuJZUjTWNzUGrTxsOD6Sqx91YR9MxER0sY3mHB3C8HNblgV1kbh29P2N1yF84t0SAzwZ0YVIk5XDz7y88gFQSLBVRUjexXLtw1Ww28i+WO1o=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:2e9bbbaa-b8db-4c52-90d2-75541de2e159,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:4e719a9e-8e9a-4ac1-b510-390a86b53c0a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 437f620e7bf111efba0aef63c0775dbf-20240926
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 337311873; Thu, 26 Sep 2024 03:22:42 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 26 Sep 2024 18:22:39 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 26 Sep 2024 18:22:39 +0800
-From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-To: Alper Nebi Yasak <alpernebiyasak@gmail.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: Shawn Sung <shawn.sung@mediatek.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, "Jason-JH . Lin"
-	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Nancy
- Lin <nancy.lin@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v7 2/3] drm/mediatek: ovl: Add blend_modes to driver data
-Date: Thu, 26 Sep 2024 18:22:37 +0800
-Message-ID: <20240926102238.24303-3-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240926102238.24303-1-jason-jh.lin@mediatek.com>
-References: <20240926102238.24303-1-jason-jh.lin@mediatek.com>
+	id 1stlwx-0000000863Q-2bqc
+	for linux-mediatek@lists.infradead.org;
+	Thu, 26 Sep 2024 10:42:21 +0000
+Received: by mail-ua1-x92b.google.com with SMTP id a1e0cc1a2514c-84e962c9a99so307267241.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 Sep 2024 03:42:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1727347338; x=1727952138; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=yX4eW2hLFE+pD/0oU3sBpz42gUQTQtE0boReuMH0kxY=;
+        b=BA9IMHBlUukFCndsm3TwBBzmzc2ysTQwEsIeJIczPbH14PyuPJhkglI4evvSvhMKOZ
+         66cnIGNIpGgA+CGK0LtHQEBPlGLKBCAPUIK6R/SQSNiqVptqHji1WOZ6VcM7rbNnCOki
+         r2qEq4eO5Acpn4haYVntRlg7KoLyMRbLX4TOM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727347338; x=1727952138;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=yX4eW2hLFE+pD/0oU3sBpz42gUQTQtE0boReuMH0kxY=;
+        b=r6gyynTkGT9H8z88S+12lFed/4UF45mFfFhx2nRJWy5ZE3KuyvAqe1BqrpVvz4lqOj
+         otVPt/yvkWbGxWoy7AW6xEHf/2IsfcvEbGy3VXj3pgF+rmdxmSSAWYUSEUbPlucvuLr4
+         bWrMCk8FQfCiVhyk4d9qSQQDPkz+otIyn++Y34fRBlB1q49fJnk83aQMHadChVHo21CQ
+         URunjA5qX2axlfuYxOU+5S1uQQ71pLXQK6LBc5hfNesJsUfYvGFKMoGJJmuLaT2RV9wn
+         tbq8z6CHfAJOVySUOMOhuHTUZLw033do+XYD9eTFvM1WIIxk3FF0FIEtFhGGnC+fiAs1
+         gjfg==
+X-Forwarded-Encrypted: i=1; AJvYcCWBWk0FHIt11DemdPetrLfGxS926YmqW+Z0nObpR7rEgGnV1khTDJNOhy0IxZyoTkvFtNkhiEcpjA3mX2Wryg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyT29FPB63cLl/JXU+fbxGgAdhpumBSxd1YeusqKZ3q/9e1EU7T
+	3CC1Rkk/d/zHVOTGTkiVUGJZameirSmScIq53awhmJZlnd1NG4BI4S8s+umaAkIEl20COoHXWqV
+	/8g==
+X-Google-Smtp-Source: AGHT+IGDJ0vEX7LJs4Hy0NAdxKdRWIBJnPY5UZh5a6vSvEIZX1NsQluCZcqvbj/Kfkx6xNd1EtAD0g==
+X-Received: by 2002:a05:6102:5122:b0:49b:e7d7:3e1b with SMTP id ada2fe7eead31-4a15dc3867amr6612625137.3.1727347337700;
+        Thu, 26 Sep 2024 03:42:17 -0700 (PDT)
+Received: from mail-vk1-f176.google.com (mail-vk1-f176.google.com. [209.85.221.176])
+        by smtp.gmail.com with ESMTPSA id a1e0cc1a2514c-84e73cc4f23sm2734000241.32.2024.09.26.03.42.16
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 26 Sep 2024 03:42:17 -0700 (PDT)
+Received: by mail-vk1-f176.google.com with SMTP id 71dfb90a1353d-503f944f174so303233e0c.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 Sep 2024 03:42:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCVR2QVUU8sJDNzTB4Tq4RrhnAQagIVkkO43z7QLQeGgOBIym1lHZErvdJj0OoJpURKIUzzt+P+1Up5CWyP8LQ==@lists.infradead.org
+X-Received: by 2002:a05:6122:2a05:b0:4f2:ffa9:78b5 with SMTP id
+ 71dfb90a1353d-505c20ddd0fmr7058726e0c.11.1727347336501; Thu, 26 Sep 2024
+ 03:42:16 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20240925110044.3678055-1-fshao@chromium.org> <20240925110044.3678055-4-fshao@chromium.org>
+ <fbdbe9ff-586a-429c-a987-b8ec39b485e8@collabora.com>
+In-Reply-To: <fbdbe9ff-586a-429c-a987-b8ec39b485e8@collabora.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Thu, 26 Sep 2024 18:41:39 +0800
+X-Gmail-Original-Message-ID: <CAC=S1njehOqkM26o=vfirZ9L8bec0jbtnvH0J2miYR_qEDeSVA@mail.gmail.com>
+Message-ID: <CAC=S1njehOqkM26o=vfirZ9L8bec0jbtnvH0J2miYR_qEDeSVA@mail.gmail.com>
+Subject: Re: [PATCH 3/6] arm64: dts: mediatek: mt8188: Define CPU big core cluster
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_032247_752180_277DA5E3 
-X-CRM114-Status: GOOD (  19.94  )
+X-CRM114-CacheID: sfid-20240926_034219_809839_38A59178 
+X-CRM114-Status: GOOD (  12.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,146 +101,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-OVL_CON_CLRFMT_MAN is a configuration for extending color format
-settings of DISP_REG_OVL_CON(n).
-It will change some of the original color format settings.
+On Thu, Sep 26, 2024 at 4:33=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 25/09/24 12:57, Fei Shao ha scritto:
+> > The MT8188 SoC features two CPU clusters: one with 6 little Cortex-A55
+> > cores, and the other with 2 big Cortex-A78 cores.
+>
+> No, it doesn't. It features only one cluster, so...
+>
+> >
+> > Update the CPU topology to reflect the actual hardware configurations.
+>
+> ...the actual hardware configuration is already reflected by the currentl=
+y
+> declared CPU topology, so for this commit: NAK.
+>
+> This SoC uses the ARM DynamIQ technology and embeds both LITTLE and big
+> cores in one single cluster.
+> Check the MT8188 datasheet for more information :-)
 
-Take the settings of (3 << 12) for example.
-- If OVL_CON_CLRFMT_MAN = 0 means OVL_CON_CLRFMT_RGBA8888.
-- If OVL_CON_CLRFMT_MAN = 1 means OVL_CON_CLRFMT_PARGB8888.
+You are absolutely right. I found that description in the datasheet,
+and this patch is completely wrong.
+Thanks for pointing it out!
 
-Since previous SoCs did not support OVL_CON_CLRFMT_MAN, this means
-that the SoC does not support the premultiplied color format.
-It will break the original color format setting of MT8173.
+Regards,
+Fei
 
-Therefore, the blend_modes is added to the driver data and then
-mtk_ovl_fmt_convert() will check the blend_modes to see if
-premultiplied supported in current platform.
-If it is not supported, use coverage mode to set it to the supported
-color formats to solve the degradation problem.
-
-Fixes: a3f7f7ef4bfe ("drm/mediatek: Support "Pre-multiplied" blending in OVL")
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 38 +++++++++++++++++++++++--
- 1 file changed, 35 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 4a4bc27a67f0..0cf7b80f612e 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -146,6 +146,7 @@ struct mtk_disp_ovl_data {
- 	bool fmt_rgb565_is_0;
- 	bool smi_id_en;
- 	bool supports_afbc;
-+	const u32 blend_modes;
- 	const u32 *formats;
- 	size_t num_formats;
- 	bool supports_clrfmt_ext;
-@@ -386,9 +387,23 @@ void mtk_ovl_layer_off(struct device *dev, unsigned int idx,
- 		      DISP_REG_OVL_RDMA_CTRL(idx));
- }
- 
--static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt,
--				    unsigned int blend_mode)
-+static unsigned int mtk_ovl_fmt_convert(struct mtk_disp_ovl *ovl,
-+					struct mtk_plane_state *state)
- {
-+	unsigned int fmt = state->pending.format;
-+	unsigned int blend_mode = state->base.pixel_blend_mode;
-+
-+	/*
-+	 * For the platforms where OVL_CON_CLRFMT_MAN is defined in the hardware data sheet
-+	 * and supports premultiplied color formats, such as OVL_CON_CLRFMT_PARGB8888.
-+	 *
-+	 * Check blend_modes in the driver data to see if premultiplied mode is supported.
-+	 * If not, use coverage mode instead to set it to the supported color formats.
-+	 */
-+	if (!(ovl->data->blend_modes & BIT(DRM_MODE_BLEND_PREMULTI)) &&
-+	    blend_mode == DRM_MODE_BLEND_PREMULTI)
-+		blend_mode = DRM_MODE_BLEND_COVERAGE;
-+
- 	switch (fmt) {
- 	default:
- 	case DRM_FORMAT_RGB565:
-@@ -466,7 +481,7 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 		return;
- 	}
- 
--	con = ovl_fmt_convert(ovl, fmt, blend_mode);
-+	con = mtk_ovl_fmt_convert(ovl, state);
- 	if (state->base.fb) {
- 		con |= OVL_CON_AEN;
- 		con |= state->base.alpha & OVL_CON_ALPHA;
-@@ -621,6 +636,8 @@ static const struct mtk_disp_ovl_data mt2701_ovl_driver_data = {
- 	.gmc_bits = 8,
- 	.layer_nr = 4,
- 	.fmt_rgb565_is_0 = false,
-+	.blend_modes = BIT(DRM_MODE_BLEND_COVERAGE) |
-+		       BIT(DRM_MODE_BLEND_PIXEL_NONE),
- 	.formats = mt8173_formats,
- 	.num_formats = ARRAY_SIZE(mt8173_formats),
- };
-@@ -630,6 +647,8 @@ static const struct mtk_disp_ovl_data mt8173_ovl_driver_data = {
- 	.gmc_bits = 8,
- 	.layer_nr = 4,
- 	.fmt_rgb565_is_0 = true,
-+	.blend_modes = BIT(DRM_MODE_BLEND_COVERAGE) |
-+		       BIT(DRM_MODE_BLEND_PIXEL_NONE),
- 	.formats = mt8173_formats,
- 	.num_formats = ARRAY_SIZE(mt8173_formats),
- };
-@@ -639,6 +658,8 @@ static const struct mtk_disp_ovl_data mt8183_ovl_driver_data = {
- 	.gmc_bits = 10,
- 	.layer_nr = 4,
- 	.fmt_rgb565_is_0 = true,
-+	.blend_modes = BIT(DRM_MODE_BLEND_COVERAGE) |
-+		       BIT(DRM_MODE_BLEND_PIXEL_NONE),
- 	.formats = mt8173_formats,
- 	.num_formats = ARRAY_SIZE(mt8173_formats),
- };
-@@ -648,6 +669,8 @@ static const struct mtk_disp_ovl_data mt8183_ovl_2l_driver_data = {
- 	.gmc_bits = 10,
- 	.layer_nr = 2,
- 	.fmt_rgb565_is_0 = true,
-+	.blend_modes = BIT(DRM_MODE_BLEND_COVERAGE) |
-+		       BIT(DRM_MODE_BLEND_PIXEL_NONE),
- 	.formats = mt8173_formats,
- 	.num_formats = ARRAY_SIZE(mt8173_formats),
- };
-@@ -658,6 +681,9 @@ static const struct mtk_disp_ovl_data mt8192_ovl_driver_data = {
- 	.layer_nr = 4,
- 	.fmt_rgb565_is_0 = true,
- 	.smi_id_en = true,
-+	.blend_modes = BIT(DRM_MODE_BLEND_PREMULTI) |
-+		       BIT(DRM_MODE_BLEND_COVERAGE) |
-+		       BIT(DRM_MODE_BLEND_PIXEL_NONE),
- 	.formats = mt8173_formats,
- 	.num_formats = ARRAY_SIZE(mt8173_formats),
- };
-@@ -668,6 +694,9 @@ static const struct mtk_disp_ovl_data mt8192_ovl_2l_driver_data = {
- 	.layer_nr = 2,
- 	.fmt_rgb565_is_0 = true,
- 	.smi_id_en = true,
-+	.blend_modes = BIT(DRM_MODE_BLEND_PREMULTI) |
-+		       BIT(DRM_MODE_BLEND_COVERAGE) |
-+		       BIT(DRM_MODE_BLEND_PIXEL_NONE),
- 	.formats = mt8173_formats,
- 	.num_formats = ARRAY_SIZE(mt8173_formats),
- };
-@@ -679,6 +708,9 @@ static const struct mtk_disp_ovl_data mt8195_ovl_driver_data = {
- 	.fmt_rgb565_is_0 = true,
- 	.smi_id_en = true,
- 	.supports_afbc = true,
-+	.blend_modes = BIT(DRM_MODE_BLEND_PREMULTI) |
-+		       BIT(DRM_MODE_BLEND_COVERAGE) |
-+		       BIT(DRM_MODE_BLEND_PIXEL_NONE),
- 	.formats = mt8195_formats,
- 	.num_formats = ARRAY_SIZE(mt8195_formats),
- 	.supports_clrfmt_ext = true,
--- 
-2.43.0
-
+>
+> Cheers,
+> Angelo
 
