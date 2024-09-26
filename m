@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CE83CEBF61
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 23:22:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5918CEBF61
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Sep 2024 23:23:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Bu40LWj131EvrXy4hSGWlLWhDgrzKYj+PB2hYeDUiWQ=; b=SfeZmTs967uPO+
-	yethrNk686Zjc+y7jxrQuirI6BgEuwgKZHmVRlpa7TiGu45EvNnHFytu1ytjT1saEIHtr5uisqPZb
-	Ah2ePqVv9cDBaRgxGr50phgfyiXRw4MsdGi+FRSU64CaDGzp3whg8WHKg5bXA4gsVNc7+7WzC8CH5
-	IMT2s9wyUyahx35L0D2q1kF9HfcE8Cq/8wvvXZciuLo3ltifXe/r7igR+gT3k36ZC5LeQvJZIPJ02
-	mOP8/BMfipjxUot8dh26Q9usojJJe8YNR0hZ+dNgmkeeBJJlMi08ydzErnN2+PbDRoP9mu/ey1QRY
-	V82NAV7Ch2h78W4wuCAw==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HGJHwDpR/ji/cnkncpEc2TmRR9IZ/lolVNsmw4iGQAY=; b=obd0uiT+2KAV4XwdFqF9Th44ZF
+	qlaFXWv7AzYqVSjBx5N+7HOG099GtjREztCw14kgcqTLC6Su3+6JbEAr+8Gmml7CAUbbrmQgx114p
+	MyOOAI2GPpZjqejhfvANG0LmgMMEXTcD+omfFFwAopqqnO8DvdctPqxJlDdONSo2a+61HuSE8QtXZ
+	7AshX82CRFCk+AE/7ltrYDd0fKSiPPM3WTkBcyb7WFVgvDXz2V0iYn87r8H42WY1F1w1Mc896w18P
+	5aqZqT3TPIWd+GGxaxWPUe0Ts2sLCzPyO/9COAkimp5Grv5LQaILNYEOT2lrtAKLoiL6IMLmOHnuD
+	XzEw+Pyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1stxoh-00000009ZIb-20Tu;
-	Thu, 26 Sep 2024 23:22:35 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1stxpq-00000009ZcD-3byM;
+	Thu, 26 Sep 2024 23:23:46 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1stxnS-00000009Yr5-1x5o;
-	Thu, 26 Sep 2024 23:21:19 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-a8d3cde1103so195631766b.2;
-        Thu, 26 Sep 2024 16:21:17 -0700 (PDT)
+	id 1stxnU-00000009YrT-3jB6;
+	Thu, 26 Sep 2024 23:21:22 +0000
+Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-a8d6d0fe021so244076466b.1;
+        Thu, 26 Sep 2024 16:21:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1727392876; x=1727997676; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Bu40LWj131EvrXy4hSGWlLWhDgrzKYj+PB2hYeDUiWQ=;
-        b=kdQxVEHOz2vptK67RUlshQ5hRhKAhiIuDEoQl5KT8a5mWnfUZy0tWYJynQMGK7r1wn
-         97rYDtdk/FwvNf4Od+873wvbstPyzIg3y66ITsgMy0E+a6WHvsBAO2y1keIs4PYAzyn7
-         EQI3KNLtGoDVoRKZj3n/+WCZm7eoIg1kp/Dh5eJadyCb/yhh8o5bXsc2diZHFRHpF1vj
-         9GZ065ec7+sKJ6Wb5eFWRBNa1bkGrQLicaJ9MzFx5tDsdUz8+64uy0kRivjMMTrbKZLb
-         qsSVhnTZmXuyWVOHO8xMD5sxglRChiAo69bUWeReidtxocI0ARe00m/CDPMEExGdV4Z6
-         cx4w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727392876; x=1727997676;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=gmail.com; s=20230601; t=1727392879; x=1727997679; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=Bu40LWj131EvrXy4hSGWlLWhDgrzKYj+PB2hYeDUiWQ=;
-        b=NPy5+1oO3GHEGaww93mTV5L+0vof7FMQFTtIdtAioiT/ZEVzi1iXZgSxfst0+b86R4
-         BgIVHY1UPZ/habqEY7e3sl88Hw0fLXhjwP4nauRRd42jvQUj1MLvXfNGmGqkH7CiWZt8
-         HuwCcLWzkNFoH/AvVbkY8IL3Ix4WADWCNek4EL39ruxLNNjGxrO7gf/aru8+HUGBl1Ik
-         SvxqHkTY6tvWiBBrR1qbdJvB8QDbxcevMyOY9eaeZ/IOcJRyeQSImLT1Kadam3lkdFfy
-         a4VowV8+4om3LbhZDvz/WcFGp8FhowMZVlyFwD2hm1v8DfEeY3ioOp4aQA5rgmJ+SQQK
-         Ls9g==
-X-Forwarded-Encrypted: i=1; AJvYcCVIPsUBiGHj7kGYyOXePSbtqj3giNR3FeW5VN04RvMFhTotBncjs2648gHNG/9J7yT2xATC6nRtbxuzwcRLyBkE@lists.infradead.org, AJvYcCXZBH3YieP1cD0o6mwbKicFEiJJJBdTuw+LRWcOcJGbsH5JYCgU3lAXNJBCXE63151YufWmYYLWuchMZ+FAKSY=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzVaCM0vDPy4bRMH6h9zgN6v2KGagKDkrY4x55hUTiIX2eSnKEX
-	j21kWJyijeGWP6TpDAU3iK7dm5Vdah/xyMOiMv7OBW91AfgadGg0isgw+YgR
-X-Google-Smtp-Source: AGHT+IHhqjy8WeTtGJCjL8APo5icRaeNMZCgJdUWodmCHHiaovrWOaRpdybBZblfcBNu/LZxuuDbbQ==
-X-Received: by 2002:a17:907:9488:b0:a8c:d6a3:d038 with SMTP id a640c23a62f3a-a93c492a74emr81977066b.37.1727392875801;
-        Thu, 26 Sep 2024 16:21:15 -0700 (PDT)
+        bh=HGJHwDpR/ji/cnkncpEc2TmRR9IZ/lolVNsmw4iGQAY=;
+        b=Q4Humw6c9oLMoIjMIu3RO/Tjdw3/jraIZtf5/IT6GgfKZDQ9qOX8AGn203R9IKTbls
+         IAb/inU+vRzYgRaJAtTUhQ3FNAJjc+12ZqX9WzrmV1abe9uvKEYlyWaFIF/mb8xiLGmK
+         YIw0Z0QtZPSg82jGeUMsopqrI5BiGUcG+hSHJ+dr7spKAummSdtRDfjMPcrvFo5zH3XM
+         2zMNPRs4yzJ67bpr7kV99kjOs18K59aQp5jxSE0ffgMesay43RPJyGQoqLVQWM6PsDVT
+         N1c/cOnVgt2x0V6/4tnO4nIeX8SA3UABla+3y0Yj643MtBnmhEaowD4EScWnkRWH1XTX
+         QwLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727392879; x=1727997679;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=HGJHwDpR/ji/cnkncpEc2TmRR9IZ/lolVNsmw4iGQAY=;
+        b=txJqfybt8NLoaJEdygLMbooc86UX91PM3N/OE0mndq3G+DnesY73SJAW+tm6ksZ1Je
+         O1wYYdwb7UvEf6bPhkH8/vEIowslYRFHOuh7IaHn42aBbLn/ZAx66hJfdpd2JzF8CTDR
+         GtPGvIujMOg9xKJAfdS01PqnoK0d4FvMwlg+b3nV82sh27drcs6EM2Ln2rcfoklsZZ2u
+         yfumMXIK1V+dhRHRBq3zcM5/1UHZVznqKWadKnO9CV2Cl41hqj2KwKVqLT5VdNpGagM7
+         qoTS2nBMDUsqh0fdtf8CVpiSwT1rhW1Cp7/+ErbqPWzh9hcmAayMEY8hHCmJPXU8/x3r
+         +ALg==
+X-Forwarded-Encrypted: i=1; AJvYcCUpRo2xWbqgXUZo6xRseHpG1Ffk1rrYMBsLXrPSL1AdNGRvsv6qm6ru2Da372ZUS/GwuZVyoBXQd9C7ibpsPoo=@lists.infradead.org, AJvYcCVSStKCugo+ODfBy6GWIKc7VQpCA9ZYSEjezj2PgNQxs7aeL/MuLqqUtG7BGeG6dMJF2eunyblYAzHXZNM/PX2l@lists.infradead.org
+X-Gm-Message-State: AOJu0YzZwx4AtnHhkEvJ8Pu7yUy0z6cJTRgyizS1D+eoWQ0lmlVDOP2I
+	8vqllNOsGANKevoFmgmnPGhlA+a4sthGXB91UT2+GDpfocHU3ZAvnKgJ0SMB
+X-Google-Smtp-Source: AGHT+IGY5Dz4pgmEK6u+H4dMIOw35D4e/9hhSxXD8+4Iw9UMbO9AvkfpZ6JWD1p0Ig/DDcHSjiCZSw==
+X-Received: by 2002:a17:907:a41:b0:a86:91c3:9517 with SMTP id a640c23a62f3a-a93c496167fmr87272966b.35.1727392878703;
+        Thu, 26 Sep 2024 16:21:18 -0700 (PDT)
 Received: from [127.0.1.1] (2a02-8389-41cf-e200-3989-b03c-7705-998b.cable.dynamic.v6.surfer.at. [2a02:8389:41cf:e200:3989:b03c:7705:998b])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a93c27773c0sm50368166b.1.2024.09.26.16.21.14
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a93c27773c0sm50368166b.1.2024.09.26.16.21.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Sep 2024 16:21:15 -0700 (PDT)
+        Thu, 26 Sep 2024 16:21:18 -0700 (PDT)
 From: Javier Carrasco <javier.carrasco.cruz@gmail.com>
-Subject: [PATCH 00/18] leds: switch to device_for_each_child_node_scoped()
-Date: Fri, 27 Sep 2024 01:20:51 +0200
-Message-Id: <20240927-leds_device_for_each_child_node_scoped-v1-0-95c0614b38c8@gmail.com>
+Date: Fri, 27 Sep 2024 01:20:52 +0200
+Subject: [PATCH 01/18] leds: flash: mt6360: fix
+ device_for_each_child_node() refcounting in error paths
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAFPs9WYC/x2N0QqDMAwAf0XyvIJ2duB+ZYxQktQGpJUGhiD++
- 4qPB8fdCSZNxeA9nNDkp6a1dJgeA1COZRWn3Bn86Odx8S+3CRtyN0kw1YYSKSNl3RhLZUGjugu
- 7EJfgQ5inZ4rQY3uTpMc9+nyv6w9hSLI6eAAAAA==
+Message-Id: <20240927-leds_device_for_each_child_node_scoped-v1-1-95c0614b38c8@gmail.com>
+References: <20240927-leds_device_for_each_child_node_scoped-v1-0-95c0614b38c8@gmail.com>
+In-Reply-To: <20240927-leds_device_for_each_child_node_scoped-v1-0-95c0614b38c8@gmail.com>
 To: Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
@@ -85,16 +86,16 @@ Cc: linux-leds@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, 
  Javier Carrasco <javier.carrasco.cruz@gmail.com>, stable@vger.kernel.org
 X-Mailer: b4 0.14-dev
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1727392874; l=3800;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1727392874; l=1575;
  i=javier.carrasco.cruz@gmail.com; s=20240312; h=from:subject:message-id;
- bh=ls6STftDXgqEjSON3lpk60MstLtR+0wj4jS0gZeSDb0=;
- b=TYJknx8sMFUvP50SESSmj7bX6NpKm2bRxPVZmfQ4I0CTAI78hmnfsvCgYNyfMfsr3Zzok4S+j
- J2NN3jjMDyzDfwjCYYydsp8LC3zBAjJbrjq41NeJcSn3DU93waqFbfe
+ bh=1/lxG5uyf8ycEv9Q6sKFSvHVcULTiG1X47zomtk2GFw=;
+ b=l7jxa1PVRIFHMQnforadtxXgycvAan+1W9FAPjf/oLjtSQJykU+rNGG9xia/dfVKvn20xfSza
+ 2IKbNR03aEtAABYWTigl5u7JrFYAD61XGGxXgkaMcyX799cHVY4tp95
 X-Developer-Key: i=javier.carrasco.cruz@gmail.com; a=ed25519;
  pk=lzSIvIzMz0JhJrzLXI0HAdPwsNPSSmEn6RbS+PTS9aQ=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_162118_546259_1EA31850 
-X-CRM114-Status: GOOD (  12.78  )
+X-CRM114-CacheID: sfid-20240926_162120_965004_907F2D2E 
+X-CRM114-Status: GOOD (  14.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,76 +110,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series switches from the device_for_each_child_node() macro to its
-scoped variant, which in general makes the code more robust if new early
-exits are added to the loops, because there is no need for explicit
-calls to fwnode_handle_put(). Depending on the complexity of the loop
-and its error handling, the code gets simplified and it gets easier to
-follow.
+The device_for_each_child_node() macro requires explicit calls to
+fwnode_handle_put() upon early exits to avoid memory leaks, and in
+this case the error paths are handled after jumping to
+'out_flash_realease', which misses that required call to
+to decrement the refcount of the child node.
 
-The non-scoped variant of the macro is error-prone, and it has been the
-source of multiple bugs where the child node refcount was not
-decremented accordingly in error paths within the loops. The first patch
-of this series is a good example, which fixes that kind of bug that is
-regularly found in node iterators.
+A more elegant and robust solution is using the scoped variant of the
+loop, which automatically handles such early exits.
 
-The uses of device_for_each_child_node() with no early exits have been
-left untouched because their simpilicty justifies the non-scoped
-variant.
+Fix the child node refcounting in the error paths by using
+device_for_each_child_node_scoped().
 
-Note that the child node is now declared in the macro, and therefore the
-explicit declaration is no longer required.
-
-The general functionality should not be affected by this modification.
-If functional changes are found, please report them back as errors.
-
+Cc: stable@vger.kernel.org
+Fixes: 679f8652064b ("leds: Add mt6360 driver")
 Signed-off-by: Javier Carrasco <javier.carrasco.cruz@gmail.com>
 ---
-Javier Carrasco (18):
-      leds: flash: mt6360: fix device_for_each_child_node() refcounting in error paths
-      leds: flash: mt6370: switch to device_for_each_child_node_scoped()
-      leds: flash: leds-qcom-flash: switch to device_for_each_child_node_scoped()
-      leds: aw200xx: switch to device_for_each_child_node_scoped()
-      leds: cr0014114: switch to device_for_each_child_node_scoped()
-      leds: el15203000: switch to device_for_each_child_node_scoped()
-      leds: gpio: switch to device_for_each_child_node_scoped()
-      leds: lm3532: switch to device_for_each_child_node_scoped()
-      leds: lm3697: switch to device_for_each_child_node_scoped()
-      leds: lp50xx: switch to device_for_each_child_node_scoped()
-      leds: max77650: switch to device_for_each_child_node_scoped()
-      leds: ns2: switch to device_for_each_child_node_scoped()
-      leds: pca963x: switch to device_for_each_child_node_scoped()
-      leds: pwm: switch to device_for_each_child_node_scoped()
-      leds: sun50i-a100: switch to device_for_each_child_node_scoped()
-      leds: tca6507: switch to device_for_each_child_node_scoped()
-      leds: rgb: ktd202x: switch to device_for_each_child_node_scoped()
-      leds: rgb: mt6370: switch to device_for_each_child_node_scoped()
+ drivers/leds/flash/leds-mt6360.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
- drivers/leds/flash/leds-mt6360.c       |  3 +--
- drivers/leds/flash/leds-mt6370-flash.c | 11 +++-------
- drivers/leds/flash/leds-qcom-flash.c   |  4 +---
- drivers/leds/leds-aw200xx.c            |  7 ++-----
- drivers/leds/leds-cr0014114.c          |  4 +---
- drivers/leds/leds-el15203000.c         | 14 ++++---------
- drivers/leds/leds-gpio.c               |  9 +++------
- drivers/leds/leds-lm3532.c             | 18 +++++++----------
- drivers/leds/leds-lm3697.c             | 18 ++++++-----------
- drivers/leds/leds-lp50xx.c             | 21 +++++++------------
- drivers/leds/leds-max77650.c           | 18 ++++++-----------
- drivers/leds/leds-ns2.c                |  7 ++-----
- drivers/leds/leds-pca963x.c            | 11 +++-------
- drivers/leds/leds-pwm.c                | 15 ++++----------
- drivers/leds/leds-sun50i-a100.c        | 27 +++++++++----------------
- drivers/leds/leds-tca6507.c            |  7 ++-----
- drivers/leds/rgb/leds-ktd202x.c        |  8 +++-----
- drivers/leds/rgb/leds-mt6370-rgb.c     | 37 ++++++++++------------------------
- 18 files changed, 75 insertions(+), 164 deletions(-)
----
-base-commit: 92fc9636d1471b7f68bfee70c776f7f77e747b97
-change-id: 20240926-leds_device_for_each_child_node_scoped-5a95255413fa
+diff --git a/drivers/leds/flash/leds-mt6360.c b/drivers/leds/flash/leds-mt6360.c
+index 4c74f1cf01f0..676236c19ec4 100644
+--- a/drivers/leds/flash/leds-mt6360.c
++++ b/drivers/leds/flash/leds-mt6360.c
+@@ -784,7 +784,6 @@ static void mt6360_v4l2_flash_release(struct mt6360_priv *priv)
+ static int mt6360_led_probe(struct platform_device *pdev)
+ {
+ 	struct mt6360_priv *priv;
+-	struct fwnode_handle *child;
+ 	size_t count;
+ 	int i = 0, ret;
+ 
+@@ -811,7 +810,7 @@ static int mt6360_led_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 	}
+ 
+-	device_for_each_child_node(&pdev->dev, child) {
++	device_for_each_child_node_scoped(&pdev->dev, child) {
+ 		struct mt6360_led *led = priv->leds + i;
+ 		struct led_init_data init_data = { .fwnode = child, };
+ 		u32 reg, led_color;
 
-Best regards,
 -- 
-Javier Carrasco <javier.carrasco.cruz@gmail.com>
+2.43.0
 
 
