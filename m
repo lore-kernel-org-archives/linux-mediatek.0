@@ -4,67 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B0A2CEBF8A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 09:38:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4D7ECEBF8D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 09:43:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Nh0D2gIIzVCTTns6sSr6nrZCJ3sWNhmxhvYohIeuvcM=; b=O7eAYUNHvWVY1csM/ZLX/3+S5U
-	opgBBN2qKQxGzsMcRl1qkQYRc2GEH95acAPQUoXxUA2vi9grsQvmv403tPQ7tVBKj1EFfW57IGMQd
-	zrG+lnT0TkCpA7T8hdg1nN+VpW/xn6IC7tF5zea3i3mOYpQAOgHRdka/ilyRHvL42+REFroszDFdJ
-	KpRpiv/LI8E4SXDnIyM+lyn2EH4tkllaCunTu6T4Acag1yRQV05fTjRAFl8UGjTy6wBZsMBj46pvb
-	WE3swBaiDnGl8nEoSQ1ikB+4/JfRIwlIQJWr/su/2y/1zWmacKPL2TddyBbLPxMsAzwP6Lvp5oLpa
-	0KLVRGhA==;
+	bh=6WR+XwLSj/wPVTnzVILEv7/jdhyH+miv2hzT5ht7byg=; b=V0NQp7vbQQ7QazTjjew4YskSa8
+	EmDkasY66UToKzZprJCx2vP/3uGf1fKVU5mFuj+UfgbzM/XDHhZm7xe6Bh1yNrg64d3JDpqapStOy
+	pySGy1wKtgglf8dLQO/tvUImo9s4heZTzxdTCVz67pZgt5r5yRCxuHO11BKFFQu3O1Z6OocQUzB7F
+	D8R/417yVVwzMGxpyGBwISPS56B0KOXjVYuBerZVrU6xC9Rfy4LiYXKAX11NgdHNaTWs/CNWvW/24
+	K66PJHyEikpjUhAgU29RbDF90kBOtR1sPej1O9hgC/yKOUryp3nybEG7BHsQBztokDJVPB4l3Hp/2
+	afNlWgzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1su7Qp-0000000AgRw-1pOq;
-	Fri, 27 Sep 2024 09:38:35 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1su7Vz-0000000Ahrd-0BCY;
+	Fri, 27 Sep 2024 09:43:55 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1su7PN-0000000Ag0i-2diL;
-	Fri, 27 Sep 2024 09:37:07 +0000
+	id 1su7Uh-0000000AhGB-1rfO;
+	Fri, 27 Sep 2024 09:42:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 04BD75C5C86;
-	Fri, 27 Sep 2024 09:37:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1D9CCC4CEC4;
-	Fri, 27 Sep 2024 09:37:03 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 0C3E4A45475;
+	Fri, 27 Sep 2024 09:42:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4C71EC4CEC9;
+	Fri, 27 Sep 2024 09:42:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727429824;
-	bh=SyUAj6YH4ZWfBAbLc9RBIAhggRIMEKY1PFIqF4T7pRs=;
+	s=k20201202; t=1727430153;
+	bh=TST2aU00V+a/b6WJK9LCwWG80Mq75dZu+SmOHyfGhDw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Hkxn8Mp8CzphuZ480+VHOuXSuKHwmeCfwN4Vl3uBdwUd2qUaesBeFZeg+CR8YBPmF
-	 YHseFh2rCE4m4jb5vvPxjHcL0oYSfkCPTlG5OQuZXMSCU/HKvqTxfq9jgCZ7w0RsjA
-	 XRhqX1oYrtWTrlxqfi0Xwhe8pfJMx92oy0rf1OrxbNvoS+d4GDinu4oQMG/lMJILn3
-	 fVm0/d/FQZ0nKYQcVemdtj8hqpYw0dtP++aAHmQjIHWAIXE5ZC5gRWKs9GiUlT2fnr
-	 5OWy0rJqBvNtFwjYn90Zjc+rk5VOyQ9fkyXvuBM8N+jR5H1bxYDGiX2jFG/ejHnUzL
-	 OlxD3EVbSXDbA==
-Date: Fri, 27 Sep 2024 11:37:01 +0200
+	b=o2Av3ebHVSl6qmxEGQZKjs86KC6ZaA6DIYPXM79Z6t6ndEl6tL6O7q8ePXtYVBCz8
+	 NFDA7kMcX2J/JBk0DLWyxK+CHpSt0xM8kXlHqSyvjyeJNwSfhbXGGyJCqHh7mc/AqU
+	 YBhz9hNlH/2nzaDLCSrtg3SHW3Ns9MeFQjlxw6SMRcj1L+rUfKVK/EpLVz64LgBcTH
+	 mW6dimPJMBckLxty4HXgLoeT24s1mWNhjwjJhI9fusH43oJz7W3EZPmsbAfm7kTqQN
+	 iTP7t4Eyp85G+qpzHpjA5TxQ/23G4wQQ6tB0BZV/7QS8tPH6kuXFm68xcnB2DzHHAG
+	 xg8NPMi43ymDQ==
+Date: Fri, 27 Sep 2024 11:42:31 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Moudy Ho <moudy.ho@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "jason-jh . lin" <jason-jh.lin@mediatek.com>, 
-	Macpaul Lin <macpaul.lin@mediatek.com>, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, Moudy Ho <moudy.ho@mediatek.corp-partner.google.com>
-Subject: Re: [PATCH v2] dt-bindings: display: mediatek: split: add clocks
- count constraint for MT8195
-Message-ID: <pnpj4pexz6nff72kmk6thupwvp2dgkz32ye7o44qdpuctbewb4@kpokc7c2rflr>
-References: <20240927055140.19688-1-moudy.ho@mediatek.com>
+To: Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: Conor Dooley <conor@kernel.org>, Sen Chu <sen.chu@mediatek.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Eason Yen <eason.yen@mediatek.com>, 
+	Jiaxin Yu <jiaxin.yu@mediatek.com>, Shane Chien <shane.chien@mediatek.com>, 
+	Hui Liu <hui.liu@mediatek.com>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org, 
+	Alexandre Mergnat <amergnat@baylibre.com>, Bear Wang <bear.wang@mediatek.com>, 
+	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, 
+	Chris-qj chen <chris-qj.chen@mediatek.com>, 
+	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>
+Subject: Re: [PATCH 2/3] dt-bindings: mfd: mediatek: mt6397: add compatible
+ for mt6359-codec
+Message-ID: <z5zehicgqqsbgsjz5nrjlqrkpqll57gb26jdc3ctpeajtlfusm@b2s5vrbuv3es>
+References: <20240926092519.6556-1-macpaul.lin@mediatek.com>
+ <20240926092519.6556-2-macpaul.lin@mediatek.com>
+ <20240926-smokeless-clobber-0fb8a1cdc7ab@spud>
+ <78381b10-eae6-1414-6913-994e1ed03410@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20240927055140.19688-1-moudy.ho@mediatek.com>
+In-Reply-To: <78381b10-eae6-1414-6913-994e1ed03410@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240927_023705_782000_513D0143 
-X-CRM114-Status: GOOD (  19.24  )
+X-CRM114-CacheID: sfid-20240927_024235_626875_F453FD0F 
+X-CRM114-Status: GOOD (  17.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,64 +86,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 27, 2024 at 01:51:40PM +0800, Moudy Ho wrote:
-> From: Moudy Ho <moudy.ho@mediatek.corp-partner.google.com>
+On Fri, Sep 27, 2024 at 03:57:58PM +0800, Macpaul Lin wrote:
+> On 9/27/24 00:04, Conor Dooley wrote:
+> > On Thu, Sep 26, 2024 at 05:25:18PM +0800, Macpaul Lin wrote:
+> > > This patch updates the audio-codec properties includes:
+> > >   - compatible:
+> > >    - Re-order the supported device items.
+> > >    - Add 'mt6359-codec' to compatible since MT6359 PMIC has been included
+> > >      in this DT Schema.
+> > 
+> > >    - Set 'additionalProperties: true' for 'mt6359-codec'.
+> > 
+> > Why?
 > 
-> The display node in mt8195.dtsi was triggering a CHECK_DTBS error due
-> to an excessively long 'clocks' property:
->   display@14f06000: clocks: [[31, 14], [31, 43], [31, 44]] is too long
+> The mt6359-codec support these 3 properties:
+> mediatek,mic-type0, mediatek,mic-type-1, mediatek-mic-type2.
+> While mt6358-sound and mt6397-codec don't (at least, I didn't find
+> these 3 properties in driver codes.
 > 
-> To resolve this issue, apply the limit by setting 'maxItems: 3' in MT8195
-> additional condition.
+> Set 'additionalProperties: true' is also required to fix the following
+> dtbs_check errors:
+> pmic: audio-codec: 'mediatek,mic-type-0', 'mediatek,mic-type-1',
+>       'mediatek,mic-type-2' do not match any of the regexes:
+>       'pinctrl-[0-9]+'
+
+Why is this a correct fix? Aren't you allowing "pink-pony" property as
+well?
+
 > 
-> Fixes: 4ed545e7d100 ("dt-bindings: display: mediatek: disp: split each block to individual yaml")
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> > > 
+> > > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> > > ---
+> > >   Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml | 5 +++--
 
-Your SoB does not match.
-
-Please run scripts/checkpatch.pl and fix reported warnings. Then please
-run  and (probably) fix more warnings.
-Some warnings can be ignored, especially from --strict run, but the code
-here looks like it needs a fix. Feel free to get in touch if the warning
-is not clear.
-
-> --
-> The purpose of this patch is to separate the corrections for
-> MediaTek SPLIT CHECK_DTBS error from the original mailing list
-> mentioned below:
-> https://lore.kernel.org/all/20240924103156.13119-2-macpaul.lin@mediatek.com/
-> 
-> Changes since v1:
->   - Adding functional descriptions and quantity restrictions.
-> ---
->  .../bindings/display/mediatek/mediatek,split.yaml           | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
-> index e4affc854f3d..bce1b8b866ce 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
-> @@ -57,6 +57,9 @@ properties:
->    clocks:
->      items:
->        - description: SPLIT Clock
-> +      - description: HDMI RX Clock
-> +      - description: HDMI Metadata Clock
-> +    minItems: 1
->  
->  required:
->    - compatible
-> @@ -72,6 +75,9 @@ allOf:
->              const: mediatek,mt8195-mdp3-split
->  
->      then:
-> +      properties:
-> +        clocks:
-
-missing minItems
-
-Missing constraints for all the variants.
+There is no such file.
 
 Best regards,
 Krzysztof
