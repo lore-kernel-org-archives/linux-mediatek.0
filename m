@@ -4,57 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D952DCEBF7A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 06:55:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DE84CEBF7B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 07:10:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RZpSSmiWrdlkuYE2Rt8zGSrtAGkJklsWS24DG2VMGzI=; b=N8oUiejyY7Yvis0PYnfao86YZX
-	bCi1U+pt/VuUS/uYwbccIsdk2gvojaD4RL+In6jD/begx0v/WrUJ24Bq/LQjMFwNmGL9lc6PUcu/x
-	O8pr9CdZ/4iRfRBfjG+mEr/+FwIbtCoxFTi98/PDA4zGqED+6wP7fjRnFEa3tyJ5Z2Mxhg0aCCzDq
-	LvJMseUniV2XIdjOLSu5xuLRFULrjgsHmp3t8MMn7dCEZGeauNi6MtZm4ZE7OZnP8PUwtN2ircgmr
-	s0qHs9ear7ReEUqQEd6Bc8t/WTFU2mxApF/6rTzmkEFRDEW+4a/1w9l4/Mg0IWrJPBeZ/0Xt8ddaJ
-	5vHizcxA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KhtQyrefSaqhSJzfUoA/J9/fh2qANj+W43YRxUZuX+Y=; b=1pPDOmxPVx6mArhIkBd5rlEy9E
+	GsTbb8I4p+tpsIM+RRnuJEMKQSaveYMTJe589v9OzPX/oKRfjvaALXCBuNJbFsjGknQoFpbZWYeCu
+	N193wFNIPqontmcj1zMM0ZCyjZ0LvDneQhP/CP44AIPejt7eM1Xa8dGji/MNAILEtcvouqIW16cyQ
+	qp4XUN4kkVgaV6nJi3czzM9TpevCQoQHHE1JuOfyPQ2I2bQHUsePy93xlXB+yWxQksae/vJlX/CMk
+	FfDRlzo5Gb+Q6tFZr920lMwFDY8pD23WaYEBMoCH+u8EHVHAN7sxhc9CNRfEVODE5/xbTIR75dIX+
+	4dF9B43Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1su4tC-0000000AGTw-3IEx;
-	Fri, 27 Sep 2024 06:55:42 +0000
+	id 1su57C-0000000AJ3R-0Ldd;
+	Fri, 27 Sep 2024 07:10:10 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1su4oX-0000000AFJL-1SI2;
-	Fri, 27 Sep 2024 06:50:54 +0000
-X-UUID: d3d2d77c7c9c11efba0aef63c0775dbf-20240926
+	id 1su4zk-0000000AHic-2sfN;
+	Fri, 27 Sep 2024 07:02:30 +0000
+X-UUID: 724d3dce7c9e11efba0aef63c0775dbf-20240927
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RZpSSmiWrdlkuYE2Rt8zGSrtAGkJklsWS24DG2VMGzI=;
-	b=Gq3iIaAZuLqFZbLIjrdAx5m3kle/L90rccX2lXtYom0PubFOMqjiCNpG0zkGuUlWIBRpH9StVzUzDtgxnqKDotAYxBfEqYieDUZ7RR3meuwNurOMVB8m7x92RZKF7bPeNH0gGZtTSwEUrQtTXeQ2qSIWwKACusUBuU+VVWil1y8=;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=KhtQyrefSaqhSJzfUoA/J9/fh2qANj+W43YRxUZuX+Y=;
+	b=sFZxV/xMwDiMvGobRU1JZm9noSsIRRD6f12cT9MGhE0Vt6gX3NbjWyoTEoXCt8GhMJDvXHXjZFhc3uFKRfl1Vsdxq9WpEVsVr1MiQcG8XPB9A+itFlc6Al1om2XlgJxw81u1papC5tARdGLCkbPaRX8Eto6gjMWYYVQKP7cCuEc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:311527f3-1d3c-4b55-aeec-4486ce5e4826,IP:0,U
+X-CID-O-INFO: VERSION:1.1.41,REQID:e2bc4d87-851d-4ac5-85a6-b517ee1f0d27,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:a6675718-b42d-49a6-94d2-a75fa0df01d2,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
+X-CID-META: VersionHash:6dc6a47,CLOUDID:b3f5a69e-8e9a-4ac1-b510-390a86b53c0a,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|-5,EDM:-3,IP:ni
+	l,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: d3d2d77c7c9c11efba0aef63c0775dbf-20240926
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+X-UUID: 724d3dce7c9e11efba0aef63c0775dbf-20240927
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
 	(envelope-from <macpaul.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1416832630; Thu, 26 Sep 2024 23:50:48 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 872547278; Fri, 27 Sep 2024 00:02:23 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 27 Sep 2024 14:50:43 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 27 Sep 2024 14:50:43 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ 15.2.1118.26; Fri, 27 Sep 2024 15:02:19 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Fri, 27 Sep 2024 15:02:18 +0800
+Message-ID: <cada4a75-4b2d-e1b6-bebc-ce15a13a288e@mediatek.com>
+Date: Fri, 27 Sep 2024 15:02:17 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH v2 5/5] dt-bindings: display: mediatek: dpi: Add mt8195
+ support in power domains
+Content-Language: en-US
+To: Conor Dooley <conor@kernel.org>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
 	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Simona Vetter
 	<simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
@@ -65,42 +73,38 @@ To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK Hu
 	<ck.hu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>, Tinghan Shen
 	<tinghan.shen@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>, Ben Lok
-	<ben.lok@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, "Nancy . Lin"
-	<nancy.lin@mediatek.com>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <iommu@lists.linux.dev>,
-	<linux-arm-kernel@lists.infradead.org>, Alexandre Mergnat
-	<amergnat@baylibre.com>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>, "Chris-qj
- chen" <chris-qj.chen@mediatek.com>, MediaTek Chromebook Upstream
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
-	<wenst@chromium.org>
-Subject: [PATCH v3 5/5] dt-bindings: display: mediatek: dpi: correct power-domains property
-Date: Fri, 27 Sep 2024 14:50:41 +0800
-Message-ID: <20240927065041.15247-5-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240927065041.15247-1-macpaul.lin@mediatek.com>
-References: <20240927065041.15247-1-macpaul.lin@mediatek.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+	<ben.lok@mediatek.com>, "Nancy . Lin" <nancy.lin@mediatek.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<iommu@lists.linux.dev>, <linux-arm-kernel@lists.infradead.org>, "Alexandre
+ Mergnat" <amergnat@baylibre.com>, Bear Wang <bear.wang@mediatek.com>, "Pablo
+ Sun" <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, Sen Chu
+	<sen.chu@mediatek.com>, Chris-qj chen <chris-qj.chen@mediatek.com>, "MediaTek
+ Chromebook Upstream" <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	Chen-Yu Tsai <wenst@chromium.org>
+References: <20240926111449.9245-1-macpaul.lin@mediatek.com>
+ <20240926111449.9245-5-macpaul.lin@mediatek.com>
+ <20240926-visible-harmonica-a7cda103ff70@spud>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <20240926-visible-harmonica-a7cda103ff70@spud>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--9.384400-8.000000
-X-TMASE-MatchedRID: tfUp3kDdFrlpqqYAQ+J6uSYRREGYqtmUmoKXVHfiMM9KUzR+o2IehUGW
-	yClQhQkvKY6B7sY8Ci7dRIKCUEZlk77J5yv1W35KA9lly13c/gG+1Vx7rDn4ryJ8zskw0dbrzTO
-	MdSL65dGPBBqsttKK1ATOtv1QaDkraxXbwRJk57z0hv/rD7WVZA+jS+LRpl81pzPA3TKVblhgIS
-	cCiWkKENIS3Y3mrYfn3DCWtTm2Z99RAFy9FG9Tvev8QGaI25e3D+LwVja9M4GbKItl61J/yZ+in
-	TK0bC9eKrauXd3MZDUzaXOJNfDG7df9dBya+tT4Bm14c7FgKKADsOKi2fzUXUhbIc2LUS9M
+X-TM-AS-Result: No-10--11.014300-8.000000
+X-TMASE-MatchedRID: L8tZF6zWW2oOwH4pD14DsPHkpkyUphL9MZm0+sEE9ms+zqOf/RM2rvFo
+	ODtDoX2Qa8dzyZlF6/UhzQ5Mp0WQPT7dljlY/nlHSEQN/D/3cG6Vq+okl1rYDwDqzaYhcjeQLPv
+	NvFI8A1X8iIBnP6y347s9OusH9JJyzB1CJ6qmdNrhuXUWQoMQtzQsOZ4mhPfZDO+DX+rUwfZjOk
+	Y6jTBnQ10EtLM2oIeDMPuSmMtOM67I2RqSAXh33hlckvO1m+JcfLPKYyLDlAebKItl61J/ycnjL
+	TA/UDoAoTCA5Efyn8CNo+PRbWqfRDsAVzN+Ov/stFRELSGgUUwRPXFwDjp7875XMMt8JxNIHRRl
+	YMHNv0WZTXkb2/rFPg==
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--9.384400-8.000000
+X-TMASE-Result: 10--11.014300-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: E193EE1736A7BC2525CB5DE5945DF5D1462A8EE6C095E710895B52A9B4EA55682000:8
-X-MTK: N
+X-TM-SNTS-SMTP: A017A170104B5427D244883B62BFD51C539651236B943B919967563A14DF14A42000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_235053_414311_224ACCA2 
-X-CRM114-Status: GOOD (  15.60  )
+X-CRM114-CacheID: sfid-20240927_000228_794206_6C3CBF2B 
+X-CRM114-Status: GOOD (  19.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,87 +119,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek DPI module is typically associated with one of the
-following multimedia power domains:
- - POWER_DOMAIN_DISPLAY
- - POWER_DOMAIN_VDOSYS
- - POWER_DOMAIN_MM
-The specific power domain used varies depending on the SoC design.
 
-These power domains are shared by multiple devices within the SoC.
-In most cases, these power domains are enabled by other devices.
-As a result, the DPI module of legacy SoCs often functions correctly
-even without explicit configuration.
+On 9/26/24 23:59, Conor Dooley wrote:
+> On Thu, Sep 26, 2024 at 07:14:49PM +0800, Macpaul Lin wrote:
+>> Add power domain binding to the mediatek DPI controller for MT8185.
+> 
+> This wording is confusing, no binding is being added here, you're just
+> allowing one property.
+> 
+>> The dpi node in mt8195.dtsi was triggering a dtbs_check error:
+>>    dp-intf@1c113000: power-domains: False schema does not allow [[44, 18]]
+> 
+> And while it is good to have the warning, it would be better to explain
+> here that there are actually power domains, since the dts could be wrong
+> here also.
 
-It is recommended to explicitly add the appropriate power domain
-property to the DPI node in the device tree. Hence drop the
-compatible checking for specific SoCs.
+Thanks for the reminder! After MediaTek's internal discussion, a new
+patch v3 has been submitted. The details has been written in that patch.
 
-Fixes: 5474d49b2f79 ("dt-bindings: display: mediatek: dpi: Add power domains")
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
----
- .../display/mediatek/mediatek,dpi.yaml        | 24 ++++++++-----------
- 1 file changed, 10 insertions(+), 14 deletions(-)
+> Otherwise,
+> Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-Changes for v2:
- - Because of the corresponding dts fix has been reviewed with a Reviewed-by: tag.
-   [1] https://lore.kernel.org/all/20240925080515.16377-1-macpaul.lin@mediatek.com/
-   We still need this change to fix the 2 dtbs_check errors.
-   So keeps no change here.
+Since the new patch v3 use a different approach to update the DT Schema,
+the "Acked-by:" tag has been dropped, please help to review the 
+replacement v3 patch. Thanks!
 
-Changes for v3:
- - The origin patch is [2]
-   https://lore.kernel.org/all/20240926111449.9245-2-macpaul.lin@mediatek.com/
- - Thanks for Conor's reminding, after MediaTek's internal discussion,
-   This patch v3 is the replacement of [2] v2.
-   Because the DPI module should has a explicit configuration with power domain.
- - Drop Acked-by: tag since v3 is nearly a new patch for different approach.
+>> Fixes: 5474d49b2f79 ("dt-bindings: display: mediatek: dpi: Add power domains")
+>> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+>> ---
+>>   .../devicetree/bindings/display/mediatek/mediatek,dpi.yaml       | 1 +
+>>   1 file changed, 1 insertion(+)
+>>
+>> Changes for v2:
+>>   - Because of the corresponding dts fix has been reviewed with a Reviewed-by: tag.
+>>     [1] https://lore.kernel.org/all/20240925080515.16377-1-macpaul.lin@mediatek.com/
+>>     We still need this change to fix the 2 dtbs_check errors.
+>>     So keeps no change here.
+>>
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-index 3a82aec9021c..497c0eb4ed0b 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-@@ -63,6 +63,16 @@ properties:
-       - const: sleep
- 
-   power-domains:
-+    description: |
-+      The MediaTek DPI module is typically associated with one of the
-+      following multimedia power domains:
-+        POWER_DOMAIN_DISPLAY
-+        POWER_DOMAIN_VDOSYS
-+        POWER_DOMAIN_MM
-+      The specific power domain used varies depending on the SoC design.
-+
-+      It is recommended to explicitly add the appropriate power domain
-+      property to the DPI node in the device tree.
-     maxItems: 1
- 
-   port:
-@@ -79,20 +89,6 @@ required:
-   - clock-names
-   - port
- 
--allOf:
--  - if:
--      not:
--        properties:
--          compatible:
--            contains:
--              enum:
--                - mediatek,mt6795-dpi
--                - mediatek,mt8173-dpi
--                - mediatek,mt8186-dpi
--    then:
--      properties:
--        power-domains: false
--
- additionalProperties: false
- 
- examples:
--- 
-2.45.2
-
+Best regards,
+Macpaul Lin
 
