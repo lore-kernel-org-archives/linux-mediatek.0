@@ -4,76 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBA38CEBF69
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 05:24:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 430EACEBF76
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 05:52:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=pqm1xikTeLXBHpS3htuAeExIkyHEAewSM6MYJHHaJqM=; b=nD3a16MkcgdAI1HVj+xT+lCt8A
-	I8hzG25QIoIyotCINu1Ecz9VkdLBwifSIb6rtnDJO6sNLIPUXGbWTrCeeGfy0OQJrIVNutCkA3Xc6
-	ewwz6PeYdnzINaD6Pzts8+YmcD/SPJRjrsgz98P/KBkPkjMhpOnxG+YRjUdlfzNgeS3vBFfOLNtxd
-	jW/4GCqw9WB6TLktDMX86UlnWN9Cu02AxgXSiySr+wLWziXl10i4iajBbd9nyhl9b67nECCbLIJH/
-	dXmT+Vkq+D5qUY4mhTf+qJe7Lo4nLEVIK1DETAaKA9S2VtgMpRiH7JF7hpKjW65EvQQrEYT9L6o0y
-	j4bdnQig==;
+	bh=FZu0ZPTLpZWjX8yCbYqdxdHinvG8NnXZbGPHD2DiMCg=; b=L45rw802qTlVsF7Z2rIKPn3Hw3
+	fa3TEk133TIadyoKAbV0cIWLgXO3vAikiVAcGDTophqfACgUT91KAzfnqgoSbGcT3JVhkZuqSW5/a
+	erAHEUGTNucyC+Kj9il/teFGOcvuwD/FUOqqHXVnB8qpy6mOwQl4ZQrWrWYf9kpZ6E7HUE3FgNpew
+	bb/Jxv1xLdGi0glxCeolH0WQiptMC5izaQjXZy7ociZSOXy24hBWpnynu+PneicEYIyawVLa1tLkg
+	OVcOF2x0v4gFMQc0HXM/1RvBZNRsAZ71k+vq4BsLdKBcq4beO1BnsTBHSjRzDMe4sr/ngRuRBn25W
+	ZVrFuhrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1su3TK-0000000A3MT-1kcn;
-	Fri, 27 Sep 2024 05:24:54 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1su3uJ-0000000A71z-0gW3;
+	Fri, 27 Sep 2024 05:52:47 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1su3TH-0000000A3LF-0cND;
-	Fri, 27 Sep 2024 05:24:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727414687;
-	bh=r5E3C8ovlOGFFH6WMn3gqo8ezIWZpB6JtgD66EOvBSU=;
-	h=From:To:Cc:Subject:Date:From;
-	b=qlfUz6egU+dmTUqLLZ/T/NtChPlvIXi5Cnxh+pjZW2RzNWlc8iwyFnQ9aLtIAqoBh
-	 3Mo5uuqK6PpFeIzDiNOfs/4acmFBcq4oFPd2V80PuLpCKTbA8rfVFhGvxvH5uHVcDf
-	 PeEIvrUpqfcFA0tm7JJVWUXTd/wW9R5KctFND710po/bTbfQVD14jaSvXziRrH973c
-	 Qilb43wFmKgA5+yspypzeEZBJDqu3cBX+WThpc8gwuUOsPFCfqb6XN9sQ4KQdr5egk
-	 4O+ryjd8lgSSuI2P5x5a2kr5k/K0vsgafGy78AzimNqxd6ufVF5SPLdttGxiRW78he
-	 zUrQFW0XMJ76g==
-Received: from localhost.localdomain (unknown [171.76.80.165])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7E15F17E0FAC;
-	Fri, 27 Sep 2024 07:24:43 +0200 (CEST)
-From: Vignesh Raman <vignesh.raman@collabora.com>
-To: dri-devel@lists.freedesktop.org
-Cc: daniels@collabora.com,
-	helen.koike@collabora.com,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
-	robdclark@gmail.com,
-	guilherme.gallo@collabora.com,
-	sergi.blanch.torne@collabora.com,
-	deborah.brouwer@collabora.com,
-	dmitry.baryshkov@linaro.org,
-	mripard@kernel.org,
-	rodrigo.vivi@intel.com,
-	quic_abhinavk@quicinc.com,
-	linux-mediatek@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	amd-gfx@lists.freedesktop.org,
-	linux-arm-msm@vger.kernel.org,
-	intel-gfx@lists.freedesktop.org,
-	virtualization@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v3] docs/gpu: ci: update flake tests requirements
-Date: Fri, 27 Sep 2024 10:54:14 +0530
-Message-ID: <20240927052416.1833889-1-vignesh.raman@collabora.com>
-X-Mailer: git-send-email 2.43.0
+	id 1su3tO-0000000A6q9-0QMv;
+	Fri, 27 Sep 2024 05:51:52 +0000
+X-UUID: 951181e47c9411efba0aef63c0775dbf-20240926
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=FZu0ZPTLpZWjX8yCbYqdxdHinvG8NnXZbGPHD2DiMCg=;
+	b=F13NfxBvUXOLvVc5TZ35BA+kQkDddvFPEHO72FuhfZ2r9qUkxtJAcdXAkXAy+pE38r+deuVs6ak0F0Jg8WYCcvWCgb0466JXBdz+BD0t8gx1jZ4SB+XmzYPwmm1MwDKoDE39xa4o+vSVaADO7waKey0vWQHqF5r5OhLPw1gYEaY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:25da3b8d-c1dc-410c-9c0d-3f8d0bc94998,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:77725618-b42d-49a6-94d2-a75fa0df01d2,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 951181e47c9411efba0aef63c0775dbf-20240926
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1259129289; Thu, 26 Sep 2024 22:51:46 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 27 Sep 2024 13:51:43 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 27 Sep 2024 13:51:43 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Simona Vetter
+	<simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, "jason-jh . lin"
+	<jason-jh.lin@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, Moudy Ho
+	<moudy.ho@mediatek.corp-partner.google.com>, Moudy Ho <moudy.ho@mediatek.com>
+Subject: [PATCH v2] dt-bindings: display: mediatek: split: add clocks count constraint for MT8195
+Date: Fri, 27 Sep 2024 13:51:40 +0800
+Message-ID: <20240927055140.19688-1-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_222451_415870_5BAB6A28 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20240926_225150_410850_75965F16 
+X-CRM114-Status: GOOD (  10.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,59 +91,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Update the documentation to specify linking to a relevant GitLab
-issue or email report for each new flake entry. Added specific
-GitLab issue urls for i915, msm and amdgpu driver.
+From: Moudy Ho <moudy.ho@mediatek.corp-partner.google.com>
 
-Acked-by: Abhinav Kumar <quic_abhinavk@quicinc.com> # msm
-Acked-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org> # msm
-Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+The display node in mt8195.dtsi was triggering a CHECK_DTBS error due
+to an excessively long 'clocks' property:
+  display@14f06000: clocks: [[31, 14], [31, 43], [31, 44]] is too long
+
+To resolve this issue, apply the limit by setting 'maxItems: 3' in MT8195
+additional condition.
+
+Fixes: 4ed545e7d100 ("dt-bindings: display: mediatek: disp: split each block to individual yaml")
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+--
+The purpose of this patch is to separate the corrections for
+MediaTek SPLIT CHECK_DTBS error from the original mailing list
+mentioned below:
+https://lore.kernel.org/all/20240924103156.13119-2-macpaul.lin@mediatek.com/
+
+Changes since v1:
+  - Adding functional descriptions and quantity restrictions.
 ---
+ .../bindings/display/mediatek/mediatek,split.yaml           | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-v2:
-- Add gitlab issue link for msm driver.
-
-v3:
-- Update docs to specify we use email reporting or GitLab issues for flake entries.
-
----
- Documentation/gpu/automated_testing.rst | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
-
-diff --git a/Documentation/gpu/automated_testing.rst b/Documentation/gpu/automated_testing.rst
-index 2d5a28866afe..03769b4a17cf 100644
---- a/Documentation/gpu/automated_testing.rst
-+++ b/Documentation/gpu/automated_testing.rst
-@@ -68,19 +68,24 @@ known to behave unreliably. These tests won't cause a job to fail regardless of
- the result. They will still be run.
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
+index e4affc854f3d..bce1b8b866ce 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
+@@ -57,6 +57,9 @@ properties:
+   clocks:
+     items:
+       - description: SPLIT Clock
++      - description: HDMI RX Clock
++      - description: HDMI Metadata Clock
++    minItems: 1
  
- Each new flake entry must be associated with a link to the email reporting the
--bug to the author of the affected driver, the board name or Device Tree name of
--the board, the first kernel version affected, the IGT version used for tests,
--and an approximation of the failure rate.
-+bug to the author of the affected driver or the relevant GitLab issue. The entry
-+must also include the board name or Device Tree name, the first kernel version
-+affected, the IGT version used for tests, and an approximation of the failure rate.
+ required:
+   - compatible
+@@ -72,6 +75,9 @@ allOf:
+             const: mediatek,mt8195-mdp3-split
  
- They should be provided under the following format::
- 
--  # Bug Report: $LORE_OR_PATCHWORK_URL
-+  # Bug Report: $LORE_URL_OR_GITLAB_ISSUE
-   # Board Name: broken-board.dtb
-   # Linux Version: 6.6-rc1
-   # IGT Version: 1.28-gd2af13d9f
-   # Failure Rate: 100
-   flaky-test
- 
-+Use the appropriate link below to create a GitLab issue:
-+amdgpu driver: https://gitlab.freedesktop.org/drm/amd/-/issues
-+i915 driver: https://gitlab.freedesktop.org/drm/i915/kernel/-/issues
-+msm driver: https://gitlab.freedesktop.org/drm/msm/-/issues
-+
- drivers/gpu/drm/ci/${DRIVER_NAME}-${HW_REVISION}-skips.txt
- -----------------------------------------------------------
+     then:
++      properties:
++        clocks:
++          maxItems: 3
+       required:
+         - mediatek,gce-client-reg
  
 -- 
-2.43.0
+2.34.1
 
 
