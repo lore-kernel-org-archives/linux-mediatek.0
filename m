@@ -4,95 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1950FCEBF8C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 09:24:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31964CEBF8C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 09:30:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DqW1Z6ilDYncO6WIxfWW4lU0O53b+hjUNpAszcdmBJA=; b=vSbnrSmWg4LliLk6PIx2lJN0/D
-	txTcW7YFCqJkV2hU/gMooC099IMP3v9Gh4pXBY+xmFW5rIJK8dEpjqT1XpOgKiJAVMx414pXCnNcV
-	vuxNRvMCLru5/mla4MGcnJPLQay8SNy/xE2DjBO9G3CPH2TDt2S2m5ThNeR64m1a3xLMPGVeB0xzf
-	HMYJ4TMgu3uaXvnQbLEXt7KkSVgPMrS7/dGyg2rSd4SP0t/UpsEIog0D49pNePSFYpn8hnDiiTWuq
-	ks9yUNTnB1mMXXvD7nlXRJICr5zmQIuFSoegQbOVVRH1y0a5DySF6isP36U8hGQ6AuPFnCm6kseqb
-	V7AvzOJA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=E0C9Z7tY+KqgXTbr46QviYTmVLVp/Rpt6P7WWzwFOb8=; b=0DGRIR9hRtPnCqV6opinHmDO0Q
+	diX0kwdvBFIIcy/MfgUGa1fnf7yqMzr+vp/dc0bUiS3DonB8+NQjBgvKGrohKyjeCtyItnrpt1EVp
+	eAO8qXUBz/kuYCxU3P6gFKkGYrjIlFJB7AvpH3+7xj5VSp8YrZzr4rA9W6Uvj6ejqQZxHAA7+wzJV
+	cJqpp2w2FsuIndpM3vJiKvEq1AyyKZTHRYQM0sTIqH8DDHRT7JL7LOkpYqBN9V6SHaCmpvF7yGXGR
+	X7+Sm5ItjKHEDWCU3ko27kNveeLFQqWBoFgzZjUmuXxOyVOfZzBFeMCoDlHD7guq5IoxJs+E06Orr
+	Qceh4M8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1su7DM-0000000AdpP-3ri1;
-	Fri, 27 Sep 2024 09:24:40 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1su7Ii-0000000Af0L-0IXG;
+	Fri, 27 Sep 2024 09:30:12 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1su7BS-0000000AdUR-3sxz
-	for linux-mediatek@lists.infradead.org;
-	Fri, 27 Sep 2024 09:22:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1727428960;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=DqW1Z6ilDYncO6WIxfWW4lU0O53b+hjUNpAszcdmBJA=;
-	b=HjzwncduUDe11oiLsnh7MHgbLc1XJixxOCZtgp//OY1pGB8I7SP4seqxWx0dTEu4BKiEcM
-	yuu49WXorSrWMiYnHa1nXEavdsobiJ6VqPNEDo7zKEo6S0BMwmCd9KSnq3a0+NbKh5yU36
-	Mofu48P82uWyuVJ81yRPbsZaU6653io=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-627-J7dno_3TNi67r0D0oCey_A-1; Fri, 27 Sep 2024 05:22:38 -0400
-X-MC-Unique: J7dno_3TNi67r0D0oCey_A-1
-Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-42cb080ab53so14199805e9.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 27 Sep 2024 02:22:38 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727428957; x=1728033757;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=DqW1Z6ilDYncO6WIxfWW4lU0O53b+hjUNpAszcdmBJA=;
-        b=MggwtAytB3LQJIpeN072KY45hcTlHOaC0b3zHTIvVrperRJxRZfmkb94+yMkLU1739
-         p/ttd/1FGmTbTBteEMtJh+gn8kNMqWZWl7oMfZA7zxP3ne/CxDNKQySVxRPO3/uqRi9N
-         VlqPUDTHk4NkyvMFUaN4tSNfrkeaskWuHZczefHSSkAdoJfFsD3684SPHIzpY63HwJ+D
-         ygvDGCArTLvONuLttylNTt2+DPRjg4vDH0vgI87fr6yVM99DcOqJQOfoZ7+2imN9Npxx
-         zcfd+Uxx/2hrfFULsgcG/surrxSRRaxC2F+Fycp3GtLEu7LaJUzrZCtAA+MWcF7UWwMR
-         +p1Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVYYfn3S/LxLsccoWEJOQ+XUb7jK6JGD8Q5d9xHPzjpOJ9dUdYQdC05phGFcC63Jfm7tzQqr9s1io1sVjoRYw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwgKoK2FPTDIpx7F/au+ktcEn5TsYfqm0xDd4uCD1DD5++YeSzu
-	zBr/cUJ9XOZ5umXl3xhKfsqytvjOjat2VZ6sq9+/20fvgvHQ48cxYUQVytHLXL/O3RjaKvssOFu
-	G4LSPK0fQn+XbKwabfGvzsydYNbkqouNdkX5E23kdt75ZTp7VQQ4fpBL7TbSerJWWiKUSCg==
-X-Received: by 2002:a05:600c:3b93:b0:42c:b995:20d3 with SMTP id 5b1f17b1804b1-42f58484b34mr16809145e9.26.1727428957285;
-        Fri, 27 Sep 2024 02:22:37 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHJWCF/p5auGwFMcVVPbMUAZcGcxwmZH59KUVxG01mmgdWdNTVcOZrU3cbtQVowAR5ZCeffkg==
-X-Received: by 2002:a05:600c:3b93:b0:42c:b995:20d3 with SMTP id 5b1f17b1804b1-42f58484b34mr16808955e9.26.1727428956917;
-        Fri, 27 Sep 2024 02:22:36 -0700 (PDT)
-Received: from lbulwahn-thinkpadx1carbongen9.rmtde.csb ([2a02:810d:7e40:14b0:4ce1:e394:7ac0:6905])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42e969ddadcsm68540605e9.7.2024.09.27.02.22.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Sep 2024 02:22:36 -0700 (PDT)
-From: Lukas Bulwahn <lbulwahn@redhat.com>
-X-Google-Original-From: Lukas Bulwahn <lukas.bulwahn@redhat.com>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: kernel-janitors@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Lukas Bulwahn <lukas.bulwahn@redhat.com>
-Subject: [PATCH] clk: mediatek: drop two dead config options
-Date: Fri, 27 Sep 2024 11:22:32 +0200
-Message-ID: <20240927092232.386511-1-lukas.bulwahn@redhat.com>
-X-Mailer: git-send-email 2.46.1
+	id 1su7HU-0000000Aeh4-313Z;
+	Fri, 27 Sep 2024 09:28:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id CEB055C5C67;
+	Fri, 27 Sep 2024 09:28:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4CACC4CEC4;
+	Fri, 27 Sep 2024 09:28:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1727429335;
+	bh=tEADgN4+0MVD8NyE8u9DHCW1941Zple++xFgdtE7Lqs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Xr3Hvbz9t2MSHH3v4Q8FmyZxHemGNFrG+e7jK5spLTweDQIHHfOukGsWd5qJPO2V5
+	 BmijwD7NKAcFaETkdLToPdAZAJhyXB3Y4Z7vOPUGry/pV1RQfWao72ENnh8tg03Y9E
+	 PcClg8MxJm/m+/LcaI2Wd6qmh1MxpR8O+Xm2fQlmbFo4Vtn0it4ZbLDkk/U2x4JBmk
+	 ASMGonfS6In7VYo9OrMOHFSx0vBUWPrQwRcXqYTQERRrdxfeL6hbSFIXtbRGo4XgAx
+	 BYQKSAm+qjgwsZp96nulVPwISp74jMAIIWEo//X8KMevoHvcDktw2yhlXv0uqGkFGE
+	 jqQrYJAXlgQ7g==
+Date: Fri, 27 Sep 2024 11:28:52 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, 
+	Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK Hu <ck.hu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>, 
+	Tinghan Shen <tinghan.shen@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>, 
+	Ben Lok <ben.lok@mediatek.com>, "Nancy . Lin" <nancy.lin@mediatek.com>, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+	Alexandre Mergnat <amergnat@baylibre.com>, Bear Wang <bear.wang@mediatek.com>, 
+	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>, 
+	Chris-qj chen <chris-qj.chen@mediatek.com>, 
+	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>
+Subject: Re: [PATCH v3 2/5] dt-bindings: iommu: mediatek: Fix interrupt count
+ constraint for new SoCs
+Message-ID: <bilc7elacctsvr3eeqi5n45loy2w3qnzymwwhytlaeb3bmn4u7@thakmicixlko>
+References: <20240927065041.15247-1-macpaul.lin@mediatek.com>
+ <20240927065041.15247-2-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"; x-default=true
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20240927065041.15247-2-macpaul.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240927_022243_067727_BB4DC232 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20240927_022856_869800_42FD9C27 
+X-CRM114-Status: GOOD (  19.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,57 +87,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lukas Bulwahn <lukas.bulwahn@redhat.com>
+On Fri, Sep 27, 2024 at 02:50:38PM +0800, Macpaul Lin wrote:
+> The infra-iommu node in mt8195.dtsi was triggering a CHECK_DTBS error due
+> to an excessively long 'interrupts' property. The error message was:
+> 
+>   infra-iommu@10315000: interrupts: [[0, 795, 4, 0], [0, 796, 4, 0],
+>                      [0, 797, 4, 0], [0, 798, 4, 0], [0, 799, 4, 0]]
+>                      is too long
+> 
+> To address this issue, update the compatbile matching rule for
+> 'interrupts' property. This change allows flexibility in the number
+> of interrupts for new SoCs like MT8195.
+> The purpose of these 5 interrupts is also added into description.
+> 
+> Fixes: bca28426805d ("dt-bindings: iommu: mediatek: Convert IOMMU to DT schema")
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> ---
+>  .../bindings/iommu/mediatek,iommu.yaml        | 25 ++++++++++++++++++-
+>  1 file changed, 24 insertions(+), 1 deletion(-)
+> 
+> Changes for v2:
+>  - commit message: re-formatting and add a description of adding 5 interrupts.
+>  - add 'description' and 'maxItems: 5' for 'interrupt' property of
+>    'mt8195-iommu-infra'
+>  - others keeps 'maxItems: 1'
+> 
+> Changes for v3:
+>  - Refine the description for 'interrupts' property and fixes the compatible
+>    matching rules.
+>  - Refine commit message.
+> 
+> diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> index ea6b0f5f24de..10e2bb0f0704 100644
+> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> @@ -96,7 +96,13 @@ properties:
+>      maxItems: 1
+>  
+>    interrupts:
+> -    maxItems: 1
 
-Commit 0f471d31e5e8 ("clk: mediatek: Split MT8195 clock drivers and allow
-module build") adds a number of new COMMON_CLK_MT8195_* config options.
-Among those, the config options COMMON_CLK_MT8195_AUDSYS and
-COMMON_CLK_MT8195_MSDC have no reference in the source tree and are not
-used in the Makefile to include a specific file.
+This does not make sense and was not here at v2. Keep constraints at top
+level.
 
-Drop the dead config options COMMON_CLK_MT8195_AUDSYS and
-COMMON_CLK_MT8195_MSDC.
+This is how variable-length lists are created:
+https://elixir.bootlin.com/linux/v6.11-rc6/source/Documentation/devicetree/bindings/ufs/qcom,ufs.yaml#L127
 
-Fixes: 0f471d31e5e8 ("clk: mediatek: Split MT8195 clock drivers and allow module build")
-Signed-off-by: Lukas Bulwahn <lukas.bulwahn@redhat.com>
----
- drivers/clk/mediatek/Kconfig | 15 ---------------
- 1 file changed, 15 deletions(-)
-
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index 70a005e7e1b1..486401e1f2f1 100644
---- a/drivers/clk/mediatek/Kconfig
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -887,13 +887,6 @@ config COMMON_CLK_MT8195_APUSYS
- 	help
- 	  This driver supports MediaTek MT8195 AI Processor Unit System clocks.
- 
--config COMMON_CLK_MT8195_AUDSYS
--	tristate "Clock driver for MediaTek MT8195 audsys"
--	depends on COMMON_CLK_MT8195
--	default COMMON_CLK_MT8195
--	help
--	  This driver supports MediaTek MT8195 audsys clocks.
--
- config COMMON_CLK_MT8195_IMP_IIC_WRAP
- 	tristate "Clock driver for MediaTek MT8195 imp_iic_wrap"
- 	depends on COMMON_CLK_MT8195
-@@ -908,14 +901,6 @@ config COMMON_CLK_MT8195_MFGCFG
- 	help
- 	  This driver supports MediaTek MT8195 mfgcfg clocks.
- 
--config COMMON_CLK_MT8195_MSDC
--	tristate "Clock driver for MediaTek MT8195 msdc"
--	depends on COMMON_CLK_MT8195
--	default COMMON_CLK_MT8195
--	help
--	  This driver supports MediaTek MT8195 MMC and SD Controller's
--	  msdc and msdc_top clocks.
--
- config COMMON_CLK_MT8195_SCP_ADSP
- 	tristate "Clock driver for MediaTek MT8195 scp_adsp"
- 	depends on COMMON_CLK_MT8195
--- 
-2.46.1
+Best regards,
+Krzysztof
 
 
