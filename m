@@ -4,50 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3530BCEBF8C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 09:45:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98C36CEBF8C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 09:47:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+JVwsgL6Xfu7LJR0vof4fa+SZ9yVKQRlyWFA4q3L9iw=; b=altRzjGsJmDBunlNsJFnfr7sVZ
-	BFR2Yxp51v+cz4b+62unqUrPu3gftoTbSb3MZqkXA7m/Y7g896JYAvqNqABzYH13YJsGJKFM3123w
-	BsLXfT2pTeKZLMkigA1GzLW6o05juAM257/KAqVNUsm+2WxSrXNLTyC9MrczZEEbf6AZBN8W49bma
-	sqMvw+RnRnlWH5k6ZLVAbn3+JkB7dA86bEPeIiAfp/+rjLqHBUEC4/N8PVaRRkY3a4tfYaibmJYg3
-	UcpR7HOuLPPByHv7VIwaLNvtHvmnjgi37kcVRTr+tN+mCikX3QYnn0rY5lMIEstNHz1IXyweh6uYR
-	fQLSUBrA==;
+	bh=moAjWM8VZuoMcVYT1jELV88xwbj7rtVc8IO9QBkpDKY=; b=dhCMaRBxqtSDGCm3rCpctfQ1O5
+	V2eQBpxPq//XEEYa0TjsheSFLVW7tlp3IFQWzQv702MR1/wDTexkyfGOzp0xLyQC01C5ukMgmCzer
+	SpcR5r+fpMcaJfNZqyTdqosWQaITvDhiox0B6gvFPbEd8p0mDnXTU5kr16pMjHkZcKJQELuoZC0Nz
+	RUBARWw33P0Wxq5fwgHLxBJEfrbqWz10NTkJA3Gudcts1NrxkoBptDLvRXShvTUyZlFf2nETMQQ3N
+	4dCuTh45a5fA13kUGOsqR0t70fRlsZr46IC8tIPwQ1lgfeym9Eb7NrQEHNlV2EbZn7iHlHnhhPhsh
+	fyudpdVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1su7Xp-0000000AiOH-0WxF;
-	Fri, 27 Sep 2024 09:45:49 +0000
+	id 1su7Yz-0000000Aiig-2OAw;
+	Fri, 27 Sep 2024 09:47:01 +0000
 Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1su7Wb-0000000Ai6T-3ftv;
-	Fri, 27 Sep 2024 09:44:35 +0000
+	id 1su7XS-0000000AiIK-2WK8;
+	Fri, 27 Sep 2024 09:45:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id E6235A45447;
-	Fri, 27 Sep 2024 09:44:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 33AD1C4CEC9;
-	Fri, 27 Sep 2024 09:44:23 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 2EA4BA45481;
+	Fri, 27 Sep 2024 09:45:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 53229C4CEC4;
+	Fri, 27 Sep 2024 09:45:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727430272;
-	bh=eKW5C8kPz0u7mkffe5kYyXMAAp3ulnatVh3dzHZzUQo=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=rRMhyZ1g65CTnvRwWk73dj8KJ7M77MYZ95Y4/yO5DmGgihJGBhLZ0a0Dcu0Jist16
-	 hoKVsE+wzD0vf7aTv9ypylpHF4E4q79wx9okj+oCRkIfSCdEYuN7MHp6jpIcj73Xvq
-	 Fuz98SujU6rElB6q6eZhuPSUs6zrbw7XCIJwc4oaKtlb8toAbCUQMDHsy1VIgbFLT/
-	 8Eb2WowCIG/uzGnzPTwhV4ShHuRkGY6zxfemqzCtNZeza4OPiSGqX+9xwptJcJ90d5
-	 +08slEoCOQiuVeKIBLRgzyTYquYCiHkkXRUcyu+oLrMEtTrCN+yFRnGijcRmz/Iazf
-	 pP4/l9yOWsbaw==
-Message-ID: <665cd94e-7b09-428e-90b7-3ea861a01aa3@kernel.org>
-Date: Fri, 27 Sep 2024 11:44:21 +0200
+	s=k20201202; t=1727430325;
+	bh=cwf8IiiGMd/tYm41ABqY1vKY44XgS/xx0rcgCwLxuEk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=mQ2WgeCVzDkapGr7rmirjLeMZvQ2+hGoTK4cneHRo9mSLFVJ3Rnx8wlvjiDAkEBDX
+	 DHaSFMkPAYGQ7Cl/JzVrOBtbrSNO0R1bsjGmtmWoVm6cv4RCtE54w0Htm6F8XEduCe
+	 uSWWFDFkP+a2IrGvGItIUJvKL4I5IWA7/F1Dk9oGsk+PkeiBt0JmYrVbNTkiWBduBc
+	 feJETcSw4c+2PaFgMdihdC+UL8dNJ2jM4j+ArVHQEk+XK/SulTpQmJ4cidgzfuPpX1
+	 BqLm9hnItb+cVVQ/xdJnCDsnQQs9xERH4NF4oU5RGVIit8CszBOSebkLqa4nCRT1Gb
+	 9BvCVcRSy9FZA==
+Message-ID: <339b4c83-201c-4f63-85d0-b0aa1eb164b0@kernel.org>
+Date: Fri, 27 Sep 2024 11:45:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v6 2/2] dt-bindings: mfd: mediatek: mt6397: Convert to DT
  schema format
-From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Macpaul Lin <macpaul.lin@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
  Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
  <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>,
@@ -75,7 +74,7 @@ Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
  Chen-Yu Tsai <wenst@chromium.org>
 References: <20240918064955.6518-1-macpaul.lin@mediatek.com>
  <20240918064955.6518-2-macpaul.lin@mediatek.com>
- <0b6c3217-5156-4c4f-8aaa-0b1cecce1818@kernel.org>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -120,13 +119,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <0b6c3217-5156-4c4f-8aaa-0b1cecce1818@kernel.org>
+In-Reply-To: <20240918064955.6518-2-macpaul.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240927_024434_075505_23E7C5DE 
-X-CRM114-Status: UNSURE (   8.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240927_024526_803078_CC42A1B4 
+X-CRM114-Status: GOOD (  13.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -141,23 +139,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20/09/2024 15:07, Krzysztof Kozlowski wrote:
-> On 18/09/2024 08:49, Macpaul Lin wrote:
->> Convert the mfd: mediatek: mt6397 binding to DT schema format.
->>
->> MT6323, MT6358, and MT6397 are PMIC devices with multiple function
->> subdevices. They share a common PMIC design but have variations in
->> subdevice combinations.
->>
->> Key updates in this conversion:
+On 18/09/2024 08:49, Macpaul Lin wrote:
+> Convert the mfd: mediatek: mt6397 binding to DT schema format.
 > 
+> MT6323, MT6358, and MT6397 are PMIC devices with multiple function
+> subdevices. They share a common PMIC design but have variations in
+> subdevice combinations.
 > 
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Key updates in this conversion:
+> 
+> 1. RTC:
+>    - Convert rtc-mt6397.txt and merge into parent MT6397 PMIC DT schema.
+> 
+> 2. Regulators:
+>    - Align to generic name "regulators".
+>    - Update references from .txt to .yaml for mt6323, mt6358, and mt6397
+>      regulators.
+>    - Simplify regulator name labels in device tree examples.
+> 
+> 3. Audio Codec:
+>    - Convert sound/mt6358.txt and merge into parent MT6397 PMIC DT schema.
+>    - Align to generic name "audio-codec" for codec and sound subdevices.
+>    - Add "mediatek,dmic-mode" and "Avdd-supply" properties.
+> 
+> 4. Clocks:
+>    - Align to generic name "clocks" for clockbuffer subdevices.
+> 
+> 5. LEDs:
+>    - Convert leds-mt6323.txt and merge into parent MT6397 PMIC DT schema.
+>    - Update LED binding.
+> 
+> 6. Keys:
+>    - Add detailed descriptions for power and home keys.
+>    - Add compatible: mediatek,mt6358-keys.
+> 
+> 7. Power Controller:
+>    - Convert mt6323-poweroff.txt and merge into parent MT6397 PMIC DT
+>      schema.
+>    - Add #power-domain-cells property to fix dt-binding check error.
+>    - Clarify "BBPU" as "Baseband power up".
+> 
+> 8. Pinctrl:
+>    - Align to generic name "pinctrl" instead of "pin-controller".
+> 
+> 9. Compatible:
+>    - Drop "mediatek,mt6357" since there is a separated DT Schema
+>      for PMIC MT6357.
+> 
+> 10. Examples:
+>    - MT6323: Retain complete examples for this PMIC.
+>    - MT6358 and MT6397: simplify settings in regulators.
+>     - Preserve "audio-codec", "clocks", "pinctrl", "rtc", and "keys"
+>       sections as they contain typical settings for different PMICs.
+> 
+> Additional updates:
+> - MAINTAINERS: Add co-maintainers and reference to
+>   mfd/mediatek,mt6397.yaml for LED and power-controller drivers.
+> - input/mediatek,pmic-keys.yaml: Update reference to
+>   mfd/mediatek,mt6397.yaml.
+> 
+> Signed-off-by: Sen Chu <sen.chu@mediatek.com>
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 
-Unreviewed. This is incomplete.
+NAK
 
-Do not send incorrect patches and then followups for them. Just fix the
-incorrect patch before it gets applied.
+Follow up patch pointed out this is incorrect. I don't understand this
+concept of sending knowingly incorrect code, so please sort it out at v7.
 
 Best regards,
 Krzysztof
