@@ -4,85 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 113F7CEBF9C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 12:31:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 135FDCDD1B2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 14:22:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:From:Subject:Message-ID:References:Mime-Version:
-	In-Reply-To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JJH90s9ehM/6C3cC3wlLnVAl5HGuTGpg9uLiBC2hcY0=; b=PrnYsHzjxSs9//2FDgsS00DpNv
-	12YgT3suOrV+CJCa8+t4h7yNOJCdL7uOxilS/CELAkQK/IX2xyE0p6pJO618823ovXTTbKT/ILsTV
-	N9xYMVHoO3TbXWg5J9ykXlolutIuNI6DYf73UGA1vcgt6zntv7BLFMU3I4cfCpPy5Uh3wT/Z6ejDC
-	Cl8wCKueD9/bF/BVZd8V0GSb+87huy5n/B2F1aSlb4C/AayiBecmWGgkHXUhQvvzPgWITETZSN+LW
-	rKIzckJLnwI37K/K3NR6qLX6lY+BQg4q7XH8NrNyPTny4hD2oamyZVRICWuSHjCw4ppE3CSI8YLG4
-	Tzt43xgA==;
+	bh=s5q8lye3sImNzA8HGtAE/geFugUgS7KxAiLNTOztMH0=; b=si5tLAScw7ZqLJcWSXG2mGT248
+	K1blGgQ4MxqKBdC6ZHDeLU7w/MbVKNlWEikaUz3TzPvQBGaeO+/KO5T61GyXzXSjPzQEyhsN7yw07
+	5ux3GV279NnGzgKG0euFdZEvasI/SSjIRxBDlhhDEVatyXe0vOG2VjtVBDKyte5/tOcuyhwzlnsOX
+	xnbfKHVp91xhp5q5sUHBFo0xh/iD9+4P81aJdfgFkgDD7cGUCz7An5iz8z7RnF8bB6f9CHE6vFb2p
+	ZxiBx4AAbCzeL3LmX5SxBifpyhMjS/iHaTq6Yhguk4xyZtVbJpRoJekETP7WXPuKwP41MIEIEhmpZ
+	7mPLlBtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1suA7s-0000000B4np-05hE;
-	Fri, 27 Sep 2024 12:31:12 +0000
-Received: from mail-ej1-x64a.google.com ([2a00:1450:4864:20::64a])
+	id 1suBro-0000000BS2o-2aUl;
+	Fri, 27 Sep 2024 14:22:44 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1suA6n-0000000B4RC-3vZX
-	for linux-mediatek@lists.infradead.org;
-	Fri, 27 Sep 2024 12:30:08 +0000
-Received: by mail-ej1-x64a.google.com with SMTP id a640c23a62f3a-a8d1a00e0beso258669266b.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 27 Sep 2024 05:30:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1727440203; x=1728045003; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:from:subject:message-id:references
-         :mime-version:in-reply-to:date:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=JJH90s9ehM/6C3cC3wlLnVAl5HGuTGpg9uLiBC2hcY0=;
-        b=MIvrw7Hah8ZknGKKGNo9t3b7bgCi1bXXha/aAf4bKH7NpiGy72iuqI6bnCCACJ3tsg
-         oBnSMrNv3bUSQ4Z1OzivcTfl9luMNKR6DdgWlj5YhcQPx5wvxAcnSG3u3J/16BemqYcN
-         DM7RbqwyKLllC1H2NFdSbwdLul1sFnhRpOYv8o+PIBYRYVb0Dz1ydo4s/H+gbZ4nbf4R
-         R9CmmJRpFXk+n2CcgHmJM4cmWPpE0QvWmJwiPLEJqmmJOrO3lWd0sEfRMnVoKA9nS+DQ
-         gg+cT9fpublQPwyYQNDaXLDHHy4w/LTLW5fbPc+c9RllXIzKqaHdEq6kD/tfOhN12XVW
-         LHFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727440203; x=1728045003;
-        h=content-transfer-encoding:cc:to:from:subject:message-id:references
-         :mime-version:in-reply-to:date:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=JJH90s9ehM/6C3cC3wlLnVAl5HGuTGpg9uLiBC2hcY0=;
-        b=JrwkQRXKSjg/175lguo64bWw7GYDvXlbHZS7EkoOpfzb3KAWTzGyn6r8hExC/JbFt8
-         PSl2N0+U19fbU5YyIwSB/jKwuQuwkQAYQZOkRqWSSezEnKtS4HQG3KhxuRVcRtsjyW16
-         y4+Wx1d+m2RHUtO2HypZ9jW1jH/ub+ztPS0wure6cKKTlbDUlyL+X4ZF9zOcyCBaCgNS
-         qKHXd2i5LCWGU+69o+S75qlDLO80FUmuZ3Jz+EKhnvQUuAiLSLemcETjk/XKKo28TRZT
-         ZPYfWvcyJ5o5zOpk0FaUNcfwQI/gnRhky26XDgX6LG5Cqm4Q1vQ9jGGX8XD1n3hyDns+
-         ZRDQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUuyWA0dWKsQATY9vgtIw/xdB0cKEA8groTggrblmeXfzTq3CRktRWvKiWUs2b7JfQXhVN2AlL7GzsuhWi1HA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwIsPpMONJTdTXC7rsJ6AFcRXEcgN4XMcK++AmMW7S2qM01Kmd+
-	m6ZcBuqBRplnqOdfv7aPD1wil1nuUJj+vdEwPNcVH+kOq1NfR4lK+1ZtyAqYj8OMhmM7ESiguKY
-	Pf4WlvA==
-X-Google-Smtp-Source: AGHT+IFtaqAnYTlWl4p2ORNPKpErcac7yI1t2VhcCjW2ce9GaYjOFl421nfSmPjLIcMrtK0TIAES3Sf1Hgjt
-X-Received: from malysz.c.googlers.com ([fda3:e722:ac3:cc00:31:98fb:c0a8:a1e])
- (user=jakiela job=sendgmr) by 2002:a17:906:688f:b0:a93:9041:4d02 with SMTP id
- a640c23a62f3a-a93b156c313mr392066b.1.1727440203152; Fri, 27 Sep 2024 05:30:03
- -0700 (PDT)
-Date: Fri, 27 Sep 2024 12:29:40 +0000
+	id 1suBqX-0000000BRif-44lr;
+	Fri, 27 Sep 2024 14:21:30 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8FE9F5C5B25;
+	Fri, 27 Sep 2024 14:21:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E66ABC4CEC6;
+	Fri, 27 Sep 2024 14:21:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1727446883;
+	bh=MQCJio1o77mchlYd/XFuHcHd2OVanumMwrSdzUpdioA=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=Bn9EoIotTteh0sAYXulCgZX0lkH8BIrJWaNWHzVT4/UbJJbd1UQ38//9acT0QYXBZ
+	 wG8DNmASoKuTtK8CP0IP8D7GlFGdBy23Vrsk5OGdJPhPpRTIjNBxujDX4LL/IgMpDC
+	 unN18ZGeQzc0PEwNaOEjzRfU4t0r6rQlDocU38qjMiDblBTWoTBqV2Qhl/h5NY2WES
+	 ZvxQJ2vTpXfmTetZoeU+dQbELJW/oj3jUaMqtbuaRy55AkINly9sLrJbjNbqUTAh/L
+	 Lmh9wm8kMrrCONP8eE+Sr827zAoW0PAUoQoZ5eI2P60+cONS3djW/mM42Y4D53VGCI
+	 AvzL1/HHk4YEw==
+Date: Fri, 27 Sep 2024 09:21:21 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: =?utf-8?q?Albert_Jakie=C5=82a?= <jakiela@google.com>
+Cc: conor+dt@kernel.org, matthias.bgg@gmail.com, sean.wang@mediatek.com, 
+ rafal@milecki.pl, krzk+dt@kernel.org, devicetree@vger.kernel.org, 
+ hsinyi@chromium.org, nfraprado@collabora.com, wenst@chromium.org, 
+ angelogioacchino.delregno@collabora.com, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org
 In-Reply-To: <20240927122940.4190949-1-jakiela@google.com>
-Mime-Version: 1.0
 References: <20240927122940.4190949-1-jakiela@google.com>
-X-Mailer: git-send-email 2.46.1.824.gd892dcdcdd-goog
-Message-ID: <20240927122940.4190949-2-jakiela@google.com>
-Subject: [PATCH v2 2/2] arm64: dts: mediate: Introduce MT8186
+Message-Id: <172744667757.3625970.10650745782102063964.robh@kernel.org>
+Subject: Re: [PATCH v2 1/2] dt-bindings: arm: mediatek: Add MT8186
  Chinchou/Chinchou360 Chromebooks
-From: "=?UTF-8?q?Albert=20Jakie=C5=82a?=" <jakiela@google.com>
-To: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
-	wenst@chromium.org, rafal@milecki.pl, hsinyi@chromium.org, 
-	nfraprado@collabora.com, sean.wang@mediatek.com
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	"=?UTF-8?q?Albert=20Jakie=C5=82a?=" <jakiela@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240927_053006_082294_663F5E0D 
-X-CRM114-Status: GOOD (  12.46  )
+X-CRM114-CacheID: sfid-20240927_072128_466196_C37C8CEB 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,591 +75,436 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8186 Chinchou/Chinchou360, also known as the Asus Chromebook
-CZ12/CZ11 Flip, is a clamshell or convertible device with touchscreen,
-stylus and extra buttons.
 
-Signed-off-by: Albert Jakie=C5=82a <jakiela@google.com>
----
-Changes in v2:
-- PATCH 2/2: Remove sku2147483647, remove duplicate nodes, add model
-	and remove uneccecery nodes from sound card.
-- Link to v1: https://lore.kernel.org/all/20240925080353.2362879-2-jakiela@=
-google.com/
+On Fri, 27 Sep 2024 12:29:39 +0000, Albert Jakieła wrote:
+> Add entries for MT8186 based Chinchou/Chinchou360 Chromebooks.
+> These two are clamshell or convertible with touchscreen, stylus
+> and extra buttons.
+> 
+> Signed-off-by: Albert Jakieła <jakiela@google.com>
+> ---
+> 
+> Changes since v1:
+> - PATCH 1/2: Delete sku2147483647
+> - Link to v1: https://lore.kernel.org/all/20240925080353.2362879-1-jakiela@google.com/
+> 
+> ---
+>  .../devicetree/bindings/arm/mediatek.yaml     | 22 +++++++++++++++++++
+>  1 file changed, 22 insertions(+)
+> 
 
----
- arch/arm64/boot/dts/mediatek/Makefile         |   3 +
- .../mediatek/mt8186-corsola-chinchou-sku0.dts |  18 +
- .../mediatek/mt8186-corsola-chinchou-sku1.dts |  34 ++
- .../mt8186-corsola-chinchou-sku16.dts         |  28 ++
- .../dts/mediatek/mt8186-corsola-chinchou.dtsi | 432 ++++++++++++++++++
- 5 files changed, 515 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sk=
-u0.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sk=
-u1.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sk=
-u16.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dt=
-si
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/me=
-diatek/Makefile
-index 8fd7b2bb7a15..0db7770e8907 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -55,6 +55,9 @@ dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-kukui-kodama-sku3=
-2.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-kukui-krane-sku0.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-kukui-krane-sku176.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-pumpkin.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-chinchou-sku0.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-chinchou-sku1.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-chinchou-sku16.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-magneton-sku393216.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-magneton-sku393217.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-magneton-sku393218.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts =
-b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts
-new file mode 100644
-index 000000000000..29dd92318da1
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts
-@@ -0,0 +1,18 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2023 Google LLC
-+ */
-+
-+/dts-v1/;
-+#include "mt8186-corsola-chinchou.dtsi"
-+
-+/ {
-+	model =3D "Google chinchou sku0 board";
-+	compatible =3D "google,chinchou-sku0", "google,chinchou-sku2",
-+			"google,chinchou-sku4", "google,chinchou-sku5",
-+			"google,chinchou", "mediatek,mt8186";
-+};
-+
-+&gpio_keys {
-+	status =3D "disabled";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts =
-b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts
-new file mode 100644
-index 000000000000..8ba31f81d9ad
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts
-@@ -0,0 +1,34 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2023 Google LLC
-+ */
-+
-+/dts-v1/;
-+#include "mt8186-corsola-chinchou.dtsi"
-+
-+/ {
-+	model =3D "Google chinchou sku1/sku17 board";
-+	compatible =3D "google,chinchou-sku1", "google,chinchou-sku17",
-+			"google,chinchou-sku3", "google,chinchou-sku6",
-+			"google,chinchou-sku7", "google,chinchou-sku20",
-+			"google,chinchou-sku22", "google,chinchou-sku23",
-+			"mediatek,mt8186";
-+};
-+
-+&i2c1 {
-+	i2c-scl-internal-delay-ns =3D <10000>;
-+
-+	touchscreen: touchscreen@41 {
-+		compatible =3D "ilitek,ili2901";
-+		reg =3D <0x41>;
-+		interrupts-extended =3D <&pio 12 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names =3D "default";
-+		pinctrl-0 =3D <&touchscreen_pins>;
-+		reset-gpios =3D <&pio 60 GPIO_ACTIVE_LOW>;
-+		vccio-supply =3D <&pp1800_tchscr_report_disable>;
-+	};
-+};
-+
-+&gpio_keys {
-+	status =3D "disabled";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts=
- b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts
-new file mode 100644
-index 000000000000..24084a77999a
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts
-@@ -0,0 +1,28 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2023 Google LLC
-+ */
-+
-+/dts-v1/;
-+#include "mt8186-corsola-chinchou.dtsi"
-+
-+/ {
-+	model =3D "Google chinchou sku16/sku2147483647 board";
-+	compatible =3D "google,chinchou-sku16", "google,chinchou-sku18",
-+			"google,chinchou-sku19", "google,chinchou-sku21",
-+			"mediatek,mt8186";
-+};
-+
-+&i2c1 {
-+	i2c-scl-internal-delay-ns =3D <10000>;
-+
-+	touchscreen: touchscreen@41 {
-+		compatible =3D "ilitek,ili2901";
-+		reg =3D <0x41>;
-+		interrupts-extended =3D <&pio 12 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names =3D "default";
-+		pinctrl-0 =3D <&touchscreen_pins>;
-+		reset-gpios =3D <&pio 60 GPIO_ACTIVE_LOW>;
-+		vccio-supply =3D <&pp1800_tchscr_report_disable>;
-+	};
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi b/ar=
-ch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
-new file mode 100644
-index 000000000000..96cc3c267c20
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
-@@ -0,0 +1,432 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2023 Google LLC
-+ */
-+
-+/dts-v1/;
-+#include "mt8186-corsola.dtsi"
-+
-+/ {
-+	tboard_thermistor1: thermal-sensor1 {
-+		compatible =3D "generic-adc-thermal";
-+		#thermal-sensor-cells =3D <0>;
-+		io-channels =3D <&auxadc 0>;
-+		io-channel-names =3D "sensor-channel";
-+		temperature-lookup-table =3D <    (-5000) 1491
-+						0 1413
-+						5000 1324
-+						10000 1225
-+						15000 1120
-+						20000 1012
-+						25000 900
-+						30000 797
-+						35000 698
-+						40000 607
-+						45000 525
-+						50000 451
-+						55000 386
-+						60000 330
-+						65000 282
-+						70000 241
-+						75000 206
-+						80000 176
-+						85000 151
-+						90000 129
-+						95000 111
-+						100000 96
-+						105000 83
-+						110000 72
-+						115000 62
-+						120000 54
-+						125000 47>;
-+	};
-+
-+	tboard_thermistor2: thermal-sensor2 {
-+		compatible =3D "generic-adc-thermal";
-+		#thermal-sensor-cells =3D <0>;
-+		io-channels =3D <&auxadc 1>;
-+		io-channel-names =3D "sensor-channel";
-+		temperature-lookup-table =3D <    (-5000) 1491
-+						0 1413
-+						5000 1324
-+						10000 1225
-+						15000 1120
-+						20000 1012
-+						25000 900
-+						30000 797
-+						35000 698
-+						40000 607
-+						45000 525
-+						50000 451
-+						55000 386
-+						60000 330
-+						65000 282
-+						70000 241
-+						75000 206
-+						80000 176
-+						85000 151
-+						90000 129
-+						95000 111
-+						100000 96
-+						105000 83
-+						110000 72
-+						115000 62
-+						120000 54
-+						125000 47>;
-+	};
-+
-+	pp1800_tchscr_report_disable: regulator-pp1800-tchscr-report-disable {
-+		compatible =3D "regulator-fixed";
-+		regulator-name =3D "pp1800_tchscr_report_disable";
-+		pinctrl-names =3D "default";
-+		enable-active-low;
-+		regulator-boot-on;
-+		pinctrl-0 =3D <&touch_pin_report>;
-+		gpio =3D <&pio 37 GPIO_ACTIVE_LOW>;
-+	};
-+
-+	pp1000_edpbrdg: regulator-pp1000-edpbrdg {
-+		compatible =3D "regulator-fixed";
-+		regulator-name =3D "pp1000_edpbrdg";
-+		pinctrl-names =3D "default";
-+		pinctrl-0 =3D <&en_pp1000_edpbrdg>;
-+		enable-active-high;
-+		regulator-boot-on;
-+		gpio =3D <&pio 29 GPIO_ACTIVE_HIGH>;
-+		vin-supply =3D <&pp3300_z2>;
-+	};
-+
-+	pp1800_edpbrdg_dx: regulator-pp1800-edpbrdg-dx {
-+		compatible =3D "regulator-fixed";
-+		regulator-name =3D "pp1800_edpbrdg_dx";
-+		pinctrl-names =3D "default";
-+		pinctrl-0 =3D <&en_pp1800_edpbrdg>;
-+		enable-active-high;
-+		regulator-boot-on;
-+		gpio =3D <&pio 30 GPIO_ACTIVE_HIGH>;
-+		vin-supply =3D <&mt6366_vio18_reg>;
-+	};
-+
-+	pp3300_edp_dx: regulator-pp3300-edp-dx {
-+		compatible =3D "regulator-fixed";
-+		regulator-name =3D "pp3300_edp_dx";
-+		pinctrl-names =3D "default";
-+		pinctrl-0 =3D <&en_pp3300_edpbrdg>;
-+		enable-active-high;
-+		regulator-boot-on;
-+		gpio =3D <&pio 31 GPIO_ACTIVE_HIGH>;
-+		vin-supply =3D <&pp3300_z2>;
-+	};
-+};
-+
-+&rt5682s {
-+	status =3D "disabled";
-+};
-+
-+&rt1019p {
-+	status =3D "disabled";
-+};
-+
-+&dsi_out {
-+	remote-endpoint =3D <&anx7625_in>;
-+};
-+
-+&i2c0 {
-+	clock-frequency =3D <400000>;
-+
-+	anx_bridge: anx7625@58 {
-+		compatible =3D "analogix,anx7625";
-+		reg =3D <0x58>;
-+		pinctrl-names =3D "default";
-+		pinctrl-0 =3D <&anx7625_pins>;
-+		panel_flags =3D <1>;
-+		enable-gpios =3D <&pio 96 GPIO_ACTIVE_HIGH>;
-+		reset-gpios =3D <&pio 98 GPIO_ACTIVE_HIGH>;
-+		vdd10-supply =3D <&pp1000_edpbrdg>;
-+		vdd18-supply =3D <&pp1800_edpbrdg_dx>;
-+		vdd33-supply =3D <&pp3300_edp_dx>;
-+		#address-cells =3D <1>;
-+		#size-cells =3D <0>;
-+		analogix,lane0-swing =3D /bits/ 8 <0x70 0x30>;
-+		analogix,lane1-swing =3D /bits/ 8 <0x70 0x30>;
-+
-+		port@0 {
-+			reg =3D <0>;
-+
-+			anx7625_in: endpoint {
-+				remote-endpoint =3D <&dsi_out>;
-+				data-lanes =3D <0 1 2 3>;
-+			};
-+		};
-+
-+		port@1 {
-+			reg =3D <1>;
-+
-+			anx7625_out: endpoint {
-+				remote-endpoint =3D <&panel_in>;
-+			};
-+		};
-+
-+		aux-bus {
-+			panel: panel {
-+				compatible =3D "edp-panel";
-+				power-supply =3D <&pp3300_disp_x>;
-+				backlight =3D <&backlight_lcd0>;
-+
-+				port {
-+					panel_in: endpoint {
-+						remote-endpoint =3D <&anx7625_out>;
-+					};
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+&i2c2 {
-+	trackpad@15 {
-+		compatible =3D "hid-over-i2c";
-+		post-power-on-delay-ms =3D <10>;
-+		hid-descr-addr =3D <0x0001>;
-+		vdd-supply =3D <&pp3300_s3>;
-+	};
-+};
-+
-+&i2c5 {
-+	clock-frequency =3D <400000>;
-+
-+	rt5650: rt5650@1a {
-+		compatible =3D "realtek,rt5650";
-+		reg =3D <0x1a>;
-+		avdd-supply =3D <&mt6366_vio18_reg>;
-+		pinctrl-names =3D "default";
-+		pinctrl-0 =3D <&rt1019p_pins_default>;
-+		cbj-sleeve-gpio =3D <&pio 150 GPIO_ACTIVE_HIGH>;
-+		interrupt-parent =3D <&pio>;
-+		interrupts =3D <17 IRQ_TYPE_EDGE_BOTH>;
-+		#sound-dai-cells =3D <0>;
-+		realtek,dmic1-data-pin =3D <2>;
-+		realtek,jd-mode =3D <2>;
-+	};
-+};
-+
-+&mmc1_pins_default {
-+	pins-clk {
-+		drive-strength =3D <8>;
-+	};
-+
-+	pins-cmd-dat {
-+		drive-strength =3D <8>;
-+	};
-+};
-+
-+&mmc1_pins_uhs {
-+	pins-clk {
-+		drive-strength =3D <8>;
-+	};
-+
-+	pins-cmd-dat {
-+		drive-strength =3D <8>;
-+	};
-+};
-+
-+&sound {
-+	status =3D "okay";
-+
-+	compatible =3D "mediatek,mt8186-mt6366-rt5650-sound";
-+	model =3D "mt8186_rt5650";
-+
-+	audio-routing =3D
-+		"Headphone", "HPOL",
-+		"Headphone", "HPOR",
-+		"HDMI1", "TX";
-+
-+	hs-playback-dai-link {
-+		codec {
-+			sound-dai =3D <&rt5650>;
-+		};
-+	};
-+
-+	hs-capture-dai-link {
-+		codec {
-+			sound-dai =3D <&rt5650>;
-+		};
-+	};
-+
-+	spk-hdmi-playback-dai-link {
-+		codec {
-+			sound-dai =3D <&it6505dptx>;
-+		};
-+	};
-+};
-+
-+&keyboard_controller {
-+	keypad,num-columns =3D <15>;
-+
-+	function-row-physmap =3D <
-+		MATRIX_KEY(0x00, 0x02, 0)        /* T1 */
-+		MATRIX_KEY(0x03, 0x02, 0)        /* T2 */
-+		MATRIX_KEY(0x02, 0x02, 0)        /* T3 */
-+		MATRIX_KEY(0x01, 0x02, 0)        /* T4 */
-+		MATRIX_KEY(0x03, 0x04, 0)        /* T5 */
-+		MATRIX_KEY(0x02, 0x04, 0)        /* T6 */
-+		MATRIX_KEY(0x01, 0x04, 0)        /* T7 */
-+		MATRIX_KEY(0x02, 0x09, 0)        /* T8 */
-+		MATRIX_KEY(0x01, 0x09, 0)        /* T9 */
-+		MATRIX_KEY(0x00, 0x04, 0)        /* T10 */
-+		MATRIX_KEY(0x00, 0x01, 0)        /* T11 */
-+		MATRIX_KEY(0x01, 0x05, 0)        /* T12 */
-+	>;
-+
-+	linux,keymap =3D <
-+		CROS_STD_MAIN_KEYMAP
-+		MATRIX_KEY(0x00, 0x02, KEY_BACK)           /* T1 */
-+		MATRIX_KEY(0x03, 0x02, KEY_REFRESH)        /* T2 */
-+		MATRIX_KEY(0x02, 0x02, KEY_ZOOM)           /* T3 */
-+		MATRIX_KEY(0x01, 0x02, KEY_SCALE)          /* T4 */
-+		MATRIX_KEY(0x03, 0x04, KEY_SYSRQ)          /* T5 */
-+		MATRIX_KEY(0x02, 0x04, KEY_BRIGHTNESSDOWN) /* T6 */
-+		MATRIX_KEY(0x01, 0x04, KEY_BRIGHTNESSUP)   /* T7 */
-+		MATRIX_KEY(0x02, 0x09, KEY_MUTE)           /* T8 */
-+		MATRIX_KEY(0x01, 0x09, KEY_VOLUMEDOWN)	   /* T9 */
-+		MATRIX_KEY(0x00, 0x04, KEY_VOLUMEUP)	   /* T10 */
-+		MATRIX_KEY(0x00, 0x01, KEY_MICMUTE)        /* T11 */
-+		MATRIX_KEY(0x01, 0x05, KEY_CONTROLPANEL)   /* T12 */
-+		MATRIX_KEY(0x03, 0x05, KEY_PREVIOUSSONG)   /* T13 */
-+		MATRIX_KEY(0x00, 0x09, KEY_PLAYPAUSE)	   /* T14 */
-+		MATRIX_KEY(0x00, 0x0b, KEY_NEXTSONG)	   /* T15 */
-+		MATRIX_KEY(0x03, 0x00, KEY_LEFTMETA)	   /* Search*/
-+		MATRIX_KEY(0x01, 0x0e, KEY_LEFTCTRL)	   /* Left Control*/
-+		MATRIX_KEY(0x06, 0x0d, KEY_LEFTALT)        /* Left ALT*/
-+		MATRIX_KEY(0x03, 0x0e, KEY_RIGHTCTRL)      /* Right Control*/
-+		MATRIX_KEY(0x06, 0x0a, KEY_BACKSLASH)      /* BACKSLASH*/
-+	>;
-+};
-+
-+&thermal_zones {
-+	cpu-ntc {
-+		polling-delay =3D <1000>; /* milliseconds */
-+		polling-delay-passive =3D <0>; /* milliseconds */
-+		thermal-sensors =3D <&tboard_thermistor1>;
-+	};
-+
-+	pmic-ntc {
-+		polling-delay =3D <1000>; /* milliseconds */
-+		polling-delay-passive =3D <50>; /* milliseconds */
-+		thermal-sensors =3D <&tboard_thermistor2>;
-+		sustainable-power =3D <1500>;
-+
-+		trips {
-+			pmic_temp_alert0: trip-point@0 {
-+				temperature =3D <50000>;
-+				hysteresis =3D <2000>;
-+				type =3D "passive";
-+			};
-+
-+			pmic_temp_alert1: target@1 {
-+				temperature =3D <60000>;
-+				hysteresis =3D <2000>;
-+				type =3D "passive";
-+			};
-+
-+			pmic_ntc_crit: pmic-ntc-crit@0 {
-+				temperature =3D <80000>;
-+				hysteresis =3D <2000>;
-+				type =3D "critical";
-+			};
-+		};
-+
-+		cooling-maps {
-+			map0 {
-+				trip =3D <&pmic_temp_alert1>;
-+				cooling-device =3D <&cpu0
-+					THERMAL_NO_LIMIT
-+					THERMAL_NO_LIMIT>,
-+						<&cpu1
-+					THERMAL_NO_LIMIT
-+					THERMAL_NO_LIMIT>,
-+						<&cpu2
-+					THERMAL_NO_LIMIT
-+					THERMAL_NO_LIMIT>,
-+						<&cpu3
-+					THERMAL_NO_LIMIT
-+					THERMAL_NO_LIMIT>,
-+						<&cpu4
-+					THERMAL_NO_LIMIT
-+					THERMAL_NO_LIMIT>,
-+						<&cpu5
-+					THERMAL_NO_LIMIT
-+					THERMAL_NO_LIMIT>;
-+				contribution =3D <4096>;
-+			};
-+
-+			map1 {
-+				trip =3D <&pmic_temp_alert1>;
-+				cooling-device =3D <&cpu6
-+					THERMAL_NO_LIMIT
-+					THERMAL_NO_LIMIT>,
-+						<&cpu7
-+					THERMAL_NO_LIMIT
-+					THERMAL_NO_LIMIT>;
-+				contribution =3D <1024>;
-+			};
-+		};
-+	};
-+};
-+
-+&pio {
-+	touch_pin_report: pin-report {
-+		pinmux =3D <PINMUX_GPIO37__FUNC_GPIO37>;
-+		output-low;
-+	};
-+
-+	anx7625_pins: anx7625-pins {
-+		pins1 {
-+			pinmux =3D <PINMUX_GPIO96__FUNC_GPIO96>,
-+			<PINMUX_GPIO98__FUNC_GPIO98>;
-+			output-low;
-+		};
-+
-+		pins2 {
-+			pinmux =3D <PINMUX_GPIO9__FUNC_GPIO9>;
-+			input-enable;
-+			bias-pull-up;
-+		};
-+	};
-+
-+	en_pp1000_edpbrdg: pp1000-edpbrdg-en-pins {
-+		pins-vreg-en {
-+			pinmux =3D <PINMUX_GPIO29__FUNC_GPIO29>;
-+			output-low;
-+		};
-+	};
-+
-+	en_pp1800_edpbrdg: pp1800-edpbrdg-en-pins {
-+		pins-vreg-en {
-+			pinmux =3D <PINMUX_GPIO30__FUNC_GPIO30>;
-+			output-low;
-+		};
-+	};
-+
-+	en_pp3300_edpbrdg: pp3300-edpbrdg-en-pins {
-+		pins-vreg-en {
-+			pinmux =3D <PINMUX_GPIO31__FUNC_GPIO31>;
-+			output-low;
-+		};
-+	};
-+};
-+
-+&i2c_tunnel {
-+	/delete-node/ sbs-battery@b;
-+
-+	battery: sbs-battery@f {
-+		compatible =3D "sbs,sbs-battery";
-+		reg =3D <0xf>;
-+		sbs,i2c-retry-count =3D <2>;
-+		sbs,poll-retry-count =3D <1>;
-+	};
-+};
-+
-+&pen_insert {
-+	wakeup-event-action =3D <EV_ACT_ANY>;
-+};
---=20
-2.46.1.824.gd892dcdcdd-goog
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y mediatek/mt8186-corsola-chinchou-sku0.dtb mediatek/mt8186-corsola-chinchou-sku1.dtb mediatek/mt8186-corsola-chinchou-sku16.dtb' for 20240927122940.4190949-1-jakiela@google.com:
+
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: /: compatible: 'oneOf' conditional failed, one must be fixed:
+	['google,chinchou-sku0', 'google,chinchou-sku2', 'google,chinchou-sku4', 'google,chinchou-sku5', 'google,chinchou', 'mediatek,mt8186'] is too long
+	['google,chinchou-sku0', 'google,chinchou-sku2', 'google,chinchou-sku4', 'google,chinchou-sku5', 'google,chinchou', 'mediatek,mt8186'] is too short
+	'google,chinchou-sku0' is not one of ['mediatek,mt2701-evb']
+	'google,chinchou-sku0' is not one of ['mediatek,mt2712-evb']
+	'google,chinchou-sku0' is not one of ['mediatek,mt6580-evbp1']
+	'google,chinchou-sku0' is not one of ['prestigio,pmt5008-3g']
+	'google,chinchou-sku0' is not one of ['fairphone,fp1', 'mundoreader,bq-aquaris5']
+	'google,chinchou-sku0' is not one of ['mediatek,mt6592-evb']
+	'google,chinchou-sku0' is not one of ['mediatek,mt6755-evb']
+	'google,chinchou-sku0' is not one of ['mediatek,mt6765-evb']
+	'google,chinchou-sku0' is not one of ['mediatek,mt6779-evb']
+	'google,chinchou-sku0' is not one of ['mediatek,mt6795-evb', 'sony,xperia-m5']
+	'google,chinchou-sku0' is not one of ['archermind,mt6797-x20-dev', 'mediatek,mt6797-evb']
+	'google,chinchou-sku0' is not one of ['bananapi,bpi-r64', 'mediatek,mt7622-rfb1']
+	'google,chinchou-sku0' is not one of ['mediatek,mt7623a-rfb-emmc', 'mediatek,mt7623a-rfb-nand', 'mediatek,mt7623n-rfb-emmc', 'bananapi,bpi-r2']
+	'google,chinchou-sku0' is not one of ['mediatek,mt7629-rfb']
+	'google,chinchou-sku0' is not one of ['cudy,wr3000-v1', 'openwrt,one', 'xiaomi,ax3000t']
+	'google,chinchou-sku0' is not one of ['acelink,ew-7886cax', 'bananapi,bpi-r3', 'bananapi,bpi-r3mini', 'mediatek,mt7986a-rfb']
+	'google,chinchou-sku0' is not one of ['mediatek,mt7986b-rfb']
+	'google,chinchou-sku0' is not one of ['bananapi,bpi-r4']
+	'google,chinchou-sku0' is not one of ['mediatek,mt8127-moose']
+	'google,chinchou-sku0' is not one of ['mediatek,mt8135-evbp1']
+	'google,chinchou-sku0' is not one of ['mediatek,mt8167-pumpkin']
+	'google,elm-rev8' was expected
+	'google,hana-rev6' was expected
+	'google,hana-rev7' was expected
+	'google,chinchou-sku0' is not one of ['mediatek,mt8173-evb']
+	'google,burnet' was expected
+	'google,cozmo' was expected
+	'google,damu' was expected
+	'google,chinchou-sku0' is not one of ['google,fennel-sku0', 'google,fennel-sku1', 'google,fennel-sku2', 'google,fennel-sku6', 'google,fennel-sku7']
+	'google,chinchou-sku0' is not one of ['google,juniper-sku16', 'google,juniper-sku17']
+	'google,kakadu-rev3' was expected
+	'google,kakadu-rev3-sku22' was expected
+	'google,kappa' was expected
+	'google,chinchou-sku0' is not one of ['google,katsu-sku32', 'google,katsu-sku38']
+	'google,chinchou-sku0' is not one of ['google,kodama-sku16', 'google,kodama-sku272', 'google,kodama-sku288', 'google,kodama-sku32']
+	'google,chinchou-sku0' is not one of ['google,krane-sku0', 'google,krane-sku176']
+	'google,chinchou-sku0' is not one of ['google,makomo-sku0', 'google,makomo-sku1']
+	'google,chinchou-sku0' is not one of ['google,pico-sku1', 'google,pico-sku2']
+	'google,chinchou-sku0' is not one of ['google,willow-sku0', 'google,willow-sku1']
+	'google,chinchou-sku0' is not one of ['mediatek,mt8183-evb']
+	'google,chinchou-sku0' is not one of ['mediatek,mt8183-pumpkin']
+	'google,chinchou-sku16' was expected
+	'google,steelix-sku393219' was expected
+	'google,steelix-sku393220' was expected
+	'google,steelix-sku393221' was expected
+	'google,steelix-sku196609' was expected
+	'google,chinchou-sku0' is not one of ['google,steelix-sku131072', 'google,steelix-sku131073']
+	'google,tentacruel-sku262147' was expected
+	'google,tentacruel-sku262151' was expected
+	'google,tentacruel-sku327681' was expected
+	'google,tentacruel-sku327683' was expected
+	'google,chinchou-sku0' is not one of ['google,voltorb-sku589824', 'google,voltorb-sku589825']
+	'google,chinchou-sku0' is not one of ['mediatek,mt8186-evb']
+	'google,chinchou-sku0' is not one of ['mediatek,mt8188-evb']
+	'google,hayato-rev1' was expected
+	'google,hayato-rev5-sku2' was expected
+	'google,spherion-rev3' was expected
+	'google,spherion-rev4' was expected
+	'google,chinchou-sku0' is not one of ['mediatek,mt8192-evb']
+	'google,chinchou-sku0' is not one of ['google,tomato-rev2', 'google,tomato-rev1']
+	'google,tomato-rev4' was expected
+	'google,dojo-sku7' was expected
+	'google,chinchou-sku0' is not one of ['mediatek,mt8195-demo', 'mediatek,mt8195-evb']
+	'google,chinchou-sku0' is not one of ['mediatek,mt8365-evk']
+	'google,chinchou-sku0' is not one of ['mediatek,mt8390-evk']
+	'google,chinchou-sku0' is not one of ['kontron,3-5-sbc-i1200', 'mediatek,mt8395-evk', 'radxa,nio-12l']
+	'google,chinchou-sku0' is not one of ['mediatek,mt8516-pumpkin']
+	'mediatek,mt2701' was expected
+	'mediatek,mt2712' was expected
+	'mediatek,mt6580' was expected
+	'mediatek,mt6582' was expected
+	'mediatek,mt6589' was expected
+	'mediatek,mt6592' was expected
+	'mediatek,mt6755' was expected
+	'mediatek,mt6765' was expected
+	'mediatek,mt6779' was expected
+	'mediatek,mt6795' was expected
+	'mediatek,mt6797' was expected
+	'mediatek,mt7622' was expected
+	'mediatek,mt7623' was expected
+	'mediatek,mt7629' was expected
+	'mediatek,mt7981b' was expected
+	'mediatek,mt7986a' was expected
+	'mediatek,mt7986b' was expected
+	'mediatek,mt7988a' was expected
+	'mediatek,mt8127' was expected
+	'mediatek,mt8135' was expected
+	'mediatek,mt8167' was expected
+	'google,elm-rev7' was expected
+	'google,hana-rev5' was expected
+	'mediatek,mt8173' was expected
+	'mediatek,mt8183' was expected
+	'google,fennel' was expected
+	'google,juniper' was expected
+	'google,kakadu-rev2' was expected
+	'google,kakadu-rev2-sku22' was expected
+	'google,katsu' was expected
+	'google,kodama' was expected
+	'google,krane' was expected
+	'google,makomo' was expected
+	'google,pico' was expected
+	'google,willow' was expected
+	'google,chinchou-sku18' was expected
+	'google,chinchou-sku1' was expected
+	'google,steelix-sku393216' was expected
+	'google,steelix-sku393217' was expected
+	'google,steelix-sku393218' was expected
+	'google,steelix-sku196608' was expected
+	'google,steelix' was expected
+	'google,tentacruel-sku262146' was expected
+	'google,tentacruel-sku262150' was expected
+	'google,tentacruel' was expected
+	'google,voltorb' was expected
+	'mediatek,mt8186' was expected
+	'mediatek,mt8188' was expected
+	'google,hayato' was expected
+	'google,hayato-sku2' was expected
+	'google,spherion-rev2' was expected
+	'google,spherion' was expected
+	'mediatek,mt8192' was expected
+	'google,tomato' was expected
+	'google,tomato-rev3' was expected
+	'google,dojo-sku5' was expected
+	'mediatek,mt8195' was expected
+	'mediatek,mt8365' was expected
+	'mediatek,mt8390' was expected
+	'mediatek,mt8395' was expected
+	'mediatek,mt8516' was expected
+	'google,elm-rev6' was expected
+	'google,hana-rev4' was expected
+	'google,kakadu' was expected
+	'google,chinchou-sku19' was expected
+	'google,chinchou-sku2' was expected
+	'google,tentacruel-sku262145' was expected
+	'google,tentacruel-sku262149' was expected
+	'google,spherion-rev1' was expected
+	'google,dojo-sku3' was expected
+	'google,elm-rev5' was expected
+	'google,hana-rev3' was expected
+	'google,chinchou-sku21' was expected
+	'google,chinchou-sku3' was expected
+	'google,tentacruel-sku262144' was expected
+	'google,tentacruel-sku262148' was expected
+	'google,spherion-rev0' was expected
+	'google,dojo-sku1' was expected
+	'google,elm-rev4' was expected
+	'google,hana' was expected
+	'google,chinchou-sku4' was expected
+	'google,dojo' was expected
+	'google,elm-rev3' was expected
+	'google,chinchou-sku5' was expected
+	from schema $id: http://devicetree.org/schemas/arm/mediatek.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: /: compatible: 'oneOf' conditional failed, one must be fixed:
+	['google,chinchou-sku1', 'google,chinchou-sku17', 'google,chinchou-sku3', 'google,chinchou-sku6', 'google,chinchou-sku7', 'google,chinchou-sku20', 'google,chinchou-sku22', 'google,chinchou-sku23', 'mediatek,mt8186'] is too long
+	['google,chinchou-sku1', 'google,chinchou-sku17', 'google,chinchou-sku3', 'google,chinchou-sku6', 'google,chinchou-sku7', 'google,chinchou-sku20', 'google,chinchou-sku22', 'google,chinchou-sku23', 'mediatek,mt8186'] is too short
+	'google,chinchou-sku1' is not one of ['mediatek,mt2701-evb']
+	'google,chinchou-sku1' is not one of ['mediatek,mt2712-evb']
+	'google,chinchou-sku1' is not one of ['mediatek,mt6580-evbp1']
+	'google,chinchou-sku1' is not one of ['prestigio,pmt5008-3g']
+	'google,chinchou-sku1' is not one of ['fairphone,fp1', 'mundoreader,bq-aquaris5']
+	'google,chinchou-sku1' is not one of ['mediatek,mt6592-evb']
+	'google,chinchou-sku1' is not one of ['mediatek,mt6755-evb']
+	'google,chinchou-sku1' is not one of ['mediatek,mt6765-evb']
+	'google,chinchou-sku1' is not one of ['mediatek,mt6779-evb']
+	'google,chinchou-sku1' is not one of ['mediatek,mt6795-evb', 'sony,xperia-m5']
+	'google,chinchou-sku1' is not one of ['archermind,mt6797-x20-dev', 'mediatek,mt6797-evb']
+	'google,chinchou-sku1' is not one of ['bananapi,bpi-r64', 'mediatek,mt7622-rfb1']
+	'google,chinchou-sku1' is not one of ['mediatek,mt7623a-rfb-emmc', 'mediatek,mt7623a-rfb-nand', 'mediatek,mt7623n-rfb-emmc', 'bananapi,bpi-r2']
+	'google,chinchou-sku1' is not one of ['mediatek,mt7629-rfb']
+	'google,chinchou-sku1' is not one of ['cudy,wr3000-v1', 'openwrt,one', 'xiaomi,ax3000t']
+	'google,chinchou-sku1' is not one of ['acelink,ew-7886cax', 'bananapi,bpi-r3', 'bananapi,bpi-r3mini', 'mediatek,mt7986a-rfb']
+	'google,chinchou-sku1' is not one of ['mediatek,mt7986b-rfb']
+	'google,chinchou-sku1' is not one of ['bananapi,bpi-r4']
+	'google,chinchou-sku1' is not one of ['mediatek,mt8127-moose']
+	'google,chinchou-sku1' is not one of ['mediatek,mt8135-evbp1']
+	'google,chinchou-sku1' is not one of ['mediatek,mt8167-pumpkin']
+	'google,elm-rev8' was expected
+	'google,hana-rev6' was expected
+	'google,hana-rev7' was expected
+	'google,chinchou-sku1' is not one of ['mediatek,mt8173-evb']
+	'google,burnet' was expected
+	'google,cozmo' was expected
+	'google,damu' was expected
+	'google,chinchou-sku1' is not one of ['google,fennel-sku0', 'google,fennel-sku1', 'google,fennel-sku2', 'google,fennel-sku6', 'google,fennel-sku7']
+	'google,chinchou-sku1' is not one of ['google,juniper-sku16', 'google,juniper-sku17']
+	'google,kakadu-rev3' was expected
+	'google,kakadu-rev3-sku22' was expected
+	'google,kappa' was expected
+	'google,chinchou-sku1' is not one of ['google,katsu-sku32', 'google,katsu-sku38']
+	'google,chinchou-sku1' is not one of ['google,kodama-sku16', 'google,kodama-sku272', 'google,kodama-sku288', 'google,kodama-sku32']
+	'google,chinchou-sku1' is not one of ['google,krane-sku0', 'google,krane-sku176']
+	'google,chinchou-sku1' is not one of ['google,makomo-sku0', 'google,makomo-sku1']
+	'google,chinchou-sku1' is not one of ['google,pico-sku1', 'google,pico-sku2']
+	'google,chinchou-sku1' is not one of ['google,willow-sku0', 'google,willow-sku1']
+	'google,chinchou-sku1' is not one of ['mediatek,mt8183-evb']
+	'google,chinchou-sku1' is not one of ['mediatek,mt8183-pumpkin']
+	'google,chinchou-sku16' was expected
+	'google,chinchou-sku0' was expected
+	'google,steelix-sku393219' was expected
+	'google,steelix-sku393220' was expected
+	'google,steelix-sku393221' was expected
+	'google,steelix-sku196609' was expected
+	'google,chinchou-sku1' is not one of ['google,steelix-sku131072', 'google,steelix-sku131073']
+	'google,tentacruel-sku262147' was expected
+	'google,tentacruel-sku262151' was expected
+	'google,tentacruel-sku327681' was expected
+	'google,tentacruel-sku327683' was expected
+	'google,chinchou-sku1' is not one of ['google,voltorb-sku589824', 'google,voltorb-sku589825']
+	'google,chinchou-sku1' is not one of ['mediatek,mt8186-evb']
+	'google,chinchou-sku1' is not one of ['mediatek,mt8188-evb']
+	'google,hayato-rev1' was expected
+	'google,hayato-rev5-sku2' was expected
+	'google,spherion-rev3' was expected
+	'google,spherion-rev4' was expected
+	'google,chinchou-sku1' is not one of ['mediatek,mt8192-evb']
+	'google,chinchou-sku1' is not one of ['google,tomato-rev2', 'google,tomato-rev1']
+	'google,tomato-rev4' was expected
+	'google,dojo-sku7' was expected
+	'google,chinchou-sku1' is not one of ['mediatek,mt8195-demo', 'mediatek,mt8195-evb']
+	'google,chinchou-sku1' is not one of ['mediatek,mt8365-evk']
+	'google,chinchou-sku1' is not one of ['mediatek,mt8390-evk']
+	'google,chinchou-sku1' is not one of ['kontron,3-5-sbc-i1200', 'mediatek,mt8395-evk', 'radxa,nio-12l']
+	'google,chinchou-sku1' is not one of ['mediatek,mt8516-pumpkin']
+	'mediatek,mt2701' was expected
+	'mediatek,mt2712' was expected
+	'mediatek,mt6580' was expected
+	'mediatek,mt6582' was expected
+	'mediatek,mt6589' was expected
+	'mediatek,mt6592' was expected
+	'mediatek,mt6755' was expected
+	'mediatek,mt6765' was expected
+	'mediatek,mt6779' was expected
+	'mediatek,mt6795' was expected
+	'mediatek,mt6797' was expected
+	'mediatek,mt7622' was expected
+	'mediatek,mt7623' was expected
+	'mediatek,mt7629' was expected
+	'mediatek,mt7981b' was expected
+	'mediatek,mt7986a' was expected
+	'mediatek,mt7986b' was expected
+	'mediatek,mt7988a' was expected
+	'mediatek,mt8127' was expected
+	'mediatek,mt8135' was expected
+	'mediatek,mt8167' was expected
+	'google,elm-rev7' was expected
+	'google,hana-rev5' was expected
+	'mediatek,mt8173' was expected
+	'mediatek,mt8183' was expected
+	'google,fennel' was expected
+	'google,juniper' was expected
+	'google,kakadu-rev2' was expected
+	'google,kakadu-rev2-sku22' was expected
+	'google,katsu' was expected
+	'google,kodama' was expected
+	'google,krane' was expected
+	'google,makomo' was expected
+	'google,pico' was expected
+	'google,willow' was expected
+	'google,chinchou-sku18' was expected
+	'google,chinchou-sku1' was expected
+	'google,steelix-sku393216' was expected
+	'google,steelix-sku393217' was expected
+	'google,steelix-sku393218' was expected
+	'google,steelix-sku196608' was expected
+	'google,steelix' was expected
+	'google,tentacruel-sku262146' was expected
+	'google,tentacruel-sku262150' was expected
+	'google,tentacruel' was expected
+	'google,voltorb' was expected
+	'mediatek,mt8186' was expected
+	'mediatek,mt8188' was expected
+	'google,hayato' was expected
+	'google,hayato-sku2' was expected
+	'google,spherion-rev2' was expected
+	'google,spherion' was expected
+	'mediatek,mt8192' was expected
+	'google,tomato' was expected
+	'google,tomato-rev3' was expected
+	'google,dojo-sku5' was expected
+	'mediatek,mt8195' was expected
+	'mediatek,mt8365' was expected
+	'mediatek,mt8390' was expected
+	'mediatek,mt8395' was expected
+	'mediatek,mt8516' was expected
+	'google,elm-rev6' was expected
+	'google,hana-rev4' was expected
+	'google,kakadu' was expected
+	'google,chinchou-sku19' was expected
+	'google,chinchou-sku2' was expected
+	'google,tentacruel-sku262145' was expected
+	'google,tentacruel-sku262149' was expected
+	'google,spherion-rev1' was expected
+	'google,dojo-sku3' was expected
+	'google,elm-rev5' was expected
+	'google,hana-rev3' was expected
+	'google,chinchou-sku21' was expected
+	'google,chinchou-sku3' was expected
+	'google,tentacruel-sku262144' was expected
+	'google,tentacruel-sku262148' was expected
+	'google,spherion-rev0' was expected
+	'google,dojo-sku1' was expected
+	'google,elm-rev4' was expected
+	'google,hana' was expected
+	'google,chinchou-sku4' was expected
+	'google,dojo' was expected
+	'google,elm-rev3' was expected
+	'google,chinchou-sku5' was expected
+	'google,elm' was expected
+	'google,chinchou-sku6' was expected
+	'google,chinchou-sku7' was expected
+	'google,chinchou-sku17' was expected
+	from schema $id: http://devicetree.org/schemas/arm/mediatek.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: /: failed to match any schema with compatible: ['google,chinchou-sku1', 'google,chinchou-sku17', 'google,chinchou-sku3', 'google,chinchou-sku6', 'google,chinchou-sku7', 'google,chinchou-sku20', 'google,chinchou-sku22', 'google,chinchou-sku23', 'mediatek,mt8186']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: pinctrl@10005000: 'pin-report' does not match any of the regexes: '-pins$', 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8186-pinctrl.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: pinctrl@10005000: 'pin-report' does not match any of the regexes: '-pins$', 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8186-pinctrl.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: pinctrl@10005000: 'pin-report' does not match any of the regexes: '-pins$', 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt8186-pinctrl.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: /soc/pwrap@1000d000/pmic: failed to match any schema with compatible: ['mediatek,mt6366', 'mediatek,mt6358']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: /soc/pwrap@1000d000/pmic: failed to match any schema with compatible: ['mediatek,mt6366', 'mediatek,mt6358']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: /soc/pwrap@1000d000/pmic/codec: failed to match any schema with compatible: ['mediatek,mt6366-sound', 'mediatek,mt6358-sound']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: /soc/pwrap@1000d000/pmic/codec: failed to match any schema with compatible: ['mediatek,mt6366-sound', 'mediatek,mt6358-sound']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: /soc/pwrap@1000d000/pmic: failed to match any schema with compatible: ['mediatek,mt6366', 'mediatek,mt6358']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: /soc/pwrap@1000d000/pmic: failed to match any schema with compatible: ['mediatek,mt6366', 'mediatek,mt6358']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: /soc/pwrap@1000d000/pmic/codec: failed to match any schema with compatible: ['mediatek,mt6366-sound', 'mediatek,mt6358-sound']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: /soc/pwrap@1000d000/pmic/codec: failed to match any schema with compatible: ['mediatek,mt6366-sound', 'mediatek,mt6358-sound']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: /soc/pwrap@1000d000/pmic/rtc: failed to match any schema with compatible: ['mediatek,mt6366-rtc', 'mediatek,mt6358-rtc']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: /soc/pwrap@1000d000/pmic/rtc: failed to match any schema with compatible: ['mediatek,mt6366-rtc', 'mediatek,mt6358-rtc']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: /soc/pwrap@1000d000/pmic/rtc: failed to match any schema with compatible: ['mediatek,mt6366-rtc', 'mediatek,mt6358-rtc']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: /soc/pwrap@1000d000/pmic/rtc: failed to match any schema with compatible: ['mediatek,mt6366-rtc', 'mediatek,mt6358-rtc']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: anx7625@58: 'ports' is a required property
+	from schema $id: http://devicetree.org/schemas/display/bridge/analogix,anx7625.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: anx7625@58: '#address-cells', '#size-cells', 'panel_flags', 'port@0', 'port@1' do not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/display/bridge/analogix,anx7625.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: anx7625@58: 'ports' is a required property
+	from schema $id: http://devicetree.org/schemas/display/bridge/analogix,anx7625.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: anx7625@58: '#address-cells', '#size-cells', 'panel_flags', 'port@0', 'port@1' do not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/display/bridge/analogix,anx7625.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: touchscreen@41: 'vcc33-supply' is a required property
+	from schema $id: http://devicetree.org/schemas/input/ilitek,ili2901.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: trackpad@15: 'vcc-supply' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/input/hid-over-i2c.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: trackpad@15: 'vcc-supply' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/input/hid-over-i2c.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: dp-bridge@5c: 'extcon' is a required property
+	from schema $id: http://devicetree.org/schemas/display/bridge/ite,it6505.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: dp-bridge@5c: 'extcon' is a required property
+	from schema $id: http://devicetree.org/schemas/display/bridge/ite,it6505.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: rt5650@1a: 'cpvdd-supply' is a required property
+	from schema $id: http://devicetree.org/schemas/sound/realtek,rt5645.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: rt5650@1a: Unevaluated properties are not allowed ('cbj-sleeve-gpio' was unexpected)
+	from schema $id: http://devicetree.org/schemas/sound/realtek,rt5645.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: rt5650@1a: 'cpvdd-supply' is a required property
+	from schema $id: http://devicetree.org/schemas/sound/realtek,rt5645.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: rt5650@1a: Unevaluated properties are not allowed ('cbj-sleeve-gpio' was unexpected)
+	from schema $id: http://devicetree.org/schemas/sound/realtek,rt5645.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: /soc/pwrap@1000d000/pmic: failed to match any schema with compatible: ['mediatek,mt6366', 'mediatek,mt6358']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: /soc/pwrap@1000d000/pmic: failed to match any schema with compatible: ['mediatek,mt6366', 'mediatek,mt6358']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: /soc/pwrap@1000d000/pmic/codec: failed to match any schema with compatible: ['mediatek,mt6366-sound', 'mediatek,mt6358-sound']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: /soc/pwrap@1000d000/pmic/codec: failed to match any schema with compatible: ['mediatek,mt6366-sound', 'mediatek,mt6358-sound']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: /soc/pwrap@1000d000/pmic/rtc: failed to match any schema with compatible: ['mediatek,mt6366-rtc', 'mediatek,mt6358-rtc']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: /soc/pwrap@1000d000/pmic/rtc: failed to match any schema with compatible: ['mediatek,mt6366-rtc', 'mediatek,mt6358-rtc']
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: anx7625@58: 'ports' is a required property
+	from schema $id: http://devicetree.org/schemas/display/bridge/analogix,anx7625.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: anx7625@58: '#address-cells', '#size-cells', 'panel_flags', 'port@0', 'port@1' do not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/display/bridge/analogix,anx7625.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: touchscreen@41: 'vcc33-supply' is a required property
+	from schema $id: http://devicetree.org/schemas/input/ilitek,ili2901.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: trackpad@15: 'vcc-supply' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/input/hid-over-i2c.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: dp-bridge@5c: 'extcon' is a required property
+	from schema $id: http://devicetree.org/schemas/display/bridge/ite,it6505.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: rt5650@1a: 'cpvdd-supply' is a required property
+	from schema $id: http://devicetree.org/schemas/sound/realtek,rt5645.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: rt5650@1a: Unevaluated properties are not allowed ('cbj-sleeve-gpio' was unexpected)
+	from schema $id: http://devicetree.org/schemas/sound/realtek,rt5645.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: thermal-zones: 'cpu-ntc', 'pmic-ntc' do not match any of the regexes: '^[a-zA-Z][a-zA-Z0-9\-]{1,10}-thermal$', 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/thermal/thermal-zones.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: thermal-zones: 'cpu-ntc', 'pmic-ntc' do not match any of the regexes: '^[a-zA-Z][a-zA-Z0-9\-]{1,10}-thermal$', 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/thermal/thermal-zones.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: regulator-pp1800-tchscr-report-disable: Unevaluated properties are not allowed ('enable-active-low' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/fixed-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: thermal-zones: 'cpu-ntc', 'pmic-ntc' do not match any of the regexes: '^[a-zA-Z][a-zA-Z0-9\-]{1,10}-thermal$', 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/thermal/thermal-zones.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: regulator-pp1800-tchscr-report-disable: Unevaluated properties are not allowed ('enable-active-low' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/fixed-regulator.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: regulator-pp1800-tchscr-report-disable: Unevaluated properties are not allowed ('enable-active-low' was unexpected)
+	from schema $id: http://devicetree.org/schemas/regulator/fixed-regulator.yaml#
+
+
+
+
 
 
