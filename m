@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31964CEBF8C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 09:30:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61B5ECEBF8C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 09:31:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E0C9Z7tY+KqgXTbr46QviYTmVLVp/Rpt6P7WWzwFOb8=; b=0DGRIR9hRtPnCqV6opinHmDO0Q
-	diX0kwdvBFIIcy/MfgUGa1fnf7yqMzr+vp/dc0bUiS3DonB8+NQjBgvKGrohKyjeCtyItnrpt1EVp
-	eAO8qXUBz/kuYCxU3P6gFKkGYrjIlFJB7AvpH3+7xj5VSp8YrZzr4rA9W6Uvj6ejqQZxHAA7+wzJV
-	cJqpp2w2FsuIndpM3vJiKvEq1AyyKZTHRYQM0sTIqH8DDHRT7JL7LOkpYqBN9V6SHaCmpvF7yGXGR
-	X7+Sm5ItjKHEDWCU3ko27kNveeLFQqWBoFgzZjUmuXxOyVOfZzBFeMCoDlHD7guq5IoxJs+E06Orr
-	Qceh4M8A==;
+	bh=zuDNJjNZn46TgrcPvTsSKK7oh9et8TdA5tKeNe1+i4k=; b=nriNHDYVUkFVQOM7jaldsWtHK/
+	sB4NH9QRu5k9IFUa+VwklbUKjIhQD1vCbTwqZPhsyL/yilL+Sq946jfhJfQaDOL956QiyBHByugr2
+	NgyYPr4wJa4lkO3hqTvDQVfdmHtMo4cR6MEVzusNA2yvCAZpF7Sle32ZJEniex09quNGuS3Z7fP3I
+	EpIwT7KNntTOf86n/dWqjp9dFqYA1tDYi9mioOSfcPWeCUX7dAUZZK0A3a58wNchkUTZkXC4Qy2D9
+	y0MKKJdBaN7myVEz0fFeLczpJTyxe8qvnupkctZpL0dpYm5PoVpKIf7JrEEGD4ciz2IDHP0KyV5J2
+	wrtoL9lA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1su7Ii-0000000Af0L-0IXG;
-	Fri, 27 Sep 2024 09:30:12 +0000
+	id 1su7K0-0000000AfG5-127d;
+	Fri, 27 Sep 2024 09:31:32 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1su7HU-0000000Aeh4-313Z;
-	Fri, 27 Sep 2024 09:28:59 +0000
+	id 1su7Ic-0000000AeyI-1fwy;
+	Fri, 27 Sep 2024 09:30:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CEB055C5C67;
-	Fri, 27 Sep 2024 09:28:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4CACC4CEC4;
-	Fri, 27 Sep 2024 09:28:54 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 93EEE5C5C67;
+	Fri, 27 Sep 2024 09:30:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 904ADC4CEC4;
+	Fri, 27 Sep 2024 09:30:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727429335;
-	bh=tEADgN4+0MVD8NyE8u9DHCW1941Zple++xFgdtE7Lqs=;
+	s=k20201202; t=1727429405;
+	bh=NQf7+QpzoDAuDvR3lojHYXmnOqICjH6ZZUXhwQlwxTQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Xr3Hvbz9t2MSHH3v4Q8FmyZxHemGNFrG+e7jK5spLTweDQIHHfOukGsWd5qJPO2V5
-	 BmijwD7NKAcFaETkdLToPdAZAJhyXB3Y4Z7vOPUGry/pV1RQfWao72ENnh8tg03Y9E
-	 PcClg8MxJm/m+/LcaI2Wd6qmh1MxpR8O+Xm2fQlmbFo4Vtn0it4ZbLDkk/U2x4JBmk
-	 ASMGonfS6In7VYo9OrMOHFSx0vBUWPrQwRcXqYTQERRrdxfeL6hbSFIXtbRGo4XgAx
-	 BYQKSAm+qjgwsZp96nulVPwISp74jMAIIWEo//X8KMevoHvcDktw2yhlXv0uqGkFGE
-	 jqQrYJAXlgQ7g==
-Date: Fri, 27 Sep 2024 11:28:52 +0200
+	b=ScjzFJ3i8WArtva321lPwetZxW1xpR3cHvfebHeDsU9VzhNVBGN7TBm7UI9VqJPvW
+	 +EM8SZGWF63RH9k/CZ2RxaZpTiSKSihN6cgRg2p2WgJbzqhwYd51vkeAm+IK/hm7g4
+	 833OGNVebFKWaxLoI8E/dQKh9qMnFX1NMxsLiIuWZX8Z4vJ5SHxRJo3hg+WI3Rs57z
+	 B6VyDcRXSAdfgGGSUbPQOy/vXpiH1bzsJeRP0ZHNC/Cb+rQilcLKKaYI0QwVjLdDnt
+	 aB53+m3ZhKRbrBSZ0BBoaRdKe7Fc3h1362IARTc+9aYNzDbz+m82HKS9+NoTl8k2z/
+	 YI7sNC620yfVg==
+Date: Fri, 27 Sep 2024 11:30:02 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Macpaul Lin <macpaul.lin@mediatek.com>
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
@@ -61,18 +61,18 @@ Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>, 
 	Chris-qj chen <chris-qj.chen@mediatek.com>, 
 	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>
-Subject: Re: [PATCH v3 2/5] dt-bindings: iommu: mediatek: Fix interrupt count
- constraint for new SoCs
-Message-ID: <bilc7elacctsvr3eeqi5n45loy2w3qnzymwwhytlaeb3bmn4u7@thakmicixlko>
+Subject: Re: [PATCH v3 5/5] dt-bindings: display: mediatek: dpi: correct
+ power-domains property
+Message-ID: <vo5ia2cprt2eff2frximgkjkapyavam65m5gjxpgbht76wacuk@sttamlbk3iu4>
 References: <20240927065041.15247-1-macpaul.lin@mediatek.com>
- <20240927065041.15247-2-macpaul.lin@mediatek.com>
+ <20240927065041.15247-5-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20240927065041.15247-2-macpaul.lin@mediatek.com>
+In-Reply-To: <20240927065041.15247-5-macpaul.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240927_022856_869800_42FD9C27 
-X-CRM114-Status: GOOD (  19.02  )
+X-CRM114-CacheID: sfid-20240927_023006_511463_7B97D124 
+X-CRM114-Status: GOOD (  14.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,51 +87,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 27, 2024 at 02:50:38PM +0800, Macpaul Lin wrote:
-> The infra-iommu node in mt8195.dtsi was triggering a CHECK_DTBS error due
-> to an excessively long 'interrupts' property. The error message was:
+On Fri, Sep 27, 2024 at 02:50:41PM +0800, Macpaul Lin wrote:
+> The MediaTek DPI module is typically associated with one of the
+> following multimedia power domains:
+>  - POWER_DOMAIN_DISPLAY
+>  - POWER_DOMAIN_VDOSYS
+>  - POWER_DOMAIN_MM
+> The specific power domain used varies depending on the SoC design.
 > 
->   infra-iommu@10315000: interrupts: [[0, 795, 4, 0], [0, 796, 4, 0],
->                      [0, 797, 4, 0], [0, 798, 4, 0], [0, 799, 4, 0]]
->                      is too long
+> These power domains are shared by multiple devices within the SoC.
+> In most cases, these power domains are enabled by other devices.
+> As a result, the DPI module of legacy SoCs often functions correctly
+> even without explicit configuration.
 > 
-> To address this issue, update the compatbile matching rule for
-> 'interrupts' property. This change allows flexibility in the number
-> of interrupts for new SoCs like MT8195.
-> The purpose of these 5 interrupts is also added into description.
+> It is recommended to explicitly add the appropriate power domain
+> property to the DPI node in the device tree. Hence drop the
+> compatible checking for specific SoCs.
 > 
-> Fixes: bca28426805d ("dt-bindings: iommu: mediatek: Convert IOMMU to DT schema")
+> Fixes: 5474d49b2f79 ("dt-bindings: display: mediatek: dpi: Add power domains")
 > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
 > ---
->  .../bindings/iommu/mediatek,iommu.yaml        | 25 ++++++++++++++++++-
->  1 file changed, 24 insertions(+), 1 deletion(-)
-> 
-> Changes for v2:
->  - commit message: re-formatting and add a description of adding 5 interrupts.
->  - add 'description' and 'maxItems: 5' for 'interrupt' property of
->    'mt8195-iommu-infra'
->  - others keeps 'maxItems: 1'
-> 
-> Changes for v3:
->  - Refine the description for 'interrupts' property and fixes the compatible
->    matching rules.
->  - Refine commit message.
-> 
-> diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> index ea6b0f5f24de..10e2bb0f0704 100644
-> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> @@ -96,7 +96,13 @@ properties:
->      maxItems: 1
->  
->    interrupts:
-> -    maxItems: 1
+>  .../display/mediatek/mediatek,dpi.yaml        | 24 ++++++++-----------
+>  1 file changed, 10 insertions(+), 14 deletions(-)
 
-This does not make sense and was not here at v2. Keep constraints at top
-level.
-
-This is how variable-length lists are created:
-https://elixir.bootlin.com/linux/v6.11-rc6/source/Documentation/devicetree/bindings/ufs/qcom,ufs.yaml#L127
+Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
 
 Best regards,
 Krzysztof
