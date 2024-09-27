@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75379CEBF65
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D952DCEBF7A
 	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 06:55:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,42 +12,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o9viVYcO8aNN6w4qtlrLEQocIgbO7sam0vRHSWJsSzE=; b=Ju39TL0YNZUAiVFyNtrZrl/Yvb
-	WG7dWlJDudzLgmqMTYlhdWFhL2CBsiP8l9x0bHrKDW543rHA37bH/u3MTYJ8HRchq5gpv8ob8ZlHq
-	66juLyngCc9L9ebYwCzdMWU5sDHYsTZ3pQ5rzP87Rq8IB0ZmBlNql0zoiBhz/SqmuPPFShEgvBXZ3
-	To1HmXDleIaKCP/OoKBXYa5LMIDp05bbuXYheZh915uO2pYa3xPB3RZqQIBlRvpDDMe5GGKjl6zkT
-	lPlNMc7VWmD8djxvk6vztPZJzF8419gN0XBLoSY2LnFH27vuMTYu2jkv9hRCZveHr7q4W/skVUB6Y
-	puDQuaTg==;
+	bh=RZpSSmiWrdlkuYE2Rt8zGSrtAGkJklsWS24DG2VMGzI=; b=N8oUiejyY7Yvis0PYnfao86YZX
+	bCi1U+pt/VuUS/uYwbccIsdk2gvojaD4RL+In6jD/begx0v/WrUJ24Bq/LQjMFwNmGL9lc6PUcu/x
+	O8pr9CdZ/4iRfRBfjG+mEr/+FwIbtCoxFTi98/PDA4zGqED+6wP7fjRnFEa3tyJ5Z2Mxhg0aCCzDq
+	LvJMseUniV2XIdjOLSu5xuLRFULrjgsHmp3t8MMn7dCEZGeauNi6MtZm4ZE7OZnP8PUwtN2ircgmr
+	s0qHs9ear7ReEUqQEd6Bc8t/WTFU2mxApF/6rTzmkEFRDEW+4a/1w9l4/Mg0IWrJPBeZ/0Xt8ddaJ
+	5vHizcxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1su4tC-0000000AGTj-1tJ5;
+	id 1su4tC-0000000AGTw-3IEx;
 	Fri, 27 Sep 2024 06:55:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1su4oV-0000000AFIV-2lw1;
-	Fri, 27 Sep 2024 06:50:53 +0000
-X-UUID: d3d98fa47c9c11efb3adad29d29602c1-20240926
+	id 1su4oX-0000000AFJL-1SI2;
+	Fri, 27 Sep 2024 06:50:54 +0000
+X-UUID: d3d2d77c7c9c11efba0aef63c0775dbf-20240926
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=o9viVYcO8aNN6w4qtlrLEQocIgbO7sam0vRHSWJsSzE=;
-	b=t7qU4SGEfjjpgWT0CrHFZUl7oaACV1o24xDN5yhdKSm58lGjBgq8pY54rr2FEdcdr7dsZC20+MRANKX9KxeBoW1q0VswCwdJyN2f2BLg9MKomJiDQzgxXQb3ZW8ePnQtwm/4ceDonOLhSW4bqDP1zKGfhlSQI278Tk+mQalVjXk=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=RZpSSmiWrdlkuYE2Rt8zGSrtAGkJklsWS24DG2VMGzI=;
+	b=Gq3iIaAZuLqFZbLIjrdAx5m3kle/L90rccX2lXtYom0PubFOMqjiCNpG0zkGuUlWIBRpH9StVzUzDtgxnqKDotAYxBfEqYieDUZ7RR3meuwNurOMVB8m7x92RZKF7bPeNH0gGZtTSwEUrQtTXeQ2qSIWwKACusUBuU+VVWil1y8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:28343d62-443a-4941-98f0-9a7ef0b2c1d3,IP:0,U
+X-CID-O-INFO: VERSION:1.1.41,REQID:311527f3-1d3c-4b55-aeec-4486ce5e4826,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:24c2a69e-8e9a-4ac1-b510-390a86b53c0a,B
+X-CID-META: VersionHash:6dc6a47,CLOUDID:a6675718-b42d-49a6-94d2-a75fa0df01d2,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: d3d98fa47c9c11efb3adad29d29602c1-20240926
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: d3d2d77c7c9c11efba0aef63c0775dbf-20240926
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
 	(envelope-from <macpaul.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 7862445; Thu, 26 Sep 2024 23:50:48 -0700
+	with ESMTP id 1416832630; Thu, 26 Sep 2024 23:50:48 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Fri, 27 Sep 2024 14:50:43 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -76,9 +76,9 @@ CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
  chen" <chris-qj.chen@mediatek.com>, MediaTek Chromebook Upstream
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
 	<wenst@chromium.org>
-Subject: [PATCH v3 3/5] arm64: dts: mediatek: mt8395-genio-1200-evk: Fix dtbs_check error for phy
-Date: Fri, 27 Sep 2024 14:50:39 +0800
-Message-ID: <20240927065041.15247-3-macpaul.lin@mediatek.com>
+Subject: [PATCH v3 5/5] dt-bindings: display: mediatek: dpi: correct power-domains property
+Date: Fri, 27 Sep 2024 14:50:41 +0800
+Message-ID: <20240927065041.15247-5-macpaul.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20240927065041.15247-1-macpaul.lin@mediatek.com>
 References: <20240927065041.15247-1-macpaul.lin@mediatek.com>
@@ -86,21 +86,21 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--4.841900-8.000000
-X-TMASE-MatchedRID: zCWA9GkRdEXwBTQ+XvV6VZdc7I2df+ms2D9FbDg9BP7HkH7uosEn7E/3
-	ZkXeY1OAsdosXJJWMVwSc9Me4enxyKXzgcphDfm8i/b+LxU2p47Dx2NobQWtm3td2pOTSxFkZvo
-	+mFW19mDftLFtxOSbQ4Ay6p60ZV62fJ5/bZ6npdjGVuWouVipcjAGbKlbRjKT1oeFEpXgY4R2cs
-	iM2ZNrXCkQwQp8jWDV1FmTk6ph5l9KExYgiTytN6BnGq9kNZm0dvYOSQ2POAuEeo2QbLGzt21Rj
-	oup2VCcWve+eVz4Pp5Vk5utmQ1VlGVF3+d9rnoxpI8EFEZVbig=
+X-TM-AS-Result: No-10--9.384400-8.000000
+X-TMASE-MatchedRID: tfUp3kDdFrlpqqYAQ+J6uSYRREGYqtmUmoKXVHfiMM9KUzR+o2IehUGW
+	yClQhQkvKY6B7sY8Ci7dRIKCUEZlk77J5yv1W35KA9lly13c/gG+1Vx7rDn4ryJ8zskw0dbrzTO
+	MdSL65dGPBBqsttKK1ATOtv1QaDkraxXbwRJk57z0hv/rD7WVZA+jS+LRpl81pzPA3TKVblhgIS
+	cCiWkKENIS3Y3mrYfn3DCWtTm2Z99RAFy9FG9Tvev8QGaI25e3D+LwVja9M4GbKItl61J/yZ+in
+	TK0bC9eKrauXd3MZDUzaXOJNfDG7df9dBya+tT4Bm14c7FgKKADsOKi2fzUXUhbIc2LUS9M
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--4.841900-8.000000
+X-TMASE-Result: 10--9.384400-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 72096D519EB39C5F442D061C47D1581668AC1771DA1106EA6093E5F78DFE193A2000:8
+X-TM-SNTS-SMTP: E193EE1736A7BC2525CB5DE5945DF5D1462A8EE6C095E710895B52A9B4EA55682000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_235051_728043_DC4F01A8 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20240926_235053_414311_224ACCA2 
+X-CRM114-Status: GOOD (  15.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,35 +115,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The ethernet-phy node in mt8395-genio-1200-evk.dts was triggering a
-dtbs_check error. The error message was:
-  eth-phy0@1: $nodename:0: 'eth-phy0@1' does not match
-              '^ethernet-phy(@[a-f0-9]+)?$'
-Fix this issue by replacing 'eth-phy' node to generic 'ethernet-phy'.
+The MediaTek DPI module is typically associated with one of the
+following multimedia power domains:
+ - POWER_DOMAIN_DISPLAY
+ - POWER_DOMAIN_VDOSYS
+ - POWER_DOMAIN_MM
+The specific power domain used varies depending on the SoC design.
 
-Fixes: f2b543a191b6 ("arm64: dts: mediatek: add device-tree for Genio 1200 EVK board")
+These power domains are shared by multiple devices within the SoC.
+In most cases, these power domains are enabled by other devices.
+As a result, the DPI module of legacy SoCs often functions correctly
+even without explicit configuration.
+
+It is recommended to explicitly add the appropriate power domain
+property to the DPI node in the device tree. Hence drop the
+compatible checking for specific SoCs.
+
+Fixes: 5474d49b2f79 ("dt-bindings: display: mediatek: dpi: Add power domains")
 Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../display/mediatek/mediatek,dpi.yaml        | 24 ++++++++-----------
+ 1 file changed, 10 insertions(+), 14 deletions(-)
 
-Changes for v2 and v3:
- - No change.
+Changes for v2:
+ - Because of the corresponding dts fix has been reviewed with a Reviewed-by: tag.
+   [1] https://lore.kernel.org/all/20240925080515.16377-1-macpaul.lin@mediatek.com/
+   We still need this change to fix the 2 dtbs_check errors.
+   So keeps no change here.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-index 1ef6262b65c9..b4b48eb93f3c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-@@ -187,7 +187,7 @@ mdio {
- 		compatible = "snps,dwmac-mdio";
- 		#address-cells = <1>;
- 		#size-cells = <0>;
--		eth_phy0: eth-phy0@1 {
-+		eth_phy0: ethernet-phy@1 {
- 			compatible = "ethernet-phy-id001c.c916";
- 			reg = <0x1>;
- 		};
+Changes for v3:
+ - The origin patch is [2]
+   https://lore.kernel.org/all/20240926111449.9245-2-macpaul.lin@mediatek.com/
+ - Thanks for Conor's reminding, after MediaTek's internal discussion,
+   This patch v3 is the replacement of [2] v2.
+   Because the DPI module should has a explicit configuration with power domain.
+ - Drop Acked-by: tag since v3 is nearly a new patch for different approach.
+
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+index 3a82aec9021c..497c0eb4ed0b 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+@@ -63,6 +63,16 @@ properties:
+       - const: sleep
+ 
+   power-domains:
++    description: |
++      The MediaTek DPI module is typically associated with one of the
++      following multimedia power domains:
++        POWER_DOMAIN_DISPLAY
++        POWER_DOMAIN_VDOSYS
++        POWER_DOMAIN_MM
++      The specific power domain used varies depending on the SoC design.
++
++      It is recommended to explicitly add the appropriate power domain
++      property to the DPI node in the device tree.
+     maxItems: 1
+ 
+   port:
+@@ -79,20 +89,6 @@ required:
+   - clock-names
+   - port
+ 
+-allOf:
+-  - if:
+-      not:
+-        properties:
+-          compatible:
+-            contains:
+-              enum:
+-                - mediatek,mt6795-dpi
+-                - mediatek,mt8173-dpi
+-                - mediatek,mt8186-dpi
+-    then:
+-      properties:
+-        power-domains: false
+-
+ additionalProperties: false
+ 
+ examples:
 -- 
 2.45.2
 
