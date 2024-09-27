@@ -4,90 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 285CACEBF8A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 09:50:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D882BCEBF8C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 09:51:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q040MRawz9Mi88mkU3zz9wuTTdm0FymQLAH3fa4Orz4=; b=f9QmDXOxrNnMnwp1P7vUqcNHC5
-	881aN9KBOQo9GvFEFr9MvKScu8w0DjrTjt40d+zDOZxfTlueKJwmHd3g1FLPYZPMoZe7v+BXgX6R4
-	nxWekmkV27tXIGFfWfx7b1bhTIhqq4y8hTI9IuJMSF/oiJwTNXPDEq2Tip8USu7RZltdNb/tMRtOz
-	O/St+ZhyBEW1jZpCX7vkqbH4K4NOwsZJHIDoDb80oZWaahloti2ZpG+kFuGiofyFHMEkqYj7F2ueW
-	+TdZoQz4EhK5DyP1JG0T/9BPp4SreuDVV2LjfMEN/rikVUz7e52TmgOO/kw7Z24aVn5iNJ34QE/CG
-	emFIMI/w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7AYI6NCmdRDuABQX7HORneVc3Wnz4MDmFG9L55U74f8=; b=Hhyswx4tyorOe5GACbuW+i4iiX
+	Q2VXRsPxgKvc+uSHpZKcJtxHEaMjfnB9HqzE0sKB6grdo6Z7zN8ZDzOGGYoBYsALFZ7eBcIMszkiR
+	AvCGsH6EohOTbN6qkqdCGMGwktIMvdev24rV0KoDUmaokG8ORo8eTLmlRkaSd5zWfzCF2aIZXXNAF
+	EFra1ubmebKtIDhqJBcQfnBOrvNItVw287LtkRZHu/4Ot9kZWN/Us9sUbE2DkQqmmp3q63vDU9BL+
+	+NB351+zLdid24ItSvnC1Of77UtXW/TtLqL+wmEd5+JEFnCG7tZwCNM8KoV0PFurDUHUlFkAl/P/c
+	ZGeR6WRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1su7cC-0000000AjP3-3xR6;
-	Fri, 27 Sep 2024 09:50:20 +0000
-Received: from mgamail.intel.com ([192.198.163.11])
+	id 1su7dV-0000000Ajea-2SIc;
+	Fri, 27 Sep 2024 09:51:41 +0000
+Received: from szxga05-in.huawei.com ([45.249.212.191])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1su7ay-0000000Aj9B-1Shq;
-	Fri, 27 Sep 2024 09:49:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1727430544; x=1758966544;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=6Pe2Go0yn1c7MxwBdsnnPYOewixVQPGWJ9HMIvscZ8o=;
-  b=R4igTBc786M0teC4uj1GxHHcPFlv3GismbVIEZCryg3gcAR4Aab9nfBA
-   waVly8mGfPTUh4QkJUd+5K3RAfg9fJKCmbOJB36kyY8ehppahmqPoO6/R
-   9+bOgV8gp5129ISQJoqcBt9HeHM/CYhjIXuFTq8Slx5PQzUKGHPYimeT8
-   Pyt0GSuDSsGsUAKOuhi49T3CaU76yow8jxpqX9w1KZeSZNHcVQWc27V7+
-   eiGrRsZTyWR6gcp2SFm0cc9CTc8ZwFNx/OvIy7o1LFjv8oULBxwq910w3
-   x/cQBFfnxYI8dQvjmb11j8cWS7oUf0bKf0Y4+ptw5RwgQoLrKKd9M/ErC
-   Q==;
-X-CSE-ConnectionGUID: dgyyPW/+TSCu3yEZ2q4FFg==
-X-CSE-MsgGUID: oQ66qAtBQCunLTYKymuRRQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11207"; a="37149837"
-X-IronPort-AV: E=Sophos;i="6.11,158,1725346800"; 
-   d="scan'208";a="37149837"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
-  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Sep 2024 02:49:04 -0700
-X-CSE-ConnectionGUID: 9aWBSpURTpuXHkrgFTdtBg==
-X-CSE-MsgGUID: Q19sk9QDS2ab/YNt173aOw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,158,1725346800"; 
-   d="scan'208";a="72143095"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by fmviesa007.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Sep 2024 02:49:00 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1su7ar-0000000DWcI-29Th;
-	Fri, 27 Sep 2024 12:48:57 +0300
-Date: Fri, 27 Sep 2024 12:48:57 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Mark Brown <broonie@kernel.org>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org, Douglas Anderson <dianders@chromium.org>,
-	Johan Hovold <johan@kernel.org>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: Re: [PATCH v8 2/3] regulator: Add devres version of
- of_regulator_get_optional()
-Message-ID: <ZvZ_idJsmuzNhFMc@smile.fi.intel.com>
-References: <20240925093807.1026949-1-wenst@chromium.org>
- <20240925093807.1026949-3-wenst@chromium.org>
- <ZvPscRdWlFPmtCyR@smile.fi.intel.com>
- <CAGXv+5Gf9+rc+vLcr-JFhO561G8dw38ksV3drat+DyCfWEVakQ@mail.gmail.com>
- <ZvVS7ITg2t-RIh8C@smile.fi.intel.com>
- <CAGXv+5EV4nNiAneajqr4VBkX4TO3zV76yqBM_u81ZMNjU52Bvw@mail.gmail.com>
+	id 1su7bk-0000000AjHA-12H6;
+	Fri, 27 Sep 2024 09:49:55 +0000
+Received: from mail.maildlp.com (unknown [172.19.88.163])
+	by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4XFQZN2v7qz1HKJ6;
+	Fri, 27 Sep 2024 17:45:48 +0800 (CST)
+Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
+	by mail.maildlp.com (Postfix) with ESMTPS id 0AC2018002B;
+	Fri, 27 Sep 2024 17:49:41 +0800 (CST)
+Received: from [10.67.120.129] (10.67.120.129) by
+ dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.11; Fri, 27 Sep 2024 17:49:40 +0800
+Message-ID: <0ef315df-e8e9-41e8-9ba8-dcb69492c616@huawei.com>
+Date: Fri, 27 Sep 2024 17:49:40 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5EV4nNiAneajqr4VBkX4TO3zV76yqBM_u81ZMNjU52Bvw@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net v2 2/2] page_pool: fix IOMMU crash when driver has
+ already unbound
+To: Ilias Apalodimas <ilias.apalodimas@linaro.org>
+CC: Mina Almasry <almasrymina@google.com>, <davem@davemloft.net>,
+	<kuba@kernel.org>, <pabeni@redhat.com>, <liuyonglong@huawei.com>,
+	<fanghaiqing@huawei.com>, <zhangkun09@huawei.com>, Robin Murphy
+	<robin.murphy@arm.com>, Alexander Duyck <alexander.duyck@gmail.com>, IOMMU
+	<iommu@lists.linux.dev>, Wei Fang <wei.fang@nxp.com>, Shenwei Wang
+	<shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, Eric Dumazet
+	<edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek
+ Kitszel <przemyslaw.kitszel@intel.com>, Alexander Lobakin
+	<aleksander.lobakin@intel.com>, Alexei Starovoitov <ast@kernel.org>, Daniel
+ Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
+	John Fastabend <john.fastabend@gmail.com>, Saeed Mahameed
+	<saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Tariq Toukan
+	<tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Kalle Valo
+	<kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andrew
+ Morton <akpm@linux-foundation.org>, <imx@lists.linux.dev>,
+	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<intel-wired-lan@lists.osuosl.org>, <bpf@vger.kernel.org>,
+	<linux-rdma@vger.kernel.org>, <linux-wireless@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-mm@kvack.org>
+References: <20240925075707.3970187-1-linyunsheng@huawei.com>
+ <20240925075707.3970187-3-linyunsheng@huawei.com>
+ <CAHS8izOxugzWJDTc-4CWqaKABTj=J4OHs=Lcb=SE9r8gX0J+yg@mail.gmail.com>
+ <842c8cc6-f716-437a-bc98-70bc26d6fd38@huawei.com>
+ <CAC_iWjLgNOtsbhqrhvvEz2C3S668qB8KatL_W+tPHMSkDrNS=w@mail.gmail.com>
+Content-Language: en-US
+From: Yunsheng Lin <linyunsheng@huawei.com>
+In-Reply-To: <CAC_iWjLgNOtsbhqrhvvEz2C3S668qB8KatL_W+tPHMSkDrNS=w@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.67.120.129]
+X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
+ dggpemf200006.china.huawei.com (7.185.36.61)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240927_024904_431077_18C9BFC5 
-X-CRM114-Status: GOOD (  40.93  )
+X-CRM114-CacheID: sfid-20240927_024953_713745_CFC1F64A 
+X-CRM114-Status: GOOD (  19.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,116 +96,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 27, 2024 at 12:38:35PM +0800, Chen-Yu Tsai wrote:
-> On Thu, Sep 26, 2024 at 8:26 PM Andy Shevchenko
-> <andriy.shevchenko@linux.intel.com> wrote:
-> > On Thu, Sep 26, 2024 at 04:43:52PM +0800, Chen-Yu Tsai wrote:
-> > > On Wed, Sep 25, 2024 at 6:56 PM Andy Shevchenko
-> > > <andriy.shevchenko@linux.intel.com> wrote:
-> > > > On Wed, Sep 25, 2024 at 05:38:05PM +0800, Chen-Yu Tsai wrote:
+On 2024/9/27 17:21, Ilias Apalodimas wrote:
+> Hi Yunsheng
+> 
+> On Fri, 27 Sept 2024 at 06:58, Yunsheng Lin <linyunsheng@huawei.com> wrote:
+>>
+>> On 2024/9/27 2:15, Mina Almasry wrote:
+>>>
+>>>> In order not to do the dma unmmapping after driver has already
+>>>> unbound and stall the unloading of the networking driver, add
+>>>> the pool->items array to record all the pages including the ones
+>>>> which are handed over to network stack, so the page_pool can
+>>>> do the dma unmmapping for those pages when page_pool_destroy()
+>>>> is called.
+>>>
+>>> One thing I could not understand from looking at the code: if the
+>>> items array is in the struct page_pool, why do you need to modify the
+>>> page_pool entry in the struct page and in the struct net_iov? I think
+>>> the code could be made much simpler if you can remove these changes,
+>>> and you wouldn't need to modify the public api of the page_pool.
+>>
+>> As mentioned in [1]:
+>> "There is no space in 'struct page' to track the inflight pages, so
+>> 'pp' in 'struct page' is renamed to 'pp_item' to enable the tracking
+>> of inflight page"
+> 
+> I have the same feeling as Mina here. First of all, we do have an
+> unsigned long in struct page we use for padding IIRC. More
 
-...
+I am assuming you are referring to '_pp_mapping_pad' in 'struct page',
+unfortunately the field might be used when a page is mmap'ed to user
+space as my understanding.
 
-> > > > > +#if IS_ENABLED(CONFIG_OF)
-> > > >
-> > > > Do we really need this?
-> > >
-> > > What's the point of going through devres_* stuff if we already know
-> > > _of_regulator_get() is going to fail anyway?
-> >
-> > With devm_add_action*() this will be other way around and there are plenty of
-> > APIs done this way. The ifdeffery is simply ugly in the code.
-> 
-> It's still extra code that doesn't get compiled out.
+https://elixir.bootlin.com/linux/v6.7-rc8/source/include/linux/mm_types.h#L126
 
-Are you sure? In case of the stub the compiler should go with a "dead code
-elimination" optimisation and get rid of most of it (yes, I admit that it might
-be the overhead for the exporting a function which returns a constant).
+> importantly, though, why does struct page need to know about this?
+> Can't we have the same information in page pool?
+> When the driver allocates pages it does via page_pool_dev_alloc_XXXXX
+> or something similar. Cant we do what you suggest here ? IOW when we
+> allocate a page we put it in a list, and when that page returns to
+> page_pool (and it's mapped) we remove it.
 
-> > > Also, _of_regulator_get() does not have a stub version for !CONFIG_OF.
-> >
-> > So, what prevents us from adding it?
-> 
-> Because there's no need if the only internal user isn't using it.
-> 
-> I could also move them over to of_regulator.c.
-> 
-> _of_regulator_get() stays internal to that file, and devm_regulator_release()
-> gets exposed instead.
-> 
-> Does that sound better?
-
-This sounds good to me!
-
-...
-
-> > > > > +static inline struct regulator *__must_check devm_of_regulator_get_optional(struct device *dev,
-> > > > > +                                                                         struct device_node *node,
-> > > > > +                                                                         const char *id)
-> > > >
-> > > > I don't know the conventions here, but I find better to have it as
-> > > >
-> > > > static inline __must_check struct regulator *
-> > > > devm_of_regulator_get_optional(struct device *dev, struct device_node *node, const char *id)
-> > > >
-> > > > Similar to other stubs and declarations.
-> > >
-> > > I don't think there are any conventions. This file already has three types:
-> > >
-> > > 1. Wrap the line with the function name on the second line
-> > > 2. Wrap the arguments; wrapped arguments aligned to the left parenthesis.
-> > > 3. Wrap the arguments; wrapped arguments aligned with aribtrary number of
-> > >    tabs.
-> > >
-> > > I prefer the way I have put them.
-> >
-> > The way you put it despite relaxed limit is slightly harder to read.
-> > I don't remember many headers that do so-o indented parameters. Besides
-> > your way defers the burden of resplit to the future in case one more parameter
-> > needs to be added which will excess the 100 limit.
-> >
-> > Also __must_check is somehow misplaced in my opinion (talking from my
-> > experience and this can be simply checked by grepping other headers).
-> 
-> Seems correct to me. It's between the return type and the function name.
-> From the coding style doc:
-> 
->  __init void * __must_check action(enum magic value, size_t size, u8 count,
->                                    char *fmt, ...) __printf(4, 5) __malloc;
-> 
-> The preferred order of elements for a function prototype is:
-> 
-> - storage class (below, ``static __always_inline``, noting that
-> ``__always_inline``
->   is technically an attribute but is treated like ``inline``)
-> - storage class attributes (here, ``__init`` -- i.e. section
-> declarations, but also
->   things like ``__cold``)
-> - return type (here, ``void *``)
-> - return type attributes (here, ``__must_check``)
-> - function name (here, ``action``)
-> - function parameters (here, ``(enum magic value, size_t size, u8
-> count, char *fmt, ...)``,
->   noting that parameter names should always be included)
-> - function parameter attributes (here, ``__printf(4, 5)``)
-> - function behavior attributes (here, ``__malloc``)
-> 
-> > That said, I prefer the way I suggested or something alike.
-> 
-> Two people arguing over style that is not clearly specified in the coding
-> style doc is probably wasting time. I'll use what `clang-format` gave:
-> 
-> static inline struct regulator *__must_check of_regulator_get_optional(
->        struct device *dev, struct device_node *node, const char *id)
-> static inline struct regulator *__must_check devm_of_regulator_get_optional(
->        struct device *dev, struct device_node *node, const char *id)
-
-With all my hatred towards this clang-format "feature", i.e. open ended
-parenthesis, this looks better than your original variant.
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+Yes, that is the basic idea, but the important part is how to do that
+with less performance impact.
 
