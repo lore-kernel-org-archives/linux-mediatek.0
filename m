@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B9CFCEBF76
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 03:59:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 313BACEBF69
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 04:02:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PjUnBPn5EF1kvH/KA0jt5WOp4dBCwCnfOkcGltIjG1k=; b=TouAo9CCAm/6mw4uYxv6U+i9lT
-	NFiaxEOnbrR7Ds5HZIghxDvhzeTbWrg4NnTYk6lDjoJWMio8EPnrL1ZoXO2sqmHNPxnwDsSnXaYW6
-	JFVwXzN8k7zluhx3UA6RdTJBrlb9J+Wi0tl8XjpfJdtaIQAUqZUFdwcRUvnZJH0EpYDlI8GD6f7c+
-	b2+PkVxD4WocIvv2M/HZ3H/ypwSoY75p51u+642vhcpYWvlnGmeUth1geTxRotIC9pe6exjkzAn0X
-	j5E5h/3VsY3Us/zQV42wowydwxaR1gGr8P0geBGCbR7DGm40+apsVUkmgY40EVv3vObwr7HFhSDyQ
-	SEZ5S45w==;
+	bh=ts6Ybuhxy9EO97nxINn08YUin8kXfW9IAD6aPStdVq8=; b=i+X5Pua2QoMKh1VL7U3l/GGhml
+	BYMkk6nSNaYQumnYFjzLKM0sEEF5qQyKJpeIvN605xNkhCEKQgJgQQ00Go1VgkaCDPHIjtWCGlCdp
+	WJJ84Ppf9J7znLWrJasDOK8YluHuLQ3Tph7lV8b08mycjCrVM1YD4zbf2A42r8NKo8NttAg8b5r2+
+	GOibD5+fa29kBmkyRB1yuIQM9AJaR3LGX4NmGKt+r8ruX0xVEtcKIR6qkLa9bQu7kJaYcnGUWCB0e
+	ila8hiKlobM11MyTtOvoXMGoPY1ohOjnBEGKLu/C6CYAL62FVNc+fX/FSFlvLUnnm9TI+XtTF/ePn
+	m8f8kdcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1su28h-00000009wOG-2uqE;
-	Fri, 27 Sep 2024 03:59:31 +0000
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+	id 1su2BR-00000009wl9-01Uh;
+	Fri, 27 Sep 2024 04:02:21 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1su27U-00000009w5g-0hc4;
-	Fri, 27 Sep 2024 03:58:18 +0000
-Received: from mail.maildlp.com (unknown [172.19.88.194])
-	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4XFGpN5NVMzGq8S;
-	Fri, 27 Sep 2024 11:55:40 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
-	by mail.maildlp.com (Postfix) with ESMTPS id B3F901400CF;
-	Fri, 27 Sep 2024 11:57:58 +0800 (CST)
-Received: from [10.67.120.129] (10.67.120.129) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Fri, 27 Sep 2024 11:57:58 +0800
-Message-ID: <842c8cc6-f716-437a-bc98-70bc26d6fd38@huawei.com>
-Date: Fri, 27 Sep 2024 11:57:58 +0800
+	id 1su2AC-00000009wb1-2JsF
+	for linux-mediatek@lists.infradead.org;
+	Fri, 27 Sep 2024 04:01:09 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-5365c060f47so1922825e87.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 Sep 2024 21:01:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1727409660; x=1728014460; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ts6Ybuhxy9EO97nxINn08YUin8kXfW9IAD6aPStdVq8=;
+        b=DcTG8r2Ec/JhH72vDR9oN+k+rNcJcLxO70N6DsRN18tIKjaBIBtDGNRT5iGbB4lwVF
+         t4yP4VDJx3A9bXm1Gk3klZdBKGMEX8LHW32PQRD4U8RIDdf/hCPyCFt+ly1moQoYetYT
+         S9SUl+XNV85XZXZwAfdeFyUXX+KHjjEf5hyB8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727409660; x=1728014460;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ts6Ybuhxy9EO97nxINn08YUin8kXfW9IAD6aPStdVq8=;
+        b=s7KAhDYeo4pi5/q/aeUsxQtOPEOtPYoCHy6gIhDYFV0GvHG1u0lZx5YzS42nBkHqxH
+         2ofCpw8v/tr0K8p0HQrVd1N5BGPBeOOikWVlVhrn4bORtvvlagP/4b9qzqOxu8HYNQgp
+         ZKkHjixvaJmXiLeXDsVkn69fX7Q/emnLR1+7kXNUNh0sE3bAkezlTtAtqzTnfS1oTEMb
+         uRrhkEG2Apb7pquv96e2Qbs0Wv2tX1C7DSpQvJe+HK4HvGu5IfV3WsoJFKQuZ21ghgEk
+         SHUSktQZujIIlEGopqq/IY+4Bvw5EHrdPVWJApC+45mTCSmt9+7frnHjaC0hGab3mJXv
+         COsA==
+X-Forwarded-Encrypted: i=1; AJvYcCWtzTzKu/8hOUFhyy/zKUt1M/KcEMriiq59hDu4X/7K+z/B28fvoo0XvtSdc1syzkFYEVTFrDK+4tsvkOHtyQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx7TacPCyVz/T8dxmry8YYLKlP95GjgaNVD53k9ldCp9dZUenma
+	TzC9+9UZ1Alal72FW40Gd0siM8Tf6o/RjG5NLMx7eFBqCMhNWY/2JB5gFRvwpz1uoCLH7VyPPuz
+	vEE4Ll/thv4eGIRwHdaRZqz7QRNJAuT2Yqx0t
+X-Google-Smtp-Source: AGHT+IFhILfvyN612dVfAZjt7mlHdsnT36bs2zlQCVH9UI+WtCiOa7LORMIXTip1YcFTiMjzEjST5u3lqpdVSQXGrdI=
+X-Received: by 2002:a05:6512:1256:b0:535:6400:1da8 with SMTP id
+ 2adb3069b0e04-5389fc477eemr884467e87.28.1727409659514; Thu, 26 Sep 2024
+ 21:00:59 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net v2 2/2] page_pool: fix IOMMU crash when driver has
- already unbound
-To: Mina Almasry <almasrymina@google.com>
-CC: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>,
-	<liuyonglong@huawei.com>, <fanghaiqing@huawei.com>, <zhangkun09@huawei.com>,
-	Robin Murphy <robin.murphy@arm.com>, Alexander Duyck
-	<alexander.duyck@gmail.com>, IOMMU <iommu@lists.linux.dev>, Wei Fang
-	<wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang
-	<xiaoning.wang@nxp.com>, Eric Dumazet <edumazet@google.com>, Tony Nguyen
-	<anthony.l.nguyen@intel.com>, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
-	Alexander Lobakin <aleksander.lobakin@intel.com>, Alexei Starovoitov
-	<ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard
- Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, Saeed
- Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Tariq Toukan
-	<tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
-	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Kalle Valo
-	<kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andrew
- Morton <akpm@linux-foundation.org>, Ilias Apalodimas
-	<ilias.apalodimas@linaro.org>, <imx@lists.linux.dev>,
-	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<intel-wired-lan@lists.osuosl.org>, <bpf@vger.kernel.org>,
-	<linux-rdma@vger.kernel.org>, <linux-wireless@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-mm@kvack.org>
-References: <20240925075707.3970187-1-linyunsheng@huawei.com>
- <20240925075707.3970187-3-linyunsheng@huawei.com>
- <CAHS8izOxugzWJDTc-4CWqaKABTj=J4OHs=Lcb=SE9r8gX0J+yg@mail.gmail.com>
-Content-Language: en-US
-From: Yunsheng Lin <linyunsheng@huawei.com>
-In-Reply-To: <CAHS8izOxugzWJDTc-4CWqaKABTj=J4OHs=Lcb=SE9r8gX0J+yg@mail.gmail.com>
+References: <20240925093807.1026949-1-wenst@chromium.org> <CAPDyKFqoqppLipOG1vK-8oU_6cMdZ3DV5Gxqhs5-+7+cQJ6=qQ@mail.gmail.com>
+In-Reply-To: <CAPDyKFqoqppLipOG1vK-8oU_6cMdZ3DV5Gxqhs5-+7+cQJ6=qQ@mail.gmail.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 27 Sep 2024 12:00:48 +0800
+Message-ID: <CAGXv+5Fot5BVxtAiEj==2u1ew7mGYkrS7=mTqeTMjTiEg8LNag@mail.gmail.com>
+Subject: Re: [PATCH v8 0/3] Add of_regulator_get_optional() and Fix MTK Power
+ Domain Driver
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Mark Brown <broonie@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
+	Douglas Anderson <dianders@chromium.org>, Johan Hovold <johan@kernel.org>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Pablo Sun <pablo.sun@mediatek.com>, 
+	Macpaul Lin <macpaul.lin@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.67.120.129]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- dggpemf200006.china.huawei.com (7.185.36.61)
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240926_205816_750678_0BD50191 
-X-CRM114-Status: GOOD (  32.00  )
+X-CRM114-CacheID: sfid-20240926_210104_674346_F5CC3979 
+X-CRM114-Status: GOOD (  28.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,94 +94,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2024/9/27 2:15, Mina Almasry wrote:
-> 
->> In order not to do the dma unmmapping after driver has already
->> unbound and stall the unloading of the networking driver, add
->> the pool->items array to record all the pages including the ones
->> which are handed over to network stack, so the page_pool can
->> do the dma unmmapping for those pages when page_pool_destroy()
->> is called.
-> 
-> One thing I could not understand from looking at the code: if the
-> items array is in the struct page_pool, why do you need to modify the
-> page_pool entry in the struct page and in the struct net_iov? I think
-> the code could be made much simpler if you can remove these changes,
-> and you wouldn't need to modify the public api of the page_pool.
+On Thu, Sep 26, 2024 at 11:49=E2=80=AFPM Ulf Hansson <ulf.hansson@linaro.or=
+g> wrote:
+>
+> On Wed, 25 Sept 2024 at 11:38, Chen-Yu Tsai <wenst@chromium.org> wrote:
+> >
+> > Hi folks,
+> >
+> > This series is split off from my "DT hardware prober" series [1].
+> >
+> > Changes since v7:
+> > - Added stub versions for of_regulator_get_optional() for !CONFIG_OF
+> >   and !CONFIG_REGULATOR
+> > - Added new patches for devres version and converting MTK pmdomain
+> >   driver
+> >
+> > At ELCE, Sebastian told me about his recent work on adding regulator
+> > supply support to the Rockchip power domain driver [2], how the MediaTe=
+k
+> > driver has been using the existing devm_regulator_get() API and
+> > reassigning different device nodes to the device doing the lookup, and
+> > how the new of_regulator_get_optional() is the proper fit for this.
+> >
+> > Patch 1 adds a new of_regulator_get_optional() function to look up
+> > regulator supplies using device tree nodes.
+> >
+> > Patch 2 adds a devres version of the aforementioned function at
+> > Sebastian's request for the two power domain drivers.
+> >
+> > Patch 3 converts the MediaTek power domain driver to use function.
+> >
+> >
+> > Each of the latter two patches depend on the previous one at build time=
+.
+> > Mark, would it be possible for you to put the two regulator patches
+> > on an immutable branch / tag? Otherwise we could have Ulf ack the
+> > pmdomain patch and merge it through your tree. Sebastian was fine
+> > with converting the rockchip pmdomain some time later.
+>
+> Thanks for providing some context!
+>
+> In my opinion I would prefer an immutable branch/tag of the regulator
+> core changes, so I can carry the pmdomain changes for MTK through my
+> pmdomain tree, but also because I would prefer if Sebastian could make
+> the corresponding conversion for the Rockchip pmdomain driver. If this
+> can get queued soon, there is really no need to have an intermediate
+> step for Rockchip, I think.
+>
+> Does it make sense - or do you prefer another way forward?
 
-As mentioned in [1]:
-"There is no space in 'struct page' to track the inflight pages, so
-'pp' in 'struct page' is renamed to 'pp_item' to enable the tracking
-of inflight page"
+Makes sense to me!
 
-As we still need pp for "struct page_pool" for page_pool_put_page()
-related API, the container_of() trick is used to get the pp from the
-pp_item.
-
-As you had changed 'struct net_iov' to be mirroring the 'struct page',
-so change 'struct net_iov' part accordingly.
-
-1. https://lore.kernel.org/all/50a463d5-a5a1-422f-a4f7-d3587b12c265@huawei.com/
-
-> 
->> As the pool->items need to be large enough to avoid
->> performance degradation, add a 'item_full' stat to indicate the
->> allocation failure due to unavailability of pool->items.
->>
-> 
-> I'm not sure there is any way to size the pool->items array correctly.
-
-Currently the size of pool->items is calculated in page_pool_create_percpu()
-as below, to make sure the size of pool->items is somewhat twice of the
-size of pool->ring so that the number of page sitting in the driver's rx
-ring waiting for the new packet is the similar to the number of page that is
-still being handled in the network stack as most drivers seems to set the
-pool->pool_size according to their rx ring size:
-
-+#define PAGE_POOL_MIN_INFLIGHT_ITEMS		512
-+	unsigned int item_cnt = (params->pool_size ? : 1024) +
-+				PP_ALLOC_CACHE_SIZE + PAGE_POOL_MIN_INFLIGHT_ITEMS;
-+	item_cnt = roundup_pow_of_two(item_cnt);
-
-> Can you use a data structure here that can grow? Linked list or
-> xarray?
-> 
-> AFAIU what we want is when the page pool allocates a netmem it will
-> add the netmem to the items array, and when the pp releases a netmem
-> it will remove it from the array. Both of these operations are slow
-> paths, right? So the performance of a data structure more complicated
-> than an array may be ok. bench_page_pool_simple will tell for sure.
-
-The question would be why do we need the pool->items to grow with the
-additional overhead and complication by dynamic allocation of item, using
-complicated data structure and concurrent handling?
-
-As mentioned in [2], it was the existing semantics, but it does not means
-we need to keep it. The changing of semantics seems like an advantage
-to me, as we are able to limit how many pages is allowed to be used by
-a page_pool instance.
-
-2. https://lore.kernel.org/all/2fb8d278-62e0-4a81-a537-8f601f61e81d@huawei.com/
-
-> 
->> Note, the devmem patchset seems to make the bug harder to fix,
->> and may make backporting harder too. As there is no actual user
->> for the devmem and the fixing for devmem is unclear for now,
->> this patch does not consider fixing the case for devmem yet.
->>
-> 
-> net_iovs don't hit this bug, dma_unmap_page_attrs() is never called on
-> them, so no special handling is needed really. However for code
-
-I am really doubtful about your above claim. As at least the below
-implementaion of dma_buf_unmap_attachment_unlocked() called in
-__net_devmem_dmabuf_binding_free() seems be using the DMA API directly:
-
-https://elixir.bootlin.com/linux/v6.7-rc8/source/drivers/gpu/drm/amd/amdgpu/amdgpu_dma_buf.c#L215
-
-Or am I missing something obvious here?
-
-> quality reasons lets try to minimize the number of devmem or memory
-> provider checks in the code, if possible.
-> 
+ChenYu
 
