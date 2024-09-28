@@ -4,87 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33BCBCF6493
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Sep 2024 17:19:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88A92CF6491
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Sep 2024 20:15:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p8NuiYSt8wJAr0VVOHDlVqwMqiURWjiBsLWVHXGngnA=; b=amslpzL6U7+MwRZ5Q2qiONMhTo
-	NoLfgnUJZUkDgO62YgapnC0XSFmxB3r7vnZeIDYGrGXCtMSDIA/PmMr/TLA905imD+TGd063fA1ey
-	YSA7Ekd1+5gcuv/I4OMrMtbqCb1kluRBeWHwl0SwNshKZprjXMTTa9bLT9gGLBp9Ri2bTsdzzk53P
-	zpsMtZfspznVHVL7SbfCSLt2kqWOstNPcXHqJ7gex3+NQOCheOZdSBI7xlkmwtlnJK/QVeBiWlfIB
-	4/tFkVxgtwbGKLi02L48yWX/YRWOpkwzJ7N9KUHyPaROXgVZ8NvYxa3QHMZ+a/aVr0rik8k9d1s6O
-	bDFmoAOw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3kfqJL+Ce+KVqNTYW8Umpp8aNhoV6KnxrN5beCqRahQ=; b=TvXjozvjXtxhJ2BJv7Jm++NFB2
+	3U3zpw7D48gmYMBkc2i0OVoEh5qfJ2iA+b4t5iaUGy/xmOOeaUzIbSr++ZcLAzqhTsg5jLZOknEER
+	rWGBIqkShd7K4xrk+2G9rIs4jFTwKT22oiU6RTaIcRorLIjAjhcivO/22peKGWVq8O5uQgiGV9D5L
+	TyuSGmUXT9ecbAYJFMKFksUEafY3tqO4wLPMNkaBGM2pkBJuS0Xknko2nVW11m3w5qpW9NlmtTgUg
+	FBd5FBshW+SsgOVkTbmTPO3LhHD12vaU8/J8AqePnOM/gT4QUn9CQZjPu4M9hF6mWgp79nPEe/hfX
+	SYl882/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sub5v-0000000DOsn-2L1d;
-	Sat, 28 Sep 2024 17:18:59 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1sudqx-0000000DaHB-1GLl;
+	Sat, 28 Sep 2024 20:15:43 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sub5t-0000000DOsN-0Ogk;
-	Sat, 28 Sep 2024 17:18:58 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-42cafda818aso29518385e9.2;
-        Sat, 28 Sep 2024 10:18:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1727543935; x=1728148735; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=p8NuiYSt8wJAr0VVOHDlVqwMqiURWjiBsLWVHXGngnA=;
-        b=W9xILtkMIg4+kY70G8PMOik+HNi8q/DiAFYoj+TDBxlW+PkCdcPFpczNiLZtoKtWlj
-         scTzPVDqfhjs+PLNjAcnpdyQzsokDU93Ito2tsi4t6TMRmHoKuPiN/0nlfRyrIC+YfZL
-         sB8gJe6n73qZR0D3JS1T6F/KdWIveB5bSjc6bHqCBl7mA9nZGVbPZY3ejq1ZFrJs62MQ
-         G9OxNRXTTGXB35rr/hQyR67qkWff2oIK0xdjk61hVVdcDoMkK0UFZfcS5lViOXbKb+p6
-         ngAfk9zkiKxRBsq/JlPscwcXwb1DlQe7fD8kjB7KMWSXh6Z+/avztfu1KxIaVy8U0vJ7
-         udrA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727543935; x=1728148735;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=p8NuiYSt8wJAr0VVOHDlVqwMqiURWjiBsLWVHXGngnA=;
-        b=cna9eV+CEWwbHZQknU4LiM8gqOWW5eKxnzpAm+vzKf+ocIbkXQ+/BBYFfXVdn4C3iu
-         BNV0Fu5D7xKteqQz9kMmMcwERCvgHXFd1Z/AQOm75ds1TZFV9bEz2gu672IvXGsfcYgs
-         sOpATgRu4+Fvh+DAtgmBDt6m6GMG1RbjssbmZE4N4MugP6TrI72lyqt3UQTEeSggLVw5
-         hL3bhrALxJdzdQx4lJZqXeN2BeXMxsZoDxGzeHszzdZi7hE7jnbT6nVP/o4qRo5TUf/H
-         3pPk1T7+H6YrpqfH+dDTrFHqnvqvd/J4x3aaLW3ppH7/Zzr9tV8tAsFHaM5TMweW/WMh
-         YfYQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUv1cwe6o7q10F+07UX4d3Ps3zXniZkfAr+5U+tycYDQ8IaaX9/YSxdvR7nq05CLpWtRlNZz9v5afXChIN37XQe@lists.infradead.org, AJvYcCWkSTQ4jxHE9SUXr9y8jm6a583z0gAm56PG+KPE3QE1XQiTrHrweTLVKdLdwpJUW/l4MTVKni1e1qy+xPO+AKU=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzS4sG6a/PTat/IGCJx/wVdHdzEqggB/rcqyL7OlBHQs/A9afuz
-	0hTjgtn2X37yb89EcxKe8ZRn1XJjINQUo47u3o8rlC4kbUVL8Fp7
-X-Google-Smtp-Source: AGHT+IFmmIHk7jMGC1Rr49hdZC3xWIHG0TdbmxVJ/tvIZRVpiLLGzZ/mp8cIHr9g4anhuMyAjTK08g==
-X-Received: by 2002:a05:6000:d8f:b0:37c:ced2:843b with SMTP id ffacd0b85a97d-37cd5ab75fcmr5003739f8f.20.1727543935169;
-        Sat, 28 Sep 2024 10:18:55 -0700 (PDT)
-Received: from [192.168.0.10] ([178.233.24.52])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37cd5730e92sm5262538f8f.80.2024.09.28.10.18.52
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 28 Sep 2024 10:18:54 -0700 (PDT)
-Message-ID: <5207019e-5059-4721-8ac6-4f4ea2753643@gmail.com>
-Date: Sat, 28 Sep 2024 20:18:47 +0300
+	id 1sudpk-0000000Da8a-0HvN;
+	Sat, 28 Sep 2024 20:14:29 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id AF4265C01AC;
+	Sat, 28 Sep 2024 20:14:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0DA6CC4CEC3;
+	Sat, 28 Sep 2024 20:14:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1727554466;
+	bh=fyzkp8bwC+pgUCdnd/ipBoI0RRrRQvdTxtU1+uStjnE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=JSHM4egySK3ezdTOqKcIpDj8cQX3z1AAr6lqvqqTdKVx0OWDlqhPhp908NTUbGMgv
+	 PB15gK0cQ4KW+H0wmbEbEltG3rsLnnpqEiN6xrXptgDaQ3UvYh4vQr3wDnyua+GdvM
+	 nGEJ87/BBQLVLp7Nqh/f79aNFNvEhnyEfQpxaYcNu9rzpOJFzKQ3fz/r6basWILMLI
+	 R9usdwOLwKR0Q4cmKmYi9dSbLMEQIXtO1s10v2XtQp8H2ZZ6nN6t2VIantBsAjiEKp
+	 6HP6A7RaJC4LveccmPV0bZCLchG4RoSA5OgIKEOlwdM8iVvVEPty8Bf2j1haujXQqH
+	 6imGmxrESn6FQ==
+Date: Sat, 28 Sep 2024 21:14:17 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Moudy Ho =?utf-8?B?KOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Macpaul Lin =?utf-8?B?KOael+aZuuaWjCk=?= <Macpaul.Lin@mediatek.com>,
+	Pablo Sun =?utf-8?B?KOWtq+avk+e/lCk=?= <pablo.sun@mediatek.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	Chris-qj Chen =?utf-8?B?KOmZs+Wlh+mAsik=?= <Chris-qj.Chen@mediatek.com>,
+	Bear Wang =?utf-8?B?KOiQqeWOn+aDn+W+tyk=?= <bear.wang@mediatek.com>,
+	"wenst@chromium.org" <wenst@chromium.org>,
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"tzimmermann@suse.de" <tzimmermann@suse.de>,
+	"simona@ffwll.ch" <simona@ffwll.ch>,
+	"mripard@kernel.org" <mripard@kernel.org>,
+	Macross Chen =?utf-8?B?KOmZs+izoueiqSk=?= <macross.chen@mediatek.com>,
+	"joro@8bytes.org" <joro@8bytes.org>,
+	"robin.murphy@arm.com" <robin.murphy@arm.com>,
+	"p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+	"macpaul@gmail.com" <macpaul@gmail.com>,
+	"maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+	"conor+dt@kernel.org" <conor+dt@kernel.org>,
+	"robh@kernel.org" <robh@kernel.org>,
+	Yong Wu =?utf-8?B?KOWQtOWLhyk=?= <Yong.Wu@mediatek.com>,
+	"airlied@gmail.com" <airlied@gmail.com>,
+	"iommu@lists.linux.dev" <iommu@lists.linux.dev>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	"krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	Sen Chu =?utf-8?B?KOWCqOajrik=?= <Sen.Chu@mediatek.com>,
+	"will@kernel.org" <will@kernel.org>,
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: Re: [PATCH 3/6] dt-bindings: display: mediatek: Fix clocks count
+ constraint for new SoCs
+Message-ID: <20240928-hummus-carol-0f09081f892d@spud>
+References: <20240924103156.13119-1-macpaul.lin@mediatek.com>
+ <20240924103156.13119-3-macpaul.lin@mediatek.com>
+ <ffc1900b-3921-48ca-a2b2-1b798c57e572@collabora.com>
+ <20240924-commute-collision-13ad39717d31@spud>
+ <2821ef09-1b32-082d-69d1-e09a3a302447@mediatek.com>
+ <20240925-satisfy-epidermal-bd414891479a@spud>
+ <7a1315ef-4be5-4528-858b-9f07c814636d@collabora.com>
+ <93d9ffbe466ff61d5426b6f158a4b8464f56824d.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 0/3] Fix degradation problem of alpha blending series
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Shawn Sung <shawn.sung@mediatek.com>, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, Singo Chang
- <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>
-References: <20240928161546.9285-1-jason-jh.lin@mediatek.com>
-From: Alper Nebi Yasak <alpernebiyasak@gmail.com>
-Content-Language: en-US, tr, en-GB
-In-Reply-To: <20240928161546.9285-1-jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="AcDfy0agmX9jcKA8"
+Content-Disposition: inline
+In-Reply-To: <93d9ffbe466ff61d5426b6f158a4b8464f56824d.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240928_101857_170678_EA6DB53A 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20240928_131428_272599_23A3B2FF 
+X-CRM114-Status: GOOD (  41.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,25 +109,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-On 2024-09-28 19:15 +03:00, Jason-JH.Lin wrote:
-> From: Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>
-> 
-> Some SoCs not support pre-multiplied pixel formats and extending
-> configuration of OVL pre-multiplied color formats, such as MT8173.
-> 
-> Fix the SoC degradation problem by this sreies.
-> 
-> ---
-> Change in v8:
-> Remove blend_modes for not supported pre-multiplied SoCs to fix the
-> return error from drm_plane_create_blend_mode_property().
-> 
-> [...]
+--AcDfy0agmX9jcKA8
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I no longer see the warnings I mentioned in v7, and everything looks OK
-on my MT8173, MT8183, MT8186 Chromebooks.
+On Fri, Sep 27, 2024 at 02:27:14AM +0000, Moudy Ho (=E4=BD=95=E5=AE=97=E5=
+=8E=9F) wrote:
+> On Thu, 2024-09-26 at 11:38 +0200, AngeloGioacchino Del Regno wrote:
+> > Il 25/09/24 16:34, Conor Dooley ha scritto:
+> > > On Wed, Sep 25, 2024 at 04:42:59PM +0800, Macpaul Lin wrote:
+> > > >=20
+> > > > On 9/25/24 00:00, Conor Dooley wrote:
+> > > > > On Tue, Sep 24, 2024 at 01:42:01PM +0200, AngeloGioacchino Del
+> > > > > Regno wrote:
+> > > > > > Il 24/09/24 12:31, Macpaul Lin ha scritto:
+> > > > > > > The display node in mt8195.dtsi was triggering a CHECK_DTBS
+> > > > > > > error due
+> > > > > > > to an excessively long 'clocks' property:
+> > > > > > >      display@14f06000: clocks: [[31, 14], [31, 43], [31,
+> > > > > > > 44]] is too long
+> > > > > > >=20
+> > > > > > > To resolve this issue, add "maxItems: 3" to the 'clocks'
+> > > > > > > property in
+> > > > > > > the DT schema.
+> > > > > > >=20
+> > > > > > > Fixes: 4ed545e7d100 ("dt-bindings: display: mediatek: disp:
+> > > > > > > split each block to individual yaml")
+> > > > > > > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> > > > > > > ---
+> > > > > > >     .../devicetree/bindings/display/mediatek/mediatek,split
+> > > > > > > .yaml     | 1 +
+> > > > > > >     1 file changed, 1 insertion(+)
+> > > > > > >=20
+> > > > > > > diff --git
+> > > > > > > a/Documentation/devicetree/bindings/display/mediatek/mediat
+> > > > > > > ek,split.yaml
+> > > > > > > b/Documentation/devicetree/bindings/display/mediatek/mediat
+> > > > > > > ek,split.yaml
+> > > > > > > index e4affc854f3d..42d2d483cc29 100644
+> > > > > > > ---
+> > > > > > > a/Documentation/devicetree/bindings/display/mediatek/mediat
+> > > > > > > ek,split.yaml
+> > > > > > > +++
+> > > > > > > b/Documentation/devicetree/bindings/display/mediatek/mediat
+> > > > > > > ek,split.yaml
+> > > > > > > @@ -57,6 +57,7 @@ properties:
+> > > > > > >       clocks:
+> > > > > > >         items:
+> > > > > > >           - description: SPLIT Clock
+> > > > > >=20
+> > > > > > That's at least confusing (granted that it works) - either
+> > > > > > add a description for
+> > > > > > each clock and then set `minItems: 1` (preferred), or remove
+> > > > > > this "SPLIT Clock"
+> > > > > > description and allow a maximum of 3 clocks.
+> > > > > >=20
+> > > > > > Removing the description can be done - IMO - because "SPLIT
+> > > > > > Clock" is, well,
+> > > > > > saying that the SPLIT block gets a SPLIT clock ... stating
+> > > > > > the obvious, anyway.
+> > > > >=20
+> > > > > Right, but what are the other two new clocks? Are they as
+> > > > > obvious?
+> > > > > There's no clock-names here to give any more information as to
+> > > > > what the
+> > > > > other clocks are supposed to be.
+> > > > >=20
+> > > > > Kinda unrelated, but I think that "SPLIT Clock" probably isn't
+> > > > > what the
+> > > > > name of the clock in the IP block is anyway, sounds more like
+> > > > > the name
+> > > > > for it on the provider end..
+> > > >=20
+> > > >=20
+>  * Thanks for the suggestions. I think Moudy could help on the new
+>    fixes
+> > > > for both DT schem and mt8195.dtsi. This patch could be separated
+> > > > from
+> > > > origin patch set.
+> > >=20
+> > > Not sure what you mean about separating it, if you mean correcting
+> > > the
+> > > description for the split clock sure. The other stuff I mentioned
+> > > needs
+> > > to be resolved before I'm willing to ack this.
+> >=20
+> > He means separating this patch from the rest of the series that he
+> > pushed - which
+> > is okay, as it's a bit mixed anyway :-)
+> >=20
+> > Besides ... Moudy, can you please help to clarify the description of
+> > those clocks?
+>=20
+> May I address the check error by adding 2 functional descriptions and
+> specifying 'minIeims: 1' for this property, and apply the limit by
+> setting 'maxItems: 3' in MT8195 additional condition?
 
-Tested-by: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+
+That sounds reasonable
+
+--AcDfy0agmX9jcKA8
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZvhjmQAKCRB4tDGHoIJi
+0t5tAP9AhQrQg5BdiPm51hIYX60FP2j5MfqK3fnJyGLtjY+MhgEAnLtFBSFfQFkq
+wjGbq54IMzZ/w/JrwtVg7Y9ctV0+GAc=
+=/UTH
+-----END PGP SIGNATURE-----
+
+--AcDfy0agmX9jcKA8--
 
