@@ -4,97 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88A92CF6491
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Sep 2024 20:15:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 891E3CF6496
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Sep 2024 21:59:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3kfqJL+Ce+KVqNTYW8Umpp8aNhoV6KnxrN5beCqRahQ=; b=TvXjozvjXtxhJ2BJv7Jm++NFB2
-	3U3zpw7D48gmYMBkc2i0OVoEh5qfJ2iA+b4t5iaUGy/xmOOeaUzIbSr++ZcLAzqhTsg5jLZOknEER
-	rWGBIqkShd7K4xrk+2G9rIs4jFTwKT22oiU6RTaIcRorLIjAjhcivO/22peKGWVq8O5uQgiGV9D5L
-	TyuSGmUXT9ecbAYJFMKFksUEafY3tqO4wLPMNkaBGM2pkBJuS0Xknko2nVW11m3w5qpW9NlmtTgUg
-	FBd5FBshW+SsgOVkTbmTPO3LhHD12vaU8/J8AqePnOM/gT4QUn9CQZjPu4M9hF6mWgp79nPEe/hfX
-	SYl882/A==;
+	bh=56Gthcn7rQtBK3WvCFDNkMg1ObHLlvPZUsmtVuAREQ4=; b=3jWqlce95G6RKFKYRS82rykyNp
+	FQPVTF0nz0nx0dSvwACOxqtTtKLrpdFiqM9HN5gGtNe6PSJOqV2TrGCZyhUr6leOeo51ldPzTrWwx
+	C6X0k0ARH6V8XkTM1ffZjjGKMNCTFeAngCqug0JDP53pOK/7u+GjqvDS6h8oho3wXmTg0eM/ltGcW
+	MxMShfmVQZa4amCYLbWsYOob2LQsYufRREl10F9KOFbTnP42SM9IThr2SO/dKf/1MEtIojqU2hX5Y
+	BTicOar2IekagaEKLxom3okZI1UE0uHOpuqoanW7BXlhuFfadm9L3JGGyZtKPBV/3Y1rip5g8IcK+
+	4Asglw6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sudqx-0000000DaHB-1GLl;
-	Sat, 28 Sep 2024 20:15:43 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sufT7-0000000DhsZ-12KJ;
+	Sat, 28 Sep 2024 21:59:13 +0000
+Received: from mgamail.intel.com ([192.198.163.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sudpk-0000000Da8a-0HvN;
-	Sat, 28 Sep 2024 20:14:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id AF4265C01AC;
-	Sat, 28 Sep 2024 20:14:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0DA6CC4CEC3;
-	Sat, 28 Sep 2024 20:14:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727554466;
-	bh=fyzkp8bwC+pgUCdnd/ipBoI0RRrRQvdTxtU1+uStjnE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JSHM4egySK3ezdTOqKcIpDj8cQX3z1AAr6lqvqqTdKVx0OWDlqhPhp908NTUbGMgv
-	 PB15gK0cQ4KW+H0wmbEbEltG3rsLnnpqEiN6xrXptgDaQ3UvYh4vQr3wDnyua+GdvM
-	 nGEJ87/BBQLVLp7Nqh/f79aNFNvEhnyEfQpxaYcNu9rzpOJFzKQ3fz/r6basWILMLI
-	 R9usdwOLwKR0Q4cmKmYi9dSbLMEQIXtO1s10v2XtQp8H2ZZ6nN6t2VIantBsAjiEKp
-	 6HP6A7RaJC4LveccmPV0bZCLchG4RoSA5OgIKEOlwdM8iVvVEPty8Bf2j1haujXQqH
-	 6imGmxrESn6FQ==
-Date: Sat, 28 Sep 2024 21:14:17 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Moudy Ho =?utf-8?B?KOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Macpaul Lin =?utf-8?B?KOael+aZuuaWjCk=?= <Macpaul.Lin@mediatek.com>,
-	Pablo Sun =?utf-8?B?KOWtq+avk+e/lCk=?= <pablo.sun@mediatek.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	Chris-qj Chen =?utf-8?B?KOmZs+Wlh+mAsik=?= <Chris-qj.Chen@mediatek.com>,
-	Bear Wang =?utf-8?B?KOiQqeWOn+aDn+W+tyk=?= <bear.wang@mediatek.com>,
-	"wenst@chromium.org" <wenst@chromium.org>,
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"tzimmermann@suse.de" <tzimmermann@suse.de>,
-	"simona@ffwll.ch" <simona@ffwll.ch>,
-	"mripard@kernel.org" <mripard@kernel.org>,
-	Macross Chen =?utf-8?B?KOmZs+izoueiqSk=?= <macross.chen@mediatek.com>,
-	"joro@8bytes.org" <joro@8bytes.org>,
-	"robin.murphy@arm.com" <robin.murphy@arm.com>,
-	"p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
-	"macpaul@gmail.com" <macpaul@gmail.com>,
-	"maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"robh@kernel.org" <robh@kernel.org>,
-	Yong Wu =?utf-8?B?KOWQtOWLhyk=?= <Yong.Wu@mediatek.com>,
-	"airlied@gmail.com" <airlied@gmail.com>,
-	"iommu@lists.linux.dev" <iommu@lists.linux.dev>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	"krzk+dt@kernel.org" <krzk+dt@kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	Sen Chu =?utf-8?B?KOWCqOajrik=?= <Sen.Chu@mediatek.com>,
-	"will@kernel.org" <will@kernel.org>,
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: Re: [PATCH 3/6] dt-bindings: display: mediatek: Fix clocks count
- constraint for new SoCs
-Message-ID: <20240928-hummus-carol-0f09081f892d@spud>
-References: <20240924103156.13119-1-macpaul.lin@mediatek.com>
- <20240924103156.13119-3-macpaul.lin@mediatek.com>
- <ffc1900b-3921-48ca-a2b2-1b798c57e572@collabora.com>
- <20240924-commute-collision-13ad39717d31@spud>
- <2821ef09-1b32-082d-69d1-e09a3a302447@mediatek.com>
- <20240925-satisfy-epidermal-bd414891479a@spud>
- <7a1315ef-4be5-4528-858b-9f07c814636d@collabora.com>
- <93d9ffbe466ff61d5426b6f158a4b8464f56824d.camel@mediatek.com>
+	id 1sufT3-0000000DhrV-23qd;
+	Sat, 28 Sep 2024 21:59:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1727560750; x=1759096750;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=VoenVUM6zRadsqe4jBg41qjc8F7PTNEo9McuOPGYUzE=;
+  b=VAmNHqLM6FQEAj+LdLGtrX/uBXaXKITO6Kr0IH5T1D5+fVjAzVqbvBld
+   bMBMRi8VSyEqNYOkbL9T0YnTtlyOHOkEiRL5jGlT0JNK4NRnjyHToBmi2
+   PC/sKEaBcIJxRCvNQ6km1GQ1NGWxq97p9ld/m8bfWOMtHi2zJ7KRHlfHy
+   leO/Dvz1w43uxkyBsH931D3wwDgK8G4pfmeSgOZmf3obKXhcFMdRlGdQt
+   0k6DhzZskgcJvfKSDsgo63cgG1Dxj/cYo/wt81Wf/dDUKX6j6fBlGmBAC
+   1VWFz/WGXeb8Ua1i+BqaRM8u8/FGyY5sPVORImjSNtuV1EGTZWk1WdPFh
+   g==;
+X-CSE-ConnectionGUID: KCw2QQz9RdO+pV8aeoKt4g==
+X-CSE-MsgGUID: Q/z5PNQeRH2iOWbsVP7+Ag==
+X-IronPort-AV: E=McAfee;i="6700,10204,11209"; a="37261326"
+X-IronPort-AV: E=Sophos;i="6.11,162,1725346800"; 
+   d="scan'208";a="37261326"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Sep 2024 14:59:03 -0700
+X-CSE-ConnectionGUID: sGZ5C3E5Rf+BvJ7bUFGPCg==
+X-CSE-MsgGUID: 1UCfB+L1T4yh40P48CPOzQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,162,1725346800"; 
+   d="scan'208";a="72458896"
+Received: from lkp-server01.sh.intel.com (HELO 53e96f405c61) ([10.239.97.150])
+  by fmviesa006.fm.intel.com with ESMTP; 28 Sep 2024 14:59:00 -0700
+Received: from kbuild by 53e96f405c61 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1sufSr-000Ngl-2y;
+	Sat, 28 Sep 2024 21:58:57 +0000
+Date: Sun, 29 Sep 2024 05:58:50 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+	Alper Nebi Yasak <alpernebiyasak@gmail.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: oe-kbuild-all@lists.linux.dev, Shawn Sung <shawn.sung@mediatek.com>,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
+	Singo Chang <singo.chang@mediatek.com>,
+	Nancy Lin <nancy.lin@mediatek.com>,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v5 2/2] drm/mediatek: Add blend_modes to mtk_plane_init()
+ for different SoCs
+Message-ID: <202409290726.oaatx2OR-lkp@intel.com>
+References: <20240925101927.17042-3-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="AcDfy0agmX9jcKA8"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <93d9ffbe466ff61d5426b6f158a4b8464f56824d.camel@mediatek.com>
+In-Reply-To: <20240925101927.17042-3-jason-jh.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240928_131428_272599_23A3B2FF 
-X-CRM114-Status: GOOD (  41.28  )
+X-CRM114-CacheID: sfid-20240928_145909_605791_E926516E 
+X-CRM114-Status: GOOD (  13.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,117 +95,181 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Jason-JH.Lin,
 
---AcDfy0agmX9jcKA8
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+kernel test robot noticed the following build errors:
 
-On Fri, Sep 27, 2024 at 02:27:14AM +0000, Moudy Ho (=E4=BD=95=E5=AE=97=E5=
-=8E=9F) wrote:
-> On Thu, 2024-09-26 at 11:38 +0200, AngeloGioacchino Del Regno wrote:
-> > Il 25/09/24 16:34, Conor Dooley ha scritto:
-> > > On Wed, Sep 25, 2024 at 04:42:59PM +0800, Macpaul Lin wrote:
-> > > >=20
-> > > > On 9/25/24 00:00, Conor Dooley wrote:
-> > > > > On Tue, Sep 24, 2024 at 01:42:01PM +0200, AngeloGioacchino Del
-> > > > > Regno wrote:
-> > > > > > Il 24/09/24 12:31, Macpaul Lin ha scritto:
-> > > > > > > The display node in mt8195.dtsi was triggering a CHECK_DTBS
-> > > > > > > error due
-> > > > > > > to an excessively long 'clocks' property:
-> > > > > > >      display@14f06000: clocks: [[31, 14], [31, 43], [31,
-> > > > > > > 44]] is too long
-> > > > > > >=20
-> > > > > > > To resolve this issue, add "maxItems: 3" to the 'clocks'
-> > > > > > > property in
-> > > > > > > the DT schema.
-> > > > > > >=20
-> > > > > > > Fixes: 4ed545e7d100 ("dt-bindings: display: mediatek: disp:
-> > > > > > > split each block to individual yaml")
-> > > > > > > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> > > > > > > ---
-> > > > > > >     .../devicetree/bindings/display/mediatek/mediatek,split
-> > > > > > > .yaml     | 1 +
-> > > > > > >     1 file changed, 1 insertion(+)
-> > > > > > >=20
-> > > > > > > diff --git
-> > > > > > > a/Documentation/devicetree/bindings/display/mediatek/mediat
-> > > > > > > ek,split.yaml
-> > > > > > > b/Documentation/devicetree/bindings/display/mediatek/mediat
-> > > > > > > ek,split.yaml
-> > > > > > > index e4affc854f3d..42d2d483cc29 100644
-> > > > > > > ---
-> > > > > > > a/Documentation/devicetree/bindings/display/mediatek/mediat
-> > > > > > > ek,split.yaml
-> > > > > > > +++
-> > > > > > > b/Documentation/devicetree/bindings/display/mediatek/mediat
-> > > > > > > ek,split.yaml
-> > > > > > > @@ -57,6 +57,7 @@ properties:
-> > > > > > >       clocks:
-> > > > > > >         items:
-> > > > > > >           - description: SPLIT Clock
-> > > > > >=20
-> > > > > > That's at least confusing (granted that it works) - either
-> > > > > > add a description for
-> > > > > > each clock and then set `minItems: 1` (preferred), or remove
-> > > > > > this "SPLIT Clock"
-> > > > > > description and allow a maximum of 3 clocks.
-> > > > > >=20
-> > > > > > Removing the description can be done - IMO - because "SPLIT
-> > > > > > Clock" is, well,
-> > > > > > saying that the SPLIT block gets a SPLIT clock ... stating
-> > > > > > the obvious, anyway.
-> > > > >=20
-> > > > > Right, but what are the other two new clocks? Are they as
-> > > > > obvious?
-> > > > > There's no clock-names here to give any more information as to
-> > > > > what the
-> > > > > other clocks are supposed to be.
-> > > > >=20
-> > > > > Kinda unrelated, but I think that "SPLIT Clock" probably isn't
-> > > > > what the
-> > > > > name of the clock in the IP block is anyway, sounds more like
-> > > > > the name
-> > > > > for it on the provider end..
-> > > >=20
-> > > >=20
->  * Thanks for the suggestions. I think Moudy could help on the new
->    fixes
-> > > > for both DT schem and mt8195.dtsi. This patch could be separated
-> > > > from
-> > > > origin patch set.
-> > >=20
-> > > Not sure what you mean about separating it, if you mean correcting
-> > > the
-> > > description for the split clock sure. The other stuff I mentioned
-> > > needs
-> > > to be resolved before I'm willing to ack this.
-> >=20
-> > He means separating this patch from the rest of the series that he
-> > pushed - which
-> > is okay, as it's a bit mixed anyway :-)
-> >=20
-> > Besides ... Moudy, can you please help to clarify the description of
-> > those clocks?
->=20
-> May I address the check error by adding 2 functional descriptions and
-> specifying 'minIeims: 1' for this property, and apply the limit by
-> setting 'maxItems: 3' in MT8195 additional condition?
+[auto build test ERROR on drm/drm-next]
+[also build test ERROR on linus/master next-20240927]
+[cannot apply to v6.11]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Jason-JH-Lin/drm-mediatek-ovl-Add-fmt_convert-function-pointer-to-driver-data/20240925-182056
+base:   git://anongit.freedesktop.org/drm/drm drm-next
+patch link:    https://lore.kernel.org/r/20240925101927.17042-3-jason-jh.lin%40mediatek.com
+patch subject: [PATCH v5 2/2] drm/mediatek: Add blend_modes to mtk_plane_init() for different SoCs
+config: arm-randconfig-002-20240929 (https://download.01.org/0day-ci/archive/20240929/202409290726.oaatx2OR-lkp@intel.com/config)
+compiler: arm-linux-gnueabi-gcc (GCC) 14.1.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240929/202409290726.oaatx2OR-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202409290726.oaatx2OR-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   In file included from drivers/gpu/drm/mediatek/mtk_crtc.h:10,
+                    from drivers/gpu/drm/mediatek/mtk_crtc.c:22:
+>> drivers/gpu/drm/mediatek/mtk_ddp_comp.h:83:9: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+      83 |         const u32 (*get_blend_modes)(struct device *dev);
+         |         ^~~~~
+   drivers/gpu/drm/mediatek/mtk_ddp_comp.h:271:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     271 | const u32 mtk_ddp_comp_get_blend_modes(struct mtk_ddp_comp *comp)
+         | ^~~~~
+   cc1: all warnings being treated as errors
+--
+   In file included from drivers/gpu/drm/mediatek/mtk_crtc.h:10,
+                    from drivers/gpu/drm/mediatek/mtk_disp_color.c:13:
+>> drivers/gpu/drm/mediatek/mtk_ddp_comp.h:83:9: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+      83 |         const u32 (*get_blend_modes)(struct device *dev);
+         |         ^~~~~
+   drivers/gpu/drm/mediatek/mtk_ddp_comp.h:271:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     271 | const u32 mtk_ddp_comp_get_blend_modes(struct mtk_ddp_comp *comp)
+         | ^~~~~
+   In file included from drivers/gpu/drm/mediatek/mtk_disp_color.c:15:
+>> drivers/gpu/drm/mediatek/mtk_disp_drv.h:106:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     106 | const u32 mtk_ovl_get_blend_modes(struct device *dev);
+         | ^~~~~
+   drivers/gpu/drm/mediatek/mtk_disp_drv.h:135:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     135 | const u32 mtk_ovl_adaptor_get_blend_modes(struct device *dev);
+         | ^~~~~
+   drivers/gpu/drm/mediatek/mtk_disp_drv.h:170:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     170 | const u32 mtk_mdp_rdma_get_blend_modes(struct device *dev);
+         | ^~~~~
+   cc1: all warnings being treated as errors
+--
+   In file included from drivers/gpu/drm/mediatek/mtk_mdp_rdma.c:15:
+>> drivers/gpu/drm/mediatek/mtk_disp_drv.h:106:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     106 | const u32 mtk_ovl_get_blend_modes(struct device *dev);
+         | ^~~~~
+   drivers/gpu/drm/mediatek/mtk_disp_drv.h:135:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     135 | const u32 mtk_ovl_adaptor_get_blend_modes(struct device *dev);
+         | ^~~~~
+   drivers/gpu/drm/mediatek/mtk_disp_drv.h:170:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     170 | const u32 mtk_mdp_rdma_get_blend_modes(struct device *dev);
+         | ^~~~~
+   In file included from drivers/gpu/drm/mediatek/mtk_drm_drv.h:10,
+                    from drivers/gpu/drm/mediatek/mtk_mdp_rdma.c:16:
+>> drivers/gpu/drm/mediatek/mtk_ddp_comp.h:83:9: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+      83 |         const u32 (*get_blend_modes)(struct device *dev);
+         |         ^~~~~
+   drivers/gpu/drm/mediatek/mtk_ddp_comp.h:271:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     271 | const u32 mtk_ddp_comp_get_blend_modes(struct mtk_ddp_comp *comp)
+         | ^~~~~
+>> drivers/gpu/drm/mediatek/mtk_mdp_rdma.c:236:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     236 | const u32 mtk_mdp_rdma_get_blend_modes(struct device *dev)
+         | ^~~~~
+   cc1: all warnings being treated as errors
+--
+   In file included from drivers/gpu/drm/mediatek/mtk_crtc.h:10,
+                    from drivers/gpu/drm/mediatek/mtk_disp_ovl.c:18:
+>> drivers/gpu/drm/mediatek/mtk_ddp_comp.h:83:9: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+      83 |         const u32 (*get_blend_modes)(struct device *dev);
+         |         ^~~~~
+   drivers/gpu/drm/mediatek/mtk_ddp_comp.h:271:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     271 | const u32 mtk_ddp_comp_get_blend_modes(struct mtk_ddp_comp *comp)
+         | ^~~~~
+   In file included from drivers/gpu/drm/mediatek/mtk_disp_ovl.c:20:
+>> drivers/gpu/drm/mediatek/mtk_disp_drv.h:106:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     106 | const u32 mtk_ovl_get_blend_modes(struct device *dev);
+         | ^~~~~
+   drivers/gpu/drm/mediatek/mtk_disp_drv.h:135:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     135 | const u32 mtk_ovl_adaptor_get_blend_modes(struct device *dev);
+         | ^~~~~
+   drivers/gpu/drm/mediatek/mtk_disp_drv.h:170:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     170 | const u32 mtk_mdp_rdma_get_blend_modes(struct device *dev);
+         | ^~~~~
+>> drivers/gpu/drm/mediatek/mtk_disp_ovl.c:219:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     219 | const u32 mtk_ovl_get_blend_modes(struct device *dev)
+         | ^~~~~
+   cc1: all warnings being treated as errors
+--
+   In file included from drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c:20:
+>> drivers/gpu/drm/mediatek/mtk_ddp_comp.h:83:9: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+      83 |         const u32 (*get_blend_modes)(struct device *dev);
+         |         ^~~~~
+   drivers/gpu/drm/mediatek/mtk_ddp_comp.h:271:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     271 | const u32 mtk_ddp_comp_get_blend_modes(struct mtk_ddp_comp *comp)
+         | ^~~~~
+   In file included from drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c:21:
+>> drivers/gpu/drm/mediatek/mtk_disp_drv.h:106:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     106 | const u32 mtk_ovl_get_blend_modes(struct device *dev);
+         | ^~~~~
+   drivers/gpu/drm/mediatek/mtk_disp_drv.h:135:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     135 | const u32 mtk_ovl_adaptor_get_blend_modes(struct device *dev);
+         | ^~~~~
+   drivers/gpu/drm/mediatek/mtk_disp_drv.h:170:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     170 | const u32 mtk_mdp_rdma_get_blend_modes(struct device *dev);
+         | ^~~~~
+>> drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c:403:1: error: type qualifiers ignored on function return type [-Werror=ignored-qualifiers]
+     403 | const u32 mtk_ovl_adaptor_get_blend_modes(struct device *dev)
+         | ^~~~~
+   cc1: all warnings being treated as errors
 
 
-That sounds reasonable
+vim +83 drivers/gpu/drm/mediatek/mtk_ddp_comp.h
 
---AcDfy0agmX9jcKA8
-Content-Type: application/pgp-signature; name="signature.asc"
+    48	
+    49	struct mtk_ddp_comp;
+    50	struct cmdq_pkt;
+    51	struct mtk_ddp_comp_funcs {
+    52		int (*power_on)(struct device *dev);
+    53		void (*power_off)(struct device *dev);
+    54		int (*clk_enable)(struct device *dev);
+    55		void (*clk_disable)(struct device *dev);
+    56		void (*config)(struct device *dev, unsigned int w,
+    57			       unsigned int h, unsigned int vrefresh,
+    58			       unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
+    59		void (*start)(struct device *dev);
+    60		void (*stop)(struct device *dev);
+    61		void (*register_vblank_cb)(struct device *dev,
+    62					   void (*vblank_cb)(void *),
+    63					   void *vblank_cb_data);
+    64		void (*unregister_vblank_cb)(struct device *dev);
+    65		void (*enable_vblank)(struct device *dev);
+    66		void (*disable_vblank)(struct device *dev);
+    67		unsigned int (*supported_rotations)(struct device *dev);
+    68		unsigned int (*layer_nr)(struct device *dev);
+    69		int (*layer_check)(struct device *dev,
+    70				   unsigned int idx,
+    71				   struct mtk_plane_state *state);
+    72		void (*layer_config)(struct device *dev, unsigned int idx,
+    73				     struct mtk_plane_state *state,
+    74				     struct cmdq_pkt *cmdq_pkt);
+    75		unsigned int (*gamma_get_lut_size)(struct device *dev);
+    76		void (*gamma_set)(struct device *dev,
+    77				  struct drm_crtc_state *state);
+    78		void (*bgclr_in_on)(struct device *dev);
+    79		void (*bgclr_in_off)(struct device *dev);
+    80		void (*ctm_set)(struct device *dev,
+    81				struct drm_crtc_state *state);
+    82		struct device * (*dma_dev_get)(struct device *dev);
+  > 83		const u32 (*get_blend_modes)(struct device *dev);
+    84		const u32 *(*get_formats)(struct device *dev);
+    85		size_t (*get_num_formats)(struct device *dev);
+    86		void (*connect)(struct device *dev, struct device *mmsys_dev, unsigned int next);
+    87		void (*disconnect)(struct device *dev, struct device *mmsys_dev, unsigned int next);
+    88		void (*add)(struct device *dev, struct mtk_mutex *mutex);
+    89		void (*remove)(struct device *dev, struct mtk_mutex *mutex);
+    90		unsigned int (*encoder_index)(struct device *dev);
+    91		enum drm_mode_status (*mode_valid)(struct device *dev, const struct drm_display_mode *mode);
+    92	};
+    93	
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZvhjmQAKCRB4tDGHoIJi
-0t5tAP9AhQrQg5BdiPm51hIYX60FP2j5MfqK3fnJyGLtjY+MhgEAnLtFBSFfQFkq
-wjGbq54IMzZ/w/JrwtVg7Y9ctV0+GAc=
-=/UTH
------END PGP SIGNATURE-----
-
---AcDfy0agmX9jcKA8--
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
