@@ -4,99 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24014CF6493
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Sep 2024 07:36:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0838CCF6495
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Sep 2024 13:02:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CZ3GJJVCrrzGvR7fAA0nSrjc16wiFeyBC54h9NaWyFQ=; b=VsM6I2h6K2A9KI5pl3i3SZx5d8
-	ajQH7Akp/crCQ46ATIwiPR5MVC3U/f2ok0dspFTu7GLmDcgoOPA4J/dOWzRkRtONBTe6WwRFtpGsi
-	GCaemzWERBBb9JvO+daIEwNiECUbLIijFFddrjnIfgtNR2XDFWSBZng8GWGZr4IVZtCKs5cIfhUcF
-	7hz88vW4d86/KnGgNGRMnvU/FO/kgx/LpQsEcTw53VDjhKggOOys264Ksag/dyINUbyeH3n1nQ1Hw
-	v15G9/gXCWSFkjyt1bmO13wyUhjb/El5rdcJQd+2a2eT+lIk5S8huO3vkN8MwtBVC65Klg5zlBcHA
-	NfexxBjA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EedeES2rtNeV4YWRh0TPWkSTA0alnE1XrpkIkW1q7+s=; b=nSlIVm0VAki+T6I2FyQU8FF5TG
+	UwOxq8Vl0DarxeT5kfcvVVx7o1Ne6AD0iLAVhbjDLPraH8bAU+rNwxo5uPyWjW6MRjxmjnex/kb8C
+	HB5WlopnppVUGwkqqjojq7aIfWunumHBTYy2QypSyRetN4yy+tl/GXo7ZDQwdmZ3uqiVWa3LtEDML
+	BAsQVEzDSqk1wsGz/dX/+i0ZDS/z0wEZVmrM/se9rbvd1F58utLPcvRFv568hiYDm8XaLH6T5nyVq
+	Owgd2ea00IVT28OoaGQr/X9Jreh0jzqEZAPtKrJDhdUB4mC8m1ZofzmrxdqBVN6sIMQE8k3VhX4GM
+	SxEm9vUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1suS02-0000000CkrO-0NGQ;
-	Sat, 28 Sep 2024 07:36:18 +0000
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
+	id 1suX5s-0000000D5d2-2kw0;
+	Sat, 28 Sep 2024 13:02:40 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1suRyp-0000000Cki3-1Ypx
-	for linux-mediatek@lists.infradead.org;
-	Sat, 28 Sep 2024 07:35:05 +0000
-Received: by mail-pg1-x536.google.com with SMTP id 41be03b00d2f7-7d50e7a3652so1928734a12.3
-        for <linux-mediatek@lists.infradead.org>; Sat, 28 Sep 2024 00:35:02 -0700 (PDT)
+	id 1suX5p-0000000D5cD-1rY6;
+	Sat, 28 Sep 2024 13:02:39 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-42cde6b5094so26988555e9.3;
+        Sat, 28 Sep 2024 06:02:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1727508902; x=1728113702; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=CZ3GJJVCrrzGvR7fAA0nSrjc16wiFeyBC54h9NaWyFQ=;
-        b=jJowoJaR9o/sVQcLBEmIriWySRFB+O6T+P3dkeRAYC1283s4nflrAsIm8qNfogXFBY
-         lyaTnmr0mggYDaqIwPkGma2+ZLsnJ+4V1KHh1YdSHCAcqt8c21ffce5xMPpDnh/fGp5h
-         gMSUY8lJjtpxwSgtEdA7umEzRU7ohPfCHx+knyJR/lz8tBbuDdpcXAsKDBiK+lYax5dV
-         NLegKbyARBvoXEb46O+d40nyovuNfAXNcgP4JyiX5l0uEjkJSPGXX6DGYig9iFLhzSYT
-         zy0ARe05lB85qQ0vb/W0x8dLqEAKzxOPQuDM4Ngx0FfHwKI/iDUrLmDAS3OZxnalMI+C
-         pcmw==
+        d=gmail.com; s=20230601; t=1727528554; x=1728133354; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=EedeES2rtNeV4YWRh0TPWkSTA0alnE1XrpkIkW1q7+s=;
+        b=PqMhm7t+kah3joU/e6ATjgyGKwjEHfkl27GuOCprAE4uQg37oM0oueAq1RSbWOTTKe
+         NUUhA1uOjptkANQYivdTUDWP6sirzhRHXH9pGaDwm/D9mBLbFdfP6QSexX+YbRTv0rx6
+         GqW3ZtUVP0Dvw+YuWzVnm1CzfLy5g5/yB4tYHYs2o1NGb41fzQLF4Y2Rgb97fKxTtW3A
+         mjDSOetAfnybR4nrHEvJBjMqhAsayMyzNTn2SkO2E4aNzPg2SYLwsYOuxfKY6WJ6JVxx
+         dOS24i50JDfvcF/eA9zqM5uFcj6tGoLM/Xilsms6drLXr0GP1wUetNrRgG2iKFmQsL2S
+         FhpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727508902; x=1728113702;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=CZ3GJJVCrrzGvR7fAA0nSrjc16wiFeyBC54h9NaWyFQ=;
-        b=V8V3Eo4zlMvWxoZ+1zE8YqYWGePnLZ6kk3pKEt/CERoRdPz2fXPoNeN/vKM+xyL38p
-         OkVji3YBiW40KdnBIqxvtzSh7pJ0iu+d/uvGO1Eqiq3MhGppEciaBXTU2kDPoF+zxo4U
-         2lXPajag9o6X+j/gX3vxCjJrlh0icNiI2TrFtZe/0h2iyIPgMZYJg5CCRh9JatWxKcH+
-         B5IgO7Odnhg1xkSZUbgRnFjNytKhBQWXP/7Ni4K/e57/9m0PrFgyqmWM08YrgUPHxzYL
-         C9aHPGMTBCJprkr1su21K13c6TA2OFe4IKPtJuCUpm3klAiJgqM3DkVSAL3ufzPKET1/
-         rquQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWi1h3ZZxKo1qKYGZxiCNyiatWji5BU3/1GK7EL8PxRMAe4ZWcBr/tsMiplr8f6Ln2XQNvVja5cfS8xmwjT+A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YywsfU+u94QnKA2bYoS+310+QlKNmK0f0hHDgienVFoCYrtxb7x
-	Zqqlt2TOuCSPVOI8c8j208F41aNvJjtkJzxoQ13of5naLGDm/m7cBIHied9ntiYSrHbCywxRihz
-	IO9p7EM32u/QLryNxHo7OvHJSzYwzawiS2zpSZA==
-X-Google-Smtp-Source: AGHT+IE8STUqnUdbp16wn+jWytnLJo7GbATydnL1PXc5q5xA5jCeVCG+33+GkdczeH+HdjoM/t8GaXFW5O+RCkxcmVg=
-X-Received: by 2002:a05:6a00:8c2:b0:714:2482:ab3c with SMTP id
- d2e1a72fcca58-71b25f40b4cmr9950991b3a.7.1727508902091; Sat, 28 Sep 2024
- 00:35:02 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1727528554; x=1728133354;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=EedeES2rtNeV4YWRh0TPWkSTA0alnE1XrpkIkW1q7+s=;
+        b=UgEa+PvwwRHoRQLvgn62RM2FLF0YxRwd4PxSuJzYqEtemmbRecCsH9PUQpW41WTSvw
+         3F2rtQgvZJIIsAPTtk+LrA2T85ZXnceo4vEGshBt8WO5GWZKkFpIQKzZhNF8pKg/4x0F
+         nMCjE9g5HVHz9NTQm9N7tXQmrpiQJncIlaHgDNqA1hlB26ysTggpYFfAyHcYMDy2er0O
+         Ns6OwAtAntsMhlwQtO6tHuCtsUhXrjW6uWkgIEscjwL2DD0ouuGnwoTvAdnF7oTOvfal
+         CyVyNqfhNBuE1K2lKiKHmsxrSOXQWEzO8CUzD5Ybr6Ifvm5WpBoVfMet0yAx2lQkFN5o
+         7+8A==
+X-Forwarded-Encrypted: i=1; AJvYcCVHsqMPp7ELmdnhlimtcmT7Y85KEEs6wPDVoGmRnQ4plPtKsJWoY/8dbI4bJz3qGKyTeAQMqhRug2SJQ743L+pF@lists.infradead.org, AJvYcCW38BI2Ly0kJGQsIIoUbUhxGE1An+BizxTMiwsF7wPT2+s/DtWre550LC7uwVvO7HwHXQAHzQ7FdnhBwycdjnk=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyB332BikMtk92bnqb3Pnoc7rtt3QQ7j6tCFZTP98ab4r11aBxI
+	MquX2ERcROpKADMea6du67K2/6gz9RibPBMtFgW8qwWqjXdwdZ4M
+X-Google-Smtp-Source: AGHT+IGEznQ3u6gvyrG89Vgks8gfWnd2OfS/AZaiWVRXkRg9Z2ETr3av60pSZvjToKoQqW6UgNJduw==
+X-Received: by 2002:a05:600c:3b93:b0:42c:b995:20d3 with SMTP id 5b1f17b1804b1-42f58484b34mr48043085e9.26.1727528554170;
+        Sat, 28 Sep 2024 06:02:34 -0700 (PDT)
+Received: from [192.168.0.10] ([178.233.24.52])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42e969f211dsm102599235e9.11.2024.09.28.06.02.27
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 28 Sep 2024 06:02:33 -0700 (PDT)
+Message-ID: <adf21ae5-6820-44ea-8cc9-7a42b345114b@gmail.com>
+Date: Sat, 28 Sep 2024 16:02:25 +0300
 MIME-Version: 1.0
-References: <20240925075707.3970187-1-linyunsheng@huawei.com>
- <20240925075707.3970187-3-linyunsheng@huawei.com> <CAHS8izOxugzWJDTc-4CWqaKABTj=J4OHs=Lcb=SE9r8gX0J+yg@mail.gmail.com>
- <842c8cc6-f716-437a-bc98-70bc26d6fd38@huawei.com> <CAC_iWjLgNOtsbhqrhvvEz2C3S668qB8KatL_W+tPHMSkDrNS=w@mail.gmail.com>
- <0ef315df-e8e9-41e8-9ba8-dcb69492c616@huawei.com> <CAC_iWjKeajwn3otjdEekE6VDLHGEvqmnQRwpN5R3yHj8UpEiDw@mail.gmail.com>
- <934d601f-be43-4e04-b126-dc86890a4bfa@huawei.com>
-In-Reply-To: <934d601f-be43-4e04-b126-dc86890a4bfa@huawei.com>
-From: Ilias Apalodimas <ilias.apalodimas@linaro.org>
-Date: Sat, 28 Sep 2024 10:34:25 +0300
-Message-ID: <CAC_iWjL7m4ZL2W2OZM5F22dLvZhxU6fyCXV_xjyGf+W7UP43EQ@mail.gmail.com>
-Subject: Re: [PATCH net v2 2/2] page_pool: fix IOMMU crash when driver has
- already unbound
-To: Yunsheng Lin <linyunsheng@huawei.com>
-Cc: Mina Almasry <almasrymina@google.com>, davem@davemloft.net, kuba@kernel.org, 
-	pabeni@redhat.com, liuyonglong@huawei.com, fanghaiqing@huawei.com, 
-	zhangkun09@huawei.com, Robin Murphy <robin.murphy@arm.com>, 
-	Alexander Duyck <alexander.duyck@gmail.com>, IOMMU <iommu@lists.linux.dev>, 
-	Wei Fang <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, 
-	Clark Wang <xiaoning.wang@nxp.com>, Eric Dumazet <edumazet@google.com>, 
-	Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
-	Alexander Lobakin <aleksander.lobakin@intel.com>, Alexei Starovoitov <ast@kernel.org>, 
-	Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, 
-	John Fastabend <john.fastabend@gmail.com>, Saeed Mahameed <saeedm@nvidia.com>, 
-	Leon Romanovsky <leon@kernel.org>, Tariq Toukan <tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Andrew Morton <akpm@linux-foundation.org>, imx@lists.linux.dev, netdev@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org, 
-	bpf@vger.kernel.org, linux-rdma@vger.kernel.org, 
-	linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-mm@kvack.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 0/3] Fix degradation problem of alpha blending series
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Shawn Sung <shawn.sung@mediatek.com>, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Singo Chang
+ <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20240926102238.24303-1-jason-jh.lin@mediatek.com>
+Content-Language: en-US, tr, en-GB
+From: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+In-Reply-To: <20240926102238.24303-1-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240928_003503_468803_A284F5AD 
-X-CRM114-Status: GOOD (  39.19  )
+X-CRM114-CacheID: sfid-20240928_060237_526702_7C4A2BFA 
+X-CRM114-Status: GOOD (  10.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,95 +98,125 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yunsheng,
+Hi,
 
-Overall this is a patch in the right direction. I want to get feedback
-from others since Jakub and Jesper seemed to prefer the stalling idea.
+On 2024-09-26 13:22 +03:00, Jason-JH.Lin wrote:
+> Some SoCs not support pre-multiplied pixel formats and extending
+> configuration of OVL pre-multiplied color formats, such as MT8173.
+> 
+> Fix the SoC degradation problem by this sreies.
+> 
+> ---
+> 
+> Change in v7:
+> 1. Add the remove color format comment patch for OVL
+> 2. Fix warning: 'const' type qualifier on return type has no effect
+> 
+> [...]
 
-On Fri, 27 Sept 2024 at 14:29, Yunsheng Lin <linyunsheng@huawei.com> wrote:
->
-> On 2024/9/27 17:58, Ilias Apalodimas wrote:
->
-> ...
->
-> >>
-> >>> importantly, though, why does struct page need to know about this?
-> >>> Can't we have the same information in page pool?
-> >>> When the driver allocates pages it does via page_pool_dev_alloc_XXXXX
-> >>> or something similar. Cant we do what you suggest here ? IOW when we
-> >>> allocate a page we put it in a list, and when that page returns to
-> >>> page_pool (and it's mapped) we remove it.
-> >>
-> >> Yes, that is the basic idea, but the important part is how to do that
-> >> with less performance impact.
-> >
-> > Yes, but do you think that keeping that list of allocated pages in
-> > struct page_pool will end up being more costly somehow compared to
-> > struct page?
->
-> I am not sure if I understand your above question here.
-> I am supposing the question is about what's the cost between using
-> single/doubly linked list for the inflight pages or using a array
-> for the inflight pages like this patch does using pool->items?
+I get warnings and "*ERROR* failed to create property: blend_mode" a few 
+times until mediatek-drm initializes. It happens on MT8173 and MT8183, but 
+not on MT8186. Colors are correct, though. (I'm tempted to add Tested-by.)
 
-Yes, that wasn't very clear indeed, apologies for any confusion. I was
-trying to ask on a linked list that only lives in struct page_pool.
-But I now realize this was a bad idea since the lookup would be way
-slower.
+------8<------
 
-> If I understand question correctly, the single/doubly linked list
-> is more costly than array as the page_pool case as my understanding.
->
-> For single linked list, it doesn't allow deleting a specific entry but
-> only support deleting the first entry and all the entries. It does support
-> lockless operation using llist, but have limitation as below:
-> https://elixir.bootlin.com/linux/v6.7-rc8/source/include/linux/llist.h#L13
->
-> For doubly linked list, it needs two pointer to support deleting a specific
-> entry and it does not support lockless operation.
+From MT8173:
 
-I didn't look at the patch too carefully at first. Looking a bit
-closer now, the array is indeed better, since the lookup is faster.
-You just need the stored index in struct page to find the page we need
-to unmap. Do you remember if we can reduce the atomic pp_ref_count to
-32bits? If so we can reuse that space for the index. Looking at it
-requires a bit more work in netmem, but that's mostly swapping all the
-atomic64 calls to atomic ones.
+[  +0.017201] ------------[ cut here ]------------
+[  +0.009250] WARNING: CPU: 3 PID: 37 at drivers/gpu/drm/drm_blend.c:586 drm_plane_create_blend_mode_property+0xf0/0x110 [drm]
+[  +0.022533] Modules linked in: [...]
+[  +0.158166] CPU: 3 UID: 0 PID: 37 Comm: kworker/u16:1 Tainted: G        W          6.11.0-next-20240927-deb-00006-ge514a0f89dd9 #
+[  +0.023542] Tainted: [W]=WARN
+[  +0.005936] Hardware name: Google Hana (DT)
+[  +0.008379] Workqueue: events_unbound deferred_probe_work_func
+[  +0.011694] pstate: 80000005 (Nzcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  +0.013959] pc : drm_plane_create_blend_mode_property+0xf0/0x110 [drm]
+[  +0.013111] lr : mtk_plane_init+0xf4/0x198 [mediatek_drm]
+[  +0.010829] sp : ffff800081d538c0
+[  +0.006634] x29: ffff800081d538c0 x28: ffff0000c431e080 x27: ffff0000c19787a8
+[  +0.014314] x26: 0000000000000548 x25: 0000000000000006 x24: ffff0000c431f000
+[  +0.014317] x23: 0000000000000035 x22: 0000000000000006 x21: ffff0000c0ca1058
+[  +0.014313] x20: 0000000000000006 x19: 0000000000000000 x18: ffffffffffffffff
+[  +0.014314] x17: 6f72702065746165 x16: 7263206f74206465 x15: ffff0000c414e626
+[  +0.014316] x14: 0000000000000000 x13: 0000000000000028 x12: 0101010101010101
+[  +0.014313] x11: 7f7f7f7f7f7f7f7f x10: fefefeff726e6f79 x9 : ffff800079e689dc
+[  +0.014316] x8 : ffff0000c5875554 x7 : 00000000eeeeeeee x6 : 00000000c0c0c0c0
+[  +0.014314] x5 : 0000000000000000 x4 : ffff0000c0ca1190 x3 : ffff0000c0ca1190
+[  +0.014313] x2 : 000000000000ffff x1 : 0000000000000006 x0 : ffff0000c0ca1058
+[  +0.014314] Call trace:
+[  +0.004891]  drm_plane_create_blend_mode_property+0xf0/0x110 [drm]
+[  +0.012415]  mtk_plane_init+0xf4/0x198 [mediatek_drm]
+[  +0.010132]  mtk_crtc_create+0x34c/0x858 [mediatek_drm]
+[  +0.010479]  mtk_drm_bind+0x4b4/0x600 [mediatek_drm]
+[  +0.009956]  try_to_bring_up_aggregate_device+0x21c/0x2e8
+[  +0.010825]  __component_add+0xc0/0x1c0
+[  +0.007685]  component_add+0x1c/0x38
+[  +0.007163]  mtk_disp_rdma_probe+0x148/0x230 [mediatek_drm]
+[  +0.011175]  platform_probe+0x70/0xe8
+[  +0.007338]  really_probe+0xc8/0x3a0
+[  +0.007161]  __driver_probe_device+0x84/0x160
+[  +0.008730]  driver_probe_device+0x44/0x130
+[  +0.008379]  __device_attach_driver+0xc4/0x170
+[  +0.008905]  bus_for_each_drv+0x90/0x100
+[  +0.007855]  __device_attach+0xa8/0x1c8
+[  +0.007685]  device_initial_probe+0x1c/0x30
+[  +0.008380]  bus_probe_device+0xb0/0xc0
+[  +0.007683]  deferred_probe_work_func+0xbc/0x120
+[  +0.009253]  process_one_work+0x178/0x3d0
+[  +0.008033]  worker_thread+0x200/0x3f0
+[  +0.007511]  kthread+0xe8/0xf8
+[  +0.006115]  ret_from_fork+0x10/0x20
+[  +0.007164] ---[ end trace 0000000000000000 ]---
+[  +0.009278] [drm:mtk_plane_init [mediatek_drm]] *ERROR* failed to create property: blend_mode
 
->
-> For pool->items, as the alloc side is protected by NAPI context, and the
-> free side use item->pp_idx to ensure there is only one producer for each
-> item, which means for each item in pool->items, there is only one consumer
-> and one producer, which seems much like the case when the page is not
-> recyclable in __page_pool_put_page, we don't need a lock protection when
-> calling page_pool_return_page(), the 'struct page' is also one consumer
-> and one producer as the pool->items[item->pp_idx] does:
-> https://elixir.bootlin.com/linux/v6.7-rc8/source/net/core/page_pool.c#L645
->
-> We only need a lock protection when page_pool_destroy() is called to
-> check if there is inflight page to be unmapped as a consumer, and the
-> __page_pool_put_page() may also called to unmapped the inflight page as
-> another consumer,
+From MT8183:
 
-Thanks for the explanation. On the locking side, page_pool_destroy is
-called once from the driver and then it's either the workqueue for
-inflight packets or an SKB that got freed and tried to recycle right?
-But do we still need to do all the unmapping etc from the delayed
-work? Since the new function will unmap all packets in
-page_pool_destroy, we can just skip unmapping when the delayed work
-runs
-
-Thanks
-/Ilias
-
-
-
-
-
-> there is why the 'destroy_lock' is added for protection
-> when pool->destroy_cnt > 0.
->
-> >
-> > Thanks
-> > /Ilias
+[   13.936989] ------------[ cut here ]------------
+[   13.946224] WARNING: CPU: 5 PID: 60 at drivers/gpu/drm/drm_blend.c:586 drm_plane_create_blend_mode_property+0xf0/0x110 [drm]
+[   13.968714] Modules linked in: [...]
+[   14.116814] CPU: 5 UID: 0 PID: 60 Comm: kworker/u34:2 Tainted: G        W          6.11.0-next-20240927-deb-00006-ge514a0f89dd9 #1
+[   14.140323] Tainted: [W]=WARN
+[   14.146248] Hardware name: Google cozmo board (DT)
+[   14.155830] Workqueue: events_unbound deferred_probe_work_func
+[   14.167505] pstate: 80000005 (Nzcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[   14.181440] pc : drm_plane_create_blend_mode_property+0xf0/0x110 [drm]
+[   14.194529] lr : mtk_plane_init+0xf4/0x188 [mediatek_drm]
+[   14.205338] sp : ffff8000804a3860
+[   14.211960] x29: ffff8000804a3860 x28: ffff715445288080 x27: ffff7154417fa748
+[   14.226247] x26: 0000000000000548 x25: 0000000000000006 x24: ffff71544528a000
+[   14.240536] x23: 0000000000000035 x22: 0000000000000006 x21: ffff715445a49ae8
+[   14.254822] x20: 0000000000000006 x19: 0000000000000000 x18: ffffffffffffffff
+[   14.269110] x17: 6f72702065746165 x16: ffffd6facceae8c0 x15: ffff715470421d46
+[   14.283398] x14: 0000000000000000 x13: 0000000000000028 x12: 0101010101010101
+[   14.297686] x11: 7f7f7f7f7f7f7f7f x10: fefefeff726e6f79 x9 : ffffd6fa92d179dc
+[   14.311973] x8 : ffff715445156ad4 x7 : 00000000eeeeeeee x6 : 00000000c0c0c0c0
+[   14.326261] x5 : 0000000000000000 x4 : ffff715445a49c20 x3 : ffff715445a49c20
+[   14.340549] x2 : 000000000000ffff x1 : 0000000000000006 x0 : ffff715445a49ae8
+[   14.354837] Call trace:
+[   14.359718]  drm_plane_create_blend_mode_property+0xf0/0x110 [drm]
+[   14.372111]  mtk_plane_init+0xf4/0x188 [mediatek_drm]
+[   14.382224]  mtk_crtc_create+0x34c/0x858 [mediatek_drm]
+[   14.392685]  mtk_drm_bind+0x51c/0x600 [mediatek_drm]
+[   14.402622]  try_to_bring_up_aggregate_device+0x21c/0x2e8
+[   14.413425]  __component_add+0xc0/0x1c0
+[   14.421094]  component_add+0x1c/0x38
+[   14.428241]  mtk_dsi_host_attach+0x80/0xe0 [mediatek_drm]
+[   14.439049]  devm_mipi_dsi_attach+0x3c/0xa0
+[   14.447413]  anx7625_link_bridge+0xfc/0x1c8 [anx7625]
+[   14.457522]  dp_aux_ep_probe+0x54/0x110 [drm_dp_aux_bus]
+[   14.468150]  really_probe+0xc8/0x3a0
+[   14.475296]  __driver_probe_device+0x84/0x160
+[   14.484009]  driver_probe_device+0x44/0x130
+[   14.492374]  __device_attach_driver+0xc4/0x170
+[   14.501261]  bus_for_each_drv+0x90/0x100
+[   14.509103]  __device_attach+0xa8/0x1c8
+[   14.516772]  device_initial_probe+0x1c/0x30
+[   14.525137]  bus_probe_device+0xb0/0xc0
+[   14.532805]  deferred_probe_work_func+0xbc/0x120
+[   14.542040]  process_one_work+0x178/0x3d0
+[   14.550059]  worker_thread+0x200/0x3f0
+[   14.557553]  kthread+0xe8/0xf8
+[   14.563656]  ret_from_fork+0x10/0x20
+[   14.570803] ---[ end trace 0000000000000000 ]---
+[   14.580052] [drm:mtk_plane_init [mediatek_drm]] *ERROR* failed to create property: blend_mode
 
