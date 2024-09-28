@@ -4,102 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2E3FCDD1D2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Sep 2024 19:50:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24014CF6493
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Sep 2024 07:36:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U2tg8OU6eAd7XdNvSYc+LJitu1DCYWL+a/jnG4hrEak=; b=BFHqDMSPXRyRhSDQef5naXG2Gu
-	fwXUNkV4sZ3QBZF7HZE9x+1qzV9Bo8hPz/BWDcVyM7GALawSg4w6EGWnSS57/3EvUYUeYSWjddC7f
-	CuzO0xrTNLoU2r4/geDQzatmpUw/IfaM83iNaXyseNyVd3fQLnh2KvyqIzPt4ZrKi3qeBJ/jiASR/
-	VZQNQBoHlbwWs0FHOEehNeyk58AR80Amer5GympqKO9c2Sxwe1GlOIQOiiZNknmiNNEOOi7dBT/qn
-	09HZBO55BjQC4VtceX/GbDh2A0H9TVPl8KJuFS4TuwCIiR4c4UwMKlCleNw49em+dhwNalshMbv9F
-	FGRUJVhA==;
+	bh=CZ3GJJVCrrzGvR7fAA0nSrjc16wiFeyBC54h9NaWyFQ=; b=VsM6I2h6K2A9KI5pl3i3SZx5d8
+	ajQH7Akp/crCQ46ATIwiPR5MVC3U/f2ok0dspFTu7GLmDcgoOPA4J/dOWzRkRtONBTe6WwRFtpGsi
+	GCaemzWERBBb9JvO+daIEwNiECUbLIijFFddrjnIfgtNR2XDFWSBZng8GWGZr4IVZtCKs5cIfhUcF
+	7hz88vW4d86/KnGgNGRMnvU/FO/kgx/LpQsEcTw53VDjhKggOOys264Ksag/dyINUbyeH3n1nQ1Hw
+	v15G9/gXCWSFkjyt1bmO13wyUhjb/El5rdcJQd+2a2eT+lIk5S8huO3vkN8MwtBVC65Klg5zlBcHA
+	NfexxBjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1suGyi-0000000Byqx-0eEZ;
-	Fri, 27 Sep 2024 19:50:12 +0000
-Received: from mail-qv1-xf2e.google.com ([2607:f8b0:4864:20::f2e])
+	id 1suS02-0000000CkrO-0NGQ;
+	Sat, 28 Sep 2024 07:36:18 +0000
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1suGyf-0000000Bypo-17MY
+	id 1suRyp-0000000Cki3-1Ypx
 	for linux-mediatek@lists.infradead.org;
-	Fri, 27 Sep 2024 19:50:11 +0000
-Received: by mail-qv1-xf2e.google.com with SMTP id 6a1803df08f44-6c548eb3354so18960506d6.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 27 Sep 2024 12:50:08 -0700 (PDT)
+	Sat, 28 Sep 2024 07:35:05 +0000
+Received: by mail-pg1-x536.google.com with SMTP id 41be03b00d2f7-7d50e7a3652so1928734a12.3
+        for <linux-mediatek@lists.infradead.org>; Sat, 28 Sep 2024 00:35:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1727466607; x=1728071407; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=U2tg8OU6eAd7XdNvSYc+LJitu1DCYWL+a/jnG4hrEak=;
-        b=1HSl24hNORduLC0234RpD+s6k66tjR4FVDmcffG0T0RYzx9pX4WVsO/6lsegALaJyl
-         i17h5VVk52fmVF20sSs+KaXQfnztgPVhSs2lQm3oUFBbj1zulCUx3DMzZ3AbRyTHSXDC
-         gxTvvBd9OauOMX/A5rz9BN2p8fJxORQCOhzukhxuuC3r8rjose/ntrpXbS2wtofSuuxk
-         5KJXpj0eDp+zVTIkLEtVk2vNeUFvLRglXwSdiKBAGTmNz5PwXPVxoT6PkXTvugBTB6/C
-         W+97UygNnCVRFGwfKJQ8jMu+CjYzhqlcrapZLt5SA8e7B4Z0HfVGXE6O5++dF7SjsOez
-         MsAA==
+        d=linaro.org; s=google; t=1727508902; x=1728113702; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=CZ3GJJVCrrzGvR7fAA0nSrjc16wiFeyBC54h9NaWyFQ=;
+        b=jJowoJaR9o/sVQcLBEmIriWySRFB+O6T+P3dkeRAYC1283s4nflrAsIm8qNfogXFBY
+         lyaTnmr0mggYDaqIwPkGma2+ZLsnJ+4V1KHh1YdSHCAcqt8c21ffce5xMPpDnh/fGp5h
+         gMSUY8lJjtpxwSgtEdA7umEzRU7ohPfCHx+knyJR/lz8tBbuDdpcXAsKDBiK+lYax5dV
+         NLegKbyARBvoXEb46O+d40nyovuNfAXNcgP4JyiX5l0uEjkJSPGXX6DGYig9iFLhzSYT
+         zy0ARe05lB85qQ0vb/W0x8dLqEAKzxOPQuDM4Ngx0FfHwKI/iDUrLmDAS3OZxnalMI+C
+         pcmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727466607; x=1728071407;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=U2tg8OU6eAd7XdNvSYc+LJitu1DCYWL+a/jnG4hrEak=;
-        b=v/DcaZcO3gl4wXsaBRUQ5R8ICmcWfvx6PIP6EcudExqA5fMG9299UrJwpB6oEVnm+4
-         R/p705j/vFlVqTpEPdLAGcc8gMbSvHEwRFI1SRbe1sHqwhNWAIw7G0pyswFGf6q0YycI
-         zecScj1d3GTosxl86EFV3gOx7KLBoVBK+wedQhpd//HDtKBlXPK+WB7ieMjPcZgJHG8V
-         98ui+o0UqaqgvGTtvwbAr+xokZKY3BNYHX96oeSukj+mcxevbQ6WL7No64gP/4Zl2Z1R
-         f6EXlb7nNql2jm83rS5X2AYi/yedy4/p7sT/iHokMTI7L7H6fyZ6plgFsnLA0fc88HCl
-         wrDA==
-X-Forwarded-Encrypted: i=1; AJvYcCXJwy9KYzQnruOWQWLDtiAOkSZjl5K9QuLwYluyA1IJp11CzwDNTuNyLr7NEjE4GIGkSAL8uqYCFDUQ2639dw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxxZodS7Hz6Bkb3sLgSQqjo1W6PPAX2K7bmm1iWrzUxcgwDSi2B
-	AsDyRxTagxKc5fbnAthondAg2RFlMq+hNiT1Yyt3br8mQ2/ElccLB5sHXD79/7k=
-X-Google-Smtp-Source: AGHT+IE8GLjUnXh75USL6POTL0wF3GhP3RbPQsW20Tmjvx9gUrkr/ENH4ZzNWvAis54wTSGF58cLZw==
-X-Received: by 2002:a05:6214:3d8a:b0:6cb:32ef:d55f with SMTP id 6a1803df08f44-6cb3b5b7ef0mr80052226d6.6.1727466607342;
-        Fri, 27 Sep 2024 12:50:07 -0700 (PDT)
-Received: from nicolas-tpx395.lan ([2606:6d00:15:862e::580])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6cb3b610b12sm12230896d6.39.2024.09.27.12.50.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Sep 2024 12:50:06 -0700 (PDT)
-Message-ID: <7c9e3a1a6092f6574c17d7206767ece0bcefc81f.camel@ndufresne.ca>
-Subject: Re: [Linaro-mm-sig] Re: [RFC PATCH 0/4] Linaro restricted heap
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Sumit Garg <sumit.garg@linaro.org>, Christian =?ISO-8859-1?Q?K=F6nig?=
- <christian.koenig@amd.com>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
-  Christian =?ISO-8859-1?Q?K=F6nig?= <ckoenig.leichtzumerken@gmail.com>
-Cc: Andrew Davis <afd@ti.com>, Jens Wiklander <jens.wiklander@linaro.org>, 
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org, 
- linaro-mm-sig@lists.linaro.org, op-tee@lists.trustedfirmware.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Olivier Masse <olivier.masse@nxp.com>, Thierry Reding
- <thierry.reding@gmail.com>, Yong Wu <yong.wu@mediatek.com>,  Sumit Semwal
- <sumit.semwal@linaro.org>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Brian Starkey <Brian.Starkey@arm.com>,
- John Stultz <jstultz@google.com>, "T . J . Mercier" <tjmercier@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-Date: Fri, 27 Sep 2024 15:50:05 -0400
-In-Reply-To: <CAFA6WYMd46quafJoGXjkCiPOKpYoDZdXwrNbG3QekyjB3_2FTA@mail.gmail.com>
-References: <20240830070351.2855919-1-jens.wiklander@linaro.org>
-	 <dhxvyshwi4qmcmwceokhqey2ww4azjcs6qrpnkgivdj7tv5cke@r36srvvbof6q>
-	 <d8e0cb78-7cfb-42bf-b3a5-f765592e8dd4@ti.com>
-	 <mzur3odofwwrdqnystozjgf3qtvb73wqjm6g2vf5dfsqiehaxk@u67fcarhm6ge>
-	 <e967e382-6cca-4dee-8333-39892d532f71@gmail.com>
-	 <lk7a2xuqrctyywuanjwseh5lkcz3soatc2zf3kn3uwc43pdyic@edm3hcd2koas>
-	 <04caa788-19a6-4336-985c-4eb191c24438@amd.com>
-	 <2f9a4abe-b2fc-4bc7-9926-1da2d38f5080@linaro.org>
-	 <CAFA6WYMd46quafJoGXjkCiPOKpYoDZdXwrNbG3QekyjB3_2FTA@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.52.4 (3.52.4-1.fc40) 
+        d=1e100.net; s=20230601; t=1727508902; x=1728113702;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=CZ3GJJVCrrzGvR7fAA0nSrjc16wiFeyBC54h9NaWyFQ=;
+        b=V8V3Eo4zlMvWxoZ+1zE8YqYWGePnLZ6kk3pKEt/CERoRdPz2fXPoNeN/vKM+xyL38p
+         OkVji3YBiW40KdnBIqxvtzSh7pJ0iu+d/uvGO1Eqiq3MhGppEciaBXTU2kDPoF+zxo4U
+         2lXPajag9o6X+j/gX3vxCjJrlh0icNiI2TrFtZe/0h2iyIPgMZYJg5CCRh9JatWxKcH+
+         B5IgO7Odnhg1xkSZUbgRnFjNytKhBQWXP/7Ni4K/e57/9m0PrFgyqmWM08YrgUPHxzYL
+         C9aHPGMTBCJprkr1su21K13c6TA2OFe4IKPtJuCUpm3klAiJgqM3DkVSAL3ufzPKET1/
+         rquQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWi1h3ZZxKo1qKYGZxiCNyiatWji5BU3/1GK7EL8PxRMAe4ZWcBr/tsMiplr8f6Ln2XQNvVja5cfS8xmwjT+A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YywsfU+u94QnKA2bYoS+310+QlKNmK0f0hHDgienVFoCYrtxb7x
+	Zqqlt2TOuCSPVOI8c8j208F41aNvJjtkJzxoQ13of5naLGDm/m7cBIHied9ntiYSrHbCywxRihz
+	IO9p7EM32u/QLryNxHo7OvHJSzYwzawiS2zpSZA==
+X-Google-Smtp-Source: AGHT+IE8STUqnUdbp16wn+jWytnLJo7GbATydnL1PXc5q5xA5jCeVCG+33+GkdczeH+HdjoM/t8GaXFW5O+RCkxcmVg=
+X-Received: by 2002:a05:6a00:8c2:b0:714:2482:ab3c with SMTP id
+ d2e1a72fcca58-71b25f40b4cmr9950991b3a.7.1727508902091; Sat, 28 Sep 2024
+ 00:35:02 -0700 (PDT)
 MIME-Version: 1.0
+References: <20240925075707.3970187-1-linyunsheng@huawei.com>
+ <20240925075707.3970187-3-linyunsheng@huawei.com> <CAHS8izOxugzWJDTc-4CWqaKABTj=J4OHs=Lcb=SE9r8gX0J+yg@mail.gmail.com>
+ <842c8cc6-f716-437a-bc98-70bc26d6fd38@huawei.com> <CAC_iWjLgNOtsbhqrhvvEz2C3S668qB8KatL_W+tPHMSkDrNS=w@mail.gmail.com>
+ <0ef315df-e8e9-41e8-9ba8-dcb69492c616@huawei.com> <CAC_iWjKeajwn3otjdEekE6VDLHGEvqmnQRwpN5R3yHj8UpEiDw@mail.gmail.com>
+ <934d601f-be43-4e04-b126-dc86890a4bfa@huawei.com>
+In-Reply-To: <934d601f-be43-4e04-b126-dc86890a4bfa@huawei.com>
+From: Ilias Apalodimas <ilias.apalodimas@linaro.org>
+Date: Sat, 28 Sep 2024 10:34:25 +0300
+Message-ID: <CAC_iWjL7m4ZL2W2OZM5F22dLvZhxU6fyCXV_xjyGf+W7UP43EQ@mail.gmail.com>
+Subject: Re: [PATCH net v2 2/2] page_pool: fix IOMMU crash when driver has
+ already unbound
+To: Yunsheng Lin <linyunsheng@huawei.com>
+Cc: Mina Almasry <almasrymina@google.com>, davem@davemloft.net, kuba@kernel.org, 
+	pabeni@redhat.com, liuyonglong@huawei.com, fanghaiqing@huawei.com, 
+	zhangkun09@huawei.com, Robin Murphy <robin.murphy@arm.com>, 
+	Alexander Duyck <alexander.duyck@gmail.com>, IOMMU <iommu@lists.linux.dev>, 
+	Wei Fang <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, 
+	Clark Wang <xiaoning.wang@nxp.com>, Eric Dumazet <edumazet@google.com>, 
+	Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
+	Alexander Lobakin <aleksander.lobakin@intel.com>, Alexei Starovoitov <ast@kernel.org>, 
+	Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, 
+	John Fastabend <john.fastabend@gmail.com>, Saeed Mahameed <saeedm@nvidia.com>, 
+	Leon Romanovsky <leon@kernel.org>, Tariq Toukan <tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+	Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Andrew Morton <akpm@linux-foundation.org>, imx@lists.linux.dev, netdev@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org, 
+	bpf@vger.kernel.org, linux-rdma@vger.kernel.org, 
+	linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-mm@kvack.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240927_125009_345063_2FB02A2B 
-X-CRM114-Status: GOOD (  59.50  )
+X-CRM114-CacheID: sfid-20240928_003503_468803_A284F5AD 
+X-CRM114-Status: GOOD (  39.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,194 +111,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le jeudi 26 septembre 2024 =C3=A0 19:22 +0530, Sumit Garg a =C3=A9crit=C2=
-=A0:
-> [Resend in plain text format as my earlier message was rejected by
-> some mailing lists]
->=20
-> On Thu, 26 Sept 2024 at 19:17, Sumit Garg <sumit.garg@linaro.org> wrote:
-> >=20
-> > On 9/25/24 19:31, Christian K=C3=B6nig wrote:
-> >=20
-> > Am 25.09.24 um 14:51 schrieb Dmitry Baryshkov:
-> >=20
-> > On Wed, Sep 25, 2024 at 10:51:15AM GMT, Christian K=C3=B6nig wrote:
-> >=20
-> > Am 25.09.24 um 01:05 schrieb Dmitry Baryshkov:
-> >=20
-> > On Tue, Sep 24, 2024 at 01:13:18PM GMT, Andrew Davis wrote:
-> >=20
-> > On 9/23/24 1:33 AM, Dmitry Baryshkov wrote:
-> >=20
-> > Hi,
-> >=20
-> > On Fri, Aug 30, 2024 at 09:03:47AM GMT, Jens Wiklander wrote:
-> >=20
-> > Hi,
-> >=20
-> > This patch set is based on top of Yong Wu's restricted heap patch set [=
-1].
-> > It's also a continuation on Olivier's Add dma-buf secure-heap patch set=
- [2].
-> >=20
-> > The Linaro restricted heap uses genalloc in the kernel to manage the he=
-ap
-> > carvout. This is a difference from the Mediatek restricted heap which
-> > relies on the secure world to manage the carveout.
-> >=20
-> > I've tried to adress the comments on [2], but [1] introduces changes so=
- I'm
-> > afraid I've had to skip some comments.
-> >=20
-> > I know I have raised the same question during LPC (in connection to
-> > Qualcomm's dma-heap implementation). Is there any reason why we are
-> > using generic heaps instead of allocating the dma-bufs on the device
-> > side?
-> >=20
-> > In your case you already have TEE device, you can use it to allocate an=
-d
-> > export dma-bufs, which then get imported by the V4L and DRM drivers.
-> >=20
-> > This goes to the heart of why we have dma-heaps in the first place.
-> > We don't want to burden userspace with having to figure out the right
-> > place to get a dma-buf for a given use-case on a given hardware.
-> > That would be very non-portable, and fail at the core purpose of
-> > a kernel: to abstract hardware specifics away.
-> >=20
-> > Unfortunately all proposals to use dma-buf heaps were moving in the
-> > described direction: let app select (somehow) from a platform- and
-> > vendor- specific list of dma-buf heaps. In the kernel we at least know
-> > the platform on which the system is running. Userspace generally doesn'=
-t
-> > (and shouldn't). As such, it seems better to me to keep the knowledge i=
-n
-> > the kernel and allow userspace do its job by calling into existing
-> > device drivers.
-> >=20
-> > The idea of letting the kernel fully abstract away the complexity of in=
-ter
-> > device data exchange is a completely failed design. There has been plen=
-ty of
-> > evidence for that over the years.
-> >=20
-> > Because of this in DMA-buf it's an intentional design decision that
-> > userspace and *not* the kernel decides where and what to allocate from.
-> >=20
-> > Hmm, ok.
-> >=20
-> > What the kernel should provide are the necessary information what type =
-of
-> > memory a device can work with and if certain memory is accessible or no=
-t.
-> > This is the part which is unfortunately still not well defined nor
-> > implemented at the moment.
-> >=20
-> > Apart from that there are a whole bunch of intentional design decision =
-which
-> > should prevent developers to move allocation decision inside the kernel=
-. For
-> > example DMA-buf doesn't know what the content of the buffer is (except =
-for
-> > it's total size) and which use cases a buffer will be used with.
-> >=20
-> > So the question if memory should be exposed through DMA-heaps or a driv=
-er
-> > specific allocator is not a question of abstraction, but rather one of =
-the
-> > physical location and accessibility of the memory.
-> >=20
-> > If the memory is attached to any physical device, e.g. local memory on =
-a
-> > dGPU, FPGA PCIe BAR, RDMA, camera internal memory etc, then expose the
-> > memory as device specific allocator.
-> >=20
-> > So, for embedded systems with unified memory all buffers (maybe except
-> > PCIe BARs) should come from DMA-BUF heaps, correct?
-> >=20
-> >=20
-> > From what I know that is correct, yes. Question is really if that will =
-stay this way.
-> >=20
-> > Neural accelerators look a lot stripped down FPGAs these days and the b=
-enefit of local memory for GPUs is known for decades.
-> >=20
-> > Could be that designs with local specialized memory see a revival any t=
-ime, who knows.
-> >=20
-> > If the memory is not physically attached to any device, but rather just
-> > memory attached to the CPU or a system wide memory controller then expo=
-se
-> > the memory as DMA-heap with specific requirements (e.g. certain sized p=
-ages,
-> > contiguous, restricted, encrypted, ...).
-> >=20
-> > Is encrypted / protected a part of the allocation contract or should it
-> > be enforced separately via a call to TEE / SCM / anything else?
-> >=20
-> >=20
-> > Well that is a really good question I can't fully answer either. From w=
-hat I know now I would say it depends on the design.
-> >=20
->=20
-> IMHO, I think Dmitry's proposal to rather allow the TEE device to be
-> the allocator and exporter of DMA-bufs related to restricted memory
-> makes sense to me. Since it's really the TEE implementation (OP-TEE,
-> AMD-TEE, TS-TEE or future QTEE) which sets up the restrictions on a
-> particular piece of allocated memory. AFAIK, that happens after the
-> DMA-buf gets allocated and then user-space calls into TEE to set up
-> which media pipeline is going to access that particular DMA-buf. It
-> can also be a static contract depending on a particular platform
-> design.
+Hi Yunsheng,
 
-When the memory get the protection is hardware specific. Otherwise the desi=
-gn
-would be really straightforward, allocate from the a heap or any random dri=
-ver
-API and protect that memory through an call into the TEE. Clear seperation =
-would
-be amazingly better, but this is not how hardware and firmware designer hav=
-e
-seen it.=20
+Overall this is a patch in the right direction. I want to get feedback
+from others since Jakub and Jesper seemed to prefer the stalling idea.
 
-In some implementation, there is a carving of memory that be protected befo=
-re
-the kernel is booted. I believe (but I'm not affiliated with them) that MTK=
- has
-hardware restriction making that design the only usable method.
+On Fri, 27 Sept 2024 at 14:29, Yunsheng Lin <linyunsheng@huawei.com> wrote:
+>
+> On 2024/9/27 17:58, Ilias Apalodimas wrote:
+>
+> ...
+>
+> >>
+> >>> importantly, though, why does struct page need to know about this?
+> >>> Can't we have the same information in page pool?
+> >>> When the driver allocates pages it does via page_pool_dev_alloc_XXXXX
+> >>> or something similar. Cant we do what you suggest here ? IOW when we
+> >>> allocate a page we put it in a list, and when that page returns to
+> >>> page_pool (and it's mapped) we remove it.
+> >>
+> >> Yes, that is the basic idea, but the important part is how to do that
+> >> with less performance impact.
+> >
+> > Yes, but do you think that keeping that list of allocated pages in
+> > struct page_pool will end up being more costly somehow compared to
+> > struct page?
+>
+> I am not sure if I understand your above question here.
+> I am supposing the question is about what's the cost between using
+> single/doubly linked list for the inflight pages or using a array
+> for the inflight pages like this patch does using pool->items?
 
-In general, the handling of secure memory is bound to the TEE application f=
-or
-the specific platform, it has to be separated from the generic part of tee
-drivers anyway, and dmabuf heaps is in my opinion the right API for the tas=
-k.
+Yes, that wasn't very clear indeed, apologies for any confusion. I was
+trying to ask on a linked list that only lives in struct page_pool.
+But I now realize this was a bad idea since the lookup would be way
+slower.
 
-On MTK, if you have followed, when the SCP (their co-processor) is handling
-restricted video, you can't even call into it anymore directly. So to drive=
- the
-CODECs, everything has to be routed through the TEE. Would you say that bec=
-ause
-of that this should not be a V4L2 driver anymore ?
+> If I understand question correctly, the single/doubly linked list
+> is more costly than array as the page_pool case as my understanding.
+>
+> For single linked list, it doesn't allow deleting a specific entry but
+> only support deleting the first entry and all the entries. It does support
+> lockless operation using llist, but have limitation as below:
+> https://elixir.bootlin.com/linux/v6.7-rc8/source/include/linux/llist.h#L13
+>
+> For doubly linked list, it needs two pointer to support deleting a specific
+> entry and it does not support lockless operation.
 
->=20
-> As Jens noted in the other thread, we already manage shared memory
-> allocations (from a static carve-out or dynamically mapped) for
-> communications among Linux and TEE that were based on DMA-bufs earlier
-> but since we didn't required them to be shared with other devices, so
-> we rather switched to anonymous memory.
->=20
-> From user-space perspective, it's cleaner to use TEE device IOCTLs for
-> DMA-buf allocations since it already knows which underlying TEE
-> implementation it's communicating with rather than first figuring out
-> which DMA heap to use for allocation and then communicating with TEE
-> implementation.
+I didn't look at the patch too carefully at first. Looking a bit
+closer now, the array is indeed better, since the lookup is faster.
+You just need the stored index in struct page to find the page we need
+to unmap. Do you remember if we can reduce the atomic pp_ref_count to
+32bits? If so we can reuse that space for the index. Looking at it
+requires a bit more work in netmem, but that's mostly swapping all the
+atomic64 calls to atomic ones.
 
-As a user-space developer in the majority of my time, adding common code to
-handle dma heaps is a lot easier and straight forward then having to glue a=
-ll
-the different allocators implement in various subsystems. Communicating whi=
-ch
-heap to work can be generic and simple.
+>
+> For pool->items, as the alloc side is protected by NAPI context, and the
+> free side use item->pp_idx to ensure there is only one producer for each
+> item, which means for each item in pool->items, there is only one consumer
+> and one producer, which seems much like the case when the page is not
+> recyclable in __page_pool_put_page, we don't need a lock protection when
+> calling page_pool_return_page(), the 'struct page' is also one consumer
+> and one producer as the pool->items[item->pp_idx] does:
+> https://elixir.bootlin.com/linux/v6.7-rc8/source/net/core/page_pool.c#L645
+>
+> We only need a lock protection when page_pool_destroy() is called to
+> check if there is inflight page to be unmapped as a consumer, and the
+> __page_pool_put_page() may also called to unmapped the inflight page as
+> another consumer,
 
-Nicolas
+Thanks for the explanation. On the locking side, page_pool_destroy is
+called once from the driver and then it's either the workqueue for
+inflight packets or an SKB that got freed and tried to recycle right?
+But do we still need to do all the unmapping etc from the delayed
+work? Since the new function will unmap all packets in
+page_pool_destroy, we can just skip unmapping when the delayed work
+runs
 
+Thanks
+/Ilias
+
+
+
+
+
+> there is why the 'destroy_lock' is added for protection
+> when pool->destroy_cnt > 0.
+>
+> >
+> > Thanks
+> > /Ilias
 
