@@ -4,84 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6938ACF6496
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Sep 2024 22:53:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 085FECF6495
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Sep 2024 02:46:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qYew1sdg4ZO1dCxPvxWvhz03Xrp7Z3mURzu7qPenODE=; b=kuTiKCaTyy3NeSxSLBAA8rvSAk
-	A7kGCG/bMLhGjNGfAxA4VfobKPq5cT0juPMkdhSm094NzPUygtUZKciOhnnI9KxEaXcqpODSleZly
-	MW7i32mg50ZKgtQa1T5f2Qh/5v4YADQFeW8HbCosm6wU65VM3u8BOqBMoVXBumnXvyU6ECAMYD78G
-	6re6a5JY/0pc4SDE5ly+rz+xdLT2Y1ZmjbInZheg40v4Fb2Vf/ZzJVCOiRdAhLiJQSOJhm8dd0YT6
-	+l+0aGSKUTnOdM2yXAoZksK7sPy3zSW3beOBj2fAE9E5QCF1JcKelIQZRu1H4zkXWpkqpRA9QFK7G
-	dl91VL0Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2q/9Xq3iyIg0BIaKZgbLzqV+w3imPdbeRr3Vi8phnk0=; b=qfYRo8JlfVsuP4ar8EGa50FguT
+	dfTtXvajlZwyJeD/dX+DPYOqQgYGmD6xohQXkbRyytVvTHvvc8jtA/1BQXpwUxh2YpHYqk8Pi0YcU
+	X3byrIDFdqfiDVF7yoqaQ0/noHArovU9GBL6lUldF6VG5bDPJ4FprbcQbPtHsE+Fv1TCtRCK0oJu3
+	gOQBtF41pFrMZhu2Ol+ak+tUFdCHdfkaCGRqD5js6uH8zKsV/IURZbee7v43f+xeNkJ1YwCeOBGRR
+	CRQi0JWDpfKIqyT3d5pG9X5FGlDFdM/CMu/fXAAH32aMN+RlrASPHSW+nB6ifSchnZQg6rHXF6lOS
+	NM2wOUNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sugJM-0000000Dm1k-02Mk;
-	Sat, 28 Sep 2024 22:53:12 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1sujx1-0000000E0FN-2m1v;
+	Sun, 29 Sep 2024 02:46:23 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sugJI-0000000Dm0p-2p8s;
-	Sat, 28 Sep 2024 22:53:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1727563988; x=1759099988;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=JQc0Z2OjYL4V5ha5EFr4cWv2UKg0TOWssALGaegsMts=;
-  b=EwiXOZ5ebUhC0CpZec0gBfYq5iHqAyx1bQhATfMoSIIbkmPOMBWLqPHu
-   HE8oeNFy+S9L/yxFqYfD8cDc3HU5WJiRfco6SYGo4Qx4P4PdRwHkK30xH
-   R+2cyIMbkUAMtzbGqN9F8btYBbn5i90h8SJixjP1SmJ5rkVaRj0nGfW17
-   4dqMi5pnCv3aaaQ+T+m0OKGkVR0u/xRN9pr61Y3EzVda90zcGmx//mafQ
-   uu+jHamo0zi0M+/HUsgv3v64y+A5rAgW3uEIWbJVCuJ4Klkxhkz9MXHsR
-   eFyzdArgxnk2GWrI+kmXgoqURKrqs0jiuvsM9CxY9woSGfhbWSCndrrEq
-   A==;
-X-CSE-ConnectionGUID: QzJbVsyFQf2lIV1SVa5+qQ==
-X-CSE-MsgGUID: abcUy9FsS6emmjOvvwZj+g==
-X-IronPort-AV: E=McAfee;i="6700,10204,11209"; a="52096696"
-X-IronPort-AV: E=Sophos;i="6.11,162,1725346800"; 
-   d="scan'208";a="52096696"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Sep 2024 15:53:06 -0700
-X-CSE-ConnectionGUID: S4HAL6U0THeeehG2HcCX5A==
-X-CSE-MsgGUID: kbcuEdr5Rqa1gR96kN6zNg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,162,1725346800"; 
-   d="scan'208";a="72760530"
-Received: from lkp-server01.sh.intel.com (HELO 53e96f405c61) ([10.239.97.150])
-  by orviesa010.jf.intel.com with ESMTP; 28 Sep 2024 15:53:02 -0700
-Received: from kbuild by 53e96f405c61 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1sugJA-000Njn-05;
-	Sat, 28 Sep 2024 22:53:00 +0000
-Date: Sun, 29 Sep 2024 06:52:23 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
-	Alper Nebi Yasak <alpernebiyasak@gmail.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	Shawn Sung <shawn.sung@mediatek.com>,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
-	Singo Chang <singo.chang@mediatek.com>,
-	Nancy Lin <nancy.lin@mediatek.com>,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v6 2/2] drm/mediatek: Add blend_modes to mtk_plane_init()
- for different SoCs
-Message-ID: <202409290651.YLKsl39c-lkp@intel.com>
-References: <20240926083526.24629-3-jason-jh.lin@mediatek.com>
+	id 1sujvo-0000000E059-1Mbj;
+	Sun, 29 Sep 2024 02:45:10 +0000
+Received: from mail.maildlp.com (unknown [172.19.163.48])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4XGT571jzCzfbjm;
+	Sun, 29 Sep 2024 10:42:35 +0800 (CST)
+Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
+	by mail.maildlp.com (Postfix) with ESMTPS id 219E918007C;
+	Sun, 29 Sep 2024 10:44:54 +0800 (CST)
+Received: from [10.67.120.129] (10.67.120.129) by
+ dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.11; Sun, 29 Sep 2024 10:44:53 +0800
+Message-ID: <ac2eec69-8f44-4adb-8182-02c78625851d@huawei.com>
+Date: Sun, 29 Sep 2024 10:44:53 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240926083526.24629-3-jason-jh.lin@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net v2 2/2] page_pool: fix IOMMU crash when driver has
+ already unbound
+To: Ilias Apalodimas <ilias.apalodimas@linaro.org>
+CC: Mina Almasry <almasrymina@google.com>, <davem@davemloft.net>,
+	<kuba@kernel.org>, <pabeni@redhat.com>, <liuyonglong@huawei.com>,
+	<fanghaiqing@huawei.com>, <zhangkun09@huawei.com>, Robin Murphy
+	<robin.murphy@arm.com>, Alexander Duyck <alexander.duyck@gmail.com>, IOMMU
+	<iommu@lists.linux.dev>, Wei Fang <wei.fang@nxp.com>, Shenwei Wang
+	<shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, Eric Dumazet
+	<edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek
+ Kitszel <przemyslaw.kitszel@intel.com>, Alexander Lobakin
+	<aleksander.lobakin@intel.com>, Alexei Starovoitov <ast@kernel.org>, Daniel
+ Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
+	John Fastabend <john.fastabend@gmail.com>, Saeed Mahameed
+	<saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Tariq Toukan
+	<tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
+	<shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Kalle Valo
+	<kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andrew
+ Morton <akpm@linux-foundation.org>, <imx@lists.linux.dev>,
+	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<intel-wired-lan@lists.osuosl.org>, <bpf@vger.kernel.org>,
+	<linux-rdma@vger.kernel.org>, <linux-wireless@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-mm@kvack.org>
+References: <20240925075707.3970187-1-linyunsheng@huawei.com>
+ <20240925075707.3970187-3-linyunsheng@huawei.com>
+ <CAHS8izOxugzWJDTc-4CWqaKABTj=J4OHs=Lcb=SE9r8gX0J+yg@mail.gmail.com>
+ <842c8cc6-f716-437a-bc98-70bc26d6fd38@huawei.com>
+ <CAC_iWjLgNOtsbhqrhvvEz2C3S668qB8KatL_W+tPHMSkDrNS=w@mail.gmail.com>
+ <0ef315df-e8e9-41e8-9ba8-dcb69492c616@huawei.com>
+ <CAC_iWjKeajwn3otjdEekE6VDLHGEvqmnQRwpN5R3yHj8UpEiDw@mail.gmail.com>
+ <934d601f-be43-4e04-b126-dc86890a4bfa@huawei.com>
+ <CAC_iWjL7m4ZL2W2OZM5F22dLvZhxU6fyCXV_xjyGf+W7UP43EQ@mail.gmail.com>
+Content-Language: en-US
+From: Yunsheng Lin <linyunsheng@huawei.com>
+In-Reply-To: <CAC_iWjL7m4ZL2W2OZM5F22dLvZhxU6fyCXV_xjyGf+W7UP43EQ@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.67.120.129]
+X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+ dggpemf200006.china.huawei.com (7.185.36.61)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240928_155308_792926_015CF397 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20240928_194508_836604_B831ADA2 
+X-CRM114-Status: GOOD (  27.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,116 +100,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jason-JH.Lin,
+On 2024/9/28 15:34, Ilias Apalodimas wrote:
 
-kernel test robot noticed the following build warnings:
+...
 
-[auto build test WARNING on drm/drm-next]
-[also build test WARNING on linus/master next-20240927]
-[cannot apply to v6.11]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+> 
+> Yes, that wasn't very clear indeed, apologies for any confusion. I was
+> trying to ask on a linked list that only lives in struct page_pool.
+> But I now realize this was a bad idea since the lookup would be way
+> slower.
+> 
+>> If I understand question correctly, the single/doubly linked list
+>> is more costly than array as the page_pool case as my understanding.
+>>
+>> For single linked list, it doesn't allow deleting a specific entry but
+>> only support deleting the first entry and all the entries. It does support
+>> lockless operation using llist, but have limitation as below:
+>> https://elixir.bootlin.com/linux/v6.7-rc8/source/include/linux/llist.h#L13
+>>
+>> For doubly linked list, it needs two pointer to support deleting a specific
+>> entry and it does not support lockless operation.
+> 
+> I didn't look at the patch too carefully at first. Looking a bit
+> closer now, the array is indeed better, since the lookup is faster.
+> You just need the stored index in struct page to find the page we need
+> to unmap. Do you remember if we can reduce the atomic pp_ref_count to
+> 32bits? If so we can reuse that space for the index. Looking at it
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Jason-JH-Lin/drm-mediatek-ovl-Add-blend_modes-to-driver-data/20240926-163734
-base:   git://anongit.freedesktop.org/drm/drm drm-next
-patch link:    https://lore.kernel.org/r/20240926083526.24629-3-jason-jh.lin%40mediatek.com
-patch subject: [PATCH v6 2/2] drm/mediatek: Add blend_modes to mtk_plane_init() for different SoCs
-config: arm64-randconfig-001-20240929 (https://download.01.org/0day-ci/archive/20240929/202409290651.YLKsl39c-lkp@intel.com/config)
-compiler: clang version 20.0.0git (https://github.com/llvm/llvm-project 7773243d9916f98ba0ffce0c3a960e4aa9f03e81)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240929/202409290651.YLKsl39c-lkp@intel.com/reproduce)
+For 64 bits system, yes, we can reuse that.
+But for 32 bits system, we may have only 16 bits for each of them, and it
+seems that there is no atomic operation for variable that is less than 32
+bits.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202409290651.YLKsl39c-lkp@intel.com/
+> requires a bit more work in netmem, but that's mostly swapping all the
+> atomic64 calls to atomic ones.
+> 
+>>
+>> For pool->items, as the alloc side is protected by NAPI context, and the
+>> free side use item->pp_idx to ensure there is only one producer for each
+>> item, which means for each item in pool->items, there is only one consumer
+>> and one producer, which seems much like the case when the page is not
+>> recyclable in __page_pool_put_page, we don't need a lock protection when
+>> calling page_pool_return_page(), the 'struct page' is also one consumer
+>> and one producer as the pool->items[item->pp_idx] does:
+>> https://elixir.bootlin.com/linux/v6.7-rc8/source/net/core/page_pool.c#L645
+>>
+>> We only need a lock protection when page_pool_destroy() is called to
+>> check if there is inflight page to be unmapped as a consumer, and the
+>> __page_pool_put_page() may also called to unmapped the inflight page as
+>> another consumer,
+> 
+> Thanks for the explanation. On the locking side, page_pool_destroy is
+> called once from the driver and then it's either the workqueue for
+> inflight packets or an SKB that got freed and tried to recycle right?
+> But do we still need to do all the unmapping etc from the delayed
+> work? Since the new function will unmap all packets in
+> page_pool_destroy, we can just skip unmapping when the delayed work
+> runs
 
-All warnings (new ones prefixed by >>):
+Yes, the pool->dma_map is clear in page_pool_item_uninit() after it does
+the unmapping for all inflight pages with the protection of pool->destroy_lock,
+so that the unmapping is skipped in page_pool_return_page() when those inflight
+pages are returned back to page_pool.
 
-   In file included from drivers/gpu/drm/mediatek/mtk_ethdr.c:18:
-   In file included from drivers/gpu/drm/mediatek/mtk_crtc.h:9:
-   In file included from include/drm/drm_crtc.h:32:
-   In file included from include/drm/drm_modes.h:33:
-   In file included from include/drm/drm_connector.h:32:
-   In file included from include/drm/drm_util.h:36:
-   In file included from include/linux/kgdb.h:19:
-   In file included from include/linux/kprobes.h:28:
-   In file included from include/linux/ftrace.h:13:
-   In file included from include/linux/kallsyms.h:13:
-   In file included from include/linux/mm.h:2232:
-   include/linux/vmstat.h:517:36: warning: arithmetic between different enumeration types ('enum node_stat_item' and 'enum lru_list') [-Wenum-enum-conversion]
-     517 |         return node_stat_name(NR_LRU_BASE + lru) + 3; // skip "nr_"
-         |                               ~~~~~~~~~~~ ^ ~~~
-   In file included from drivers/gpu/drm/mediatek/mtk_ethdr.c:18:
-   In file included from drivers/gpu/drm/mediatek/mtk_crtc.h:10:
-   drivers/gpu/drm/mediatek/mtk_ddp_comp.h:83:2: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
-      83 |         const u32 (*get_blend_modes)(struct device *dev);
-         |         ^~~~~
-   drivers/gpu/drm/mediatek/mtk_ddp_comp.h:271:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
-     271 | const u32 mtk_ddp_comp_get_blend_modes(struct mtk_ddp_comp *comp)
-         | ^~~~~
-   In file included from drivers/gpu/drm/mediatek/mtk_ethdr.c:21:
->> drivers/gpu/drm/mediatek/mtk_ethdr.h:16:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
-      16 | const u32 mtk_ethdr_get_blend_modes(struct device *dev);
-         | ^~~~~
->> drivers/gpu/drm/mediatek/mtk_ethdr.c:148:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
-     148 | const u32 mtk_ethdr_get_blend_modes(struct device *dev)
-         | ^~~~~
-   5 warnings generated.
---
-   In file included from drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c:7:
-   In file included from include/drm/drm_of.h:8:
-   In file included from include/drm/drm_bridge.h:30:
-   In file included from include/drm/drm_atomic.h:31:
-   In file included from include/drm/drm_crtc.h:32:
-   In file included from include/drm/drm_modes.h:33:
-   In file included from include/drm/drm_connector.h:32:
-   In file included from include/drm/drm_util.h:36:
-   In file included from include/linux/kgdb.h:19:
-   In file included from include/linux/kprobes.h:28:
-   In file included from include/linux/ftrace.h:13:
-   In file included from include/linux/kallsyms.h:13:
-   In file included from include/linux/mm.h:2232:
-   include/linux/vmstat.h:517:36: warning: arithmetic between different enumeration types ('enum node_stat_item' and 'enum lru_list') [-Wenum-enum-conversion]
-     517 |         return node_stat_name(NR_LRU_BASE + lru) + 3; // skip "nr_"
-         |                               ~~~~~~~~~~~ ^ ~~~
-   In file included from drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c:20:
-   drivers/gpu/drm/mediatek/mtk_ddp_comp.h:83:2: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
-      83 |         const u32 (*get_blend_modes)(struct device *dev);
-         |         ^~~~~
-   drivers/gpu/drm/mediatek/mtk_ddp_comp.h:271:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
-     271 | const u32 mtk_ddp_comp_get_blend_modes(struct mtk_ddp_comp *comp)
-         | ^~~~~
-   In file included from drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c:21:
-   drivers/gpu/drm/mediatek/mtk_disp_drv.h:106:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
-     106 | const u32 mtk_ovl_get_blend_modes(struct device *dev);
-         | ^~~~~
-   drivers/gpu/drm/mediatek/mtk_disp_drv.h:135:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
-     135 | const u32 mtk_ovl_adaptor_get_blend_modes(struct device *dev);
-         | ^~~~~
-   In file included from drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c:23:
->> drivers/gpu/drm/mediatek/mtk_ethdr.h:16:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
-      16 | const u32 mtk_ethdr_get_blend_modes(struct device *dev);
-         | ^~~~~
-   drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c:403:1: warning: 'const' type qualifier on return type has no effect [-Wignored-qualifiers]
-     403 | const u32 mtk_ovl_adaptor_get_blend_modes(struct device *dev)
-         | ^~~~~
-   7 warnings generated.
-
-
-vim +/const +16 drivers/gpu/drm/mediatek/mtk_ethdr.h
-
-     8	
-     9	void mtk_ethdr_start(struct device *dev);
-    10	void mtk_ethdr_stop(struct device *dev);
-    11	int mtk_ethdr_clk_enable(struct device *dev);
-    12	void mtk_ethdr_clk_disable(struct device *dev);
-    13	void mtk_ethdr_config(struct device *dev, unsigned int w,
-    14			      unsigned int h, unsigned int vrefresh,
-    15			      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
-  > 16	const u32 mtk_ethdr_get_blend_modes(struct device *dev);
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+> 
 
