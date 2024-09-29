@@ -4,62 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 344BCCF6497
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Sep 2024 19:44:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5368BCF6495
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Sep 2024 19:54:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JZJbpVSx0mMG1zR8DkFBR/ky8MfiIq4krp/rxfSlOTc=; b=JDGveEOdmijHmem8as6pzcw6kL
-	vvNwY0e/rdgKl/IfEK3TMptoahWF/Siplt7mMUjHuR6vxwrgi1YAYUlSR+QjAyxR5+OYQiBBZxN1A
-	n0YbyLg3w7vTX2HmcEnbBtORmk4zeH2Ln7dc1MV6z8paCvoLoGOl9LDsBuLTxSWtg/NeJ3Qpas8BJ
-	THGimBr+HT+e3Xa8hg83B2teCu0rVipI8zJSe0jVikNHPKys37TJSJP8Dk5xO7WopgniIKWugrglF
-	tx/ccNqWYPGJs2zz7J9Qc3AjqpL/cr1QaHa13ANHjHfC92kmyu24kdy3bhbC7HAkrQH9tszHD4xU+
-	qoLbGZuA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mnfjPfodqDw5EgjVHclvMeONT3nDh9xuYN3QzGdkxtM=; b=bGOxjAjiIJRge50UE0xE3z6ptP
+	47H0wZ5kjWYI/wXGPir2EaP5MbPYSF0YsxaJSfFqhfMASHbT4ohWM+1E5HdGTB63RSCxdedPJPr4/
+	fi8bh1NU2WvpPRhB1PmSQQnWXEW2eI0GB/eki3/BGo8JaYmHg8aSxl6ozY9ZIhf4nMKdSMJGls696
+	TzbghN20vn/3b/cfnkaHls1V0YUuvggqdzoYHC2TcYlnvKPS0nG4hXvLkjYxFy6xzWTI4YzGJl1Qt
+	krWZostK5wMn7Kwgzryr6Euw8Qx07o7Prfu7ivWaSRP+bi4STx9ejuKrHUnAggN4HCPbU3j0mqEJq
+	LqcK6lcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1suzqe-0000000FGCb-1Twu;
-	Sun, 29 Sep 2024 19:44:52 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1suzzd-0000000FHIL-1EVP;
+	Sun, 29 Sep 2024 19:54:09 +0000
+Received: from smtp-73.smtpout.orange.fr ([80.12.242.73] helo=msa.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1suzpS-0000000FG7b-0HR8;
-	Sun, 29 Sep 2024 19:43:39 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0270B5C0536;
-	Sun, 29 Sep 2024 19:43:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED143C4CEC5;
-	Sun, 29 Sep 2024 19:43:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727639016;
-	bh=JZJbpVSx0mMG1zR8DkFBR/ky8MfiIq4krp/rxfSlOTc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=tjhVpAHq9/GQYbbyOHYhJJXwbmYYlaZ594gzA6aEndCVRvFOF/qxSAO1C2hP3vXyb
-	 ls9eabDUzE4lEldEQpSiwsFrhlpPldo1FXg4o/6GsZOSrqzsjRwWp/hQNOvwyHp38R
-	 CtKRmSvAOCoXU1qyr4DB/XgCpBknpdJJAgC7iLqBb0gyIs6TRmUlVzYww4eklEqFMX
-	 WssP7qRUmz8Jf6qBByxJHnASC8BPeYIVacxk45nb76xkTYqUyFOS0hd1evST8t2loy
-	 z9UhQZPX9Q6yNGh4PkA644cie6uBOJMcfSKu5wpO0Wp1z+wUZJkhHZzLxdzpgXKsdO
-	 p894pmbDU1i6g==
-Date: Sun, 29 Sep 2024 21:43:33 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Andy-ld Lu <andy-ld.lu@mediatek.com>
-Cc: ulf.hansson@linaro.org, robh@kernel.org, krzk+dt@kernel.org, 
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, wenbin.mei@mediatek.com, 
-	linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 2/2] dt-bindings: mmc: mtk-sd: Add support for MT8196
-Message-ID: <wuhrl54ojj4sjbk3qbm5jjgeupznbs4uhfedogmucjhvnbjbeh@vwvpeuiwgwli>
-References: <20240929074558.2076-1-andy-ld.lu@mediatek.com>
- <20240929074558.2076-3-andy-ld.lu@mediatek.com>
+	id 1suzzY-0000000FHHn-21LD;
+	Sun, 29 Sep 2024 19:54:07 +0000
+Received: from fedora.home ([90.11.132.44])
+	by smtp.orange.fr with ESMTPA
+	id uzzOsWpetUr3muzzOsoFGG; Sun, 29 Sep 2024 21:53:58 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1727639638;
+	bh=mnfjPfodqDw5EgjVHclvMeONT3nDh9xuYN3QzGdkxtM=;
+	h=From:To:Subject:Date:Message-ID:MIME-Version;
+	b=bFPhXa2cn+9H9Hxm/lauaUgMA+xMIR4+9UiBbHItciK4dpQ7OPyq2ERYDgoKODNBt
+	 LNsbBzCedHkcj2vPr6F56bYlpBvoHPRLyhjiKRBfHUvzsO8Sl/XTpMQ1vKvFXScSGc
+	 3U8N6RPxrhPoQHjupH62N7gXyPQMgeg2qaTWtB5qTXBLBaHOfwB4g4b+Sn7HT7EU7M
+	 DQdHf0bucNXPlYaFZImbCzib7y9h1UJ/8IYs/rCE4nf4Kv4Hi3vqhKidEG0D735XnV
+	 nXevBZ2ZnRBI0tE6UeHDT1kQClGzN1TS6auAqInsPOuOkGgaLii6bnXRGiFmz8ecHi
+	 93aF4Et4tFdqA==
+X-ME-Helo: fedora.home
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Sun, 29 Sep 2024 21:53:58 +0200
+X-ME-IP: 90.11.132.44
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Kalle Valo <kvalo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	linux-wireless@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] wifi: mt76: mt7915: Fix an error handling path in mt7915_add_interface()
+Date: Sun, 29 Sep 2024 21:53:40 +0200
+Message-ID: <b9d8fbfc19360bfe60b9cea1cb0f735ab3b4bc26.1727639596.git.christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.46.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20240929074558.2076-3-andy-ld.lu@mediatek.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240929_124338_166890_65AAC786 
-X-CRM114-Status: UNSURE (   7.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240929_125404_955280_28C6E84E 
+X-CRM114-Status: GOOD (  10.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,17 +81,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Sep 29, 2024 at 03:44:06PM +0800, Andy-ld Lu wrote:
-> Extend the devicetree bindings to include the MT8196 mmc controller
-> by adding the compatible string 'mediatek,mt8196-mmc'.
+If mt76_wcid_alloc() fails, the "mt76.mutex" mutex needs to be released as
+done in the other error handling path of mt7915_add_interface().
 
-Your entire two-line sentence, says the same as commit msg and is pretty
-obvious from the diff. Say something useful instead, like describe the
-hardware differences.
+Fixes: f3049b88b2b3 ("wifi: mt76: mt7915: allocate vif wcid in the same range as stations")
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+---
+Compile tested only
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/main.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
-
-Best regards,
-Krzysztof
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index d75e8dea1fbd..bea8b77b1b92 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -246,8 +246,10 @@ static int mt7915_add_interface(struct ieee80211_hw *hw,
+ 	phy->omac_mask |= BIT_ULL(mvif->mt76.omac_idx);
+ 
+ 	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, mt7915_wtbl_size(dev));
+-	if (idx < 0)
+-		return -ENOSPC;
++	if (idx < 0) {
++		ret = -ENOSPC;
++		goto out;
++	}
+ 
+ 	INIT_LIST_HEAD(&mvif->sta.rc_list);
+ 	INIT_LIST_HEAD(&mvif->sta.wcid.poll_list);
+-- 
+2.46.2
 
 
