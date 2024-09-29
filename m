@@ -4,87 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06E37CF6495
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Sep 2024 07:51:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 896E8CF6498
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Sep 2024 08:26:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rZHvVfowzI3daZqCxdNalDtcmaBy5OTc9UKJrJPe1mo=; b=oyblg+1KTCVPG/VtFPCnVWUrpp
-	hq46elx1gD5Xf6qpiG/3ROdNqDMU2AVCtnxMG+X8oEfG3/+uJLoYyw0KbHeAv1FfFNIsgXjSx5Kg4
-	Kfe3LokahDgtSP68iiR4/7RHhue8jG+u+w0FgNGvWibw+uCRcUdsQ4yZUvtvOYMZtWO3bnQXewDHG
-	acenFVYV9F8u0dDi2LRKjITaQg/R1fjhQyKZjiFVtoI7DFT/bYFAaKRLPmrWnahgyGAgUA5FZdA+O
-	TEJbriZ3MLc0hj1Wz8B9CRMcPQ1o6DZk+Ekz/WLfccY9K+yp8Fql+EkPDXKZ0oHpddw2NIAZFecn1
-	9YIM0Ktg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	From:Cc:References:To:Subject:MIME-Version:Date:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=k6SppduUKU3JGg1fWi14sVMD3eTuD4vo9gOVOUpOICI=; b=OzaEBmphsZT8OtTon9MDBUPuL2
+	wMXi83vG4kM7TyRi5iyoVzHTzKQu82CZrcpUvmIap7ahQralCMDzQRXxoJZCBbMj1HIzIbHKClTS1
+	cjArHccQHrKMUxgBSaCBGx7viQYHQwwxgUsMvuD56WOpWoc+BerTY9nnsvlAbmDHqoVLWVnJEG11K
+	MfHHHh+09vfjdSdokzZtRFAZLVUj88j14FoZM29VujY6QhvhlsOS8H6ZMQ7HtXdcT8ZoOLLnAtzHA
+	tEgRBUP5TNVkQSPJt0PGi/40NLsgmx6s9T7z6jBZyu4hvNrOHlkT8NVoxohQKG6pjPJX+nLQyNaUg
+	SdxCigXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1suoiX-0000000ENAJ-43EA;
-	Sun, 29 Sep 2024 07:51:45 +0000
-Received: from smtpbgbr2.qq.com ([54.207.22.56])
+	id 1supGK-0000000EPaF-1MSO;
+	Sun, 29 Sep 2024 08:26:40 +0000
+Received: from smtpbgjp3.qq.com ([54.92.39.34])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1suohJ-0000000EMxg-0Szk;
-	Sun, 29 Sep 2024 07:50:32 +0000
+	id 1supF8-0000000EPXN-074P;
+	Sun, 29 Sep 2024 08:25:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=uniontech.com;
-	s=onoh2408; t=1727596174;
-	bh=rZHvVfowzI3daZqCxdNalDtcmaBy5OTc9UKJrJPe1mo=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version;
-	b=qTDaYWoATemcKVDnckNEezSgbHZlzHITJ/521n1qA7Xx4Sn5sSstYnxTo1t0/Tsc6
-	 dezcx43VI4/ysLxToxpz7ePPNEKR4unxKjmQruA2PprG9f6jp3B1/rWP59oLRO9cU0
-	 J5s+MspWS+gjtxo1fco/0nAtQGuPfQ90jQFFqb/A=
-X-QQ-mid: bizesmtpsz9t1727596141tnyjnvd
-X-QQ-Originating-IP: BUqR0Ifox5Ufw0S6i1dJLNx2AJS6rHQ08KlTnfvB5Ng=
-Received: from localhost.localdomain ( [113.57.152.160])
+	s=onoh2408; t=1727598267;
+	bh=k6SppduUKU3JGg1fWi14sVMD3eTuD4vo9gOVOUpOICI=;
+	h=Message-ID:Date:MIME-Version:Subject:To:From;
+	b=KcWF7fFqkAXH1HT9DhW88JfIdoGOaVh31+qMp5kJBxF954DH3nvaU/kelVNCwFEJM
+	 Z2YLK8Ir76M7zVQ5GwUA5nVoeqgUbncuz2fxbHUZ85z8NkfzOqNDJQHSU2MWpO28M3
+	 K33cv69aCKfr9GeLA0QbmZpxgL8BpnctvZ6s1bJ0=
+X-QQ-mid: bizesmtp86t1727598259tqq2b3km
+X-QQ-Originating-IP: qCmwn2P0eJXYEJvCqX9wDgoZtkhFe7MnmYNhiWlStS4=
+Received: from [10.20.53.22] ( [113.57.152.160])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Sun, 29 Sep 2024 15:48:59 +0800 (CST)
+	id ; Sun, 29 Sep 2024 16:24:17 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 1
-X-BIZMAIL-ID: 8712247480049243626
-From: WangYuli <wangyuli@uniontech.com>
-To: marcel@holtmann.org,
-	luiz.dentz@gmail.com,
-	johan.hedberg@gmail.com,
-	matthias.bgg@gmail.com,
-	hello@felixjara.me,
-	wangyuli@uniontech.com
-Cc: linux-bluetooth@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	guanwentao@uniontech.com,
-	zhanjun@uniontech.com,
-	aaron.ma@canonical.com
-Subject: [RESEND. PATCH v2] Bluetooth: btusb: Add MT7925 support for ID 0x13d3:0x3608
-Date: Sun, 29 Sep 2024 15:48:52 +0800
-Message-ID: <34A24B6870318797+20240929074852.977045-1-wangyuli@uniontech.com>
-X-Mailer: git-send-email 2.45.2
+X-BIZMAIL-ID: 10790167505109477571
+Message-ID: <20E3795420C6CF06+ececafaf-0a3b-4e3c-a56e-448f50c537c6@uniontech.com>
+Date: Sun, 29 Sep 2024 16:24:16 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RESEND.,v2] Bluetooth: btusb: Add MT7925 support for ID
+ 0x13d3:0x3608
+To: linux-bluetooth@vger.kernel.org, bluez.test.bot@gmail.com
+References: <34A24B6870318797+20240929074852.977045-1-wangyuli@uniontech.com>
+ <66f90d4b.170a0220.288304.076c@mx.google.com>
+Content-Language: en-US
+Cc: marcel@holtmann.org, luiz.dentz@gmail.com, johan.hedberg@gmail.com,
+ matthias.bgg@gmail.com, hello@felixjara.me, wangyuli@uniontech.com,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, guanwentao@uniontech.com,
+ zhanjun@uniontech.com, aaron.ma@canonical.com
+From: WangYuli <wangyuli@uniontech.com>
+Autocrypt: addr=wangyuli@uniontech.com; keydata=
+ xjMEZoEsiBYJKwYBBAHaRw8BAQdAyDPzcbPnchbIhweThfNK1tg1imM+5kgDBJSKP+nX39DN
+ IVdhbmdZdWxpIDx3YW5neXVsaUB1bmlvbnRlY2guY29tPsKJBBMWCAAxFiEEa1GMzYeuKPkg
+ qDuvxdofMEb0C+4FAmaBLIgCGwMECwkIBwUVCAkKCwUWAgMBAAAKCRDF2h8wRvQL7g0UAQCH
+ 3mrGM0HzOaARhBeA/Q3AIVfhS010a0MZmPTRGVfPbwD/SrncJwwPAL4GiLPEC4XssV6FPUAY
+ 0rA68eNNI9cJLArOOARmgSyJEgorBgEEAZdVAQUBAQdA88W4CTLDD9fKwW9PB5yurCNdWNS7
+ VTL0dvPDofBTjFYDAQgHwngEGBYIACAWIQRrUYzNh64o+SCoO6/F2h8wRvQL7gUCZoEsiQIb
+ DAAKCRDF2h8wRvQL7sKvAP4mBvm7Zn1OUjFViwkma8IGRGosXAvMUFyOHVcl1RTgFQEAuJkU
+ o9ERi7qS/hbUdUgtitI89efbY0TVetgDsyeQiwU=
+In-Reply-To: <66f90d4b.170a0220.288304.076c@mx.google.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="------------kF4g1z672TtdiqJ02ivacGnm"
 X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtpsz:uniontech.com:qybglogicsvrgz:qybglogicsvrgz8a-1
-X-QQ-XMAILINFO: ND3CPZxVFFQcrZMmRvrULT/WYia1CRGTfCmc3ZWv/Q9o3QzC/s/5vXqN
-	l8cX5D7xnnmx/VPULv/a+86JK6F5mP79DD37dGaq6mnRBeeB8L5ckGDK0RF8tMUHEkuF6se
-	deZHxg9NLK1zauNT3uuQxvi9fZQ9DvTIgDaW8fdgQeq17aX/dlqTFxoS3gFRga4Kpe7Y76t
-	IxWUoxVJf1RxqMjD8Wt7Md5iwAe6jH+hgEvpfqfvLKkFqF8to1R12LGGW2ENDuQWayLZBtS
-	Ow2+gZCNQhloKd0+geBnuvrJ/LtB4JezAWe7FyRzWV+CnVlfuY+6euHqhfMTSF0TNBjrN9l
-	ETTcnaUaLjj+MfVeDLNW3gWTVS8eheFZQpqU9z3Xu04hpuDH0JFhvZlToQWUUy2f4tcvrSX
-	Cwxw6bV/wgvrLXP0FVbwaMhmz0dGU2vkNZWDxf6o8m8GD59Z8tYFei3xvQksg/Kn8OUlBzV
-	XdnJtBLs82XBUtzUyGPICtlS5gp0t9G3LONfbUz+ROMvpsligT0vFOQyNJJDERO9PLBFB7G
-	ifWd7jrWq4zii3xSNuSqyYgvZz+o/2p/Yw8kxNezXLu4AgNVbrN5iUfCLzIud7r0c516fiw
-	L4BUY2zb28DJ4OZCrOT/Qz8IONrdUfWQ30Dpwn5IB9B7ow6+ZRBBZF8enzQhWY4EbG8185O
-	CP+UOrmlwvOsXqm44U3KerQfIDfqFNpjUJ0u3+iywN4YZbRqxH6JjuofhSNz0T5r+wyrMGv
-	zQAaexwdS/VYIiPEoBu3Cwx7YiEkwWlA38gbvRdyDVIh+r471FqAMymO5p/99cIch7f0t90
-	OLI1J3EKOHeqHkbiCYzVndb8+q0qHUTSWAqMLUWH84RY94IKtX0QJc1eQYMCrWFp2/RQKJ6
-	T4DPrJQcQtXJjzo+97VYOg8oOSuHP1ViqtZaWcD2pmrp+kWSi7n5ty6X92p8cH7exJ05S6r
-	K8ccB9QP5hGHts9qPZv4QVgVNHTFCvMSyDyUcK0m0mDu9JA+ISlJyHWIZGU0zzF2jXium0L
-	zfNbZJEQ==
-X-QQ-XMRINFO: NI4Ajvh11aEj8Xl/2s1/T8w=
+Feedback-ID: bizesmtp:uniontech.com:qybglogicsvrgz:qybglogicsvrgz8a-1
+X-QQ-XMAILINFO: MVkZiY22hz/mhmqmCOdyNh5Nroz40db5/YpVA3RDPfz+5jaId9+EQIVQ
+	esorRbGhl2EYcXSlyr+RZtDZi3cvuPsPalOeVF70TYtdMHzMUBq8ntrh+RkNy72SXqpgtR5
+	/iqs454099r2Q7i9SIdpHG+cWcFHjdviEfclzmsvqnzSYrUA+NWpZHbADiWXVd2F+q0z7LV
+	H2OA4dUz5sKE3SVsKEhqzEAoASx/SDtj1cA/c7/OOuRA78jx5MwZbmtdKG5n4giGP83fwB1
+	Lz/8aDk5gMXFBFfOCRLzOQf4NiSN1mgSO2J6SyHu6wcbv5CBG/d2yfmG/TjIdQ0llyWhr9G
+	SCUbI+emADjnzWJFRmir8wi3A4cwZ2YX+h8sr0gyXGaC1m9btrz61ATfbtjFQP9bE79UnjO
+	7v6xgIAhRFL4Bgf/kO33zcr0MWRTQNV1FctLJ1gzo7at0CDaNdPsdFRwx6d6JgLI3XW+twP
+	fCEb4/fczoHLRa3G2XW4+CoHlZmFeXhmu2NmXd6JXNQoc0jtRKQb17FdQ5K/AjRazCxtG+d
+	mqk4OzC7IPRwMtE6Ipp2OXWRm0h+Szqw+Fy76Hcwk1xYXEjz6ttkytzR+zKy/6nIsBMtH+i
+	cRJ78+nusqL5wrndZT7rP0a2oxYHIcZNgoWGw/7atjk+Vk44vbETJ7HEJUwFGx+z6V2t53U
+	DLm28OIa9bcrTHdRYEH/0ipNyR13gFqzAkqrb4iQuaJRMalZzTElE8826rl15q/6B2W1qSK
+	uBa8054G1mmBYfklRH6y8UmeaxyltGKBdZzxp7BVte0Dy6N1lYgjQnWDk74K2xaB+PEIPg0
+	yG3+lesIvWp+tgPOjtr0jEqZJFXtDNF7re+2CdsXOBLuuriUBB/WCZ68c6fLHdu4WCL1EZc
+	M/4+bC3dDQ5LoXzZwA2a65Mp8EKMe2/jUneLG06RHiDty6RpRb7vHtXx1rJczeiBe0x5Z5h
+	difo3vMZzfexZp5uR4azPG4sTUkRJcUDHbNZxSSgDTGEXrsrut4XjgDyy4VNwzEaWxmw=
+X-QQ-XMRINFO: NS+P29fieYNw95Bth2bWPxk=
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240929_005030_353998_D0DBF10E 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20240929_012526_346790_1F8E1724 
+X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,81 +107,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Félix Jara <hello@felixjara.me>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--------------kF4g1z672TtdiqJ02ivacGnm
+Content-Type: multipart/mixed; boundary="------------rYgltaidC69xRNpWNvH7ciEI";
+ protected-headers="v1"
+From: WangYuli <wangyuli@uniontech.com>
+To: linux-bluetooth@vger.kernel.org, bluez.test.bot@gmail.com
+Cc: marcel@holtmann.org, luiz.dentz@gmail.com, johan.hedberg@gmail.com,
+ matthias.bgg@gmail.com, hello@felixjara.me, wangyuli@uniontech.com,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, guanwentao@uniontech.com,
+ zhanjun@uniontech.com, aaron.ma@canonical.com
+Message-ID: <ececafaf-0a3b-4e3c-a56e-448f50c537c6@uniontech.com>
+Subject: Re: [RESEND.,v2] Bluetooth: btusb: Add MT7925 support for ID
+ 0x13d3:0x3608
+References: <34A24B6870318797+20240929074852.977045-1-wangyuli@uniontech.com>
+ <66f90d4b.170a0220.288304.076c@mx.google.com>
+In-Reply-To: <66f90d4b.170a0220.288304.076c@mx.google.com>
 
-Add compatibility Bluetooth device MT7925 for Asus UM5606 with
-ID 13d3:3608.
+--------------rYgltaidC69xRNpWNvH7ciEI
+Content-Type: multipart/mixed; boundary="------------6qWSTeocB9KvF9FYwKm6wpSO"
 
-The device info from /sys/kernel/debug/usb/devices as below.
+--------------6qWSTeocB9KvF9FYwKm6wpSO
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
 
-T:  Bus=03 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
-D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=13d3 ProdID=3608 Rev= 1.00
-S:  Manufacturer=MediaTek Inc.
-S:  Product=Wireless_Device
-S:  SerialNumber=000000000
-C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+Q291bGQgYW55b25lIHNoZWQgc29tZSBsaWdodCBvbiB3aGF0J3MgZ29pbmcgb24gaGVyZT8N
+Cg0KSSdtIGFic29sdXRlbHkgY2VydGFpbiB0aGlzIHBhdGNoIGNhbiBiZSBtZXJnZWQgZGly
+ZWN0bHkgaW50byB0aGUgDQpibHVldG9vdGgtbmV4dCBicmFuY2ggb2YgdGhlIGJsdWV0b290
+aC1uZXh0IHJlcG9zaXRvcnkgDQooZ2l0Oi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51
+eC9rZXJuZWwvZ2l0L2JsdWV0b290aC9ibHVldG9vdGgtbmV4dC5naXQpLg0KDQpBbSBJIG1p
+c3Npbmcgc29tZXRoaW5nLG9yIGlzIHRoZXJlIGEgcHJvYmxlbSB3aXRoIHRoZSBib3Q/DQoN
+Ci0tDQoNCldhbmdZdWxpDQoNCg==
+--------------6qWSTeocB9KvF9FYwKm6wpSO
+Content-Type: application/pgp-keys; name="OpenPGP_0xC5DA1F3046F40BEE.asc"
+Content-Disposition: attachment; filename="OpenPGP_0xC5DA1F3046F40BEE.asc"
+Content-Description: OpenPGP public key
+Content-Transfer-Encoding: quoted-printable
 
-Tested in Asus Zenbook S 16 UM5606XA
+-----BEGIN PGP PUBLIC KEY BLOCK-----
 
-Co-developed-by: Félix Jara <hello@felixjara.me>
-Signed-off-by: Félix Jara <hello@felixjara.me>
-Tested-by: Félix Jara <hello@felixjara.me>
-Link: https://github.com/openSUSE/kernel/pull/10
-Signed-off-by: WangYuli <wangyuli@uniontech.com>
----
- drivers/bluetooth/btusb.c | 5 +++++
- 1 file changed, 5 insertions(+)
+xjMEZoEsiBYJKwYBBAHaRw8BAQdAyDPzcbPnchbIhweThfNK1tg1imM+5kgDBJSK
+P+nX39DNIVdhbmdZdWxpIDx3YW5neXVsaUB1bmlvbnRlY2guY29tPsKJBBMWCAAx
+FiEEa1GMzYeuKPkgqDuvxdofMEb0C+4FAmaBLIgCGwMECwkIBwUVCAkKCwUWAgMB
+AAAKCRDF2h8wRvQL7g0UAQCH3mrGM0HzOaARhBeA/Q3AIVfhS010a0MZmPTRGVfP
+bwD/SrncJwwPAL4GiLPEC4XssV6FPUAY0rA68eNNI9cJLArOOARmgSyJEgorBgEE
+AZdVAQUBAQdA88W4CTLDD9fKwW9PB5yurCNdWNS7VTL0dvPDofBTjFYDAQgHwngE
+GBYIACAWIQRrUYzNh64o+SCoO6/F2h8wRvQL7gUCZoEsiQIbDAAKCRDF2h8wRvQL
+7sKvAP4mBvm7Zn1OUjFViwkma8IGRGosXAvMUFyOHVcl1RTgFQEAuJkUo9ERi7qS
+/hbUdUgtitI89efbY0TVetgDsyeQiwU=3D
+=3DBlkq
+-----END PGP PUBLIC KEY BLOCK-----
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index cd22b34542d5..4adae0be8222 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -512,6 +512,11 @@ static const struct usb_device_id blacklist_table[] = {
- 						     BTUSB_WIDEBAND_SPEECH |
- 						     BTUSB_VALID_LE_STATES },
- 
-+	/* MediaTek MT7925 Bluetooth devices */
-+	{ USB_DEVICE(0x13d3, 0x3608), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH |
-+						     BTUSB_VALID_LE_STATES },
-+
- 	/* Additional Realtek 8723AE Bluetooth devices */
- 	{ USB_DEVICE(0x0930, 0x021d), .driver_info = BTUSB_REALTEK },
- 	{ USB_DEVICE(0x13d3, 0x3394), .driver_info = BTUSB_REALTEK },
--- 
-2.45.2
+--------------6qWSTeocB9KvF9FYwKm6wpSO--
 
+--------------rYgltaidC69xRNpWNvH7ciEI--
+
+--------------kF4g1z672TtdiqJ02ivacGnm
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+wnsEABYIACMWIQRrUYzNh64o+SCoO6/F2h8wRvQL7gUCZvkOsAUDAAAAAAAKCRDF2h8wRvQL7l5p
+AP452q7stgt+BE9fX7228H8xu3pV4e4Es4TQ7QVlNHbdGgD9Hfse70UZkqnlcL/lazmRK3bXA6US
+lVf4rYRPvYyTmgc=
+=8FY7
+-----END PGP SIGNATURE-----
+
+--------------kF4g1z672TtdiqJ02ivacGnm--
 
