@@ -4,147 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E26BDCF6497
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Sep 2024 08:59:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96472CF6499
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Sep 2024 10:18:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
 	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wL+9qYlXA5v0qqJwbzIDExW/c8fms3JbMVl5nHst4qM=; b=Be879G3bh63jrF2OP0Wnuw+jGG
-	+F2gbXVmDf9LowRmk0CE82wAISrtE0KOfvTPluU6LjNYsfu9xiSXXL8KxVzHNNeXQZUU3OYsieW7O
-	KwvsDG2HdgX20ogw88YTJtf539ngFy8f7ataHu2Py1jTNaGKVGSjazebOcaocaI65sVGoqXleA1AN
-	lpjgilknllp9XuLGJv60yLmX8BrdN68tfjPRAxBAd85q+OXwfahMEiLJoXR4x6zhHSnW94QM+ICQN
-	IHc/6ZjK8duQrerkrlB1uMZjCEDYIvVEfabdEA9CMWwwtbsmG7ipHCIGnT5524WPEDWx4H+jpvwaX
-	tRxawkzg==;
+	bh=S5zW54ooWy1rzEvUmWc/Abw9fZ2rONHH1cpeo+9sLDY=; b=KnqbkOmoMCVPa4mjr4Hh8bT4c9
+	LAQFzflk8JPr2w8v4dbaLoplL0+MxtlLNSG+AHuOL5mSInpBsxH33IH8MX3bcYMI4IBNCQkRQH3EE
+	pmBjPDDEnvGEHzcIcvjJl5G4y0HXjKEuBoFKyScteRds0vWp3ic451kRPpLy4DaTZ2OFXSOud2kkn
+	zNas4P2Qo/sZPddoHlAly6jpDgGnKGv7Uxv1iN7G3AhXsnF1gZKCzNI5g+U7oIe+P7SbI+st1fb8V
+	HGLU56Cgg/Gl3z/9x2XsjjlaogYAdzgeiOpTTaMTtIcGaCpVPXIABUD1KoVt5gC4vD4bHqdL2zJ+v
+	HP0MgOSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1supmA-0000000ERrB-2z5S;
-	Sun, 29 Sep 2024 08:59:34 +0000
-Received: from mail-psaapc01on20601.outbound.protection.outlook.com ([2a01:111:f400:feae::601] helo=APC01-PSA-obe.outbound.protection.outlook.com)
+	id 1sur0X-0000000Eb8H-1pFA;
+	Sun, 29 Sep 2024 10:18:29 +0000
+Received: from mail-tyzapc01on20628.outbound.protection.outlook.com ([2a01:111:f403:2011::628] helo=APC01-TYZ-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1supkw-0000000ERmJ-2BDz;
-	Sun, 29 Sep 2024 08:58:21 +0000
+	id 1suqsV-0000000EaE1-3ywZ;
+	Sun, 29 Sep 2024 10:10:14 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=B6KEL4hijPyJ9gqulMnT2SOyQ6pARXh78V2MUKJqlXKlTCBqSbSAmGxopl/lecVeqcxhvzuQwa0Clf1m/aLVicfuxw4Fl2RVsLx4kDgqGtCSfy7qKL90EkEAIxAIcdF/OtwvUaTT/gBtsQpf5lN3ePjfo1hjJ5M/gUPQ3bqL8C0yyj0n6pu1yBSkgAfhMFZLmqzuSn8Akp67b2fUVnbA4RTUZEAujxhGD55SXQcJmAG05McHIr5NclN3EbFMpdi7pP/hvuHviLWghVAqcIkhQgdLFy3ePqxyGStk7bevw7sEapE/UVIVZoVkhClqCC4Tz3EIUtvdaEwjydGU8ByVcQ==
+ b=lRxGgC2LCm+B0w1nYSnSAM0ya8xWGCKvYS2E6fsWwsG2454eKaFGHi135TBCfmnbanW9GUPEqtq7IQ3IGSA/pLG9IE3g2kAv4LKrsb83bSisHcJKVo6TOSn1Q2jHRpHokbtFBrbwaKNFT6d+wpvd0QgqTulMn+wvM1/8xrPXIT7YYM/wZBdlsiYR+5F16IRIw8WLqZ/qs8nl2I+8FSBK71YMRBaE1kIeYpH9sdRyC7oWRm/B0RuQqWGNhyqeqHugUfLZk8jQTABO5n1B/HrceCk9P3YaazGN5PVyPJb+h3/+YKR7OsqY3Jv64Pg6UvW5XteKLgIJ+igLdpTYOavDBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=wL+9qYlXA5v0qqJwbzIDExW/c8fms3JbMVl5nHst4qM=;
- b=ULeH2ExHxHT8blkLfvG/EDlkuww0UBohQ6sRqIP7x+3ET99K5d/UERs7rLaWgi6fsWNB42A+vctr2bFw3pHqwhSTVNM3t3LD1dMcvyJpgPkWBiWt7fX8iB9G16/bW+d9kcH5oD6898aAXEbrGhQ0taUuy6GwovYi3sJKErQURUXd0uSFcbvoBWjzV5+CyAIUvquEp/PCjxguBL0yBefK5aeuJYMk5zOkoktSLIvbMXY7FJ6C3QDdlphjcH7kjaBLkubnE6ErX25CXGPrUQUH5R/n7teHkXYbYx/FDGHimzvKZnR049JXkamAKgNEuX/qWWPFikGk/PdQk7qI76jCGw==
+ bh=S5zW54ooWy1rzEvUmWc/Abw9fZ2rONHH1cpeo+9sLDY=;
+ b=bmWKv75pm4WMOn6tCY1nzkl2R2XJhjKtM9jOkcAuTaxu6eUJ+oqBo9gLvhBj15WzjfA9oK5QSCVD194AqzsF6njUO6VvgtuUgdcte4JuNaR9KOBkirMjM7JtHJZ5J8OrWj55OxiBww/qkS/+5JBTsFyrEgF5+2HCu7rmfinyV99IJyT5LWdjXAmgcB4IE9W7H4Z0lm4vP5u6NTJnn3upnUJxhoLqI0zTyh7Y4/C4BFEZHLbwLJgZ79Lih9PMQ9bgOBnC4mY2O5EiaVdI7g42ugp4QnOwYSeJ3ocof37yfIRjHPEqwvcdHGqeNh1nfsjr44ZJdttwsM3v4xEB3MuwCw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
  dkim=pass header.d=vivo.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=wL+9qYlXA5v0qqJwbzIDExW/c8fms3JbMVl5nHst4qM=;
- b=M32EMghOL1UhC/CeSPlXlxp4JGRdgFANFkc/HZI98BeoWmCFP6Aqsz3XqJccKHqoc5eZ8b329dGXq/BncdVYCT47PoFe1IFU9K/OHKS2NY+KDSciaeeSp0VblehMuQYtcOONEFC+3ygFzyZeFg7IuzypfngFUwc3wSkpN2ROkJHC/t08+bPCjzakXhoCi237ixoE3py8vX4Yst5HwwYdzPCA90Z7BMbpKiw8BOiYeTZRSHqo7YA/yuNyb2/HYZ8tk15UHK60Ck/rLZZ0bZEV1+TW3gmIWmw40lITGxVqcImc2ieVm4EgOkv10tnIvnXOsqjGn9wrnSvqrydCFjyqvQ==
+ bh=S5zW54ooWy1rzEvUmWc/Abw9fZ2rONHH1cpeo+9sLDY=;
+ b=SUER4kpFAE3akMiz4JsrJnCOkf7phTPdg63R4i1q8J9jlDekMThOUizVXU1G4jJcXE+Qviho6pcGlntGuCatsYt3dn38UpyBJsjmMgn4hXnApQ5vFzUCrMS0p6q44ISZar900PWeaI5Uf1IxB25hfI1vVPCNSJNnneSOpAF1rWiJiIekuR7Kn2e1e4JJLbLrjlEMWzaOckFdo1DKO02ZNq2t4bsByrzwt/6mMjM8opm4wlTTTJnhbu358MoSPCv8eUN6JYqsix29aNPpAsTUQ9ByzJ+59Zq5XkzGwNd2aJTb0BYXJ7jDEuFiz0Cvj5rdy7eVDrOZJILbu5Dc+IbfVw==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=vivo.com;
-Received: from KL1PR0601MB4113.apcprd06.prod.outlook.com (2603:1096:820:31::7)
- by SG2PR06MB5213.apcprd06.prod.outlook.com (2603:1096:4:1d2::13) with
+Received: from TYZPR06MB4461.apcprd06.prod.outlook.com (2603:1096:400:82::8)
+ by SG2PR06MB5261.apcprd06.prod.outlook.com (2603:1096:4:1d8::13) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8005.25; Sun, 29 Sep
- 2024 08:57:59 +0000
-Received: from KL1PR0601MB4113.apcprd06.prod.outlook.com
- ([fe80::7e85:dad0:3f7:78a1]) by KL1PR0601MB4113.apcprd06.prod.outlook.com
- ([fe80::7e85:dad0:3f7:78a1%4]) with mapi id 15.20.8005.024; Sun, 29 Sep 2024
- 08:57:58 +0000
-From: Yan Zhen <yanzhen@vivo.com>
-To: marcel@holtmann.org,
-	luiz.dentz@gmail.com,
+ 2024 10:09:55 +0000
+Received: from TYZPR06MB4461.apcprd06.prod.outlook.com
+ ([fe80::9c62:d1f5:ede3:1b70]) by TYZPR06MB4461.apcprd06.prod.outlook.com
+ ([fe80::9c62:d1f5:ede3:1b70%5]) with mapi id 15.20.8005.024; Sun, 29 Sep 2024
+ 10:09:55 +0000
+From: Yu Jiaoliang <yujiaoliang@vivo.com>
+To: alcooperx@gmail.com,
+	bcm-kernel-feedback-list@broadcom.com,
+	gregkh@linuxfoundation.org,
+	jirislaby@kernel.org,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	sean.wang@mediatek.com
-Cc: linux-bluetooth@vger.kernel.org,
+	andriy.shevchenko@linux.intel.com,
+	linux-serial@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	opensource.kernel@vivo.com,
-	Yan Zhen <yanzhen@vivo.com>
-Subject: [PATCH v1] bluetooth: Fix typos in the comments
-Date: Sun, 29 Sep 2024 16:57:27 +0800
-Message-Id: <20240929085727.523732-1-yanzhen@vivo.com>
+	linux-mediatek@lists.infradead.org
+Cc: opensource.kernel@vivo.com
+Subject: [PATCH v1] serial: 8250: Fix typos in comments across various files
+Date: Sun, 29 Sep 2024 18:09:31 +0800
+Message-Id: <20240929100931.530620-1-yujiaoliang@vivo.com>
 X-Mailer: git-send-email 2.34.1
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-ClientProxiedBy: TYCPR01CA0084.jpnprd01.prod.outlook.com
- (2603:1096:405:3::24) To KL1PR0601MB4113.apcprd06.prod.outlook.com
- (2603:1096:820:31::7)
+X-ClientProxiedBy: TYWP286CA0029.JPNP286.PROD.OUTLOOK.COM
+ (2603:1096:400:262::17) To TYZPR06MB4461.apcprd06.prod.outlook.com
+ (2603:1096:400:82::8)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: KL1PR0601MB4113:EE_|SG2PR06MB5213:EE_
-X-MS-Office365-Filtering-Correlation-Id: 9c23fc17-94af-4914-8ba1-08dce064d0b1
+X-MS-TrafficTypeDiagnostic: TYZPR06MB4461:EE_|SG2PR06MB5261:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4ac3178f-e548-441e-60bf-08dce06edda3
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014|52116014|38350700014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?RlZc+KgoTJVHCvuPPHAEIZ6OB/eA5vdqU2Om3X0P/hpDOgjpt6S9K0AHLkrf?=
- =?us-ascii?Q?8NV7JrPJA2tQXn16OzBQvSqPQ6xfIrWQHFj+uh80xgqnXwCovYOPcahuLAyf?=
- =?us-ascii?Q?3sQ1R+IkUYIPsf/xKbxeVdE9TKObfLkGfU5u2gNViEKwZjQScn+WznVOb7ex?=
- =?us-ascii?Q?2kdC7QjgL8MeIzOmVOxyIwkkjTZOCi2lPBJ0T/xUuO+prZL5RQwM/+0Vgye3?=
- =?us-ascii?Q?TxNgepVwBKwJySzU2t61aAyNoU/+Bm8uJK0lfiC11jGVoEnBYIu49Qj8ArAH?=
- =?us-ascii?Q?YSv3N3pUKqrSNcjJEhpnvZZF0X9GdRuQxu1CpRxc+Fgv54fiCr3ZchvEgLgq?=
- =?us-ascii?Q?HN+1rI9391lnGux5NZYh8FPzRFeaeq34ro+QTVMT4Kbmx/Td7lfEPA/edQsF?=
- =?us-ascii?Q?5rzeVm8Mc+q+usifrdovEYNbMlBVLKZq5f95WZAB/4rxGg47d5YkG8pSKCu4?=
- =?us-ascii?Q?yuXLQbh5shRV6Vz96TWcTO0ZfRppJ+dLGIE+IhqoP0IXcBmzyPJqVCoPMMcQ?=
- =?us-ascii?Q?Lr/SKm1LpxBJ1FylBqng6fCNyA1tLmLDbmq/GzlARLDeo//7ZtrYtocEuht7?=
- =?us-ascii?Q?NkcNSZRN7pconFdI8oG6j7D+aF/1wpD9zT5FTT1OET4K+q7w/6PDcTVdh098?=
- =?us-ascii?Q?FW1tCwWLkEXJrGkfJqQVwYwzb0Ij6zrMfzccQR+mY33gQYX4BH3hALBRjFD9?=
- =?us-ascii?Q?vKU15/4Wby1vzqwH+e2fo2pAVSyYLEXXRPRTCc/5Zu/uJCT4b2LM6xv61B49?=
- =?us-ascii?Q?PfyL9ayh3DlUnB8zVG+UE2nBGq+3muGfEx3fozQNxsZSRxrrmhTmXomq8DpL?=
- =?us-ascii?Q?Pws+gfsBenfjmiPCQSyPl3oKJyPiWgzMTNFgcS832Q3da4XJSliuLiEbZlQS?=
- =?us-ascii?Q?7rzbUGl9K6LRzYsX7trYws0ZLnsj3qd6lp1JC6HIUsEZYpEEacDA2H/H31TH?=
- =?us-ascii?Q?gck536g6uLVjRojtSqZuN+xuID2Z42tiXCEFuhwm9iqMGsyRXxHTVp/T9Sl2?=
- =?us-ascii?Q?6Y4I6tRA2+YhxfskyRRa4qHKJmmuPqprhhK8XO7Q4MtZkTK9UAN+UvDQDpGC?=
- =?us-ascii?Q?q4p89jTyjCcse9Qa3ZXHTkoqqZJ5dhBAWicYM0M016Izi7jEY+VllFZd4Y4f?=
- =?us-ascii?Q?wmf09po9U/0kKFun3nR5428/iRh9U3UL6BVzBxba06XL9c+M1UCbPZQI/jLP?=
- =?us-ascii?Q?0vrgkS+qf/kKM+4ifqB57KM86Dx3eDmaCKF286m/wEWzTnGiJMSseBBKx70T?=
- =?us-ascii?Q?uTPZrdCd/ehTGMxFR9xlDOrzCdEcCGwB52OghYWxq6x8Hbotn893Kl3TdmX3?=
- =?us-ascii?Q?3doEkNv/53qcb0zQhDJxkUCWC8E3m7RXJFzQrJmU5zrG6A=3D=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:KL1PR0601MB4113.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(52116014)(38350700014);DIR:OUT;SFP:1101;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|52116014|7416014|1800799024|366016|921020|38350700014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?HfZcCHP8/ve0IxhD2/ZFnTfI+qypt9I/Fh8yqNVtYjWNpdEx7+C35BPkDWDt?=
+ =?us-ascii?Q?E6KcGejuJdwdqTC0+VLtmk0M8RIfKFk87P4FHyqzCXs74zNzbMwoh3x3gkKJ?=
+ =?us-ascii?Q?0tw8lk6nLWcD62/dpzcOIbsYheZxpshCvV4dfHrFzq65aNaIX7JS9ELUPY7e?=
+ =?us-ascii?Q?rHupHa6Pc6VpLkhPu/Hw2R7JzKm8ggrWtIXT1HJV92Iypl6jbkkOZeJ0TEx0?=
+ =?us-ascii?Q?wiR6P87rWomrRZR8niFgabEEd55mjXTjQ4puSTkrnkvRgeZxwdARpB6LtvqR?=
+ =?us-ascii?Q?YjaYtXE3OmLEVWpbs9oZHYTuXC5wlZKlBMMdE3bZR5vtFzM1aOAhRqXQgw2H?=
+ =?us-ascii?Q?MrPSv8lJvqBSGC5yk/Xv/FflXeQPMT3eYXnrKzQHiIdBAZLTn2jrUwTT02D2?=
+ =?us-ascii?Q?YeAYvGvx32nd4OcvNIFfRTasWowDA9SYKeW2/i96+sR5Ct4GKiBfTM4Pu4FH?=
+ =?us-ascii?Q?KOlFjdy7rHWwmY1EKFepwwjOM1w6wSOK7iiW6ZcKrHOvY2V58SwooZbvfo6e?=
+ =?us-ascii?Q?csrXDnloMWNgExdvl+N7e8OjShGghhFRK7BTXWv3VBYRvxdWtWIbBuMtGBWL?=
+ =?us-ascii?Q?9Us9Er9n5wnstj2NtIjuGgI8/Y95ZrlksgkDdZ6RaSh83WTAM+BxUauH70DO?=
+ =?us-ascii?Q?aOAxNJCurLbW2lqGwfNdZIIvuLB4RW73xiKZ1AWhBgMaazU1+sdWbMqwujfx?=
+ =?us-ascii?Q?HOmKF74KlzwWHjKJe/0jFQq3NhV9j4WX6B4vSR98/ENE5/SMHrsxO2WfbXL3?=
+ =?us-ascii?Q?/JRDpE+GoxnKSYYzecJBnpuZI2JaxuCav3mnAM9r4Auu9GcgFrk86CT7kZ/v?=
+ =?us-ascii?Q?IgennYbwMjP6weUk6c0tDxEBmJ07UQQMYfXbg9r3Vsy8rR47JXvnqShtZnIK?=
+ =?us-ascii?Q?3uPV+vz6UXV+TxKbJIN5OMIR4CTPsojyqMvWtO7sjiaduQ0HYAlLCMo6zFq1?=
+ =?us-ascii?Q?LYq3Sy4Pc94n7BZkqftBCFiOPQOeonHBPpHQ6duvpQRR4SUpNpSW9Kd7s9hc?=
+ =?us-ascii?Q?ev9W+Z3MZ77v0DU1wUU/iGlcZ0zEZzxGPeJNpOCbUsAwXUsPjoeHssYb05TL?=
+ =?us-ascii?Q?yc/5ZmoNZy1z293RxQ01HYlV7Mg8lC1a9qRk4fj/aAamrQ02bBfViAJ5M81G?=
+ =?us-ascii?Q?0UqYsUX177LP7CLDcs0wCL2GEg0N8MmL3w6lrr+U6W9YBnsZh8krTKxfhoMM?=
+ =?us-ascii?Q?VQL6eundOGPjEy6NgRrHm6qS4Yiwlq0nld9YLeubX2xPk+p3dzFlb6ZuLmay?=
+ =?us-ascii?Q?38Lf24m0WkyqsNQiEzctxt0K8WsLtALyJN8rqBJpLspzW2Sts5Jw8kxw1+kJ?=
+ =?us-ascii?Q?vHnyZOBuPYPO68ejMa8RZU/GhBVQtavv/ilfMXsnojRhjOul2iu3Mz88Ytf3?=
+ =?us-ascii?Q?7sP4p1ZeGIj5/1rmYSsxaR3YZ56ld4EpRl426ujlt7g+w5+VgumuaKt4kOKS?=
+ =?us-ascii?Q?Q8hjQ7LwnKY=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR06MB4461.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(52116014)(7416014)(1800799024)(366016)(921020)(38350700014);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?H18fKrMgrIsGDav8KKs8PP2sTkneMebuRDQPA18b96Cl53etxj3N1ext2h4d?=
- =?us-ascii?Q?5eAxqNB0PMCs8GgUqCiPVAlPs5vTNmDVT0G3YTCAyAUFMDYCwjQPJ7oJUzkt?=
- =?us-ascii?Q?GriJ1bwZhvKWTtgOcJigWKSBSBq3WfSITHmwDHhPsJ7Hm1YwuBN778OuY5lQ?=
- =?us-ascii?Q?HZF2M5urewtOqPZmWe7Oo6tTbCvvlG2E0TlLJpyJosH4t45/oQL/wpk+OFzc?=
- =?us-ascii?Q?orOD8DlsdGMB75HvTFvV7ziOaUlSe8oJnJvw0WRHASyLFna0DPTkbaqsZ/BZ?=
- =?us-ascii?Q?C4gvauPUygolkqnF5Gqcd6FKPjKy2Q4IhhOMHoxKE7vGVPYgl+mQ41mIruNX?=
- =?us-ascii?Q?25VcLWOvvz9NFOBJ5QvAxhArEnFb6PshS2NrxxSZ++p9yAfthCdm3aoZRFz5?=
- =?us-ascii?Q?4mlKvvU+EMp52HEz7GZZAalhyvYlxXq7xjEaZvIHNTpZ6rZf7EzGpkKGo7A3?=
- =?us-ascii?Q?HO4oZzNA6E2XwhFzLwfXy/esYPn33P/HbWou5xxg16ROtU9RVIs+beZPcn3i?=
- =?us-ascii?Q?AeElLJWNcMtMA0lhf1H2E4ik8wzijW5Ol9sFIewVNxZ3kCfK9z9X7Nl6Eiid?=
- =?us-ascii?Q?avFomS5JgqU2/Uz5dsCBXwlAHu+SOL+lfn8eb9mQzNa+7e/q/TTFA/jjtXrF?=
- =?us-ascii?Q?KeLUlblz5eWTG7ENJa2rYR2rND6rK+glhxkGc2K9QRUuMv+ZG1L/MS8miGHx?=
- =?us-ascii?Q?VaVa79sT0WSi6Bn7S0BG7crFd48d0XAwwBZ/yeQIZ7KcG9QHrIr3QDtiSoRL?=
- =?us-ascii?Q?qbgRUcbLB7Sl3Bzpovn31RJi2Bv1Aa7b+ky1uU4nEmliUprhIGgVOEWinNnq?=
- =?us-ascii?Q?8wYiSvhnzc+t6pr7t0mCk6NWYxc5vLDoEWCSVLNvDlP6UKicZZ3MTFd3KQBA?=
- =?us-ascii?Q?ntSQHGsOgCgM+dvpIU42eFdChSejQePPFVaW/Ct6bZHs0mu+cOhRS9F2KHvC?=
- =?us-ascii?Q?tfTUoFvVufz7I6u4PkJRUQo6opdEZyTsWc2m/CpYU2QCjetXPOtZp+gI4hUR?=
- =?us-ascii?Q?2/qiUd6Kyn+bFlLuB8LhObM7564MxriPst5uGEOYzGY+YSwiLgArixFk/lPv?=
- =?us-ascii?Q?IOdsH10YOUYI5MYafN6FN8SxvjnO2M0axdnwh6rpl1I7+5zn2kUolyHDrcW3?=
- =?us-ascii?Q?1df8mcvjvJCvYN7Q69ag1cs6YJILq2gjSURiJRms/oUEux9JlS9DCdaOJkUm?=
- =?us-ascii?Q?ZmfDumI5dYc4hK2ioCsYGIC/8MB+Q5ezDNnXWKE91kmuLBbrV0zTRJmxAA04?=
- =?us-ascii?Q?11VhB25sTuhM2l2Lsab+10VDv/INI7Bf9ezcNmhg9jHJWUeJtz6Kt4PkMqiI?=
- =?us-ascii?Q?3flggs1EUBrUd8S97RADg+bySoZvg2zPNmLg/9ZH8FwOgNus73z6RARHQiXJ?=
- =?us-ascii?Q?x4Hb1CsLZ9H8z1IPAXVvKE6FQcb1RXoOhX8VXO7/lLNVm77dUHV5ofwxhkrp?=
- =?us-ascii?Q?ZgmkACDh4zQZLiwSM9lzCg1B6qW6XmtYUmnyXRZwbMaiuSDhcYLmxkZmZSXu?=
- =?us-ascii?Q?VcEV99Zr8OHGyDtzWHrrsqC9VV2vAVCpiVDCqklRUx001NHJdbjXWoAi7NVn?=
- =?us-ascii?Q?awfgmygFLoE42+EQjvSsrF2U1Sg0XxlD/lu7NlYj?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?E+N/JZGSjUcou34uhu8R4emzlQ775Mq3CTTLix/xidNfqIUQuCo8bygoqgi9?=
+ =?us-ascii?Q?OacaZXFcEPZB5P378aSc+FuFNOgrSvabToYCCg3ZyZlF4BAhHABHYYOvxGJ5?=
+ =?us-ascii?Q?BVgvGLtAFCMxpmpC6xvdYrK2gisZh6Oyt7wGkNxHg4YTvRFTFZpHNxEOxw0t?=
+ =?us-ascii?Q?cKbZcpfEhFev0bqSqCdqvX43X/2PhZUwr4uOxOTIcL5CFZPCrEGnZdTAV7Kd?=
+ =?us-ascii?Q?Zq1BZepAnMdYvGxfXpeXPG7orQznIr4Q2+w4WFlwdcmOx3NOfSWNhSepoR2r?=
+ =?us-ascii?Q?Nv6n8UDVrdyQhcm+cPvQ43pQkkcZCdg7F/Hu2HXsOz0+NlaG2EqXGVOlHgJW?=
+ =?us-ascii?Q?hm0wvwhE1NxquqGE1LxzCovgU3fj2DGOZIs6RXrg0+gncwM+MOH/nzY5ywlj?=
+ =?us-ascii?Q?30RKUaxTAfuV5vrTMCVVPk5batj0igbA3dyWGEYb++5oiLHDLwlmgaAjZQFD?=
+ =?us-ascii?Q?WKYEaUk3yRLEbzm9a9iZe3DFxHW2DXvOt3fHsJ64HCzb5dSUeJi20TSQfgz9?=
+ =?us-ascii?Q?Ps2R1Gyq9sgf6mXNzuUVaiV3m0DfCDHk57VIAFp2PTCnPAohESkMvI2rHfhP?=
+ =?us-ascii?Q?FuFkuLJ+t2rK3NWMs4DbN55WZPqvDg98f+EyY8sGa4nnEdAUdVjqxRhgk/wQ?=
+ =?us-ascii?Q?v79nte0NtuRPJgaUV39JtCefciJY3oDmC1p25tAmCzxMbhvUA5bp8JmQQM+n?=
+ =?us-ascii?Q?LDTnVDJEJ3iY0kkT3k2q6iHN73CK8bsi8FmK73qSDnQB19Dm8A+Wmfd2Vct3?=
+ =?us-ascii?Q?aJpG5kEe2ZFIa/C2PPAD76cA6LUJciB1iATS5KXklIPwJtdcpx7Kiv1zWHvl?=
+ =?us-ascii?Q?0Q8fXiBUuSS5nIHR4KnEEuVSOK3V6TISpi1JvUH+WHw1yB/dEy7Fyw41P68c?=
+ =?us-ascii?Q?SPd3r35alt78Kbvs+7hYmx2d6nPvFVs75VgSM2ffvUxEi/Kn6BAjJzM780sL?=
+ =?us-ascii?Q?sfm6PJpgvvbg5i7Lkuf6WCNkLaRD2U/w05fU7g4YbKKgGWOlsgaUmEtAu200?=
+ =?us-ascii?Q?isICpX7CIhppBqFrmggf6ppO2gDBmQKf+IYZWJ+pQmgaf+CrvC5z20GvvakB?=
+ =?us-ascii?Q?7kBuuhaLuzsyWSD+QwlYeW0F/QX5ylmDx2GrJ3yBwcPwCMG20QTYRfwx67/X?=
+ =?us-ascii?Q?GD/xNG2prWtpmMt8zSs29IboDBcZlZI5qwfcGLmkFK4O5ep+BuHK0ta5tC1c?=
+ =?us-ascii?Q?e7eggWrmUZCUZ2FdYR4e83kVD/G/wyJUDL4AZWDL8352sE/m/Q3EXo4PPJVS?=
+ =?us-ascii?Q?K7p0dyBLQl2JhZkQ1ZhP2qufm5D/y1mlG1Q+3fJss8Jq7EU0HR8DOxES08/L?=
+ =?us-ascii?Q?zxzb0HBSbNTWp8ZDEKI72Tc74HRUi6Os/ZFzqgguVrNYv6NSYJlXs/oJ4oZj?=
+ =?us-ascii?Q?eIGHZtl393BO45OXYq1ruwj/1Df/JlvlNY4MIn1LwIcMku1iA0e5H/war2r0?=
+ =?us-ascii?Q?6iW5c1CJUahe6ZToR1dyQVhQJfR3Z1sFwhq6jUbeoSqqoeKzHA2NVqN6S0m2?=
+ =?us-ascii?Q?76hrJyxZKhmdgXHPeoZ1Tdsse6HWbhIgz7l1ZGut9k2F/B4xtkPKsLVnsK7T?=
+ =?us-ascii?Q?Z+mQAXSOxApxJEnylaU+RYNyjln4DVaHcZOim1iV?=
 X-OriginatorOrg: vivo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9c23fc17-94af-4914-8ba1-08dce064d0b1
-X-MS-Exchange-CrossTenant-AuthSource: KL1PR0601MB4113.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4ac3178f-e548-441e-60bf-08dce06edda3
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4461.apcprd06.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Sep 2024 08:57:58.4996
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Sep 2024 10:09:55.0954
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: kXwHyt5RGItk2S3l2b59SvxVVtlbAaSPmtEASS9zhYwwtvRlTdX0a9idFFUttU8TPUxzeDci6VCFZtOXqmimBA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2PR06MB5213
+X-MS-Exchange-CrossTenant-UserPrincipalName: TvKJJBarvKM+rEQ8LiVJCb2wv05tld2w/hRa45rechongw+gcFHZaxDpQlDOWUq0+Ib1p3Q9x78M/41GvTt9HA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2PR06MB5261
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240929_015819_300275_602F3B85 
-X-CRM114-Status: GOOD (  19.16  )
+X-CRM114-CacheID: sfid-20240929_031012_619142_A4CE69D3 
+X-CRM114-Status: GOOD (  18.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,198 +162,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Correctly spelled comments make it easier for the reader to understand
-the code.
+This patch fixes several typos in the comments within the tty/8250
+directory to improve readability and code documentation.
 
-Fix typos:
-'fragement' ==> 'fragment',
-'genration' ==> 'generation',
-'funciton' ==> 'function',
-'Explitly' ==> 'Explicitly',
-'explaination' ==> 'explanation',
-'Tranlate' ==> 'Translate',
-'immediatelly' ==> 'immediately',
-'isntance' ==> 'instance',
-'transmittion' ==> 'transmission',
-'recevie' ==> 'receive',
-'outselves' ==> 'ourselves',
-'conrol' ==> 'control'.
+Detected using codespell.
 
-Signed-off-by: Yan Zhen <yanzhen@vivo.com>
+Signed-off-by: Yu Jiaoliang <yujiaoliang@vivo.com>
 ---
- drivers/bluetooth/btintel.c   | 4 ++--
- drivers/bluetooth/btmtk.c     | 2 +-
- drivers/bluetooth/btmtksdio.c | 4 ++--
- drivers/bluetooth/btmtkuart.c | 2 +-
- drivers/bluetooth/btusb.c     | 2 +-
- drivers/bluetooth/hci_ldisc.c | 2 +-
- drivers/bluetooth/hci_ll.c    | 2 +-
- drivers/bluetooth/hci_nokia.c | 2 +-
- drivers/bluetooth/hci_qca.c   | 8 ++++----
- 9 files changed, 14 insertions(+), 14 deletions(-)
+ drivers/tty/serial/8250/8250_bcm7271.c | 2 +-
+ drivers/tty/serial/8250/8250_exar.c    | 4 ++--
+ drivers/tty/serial/8250/8250_fintek.c  | 2 +-
+ drivers/tty/serial/8250/8250_mtk.c     | 4 ++--
+ drivers/tty/serial/8250/8250_omap.c    | 4 ++--
+ 5 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/bluetooth/btintel.c b/drivers/bluetooth/btintel.c
-index 1ccbb5157515..a6a125935cb3 100644
---- a/drivers/bluetooth/btintel.c
-+++ b/drivers/bluetooth/btintel.c
-@@ -1040,7 +1040,7 @@ static int btintel_download_firmware_payload(struct hci_dev *hdev,
- 		 * as needed.
- 		 *
- 		 * Send set of commands with 4 byte alignment from the
--		 * firmware data buffer as a single Data fragement.
-+		 * firmware data buffer as a single Data fragment.
- 		 */
- 		if (!(frag_len % 4)) {
- 			err = btintel_secure_send(hdev, 0x01, frag_len, fw_ptr);
-@@ -2835,7 +2835,7 @@ void btintel_set_msft_opcode(struct hci_dev *hdev, u8 hw_variant)
- 	case 0x12:	/* ThP */
- 	case 0x13:	/* HrP */
- 	case 0x14:	/* CcP */
--	/* All Intel new genration controllers support the Microsoft vendor
-+	/* All Intel new generation controllers support the Microsoft vendor
- 	 * extension are using 0xFC1E for VsMsftOpCode.
- 	 */
- 	case 0x17:
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index 2b7c80043aa2..964911bce528 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -324,7 +324,7 @@ int btmtk_setup_firmware(struct hci_dev *hdev, const char *fwname,
- 	wmt_params.data = NULL;
- 	wmt_params.status = NULL;
- 
--	/* Activate funciton the firmware providing to */
-+	/* Activate function the firmware providing to */
- 	err = wmt_cmd_sync(hdev, &wmt_params);
- 	if (err < 0) {
- 		bt_dev_err(hdev, "Failed to send wmt rst (%d)", err);
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index 497e4c87f5be..781a1a86b8a2 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -681,7 +681,7 @@ static int btmtksdio_open(struct hci_dev *hdev)
- 	if (err < 0)
- 		goto err_release_irq;
- 
--	/* Explitly set write-1-clear method */
-+	/* Explicitly set write-1-clear method */
- 	val = sdio_readl(bdev->func, MTK_REG_CHCR, &err);
- 	if (err < 0)
- 		goto err_release_irq;
-@@ -1396,7 +1396,7 @@ static int btmtksdio_probe(struct sdio_func *func,
- 	if (pm_runtime_enabled(bdev->dev))
- 		pm_runtime_disable(bdev->dev);
- 
--	/* As explaination in drivers/mmc/core/sdio_bus.c tells us:
-+	/* As explanation in drivers/mmc/core/sdio_bus.c tells us:
- 	 * Unbound SDIO functions are always suspended.
- 	 * During probe, the function is set active and the usage count
- 	 * is incremented.  If the driver supports runtime PM,
-diff --git a/drivers/bluetooth/btmtkuart.c b/drivers/bluetooth/btmtkuart.c
-index aa87c3e78871..f4ae9e5ea09e 100644
---- a/drivers/bluetooth/btmtkuart.c
-+++ b/drivers/bluetooth/btmtkuart.c
-@@ -327,7 +327,7 @@ mtk_stp_split(struct btmtkuart_dev *bdev, const unsigned char *data, int count,
- 	if (count <= 0)
- 		return NULL;
- 
--	/* Tranlate to how much the size of data H4 can handle so far */
-+	/* Translate to how much the size of data H4 can handle so far */
- 	*sz_h4 = min_t(int, count, bdev->stp_dlen);
- 
- 	/* Update the remaining size of STP packet */
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index c5f7dd65617e..65404642a373 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -1070,7 +1070,7 @@ static inline void btusb_free_frags(struct btusb_data *data)
- static int btusb_recv_event(struct btusb_data *data, struct sk_buff *skb)
- {
- 	if (data->intr_interval) {
--		/* Trigger dequeue immediatelly if an event is received */
-+		/* Trigger dequeue immediately if an event is received */
- 		schedule_delayed_work(&data->rx_work, 0);
- 	}
- 
-diff --git a/drivers/bluetooth/hci_ldisc.c b/drivers/bluetooth/hci_ldisc.c
-index 395d66e32a2e..d2d6ba8d2f8b 100644
---- a/drivers/bluetooth/hci_ldisc.c
-+++ b/drivers/bluetooth/hci_ldisc.c
-@@ -594,7 +594,7 @@ static void hci_uart_tty_wakeup(struct tty_struct *tty)
-  *     Called by tty low level driver when receive data is
-  *     available.
-  *
-- * Arguments:  tty          pointer to tty isntance data
-+ * Arguments:  tty          pointer to tty instance data
-  *             data         pointer to received data
-  *             flags        pointer to flags for data
-  *             count        count of received data in bytes
-diff --git a/drivers/bluetooth/hci_ll.c b/drivers/bluetooth/hci_ll.c
-index 4a0b5c3160c2..e19e9bd49555 100644
---- a/drivers/bluetooth/hci_ll.c
-+++ b/drivers/bluetooth/hci_ll.c
-@@ -305,7 +305,7 @@ static void ll_device_woke_up(struct hci_uart *hu)
- 	hci_uart_tx_wakeup(hu);
- }
- 
--/* Enqueue frame for transmittion (padding, crc, etc) */
-+/* Enqueue frame for transmission (padding, crc, etc) */
- /* may be called from two simultaneous tasklets */
- static int ll_enqueue(struct hci_uart *hu, struct sk_buff *skb)
- {
-diff --git a/drivers/bluetooth/hci_nokia.c b/drivers/bluetooth/hci_nokia.c
-index 62633d9ba7c4..312da01e91d0 100644
---- a/drivers/bluetooth/hci_nokia.c
-+++ b/drivers/bluetooth/hci_nokia.c
-@@ -501,7 +501,7 @@ static int nokia_close(struct hci_uart *hu)
- 	return 0;
- }
- 
--/* Enqueue frame for transmittion (padding, crc, etc) */
-+/* Enqueue frame for transmission (padding, crc, etc) */
- static int nokia_enqueue(struct hci_uart *hu, struct sk_buff *skb)
- {
- 	struct nokia_bt_dev *btdev = hu->priv;
-diff --git a/drivers/bluetooth/hci_qca.c b/drivers/bluetooth/hci_qca.c
-index 678f150229e7..1086ef2c71ea 100644
---- a/drivers/bluetooth/hci_qca.c
-+++ b/drivers/bluetooth/hci_qca.c
-@@ -873,7 +873,7 @@ static void device_woke_up(struct hci_uart *hu)
- 	hci_uart_tx_wakeup(hu);
- }
- 
--/* Enqueue frame for transmittion (padding, crc, etc) may be called from
-+/* Enqueue frame for transmission (padding, crc, etc) may be called from
-  * two simultaneous tasklets.
-  */
- static int qca_enqueue(struct hci_uart *hu, struct sk_buff *skb)
-@@ -1059,7 +1059,7 @@ static void qca_controller_memdump(struct work_struct *work)
- 		if (!seq_no) {
- 
- 			/* This is the first frame of memdump packet from
--			 * the controller, Disable IBS to recevie dump
-+			 * the controller, Disable IBS to receive dump
- 			 * with out any interruption, ideally time required for
- 			 * the controller to send the dump is 8 seconds. let us
- 			 * start timer to handle this asynchronous activity.
-@@ -2358,7 +2358,7 @@ static int qca_serdev_probe(struct serdev_device *serdev)
- 			 * Backward compatibility with old DT sources. If the
- 			 * node doesn't have the 'enable-gpios' property then
- 			 * let's use the power sequencer. Otherwise, let's
--			 * drive everything outselves.
-+			 * drive everything ourselves.
+diff --git a/drivers/tty/serial/8250/8250_bcm7271.c b/drivers/tty/serial/8250/8250_bcm7271.c
+index 2569ca69223f..431d560375d2 100644
+--- a/drivers/tty/serial/8250/8250_bcm7271.c
++++ b/drivers/tty/serial/8250/8250_bcm7271.c
+@@ -812,7 +812,7 @@ static int brcmuart_handle_irq(struct uart_port *p)
+ 			/*
+ 			 * if Receive Data Interrupt is enabled and
+ 			 * we're uing hardware flow control, deassert
+-			 * RTS and wait for any chars in the pipline to
++			 * RTS and wait for any chars in the pipeline to
+ 			 * arrive and then check for DR again.
  			 */
- 			qcadev->bt_power->pwrseq = devm_pwrseq_get(&serdev->dev,
- 								   "bluetooth");
-@@ -2530,7 +2530,7 @@ static void qca_serdev_shutdown(struct device *dev)
- 		    hci_dev_test_flag(hdev, HCI_SETUP))
- 			return;
+ 			if ((ier & UART_IER_RDI) && (up->mcr & UART_MCR_AFE)) {
+diff --git a/drivers/tty/serial/8250/8250_exar.c b/drivers/tty/serial/8250/8250_exar.c
+index b7a75db15249..5f8933537728 100644
+--- a/drivers/tty/serial/8250/8250_exar.c
++++ b/drivers/tty/serial/8250/8250_exar.c
+@@ -360,7 +360,7 @@ static u16 exar_ee_read(struct exar8250 *priv, u8 ee_addr)
+  * @priv: Device's private structure
+  * @mpio_num: MPIO number/offset to configure
+  *
+- * Configure a single MPIO as an output and disable tristate. It is reccomended
++ * Configure a single MPIO as an output and disable tristate. It is recommended
+  * to set the level with exar_mpio_set_high()/exar_mpio_set_low() prior to
+  * calling this function to ensure default MPIO pin state.
+  *
+@@ -516,7 +516,7 @@ static int xr17v35x_startup(struct uart_port *port)
+ 	serial_port_out(port, UART_XR_EFR, UART_EFR_ECB);
  
--		/* The serdev must be in open state when conrol logic arrives
-+		/* The serdev must be in open state when control logic arrives
- 		 * here, so also fix the use-after-free issue caused by that
- 		 * the serdev is flushed or wrote after it is closed.
- 		 */
+ 	/*
+-	 * Make sure all interrups are masked until initialization is
++	 * Make sure all interrupts are masked until initialization is
+ 	 * complete and the FIFOs are cleared
+ 	 *
+ 	 * Synchronize UART_IER access against the console.
+diff --git a/drivers/tty/serial/8250/8250_fintek.c b/drivers/tty/serial/8250/8250_fintek.c
+index e2aa2a1a02dd..f59c01f48480 100644
+--- a/drivers/tty/serial/8250/8250_fintek.c
++++ b/drivers/tty/serial/8250/8250_fintek.c
+@@ -125,7 +125,7 @@ static int fintek_8250_enter_key(u16 base_port, u8 key)
+ 	if (!request_muxed_region(base_port, 2, "8250_fintek"))
+ 		return -EBUSY;
+ 
+-	/* Force to deactive all SuperIO in this base_port */
++	/* Force to deactivate all SuperIO in this base_port */
+ 	outb(EXIT_KEY, base_port + ADDR_PORT);
+ 
+ 	outb(key, base_port + ADDR_PORT);
+diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+index b9cca210e171..2b8e6bfc7d81 100644
+--- a/drivers/tty/serial/8250/8250_mtk.c
++++ b/drivers/tty/serial/8250/8250_mtk.c
+@@ -346,8 +346,8 @@ mtk8250_set_termios(struct uart_port *port, struct ktermios *termios,
+ 	/*
+ 	 * Mediatek UARTs use an extra highspeed register (MTK_UART_HIGHS)
+ 	 *
+-	 * We need to recalcualte the quot register, as the claculation depends
+-	 * on the vaule in the highspeed register.
++	 * We need to recalculate the quot register, as the calculation depends
++	 * on the value in the highspeed register.
+ 	 *
+ 	 * Some baudrates are not supported by the chip, so we use the next
+ 	 * lower rate supported and update termios c_flag.
+diff --git a/drivers/tty/serial/8250/8250_omap.c b/drivers/tty/serial/8250/8250_omap.c
+index 88b58f44e4e9..f967d09482d5 100644
+--- a/drivers/tty/serial/8250/8250_omap.c
++++ b/drivers/tty/serial/8250/8250_omap.c
+@@ -1304,7 +1304,7 @@ static void am654_8250_handle_rx_dma(struct uart_8250_port *up, u8 iir,
+ 
+ /*
+  * This is mostly serial8250_handle_irq(). We have a slightly different DMA
+- * hoook for RX/TX and need different logic for them in the ISR. Therefore we
++ * hook for RX/TX and need different logic for them in the ISR. Therefore we
+  * use the default routine in the non-DMA case and this one for with DMA.
+  */
+ static int omap_8250_dma_handle_irq(struct uart_port *port)
+@@ -1338,7 +1338,7 @@ static int omap_8250_dma_handle_irq(struct uart_port *port)
+ 			serial8250_tx_chars(up);
+ 		} else  {
+ 			/*
+-			 * try again due to an earlier failer which
++			 * try again due to an earlier failure which
+ 			 * might have been resolved by now.
+ 			 */
+ 			if (omap_8250_tx_dma(up))
 -- 
 2.34.1
 
