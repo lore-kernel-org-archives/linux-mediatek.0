@@ -4,66 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87D47CF649D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 09:16:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEA1BCF649D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 09:27:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tIoTrcEPQ0rtibXI8dkLVpLEaV6aAsK11nlte/a/cHA=; b=tAu5qG+mHoDIYwZ5oAzb/L+EgW
-	p/4XvDf7AlVFh/aLqcykQxNjt69UvFQppTmtpGModCsTT0Gy8fLbnSRA7iw5J+NJ1TOnrW0C+sdk3
-	sNCNG6Ak5pN4HmB3nmC2voEzhROi9uc5/zrYYQZeXECJrJaaFv1PxdZZVAp7XwcnXZB66YpyxzDq0
-	I697rgOVz/BhQcNIq2CW4tQco4ydcDUyeb2pawVqOHDeMlL54uXTCPJh+vsrCCXxchU7x1koPcMfT
-	HKiyJj6a1kmnvrkB9sZ8e5u8AHA8mg0jq5TqQIfv1mM3KF9/uWYtGcRlt2YrpqTA2GgGD7hMhYtO1
-	2Ss78ibw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=yqgHKnptu5bK43gGLrnEqqpfwTrlY1ULN7Za2e2rfGM=; b=UkupdOGjlm9IUQH+cm28DM4z6b
+	db0c7XThjeBnjpvawehqe+6ONxiM6eEF4J+AXTq6VZhd1o6Q+tI22P1YpOoHmIQI4OY+9rC9OMbzZ
+	shd+WWYqRpiF4ImCxs6C+uHGYqHUPJl0QKkH/t051QD5zlH8r0luCfKB08EXY9HntpvRYFkbPhTZ1
+	i60pRZg71/+GmqnizktY5apqfs2MyUS6F9kmNYyf+3e+CJ23srBHYkOliD+846hi4nxpS42JvUDqU
+	Cjt7zun5xHuSt5fnkFsmHkNuEm7TivS5hq25Lw0hgH6fW6pHdZi8cxeWggSLlQumUdMEtR0TtSTyk
+	PFjBpalA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svCVw-0000000GT81-1Uvj;
-	Mon, 30 Sep 2024 09:16:20 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1svCge-0000000GW8s-2xEN;
+	Mon, 30 Sep 2024 09:27:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svCTZ-0000000GSSc-1Mia;
-	Mon, 30 Sep 2024 09:13:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727687631;
-	bh=ekXh5zJ922BUPQ2ysuU/fcRhDon1l4dt3zODYpF+oJw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=mxaFcp+4AIKcC2zcMkACfq45GZrLQrDz+uJPnKgBGjB4X33urnh5nqy8qdjynC4l+
-	 snR74I2WkiU8sXfExn81xtMXzRDhaLaRvn/mZJWKtgmBsCv2DtguqJDkOJvKT/sXuA
-	 XlefYorryRIx3gwoHubM5agEzBAZwC1/mAYCrjKBx5+FF9kTBZYXD8KL/08/UhCMD6
-	 TeWYNlLXrEy3LFVYEBVsvHGCqldPxrqDjh7RYod7651iNo5w24hyEEvLA1IMcKut39
-	 51570TETY3WbEH7h3auJZHjpieZu/aNhpC9PnYo1rQ/i2NSIFFfsWRrUv2anMxpiM0
-	 q07VsemLHfZ7w==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5610A17E0F6A;
-	Mon, 30 Sep 2024 11:13:51 +0200 (CEST)
-Message-ID: <e969918b-3af4-4880-9dc6-fba868a9937a@collabora.com>
-Date: Mon, 30 Sep 2024 11:13:50 +0200
+	id 1svCZf-0000000GUEV-1ycp;
+	Mon, 30 Sep 2024 09:20:12 +0000
+X-UUID: 2e7899387f0d11efba0aef63c0775dbf-20240930
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=yqgHKnptu5bK43gGLrnEqqpfwTrlY1ULN7Za2e2rfGM=;
+	b=anWrLSmYD1+3k4rZ20foGTgJzeg6I44Xk67A341xP3ORVfqRKoi8pGVGkxWaURuSVjuekGi6Z0EUyNn+KXIZ09mhSpR63EfBAJBf+rKr5nKi7Uezx0YUJx62hqUNx5SWlNo4OsuGdOrcbe1LkOn3n3qydIk+UcIm7JxT08CJIHo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:e4ec411c-d2e9-4226-9037-edc61dcb945e,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:8cbcc89e-8e9a-4ac1-b510-390a86b53c0a,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 2e7899387f0d11efba0aef63c0775dbf-20240930
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
+	(envelope-from <liankun.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1650050316; Mon, 30 Sep 2024 02:20:06 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 30 Sep 2024 17:20:03 +0800
+Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 30 Sep 2024 17:20:02 +0800
+From: Liankun Yang <liankun.yang@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+	<simona@ffwll.ch>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <msp@baylibre.com>,
+	<rex-bc.chen@mediatek.com>, <dmitry.osipenko@collabora.com>,
+	<ck.hu@mediatek.com>, <jitao.shi@mediatek.com>, <mac.shen@mediatek.com>,
+	<peng.liu@mediatek.com>, <liankun.yang@mediatek.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>
+Subject: [PATCH v1 1/1] drm/mediatek: Add return value check when reading DPCD
+Date: Mon, 30 Sep 2024 17:17:41 +0800
+Message-ID: <20240930092000.5385-1-liankun.yang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] mmc: mtk-sd: Add support for MT8196
-To: Andy-ld Lu <andy-ld.lu@mediatek.com>, ulf.hansson@linaro.org,
- robh@kernel.org, krzk+dt@kernel.org, matthias.bgg@gmail.com,
- wenbin.mei@mediatek.com
-Cc: linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20240929074558.2076-1-andy-ld.lu@mediatek.com>
- <20240929074558.2076-2-andy-ld.lu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240929074558.2076-2-andy-ld.lu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240930_021353_585389_EB07D25F 
-X-CRM114-Status: GOOD (  32.96  )
+X-CRM114-CacheID: sfid-20240930_022011_551265_0AA66251 
+X-CRM114-Status: GOOD (  12.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,293 +88,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/09/24 09:44, Andy-ld Lu ha scritto:
-> Mediatek SoC MT8196 features a new design for tx/rx path. The new tx
-> path incorporates register settings that are closely associated with
-> bus timing. And the difference between new rx path and older versions
-> is the usage of distinct register bits when setting the data sampling
-> edge as part of the tuning process.
-> 
-> Besides, there are modified register settings for STOP_DLY_SEL and
-> POP_EN_CNT, with two new fields added to the compatibility structure
-> to reflect the modifications.
-> 
-> For the changes mentioned in relation to the MT8196, the new compatible
-> string 'mediatek,mt8196-mmc' is introduced. This is to accommodate
-> different settings and workflows specific to the MT8196.
-> 
-> Signed-off-by: Andy-ld Lu <andy-ld.lu@mediatek.com>
-> ---
->   drivers/mmc/host/mtk-sd.c | 162 +++++++++++++++++++++++++++++++++-----
->   1 file changed, 141 insertions(+), 21 deletions(-)
-> 
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 89018b6c97b9..4254b3012aeb 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -65,6 +65,7 @@
->   #define SDC_RESP3        0x4c
->   #define SDC_BLK_NUM      0x50
->   #define SDC_ADV_CFG0     0x64
-> +#define MSDC_NEW_RX_CFG  0x68
->   #define EMMC_IOCON       0x7c
->   #define SDC_ACMD_RESP    0x80
->   #define DMA_SA_H4BIT     0x8c
-> @@ -91,6 +92,7 @@
->   #define EMMC_TOP_CONTROL	0x00
->   #define EMMC_TOP_CMD		0x04
->   #define EMMC50_PAD_DS_TUNE	0x0c
-> +#define LOOP_TEST_CONTROL	0x30
->   
->   /*--------------------------------------------------------------------------*/
->   /* Register Mask                                                            */
-> @@ -202,9 +204,13 @@
->   #define SDC_STS_CMDBUSY         BIT(1)	/* RW */
->   #define SDC_STS_SWR_COMPL       BIT(31)	/* RW */
->   
-> -#define SDC_DAT1_IRQ_TRIGGER	BIT(19)	/* RW */
->   /* SDC_ADV_CFG0 mask */
-> +#define SDC_DAT1_IRQ_TRIGGER	BIT(19)	/* RW */
->   #define SDC_RX_ENHANCE_EN	BIT(20)	/* RW */
-> +#define SDC_NEW_TX_EN		BIT(31)	/* RW */
-> +
-> +/* MSDC_NEW_RX_CFG mask */
-> +#define MSDC_NEW_RX_PATH_SEL	BIT(0)	/* RW */
->   
->   /* DMA_SA_H4BIT mask */
->   #define DMA_ADDR_HIGH_4BIT      GENMASK(3, 0)	/* RW */
-> @@ -226,6 +232,7 @@
->   
->   /* MSDC_PATCH_BIT mask */
->   #define MSDC_PATCH_BIT_ODDSUPP    BIT(1)	/* RW */
-> +#define MSDC_PATCH_BIT_RD_DAT_SEL BIT(3)	/* RW */
->   #define MSDC_INT_DAT_LATCH_CK_SEL GENMASK(9, 7)
->   #define MSDC_CKGEN_MSDC_DLY_SEL   GENMASK(14, 10)
->   #define MSDC_PATCH_BIT_IODSSEL    BIT(16)	/* RW */
-> @@ -247,6 +254,8 @@
->   #define MSDC_PB2_SUPPORT_64G      BIT(1)    /* RW */
->   #define MSDC_PB2_RESPWAIT         GENMASK(3, 2)   /* RW */
->   #define MSDC_PB2_RESPSTSENSEL     GENMASK(18, 16) /* RW */
-> +#define MSDC_PB2_POP_EN_CNT       GENMASK(23, 20) /* RW */
-> +#define MSDC_PB2_CFGCRCSTSEDGE    BIT(25)   /* RW */
->   #define MSDC_PB2_CRCSTSENSEL      GENMASK(31, 29) /* RW */
->   
->   #define MSDC_PAD_TUNE_DATWRDLY	  GENMASK(4, 0)		/* RW */
-> @@ -311,6 +320,12 @@
->   #define PAD_DS_DLY1		GENMASK(14, 10)	/* RW */
->   #define PAD_DS_DLY3		GENMASK(4, 0)	/* RW */
->   
-> +/* LOOP_TEST_CONTROL mask */
-> +#define TEST_LOOP_DSCLK_MUX_SEL        BIT(0)	/* RW */
-> +#define TEST_LOOP_LATCH_MUX_SEL        BIT(1)	/* RW */
-> +#define LOOP_EN_SEL_CLK                BIT(20)	/* RW */
-> +#define TEST_HS400_CMD_LOOP_MUX_SEL    BIT(31)	/* RW */
-> +
->   #define REQ_CMD_EIO  BIT(0)
->   #define REQ_CMD_TMO  BIT(1)
->   #define REQ_DAT_ERR  BIT(2)
-> @@ -391,6 +406,7 @@ struct msdc_save_para {
->   	u32 emmc_top_control;
->   	u32 emmc_top_cmd;
->   	u32 emmc50_pad_ds_tune;
-> +	u32 loop_test_control;
->   };
->   
->   struct mtk_mmc_compatible {
-> @@ -402,9 +418,13 @@ struct mtk_mmc_compatible {
->   	bool data_tune;
->   	bool busy_check;
->   	bool stop_clk_fix;
-> +	u8 stop_dly_sel;
-> +	u8 pop_en_cnt;
->   	bool enhance_rx;
->   	bool support_64g;
->   	bool use_internal_cd;
-> +	bool support_new_tx;
-> +	bool support_new_rx;
+Returns the number of bytes transferred (1) on success.
+Check the return value to confirm that AUX communication is successful.
 
-Is there really any platform that supports new_tx but *not* new_rx, or vice-versa?
+Fixes: f70ac097a2cf ("drm/mediatek: Add MT8195 Embedded DisplayPort driver")
 
-If not, you can add just one `bool support_new_rx_tx` member to this structure.
+Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dp.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
->   };
->   
->   struct msdc_tune_para {
-> @@ -621,6 +641,23 @@ static const struct mtk_mmc_compatible mt8516_compat = {
->   	.stop_clk_fix = true,
->   };
->   
-> +static const struct mtk_mmc_compatible mt8196_compat = {
-> +	.clk_div_bits = 12,
-> +	.recheck_sdio_irq = false,
-> +	.hs400_tune = false,
-> +	.pad_tune_reg = MSDC_PAD_TUNE0,
-> +	.async_fifo = true,
-> +	.data_tune = true,
-> +	.busy_check = true,
-> +	.stop_clk_fix = true,
-> +	.stop_dly_sel = 1,
-> +	.pop_en_cnt = 2,
-> +	.enhance_rx = true,
-> +	.support_64g = true,
-> +	.support_new_tx = true,
-> +	.support_new_rx = true,
-> +};
-> +
->   static const struct of_device_id msdc_of_ids[] = {
->   	{ .compatible = "mediatek,mt2701-mmc", .data = &mt2701_compat},
->   	{ .compatible = "mediatek,mt2712-mmc", .data = &mt2712_compat},
-> @@ -632,6 +669,7 @@ static const struct of_device_id msdc_of_ids[] = {
->   	{ .compatible = "mediatek,mt8135-mmc", .data = &mt8135_compat},
->   	{ .compatible = "mediatek,mt8173-mmc", .data = &mt8173_compat},
->   	{ .compatible = "mediatek,mt8183-mmc", .data = &mt8183_compat},
-> +	{ .compatible = "mediatek,mt8196-mmc", .data = &mt8196_compat},
->   	{ .compatible = "mediatek,mt8516-mmc", .data = &mt8516_compat},
->   
->   	{}
-> @@ -872,6 +910,42 @@ static int msdc_ungate_clock(struct msdc_host *host)
->   				  (val & MSDC_CFG_CKSTB), 1, 20000);
->   }
->   
-> +static void msdc_new_tx_setting(struct msdc_host *host)
-> +{
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+index d8796a904eca..3cab65345d1e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -2018,6 +2018,7 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
+ 	enum drm_connector_status ret = connector_status_disconnected;
+ 	bool enabled = mtk_dp->enabled;
+ 	u8 sink_count = 0;
++	size_t value;
+ 
+ 	if (!mtk_dp->train_info.cable_plugged_in)
+ 		return ret;
+@@ -2032,7 +2033,12 @@ static enum drm_connector_status mtk_dp_bdg_detect(struct drm_bridge *bridge)
+ 	 * function, we just need to check the HPD connection to check
+ 	 * whether we connect to a sink device.
+ 	 */
+-	drm_dp_dpcd_readb(&mtk_dp->aux, DP_SINK_COUNT, &sink_count);
++	value = drm_dp_dpcd_readb(&mtk_dp->aux, DP_SINK_COUNT, &sink_count);
++	if (value < 0) {
++		drm_err(mtk_dp->drm_dev, "Failed to read DP Sink Count: %zd\n", value);
++		return ret;
++	}
++
+ 	if (DP_GET_SINK_COUNT(sink_count))
+ 		ret = connector_status_connected;
+ 
+-- 
+2.45.2
 
-That's simpler:
-
-	if (!host->top_base)
-		return;
-
-> +	if (host->top_base) {
-> +		sdr_set_bits(host->top_base + LOOP_TEST_CONTROL,
-> +			     TEST_LOOP_DSCLK_MUX_SEL);
-> +		sdr_set_bits(host->top_base + LOOP_TEST_CONTROL,
-> +			     TEST_LOOP_LATCH_MUX_SEL);
-> +		sdr_clr_bits(host->top_base + LOOP_TEST_CONTROL,
-> +			     TEST_HS400_CMD_LOOP_MUX_SEL);
-> +	}
-> +
-> +	switch (host->timing) {
-> +	case MMC_TIMING_LEGACY:
-> +	case MMC_TIMING_MMC_HS:
-> +	case MMC_TIMING_SD_HS:
-> +	case MMC_TIMING_UHS_SDR12:
-> +	case MMC_TIMING_UHS_SDR25:
-> +	case MMC_TIMING_UHS_DDR50:
-> +	case MMC_TIMING_MMC_DDR52:
-> +		if (host->top_base)
-> +			sdr_clr_bits(host->top_base + LOOP_TEST_CONTROL,
-> +				     LOOP_EN_SEL_CLK);
-> +		break;
-> +	case MMC_TIMING_UHS_SDR50:
-> +	case MMC_TIMING_UHS_SDR104:
-> +	case MMC_TIMING_MMC_HS200:
-> +	case MMC_TIMING_MMC_HS400:
-> +		if (host->top_base)
-> +			sdr_set_bits(host->top_base + LOOP_TEST_CONTROL,
-> +				     LOOP_EN_SEL_CLK);
-> +		break;
-> +	default:
-> +		break;
-> +	}
-> +}
-> +
->   static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
->   {
->   	struct mmc_host *mmc = mmc_from_priv(host);
-> @@ -881,6 +955,7 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
->   	u32 sclk;
->   	u32 tune_reg = host->dev_comp->pad_tune_reg;
->   	u32 val;
-> +	bool timing_changed = false;
-
-bool timing_changed;
-
->   
->   	if (!hz) {
->   		dev_dbg(host->dev, "set mclk to 0\n");
-> @@ -890,6 +965,9 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
->   		return;
->   	}
->   
-> +	if (host->timing != timing)
-> +		timing_changed = true;
-
-	else
-		timing_changed = false;
-
-> +
->   	flags = readl(host->base + MSDC_INTEN);
->   	sdr_clr_bits(host->base + MSDC_INTEN, flags);
->   	if (host->dev_comp->clk_div_bits == 8)
-> @@ -996,6 +1074,9 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
->   		sdr_set_field(host->base + tune_reg,
->   			      MSDC_PAD_TUNE_CMDRRDLY,
->   			      host->hs400_cmd_int_delay);
-> +	if (timing_changed && host->dev_comp->support_new_tx)
-
-I would invert this to (host->dev_comp->support_new_tx && timing_changed)
-as that, at least to me, reads as "if this is new_tx - and the timing changed"
-maning that the primary reason why we're checking is "if this is new_tx".
-
-It's a personal preference though, so the final choice is yours.
-
-> +		msdc_new_tx_setting(host);
-> +
->   	dev_dbg(host->dev, "sclk: %d, timing: %d\n", mmc->actual_clock,
->   		timing);
->   }
-> @@ -1704,6 +1785,17 @@ static void msdc_init_hw(struct msdc_host *host)
->   		reset_control_deassert(host->reset);
->   	}
->   
-> +	/* New tx/rx enable bit need to be 0->1 for hardware check */
-> +	if (host->dev_comp->support_new_tx) {
-> +		sdr_clr_bits(host->base + SDC_ADV_CFG0, SDC_NEW_TX_EN);
-> +		sdr_set_bits(host->base + SDC_ADV_CFG0, SDC_NEW_TX_EN);
-> +		msdc_new_tx_setting(host);
-> +	}
-> +	if (host->dev_comp->support_new_rx) {
-> +		sdr_clr_bits(host->base + MSDC_NEW_RX_CFG, MSDC_NEW_RX_PATH_SEL);
-> +		sdr_set_bits(host->base + MSDC_NEW_RX_CFG, MSDC_NEW_RX_PATH_SEL);
-> +	}
-> +
->   	/* Configure to MMC/SD mode, clock free running */
->   	sdr_set_bits(host->base + MSDC_CFG, MSDC_CFG_MODE | MSDC_CFG_CKPDN);
->   
-> @@ -1742,8 +1834,19 @@ static void msdc_init_hw(struct msdc_host *host)
->   	sdr_set_bits(host->base + EMMC50_CFG0, EMMC50_CFG_CFCSTS_SEL);
->   
->   	if (host->dev_comp->stop_clk_fix) {
-> -		sdr_set_field(host->base + MSDC_PATCH_BIT1,
-> -			      MSDC_PATCH_BIT1_STOP_DLY, 3);
-> +		if (host->dev_comp->stop_dly_sel)
-> +			sdr_set_field(host->base + MSDC_PATCH_BIT1,
-> +				      MSDC_PATCH_BIT1_STOP_DLY,
-> +				      host->dev_comp->stop_dly_sel & 0xf);
-
-This doesn't look like being something to support new_tx and new_rx, but rather
-a way to specify a different STOP_DLY depending on the SoC and its platdata.
-
-So this one goes to a different commit, and you won't need either the 0xf masking
-nor the `else`, as you will have to add the value to all SoCs' platdata instead.
-
-> +		else
-> +			sdr_set_field(host->base + MSDC_PATCH_BIT1,
-> +				      MSDC_PATCH_BIT1_STOP_DLY, 3);
-> +
-> +		if (host->dev_comp->pop_en_cnt)
-> +			sdr_set_field(host->base + MSDC_PATCH_BIT2,
-> +				      MSDC_PB2_POP_EN_CNT,
-> +				      host->dev_comp->pop_en_cnt & 0xf);
-> +
->   		sdr_clr_bits(host->base + SDC_FIFO_CFG,
->   			     SDC_FIFO_CFG_WRVALIDSEL);
->   		sdr_clr_bits(host->base + SDC_FIFO_CFG,
-> @@ -2055,6 +2158,19 @@ static inline void msdc_set_data_delay(struct msdc_host *host, u32 value)
->   	}
->   }
->   
-
-Regards,
-Angelo
 
