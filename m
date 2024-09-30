@@ -4,63 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 304FDCDD1A9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 19:08:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F816CDD1D5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 19:39:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xfnpayxvbHckI5Fb2Y/Fma2x8Bi6li2C2F98JErB9oA=; b=lXixdle7/IYlybiXYGU+CjnL5D
-	osukSIEUGl6Ozuc9c19mWjxyGCmjSwwTI+uOKJ1N4P+JAO8gXgwevynv3Xt7yHERwIMJWLKBg4LeM
-	3IdoDJC+EErAIvc1q806ifg612H7zVGcfoiq8JMenOHvEZQhZJAivFvrYKb6LU2Ii4iVWlTAmi9Ho
-	ATEGb5ImGFWPe7jTV1OUMWi2ugM3SYybyIrbWa0Iaagx08tTsuR1SbwtZ7G8KQE/EU3todzZ+0RGU
-	ttfyvANV9dH+KhQTwm16s03eROUCvbZxrkOSi5oNRQwVBJUuGinnYzKtGFsBiueeYoAKsNvpzyJpc
-	KyOLXPaQ==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=uqNRevo7/gz488fiTqhhJjGGO3OeNRssLhg7JzCxscc=; b=Ix3KHUhOEheeg1
+	Qii0uUqbfRONpfl2/81qIwfrg3Fi3R8dA709hXSUq0/jQ943wB3PvmDhzEI/ImYlL+xcLINrzoKUT
+	6c+RijbWvZA+E0ADLM7gJqN0qdN7eV/Ygji55fV95ZmPuX5ahvax/qGI7CP3fybZGC2kbFl6EygcE
+	jUevk3UYvYnN6tRMt2x0jATzn3TNfBnBbyZkFIOVziNZXQ5cz0bi5Qt7aN3axyIp6tjNmif9tQORy
+	P5BM2oRS6jAE3G0PNOPosa75WKvnVmuF0FocHvTlF7Sd80moOnbSXduUpQJeM8Qc4AP8QmMvf6dme
+	gdSp61r9HGcd/ftLRgvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svLkm-00000000asj-0FLl;
-	Mon, 30 Sep 2024 19:08:16 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1svMEl-00000000eUG-16CJ;
+	Mon, 30 Sep 2024 19:39:15 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svLjU-00000000akQ-0qit;
-	Mon, 30 Sep 2024 19:06:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=xfnpayxvbHckI5Fb2Y/Fma2x8Bi6li2C2F98JErB9oA=; b=oG00S9anb4B/Y+eAgvLpBarUcE
-	jBX8kYNPUYiG+pwbkF6olY3nsudc6v/1QqGfkI6MB6Z3iELQtrjwSJlsMsy/kjdnoQQid7xcvMV5B
-	Qn2P9o7vYjbz0YYJ49injjViejgSeXO+4Nxhr104bPjtEyli2PYbsZtix8eZ1NYUlMPE=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1svLj4-008ehw-Dg; Mon, 30 Sep 2024 21:06:30 +0200
-Date: Mon, 30 Sep 2024 21:06:30 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: wojackbb@gmail.com
-Cc: netdev@vger.kernel.org, chandrashekar.devegowda@intel.com,
-	chiranjeevi.rapolu@linux.intel.com, haijun.liu@mediatek.com,
-	m.chetan.kumar@linux.intel.com, ricardo.martinez@linux.intel.com,
-	loic.poulain@linaro.org, ryazanov.s.a@gmail.com,
-	johannes@sipsolutions.net, davem@davemloft.net, edumazet@google.com,
-	kuba@kernel.org, pabeni@redhat.com,
-	linux-arm-kernel@lists.infradead.org,
-	angelogioacchino.delregno@collabora.com,
-	linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com
-Subject: Re: [PATCH] [net,v2] net: wwan: t7xx: add
- PM_AUTOSUSPEND_MS_BY_DW5933E for Dell DW5933e
-Message-ID: <e2f390c7-4d58-47fb-ba86-b1e5ccd6e546@lunn.ch>
-References: <20240930031624.2116592-1-wojackbb@gmail.com>
+	id 1svMDY-00000000eMg-0Kkj;
+	Mon, 30 Sep 2024 19:38:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B23A95C5415;
+	Mon, 30 Sep 2024 19:37:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2BA59C4CEC7;
+	Mon, 30 Sep 2024 19:37:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1727725078;
+	bh=bd1W1edyxyIMzyL2oVwBIlRMv4WpY7BdgJEv7EeGadU=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=Bj5fAJyXTmlHX0a4DRvSQuSyLlHOQXv4RSMwtiCTmAKV4ifAt0Cy3jB3IVi5N7NqX
+	 juZkVo9JxoiHBdA8ynQTQaiKOmZk+y9W3Bpm036nNJqIJOlt9ScFiRBblEUv62GkqX
+	 60MhMh2HSYCoz3tT0MmMALx4gTBZjJg+/TTDfhcQA+2UKxMPf3m/HXJz8pynmwSSXK
+	 8eglbwfrGxOHYOC7T/QfAtG5+e8+gEpeudcSExGwhGejwdojBWzuiY5gT70m63m6Kz
+	 niXI0iq95UQxVnC7QOKBxAsBrOO1Do+P19DXKjDY9gCvH1hjSrOSeO+Z9IkwHyk+/G
+	 294KSdkwmdVVA==
+Date: Mon, 30 Sep 2024 14:37:56 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Christian Marangi <ansuelsmth@gmail.com>, linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
+	Hui Ma <hui.ma@airoha.com>
+Subject: Re: [PATCH] PCI: mediatek-gen3: Avoid PCIe resetting for Airoha
+ EN7581 SoC
+Message-ID: <20240930193756.GA187798@bhelgaas>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240930031624.2116592-1-wojackbb@gmail.com>
+In-Reply-To: <d8941149-9125-4fe2-a1c0-ab29223a0c87@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240930_120656_260256_D6AD459F 
-X-CRM114-Status: UNSURE (   9.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240930_123800_205147_09FFDCDA 
+X-CRM114-Status: GOOD (  14.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,19 +79,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 30, 2024 at 11:16:24AM +0800, wojackbb@gmail.com wrote:
-> From: Jack Wu <wojackbb@gmail.com>
+On Mon, Sep 23, 2024 at 11:41:41AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 20/09/24 10:26, Lorenzo Bianconi ha scritto:
+> > The PCIe controller available on the EN7581 SoC does not support reset
+> > via the following lines:
+> > - PCIE_MAC_RSTB
+> > - PCIE_PHY_RSTB
+> > - PCIE_BRG_RSTB
+> > - PCIE_PE_RSTB
+> > 
+> > Introduce the reset callback in order to avoid resetting the PCIe port
+> > for Airoha EN7581 SoC.
 > 
-> Because optimizing the power consumption of Dell DW5933e,
-> Add a new auto suspend time for Dell DW5933e.
+> EN7581 doesn't support pulling up/down PERST#?!  That looks
+> definitely odd, as that signal is part of the PCI-Express CEM spec.
+> 
+> Besides, there's another PERST# assertion at
+> mtk_pcie_suspend_noirq()...
 
-Please don't send new versions of a patch within 24 hours.
+I agree, it doesn't smell right that this SoC doesn't have a way to
+assert PERST#.
 
-https://www.kernel.org/doc/html/latest/process/maintainer-netdev.html#netdev-faq
+The response at
+https://lore.kernel.org/r/SG2PR03MB63415DB5791C58C7EA69FF01FF682@SG2PR03MB6341.apcprd03.prod.outlook.com
+suggests that maybe there's a hardware defect that means asserting
+PERST# doesn't work correctly?  But surely firmware must have a way of
+asserting PERST#, at least at boot time.
 
-You commit message is not very good. What makes this machine special?
-What is wrong with the current code? Do you have any benchmark data to
-show the improvement?
+If this is truly a hardware defect and we really can't assert PERST#,
+please say that this is a defect in the commit log so people don't
+think that lack of PERST# is an acceptable thing.
 
-     Andrew
+Bjorn
 
