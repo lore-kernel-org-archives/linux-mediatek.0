@@ -4,102 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AA40CF6491
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 08:45:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B97F4CF6497
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 08:50:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4IuKCJoWzdo/6tX2Pw5AgRGRlw9O8xJDbg1miK4gOrA=; b=ktieyOohrqpVHqK+q43d0EFr3/
-	qqBkaAJUuOtN7Z5Hnkmd67nqEgfSJ8l0ZyiPGLicnF8FlUaIHXXsWvb54xs4XhZPmDC/oVZf3Zd1e
-	Mmg/pqOeOJVnUCPhKFljO447Fjya8FLJ4IfCy7nPxkB8/kcFUnUxaDz1gWkie7It/9/qPAHZGvfpN
-	B7E2r8kTPCGTThpM/8fz52OvJhL6cqWFqlNH1zsQqHTKdI5dhWK2e098ZWvCwINiqGj4qblv7hprN
-	GF61chMpmo6DhglqOEoA0D8RK4L8RtwnktUOrcqGaHdBLt5xeYQSbrebylpnaXEdSl6EG9XpXJ/0x
-	l4YDVBjQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4glALw4Q/S1uh/iBYaa16wCGln241PgIz34aD88DyPk=; b=V3+m5hceCOmocJt1y5Yt71kU+4
+	gEVJcoF4Cyn5sKH/IhkP4LGe+Dv6XkqM/ED92pAffN3/XCqq6jzD/b6vaqHlsPWu91FZgaYoU8Lgx
+	6KN27qkMxpkaadMnKDarNrlRDwtMy4O3Lq02eYG00XjcKO0VXoopujjqZJ/2nS/VHb6pskSV25p85
+	Mevlwq83g0PqWkbb9VE7vtmndb6GSNBjF/2cYxv8YbXMedWdoRNBZz2SLa3P06MFzZv6rLbw/cCMP
+	IsjGVIKnabQD3U44FJyYyuCJPoz5fDbZDU0CHCev1pGoTQE/8PlIm7JFbqTIYT5a75RqW4Gj5Uxaf
+	SaJ75uow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svC1i-0000000GNav-0acr;
-	Mon, 30 Sep 2024 08:45:06 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1svC78-0000000GOoi-3LxH;
+	Mon, 30 Sep 2024 08:50:42 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svBvy-0000000GLrq-16Q4;
-	Mon, 30 Sep 2024 08:39:12 +0000
-X-UUID: 73d468007f0711efb3adad29d29602c1-20240930
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=4IuKCJoWzdo/6tX2Pw5AgRGRlw9O8xJDbg1miK4gOrA=;
-	b=M+uCJd8TdpPkBbylY+troQmaBa8PDzmWqxiMhBkoC60QZH7CSyln2lj8gaAvuNIlh4RJ1ArKSyyYMqknhjyrycBWsPGw73mVy37dkDANepACNVO8DhGQji/H8wJcU2zDd+cOuW2MbTnY5j2bE1CNnDwXWD4PH8oO8cAKj6Sge1M=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:f3021ed2-e06a-4bd1-afd6-dd8a16111201,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:c59f7818-b42d-49a6-94d2-a75fa0df01d2,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 73d468007f0711efb3adad29d29602c1-20240930
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1986694525; Mon, 30 Sep 2024 01:39:05 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 30 Sep 2024 16:38:59 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 30 Sep 2024 16:38:59 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
-	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Simona Vetter
-	<simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Yong Wu <yong.wu@mediatek.com>, "Joerg
- Roedel" <joro@8bytes.org>, Will Deacon <will@kernel.org>, Robin Murphy
-	<robin.murphy@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Rohit
- Agarwal" <rohiagar@chromium.org>, <dri-devel@lists.freedesktop.org>,
-	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <iommu@lists.linux.dev>,
-	<linux-arm-kernel@lists.infradead.org>, Alexandre Mergnat
-	<amergnat@baylibre.com>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, "Sen
- Chu" <sen.chu@mediatek.com>, Chris-qj chen <chris-qj.chen@mediatek.com>,
-	MediaTek Chromebook Upstream
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
-	<wenst@chromium.org>
-Subject: [PATCH v4 2/5] dt-bindings: iommu: mediatek: Fix interrupt count constraint for new SoCs
-Date: Mon, 30 Sep 2024 16:38:51 +0800
-Message-ID: <20240930083854.7267-2-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20240930083854.7267-1-macpaul.lin@mediatek.com>
-References: <20240930083854.7267-1-macpaul.lin@mediatek.com>
+	id 1svC5d-0000000GOXy-363b;
+	Mon, 30 Sep 2024 08:49:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1727686147;
+	bh=VJzCGMMRci/BiZjulnBSG77pRU6y2deSbKtvy/pU2pY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=PEZEQAo4oB0HrZ6hyP//YB/w7n6xJyG5PinuwSHzdOx8AOmj5Ixfq89MPhXWSxLjH
+	 KEi+/4bQzhnDIybedEyuX/RZBdi7K8UmoiaXn2zHwV4nJFYdlPrA1AQlUVIEjBMKOm
+	 UHx623s1TF8BknFyk1paXHosCBPSeYgwLrIC5b+D9DMlPRCWVXDH24ixypfyzzCLyy
+	 EQcIcVE0GLjGByWkc7qohQpkONmrKnrc9nPPDH1iJi/2XuSWVxbgYUl9ANpMGPvYe7
+	 1skqXCgezJWh+s/+N3XhNKLqRLmKJhmHh7OtBnB7BywKpUWNuxu7j4Q6lMPCXeOAz4
+	 kdQ8HOqp53crQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 98BEC17E10AB;
+	Mon, 30 Sep 2024 10:49:06 +0200 (CEST)
+Message-ID: <8883c84d-8333-4b04-83b5-022be5b6153c@collabora.com>
+Date: Mon, 30 Sep 2024 10:49:06 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10-0.066800-8.000000
-X-TMASE-MatchedRID: 6VS/gXvOej7wBTQ+XvV6VYzb2GR6Ttd3YQXxsZnRwoIY0A95tjAn+9EQ
-	LJPlYQqE0KHDXPxFjpCs8FHZk8InNB1YpEPWJiyzKaMQ6tw7oDLFUZ7q8HqQFFwpnAAvAwazMq+
-	en+OaNuuJTSQ4G0hWQKE5/zgY/QEPEJ5+KkdAau4CNMj/7qB/g9KVa2W234pInLVhzy0+RX3vv/
-	IA2HPk+BmgGxBaKosCumMCMwce1mUfE8yM4pjsDwtuKBGekqUpUfEQFBqv0mf6BLxMbKNKofiYv
-	kPboinq+lntxotXEOKl8iXdC/JPodE2sd0En/ZTPssWDagviKmo0yLXtfRrTamy9MoOsRvVf9aG
-	99lhLx/yNp7g4PXe0BXsxz6ujBxUq1f8XSkHBUmNJXmEMVvLtmibAjrSm2HJwL6SxPpr1/I=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10-0.066800-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: BAB5FEF623D5FE6F7C836EADEACAB6F65D86D69A811BF108131AC4EA26F6FB792000:8
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/5] dt-bindings: iommu: mediatek: Fix interrupt count
+ constraint for new SoCs
+To: Macpaul Lin <macpaul.lin@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, CK Hu <ck.hu@mediatek.com>,
+ Jitao shi <jitao.shi@mediatek.com>, Tinghan Shen
+ <tinghan.shen@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>,
+ Ben Lok <ben.lok@mediatek.com>, "Nancy . Lin" <nancy.lin@mediatek.com>,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+ Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>,
+ Chris-qj chen <chris-qj.chen@mediatek.com>,
+ MediaTek Chromebook Upstream
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ Chen-Yu Tsai <wenst@chromium.org>
+References: <20240926111449.9245-1-macpaul.lin@mediatek.com>
+ <20240926111449.9245-2-macpaul.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240926111449.9245-2-macpaul.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240930_013910_342468_475B85D7 
-X-CRM114-Status: GOOD (  13.52  )
+X-CRM114-CacheID: sfid-20240930_014909_967868_FA56F407 
+X-CRM114-Status: GOOD (  20.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,86 +97,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The infra-iommu node in mt8195.dtsi was triggering a CHECK_DTBS error due
-to an excessively long 'interrupts' property. The error message was:
+Il 26/09/24 13:14, Macpaul Lin ha scritto:
+> The infra-iommu node in mt8195.dtsi was triggering a CHECK_DTBS error due
+> to an excessively long 'interrupts' property. The error message was:
+> 
+>    infra-iommu@10315000: interrupts: [[0, 795, 4, 0], [0, 796, 4, 0],
+>                       [0, 797, 4, 0], [0, 798, 4, 0], [0, 799, 4, 0]]
+>                       is too long
+> 
+> To address this issue, add "minItems: 1" and "maxItems: 5" constraints to
+> the 'interrupts' property in the DT binding schema. This change allows for
+> flexibility in the number of interrupts for new SoCs.
+> The purpose of these 5 interrupts is also added.
+> 
+> Fixes: bca28426805d ("dt-bindings: iommu: mediatek: Convert IOMMU to DT schema")
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> ---
+>   .../bindings/iommu/mediatek,iommu.yaml        | 25 ++++++++++++++++++-
+>   1 file changed, 24 insertions(+), 1 deletion(-)
+> 
+> Changes for v2:
+>   - commit message: re-formatting and add a description of adding 5 interrupts.
+>   - add 'description' and 'maxItems: 5' for 'interrupt' property of
+>     'mt8195-iommu-infra'
+>   - others keeps 'maxItems: 1'
+> 
+> diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> index ea6b0f5f24de..fdd2996d2a31 100644
+> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> @@ -96,7 +96,8 @@ properties:
+>       maxItems: 1
+>   
+>     interrupts:
+> -    maxItems: 1
+> +    minItems: 1
+> +    maxItems: 5
+>   
+>     clocks:
+>       items:
+> @@ -210,6 +211,28 @@ allOf:
+>         required:
+>           - mediatek,larbs
+>   
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - mediatek,mt8195-iommu-infra
+> +
+> +    then:
+> +      properties:
+> +        interrupts:
+> +          description: |
 
-  infra-iommu@10315000: interrupts: [[0, 795, 4, 0], [0, 796, 4, 0],
-                     [0, 797, 4, 0], [0, 798, 4, 0], [0, 799, 4, 0]]
-                     is too long
+Do you really need to keep the formatting?
 
-To address this issue, update the compatbile matching rule for
-'interrupts' property. This change allows flexibility in the number
-of interrupts for new SoCs like MT8195.
-The purpose of these 5 interrupts is also added into description.
+If you rephrase that as:
 
-Fixes: bca28426805d ("dt-bindings: iommu: mediatek: Convert IOMMU to DT schema")
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
----
- .../bindings/iommu/mediatek,iommu.yaml        | 28 ++++++++++++++++++-
- 1 file changed, 27 insertions(+), 1 deletion(-)
+The infra IOMMU in MT8195 has five banks: each features one set
+of APB registers for the normal world (set 0), one for the protected
+world (sets 1-3) and one for the secure world (set 4), and each set
+has its own interrupt. Therefore, five interrupts are needed.
 
-Changes for v2:
- - commit message: re-formatting and add a description of adding 5 interrupts.
- - add 'description' and 'maxItems: 5' for 'interrupt' property of
-   'mt8195-iommu-infra'
- - others keeps 'maxItems: 1'
+...you won't need the bar :-)
 
-Changes for v3:
- - Refine the description for 'interrupts' property and fixes the compatible
-   matching rules.
- - Refine commit message.
+> +            The IOMMU of MT8195 has 5 banks: 0/1/2/3/4.
+> +            Each bank has a set of APB registers corresponding to the
+> +            normal world, protected world 1/2/3, and secure world, respectively.
+> +            Therefore, 5 interrupt numbers are needed.
+> +          maxItems: 5
 
-Changes for v4:
-  - add missing 'minItems: 5' to 'mediatek,mt8195-iommu-infra'.
-    Thanks the explanation from Conor and Krzysztof. 
+minItems: 5
 
-diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-index ea6b0f5f24de..33b330d83e01 100644
---- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-+++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-@@ -96,7 +96,15 @@ properties:
-     maxItems: 1
- 
-   interrupts:
--    maxItems: 1
-+    description: |
-+      Usually, the IOMMU requires only 1 interrupt.
-+
-+      The IOMMU of MT8195 has 5 banks: 0/1/2/3/4.
-+      Each bank has a set of APB registers corresponding to the
-+      normal world, protected world 1/2/3, and secure world, respectively.
-+      Therefore, 5 interrupt numbers are needed for MT8195.
-+    minItems: 1
-+    maxItems: 5
- 
-   clocks:
-     items:
-@@ -210,6 +218,24 @@ allOf:
-       required:
-         - mediatek,larbs
- 
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - mediatek,mt8195-iommu-infra
-+
-+    then:
-+      properties:
-+        interrupts:
-+          minItems: 5
-+          maxItems: 5
-+
-+    else:
-+      properties:
-+        interrupts:
-+          maxItems: 1
-+
- additionalProperties: false
- 
- examples:
--- 
-2.45.2
+Cheers,
+Angelo
+
 
 
