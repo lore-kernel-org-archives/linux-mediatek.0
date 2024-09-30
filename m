@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8716CCF649C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 04:49:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0841CF6491
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 04:51:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uUlZdNbsNhX6XY/barzAaC32mkUj4VQXnCI2Cvk8mw8=; b=YmBBRJTKzAemoRinTg1bt2CU08
-	738wdaTcISbK1oYTsdE1XsZ92LucyY+sW0QYC2qzrLEpmGWagzzsNkhOcLigWiMxUs73XhW7jK0xn
-	y4LJW/cz4OuI1iNpPE5dLByXqDAiaYghhJL+5OZK5EHt1SSe1wtY+nbqxs75MoeG9BzEhmheQf9BJ
-	Lzd4xfNlKlFK0Ty/j5llg6FG+LeqlthXgGwxAq+BJAzqLGrlZklPpcvCwcf07RLb92EGBLJ43PBKP
-	3aU0cM/JtpdLFATNowtPhBZ8tMzYW4TCiuaOTYItx7pGUsDcWnxaBmQau8XXa2tfVaaMUlvAlTGMw
-	1rhQNR/g==;
+	bh=qN+Z85uKhFcsA7I0FPVuQftO8kS+uCqLckN4FbzXu4E=; b=UOfogwP9IMmW5tBDYNEWLjn2hw
+	abY1cc4Ks9eKimZcZ/6vpALsNx1yqDRCVnqTnE34vQnJdkGxeyiKR9XLVXsO9ZENifuX7QiJm/1vb
+	qDi9aWwzweKHrNo8c2LZRgCbI8u062XLNwwbV24UClMSsO1B3QBj3zYFGasf4FUTcYFovOtGGw+xm
+	+YOvntpPYJDTzq4XVPnQMqQqp26T8rU8d46ZDRQCkrrYWTZe3r7CoDhl4sPyjtCwC40zQpqlhSOy6
+	13ioUVWnlP2xBoq5je/4Ycv2P62TlUPVJ+rlSxFKOLsiqeL4Eu6bD/GxR8PAR8mpzY4+ra87HRb6Z
+	Dy4ZxDQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sv8LI-0000000Fv6I-2LPY;
-	Mon, 30 Sep 2024 04:49:04 +0000
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+	id 1sv8Nb-0000000FvNL-3oPG;
+	Mon, 30 Sep 2024 04:51:27 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sv8Iy-0000000Fuik-44LJ
+	id 1sv8J2-0000000Fujz-1APz
 	for linux-mediatek@lists.infradead.org;
-	Mon, 30 Sep 2024 04:46:42 +0000
-Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-206aee40676so32180795ad.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 29 Sep 2024 21:46:40 -0700 (PDT)
+	Mon, 30 Sep 2024 04:46:46 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-20b6c311f62so8037925ad.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 29 Sep 2024 21:46:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1727671600; x=1728276400; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1727671603; x=1728276403; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=uUlZdNbsNhX6XY/barzAaC32mkUj4VQXnCI2Cvk8mw8=;
-        b=YmuWBSde9OpVzgnCbQgGRBMYvsyb1v3Srxn5S998bXgIIpkmhYhwOMC/6TQQb/ZwdE
-         RdDMHr1Q4HSz1vtCIJ6s8zFmja6V0ADbKQ19nZ8pL7EuyUA/vuyn21vhadBwhYcTpU0Q
-         lWX+mMq7gYi5aqI15vnb2M1S8zBcXwGTmsoiM=
+        bh=qN+Z85uKhFcsA7I0FPVuQftO8kS+uCqLckN4FbzXu4E=;
+        b=ZIQ3SJQdJf3nb9FhRf/5YmAOg64ioDLIKOFIC54oU0xlxzSYawLW4W7VkWZKk56heU
+         78W7etcf+jiDN297kw+2O0d8Csn5aIyhCMBf1u2Huf0eo9OTULgr460N20fvREbPe++t
+         ak+y8XYyD1i2T6v9ef+4jnmlmiYIw0lt4dBCA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727671600; x=1728276400;
+        d=1e100.net; s=20230601; t=1727671603; x=1728276403;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=uUlZdNbsNhX6XY/barzAaC32mkUj4VQXnCI2Cvk8mw8=;
-        b=fQeglNKJQgrQb2/WAr7vCucjEseQYMUTDvWeiwCBbB9rJEb3HVg2vZ5TeUGNtvKH/J
-         nBj1m56geIvAEhButQ9+PwoqUjlisR5+kSpssLc/BrnbyYOrSd9K9U4t4sJR5IaRjcIw
-         87mqtdN7BMWvxRwKsDkBJQIJkznCI4uS9+m2hWwk6w20Onp37/ZDIs6b6gWKddQ9YJ/q
-         FALJJiwArWw9pjXai7FWdk6MCYHzTY+QRZTqBRMlKbc8h9hgqr5sI8IF3zMmyxdFqXvU
-         chXQTo2pl1UEL9QaPNAFCrUHRC9nVfkuvQeiOy4hE2Vopu45FNqPwzBdCoWRA4nQaTxV
-         XbqQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVIgeY7uEGmu1HkzvML71grZsF4/ZRs/nFDultHxi4IwL3uNbu739JL74Vw0cun1hFCz7DJIh57+SE4UWmeXQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxaNEUHr8oBEZnEl8nNL7cx8gIcrC5V2eTTiS0oforeoWlhE4xA
-	5tS8xpltWcYqwCrfoidwA9JT6CmwQdSeXTuk4oyBsyUf8NEFCQPnA5bmLPOZIw==
-X-Google-Smtp-Source: AGHT+IGiPaUQ16Xnuae4NQju8BfwvozQQ66u5aiOHauwEzMnexKXZpeJLU+M8Oth2gtCms9fyjV8aQ==
-X-Received: by 2002:a17:902:ea0e:b0:20b:8c13:5307 with SMTP id d9443c01a7336-20b8c1357fcmr27571105ad.33.1727671600403;
-        Sun, 29 Sep 2024 21:46:40 -0700 (PDT)
+        bh=qN+Z85uKhFcsA7I0FPVuQftO8kS+uCqLckN4FbzXu4E=;
+        b=cQAy9uo8OQ16S8aGbqA3paa0wJI2C6r85RufTLkXOKFSg49JVgbEUR825S/oIRbAKh
+         QWms/eKPPyXXRk/PRn88duup/UFH7mdhEfQpn5+Fzlmp4oeA+q+E/t1kD/uuhTI0tcPT
+         8A8Cx+pBjj3QF6+fAuwgb9A559DgAo2np68TLlFXUpgj+6hfNUSK2eODiWzoaeRZZpT7
+         0Q+zAFGZ7UPeVSPR07sSrmV/Dp0Sotq0OOpV/TOQu/DbVqxxc6Qm6iTHkPA4TC6Fpjap
+         H5gk+ntNAzuxD8y648aoSaNUvTkBqJ7F/azT4OyynrNKsD574t6CmcPSG3CLnQrNbiRF
+         PiWg==
+X-Forwarded-Encrypted: i=1; AJvYcCWH91wmn4GFr8JLpBjUSXiptO/2ICWtjgWcnp9R00uCYxf6X3rwDNmB9Iis78w/AKtPtCKNZo17+Sp/SUfmBA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwCMcGwbCE9JdL6GD4gjVk7Zdro3C/W+LfaTfG+icCj03wpobmj
+	oOokX4qtptjqhlKAYA5E9gVMtiQCteaJNRH3HdXg57kUVVANGIyd8O5IRkHkhQ==
+X-Google-Smtp-Source: AGHT+IHsHQaIS+I9VX9gHEq3fHW0VJ8hm8miY4PsryP7g4DCTMesviF4MlhqkaQ76u1RTM6qq7VZ2g==
+X-Received: by 2002:a17:903:32c7:b0:20b:6458:ec83 with SMTP id d9443c01a7336-20b6458ef88mr67264665ad.4.1727671603389;
+        Sun, 29 Sep 2024 21:46:43 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:659b:6caf:831b:3926])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20b37e0d65asm46236925ad.123.2024.09.29.21.46.37
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20b37e0d65asm46236925ad.123.2024.09.29.21.46.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 29 Sep 2024 21:46:40 -0700 (PDT)
+        Sun, 29 Sep 2024 21:46:43 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Ulf Hansson <ulf.hansson@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
@@ -77,17 +77,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	Pablo Sun <pablo.sun@mediatek.com>,
 	Macpaul Lin <macpaul.lin@mediatek.com>,
 	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCH v9 2/3] regulator: Add devres version of of_regulator_get_optional()
-Date: Mon, 30 Sep 2024 12:45:22 +0800
-Message-ID: <20240930044525.2043884-3-wenst@chromium.org>
+Subject: [PATCH v9 3/3] pmdomain: mediatek: Use OF-specific regulator API to get power domain supply
+Date: Mon, 30 Sep 2024 12:45:23 +0800
+Message-ID: <20240930044525.2043884-4-wenst@chromium.org>
 X-Mailer: git-send-email 2.46.1.824.gd892dcdcdd-goog
 In-Reply-To: <20240930044525.2043884-1-wenst@chromium.org>
 References: <20240930044525.2043884-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240929_214641_071087_0C367520 
-X-CRM114-Status: GOOD (  19.19  )
+X-CRM114-CacheID: sfid-20240929_214644_330873_A92486BF 
+X-CRM114-Status: GOOD (  18.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,144 +102,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are existing uses for a devres version of of_regulator_get_optional()
-in power domain drivers. On MediaTek platforms, power domains may have
-regulator supplies tied to them. The driver currently tries to use
-devm_regulator_get() to not have to manage the lifecycle, but ends up
-doing it in a very hacky way by replacing the device node of the power
-domain controller device to the device node of the power domain that is
-currently being registered, getting the supply, and reverting the device
-node.
+The MediaTek power domain driver contains a hack that assigns the device
+node of the power domain to the struct device of the power domain
+controller in order to use the devres regulator API.
 
-Provide a better API so that the hack can be replaced.
+Now that there is a proper OF-specific regulator API, and even a devres
+version, replace the hack with proper code.
+
+This change is incompatible with incomplete device trees. Instead of
+assigning the dummy regulator in cases where the power domain requires
+a supply but the device tree does not provide one, the driver will just
+error out. This will be seen on the MT8390 EVK, which is missing
+supplies for the IMG_VCORE and CAM_VCORE domains. And likely all the
+MediaTek EVBs, which have no power domain supplies specified. This is
+however the correct behavior. If the power domain's supply is missing,
+then it should not work. Relying on other parts of the system to keep
+the unattached regulator enabled is likely to break in ways less easier
+to understand.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
-Changes since v8:
-- Moved OF-specific devres version to of_regulator.c
-- Made _of_regulator_get() static again
-- Made devm_regulator_release non-static
-- Reformated stub versions with `clang-format`
-
 Changes since v7:
 - New patch
----
- drivers/regulator/devres.c         |  2 +-
- drivers/regulator/internal.h       |  2 ++
- drivers/regulator/of_regulator.c   | 37 ++++++++++++++++++++++++++++++
- include/linux/regulator/consumer.h | 14 +++++++++++
- 4 files changed, 54 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/regulator/devres.c b/drivers/regulator/devres.c
-index 1b893cdd1aad..569a80963a86 100644
---- a/drivers/regulator/devres.c
-+++ b/drivers/regulator/devres.c
-@@ -14,7 +14,7 @@
- 
- #include "internal.h"
- 
--static void devm_regulator_release(struct device *dev, void *res)
-+void devm_regulator_release(struct device *dev, void *res)
+The other option is to follow what Rockchip will be doing: getting the
+regulator supply upon first use / enable [1]. This will result in less
+breakage: only the power domain that is missing its supplies will fail
+to be attached.
+
+[1] https://lore.kernel.org/all/20240919091834.83572-6-sebastian.reichel@collabora.com/
+---
+ drivers/pmdomain/mediatek/mtk-pm-domains.c | 12 +-----------
+ 1 file changed, 1 insertion(+), 11 deletions(-)
+
+diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+index 88406e9ac63c..3580913f25d3 100644
+--- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
++++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+@@ -353,7 +353,6 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
  {
- 	regulator_put(*(struct regulator **)res);
- }
-diff --git a/drivers/regulator/internal.h b/drivers/regulator/internal.h
-index f62cacbbc729..b1b4277aaf90 100644
---- a/drivers/regulator/internal.h
-+++ b/drivers/regulator/internal.h
-@@ -131,4 +131,6 @@ struct regulator *_regulator_get(struct device *dev, const char *id,
- 				 enum regulator_get_type get_type);
- int _regulator_bulk_get(struct device *dev, int num_consumers,
- 			struct regulator_bulk_data *consumers, enum regulator_get_type get_type);
-+
-+void devm_regulator_release(struct device *dev, void *res);
- #endif
-diff --git a/drivers/regulator/of_regulator.c b/drivers/regulator/of_regulator.c
-index 358c3ed791db..9096d8f494a7 100644
---- a/drivers/regulator/of_regulator.c
-+++ b/drivers/regulator/of_regulator.c
-@@ -704,6 +704,43 @@ struct regulator *of_regulator_get_optional(struct device *dev,
- }
- EXPORT_SYMBOL_GPL(of_regulator_get_optional);
+ 	const struct scpsys_domain_data *domain_data;
+ 	struct scpsys_domain *pd;
+-	struct device_node *root_node = scpsys->dev->of_node;
+ 	struct device_node *smi_node;
+ 	struct property *prop;
+ 	const char *clk_name;
+@@ -388,16 +387,7 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+ 	pd->scpsys = scpsys;
  
-+static struct regulator *_devm_of_regulator_get(struct device *dev, struct device_node *node,
-+						const char *id, int get_type)
-+{
-+	struct regulator **ptr, *regulator;
-+
-+	ptr = devres_alloc(devm_regulator_release, sizeof(*ptr), GFP_KERNEL);
-+	if (!ptr)
-+		return ERR_PTR(-ENOMEM);
-+
-+	regulator = _of_regulator_get(dev, node, id, get_type);
-+	if (!IS_ERR(regulator)) {
-+		*ptr = regulator;
-+		devres_add(dev, ptr);
-+	} else {
-+		devres_free(ptr);
-+	}
-+
-+	return regulator;
-+}
-+
-+/**
-+ * devm_of_regulator_get_optional - Resource managed of_regulator_get_optional()
-+ * @dev: device used for dev_printk() messages and resource lifetime management
-+ * @node: device node for regulator "consumer"
-+ * @id:  supply name or regulator ID.
-+ *
-+ * Managed regulator_get_optional(). Regulators returned from this
-+ * function are automatically regulator_put() on driver detach. See
-+ * of_regulator_get_optional() for more information.
-+ */
-+struct regulator *devm_of_regulator_get_optional(struct device *dev, struct device_node *node,
-+						 const char *id)
-+{
-+	return _devm_of_regulator_get(dev, node, id, OPTIONAL_GET);
-+}
-+EXPORT_SYMBOL_GPL(devm_of_regulator_get_optional);
-+
- /*
-  * Returns number of regulators coupled with rdev.
-  */
-diff --git a/include/linux/regulator/consumer.h b/include/linux/regulator/consumer.h
-index 37a5c4199563..582b82a104e2 100644
---- a/include/linux/regulator/consumer.h
-+++ b/include/linux/regulator/consumer.h
-@@ -171,12 +171,20 @@ void devm_regulator_put(struct regulator *regulator);
- #if IS_ENABLED(CONFIG_OF)
- struct regulator *__must_check of_regulator_get_optional(
- 	struct device *dev, struct device_node *node, const char *id);
-+struct regulator *__must_check devm_of_regulator_get_optional(
-+	struct device *dev, struct device_node *node, const char *id);
- #else
- static inline struct regulator *__must_check of_regulator_get_optional(
- 	struct device *dev, struct device_node *node, const char *id)
- {
- 	return ERR_PTR(-ENODEV);
- }
-+
-+static inline struct regulator *__must_check devm_of_regulator_get_optional(
-+	struct device *dev, struct device_node *node, const char *id)
-+{
-+	return ERR_PTR(-ENODEV);
-+}
- #endif
- 
- int regulator_register_supply_alias(struct device *dev, const char *id,
-@@ -367,6 +375,12 @@ static inline struct regulator *__must_check of_regulator_get_optional(
- 	return ERR_PTR(-ENODEV);
- }
- 
-+static inline struct regulator *__must_check devm_of_regulator_get_optional(
-+	struct device *dev, struct device_node *node, const char *id)
-+{
-+	return ERR_PTR(-ENODEV);
-+}
-+
- static inline void regulator_put(struct regulator *regulator)
- {
- }
+ 	if (MTK_SCPD_CAPS(pd, MTK_SCPD_DOMAIN_SUPPLY)) {
+-		/*
+-		 * Find regulator in current power domain node.
+-		 * devm_regulator_get() finds regulator in a node and its child
+-		 * node, so set of_node to current power domain node then change
+-		 * back to original node after regulator is found for current
+-		 * power domain node.
+-		 */
+-		scpsys->dev->of_node = node;
+-		pd->supply = devm_regulator_get(scpsys->dev, "domain");
+-		scpsys->dev->of_node = root_node;
++		pd->supply = devm_of_regulator_get_optional(scpsys->dev, node, "domain");
+ 		if (IS_ERR(pd->supply))
+ 			return dev_err_cast_probe(scpsys->dev, pd->supply,
+ 				      "%pOF: failed to get power supply.\n",
 -- 
 2.46.1.824.gd892dcdcdd-goog
 
