@@ -4,90 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0841CF6491
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 04:51:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E38C6CF6491
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 05:44:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qN+Z85uKhFcsA7I0FPVuQftO8kS+uCqLckN4FbzXu4E=; b=UOfogwP9IMmW5tBDYNEWLjn2hw
-	abY1cc4Ks9eKimZcZ/6vpALsNx1yqDRCVnqTnE34vQnJdkGxeyiKR9XLVXsO9ZENifuX7QiJm/1vb
-	qDi9aWwzweKHrNo8c2LZRgCbI8u062XLNwwbV24UClMSsO1B3QBj3zYFGasf4FUTcYFovOtGGw+xm
-	+YOvntpPYJDTzq4XVPnQMqQqp26T8rU8d46ZDRQCkrrYWTZe3r7CoDhl4sPyjtCwC40zQpqlhSOy6
-	13ioUVWnlP2xBoq5je/4Ycv2P62TlUPVJ+rlSxFKOLsiqeL4Eu6bD/GxR8PAR8mpzY4+ra87HRb6Z
-	Dy4ZxDQw==;
+	bh=zasI9d4EFSlQDUt9pveMHKbUWNguU0pHqIbERcEhkJU=; b=ESh4CL/gXpIZsGdvJmFd8pkRIR
+	1QY0vpbXj0GELl2M34tP5VGM0yk+TEdGxkOdoojAdf+qHvr259dAFauQpHAKwNxBhGevdwzOySAOj
+	2xOmiwVi46v1qxfxTvPGI680sXzO1VkR/svPqaETqSigBF2uCFetvWFm3lvMzAz/NZM25IFIhm8T4
+	WHPkBv0py4zwAOuBWeTB4qABHA4NnQMYLKMzjSkSyV2As3DKjH+pm0fF4e5YFdBW0NELNV3lbB2/1
+	2CKDXpekn3+3ArYRbwq7HMXKSpr0UKMp/AfG+Utv7at2v7OxBIKHzAW9zBwQ5WxerX6PBqXAlyHbn
+	rFL8qcsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sv8Nb-0000000FvNL-3oPG;
-	Mon, 30 Sep 2024 04:51:27 +0000
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	id 1sv9Ci-0000000G0Wf-2r5g;
+	Mon, 30 Sep 2024 05:44:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sv8J2-0000000Fujz-1APz
-	for linux-mediatek@lists.infradead.org;
-	Mon, 30 Sep 2024 04:46:46 +0000
-Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-20b6c311f62so8037925ad.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 29 Sep 2024 21:46:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1727671603; x=1728276403; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=qN+Z85uKhFcsA7I0FPVuQftO8kS+uCqLckN4FbzXu4E=;
-        b=ZIQ3SJQdJf3nb9FhRf/5YmAOg64ioDLIKOFIC54oU0xlxzSYawLW4W7VkWZKk56heU
-         78W7etcf+jiDN297kw+2O0d8Csn5aIyhCMBf1u2Huf0eo9OTULgr460N20fvREbPe++t
-         ak+y8XYyD1i2T6v9ef+4jnmlmiYIw0lt4dBCA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727671603; x=1728276403;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=qN+Z85uKhFcsA7I0FPVuQftO8kS+uCqLckN4FbzXu4E=;
-        b=cQAy9uo8OQ16S8aGbqA3paa0wJI2C6r85RufTLkXOKFSg49JVgbEUR825S/oIRbAKh
-         QWms/eKPPyXXRk/PRn88duup/UFH7mdhEfQpn5+Fzlmp4oeA+q+E/t1kD/uuhTI0tcPT
-         8A8Cx+pBjj3QF6+fAuwgb9A559DgAo2np68TLlFXUpgj+6hfNUSK2eODiWzoaeRZZpT7
-         0Q+zAFGZ7UPeVSPR07sSrmV/Dp0Sotq0OOpV/TOQu/DbVqxxc6Qm6iTHkPA4TC6Fpjap
-         H5gk+ntNAzuxD8y648aoSaNUvTkBqJ7F/azT4OyynrNKsD574t6CmcPSG3CLnQrNbiRF
-         PiWg==
-X-Forwarded-Encrypted: i=1; AJvYcCWH91wmn4GFr8JLpBjUSXiptO/2ICWtjgWcnp9R00uCYxf6X3rwDNmB9Iis78w/AKtPtCKNZo17+Sp/SUfmBA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwCMcGwbCE9JdL6GD4gjVk7Zdro3C/W+LfaTfG+icCj03wpobmj
-	oOokX4qtptjqhlKAYA5E9gVMtiQCteaJNRH3HdXg57kUVVANGIyd8O5IRkHkhQ==
-X-Google-Smtp-Source: AGHT+IHsHQaIS+I9VX9gHEq3fHW0VJ8hm8miY4PsryP7g4DCTMesviF4MlhqkaQ76u1RTM6qq7VZ2g==
-X-Received: by 2002:a17:903:32c7:b0:20b:6458:ec83 with SMTP id d9443c01a7336-20b6458ef88mr67264665ad.4.1727671603389;
-        Sun, 29 Sep 2024 21:46:43 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:659b:6caf:831b:3926])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20b37e0d65asm46236925ad.123.2024.09.29.21.46.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 29 Sep 2024 21:46:43 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Ulf Hansson <ulf.hansson@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Mark Brown <broonie@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	Douglas Anderson <dianders@chromium.org>,
-	Johan Hovold <johan@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCH v9 3/3] pmdomain: mediatek: Use OF-specific regulator API to get power domain supply
-Date: Mon, 30 Sep 2024 12:45:23 +0800
-Message-ID: <20240930044525.2043884-4-wenst@chromium.org>
-X-Mailer: git-send-email 2.46.1.824.gd892dcdcdd-goog
-In-Reply-To: <20240930044525.2043884-1-wenst@chromium.org>
-References: <20240930044525.2043884-1-wenst@chromium.org>
+	id 1sv9B3-0000000G00Q-2BYK;
+	Mon, 30 Sep 2024 05:42:35 +0000
+X-UUID: c58b9de47eee11efba0aef63c0775dbf-20240929
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=zasI9d4EFSlQDUt9pveMHKbUWNguU0pHqIbERcEhkJU=;
+	b=R3mDzn0OYfxLm0AkkHg1z4tDuUqHPLUTLU8pfof9/DgJ/CNlLgec43/P8q6N4k1JfUhnkhNkX3GixRnAqxpXGvG3Z6ieMrCImr/Eh6qWYf6aZALIGV7Ikrx2B+NIEAaCYzAFqxou4AyrbHlnCM1YmmZpYegPAzjG9c5Ta/rHQJg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:fd5ee8bb-12e7-4de0-b3cf-2e11e34300ba,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:69daf8d0-7921-4900-88a1-3aef019a55ce,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|-5,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: c58b9de47eee11efba0aef63c0775dbf-20240929
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1695470508; Sun, 29 Sep 2024 22:42:25 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 30 Sep 2024 13:42:22 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Mon, 30 Sep 2024 13:42:21 +0800
+Message-ID: <edeb6345-fc70-a3e8-0702-b9b146295aa2@mediatek.com>
+Date: Mon, 30 Sep 2024 13:42:19 +0800
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH 2/3] dt-bindings: mfd: mediatek: mt6397: add compatible
+ for mt6359-codec
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzk@kernel.org>
+CC: Conor Dooley <conor@kernel.org>, Sen Chu <sen.chu@mediatek.com>, Sean Wang
+	<sean.wang@mediatek.com>, Lee Jones <lee@kernel.org>, Rob Herring
+	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Liam
+ Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Eason Yen
+	<eason.yen@mediatek.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>, Shane Chien
+	<shane.chien@mediatek.com>, Hui Liu <hui.liu@mediatek.com>,
+	<linux-pm@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-sound@vger.kernel.org>,
+	Alexandre Mergnat <amergnat@baylibre.com>, Bear Wang
+	<bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin
+	<macpaul@gmail.com>, Chris-qj chen <chris-qj.chen@mediatek.com>, MediaTek
+ Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	Chen-Yu Tsai <wenst@chromium.org>
+References: <20240926092519.6556-1-macpaul.lin@mediatek.com>
+ <20240926092519.6556-2-macpaul.lin@mediatek.com>
+ <20240926-smokeless-clobber-0fb8a1cdc7ab@spud>
+ <78381b10-eae6-1414-6913-994e1ed03410@mediatek.com>
+ <z5zehicgqqsbgsjz5nrjlqrkpqll57gb26jdc3ctpeajtlfusm@b2s5vrbuv3es>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <z5zehicgqqsbgsjz5nrjlqrkpqll57gb26jdc3ctpeajtlfusm@b2s5vrbuv3es>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240929_214644_330873_A92486BF 
-X-CRM114-Status: GOOD (  18.38  )
+X-CRM114-CacheID: sfid-20240929_224233_611315_EFE6DF05 
+X-CRM114-Status: GOOD (  22.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,70 +104,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek power domain driver contains a hack that assigns the device
-node of the power domain to the struct device of the power domain
-controller in order to use the devres regulator API.
 
-Now that there is a proper OF-specific regulator API, and even a devres
-version, replace the hack with proper code.
 
-This change is incompatible with incomplete device trees. Instead of
-assigning the dummy regulator in cases where the power domain requires
-a supply but the device tree does not provide one, the driver will just
-error out. This will be seen on the MT8390 EVK, which is missing
-supplies for the IMG_VCORE and CAM_VCORE domains. And likely all the
-MediaTek EVBs, which have no power domain supplies specified. This is
-however the correct behavior. If the power domain's supply is missing,
-then it should not work. Relying on other parts of the system to keep
-the unattached regulator enabled is likely to break in ways less easier
-to understand.
+On 9/27/24 17:42, Krzysztof Kozlowski wrote:
+> 	
+> 
+> External email : Please do not click links or open attachments until you 
+> have verified the sender or the content.
+> 
+> On Fri, Sep 27, 2024 at 03:57:58PM +0800, Macpaul Lin wrote:
+>> On 9/27/24 00:04, Conor Dooley wrote:
+>> > On Thu, Sep 26, 2024 at 05:25:18PM +0800, Macpaul Lin wrote:
+>> > > This patch updates the audio-codec properties includes:
+>> > >   - compatible:
+>> > >    - Re-order the supported device items.
+>> > >    - Add 'mt6359-codec' to compatible since MT6359 PMIC has been included
+>> > >      in this DT Schema.
+>> > 
+>> > >    - Set 'additionalProperties: true' for 'mt6359-codec'.
+>> > 
+>> > Why?
+>> 
+>> The mt6359-codec support these 3 properties:
+>> mediatek,mic-type0, mediatek,mic-type-1, mediatek-mic-type2.
+>> While mt6358-sound and mt6397-codec don't (at least, I didn't find
+>> these 3 properties in driver codes.
+>> 
+>> Set 'additionalProperties: true' is also required to fix the following
+>> dtbs_check errors:
+>> pmic: audio-codec: 'mediatek,mic-type-0', 'mediatek,mic-type-1',
+>>       'mediatek,mic-type-2' do not match any of the regexes:
+>>       'pinctrl-[0-9]+'
+> 
+> Why is this a correct fix? Aren't you allowing "pink-pony" property as
+> well?
+> 
+>> 
+>> > > 
+>> > > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+>> > > ---
+>> > >   Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml | 5 +++--
+> 
+> There is no such file.
+> 
+> Best regards,
+> Krzysztof
+> 
 
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
-Changes since v7:
-- New patch
+This patch is no longer necessary. I'm working on a new fix (v7)
+for 'Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml' and try 
+to rid of these mess in audio-codec node.
 
-The other option is to follow what Rockchip will be doing: getting the
-regulator supply upon first use / enable [1]. This will result in less
-breakage: only the power domain that is missing its supplies will fail
-to be attached.
-
-[1] https://lore.kernel.org/all/20240919091834.83572-6-sebastian.reichel@collabora.com/
----
- drivers/pmdomain/mediatek/mtk-pm-domains.c | 12 +-----------
- 1 file changed, 1 insertion(+), 11 deletions(-)
-
-diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-index 88406e9ac63c..3580913f25d3 100644
---- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-+++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-@@ -353,7 +353,6 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
- {
- 	const struct scpsys_domain_data *domain_data;
- 	struct scpsys_domain *pd;
--	struct device_node *root_node = scpsys->dev->of_node;
- 	struct device_node *smi_node;
- 	struct property *prop;
- 	const char *clk_name;
-@@ -388,16 +387,7 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
- 	pd->scpsys = scpsys;
- 
- 	if (MTK_SCPD_CAPS(pd, MTK_SCPD_DOMAIN_SUPPLY)) {
--		/*
--		 * Find regulator in current power domain node.
--		 * devm_regulator_get() finds regulator in a node and its child
--		 * node, so set of_node to current power domain node then change
--		 * back to original node after regulator is found for current
--		 * power domain node.
--		 */
--		scpsys->dev->of_node = node;
--		pd->supply = devm_regulator_get(scpsys->dev, "domain");
--		scpsys->dev->of_node = root_node;
-+		pd->supply = devm_of_regulator_get_optional(scpsys->dev, node, "domain");
- 		if (IS_ERR(pd->supply))
- 			return dev_err_cast_probe(scpsys->dev, pd->supply,
- 				      "%pOF: failed to get power supply.\n",
--- 
-2.46.1.824.gd892dcdcdd-goog
-
+Thanks
+Macpaul Lin
 
