@@ -4,70 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8E11CF649D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 08:59:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89183CF649D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 09:03:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z2hpmCYLT52hmHAC8PHJuuNJRWqEsrc1hkQowF/FPhg=; b=JSRtiWKeQZFStQX+vFwpplj78m
-	B0XGeof93jZ2hEZNqi+jUP4rBmCTq1bewUaqz3nFYT7dgLap/fwP6FsQTGEc7ZmhegCyge52QUyQM
-	B/yWTv4cxs4WtlpcNSZ/jOTuCaJx3OyIWou4axk91rWmWWDtId+jkPClj4B3yDeAd1KwSlN2bItiZ
-	dy6Qgff6fgJwQ2+RMJcWUlZ23SCKBu8CbTFtVSd5GiaUyAHbL+ylB5/BMhW5VMjfj/+n7ce6mh7O/
-	D21fLG6UbYeaLGbgFCXEih42aSvyvLlhDt6oee7uOb7QBcRL71khprAiDjRZ8z3ROIjV9QNPWoJhw
-	y0ORam5A==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=LN9ltNvbjSBfBNYUQiZ7JV/K7KCWkJUhmZ0pxv2D8Ng=; b=A+Wvn0sj/enHLr4le1Ddh7TdPG
+	tVC2X9qzigAqYbTvxSyDkw8eNMVDnONTNYsA4bEPq/05/0PC+HKSPqlSGpIlyIZlS2EQ+C7f625Qj
+	igp9i7JQFolPjulN6L21NO5aJW8i1WJhUWzTK1nAf9e6BeruHsmfjViwALhqna/yr07zX10/C/KtE
+	dn8XstlHfW08UGWmshaF/6rKnSAR9BiGOAXSRlU7Fb7pDb5wf1Cz4Kv8fD9eOYe9682bTnaGYpV3D
+	PZ8lsxE49Xw7sou9eY6rXN6GfLeLRpXNhacxsCrX1BJs8FrG6GNTEFOrFJLVMTR0BeyXRFFNU54fz
+	ls77ZR/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svCFf-0000000GQDS-3uZO;
-	Mon, 30 Sep 2024 08:59:31 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1svCJI-0000000GQni-2KtF;
+	Mon, 30 Sep 2024 09:03:16 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svCDI-0000000GPep-2TNL;
-	Mon, 30 Sep 2024 08:57:06 +0000
+	id 1svCI5-0000000GQb6-0A9o;
+	Mon, 30 Sep 2024 09:02:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727686621;
-	bh=RRK9Oszbh79YT4DewKwCNUO67et5+TBu6p5sJ2Au3kY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=gxRsvhD03S0cWwbUtL7sqBtCluUD69qqNc87WZkMBQGPx30E39voB4FbamMK0ME0l
-	 QooGgAyiKgNKuOrsa2A0aKNHFRs6mZKddKzivfHwhDPq8XVNzpGre0Zmb3rZy/DMam
-	 RBfad1caeHvQ7F9zUHMdnF4u9NLSUFzMO8wqwZG7LoJ4L1Ltrj4DYqhALQma+o09tk
-	 4SMffNO17Gx6AsfmISZSv5xL0wlxEhLJUinDkc409u6gyIA5B3MBWtt5bsyAEnC+Ae
-	 ux2d9sbFfYpmqbM/cpfPG7WKuCTF9Bzl1VsEV9cIXBvgKYIq6fICf2Zu4R1iVQxfNi
-	 41ZbPNd6CRjsQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	s=mail; t=1727686919;
+	bh=rMDQbP5iTbg0VsicK08jB1/II/2Q6c4i6sQerb2hk/U=;
+	h=From:To:Cc:Subject:Date:From;
+	b=ed8HAkKpFNF2T0XxspKs7CbT8mlDzbZUZLPXsQdbi7e7Uvpuk88JfeWA2mNXeobC4
+	 a/DJUNI9n15h3AMgmPp3keX7jPdZ3S/AKElZP4IBumWNXbSeANstR7p7GHtLAmUkTR
+	 HvY9cYpWumELAzyuIBYRO96bz0kIRHVEM/ApfBoVc2+7CltWl2YKRJRdhEEJ9Lw/Wb
+	 60m7pZWV7WO+rqRyhAHXyEWa1N1biowtqQuwKthXrSDQ3Rcc9CCdE/AHNoWGgWrqj9
+	 HGG3+SQc6A4zvCBrwCDDV+IO0w+oUBIqh4ZNWxqnYzgVk9za+mIWSjaKOK5aI92XKB
+	 AlwBmJy1BGC1Q==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 542DB17E0EB5;
-	Mon, 30 Sep 2024 10:57:01 +0200 (CEST)
-Message-ID: <b261e9b1-826a-456a-bf69-b15bf50c3fa8@collabora.com>
-Date: Mon, 30 Sep 2024 10:57:01 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 1/3] regulator: Add of_regulator_get_optional() for
- pure DT regulator lookup
-To: Chen-Yu Tsai <wenst@chromium.org>, Ulf Hansson <ulf.hansson@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, Douglas Anderson <dianders@chromium.org>,
- Johan Hovold <johan@kernel.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>
-References: <20240930044525.2043884-1-wenst@chromium.org>
- <20240930044525.2043884-2-wenst@chromium.org>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 12C4317E0EA8;
+	Mon, 30 Sep 2024 11:01:59 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20240930044525.2043884-2-wenst@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: chaotian.jing@mediatek.com
+Cc: ulf.hansson@linaro.org,
+	matthias.bgg@gmail.com,
+	linux-mmc@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@collabora.com,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2] mmc: mtk-sd: Implement Host Software Queue for eMMC and SD Card
+Date: Mon, 30 Sep 2024 11:01:56 +0200
+Message-ID: <20240930090156.33537-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.46.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240930_015704_832306_B0A8BD18 
-X-CRM114-Status: GOOD (  13.35  )
+X-CRM114-CacheID: sfid-20240930_020201_253448_88E9F9A9 
+X-CRM114-Status: GOOD (  23.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,28 +76,195 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 30/09/24 06:45, Chen-Yu Tsai ha scritto:
-> The to-be-introduced I2C component prober needs to enable regulator
-> supplies (and toggle GPIO pins) for the various components it intends
-> to probe. To support this, a new "pure DT lookup" method for getting
-> regulator supplies is needed, since the device normally requesting
-> the supply won't get created until after the component is probed to
-> be available.
-> 
-> Add a new of_regulator_get_optional() function for this. This mirrors
-> the existing regulator_get_optional() function, but is OF-specific.
-> The underlying code that supports the existing regulator_get*()
-> functions has been reworked in previous patches to support this
-> specific case.
-> 
-> Also convert an existing usage of "dev && dev->of_node" to
-> "dev_of_node(dev)".
-> 
-> Link: https://lore.kernel.org/all/20231220203537.83479-2-jernej.skrabec@gmail.com/ [1]
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Add support for Host Software Queue (HSQ) and enable it when the
+controller instance does not have Command Queue Engine HW support.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+It was chosen to enable HSQ only for eMMC and SD/MicroSD cards
+and not for SDIO as performance improvements are seen only for
+the former.
 
+Performance was measured with a SanDisk Extreme Ultra A2 MicroSD
+card in a MediaTek MT8195T Acer Chromebook Spin 513 (CP513-2H),
+by running FIO (bs=4k) on an ArchLinux userspace.
+
+.... Summarizing ....
+Random read:     +24.28% IOPS, +24.29% BW
+Sequential read: +3.14%  IOPS, +3.49%  BW
+Random RW (avg): +50.53% IOPS, +50.68% BW
+
+Below, more data from the benchmarks.
+
+Before:
+ - Random read: IOPS=1643, BW=6574KiB/s
+   bw (  KiB/s): min= 4578, max= 7440, per=99.95%, avg=6571.55, stdev=74.16, samples=953
+   iops        : min= 1144, max= 1860, avg=1642.14, stdev=18.54, samples=953
+   lat (msec)  : 100=0.01%, 250=0.12%, 500=0.38%, 750=97.89%, 1000=1.44%, 2000=0.16%
+ - Sequential read: IOPS=19.1k, BW=74.4MiB/s
+   bw (  KiB/s): min=12288, max=118483, per=100.00%, avg=76293.38, stdev=1971.42, samples=956
+   iops        : min= 3072, max=29620, avg=19072.14, stdev=492.87, samples=956
+   lat (msec)  : 4=0.01%, 10=0.01%, 20=0.21%, 50=23.95%, 100=75.67%, 250=0.05%, 500=0.03%, 750=0.08%
+ - Random R/W: read: IOPS=282, BW=1129KiB/s (1156kB/s)  write: IOPS=284, BW=1136KiB/s
+   read bw (  KiB/s): min=   31, max= 3496, per=100.00%, avg=1703.67, stdev=155.42, samples=630
+   read iops        : min=    7, max=  873, avg=425.22, stdev=38.85, samples=630
+   wri  bw (  KiB/s): min=   31, max= 3443, per=100.00%, avg=1674.27, stdev=164.23, samples=644
+   wri  iops        : min=    7, max=  860, avg=417.87, stdev=41.03, samples=644
+   lat (msec)   : 250=0.13%, 500=0.44%, 750=0.84%, 1000=22.29%, 2000=74.01%, >=2000=2.30%
+
+After:
+ - Random read: IOPS=2042, BW=8171KiB/s
+   bw (  KiB/s): min= 4907, max= 9072, per=99.94%, avg=8166.80, stdev=93.77, samples=954
+   iops        : min= 1226, max= 2268, avg=2040.78, stdev=23.41, samples=954
+   lat (msec)   : 100=0.03%, 250=0.13%, 500=52.88%, 750=46.64%, 1000=0.32%
+ - Sequential read: IOPS=19.7k, BW=77.0MiB/s
+   bw (  KiB/s): min=67980, max=94248, per=100.00%, avg=78894.27, stdev=1475.07, samples=956
+   iops        : min=16994, max=23562, avg=19722.45, stdev=368.76, samples=956
+   lat (msec)   : 4=0.01%, 10=0.01%, 20=0.05%, 50=28.78%, 100=71.14%, 250=0.01%, 500=0.02%
+ - Random R/W: read: IOPS=424, BW=1699KiB/s  write: IOPS=428, BW=1714KiB/s
+   read bw (  KiB/s): min=  228, max= 2856, per=100.00%, avg=1796.60, stdev=112.59, samples=901
+   read iops        : min=   54, max=  712, avg=447.81, stdev=28.21, samples=901
+   wri  bw (  KiB/s): min=   28, max= 2904, per=100.00%, avg=1780.11, stdev=128.27, samples=916
+   wri  iops        : min=    4, max=  724, avg=443.69, stdev=32.14, samples=916
+
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+
+Changes in v2:
+ - Added missing `select MMC_HSQ` for MMC_MTK Kconfig
+
+ drivers/mmc/host/Kconfig  |  1 +
+ drivers/mmc/host/mtk-sd.c | 49 +++++++++++++++++++++++++++++++++++++--
+ 2 files changed, 48 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/mmc/host/Kconfig b/drivers/mmc/host/Kconfig
+index 7199cb0bd0b9..0ba5a9f769fb 100644
+--- a/drivers/mmc/host/Kconfig
++++ b/drivers/mmc/host/Kconfig
+@@ -1009,6 +1009,7 @@ config MMC_MTK
+ 	depends on COMMON_CLK
+ 	select REGULATOR
+ 	select MMC_CQHCI
++	select MMC_HSQ
+ 	help
+ 	  This selects the MediaTek(R) Secure digital and Multimedia card Interface.
+ 	  If you have a machine with a integrated SD/MMC card reader, say Y or M here.
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 5165a33bf74b..a9a554bd3f44 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -33,6 +33,7 @@
+ #include <linux/mmc/slot-gpio.h>
+ 
+ #include "cqhci.h"
++#include "mmc_hsq.h"
+ 
+ #define MAX_BD_NUM          1024
+ #define MSDC_NR_CLOCKS      3
+@@ -473,6 +474,7 @@ struct msdc_host {
+ 	bool hs400_tuning;	/* hs400 mode online tuning */
+ 	bool internal_cd;	/* Use internal card-detect logic */
+ 	bool cqhci;		/* support eMMC hw cmdq */
++	bool hsq_en;		/* Host Software Queue is enabled */
+ 	struct msdc_save_para save_para; /* used when gate HCLK */
+ 	struct msdc_tune_para def_tune_para; /* default tune setting */
+ 	struct msdc_tune_para saved_tune_para; /* tune result of CMD21/CMD19 */
+@@ -1170,7 +1172,9 @@ static void msdc_track_cmd_data(struct msdc_host *host, struct mmc_command *cmd)
+ 
+ static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
+ {
++	struct mmc_host *mmc = mmc_from_priv(host);
+ 	unsigned long flags;
++	bool hsq_req_done;
+ 
+ 	/*
+ 	 * No need check the return value of cancel_delayed_work, as only ONE
+@@ -1178,6 +1182,27 @@ static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
+ 	 */
+ 	cancel_delayed_work(&host->req_timeout);
+ 
++	/*
++	 * If the request was handled from Host Software Queue, there's almost
++	 * nothing to do here, and we also don't need to reset mrq as any race
++	 * condition would not have any room to happen, since HSQ stores the
++	 * "scheduled" mrqs in an internal array of mrq slots anyway.
++	 * However, if the controller experienced an error, we still want to
++	 * reset it as soon as possible.
++	 *
++	 * Note that non-HSQ requests will still be happening at times, even
++	 * though it is enabled, and that's what is going to reset host->mrq.
++	 * Also, msdc_unprepare_data() is going to be called by HSQ when needed
++	 * as HSQ request finalization will eventually call the .post_req()
++	 * callback of this driver which, in turn, unprepares the data.
++	 */
++	hsq_req_done = host->hsq_en ? mmc_hsq_finalize_request(mmc, mrq) : false;
++	if (hsq_req_done) {
++		if (host->error)
++			msdc_reset_hw(host);
++		return;
++	}
++
+ 	spin_lock_irqsave(&host->lock, flags);
+ 	host->mrq = NULL;
+ 	spin_unlock_irqrestore(&host->lock, flags);
+@@ -1187,7 +1212,7 @@ static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
+ 		msdc_unprepare_data(host, mrq->data);
+ 	if (host->error)
+ 		msdc_reset_hw(host);
+-	mmc_request_done(mmc_from_priv(host), mrq);
++	mmc_request_done(mmc, mrq);
+ 	if (host->dev_comp->recheck_sdio_irq)
+ 		msdc_recheck_sdio_irq(host);
+ }
+@@ -1347,7 +1372,7 @@ static void msdc_ops_request(struct mmc_host *mmc, struct mmc_request *mrq)
+ 	struct msdc_host *host = mmc_priv(mmc);
+ 
+ 	host->error = 0;
+-	WARN_ON(host->mrq);
++	WARN_ON(!host->hsq_en && host->mrq);
+ 	host->mrq = mrq;
+ 
+ 	if (mrq->data)
+@@ -2916,6 +2941,19 @@ static int msdc_drv_probe(struct platform_device *pdev)
+ 		mmc->max_seg_size = 64 * 1024;
+ 		/* Reduce CIT to 0x40 that corresponds to 2.35us */
+ 		msdc_cqe_cit_cal(host, 2350);
++	} else if (mmc->caps2 & MMC_CAP2_NO_SDIO) {
++		/* Use HSQ on eMMC/SD (but not on SDIO) if HW CQE not supported */
++		struct mmc_hsq *hsq = devm_kzalloc(&pdev->dev, sizeof(*hsq), GFP_KERNEL);
++		if (!hsq) {
++			ret = -ENOMEM;
++			goto release;
++		}
++
++		ret = mmc_hsq_init(hsq, mmc);
++		if (ret)
++			goto release;
++
++		host->hsq_en = true;
+ 	}
+ 
+ 	ret = devm_request_irq(&pdev->dev, host->irq, msdc_irq,
+@@ -3043,6 +3081,9 @@ static int __maybe_unused msdc_runtime_suspend(struct device *dev)
+ 	struct mmc_host *mmc = dev_get_drvdata(dev);
+ 	struct msdc_host *host = mmc_priv(mmc);
+ 
++	if (host->hsq_en)
++		mmc_hsq_suspend(mmc);
++
+ 	msdc_save_reg(host);
+ 
+ 	if (sdio_irq_claimed(mmc)) {
+@@ -3073,6 +3114,10 @@ static int __maybe_unused msdc_runtime_resume(struct device *dev)
+ 		pinctrl_select_state(host->pinctrl, host->pins_uhs);
+ 		enable_irq(host->irq);
+ 	}
++
++	if (host->hsq_en)
++		mmc_hsq_resume(mmc);
++
+ 	return 0;
+ }
+ 
+-- 
+2.46.1
 
 
