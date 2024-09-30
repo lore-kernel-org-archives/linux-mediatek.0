@@ -4,81 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1153CCE8343
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 13:09:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59F80CE8341
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 13:10:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W7ReMPjy5eqBkB9PSQ5OUoGAyg1TfT/j3P+zC886qG4=; b=IjdK01ABH66KQ02uE0GYB1IFl1
-	aoFJepwc5a3E0tZ/wYQiqEnGOgcK6vIh4S30IkdfYHEY55kGg1le+io2qL1r6q18y3ntx/ydrvX2U
-	2GGZhZQEGnPV6PMCME3dI+A9sIyhQQf//c0hRWuEuAN8MU3FOPjF2hzNBfoTwvHez0z/q0RsXMwhj
-	eWyWbbzat4bJEmqIwWnH6aUEdi8BbvJrJeKd9VTriR2bO9EhRLPQQ3Lmfhbe24At70KSjTwwLfX23
-	ycvqLBwsxb2Sak/E96pp3cJWlP4bz2O6xReZuBILeQWCrpcrAN8xLSbmQXx0+kj2rKON/GLmppcAG
-	icFAUsVw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0Echq6iYdi8xXOiwQNXOIod/aTn7Fh4/OT5C9qG6Rag=; b=ScAphbZ7d90p5RVE5GAlzSO3dd
+	/LKemwTjkHY15MhABdATyl4v9U3yVNCFsY8uVD53GSiBMvewoBAW/kPYRsqN9XYdYL04zPAm8SVXc
+	QrYIu7Nsh9n5PDmy1uXXRWF4zbi86l5eyemA9pc2kvFbLz3eP6Bdw2vSsMLVQKQx8eYgt3quPXq1k
+	S4u0lLCOlRs/A4Wzu5naKdpmmJExBr+SbcAm8Inj2RM4K84BZ2u0R68iSFBBnPVen7aS14Vky1hQk
+	M6VXd0bItZJ9EOBVSw59wA1OlnwTz1/cvKpIOfefneC/v48lyuIqBJuajL9cVSWVrNMmKKCX1umHt
+	bB6lnevA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svG9l-0000000HDE3-3Bqy;
-	Mon, 30 Sep 2024 13:09:43 +0000
-Received: from mgamail.intel.com ([192.198.163.19])
+	id 1svGAc-0000000HDYO-0r6r;
+	Mon, 30 Sep 2024 13:10:34 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svFQz-0000000H1fw-3DYN;
-	Mon, 30 Sep 2024 12:23:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1727699006; x=1759235006;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=5HBufJuRJTDINVJL3z3VzyjHtxL6XF6TxE9WdkMmSDg=;
-  b=iAySZofyHsfbh8q9HbAdBAHQnrT7dQadBZ46ggnpeKm67i5RR6+FbkPk
-   YHQciej+WyLJmTZ19uSmDXKcHNMKdUt0CQbR4hGnj6vsI6pzLY0Pg7EFE
-   B0A+cC0Q8AjKSWmmYPSAnKgEjUqn59bffN3Qi+QNT4Pv8pqwUOEX+linu
-   GQs3Bf3TQ1UUqmyoiQkRMHx60rb00Ws5cK64XQvP/Sb//9xEEUIYuL1wQ
-   J62X93IFwAuKU0EoqCUvRnZgw8aJWaZjw/P6okJhpqSfGmlx3dgfhq2Vl
-   JtMrFlWfwnQTXo6GzBXQ3q55Yu9iqzWzzENOBpMfCKwwVjo1GowjTK+Df
-   g==;
-X-CSE-ConnectionGUID: 5PxvBMcISsG/z+/b49qtew==
-X-CSE-MsgGUID: LH4G7UHuS327FllkyHz1hA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11210"; a="26291154"
-X-IronPort-AV: E=Sophos;i="6.11,165,1725346800"; 
-   d="scan'208";a="26291154"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Sep 2024 05:23:20 -0700
-X-CSE-ConnectionGUID: V4CLIAaHTQmIyGv8yg9AMg==
-X-CSE-MsgGUID: mSvxM4cjQsu5QZ2YIvlypg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,165,1725346800"; 
-   d="scan'208";a="78039157"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orviesa005.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Sep 2024 05:23:18 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1svFQo-0000000Eeg1-0fVl;
-	Mon, 30 Sep 2024 15:23:14 +0300
-Date: Mon, 30 Sep 2024 15:23:13 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Yu Jiaoliang <yujiaoliang@vivo.com>
-Cc: alcooperx@gmail.com, bcm-kernel-feedback-list@broadcom.com,
-	gregkh@linuxfoundation.org, jirislaby@kernel.org,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	linux-serial@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, opensource.kernel@vivo.com
-Subject: Re: [PATCH v1] serial: 8250: Fix typos in comments across various
- files
-Message-ID: <ZvqYMV9s41DyVOnK@smile.fi.intel.com>
-References: <20240929100931.530620-1-yujiaoliang@vivo.com>
+	id 1svFbb-0000000H4IK-2NYE;
+	Mon, 30 Sep 2024 12:34:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 058F35C1191;
+	Mon, 30 Sep 2024 12:34:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 41ECDC4CEC7;
+	Mon, 30 Sep 2024 12:34:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1727699662;
+	bh=qTB9g6Mdenjq1zRKKss5v3af9DwJHerHGR2vXvjGRHs=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=FY50tftipJWwI6IGb+PAARkL12B7fochTa2vApQ4msqXoVsKecvwGWQj7sf9jDe15
+	 SWZFf7SRc0ySXu4332vsKX9Cu1+jG4J+M8u5m0iCnba/J/ax2jPzsTegKVi2sB/nRd
+	 qZDcRtAO1TXh2/TWFkhI71zilIdqJYKwy3Lcwq5Gja/T2PKoHsj28k/qdk+al6OLoh
+	 Qw9Gfc+exWLprRRLeegDzqUD1lHJEvvlMeIKV1i9/S1ijiCHKsnixQnk8OX198xEt+
+	 FOhfB7uyMRuYR5+SIfW6CqtQBEnbj9jSlE+TcFzz7UHIjTRt6rQwaSaYTlTJIsgFzF
+	 rIZWku+q33AkA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Mon, 30 Sep 2024 14:33:49 +0200
+Subject: [PATCH net-next 2/2] net: airoha: fix PSE memory configuration in
+ airoha_fe_pse_ports_init()
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240929100931.530620-1-yujiaoliang@vivo.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240930-airoha-eth-pse-fix-v1-2-f41f2f35abb9@kernel.org>
+References: <20240930-airoha-eth-pse-fix-v1-0-f41f2f35abb9@kernel.org>
+In-Reply-To: <20240930-airoha-eth-pse-fix-v1-0-f41f2f35abb9@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
+ Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Simon Horman <horms@kernel.org>, upstream@airoha.com
+X-Mailer: b4 0.14.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240930_052325_839267_59A3593C 
-X-CRM114-Status: UNSURE (   8.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20240930_053423_732162_C0FDC632 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,18 +78,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Sep 29, 2024 at 06:09:31PM +0800, Yu Jiaoliang wrote:
-> This patch fixes several typos in the comments within the tty/8250
-> directory to improve readability and code documentation.
-> 
-> Detected using codespell.
+Align PSE memory configuration to vendor SDK. In particular, increase
+initial value of PSE reserved memory in airoha_fe_pse_ports_init()
+routine by the value used for the second Packet Processor Engine (PPE2)
+and do not overwrite the default value.
 
-LGTM,
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+commit 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/mediatek/airoha_eth.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/mediatek/airoha_eth.c b/drivers/net/ethernet/mediatek/airoha_eth.c
+index 480540526bdb..2e01abc70c17 100644
+--- a/drivers/net/ethernet/mediatek/airoha_eth.c
++++ b/drivers/net/ethernet/mediatek/airoha_eth.c
+@@ -1172,11 +1172,13 @@ static void airoha_fe_pse_ports_init(struct airoha_eth *eth)
+ 		[FE_PSE_PORT_GDM4] = 2,
+ 		[FE_PSE_PORT_CDM5] = 2,
+ 	};
++	u32 all_rsv;
+ 	int q;
+ 
++	all_rsv = airoha_fe_get_pse_all_rsv(eth);
+ 	/* hw misses PPE2 oq rsv */
+-	airoha_fe_set(eth, REG_FE_PSE_BUF_SET,
+-		      PSE_RSV_PAGES * pse_port_num_queues[FE_PSE_PORT_PPE2]);
++	all_rsv += PSE_RSV_PAGES * pse_port_num_queues[FE_PSE_PORT_PPE2];
++	airoha_fe_set(eth, REG_FE_PSE_BUF_SET, all_rsv);
+ 
+ 	/* CMD1 */
+ 	for (q = 0; q < pse_port_num_queues[FE_PSE_PORT_CDM1]; q++)
 
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.46.2
 
 
