@@ -4,70 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D57A3CF6497
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 07:32:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CEB4CF6497
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 07:34:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2+6+WETpWclPEUIZf7o1cr65vrf8VwuYompvVBRsdOU=; b=Qt69exRrM9mhfybfyZkldvcxxH
-	ZQf6rsPwXBjOjC0l/j9xMakMtTI2KgyL9slOpe33gm4Au4IY5mrMcC3xps3ZnwfVMrmtF7CPr0qHP
-	uiLUGtOHc8Ql8Q+GJrkw+q7batCKtBuKw1LxFszTilbzqyE0vSLhAxIj2TufJ+CSRNGUVZMFQk0zJ
-	/yFTJmV49nuwvqLbNWSwsvS596GuGhx60U5V7X0UFA1WcmXcFfucaHC0D2XMADvEdG5vyBnY8OKQL
-	EHemC0MwG4IOOS/lm24IpxdIOpIugfIpZ+kpo5O422i+zOFiILTHpOFe6YLRjtjblez2eS103wMiS
-	N+fBjYCg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KwWXCGAW/ByfoA2er9EQDpwMhHapKsGPkQ088kaxyr0=; b=0+i3qN3Zm2kvDsZupaIybJtl32
+	1Oa6gFO3BEGpHbVh57iMxP0dGIxlCUQr0aswOUJpiNJwNEZM3r2wdtq60Eay6p4K6xnjFIAxrEEQH
+	8UJp2sr35JdIN49rEp5DyzVRmj/hBRNUw/Tl46ituLNhzDk6nlEITUCL3wRY1fxGNsazy+09LrIJM
+	zxjOUFByA2l1yPG1RL/p2Q8cq0eKMKYK4W3XhbBowzrAmzl/XN9sdoPswFnyw6kcjal8j4CIAC/lx
+	MKvgEXC6TA8GBxsPpxKwrD8FNV6wFIXUUmY6PMtkfQ+fdR9xXjdQTrQ0LTc36fxNq5plKJvx4n37X
+	RBi4b3dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svAtn-0000000GBVZ-2n1m;
-	Mon, 30 Sep 2024 07:32:51 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1svAvU-0000000GBwz-09Gv;
+	Mon, 30 Sep 2024 07:34:36 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svAtB-0000000GBL3-37AN;
-	Mon, 30 Sep 2024 07:32:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727681531;
-	bh=M3ZGR3m5dE/OcpAuJgNW07sMzVd9xcG6hbRIN3GQi5s=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Oz0MJoD/WjoceXAqgBvUNpAstd9dV0jBR191CXDs3DaHEQv8fB6tEEkb3khrgiisE
-	 nh7tdsJ05/IcW/muYpcMYD2UbZ59bvLNKjDb7A7RsthSIIYy9ISk7EtNcjZZJJ/j4b
-	 46HY0ZSLujeCZ2Euue+8cxgFYaU/00AGdTSqrFGu+tvTdK4XrGCbrxAmA25H//DWD1
-	 gnBnOgQkZjyB3Rxtdykg0mDYBmcB8VRkDHDSZOdUCxlY8BYcGNoed0Ur7HnpY3zSJe
-	 +ONzA6kcS7zMAeoKr1mZ7/oMykf0KM1jTOBErKvVlvh8ykoNrOxERefW/OQ7/gJea/
-	 VGMkeeuORJQXg==
-Received: from [192.168.50.250] (unknown [171.76.80.165])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9E73717E1047;
-	Mon, 30 Sep 2024 09:32:07 +0200 (CEST)
-Message-ID: <5fd48673-571a-4750-9704-e172f7ea372f@collabora.com>
-Date: Mon, 30 Sep 2024 13:01:55 +0530
+	id 1svAuS-0000000GBgY-18Gu;
+	Mon, 30 Sep 2024 07:33:33 +0000
+X-UUID: 48d6f0727efe11efba0aef63c0775dbf-20240930
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=KwWXCGAW/ByfoA2er9EQDpwMhHapKsGPkQ088kaxyr0=;
+	b=gWmFQxiPxXRBZWxF6/VUcY6rT+gYITJ1itSSHxJmn+z77BIBRG4HeYUJJ37Ka16O+4E7JfrJ419TiENlu4+ahXUN7VQdUByFhk4KQ3MICsw+LEUj9huPoDwAgceF5L0zdfT48cMRH8KOvtNtrV09zRoZRjfwpR0yyjsb3aWgFm8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:4c33dd46-977c-415a-8d4e-30011018f54c,IP:0,U
+	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:6dc6a47,CLOUDID:6f757718-b42d-49a6-94d2-a75fa0df01d2,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 48d6f0727efe11efba0aef63c0775dbf-20240930
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1286554413; Mon, 30 Sep 2024 00:33:28 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 30 Sep 2024 15:33:24 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 30 Sep 2024 15:33:24 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring
+	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+	<conor+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>, Lee Jones
+	<lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino
+ Del Regno <angelogioacchino.delregno@collabora.com>, Sen Chu
+	<sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Macpaul Lin
+	<macpaul.lin@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, Florian Fainelli
+	<f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David S .
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
+ Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Sebastian
+ Reichel <sre@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown
+	<broonie@kernel.org>, Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	<linux-input@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-leds@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-pm@vger.kernel.org>, <netdev@vger.kernel.org>,
+	<linux-rtc@vger.kernel.org>, <linux-sound@vger.kernel.org>, Alexandre Mergnat
+	<amergnat@baylibre.com>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, Chris-qj chen <chris-qj.chen@mediatek.com>,
+	MediaTek Chromebook Upstream
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
+	<wenst@chromium.org>
+Subject: [PATCH v7 2/3] ASoC: dt-bindings: mt6358: Convert to DT Schema
+Date: Mon, 30 Sep 2024 15:33:10 +0800
+Message-ID: <20240930073311.1486-2-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20240930073311.1486-1-macpaul.lin@mediatek.com>
+References: <20240930073311.1486-1-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] docs/gpu: ci: update flake tests requirements
-To: Rodrigo Vivi <rodrigo.vivi@intel.com>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
- helen.koike@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
- robdclark@gmail.com, guilherme.gallo@collabora.com,
- sergi.blanch.torne@collabora.com, deborah.brouwer@collabora.com,
- dmitry.baryshkov@linaro.org, mripard@kernel.org, quic_abhinavk@quicinc.com,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- virtualization@lists.linux.dev, linux-kernel@vger.kernel.org
-References: <20240927052416.1833889-1-vignesh.raman@collabora.com>
- <ZvbCzqvyeTI_j2cD@intel.com>
-Content-Language: en-US
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <ZvbCzqvyeTI_j2cD@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240930_003213_985418_ADDE2CCE 
-X-CRM114-Status: GOOD (  16.94  )
+X-CRM114-CacheID: sfid-20240930_003332_343031_997E5803 
+X-CRM114-Status: GOOD (  19.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,79 +104,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rodrigo,
+Convert the MediaTek MT6358 Audio CODEC bindings to DT schema.
 
-On 27/09/24 20:05, Rodrigo Vivi wrote:
-> On Fri, Sep 27, 2024 at 10:54:14AM +0530, Vignesh Raman wrote:
->> Update the documentation to specify linking to a relevant GitLab
->> issue or email report for each new flake entry. Added specific
->> GitLab issue urls for i915, msm and amdgpu driver.
->>
->> Acked-by: Abhinav Kumar <quic_abhinavk@quicinc.com> # msm
->> Acked-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org> # msm
->> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
->> ---
->>
->> v2:
->> - Add gitlab issue link for msm driver.
->>
->> v3:
->> - Update docs to specify we use email reporting or GitLab issues for flake entries.
->>
->> ---
->>   Documentation/gpu/automated_testing.rst | 13 +++++++++----
->>   1 file changed, 9 insertions(+), 4 deletions(-)
->>
->> diff --git a/Documentation/gpu/automated_testing.rst b/Documentation/gpu/automated_testing.rst
->> index 2d5a28866afe..03769b4a17cf 100644
->> --- a/Documentation/gpu/automated_testing.rst
->> +++ b/Documentation/gpu/automated_testing.rst
->> @@ -68,19 +68,24 @@ known to behave unreliably. These tests won't cause a job to fail regardless of
->>   the result. They will still be run.
->>   
->>   Each new flake entry must be associated with a link to the email reporting the
->> -bug to the author of the affected driver, the board name or Device Tree name of
->> -the board, the first kernel version affected, the IGT version used for tests,
->> -and an approximation of the failure rate.
->> +bug to the author of the affected driver or the relevant GitLab issue. The entry
->> +must also include the board name or Device Tree name, the first kernel version
->> +affected, the IGT version used for tests, and an approximation of the failure rate.
->>   
->>   They should be provided under the following format::
->>   
->> -  # Bug Report: $LORE_OR_PATCHWORK_URL
->> +  # Bug Report: $LORE_URL_OR_GITLAB_ISSUE
->>     # Board Name: broken-board.dtb
->>     # Linux Version: 6.6-rc1
->>     # IGT Version: 1.28-gd2af13d9f
->>     # Failure Rate: 100
->>     flaky-test
->>   
->> +Use the appropriate link below to create a GitLab issue:
->> +amdgpu driver: https://gitlab.freedesktop.org/drm/amd/-/issues
->> +i915 driver: https://gitlab.freedesktop.org/drm/i915/kernel/-/issues
-> 
-> Probably good to add:
-> 
-> xe driver: https://gitlab.freedesktop.org/drm/xe/kernel/-/issues
+This change implements the following updates:
+1. Compatible property: Added the const 'mediatek,mt6358-sound'
+   to ensure alignment with the schema in the actual (DTS) file
+   "mt8186-corsola.dtsi" with 'mediatek,mt6366-sound'.
+2. Example: Removed the example section, as it should be relocated to
+   the MT6397 PMIC file 'mfd/mediatek,mt6397.yaml'.
 
-Sure, will add it.
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+---
+ .../devicetree/bindings/sound/mt6358.txt      | 26 ------------
+ .../devicetree/bindings/sound/mt6358.yaml     | 41 +++++++++++++++++++
+ 2 files changed, 41 insertions(+), 26 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/sound/mt6358.txt
+ create mode 100644 Documentation/devicetree/bindings/sound/mt6358.yaml
 
-> 
-> Acked-by: Rodrigo Vivi <rodrigo.vivi@intel.com>
+Changess for v1~v6:
+ - It was not in the origin patch set.
 
-Thanks.
+Changes for v7:
+ - It is seperated from the origin patch set (2/2, v6).
+   It could simplifies the audio-codec node in next patch (3/3, v7)
+   of 'mfd/mediatek,mt6397.yaml'
 
-> 
->> +msm driver: https://gitlab.freedesktop.org/drm/msm/-/issues
->> +
->>   drivers/gpu/drm/ci/${DRIVER_NAME}-${HW_REVISION}-skips.txt
->>   -----------------------------------------------------------
->>   
->> -- 
->> 2.43.0
->>
+diff --git a/Documentation/devicetree/bindings/sound/mt6358.txt b/Documentation/devicetree/bindings/sound/mt6358.txt
+deleted file mode 100644
+index fbe9e55c68f5..000000000000
+--- a/Documentation/devicetree/bindings/sound/mt6358.txt
++++ /dev/null
+@@ -1,26 +0,0 @@
+-Mediatek MT6358 Audio Codec
+-
+-The communication between MT6358 and SoC is through Mediatek PMIC wrapper.
+-For more detail, please visit Mediatek PMIC wrapper documentation.
+-
+-Must be a child node of PMIC wrapper.
+-
+-Required properties:
+-
+-- compatible - "string" - One of:
+-    "mediatek,mt6358-sound"
+-    "mediatek,mt6366-sound"
+-- Avdd-supply : power source of AVDD
+-
+-Optional properties:
+-- mediatek,dmic-mode : Indicates how many data pins are used to transmit two
+-	channels of PDM signal. 0 means two wires, 1 means one wire. Default
+-	value is 0.
+-
+-Example:
+-
+-mt6358_snd {
+-	compatible = "mediatek,mt6358-sound";
+-	Avdd-supply = <&mt6358_vaud28_reg>;
+-	mediatek,dmic-mode = <0>;
+-};
+diff --git a/Documentation/devicetree/bindings/sound/mt6358.yaml b/Documentation/devicetree/bindings/sound/mt6358.yaml
+new file mode 100644
+index 000000000000..5f7611e26a89
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sound/mt6358.yaml
+@@ -0,0 +1,41 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/sound/mt6358.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek MT6358 Audio Codec
++
++maintainers:
++  - Jiaxin Yu <jiaxin.yu@mediatek.com>
++  - Macpaul Lin <macpaul.lin@mediatek.com>
++
++description: |
++  The communication between MT6358 and SoC is through Mediatek PMIC wrapper.
++  For more detail, please visit Mediatek PMIC wrapper documentation.
++  Must be a child node of PMIC wrapper.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt6366-sound
++      - mediatek,mt6358-sound
++    const: mediatek,mt6358-sound
++
++  Avdd-supply:
++    description: Power source of AVDD
++
++  mediatek,dmic-mode:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: |
++      Indicates how many data pins are used to transmit two channels of PDM
++      signal. 0 means two wires, 1 means one wire. Default value is 0.
++    enum:
++      - 0 # two wires
++      - 1 # one wire
++
++required:
++  - compatible
++  - Avdd-supply
++
++additionalProperties: false
+-- 
+2.45.2
 
-Regards,
-Vignesh
 
