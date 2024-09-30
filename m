@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFDBBCF6498
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 03:10:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2507DCF6499
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 03:17:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=liH+2HX4gU0bkSiJPPJupVzmEbjmJ5tsUvyE/1aKSfE=; b=iLVFukD7GDXnRC7QpqMpuGIqtV
-	nNBpSUBqZBWikT/iGE8pKIY3SjhcEVui+e55xIFLfl2wP56UvvofnQXENmoRc3HF7R7Dlcq/S7pVl
-	fHC7Jauz6i4GeUweetP2NSsb2jm70hAOEAjkda2q6tmr83utFSCbjyLcu6AK5UNUPO7ZyJog/X7IZ
-	EIANExSSk4i4RKZ/HHjjh0o1dp8pewUGXj7SaOw+vaab/f61050KRvRJXp27+9HUWI/3wq70ihTvq
-	ln5q8sEHyKriC3gsHtreIIQu51vgbINIBE/e0ArP/6gwiatTjdieNvonuWKsRJFaqdW7Qp9HchpEt
-	aynKAJeA==;
+	bh=ucD2XJQWu4yYNPDGQD/Z5MzEr03Cm1SCrLKcaC8nSKQ=; b=oOhVPUa2r/C8GceVGd3V/D1SZk
+	qwrE6sdNbL3D88Bp8hHpY7eOpEoNQctB7w6DQBMXIe0XVK9hN7B2wK6HsBZ8GZsDL7SHA9u40rhYr
+	moCRyDPkJjpWccme++H4YcJR3eV6Rvh4exgAFOIw0ohZ0aIBXExQJfwkyBfApiDNgnd7BX13KWWM1
+	4LiJMDtFHPfYr/L5Ww0hZtB3VUBLjswCP9c9uOn2YWCIlOB6aU83f4HDy8sm4mt0F2MjVm7/p2/E+
+	qd6RLCrlnya9gPOZdX2NAVhdDowhqsawaJhq7LDcUZW9NN3bSHXXm9UlE7MIHbKShETPl0fiXWfna
+	qfk+5Tmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sv6o1-0000000Fmn7-2CB7;
-	Mon, 30 Sep 2024 03:10:37 +0000
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+	id 1sv6v8-0000000FnTk-0Nqv;
+	Mon, 30 Sep 2024 03:17:58 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sv6mo-0000000Fmhq-3Zgh;
-	Mon, 30 Sep 2024 03:09:24 +0000
-Received: by mail-pg1-x529.google.com with SMTP id 41be03b00d2f7-7d4fa972cbeso2768365a12.2;
-        Sun, 29 Sep 2024 20:09:22 -0700 (PDT)
+	id 1sv6ts-0000000FnFv-2xQM;
+	Mon, 30 Sep 2024 03:16:42 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-20792913262so45873645ad.3;
+        Sun, 29 Sep 2024 20:16:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1727665762; x=1728270562; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1727666200; x=1728271000; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=liH+2HX4gU0bkSiJPPJupVzmEbjmJ5tsUvyE/1aKSfE=;
-        b=lbYHbplnjQ3IGBfdafwvm0LAjm3FuWbz5zLVNC+JBcb4p90ltlAhMcZD5qIE0tVZJ3
-         2qEgQZjVgRghsw0mvPPx3FJDvdbFrCTGnmF4IaAZnKhtRvogB+zj+Mhf1eKCE2n9SQLS
-         PjS/vTej4C+S9gqYXNn2IX1FU/2I3zzwkazKMWtYKj1ZfjrIwM6rwa5peUpO786dGLde
-         CWOyDLWtX7AAAT+pR7j6hRmvVnCNOx/7CvorJURQZjk40W89Ig47WRRaNTHkQ4gSR7fL
-         HtNu4UshtBNXHSjM2YhrYkLTvDf0+wB7iOQKlXg+mpwXqt6vlgyAdbK1PI5X22bEP/pf
-         0ypw==
+        bh=ucD2XJQWu4yYNPDGQD/Z5MzEr03Cm1SCrLKcaC8nSKQ=;
+        b=cTNH9/ROTC3txEQB6KBIUfWNB/w3RdttrW7pTlzMesaASgLS/UwX7GEzAE7auZKJIR
+         RRX93+XbRMdtbFkEdTHeCWMFP23B9+DyZ8+YpPork8PD/D2pOPL29WHUDF4zZDJXBbwK
+         NPf1gpH4wRWPHN0q4FMWbttxs8radeS79X+bqUFrSycTQF85hPeqSbTnWbkaTzDex5Rw
+         Iyn2MSQq8KEDgzYeE9zE3OGrDYFgDbK8+O09Hc/neJeq07jPJDbTf8Ul2qcH/t35TzyQ
+         ZH7o20Ii7bZFqBSHmj9TxcGma4thPY85y78fpk6reh34udaIWH4Ro+tGDLtxmcI3k9fA
+         XBog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727665762; x=1728270562;
+        d=1e100.net; s=20230601; t=1727666200; x=1728271000;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=liH+2HX4gU0bkSiJPPJupVzmEbjmJ5tsUvyE/1aKSfE=;
-        b=eiwa+lqlkyN6wJmd9W3mGuWy7X/gDoM1x/Fhv3q3mNFu7Bj36WFWpmXbhCyBV8QJZC
-         VzVBDWWhPTB6u9W5i95fUbsS9I8Ep0sIau3PZUHETGpYYLaIRtNoFWrA+PjFzXvUsOUb
-         ZsWt4kEZfrxvRhKFdYWQVwIGW3ClB3UtaNaayH/ahd8Hr0Cq/oO1rcBsqWwLxKQm7LB7
-         29kX3Q5LJZ6mGerBHGInzYRuNLYbk9oEnGPunAlvXFuk4njUyrwKIsRT4C5cVmDO2e2q
-         Xn2yYlJ49QTWYbT0IPjPOo1tYBn3J7WX1EblDXfFtj2gDCx0LVcDKKSRcsCfql18BAZI
-         mBhA==
-X-Forwarded-Encrypted: i=1; AJvYcCUC+bLFmyLYdDrYGkMO3zdQnXJysqT0KASIytAm2cMJkuBzMRna+UnDw2/Wdc4NzDB6XAloepoVfwD/rWIyQZPn@lists.infradead.org, AJvYcCUS8w/sgBcHKy+0LYE3/PCsjYwU6Vqw/LagbRDWcBef339SPSbxyXHlc6plreUm3Tq/CaPYWfUciuEE12G5naA=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw+q0QndW8EdV3grUrac3j6Hcl2+6k561OeZxcVCTc8XMDPQy7G
-	0TfkHWriQeIn9g3DXQe2deJi7srp+3PY8QqX1Ulqrb6ay09QpiPr
-X-Google-Smtp-Source: AGHT+IFdwqW2x+LGQ7yYzogOpNGWw7LvWSFFkUOqczekRhOYAg1KYqWZJSV3YBPjsXWkv2LJgeUzjA==
-X-Received: by 2002:a05:6300:4041:b0:1cf:3a0a:ae45 with SMTP id adf61e73a8af0-1d4fa7ae36emr18049593637.35.1727665761650;
-        Sun, 29 Sep 2024 20:09:21 -0700 (PDT)
+        bh=ucD2XJQWu4yYNPDGQD/Z5MzEr03Cm1SCrLKcaC8nSKQ=;
+        b=l6+Ifr3e9UbQ0XY9O1ifrYUdCZ43lrgAYS7xKwBXoPaHCJ3zDDLjtxAqhBfqATS3Z5
+         EmjsnmXLeRQriqF5Y5rpvCMWB1rSNmeabJBkwZ/wk/Sfafk1Fukk4Yh6YBk3/TuaPbOg
+         g4kpHPak/qalviZVW6oPHiVW9pkmXOhPRjveor3A0opWvZXnNHhQvTbVW5m4v5Teqvm3
+         KA6Epzmi0N4xYXS+Ld625jPdyq8raa9TpKhojAVvRzUvw5/VthSdi5bUWnxn7WKS4R+D
+         D4l7kaceiG5W0TXzg/DgOgOo3KToWMRgCpnHbDZA01kT8ynuW0WjpKJnqY0DqrIXKErZ
+         rF6g==
+X-Forwarded-Encrypted: i=1; AJvYcCWE5yn8z5pHvHdcv7zOOs9f8Ge6/e5o2YDKrJxoSQ3lpi5pT94mPLSKW87IyJpKX7lI7mrWyzNRq8suBoUX76pJ@lists.infradead.org, AJvYcCX+wDfUKXcwuY1v8OLPX7GD3eq11/ARQ4Jqtcy+6gvdhsnKdcoQh5U+Zu1XGrzCUvms+FkXNBuXRW6b5B9zwSY=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyprZZ1i2janTkeHoloB+kAtNGuyIPBK06kQZLcjsalKmGhlydf
+	gYTCepXYK2CqEFFlzxLImmlfYcifzzA/IhTbL7xCcPXwOn2lQqaN
+X-Google-Smtp-Source: AGHT+IFY/j1+pmbrhjQJ+rVokz3hyAtdg0T8qtcMxVrjc6gVnltW0QOJKB1T14p2O3XdAmPYhDYnew==
+X-Received: by 2002:a17:903:228d:b0:207:6e9:2da1 with SMTP id d9443c01a7336-20b376750a8mr169203605ad.17.1727666199594;
+        Sun, 29 Sep 2024 20:16:39 -0700 (PDT)
 Received: from localhost ([101.12.29.1])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71b26538a3esm5235967b3a.208.2024.09.29.20.09.21
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20b37e0fd99sm45794935ad.173.2024.09.29.20.16.38
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 29 Sep 2024 20:09:21 -0700 (PDT)
+        Sun, 29 Sep 2024 20:16:39 -0700 (PDT)
 From: wojackbb@gmail.com
 To: netdev@vger.kernel.org
 Cc: chandrashekar.devegowda@intel.com,
@@ -80,15 +80,15 @@ Cc: chandrashekar.devegowda@intel.com,
 	linux-mediatek@lists.infradead.org,
 	matthias.bgg@gmail.com,
 	Jack Wu <wojackbb@gmail.com>
-Subject: [PATCH] [net] net: wwan: t7xx: add PM_AUTOSUSPEND_MS_BY_DW5933E for Dell DW5933e
-Date: Mon, 30 Sep 2024 11:09:07 +0800
-Message-Id: <20240930030907.2116224-1-wojackbb@gmail.com>
+Subject: [PATCH] [net,v2] net: wwan: t7xx: add PM_AUTOSUSPEND_MS_BY_DW5933E for Dell DW5933e
+Date: Mon, 30 Sep 2024 11:16:24 +0800
+Message-Id: <20240930031624.2116592-1-wojackbb@gmail.com>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240929_200922_898893_AB395C3C 
-X-CRM114-Status: GOOD (  12.72  )
+X-CRM114-CacheID: sfid-20240929_201640_775709_467C5D99 
+X-CRM114-Status: GOOD (  12.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,7 +114,7 @@ Signed-off-by: Jack Wu <wojackbb@gmail.com>
  1 file changed, 10 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/net/wwan/t7xx/t7xx_pci.c b/drivers/net/wwan/t7xx/t7xx_pci.c
-index e556e5bd49ab..2dcb0967f9e9 100644
+index e556e5bd49ab..ec567153ea6e 100644
 --- a/drivers/net/wwan/t7xx/t7xx_pci.c
 +++ b/drivers/net/wwan/t7xx/t7xx_pci.c
 @@ -49,6 +49,7 @@
@@ -150,10 +150,10 @@ index e556e5bd49ab..2dcb0967f9e9 100644
 -	ret = t7xx_pci_pm_init(t7xx_dev);
 +	if (id->vendor == 0x14c0 && id->device == 0x4d75) {
 +		/* Dell DW5933e */
-+		ret = t7xx_pci_pm_init(t7xx_dev,PM_AUTOSUSPEND_MS_BY_DW5933E);
++		ret = t7xx_pci_pm_init(t7xx_dev, PM_AUTOSUSPEND_MS_BY_DW5933E);
 +	} else {
 +		/* Other devices */
-+		ret = t7xx_pci_pm_init(t7xx_dev,PM_AUTOSUSPEND_MS);
++		ret = t7xx_pci_pm_init(t7xx_dev, PM_AUTOSUSPEND_MS);
 +	}
  	if (ret)
  		return ret;
