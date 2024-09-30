@@ -4,67 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9A50CF649E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 09:31:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08C21CF6497
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 09:34:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mqXJbQ9jIp2dDPFw1R2cFxNlMKpHzV9PGLe7OchYR0Y=; b=VszgX6mDqfCuLuzoG8j1FOPLkM
-	VJbMZnRnSe1tRhOl1j4pI1exF8FHhAhUHxtC2pgSpKjZhFw6cz6ylvP9a7WH5xhZZ8vE3vw9eVPqY
-	LCSli53zIIInlrXU7gimygrfQ4uXdntNNs/7SNP/jFbmJwlJeIA2ngDSistAk1zuUrfLpUAOW/n/Z
-	Vrng1UnkPxfK5XSSHfIgcO3cDcdI5xs/K6hnt1lNaHD0XQqMdAHN87AahOAqKNOWA+rAdSQQkvDVK
-	434z4gD5Y8EDL6uXLiiWKLjDZgk4H/zc9C3vLx+4eLYq6tsyT5l0ZI7tr22BQs/GzLflL+2GvUrlY
-	eu5Ts65w==;
+	bh=WknRW8U33Qd/fq6fVG+V4iw1dPisRzYbd71HnbuBJ2U=; b=F9kL9Hdmwb1adwOopIrhtG8HYx
+	40Q3aW27QoCLGXzxKMXsI4YvYzIX2Fdo2N5ZWP+1tHJrdOFgcWqKSNlG3M4OM5hXVo2nKRsdxCV3S
+	EKHOf/foV5abpao7ljaZbUv7A5FFQQwYp0QVuonAlQ1pPqQT/hiAEAEPFEcl2Vmm2llbQe0XCGF3J
+	DSEsm/sKuljBnsH40EbV6ekJSCnV09lfD2zGtBbIZOn2K54PbKq9/6ZN/c+mIL7fcK7GV+0tpN9k8
+	YdQoA1IUcambgxF19UO4ts53rEt0qB20U861/WRnCUBQDEpFpbykZjAjiklCTvwWFAy5gxHH8BEnv
+	eTi3ul+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svCkO-0000000GXEU-3BFm;
-	Mon, 30 Sep 2024 09:31:16 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1svCno-0000000GYDK-3jPW;
+	Mon, 30 Sep 2024 09:34:48 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svCcp-0000000GV0Z-0C2a;
-	Mon, 30 Sep 2024 09:23:28 +0000
+	id 1svCfT-0000000GVlg-0LVE;
+	Mon, 30 Sep 2024 09:26:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727688204;
-	bh=H78v4z8F6OouxmM7kvdruy1KbUGRwDt9Sl8HITuykgI=;
+	s=mail; t=1727688369;
+	bh=idxgyuER2MHeqDbyn3N5PMcWgX/FiLELm2aeJU9EBOg=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=b/TUIaH9WcMHPZxb+dWhv/n3SDpnlPtKLp9X4Fax/mdh4Pe9c4JSl604D4ZHWsiQd
-	 FDtNQhE6l1BrnLLzhpk395sWaVkz7Q3hoUGlDs+ZaUnFU6xIXtPZqQPvfcu/bEfDUT
-	 QiLOYSCxzCt5t/r6+roLhdmsHVaEBmX958BQEuoP45X/FKKWa/pOjG47Z8e9YpOCFH
-	 synU7eiVevxVQU9rBifj5ajrMDlHmMoW6WIJxYY8MCUE6x7pT/1N1CZ1DLBNWKzdBr
-	 oShgrkE6Y87PP/70HH6M7L6ymeEdY/akD7c8buKeThLcusS4OQFj5bERg7hpBRVS6I
-	 2UFobEu5a6NBA==
+	b=N4eeI5bOKCU5YtmjZfhA0TICxGkvR2FWa6VsAl6iVd0B+CIQqlcFflHGuGD/PWltH
+	 DSukScD7rTvlbprhvob8/95C3DiRpA6nB8Q/g38780TJzz0GYQt5uq36XQD2BY2Agr
+	 nmlp/xE3A/H3hJTdYttt4Zq/RKfukynwP1hRJ9xia1vGAvoz4MjylQzMrHbhAZ36GF
+	 b4GZJSpmvViGFtyGcRIDxnvUQLmsVsU2uXl10gdf6jZfSCChOsvEaUTtV6CINXxjne
+	 Pg1giRMJCy/YiaOqluAPaPmhvdC/dqbTdmr7fUWNLqu3yQxRNFsYm6OFnv4JXkNt8E
+	 Wvrjb+6Vv/T1A==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0251017E1091;
-	Mon, 30 Sep 2024 11:23:23 +0200 (CEST)
-Message-ID: <2c5614f7-0ada-453a-bd81-2f0054a919a0@collabora.com>
-Date: Mon, 30 Sep 2024 11:23:23 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id CA76817E1091;
+	Mon, 30 Sep 2024 11:26:08 +0200 (CEST)
+Message-ID: <9260a488-e386-4103-bdd0-04bdc2db8f0f@collabora.com>
+Date: Mon, 30 Sep 2024 11:26:08 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] arm64: dts: mediate: Introduce MT8186
- Chinchou/Chinchou360 Chromebooks
-To: =?UTF-8?Q?Albert_Jakie=C5=82a?= <jakiela@google.com>, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
- wenst@chromium.org, rafal@milecki.pl, hsinyi@chromium.org,
- nfraprado@collabora.com, sean.wang@mediatek.com
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20240927122940.4190949-1-jakiela@google.com>
- <20240927122940.4190949-2-jakiela@google.com>
+Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: mt6359: fix dtbs_check error
+ for audio-codec
+To: Macpaul Lin <macpaul.lin@mediatek.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, linux-sound@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+ Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>,
+ Chris-qj chen <chris-qj.chen@mediatek.com>,
+ MediaTek Chromebook Upstream
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ Chen-Yu Tsai <wenst@chromium.org>
+References: <20240930075451.14196-1-macpaul.lin@mediatek.com>
+ <20240930075451.14196-2-macpaul.lin@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20240927122940.4190949-2-jakiela@google.com>
+In-Reply-To: <20240930075451.14196-2-macpaul.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240930_022327_324029_7A70D514 
-X-CRM114-Status: GOOD (  16.93  )
+X-CRM114-CacheID: sfid-20240930_022611_377394_9524F9E6 
+X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,70 +88,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 27/09/24 14:29, Albert Jakieła ha scritto:
-> The MT8186 Chinchou/Chinchou360, also known as the Asus Chromebook
-> CZ12/CZ11 Flip, is a clamshell or convertible device with touchscreen,
-> stylus and extra buttons.
+Il 30/09/24 09:54, Macpaul Lin ha scritto:
+> This change fixes these dtbs_check errors for audio-codec:
+> 1. pmic: 'mt6359codec' does not match any of the regexes: 'pinctrl-[0-9]+'
+>   - Replace device node name to generic 'audio-codec'
+> 2. pmic: regulators: 'compatible' is a required property
+>   - Add 'mediatek,mt6359-codec' to compatible.
 > 
+> Fixes: 3b7d143be4b7 ("arm64: dts: mt6359: add PMIC MT6359 related nodes")
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 
-You have a typo in your commit title `mediate` -> `mediatek`
-
-> Signed-off-by: Albert Jakieła <jakiela@google.com>
-> ---
-> Changes in v2:
-> - PATCH 2/2: Remove sku2147483647, remove duplicate nodes, add model
-> 	and remove uneccecery nodes from sound card.
-> - Link to v1: https://lore.kernel.org/all/20240925080353.2362879-2-jakiela@google.com/
-> 
-> ---
->   arch/arm64/boot/dts/mediatek/Makefile         |   3 +
->   .../mediatek/mt8186-corsola-chinchou-sku0.dts |  18 +
->   .../mediatek/mt8186-corsola-chinchou-sku1.dts |  34 ++
->   .../mt8186-corsola-chinchou-sku16.dts         |  28 ++
->   .../dts/mediatek/mt8186-corsola-chinchou.dtsi | 432 ++++++++++++++++++
->   5 files changed, 515 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
-> 
-
-..snip..
-
-
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
-> new file mode 100644
-> index 000000000000..96cc3c267c20
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
-> @@ -0,0 +1,432 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright 2023 Google LLC
-> + */
-> +
-> +/dts-v1/;
-> +#include "mt8186-corsola.dtsi"
-> +
-> +/ {
-
-..snip..
-
-> +
-> +&sound {
-> +	status = "okay";
-> +
-> +	compatible = "mediatek,mt8186-mt6366-rt5650-sound";
-
-Why did you keep the compatible string override?
-
-> +	model = "mt8186_rt5650";
-> +
-
-Regards,
-Angelo
-
-
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 
