@@ -4,64 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE067CEB2C2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 21:47:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7C33CEB2C2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Sep 2024 22:30:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UL54jfBeW5VX3u5oqHMHGZf1har+EwzCZ6d2BhxqUvI=; b=CVrFQBaYyHFGDDE010r3D7dZQJ
-	uNpzo2TO6TcumzCOSQ/c/n/mn/Ge+7AIh3qI5+LYRK1irm9QFcvZgk0EzOqJCEhCzjFSPvCGjFyiE
-	Xt6h0o0xcjKPFZzzyEWo9RScBoa03587H6w2RlDtFHaBA4ykLlG8XkGWOyEMNWUQmck9NVceXqQX+
-	Z0YUN3HVQm9ChvQrJqI/5GKO1w2guKtoFXRgFWduOR20bSKqGqiJQrUQx97MB0Zp3nyJtpbX6eYeB
-	nX3Smbxhx2huanoBmcRTfh9O9/Xch3UfRHEbqv9fqqR6KAG7Xl8J/r/Ef6zQBmjvnYnVSR91aAlze
-	1mRyF8cg==;
+	bh=+KGEVh27fBmOaF5TEF9nZ0tFzI5PQxKrR0QJ7xJRHFg=; b=vde1RFGGEX8G9oT7KlR/iPg7q1
+	cSxJe9bxkqlDiUraFqgLqixQzzYtRltp8KfEF1SjtiMmknT4FRinJGr7R0+utclplPmhDXRlvTTDn
+	/1eb4Ga9XVeBb7XuwN0mDbXugzbEN0JTrplvVli7BwE3qQvjrbxmVeU89/PBw69Ztcj79XvOQJiek
+	l2LIxKUVGA2IvgV7duv/Dr0SmHuNySgDzXbXTSUuMEbO0XeraZmWN0L8aQ7zXon+UQsx/eJokzwhJ
+	Fb1/LVn6gkLIFquigPM9eAHGzvmt0h1s/iijxzrHm+7H+BiqynJcTBtLVCvWi69kh8r1x/QFek695
+	5JE/8yww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svOEP-00000000wZU-2uaX;
-	Mon, 30 Sep 2024 21:47:01 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1svOuU-000000011Qn-2lAX;
+	Mon, 30 Sep 2024 22:30:30 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svO9f-00000000vmB-3xf6;
-	Mon, 30 Sep 2024 21:42:09 +0000
+	id 1svOtG-000000011J1-29zS;
+	Mon, 30 Sep 2024 22:29:15 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id EB10AA41706;
-	Mon, 30 Sep 2024 21:41:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2A5F5C4CEC7;
-	Mon, 30 Sep 2024 21:42:05 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 6FBF3A40E7B;
+	Mon, 30 Sep 2024 22:29:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DBFA9C4CEC7;
+	Mon, 30 Sep 2024 22:29:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727732526;
-	bh=McD0PPLjiwQhNMLldB9C6lK8T6YObT0WHb3qn6BQztw=;
+	s=k20201202; t=1727735353;
+	bh=nmH9qaJNjqw7Qc6T/lqnT06KkF7d1uYIKI94EUB9NQo=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=BLub11w1YJApgAOCcsuxt+wvn7pjKhEUo0lDZtXNOGx209M1pRP5Ru3jLIVNUkbG7
-	 UICIWUIL52R01MfweJKsFG2IjmFFeOm6j3i1vzh2PUekcGoD3IghZiYXbIPfBpXw9o
-	 8rFqKp5QibHIJsUu1NJoD4mYkUptuCg6U9DjPi7w5vmbkmr6pC1s/gJvRNPKe43TYj
-	 9ITBM2MXY1xhFJGQfZbna/Xv13JkL6QNBzGuYJE33ZJt1ix/UmEW+vFwspM8YcaxJC
-	 feikt7ZOzJTD8Yi25HaahXyYVtr6KZ6gWvxFDNa5fP4jJY4v7I62jVvNkkhTbdahd6
-	 /sqmHrZMGXX1g==
+	b=G5nCh1ZiP3M2UW5GbdgHysar+gLAEjEEkOJytKfAdtloFD65yi5i3gG4tLErO+JzU
+	 hAJR8PT3AVA1pnSLgwap4qkue4K0uMlq3QoI+tbFtc6UQwLmDpdZs7YYHMAXUc/8R8
+	 WBJNflBns8NYeysbjveMVRGvKUMTaOT42kacTBj9ZpHjeA25nNEctIpGi8BM0lGf3x
+	 PBUhCeJZuWGIlYNek6dLxAEdjsEMDsi9bP2AD3WmQ7k5CnzZb6vKd3Oah4wjscvcEO
+	 NTefxofKdZUbjv1p4bdXDfDbS3PBSJmHH2H83nFLJ4LPONS78kw4bSd3FS5zt0vkrA
+	 IPUdekfh1iGIQ==
 From: Mark Brown <broonie@kernel.org>
-To: linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, 
- Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Leilk Liu <leilk.liu@mediatek.com>, 
+To: Ulf Hansson <ulf.hansson@linaro.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
- Markus Elfring <Markus.Elfring@web.de>
-Cc: LKML <linux-kernel@vger.kernel.org>, kernel-janitors@vger.kernel.org
-In-Reply-To: <9e736d33-b07f-40a0-8fb6-8c3212593b77@web.de>
-References: <9e736d33-b07f-40a0-8fb6-8c3212593b77@web.de>
-Subject: Re: [PATCH] spi: slave-mt27xx: Call clk_disable_unprepare() only
- once in mtk_spi_slave_probe()
-Message-Id: <172773252496.2210210.475643542831503313.b4-ty@kernel.org>
-Date: Mon, 30 Sep 2024 22:42:04 +0100
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-pm@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, 
+ Johan Hovold <johan@kernel.org>, 
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+ Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+In-Reply-To: <20240925093807.1026949-1-wenst@chromium.org>
+References: <20240925093807.1026949-1-wenst@chromium.org>
+Subject: Re: (subset) [PATCH v8 0/3] Add of_regulator_get_optional() and
+ Fix MTK Power Domain Driver
+Message-Id: <172773535067.2224406.9733965694288102381.b4-ty@kernel.org>
+Date: Mon, 30 Sep 2024 23:29:10 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.15-dev-99b12
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240930_144208_090476_91391D27 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20240930_152914_663130_AC0A7B8B 
+X-CRM114-Status: GOOD (  12.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,24 +80,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 24 Sep 2024 20:56:08 +0200, Markus Elfring wrote:
-> A clk_disable_unprepare(mdata->spi_clk) call was immediately used
-> after a return value check for a devm_spi_register_controller() call
-> in this function implementation.
-> Thus call such a function only once instead directly before the check.
+On Wed, 25 Sep 2024 17:38:03 +0800, Chen-Yu Tsai wrote:
+> This series is split off from my "DT hardware prober" series [1].
 > 
-> This issue was transformed by using the Coccinelle software.
+> Changes since v7:
+> - Added stub versions for of_regulator_get_optional() for !CONFIG_OF
+>   and !CONFIG_REGULATOR
+> - Added new patches for devres version and converting MTK pmdomain
+>   driver
 > 
 > [...]
 
 Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
 
 Thanks!
 
-[1/1] spi: slave-mt27xx: Call clk_disable_unprepare() only once in mtk_spi_slave_probe()
-      commit: 610442f85c12ff662e3dec50c53d92f7a8e5a783
+[1/3] regulator: Add of_regulator_get_optional() for pure DT regulator lookup
+      commit: 5441b6975adc26aeaca316b9075e04a98238b1b3
+[2/3] regulator: Add devres version of of_regulator_get_optional()
+      commit: 36ec3f437227470568e5f460997f367f5446a34d
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
