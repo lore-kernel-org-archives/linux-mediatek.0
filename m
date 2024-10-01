@@ -4,68 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FCD9CE837A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Oct 2024 13:13:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BF4FCEACC4
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Oct 2024 13:50:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W8ghwVwmar4eOYUmX5B9j0WuQw2VG2mdttchaRv44xU=; b=nMCxk45lqgE+ukA+FPOeaHkd+Q
-	+3ZrbPpODWr0YQYvn2htH8pSvU03HFTnFEC35MUUXVsuMt7JKU0GvjCjrY6fo03p/EwAM87jGK1b3
-	9LbowrYPILiSaSt9rmPs/fAwrEK1/OhB2Jc8fvkGq/Y1pWOdp1xzL9kXo5emFBYt6JjLlNihLDSfe
-	WVi5HMtJexMEhHqfc9tDjvi1R3Pl1NWbOXjS5PtgNWeKegkuc0uyDpqzwbCeVkqWzwQ4y3gU0WLy+
-	jK3uiZkzoBnW3I87RZbp8jfzyr3RhisbdU6YoOVXAO7Pphvn63HD/Ibif2X08YKNKeSEh4wPBP9eh
-	liDq151A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6O9vtkxs+ZPBAMCh5e5Bft1cypt+rr2snnilS0YqVbQ=; b=Mhz13zolHEX/Qt/Vte9oZiUa7X
+	OjtDhOjrVUiEnLYLbhP5y0Z5lCM75Mx/KYnNBzatD+XSggZrzYzdeG+/iu6hyHdpU3a5sTt2PuxYV
+	ftuYUW56S04Weh7Pr102lC6rYhhmL2flVb0ntmbOUR0cLjre2G8/EYZX1GSWCWvd8j9OARdrBOaYb
+	9v8FtO6uwLMJUIxUGwUSOw5VE/xw1DNxVuj1FtPyQtx30dcCxhpHfA/qFsMdxbEnFo7+888z7qT/Z
+	Shllp7ynLXznQtqaO3oqOuVpugGaklhGNj9aom4ZIzPubacwTR8G9h70JRhiVoMGCflToCtnr12LJ
+	lRuQlafA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svcgm-00000002sCH-109V;
-	Tue, 01 Oct 2024 13:13:16 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1svdH7-000000030MO-3jDl;
+	Tue, 01 Oct 2024 13:50:49 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svcgj-00000002sBt-3aS9
-	for linux-mediatek@lists.infradead.org;
-	Tue, 01 Oct 2024 13:13:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id BBFAFA43239;
-	Tue,  1 Oct 2024 13:13:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7127BC4CEC6;
-	Tue,  1 Oct 2024 13:13:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727788392;
-	bh=W8ghwVwmar4eOYUmX5B9j0WuQw2VG2mdttchaRv44xU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=PxpYomJtpwFkooPJYd7Fo0Lp9iPFH52dAgKNq9dZqG1cZA0yozuf8Oo4dWMVVF15V
-	 ytb/19KCDZtrHFJjKlJh+nh1YtMcn6r/nYKOmJoS1ZH4BvaElLf8smTA776xMwUYtr
-	 91iAcC9xzSmpaU6NBF06Dc6/fm8HOdzlP1ikx7Ra8H5jGT6Yc1gwrkJpg+wyI8XlHh
-	 9T0LyCcpgY3Bkq9ubCbehhT1eZbv328o9VJc9W0yeJXCaG9pkhkSYlIOqcTS7lJHa8
-	 wMJS1zh0N0SibhckRZY+NrOgOwIpTfWUrUabQET2kdcrmvuApxAxXPKk72zMI/Aq84
-	 vQDiwb2Ay06yw==
-Date: Tue, 1 Oct 2024 14:13:08 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, linux-input@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH] Input: elan_i2c - Wait for initialization after enabling
- regulator supply
-Message-ID: <6626b1f3-7c3a-4531-b006-9e29155025f0@sirena.org.uk>
-References: <20241001093815.2481899-1-wenst@chromium.org>
- <ZvvHdlD6E5bzsWwV@google.com>
- <ZvvX5KcKaVBLedD1@finisterre.sirena.org.uk>
- <ZvvyEux8f2ylRQOn@google.com>
- <7db1299f-f925-4689-806f-f1ea4191fd4c@sirena.org.uk>
- <Zvv1FuXBZpjDefb8@google.com>
+	id 1svdH4-000000030KS-1iRk;
+	Tue, 01 Oct 2024 13:50:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1727790644;
+	bh=Wrdy0e1dz6T5uwCE6i2Zj6+AsBKQNypB0lnUzsj5xCI=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=YKqD4Ys/oGurqoWIOyx7Wn0hRTWDfyPPhsxJBv4liLaL79RWNITs6yYigoa9t0bYR
+	 apYOKXRQwcu6+xBYSMhtRzZYX8riNbY3jwGgx54B/mqtnC6ECCMjvF74G/KjKZbgVO
+	 RJzRdFANc0GPw4iUWTjgPb0VclImiN7kwj4rnOBg0+pqJjlWEITVsXj59SE2r7LUoj
+	 5BPDH1RBCLKq/QZ/2cqqNz0kemyYFg31AZl1ypfI77sHEXKV+OTQMPdPXhzsDquLmV
+	 MCPct2nkHj5eYZYOGgoLbN+JW1S3vLWHHoQv7M/X9CrsLunLU6HnxNWpHM5ZiXsYda
+	 Riy6fn3Jf9ZCg==
+Received: from [192.168.50.250] (unknown [171.76.80.165])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6F28B17E0FC0;
+	Tue,  1 Oct 2024 15:50:39 +0200 (CEST)
+Message-ID: <87fea8ea-fe9d-4114-b03c-7ec50a4be874@collabora.com>
+Date: Tue, 1 Oct 2024 19:20:35 +0530
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="h3gsj/MN+E0Fcf3v"
-Content-Disposition: inline
-In-Reply-To: <Zvv1FuXBZpjDefb8@google.com>
-X-Cookie: Even a hawk is an eagle among crows.
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4] docs/gpu: ci: update flake tests requirements
+From: Vignesh Raman <vignesh.raman@collabora.com>
+To: alexander.deucher@amd.com, christian.koenig@amd.com, Xinhui.Pan@amd.com,
+ amd-gfx@lists.freedesktop.org
+Cc: daniels@collabora.com, helen.koike@collabora.com, airlied@gmail.com,
+ daniel@ffwll.ch, robdclark@gmail.com, guilherme.gallo@collabora.com,
+ sergi.blanch.torne@collabora.com, deborah.brouwer@collabora.com,
+ dmitry.baryshkov@linaro.org, mripard@kernel.org, rodrigo.vivi@intel.com,
+ quic_abhinavk@quicinc.com, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ virtualization@lists.linux.dev, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org
+References: <20240930095255.2071586-1-vignesh.raman@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20240930095255.2071586-1-vignesh.raman@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241001_061313_980533_67B2D85A 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20241001_065046_685107_7822C6F7 
+X-CRM114-Status: GOOD (  18.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,36 +82,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi amdgpu Maintainers,
 
---h3gsj/MN+E0Fcf3v
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+On 30/09/24 15:22, Vignesh Raman wrote:
+> Update the documentation to specify linking to a relevant GitLab
+> issue or email report for each new flake entry. Added specific
+> GitLab issue urls for amdgpu, i915, msm and xe driver.
+> 
+> Acked-by: Maxime Ripard <mripard@kernel.org>
+> Acked-by: Rodrigo Vivi <rodrigo.vivi@intel.com> #intel and xe
+> Acked-by: Abhinav Kumar <quic_abhinavk@quicinc.com> # msm
+> Acked-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org> # msm
+> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+> ---
+> 
+> v2:
+> - Add gitlab issue link for msm driver.
+> 
+> v3:
+> - Update docs to specify we use email reporting or GitLab issues for flake entries.
+> 
+> v4:
+> - Add gitlab issue link for xe driver.
+> 
+> ---
+>   Documentation/gpu/automated_testing.rst | 14 ++++++++++----
+>   1 file changed, 10 insertions(+), 4 deletions(-)
+> 
+> diff --git a/Documentation/gpu/automated_testing.rst b/Documentation/gpu/automated_testing.rst
+> index 2d5a28866afe..6d7c6086034d 100644
+> --- a/Documentation/gpu/automated_testing.rst
+> +++ b/Documentation/gpu/automated_testing.rst
+> @@ -68,19 +68,25 @@ known to behave unreliably. These tests won't cause a job to fail regardless of
+>   the result. They will still be run.
+>   
+>   Each new flake entry must be associated with a link to the email reporting the
+> -bug to the author of the affected driver, the board name or Device Tree name of
+> -the board, the first kernel version affected, the IGT version used for tests,
+> -and an approximation of the failure rate.
+> +bug to the author of the affected driver or the relevant GitLab issue. The entry
+> +must also include the board name or Device Tree name, the first kernel version
+> +affected, the IGT version used for tests, and an approximation of the failure rate.
+>   
+>   They should be provided under the following format::
+>   
+> -  # Bug Report: $LORE_OR_PATCHWORK_URL
+> +  # Bug Report: $LORE_URL_OR_GITLAB_ISSUE
+>     # Board Name: broken-board.dtb
+>     # Linux Version: 6.6-rc1
+>     # IGT Version: 1.28-gd2af13d9f
+>     # Failure Rate: 100
+>     flaky-test
+>   
+> +Use the appropriate link below to create a GitLab issue:
+> +amdgpu driver: https://gitlab.freedesktop.org/drm/amd/-/issues
 
-On Tue, Oct 01, 2024 at 06:11:50AM -0700, Dmitry Torokhov wrote:
-> On Tue, Oct 01, 2024 at 02:06:19PM +0100, Mark Brown wrote:
+Please could you ack this patch. Thanks.
 
-> > Yeah, but that's got to get washed through the individual system
-> > firmwares to get deployed and my confidence in vendors is not high.
+> +i915 driver: https://gitlab.freedesktop.org/drm/i915/kernel/-/issues
+> +msm driver: https://gitlab.freedesktop.org/drm/msm/-/issues
+> +xe driver: https://gitlab.freedesktop.org/drm/xe/kernel/-/issues
+> +
+>   drivers/gpu/drm/ci/${DRIVER_NAME}-${HW_REVISION}-skips.txt
+>   -----------------------------------------------------------
+>   
 
-> I think native Elan is only used in Chromebooks where firmware is
-> decent, the rest are I2C-HID.
-
-Ah, OK - in that case I agree there should be no problems with ACPI.
-
---h3gsj/MN+E0Fcf3v
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmb79WQACgkQJNaLcl1U
-h9C0gAf/UvWgb06F4oVn6jHF+ko908f4HFveFOTbNiT6raI8r4DoVrYGq9fTi17E
-ukCv2sW9PCBsw8jRiKgKMnCagMiBcPV1gbJbKqv3k48LMGp7pRK7st4IVApVaW8G
-kK7HoOjYCKRtH/MRujrUrEXLUD2UM1AH2pP0ZmDki3nKe31iKCgZA+0A4vbiFV3h
-SWjX0oT9cLS+wN0jrZ29bZ33UfTMNBoZPSJS1f2pURn331VLiHslp8FvRhThRB7A
-rp/18eqr0fclvuxaCxI6LFwjpd2h3HppbrrrSj+bDgwNvP7uul6py40MPjwjriMT
-jSPXKK09gDwGMau1Ya3ErIslX4NofA==
-=n6ix
------END PGP SIGNATURE-----
-
---h3gsj/MN+E0Fcf3v--
+Regards,
+Vignesh
 
