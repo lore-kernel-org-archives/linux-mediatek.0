@@ -4,84 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 479F7CEACEA
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Oct 2024 17:16:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92043CEACEE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Oct 2024 17:31:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nXulM5NNyQnLn+/2qCYEna3vkeP9trJQR7rr/IOu6Bg=; b=If7D4sWuwbfR4WcntSFzhHFlKJ
-	Wkd4pahGppQTKl8WukJwyUUdUZPr6KkXPizB9Bok/lIiZbGZ1khcrB2Y3j3Mjr1YbVSj5036uS2d3
-	sshe93SjknbbOTuBZ1/BgCQpFC+EUICqqzZLH1cNS30x2Da7StNFOJcUV8tuS4lZMOAL3nmWFrZet
-	8nM/IsjowfXxqSvqzgoNfbSPDth/p/LJF1ZjGnB1EGbjFulaDCDtEWKfruVE9xg0eCsk4qvGgmvN2
-	4UQMYy5X4LLz4J8UCxJptcrqg2OZfe221E0svE6vtUwBF8vninvmhqU6pkpqfMsdyh7W6a9AuCfUj
-	Pqs3XWEg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=BoBmgLTKqjtTAQGYMtXi32omC+oq0koKfJcKqZ0/NQ8=; b=KPBN/Kp4aUZyoW
+	6LJQCLPJ8rhXphOGZLBubMqiEyr92fgT9UktM0I/G5+a72RhzgGxlBIfqpUBekJ+6qtjcTZq8xgZf
+	LNetAHF7KMexU7ibLVrMXi5kaKOG5H3mu45s0bfYAVkB/+x74ehMCcauriEbRWHHsGhliHNIFbWN4
+	vewrupkXO0naTaXL1/+OptoUs2RpPXGkb4g0x94camjrMDPBj6vhqeXXK9SbDbpff/SNGd6cVNoJ0
+	HBLd6HAbtJxRxCeezoopZrHwnjXs193X+tdWWmqPcUydiqedubbp89+7E1GCIoPrI2boFB/uAy3Se
+	zI3MtxZvQXrfIt7FJosQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svgUI-00000003dpH-3qpf;
-	Tue, 01 Oct 2024 17:16:38 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svgT4-00000003dkV-47iO;
-	Tue, 01 Oct 2024 17:15:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=nXulM5NNyQnLn+/2qCYEna3vkeP9trJQR7rr/IOu6Bg=; b=OJ7JPjHou4P5obA+aZ/POgqSue
-	nq0Tt5mEzrXLnZnVMoc9pcSvH9mnXvqHGeGzX18HhnV+dAYKLYL8ig29YRbZpDSsWzvomvcyqt6Xl
-	C/tkFHka7BA9cbdit9SyUgKpFQSalJBnvbkw1PhdjfrcwkW4Yd5H2M18jbYHcuBl+tzeFEA0gMw+G
-	Zp9yat1VbVnHqARWMr4gglTLlH0mNL+lv2nD+f6c3WdQ0dBKDwkowLCzYKByt+AE+J4Ilg4mjA8ne
-	DViBy0jJAmrlItVHk+pCexyLIlZ1I+KvqEd0G0l7hTQWk+Z1hNkO9c90U8JIb80Aa0QMczgrZCrxr
-	2vws7wNw==;
+	id 1svgib-00000003f76-1RB8;
+	Tue, 01 Oct 2024 17:31:25 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svgT1-00000003FgL-07aG;
-	Tue, 01 Oct 2024 17:15:21 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1svghM-00000003ezO-2cYU;
+	Tue, 01 Oct 2024 17:30:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 4F7295C4769;
-	Tue,  1 Oct 2024 17:15:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85A75C4CEC6;
-	Tue,  1 Oct 2024 17:15:14 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 467E55C54D0;
+	Tue,  1 Oct 2024 17:30:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71044C4CEC6;
+	Tue,  1 Oct 2024 17:30:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727802915;
-	bh=F9k4VZbS9kuyT+dY46dvKKzolIXCmDvataW7QyUZChE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TYTZFTx//clBH30h0txuBjU8fVzOO1H+LDnSJ2R1xf6adKL6r7diYBAFx1IFqrCS5
-	 QSc/UrKceRg+JiE3k8XRZDxyif+rlZh3ZpNtgTMYjWy5fqi13BvMrESsPsLuJGHtoY
-	 j8Pd1pCaFFlH/+ttJoIdywZ0W+j4z9c2e/aP4n4pAm0fgSe7WQRcn5hHLDtnh0Zr1p
-	 RmfZMdnqegvYCTLQUjNj5wZ+ADHnocgNnTbNd2XlN683kpG7dGAa5ldphO96bf31gL
-	 hqXgIdHRgh3+VfzTdgt4EYP2QZ6Ho4W2leVmPhA593qvBwKch4QCsi7hQc7i++apvC
-	 i/MXhiHGwkj7A==
-Date: Tue, 1 Oct 2024 19:15:12 +0200
+	s=k20201202; t=1727803807;
+	bh=k41iufEvAgZKKjtKzshB6ZOXsBvWR7K1rRznnG1aVTI=;
+	h=From:Subject:Date:To:Cc:From;
+	b=i30gMClf8GT+f0jPFRdVB5GECcVbPD79WWw+qYhevh0w0zaY2EboAtLJzK2Bez4YS
+	 XsW7aUYJF1Fs+zJ+dUTdl++yWs85kBBHk00ZqhcBzEtqIB3OkT0HDoj5R1m7rOqXoW
+	 6bPtt31LFB1c+/1u0BITYX61XaEONSMzpG+Q4NZ3vQcJ03yThjVyn/vDaap+3fnfX0
+	 y4GhINwFqQ7bUz3KNWjvaT2SbUbW9JlC/yFXzjgb4JhTMm6yaar1CgxisaL4+gZdZa
+	 pN2WgQ2Vz92yfVYO6dIYItko7xGOj3OpVMWsyGuOW3A5vaLh+58ZXBEAIyevuEAUV2
+	 pnCxxZoDxlbnA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Christian Marangi <ansuelsmth@gmail.com>, linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
-	Hui Ma <hui.ma@airoha.com>
-Subject: Re: [PATCH] PCI: mediatek-gen3: Avoid PCIe resetting for Airoha
- EN7581 SoC
-Message-ID: <ZvwuIBr2V_FFbYYA@lore-desk>
-References: <d8941149-9125-4fe2-a1c0-ab29223a0c87@collabora.com>
- <20240930193756.GA187798@bhelgaas>
+Subject: [PATCH v5 0/5] Add mfd, pinctrl and pwm support to EN7581 SoC
+Date: Tue, 01 Oct 2024 19:29:29 +0200
+Message-Id: <20241001-en7581-pinctrl-v5-0-dc1ce542b6c6@kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Q6lfzaRupebapF3G"
-Content-Disposition: inline
-In-Reply-To: <20240930193756.GA187798@bhelgaas>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAHkx/GYC/2WQy07DMBBFf6XyGkd+jF9d8R+IhScZtxYlLk6Ig
+ Kr/jpsiFejyjnTunJkTm6hmmth2c2KVljzlMrZgHjas38dxRzwPLTMlFAgvPafRGS/5MY/9XA9
+ cYpJKSANIgjXoWCnlj7Xw6bnlVMsrn/eV4lojBqMdeY8WPDjsgSA4Y1FBQEVp6BP4gEF10imtg
+ wKAbpfn7lAqjV/l8YXqSIeu1N3Pskpv7016vm68OW83q7EThqdSueVScjwmHjUESr3wQ/LbRbG
+ L4z5Pc6mf6w/a6NJzPVep/+cuiguOURoTpNPRpd9Gl65F/+K1vON144MnwoQwRGvveLjxQd7z0
+ HgrYh/04KxA/MOfz+dvo5lC69EBAAA=
+To: Lorenzo Bianconi <lorenzo@kernel.org>, 
+ Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Lee Jones <lee@kernel.org>, 
+ =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
+Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ upstream@airoha.com, benjamin.larsson@genexis.eu, ansuelsmth@gmail.com, 
+ linux-pwm@vger.kernel.org
+X-Mailer: b4 0.14.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241001_181519_304951_1E4E3918 
-X-CRM114-Status: GOOD (  19.73  )
+X-CRM114-CacheID: sfid-20241001_103008_891849_C511BFE2 
+X-CRM114-Status: GOOD (  20.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,66 +84,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Introduce airoha-mfd driver in order to load pinctrl and pwm drivers for
+EN7581 SoC. airoha-mfd is needed since both pinctrl and pwm drivers
+needs to access the same memory block (gpio memory region) to configure
+{gio,irq}_chip and pwm functionalities respectively, so model them as
+childs of a parent mfd driver.
+Current EN7581 pinctrl driver supports the following functionalities:
+- pin multiplexing via chip_scu syscon
+- pin pull-up, pull-down, open-drain, current strength,
+  {input,output}_enable, output_{low,high} via chip_scu syscon
+- gpio controller
+- irq controller
 
---Q6lfzaRupebapF3G
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+---
+Changes in v5:
+- use spin_lock in airoha_pinctrl_rmw instead of a mutex since it can run
+  in interrupt context
+- remove unused includes in pinctrl driver
+- since the irq_chip is immutable, allocate the gpio_irq_chip struct
+  statically in pinctrl driver
+- rely on regmap APIs in pinctrl driver but keep the spin_lock local to the
+  driver
+- rely on guard/guard_scope APIs in pinctrl driver
+- improve naming convention pinctrl driver
+- introduce airoha_pinconf_set_pin_value utility routine
+- Link to v4: https://lore.kernel.org/r/20240911-en7581-pinctrl-v4-0-60ac93d760bb@kernel.org
 
-> On Mon, Sep 23, 2024 at 11:41:41AM +0200, AngeloGioacchino Del Regno wrot=
-e:
-> > Il 20/09/24 10:26, Lorenzo Bianconi ha scritto:
-> > > The PCIe controller available on the EN7581 SoC does not support reset
-> > > via the following lines:
-> > > - PCIE_MAC_RSTB
-> > > - PCIE_PHY_RSTB
-> > > - PCIE_BRG_RSTB
-> > > - PCIE_PE_RSTB
-> > >=20
-> > > Introduce the reset callback in order to avoid resetting the PCIe port
-> > > for Airoha EN7581 SoC.
-> >=20
-> > EN7581 doesn't support pulling up/down PERST#?!  That looks
-> > definitely odd, as that signal is part of the PCI-Express CEM spec.
-> >=20
-> > Besides, there's another PERST# assertion at
-> > mtk_pcie_suspend_noirq()...
->=20
-> I agree, it doesn't smell right that this SoC doesn't have a way to
-> assert PERST#.
->=20
-> The response at
-> https://lore.kernel.org/r/SG2PR03MB63415DB5791C58C7EA69FF01FF682@SG2PR03M=
-B6341.apcprd03.prod.outlook.com
-> suggests that maybe there's a hardware defect that means asserting
-> PERST# doesn't work correctly?  But surely firmware must have a way of
-> asserting PERST#, at least at boot time.
->=20
-> If this is truly a hardware defect and we really can't assert PERST#,
-> please say that this is a defect in the commit log so people don't
-> think that lack of PERST# is an acceptable thing.
+Changes in v4:
+- add 'Limitation' description in pwm driver
+- fix comments in pwm driver
+- rely on mfd->base __iomem pointer in pwm driver, modify register
+  offsets according to it and get rid of sgpio_cfg, flash_cfg and
+  cycle_cfg pointers
+- simplify register utility routines in pwm driver
+- use 'generator' instead of 'waveform' suffix for pwm routines
+- fix possible overflow calculating duty cycle in pwm driver
+- do not modify pwm state in free callback in pwm driver
+- cap the maximum period in pwm driver
+- do not allow inverse polarity in pwm driver
+- do not set of_xlate callback in the pwm driver and allow the stack to
+  do it
+- fix MAINTAINERS file for airoha pinctrl driver
+- fix undefined reference to __ffsdi2 in pinctrl driver
+- simplify airoha,en7581-gpio-sysctl.yam binding
+- Link to v3: https://lore.kernel.org/r/20240831-en7581-pinctrl-v3-0-98eebfb4da66@kernel.org
 
-Hi Bjorn,
+Changes in v3:
+- introduce airoha-mfd driver
+- add pwm driver to the same series
+- model pinctrl and pwm drivers as childs of a parent mfd driver.
+- access chip-scu memory region in pinctrl driver via syscon
+- introduce a single airoha,en7581-gpio-sysctl.yaml binding and get rid
+  of dedicated bindings for pinctrl and pwm
+- add airoha,en7581-chip-scu.yaml binding do the series
+- Link to v2: https://lore.kernel.org/r/20240822-en7581-pinctrl-v2-0-ba1559173a7f@kernel.org
 
-I do not have visibility on these hw details.
-@Hui: any update on it?
+Changes in v2:
+- Fix compilation errors
+- Collapse some register mappings for gpio and irq controllers
+- update dt-bindings according to new register mapping
+- fix some dt-bindings errors
+- Link to v1: https://lore.kernel.org/all/cover.1723392444.git.lorenzo@kernel.org/
 
-Regards,
-Lorenzo
+---
+Benjamin Larsson (1):
+      pwm: airoha: Add support for EN7581 SoC
 
->=20
-> Bjorn
+Christian Marangi (2):
+      dt-bindings: mfd: Add support for Airoha EN7581 GPIO System Controller
+      mfd: airoha: Add support for Airoha EN7581 MFD
 
---Q6lfzaRupebapF3G
-Content-Type: application/pgp-signature; name="signature.asc"
+Lorenzo Bianconi (2):
+      dt-bindings: arm: airoha: Add the chip-scu node for EN7581 SoC
+      pinctrl: airoha: Add support for EN7581 SoC
 
------BEGIN PGP SIGNATURE-----
+ .../bindings/arm/airoha,en7581-chip-scu.yaml       |   42 +
+ .../bindings/mfd/airoha,en7581-gpio-sysctl.yaml    |  433 +++
+ MAINTAINERS                                        |    7 +
+ drivers/mfd/Kconfig                                |    8 +
+ drivers/mfd/Makefile                               |    2 +
+ drivers/mfd/airoha-en7581-gpio-mfd.c               |   72 +
+ drivers/pinctrl/mediatek/Kconfig                   |   17 +-
+ drivers/pinctrl/mediatek/Makefile                  |    1 +
+ drivers/pinctrl/mediatek/pinctrl-airoha.c          | 3007 ++++++++++++++++++++
+ drivers/pwm/Kconfig                                |   10 +
+ drivers/pwm/Makefile                               |    1 +
+ drivers/pwm/pwm-airoha.c                           |  414 +++
+ include/linux/mfd/airoha-en7581-mfd.h              |    9 +
+ 13 files changed, 4022 insertions(+), 1 deletion(-)
+---
+base-commit: 437d220f284a16e52c7d7f819e4a1a7e25fe8fe9
+change-id: 20240818-en7581-pinctrl-1bf120154be0
+prerequisite-change-id: 20240705-for-6-11-bpf-a349efc08df8:v2
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZvwuHwAKCRA6cBh0uS2t
-rI4xAP0f7H5YYjJOMPtAjiFgwoj5gmwqlZeERbA3WgcVx6T1dAEAl2Q5iAJrmoNd
-9XD/DXlqF7zAN2eNFuhJqUUTcR3iggE=
-=iw3M
------END PGP SIGNATURE-----
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
---Q6lfzaRupebapF3G--
 
