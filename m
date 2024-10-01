@@ -4,89 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F0B5CEB2E8
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Oct 2024 06:46:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA267CE837A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Oct 2024 07:07:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y+9r8/ELl7iDlCWa/yccfFSqcqOg6/F/KEEgCukawR0=; b=LdKFjiscLmO3XMFogoHw7oUWJ0
-	1TPD4myynYVn7yxrX7F2UnRL4p3ws5JFlQNFI6MepbTW66AC5syhtJshI2R/+n3T987AV46Cs5RbQ
-	QZ+nWaS0O/vfd4G5C+ktODl8qumEn2V7bAlIHN30NdAiGSzpzDjyMQVPlv0qbQIklmIdQMcm1aSaF
-	zlFaNOQottHvLqe5o4HxbvTUVUxwjTSsakRm3Zw9BT0E0KZMuPKB5cM8t3ySVWNR25qpxrPjgWC5i
-	oUZDDjCNpTw8IvnM3cCroonBqufj39jW2XCA6eK31QwirX/44rAHinC7VdbrEqRXSpjCenTgkavg6
-	UBEdFs6A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7maMI3JrfgulMF11preQuttN86aApnHvjFdQ3y6oNrQ=; b=VOxeSlKwO3koNcWbwT2T6xIGzs
+	UyRRaNfVGjJX8qJZNBTMtmVubKctsfsk4hMzNXmqUDoIfIwesjKhr2TDC2gzK6gNQnHWxCIwv7Jmc
+	4naZgg+QIbts+ny5ArXwiVOfD9VARCOeE+T1xkYc6whMiQ4xYmmisCETvMRx6J0xspVF+J3J1nRmG
+	jNPFd9KkPR+rMTnlMJPpzKowhadIVnA+Mcsuqa8JbZZEExTync1+1YG//DrkwJa4yDq5PyNBiKL8c
+	tjWAelQoBp4S9CKxq4ZxOeG6LKs+CCJvq7hrMjQNX92s0MYRbkR58MGfmNsDnDn8Q+R+dFYQU9ms8
+	SZ7eWN0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svWe4-00000001nwx-0b9T;
-	Tue, 01 Oct 2024 06:46:04 +0000
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+	id 1svWyk-00000001rW6-3dSq;
+	Tue, 01 Oct 2024 07:07:26 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svWbz-00000001nPU-28Zy
-	for linux-mediatek@lists.infradead.org;
-	Tue, 01 Oct 2024 06:43:56 +0000
-Received: by mail-pg1-x532.google.com with SMTP id 41be03b00d2f7-7e6d04f74faso4444493a12.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 30 Sep 2024 23:43:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1727765034; x=1728369834; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=Y+9r8/ELl7iDlCWa/yccfFSqcqOg6/F/KEEgCukawR0=;
-        b=tVrUyFqH+AOhE7VpQFh92rcxSIBlGusmtJA6/b5mElEJ5eIOV2HHbygtie+qmssItU
-         x+bV303NukuMjlg5O2xuvSvEc1VTEsgDd5Kzk9G7dFhTrTfNefy/LsijPRfUkRGS8yvY
-         TTjlfjOqSXK3qYzddHvYOFG4valE5uLJzzMX3lFkcWLZOLmH3dteGEaBvrgNJoHBH7Eo
-         H3yg/fnPvT+E0oyFRgOaAO31lzS21H3myoqgLsABP7e9Dmz+M0Wm2lITi5uE4+1osmDA
-         4SlqIHWwIH55kpOlyNgZAMbIEqZocFtmgFdWXOTJAMgCR/9NdLmTlcz/k3Tgb3h8SCYu
-         gctw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727765034; x=1728369834;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Y+9r8/ELl7iDlCWa/yccfFSqcqOg6/F/KEEgCukawR0=;
-        b=bY9D4ujqXPy1YFTh9ftFcOpUtMhEjTBgO1DlMzfRyEQYmkbUTuct5Ax+GMlZjyibdW
-         ROh3LRpKR6z8BrA3XnM3etxFUYELCM6SzeNX8IEE0O2CNLnM8/LemXsYtKuRPnMhFwoC
-         iz7KTGPyaN9pBnhGso+iTdRBotBczVnYmvcuY6XJWVGTz4JgRFNv0Uh+rYz66P0xdDlk
-         jHbpvwGsJWku7m13Hj3DF6FmJOGHZ/G5HptCuJ8N7dek7phlH8ww71GeSbbApfYo+0X2
-         tdLe1iDRRDFu3vnCUNBUMOMzjluqwCw6ZkBcydCOP2WW71y1BRGJCY/3MucRpxEsWAYx
-         6I5g==
-X-Forwarded-Encrypted: i=1; AJvYcCXe/zSHeFouzYlpukFR3mUIHMxV0x5PqjSLyh7P4wfk5Wct58kED/zoNxDD6OvSxn0B4wVXxobxrN0tf4/72Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyeDSutRDZaQ04OyI+xBUQTm3IsxYDBeUJIglN48uMbKE7WEqjh
-	JnINi301xl49HZYiBpEhjMDlwWCNg983CePSWFV9Sk6LXvbj+Jw6RgNd35c05QQ=
-X-Google-Smtp-Source: AGHT+IGo9nDsPPgqeOWUQkdQH/9wmb+SBZj3pDfJ3l1Mq6Sz6MV6DgwxCFnauB+HR6NC6KCwCRh9/w==
-X-Received: by 2002:a05:6a20:2584:b0:1ce:d403:612d with SMTP id adf61e73a8af0-1d52d10a3f4mr3324373637.13.1727765034276;
-        Mon, 30 Sep 2024 23:43:54 -0700 (PDT)
-Received: from localhost ([122.172.83.237])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7e6db2963dasm7613444a12.2.2024.09.30.23.43.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 Sep 2024 23:43:53 -0700 (PDT)
-Date: Tue, 1 Oct 2024 12:13:51 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Mark Tseng <chun-jen.tseng@mediatek.com>
-Cc: "Rafael J . Wysocki" <rafael@kernel.org>,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v1 2/2] cpufreq: mediatek: Fixed cpufreq has 2 policy
- will cause concurrency
-Message-ID: <20241001064351.vpahvdwzmvjblnd7@vireshk-i7>
-References: <20240913103933.30895-1-chun-jen.tseng@mediatek.com>
- <20240913103933.30895-3-chun-jen.tseng@mediatek.com>
+	id 1svWxR-00000001r9L-3TC9;
+	Tue, 01 Oct 2024 07:06:10 +0000
+X-UUID: 9bd433147fc311efb3adad29d29602c1-20241001
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=7maMI3JrfgulMF11preQuttN86aApnHvjFdQ3y6oNrQ=;
+	b=ZauCsIRgzA4zsRHwG61UR1disZQf77l7l/xKgMK+ZqcXv1iKQAaDo6Tgv8Fn7XiPaEgVnRK+d/0+6cbK8A4TcJrrUIl5M8BJtk0v6sgA3g6v/4EE8MykhsvyF2T59oR0F5cYW1p2P1AZXCWXRtVN4JuS0K/Pl4eT/C6lrZOy+qc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:cb3ebb31-8dcf-4c8b-98e3-0ad9ed1a39fb,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:284c0ad1-7921-4900-88a1-3aef019a55ce,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|-5,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 9bd433147fc311efb3adad29d29602c1-20241001
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1630024396; Tue, 01 Oct 2024 00:05:58 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 1 Oct 2024 15:05:53 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs13n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Tue, 1 Oct 2024 15:05:52 +0800
+Message-ID: <42dc4e9a-efcd-e166-b4fd-d4fe0dcd3c77@mediatek.com>
+Date: Tue, 1 Oct 2024 15:05:50 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240913103933.30895-3-chun-jen.tseng@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH v7 2/3] ASoC: dt-bindings: mt6358: Convert to DT Schema
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzk@kernel.org>
+CC: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring
+	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+	<conor+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>, Lee Jones
+	<lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	"AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>, Sen
+ Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Andrew Lunn
+	<andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
+	<olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>, Eric Dumazet
+	<edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+	<pabeni@redhat.com>, Sebastian Reichel <sre@kernel.org>, Liam Girdwood
+	<lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Alexandre Belloni
+	<alexandre.belloni@bootlin.com>, <linux-input@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-leds@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-pm@vger.kernel.org>,
+	<netdev@vger.kernel.org>, <linux-rtc@vger.kernel.org>,
+	<linux-sound@vger.kernel.org>, Alexandre Mergnat <amergnat@baylibre.com>,
+	Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, Chris-qj chen <chris-qj.chen@mediatek.com>,
+	MediaTek Chromebook Upstream
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
+	<wenst@chromium.org>
+References: <20240930073311.1486-1-macpaul.lin@mediatek.com>
+ <20240930073311.1486-2-macpaul.lin@mediatek.com>
+ <6l6hb264yvhd6e6neurd5t4gmv5z5c5gpg27icijif3hq4cuu7@pbhfkdxb2eam>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <6l6hb264yvhd6e6neurd5t4gmv5z5c5gpg27icijif3hq4cuu7@pbhfkdxb2eam>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--12.101800-8.000000
+X-TMASE-MatchedRID: VPleTT1nwdQOwH4pD14DsF2036HHwFm/C/ExpXrHizxYJGLp3WXzKpWp
+	knTQ1+q/T+8v17QjdI1rQ015tgQBDTLCC/YZrQrUMN+B8zdlz9FMK/nxnH1Imt9zZd3pUn7Kakq
+	BCNYGwQ2ycWeoQW7ios4k/G1If2CrCLTFoW0rIaq4jAucHcCqnQXXmzqmsIi7yWCL+8tLbvYDkd
+	7WQNL44uLzNWBegCW2RYvisGWbbS8TEC0P9PvYRt0H8LFZNFG7bkV4e2xSge73SwlEUO9gdk5Ph
+	/E0lnHtrz/DYYLZZVaW2ciTighMcL7rweoAIK8o
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--12.101800-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 8213473620506FBC013195E018B92A6C2C331F6E40BA18E9D76B871E9094E6BB2000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240930_234355_578809_635DF788 
-X-CRM114-Status: GOOD (  14.10  )
+X-CRM114-CacheID: sfid-20241001_000605_912533_2E54D26F 
+X-CRM114-Status: GOOD (  13.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,29 +119,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13-09-24, 18:39, Mark Tseng wrote:
-> mtk_cpufreq_set_target() is re-enter function but the mutex lock decalre
-> in mtk_cpu_dvfs_info structure for each policy. It should change to
-> global variable for critical session avoid policy get wrong OPP.
+On 10/1/24 14:34, Krzysztof Kozlowski wrote:
 
-I am not sure I understood the problem well. Can you explain clearly
-why the current locking doesn't work with details call chain ?
+[snip]
 
-It is normally okay to have per-policy locks otherwise. Are there any
-common resources being used between policies that need locking ?
-
-> SoC with CCI architecture should set transition_delay to 10 ms
-> because cpufreq need to call devfreq notifier in async mode. if delay
-> less than 10ms may get wrong OPP-level in CCI driver.
+>> +description: |
+>> +  The communication between MT6358 and SoC is through Mediatek PMIC wrapper.
+>> +  For more detail, please visit Mediatek PMIC wrapper documentation.
+>> +  Must be a child node of PMIC wrapper.
+>> +
+>> +properties:
+>> +  compatible:
+>> +    enum:
+>> +      - mediatek,mt6366-sound
+>> +      - mediatek,mt6358-sound
+>> +    const: mediatek,mt6358-sound
 > 
-> Add CPUFREQ_ASYNC_NOTIFICATION flages for cpufreq policy because some of
-> process will get CPU frequency by cpufreq sysfs node. It may get wrong
-> frequency then call cpufreq_out_of_sync() to fixed frequency.
+> This wasn't ever tested.
 
-Don't do so much in a single commit. Separate commits for each logical
-change so they can be reviewed well. Also don't send cpufreq along
-with devfreq changes, unless they are dependent on each other.
+Hum, I have indeed tested it with linux-next/master branch.
+Ran dt_binding_check with dtschema trunk with this single file
+but didn't get any warning or errors.
+'make dt_binding_check DT_SCHEMA_FILES=mt6358.yaml'
 
--- 
-viresh
+Could you please help to paste the error log for me?
+If there are new errors, I need to check if there is any
+environment issue.
+
+> Do not send untested code, it's a waste of reviewers' time.
+> 
+> Best regards,
+> Krzysztof
+> 
+> 
+Thanks
+Macpaul Lin
 
