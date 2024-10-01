@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1344CE8376
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Oct 2024 06:17:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73D8ACE8376
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Oct 2024 06:18:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bn+p/ZFh0V1X+LQo0/OnSrPMIuEaADlb19UWcf1RG/Y=; b=v0OS6xSy/CyN0LKi7opNghj97s
-	hY5iLikVvm8U659xkYyoQR3IRD91a582jCcavjYHs9r9ZJGabti0lOyJRckqU03nbLs6UnWrrxgU5
-	oRDyjq2+L94uU9LHGPVmOrTvBW/0usgcsffDZTsJjaXNGxIxUt2SMaO1xyyD2zgfKKENxI2TXUfzc
-	FT725+AOZpNGqJ9Kl5KpJHy7I42xxu77mjiDuGaXbBCztHyBkPkiV2Ca7tVOuvV3pWinPfNG2BCtU
-	dw2HIgpvBWjUVglYTyCR0dsizsvaMsRAaa89EQoB08oISOHg5EWAVyOBWnzqmMmQMy9nAS8X3nAE1
-	Qn+3WVbA==;
+	bh=aFp3SriOPWs0xVXrnZzTQWGqrUjwlRHRfGp7sGKX3sc=; b=wXo2Wuu9ai+OedNOau6BQFrYsO
+	UzD8TBx9N+9TTLFa0Ku0MWeOiuvI3UhYNkszx1cSQ3zICUKG2rO/2KHdf/fDKDRanVUCIvM3ujzDk
+	frVD174JrN93SLBbAKTch0794n2c7huvVM8ciIIT0c+9wfmPTWidxUVd3QshzoLmHduK62AtQC1qV
+	Djq3Aa0Rmn5W5iuEWQU9+YnkG2F63F9nHW6IuGSgnq4qvBuef0/gWrygF/Nkx3Z5i3Qvh7Vamgny7
+	iu08Gg/SCiesJ6MDF08QTsRzwnnB9YVVZBPxDK4kjhy95cNd9OpqT8fc2F85xQP50UgrdSaPNdnvd
+	K1h/lzmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svWBx-00000001j38-2YYc;
-	Tue, 01 Oct 2024 06:17:01 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1svWDA-00000001jDt-1yv8;
+	Tue, 01 Oct 2024 06:18:16 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svWBt-00000001j29-3mor;
-	Tue, 01 Oct 2024 06:16:59 +0000
+	id 1svWD7-00000001jDE-0jqB;
+	Tue, 01 Oct 2024 06:18:14 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 30C53A428D3;
-	Tue,  1 Oct 2024 06:16:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E9DDCC4CEC6;
-	Tue,  1 Oct 2024 06:16:40 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5BF2D5C5415;
+	Tue,  1 Oct 2024 06:18:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3E86C4CEC6;
+	Tue,  1 Oct 2024 06:17:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727763415;
-	bh=Hg4IVEOTj4JriXTMF/0hLXqKoldcay2hkZN5Fq1Yakc=;
+	s=k20201202; t=1727763491;
+	bh=aFp3SriOPWs0xVXrnZzTQWGqrUjwlRHRfGp7sGKX3sc=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=BarxashMr3+CY5FBEM2U/PJW5q6wPC6dVt+mzB8egTBhcrlaVcQFYdktWYgO+j7Yv
-	 st50W7cT6gVEA1/dqDGaNjGnQ9AA7gJD8n39MO3BV+QS8PYRyKkFgRwCwRf2uXp2Y8
-	 dp0MSy8wQU32Rg+er7QSDMBsvPmxO8FtjjNjWdI+RBSy9Pkiff17xYddZcuy1U7MmD
-	 8G2j28TOkFm0vYpz5O+m6VrxQgVrUbADYqKtkm4v+kH0x6BE0wOgLNe9/byQAyhzAt
-	 oANVnz/YuEyuHy0rS3qUYr1qmkfNjzY7Or6LCFfrX8R+CDPDSbqK8TRB8tpythzZkI
-	 KC1d+v2a8Gx6A==
-Message-ID: <2915d4aa-a01d-4d00-ada9-43bbc227f9eb@kernel.org>
-Date: Tue, 1 Oct 2024 08:16:38 +0200
+	b=bCGpghBSrw70nVQy4SZ+l3iTCF/jeyzhjMl8snn+Ad8CAr5veY5sqYrWH8ye1Jds/
+	 d2bTkG2L1t98Fhw6tIb1RQ5MdHcKgtQ+dmbSO3AnflysQi/g2nkwD5pgS8QDMlKAf0
+	 C2layRfhxwO50GLHe2mSrEUbU0qRnl5EHApVYFmqdAQDmxTxABlb2FWFVd93eEIWTw
+	 vxD0cgHSqb97BdSLSYnmMJaISH055Gmp8VmDUXxLZP75L0x0r+fNpt7yd4pOQOSpH2
+	 aqN7thfnjUQXtqU9l++pRCzxs1Ge0mhIg8B4e0frFI2hfiPtxcwaz8wpRJIVtG59/T
+	 f2k/dmCILB+xg==
+Message-ID: <62220abe-196a-4434-a200-5e39af1d184d@kernel.org>
+Date: Tue, 1 Oct 2024 08:17:53 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] ARM: dts: replace gpio = with gpios =
+Subject: Re: [PATCH 2/2] ARM: dts: assign reg to memory nodes
 To: Rosen Penev <rosenp@gmail.com>, linux-arm-kernel@lists.infradead.org
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
@@ -102,7 +102,7 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  <linux-samsung-soc@vger.kernel.org>,
  "open list:OMAP DEVICE TREE SUPPORT" <linux-omap@vger.kernel.org>
 References: <20240930223550.353882-1-rosenp@gmail.com>
- <20240930223550.353882-2-rosenp@gmail.com>
+ <20240930223550.353882-3-rosenp@gmail.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -148,12 +148,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20240930223550.353882-2-rosenp@gmail.com>
+In-Reply-To: <20240930223550.353882-3-rosenp@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240930_231658_114179_FB3E9808 
-X-CRM114-Status: UNSURE (   7.40  )
+X-CRM114-CacheID: sfid-20240930_231813_339413_27C6034C 
+X-CRM114-Status: UNSURE (   6.77  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -170,21 +170,15 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 01/10/2024 00:35, Rosen Penev wrote:
-> Found with dtc:
-> 
-> Warning (deprecated_gpio_property): '[*-]gpio' is deprecated, use
-> '[*-]gpios' instead
-> 
-> Transformation performed with
-> 
-> find -name "*.dts" -exec sed -i 's/\tgpio = </\tgpios = </g' '{}' \
-> find -name "*.dtsi" -exec sed -i 's/\tgpio = </\tgpios = </g' '{}' \
+> Fixes dtc warnings:
 
-Uh, no, please check if each is correct and already handled by bindings.
+What warnings?
 
-> 
-> Signed-off-by: Rosen Penev <rosenp@gmail.com>
+Anyway, please list platforms where you tested this. This patch might
+break several of them.
 
+Such one huge patch, not split per subach, is another problem. There is
+no reason to make it one huge chunk.
 
 
 Best regards,
