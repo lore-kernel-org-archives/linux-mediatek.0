@@ -4,71 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1099CE7D12
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Oct 2024 11:54:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 383E1CE8374
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Oct 2024 12:59:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BqHNgIjHzrZHI2dQBjjO379OemwM/JjQFwgZWw/lvBw=; b=ehK/6AtP8ZeBzfavV7mggue5Mj
-	uKmVnhLOfJjYbU2VjZFagwD+mdCaszIl7Lonj3be0bJ1tEa6pPZ8yyjfZ/H/biCsOo52ThVfo8vxu
-	9QCrXv88x0hw2rr4FiYd2Lk5+JpLJbiu3JLXCF4Sp/di6U2XK+BKJy4jOiKtAMP8LRjzMkIl+4GUk
-	QG+WXOiznTMgT0a9gSy5OQKJuquY+IqkZJEjpm0N8Lz8g9TBDknAJbzkxH6u8Gvw6MU+83x8YfoOi
-	TmG2L2+BGls8rApQ88/NnJnBzcn9Bf04tE5wfb2m7TDcTxYVEATJEtKMb8PHltQ82OCEd9vJrYXQs
-	iQBW/upQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PI6vIBaenjmeV4v1LJ8TZd0bodccIG5VVCIvDBNwP+8=; b=LatrNO2HL16MQn/FabfwAWvaSG
+	kKGCNkSkCe01m3ie6pKy+1L90rn4u/m4MAscbsK7iPratQaAFL9UaFhs+5EyVuKh8O53pWN6IW7zi
+	a0iWwThlknfMLA1EJtoClNkDLAv2ZMzrgRJgUu8EGkDgP+u6HpG7Sj5u/q3zORfh666eQkhRsuYEL
+	1bm6Ply1csQlp09OqUAPghkczItYnfzYm+I7WksZ8tT4UO00h4UWUdHYvafI1ocZUq8MUINREQGbG
+	JpJMqxeUeojW65TnxhngfLoALrLpFXnFx2VQ5+EvnDQ3Exl2sZNd23/gM0t/1qAvLbFEQ3Cq5QrCT
+	BWMf4jHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svbS4-00000002bLF-3h9i;
-	Tue, 01 Oct 2024 11:54:00 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1svcT2-00000002qNP-3pAd;
+	Tue, 01 Oct 2024 12:59:04 +0000
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svbGz-00000002YkZ-2IzP
+	id 1svcT0-00000002qN4-3T9w
 	for linux-mediatek@lists.infradead.org;
-	Tue, 01 Oct 2024 11:42:35 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 6CF8C5C4C62
-	for <linux-mediatek@lists.infradead.org>; Tue,  1 Oct 2024 11:42:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2B056C4CEC6
-	for <linux-mediatek@lists.infradead.org>; Tue,  1 Oct 2024 11:42:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727782952;
-	bh=ARtefMh24v7+jgn+p21E+waDQzHelUX4A47ryHja1Uw=;
-	h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
-	b=YQMkQDxDugSAL16nBCD41yZkFQC+DivDisIstJIwOvPllMPCD8f9K8uyY5678NWQ3
-	 GCL8CwmefvCOBhKsOE3i9Q7oCpA4FXlJgkyLS5Hg5+qv5j5vSBjr2MVWwxzF3gLvKg
-	 H1joeushCLPIzNmcDXwuxA/OcrcSi5p+s7TFd96Q9Znu1x6I7AUtM9hgNXQfmjSWCv
-	 9Qr7dGTKG8rWBw1JQG0TFQyYKXU5q/zHt5PB1zNlZtCwE6BQL63bd+3rCZqfyau6AZ
-	 togxn9GdZujmROFT3Y18Lr+DhbJ1aEn9hUFGeTgoPjUlp2hd3WcldgTTGK6DDWZceZ
-	 bAT164TI9BKsw==
-Received: by mail-yw1-f180.google.com with SMTP id 00721157ae682-68518bc1407so51180777b3.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 01 Oct 2024 04:42:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCXOnwQN2EP4dXrgJCfnLeHARb173z7yp/oD2n6hywr9uzp873LY3/FAXFux+XiRLTi2dWNR5svPIrFfQzEDIA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwHqNcFP4S0FgJgYxBwc1GTMIX9b9qKh3xaNNoodLAknjest6+m
-	QXzwjU9f2N/E8l8W5fd9JIlPcryToeCpIOXH85pG5xNX/WkoKigUgeCOdex8e8BNJxPAJ6yuhNA
-	VM0P3JNL3i/Jikp1/wHd664GjQkw=
-X-Google-Smtp-Source: AGHT+IGJeeAdGIP87cC95cStz9qeE3dupp7klnnAVTcjKHX6vpKBoLiUQEfoXRFEvhZrgtMMb6LXot438NCltsrGMdk=
-X-Received: by 2002:a05:690c:60c7:b0:6dd:d407:4568 with SMTP id
- 00721157ae682-6e24dc611f1mr87383497b3.26.1727782951444; Tue, 01 Oct 2024
- 04:42:31 -0700 (PDT)
+	Tue, 01 Oct 2024 12:59:04 +0000
+Received: by mail-pj1-x102c.google.com with SMTP id 98e67ed59e1d1-2e0be1afa85so3859275a91.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 01 Oct 2024 05:59:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1727787541; x=1728392341; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=PI6vIBaenjmeV4v1LJ8TZd0bodccIG5VVCIvDBNwP+8=;
+        b=B62B+fnkui7gtp5Xhb28djPoH0IhEkb+p51y2vDnvPuU1KNUZL99omCxFS3FCK8+qr
+         YUJYRyB/pLTHS7n9zBKcXfkGEry0bJopQeVx6XBJBbg89U++oE3AKgeC5f4dVkJcgiHU
+         IGuGV5Eg4kR/T/2WXg/4RGgRRNbwaLcVzkKgMJitBgait2sksZIHNzdphTVnGszsvqi2
+         5QxuE/0umGCFdGv/5wRbeAShfyBXIr25cQrxnNH4W9RFCCDMqvlRnAvTgtY8lOL0lVAB
+         kiJKPxh5EB4XS6fPwkhs9j67woK6UY4gFKvNXTuWqi14PLM5jp/dJGlyZn+5cL8sqPHr
+         YQtw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727787541; x=1728392341;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=PI6vIBaenjmeV4v1LJ8TZd0bodccIG5VVCIvDBNwP+8=;
+        b=m2x3JkxtVqjPd4K8c/j0ZOvJtyFyfygND1j/Z9EEk4OgN3hceI54cuobxVsdSgLJwZ
+         qFv2v8VyJdxelTil9FP1g16T7acom9+2ub2Vu8Koo6p4gMYJOh8zX2Jkk8B1ncfvpw8/
+         lV96pQ1Wn9nlAfT7in3uGvB2qL1j7HG59ktNAwWNPsXMwu4T+4I6Jx4QvscR7Ng3qsMy
+         hAT3MAIwqV00XtPXklGk/WuTKRr/4uqugBSibvb1RWJqjzt+/ou9Hj5ijG6/zeDGgD/m
+         Q+/gDp77/oksIUI3YOK/hN2CU+8hYy9+H6mAvXr+L2AjK0FFlAPIL0/JxsrTBxsUofNi
+         YdEA==
+X-Forwarded-Encrypted: i=1; AJvYcCUaue/pGZQdoBEDmtvTmgMp9hHQugqgx0PQtP1DG+wwwwfZPqFpJAJBgHv1k3KDr09V2vfkegC1DyDPeP1+2Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxQCZJpMlmvWXl+Ixn/o+6Tf0V8aKBwlU29Yd2HKVsrgGUoiLLQ
+	1tXw5WMBj6G0GMeARst+PmcBkhE7rOZitAKxqgTuP4qr/vESLb7J
+X-Google-Smtp-Source: AGHT+IHfbDOoRKb2RjyhDoGXQii6tGheSnORtm8ulp45jdAOglPSMwHTdjuxMPGJSgsSXaDt2reBQA==
+X-Received: by 2002:a17:90a:ec0d:b0:2d8:7edb:fd2 with SMTP id 98e67ed59e1d1-2e0b8b49913mr18979395a91.22.1727787541160;
+        Tue, 01 Oct 2024 05:59:01 -0700 (PDT)
+Received: from google.com ([2620:15c:9d:2:70a4:8eee:1d3f:e71d])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2e0b6e0fbf6sm10048795a91.40.2024.10.01.05.59.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 01 Oct 2024 05:59:00 -0700 (PDT)
+Date: Tue, 1 Oct 2024 05:58:58 -0700
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Mark Brown <broonie@kernel.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, linux-input@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH] Input: elan_i2c - Wait for initialization after enabling
+ regulator supply
+Message-ID: <ZvvyEux8f2ylRQOn@google.com>
+References: <20241001093815.2481899-1-wenst@chromium.org>
+ <ZvvHdlD6E5bzsWwV@google.com>
+ <ZvvX5KcKaVBLedD1@finisterre.sirena.org.uk>
 MIME-Version: 1.0
-References: <20240926034802.28294-1-shayne.chen@mediatek.com>
-In-Reply-To: <20240926034802.28294-1-shayne.chen@mediatek.com>
-From: Josh Boyer <jwboyer@kernel.org>
-Date: Tue, 1 Oct 2024 07:42:20 -0400
-X-Gmail-Original-Message-ID: <CA+5PVA7EvtafLhceuZoXzb9n57of0q4gz5khgKA7JWjOWFzPCg@mail.gmail.com>
-Message-ID: <CA+5PVA7EvtafLhceuZoXzb9n57of0q4gz5khgKA7JWjOWFzPCg@mail.gmail.com>
-Subject: Re: [PULL,linux-firmware] mt76 firmware 20240926
-To: Shayne Chen <shayne.chen@mediatek.com>
-Cc: linux-firmware <linux-firmware@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
-	Evelyn Tsai <evelyn.tsai@mediatek.com>, linux-wireless <linux-wireless@vger.kernel.org>, 
-	linux-mediatek <linux-mediatek@lists.infradead.org>, Daniel Golle <daniel@makrotopia.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZvvX5KcKaVBLedD1@finisterre.sirena.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241001_044233_839252_A2F92CA6 
-X-CRM114-Status: GOOD (  18.74  )
+X-CRM114-CacheID: sfid-20241001_055902_889762_A1890C37 
+X-CRM114-Status: GOOD (  17.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,83 +95,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 25, 2024 at 11:48=E2=80=AFPM Shayne Chen <shayne.chen@mediatek.=
-com> wrote:
->
-> Hi,
->
-> Here's a pull request for adding WiFi firmware files for mt7996 and
-> mt7992 chipset variants.
->
-> Please let me know if there are any problems.
->
-> Shayne
->
-> The following changes since commit 8306534b8a7265bee2f4323b45fd2a22a7c8b9=
-b6:
->
->   Merge branch '8922a' into 'main' (2024-09-23 12:36:21 +0000)
->
-> are available in the Git repository at:
->
->   https://github.com/csyuanc/linux-firmware.git mt76-20240926
+On Tue, Oct 01, 2024 at 12:07:16PM +0100, Mark Brown wrote:
+> On Tue, Oct 01, 2024 at 02:57:10AM -0700, Dmitry Torokhov wrote:
+> 
+> > This will add an unwanted delay on ACPI systems that handle power
+> > sequencing in firmware. However use of "optional" regulators is frowned
+> > upon in this case as the supply in reality is not optional.
+> 
+> > Mark, has there been any developments that would help reconciling
+> > difference in behavior between ACPI and DT systems. Ideally we'd need to
+> > know when supply was turned on, and adjust the wait accordingly.
+> 
+> There's not been any changes here, but there's always been an event
+> availalbe when a regulator is turned on?  There's also no difference
+> between DT and ACPI systems here, both could have the regulator fixed on
+> and I'd certainly not want to rely on an ACPI system implementing a
+> device specific delay after power on given the sort of stuff they like
+> to put into machine specific drivers.
 
-Merged and pushed out.
+Well with Elan in native mode ACPI FW does do proper power sequencing,
+that is why this commit mentions failures observed on Mediatek devices.
 
-https://gitlab.com/kernel-firmware/linux-firmware/-/merge_requests/306
+Thanks.
 
-josh
-
->
-> for you to fetch changes up to 85ce6f7afdd3b63398990e53f67c653fc66ad271:
->
->   mt76: mt7996: add firmware files for mt7992 chipset (2024-09-26 00:59:5=
-4 +0800)
->
-> ----------------------------------------------------------------
-> Shayne Chen (2):
->       mt76: mt7996: add firmware files for mt7996 chipset variants
->       mt76: mt7996: add firmware files for mt7992 chipset
->
->  WHENCE                                       |  43 +++++++++++++++++++++=
-+++++++++++++++++++++-
->  mediatek/mt7996/mt7992_dsp.bin               | Bin 0 -> 63536 bytes
->  mediatek/mt7996/mt7992_dsp_23.bin            | Bin 0 -> 63536 bytes
->  mediatek/mt7996/mt7992_eeprom.bin            | Bin 0 -> 7680 bytes
->  mediatek/mt7996/mt7992_eeprom_23.bin         | Bin 0 -> 7680 bytes
->  mediatek/mt7996/mt7992_eeprom_23_2i5i.bin    | Bin 0 -> 7680 bytes
->  mediatek/mt7996/mt7992_eeprom_2i5e.bin       | Bin 0 -> 7680 bytes
->  mediatek/mt7996/mt7992_eeprom_2i5i.bin       | Bin 0 -> 7680 bytes
->  mediatek/mt7996/mt7992_rom_patch.bin         | Bin 0 -> 20640 bytes
->  mediatek/mt7996/mt7992_rom_patch_23.bin      | Bin 0 -> 20640 bytes
->  mediatek/mt7996/mt7992_wa.bin                | Bin 0 -> 536240 bytes
->  mediatek/mt7996/mt7992_wa_23.bin             | Bin 0 -> 536240 bytes
->  mediatek/mt7996/mt7992_wm.bin                | Bin 0 -> 1712336 bytes
->  mediatek/mt7996/mt7992_wm_23.bin             | Bin 0 -> 1672256 bytes
->  mediatek/mt7996/mt7996_eeprom_233.bin        | Bin 0 -> 7680 bytes
->  mediatek/mt7996/mt7996_eeprom_233_2i5i6i.bin | Bin 0 -> 7680 bytes
->  mediatek/mt7996/mt7996_eeprom_2i5i6i.bin     | Bin 0 -> 7680 bytes
->  mediatek/mt7996/mt7996_rom_patch_233.bin     | Bin 0 -> 23968 bytes
->  mediatek/mt7996/mt7996_wa_233.bin            | Bin 0 -> 516272 bytes
->  mediatek/mt7996/mt7996_wm_233.bin            | Bin 0 -> 2620960 bytes
->  20 files changed, 42 insertions(+), 1 deletion(-)
->  create mode 100644 mediatek/mt7996/mt7992_dsp.bin
->  create mode 100644 mediatek/mt7996/mt7992_dsp_23.bin
->  create mode 100644 mediatek/mt7996/mt7992_eeprom.bin
->  create mode 100644 mediatek/mt7996/mt7992_eeprom_23.bin
->  create mode 100644 mediatek/mt7996/mt7992_eeprom_23_2i5i.bin
->  create mode 100644 mediatek/mt7996/mt7992_eeprom_2i5e.bin
->  create mode 100644 mediatek/mt7996/mt7992_eeprom_2i5i.bin
->  create mode 100644 mediatek/mt7996/mt7992_rom_patch.bin
->  create mode 100644 mediatek/mt7996/mt7992_rom_patch_23.bin
->  create mode 100644 mediatek/mt7996/mt7992_wa.bin
->  create mode 100644 mediatek/mt7996/mt7992_wa_23.bin
->  create mode 100644 mediatek/mt7996/mt7992_wm.bin
->  create mode 100644 mediatek/mt7996/mt7992_wm_23.bin
->  create mode 100644 mediatek/mt7996/mt7996_eeprom_233.bin
->  create mode 100644 mediatek/mt7996/mt7996_eeprom_233_2i5i6i.bin
->  create mode 100644 mediatek/mt7996/mt7996_eeprom_2i5i6i.bin
->  create mode 100644 mediatek/mt7996/mt7996_rom_patch_233.bin
->  create mode 100644 mediatek/mt7996/mt7996_wa_233.bin
->  create mode 100644 mediatek/mt7996/mt7996_wm_233.bin
+-- 
+Dmitry
 
