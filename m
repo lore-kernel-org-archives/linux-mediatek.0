@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9084CEB2FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Oct 2024 06:36:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1979CCE837A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Oct 2024 06:36:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sYZIRBXYhRSaFyOA+6XTCmHm160Kd2J7/rPtmlgRqyw=; b=G9VptJapYlfiCkFAuTpeWR/X/f
-	rqSeEBOlDUbSB/HToZlP6om8Wbf0m070DHI0L7F4lUgd36C5GirhxAutO/a1/JoAVrSwxaZv4zEBK
-	fggUGtB9ybxQ2Omy8o0NFOtUsaQwC5vgY20RXmUeZdgC+LxbH7pObqJZDYd4JcrYwDZGQ9O4SNegQ
-	mGIZxowDjvRzmwQ8Oo1eXj/hFMgy77W7ne9TWv22YqjARSRYMmUVBDcmDcI+YOWe/a2HmYUPmDAie
-	RuS1Z0fbg2DNbMe/LluHZlpupBHxqPlTLrOUhQ720Lsc6J563ONxKpT3Mg4RuV0mEHMII1tiOHEKt
-	0d1Dh+2w==;
+	bh=Xv9rTxjenRIx6vrY5kSU88MqmEZVwiCWhRuFEtCYTcs=; b=31pKwanBb6LHDwMrpb4RjHdbxT
+	Zi4VLEMfpcjRXY1cOCDFQMUiuJFYaj4NhuvvfVoHO//LOIyqLNmqxpMxdJJGnMlcyrTgFZOlHWyO9
+	olToFsvk3hmy2PQegqSN0uFuS6nr8wC6nyF1KA8ujueQ1c4w0JOx/5EpKjaFdwAlWgq1BI16o8kgs
+	mSyIhFkLjaoreaY1in6bo7z26rq9eKgWJwEA7EllgYjuz7kwV1QxZT4o2cwQS/1QBGQ6Ug9jiKLW9
+	cWIJ4DNPqX7Km6ViC83M+QrN6xT+ihTN+N1gzsnEpVyShE7tQmrmLD1BL8aK9spQQ33vVwTds5nyp
+	uisoFZLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svWUW-00000001lse-3Mbz;
-	Tue, 01 Oct 2024 06:36:12 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1svWUb-00000001lvo-271n;
+	Tue, 01 Oct 2024 06:36:17 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svWNk-00000001khe-3bOk;
-	Tue, 01 Oct 2024 06:29:14 +0000
+	id 1svWT2-00000001lbr-2VVe;
+	Tue, 01 Oct 2024 06:34:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9A9C55C4B58;
-	Tue,  1 Oct 2024 06:29:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8BC49C4CEC6;
-	Tue,  1 Oct 2024 06:29:10 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 40F94A4294E;
+	Tue,  1 Oct 2024 06:34:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3708FC4CECE;
+	Tue,  1 Oct 2024 06:34:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727764151;
-	bh=0XqIWLSy+r1tAJqu9dtKMYNrWWKnDsQbZXqh+mGvbpI=;
+	s=k20201202; t=1727764479;
+	bh=EDXsjtDekecqXOH4lKPY26hQ0HMsahBvIn48muRWd1o=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ClxzX++YUuvJ3p1LbcwvLLoR0bG747zASAaHUnYOKQfMNbz77FvcrcInkXxyvHPxc
-	 1zrLnUepPkjPAzv7ZWA00nln6ZIlLG8mO2Boz4yYxAugcfg7mqR/tuP99spZABoZij
-	 4aWJCT2dslclOzQ57GloMaQ3OHBKCFzCAn18Yef4TohxqHrZ+GB+na9Kk7vVquPiG7
-	 R/4ANhqGbhioQMljr/59MmgeN+Q760Y1wNEnrISrAKzcHqqe1nWU7gF/i1rczTmPG8
-	 7AM+HkxTDZOU8RBJRgZTMmfvoqriNEWkdoRYZwDn3gW+3QFJO0RNVFdwdVK/gTtUxL
-	 x9cZAl4+cTIgQ==
-Date: Tue, 1 Oct 2024 08:29:07 +0200
+	b=HZNZSTRxoYenHd2hovmWWTwlJRLs20vhDJLKuNerNPNtYlQp/Ep92+GSfopw0NOPU
+	 iO/cxIx2sB/PkyR0DCrDIXE79RSdkm3OL2TAAFlLgbFNVLcTROjq3r4LKEI56NOizX
+	 h3qgYazB00THLjDp8IqVosg1eRSNqKuQ0OdjqE8bEktC8x7wBhrbJDfV1GTQHlSj6I
+	 WZPGEiyGchqGrtGiSo5McKjhKN5wCSwxEAe8A7UQSMAGmyOP75QhVrTJbls7DV/sVV
+	 hde23wP8NKg0xToQD21c+mjDITLCYNaxhK7xk/GPq6Y+AK0QMcbrdIH4qOU5WugDbd
+	 Kt+9NYEsVm0Sw==
+Date: Tue, 1 Oct 2024 08:34:35 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Macpaul Lin <macpaul.lin@mediatek.com>
 Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
@@ -63,18 +63,17 @@ Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
 	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, 
 	Chris-qj chen <chris-qj.chen@mediatek.com>, 
 	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>
-Subject: Re: [PATCH v7 3/3] dt-bindings: mfd: mediatek: mt6397: Convert to DT
- schema format
-Message-ID: <psjwbo2vecr54vmz5ib2eurhpcaynpc67rc2nwuj2gtej6gqiu@4ysahn2ghthf>
+Subject: Re: [PATCH v7 2/3] ASoC: dt-bindings: mt6358: Convert to DT Schema
+Message-ID: <6l6hb264yvhd6e6neurd5t4gmv5z5c5gpg27icijif3hq4cuu7@pbhfkdxb2eam>
 References: <20240930073311.1486-1-macpaul.lin@mediatek.com>
- <20240930073311.1486-3-macpaul.lin@mediatek.com>
+ <20240930073311.1486-2-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20240930073311.1486-3-macpaul.lin@mediatek.com>
+In-Reply-To: <20240930073311.1486-2-macpaul.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20240930_232913_015966_B1F07219 
-X-CRM114-Status: GOOD (  18.39  )
+X-CRM114-CacheID: sfid-20240930_233440_797101_02DDEFDD 
+X-CRM114-Status: GOOD (  25.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,108 +88,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 30, 2024 at 03:33:11PM +0800, Macpaul Lin wrote:
-> Convert the mfd: mediatek: mt6397 binding to DT schema format.
+On Mon, Sep 30, 2024 at 03:33:10PM +0800, Macpaul Lin wrote:
+> Convert the MediaTek MT6358 Audio CODEC bindings to DT schema.
 > 
-> MT6323, MT6358, and MT6397 are PMIC devices with multiple function
-> subdevices. They share a common PMIC design but have variations in
-> subdevice combinations.
+> This change implements the following updates:
+> 1. Compatible property: Added the const 'mediatek,mt6358-sound'
+>    to ensure alignment with the schema in the actual (DTS) file
+>    "mt8186-corsola.dtsi" with 'mediatek,mt6366-sound'.
+> 2. Example: Removed the example section, as it should be relocated to
+>    the MT6397 PMIC file 'mfd/mediatek,mt6397.yaml'.
 > 
-> Key updates in this conversion:
-> 
-> 1. RTC:
->    - Convert rtc-mt6397.txt and merge into parent MT6397 PMIC DT schema.
-> 
-> 2. Regulators:
->    - Align to generic name "regulators".
->    - Update references from .txt to .yaml for mt6323, mt6358, and mt6397
->      regulators.
->    - Simplify regulator name labels in device tree examples.
->    - Add a new 'mt6359-regulator' to the compatibles of regulators.
-
-Why?
-
->      Merge from the other patch [1].
-> 
-> 3. ADC:
->    - Add a new 'adc' property and include a $ref for sub-device node of
->      MT6359 PMIC AUXADC: 'mediatek,mt6359-auxadc'.
->      Merge from the other patch [1].
-> 
-> 4. Audio Codec:
->    - Simplify Audio Codec part with updating compatible items.
->    - Add 'mt6359-codec' to the compatible
-
-Why?
-.
-> 
-> 5. Clocks:
->    - Align to generic name "clocks" for clockbuffer subdevices.
-> 
-> 6. LEDs:
->    - Convert leds-mt6323.txt and merge into parent MT6397 PMIC DT schema.
->    - Update LED binding.
-> 
-> 7. Keys:
->    - Add detailed descriptions for power and home keys.
->    - Add compatible: mediatek,mt6358-keys.
-> 
-> 8. Power Controller:
->    - Convert mt6323-poweroff.txt and merge into parent MT6397 PMIC DT
->      schema.
->    - Add #power-domain-cells property to fix dt-binding check error.
->    - Clarify "BBPU" as "Baseband power up".
-> 
-> 9. Pinctrl:
->    - Align to generic name "pinctrl" instead of "pin-controller".
-> 
-> 10. Compatible:
->    - Drop "mediatek,mt6357" since there is a separated DT Schema
->      for PMIC MT6357.
-> 
-> 11. Examples:
->    - MT6323: Retain complete examples for this PMIC.
->    - MT6358 and MT6397: simplify settings in regulators.
->     - Preserve "audio-codec", "clocks", "pinctrl", "rtc", and "keys"
->       sections as they contain typical settings for different PMICs.
-> 
-> Additional updates:
-> - MAINTAINERS: Add co-maintainers and reference to
->   mfd/mediatek,mt6397.yaml for LED and power-controller drivers.
-> - input/mediatek,pmic-keys.yaml: Update reference to
->   mfd/mediatek,mt6397.yaml.
-> 
-> References:
-> [1] https://lore.kernel.org/all/20240925171156.9115-1-macpaul.lin@mediatek.com/
-> 
-> Signed-off-by: Sen Chu <sen.chu@mediatek.com>
 > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 > ---
-
+>  .../devicetree/bindings/sound/mt6358.txt      | 26 ------------
+>  .../devicetree/bindings/sound/mt6358.yaml     | 41 +++++++++++++++++++
+>  2 files changed, 41 insertions(+), 26 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/sound/mt6358.txt
+>  create mode 100644 Documentation/devicetree/bindings/sound/mt6358.yaml
+> 
+> Changess for v1~v6:
+>  - It was not in the origin patch set.
+> 
+> Changes for v7:
+>  - It is seperated from the origin patch set (2/2, v6).
+>    It could simplifies the audio-codec node in next patch (3/3, v7)
+>    of 'mfd/mediatek,mt6397.yaml'
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/mt6358.txt b/Documentation/devicetree/bindings/sound/mt6358.txt
+> deleted file mode 100644
+> index fbe9e55c68f5..000000000000
+> --- a/Documentation/devicetree/bindings/sound/mt6358.txt
+> +++ /dev/null
+> @@ -1,26 +0,0 @@
+> -Mediatek MT6358 Audio Codec
+> -
+> -The communication between MT6358 and SoC is through Mediatek PMIC wrapper.
+> -For more detail, please visit Mediatek PMIC wrapper documentation.
+> -
+> -Must be a child node of PMIC wrapper.
+> -
+> -Required properties:
+> -
+> -- compatible - "string" - One of:
+> -    "mediatek,mt6358-sound"
+> -    "mediatek,mt6366-sound"
+> -- Avdd-supply : power source of AVDD
+> -
+> -Optional properties:
+> -- mediatek,dmic-mode : Indicates how many data pins are used to transmit two
+> -	channels of PDM signal. 0 means two wires, 1 means one wire. Default
+> -	value is 0.
+> -
+> -Example:
+> -
+> -mt6358_snd {
+> -	compatible = "mediatek,mt6358-sound";
+> -	Avdd-supply = <&mt6358_vaud28_reg>;
+> -	mediatek,dmic-mode = <0>;
+> -};
+> diff --git a/Documentation/devicetree/bindings/sound/mt6358.yaml b/Documentation/devicetree/bindings/sound/mt6358.yaml
+> new file mode 100644
+> index 000000000000..5f7611e26a89
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/sound/mt6358.yaml
+> @@ -0,0 +1,41 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/sound/mt6358.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +  adc:
-> +    type: object
-> +    $ref: /schemas/iio/adc/mediatek,mt6359-auxadc.yaml#
-> +    unevaluatedProperties: false
+> +title: Mediatek MT6358 Audio Codec
 > +
-> +  audio-codec:
-> +    type: object
-> +    description:
-> +      Audio codec support with MT6358, MT6359, and MT6397.
-> +    additionalProperties: true
-
-No, this cannot be true. Schema is incomplete for listed compatibles.
-
+> +maintainers:
+> +  - Jiaxin Yu <jiaxin.yu@mediatek.com>
+> +  - Macpaul Lin <macpaul.lin@mediatek.com>
 > +
-> +    properties:
-> +      compatible:
-> +        oneOf:
-> +          - enum:
-> +              - mediatek,mt6358-sound
-> +              - mediatek,mt6359-codec
+> +description: |
+> +  The communication between MT6358 and SoC is through Mediatek PMIC wrapper.
+> +  For more detail, please visit Mediatek PMIC wrapper documentation.
+> +  Must be a child node of PMIC wrapper.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt6366-sound
+> +      - mediatek,mt6358-sound
+> +    const: mediatek,mt6358-sound
 
-There was no such compatible.
+This wasn't ever tested.
 
-Why do you add non-existing compatibles during conversion?
+Do not send untested code, it's a waste of reviewers' time.
+
+Best regards,
+Krzysztof
 
 
