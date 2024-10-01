@@ -4,70 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BF4FCEACC4
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Oct 2024 13:50:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E371CEACD5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Oct 2024 14:58:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6O9vtkxs+ZPBAMCh5e5Bft1cypt+rr2snnilS0YqVbQ=; b=Mhz13zolHEX/Qt/Vte9oZiUa7X
-	OjtDhOjrVUiEnLYLbhP5y0Z5lCM75Mx/KYnNBzatD+XSggZrzYzdeG+/iu6hyHdpU3a5sTt2PuxYV
-	ftuYUW56S04Weh7Pr102lC6rYhhmL2flVb0ntmbOUR0cLjre2G8/EYZX1GSWCWvd8j9OARdrBOaYb
-	9v8FtO6uwLMJUIxUGwUSOw5VE/xw1DNxVuj1FtPyQtx30dcCxhpHfA/qFsMdxbEnFo7+888z7qT/Z
-	Shllp7ynLXznQtqaO3oqOuVpugGaklhGNj9aom4ZIzPubacwTR8G9h70JRhiVoMGCflToCtnr12LJ
-	lRuQlafA==;
+	bh=iojT1xfY/iXMYZ4HclXjt5wJyv9eCNn2RMRvon4kbuU=; b=zfnTXo4jAv+SZcv7fmHLujVAlc
+	yQ2SFPDOuwDy+5s1P0Da5BM8vhaNPrh19bct5r4qNk3/WOK5gVQ8JMyzHYa9mfNR9eLlu1pZk1JGM
+	1HmrNZTbGY2yZ/x2hMgmgnJUe6UTGjDoM6Oa5U/+4w2A4NG3Oz72/zDVK4FRrDeG2jRbVeoXWJHPo
+	pSxWRhn4JMUtFhgvb64FaFO/Vz4AGuNRPLqyBWZLhLFCxg8Bo4FXbWa4E/5jVLalpmVHwaLdmXERx
+	HRR7b3m2Ciz+ZoAVgTH93rUufk0wtVbQAO09Bodyvts0qcWTDtF5xcoCCfUt2x4N6M49Qs1wpWqQl
+	+huLgbjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svdH7-000000030MO-3jDl;
-	Tue, 01 Oct 2024 13:50:49 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1sveKf-00000003Dgr-3sRU;
+	Tue, 01 Oct 2024 14:58:33 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svdH4-000000030KS-1iRk;
-	Tue, 01 Oct 2024 13:50:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727790644;
-	bh=Wrdy0e1dz6T5uwCE6i2Zj6+AsBKQNypB0lnUzsj5xCI=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=YKqD4Ys/oGurqoWIOyx7Wn0hRTWDfyPPhsxJBv4liLaL79RWNITs6yYigoa9t0bYR
-	 apYOKXRQwcu6+xBYSMhtRzZYX8riNbY3jwGgx54B/mqtnC6ECCMjvF74G/KjKZbgVO
-	 RJzRdFANc0GPw4iUWTjgPb0VclImiN7kwj4rnOBg0+pqJjlWEITVsXj59SE2r7LUoj
-	 5BPDH1RBCLKq/QZ/2cqqNz0kemyYFg31AZl1ypfI77sHEXKV+OTQMPdPXhzsDquLmV
-	 MCPct2nkHj5eYZYOGgoLbN+JW1S3vLWHHoQv7M/X9CrsLunLU6HnxNWpHM5ZiXsYda
-	 Riy6fn3Jf9ZCg==
-Received: from [192.168.50.250] (unknown [171.76.80.165])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6F28B17E0FC0;
-	Tue,  1 Oct 2024 15:50:39 +0200 (CEST)
-Message-ID: <87fea8ea-fe9d-4114-b03c-7ec50a4be874@collabora.com>
-Date: Tue, 1 Oct 2024 19:20:35 +0530
+	id 1svcza-00000002xVz-3s1f
+	for linux-mediatek@lists.infradead.org;
+	Tue, 01 Oct 2024 13:32:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1727789561;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=iojT1xfY/iXMYZ4HclXjt5wJyv9eCNn2RMRvon4kbuU=;
+	b=GSSiOv69fNEJVwQ+K86InxXSXuNnKs2jBvWLFV+Ti5gJlurZKFYaUQ/SXfKUgL9gtpi0tx
+	SOo9d1m91pGGgF+6dOwfB9KNX/TWKKkrA6DHWIxMiKGSTxjKO8saZ4vYORC8BbP7kSyIuX
+	e9SbSCkY6I6j8CTCPMrZvnr4ipbfyM4=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-642-MzZ3XVhTMDmvxKBEguZcRw-1; Tue, 01 Oct 2024 09:32:40 -0400
+X-MC-Unique: MzZ3XVhTMDmvxKBEguZcRw-1
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-42caca7215dso31498695e9.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 01 Oct 2024 06:32:40 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727789559; x=1728394359;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=iojT1xfY/iXMYZ4HclXjt5wJyv9eCNn2RMRvon4kbuU=;
+        b=HVIsMvL/8YyV3tq/z7nOx0TEZ7B3BJlmKIclO1gy371qxSmvqUDXywYFIZTiZjNBVp
+         L3V6OvingCv+bq9ESNTiUcx1wrpnVt/c6l0SpG9rBht+FO6l4wnsTIFpj/5KnmDsvWWR
+         9iMqDhEXp/58iCFSUlRXK1UA+fvMTYOsx18cQhpXwGftFFkpkqxSSV4wv4cIDBLkV2tI
+         ldqcbAOkzyxSH3MVCNdjrVCUcXJvO9zn65kNEkpJeca5MdMMOtRXTajiVga242ixLvEx
+         xazoZDPIkgAgDBTskwY18pzCVXAMLV1Uth7uzKaSsgUEKFmf73O2hcPczS7ezvHqNUAw
+         gjig==
+X-Forwarded-Encrypted: i=1; AJvYcCXlNtlzKcZlfc5rxvRLl313nY7v8cTAS0SVZ3p2rmAZ2UYf7jcA3z2t9YQA0mpxJGqjoB5eI5b9/IHeW4DPuQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzkij49KdIIfAcWUGWg2v9wSzokVw+xgTd0c3/ENrPr8V45dMUN
+	cUKjWNVyjZyT2bxkbru8M8S7Oe8Br+dtrIWdFE2EOFVNjZCOzdOTxyYYTRENJ8PTBlFjVFxS3Uf
+	ks1RKSufsTeX4zE4Ra7a77CKXCLSkUUZG8h40oAFs4Q4rUGYz4FZHuR4Z1/Po+NjI80Se/w==
+X-Received: by 2002:a05:600c:a02:b0:426:66e9:b844 with SMTP id 5b1f17b1804b1-42f584339aemr130160405e9.8.1727789559079;
+        Tue, 01 Oct 2024 06:32:39 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGDiutjjZjFmvjKmZCcGrKni3t0abnQlYsETvEbcK9G6gugyRexKg3WBxo9lrKH5Dul5fJhqA==
+X-Received: by 2002:a05:600c:a02:b0:426:66e9:b844 with SMTP id 5b1f17b1804b1-42f584339aemr130159935e9.8.1727789558576;
+        Tue, 01 Oct 2024 06:32:38 -0700 (PDT)
+Received: from ?IPV6:2a0d:3341:b088:b810::f71? ([2a0d:3341:b088:b810::f71])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42f57e13a1dsm136324005e9.32.2024.10.01.06.32.35
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 01 Oct 2024 06:32:37 -0700 (PDT)
+Message-ID: <4968c2ec-5584-4a98-9782-143605117315@redhat.com>
+Date: Tue, 1 Oct 2024 15:32:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4] docs/gpu: ci: update flake tests requirements
-From: Vignesh Raman <vignesh.raman@collabora.com>
-To: alexander.deucher@amd.com, christian.koenig@amd.com, Xinhui.Pan@amd.com,
- amd-gfx@lists.freedesktop.org
-Cc: daniels@collabora.com, helen.koike@collabora.com, airlied@gmail.com,
- daniel@ffwll.ch, robdclark@gmail.com, guilherme.gallo@collabora.com,
- sergi.blanch.torne@collabora.com, deborah.brouwer@collabora.com,
- dmitry.baryshkov@linaro.org, mripard@kernel.org, rodrigo.vivi@intel.com,
- quic_abhinavk@quicinc.com, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- virtualization@lists.linux.dev, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org
-References: <20240930095255.2071586-1-vignesh.raman@collabora.com>
+Subject: Re: [PATCH net v2 2/2] page_pool: fix IOMMU crash when driver has
+ already unbound
+To: Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
+ kuba@kernel.org
+Cc: liuyonglong@huawei.com, fanghaiqing@huawei.com, zhangkun09@huawei.com,
+ Robin Murphy <robin.murphy@arm.com>,
+ Alexander Duyck <alexander.duyck@gmail.com>, IOMMU <iommu@lists.linux.dev>,
+ Wei Fang <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>,
+ Clark Wang <xiaoning.wang@nxp.com>, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Saeed Mahameed
+ <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>,
+ Tariq Toukan <tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>, imx@lists.linux.dev,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
+ linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-mm@kvack.org
+References: <20240925075707.3970187-1-linyunsheng@huawei.com>
+ <20240925075707.3970187-3-linyunsheng@huawei.com>
+From: Paolo Abeni <pabeni@redhat.com>
+In-Reply-To: <20240925075707.3970187-3-linyunsheng@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-In-Reply-To: <20240930095255.2071586-1-vignesh.raman@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241001_065046_685107_7822C6F7 
-X-CRM114-Status: GOOD (  18.07  )
+X-CRM114-CacheID: sfid-20241001_063243_075727_69E9B1C8 
+X-CRM114-Status: GOOD (  22.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,71 +127,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi amdgpu Maintainers,
+On 9/25/24 09:57, Yunsheng Lin wrote:
+> Networking driver with page_pool support may hand over page
+> still with dma mapping to network stack and try to reuse that
+> page after network stack is done with it and passes it back
+> to page_pool to avoid the penalty of dma mapping/unmapping.
+> With all the caching in the network stack, some pages may be
+> held in the network stack without returning to the page_pool
+> soon enough, and with VF disable causing the driver unbound,
+> the page_pool does not stop the driver from doing it's
+> unbounding work, instead page_pool uses workqueue to check
+> if there is some pages coming back from the network stack
+> periodically, if there is any, it will do the dma unmmapping
+> related cleanup work.
+> 
+> As mentioned in [1], attempting DMA unmaps after the driver
+> has already unbound may leak resources or at worst corrupt
+> memory. Fundamentally, the page pool code cannot allow DMA
+> mappings to outlive the driver they belong to.
+> 
+> Currently it seems there are at least two cases that the page
+> is not released fast enough causing dma unmmapping done after
+> driver has already unbound:
+> 1. ipv4 packet defragmentation timeout: this seems to cause
+>     delay up to 30 secs.
+> 2. skb_defer_free_flush(): this may cause infinite delay if
+>     there is no triggering for net_rx_action().
+> 
+> In order not to do the dma unmmapping after driver has already
+> unbound and stall the unloading of the networking driver, add
+> the pool->items array to record all the pages including the ones
+> which are handed over to network stack, so the page_pool can
+> do the dma unmmapping for those pages when page_pool_destroy()
+> is called. As the pool->items need to be large enough to avoid
+> performance degradation, add a 'item_full' stat to indicate the
+> allocation failure due to unavailability of pool->items.
 
-On 30/09/24 15:22, Vignesh Raman wrote:
-> Update the documentation to specify linking to a relevant GitLab
-> issue or email report for each new flake entry. Added specific
-> GitLab issue urls for amdgpu, i915, msm and xe driver.
-> 
-> Acked-by: Maxime Ripard <mripard@kernel.org>
-> Acked-by: Rodrigo Vivi <rodrigo.vivi@intel.com> #intel and xe
-> Acked-by: Abhinav Kumar <quic_abhinavk@quicinc.com> # msm
-> Acked-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org> # msm
-> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
-> ---
-> 
-> v2:
-> - Add gitlab issue link for msm driver.
-> 
-> v3:
-> - Update docs to specify we use email reporting or GitLab issues for flake entries.
-> 
-> v4:
-> - Add gitlab issue link for xe driver.
-> 
-> ---
->   Documentation/gpu/automated_testing.rst | 14 ++++++++++----
->   1 file changed, 10 insertions(+), 4 deletions(-)
-> 
-> diff --git a/Documentation/gpu/automated_testing.rst b/Documentation/gpu/automated_testing.rst
-> index 2d5a28866afe..6d7c6086034d 100644
-> --- a/Documentation/gpu/automated_testing.rst
-> +++ b/Documentation/gpu/automated_testing.rst
-> @@ -68,19 +68,25 @@ known to behave unreliably. These tests won't cause a job to fail regardless of
->   the result. They will still be run.
->   
->   Each new flake entry must be associated with a link to the email reporting the
-> -bug to the author of the affected driver, the board name or Device Tree name of
-> -the board, the first kernel version affected, the IGT version used for tests,
-> -and an approximation of the failure rate.
-> +bug to the author of the affected driver or the relevant GitLab issue. The entry
-> +must also include the board name or Device Tree name, the first kernel version
-> +affected, the IGT version used for tests, and an approximation of the failure rate.
->   
->   They should be provided under the following format::
->   
-> -  # Bug Report: $LORE_OR_PATCHWORK_URL
-> +  # Bug Report: $LORE_URL_OR_GITLAB_ISSUE
->     # Board Name: broken-board.dtb
->     # Linux Version: 6.6-rc1
->     # IGT Version: 1.28-gd2af13d9f
->     # Failure Rate: 100
->     flaky-test
->   
-> +Use the appropriate link below to create a GitLab issue:
-> +amdgpu driver: https://gitlab.freedesktop.org/drm/amd/-/issues
+This looks really invasive, with room for potentially large performance 
+regressions or worse. At very least it does not look suitable for net.
 
-Please could you ack this patch. Thanks.
+Is the problem only tied to VFs drivers? It's a pity all the page_pool 
+users will have to pay a bill for it...
 
-> +i915 driver: https://gitlab.freedesktop.org/drm/i915/kernel/-/issues
-> +msm driver: https://gitlab.freedesktop.org/drm/msm/-/issues
-> +xe driver: https://gitlab.freedesktop.org/drm/xe/kernel/-/issues
-> +
->   drivers/gpu/drm/ci/${DRIVER_NAME}-${HW_REVISION}-skips.txt
->   -----------------------------------------------------------
->   
+/P
 
-Regards,
-Vignesh
 
