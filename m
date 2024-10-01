@@ -4,115 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E371CEACD5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Oct 2024 14:58:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DB1FCEACDD
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Oct 2024 15:19:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iojT1xfY/iXMYZ4HclXjt5wJyv9eCNn2RMRvon4kbuU=; b=zfnTXo4jAv+SZcv7fmHLujVAlc
-	yQ2SFPDOuwDy+5s1P0Da5BM8vhaNPrh19bct5r4qNk3/WOK5gVQ8JMyzHYa9mfNR9eLlu1pZk1JGM
-	1HmrNZTbGY2yZ/x2hMgmgnJUe6UTGjDoM6Oa5U/+4w2A4NG3Oz72/zDVK4FRrDeG2jRbVeoXWJHPo
-	pSxWRhn4JMUtFhgvb64FaFO/Vz4AGuNRPLqyBWZLhLFCxg8Bo4FXbWa4E/5jVLalpmVHwaLdmXERx
-	HRR7b3m2Ciz+ZoAVgTH93rUufk0wtVbQAO09Bodyvts0qcWTDtF5xcoCCfUt2x4N6M49Qs1wpWqQl
-	+huLgbjQ==;
+	bh=F8C8gN+r2U7cAyrAU2/VREbLr3+eutPQWNzqTWWnO2Y=; b=mv2hzXLOT3jkEMgEmshqjHBYUf
+	GjLkaq8QVv51I3tDlT2ZoHD+q621Cqttysm6ovZCKz0xHmivuprheML4k/o2CqFu9gA5xFBJqiFkR
+	AKJMlta9/jJV4bGQF4G88dXYPTyeHZphnthtuml8EJQAgli6tpHhMiMfISh1/Xoliq+aEvIWZ1i0A
+	9KDfP2LXiokPdHSDm2EpbDanv/uCQm64okE6HU2Bd/CoUc7DUTiqEQkCO+FOmjHxx2E+zBUARZaIE
+	/m9buwwsDKZdrUQOWyYLo77gIEuEiDueUBFfDpoE7mg4zOBN/8+LFXbCEhAKqPDfP6sGimI1Ebo4j
+	UPFRYTlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sveKf-00000003Dgr-3sRU;
-	Tue, 01 Oct 2024 14:58:33 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1svef4-00000003J9W-0lqL;
+	Tue, 01 Oct 2024 15:19:38 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svcza-00000002xVz-3s1f
-	for linux-mediatek@lists.infradead.org;
-	Tue, 01 Oct 2024 13:32:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1727789561;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=iojT1xfY/iXMYZ4HclXjt5wJyv9eCNn2RMRvon4kbuU=;
-	b=GSSiOv69fNEJVwQ+K86InxXSXuNnKs2jBvWLFV+Ti5gJlurZKFYaUQ/SXfKUgL9gtpi0tx
-	SOo9d1m91pGGgF+6dOwfB9KNX/TWKKkrA6DHWIxMiKGSTxjKO8saZ4vYORC8BbP7kSyIuX
-	e9SbSCkY6I6j8CTCPMrZvnr4ipbfyM4=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-642-MzZ3XVhTMDmvxKBEguZcRw-1; Tue, 01 Oct 2024 09:32:40 -0400
-X-MC-Unique: MzZ3XVhTMDmvxKBEguZcRw-1
-Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-42caca7215dso31498695e9.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 01 Oct 2024 06:32:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727789559; x=1728394359;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=iojT1xfY/iXMYZ4HclXjt5wJyv9eCNn2RMRvon4kbuU=;
-        b=HVIsMvL/8YyV3tq/z7nOx0TEZ7B3BJlmKIclO1gy371qxSmvqUDXywYFIZTiZjNBVp
-         L3V6OvingCv+bq9ESNTiUcx1wrpnVt/c6l0SpG9rBht+FO6l4wnsTIFpj/5KnmDsvWWR
-         9iMqDhEXp/58iCFSUlRXK1UA+fvMTYOsx18cQhpXwGftFFkpkqxSSV4wv4cIDBLkV2tI
-         ldqcbAOkzyxSH3MVCNdjrVCUcXJvO9zn65kNEkpJeca5MdMMOtRXTajiVga242ixLvEx
-         xazoZDPIkgAgDBTskwY18pzCVXAMLV1Uth7uzKaSsgUEKFmf73O2hcPczS7ezvHqNUAw
-         gjig==
-X-Forwarded-Encrypted: i=1; AJvYcCXlNtlzKcZlfc5rxvRLl313nY7v8cTAS0SVZ3p2rmAZ2UYf7jcA3z2t9YQA0mpxJGqjoB5eI5b9/IHeW4DPuQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzkij49KdIIfAcWUGWg2v9wSzokVw+xgTd0c3/ENrPr8V45dMUN
-	cUKjWNVyjZyT2bxkbru8M8S7Oe8Br+dtrIWdFE2EOFVNjZCOzdOTxyYYTRENJ8PTBlFjVFxS3Uf
-	ks1RKSufsTeX4zE4Ra7a77CKXCLSkUUZG8h40oAFs4Q4rUGYz4FZHuR4Z1/Po+NjI80Se/w==
-X-Received: by 2002:a05:600c:a02:b0:426:66e9:b844 with SMTP id 5b1f17b1804b1-42f584339aemr130160405e9.8.1727789559079;
-        Tue, 01 Oct 2024 06:32:39 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGDiutjjZjFmvjKmZCcGrKni3t0abnQlYsETvEbcK9G6gugyRexKg3WBxo9lrKH5Dul5fJhqA==
-X-Received: by 2002:a05:600c:a02:b0:426:66e9:b844 with SMTP id 5b1f17b1804b1-42f584339aemr130159935e9.8.1727789558576;
-        Tue, 01 Oct 2024 06:32:38 -0700 (PDT)
-Received: from ?IPV6:2a0d:3341:b088:b810::f71? ([2a0d:3341:b088:b810::f71])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42f57e13a1dsm136324005e9.32.2024.10.01.06.32.35
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 01 Oct 2024 06:32:37 -0700 (PDT)
-Message-ID: <4968c2ec-5584-4a98-9782-143605117315@redhat.com>
-Date: Tue, 1 Oct 2024 15:32:34 +0200
+	id 1svedn-00000003J0d-2aEV;
+	Tue, 01 Oct 2024 15:18:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1727795897;
+	bh=WzhQBUU0W7hHsulAWgsxJ5bVS81u+Wqsj4XE0fczMc4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=PpGB4869JZUQPobQgIGGkmTjpZKJCRR7GbmEqWYRA6/4yIxwZ4wyiHSDsd/daymrh
+	 XHxqyQUjXlzd7A6gYO3mZm8lI9r5UBhsLXuTNSKD60B+QdYRXfzuxGlHMhSNtdygQ8
+	 fTEpiqN/H4gCtTlYj5Zek81ZncDnNk5XScu7CQ8g5zOh7A0T7aRJZIEPVtCZLd23SS
+	 ktL+Ubx4lonnuck0uYMmQc6uXQTNV5jYviBdZPZzWhA/JxQAk3N1RELRiVsaVf0jVS
+	 3J6oHkSYO3TVxgcy77Aj2gkovVMrg/A3IT94sCMQcsX9OqnRRRyDZPrJrtmy6nFlUy
+	 ftTTCyW8Kl5/w==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1A1CE17E0FD5;
+	Tue,  1 Oct 2024 17:18:17 +0200 (CEST)
+Message-ID: <908e6fcb-d1bc-4ab1-b4b8-6a13096b837c@collabora.com>
+Date: Tue, 1 Oct 2024 17:18:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net v2 2/2] page_pool: fix IOMMU crash when driver has
- already unbound
-To: Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
- kuba@kernel.org
-Cc: liuyonglong@huawei.com, fanghaiqing@huawei.com, zhangkun09@huawei.com,
- Robin Murphy <robin.murphy@arm.com>,
- Alexander Duyck <alexander.duyck@gmail.com>, IOMMU <iommu@lists.linux.dev>,
- Wei Fang <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>,
- Clark Wang <xiaoning.wang@nxp.com>, Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>, Saeed Mahameed
- <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>,
- Tariq Toukan <tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>, imx@lists.linux.dev,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
- linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org,
+Subject: Re: [PATCH v2 3/6] nvmem: mtk-efuse: Enable postprocess for mt8188
+ GPU speed binning
+To: Pablo Sun <pablo.sun@mediatek.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-mm@kvack.org
-References: <20240925075707.3970187-1-linyunsheng@huawei.com>
- <20240925075707.3970187-3-linyunsheng@huawei.com>
-From: Paolo Abeni <pabeni@redhat.com>
-In-Reply-To: <20240925075707.3970187-3-linyunsheng@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ linux-clk@vger.kernel.org
+References: <20240927103005.17605-1-pablo.sun@mediatek.com>
+ <20240927103005.17605-4-pablo.sun@mediatek.com>
+ <57dfe684-c9a1-4cb3-8c87-9d2fef09aed7@collabora.com>
+ <329b554b-e029-0dfe-7c18-67c7c58f8302@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
+In-Reply-To: <329b554b-e029-0dfe-7c18-67c7c58f8302@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241001_063243_075727_69E9B1C8 
-X-CRM114-Status: GOOD (  22.03  )
+X-CRM114-CacheID: sfid-20241001_081819_833107_144BA5A7 
+X-CRM114-Status: GOOD (  31.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,48 +83,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/25/24 09:57, Yunsheng Lin wrote:
-> Networking driver with page_pool support may hand over page
-> still with dma mapping to network stack and try to reuse that
-> page after network stack is done with it and passes it back
-> to page_pool to avoid the penalty of dma mapping/unmapping.
-> With all the caching in the network stack, some pages may be
-> held in the network stack without returning to the page_pool
-> soon enough, and with VF disable causing the driver unbound,
-> the page_pool does not stop the driver from doing it's
-> unbounding work, instead page_pool uses workqueue to check
-> if there is some pages coming back from the network stack
-> periodically, if there is any, it will do the dma unmmapping
-> related cleanup work.
+Il 01/10/24 05:38, Pablo Sun ha scritto:
+> Hi Angelo,
 > 
-> As mentioned in [1], attempting DMA unmaps after the driver
-> has already unbound may leak resources or at worst corrupt
-> memory. Fundamentally, the page pool code cannot allow DMA
-> mappings to outlive the driver they belong to.
 > 
-> Currently it seems there are at least two cases that the page
-> is not released fast enough causing dma unmmapping done after
-> driver has already unbound:
-> 1. ipv4 packet defragmentation timeout: this seems to cause
->     delay up to 30 secs.
-> 2. skb_defer_free_flush(): this may cause infinite delay if
->     there is no triggering for net_rx_action().
+> On 9/30/24 17:40, AngeloGioacchino Del Regno wrote:
+>> Il 27/09/24 12:30, Pablo Sun ha scritto:
+>>> Similar to mt8186, the efuse data for mt8188's GPU speed binning
+>>> requires post-process to convert the bit field format expected
+>>> by the OPP table.
+>>>
+>>> Since mt8188 efuse is not compatible to mt8186, add a new compatible
+>>> entry for mt8188 and enable postprocess.
+>>>
+>>> Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
+>>
+>> I know I told you to just reuse the pdata from 8186, but there's something else
+>> that came to mind, here...
+>>
+>> ...actually, the efuse block from 8188 is indeed compatible with 8186, meaning
+>> that the register r/w, etc, are all the same (bar the addresses, yes)
+>>
+>> So, I wonder if it's not just a better idea to not even add mt8188-efuse in this
+>> driver's of_device_id array, and just add that to the binding so that we permit
+>> using
+>>          efuse: efuse@11f20000 {
+>>              compatible = "mediatek,mt8188-efuse",
+>>                       "mediatek,mt8186-efuse", "mediatek,efuse";
+>>              [etc]
+>>          }
 > 
-> In order not to do the dma unmmapping after driver has already
-> unbound and stall the unloading of the networking driver, add
-> the pool->items array to record all the pages including the ones
-> which are handed over to network stack, so the page_pool can
-> do the dma unmmapping for those pages when page_pool_destroy()
-> is called. As the pool->items need to be large enough to avoid
-> performance degradation, add a 'item_full' stat to indicate the
-> allocation failure due to unavailability of pool->items.
+> Thanks for proposing this. I agree that in the case of Mali GPU speed binning
+> info, mt8188 behaves exactly the same as mt8186, only the cell addresses are
+> different.
+> 
+> I wrote "mt8188 efuse is not compatible to mt8186" because I thought
+> different eFuse cell layout leads to incompatibility, but it is correct that
+> the cell layout differences can be expressed by the device tree nodes,
+> so they are actually compatible in terms of hardware interface.
+> 
+> I'll drop this patch ("nvmem: mtk-efuse: Enable postprocess for mt8188 GPU speed 
+> binning")
+> in v3 and update dt-binding "mediatek,efuse.yaml" instead.
+> 
+>> Means that in mediatek,efuse.yaml you'll have to add...
+>>
+>>        - items:
+>>            - enum:
+>>                - mediatek,mt8188-efuse
+>>            - const: mediatek,mt8186-efuse
+>>            - const: mediatek,efuse <---- or without this, even.
+>>
+>> In the end, the "mediatek,efuse" property is somewhat deprecated, so that'd
+>> also be a good time to start the dropping process, as I imagine that future SoCs
+>> would also need the same speedbin transformations - which means that they'll all
+>> be compatible with 8186....
+> [snip]
+> 
+> But I am not sure if we should now drop "mediatek,efuse". The post-process for
+> GPU speed binning info is only applicable to ARM Mali. Since there are MediaTek
+> SoCs that are not using ARM Mali, or not having GPU at all, would it make more sense
+> to keep the "mediatek,efuse" fallback compatible for those cases?
+> 
+> 
 
-This looks really invasive, with room for potentially large performance 
-regressions or worse. At very least it does not look suitable for net.
+No, not really... because a specific SoC may *either* have Mali *or* PowerVR...
 
-Is the problem only tied to VFs drivers? It's a pity all the page_pool 
-users will have to pay a bill for it...
+Counting that every SoC will, in any case, need a model-specific compatible (as in,
+you can't ever have `compatible = "mediatek,efuse"`, but you will always have
+`compatible = "mediatek,mt(model)", "mediatek,mt(othermodel)"` or similar), you
+will still have to add that new SoC to the binding.
 
-/P
+In case, that SoC can be still added to the list in the driver if there's any
+incompatibility with the others (such as different register layout or binning
+interpreter).
 
+But then, keep in mind that the code that interprets the binning data in the fuses
+is converting it from MediaTek format (1-2-3-4..etc) to the "generic" format that
+is required by the OPP framework, which is *not* specific to ARM Mali.
+
+Just to say - if the (MediaTek) format of the fuse data for binning is the same
+for both PVR and Mali (so, it's still always 1,2,3,4,etc), then there wouldn't be
+any incompatibility between the two, as PVR anyway uses OPP tables as much as Mali.
+
+Cheers,
+Angelo
 
