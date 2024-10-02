@@ -4,108 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57286CF3194
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 05:01:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23337CF3197
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 05:16:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JQxog7SFEJHt2mTFpnbzFTmfnQuxrbS8mdNwid+sy78=; b=T7k/3KTMFd4Ggp8ITGUauko+f+
-	cFzzTt+oeUEGXjpkl23J931fHyeGupcbMlYMqkGgEpEcKLZ/eKXHotD89W1Oyjjd7v9WB3vUy1Mvq
-	pB5NWImLdx7d371rEwWgMAIuVvfee3sR8YX3NLiOIDgzwR7hU7N3H/qlYCDP5BeUxnOMBlBnTXuFx
-	hZUE+9ZknJpqnhgYANbCo5xKSQKsleL9GMFRwQTz9SLCr4RYdpIX51n3+PNvzMTa94Utu3Jg02EQj
-	9u/7FNuLtOH9e0TbtEKeZ9n/IOqyeyJ/EvU+e6KsYoT7Pvchlg/xhSOqzwpfvSBnVWrk+lzGt5Wuf
-	tdrtANgQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iFqxoJohRdNSk26a5JXAeexJ/bKMxMw7cAqH1rG0sbA=; b=rulTgev6P+3lBdY90tHvtc2Nzq
+	+U3tL2N3nHOu7Nv7QmjzqTRdxSstbWEaUb4VhS8Cetz7BZIoh99Rl1mBWMu0de3FG3yDB2JRRf820
+	BanmWxpfFX133lpCosVYvN+U4q5/dYamGtOU19KDPMZuwiHQCWHUuLpnIWmt4k/Ra9mU+1kgD2I7H
+	AXz6ep4rsD5cL4VsGfQKDBFz15RQkqFiTDMGNqymTtSs1ly15LTBdTjtQPG7vjKv4nmKoqDGQsPLt
+	2BTOec7wCMnAPlibbQkYf5j3gl84hJrZQGWw4PX4nE90l2KObhgXb6YLDgcK9ycwKo06Ek+kiGnkI
+	qzZWsvZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svrUk-00000004oKt-03w5;
-	Wed, 02 Oct 2024 05:01:50 +0000
+	id 1svrj7-00000004pKW-17XB;
+	Wed, 02 Oct 2024 05:16:41 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svrUh-00000004oKL-0z8g;
-	Wed, 02 Oct 2024 05:01:48 +0000
-X-UUID: 6985a286807b11efb3adad29d29602c1-20241001
+	id 1svrj3-00000004pI1-3mhG;
+	Wed, 02 Oct 2024 05:16:39 +0000
+X-UUID: 7b733c72807d11efb3adad29d29602c1-20241001
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=JQxog7SFEJHt2mTFpnbzFTmfnQuxrbS8mdNwid+sy78=;
-	b=fdow3+SBFNRvJU4hMemLdTk8gGrcs7BP2EmEq8oowGKhzgwKV6y5XK7vMeErjBnWmGGUHxX1PsGSyneyZzRjZAMjIvTNbak14+jrTfxURw1C6w4XbJ6ZgjvIs0NRDoHglZmmQTpWeGtizpQeHNaUbJQxiSxZzukCfi9MzvQBYsA=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=iFqxoJohRdNSk26a5JXAeexJ/bKMxMw7cAqH1rG0sbA=;
+	b=GiRRP+5BamBif6WJKX+s2ivVE9dUcgWn0/+sDjV5FeFem+wbrNPqgja3vElK+XZUVK8ta9FUVkFZY3gGh/KpWl3rKhnXB9c2KPVbcwa29oIjvmIQmq39Cp/aUv54kFXEbTEoE9JT6Gb0yC9isILeAas71k/0GQvSNiFR/TjzIuE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:ac4267c3-8ec9-4e7f-9d1e-7d4b3f45122f,IP:0,U
+X-CID-O-INFO: VERSION:1.1.41,REQID:9c96f346-94b9-4207-94ac-2f24d5915738,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:c50ce09e-8e9a-4ac1-b510-390a86b53c0a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|-5,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:1d1de09e-8e9a-4ac1-b510-390a86b53c0a,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 6985a286807b11efb3adad29d29602c1-20241001
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+X-UUID: 7b733c72807d11efb3adad29d29602c1-20241001
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <macpaul.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1640121209; Tue, 01 Oct 2024 22:01:41 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 1883168754; Tue, 01 Oct 2024 22:16:30 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 2 Oct 2024 13:01:35 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
- Transport; Wed, 2 Oct 2024 13:01:33 +0800
-Message-ID: <a41bf3aa-812e-2234-cca8-c68a8420f9e4@mediatek.com>
-Date: Wed, 2 Oct 2024 13:01:31 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH v2 2/5] dt-bindings: iommu: mediatek: Fix interrupt count
- constraint for new SoCs
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ 15.2.1118.26; Wed, 2 Oct 2024 13:16:26 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 2 Oct 2024 13:16:26 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
 	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Simona Vetter
 	<simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
 	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Yong Wu <yong.wu@mediatek.com>, "Joerg
- Roedel" <joro@8bytes.org>, Will Deacon <will@kernel.org>, Robin Murphy
-	<robin.murphy@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, CK Hu
-	<ck.hu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>, Tinghan Shen
-	<tinghan.shen@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>, Ben Lok
-	<ben.lok@mediatek.com>, "Nancy . Lin" <nancy.lin@mediatek.com>,
-	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<iommu@lists.linux.dev>, <linux-arm-kernel@lists.infradead.org>, "Alexandre
- Mergnat" <amergnat@baylibre.com>
+	Conor Dooley <conor+dt@kernel.org>, Yong Wu <yong.wu@mediatek.com>, Joerg
+ Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Robin Murphy
+	<robin.murphy@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rohit
+ Agarwal <rohiagar@chromium.org>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <iommu@lists.linux.dev>,
+	<linux-arm-kernel@lists.infradead.org>, Alexandre Mergnat
+	<amergnat@baylibre.com>
 CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>, "Chris-qj
- chen" <chris-qj.chen@mediatek.com>, MediaTek Chromebook Upstream
+	Macpaul Lin <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, Sen
+ Chu <sen.chu@mediatek.com>, Chris-qj chen <chris-qj.chen@mediatek.com>,
+	MediaTek Chromebook Upstream
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
 	<wenst@chromium.org>
-References: <20240926111449.9245-1-macpaul.lin@mediatek.com>
- <20240926111449.9245-2-macpaul.lin@mediatek.com>
- <8883c84d-8333-4b04-83b5-022be5b6153c@collabora.com>
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-In-Reply-To: <8883c84d-8333-4b04-83b5-022be5b6153c@collabora.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+Subject: [PATCH v5 3/5] arm64: dts: mediatek: mt8395-genio-1200-evk: Fix dtbs_check error for phy
+Date: Wed, 2 Oct 2024 13:16:18 +0800
+Message-ID: <20241002051620.2050-3-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20241002051620.2050-1-macpaul.lin@mediatek.com>
+References: <20241002051620.2050-1-macpaul.lin@mediatek.com>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--7.179900-8.000000
-X-TMASE-MatchedRID: L8tZF6zWW2oNtKv7cnNXnSa1MaKuob8PofZV/2Xa0cK+UkTh6A/Dwdno
-	quRwHY3BA5x6HN+sIJp31PcFav1MzrBAQLqGlKiv6/xAZojbl7dbAoaK+wS4jVThXWky81BHWYS
-	8OrMR6Ddh9M64k1dYu8r9L0WloblybC1/2cudIH8ve6W+IORwrRxl385bjK8qBFepjP4Awbk1Hc
-	Jp3+cWzRvbS1sPuc0r4/I+BK21AaKW0F2DMwRPmbEKX02srTXI0pVrZbbfikggcyGevtftJ6PFj
-	JEFr+oloTCA5Efyn8CNo+PRbWqfRK6NVEWSRWyb+q79xy5JhPV9AN1RR7xHgxUc1EdkGQIHBVEe
-	UwmLhxCRxDbvN0TdZ9Bo5imTamTbF97lgTik4vNK3RdBmL/Uwy3U7y2wGlJPpewvSdi7pYMM6XK
-	FXY+j89UQ5D3w2Dm4IpaqxlxwyA44obSkgSym9A==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--7.179900-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 5D4F0D16EEB72D54571CE1ADEE61674C0C722E78899534C30E5028FC934A423C2000:8
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241001_220147_311830_0A1E6960 
-X-CRM114-Status: GOOD (  15.20  )
+X-CRM114-CacheID: sfid-20241001_221637_986503_56AEF9DB 
+X-CRM114-Status: GOOD (  12.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,82 +101,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The ethernet-phy node in mt8395-genio-1200-evk.dts was triggering a
+dtbs_check error. The error message was:
+  eth-phy0@1: $nodename:0: 'eth-phy0@1' does not match
+              '^ethernet-phy(@[a-f0-9]+)?$'
+Fix this issue by replacing 'eth-phy' node to generic 'ethernet-phy'.
 
+Fixes: f2b543a191b6 ("arm64: dts: mediatek: add device-tree for Genio 1200 EVK board")
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On 9/30/24 16:49, AngeloGioacchino Del Regno wrote:
-> Il 26/09/24 13:14, Macpaul Lin ha scritto:
->> The infra-iommu node in mt8195.dtsi was triggering a CHECK_DTBS error due
->> to an excessively long 'interrupts' property. The error message was:
->>
+Changes for v2, v3, v4 and v5:
+ - No change.
 
-[snip]
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+index 1ef6262b65c9..b4b48eb93f3c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+@@ -187,7 +187,7 @@ mdio {
+ 		compatible = "snps,dwmac-mdio";
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+-		eth_phy0: eth-phy0@1 {
++		eth_phy0: ethernet-phy@1 {
+ 			compatible = "ethernet-phy-id001c.c916";
+ 			reg = <0x1>;
+ 		};
+-- 
+2.45.2
 
->>
->> diff --git 
->> a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml 
->> b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
->> index ea6b0f5f24de..fdd2996d2a31 100644
->> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
->> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
->> @@ -96,7 +96,8 @@ properties:
->>       maxItems: 1
->>     interrupts:
->> -    maxItems: 1
->> +    minItems: 1
->> +    maxItems: 5
->>     clocks:
->>       items:
->> @@ -210,6 +211,28 @@ allOf:
->>         required:
->>           - mediatek,larbs
->> +  - if:
->> +      properties:
->> +        compatible:
->> +          contains:
->> +            enum:
->> +              - mediatek,mt8195-iommu-infra
->> +
->> +    then:
->> +      properties:
->> +        interrupts:
->> +          description: |
-> 
-> Do you really need to keep the formatting?
-> 
-> If you rephrase that as:
-> 
-> The infra IOMMU in MT8195 has five banks: each features one set
-> of APB registers for the normal world (set 0), one
-
-Shouldn't we use a 'three' here?
-Three APB register sets for the protected world 1, protected world 2,
-and protected world 3.
-
-> for the protected
-> world (sets 1-3) and one for the secure world (set 4), and each set
-> has its own interrupt. Therefore, five interrupts are needed.
-> 
-> ...you won't need the bar :-)
-
-Thanks for the suggestion. The description has been moved to
-top common property in v3, and v4,
-hence the bar is still required to explain the
-others SOCs. I'll try to rephrase the description for MT8195 also.
-
->> +            The IOMMU of MT8195 has 5 banks: 0/1/2/3/4.
->> +            Each bank has a set of APB registers corresponding to the
->> +            normal world, protected world 1/2/3, and secure world, 
->> respectively.
->> +            Therefore, 5 interrupt numbers are needed.
->> +          maxItems: 5
-> 
-> minItems: 5
-> 
-> Cheers,
-> Angelo
-> 
-> 
-
-Thanks
-Macpaul Lin
 
