@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23337CF3197
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 05:16:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB52CCF3194
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 05:17:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iFqxoJohRdNSk26a5JXAeexJ/bKMxMw7cAqH1rG0sbA=; b=rulTgev6P+3lBdY90tHvtc2Nzq
-	+U3tL2N3nHOu7Nv7QmjzqTRdxSstbWEaUb4VhS8Cetz7BZIoh99Rl1mBWMu0de3FG3yDB2JRRf820
-	BanmWxpfFX133lpCosVYvN+U4q5/dYamGtOU19KDPMZuwiHQCWHUuLpnIWmt4k/Ra9mU+1kgD2I7H
-	AXz6ep4rsD5cL4VsGfQKDBFz15RQkqFiTDMGNqymTtSs1ly15LTBdTjtQPG7vjKv4nmKoqDGQsPLt
-	2BTOec7wCMnAPlibbQkYf5j3gl84hJrZQGWw4PX4nE90l2KObhgXb6YLDgcK9ycwKo06Ek+kiGnkI
-	qzZWsvZg==;
+	bh=Q5XW3T0xv/CZKQi5Xfzj+UG9XAIhZU8hG/xZEScLWiU=; b=cMOxtoVsIXhLaLULcQxhUilI+G
+	xZBweduHtHMSTjfwOBUsxDWpXwnHgglIK/nBC/KT2HOCNHgd76CtUKfp2SONN8xZrxZjrvVgRKx6u
+	QE7DIIGxH2w1N/DGE2xGJMcmu5muBu9jLCx2c5S6+/azjLSbHcTy1XdLGgxKMDNdMwU/REIQK89BM
+	NgKoyFkbOoCHboE+17AyJRxK96Yk3ilHt4BBLc4/1naXoSVaf0BYfgzsiBiRuyv2a0x8SgIAGoX2e
+	3Hp+LXAtIkOja1bjPwyu+64rHGCfrSy8BrZoMLeSCnxIcmVHuzNgDeFtwbuRllWAeBtI8v6Ydvx2u
+	f8SHopjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svrj7-00000004pKW-17XB;
-	Wed, 02 Oct 2024 05:16:41 +0000
+	id 1svrkM-00000004pg9-3cvN;
+	Wed, 02 Oct 2024 05:17:58 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svrj3-00000004pI1-3mhG;
-	Wed, 02 Oct 2024 05:16:39 +0000
-X-UUID: 7b733c72807d11efb3adad29d29602c1-20241001
+	id 1svrj3-00000004pI3-3mb2;
+	Wed, 02 Oct 2024 05:16:40 +0000
+X-UUID: 7b9ac33c807d11efb3adad29d29602c1-20241001
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=iFqxoJohRdNSk26a5JXAeexJ/bKMxMw7cAqH1rG0sbA=;
-	b=GiRRP+5BamBif6WJKX+s2ivVE9dUcgWn0/+sDjV5FeFem+wbrNPqgja3vElK+XZUVK8ta9FUVkFZY3gGh/KpWl3rKhnXB9c2KPVbcwa29oIjvmIQmq39Cp/aUv54kFXEbTEoE9JT6Gb0yC9isILeAas71k/0GQvSNiFR/TjzIuE=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Q5XW3T0xv/CZKQi5Xfzj+UG9XAIhZU8hG/xZEScLWiU=;
+	b=TMAKESaQct4JA7x8OwfqLHzy7B1A5pmgqF2V5KhQusZYNtwRSszbG6A7CVaAop9A6G9i0cjiELJ/TmPCFmEyR8XWK+Gdu+fSeUFDU6bq9AmmkLHDV0P2EfxGZTzMqhxij+yItcUvb1C1zyhrzXLVqcLbLcrf1PPXbGBMDTPHkCw=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:9c96f346-94b9-4207-94ac-2f24d5915738,IP:0,U
+X-CID-O-INFO: VERSION:1.1.41,REQID:b35bcccf-77a0-49a6-9b62-28ca8568a7bc,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:1d1de09e-8e9a-4ac1-b510-390a86b53c0a,B
+X-CID-META: VersionHash:6dc6a47,CLOUDID:1e1de09e-8e9a-4ac1-b510-390a86b53c0a,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 7b733c72807d11efb3adad29d29602c1-20241001
+X-UUID: 7b9ac33c807d11efb3adad29d29602c1-20241001
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <macpaul.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1883168754; Tue, 01 Oct 2024 22:16:30 -0700
+	with ESMTP id 379223381; Tue, 01 Oct 2024 22:16:30 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 2 Oct 2024 13:16:26 +0800
+ 15.2.1118.26; Wed, 2 Oct 2024 13:16:27 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.1118.26 via Frontend Transport; Wed, 2 Oct 2024 13:16:26 +0800
@@ -74,9 +74,9 @@ CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
 	MediaTek Chromebook Upstream
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
 	<wenst@chromium.org>
-Subject: [PATCH v5 3/5] arm64: dts: mediatek: mt8395-genio-1200-evk: Fix dtbs_check error for phy
-Date: Wed, 2 Oct 2024 13:16:18 +0800
-Message-ID: <20241002051620.2050-3-macpaul.lin@mediatek.com>
+Subject: [PATCH v5 4/5] arm64: dts: mt8195: Fix dtbs_check error for mutex node
+Date: Wed, 2 Oct 2024 13:16:19 +0800
+Message-ID: <20241002051620.2050-4-macpaul.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20241002051620.2050-1-macpaul.lin@mediatek.com>
 References: <20241002051620.2050-1-macpaul.lin@mediatek.com>
@@ -85,8 +85,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241001_221637_986503_56AEF9DB 
-X-CRM114-Status: GOOD (  12.58  )
+X-CRM114-CacheID: sfid-20241001_221637_986507_8A1F0BEB 
+X-CRM114-Status: GOOD (  11.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,34 +101,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The ethernet-phy node in mt8395-genio-1200-evk.dts was triggering a
-dtbs_check error. The error message was:
-  eth-phy0@1: $nodename:0: 'eth-phy0@1' does not match
-              '^ethernet-phy(@[a-f0-9]+)?$'
-Fix this issue by replacing 'eth-phy' node to generic 'ethernet-phy'.
+The mutex node in mt8195.dtsi was triggering a dtbs_check error:
+  mutex@1c101000: 'clock-names', 'reg-names' do not match any of the
+                  regexes: 'pinctrl-[0-9]+'
 
-Fixes: f2b543a191b6 ("arm64: dts: mediatek: add device-tree for Genio 1200 EVK board")
+This seems no need by inspecting the DT schemas and other reference boards,
+so drop 'clock-names' and 'reg-names' in mt8195.dtsi.
+
+Fixes: 92d2c23dc269 ("arm64: dts: mt8195: add display node for vdosys1")
 Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 2 --
+ 1 file changed, 2 deletions(-)
 
 Changes for v2, v3, v4 and v5:
  - No change.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-index 1ef6262b65c9..b4b48eb93f3c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-@@ -187,7 +187,7 @@ mdio {
- 		compatible = "snps,dwmac-mdio";
- 		#address-cells = <1>;
- 		#size-cells = <0>;
--		eth_phy0: eth-phy0@1 {
-+		eth_phy0: ethernet-phy@1 {
- 			compatible = "ethernet-phy-id001c.c916";
- 			reg = <0x1>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 2e1b41359b43..ade685ed2190 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -3331,11 +3331,9 @@ &larb19 &larb21 &larb24 &larb25
+ 		mutex1: mutex@1c101000 {
+ 			compatible = "mediatek,mt8195-disp-mutex";
+ 			reg = <0 0x1c101000 0 0x1000>;
+-			reg-names = "vdo1_mutex";
+ 			interrupts = <GIC_SPI 494 IRQ_TYPE_LEVEL_HIGH 0>;
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
+ 			clocks = <&vdosys1 CLK_VDO1_DISP_MUTEX>;
+-			clock-names = "vdo1_mutex";
+ 			mediatek,gce-client-reg = <&gce0 SUBSYS_1c10XXXX 0x1000 0x1000>;
+ 			mediatek,gce-events = <CMDQ_EVENT_VDO1_STREAM_DONE_ENG_0>;
  		};
 -- 
 2.45.2
