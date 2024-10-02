@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26D25CF3195
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 06:13:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C3A6CF3195
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 06:17:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tonD7okvUOorxZ8VRTLArA84zHRIPiOHD5dpQshNd7M=; b=twFWv9ocJxMkunRoT+wp0g6aPV
-	2YtcvzRskrpQZExTHZGj1x5ytjbCD2kMJQc8l0MZD8btixTRA6ZpOZv4uCF6YSO84QHHsz3Ssw6sH
-	uj8mGKiv/CmE6XUprCbRSRnBoUXCTXqrAtpeWs9dlc3YjuYVuGd5Fa45Pn4fdbfKeRyZQTvBfnChY
-	1PfqMDKTwW9sQFVBKVApNzCE5eKKyWyoyFR1PXrjr0Jfzr+pPcDLkorILNK1NDshDJmK/6+4OP7B2
-	NSkuTOr94dACvk2WeImCOiXnbQ6Uqjv4UBv9t57+0FPbhM8p9mLgZTLXp7WdgNFNb3+S3hidVF0HG
-	aMpD76dQ==;
+	bh=KcUp7Q1EE8DtPN8TqQsnPBoWtMEzkhJICn8Doke7XOY=; b=bj/TnXuj2PObgOTXGfj6/7nS6K
+	NGLGNFB4swEizyyh7x/XRybv3bTgclwfPCifl02yXk8hsHH42f28joW1pofQjmrirQi5tK6OHfmqW
+	nMDDS6l0labwG1eFbtQQ8B66LA+KMtA+XbjbMMAH72sN/jrMGql1NX/Jppde2roDK3E6TOkk9fD/x
+	6cnbaRXfpkjd8H9dKdrjbHf+xQL8WlwhAT5HbgxTAX0xP8L8jnrCPoRyO5IX6T7SwFWfaGyJ2YKmo
+	1dCDZFlJNNzFq4dXcUImDGt+g+tU5jfpJmQiV5jJ2dd/QyOqtNHEmkAsoTCEHRNzdNo8HyBOlo3IF
+	vcpo0DJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svsbd-00000004uuI-0gyd;
-	Wed, 02 Oct 2024 06:13:01 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1svsg9-00000004vKc-1NtF;
+	Wed, 02 Oct 2024 06:17:41 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svsaN-00000004ugA-0F75;
-	Wed, 02 Oct 2024 06:11:44 +0000
+	id 1svset-00000004vBa-0Pie;
+	Wed, 02 Oct 2024 06:16:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2CA2F5C0F71;
-	Wed,  2 Oct 2024 06:11:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5E9F6C4CEC5;
-	Wed,  2 Oct 2024 06:11:41 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 97E4AA4373B;
+	Wed,  2 Oct 2024 06:16:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4B51C4CEC5;
+	Wed,  2 Oct 2024 06:16:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727849501;
-	bh=2y3iWK2PGdYna/MWeskhSWBizeDSgrBBmx0svF+hg+U=;
+	s=k20201202; t=1727849781;
+	bh=5onFaWDsfjRqVLFgmX8TYa5l4emUjeqXUisKazGF7oo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=H+qtrCDIVZ8EGwzzt1SNU+qkeseOJbL0CFREx8eHQkdZR00sWzH95mOItvG1nkrRF
-	 kSn6911vx5QIZ9KSNR4zIBK3Sws6vlBwvts5ESyYFFweSdbDm0z6VwiZi0kR/AIqVX
-	 wHg+DZgeqOPZJ7IGDL7Ikz71HOKSmpb0te/Evwcp0V9ZSt8EBbub6qxOTnEcqt/ibc
-	 krHIvq+kROfOZ/TpUG8XsoC7/MEHIj+L+T2h7o5JVQI2/vFF2cF3pT8vjwmThMd/dk
-	 2GnFthf6cvnuAXQXuNycWLhz92WBM7PZNbf0EAuwcMOUkay7xakQhIpPNvjP0aOF1b
-	 gjXNgQnnwhS7w==
-Date: Wed, 2 Oct 2024 08:11:38 +0200
+	b=AQuUGJeROPqlnHPNwY9eeBEp5vQ3ueIGDxa8kZKc5BQOfWYhXK+CIqQzjzwACM0AV
+	 PxbkpoLhl35J/bH5DNCoY9pUldZF61JuJOdcA8TfeK5bFCHZHXniQ0fD8eLsTwRZSs
+	 f7PR8BTIlxeT45c8oekmOUp9lP1LDapZo9CrBHkvjyIGbZD7VYS0iuMbJ0F3y6MRnx
+	 p38DGVnboFz3KHgIIL3TBhm5i0ZSQiqjRn7vQVV68dDDPrxGeHQvgD/EqDpzLPlBzN
+	 jH7FpId3iAw9/XTSUVDQFDSNMOe5Cq/68jvF6XyB/8B/EGW/bG0ywZS4VuFMHhP/eO
+	 9hlbqWrxnyOHA==
+Date: Wed, 2 Oct 2024 08:16:18 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Pablo Sun <pablo.sun@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3 3/6] dt-bindings: nvmem: mediatek: efuse: Reuse
- mt8186-efuse in mt8188
-Message-ID: <mh7upw2y2dclyosved3chw7chpqgdg4a3j5ftwftfhm6v5uqpt@cotoeuopfbqg>
-References: <20241002022138.29241-1-pablo.sun@mediatek.com>
- <20241002022138.29241-4-pablo.sun@mediatek.com>
+To: Fei Shao <fshao@chromium.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Bin Liu <bin.liu@mediatek.com>, Conor Dooley <conor+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Xia Jiang <xia.jiang@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 3/8] dt-bindings: media: mediatek,jpeg: Relax IOMMU
+ max item count
+Message-ID: <r22z7eehmuprvq67gxekqwsah2mcobfsyhn7xzyyh2gdtjegve@zl32uljxrilx>
+References: <20241001113052.3124869-1-fshao@chromium.org>
+ <20241001113052.3124869-4-fshao@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20241002022138.29241-4-pablo.sun@mediatek.com>
+In-Reply-To: <20241001113052.3124869-4-fshao@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241001_231143_190424_9FC82AFA 
-X-CRM114-Status: GOOD (  16.47  )
+X-CRM114-CacheID: sfid-20241001_231623_228782_5B9F91CF 
+X-CRM114-Status: GOOD (  16.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,36 +76,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 02, 2024 at 10:21:35AM +0800, Pablo Sun wrote:
-> mt8188 has the same GPU speed binning efuse field just
-> like mt8186, which requires post-processing to convert to the
-> bit field format specified by OPP table.
+On Tue, Oct 01, 2024 at 07:27:21PM +0800, Fei Shao wrote:
+> On MediaTek platforms with Multimedia MMU (M4U), a multimedia hardware
+> can be assigned with a local arbiter (LARB) which has a maximum of 32
+> ports for MediaTek's IOMMU infrastructure. That means there can be at
+> most 32 items in the iommus property in theory.
 > 
-> Add the binding for the compatible list:
->   "mediatek,mt8188-efuse", "mediatek,mt8186-efuse"
-> so mt8188 uses the same conversion.
+> Instead of relaxing the max item count every time a newly introduced
+> device tree hits the limit, bump the number to 32 as an one-time effort.
 > 
-> Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
+> On the other hand, all existing and foreseeable JPEG decoder nodes at
+> this point have at least 2 IOMMUs, so set minItems to 2 accordingly.
+> 
+> Signed-off-by: Fei Shao <fshao@chromium.org>
 > ---
->  Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml | 4 ++++
->  1 file changed, 4 insertions(+)
+> It's not in the upstream tree yet, but the upcoming MT8188 DT will have
+> 6 IOMMUs in its JPEG decoder. This patch is to pave the way for that.
 > 
-> diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-> index 32b8c1eb4e80..70815a3329bf 100644
-> --- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-> +++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-> @@ -39,6 +39,10 @@ properties:
->                - mediatek,mt8195-efuse
->                - mediatek,mt8516-efuse
->            - const: mediatek,efuse
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt8188-efuse
-> +          - const: mediatek,mt8186-efuse
+> Changes in v2:
+> New patch.
+> 
 
-And this is not compatible with generic one? This is confusing. Why are
-you adding generic fallbacks if they are not valid?
+I do not see any user of this in this patchset.
 
 Best regards,
 Krzysztof
