@@ -4,103 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D6DFCF8543
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 21:41:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A772CF8546
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 22:42:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kbnx/1jmCJVxpVNY76oZY6UsGEKPb8zsIs5QjFgvYPw=; b=i2UO6yc+8p0Kj6ovJssi39hb/0
-	ZoQeH3opZO9joK3VjOIQ9jv5wptSVJEB7MhPsNCYpL4hbKIwlx2nglIR4MmtuxWAWdF0K3tTsc5fT
-	r9IJpcAh1m1XYWWWcOsOKHCa+U0kqIWs+p2dMVyP72AbFeR8dopcxYikgA1uSZbf8XM0HkFpZzNYI
-	GEJ4BD50mIEY+3h8jbmVEtctsdpPfIttOb63JYN3ambfvl0PxQ1yxI7zzVX+KfiA78WqB3LtRfdbo
-	7JgXs/PbIBH92mnIX8sg+Mw8u2ZvKPOBi0cKYy0B3LfUARi+KB3z/QiTehQwnpvRG4Un4uuCwVQHP
-	OdeWo0bQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2p0RBsu7N/ikXAXwnKT3iU6dfYBdSsewWojsryZ8yU8=; b=ulEXO9cP/YGMU9orZ8+arcf4hd
+	aOm4k2/VaEzhkAmzkmeGLUCIv/UX68sNS7NH8MB7Z0/QEEVkgLImXOi+Gh0HBdSuTVfp3q6vB9a4I
+	FPU/vDoe37lzAcnJxrG/xLGO57iffy3ALfP0qe4fpX98EPWbTUHI9qtT+3OByNdIf5IlZ9zDp6GVf
+	U4irSpUzhrDCf0D6drKTUOkV0oPuaW3HUb53Rj/u6PL+QzisdyRw+ggKa5+/ZYKbUdOlrRqMZ/NUa
+	9NJyXqQ6Rs/5ufoJPyBhteinwega0wyf1B1xjyAENhl/wnA+S8jcUzVAsbs6Js0w8RbV6LeRsW9Fd
+	57+dM2Gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sw76Q-00000007Yp7-35RI;
-	Wed, 02 Oct 2024 21:41:46 +0000
-Received: from mail-qk1-x744.google.com ([2607:f8b0:4864:20::744])
+	id 1sw83W-00000007ex6-0Wis;
+	Wed, 02 Oct 2024 22:42:50 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sw75B-00000007YcM-0bWd;
-	Wed, 02 Oct 2024 21:40:30 +0000
-Received: by mail-qk1-x744.google.com with SMTP id af79cd13be357-7a99fde9f1dso25131285a.2;
-        Wed, 02 Oct 2024 14:40:28 -0700 (PDT)
+	id 1sw83S-00000007ew2-2r3H;
+	Wed, 02 Oct 2024 22:42:48 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-42cb7a2e4d6so2545345e9.0;
+        Wed, 02 Oct 2024 15:42:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1727905228; x=1728510028; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=kbnx/1jmCJVxpVNY76oZY6UsGEKPb8zsIs5QjFgvYPw=;
-        b=hcX0HWl8kfvRAflV7d9G5EQ5NDG6oFy9C5FD10ejwSHACDPx38XcHqrios3RVbbNcw
-         +oA9Xz87S+VgRtxRWFiO3GCCf+ySBMmS1pVY/a9mW3UB9Uk5fzdmX/mGKIHrUimCt87L
-         fE008usCh1qsYTQCt75D3eF6PgYruwwXdP2BXZyQeHQ+Q33GfX6Z6t2sIGf3bIRQzrlu
-         vYCo9R5YqVNeNudFsebe0uqlvl03JhIdZul+77j5VDNOu/dwGnVDvyzY5NVZwAeboRf5
-         sJvwpR6eVIXoLI+GLJlbZrCQHOBU6fWrwxtAbNKZUJlOR++ODyIEJ0e6dk9yU9JO5q8b
-         AYWw==
+        d=gmail.com; s=20230601; t=1727908964; x=1728513764; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=2p0RBsu7N/ikXAXwnKT3iU6dfYBdSsewWojsryZ8yU8=;
+        b=GfwFqifTsLkWEZLTyQS+MvR9U/MH1Te9Cw491GaAjZAbm5GwP4s5gzt40QFHXaDeDK
+         UeRdK2z0ENJbozoTj7gjpRnJReyO3fTr1Vyo3jHwUwHs86bhEv/1BHSOF3cVODKseafz
+         Vxte5/RJFBhSedgbxRGpIZ7qxSCXV/lk6sQftjEJmRDVw96GmnEvhrlDohQRy276jGwj
+         teMH+Gfb0kCGSm85EJqTVDFRUk6+8TDYcC3jV3fP8jyUu2d0FUXP36j5S5IrpZG2OMvA
+         w9Z84ZJnrINpksLkdiP/qpgA162GeMjr4m1GXyT94qamgTHatlrKsxzAbUGC4M22mAmX
+         iyQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727905228; x=1728510028;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=kbnx/1jmCJVxpVNY76oZY6UsGEKPb8zsIs5QjFgvYPw=;
-        b=o9fWq8Gpt4zovTmkL0D0EAgc/hJ82Uxvo9PwC/ij4dMpPZqa7LLKPIA0IAGSRjtyDF
-         khgry0+BDKaNEu8IVtROOdlYa17yeDSb4/tGJ2YLq6YQj2rRtFvxJ6ZvQE72yQefW7K9
-         0rNAlfcOuo7iO4ZYMoW6/mS+vX4cb7+ZFj2ddFDLRQNJB8QNV7zkaSeWcE1EL7QvFgrd
-         zkR1R86SdWKhpxcMqivBnPhGrhqhglT4MQ3R/tHI2II5UGbBPBtY5eMJl8rBeTWo40y1
-         mLLhLdIJliTsEZ8hH8D/mPqJ985sLQkt3SfUsS/3ayeV8pw3fO+yJ+t82y0q1e/BONNg
-         Xqbw==
-X-Forwarded-Encrypted: i=1; AJvYcCWNP32gEoV1u+WyOiXDoook/3qyi9P4u/LLMvcemOuFB97SzrZ7Wg+QdkCX7sO4nsXso1HjYfn2aeGllgtrcGo=@lists.infradead.org, AJvYcCWkm0ixrIpTmSDTGkMwI/2gyGsNJl1BKvMZHgJw+x2Ccs4KZReURRmHXNMmangaTGYED0N2zqW7lWot1dbBk7is@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx7K1yl7gR45ks+7gGarZhKgUjxPY1WXCyqZhtoqV2IgSCF52BE
-	mAABtpurczM1r54CE3lA0k+8rZpnmRhGDHW82mZVyCgDHkUczq+e
-X-Google-Smtp-Source: AGHT+IGvVKxkVzIqO1aVzK1KfhXdUeEPO/IVUAq1zzjzGQn7t7CVJeZqGV2TUekB8BorfcWRHEj7ug==
-X-Received: by 2002:a05:620a:198b:b0:7a2:e53:3f5d with SMTP id af79cd13be357-7ae627698ffmr538163385a.66.1727905227654;
-        Wed, 02 Oct 2024 14:40:27 -0700 (PDT)
-Received: from localhost.localdomain (mobile-130-126-255-54.near.illinois.edu. [130.126.255.54])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7ae377f0e71sm656507185a.71.2024.10.02.14.40.25
+        d=1e100.net; s=20230601; t=1727908964; x=1728513764;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=2p0RBsu7N/ikXAXwnKT3iU6dfYBdSsewWojsryZ8yU8=;
+        b=UdhEUCVZPD4fK+MVTEBZZxqUON6i+LtxfKANWWxIQQmb32dIDnK5cNE4bGOHxaPk2q
+         mRNCKQYNWs8a2ngwTKF90DJvIb8K3mTjOEe03Li0FqRqgcg3cucrsLphQkHTdGpDC+Jo
+         bPQMePIWPeosqZovbZnQwkjLNwjfK08V4lRA6+KgTqsZRYORwguHeDJS3EKWaZbxOZZY
+         2EtSsbIYoyuX3osoNly8OnEhtqPCqkuu0MxsmfeqratdxfsGTE3bfOUaF6hsDxyMtPBK
+         VYjnrHFPbmXCOzKWDjnuhqM7DDwMd+Xna48b39TQDzWbgHGSKJpgGHJaPBNO7SyOVgOw
+         c8qA==
+X-Forwarded-Encrypted: i=1; AJvYcCUUZ/EwU+h0QWSE3st5N0P3PU+eRHLie3IIas2rkTiwMDz7zwLR7WhaIWTXrMEzbCar1B2idHvG/RT8CkVAgnmK@lists.infradead.org, AJvYcCXUM7+1xhe01dY/tmPhOBlXIEzrEPJjfYrzwEIXdIY5IJz4cL25QVR9ji8poFFbKA5vC0BGyN+rnqPaPDiX4vY=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzSCr1MEQ1BoHd5B79JP0mxcJXfN5uymIYQOUhSTpPyx2q0V06Y
+	lnxFJS4/W3mVCepqpCAbpb1CiZse7qJd3/MgVUBF0RmA8EcQpxZC4LQui1cq
+X-Google-Smtp-Source: AGHT+IGuS5mbK7XVp3K4dA2IOkM9MUozkblHFQyW/rtCI15UZMMVWwioBkHnlLQdNZX3oeUM5mifCA==
+X-Received: by 2002:a05:6000:50f:b0:37c:d49c:3ac7 with SMTP id ffacd0b85a97d-37cfba16a65mr3033353f8f.48.1727908964057;
+        Wed, 02 Oct 2024 15:42:44 -0700 (PDT)
+Received: from Ansuel-XPS. (93-34-90-105.ip49.fastwebnet.it. [93.34.90.105])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37cd5742602sm14778829f8f.94.2024.10.02.15.42.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 02 Oct 2024 14:40:27 -0700 (PDT)
-From: Gax-c <zichenxie0106@gmail.com>
-To: krzk@kernel.org,
-	nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	kvalo@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	johannes.berg@intel.com,
-	quic_adisi@quicinc.com,
-	deren.wu@mediatek.com,
-	chui-hao.chiu@mediatek.com,
-	mingyen.hsieh@mediatek.com,
-	howard-yh.hsu@mediatek.com,
-	StanleyYP.Wang@mediatek.com,
-	allen.ye@mediatek.com,
-	benjamin-jw.lin@mediatek.com,
-	Bo.Jiao@mediatek.com,
-	evelyn.tsai@mediatek.com,
-	meichia.chiu@mediatek.com
-Cc: linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	zzjas98@gmail.com,
-	chenyuan0y@gmail.com,
-	Gax-c <zichenxie0106@gmail.com>
-Subject: [PATCH] wifi: mt76: Fix NULL Dereference caused by mt76_connac_get_he_phy_cap()
-Date: Wed,  2 Oct 2024 16:39:20 -0500
-Message-Id: <20241002213919.30360-1-zichenxie0106@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <c7978538-04b4-406a-b8e3-70d3472ace7f@kernel.org>
-References: <c7978538-04b4-406a-b8e3-70d3472ace7f@kernel.org>
+        Wed, 02 Oct 2024 15:42:42 -0700 (PDT)
+Message-ID: <66fdcc62.df0a0220.15bce8.4398@mx.google.com>
+X-Google-Original-Message-ID: <Zv3MX0046FvdpeYU@Ansuel-XPS.>
+Date: Thu, 3 Oct 2024 00:42:39 +0200
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Lee Jones <lee@kernel.org>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	upstream@airoha.com, benjamin.larsson@genexis.eu,
+	linux-pwm@vger.kernel.org
+Subject: Re: [PATCH v5 3/5] mfd: airoha: Add support for Airoha EN7581 MFD
+References: <20241001-en7581-pinctrl-v5-0-dc1ce542b6c6@kernel.org>
+ <20241001-en7581-pinctrl-v5-3-dc1ce542b6c6@kernel.org>
+ <20241002132518.GD7504@google.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241002132518.GD7504@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241002_144029_210644_2A59B11D 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20241002_154246_752113_896BCD4E 
+X-CRM114-Status: GOOD (  24.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,70 +104,180 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt76_connac_get_he_phy_cap() may return a NULL pointer,
-leading to NULL Pointer Dereference.
-Add a NULL check for the returned pointer.
+On Wed, Oct 02, 2024 at 02:25:18PM +0100, Lee Jones wrote:
+> On Tue, 01 Oct 2024, Lorenzo Bianconi wrote:
+> 
+> > From: Christian Marangi <ansuelsmth@gmail.com>
+> > 
+> > Support for Airoha EN7581 Multi Function Device that
+> > expose PINCTRL functionality and PWM functionality.
+> 
+> The device is a jumble of pinctrl registers, some of which can oscillate.
+> 
+> This is *still* not an MFD.
+> 
+> If you wish to spread this functionality over 2 drivers, use syscon to
+> obtain the registers and simple-mfd to automatically probe the drivers.
+>
 
-Fixes: a5c372f77aa7 ("wifi: mt76: mt7925: extend mt7925_mcu_bss_he_tlv for per-link BSS")
-Fixes: e6d557a78b60 ("mt76: mt7915: rely on mt76_connac_get_phy utilities")
-Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
-Signed-off-by: Zichen Xie <zichenxie0106@gmail.com>
----
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 5 +++++
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 2 ++
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 2 ++
- 3 files changed, 9 insertions(+)
+Hi Lee,
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 87d0dd040001..762be3a37228 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -551,6 +551,8 @@ mt7915_mcu_bss_he_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
- 	struct tlv *tlv;
- 
- 	cap = mt76_connac_get_he_phy_cap(phy->mt76, vif);
-+	if (!cap)
-+		return;
- 
- 	tlv = mt76_connac_mcu_add_tlv(skb, BSS_INFO_HE_BASIC, sizeof(*he));
- 
-@@ -1145,6 +1147,9 @@ mt7915_mcu_sta_bfer_he(struct ieee80211_sta *sta, struct ieee80211_vif *vif,
- 	u8 nss_mcs = mt7915_mcu_get_sta_nss(mcs_map);
- 	u8 snd_dim, sts;
- 
-+	if (!vc)
-+		return;
-+
- 	bf->tx_mode = MT_PHY_TYPE_HE_SU;
- 
- 	mt7915_mcu_sta_sounding_rate(bf);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 748ea6adbc6b..55e4cda2f20f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -2508,6 +2508,8 @@ mt7925_mcu_bss_he_tlv(struct sk_buff *skb, struct ieee80211_bss_conf *link_conf,
- 	struct tlv *tlv;
- 
- 	cap = mt76_connac_get_he_phy_cap(phy->mt76, link_conf->vif);
-+	if (!cap)
-+		return;
- 
- 	tlv = mt76_connac_mcu_add_tlv(skb, UNI_BSS_INFO_HE_BASIC, sizeof(*he));
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index 6c445a9dbc03..55bb2d0e67e5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -798,6 +798,8 @@ mt7996_mcu_bss_he_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
- 	struct tlv *tlv;
- 
- 	cap = mt76_connac_get_he_phy_cap(phy->mt76, vif);
-+	if (!cap)
-+		return;
- 
- 	tlv = mt7996_mcu_add_uni_tlv(skb, UNI_BSS_INFO_HE_BASIC, sizeof(*he));
- 
--- 
-2.25.1
+let me summarize the situation so it's more clear why
+this additional mfd driver.
+
+There were various iteration for these 2 driver (pinctrl and PWM).
+Due to the fact that these 2 are placed in the same register block
+with the PWM register in the middle, we proposed various .yaml schema
+that could better model it.
+
+The first idea was to map the single register used by the 2 driver.
+
+        pio: pinctrl@1fa20214 {
+                compatible = "airoha,en7581-pinctrl";
+                reg = <0x0 0x1fa20214 0x0 0x30>,
+                        <0x0 0x1fa2027c 0x0 0x8>,
+                        <0x0 0x1fbf0234 0x0 0x4>,
+                        <0x0 0x1fbf0268 0x0 0x4>,
+                        <0x0 0x1fa2001c 0x0 0x50>,
+                        <0x0 0x1fa2018c 0x0 0x4>,
+                        <0x0 0x1fbf0204 0x0 0x4>,
+                        <0x0 0x1fbf0270 0x0 0x4>,
+                        <0x0 0x1fbf0200 0x0 0x4>,
+                        <0x0 0x1fbf0220 0x0 0x4>,
+                        <0x0 0x1fbf0260 0x0 0x4>,
+                        <0x0 0x1fbf0264 0x0 0x4>,
+                        <0x0 0x1fbf0214 0x0 0x4>,
+                        <0x0 0x1fbf0278 0x0 0x4>,
+                        <0x0 0x1fbf0208 0x0 0x4>,
+                        <0x0 0x1fbf027c 0x0 0x4>,
+                        <0x0 0x1fbf0210 0x0 0x4>,
+                        <0x0 0x1fbf028c 0x0 0x4>,
+                        <0x0 0x1fbf0290 0x0 0x4>,
+                        <0x0 0x1fbf0294 0x0 0x4>,
+                        <0x0 0x1fbf020c 0x0 0x4>,
+                        <0x0 0x1fbf0280 0x0 0x4>,
+                        <0x0 0x1fbf0284 0x0 0x4>,
+                        <0x0 0x1fbf0288 0x0 0x4>;
+
+                gpio-controller;
+                #gpio-cells = <2>;
+                gpio-ranges = <&pio 0 13 47>;
+
+                ...
+
+        };
+
+        pwm@1fbf0224 {
+                compatible = "airoha,en7581-pwm";
+                reg = <0x1fbf0224 0x10>,
+                      <0x1fbf0238 0x28>,
+                      <0x1fbf0298 0x8>;
+                #pwm-cells = <3>;
+        };
+
+This was quickly rejected as it introduced way more complication
+to workaround the overlapping addresses. (the device should map the
+entire register space)
+
+The second proposal was a parent+child implementation with the
+pinctrl parent and the PWM child by referencing a syscon from
+the parent.
+
+        pio: pinctrl@1fbf0200 {
+                compatible = "airoha,en7581-pinctrl", "simple-mfd", "syscon";
+                reg = <0x1fbf0200 0x0 0xbc>;
+                airoha,chip-scu = <&chip_scu>;
+                ....
+
+                pwm {
+                        compatible = "airoha,en7581-pwm";
+                        ...
+                };
+        };
+
+Also this second proposal was rejected by device tree folks
+as the device implement both pinctrl and PWM in the register
+space and they are not actually separate devices.
+
+There was also an additional proposal with the entire register
+map in a dedicated node with syscon and pwm + pinctrl using it.
+This was also rejected by device tree folks. (node that have only
+a syscon are a nono)
+
+It was suggested that this is a case of MFD (multi-functional-device)
+
+As suggested we proposed a simple-mfd implementation following
+common pattern. Parent node with simple-mfd and syscon compatible
+and 2 child nodes, one with pinctrl and the other with PWM with each
+his own compatible.
+
+        mfd@1fbf0200 {
+                compatible = "airoha,en7581-gpio-mfd";
+                reg = <0x0 0x1fbf0200 0x0 0xc0>;
+
+                interrupt-parent = <&gic>;
+                interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
+
+                pio: pinctrl {
+                        compatible = "airoha,en7581-pinctrl";
+
+                        gpio-controller;
+                        #gpio-cells = <2>;
+
+                        interrupt-controller;
+                        #interrupt-cells = <2>;
+                };
+
+                pwm: pwm {
+                        compatible = "airoha,en7581-pwm";
+
+                        #pwm-cells = <3>;
+                        status = "disabled";
+                };
+        };
+
+Also this was rejected by device tree folks as the property for
+pinctrl and pwm needed to be in the MFD node and there should't
+be child node with single compatible.
+This comes from the fact that DT needs to describe how the HW is
+modelled and not how the drivers are implemented.
+
+Finally Rob agreed and added the Reviwed-by on the current
+implementation with single MFD node with pinctrl and pwm.
+Also Conor and Krzysztof agreed on this solution for the task.
+
+    mfd@1fbf0200 {
+        compatible = "airoha,en7581-gpio-sysctl";
+        reg = <0x1fbf0200 0xc0>;
+
+        interrupt-parent = <&gic>;
+        interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
+
+        gpio-controller;
+        #gpio-cells = <2>;
+
+        interrupt-controller;
+        #interrupt-cells = <2>;
+
+        #pwm-cells = <3>;
+
+        pinctrl {
+                ...
+        };
+    };
+
+With the following implementation, the only way to probe the
+additional driver is with a specialized mfd driver that probe the
+2 driver by name and we can't really use a simple-mfd implementation
+as that requires child nodes with compatibles.
+
+Sorry for the long message and I honestly hope we can find together
+a common path for this between driver and Documentation.
+
+Is it clear now why we had to ultimely had to implement and model things
+this way?
+
+--
+        Ansuel
 
 
