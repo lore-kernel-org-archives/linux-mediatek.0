@@ -4,105 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 314ABCF3195
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 03:49:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57286CF3194
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 05:01:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nAEKTIpBmymWLR+e+hBkypCfwSNJotZOEB0oMjBgW3A=; b=aTaJncUT498P/RaAwbiMKCf2KL
-	c1XGsyO/n7gSdE4DQY3ZEIQsxHBaRtSu6RdYuCeHCkjqlyxZ4beqdAP66Wm0Fr0D60TtBT6cpHDa8
-	RZaXOuBD0TcOqr4W6WI/70tqfhoqcN7uhu55pMk6xdmu4V9HbZfo9UYcEcUF8tnHQV1H9cIw8SJaQ
-	23m1dstL+gicc0BpQIsaBSVIuX9erbo2vowOunIsz8FUaFbseQg/Fv04ngL8+Mvl3sCuHOPaUNk98
-	8d6GFhu8NsdKUZKegB4OjLZW0zKTrdh1XuLCMtcHrSYuws/T7UuKkvt46lRm3vvxBYA3IV+2kqkew
-	igSt/YvQ==;
+	bh=JQxog7SFEJHt2mTFpnbzFTmfnQuxrbS8mdNwid+sy78=; b=T7k/3KTMFd4Ggp8ITGUauko+f+
+	cFzzTt+oeUEGXjpkl23J931fHyeGupcbMlYMqkGgEpEcKLZ/eKXHotD89W1Oyjjd7v9WB3vUy1Mvq
+	pB5NWImLdx7d371rEwWgMAIuVvfee3sR8YX3NLiOIDgzwR7hU7N3H/qlYCDP5BeUxnOMBlBnTXuFx
+	hZUE+9ZknJpqnhgYANbCo5xKSQKsleL9GMFRwQTz9SLCr4RYdpIX51n3+PNvzMTa94Utu3Jg02EQj
+	9u/7FNuLtOH9e0TbtEKeZ9n/IOqyeyJ/EvU+e6KsYoT7Pvchlg/xhSOqzwpfvSBnVWrk+lzGt5Wuf
+	tdrtANgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svqMP-00000004j7O-3zjo;
-	Wed, 02 Oct 2024 03:49:09 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1svrUk-00000004oKt-03w5;
+	Wed, 02 Oct 2024 05:01:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svqMM-00000004j6h-3PjO;
-	Wed, 02 Oct 2024 03:49:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 8D0E0A4367E;
-	Wed,  2 Oct 2024 03:48:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37384C4CED8;
-	Wed,  2 Oct 2024 03:49:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727840945;
-	bh=nAEKTIpBmymWLR+e+hBkypCfwSNJotZOEB0oMjBgW3A=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=Af2UjTVfNh6y+KURqioy4b8Bj7Yu5BpvrE0pOuTAaCdsWVGE8VQdAPbay4eP9DqPg
-	 vWMLCMNoxrjpq2dgf0Gkki5SuP7pwmk7jkH2meg7cuorJVxX/VF75raABEWvzkaMHi
-	 vhhxdgRpR3b7B5ke0UhpF0oO9c3sZ7F6qfo5LaAZzh2DiImZJl6yUno80Km9y1f2VX
-	 IIlH0yPKwIL8OBus0S8hdF72eqSA5xm2L3CztnHUgtzPMXEtvUhtadchDi41GC6Mt7
-	 Ca1gozPG5gv1ZiW5uDRIVS53lJA/EuDl2IF4CK5RlPgdKNeNXNE2aGU70QMIY0HzW0
-	 QHOaUeFAAHJ5A==
-Received: by mail-lf1-f41.google.com with SMTP id 2adb3069b0e04-5398e7dda5fso3508050e87.0;
-        Tue, 01 Oct 2024 20:49:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUP527V48VPJ4+P9bsq4+S0h61PPOQLSQOB+3fLQ3AxYZD062IlpO8XupGDmx+n3aWaWCBiO/DnfjUEC3RUEOU=@lists.infradead.org, AJvYcCV3tmX6tn19ikDAxiigLoUS3xmtxf7RiDdjfDyAL7vuUgvgBUolXY/eJm8SjBj6F5aX5vZnGcuK1OJIbuwgEos=@lists.infradead.org, AJvYcCVTDR6FbF/TVrAHWYGedAyJy51YMNprJL5isATLKCYjcDPH6db5Aa1t6qTqrWiFB7QtuILl8yOpUE8An5/w@lists.infradead.org, AJvYcCWIS+ZKrjsAkXLW+f0Phk0iVTGBHrbw4dV0u0UhkvmI2YGE9q7Z1VO9aioQdK2AE8GHQmiUWIIcdlhRndcXGn+jSg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxol8oc6hpRZUhpbxFm4w7IoU5azXx4BBRnFksjNxXxny9IKHT6
-	phoeiS9sgp+rpDZkob6mNxjCpAmvzRQryL2yIkb44aKtXKaCkDmkEpaY6BnT8Mc6IPKTlJtwJJN
-	n2yWBERc9yUVL+ncPEqElNNK49g==
-X-Google-Smtp-Source: AGHT+IEqtnQCtoRUlnvKJ/juvutRb8LD+WF2Ji1IL7egoXyMFlaAGJMVK219VrK0qM0doCIPbjzZD5sR9nPD1sht5+g=
-X-Received: by 2002:a05:6512:1113:b0:533:4638:df40 with SMTP id
- 2adb3069b0e04-539a067f65cmr743356e87.27.1727840943291; Tue, 01 Oct 2024
- 20:49:03 -0700 (PDT)
+	id 1svrUh-00000004oKL-0z8g;
+	Wed, 02 Oct 2024 05:01:48 +0000
+X-UUID: 6985a286807b11efb3adad29d29602c1-20241001
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=JQxog7SFEJHt2mTFpnbzFTmfnQuxrbS8mdNwid+sy78=;
+	b=fdow3+SBFNRvJU4hMemLdTk8gGrcs7BP2EmEq8oowGKhzgwKV6y5XK7vMeErjBnWmGGUHxX1PsGSyneyZzRjZAMjIvTNbak14+jrTfxURw1C6w4XbJ6ZgjvIs0NRDoHglZmmQTpWeGtizpQeHNaUbJQxiSxZzukCfi9MzvQBYsA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:ac4267c3-8ec9-4e7f-9d1e-7d4b3f45122f,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:c50ce09e-8e9a-4ac1-b510-390a86b53c0a,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|-5,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 6985a286807b11efb3adad29d29602c1-20241001
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1640121209; Tue, 01 Oct 2024 22:01:41 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 2 Oct 2024 13:01:35 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Wed, 2 Oct 2024 13:01:33 +0800
+Message-ID: <a41bf3aa-812e-2234-cca8-c68a8420f9e4@mediatek.com>
+Date: Wed, 2 Oct 2024 13:01:31 +0800
 MIME-Version: 1.0
-References: <20240930223550.353882-1-rosenp@gmail.com> <20240930223550.353882-3-rosenp@gmail.com>
-In-Reply-To: <20240930223550.353882-3-rosenp@gmail.com>
-From: Rob Herring <robh@kernel.org>
-Date: Tue, 1 Oct 2024 22:48:50 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqKNMhUy3HUAanod27FnJAz35w7FLp7tp0Uo3SeVbG7EGw@mail.gmail.com>
-Message-ID: <CAL_JsqKNMhUy3HUAanod27FnJAz35w7FLp7tp0Uo3SeVbG7EGw@mail.gmail.com>
-Subject: Re: [PATCH 2/2] ARM: dts: assign reg to memory nodes
-To: Rosen Penev <rosenp@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Antoine Tenart <atenart@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Linus Walleij <linus.walleij@linaro.org>, Joel Stanley <joel@jms.id.au>, 
-	Andrew Jeffery <andrew@codeconstruct.com.au>, Jesper Nilsson <jesper.nilsson@axis.com>, 
-	Lars Persson <lars.persson@axis.com>, Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Viresh Kumar <vireshk@kernel.org>, Shiraz Hashim <shiraz.linux.kernel@gmail.com>, 
-	"maintainer:SPEAR PLATFORM/CLOCK/PINCTRL SUPPORT" <soc@kernel.org>, Marek Vasut <marex@denx.de>, Jisheng Zhang <jszhang@kernel.org>, 
-	Bartosz Golaszewski <brgl@bgdev.pl>, David Lechner <david@lechnology.com>, Nishanth Menon <nm@ti.com>, 
-	Santosh Shilimkar <ssantosh@kernel.org>, Tony Lindgren <tony@atomide.com>, 
-	Enric Balletbo i Serra <eballetbo@gmail.com>, Javier Martinez Canillas <javier@dowhile0.org>, 
-	Alexey Charkov <alchark@gmail.com>, Denis Burkov <hitechshell@mail.ru>, Arnd Bergmann <arnd@arndb.de>, 
-	Stefan Wahren <wahrenst@gmx.net>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, 
-	=?UTF-8?Q?Duje_Mihanovi=C4=87?= <duje.mihanovic@skole.hr>, 
-	Nicolas Chauvet <kwizart@gmail.com>, Tomasz Maciej Nowak <tmn505@gmail.com>, 
-	Robert Eckelmann <longnoserob@gmail.com>, 
-	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, 
-	"open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>, open list <linux-kernel@vger.kernel.org>, 
-	"open list:ARM/Amlogic Meson SoC support" <linux-amlogic@lists.infradead.org>, 
-	"moderated list:ARM/ASPEED MACHINE SUPPORT" <linux-aspeed@lists.ozlabs.org>, 
-	"moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE" <linux-rpi-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	"moderated list:ARM/NUVOTON NPCM ARCHITECTURE" <openbmc@lists.ozlabs.org>, 
-	"open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>, 
-	"open list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <imx@lists.linux.dev>, 
-	"open list:TQ SYSTEMS BOARD & DRIVER SUPPORT" <linux@ew.tq-group.com>, 
-	"open list:DH ELECTRONICS IMX6 DHCOM/DHCOR BOARD SUPPORT" <kernel@dh-electronics.com>, 
-	"moderated list:ARM/STM32 ARCHITECTURE" <linux-stm32@st-md-mailman.stormreply.com>, 
-	"open list:ARM/QUALCOMM SUPPORT" <linux-arm-msm@vger.kernel.org>, 
-	"open list:ARM/RISC-V/RENESAS ARCHITECTURE" <linux-renesas-soc@vger.kernel.org>, 
-	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, 
-	"open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES" <linux-samsung-soc@vger.kernel.org>, 
-	"open list:OMAP DEVICE TREE SUPPORT" <linux-omap@vger.kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH v2 2/5] dt-bindings: iommu: mediatek: Fix interrupt count
+ constraint for new SoCs
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Simona Vetter
+	<simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Yong Wu <yong.wu@mediatek.com>, "Joerg
+ Roedel" <joro@8bytes.org>, Will Deacon <will@kernel.org>, Robin Murphy
+	<robin.murphy@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, CK Hu
+	<ck.hu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>, Tinghan Shen
+	<tinghan.shen@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>, Ben Lok
+	<ben.lok@mediatek.com>, "Nancy . Lin" <nancy.lin@mediatek.com>,
+	<dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<iommu@lists.linux.dev>, <linux-arm-kernel@lists.infradead.org>, "Alexandre
+ Mergnat" <amergnat@baylibre.com>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>, "Chris-qj
+ chen" <chris-qj.chen@mediatek.com>, MediaTek Chromebook Upstream
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
+	<wenst@chromium.org>
+References: <20240926111449.9245-1-macpaul.lin@mediatek.com>
+ <20240926111449.9245-2-macpaul.lin@mediatek.com>
+ <8883c84d-8333-4b04-83b5-022be5b6153c@collabora.com>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <8883c84d-8333-4b04-83b5-022be5b6153c@collabora.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--7.179900-8.000000
+X-TMASE-MatchedRID: L8tZF6zWW2oNtKv7cnNXnSa1MaKuob8PofZV/2Xa0cK+UkTh6A/Dwdno
+	quRwHY3BA5x6HN+sIJp31PcFav1MzrBAQLqGlKiv6/xAZojbl7dbAoaK+wS4jVThXWky81BHWYS
+	8OrMR6Ddh9M64k1dYu8r9L0WloblybC1/2cudIH8ve6W+IORwrRxl385bjK8qBFepjP4Awbk1Hc
+	Jp3+cWzRvbS1sPuc0r4/I+BK21AaKW0F2DMwRPmbEKX02srTXI0pVrZbbfikggcyGevtftJ6PFj
+	JEFr+oloTCA5Efyn8CNo+PRbWqfRK6NVEWSRWyb+q79xy5JhPV9AN1RR7xHgxUc1EdkGQIHBVEe
+	UwmLhxCRxDbvN0TdZ9Bo5imTamTbF97lgTik4vNK3RdBmL/Uwy3U7y2wGlJPpewvSdi7pYMM6XK
+	FXY+j89UQ5D3w2Dm4IpaqxlxwyA44obSkgSym9A==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--7.179900-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 5D4F0D16EEB72D54571CE1ADEE61674C0C722E78899534C30E5028FC934A423C2000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241001_204907_007517_0FF9C58E 
-X-CRM114-Status: UNSURE (   9.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241001_220147_311830_0A1E6960 
+X-CRM114-Status: GOOD (  15.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,14 +120,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 30, 2024 at 5:36=E2=80=AFPM Rosen Penev <rosenp@gmail.com> wrot=
-e:
->
-> Fixes dtc warnings:
 
-Unfortunately we cannot make this change treewide. Any platform that
-relies on the ATAGS to DT bootloader support in the kernel
-decompressor expects /memory.
 
-Rob
+On 9/30/24 16:49, AngeloGioacchino Del Regno wrote:
+> Il 26/09/24 13:14, Macpaul Lin ha scritto:
+>> The infra-iommu node in mt8195.dtsi was triggering a CHECK_DTBS error due
+>> to an excessively long 'interrupts' property. The error message was:
+>>
+
+[snip]
+
+>>
+>> diff --git 
+>> a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml 
+>> b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+>> index ea6b0f5f24de..fdd2996d2a31 100644
+>> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+>> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+>> @@ -96,7 +96,8 @@ properties:
+>>       maxItems: 1
+>>     interrupts:
+>> -    maxItems: 1
+>> +    minItems: 1
+>> +    maxItems: 5
+>>     clocks:
+>>       items:
+>> @@ -210,6 +211,28 @@ allOf:
+>>         required:
+>>           - mediatek,larbs
+>> +  - if:
+>> +      properties:
+>> +        compatible:
+>> +          contains:
+>> +            enum:
+>> +              - mediatek,mt8195-iommu-infra
+>> +
+>> +    then:
+>> +      properties:
+>> +        interrupts:
+>> +          description: |
+> 
+> Do you really need to keep the formatting?
+> 
+> If you rephrase that as:
+> 
+> The infra IOMMU in MT8195 has five banks: each features one set
+> of APB registers for the normal world (set 0), one
+
+Shouldn't we use a 'three' here?
+Three APB register sets for the protected world 1, protected world 2,
+and protected world 3.
+
+> for the protected
+> world (sets 1-3) and one for the secure world (set 4), and each set
+> has its own interrupt. Therefore, five interrupts are needed.
+> 
+> ...you won't need the bar :-)
+
+Thanks for the suggestion. The description has been moved to
+top common property in v3, and v4,
+hence the bar is still required to explain the
+others SOCs. I'll try to rephrase the description for MT8195 also.
+
+>> +            The IOMMU of MT8195 has 5 banks: 0/1/2/3/4.
+>> +            Each bank has a set of APB registers corresponding to the
+>> +            normal world, protected world 1/2/3, and secure world, 
+>> respectively.
+>> +            Therefore, 5 interrupt numbers are needed.
+>> +          maxItems: 5
+> 
+> minItems: 5
+> 
+> Cheers,
+> Angelo
+> 
+> 
+
+Thanks
+Macpaul Lin
 
