@@ -4,70 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94F30CF6D3A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 15:41:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1701CEACF3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 18:22:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7kLFuygurNTZStrxyi8w+svXqV/AYfhA0SakSKKL+gc=; b=KRyL68yswSs0uGpncK72qK54kB
-	9Wg/8jRx/juH9hIGXAHue2QSn7KPSemSmVYrlUrbosttpoVXO3i3+rUA2X2UVBsgvGwfMUmeyiOeo
-	9fHUwbNkUGGLwPAnD5YjwJ6RDKCTdvqMonqlfcC9zRpnNbODWeS9yjjAlsF7yt8drKuHBkNWHv536
-	frPEu/bE8S9gdtyw0xcZoZO2USgTmFmze9BJANERb+htnL4ipXU2WxXqyaeM6t95AF2XlUNlD1KO2
-	jbQ/Du851bd9uMsu+zbzf/u979PBXVk8JmmT+ZMnyO9BbDZSaqhft2pMC8aFCER2HTnjKi0/5NaDx
-	Rlo24qRQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=laFItP8OnP58+F75OVFB2VaT5gD1yGLmRV7CUuEN4lY=; b=bnX6Qz6JWT0Y4lvcLc37J1rIc3
+	pG0BQApuQMiFAAtxycTRRiC46B7VgPOUW7gJpqVCDWQJmniALWwHjgXOfL8H03dBUvQFNAiaKX6su
+	A06a77ro0FPaZ1ww2YFMSbH9MbRppKYSYqUoFR8sBW4EYggZEvxeeWnY0qNuyAYBcZeT6Gn6Kuhs6
+	VVwwV9fy0yMr/xZ+Rx/oH28dReZSohoZca+bfEsbmP5X2pLeqWYmOhh0nVYi61aP6C4Ry5yg5jq/d
+	fqiJQpkhgO68sY/3WQGOYtjWFrezK3Yu/4VOqNpR000VzUGckraX3KekYn7IUrU/JK+xhucWZPHg1
+	2YuMoa0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sw1Tb-00000006iwx-2NVC;
-	Wed, 02 Oct 2024 15:41:19 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1sw401-000000079Vr-2wec;
+	Wed, 02 Oct 2024 18:22:57 +0000
+Received: from mgamail.intel.com ([192.198.163.17])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sw1Pn-00000006hl3-20ey;
-	Wed, 02 Oct 2024 15:37:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CD8635C3E58;
-	Wed,  2 Oct 2024 15:37:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E7E8C4CEC2;
-	Wed,  2 Oct 2024 15:37:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727883442;
-	bh=MT4X6dcUBubM7lv3hZ3oqvwfLote9SJ8fD8+SCx2gBI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=U4xcgL3GFikjK83sb/zEk3muR672O4FB+EWjIvN1EEV0kUm4SyD2xrOJXtA2aT5p9
-	 rQVMEm0ENcfjYKOVo3/gQs/7/tPnRY5rOKXeGjyaAJMHtu4nXx4hHN2lXeZgxoT81L
-	 R+p/DzvgaPRn8dUhkxF7L5OkWXR9Zu0IQgIOMc2VE72/mczuJFLeFvpnUnqERk1v4K
-	 fyvqSnq3TBG1MYWD+YQl+fXtsnjlPDomZTi5spljfD9e7k7ZdzZ4vLrcjFFvsh++OD
-	 f2RoU6509kT+8jhnpFaI0S4rthE0CS5eLXeBVbvpbgNshz4xzUaQcOzzAXPEy1oJF4
-	 7XwOUUSsFmSZA==
-Date: Wed, 2 Oct 2024 17:37:20 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lee Jones <lee@kernel.org>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	upstream@airoha.com, benjamin.larsson@genexis.eu,
-	ansuelsmth@gmail.com, linux-pwm@vger.kernel.org
-Subject: Re: [PATCH v5 4/5] pinctrl: airoha: Add support for EN7581 SoC
-Message-ID: <Zv1osANiy8n8Um6y@lore-desk>
-References: <20241001-en7581-pinctrl-v5-0-dc1ce542b6c6@kernel.org>
- <20241001-en7581-pinctrl-v5-4-dc1ce542b6c6@kernel.org>
- <CACRpkdZMWKb1h0-sWECCY0E3CxxMyLwCr4M3k6vrY9aAfpzMVg@mail.gmail.com>
+	id 1sw3zI-000000079MD-1Ot7;
+	Wed, 02 Oct 2024 18:22:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1727893332; x=1759429332;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=t01JDmHT3zLNfz8gKoJAfjyhjpNElz/ODXlRagJHKXg=;
+  b=KwJe9VHPz4jC27IznEYQ8exH6m/oRNMKN3alvG3xHU9dKSo2VkYOYJFI
+   BvCS+vXNajcMRwwSQj19BsdLDR5kUWpk/1PH1y/CjEtbakiPBqYQsWaec
+   VCQxhZkTYXUUREFgL+4AFPyu0YygNvcQ1J2oKS8yTPUnDSdmMf3SNzkM9
+   e+Q3+5hljEPTOYqA9ArTAn6vBSvXaonJiLD4L87snL/j+ofaMHELg++cO
+   oKbjhDR47zmnrgyl2wjuytS7hmlNukAZmKZKWtj9Pp3ZfnV63ZkkU2VeD
+   XMaaJGcvYsK9rE9ktEiTB2tLUVmPe6TYFha0Nmt6x2NrssV6MlxCjv/3+
+   Q==;
+X-CSE-ConnectionGUID: BQgqJS+WREe+8iv92xmTXQ==
+X-CSE-MsgGUID: XYgtdQFFSBSG1G12CdtMLg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11213"; a="26957546"
+X-IronPort-AV: E=Sophos;i="6.11,172,1725346800"; 
+   d="scan'208";a="26957546"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Oct 2024 11:22:11 -0700
+X-CSE-ConnectionGUID: RuSvj+gXSm+hT8AukyUnKw==
+X-CSE-MsgGUID: k8M7o8nlSyG/VQl44AXurg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,172,1725346800"; 
+   d="scan'208";a="74202322"
+Received: from stinkpipe.fi.intel.com (HELO stinkbox) ([10.237.72.74])
+  by fmviesa008.fm.intel.com with SMTP; 02 Oct 2024 11:22:01 -0700
+Received: by stinkbox (sSMTP sendmail emulation); Wed, 02 Oct 2024 21:22:00 +0300
+From: Ville Syrjala <ville.syrjala@linux.intel.com>
+To: dri-devel@lists.freedesktop.org
+Cc: intel-gfx@lists.freedesktop.org,
+	Abhinav Kumar <quic_abhinavk@quicinc.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Alex Deucher <alexander.deucher@amd.com>,
+	Alexey Brodkin <abrodkin@synopsys.com>,
+	amd-gfx@lists.freedesktop.org,
+	Andy Yan <andy.yan@rock-chips.com>,
+	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+	Danilo Krummrich <dakr@redhat.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+	freedreno@lists.freedesktop.org,
+	Hans de Goede <hdegoede@redhat.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Inki Dae <inki.dae@samsung.com>,
+	Jyri Sarha <jyri.sarha@iki.fi>,
+	Karol Herbst <kherbst@redhat.com>,
+	linux-amlogic@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-arm-msm@vger.kernel.orga,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Lyude Paul <lyude@redhat.com>,
+	=?UTF-8?q?Ma=C3=ADra=20Canal?= <mairacanal@riseup.net>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	nouveau@lists.freedesktop.org,
+	nouveau@lists.freedesktop.orga,
+	Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
+	Rob Clark <robdclark@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Sean Paul <sean@poorly.run>,
+	spice-devel@lists.freedesktop.org,
+	virtualization@lists.linux.dev,
+	xen-devel@lists.xenproject.org,
+	Xinhui Pan <Xinhui.Pan@amd.com>,
+	Zack Rusin <zack.rusin@broadcom.com>
+Subject: [PATCH 0/2] drm: Treewide plane/crtc legacy state sweeping
+Date: Wed,  2 Oct 2024 21:21:58 +0300
+Message-ID: <20241002182200.15363-1-ville.syrjala@linux.intel.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="WN0rmCbHDTHdyjt5"
-Content-Disposition: inline
-In-Reply-To: <CACRpkdZMWKb1h0-sWECCY0E3CxxMyLwCr4M3k6vrY9aAfpzMVg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241002_083723_583178_58BABCAA 
-X-CRM114-Status: GOOD (  14.93  )
+X-CRM114-CacheID: sfid-20241002_112212_415941_1E63BA99 
+X-CRM114-Status: GOOD (  12.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,55 +117,172 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Ville Syrjälä <ville.syrjala@linux.intel.com>
 
---WN0rmCbHDTHdyjt5
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+An attempt to hide the drm_plane/crtc legacy state better.
 
-On Oct 02, Linus Walleij wrote:
-> On Tue, Oct 1, 2024 at 7:30=E2=80=AFPM Lorenzo Bianconi <lorenzo@kernel.o=
-rg> wrote:
->=20
-> > Introduce pinctrl driver for EN7581 SoC. Current EN7581 pinctrl driver
-> > supports the following functionalities:
-> > - pin multiplexing
-> > - pin pull-up, pull-down, open-drain, current strength,
-> >   {input,output}_enable, output_{low,high}
-> > - gpio controller
-> > - irq controller
-> >
-> > Tested-by: Benjamin Larsson <benjamin.larsson@genexis.eu>
-> > Co-developed-by: Benjamin Larsson <benjamin.larsson@genexis.eu>
-> > Signed-off-by: Benjamin Larsson <benjamin.larsson@genexis.eu>
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
->=20
-> I missed that there was a v5 out and responded more to v4.
->=20
-> Anyway, I think the last comments on v4 still need to be
-> adressed:
-> https://lore.kernel.org/linux-gpio/CACRpkdbXWMU+wq6DvviCQPQ0EzKUm9oOnyFh3=
-4Bm=3DY8K-HmT0Q@mail.gmail.com/
+This also highlights the fact that a lot of supposedly
+atomic drivers are poking around in the legacy crtc state,
+which is rather questionable. For planes we did force the
+legacy state to NULL already to force drivers to behave.
+But even then it seems capable of confusing people with
+its high profile location directly under drm_plane.
 
-ack, I will do in v6.
+This might end up as some kind of conflict
+galore, but the alternative would involve trying
+to wean the atomic drivers off one by one,
+which would probably take forever. At least with
+this the issue becomes visible and shouldn't be
+forgotten as easily.
 
-Regards,
-Lorenzo
+The cc list was getting way out of hand, so I had
+to trim it a bit. Hopefully I didn't chop off too
+many names...
 
->=20
-> Yours,
-> Linus Walleij
+Cc: Abhinav Kumar <quic_abhinavk@quicinc.com>
+Cc: Alain Volmat <alain.volmat@foss.st.com>
+Cc: Alex Deucher <alexander.deucher@amd.com>
+Cc: Alexey Brodkin <abrodkin@synopsys.com>
+Cc: amd-gfx@lists.freedesktop.org
+Cc: Andy Yan <andy.yan@rock-chips.com>
+Cc: "Christian König" <christian.koenig@amd.com>
+Cc: Danilo Krummrich <dakr@redhat.com>
+Cc: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: freedreno@lists.freedesktop.org
+Cc: Hans de Goede <hdegoede@redhat.com>
+Cc: "Heiko Stübner" <heiko@sntech.de>
+Cc: Inki Dae <inki.dae@samsung.com>
+Cc: Jyri Sarha <jyri.sarha@iki.fi>
+Cc: Karol Herbst <kherbst@redhat.com>
+Cc: linux-amlogic@lists.infradead.org
+Cc: linux-arm-msm@vger.kernel.org
+Cc: linux-arm-msm@vger.kernel.orga
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-renesas-soc@vger.kernel.org
+Cc: Liviu Dudau <liviu.dudau@arm.com>
+Cc: Lyude Paul <lyude@redhat.com>
+Cc: "Maíra Canal" <mairacanal@riseup.net>
+Cc: Marijn Suijten <marijn.suijten@somainline.org>
+Cc: nouveau@lists.freedesktop.org
+Cc: nouveau@lists.freedesktop.orga
+Cc: Patrik Jakobsson <patrik.r.jakobsson@gmail.com>
+Cc: Rob Clark <robdclark@gmail.com>
+Cc: Russell King <linux@armlinux.org.uk>
+Cc: Sandy Huang <hjc@rock-chips.com>
+Cc: Sean Paul <sean@poorly.run>
+Cc: spice-devel@lists.freedesktop.org
+Cc: virtualization@lists.linux.dev
+Cc: xen-devel@lists.xenproject.org
+Cc: Xinhui Pan <Xinhui.Pan@amd.com>
+Cc: Zack Rusin <zack.rusin@broadcom.com>
 
---WN0rmCbHDTHdyjt5
-Content-Type: application/pgp-signature; name="signature.asc"
+Ville Syrjälä (2):
+  drm: Move plane->{fb,old_fb,crtc} to legacy sub-structure
+  drm: Move crtc->{x,y,mode,enabled} to legacy sub-structure
 
------BEGIN PGP SIGNATURE-----
+ .../gpu/drm/amd/amdgpu/amdgpu_connectors.c    |  7 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_display.c   | 20 ++---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_pll.c       |  2 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_vkms.c      |  2 +-
+ drivers/gpu/drm/amd/amdgpu/dce_v10_0.c        | 35 ++++----
+ drivers/gpu/drm/amd/amdgpu/dce_v11_0.c        | 35 ++++----
+ drivers/gpu/drm/amd/amdgpu/dce_v6_0.c         | 37 ++++-----
+ drivers/gpu/drm/amd/amdgpu/dce_v8_0.c         | 35 ++++----
+ .../gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c | 14 ++--
+ .../amd/display/amdgpu_dm/amdgpu_dm_crtc.c    |  2 +-
+ drivers/gpu/drm/amd/pm/amdgpu_dpm_internal.c  |  4 +-
+ drivers/gpu/drm/arm/hdlcd_drv.c               |  2 +-
+ drivers/gpu/drm/arm/malidp_hw.c               |  2 +-
+ drivers/gpu/drm/armada/armada_crtc.c          | 12 ++-
+ drivers/gpu/drm/ast/ast_dp.c                  |  8 +-
+ drivers/gpu/drm/drm_atomic.c                  |  6 +-
+ drivers/gpu/drm/drm_atomic_helper.c           |  8 +-
+ drivers/gpu/drm/drm_client_modeset.c          | 10 +--
+ drivers/gpu/drm/drm_crtc.c                    | 31 +++----
+ drivers/gpu/drm/drm_crtc_helper.c             | 80 ++++++++++---------
+ drivers/gpu/drm/drm_fb_helper.c               | 12 +--
+ drivers/gpu/drm/drm_framebuffer.c             |  4 +-
+ drivers/gpu/drm/drm_plane.c                   | 69 ++++++++--------
+ drivers/gpu/drm/drm_plane_helper.c            |  6 +-
+ drivers/gpu/drm/drm_vblank.c                  |  2 +-
+ drivers/gpu/drm/exynos/exynos5433_drm_decon.c |  4 +-
+ drivers/gpu/drm/gma500/cdv_intel_display.c    |  2 +-
+ drivers/gpu/drm/gma500/cdv_intel_dp.c         |  6 +-
+ drivers/gpu/drm/gma500/cdv_intel_hdmi.c       |  3 +-
+ drivers/gpu/drm/gma500/cdv_intel_lvds.c       |  6 +-
+ drivers/gpu/drm/gma500/gma_display.c          | 22 ++---
+ drivers/gpu/drm/gma500/oaktrail_crtc.c        |  2 +-
+ drivers/gpu/drm/gma500/psb_intel_display.c    |  2 +-
+ drivers/gpu/drm/gma500/psb_intel_lvds.c       |  6 +-
+ drivers/gpu/drm/gma500/psb_intel_sdvo.c       |  8 +-
+ drivers/gpu/drm/i2c/ch7006_drv.c              |  7 +-
+ drivers/gpu/drm/i2c/sil164_drv.c              |  2 +-
+ .../drm/i915/display/intel_modeset_setup.c    |  4 +-
+ drivers/gpu/drm/imx/lcdc/imx-lcdc.c           | 31 ++++---
+ drivers/gpu/drm/mediatek/mtk_crtc.c           |  6 +-
+ drivers/gpu/drm/meson/meson_overlay.c         |  2 +-
+ drivers/gpu/drm/meson/meson_plane.c           |  8 +-
+ drivers/gpu/drm/msm/disp/dpu1/dpu_core_perf.c | 18 +++--
+ drivers/gpu/drm/msm/disp/dpu1/dpu_kms.c       |  6 +-
+ drivers/gpu/drm/msm/disp/dpu1/dpu_plane.c     | 16 ++--
+ drivers/gpu/drm/msm/disp/mdp5/mdp5_crtc.c     |  4 +-
+ drivers/gpu/drm/nouveau/dispnv04/crtc.c       | 25 +++---
+ drivers/gpu/drm/nouveau/dispnv04/cursor.c     |  2 +-
+ drivers/gpu/drm/nouveau/dispnv04/dfp.c        |  2 +-
+ drivers/gpu/drm/nouveau/dispnv04/disp.c       |  4 +-
+ .../gpu/drm/nouveau/dispnv04/tvmodesnv17.c    |  4 +-
+ drivers/gpu/drm/nouveau/dispnv04/tvnv17.c     |  7 +-
+ drivers/gpu/drm/nouveau/nouveau_connector.c   |  6 +-
+ drivers/gpu/drm/qxl/qxl_display.c             |  6 +-
+ drivers/gpu/drm/radeon/atombios_crtc.c        | 28 +++----
+ drivers/gpu/drm/radeon/cik.c                  | 12 +--
+ drivers/gpu/drm/radeon/evergreen.c            | 16 ++--
+ drivers/gpu/drm/radeon/r100.c                 | 16 ++--
+ drivers/gpu/drm/radeon/r600_cs.c              |  2 +-
+ drivers/gpu/drm/radeon/r600_dpm.c             |  4 +-
+ drivers/gpu/drm/radeon/radeon_connectors.c    |  7 +-
+ drivers/gpu/drm/radeon/radeon_cursor.c        | 29 +++----
+ drivers/gpu/drm/radeon/radeon_device.c        |  2 +-
+ drivers/gpu/drm/radeon/radeon_display.c       | 26 +++---
+ drivers/gpu/drm/radeon/radeon_drv.c           |  2 +-
+ drivers/gpu/drm/radeon/radeon_legacy_crtc.c   | 16 ++--
+ .../gpu/drm/radeon/radeon_legacy_encoders.c   |  2 +-
+ drivers/gpu/drm/radeon/radeon_pm.c            |  2 +-
+ drivers/gpu/drm/radeon/rs600.c                | 10 +--
+ drivers/gpu/drm/radeon/rs690.c                | 22 ++---
+ drivers/gpu/drm/radeon/rs780_dpm.c            |  6 +-
+ drivers/gpu/drm/radeon/rv515.c                | 30 +++----
+ drivers/gpu/drm/radeon/rv770.c                |  2 +-
+ drivers/gpu/drm/radeon/si.c                   | 14 ++--
+ .../gpu/drm/renesas/rcar-du/rcar_du_crtc.c    |  2 +-
+ .../gpu/drm/renesas/shmobile/shmob_drm_crtc.c |  2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c   |  6 +-
+ drivers/gpu/drm/sti/sti_crtc.c                |  4 +-
+ drivers/gpu/drm/sti/sti_cursor.c              |  2 +-
+ drivers/gpu/drm/sti/sti_gdp.c                 |  2 +-
+ drivers/gpu/drm/sti/sti_hqvdp.c               |  2 +-
+ drivers/gpu/drm/sti/sti_tvout.c               |  6 +-
+ drivers/gpu/drm/sti/sti_vid.c                 |  2 +-
+ drivers/gpu/drm/tilcdc/tilcdc_crtc.c          | 10 +--
+ drivers/gpu/drm/tiny/arcpgu.c                 |  2 +-
+ drivers/gpu/drm/vboxvideo/vbox_mode.c         |  2 +-
+ drivers/gpu/drm/vc4/vc4_dpi.c                 |  2 +-
+ drivers/gpu/drm/vc4/vc4_plane.c               |  4 +-
+ drivers/gpu/drm/virtio/virtgpu_display.c      |  4 +-
+ drivers/gpu/drm/vkms/vkms_composer.c          |  4 +-
+ drivers/gpu/drm/vkms/vkms_crtc.c              |  2 +-
+ drivers/gpu/drm/vkms/vkms_writeback.c         |  4 +-
+ drivers/gpu/drm/vmwgfx/vmwgfx_kms.c           |  8 +-
+ drivers/gpu/drm/vmwgfx/vmwgfx_ldu.c           | 18 +++--
+ drivers/gpu/drm/vmwgfx/vmwgfx_scrn.c          |  9 ++-
+ drivers/gpu/drm/vmwgfx/vmwgfx_stdu.c          |  4 +-
+ drivers/gpu/drm/vmwgfx/vmwgfx_vkms.c          |  2 +-
+ drivers/gpu/drm/xen/xen_drm_front_kms.c       |  2 +-
+ include/drm/drm_crtc.h                        | 75 ++++++++---------
+ include/drm/drm_plane.h                       | 52 ++++++------
+ 100 files changed, 599 insertions(+), 547 deletions(-)
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZv1orwAKCRA6cBh0uS2t
-rK7xAP93gThE4rrEfzNcqrw85E3kcerWOJOqVnoTi+WpWW2JEQD5AeuJvNtGZp6n
-HH4wNjZ7Z5fXcCBfgVML15h4HOZWowg=
-=eXGw
------END PGP SIGNATURE-----
+-- 
+2.45.2
 
---WN0rmCbHDTHdyjt5--
 
