@@ -4,88 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EECAFCF318C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 02:29:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 635D6CF318C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 02:36:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AXo4qg1qbW5uH1IaDDE0fD77SMCRdYG9ygic6+svJAY=; b=A9Z3A+/oMr2B0NXdxIxv5xFA71
-	VFUbn9pvbCROL6ggvaSOuoBTfsEbmvEOHGKnfdazuOX8SeOuCknbIsnoFnfRk8YyDzPfjFUvKryfu
-	cCWhdcU3VoVperHJ4Q3JkYcY4FDIUMsnl0mpToi6iKy3X38lphdAWJsUgSTpkRS+luzFV07JWIcaH
-	qjE4WT2x6/2qYrbpY3786WYYTVo9p564tdkuUI3hgvuK4Xq8ioIPwjY2tFmH/AP2Os2OncYwW43AO
-	L8A89nCfT1NfR3Aw4XrWULLtYpqSRz9VdjIkaGarz6hNtlElfXiNS9N7wKdEMe56adxOkrgw9Eguy
-	Th3VCK+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=94naYpv079to4aDULVCz9OCsch+/fu1zXqCOaX8AqZQ=; b=v9LU5JWOSANRgiurRynIV4WgEz
+	Xc30FJsHAue3U56q1woruk3NvYgzMYthOWceedjEZc+afNpDo9bjF6t/FfoUAiUhvgeBF37SkYoax
+	mCKDp3s/lPVl1UOcNDO03gEVHH9Vg6/WdwrQ9jYAT6tbgV3a6RaD0rDUToJTut4MoEPmadplLdTOt
+	2ud42cp1UuVlz+xqtuPUXCPQmm7IwsSPRNaugHJeyZvX4XNxL2wz3AHIlgVoZSFpvXis5B8otXUTO
+	XtYdihl+I76pOMahdnMqN7+1y/Eh/bbmi1ru/q0CKSWM7iB01p8hmgAnKiVgqYKZ/D083MLImTYeb
+	V+vs1wcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svp7D-00000004cvv-49Az;
-	Wed, 02 Oct 2024 02:29:23 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1svpDh-00000004dX4-1lXF;
+	Wed, 02 Oct 2024 02:36:05 +0000
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svp0H-00000004c29-1eoy;
-	Wed, 02 Oct 2024 02:22:14 +0000
-X-UUID: 1f7af698806511efb3adad29d29602c1-20241001
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=AXo4qg1qbW5uH1IaDDE0fD77SMCRdYG9ygic6+svJAY=;
-	b=raiCm+8yJLRTAtAlXjrojjcT6xt5R5ks1GszE7CSFd/jXO21j+GAv5Qx01HiFQqeVad2er4F9arFqrgYS3ExmAo/dG8REHhWxuzMmgrnQo8Yi29eA7JEtxFFFhUrTW9bznf/+HROR3Qekm57dTNd+O8637FAL+I7XPjPuG1ynec=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:bbddc3e5-1353-46ec-ab1a-833cadc46005,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:477392bd-085c-4112-81e0-4d6de274b71a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
-X-UUID: 1f7af698806511efb3adad29d29602c1-20241001
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <pablo.sun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2118156097; Tue, 01 Oct 2024 19:22:07 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 2 Oct 2024 10:22:04 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 2 Oct 2024 10:22:04 +0800
-From: Pablo Sun <pablo.sun@mediatek.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Pablo Sun <pablo.sun@mediatek.com>
-Subject: [PATCH v3 6/6] arm64: dts: mediatek: mt8390-genio-700-evk: Enable Mali GPU
-Date: Wed, 2 Oct 2024 10:21:38 +0800
-Message-ID: <20241002022138.29241-7-pablo.sun@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20241002022138.29241-1-pablo.sun@mediatek.com>
-References: <20241002022138.29241-1-pablo.sun@mediatek.com>
+	id 1svpCS-00000004dPK-0Wdl;
+	Wed, 02 Oct 2024 02:34:49 +0000
+Received: by mail-pl1-x643.google.com with SMTP id d9443c01a7336-20bc2970df5so6795255ad.3;
+        Tue, 01 Oct 2024 19:34:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1727836487; x=1728441287; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=94naYpv079to4aDULVCz9OCsch+/fu1zXqCOaX8AqZQ=;
+        b=nTahsYCzqkzjRLCT/+CbOYYWiWtCTVKxUYVW21vI1iRngNN9S0nQHglBnuC7EZuf+R
+         j+qRwPZnGtPtYfbIoD9raDowA1ONzg31Kij57o4yEJ4GMw4rVVV0SRMQ19W8JL2GAU1V
+         IxlRs5CdpQ6hbL2l8/SNKQwzV+2S0gKxSn2x9QPia/jY3B0Dzryfxy0hW5xFgVJQVcBm
+         NjLtGYAZ85drvtDD32VciVq0BI5sims/lczVlirGuY/2o3VqZoSmJ1dvEyGaRwn6OoJh
+         omEDyd2Sutp7pNYSovhF369iDNiod/S9UaX2r/hfL+1Uq3kKwd+tLlqWvMZNGQu4YHHX
+         olXQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727836487; x=1728441287;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=94naYpv079to4aDULVCz9OCsch+/fu1zXqCOaX8AqZQ=;
+        b=bJ6/n3ofCr3sPSqdESUrxLJwoUTVbrJEsJU6EjFxeVPQyR0nxpjlbOuNSORjDSEbb0
+         mcFIS1Hv0YPwD79gLuHvpIeSk4U0/kYGu2UAY9mR2BIlxz/jZyAqErX8JZ9BQyahugel
+         rZBsjKX+wvBDmX4SDm9NqP+rIV6RKupzy6kaFXlZEUeFgzYdVSHTE36mUouPcvPSTz4f
+         iTW3EbUfXJ9bs1yyxR7uEHrTEpj2W6fWU79qGvRhoQwKY0Vv2t0MNOWpqDq9hx0ntciO
+         Jp4OKBYM3KaQX+LixR2f3HxV0NQ6FPrvTKwZM20sRScFtNvv1iU0fiCN+XjlrE0zr0Xw
+         eShQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUORuc+SnSO8XFyI/rNn/yJ1D9//G1BJr5ciRvbyt0bMOQhL2O9B/vdppBueKFuOVWG1B2IP8SbpS7bfeBOZGIr@lists.infradead.org, AJvYcCUpKJPeCeho3ZtUgIlWGDhgwAE5K97VQauqZkl5l9yFAObDZ6OgvanF/sWsWH6gBTooE+IdHDTENvPO1OGdq3Q=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy8Q2C3q8XzsU8XizvKfFO/1ZoadyQRIkoWCy0H7oYQ53mK58gk
+	kptvafNehsw6mbnQRIVS/xVYpWsOGlCghf43a9lhQ1daD1gTsHxU
+X-Google-Smtp-Source: AGHT+IF9UFJBsbcmQi++iX6HKeBG+ku6eNZRFQc3F4zkIg3OMASXuELxeSEfBVyfvWUc3NyPSynvqg==
+X-Received: by 2002:a17:902:e844:b0:20b:b132:4df9 with SMTP id d9443c01a7336-20bc5a01fa5mr17029495ad.34.1727836487138;
+        Tue, 01 Oct 2024 19:34:47 -0700 (PDT)
+Received: from ?IPV6:2409:8a55:301b:e120:50d1:daaf:4d8b:70e8? ([2409:8a55:301b:e120:50d1:daaf:4d8b:70e8])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20b5b167128sm58750135ad.283.2024.10.01.19.34.39
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 01 Oct 2024 19:34:46 -0700 (PDT)
+Message-ID: <33f23809-abec-4d39-ab80-839dc525a2e6@gmail.com>
+Date: Wed, 2 Oct 2024 10:34:34 +0800
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--1.748400-8.000000
-X-TMASE-MatchedRID: M6m/rk6FrQxcgzmua3ALxodlc1JaOB1TIfZjRfGTydjCJQ8asLA2F7DW
-	HFry+EP4rgnTk236K6go59mvNdf5O4vTpuEjuIpknVTWWiNp+v8adfsoBn8KlbKsKQz2vVta+4w
-	NuQyQe6mjkL1tNPFpRqBjuNhZcYw1QkfxbJAyTm7r/EBmiNuXt1VDM0QjJZ5DmyiLZetSf8mfop
-	0ytGwvXiq2rl3dzGQ1zZk/ADR33yL9eqS9TsKMChGHbBOHfyCLJGGjpNIwYaJasW5PvkLnF6Qwj
-	W1eRoC+Aw44L2WMxzIHWGA9o1ZuoRzevJ3An0JpYODWiKq2wvZ0BNB20+SxH7f8mJY57oZddJaB
-	DYald1lvF9+X2GEIHA==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--1.748400-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 9F6F30D13840FA44F3EE82DAECC8688D34F0A906778796E2D3E209B0B9A3F3DA2000:8
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net v2 2/2] page_pool: fix IOMMU crash when driver has
+ already unbound
+To: Paolo Abeni <pabeni@redhat.com>, Yunsheng Lin <linyunsheng@huawei.com>,
+ davem@davemloft.net, kuba@kernel.org
+Cc: liuyonglong@huawei.com, fanghaiqing@huawei.com, zhangkun09@huawei.com,
+ Robin Murphy <robin.murphy@arm.com>,
+ Alexander Duyck <alexander.duyck@gmail.com>, IOMMU <iommu@lists.linux.dev>,
+ Wei Fang <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>,
+ Clark Wang <xiaoning.wang@nxp.com>, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Saeed Mahameed
+ <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>,
+ Tariq Toukan <tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>, imx@lists.linux.dev,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
+ linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-mm@kvack.org
+References: <20240925075707.3970187-1-linyunsheng@huawei.com>
+ <20240925075707.3970187-3-linyunsheng@huawei.com>
+ <4968c2ec-5584-4a98-9782-143605117315@redhat.com>
+Content-Language: en-US
+From: Yunsheng Lin <yunshenglin0825@gmail.com>
+In-Reply-To: <4968c2ec-5584-4a98-9782-143605117315@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241001_192213_469551_8CA7A63F 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20241001_193448_190153_733570D3 
+X-CRM114-Status: GOOD (  23.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,106 +119,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Configure GPU regulator supplies and enable GPU for GENIO 700 EVK.
+On 10/1/2024 9:32 PM, Paolo Abeni wrote:
+> On 9/25/24 09:57, Yunsheng Lin wrote:
+>> Networking driver with page_pool support may hand over page
+>> still with dma mapping to network stack and try to reuse that
+>> page after network stack is done with it and passes it back
+>> to page_pool to avoid the penalty of dma mapping/unmapping.
+>> With all the caching in the network stack, some pages may be
+>> held in the network stack without returning to the page_pool
+>> soon enough, and with VF disable causing the driver unbound,
+>> the page_pool does not stop the driver from doing it's
+>> unbounding work, instead page_pool uses workqueue to check
+>> if there is some pages coming back from the network stack
+>> periodically, if there is any, it will do the dma unmmapping
+>> related cleanup work.
+>>
+>> As mentioned in [1], attempting DMA unmaps after the driver
+>> has already unbound may leak resources or at worst corrupt
+>> memory. Fundamentally, the page pool code cannot allow DMA
+>> mappings to outlive the driver they belong to.
+>>
+>> Currently it seems there are at least two cases that the page
+>> is not released fast enough causing dma unmmapping done after
+>> driver has already unbound:
+>> 1. ipv4 packet defragmentation timeout: this seems to cause
+>>     delay up to 30 secs.
+>> 2. skb_defer_free_flush(): this may cause infinite delay if
+>>     there is no triggering for net_rx_action().
+>>
+>> In order not to do the dma unmmapping after driver has already
+>> unbound and stall the unloading of the networking driver, add
+>> the pool->items array to record all the pages including the ones
+>> which are handed over to network stack, so the page_pool can
+>> do the dma unmmapping for those pages when page_pool_destroy()
+>> is called. As the pool->items need to be large enough to avoid
+>> performance degradation, add a 'item_full' stat to indicate the
+>> allocation failure due to unavailability of pool->items.
+> 
+> This looks really invasive, with room for potentially large performance 
+> regressions or worse. At very least it does not look suitable for net.
 
-The GPU in MT8390 & MT8188 has two power inputs: "DVDD_GPU" and
-"DVDD_SRAM_GPU". In Genio 700 EVK, DVDD_GPU is supplied by
-mt6359_vproc2_buck_reg, and DVDD_SRAM_GPU is supplied by
-mt6359_vsram_others_ldo_reg.
+I am open to targetting this to net-next, it can be backported when some
+testing is done through one or two kernel versions and there is still
+some interest to backport it too.
 
-According to section 5.2 "Recommended Operating Conditions" in
-MT8390 IoT Application Processor Datasheet v1.9, The recommended
-operating voltage ranges are:
+Or if there is some non-invasive way to fix this.
 
-- DVDD_GPU: min 0.55V, max 0.86V, typical 0.75V
-- DVDD_SRAM_GPU: min 0.71V, max 0.92V, typical 0.85V
+> 
+> Is the problem only tied to VFs drivers? It's a pity all the page_pool 
+> users will have to pay a bill for it...
 
-To further optimize power saving, we couple DVDD_SRAM_GPU to
-DVDD_GPU according to the following relation:
+I am afraid it is not only tied to VFs drivers, as:
+attempting DMA unmaps after the driver has already unbound may leak
+resources or at worst corrupt memory.
 
-- For opp-880000000 or lower frequency, keep 0.75V
-- For opp-915000000 and higher, DVDD_SRAM_GPU should follow
-  DVDD_GPU. The exact voltage for DVDD_GPU should be decided by
-  speed binning.
+Unloading PFs driver might cause the above problems too, I guess the
+probability of crashing is low for the PF as PF can not be disable
+unless it can be hot-unplug'ed, but the probability of leaking resources
+behind the dma mapping might be similar.
 
-This rule is derived from the OPP table in the link.
-
-In addition, set the voltage spread to 6250 uV, the step size of
-'ldo_vsram_others' regulator of mt6359, otherwise the regulator
-set_voltage operation fails.
-
-Link: https://gitlab.com/mediatek/aiot/rity/meta-mediatek-bsp/-/blob/eedd6aedd4b0cfc0ee79b9c9b9650dfa73cf87f6/recipes-kernel/dtbo/mt8390/gpu-mali.dts
-Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
-Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../dts/mediatek/mt8390-genio-700-evk.dts     | 31 +++++++++++++++++++
- 1 file changed, 31 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-index 1474bef7e754..0a6c9871b41e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-@@ -190,6 +190,11 @@ usb_p2_vbus: regulator-10 {
- 	};
- };
- 
-+&gpu {
-+	mali-supply = <&mt6359_vproc2_buck_reg>;
-+	status = "okay";
-+};
-+
- &i2c0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c0_pins>;
-@@ -253,6 +258,14 @@ &i2c6 {
- 	status = "okay";
- };
- 
-+&mfg0 {
-+	domain-supply = <&mt6359_vproc2_buck_reg>;
-+};
-+
-+&mfg1 {
-+	domain-supply = <&mt6359_vsram_others_ldo_reg>;
-+};
-+
- &mmc0 {
- 	status = "okay";
- 	pinctrl-names = "default", "state_uhs";
-@@ -314,6 +327,15 @@ &mt6359_vpa_buck_reg {
- 	regulator-max-microvolt = <3100000>;
- };
- 
-+&mt6359_vproc2_buck_reg {
-+	/* The name "vgpu" is required by mtk-regulator-coupler */
-+	regulator-name = "vgpu";
-+	regulator-min-microvolt = <550000>;
-+	regulator-max-microvolt = <800000>;
-+	regulator-coupled-with = <&mt6359_vsram_others_ldo_reg>;
-+	regulator-coupled-max-spread = <6250>;
-+};
-+
- &mt6359_vpu_buck_reg {
- 	regulator-always-on;
- };
-@@ -326,6 +348,15 @@ &mt6359_vsim1_ldo_reg {
- 	regulator-enable-ramp-delay = <480>;
- };
- 
-+&mt6359_vsram_others_ldo_reg {
-+	/* The name "vsram_gpu" is required by mtk-regulator-coupler */
-+	regulator-name = "vsram_gpu";
-+	regulator-min-microvolt = <750000>;
-+	regulator-max-microvolt = <800000>;
-+	regulator-coupled-with = <&mt6359_vproc2_buck_reg>;
-+	regulator-coupled-max-spread = <6250>;
-+};
-+
- &mt6359_vufs_ldo_reg {
- 	regulator-always-on;
- };
--- 
-2.45.2
+> 
+> /P
+> 
+> 
 
 
