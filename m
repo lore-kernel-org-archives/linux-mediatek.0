@@ -4,86 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1966CCF6D25
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 13:27:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56AFACF6D28
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 14:01:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2HzBc2EV9uqxoflmRRfK8jFyB3aOAk7qQbpOPz7vBxc=; b=Ab3XjX+4H1mo5JHM1i3bw0JTqC
-	C5DOm6KPWnBbW6hkseR+uoozZP+Vqe/8bfsxM2tH83BzKoBQfs/e5Li4IlISezOF0PH/uFz2erhbp
-	FuoYnqYrNYyl7YRbikqyDAZmytOaF1yv0wbdHkrJE92CCJ+lJwbog07kWjGZHU9sP0E/5LctsnC0l
-	6Q5IUN1wppOMv2T0sb+qNaENohfGx0OyJsPQtHqF9CTJM9RYz8qud0TyRM5C57WHhP8c6U8Ke64po
-	o6+8wPSxsuZn6Ah+HrrDOkMrDKLPic8h0oLjj1/teDVEm2bNUu5PNIj/jdv0WWKaHvtN35FyPLZin
-	4zEnzDCQ==;
+	bh=MKfyQ/F3wJh5m32q4oPOyZNVe8WJhs+ENKg8qmZBEI4=; b=nBCKhEvHv4NxCsbGf+l70Jgo1W
+	DkmvQduWOcubANVa+rVCjbHdttnF4wkRkg2Sij11MpBvmeSPfI4B/jeGQmYJDme5CuFNGm27U1fbA
+	dS/Hs4MlCh0vZMudj4J5i62W5lQVU6tmNRyv6a51zpfIy/Asr05G/52a7pQrlauwjXCiVK+x1LIhV
+	ukSuDYzAe9h4LSJY3K+KvTS7K4TDDuUlfR9+2YCUybIMv64e58rsns/wz6ZIWomOoU0k/4csdonzJ
+	uqhU9CZLx8rPa9FyqFYCyCJ/meiCl3sF6zSvmRjwQUF//eS3ageAqsMrvStbckFitnJfF+JNnZhfq
+	/DYedzgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svzOQ-000000067ku-0uVn;
-	Wed, 02 Oct 2024 13:27:50 +0000
-Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
+	id 1svzv3-00000006HAK-3nQa;
+	Wed, 02 Oct 2024 14:01:33 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svzOA-000000067h8-2EoA
-	for linux-mediatek@lists.infradead.org;
-	Wed, 02 Oct 2024 13:27:35 +0000
-Received: by mail-yb1-xb2d.google.com with SMTP id 3f1490d57ef6-e260b266805so4341718276.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Oct 2024 06:27:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1727875653; x=1728480453; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=2HzBc2EV9uqxoflmRRfK8jFyB3aOAk7qQbpOPz7vBxc=;
-        b=pVaUT87V/Jz53zcA2KkjQbg8RNgsd7tCG7nPOgEjSoOFWYqR+jeTuv8iwCxeXGTkmc
-         QKstHAYtPAIEDaeqbjCSUK8gb5B/bOnv02dwBqoDNRgDMN7bvDSx7PAKlcePOLhhPG4c
-         qRQIeZjGLHQZuf/DaWUxQQhkma++6xz51IlwvWiYTkqvE5u+ECoOBm/E53EB/XYDX4em
-         FydrhOgHAxNmOJtXARTV820hwClUXzgSjquSBrNU3MvA9Q831x0Wxr85u9M3FsibB9aC
-         r7lhS4/+/dMs5SqQSKi3PjOF6R0gzuZUy9g+ebOs18aEmNFV2wjn/qL97dPCJqWjC357
-         kd4g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727875653; x=1728480453;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=2HzBc2EV9uqxoflmRRfK8jFyB3aOAk7qQbpOPz7vBxc=;
-        b=nn4asXm3UyjeFI56w/KO/brnwQRNxzimDJ3b7vodEJM1T0WrcXNbxis0eDaM+sQ9Rk
-         CZBW1SrS32q89SslhhNc9G9FGfuCweJpCN8R3pzogxk53040fYVu8EVSmdKLGPmyQtW3
-         1cCPJTQ7aUfuLnFKsLx/1nvQ1k2HhZkpsHZdtc0q82doudmE7joGjrrRyxC4eLR5gqJf
-         bX1NRMG3nYGbXHMcXLOqHOwRiBRmhsKJz8aPYOfyfrd/1AchZ2G+x9alRTIteZWhWSTW
-         cNVGpwhExdq0+RPGia/JP2Tj4APfjShOm59iRC6nKAXZn7IE4vK56ew+StLKEem2wR8+
-         TnyA==
-X-Forwarded-Encrypted: i=1; AJvYcCUkB1YOogd3bhBf4GPB/nIwCfLNaS32+0lzGsHzCJfbk/8KN73vy6hicje8EfdDAV67ucoucALAXqKP4QLCZw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxB8FnZwgKJ/QbJDv/qLB9yTgb3I0k5pAL62W/AZmOhysxNP6DY
-	Vx3ldrg866CJ+8qjQHyROR3zUrrdwNhBQP49LfdDUQdYHHxz8QjxokTXaxu0YYJ7TBjdMdAnJd0
-	shtrKs37nC8gUg1JtrbPhrZ6MCaTcxnDSMkettw==
-X-Google-Smtp-Source: AGHT+IHZUCB4vEl2AW6EAUkIG+axani700+S0OSjD1AjUsJbKs++2/eQZRuBsA/6kNKQfxt26/FJDiTjtYis5ARK10o=
-X-Received: by 2002:a05:6902:248a:b0:e20:2232:aab6 with SMTP id
- 3f1490d57ef6-e263838535amr2218907276.7.1727875653468; Wed, 02 Oct 2024
- 06:27:33 -0700 (PDT)
+	id 1svzsy-00000006GOT-1H9u;
+	Wed, 02 Oct 2024 13:59:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 04D375C2763;
+	Wed,  2 Oct 2024 13:59:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 53A72C4CECE;
+	Wed,  2 Oct 2024 13:59:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1727877557;
+	bh=9eLsi2QYDYeifi8LYgOazHAYg0AbX7S3Jja0oJlI+E0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=MqJRTg2gaaf+4t37dh63DgjjFxi4RycBT00xrCOwPS3zgzEUZfBlU2Pz6JII008R3
+	 Qj3FbUeubiMRauPMaw7CzQlLt7eTarkN6H1+7sicD5FYyt5Xi7CyBtyNNCanNrUe3m
+	 13CKfqBsMlfEds4KpvU0UJfQLjZvBsVI1BXnEGCEbu4voDlqjGizO8p59gvjsff5xO
+	 YO0lhCeC8O4PjqaB0rNzcLldOXsNSDZjti/W+HV/dZDq0EWiiTevhaOlS0yYVAgpzx
+	 dZE9cE2tZA93Q1mFSYZKoYWFedYMYG356FFtL9K1R2Jls9e0gHGwcahOSEYvOsB6tM
+	 46F7COrjB150w==
+Message-ID: <a0bff4b0-53ee-4c72-bc0a-205052cd9985@kernel.org>
+Date: Wed, 2 Oct 2024 15:59:10 +0200
 MIME-Version: 1.0
-References: <20241001-en7581-pinctrl-v5-0-dc1ce542b6c6@kernel.org> <20241001-en7581-pinctrl-v5-4-dc1ce542b6c6@kernel.org>
-In-Reply-To: <20241001-en7581-pinctrl-v5-4-dc1ce542b6c6@kernel.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Wed, 2 Oct 2024 15:27:16 +0200
-Message-ID: <CACRpkdZMWKb1h0-sWECCY0E3CxxMyLwCr4M3k6vrY9aAfpzMVg@mail.gmail.com>
-Subject: Re: [PATCH v5 4/5] pinctrl: airoha: Add support for EN7581 SoC
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lee Jones <lee@kernel.org>, 
-	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <ukleinek@kernel.org>, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	upstream@airoha.com, benjamin.larsson@genexis.eu, ansuelsmth@gmail.com, 
-	linux-pwm@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/8] dt-bindings: media: mediatek,jpeg: Relax IOMMU max
+ item count
+To: Fei Shao <fshao@chromium.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Bin Liu <bin.liu@mediatek.com>, Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Xia Jiang <xia.jiang@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20241001113052.3124869-1-fshao@chromium.org>
+ <20241001113052.3124869-4-fshao@chromium.org>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20241001113052.3124869-4-fshao@chromium.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241002_062734_601504_2297254B 
-X-CRM114-Status: UNSURE (   9.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241002_065924_553258_3FEE2A38 
+X-CRM114-Status: GOOD (  13.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,29 +123,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 1, 2024 at 7:30=E2=80=AFPM Lorenzo Bianconi <lorenzo@kernel.org=
-> wrote:
+On 01/10/2024 13:27, Fei Shao wrote:
+> On MediaTek platforms with Multimedia MMU (M4U), a multimedia hardware
+> can be assigned with a local arbiter (LARB) which has a maximum of 32
+> ports for MediaTek's IOMMU infrastructure. That means there can be at
+> most 32 items in the iommus property in theory.
+> 
+> Instead of relaxing the max item count every time a newly introduced
+> device tree hits the limit, bump the number to 32 as an one-time effort.
+> 
+> On the other hand, all existing and foreseeable JPEG decoder nodes at
+> this point have at least 2 IOMMUs, so set minItems to 2 accordingly.
+> 
+> Signed-off-by: Fei Shao <fshao@chromium.org>
+> ---
+> It's not in the upstream tree yet, but the upcoming MT8188 DT will have
+> 6 IOMMUs in its JPEG decoder. This patch is to pave the way for that.
+> 
+> Changes in v2:
+> New patch.
 
-> Introduce pinctrl driver for EN7581 SoC. Current EN7581 pinctrl driver
-> supports the following functionalities:
-> - pin multiplexing
-> - pin pull-up, pull-down, open-drain, current strength,
->   {input,output}_enable, output_{low,high}
-> - gpio controller
-> - irq controller
->
-> Tested-by: Benjamin Larsson <benjamin.larsson@genexis.eu>
-> Co-developed-by: Benjamin Larsson <benjamin.larsson@genexis.eu>
-> Signed-off-by: Benjamin Larsson <benjamin.larsson@genexis.eu>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-I missed that there was a v5 out and responded more to v4.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Anyway, I think the last comments on v4 still need to be
-adressed:
-https://lore.kernel.org/linux-gpio/CACRpkdbXWMU+wq6DvviCQPQ0EzKUm9oOnyFh34B=
-m=3DY8K-HmT0Q@mail.gmail.com/
+Best regards,
+Krzysztof
 
-Yours,
-Linus Walleij
 
