@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73802CF3196
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 06:00:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C777CF3196
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 06:01:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NbfbcKJ+nxdW6aoE2L6ftp0UNR+goacaijEj26fgX9U=; b=2PilJbiXuExc7AhHYmqHn8+7v7
-	jhjKOsZrDrkV42CEAG80bJ3SaWY3L1GLpN2Au7PrrH1gSeSLfWx/jfRLm8Z46qt5nvJ/LnuiH/ZVC
-	dUvsXYkhHT7lXtxZvXGX5oV3lU8nJ/wy2zVbNfSrps42q9Nqr8AYbdbfQzRSvghaN/1zpexNCQ2i+
-	5VbF8fM4nNZuwUyQsg69bxUemBo3T7tXsjKf+B1t+t7AX5ZOMW6IacI0z+V+q+vkjYspO+qEbktLK
-	Ca8gYMxBA9e2KZib6kyTyimqz16iiHxnZ6VE7u2sE73/2fs9zA+DM4fX1KuFHkviwUjmz3N88+RDY
-	EAGket1g==;
+	bh=Fk39ARvM73xIUYd0DxzHYqnKWGxDZ7n0oIThM9LfiAM=; b=UHWFKyBcaNSbrNxNF9TyS6plUS
+	XpRIflJa6nslubxtF3qpThQ7N+bAqwvfBzuy8ZWw+XkBbD5W1fDLMvaMXkTpoVZWd9Liwmd20Mc4q
+	sarliqlxOsPjuxiMl6M/6bfviwx17c6V1aBElEgWG76BxIWfq4WyKvYgqRDAmutkD3ln8YvWw0h1Y
+	TNWzBwM1Q7pLSCcH73cfsVOq8Pcb4b/dFBqHLQzmsJrZZPgXZsunoi5v7NzQpralkQlEmf/Icl3zZ
+	egDo2yRuXFRGCVsWEQam7VQYfJD97smC2VWB/QVQendKWUNanD0r5ajXfPPtLegmOBNxYXUIBAb7y
+	UXV/QmYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svsPD-00000004tGw-0kCL;
-	Wed, 02 Oct 2024 06:00:11 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1svsQR-00000004tV4-3qdl;
+	Wed, 02 Oct 2024 06:01:27 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svsNy-00000004t6P-12R8;
-	Wed, 02 Oct 2024 05:58:55 +0000
+	id 1svsP8-00000004tG0-1YkY;
+	Wed, 02 Oct 2024 06:00:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 39D0EA41441;
-	Wed,  2 Oct 2024 05:58:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 688A0C4CEC5;
-	Wed,  2 Oct 2024 05:58:52 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6F7B65C48B2;
+	Wed,  2 Oct 2024 06:00:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D9E7C4CEC5;
+	Wed,  2 Oct 2024 06:00:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727848733;
-	bh=UOTl03DOOV7SlDAksJvetAb0xk40DOwnob6rAZ9l/5M=;
+	s=k20201202; t=1727848805;
+	bh=YmyRultSw5BRCdfX+vz1b1pAJmjxiqHaXaUw3Qf4NSQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qOhJ05Yp2U95NcHq5xvxPz524T5XJsV5gyevoSqlBBh0itjEHf16irh8ZyafHjjGh
-	 2A3DpmbsPH64CkqRUKyGSgLf0xciig5zUAaHn1KVHBSelzV6KS3fPrcbl3VayNnJjT
-	 lYtWDR++NzQ2/+KGhZ8mxa02trqG+sfiuDKoaFotDg5ypzTpfBk4eBzzUToOv+z7af
-	 rhGmViMIEa4WqPUcLNdEE1nzyjDV8F9Eveu3Ud5jlxg6h2StQGESDAHPNqdNOuFage
-	 ROkL56BAuEJHTCNbPoiUD5PolPneZdyH7fQmHCj6MSwAxmA7gvLOQa7lkh5wsO+JmE
-	 Yn8+ln5kheKhw==
-Date: Wed, 2 Oct 2024 07:58:50 +0200
+	b=FnygEbgBOmOpwEinItg2k89GczU0li+e5cDqzUx0juIPwCOpo9zMzARiKnT0wWgrg
+	 t7CrdqVnrWN8eUczeo2f9Q4bonF2DTIxJjh2pxFT5XWFf3H2pOTo5q8p6JVMIYyF+q
+	 3KWl0qK7t+eBG6FQmmoKrnJdkMJlT74K94xbphT4g5BlJNo8Pzba2Iwcl3AZDjX5EQ
+	 7PVUUd3IPDAq/gvLuqCgSrjVaxQtU1sc5s9aFK5tT2vGucGpaCJTmxQYbWiXjetDdD
+	 FnLqKkOSI0bW9u5GJhpfgFU+RXVf5QnosvKM4paCn8LtzyEylmcUhBANelRKlT8+UL
+	 ONgPRpshQ92Eg==
+Date: Wed, 2 Oct 2024 08:00:01 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Macpaul Lin <macpaul.lin@mediatek.com>
 Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
@@ -63,17 +63,18 @@ Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
 	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, 
 	Chris-qj chen <chris-qj.chen@mediatek.com>, 
 	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>
-Subject: Re: [PATCH v8 2/3] ASoC: dt-bindings: mt6358: Convert to DT Schema
-Message-ID: <kofbpvthmbzynfq2l4x3sxznuzrfcp6qiy4dddfuomdyjpbons@xoze6bxytw56>
+Subject: Re: [PATCH v8 3/3] dt-bindings: mfd: mediatek: mt6397: Convert to DT
+ schema format
+Message-ID: <5nvshurbpmjkqysphfrfxhekq3c6od6a2uqai4rfxns64mdvf7@ftjvgjnivr3k>
 References: <20241001104145.24054-1-macpaul.lin@mediatek.com>
- <20241001104145.24054-2-macpaul.lin@mediatek.com>
+ <20241001104145.24054-3-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20241001104145.24054-2-macpaul.lin@mediatek.com>
+In-Reply-To: <20241001104145.24054-3-macpaul.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241001_225854_373993_E8FEF0BC 
-X-CRM114-Status: GOOD (  12.35  )
+X-CRM114-CacheID: sfid-20241001_230006_500712_6C0AC885 
+X-CRM114-Status: GOOD (  10.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,19 +89,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 01, 2024 at 06:41:44PM +0800, Macpaul Lin wrote:
-> Convert the MediaTek MT6358 Audio CODEC bindings to DT schema.
+On Tue, Oct 01, 2024 at 06:41:45PM +0800, Macpaul Lin wrote:
+> Convert the mfd: mediatek: mt6397 binding to DT schema format.
 > 
-> This change implements the following updates:
-> 1. Compatible property: Added the const 'mediatek,mt6358-sound'
->    to ensure alignment with the schema in the actual (DTS) file
->    "mt8186-corsola.dtsi" with 'mediatek,mt6366-sound'.
-> 2. Example: Removed the example section, as it should be relocated to
->    the MT6397 PMIC file 'mfd/mediatek,mt6397.yaml'.
-> 3. Use filename 'mediatek,mt6358-sound.yaml' to align the compatible
->    name.
+> MT6323, MT6358, and MT6397 are PMIC devices with multiple function
+> subdevices. They share a common PMIC design but have variations in
+> subdevice combinations.
 > 
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> Key updates in this conversion:
+> 
+> 1. RTC:
+>    - Convert rtc-mt6397.txt and merge into parent MT6397 PMIC DT schema.
 
 Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
