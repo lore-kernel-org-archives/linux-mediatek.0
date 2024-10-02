@@ -4,81 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36DB7CF8540
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 21:22:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D6DFCF8543
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 21:41:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TdMUrKaVHUl+mu9d9+XkH0skCQqm0P8kl7sarCz24X8=; b=BvgEEHXJVN7gAWQwE24cmwczSh
-	uenuUo+novFzLxSMoAPfNmnvT94fFMHWt09wyBCV8F3PFhQEJlEhPRH7prBUSdj8UlFMqrLL7EdLL
-	kEDVknSFdIFmCvc9ar0l0l7KZd02WuvHFtriLOHnCYHlcLY0tzR09sTTow4+AaoZxgnQT7+vXoi3Z
-	SttTtSUrSsIHu5++Ccyir9qu4i/VGXIeSr2vgfpyBt0XGvk4jEkj4LGaOQNEmmjHeinouuLVZmF09
-	t9z0RVO+Gx8NYiwcrMg+CZ17dNFGhFhqlToHEKwg/0ItnEUcbLSjK3VGcclIsGLMZFIXIfYEmgDh7
-	nPuUyi3g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kbnx/1jmCJVxpVNY76oZY6UsGEKPb8zsIs5QjFgvYPw=; b=i2UO6yc+8p0Kj6ovJssi39hb/0
+	ZoQeH3opZO9joK3VjOIQ9jv5wptSVJEB7MhPsNCYpL4hbKIwlx2nglIR4MmtuxWAWdF0K3tTsc5fT
+	r9IJpcAh1m1XYWWWcOsOKHCa+U0kqIWs+p2dMVyP72AbFeR8dopcxYikgA1uSZbf8XM0HkFpZzNYI
+	GEJ4BD50mIEY+3h8jbmVEtctsdpPfIttOb63JYN3ambfvl0PxQ1yxI7zzVX+KfiA78WqB3LtRfdbo
+	7JgXs/PbIBH92mnIX8sg+Mw8u2ZvKPOBi0cKYy0B3LfUARi+KB3z/QiTehQwnpvRG4Un4uuCwVQHP
+	OdeWo0bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sw6nP-00000007VF2-46lC;
-	Wed, 02 Oct 2024 21:22:07 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sw76Q-00000007Yp7-35RI;
+	Wed, 02 Oct 2024 21:41:46 +0000
+Received: from mail-qk1-x744.google.com ([2607:f8b0:4864:20::744])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sw6m5-00000007Uve-3nnb;
-	Wed, 02 Oct 2024 21:20:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 283875C4333;
-	Wed,  2 Oct 2024 21:20:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 284D5C4CEC5;
-	Wed,  2 Oct 2024 21:20:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727904044;
-	bh=WOZJowlZmyTzhhIM25DP7gggpGjOS9oOh8m5/SnwFNE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YS54HsHu/vZmCX4jzHcFaDeHgnuyeyib5kgeYowtuRymutC0iSzKFgmD3OCoYBdmd
-	 rZBsnLiRQ/mhL12oz7o9yjOVfPVKwK+0Wy87wgEZgX42v6XsxqjMhQmYlK2+L5og4x
-	 p8d1bBD36aAyi7uIFCbGHwnQdpYjIhR7ow68aWRWFFls067L13E300hckDQaG3748U
-	 HPkBL6PbpSClM0IHP6KBtk1sNcpIRNTVOpPK8Zsy4+lArw6IrwO+K44ekBlbOQnDqV
-	 WP+f4UlD0Ap6XHO+atUxDmblvYZ5xOKbq8sHLolHX/bx5Fc8hGf1bnc7LL3UtYxpkF
-	 kPBA9VGjVZ1SQ==
-Date: Wed, 2 Oct 2024 16:20:29 -0500
-From: Rob Herring <robh@kernel.org>
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
-	Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rohit Agarwal <rohiagar@chromium.org>,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	Bear Wang <bear.wang@mediatek.com>,
-	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
-	Sen Chu <sen.chu@mediatek.com>,
-	Chris-qj chen <chris-qj.chen@mediatek.com>,
-	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	Chen-Yu Tsai <wenst@chromium.org>
-Subject: Re: [PATCH v5 2/5] dt-bindings: iommu: mediatek: Fix interrupt count
- constraint for new SoCs
-Message-ID: <20241002212029.GA1320580-robh@kernel.org>
-References: <20241002051620.2050-1-macpaul.lin@mediatek.com>
- <20241002051620.2050-2-macpaul.lin@mediatek.com>
+	id 1sw75B-00000007YcM-0bWd;
+	Wed, 02 Oct 2024 21:40:30 +0000
+Received: by mail-qk1-x744.google.com with SMTP id af79cd13be357-7a99fde9f1dso25131285a.2;
+        Wed, 02 Oct 2024 14:40:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1727905228; x=1728510028; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kbnx/1jmCJVxpVNY76oZY6UsGEKPb8zsIs5QjFgvYPw=;
+        b=hcX0HWl8kfvRAflV7d9G5EQ5NDG6oFy9C5FD10ejwSHACDPx38XcHqrios3RVbbNcw
+         +oA9Xz87S+VgRtxRWFiO3GCCf+ySBMmS1pVY/a9mW3UB9Uk5fzdmX/mGKIHrUimCt87L
+         fE008usCh1qsYTQCt75D3eF6PgYruwwXdP2BXZyQeHQ+Q33GfX6Z6t2sIGf3bIRQzrlu
+         vYCo9R5YqVNeNudFsebe0uqlvl03JhIdZul+77j5VDNOu/dwGnVDvyzY5NVZwAeboRf5
+         sJvwpR6eVIXoLI+GLJlbZrCQHOBU6fWrwxtAbNKZUJlOR++ODyIEJ0e6dk9yU9JO5q8b
+         AYWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727905228; x=1728510028;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=kbnx/1jmCJVxpVNY76oZY6UsGEKPb8zsIs5QjFgvYPw=;
+        b=o9fWq8Gpt4zovTmkL0D0EAgc/hJ82Uxvo9PwC/ij4dMpPZqa7LLKPIA0IAGSRjtyDF
+         khgry0+BDKaNEu8IVtROOdlYa17yeDSb4/tGJ2YLq6YQj2rRtFvxJ6ZvQE72yQefW7K9
+         0rNAlfcOuo7iO4ZYMoW6/mS+vX4cb7+ZFj2ddFDLRQNJB8QNV7zkaSeWcE1EL7QvFgrd
+         zkR1R86SdWKhpxcMqivBnPhGrhqhglT4MQ3R/tHI2II5UGbBPBtY5eMJl8rBeTWo40y1
+         mLLhLdIJliTsEZ8hH8D/mPqJ985sLQkt3SfUsS/3ayeV8pw3fO+yJ+t82y0q1e/BONNg
+         Xqbw==
+X-Forwarded-Encrypted: i=1; AJvYcCWNP32gEoV1u+WyOiXDoook/3qyi9P4u/LLMvcemOuFB97SzrZ7Wg+QdkCX7sO4nsXso1HjYfn2aeGllgtrcGo=@lists.infradead.org, AJvYcCWkm0ixrIpTmSDTGkMwI/2gyGsNJl1BKvMZHgJw+x2Ccs4KZReURRmHXNMmangaTGYED0N2zqW7lWot1dbBk7is@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx7K1yl7gR45ks+7gGarZhKgUjxPY1WXCyqZhtoqV2IgSCF52BE
+	mAABtpurczM1r54CE3lA0k+8rZpnmRhGDHW82mZVyCgDHkUczq+e
+X-Google-Smtp-Source: AGHT+IGvVKxkVzIqO1aVzK1KfhXdUeEPO/IVUAq1zzjzGQn7t7CVJeZqGV2TUekB8BorfcWRHEj7ug==
+X-Received: by 2002:a05:620a:198b:b0:7a2:e53:3f5d with SMTP id af79cd13be357-7ae627698ffmr538163385a.66.1727905227654;
+        Wed, 02 Oct 2024 14:40:27 -0700 (PDT)
+Received: from localhost.localdomain (mobile-130-126-255-54.near.illinois.edu. [130.126.255.54])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7ae377f0e71sm656507185a.71.2024.10.02.14.40.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 02 Oct 2024 14:40:27 -0700 (PDT)
+From: Gax-c <zichenxie0106@gmail.com>
+To: krzk@kernel.org,
+	nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	kvalo@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	johannes.berg@intel.com,
+	quic_adisi@quicinc.com,
+	deren.wu@mediatek.com,
+	chui-hao.chiu@mediatek.com,
+	mingyen.hsieh@mediatek.com,
+	howard-yh.hsu@mediatek.com,
+	StanleyYP.Wang@mediatek.com,
+	allen.ye@mediatek.com,
+	benjamin-jw.lin@mediatek.com,
+	Bo.Jiao@mediatek.com,
+	evelyn.tsai@mediatek.com,
+	meichia.chiu@mediatek.com
+Cc: linux-wireless@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	zzjas98@gmail.com,
+	chenyuan0y@gmail.com,
+	Gax-c <zichenxie0106@gmail.com>
+Subject: [PATCH] wifi: mt76: Fix NULL Dereference caused by mt76_connac_get_he_phy_cap()
+Date: Wed,  2 Oct 2024 16:39:20 -0500
+Message-Id: <20241002213919.30360-1-zichenxie0106@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <c7978538-04b4-406a-b8e3-70d3472ace7f@kernel.org>
+References: <c7978538-04b4-406a-b8e3-70d3472ace7f@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241002051620.2050-2-macpaul.lin@mediatek.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241002_142046_055539_9261FEBB 
-X-CRM114-Status: GOOD (  22.03  )
+X-CRM114-CacheID: sfid-20241002_144029_210644_2A59B11D 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,98 +115,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 02, 2024 at 01:16:17PM +0800, Macpaul Lin wrote:
-> The infra-iommu node in mt8195.dtsi was triggering a CHECK_DTBS error due
-> to an excessively long 'interrupts' property. The error message was:
-> 
->   infra-iommu@10315000: interrupts: [[0, 795, 4, 0], [0, 796, 4, 0],
->                      [0, 797, 4, 0], [0, 798, 4, 0], [0, 799, 4, 0]]
->                      is too long
-> 
-> To address this issue, update the compatbile matching rule for
-> 'interrupts' property. This change allows flexibility in the number
-> of interrupts for new SoCs like MT8195.
-> The purpose of these 5 interrupts is also added into description.
-> 
-> Fixes: bca28426805d ("dt-bindings: iommu: mediatek: Convert IOMMU to DT schema")
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> ---
->  .../bindings/iommu/mediatek,iommu.yaml        | 29 ++++++++++++++++++-
->  1 file changed, 28 insertions(+), 1 deletion(-)
-> 
-> Changes for v2:
->  - commit message: re-formatting and add a description of adding 5 interrupts.
->  - add 'description' and 'maxItems: 5' for 'interrupt' property of
->    'mt8195-iommu-infra'
->  - others keeps 'maxItems: 1'
-> 
-> Changes for v3:
->  - Refine the description for 'interrupts' property and fixes the compatible
->    matching rules.
->  - Refine commit message.
-> 
-> Changes for v4:
->   - add missing 'minItems: 5' to 'mediatek,mt8195-iommu-infra'.
->     Thanks the explanation from Conor and Krzysztof. 
-> 
-> Changes for v5:
->   - Repharse the description for interrupts property of MT8195.
-> 
-> diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> index ea6b0f5f24de..df8b2429008e 100644
-> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> @@ -96,7 +96,16 @@ properties:
->      maxItems: 1
->  
->    interrupts:
-> -    maxItems: 1
-> +    description: |
-> +      Usually, the IOMMU requires only one interrupt.
-> +
-> +      The infra IOMMU in MT8195 has five banks: each features one set
-> +      of APB registers. One for the normal world (set 0), three for the
-> +      protected world (sets 1-3), and one for the secure world (set 4).
-> +      and each set has its own interrupt. Therefore, five interrupts
-> +      are needed.
-> +    minItems: 1
-> +    maxItems: 5
->  
->    clocks:
->      items:
-> @@ -210,6 +219,24 @@ allOf:
->        required:
->          - mediatek,larbs
->  
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - mediatek,mt8195-iommu-infra
-> +
-> +    then:
-> +      properties:
-> +        interrupts:
-> +          minItems: 5
-> +          maxItems: 5
+mt76_connac_get_he_phy_cap() may return a NULL pointer,
+leading to NULL Pointer Dereference.
+Add a NULL check for the returned pointer.
 
-You only need minItems. The max is already 5.
+Fixes: a5c372f77aa7 ("wifi: mt76: mt7925: extend mt7925_mcu_bss_he_tlv for per-link BSS")
+Fixes: e6d557a78b60 ("mt76: mt7915: rely on mt76_connac_get_phy utilities")
+Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
+Signed-off-by: Zichen Xie <zichenxie0106@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 5 +++++
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 2 ++
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 2 ++
+ 3 files changed, 9 insertions(+)
 
-With that,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 87d0dd040001..762be3a37228 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -551,6 +551,8 @@ mt7915_mcu_bss_he_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
+ 	struct tlv *tlv;
+ 
+ 	cap = mt76_connac_get_he_phy_cap(phy->mt76, vif);
++	if (!cap)
++		return;
+ 
+ 	tlv = mt76_connac_mcu_add_tlv(skb, BSS_INFO_HE_BASIC, sizeof(*he));
+ 
+@@ -1145,6 +1147,9 @@ mt7915_mcu_sta_bfer_he(struct ieee80211_sta *sta, struct ieee80211_vif *vif,
+ 	u8 nss_mcs = mt7915_mcu_get_sta_nss(mcs_map);
+ 	u8 snd_dim, sts;
+ 
++	if (!vc)
++		return;
++
+ 	bf->tx_mode = MT_PHY_TYPE_HE_SU;
+ 
+ 	mt7915_mcu_sta_sounding_rate(bf);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index 748ea6adbc6b..55e4cda2f20f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -2508,6 +2508,8 @@ mt7925_mcu_bss_he_tlv(struct sk_buff *skb, struct ieee80211_bss_conf *link_conf,
+ 	struct tlv *tlv;
+ 
+ 	cap = mt76_connac_get_he_phy_cap(phy->mt76, link_conf->vif);
++	if (!cap)
++		return;
+ 
+ 	tlv = mt76_connac_mcu_add_tlv(skb, UNI_BSS_INFO_HE_BASIC, sizeof(*he));
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 6c445a9dbc03..55bb2d0e67e5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -798,6 +798,8 @@ mt7996_mcu_bss_he_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
+ 	struct tlv *tlv;
+ 
+ 	cap = mt76_connac_get_he_phy_cap(phy->mt76, vif);
++	if (!cap)
++		return;
+ 
+ 	tlv = mt7996_mcu_add_uni_tlv(skb, UNI_BSS_INFO_HE_BASIC, sizeof(*he));
+ 
+-- 
+2.25.1
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-
-> +
-> +    else:
-> +      properties:
-> +        interrupts:
-> +          maxItems: 1
-> +
->  additionalProperties: false
->  
->  examples:
-> -- 
-> 2.45.2
-> 
 
