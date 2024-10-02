@@ -4,81 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8ED7CF31B4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 12:37:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56604CF31B4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 12:42:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l8H1qZqWLGCKxS3P4CcVPz8f/wGj7qAObb/kvtfFOhM=; b=Xde3ih1rQj8vkk3g8K1IB3E9za
-	lxX27A9FWm0QatimAnuKYUgT2m2zXXoDdI1z9Pm12Whsa2lUssX58T1S/9Dl1zlBhoOCXEjtF4oPt
-	biH28+oaW0ITSWRD2zHdxHIytHJCvQhH2yKpZs9GOACMRlpyx8xPlOA7ymvQqjZkQ71QrvH6IMT48
-	80d0bm7AguhFZBDXorZLIdFY9z1Cq9QBX/mZsGVi04RVJonwYoIBrRx4gBwIYsQPAcsesKm6maOyi
-	78Qd6XGjACGqZDVh7P1axWPzjKljVbPbg5rfduxxMMVqwnBRtz9qbu30G6rTRuRy12revoItJZaX+
-	L7CH41nw==;
+	bh=q3eaNgBrzJ/qNa+H0z8ILNR1gYh4zkUM6zdMyMyf418=; b=d94kwbQwxWI69Wpzg/Qq8sggMy
+	+U2xk/0O9rk5W4u+TGyAzaIkj+AUVuKrhSwHRqgAgAlYGOoHewzo4r/iT/3splVVEzp3RXucz+cY+
+	3gFEqs6+qWpXrTUzt28i2tielDe7RWdoSo2hq1o2bgytNv6mL54ZNLFv4EH36Q+zeWO0QqWUTirOP
+	GOG1JneeVBfzBcg3I7PrZixr4NtHIyI/GLbR4U+AG28ojTWJBvR5jmoNNYSgrXo3dE3TPFHXuQjzu
+	5ZSEWjmcnEGYYxdKi3JXPGYU7e10JSc1oVQBq3kh9SaDvpRzLPCwnK62p1aEX9VKSsk9t6ULKUlVd
+	hL3CMCXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svyc1-00000005vBB-2zmL;
-	Wed, 02 Oct 2024 12:37:49 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1svygq-00000005wXb-1lHL;
+	Wed, 02 Oct 2024 12:42:48 +0000
+Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svyUm-00000005tA6-3FZR
-	for linux-mediatek@lists.infradead.org;
-	Wed, 02 Oct 2024 12:30:22 +0000
-Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-5c896b9b4e0so4980962a12.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Oct 2024 05:30:19 -0700 (PDT)
+	id 1svyY1-00000005uF0-3oOK;
+	Wed, 02 Oct 2024 12:33:43 +0000
+Received: by mail-lj1-x22a.google.com with SMTP id 38308e7fff4ca-2fac49b17ebso30540831fa.0;
+        Wed, 02 Oct 2024 05:33:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1727872218; x=1728477018; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1727872420; x=1728477220; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=l8H1qZqWLGCKxS3P4CcVPz8f/wGj7qAObb/kvtfFOhM=;
-        b=FWbeyEoJLUbaNzwQLkljDY9tXITYGyZNIhhcUpssN837fR7bxpPTxcBoJn9Swk7v6k
-         jWuNrCq3P1r9bFIz1irnGp0eOD4kjEQgYX2u72RwwGxBBmWIX36pVBEjz/MqdaXa2Pm4
-         tvz+8m8lfi7SUb6y8FfdVKDJgPyjqjpXyYBtwbAlsc2HA1Y2XurM9jc4iZI/wIFOs032
-         r2V/jmtHiY0KgLwUJek7zsr1adpIY8m0BnqVWr8qvi58gloFhV6lkARUCMVsioq9lfc6
-         0Yzl2KgIYtCFRmF9iUIZNCPKV2ipWUIDyLi2OyH9La8wGGKGQ7Aq3yiBHyBAOWFf8slU
-         UGDw==
+        bh=q3eaNgBrzJ/qNa+H0z8ILNR1gYh4zkUM6zdMyMyf418=;
+        b=hIlmRA0jip9mohR0iHx210q7b7JjdojF3q8ECq+zgPqEIGeOSaXKMeNIjeJM9y3Dq7
+         OPxYErFRHuqAWN4vBRx+jgoh0cP1rglD/AIy3P9t9w7J4TfApIKF+vMOVGUo0mHnIvAK
+         gsEzhTAN4PpYlM0vOUo2vW/kvm7zCRfReHDUMH80P6DZWJEqBLuz4wKVBAXaBOF6Hni2
+         U0YBgBToUX7H+fllOEJf1QXUww4dquYO4befy15q1JzgBB0Hnn5etYfp13fKzXpQqfJx
+         CmaFSW7IvHBL6mR57gfb6ghNerte5UnW77mQ71S04UtjsyDUhzTVXnC5MBb7m5UFVnph
+         Jj7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727872218; x=1728477018;
+        d=1e100.net; s=20230601; t=1727872420; x=1728477220;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=l8H1qZqWLGCKxS3P4CcVPz8f/wGj7qAObb/kvtfFOhM=;
-        b=SbRXmztfkXGoiWuHvUYftdmFBjiJtc1FUamFSTi+Brvjqbd6Bu5O4TEIFCt7IIumFW
-         h+o7U+SLLxjrU055DDqC4ZF+xhkMs4EopOzaQjF3rv7+CLuOaiFEXltdQfEz78SGCcMf
-         2HAqjyuounNbf/gbJbJDfFZlObgafBgBJkSeLk3Y8B+e8Kd0sX6tbgdeBCC13db1lj+6
-         0InZiZ8NeNYrN/DqrLBuoVDaXuO+NKP9Mc39+JV+6XEj77Z/Me3FZIP1ebLr8UtaknKr
-         u5YJ3jdhlBfBHPSEN617Zy9pu/wb0jsMp8er3UeCg4bLiaNqThunQl1HGe48FB1d/SCl
-         uG9A==
-X-Forwarded-Encrypted: i=1; AJvYcCXUNbmLi5lkdZDPf9dk8tt047IZqzkpBN++trysmphrd5T3SGgt0AQAIwMQ+lYeS/8iKXbP+zPpb8WmAGQCKQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyNOD27vLRqidKmqRcq9Y15yBnHFvvERWlbwJxOfweuycm5MAYm
-	905N8qGGP30nHyGMFMtm04NJKVha3UnpkCZyW0TPnaiFmk8jrmWC
-X-Google-Smtp-Source: AGHT+IEZkn/hs4ylJ1sCqAWBMgmileHhDrVVQqRQ9dL1VUXC1/pU/3bGn8QhARJyoQ7mQEh244B4Pg==
-X-Received: by 2002:a05:6402:43ce:b0:5c0:ac1d:b970 with SMTP id 4fb4d7f45d1cf-5c8b1b8255fmr2407271a12.32.1727872217923;
-        Wed, 02 Oct 2024 05:30:17 -0700 (PDT)
+        bh=q3eaNgBrzJ/qNa+H0z8ILNR1gYh4zkUM6zdMyMyf418=;
+        b=CB7W8be0jiYlcKngeUy7U+UIJuBaXLqFzw4BtU0cl+lWXaKeC5H4+WRFtUrhNKTCDV
+         WLRvA9BTIxPOdT3Pj6l06R7V9O0LnpftmTUUUs6aI6NtShZs40zUSaeygWCWsb/mgmbr
+         DA5q8ucBtASH0NkWnXPxDlWaQ2YVBtOH1NbgklsROGbkzX+zj7C20cGR/jgA13PLsrlt
+         qmfFUJwx0VvrLy4aQdOgRRRZ4fuWSYLv/Rmn50JwLUpUpWAIxKSFJBEq+zP9CAT6Xya+
+         pW/gbh1f6oTZGKPX1kyZXAphTytEMFGG9pvIo3elEO5nMWfLF9s/oYE46DRwr4/M9yWL
+         PrOw==
+X-Forwarded-Encrypted: i=1; AJvYcCVhI2Zr/P94WsDrWmyQJxzrOpyicFcDeG0F5UmSU+h/A5YU9B78xVnXuJ46hhUkEbNkhCMGple3bblc9JrWSu8=@lists.infradead.org, AJvYcCWbuEGbiKfify36/hwt41iF7/IH/3rU3dB4P5L8Smy3nPPdb8xKYF65zJ30A0uWKRCwmIvgcVkkAqTub3Pzb0/A@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx3kFS69OWjidX3T8OnhLBDX959Ei5Fe4J9Mfwu+b1axPZ2/kf8
+	5Ulz+D7G7+kfIu0KokpX7/Fwp2pB/qaZCZNYfUpsRmku6+hc4Llj
+X-Google-Smtp-Source: AGHT+IG4VfGRJzfEL3RBhS2qNdAVbZuifbuMMbpdkNo/OdSrezWS5TXyG8ZB6OpX3CzMLA1TLuOsYA==
+X-Received: by 2002:a2e:bc1a:0:b0:2fa:bd19:b821 with SMTP id 38308e7fff4ca-2fae1023234mr21636541fa.9.1727872419500;
+        Wed, 02 Oct 2024 05:33:39 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.162.240])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5c88245ea57sm7514730a12.55.2024.10.02.05.30.15
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5c88240569fsm7554286a12.15.2024.10.02.05.33.37
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 02 Oct 2024 05:30:16 -0700 (PDT)
-Message-ID: <e651ac20-eeb4-45c4-ad76-54e5e2481411@gmail.com>
-Date: Wed, 2 Oct 2024 14:30:14 +0200
+        Wed, 02 Oct 2024 05:33:37 -0700 (PDT)
+Message-ID: <c91c920b-ecc9-431e-9e35-36f243fb9cd1@gmail.com>
+Date: Wed, 2 Oct 2024 14:33:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 1/2] dt-bindings: arm: mediatek: Add MT8186 Ponyta
- Chromebook
-To: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>,
- angelogioacchino.delregno@collabora.com, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, knoxchiou@google.com,
- hsinyi@google.com
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-References: <20240914063122.1622196-1-cengjianeng@huaqin.corp-partner.google.com>
- <20240914063122.1622196-2-cengjianeng@huaqin.corp-partner.google.com>
+Subject: Re: [PATCH v1 1/3] soc: mediatek: mtk-cmdq: Move mask build and
+ append to function
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com
+References: <20240918100620.103536-1-angelogioacchino.delregno@collabora.com>
+ <20240918100620.103536-2-angelogioacchino.delregno@collabora.com>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -124,12 +120,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20240914063122.1622196-2-cengjianeng@huaqin.corp-partner.google.com>
+In-Reply-To: <20240918100620.103536-2-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241002_053020_895216_0D787602 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20241002_053341_986944_0B0518E3 
+X-CRM114-Status: GOOD (  17.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,63 +142,99 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 14/09/2024 08:31, Jianeng Ceng wrote:
-> Ponyta is a custom label Chromebook based on MT8186. It is a
-> self-developed project of Huaqin and has no fixed OEM.
+On 18/09/2024 12:06, AngeloGioacchino Del Regno wrote:
+> Move the CMDQ_CODE_MASK packet build and append logic to a new
+> cmdq_pkt_mask() function; this reduces code duplication by 4x.
 > 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Signed-off-by: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-
 > ---
-> Changes in v8:
-> - PATCH 1/2: Remove custom label.
-> - Link to v7:https://lore.kernel.org/all/01020191ea98a643-2d0be5d1-e00b-48e0-b823-bfe2c65b0d00-000000@eu-west-1.amazonses.com/
+>   drivers/soc/mediatek/mtk-cmdq-helper.c | 31 ++++++++++++--------------
+>   1 file changed, 14 insertions(+), 17 deletions(-)
 > 
-> Chage since V6:
-> - No change.
-> 
-> Changes in v5:
-> - PATCH 1/2: Remove sku2147483647.
-> - Link to v4:https://lore.kernel.org/all/20240906085739.1322676-2-cengjianeng@huaqin.corp-partner.google.com/
-> 
-> Changes in v4:
-> - PATCH 1/2: Add more info for Ponyta custom label in commit.
-> - Link to v3:https://lore.kernel.org/all/20240904081501.2060933-1-cengjianeng@huaqin.corp-partner.google.com/
-> 
-> Changes in v3:
-> - PATCH 1/2: Modify lable to label.
-> - Link to v2:https://lore.kernel.org/all/20240903061603.3007289-1-cengjianeng@huaqin.corp-partner.google.com/
-> 
-> Chage since V2:
-> - No change.
-> 
-> ---
->   Documentation/devicetree/bindings/arm/mediatek.yaml | 10 ++++++++++
->   1 file changed, 10 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> index 1d4bb50fcd8d..88f50989ba3f 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -257,6 +257,16 @@ properties:
->             - const: google,steelix-sku393218
->             - const: google,steelix
->             - const: mediatek,mt8186
-> +      - description: Google Ponyta
-> +        items:
-> +          - const: google,ponyta-sku0
-> +          - const: google,ponyta
-> +          - const: mediatek,mt8186
-> +      - description: Google Ponyta
-> +        items:
-> +          - const: google,ponyta-sku1
-> +          - const: google,ponyta
-> +          - const: mediatek,mt8186
->         - description: Google Rusty (Lenovo 100e Chromebook Gen 4)
->           items:
->             - const: google,steelix-sku196609
+> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> index a8fccedba83f..620c371fd1fc 100644
+> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
+> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> @@ -180,6 +180,15 @@ static int cmdq_pkt_append_command(struct cmdq_pkt *pkt,
+>   	return 0;
+>   }
+>   
+> +static int cmdq_pkt_mask(struct cmdq_pkt *pkt, u32 mask)
+> +{
+> +	struct cmdq_instruction inst = {
+> +		.op = CMDQ_CODE_MASK,
+> +		.mask = ~mask
+> +	};
+> +	return cmdq_pkt_append_command(pkt, inst);
+> +}
+> +
+>   int cmdq_pkt_write(struct cmdq_pkt *pkt, u8 subsys, u16 offset, u32 value)
+>   {
+>   	struct cmdq_instruction inst;
+> @@ -196,14 +205,11 @@ EXPORT_SYMBOL(cmdq_pkt_write);
+>   int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u8 subsys,
+>   			u16 offset, u32 value, u32 mask)
+>   {
+> -	struct cmdq_instruction inst = { {0} };
+>   	u16 offset_mask = offset;
+>   	int err;
+>   
+>   	if (mask != 0xffffffff) {
+> -		inst.op = CMDQ_CODE_MASK;
+> -		inst.mask = ~mask;
+> -		err = cmdq_pkt_append_command(pkt, inst);
+> +		err = cmdq_pkt_mask(pkt, mask);
+>   		if (err < 0)
+>   			return err;
+>   
+> @@ -251,9 +257,7 @@ int cmdq_pkt_write_s_mask(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
+>   	struct cmdq_instruction inst = {};
+>   	int err;
+>   
+> -	inst.op = CMDQ_CODE_MASK;
+> -	inst.mask = ~mask;
+> -	err = cmdq_pkt_append_command(pkt, inst);
+> +	err = cmdq_pkt_mask(pkt, mask);
+>   	if (err < 0)
+>   		return err;
+>   
+> @@ -288,9 +292,7 @@ int cmdq_pkt_write_s_mask_value(struct cmdq_pkt *pkt, u8 high_addr_reg_idx,
+>   	struct cmdq_instruction inst = {};
+>   	int err;
+>   
+> -	inst.op = CMDQ_CODE_MASK;
+> -	inst.mask = ~mask;
+> -	err = cmdq_pkt_append_command(pkt, inst);
+> +	err = cmdq_pkt_mask(pkt, mask);
+>   	if (err < 0)
+>   		return err;
+>   
+> @@ -409,12 +411,9 @@ EXPORT_SYMBOL(cmdq_pkt_poll);
+>   int cmdq_pkt_poll_mask(struct cmdq_pkt *pkt, u8 subsys,
+>   		       u16 offset, u32 value, u32 mask)
+>   {
+> -	struct cmdq_instruction inst = { {0} };
+>   	int err;
+>   
+> -	inst.op = CMDQ_CODE_MASK;
+> -	inst.mask = ~mask;
+> -	err = cmdq_pkt_append_command(pkt, inst);
+> +	err = cmdq_pkt_mask(pkt, mask);
+>   	if (err < 0)
+>   		return err;
+>   
+> @@ -436,9 +435,7 @@ int cmdq_pkt_poll_addr(struct cmdq_pkt *pkt, dma_addr_t addr, u32 value, u32 mas
+>   	 * which enables use_mask bit.
+>   	 */
+>   	if (mask != GENMASK(31, 0)) {
+> -		inst.op = CMDQ_CODE_MASK;
+> -		inst.mask = ~mask;
+> -		ret = cmdq_pkt_append_command(pkt, inst);
+> +		ret = cmdq_pkt_mask(pkt, mask);
+>   		if (ret < 0)
+>   			return ret;
+>   		use_mask = CMDQ_POLL_ENABLE_MASK;
 
