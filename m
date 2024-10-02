@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56604CF31B4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 12:42:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF7C6CF31B4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 12:45:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q3eaNgBrzJ/qNa+H0z8ILNR1gYh4zkUM6zdMyMyf418=; b=d94kwbQwxWI69Wpzg/Qq8sggMy
-	+U2xk/0O9rk5W4u+TGyAzaIkj+AUVuKrhSwHRqgAgAlYGOoHewzo4r/iT/3splVVEzp3RXucz+cY+
-	3gFEqs6+qWpXrTUzt28i2tielDe7RWdoSo2hq1o2bgytNv6mL54ZNLFv4EH36Q+zeWO0QqWUTirOP
-	GOG1JneeVBfzBcg3I7PrZixr4NtHIyI/GLbR4U+AG28ojTWJBvR5jmoNNYSgrXo3dE3TPFHXuQjzu
-	5ZSEWjmcnEGYYxdKi3JXPGYU7e10JSc1oVQBq3kh9SaDvpRzLPCwnK62p1aEX9VKSsk9t6ULKUlVd
-	hL3CMCXg==;
+	bh=WGFeasz9wTp+KifYsefeXZhkjBggefuf6eAiKnNEW7w=; b=S9C0Q7U7KN7XtBNh0ygDXgHDoz
+	Sppipx/Ml6V04WKoeQoY26vACaKTM5my+lamgNJBgg6lmofO+R0ZpkuKNskrnzM2JXujCp0PY+ipL
+	hIpHuy+bHOc3PeYBcTQ693NaqjZIv7gUhKT1jwfSfkANGmUiJSP2HUCXdy4303AmnVCXRXXhk+l2+
+	oSpKXbKVJKysHKJOJxvQY+d2CZxiUcBeycJQorh2Y420oo7hTA5vBiSidAfegwcmvfkuD5qQsLRLY
+	PHaXzB4iUk+9gRnt9xTLxGU/jyRwy7iqTzZNlqkf/LUt8UjOv5V3Rc2oTW6r1vVR87W8+oUfH+POK
+	HGdiuPNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svygq-00000005wXb-1lHL;
-	Wed, 02 Oct 2024 12:42:48 +0000
-Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
+	id 1svyjH-00000005xOt-3f6J;
+	Wed, 02 Oct 2024 12:45:19 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svyY1-00000005uF0-3oOK;
-	Wed, 02 Oct 2024 12:33:43 +0000
-Received: by mail-lj1-x22a.google.com with SMTP id 38308e7fff4ca-2fac49b17ebso30540831fa.0;
-        Wed, 02 Oct 2024 05:33:41 -0700 (PDT)
+	id 1svyfW-00000005vzR-3ZEx;
+	Wed, 02 Oct 2024 12:41:28 +0000
+Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-a8d56155f51so843945366b.2;
+        Wed, 02 Oct 2024 05:41:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1727872420; x=1728477220; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1727872885; x=1728477685; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=q3eaNgBrzJ/qNa+H0z8ILNR1gYh4zkUM6zdMyMyf418=;
-        b=hIlmRA0jip9mohR0iHx210q7b7JjdojF3q8ECq+zgPqEIGeOSaXKMeNIjeJM9y3Dq7
-         OPxYErFRHuqAWN4vBRx+jgoh0cP1rglD/AIy3P9t9w7J4TfApIKF+vMOVGUo0mHnIvAK
-         gsEzhTAN4PpYlM0vOUo2vW/kvm7zCRfReHDUMH80P6DZWJEqBLuz4wKVBAXaBOF6Hni2
-         U0YBgBToUX7H+fllOEJf1QXUww4dquYO4befy15q1JzgBB0Hnn5etYfp13fKzXpQqfJx
-         CmaFSW7IvHBL6mR57gfb6ghNerte5UnW77mQ71S04UtjsyDUhzTVXnC5MBb7m5UFVnph
-         Jj7Q==
+        bh=WGFeasz9wTp+KifYsefeXZhkjBggefuf6eAiKnNEW7w=;
+        b=Ixu4Ta4otGRpHt4BHHhhsjxBzjSMR1iRp3kIq6ZNdbS3Je3g/xm5I8toHQM192gZcG
+         sWv3r7dX2WcuQEFpd8neEzl3hcH23YaPw4SXJv3F8QUVHeM0l57vbiislIt68qtMU+jq
+         1NBL6IKr+eMDMxLsFW8Mm+Gs4Zi0H1+iGqMqIe2nttBHrPHx+ho2CJ9zIg7CfbuU8LiS
+         r6qIAKPvAf1pk9Qi3urLDP8AvfqPjNTH/heICMXG65qvCD2lUbI6Vbz6BQ+uuo0t1/bo
+         54i9BTuPJZHFP1EhRrmVwZOQJkLbNlE8sLaJQ1vx73gYayeDZtCjQgtdlus903ddSlVs
+         y56A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727872420; x=1728477220;
+        d=1e100.net; s=20230601; t=1727872885; x=1728477685;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=q3eaNgBrzJ/qNa+H0z8ILNR1gYh4zkUM6zdMyMyf418=;
-        b=CB7W8be0jiYlcKngeUy7U+UIJuBaXLqFzw4BtU0cl+lWXaKeC5H4+WRFtUrhNKTCDV
-         WLRvA9BTIxPOdT3Pj6l06R7V9O0LnpftmTUUUs6aI6NtShZs40zUSaeygWCWsb/mgmbr
-         DA5q8ucBtASH0NkWnXPxDlWaQ2YVBtOH1NbgklsROGbkzX+zj7C20cGR/jgA13PLsrlt
-         qmfFUJwx0VvrLy4aQdOgRRRZ4fuWSYLv/Rmn50JwLUpUpWAIxKSFJBEq+zP9CAT6Xya+
-         pW/gbh1f6oTZGKPX1kyZXAphTytEMFGG9pvIo3elEO5nMWfLF9s/oYE46DRwr4/M9yWL
-         PrOw==
-X-Forwarded-Encrypted: i=1; AJvYcCVhI2Zr/P94WsDrWmyQJxzrOpyicFcDeG0F5UmSU+h/A5YU9B78xVnXuJ46hhUkEbNkhCMGple3bblc9JrWSu8=@lists.infradead.org, AJvYcCWbuEGbiKfify36/hwt41iF7/IH/3rU3dB4P5L8Smy3nPPdb8xKYF65zJ30A0uWKRCwmIvgcVkkAqTub3Pzb0/A@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx3kFS69OWjidX3T8OnhLBDX959Ei5Fe4J9Mfwu+b1axPZ2/kf8
-	5Ulz+D7G7+kfIu0KokpX7/Fwp2pB/qaZCZNYfUpsRmku6+hc4Llj
-X-Google-Smtp-Source: AGHT+IG4VfGRJzfEL3RBhS2qNdAVbZuifbuMMbpdkNo/OdSrezWS5TXyG8ZB6OpX3CzMLA1TLuOsYA==
-X-Received: by 2002:a2e:bc1a:0:b0:2fa:bd19:b821 with SMTP id 38308e7fff4ca-2fae1023234mr21636541fa.9.1727872419500;
-        Wed, 02 Oct 2024 05:33:39 -0700 (PDT)
+        bh=WGFeasz9wTp+KifYsefeXZhkjBggefuf6eAiKnNEW7w=;
+        b=HwAaCLOgr63l41Y/1cdFUpm9dKtsmXR0MeEvC2QnnEaEoC8/LcpNBXOgLGjXXK1V4s
+         G7ZQDx2IY+Y4gqoJtm8SJCpHA0QZpVdtzdHxItlz4eA9JsxRm0AyFk+U6G/wyIUMLwOR
+         ySf1MucO0GRUlxPYoe/pyY3w8gNcdOOqmd5+NsvtmF4k5durpkZtGeMWd2jhoYizhIbC
+         tgixf78SdLrP43LqIarVePCtdbp+0b3wrwm0GXT2qC8yn0UIJGLwIOiOSRXdCVLMQX3j
+         NkZ8DWj1wU453eREL401SW6pRXaH9YU0QZxcEww0A+G02kMEljH7TUb2DCXWpeCAb/yB
+         VTmw==
+X-Forwarded-Encrypted: i=1; AJvYcCUp29ISTAuIcB0QjxND8F5h39F7f7jGr6bVzSNH/HiLh0Md+VTtPqzqzk20pLXWT5Dp/K1URuo0iC6XY5eN0qo=@lists.infradead.org, AJvYcCW05n6jXbp/KFNZsbWSsIgaHeu0kiswi/OCsPlz6Ohf7htKKLQNpbQO+K5GGyvY48m30vCp0hHANjTeE6IKi8SG@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzq4BZ2PcXw9/9ktXggNub9y6cW8ZaQ9TgC57SBk0CWKzir3OIa
+	vgCZiczMwTJvZt81Wwfb2VUXgbnS7T9zSx7/T0UZ/PdX9me+BqJM
+X-Google-Smtp-Source: AGHT+IH7Iy/7MHhUhc2PJud/HQBsRz2Eutqpbf/tCaaVc/Tk5iOkfD3ixjM0EruE2rJ2f2bck3ImAQ==
+X-Received: by 2002:a17:907:d17:b0:a8d:439d:5c3e with SMTP id a640c23a62f3a-a98f8262880mr277838766b.30.1727872884691;
+        Wed, 02 Oct 2024 05:41:24 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.162.240])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5c88240569fsm7554286a12.15.2024.10.02.05.33.37
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a93c27c7237sm858830866b.81.2024.10.02.05.41.23
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 02 Oct 2024 05:33:37 -0700 (PDT)
-Message-ID: <c91c920b-ecc9-431e-9e35-36f243fb9cd1@gmail.com>
-Date: Wed, 2 Oct 2024 14:33:36 +0200
+        Wed, 02 Oct 2024 05:41:23 -0700 (PDT)
+Message-ID: <7d577541-cada-4f6f-8e83-c420dd0e9382@gmail.com>
+Date: Wed, 2 Oct 2024 14:41:22 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/3] soc: mediatek: mtk-cmdq: Move mask build and
- append to function
+Subject: Re: [PATCH v1 2/3] soc: mediatek: mtk-cmdq: Mark very unlikely
+ branches as such
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  linux-mediatek@lists.infradead.org
 Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  kernel@collabora.com
 References: <20240918100620.103536-1-angelogioacchino.delregno@collabora.com>
- <20240918100620.103536-2-angelogioacchino.delregno@collabora.com>
+ <20240918100620.103536-3-angelogioacchino.delregno@collabora.com>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -120,12 +120,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20240918100620.103536-2-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240918100620.103536-3-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241002_053341_986944_0B0518E3 
-X-CRM114-Status: GOOD (  17.15  )
+X-CRM114-CacheID: sfid-20241002_054126_935594_8EFBC371 
+X-CRM114-Status: GOOD (  19.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,98 +143,85 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 18/09/2024 12:06, AngeloGioacchino Del Regno wrote:
-> Move the CMDQ_CODE_MASK packet build and append logic to a new
-> cmdq_pkt_mask() function; this reduces code duplication by 4x.
+> Calling cmdq packet builders with an unsupported event number,
+> or without left/right operands (in the case of logic commands)
+> means that the caller (another driver) wants to perform an
+> unsupported operation, so this means that the caller must be
+> fixed instead.
 > 
+> Anyway, such checks are here for safety and, unless any driver
+> bug or any kind of misconfiguration is present, will always be
+> false so add a very unlikely hint for those.
+> 
+> Knowing that CPUs' branch predictors (and compilers, anyway) are
+> indeed smart about these cases, this is done mainly for human
+> readability purposes.
+> 
+
+Are you really sure we need that? As you mentioned the unlikely() is probably 
+useless as compiler and branch predictions will do the job. I don't see the 
+complexity in the code to have this annotations for human readability.
+
+I would argue against using unlikely() here as, in general, it is discouraged to 
+use it. We will just create a data point of doing things that should only be 
+done with very good reason. I don't see the reason here, it will only confuse 
+other developers about the use of likely() and unlikely().
+
+Regards,
+Matthias
+
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
 > ---
->   drivers/soc/mediatek/mtk-cmdq-helper.c | 31 ++++++++++++--------------
->   1 file changed, 14 insertions(+), 17 deletions(-)
+>   drivers/soc/mediatek/mtk-cmdq-helper.c | 10 +++++-----
+>   1 file changed, 5 insertions(+), 5 deletions(-)
 > 
 > diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> index a8fccedba83f..620c371fd1fc 100644
+> index 620c371fd1fc..4ffd1a35df87 100644
 > --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
 > +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> @@ -180,6 +180,15 @@ static int cmdq_pkt_append_command(struct cmdq_pkt *pkt,
->   	return 0;
->   }
+> @@ -336,7 +336,7 @@ int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear)
+>   	struct cmdq_instruction inst = { {0} };
+>   	u32 clear_option = clear ? CMDQ_WFE_UPDATE : 0;
 >   
-> +static int cmdq_pkt_mask(struct cmdq_pkt *pkt, u32 mask)
-> +{
-> +	struct cmdq_instruction inst = {
-> +		.op = CMDQ_CODE_MASK,
-> +		.mask = ~mask
-> +	};
-> +	return cmdq_pkt_append_command(pkt, inst);
-> +}
-> +
->   int cmdq_pkt_write(struct cmdq_pkt *pkt, u8 subsys, u16 offset, u32 value)
+> -	if (event >= CMDQ_MAX_EVENT)
+> +	if (unlikely(event >= CMDQ_MAX_EVENT))
+>   		return -EINVAL;
+>   
+>   	inst.op = CMDQ_CODE_WFE;
+> @@ -351,7 +351,7 @@ int cmdq_pkt_acquire_event(struct cmdq_pkt *pkt, u16 event)
 >   {
->   	struct cmdq_instruction inst;
-> @@ -196,14 +205,11 @@ EXPORT_SYMBOL(cmdq_pkt_write);
->   int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u8 subsys,
->   			u16 offset, u32 value, u32 mask)
->   {
-> -	struct cmdq_instruction inst = { {0} };
->   	u16 offset_mask = offset;
->   	int err;
->   
->   	if (mask != 0xffffffff) {
-> -		inst.op = CMDQ_CODE_MASK;
-> -		inst.mask = ~mask;
-> -		err = cmdq_pkt_append_command(pkt, inst);
-> +		err = cmdq_pkt_mask(pkt, mask);
->   		if (err < 0)
->   			return err;
->   
-> @@ -251,9 +257,7 @@ int cmdq_pkt_write_s_mask(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
 >   	struct cmdq_instruction inst = {};
->   	int err;
 >   
-> -	inst.op = CMDQ_CODE_MASK;
-> -	inst.mask = ~mask;
-> -	err = cmdq_pkt_append_command(pkt, inst);
-> +	err = cmdq_pkt_mask(pkt, mask);
->   	if (err < 0)
->   		return err;
+> -	if (event >= CMDQ_MAX_EVENT)
+> +	if (unlikely(event >= CMDQ_MAX_EVENT))
+>   		return -EINVAL;
 >   
-> @@ -288,9 +292,7 @@ int cmdq_pkt_write_s_mask_value(struct cmdq_pkt *pkt, u8 high_addr_reg_idx,
->   	struct cmdq_instruction inst = {};
->   	int err;
->   
-> -	inst.op = CMDQ_CODE_MASK;
-> -	inst.mask = ~mask;
-> -	err = cmdq_pkt_append_command(pkt, inst);
-> +	err = cmdq_pkt_mask(pkt, mask);
->   	if (err < 0)
->   		return err;
->   
-> @@ -409,12 +411,9 @@ EXPORT_SYMBOL(cmdq_pkt_poll);
->   int cmdq_pkt_poll_mask(struct cmdq_pkt *pkt, u8 subsys,
->   		       u16 offset, u32 value, u32 mask)
+>   	inst.op = CMDQ_CODE_WFE;
+> @@ -366,7 +366,7 @@ int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u16 event)
 >   {
-> -	struct cmdq_instruction inst = { {0} };
->   	int err;
+>   	struct cmdq_instruction inst = { {0} };
 >   
-> -	inst.op = CMDQ_CODE_MASK;
-> -	inst.mask = ~mask;
-> -	err = cmdq_pkt_append_command(pkt, inst);
-> +	err = cmdq_pkt_mask(pkt, mask);
->   	if (err < 0)
->   		return err;
+> -	if (event >= CMDQ_MAX_EVENT)
+> +	if (unlikely(event >= CMDQ_MAX_EVENT))
+>   		return -EINVAL;
 >   
-> @@ -436,9 +435,7 @@ int cmdq_pkt_poll_addr(struct cmdq_pkt *pkt, dma_addr_t addr, u32 value, u32 mas
->   	 * which enables use_mask bit.
->   	 */
->   	if (mask != GENMASK(31, 0)) {
-> -		inst.op = CMDQ_CODE_MASK;
-> -		inst.mask = ~mask;
-> -		ret = cmdq_pkt_append_command(pkt, inst);
-> +		ret = cmdq_pkt_mask(pkt, mask);
->   		if (ret < 0)
->   			return ret;
->   		use_mask = CMDQ_POLL_ENABLE_MASK;
+>   	inst.op = CMDQ_CODE_WFE;
+> @@ -381,7 +381,7 @@ int cmdq_pkt_set_event(struct cmdq_pkt *pkt, u16 event)
+>   {
+>   	struct cmdq_instruction inst = {};
+>   
+> -	if (event >= CMDQ_MAX_EVENT)
+> +	if (unlikely(event >= CMDQ_MAX_EVENT))
+>   		return -EINVAL;
+>   
+>   	inst.op = CMDQ_CODE_WFE;
+> @@ -476,7 +476,7 @@ int cmdq_pkt_logic_command(struct cmdq_pkt *pkt, u16 result_reg_idx,
+>   {
+>   	struct cmdq_instruction inst = { {0} };
+>   
+> -	if (!left_operand || !right_operand || s_op >= CMDQ_LOGIC_MAX)
+> +	if (unlikely(!left_operand || !right_operand || s_op >= CMDQ_LOGIC_MAX))
+>   		return -EINVAL;
+>   
+>   	inst.op = CMDQ_CODE_LOGIC;
 
