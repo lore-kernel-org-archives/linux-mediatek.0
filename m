@@ -4,133 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09E66CF6D22
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 13:14:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F228CF6D24
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 13:27:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wUXazfyRhSUrNjSKKHSEO3IW81fhmdgLhhpJA5b0Q9M=; b=qytsx5EG5jNeWoihEkBtIAgCzc
-	T78vYRrRgKz/scNeTlnR47r2eW/AfMNvUR4etWznCYmz84bPrk6HOPndsPPfpEL9jNk3TdfjrSGpt
-	754HHVkVJ5jq4/NeFEdNJNQrgcgozJHqX9LH62w/PtMYGJGmY0Bi/UqZ46LjF+zOpewxWpufHoT8Q
-	+lpqAKsMB78BtJWAUHoGaEVnZUQeipcTCp9OkZR0eJxBFjZJEgTpbgcW792h4SPKiovmdKZAAJGYY
-	4B/yetVOf4vFgTk1Drkb1PzPgvb8jGHVaSzbxQ6no2WlJCz8SZAlpZhOOtfQoBtq3OxNnemueiEBH
-	Pd5wnYsg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tq/IcjxnqevHQ1pJJAdNyjhvtmKc8PHpqnWCYCuZtbY=; b=yrpkjBeMrt8MqXpJEAAKkBaEzp
+	Zo8IzRx9+lHt9WukUZ0L3G8cj2FYYo3Btexpcra+o8jV5bLeIMo7Y4tQaDprdJYKgnKI8nPVR0VbO
+	OsBFoQ5BKkpB25Cers6PTAXjQ6EkKQroLNgrznDmGUjGL5ux73ep3o7wBRYLQpXxwcv7c2hnDLfvA
+	H26UXsN60pHHIg+0CheBBgxlgyWYW+0R+kvNSSmsPmqPvnmiN3dQXu8tVBg8SArGFpLg/iXivfTdQ
+	dXKOl1C1Op1Pqrhh1kiOa2HRdGncDyR+fWOru7yK8aLhG80B/O3yblnoLz7xi/fO1NgrJZXjMFj0p
+	396UPHug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svzBG-000000064ZQ-3917;
-	Wed, 02 Oct 2024 13:14:14 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1svzOP-000000067kO-27T7;
+	Wed, 02 Oct 2024 13:27:49 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svz9q-000000063z1-0H6L;
-	Wed, 02 Oct 2024 13:12:47 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-5c8784e3bc8so8053409a12.1;
-        Wed, 02 Oct 2024 06:12:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1727874764; x=1728479564; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=wUXazfyRhSUrNjSKKHSEO3IW81fhmdgLhhpJA5b0Q9M=;
-        b=UQN4ieFIytFQGyyG+PfUMdHAwec13k5q+6wEAq/jzKtxdc1OM9QEeBV9AuTG1Ff3+9
-         xZ2tOSYYT2yPypOykN3356gi04i6h03vSW60gAHUJCifP55iw+qTxze73l7UUBp5PQjS
-         4YWTwfgZ9Nqo5jmATdM5YcZfT+eizyXvo8PQPXzbfhcMmh5uwmCiWevpMKYhlFq6wP91
-         Mie5QnfsbcILJKTtibga8uHeggL+LoylBZHQ8yAC3JX8rFmSyu7UFmGoT7lOz0kdN2Xp
-         SKKaomnByjbMYJQfSa/d169Qcvw6gSCE03OpZfzKWjaa5ReqloGGRqawSjsbeubZjNRm
-         kztQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727874764; x=1728479564;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=wUXazfyRhSUrNjSKKHSEO3IW81fhmdgLhhpJA5b0Q9M=;
-        b=i0mZ9fJ1vYCbsyKqvfkY2OgYR/jBOjYwoVnoJVi6d1xOlNG9aRCXAR17xqrg4CklfQ
-         aZ1InRU03jL4fcat8DBe550GBr/X7nGbMRJXQLsBXApdgbY02h63tsSJ/JRMSaXkw9Xi
-         td2dg5O92QnCnQc0dnTrd4oEDMOrRJ4GGRJKR2arheT6Y+dxlJq/LZmWBSN1fdVjbjSE
-         PPbMO7qIFMJgMH8ux/TKWf1fVEdp2axU8eiWyNHRg3kRtN+iq546t5GtC8aQ6vrCZRPl
-         /xRf4QaEJtnj2K2WjQ/UBL2ynSe/dGIUNVbrd0X7qBtMLb8nnc5OhRWHFI6ZchyLu8q1
-         /fYg==
-X-Forwarded-Encrypted: i=1; AJvYcCVHm6G5zegEp01aLA3+eUsaxT8jnfBMm2I3h5oNGhBQAlRaxkAvoQGXsIzFBbIEheTdyPiqwaHhUad5yYTDrnvQ@lists.infradead.org, AJvYcCVOPB57LYGrtME4dYpbuwT5Pns31MZhr2uKLj3PVmMrUquxITqIwkd1zLF5/Ack0X/+WYjbCeX0RPDw6cTkcvA=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxILglr9PVZwSI0zzuaUBgLyXGjLBLI3UPwzGylN4U/kwLuP+vI
-	NNGi+7Fn75jVt2guwtcnD3TPDkQbR+OFLF7Ai8KQ7UziYp1ZQlcV
-X-Google-Smtp-Source: AGHT+IGiDf4kHlCB1lHtKfJV660SX4ZBQOywQCXDwuelwkZ5JRfajwvG+c8yIPwJoIuAy5Jv8NZsoQ==
-X-Received: by 2002:a05:6402:4498:b0:5c8:84d6:c995 with SMTP id 4fb4d7f45d1cf-5c8b1b72680mr2188251a12.25.1727874763930;
-        Wed, 02 Oct 2024 06:12:43 -0700 (PDT)
-Received: from [192.168.2.177] ([207.188.162.240])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5c882405b19sm7528031a12.11.2024.10.02.06.12.39
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 02 Oct 2024 06:12:41 -0700 (PDT)
-Message-ID: <dbe0927e-2d7b-4a32-a155-206566d543a8@gmail.com>
-Date: Wed, 2 Oct 2024 15:12:38 +0200
+	id 1svzM5-00000006794-3vfb;
+	Wed, 02 Oct 2024 13:25:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id D6D5E5C4AA8;
+	Wed,  2 Oct 2024 13:25:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E5ACC4CECF;
+	Wed,  2 Oct 2024 13:25:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1727875524;
+	bh=t2xGM0n6vLNavXXQOnciDAXLytPrgVcYlQAYYF1hRgI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LSTUlm5co/SiLPHSg6yOj/iz0uAL2OzcmiV/OsCsmh9ioHTCJU8X9ZIOdn66nWuhG
+	 BF723ZbeakpPHUHgIoku8K0FCTaRGBFaPlgfLI6z/ezHvYT85kr0eNRlbdRhq0Mj/+
+	 2wYkbzcEEh+JFVhgjJf6+V6RSlbr+J8zwoFCmGBpFidp+HsVUagDoSPE6ovppTQ+Ft
+	 Ll9A4elZeVJxaWhpIN8R3PeeW9N3YediPmikV/gGT/s9nYbS812oQiGZohlqgfyc2F
+	 jKhUBv1zf36R6+KqdogmrmBa6Ij9H10a9uuDE097yXB+Aflc2pRvevSH5ICrlEXVn+
+	 7PS9BS4vKB4Tg==
+Date: Wed, 2 Oct 2024 14:25:18 +0100
+From: Lee Jones <lee@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	upstream@airoha.com, benjamin.larsson@genexis.eu,
+	ansuelsmth@gmail.com, linux-pwm@vger.kernel.org
+Subject: Re: [PATCH v5 3/5] mfd: airoha: Add support for Airoha EN7581 MFD
+Message-ID: <20241002132518.GD7504@google.com>
+References: <20241001-en7581-pinctrl-v5-0-dc1ce542b6c6@kernel.org>
+ <20241001-en7581-pinctrl-v5-3-dc1ce542b6c6@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/8] dt-bindings: media: mediatek,jpeg: Relax IOMMU max
- item count
-To: Krzysztof Kozlowski <krzk@kernel.org>, Fei Shao <fshao@chromium.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Bin Liu <bin.liu@mediatek.com>, Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
- Xia Jiang <xia.jiang@mediatek.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20241001113052.3124869-1-fshao@chromium.org>
- <20241001113052.3124869-4-fshao@chromium.org>
- <r22z7eehmuprvq67gxekqwsah2mcobfsyhn7xzyyh2gdtjegve@zl32uljxrilx>
-Content-Language: en-US, ca-ES, es-ES
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Autocrypt: addr=matthias.bgg@gmail.com; keydata=
- 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
-In-Reply-To: <r22z7eehmuprvq67gxekqwsah2mcobfsyhn7xzyyh2gdtjegve@zl32uljxrilx>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20241001-en7581-pinctrl-v5-3-dc1ce542b6c6@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241002_061246_141660_77E97C3F 
-X-CRM114-Status: GOOD (  17.69  )
+X-CRM114-CacheID: sfid-20241002_062526_094144_38EFDD14 
+X-CRM114-Status: GOOD (  28.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,37 +81,158 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, 01 Oct 2024, Lorenzo Bianconi wrote:
 
-
-On 02/10/2024 08:16, Krzysztof Kozlowski wrote:
-> On Tue, Oct 01, 2024 at 07:27:21PM +0800, Fei Shao wrote:
->> On MediaTek platforms with Multimedia MMU (M4U), a multimedia hardware
->> can be assigned with a local arbiter (LARB) which has a maximum of 32
->> ports for MediaTek's IOMMU infrastructure. That means there can be at
->> most 32 items in the iommus property in theory.
->>
->> Instead of relaxing the max item count every time a newly introduced
->> device tree hits the limit, bump the number to 32 as an one-time effort.
->>
->> On the other hand, all existing and foreseeable JPEG decoder nodes at
->> this point have at least 2 IOMMUs, so set minItems to 2 accordingly.
->>
->> Signed-off-by: Fei Shao <fshao@chromium.org>
->> ---
->> It's not in the upstream tree yet, but the upcoming MT8188 DT will have
->> 6 IOMMUs in its JPEG decoder. This patch is to pave the way for that.
->>
->> Changes in v2:
->> New patch.
->>
+> From: Christian Marangi <ansuelsmth@gmail.com>
 > 
-> I do not see any user of this in this patchset.
+> Support for Airoha EN7581 Multi Function Device that
+> expose PINCTRL functionality and PWM functionality.
+
+The device is a jumble of pinctrl registers, some of which can oscillate.
+
+This is *still* not an MFD.
+
+If you wish to spread this functionality over 2 drivers, use syscon to
+obtain the registers and simple-mfd to automatically probe the drivers.
+
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>  drivers/mfd/Kconfig                   |  8 ++++
+>  drivers/mfd/Makefile                  |  2 +
+>  drivers/mfd/airoha-en7581-gpio-mfd.c  | 72 +++++++++++++++++++++++++++++++++++
+>  include/linux/mfd/airoha-en7581-mfd.h |  9 +++++
+>  4 files changed, 91 insertions(+)
+> 
+> diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
+> index f9325bcce1b9..eca221351ab7 100644
+> --- a/drivers/mfd/Kconfig
+> +++ b/drivers/mfd/Kconfig
+> @@ -32,6 +32,14 @@ config MFD_ADP5585
+>  	  the core APIs _only_, you have to select individual components like
+>  	  the GPIO and PWM functions under the corresponding menus.
+>  
+> +config MFD_AIROHA_EN7581
+> +	bool "Airoha EN7581 Multi Function Device"
+> +	depends on (ARCH_AIROHA || COMPILE_TEST) && OF
+> +	select MFD_CORE
+> +	help
+> +	  Support for Airoha EN7581 Multi Function Device that
+> +	  expose PINCTRL functionality and PWM functionality.
+> +
+>  config MFD_ALTERA_A10SR
+>  	bool "Altera Arria10 DevKit System Resource chip"
+>  	depends on ARCH_INTEL_SOCFPGA && SPI_MASTER=y && OF
+> diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
+> index 2a9f91e81af8..be8448e81a5b 100644
+> --- a/drivers/mfd/Makefile
+> +++ b/drivers/mfd/Makefile
+> @@ -257,6 +257,8 @@ obj-$(CONFIG_INTEL_SOC_PMIC_CHTWC)	+= intel_soc_pmic_chtwc.o
+>  obj-$(CONFIG_INTEL_SOC_PMIC_CHTDC_TI)	+= intel_soc_pmic_chtdc_ti.o
+>  obj-$(CONFIG_INTEL_SOC_PMIC_MRFLD)	+= intel_soc_pmic_mrfld.o
+>  
+> +obj-$(CONFIG_MFD_AIROHA_EN7581)	+= airoha-en7581-gpio-mfd.o
+> +
+>  obj-$(CONFIG_MFD_ALTERA_A10SR)	+= altera-a10sr.o
+>  obj-$(CONFIG_MFD_ALTERA_SYSMGR) += altera-sysmgr.o
+>  obj-$(CONFIG_MFD_STPMIC1)	+= stpmic1.o
+> diff --git a/drivers/mfd/airoha-en7581-gpio-mfd.c b/drivers/mfd/airoha-en7581-gpio-mfd.c
+> new file mode 100644
+> index 000000000000..88407ce5747e
+> --- /dev/null
+> +++ b/drivers/mfd/airoha-en7581-gpio-mfd.c
+> @@ -0,0 +1,72 @@
+> +// SPDX-License-Identifier: GPL-2.0+
+> +/*
+> + * MFD driver for Airoha EN7581
+> + */
+> +
+> +#include <linux/io.h>
+> +#include <linux/of.h>
+> +#include <linux/mfd/airoha-en7581-mfd.h>
+> +#include <linux/mfd/core.h>
+> +#include <linux/module.h>
+> +
+> +static struct resource airoha_mfd_pinctrl_intr[] = {
+> +	{
+> +		.flags = IORESOURCE_IRQ,
+> +	},
+> +};
+> +
+> +static const struct mfd_cell airoha_mfd_devs[] = {
+> +	{
+> +		.name = "pinctrl-airoha",
+> +		.resources = airoha_mfd_pinctrl_intr,
+> +		.num_resources = ARRAY_SIZE(airoha_mfd_pinctrl_intr),
+> +	}, {
+> +		.name = "pwm-airoha",
+> +	},
+> +};
+> +
+> +static int airoha_mfd_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct airoha_mfd *mfd;
+> +	int irq;
+> +
+> +	mfd = devm_kzalloc(dev, sizeof(*mfd), GFP_KERNEL);
+> +	if (!mfd)
+> +		return -ENOMEM;
+> +
+> +	platform_set_drvdata(pdev, mfd);
+> +
+> +	mfd->base = devm_platform_ioremap_resource(pdev, 0);
+> +	if (IS_ERR(mfd->base))
+> +		return PTR_ERR(mfd->base);
+> +
+> +	irq = platform_get_irq(pdev, 0);
+> +	if (irq < 0)
+> +		return irq;
+> +
+> +	airoha_mfd_pinctrl_intr[0].start = irq;
+> +	airoha_mfd_pinctrl_intr[0].end = irq;
+> +
+> +	return devm_mfd_add_devices(dev, PLATFORM_DEVID_AUTO, airoha_mfd_devs,
+> +				    ARRAY_SIZE(airoha_mfd_devs), NULL, 0,
+> +				    NULL);
+> +}
+> +
+> +static const struct of_device_id airoha_mfd_of_match[] = {
+> +	{ .compatible = "airoha,en7581-gpio-sysctl" },
+> +	{ /* sentinel */ }
+> +};
+> +MODULE_DEVICE_TABLE(of, airoha_mfd_of_match);
+> +
+> +static struct platform_driver airoha_mfd_driver = {
+> +	.probe = airoha_mfd_probe,
+> +	.driver = {
+> +		.name = KBUILD_MODNAME,
+> +		.of_match_table = airoha_mfd_of_match,
+> +	},
+> +};
+> +module_platform_driver(airoha_mfd_driver);
+> +
+> +MODULE_AUTHOR("Christian Marangi <ansuelsmth@gmail.com>");
+> +MODULE_DESCRIPTION("Driver for Airoha EN7581 MFD");
+> diff --git a/include/linux/mfd/airoha-en7581-mfd.h b/include/linux/mfd/airoha-en7581-mfd.h
+> new file mode 100644
+> index 000000000000..25e73952a777
+> --- /dev/null
+> +++ b/include/linux/mfd/airoha-en7581-mfd.h
+> @@ -0,0 +1,9 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +#ifndef _LINUX_INCLUDE_MFD_AIROHA_EN7581_MFD_H_
+> +#define _LINUX_INCLUDE_MFD_AIROHA_EN7581_MFD_H_
+> +
+> +struct airoha_mfd {
+> +	void __iomem *base;
+> +};
+> +
+> +#endif  /* _LINUX_INCLUDE_MFD_AIROHA_EN7581_MFD_H_ */
+> 
+> -- 
+> 2.46.2
 > 
 
-I'm not sure I understand you: the binding describes the hardware. If it can 
-have up to 32 ports, then this should be reflected in the binding.
-
-Regards,
-Matthias
-
+-- 
+Lee Jones [李琼斯]
 
