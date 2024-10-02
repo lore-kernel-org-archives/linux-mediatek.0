@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56AFACF6D28
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 14:01:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A705ACF6D2C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 14:09:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MKfyQ/F3wJh5m32q4oPOyZNVe8WJhs+ENKg8qmZBEI4=; b=nBCKhEvHv4NxCsbGf+l70Jgo1W
-	DkmvQduWOcubANVa+rVCjbHdttnF4wkRkg2Sij11MpBvmeSPfI4B/jeGQmYJDme5CuFNGm27U1fbA
-	dS/Hs4MlCh0vZMudj4J5i62W5lQVU6tmNRyv6a51zpfIy/Asr05G/52a7pQrlauwjXCiVK+x1LIhV
-	ukSuDYzAe9h4LSJY3K+KvTS7K4TDDuUlfR9+2YCUybIMv64e58rsns/wz6ZIWomOoU0k/4csdonzJ
-	uqhU9CZLx8rPa9FyqFYCyCJ/meiCl3sF6zSvmRjwQUF//eS3ageAqsMrvStbckFitnJfF+JNnZhfq
-	/DYedzgg==;
+	bh=IrO0DGvM2t4JzWW3nLDphvAHpWX0DY7aqw5LbgJ1vDo=; b=kTZvDJ4fbvVCnRI1NkwEWsd659
+	twD6taiW2Lzg68xRejWWJIT8+umqTVel7biJEKLDqzhWT6/FNtt+TSh8xogyJDuEcTdKkHD+2LOiw
+	PMF9MhvgJmnr7fshIgv6a+lOEmGRK3jvPpmK3LHInEyyNgwENBv5xSHeUIh1atgmDInPmCVLZhv7c
+	HsS00+aIb4gEvQ+uoZsaXTfukusW3RbLKJaJtgkw8WbBr8Lcjo0qWVtUu5AOG40JmauP1rmA3Wf3L
+	Lkvcl4Bs/MIolRbHUUHRloGM8qiipy98Ru4MLig21D03owGpezovYRav19/vvPCWKnlvCrPsZomRF
+	PapmCXTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svzv3-00000006HAK-3nQa;
-	Wed, 02 Oct 2024 14:01:33 +0000
+	id 1sw02U-00000006JXq-1L0s;
+	Wed, 02 Oct 2024 14:09:14 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svzsy-00000006GOT-1H9u;
-	Wed, 02 Oct 2024 13:59:26 +0000
+	id 1svzuN-00000006GwL-0191;
+	Wed, 02 Oct 2024 14:00:52 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 04D375C2763;
-	Wed,  2 Oct 2024 13:59:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 53A72C4CECE;
-	Wed,  2 Oct 2024 13:59:12 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2FB5A5C33EC;
+	Wed,  2 Oct 2024 14:00:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC480C4CEC5;
+	Wed,  2 Oct 2024 14:00:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727877557;
-	bh=9eLsi2QYDYeifi8LYgOazHAYg0AbX7S3Jja0oJlI+E0=;
+	s=k20201202; t=1727877650;
+	bh=uvySZmryLQdsNklxp9JZdOLsNmriTRI8QtWR+ht1XTQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MqJRTg2gaaf+4t37dh63DgjjFxi4RycBT00xrCOwPS3zgzEUZfBlU2Pz6JII008R3
-	 Qj3FbUeubiMRauPMaw7CzQlLt7eTarkN6H1+7sicD5FYyt5Xi7CyBtyNNCanNrUe3m
-	 13CKfqBsMlfEds4KpvU0UJfQLjZvBsVI1BXnEGCEbu4voDlqjGizO8p59gvjsff5xO
-	 YO0lhCeC8O4PjqaB0rNzcLldOXsNSDZjti/W+HV/dZDq0EWiiTevhaOlS0yYVAgpzx
-	 dZE9cE2tZA93Q1mFSYZKoYWFedYMYG356FFtL9K1R2Jls9e0gHGwcahOSEYvOsB6tM
-	 46F7COrjB150w==
-Message-ID: <a0bff4b0-53ee-4c72-bc0a-205052cd9985@kernel.org>
-Date: Wed, 2 Oct 2024 15:59:10 +0200
+	b=tECubX84HraPC/UEglUtF3q3asQgAmtxYml3yh8goR5HiV7bE6qG1ALaXKps/dfH1
+	 pAw6MK5k1mGPKpwOwZ6FTsx7Oxz+Kyv8R7VJZ5JK35l/uLHARwGD+BU0piYqVwsH0g
+	 zxg984S97VECWAFF5fHh0Wj3D45ItcBDEmwJbXR1YWsAjXT7pn9XHge7oRrofCHDsL
+	 L1foRhUZaJi2jFp4wplk0Dk2Y3dfDj35+3DLTW0M5IrMR2Aeo52D64LvrytGq2R5Yo
+	 FzAqXFj+jyZmaRk72Sq1ZUxVVQaX3GilB9T53vll8HBBH1LIfK2VpYipn4N9HgFp26
+	 0A/ldFKYAiZ5Q==
+Message-ID: <9b4ee771-2772-46f7-b6f2-382c11934d99@kernel.org>
+Date: Wed, 2 Oct 2024 16:00:43 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 3/8] dt-bindings: media: mediatek,jpeg: Relax IOMMU max
  item count
-To: Fei Shao <fshao@chromium.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Bin Liu <bin.liu@mediatek.com>, Conor Dooley <conor+dt@kernel.org>,
+To: Matthias Brugger <matthias.bgg@gmail.com>, Fei Shao <fshao@chromium.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Bin Liu <bin.liu@mediatek.com>, Conor Dooley <conor+dt@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
  Xia Jiang <xia.jiang@mediatek.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
 References: <20241001113052.3124869-1-fshao@chromium.org>
  <20241001113052.3124869-4-fshao@chromium.org>
+ <r22z7eehmuprvq67gxekqwsah2mcobfsyhn7xzyyh2gdtjegve@zl32uljxrilx>
+ <dbe0927e-2d7b-4a32-a155-206566d543a8@gmail.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -103,12 +104,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20241001113052.3124869-4-fshao@chromium.org>
+In-Reply-To: <dbe0927e-2d7b-4a32-a155-206566d543a8@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241002_065924_553258_3FEE2A38 
-X-CRM114-Status: GOOD (  13.97  )
+X-CRM114-CacheID: sfid-20241002_070051_187160_21E3DEC7 
+X-CRM114-Status: GOOD (  17.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,28 +124,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 01/10/2024 13:27, Fei Shao wrote:
-> On MediaTek platforms with Multimedia MMU (M4U), a multimedia hardware
-> can be assigned with a local arbiter (LARB) which has a maximum of 32
-> ports for MediaTek's IOMMU infrastructure. That means there can be at
-> most 32 items in the iommus property in theory.
+On 02/10/2024 15:12, Matthias Brugger wrote:
 > 
-> Instead of relaxing the max item count every time a newly introduced
-> device tree hits the limit, bump the number to 32 as an one-time effort.
 > 
-> On the other hand, all existing and foreseeable JPEG decoder nodes at
-> this point have at least 2 IOMMUs, so set minItems to 2 accordingly.
+> On 02/10/2024 08:16, Krzysztof Kozlowski wrote:
+>> On Tue, Oct 01, 2024 at 07:27:21PM +0800, Fei Shao wrote:
+>>> On MediaTek platforms with Multimedia MMU (M4U), a multimedia hardware
+>>> can be assigned with a local arbiter (LARB) which has a maximum of 32
+>>> ports for MediaTek's IOMMU infrastructure. That means there can be at
+>>> most 32 items in the iommus property in theory.
+>>>
+>>> Instead of relaxing the max item count every time a newly introduced
+>>> device tree hits the limit, bump the number to 32 as an one-time effort.
+>>>
+>>> On the other hand, all existing and foreseeable JPEG decoder nodes at
+>>> this point have at least 2 IOMMUs, so set minItems to 2 accordingly.
+>>>
+>>> Signed-off-by: Fei Shao <fshao@chromium.org>
+>>> ---
+>>> It's not in the upstream tree yet, but the upcoming MT8188 DT will have
+>>> 6 IOMMUs in its JPEG decoder. This patch is to pave the way for that.
+>>>
+>>> Changes in v2:
+>>> New patch.
+>>>
+>>
+>> I do not see any user of this in this patchset.
+>>
 > 
-> Signed-off-by: Fei Shao <fshao@chromium.org>
-> ---
-> It's not in the upstream tree yet, but the upcoming MT8188 DT will have
-> 6 IOMMUs in its JPEG decoder. This patch is to pave the way for that.
-> 
-> Changes in v2:
-> New patch.
+> I'm not sure I understand you: the binding describes the hardware. If it can 
+> have up to 32 ports, then this should be reflected in the binding.
 
-
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Yeah, but people do not describe hardware but drivers. Looking at DTS
+clarifies sometimes such cases and avoids lengthy discussions. Plus I
+was not really sure if these are IOMMUs for the same device for example
+(again: people do weird stuff).
 
 Best regards,
 Krzysztof
