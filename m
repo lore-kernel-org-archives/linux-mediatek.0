@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E3AACF3189
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 02:23:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E2A9CF3189
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Oct 2024 02:24:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sx3Vdwociw+7bgWqHeh3LpMurxRj0XhtssaWVj1YGYE=; b=tOXTojc4Qc/6KtqgNxchQze6am
-	foeuV5/M+VeNDkBrstPkzwvDdnYAhaW2KVZz+XulqR4/29pW9DTIweChbe2gEsEkcWXWPBHPTt3ro
-	ypaN66R6qSgllli8qiSFpFw6PefZg7JDPt57UAD6er3FpRVHv1M5y2wgTdKYh+Th8t/jlslAU3Ijx
-	MmKF/9o5BNqHSElJRbyzBVW7S53YeC5Scw/vSWBNUQh9SB7ygH/IixdtNosshedE+JC1FcWf5qCCV
-	OFTea3FSWy4f0sjUV08HcpQOV0Abng0UDqQ5iEHoPyWONPEdyCvbx5Nzam2zejQAHyRm+qEiG6/Am
-	CKZCxoDg==;
+	bh=fPGZar9sjhXZt1snnZn3u5dXojBi5Z4anWFQOljWfHg=; b=aLKimFS6XaDWGtmpBdZIMRCFQs
+	/bCVzH+HhsHnwrBjIYjBF7v+ItYia5WhBt2Rmls9u1/pcFLnYZX4Vh1cenfeBS3JeuXKQZe6ZMTu5
+	xbxeRHgQQi8e+N1zNh3+Xbrq/YS1ib9eSWYk37e1Kc04djSnDHopYbij4R2seO1Woqwi5Tggaiqs3
+	0O16r8lsb5h0f/8mcPveHo+MEX8JZcHE6zubUtYeQQBRrTRnZAcBkrnIqZpXi2HX8llT4+eY067iG
+	E8LR95nfRIqgQcN+lbtTDQL5dGFmO4FKlBeoETotqQc8imKZJq3wx6myyXli1sHIYNqlB2vs2YeE/
+	QTg5bfww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1svp1F-00000004cDu-2AnM;
-	Wed, 02 Oct 2024 02:23:13 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1svp2S-00000004cRI-2Fm4;
+	Wed, 02 Oct 2024 02:24:28 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1svozz-00000004bw2-3ldX;
-	Wed, 02 Oct 2024 02:21:57 +0000
-X-UUID: 14f497d8806511efb3adad29d29602c1-20241001
+	id 1svp02-00000004bxS-1Z9V;
+	Wed, 02 Oct 2024 02:21:59 +0000
+X-UUID: 172e8f18806511efba0aef63c0775dbf-20241001
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=sx3Vdwociw+7bgWqHeh3LpMurxRj0XhtssaWVj1YGYE=;
-	b=ICfCR4S1l6K7avnpTP+noOXhCmb42nmsI/n7oizxGtdB9t5sEGKZkyGWaDhrKiFhM6L7h2njhjKjERMjCb2sAU+0escZDPNfXmWqo3m+oq+rlBBqzOXyLsQlBwOvKt5l2YJdcJn5ZUu5PdH6IU1JS07179V7Ya6Uz79K1Hilbuc=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=fPGZar9sjhXZt1snnZn3u5dXojBi5Z4anWFQOljWfHg=;
+	b=Z1YxjTVObFjr3WYOOEeSWxEZSAXN1iTEMmWyC9gkpFsuz7/EMJzknhRbDeWFMAC6PMe4gY/ftBG5yvX+3B51Dy5REMvNOcCrCY2CXHTm4I0n+HKNmEQx721A7OALO1DTGZbskKM7H6IGujAUMD2o2MYptdl2BwzbXzH0Yt/pycc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:e67b6f84-43cb-4cc5-9604-00100b4572d2,IP:0,U
+X-CID-O-INFO: VERSION:1.1.41,REQID:784c8015-5560-43ae-adf0-0870d705888e,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:21bf2988-3a5d-4d9e-b012-e875acfb157d,B
+X-CID-META: VersionHash:6dc6a47,CLOUDID:fb94a6ed-33c7-4396-bf34-2026ee4f15f5,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 14f497d8806511efb3adad29d29602c1-20241001
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+X-UUID: 172e8f18806511efba0aef63c0775dbf-20241001
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
 	(envelope-from <pablo.sun@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 912363097; Tue, 01 Oct 2024 19:21:50 -0700
+	with ESMTP id 813119135; Tue, 01 Oct 2024 19:21:54 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 2 Oct 2024 10:21:46 +0800
+ 15.2.1118.26; Tue, 1 Oct 2024 19:21:51 -0700
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 2 Oct 2024 10:21:46 +0800
+ 15.2.1118.26 via Frontend Transport; Wed, 2 Oct 2024 10:21:51 +0800
 From: Pablo Sun <pablo.sun@mediatek.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
@@ -61,29 +61,18 @@ To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	Pablo Sun <pablo.sun@mediatek.com>
-Subject: [PATCH v3 1/6] arm64: dts: mediatek: mt8188: Fix wrong clock provider in MFG1 power domain
-Date: Wed, 2 Oct 2024 10:21:33 +0800
-Message-ID: <20241002022138.29241-2-pablo.sun@mediatek.com>
+Subject: [PATCH v3 3/6] dt-bindings: nvmem: mediatek: efuse: Reuse mt8186-efuse in mt8188
+Date: Wed, 2 Oct 2024 10:21:35 +0800
+Message-ID: <20241002022138.29241-4-pablo.sun@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20241002022138.29241-1-pablo.sun@mediatek.com>
 References: <20241002022138.29241-1-pablo.sun@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--2.548300-8.000000
-X-TMASE-MatchedRID: PcZ0mOXO/jwPRVepDWIjx/fLKp/JCt7h6SXuwUgGH0iyrCkM9r1bWnTv
-	v/bTZRlobaFo1bdWCGaQJkPYvdXnnwzyMxeMEX6wFEUknJ/kEl7dB/CxWTRRu+rAZ8KTspSzetP
-	JfHqWaH9JLwBSa8cIhAW80jAWz86QWJqqfG38YMr34hqv8Qa5Lzd2iAQV2uozvjeXXjV9ouogrK
-	mwTJoL/Ns19EgxHqqiF0aD5ljt43pMcHZD6gqu7wxMjfifIXfowkvVoA11Twp+3BndfXUhXQ==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--2.548300-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 2E5731F8DCEDE1326F76D329AE748F85559A3ABF2C5A0CA0200AF644AB264D732000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241001_192155_989038_DC0AE185 
-X-CRM114-Status: GOOD (  11.42  )
+X-CRM114-CacheID: sfid-20241001_192158_663652_99F0B1A8 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,35 +87,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The clock index "CLK_APMIXED_MFGPLL" belongs to the "apmixedsys" provider,
-so fix the index.
+mt8188 has the same GPU speed binning efuse field just
+like mt8186, which requires post-processing to convert to the
+bit field format specified by OPP table.
 
-In addition, add a "mfg1" label so following commits could set
-domain-supply for MFG1 power domain.
+Add the binding for the compatible list:
+  "mediatek,mt8188-efuse", "mediatek,mt8186-efuse"
+so mt8188 uses the same conversion.
 
-Fixes: eaf73e4224a3 ("arm64: dts: mediatek: mt8188: Add support for SoC power domains")
+Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8188.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-index cd27966d2e3c..02a5bb4dbd1f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-@@ -956,9 +956,9 @@ mfg0: power-domain@MT8188_POWER_DOMAIN_MFG0 {
- 					#size-cells = <0>;
- 					#power-domain-cells = <1>;
+diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+index 32b8c1eb4e80..70815a3329bf 100644
+--- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
++++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+@@ -39,6 +39,10 @@ properties:
+               - mediatek,mt8195-efuse
+               - mediatek,mt8516-efuse
+           - const: mediatek,efuse
++      - items:
++          - enum:
++              - mediatek,mt8188-efuse
++          - const: mediatek,mt8186-efuse
+       - const: mediatek,mt8173-efuse
+         deprecated: true
  
--					power-domain@MT8188_POWER_DOMAIN_MFG1 {
-+					mfg1: power-domain@MT8188_POWER_DOMAIN_MFG1 {
- 						reg = <MT8188_POWER_DOMAIN_MFG1>;
--						clocks = <&topckgen CLK_APMIXED_MFGPLL>,
-+						clocks = <&apmixedsys CLK_APMIXED_MFGPLL>,
- 							 <&topckgen CLK_TOP_MFG_CORE_TMP>;
- 						clock-names = "mfg", "alt";
- 						mediatek,infracfg = <&infracfg_ao>;
 -- 
 2.45.2
 
