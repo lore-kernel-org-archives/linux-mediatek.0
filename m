@@ -4,92 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EB7ACF34A2
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Oct 2024 12:39:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3D73CF34AD
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Oct 2024 13:33:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G1WWqv8PxjeMLKflSPYmbUe7DeomMcAnSm/A8iMPhzI=; b=45pknwVm1BMb2TH1oVZKER484f
-	iHtTHPKbYv8DU8culQq0SfLqVDmjc3kY39NP6C6X/nVSGPsze+B8UJLn/YuyLoI90SZl7OaiekONU
-	pUivgFTkPfc9qGSnHW4Y9QQuzWvs9VZtuCtM5kErvu1KCTF3tMP8T6gsq2m1PHcGtux/EaRlN+S98
-	2+nibcZqML9o/IT2lZz6CbDUHuV2CqN7Yd15zXlWH79VrkA4aQS5KNzzPphPKPnH9qFe+Yjxqd7up
-	r0Z+uww8Kj4kReoyEw2fn1xV6K7mZe9gJ+3SOumpIDJE4liwx3RqQBhUK374sEL5WL7zbH/JBdGcC
-	vFeVE9bQ==;
+	bh=T3euPA6qL7ltHS1xtxdjoJZOdYUM4LjU1WzYcAuHU9o=; b=yvp3qG/8Wx98PC/2stpjNNblTb
+	06+pmC9RfjNzCxpbeowVledPMF33EsXxNI8npsXvCn2aqhwe/YHE0i4JCgcXFCNoLTmGfIYZOeCoK
+	QjZw9uKTZGdR7oKZoW1oCCUWBUExp/yisehkbtH/VAcWum2vzGw4B0ZGEVOhd9+BI0YU3h8BdWDO2
+	r7m9SktLWn5vmZCtXcqEFJvkf/1i+pDvb5GYdGUq+QjVkh3IRWlMV8vEc40QZw9l8/mD6cGLPTcRI
+	Lz96q912Aa6gtUTVszW0reUukc9l24zVODcYqlQre0z/SBTer9tn7r0l/vxhE5h+0LmDb0Oi8tUZ9
+	WmtUv2fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1swL7A-000000092IE-09W6;
-	Thu, 03 Oct 2024 12:39:28 +0000
-Received: from relay7-d.mail.gandi.net ([2001:4b98:dc4:8::227])
+	id 1swLxm-00000009DCT-2ntg;
+	Thu, 03 Oct 2024 13:33:50 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1swL6S-000000092Dj-1Z3k;
-	Thu, 03 Oct 2024 12:38:46 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 1429220003;
-	Thu,  3 Oct 2024 12:38:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1727959119;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=G1WWqv8PxjeMLKflSPYmbUe7DeomMcAnSm/A8iMPhzI=;
-	b=jaIPWC0Xu79mrXEmZMnQsiXzA9Wr3uoH8MULWQT5IUuNp55G4sX5QevmhszIPLVwNB8KAr
-	O3AkPLtQl5yloTMbuyNDdO+X5TRPKMqYEvSTrAQoGgw5IuBAjgFtNYLiG0d10jUZ4bA3FH
-	m1e4s8kFAAe17/+QzeW38cun4KUy2aCMbNTrAFDwf/82DfLhx3fqZMuDYE4KWwrNFUQiLe
-	EpyU5sN7nS1+Zc1hdPjgaFvbZTVp4v512I9O9Hvnt/yMn7PWEyyffcB8w/4zGq889GcVPI
-	rtotQp17FYcj62LrbVAqrFIRzZevDuIvYg4y31zSeUiM6gR48lVIIrxWlvKtpw==
-Date: Thu, 3 Oct 2024 14:38:35 +0200
-From: Louis Chauvet <louis.chauvet@bootlin.com>
-To: Ville Syrjala <ville.syrjala@linux.intel.com>
-Cc: dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Inki Dae <inki.dae@samsung.com>,
-	Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Sandy Huang <hjc@rock-chips.com>, Jyri Sarha <jyri.sarha@iki.fi>,
-	Alexey Brodkin <abrodkin@synopsys.com>,
-	Hans de Goede <hdegoede@redhat.com>,
-	=?iso-8859-1?Q?Ma=EDra?= Canal <mairacanal@riseup.net>,
-	Zack Rusin <zack.rusin@broadcom.com>, amd-gfx@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	freedreno@lists.freedesktop.org, nouveau@lists.freedesktop.org,
-	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org,
-	linux-renesas-soc@vger.kernel.org, xen-devel@lists.xenproject.org
-Subject: Re: [PATCH 2/2] drm: Move crtc->{x, y, mode, enabled} to legacy
- sub-structure
-Message-ID: <Zv6QF2EmIcogtlLA@louis-chauvet-laptop>
-Mail-Followup-To: Ville Syrjala <ville.syrjala@linux.intel.com>,
-	dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Inki Dae <inki.dae@samsung.com>,
-	Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Sandy Huang <hjc@rock-chips.com>, Jyri Sarha <jyri.sarha@iki.fi>,
-	Alexey Brodkin <abrodkin@synopsys.com>,
-	Hans de Goede <hdegoede@redhat.com>,
-	=?iso-8859-1?Q?Ma=EDra?= Canal <mairacanal@riseup.net>,
-	Zack Rusin <zack.rusin@broadcom.com>, amd-gfx@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	freedreno@lists.freedesktop.org, nouveau@lists.freedesktop.org,
-	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org,
-	linux-renesas-soc@vger.kernel.org, xen-devel@lists.xenproject.org
-References: <20241002182200.15363-1-ville.syrjala@linux.intel.com>
- <20241002182200.15363-3-ville.syrjala@linux.intel.com>
+	id 1swLwU-00000009CoM-0uQO;
+	Thu, 03 Oct 2024 13:32:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 0D6C8A43BEE;
+	Thu,  3 Oct 2024 13:32:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28EE1C4CEDB;
+	Thu,  3 Oct 2024 13:32:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1727962349;
+	bh=mgHYoUmlBkOxDJsSfmWy9DGOO2mWjqY3y0a9Y78YvcU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FGHKdCXbLi15mQTk8bLjEtLcDC0Ud6Z1On1IPbeuL9JehGC6AOtgoyNto09Y4Igb1
+	 igp2tx+ZNkZIkvW00aXfB16zflRYiGgTz0v9ubXVMpgbSR/t0VnPrpDgGA3wuS2VGi
+	 2+JE/JepJ5cR/6qVp871HPoL36tjK1rpES/R0u0H4j/h0I3UFh4Tmly2OhxCM7bHly
+	 DQYpj990BWAYH3BhZHhyEYGK0BBK9DwzysjfobTF00+o4PWyDXh11/o39zluclKa1U
+	 J+CLzPIgWS9QVksT81HL6J4UMxdTB9Qdwj9Kb907yOr/R35Bp6dF6crl8eKyJArLzd
+	 jJjSctXoq0ORw==
+Date: Thu, 3 Oct 2024 14:32:20 +0100
+From: Simon Horman <horms@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	upstream@airoha.com
+Subject: Re: [PATCH net-next v2 1/2] net: airoha: read default PSE reserved
+ pages value before updating
+Message-ID: <20241003133220.GM1310185@kernel.org>
+References: <20241001-airoha-eth-pse-fix-v2-0-9a56cdffd074@kernel.org>
+ <20241001-airoha-eth-pse-fix-v2-1-9a56cdffd074@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20241002182200.15363-3-ville.syrjala@linux.intel.com>
-X-GND-Sasl: louis.chauvet@bootlin.com
+In-Reply-To: <20241001-airoha-eth-pse-fix-v2-1-9a56cdffd074@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241003_053844_741391_30D8A3D5 
-X-CRM114-Status: GOOD (  20.35  )
+X-CRM114-CacheID: sfid-20241003_063230_339811_5E6967FA 
+X-CRM114-Status: GOOD (  10.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,100 +80,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le 02/10/24 - 21:22, Ville Syrjala a écrit :
-> From: Ville Syrjälä <ville.syrjala@linux.intel.com>
+On Tue, Oct 01, 2024 at 12:10:24PM +0200, Lorenzo Bianconi wrote:
+> Store the default value for the number of PSE reserved pages in orig_val
+> at the beginning of airoha_fe_set_pse_oq_rsv routine, before updating it
+> with airoha_fe_set_pse_queue_rsv_pages().
+> Introduce airoha_fe_get_pse_all_rsv utility routine.
 > 
-> Atomic drivers shouldn't be using the legacy state stored
-> directly under drm_crtc. Move that junk into a 'legacy' sub
-> structure to highlight the offenders, of which there are
-> quite a few unfortunately.
-
-Hi,
-
-Do we need to do something particular in an atomic driver except using
-state content?
-
-I proposed some modifications for VKMS bellow. If you think this is good,
-I can send a patch to avoid being an offender :-) I just tested it, and it
-seems to work.
-
-> I'm hoping we could get all these fixed and then declare
-> the legacy state off limits for atomic drivers (which is
-> what did long ago for plane->fb/etc). And maybe eventually
-> turn crtc->legacy into a pointer and only allocate it on
-> legacy drivers.
+> Introduced by commit 23020f049327 ("net: airoha: Introduce ethernet support
+> for EN7581 SoC")
 > 
-> TODO: hwmode should probably go there too but it probably
->       needs a closer look, maybe other stuff too...
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-[...]
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-> diff --git a/drivers/gpu/drm/vkms/vkms_composer.c b/drivers/gpu/drm/vkms/vkms_composer.c
-> index 57a5769fc994..a7f8b1da6e85 100644
-> --- a/drivers/gpu/drm/vkms/vkms_composer.c
-> +++ b/drivers/gpu/drm/vkms/vkms_composer.c
-> @@ -187,7 +187,7 @@ static void blend(struct vkms_writeback_job *wb,
->  
->  	const struct pixel_argb_u16 background_color = { .a = 0xffff };
->  
-> -	size_t crtc_y_limit = crtc_state->base.crtc->mode.vdisplay;
-> +	size_t crtc_y_limit = crtc_state->base.crtc->legacy.mode.vdisplay;
-
-	size_t crtc_y_limit = crtc_state->base.mode.vdisplay;
-
->  	/*
->  	 * The planes are composed line-by-line to avoid heavy memory usage. It is a necessary
-> @@ -270,7 +270,7 @@ static int compose_active_planes(struct vkms_writeback_job *active_wb,
->  	if (WARN_ON(check_format_funcs(crtc_state, active_wb)))
->  		return -EINVAL;
->  
-> -	line_width = crtc_state->base.crtc->mode.hdisplay;
-> +	line_width = crtc_state->base.crtc->legacy.mode.hdisplay;
-
-	line_width = crtc_state->base.mode.hdisplay;
-
->  	stage_buffer.n_pixels = line_width;
->  	output_buffer.n_pixels = line_width;
->  
-> diff --git a/drivers/gpu/drm/vkms/vkms_crtc.c b/drivers/gpu/drm/vkms/vkms_crtc.c
-> index a40295c18b48..780681ea77e4 100644
-> --- a/drivers/gpu/drm/vkms/vkms_crtc.c
-> +++ b/drivers/gpu/drm/vkms/vkms_crtc.c
-> @@ -64,7 +64,7 @@ static int vkms_enable_vblank(struct drm_crtc *crtc)
->  	struct drm_vblank_crtc *vblank = drm_crtc_vblank_crtc(crtc);
->  	struct vkms_output *out = drm_crtc_to_vkms_output(crtc);
->  
-> -	drm_calc_timestamping_constants(crtc, &crtc->mode);
-> +	drm_calc_timestamping_constants(crtc, &crtc->legacy.mode);
-
-	drm_calc_timestamping_constants(crtc, &crtc->state->mode);
-
->  	hrtimer_init(&out->vblank_hrtimer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
->  	out->vblank_hrtimer.function = &vkms_vblank_simulate;
-> diff --git a/drivers/gpu/drm/vkms/vkms_writeback.c b/drivers/gpu/drm/vkms/vkms_writeback.c
-> index bc724cbd5e3a..27164cddb94d 100644
-> --- a/drivers/gpu/drm/vkms/vkms_writeback.c
-> +++ b/drivers/gpu/drm/vkms/vkms_writeback.c
-> @@ -131,8 +131,8 @@ static void vkms_wb_atomic_commit(struct drm_connector *conn,
->  	struct drm_connector_state *conn_state = wb_conn->base.state;
->  	struct vkms_crtc_state *crtc_state = output->composer_state;
->  	struct drm_framebuffer *fb = connector_state->writeback_job->fb;
-> -	u16 crtc_height = crtc_state->base.crtc->mode.vdisplay;
-> -	u16 crtc_width = crtc_state->base.crtc->mode.hdisplay;
-> +	u16 crtc_height = crtc_state->base.crtc->legacy.mode.vdisplay;
-> +	u16 crtc_width = crtc_state->base.crtc->legacy.mode.hdisplay;
-
-	u16 crtc_height = crtc_state->base.mode.vdisplay;
-	u16 crtc_width = crtc_state->base.mode.hdisplay;
-
->  	struct vkms_writeback_job *active_wb;
->  	struct vkms_frame_info *wb_frame_info;
->  	u32 wb_format = fb->format->format;
-
-[...]
-
--- 
-Louis Chauvet, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
 
