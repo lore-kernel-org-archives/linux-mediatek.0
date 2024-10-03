@@ -4,74 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF839CF857C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5278CCF857A
 	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Oct 2024 11:20:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wuUwlPaiyUoJHkHvoihVq0spD14lhXdcPWIWnLpUedI=; b=VpslvVZEgN+2+9XA2Ok8NbI+u+
-	ELwvWAcwvaFdMF3Ki/Itlmq0KpLj6u0fT0DDtJxc4lwtO/L5D0xQ3X/W8SReYWF2uZZa/K7JJ9Muk
-	qql77z79gnUhnyWb93NrpBBbQoIM/ttYGwxbgrONorTR5i+tAvw3R4rt5ZMywpJ6plzjYqs7WVX/I
-	+qMuwv6acFAK6P2+tcXK0BRfngB/3t/h+lhVEAcsUQtRAts3w7i+t03QBRA9kkiRX2n3XdXnEvHJm
-	BGLBXj8pVBMc8zlBMIS7scRCo/6IHigNDcw9IoHhv17ldhURtaae7btVeU4uCRXEeWMU9cHMxAA7b
-	g/Uvo4pw==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=c41nJRYH0CuFqPdC78bvCdogVQBHoK7TTdQjK/E9Gno=; b=kv1b8C0orCLAF9WSUQQQ+VyC5Q
+	WeBIAngBsa1SCCIV/ipCCmljWltWxPGEFh0dUbRPz/agQMYUdsQvFmFJHO8YO22NOT2sGO4PmvM7w
+	OHnSDMS1q9P1z5mA0KL8kmF8hlBCu/Cr+WbA+K1xS0WO/FNjUplfXisQZ5YIZQlslT2XKn6x2b0Ob
+	2t78FIwGI/W23kvHxOknf3dhyt6aiZdrMErOOQO5XzPOQ1Y111HiV293SHXFMYDwueKwybi2mII+B
+	TWVfOAZqeYtwgg2u56inx2yinU1FcCuTb4qg6/HFaCAd/Wl4iYftadddWLijU6c0Ui43BVULnA9Zk
+	Wwg/rFaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1swJsO-00000008tHA-2hW1;
+	id 1swJsO-00000008tGz-149q;
 	Thu, 03 Oct 2024 11:20:08 +0000
 Received: from mgamail.intel.com ([198.175.65.19])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1swJrg-00000008t50-2dx7
-	for linux-mediatek@lists.infradead.org;
-	Thu, 03 Oct 2024 11:19:28 +0000
+	id 1swJrH-00000008stU-0s34;
+	Thu, 03 Oct 2024 11:19:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1727954364; x=1759490364;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=w4FuzTyDGreS0szixpBegUWK/7yzbqINFYrMt9HjXBE=;
-  b=KRiOZAtXQ3jw5/MP4jgV3ZV4agXwPG2tsfFSZidLobZrko4jQhH/20iy
-   0D1MYm42iz2AwnV5+Rz+fSaLkc0By18VOWvrIR4PdpnMajThO/5yizxFN
-   gUZch5Lf6dKT5QDe4lta05Ildd0jRXXooEL1UeiGTuImB6sWyMZ7no3wy
-   jyzaD7LPv/vWboSNbrBNLN+DO+Ze31Q1BsgSRDzEtonPnLiIGH6ndzpsD
-   d0DR1Ms8QlGsvZsOQ/8QwGtb0DUsWIYEX3s8V2qQMLtDH1ARy1OZyIaOx
-   PR+8wWeiJLEfx4Bz0GZR88oFIz3uNsqSnXEJAbpT6FNjuzZl6ry2BSaoE
-   g==;
-X-CSE-ConnectionGUID: uYbi22hbSwGsyyfP4KUowA==
-X-CSE-MsgGUID: r/ORi5y6STW5kM1N3Ckz9A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11213"; a="27013024"
+  t=1727954339; x=1759490339;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=s33xKLkAQRIbAlUPTP5cQcxaqv1POeyGIhVy9Hi8rOI=;
+  b=Xp8uOe5dz6HST0D8A1l4YOjdYH1gT+N/2YGUDCdIIUQAenlhcikkrE3A
+   I3lsG/NDXygDO24ocjcDBf4Kg6LHLWl98SbjhqJy+LmVgQHV7e5FhIR2B
+   M5NNEZiVdZ+/ztSRiTrLpIXO/+7FQQqKZSFpDWAASSICTW+7nbXQeEYJx
+   j+S1lrF/1i4sLWaJbwwO8OG/7suuCiqQh/c23EBhVraZbg4oo2/a+sxYk
+   phMYhCMJhpMY83tEk8bh34yPN+XTTai9h0lsxZHwlmNH1tRVBsP08YcOt
+   DuziS4PxXxJYaJlvjrMekIzRfY/xlC6TwrkFodT/WgwZ+5uulbKbkUaO5
+   Q==;
+X-CSE-ConnectionGUID: Tu5FkiVNQT2JHsqZznzvGw==
+X-CSE-MsgGUID: 6Lm3aJaiR5eyhhpWEDnnSA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11213"; a="27012951"
 X-IronPort-AV: E=Sophos;i="6.11,174,1725346800"; 
-   d="scan'208";a="27013024"
+   d="scan'208";a="27012951"
 Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Oct 2024 04:19:24 -0700
-X-CSE-ConnectionGUID: n+jyGRUXQiylc0o9f28Znw==
-X-CSE-MsgGUID: pL+u723oSLui50F3+/MfPw==
+  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Oct 2024 04:18:56 -0700
+X-CSE-ConnectionGUID: 8n45Wya1R0GbuLQ0RLNqqA==
+X-CSE-MsgGUID: SBXF83x3Qry5MaAdfgh5yQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.11,174,1725346800"; 
-   d="scan'208";a="74423820"
+   d="scan'208";a="74423646"
 Received: from stinkpipe.fi.intel.com (HELO stinkbox) ([10.237.72.74])
-  by fmviesa008.fm.intel.com with SMTP; 03 Oct 2024 04:19:21 -0700
-Received: by stinkbox (sSMTP sendmail emulation); Thu, 03 Oct 2024 14:19:20 +0300
+  by fmviesa008.fm.intel.com with SMTP; 03 Oct 2024 04:18:52 -0700
+Received: by stinkbox (sSMTP sendmail emulation); Thu, 03 Oct 2024 14:18:51 +0300
 From: Ville Syrjala <ville.syrjala@linux.intel.com>
 To: dri-devel@lists.freedesktop.org
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+Cc: Alison Wang <alison.wang@nxp.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
+	linux-amlogic@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Lucas Stach <l.stach@pengutronix.de>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
 	Philipp Zabel <p.zabel@pengutronix.de>,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 09/10] drm/mediatek: Allow build with COMPILE_TEST=y
-Date: Thu,  3 Oct 2024 14:18:50 +0300
-Message-ID: <20241003111851.10453-10-ville.syrjala@linux.intel.com>
+	Russell King <linux@armlinux.org.uk>,
+	Stefan Agner <stefan@agner.ch>,
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Subject: [PATCH v2 00/10] drm: Increase COMPILE_TEST=y coverage
+Date: Thu,  3 Oct 2024 14:18:41 +0300
+Message-ID: <20241003111851.10453-1-ville.syrjala@linux.intel.com>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241003111851.10453-1-ville.syrjala@linux.intel.com>
-References: <20241003111851.10453-1-ville.syrjala@linux.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241003_041924_733518_7AEAD3E6 
-X-CRM114-Status: GOOD (  10.82  )
+X-CRM114-CacheID: sfid-20241003_041859_318793_317BC675 
+X-CRM114-Status: UNSURE (   7.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,33 +94,45 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Ville Syrjälä <ville.syrjala@linux.intel.com>
 
-Allow mediatek to be built with COMPILE_TEST=y for greater
-coverage. Builds fine on x86/x86_64 at least.
+Repost of the stragglers from
+https://patchwork.freedesktop.org/series/132164/
 
+Cc: Alison Wang <alison.wang@nxp.com>
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>
+Cc: linux-amlogic@lists.infradead.org
 Cc: linux-mediatek@lists.infradead.org
-Signed-off-by: Ville Syrjälä <ville.syrjala@linux.intel.com>
----
- drivers/gpu/drm/mediatek/Kconfig | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Cc: Lucas Stach <l.stach@pengutronix.de>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Russell King <linux@armlinux.org.uk>
+Cc: Stefan Agner <stefan@agner.ch>
+Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 
-diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/Kconfig
-index 3d2436272ff2..2e0e7c4079b6 100644
---- a/drivers/gpu/drm/mediatek/Kconfig
-+++ b/drivers/gpu/drm/mediatek/Kconfig
-@@ -2,9 +2,9 @@
- config DRM_MEDIATEK
- 	tristate "DRM Support for Mediatek SoCs"
- 	depends on DRM
--	depends on ARCH_MEDIATEK || (ARM && COMPILE_TEST)
-+	depends on (ARCH_MEDIATEK && ARM) || COMPILE_TEST
- 	depends on COMMON_CLK
--	depends on HAVE_ARM_SMCCC
-+	depends on HAVE_ARM_SMCCC || COMPILE_TEST
- 	depends on OF
- 	depends on MTK_MMSYS
- 	select DRM_CLIENT_SELECTION
+Ville Syrjälä (10):
+  drm/tilcdc: Allow build without __iowmb()
+  drm/tilcdc: Allow build with COMPILE_TEST=y
+  drm/armada: Fix printk arguments
+  drm/armada: Fix armada_debugfs_crtc_reg_write() return type
+  drm/armada: Allow build with COMPILE_TEST=y
+  drm/imx/dcss: Fix 64bit divisions
+  drm/imx/dcss: Allow build with COMPILE_TEST=y
+  drm/fsl-dcu: Allow build with COMPILE_TEST=y
+  drm/mediatek: Allow build with COMPILE_TEST=y
+  drm/meson: Allow build with COMPILE_TEST=y
+
+ drivers/gpu/drm/armada/Kconfig          | 2 +-
+ drivers/gpu/drm/armada/armada_debugfs.c | 2 +-
+ drivers/gpu/drm/armada/armada_gem.c     | 2 +-
+ drivers/gpu/drm/fsl-dcu/Kconfig         | 2 +-
+ drivers/gpu/drm/imx/dcss/Kconfig        | 2 +-
+ drivers/gpu/drm/imx/dcss/dcss-scaler.c  | 4 ++--
+ drivers/gpu/drm/mediatek/Kconfig        | 4 ++--
+ drivers/gpu/drm/meson/Kconfig           | 2 +-
+ drivers/gpu/drm/tilcdc/Kconfig          | 2 +-
+ drivers/gpu/drm/tilcdc/tilcdc_regs.h    | 3 +++
+ 10 files changed, 14 insertions(+), 11 deletions(-)
+
 -- 
 2.45.2
 
