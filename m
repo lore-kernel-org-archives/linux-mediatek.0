@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5B1DCF855A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Oct 2024 07:09:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B551CF855A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Oct 2024 07:11:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/d/o7lkyrEK7MdTXzGL48vZFksOeTQ6shmZULA6Dpk0=; b=WAHRH6npV0vA8o
-	UrCIntahdSkdUL85OsI+KVpVlRtot5SUhxIIMfnttUJ/opXeqEvXuWEIg+g/ZHpkPnmUgKCgvC0yg
-	R83XfKSfKeSHIMGdxdLAydYfE7zgr7ovZh3K+QBITCR+60k3tbHwYAuKY38nMp9igxhpfvZViEd1S
-	zMYSFkTm1y/N5LqH7NpRqkPITqOfcUoepKpLXFjiH7ToWGoAvYGL+NlI9JyXUT11Sil+GETADELqk
-	erZXNm9lFRFkc1xAVG5LGFiyYFGnE9xPmtS1v1n+3qULvt4WIDPYDs6F633mquySU2GaRxKAey9yr
-	ms3Z3dsFDiEBIE8Qtdlg==;
+	List-Owner; bh=3DZWdl8216aZT8y3IXtxjhUrWkN3hJN2Yt08JxwRcJQ=; b=U9/OVCp/ZqJLh3
+	l6jm+AalWiA430GqTNo1tUG0FZxaIyAyCx1gK4jeaYs9y5OqPXK1ELL/GqYXNtU6cB8hAc0Hjs+sm
+	krYguntpG4+4HAGtiQDdoA/052YUc56lBcb+h+lpQo1nWqtv8DALyDk4xiYnp9c3OdBZbd90T9JLw
+	cMcWY9ETIztMYFvRS3MfZOE8wXuqT20mspMj0hTTUubUzDGHv+KFt65J//ySkHuHmFDD7EOCVyeaa
+	C2LGbbfFKsQ3D+DhDEg/ZDeEpQZw98bE/+zF9xfWqz2OmVhI+JqrenAktIZwVs3s5qXGePxjD9NjE
+	CTc5mXBYInW3JSCstSzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1swFxh-00000008LzJ-1TAH;
-	Thu, 03 Oct 2024 07:09:21 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1swG0A-00000008MZC-0cdN;
+	Thu, 03 Oct 2024 07:11:54 +0000
+Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1swFqa-00000008KV3-2hp8
+	id 1swFqd-00000008KWZ-1tm7
 	for linux-mediatek@lists.infradead.org;
-	Thu, 03 Oct 2024 07:02:02 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-718d606726cso490535b3a.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 03 Oct 2024 00:02:00 -0700 (PDT)
+	Thu, 03 Oct 2024 07:02:06 +0000
+Received: by mail-pg1-x534.google.com with SMTP id 41be03b00d2f7-7cd8803fe0aso391994a12.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 03 Oct 2024 00:02:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1727938920; x=1728543720; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1727938922; x=1728543722; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=/d/o7lkyrEK7MdTXzGL48vZFksOeTQ6shmZULA6Dpk0=;
-        b=YOo37oJ7ZGD4mO9VShzZHXf3ceQ/AJJgxPLZo1+k/AHI9DzeHSGpK45w3LgNkpN6sH
-         JIeLMa2593vikBW/5BQ5o5D3fYgtG6ZruZg0t3FDXxwENZSF0aQWoOqsUuXOXgiLZedB
-         bgPozCvOLIlolkox6guCODbCQlznn5g6wPRQ8=
+        bh=3DZWdl8216aZT8y3IXtxjhUrWkN3hJN2Yt08JxwRcJQ=;
+        b=nkINTfAa33JZCnwLCwTbptn5a8lGEZbALzgTZv4/Uo1fVx2HfKt5JgB35dW2e+rsuK
+         Y4+D8134LvUtofe85AnnRQDfAlzb19FZNrRimG5mOqexkzkUijNMOFx5kJ51/pqDT8UE
+         GWm/gr/yjjlJspy7DGDkq++3FaLeyoREjYZms=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727938920; x=1728543720;
+        d=1e100.net; s=20230601; t=1727938922; x=1728543722;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=/d/o7lkyrEK7MdTXzGL48vZFksOeTQ6shmZULA6Dpk0=;
-        b=gxQYAo+IfA0DbpRgt6YwJAhEopu0vyZUfXaTwpMeIbN4utRywvfuPOiR6gnhVunNVd
-         4/0/I1K4jtaEcex+A/1TQbyxFAZKslknExFi60mgkaDsd0Fm04KlLcCK9p/0/fEeSaJR
-         yQZaQFoIoUHnpzh/280y+X+U5ODBcn9h7dZ0fowEHSWuUOBwb3Bs1tTckjnx0fNMJTGv
-         YkhlpzMjPh+nU57g1ev2sfJ8JFC2BYEeHffp9rb3MTwIBlf10rR5qL7/NEsLyvqUDqYn
-         GUSykVpzu7S96Q5A+XMs1n6t0KvA2SbgWuTW1bVdV4iuI3/+RIHFb2yr0yACA+4mcYyk
-         cqGw==
-X-Forwarded-Encrypted: i=1; AJvYcCXJbT19m5+2jvzaesjqu7A9/o1a+Qa4JZDjvq+bWA+v6w929MBS//gF8cN3QJTZmWYlSGt0oMBf4NnMuELnow==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwuH5MmSrx+lNoCeHaoGpickMf5bxftTVeaMCSVjoFnCgZbGadT
-	19Zh+zQ9Ha96qjoBhns9CWbdClJhusc3KI343tl+snPAShARCZDYKT3aN6YQnQ==
-X-Google-Smtp-Source: AGHT+IFh1+pRTF5QP2Z4S/FKW/7aJxh3DsNrBR5NMDBZX20D5QgF1Et4sk3LUOF99xcybVx+7A1zsw==
-X-Received: by 2002:a05:6a00:a14:b0:717:81b3:4c7a with SMTP id d2e1a72fcca58-71dc5d6e0dcmr9516899b3a.24.1727938919636;
-        Thu, 03 Oct 2024 00:01:59 -0700 (PDT)
+        bh=3DZWdl8216aZT8y3IXtxjhUrWkN3hJN2Yt08JxwRcJQ=;
+        b=uMUavflWCSc2lOh7ocz7daIBQWZOBJfVVgNTCxyaaDVsl/sPDtQ3jvo1q/FMKiUlrq
+         FJ3mBiCrFP48muUIzm0AEBNPkGqLtTWj9X0vBc6R0d7aJtsFgoD+Z4u54gtzsxqNtWic
+         gVmo2suLl1EFbTitU2sFqm/AbSsh5ONA9b35GQbdLSLb4Fg2nnUPfKm2sZGotzPRQvm4
+         2ICYJ67v/dUlq7DEEvXrOSWHp6AdaJpk3QAliMxOhTSS6D0S9afhtgbnCCU2hOgxUxr1
+         O26mWZpgrRyzyIPdkHVo5tEyKLwFvVQL5p6sHyRfJhaN0UwaO46ojNsKbYvGsfcPpKUs
+         rCxA==
+X-Forwarded-Encrypted: i=1; AJvYcCUFhRdK4j9zF7Jt0Ubj156yHpcUSbmUrplzym8gmrh5zJiJIwZKq2QlBKdyahhmU+0mTo7OrsxRCc+F/HTcJA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzdZvxg0zP9OIefeusKWBKZ2PDgrsHP/k8Ad9RPQYJHCALytSxj
+	dLByF88nPLa9XaCRANbDqK5w0KhPa44S/O6fL0Drv2qlMWHR5t0yFM/0hF/jGw==
+X-Google-Smtp-Source: AGHT+IE2SFaqb1OLYR+xEq8sUkTQwvxY9SfiKLM3jT+7mDigbRjSypSLlCdkbSzQtSVqhSe3ATAMiQ==
+X-Received: by 2002:a05:6a20:c886:b0:1cf:2862:beca with SMTP id adf61e73a8af0-1d5db136c5amr8275656637.13.1727938922335;
+        Thu, 03 Oct 2024 00:02:02 -0700 (PDT)
 Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:3bd0:d371:4a25:3576])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71dd9d8e473sm633782b3a.81.2024.10.03.00.01.57
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71dd9d8e473sm633782b3a.81.2024.10.03.00.02.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Oct 2024 00:01:59 -0700 (PDT)
+        Thu, 03 Oct 2024 00:02:01 -0700 (PDT)
 From: Fei Shao <fshao@chromium.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v2 5/9] arm64: dts: mediatek: mt8188: Add JPEG decoder and encoder nodes
-Date: Thu,  3 Oct 2024 14:59:59 +0800
-Message-ID: <20241003070139.1461472-6-fshao@chromium.org>
+Subject: [PATCH v2 6/9] arm64: dts: mediatek: mt8188: Add display nodes for vdosys0
+Date: Thu,  3 Oct 2024 15:00:00 +0800
+Message-ID: <20241003070139.1461472-7-fshao@chromium.org>
 X-Mailer: git-send-email 2.46.1.824.gd892dcdcdd-goog
 In-Reply-To: <20241003070139.1461472-1-fshao@chromium.org>
 References: <20241003070139.1461472-1-fshao@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241003_000200_726962_6209FD56 
-X-CRM114-Status: UNSURE (   8.55  )
+X-CRM114-CacheID: sfid-20241003_000203_535725_D0E672D6 
+X-CRM114-Status: UNSURE (   9.57  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,57 +90,127 @@ Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetre
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add JPEG encoder and decoder nodes for hardware-accelerated JPEG
-decoding and encoding support.
+Add the vdosys0 display nodes to support the internal display pipeline.
 
 Signed-off-by: Fei Shao <fshao@chromium.org>
 ---
 
 (no changes since v1)
 
- arch/arm64/boot/dts/mediatek/mt8188.dtsi | 29 ++++++++++++++++++++++++
- 1 file changed, 29 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8188.dtsi | 86 ++++++++++++++++++++++++
+ 1 file changed, 86 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-index 49d4180595a9..0eb57f95bbaf 100644
+index 0eb57f95bbaf..c4026de18fd8 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-@@ -2317,6 +2317,35 @@ video_encoder: video-encoder@1a020000 {
- 			mediatek,scp = <&scp>;
+@@ -26,6 +26,7 @@ / {
+ 	aliases {
+ 		gce0 = &gce0;
+ 		gce1 = &gce1;
++		mutex0 = &mutex0;
+ 	};
+ 
+ 	cpus {
+@@ -2346,6 +2347,71 @@ jpeg_decoder: jpeg-decoder@1a040000 {
+ 			power-domains = <&spm MT8188_POWER_DOMAIN_VDEC0>;
  		};
  
-+		jpeg_encoder: jpeg-encoder@1a030000 {
-+			compatible = "mediatek,mt8188-jpgenc", "mediatek,mtk-jpgenc";
-+			reg = <0 0x1a030000 0 0x10000>;
-+			clocks = <&vencsys CLK_VENC1_JPGENC>;
-+			clock-names = "jpgenc";
-+			interrupts = <GIC_SPI 354 IRQ_TYPE_LEVEL_HIGH 0>;
-+			iommus = <&vdo_iommu M4U_PORT_L19_JPGENC_Y_RDMA>,
-+				 <&vdo_iommu M4U_PORT_L19_JPGENC_C_RDMA>,
-+				 <&vdo_iommu M4U_PORT_L19_JPGENC_Q_TABLE>,
-+				 <&vdo_iommu M4U_PORT_L19_JPGENC_BSDMA>;
-+			power-domains = <&spm MT8188_POWER_DOMAIN_VENC>;
++		ovl0: ovl@1c000000 {
++			compatible = "mediatek,mt8188-disp-ovl", "mediatek,mt8183-disp-ovl";
++			reg = <0 0x1c000000 0 0x1000>;
++			clocks = <&vdosys0 CLK_VDO0_DISP_OVL0>;
++			interrupts = <GIC_SPI 636 IRQ_TYPE_LEVEL_HIGH 0>;
++			iommus = <&vdo_iommu M4U_PORT_L0_DISP_OVL0_RDMA0>;
++			power-domains = <&spm MT8188_POWER_DOMAIN_VDOSYS0>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1c00XXXX 0x0000 0x1000>;
 +		};
 +
-+		jpeg_decoder: jpeg-decoder@1a040000 {
-+			compatible = "mediatek,mt8188-jpgdec", "mediatek,mt2701-jpgdec";
-+			reg = <0 0x1a040000 0 0x10000>;
-+			clocks = <&vencsys CLK_VENC1_LARB>,
-+				 <&vencsys CLK_VENC1_JPGDEC>;
-+			clock-names = "jpgdec-smi", "jpgdec";
-+			interrupts = <GIC_SPI 355 IRQ_TYPE_LEVEL_HIGH 0>;
-+			iommus = <&vdo_iommu M4U_PORT_L19_JPGDEC_WDMA_0>,
-+				 <&vdo_iommu M4U_PORT_L19_JPGDEC_BSDMA_0>,
-+				 <&vdo_iommu M4U_PORT_L19_JPGDEC_WDMA_1>,
-+				 <&vdo_iommu M4U_PORT_L19_JPGDEC_BSDMA_1>,
-+				 <&vdo_iommu M4U_PORT_L19_JPGDEC_HUFF_OFFSET_1>,
-+				 <&vdo_iommu M4U_PORT_L19_JPGDEC_HUFF_OFFSET_0>;
-+			power-domains = <&spm MT8188_POWER_DOMAIN_VDEC0>;
++		rdma0: rdma@1c002000 {
++			compatible = "mediatek,mt8188-disp-rdma", "mediatek,mt8195-disp-rdma";
++			reg = <0 0x1c002000 0 0x1000>;
++			clocks = <&vdosys0 CLK_VDO0_DISP_RDMA0>;
++			interrupts = <GIC_SPI 638 IRQ_TYPE_LEVEL_HIGH 0>;
++			iommus = <&vdo_iommu M4U_PORT_L1_DISP_RDMA0>;
++			power-domains = <&spm MT8188_POWER_DOMAIN_VDOSYS0>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1c00XXXX 0x2000 0x1000>;
++		};
++
++		color0: color@1c003000 {
++			compatible = "mediatek,mt8188-disp-color", "mediatek,mt8173-disp-color";
++			reg = <0 0x1c003000 0 0x1000>;
++			clocks = <&vdosys0 CLK_VDO0_DISP_COLOR0>;
++			interrupts = <GIC_SPI 639 IRQ_TYPE_LEVEL_HIGH 0>;
++			power-domains = <&spm MT8188_POWER_DOMAIN_VDOSYS0>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1c00XXXX 0x3000 0x1000>;
++		};
++
++		ccorr0: ccorr@1c004000 {
++			compatible = "mediatek,mt8188-disp-ccorr", "mediatek,mt8192-disp-ccorr";
++			reg = <0 0x1c004000 0 0x1000>;
++			clocks = <&vdosys0 CLK_VDO0_DISP_CCORR0>;
++			interrupts = <GIC_SPI 640 IRQ_TYPE_LEVEL_HIGH 0>;
++			power-domains = <&spm MT8188_POWER_DOMAIN_VDOSYS0>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1c00XXXX 0x4000 0x1000>;
++		};
++
++		aal0: aal@1c005000 {
++			compatible = "mediatek,mt8188-disp-aal", "mediatek,mt8183-disp-aal";
++			reg = <0 0x1c005000 0 0x1000>;
++			clocks = <&vdosys0 CLK_VDO0_DISP_AAL0>;
++			interrupts = <GIC_SPI 641 IRQ_TYPE_LEVEL_HIGH 0>;
++			power-domains = <&spm MT8188_POWER_DOMAIN_VDOSYS0>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1c00XXXX 0x5000 0x1000>;
++		};
++
++		gamma0: gamma@1c006000 {
++			compatible = "mediatek,mt8188-disp-gamma", "mediatek,mt8195-disp-gamma";
++			reg = <0 0x1c006000 0 0x1000>;
++			clocks = <&vdosys0 CLK_VDO0_DISP_GAMMA0>;
++			interrupts = <GIC_SPI 642 IRQ_TYPE_LEVEL_HIGH 0>;
++			power-domains = <&spm MT8188_POWER_DOMAIN_VDOSYS0>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1c00XXXX 0x6000 0x1000>;
++		};
++
++		dither0: dither@1c007000 {
++			compatible = "mediatek,mt8188-disp-dither", "mediatek,mt8183-disp-dither";
++			reg = <0 0x1c007000 0 0x1000>;
++			clocks = <&vdosys0 CLK_VDO0_DISP_DITHER0>;
++			interrupts = <GIC_SPI 643 IRQ_TYPE_LEVEL_HIGH 0>;
++			power-domains = <&spm MT8188_POWER_DOMAIN_VDOSYS0>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1c00XXXX 0x7000 0x1000>;
 +		};
 +
  		disp_dsi: dsi@1c008000 {
  			compatible = "mediatek,mt8188-dsi";
  			reg = <0 0x1c008000 0 0x1000>;
+@@ -2361,6 +2427,26 @@ disp_dsi: dsi@1c008000 {
+ 			status = "disabled";
+ 		};
+ 
++		mutex0: mutex@1c016000 {
++			compatible = "mediatek,mt8188-disp-mutex";
++			reg = <0 0x1c016000 0 0x1000>;
++			clocks = <&vdosys0 CLK_VDO0_DISP_MUTEX0>;
++			interrupts = <GIC_SPI 658 IRQ_TYPE_LEVEL_HIGH 0>;
++			power-domains = <&spm MT8188_POWER_DOMAIN_VDOSYS0>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1c01XXXX 0x6000 0x1000>;
++			mediatek,gce-events = <CMDQ_EVENT_VDO0_DISP_STREAM_DONE_0>;
++		};
++
++		postmask0: postmask@1c01a000 {
++			compatible = "mediatek,mt8188-disp-postmask",
++				     "mediatek,mt8192-disp-postmask";
++			reg = <0 0x1c01a000 0 0x1000>;
++			clocks = <&vdosys0 CLK_VDO0_DISP_POSTMASK0>;
++			interrupts = <GIC_SPI 661 IRQ_TYPE_LEVEL_HIGH 0>;
++			power-domains = <&spm MT8188_POWER_DOMAIN_VDOSYS0>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1c01XXXX 0xa000 0x1000>;
++		};
++
+ 		vdosys0: syscon@1c01d000 {
+ 			compatible = "mediatek,mt8188-vdosys0", "syscon";
+ 			reg = <0 0x1c01d000 0 0x1000>;
 -- 
 2.46.1.824.gd892dcdcdd-goog
 
