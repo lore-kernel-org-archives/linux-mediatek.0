@@ -4,103 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82D1BCF34A9
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Oct 2024 15:20:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D5C6CF34B6
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Oct 2024 15:29:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=stIg9esjqTBVOCrbixO0axas16PaKZ9mDSWypU0VeBY=; b=wco2H1gFaZzte+b+Q9793MjdEk
-	HIyZ3VBD/0w18r+j5JeAyjWjC7cCAb03666gzlNf8w5gm/unECijHP1Ia6Qj2I9/S1MpQ0RpHnePr
-	wSfZUyBKifDvCOwfTMBx7UUZOfjqV1H7FfeaIYA5DnpOwB+tWhJkzyYrnXEKgnWNjcKsXwvl6rI+6
-	zaM/8PfwtQAvstcus4O0TumPbYm3BpmRkWUCivdF+Oi4uxBe1eWYRz7e1+Mkbh4a4MOPqorKlbYeJ
-	80nppZVvOrgR2RW4buHEcpOSpEYUbNb2x2BuOXhhAnGSOdc5Ggx8/zD8zSvCAbrsLyNtXWUUK2A/x
-	zdX8tgsQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=y2NXDuG5BkkZuBBX1kYfPh1qTZEgllKeKRyyOYEcj6M=; b=Lo1+tNPtWXr9fJIRwvtwwZwNjY
+	BJDDe509aRCmFZvXtvpr8k2sTaVeKsHNzMDZ+7e7NNen5SUxZ/6KDX6h1occrtRVb9clU60ZUJwkZ
+	oB+JTpZ/sx0OVxMCFv3PpdJR1yo/5acebNdWp3BhreRYALV54EhjuEjljuoKsBHF3602qIFfnrzqU
+	/SKaep92BsDuIKSPrXv4vb5xTyY7dqdkLnVUtmn57A+6Kju4BJruNNEnVrLFYkP8/J9MppuHXeX6/
+	8Dg8MS/skY3exthyiLXhZQfZyFgQU+5Swyrgp651pLqaw9v0eDmrk07K9GUrWwfO5Qn0FLQr2eaZX
+	UHoOy0Jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1swNci-00000009YiR-0yub;
-	Thu, 03 Oct 2024 15:20:12 +0000
-Received: from mail-qk1-x744.google.com ([2607:f8b0:4864:20::744])
+	id 1swNle-00000009b5P-0P17;
+	Thu, 03 Oct 2024 15:29:26 +0000
+Received: from mgamail.intel.com ([192.198.163.19])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1swNbN-00000009YDS-1vIO;
-	Thu, 03 Oct 2024 15:18:50 +0000
-Received: by mail-qk1-x744.google.com with SMTP id af79cd13be357-7a99de9beb2so61160985a.3;
-        Thu, 03 Oct 2024 08:18:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1727968728; x=1728573528; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=stIg9esjqTBVOCrbixO0axas16PaKZ9mDSWypU0VeBY=;
-        b=Q4iN+O442jQDUpOGvsTZJrZfaWanaobuI4vV+fb3YA57uDWJ+da4QDHESITAJvWSRs
-         VRVagFu72pQ5h5dNyEoSzIcI2oyPlRHJ4YcjzOmkALtkEK1OugOOJzPO8A/l1Esdy9Mh
-         ytY6W0g7HjgDJDlQibreAF7PWABPbzH/fIbJyYi1BTErOC0gjeuULfM7Qu8fbrJTHg68
-         sWRS8SpvkN9y53xqeMiXFE1nnyDuQhwxBAh861A+vjKvVa5OGN+Qz7RDbBou5+U0plYV
-         LDPPioz9/z1hIIzBqdelRXXijyqR1gcf0dECzl74CPUQEVXUiMTqAXu4Ua50AqA62JI7
-         t+iA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727968728; x=1728573528;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=stIg9esjqTBVOCrbixO0axas16PaKZ9mDSWypU0VeBY=;
-        b=lTMJJ/dd+cLjhoSe2N2By1CnsjAlC2m779QZDyAOHPLlRdEWJOg9NXSpE+nx2+FYhr
-         pASxizE2/b/yN+5ezUpNH86PAEVG8oJe4jenuJftRlSb4AnmOFgs4+F+nsdfYOZZBRWI
-         JIkY52LEruKmvUIPSbtvOXQbhdrZO4L9OGi4U/rnDhUNyfHh8e48DnTjuieqLKKPfqSL
-         BGxUQAYe1kvObkOjBrMngM87WcZhzAUDNccxCugiwbvKqRaGf3xib5l71rUDkxYu7t6c
-         mxbjMDU5+MwvMESM7l6vfzzUv+xaXhyq0X5/s+9FfDA/e8aszHZXaifAzd3feSqJu2TE
-         6SuA==
-X-Forwarded-Encrypted: i=1; AJvYcCWhwi159aasCqkH9V5Rol5nhRXscEsHsmIfahHHHbrOJs32o9g36NGTXJ2XgxN6VONqqOSuKafksQivvWYOukI=@lists.infradead.org, AJvYcCX1+gNQ0LUKUr0ujrmfRwx723oMMEGO2Patay3UsPnNcbDyB9Eoxu/+jjsDKKgm6METt4A3ne2yQwbyg0uMpJJD@lists.infradead.org
-X-Gm-Message-State: AOJu0YwBdHlwonc6UNtXwVC+a++7zQOQra4WC59Q91CCNqHAp6ZhL+G7
-	P3fIELeBzX5WHctRspLQzGIUnl4tIlKgM1neKrDKhPXBsGp/a/Am
-X-Google-Smtp-Source: AGHT+IEEFCsn4Q8lDCX9rG6BVsdQIU3ZEKq1t0MeNAyWegDJjg27MiEV03EeXDXAe5GTZPR/e/AgeQ==
-X-Received: by 2002:a05:620a:440b:b0:7a9:c406:eebd with SMTP id af79cd13be357-7ae62727a81mr1091650785a.42.1727968727726;
-        Thu, 03 Oct 2024 08:18:47 -0700 (PDT)
-Received: from localhost.localdomain (mobile-130-126-255-54.near.illinois.edu. [130.126.255.54])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7ae6b39a497sm58710985a.37.2024.10.03.08.18.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Oct 2024 08:18:47 -0700 (PDT)
-From: Gax-c <zichenxie0106@gmail.com>
-To: krzk@kernel.org,
-	nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	kvalo@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	johannes.berg@intel.com,
-	quic_adisi@quicinc.com,
-	deren.wu@mediatek.com,
-	chui-hao.chiu@mediatek.com,
-	mingyen.hsieh@mediatek.com,
-	howard-yh.hsu@mediatek.com,
-	StanleyYP.Wang@mediatek.com,
-	allen.ye@mediatek.com,
-	benjamin-jw.lin@mediatek.com,
-	Bo.Jiao@mediatek.com,
-	evelyn.tsai@mediatek.com,
-	meichia.chiu@mediatek.com
-Cc: linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1swNlb-00000009b2E-14Yt;
+	Thu, 03 Oct 2024 15:29:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1727969363; x=1759505363;
+  h=date:from:to:subject:message-id:references:mime-version:
+   content-transfer-encoding:in-reply-to;
+  bh=YvquIwwg5/j4zuorAq7NmB4oxpw4k5D2MxcNq7+7jVA=;
+  b=f9tqEh7DX5gqmodG0Fd2Z47pnNQSrIT7ahjbarJmCziDTeQ9RBHEUlln
+   kKYdrHWCNHuL0zDy2X9sGOmt2tfftlqQlU3+8a5zd7Omlug7UgPrAEN+V
+   HZNT5EFlWZRpdm6g0ohrgKCJldE6P+Olnn4ptoOwmvNRWxDCA1ZIfkqCS
+   rtQrmKED6vmcadUimPF2ek77ZosYjb2R6VZFYhR3DlR2Tuurca3fojdTs
+   SMSXWEiePV95z3T5It1vnPqnJqDLbid3M5K+ko2sJlL5ysO50+8c/JfYs
+   BHIgCY8yBBF87b6oqEgTi5TRWPTR7My2U/RG+61oDkW5hOQzNP+0U52NW
+   w==;
+X-CSE-ConnectionGUID: UUJ6apwQQraiYu8oyZ7mgQ==
+X-CSE-MsgGUID: ZwsVvwwGQKiki7i88T8PZQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11214"; a="26680403"
+X-IronPort-AV: E=Sophos;i="6.11,174,1725346800"; 
+   d="scan'208";a="26680403"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Oct 2024 08:29:18 -0700
+X-CSE-ConnectionGUID: R4ZdAm2cSWCWdcBvo+HW5w==
+X-CSE-MsgGUID: Rg93cpzSR3e/8YcpWOq3jg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,174,1725346800"; 
+   d="scan'208";a="74496623"
+Received: from stinkpipe.fi.intel.com (HELO stinkbox) ([10.237.72.74])
+  by fmviesa008.fm.intel.com with SMTP; 03 Oct 2024 08:29:11 -0700
+Received: by stinkbox (sSMTP sendmail emulation); Thu, 03 Oct 2024 18:29:10 +0300
+Date: Thu, 3 Oct 2024 18:29:10 +0300
+From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
+To: dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Inki Dae <inki.dae@samsung.com>,
+	Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Sandy Huang <hjc@rock-chips.com>, Jyri Sarha <jyri.sarha@iki.fi>,
+	Alexey Brodkin <abrodkin@synopsys.com>,
+	Hans de Goede <hdegoede@redhat.com>,
+	=?iso-8859-1?Q?Ma=EDra?= Canal <mairacanal@riseup.net>,
+	Zack Rusin <zack.rusin@broadcom.com>, amd-gfx@lists.freedesktop.org,
 	linux-mediatek@lists.infradead.org,
-	zzjas98@gmail.com,
-	chenyuan0y@gmail.com,
-	Zichen Xie <zichenxie0106@gmail.com>
-Subject: [PATCH] wifi: mt76: Fix NULL Dereference caused by mt76_connac_get_he_phy_cap()
-Date: Thu,  3 Oct 2024 10:18:20 -0500
-Message-Id: <20241003151819.7977-1-zichenxie0106@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <5d69448b-10ff-49b6-bfd0-6146ef04a0cc@kernel.org>
-References: <5d69448b-10ff-49b6-bfd0-6146ef04a0cc@kernel.org>
+	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	freedreno@lists.freedesktop.org, nouveau@lists.freedesktop.org,
+	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org,
+	linux-renesas-soc@vger.kernel.org, xen-devel@lists.xenproject.org
+Subject: Re: [PATCH 2/2] drm: Move crtc->{x, y, mode, enabled} to legacy
+ sub-structure
+Message-ID: <Zv64RktMPv2rpCZf@intel.com>
+References: <20241002182200.15363-1-ville.syrjala@linux.intel.com>
+ <20241002182200.15363-3-ville.syrjala@linux.intel.com>
+ <Zv6QF2EmIcogtlLA@louis-chauvet-laptop>
+ <Zv6gSGMXZZARf3oV@intel.com>
+ <Zv6zN7Go_XG44P2-@louis-chauvet-laptop>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <Zv6zN7Go_XG44P2-@louis-chauvet-laptop>
+X-Patchwork-Hint: comment
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241003_081849_510687_1E7780F6 
-X-CRM114-Status: GOOD (  10.05  )
+X-CRM114-CacheID: sfid-20241003_082923_402184_90CA5346 
+X-CRM114-Status: GOOD (  22.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,72 +103,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Zichen Xie <zichenxie0106@gmail.com>
+On Thu, Oct 03, 2024 at 05:07:35PM +0200, Louis Chauvet wrote:
+> 
+> > > > diff --git a/drivers/gpu/drm/vkms/vkms_crtc.c b/drivers/gpu/drm/vkms/vkms_crtc.c
+> > > > index a40295c18b48..780681ea77e4 100644
+> > > > --- a/drivers/gpu/drm/vkms/vkms_crtc.c
+> > > > +++ b/drivers/gpu/drm/vkms/vkms_crtc.c
+> > > > @@ -64,7 +64,7 @@ static int vkms_enable_vblank(struct drm_crtc *crtc)
+> > > >  	struct drm_vblank_crtc *vblank = drm_crtc_vblank_crtc(crtc);
+> > > >  	struct vkms_output *out = drm_crtc_to_vkms_output(crtc);
+> > > >  
+> > > > -	drm_calc_timestamping_constants(crtc, &crtc->mode);
+> > > > +	drm_calc_timestamping_constants(crtc, &crtc->legacy.mode);
+> > > 
+> > > 	drm_calc_timestamping_constants(crtc, &crtc->state->mode);
+> > 
+> > This one doesn't look safe. You want to call that during your atomic
+> > commit already.
+> > 
+> 
+> This was already not safe with the previous implementation? Or it is only 
+> unsafe because now I use state->mode instead of legacy.mode?
 
-mt76_connac_get_he_phy_cap() may return a NULL pointer,
-leading to NULL Pointer Dereference.
-Add a NULL check for the returned pointer.
+Yeah, if you want to look at obj->state then you need the corresponding
+lock.
 
-Fixes: a5c372f77aa7 ("wifi: mt76: mt7925: extend mt7925_mcu_bss_he_tlv for per-link BSS")
-Fixes: e6d557a78b60 ("mt76: mt7915: rely on mt76_connac_get_phy utilities")
-Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
-Signed-off-by: Zichen Xie <zichenxie0106@gmail.com>
----
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 5 +++++
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 2 ++
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 2 ++
- 3 files changed, 9 insertions(+)
+obj->state is also not necessarily the correct state you want because
+a parallel commit could have already swapped in a new state but the
+hardware is still on the old state.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 87d0dd040001..762be3a37228 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -551,6 +551,8 @@ mt7915_mcu_bss_he_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
- 	struct tlv *tlv;
- 
- 	cap = mt76_connac_get_he_phy_cap(phy->mt76, vif);
-+	if (!cap)
-+		return;
- 
- 	tlv = mt76_connac_mcu_add_tlv(skb, BSS_INFO_HE_BASIC, sizeof(*he));
- 
-@@ -1145,6 +1147,9 @@ mt7915_mcu_sta_bfer_he(struct ieee80211_sta *sta, struct ieee80211_vif *vif,
- 	u8 nss_mcs = mt7915_mcu_get_sta_nss(mcs_map);
- 	u8 snd_dim, sts;
- 
-+	if (!vc)
-+		return;
-+
- 	bf->tx_mode = MT_PHY_TYPE_HE_SU;
- 
- 	mt7915_mcu_sta_sounding_rate(bf);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 748ea6adbc6b..55e4cda2f20f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -2508,6 +2508,8 @@ mt7925_mcu_bss_he_tlv(struct sk_buff *skb, struct ieee80211_bss_conf *link_conf,
- 	struct tlv *tlv;
- 
- 	cap = mt76_connac_get_he_phy_cap(phy->mt76, link_conf->vif);
-+	if (!cap)
-+		return;
- 
- 	tlv = mt76_connac_mcu_add_tlv(skb, UNI_BSS_INFO_HE_BASIC, sizeof(*he));
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index 6c445a9dbc03..55bb2d0e67e5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -798,6 +798,8 @@ mt7996_mcu_bss_he_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
- 	struct tlv *tlv;
- 
- 	cap = mt76_connac_get_he_phy_cap(phy->mt76, vif);
-+	if (!cap)
-+		return;
- 
- 	tlv = mt7996_mcu_add_uni_tlv(skb, UNI_BSS_INFO_HE_BASIC, sizeof(*he));
- 
+Basically 99.9% of code should never even look at obj->state, and
+instead should always use the for_each_new_<obj>_in_state()
+and drm_atomic_get_new_<obj>_state() stuff. Currently that is a
+pipe dream though because a lot of drivers haven't been fixed to
+do things properly. If we ever manage to fix everything then we
+could remove the stall hacks from drm_atomic_helper_swap_state()
+and allow a commit pipeline of arbitrary length.
+
+> 
+> After inspecting the code, I think I don't need to call it as:
+> 
+> In `vkms_atomic_commit_tail` (used in 
+> `@vkms_mode_config_helpers.atomic_commit_tail`), we call 
+> `drm_atomic_helper_commit_modeset_disables`, which call 
+> `drm_atomic_helper_calc_timestamping_constants` which call 
+> `drm_calc_timestamping_constants` for every CRTC.
+
+Slightly odd place for it, but I think that's just because it was
+originally part of drm_atomic_helper_update_legacy_modeset_state()
+and I didn't bother looking for a better home for it when I split
+it out. But seems like it should work fine as is.
+
+> 
+> I tested kms_vblank, all of them are SUCCESS/SKIP, do you know other tests 
+> that can trigger bugs?
+
+You would explicitly have to race commits against vblank_enable.
+Could of course sprinkle sleep()s around to widen the race window
+if you're really keen to hit it.
+
 -- 
-2.25.1
-
+Ville Syrjälä
+Intel
 
