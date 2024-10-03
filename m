@@ -4,68 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70135CF34B0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Oct 2024 16:08:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1476CF34BD
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Oct 2024 18:11:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=whn+Cx3dK6wsTxoow/LmLdI8x1w4urJzWvrD3UPss5c=; b=Q4UBoi6+7uvd+VxXSgHczZWQHn
-	TJOe/L0nXrfzh2siL5iZu/fy1AKWVcTy3bxYicOppy1UUwvrlb21OPke2BMZt+CIg+X+y43OgO9b0
-	ulZELbNo3L8ud0OrL1HOnNCqyajBjwqmI5uAVbID3J9eVz4X98bqlOURi0QsTuWSKxwpBij79QEXI
-	c6atn9oYM7aqtzwi9TuHexi9Rr16PO/1ov10+j/dgtiD08OTsMlwDIBQ2E7yEPPDTC/uIgkMx13Ka
-	cfnCMvu/Bu9bm5Xpoeba7KSMqS3NgOCZ8PAqbbXEGNaWfmQd5VZKQ3SiDJEhgYi+fynw5IpBkDGKl
-	d/+SXT/w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=stIg9esjqTBVOCrbixO0axas16PaKZ9mDSWypU0VeBY=; b=ld3B2MCLIp0IocRl06Uch1uJ7c
+	wre0GPGK95N5pBSWGFjGM6EhgUlbNCo0fzpEDzKt9HKtaqKUXef92zT1rOfF+PX/87xjHIiNilAFT
+	9Ewn6R+nPI5m/yHNICXLCRLaD71eZHqx3flnu/Q/bZZdKowOa9qLd09Yp06NTjyv8VVhflAFAr8xt
+	W01cvcOdWhw10zfXyieUgfzwBG1woNgDk1vyRTqLTcWfoO707La/nC6b34dC2icA8Ljqp43stkHvZ
+	bQggj+3OOP4ERR75DJsgJ0t5i2w93cGRdSR1nUu7t6DGJo90tsUUtqv2BYTH/HVzhiDDzKg+v/Q0p
+	85LE90bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1swONA-00000009kUh-2NEm;
-	Thu, 03 Oct 2024 16:08:12 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1swQIp-0000000A3U5-2nPL;
+	Thu, 03 Oct 2024 18:11:51 +0000
+Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1swON7-00000009kTQ-24lJ
-	for linux-mediatek@lists.infradead.org;
-	Thu, 03 Oct 2024 16:08:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1727971686;
-	bh=PuxGYKkgO89wMpd84+jo7uDfhXlwBQz2azp6oxMgkfA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=HXNRVvxhkf69StUkFUdq3YT3bbby40eacs9Rp2afZBkucUBEszAtpkzaUdYXBF5Qh
-	 k9715amVaUim9usnO43x3gtaMiU3IzLWqoiRKxvBV5zrmZH+ikvz/Ai4DAWayB+Ic9
-	 D/ppX8EgSu8wf1B0T3LXFj6ZgQT0FmvkdmUGQ5NEqSay4C6Jn7vUTQKsw39Y+stAwu
-	 NzG4bbelCFyy1UWvRNdixNn8noWGx+xIRvLH1C+YRVXXNxGDYYechstYO9cUc5a7y7
-	 IWiUcXEUoKYlOXFyowkSkdW5Z7VqXrpU46qB7ixChWmsSoXn7tBIGVUbtuVe99urzB
-	 LKdJhaYsdvdmQ==
-Received: from notapiano (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3412F17E3611;
-	Thu,  3 Oct 2024 18:08:05 +0200 (CEST)
-Date: Thu, 3 Oct 2024 12:08:03 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Alper Nebi Yasak <alpernebiyasak@gmail.com>
-Cc: chrome-platform@lists.linux.dev, linux-pm@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sebastian Reichel <sre@kernel.org>,
-	Benson Leung <bleung@chromium.org>,
-	Guenter Roeck <groeck@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	Pin-yen Lin <treapking@chromium.org>,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: Erroneous sbs-battery sysfs info a MT8173 Chromebook
-Message-ID: <a83e80f7-2bb8-423d-b24e-e793ce5da988@notapiano>
-References: <6e341522-70f6-413c-b9ba-8ac86a19b5f3@gmail.com>
+	id 1swQHZ-0000000A3Q1-1R3j;
+	Thu, 03 Oct 2024 18:10:34 +0000
+Received: by mail-qk1-x743.google.com with SMTP id af79cd13be357-7a9b72749bcso105319385a.0;
+        Thu, 03 Oct 2024 11:10:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1727979031; x=1728583831; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=stIg9esjqTBVOCrbixO0axas16PaKZ9mDSWypU0VeBY=;
+        b=l6bX1RuB1cxQnh4+vKa+8QnpVklt0/EyLS0cx25+uJwKGjLQSyQSXPbtit5I3rFpG7
+         qiwRLS/XMoxriTNi2YDXBQAohARVgtV69AqYWnksmQHQzeFEz5bUl2XfZLxPEjXynkzE
+         MaMpBEKfznDZEK+VR5qCnW5kMXb4cExiee89u2PDEdmA/RdHvCbTE4UGr27QP+L6xMbB
+         zbOPqjvsqo6oGzR8lqHYur+/+5eMzVsTH+LYyF+5KzDlAdAz3TepWLGDUFld/5WdKFLg
+         /Kp3Ys1cjrNraHf2wfNUPIpMSHEjCs4MOjI1k5oAHem3UUu+xiQYba7rA/f+pMFmBqVS
+         x5gQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727979031; x=1728583831;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=stIg9esjqTBVOCrbixO0axas16PaKZ9mDSWypU0VeBY=;
+        b=t1Yyle3qI30rqHTG1J6zv9RHz1MqAH9trYIfRf9hMYwLvAY726o8k0OivjJBHJ/bv4
+         WxztaP8PODUkJ7D99U+l2e6GfXNggwBGSZ8pmJwijU3MLWHIvb/7G0+mGOYiDDght+ru
+         XA887xn2mh3J+nXn6WJ8l8uIpt94q8gn6D091G4qKZ54eT7iEKHErflq+dB7AROzc/IF
+         wOXo+x+vt/rCC8TmM0cPQqb5MSNUXe79Hav6BjcM855QhsKxYAHlysJk055OXJCfLLBB
+         gSUT8x2y+cLOv1XyKcimqjtGN1C5uQGYImVXOhs5WnHcOORHkYPODgVH8aj9/Nd3oRu2
+         DQvQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUG/ndnPpm7wr0JwlOwmbT28G8f93QC8gBkNj6WXALYc5DOsMNO1yABT9zt/cdEzH7Tyj9UYAyJpeLg9VnsfjTA@lists.infradead.org, AJvYcCX/8+CH6AgsSY6hc5yPVm1cJCQlRxIvi5kcispUm4r2Vp5Pxcgn5Jr/vXMy+TZKsK7Nx7mlasy06FW5MgyL0PU=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyAfjXnMyyT7rck1ZyDn3HbTTZ4ULYu+DTYwUfHKaE26i5dXBbC
+	Vz7a694a1URt1UYc89/+9K8RT/iB09D9te/d1xrwalzPk5u02/Bp
+X-Google-Smtp-Source: AGHT+IFTmn46ifwLoMc4eILjoM44c4aHtVzURhmUi0RKIZEq8CxXspB4gOtL7Nd6CsXfGNQ/pWRJew==
+X-Received: by 2002:a05:620a:2443:b0:7a9:b744:fc41 with SMTP id af79cd13be357-7ae6f43705amr21400685a.14.1727979031521;
+        Thu, 03 Oct 2024 11:10:31 -0700 (PDT)
+Received: from localhost.localdomain (mobile-130-126-255-54.near.illinois.edu. [130.126.255.54])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7ae6b3dc0bfsm69082285a.121.2024.10.03.11.10.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 03 Oct 2024 11:10:31 -0700 (PDT)
+From: Gax-c <zichenxie0106@gmail.com>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	kvalo@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	johannes.berg@intel.com,
+	quic_adisi@quicinc.com,
+	deren.wu@mediatek.com,
+	chui-hao.chiu@mediatek.com,
+	mingyen.hsieh@mediatek.com,
+	howard-yh.hsu@mediatek.com,
+	StanleyYP.Wang@mediatek.com,
+	allen.ye@mediatek.com,
+	benjamin-jw.lin@mediatek.com,
+	Bo.Jiao@mediatek.com,
+	evelyn.tsai@mediatek.com,
+	meichia.chiu@mediatek.com,
+	krzk@kernel.org
+Cc: linux-wireless@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	chenyuan0y@gmail.com,
+	zzjas98@gmail.com,
+	Zichen Xie <zichenxie0106@gmail.com>
+Subject: [PATCH v5] wifi: mt76: Fix NULL Dereference caused by mt76_connac_get_he_phy_cap()
+Date: Thu,  3 Oct 2024 13:09:59 -0500
+Message-Id: <20241003180959.12158-1-zichenxie0106@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <6e341522-70f6-413c-b9ba-8ac86a19b5f3@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241003_090809_834672_4436992A 
-X-CRM114-Status: GOOD (  18.27  )
+X-CRM114-CacheID: sfid-20241003_111033_388984_854298B4 
+X-CRM114-Status: UNSURE (   9.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,120 +113,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 03, 2024 at 06:15:49PM +0300, Alper Nebi Yasak wrote:
-> Hello,
-> 
-> I have a MT8173 Chromebook ("Lenovo 300e") where I'm getting a lot of 
-> battery-related errors:
-> 
-> [   34.678473] sbs-battery 6-000b: sbs_read_string_data_fallback: Returned block_length is longer than 0x20
-> [   34.702079] power_supply_show_property: 5 callbacks suppressed
-> [   34.702096] power_supply sbs-6-000b: driver failed to report `technology' property: -22
-> [   34.754401] sbs-battery 6-000b: sbs_read_string_data_fallback: Returned block_length is longer than 0x20
-> [   34.782568] sbs-battery 6-000b: sbs_read_string_data_fallback: Returned block_length is longer than 0x20
-> [   34.806020] power_supply sbs-6-000b: driver failed to report `manufacturer' property: -22
-> [   34.826135] power_supply sbs-6-000b: driver failed to report `technology' property: -22
-> [   34.844078] sbs-battery 6-000b: sbs_read_string_data_fallback: Returned block_length is longer than 0x20
-> [   34.864128] sbs-battery 6-000b: sbs_read_string_data_fallback: Returned block_length is longer than 0x20
-> [   34.889015] power_supply sbs-6-000b: driver failed to report `model_name' property: -22
-> [   34.895486] power_supply sbs-6-000b: driver failed to report `technology' property: -22
-> [   34.945035] sbs-battery 6-000b: sbs_read_string_data_fallback: Returned block_length is longer than 0x20
-> 
-> These infinitely repeat because upower keeps trying to read them. I also 
-> see this which might be important:
-> 
-> [   18.111500] cros-usbpd-charger cros-usbpd-charger.7.auto: Could not get charger port count
-> [   18.197166] sbs-battery 6-000b: sbs-battery: battery gas gauge device registered
-> [   18.248105] sbs-battery 6-000b: I2C adapter does not support I2C_FUNC_SMBUS_READ_BLOCK_DATA.
->                Fallback method does not support PEC.
-> 
-> Properties seem to be stuck to weird values (0xffff ?):
-> 
->   $ for f in /sys/class/power_supply/sbs-6-000b/*; do
->       printf "$(basename "$f"):  "
->       cat "$f" 2>/dev/null || echo
->     done
->   capacity:  100
->   capacity_error_margin:  0
->   capacity_level:  Full
->   charge_full:  65535000
->   charge_full_design:  65535000
->   charge_now:  65535000
->   constant_charge_current_max:  65535000
->   constant_charge_voltage_max:  65535000
->   current_avg:  -1000
->   current_now:  -1000
->   cycle_count:  65535
->   device:
->   energy_full:  655350000
->   energy_full_design:  655350000
->   energy_now:  655350000
->   health:  Calibration required
->   hwmon2:
->   manufacture_day:  31
->   manufacture_month:  15
->   manufacturer:  
->   manufacture_year:  2107
->   model_name:
->   of_node:
->   power:
->   present:  1
->   serial_number:  ffff
->   status:  Discharging
->   subsystem:
->   technology:  Unknown
->   temp:  62804
->   time_to_empty_avg:  3932100
->   time_to_empty_now:  3932100
->   time_to_full_avg:  3932100
->   type:  Battery
->   uevent:
->   voltage_max_design:  65535000
->   voltage_min_design:  65535000
->   voltage_now:  65535000
->   wakeup10:
-> 
-> I suspected a hardware issue, but I can get battery info from the EC 
-> just fine with the same kernel:
-> 
->   $ sudo ectool battery
->   Battery info:
->     OEM name:               LGC
->     Model number:           L15L3PB
->     Chemistry   :           LiP
->     Serial number:          0E0C
->     Design capacity:        4050 mAh
->     Last full charge:       3341 mAh
->     Design output voltage   11100 mV
->     Cycle count             115
->     Present voltage         11671 mV
->     Present current         344 mA
->     Remaining capacity      2734 mAh
->     Flags                   0x06 BATT_PRESENT DISCHARGING
->   
->   $ sudo ectool version
->   RO version:    hana_v1.1.4824-d58e50539
->   RW version:    hana_v1.1.4825-1473136d99
->   Firmware copy: RW
->   Build info:    hana_v1.1.4825-1473136d99 2021-09-11 00:11:48 @chromeos-ci-firmware-us-central2-d-x32-0-jx9e
-> 
-> I have _another_ MT8173 Chromebook ("ASUS C202X") where things work 
-> fine. But I couldn't find a good mainline kernel version for this one.
-> Anyone have any idea what is going on?
+From: Zichen Xie <zichenxie0106@gmail.com>
 
-FWIW, I have also experienced issues reading properties from the SBS batteries
-before on chromebooks:
+mt76_connac_get_he_phy_cap() may return a NULL pointer,
+leading to NULL Pointer Dereference.
+Add a NULL check for the returned pointer.
 
-https://lore.kernel.org/all/924db470-8163-4454-8f59-f7372a132186@notapiano/
+Fixes: a5c372f77aa7 ("wifi: mt76: mt7925: extend mt7925_mcu_bss_he_tlv for per-link BSS")
+Fixes: e6d557a78b60 ("mt76: mt7915: rely on mt76_connac_get_phy utilities")
+Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
+Signed-off-by: Zichen Xie <zichenxie0106@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 5 +++++
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 2 ++
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 2 ++
+ 3 files changed, 9 insertions(+)
 
-In those cases it was due to the EC firmware not implementing the SBS commands,
-but that had already been fixed in the latest EC firmware release, so simply
-updating the firmware fixed it.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 87d0dd040001..762be3a37228 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -551,6 +551,8 @@ mt7915_mcu_bss_he_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
+ 	struct tlv *tlv;
+ 
+ 	cap = mt76_connac_get_he_phy_cap(phy->mt76, vif);
++	if (!cap)
++		return;
+ 
+ 	tlv = mt76_connac_mcu_add_tlv(skb, BSS_INFO_HE_BASIC, sizeof(*he));
+ 
+@@ -1145,6 +1147,9 @@ mt7915_mcu_sta_bfer_he(struct ieee80211_sta *sta, struct ieee80211_vif *vif,
+ 	u8 nss_mcs = mt7915_mcu_get_sta_nss(mcs_map);
+ 	u8 snd_dim, sts;
+ 
++	if (!vc)
++		return;
++
+ 	bf->tx_mode = MT_PHY_TYPE_HE_SU;
+ 
+ 	mt7915_mcu_sta_sounding_rate(bf);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index 748ea6adbc6b..55e4cda2f20f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -2508,6 +2508,8 @@ mt7925_mcu_bss_he_tlv(struct sk_buff *skb, struct ieee80211_bss_conf *link_conf,
+ 	struct tlv *tlv;
+ 
+ 	cap = mt76_connac_get_he_phy_cap(phy->mt76, link_conf->vif);
++	if (!cap)
++		return;
+ 
+ 	tlv = mt76_connac_mcu_add_tlv(skb, UNI_BSS_INFO_HE_BASIC, sizeof(*he));
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 6c445a9dbc03..55bb2d0e67e5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -798,6 +798,8 @@ mt7996_mcu_bss_he_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
+ 	struct tlv *tlv;
+ 
+ 	cap = mt76_connac_get_he_phy_cap(phy->mt76, vif);
++	if (!cap)
++		return;
+ 
+ 	tlv = mt7996_mcu_add_uni_tlv(skb, UNI_BSS_INFO_HE_BASIC, sizeof(*he));
+ 
+-- 
+2.25.1
 
-I don't know how ectool works, but it might be fetching the battery properties
-through a different mechanism (ie not SBS commands), so this might also be a bug
-in the EC FW despite ectool working.
-
-Thanks,
-Nícolas
 
