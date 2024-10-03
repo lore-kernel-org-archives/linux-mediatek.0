@@ -4,92 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A397CF855A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Oct 2024 06:18:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ABCBCF855E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Oct 2024 07:01:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XjCn7wNLVdT3ReTaN+Qz+I/dQF+bFHwwiGL3poiE5os=; b=1aeQjWz41dYrFp5M19F0/+VgAc
-	fAXLvbSwcUYScKQe1C3UbjBpXaA60ifbdVeo1XEisEY77DjL5f4Ahy16pU26/F7yhRC6O2ugbgq+6
-	nc1VCsCsh9DBuWiVKpsBf2oEDK66kNuA4vafxXuG+LpEd5y8Zh6ZrdXldQh7p5osRDwh6CqTPGUn4
-	wlYI3X80QEC++yKLp0I8kf1ptmeqKjvtt9mWo70OncFjWAQjo3toUdiAgxKhDjtenSJsZi02Pq0J1
-	TdLXqTuN/6BXbR/DjH5Z3aYpVELlhbrY5LLnC6xfD8xK/NA9/SiePhdBgVCNvUjyM9MpEWkJaeZdf
-	77WFQHrg==;
+	bh=qbiSMpuPwHJJ8+7hgzWW8VklVykSZy7Bn9abf5q3Y2o=; b=CduaFx11tM1J1+yJlCf4tV5BJK
+	N4lF3B3yiF8/8TkooNRAzeAs9MoVBlFYaOby7b+LlTGPo5UAVlsSUKO9jlS1+02IT4RAOCgwbk/iH
+	jh5WR9GfzJgNCpLMcbyVYmteFrJ4aaeQMrN72RsdcS/vYrBCehZ5qqJj+cnxn0motPaXlCchUYYeK
+	iaV/dbw7YNZmbLgAPdxASexKEfxQSMVXv4XZ2A02Yd0aHn7pmEwFlgdxf4/tCgJSK7BC1A/XIylWx
+	+ohMEAwyZkBIaZui0zW0hUWlGSsfhF/sXJFUHOqucRXrgO5fl0NlRiCbq5tg6jA5tQxunxVoXa9il
+	66JkfK+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1swFAe-00000008Gvq-1MQG;
-	Thu, 03 Oct 2024 06:18:40 +0000
-Received: from mail-vk1-xa29.google.com ([2607:f8b0:4864:20::a29])
+	id 1swFpn-00000008KJS-30z8;
+	Thu, 03 Oct 2024 07:01:11 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1swFAb-00000008Gv1-2dqL
-	for linux-mediatek@lists.infradead.org;
-	Thu, 03 Oct 2024 06:18:39 +0000
-Received: by mail-vk1-xa29.google.com with SMTP id 71dfb90a1353d-505a9e521b8so184668e0c.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Oct 2024 23:18:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1727936316; x=1728541116; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=XjCn7wNLVdT3ReTaN+Qz+I/dQF+bFHwwiGL3poiE5os=;
-        b=SheH6CER/ddLmDpE+tjqcooWZXVq/FYcBgui/O7Pkih2FavZD1e73SYU0tww4G2Tbc
-         n9jKZN6Rdxc6ayMyExlW4AdrdsbKhYNuUEjjIuxX1Tt6ukQDIBoujXlUQfAZF+fW7vcQ
-         ybTnhYt/b5nDmdMoijnbpnGapbQFeSPGA0pTA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727936316; x=1728541116;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=XjCn7wNLVdT3ReTaN+Qz+I/dQF+bFHwwiGL3poiE5os=;
-        b=fW+9wjRF0vjMmFpQ/UIRgXgXBHZEACyOUc1GCDwh9lhFGNwU1nAXpg7R6GDf4bvOGY
-         wmr4U7AhutGLeK+MGplMvoGK/81ODv0NWBp65TXIiOipzqtFQXda7rJZTnK7Wh+A5LoG
-         9gxIgI3+EpcjL0uDKdrfwWXUjEaJOJYOR9IvUyzj+eRuVKzGEByw4jlA4yutJdLcc+Jp
-         mYQ19bib43Vol6FU+mksOEq/A4QyXgRqN3cTagdYA+sFUq+wx93iu19TkjKtB2mdKeVa
-         Pq/Rp4LM+x3wXsO7LI/QJghfCYic0bCoBUrR3S9LguD2y4/5I9ZrYFbXGTCTxIBltjkq
-         PMOw==
-X-Forwarded-Encrypted: i=1; AJvYcCVJEMFay1n83e/jiN8KSo0xA5tnk/KeGnycKPBHsltOrdaW19zqEco4mELSJNHUdJHIhvsHd0zhRuYzFaWOuw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzxhmnPZn15+otG/5dKwHqdwYYArFA9llKmtBj7GtGWv5nWvUvp
-	KLDA2tG6WGESmGmNwzktlv3e5JpCriPL5tJg/jYtHffJptbgowRk5BSoCc/1VdEGHRjve00MX7Z
-	qLQ==
-X-Google-Smtp-Source: AGHT+IEXkzy2JyDFG/p9D6MgKQsuNFpYd3lg+1Zt30S2w6aT77NFqdA6BqUXSJFov/xB7+bWkQSrLg==
-X-Received: by 2002:a05:6122:2004:b0:50a:c52d:6baa with SMTP id 71dfb90a1353d-50c57dc2623mr4522353e0c.0.1727936315775;
-        Wed, 02 Oct 2024 23:18:35 -0700 (PDT)
-Received: from mail-ua1-f51.google.com (mail-ua1-f51.google.com. [209.85.222.51])
-        by smtp.gmail.com with ESMTPSA id a1e0cc1a2514c-84f3af7be6asm68801241.34.2024.10.02.23.18.34
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 02 Oct 2024 23:18:35 -0700 (PDT)
-Received: by mail-ua1-f51.google.com with SMTP id a1e0cc1a2514c-84ea658b647so190862241.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Oct 2024 23:18:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVPJu8rv6HaeBoMfry237LGGa37O2F6RTSq6sLo2SJ5+7nGqJhgr1GJLd5nFlzizZxICPvxir0RCYh7t58ggw==@lists.infradead.org
-X-Received: by 2002:a05:6102:3584:b0:4a3:a7a0:889a with SMTP id
- ada2fe7eead31-4a3e6924383mr4417458137.19.1727936314349; Wed, 02 Oct 2024
- 23:18:34 -0700 (PDT)
+	id 1swFoV-00000008KBl-3ZdM;
+	Thu, 03 Oct 2024 06:59:53 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B96925C5902;
+	Thu,  3 Oct 2024 06:59:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A82C0C4CEC7;
+	Thu,  3 Oct 2024 06:59:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1727938790;
+	bh=D68iDBPRvSOAiuPOdMfKw+VDrBVrwfK8/T76gvTpPbY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=aprF6CC3e88subtKorsb4MOulPivRhUGmXC/ho8OFdK8OVI1jN6tsKS26Crcv9C+Q
+	 kAeQomgpFTdZYlz2XKFZ40tzoM9pbYLViNQoLNMnJqIB+Evqmj5rDwtt79Zb+Vk2ex
+	 pINfpbEfsLspE63o2E6lOn49xDtYsPdtuB94pIajZ9udXWrS+c8wyWZSidU0fHjpVL
+	 xP+oK6OToKzSOi42cBl7ZSU8z0PEdBtBOUeLhuLoVOjXc8vye1RxNnDGPAe6mIXjDJ
+	 RD8ogK/BVoxAYQRdWemiFH3b/MgVD5oL77NQ57R1AVlJHU+hd3hborJTo9eG6a7Reh
+	 5v/DS9+bXBVvg==
+Message-ID: <5d69448b-10ff-49b6-bfd0-6146ef04a0cc@kernel.org>
+Date: Thu, 3 Oct 2024 08:59:41 +0200
 MIME-Version: 1.0
-References: <20241002114614.847553-1-fshao@chromium.org> <20241002114614.847553-3-fshao@chromium.org>
- <7faeac1b-0b7a-a820-16a5-330b82d12e01@mediatek.com>
-In-Reply-To: <7faeac1b-0b7a-a820-16a5-330b82d12e01@mediatek.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Thu, 3 Oct 2024 14:17:57 +0800
-X-Gmail-Original-Message-ID: <CAC=S1niQQi_m+GB_CoZr-PTgyxVNCa_uwgZw+vGqgE-E5FBnCw@mail.gmail.com>
-Message-ID: <CAC=S1niQQi_m+GB_CoZr-PTgyxVNCa_uwgZw+vGqgE-E5FBnCw@mail.gmail.com>
-Subject: Re: [PATCH 2/9] arm64: dts: mediatek: mt8188: Add PCIe nodes
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, jianguo.zhang@mediatek.com, 
-	jian.yang@mediatek.com, jieyy.yang@mediatek.com, 
-	Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, Bear Wang <bear.wang@mediatek.com>, 
-	Pablo Sun <pablo.sun@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] wifi: mt76: Fix NULL Dereference caused by
+ mt76_connac_get_he_phy_cap()
+To: Gax-c <zichenxie0106@gmail.com>, nbd@nbd.name, lorenzo@kernel.org,
+ ryder.lee@mediatek.com, shayne.chen@mediatek.com, sean.wang@mediatek.com,
+ kvalo@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, johannes.berg@intel.com,
+ quic_adisi@quicinc.com, deren.wu@mediatek.com, chui-hao.chiu@mediatek.com,
+ mingyen.hsieh@mediatek.com, howard-yh.hsu@mediatek.com,
+ StanleyYP.Wang@mediatek.com, allen.ye@mediatek.com,
+ benjamin-jw.lin@mediatek.com, Bo.Jiao@mediatek.com,
+ evelyn.tsai@mediatek.com, meichia.chiu@mediatek.com
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, zzjas98@gmail.com, chenyuan0y@gmail.com
+References: <c7978538-04b4-406a-b8e3-70d3472ace7f@kernel.org>
+ <20241002213919.30360-1-zichenxie0106@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20241002213919.30360-1-zichenxie0106@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241002_231837_742070_2222AAF2 
-X-CRM114-Status: GOOD (  22.78  )
+X-CRM114-CacheID: sfid-20241002_235952_024634_046F2CA8 
+X-CRM114-Status: UNSURE (   7.24  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,108 +126,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 2, 2024 at 8:42=E2=80=AFPM Macpaul Lin <macpaul.lin@mediatek.co=
-m> wrote:
->
->
->
-> On 10/2/24 19:41, Fei Shao wrote:
-> >
-> >
-> > External email : Please do not click links or open attachments until yo=
-u
-> > have verified the sender or the content.
-> >
-> >
-> > Add PCIe node and the associated PHY node.
-> > Individual board device tree should enable the nodes as needed.
-> >
-> > Signed-off-by: Fei Shao <fshao@chromium.org>
-> > ---
-> >
-> >   arch/arm64/boot/dts/mediatek/mt8188.dtsi | 62 +++++++++++++++++++++++=
-+
-> >   1 file changed, 62 insertions(+)
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot=
-/dts/mediatek/mt8188.dtsi
-> > index 10195a4e4e9d..9431f3c5c228 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> > @@ -1763,6 +1763,53 @@ xhci0: usb@112b0000 {
-> >                       status =3D "disabled";
-> >               };
-> >
-> > +             pcie: pcie@112f0000 {
-> > +                     compatible =3D "mediatek,mt8188-pcie", "mediatek,=
-mt8192-pcie";
-> > +                     reg =3D <0 0x112f0000 0 0x2000>;
-> > +                     reg-names =3D "pcie-mac";
->
-> It seems the property 'linux,pci-domain =3D <0>;' is missing?
+On 02/10/2024 23:39, Gax-c wrote:
+> mt76_connac_get_he_phy_cap() may return a NULL pointer,
+> leading to NULL Pointer Dereference.
+> Add a NULL check for the returned pointer.
+> 
+> Fixes: a5c372f77aa7 ("wifi: mt76: mt7925: extend mt7925_mcu_bss_he_tlv for per-link BSS")
+> Fixes: e6d557a78b60 ("mt76: mt7915: rely on mt76_connac_get_phy utilities")
+> Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
+> Signed-off-by: Zichen Xie <zichenxie0106@gmail.com>
+> ---
 
-I'll add that. I guess the fallback will assign a dynamic ID to it
-(likely also 0), but explicitly having a static domain ID is never a
-bad thing.
+This does not match From.
 
->
-> [snip]
->
-> > +                     };
-> > +             };
-> > +
-> >               nor_flash: spi@1132c000 {
-> >                       compatible =3D "mediatek,mt8188-nor", "mediatek,m=
-t8186-nor";
-> >                       reg =3D <0 0x1132c000 0 0x1000>;
-> > @@ -1775,6 +1822,21 @@ nor_flash: spi@1132c000 {
-> >                       status =3D "disabled";
-> >               };
-> >
-> > +             pciephy: t-phy@11c20700 {
-> > +                     compatible =3D "mediatek,mt8188-tphy", "mediatek,=
-generic-tphy-v3";
-> > +                     ranges =3D <0 0 0x11c20700 0x700>;
-> > +                     #address-cells =3D <1>;
-> > +                     #size-cells =3D <1>;
-> > +                     status =3D "disabled";
-> > +
->
-> The power-domains property is missing.
-> It should be 'power-domains =3D <&spm MT8188_POWER_DOMAIN_PEXTP_PHY_TOP>;=
-'
+Do not attach (thread) your patchsets to some other threads (unrelated
+or older versions). This buries them deep in the mailbox and might
+interfere with applying entire sets.
 
-I dropped this as the binding check was against it, and I thought it
-was a mistake because other tphy nodes don't seem to have a power
-domain either.
-And now I noticed your tphy binding patch in [1] so that explains,
-except that I still can't tell whether there should be a power domain
-for a given tphy node...
+Best regards,
+Krzysztof
 
-Anyway, I'll fix this one. Thanks!
-
-[1]: https://lore.kernel.org/all/20240926101804.22471-1-macpaul.lin@mediate=
-k.com/
-
-Regards,
-Fei
-
-
->
-> > +                     pcieport: pcie-phy@0 {
-> > +                             reg =3D <0 0x700>;
-> > +                             clocks =3D <&topckgen CLK_TOP_CFGREG_F_PC=
-IE_PHY_REF>;
-> > +                             clock-names =3D "ref";
-> > +                             #phy-cells =3D <1>;
-> > +                     };
-> > +             };
-> > +
-> >               i2c1: i2c@11e00000 {
-> >                       compatible =3D "mediatek,mt8188-i2c";
-> >                       reg =3D <0 0x11e00000 0 0x1000>,
->
-> Thanks!
-> Best regards,
-> Macpaul Lin
 
