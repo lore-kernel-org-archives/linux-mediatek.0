@@ -4,109 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9942ACF34CA
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Oct 2024 22:05:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B2A0CF34CE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Oct 2024 22:28:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BoWKDt0SpQuuIThiGyg8a6unwje1fIaaXWcdpLVdhAs=; b=MHxCN3Q0NoazPX9zLI47UfN7S5
-	M1h2Te5Gm2ZttPstTeTfsU3vIBSNJxPEGt/rbEI5qRWpHu3tVm5xuRKpe1OFxzVNoomkBJkQu3jib
-	jAxVr+lA68vpllGf0kPTGkdfWzysw0Vn+TFRAc1T88ip7Vyk/8OXOlSvxiDop2KrAQd3z4R7k2ize
-	HFlwx4aVZxP8fxRLSfiTuEC+GD0B2VN5mEtaoKvdDLQQyFpsBD7wjeokaUk3RT3uA2riyYfTkHGeQ
-	HgsVekW96cLT5psCcWBZZapjpgHomD+ZUaOAx2QneCV1zyyFyLtEIRXkAgUN3QU3vo8hT7YA7PW1f
-	oahdc/rQ==;
+	bh=sP5+xFCwvIfgdPuM2uoWieb2IVBCdlsyGhb48u2injk=; b=LFDDhdVMBknJTV0D+ru8A2D/XQ
+	Kd68g9Jik+aKwMPIYCiF21AJfZ5yLHCNfo/pcRRdoaoz2LmOxTUfI8KM7HjJs0rg8bq0DAo3K8fZM
+	wDQA1sO9ocOuWivqwe2bEfGWN2INGrcX/O0ljj/kaohJNZriy4X7nfjdQoNy1IaBtoiMO/ggjo4qQ
+	COy+nLP8PcfDHzv3Itqgu3+1Qe+Do0q4GclMXuiLqIDwE5txlgBz9EQIYgzFkTWq1wMFHFYutU0xV
+	OCy2xKv9V/DlVJNvCeYx0okXCcHnU/eENeBjnc/vb4AgDfpDN4p7PoncC02+vqqODT+L+j5FJL6tb
+	snIct5XA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1swTwz-0000000ATHP-2jqN;
-	Thu, 03 Oct 2024 22:05:33 +0000
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+	id 1swUIi-0000000AW6H-0viX;
+	Thu, 03 Oct 2024 22:28:00 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1swTpm-0000000ARon-0LFT;
-	Thu, 03 Oct 2024 21:58:07 +0000
-Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-7db908c9c83so879164a12.2;
-        Thu, 03 Oct 2024 14:58:05 -0700 (PDT)
+	id 1swUIe-0000000AW5o-3kTv
+	for linux-mediatek@lists.infradead.org;
+	Thu, 03 Oct 2024 22:27:58 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-42cbb08a1a5so14409755e9.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 03 Oct 2024 15:27:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1727992685; x=1728597485; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=BoWKDt0SpQuuIThiGyg8a6unwje1fIaaXWcdpLVdhAs=;
-        b=RrUUM16ot4GUFW+r4as8rVBawGW5Oh2b7nxfLOP3Xeo+4lcAvoNtaQkJI+Y+xZVgSE
-         yJ1OrZBPP5PYNG6QDWlgmljcLmubdiAQTSfwcqJn/CayaUZnc+c7E29WtnJ9jNiOBkAG
-         F5mVyXExyf+IWcp3hI4NrAm+tWbKL0ILcYh12BMC0EiyKPtOrlAfGVeuXj4KSU0e/NcP
-         aRCK6/O2p145aI+tKDlcqBJZ0PeCki3QE0ahcFP+EqXIpMZkhcxgk3QGBE6rpbQvOIyq
-         iET82i05/T22GfLNeyJjrVqU/ltov2gQ7GmdPUmQjIpoKLBafZ67OVU7E3mO3itKHK0W
-         d+Gg==
+        d=gmail.com; s=20230601; t=1727994475; x=1728599275; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=sP5+xFCwvIfgdPuM2uoWieb2IVBCdlsyGhb48u2injk=;
+        b=AMuVlG/JBRtLshFrbhvjeKx8+5YNIl+Gkb8cVA4NhDL2fbUNdpxOAytxTMldzL+oIV
+         i1CsCZK2w5PDgGFtgeZDAsRRAYqBBcv7eslMhK5eM0rmGj4Vd8TsRTWr/yqU1m/AzeSn
+         oQF4pfhs18ZxRKXgPOi2dIEOY4WO8c+2aLlafgD79Yin/YZIfyrC41sUSDM1gW2rfAW3
+         Vl+4Kx+PJqw7Pqu2+QC85/Uq91Z2uVIX/IkzUtbqnphWdTEyWxryEDwYxj7mI7oAYAs+
+         RNhOdiYSpSVVwrdAMpznFCUEhB+uYSv+t+lZ0lrzu0A/MozhJKgRUrtQg7ToEhHr+ahZ
+         JuTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727992685; x=1728597485;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=BoWKDt0SpQuuIThiGyg8a6unwje1fIaaXWcdpLVdhAs=;
-        b=xBrDpq7ZEhvT3IerB75Q4JIvB0THN7ovSIbuGXeR96SoWi7GTMklB/J3Rr2TkrR19y
-         Zu6B1KU55M8RKp3bAflCGQvWGDZu8o/0P51kMoWrAvtcyxpA3j7kZqb2jSDYBaYA9Fmo
-         n4ufE5DY7ikLAILw4ButXo34wepnDuoUSFQciHtqsT964Cg6f6TIG9EUdiOL7HB1gQkJ
-         K7FiE+hWJcRSnHfdpdPinUu6fymDnlSCJufa7fCG8iD2NfUIn4PJj8CL/o32ZMjJN7K9
-         G01uoUn4I9euHe5cT5aYjnLkGFniXZ96RC829uAt72Yft9zULACThWZFabU6YaGf3j8d
-         Md/w==
-X-Forwarded-Encrypted: i=1; AJvYcCWVThB92j1+5dBvUeW8QDQdJPZuBgbOmoyfabnzLifgm/ySD9dxoA5mxPZICqPDDmDXCdzhAdLYzOlb@lists.infradead.org, AJvYcCWrtHpAFlfv9Ss9pqNlGbg00b2YowcKkVkPgOwY1QAAkoo+MJWJgo4/OYpjI8U4rElk17DKk1nlhISM6T99qDd6@lists.infradead.org, AJvYcCXMSHtwCv1zMUfXDYlAA4ATnss1dRfFarPt8tQvQYaYeQPfDcepTbi6SfrAW7CsU5a1KDZ2vv+H7Cgo8EpEXqc=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzUoQjl6rEHJigYq7hCiCNaYJXD06tJVM5kFf6P486Nnjeavsp1
-	x6wvKM7o5VSS2UdhlzW+JWj8KgZR1CyDYqE+KU77G6LWK/lMjRNC
-X-Google-Smtp-Source: AGHT+IGKkbd3xJEakgda96Mzg7E21a6ZE9bsKsHRDvZzyTa8MLym/gUdPLpgQwzRTLIL4veRP+kBKw==
-X-Received: by 2002:a05:6a20:9f0f:b0:1d4:fac8:966 with SMTP id adf61e73a8af0-1d6dfa27e8emr889256637.10.1727992684786;
-        Thu, 03 Oct 2024 14:58:04 -0700 (PDT)
-Received: from ryzen.lan ([2601:644:8200:dab8::a86])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71dd9d6e67esm1863026b3a.39.2024.10.03.14.58.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Oct 2024 14:58:04 -0700 (PDT)
-From: Rosen Penev <rosenp@gmail.com>
-To: devicetree@vger.kernel.org
-Cc: Miquel Raynal <miquel.raynal@bootlin.com>,
-	Richard Weinberger <richard@nod.at>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konradybcio@kernel.org>,
-	William Zhang <william.zhang@broadcom.com>,
-	Anand Gore <anand.gore@broadcom.com>,
-	Kursad Oney <kursad.oney@broadcom.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rosen Penev <rosenp@gmail.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	linux-mtd@lists.infradead.org (open list:MEMORY TECHNOLOGY DEVICES (MTD)),
-	linux-kernel@vger.kernel.org (open list),
-	netdev@vger.kernel.org (open list:NETWORKING DRIVERS),
-	linux-arm-msm@vger.kernel.org (open list:ARM/QUALCOMM MAILING LIST),
-	linux-arm-kernel@lists.infradead.org (moderated list:BROADCOM BCMBCA ARM ARCHITECTURE),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCH 5/5] documentation: use nvmem-layout in examples
-Date: Thu,  3 Oct 2024 14:57:46 -0700
-Message-ID: <20241003215746.275349-6-rosenp@gmail.com>
-X-Mailer: git-send-email 2.46.2
-In-Reply-To: <20241003215746.275349-1-rosenp@gmail.com>
-References: <20241003215746.275349-1-rosenp@gmail.com>
+        d=1e100.net; s=20230601; t=1727994475; x=1728599275;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=sP5+xFCwvIfgdPuM2uoWieb2IVBCdlsyGhb48u2injk=;
+        b=IUyzJ8NBiizqdxf99eDDOi9ZV0h6zocsz131+Q/V0jSqhvHFYQT+9Gb3U7yoKAJtup
+         +Ix9kDwLHzbfYSyllhilgAWSxIY8HirwvwWM3B83zWvkg2BEvCrUP+YKr0KHxKAGTImN
+         4BZJSjlkj0MwKZiMkDoziQgogtTcuI7D/O8k1McgQqWK/Y0iYQ1A8wL0gwOTIIRt7ENd
+         ZklSm+2Acyus9gjlbYVFi6rgjlsSkOfGZan2B3oSzila+6t3Gzi7NgDUKAvXCqgwEeeD
+         PbTyVrxpkR/5+2SgpiUpi2E3F5IF9uBtGpgStQ9xiae+q2B1jjzwk8XOCArYPYsRjLtr
+         nKBQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV8tyi6qKb9PIp96YzgikYh38BULfC3diessDhRxRSX69P7F8aRK5dxb7N2GX+rhNTgRSmHcFKyRlvZaI4Lvg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw5t2dtbzJE49pEs6lkb8+xgCfs7McpfjJRi5vx3ajc6md8ETy3
+	ZpgrFzdvxO+xl1Dd3yGfrTw1nJ0xAMUSc/iTYpD6bxmnyh/3+WQXd1zTX3t2
+X-Google-Smtp-Source: AGHT+IHDKi8be1luFvFObKCgtE8dWUy8+2N6ax404drWFKWhO05Bsyimgoa7KQJsvRhzNjmZfQyg/w==
+X-Received: by 2002:a05:600c:3b8a:b0:42c:b95c:65ba with SMTP id 5b1f17b1804b1-42f85a6ca96mr3117955e9.6.1727994474417;
+        Thu, 03 Oct 2024 15:27:54 -0700 (PDT)
+Received: from [192.168.0.10] ([178.233.24.52])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42f86a1f6b4sm355535e9.6.2024.10.03.15.27.51
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 03 Oct 2024 15:27:53 -0700 (PDT)
+Message-ID: <ae30adc7-8bcf-4daa-923a-d4a12e2404ea@gmail.com>
+Date: Fri, 4 Oct 2024 01:27:50 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: Erroneous sbs-battery sysfs info a MT8173 Chromebook
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: chrome-platform@lists.linux.dev, linux-pm@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sebastian Reichel <sre@kernel.org>, Benson Leung <bleung@chromium.org>,
+ Guenter Roeck <groeck@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>,
+ Pin-yen Lin <treapking@chromium.org>, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <6e341522-70f6-413c-b9ba-8ac86a19b5f3@gmail.com>
+ <a83e80f7-2bb8-423d-b24e-e793ce5da988@notapiano>
+Content-Language: en-US, tr, en-GB
+From: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+In-Reply-To: <a83e80f7-2bb8-423d-b24e-e793ce5da988@notapiano>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241003_145806_142507_3C710B2F 
-X-CRM114-Status: GOOD (  10.58  )
+X-CRM114-CacheID: sfid-20241003_152756_958805_92D21746 
+X-CRM114-Status: GOOD (  17.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,78 +99,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-nvmem-cells are deprecated and replaced with nvmem-layout. For these
-examples, replace. They're not relevant to the main point of the
-document anyway.
+Hi,
 
-Signed-off-by: Rosen Penev <rosenp@gmail.com>
----
- .../mtd/partitions/qcom,smem-part.yaml        | 19 +++++++++++--------
- .../bindings/net/marvell,aquantia.yaml        | 13 ++++++++-----
- 2 files changed, 19 insertions(+), 13 deletions(-)
+On 2024-10-03 19:08 +03:00, Nícolas F. R. A. Prado wrote:
+> On Thu, Oct 03, 2024 at 06:15:49PM +0300, Alper Nebi Yasak wrote:
+>> Hello,
+>>
+>> I have a MT8173 Chromebook ("Lenovo 300e") where I'm getting a lot of 
+>> battery-related errors:
+>>
+>> [   34.678473] sbs-battery 6-000b: sbs_read_string_data_fallback: Returned block_length is longer than 0x20
+>> [   34.702079] power_supply_show_property: 5 callbacks suppressed
+>> [   34.702096] power_supply sbs-6-000b: driver failed to report `technology' property: -22
+>> 
+>> [...]
+>>
+>> I have _another_ MT8173 Chromebook ("ASUS C202X") where things work 
+>> fine. But I couldn't find a good mainline kernel version for this one.
+>> Anyone have any idea what is going on?
+> 
+> FWIW, I have also experienced issues reading properties from the SBS batteries
+> before on chromebooks:
+> 
+> https://lore.kernel.org/all/924db470-8163-4454-8f59-f7372a132186@notapiano/
+> 
+> In those cases it was due to the EC firmware not implementing the SBS commands,
+> but that had already been fixed in the latest EC firmware release, so simply
+> updating the firmware fixed it.
 
-diff --git a/Documentation/devicetree/bindings/mtd/partitions/qcom,smem-part.yaml b/Documentation/devicetree/bindings/mtd/partitions/qcom,smem-part.yaml
-index 1c2b4e780ca9..8ae149534b23 100644
---- a/Documentation/devicetree/bindings/mtd/partitions/qcom,smem-part.yaml
-+++ b/Documentation/devicetree/bindings/mtd/partitions/qcom,smem-part.yaml
-@@ -45,17 +45,20 @@ examples:
-             compatible = "qcom,smem-part";
- 
-             partition-art {
--                compatible = "nvmem-cells";
--                #address-cells = <1>;
--                #size-cells = <1>;
-                 label = "0:art";
- 
--                macaddr_art_0: macaddr@0 {
--                    reg = <0x0 0x6>;
--                };
-+                nvmem-layout {
-+                    compatible = "fixed-layout";
-+                    #address-cells = <1>;
-+                    #size-cells = <1>;
-+
-+                    macaddr_art_0: macaddr@0 {
-+                        reg = <0x0 0x6>;
-+                    };
- 
--                macaddr_art_6: macaddr@6 {
--                    reg = <0x6 0x6>;
-+                    macaddr_art_6: macaddr@6 {
-+                        reg = <0x6 0x6>;
-+                    };
-                 };
-             };
-         };
-diff --git a/Documentation/devicetree/bindings/net/marvell,aquantia.yaml b/Documentation/devicetree/bindings/net/marvell,aquantia.yaml
-index 9854fab4c4db..f57a6e7d0049 100644
---- a/Documentation/devicetree/bindings/net/marvell,aquantia.yaml
-+++ b/Documentation/devicetree/bindings/net/marvell,aquantia.yaml
-@@ -98,15 +98,18 @@ examples:
-             /* ... */
- 
-             partition@650000 {
--                compatible = "nvmem-cells";
-                 label = "0:ethphyfw";
-                 reg = <0x650000 0x80000>;
-                 read-only;
--                #address-cells = <1>;
--                #size-cells = <1>;
- 
--                aqr_fw: aqr_fw@0 {
--                    reg = <0x0 0x5f42a>;
-+                nvmem-layout {
-+                    compatible = "fixed-layout"
-+                    #address-cells = <1>;
-+                    #size-cells = <1>;
-+
-+                    aqr_fw: aqr_fw@0 {
-+                        reg = <0x0 0x5f42a>;
-+                    };
-                 };
-             };
- 
--- 
-2.46.2
+(Replied there as well for a different board: cozmo)
+
+> I don't know how ectool works, but it might be fetching the battery properties
+> through a different mechanism (ie not SBS commands), so this might also be a bug
+> in the EC FW despite ectool working.
+
+AFAICT, ectool talks to /dev/cros_ec with EC commands, which makes EC 
+send SBS commands to the battery on its own; whereas in the kernel 
+driver case it passes kernel's SBS commands through the i2c tunnel.
+
+But never mind all that, I should've looked into ChromeOS kernel 
+sources. There's a limited i2c passthrough [1] that's implemented there. 
+And this specific battery is failing to recognize a read command due to 
+a stop bit or something, so they use this limited passthrough [2]. I've 
+managed to apply those on top of linux-next and it makes things work, 
+but I have no idea how I'd go about upstreaming it (comments on [1] 
+point out it's quite hacky and not used in later boards).
+
+[1] CHROMIUM: i2c: wire a limited smart battery passthrough
+https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/2230594
+
+[2] CHROMIUM: arm64: dts: mt8173-hana: Add google,limited-passthrough property
+https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/422609
 
 
