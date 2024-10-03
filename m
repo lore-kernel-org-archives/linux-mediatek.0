@@ -4,96 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0EDDCF34B0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Oct 2024 15:45:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70135CF34B0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Oct 2024 16:08:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KEG391uPbET+smFrjuUd3Gbf+SfD/X5R0PGVdaNVyDQ=; b=UszcOwyZ+XJdtWNd1eCnQ+6Ad0
-	PL/Jk4BhgwW20bfhDhdZDG+iutp6IwrcZJ9Uu4sfg76DMAIbF2ifhGt6Skh3DUBB71XdlvlFOz66n
-	3j/9swXwmqtrAqNz7U/+cQes/E89ZxbNiiwuIoV9c5ma+UQCnqskxsJn/DUZJKDOW26u55Fn7sJFx
-	xP1/juUo9uI043eJM9SCHYuXe1En+gxE51HT8+W3r5BfiOT3b/KuALHfzGC/o63LJgmQi/VB8pRSl
-	iyrkJxTe8+88RzUzdDojdgkaqC2NAjEkl6DJQ2rERL4ADYR7vjLKSv5ToHndBuRssSBgsijeEM+3w
-	1GX5pMXg==;
+	bh=whn+Cx3dK6wsTxoow/LmLdI8x1w4urJzWvrD3UPss5c=; b=Q4UBoi6+7uvd+VxXSgHczZWQHn
+	TJOe/L0nXrfzh2siL5iZu/fy1AKWVcTy3bxYicOppy1UUwvrlb21OPke2BMZt+CIg+X+y43OgO9b0
+	ulZELbNo3L8ud0OrL1HOnNCqyajBjwqmI5uAVbID3J9eVz4X98bqlOURi0QsTuWSKxwpBij79QEXI
+	c6atn9oYM7aqtzwi9TuHexi9Rr16PO/1ov10+j/dgtiD08OTsMlwDIBQ2E7yEPPDTC/uIgkMx13Ka
+	cfnCMvu/Bu9bm5Xpoeba7KSMqS3NgOCZ8PAqbbXEGNaWfmQd5VZKQ3SiDJEhgYi+fynw5IpBkDGKl
+	d/+SXT/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1swO14-00000009fJs-1BhV;
-	Thu, 03 Oct 2024 15:45:22 +0000
-Received: from relay4-d.mail.gandi.net ([217.70.183.196])
+	id 1swONA-00000009kUh-2NEm;
+	Thu, 03 Oct 2024 16:08:12 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1swO10-00000009fHH-1OE3;
-	Thu, 03 Oct 2024 15:45:19 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 6E6A6E0002;
-	Thu,  3 Oct 2024 15:45:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1727970315;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=KEG391uPbET+smFrjuUd3Gbf+SfD/X5R0PGVdaNVyDQ=;
-	b=TICrwrFPqNQr0FkllJojskNhDNyxJBBjJ7p1KfIigSpe1yz5eAAGd2ZrO2BidvC6/A+Qom
-	NZAd/9RJSz1RiDd3lLdtADp5nqX9bQyWNoBMaYmxSJhOSDe0T0fZ3BzR0Se1uCIXgHLatP
-	0EnPqF616SrgdCpZaDlShmBrP13ZbIXW9Bj7Oi5IuZvb8HSqOh6m1SReSPJmtquU99Yk9c
-	wA7Vpopy8iwsQYMzzsZgtNT4idP5iRQdLFv3pdXkbJyEmdQQR3dqplUNNyYzH1sATd/MpW
-	BCY3lPJp+f+t7R9s2mNyuYyLKxVcwMtVAupvHPO8B9IX4HLM2IwIi9MsvKSHrQ==
-Date: Thu, 3 Oct 2024 17:45:10 +0200
-From: Louis Chauvet <louis.chauvet@bootlin.com>
-To: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-Cc: dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Inki Dae <inki.dae@samsung.com>,
-	Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Sandy Huang <hjc@rock-chips.com>, Jyri Sarha <jyri.sarha@iki.fi>,
-	Alexey Brodkin <abrodkin@synopsys.com>,
-	Hans de Goede <hdegoede@redhat.com>,
-	=?iso-8859-1?Q?Ma=EDra?= Canal <mairacanal@riseup.net>,
-	Zack Rusin <zack.rusin@broadcom.com>, amd-gfx@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	freedreno@lists.freedesktop.org, nouveau@lists.freedesktop.org,
-	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org,
-	linux-renesas-soc@vger.kernel.org, xen-devel@lists.xenproject.org
-Subject: Re: [PATCH 2/2] drm: Move crtc->{x, y, mode, enabled} to legacy
- sub-structure
-Message-ID: <Zv68Bj8UTNvRSmFj@louis-chauvet-laptop>
-Mail-Followup-To: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>,
-	dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Inki Dae <inki.dae@samsung.com>,
-	Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Sandy Huang <hjc@rock-chips.com>, Jyri Sarha <jyri.sarha@iki.fi>,
-	Alexey Brodkin <abrodkin@synopsys.com>,
-	Hans de Goede <hdegoede@redhat.com>,
-	=?iso-8859-1?Q?Ma=EDra?= Canal <mairacanal@riseup.net>,
-	Zack Rusin <zack.rusin@broadcom.com>, amd-gfx@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	freedreno@lists.freedesktop.org, nouveau@lists.freedesktop.org,
-	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org,
-	linux-renesas-soc@vger.kernel.org, xen-devel@lists.xenproject.org
-References: <20241002182200.15363-1-ville.syrjala@linux.intel.com>
- <20241002182200.15363-3-ville.syrjala@linux.intel.com>
- <Zv6QF2EmIcogtlLA@louis-chauvet-laptop>
- <Zv6gSGMXZZARf3oV@intel.com>
- <Zv6zN7Go_XG44P2-@louis-chauvet-laptop>
- <Zv64RktMPv2rpCZf@intel.com>
+	id 1swON7-00000009kTQ-24lJ
+	for linux-mediatek@lists.infradead.org;
+	Thu, 03 Oct 2024 16:08:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1727971686;
+	bh=PuxGYKkgO89wMpd84+jo7uDfhXlwBQz2azp6oxMgkfA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=HXNRVvxhkf69StUkFUdq3YT3bbby40eacs9Rp2afZBkucUBEszAtpkzaUdYXBF5Qh
+	 k9715amVaUim9usnO43x3gtaMiU3IzLWqoiRKxvBV5zrmZH+ikvz/Ai4DAWayB+Ic9
+	 D/ppX8EgSu8wf1B0T3LXFj6ZgQT0FmvkdmUGQ5NEqSay4C6Jn7vUTQKsw39Y+stAwu
+	 NzG4bbelCFyy1UWvRNdixNn8noWGx+xIRvLH1C+YRVXXNxGDYYechstYO9cUc5a7y7
+	 IWiUcXEUoKYlOXFyowkSkdW5Z7VqXrpU46qB7ixChWmsSoXn7tBIGVUbtuVe99urzB
+	 LKdJhaYsdvdmQ==
+Received: from notapiano (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3412F17E3611;
+	Thu,  3 Oct 2024 18:08:05 +0200 (CEST)
+Date: Thu, 3 Oct 2024 12:08:03 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+Cc: chrome-platform@lists.linux.dev, linux-pm@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sebastian Reichel <sre@kernel.org>,
+	Benson Leung <bleung@chromium.org>,
+	Guenter Roeck <groeck@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Pin-yen Lin <treapking@chromium.org>,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: Erroneous sbs-battery sysfs info a MT8173 Chromebook
+Message-ID: <a83e80f7-2bb8-423d-b24e-e793ce5da988@notapiano>
+References: <6e341522-70f6-413c-b9ba-8ac86a19b5f3@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <Zv64RktMPv2rpCZf@intel.com>
-X-GND-Sasl: louis.chauvet@bootlin.com
+In-Reply-To: <6e341522-70f6-413c-b9ba-8ac86a19b5f3@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241003_084518_663393_CCFE7E2E 
-X-CRM114-Status: GOOD (  30.92  )
+X-CRM114-CacheID: sfid-20241003_090809_834672_4436992A 
+X-CRM114-Status: GOOD (  18.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,76 +80,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le 03/10/24 - 18:29, Ville Syrjälä a écrit :
-> On Thu, Oct 03, 2024 at 05:07:35PM +0200, Louis Chauvet wrote:
-> > 
-> > > > > diff --git a/drivers/gpu/drm/vkms/vkms_crtc.c b/drivers/gpu/drm/vkms/vkms_crtc.c
-> > > > > index a40295c18b48..780681ea77e4 100644
-> > > > > --- a/drivers/gpu/drm/vkms/vkms_crtc.c
-> > > > > +++ b/drivers/gpu/drm/vkms/vkms_crtc.c
-> > > > > @@ -64,7 +64,7 @@ static int vkms_enable_vblank(struct drm_crtc *crtc)
-> > > > >  	struct drm_vblank_crtc *vblank = drm_crtc_vblank_crtc(crtc);
-> > > > >  	struct vkms_output *out = drm_crtc_to_vkms_output(crtc);
-> > > > >  
-> > > > > -	drm_calc_timestamping_constants(crtc, &crtc->mode);
-> > > > > +	drm_calc_timestamping_constants(crtc, &crtc->legacy.mode);
-> > > > 
-> > > > 	drm_calc_timestamping_constants(crtc, &crtc->state->mode);
-> > > 
-> > > This one doesn't look safe. You want to call that during your atomic
-> > > commit already.
-> > > 
-> > 
-> > This was already not safe with the previous implementation? Or it is only 
-> > unsafe because now I use state->mode instead of legacy.mode?
+On Thu, Oct 03, 2024 at 06:15:49PM +0300, Alper Nebi Yasak wrote:
+> Hello,
 > 
-> Yeah, if you want to look at obj->state then you need the corresponding
-> lock.
+> I have a MT8173 Chromebook ("Lenovo 300e") where I'm getting a lot of 
+> battery-related errors:
 > 
-> obj->state is also not necessarily the correct state you want because
-> a parallel commit could have already swapped in a new state but the
-> hardware is still on the old state.
+> [   34.678473] sbs-battery 6-000b: sbs_read_string_data_fallback: Returned block_length is longer than 0x20
+> [   34.702079] power_supply_show_property: 5 callbacks suppressed
+> [   34.702096] power_supply sbs-6-000b: driver failed to report `technology' property: -22
+> [   34.754401] sbs-battery 6-000b: sbs_read_string_data_fallback: Returned block_length is longer than 0x20
+> [   34.782568] sbs-battery 6-000b: sbs_read_string_data_fallback: Returned block_length is longer than 0x20
+> [   34.806020] power_supply sbs-6-000b: driver failed to report `manufacturer' property: -22
+> [   34.826135] power_supply sbs-6-000b: driver failed to report `technology' property: -22
+> [   34.844078] sbs-battery 6-000b: sbs_read_string_data_fallback: Returned block_length is longer than 0x20
+> [   34.864128] sbs-battery 6-000b: sbs_read_string_data_fallback: Returned block_length is longer than 0x20
+> [   34.889015] power_supply sbs-6-000b: driver failed to report `model_name' property: -22
+> [   34.895486] power_supply sbs-6-000b: driver failed to report `technology' property: -22
+> [   34.945035] sbs-battery 6-000b: sbs_read_string_data_fallback: Returned block_length is longer than 0x20
 > 
-> Basically 99.9% of code should never even look at obj->state, and
-> instead should always use the for_each_new_<obj>_in_state()
-> and drm_atomic_get_new_<obj>_state() stuff. Currently that is a
-> pipe dream though because a lot of drivers haven't been fixed to
-> do things properly. If we ever manage to fix everything then we
-> could remove the stall hacks from drm_atomic_helper_swap_state()
-> and allow a commit pipeline of arbitrary length.
->
-> > 
-> > After inspecting the code, I think I don't need to call it as:
-> > 
-> > In `vkms_atomic_commit_tail` (used in 
-> > `@vkms_mode_config_helpers.atomic_commit_tail`), we call 
-> > `drm_atomic_helper_commit_modeset_disables`, which call 
-> > `drm_atomic_helper_calc_timestamping_constants` which call 
-> > `drm_calc_timestamping_constants` for every CRTC.
+> These infinitely repeat because upower keeps trying to read them. I also 
+> see this which might be important:
 > 
-> Slightly odd place for it, but I think that's just because it was
-> originally part of drm_atomic_helper_update_legacy_modeset_state()
-> and I didn't bother looking for a better home for it when I split
-> it out. But seems like it should work fine as is.
+> [   18.111500] cros-usbpd-charger cros-usbpd-charger.7.auto: Could not get charger port count
+> [   18.197166] sbs-battery 6-000b: sbs-battery: battery gas gauge device registered
+> [   18.248105] sbs-battery 6-000b: I2C adapter does not support I2C_FUNC_SMBUS_READ_BLOCK_DATA.
+>                Fallback method does not support PEC.
+> 
+> Properties seem to be stuck to weird values (0xffff ?):
+> 
+>   $ for f in /sys/class/power_supply/sbs-6-000b/*; do
+>       printf "$(basename "$f"):  "
+>       cat "$f" 2>/dev/null || echo
+>     done
+>   capacity:  100
+>   capacity_error_margin:  0
+>   capacity_level:  Full
+>   charge_full:  65535000
+>   charge_full_design:  65535000
+>   charge_now:  65535000
+>   constant_charge_current_max:  65535000
+>   constant_charge_voltage_max:  65535000
+>   current_avg:  -1000
+>   current_now:  -1000
+>   cycle_count:  65535
+>   device:
+>   energy_full:  655350000
+>   energy_full_design:  655350000
+>   energy_now:  655350000
+>   health:  Calibration required
+>   hwmon2:
+>   manufacture_day:  31
+>   manufacture_month:  15
+>   manufacturer:  
+>   manufacture_year:  2107
+>   model_name:
+>   of_node:
+>   power:
+>   present:  1
+>   serial_number:  ffff
+>   status:  Discharging
+>   subsystem:
+>   technology:  Unknown
+>   temp:  62804
+>   time_to_empty_avg:  3932100
+>   time_to_empty_now:  3932100
+>   time_to_full_avg:  3932100
+>   type:  Battery
+>   uevent:
+>   voltage_max_design:  65535000
+>   voltage_min_design:  65535000
+>   voltage_now:  65535000
+>   wakeup10:
+> 
+> I suspected a hardware issue, but I can get battery info from the EC 
+> just fine with the same kernel:
+> 
+>   $ sudo ectool battery
+>   Battery info:
+>     OEM name:               LGC
+>     Model number:           L15L3PB
+>     Chemistry   :           LiP
+>     Serial number:          0E0C
+>     Design capacity:        4050 mAh
+>     Last full charge:       3341 mAh
+>     Design output voltage   11100 mV
+>     Cycle count             115
+>     Present voltage         11671 mV
+>     Present current         344 mA
+>     Remaining capacity      2734 mAh
+>     Flags                   0x06 BATT_PRESENT DISCHARGING
+>   
+>   $ sudo ectool version
+>   RO version:    hana_v1.1.4824-d58e50539
+>   RW version:    hana_v1.1.4825-1473136d99
+>   Firmware copy: RW
+>   Build info:    hana_v1.1.4825-1473136d99 2021-09-11 00:11:48 @chromeos-ci-firmware-us-central2-d-x32-0-jx9e
+> 
+> I have _another_ MT8173 Chromebook ("ASUS C202X") where things work 
+> fine. But I couldn't find a good mainline kernel version for this one.
+> Anyone have any idea what is going on?
 
-I just send a patch for this! Thanks for your help!
+FWIW, I have also experienced issues reading properties from the SBS batteries
+before on chromebooks:
 
-[1]:https://lore.kernel.org/all/20241003-remove-legacy-v1-1-0b7db1f1a1a6@bootlin.com/
- 
-> > 
-> > I tested kms_vblank, all of them are SUCCESS/SKIP, do you know other tests 
-> > that can trigger bugs?
-> 
-> You would explicitly have to race commits against vblank_enable.
-> Could of course sprinkle sleep()s around to widen the race window
-> if you're really keen to hit it.
-> 
-> -- 
-> Ville Syrjälä
-> Intel
+https://lore.kernel.org/all/924db470-8163-4454-8f59-f7372a132186@notapiano/
 
--- 
-Louis Chauvet, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+In those cases it was due to the EC firmware not implementing the SBS commands,
+but that had already been fixed in the latest EC firmware release, so simply
+updating the firmware fixed it.
+
+I don't know how ectool works, but it might be fetching the battery properties
+through a different mechanism (ie not SBS commands), so this might also be a bug
+in the EC FW despite ectool working.
+
+Thanks,
+Nícolas
 
