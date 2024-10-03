@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC0DACF8551
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Oct 2024 08:15:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D93C5CF856E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Oct 2024 08:37:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P3r8VTpa5rQNT1752KdN5+MdYavCY3+0qn/sOWEYrSA=; b=0Gi5I062zybHUEgUU3TRVJHL/3
-	k2x++w2CRWHSxdMEwQpMXmkGdl8ZHLtoNBk5vZHbvWbuMfQpJK83DuQIPG3YImJZhxplPMKox8xp1
-	Be6wgy3yoMweFS2MR40nVIDkO/5L7dEazte/RlROgdC244ZfQyHBuAMbvUFSpsaknOEngVAnBTqZ4
-	i7s6oqOPGGslfwP1ig+fLGdHDdozAdk5dc3v9pm/5UfnjxMsyd5h0BoSs2RRNLzE4zKjQ9x+DmK1C
-	psmgjQlat+QgRONA86gBCJdzzVTNve+jihN8T9dM2CPXH0Cnye57F/h8tOBESo24kcCYWCsO0wbcd
-	0HCt7Zrg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=frHaN26S6j1vJ6qoXYeSLR46HBhnEYVNkUJphNTWVAE=; b=bEXFDDTfVnoUcw1ZE0JH17WD+H
+	5n4IDPxFTIWRmfLRKr+Rw7bkfTIZr70WKF5516BCBGlMJ7IzLDhrCKu8O+rqXAtxGp3bzxwIbyf4a
+	UgKjwCUVSUAd0+DCEIMyMtrxtedOEprEOB+yQq0LJX0BC/0nMNKkfgyoVWNjiDOvNF2fLd0RTOeYT
+	RxeDDt28/zmrhRLlWwSYS1LqSFtmS23m1SsbGyrb5uHO6RArJrGMGeEUT9iUv8ZziQbrt/TZSQ9kx
+	14uW7jGe/VOM1Ayuz6idNKb07+XiJuJLToxUvSb+Vl8LpAXjorVDnw1UYcEqqWh1NuLnHI+AVrpNp
+	D4ncN6GQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1swGzQ-00000008WQv-3Wa6;
-	Thu, 03 Oct 2024 08:15:12 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1swHLE-00000008acg-2NEs;
+	Thu, 03 Oct 2024 08:37:44 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1swGy5-00000008Vo4-0TO5;
-	Thu, 03 Oct 2024 08:13:50 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0DE735C5C68;
-	Thu,  3 Oct 2024 08:13:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5FEADC4CEC7;
-	Thu,  3 Oct 2024 08:13:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727943227;
-	bh=Itl0lNG3SHyzps1B6SjVO8EibEF/9aynPeJRbif+49g=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dAXw7Q5M0keCOif6SbQ75a0Xvs+MmWKWITYiRBIFE5fEnxvwQSdHwSYDh/7K05bqa
-	 +laZ7ZA+sMwFgKh6dLhZM487lJ4IaUpjSYsSH7+CRlhpD6U/5zZFbPHPq4L8XiXeke
-	 gQ5OGvEbxEwq4vFRnWvT571Y/G28kzb/l/snDduc4iZyyMWf+A5hV77Mkidg3WfCGy
-	 hIZYBrnvKECo8vTEtJMBXeKAoMDBDXxwpB3psujRpiIYJdICVRmWhqpJl2jH3OXrQp
-	 2tiHTLWKNpDB7HAxI+HjYBTfXaM6f8I3ppEaih7n0CBG/CGO5oFq2Vdm2gxXQ6b4A0
-	 Tf6Lp9DikBGcQ==
-Date: Thu, 3 Oct 2024 10:13:44 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Pablo Sun <pablo.sun@mediatek.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3 3/6] dt-bindings: nvmem: mediatek: efuse: Reuse
- mt8186-efuse in mt8188
-Message-ID: <74uvqyd2n6cxzi4z3miqh5ay7xun2qapjuse7bav5thr44rlml@pr44cvxsngfe>
-References: <20241002022138.29241-1-pablo.sun@mediatek.com>
- <20241002022138.29241-4-pablo.sun@mediatek.com>
- <mh7upw2y2dclyosved3chw7chpqgdg4a3j5ftwftfhm6v5uqpt@cotoeuopfbqg>
- <559fc2a5-631c-440a-812f-2907f84b16b4@collabora.com>
+	id 1swHJx-00000008aOO-2N2J;
+	Thu, 03 Oct 2024 08:36:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1727944583;
+	bh=pt043Ff6H8qxgHmvl/WZhdH/nIcm8g4J984M1fzICQk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Q/NqSKn51hsQfi2q3BwO6Lp83zdwze86CQnYOcKsrDfnMnchywKZRNGEmkOnuJZh2
+	 mFb5Ouizs2prsCxLVI3eOR4YRbOlTUb/FaJ2t2F12bD8ow69VrgWNHny81HhpopGOS
+	 eth2FOQa/0rcB2zaIkzOAlR7rY0ppSkg2usWCskaQhCMIqIcGy13xdBROCb6G/Nfpe
+	 r+zJRTEXIHgWy5YnvT5g6SswhWnZV2duV8ffZvKZ1c0uif+QIRwF6PYKmQhsaqsnDo
+	 pI1Vqz4Fems5+AhwjnmzA/YwpTcTNvihXfuLocrZaHDah7cZM6Ikuk8jZUWONd2ciQ
+	 TrX9BAQiJ25uA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E4C7617E10B5;
+	Thu,  3 Oct 2024 10:36:22 +0200 (CEST)
+Message-ID: <d3052eb4-bfcb-4ee2-9b4b-a4845238c765@collabora.com>
+Date: Thu, 3 Oct 2024 10:36:22 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <559fc2a5-631c-440a-812f-2907f84b16b4@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/9] arm64: dts: mediatek: mt8188: Add MIPI DSI nodes
+To: Fei Shao <fshao@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20241003070139.1461472-1-fshao@chromium.org>
+ <20241003070139.1461472-4-fshao@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20241003070139.1461472-4-fshao@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241003_011349_216726_8ADDE0D0 
-X-CRM114-Status: GOOD (  22.66  )
+X-CRM114-CacheID: sfid-20241003_013625_816648_B1666317 
+X-CRM114-Status: GOOD (  13.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,51 +77,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 02, 2024 at 09:42:32AM +0200, AngeloGioacchino Del Regno wrote:
-> Il 02/10/24 08:11, Krzysztof Kozlowski ha scritto:
-> > On Wed, Oct 02, 2024 at 10:21:35AM +0800, Pablo Sun wrote:
-> > > mt8188 has the same GPU speed binning efuse field just
-> > > like mt8186, which requires post-processing to convert to the
-> > > bit field format specified by OPP table.
-> > > 
-> > > Add the binding for the compatible list:
-> > >    "mediatek,mt8188-efuse", "mediatek,mt8186-efuse"
-> > > so mt8188 uses the same conversion.
-> > > 
-> > > Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > > Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
-> > > ---
-> > >   Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml | 4 ++++
-> > >   1 file changed, 4 insertions(+)
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-> > > index 32b8c1eb4e80..70815a3329bf 100644
-> > > --- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-> > > +++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-> > > @@ -39,6 +39,10 @@ properties:
-> > >                 - mediatek,mt8195-efuse
-> > >                 - mediatek,mt8516-efuse
-> > >             - const: mediatek,efuse
-> > > +      - items:
-> > > +          - enum:
-> > > +              - mediatek,mt8188-efuse
-> > > +          - const: mediatek,mt8186-efuse
-> > 
-> > And this is not compatible with generic one? This is confusing. Why are
-> > you adding generic fallbacks if they are not valid?
-> > 
+Il 03/10/24 08:59, Fei Shao ha scritto:
+> Add MIPI DSI and the associated PHY node to support DSI panels.
+> Individual board device tree should enable the nodes as needed.
 > 
-> It was my suggestion to start dropping the usage of the generic "mediatek,efuse"
-> fallback, as I've seen multiple times feedback saying to not use generic fallbacks.
+> Signed-off-by: Fei Shao <fshao@chromium.org>
+> ---
 > 
-> Was that wrong?
+> (no changes since v1)
+> 
+>   arch/arm64/boot/dts/mediatek/mt8188.dtsi | 26 ++++++++++++++++++++++++
+>   1 file changed, 26 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+> index 23101d316c4e..719d2409a7db 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+> @@ -1839,6 +1839,16 @@ pcieport: pcie-phy@0 {
+>   			};
+>   		};
+>   
+> +		mipi_tx_phy: dsi-phy@11c80000 {
 
-No, just nothing provided the background that such change is
-intentional. Please mention in commit msg that the preferred way from
-now on is not using the generic fallback.  Maybe even add it to the
-binding itself as comment, so people won't grow the enum with fallback.
+There are two DSI PHYs, one at 0x11c80000 and one at 0x11c90000
 
-Best regards,
-Krzysztof
+> +			compatible = "mediatek,mt8188-mipi-tx", "mediatek,mt8183-mipi-tx";
+> +			reg = <0 0x11c80000 0 0x1000>;
+> +			clocks = <&clk26m>;
+> +			clock-output-names = "mipi_tx0_pll";
+> +			#clock-cells = <0>;
+> +			#phy-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+>   		i2c1: i2c@11e00000 {
+>   			compatible = "mediatek,mt8188-i2c";
+>   			reg = <0 0x11e00000 0 0x1000>,
+> @@ -2224,10 +2234,26 @@ larb19: smi@1a010000 {
+>   			mediatek,smi = <&vdo_smi_common>;
+>   		};
+>   
+> +		disp_dsi: dsi@1c008000 {
+
+And there are two DSIs, one at 0x1c008000 and one at 0x1c012000
+
+Cheers,
+Angelo
+
 
 
