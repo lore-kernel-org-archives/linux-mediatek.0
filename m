@@ -4,114 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ABCBCF855E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Oct 2024 07:01:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F97CCF855E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Oct 2024 07:03:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qbiSMpuPwHJJ8+7hgzWW8VklVykSZy7Bn9abf5q3Y2o=; b=CduaFx11tM1J1+yJlCf4tV5BJK
-	N4lF3B3yiF8/8TkooNRAzeAs9MoVBlFYaOby7b+LlTGPo5UAVlsSUKO9jlS1+02IT4RAOCgwbk/iH
-	jh5WR9GfzJgNCpLMcbyVYmteFrJ4aaeQMrN72RsdcS/vYrBCehZ5qqJj+cnxn0motPaXlCchUYYeK
-	iaV/dbw7YNZmbLgAPdxASexKEfxQSMVXv4XZ2A02Yd0aHn7pmEwFlgdxf4/tCgJSK7BC1A/XIylWx
-	+ohMEAwyZkBIaZui0zW0hUWlGSsfhF/sXJFUHOqucRXrgO5fl0NlRiCbq5tg6jA5tQxunxVoXa9il
-	66JkfK+Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=AZJgskQg5tDgPdSx1KJYs4rKBMoBQcgj9HSr6fJPbCo=; b=kyqnyb3znHZhVF
+	3uDcqoYi6m1ZfNtsyzrH2SOvZLjmvgD5+D8HrDfJaoHY/NXhM0sfJL7DPKGEAKGeMmEISEV+cmQ5/
+	DE3jSR9n+gI6nxO2b3F+0NEcH66w9Ut5jn3etOruIWQYZj0LXeZSwAY51ZhgZDUmkqmI01xCFcbeY
+	Ee5AMkno7Hay2XVSQIVkjxj/pNgWpleIPtG744y4ZKLuu/1LJwyMIjVVG20b/ta7Kb52awmG33UqK
+	GAUyAh6k1OL02Lo3x7hqCKAjItSW5dDubBv+GjnHmw4Wj6Bu0ErJTZbpnA5lw0FIfQbNx++QGiBfi
+	NpXy1zp09YlFBZt1GEaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1swFpn-00000008KJS-30z8;
-	Thu, 03 Oct 2024 07:01:11 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1swFrY-00000008Ko0-41KL;
+	Thu, 03 Oct 2024 07:03:00 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1swFoV-00000008KBl-3ZdM;
-	Thu, 03 Oct 2024 06:59:53 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B96925C5902;
-	Thu,  3 Oct 2024 06:59:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A82C0C4CEC7;
-	Thu,  3 Oct 2024 06:59:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1727938790;
-	bh=D68iDBPRvSOAiuPOdMfKw+VDrBVrwfK8/T76gvTpPbY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aprF6CC3e88subtKorsb4MOulPivRhUGmXC/ho8OFdK8OVI1jN6tsKS26Crcv9C+Q
-	 kAeQomgpFTdZYlz2XKFZ40tzoM9pbYLViNQoLNMnJqIB+Evqmj5rDwtt79Zb+Vk2ex
-	 pINfpbEfsLspE63o2E6lOn49xDtYsPdtuB94pIajZ9udXWrS+c8wyWZSidU0fHjpVL
-	 xP+oK6OToKzSOi42cBl7ZSU8z0PEdBtBOUeLhuLoVOjXc8vye1RxNnDGPAe6mIXjDJ
-	 RD8ogK/BVoxAYQRdWemiFH3b/MgVD5oL77NQ57R1AVlJHU+hd3hborJTo9eG6a7Reh
-	 5v/DS9+bXBVvg==
-Message-ID: <5d69448b-10ff-49b6-bfd0-6146ef04a0cc@kernel.org>
-Date: Thu, 3 Oct 2024 08:59:41 +0200
+	id 1swFqN-00000008KOn-3Kgk
+	for linux-mediatek@lists.infradead.org;
+	Thu, 03 Oct 2024 07:01:50 +0000
+Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-718e285544fso525619b3a.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 03 Oct 2024 00:01:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1727938907; x=1728543707; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=AZJgskQg5tDgPdSx1KJYs4rKBMoBQcgj9HSr6fJPbCo=;
+        b=UXYdKkPJMxtFWCaXA9YAfQbWi2UWcM/cXL87QioeiCkwRMkLrlHZ7h3NX63RfNaS9g
+         BkK9DAkyOukKYlSF7VpCPkAQB1I93U958AuS9oZI7WxNuJsE0LRgMi7B1lAeB27qpoDN
+         KkLID5ygrmxRQoLwgmObHL6bceOXDmAOHByNM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727938907; x=1728543707;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=AZJgskQg5tDgPdSx1KJYs4rKBMoBQcgj9HSr6fJPbCo=;
+        b=iIC2mL3ZlRfRqx3XAVIo16HILp8NX4uWMcm4/yCyvt2L/SljytKlmWkMzStJCpBaKs
+         XFAOSa/v6QKPDLfkvCEZEGfz3DiecbNiKSImmDuOkAo/2uOxQ94l/EDZbARcvxI0HMW/
+         OVnA1DuBrzJ/T1DyPEfof/MXH1ZboyHpVHYnG45pcVFAwszlsol1HP0ec8j/Bx/zzXYl
+         T3id2/GAcrDe+vunOMJse8LkVkWOkwtOXQVsOy7TqhM4kwF7km3DixNlKfQK/sAGlH6F
+         bHVLrkpQehVGDPhDjNzSgBwAdDj0phodIZ8ST5WzELf6Y1MfJ7zHpzEDo57UIs4fleaH
+         xzUw==
+X-Forwarded-Encrypted: i=1; AJvYcCUVtXPRjr7dBm1cMAKrxVsgCQUKb8fseutrJyxIhygknHreo6eWBY3rviBtV67Sc6qkKgl/2laagbzVlfwQBA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzQmyfMuInXUXqUz1jqT6KUt4q+aS8tETVoSs1B9RvawumAFdkL
+	oGTdjiovyQlIN72WfTIMEHRIVvC2f24p2UR5zomjsni06rB8766zEPX4qwANHg==
+X-Google-Smtp-Source: AGHT+IEtc9guZHmCHC6M224cCyhunrP9QOCWTENBTkqLfl+XJjW5TRlJ4EfZo91lZvdW9MJ3b/Yokw==
+X-Received: by 2002:a05:6a00:92a8:b0:70d:2583:7227 with SMTP id d2e1a72fcca58-71dc5c485f3mr8062978b3a.6.1727938906729;
+        Thu, 03 Oct 2024 00:01:46 -0700 (PDT)
+Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:3bd0:d371:4a25:3576])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71dd9d8e473sm633782b3a.81.2024.10.03.00.01.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 03 Oct 2024 00:01:46 -0700 (PDT)
+From: Fei Shao <fshao@chromium.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH v2 0/9] Add platform supports to MediaTek MT8188 SoC (part 2)
+Date: Thu,  3 Oct 2024 14:59:54 +0800
+Message-ID: <20241003070139.1461472-1-fshao@chromium.org>
+X-Mailer: git-send-email 2.46.1.824.gd892dcdcdd-goog
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] wifi: mt76: Fix NULL Dereference caused by
- mt76_connac_get_he_phy_cap()
-To: Gax-c <zichenxie0106@gmail.com>, nbd@nbd.name, lorenzo@kernel.org,
- ryder.lee@mediatek.com, shayne.chen@mediatek.com, sean.wang@mediatek.com,
- kvalo@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, johannes.berg@intel.com,
- quic_adisi@quicinc.com, deren.wu@mediatek.com, chui-hao.chiu@mediatek.com,
- mingyen.hsieh@mediatek.com, howard-yh.hsu@mediatek.com,
- StanleyYP.Wang@mediatek.com, allen.ye@mediatek.com,
- benjamin-jw.lin@mediatek.com, Bo.Jiao@mediatek.com,
- evelyn.tsai@mediatek.com, meichia.chiu@mediatek.com
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, zzjas98@gmail.com, chenyuan0y@gmail.com
-References: <c7978538-04b4-406a-b8e3-70d3472ace7f@kernel.org>
- <20241002213919.30360-1-zichenxie0106@gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20241002213919.30360-1-zichenxie0106@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241002_235952_024634_046F2CA8 
-X-CRM114-Status: UNSURE (   7.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241003_000147_948059_DCF37564 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,27 +82,58 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02/10/2024 23:39, Gax-c wrote:
-> mt76_connac_get_he_phy_cap() may return a NULL pointer,
-> leading to NULL Pointer Dereference.
-> Add a NULL check for the returned pointer.
-> 
-> Fixes: a5c372f77aa7 ("wifi: mt76: mt7925: extend mt7925_mcu_bss_he_tlv for per-link BSS")
-> Fixes: e6d557a78b60 ("mt76: mt7915: rely on mt76_connac_get_phy utilities")
-> Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
-> Signed-off-by: Zichen Xie <zichenxie0106@gmail.com>
-> ---
+Hi all,
 
-This does not match From.
+This series is based on top of my previous "Add platform supports to
+MediaTek MT8188 SoC" v3 series[*].
 
-Do not attach (thread) your patchsets to some other threads (unrelated
-or older versions). This buries them deep in the mailbox and might
-interfere with applying entire sets.
+There's nothing to change or address in that series at the point of
+writing, so I decided not to resend it and start this new "part 2"
+series instead.
+(if I need to update both series next time I might consider merging them
+into one)
 
-Best regards,
-Krzysztof
+Specifically, this continues to introduce the following platform supports
+in MediaTek MT8188 SoC to lay the groundwork for the board device trees:
+- PCIe
+- MIPI DSI panel
+- video decoder and encoder
+- JPEG decoder and encoder
+- vdosys0 and vdosys1 display pipelines
+- DP-INTF
+- eDP and DP TX
+- aliases
+
+Please have a look and feedback are welcome, thanks.
+
+[*]: https://lore.kernel.org/all/20240911143429.850071-1-fshao@chromium.org/
+
+Regards,
+Fei
+
+Changes in v2:
+- add linux,pci-domain to PCIe node
+- add power domain to PCIe PHY node.
+
+Fei Shao (9):
+  arm64: dts: mediatek: mt8188: Assign GCE aliases
+  arm64: dts: mediatek: mt8188: Add PCIe nodes
+  arm64: dts: mediatek: mt8188: Add MIPI DSI nodes
+  arm64: dts: mediatek: mt8188: Add video decoder and encoder nodes
+  arm64: dts: mediatek: mt8188: Add JPEG decoder and encoder nodes
+  arm64: dts: mediatek: mt8188: Add display nodes for vdosys0
+  arm64: dts: mediatek: mt8188: Add display nodes for vdosys1
+  arm64: dts: mediatek: mt8188: Add DP-INTF nodes
+  arm64: dts: mediatek: mt8188: Add eDP and DP TX nodes
+
+ arch/arm64/boot/dts/mediatek/mt8188.dtsi | 643 +++++++++++++++++++++++
+ 1 file changed, 643 insertions(+)
+
+-- 
+2.46.1.824.gd892dcdcdd-goog
 
 
