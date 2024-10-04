@@ -4,82 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 716E7CFA769
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Oct 2024 11:17:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AB57CFA771
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Oct 2024 12:09:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Rg57b2C8DB3sjeiJUSQURXizNpt/OycVgwR/X0Z5Pt4=; b=FKvw1a0ElyeyPOfktsdvAupGXe
-	X7+M9BCzdxtGt2bIAOEEHJa3Ona+OUrm1t+51mnDYhbdKMWQt3oTBI/3UtfiO2uPJxWo39WRvB+0F
-	hMlCMn4tuIFL4T26lBmgp/UOng3AZOvl2vdP4D7OlhJCO5my0AL4vcoMPFNsyuGMQvKC28r/r0Qta
-	xCQgEipKbd2bzuSI5z+LJ0FPaMod/yK7YgmmMynHU8/U5S7jOWO01CK6S0f8eRtwq20mRlgwccNSU
-	m8k7FTGgsWKZKVags6LPYOncv2nzsUGfXjX82pzcIm+0HBayL4uZAXL+QohmaV3VgrN/ywjpc5Hra
-	lGWG8SIA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Gjkpj7klBDx4CtJ5kaQxWvklTYn7Jg83Vuq32kjyQEA=; b=s6nnLrHUuHQ7P2kzQEQk4WuQtl
+	SoWS6YsEYJ1gcxQwgkIhlv9fDBsdIB5i9Ccqp2UUNBan45arBIeD7LhURE2gGMF2d5b+u3mbwkgep
+	C/6rXl/x4Ga+zpL1pjNA42qc4UA1KcBetZeucFDYpMqqqgEvF2/P3bJW06BDY+HgN4PiuMyLV1P5d
+	NzB8A+PKqxGOP4CsquKHVkDTILgPGKl5IkQZCi2tS77bCrAoNvomGUimcp+yMMLU4KcFe5y5a0Njd
+	aJLQXuCCoeIHKvQR+PaoTgddXaVPL8nNtEMSJa3yxL50OUP5hSxb5k2PSYan6lAiwNWn6kCTn2BYJ
+	F88Huayw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1swgJZ-0000000C4Ii-1oP4;
-	Fri, 04 Oct 2024 11:17:41 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1swh7x-0000000CFVs-48We;
+	Fri, 04 Oct 2024 12:09:45 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1swgB6-0000000C1Sk-0YaG;
-	Fri, 04 Oct 2024 11:08:57 +0000
-X-UUID: 092e213e824111efb3adad29d29602c1-20241004
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=Rg57b2C8DB3sjeiJUSQURXizNpt/OycVgwR/X0Z5Pt4=;
-	b=fvoXmcewBUYl/9P/erl4TFyRotvP8gssBISM6N4a8s1EcsUYF2JrIVUQKc/vzqyOUxvwEHukJZO4jszPt2UXhDKmHhZQJSH7KimWerq4ndYQTpL+Vk0ZC2oUy2YfHmm1V5aBBiJAtDNDOQTIRv+E42JqnR/Khhf5xnhm8P+AkcA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:e0c07f69-3008-4a36-ba2d-25881ffa2a1b,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6dc6a47,CLOUDID:3615bf64-444a-4b47-a99a-591ade3b04b2,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 092e213e824111efb3adad29d29602c1-20241004
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <pablo.sun@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1364482962; Fri, 04 Oct 2024 04:08:51 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 4 Oct 2024 19:08:48 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
- Transport; Fri, 4 Oct 2024 19:08:48 +0800
-Message-ID: <0aa5a003-46d5-4dc7-c720-c847cae95f65@mediatek.com>
-Date: Fri, 4 Oct 2024 19:08:45 +0800
+	id 1swh6R-0000000CF6g-22Mi;
+	Fri, 04 Oct 2024 12:08:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=Gjkpj7klBDx4CtJ5kaQxWvklTYn7Jg83Vuq32kjyQEA=; b=qqOsVPUC7pi+5Idm9LgCg/j6Ts
+	0CfnRuuIZesmuPfkSBRC8LGDUQw55gLfwTnw022eB4RdQPSXHCydnY+s0QBAsB7PkmviwNEOzQO6y
+	+NWPYhl+ravyBhbNfpAdK8NwumIR1ozgD9qjibiDHZpMSPs7kUtYatX9c+4hMHzoogWQsw+WMRPLy
+	dwjs/5YBseAuAzC+5+H8bdKvYp0VrEJNIwk1g9qRLXFDEZAqksf2bj96gHk5213tiWATwp/qqwnRb
+	jpvRu0WgaDaN1ae1OqwrzQp6zoI9ctt+M+G2X1r49vWlUG77JnlXc50t4KUQsKa3rbRIMJR0PN/gy
+	AnfadSbw==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:56390)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1swh6A-0001ui-1q;
+	Fri, 04 Oct 2024 13:07:54 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1swh64-0001AB-2a;
+	Fri, 04 Oct 2024 13:07:48 +0100
+Date: Fri, 4 Oct 2024 13:07:48 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Sky Huang <SkyLake.Huang@mediatek.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Steven Liu <Steven.Liu@mediatek.com>
+Subject: Re: [PATCH net-next 8/9] net: phy: mediatek: Change mtk-ge-soc.c
+ line wrapping
+Message-ID: <Zv_alBqCPvrSzRPL@shell.armlinux.org.uk>
+References: <20241004102413.5838-1-SkyLake.Huang@mediatek.com>
+ <20241004102413.5838-9-SkyLake.Huang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH v3 3/6] dt-bindings: nvmem: mediatek: efuse: Reuse
- mt8186-efuse in mt8188
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Krzysztof Kozlowski
-	<krzk@kernel.org>
-CC: Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
-	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-References: <20241002022138.29241-1-pablo.sun@mediatek.com>
- <20241002022138.29241-4-pablo.sun@mediatek.com>
- <mh7upw2y2dclyosved3chw7chpqgdg4a3j5ftwftfhm6v5uqpt@cotoeuopfbqg>
- <559fc2a5-631c-440a-812f-2907f84b16b4@collabora.com>
- <20241002211130.GA1316112-robh@kernel.org>
-From: Pablo Sun <pablo.sun@mediatek.com>
-In-Reply-To: <20241002211130.GA1316112-robh@kernel.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241004102413.5838-9-SkyLake.Huang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241004_040856_239872_C617478F 
-X-CRM114-Status: GOOD (  18.61  )
+X-CRM114-CacheID: sfid-20241004_050811_589271_34141D65 
+X-CRM114-Status: GOOD (  15.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,56 +89,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob, Angelo, and Krzysztof,
+Hi,
 
-Thanks for the thoughtful review, I'd like to follow-up on
-Rob's comment:
+On Fri, Oct 04, 2024 at 06:24:12PM +0800, Sky Huang wrote:
+> diff --git a/drivers/net/phy/mediatek/mtk-ge-soc.c b/drivers/net/phy/mediatek/mtk-ge-soc.c
+> index 26c2183..cb6838b 100644
+> --- a/drivers/net/phy/mediatek/mtk-ge-soc.c
+> +++ b/drivers/net/phy/mediatek/mtk-ge-soc.c
+> @@ -295,7 +295,8 @@ static int cal_cycle(struct phy_device *phydev, int devad,
+>  	ret = phy_read_mmd_poll_timeout(phydev, MDIO_MMD_VEND1,
+>  					MTK_PHY_RG_AD_CAL_CLK, reg_val,
+>  					reg_val & MTK_PHY_DA_CAL_CLK, 500,
+> -					ANALOG_INTERNAL_OPERATION_MAX_US, false);
+> +					ANALOG_INTERNAL_OPERATION_MAX_US,
+> +					false);
 
-On 10/3/24 05:11, Rob Herring wrote:
-[snip]
-> > > diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-> > > index 32b8c1eb4e80..70815a3329bf 100644
-> > > --- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-> > > +++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-> > > @@ -39,6 +39,10 @@ properties:
-> > >                 - mediatek,mt8195-efuse
-> > >                 - mediatek,mt8516-efuse
-> > >             - const: mediatek,efuse
-> > > +      - items:
-> > > +          - enum:
-> > > +              - mediatek,mt8188-efuse
-> > > +          - const: mediatek,mt8186-efuse
-[snip]
-> 
-> What about all the other efuses? The fallback needs to be a subset of
-> the 1st compatible.
-[snip]
-> 
-> No, but any fallback seems seems a bit odd here. It's one of those
-> things that's going to change with every chip.
+This is fine.
 
-I think you all agree that the common fallback "mediatek,efuse" should
-not longer be used, and such deprecation should be commented both commit
-message and the YAML, same as "rockchip,rockchip-efuse" in rockchip-efuse.yaml.
+>  	if (ret) {
+>  		phydev_err(phydev, "Calibration cycle timeout\n");
+>  		return ret;
+> @@ -304,7 +305,7 @@ static int cal_cycle(struct phy_device *phydev, int devad,
+>  	phy_clear_bits_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_AD_CALIN,
+>  			   MTK_PHY_DA_CALIN_FLAG);
+>  	ret = phy_read_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_AD_CAL_COMP) >>
+> -			   MTK_PHY_AD_CAL_COMP_OUT_SHIFT;
+> +	      MTK_PHY_AD_CAL_COMP_OUT_SHIFT;
 
-But, Rob has mentioned that I should only define a fallback
-if and only if mediatek,mt8186-efuse is a **subset** of mediatek,mt8188-efuse.
+Before cleaning this up, please first make it propagate any error code
+correctly (a bug fix):
 
-It is true that I can merely confirm that they share the same "GPU speed bin"
-efuse bit definition and conversion routines.
+	ret = phy_read_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_AD_CAL_COMP);
+	if (ret < 0)
+		return ret;
 
-At this moment I cannot confirm:
+	ret >>= MTK_PHY_AD_CAL_COMP_OUT_SHIFT;
 
-- mt8188 has every efuse cells mt8186 defined.
-- Every mt8188 efuse cells values must be interpreted the same as mt8186.
+and then you won't need to change it in this patch. A better solution to
+the shift would be to look at FIELD_GET().
 
-So, I don't think mt8186-efuse is a subset of mt8188-efuse in this sense.
+>  	phydev_dbg(phydev, "cal_val: 0x%x, ret: %d\n", cal_val, ret);
+>  
+>  	return ret;
+> @@ -394,38 +395,46 @@ static int tx_amp_fill_result(struct phy_device *phydev, u16 *buf)
+>  	}
+>  
+>  	phy_modify_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_TXVLD_DA_RG,
+> -		       MTK_PHY_DA_TX_I2MPB_A_GBE_MASK, (buf[0] + bias[0]) << 10);
+> +		       MTK_PHY_DA_TX_I2MPB_A_GBE_MASK,
+> +		       (buf[0] + bias[0]) << 10);
 
-Do you think it would be better that we re-use this GPU speed bin conversion
-in the eFuse driver implementation, rather than reuse it in the dt-binding?
+Another cleanup would be to use FIELD_PREP() for these.
 
-This is also what Angelo suggested initially for v2 modification.
+> -static const unsigned long supported_triggers = (BIT(TRIGGER_NETDEV_FULL_DUPLEX) |
+> -						 BIT(TRIGGER_NETDEV_HALF_DUPLEX) |
+> -						 BIT(TRIGGER_NETDEV_LINK)        |
+> -						 BIT(TRIGGER_NETDEV_LINK_10)     |
+> -						 BIT(TRIGGER_NETDEV_LINK_100)    |
+> -						 BIT(TRIGGER_NETDEV_LINK_1000)   |
+> -						 BIT(TRIGGER_NETDEV_RX)          |
+> -						 BIT(TRIGGER_NETDEV_TX));
+> +static const unsigned long supported_triggers =
+> +	(BIT(TRIGGER_NETDEV_FULL_DUPLEX) |
+> +	 BIT(TRIGGER_NETDEV_HALF_DUPLEX) |
+> +	 BIT(TRIGGER_NETDEV_LINK)        |
+> +	 BIT(TRIGGER_NETDEV_LINK_10)     |
+> +	 BIT(TRIGGER_NETDEV_LINK_100)    |
+> +	 BIT(TRIGGER_NETDEV_LINK_1000)   |
+> +	 BIT(TRIGGER_NETDEV_RX)          |
+> +	 BIT(TRIGGER_NETDEV_TX));
 
-Many thanks,
-Pablo
+The outer parens are unnecessary, and thus could be removed.
+
+Thanks.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
