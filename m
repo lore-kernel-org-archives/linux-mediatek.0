@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47FF0CFA750
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF9A5CFA74C
 	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Oct 2024 08:25:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
@@ -12,68 +12,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=i4TchenuM2PZiHwsPrmRTDwDZS9j+elV+kESl2Ludm4=; b=BG7T7FzhxUIOnQ
-	6QNGNqdg8YMHGi8Tkx5wSOKEx6bP2xekMMPqBRPkc6KyjUV3oJwLD0fmehNaNVbHYaKUMzeQQaB2e
-	lIAZxqCHmzaqF3jUA3bRyig9iETJUcTc+XG/Db8xywX1qr8S4otiXvgulP009o3mKuwYxf6YmlfOw
-	KSqoPx7EyK4q8586vZhb1v4KA9TL0Q3URMORldHvaAT8I1djSpw7S/ERKQk+sTKZWVsYZViGCdX/F
-	1lgqGXyg8NrAmTYSiFgz0XT12XQC38ZvsuoGPcL6Zz2R8vX0AyBSPFrsA7nkony01u8knMViNoKZS
-	tHgfYGZxT4Esdq2rRIQQ==;
+	List-Owner; bh=GN85sCKrVOA3tu4HmVxI2QI8ZoLBkf3gydcFUAN5vhA=; b=zpTvKIDCUCfTDK
+	KV+8jVeDjnvfzvd0vYiU4mcy0h42Wxwyw+9XCbM4VzIZs9c0lh0Qofpn8tFh1BexSLgjcNbxDXFON
+	O7sHZrWeAVTus0RFNjksRrEu6ATjk8a9MpPGlUTgs2FuYUpxZTC7EOHtyVZ3qDOMEQsiyo4WtUW3U
+	EpVJhnruDC0tTql1X9SvrNxgopIKO5pJ4liJgYxAZliyT5o0aczXjhEl2/FaAiQdEvewbzzlj9pws
+	8Izv9hbuLCtZPq6pB364bcDJxV+unq+1t4G/sJJ4tHVfGKDUBtkalf6+evjUiVOcv0rzL0c+NZqlH
+	Ms3eLSEgkHQ+VmCbLScw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1swdcZ-0000000BOm5-451c;
-	Fri, 04 Oct 2024 08:25:07 +0000
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+	id 1swdca-0000000BOmI-1a8U;
+	Fri, 04 Oct 2024 08:25:08 +0000
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1swdQy-0000000BM73-2Xds
+	id 1swdR1-0000000BM8Z-2CU8
 	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Oct 2024 08:13:10 +0000
-Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-207115e3056so16782605ad.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 04 Oct 2024 01:13:08 -0700 (PDT)
+	Fri, 04 Oct 2024 08:13:13 +0000
+Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-20b0b2528d8so20935105ad.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 04 Oct 2024 01:13:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1728029588; x=1728634388; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1728029591; x=1728634391; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=i4TchenuM2PZiHwsPrmRTDwDZS9j+elV+kESl2Ludm4=;
-        b=lS67LO+BT2COua/Mz6JF7NEPrYkPguAg4o4wGuGgm6UwpjXP0QiEl1HvtVmfJyvL4L
-         MtejiairxZBjZXRn2H5CL83g/rpb22K7ly+sTCSFTBHAvFZF2ndtxFh+CLnPS8szPvap
-         VTi+/e0VYi4zamefNVaneW4PVLRczIkQV002U=
+        bh=GN85sCKrVOA3tu4HmVxI2QI8ZoLBkf3gydcFUAN5vhA=;
+        b=A8xTWO1nbObLHBqzoFKD+Da9d4Z4PoRCHrUOXl/ZVYQ0GU/BVTryXjvLj45OQtLyOK
+         luzujJ0pZHxpN9S+IMabzFTqs1j3q2+qJhDUq1feHaNzLizl2wNf/QBvXZT71kffO0kp
+         Rg4NaHDZkvGvcM3TKrnYcHKix+igz3FmIxPYU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728029588; x=1728634388;
+        d=1e100.net; s=20230601; t=1728029591; x=1728634391;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=i4TchenuM2PZiHwsPrmRTDwDZS9j+elV+kESl2Ludm4=;
-        b=evdR3V7BO4y6brDRpZfYAUizjfk5r1k+Fz0z07SQhQ9wdGCLplhnXYvK9wbCkEdprx
-         AmX7s5KjZwx1Kf3XcSPzsEn1CMG8rvesYwQl7ONZYBCecndDcCuSzUyeDsam8yrcoShA
-         yI5BQwao/xeDSNN9LR0r9W3Ayo30oYijxjxe0DVo0DjtP7MC/T4VlG34QC2hpTdp12uS
-         3lVGqZPu2GxHc64SuazvFks+GMaZWVXI4wv+Y81iYAjX9UScOl7PvE8j0guzTTGRlBzG
-         mfbg8OFCXLwh3eEBFDGxcXz2Ptp981pagoetqvpc5UbFF6/Ln46l+PNwEyTKNULWvsfz
-         o4JA==
-X-Forwarded-Encrypted: i=1; AJvYcCUFIN98ysW3iLYqvlazFGugNkxZJuLLvsfyyogjtvzY7+4i2hYHYR9ID1RNLEtXUGedEEQ1yk2h+JBgPAbTWA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YykH8EqJJAUq/7HL4LmNGWAlf8J66wijli9lqtnEYNNBNCc1N0Z
-	lZMQTUEadXjyupd9V3I8zLxgjZzwpGUDuTcsdbjrMlH192beolaNmZvIlBfCvw==
-X-Google-Smtp-Source: AGHT+IFNQ0WywxJScoB1okGv8SlygVhcsYIeOTSbtTWqDzvqCcmKgVOc2GfwIiZyeIV6XO2xvKyTmQ==
-X-Received: by 2002:a17:902:c94a:b0:20b:968e:2585 with SMTP id d9443c01a7336-20bfdf80044mr35741085ad.6.1728029588048;
-        Fri, 04 Oct 2024 01:13:08 -0700 (PDT)
+        bh=GN85sCKrVOA3tu4HmVxI2QI8ZoLBkf3gydcFUAN5vhA=;
+        b=FZ2oSD9fBNSxY7vEt9TjE15YiDwvdbfJi3ugwOYRZzp1jTm1lcQUEMJ1CmMTJuTNTP
+         Ca04RhSo1snCsy6RCqGfjXXElg4kNuCYue5hIAXKE/LC2h9Lu8aqbFmq71UMdy9gs2up
+         lEIQ4T2yLe5stPF+umeHVYJ/Kut27ee6gPNbXA1Ubjl6D0k/rWJwvYS7XlJc/Pbs/myl
+         2Bten0NkN+aBztcRUPJ5JtqJ+2gOnReCemi63gQcG4hrwRt6z8Lg3iOT6n9NOkccaxmf
+         o17Prxkv2tSNa4OR255ekas8VKK6vRUGy+yH9RIqwacCosv+FzzEwNgfrkmwcCC1f7wL
+         ApmA==
+X-Forwarded-Encrypted: i=1; AJvYcCXeOBIghbHJXg8++2Pnumtb5n/zhj0Ami5X3Ayq04pD7fzW5i0MksYhUrTgYSw99wxHxsL4agb78NA1D6deEw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YziEFBdOzRVq9EEwV/eu7VDo3tRHnRRgSZQDRNY2b06u5QoWAGC
+	8oh60Zlr/g6Nxgt9rLJsl10gFlG3g5DUpmiWHziOVUxeXTp2bNTgVTbm1ZIDhg==
+X-Google-Smtp-Source: AGHT+IE6hBhfSi7O3sSuEyG5gBp6fSKltdiW7DF90nxxWftNyyRn2q94R5o8RRcdXS8Hi7NBzU9KiQ==
+X-Received: by 2002:a17:903:2349:b0:20b:c1e4:2d77 with SMTP id d9443c01a7336-20bfe494b6dmr27155845ad.38.1728029590960;
+        Fri, 04 Oct 2024 01:13:10 -0700 (PDT)
 Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:73bb:cecf:e651:2ce6])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20beefad264sm19401305ad.205.2024.10.04.01.13.06
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20beefad264sm19401305ad.205.2024.10.04.01.13.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Oct 2024 01:13:07 -0700 (PDT)
+        Fri, 04 Oct 2024 01:13:10 -0700 (PDT)
 From: Fei Shao <fshao@chromium.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v3 8/9] arm64: dts: mediatek: mt8188: Add DP-INTF nodes
-Date: Fri,  4 Oct 2024 16:12:00 +0800
-Message-ID: <20241004081218.55962-9-fshao@chromium.org>
+Subject: [PATCH v3 9/9] arm64: dts: mediatek: mt8188: Add eDP and DP TX nodes
+Date: Fri,  4 Oct 2024 16:12:01 +0800
+Message-ID: <20241004081218.55962-10-fshao@chromium.org>
 X-Mailer: git-send-email 2.47.0.rc0.187.ge670bccf7e-goog
 In-Reply-To: <20241004081218.55962-1-fshao@chromium.org>
 References: <20241004081218.55962-1-fshao@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241004_011308_695547_F6FA735A 
-X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-CacheID: sfid-20241004_011311_648454_22AA7C1D 
+X-CRM114-Status: UNSURE (   9.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,9 +90,9 @@ Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetre
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the primary and secondary dp-intf nodes.
-These DP-INTF hardware IPs are the sink of the vdosys0 and vdosys1
-display pipelines for the internal and external displays, respectively.
+Add edp-tx and dp-tx nodes for the Embedded DisplayPort (eDP) and
+DisplayPort ports to connect to DP-INTF ports and panels, and add the
+efuse cell for the DP calibration data.
 
 Individual board device tree should enable the nodes and connect input
 and output ports as needed.
@@ -106,56 +106,48 @@ Signed-off-by: Fei Shao <fshao@chromium.org>
  1 file changed, 26 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-index ec12617ea925..8864f1ead663 100644
+index 8864f1ead663..3b71d01d41cf 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-@@ -24,6 +24,8 @@ / {
- 	#size-cells = <2>;
+@@ -2021,6 +2021,10 @@ efuse: efuse@11f20000 {
+ 			#address-cells = <1>;
+ 			#size-cells = <1>;
  
- 	aliases {
-+		dp-intf0 = &dp_intf0;
-+		dp-intf1 = &dp_intf1;
- 		ethdr0 = &ethdr0;
- 		gce0 = &gce0;
- 		gce1 = &gce1;
-@@ -2480,6 +2482,18 @@ disp_dsi1: dsi@1c012000 {
- 			status = "disabled";
++			dp_calib_data: dp-calib@1a0 {
++				reg = <0x1a0 0xc>;
++			};
++
+ 			lvts_efuse_data1: lvts1-calib@1ac {
+ 				reg = <0x1ac 0x40>;
+ 			};
+@@ -2882,5 +2886,27 @@ padding7: padding@1c124000 {
+ 			power-domains = <&spm MT8188_POWER_DOMAIN_VDOSYS1>;
+ 			mediatek,gce-client-reg = <&gce0 SUBSYS_1c12XXXX 0x4000 0x1000>;
  		};
- 
-+		dp_intf0: dp-intf@1c015000 {
-+			compatible = "mediatek,mt8188-dp-intf";
-+			reg = <0 0x1c015000 0 0x1000>;
-+			clocks = <&vdosys0 CLK_VDO0_DP_INTF0_DP_INTF>,
-+				 <&vdosys0 CLK_VDO0_DP_INTF0>,
-+				 <&apmixedsys CLK_APMIXED_TVDPLL1>;
-+			clock-names = "pixel", "engine", "pll";
-+			interrupts = <GIC_SPI 657 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8188_POWER_DOMAIN_VDOSYS0>;
++
++		edp_tx: edp-tx@1c500000 {
++			compatible = "mediatek,mt8188-edp-tx";
++			reg = <0 0x1c500000 0 0x8000>;
++			interrupts = <GIC_SPI 676 IRQ_TYPE_LEVEL_HIGH 0>;
++			nvmem-cells = <&dp_calib_data>;
++			nvmem-cell-names = "dp_calibration_data";
++			power-domains = <&spm MT8188_POWER_DOMAIN_EDP_TX>;
++			max-linkrate-mhz = <8100>;
 +			status = "disabled";
 +		};
 +
- 		mutex0: mutex@1c016000 {
- 			compatible = "mediatek,mt8188-disp-mutex";
- 			reg = <0 0x1c016000 0 0x1000>;
-@@ -2745,6 +2759,18 @@ merge4: merge@1c110000 {
- 			mediatek,merge-fifo-en;
- 		};
- 
-+		dp_intf1: dp-intf@1c113000 {
-+			compatible = "mediatek,mt8188-dp-intf";
-+			reg = <0 0x1c113000 0 0x1000>;
-+			clocks = <&vdosys1 CLK_VDO1_DPINTF>,
-+				 <&vdosys1 CLK_VDO1_DP_INTF0_MMCK>,
-+				 <&apmixedsys CLK_APMIXED_TVDPLL2>;
-+			clock-names = "pixel", "engine", "pll";
-+			interrupts = <GIC_SPI 513 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8188_POWER_DOMAIN_VDOSYS1>;
++		dp_tx: dp-tx@1c600000 {
++			compatible = "mediatek,mt8188-dp-tx";
++			reg = <0 0x1c600000 0 0x8000>;
++			interrupts = <GIC_SPI 458 IRQ_TYPE_LEVEL_HIGH 0>;
++			nvmem-cells = <&dp_calib_data>;
++			nvmem-cell-names = "dp_calibration_data";
++			power-domains = <&spm MT8188_POWER_DOMAIN_DP_TX>;
++			max-linkrate-mhz = <5400>;
 +			status = "disabled";
 +		};
-+
- 		ethdr0: ethdr@1c114000 {
- 			compatible = "mediatek,mt8188-disp-ethdr", "mediatek,mt8195-disp-ethdr";
- 			reg = <0 0x1c114000 0 0x1000>,
+ 	};
+ };
 -- 
 2.47.0.rc0.187.ge670bccf7e-goog
 
