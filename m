@@ -4,109 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA005CF34D5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Oct 2024 00:08:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 496B1CF34D7
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Oct 2024 00:25:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TPG7NWLbTV1K4yXh2AqTy27S5IzvT22XN7gfixbpbfM=; b=3W++ASHX6PiwvAZNljtpP40gsy
-	76ZWVLlnqLAaxIpzI9C7KuJZ3Xty7ckaUleS+7sP86tquUWf3QeR6wHxlJtkEEnzJFF8ZzL5R74zw
-	WDAPK0qGUMqzY7UgvT+B+PVbvqmauhmSTMobYXw2S5plm2LTCrW4Bx9+NUK9ZG4napLGfN/VxWK/D
-	K1EpP76jvrVyUnDws7+22QOyiac/rH06f+Y8yIxJvA82NM3IvgGsPU+EVGWll3vkP1hoIIDlkBl0l
-	UyflBLwGBvXAzuoHU3QSC7JfN9lbdR3p/ekBomC/BeJlqtQyB0vLmLFZbPVjFuHA86h1WoAc36w93
-	25E9h7ww==;
+	bh=iEGQ4q0sOHf6fH//tRJ7zrlO1NuAAAduCg0MWkR5zYk=; b=WUpLH87iSS+GWMQTGfgqOueXXm
+	uTqJLxH/hivtfXUdMKa6L3Yn5TaUr+22GZ5obYUk8AU4qgF0SnrYLlaWIsMlPy30AEllN43Y3pFJ6
+	uHz74qudOjv8kd0bVO8rFvwbvOXCbkpizH7BwYxqlEdO1xzX+fIcVYQGChHTCX/Wlvt9KQOk8KYM4
+	QLyzITj6e5KdqAWoFDUabDrLllB5I8ubgP2I7jv4YgtTUnWH0qb1SEp/dSd3WsfhNOgzhTwJN+h6E
+	21ZSpFgYH+4PnQgvm+kEX5H2J4eE/ojLjdapRNZ86bHFhPnhz0vy1iTGVVV+HH+zCa1DZAMnIMscN
+	VAe8Q+QA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1swVrX-0000000Ai9q-04n2;
-	Fri, 04 Oct 2024 00:08:03 +0000
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
+	id 1swW8P-0000000AjKg-0oHB;
+	Fri, 04 Oct 2024 00:25:29 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1swVkI-0000000AgVL-1cNA;
-	Fri, 04 Oct 2024 00:00:35 +0000
-Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-718d91eef2eso1143270b3a.1;
-        Thu, 03 Oct 2024 17:00:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1728000033; x=1728604833; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=TPG7NWLbTV1K4yXh2AqTy27S5IzvT22XN7gfixbpbfM=;
-        b=kJiZNYGWsAPcGwfGDWYfivnVsnOOZ99eClGEYzENNh8P0ChSRzdBmyHpLZBIvoo7h8
-         iquVJ0ySKg0KIol93faVOolLtT8N++j25mAmJfvoH+WcZ299x+xKLlfvTQMkeYxlJmUd
-         e6Q+yeLMHWV8I0sSzn7Y4yUVLVaZzsyjsB1Hr7o7sfIMUQtCwgQehB4CuhxVKtpj4t45
-         M9oFeepVN1JoKMzy/hADbvF6OOZCGgabtXwWr6QeQQq2hb9UaF8q+LGGRmi1sCfQdBh5
-         Dk0ndaRtyny/t2LTkvC3P4uWdiRtE64j8jTndgmybZdAYH7AyUKFtTxvAfJ3AJQmR8I4
-         sfKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728000033; x=1728604833;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=TPG7NWLbTV1K4yXh2AqTy27S5IzvT22XN7gfixbpbfM=;
-        b=RWgrGaJNkppxZNAbudo89Jfoj0mAhrK+Isagsdco17OGnpbXsa3YJ5sI1StYNs4rG8
-         n3psbcMv4AYFdQo70arUy+2SiFK/8Y7MyGXgc0ToAw+zxYa6u1giUlaplcuyD0u9CYdz
-         OwNjB7eDreuWtl5Avxs3iLUx0H987eQyoCPww/Bb4YN9+kUqrWbdqfchaDn+5stp001C
-         DBvw6rnrlDJLB2+WOxdXilAahu8/YgHFGjNiTUJAenSd5ddO3ltOZl0AQdbWGzzravEb
-         RLNBzY0PlB8lje6yNCJi2BXL12VmuRt0sRouH/VyRgYzhYopNz+3EX2bFL6N4D6lkfaS
-         /Gnw==
-X-Forwarded-Encrypted: i=1; AJvYcCUTYnGdNRVKQqZGHtZDuwuQonk3ZNw3WvQE9Xo3Xw7AIVCQaCo2lqb+Sdx/YzBNBEHyiOZsnoGQADJ9OLQ25gs=@lists.infradead.org, AJvYcCV0YtB7liTPCkmGI17YmJ2fGGXGWXR4bpT/TFE2Qal8OE4tC736Uc0iTW3/fKzVg7nj810TiM9IiRBYaYhA/Cck@lists.infradead.org, AJvYcCVwN47qcwJEZucqB/8pxKgmOukJnC0e/YQXnVA2+Zw8SQk/FMjD7+yXti42lfWWbmcqbMM0wdSHPjUm@lists.infradead.org
-X-Gm-Message-State: AOJu0YxnTqBqInjuSf+IxdQvdjM4eAIDKl0WRqiXp0ws+RND7xtK7fm4
-	/FPjtsRefb8p9c72tfOcHXjnMmjYvZ1qd+4t+pKWcyUYEkkiRVg7
-X-Google-Smtp-Source: AGHT+IFRpqusbyBChPGJdLDMkF4flvi5LdGXwNB5TEbIL5IvxwzIRTPeVbU6C3UfDDB2eSYpuaFaIQ==
-X-Received: by 2002:a05:6a00:238d:b0:717:92d8:ca5c with SMTP id d2e1a72fcca58-71dd5ae0c7dmr9336561b3a.3.1728000033244;
-        Thu, 03 Oct 2024 17:00:33 -0700 (PDT)
-Received: from ryzen.lan ([2601:644:8200:dab8::a86])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71dd9cb0b28sm1983047b3a.0.2024.10.03.17.00.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Oct 2024 17:00:32 -0700 (PDT)
-From: Rosen Penev <rosenp@gmail.com>
-To: devicetree@vger.kernel.org
-Cc: Miquel Raynal <miquel.raynal@bootlin.com>,
-	Richard Weinberger <richard@nod.at>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konradybcio@kernel.org>,
-	William Zhang <william.zhang@broadcom.com>,
-	Anand Gore <anand.gore@broadcom.com>,
-	Kursad Oney <kursad.oney@broadcom.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rosen Penev <rosenp@gmail.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	linux-mtd@lists.infradead.org (open list:MEMORY TECHNOLOGY DEVICES (MTD)),
-	linux-kernel@vger.kernel.org (open list),
-	netdev@vger.kernel.org (open list:NETWORKING DRIVERS),
-	linux-arm-msm@vger.kernel.org (open list:ARM/QUALCOMM MAILING LIST),
-	linux-arm-kernel@lists.infradead.org (moderated list:BROADCOM BCMBCA ARM ARCHITECTURE),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCHv2 5/5] documentation: use nvmem-layout in examples
-Date: Thu,  3 Oct 2024 17:00:15 -0700
-Message-ID: <20241004000015.544297-6-rosenp@gmail.com>
-X-Mailer: git-send-email 2.46.2
-In-Reply-To: <20241004000015.544297-1-rosenp@gmail.com>
-References: <20241004000015.544297-1-rosenp@gmail.com>
+	id 1swW78-0000000AjGv-38D7;
+	Fri, 04 Oct 2024 00:24:11 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id CC537A4431E;
+	Fri,  4 Oct 2024 00:24:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 58F4DC4CEC5;
+	Fri,  4 Oct 2024 00:24:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728001448;
+	bh=VV/M8B6D4ybuFpByBidICXy+GE+2iyQZz9Zy1n63kEE=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=XRDc4xiW+6w0E3UJqID2Xtw2o0K3Wm4mI+L5vxrMetgFOUdx02Ihj1toI36TShH3h
+	 P5Bl0eNE/iJjXcr+R6xqWPmM4ilQkGKHqc9QClU89MBRLbfwi7RkZAPSdqpKOPPiha
+	 8bMuDCeec3RgUNl8Wy5Y1+A6THRMUJsF+5/VCO+bImWthJNdJ9/+0NtZ2aMttxYtSN
+	 stzwGDvKtQarZOKlmqaFwrzP0y5PGGr7qxggoJW5rIBeyQHCAWjahz4WCucoFU9c3b
+	 TTI0qjlwXg2TTHD18+MgXNgAdTilMHtGOBlmJJ1vnQOgw9QIv+ZD+leYfQ1MJguF/b
+	 LNeFV3KbmRbcg==
+Date: Thu, 3 Oct 2024 17:24:07 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, Mark
+ Lee <Mark-MC.Lee@mediatek.com>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, upstream@airoha.com
+Subject: Re: [PATCH net-next] net: airoha: Implement BQL support
+Message-ID: <20241003172407.1bf35bf1@kernel.org>
+In-Reply-To: <20240930-en7581-bql-v1-1-064cdd570068@kernel.org>
+References: <20240930-en7581-bql-v1-1-064cdd570068@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241003_170034_445320_5E94FAF2 
-X-CRM114-Status: GOOD (  10.49  )
+X-CRM114-CacheID: sfid-20241003_172410_883297_85EF5F9A 
+X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,78 +76,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-nvmem-cells are deprecated and replaced with nvmem-layout. For these
-examples, replace. They're not relevant to the main point of the
-document anyway.
+On Mon, 30 Sep 2024 14:58:35 +0200 Lorenzo Bianconi wrote:
+> Introduce BQL support in the airoha_eth driver to avoid queuing to much
+> packets into the device hw queues and keep the latency small.
 
-Signed-off-by: Rosen Penev <rosenp@gmail.com>
----
- .../mtd/partitions/qcom,smem-part.yaml        | 19 +++++++++++--------
- .../bindings/net/marvell,aquantia.yaml        | 13 ++++++++-----
- 2 files changed, 19 insertions(+), 13 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/mtd/partitions/qcom,smem-part.yaml b/Documentation/devicetree/bindings/mtd/partitions/qcom,smem-part.yaml
-index 1c2b4e780ca9..8ae149534b23 100644
---- a/Documentation/devicetree/bindings/mtd/partitions/qcom,smem-part.yaml
-+++ b/Documentation/devicetree/bindings/mtd/partitions/qcom,smem-part.yaml
-@@ -45,17 +45,20 @@ examples:
-             compatible = "qcom,smem-part";
- 
-             partition-art {
--                compatible = "nvmem-cells";
--                #address-cells = <1>;
--                #size-cells = <1>;
-                 label = "0:art";
- 
--                macaddr_art_0: macaddr@0 {
--                    reg = <0x0 0x6>;
--                };
-+                nvmem-layout {
-+                    compatible = "fixed-layout";
-+                    #address-cells = <1>;
-+                    #size-cells = <1>;
-+
-+                    macaddr_art_0: macaddr@0 {
-+                        reg = <0x0 0x6>;
-+                    };
- 
--                macaddr_art_6: macaddr@6 {
--                    reg = <0x6 0x6>;
-+                    macaddr_art_6: macaddr@6 {
-+                        reg = <0x6 0x6>;
-+                    };
-                 };
-             };
-         };
-diff --git a/Documentation/devicetree/bindings/net/marvell,aquantia.yaml b/Documentation/devicetree/bindings/net/marvell,aquantia.yaml
-index 9854fab4c4db..5d118553228b 100644
---- a/Documentation/devicetree/bindings/net/marvell,aquantia.yaml
-+++ b/Documentation/devicetree/bindings/net/marvell,aquantia.yaml
-@@ -98,15 +98,18 @@ examples:
-             /* ... */
- 
-             partition@650000 {
--                compatible = "nvmem-cells";
-                 label = "0:ethphyfw";
-                 reg = <0x650000 0x80000>;
-                 read-only;
--                #address-cells = <1>;
--                #size-cells = <1>;
- 
--                aqr_fw: aqr_fw@0 {
--                    reg = <0x0 0x5f42a>;
-+                nvmem-layout {
-+                    compatible = "fixed-layout";
-+                    #address-cells = <1>;
-+                    #size-cells = <1>;
-+
-+                    aqr_fw: aqr_fw@0 {
-+                        reg = <0x0 0x5f42a>;
-+                    };
-                 };
-             };
- 
+This patch got set to Superseded in patchwork, somehow, but I don't see
+a newer version. I think you're missing resetting the BQL state in
+airoha_qdma_cleanup_tx_queue() ?
 -- 
-2.46.2
-
+pw-bot: cr
 
