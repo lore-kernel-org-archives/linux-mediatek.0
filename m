@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 441BACF885F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Oct 2024 21:53:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71EA9CF8852
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Oct 2024 22:44:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=x9szLUzHqWaoD0cYaKQZLMyz8MDSGbymSHGS9KqS6dU=; b=zXDLSq4tUDjb4/QoXI1zwja+Yy
-	CG9MLsgcgqZTFilyPAunu3uZvWdn2gn1UVyocsiFmvCuZe6i/c+xv3xn08+2KbUEf2v7KSdWq8a+i
-	ReB+Bbp5X+nAP5n2FSDwhyjyMq8MZodmAR15cmNThp4ACYT0kPCmXiPWq7C4AfUPQm4UT09RexXBw
-	LVEr0hBYEI//JWi1yl8jKkk542c0tMpUOiWadeRh3xea10Q0/7ibRYy9/v9Luh+giNGGKZBJ/LT33
-	c9deCBnJZPdSNpdIUJVtdNZD70ppF+l3AcFxpWNLh1fx5VxwF3kWRxhaupS5sG+d8hLQcKos4aU7c
-	SzYic2ZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1BMXT1qySlfBTwPHzxMkCNg922NPoFe+hq4k1IIpchM=; b=wQEn+MKTPwguvU1GsLnGGLs4fL
+	o/uHHXPe8W07bEYCUNQsvXWefWEEiRELArUlTK3Qm+ZPZs2ZSSDWZYb5yTKohBKHgFB2AdEJOVTsv
+	ORyh5fn6ptWZdx9D32GWDhhN4C2YU0SuTOaglMjd4RWeN3Vc4voXxWjHxkDqiUdxGmlw8DJotMdtK
+	7wbt2fE4sUF1S7hg7rSYtPNd2ntYtxZS86XWqIHCDA604WDo8MLudRWEUSrTsjcUoN0eiFP256l4Q
+	D/3ghajKIJA1aV0qLc02Fo849MteuMjaayiGMcxWZ9ewOGpdca/lSnR6Mm+gESIEUC9CxQgxSQ6/5
+	TFNTW0wA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1swqF1-0000000EJ8l-2UQB;
-	Fri, 04 Oct 2024 21:53:39 +0000
+	id 1swr25-0000000ENrs-1TKr;
+	Fri, 04 Oct 2024 22:44:21 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1swqDl-0000000EJ4B-10bM;
-	Fri, 04 Oct 2024 21:52:22 +0000
+	id 1swr0o-0000000ENhL-1GxS;
+	Fri, 04 Oct 2024 22:43:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 4EDA85C45AC;
-	Fri,  4 Oct 2024 21:52:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1D5BC4CEC6;
-	Fri,  4 Oct 2024 21:52:19 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 89CF85C5B73;
+	Fri,  4 Oct 2024 22:42:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC26BC4CEC6;
+	Fri,  4 Oct 2024 22:43:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728078740;
-	bh=uzpROxSyXHDis+ZcxSk361Wk81pS4vKtRyGOarVkMbE=;
-	h=From:Date:Subject:To:Cc:From;
-	b=hIvf4cZ1Io6xOWef9K8YqkmXQmvIcULpwkj+mH2ZFjnRCGPzU1B8UvOHd2Ua6+x0q
-	 cwuoxaEpBt4HA3LZ0nKeNko28MShqjt5xYnwRAJHmMTGLRYgGKUKs1u2J2CKpz49Hj
-	 Xx/ExKA3fvFnbzQH/WIHzP190+OjoxzKAuVKEHA7scdKfmBSE39UF8S+kD9XqlSBUf
-	 zNVb0Ru8UhziqsQHxBqkJvZgizFCm5d8MoxgUcvWoqIrEQ8xAX/9Nf16VGFimd18sT
-	 0wVlegWoPkTCPV3hnKVlSc3ZU55ClqVkSB7I9iD5x1Wn5DEVB6hbnT4sGjZer2pLrk
-	 6tikCBrxH9qFA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 04 Oct 2024 23:51:36 +0200
-Subject: [PATCH net-next] net: airoha: Fix EGRESS_RATE_METER_EN_MASK
- definition
+	s=k20201202; t=1728081781;
+	bh=1BMXT1qySlfBTwPHzxMkCNg922NPoFe+hq4k1IIpchM=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=pKEDZyof2XabtSvvh3focWQGj9C4vtDTvEYtE2/yYpYzb9Z9e4w/57gUHjhleEFLd
+	 +S5g/F6fvX04+Dw/0JIRdtaJvlTY9/vmrh2KwlYQXD2nPN7HtDwSfmfeiCkONsuEXJ
+	 orF8LJ4FMzDFKF+fE7jvh0Fn1TWiVI0EtNvJ4Yr7LNturnD3RXrkoyeBN4zbQIV88r
+	 X5/7JblEWjYgxKSVKxZAjxKG2Xi/ij0YNR+5BXauWNJCzfen3WedkunLsG3CiMUMk4
+	 lDlIZTQYoxYO6fr/nEtH9x6tEkVFkunFje7oJRarsRpyecQ3zM2vwNul3lxqT/I8zh
+	 D8kQDeHk7x/+Q==
+Date: Fri, 4 Oct 2024 15:43:00 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Sky Huang <SkyLake.Huang@mediatek.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, Daniel Golle <daniel@makrotopia.org>, Qingfang Deng
+ <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ <linux-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Steven Liu <Steven.Liu@mediatek.com>
+Subject: Re: [PATCH net-next 0/9] net: phy: mediatek: Introduce mtk-phy-lib
+ which integrates common part of MediaTek's internal ethernet PHYs
+Message-ID: <20241004154300.69b30a98@kernel.org>
+In-Reply-To: <20241004102413.5838-1-SkyLake.Huang@mediatek.com>
+References: <20241004102413.5838-1-SkyLake.Huang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Message-Id: <20241004-airoha-fixes-v1-1-2b7a01efc727@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAGdjAGcC/x3LQQqAIBBA0avIrBPUBKWrRIupppyNhkIE4d0bW
- j4+/4VGlanBpF6odHPjkgV2ULAlzCdp3sXgjPPWGK+Ra0moD36o6YiI0YawutGDLFelP8gxL71
- /y979ql4AAAA=
-X-Change-ID: 20241004-airoha-fixes-8aaa8177b234
-To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
- Mark Lee <Mark-MC.Lee@mediatek.com>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241004_145221_355503_77BA0E65 
-X-CRM114-Status: UNSURE (   9.70  )
+X-CRM114-CacheID: sfid-20241004_154302_419338_B29B6246 
+X-CRM114-Status: UNSURE (   6.11  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,37 +79,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix typo in EGRESS_RATE_METER_EN_MASK mask definition. This bus was not
-introducing any user visible problem.
+On Fri, 4 Oct 2024 18:24:04 +0800 Sky Huang wrote:
+> Subject: [PATCH net-next 0/9] net: phy: mediatek: Introduce mtk-phy-lib which integrates common part of MediaTek's internal ethernet PHYs
 
-Introduced by commit 23020f049327 ("net: airoha: Introduce ethernet support
-for EN7581 SoC")
-
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/mediatek/airoha_eth.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/mediatek/airoha_eth.c b/drivers/net/ethernet/mediatek/airoha_eth.c
-index 2e01abc70c170f32f4206b34e116b441c14c628e..a1cfdc146a41610a3a6b060bfdc6e1d9aad97d5d 100644
---- a/drivers/net/ethernet/mediatek/airoha_eth.c
-+++ b/drivers/net/ethernet/mediatek/airoha_eth.c
-@@ -554,7 +554,7 @@
- #define FWD_DSCP_LOW_THR_MASK		GENMASK(17, 0)
- 
- #define REG_EGRESS_RATE_METER_CFG		0x100c
--#define EGRESS_RATE_METER_EN_MASK		BIT(29)
-+#define EGRESS_RATE_METER_EN_MASK		BIT(31)
- #define EGRESS_RATE_METER_EQ_RATE_EN_MASK	BIT(17)
- #define EGRESS_RATE_METER_WINDOW_SZ_MASK	GENMASK(16, 12)
- #define EGRESS_RATE_METER_TIMESLICE_MASK	GENMASK(10, 0)
-
----
-base-commit: c55ff46aeebed1704a9a6861777b799f15ce594d
-change-id: 20241004-airoha-fixes-8aaa8177b234
-
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
-
+When you repost please shorten this subject.
 
