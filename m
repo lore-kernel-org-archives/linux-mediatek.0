@@ -4,90 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D020ECF34DD
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Oct 2024 02:26:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4D4ACF856A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Oct 2024 03:02:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Kjly8y7UsTFJRLhG7/ML1Rzsva3stHv/nqE2+gId9i0=; b=f9YddhC2fvmJLX/6ci1nW83YBi
-	n4hzuyhTGk6Ix7t4AWqvPPe3kGUoeUXR920RSbdazbZoou+c7MD4mH6SbuWDOC3og71Pk6HTbibHi
-	ffXiFnflPWflrkJVkX5ZksRT7LEr+G1I/k8++SzNfDjhWnppiKipEIz1ldr9o3xP9i/XwGiLpI5Oc
-	IzS3YRiL58Nwl4D53c2FHqPy3ls0HpTMmM2YWR0ueDv953HiFQ21Zrs2ETPbEZuMRFgORkAatR/lY
-	fCMVethPJ4mfWGUKpaq5RapbiOpcqZvOKWi89a00uzkDu4UB37JL96Jk+UEgmCZlV1jS9XnnXY/mj
-	ELXctW9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Igm/g11ai9vwnRyUQTM0+p9KLTeYcyfZjO5y3QI8Ioo=; b=nkUJ38z5NMzNzXLb+TmOUjELA/
+	eKJvImPx81LUGMqhipeFyQ1lq17DGzUCukp9RyQo8w1/rERdUesHXXJkRut9OmAOsifngTmb+sPDv
+	Gfk7VbUE/HvQ9XTK0lKF61kJ/aVENOtcRRx8LyEgAJyMO89Zoo2/xEqXyEI4t+p4XyCOnRLVHfAbb
+	PtyRz8nMVncgsAcRJHj3rY+SaL5TgD+m//pk+wlcqBBS8akMbWTLgZkTFzHHQO8b6hmkMWUUAi0nw
+	Eem971ufrZCfQbrK+Zg9jdFDv6aocQ1BfS29lOdRmm/NYAAlKaepo2kiFA1BnodufK40/IYBOCLW5
+	yiG7Mz4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1swY14-0000000AsDT-2fY3;
-	Fri, 04 Oct 2024 02:26:02 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1swYa6-0000000AuWz-2iKI;
+	Fri, 04 Oct 2024 03:02:14 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1swXzo-0000000As6E-2rDF;
-	Fri, 04 Oct 2024 02:24:45 +0000
-X-UUID: cd02184e81f711efba0aef63c0775dbf-20241003
+	id 1swYa3-0000000AuVI-3WDK;
+	Fri, 04 Oct 2024 03:02:13 +0000
+X-UUID: 089065be81fd11efb3adad29d29602c1-20241003
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Kjly8y7UsTFJRLhG7/ML1Rzsva3stHv/nqE2+gId9i0=;
-	b=PHmdj+VpDl2JpLLFmDqlEyZnu5NOwJBHjvqErE1rOKAdt9SRhLD6H15ihBSqylIkGQLVgYkjRcBP9kGRC2TZXwyT1JeGQ/lwMjQwMLtIRDcnvYgY6A+udfbesN/1BS3zi3IGNRXPLiNcAweNsd1iZS98D7eBch1wyy+kLydrSII=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Igm/g11ai9vwnRyUQTM0+p9KLTeYcyfZjO5y3QI8Ioo=;
+	b=Tm0AzsPbGZktN+dcpyi2xiTEq75Pd/i5LEz+NvhNjf7jgZ/+FXxL/A2yJXXZ5ZbgdxJIaKaG5hKrpHYBaqCxYcqRTHjx37//9B7P5k88slQ6qHAv/RDA/acqHJd6kJdOc5d49fkKTk+KNMnG7/g7rusfmjiJlTCHVhlLujmCZIY=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:65ab1809-abe1-4ea7-acba-51de05fd0abf,IP:0,U
+X-CID-O-INFO: VERSION:1.1.41,REQID:1743d216-550b-4dfa-ad11-cbe9d7a3ce15,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:c1ba4226-5902-4533-af4f-d0904aa89b3c,B
+X-CID-META: VersionHash:6dc6a47,CLOUDID:4e38ba40-8751-41b2-98dd-475503d45150,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: cd02184e81f711efba0aef63c0775dbf-20241003
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <moudy.ho@mediatek.com>)
+X-UUID: 089065be81fd11efb3adad29d29602c1-20241003
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 28790857; Thu, 03 Oct 2024 19:24:36 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+	with ESMTP id 1476580914; Thu, 03 Oct 2024 20:02:04 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 4 Oct 2024 10:24:31 +0800
+ 15.2.1118.26; Fri, 4 Oct 2024 11:02:00 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 4 Oct 2024 10:24:31 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
-	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Simona Vetter
-	<simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, "jason-jh . lin"
-	<jason-jh.lin@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, Moudy Ho <moudy.ho@mediatek.com>
-Subject: [PATCH v3] dt-bindings: display: mediatek: split: add subschema property constraints
-Date: Fri, 4 Oct 2024 10:24:30 +0800
-Message-ID: <20241004022430.19689-1-moudy.ho@mediatek.com>
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 4 Oct 2024 11:02:00 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, "Rob
+ Herring" <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, "Conor
+ Dooley" <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	<linux-pm@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Alexandre Mergnat
+	<amergnat@baylibre.com>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, Chris-qj chen <chris-qj.chen@mediatek.com>,
+	MediaTek Chromebook Upstream
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
+	<wenst@chromium.org>
+Subject: [PATCH v2 2/2] arm64: dts: mediatek: mt6359: fix dtbs_check error for RTC and regulators
+Date: Fri, 4 Oct 2024 11:01:48 +0800
+Message-ID: <20241004030148.13366-2-macpaul.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20241004030148.13366-1-macpaul.lin@mediatek.com>
+References: <20241004030148.13366-1-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--3.848600-8.000000
-X-TMASE-MatchedRID: Ru+54+IMWaQ72d2F4DOSZIzb2GR6Ttd3MZm0+sEE9mtb6PBUqmq+Utdh
-	dhqLxa0jj6kCfX0Edc5fvtuIsaf1Zbf0EuHoGRzu/IBH0OAL+EeusS9CiBzL8VSkag5D7Fg8O0i
-	2vQl58jgZoBsQWiqLArpjAjMHHtZlHxPMjOKY7A9qHXONfTwSQsRB0bsfrpPInxMyeYT53RnDa+
-	4JklccgJy6v5kFJZhEinJ4I5Ggj8rhkRPh6jPIcsP7/0dW/TeQ+mRKzDVuOcuVSFhjFH946aGuH
-	qXWE6OVz8eQmvI53il5lSmbrC6fdtr/To2FgNrjDLMIOOVTHz2nbLeYgH6K31Zca9RSYo/b
+X-TM-AS-Result: No-10--2.373200-8.000000
+X-TMASE-MatchedRID: EzeqGrx38DlDKVWWbGcmRiZm6wdY+F8KCt59Uh3p/NWUzka/OKYytcFk
+	Mp+HRF4cVkYkwvZAWNf5IV2n4J3Q94JrRWPc34Z+wCZxkTHxcclUENBIMyKD0Zsoi2XrUn/Jn6K
+	dMrRsL14qtq5d3cxkNXRcsnIv8tAumPlydFJwJDGe8bOplaTm7MOBUyCKCucp6aZ5Zuvojc6cuh
+	RZrNicI5xhmyygWGqpKLts6W3au/+QX1Vdxi30aK6c9X2DKLPd82Gj2QC3yG0smXVK/H8eHzG7s
+	r7xobSAsPEFD+rZA81DDKa3G4nrLQ==
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--3.848600-8.000000
+X-TMASE-Result: 10--2.373200-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 9DECDB592F3AC4DFB91808774BE073A28B4AF3D9B721064985D5E56E3CF704D42000:8
+X-TM-SNTS-SMTP: AF13A379B377423AD72CE79A8E91DB3E0B9E9FC241246632324AC6B30BAE59A72000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241003_192444_842693_3ADD4F34 
-X-CRM114-Status: GOOD (  10.23  )
+X-CRM114-CacheID: sfid-20241003_200211_908063_7555F161 
+X-CRM114-Status: GOOD (  11.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,77 +107,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The display node in mt8195.dtsi was triggering a CHECK_DTBS error due
-to an excessively long 'clocks' property:
-  display@14f06000: clocks: [[31, 14], [31, 43], [31, 44]] is too long
+This patch fixes the following dtbs_check errors:
+1. 'mt6359rtc' do not match any of the regexes: 'pinctrl-[0-9]+'
+ - Update 'mt6359rtc' in 'mt6359.dtsi' with a generic device name 'rtc'
+2. 'pmic: regulators: 'compatible' is a required property'
+ - Add 'mediatek,mt6359-regulator' to compatible property.
 
-To resolve this issue, the constraints for 'clocks' and
-other properties within the subschemas will be reinforced.
-
-Fixes: 739058a9c5c3 ("dt-bindings: display: mediatek: split: add compatible for MT8195")
+Fixes: 3b7d143be4b7 ("arm64: dts: mt6359: add PMIC MT6359 related nodes")
 Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-
---
-This is based on [v2] dt-bindings: display: mediatek: split: add clocks count constraint for MT8195
-
-Changes since v2:
-  - Revise the commit message.
-  - Enhance the descriptions of 'clocks'.
-  - Strengthen the conditions within the subschema.
-
-Changes since v1:
-  - Adding functional descriptions and quantity restrictions.
 ---
- .../display/mediatek/mediatek,split.yaml      | 24 +++++++++++++++++++
- 1 file changed, 24 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt6359.dtsi | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
-index e4affc854f3d..0ffcd9d2b718 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
-@@ -57,6 +57,9 @@ properties:
-   clocks:
-     items:
-       - description: SPLIT Clock
-+      - description: Used for interfacing with the HDMI RX signal source.
-+      - description: Paired with receiving HDMI RX metadata.
-+    minItems: 1
+Changes for v2:
+ - No change.
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt6359.dtsi b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
+index 8e1b8c85c6ed..dd732a820a7c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6359.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
+@@ -18,6 +18,8 @@ mt6359codec: mt6359codec {
+ 		};
  
- required:
-   - compatible
-@@ -72,9 +75,30 @@ allOf:
-             const: mediatek,mt8195-mdp3-split
+ 		regulators {
++			compatible = "mediatek,mt6359-regulator";
++
+ 			mt6359_vs1_buck_reg: buck_vs1 {
+ 				regulator-name = "vs1";
+ 				regulator-min-microvolt = <800000>;
+@@ -296,7 +298,7 @@ mt6359_vsram_others_sshub_ldo: ldo_vsram_others_sshub {
+ 			};
+ 		};
  
-     then:
-+      properties:
-+        clocks:
-+          maxItems: 3
-+
-+        power-domains:
-+          maxItems: 1
-+
-       required:
-         - mediatek,gce-client-reg
- 
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: mediatek,mt8173-mdp3-split
-+
-+    then:
-+      properties:
-+        clocks:
-+          maxItems: 1
-+
-+        power-domains:
-+          maxItems: 1
-+
- additionalProperties: false
- 
- examples:
+-		mt6359rtc: mt6359rtc {
++		mt6359_rtc: rtc {
+ 			compatible = "mediatek,mt6358-rtc";
+ 		};
+ 	};
 -- 
-2.34.1
+2.45.2
 
 
