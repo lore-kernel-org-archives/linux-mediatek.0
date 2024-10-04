@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8319CFA763
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Oct 2024 10:56:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C04ACFA763
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Oct 2024 10:56:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CamSP/8HgrGYNJsAnIhmbgqVa/CkiN+Y+j0nD3c++8s=; b=oEtposDUgb0UcL1A2+er/WMXpp
-	DURHUrs2s0a9v0/5nD8QRmzhw+KcbhzFnU2CRo6WQqUywj73z9+oy8lRvhwmIC2QvQqpeEIzB0MU5
-	qjhw7mgYQkV+egkI5dWKyIWTR1egwhz5ANII6pTwJGfQ9t/lq4Wy4sYo2g+YWhmB59FHPgyC3Q/uT
-	Vi3Am+y0pgdsT5BhimpVhKlUK0ZxeRSHrfuJIRyDcDEWJBw8x4fVhIzU24Ak8shRWVfKRcGEriPGQ
-	eRyQ0HVSoS4wqMeOtBTEU6X+yQrn5ecb9NnEsaMVaFqmMclrIXZBhDCHZRT2frqKuHABfYHkucTrV
-	bm5M/R1Q==;
+	bh=HgwbjxT4BnONX80gnaJTuLk+hJpQVXjT4Dp2LdkD1yQ=; b=eq7cohhYdXvxFQr8EVhvOBOwtJ
+	6nKZ5hmt0xpBIhFP5N1qJd2qVyBXVr/p+QQ8aY/6aZNe6qnskeiJPI10PE8AquGhH2Ts4mr7IJ7e4
+	O8w9vP3+2wtV07Oa9SFKl5AvM9H6q9hjfEU/xHFfewr9id5hH5TPrEsNPLAe3gzkebX8+zpJoPJ9y
+	6tH1Sjsz/uHYO1FIGFKObiVVuHBqz+SbiDpUFYha2vwSmbz8Rbe3rx3+AIjj/ZctZoDbFfOZUom/z
+	l52dI0Gc6YzaVuV7cHA7uzNNUv+ZmehImRnSULYQbBLGshbxCOX3NwtxDPO2zGU+hAqhfDuhIwrj4
+	EAGWyQqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1swfzC-0000000Byhx-3UUH;
-	Fri, 04 Oct 2024 10:56:38 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1swfzO-0000000BylO-1tw8;
+	Fri, 04 Oct 2024 10:56:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1swfWQ-0000000BqQs-3myi;
-	Fri, 04 Oct 2024 10:26:56 +0000
-X-UUID: 2c06d404823b11efba0aef63c0775dbf-20241004
+	id 1swfYe-0000000Br4O-1xvR;
+	Fri, 04 Oct 2024 10:29:14 +0000
+X-UUID: 7e0bb59e823b11efb3adad29d29602c1-20241004
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=CamSP/8HgrGYNJsAnIhmbgqVa/CkiN+Y+j0nD3c++8s=;
-	b=CpW8iJGkHFI/Jg/MyXfQvnIJbXmvN5psCazHdnXbgm2lTtutXVl+2bp/VJIhecFQsiCUecwVZyFHrz2OilN4aAZmnz5615hm3oB3EolvsuI0SppHdOzdtp8TAFjArQ+ETnl+enIHlPB1qC3HANf6NRJAagDcuG81QDhi77h8aiI=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=HgwbjxT4BnONX80gnaJTuLk+hJpQVXjT4Dp2LdkD1yQ=;
+	b=RRmmJ98HFdiSzBm0ZBhkuCSokeDa01qx5hvRefjNTqzRPU+bBeHBVCuvK708/7zMyH0mFornRsUtaHsojUxclURGs/LhxqopYqBrn9TZ04y6nfU3COwBw69bjKgZ8WxZYWThF0mcSO9n/hpa+zbIG+S994bGvi9RrkxHSo8FpRo=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:689def3c-b34a-4090-a80a-f71f1e46db6d,IP:0,U
+X-CID-O-INFO: VERSION:1.1.41,REQID:bba8cb2f-187a-462f-868e-e34167899c98,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:05a7be64-444a-4b47-a99a-591ade3b04b2,B
+X-CID-META: VersionHash:6dc6a47,CLOUDID:e3164a26-5902-4533-af4f-d0904aa89b3c,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 2c06d404823b11efba0aef63c0775dbf-20241004
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 7e0bb59e823b11efb3adad29d29602c1-20241004
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
 	(envelope-from <skylake.huang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 102237078; Fri, 04 Oct 2024 03:26:52 -0700
+	with ESMTP id 1955267494; Fri, 04 Oct 2024 03:29:10 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 4 Oct 2024 18:26:49 +0800
+ 15.2.1118.26; Fri, 4 Oct 2024 18:29:07 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 4 Oct 2024 18:26:49 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 4 Oct 2024 18:29:07 +0800
 From: Sky Huang <SkyLake.Huang@mediatek.com>
 To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
 	Russell King <linux@armlinux.org.uk>, "David S. Miller"
@@ -65,9 +65,9 @@ To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
 CC: Steven Liu <Steven.Liu@mediatek.com>, SkyLake.Huang
 	<skylake.huang@mediatek.com>
-Subject: [PATCH net-next 5/9] net: phy: mediatek: Integrate read/write page helper functions
-Date: Fri, 4 Oct 2024 18:24:09 +0800
-Message-ID: <20241004102413.5838-6-SkyLake.Huang@mediatek.com>
+Subject: [PATCH net-next 6/9] net: phy: mediatek: Hook LED helper functions in mtk-ge.c
+Date: Fri, 4 Oct 2024 18:24:10 +0800
+Message-ID: <20241004102413.5838-7-SkyLake.Huang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20241004102413.5838-1-SkyLake.Huang@mediatek.com>
 References: <20241004102413.5838-1-SkyLake.Huang@mediatek.com>
@@ -75,8 +75,8 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241004_032655_012896_607B59A5 
-X-CRM114-Status: GOOD (  14.64  )
+X-CRM114-CacheID: sfid-20241004_032912_544043_2B685E08 
+X-CRM114-Status: GOOD (  16.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,149 +93,148 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "SkyLake.Huang" <skylake.huang@mediatek.com>
 
-This patch integrates read/write page helper functions as MTK phy lib.
-They are basically the same in mtk-ge.c & mtk-ge-soc.c.
+We have mtk-phy-lib.c now so that we can use LED helper functions in
+mtk-ge.c(mt7531 part). It also means that mt7531/mt7981/mt7988's
+Giga ethernet phys share almost the same HW LED controller design.
+Also, add probe function for mt7531 so that it can initialize LED state.
 
 Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
 ---
- drivers/net/phy/mediatek/mtk-ge-soc.c  | 18 ++++--------------
- drivers/net/phy/mediatek/mtk-ge.c      | 20 ++++++--------------
- drivers/net/phy/mediatek/mtk-phy-lib.c | 12 ++++++++++++
- drivers/net/phy/mediatek/mtk.h         |  3 +++
- 4 files changed, 25 insertions(+), 28 deletions(-)
+ drivers/net/phy/mediatek/mtk-ge.c | 100 ++++++++++++++++++++++++++++++
+ 1 file changed, 100 insertions(+)
 
-diff --git a/drivers/net/phy/mediatek/mtk-ge-soc.c b/drivers/net/phy/mediatek/mtk-ge-soc.c
-index 970bf35..26c2183 100644
---- a/drivers/net/phy/mediatek/mtk-ge-soc.c
-+++ b/drivers/net/phy/mediatek/mtk-ge-soc.c
-@@ -275,16 +275,6 @@ struct mtk_socphy_shared {
- 	struct mtk_socphy_priv	priv[4];
- };
- 
--static int mtk_socphy_read_page(struct phy_device *phydev)
--{
--	return __phy_read(phydev, MTK_EXT_PAGE_ACCESS);
--}
--
--static int mtk_socphy_write_page(struct phy_device *phydev, int page)
--{
--	return __phy_write(phydev, MTK_EXT_PAGE_ACCESS, page);
--}
--
- /* One calibration cycle consists of:
-  * 1.Set DA_CALIN_FLAG high to start calibration. Keep it high
-  *   until AD_CAL_COMP is ready to output calibration result.
-@@ -1305,8 +1295,8 @@ static struct phy_driver mtk_socphy_driver[] = {
- 		.probe		= mt7981_phy_probe,
- 		.suspend	= genphy_suspend,
- 		.resume		= genphy_resume,
--		.read_page	= mtk_socphy_read_page,
--		.write_page	= mtk_socphy_write_page,
-+		.read_page	= mtk_phy_read_page,
-+		.write_page	= mtk_phy_write_page,
- 		.led_blink_set	= mt798x_phy_led_blink_set,
- 		.led_brightness_set = mt798x_phy_led_brightness_set,
- 		.led_hw_is_supported = mt798x_phy_led_hw_is_supported,
-@@ -1322,8 +1312,8 @@ static struct phy_driver mtk_socphy_driver[] = {
- 		.probe		= mt7988_phy_probe,
- 		.suspend	= genphy_suspend,
- 		.resume		= genphy_resume,
--		.read_page	= mtk_socphy_read_page,
--		.write_page	= mtk_socphy_write_page,
-+		.read_page	= mtk_phy_read_page,
-+		.write_page	= mtk_phy_write_page,
- 		.led_blink_set	= mt798x_phy_led_blink_set,
- 		.led_brightness_set = mt798x_phy_led_brightness_set,
- 		.led_hw_is_supported = mt798x_phy_led_hw_is_supported,
 diff --git a/drivers/net/phy/mediatek/mtk-ge.c b/drivers/net/phy/mediatek/mtk-ge.c
-index 54ea64a..9122899 100644
+index 9122899..18f6988 100644
 --- a/drivers/net/phy/mediatek/mtk-ge.c
 +++ b/drivers/net/phy/mediatek/mtk-ge.c
-@@ -3,6 +3,8 @@
- #include <linux/module.h>
- #include <linux/phy.h>
- 
-+#include "mtk.h"
-+
- #define MTK_EXT_PAGE_ACCESS		0x1f
- #define MTK_PHY_PAGE_STANDARD		0x0000
- #define MTK_PHY_PAGE_EXTENDED		0x0001
-@@ -11,16 +13,6 @@
+@@ -13,6 +13,10 @@
  #define MTK_PHY_PAGE_EXTENDED_2A30	0x2a30
  #define MTK_PHY_PAGE_EXTENDED_52B5	0x52b5
  
--static int mtk_gephy_read_page(struct phy_device *phydev)
--{
--	return __phy_read(phydev, MTK_EXT_PAGE_ACCESS);
--}
--
--static int mtk_gephy_write_page(struct phy_device *phydev, int page)
--{
--	return __phy_write(phydev, MTK_EXT_PAGE_ACCESS, page);
--}
--
++struct mtk_gephy_priv {
++	unsigned long		led_state;
++};
++
  static void mtk_gephy_config_init(struct phy_device *phydev)
  {
  	/* Enable HW auto downshift */
-@@ -77,8 +69,8 @@ static struct phy_driver mtk_gephy_driver[] = {
- 		.handle_interrupt = genphy_handle_interrupt_no_ack,
- 		.suspend	= genphy_suspend,
- 		.resume		= genphy_resume,
--		.read_page	= mtk_gephy_read_page,
--		.write_page	= mtk_gephy_write_page,
-+		.read_page	= mtk_phy_read_page,
-+		.write_page	= mtk_phy_write_page,
- 	},
+@@ -57,6 +61,96 @@ static int mt7531_phy_config_init(struct phy_device *phydev)
+ 	return 0;
+ }
+ 
++static int mt7531_phy_probe(struct phy_device *phydev)
++{
++	struct mtk_gephy_priv *priv;
++
++	priv = devm_kzalloc(&phydev->mdio.dev, sizeof(struct mtk_gephy_priv),
++			    GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	phydev->priv = priv;
++
++	mtk_phy_leds_state_init(phydev);
++
++	return 0;
++}
++
++static int mt753x_phy_led_blink_set(struct phy_device *phydev, u8 index,
++				    unsigned long *delay_on,
++				    unsigned long *delay_off)
++{
++	struct mtk_gephy_priv *priv = phydev->priv;
++	bool blinking = false;
++	int err = 0;
++
++	err = mtk_phy_led_num_dly_cfg(index, delay_on, delay_off, &blinking);
++	if (err < 0)
++		return err;
++
++	err = mtk_phy_hw_led_blink_set(phydev, index, &priv->led_state,
++				       blinking);
++	if (err)
++		return err;
++
++	return mtk_phy_hw_led_on_set(phydev, index, &priv->led_state,
++				     MTK_GPHY_LED_ON_MASK, false);
++}
++
++static int mt753x_phy_led_brightness_set(struct phy_device *phydev,
++					 u8 index, enum led_brightness value)
++{
++	struct mtk_gephy_priv *priv = phydev->priv;
++	int err;
++
++	err = mtk_phy_hw_led_blink_set(phydev, index, &priv->led_state, false);
++	if (err)
++		return err;
++
++	return mtk_phy_hw_led_on_set(phydev, index, &priv->led_state,
++				     MTK_GPHY_LED_ON_MASK, (value != LED_OFF));
++}
++
++static const unsigned long supported_triggers =
++	BIT(TRIGGER_NETDEV_FULL_DUPLEX) |
++	BIT(TRIGGER_NETDEV_HALF_DUPLEX) |
++	BIT(TRIGGER_NETDEV_LINK)        |
++	BIT(TRIGGER_NETDEV_LINK_10)     |
++	BIT(TRIGGER_NETDEV_LINK_100)    |
++	BIT(TRIGGER_NETDEV_LINK_1000)   |
++	BIT(TRIGGER_NETDEV_RX)          |
++	BIT(TRIGGER_NETDEV_TX);
++
++static int mt753x_phy_led_hw_is_supported(struct phy_device *phydev, u8 index,
++					  unsigned long rules)
++{
++	return mtk_phy_led_hw_is_supported(phydev, index, rules,
++					   supported_triggers);
++}
++
++static int mt753x_phy_led_hw_control_get(struct phy_device *phydev, u8 index,
++					 unsigned long *rules)
++{
++	struct mtk_gephy_priv *priv = phydev->priv;
++
++	return mtk_phy_led_hw_ctrl_get(phydev, index, rules, &priv->led_state,
++				       MTK_GPHY_LED_ON_SET,
++				       MTK_GPHY_LED_RX_BLINK_SET,
++				       MTK_GPHY_LED_TX_BLINK_SET);
++};
++
++static int mt753x_phy_led_hw_control_set(struct phy_device *phydev, u8 index,
++					 unsigned long rules)
++{
++	struct mtk_gephy_priv *priv = phydev->priv;
++
++	return mtk_phy_led_hw_ctrl_set(phydev, index, rules, &priv->led_state,
++				       MTK_GPHY_LED_ON_SET,
++				       MTK_GPHY_LED_RX_BLINK_SET,
++				       MTK_GPHY_LED_TX_BLINK_SET);
++};
++
+ static struct phy_driver mtk_gephy_driver[] = {
+ 	{
+ 		PHY_ID_MATCH_EXACT(0x03a29412),
+@@ -75,6 +169,7 @@ static struct phy_driver mtk_gephy_driver[] = {
  	{
  		PHY_ID_MATCH_EXACT(0x03a29441),
-@@ -91,8 +83,8 @@ static struct phy_driver mtk_gephy_driver[] = {
- 		.handle_interrupt = genphy_handle_interrupt_no_ack,
- 		.suspend	= genphy_suspend,
+ 		.name		= "MediaTek MT7531 PHY",
++		.probe		= mt7531_phy_probe,
+ 		.config_init	= mt7531_phy_config_init,
+ 		/* Interrupts are handled by the switch, not the PHY
+ 		 * itself.
+@@ -85,6 +180,11 @@ static struct phy_driver mtk_gephy_driver[] = {
  		.resume		= genphy_resume,
--		.read_page	= mtk_gephy_read_page,
--		.write_page	= mtk_gephy_write_page,
-+		.read_page	= mtk_phy_read_page,
-+		.write_page	= mtk_phy_write_page,
+ 		.read_page	= mtk_phy_read_page,
+ 		.write_page	= mtk_phy_write_page,
++		.led_blink_set	= mt753x_phy_led_blink_set,
++		.led_brightness_set = mt753x_phy_led_brightness_set,
++		.led_hw_is_supported = mt753x_phy_led_hw_is_supported,
++		.led_hw_control_set = mt753x_phy_led_hw_control_set,
++		.led_hw_control_get = mt753x_phy_led_hw_control_get,
  	},
  };
  
-diff --git a/drivers/net/phy/mediatek/mtk-phy-lib.c b/drivers/net/phy/mediatek/mtk-phy-lib.c
-index 20796ae..e55a432 100644
---- a/drivers/net/phy/mediatek/mtk-phy-lib.c
-+++ b/drivers/net/phy/mediatek/mtk-phy-lib.c
-@@ -6,6 +6,18 @@
- 
- #include "mtk.h"
- 
-+int mtk_phy_read_page(struct phy_device *phydev)
-+{
-+	return __phy_read(phydev, MTK_EXT_PAGE_ACCESS);
-+}
-+EXPORT_SYMBOL_GPL(mtk_phy_read_page);
-+
-+int mtk_phy_write_page(struct phy_device *phydev, int page)
-+{
-+	return __phy_write(phydev, MTK_EXT_PAGE_ACCESS, page);
-+}
-+EXPORT_SYMBOL_GPL(mtk_phy_write_page);
-+
- int mtk_phy_led_hw_is_supported(struct phy_device *phydev, u8 index,
- 				unsigned long rules,
- 				unsigned long supported_triggers)
-diff --git a/drivers/net/phy/mediatek/mtk.h b/drivers/net/phy/mediatek/mtk.h
-index 2fc89e3..5986aaa 100644
---- a/drivers/net/phy/mediatek/mtk.h
-+++ b/drivers/net/phy/mediatek/mtk.h
-@@ -62,6 +62,9 @@
- #define MTK_PHY_LED_STATE_FORCE_BLINK	1
- #define MTK_PHY_LED_STATE_NETDEV	2
- 
-+int mtk_phy_read_page(struct phy_device *phydev);
-+int mtk_phy_write_page(struct phy_device *phydev, int page);
-+
- int mtk_phy_led_hw_is_supported(struct phy_device *phydev, u8 index,
- 				unsigned long rules,
- 				unsigned long supported_triggers);
 -- 
 2.45.2
 
