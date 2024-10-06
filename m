@@ -4,91 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B981ACFB43F
-	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Oct 2024 15:13:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFE02CFB43F
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Oct 2024 15:36:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hvp+E/UAnu6woBEMc62+rv/GUAvXO/LstybZIGTGROE=; b=KhvqhBFOSsOf4f5ASTABeR/c/f
-	COWY7RXM3i1tEMPn+EiedyZYyztj4Ub/vCFnesPSLRj1U5yE2oQ7tzkW6HoXbr5j3DG4sqkpCdbj/
-	R0Pu41hOYSgVjk1BDWBzOmHZorPqYSb601HNiaDPB5MdYwXvDXgtoGzkNcvjZ5XsNaNyVnWW8+IwZ
-	xy3cCEti2zQ2WRlG4NsetxSVObqiUrMmO6D3pmoA3X3WbxepXyg6mC6XjNgwevdl2jTpUATfe4ekA
-	bj4EHXDn3WJ/OyZC6Q8j0JzauhgDn0CKQkvyZOL6Gq2DnC4Z5Z1o6WTzXul0mTbkLhwy37N0TvvLB
-	vq0modxA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8a24Wv8+IF6YtpnxD3MAY1GU/+RJAr6bKEjkH7W3iMA=; b=VdQxUWJPZXkUjg
+	kqHEIrvZcdvpKFUEkNFQ9ImAquuGHMpvxkMZQ4KBKobZMj0lrOXU8Z9zZJeuObfASxpVvk1+Q27ea
+	4Fbb9vdp+HB+YClZTD0rb2wLEbfbcr1AqbavCmRO+bjpRAp7BrJ9UIEEV6subAFIGiUkN1+UbWfRQ
+	kxfs4nBGfqSwQZ1MpCm6vF5uQChO9A+1w7QRa0jHVxugWde8UMmO89qOmwZ9UaGNkt6Ej7ZXmkRaC
+	v6CnkN168jAyryZ+2pR3l1fsR+89IhkOTTKWkoOLzFi4nmiqKCU8itVkbg7uKDQOtwFwMoIwOl6QE
+	862uIARnHdhItkbWFYKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxSwj-00000000CfD-3Cyy;
-	Sun, 06 Oct 2024 15:13:21 +0000
-Received: from mout.gmx.net ([212.227.15.15])
+	id 1sxTIu-00000000ENQ-3M5G;
+	Sun, 06 Oct 2024 15:36:16 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxSwf-00000000Ce1-3kDq;
-	Sun, 06 Oct 2024 15:13:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1728227587; x=1728832387; i=frank-w@public-files.de;
-	bh=hvp+E/UAnu6woBEMc62+rv/GUAvXO/LstybZIGTGROE=;
-	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
-	 Content-Type:Date:In-Reply-To:References:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=IXatiKC91XmdlgblPrnw5PNRV193547gYqACus0BQvCuzfExHNG+XUY/Fw9IjG9w
-	 g1z3djflsnEJRST9chWPFfjFCkQ6DKDJdx5k/BuNQww2LDQy0EI3E5gPcL71ZgHqV
-	 Wy/fJUs4idyUmlKXlq2J7PCzaq/gstZBYi2eTy9pgqbv7K/mWEStIGlDq/JeAGYph
-	 KqJVMl6rkRbkgmOHHWi8mWKsZv0adi/LnDwpLGODORQ/Cs4rGZabkKfvRKrlNDG8r
-	 IcIGgICV+w44oHthLKb1OGghpfN5liZqgzW9MWGdIreuke2y3kQURmIQ61X8Uq2JL
-	 DP6WvMu4KRft43n5XA==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.153.101] ([217.61.153.101]) by web-mail.gmx.net
- (3c-app-gmx-bs41.server.lan [172.19.170.93]) (via HTTP); Sun, 6 Oct 2024
- 17:13:07 +0200
+	id 1sxTHc-00000000E9i-0ctX;
+	Sun, 06 Oct 2024 15:34:57 +0000
+Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
+	by mxout1.routing.net (Postfix) with ESMTP id DA73A3FEA0;
+	Sun,  6 Oct 2024 15:34:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1728228894;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=8a24Wv8+IF6YtpnxD3MAY1GU/+RJAr6bKEjkH7W3iMA=;
+	b=plBxpYlwni/+QKRwhvtDms/ca6FJXKkSf1piZBiOQdpOegHZyj6vnztjuo29vkmKdGRHxN
+	Ftmc96qyYOquQj2f3wyqFVW0+i8vE330iKQBkYn7/8G6gixsImuS0SaqQhlW1FT7xNP2lB
+	wRdNXMHbjN8uq7e3OajHEdGGzj27ZF0=
+Received: from frank-u24.. (fttx-pool-217.61.153.101.bambit.de [217.61.153.101])
+	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id B75F1100546;
+	Sun,  6 Oct 2024 15:34:52 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: Chaotian Jing <chaotian.jing@mediatek.com>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wenbin Mei <wenbin.mei@mediatek.com>
+Subject: [PATCH v2 0/2] Add mmc support for mt7988
+Date: Sun,  6 Oct 2024 17:34:44 +0200
+Message-ID: <20241006153447.41377-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Message-ID: <trinity-7314f935-72cc-4f2f-9184-0c19c147b2a0-1728227587807@3c-app-gmx-bs41>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Frank Wunderlich <linux@fw-web.de>, Chaotian Jing
- <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>, Rob
- Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
- Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Wenbin Mei <wenbin.mei@mediatek.com>, linux-mmc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- daniel@makrotopia.org, linux-gpio@vger.kernel.org, john@phrozen.org,
- eladwf@gmail.com, ansuelsmth@gmail.com
-Subject: Aw: Re: [PATCH v1 1/2] dt-bindings: mmc: mtk-sd: Add mt7988 SoC
-Content-Type: text/plain; charset=UTF-8
-Date: Sun, 6 Oct 2024 17:13:07 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <4pmhzc5sf2c7dww3tihyqq5coco6u5nx7xvtqami7u55442gij@mqvyvqrpa6ft>
-References: <20241006102154.17087-1-linux@fw-web.de>
- <20241006102154.17087-2-linux@fw-web.de>
- <4pmhzc5sf2c7dww3tihyqq5coco6u5nx7xvtqami7u55442gij@mqvyvqrpa6ft>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:CTdBPjZOMMsYISKc7AhsidebqUXN8P2MyreSQ7CvV+Q2mDrZs+E4pwsypQTkLg6ohgj2G
- lNXnUMp5BvYpuHMf3wwYFFMSVFy40DjbYl55PGX6ibEecNe/w5Bfi/lTvhVbLKgNKfT4cycoTcUF
- INoYB/BWUokQ+W6hh6Nc7Vt2X/W7ICeGCaYEkoKhTVDT+StfWGLWKMC4+zJ+JbPECDy2JgWc15H+
- dH5wEra4xsfm5Xq5UjDRMsCD+TdQGlmryvZE5746HRzC0r9SAMbNEtJH+QQ00/rkOAasGJ/yAr0S
- qU=
-UI-OutboundReport: notjunk:1;M01:P0:13PIiWXd4Mk=;1bOKWLxSe6Uw4YXhgtLlNVXLORD
- WxQ97gsEEjcJDu4G52scILcjXnBB5ithJ8no5uLU9S59R020pfdv7NZGAw64FJSfBwrPJBkBb
- JYazdnTQgrhbcRD75JoUavzWRJt+YaFW2lqwiN1jXU2Icj+SrjSDtkNTMwDZ0NdX9GI68kYKZ
- apOjMkF2+eDfq7GzmQPbgTcq8oLKwYXYJFsj03MwNktin0XU7891pU+1Zfa9m/PNLvyowIz7w
- ubLvTzr+aSP4d7WiLgpgdMUrU/ceMWg1DZAWpL03UwkxuZHUw/4yVAHv3THyN8kptg2i8a2+P
- XN47xue2eV5+u7W6nDe0g1OxxmgsiQFIEMA0L5hGYk87Qn6rJ6Y1HjEYXYr8vtyRQuYjWEQ1q
- D4XnD8zRkRn2XmiNX71+P1EvV8HeeWNTNPzYIXyDH2x/tycVyVh3xU99f4wKrMQ/f+KrkVPs2
- 5fnGRqTOgQ9ZYXiL+cxVYDfplw8QdHHB9WpZiLM/xruCiOtswKk3mtEi4WgZtnbIK48egB0uV
- pkvQoWKvAfaNxo8QZRT/rjf01S2mksUFzca4CaMZdTBXsMkSH1szGC9/DpP2AqlmDRujz3UeW
- ntwBlnBFT2fyENLfKjjCtgThWkO2ENOS9cetKRmKgpfgEOm9q1CSfM8pY61stVu6ZeGEOGd5p
- nb0FNXWOor6vpK/+oc+eyQ4GHf43xyGJ02x7TcRp0A==
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-Mail-ID: a14421cf-f9da-47e1-aaa2-7eacc01207e4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241006_081318_242395_A55BFB04 
-X-CRM114-Status: GOOD (  14.91  )
+X-CRM114-CacheID: sfid-20241006_083456_371801_6B4C8882 
+X-CRM114-Status: UNSURE (   6.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,66 +72,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, daniel@makrotopia.org, linux-mediatek@lists.infradead.org, john@phrozen.org, eladwf@gmail.com, ansuelsmth@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+From: Frank Wunderlich <frank-w@public-files.de>
 
-> Gesendet: Sonntag, 06. Oktober 2024 um 14:47 Uhr
-> Von: "Krzysztof Kozlowski" <krzk@kernel.org>
-> An: "Frank Wunderlich" <linux@fw-web.de>
-> Betreff: Re: [PATCH v1 1/2] dt-bindings: mmc: mtk-sd: Add mt7988 SoC
->
-> On Sun, Oct 06, 2024 at 12:21:48PM +0200, Frank Wunderlich wrote:
-> > From: Frank Wunderlich <frank-w@public-files.de>
-> >
-> > Add binding definitions for mmc on MT7988 SoC.
-> >
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> > ---
-> >  .../devicetree/bindings/mmc/mtk-sd.yaml       | 24 ++++++++++++++++++=
-+
-> >  1 file changed, 24 insertions(+)
-> >
-> > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Docum=
-entation/devicetree/bindings/mmc/mtk-sd.yaml
-> > index c532ec92d2d9..db7d1c570aea 100644
-> > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > @@ -21,6 +21,7 @@ properties:
-> >            - mediatek,mt7620-mmc
-> >            - mediatek,mt7622-mmc
-> >            - mediatek,mt7986-mmc
-> > +          - mediatek,mt7988-mmc
-> >            - mediatek,mt8135-mmc
-> >            - mediatek,mt8173-mmc
-> >            - mediatek,mt8183-mmc
-> > @@ -263,6 +264,29 @@ allOf:
-> >              - const: bus_clk
-> >              - const: sys_cg
-> >
-> > +  - if:
-> > +      properties:
-> > +        compatible:
-> > +          contains:
-> > +            enum:
-> > +              - mediatek,mt7988-mmc
-> > +    then:
-> > +      properties:
-> > +        clocks:
-> > +          minItems: 3
-> > +          items:
-> > +            - description: source clock
-> > +            - description: HCLK which used for host
-> > +            - description: Advanced eXtensible Interface
-> > +            - description: Advanced High-performance Bus clock
->
-> Why ahb is optional?
+Add MMC-Support for MT798 SoC
 
-sorry, my fault, forgot to change the minitems property after copy the blo=
-ck
+changes in v2:
+- corrected minItems to require all 4 clocks
 
-> Best regards,
-> Krzysztof
+Frank Wunderlich (2):
+  dt-bindings: mmc: mtk-sd: Add mt7988 SoC
+  mmc: mtk-sd: add support for mt7988
+
+ .../devicetree/bindings/mmc/mtk-sd.yaml       | 24 +++++++++++++++++++
+ drivers/mmc/host/mtk-sd.c                     | 14 +++++++++++
+ 2 files changed, 38 insertions(+)
+
+-- 
+2.43.0
 
 
