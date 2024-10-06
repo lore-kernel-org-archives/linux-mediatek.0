@@ -4,57 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14804CFB424
-	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Oct 2024 12:50:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E292CFB43F
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Oct 2024 13:15:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XWeixF56/1wTERbZPO2CJfUIfp4HPtl/IFmEv2Tc/zA=; b=3uvDGlUIDKG7+d0Py0vVtgn1NA
-	uJY6tXL3fTP2d1EpzciIi3abcxT1w2OlRgyANv0ZBaKocevwXMOrV1eotyRtVwwJTQt5FGNnd95op
-	kU6Ft9mjEyBYK0laSQ2RSNJAWSpGahCWII8wtgd6VEbUxPW4JUioMWprm7Uk1gDHjamlTLHcbITs6
-	dsCNZ6CBCItKSqBCrJ3Whkd2QY+k+7cStIOqAP2ecjALgxNSyATO7CbBjFmi8dZb+nnbNLwC/DxPj
-	reHvDt3GlLa7I6PzQWhPfNyxFEN2zu9fqpO/C9MSskrIbw8wf7+kMy7ppWkM+LbQHnMGkR1rPA7gk
-	k5LWWnjg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=v8RbTndRs8Mr2poqllCCMfJYqEYtpr6QKfUt0AvEB+I=; b=Utt8vAuthJHFb8tMUgzWikyUzZ
+	e8+lv3PbU4NDquMeF3LbVbQJkKACh0nQwoxRDQ+w8KbDxLTD1KdSHPd1cJJGXLJeaYAU1fyJO3yGe
+	0JJXj5QwuZ6l+1fbcEt4ysd70B+nWK9Roap/THk+qDRakgbU7SvTZzLmlMtMk+IlT2/poTGg6bfyL
+	4IDN2lUAxZOHtRWKaM0wcdsbooYw+EySqJ6ee2aucyVG+Zx8+kQ12mFghxxgZItYB+xVS4FKYorHe
+	U0UbescSFfTGjOOvWpggWeZLWiPgilJSxmiCIjBywiMa/iH0j72cAklVOUpxlFjBal95ER9XGb1Lq
+	I8aOUUvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxQiE-0000000038a-0lB2;
-	Sun, 06 Oct 2024 12:50:14 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1sxR6M-000000004Yl-04lE;
+	Sun, 06 Oct 2024 13:15:10 +0000
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxQgF-000000002xA-3hL0;
-	Sun, 06 Oct 2024 12:48:13 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 9CC94A40CAC;
-	Sun,  6 Oct 2024 12:48:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9DCBEC4CEC5;
-	Sun,  6 Oct 2024 12:48:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728218890;
-	bh=EC+uOqpK9Zdf6/1C0U/deKBs4TGD19dRrEPioHxLh0I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YK5NfoElqmkBgts0p0Byk1UTMJEpi9y5sEN/VSX2SszHkVyyoorXtZrOybWepWi8q
-	 q+2LCO1UIgQjJ/SKnmqGNcNIna/R4eGskHIWcADQprP3GCVQfjWrBD3gmtq1aWyBEQ
-	 oV9ItvEAIpc55+dzMTyDpZnTucGk0lbfyzXdWG9Lhce4gjyjIiN26LucMdYsP9Zg1s
-	 mgYFx9I7KuXi/go1oy8ZSBobya2+Q6LSsGY8hnwUJavq0Ek6SRLYxV7z1UDc7FQK3Q
-	 6t5WsTSGyU+3xrrJabNHps2ZVqIcJbGWl/DIa5LroL5hN1tfVuWpCah14HKt79A8Fb
-	 KRAoaeD74GYOQ==
-Date: Sun, 6 Oct 2024 14:48:06 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [PATCH v1] dt-bindings: spi: add compatibles for mt7988
-Message-ID: <kmzl5zmqqudoq2jcdacfsbwq3axdvcml4m5kw5oqqo2hj6iiuq@xzeg6penuic3>
-References: <20241006102740.17948-1-linux@fw-web.de>
+	id 1sxR53-000000004Qo-3qc2;
+	Sun, 06 Oct 2024 13:13:51 +0000
+Received: by mail-pg1-x529.google.com with SMTP id 41be03b00d2f7-7cd8803fe0aso2463458a12.0;
+        Sun, 06 Oct 2024 06:13:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1728220429; x=1728825229; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=v8RbTndRs8Mr2poqllCCMfJYqEYtpr6QKfUt0AvEB+I=;
+        b=LrJ86SVyfNQBf+ExSY15MD9yHDBOsFEDFvhvfrkftAawoc6TTwd5Fq/IbCKsVkp/z3
+         XIa2pRXEZUIjRTSWVirb3b4Q978hAd5/kboAbIYH4marthB2vqCi1bkv0PcWCHZvMsO1
+         0FMwtO5bBN9QKGBAVPcogqMfR402PC97InclyyxcKwGZnNHFwut/67Cr93JV6zVY4RsQ
+         dkNy9TNmDpe/7ACCSoArGDFZBJ+xuftx/UxJqefgVJWjvinfQ+Yw0cwPcNh7/j7wXUrI
+         MjQDj5DrWjkJKnZ+1AtSf1FOhZ1SrflZlYiH52OIaM8h8GXe/PlCjsoDo1KzcMAFufSp
+         dD5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1728220429; x=1728825229;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=v8RbTndRs8Mr2poqllCCMfJYqEYtpr6QKfUt0AvEB+I=;
+        b=ddAjKPhuZlPld5GBFUIxOTPZvd0PSUm7LoNpEGE/ut5eNWwC7GPpnSVotAhJvk3UQz
+         /w8Ho3HZ4+b9mNo9TQ+U9G3aCbsdM0CzCmCYbFkeU6oziQIm+C0BBgfvYJELZ1qQKkNr
+         M6og7RSJKKdlT+0B3v0XJD0/rrh6XNgATaAGUjK9wkH7BFl9ElkTAEyGLs4mI5GpkIjT
+         vvDBaOxjMjdYV6GsZ3QWzEl6lTRFz5xqEHOMH2E1KzvIMf/6d2C4rAagGPgzLt/NXqiy
+         9a83NPrdmG5yu54PWxaG+y1ybSpRyf+V0PaGgLIIECdvbL4qJYVkWuGkyXfZb4HlyQQ5
+         lc0w==
+X-Forwarded-Encrypted: i=1; AJvYcCU4mcOgHcfaX+fEQCdiTLrAeeuf3eKl0+yCCAZArQCvQHTMH54WAXqEhUmcMYuGDs5dJy9CvLaNzN0NE/M88Nk=@lists.infradead.org, AJvYcCVYty9V67hZa1owX0s1aywnEZUmRf6i8HWGmwofm32KJfvayQEvk2Od+rrYX6TcHWFAVAL1WrRWRXHe0wo0m5XE@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyf2iwUiaBHFe8pSPoc5pIEP9hrlOZJuPKaKeno9oiJuFSVx68q
+	/S9tJkhhTn3urjRJWTYVloF8xC5d/faHIb+HUpbSef0Ry862KYWg
+X-Google-Smtp-Source: AGHT+IH7TNSZveAqC65bkebWCC7FHOuBiFSYW53Nym3R2L/efZPBhA72yqf+9hYNzgHlNZhCGxlkeQ==
+X-Received: by 2002:a17:90a:ce96:b0:2d8:f515:3169 with SMTP id 98e67ed59e1d1-2e1e620ea68mr9386754a91.6.1728220428835;
+        Sun, 06 Oct 2024 06:13:48 -0700 (PDT)
+Received: from purva-IdeaPad-Gaming-3-15IHU6.lan ([2409:40c0:230:2966:38a7:3af4:46b4:a902])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2e1e83ca284sm5117215a91.11.2024.10.06.06.13.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 06 Oct 2024 06:13:48 -0700 (PDT)
+From: SurajSonawane2415 <surajsonawane0215@gmail.com>
+To: pavel@ucw.cz,
+	lee@kernel.org
+Cc: matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-leds@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	SurajSonawane2415 <surajsonawane0215@gmail.com>
+Subject: [PATCH] leds: Fix uninitialized variable 'ret' in mt6370_mc_pattern_clear
+Date: Sun,  6 Oct 2024 18:43:37 +0530
+Message-Id: <20241006131337.48442-1-surajsonawane0215@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20241006102740.17948-1-linux@fw-web.de>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241006_054812_001991_E6DBCC54 
-X-CRM114-Status: UNSURE (   7.12  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241006_061349_981803_EBA4758A 
+X-CRM114-Status: GOOD (  10.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,21 +91,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Leilk Liu <leilk.liu@mediatek.com>, john@phrozen.org, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, eladwf@gmail.com, devicetree@vger.kernel.org, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, daniel@makrotopia.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, ansuelsmth@gmail.com, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Oct 06, 2024 at 12:27:39PM +0200, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> MT7988 has 2 different spi controllers. Add mediatek,ipm-spi-single
-> and mediatek,ipm-spi-quad compatibles.
+Fix the uninitialized symbol 'ret' in the function mt6370_mc_pattern_clear
+to resolve the following warning:
+drivers/leds/rgb/leds-mt6370-rgb.c:604 mt6370_mc_pattern_clear()
+error: uninitialized symbol 'ret'.
+Initialize 'ret' to 0 to prevent undefined behavior from uninitialized
+access.
 
-Why generic compatibles?
+Signed-off-by: SurajSonawane2415 <surajsonawane0215@gmail.com>
+---
+ drivers/leds/rgb/leds-mt6370-rgb.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-These are supposed to be SoC-specific.
-
-Best regards,
-Krzysztof
+diff --git a/drivers/leds/rgb/leds-mt6370-rgb.c b/drivers/leds/rgb/leds-mt6370-rgb.c
+index 10a0b5b45..87805c21e 100644
+--- a/drivers/leds/rgb/leds-mt6370-rgb.c
++++ b/drivers/leds/rgb/leds-mt6370-rgb.c
+@@ -587,7 +587,7 @@ static inline int mt6370_mc_pattern_clear(struct led_classdev *lcdev)
+ 	struct mt6370_led *led = container_of(mccdev, struct mt6370_led, mc);
+ 	struct mt6370_priv *priv = led->priv;
+ 	struct mc_subled *subled;
+-	int i, ret;
++	int i, ret = 0;
+ 
+ 	mutex_lock(&led->priv->lock);
+ 
+-- 
+2.34.1
 
 
