@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C57D0CFB42B
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Oct 2024 19:42:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 396B2CFB43F
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Oct 2024 08:14:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/S92lqZ+xKzudktcR1TIbH6b3CrdaorM7C9RekZJKKg=; b=MvjTIDiqSUW+Vu
-	N8j/JNTxaGYtPnNtiLwud++mI8saSn2qE6as3lIl9YZlfYlVwrxthq2emI0FZrnYdNOfVu1Q4LN2F
-	glFKhpW2LgE2hKgEQtUDSNzIOhAJ4iuk8pUyVvTCaZMyljX/6e5CwRJyobynNj5DIVmog0V/j6jB6
-	1GeJbHdYFfs5vZ8MzXmFDksbfL6q8yDpT3+nNBu1/px6UbAt6LDTSsVwH/qRUQ4KQ2qamS3a3EsaR
-	suDvHqhFI925ul8Nik+kNViIR3edGR3rGKlO3GimkWQt1PvOSIKqguFIaAD63F7XrF9r29xuzZzbs
-	4fTbi+SEjbWzpEO2B/+w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Z3T5Hjfmtymv+/wWpF42wQYfRxK2aZeO3+nu4Wywvmc=; b=I/ngCYaMBPdjo4gDxpeJBguTfX
+	z9RXa01DD7BBkdgec/luYKX4K/JDOv0cT1CVKVffIqAYj3xhc/l7vZHbTmsr0mzEpXi5QtUJLyEDM
+	Ue/TUuS5OHPNpHnQ3hWSJz4rvRrxC1eA5ETT8Ut0vzeAceaqQHqorXXYEIh/SmYCPOjFGlmcsvhVM
+	66KJzJJ1/xfuCzTzTtjwUEVwkVsz5pYEnHDxJ9thNVfBAoxwglu2CxCyNFNt2rF+wQyaOFkDNQJ68
+	JlbDo8IlhGIkPAZd/MRIHE+CUvFzveFQVnpino6dUILWJeNL0hw/awVnb4T40TpJ25c5D89Ky5D6L
+	EV/WvvAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxAfm-0000000FoYf-2Rug;
-	Sat, 05 Oct 2024 19:42:38 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1sxMPI-0000000HJwF-0iJC;
+	Sun, 06 Oct 2024 08:14:24 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxAeU-0000000FoQa-2kKb;
-	Sat, 05 Oct 2024 19:41:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1728157263; x=1728762063; i=frank-w@public-files.de;
-	bh=/S92lqZ+xKzudktcR1TIbH6b3CrdaorM7C9RekZJKKg=;
-	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
-	 References:Message-ID:MIME-Version:Content-Type:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=Rcq6fl2pxDHUtCy+uA1Pq9vOrpMZyxG5t9WbycQXnx1KEo59BEjpQ4vjZqcGLp1v
-	 qseU5mOd+rwb4yxwzANLw+1idfg6EQWWkQyhLZjKi0XlC6l4UfqAqSOJo4uepLx+f
-	 KOGsXbbcBBA7f0meuHNz5JS8I5LYDMTXDY5F8u88aREVN1X5dDdhychdxyt4X5Lgv
-	 tPU6qL9mxFSSTQHB7DJNfg0F5E3zGtsZe9KMwlTDpeSXR5jUoXug3Q1n6Fzah+xq/
-	 hh4Qx4Bnim7k97wPymCOR13f8ikjzVNGdfYL7dtIWTulq2PwQPlSbC6AfLlbScH2n
-	 AKVXx7k8iUPycvi8kA==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [127.0.0.1] ([157.180.224.66]) by mail.gmx.net (mrgmx104
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1MNbox-1tLheG2EHL-00K4Qk; Sat, 05
- Oct 2024 21:41:03 +0200
-Date: Sat, 05 Oct 2024 21:41:02 +0200
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Rob Herring <robh@kernel.org>, Frank Wunderlich <linux@fw-web.de>
-CC: Linus Walleij <linus.walleij@linaro.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sean Wang <sean.wang@kernel.org>, linux-gpio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- daniel@makrotopia.org, john@phrozen.org, ansuelsmth@gmail.com,
- eladwf@gmail.com
-Subject: Re: [PATCH v1 3/4] dt-bindings: pinctrl: add binding for MT7988 SoC
-User-Agent: K-9 Mail for Android
-In-Reply-To: <20241005184449.GA505893-robh@kernel.org>
-References: <20241004123423.34519-1-linux@fw-web.de> <20241004123423.34519-4-linux@fw-web.de> <20241005184449.GA505893-robh@kernel.org>
-Message-ID: <DA1815FE-D2A6-46A3-9219-9216A3C6D61A@public-files.de>
+	id 1sxMPF-0000000HJvf-0K6e;
+	Sun, 06 Oct 2024 08:14:22 +0000
+Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-a9950d27234so15059266b.1;
+        Sun, 06 Oct 2024 01:14:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1728202458; x=1728807258; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Z3T5Hjfmtymv+/wWpF42wQYfRxK2aZeO3+nu4Wywvmc=;
+        b=b2f504btHCpBOlY22k2KiNDZOW4pdICIcsSGfhs7FJQWJg074/6b98JEBdr6piN0TA
+         qls9jjx1EFpaBGxzkbtFShuZTBPo9/aOOZy+/2ujDa4YFbtaBbmacAmwTsQ82KeII5uq
+         ZH59qa5cQXlsDEdUAWnWwRaHfnWj2nQWkL7RghM2fx6Khoo3aiQe39/vQezVxpJKGZLs
+         5K6oQXseMst1PARl5llrMyQxZrpY5Xv3gjaqntE/qdGXU43dxl4fNirjlvuhrpQwuxNR
+         gw4S3BmDVMLHW5z8xbIq0FD/okRTp5Ho46ZZfmKyC3SUrOkMK5RQg3lh68YdYT3Aaoxw
+         lP9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1728202458; x=1728807258;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Z3T5Hjfmtymv+/wWpF42wQYfRxK2aZeO3+nu4Wywvmc=;
+        b=dZD6fF3N2/LZaZfZUp4k+PV8PryPRBakGJh7bnbsNQptny69oSnYRQqWeXJ5PWZ21k
+         KGtEbmeZvQGi8qvxjUTbspNS3xexyHpmyOGHKUXPQ+UgQszA3u5UkUHxOmQW+TVLeCUA
+         XVTUzwu/GTnQbUvug9fUNP/gq2KuGGrFe0tULOjNqV0OsmYXvN5t27qb0MjK2Ey1cZTy
+         FWxlW00mCFu2IaFJF0TLTCtA9wIecKhlhVhcdo0geGHAewMDI/Gz/Wjcan5W7mlAmXRx
+         F5qBXqHCGN2DYg7WCbdwMVd92x/onvX8O8a8W4y2LYKKJVnSFLj/m9aqwjdhpRw4xAwF
+         3x5g==
+X-Forwarded-Encrypted: i=1; AJvYcCV7ThqNaEhrKwSGTD03YL4r7xIOm7W/b6Rqtukr7DBmy6S+s2fjMp+ADRWiNoZQ57xc0MSz18DTY1H/VX7CZEvz@lists.infradead.org, AJvYcCWsh0c8mgy4N3wlyWYta0oLAUCcmlXEXp4/nvO6DrSGMfiYhVPUJ5z0+N6VySIv18AT9znBNlc+aXiHcd3YXFY=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yym3yWEu4q1mvQrWMnPJfw3rn3cvmM69YEQAbQORz1qTKaBNVql
+	bBQKBeLYIOXno6OyM0idwdQouXuYzjQYA8/hOlKN+Dq4Bem/I0aY
+X-Google-Smtp-Source: AGHT+IHG1K1x0pP5Pn8L1WV8joKe+lZYAKwFgKNtSe3mpghD65+PEFtH7oYtHcRa9CsMIs3wXr0lwg==
+X-Received: by 2002:a17:906:fe4d:b0:a90:1300:e613 with SMTP id a640c23a62f3a-a991c077ddbmr851592366b.55.1728202457375;
+        Sun, 06 Oct 2024 01:14:17 -0700 (PDT)
+Received: from [10.32.3.23] ([95.183.227.32])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a994a1464a1sm80746066b.106.2024.10.06.01.14.14
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 06 Oct 2024 01:14:15 -0700 (PDT)
+Message-ID: <61891c81-3172-4bca-a660-88518e051f9c@gmail.com>
+Date: Sun, 6 Oct 2024 11:14:11 +0300
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:1udbzqpUdFVIpiIicrJzHxwKDVUEDEWlPS/trJexjGU2JwVQinR
- jcKUU1vqCkbp2yqhWSERVNkmY49KqrJiW0UesMFJuPin27oMEg6zeb9p7vXzmowGmAmgpb8
- WVVw3Zi9NFXoDOYUEJaOajBWTovF1v4KPjITrTZnQdcqMVloSz41ONTTyauwJ4rW2ZH5Z10
- zZiNL2ocf96lwcrRoYhCQ==
-UI-OutboundReport: notjunk:1;M01:P0:Lm4FPeXICZQ=;WUM3CLu+SvTk5DI584TEBteumXK
- yASSxAJ2eu9xXpdntD1g05Ef47LQ+uLEANjrdHrje0gmwJZKHZvpEr9BhHTrlrbMmEpLM6ioE
- /KHW+QJ8hd5hM1rDZqttNLLpC71quoYe4Hg36F/6PucW4owRP+7TM0HgNl5Z3UatXA1jHNkiJ
- wBR85l4fEA7lLMk8/CgZ8jF8zSmFHkvkjgBqS5ijhXmM3+od/tY1O7D+cTCJLnhc69l8TAEmy
- sdFv7ZcmR4fAsMhFGpXusYT+GBK7gIdpWUhofMzKGYGP4aPfddYGDOmy4fNW6I7Lw0YQVkrXW
- yDkxCYCuYtHGfONiTNcNeHDFhSRsYvP3Lt/u+NkLjEcP1XrNapGGFiS20d1M1kVbGDrmf1osJ
- ctmSOiijyBBfXj0I+hABK4Jca9zARsuS6RAR/9Z93PKdwfgcEOgllZ8vor385l2FirCcoNvF7
- OuePPkJdt0m0R9hAuidmEQMZsq851vD/M3iz0BzxdXOxJSJ8sZpGqxmCZJNBe7BeDXYRmdKtx
- Qh88eeRTQdsqGZFpm3vkyq+55QHp2MqOPg8aQfQG33Bh0SDmMBDQJAGu5seZtjIdZKECOxUqA
- 9Atsewvv8DB0BixgfrmS6PVUvSy+c82OgXLq8p1pDOTq0B5SfL4WXRkLMKgoPcdYF6XyNAA5B
- CnT6hdsrz3h471H4jUWx0/QA5VWX8AnUcJgmRqIDBMx2PzRS0w7cvazL8l58RSX46OVRP+UbY
- tfL3yopolckDaacpQ+0/Fgtch9cGDkVRkSrtP2ge09PDZR62yKXf+l2aCUUv8M3MJXLqGqEWV
- iNV+xswODDau9gGb1a240gxg==
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] drm/mediatek: Fix XRGB format breakage for blend_modes
+ unsupported SoCs
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Adam Thiede <me@adamthiede.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Shawn Sung <shawn.sung@mediatek.com>, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Singo Chang
+ <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Yassine Oudjana <y.oudjana@protonmail.com>
+References: <20241005095234.12925-1-jason-jh.lin@mediatek.com>
+Content-Language: en-US
+From: Yassine Oudjana <yassine.oudjana@gmail.com>
+In-Reply-To: <20241005095234.12925-1-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241005_124119_092757_5A2CB279 
-X-CRM114-Status: UNSURE (   9.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241006_011421_162910_6B238821 
+X-CRM114-Status: GOOD (  20.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,59 +97,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob
+From: Yassine Oudjana <y.oudjana@protonmail.com>
 
-Thank you for first review
+On 05/10/2024 12:52 pm, Jason-JH.Lin wrote:
+> If the constant alpha always set, the SoCs that is not supported the
+> ignore alpha bit will still use constant alpha. That will break the
+> original constant alpha setting of XRGB foramt for blend_modes
+> unsupported SoCs, such as MT8173.
+> 
+> Make the constatnt alpha only set when setting has_alpha or supported
+> blend_modes SoC to fix the downgrade issue.
+> 
+> Fixes: bc46eb5d5d77 ("drm/mediatek: Support DRM plane alpha in OVL")
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 
-Am 5=2E Oktober 2024 20:44:49 MESZ schrieb Rob Herring <robh@kernel=2Eorg>=
-:
->On Fri, Oct 04, 2024 at 02:34:17PM +0200, Frank Wunderlich wrote:
+Tested-by: Yassine Oudjana <y.oudjana@protonmail.com>
 
->> +patternProperties:
->> +  '-pins$':
->> +    type: object
->> +    additionalProperties: false
->> +
->> +    patternProperties:
->> +      '^=2E*mux=2E*$':
->
->Do you really need 'mux' anywhere in the name?
->
->> +        type: object
->> +        additionalProperties: false
->> +        description: |
->> +          pinmux configuration nodes=2E
-=2E=2E=2E
->> +      '^=2E*conf=2E*$':
->
->Really need 'conf' anywhere in the name?=20
->
->> +        type: object
->> +        additionalProperties: false
->> +        description:
->> +          pinconf configuration nodes=2E
->> +        $ref: /schemas/pinctrl/pincfg-node=2Eyaml
+> ---
+>   drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 28 +++++++++++++++----------
+>   1 file changed, 17 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> index 703cd3f6c6d3..de3addd89442 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> @@ -494,19 +494,25 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+>   
+>   	con = mtk_ovl_fmt_convert(ovl, state);
+>   	if (state->base.fb) {
+> -		con |= OVL_CON_AEN;
+> -		con |= state->base.alpha & OVL_CON_ALPHA;
+> +		/*
+> +		 * For blend_modes supported SoCs, always set constant alpha.
+> +		 * For blend_modes unsupported SoCs, set constant alpha when has_alpha is set.
+> +		 */
+> +		if (ovl->data->blend_modes || state->base.fb->format->has_alpha) {
+> +			con |= OVL_CON_AEN;
+> +			con |= state->base.alpha & OVL_CON_ALPHA;
+> +		}
+> +
+> +		/*
+> +		 * Although the alpha channel can be ignored, CONST_BLD must be enabled
+> +		 * for XRGB format, otherwise OVL will still read the value from memory.
+> +		 * For RGB888 related formats, whether CONST_BLD is enabled or not won't
+> +		 * affect the result. Therefore we use !has_alpha as the condition.
+> +		 */
+> +		if (blend_mode == DRM_MODE_BLEND_PIXEL_NONE || !state->base.fb->format->has_alpha)
+> +			ignore_pixel_alpha = OVL_CONST_BLEND;
+>   	}
+>   
+> -	/* CONST_BLD must be enabled for XRGB formats although the alpha channel
+> -	 * can be ignored, or OVL will still read the value from memory.
+> -	 * For RGB888 related formats, whether CONST_BLD is enabled or not won't
+> -	 * affect the result. Therefore we use !has_alpha as the condition.
+> -	 */
+> -	if ((state->base.fb && !state->base.fb->format->has_alpha) ||
+> -	    blend_mode == DRM_MODE_BLEND_PIXEL_NONE)
+> -		ignore_pixel_alpha = OVL_CONST_BLEND;
+> -
+>   	if (pending->rotation & DRM_MODE_REFLECT_Y) {
+>   		con |= OVL_CON_VIRT_FLIP;
+>   		addr += (pending->height - 1) * pending->pitch;
 
-mux and conf are used to match subnodes see example for mdio0_pins
-
-mdio0_pins: mdio0-pins {
-  mux {
-    function =3D "eth";
-    groups =3D "mdc_mdio0";
-  };
-
-  conf {
-    pins =3D "SMI_0_MDC", "SMI_0_MDIO";
-    drive-strength =3D <MTK_DRIVE_8mA>;
-  };
-};
-
-This is same as done for previous SoC like mt7986=2E
-
-
-regards Frank
 
