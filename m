@@ -4,88 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39D9ECFB446
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 15:42:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFC72CFB449
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 16:10:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tde9+HTtwvSdjyegqAc2pBuj8Xp3aZ588ljCLxtJGic=; b=dKA1XhDbnnMdvqVlQBDN6uRKNh
-	hn3PkQMO0dpdhM0K/FTbWMbvrGQpvY2yB6l3hVJSbpPg0ObIWvdO4VhhNlpKxKt9TdrkEdi77GYSb
-	y//yCGj3IeFVv61ilQP0bmXTqktyyOi4yzV2bQqNsi11/yz6QOCUdytB8H1xsb+iIVCNdjIBNvc1F
-	Rvy7fVkQhJQIeutv7TkV6TkDUP8S01pvORE5LXNTKCWAkbfVZfoBiIxR864fllKs7TT4qj6VOTI/Q
-	Dm1wmgbkgviIG2Gaf3ELke9hGIS9MTp4Xgl4LXWw5DaAvdfIqWmX9Z3n+zps47TFJ74tjUOcXX6bP
-	2fBzfvvQ==;
+	bh=JtoBBorIVdMWpMYPOMh7teRbyE8iAhVRuwfdj+9mNIM=; b=WgYHlfCqiiHJ0aosMIoh+37JjS
+	IBMhKmJ40XpwtRhkNrtiwxGb+ZZ48ZSUf1p2J68eG+ygU1hqTDCmppHATIauLu+WqFqPkTxz7R8rY
+	6ZYnH22RDCssHa09FUKY0quRcJiodRpC+OKed8TqtnMQDkSE17q1mY+5p6mv/iBsh3pj32sk17q7X
+	KFf5ZTU6xE/cp5FAAbFwS/Pg3QLI357kv+00kmjivO3tFIRCE3OcVTkxBPiit/GNG5zpefaTMVH8W
+	91u0fuQeq74w3mncV0EgSyOdwlOdl35glMrAiYYN5OpLl3dDgDcZPFCyl43yew2t5xsD2Fv3njp2/
+	AOEoB9OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxpsU-00000002zkp-15VL;
-	Mon, 07 Oct 2024 15:42:30 +0000
-Received: from mout.web.de ([217.72.192.78])
+	id 1sxqJo-0000000362I-3Y2a;
+	Mon, 07 Oct 2024 16:10:44 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxprA-00000002zWL-3fDn;
-	Mon, 07 Oct 2024 15:41:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1728315653; x=1728920453; i=markus.elfring@web.de;
-	bh=tde9+HTtwvSdjyegqAc2pBuj8Xp3aZ588ljCLxtJGic=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
-	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
-	 cc:content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=q5Sq3COyuSf/1JH97wnrgaIuQ3reunJaZXWZmgVqH3S4bc1gzfXC1bXmCX0lRPZK
-	 MohSHiT6Bdr9qEsk2PM6O1gZqD9rnqd+e//uYO9xZ4GmLXXcR6gWl8OwqWdvAoY3+
-	 8TG7qKE/wkuby1eu63mCXt7MDg+vGZ4FCXadUmF/uCBxSdiKGblgH4Hxdh4KJHhUH
-	 cxY5LdaysWk0KuX2IZ4m/HzB83zjBAAwZiZVeR+5dUomrUUly3khG1gzv8aBq1CQb
-	 Rie09a8IG5pQL2HPE/H9GYTFc/Zm7IWgjB648sn8Uyn0AQmNlrn0o0I92Jep9ct4Y
-	 EvUZpid7Dbs0snx9sg==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.81.95]) by smtp.web.de (mrweb106
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1Mc1VF-1tZ6sc2ymF-00aZDj; Mon, 07
- Oct 2024 17:40:53 +0200
-Message-ID: <caab097f-2522-4c07-9d05-ffa2acd4f157@web.de>
-Date: Mon, 7 Oct 2024 17:40:51 +0200
+	id 1sxqHj-000000035d4-3pk4;
+	Mon, 07 Oct 2024 16:08:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2B7135C5C9B;
+	Mon,  7 Oct 2024 16:08:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AFD7CC4CED7;
+	Mon,  7 Oct 2024 16:08:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728317314;
+	bh=mb/EntZAH5636vRx1tL6DIfFpHNmGBmg1NC7Jttx0u0=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=ufM7qYZHomEPYQZFDRLbhuB2kRLXduuT6tPJmzZ9+w5xuvpWQ5unFmSKN99rlJMXF
+	 KubF7a2e9T1cKKDXBEBIuldmGbzmIe35Z+G7pSZj+tqKZ/YBCK5VmVAEvU9tVm/+wa
+	 jXxRhwBcMjsTaVUfxy4nlusrw1AL7r3pI5Gx5sSNqE4/I//PW6Zom9HpG2KjIQ0gPd
+	 bRa19dkswMkT1m+ZSnWTfA0bnr5KWPS/SnAqzF4E5jkYBCfWSEjV4lm2s7Ftzul4lB
+	 djjztAuUUG8ssgM1PXQ/Mf+ca1LA3RHQcyvIYoSzrF7dM6dvM/blWXYu2IkDOG2q4j
+	 WcR6k1gNnvYOw==
+Received: by mail-lj1-f171.google.com with SMTP id 38308e7fff4ca-2fad6de2590so67929011fa.0;
+        Mon, 07 Oct 2024 09:08:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCWBlUvOSHnJeCD30Kv3yyfEoE/5bBpvTP5YsgpiwAG7kEkTtXc3NM9z4mQGWpTgmppuoMzP41d5vLLz5kD5tGAN@lists.infradead.org, AJvYcCXbuuNBGHYX6Wd3XfZpcdKsCUiR+osICNf869I5A3ggc6i8NzE328r18wE+6lruo/JbFpLVT6fdaUbn7A9nMpw=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwY/LgqHP2ZznN1lTHGThaNoAgw+Jf2cd3Px/oL3hoqODYFCPlL
+	HjX3It9IsJ04z+/D8Drru2cEF1CI4JhyQ/NfTj0S2ObM9+aKqiNN8FtlExHTBT1A07BHQBv/WnJ
+	nW/UK592RjSUWjt6PsZdkYi0sUQ==
+X-Google-Smtp-Source: AGHT+IFkJ71X0YYr1aDhpcTISFu8/dx+ZpD8GCVANAoP91uoXdd+XPWx1OEAkEzHRsA84/JqVYKumeOPERd1hITbmKM=
+X-Received: by 2002:a05:6512:398a:b0:536:7377:7d23 with SMTP id
+ 2adb3069b0e04-539ab9cf27fmr7669514e87.40.1728317312820; Mon, 07 Oct 2024
+ 09:08:32 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- dri-devel@lists.freedesktop.org, Adam Thiede <me@adamthiede.com>,
- Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Yassine Oudjana <yassine.oudjana@gmail.com>
-Cc: LKML <linux-kernel@vger.kernel.org>,
- Alper Nebi Yasak <alpernebiyasak@gmail.com>,
- =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
- Nancy Lin <nancy.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>
-References: <20241007070101.23263-5-jason-jh.lin@mediatek.com>
-Subject: Re: [PATCH v9 4/5] drm/mediatek: ovl: Add blend_modes to driver data
-Content-Language: en-GB
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <20241007070101.23263-5-jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+References: <20241004123423.34519-1-linux@fw-web.de> <20241004123423.34519-4-linux@fw-web.de>
+ <20241005184449.GA505893-robh@kernel.org> <DA1815FE-D2A6-46A3-9219-9216A3C6D61A@public-files.de>
+In-Reply-To: <DA1815FE-D2A6-46A3-9219-9216A3C6D61A@public-files.de>
+From: Rob Herring <robh@kernel.org>
+Date: Mon, 7 Oct 2024 11:08:19 -0500
+X-Gmail-Original-Message-ID: <CAL_JsqKvJHf0OFpQf0uWeoqyCEvA4gdAyCdd7fD83_qQRSMErA@mail.gmail.com>
+Message-ID: <CAL_JsqKvJHf0OFpQf0uWeoqyCEvA4gdAyCdd7fD83_qQRSMErA@mail.gmail.com>
+Subject: Re: [PATCH v1 3/4] dt-bindings: pinctrl: add binding for MT7988 SoC
+To: frank-w@public-files.de
+Cc: Frank Wunderlich <linux@fw-web.de>, Linus Walleij <linus.walleij@linaro.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@kernel.org>, 
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, daniel@makrotopia.org, john@phrozen.org, 
+	ansuelsmth@gmail.com, eladwf@gmail.com
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:xhaVx5v7PosVmZn5lfsVejKxm77d78UE8Dwj1ZHJMNzfubbc9hc
- nOMDtulMu4vq4tw/LAOTukfsSPVPLLOLPZqM3P3udTJIHJdl6aiEcZsvibqdJvqpg3WvuXl
- U2xDR+GtEQa8tpUhbvJQj4ppHPNP8+4o/NQZa4kSx24ZpA0n8V/I5nDPj/8Y4iFGXiN9W+i
- YSKD4lwcvpemBctWU0tYg==
-UI-OutboundReport: notjunk:1;M01:P0:i6vWuXQBUIU=;8wJPZmm+YsQAcUeXc+eYb4/8UrW
- mdoNJ5PMI8upFkOyQItiezXpSAGoHVOlOK3MpX3eXIulgTlc4zuur4F/alJYjKtk0tSE611Rg
- 9KNU8T4MiErNjW3/3ag5oyul0u3C81SR6mP362eQzIKP7Xj8h5kah2GdQFTr5w9KayiWWhISa
- y9A8Y/q/2eMvwvVSGP3OzAKsddqrDlN4KCdfXiyWYXrkFplAwan6Cwwo0VdqxZ483Z1ODfrmN
- 3JPLgGJOG/pOM73xm6LOFQpdLGfGSBo/eNCWxibra6/MH24Xhuvwns8pKr6r0QI0627A+J+3Y
- tnd9g2cp3BmXu9fJtdAKC9fTBE8hg2cXKhmhDKgGgl91ekjhu5o5r1ptUkFUdeiSTgteMRFXu
- C0qHtZ6mKeqi5/OFmckJGmP3+aam/ANOkAdcMwoCWswpeSxxq2OlIi4gxrjWdD96ATmrH9kgr
- 2GYutXrcTPSoA2BSQLIBxVqhQGI4e45BXBsnngBJ86PKgAEcxWzJb1RXB8QvgDDGPittqaaEi
- qyDnIASjLIwfM8oNbaHFbYQ/myCerrwXaaoCkajWhA1rjJfpOO4NeA/lTLPPRRo/X3vGUMWFg
- Ft9xNG56sIgu0EVgTu0/71JNH8kG4/AJ6L3SbLXpGX15DZJ6vkU3XQ+XS5wfKS8eWpoXK9KRz
- J6K6rwUkUu11sbVfDkQMoi0R1Z3ddpzqgjWO6sOiZJdid57AGnADfkmeHikXvJwN24LygyIU6
- iWSM+bV7Lkm335H5XDKxh0WUCPkD+uwWW5KTguhdx3WFVF5a+jC5wM9iz1E2inrPADQxjFh4x
- rzqZi8jx1Pzox33zD5aIqA9Q==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_084109_211252_41A3FADF 
-X-CRM114-Status: UNSURE (   2.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241007_090836_065375_A16AE1E8 
+X-CRM114-Status: GOOD (  16.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,13 +88,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-=E2=80=A6
-> premultiplied supported in current platform.
-=E2=80=A6
+On Sat, Oct 5, 2024 at 2:41=E2=80=AFPM Frank Wunderlich <frank-w@public-fil=
+es.de> wrote:
+>
+> Hi Rob
+>
+> Thank you for first review
+>
+> Am 5. Oktober 2024 20:44:49 MESZ schrieb Rob Herring <robh@kernel.org>:
+> >On Fri, Oct 04, 2024 at 02:34:17PM +0200, Frank Wunderlich wrote:
+>
+> >> +patternProperties:
+> >> +  '-pins$':
+> >> +    type: object
+> >> +    additionalProperties: false
+> >> +
+> >> +    patternProperties:
+> >> +      '^.*mux.*$':
+> >
+> >Do you really need 'mux' anywhere in the name?
+> >
+> >> +        type: object
+> >> +        additionalProperties: false
+> >> +        description: |
+> >> +          pinmux configuration nodes.
+> ...
+> >> +      '^.*conf.*$':
+> >
+> >Really need 'conf' anywhere in the name?
+> >
+> >> +        type: object
+> >> +        additionalProperties: false
+> >> +        description:
+> >> +          pinconf configuration nodes.
+> >> +        $ref: /schemas/pinctrl/pincfg-node.yaml
+>
+> mux and conf are used to match subnodes see example for mdio0_pins
+>
+> mdio0_pins: mdio0-pins {
+>   mux {
+>     function =3D "eth";
+>     groups =3D "mdc_mdio0";
+>   };
+>
+>   conf {
+>     pins =3D "SMI_0_MDC", "SMI_0_MDIO";
+>     drive-strength =3D <MTK_DRIVE_8mA>;
+>   };
+> };
+>
+> This is same as done for previous SoC like mt7986.
 
-                format would be?
+Why do you need foomuxbar? Please define a prefix or suffix (separated
+by a '-') or just a fixed string.
 
+Either we missed it on mt7986 or it was documenting something already in us=
+e.
 
-Regards,
-Markus
+Rob
 
