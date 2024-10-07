@@ -4,43 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07F61CFB45D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 20:32:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17356C35FE0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 20:33:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=6TLu7Yfzf4lbg0y6z1FzkWz5coi/i50OEYYrcpN/ESs=; b=nDcpeHIAu3QCBj
-	C0B70LJ7HIUzUjOStH/bTrjDTeOmHcTqq0qpE9RAqZ+L52/53y4bwIfRdtZimrVpMikfQ+6Kc6cCe
-	FK7ubhUrcmGVfA5vLxi+sjFDDlCUk6kcA7PS9I63TT73xuMIsy63Z6aKbTSUOpBU0RErN/KQdemoU
-	1w2YN6TfHih6TBYlQ3CoW5EwAiXPfxxhXMIUwiC4j0DuC95OY7W/mzqIGEbr6YmerpDsSIRPz2Zup
-	sSCAVSxfD8WrzWyP646MDH6+58wZOdyR6h1LXOBefHvXxu1dgToMOOyMUMdxkGc1ApmdKlCYC9+Nd
-	h+vfaEfpxIefF/iHhSbg==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GHaUG5cyywTVSn0olx177yyudjZMx8d30jdAXK4qx8Y=; b=MKgsrT3ELDLatu
+	Oh+DMPWCIzVkFwG6t7iSBk23bCiRdNIO0Bh++a7W4Dveh+zQElPN0grNZZURgS16VvxhJGxNK4Njt
+	KaTpwSyWcvB3EHjeS22bTMZD1hdEshrLltTrtk3cMCQyIA9tXWrjS2ZGDwRG9iO+ul4JU4WTYrnxC
+	V935X3maLi09dP7aLsEaMK2zSjKVEYPASx21EVoI76t+o5Zi5V4ITPGCC+O/54a3AlRhuNyetPRRE
+	5gIRd1e+L2UYahjI+ZtIMatOPWRV8Hcxw93yqYVRkPEX0qD0ZQpjn2l66cp3XcdjROz6sGSB6O3Mt
+	O4K308DlIh07yy5/0CZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxuP8-00000003kU2-34Im;
-	Mon, 07 Oct 2024 20:32:30 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+	id 1sxuQS-00000003kgG-0Ccg;
+	Mon, 07 Oct 2024 20:33:52 +0000
+Received: from mxout3.routing.net ([2a03:2900:1:a::8])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxuNm-00000003kBX-1yru;
+	id 1sxuNm-00000003kBV-0VVj;
 	Mon, 07 Oct 2024 20:31:09 +0000
 Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout2.routing.net (Postfix) with ESMTP id B9AA25FEF8;
-	Mon,  7 Oct 2024 20:31:00 +0000 (UTC)
+	by mxout3.routing.net (Postfix) with ESMTP id A59DC604D5;
+	Mon,  7 Oct 2024 20:31:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1728333060;
+	s=20200217; t=1728333061;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=6TLu7Yfzf4lbg0y6z1FzkWz5coi/i50OEYYrcpN/ESs=;
-	b=F1rLU2IX5ExchOPTTgvShxw97tG9m63vhbl8shc9SW30D+fYg2NEqoCORz+lfGNWRPWzha
-	Nlb1sWq8WXgiYOo6LsBKeGg0lAp14R8AcLncsTxVeqSMYQ9aAROy3pSuAbgWanYFbX5SDW
-	80wADJBsT1tBPbdTWdHOjCecTbeKehc=
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=GHaUG5cyywTVSn0olx177yyudjZMx8d30jdAXK4qx8Y=;
+	b=whdTsIVAsbPSAO64oJGW/7GILo+ougsHKDke0fQ2ZVmPosg2H9Xs5jEulkZeg3fxjiVDgx
+	BdMzVIDaukt4lrYIT5iB40wtsMM1k1uL1g+yV9nVsIBDJFFf34f5cdC/IzcsOW6rrfalbt
+	NkM8xlvVTaqk+wmftERLpKNveQBzRJU=
 Received: from frank-u24.. (fttx-pool-157.180.226.56.bambit.de [157.180.226.56])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 7E823360200;
-	Mon,  7 Oct 2024 20:30:59 +0000 (UTC)
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id B516C36039C;
+	Mon,  7 Oct 2024 20:31:00 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: Linus Walleij <linus.walleij@linaro.org>,
 	Rob Herring <robh@kernel.org>,
@@ -49,17 +50,18 @@ To: Linus Walleij <linus.walleij@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Sean Wang <sean.wang@kernel.org>
-Subject: [PATCH v3 0/4] Add pinctrl support for mt7988
-Date: Mon,  7 Oct 2024 22:30:41 +0200
-Message-ID: <20241007203053.72862-1-linux@fw-web.de>
+Subject: [PATCH v3 1/4] pinctrl: mediatek: add support for MTK_PULL_PD_TYPE
+Date: Mon,  7 Oct 2024 22:30:42 +0200
+Message-ID: <20241007203053.72862-2-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241007203053.72862-1-linux@fw-web.de>
+References: <20241007203053.72862-1-linux@fw-web.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: 0734da11-ea93-4fd0-bc82-59581f47b628
+X-Mail-ID: b04a9fbd-64fa-4504-82bd-d1285ffc9f49
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_133106_679687_EB92A1B0 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20241007_133106_330801_92415CFF 
+X-CRM114-Status: GOOD (  15.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,42 +77,122 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, daniel@makrotopia.
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+From: Daniel Golle <daniel@makrotopia.org>
 
-This series adds pinctrl driver, dt-bindings and dts node for pinctrl
-on mediatek mt7988 SoC.
+The MediaTek MT7988 SoC got some pins which only got configurable
+pull-down but unlike previous designs there is no pull-up option.
+Add new type MTK_PULL_PD_TYPE to support configuring such pins.
 
-changes in v3:
-- rebase on rafals dts patches
-- update binding to have mux subnode as fixed string and conf with optional suffix
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+ .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  | 59 +++++++++++++++++++
+ .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  |  1 +
+ 2 files changed, 60 insertions(+)
 
-changes in v2:
-  binding:
-  - drop gpio-cells description
-  - move ref in mux subnode up
-  - order uart-functions alphanumeric and fix typo
-  dts:
-  - fix indentation of reg-values
-
-Daniel Golle (2):
-  pinctrl: mediatek: add support for MTK_PULL_PD_TYPE
-  pinctrl: mediatek: add MT7988 pinctrl driver
-
-Frank Wunderlich (2):
-  dt-bindings: pinctrl: add binding for MT7988 SoC
-  arm64: dts: mediatek: mt7988: add pinctrl support
-
- .../pinctrl/mediatek,mt7988-pinctrl.yaml      |  569 ++++++
- arch/arm64/boot/dts/mediatek/mt7988a.dtsi     |  241 +++
- drivers/pinctrl/mediatek/Kconfig              |    7 +
- drivers/pinctrl/mediatek/Makefile             |    1 +
- drivers/pinctrl/mediatek/pinctrl-mt7988.c     | 1526 +++++++++++++++++
- .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  |   59 +
- .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  |    1 +
- 7 files changed, 2404 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt7988-pinctrl.yaml
- create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt7988.c
-
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+index 54301fbba524..eff2aecd31dd 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+@@ -601,6 +601,30 @@ static int mtk_pinconf_bias_set_pu_pd(struct mtk_pinctrl *hw,
+ 	return err;
+ }
+ 
++static int mtk_pinconf_bias_set_pd(struct mtk_pinctrl *hw,
++				const struct mtk_pin_desc *desc,
++				u32 pullup, u32 arg)
++{
++	int err, pd;
++
++	if (arg == MTK_DISABLE)
++		pd = 0;
++	else if ((arg == MTK_ENABLE) && pullup)
++		pd = 0;
++	else if ((arg == MTK_ENABLE) && !pullup)
++		pd = 1;
++	else {
++		err = -EINVAL;
++		goto out;
++	}
++
++	err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_PD, pd);
++
++out:
++	return err;
++
++}
++
+ static int mtk_pinconf_bias_set_pullsel_pullen(struct mtk_pinctrl *hw,
+ 				const struct mtk_pin_desc *desc,
+ 				u32 pullup, u32 arg)
+@@ -758,6 +782,12 @@ int mtk_pinconf_bias_set_combo(struct mtk_pinctrl *hw,
+ 			return 0;
+ 	}
+ 
++	if (try_all_type & MTK_PULL_PD_TYPE) {
++		err = mtk_pinconf_bias_set_pd(hw, desc, pullup, arg);
++		if (!err)
++			return err;
++	}
++
+ 	if (try_all_type & MTK_PULL_PU_PD_TYPE) {
+ 		err = mtk_pinconf_bias_set_pu_pd(hw, desc, pullup, arg);
+ 		if (!err)
+@@ -878,6 +908,29 @@ static int mtk_pinconf_bias_get_pu_pd(struct mtk_pinctrl *hw,
+ 	return err;
+ }
+ 
++static int mtk_pinconf_bias_get_pd(struct mtk_pinctrl *hw,
++				const struct mtk_pin_desc *desc,
++				u32 *pullup, u32 *enable)
++{
++	int err, pd;
++
++	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_PD, &pd);
++	if (err)
++		goto out;
++
++	if (pd == 0) {
++		*pullup = 0;
++		*enable = MTK_DISABLE;
++	} else if (pd == 1) {
++		*pullup = 0;
++		*enable = MTK_ENABLE;
++	} else
++		err = -EINVAL;
++
++out:
++	return err;
++}
++
+ static int mtk_pinconf_bias_get_pullsel_pullen(struct mtk_pinctrl *hw,
+ 				const struct mtk_pin_desc *desc,
+ 				u32 *pullup, u32 *enable)
+@@ -947,6 +1000,12 @@ int mtk_pinconf_bias_get_combo(struct mtk_pinctrl *hw,
+ 			return 0;
+ 	}
+ 
++	if (try_all_type & MTK_PULL_PD_TYPE) {
++		err = mtk_pinconf_bias_get_pd(hw, desc, pullup, enable);
++		if (!err)
++			return err;
++	}
++
+ 	if (try_all_type & MTK_PULL_PU_PD_TYPE) {
+ 		err = mtk_pinconf_bias_get_pu_pd(hw, desc, pullup, enable);
+ 		if (!err)
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+index 23688ca6d04e..9c271dc2b521 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+@@ -24,6 +24,7 @@
+  * turned on/off itself. But it can't be selected pull up/down
+  */
+ #define MTK_PULL_RSEL_TYPE		BIT(3)
++#define MTK_PULL_PD_TYPE        BIT(4)
+ /* MTK_PULL_PU_PD_RSEL_TYPE is a type which is controlled by
+  * MTK_PULL_PU_PD_TYPE and MTK_PULL_RSEL_TYPE.
+  */
 -- 
 2.43.0
 
