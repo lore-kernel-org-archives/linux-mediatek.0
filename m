@@ -4,92 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71643CFB446
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 15:27:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12582CFB448
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 15:38:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fPuYg8i4QEggqDnqakprNVU79uhZPjB5d8z2n+kb4OI=; b=JsCYXneRZaRQzd6jYAPOirhtZ2
-	mM6tzh+6iTJDOuILkl3j/UVQHojo8xW1MYYwUCaySixH/ArHKgRjrOZwFROfR/inWVg4u6Rtto4a/
-	jK/Bza9V3CO3OieLIiqqE8egaPVMJx+MF0fgQqtEAVDjHVooMbB+716C2pzeGuvP5kPPCoo/cszUg
-	CetZEgRymBWIpFHRpgih0cbdkcNWobE3l3UutzbU0tCl3tnOJinqnuedYffyN/LIKkj63C+ffMCPd
-	LqYDx86sMIe78C9wGsyMDCK0DwkNDE17yXfGyZ0hxGuybCxXbh4WgBCAFPboEyBHpLJpOAVnyeUHN
-	7tLIptDA==;
+	bh=/BX+VbcYlbm0M/siPhF6PIc3XMMYf77ReOhn3qLkShA=; b=UXHVxT6FPggdDNelbd7hLBwGhx
+	vbfa3h//ulsMvQfSD+fQT8KdzAx06nTECQZmUIp0amZWme4EzOJmSryiUszXi6UuQGWnMv72ROM0t
+	inMaXWWovE2EnVlp9feefw5EbbzyStcjbs6tK9RCtx0sWSkK3P1eiTVBVnhJVU30NIlZ2i27t22fu
+	Of+5AbKMoPTjDvuQL70wkCzONI4ftrHLIGuTy1gBGUwL5Px311lJ8cMNiQZbLdNwExnkZaDmp/nH5
+	ya07TBaZvfpxv7O2p/Wkz2LSaa/Q2HaqJWTgIhcmXph2CqUZS6bYqa9J22oUPpFDhqmQ07x5voG3W
+	BiOn8Xrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxpdk-00000002vxQ-337S;
-	Mon, 07 Oct 2024 15:27:16 +0000
-Received: from mail-ua1-x932.google.com ([2607:f8b0:4864:20::932])
+	id 1sxpoQ-00000002yt2-0UjV;
+	Mon, 07 Oct 2024 15:38:18 +0000
+Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxpab-00000002vTV-3YpV
-	for linux-mediatek@lists.infradead.org;
-	Mon, 07 Oct 2024 15:24:03 +0000
-Received: by mail-ua1-x932.google.com with SMTP id a1e0cc1a2514c-84f1aefd4b9so1359293241.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 07 Oct 2024 08:24:01 -0700 (PDT)
+	id 1sxpn6-00000002ygF-0QBO;
+	Mon, 07 Oct 2024 15:36:57 +0000
+Received: by mail-pj1-x1041.google.com with SMTP id 98e67ed59e1d1-2e109539aedso3809292a91.0;
+        Mon, 07 Oct 2024 08:36:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1728314640; x=1728919440; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1728315414; x=1728920214; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=fPuYg8i4QEggqDnqakprNVU79uhZPjB5d8z2n+kb4OI=;
-        b=POwcuL+Cu1aBqV/YscwfKV5/rdMiiF9+HC6KjFlkxmdptWJrL0HQZM1+PaAWK45uSW
-         Df1vZziw4XJuhPa/hpmiyswuNZ7q6gXMJ2Bbjx58TUxAu+lgSCB6fRXg5BKh2qmDqaXl
-         nWXjVE0Coo3beleLeFqfg9qpvMJdmov1yklJA=
+        bh=/BX+VbcYlbm0M/siPhF6PIc3XMMYf77ReOhn3qLkShA=;
+        b=jp/oGYUccPuecK7icIEUGa6ehqJxh59miMzO5ewEY+3YqctTwXFHYyrMeELVhPQ4WW
+         NMOLIF3I2hBdL10HOLDyViFk5DB0dZr6BwCXn42+qbSU5bUhJaq+oEpCXca7VHjbWN5k
+         pAREsvKQm6ncYdtHIJaO6TQwhqBNJE27QWWRabGybh6Olw/FH43slR8B2mftgpnTDksX
+         RDbMAuCfOTOP0g2KeGVBSooiUGOzLeFI/jsrA5Qvyv1kMBa2ZkedvCTJwkzHMAxF37wP
+         5U2eebzPkJc7VYetb8WgsbK+tDqIIsknR9kFKqSe1kUnbkeBtCYslhNxYBqu+CDWVLYv
+         goOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728314640; x=1728919440;
+        d=1e100.net; s=20230601; t=1728315414; x=1728920214;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=fPuYg8i4QEggqDnqakprNVU79uhZPjB5d8z2n+kb4OI=;
-        b=ViJbSZYOOv0KfiR3/5NPL1kvHx5nLBGDTYuZarz2sVg6Z5exdpE9VaXl9E8aNvICrF
-         ZMMSl8+EQStOR3hyAOQVTljxHh4IKYHYdA2dqUJuZNOq2LKojYahmApvMlh563ycD73O
-         nxCLvcXrBFznfpuFWH+5vjU621b7RxCexymUnZH4ULFateNKHzj2Mjm6mrigWnpofGpW
-         vTQgk+8jf3ya1Lo6xaKKxxZbuFpi39PP2/C2hPs0l15qCWbiYjuH+p3pePGVxSvY8EhE
-         o+8bEWuGaxvIATJlQp0L8SNDCTTsGkcikvPVzyNggGKRNA0YyGyku/toTadMTchzwRvI
-         0oYw==
-X-Forwarded-Encrypted: i=1; AJvYcCVgOFHkzvnt1LVe6iIvp6TMEZ/PYzs/DmxUCG9yRkuzoBpmIA6M4vo6c70TMR3o5DVpI5otieji85HaaVTiAg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw909wNe58jRR4/24+wRhpc2VzEXP6zUJQjlr6hcWWZDT+9WcKw
-	9fx1iy3mBu+nt6Md1ooCyHcF1LU63LquWvGDSByg37p5/G2vLVApD3woSgjcZPyxRIxddu2DhKA
-	=
-X-Google-Smtp-Source: AGHT+IFuyehvCP6Raw0RXKqnCSwd9mAfcGl8A2jE9KZYHwUYugYmRLTa8c0As4z3Z15EAHKZ94z4fQ==
-X-Received: by 2002:a05:6122:4589:b0:50a:8cb6:e9ca with SMTP id 71dfb90a1353d-50c8544886dmr7578624e0c.2.1728314639775;
-        Mon, 07 Oct 2024 08:23:59 -0700 (PDT)
-Received: from mail-ua1-f53.google.com (mail-ua1-f53.google.com. [209.85.222.53])
-        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-50c9ae57e6csm805592e0c.51.2024.10.07.08.23.57
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 07 Oct 2024 08:23:58 -0700 (PDT)
-Received: by mail-ua1-f53.google.com with SMTP id a1e0cc1a2514c-84e96669774so1320337241.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 07 Oct 2024 08:23:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUNreH2Ig4xqWBjfaM+n1+1Q8WEygO0IZ3ENP0hum0qqV077ZHVmcYsGb/+6ZCo4V6dKpbV4YIqHATOcH98XA==@lists.infradead.org
-X-Received: by 2002:a05:6122:1d88:b0:50c:4efb:835a with SMTP id
- 71dfb90a1353d-50c85448816mr7156083e0c.1.1728314637367; Mon, 07 Oct 2024
- 08:23:57 -0700 (PDT)
+        bh=/BX+VbcYlbm0M/siPhF6PIc3XMMYf77ReOhn3qLkShA=;
+        b=LQaeOGIZy4YmEC821ZuNCJnc2xo8/Nma2YV+GbDVQ8Rkp3RCYtM61K3nQHlMNkUJzH
+         uoAG5NCwXVXQC2xLrhmvtvNj/N6a8Ux6XnuZTFBAj7LQocS36/L2RCXVuQjLoIaV7H0c
+         54tYsdehATAU51c3JMTDmHaQIPSmzTL7LpaENoe4Hq/pr1s8OBTui+zAtXJY09THCxt2
+         /9K0l62iJaVbenUPcq1557QIfx/9njWArgLaLlOYhTJ4hLfH63zhVc6JgUQYZpBE1V+b
+         dGrVr9+Vmg4eK/NyT9GOgYXyhGUdqye9BH7AvcaTm/WY2cdMrNuBrmOrgAq0Emis4pXP
+         dQBQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUp34baOODUk7KDSDWOJShT07YbsTPlXsqCnhJUjQQ+z8Awe0J9AoeFTCJRh8FjCvi/iR6DcWcglKTtghrVxFQ=@lists.infradead.org, AJvYcCX8fCE2eCFBxEmEvAbFCX/xSYEoFGI1aEtB0oh13T4J8K1OVP2X9wNfAhAhA1MsvbSN7jfzW2UKG9voN9CW7qA6@lists.infradead.org
+X-Gm-Message-State: AOJu0YxIihHXA0BDI5nj7jT2Gi2HricxncoEppOqMKjwGjt10OEHplTq
+	c2drjPJkks9QUe7Zaz8FsL9kP2AFuofWV17bYkH9amkoekcCviWnUddjSix+6tTUkbjauFrV915
+	g3iuCG5hg3Dn63nbab7I76lLiOaQ=
+X-Google-Smtp-Source: AGHT+IHED5KE17P2SIVe12eKhrSWZxRW4U7wLJ3evF8QAPobxP8FyVWs6VS9pgVnIUZ12Cr6PlEXIKLWhUvvhFYajLE=
+X-Received: by 2002:a17:90b:102:b0:2c9:7611:e15d with SMTP id
+ 98e67ed59e1d1-2e1e629fa8cmr15909999a91.20.1728315414372; Mon, 07 Oct 2024
+ 08:36:54 -0700 (PDT)
 MIME-Version: 1.0
-References: <20241007024350.7878-1-macpaul.lin@mediatek.com> <381fcbfa-edfb-46c8-8ee2-1386af2ba4c4@collabora.com>
-In-Reply-To: <381fcbfa-edfb-46c8-8ee2-1386af2ba4c4@collabora.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Mon, 7 Oct 2024 23:23:20 +0800
-X-Gmail-Original-Message-ID: <CAC=S1nj-hpt9CS1+_Jt8C710KDz1uYTcTS5qGqSZT9qmmVm7Yg@mail.gmail.com>
-Message-ID: <CAC=S1nj-hpt9CS1+_Jt8C710KDz1uYTcTS5qGqSZT9qmmVm7Yg@mail.gmail.com>
-Subject: Re: [PATCH] soc: mediatek: pwrap: add pwrap driver for MT8188 SoC
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Macpaul Lin <macpaul.lin@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Alexandre Mergnat <amergnat@baylibre.com>, 
-	Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>, 
-	Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>, 
-	Chris-qj chen <chris-qj.chen@mediatek.com>, 
-	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
-	Chen-Yu Tsai <wenst@chromium.org>
+References: <20241003180959.12158-1-zichenxie0106@gmail.com> <e116a42e-877e-439e-a83d-1afbaf35748b@gmail.com>
+In-Reply-To: <e116a42e-877e-439e-a83d-1afbaf35748b@gmail.com>
+From: Zichen Xie <zichenxie0106@gmail.com>
+Date: Mon, 7 Oct 2024 10:36:44 -0500
+Message-ID: <CANdh5G4mnj-N1gV=O=OiFFrZYFP+nzjte2dZTCAobzBHxSdhpA@mail.gmail.com>
+Subject: Re: [PATCH v5] wifi: mt76: Fix NULL Dereference caused by mt76_connac_get_he_phy_cap()
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com, 
+	shayne.chen@mediatek.com, sean.wang@mediatek.com, kvalo@kernel.org, 
+	angelogioacchino.delregno@collabora.com, johannes.berg@intel.com, 
+	quic_adisi@quicinc.com, deren.wu@mediatek.com, chui-hao.chiu@mediatek.com, 
+	mingyen.hsieh@mediatek.com, howard-yh.hsu@mediatek.com, 
+	StanleyYP.Wang@mediatek.com, allen.ye@mediatek.com, 
+	benjamin-jw.lin@mediatek.com, Bo.Jiao@mediatek.com, evelyn.tsai@mediatek.com, 
+	meichia.chiu@mediatek.com, krzk@kernel.org, linux-wireless@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	chenyuan0y@gmail.com, zzjas98@gmail.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_082401_908852_3BE5BDBD 
-X-CRM114-Status: GOOD (  13.76  )
+X-CRM114-CacheID: sfid-20241007_083656_163586_7F5636E2 
+X-CRM114-Status: GOOD (  16.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,33 +97,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 7, 2024 at 10:55=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
+IMHO, using operator "&" for a NULL dereferenced pointer won't cause a
+crash. 've' will only be assigned to a invalid address.
+
+So we can put off the NULL check after
+'const struct ieee80211_he_cap_elem *ve =3D &vc->he_cap_elem;'
+
+Best Regards,
+Zichen
+
+On Mon, Oct 7, 2024 at 9:23=E2=80=AFAM Matthias Brugger <matthias.bgg@gmail=
+.com> wrote:
 >
-> Il 07/10/24 04:43, Macpaul Lin ha scritto:
-> > MT8188 are highly integrated SoC and use PMIC_MT6359 for
-> > power management. This patch adds pwrap master driver to
-> > access PMIC_MT6359.
+>
+>
+> On 03/10/2024 20:09, Gax-c wrote:
+> > From: Zichen Xie <zichenxie0106@gmail.com>
 > >
-> > Signed-off-by: Sen Chu <sen.chu@mediatek.com>
-> > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> > mt76_connac_get_he_phy_cap() may return a NULL pointer,
+> > leading to NULL Pointer Dereference.
+> > Add a NULL check for the returned pointer.
+> >
+> > Fixes: a5c372f77aa7 ("wifi: mt76: mt7925: extend mt7925_mcu_bss_he_tlv =
+for per-link BSS")
+> > Fixes: e6d557a78b60 ("mt76: mt7915: rely on mt76_connac_get_phy utiliti=
+es")
+> > Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi=
+ 7 (802.11be) devices")
+> > Signed-off-by: Zichen Xie <zichenxie0106@gmail.com>
+> > ---
+> >   drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 5 +++++
+> >   drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 2 ++
+> >   drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 2 ++
+> >   3 files changed, 9 insertions(+)
+> >
+> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/=
+net/wireless/mediatek/mt76/mt7915/mcu.c
+> > index 87d0dd040001..762be3a37228 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+> > +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+> > @@ -551,6 +551,8 @@ mt7915_mcu_bss_he_tlv(struct sk_buff *skb, struct i=
+eee80211_vif *vif,
+> >       struct tlv *tlv;
+> >
+> >       cap =3D mt76_connac_get_he_phy_cap(phy->mt76, vif);
+> > +     if (!cap)
+> > +             return;
+> >
+> >       tlv =3D mt76_connac_mcu_add_tlv(skb, BSS_INFO_HE_BASIC, sizeof(*h=
+e));
+> >
+> > @@ -1145,6 +1147,9 @@ mt7915_mcu_sta_bfer_he(struct ieee80211_sta *sta,=
+ struct ieee80211_vif *vif,
+> >       u8 nss_mcs =3D mt7915_mcu_get_sta_nss(mcs_map);
+> >       u8 snd_dim, sts;
+> >
+> > +     if (!vc)
+> > +             return;
+> > +
 >
-> Actually, MT8188 and MT8195's pwrap registers and code flow are exactly t=
-he same:
-> since they are, we don't need this commit (or we don't need it right now!=
-), and
-> we can just update the binding so that we can declare...
+> That will already blow up at line:
+>          const struct ieee80211_he_cap_elem *ve =3D &vc->he_cap_elem;
 >
-> compatible =3D "mediatek,mt8188-pwrap", "mediatek,mt8195-pwrap", "syscon"=
-;
+> This needs some more code changes.
 >
-> ...hence this driver doesn't get any commit :-)
-
-... which is already the case. :)
-See commit 040c3303f110 ("dt-bindings: soc: mediatek: pwrap: Modify
-compatible for MT8188").
-And the device tree is set as well, so it's all good for MT8188 I believe.
-
-Cheers,
-Fei
+> Regards,
+> Matthias
+>
+> >       bf->tx_mode =3D MT_PHY_TYPE_HE_SU;
+> >
+> >       mt7915_mcu_sta_sounding_rate(bf);
+> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/=
+net/wireless/mediatek/mt76/mt7925/mcu.c
+> > index 748ea6adbc6b..55e4cda2f20f 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+> > +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+> > @@ -2508,6 +2508,8 @@ mt7925_mcu_bss_he_tlv(struct sk_buff *skb, struct=
+ ieee80211_bss_conf *link_conf,
+> >       struct tlv *tlv;
+> >
+> >       cap =3D mt76_connac_get_he_phy_cap(phy->mt76, link_conf->vif);
+> > +     if (!cap)
+> > +             return;
+> >
+> >       tlv =3D mt76_connac_mcu_add_tlv(skb, UNI_BSS_INFO_HE_BASIC, sizeo=
+f(*he));
+> >
+> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/=
+net/wireless/mediatek/mt76/mt7996/mcu.c
+> > index 6c445a9dbc03..55bb2d0e67e5 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+> > +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+> > @@ -798,6 +798,8 @@ mt7996_mcu_bss_he_tlv(struct sk_buff *skb, struct i=
+eee80211_vif *vif,
+> >       struct tlv *tlv;
+> >
+> >       cap =3D mt76_connac_get_he_phy_cap(phy->mt76, vif);
+> > +     if (!cap)
+> > +             return;
+> >
+> >       tlv =3D mt7996_mcu_add_uni_tlv(skb, UNI_BSS_INFO_HE_BASIC, sizeof=
+(*he));
+> >
 
