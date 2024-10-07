@@ -4,82 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98346CFB440
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 10:09:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7926BCFB440
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 10:14:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xRF+WqijDSYeiE+tIaQ004Lnw2TEBFE2Gfpl2FGIHNs=; b=Tx5Mp3UbVFYymzkmIGfoJCiJUd
-	2OP1O94cOo8CDiyJewV+tmw7wD+5nnUzFRHd8sMd96f+VxSLM28eb/GQERfG24AUcYxUn1a0lp9hK
-	ej3DehaiTWTRu2ZQzUHH3k3d1nzP1b8poX7KA9jaekKZRnnr3JFyJp6tYXZm9gxC30JUSdsdnCY43
-	sI30zVac0MZIi01V8XxUxebuk1pjl9Oe8iSpzVk2qXXytBSwEZBrCw+XyecE0XCW4RPUy3hXGlNWu
-	ffvd2fFU+xEumG9aDe+9FiH+2VJjbnZosY3l33JxhmQinudJJV/E6qSkeRkH3AvqzN0Eat64Q0uqN
-	FbR5QpTQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2Yb4dnuLARiv6kHXyR49sNOBlEOn8M3qLFWyvp8e3fs=; b=mE1oP92NgjaoHMyKNk4kR2YEpB
+	2fUQEeUUZ9Z2qfnTB+t+5pgd9ypzlIOfBReRGVXxaY7TRTr1fwBdb8ILpB4NiwDydvqaS2hT5A454
+	mlgIYOm1YKbscYOB+zezrqpD+Cb4k7pdXFMRJuzJ8RxMZqUHp223k5lHDK3lZ67n8D/NAWN2j8NYJ
+	LQWbUgzvOwMfilyN5HUWx1ik9Po5/sHVEJV9oVGpkwOOTZh1sjC0nlHloa7ZZP6tWG3MP4P83XH0y
+	rp27zV2kLhiX3HHUT0YJM0XKQwzuPKh8HGU78Z5xmeQrz9HnJ53aoLjwTehQKc3h9E0GA9VXH0Qwj
+	dlPcEOAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxkgC-000000020l3-26Tn;
-	Mon, 07 Oct 2024 10:09:28 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sxkkt-000000021TF-0d84;
+	Mon, 07 Oct 2024 10:14:19 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxkes-000000020b8-3oPI;
-	Mon, 07 Oct 2024 10:08:09 +0000
-X-UUID: 0a1ede80849411efba0aef63c0775dbf-20241007
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=xRF+WqijDSYeiE+tIaQ004Lnw2TEBFE2Gfpl2FGIHNs=;
-	b=jSn/UOxAXl5jZDKgPrOkOR3ZlvXw3+fdqrOTsctLfqcXm7fzKdbtJwZ73e8hCYKc6WqlxJ8A5B02iSvC2T3JLrmFyvGcOvBahe5DtybLb9e7621mIp0/a8bqoxSvtSuShzI+9eZvkdBBB/HSRFsOUHNqS0PemFVE/1jAKjltghY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:5e779224-be2a-4674-bf0a-5cef2f87fd1f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:af30dd64-444a-4b47-a99a-591ade3b04b2,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 0a1ede80849411efba0aef63c0775dbf-20241007
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1464454624; Mon, 07 Oct 2024 03:08:03 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 7 Oct 2024 18:08:00 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 7 Oct 2024 18:08:00 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Jieyy Yang <jieyy.yang@mediatek.com>,
-	Jian Yang <jian.yang@mediatek.com>, Jianguo Zhang
-	<jianguo.zhang@mediatek.com>, Alexandre Mergnat <amergnat@baylibre.com>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, Sen
- Chu <sen.chu@mediatek.com>, Chris-qj chen <chris-qj.chen@mediatek.com>,
-	MediaTek Chromebook Upstream
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
-	<wenst@chromium.org>
-Subject: [PATCH] arm64: dts: mediatek: mt8390-genio-700-evk: enable pcie
-Date: Mon, 7 Oct 2024 18:07:49 +0800
-Message-ID: <20241007100749.6657-1-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1sxkjY-000000021Cn-13z0;
+	Mon, 07 Oct 2024 10:12:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1728295974;
+	bh=uX9MuZyTAsy4ZwdDWDKwMwzG+/9sWZbBeG99JoLQaCQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=PxAJhh/NsDp5f2eWZN0zCO0G8kricMgKpRZOIklpJ5n71qrx8yvRD2KddLkcu78WN
+	 lN+f0ps82+wUHSyox5r+ms7fwCSFodTdUXT+PXdMXw19DbSqp4GciIbAbBkVNcR/jg
+	 Bk6Keb0jmXClqKx1vECROVLKPzbHu+ZaA79oyNj0ln/qseZA0e1ThQEQrR1fmpKUPY
+	 xXUDltk6Xv/ViASdbCfTrpUYvnaUKNWpQQkTJo2xpzaZ8ZKNNODjy0NGhs81+D2fcS
+	 AiIBGudyOzGzbMGwvFp7Eft9QMgOaWPsxZpSu7ehtTTJokdmrjg6pKP4DLb40zFFJd
+	 nK2hnthAAH9sQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 089E817E120E;
+	Mon,  7 Oct 2024 12:12:53 +0200 (CEST)
+Message-ID: <f072a20b-abc1-4da9-b03c-fb384601bc52@collabora.com>
+Date: Mon, 7 Oct 2024 12:12:53 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: Aw: Re: [PATCH v2 1/2] dt-bindings: mmc: mtk-sd: Add mt7988 SoC
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Frank Wunderlich <linux@fw-web.de>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Wenbin Mei <wenbin.mei@mediatek.com>, linux-mmc@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ daniel@makrotopia.org, john@phrozen.org, eladwf@gmail.com,
+ ansuelsmth@gmail.com
+References: <20241006153447.41377-1-linux@fw-web.de>
+ <20241006153447.41377-2-linux@fw-web.de>
+ <b41c51c4-775c-49ca-84fd-1137b61f42d5@collabora.com>
+ <trinity-6fcf3e00-393c-48ee-9aae-26057be08645-1728289985089@3c-app-gmx-bap03>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <trinity-6fcf3e00-393c-48ee-9aae-26057be08645-1728289985089@3c-app-gmx-bap03>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_030807_782593_2A6F2809 
-X-CRM114-Status: UNSURE (   9.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241007_031256_496222_E44C6BFF 
+X-CRM114-Status: GOOD (  12.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,56 +85,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable PCIE, PCIEPHY and related Pinctrls for mt8390-genio-700-evk
-board.
+Il 07/10/24 10:33, Frank Wunderlich ha scritto:
+> Hi
+> 
+>> Gesendet: Montag, 07. Oktober 2024 um 10:00 Uhr
+>> Von: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>
+>> Betreff: Re: [PATCH v2 1/2] dt-bindings: mmc: mtk-sd: Add mt7988 SoC
+>>
+>> Il 06/10/24 17:34, Frank Wunderlich ha scritto:
+>>> From: Frank Wunderlich <frank-w@public-files.de>
+>>>
+>>> Add binding definitions for mmc on MT7988 SoC.
+>>>
+>>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+>>> ---
+>>> v2:
+>>> - fixed minItems to 4
+>>> ---
+>>>    .../devicetree/bindings/mmc/mtk-sd.yaml       | 24 +++++++++++++++++++
+>>>    1 file changed, 24 insertions(+)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+>>> index c532ec92d2d9..7380f72ea189 100644
+>>> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+>>> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+>>> @@ -21,6 +21,7 @@ properties:
+>>>              - mediatek,mt7620-mmc
+>>>              - mediatek,mt7622-mmc
+>>>              - mediatek,mt7986-mmc
+>>> +          - mediatek,mt7988-mmc
+>>>              - mediatek,mt8135-mmc
+>>>              - mediatek,mt8173-mmc
+>>>              - mediatek,mt8183-mmc
+>>> @@ -263,6 +264,29 @@ allOf:
+>>>                - const: bus_clk
+>>>                - const: sys_cg
+>>>
+>>> +  - if:
+>>> +      properties:
+>>> +        compatible:
+>>> +          contains:
+>>> +            enum:
+>>> +              - mediatek,mt7988-mmc
+>>
+>> Are you really sure that you can't reuse the MT7986 compatible?
+> 
+> have not found a way to reuse mt7986 binding because clock-config is different...
+> from driver view we can use the mt7986 compatible, but from binding view it is different.
+> 
 
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
----
- .../dts/mediatek/mt8390-genio-700-evk.dts     | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+Okay, that's fair.
 
-Changes for v1:
- - This patch depends on the pcie patch of mt8188.dtsi
-   [1] https://lore.kernel.org/all/20241004081218.55962-3-fshao@chromium.org/
+> regards Frank
+> 
+>> Cheers,
+>> Angelo
+>>
+>>> +    then:
+>>> +      properties:
+>>> +        clocks:
+>>> +          minItems: 4
+>>> +          items:
+>>> +            - description: source clock
+>>> +            - description: HCLK which used for host
+>>> +            - description: Advanced eXtensible Interface
+>>> +            - description: Advanced High-performance Bus clock
+>>> +        clock-names:
+>>> +          minItems: 3
+>>> +          items:
+>>> +            - const: source
+>>> +            - const: hclk
+>>> +            - const: axi_cg
+>>> +            - const: ahb_cg
+>>> +
+>>>      - if:
+>>>          properties:
+>>>            compatible:
+>>
+>>
+>>
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-index 3e77f59f2c74..bb68665f0b2d 100644
---- a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-@@ -393,6 +393,16 @@ &mt6359codec {
- 	mediatek,mic-type-1 = <3>; /* DCC */
- };
- 
-+&pcie {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie_pins_default>;
-+	status = "okay";
-+};
-+
-+&pciephy {
-+	status = "okay";
-+};
-+
- &pio {
- 	audio_default_pins: audio-default-pins {
- 		pins-cmd-dat {
-@@ -758,6 +768,15 @@ pins-rst {
- 		};
- 	};
- 
-+	pcie_pins_default: pcie-default {
-+		mux {
-+			pinmux = <PINMUX_GPIO47__FUNC_I1_WAKEN>,
-+				 <PINMUX_GPIO48__FUNC_O_PERSTN>,
-+				 <PINMUX_GPIO49__FUNC_B1_CLKREQN>;
-+			bias-pull-up;
-+		};
-+	};
-+
- 	rt1715_int_pins: rt1715-int-pins {
- 		pins_cmd0_dat {
- 			pinmux = <PINMUX_GPIO12__FUNC_B_GPIO12>;
--- 
-2.45.2
 
 
