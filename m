@@ -4,91 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34414CFB440
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 07:01:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E40ACFB440
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 07:03:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R0AGuj5yIrzDKc34jGDi7Sop1ytF0WoQFQCgEomR2do=; b=G7bbvbPpxatJauWcRoePN2PQOc
-	YImfxpNyx/YnQS54zRn/FWbRwINLL25HfjtbGJ/q94U1DU/HFCvxnAV8UO0GLpML8tXqif6B99Xug
-	Tzngh0dwv6vtrhnfVV1hNkDxN23GxolVoL4VOj1OBG6jbgWhiYL+yWRXJIqc9pA9EYTBFf9EoVFrE
-	d6QhiFqZ2sFavTc+IabsFZvxERzcTwssSZDOFYXP8BGmQ4LS+AIgWsv/zhe5E4O/sXfz5gCF1ErXc
-	hd+VzAIuagnELbIwfQKYuyz6Oy3bDzxPpDnmZKPkfjXRKJo1991N8iYRw3LhHwQDxU4ZpKUMLTVfp
-	3cSBcDvg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HUAoNHkgqgr0AnMY6wJzpTNO+6y1bdxYcYe4IvYKdOQ=; b=e6ldSATelksehLgVFMfaT1bhqN
+	b/K89612MpJwhTpgtBX1QicECTMXfa4IIT0DPTpHsr8XYapRepysu3qdEWfJkoexR77BpJ+6x3XBw
+	J3ZT6rI3aXsdmZRq/A86JClHbuLVNGhqxfDC9vbXOlM172F3RUb5BeqgpSYeP5LZeICy6whsjgCJt
+	fBe0oG5Ia9AtkQzfBdUr6/StJ6KS8/Ewtwuz17K19qRXf7rnz5AwmS9QxLj6IGRhg8bqhk5qzK4Or
+	jmgo1uvRM8gwCr0z/M+tza4mr8rmpLfkU8v/vi5cRHe4fwm5I2FPpF1QZyC22EL9SJHTEQHnjRzJj
+	ygYYbn9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxhk8-00000001VzB-3Seu;
-	Mon, 07 Oct 2024 07:01:20 +0000
-Received: from mout.gmx.net ([212.227.17.22])
+	id 1sxhmd-00000001WV4-32LK;
+	Mon, 07 Oct 2024 07:03:55 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxhiU-00000001VYM-1KwC;
-	Mon, 07 Oct 2024 06:59:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1728284364; x=1728889164; i=frank-w@public-files.de;
-	bh=R0AGuj5yIrzDKc34jGDi7Sop1ytF0WoQFQCgEomR2do=;
-	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
-	 Content-Type:Date:In-Reply-To:References:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=a504at3T4RFK9vS1K5OsHuRPpDQ3D09FXnEbT2tAP8XH8Hzm+O8ljIuQUaltyRFz
-	 GxXIbwB9AJFWK2ehw86IQBlXi0XHwIbKl+E5cJQGsjC5qWgtg99Hv8mrjpZ/et6/Z
-	 qq+aGAwkACQ+5lwX6bJSr84aIAJW7+Q1GOpjciEY6nho8y8c8Nt5VEaCGtabLg/k7
-	 OBLj9bHjVhL1gg8UD31We4jvPacu9x53m+XUB2aOaoc2FCVe2T4Pzfq40+RlpZRLh
-	 1psQ8Eul0d35DS3B14bwoE6Ue3xfytpk3PSV7scZMpttyDkWmq1afZCGB8xCnITir
-	 jAOF62e5bLO1lzw6lg==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.153.101] ([217.61.153.101]) by web-mail.gmx.net
- (3c-app-gmx-bap03.server.lan [172.19.172.73]) (via HTTP); Mon, 7 Oct 2024
- 08:59:24 +0200
+	id 1sxhjz-00000001VtJ-2BqI;
+	Mon, 07 Oct 2024 07:01:12 +0000
+X-UUID: ec97cfb2847911efb3adad29d29602c1-20241007
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=HUAoNHkgqgr0AnMY6wJzpTNO+6y1bdxYcYe4IvYKdOQ=;
+	b=DgxQvMMDq6501DwPuHXMNHIO4zlypUW+2FK9m59bt+Rt5hTr8RrGk/2SWKaHzkhPrDvoY/rXqHrf+Qc91aXzDxNFI1j/KvsnZLgMREysi+fcjRZ6VYntT83vqM4Eb2WKapN2t1cBZm2tzKWMC96DTc8kpHHGnFNYKPsMwTJXzgg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:9def95e4-fe17-42bd-87c0-854f58d1be97,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:631fda64-444a-4b47-a99a-591ade3b04b2,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: ec97cfb2847911efb3adad29d29602c1-20241007
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2122258496; Mon, 07 Oct 2024 00:01:06 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 7 Oct 2024 15:01:03 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 7 Oct 2024 15:01:03 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Adam Thiede <me@adamthiede.com>, Yassine Oudjana
+	<yassine.oudjana@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: Shawn Sung <shawn.sung@mediatek.com>, Alper Nebi Yasak
+	<alpernebiyasak@gmail.com>, <dri-devel@lists.freedesktop.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, "Jason-JH . Lin"
+	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Nancy
+ Lin <nancy.lin@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v9 5/5] drm/mediatek: Add blend_modes to mtk_plane_init() for different SoCs
+Date: Mon, 7 Oct 2024 15:01:01 +0800
+Message-ID: <20241007070101.23263-6-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20241007070101.23263-1-jason-jh.lin@mediatek.com>
+References: <20241007070101.23263-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-Message-ID: <trinity-57600902-afb6-42f3-8cf5-54a07710f979-1728284364104@3c-app-gmx-bap03>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Frank Wunderlich <linux@fw-web.de>, Chaotian Jing
- <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>, Rob
- Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
- Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Wenbin Mei <wenbin.mei@mediatek.com>, linux-mmc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- daniel@makrotopia.org, john@phrozen.org, eladwf@gmail.com,
- ansuelsmth@gmail.com
-Subject: Aw: Re: [PATCH v2 1/2] dt-bindings: mmc: mtk-sd: Add mt7988 SoC
-Content-Type: text/plain; charset=UTF-8
-Date: Mon, 7 Oct 2024 08:59:24 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <p7lqqhet6ahmvieh5xaws6ugsnasmuw6k4oajkmfcctuhrs4dn@quvrkmyof5ss>
-References: <20241006153447.41377-1-linux@fw-web.de>
- <20241006153447.41377-2-linux@fw-web.de>
- <p7lqqhet6ahmvieh5xaws6ugsnasmuw6k4oajkmfcctuhrs4dn@quvrkmyof5ss>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:NJAHfrORCcCOW2WN7H4bEoinSF2FWIRros/25USaRXG8LWD+9GYkr8WuevawXQ3d+J4U3
- Vr2C+PSULryIEv5iClhfCZN+53sAfZc+AL/mrTFcusc+1juiHHrgXf2vX3X1CkuSpBvSzTFgIfsQ
- BH6/dRvkxdPuW3Dypod9GtfKpOfdWR78bsu2Diu/HBwsJB2tYb+QrkMaNpDk25uddO8CdSxfiZhg
- ccbiMYchPo4zoNk5bTkMjuQ/IUOgbRVoxpTqDYF/zZORH4XmZkMDww7yaqVWTX3Uy70TxR1ljSE3
- /w=
-UI-OutboundReport: notjunk:1;M01:P0:zD0Pvuez3Bs=;Po0PEr/OdsOQdAkD0FLE28bTugq
- Xpu/NvntrZGibvMH6upFmsHmHqwxchB/+RSy4RD9dA5LiJOi5OzvTPMMlrhgx47eLAnqk+/M/
- 3sMDLKZUY5MI5Ab5VGZSUZZ1oEqo2Iu5opMvGCyuLjhxBtYIRui3iZoiEN/9q8/UTnC58vuPj
- /9Jrligsv6r2F0cNWWomgpaErws9JutZjvhLpIdir7nP3ORYlMqCVnYnvSVBWkNQusLrfoT6G
- DZ3zUafDXhbLV9sIj4N4cxmOQJmtKM5GEXXkJx5hIU80HG3RDmm//oARnkwnzwgbDaUvWCASf
- kKSgx4xPZyg+xKw4cg4BQkDIoJQ5r3fBQY5LH+In1t/5s5npWmrdraZXvrT9xEV/aGe6Jl7VQ
- rWIK7UCSfsIHYwIx4LkDLLpSD4NXRXJF8w1uYKvcJ2/zuk5xmBstMYbG9+C3KDloGb5uDYm/S
- ggLg+OfKtdf6jlJJUUCAXjDvd2vq1dPJ++Pck695F01WtTXyToUJ8d7FuKaieqIxPFs46C822
- pvUo7sAFUP0gTaPhBl8t1Apz1EY5bx/Tk2KIe8OaM8Fby+oCF73s5eXr7SV0oWdg7nj+O+lph
- v5sX98c9muDq6kPRg8q5pTMUKTvGdnck1hLp6cE2WNvNNcbYBlxKz8jfQUb34A2MxG9i3pva/
- EAdpp5xRoGP2U7rnqqwEZZTyQsB/xSzSRv/XdbB2oQ==
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241006_235938_877247_3224D54F 
-X-CRM114-Status: GOOD (  18.02  )
+X-CRM114-CacheID: sfid-20241007_000111_598769_1904B290 
+X-CRM114-Status: GOOD (  18.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,73 +90,223 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Gesendet: Montag, 07. Oktober 2024 um 07:55 Uhr
-> Von: "Krzysztof Kozlowski" <krzk@kernel.org>
-> An: "Frank Wunderlich" <linux@fw-web.de>
-> Betreff: Re: [PATCH v2 1/2] dt-bindings: mmc: mtk-sd: Add mt7988 SoC
->
-> On Sun, Oct 06, 2024 at 05:34:45PM +0200, Frank Wunderlich wrote:
-> > From: Frank Wunderlich <frank-w@public-files.de>
-> >
-> > Add binding definitions for mmc on MT7988 SoC.
-> >
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> > ---
-> > v2:
-> > - fixed minItems to 4
-> > ---
-> >  .../devicetree/bindings/mmc/mtk-sd.yaml       | 24 ++++++++++++++++++=
+Since some SoCs support premultiplied pixel formats but some do not,
+the blend_modes parameter is added to mtk_plane_init(), which is
+obtained from the mtk_ddp_comp_get_blend_modes function implemented
+in different blending supported components.
+
+The blending supported components can use driver data to set the
+blend mode capabilities for different SoCs.
+
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_crtc.c             |  1 +
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c         |  2 ++
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h         | 10 ++++++++++
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h         |  2 ++
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c         |  7 +++++++
+ drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c |  7 +++++++
+ drivers/gpu/drm/mediatek/mtk_ethdr.c            |  7 +++++++
+ drivers/gpu/drm/mediatek/mtk_ethdr.h            |  1 +
+ drivers/gpu/drm/mediatek/mtk_plane.c            | 15 +++++++--------
+ drivers/gpu/drm/mediatek/mtk_plane.h            |  4 ++--
+ 10 files changed, 46 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
+index 175b00e5a253..b65f196f2015 100644
+--- a/drivers/gpu/drm/mediatek/mtk_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
+@@ -913,6 +913,7 @@ static int mtk_crtc_init_comp_planes(struct drm_device *drm_dev,
+ 				BIT(pipe),
+ 				mtk_crtc_plane_type(mtk_crtc->layer_nr, num_planes),
+ 				mtk_ddp_comp_supported_rotations(comp),
++				mtk_ddp_comp_get_blend_modes(comp),
+ 				mtk_ddp_comp_get_formats(comp),
+ 				mtk_ddp_comp_get_num_formats(comp), i);
+ 		if (ret)
+diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+index be66d94be361..edc6417639e6 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+@@ -363,6 +363,7 @@ static const struct mtk_ddp_comp_funcs ddp_ovl = {
+ 	.layer_config = mtk_ovl_layer_config,
+ 	.bgclr_in_on = mtk_ovl_bgclr_in_on,
+ 	.bgclr_in_off = mtk_ovl_bgclr_in_off,
++	.get_blend_modes = mtk_ovl_get_blend_modes,
+ 	.get_formats = mtk_ovl_get_formats,
+ 	.get_num_formats = mtk_ovl_get_num_formats,
+ };
+@@ -416,6 +417,7 @@ static const struct mtk_ddp_comp_funcs ddp_ovl_adaptor = {
+ 	.disconnect = mtk_ovl_adaptor_disconnect,
+ 	.add = mtk_ovl_adaptor_add_comp,
+ 	.remove = mtk_ovl_adaptor_remove_comp,
++	.get_blend_modes = mtk_ovl_adaptor_get_blend_modes,
+ 	.get_formats = mtk_ovl_adaptor_get_formats,
+ 	.get_num_formats = mtk_ovl_adaptor_get_num_formats,
+ 	.mode_valid = mtk_ovl_adaptor_mode_valid,
+diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
+index ecf6dc283cd7..39720b27f4e9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
+@@ -80,6 +80,7 @@ struct mtk_ddp_comp_funcs {
+ 	void (*ctm_set)(struct device *dev,
+ 			struct drm_crtc_state *state);
+ 	struct device * (*dma_dev_get)(struct device *dev);
++	u32 (*get_blend_modes)(struct device *dev);
+ 	const u32 *(*get_formats)(struct device *dev);
+ 	size_t (*get_num_formats)(struct device *dev);
+ 	void (*connect)(struct device *dev, struct device *mmsys_dev, unsigned int next);
+@@ -266,6 +267,15 @@ static inline struct device *mtk_ddp_comp_dma_dev_get(struct mtk_ddp_comp *comp)
+ 	return comp->dev;
+ }
+ 
++static inline
++u32 mtk_ddp_comp_get_blend_modes(struct mtk_ddp_comp *comp)
++{
++	if (comp->funcs && comp->funcs->get_blend_modes)
++		return comp->funcs->get_blend_modes(comp->dev);
 +
-> >  1 file changed, 24 insertions(+)
-> >
-> > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Docum=
-entation/devicetree/bindings/mmc/mtk-sd.yaml
-> > index c532ec92d2d9..7380f72ea189 100644
-> > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> > @@ -21,6 +21,7 @@ properties:
-> >            - mediatek,mt7620-mmc
-> >            - mediatek,mt7622-mmc
-> >            - mediatek,mt7986-mmc
-> > +          - mediatek,mt7988-mmc
-> >            - mediatek,mt8135-mmc
-> >            - mediatek,mt8173-mmc
-> >            - mediatek,mt8183-mmc
-> > @@ -263,6 +264,29 @@ allOf:
-> >              - const: bus_clk
-> >              - const: sys_cg
-> >
-> > +  - if:
-> > +      properties:
-> > +        compatible:
-> > +          contains:
-> > +            enum:
-> > +              - mediatek,mt7988-mmc
-> > +    then:
-> > +      properties:
-> > +        clocks:
-> > +          minItems: 4
->
-> Drop
->
-> > +          items:
-> > +            - description: source clock
-> > +            - description: HCLK which used for host
-> > +            - description: Advanced eXtensible Interface
-> > +            - description: Advanced High-performance Bus clock
-> > +        clock-names:
-> > +          minItems: 3
->
-> This is still wrong... anyway, drop.
++	return 0;
++}
++
+ static inline
+ const u32 *mtk_ddp_comp_get_formats(struct mtk_ddp_comp *comp)
+ {
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index 082ac18fe04a..04154db9085c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -103,6 +103,7 @@ void mtk_ovl_register_vblank_cb(struct device *dev,
+ void mtk_ovl_unregister_vblank_cb(struct device *dev);
+ void mtk_ovl_enable_vblank(struct device *dev);
+ void mtk_ovl_disable_vblank(struct device *dev);
++u32 mtk_ovl_get_blend_modes(struct device *dev);
+ const u32 *mtk_ovl_get_formats(struct device *dev);
+ size_t mtk_ovl_get_num_formats(struct device *dev);
+ 
+@@ -131,6 +132,7 @@ void mtk_ovl_adaptor_start(struct device *dev);
+ void mtk_ovl_adaptor_stop(struct device *dev);
+ unsigned int mtk_ovl_adaptor_layer_nr(struct device *dev);
+ struct device *mtk_ovl_adaptor_dma_dev_get(struct device *dev);
++u32 mtk_ovl_adaptor_get_blend_modes(struct device *dev);
+ const u32 *mtk_ovl_adaptor_get_formats(struct device *dev);
+ size_t mtk_ovl_adaptor_get_num_formats(struct device *dev);
+ enum drm_mode_status mtk_ovl_adaptor_mode_valid(struct device *dev,
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index 41874dc9d933..f747b91e586f 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -215,6 +215,13 @@ void mtk_ovl_disable_vblank(struct device *dev)
+ 	writel_relaxed(0x0, ovl->regs + DISP_REG_OVL_INTEN);
+ }
+ 
++u32 mtk_ovl_get_blend_modes(struct device *dev)
++{
++	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
++
++	return ovl->data->blend_modes;
++}
++
+ const u32 *mtk_ovl_get_formats(struct device *dev)
+ {
+ 	struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+index c6768210b08b..bf2546c4681a 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+@@ -400,6 +400,13 @@ void mtk_ovl_adaptor_disable_vblank(struct device *dev)
+ 	mtk_ethdr_disable_vblank(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
+ }
+ 
++u32 mtk_ovl_adaptor_get_blend_modes(struct device *dev)
++{
++	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
++
++	return mtk_ethdr_get_blend_modes(ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
++}
++
+ const u32 *mtk_ovl_adaptor_get_formats(struct device *dev)
+ {
+ 	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_ethdr.c b/drivers/gpu/drm/mediatek/mtk_ethdr.c
+index d1d9cf8b10e1..0f22e7d337cb 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ethdr.c
++++ b/drivers/gpu/drm/mediatek/mtk_ethdr.c
+@@ -145,6 +145,13 @@ static irqreturn_t mtk_ethdr_irq_handler(int irq, void *dev_id)
+ 	return IRQ_HANDLED;
+ }
+ 
++u32 mtk_ethdr_get_blend_modes(struct device *dev)
++{
++	return BIT(DRM_MODE_BLEND_PREMULTI) |
++	       BIT(DRM_MODE_BLEND_COVERAGE) |
++	       BIT(DRM_MODE_BLEND_PIXEL_NONE);
++}
++
+ void mtk_ethdr_layer_config(struct device *dev, unsigned int idx,
+ 			    struct mtk_plane_state *state,
+ 			    struct cmdq_pkt *cmdq_pkt)
+diff --git a/drivers/gpu/drm/mediatek/mtk_ethdr.h b/drivers/gpu/drm/mediatek/mtk_ethdr.h
+index 81af9edea3f7..a72aeee46829 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ethdr.h
++++ b/drivers/gpu/drm/mediatek/mtk_ethdr.h
+@@ -13,6 +13,7 @@ void mtk_ethdr_clk_disable(struct device *dev);
+ void mtk_ethdr_config(struct device *dev, unsigned int w,
+ 		      unsigned int h, unsigned int vrefresh,
+ 		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
++u32 mtk_ethdr_get_blend_modes(struct device *dev);
+ void mtk_ethdr_layer_config(struct device *dev, unsigned int idx,
+ 			    struct mtk_plane_state *state,
+ 			    struct cmdq_pkt *cmdq_pkt);
+diff --git a/drivers/gpu/drm/mediatek/mtk_plane.c b/drivers/gpu/drm/mediatek/mtk_plane.c
+index 7d2cb4e0fafa..8a48b3b0a956 100644
+--- a/drivers/gpu/drm/mediatek/mtk_plane.c
++++ b/drivers/gpu/drm/mediatek/mtk_plane.c
+@@ -320,8 +320,8 @@ static const struct drm_plane_helper_funcs mtk_plane_helper_funcs = {
+ 
+ int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
+ 		   unsigned long possible_crtcs, enum drm_plane_type type,
+-		   unsigned int supported_rotations, const u32 *formats,
+-		   size_t num_formats, unsigned int plane_idx)
++		   unsigned int supported_rotations, const u32 blend_modes,
++		   const u32 *formats, size_t num_formats, unsigned int plane_idx)
+ {
+ 	int err;
+ 
+@@ -366,12 +366,11 @@ int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
+ 	if (err)
+ 		DRM_ERROR("failed to create property: alpha\n");
+ 
+-	err = drm_plane_create_blend_mode_property(plane,
+-						   BIT(DRM_MODE_BLEND_PREMULTI) |
+-						   BIT(DRM_MODE_BLEND_COVERAGE) |
+-						   BIT(DRM_MODE_BLEND_PIXEL_NONE));
+-	if (err)
+-		DRM_ERROR("failed to create property: blend_mode\n");
++	if (blend_modes) {
++		err = drm_plane_create_blend_mode_property(plane, blend_modes);
++		if (err)
++			DRM_ERROR("failed to create property: blend_mode\n");
++	}
+ 
+ 	drm_plane_helper_add(plane, &mtk_plane_helper_funcs);
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_plane.h b/drivers/gpu/drm/mediatek/mtk_plane.h
+index 5b177eac67b7..3b13b89989c7 100644
+--- a/drivers/gpu/drm/mediatek/mtk_plane.h
++++ b/drivers/gpu/drm/mediatek/mtk_plane.h
+@@ -48,6 +48,6 @@ to_mtk_plane_state(struct drm_plane_state *state)
+ 
+ int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
+ 		   unsigned long possible_crtcs, enum drm_plane_type type,
+-		   unsigned int supported_rotations, const u32 *formats,
+-		   size_t num_formats, unsigned int plane_idx);
++		   unsigned int supported_rotations, const u32 blend_modes,
++		   const u32 *formats, size_t num_formats, unsigned int plane_idx);
+ #endif
+-- 
+2.43.0
 
-arg, sorry again...i should triple-check all before resending.
-
-but dropping means the global 2 is used (making axi+ahb optional), or am i=
- wrong? afaik "minItems: 4" is right here
-
-> Best regards,
-> Krzysztof
->
-
-regards Frank
 
