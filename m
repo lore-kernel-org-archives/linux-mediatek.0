@@ -4,116 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DA55CFB440
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 11:31:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01B96CFB43F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 11:37:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l8u+dJP+JRQSpR5UjnTPbcNnTPi2kxsxUB+cC+8cKpo=; b=Ne8HpF6D4nD5/azZPKKZ0IY0Ve
-	Ad/om/SH0WFTCq1rymIqwdhmMgDHg8DJ2kQKA+ByccNYrKkQIdzw9SwmND3mAg5wjlix0idax4LU2
-	NByjKmI+fCW6SnMMSHUmHosi6Oqts4+7ISY2Pf762swBjatRx59AXQaSM5bsuoOzDtkS4jocMgSYY
-	4p4Xp+fDclzBI1kAxc74C844b3vNpoZsIFtFKf0E56PCbwnWQ6ObHqgc9GCmAQT+9joXjhvMgxrkI
-	G9sAxn97nB2Hgx08Vy3LxsIQ8oTnPBTwUCHBRV637jXdXODzQB3Y+s6Yic+Vk5iEhY3eFvjnIwlST
-	nWjbl6SA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8K1ZnJOubHolS67WqKspNAGR3oLXg45z13ijZr9Uxdg=; b=E1G0eusMz/sfCsDAKZxf0ZuiqT
+	JfZ1CohX+rga3iRgP/CIBn6LfJuNMkIcVwEcQqt1tcVGGi/E4Q6nuZf9MPXUK7OmmiTU5E8WHVASd
+	q8B0DFYyhLKLp/6+lsdZzPgb9+31TsWWYw23LVMqkGVKHY8sGWHD9ngaoTNDurvMu9FcihmVbxwnQ
+	eBC2wAZTZj1wIrgz8h5ErdMbc6JL1g1dAXNBsBrzMcbZrsvSw8rftoZ8wlVldn1zklDImmnOfLKDM
+	CEfP9Jeor2iVEG0CY1j7fkhLcwzoJAIUF9EhCRQsfRWC5E8fs4hOPWWCpjrOp7VDIH6Lwd13KQVyW
+	FuiPEd2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxlxi-00000002Bb5-3tAP;
-	Mon, 07 Oct 2024 11:31:38 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1sxm3X-00000002CLH-3XbS;
+	Mon, 07 Oct 2024 11:37:39 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxlwO-00000002BP8-10Aj;
-	Mon, 07 Oct 2024 11:30:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id DC3FAA41B01;
-	Mon,  7 Oct 2024 11:30:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5D307C4CEC6;
-	Mon,  7 Oct 2024 11:30:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728300615;
-	bh=Rz4+xwYlnejseHEd/Mnd7CZL6xZvLaDMPzooI0qTgmY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=f+VYGlebZh0izT4/wpS/jAuaUTaxn4XJzdQWFUUUjyyAoKYN8Dqalm10RaSmeJZWW
-	 7DgfSR9zCvSx+tgGzWfO15tA7COUMo5s2dhPCPnZ+7BAlMsH5btJN6OasQpA9PXa1M
-	 ET+aqUEQWR8+5UolWB756Aw1oEPrN1Mn1YdEE+XkaEq8yhbPELGohjioLJvbfyQtBI
-	 iTed0U7xAlSpvAM7Z/yAaxa+xdRdQOmV22GNyDerGFbbNfMxSXDH4Y9Wh2khSoKUIQ
-	 Zd2fuQBRZ66QaavW8BYx10oBSI5cKQI0c4CjbyfJE7vCDiA8QqZWG1i38FYcGQsjdO
-	 WQIptI9bu5MsA==
-Message-ID: <e6709979-e69e-4b55-be9f-c1353dd8ffc7@kernel.org>
-Date: Mon, 7 Oct 2024 13:30:08 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: Aw: Re: [PATCH v2 2/2] mmc: mtk-sd: add support for mt7988
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Frank Wunderlich <frank-w@public-files.de>
-Cc: Frank Wunderlich <linux@fw-web.de>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Wenbin Mei <wenbin.mei@mediatek.com>, linux-mmc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- daniel@makrotopia.org, john@phrozen.org, eladwf@gmail.com,
- ansuelsmth@gmail.com
+	id 1sxm2E-00000002C6T-1eO8;
+	Mon, 07 Oct 2024 11:36:19 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1sxm26-000000002Mf-2WkX;
+	Mon, 07 Oct 2024 11:36:10 +0000
+Date: Mon, 7 Oct 2024 12:36:07 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: mmc: mtk-sd: Add mt7988 SoC
+Message-ID: <ZwPHp9l3Fx7f2lI4@makrotopia.org>
 References: <20241006153447.41377-1-linux@fw-web.de>
- <20241006153447.41377-3-linux@fw-web.de>
- <89e54baa-0f05-47d7-8d81-68862f822c59@collabora.com>
- <trinity-2ac8c3fe-ad19-424b-ab4f-da84c42c4ae1-1728290266613@3c-app-gmx-bap03>
- <272309da-24ff-49cd-9e4b-287054218cbc@collabora.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <272309da-24ff-49cd-9e4b-287054218cbc@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+ <20241006153447.41377-2-linux@fw-web.de>
+ <b41c51c4-775c-49ca-84fd-1137b61f42d5@collabora.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <b41c51c4-775c-49ca-84fd-1137b61f42d5@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_043016_449549_BCAC656E 
-X-CRM114-Status: GOOD (  13.13  )
+X-CRM114-CacheID: sfid-20241007_043618_451270_456D0A8D 
+X-CRM114-Status: GOOD (  14.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,50 +58,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Wenbin Mei <wenbin.mei@mediatek.com>, linux-mmc@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, linux-kernel@vger.kernel.org, eladwf@gmail.com, devicetree@vger.kernel.org, ansuelsmth@gmail.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, john@phrozen.org, Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich <linux@fw-web.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Chaotian Jing <chaotian.jing@mediatek.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 07/10/2024 12:14, AngeloGioacchino Del Regno wrote:
-> Il 07/10/24 10:37, Frank Wunderlich ha scritto:
->> Hi
->>
->>> Gesendet: Montag, 07. Oktober 2024 um 09:58 Uhr
->>> Von: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>
->>> Betreff: Re: [PATCH v2 2/2] mmc: mtk-sd: add support for mt7988
->>>
->>> Il 06/10/24 17:34, Frank Wunderlich ha scritto:
->>>> From: Frank Wunderlich <frank-w@public-files.de>
->>>>
->>>> Add support for mmc on MT7988 SoC.
->>>>
->>>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
->>>
->>> There's no need to add yet one more duplicate mtk_mmc_compatible platform
->>> data, nor one more compatible string to this driver, as this is exactly
->>> the same as mt7986.
->>>
->>> Please reuse the MT7986 compatible; in DT you'll have:
->>>
->>> compatible = "mediatek,mt7988-mmc", "mediatek,mt7986-mmc";
->>
->> as explained in binding, the clock config is completely different (except first 2 also required by driver - 3-7 are optional there). mt7988 uses axi and ahb clocks.
->>
->> but i could of course use the mt7988 compatible with mt7986 compat data...but looked dirty to me so just copied the block (to allow later changes if needed).
->>
+On Mon, Oct 07, 2024 at 10:00:49AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 06/10/24 17:34, Frank Wunderlich ha scritto:
+> > From: Frank Wunderlich <frank-w@public-files.de>
+> > 
+> > Add binding definitions for mmc on MT7988 SoC.
+> > 
+> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> > ---
+> > v2:
+> > - fixed minItems to 4
+> > ---
+> >   .../devicetree/bindings/mmc/mtk-sd.yaml       | 24 +++++++++++++++++++
+> >   1 file changed, 24 insertions(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > index c532ec92d2d9..7380f72ea189 100644
+> > --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> > @@ -21,6 +21,7 @@ properties:
+> >             - mediatek,mt7620-mmc
+> >             - mediatek,mt7622-mmc
+> >             - mediatek,mt7986-mmc
+> > +          - mediatek,mt7988-mmc
+> >             - mediatek,mt8135-mmc
+> >             - mediatek,mt8173-mmc
+> >             - mediatek,mt8183-mmc
+> > @@ -263,6 +264,29 @@ allOf:
+> >               - const: bus_clk
+> >               - const: sys_cg
+> > +  - if:
+> > +      properties:
+> > +        compatible:
+> > +          contains:
+> > +            enum:
+> > +              - mediatek,mt7988-mmc
 > 
-> In case there will be any changes required *later*, you can always add new platform
-> data for the MT7988 compatible, as it's just only a code change and nothing else.
-> 
-> For now, since they're the same, just reuse mt7986_compat.
-> 
-> Reusing is way better than duplicating - here and everywhere else - especially when
-> this implies a 100% duplication.
+> Are you really sure that you can't reuse the MT7986 compatible?
 
-If you use same match data, then entire change should be dropped because
-it is redundant. Instead express compatibility in the bindings and use
-fallback.
-
-Best regards,
-Krzysztof
-
+In OpenWrt we are doing exactly that. The MMC controller of
+MT7988 (and MT7981) seems 100% the same as in MT7986 and hence
+works just fine with the mediatek,mt7986-mmc compatible.
 
