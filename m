@@ -4,80 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47BCBCFB43F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 09:04:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40EFACFB43F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 09:11:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=tLD59Qal+yNHH79nNHu2/GDRtEORj0I1HW1oIFM8IC8=; b=TIiTjEq/zv/BK8gc4lWx7htBwb
-	2ZWqjakugcDIPvWl9AubvhodPVRfWYHEkWsNB490dJKamUNvGsmerJXc6iAVStd6mjcgQkstIkUVv
-	st/X5lWFkvM0ODAdOM7pT5U836YNv9cxEB1Q7Bn46iJWap15Dht1AHxfJmAPwB9MRAD9f2ljGCXU9
-	eP1KV0Oo3jlkFWKkkv2qCPpfc+LVqNEhX2RYRzDDiyuE+fJjhHrB54sbBKJpRpvCyu46TrKMJLeIC
-	+7rJFFwHeo6SgpsfhlVNuImS+ZdXS/LJ8vw2AgYEGe/PzfN20RskxV18gixf2jPJoRwo3z2unIt4r
-	IHoZNZnw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MmeHvbWDJejS4GL5oEVKmoM6zGIUXqBnUcKEApXe2ZU=; b=AC73Rdw0B13k57TybokJTb0hPa
+	22iz0DmI5RK5YVBu1UJbG8CvK+bEdkNcCIHp552phxFO89YXdCNSO4Ws8F/am5+A9eBruF4GLRa4Z
+	CTB40zqPWts5PYKJSs9UU3+HoI05DTzFpRvjmyDSpcBGYw/OrNOZM/tFFTRs9Rus8AL5Wt2EPk669
+	fRadxWa4lirMg23sydYJQXjnyJUaHc+D7tTZoHqxCnszjcCk1MRM5elU6cEjQ3ffG8Kw9MYa8Ts9+
+	JB7S2kQKNVLSVCeqbPjp0lR12HIetxq0uUAL9RoCl4wCY5IVKnkxCDJ0gJZE61kGVOw//GgI8Z0vw
+	8fPnQihg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxjf5-00000001s43-0Fuh;
-	Mon, 07 Oct 2024 09:04:15 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sxjlc-00000001snt-17ND;
+	Mon, 07 Oct 2024 09:11:00 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxjdn-00000001rvF-0hr4;
-	Mon, 07 Oct 2024 09:02:56 +0000
-X-UUID: edccda1a848a11efb3adad29d29602c1-20241007
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=tLD59Qal+yNHH79nNHu2/GDRtEORj0I1HW1oIFM8IC8=;
-	b=cnDeJr9hGnPP0LEUn0ZN41DAHIIWnPTHRulhTIZUuaqlJiLOr1/eq9iYZnlYvKBH6oc/YMu9tL8HCGH5NNIwvcfEFfvgj6MrL2SG8zNpTB4Y2HUrXKm0B74vnYma3EI/pNIbxe9Y3E8OG+6No2uxjvNEeQQQKEYY+/OjLKfycB8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:a94d7876-9f03-49b6-834a-aaacc8a43ca4,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:c7926726-5902-4533-af4f-d0904aa89b3c,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: edccda1a848a11efb3adad29d29602c1-20241007
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 459441392; Mon, 07 Oct 2024 02:02:50 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 7 Oct 2024 02:02:47 -0700
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 7 Oct 2024 17:02:47 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Alexandre Mergnat
-	<amergnat@baylibre.com>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, Sen
- Chu <sen.chu@mediatek.com>, Chris-qj chen <chris-qj.chen@mediatek.com>,
-	MediaTek Chromebook Upstream
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
-	<wenst@chromium.org>
-Subject: [PATCH v2 1/2] arm64: dts: mediatek: mt8390-genio-700-evk: update regulator names
-Date: Mon, 7 Oct 2024 17:02:43 +0800
-Message-ID: <20241007090244.1731-1-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1sxjjb-00000001sYs-1sMr;
+	Mon, 07 Oct 2024 09:08:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1728292133;
+	bh=IIry1dEYTifF6DEPd31BX5nVO/lm731GurpTFpXJErI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TpV6g2tTzqJSEfvFXUsJr+805MendttYBqk7k5qFBc78STg3QgoyOHMj/tfTp2kAR
+	 tFn0pLf4NrU6kjGtIMmu+jyrfcbKX7a4jOXaoCjNc3ABwwAaVjrZKHJXo8Dgzlghf8
+	 /Nijpl3eVUSXaCb/JzYDnxERsKMZpUICzoCJ9gsPmjTbJYqOFYWk88QQlrp2nwXl8I
+	 abIgY2hF2vC2q1MxdRbLLl552O/9/26akUWC2q7ST4WAXPjXIUX6H2kRDCYR5QsclR
+	 adQBHhqzUZ6YxZvbMRPAZecf2w4hfwNzKt8DCiFWsbsQndiwX/5QKOOaZeaissIbP4
+	 QwuCjP56dagTw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C956517E10D6;
+	Mon,  7 Oct 2024 11:08:52 +0200 (CEST)
+Message-ID: <9bda89e0-d236-40e2-a109-0de5fb4bd228@collabora.com>
+Date: Mon, 7 Oct 2024 11:08:52 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v10 3/3] drm/mediatek: Implement OF graphs support for
+ display paths
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "sui.jingfeng@linux.dev" <sui.jingfeng@linux.dev>,
+ "wenst@chromium.org" <wenst@chromium.org>,
+ Sjoerd Simons <sjoerd@collabora.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "tzimmermann@suse.de" <tzimmermann@suse.de>,
+ =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
+ "mripard@kernel.org" <mripard@kernel.org>,
+ =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
+ "michael@walle.cc" <michael@walle.cc>, "daniel@ffwll.ch" <daniel@ffwll.ch>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?= <Yu-chang.Lee@mediatek.com>,
+ "mwalle@kernel.org" <mwalle@kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ Alexandre Mergnat <amergnat@baylibre.com>
+References: <20240910105054.125005-1-angelogioacchino.delregno@collabora.com>
+ <01020191db8f22cd-0f5d733b-420e-453c-8607-a3e9f70f32d6-000000@eu-west-1.amazonses.com>
+ <e3953947f5cf05e8e6a2ec3448cf0c08a8c39c1c.camel@mediatek.com>
+ <56c4e87c-6774-4542-8ae7-dab89750081c@collabora.com>
+ <58ee09aeb5a224dbc8faee236ed1a77ce3fbd011.camel@mediatek.com>
+ <d704a5b0-d503-4e6b-b6ef-32909a9aea77@collabora.com>
+ <04f1506b23b41c775e0735b5b3189b4118500715.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <04f1506b23b41c775e0735b5b3189b4118500715.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_020255_242422_8601EC10 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20241007_020855_817627_8A8378C5 
+X-CRM114-Status: GOOD (  39.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,237 +105,323 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Update regulator names to match schematics, replacing generic terms.
-1. Add system wide 'reg_vsys' node for 4.2V power rail.
-2. Add 'reg_vsys' node as 'vin-supply' for the following nodes
- - common_fixed_5v, edp_panel_fixed_3v3, gpio_fixed_3v3, sdio_fixed_3v3,
-   touch0_fixed_3v3, usb_hub_fixed_3v3, usb_p0_vbus, and usb_p1_vbus.
-3. Update regulator names according to the stable output name on
-   schematics.
- - vdd_5v, vedp_3v3, ext_3v3, vio18_conn, wifi_3v3, vio33_tp1, vhub_3v3,
-   vbus_p0, vbus_p1.
- - vcn18_pmu, vcn33_2_pmu, dvdd_proc_l, dvdd_core, vpa_pmu, dvdd_adsp,
-   va12_abb2_pmu, vsim1_pmu, vufs18_pmu.
-4. Remove usb_hub_reset_1v8. Use 'hub' node to probe USB HUB
-   in subsequent patches.
+Il 07/10/24 08:57, CK Hu (胡俊光) ha scritto:
+> Hi, Angelo:
+> 
+> On Fri, 2024-10-04 at 12:22 +0200, AngeloGioacchino Del Regno wrote:
+>> Il 04/10/24 08:03, CK Hu (胡俊光) ha scritto:
+>>> Hi, Angelo:
+>>>
+>>> On Tue, 2024-10-01 at 13:33 +0200, AngeloGioacchino Del Regno wrote:
+>>>> Il 01/10/24 12:07, CK Hu (胡俊光) ha scritto:
+>>>>> Hi, Angelo:
+>>>>>
+>>>>> On Tue, 2024-09-10 at 10:51 +0000, AngeloGioacchino Del Regno wrote:
+>>>>>> It is impossible to add each and every possible DDP path combination
+>>>>>> for each and every possible combination of SoC and board: right now,
+>>>>>> this driver hardcodes configuration for 10 SoCs and this is going to
+>>>>>> grow larger and larger, and with new hacks like the introduction of
+>>>>>> mtk_drm_route which is anyway not enough for all final routes as the
+>>>>>> DSI cannot be connected to MERGE if it's not a dual-DSI, or enabling
+>>>>>> DSC preventively doesn't work if the display doesn't support it, or
+>>>>>> others.
+>>>>>>
+>>>>>> Since practically all display IPs in MediaTek SoCs support being
+>>>>>> interconnected with different instances of other, or the same, IPs
+>>>>>> or with different IPs and in different combinations, the final DDP
+>>>>>> pipeline is effectively a board specific configuration.
+>>>>>>
+>>>>>> Implement OF graphs support to the mediatek-drm drivers, allowing to
+>>>>>> stop hardcoding the paths, and preventing this driver to get a huge
+>>>>>> amount of arrays for each board and SoC combination, also paving the
+>>>>>> way to share the same mtk_mmsys_driver_data between multiple SoCs,
+>>>>>> making it more straightforward to add support for new chips.
+>>>>>>
+>>>>>> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+>>>>>> Tested-by: Alexandre Mergnat <amergnat@baylibre.com>
+>>>>>> Acked-by: Sui Jingfeng <sui.jingfeng@linux.dev>
+>>>>>> Tested-by: Michael Walle <mwalle@kernel.org> # on kontron-sbc-i1200
+>>>>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>>>> ---
+>>>>>
+>>>>> [snip]
+>>>>>
+>>>>>> +
+>>>>>> +bool mtk_ovl_adaptor_is_comp_present(struct device_node *node)
+>>>>>> +{
+>>>>>> +	enum mtk_ovl_adaptor_comp_type type;
+>>>>>> +	int ret;
+>>>>>> +
+>>>>>> +	ret = ovl_adaptor_of_get_ddp_comp_type(node, &type);
+>>>>>> +	if (ret)
+>>>>>> +		return false;
+>>>>>> +
+>>>>>> +	if (type >= OVL_ADAPTOR_TYPE_NUM)
+>>>>>> +		return false;
+>>>>>> +
+>>>>>> +	/*
+>>>>>> +	 * ETHDR and Padding are used exclusively in OVL Adaptor: if this
+>>>>>> +	 * component is not one of those, it's likely not an OVL Adaptor path.
+>>>>>> +	 */
+>>>>>
+>>>>> I don't know your logic here.
+>>>>> The OVL Adaptor pipeline is:
+>>>>>
+>>>>> mdp_rdma -> padding ---+      +-------+
+>>>>>                         Merge -> |       |
+>>>>> mdp_rdma -> padding ---+      |       |
+>>>>>                                  |       |
+>>>>> mdp_rdma -> padding ---+      |       |
+>>>>>                         Merge -> |       |
+>>>>> mdp_rdma -> padding ---+      |       |
+>>>>>                                  | ETHDR |
+>>>>> mdp_rdma -> padding ---+      |       |
+>>>>>                         Merge -> |       |
+>>>>> mdp_rdma -> padding ---+      |       |
+>>>>>                                  |       |
+>>>>> mdp_rdma -> padding ---+      |       |
+>>>>>                         Merge -> |       |
+>>>>> mdp_rdma -> padding ---+      +-------+
+>>>>>
+>>>>> So mdp_rdma and merge is not OVL Adaptor?
+>>>>>
+>>>>
+>>>> Yes, and in device tree, you express that exactly like you just pictured.
+>>>>
+>>>> OVL Adaptor is treated like a software component internally, and manages
+>>>> its own merge pipes exactly like before this commit.
+>>>>
+>>>> In case there will be any need to express OVL Adaptor as hardware component,
+>>>> it will be possible to do so with no modification to the bindings.
+>>>>
+>>>>>
+>>>>>> +	return type == OVL_ADAPTOR_TYPE_ETHDR || type == OVL_ADAPTOR_TYPE_PADDING;
+>>>>>> +}
+>>>>>> +
+>>>>>>     
+>>>>>
+>>>>> [snip]
+>>>>>
+>>>>>> +
+>>>>>> +/**
+>>>>>> + * mtk_drm_of_ddp_path_build_one - Build a Display HW Pipeline for a CRTC Path
+>>>>>> + * @dev:          The mediatek-drm device
+>>>>>> + * @cpath:        CRTC Path relative to a VDO or MMSYS
+>>>>>> + * @out_path:     Pointer to an array that will contain the new pipeline
+>>>>>> + * @out_path_len: Number of entries in the pipeline array
+>>>>>> + *
+>>>>>> + * MediaTek SoCs can use different DDP hardware pipelines (or paths) depending
+>>>>>> + * on the board-specific desired display configuration; this function walks
+>>>>>> + * through all of the output endpoints starting from a VDO or MMSYS hardware
+>>>>>> + * instance and builds the right pipeline as specified in device trees.
+>>>>>> + *
+>>>>>> + * Return:
+>>>>>> + * * %0       - Display HW Pipeline successfully built and validated
+>>>>>> + * * %-ENOENT - Display pipeline was not specified in device tree
+>>>>>> + * * %-EINVAL - Display pipeline built but validation failed
+>>>>>> + * * %-ENOMEM - Failure to allocate pipeline array to pass to the caller
+>>>>>> + */
+>>>>>> +static int mtk_drm_of_ddp_path_build_one(struct device *dev, enum mtk_crtc_path cpath,
+>>>>>> +					 const unsigned int **out_path,
+>>>>>> +					 unsigned int *out_path_len)
+>>>>>> +{
+>>>>>> +	struct device_node *next, *prev, *vdo = dev->parent->of_node;
+>>>>>> +	unsigned int temp_path[DDP_COMPONENT_DRM_ID_MAX] = { 0 };
+>>>>>> +	unsigned int *final_ddp_path;
+>>>>>> +	unsigned short int idx = 0;
+>>>>>> +	bool ovl_adaptor_comp_added = false;
+>>>>>> +	int ret;
+>>>>>> +
+>>>>>> +	/* Get the first entry for the temp_path array */
+>>>>>> +	ret = mtk_drm_of_get_ddp_ep_cid(vdo, 0, cpath, &next, &temp_path[idx]);
+>>>>>> +	if (ret) {
+>>>>>> +		if (next && temp_path[idx] == DDP_COMPONENT_DRM_OVL_ADAPTOR) {
+>>>>>
+>>>>> mdp_rdma would not be DDP_COMPONENT_DRM_OVL_ADAPTOR.
+>>>>
+>>>> This piece of code just avoids adding OVL_ADAPTOR more than once to the pipeline.
+>>>>
+>>>>>
+>>>>>> +			dev_dbg(dev, "Adding OVL Adaptor for %pOF\n", next);
+>>>>>> +			ovl_adaptor_comp_added = true;
+>>>>>> +		} else {
+>>>>>> +			if (next)
+>>>>>> +				dev_err(dev, "Invalid component %pOF\n", next);
+>>>>>> +			else
+>>>>>> +				dev_err(dev, "Cannot find first endpoint for path %d\n", cpath);
+>>>>>> +
+>>>>>> +			return ret;
+>>>>>> +		}
+>>>>>> +	}
+>>>>>> +	idx++;
+>>>>>> +
+>>>>>> +	/*
+>>>>>> +	 * Walk through port outputs until we reach the last valid mediatek-drm component.
+>>>>>> +	 * To be valid, this must end with an "invalid" component that is a display node.
+>>>>>> +	 */
+>>>>>> +	do {
+>>>>>> +		prev = next;
+>>>>>> +		ret = mtk_drm_of_get_ddp_ep_cid(next, 1, cpath, &next, &temp_path[idx]);
+>>>>>> +		of_node_put(prev);
+>>>>>> +		if (ret) {
+>>>>>> +			of_node_put(next);
+>>>>>> +			break;
+>>>>>> +		}
+>>>>>> +
+>>>>>> +		/*
+>>>>>> +		 * If this is an OVL adaptor exclusive component and one of those
+>>>>>> +		 * was already added, don't add another instance of the generic
+>>>>>> +		 * DDP_COMPONENT_OVL_ADAPTOR, as this is used only to decide whether
+>>>>>> +		 * to probe that component master driver of which only one instance
+>>>>>> +		 * is needed and possible.
+>>>>>> +		 */
+>>>>>> +		if (temp_path[idx] == DDP_COMPONENT_DRM_OVL_ADAPTOR) {
+>>>>>
+>>>>> merge would not be DDP_COMPONENT_DRM_OVL_ADAPTOR.
+>>>>> Finally, the path would be:
+>>>>>
+>>>>> mdp_rdma -> ovl adaptor (padding) -> merge -> (ethdr is skipped here) ...
+>>>>>
+>>>>
+>>>> Again, the path in the OF graph is expressed exactly like you said.
+>>>
+>>> I know the OF graph is expressed like I said.
+>>> But I care about the path in driver should like this:
+>>
+>> Ok, now I understand your concern.
+>>
+>>>
+>>> static const unsigned int mt8195_mtk_ddp_ext[] = {
+>>>           DDP_COMPONENT_DRM_OVL_ADAPTOR,
+>>>           DDP_COMPONENT_MERGE5,
+>>>           DDP_COMPONENT_DP_INTF1,
+>>> };
+>>>
+>>> In OF graph, the first component is mdp_rdma and mtk_ovl_adaptor_is_comp_present() would return false for mdp_rdma.
+>>> So I think this would make mtk_drm_of_ddp_path_build_one() return error and the path is not created.
+>>> If I'm wrong, please explain how this code would result in the path like mt8195_mtk_ddp_ext[].
+>>>
+>>
+>> The MDP_RDMA usage in mtk_disp_ovl_adaptor is hardcoded: in function
+>> mtk_ovl_adaptor_layer_config(), the rdma_l/r are always OVL_ADAPTOR_MDP_RDMAx,
+>> then function mtk_ovl_adaptor_dma_dev_get(), always returns the MDP_RDMA0
+>> component, same for mtk_ovl_adaptor_get_{num_formats,formats}() which always
+>> call mtk_mdp_rdma_get_formats() for OVL_ADAPTOR_MDP_RDMA0.
+>>
+>> I have just rechecked how I expressed the path for MT8195 Tomato, where the
+>> external display works with OF Graphs, and it was missing MDP_RDMA entirely.
+>>
+>> The path was ethdr -> merge -> dp_intf1 ... and it should be mdp_rdma -> (etc).
+>>
+>> Effectively, that is indeed wrong, as all of the steps must be expressed
+>> inside of the graph.
+>>
+>> Since the OVL Adaptor's RDMA instances' compatible strings do *not* collide
+>> with the others, as OVL Adaptor uses compatible mediatek,mt8195-vdo1-rdma,
+>> and the regular one uses compatible mediatek,mt8195-disp-rdma, we can resolve
+>> this issue by changing function mtk_ovl_adaptor_is_comp_present()
+>>
+>> from
+>>
+>> return type == OVL_ADAPTOR_TYPE_ETHDR || type == OVL_ADAPTOR_TYPE_PADDING;
+>>
+>> to
+>>
+>> return type == OVL_ADAPTOR_TYPE_ETHDR || type == OVL_ADAPTOR_TYPE_PADDING ||
+>>          type == OVL_ADAPTOR_TYPE_MDP_RDMA;
+>>
+>> is that okay for you?
+> 
+> I just want the path to be like mt8195_mtk_ddp_ext[]. If so, I'm ok.
+> 
 
-Suggested-by: Chen-Yu Tsai <wenst@chromium.org>
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
----
- .../dts/mediatek/mt8390-genio-700-evk.dts     | 65 ++++++++++++-------
- 1 file changed, 42 insertions(+), 23 deletions(-)
+Yes, that makes the path that you described to be exactly like
+mt8195_mtk_ddp_ext[].
 
-Changes for v2:
- - Add Suggested-by: tag.
- - Rebase on mediatek/dts64 branch (v6.12-rc1)
+I will send a v11 later today.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-index 0a6c9871b41e..96b272567cb1 100644
---- a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-@@ -87,103 +87,113 @@ vpu_mem: memory@57000000 {
- 
- 	common_fixed_5v: regulator-0 {
- 		compatible = "regulator-fixed";
--		regulator-name = "5v_en";
-+		regulator-name = "vdd_5v";
- 		regulator-min-microvolt = <5000000>;
- 		regulator-max-microvolt = <5000000>;
- 		gpio = <&pio 10 GPIO_ACTIVE_HIGH>;
- 		enable-active-high;
- 		regulator-always-on;
-+		vin-supply = <&reg_vsys>;
- 	};
- 
- 	edp_panel_fixed_3v3: regulator-1 {
- 		compatible = "regulator-fixed";
--		regulator-name = "edp_panel_3v3";
-+		regulator-name = "vedp_3v3";
- 		regulator-min-microvolt = <3300000>;
- 		regulator-max-microvolt = <3300000>;
- 		enable-active-high;
- 		gpio = <&pio 15 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&edp_panel_3v3_en_pins>;
-+		vin-supply = <&reg_vsys>;
- 	};
- 
- 	gpio_fixed_3v3: regulator-2 {
- 		compatible = "regulator-fixed";
--		regulator-name = "gpio_3v3_en";
-+		regulator-name = "ext_3v3";
- 		regulator-min-microvolt = <3300000>;
- 		regulator-max-microvolt = <3300000>;
- 		gpio = <&pio 9 GPIO_ACTIVE_HIGH>;
- 		enable-active-high;
- 		regulator-always-on;
-+		vin-supply = <&reg_vsys>;
- 	};
- 
-+	/* system wide 4.2V power rail from charger */
-+	reg_vsys: regulator-vsys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vsys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+	};
-+
-+	/* used by mmc2 */
- 	sdio_fixed_1v8: regulator-3 {
- 		compatible = "regulator-fixed";
--		regulator-name = "sdio_io";
-+		regulator-name = "vio18_conn";
- 		regulator-min-microvolt = <1800000>;
- 		regulator-max-microvolt = <1800000>;
- 		enable-active-high;
- 		regulator-always-on;
- 	};
- 
-+	/* used by mmc2 */
- 	sdio_fixed_3v3: regulator-4 {
- 		compatible = "regulator-fixed";
--		regulator-name = "sdio_card";
-+		regulator-name = "wifi_3v3";
- 		regulator-min-microvolt = <3300000>;
- 		regulator-max-microvolt = <3300000>;
- 		gpio = <&pio 74 GPIO_ACTIVE_HIGH>;
- 		enable-active-high;
- 		regulator-always-on;
-+		vin-supply = <&reg_vsys>;
- 	};
- 
- 	touch0_fixed_3v3: regulator-5 {
- 		compatible = "regulator-fixed";
--		regulator-name = "touch_3v3";
-+		regulator-name = "vio33_tp1";
- 		regulator-min-microvolt = <3300000>;
- 		regulator-max-microvolt = <3300000>;
- 		gpio = <&pio 119 GPIO_ACTIVE_HIGH>;
- 		enable-active-high;
-+		vin-supply = <&reg_vsys>;
- 	};
- 
- 	usb_hub_fixed_3v3: regulator-6 {
- 		compatible = "regulator-fixed";
--		regulator-name = "usb_hub_3v3";
-+		regulator-name = "vhub_3v3";
- 		regulator-min-microvolt = <3300000>;
- 		regulator-max-microvolt = <3300000>;
- 		gpio = <&pio 112 GPIO_ACTIVE_HIGH>; /* HUB_3V3_EN */
- 		startup-delay-us = <10000>;
- 		enable-active-high;
-+		vin-supply = <&reg_vsys>;
- 	};
- 
--	usb_hub_reset_1v8: regulator-7 {
--		compatible = "regulator-fixed";
--		regulator-name = "usb_hub_reset";
--		regulator-min-microvolt = <1800000>;
--		regulator-max-microvolt = <1800000>;
--		gpio = <&pio 7 GPIO_ACTIVE_HIGH>; /* HUB_RESET */
--		vin-supply = <&usb_hub_fixed_3v3>;
--	};
--
--	usb_p0_vbus: regulator-8 {
-+	usb_p0_vbus: regulator-7 {
- 		compatible = "regulator-fixed";
--		regulator-name = "usb_p0_vbus";
-+		regulator-name = "vbus_p0";
- 		regulator-min-microvolt = <5000000>;
- 		regulator-max-microvolt = <5000000>;
- 		gpio = <&pio 84 GPIO_ACTIVE_HIGH>;
- 		enable-active-high;
-+		vin-supply = <&reg_vsys>;
- 	};
- 
--	usb_p1_vbus: regulator-9 {
-+	usb_p1_vbus: regulator-8 {
- 		compatible = "regulator-fixed";
--		regulator-name = "usb_p1_vbus";
-+		regulator-name = "vbus_p1";
- 		regulator-min-microvolt = <5000000>;
- 		regulator-max-microvolt = <5000000>;
- 		gpio = <&pio 87 GPIO_ACTIVE_HIGH>;
- 		enable-active-high;
-+		vin-supply = <&reg_vsys>;
- 	};
- 
--	usb_p2_vbus: regulator-10 {
-+	/* used by ssusb2 */
-+	usb_p2_vbus: regulator-9 {
- 		compatible = "regulator-fixed";
--		regulator-name = "usb_p2_vbus";
-+		regulator-name = "wifi_3v3";
- 		regulator-min-microvolt = <5000000>;
- 		regulator-max-microvolt = <5000000>;
- 		enable-active-high;
-@@ -308,22 +318,27 @@ &mt6359_vbbck_ldo_reg {
- };
- 
- &mt6359_vcn18_ldo_reg {
-+	regulator-name = "vcn18_pmu";
- 	regulator-always-on;
- };
- 
- &mt6359_vcn33_2_bt_ldo_reg {
-+	regulator-name = "vcn33_2_pmu";
- 	regulator-always-on;
- };
- 
- &mt6359_vcore_buck_reg {
-+	regulator-name = "dvdd_proc_l";
- 	regulator-always-on;
- };
- 
- &mt6359_vgpu11_buck_reg {
-+	regulator-name = "dvdd_core";
- 	regulator-always-on;
- };
- 
- &mt6359_vpa_buck_reg {
-+	regulator-name = "vpa_pmu";
- 	regulator-max-microvolt = <3100000>;
- };
- 
-@@ -337,14 +352,17 @@ &mt6359_vproc2_buck_reg {
- };
- 
- &mt6359_vpu_buck_reg {
-+	regulator-name = "dvdd_adsp";
- 	regulator-always-on;
- };
- 
- &mt6359_vrf12_ldo_reg {
-+	regulator-name = "va12_abb2_pmu";
- 	regulator-always-on;
- };
- 
- &mt6359_vsim1_ldo_reg {
-+	regulator-name = "vsim1_pmu";
- 	regulator-enable-ramp-delay = <480>;
- };
- 
-@@ -358,6 +376,7 @@ &mt6359_vsram_others_ldo_reg {
- };
- 
- &mt6359_vufs_ldo_reg {
-+	regulator-name = "vufs18_pmu";
- 	regulator-always-on;
- };
- 
-@@ -902,10 +921,10 @@ &xhci0 {
- &xhci1 {
- 	status = "okay";
- 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
--	vbus-supply = <&usb_hub_reset_1v8>;
- };
- 
- &xhci2 {
- 	status = "okay";
- 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
-+	vbus-supply = <&sdio_fixed_3v3>; /* wifi_3v3 */
- };
+Cheers,
+Angelo
+
+> Regards,
+> CK
+> 
+>>
+>>> If you does not test this with mt8195 external display path, maybe we could just drop the code about OVL adaptor with a TODO comment.
+>>>
+>>
+>> And yes, as I said, external display paths were tested on 8195, actually both
+>> on Kontron i1200 by Michael Walle and on MT8195 Tomato by myself.
+>>
+>> Thanks again,
+>> Angelo
+>>
+>>> Regards,
+>>> CK
+>>>
+>>>>
+>>>> Regards,
+>>>> Angelo
+>>>>
+>>>>> Regards,
+>>>>> CK
+>>>>>
+>>>>>> +			if (!ovl_adaptor_comp_added)
+>>>>>> +				ovl_adaptor_comp_added = true;
+>>>>>> +			else
+>>>>>> +				idx--;
+>>>>>> +		}
+>>>>>> +	} while (++idx < DDP_COMPONENT_DRM_ID_MAX);
+>>>>>> +
+>>>>>> +	/*
+>>>>>> +	 * The device component might not be enabled: in that case, don't
+>>>>>> +	 * check the last entry and just report that the device is missing.
+>>>>>> +	 */
+>>>>>> +	if (ret == -ENODEV)
+>>>>>> +		return ret;
+>>>>>> +
+>>>>>> +	/* If the last entry is not a final display output, the configuration is wrong */
+>>>>>> +	switch (temp_path[idx - 1]) {
+>>>>>> +	case DDP_COMPONENT_DP_INTF0:
+>>>>>> +	case DDP_COMPONENT_DP_INTF1:
+>>>>>> +	case DDP_COMPONENT_DPI0:
+>>>>>> +	case DDP_COMPONENT_DPI1:
+>>>>>> +	case DDP_COMPONENT_DSI0:
+>>>>>> +	case DDP_COMPONENT_DSI1:
+>>>>>> +	case DDP_COMPONENT_DSI2:
+>>>>>> +	case DDP_COMPONENT_DSI3:
+>>>>>> +		break;
+>>>>>> +	default:
+>>>>>> +		dev_err(dev, "Invalid display hw pipeline. Last component: %d (ret=%d)\n",
+>>>>>> +			temp_path[idx - 1], ret);
+>>>>>> +		return -EINVAL;
+>>>>>> +	}
+>>>>>> +
+>>>>>> +	final_ddp_path = devm_kmemdup(dev, temp_path, idx * sizeof(temp_path[0]), GFP_KERNEL);
+>>>>>> +	if (!final_ddp_path)
+>>>>>> +		return -ENOMEM;
+>>>>>> +
+>>>>>> +	dev_dbg(dev, "Display HW Pipeline built with %d components.\n", idx);
+>>>>>> +
+>>>>>> +	/* Pipeline built! */
+>>>>>> +	*out_path = final_ddp_path;
+>>>>>> +	*out_path_len = idx;
+>>>>>> +
+>>>>>> +	return 0;
+>>>>>> +}
+>>>>>> +
+>>>>
+>>>>
+>>>>
+>>
+>>
+
 -- 
-2.45.2
+AngeloGioacchino Del Regno
+Senior Software Engineer
+
+Collabora Ltd.
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
+Registered in England & Wales, no. 5513718
 
 
