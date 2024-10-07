@@ -4,85 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12582CFB448
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 15:38:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39D9ECFB446
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 15:42:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/BX+VbcYlbm0M/siPhF6PIc3XMMYf77ReOhn3qLkShA=; b=UXHVxT6FPggdDNelbd7hLBwGhx
-	vbfa3h//ulsMvQfSD+fQT8KdzAx06nTECQZmUIp0amZWme4EzOJmSryiUszXi6UuQGWnMv72ROM0t
-	inMaXWWovE2EnVlp9feefw5EbbzyStcjbs6tK9RCtx0sWSkK3P1eiTVBVnhJVU30NIlZ2i27t22fu
-	Of+5AbKMoPTjDvuQL70wkCzONI4ftrHLIGuTy1gBGUwL5Px311lJ8cMNiQZbLdNwExnkZaDmp/nH5
-	ya07TBaZvfpxv7O2p/Wkz2LSaa/Q2HaqJWTgIhcmXph2CqUZS6bYqa9J22oUPpFDhqmQ07x5voG3W
-	BiOn8Xrw==;
+	bh=tde9+HTtwvSdjyegqAc2pBuj8Xp3aZ588ljCLxtJGic=; b=dKA1XhDbnnMdvqVlQBDN6uRKNh
+	hn3PkQMO0dpdhM0K/FTbWMbvrGQpvY2yB6l3hVJSbpPg0ObIWvdO4VhhNlpKxKt9TdrkEdi77GYSb
+	y//yCGj3IeFVv61ilQP0bmXTqktyyOi4yzV2bQqNsi11/yz6QOCUdytB8H1xsb+iIVCNdjIBNvc1F
+	Rvy7fVkQhJQIeutv7TkV6TkDUP8S01pvORE5LXNTKCWAkbfVZfoBiIxR864fllKs7TT4qj6VOTI/Q
+	Dm1wmgbkgviIG2Gaf3ELke9hGIS9MTp4Xgl4LXWw5DaAvdfIqWmX9Z3n+zps47TFJ74tjUOcXX6bP
+	2fBzfvvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxpoQ-00000002yt2-0UjV;
-	Mon, 07 Oct 2024 15:38:18 +0000
-Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041])
+	id 1sxpsU-00000002zkp-15VL;
+	Mon, 07 Oct 2024 15:42:30 +0000
+Received: from mout.web.de ([217.72.192.78])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxpn6-00000002ygF-0QBO;
-	Mon, 07 Oct 2024 15:36:57 +0000
-Received: by mail-pj1-x1041.google.com with SMTP id 98e67ed59e1d1-2e109539aedso3809292a91.0;
-        Mon, 07 Oct 2024 08:36:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1728315414; x=1728920214; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=/BX+VbcYlbm0M/siPhF6PIc3XMMYf77ReOhn3qLkShA=;
-        b=jp/oGYUccPuecK7icIEUGa6ehqJxh59miMzO5ewEY+3YqctTwXFHYyrMeELVhPQ4WW
-         NMOLIF3I2hBdL10HOLDyViFk5DB0dZr6BwCXn42+qbSU5bUhJaq+oEpCXca7VHjbWN5k
-         pAREsvKQm6ncYdtHIJaO6TQwhqBNJE27QWWRabGybh6Olw/FH43slR8B2mftgpnTDksX
-         RDbMAuCfOTOP0g2KeGVBSooiUGOzLeFI/jsrA5Qvyv1kMBa2ZkedvCTJwkzHMAxF37wP
-         5U2eebzPkJc7VYetb8WgsbK+tDqIIsknR9kFKqSe1kUnbkeBtCYslhNxYBqu+CDWVLYv
-         goOQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728315414; x=1728920214;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=/BX+VbcYlbm0M/siPhF6PIc3XMMYf77ReOhn3qLkShA=;
-        b=LQaeOGIZy4YmEC821ZuNCJnc2xo8/Nma2YV+GbDVQ8Rkp3RCYtM61K3nQHlMNkUJzH
-         uoAG5NCwXVXQC2xLrhmvtvNj/N6a8Ux6XnuZTFBAj7LQocS36/L2RCXVuQjLoIaV7H0c
-         54tYsdehATAU51c3JMTDmHaQIPSmzTL7LpaENoe4Hq/pr1s8OBTui+zAtXJY09THCxt2
-         /9K0l62iJaVbenUPcq1557QIfx/9njWArgLaLlOYhTJ4hLfH63zhVc6JgUQYZpBE1V+b
-         dGrVr9+Vmg4eK/NyT9GOgYXyhGUdqye9BH7AvcaTm/WY2cdMrNuBrmOrgAq0Emis4pXP
-         dQBQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUp34baOODUk7KDSDWOJShT07YbsTPlXsqCnhJUjQQ+z8Awe0J9AoeFTCJRh8FjCvi/iR6DcWcglKTtghrVxFQ=@lists.infradead.org, AJvYcCX8fCE2eCFBxEmEvAbFCX/xSYEoFGI1aEtB0oh13T4J8K1OVP2X9wNfAhAhA1MsvbSN7jfzW2UKG9voN9CW7qA6@lists.infradead.org
-X-Gm-Message-State: AOJu0YxIihHXA0BDI5nj7jT2Gi2HricxncoEppOqMKjwGjt10OEHplTq
-	c2drjPJkks9QUe7Zaz8FsL9kP2AFuofWV17bYkH9amkoekcCviWnUddjSix+6tTUkbjauFrV915
-	g3iuCG5hg3Dn63nbab7I76lLiOaQ=
-X-Google-Smtp-Source: AGHT+IHED5KE17P2SIVe12eKhrSWZxRW4U7wLJ3evF8QAPobxP8FyVWs6VS9pgVnIUZ12Cr6PlEXIKLWhUvvhFYajLE=
-X-Received: by 2002:a17:90b:102:b0:2c9:7611:e15d with SMTP id
- 98e67ed59e1d1-2e1e629fa8cmr15909999a91.20.1728315414372; Mon, 07 Oct 2024
- 08:36:54 -0700 (PDT)
+	id 1sxprA-00000002zWL-3fDn;
+	Mon, 07 Oct 2024 15:41:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1728315653; x=1728920453; i=markus.elfring@web.de;
+	bh=tde9+HTtwvSdjyegqAc2pBuj8Xp3aZ588ljCLxtJGic=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
+	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
+	 cc:content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=q5Sq3COyuSf/1JH97wnrgaIuQ3reunJaZXWZmgVqH3S4bc1gzfXC1bXmCX0lRPZK
+	 MohSHiT6Bdr9qEsk2PM6O1gZqD9rnqd+e//uYO9xZ4GmLXXcR6gWl8OwqWdvAoY3+
+	 8TG7qKE/wkuby1eu63mCXt7MDg+vGZ4FCXadUmF/uCBxSdiKGblgH4Hxdh4KJHhUH
+	 cxY5LdaysWk0KuX2IZ4m/HzB83zjBAAwZiZVeR+5dUomrUUly3khG1gzv8aBq1CQb
+	 Rie09a8IG5pQL2HPE/H9GYTFc/Zm7IWgjB648sn8Uyn0AQmNlrn0o0I92Jep9ct4Y
+	 EvUZpid7Dbs0snx9sg==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.21] ([94.31.81.95]) by smtp.web.de (mrweb106
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1Mc1VF-1tZ6sc2ymF-00aZDj; Mon, 07
+ Oct 2024 17:40:53 +0200
+Message-ID: <caab097f-2522-4c07-9d05-ffa2acd4f157@web.de>
+Date: Mon, 7 Oct 2024 17:40:51 +0200
 MIME-Version: 1.0
-References: <20241003180959.12158-1-zichenxie0106@gmail.com> <e116a42e-877e-439e-a83d-1afbaf35748b@gmail.com>
-In-Reply-To: <e116a42e-877e-439e-a83d-1afbaf35748b@gmail.com>
-From: Zichen Xie <zichenxie0106@gmail.com>
-Date: Mon, 7 Oct 2024 10:36:44 -0500
-Message-ID: <CANdh5G4mnj-N1gV=O=OiFFrZYFP+nzjte2dZTCAobzBHxSdhpA@mail.gmail.com>
-Subject: Re: [PATCH v5] wifi: mt76: Fix NULL Dereference caused by mt76_connac_get_he_phy_cap()
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com, 
-	shayne.chen@mediatek.com, sean.wang@mediatek.com, kvalo@kernel.org, 
-	angelogioacchino.delregno@collabora.com, johannes.berg@intel.com, 
-	quic_adisi@quicinc.com, deren.wu@mediatek.com, chui-hao.chiu@mediatek.com, 
-	mingyen.hsieh@mediatek.com, howard-yh.hsu@mediatek.com, 
-	StanleyYP.Wang@mediatek.com, allen.ye@mediatek.com, 
-	benjamin-jw.lin@mediatek.com, Bo.Jiao@mediatek.com, evelyn.tsai@mediatek.com, 
-	meichia.chiu@mediatek.com, krzk@kernel.org, linux-wireless@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	chenyuan0y@gmail.com, zzjas98@gmail.com
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ dri-devel@lists.freedesktop.org, Adam Thiede <me@adamthiede.com>,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Yassine Oudjana <yassine.oudjana@gmail.com>
+Cc: LKML <linux-kernel@vger.kernel.org>,
+ Alper Nebi Yasak <alpernebiyasak@gmail.com>,
+ =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
+ Nancy Lin <nancy.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>
+References: <20241007070101.23263-5-jason-jh.lin@mediatek.com>
+Subject: Re: [PATCH v9 4/5] drm/mediatek: ovl: Add blend_modes to driver data
+Content-Language: en-GB
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <20241007070101.23263-5-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:xhaVx5v7PosVmZn5lfsVejKxm77d78UE8Dwj1ZHJMNzfubbc9hc
+ nOMDtulMu4vq4tw/LAOTukfsSPVPLLOLPZqM3P3udTJIHJdl6aiEcZsvibqdJvqpg3WvuXl
+ U2xDR+GtEQa8tpUhbvJQj4ppHPNP8+4o/NQZa4kSx24ZpA0n8V/I5nDPj/8Y4iFGXiN9W+i
+ YSKD4lwcvpemBctWU0tYg==
+UI-OutboundReport: notjunk:1;M01:P0:i6vWuXQBUIU=;8wJPZmm+YsQAcUeXc+eYb4/8UrW
+ mdoNJ5PMI8upFkOyQItiezXpSAGoHVOlOK3MpX3eXIulgTlc4zuur4F/alJYjKtk0tSE611Rg
+ 9KNU8T4MiErNjW3/3ag5oyul0u3C81SR6mP362eQzIKP7Xj8h5kah2GdQFTr5w9KayiWWhISa
+ y9A8Y/q/2eMvwvVSGP3OzAKsddqrDlN4KCdfXiyWYXrkFplAwan6Cwwo0VdqxZ483Z1ODfrmN
+ 3JPLgGJOG/pOM73xm6LOFQpdLGfGSBo/eNCWxibra6/MH24Xhuvwns8pKr6r0QI0627A+J+3Y
+ tnd9g2cp3BmXu9fJtdAKC9fTBE8hg2cXKhmhDKgGgl91ekjhu5o5r1ptUkFUdeiSTgteMRFXu
+ C0qHtZ6mKeqi5/OFmckJGmP3+aam/ANOkAdcMwoCWswpeSxxq2OlIi4gxrjWdD96ATmrH9kgr
+ 2GYutXrcTPSoA2BSQLIBxVqhQGI4e45BXBsnngBJ86PKgAEcxWzJb1RXB8QvgDDGPittqaaEi
+ qyDnIASjLIwfM8oNbaHFbYQ/myCerrwXaaoCkajWhA1rjJfpOO4NeA/lTLPPRRo/X3vGUMWFg
+ Ft9xNG56sIgu0EVgTu0/71JNH8kG4/AJ6L3SbLXpGX15DZJ6vkU3XQ+XS5wfKS8eWpoXK9KRz
+ J6K6rwUkUu11sbVfDkQMoi0R1Z3ddpzqgjWO6sOiZJdid57AGnADfkmeHikXvJwN24LygyIU6
+ iWSM+bV7Lkm335H5XDKxh0WUCPkD+uwWW5KTguhdx3WFVF5a+jC5wM9iz1E2inrPADQxjFh4x
+ rzqZi8jx1Pzox33zD5aIqA9Q==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_083656_163586_7F5636E2 
-X-CRM114-Status: GOOD (  16.79  )
+X-CRM114-CacheID: sfid-20241007_084109_211252_41A3FADF 
+X-CRM114-Status: UNSURE (   2.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,106 +100,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-IMHO, using operator "&" for a NULL dereferenced pointer won't cause a
-crash. 've' will only be assigned to a invalid address.
+=E2=80=A6
+> premultiplied supported in current platform.
+=E2=80=A6
 
-So we can put off the NULL check after
-'const struct ieee80211_he_cap_elem *ve =3D &vc->he_cap_elem;'
+                format would be?
 
-Best Regards,
-Zichen
 
-On Mon, Oct 7, 2024 at 9:23=E2=80=AFAM Matthias Brugger <matthias.bgg@gmail=
-.com> wrote:
->
->
->
-> On 03/10/2024 20:09, Gax-c wrote:
-> > From: Zichen Xie <zichenxie0106@gmail.com>
-> >
-> > mt76_connac_get_he_phy_cap() may return a NULL pointer,
-> > leading to NULL Pointer Dereference.
-> > Add a NULL check for the returned pointer.
-> >
-> > Fixes: a5c372f77aa7 ("wifi: mt76: mt7925: extend mt7925_mcu_bss_he_tlv =
-for per-link BSS")
-> > Fixes: e6d557a78b60 ("mt76: mt7915: rely on mt76_connac_get_phy utiliti=
-es")
-> > Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi=
- 7 (802.11be) devices")
-> > Signed-off-by: Zichen Xie <zichenxie0106@gmail.com>
-> > ---
-> >   drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 5 +++++
-> >   drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 2 ++
-> >   drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 2 ++
-> >   3 files changed, 9 insertions(+)
-> >
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/=
-net/wireless/mediatek/mt76/mt7915/mcu.c
-> > index 87d0dd040001..762be3a37228 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-> > @@ -551,6 +551,8 @@ mt7915_mcu_bss_he_tlv(struct sk_buff *skb, struct i=
-eee80211_vif *vif,
-> >       struct tlv *tlv;
-> >
-> >       cap =3D mt76_connac_get_he_phy_cap(phy->mt76, vif);
-> > +     if (!cap)
-> > +             return;
-> >
-> >       tlv =3D mt76_connac_mcu_add_tlv(skb, BSS_INFO_HE_BASIC, sizeof(*h=
-e));
-> >
-> > @@ -1145,6 +1147,9 @@ mt7915_mcu_sta_bfer_he(struct ieee80211_sta *sta,=
- struct ieee80211_vif *vif,
-> >       u8 nss_mcs =3D mt7915_mcu_get_sta_nss(mcs_map);
-> >       u8 snd_dim, sts;
-> >
-> > +     if (!vc)
-> > +             return;
-> > +
->
-> That will already blow up at line:
->          const struct ieee80211_he_cap_elem *ve =3D &vc->he_cap_elem;
->
-> This needs some more code changes.
->
-> Regards,
-> Matthias
->
-> >       bf->tx_mode =3D MT_PHY_TYPE_HE_SU;
-> >
-> >       mt7915_mcu_sta_sounding_rate(bf);
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/=
-net/wireless/mediatek/mt76/mt7925/mcu.c
-> > index 748ea6adbc6b..55e4cda2f20f 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-> > @@ -2508,6 +2508,8 @@ mt7925_mcu_bss_he_tlv(struct sk_buff *skb, struct=
- ieee80211_bss_conf *link_conf,
-> >       struct tlv *tlv;
-> >
-> >       cap =3D mt76_connac_get_he_phy_cap(phy->mt76, link_conf->vif);
-> > +     if (!cap)
-> > +             return;
-> >
-> >       tlv =3D mt76_connac_mcu_add_tlv(skb, UNI_BSS_INFO_HE_BASIC, sizeo=
-f(*he));
-> >
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/=
-net/wireless/mediatek/mt76/mt7996/mcu.c
-> > index 6c445a9dbc03..55bb2d0e67e5 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-> > @@ -798,6 +798,8 @@ mt7996_mcu_bss_he_tlv(struct sk_buff *skb, struct i=
-eee80211_vif *vif,
-> >       struct tlv *tlv;
-> >
-> >       cap =3D mt76_connac_get_he_phy_cap(phy->mt76, vif);
-> > +     if (!cap)
-> > +             return;
-> >
-> >       tlv =3D mt7996_mcu_add_uni_tlv(skb, UNI_BSS_INFO_HE_BASIC, sizeof=
-(*he));
-> >
+Regards,
+Markus
 
