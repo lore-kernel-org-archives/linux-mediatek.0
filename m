@@ -4,80 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B5F4CFB43F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 14:14:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B1A7CFB441
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 14:20:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8hWKSlLN+vsj3tUUn13M+s2s4IGGCFQ0f1niVzL4iyE=; b=tJYy/k/lbQcGe/ugWu73ufnD9V
-	UOrginD4n0iSgx2AjtSMayf2WjJ5KoFviji59BGCIxeOFQoKRw+Nk55U10hJYCKzKZKhARYCAlmLm
-	UWIJJA1ibgbWbiVCVJcUcFvWDjCGwGk2fDGJaaR/BfVk/KrfX0qWx66tzpsmHhc5rN5AVDQl2OWmi
-	PKwDGLR/NeQ1LNES5Dw4+hh5wUbNxEbmIYyALa2DHfYSOHY4YS2xf9vqj8SslmJgSRxfUPVq6AWio
-	tnkUd1yZm7Gn4dDOpTzrUwOMzG3ZAWQXLzQohwSPFBEOUZUJ6zF9Ll2hEQ9hgcUggCdZKArS+V86N
-	1NztXbtw==;
+	bh=Zb7wAIefetmyULqsThbIXGhjEAFrVWLHkT3y0uI9AEM=; b=P/mp7qZ1eJd9eXDifXt8Aro8Ne
+	zQR6p0400O4/2hMATx0VtIGKcwzE0LPYggx3rySyYkY2gEjYtMLUSNYKqbrNqCcWkF4VGIYUiKt84
+	8QkXQDyOVT/9y4OBSuEKn23eqKHAGHYS8MaGaa5+KQ7YP24nu+fe50ml1AeqNnk57NwAO3+tfN5ti
+	EM27BnUUogcyJbR2saGFi37F0TkSw3hs1308qJc8AghAeRcP5H+PCytK+gW6bM/MBfFKgUXOooUHD
+	XqqxAto5PcfOjr0YKZLayn9oQNDhKUUhn9ARKqvgoDhgrz+BkruNULq6VS111Pr2LIvjNsO2oXC7w
+	eNSbuwnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxoVK-00000002fES-2kUk;
-	Mon, 07 Oct 2024 14:14:30 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1sxoak-00000002ggo-1J6R;
+	Mon, 07 Oct 2024 14:20:06 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxoO2-00000002d8U-3hS9;
-	Mon, 07 Oct 2024 14:07:00 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-42cae6bb895so46030815e9.1;
-        Mon, 07 Oct 2024 07:06:58 -0700 (PDT)
+	id 1sxoPu-00000002dTF-2SmC;
+	Mon, 07 Oct 2024 14:08:56 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-53959a88668so5453806e87.2;
+        Mon, 07 Oct 2024 07:08:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1728310017; x=1728914817; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1728310132; x=1728914932; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=8hWKSlLN+vsj3tUUn13M+s2s4IGGCFQ0f1niVzL4iyE=;
-        b=mnHjglHkNUUEHA8kXXGJW8gs6Ty7HDhSfci8trBdf4R/Qe8Uf7HjhVUg82JGCKWKqG
-         8b85ba25VcwWY/jC9TYC71VPqB4ZdzSUjbYGlQ4lRcnf7+W5WerGtEu8xsB9wqm12XJn
-         PAs3ia5xwKO9UHL8VtRgjyg7TvLDd9ej4ILWjlk2YHZFomzqwve+B1BWViuwW+PYEk8H
-         nnJ7W8oKLOFeiVzjXZoPr8J2FqiRU/zqbnxSV9YDefah3Oktb4Sbyp+mOI4s9adD31EY
-         ElOt+euhMyajK/9c5s2thWcK+SWFvaEQmNiMZM2uPf898XC4crfy/totp4aDeYkI4Ope
-         XvIg==
+        bh=Zb7wAIefetmyULqsThbIXGhjEAFrVWLHkT3y0uI9AEM=;
+        b=kdmvTlcGG3+VWDnHK7rTE09JgKa7e2GM+submEa4frSCR7jrluEmc3mFYtW5pyWZ7f
+         pnH9vTr1YbeIFPXqOXHUB/L0XlS0Sct6p8x2pSYaSW+VE7WL9ZVxtOMAu9sbGsiTevIs
+         4O7S9JQlRdDBCjHQDpex2pMg94vtt1oCxt9KfjHcyiROsWAKR/wpN6B11obSFDb5/9xC
+         euu+CbYH0NTk0fWwbkLURSoAQ2rUwYb14QQIL2TCngw+caXOVkg+aiZhXNoVqDLsRSji
+         I1R108UdB9SeiQw1twO6Bneullagi29/4Now0HQCsoUMrdnFmtzupdaGRg3NCNxgj2Wn
+         PCnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728310017; x=1728914817;
+        d=1e100.net; s=20230601; t=1728310132; x=1728914932;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=8hWKSlLN+vsj3tUUn13M+s2s4IGGCFQ0f1niVzL4iyE=;
-        b=rnG6s/V3IQmtALKEsBI0HvgNSzZrzNwnHQN5vr6AnvrzeekO2RDhrX4uslK7LnfTpL
-         B1f1Jtqipk9HpziHFBnQmkf06IRW4uOYDnGqI/TQRBUAWYOHDCYY9EKK2d3CRMpsqebp
-         aaXvFWO2Z2XI3xVRODujaXH4rbyWDJJDE25e1vQmmpvOhGOhNabBxqFlqwl17m9IVthL
-         51R9YkEFKRdcfGkBmHXvH312N9f8PWCv1YRO0Yb4a09GGRm9tWs2bvNMwH0jkoIYRiiZ
-         BXBSYpDKPMdMftUlvFXQzG2IYqzamW3QtlYJnuzpuJGZ7R24m1rcFFSwqSZdMphRkwcy
-         DMyw==
-X-Forwarded-Encrypted: i=1; AJvYcCXCDwkz6dVzO0Fi/tNa6ECXQ0JjH5076uM1OlCreRf6ZxQEmpfm3g1MQOxUjUR1oTPTs1DPaZXif0jcIJL3W7pf@lists.infradead.org, AJvYcCXDVFFELpev++x/AVMiGEcUPbUFyfe9FWUOx2y8UR8BJ500rFcKzZNkiVIbL2XS9Fv1KN950b4TsWwS1cXwzMA=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyGl8+tdnsjS8DxDZEwvNBkb/Dt0DChg1E0SCvdvrCOvmuk9BJt
-	zBudMa1Jvi4DKnUkthdcVRfnXXbP6yIuCxezZxr+Vmlpuk9pYBf5
-X-Google-Smtp-Source: AGHT+IG58jm7bgwH+mDspVRG9n3ZFKjtVsLB8evH6+znZi6hMLtB2++cSjr+HfWHycvINCijQghuYw==
-X-Received: by 2002:a05:6000:dc6:b0:368:445e:91cc with SMTP id ffacd0b85a97d-37d0e74c802mr7260686f8f.21.1728310016473;
-        Mon, 07 Oct 2024 07:06:56 -0700 (PDT)
+        bh=Zb7wAIefetmyULqsThbIXGhjEAFrVWLHkT3y0uI9AEM=;
+        b=OsNZrzUknPyH/y6wnClbea5scQOkApdAXSUy2BxCqN27OrjF9XoTsrl4t3gyTMDbFW
+         6JlQtFD5XKh1Gqwjm7WabhMVum04QcArnSHSsrtX0OSpzi9ZLrOndNUDx87h6NQCBbQS
+         amw4Vg55iuLV/HsEKBDI8MYfuN5PXw1Ga06K3f1dvjPgkEvGUiExebmVaHhXrE1wvmdy
+         QyFYym+/DzAj3bib0H0R0ZrEWi8UesZE8MvUPKquootHmXaywFYuo6MRdSaCAWW3CzOI
+         n3t9TOPoOyzxxi9IxFl7oni36W7e8UTqDwxXG3r4gcVl1K29H87SO1QPQnvrJwQE4Myl
+         +uog==
+X-Forwarded-Encrypted: i=1; AJvYcCVEAF65Vsqf+5q6MGysIrABuVjg7kHHlT8lSbBjjSD7jYRzJIu+uNOwX6hM9osLAVbVImIJle6bKGKyN/UV8yIn@lists.infradead.org, AJvYcCVzGCePiXsL6EitvWt7gx+F89J95gabNZPTVjzok0ElrS/qplMnwCvrZkBuHldCVoUnM5cfdxdDDe3PIiLd2MU=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxXrRcneq7kfgkKdsD5YGyPo4DfecFHgsFkbl7fbwH+5RKQWaKY
+	7BHhp9GnPnr+HKNKT6gDs99l9yssG/2tx5PQUaaAUGjP/53/Q4IV
+X-Google-Smtp-Source: AGHT+IHaCEe4z3YIDSbWblPPM6gMGIDCD//Oy46/0gPja7JeJVxRCUO3xT6psfC7QbYmDi2s6H5LYw==
+X-Received: by 2002:ac2:4c49:0:b0:539:947e:18a9 with SMTP id 2adb3069b0e04-539ab9e175bmr5803485e87.43.1728310131924;
+        Mon, 07 Oct 2024 07:08:51 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.162.240])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37d1691a48asm5780497f8f.32.2024.10.07.07.06.54
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37d1696f921sm5825596f8f.91.2024.10.07.07.08.50
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 07 Oct 2024 07:06:55 -0700 (PDT)
-Message-ID: <d9565233-090b-4931-9e9f-89725db605e3@gmail.com>
-Date: Mon, 7 Oct 2024 16:06:53 +0200
+        Mon, 07 Oct 2024 07:08:50 -0700 (PDT)
+Message-ID: <27719ca0-7794-44db-b8dd-9a31c726ee6d@gmail.com>
+Date: Mon, 7 Oct 2024 16:08:48 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] ARM: dts: mediatek: mt7623: fix efuse fallback
- compatible
-To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8390-genio-700-evk: enable pcie
+To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-References: <20240617094634.23173-1-zajec5@gmail.com>
- <20240617094634.23173-2-zajec5@gmail.com>
+ Jieyy Yang <jieyy.yang@mediatek.com>, Jian Yang <jian.yang@mediatek.com>,
+ Jianguo Zhang <jianguo.zhang@mediatek.com>,
+ Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+ Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>,
+ Chris-qj chen <chris-qj.chen@mediatek.com>,
+ MediaTek Chromebook Upstream
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ Chen-Yu Tsai <wenst@chromium.org>
+References: <20241007100749.6657-1-macpaul.lin@mediatek.com>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -123,12 +129,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20240617094634.23173-2-zajec5@gmail.com>
+In-Reply-To: <20241007100749.6657-1-macpaul.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_070658_946975_3EA2C5DA 
-X-CRM114-Status: GOOD (  14.05  )
+X-CRM114-CacheID: sfid-20241007_070854_677938_E48CDAD7 
+X-CRM114-Status: GOOD (  14.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,44 +151,57 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 17/06/2024 11:46, Rafał Miłecki wrote:
-> From: Rafał Miłecki <rafal@milecki.pl>
+On 07/10/2024 12:07, Macpaul Lin wrote:
+> Enable PCIE, PCIEPHY and related Pinctrls for mt8390-genio-700-evk
+> board.
 > 
-> Fix following validation error:
-> arch/arm/boot/dts/mediatek/mt7623a-rfb-emmc.dtb: efuse@10206000: compatible: 'oneOf' conditional failed, one must be fixed:
->          ['mediatek,mt7623-efuse', 'mediatek,mt8173-efuse'] is too long
->          'mediatek,mt8173-efuse' was expected
->          'mediatek,efuse' was expected
->          from schema $id: http://devicetree.org/schemas/nvmem/mediatek,efuse.yaml#
-> arch/arm/boot/dts/mediatek/mt7623a-rfb-emmc.dtb: efuse@10206000: Unevaluated properties are not allowed ('compatible' was unexpected)
->          from schema $id: http://devicetree.org/schemas/nvmem/mediatek,efuse.yaml#
-> 
-> Fixes: 43c7a91b4b3a ("arm: dts: mt7623: add efuse nodes to the mt7623.dtsi file")
-> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
 > ---
->   arch/arm/boot/dts/mediatek/mt7623.dtsi | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   .../dts/mediatek/mt8390-genio-700-evk.dts     | 19 +++++++++++++++++++
+>   1 file changed, 19 insertions(+)
 > 
-> diff --git a/arch/arm/boot/dts/mediatek/mt7623.dtsi b/arch/arm/boot/dts/mediatek/mt7623.dtsi
-> index 9c5a52ce9351..748f9b366897 100644
-> --- a/arch/arm/boot/dts/mediatek/mt7623.dtsi
-> +++ b/arch/arm/boot/dts/mediatek/mt7623.dtsi
-> @@ -328,7 +328,7 @@ sysirq: interrupt-controller@10200100 {
+> Changes for v1:
+>   - This patch depends on the pcie patch of mt8188.dtsi
+>     [1] https://lore.kernel.org/all/20241004081218.55962-3-fshao@chromium.org/
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
+> index 3e77f59f2c74..bb68665f0b2d 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
+> @@ -393,6 +393,16 @@ &mt6359codec {
+>   	mediatek,mic-type-1 = <3>; /* DCC */
+>   };
 >   
->   	efuse: efuse@10206000 {
->   		compatible = "mediatek,mt7623-efuse",
-> -			     "mediatek,mt8173-efuse";
-> +			     "mediatek,efuse";
-
-Angelo stated that we should move away from generic fallbacks. Although the 
-binding states explicitly to use "mediatek,efuse" and deprecates the standalone 
-"mediate,mt8173-efuse", which could the default fallback. Angelo, what do you 
-think, take it or re-doing the binding first?
-
-Regards,
-Matthias
-
->   		reg = <0 0x10206000 0 0x1000>;
->   		#address-cells = <1>;
->   		#size-cells = <1>;
+> +&pcie {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&pcie_pins_default>;
+> +	status = "okay";
+> +};
+> +
+> +&pciephy {
+> +	status = "okay";
+> +};
+> +
+>   &pio {
+>   	audio_default_pins: audio-default-pins {
+>   		pins-cmd-dat {
+> @@ -758,6 +768,15 @@ pins-rst {
+>   		};
+>   	};
+>   
+> +	pcie_pins_default: pcie-default {
+> +		mux {
+> +			pinmux = <PINMUX_GPIO47__FUNC_I1_WAKEN>,
+> +				 <PINMUX_GPIO48__FUNC_O_PERSTN>,
+> +				 <PINMUX_GPIO49__FUNC_B1_CLKREQN>;
+> +			bias-pull-up;
+> +		};
+> +	};
+> +
+>   	rt1715_int_pins: rt1715-int-pins {
+>   		pins_cmd0_dat {
+>   			pinmux = <PINMUX_GPIO12__FUNC_B_GPIO12>;
 
