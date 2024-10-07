@@ -4,87 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF638CFB441
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 11:37:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BCE0CFB43F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 13:21:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NAdvvRci/qH4SyInWfc5eb3BE9V/ablTONBTVmrRJpI=; b=oj2t6xZOeGmbNzxp7eT3ASy26r
-	T7YirHS3DOzp967QUT+nkZJReEdLlEaxwYj60qMi+oOTkVNstBNAcZqXPo/0rFBO8No+NsVUXOdz0
-	mo73OGsC9aAxh1UrWr57jaD+ssbKN9r/2iaYmEksBdo6J12t5iPCmbaY0C0wCkOCTH8F63fomNFzb
-	nG6gG3vKfdHdkLeEjP+Ckq+HWjKYjlOv2U6oH8SaUhKORCaewaQje+BMVJhpXpTcUFx6X6i6a8LhK
-	ouuZayr9Avr4pksj4i4Xaqiy02uN8NTiQN8kkIGKYMQDQw4nsf3DXqmgb5i7+OOxzkf8bjHXl8IZT
-	BtsiRLTA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9AUrARcn8p6Bu/y9sftMEvfU8DX72hnzGfPHJbkJ2Hs=; b=vgiu06WrEQFGVpk7jY4Tg5+gZq
+	NphMnzf3+lWdgV7dHdK7tz2Azb1hcDUnkWPYwH0Ou33tDCDxNGfZ0MzmKdejxwifg4VZBNIjPNRhc
+	fHXsFl7SLj5RnCExmEkuirIe4zl627NPwHanai0mlRdNU6IzyZK3lMKKk2fjc2Y3p01iN9mKPFrnq
+	wphzDHu9rPCYpl6b9GNrsArEWg5ERpDqA8rUce4tbjdbY6zkZBoeT5IaM8h4eYT+NA6EAr4aicR1t
+	MGGuHo8tQ/AA3vfC3T8SzchLo0NuoqzNvnPq9uCVtfWrA0sPuTri3Zl6R7SH7AwtHkdAKYsPvdTdC
+	ZJZo/WMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxm3Y-00000002CLk-2tTO;
-	Mon, 07 Oct 2024 11:37:40 +0000
-Received: from mout.web.de ([217.72.192.78])
+	id 1sxnfq-00000002UJ2-2YcF;
+	Mon, 07 Oct 2024 13:21:18 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxm3G-00000002CGl-0o9X;
-	Mon, 07 Oct 2024 11:37:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1728301024; x=1728905824; i=markus.elfring@web.de;
-	bh=NAdvvRci/qH4SyInWfc5eb3BE9V/ablTONBTVmrRJpI=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
-	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
-	 cc:content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=MZM5fjg3r3b+Qfx69A56uNXYK5YgB1UvO5CZ+KxNBJF2ng/w43pcbmIhvm0cwGT4
-	 OsCXF63Ohax1Vt4gefZQzDSpW1mS36r1JQJGulmM8W98RZkPVNSZYNTma5wi2Yo7b
-	 GSJRNvIkeLVHdC2C8pPVYPwTI5ydQsJ+t+ljJwYYF3k+StDwX10ycnAHk6jClqaar
-	 WjIXYw4MVxloCrN0bDYraX3mRuACbgsoVKZXonZhDLARuqTh0C+3oeEIMPwpfeLmJ
-	 p5LHzya0AiC2Yj59IWTQB+Vi/nNyv2ppaRikFS5xG35AvvkSxafWA2SY4FVkETBcF
-	 aWZBIkHIEKqfAmbXbw==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.81.95]) by smtp.web.de (mrweb105
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1MDv9a-1t7hgB3sMG-00BYNo; Mon, 07
- Oct 2024 13:37:03 +0200
-Message-ID: <81ce44fa-a972-44bd-ae80-6144a8ac4c2f@web.de>
-Date: Mon, 7 Oct 2024 13:36:56 +0200
+	id 1sxnCD-00000002PZJ-2ldr;
+	Mon, 07 Oct 2024 12:50:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=9AUrARcn8p6Bu/y9sftMEvfU8DX72hnzGfPHJbkJ2Hs=; b=zAwhPfL1bdg6M2CC7uA2PI9pjW
+	2utS/URZj81kVRJl01CClUKFBSySBcVYE+IVP77u5/e4zLHUPV2s0ndSUzeZzoEaAAQEzQAP9qk1E
+	L5Ugt92TlofY3Rn5rchVv9a5NRihLUhFbn1rKc5l0gdkNUOsaSP6frSZIazyeV2dXs0Q=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1sxnC8-009GFh-Bk; Mon, 07 Oct 2024 14:50:36 +0200
+Date: Mon, 7 Oct 2024 14:50:36 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: SkyLake Huang =?utf-8?B?KOm7g+WVn+a+pCk=?= <SkyLake.Huang@mediatek.com>
+Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+	"kuba@kernel.org" <kuba@kernel.org>,
+	"pabeni@redhat.com" <pabeni@redhat.com>,
+	"edumazet@google.com" <edumazet@google.com>,
+	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+	"dqfext@gmail.com" <dqfext@gmail.com>,
+	Steven Liu =?utf-8?B?KOWKieS6uuixqik=?= <steven.liu@mediatek.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"davem@davemloft.net" <davem@davemloft.net>,
+	"hkallweit1@gmail.com" <hkallweit1@gmail.com>,
+	"daniel@makrotopia.org" <daniel@makrotopia.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH net-next 3/9] net: phy: mediatek: Move LED helper
+ functions into mtk phy lib
+Message-ID: <de510d94-2f30-4418-a21a-76e8139e583f@lunn.ch>
+References: <20241004102413.5838-1-SkyLake.Huang@mediatek.com>
+ <20241004102413.5838-4-SkyLake.Huang@mediatek.com>
+ <afd441fc-7712-4905-83e2-e35e613df64a@lunn.ch>
+ <3f1c73ec57aefa2803df0c32c78dcdc41fed4126.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Hsiao Chien Sung <shawn.sung@mediatek.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- dri-devel@lists.freedesktop.org,
- Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Bibby Hsieh <bibby.hsieh@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Daniel Kurtz
- <djkurtz@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@gmail.com>, Mao Huang <littlecvr@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Nancy Lin
- <nancy.lin@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: LKML <linux-kernel@vger.kernel.org>, YT Shen <yt.shen@mediatek.com>
-References: <20240620-igt-v3-4-a9d62d2e2c7e@mediatek.com>
-Subject: Re: [PATCH v3 04/14] drm/mediatek: Fix XRGB setting error in Mixer
-Content-Language: en-GB
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <20240620-igt-v3-4-a9d62d2e2c7e@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:NUFwNhkscOyDyELqWmI3FAG77svFnNMD9qcpFN+Jv7FYNoq4/il
- Lqkd5arsarOez0n1pZ/3F+SeTSVUjoo6y6MVY+1gBB5CdVnyRKuwDBHo4CQugSvZpaiwI7k
- VYsfKaqBau1PVZH4BWksV9WC2wMEk7JtFHGCUObnqhltQAVSWoa31uEfmkX9m6nlwQuxSV+
- 3UK0k+pqVdsKGA202IYLg==
-UI-OutboundReport: notjunk:1;M01:P0:eoxNj23SWsQ=;o3VmP1ZFXqYQVJFwAVVnskPmFD3
- FarkdV6GJwpSGCaLmZm3vu2EJblANfNpqOD7eXB6V7XX+v6xlHXTLdHpHvFAPIn0uMESmyUcp
- FRQ8fEi69mfLJ/IXR1nw0MwoHYhX1kCtenYg4J/2zjdcetn4ptS9MEIWBuM4xJCdGt/kmv4Un
- /hmp0gMXcCA0MSM+FRxes+HmsJZVAFPPRJdGYw5Mn61Si9TurMnqNDYWowQpwq2K4qFYd9ZoQ
- aX/GSI0YwoqM2/e+klENOn96uSkzTKguV5Ob422AG5+A930Aim0R8Evuv5tRAWsjP8xuf/QqS
- ziG3JETK+v+ny1t1qVetJWw/ZySO+epUYcT1fGMHyH+msWbNHgwnAyf9K+0uIFQgwQG9V75tf
- 1FjWC4MSU3rylvpCUQb1ntrpdJe4D1ZVN9BRXJ8JfCvMUlRVlewOVW370+GqNow4JF2xYR6tm
- 0qK3V9V0ok/ma8PPjHfslD5Vv2qBMTt93tuR9p0u5Y88c9mwBwiFS1S06Jeb6koHIcZg2a+Hs
- 3X/itD/WtHAeHcVp2I1D4ClCH5AW3yH1huFYWR+pBjZ1qFB7D7b3sE4fYK9IstdKYiVW2uLKP
- U4nnjzMFpHT0uZZq8A7C+xni5CyLKz6eTWKlB/kyIb++H5B3c4nLgxLsxlgKntcgoyNHzMNfo
- fJsEwBr5b8Y7SOlJFzK83QLS+t/FM4W59GhJPyy0bFtt4hjx/4ZVXhr3lywy487KOe3xDj3AC
- MloT8TOcpaCcvQcD/x/EIsf2ud8mcMEKRs4qqrWrB0RXgHj5ntiae8dW8/povxGcI9SXaU+Zu
- mESKha9BOBE/RPYSX9opQUsg==
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <3f1c73ec57aefa2803df0c32c78dcdc41fed4126.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_043722_545353_0D7923AA 
-X-CRM114-Status: UNSURE (   4.65  )
+X-CRM114-CacheID: sfid-20241007_055041_908552_777C7C88 
+X-CRM114-Status: UNSURE (   8.34  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,17 +84,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Although the alpha channel in XRGB formats can be ignored, ALPHA_CON
-> must be configured accordingly when using XRGB formats or it will still
-> affects CRC generation.
+> Although this is just "moving code", we need this priv to do some
+> modification for mt798x_phy_hw_led_blink_set() so that we can move it
+> to mtk-phy-lib properly.
 
-  affect?
+The helper is passed phydev, so it is not clear to me why the helper
+cannot do:
 
+struct mtk_socphy_priv *priv = phydev->priv;
 
-Can such a change description become a bit nicer with an additional
-imperative wording?
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/process/submitting-patches.rst?h=v6.12-rc2#n94
+same as the old code. Maybe you want a patch first which renames
+mtk_socphy_priv to mtk_phy_priv, just to keep with the naming?
 
-Regards,
-Markus
+Or do you see the need for different PHYs to need different priv
+structures?
+
+	Andrew
 
