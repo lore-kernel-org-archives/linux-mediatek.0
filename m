@@ -4,90 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FAC2CFB43F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 08:39:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A737CFB441
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 09:04:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UtqXSW0/Q2zac9n3oW8JsHdhJ8qh8TUEmTMJ6DzB6wI=; b=xAS9+1TIG9uNj01vHX3hrljxo+
-	umGStVx/vCdUlMnVP0MHtIwt6++S4t1cWrFopV4f2rJAgUb0Ocy8TEy8RiNEJKkYmFjAPsuvBtpIH
-	dK5JQ65yOCvGjlV41z+sxi+I1CQo9of3qv+0cI72+00SucGwlJrIQfB6gq/EtF5eO15RqqPjl3Hwk
-	IdauiXqQCLGUUB+dLHO/+sqRso25mpx02uLEX+FRwBuGqpkJHy3Obk55LNS9+pLMxwno6YBz57QJq
-	9r3QWdV/R3rL+4vKMP93CzJ0bC99XLtaYk9CjvHN25fVRLt2EzQoSjIAy50K68t6tecfqLmJr3i72
-	Dte7jtxA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=atK7pOHKORg24ZId2N/MIZ2wuN4xjfHHsGn7g5IrSTA=; b=xd6a12sEO8HRmGPfo6atnPCHaI
+	VvfE7Y+JIf5G8WCNKDAos2CwoiENWMgDOdOOJPGnvq3JCYqLr537LfxYTebqcB0yd2yOcMOxHhvwn
+	gCKMQHferCtPxiaqt43u+fG32nd/4oNnsP8MiVeAZUHhhqRwnyhAtcbWPAlofyP0fMLFhWjw8L722
+	XXhoZoyyZ+Psw8I2DRmeYMDTrqhwxbGw9WpcPZypw1thXvNq35eYlGwOxPd8ZgyE3ieMnR6Y5yqB+
+	Yn2IuSLGkVnM07OupImWHY8EW7YECE89tQ0DvaYiAT5w8pvz35iaGdT0mHOxjBM6lwMUQoCbE1vqm
+	Zfcz3diA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxjGx-00000001nVr-2XFH;
-	Mon, 07 Oct 2024 08:39:19 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1sxjf5-00000001s4B-1dQ9;
+	Mon, 07 Oct 2024 09:04:15 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxjFd-00000001nB2-16Lm;
-	Mon, 07 Oct 2024 08:37:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1728290266; x=1728895066; i=frank-w@public-files.de;
-	bh=UtqXSW0/Q2zac9n3oW8JsHdhJ8qh8TUEmTMJ6DzB6wI=;
-	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
-	 Content-Type:Date:In-Reply-To:References:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=s7E/YDfiw0ikUvrnidHc9ZKgpRom3d4iGHarFK00g2jnkVVc2foxUCPF7MkRnQCo
-	 LgDCrQZX8avKIR1+WxP771Jc/0zUM6whgoLTb10smRgTZJLOyUzOJa771wMG9pZUq
-	 rvtQfRWqNv8VlkF7MIUaW+DVAls5Zttk8s8slXGXoweOuQ7GhXoHeJ9aIEjUjpOAY
-	 7zQ4zyJzJJYefMJxBfHl62EZ0R64sSzbASA4vw5hicshqpGUYiFI9lWwuX7D/AYvg
-	 Ji66ifxX/R2272+xOiqgRFkO+aB98ROpJCpAF2ayn6KbUAYUVDj2wZDdSCpyCjvvJ
-	 EyXJkN/YYz9YxNJKqA==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.153.101] ([217.61.153.101]) by web-mail.gmx.net
- (3c-app-gmx-bap03.server.lan [172.19.172.73]) (via HTTP); Mon, 7 Oct 2024
- 10:37:46 +0200
+	id 1sxjdn-00000001rvb-3Z6a;
+	Mon, 07 Oct 2024 09:02:57 +0000
+X-UUID: ef19419c848a11efba0aef63c0775dbf-20241007
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=atK7pOHKORg24ZId2N/MIZ2wuN4xjfHHsGn7g5IrSTA=;
+	b=NaS5+bZIB3snhnJ52G7uXbZ3gpYA5wUQYt392zWm4DwBkUrOiuUhgxyBMfSRJt1gsd50yDNEIGFlQharNilhTB0EJ1C+044nS6M766BCEYqIShgIdmltIJOqNwTZA/a5uiQjmSZz5CBMnHJCwAGPpSDX/YdTVeDzaYy/p+JAXHY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:fa94374f-37ea-46ed-ad3a-738481a8fe67,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:1571de40-8751-41b2-98dd-475503d45150,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: ef19419c848a11efba0aef63c0775dbf-20241007
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2073466637; Mon, 07 Oct 2024 02:02:52 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 7 Oct 2024 17:02:47 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 7 Oct 2024 17:02:47 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Alexandre Mergnat
+	<amergnat@baylibre.com>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, "Sen
+ Chu" <sen.chu@mediatek.com>, Chris-qj chen <chris-qj.chen@mediatek.com>,
+	MediaTek Chromebook Upstream
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
+	<wenst@chromium.org>
+Subject: [PATCH v2 2/2] arm64: dts: mediatek: mt8390-genio-700-evk: add keys and USB HUB
+Date: Mon, 7 Oct 2024 17:02:44 +0800
+Message-ID: <20241007090244.1731-2-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20241007090244.1731-1-macpaul.lin@mediatek.com>
+References: <20241007090244.1731-1-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
-Message-ID: <trinity-2ac8c3fe-ad19-424b-ab4f-da84c42c4ae1-1728290266613@3c-app-gmx-bap03>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Frank Wunderlich <linux@fw-web.de>, Chaotian Jing
- <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>, Rob
- Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
- Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Wenbin Mei <wenbin.mei@mediatek.com>, linux-mmc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- daniel@makrotopia.org, john@phrozen.org, eladwf@gmail.com,
- ansuelsmth@gmail.com
-Subject: Aw: Re: [PATCH v2 2/2] mmc: mtk-sd: add support for mt7988
-Content-Type: text/plain; charset=UTF-8
-Date: Mon, 7 Oct 2024 10:37:46 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <89e54baa-0f05-47d7-8d81-68862f822c59@collabora.com>
-References: <20241006153447.41377-1-linux@fw-web.de>
- <20241006153447.41377-3-linux@fw-web.de>
- <89e54baa-0f05-47d7-8d81-68862f822c59@collabora.com>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:z4a5J2wLlWmjRI+/xOzyHBo8m7kd7rV/6DvFgeVonFs3TVL+zjoT3vEXNnJSjA1rRT0Sw
- +YC5u5d46gqNRMH/lBLtPV5bXJDuov14lACGuhU6imck/2+rJxgCoAj6wHDukpsmPXM/wSElyoWP
- qiCL7AlihMPsnGk449JOJVtw2GWsKc++ZfG71miseO0XWalAb0Ixe9yjBL2QCiwEohB09yNbW4YH
- YiSbwpAr0N2LfV6vT0DD1xJrNyKBm/XiXHand3daPhrb3onkyd6I1Lp5n64GLOpwMMFU9nSEHg9+
- 1k=
-UI-OutboundReport: notjunk:1;M01:P0:PBivFzyeUiM=;ItkuaBFr4/dqKmnih8O3plOgMr1
- RVebIRCT01GBGX6cqg/AIGULfwOfsA8hu4ysnw2NEL7DifcgKlj0Mlfx4eQdmnuJk2nbPSgi2
- mA9YFpW6K46kl2wh6HMJ46YU6/E4C1CCI6OPStjzm1+O6hS9pY8SvHNFxYfXqd8KDiUWITDrL
- sWZO/kplCHPidteWR/dueSuI8jG5I7JoMg1S21lX8xH6I8v1WCd2A6N2R6Ejz0gw7OXfytc4N
- kuisbsdcHQNrjab9b6lfELD0T5R/BgeI+1bvCYtR7RsBduRozl4zHKxZ3Ywvk1DXp8bAGYga9
- /i8cLC7zYlK4Rc/dxkMqa5N7ZppclUcxFhX0sIpWMde67s6vpmC/Tk1/6MAtFXyksqIJ4lrmC
- yhqjWTJfL7MoVl5jQEDCFupSMd3ZwQx7R0pQY0NdbIh700dvPglY/i/YCIzrASWhyfYxxzFD0
- xKHp9DxEIdMMfKsW9pmzQif71zGwZKEpfHGp6QvfxOIFinRJOwkWqICzdariBXvj74nhrsR1S
- A8PU/wfZf+bsIJZFNslTe0TuALmcrmURstmyml3Fp0KteEsrLlX4NP0no1LosIN1C5b0qaHxV
- HQNtKw1+bGVXb8DfjBOsXkmEcBU4IJoZt5fBSQ9yUBP+IZXdxm9EeV6/uWPK9oClLsRYukRPt
- Z4ExU3g6Myt8tt8v2gED9xVRD2v4z79wdmtoXJLxZg==
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--2.228600-8.000000
+X-TMASE-MatchedRID: lpk7+cih7u8ohE7hoJbtOAPZZctd3P4BvtVce6w5+K93tPOoBZSCxk3v
+	YK+4NwyrhSoN9m/vOyf+oPE4i6VpDfFmwOXgAg6zh2VzUlo4HVOm3yCZiGA94EsHGbVW/dGw5gc
+	Q9o9yjpsWQzFIynHMpm2lMjw3dMOHIfTP27CPTX905zsoB1UKTueJtd3DGvZHmyiLZetSf8mfop
+	0ytGwvXiq2rl3dzGQ1k+NIq1Dk9D+N3M8BupAP0k4lOe+LrHD7uxZEjGZwRBbMq1UfUW09vy+Q1
+	QZiOfPW+ChiuQ6044L4y5IEeC/ipOoO1taCKaueT07LPKPPWmXzYaPZALfIbSyZdUr8fx4fMbuy
+	vvGhtIDNwMS8lpRKBQ==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--2.228600-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 63AAD04B7BEE6D81011F98D8EC4E78B07A10F6DBC0768A271B3F3B60B1CB9BF12000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_013757_783205_11B2D6C0 
-X-CRM114-Status: GOOD (  19.56  )
+X-CRM114-CacheID: sfid-20241007_020255_913635_86BA08F4 
+X-CRM114-Status: GOOD (  10.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,78 +107,126 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+1. Add i2c, mmc to aliases.
+4. Add PMIC_KEY setting.
+5. Add USB HUB TUSB8020 to xhci1.
+6. Re-order spi2 node.
 
-> Gesendet: Montag, 07. Oktober 2024 um 09:58 Uhr
-> Von: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.c=
-om>
-> Betreff: Re: [PATCH v2 2/2] mmc: mtk-sd: add support for mt7988
->
-> Il 06/10/24 17:34, Frank Wunderlich ha scritto:
-> > From: Frank Wunderlich <frank-w@public-files.de>
-> >
-> > Add support for mmc on MT7988 SoC.
-> >
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
->
-> There's no need to add yet one more duplicate mtk_mmc_compatible platfor=
-m
-> data, nor one more compatible string to this driver, as this is exactly
-> the same as mt7986.
->
-> Please reuse the MT7986 compatible; in DT you'll have:
->
-> compatible =3D "mediatek,mt7988-mmc", "mediatek,mt7986-mmc";
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+---
+ .../dts/mediatek/mt8390-genio-700-evk.dts     | 57 +++++++++++++++----
+ 1 file changed, 47 insertions(+), 10 deletions(-)
 
-as explained in binding, the clock config is completely different (except =
-first 2 also required by driver - 3-7 are optional there). mt7988 uses axi=
- and ahb clocks.
+Changes for v2:
+ - Fix order of spi2.
+ - Update pinctrl in i2c4 and rt1715.
+ - Drop IT5205 and RT1715 nodes since the DTS are not completed yet.
+ - Add #address-cells and #size-cells to xhci1 for supporting USB hubs.
 
-but i could of course use the mt7988 compatible with mt7986 compat data...=
-but looked dirty to me so just copied the block (to allow later changes if=
- needed).
+diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
+index 96b272567cb1..3e77f59f2c74 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
+@@ -23,6 +23,15 @@ / {
+ 		     "mediatek,mt8188";
+ 
+ 	aliases {
++		i2c0 = &i2c0;
++		i2c1 = &i2c1;
++		i2c2 = &i2c2;
++		i2c3 = &i2c3;
++		i2c4 = &i2c4;
++		i2c5 = &i2c5;
++		i2c6 = &i2c6;
++		mmc0 = &mmc0;
++		mmc1 = &mmc1;
+ 		serial0 = &uart0;
+ 	};
+ 
+@@ -249,7 +258,6 @@ &i2c3 {
+ &i2c4 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2c4_pins>;
+-	pinctrl-1 = <&rt1715_int_pins>;
+ 	clock-frequency = <1000000>;
+ 	status = "okay";
+ };
+@@ -867,6 +875,17 @@ pins-wifi-enable {
+ &pmic {
+ 	interrupt-parent = <&pio>;
+ 	interrupts = <222 IRQ_TYPE_LEVEL_HIGH>;
++
++	mt6359keys: keys {
++		compatible = "mediatek,mt6359-keys";
++		mediatek,long-press-mode = <1>;
++		power-off-time-sec = <0>;
++
++		power-key {
++			linux,keycodes = <KEY_POWER>;
++			wakeup-source;
++		};
++	};
+ };
+ 
+ &scp {
+@@ -874,6 +893,15 @@ &scp {
+ 	status = "okay";
+ };
+ 
++&spi2 {
++	pinctrl-0 = <&spi2_pins>;
++	pinctrl-names = "default";
++	mediatek,pad-select = <0>;
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++};
++
+ &uart0 {
+ 	pinctrl-0 = <&uart0_pins>;
+ 	pinctrl-names = "default";
+@@ -892,15 +920,6 @@ &uart2 {
+ 	status = "okay";
+ };
+ 
+-&spi2 {
+-	pinctrl-0 = <&spi2_pins>;
+-	pinctrl-names = "default";
+-	mediatek,pad-select = <0>;
+-	#address-cells = <1>;
+-	#size-cells = <0>;
+-	status = "okay";
+-};
+-
+ &u3phy0 {
+ 	status = "okay";
+ };
+@@ -921,6 +940,24 @@ &xhci0 {
+ &xhci1 {
+ 	status = "okay";
+ 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
++	#address-cells = <1>;
++	#size-cells = <0>;
++
++	hub_2_0: hub@1 {
++		compatible = "usb451,8025";
++		reg = <1>;
++		peer-hub = <&hub_3_0>;
++		reset-gpios = <&pio 7 GPIO_ACTIVE_HIGH>;
++		vdd-supply = <&usb_hub_fixed_3v3>;
++	};
++
++	hub_3_0: hub@2 {
++		compatible = "usb451,8027";
++		reg = <2>;
++		peer-hub = <&hub_2_0>;
++		reset-gpios = <&pio 7 GPIO_ACTIVE_HIGH>;
++		vdd-supply = <&usb_hub_fixed_3v3>;
++	};
+ };
+ 
+ &xhci2 {
+-- 
+2.45.2
 
-> Cheers,
-> Angelo
->
-> > ---
-> >   drivers/mmc/host/mtk-sd.c | 14 ++++++++++++++
-> >   1 file changed, 14 insertions(+)
-> >
-> > diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> > index 89018b6c97b9..6d5afe51a61d 100644
-> > --- a/drivers/mmc/host/mtk-sd.c
-> > +++ b/drivers/mmc/host/mtk-sd.c
-> > @@ -571,6 +571,19 @@ static const struct mtk_mmc_compatible mt7986_com=
-pat =3D {
-> >   	.support_64g =3D true,
-> >   };
-> >
-> > +static const struct mtk_mmc_compatible mt7988_compat =3D {
-> > +	.clk_div_bits =3D 12,
-> > +	.recheck_sdio_irq =3D true,
-> > +	.hs400_tune =3D false,
-> > +	.pad_tune_reg =3D MSDC_PAD_TUNE0,
-> > +	.async_fifo =3D true,
-> > +	.data_tune =3D true,
-> > +	.busy_check =3D true,
-> > +	.stop_clk_fix =3D true,
-> > +	.enhance_rx =3D true,
-> > +	.support_64g =3D true,
-> > +};
-> > +
-> >   static const struct mtk_mmc_compatible mt8135_compat =3D {
-> >   	.clk_div_bits =3D 8,
-> >   	.recheck_sdio_irq =3D true,
-> > @@ -629,6 +642,7 @@ static const struct of_device_id msdc_of_ids[] =3D=
- {
-> >   	{ .compatible =3D "mediatek,mt7620-mmc", .data =3D &mt7620_compat},
-> >   	{ .compatible =3D "mediatek,mt7622-mmc", .data =3D &mt7622_compat},
-> >   	{ .compatible =3D "mediatek,mt7986-mmc", .data =3D &mt7986_compat},
-> > +	{ .compatible =3D "mediatek,mt7988-mmc", .data =3D &mt7988_compat},
-> >   	{ .compatible =3D "mediatek,mt8135-mmc", .data =3D &mt8135_compat},
-> >   	{ .compatible =3D "mediatek,mt8173-mmc", .data =3D &mt8173_compat},
-> >   	{ .compatible =3D "mediatek,mt8183-mmc", .data =3D &mt8183_compat},
->
->
 
