@@ -4,81 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1604CFB43F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 14:25:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C8D9CFB441
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 14:29:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8LIZjaEwodqIJq0l8LBqKpbQBEU9Mr/e7w5bfiFaSX0=; b=NhqreBU7kIp97hDZGujU5e9APX
-	doFn7n+F/Nt1U6/acS1nyPbzf4rXVdj7CShkhuy2FOtO/Ac1YZwrUMGnE42SOV7NqbSODiMe+Eada
-	V0KUePYqn2vcisluhUjolBt1fa+QERGVbweE1wgHM7TW3VPfKLBAsubsAejJKPTRD4/NHI4JMfiE0
-	OarrrNdL4wHTdbkZTg1b5w/aS+NnHOjVL/4RM9YHamcnvz/djt3TTYjuo0ACDmcmQ0B0VsklRC2d1
-	SMvrak9pe6qz7P8fz7+YSXnJB2yqC4ZU7p35uiM/K5sI3FCKIRiOnj0bmBaCaFf+XAxqb1vty3wrZ
-	wyMPMpPA==;
+	bh=nqBERla7cNT4lhQEnVIR6EnNAL58omsDr6jI2Hs2sQY=; b=HArS2scV1f2fWEpUJG/cG9TkKw
+	4rognYz/T48/wGAtljtz9VOG4yPY07hIyJ4DCbQWWe84/XxBw4o9B4bt1AOWBlQRWuFJ+R7QKuzyW
+	XVgFskhT/YcwN5ypAYh356vg9dDSyTiAcJChJLtBOTdXQ5/btsTXj9zKmEk+imj8qwTw7VlXcoEoG
+	7PdZXFh8SzzIwrTZV10kSAa2mQQ3CAS/ta1Y1xMg+1CYZWOtgk2+TFudFYk0GXNW/KKCofwXnJKtQ
+	z2WBQXM9Yg0boRznbG+4hfGqMnzBjc91pc65eNDjrBqlZvSfV40UxrYsf8abxd0EOYHNDJmJJdwbi
+	rZU5NHXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxoft-00000002i8c-1ue0;
-	Mon, 07 Oct 2024 14:25:25 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1sxojh-00000002j9C-0IN7;
+	Mon, 07 Oct 2024 14:29:21 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxoVl-00000002fOw-3HR4;
-	Mon, 07 Oct 2024 14:14:58 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-37cca239886so2720734f8f.2;
-        Mon, 07 Oct 2024 07:14:57 -0700 (PDT)
+	id 1sxoXM-00000002fg3-1ITm;
+	Mon, 07 Oct 2024 14:16:38 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-42ca4e0299eso39727105e9.2;
+        Mon, 07 Oct 2024 07:16:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1728310496; x=1728915296; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1728310595; x=1728915395; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=8LIZjaEwodqIJq0l8LBqKpbQBEU9Mr/e7w5bfiFaSX0=;
-        b=L2ff/JMm531J3bllgLJplPlMwEaR2hocZ01epwJZooPjCO6jOLbwkhiP1QOig1+3k4
-         1QAqJkL2VzIMjvZo0purMAzA4V0/t1ojvAhke7JyE4fzA4g/kFfPjG48Z1fXNnvqCI9E
-         NTb8jWu3td0bjjHG+UPyrXPBuSp1lf0HKbwUx+C4OZLQIsgHgsyPEm+tMhRTCFZjFkRD
-         IpIRjd9ykW3SqGpMPbBernTTfaizFlMV5OfhoGssdKSjjYb/tkiVHXU58/0WXmVBDG51
-         k0tICAdeGfrU/gjiU80ME4lMy0g3WBxIbazoGsWfOonD3GZ1sqhjLJdvm/VoC9UEBTxj
-         Jutg==
+        bh=nqBERla7cNT4lhQEnVIR6EnNAL58omsDr6jI2Hs2sQY=;
+        b=foS4zDd1Rr9bRTJpw+lT7xAlNsMl4rBG/TSEtMMAhmlKFMUrrbIY2TDdHa8Diah8pv
+         yR83gT9+ysKk7t9MfMKvM+5L8QJa4V3ho7gck0KmLHa2GMBu7SM108JBl5gIrBy6IuuS
+         Iu5W0Te9KjhsZ5VYg8g0Y9zktS1vwSyFsOt4yRn7IP0/Udqol4fN3Q/P+vBacHSRSPP1
+         vOAkQcEEg/Or3HCqah+L7KjZ0QTJmBIZWrL+h5sCETIEQz2lXry+Sx/z6JpOBMD8YfNs
+         drfpzYP4Hdm9BMVFeF71idzRBcfqfL+bUH8j4W7Vwko442DNfYGyEUp8CMlPBUjDD1It
+         OB8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728310496; x=1728915296;
+        d=1e100.net; s=20230601; t=1728310595; x=1728915395;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=8LIZjaEwodqIJq0l8LBqKpbQBEU9Mr/e7w5bfiFaSX0=;
-        b=mPzAylElWUT7ojL45kfG4gWinS1/D2kJ5PAX3bUfx/zbXa8ro6Ay4H7leuKsD/hJ/R
-         9mURyaGMQ+OXZyQze3P6QZYAAeqBcIm4+t1YEZH6CsEqv2xv81Q+YvUBlTsJxIs1jw66
-         LYflhHYUiqkQbpU9dCMnFcs2w78cHinnCOQrVqXa/pj8pfy1QyvIMSWbdjymzr7H8Xrt
-         UoFPOKpwL4+3skQHhnysnb5haOc6f+lvPpPUedmF7S6uq+nRM9GMgT/BR0H4umU+oEp/
-         joUawuZBSgYLKjXrRsM5I+U4ceZvr+bMjwUCM/0z+PbBCuGQm0rAY9Cc9bJoQLzNsaF8
-         ZvUQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUp5t526ocmjURoXMIx6wj7KZAPRjeugMHc1k9JgPthRvZOqURs4Vvliwy4jJr2vWQ6lVNe/IN+nUmGxvZUSm6R@lists.infradead.org, AJvYcCX8jxT0RBdBYSdeFQgsHS4a8nSDfwqv8BEzCUrZCavTbjMmecj5Hox+lbRCAUudkRseUiOFwCVLQ6kZmqKhhBo=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzh5CHszoURTBLjkQRk5QeCRABnY3lkqiPVdY2yBjs9lNy0inSx
-	j/pNXbuOKCc6sNpd1zZO1awzxxDqByovpV/RKOAlYYyOHPJkk9/T
-X-Google-Smtp-Source: AGHT+IETO4zpiWUfFlHnISokgbSnrh2br9+H8ASqeXyhox/80lWPf/74JSOE5oSoBhDLCsnARIMyQg==
-X-Received: by 2002:a5d:5e0b:0:b0:37c:d244:bdb1 with SMTP id ffacd0b85a97d-37d11311be4mr5800210f8f.26.1728310495620;
-        Mon, 07 Oct 2024 07:14:55 -0700 (PDT)
+        bh=nqBERla7cNT4lhQEnVIR6EnNAL58omsDr6jI2Hs2sQY=;
+        b=NeQlFS08gmJDC7nWFR7Vynl60L6MtgemjWd9PIW0k7BhUmf5P4XiBQ9RtSYjwMkaVo
+         kF3VTwV6oZmsFaknXTPeWVO5bh4q28zr/qEtckOUpxgzLv9WiZl5EWuO4iPwy/ayBYl0
+         yUA3TpfYMzh5nIgWV5SIP4UGpBNinpascbmcllwrewLdWjGKRybMW0NX5uLPP7RojJhQ
+         5ezLot2c/Lj19hQE+xVlQZSBWy7D/qu06I4VuXChP7t2Z3E4RtlbmFeXgFNtf5aHK6Ow
+         aZ5zorv0a3uWs7U4+7cLDRMisx8uuMtU6yzXe/g9EmL2Q6QEtIWjI9cHkFKBn2MX1nd6
+         45qQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVClrGlhzHUGBJqdFp/eKdozZvnZ0j4XUG41n4vihWNfuDczJnZ1TCuBDaPcyQk24jh3ZTxvakp15xedgjk7HJq@lists.infradead.org, AJvYcCXuZe9gxaU6/Ah9iqJV8V7iC9yJtpt29q2oPMJlU98y37GriNoc8EpzRN2KQ7Lg/JhERIzdEGLt6zibrGahM/Y=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyuBwzCkUSAUaQXfjpxkjbjsOoLOAxWLMQZBhaJyF63NCDi7P8m
+	BVmiv5uUGpfBXUP2CLy2Bgu1Uc1/sE8RzChYMplNokg/GEPj74AM
+X-Google-Smtp-Source: AGHT+IEz4aEeV7QpqFysBezbHUdc56w4toBz8Fy9xUMFwmnvP59awFl/7fFjw2jZhM+HWsEE85VRsg==
+X-Received: by 2002:a05:600c:4692:b0:425:7884:6b29 with SMTP id 5b1f17b1804b1-42f85ac1168mr84385255e9.19.1728310594413;
+        Mon, 07 Oct 2024 07:16:34 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.162.240])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37d16972da6sm5823950f8f.98.2024.10.07.07.14.54
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42f86a20393sm93428535e9.12.2024.10.07.07.16.32
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 07 Oct 2024 07:14:54 -0700 (PDT)
-Message-ID: <53ce06d3-7154-4819-b978-8e3c834afc34@gmail.com>
-Date: Mon, 7 Oct 2024 16:14:53 +0200
+        Mon, 07 Oct 2024 07:16:33 -0700 (PDT)
+Message-ID: <00894b3b-a79f-4d6f-bdfb-249535901e00@gmail.com>
+Date: Mon, 7 Oct 2024 16:16:31 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] soc: mediatek: pwrap: add pwrap driver for MT8188 SoC
-To: Macpaul Lin <macpaul.lin@mediatek.com>,
+Subject: Re: Aw: Re: [PATCH v1] dt-bindings: spi: add compatibles for mt7988
+To: Frank Wunderlich <frank-w@public-files.de>,
+ Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Frank Wunderlich <linux@fw-web.de>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
- Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>,
- Chris-qj chen <chris-qj.chen@mediatek.com>,
- MediaTek Chromebook Upstream
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-References: <20241007024350.7878-1-macpaul.lin@mediatek.com>
+ Leilk Liu <leilk.liu@mediatek.com>, linux-spi@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ daniel@makrotopia.org, john@phrozen.org, eladwf@gmail.com,
+ ansuelsmth@gmail.com
+References: <20241006102740.17948-1-linux@fw-web.de>
+ <kmzl5zmqqudoq2jcdacfsbwq3axdvcml4m5kw5oqqo2hj6iiuq@xzeg6penuic3>
+ <trinity-5ceed296-8a65-4892-b449-6f832a978d69-1728227502700@3c-app-gmx-bs41>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -124,12 +127,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20241007024350.7878-1-macpaul.lin@mediatek.com>
+In-Reply-To: <trinity-5ceed296-8a65-4892-b449-6f832a978d69-1728227502700@3c-app-gmx-bs41>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_071457_829781_D776ECF2 
-X-CRM114-Status: GOOD (  15.39  )
+X-CRM114-CacheID: sfid-20241007_071636_382934_9250310D 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,90 +149,29 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 07/10/2024 04:43, Macpaul Lin wrote:
-> MT8188 are highly integrated SoC and use PMIC_MT6359 for
-> power management. This patch adds pwrap master driver to
-> access PMIC_MT6359.
+On 06/10/2024 17:11, Frank Wunderlich wrote:
+> Hi
 > 
-> Signed-off-by: Sen Chu <sen.chu@mediatek.com>
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-> ---
->   drivers/soc/mediatek/mtk-pmic-wrap.c | 33 ++++++++++++++++++++++++++++
->   1 file changed, 33 insertions(+)
+>> Gesendet: Sonntag, 06. Oktober 2024 um 14:48 Uhr
+>> Von: "Krzysztof Kozlowski" <krzk@kernel.org>
+>> Betreff: Re: [PATCH v1] dt-bindings: spi: add compatibles for mt7988
+>>
+>> On Sun, Oct 06, 2024 at 12:27:39PM +0200, Frank Wunderlich wrote:
+>>> From: Frank Wunderlich <frank-w@public-files.de>
+>>>
+>>> MT7988 has 2 different spi controllers. Add mediatek,ipm-spi-single
+>>> and mediatek,ipm-spi-quad compatibles.
+>>
+>> Why generic compatibles?
+>>
+>> These are supposed to be SoC-specific.
 > 
-> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> index 9fdc0ef79202..5d3c90e32067 100644
-> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> @@ -1087,6 +1087,23 @@ static const int mt8183_regs[] = {
->   	[PWRAP_WACS2_VLDCLR] =			0xC28,
->   };
->   
-> +static int mt8188_regs[] = {
-> +	[PWRAP_INIT_DONE2] =            0x0,
-> +	[PWRAP_STAUPD_CTRL] =           0x4C,
-> +	[PWRAP_TIMER_EN] =              0x3E4,
-> +	[PWRAP_INT_EN] =                0x420,
-> +	[PWRAP_INT_FLG] =               0x428,
-> +	[PWRAP_INT_CLR] =               0x42C,
-> +	[PWRAP_INT1_EN] =               0x450,
-> +	[PWRAP_INT1_FLG] =              0x458,
-> +	[PWRAP_INT1_CLR] =              0x45C,
-> +	[PWRAP_WACS2_CMD] =             0x880,
-> +	[PWRAP_SWINF_2_WDATA_31_0] =    0x884,
-> +	[PWRAP_SWINF_2_RDATA_31_0] =    0x894,
-> +	[PWRAP_WACS2_VLDCLR] =          0x8A4,
-> +	[PWRAP_WACS2_RDATA] =           0x8A8,
-> +};
-> +
->   static const int mt8195_regs[] = {
->   	[PWRAP_INIT_DONE2] =		0x0,
->   	[PWRAP_STAUPD_CTRL] =		0x4C,
-> @@ -1324,6 +1341,7 @@ enum pwrap_type {
->   	PWRAP_MT8173,
->   	PWRAP_MT8183,
->   	PWRAP_MT8186,
-> +	PWRAP_MT8188,
->   	PWRAP_MT8195,
->   	PWRAP_MT8365,
->   	PWRAP_MT8516,
-> @@ -1845,6 +1863,7 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
->   	case PWRAP_MT6797:
->   	case PWRAP_MT8173:
->   	case PWRAP_MT8186:
-> +	case PWRAP_MT8188:
->   	case PWRAP_MT8365:
->   	case PWRAP_MT8516:
->   		pwrap_writel(wrp, 1, PWRAP_CIPHER_EN);
-> @@ -2393,6 +2412,19 @@ static const struct pmic_wrapper_type pwrap_mt8183 = {
->   	.init_soc_specific = pwrap_mt8183_init_soc_specific,
->   };
->   
-> +static struct pmic_wrapper_type pwrap_mt8188 = {
-> +	.regs = mt8188_regs,
-> +	.type = PWRAP_MT8188,
-> +	.arb_en_all = 0x777f,
-> +	.int_en_all = 0x180000,
-> +	.int1_en_all = 0,
-> +	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
-> +	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
-> +	.caps = PWRAP_CAP_INT1_EN | PWRAP_CAP_ARB,
-> +	.init_reg_clock = pwrap_common_init_reg_clock,
-> +	.init_soc_specific = NULL,
-> +};
-> +
->   static const struct pmic_wrapper_type pwrap_mt8195 = {
->   	.regs = mt8195_regs,
->   	.type = PWRAP_MT8195,
-> @@ -2456,6 +2488,7 @@ static const struct of_device_id of_pwrap_match_tbl[] = {
->   	{ .compatible = "mediatek,mt8173-pwrap", .data = &pwrap_mt8173 },
->   	{ .compatible = "mediatek,mt8183-pwrap", .data = &pwrap_mt8183 },
->   	{ .compatible = "mediatek,mt8186-pwrap", .data = &pwrap_mt8186 },
-> +	{ .compatible = "mediatek,mt8188-pwrap", .data = &pwrap_mt8188 },
->   	{ .compatible = "mediatek,mt8195-pwrap", .data = &pwrap_mt8195 },
->   	{ .compatible = "mediatek,mt8365-pwrap", .data = &pwrap_mt8365 },
->   	{ .compatible = "mediatek,mt8516-pwrap", .data = &pwrap_mt8516 },
+> currently i used the compatibles used in SDK, but got info now, that there is some more discussion needed with mtk.
+> 
+
+Ok, but please don't introduce generic compatibles. We prever SoC specific ones 
+with a fall-back (to a different SoC specific one).
+
+Regards,
+Matthias
 
