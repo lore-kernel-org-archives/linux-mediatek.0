@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4914ACFB441
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 14:24:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1604CFB43F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 14:25:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8LIZjaEwodqIJq0l8LBqKpbQBEU9Mr/e7w5bfiFaSX0=; b=c2phMSEqBF4DTTQIO28leEjGq+
-	rK16rQa9WPCQZZ0m2bqXO/pdHkgHwnXV4MClrYJIPnQg+WXrIz2yG4FPVa5kONXa7Oy6YzI0ILKzm
-	ImstvrLx28TaWw7EP8Mf+jcJexbAhvGy9S6LLiNka49exIDHE90eCXOBta9y2e7e6aIDzXUid4m7n
-	oZC03p3kMlW39LtXOEMroYLIh6N8RYB3fSByEEygPhl3HwwR0TN7VwjtGdO9Kt61KW7LqdZCWqdE2
-	2Gt2VpbQMECd9u7CFKOvBFQwtilHBMSYeJkNzynbOM1I+c1/aktmGP5VcY75OJZ7YJJNXqnbKeOfX
-	0ijrQ3Mw==;
+	bh=8LIZjaEwodqIJq0l8LBqKpbQBEU9Mr/e7w5bfiFaSX0=; b=NhqreBU7kIp97hDZGujU5e9APX
+	doFn7n+F/Nt1U6/acS1nyPbzf4rXVdj7CShkhuy2FOtO/Ac1YZwrUMGnE42SOV7NqbSODiMe+Eada
+	V0KUePYqn2vcisluhUjolBt1fa+QERGVbweE1wgHM7TW3VPfKLBAsubsAejJKPTRD4/NHI4JMfiE0
+	OarrrNdL4wHTdbkZTg1b5w/aS+NnHOjVL/4RM9YHamcnvz/djt3TTYjuo0ACDmcmQ0B0VsklRC2d1
+	SMvrak9pe6qz7P8fz7+YSXnJB2yqC4ZU7p35uiM/K5sI3FCKIRiOnj0bmBaCaFf+XAxqb1vty3wrZ
+	wyMPMpPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxoeb-00000002hlf-190Y;
-	Mon, 07 Oct 2024 14:24:05 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1sxoft-00000002i8c-1ue0;
+	Mon, 07 Oct 2024 14:25:25 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxoVW-00000002fJn-3PRp;
-	Mon, 07 Oct 2024 14:14:44 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-42cacabd2e0so41090355e9.3;
-        Mon, 07 Oct 2024 07:14:42 -0700 (PDT)
+	id 1sxoVl-00000002fOw-3HR4;
+	Mon, 07 Oct 2024 14:14:58 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-37cca239886so2720734f8f.2;
+        Mon, 07 Oct 2024 07:14:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1728310481; x=1728915281; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1728310496; x=1728915296; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
         bh=8LIZjaEwodqIJq0l8LBqKpbQBEU9Mr/e7w5bfiFaSX0=;
-        b=NOmwvz8gsI6qPmfkbwvSOidwsxXZtPh58bKMEkDSbhPOZvVia1GbkoNFVwd/Iqsg2c
-         CklT5w4dUjGlZDuJe/ub8fcvBOj1zEMbHPnphVnKvCXioVBaZ4E832ZkbpzcRMPimVZJ
-         AHVbaKqHb6jbRdxEhfA8FTRw3/7DNSQRkwng+2djY7IE8saPBmdTYUm5lj9cKQdYi69A
-         f6yUmFTeRIFM0VU7FkBi0ybmQTaSWktqpwFyIJ0v8Twsh5desPClMbG9lTZk4uYoTTtn
-         gUATOzTke6yPj1KgwxaIGoCep7Hop135/175OMSoLlfyAMKv4+h9e4EyM1DpCREskr44
-         zx/w==
+        b=L2ff/JMm531J3bllgLJplPlMwEaR2hocZ01epwJZooPjCO6jOLbwkhiP1QOig1+3k4
+         1QAqJkL2VzIMjvZo0purMAzA4V0/t1ojvAhke7JyE4fzA4g/kFfPjG48Z1fXNnvqCI9E
+         NTb8jWu3td0bjjHG+UPyrXPBuSp1lf0HKbwUx+C4OZLQIsgHgsyPEm+tMhRTCFZjFkRD
+         IpIRjd9ykW3SqGpMPbBernTTfaizFlMV5OfhoGssdKSjjYb/tkiVHXU58/0WXmVBDG51
+         k0tICAdeGfrU/gjiU80ME4lMy0g3WBxIbazoGsWfOonD3GZ1sqhjLJdvm/VoC9UEBTxj
+         Jutg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728310481; x=1728915281;
+        d=1e100.net; s=20230601; t=1728310496; x=1728915296;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
         bh=8LIZjaEwodqIJq0l8LBqKpbQBEU9Mr/e7w5bfiFaSX0=;
-        b=PWVTtFPWdCE+rdskecWBg9ANlTNvBs/pKyeZJuHhcvs6J05/h0ukp2EQHRJhA2TL+D
-         LIlbsm8Zz0HcM/A001y6E0nPcwGFpnTnKeN5KojY5vwaf7oVbGkviYQvpFUYfJbrido9
-         MyXKATmGDfjUSX7Pit44fM3vrkslCe5cZfOZgqxHz/Kttod9pwIElCGaNjxGagTzahwa
-         ofBci6RZ/g2GeEZMGnhEg6UJyUc052+GZcTK3BrFqPPscrIlluNac/zv0EVsVZoCsZ5h
-         t/Bxwb1wdQaWlgW4zrn1C/2+2NwS6UZlPVK4GCH3oMxmFymm6FZfMHLq+ELKXoXSiR1Q
-         +yTw==
-X-Forwarded-Encrypted: i=1; AJvYcCX7w2u2YgenAmDYW4jnBQG2yA9bRd9Iu/lPWAZZ9zzc83lkOw6zglpF/iOOBlJl33To6mjPJWQQgR8bKXfO3MA=@lists.infradead.org, AJvYcCXRfzfhu3mqaQ8xFjHyCI6tK/Uhy91JS2+0d0sC3otwDlIOiVvYisuDAmy2RB8TVAHeNumaHM+sbpavU1QkuUer@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy0JgQ1niJMWppatg3YSjOC6laSjpTtZUZQ5wZZFWkGnSUtcMLG
-	nGTAJrcPeVGf7z7qAS4SjDF4Rsy6A65gJFV7qQMrdKKOTQgY/AR1
-X-Google-Smtp-Source: AGHT+IEP2TAhMxAEVDb9cnNXwrxxjf0HxTdnmzszgjiGZHNFxF+3L8SlHfKZdEH74fzu4C9xW9Ze4w==
-X-Received: by 2002:a05:600c:a01:b0:42c:b995:20ca with SMTP id 5b1f17b1804b1-42f85af43c7mr92506165e9.24.1728310480896;
-        Mon, 07 Oct 2024 07:14:40 -0700 (PDT)
+        b=mPzAylElWUT7ojL45kfG4gWinS1/D2kJ5PAX3bUfx/zbXa8ro6Ay4H7leuKsD/hJ/R
+         9mURyaGMQ+OXZyQze3P6QZYAAeqBcIm4+t1YEZH6CsEqv2xv81Q+YvUBlTsJxIs1jw66
+         LYflhHYUiqkQbpU9dCMnFcs2w78cHinnCOQrVqXa/pj8pfy1QyvIMSWbdjymzr7H8Xrt
+         UoFPOKpwL4+3skQHhnysnb5haOc6f+lvPpPUedmF7S6uq+nRM9GMgT/BR0H4umU+oEp/
+         joUawuZBSgYLKjXrRsM5I+U4ceZvr+bMjwUCM/0z+PbBCuGQm0rAY9Cc9bJoQLzNsaF8
+         ZvUQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUp5t526ocmjURoXMIx6wj7KZAPRjeugMHc1k9JgPthRvZOqURs4Vvliwy4jJr2vWQ6lVNe/IN+nUmGxvZUSm6R@lists.infradead.org, AJvYcCX8jxT0RBdBYSdeFQgsHS4a8nSDfwqv8BEzCUrZCavTbjMmecj5Hox+lbRCAUudkRseUiOFwCVLQ6kZmqKhhBo=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzh5CHszoURTBLjkQRk5QeCRABnY3lkqiPVdY2yBjs9lNy0inSx
+	j/pNXbuOKCc6sNpd1zZO1awzxxDqByovpV/RKOAlYYyOHPJkk9/T
+X-Google-Smtp-Source: AGHT+IETO4zpiWUfFlHnISokgbSnrh2br9+H8ASqeXyhox/80lWPf/74JSOE5oSoBhDLCsnARIMyQg==
+X-Received: by 2002:a5d:5e0b:0:b0:37c:d244:bdb1 with SMTP id ffacd0b85a97d-37d11311be4mr5800210f8f.26.1728310495620;
+        Mon, 07 Oct 2024 07:14:55 -0700 (PDT)
 Received: from [192.168.2.177] ([207.188.162.240])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42f86a2052asm93262705e9.18.2024.10.07.07.14.39
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37d16972da6sm5823950f8f.98.2024.10.07.07.14.54
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 07 Oct 2024 07:14:39 -0700 (PDT)
-Message-ID: <dea98b35-4e6a-405a-9dec-1df59da8fad3@gmail.com>
-Date: Mon, 7 Oct 2024 16:14:38 +0200
+        Mon, 07 Oct 2024 07:14:54 -0700 (PDT)
+Message-ID: <53ce06d3-7154-4819-b978-8e3c834afc34@gmail.com>
+Date: Mon, 7 Oct 2024 16:14:53 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] soc: mediatek: pwrap: add pwrap driver for MT8188 SoC
@@ -128,8 +128,8 @@ In-Reply-To: <20241007024350.7878-1-macpaul.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_071442_908361_C9B293E6 
-X-CRM114-Status: GOOD (  15.30  )
+X-CRM114-CacheID: sfid-20241007_071457_829781_D776ECF2 
+X-CRM114-Status: GOOD (  15.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
