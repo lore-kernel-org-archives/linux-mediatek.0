@@ -4,69 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15B11CFB43F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 14:55:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6493CFB448
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Oct 2024 15:27:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=emLxQy4ZoYAXoww9bdwTCanFXsFmlVyqGdpCppK9gbo=; b=F0bqRPUOH1LI96iJrNevypFxMf
-	dMrDtCKBRv9mNk/78+cV69Jqid4QIj1GWmCngE9YD/dLkNpq7lVnzzDoqb75fE6D3ElsSpI+G3/H4
-	4Ramwtu+dqZDcZ/NJEVIsQimiaSqtPBC8ICJS3uYI4F0sIPktJIjFnM9SfIzRJnM1dBtsk/4OxR6R
-	YHyu3JzCpG6ZPeNiKezGPbvRJZNQaPaUixvKxTM4mnckf9t0KtuGGKav8S21eQSrTsTbduzd1wLVT
-	yuegb7lo1w0eIJz7whtHn/S8BW0YAkN3TyueLDiIrwA8MlteiSlK57Sdf1B1x51+eXpvMrUR77cIX
-	dUvmBhiw==;
+	bh=XNt8PiHSRhGOiAe8aOruShDn2RME9MmrXhLIkyUnMzM=; b=HKSAv5r/UpUx9yiBpOWqbYwSJ/
+	4lyRGMsBrbtwf4PsYFXspHEMB3L4E1+zQvZjytjxGLldzDPinQk5Ht89UyLZT4YQieKY/K+Q3/8y4
+	4bvoqYgD3yHWEY7LEpTWJjW3V9V8+4fjFoWzlOtjuYxvGkeFVDi16WQ8J+OtPv/yPRU2Gd6tWDenE
+	9/x3Vd34gIHROhAWP2QBfRF1Ep6Z6c4nz9DRNJVf6imIl9kadyW/08agDZV+ABz86Cbnt7YdF+W/I
+	Ez7/FaWxsjYYRmmuMlyRldKQxPQgkQKfFQdP86nw4+mVMJScsipDTW6PHSVxSzm2O050A64Q7yaAA
+	ngoa5VGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxp93-00000002ooT-0NfZ;
-	Mon, 07 Oct 2024 14:55:33 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1sxpdh-00000002vus-2uUa;
+	Mon, 07 Oct 2024 15:27:13 +0000
+Received: from mout.web.de ([212.227.17.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxp7i-00000002oTr-15zL;
-	Mon, 07 Oct 2024 14:54:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1728312848;
-	bh=9/Ra/jDDnLa5AUszXp1dUHjFKSxU6y6Jqx381bWuyDE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FVNAV2X4utwp+8hiBgmNYD1A3OTPIU65XCMGxEyHZ1AV7sdeDtBxGOTqTS5CKlAhL
-	 P+GQaixTJqVnWh3JfR0hZvE18Bl5O9Em/W1fix/bnNaIM2ARm9caHXvEX/fBSPrgAt
-	 RBvtBhOOas0vaD5J9Yk4cYlqAxgrnjQTi1/80RXmDK7qXcLlnV6jlJURkFyNInaUnC
-	 IU6sHuz/WNEyWMoBAa7whXIzQbjGM0IcMZ5g2DkVO8QvU4ZsA//kR/A1o0YprNulhr
-	 Lin2tHzmOFYMHGusSIFl0ugj0QRrckzbHqSdGM/b9XqBd6CdyEZZTgOpUDZuNnC67U
-	 hqBqv26xkzTww==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 88E5217E35FF;
-	Mon,  7 Oct 2024 16:54:07 +0200 (CEST)
-Message-ID: <381fcbfa-edfb-46c8-8ee2-1386af2ba4c4@collabora.com>
-Date: Mon, 7 Oct 2024 16:54:07 +0200
+	id 1sxpQ8-00000002tpk-0Dco;
+	Mon, 07 Oct 2024 15:13:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1728313977; x=1728918777; i=markus.elfring@web.de;
+	bh=XNt8PiHSRhGOiAe8aOruShDn2RME9MmrXhLIkyUnMzM=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
+	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
+	 cc:content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=ckWnGuHtnv3IpM55KrFLYzxF29UAtZfhL8g71qavPkkAaJsEY5w1NvYdZ2C65ZiB
+	 tKWUdwtRrhXp1kKzMw6jcT6BfFe9cuMTG+VGKApbHTd2qryzAcZZMrQknLy+h4ShG
+	 BSELoTls79wocpEpqEofbIQncphwv8ZCTudh7bRMvsl/F89OEYLUQjaGM4ekS8u/U
+	 sb996rvdPvcKcQm/QAoFN5mWP8Rrs5A3n5DNG18t6hA0EIwhwlmujN1/LrV1dFk+g
+	 EWm5ws921nGiDvqrQXZnK5F6r/o7vMBTjhfN51eY1QuYtDJ41KkBLaPOUFCvemjao
+	 qjGeQ1eySDD4aXtTbg==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.21] ([94.31.81.95]) by smtp.web.de (mrweb105
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1MQxsD-1tK1EM2k2p-00ObJM; Mon, 07
+ Oct 2024 17:12:57 +0200
+Message-ID: <0fd2ab9e-66f7-44bc-915e-2a5c2d52d511@web.de>
+Date: Mon, 7 Oct 2024 17:12:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] soc: mediatek: pwrap: add pwrap driver for MT8188 SoC
-To: Macpaul Lin <macpaul.lin@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
- Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>,
- Chris-qj chen <chris-qj.chen@mediatek.com>,
- MediaTek Chromebook Upstream
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-References: <20241007024350.7878-1-macpaul.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241007024350.7878-1-macpaul.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ dri-devel@lists.freedesktop.org, Adam Thiede <me@adamthiede.com>,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Yassine Oudjana <yassine.oudjana@gmail.com>
+Cc: LKML <linux-kernel@vger.kernel.org>,
+ Alper Nebi Yasak <alpernebiyasak@gmail.com>,
+ Hsiao Chien Sung <shawn.sung@mediatek.com>,
+ Nancy Lin <nancy.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>
+References: <20241007070101.23263-2-jason-jh.lin@mediatek.com>
+Subject: Re: [PATCH v9 1/5] drm/mediatek: ovl: Fix XRGB format breakage for
+ blend_modes unsupported SoCs
+Content-Language: en-GB
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <20241007070101.23263-2-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:7Ba8zBh6CcOHXB4RQMIGo0IzFQsQS+XJ52yqKm/QjZ/OaWqf4cn
+ Civ4p1nJVkQGwGnIf7wGGzD70wZfDfvbyVxQTzmdjXlzu1fTfEWu8TegRsuYfdHVSwkgh0N
+ u3vG1L3sqnf+vHHmazZKnCPEGLwiF1sQbm0Rwn5kWHrHs54fjyEOkQJOdOy4YDCGv+F5ErM
+ yR0Zaf16vNRcHG1WjrnZQ==
+UI-OutboundReport: notjunk:1;M01:P0:NoyAAvXeFxE=;3AyKjdVXmM17V36gSbpC/Mgn84i
+ GaFke1AWEV/mZ22ie5au+YVcwE0CsgarP21NqsWWnV24gLj3ADcXt3tt3X38XbfG/idcZu3+u
+ j1PLb3p4TeE4A44s54kjF4na/ANddJRaCTA5ly8GuLIoWPsm72hm6BpbC29AkeIOmpceh1gjr
+ MFnWO3vEf0NBFw1XudvKOPr7UeyzaHC/3InlEhSt5o63UoorPwRgiXHHb0kwE2LG0bVf+u18A
+ JNMPTR/vY4YvOCdRqhlhOZ5aj7YvK1FVY7fno1t1eEcEJvbYMgSBziFS3IZZX7aTZMQp607Pb
+ aR0jH44EZ6gPBXrEtW1j5l7N+tPdO1R2rIB7jSB6SLR31cKy2pgy34u0Lq/40C7ruMaqDIwRQ
+ qX0wg8X/jAO0qIBJi+6wTRAvlVIjDxphbBMSp1G0bfq+CisLpgOYZIjGqiWPHEy6yEiW0vzUY
+ gllKsvkRGvTntQL2hBPvXfj8Vc+2Oj5m9Z9Ubn4m0IOvo1n0YjYNmLH1xeqrFwZI2oTC5LGak
+ Cen/42hJXsnw+jFwc39swZt8H1IP9eDcgLsdzISq00BStOEQkPLfJP/M2oCeAsBhbGc3x+g2Y
+ Fjb2TSdrg6GqWgqS4jLWWxop96ezkV0dYx81UcZGlPqzR/z1xyqWqWO8gIqd25EBHgtnfQINF
+ qdRDqUYLFjH3TvA4IlM53ViihwlS0UBePv0IUVhRuJvET4TW9HgFOPqLnUNaVl4EMpl27oZOP
+ 2ZvNoKzqdZTA5+ZmNRrNqIZAmhD61Pf6qabCWuMgGsAl20rLpwiVZHHkzGUZd4Bs9kLzm1dPk
+ 5TG1bQSGyyqcy8mFGzvmwi2g==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_075410_493879_5039C7F7 
-X-CRM114-Status: UNSURE (   7.57  )
+X-CRM114-CacheID: sfid-20241007_081312_463904_BE728B21 
+X-CRM114-Status: UNSURE (   3.01  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,23 +101,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/10/24 04:43, Macpaul Lin ha scritto:
-> MT8188 are highly integrated SoC and use PMIC_MT6359 for
-> power management. This patch adds pwrap master driver to
-> access PMIC_MT6359.
-> 
-> Signed-off-by: Sen Chu <sen.chu@mediatek.com>
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+=E2=80=A6
+> Make the constatnt alpha only enable when having a vliad blend_mode or
+=E2=80=A6
 
-Actually, MT8188 and MT8195's pwrap registers and code flow are exactly the same:
-since they are, we don't need this commit (or we don't need it right now!), and
-we can just update the binding so that we can declare...
+Another wording suggestion:
+Enable the constant alpha channel only when having a valid blending mode?
 
-compatible = "mediatek,mt8188-pwrap", "mediatek,mt8195-pwrap", "syscon";
 
-...hence this driver doesn't get any commit :-)
+=E2=80=A6
+> Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
 
-Cheers,
-Angelo
+Does a dot really belong to this personal name?
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Do=
+cumentation/process/submitting-patches.rst?h=3Dv6.12-rc2#n396
 
+Regards,
+Markus
 
