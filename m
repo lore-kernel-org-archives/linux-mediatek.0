@@ -4,77 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44891CED27C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 08:39:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3AC1CED27C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 08:44:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Pq171djiWsbLsNt0VEXIRjKVcrKk+cVbMiitNVgUkz4=; b=vWxqYDkKG6rD+/pgHxdTubjaF/
-	MxXnJqZxLw+F9E93H1R9q/wY0xPip+M4tjm4xCvWuEJbeuFS3xnSIJ6vrX16AalX06ouCf70wGgpq
-	am3CixbEgj8RVp5Du1NB4NCd9SPdSt5EPM5fCd+hnkwA01ScWGN+cj7dptTTZpjJZ364z1BtwcsjT
-	VldUq4j5xSC83xII8zSzZynfwgiQOfJuH4Qk+1vgQ/REfjXn7XUqS0lA15arWP+Ui6DjZ5dAjdUUK
-	XfAJ4Ywg5ZzVTEk6lys5f2oAQr/Baz4wGMYidL1YiIi8rAdv+jr7PTnSkWr1ZsQRx58pYGNKm9yRn
-	8Ba982Ug==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yi4Ed56vIcvtnLM7JqyGr/ImxZkDc5h+XhLmAzx4MIw=; b=Pl5Gt2chM2XnF8WPnNC/6r8NXf
+	fPVaykS6vh2llpuO3YmpbTL9csSwoRKG4LEbIo2Wa5zegTxbmIJbSP7Gf74MxUu3bxJMHM+2IX75T
+	y8eOdnpV1xxUW0lEAIgnFJM4FlARXM7h8gwLu+NF7VsPuyky3w//seriwcmWqBvWbMTxMKAJfbQLW
+	JkB0H/onTKuuM4OTQzUhYruH1D/8wrxGl80b1Uhf17HC4y5D7K4n/pHL6a6j6o5xsrQG8iwOhIDW1
+	08CEcAtL2JsReni95QUmOKN3OejJAgtc9sJOEbEDBeMLOZv7A6pt1Cu1Sx+jmIKLrpzuMgBSqc4Nm
+	fWxV+rLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy5kw-000000055gd-0t8x;
-	Tue, 08 Oct 2024 08:39:46 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1sy5p1-0000000575F-3XJC;
+	Tue, 08 Oct 2024 08:43:59 +0000
+Received: from zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy5Z1-0000000522A-2RXO
+	id 1sy5gG-000000054SJ-3tHN
 	for linux-mediatek@lists.infradead.org;
-	Tue, 08 Oct 2024 08:27:29 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-71e15fe56c9so247169b3a.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 08 Oct 2024 01:27:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1728376046; x=1728980846; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Pq171djiWsbLsNt0VEXIRjKVcrKk+cVbMiitNVgUkz4=;
-        b=H2Vm9PfjFq/OwHU0N0SAiM2yKohYfGKSPYAZvCJSvbzxAbI38FJrXL0mZ2pkXrdj+Q
-         0DixXkz0nk/jGBlwZ5Ss6kPSHPQ6mi7ggxTX8ObkiMAiDnbpshPE8VKREyv5JkjJOy1S
-         UnxyX2t25GbdYWNW6wBsiYnuYtVvnDRppu8w8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728376046; x=1728980846;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Pq171djiWsbLsNt0VEXIRjKVcrKk+cVbMiitNVgUkz4=;
-        b=aGJAgdHyHWzC84Zucg7Im6rQn89ZjJQB57YK7xPAwRgohgjsISNg4Uj3BX8dvmz14s
-         Cc0B3VLPl1zbCURTXVBBxyb120CHCN0UykSTdFa7tlCTsUzs/qtc58xw5p3PlFcr5sHN
-         C6NrVmCq/nQyyTv1YxXn7qGRJ2C1ZkUsdgms5k+prrycs73R63c1+LPJWDdiFPl1ZnC7
-         vKRh/Gsr1UML1Am9A5cyqloXWeaLCd2nQ/BRnzAlzMex2zy+qIB9UiG3Uofo+UGFshwr
-         iB6HkrE9eoKuKFnnDkKBggE6VcFCQriFZnhNXWaWVh4NErSZ/btS+8dBh8tohdjTevyf
-         BgnQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWcuBnig1EUqSRrCM7K9J94um+DXvwJVTsV7nCqzXxWnk6hGB9aDo9KnkYw/4OTjycMBjJ2Bp2aECv7UliLgQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz3UoFoGjDAkI5hnO7ltEc8FGL2lJW2IUQLwsZUWHCQuRd8eU8s
-	ZUFpxlRZXFKjEWMDhl9fjB2ZHJjPqNX11yWIahx+tW6h+Yz6dpzBpylBz3OrMA==
-X-Google-Smtp-Source: AGHT+IEIqHr8weWKtCaAJsfbtil8i9+5MevvrhAdF+gVjtuB5zYMPSCsi2ViwB6KvpVNE65ouqmCNQ==
-X-Received: by 2002:a05:6a00:180a:b0:71d:ffef:c165 with SMTP id d2e1a72fcca58-71dffefc803mr10731949b3a.25.1728376046347;
-        Tue, 08 Oct 2024 01:27:26 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:10df:d27e:8d4b:6740])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7e9f680cd4fsm5286236a12.17.2024.10.08.01.27.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 08 Oct 2024 01:27:25 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Marcel Holtmann <marcel@holtmann.org>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
-	Sean Wang <sean.wang@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	linux-bluetooth@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH RESEND] Bluetooth: btmtksdio: Lookup device node only as fallback
-Date: Tue,  8 Oct 2024 16:27:20 +0800
-Message-ID: <20241008082721.4004100-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.47.0.rc0.187.ge670bccf7e-goog
+	Tue, 08 Oct 2024 08:35:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	sang-engineering.com; h=date:from:to:cc:subject:message-id
+	:references:mime-version:content-type:in-reply-to; s=k1; bh=yi4E
+	d56vIcvtnLM7JqyGr/ImxZkDc5h+XhLmAzx4MIw=; b=WhE/G/DbgeUftYkCEnQi
+	TKiNmL4O8mJXVZGvVaiuxr2/Uuf+VnqQxjkFrl83lLwFQxOgpMaPVihqQQP9EnjQ
+	dIvEhlY3XzytQGlC7HUjB+rJPNUUaVNqNEAFMmu3RCbIHBGS/aJikbNqKuoYncTa
+	HWKmjBS7QXILHji8waVqo4Gfameve/bjUR8OZjfJ61xt5qQilme9R9mntWnpmVE6
+	vI/DbcOiNyMYzTxRGso7HQtTPALxrXPSxb0LKFjJIGSMhdCJ3OEBcf6SjBEfzx0q
+	xleKrYav5uunbP1dwomEPHueCWbUnYk2Hq3ZkmDA5X/S0ZeqJIqe1B8hi3Maegtt
+	FQ==
+Received: (qmail 402745 invoked from network); 8 Oct 2024 10:34:50 +0200
+Received: by mail.zeus03.de with ESMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 8 Oct 2024 10:34:50 +0200
+X-UD-Smtp-Session: l3s3148p1@1sW4AvMjXyttKPHJ
+Date: Tue, 8 Oct 2024 10:34:49 +0200
+From: Wolfram Sang <wsa+renesas@sang-engineering.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wolfram Sang <wsa@kernel.org>, Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>, chrome-platform@lists.linux.dev,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Douglas Anderson <dianders@chromium.org>,
+	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	linux-i2c@vger.kernel.org, Andi Shyti <andi.shyti@kernel.org>
+Subject: Re: [PATCH v8 3/8] i2c: core: Remove extra space in Makefile
+Message-ID: <ZwTuqX301BqAltze@shikoro>
+Mail-Followup-To: Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh@kernel.org>,
+	Saravana Kannan <saravanak@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wolfram Sang <wsa@kernel.org>, Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>, chrome-platform@lists.linux.dev,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Douglas Anderson <dianders@chromium.org>,
+	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	linux-i2c@vger.kernel.org, Andi Shyti <andi.shyti@kernel.org>
+References: <20241008073430.3992087-1-wenst@chromium.org>
+ <20241008073430.3992087-4-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="gFj6OJQYOOPFj8BE"
+Content-Disposition: inline
+In-Reply-To: <20241008073430.3992087-4-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241008_012727_643983_ECB9939C 
-X-CRM114-Status: GOOD (  13.40  )
+X-CRM114-CacheID: sfid-20241008_013457_903493_B6747E9E 
+X-CRM114-Status: UNSURE (   9.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,67 +94,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If the device tree is properly written, the SDIO function device node
-should be correctly defined, and the mmc core in Linux should correctly
-tie it to the device being probed.
 
-Only fall back to searching for the device node by compatible if the
-original device node tied to the device is incorrect, as seen in older
-device trees.
+--gFj6OJQYOOPFj8BE
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
-Resending after three and a half months.
+On Tue, Oct 08, 2024 at 03:34:22PM +0800, Chen-Yu Tsai wrote:
+> Some lines in the Makefile have a space before tabs. Remove those.
+>=20
+> Reported-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> Closes: https://lore.kernel.org/all/ZsdE0PxKnGRjzChl@smile.fi.intel.com/
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> Reviewed-by: Andi Shyti <andi.shyti@kernel.org>
 
-This follows up on the MT7921S bluetooth binding and DT fixup patches [1].
-This should not be backported.
+Applied to for-next, so you don't need to carry this patch anymore.
+Thanks!
 
-[1] https://lore.kernel.org/linux-bluetooth/20240412073046.1192744-1-wenst@chromium.org/
 
- drivers/bluetooth/btmtksdio.c | 17 +++++++++++++++--
- 1 file changed, 15 insertions(+), 2 deletions(-)
+--gFj6OJQYOOPFj8BE
+Content-Type: application/pgp-signature; name="signature.asc"
 
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index cc097aedc1e1..a1dfcfe43d3a 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -1328,6 +1328,8 @@ static int btmtksdio_probe(struct sdio_func *func,
- {
- 	struct btmtksdio_dev *bdev;
- 	struct hci_dev *hdev;
-+	struct device_node *old_node;
-+	bool restore_node;
- 	int err;
- 
- 	bdev = devm_kzalloc(&func->dev, sizeof(*bdev), GFP_KERNEL);
-@@ -1411,13 +1413,24 @@ static int btmtksdio_probe(struct sdio_func *func,
- 	if (err)
- 		bt_dev_err(hdev, "failed to initialize device wakeup");
- 
--	bdev->dev->of_node = of_find_compatible_node(NULL, NULL,
--						     "mediatek,mt7921s-bluetooth");
-+	restore_node = false;
-+	if (!of_device_is_compatible(bdev->dev->of_node, "mediatek,mt7921s-bluetooth")) {
-+		restore_node = true;
-+		old_node = bdev->dev->of_node;
-+		bdev->dev->of_node = of_find_compatible_node(NULL, NULL,
-+							     "mediatek,mt7921s-bluetooth");
-+	}
-+
- 	bdev->reset = devm_gpiod_get_optional(bdev->dev, "reset",
- 					      GPIOD_OUT_LOW);
- 	if (IS_ERR(bdev->reset))
- 		err = PTR_ERR(bdev->reset);
- 
-+	if (restore_node) {
-+		of_node_put(bdev->dev->of_node);
-+		bdev->dev->of_node = old_node;
-+	}
-+
- 	return err;
- }
- 
--- 
-2.47.0.rc0.187.ge670bccf7e-goog
+-----BEGIN PGP SIGNATURE-----
 
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmcE7qkACgkQFA3kzBSg
+KbYVTBAAnj3lYy0aHno8B+L4r4eegNvIoB88vkx4UB6TEssgEW4AB2kf+uAlTXfW
+2cFXhFaPicKEc/DDqmhTTW430UIG27jxpQD6BC1tyapPQ6dChS9t6gCcElhWNTvb
+sjCDblb1zor2vGYN+2f+BJPlaFDO20ZnMi9sbP5mlkkEEsTgJIwr2+DFmpWuMY5w
+NCUbXbtEkPUBn5u49YJH0RgVsBW1hsiezALs1AxEQ26G7/cXVm6u6IvH7zbgnWE9
+0DZKs3DdDxO9mV+ilW43Rm/Lx3s9n5Yy1aOZnkWVX0ddLfZZMR4iKbU5By4w+2uM
+5i5uGSIialjycmGSthXpTNawcJfB89rClHpaKYsZCuursUxf5EQtc2MYDOud/bZN
+rDz47+boX/yUhMV4FnlVsh+rfJaq5WmcbEd33ICh6CT/fc7T8uKIHF+vIsToTg+s
+nx4IqNZ4VJc/6B/er9RLADWJKL2BrKYluECw6jlX1yZHWEka+UvVPlSQmcRxPt7N
+fla7gKTB1jZj6vhS1GW5mtSJbQByt+AUbt1dtu9rWFvpsR/gda2MEqbzp62nAV8b
+gy4teVjjlJAqKZ5zeQs7MDDszKlCXgv3k1YxsKBSOj6R7/WytM1TpO46BKUCXSZv
+//MT9B3Mt7LFR+wFkv+5F4mazO1jkhGdS7wjUz9nk0QGqetl7HM=
+=Xawz
+-----END PGP SIGNATURE-----
+
+--gFj6OJQYOOPFj8BE--
 
