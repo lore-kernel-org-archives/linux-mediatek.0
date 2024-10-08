@@ -4,74 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46C04CED274
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 08:34:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AE15CED27C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 08:35:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=77LRUTlS6N85YHurZAwkWWTChImJu9rN9pG0wAdC8nc=; b=FvubMUOwaGXtDRmEJaUrC891Kz
-	HaGqExLqkIhohX9ZBZ7Kx2KX3uE/5BJlXsOIa1w3oCAxqQga/dstSLfCjLc2cPhA1ERtbQc2Rv0P6
-	2ZdtfYD1zNKDb/s2SHDe+1ZcoxkspVTaSynNyuxaeh6wNvhFac/NNmPWA94pKigEsNxJ9uHsviomt
-	i5AWeE89N6Vdx7pR2DuYrlz4FafAimKmEo29wk7YIFi7YK50bhiXLxpwNBTELDFd/PjereMeQRXIR
-	72M3p8QM3KnCoE7fO3TpB7MDgb74iRC/JtUYIDbRMumilsSJ0H+Zo9sd8s2XCdY9FJX7oG2n6Wbvh
-	4teYJ2Vw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Wxe7XEN1LHMGd0Oyi47FAyf7OZba3eA58SL3i+FereE=; b=vyCsl3bta9JzJbexBpFLag6FBX
+	IyOwFGQTgoyMRrKoKPUmLcMmkgSeLggiFYVoVWlawCFrmJoDZgxDeBFRfGzrWVoFG0CqYatXkid5z
+	bc6a5nA9If9BB5TUQNRfj6yq+tnKgjAqnmauUlge76v4+TqangzI/8Z9kG2kBXRPUMWRt4k4dqsUK
+	b4oITL88CcLQUzsmgRIMUrvenmvzkA0+TQX0/4Wbq7i99JIJQ3L94SP5lF5McklS8UdPo4Cc4kEwc
+	NUq6QfsY4sxc5QmUtL5pd8rgtKlvVpzx/V6oWhM3JgtquFMn7bInKofYu24D2q6K7wFVC9c0fjbit
+	s3dN4N4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy5fi-000000054GR-1FtI;
-	Tue, 08 Oct 2024 08:34:22 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1sy5h4-000000054dm-0oZO;
+	Tue, 08 Oct 2024 08:35:46 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy5SH-00000004zmM-2m01;
-	Tue, 08 Oct 2024 08:20:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1728375628;
-	bh=c/txFuvsjE2i3hdoL6uY9Il04joUzLruIuK2uXuPyQ4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MSClA6I0sSpqqRg1Rst67jKs+miA/4kVWz0p482jAYupIfHJBxrdnbue9OEkamBC9
-	 O6nY5ZCq1a7BapW8ZMZsky74f0w2UFaVfRFfat0XDVb7HsVFKSWnklhSqW+P0q5u1g
-	 X6LgWLBEP1AItCQhGEcE6cei6rsmZVIiXBFtTuX0FMg6URQM9K9qBUccSn3KLLv8EM
-	 Xvu7nA5QvraaU+GHKHqErZ7IoX3XKpRkU9avOQLOkGSQBfTGBaLux4fJcacq2e1fT0
-	 qcMrAYVjcl1YmDkkU7YVoIdHzGgCnkDJYBFtwpFL/NecyUx6xOb/dz3vtZmm/FfjX3
-	 igys7T++H3vTg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7828017E10A4;
-	Tue,  8 Oct 2024 10:20:27 +0200 (CEST)
-Message-ID: <fa0b6d34-65ef-4b12-a290-5ff00c49e10c@collabora.com>
-Date: Tue, 8 Oct 2024 10:20:27 +0200
+	id 1sy5Si-00000004zu2-0m11
+	for linux-mediatek@lists.infradead.org;
+	Tue, 08 Oct 2024 08:20:57 +0000
+Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-718e9c8bd83so4002383b3a.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 08 Oct 2024 01:20:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1728375655; x=1728980455; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Wxe7XEN1LHMGd0Oyi47FAyf7OZba3eA58SL3i+FereE=;
+        b=Uxc54BevdkTaMTzXI2GHoCS3kbQlczVtPykRKj5dXBGRWHZ+bMMSKgkR0IGMoxeKrz
+         yiwqPlCoyYtWteSRXMi1aeiRZLtJ3216ncgW/YINXUU7iLKaVFI7ZuGNXppk+mSlWRS1
+         /bq5cwwZ0o/SlGwnmCThODDWKTx+QqgQVhKuc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1728375655; x=1728980455;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Wxe7XEN1LHMGd0Oyi47FAyf7OZba3eA58SL3i+FereE=;
+        b=eHV3KTPSxgTTQpC/RoNlYzDI6DGU7JljTsYW5rsRTKiOYUveDN7joqeoaWktRjPecI
+         9j5laDjPqu9ATZEVIIe7P3Pub2q7CW+S1P0nbLmVkaau+fUzBceos/ouqxSGstxase+w
+         nLjpFFRL7kgd3YD2ViaskABZmAPIkXQT0mkClIrCJwoaOCwpj4MDmeIFEffJcuZRlc/K
+         UrxBcVQifgwj5/5jo1tE2vPxNBZJjrq1VaSP/Ta+J3Zal+rrCDRtD4ct/FWXZZ4z7WT+
+         sEGeN5QWsdBx6W5Qfw6a64VncF2SjmPlYJjgth1pSdgZpCM221Cxe58QLJPBsL/Yoz0g
+         pTPA==
+X-Forwarded-Encrypted: i=1; AJvYcCU/3nLqnDGx75MdKfLPcbLrdffGPMClfOdv95oib7bPl6sSnKsd9WsfwbnAcYnme2BeESK+d1ZQtf6Z4fOmlA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxJ3vdow+HNYxD6IfbEtcH4pIPtcX+us3QEhDda6wT06ZX2BiOd
+	1AAH6dg3ZxMz6E6g5xblo32LFd8INlIo7IgK4rA32XAiR9ZTG4Q07eLbGsUinQ==
+X-Google-Smtp-Source: AGHT+IFJm0IcwI0CWnxra5LbX1O3mroQEd3t+K9JaisETjqWwQD9tUxGolk9e7WrRGrqYhb2Ata5Fw==
+X-Received: by 2002:a05:6a20:258a:b0:1d4:fb97:41b9 with SMTP id adf61e73a8af0-1d707459d68mr3493318637.22.1728375655445;
+        Tue, 08 Oct 2024 01:20:55 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:10df:d27e:8d4b:6740])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71df0cd0ad2sm5672184b3a.63.2024.10.08.01.20.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 08 Oct 2024 01:20:55 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: mediatek: mt8173-elm-hana: Add vdd-supply to second source trackpad
+Date: Tue,  8 Oct 2024 16:20:49 +0800
+Message-ID: <20241008082051.4002438-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.47.0.rc0.187.ge670bccf7e-goog
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8390-genio-700-evk: enable pcie
-To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Jieyy Yang <jieyy.yang@mediatek.com>, Jian Yang <jian.yang@mediatek.com>,
- Jianguo Zhang <jianguo.zhang@mediatek.com>,
- Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
- Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>,
- Chris-qj chen <chris-qj.chen@mediatek.com>,
- MediaTek Chromebook Upstream
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-References: <20241007100749.6657-1-macpaul.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241007100749.6657-1-macpaul.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241008_012029_877728_49047A11 
-X-CRM114-Status: UNSURE (   5.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241008_012056_262057_02B1D5E5 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,13 +90,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/10/24 12:07, Macpaul Lin ha scritto:
-> Enable PCIE, PCIEPHY and related Pinctrls for mt8390-genio-700-evk
-> board.
-> 
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+The Hana device has a second source option trackpad, but it is missing
+its regulator supply. It only works because the regulator is marked as
+always-on.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Add the regulator supply, and the required post-power-on delay.
 
+Fixes: 689b937bedde ("arm64: dts: mediatek: add mt8173 elm and hana board")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
+index 8d1cbc92bce3..e03474702cad 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
+@@ -49,6 +49,12 @@ trackpad2: trackpad@2c {
+ 		interrupts-extended = <&pio 117 IRQ_TYPE_LEVEL_LOW>;
+ 		reg = <0x2c>;
+ 		hid-descr-addr = <0x0020>;
++		/*
++		 * The supply is always on. Adding the delay here
++		 * needlessly delays the readiness of the trackpad.
++		 */
++		/* post-power-on-delay-ms = <100>; */
++		vdd-supply = <&mt6397_vgp6_reg>;
+ 		wakeup-source;
+ 	};
+ };
+-- 
+2.47.0.rc0.187.ge670bccf7e-goog
 
 
