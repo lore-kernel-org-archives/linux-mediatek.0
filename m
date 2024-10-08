@@ -4,78 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8C6BCEFC3A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 18:31:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3BBFCEFC56
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 20:39:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U0zAV6Rjyn//UXVAp4//ewn3IWChaEMAk1sLBKWsGWs=; b=vmsd8sqUEKCpZzmxAJD29fcwL3
-	MqxJVUmE4Ea3XklXBgN4Jsx+dumXqQeqks/8tI4Ip920O+XzdZJIv0ajpImnpnrGsT7AjvXynxao1
-	fFezsgBCKEs4O4vTh+lhdd9H9/J5Vvz/BwlKxBxjTOkV8RFCjn9mduTDpRJTdrDJtwXnoaigD0uVd
-	v8j3cO1O7rPyK5xouMKJRtfd2IQa06n94mvwam/w097NK44urBtscaOlb/3KmJ/awcYJ5HAXrDTck
-	wQM2M8JfcBTwSZA+IvtN3fafqIvTtxXiWWA7WUXQldFyK2oEJ2nvdeQboEQ0Xa2Ulj0yCEzWorGCI
-	riZm49UQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jBKc56vBxPYaOUWcC+VFZKlnp8sdizUoPysD1KL2n2Y=; b=08L25rM1o5VGQIXu9gA0IhKZS9
+	QMUWZzNXoJFW3WgjQiodGWuFxstKEYmhmgAmtRrj1gBUDeRbQC9aoEJyDLbSq+0o7P2glnFS/dhHD
+	6dG7QVxoWAVpiBMOTtssk5g3t2r9GsQhGsXOVotd+9UMPpdFC2H7gShflt/ih2/mPdrMi0M93agsx
+	1eWbi808hacCWu/m8TNaxf+2fThJMVEF3FfGOXEZZZeiR3Xic3jpDaYEYHkZ1zSKylCrbUy/p9nN+
+	4s5Va0NwCze1Klu21L2sR2h4QK9fTJlT0VrE9npr+ZIAgsf6pTt4FnXS7XejxmOvfOfZMQxsgq368
+	Hycdyc6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syEzC-00000006nCj-33HS;
-	Tue, 08 Oct 2024 18:31:06 +0000
-Received: from 009.lax.mailroute.net ([199.89.1.12])
+	id 1syGzU-0000000753E-3jAN;
+	Tue, 08 Oct 2024 20:39:32 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syEy1-00000006n0x-31hm
+	id 1syGy7-000000074l2-1zXh
 	for linux-mediatek@lists.infradead.org;
-	Tue, 08 Oct 2024 18:29:55 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 009.lax.mailroute.net (Postfix) with ESMTP id 4XNPh11QYyzlgTWP;
-	Tue,  8 Oct 2024 18:29:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1728412190; x=1731004191; bh=U0zAV6Rjyn//UXVAp4//ewn3
-	IWChaEMAk1sLBKWsGWs=; b=IN3XuxqB/7LLfg+XIUe3aZ9uZc+c3nRGMBgC5s8o
-	52wC/mdeApH7hbMlPRyKWm2fJP7vWcTGX002KTNKQMFNZQXa0guiBUfHmAOKtzi7
-	tMzG8rEWBmNV38OLAUmCPubkxUAk+htouG6fESB72l6vi6u56rXlZoioCugRpG9B
-	3iipkNlTQpePU4U2fKxef/egVMiBe0gKPl/x9IL9ALRkirHrjAt7YoOW6VYGEIwg
-	CccFYGaNNpx0HeWM8n3gPCNl6nfmUa0y/pihiVjb5e7Csct2Z43L0P7d2KZeQ50/
-	T4nRV6I4UHtsEXsQjVAZF+/8ERKZL5CUNBYcPzokWYMZaA==
-X-Virus-Scanned: by MailRoute
-Received: from 009.lax.mailroute.net ([127.0.0.1])
- by localhost (009.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id HEEzqqRMUYXE; Tue,  8 Oct 2024 18:29:50 +0000 (UTC)
-Received: from [100.66.154.22] (unknown [104.135.204.82])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 009.lax.mailroute.net (Postfix) with ESMTPSA id 4XNPgx2X58zlgTWK;
-	Tue,  8 Oct 2024 18:29:48 +0000 (UTC)
-Message-ID: <a02c83eb-d057-48cc-9735-770928a2a0a1@acm.org>
-Date: Tue, 8 Oct 2024 11:29:47 -0700
+	Tue, 08 Oct 2024 20:38:11 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-a9932aa108cso590533466b.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 08 Oct 2024 13:38:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1728419885; x=1729024685; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=jBKc56vBxPYaOUWcC+VFZKlnp8sdizUoPysD1KL2n2Y=;
+        b=uXrdZjvTq67XgSDplicpzPc6PNtYzK+DZIxIpPYiPIVIOkWSgvpFO3Y7dc3bqxNdLc
+         Qz6jMhxblsG2hiU1o4QwGecSwuEWX/ZsBzcRHK/yQXQ423GZsFU9QTRn0X54oIScUOwO
+         RU8WTOjePh1pRRtpRU0Py8um/JSlBaS6pHN5JfLB+IMQPa9XqThWeeVXJBNAEannQrJP
+         IHx9ByDzEC2YI8k5D9SgG0S1h5Y2a0rt6VwVYEq2xHgsk3GhGajSn9SI/X3+l1BRjK2d
+         f0JkAFYy+Mbx3PueEDTWvrx/TEKUl9Z8ZnqoE++J1uIctINiX3dx78ktkxdTvWOmnU/o
+         bzyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1728419885; x=1729024685;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=jBKc56vBxPYaOUWcC+VFZKlnp8sdizUoPysD1KL2n2Y=;
+        b=NiDKRB0Q8Jq9wS7LI4fiAiN9h0Rh7dYqdv04X3fHGIepNHxfXyYzAPmWiGf5Wzh09+
+         LQ/XnQ8bq0N1BHN/dH6/u5hL9NffO1YBf3XyzFrjz1WuzSX+Wsv1pkrRde0v3TkqjD/g
+         7WvPPFytHCkaqNpbP2zqAwjWeQGHXZ8LpA4++FRL9vxNDL1WYloxoGHLQjFyajCGUYsX
+         /fubgnJ18MEb0S/OYC4JYiU7+515eLLDpmwL+TMAmz61XWjk53iASD4nANZF5m5hvpWR
+         ljWlEb/ycdEwPhP86g9fSse/TcdEw+jQYAYRJ33Egchjl0cjEvTupptTVpwzYu0ZPsk/
+         eZoQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVqDBbPIB+83UkYQNW2IiaDmEDtpnuIFH5eniN/5qiDCL/boWgDsvaNya01NqIgl5l5PxwpEGUcGysJAmNRQg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YziNA/tQ3gzyXyRwsLl9VXkCCQpL4aKcfWGEr0PbzAFOJ5AR7p3
+	SdPB0ksgKDvaarlq22M5x5Dhm9pUPkX1U6KZLoGLuPN3SbDzW7VZGMP0IrH2yBY=
+X-Google-Smtp-Source: AGHT+IFQsuFQDnMORn6KRqls83kXMRALTmz1xji/Zv3nzyXsaV17OwyYMIY5gtZ7u9n9SjQRNHRlFg==
+X-Received: by 2002:a17:907:94d4:b0:a8d:250a:52b2 with SMTP id a640c23a62f3a-a998d114bbemr3268366b.6.1728419884897;
+        Tue, 08 Oct 2024 13:38:04 -0700 (PDT)
+Received: from localhost ([2a02:8071:b783:6940:c420:a9b6:c5e1:5b65])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a996274deeesm196971266b.103.2024.10.08.13.38.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 08 Oct 2024 13:38:04 -0700 (PDT)
+Date: Tue, 8 Oct 2024 22:38:02 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-bluetooth@vger.kernel.org, linux-clk@vger.kernel.org, linux-crypto@vger.kernel.org, 
+	dmaengine@vger.kernel.org, linux-gpio@vger.kernel.org, amd-gfx@lists.freedesktop.org, 
+	nouveau@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com, 
+	linux-arm-kernel@lists.infradead.org, linux-i2c@vger.kernel.org, linux-i3c@lists.infradead.org, 
+	linux-iio@vger.kernel.org, linux-input@vger.kernel.org, patches@opensource.cirrus.com, 
+	iommu@lists.linux.dev, imx@lists.linux.dev, linux-mediatek@lists.infradead.org, 
+	linux-media@vger.kernel.org, linux-mmc@vger.kernel.org, linux-mtd@lists.infradead.org, 
+	netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-pci@vger.kernel.org, 
+	linux-phy@lists.infradead.org, linux-pwm@vger.kernel.org, linux-remoteproc@vger.kernel.org, 
+	linux-sound@vger.kernel.org, linux-spi@vger.kernel.org, linux-staging@lists.linux.dev, 
+	linux-usb@vger.kernel.org, linux-serial@vger.kernel.org, greybus-dev@lists.linaro.org, 
+	asahi@lists.linux.dev, rafael@kernel.org, Andy Shevchenko <andy.shevchenko@gmail.com>
+Subject: Re: [PATCH 00/51] treewide: Switch to __pm_runtime_put_autosuspend()
+Message-ID: <ttmnzgsdyng5vab63pvj7csrotbsmwnultjelvdotrvyg2snac@iv7afgect5f3>
+References: <20241004094101.113349-1-sakari.ailus@linux.intel.com>
+ <CAPDyKFp0N6UJhnHS164Tdf=xkWB0jzq65L9TdvYazeBQ-6WjeQ@mail.gmail.com>
+ <20241007184924.GH14766@pendragon.ideasonboard.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v10 2/2] ufs: core: requeue aborted request
-To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
- "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>
-Cc: wsd_upstream <wsd_upstream@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-References: <20241001091917.6917-1-peter.wang@mediatek.com>
- <20241001091917.6917-3-peter.wang@mediatek.com>
- <6aba27a2-d59b-4226-806b-4442cc26c419@acm.org>
- <69a77b95da27fa53104ee74ecae4e7da2d1547cf.camel@mediatek.com>
- <e6e93ff1-cba1-45a9-b4b6-7dcbd7fca862@acm.org>
- <8c463196860b71f26bddad0e7e8be6aacd470109.camel@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <8c463196860b71f26bddad0e7e8be6aacd470109.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="2ocqjla6tcmukjn3"
+Content-Disposition: inline
+In-Reply-To: <20241007184924.GH14766@pendragon.ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241008_112953_800274_153836A4 
-X-CRM114-Status: GOOD (  18.97  )
+X-CRM114-CacheID: sfid-20241008_133807_704349_E64395CC 
+X-CRM114-Status: GOOD (  24.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,76 +106,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/7/24 12:20 AM, Peter Wang (=E7=8E=8B=E4=BF=A1=E5=8F=8B) wrote:
-> On Thu, 2024-10-03 at 13:02 -0700, Bart Van Assche wrote:
->>   =09
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>   On 10/2/24 5:42 AM, Peter Wang (=E7=8E=8B=E4=BF=A1=E5=8F=8B) wrote:
->>> This patch merely aligns with the approach of SDB mode
->>> and does not involve the flow of scsi_done. Besides,
->>> I don't see any issue with concurrency between
->>> ufshcd_abort_one() calling ufshcd_try_to_abort_task()
->>> and scsi_done(). Can you point out the specific flow where
->>> the problem occurs? If there is one, shouldn't SDB mode
->>> have the same issue?
->>
->> Hi Peter,
->>
->> Correct, my comment applies to both legacy mode and MCQ mode. From
->> the
->> section in the UFS standard about ABORT TASK: "A response of FUNCTION
->> COMPLETE shall indicate that the command was aborted or was not in
->> the
->> task set." In other words, if a command completes just before
->> ufshcd_try_to_abort_task() calls ufshcd_issue_tm_cmd(), then
->> ufshcd_try_to_abort_task() will call ufshcd_clear_cmd() for a command
->> that has already completed. In legacy mode, this call will succeed.
->>
->=20
-> Hi Bart,
->=20
-> Yes, the legacy SDB mode is protected by the outstanding_lock.
->=20
->=20
->> Hence, both ufshcd_compl_one_cqe() and ufshcd_abort_all() will call
->> ufshcd_release(hba). This will cause hba->clk_gating.active_reqs to
->> be
->> decremented twice instead of only once. Do you agree that this can
->> happen and also that it should be prevented that this happens?
->>
->> Thanks,
->>
->> Bart.
->=20
-> Sorry, I still don't understand why both ufshcd_compl_one_cqe()
-> and ufshcd_abort_all() will call ufshcd_release(hba)?
-> Because I have already removed the ufshcd_release_scsi_cmd from
-> ufshcd_abort_one, so the command won't be released immediately
-> after ufshcd_try_to_abort_task succeeds. Instead, it will wait
-> until the CQ Entry comes in before releasing. And since it is
-> protected by the cq_lock, it should only release once, right?
 
-Hi Peter,
+--2ocqjla6tcmukjn3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I think what you wrote applies to MCQ mode only. In my previous email
-I clearly referred to "legacy mode" (SDB mode). Summarizing my previous
-email, I think that in legacy mode it is possible that ufshcd_release()
-is called twice while it only should be called once. Here are the
-possible solutions I see:
-* Add a function to the SCSI core for setting SCMD_STATE_COMPLETE. This
-   may be controversial since no other SCSI LLD needs this functionality.
-* Changing the error handling approach in the UFS driver to the same
-   approach other SCSI LLDs use: instead of using queue_work() to
-   activate the error handler, call scsi_schedule_eh(). This will cause
-   the error handler to be activated later, namely after all pending
-   commands have timed out instead of aborting any pending commands
-   first.
-* Add a variant of scsi_schedule_eh() to the SCSI core that accelerates
-   error handling by calling scsi_timeout() on all pending commands.
+Hello,
 
-Thanks,
+On Mon, Oct 07, 2024 at 09:49:24PM +0300, Laurent Pinchart wrote:
+> On Fri, Oct 04, 2024 at 04:38:36PM +0200, Ulf Hansson wrote:
+> > On Fri, 4 Oct 2024 at 11:41, Sakari Ailus <sakari.ailus@linux.intel.com=
+> wrote:
+> > >
+> > > Hello everyone,
+> > >
+> > > This set will switch the users of pm_runtime_put_autosuspend() to
+> > > __pm_runtime_put_autosuspend() while the former will soon be re-purpo=
+sed
+> > > to include a call to pm_runtime_mark_last_busy(). The two are almost
+> > > always used together, apart from bugs which are likely common. Going
+> > > forward, most new users should be using pm_runtime_put_autosuspend().
+> > >
+> > > Once this conversion is done and pm_runtime_put_autosuspend() re-purp=
+osed,
+> > > I'll post another set to merge the calls to __pm_runtime_put_autosusp=
+end()
+> > > and pm_runtime_mark_last_busy().
+> >=20
+> > That sounds like it could cause a lot of churns.
+> >=20
+> > Why not add a new helper function that does the
+> > pm_runtime_put_autosuspend() and the pm_runtime_mark_last_busy()
+> > things? Then we can start moving users over to this new interface,
+> > rather than having this intermediate step?
+>=20
+> I think the API would be nicer if we used the shortest and simplest
+> function names for the most common use cases. Following
+> pm_runtime_put_autosuspend() with pm_runtime_mark_last_busy() is that
+> most common use case. That's why I like Sakari's approach of repurposing
+> pm_runtime_put_autosuspend(), and introducing
+> __pm_runtime_put_autosuspend() for the odd cases where
+> pm_runtime_mark_last_busy() shouldn't be called.
 
-Bart.
+That's ok for me. However this patch series isn't the optimal path to
+there because most drivers (i.e. those that already today do
+pm_runtime_mark_last_busy() in combination with
+pm_runtime_put_autosuspend()) have to be patched twice.
 
+The saner route is: Only convert the drivers with a sole
+pm_runtime_put_autosuspend() (i.e. without pm_runtime_mark_last_busy())
+to __pm_runtime_put_autosuspend(). Then add the mark_last_busy() bits to
+pm_runtime_put_autosuspend() and then drop the explicit calls to
+pm_runtime_mark_last_busy() before pm_runtime_put_autosuspend().
+
+(Note this doesn't take into account Rafael's position that
+pm_runtime_put() might be the saner option. My argument applies for that
+conversion analogously.)
+
+Best regards
+Uwe
+
+--2ocqjla6tcmukjn3
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmcFmCEACgkQj4D7WH0S
+/k6xnwf/QOZhbtT562rFFa3JIiBatDxTcqyEXoXClrP7jSyQFY/VFzq2S2jRHOFt
+wM6zQUX1bTUqDtC4HozJIbQDjLxd3qFgc5RoTRLV8VhRJbcq9cOo5Nf1h4KJ5Ip9
+nhpzoHwUHoEjEHj1f9UvEWfnFAVCSLFxgb14ZDHZyb2pQue3G5OYI2f2cJYT8YVB
+xQktDFp7rUu4xWDTzoIxNKvR1Ipy5fGxdf9R2/+IQhW64sWuDG2ZH6tAmfn6mEb8
+ecspbesJx+NMbZ06Zl7wqBvyj/DpQGgPaCnWUQ5cI0Of/kOzqxh4+65JK68CLLs0
+/Goin2zz55IZITGC5zHuAA07bW/c7Q==
+=7Wup
+-----END PGP SIGNATURE-----
+
+--2ocqjla6tcmukjn3--
 
