@@ -4,79 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4B99CEFC39
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 17:47:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79518CEFC3A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 18:29:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VaCy1d6oT42CbA25Y6wFA1tHoxNRupG+1o0LjdZp+XY=; b=geqOMJ6XR0GoceDUKuiJdny2X3
-	JCo4Jy40DqEzhfY2eHGLG+LUE1li386IivevXyf2BUwA9zsAnHotaxhC6+2ikTxNKNCI4/kDkovgD
-	I0lLnqu7VQPFvwDQeTMZwJyDPiOisaPnCfMXgGDzQ+hfG7jSrXvu5IXjIO82RM2CF2H+9ijzrWPoX
-	b8p7I4kUq/BIXLIHTizj4Wy0vvrxrt/H94PMDNtAa1zd9OmwFxlyqk8oy458MTaVzB+XMNtrAxVpr
-	OUT5q9TivJ3xLD8cnDCjTT+iteACVk5OXofFe14Sfq3CyJkg8Bod1VempsbHX5GHocw1lyrBmR18m
-	sJlNQpgQ==;
+	bh=gbTLwyB5anW/NVNa27O4GYEgcT7Zt8zwGlDOBl4w9X4=; b=WJI1ntY37rajCwl2M6d8oPcLuw
+	6wBTKMMnj6GEpE8GrUdsTZj43X1jAvyEeDkHJIDCSxE5F++7a+KmZ7ZdtSZR0DPIMOrLdy20r6KHJ
+	gTWuNqzLwwj2eEQeOy5OtlgGffUURYVa5y1O4LeDlFEBmKAR4d9/A5Bhgb+L1uCNaeDDCuP1JShZU
+	MaULYQtt5HVWoCxfm9m7HMl3qjyHZsn5v6Y5aBaAJ4GFvrbmNR9H7jwg227dm53NlY2sEb1vmCiyp
+	lsuvdFEqZ6uK2w2joyHConidJHw6ohjZIDCJwF0QAXAo4sSzSZl3OYLfc0Aibyb3Ido7Nv81fSkTB
+	vbDaT23A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syEJ4-00000006hdz-2rvU;
-	Tue, 08 Oct 2024 17:47:34 +0000
-Received: from 009.lax.mailroute.net ([199.89.1.12])
+	id 1syExu-00000006mxp-29Dm;
+	Tue, 08 Oct 2024 18:29:46 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syEAq-00000006fjL-3IUg;
-	Tue, 08 Oct 2024 17:39:06 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 009.lax.mailroute.net (Postfix) with ESMTP id 4XNNYL56WLzlgTWP;
-	Tue,  8 Oct 2024 17:39:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1728409138; x=1731001139; bh=VaCy1d6oT42CbA25Y6wFA1tH
-	oxNRupG+1o0LjdZp+XY=; b=wG+lyD59i/sC8Kk0iQQFuI8i8rNant2FyKuJpUIA
-	JdCVSEvTQsusxvuvtfqN7NkPd5ZSIITRDy6LjpWLJ0xTzUdf9zmdYlADhqUyDpTQ
-	hvDLBrLGjtM+IXXD4aQSc5RiWg1u6JqQmWdbKu9ZxNbIgHN4LljFiAySyE1ZkY4p
-	NMr/WGyLAKclUHjidpq52Ki36vSW82suWiHXY6oWcKGS0lTghQKzzi97nCaZNAvF
-	hhKKsc/u0osQ7fDjA52OrwYD7wLej6bIkWXu4uaEMlXEWQn7AjfS0RYrRLRGOY3p
-	2qvNsipIf3CnjQ1gf0wImqn7XH6UxhAH2eNq4eI0yOZURw==
-X-Virus-Scanned: by MailRoute
-Received: from 009.lax.mailroute.net ([127.0.0.1])
- by localhost (009.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id XdEfBOYOx29x; Tue,  8 Oct 2024 17:38:58 +0000 (UTC)
-Received: from [100.66.154.22] (unknown [104.135.204.82])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 009.lax.mailroute.net (Postfix) with ESMTPSA id 4XNNYB1SGJzlgTWK;
-	Tue,  8 Oct 2024 17:38:53 +0000 (UTC)
-Message-ID: <7b3b29ee-8e2d-476b-8edd-290c3f00dc85@acm.org>
-Date: Tue, 8 Oct 2024 10:38:51 -0700
+	id 1syEtQ-00000006mB2-2kG9;
+	Tue, 08 Oct 2024 18:25:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 56F845C5B34;
+	Tue,  8 Oct 2024 18:25:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 427B6C4CECE;
+	Tue,  8 Oct 2024 18:25:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728411907;
+	bh=gbTLwyB5anW/NVNa27O4GYEgcT7Zt8zwGlDOBl4w9X4=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=QWv3+c7hgheNar52dT93kuaRJqQGwrTlm+2qt+dJoGyQzAHIgU0jubrC8ThWhyZIZ
+	 RS8ECJijkXPnKWXZt/DHYo4oNlel2cdA7QmeMfgDuBLkCfLLpl6vQcl4DNTcV5EyFH
+	 5h8XYKukhwE21LUBMtMTij4WxRmO6XhWfjQaEwayPWgg9ncS5s6vbgtpgFKR2d4Ze1
+	 U8RaeSIFzvB8vNoypQgBEdP43kZiPZVbc5vt/+kjhif0hCbio5j23Z7Fbcd2MdU+Eu
+	 u4mqS8NwdiP912BRPYfCL4ckK1zD9U7UpC3cflIOLH9kTp0r9qM6ScGNZWHbmYuBvP
+	 5BPH6goJRp7XQ==
+Received: by mail-oo1-f53.google.com with SMTP id 006d021491bc7-5e5d0a80db4so3217625eaf.3;
+        Tue, 08 Oct 2024 11:25:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCU2XiXnKj1t73wvrzbcJdfVVoHCfOXVrAutCmntPFSr7BxXIEvb24APBh7R1+UvNZMwVrkNCFGp86mP@lists.infradead.org, AJvYcCUL1oVYCjTIKr+eKtAsHYn70N3ZN7GoMBIB+pXUdJeMTAzP3lSOcPyI/7PHHaUmpmgoNPT/QPyhMvrO@lists.infradead.org, AJvYcCV5ZOKTQbbuhhCg26y2eEkKRxXcxdExHP1vv1OruOsiVeXKKT+2v6AljAdfghZsFdmJ6pREtyVe1ucd45DA0r8=@lists.infradead.org, AJvYcCVajjV2zfQ41/AQjYHuEHuTIsoV5oqTkT2mHke8cId5t69hTCbJ6m0XCXoPzrfFhJlhMMMMFVNC9/F3CRHw58OX@lists.infradead.org, AJvYcCX8ic0M2IRUWsDrSjNgI1g2TfO8S6f/EcgoXRJ2XU+VeItEnvAylLIMMRHtH77vuoXHtbUpUqhqUyec@lists.infradead.org
+X-Gm-Message-State: AOJu0YzyXovsFSMGNvLTaibeugS3DnG87i1MaXYHV7g8rBYIpR0PLhN2
+	vyqdPiOhG3t7oNGXcdPxy17B468j9Ft2IEN4ISYTq4oVF1z7L9UjgOePJoXlxEMoqJbMsx56N2d
+	3xqgCbj0lZ6vUI7zhfGs1ASVFD+Y=
+X-Google-Smtp-Source: AGHT+IE8/UzrmOfg0dgL+a7sFpnmZmTmVZlVfZVXeH9h9sR6Zbx0f+k3/XHDUWx/NQFfJo1odWsZ7gtN5j50xL2u+GA=
+X-Received: by 2002:a05:6820:228e:b0:5e1:d741:6f04 with SMTP id
+ 006d021491bc7-5e7cc079979mr12626737eaf.3.1728411906564; Tue, 08 Oct 2024
+ 11:25:06 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] scsi: ufs: ufs-mediatek: configure individual LU queue
- flags
-To: ed.tsai@mediatek.com, peter.wang@mediatek.com,
- Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Stanley Jhu <chu.stanley@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: wsd_upstream@mediatek.com, chun-hung.wu@mediatek.com,
- linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-References: <20241008065950.23431-1-ed.tsai@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20241008065950.23431-1-ed.tsai@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20241004094101.113349-1-sakari.ailus@linux.intel.com>
+ <CAPDyKFp0N6UJhnHS164Tdf=xkWB0jzq65L9TdvYazeBQ-6WjeQ@mail.gmail.com>
+ <20241007184924.GH14766@pendragon.ideasonboard.com> <CAPDyKFpQVnF7eQv3dup8k-3EijnMjuveCG9sZ=Rpey1Y6MBJEg@mail.gmail.com>
+ <20241007222502.GG30699@pendragon.ideasonboard.com> <CAPDyKFrGNwna6Y2pqSRaBbRYHKRaD2ayqQHLtoqLPOu9Et7qTg@mail.gmail.com>
+In-Reply-To: <CAPDyKFrGNwna6Y2pqSRaBbRYHKRaD2ayqQHLtoqLPOu9Et7qTg@mail.gmail.com>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Tue, 8 Oct 2024 20:24:55 +0200
+X-Gmail-Original-Message-ID: <CAJZ5v0jvJyS7D5-wURi2kyWN-rmNa+YqupeQJ000pQRVd9VBcQ@mail.gmail.com>
+Message-ID: <CAJZ5v0jvJyS7D5-wURi2kyWN-rmNa+YqupeQJ000pQRVd9VBcQ@mail.gmail.com>
+Subject: Re: [PATCH 00/51] treewide: Switch to __pm_runtime_put_autosuspend()
+To: Ulf Hansson <ulf.hansson@linaro.org>, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-bluetooth@vger.kernel.org, linux-clk@vger.kernel.org, 
+	linux-crypto@vger.kernel.org, dmaengine@vger.kernel.org, 
+	linux-gpio@vger.kernel.org, amd-gfx@lists.freedesktop.org, 
+	nouveau@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com, 
+	linux-arm-kernel@lists.infradead.org, linux-i2c@vger.kernel.org, 
+	linux-i3c@lists.infradead.org, linux-iio@vger.kernel.org, 
+	linux-input@vger.kernel.org, patches@opensource.cirrus.com, 
+	iommu@lists.linux.dev, imx@lists.linux.dev, 
+	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org, 
+	linux-mmc@vger.kernel.org, linux-mtd@lists.infradead.org, 
+	netdev@vger.kernel.org, linux-wireless@vger.kernel.org, 
+	linux-pci@vger.kernel.org, linux-phy@lists.infradead.org, 
+	linux-pwm@vger.kernel.org, linux-remoteproc@vger.kernel.org, 
+	linux-sound@vger.kernel.org, linux-spi@vger.kernel.org, 
+	linux-staging@lists.linux.dev, linux-usb@vger.kernel.org, 
+	linux-serial@vger.kernel.org, greybus-dev@lists.linaro.org, 
+	asahi@lists.linux.dev, Andy Shevchenko <andy.shevchenko@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241008_103904_888428_6FE45165 
-X-CRM114-Status: UNSURE (   9.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241008_112508_818533_882C8E59 
+X-CRM114-Status: GOOD (  39.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,22 +102,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/7/24 11:59 PM, ed.tsai@mediatek.com wrote:
-> +static void ufs_mtk_config_scsi_dev(struct scsi_device *sdev)
-> +{
-> +	struct ufs_hba *hba = shost_priv(sdev->host);
-> +
-> +	dev_dbg(hba->dev, "lu %llu scsi device configured", sdev->lun);
-> +	if (sdev->lun == 2)
-> +		blk_queue_flag_set(QUEUE_FLAG_SAME_FORCE, sdev->reqeust_queue);
-> +}
+On Tue, Oct 8, 2024 at 12:35=E2=80=AFAM Ulf Hansson <ulf.hansson@linaro.org=
+> wrote:
+>
+> On Tue, 8 Oct 2024 at 00:25, Laurent Pinchart
+> <laurent.pinchart@ideasonboard.com> wrote:
+> >
+> > Hi Ulf,
+> >
+> > On Tue, Oct 08, 2024 at 12:08:24AM +0200, Ulf Hansson wrote:
+> > > On Mon, 7 Oct 2024 at 20:49, Laurent Pinchart wrote:
+> > > > On Fri, Oct 04, 2024 at 04:38:36PM +0200, Ulf Hansson wrote:
+> > > > > On Fri, 4 Oct 2024 at 11:41, Sakari Ailus wrote:
+> > > > > >
+> > > > > > Hello everyone,
+> > > > > >
+> > > > > > This set will switch the users of pm_runtime_put_autosuspend() =
+to
+> > > > > > __pm_runtime_put_autosuspend() while the former will soon be re=
+-purposed
+> > > > > > to include a call to pm_runtime_mark_last_busy(). The two are a=
+lmost
+> > > > > > always used together, apart from bugs which are likely common. =
+Going
+> > > > > > forward, most new users should be using pm_runtime_put_autosusp=
+end().
+> > > > > >
+> > > > > > Once this conversion is done and pm_runtime_put_autosuspend() r=
+e-purposed,
+> > > > > > I'll post another set to merge the calls to __pm_runtime_put_au=
+tosuspend()
+> > > > > > and pm_runtime_mark_last_busy().
+> > > > >
+> > > > > That sounds like it could cause a lot of churns.
+> > > > >
+> > > > > Why not add a new helper function that does the
+> > > > > pm_runtime_put_autosuspend() and the pm_runtime_mark_last_busy()
+> > > > > things? Then we can start moving users over to this new interface=
+,
+> > > > > rather than having this intermediate step?
+> > > >
+> > > > I think the API would be nicer if we used the shortest and simplest
+> > > > function names for the most common use cases. Following
+> > > > pm_runtime_put_autosuspend() with pm_runtime_mark_last_busy() is th=
+at
+> > > > most common use case. That's why I like Sakari's approach of repurp=
+osing
+> > > > pm_runtime_put_autosuspend(), and introducing
+> > > > __pm_runtime_put_autosuspend() for the odd cases where
+> > > > pm_runtime_mark_last_busy() shouldn't be called.
+> > >
+> > > Okay, so the reason for this approach is because we couldn't find a
+> > > short and descriptive name that could be used in favor of
+> > > pm_runtime_put_autosuspend(). Let me throw some ideas at it and maybe
+> > > you like it - or not. :-)
+> >
+> > I like the idea at least :-)
+> >
+> > > I don't know what options you guys discussed, but to me the entire
+> > > "autosuspend"-suffix isn't really that necessary in my opinion. There
+> > > are more ways than calling pm_runtime_put_autosuspend() that triggers
+> > > us to use the RPM_AUTO flag for rpm_suspend(). For example, just
+> > > calling pm_runtime_put() has the similar effect.
+> >
+> > To be honest, I'm lost there. pm_runtime_put() calls
+> > __pm_runtime_idle(RPM_GET_PUT | RPM_ASYNC), while
+> > pm_runtime_put_autosuspend() calls __pm_runtime_suspend(RPM_GET_PUT |
+> > RPM_ASYNC | RPM_AUTO).
+>
+> __pm_runtime_idle() ends up calling rpm_idle(), which may call
+> rpm_suspend() - if it succeeds to idle the device. In that case, it
+> tags on the RPM_AUTO flag in the call to rpm_suspend(). Quite similar
+> to what is happening when calling pm_runtime_put_autosuspend().
 
-There are no block drivers in the upstream kernel that set
-QUEUE_FLAG_SAME_FORCE. An explanation is missing from the patch
-description why this flag is set from the UFS driver instead of by
-writing the value "2" into /sys/class/block/$bdev/queue/rq_affinity.
-Additionally, an explanation is missing why QUEUE_FLAG_SAME_FORCE is
-set but QUEUE_FLAG_SAME_COMP not.
+Right.
 
-Bart.
+For almost everybody, except for a small bunch of drivers that
+actually have a .runtime_idle() callback, pm_runtime_put() is
+literally equivalent to pm_runtime_put_autosuspend().
+
+So really the question is why anyone who doesn't provide a
+.runtime_idle() callback bothers with using this special
+pm_runtime_put_autosuspend() thing, which really means "do a
+runtime_put(), but skip my .runtime_idle() callback".
+
+> >
+> > >
+> > > Moreover, it's similar for pm_runtime_mark_last_busy(), it's called
+> > > during rpm_resume() too, for example. So why bother about having
+> > > "mark_last_busy" in the new name too.
+> > >
+> > > That said, my suggestion is simply "pm_runtime_put_suspend".
+> >
+> > Can we do even better, and make pm_runtime_put() to handle autosuspend
+> > automatically when autosuspend is enabled ?
+>
+> As stated above, this is already the case.
+
+What really is needed appears to be a combination of
+pm_runtime_mark_last_busy() with pm_runtime_put().
+
+Granted, pm_runtime_put() could do the pm_runtime_mark_last_busy()
+thing automatically if autosuspend is enabled and the only consequence
+of it might be delaying a suspend of the device until its autosuspend
+timer expires, which should not be a problem in the vast majority of
+cases.
 
