@@ -4,66 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA30DCFA754
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 09:01:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E78FCFB45C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 09:22:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I5mJB4/13yI8vhQPjlN2QCyvEbKu6o3GwCNkMIyZ4dY=; b=kIYDGjlW7tydr2x/KpQ44yDSJS
-	wpP1ozqglkzxgPv0bfHEiHGx7Pi50orCSH+O9r94RIN3K/enUAcm1x8wTOhaZoxoGYE6g7VvQ5dxb
-	nSteJY8D9gu708yjpdO7eU1n4d20LgnHC34epOw7laXksgGHNAdcjy5TVMtL5u4AZAsFd3aNUYRuw
-	Sg8uvWeWFxzCahZ/diski9j/v73T4sL0ixWy+GO5Y4HV35DwLUrl0DYiPnGb+Pv9/W8uLe+jTCL7I
-	M+/t4l+fvUNjpJ4MpL+FbvwzswYyJzc2YMb2JB288425Y1KHp2UeWczuDBTpR3S7jCi5Zb3+uhsQb
-	T/OTszHQ==;
+	bh=lDkXQp3klblKZwyoVU+ykoHt1OOVDmCxMMzo0kUi5jA=; b=nOtCLVWIw1/59Wza3q6DOmQQto
+	2llkgArw7HZ2Au8vSCWlquMINtJkOMZ47VktbNbYt/cdEnJYl8RBI1IAtDgQ5pzPr7FkmVcjWiZoQ
+	AnR9CWXexUuOMcpJZ4a8tOTTYe3r3isABegH8UfHC2vlikFGRRW42NTIbpy+VsRGaKIYu60poBY2A
+	DcdlWYQxq/yrlGrxASwrHcEoESkythkCpF/NVKz68fmhv4aShqXQQBCPiAteDxeEKWM1r/LKdHmli
+	5WZoX1EKfBJ+4FrcGFxje2vXlFK4iMFI5S6v55wc2/3WRSOOCSd1DwSob6cQlwSfaO912YXVvxeJ4
+	CFz3DwYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy66I-00000005CeW-00e7;
-	Tue, 08 Oct 2024 09:01:50 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1sy6QW-00000005HFn-2onn;
+	Tue, 08 Oct 2024 09:22:44 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy60B-00000005AIJ-2xAL;
-	Tue, 08 Oct 2024 08:55:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1728377730;
-	bh=rvjGmFEsoc0/TUD1jfFG2aFMzQUg4L/iSKC6A+/Qo7E=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=Zykpkf0SnNylPL05nhtlqxHronlK952S9bxwc2slA0PKGVnU0lDmZMFov/NJULfoT
-	 mZPDh/f9R3kWqGn13jrZzlUq6UZyqGPrEeJugWlIqs+nvrdyVAYunFUhKBV7PvfA19
-	 10l52WpC4JQTuXUt2nwpKKNYJ0gBB8MBMr5wOeBTmgwH45bq4bGnrLsjjf0i39Lk7C
-	 hFPKv1tX6l1fyxooUt72qsgFX4ny+lXUBiQcK1exeqvjtLeenDLNdMNkVj6hP4Ggsq
-	 B5mtsHJKzARmWnE1PWIl2soqTE1btxukiSy6MVTrFag+CVnUf/rtNqOXRGcaA7uWUJ
-	 X184jTVamDxHg==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AEE9F17E10C2;
-	Tue,  8 Oct 2024 10:55:29 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Enric Balletbo i Serra <eballetbo@kernel.org>, Ben Ho <Ben.Ho@mediatek.com>, 
- Hsin-Yi Wang <hsinyi@chromium.org>, Nicolas Boichat <drinkcat@chromium.org>, 
- Hsin-Te Yuan <yuanhsinte@chromium.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20240909-eeprom-v1-0-1ed2bc5064f4@chromium.org>
-References: <20240909-eeprom-v1-0-1ed2bc5064f4@chromium.org>
-Subject: Re: [PATCH 0/2] Fix the address of eeprom of mt8183-kukui
-Message-Id: <172837772966.33303.10861074513601839928.b4-ty@collabora.com>
-Date: Tue, 08 Oct 2024 10:55:29 +0200
+	id 1sy5Bc-00000004vny-1WZn;
+	Tue, 08 Oct 2024 08:03:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=lDkXQp3klblKZwyoVU+ykoHt1OOVDmCxMMzo0kUi5jA=; b=oR6svsn3ftvHplFYUgpJgtzi5B
+	GgnVF/AcmT7uQXaufSZLtAdToJ2bjUplEZ3UZQPjtdeGehz358/zbfWjG8pJbbMSw+1EPnEZ8JNi8
+	p/XFQ+vOTVcfOZkqzhdqdlV4bv1wQRrtQIyLDnxZSpwTcX2GXQ6vokuE4tU/tZDq96yfeWWAbyUor
+	vfzr2Mf9HZmXaJokCJK3R39tTiY60v5Lw3Ol1M4jpw8mR/SFNkdMMtvu95PSLiaW17gzLQDc+OyR3
+	sse4oxWnrDp44plmq1tcKHyHebdkWr7yEMMS2C1+zPO9SBkQlaassaZfFPwi0HYjkEgQ00WBbzGxS
+	QsAxTmBA==;
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1sy5BZ-00000004Znx-0Pr5;
+	Tue, 08 Oct 2024 08:03:15 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6F0E25C5AA6;
+	Tue,  8 Oct 2024 08:03:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 912F0C4CED1;
+	Tue,  8 Oct 2024 08:03:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728374589;
+	bh=NOGUu+4GRZgm2gTL6ki7p3WC8al/XzsCuGw5LntOwoY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ESoEdtfuuotIVRHqMx52NEyGz9Of9Bvp32Z1+lmr8M3V5aAE8BH/C4Amy2jhGGxZa
+	 B3nKwov334DSJD87nPqMmDlrVojx8YHlJ4qsPu3z14+bodo7p/YdI6flwVVkO/yK0J
+	 2dJgIxT6P/G8U+AJxwgCg/MYhMBDH32KrxrdQF29aeUYpMWSRfYVuOaCb9JWz61NR+
+	 8HW0ehOGKju/nq7qLLUPn4Vre/VQlYZ6Aho1q44bZkdu8DgkKUx5uufSx7kxsWTLqm
+	 bvugiQvajRxSSZWB5UOHhWLCIe2Cd5yefRRLZPPvc64LMx+O/jdPCKSVTY6rZ/XQ2H
+	 xSzl4ElambGqA==
+Message-ID: <d815a43b-4ee4-4b59-8ea5-4318d8670b50@kernel.org>
+Date: Tue, 8 Oct 2024 10:03:02 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] dt-bindings: input: mediatek,pmic-keys: Add compatible
+ for MT6359 keys
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ dmitry.torokhov@gmail.com
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, chen.zhong@mediatek.com,
+ linux-input@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, macpaul.lin@mediatek.com,
+ kernel@collabora.com
+References: <20241008074137.20269-1-angelogioacchino.delregno@collabora.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20241008074137.20269-1-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241008_015531_923571_5FBF3D56 
-X-CRM114-Status: UNSURE (   7.65  )
+X-CRM114-CacheID: sfid-20241008_090313_536699_B4A172F8 
+X-CRM114-Status: UNSURE (   7.54  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,21 +136,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 09 Sep 2024 08:33:45 +0000, Hsin-Te Yuan wrote:
-> The address of eeprom should be 50. The fixed commit in krane one is
-> older than the rest, so split it for backporting.
+On 08/10/2024 09:41, AngeloGioacchino Del Regno wrote:
+> Add a compatible for the keys found on the MT6359 PMIC.
 > 
-> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 
-Applied to v6.12-next/dts64, thanks!
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-[1/2] arm64: dts: mt8183: krane: Fix the address of eeprom at i2c4
-      https://git.kernel.org/mediatek/c/d7f3e27b
-[2/2] arm64: dts: mt8183: kukui: Fix the address of eeprom at i2c4
-      https://git.kernel.org/mediatek/c/c2f1aa44
-
-Cheers,
-Angelo
-
+Best regards,
+Krzysztof
 
 
