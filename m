@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D77CCED274
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 07:45:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBCFCCED274
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 07:48:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UEuFmft0e4Wtysiszb/Zk0AJE044n2Mq/KZtCEKLxt0=; b=qLTCcAlQIzTcVB4bz8p7TkSa+x
-	McG49XROrs3KC1Qw1CZCDamjo0mx9tM3D4X5jLlMBN4oLoIkwjMEb0UkZRnr80Sq8LhglC5/8w7LK
-	E1ID4/eJNCWhpMFLPZffluGR3IMt0u4195k84aH5QavBeqM4OCXaVHrgkqmpLc7qEWj9/1IejvWXB
-	7fDmeMZjqLiRwlNm7M1SNDNVl5VpRyRsD3732fWuPxe3kA8M+IXIowmxJ1E5Ar6MGXEcKnvd9/0aO
-	vmq7/COZJPcKE8V+iuPe8s0wDcG5Rk9i6hMo/rUMWB8OsVtvZfbumw1XdvDZaIGlN9hy+tUwpkaEr
-	mHAFAdTA==;
+	bh=rRqF7tYub+2EkqSuZ1uTkrLo9OIWymzvByM/M/beQ30=; b=nRkIELbTWr5/FCgo2/PD3Z5tUD
+	IgzIhWv6x5ML4IzdDPmTLas2tvhop//RsSEszjNhEqRFIe3/GZq59dyEVtfiYQH70uaIUGyhk9JBu
+	YBhcYEFcHKTyzBXTNABPkYsvtPLUVwGLFpQNQ54Kh+xzz+FxkctD9PlTRU6pTjNlfTH+kXNwfXaLE
+	kcC1DXsDrADblA/aIzImZxYp77pg/svy2EGPVF4MjvoO0Q4eywCKG+vfkgXmPaJS9kcovB5Z6Cliu
+	B8inbWUE5SZZV/elLLDcN+uIXC/7n5KHMXBU9ucqQXABI73G5c7f/rw11YeTkKeEIsFOk8Io+yCkV
+	4WFzQgnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy4uZ-00000004rSs-1upW;
-	Tue, 08 Oct 2024 07:45:39 +0000
+	id 1sy4x5-00000004ro5-45NW;
+	Tue, 08 Oct 2024 07:48:15 +0000
 Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy4kW-00000004oV5-2Fq4
+	id 1sy4kd-00000004oXP-0P5S
 	for linux-mediatek@lists.infradead.org;
-	Tue, 08 Oct 2024 07:35:18 +0000
-Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-20c56b816faso3259305ad.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 08 Oct 2024 00:35:16 -0700 (PDT)
+	Tue, 08 Oct 2024 07:35:24 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-20b84bfbdfcso40849865ad.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 08 Oct 2024 00:35:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1728372916; x=1728977716; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1728372922; x=1728977722; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=UEuFmft0e4Wtysiszb/Zk0AJE044n2Mq/KZtCEKLxt0=;
-        b=HRn3V07PeBJog9kUva2zT353NVO6vrBufQKTZ/GNIAzXKwUDV3sZNgmZemsIjiF/2N
-         2bIxWr9FT3pRgKKZSM+aO4k+BSuxWyZI7pYmliWHN38COTJ6mt708UMcxIKP9NyZ7CP9
-         kzra4rt6uYFshkc9/inCYJroDYsdQwyQWgRs8=
+        bh=rRqF7tYub+2EkqSuZ1uTkrLo9OIWymzvByM/M/beQ30=;
+        b=UnaJ5dmxSce4kTWGsfxKDsQTI95IY3pvZMyDMbLZ0vPl2pcXla7LmnDvUNgFktkjFy
+         Z0eabyk9tFsFDVD1yD21TDNBc3+4d0lmSXPA5f3cdsXzRqNnLYZ3c4/6IrHGvxw/eQGC
+         Dj7zaEQwJl1TcuJV/YbDGGfZ6snzxDwP/XBIo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728372916; x=1728977716;
+        d=1e100.net; s=20230601; t=1728372922; x=1728977722;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=UEuFmft0e4Wtysiszb/Zk0AJE044n2Mq/KZtCEKLxt0=;
-        b=nKuZsjC/ETppXYUXi8V3ro2GsSIXkRcHJrRi1e8jffZY4J435fpewlBiIAE1qS0n01
-         aUREoX328QuU4yB+e8qw9oMoBOifg5bEngHcyzLMX4XvQ9VsjoAcVMszUXiNjVe+oMYK
-         qnHEAKDFMIUcHeuziuPt3RZ9Bm/Sb/uY3xN5p2GEyIhAF+d5dGFnVmnJAoZdGhnKNuhR
-         7cjsMFeQ+NSxDYiIyUdm5m8J7q4yTQtKlYbYW48pzu5SHQbFJQ5ZKim9TC/Uelvi8MR0
-         7zJ4x2i3iX1LcYwsTSTSBNbQme2+fSzcxePc4aJPFkVtTC+FNeHBiRJVfQwjelLep84k
-         nbGA==
-X-Forwarded-Encrypted: i=1; AJvYcCVOxt0bGo+0ELe2oe2YbbSGq5rB6ZXOGnLjdkaRSIsEoc0vkOj8INfjWe9K6R6Ub752WHzk24LX34toFfOdIg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzzq2hW/EB1RHyuqxKyZyFaJiwQFaF67hIa/ekvKqdUpt24SnG2
-	990JnzZhRS9ttQFxladbqK9T84n1hjwkToyBd34x+0BS0op8X7g1eJ+oFK1jVw==
-X-Google-Smtp-Source: AGHT+IECQ3UIOFmM6QFAAt+c+JKTumdKBApCAqjlUY/FX90R8bDHdQEoCXoGGNBag9iDS4FdnUJ2eg==
-X-Received: by 2002:a17:902:ea11:b0:20b:7a31:4522 with SMTP id d9443c01a7336-20bff04a762mr220421285ad.42.1728372915880;
-        Tue, 08 Oct 2024 00:35:15 -0700 (PDT)
+        bh=rRqF7tYub+2EkqSuZ1uTkrLo9OIWymzvByM/M/beQ30=;
+        b=OrBWzkvUaXatBD+P5zphxuJ00tl0XSGg2ZkKcijpr5vModgIYN08u2hwnMbxbgZTpR
+         nl8+LJ6wcuHz/dbHxPsDO7XxB/OxrCkHp2CoaCp6Vunv1ZVDAW+7C6dbACPQw2xXkZsl
+         iOQpTnk4o4B6KSOAA8E2DGvVSrLRwRZtD0xFr8wWw3nyP48e+1PzSWEVkZPRdABMF2KI
+         iofDAdmF1sDg8W++cOE3hQsp2erty+gJR7tZwrHCwepq3TQ6jdB5nGR4Q9wH6Vamrzwc
+         6B12bkJph7+WuWo1nb08lZypwfgmm2D3C0DsNgGBsI+utL/26R9QKjsmSUBe2Bd0dwq8
+         mD7Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVBjR9fEV1RQnVI5zVYqPZy7kIL3Zdreakhk80PHyHwIwEnqHDmasnjURkBv6uFSCn4G9cUP4+iVPIuxrlcTw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwOgMOfBfAw1jzGvJhW4BSb/QIXp+UsWb1CjYYb/LsV5PTgVKiC
+	XTt4tVLZvGqYhKJpkMJ6MLHKXoay48quA7BVHcsi6eTq1K6vlKwjqxfaQrXzOQ==
+X-Google-Smtp-Source: AGHT+IHVIYoz0MFK/EPGojfbt2w6EOCEpm1zuic+gaAdvtoC926/wd5CQChYfjNS8A7rV1WBkdyXug==
+X-Received: by 2002:a17:902:e805:b0:20b:59ae:fe1d with SMTP id d9443c01a7336-20c4e361752mr38076715ad.25.1728372922579;
+        Tue, 08 Oct 2024 00:35:22 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:10df:d27e:8d4b:6740])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c13939bd7sm50121175ad.120.2024.10.08.00.35.12
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c13939bd7sm50121175ad.120.2024.10.08.00.35.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 08 Oct 2024 00:35:15 -0700 (PDT)
+        Tue, 08 Oct 2024 00:35:22 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Rob Herring <robh@kernel.org>,
 	Saravana Kannan <saravanak@google.com>,
@@ -79,17 +79,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	Jiri Kosina <jikos@kernel.org>,
 	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
 	linux-i2c@vger.kernel.org
-Subject: [PATCH v8 6/8] i2c: of-prober: Add GPIO support to simple helpers
-Date: Tue,  8 Oct 2024 15:34:25 +0800
-Message-ID: <20241008073430.3992087-7-wenst@chromium.org>
+Subject: [PATCH v8 8/8] arm64: dts: mediatek: mt8173-elm-hana: Mark touchscreens and trackpads as fail
+Date: Tue,  8 Oct 2024 15:34:27 +0800
+Message-ID: <20241008073430.3992087-9-wenst@chromium.org>
 X-Mailer: git-send-email 2.47.0.rc0.187.ge670bccf7e-goog
 In-Reply-To: <20241008073430.3992087-1-wenst@chromium.org>
 References: <20241008073430.3992087-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241008_003516_612194_1F2E43C1 
-X-CRM114-Status: GOOD (  32.63  )
+X-CRM114-CacheID: sfid-20241008_003523_171100_5BCA58A8 
+X-CRM114-Status: GOOD (  14.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,299 +104,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add GPIO support to the simple helpers for the I2C OF component prober.
-Components that the prober intends to probe likely require their
-regulator supplies be enabled, and GPIOs be toggled to enable them or
-bring them out of reset before they will respond to probe attempts.
-Regulator supplies were handled in the previous patch.
+Instead of having them all available, mark them all as "fail-needs-probe"
+and have the implementation try to probe which one is present.
 
-The assumption is that the same class of components to be probed are
-always connected in the same fashion with the same regulator supply
-and GPIO. The names may vary due to binding differences, but the
-physical layout does not change.
-
-This supports at most one GPIO pin. The user must specify the GPIO name,
-the polarity, and the amount of time to wait after the GPIO is toggled.
-Devices with more than one GPIO pin likely require specific power
-sequencing beyond what generic code can easily support.
+Also remove the shared resource workaround by moving the pinctrl entry
+for the trackpad interrupt line back into the individual trackpad nodes.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-
 ---
 Changes since v7:
-- Dropped mention of time unit in struct i2c_of_probe_simple_opts
-  kernel doc (Andy)
-- Added check for non-zero delay before msleep() (Doug)
-- Simplified GPIO name check and reverse conditional branches (Andy)
-- Added description about the supported power sequence
-- Switched GPIO usage to logical levels (Doug)
-  - Changed some variable names and comments to fit
-- Added description of power sequence to struct i2c_of_probe_simple_opts
-  (Doug)
-- Added comment saying i2c_of_probe_simple_put_gpiod() might be no-op
-  (Doug)
-- Combined callbacks (.get_resources with .enable; .cleanup with
-  .free_resources_late); renamed i2c_of_probe_simple_free_res_early() to
-  i2c_of_probe_simple_cleanup_early()
+- Mark touchscreen@40 as "fail-needs-probe" as well
 
 Changes since v6:
-- Restructured into helpers for the I2C OF component prober
-- Reduced to only handle one GPIO
-- Set GPIO to input on (failure) cleanup
-- Updated commit message
+none
 
 Changes since v5:
-- Renamed "con" to "propname" in i2c_of_probe_get_gpiod()
-- Copy string first and check return value of strscpy() for overflow in
-  i2c_of_probe_get_gpiod()
-- Add parenthesis around "enable" and "reset" GPIO names in comments
-- Split resource count debug message into two separate lines
-- Split out GPIO helper from i2c_of_probe_enable_res() to keep code
-  cleaner following the previous patch
-- Adopted options for customizing power sequencing delay following
-  previous patch
+none
 
 Changes since v4:
-- Split out from previous patch
-- Moved GPIO property name check to common function in gpiolib.c in new
-  patch
-- Moved i2c_of_probe_free_gpios() into for_each_child_of_node_scoped()
-- Rewrote in gpiod_*_array-esque fashion
----
- drivers/i2c/i2c-core-of-prober.c | 104 ++++++++++++++++++++++++++++++-
- include/linux/i2c-of-prober.h    |  20 ++++++
- 2 files changed, 122 insertions(+), 2 deletions(-)
+- Rebased
 
-diff --git a/drivers/i2c/i2c-core-of-prober.c b/drivers/i2c/i2c-core-of-prober.c
-index d7f51ff872b8..b84e88624b63 100644
---- a/drivers/i2c/i2c-core-of-prober.c
-+++ b/drivers/i2c/i2c-core-of-prober.c
-@@ -10,6 +10,7 @@
- #include <linux/device.h>
- #include <linux/dev_printk.h>
- #include <linux/err.h>
-+#include <linux/gpio/consumer.h>
- #include <linux/i2c.h>
- #include <linux/i2c-of-prober.h>
- #include <linux/module.h>
-@@ -30,7 +31,6 @@
-  * address responds.
-  *
-  * TODO:
-- * - Support handling common GPIOs.
-  * - Support I2C muxes
-  */
+Changes since v3:
+- Also remove second source workaround, i.e. move the interrupt line
+  pinctrl entry from the i2c node back to the components.
+
+Changes since v2:
+- Drop class from status
+---
+ arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi | 14 ++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi      |  4 ++--
+ 2 files changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
+index e03474702cad..d9abd68da369 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
+@@ -14,6 +14,7 @@ touchscreen2: touchscreen@34 {
+ 		compatible = "melfas,mip4_ts";
+ 		reg = <0x34>;
+ 		interrupts-extended = <&pio 88 IRQ_TYPE_LEVEL_LOW>;
++		status = "fail-needs-probe";
+ 	};
  
-@@ -239,6 +239,66 @@ static void i2c_of_probe_simple_disable_regulator(struct device *dev, struct i2c
- 	regulator_disable(ctx->supply);
- }
+ 	/*
+@@ -26,6 +27,7 @@ touchscreen3: touchscreen@20 {
+ 		reg = <0x20>;
+ 		hid-descr-addr = <0x0020>;
+ 		interrupts-extended = <&pio 88 IRQ_TYPE_LEVEL_LOW>;
++		status = "fail-needs-probe";
+ 	};
  
-+static int i2c_of_probe_simple_get_gpiod(struct device *dev, struct device_node *node,
-+					 struct i2c_of_probe_simple_ctx *ctx)
-+{
-+	struct fwnode_handle *fwnode = of_fwnode_handle(node);
-+	struct gpio_desc *gpiod;
-+	const char *con_id;
-+
-+	/* NULL signals no GPIO needed */
-+	if (!ctx->opts->gpio_name)
-+		return 0;
-+
-+	/* An empty string signals an unnamed GPIO */
-+	if (!ctx->opts->gpio_name[0])
-+		con_id = NULL;
-+	else
-+		con_id = ctx->opts->gpio_name;
-+
-+	gpiod = fwnode_gpiod_get_index(fwnode, con_id, 0, GPIOD_ASIS, "i2c-of-prober");
-+	if (IS_ERR(gpiod))
-+		return PTR_ERR(gpiod);
-+
-+	ctx->gpiod = gpiod;
-+
-+	return 0;
-+}
-+
-+static void i2c_of_probe_simple_put_gpiod(struct i2c_of_probe_simple_ctx *ctx)
-+{
-+	gpiod_put(ctx->gpiod);
-+	ctx->gpiod = NULL;
-+}
-+
-+static int i2c_of_probe_simple_set_gpio(struct device *dev, struct i2c_of_probe_simple_ctx *ctx)
-+{
-+	int ret;
-+
-+	if (!ctx->gpiod)
-+		return 0;
-+
-+	dev_dbg(dev, "Configuring GPIO\n");
-+
-+	ret = gpiod_direction_output(ctx->gpiod, ctx->opts->gpio_assert_to_enable);
-+	if (ret)
-+		return ret;
-+
-+	if (ctx->opts->post_gpio_config_delay_ms)
-+		msleep(ctx->opts->post_gpio_config_delay_ms);
-+
-+	return 0;
-+}
-+
-+static void i2c_of_probe_simple_disable_gpio(struct device *dev, struct i2c_of_probe_simple_ctx *ctx)
-+{
-+	if (!ctx->gpiod)
-+		return;
-+
-+	/* Ignore error if GPIO is not in output direction */
-+	gpiod_set_value(ctx->gpiod, !ctx->opts->gpio_assert_to_enable);
-+}
-+
- /**
-  * i2c_of_probe_simple_enable - Simple helper for I2C OF prober to get and enable resources
-  * @dev: Pointer to the &struct device of the caller, only used for dev_printk() messages
-@@ -246,7 +306,11 @@ static void i2c_of_probe_simple_disable_regulator(struct device *dev, struct i2c
-  * @data: Pointer to &struct i2c_of_probe_simple_ctx helper context.
-  *
-  * If &i2c_of_probe_simple_opts->supply_name is given, request the named regulator supply.
-+ * If &i2c_of_probe_simple_opts->gpio_name is given, request the named GPIO. Or if it is
-+ * the empty string, request the unnamed GPIO.
-  * If a regulator supply was found, enable that regulator.
-+ * If a GPIO line was found, configure the GPIO line to output and set value
-+ * according to given options.
-  *
-  * Return: %0 on success or no-op, or a negative error number on failure.
-  */
-@@ -275,12 +339,24 @@ int i2c_of_probe_simple_enable(struct device *dev, struct device_node *bus_node,
- 	if (ret)
- 		goto out_put_node;
- 
--	ret = i2c_of_probe_simple_enable_regulator(dev, ctx);
-+	ret = i2c_of_probe_simple_get_gpiod(dev, node, ctx);
- 	if (ret)
- 		goto out_put_supply;
- 
-+	ret = i2c_of_probe_simple_enable_regulator(dev, ctx);
-+	if (ret)
-+		goto out_put_gpiod;
-+
-+	ret = i2c_of_probe_simple_set_gpio(dev, ctx);
-+	if (ret)
-+		goto out_disable_regulator;
-+
- 	return 0;
- 
-+out_disable_regulator:
-+	i2c_of_probe_simple_disable_regulator(dev, ctx);
-+out_put_gpiod:
-+	i2c_of_probe_simple_put_gpiod(ctx);
- out_put_supply:
- 	i2c_of_probe_simple_put_supply(ctx);
- out_put_node:
-@@ -289,17 +365,40 @@ int i2c_of_probe_simple_enable(struct device *dev, struct device_node *bus_node,
- }
- EXPORT_SYMBOL_NS_GPL(i2c_of_probe_simple_enable, I2C_OF_PROBER);
- 
-+/**
-+ * i2c_of_probe_simple_cleanup_early - \
-+ *	Simple helper for I2C OF prober to release GPIOs before component is enabled
-+ * @dev: Pointer to the &struct device of the caller; unused.
-+ * @data: Pointer to &struct i2c_of_probe_simple_ctx helper context.
-+ *
-+ * GPIO descriptors are exclusive and have to be released before the
-+ * actual driver probes so that the latter can acquire them.
-+ */
-+void i2c_of_probe_simple_cleanup_early(struct device *dev, void *data)
-+{
-+	struct i2c_of_probe_simple_ctx *ctx = data;
-+
-+	i2c_of_probe_simple_put_gpiod(ctx);
-+}
-+EXPORT_SYMBOL_NS_GPL(i2c_of_probe_simple_cleanup_early, I2C_OF_PROBER);
-+
- /**
-  * i2c_of_probe_simple_cleanup - Clean up and release resources for I2C OF prober simple helpers
-  * @dev: Pointer to the &struct device of the caller, only used for dev_printk() messages
-  * @data: Pointer to &struct i2c_of_probe_simple_ctx helper context.
-  *
-+ * * If a GPIO line was found and not yet released, set its value to the opposite of that
-+ *   set in i2c_of_probe_simple_enable() and release it.
-  * * If a regulator supply was found, disable that regulator and release it.
-  */
- void i2c_of_probe_simple_cleanup(struct device *dev, void *data)
- {
- 	struct i2c_of_probe_simple_ctx *ctx = data;
- 
-+	/* GPIO operations here are no-ops if a component was found and enabled. */
-+	i2c_of_probe_simple_disable_gpio(dev, ctx);
-+	i2c_of_probe_simple_put_gpiod(ctx);
-+
- 	i2c_of_probe_simple_disable_regulator(dev, ctx);
- 	i2c_of_probe_simple_put_supply(ctx);
- }
-@@ -307,6 +406,7 @@ EXPORT_SYMBOL_NS_GPL(i2c_of_probe_simple_cleanup, I2C_OF_PROBER);
- 
- struct i2c_of_probe_ops i2c_of_probe_simple_ops = {
- 	.enable = i2c_of_probe_simple_enable,
-+	.cleanup_early = i2c_of_probe_simple_cleanup_early,
- 	.cleanup = i2c_of_probe_simple_cleanup,
- };
- EXPORT_SYMBOL_NS_GPL(i2c_of_probe_simple_ops, I2C_OF_PROBER);
-diff --git a/include/linux/i2c-of-prober.h b/include/linux/i2c-of-prober.h
-index c4938a34b901..513ab37b72a5 100644
---- a/include/linux/i2c-of-prober.h
-+++ b/include/linux/i2c-of-prober.h
-@@ -80,6 +80,7 @@ int i2c_of_probe_component(struct device *dev, const struct i2c_of_probe_cfg *cf
-  *
-  * The following helpers are provided:
-  * * i2c_of_probe_simple_enable()
-+ * * i2c_of_probe_simple_cleanup_early()
-  * * i2c_of_probe_simple_cleanup()
-  */
- 
-@@ -87,24 +88,43 @@ int i2c_of_probe_component(struct device *dev, const struct i2c_of_probe_cfg *cf
-  * struct i2c_of_probe_simple_opts - Options for simple I2C component prober callbacks
-  * @res_node_compatible: Compatible string of device node to retrieve resources from.
-  * @supply_name: Name of regulator supply.
-+ * @gpio_name: Name of GPIO. NULL if no GPIO line is used. Empty string ("") if GPIO
-+ *	       line is unnamed.
-  * @post_power_on_delay_ms: Delay after regulators are powered on. Passed to msleep().
-+ * @post_gpio_config_delay_ms: Delay after GPIO is configured. Passed to msleep().
-+ * @gpio_assert_to_enable: %true if GPIO should be asserted, i.e. set to logical high,
-+ *			   to enable the component.
-+ *
-+ * This describes power sequences common for the class of components supported by the
-+ * simple component prober:
-+ * * @gpio_name is configured to the non-active setting according to @gpio_assert_to_enable.
-+ * * @supply_name regulator supply is enabled.
-+ * * Wait for @post_power_on_delay_ms to pass.
-+ * * @gpio_name is configured to the active setting according to @gpio_assert_to_enable.
-+ * * Wait for @post_gpio_config_delay_ms to pass.
-  */
- struct i2c_of_probe_simple_opts {
- 	const char *res_node_compatible;
- 	const char *supply_name;
-+	const char *gpio_name;
- 	unsigned int post_power_on_delay_ms;
-+	unsigned int post_gpio_config_delay_ms;
-+	bool gpio_assert_to_enable;
+ 	/* Lenovo Ideapad C330 uses G2Touch touchscreen as a 2nd source touchscreen */
+@@ -35,6 +37,7 @@ touchscreen@40 {
+ 		hid-descr-addr = <0x0001>;
+ 		interrupt-parent = <&pio>;
+ 		interrupts = <88 IRQ_TYPE_LEVEL_LOW>;
++		status = "fail-needs-probe";
+ 	};
  };
  
- struct regulator;
-+struct gpio_desc;
- 
- struct i2c_of_probe_simple_ctx {
- 	/* public: provided by user before helpers are used. */
- 	const struct i2c_of_probe_simple_opts *opts;
- 	/* private: internal fields for helpers. */
- 	struct regulator *supply;
-+	struct gpio_desc *gpiod;
+@@ -47,6 +50,8 @@ &i2c4 {
+ 	trackpad2: trackpad@2c {
+ 		compatible = "hid-over-i2c";
+ 		interrupts-extended = <&pio 117 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&trackpad_irq>;
+ 		reg = <0x2c>;
+ 		hid-descr-addr = <0x0020>;
+ 		/*
+@@ -56,6 +61,7 @@ trackpad2: trackpad@2c {
+ 		/* post-power-on-delay-ms = <100>; */
+ 		vdd-supply = <&mt6397_vgp6_reg>;
+ 		wakeup-source;
++		status = "fail-needs-probe";
+ 	};
  };
  
- int i2c_of_probe_simple_enable(struct device *dev, struct device_node *bus_node, void *data);
-+void i2c_of_probe_simple_cleanup_early(struct device *dev, void *data);
- void i2c_of_probe_simple_cleanup(struct device *dev, void *data);
+@@ -80,3 +86,11 @@ pins_wp {
+ 		};
+ 	};
+ };
++
++&touchscreen {
++	status = "fail-needs-probe";
++};
++
++&trackpad {
++	status = "fail-needs-probe";
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+index b4d85147b77b..eee64461421f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+@@ -358,12 +358,12 @@ touchscreen: touchscreen@10 {
+ &i2c4 {
+ 	clock-frequency = <400000>;
+ 	status = "okay";
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&trackpad_irq>;
  
- extern struct i2c_of_probe_ops i2c_of_probe_simple_ops;
+ 	trackpad: trackpad@15 {
+ 		compatible = "elan,ekth3000";
+ 		interrupts-extended = <&pio 117 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&trackpad_irq>;
+ 		reg = <0x15>;
+ 		vcc-supply = <&mt6397_vgp6_reg>;
+ 		wakeup-source;
 -- 
 2.47.0.rc0.187.ge670bccf7e-goog
 
