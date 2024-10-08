@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBF4DCED270
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 07:00:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63217CED273
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 07:04:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P5lNYolegfGDewG+xAlTaOiCtxI4h0pNqIrgM+gbpto=; b=fTziMwl9huicqX
-	ltdRss1I4AxR21R9wJb3rv66zQL0XSmXyrx0j5SxgH3/IhQTq9yMhPT/PQBrFVKlE+LD8VLj7dcxn
-	TxJZ4ndFSs7Sax7r+8CIqaHR6l2Kb4ZPTTzKbnOp3VWOhFk7yNr0WBNHmpmTRaksLOb3+cduzWwN+
-	bIBFgUk2HsK00HL/Jgody/r3Ss+4K5Lb1dhxDlOwCiCWYY9pxkMdE16mx5+cWPxo9qcsgVcOc8xzw
-	b+IdEk+JJP61NFN6eeG55BerCk+LFRAttVdvOEr9+XiOtQcZ8YymkmfiXkfSmerK8qVpUvJqpOZmN
-	Hc44ZmyunZkaEAMPvZLw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HQsDDSAPiB4jU3Vg6ZWxiUW1nADLbDYixnAUJAhUVUw=; b=EOa03KZgeut/rSyGVjQ/iVDtk/
+	aqfjzx9p+HM2drbr3iXwy1ZJW5KwvJsBdImNAbff0r6sB6v2YJz8AGjI1TY9Nw7Yn7RZjMWN+kuBr
+	gJ1jtm6aBKFZnW2YqARRuM0zf5GVcUqbmEXk5uGzSVfLAWp3qHYklL/9XZc1Ew7D1N26znRpKN4DY
+	N/KwlO4pG/Ptvd9P29iv1+1Obvq8svu8gOmnvFHrB9oTvo0bexOVANe9gw2H7U1tOfdmyvEfD5BCJ
+	0QANdnUfKSlpsrrQJ6vlOimX9aI03hrN1FpSl4FOdZVBL8Led//A2GFCrHX7xjvsvGJ7zvrtmMIgV
+	xF2XX+qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy4DG-00000004jUR-2Qs5;
-	Tue, 08 Oct 2024 07:00:54 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1sy4H5-00000004k32-16h6;
+	Tue, 08 Oct 2024 07:04:51 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy45g-00000004iQa-1I3T;
-	Tue, 08 Oct 2024 06:53:06 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 134EE5C560D;
-	Tue,  8 Oct 2024 06:52:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CDDB9C4AF09;
-	Tue,  8 Oct 2024 06:53:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728370382;
-	bh=8/XrZOiutGrNVfzxdCVlvuRXAbgLZqz/eQQNTr69Dhg=;
-	h=References:In-Reply-To:Reply-To:From:Date:Subject:To:Cc:From;
-	b=T/dWIzL8G2sCBSY3Oarm8UDDVD81suXyJ9Vi4Y9dPR6sg6wHxHU7SWfuHcjumV9dg
-	 KUmfvp7R+BLgu1EpPZuzzWH7a+Ct51ItHv6OKu0xG4ZA3uCe6xZCMoWh7u0RBrUDD5
-	 HIoCfQpMCxBytp2mD+KG+G02+1MP2fS2Lrz71l5XpLDvC3sYLaEaqsL6A1CBC/iVwK
-	 +B+LhRwEjsVEdVVBVqS8ArObFOAFSh6tvlEXcL+rsUzhMDpz5XTMuWXjku/uzGxCA9
-	 0lEviRrMRIA5eJwMYXZaiklYNGq/5aZ7bSLn8t39GjcSvLKqxTAsNjGUfqTjDJFerK
-	 F1t1aXjGbG4AQ==
-Received: by mail-lj1-f177.google.com with SMTP id 38308e7fff4ca-2f7657f9f62so51300241fa.3;
-        Mon, 07 Oct 2024 23:53:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCW6WOycWAf8UOZtHBeZN3W7oR/GnGWyyco+AT1lQQIvtBq4DpQOHVhy4rn5CsQXm6ZwSJsoGrcHWA9knVcGzThz@lists.infradead.org, AJvYcCX8Y+8YlzQ4X0YoaRsGeh1l69G+fWgvi4bM74xHm4EZrok8PMhaOCXFtqOJ6ctVJLpSX8wh+z7SROt9RafQUHs=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwwdhK3lKW51iFufN1/SJo6hcY84KkHCDL7HAya/YSlbFBnUB7Z
-	L8lUesBaznyujpa5tQkD5JkqydFbqDxe4cNXwt8IZSEOYB4dGFG6VR7prtuLHigLyzvsaLKLf3T
-	oEa2EhCJH6IfV4fRSw0SDKIawY4g=
-X-Google-Smtp-Source: AGHT+IHs6ZuxTGNeVEYBhXtHENAWeVj6HUp8shHbQF/6a4rtVBPvdu1/EZNXgt2K8EdIcuhc0j5T0Psz/O4jsy1NTP4=
-X-Received: by 2002:a05:651c:210e:b0:2f9:cf64:aaf6 with SMTP id
- 38308e7fff4ca-2faf3c30324mr64563851fa.17.1728370381142; Mon, 07 Oct 2024
- 23:53:01 -0700 (PDT)
+	id 1sy4Cw-00000004jRC-0lvv;
+	Tue, 08 Oct 2024 07:00:35 +0000
+X-UUID: f72459fe854211efba0aef63c0775dbf-20241008
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=HQsDDSAPiB4jU3Vg6ZWxiUW1nADLbDYixnAUJAhUVUw=;
+	b=teXj2pPeTbdRJk8/WBpyHTF3mkAVfY1ltU584RUbOShBT+wd/XIbCJ0YGMPPyXi2eI3NUk2v7fPr0W0d/Weeylg7S70cEmE4ABcbX/kChhdAyl4rv0hpjqMN2AUDqqV8CdtqduOfcIXAyHeLsHvk0srozxrVDTsiBCsQKSjtHHc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:fca831b8-237a-4b0f-9d87-89e74e442e29,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:6dc6a47,CLOUDID:b228ea64-444a-4b47-a99a-591ade3b04b2,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: f72459fe854211efba0aef63c0775dbf-20241008
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <ed.tsai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 59623658; Tue, 08 Oct 2024 00:00:13 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 8 Oct 2024 00:00:10 -0700
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 8 Oct 2024 15:00:10 +0800
+From: <ed.tsai@mediatek.com>
+To: <peter.wang@mediatek.com>, Alim Akhtar <alim.akhtar@samsung.com>, Avri
+ Altman <avri.altman@wdc.com>, Bart Van Assche <bvanassche@acm.org>, "James
+ E.J. Bottomley" <James.Bottomley@HansenPartnership.com>, "Martin K. Petersen"
+	<martin.petersen@oracle.com>, Stanley Jhu <chu.stanley@gmail.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <wsd_upstream@mediatek.com>, <chun-hung.wu@mediatek.com>, Ed Tsai
+	<ed.tsai@mediatek.com>, <linux-scsi@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>
+Subject: [PATCH] scsi: ufs: ufs-mediatek: configure individual LU queue flags
+Date: Tue, 8 Oct 2024 14:59:42 +0800
+Message-ID: <20241008065950.23431-1-ed.tsai@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20241008064716.14670-1-jason-jh.lin@mediatek.com>
-In-Reply-To: <20241008064716.14670-1-jason-jh.lin@mediatek.com>
-From: Chen-Yu Tsai <wens@kernel.org>
-Date: Tue, 8 Oct 2024 14:52:48 +0800
-X-Gmail-Original-Message-ID: <CAGb2v67qnJ=ZNYziKe_4WU9KeMUpWLsOn2uoze1FLq4mH8m7Rw@mail.gmail.com>
-Message-ID: <CAGb2v67qnJ=ZNYziKe_4WU9KeMUpWLsOn2uoze1FLq4mH8m7Rw@mail.gmail.com>
-Subject: Re: [PATCH v10 0/5] Fix degradation problem of alpha blending series
-To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
-Cc: Adam Thiede <me@adamthiede.com>, Yassine Oudjana <yassine.oudjana@gmail.com>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Shawn Sung <shawn.sung@mediatek.com>, Alper Nebi Yasak <alpernebiyasak@gmail.com>, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_235304_489223_F2DDA97D 
-X-CRM114-Status: GOOD (  20.03  )
+X-CRM114-CacheID: sfid-20241008_000034_259619_78D1B76E 
+X-CRM114-Status: GOOD (  13.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,85 +85,78 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: wens@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 8, 2024 at 2:47=E2=80=AFPM Jason-JH.Lin <jason-jh.lin@mediatek.=
-com> wrote:
->
-> Some SoCs do not support the ignore_pixl_alpha flag, which breaks the
-> XRGB8888 format. Some SoCs do not support pre-multiplied pixel formats
-> and extending configuration of OVL pre-multiplied color formats,
-> such as MT8173.
->
-> Fix the SoC degradation problem by this sreies.
+From: Ed Tsai <ed.tsai@mediatek.com>
 
-Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+Previously, ufs vops config_scsi_dev was removed because there were no
+users. ufs-mediatek needs it to configure the queue flags for each LU
+individually. Therefore, bring it back and customize the queue flag as
+we required.
 
-> ---
->
-> Change in v10:
-> 1. Fix the commit message and comment for OVL_CON_AEN
+Signed-off-by: Ed Tsai <ed.tsai@mediatek.com>
+---
+ drivers/ufs/core/ufshcd.c       |  3 +++
+ drivers/ufs/host/ufs-mediatek.c | 10 ++++++++++
+ include/ufs/ufshcd.h            |  1 +
+ 3 files changed, 14 insertions(+)
 
-Please carry tested-by tags from people for cosmetic changes such as this.
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 7cab103112e1..be50b86269bf 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -5253,6 +5253,9 @@ static int ufshcd_device_configure(struct scsi_device *sdev,
+ 	 */
+ 	sdev->silence_suspend = 1;
+ 
++	if (hba->vops && hba->vops->config_scsi_dev)
++		hba->vops->config_scsi_dev(sdev);
++
+ 	ufshcd_crypto_register(hba, q);
+ 
+ 	return 0;
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index 9a5919434c4e..0b57623edca5 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -1780,6 +1780,15 @@ static int ufs_mtk_config_esi(struct ufs_hba *hba)
+ 	return ufs_mtk_config_mcq(hba, true);
+ }
+ 
++static void ufs_mtk_config_scsi_dev(struct scsi_device *sdev)
++{
++	struct ufs_hba *hba = shost_priv(sdev->host);
++
++	dev_dbg(hba->dev, "lu %llu scsi device configured", sdev->lun);
++	if (sdev->lun == 2)
++		blk_queue_flag_set(QUEUE_FLAG_SAME_FORCE, sdev->reqeust_queue);
++}
++
+ /*
+  * struct ufs_hba_mtk_vops - UFS MTK specific variant operations
+  *
+@@ -1809,6 +1818,7 @@ static const struct ufs_hba_variant_ops ufs_hba_mtk_vops = {
+ 	.op_runtime_config   = ufs_mtk_op_runtime_config,
+ 	.mcq_config_resource = ufs_mtk_mcq_config_resource,
+ 	.config_esi          = ufs_mtk_config_esi,
++	.config_scsi_dev     = ufs_mtk_config_scsi_dev,
+ };
+ 
+ /**
+diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
+index a95282b9f743..800d79dc91fc 100644
+--- a/include/ufs/ufshcd.h
++++ b/include/ufs/ufshcd.h
+@@ -383,6 +383,7 @@ struct ufs_hba_variant_ops {
+ 	int	(*get_outstanding_cqs)(struct ufs_hba *hba,
+ 				       unsigned long *ocqs);
+ 	int	(*config_esi)(struct ufs_hba *hba);
++	void	(*config_scsi_dev)(struct scsi_device *sdev);
+ };
+ 
+ /* clock gating state  */
+-- 
+2.45.2
 
-> Change in v9:
-> 1. Add the fix patch for the XRGB8888 downgrade issue of MT8173
-> 2. Add the refine patch for ignore_pixel_alpha statement
->
-> Change in v8:
-> Remove blend_modes for not supported pre-multiplied SoCs to fix the
-> return error from drm_plane_create_blend_mode_property().
->
-> Change in v7:
-> 1. Add the remove color format comment patch for OVL
-> 2. Fix warning: 'const' type qualifier on return type has no effect
->
-> Chnage in v6:
-> 1. Use blend_modes instead of function pointer in OVL
-> 2. Use ethdr instead of mdp_rdma to get blend_modes
-> 3. Add 0 checking for adding blend_mode property for mtk_plane
->
-> Change in v5:
-> Add fix patch for mtk_plane
->
-> Change in v4:
-> Add lost cases of mtk_ovl_fmt_convert_with_blend
->
-> Change in v3:
-> Change MACRO approach to function pointer in driver data
->
-> Change in v2:
-> Fix build error and typo
->
-> Change in v1:
-> Add fix patch for OVL unsupport color format settings by driver data
->
-> ---
->
-> Jason-JH.Lin (5):
->   drm/mediatek: ovl: Fix XRGB format breakage for blend_modes
->     unsupported SoCs
->   drm/mediatek: ovl: Refine ignore_pixel_alpha comment and placement
->   drm/mediatek: ovl: Remove the color format comment for
->     ovl_fmt_convert()
->   drm/mediatek: ovl: Add blend_modes to driver data
->   drm/mediatek: Add blend_modes to mtk_plane_init() for different SoCs
->
->  drivers/gpu/drm/mediatek/mtk_crtc.c           |  1 +
->  drivers/gpu/drm/mediatek/mtk_ddp_comp.c       |  2 +
->  drivers/gpu/drm/mediatek/mtk_ddp_comp.h       | 10 +++
->  drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  2 +
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c       | 70 ++++++++++++++-----
->  .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   |  7 ++
->  drivers/gpu/drm/mediatek/mtk_ethdr.c          |  7 ++
->  drivers/gpu/drm/mediatek/mtk_ethdr.h          |  1 +
->  drivers/gpu/drm/mediatek/mtk_plane.c          | 15 ++--
->  drivers/gpu/drm/mediatek/mtk_plane.h          |  4 +-
->  10 files changed, 92 insertions(+), 27 deletions(-)
->
-> --
-> 2.43.0
->
 
