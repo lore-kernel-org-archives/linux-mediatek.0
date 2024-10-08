@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89A2DCF0429
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 22:06:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21A30CF042A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 22:23:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ftZBiJ2+BWlNhoPFooXyX2hIQpyNbRxXcdaqaeWC2x0=; b=PXRUVBO4hg6ph/dpWLPiJGCgEz
-	rAfjt967aTXTKY2tqTcJ0u1l1gdX8T/whHQqZNidyX8NRZbxqTrucWyvVz+M7KHRhEjVy1pKwBKej
-	Ex980mseLgBA8CB+VQAsPnJ8W2u06OpEoJhtIgfTxbb4R5hg59VRsUDZXvfEgWZKcg7O7jZ1Giyes
-	8ikM0btLXsrBo8ZBVj1AEVkZrUVa+F/y5JuSsuwlbni2epnEnQiMGLBI8AQflyv5olnlEOjUiFy2x
-	1N/9/rFG9kampYQ2cyEQgPBLdpdXSyPZWeHyMBCQGPqkTSHUvWpRK5ETGhq7cMMXCpzesRVW9v4BN
-	TKYsIwIw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=PmhkzeMg8gOijeug1M9aLU+rSZW5pw46/po2LQrRcyI=; b=kDaX4HzmjyclH990gg0mBwk6LJ
+	YTuxDs4MprdY4NmMMcrCRg5xzXEYF8HcFrNB+5a2f+CdwOYP8XHQ99V0PAau+Ori5UUgAXlTMV6BY
+	gLI4TjH+wUeigL480vb01eV4tC532P/CASxUVjlHQruAyEe8PzUP/XYGqfEs1LXJenkoM+Hxviw+Z
+	O1eIHSsoUHaiszNakHkjZiu+IFt0p3OCHABovOYrv0lel9vWvEm1IrJ1HAUxZLmff8crxma4AMTTU
+	ALcj/lT3jwbk4CgkxpEbNlqySjB8ooccslyiCnnQ+OLxd01iFU9jIrlz6FFH5cLl5nlrdxm6JqRV5
+	KfE0dc4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syILA-00000007Eoh-2D3o;
-	Tue, 08 Oct 2024 22:06:00 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1syIcQ-00000007H97-0AOG;
+	Tue, 08 Oct 2024 22:23:50 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syIJp-00000007Ed9-1f4I;
-	Tue, 08 Oct 2024 22:04:38 +0000
+	id 1syIb5-00000007H2n-3XYy;
+	Tue, 08 Oct 2024 22:22:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 49C97A436BC;
-	Tue,  8 Oct 2024 22:04:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 394CDC4CECF;
-	Tue,  8 Oct 2024 22:04:35 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 32703A436C5;
+	Tue,  8 Oct 2024 22:22:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1FC52C4CECD;
+	Tue,  8 Oct 2024 22:22:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728425075;
-	bh=ms7y13SKSl3l6x54yKv0dqYa0hkXrQlTObop68w2TTI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=clxtKb6uPWfUDdD1z+NjKt4020Xf1psaH3OQVC3cD4jDYPJWXAHFmHyJcBvcZ5DYw
-	 r2yUu15NRPsHpKLM48JiRf8G4jN5hXP15K03DUppXPtn7rAH9bKT75MIdg3VFVzhb0
-	 hYT2IL21c5XIRJECdGWnNfUegiUMWKvu6zAut6bGuIV0RydpOqOjcVz8VGwDKlIP1H
-	 IDI2Cwc8Qa/N/BvMSM1vp0g2Jy1cyaiPdoU3CJ0Bx/zNXrkN0mrSieEoX+m9OXo3R9
-	 Arcqd9hwGNKGfX9Nst20wL/IJ2giwlTEwU6ooSENHogKWxiWXcO0nyuweXFRBznC9o
-	 NdMgHmAoRYFYw==
-Date: Wed, 9 Oct 2024 00:04:33 +0200
+	s=k20201202; t=1728426146;
+	bh=MccBu7KW7dTQw0QT8KNJWntrJS4ZIEa0v6xwKmeKxb0=;
+	h=From:Date:Subject:To:Cc:From;
+	b=V1JHCNHMAWZlI32H7SWOFNxGbaXRPEPegtkHpt5JHInfFurbF2AgEM71jSxZfx6lc
+	 LX0XaXGpFZUsPRWRkR7bdPF8KdizYUQVL29v9L2cErouCYP93/n9rgvDcCf5jeZbfb
+	 K4uqjt2eMtLKSrsRNsouGZ9tNMsG33rdUGLK3v2A/yh3PK0n0oxTL9r417K0jVG5lf
+	 6Npe1UhwWlve7lxE7GQu1AtwanalPJItIiDvBwbAOp3Piyavp7nJqYCX1UavzrDoUL
+	 SegwDV8jGI+J0Wb9+X9vMMX7yui4LGEO+RNDcNjshUxcGSyD48Wnidterm6NhEfNUO
+	 Dv3uv5Ekiy4LA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Lee Jones <lee@kernel.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	upstream@airoha.com, benjamin.larsson@genexis.eu,
-	ansuelsmth@gmail.com, linux-pwm@vger.kernel.org
-Subject: Re: [PATCH v5 3/5] mfd: airoha: Add support for Airoha EN7581 MFD
-Message-ID: <ZwWscWk5axQI9H1t@lore-desk>
-References: <20241001-en7581-pinctrl-v5-0-dc1ce542b6c6@kernel.org>
- <20241001-en7581-pinctrl-v5-3-dc1ce542b6c6@kernel.org>
- <20241002132518.GD7504@google.com>
+Date: Wed, 09 Oct 2024 00:21:47 +0200
+Subject: [PATCH net-next v2] net: airoha: Fix EGRESS_RATE_METER_EN_MASK
+ definition
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Ck0ElvyZLVpyJemd"
-Content-Disposition: inline
-In-Reply-To: <20241002132518.GD7504@google.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20241009-airoha-fixes-v2-1-18af63ec19bf@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAHqwBWcC/3WMQQrCMBBFr1Jm7UgSAymuvId0Ma3TZlAamUhQS
+ u5u7N7l+5/3NsiswhnO3QbKRbKktYE7dDBFWhdGuTUGZ5y3xngk0RQJZ3lzxp6IehvC6E4emvJ
+ U3o9mXIfGUfIr6WevF/tb/4SKRYtuDGQsz1Nw4XJnXflxTLrAUGv9AtFxLQCpAAAA
+X-Change-ID: 20241004-airoha-fixes-8aaa8177b234
+To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
+ Mark Lee <Mark-MC.Lee@mediatek.com>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Jacob Keller <jacob.e.keller@intel.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241008_150437_596212_9AAC4BD3 
-X-CRM114-Status: GOOD (  35.90  )
+X-CRM114-CacheID: sfid-20241008_152227_979840_EE880042 
+X-CRM114-Status: GOOD (  10.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,239 +81,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Fix typo in EGRESS_RATE_METER_EN_MASK mask definition. This bus in not
+introducing any user visible problem since, even if we are setting
+EGRESS_RATE_METER_EN_MASK bit in REG_EGRESS_RATE_METER_CFG register,
+egress QoS metering is not supported yet since we are missing some other
+hw configurations (e.g token bucket rate, token bucket size).
 
---Ck0ElvyZLVpyJemd
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Introduced by commit 23020f049327 ("net: airoha: Introduce ethernet support
+for EN7581 SoC")
 
-On Oct 02, Lee Jones wrote:
-> On Tue, 01 Oct 2024, Lorenzo Bianconi wrote:
->=20
-> > From: Christian Marangi <ansuelsmth@gmail.com>
-> >=20
-> > Support for Airoha EN7581 Multi Function Device that
-> > expose PINCTRL functionality and PWM functionality.
->=20
-> The device is a jumble of pinctrl registers, some of which can oscillate.
->=20
-> This is *still* not an MFD.
->=20
-> If you wish to spread this functionality over 2 drivers, use syscon to
-> obtain the registers and simple-mfd to automatically probe the drivers.
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+Changes in v2:
+- improve commit log
+- Link to v1: https://lore.kernel.org/r/20241004-airoha-fixes-v1-1-2b7a01efc727@kernel.org
+---
+ drivers/net/ethernet/mediatek/airoha_eth.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Hi Lee,
+diff --git a/drivers/net/ethernet/mediatek/airoha_eth.c b/drivers/net/ethernet/mediatek/airoha_eth.c
+index 942fcfc5b79972e1bbda06e6e5c07302cab0affa..b3601a56bda3ec63500e0df4809102f3f0ec940f 100644
+--- a/drivers/net/ethernet/mediatek/airoha_eth.c
++++ b/drivers/net/ethernet/mediatek/airoha_eth.c
+@@ -554,7 +554,7 @@
+ #define FWD_DSCP_LOW_THR_MASK		GENMASK(17, 0)
+ 
+ #define REG_EGRESS_RATE_METER_CFG		0x100c
+-#define EGRESS_RATE_METER_EN_MASK		BIT(29)
++#define EGRESS_RATE_METER_EN_MASK		BIT(31)
+ #define EGRESS_RATE_METER_EQ_RATE_EN_MASK	BIT(17)
+ #define EGRESS_RATE_METER_WINDOW_SZ_MASK	GENMASK(16, 12)
+ #define EGRESS_RATE_METER_TIMESLICE_MASK	GENMASK(10, 0)
 
-IIUC you are suggesting two possible approaches here:
+---
+base-commit: 42b2331081178785d50d116c85ca40d728b48291
+change-id: 20241004-airoha-fixes-8aaa8177b234
 
-1- have a single driver implementing both pinctrl and pwm functionalities.
-   This approach will not let us reuse the code for future devices that
-   have just one of them in common, like pwm (but we can live with that).
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
-2- use a device node like the one below (something similar to [0])
-
-system-controller@1fbf0200 {
-	compatible =3D "syscon", "simple-mfd";
-	reg =3D <0x0 0x1fbf0200 0x0 0xc0>;
-
-	interrupt-parent =3D <&gic>;
-	interrupts =3D <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
-
-	gpio-controller;
-	#gpio-cells =3D <2>;
-
-	interrupt-controller;
-	#interrupt-cells =3D <2>;
-
-	pio: pinctrl {
-		compatible =3D "airoha,en7581-pinctrl";
-
-		[ some pinctrl properties here ]
-	};
-
-	#pwm-cells =3D <3>;
-
-	pwm {
-		compatible =3D "airoha,en7581-pwm";
-	};
-};
-
-Please correct me if I am wrong, but using syscon/simple-mfd as compatible
-string for the 'parent' device, will require to introduce the compatible st=
-rings
-even for the child devices in order to probe them, correct?=20
-If so, as pointed out by Christian, this is something nacked by Rob/Krzyszt=
-of/Conor
-(this is the main reason why we introduced a full mfd driver here).
-
-@Rob, Krzysztof, Conor: am I right?
-
-I guess we need to find a middle ground here between mfd and dts to support=
- this
-uncommon hw device.
-
-Regards,
-Lorenzo
-
-[0] https://elixir.bootlin.com/linux/v6.11.2/source/arch/arm64/boot/dts/mar=
-vell/armada-ap80x.dtsi#L269
-
->=20
-> > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> > ---
-> >  drivers/mfd/Kconfig                   |  8 ++++
-> >  drivers/mfd/Makefile                  |  2 +
-> >  drivers/mfd/airoha-en7581-gpio-mfd.c  | 72 +++++++++++++++++++++++++++=
-++++++++
-> >  include/linux/mfd/airoha-en7581-mfd.h |  9 +++++
-> >  4 files changed, 91 insertions(+)
-> >=20
-> > diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
-> > index f9325bcce1b9..eca221351ab7 100644
-> > --- a/drivers/mfd/Kconfig
-> > +++ b/drivers/mfd/Kconfig
-> > @@ -32,6 +32,14 @@ config MFD_ADP5585
-> >  	  the core APIs _only_, you have to select individual components like
-> >  	  the GPIO and PWM functions under the corresponding menus.
-> > =20
-> > +config MFD_AIROHA_EN7581
-> > +	bool "Airoha EN7581 Multi Function Device"
-> > +	depends on (ARCH_AIROHA || COMPILE_TEST) && OF
-> > +	select MFD_CORE
-> > +	help
-> > +	  Support for Airoha EN7581 Multi Function Device that
-> > +	  expose PINCTRL functionality and PWM functionality.
-> > +
-> >  config MFD_ALTERA_A10SR
-> >  	bool "Altera Arria10 DevKit System Resource chip"
-> >  	depends on ARCH_INTEL_SOCFPGA && SPI_MASTER=3Dy && OF
-> > diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
-> > index 2a9f91e81af8..be8448e81a5b 100644
-> > --- a/drivers/mfd/Makefile
-> > +++ b/drivers/mfd/Makefile
-> > @@ -257,6 +257,8 @@ obj-$(CONFIG_INTEL_SOC_PMIC_CHTWC)	+=3D intel_soc_p=
-mic_chtwc.o
-> >  obj-$(CONFIG_INTEL_SOC_PMIC_CHTDC_TI)	+=3D intel_soc_pmic_chtdc_ti.o
-> >  obj-$(CONFIG_INTEL_SOC_PMIC_MRFLD)	+=3D intel_soc_pmic_mrfld.o
-> > =20
-> > +obj-$(CONFIG_MFD_AIROHA_EN7581)	+=3D airoha-en7581-gpio-mfd.o
-> > +
-> >  obj-$(CONFIG_MFD_ALTERA_A10SR)	+=3D altera-a10sr.o
-> >  obj-$(CONFIG_MFD_ALTERA_SYSMGR) +=3D altera-sysmgr.o
-> >  obj-$(CONFIG_MFD_STPMIC1)	+=3D stpmic1.o
-> > diff --git a/drivers/mfd/airoha-en7581-gpio-mfd.c b/drivers/mfd/airoha-=
-en7581-gpio-mfd.c
-> > new file mode 100644
-> > index 000000000000..88407ce5747e
-> > --- /dev/null
-> > +++ b/drivers/mfd/airoha-en7581-gpio-mfd.c
-> > @@ -0,0 +1,72 @@
-> > +// SPDX-License-Identifier: GPL-2.0+
-> > +/*
-> > + * MFD driver for Airoha EN7581
-> > + */
-> > +
-> > +#include <linux/io.h>
-> > +#include <linux/of.h>
-> > +#include <linux/mfd/airoha-en7581-mfd.h>
-> > +#include <linux/mfd/core.h>
-> > +#include <linux/module.h>
-> > +
-> > +static struct resource airoha_mfd_pinctrl_intr[] =3D {
-> > +	{
-> > +		.flags =3D IORESOURCE_IRQ,
-> > +	},
-> > +};
-> > +
-> > +static const struct mfd_cell airoha_mfd_devs[] =3D {
-> > +	{
-> > +		.name =3D "pinctrl-airoha",
-> > +		.resources =3D airoha_mfd_pinctrl_intr,
-> > +		.num_resources =3D ARRAY_SIZE(airoha_mfd_pinctrl_intr),
-> > +	}, {
-> > +		.name =3D "pwm-airoha",
-> > +	},
-> > +};
-> > +
-> > +static int airoha_mfd_probe(struct platform_device *pdev)
-> > +{
-> > +	struct device *dev =3D &pdev->dev;
-> > +	struct airoha_mfd *mfd;
-> > +	int irq;
-> > +
-> > +	mfd =3D devm_kzalloc(dev, sizeof(*mfd), GFP_KERNEL);
-> > +	if (!mfd)
-> > +		return -ENOMEM;
-> > +
-> > +	platform_set_drvdata(pdev, mfd);
-> > +
-> > +	mfd->base =3D devm_platform_ioremap_resource(pdev, 0);
-> > +	if (IS_ERR(mfd->base))
-> > +		return PTR_ERR(mfd->base);
-> > +
-> > +	irq =3D platform_get_irq(pdev, 0);
-> > +	if (irq < 0)
-> > +		return irq;
-> > +
-> > +	airoha_mfd_pinctrl_intr[0].start =3D irq;
-> > +	airoha_mfd_pinctrl_intr[0].end =3D irq;
-> > +
-> > +	return devm_mfd_add_devices(dev, PLATFORM_DEVID_AUTO, airoha_mfd_devs,
-> > +				    ARRAY_SIZE(airoha_mfd_devs), NULL, 0,
-> > +				    NULL);
-> > +}
-> > +
-> > +static const struct of_device_id airoha_mfd_of_match[] =3D {
-> > +	{ .compatible =3D "airoha,en7581-gpio-sysctl" },
-> > +	{ /* sentinel */ }
-> > +};
-> > +MODULE_DEVICE_TABLE(of, airoha_mfd_of_match);
-> > +
-> > +static struct platform_driver airoha_mfd_driver =3D {
-> > +	.probe =3D airoha_mfd_probe,
-> > +	.driver =3D {
-> > +		.name =3D KBUILD_MODNAME,
-> > +		.of_match_table =3D airoha_mfd_of_match,
-> > +	},
-> > +};
-> > +module_platform_driver(airoha_mfd_driver);
-> > +
-> > +MODULE_AUTHOR("Christian Marangi <ansuelsmth@gmail.com>");
-> > +MODULE_DESCRIPTION("Driver for Airoha EN7581 MFD");
-> > diff --git a/include/linux/mfd/airoha-en7581-mfd.h b/include/linux/mfd/=
-airoha-en7581-mfd.h
-> > new file mode 100644
-> > index 000000000000..25e73952a777
-> > --- /dev/null
-> > +++ b/include/linux/mfd/airoha-en7581-mfd.h
-> > @@ -0,0 +1,9 @@
-> > +/* SPDX-License-Identifier: GPL-2.0 */
-> > +#ifndef _LINUX_INCLUDE_MFD_AIROHA_EN7581_MFD_H_
-> > +#define _LINUX_INCLUDE_MFD_AIROHA_EN7581_MFD_H_
-> > +
-> > +struct airoha_mfd {
-> > +	void __iomem *base;
-> > +};
-> > +
-> > +#endif  /* _LINUX_INCLUDE_MFD_AIROHA_EN7581_MFD_H_ */
-> >=20
-> > --=20
-> > 2.46.2
-> >=20
->=20
-> --=20
-> Lee Jones [=E6=9D=8E=E7=90=BC=E6=96=AF]
-
---Ck0ElvyZLVpyJemd
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZwWscAAKCRA6cBh0uS2t
-rEz/AQCFBJOOtzJqJ2Zgfn+hqeD0mG44RsxTxw/hCr8oWqE2TAD8CvJfaYJ/spUO
-GPey9tflRamTmCSiSKdx1wZE17e4Gwc=
-=OMHu
------END PGP SIGNATURE-----
-
---Ck0ElvyZLVpyJemd--
 
