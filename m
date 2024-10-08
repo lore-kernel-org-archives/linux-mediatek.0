@@ -4,66 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34F0ACED24E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 00:41:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E4F3CED24D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 01:22:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Lbo/MOF2lc+P52ISjMHVwhpQEfFtJUiKbnh2GgUyBwk=; b=1qyqjqFLXVobzzupjamGqBcADu
-	Z57s2jc6/7rNix/oa0ESjGMroqHIFK5a5lpiqBG5AuKjV0seycmW+blxySLtpifaP1f4++kHhCBqJ
-	jB3NZ9irReIquYwnYvXNnEpFTLu4CE/RrsDu7B0H23ZZgXaqrF6TbUnFgSZZzimL8fJ6rDE8ZyKSq
-	eeN6w8p23i9gp2zWMUtQ+WjVhx7OGlPb+Vd5CWXCe8G1+z7a8kQsv9MZWhv6JqTfv2HNQ8ipwYHaA
-	WNXYBf2Cff1qCX/8RQgTs6c2MPMO4gQ0YSilzuTeGtej0BlG/d5y3ORFFQBAmeW8ZF+/xnjix3G/f
-	MNAHTvXA==;
+	bh=PMRavPU31cBGTn/6HZlIp9pt4S49zJD0Tjvymm+53a4=; b=CUdJi8JKbh3EIUKkz0mpsAnvyN
+	GdFoRO31BSBxr2SidIP+9bsIrAENp7/XouanZPE5fYKCwtTzHSWwzTZOmG+6Fq4FGKITwOIAEGtax
+	szxLYoVWUdrttxfVL1IYrBeigKQZzHTl72utnXwBgF8wksx/IqlQeB6yk6LCSkHfwlQBR7UKuDPQq
+	cPRoavQYVX8OxINPEvqaSjMhdrH6uJfjmjkbhp2sWhDPLZaREYMb8Ff9IbvCb1RpC0KAsEjBEZsZ4
+	7tJO/YY9c88BIJQTuV0LOKjngDAV0Yr8YIBS+7H8d5KMgGMKJxjl6ZqPriNFGiQBnrKVBR49OfNlZ
+	/IGChC9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxyIN-000000047rO-3VSo;
-	Tue, 08 Oct 2024 00:41:47 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1sxyvL-00000004BDj-3g4b;
+	Tue, 08 Oct 2024 01:22:03 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sxyH4-000000047nS-1K9Q;
-	Tue, 08 Oct 2024 00:40:27 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 6A855A42901;
-	Tue,  8 Oct 2024 00:40:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A320C4CEC6;
-	Tue,  8 Oct 2024 00:40:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728348024;
-	bh=ngoL8tWnqZwdr61VyVfbRw1NEBAJJIYMc6WKSCo/joA=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=UmzXtG5Ht6QMy7jWPXeZqckQChXYja8q0NRB3IoiGlyn3+8aPb4QYkAD5TuiRhHEm
-	 sTolPsBfOjDMFxfuaaV+vwCfEeWK5SHsu+8ilN3s6Pp9KErfPkszMlRa9yoV2T2FTf
-	 uUBc3jEv7nbZjOi+d2D1NcEktCsyIpSf5o+yA1HAsUb/UAISPOe8IZ0DrFVYjke/x+
-	 31Zf2n73hI4dK78Vti2QV7A9VfOaJ7OMNPSjXXO/WwqT2fLSKGVgyngYoxG1892mMr
-	 4E4haErqyE4OBXvYaD5jnvzTEqj8xQuKCf1LdovtrTesJq8EOOtT00xRPT7GcTgQ+E
-	 zZzNkeR85sg0Q==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EAFCF3803262;
-	Tue,  8 Oct 2024 00:40:29 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1sxyvI-00000004BDA-31K7;
+	Tue, 08 Oct 2024 01:22:02 +0000
+X-UUID: b40c76f8851311efb3adad29d29602c1-20241007
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=PMRavPU31cBGTn/6HZlIp9pt4S49zJD0Tjvymm+53a4=;
+	b=g4pGe95A85+Wr1OcuOuyguVg0MSW6h5ov6HLFF6vIm2skIxalVGzRbfk7bQ8PKaoBGG5P6INDNKyoHfAh4rAby3cE2hHq5TTpjRz21G3UQfrJs0TXtDg0CW3vPaphTW325SeovCT00KOWhVKhmdf/igySrv30ttNq7nBqLeL9vc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:2c6f35f1-396a-4a88-981a-a51034783fdd,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:dc89e464-444a-4b47-a99a-591ade3b04b2,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|-5,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 1,FCT|NGT
+X-CID-BAS: 1,FCT|NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: b40c76f8851311efb3adad29d29602c1-20241007
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1221377376; Mon, 07 Oct 2024 18:21:54 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 7 Oct 2024 18:21:51 -0700
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs13n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Tue, 8 Oct 2024 09:21:51 +0800
+Message-ID: <f5b027b7-7490-3f96-66a7-ff6513ba8309@mediatek.com>
+Date: Tue, 8 Oct 2024 09:21:49 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH] soc: mediatek: pwrap: add pwrap driver for MT8188 SoC
+Content-Language: en-US
+To: Fei Shao <fshao@chromium.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Alexandre Mergnat <amergnat@baylibre.com>, Bear Wang
+	<bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin
+	<macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>, Chris-qj chen
+	<chris-qj.chen@mediatek.com>, MediaTek Chromebook Upstream
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
+	<wenst@chromium.org>
+References: <20241007024350.7878-1-macpaul.lin@mediatek.com>
+ <381fcbfa-edfb-46c8-8ee2-1386af2ba4c4@collabora.com>
+ <CAC=S1nj-hpt9CS1+_Jt8C710KDz1uYTcTS5qGqSZT9qmmVm7Yg@mail.gmail.com>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <CAC=S1nj-hpt9CS1+_Jt8C710KDz1uYTcTS5qGqSZT9qmmVm7Yg@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net] net: airoha: Update tx cpu dma ring idx at the end of
- xmit loop
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <172834802875.31485.3860611664672766759.git-patchwork-notify@kernel.org>
-Date: Tue, 08 Oct 2024 00:40:28 +0000
-References: <20241004-airoha-eth-7581-mapping-fix-v1-1-8e4279ab1812@kernel.org>
-In-Reply-To: <20241004-airoha-eth-7581-mapping-fix-v1-1-8e4279ab1812@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: nbd@nbd.name, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_174026_444048_28FB4314 
-X-CRM114-Status: UNSURE (   8.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241007_182200_787450_4CD5F9E9 
+X-CRM114-Status: GOOD (  16.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,30 +94,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
 
-This patch was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
 
-On Fri, 04 Oct 2024 15:51:26 +0200 you wrote:
-> Move the tx cpu dma ring index update out of transmit loop of
-> airoha_dev_xmit routine in order to not start transmitting the packet
-> before it is fully DMA mapped (e.g. fragmented skbs).
+On 10/7/24 23:23, Fei Shao wrote:
+> 	
 > 
-> Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
-> Reported-by: Felix Fietkau <nbd@nbd.name>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> External email : Please do not click links or open attachments until you 
+> have verified the sender or the content.
 > 
-> [...]
+> On Mon, Oct 7, 2024 at 10:55 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Il 07/10/24 04:43, Macpaul Lin ha scritto:
+>> > MT8188 are highly integrated SoC and use PMIC_MT6359 for
+>> > power management. This patch adds pwrap master driver to
+>> > access PMIC_MT6359.
+>> >
+>> > Signed-off-by: Sen Chu <sen.chu@mediatek.com>
+>> > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+>>
+>> Actually, MT8188 and MT8195's pwrap registers and code flow are exactly the same:
+>> since they are, we don't need this commit (or we don't need it right now!), and
+>> we can just update the binding so that we can declare...
+>>
+>> compatible = "mediatek,mt8188-pwrap", "mediatek,mt8195-pwrap", "syscon";
+>>
+>> ...hence this driver doesn't get any commit :-)
+> 
+> ... which is already the case. :)
+> See commit 040c3303f110 ("dt-bindings: soc: mediatek: pwrap: Modify
+> compatible for MT8188").
+> And the device tree is set as well, so it's all good for MT8188 I believe.
+> 
+> Cheers,
+> Fei
+> 
 
-Here is the summary with links:
-  - [net] net: airoha: Update tx cpu dma ring idx at the end of xmit loop
-    https://git.kernel.org/netdev/net/c/3dc6e998d18b
+Oh. Thank you for the reminder and point out the related commits.
+Then this patch could be dropped.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+Thanks!
+Macpaul Lin
 
