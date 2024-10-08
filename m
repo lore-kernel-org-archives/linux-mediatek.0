@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48D44CED27C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 08:48:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C25ECED27C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 08:55:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pv1t6PFwilJxwoE9D/QO+7fvkymRLiT6kFlTtk+UjtI=; b=WQcfKbc85tICQIyFH5pzdRWuvF
-	iSNiyhbH1i2fBQSEfqXjqJNs9lCteNK+6/nQ/KYXLVYXjk9gvLSw06ReGJhjZ59+bqBG1Lcjo02tY
-	7We3MFxBsZWpz+Ag/PNdWfRVo0S3CV5ZPaf5nEQs8kArGBCjw3c/EqZxGtG9LV0oECFgCswGvVWWG
-	1J8Re18SwzE6oNV2UoVHrjnmFw+I01nCQlbiMAwNZ7iRsInPlek+xLYuHnHBaUFFF/T23c22zhcUU
-	FGms7twVeJnbEEsKuPOEDg8jSgyZMXMbvIGfUI0ih5sT3BsaiIxtxA4EIVNraKPE+Mc3Z0C4+epFI
-	gOYRFkJQ==;
+	bh=L1TPmP2K52UPAeVemtUZEw5PkFK6i1obwtaJkt1KYAM=; b=tTcnml4EggVJg+2O5F/5nQGH+z
+	5q1ADx3IoIolEzPx4McEgusM9R5NaoD1gSB5Ja6noKFFgkFqKYi09t/+QIjEywUNWx+HoJlOEF8Yz
+	92LZQDX1+/DSNW11tQXS4KQuaD4BM30nKhZj4brMQt5qu9c9p6WBPNsfNEqqJJrqAHkBWQq0NWpqA
+	21Rhwa81P8+8z6yLD4ojwcMPhJ4zaWRv0z0eu1oxuis7X8R3PkNSfdqhSH5DGnnakX4+A2PvcnC9u
+	ZgBmd0GocjZ+oqzcIu88sl/ezaeU0YTICLOA5kl50kfdGZWGCUGx6yKkYpikIPTUfN+ws2LIsGgTu
+	tbQr5iAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy5tA-000000058Ps-1QjR;
-	Tue, 08 Oct 2024 08:48:16 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1sy60O-00000005ALy-1hiw;
+	Tue, 08 Oct 2024 08:55:44 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy5sm-000000058Ha-2fYH;
-	Tue, 08 Oct 2024 08:47:54 +0000
+	id 1sy5wj-000000059OA-2hku;
+	Tue, 08 Oct 2024 08:51:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1728377270;
-	bh=7Y8lQEQ1hSkPSRcmmUUSa8wB76A6Q0NBQmCBMiUD9aE=;
+	s=mail; t=1728377516;
+	bh=FWUBk3EY6ZXr7Y6EY9fd69c8WqbiTjOs2Gxf1AJYQlQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=KI1ReXvHXQ2poIhkcjZbkB7URqsfRYMuA9xMaic7FNi3sX+rZxp+mb/AJkzU4ZM1T
-	 3+ytaIocV4KgBXsbqX59laXLsR016dAAp0Kz2pgkRPvQ9CVp+pePbWNEJHLReurHe4
-	 l3OgU6HK1SAw6f72Gpljejv+iJUbuUhCfbZzcCRmEmRTM2yFQOeoqjMVLO2N6cYg0P
-	 9aQE+P2BP+cV8RfMm5iudmY3fWdvUnw0ILp3mxexBL4/weEA4dZwAYGbYLgoze+fp9
-	 3i6apt0HIxayZnS31vXWloCznUhEb/Ga7sl8ze/aaICSnLI0uREJYeN0b0SayRKUTM
-	 vxog6+d/C3XxQ==
+	b=CQm2krZBbDwinxcX7j6HwebxqcvccsGmufZ/xF4FMaN4V07VY+jXstNoMHQ9TdsEm
+	 W+cG77Lv5fb4C3APTcpTNjDInPF73Au0OBHj12uJa669U2AHiZfsMsEB8TAJo+U5+j
+	 yB+fCF8aiSqu1TwLj+ikrYnRdB+V4YHdlLqU0Lk/KB40Qsz4i2HU21viUH6GXt3AVz
+	 hKAGU/CLVoV3XD/otFN731RABmj9asq6bkipFLTOxGHqKvo6b1c08bE7IL3wqE4q1K
+	 QHMuOANYMT9OUZCGGvZLzN6uPpLsFzli5/r2qPucZDdExCN/YddCY0Yn4ut38ZAQmX
+	 ROvbvXFNKsTXQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2F5FC17E10AF;
-	Tue,  8 Oct 2024 10:47:50 +0200 (CEST)
-Message-ID: <eab4ef1e-f63f-4561-b429-6dc3d7485871@collabora.com>
-Date: Tue, 8 Oct 2024 10:47:49 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BB6C917E10B5;
+	Tue,  8 Oct 2024 10:51:55 +0200 (CEST)
+Message-ID: <7caa85fa-7186-4f8f-8195-19325ebf06bd@collabora.com>
+Date: Tue, 8 Oct 2024 10:51:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8173-elm-hana: Add vdd-supply to
- second source trackpad
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8186-corsola-voltorb: Merge
+ speaker codec nodes
 To: Chen-Yu Tsai <wenst@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>
 Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20241008082051.4002438-1-wenst@chromium.org>
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ stable@vger.kernel.org
+References: <20241008082200.4002798-1-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241008082051.4002438-1-wenst@chromium.org>
+In-Reply-To: <20241008082200.4002798-1-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241008_014753_189284_301BD053 
-X-CRM114-Status: GOOD (  20.21  )
+X-CRM114-CacheID: sfid-20241008_015157_874669_B45C031E 
+X-CRM114-Status: GOOD (  19.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,57 +77,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/10/24 10:20, Chen-Yu Tsai ha scritto:
-> The Hana device has a second source option trackpad, but it is missing
-> its regulator supply. It only works because the regulator is marked as
-> always-on.
+Il 08/10/24 10:21, Chen-Yu Tsai ha scritto:
+> The Voltorb device uses a speaker codec different from the original
+> Corsola device. When the Voltorb device tree was first added, the new
+> codec was added as a separate node when it should have just replaced the
+> existing one.
 > 
-> Add the regulator supply, and the required post-power-on delay.
+> Merge the two nodes. The only differences are the compatible string and
+> the GPIO line property name. This keeps the device node path for the
+> speaker codec the same across the MT8186 Chromebook line.
+
+Ok, I agree...
+
+But, at this point, can we rename `rt1019p` to `speaker_codec` instead?
+
+Imo, that makes a bit more sense as a phandle, as it reads generic and it's not
+screaming "I'm RT1019P" on dts(i) files where it's actually not.
+
 > 
-> Fixes: 689b937bedde ("arm64: dts: mediatek: add mt8173 elm and hana board")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
->   arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi | 6 ++++++
->   1 file changed, 6 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
-> index 8d1cbc92bce3..e03474702cad 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
-> @@ -49,6 +49,12 @@ trackpad2: trackpad@2c {
->   		interrupts-extended = <&pio 117 IRQ_TYPE_LEVEL_LOW>;
->   		reg = <0x2c>;
->   		hid-descr-addr = <0x0020>;
-> +		/*
-> +		 * The supply is always on. Adding the delay here
-> +		 * needlessly delays the readiness of the trackpad.
+> Fixes: 321ad586e607 ("arm64: dts: mediatek: Add MT8186 Voltorb Chromebooks")
+ > Cc: <stable@vger.kernel.org>
 
-I'd say, let's be nice in this comment and let's explain the whole situation:
-
-The trackpad needs a post power on delay of 100ms but, at the time
-of writing, the power supply for it on this board is set as always-on,
-so we don't add that to avoid useless delays in the readiness of this device.
-
-
-...or....
-
-The trackpad needs a post power on delay of 100ms but the power supply for
-it on this board is always-on (and will always be), so we don't add delays
-to avoid impacting on the time required for readiness of this device.
-
-> +		 */
-> +		/* post-power-on-delay-ms = <100>; */
-
-Then you can remove this commented out property ;-)
-
-P.S.: Just to be clear, what I dislike is to see a property that is commented out.
+Well, that's not a fix - it's an improvement, so we can avoid this Fixes tag :-)
 
 Cheers,
 Angelo
 
-> +		vdd-supply = <&mt6397_vgp6_reg>;
->   		wakeup-source;
->   	};
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+>   .../dts/mediatek/mt8186-corsola-voltorb.dtsi  | 19 ++++---------------
+>   1 file changed, 4 insertions(+), 15 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-voltorb.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola-voltorb.dtsi
+> index 52ec58128d56..fbcd97069df9 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8186-corsola-voltorb.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-voltorb.dtsi
+> @@ -10,12 +10,6 @@
+>   
+>   / {
+>   	chassis-type = "laptop";
+> -
+> -	max98360a: max98360a {
+> -		compatible = "maxim,max98360a";
+> -		sdmode-gpios = <&pio 150 GPIO_ACTIVE_HIGH>;
+> -		#sound-dai-cells = <0>;
+> -	};
 >   };
+>   
+>   &cpu6 {
+> @@ -59,19 +53,14 @@ &cluster1_opp_15 {
+>   	opp-hz = /bits/ 64 <2200000000>;
+>   };
+>   
+> -&rt1019p{
+> -	status = "disabled";
+> +&rt1019p {
+> +	compatible = "maxim,max98360a";
+> +	sdmode-gpios = <&pio 150 GPIO_ACTIVE_HIGH>;
+> +	/delete-property/ sdb-gpios;
+>   };
+>   
+>   &sound {
+>   	compatible = "mediatek,mt8186-mt6366-rt5682s-max98360-sound";
+> -	status = "okay";
+> -
+> -	spk-hdmi-playback-dai-link {
+> -		codec {
+> -			sound-dai = <&it6505dptx>, <&max98360a>;
+> -		};
+> -	};
+>   };
+>   
+>   &spmi {
 
 
