@@ -4,79 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 545ECCEF172
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 14:38:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6992CEF17D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 14:41:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nRoELk3rhVviZWh04GOx6h6H0EVODk7FRINx2V/LU5E=; b=0rggn8l9JsUMdw7D312DTGloIV
-	+Gy0V2bf4AJLENplUcI0pnAP7O9zzcHMM+dhX6nTLyBLpMXueuA1DgkpJe9O50e52scTtofW0HtUp
-	WTUvKFZzBwyjiqi+xHW+qGMLTeRTkrOCzdkG1/OjD7FV5GzkOw192WJ1tWiuS3q1eVDszOT0B0GZD
-	vnTDNJvAhjtUPVvyNhbOX1lYuoddxOYMYNbuy2Pug2gWwVwycsE32VxfLdhYHxB5iRc9feDEg2fG9
-	zM+Cge7MU/EttVUqrER31FatPJMQd1Ts2iQ8tzVrGronfq82zq9L1YvcU9LE+uU26jiFnIaHJiMEA
-	eDJW1StQ==;
+	bh=N9oq3jezHlQMT6rg1nSIemrSZ1OTMBtx54B/fq7slMk=; b=K4KPohk2ptYBgrygZSyPHrJ2jx
+	ZZ+qimJKoEpQJEuNeFbh1exaqHrdmwv0SRycZc15P9sdjY73NdLb3bz+VBbzLW5RNyPb7rjmLPpC3
+	PowtV+DgHedfuD6WOA3DwOjYmcPGO5m2HXcFsD2d3EzG/NuuBRhHKFSOD9Lt8gGFPKokqptar7+Wu
+	a98fEZqTo4i/tljSTpnTQ7mqjQh1+LKvP3iXkRNCsFM4pjslLiGh9YOpZeLdOCBq1WmOrI3g9dH3m
+	Mk+2RWvEQNHlXwjve5VVLejd2O9reM5cGiTY27YQc3n1u5c8iwAcGJaxtcgVspR6DupoMlZ8l6nSa
+	ljBLit1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syBMH-00000006CUV-1msG;
-	Tue, 08 Oct 2024 14:38:41 +0000
-Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
+	id 1syBOr-00000006DF6-2kJ4;
+	Tue, 08 Oct 2024 14:41:21 +0000
+Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syBKK-00000006BpI-1i8Y
+	id 1syBKb-00000006Bzo-1XBb
 	for linux-mediatek@lists.infradead.org;
-	Tue, 08 Oct 2024 14:36:42 +0000
-Received: by mail-yb1-xb2f.google.com with SMTP id 3f1490d57ef6-e25d405f255so5087001276.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 08 Oct 2024 07:36:39 -0700 (PDT)
+	Tue, 08 Oct 2024 14:36:59 +0000
+Received: by mail-yb1-xb33.google.com with SMTP id 3f1490d57ef6-e28f2a52803so569775276.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 08 Oct 2024 07:36:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728398198; x=1729002998; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1728398215; x=1729003015; darn=lists.infradead.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=nRoELk3rhVviZWh04GOx6h6H0EVODk7FRINx2V/LU5E=;
-        b=SjTt2xWVDOwtATHH18ZgTZiC53Y4kjVHw+a/cnqj70gPDSYkYwWYjPg1IkEZ/6XFyQ
-         7FyLNJ6/dbcAFfuEi6PpKhj0RfplekWo88CcFz646oiIB+1eQ18qDDSQWbgwaS3v9hc2
-         Geuzl9ctyBSzo+btBK8tRSGVpMdaaH96V/fT2Mss9oz0qotJrg/GiJaXSiTZoDyoJlb0
-         6vBGkUQos3wQpHbt6/A9gMFnG2Fvxc3bCu1FQzuZ2WL7g8nP8b2KLSxfWOfQsl2DDjx9
-         ZZzuGuaYLz7sISmrS9AABSW2Gab0ly+5Iza6Ukq7WOlbArb+d4Wkm4jHRAN+03IfwgrZ
-         w0vQ==
+        bh=N9oq3jezHlQMT6rg1nSIemrSZ1OTMBtx54B/fq7slMk=;
+        b=ZZshzoJjDzWcunQJqzGVr49IPDMbx60xFpD5vv0ezfVjcktsmM29je896l2yrjtXM8
+         ie6PJa+pDHRFAOiqSe6DPmgtzPCZJebxfm+JlX1V/jsNuNt57BCrAgBcIzSZjEL739S/
+         e3bsa4XFK334vu3PMJSWjXMGr/upPxfoXt2deu4AeM6wHHW0DPU0lPjG9V2nN4h8l924
+         Y0rIkmmg1gIVKkiVHh+Y2CTArKASrqdG2yepH2hoTP9WnSGa7HwUO7yEZVesk1ikeOWn
+         xWY3L2uTWLQyiJzqLvx3p8hZH7OUIeFboLWPw8U7A4QLwdIXTWMCE6szOMVRMBZHfJDu
+         5PeA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728398198; x=1729002998;
+        d=1e100.net; s=20230601; t=1728398215; x=1729003015;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=nRoELk3rhVviZWh04GOx6h6H0EVODk7FRINx2V/LU5E=;
-        b=RUOwygKCteFwEpiJS6iJdGLS+R+r3a9YW0m7kUhxZjCu7yfT5k4CRmJ7mC5Rygjzjq
-         9y9RLJvBC0bAYvLOToLOjXYH6k/nF623y0adRWfRrHJ4BI7Gh8Wfz9SSZaqe6jXIDLSs
-         50eIts80Ent3aWp1rEFgyvNQjzsKf9+9R4nWnSoE1oGfyJ18iOL7sk4UYm8hfwaJiMKx
-         DF0sZCBO3OxfLMi26zTt/UoJWCvwIUPcr2vpSAMFPmK22ZIxhz8pO+hhadMeY5lw4m6u
-         wHGrNpNAegpbx4+UC1oi9mPd+9mEa1zqCrehWfmtvfvK9IXaPV26FhGKEt5F8ITEJpaX
-         QU3g==
-X-Forwarded-Encrypted: i=1; AJvYcCVZquj9ak6bVFj3CPdY+QD/GnG8gmIzYAy9PV6OijvPRHLcr6cJCPQrK/qK/PlrsZ9wh0It35KgCKEkZ1fC7w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzbiN318cs1jHyTQG1XGB/c8qGw7owzrasq4S7hRzFXJ4Bz45x0
-	FAWCcKMhYQFe3g6y8UqoKflVipKL9RDEa4eR55y0msflClc2rhN8SbSPWyZPuzWcQtYsyDe34tz
-	Gffyedvq7UbCYXsaZm33h/doYutgeLAYz20YPXg==
-X-Google-Smtp-Source: AGHT+IFOx/T4JRktigNljdOZeGzepgmrQfoMq1MLWhEjsp0XXjH7H84Niy2QxiDxNQ3SjuMrTLx1lkRM5mMt6rQFZBE=
-X-Received: by 2002:a05:6902:1102:b0:e28:f31f:5f72 with SMTP id
- 3f1490d57ef6-e28f31f6125mr1345325276.19.1728398198478; Tue, 08 Oct 2024
- 07:36:38 -0700 (PDT)
+        bh=N9oq3jezHlQMT6rg1nSIemrSZ1OTMBtx54B/fq7slMk=;
+        b=tRsAow1JK03q23a9BR8PgmxQF6CJlF5p0+8a6B8TkwQIMr8misXqi+ssQgkOIjL2Vb
+         rospzyg4novxV/rYbNsc3jve3apEwP1ZI3wkycH3+M1vXX7Mis1H3i+lT+0xvYbDThmt
+         yoqgPVvtAK7bwticsmfvgtdtWw+NdI0m3CKs34wQkZL4iNfPsC5EmtHn8xxAKor8hluM
+         XPj+ZTkASSIRXDOgEdZYak8QpPLtLRYpmN5ArzCxXv5TalFgBrE4LtijXnB3Pe0SYrzA
+         FGejd15oBIQulDm1IhoM/oXUiM02QtdTSN++f+Nqq8SexA3BmTRB5coGteLXouqw17Qs
+         HvYg==
+X-Forwarded-Encrypted: i=1; AJvYcCXR+IknmQqgpImy20v/qA7Xt0OzZIaoC0v0ur3nqgFHRgp5OKC5unP18jXaTpTu31QpHmn7a1ajKyLOmvNUDw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YybY7hamChqKwRonBjfUOEHzmYKWjJS1R012F4hE2qZX8bleGg0
+	fF5KWe4SAb0nuDQVJOOZW7GCdF0iYwIzJMHbsOC4wo5Oh70D3djj8i3mx2hJprEP53Qcj1VgjPI
+	pUKC+QCi6UdzQi3U1wQ/uDNggakQuLn+XfZsbUQ==
+X-Google-Smtp-Source: AGHT+IEjM292qoxRSTMVZiEHGGPCXwidKp0QKEL9SSYcSrYZB36fSHw7uDxBp6+cKhZ+mA+gwRbbOrFaFvtkEpLB0WY=
+X-Received: by 2002:a05:6902:1a4a:b0:e28:6b10:51b4 with SMTP id
+ 3f1490d57ef6-e2893951ac4mr10369636276.46.1728398215648; Tue, 08 Oct 2024
+ 07:36:55 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240930090156.33537-1-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20240930090156.33537-1-angelogioacchino.delregno@collabora.com>
+References: <20240930224919.355359-1-rosenp@gmail.com>
+In-Reply-To: <20240930224919.355359-1-rosenp@gmail.com>
 From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Tue, 8 Oct 2024 16:35:57 +0200
-Message-ID: <CAPDyKFpwmnm4iSrdKW5H2Xz26W=LFLFEYQKfLCoJ5e79a09H_Q@mail.gmail.com>
-Subject: Re: [PATCH v2] mmc: mtk-sd: Implement Host Software Queue for eMMC
- and SD Card
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chaotian.jing@mediatek.com, matthias.bgg@gmail.com, 
-	linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	kernel@collabora.com
+Date: Tue, 8 Oct 2024 16:36:11 +0200
+Message-ID: <CAPDyKFo69H+653J=7eDqTSm2gz_AQH-3R+axqiTWqumOPQM9GQ@mail.gmail.com>
+Subject: Re: [PATCH 0/3] mmc: mtk-sd: add some devm
+To: Rosen Penev <rosenp@gmail.com>
+Cc: linux-mmc@vger.kernel.org, Chaotian Jing <chaotian.jing@mediatek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241008_073640_495725_D88EB215 
-X-CRM114-Status: GOOD (  35.23  )
+X-CRM114-CacheID: sfid-20241008_073657_522197_70014593 
+X-CRM114-Status: UNSURE (   8.74  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,205 +93,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 30 Sept 2024 at 11:01, AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
+On Tue, 1 Oct 2024 at 00:49, Rosen Penev <rosenp@gmail.com> wrote:
 >
-> Add support for Host Software Queue (HSQ) and enable it when the
-> controller instance does not have Command Queue Engine HW support.
+> Simplifies the code. Also a bugfix with devm_clk_get_optional.
 >
-> It was chosen to enable HSQ only for eMMC and SD/MicroSD cards
-> and not for SDIO as performance improvements are seen only for
-> the former.
+> Rosen Penev (3):
+>   mmc: mtk-sd: use devm_mmc_alloc_host
+>   mmc: mtd-sd: use devm_platform_ioremap_resource
+>   mmc: mtk-sd: fix devm_clk_get_optional usage
 >
-> Performance was measured with a SanDisk Extreme Ultra A2 MicroSD
-> card in a MediaTek MT8195T Acer Chromebook Spin 513 (CP513-2H),
-> by running FIO (bs=4k) on an ArchLinux userspace.
+>  drivers/mmc/host/mtk-sd.c | 70 ++++++++++++++-------------------------
+>  1 file changed, 25 insertions(+), 45 deletions(-)
 >
-> .... Summarizing ....
-> Random read:     +24.28% IOPS, +24.29% BW
-> Sequential read: +3.14%  IOPS, +3.49%  BW
-> Random RW (avg): +50.53% IOPS, +50.68% BW
->
-> Below, more data from the benchmarks.
->
-> Before:
->  - Random read: IOPS=1643, BW=6574KiB/s
->    bw (  KiB/s): min= 4578, max= 7440, per=99.95%, avg=6571.55, stdev=74.16, samples=953
->    iops        : min= 1144, max= 1860, avg=1642.14, stdev=18.54, samples=953
->    lat (msec)  : 100=0.01%, 250=0.12%, 500=0.38%, 750=97.89%, 1000=1.44%, 2000=0.16%
->  - Sequential read: IOPS=19.1k, BW=74.4MiB/s
->    bw (  KiB/s): min=12288, max=118483, per=100.00%, avg=76293.38, stdev=1971.42, samples=956
->    iops        : min= 3072, max=29620, avg=19072.14, stdev=492.87, samples=956
->    lat (msec)  : 4=0.01%, 10=0.01%, 20=0.21%, 50=23.95%, 100=75.67%, 250=0.05%, 500=0.03%, 750=0.08%
->  - Random R/W: read: IOPS=282, BW=1129KiB/s (1156kB/s)  write: IOPS=284, BW=1136KiB/s
->    read bw (  KiB/s): min=   31, max= 3496, per=100.00%, avg=1703.67, stdev=155.42, samples=630
->    read iops        : min=    7, max=  873, avg=425.22, stdev=38.85, samples=630
->    wri  bw (  KiB/s): min=   31, max= 3443, per=100.00%, avg=1674.27, stdev=164.23, samples=644
->    wri  iops        : min=    7, max=  860, avg=417.87, stdev=41.03, samples=644
->    lat (msec)   : 250=0.13%, 500=0.44%, 750=0.84%, 1000=22.29%, 2000=74.01%, >=2000=2.30%
->
-> After:
->  - Random read: IOPS=2042, BW=8171KiB/s
->    bw (  KiB/s): min= 4907, max= 9072, per=99.94%, avg=8166.80, stdev=93.77, samples=954
->    iops        : min= 1226, max= 2268, avg=2040.78, stdev=23.41, samples=954
->    lat (msec)   : 100=0.03%, 250=0.13%, 500=52.88%, 750=46.64%, 1000=0.32%
->  - Sequential read: IOPS=19.7k, BW=77.0MiB/s
->    bw (  KiB/s): min=67980, max=94248, per=100.00%, avg=78894.27, stdev=1475.07, samples=956
->    iops        : min=16994, max=23562, avg=19722.45, stdev=368.76, samples=956
->    lat (msec)   : 4=0.01%, 10=0.01%, 20=0.05%, 50=28.78%, 100=71.14%, 250=0.01%, 500=0.02%
->  - Random R/W: read: IOPS=424, BW=1699KiB/s  write: IOPS=428, BW=1714KiB/s
->    read bw (  KiB/s): min=  228, max= 2856, per=100.00%, avg=1796.60, stdev=112.59, samples=901
->    read iops        : min=   54, max=  712, avg=447.81, stdev=28.21, samples=901
->    wri  bw (  KiB/s): min=   28, max= 2904, per=100.00%, avg=1780.11, stdev=128.27, samples=916
->    wri  iops        : min=    4, max=  724, avg=443.69, stdev=32.14, samples=916
->
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 Applied for next, thanks!
 
 Kind regards
 Uffe
-
-
-> ---
->
-> Changes in v2:
->  - Added missing `select MMC_HSQ` for MMC_MTK Kconfig
->
->  drivers/mmc/host/Kconfig  |  1 +
->  drivers/mmc/host/mtk-sd.c | 49 +++++++++++++++++++++++++++++++++++++--
->  2 files changed, 48 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/mmc/host/Kconfig b/drivers/mmc/host/Kconfig
-> index 7199cb0bd0b9..0ba5a9f769fb 100644
-> --- a/drivers/mmc/host/Kconfig
-> +++ b/drivers/mmc/host/Kconfig
-> @@ -1009,6 +1009,7 @@ config MMC_MTK
->         depends on COMMON_CLK
->         select REGULATOR
->         select MMC_CQHCI
-> +       select MMC_HSQ
->         help
->           This selects the MediaTek(R) Secure digital and Multimedia card Interface.
->           If you have a machine with a integrated SD/MMC card reader, say Y or M here.
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 5165a33bf74b..a9a554bd3f44 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -33,6 +33,7 @@
->  #include <linux/mmc/slot-gpio.h>
->
->  #include "cqhci.h"
-> +#include "mmc_hsq.h"
->
->  #define MAX_BD_NUM          1024
->  #define MSDC_NR_CLOCKS      3
-> @@ -473,6 +474,7 @@ struct msdc_host {
->         bool hs400_tuning;      /* hs400 mode online tuning */
->         bool internal_cd;       /* Use internal card-detect logic */
->         bool cqhci;             /* support eMMC hw cmdq */
-> +       bool hsq_en;            /* Host Software Queue is enabled */
->         struct msdc_save_para save_para; /* used when gate HCLK */
->         struct msdc_tune_para def_tune_para; /* default tune setting */
->         struct msdc_tune_para saved_tune_para; /* tune result of CMD21/CMD19 */
-> @@ -1170,7 +1172,9 @@ static void msdc_track_cmd_data(struct msdc_host *host, struct mmc_command *cmd)
->
->  static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
->  {
-> +       struct mmc_host *mmc = mmc_from_priv(host);
->         unsigned long flags;
-> +       bool hsq_req_done;
->
->         /*
->          * No need check the return value of cancel_delayed_work, as only ONE
-> @@ -1178,6 +1182,27 @@ static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
->          */
->         cancel_delayed_work(&host->req_timeout);
->
-> +       /*
-> +        * If the request was handled from Host Software Queue, there's almost
-> +        * nothing to do here, and we also don't need to reset mrq as any race
-> +        * condition would not have any room to happen, since HSQ stores the
-> +        * "scheduled" mrqs in an internal array of mrq slots anyway.
-> +        * However, if the controller experienced an error, we still want to
-> +        * reset it as soon as possible.
-> +        *
-> +        * Note that non-HSQ requests will still be happening at times, even
-> +        * though it is enabled, and that's what is going to reset host->mrq.
-> +        * Also, msdc_unprepare_data() is going to be called by HSQ when needed
-> +        * as HSQ request finalization will eventually call the .post_req()
-> +        * callback of this driver which, in turn, unprepares the data.
-> +        */
-> +       hsq_req_done = host->hsq_en ? mmc_hsq_finalize_request(mmc, mrq) : false;
-> +       if (hsq_req_done) {
-> +               if (host->error)
-> +                       msdc_reset_hw(host);
-> +               return;
-> +       }
-> +
->         spin_lock_irqsave(&host->lock, flags);
->         host->mrq = NULL;
->         spin_unlock_irqrestore(&host->lock, flags);
-> @@ -1187,7 +1212,7 @@ static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
->                 msdc_unprepare_data(host, mrq->data);
->         if (host->error)
->                 msdc_reset_hw(host);
-> -       mmc_request_done(mmc_from_priv(host), mrq);
-> +       mmc_request_done(mmc, mrq);
->         if (host->dev_comp->recheck_sdio_irq)
->                 msdc_recheck_sdio_irq(host);
->  }
-> @@ -1347,7 +1372,7 @@ static void msdc_ops_request(struct mmc_host *mmc, struct mmc_request *mrq)
->         struct msdc_host *host = mmc_priv(mmc);
->
->         host->error = 0;
-> -       WARN_ON(host->mrq);
-> +       WARN_ON(!host->hsq_en && host->mrq);
->         host->mrq = mrq;
->
->         if (mrq->data)
-> @@ -2916,6 +2941,19 @@ static int msdc_drv_probe(struct platform_device *pdev)
->                 mmc->max_seg_size = 64 * 1024;
->                 /* Reduce CIT to 0x40 that corresponds to 2.35us */
->                 msdc_cqe_cit_cal(host, 2350);
-> +       } else if (mmc->caps2 & MMC_CAP2_NO_SDIO) {
-> +               /* Use HSQ on eMMC/SD (but not on SDIO) if HW CQE not supported */
-> +               struct mmc_hsq *hsq = devm_kzalloc(&pdev->dev, sizeof(*hsq), GFP_KERNEL);
-> +               if (!hsq) {
-> +                       ret = -ENOMEM;
-> +                       goto release;
-> +               }
-> +
-> +               ret = mmc_hsq_init(hsq, mmc);
-> +               if (ret)
-> +                       goto release;
-> +
-> +               host->hsq_en = true;
->         }
->
->         ret = devm_request_irq(&pdev->dev, host->irq, msdc_irq,
-> @@ -3043,6 +3081,9 @@ static int __maybe_unused msdc_runtime_suspend(struct device *dev)
->         struct mmc_host *mmc = dev_get_drvdata(dev);
->         struct msdc_host *host = mmc_priv(mmc);
->
-> +       if (host->hsq_en)
-> +               mmc_hsq_suspend(mmc);
-> +
->         msdc_save_reg(host);
->
->         if (sdio_irq_claimed(mmc)) {
-> @@ -3073,6 +3114,10 @@ static int __maybe_unused msdc_runtime_resume(struct device *dev)
->                 pinctrl_select_state(host->pinctrl, host->pins_uhs);
->                 enable_irq(host->irq);
->         }
-> +
-> +       if (host->hsq_en)
-> +               mmc_hsq_resume(mmc);
-> +
->         return 0;
->  }
->
-> --
-> 2.46.1
->
 
