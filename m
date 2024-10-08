@@ -4,81 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93E02CED26B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 05:36:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9120CED26E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 06:23:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HS3tPk/Ro6nvmssbl8jCPjzSSvvRaPxaiNB1dtDOYN4=; b=A3MROWfXec74P1inh32UbdNnG1
-	rqviKPCaa/ASKHNbNVuYeSysI4EYhTEAYlpTal7GXYvi8qYzUpYtW8GIwNdwqCYNaZL7SPaLeQuW5
-	5hBW3tnUpmqGma6LrGO9SE09rXeI7e0HM9UQ35+V3pxU6xw0dA1U8LbsPPkR6kvjWDb1UjcIqcxBO
-	BQkpNnnqR0qSpJ9FgmhDYEhdt4qsOH5a9C7UgeLsAOsRSbimY37gvj1CIHgt9RdICCk/Nl69Dvm7m
-	UKC6DanJF4lF1XunD6R69XKL3EuNk3Mfcqv3w825W5UApXPYbixIn46nXTyThG28uCq9HnTpvsPOw
-	Jp8MgRRw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qunY95/SuEuNFb5rTi/o6cpXKtOfP08LHEWLerZxgHU=; b=Tl7HBKiP+qT1EdvuEQlBWw7tOt
+	NvJvxQVNajH8HGlNYbt4K7jE8Umkx9/mrFa8qtcphGk2vlLVegQKOwFMMlqNJOAQgdxHKT1JlksN2
+	l33uNM/ytJpO6HqhlyKsnxtLe8xrVBUai6MMj9nO4S3y1hQpUW8qYMXENIVmXORG1ejKjN6QDni3t
+	5tzzllzbdSQhnpFedsD6SFAmakJqE3aVG6WUAvuqL4fNL8nacw2gM4dA8SsUCEHF49i5WYyEqHKop
+	EJGBZOgm7IxVVZTYW9ytzXBJ7brofaiA2d+xQWNil7xon4K7ZQBBB/ES4UQriytnAUZ4Dmv4lC9u+
+	pj9px3kA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy2tp-00000004Z7O-2qyU;
-	Tue, 08 Oct 2024 05:36:45 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sy3d6-00000004dfo-3dbe;
+	Tue, 08 Oct 2024 06:23:32 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy2sW-00000004Z0q-2pMk;
-	Tue, 08 Oct 2024 05:35:25 +0000
-X-UUID: 1c23be36853711efba0aef63c0775dbf-20241007
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=HS3tPk/Ro6nvmssbl8jCPjzSSvvRaPxaiNB1dtDOYN4=;
-	b=lH1Bl53dwG8Y/L4XLrJ4PMjMskDwc5eiOQPXkaQ0yYdHVdCMfMXrAOpILxdTE6HFMq5jDF9+aodFfDmkzhl9g1CqJybM2RzVQkn3YjK02+2zOyZztDjt6tFPl1nVwbJ3y2L2jMxM+p5VIDarpOLqd4fdnW1i+ilXiaxrZpvg07I=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:acdd4549-df2b-47ae-bda6-df1fcf864033,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:9bebea40-8751-41b2-98dd-475503d45150,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 1c23be36853711efba0aef63c0775dbf-20241007
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 769801406; Mon, 07 Oct 2024 22:35:21 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 8 Oct 2024 13:35:18 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 8 Oct 2024 13:35:18 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Seiya Wang <seiya.wang@mediatek.com>,
-	Tinghan Shen <tinghan.shen@mediatek.com>, Chunfeng Yun
-	<chunfeng.yun@mediatek.com>, Alexandre Mergnat <amergnat@baylibre.com>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, Sen
- Chu <sen.chu@mediatek.com>, Chris-qj chen <chris-qj.chen@mediatek.com>,
-	MediaTek Chromebook Upstream
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chen-Yu Tsai
-	<wenst@chromium.org>
-Subject: [PATCH] arm64: dts: mediatek: mt8195: Fix dtbs_check error for tphy
-Date: Tue, 8 Oct 2024 13:35:14 +0800
-Message-ID: <20241008053514.6800-1-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1sy3ZT-00000004dAP-0JQr;
+	Tue, 08 Oct 2024 06:19:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 96E8FA43231;
+	Tue,  8 Oct 2024 06:19:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8276DC4CEC7;
+	Tue,  8 Oct 2024 06:19:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728368385;
+	bh=xjqzEMOt49AIFvwWzu6+j0y3e39TGTMY4mo7wOXVHbI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=mJcVB3FIs8mp94JcnfqU/CSUl7E1psdnmc518s1V0XcXQnOWkxqHdwVIm+oJRjz2i
+	 PMSGjklM0dS4hSElZ2hdB7leQkr6EWKdvMnASo7VcMALjpj4S/uD1tEeJWhLr6CPlY
+	 P92tp1PfN0kEoci93mHw4cPRkuAoXKdomGyy87sJNU6y6DotFbQAKajd1ycbAakdHd
+	 AwscnN1ngtuok7yFc2Wu4vjT9YTcjVDmExomiQzhlYc97aVPPgm6JbRQz0tsy+gZCE
+	 Wy9G4fdsUiMnFNzE3VytKnKuspDD4iuE8RAZKtb2l50G+FqSHNW2Wi9jPfWfsCyHjo
+	 yP1N8Bk2VeBxA==
+Message-ID: <cc48d505-62b0-4407-aff2-f9088170ddc2@kernel.org>
+Date: Tue, 8 Oct 2024 08:19:36 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6] wifi: mt76: Fix NULL Dereference caused by
+ mt76_connac_get_he_phy_cap()
+To: Gax-c <zichenxie0106@gmail.com>, nbd@nbd.name, lorenzo@kernel.org,
+ ryder.lee@mediatek.com, shayne.chen@mediatek.com, sean.wang@mediatek.com,
+ kvalo@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, johannes.berg@intel.com,
+ quic_adisi@quicinc.com, deren.wu@mediatek.com, chui-hao.chiu@mediatek.com,
+ mingyen.hsieh@mediatek.com, howard-yh.hsu@mediatek.com,
+ StanleyYP.Wang@mediatek.com, allen.ye@mediatek.com,
+ benjamin-jw.lin@mediatek.com, Bo.Jiao@mediatek.com,
+ evelyn.tsai@mediatek.com, meichia.chiu@mediatek.com
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, chenyuan0y@gmail.com, zzjas98@gmail.com
+References: <20241007233501.11773-1-zichenxie0106@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20241007233501.11773-1-zichenxie0106@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241007_223524_745746_97EB0D19 
-X-CRM114-Status: GOOD (  10.15  )
+X-CRM114-CacheID: sfid-20241007_231947_282159_760D4289 
+X-CRM114-Status: GOOD (  14.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,31 +124,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The u3phy1 node in mt8195.dtsi was triggering a dtbs_check error.
-The error message was:
-  t-phy@11e30000: 'power-domains' does not match any of the regexes:
-    '^(usb|pcie|sata)-phy@[0-9a-f]+$', 'pinctrl-[0-9]+'
-Fix this issue by dropping 'power-domains' of u3phy1 node.
+On 08/10/2024 01:35, Gax-c wrote:
+> From: Zichen Xie <zichenxie0106@gmail.com>
+> 
+> mt76_connac_get_he_phy_cap() may return a NULL pointer,
+> leading to NULL Pointer Dereference.
+> Add a NULL check for the returned pointer.
+> 
+> Fixes: a5c372f77aa7 ("wifi: mt76: mt7925: extend mt7925_mcu_bss_he_tlv for per-link BSS")
+> Fixes: e6d557a78b60 ("mt76: mt7915: rely on mt76_connac_get_phy utilities")
+> Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
+> Signed-off-by: Zichen Xie <zichenxie0106@gmail.com>
+> ---
+> v5: Add version tag.
+> v6: Adjust NULL check position for readability.
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 5 +++++
+>  drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 2 ++
+>  drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 2 ++
+>  3 files changed, 9 insertions(+)
+> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+> index 87d0dd040001..4d53f819c5f1 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+> @@ -551,6 +551,8 @@ mt7915_mcu_bss_he_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
+>  	struct tlv *tlv;
+>  
+>  	cap = mt76_connac_get_he_phy_cap(phy->mt76, vif);
+> +	if (!cap)
+> +		return;
+>  
+>  	tlv = mt76_connac_mcu_add_tlv(skb, BSS_INFO_HE_BASIC, sizeof(*he));
+>  
+> @@ -1140,6 +1142,9 @@ mt7915_mcu_sta_bfer_he(struct ieee80211_sta *sta, struct ieee80211_vif *vif,
+>  	struct ieee80211_he_cap_elem *pe = &pc->he_cap_elem;
+>  	const struct ieee80211_sta_he_cap *vc =
+>  		mt76_connac_get_he_phy_cap(phy->mt76, vif);
+> +	if (!vc)
+> +		return;
+> +
 
-Fixes: 37f2582883be ("arm64: dts: Add mediatek SoC mt8195 and evaluation board")
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 1 -
- 1 file changed, 1 deletion(-)
+Nope. Splitting declarations is a no.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index ade685ed2190..1c6f08dde31c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -1920,7 +1920,6 @@ u3phy1: t-phy@11e30000 {
- 			#address-cells = <1>;
- 			#size-cells = <1>;
- 			ranges = <0 0 0x11e30000 0xe00>;
--			power-domains = <&spm MT8195_POWER_DOMAIN_SSUSB_PCIE_PHY>;
- 			status = "disabled";
- 
- 			u2port1: usb-phy@0 {
--- 
-2.45.2
+One of your patches did not even build, although for few emails you were
+insisting everything is fine. This is not even close to Linux coding style.
+
+Please carefully read Documentation/process before posting new patches.
+
+Best regards,
+Krzysztof
 
 
