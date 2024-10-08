@@ -4,82 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3AC1CED27C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 08:44:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48D44CED27C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 08:48:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yi4Ed56vIcvtnLM7JqyGr/ImxZkDc5h+XhLmAzx4MIw=; b=Pl5Gt2chM2XnF8WPnNC/6r8NXf
-	fPVaykS6vh2llpuO3YmpbTL9csSwoRKG4LEbIo2Wa5zegTxbmIJbSP7Gf74MxUu3bxJMHM+2IX75T
-	y8eOdnpV1xxUW0lEAIgnFJM4FlARXM7h8gwLu+NF7VsPuyky3w//seriwcmWqBvWbMTxMKAJfbQLW
-	JkB0H/onTKuuM4OTQzUhYruH1D/8wrxGl80b1Uhf17HC4y5D7K4n/pHL6a6j6o5xsrQG8iwOhIDW1
-	08CEcAtL2JsReni95QUmOKN3OejJAgtc9sJOEbEDBeMLOZv7A6pt1Cu1Sx+jmIKLrpzuMgBSqc4Nm
-	fWxV+rLA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pv1t6PFwilJxwoE9D/QO+7fvkymRLiT6kFlTtk+UjtI=; b=WQcfKbc85tICQIyFH5pzdRWuvF
+	iSNiyhbH1i2fBQSEfqXjqJNs9lCteNK+6/nQ/KYXLVYXjk9gvLSw06ReGJhjZ59+bqBG1Lcjo02tY
+	7We3MFxBsZWpz+Ag/PNdWfRVo0S3CV5ZPaf5nEQs8kArGBCjw3c/EqZxGtG9LV0oECFgCswGvVWWG
+	1J8Re18SwzE6oNV2UoVHrjnmFw+I01nCQlbiMAwNZ7iRsInPlek+xLYuHnHBaUFFF/T23c22zhcUU
+	FGms7twVeJnbEEsKuPOEDg8jSgyZMXMbvIGfUI0ih5sT3BsaiIxtxA4EIVNraKPE+Mc3Z0C4+epFI
+	gOYRFkJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy5p1-0000000575F-3XJC;
-	Tue, 08 Oct 2024 08:43:59 +0000
-Received: from zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
+	id 1sy5tA-000000058Ps-1QjR;
+	Tue, 08 Oct 2024 08:48:16 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy5gG-000000054SJ-3tHN
-	for linux-mediatek@lists.infradead.org;
-	Tue, 08 Oct 2024 08:35:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	sang-engineering.com; h=date:from:to:cc:subject:message-id
-	:references:mime-version:content-type:in-reply-to; s=k1; bh=yi4E
-	d56vIcvtnLM7JqyGr/ImxZkDc5h+XhLmAzx4MIw=; b=WhE/G/DbgeUftYkCEnQi
-	TKiNmL4O8mJXVZGvVaiuxr2/Uuf+VnqQxjkFrl83lLwFQxOgpMaPVihqQQP9EnjQ
-	dIvEhlY3XzytQGlC7HUjB+rJPNUUaVNqNEAFMmu3RCbIHBGS/aJikbNqKuoYncTa
-	HWKmjBS7QXILHji8waVqo4Gfameve/bjUR8OZjfJ61xt5qQilme9R9mntWnpmVE6
-	vI/DbcOiNyMYzTxRGso7HQtTPALxrXPSxb0LKFjJIGSMhdCJ3OEBcf6SjBEfzx0q
-	xleKrYav5uunbP1dwomEPHueCWbUnYk2Hq3ZkmDA5X/S0ZeqJIqe1B8hi3Maegtt
-	FQ==
-Received: (qmail 402745 invoked from network); 8 Oct 2024 10:34:50 +0200
-Received: by mail.zeus03.de with ESMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 8 Oct 2024 10:34:50 +0200
-X-UD-Smtp-Session: l3s3148p1@1sW4AvMjXyttKPHJ
-Date: Tue, 8 Oct 2024 10:34:49 +0200
-From: Wolfram Sang <wsa+renesas@sang-engineering.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wolfram Sang <wsa@kernel.org>, Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, chrome-platform@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Douglas Anderson <dianders@chromium.org>,
-	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	linux-i2c@vger.kernel.org, Andi Shyti <andi.shyti@kernel.org>
-Subject: Re: [PATCH v8 3/8] i2c: core: Remove extra space in Makefile
-Message-ID: <ZwTuqX301BqAltze@shikoro>
-Mail-Followup-To: Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh@kernel.org>,
-	Saravana Kannan <saravanak@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wolfram Sang <wsa@kernel.org>, Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, chrome-platform@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Douglas Anderson <dianders@chromium.org>,
-	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	linux-i2c@vger.kernel.org, Andi Shyti <andi.shyti@kernel.org>
-References: <20241008073430.3992087-1-wenst@chromium.org>
- <20241008073430.3992087-4-wenst@chromium.org>
+	id 1sy5sm-000000058Ha-2fYH;
+	Tue, 08 Oct 2024 08:47:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1728377270;
+	bh=7Y8lQEQ1hSkPSRcmmUUSa8wB76A6Q0NBQmCBMiUD9aE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=KI1ReXvHXQ2poIhkcjZbkB7URqsfRYMuA9xMaic7FNi3sX+rZxp+mb/AJkzU4ZM1T
+	 3+ytaIocV4KgBXsbqX59laXLsR016dAAp0Kz2pgkRPvQ9CVp+pePbWNEJHLReurHe4
+	 l3OgU6HK1SAw6f72Gpljejv+iJUbuUhCfbZzcCRmEmRTM2yFQOeoqjMVLO2N6cYg0P
+	 9aQE+P2BP+cV8RfMm5iudmY3fWdvUnw0ILp3mxexBL4/weEA4dZwAYGbYLgoze+fp9
+	 3i6apt0HIxayZnS31vXWloCznUhEb/Ga7sl8ze/aaICSnLI0uREJYeN0b0SayRKUTM
+	 vxog6+d/C3XxQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2F5FC17E10AF;
+	Tue,  8 Oct 2024 10:47:50 +0200 (CEST)
+Message-ID: <eab4ef1e-f63f-4561-b429-6dc3d7485871@collabora.com>
+Date: Tue, 8 Oct 2024 10:47:49 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="gFj6OJQYOOPFj8BE"
-Content-Disposition: inline
-In-Reply-To: <20241008073430.3992087-4-wenst@chromium.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8173-elm-hana: Add vdd-supply to
+ second source trackpad
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20241008082051.4002438-1-wenst@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20241008082051.4002438-1-wenst@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241008_013457_903493_B6747E9E 
-X-CRM114-Status: UNSURE (   9.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241008_014753_189284_301BD053 
+X-CRM114-Status: GOOD (  20.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,44 +76,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---gFj6OJQYOOPFj8BE
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Oct 08, 2024 at 03:34:22PM +0800, Chen-Yu Tsai wrote:
-> Some lines in the Makefile have a space before tabs. Remove those.
->=20
-> Reported-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> Closes: https://lore.kernel.org/all/ZsdE0PxKnGRjzChl@smile.fi.intel.com/
+Il 08/10/24 10:20, Chen-Yu Tsai ha scritto:
+> The Hana device has a second source option trackpad, but it is missing
+> its regulator supply. It only works because the regulator is marked as
+> always-on.
+> 
+> Add the regulator supply, and the required post-power-on delay.
+> 
+> Fixes: 689b937bedde ("arm64: dts: mediatek: add mt8173 elm and hana board")
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> Reviewed-by: Andi Shyti <andi.shyti@kernel.org>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi | 6 ++++++
+>   1 file changed, 6 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
+> index 8d1cbc92bce3..e03474702cad 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
+> @@ -49,6 +49,12 @@ trackpad2: trackpad@2c {
+>   		interrupts-extended = <&pio 117 IRQ_TYPE_LEVEL_LOW>;
+>   		reg = <0x2c>;
+>   		hid-descr-addr = <0x0020>;
+> +		/*
+> +		 * The supply is always on. Adding the delay here
+> +		 * needlessly delays the readiness of the trackpad.
 
-Applied to for-next, so you don't need to carry this patch anymore.
-Thanks!
+I'd say, let's be nice in this comment and let's explain the whole situation:
+
+The trackpad needs a post power on delay of 100ms but, at the time
+of writing, the power supply for it on this board is set as always-on,
+so we don't add that to avoid useless delays in the readiness of this device.
 
 
---gFj6OJQYOOPFj8BE
-Content-Type: application/pgp-signature; name="signature.asc"
+...or....
 
------BEGIN PGP SIGNATURE-----
+The trackpad needs a post power on delay of 100ms but the power supply for
+it on this board is always-on (and will always be), so we don't add delays
+to avoid impacting on the time required for readiness of this device.
 
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmcE7qkACgkQFA3kzBSg
-KbYVTBAAnj3lYy0aHno8B+L4r4eegNvIoB88vkx4UB6TEssgEW4AB2kf+uAlTXfW
-2cFXhFaPicKEc/DDqmhTTW430UIG27jxpQD6BC1tyapPQ6dChS9t6gCcElhWNTvb
-sjCDblb1zor2vGYN+2f+BJPlaFDO20ZnMi9sbP5mlkkEEsTgJIwr2+DFmpWuMY5w
-NCUbXbtEkPUBn5u49YJH0RgVsBW1hsiezALs1AxEQ26G7/cXVm6u6IvH7zbgnWE9
-0DZKs3DdDxO9mV+ilW43Rm/Lx3s9n5Yy1aOZnkWVX0ddLfZZMR4iKbU5By4w+2uM
-5i5uGSIialjycmGSthXpTNawcJfB89rClHpaKYsZCuursUxf5EQtc2MYDOud/bZN
-rDz47+boX/yUhMV4FnlVsh+rfJaq5WmcbEd33ICh6CT/fc7T8uKIHF+vIsToTg+s
-nx4IqNZ4VJc/6B/er9RLADWJKL2BrKYluECw6jlX1yZHWEka+UvVPlSQmcRxPt7N
-fla7gKTB1jZj6vhS1GW5mtSJbQByt+AUbt1dtu9rWFvpsR/gda2MEqbzp62nAV8b
-gy4teVjjlJAqKZ5zeQs7MDDszKlCXgv3k1YxsKBSOj6R7/WytM1TpO46BKUCXSZv
-//MT9B3Mt7LFR+wFkv+5F4mazO1jkhGdS7wjUz9nk0QGqetl7HM=
-=Xawz
------END PGP SIGNATURE-----
+> +		 */
+> +		/* post-power-on-delay-ms = <100>; */
 
---gFj6OJQYOOPFj8BE--
+Then you can remove this commented out property ;-)
+
+P.S.: Just to be clear, what I dislike is to see a property that is commented out.
+
+Cheers,
+Angelo
+
+> +		vdd-supply = <&mt6397_vgp6_reg>;
+>   		wakeup-source;
+>   	};
+>   };
+
 
