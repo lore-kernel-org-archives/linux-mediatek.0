@@ -4,80 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6992CEF17D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 14:41:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1E74CEFC21
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 16:01:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N9oq3jezHlQMT6rg1nSIemrSZ1OTMBtx54B/fq7slMk=; b=K4KPohk2ptYBgrygZSyPHrJ2jx
-	ZZ+qimJKoEpQJEuNeFbh1exaqHrdmwv0SRycZc15P9sdjY73NdLb3bz+VBbzLW5RNyPb7rjmLPpC3
-	PowtV+DgHedfuD6WOA3DwOjYmcPGO5m2HXcFsD2d3EzG/NuuBRhHKFSOD9Lt8gGFPKokqptar7+Wu
-	a98fEZqTo4i/tljSTpnTQ7mqjQh1+LKvP3iXkRNCsFM4pjslLiGh9YOpZeLdOCBq1WmOrI3g9dH3m
-	Mk+2RWvEQNHlXwjve5VVLejd2O9reM5cGiTY27YQc3n1u5c8iwAcGJaxtcgVspR6DupoMlZ8l6nSa
-	ljBLit1Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xqbiKApzx+YcTRrl40O1RcsHyv9sEyjapRi2GiRqBMI=; b=xaV/9uav5XwvqoLW6GQlx/waKz
+	e95vmKA1x+WzVhTlSuyIwrU7evO2GPutkgWqsNghX1HThtROTprbvkECAzRrvU9BT/9DQie4mL/py
+	7elXIcM8XzP2B1xUu+9gpiSUBGtvPlbSgwpJDHwChd7K6nQZH2jyQNUw7eHZvpJnVlGs3UYg7H8V2
+	JZhH2Wi5UQgdQGVIYvo+HTvl0UMijHHxeen1KdF2bgpj8xx8cN3sIkSay1LnuV1rvO5kB7CkhaPtD
+	W5vpCbW4ogYUVCBGuBMPB4K5GWmEoddnubuYaH3SstERawyffONrG0C/NgzXrt4D1E9FM/JEYL+M4
+	gW5517QQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syBOr-00000006DF6-2kJ4;
-	Tue, 08 Oct 2024 14:41:21 +0000
-Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
+	id 1syCeS-00000006R0O-0Qg2;
+	Tue, 08 Oct 2024 16:01:32 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syBKb-00000006Bzo-1XBb
-	for linux-mediatek@lists.infradead.org;
-	Tue, 08 Oct 2024 14:36:59 +0000
-Received: by mail-yb1-xb33.google.com with SMTP id 3f1490d57ef6-e28f2a52803so569775276.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 08 Oct 2024 07:36:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728398215; x=1729003015; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=N9oq3jezHlQMT6rg1nSIemrSZ1OTMBtx54B/fq7slMk=;
-        b=ZZshzoJjDzWcunQJqzGVr49IPDMbx60xFpD5vv0ezfVjcktsmM29je896l2yrjtXM8
-         ie6PJa+pDHRFAOiqSe6DPmgtzPCZJebxfm+JlX1V/jsNuNt57BCrAgBcIzSZjEL739S/
-         e3bsa4XFK334vu3PMJSWjXMGr/upPxfoXt2deu4AeM6wHHW0DPU0lPjG9V2nN4h8l924
-         Y0rIkmmg1gIVKkiVHh+Y2CTArKASrqdG2yepH2hoTP9WnSGa7HwUO7yEZVesk1ikeOWn
-         xWY3L2uTWLQyiJzqLvx3p8hZH7OUIeFboLWPw8U7A4QLwdIXTWMCE6szOMVRMBZHfJDu
-         5PeA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728398215; x=1729003015;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=N9oq3jezHlQMT6rg1nSIemrSZ1OTMBtx54B/fq7slMk=;
-        b=tRsAow1JK03q23a9BR8PgmxQF6CJlF5p0+8a6B8TkwQIMr8misXqi+ssQgkOIjL2Vb
-         rospzyg4novxV/rYbNsc3jve3apEwP1ZI3wkycH3+M1vXX7Mis1H3i+lT+0xvYbDThmt
-         yoqgPVvtAK7bwticsmfvgtdtWw+NdI0m3CKs34wQkZL4iNfPsC5EmtHn8xxAKor8hluM
-         XPj+ZTkASSIRXDOgEdZYak8QpPLtLRYpmN5ArzCxXv5TalFgBrE4LtijXnB3Pe0SYrzA
-         FGejd15oBIQulDm1IhoM/oXUiM02QtdTSN++f+Nqq8SexA3BmTRB5coGteLXouqw17Qs
-         HvYg==
-X-Forwarded-Encrypted: i=1; AJvYcCXR+IknmQqgpImy20v/qA7Xt0OzZIaoC0v0ur3nqgFHRgp5OKC5unP18jXaTpTu31QpHmn7a1ajKyLOmvNUDw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YybY7hamChqKwRonBjfUOEHzmYKWjJS1R012F4hE2qZX8bleGg0
-	fF5KWe4SAb0nuDQVJOOZW7GCdF0iYwIzJMHbsOC4wo5Oh70D3djj8i3mx2hJprEP53Qcj1VgjPI
-	pUKC+QCi6UdzQi3U1wQ/uDNggakQuLn+XfZsbUQ==
-X-Google-Smtp-Source: AGHT+IEjM292qoxRSTMVZiEHGGPCXwidKp0QKEL9SSYcSrYZB36fSHw7uDxBp6+cKhZ+mA+gwRbbOrFaFvtkEpLB0WY=
-X-Received: by 2002:a05:6902:1a4a:b0:e28:6b10:51b4 with SMTP id
- 3f1490d57ef6-e2893951ac4mr10369636276.46.1728398215648; Tue, 08 Oct 2024
- 07:36:55 -0700 (PDT)
+	id 1syCYB-00000006Q1u-1T2O;
+	Tue, 08 Oct 2024 15:55:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 541245C070C;
+	Tue,  8 Oct 2024 15:54:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE666C4CECE;
+	Tue,  8 Oct 2024 15:54:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728402902;
+	bh=1xWwsNJSaWYU3Vwc/kd5e2S3gWaAprl5IlFQ2noiFa8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=m5KoS8kuZJ5bARZdMTF5ZQ4tRfTqMpmNYKMlC89oYdBpmC0FjHVbpO0Gd38GhE6A2
+	 BDQ1inAepvBPIVnsMG1k9NrV0O1NJd8BH8GWUjkXFbdX06z3gLlW+mqZv3GDJhn3Xd
+	 uOnaAgX0C8dWksiezlIarp9wkQBUsrx8GklLhlunOtn0sLy8Xw6IURy2YPc6dJfi14
+	 g+kDuv1ahcR1a5T0vRcUiNpGtEUsZvS/3Dwd7ajimR/MyKuDyh8ywcGkLhPoNRnLTv
+	 UCA/L088YwI2Q6necYsginog5HABWYWLfgsnhPypcOvnNtkjNN48ToPnnR95lJHlbj
+	 AYvwS2Akns3Wg==
+Message-ID: <1cf6d772-e7e0-4e40-bcac-d687706f1055@kernel.org>
+Date: Tue, 8 Oct 2024 17:54:52 +0200
 MIME-Version: 1.0
-References: <20240930224919.355359-1-rosenp@gmail.com>
-In-Reply-To: <20240930224919.355359-1-rosenp@gmail.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Tue, 8 Oct 2024 16:36:11 +0200
-Message-ID: <CAPDyKFo69H+653J=7eDqTSm2gz_AQH-3R+axqiTWqumOPQM9GQ@mail.gmail.com>
-Subject: Re: [PATCH 0/3] mmc: mtk-sd: add some devm
-To: Rosen Penev <rosenp@gmail.com>
-Cc: linux-mmc@vger.kernel.org, Chaotian Jing <chaotian.jing@mediatek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6] wifi: mt76: Fix NULL Dereference caused by
+ mt76_connac_get_he_phy_cap()
+To: Zichen Xie <zichenxie0106@gmail.com>
+Cc: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com,
+ shayne.chen@mediatek.com, sean.wang@mediatek.com, kvalo@kernel.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ johannes.berg@intel.com, quic_adisi@quicinc.com, deren.wu@mediatek.com,
+ chui-hao.chiu@mediatek.com, mingyen.hsieh@mediatek.com,
+ howard-yh.hsu@mediatek.com, StanleyYP.Wang@mediatek.com,
+ allen.ye@mediatek.com, benjamin-jw.lin@mediatek.com, Bo.Jiao@mediatek.com,
+ evelyn.tsai@mediatek.com, meichia.chiu@mediatek.com,
+ linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, chenyuan0y@gmail.com, zzjas98@gmail.com
+References: <20241007233501.11773-1-zichenxie0106@gmail.com>
+ <cc48d505-62b0-4407-aff2-f9088170ddc2@kernel.org>
+ <CANdh5G4r_WVt3ao0sFqFA7F3BUHi9wNwWENVHjPXyRGq2sotZA@mail.gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <CANdh5G4r_WVt3ao0sFqFA7F3BUHi9wNwWENVHjPXyRGq2sotZA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241008_073657_522197_70014593 
-X-CRM114-Status: UNSURE (   8.74  )
+X-CRM114-CacheID: sfid-20241008_085503_525323_E1BBE454 
+X-CRM114-Status: UNSURE (   7.30  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,21 +127,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 1 Oct 2024 at 00:49, Rosen Penev <rosenp@gmail.com> wrote:
->
-> Simplifies the code. Also a bugfix with devm_clk_get_optional.
->
-> Rosen Penev (3):
->   mmc: mtk-sd: use devm_mmc_alloc_host
->   mmc: mtd-sd: use devm_platform_ioremap_resource
->   mmc: mtk-sd: fix devm_clk_get_optional usage
->
->  drivers/mmc/host/mtk-sd.c | 70 ++++++++++++++-------------------------
->  1 file changed, 25 insertions(+), 45 deletions(-)
->
+On 08/10/2024 16:34, Zichen Xie wrote:
+> Hi,
+> 
+> But Matthias suggested checking for NULL immediately after the declaration.
 
-Applied for next, thanks!
+Why do you keep top-posting? Matthias also asked you to stop, so that
+part you ignore? Responding to such HTML, top-post emails is a pain, so
+that is the last time I am writing here. I will be NAK-ing other totally
+bogus and untested patches, though.
 
-Kind regards
-Uffe
+> Re: [PATCH v5] wifi: mt76: Fix NULL Dereference caused by
+> mt76_connac_get_he_phy_cap() - Matthias Brugger (kernel.org)
+> <https://lore.kernel.org/all/7daf8976-91ee-4045-a9a7-d9d14d53c6dd@gmail.com/>
+
+Don't send HTML. Anyway I do not see anything indicating that this
+should be before declarations. I see clearly: "before any use of struct
+vc." which is not before declarations.
+
+Best regards,
+Krzysztof
+
 
