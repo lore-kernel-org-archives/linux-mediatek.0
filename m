@@ -4,59 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16AEFCEF141
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 09:22:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA3D6CEF141
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Oct 2024 09:23:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UfxCUWrWzvVlnA9roJq/uh4DkMbQvf0YjSCBq8NfOco=; b=qdafBvFgz05USt8pXmul45ZMqj
-	fDz+tzCB78kjsFFoB4CCN4LC1Z+/and41uo6AgUTzVT7MsVobxj3kWq7P6bQA6wDRbhVIUTlW4COI
-	hKMYpyHsNBmVauufrGewfNe/+7wN7w31xe9lo9AX2CqVC6zYoennAB8SidByZTk8ByH3/kLpDe0Dx
-	sYr0I6XmJKe16O7RR9nBgojnztVn1fW8LdOw4iblMBZLym1+F/9ssLogsIm85CRtgs5A2cKoaTu2S
-	B7XWor89ohcpgxe+z7aKWLexaGfjyIx1srQXZd9LGhOkk3x6OG9aYC386T593WbpZ0Adm3HjNJ5oL
-	JVpmwejQ==;
+	bh=vM+joxsNNo8QdvFu6YjUTs/qL2HO5K3/81RFLN6aK2s=; b=peSrM/IjA9tZyQ8C79LbXvrnMR
+	zcHpF8Q5J2XFIRC+CmlrCp7XHrepf7R2cWqUPhU2DZCQiSSSrSBYb2UMk8v8rsF8UHH18e2p0P6l8
+	PBe4o/DuNgg8SS7AsFgy80TyUBMj0/66XmsWKyTV60k0wux21ORQQWNRBZ0yspVTMFSUl9JBdhgGe
+	STUQod5cV1ES8bX8hnQiqmP0wtJt7P4JjVhl6i5QFA6qQvp2Bs/zTZW5MvycNaNDmLKKtUvkMdfxS
+	nE+wbqls0b8w7u4/ODOpS6WZK2J274wd3tnEWdhdEwgBGNQ2aoKCIBopBjUplBE3aokmpW4KK/DjC
+	K6rHGkTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy6Qd-00000005HMT-26wA;
-	Tue, 08 Oct 2024 09:22:51 +0000
+	id 1sy6Qu-00000005Hdz-37rH;
+	Tue, 08 Oct 2024 09:23:08 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sy6DQ-00000005ExE-3VY2;
-	Tue, 08 Oct 2024 09:09:14 +0000
+	id 1sy6Km-00000005GOy-2FIN;
+	Tue, 08 Oct 2024 09:16:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1728378550;
-	bh=VcBPpKEVgFfMDZkzhrWAutVnb7BL+fVfq11Zhn0EkLo=;
+	s=mail; t=1728379006;
+	bh=3WVuhvfAxsFrYqhGWJmOo57Ctm0VK0hxRBOs1VjAuSs=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jseM6zZJf+5n4xsFf6SROfF6nJz4IQhcqrTZdT0+iFaMJ3uEqlSmNv9xXeCOpseF+
-	 U6Wm84NxLx+glkd5ts+2k5hamnalBeS6K/SbSBe9k3W0qOMyyXu35ZH8L10RTwQxaG
-	 5eMk3skUSKkfEkd7Tz3y74gUy5Q9M1zKuG0LyLzxZb7ui23uFje5PcLw5S35A/J67T
-	 C/o/qn4qUePWiwE682hhg9MpPjYPEZq6Y2rCKpxxdurFTolHoA9Z6hgPaaGDWY6o1X
-	 +PnCRM8mUsfmIW3KsuqY8g2jKs96J/HKRgaB96hL8b7UqQNlc0OHm/mX5ZkbvtwHb/
-	 zw/3rkgrXFFQQ==
+	b=oKXDUW/vCw07J1riK+a5FQTJoTPDUgpwEvCd+4leq5unmf9c5CZc6VhbTrvrPZSK3
+	 AI9xAEX2+PEp3bz1uLu/JRjJVWnvn4Gho3onQIlj9X0/TSgcL2kpIC/4LV5GfVvAVG
+	 xJxi29ZIcH4atpzcebr4AW89Eu1hc3lCvUbxEXEVEY1ogWarPUlrCtAE27UhSJBjOY
+	 wKFDCgljD3I4phJlI9cfzJSf6nWaw41HzytXYv3q4rjzPDusR5a3Kw9+Eol5FM+Xpe
+	 /wuUBa5aLw2ME0fOvWjNyweQndm0FC9/YrQEtQesYiqBe81gECJ99YpgtHUDCNOJZS
+	 RkIO3K4qsbNPg==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4B3B117E10D3;
-	Tue,  8 Oct 2024 11:09:09 +0200 (CEST)
-Message-ID: <e9277edf-d372-4a8e-881c-49a907f0a883@collabora.com>
-Date: Tue, 8 Oct 2024 11:09:08 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3761117E10D6;
+	Tue,  8 Oct 2024 11:16:46 +0200 (CEST)
+Message-ID: <9ab422c4-e4f8-4827-a296-a10270ab11d5@collabora.com>
+Date: Tue, 8 Oct 2024 11:16:45 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] arm64: dts: mediatek: mt8195: Fix dtbs_check error for
- tphy
+Subject: Re: [PATCH v2 1/2] arm64: dts: mediatek: mt8390-genio-700-evk: update
+ regulator names
 To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Seiya Wang <seiya.wang@mediatek.com>,
- Tinghan Shen <tinghan.shen@mediatek.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
  Alexandre Mergnat <amergnat@baylibre.com>
 Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
  Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>,
@@ -64,15 +61,16 @@ Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
  MediaTek Chromebook Upstream
  <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  Chen-Yu Tsai <wenst@chromium.org>
-References: <20241008071540.32607-1-macpaul.lin@mediatek.com>
+References: <20241007090244.1731-1-macpaul.lin@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241008071540.32607-1-macpaul.lin@mediatek.com>
+In-Reply-To: <20241007090244.1731-1-macpaul.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241008_020913_105136_FD4431CC 
-X-CRM114-Status: GOOD (  17.97  )
+X-CRM114-CacheID: sfid-20241008_021648_790340_30752145 
+X-CRM114-Status: UNSURE (   8.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,43 +85,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/10/24 09:15, Macpaul Lin ha scritto:
-> The u3phy1 node in mt8195.dtsi was triggering a dtbs_check error.
-> The error message was:
->    t-phy@11e30000: 'power-domains' does not match any of the regexes:
->      '^(usb|pcie|sata)-phy@[0-9a-f]+$', 'pinctrl-[0-9]+'
-> Fix this issue by dropping 'power-domains' of u3phy1 node.
+Il 07/10/24 11:02, Macpaul Lin ha scritto:
+> Update regulator names to match schematics, replacing generic terms.
+> 1. Add system wide 'reg_vsys' node for 4.2V power rail.
+> 2. Add 'reg_vsys' node as 'vin-supply' for the following nodes
+>   - common_fixed_5v, edp_panel_fixed_3v3, gpio_fixed_3v3, sdio_fixed_3v3,
+>     touch0_fixed_3v3, usb_hub_fixed_3v3, usb_p0_vbus, and usb_p1_vbus.
+> 3. Update regulator names according to the stable output name on
+>     schematics.
+>   - vdd_5v, vedp_3v3, ext_3v3, vio18_conn, wifi_3v3, vio33_tp1, vhub_3v3,
+>     vbus_p0, vbus_p1.
+>   - vcn18_pmu, vcn33_2_pmu, dvdd_proc_l, dvdd_core, vpa_pmu, dvdd_adsp,
+>     va12_abb2_pmu, vsim1_pmu, vufs18_pmu.
+> 4. Remove usb_hub_reset_1v8. Use 'hub' node to probe USB HUB
+>     in subsequent patches.
 > 
-> This is because MediaTek tphy dose not need to add mtcmos.  It is not
-> necessary to add 'power-domains'. If the power of the tphy is turned off,
-> it will affect other functions. From the current USB hardware design
-> perspective, even if mtcmos is added to the phy, it is always on.
-> 
-> Fixes: 37f2582883be ("arm64: dts: Add mediatek SoC mt8195 and evaluation board")
+> Suggested-by: Chen-Yu Tsai <wenst@chromium.org>
 > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-> ---
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 1 -
->   1 file changed, 1 deletion(-)
-> 
-> Changes for v2:
->   - Add detail description of the tphy design for explaining the reason
->     of this change.
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> index ade685ed2190..1c6f08dde31c 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -1920,7 +1920,6 @@ u3phy1: t-phy@11e30000 {
->   			#address-cells = <1>;
->   			#size-cells = <1>;
->   			ranges = <0 0 0x11e30000 0xe00>;
-> -			power-domains = <&spm MT8195_POWER_DOMAIN_SSUSB_PCIE_PHY>;
->   			status = "disabled";
->   
->   			u2port1: usb-phy@0 {
 
 
 
