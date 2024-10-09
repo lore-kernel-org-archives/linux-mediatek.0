@@ -4,72 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72F17CEE34D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Oct 2024 21:01:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BBF5CEE351
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Oct 2024 21:16:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w4JFRWgjZuV7Jzt/B+femgUUAzlm/5fK3RFyN9MD6YE=; b=fjPYRXEmu7IyNPAHxZqDr7hZzJ
-	QIoe7sqnI5vVNwcuPGsNWjMi3u6gdsVLIiBkaVtiBqyIcSJjUPeVcBJCGV8wmFaLbBGLcPIYwhsFw
-	wMJPwQrqXtaIfq9WfGFs/6v33j9zVSxHk5dIXzAVGkDExpK3ApjJCWMIbUUJTWunxQrcH1joePZqz
-	sD7szIDT4iAR9NnDKyBqSp3NLCV4bucNN7LrwcC7H/BdtQbOYJ31bMbZAKYAUOaZ1CD7TfhzKdYph
-	Pxrd/u3i1rc05MFfXEOnAZqO2uZ/1rmVUkEebu2SWhO3lSRH6vGLNkyil4F1aJ2BXBbe1xS8Aut8D
-	USoaDhQw==;
+	bh=zyQGwFRGuZBcGFfZDAjfr9avYs4H7lw0jA2Eg8Htifc=; b=xLlRYS6wskZzDXN3+q884UHkCr
+	Xg016WBsh7A3m0m4owqXzTnGHFDQ/pulNg4sJ1Z/KnQCscUOQivQgI6zQrMXtjR1tNwENrI12wwhF
+	47fvBV46Ej4JmfECjQDdUJVEADra/l+KCeYRPhMPrOr3eWVqOHCoowApsVVrfWIpF7RWTZwJ6T0py
+	qXp8FedHIEeI+/2VUeSApk7aDVoHVGYuBT6wbUS536D6+s8zgEuaqPzCe7prL2MVLDIzwqRrwyKK5
+	pxL0C6zx5KRHFVcBV/LWOtf3aC99qbRsIaKVy6FszaQ8ADl45DnZuCx7WSQ/Jg7MaDt8NMO8xYoBa
+	1fsZ53tQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sydoL-0000000Aig0-1Ff5;
-	Wed, 09 Oct 2024 21:01:33 +0000
+	id 1sye2Q-0000000AkRr-2514;
+	Wed, 09 Oct 2024 21:16:06 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sydmy-0000000AiOo-1EOZ;
-	Wed, 09 Oct 2024 21:00:10 +0000
+	id 1sycgM-0000000AXEZ-2Fcx;
+	Wed, 09 Oct 2024 19:49:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5EA215C5D52;
-	Wed,  9 Oct 2024 21:00:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 23CD0C4CEC3;
-	Wed,  9 Oct 2024 21:00:07 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id E6D625C5CDF;
+	Wed,  9 Oct 2024 19:49:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7A52BC4CEC3;
+	Wed,  9 Oct 2024 19:49:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728507607;
-	bh=5lbw1fw2F0YDO/Ghx0pIMUv4r43RfjdulBFeOF1eqBI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UL057BFpi/mpH0RVD0VDU6ua6KJ7efybWqE6QHGA4RNfbdyyG2QhVejnrUHTyyhKd
-	 iPx8NwWcLmiy5zxXSqEe9WgKjzQrtvmwmSd7Necg62Hm/OCNLNDQBRSztwbzRd3ONy
-	 LcifS0XSvchrkkfeTsq2Jhem9s4wSz8itsuUyz9KlJj9pCExfRtY8KD31qtpqpC71k
-	 R0sApesTcTY4x/fSeCOIVdt2Q2HDEAc0rRV16/6235YmRIbTglf7qeQCfz3Sogn6aV
-	 BieWTl5TWrdVUsuRvUUdOWjiRtCiaikSD4F3lLyEuKSQre5o6EhihTCHRL2XLcrsiz
-	 j5I2ybnt/SKmA==
-Date: Wed, 9 Oct 2024 16:00:06 -0500
-From: Rob Herring <robh@kernel.org>
-To: Shu-hsiang Yang <Shu-hsiang.Yang@mediatek.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Christian Konig <christian.koenig@amd.com>,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
-	linaro-mm-sig@lists.linaro.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	yaya.chang@mediatek.com, teddy.chen@mediatek.com,
-	hidenorik@chromium.org, yunkec@chromium.org,
-	shun-yi.wang@mediatek.com
-Subject: Re: [PATCH v1 01/10] dt-bindings: media: mediatek: add camsys device
-Message-ID: <20241009210006.GA643988-robh@kernel.org>
-References: <20241009111551.27052-1-Shu-hsiang.Yang@mediatek.com>
- <20241009111551.27052-2-Shu-hsiang.Yang@mediatek.com>
+	s=k20201202; t=1728503352;
+	bh=C1NpSIwyabYuPOgSxRtFpJJ+JGk1iE4Uf4o/+dftn4U=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=iUco/PJ0EvyCK95r884GLz5452WgNbDLEaiZHE338NnjcNkuXgb00c/5wIRO7/0zZ
+	 0xMTbCI7amCfzMPcCeXtHvOOM+cv3zdp6gh0SBSHWGwRKElVMXxAQW6iVBR17eqOG9
+	 rXwuDk4Ec0K5r4rXWm1prPtrq+UVVFpCBRVSjo4BzwKjKuPsm16jDI7RVYzzz/qUUs
+	 iCK8BgheyblKxeDpsB03mszQ2JACq0u6FA9VhwCyi2/bIXbvKuXyDn4qNTTgU9wGlJ
+	 u7VjwRCr55RbbouFol1rJTNJZnUtS+HWXAN7V4Kf01s9jPV2o6OnskggJtSFV9Zzg6
+	 Llj4/phkn6ZLg==
+Date: Wed, 09 Oct 2024 14:49:11 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241009111551.27052-2-Shu-hsiang.Yang@mediatek.com>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Frank Wunderlich <linux@fw-web.de>
+In-Reply-To: <20241009165547.5959-2-linux@fw-web.de>
+References: <20241009165547.5959-1-linux@fw-web.de>
+ <20241009165547.5959-2-linux@fw-web.de>
+Message-Id: <172850335071.570182.9793183065235967586.robh@kernel.org>
+Subject: Re: [PATCH v3 1/2] dt-bindings: mmc: mtk-sd: Add mt7988 SoC
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241009_140008_450749_7955ED08 
-X-CRM114-Status: GOOD (  20.82  )
+X-CRM114-CacheID: sfid-20241009_124914_691371_698FB5A0 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,236 +66,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Wenbin Mei <wenbin.mei@mediatek.com>, linux-mmc@vger.kernel.org, daniel@makrotopia.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Chaotian Jing <chaotian.jing@mediatek.com>, john@phrozen.org, eladwf@gmail.com, Krzysztof Kozlowski <krzk+dt@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, ansuelsmth@gmail.com, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 09, 2024 at 07:15:42PM +0800, Shu-hsiang Yang wrote:
-> 1. Add camera isp7x module device document
-> 2. Add camera interface device document
+
+On Wed, 09 Oct 2024 18:55:41 +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Signed-off-by: Shu-hsiang Yang <Shu-hsiang.Yang@mediatek.com>
+> Add binding definitions for mmc on MT7988 SoC.
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 > ---
->  .../media/mediatek/mediatek,cam-raw.yaml      | 169 ++++++++++++++++++
->  .../media/mediatek/mediatek,cam-yuv.yaml      | 148 +++++++++++++++
->  .../media/mediatek/mediatek,camisp.yaml       |  71 ++++++++
->  .../media/mediatek/mediatek,seninf-core.yaml  | 106 +++++++++++
->  .../media/mediatek/mediatek,seninf.yaml       |  88 +++++++++
->  5 files changed, 582 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek/mediatek,cam-raw.yaml
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek/mediatek,cam-yuv.yaml
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek/mediatek,camisp.yaml
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek/mediatek,seninf-core.yaml
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek/mediatek,seninf.yaml
+> v3:
+> - fixed minItems on clock-names too
+> v2:
+> - fixed minItems to 4
+> ---
+>  .../devicetree/bindings/mmc/mtk-sd.yaml       | 24 +++++++++++++++++++
+>  1 file changed, 24 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek/mediatek,cam-raw.yaml b/Documentation/devicetree/bindings/media/mediatek/mediatek,cam-raw.yaml
-> new file mode 100644
-> index 000000000000..c709e4bf0a18
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek/mediatek,cam-raw.yaml
-> @@ -0,0 +1,169 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +# Copyright (c) 2024 MediaTek Inc.
-> +
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/mediatek/mediatek,cam-raw.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: The cam-raw unit of MediaTek ISP system
-> +
-> +maintainers:
-> +  - Shu-hsiang Yang <shu-hsiang.yang@mediatek.com>
-> +  - Shun-yi Wang <shun-yi.wang@mediatek.com>
-> +  - Teddy Chen <teddy.chen@mediatek.com>
-> +
-> +description:
-> +  MediaTek cam-raw is the camera RAW processing unit in MediaTek SoC.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,cam-raw
 
-Compatibles should be SoC specific.
+My bot found errors running 'make dt_binding_check' on your patch:
 
-> +
-> +  "#address-cells":
-> +    const: 2
-> +
-> +  "#size-cells":
-> +    const: 2
+yamllint warnings/errors:
 
-Don't need these. You don't have any child nodes with addresses.
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mmc/mtk-sd.yaml: allOf:5:then:properties:clocks: 'oneOf' conditional failed, one must be fixed:
+	[{'description': 'source clock'}, {'description': 'HCLK which used for host'}, {'description': 'Advanced eXtensible Interface'}, {'description': 'Advanced High-performance Bus clock'}] is too long
+	[{'description': 'source clock'}, {'description': 'HCLK which used for host'}, {'description': 'Advanced eXtensible Interface'}, {'description': 'Advanced High-performance Bus clock'}] is too short
+	False schema does not allow 4
+	1 was expected
+	4 is greater than the maximum of 2
+	4 is greater than the maximum of 3
+	hint: "minItems" is only needed if less than the "items" list length
+	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mmc/mtk-sd.yaml: allOf:5:then:properties:clock-names: 'oneOf' conditional failed, one must be fixed:
+	[{'const': 'source'}, {'const': 'hclk'}, {'const': 'axi_cg'}, {'const': 'ahb_cg'}] is too long
+	[{'const': 'source'}, {'const': 'hclk'}, {'const': 'axi_cg'}, {'const': 'ahb_cg'}] is too short
+	False schema does not allow 4
+	1 was expected
+	4 is greater than the maximum of 2
+	4 is greater than the maximum of 3
+	hint: "minItems" is only needed if less than the "items" list length
+	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
 
-> +
-> +  reg:
-> +    items:
-> +      minItems: 2
-> +      maxItems: 4
+doc reference errors (make refcheckdocs):
 
-Drop items.
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20241009165547.5959-2-linux@fw-web.de
 
-> +    minItems: 1
-> +    maxItems: 2
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
 
-You have to specify what each region is.
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
 
-Why does it vary? A h/w block either has register region or it doesn't.
+pip3 install dtschema --upgrade
 
-> +
-> +  reg-names:
-> +    minItems: 1
-> +    maxItems: 2
-
-You must define the names.
-
-> +
-> +  mediatek,cam-id:
-> +    description:
-> +      Describes the index of MediaTek cam-raw unit for ISP
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    enum: [0, 1, 2]
-
-No, we don't put module indices in DT.
-
-> +
-> +  mediatek,larbs:
-> +    description:
-> +      Describes MediaTek bus infrastructure unit for ISP system.
-> +      List of phandle to the local arbiters in the current SoCs.
-> +      Refer to bindings/memory-controllers/mediatek,smi-larb.yaml.
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +    minItems: 1
-> +    maxItems: 32
-> +
-> +  interrupts:
-> +    minItems: 1
-> +
-> +  dma-ranges:
-> +    description:
-> +      Describes the address information of IOMMU mapping to memory.
-> +      Defines six fields for the MediaTek IOMMU extended iova, pa, and size.
-> +    minItems: 1
-> +
-> +  power-domains:
-> +    minItems: 1
-> +
-> +  clocks:
-> +    minItems: 4
-> +    maxItems: 16
-
-You have to define what the clocks are.
-
-> +
-> +  clock-names:
-> +    minItems: 4
-> +    maxItems: 16
-> +
-> +  assigned-clocks:
-> +    maxItems: 1
-> +
-> +  assigned-clock-parents:
-> +    maxItems: 1
-
-Drop. You don't need to document assigned-clocks.
-
-> +
-> +  iommus:
-> +    description:
-> +      Points to the respective IOMMU block with master port as argument, see
-> +      Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
-> +      Ports are according to the HW.
-> +    minItems: 1
-> +    maxItems: 32
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - reg-names
-> +  - interrupts
-> +  - power-domains
-> +  - clocks
-> +  - clock-names
-> +  - iommus
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/power/mediatek,mt8188-power.h>
-> +    #include <dt-bindings/clock/mediatek,mt8188-clk.h>
-> +    #include <dt-bindings/memory/mediatek,mt8188-memory-port.h>
-> +
-> +    soc {
-> +      #address-cells = <2>;
-> +      #size-cells = <2>;
-> +
-> +      cam_raw_a@16030000 {
-> +        compatible = "mediatek,cam-raw";
-> +        reg = <0 0x16030000 0 0x8000>,
-> +              <0 0x16038000 0 0x8000>;
-> +        reg-names = "base", "inner_base";
-> +        mediatek,cam-id = <0>;
-> +        mediatek,larbs = <&larb16a>;
-> +        interrupts = <GIC_SPI 300 IRQ_TYPE_LEVEL_HIGH 0>;
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +        dma-ranges = <0x2 0x0 0x0 0x40000000 0x1 0x0>;
-> +        power-domains = <&spm MT8188_POWER_DOMAIN_CAM_SUBA>;
-> +        clocks = <&camsys CLK_CAM_MAIN_CAM2MM0_GALS>,
-> +            <&camsys CLK_CAM_MAIN_CAM2MM1_GALS>,
-> +            <&camsys CLK_CAM_MAIN_CAM2SYS_GALS>,
-> +            <&camsys CLK_CAM_MAIN_CAM>,
-> +            <&camsys CLK_CAM_MAIN_CAMTG>,
-> +            <&camsys_rawa CLK_CAM_RAWA_LARBX>,
-> +            <&camsys_rawa CLK_CAM_RAWA_CAM>,
-> +            <&camsys_rawa CLK_CAM_RAWA_CAMTG>,
-> +            <&topckgen CLK_TOP_CAM>,
-> +            <&topckgen CLK_TOP_CAMTG>,
-> +            <&topckgen CLK_TOP_CAMTM>;
-> +        clock-names = "camsys_cam2mm0_cgpdn",
-> +            "camsys_cam2mm1_cgpdn",
-> +            "camsys_cam2sys_cgpdn",
-> +            "camsys_cam_cgpdn",
-> +            "camsys_camtg_cgpdn",
-> +            "camsys_rawa_larbx_cgpdn",
-> +            "camsys_rawa_cam_cgpdn",
-> +            "camsys_rawa_camtg_cgpdn",
-> +            "topckgen_top_cam",
-> +            "topckgen_top_camtg",
-> +            "topckgen_top_camtm";
-> +        assigned-clocks = <&topckgen CLK_TOP_CAM>;
-> +        assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D5>;
-> +        iommus = <&vpp_iommu M4U_PORT_L16A_IMGO_R1>,
-> +            <&vpp_iommu M4U_PORT_L16A_CQI_R1>,
-> +            <&vpp_iommu M4U_PORT_L16A_CQI_R2>,
-> +            <&vpp_iommu M4U_PORT_L16A_BPCI_R1>,
-> +            <&vpp_iommu M4U_PORT_L16A_LSCI_R1>,
-> +            <&vpp_iommu M4U_PORT_L16A_RAWI_R2>,
-> +            <&vpp_iommu M4U_PORT_L16A_RAWI_R3>,
-> +            <&vpp_iommu M4U_PORT_L16A_UFDI_R2>,
-> +            <&vpp_iommu M4U_PORT_L16A_UFDI_R3>,
-> +            <&vpp_iommu M4U_PORT_L16A_RAWI_R4>,
-> +            <&vpp_iommu M4U_PORT_L16A_RAWI_R5>,
-> +            <&vpp_iommu M4U_PORT_L16A_AAI_R1>,
-> +            <&vpp_iommu M4U_PORT_L16A_UFDI_R5>,
-> +            <&vpp_iommu M4U_PORT_L16A_FHO_R1>,
-> +            <&vpp_iommu M4U_PORT_L16A_AAO_R1>,
-> +            <&vpp_iommu M4U_PORT_L16A_TSFSO_R1>,
-> +            <&vpp_iommu M4U_PORT_L16A_FLKO_R1>;
-> +      };
-> +    };
-> +
-> +...
-> diff --git a/Documentation/devicetree/bindings/media/mediatek/mediatek,cam-yuv.yaml b/Documentation/devicetree/bindings/media/mediatek/mediatek,cam-yuv.yaml
-> new file mode 100644
-> index 000000000000..30dfd5e5ecb1
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek/mediatek,cam-yuv.yaml
-
-Similar comments on the rest.
-
-Rob
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
