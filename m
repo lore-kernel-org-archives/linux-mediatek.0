@@ -4,67 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3091ACEDD93
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Oct 2024 13:30:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99022CEDD93
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Oct 2024 13:38:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hruurSJN2mfdVKlGiR8ubpSb5LXCuHjrR1Kc6bk2YA0=; b=MayI/dOBSQQftKYrgcldJ9sm3D
-	Nx26t9Ueo+DQEgCmmI0u8zSYVDOt1XTlJ5fUplxY0oDYiCThbSOKfQfHagmkz5FjFZTOzb3b3g3I0
-	GIkmbWsl0L4Wg12LgmhMbNvvJBvq23w0gwbdGurmQ9wmUJDVLrxSKbBoc4eD4dAvDqsQ4N2StZMGx
-	RA/NVsw+VGLfAFRzkTA/GGSsWKlnc445wHLJPWL0AqX1o2npYT3on1MBohC8wtT63m8vk5jrdKEYN
-	VlxB2bin/ndNlwf8fTbfi8mIxRSzKbjaaVAwqgsol+4PCddJvK6/yI+UKdJtK0NerNvcNGSI+L3hT
-	BFIjDiUg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=saABdcEyd7pJqNKU1WJaDMkicspJCz5ubrr80YaS6iY=; b=AUa7FOqhI0cc3NC3ezJZEWLbda
+	zwBosW370UGYwQN6Sm3QyJccaa0k2GrDALJTM6VW9nu2Gsi1QdPbp8ivMGH++RSQJs596mL8/SyRm
+	RSvZ2eOEA3Mv8vgLQSp40i3B4MTgTIBtlejRCMX0ALQhM3sWkUdt9xRqWpI0zcJZw6jeUB+rWBTvT
+	HL7j2lvVrdJ/wuXbm85ezEBvefyqejRyH6yLa1MC4ttY7tyTs0lZ9AbuFxjggq2G+/mht4N1REmFI
+	bU+V+LUrAzu/zcuZ/a0dSBfXqYP9c5zVJBJKdhqEMBSmHzN84A4VpX1f6LXYS4784WIjGTg7Q9Eo9
+	bSAVFm9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syWlM-00000009PYW-09kO;
-	Wed, 09 Oct 2024 13:30:00 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1syWtU-00000009RHf-1tgE;
+	Wed, 09 Oct 2024 13:38:24 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syWjy-00000009PBs-2Q0E;
-	Wed, 09 Oct 2024 13:28:36 +0000
+	id 1syWq0-00000009QRp-2P9T;
+	Wed, 09 Oct 2024 13:34:50 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 93A625C5ED2;
-	Wed,  9 Oct 2024 13:28:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B8EDC4CECD;
-	Wed,  9 Oct 2024 13:28:30 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id A603FA43FAA;
+	Wed,  9 Oct 2024 13:34:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67FF6C4CED5;
+	Wed,  9 Oct 2024 13:34:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728480513;
-	bh=zuTNloecuz4Aml5QxqPlnKQzhdF4g8PBn34VarakOWQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=hYrVwBK+gJ/X6Y/1CRmIB97c2pMua2YcJnRmouRexAroAbxHIvEeNRA2mha7vlehh
-	 +dZqQ3dko55SAn3imPf8QjIG4lW1Qbdwb7h4VFU3c+2w93o+3pn6OW6+r/r38W6fQk
-	 X0X1YWQ4L3iUU33eBesbRP00EXyUy21ZgfQsofnLbW0l0v9fCNzGIqNTRxc05RTXKn
-	 5yamYhFWxXmnNaHjvv9eAbum29sAP0oXOtdrDyBnVRa2mL37r+FeKsSzRs18Fk7YqT
-	 sxq3/Wza7f59OWtls0iXtWTr13KwxUV00u83ytMz4Jqen1lnJu6tMrLvbpAt8TwbJ/
-	 2s7WSaJ+XimUA==
-Date: Wed, 9 Oct 2024 14:28:28 +0100
-From: Simon Horman <horms@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	Jacob Keller <jacob.e.keller@intel.com>
-Subject: Re: [PATCH net-next v2] net: airoha: Fix EGRESS_RATE_METER_EN_MASK
- definition
-Message-ID: <20241009132828.GZ99782@kernel.org>
-References: <20241009-airoha-fixes-v2-1-18af63ec19bf@kernel.org>
+	s=k20201202; t=1728480886;
+	bh=e0gqHlZkDT5WvXlJLxiiH51AUvpJH6OopoCW36UMFTI=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=U3neOl0ybb4Ab65jgWhp3xT7HcEy4YMuUgGV+fe0qorbYgOtJiVf4vdBC8aSbF+zk
+	 VaSzmlKJr1Td+ZlEfUnqPwPvP3ItSIxZE3mhiSqTU0Y+ILn1z2LAcj5l0mNd964u9E
+	 IJiiL6vn/nZ84NJqFn6bT+eDEGpN/zUWDJjiTS1Nw44OfqVQU1G+/BklpTTM5qjnQt
+	 qFWcWXBTn592t1uwoUFl7fAOhoRDLvjep0N3/TGk+zJy9Qodx9ZM9pOn4mlQ+m1tjB
+	 +zz3ljVHlk8StJ6aovxl3cW8GcQDcp3o2MYDG6IpoR0lwS4CMa0F2Pi7cYkeI0mOAq
+	 BM9t8zEhFY8Sg==
+Received: by mail-oo1-f44.google.com with SMTP id 006d021491bc7-5e1c49f9b9aso2731866eaf.2;
+        Wed, 09 Oct 2024 06:34:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCU0TJBhMdzCzF8zfvZexJlSsZTGrYx3VRDi41d2LgHdIZhrLqEDxvuwBkY6QuvlUbNRLipKC3SUJMpw@lists.infradead.org, AJvYcCWECfZlukcsZc/JZ63wbGUTubZb8np9bFo2qMhopAT1DQhTFbxZ3Fbl7bWaGMOAGqpQTtZhq56X7p11@lists.infradead.org, AJvYcCWLjVC/wTUCcIbtNFBjQ8dDvu1Lc37VR7MNHH0WDhdzIBpRXECd8y7m/va81rBegZ+r76nU0J7NBdxyptrvxtZq@lists.infradead.org, AJvYcCX7ke+Iy7y3vhxFFw7WZXzhDQyDFTWrjGzlcG67ljFHHUeCy6qQsxM19OOnacffLASVgNvlb/ew8nzR@lists.infradead.org, AJvYcCXl7PiCZkRK9DTW0XpjUDbxP46GGKmeEPEhTatyDkLgVIM1Yed/OnPQ521lNCL3dEcgkATSimyTPOumUdVIHz8=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxKbByM4AHVXtwcOdV/0Kuh3W3D06YulTwTK9+yDz4KSFfSZfj5
+	9tegnQ2uIsXjSpbwcGGcX1nhzjDOnEpUM/5jVZCMgxgZLxorgeBJaTyGrjAkkPzC8D/Nx6WJo6N
+	CLpLk2YwJZlOW8OB1lF0mBBJgnPI=
+X-Google-Smtp-Source: AGHT+IGPvjQmX3zbZk+/LQ5kxG4XslEJ8m7y5iETpKVOpmsBmOdZ4tET2kRXnqT/piSrFy5yYrBa2CfwSNatwWXgz3s=
+X-Received: by 2002:a05:6820:270f:b0:5e5:c489:6f3c with SMTP id
+ 006d021491bc7-5e987bc9df9mr1249377eaf.5.1728480885551; Wed, 09 Oct 2024
+ 06:34:45 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241009-airoha-fixes-v2-1-18af63ec19bf@kernel.org>
+References: <20241004094101.113349-1-sakari.ailus@linux.intel.com>
+ <CAPDyKFp0N6UJhnHS164Tdf=xkWB0jzq65L9TdvYazeBQ-6WjeQ@mail.gmail.com>
+ <20241007184924.GH14766@pendragon.ideasonboard.com> <CAPDyKFpQVnF7eQv3dup8k-3EijnMjuveCG9sZ=Rpey1Y6MBJEg@mail.gmail.com>
+ <20241007222502.GG30699@pendragon.ideasonboard.com> <CAPDyKFrGNwna6Y2pqSRaBbRYHKRaD2ayqQHLtoqLPOu9Et7qTg@mail.gmail.com>
+ <CAJZ5v0jvJyS7D5-wURi2kyWN-rmNa+YqupeQJ000pQRVd9VBcQ@mail.gmail.com> <41a0ad69-912b-4eb3-84f7-fb385433c056@opensource.cirrus.com>
+In-Reply-To: <41a0ad69-912b-4eb3-84f7-fb385433c056@opensource.cirrus.com>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Wed, 9 Oct 2024 15:34:33 +0200
+X-Gmail-Original-Message-ID: <CAJZ5v0gbrhMpPT0fHYSC+ES5WS5kv7XkM2hj9M4vpNwFFs6xsQ@mail.gmail.com>
+Message-ID: <CAJZ5v0gbrhMpPT0fHYSC+ES5WS5kv7XkM2hj9M4vpNwFFs6xsQ@mail.gmail.com>
+Subject: Re: [PATCH 00/51] treewide: Switch to __pm_runtime_put_autosuspend()
+To: Richard Fitzgerald <rf@opensource.cirrus.com>, Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, dri-devel@lists.freedesktop.org, 
+	linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org, 
+	linux-clk@vger.kernel.org, linux-crypto@vger.kernel.org, 
+	dmaengine@vger.kernel.org, linux-gpio@vger.kernel.org, 
+	amd-gfx@lists.freedesktop.org, nouveau@lists.freedesktop.org, 
+	linux-stm32@st-md-mailman.stormreply.com, 
+	linux-arm-kernel@lists.infradead.org, linux-i2c@vger.kernel.org, 
+	linux-i3c@lists.infradead.org, linux-iio@vger.kernel.org, 
+	linux-input@vger.kernel.org, patches@opensource.cirrus.com, 
+	iommu@lists.linux.dev, imx@lists.linux.dev, 
+	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org, 
+	linux-mmc@vger.kernel.org, linux-mtd@lists.infradead.org, 
+	netdev@vger.kernel.org, linux-wireless@vger.kernel.org, 
+	linux-pci@vger.kernel.org, linux-phy@lists.infradead.org, 
+	linux-pwm@vger.kernel.org, linux-remoteproc@vger.kernel.org, 
+	linux-sound@vger.kernel.org, linux-spi@vger.kernel.org, 
+	linux-staging@lists.linux.dev, linux-usb@vger.kernel.org, 
+	linux-serial@vger.kernel.org, greybus-dev@lists.linaro.org, 
+	asahi@lists.linux.dev, Andy Shevchenko <andy.shevchenko@gmail.com>, 
+	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241009_062834_681628_5D80E86E 
-X-CRM114-Status: GOOD (  10.07  )
+X-CRM114-CacheID: sfid-20241009_063448_790620_FB0BB7BC 
+X-CRM114-Status: GOOD (  41.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,22 +104,139 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 09, 2024 at 12:21:47AM +0200, Lorenzo Bianconi wrote:
-> Fix typo in EGRESS_RATE_METER_EN_MASK mask definition. This bus in not
-> introducing any user visible problem since, even if we are setting
-> EGRESS_RATE_METER_EN_MASK bit in REG_EGRESS_RATE_METER_CFG register,
-> egress QoS metering is not supported yet since we are missing some other
-> hw configurations (e.g token bucket rate, token bucket size).
-> 
-> Introduced by commit 23020f049327 ("net: airoha: Introduce ethernet support
-> for EN7581 SoC")
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
-> Changes in v2:
-> - improve commit log
-> - Link to v1: https://lore.kernel.org/r/20241004-airoha-fixes-v1-1-2b7a01efc727@kernel.org
+On Wed, Oct 9, 2024 at 2:48=E2=80=AFPM Richard Fitzgerald
+<rf@opensource.cirrus.com> wrote:
+>
+> On 08/10/2024 7:24 pm, Rafael J. Wysocki wrote:
+> > On Tue, Oct 8, 2024 at 12:35=E2=80=AFAM Ulf Hansson <ulf.hansson@linaro=
+.org> wrote:
+> >>
+> >> On Tue, 8 Oct 2024 at 00:25, Laurent Pinchart
+> >> <laurent.pinchart@ideasonboard.com> wrote:
+> >>>
+> >>> Hi Ulf,
+> >>>
+> >>> On Tue, Oct 08, 2024 at 12:08:24AM +0200, Ulf Hansson wrote:
+> >>>> On Mon, 7 Oct 2024 at 20:49, Laurent Pinchart wrote:
+> >>>>> On Fri, Oct 04, 2024 at 04:38:36PM +0200, Ulf Hansson wrote:
+> >>>>>> On Fri, 4 Oct 2024 at 11:41, Sakari Ailus wrote:
+> >>>>>>>
+> >>>>>>> Hello everyone,
+> >>>>>>>
+> >>>>>>> This set will switch the users of pm_runtime_put_autosuspend() to
+> >>>>>>> __pm_runtime_put_autosuspend() while the former will soon be re-p=
+urposed
+> >>>>>>> to include a call to pm_runtime_mark_last_busy(). The two are alm=
+ost
+> >>>>>>> always used together, apart from bugs which are likely common. Go=
+ing
+> >>>>>>> forward, most new users should be using pm_runtime_put_autosuspen=
+d().
+> >>>>>>>
+> >>>>>>> Once this conversion is done and pm_runtime_put_autosuspend() re-=
+purposed,
+> >>>>>>> I'll post another set to merge the calls to __pm_runtime_put_auto=
+suspend()
+> >>>>>>> and pm_runtime_mark_last_busy().
+> >>>>>>
+> >>>>>> That sounds like it could cause a lot of churns.
+> >>>>>>
+> >>>>>> Why not add a new helper function that does the
+> >>>>>> pm_runtime_put_autosuspend() and the pm_runtime_mark_last_busy()
+> >>>>>> things? Then we can start moving users over to this new interface,
+> >>>>>> rather than having this intermediate step?
+> >>>>>
+> >>>>> I think the API would be nicer if we used the shortest and simplest
+> >>>>> function names for the most common use cases. Following
+> >>>>> pm_runtime_put_autosuspend() with pm_runtime_mark_last_busy() is th=
+at
+> >>>>> most common use case. That's why I like Sakari's approach of repurp=
+osing
+> >>>>> pm_runtime_put_autosuspend(), and introducing
+> >>>>> __pm_runtime_put_autosuspend() for the odd cases where
+> >>>>> pm_runtime_mark_last_busy() shouldn't be called.
+> >>>>
+> >>>> Okay, so the reason for this approach is because we couldn't find a
+> >>>> short and descriptive name that could be used in favor of
+> >>>> pm_runtime_put_autosuspend(). Let me throw some ideas at it and mayb=
+e
+> >>>> you like it - or not. :-)
+> >>>
+> >>> I like the idea at least :-)
+> >>>
+> >>>> I don't know what options you guys discussed, but to me the entire
+> >>>> "autosuspend"-suffix isn't really that necessary in my opinion. Ther=
+e
+> >>>> are more ways than calling pm_runtime_put_autosuspend() that trigger=
+s
+> >>>> us to use the RPM_AUTO flag for rpm_suspend(). For example, just
+> >>>> calling pm_runtime_put() has the similar effect.
+> >>>
+> >>> To be honest, I'm lost there. pm_runtime_put() calls
+> >>> __pm_runtime_idle(RPM_GET_PUT | RPM_ASYNC), while
+> >>> pm_runtime_put_autosuspend() calls __pm_runtime_suspend(RPM_GET_PUT |
+> >>> RPM_ASYNC | RPM_AUTO).
+> >>
+> >> __pm_runtime_idle() ends up calling rpm_idle(), which may call
+> >> rpm_suspend() - if it succeeds to idle the device. In that case, it
+> >> tags on the RPM_AUTO flag in the call to rpm_suspend(). Quite similar
+> >> to what is happening when calling pm_runtime_put_autosuspend().
+> >
+> > Right.
+> >
+> > For almost everybody, except for a small bunch of drivers that
+> > actually have a .runtime_idle() callback, pm_runtime_put() is
+> > literally equivalent to pm_runtime_put_autosuspend().
+> >
+> > So really the question is why anyone who doesn't provide a
+> > .runtime_idle() callback bothers with using this special
+> > pm_runtime_put_autosuspend() thing,
+>
+> Because they are following the documentation? It says:
+>
+> "Drivers should call pm_runtime_mark_last_busy() to update this field
+> after carrying out I/O, typically just before calling
+> pm_runtime_put_autosuspend()."
+>
+> and
+>
+> "In order to use autosuspend, subsystems or drivers must call
+> pm_runtime_use_autosuspend() (...), and thereafter they should use the
+> various `*_autosuspend()` helper functions instead of the non#
+> autosuspend counterparts"
+>
+> So the documentation says I should be using pm_runtime_put_autosuspend()
+> instead of pm_runtime_put().
+>
+> Seems unfair to criticise people for following the documentation.
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+I'm not criticising anyone, just wondering why they do what they do.
 
+"Because it is documented this way" is a fair answer, but it doesn't
+invalidate the observation that the difference between
+pm_runtime_put_autosuspend() and pm_runtime_put() boils down to the
+cases when the .runtime_idle() callback is present (which are few and
+far between so to speak).  Moreover, there are call sites using
+pm_runtime_*() functions even though they may not know whether or not
+autosuspend is enabled for the target devices, so the advice given in
+the documentation cannot be universally followed regardless.
+
+This thread is about the way to go, generally speaking, and what I'm
+saying is effectively that replacing pm_runtime_put_autosuspend() with
+pm_runtime_put() almost everywhere (if not just everywhere) would be
+fine with me.
+
+I also think that the current users of pm_runtime_put_autosuspend()
+that is not immediately preceded by pm_runtime_mark_last_busy() can be
+readily switched over to using pm_runtime_put() instead of it and then
+pm_runtime_put_autosuspend() can be made call
+pm_runtime_mark_last_busy(), so the latter can be removed from the
+code using the former.  Note that this last step does not require
+tree-wide changes, because calling pm_runtime_mark_last_busy() twice
+in a row for the same device is not a problem.
+
+Of course, the documentation needs to be updated in accordance with
+the code changes, which didn't happen when previous changes were made
+to pm_runtime_put() and that likely is why it does not reflect the
+current code.
 
