@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A32F8CF043B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Oct 2024 03:48:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A559ECF043B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Oct 2024 03:51:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oqlp+hC1+rn6mVdWdXR2LN/CqTCqC5lEUqhZ8cUD4OI=; b=0Nq9MxHfXLcVujBKqNeADMhJ3Y
-	T8lhm9GHy3VW+qnpaKPjHLTJBNMLWN0U8tdxUVJPh+ynI76J72K7OwqMGiJnFgWYJoQdNkasJ3MY/
-	d6LSOkLQz727zre/0XRztBRrHPbiQkmucQSAoIzMs/RyKFuWr1zgTDl8PeBMpQ+zQhSRaqfRfD22a
-	gInO/m5OJ4hkipziBY1HKJuVjPPL0u/3KcAMBdwaFEkkcBayc+GI3Gxbw5fzw6btiYCBUKdyMgZAr
-	XcspRMgNT1qRrom8dTfXYjCk1QwI/PKDkqKCANoYDfKbDPqLT4/CAKKTgPirPSOtqudNO/Dc5ul2O
-	q4wxvYtg==;
+	bh=4I/AeCAq+Hpl0MXyN7V8FHQ2+3NBTc6bczzM6kzFk50=; b=JDVj0Gk5OofAaP3AvuXsoTIxgB
+	cGuqv/bx8kwaTxnNr12xztbrb/WUG0OxkQWxVKUDZ/rUX/Ry0cIhPrvhvLA6+PoK3wQzFydWbQy+I
+	wFuH0y8JRoYxZ2xhTpSOowiVNx63hGjL8gGHNJqauwn68p4xVoghGHI3EmguuhPOtbf3WLCD2fpgX
+	0JH703rQBu8/+T4bfn37nJF4dDjTsqM3RheDAu03ZtSOt32nLBj9r1P/WDsl1241bD1X42nJfzgAB
+	gNLo5De+y145PKVAbHIqoKIfhMTcuH8KIpaWpwf9kgS6euq74tqpm66BaTUqU/lSqzNZKTKyb5ziA
+	6PQ8oByg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syNgZ-00000007oLi-2Uoj;
-	Wed, 09 Oct 2024 03:48:27 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1syNj7-00000007oet-2WE8;
+	Wed, 09 Oct 2024 03:51:05 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syNfD-00000007o32-3mcc;
-	Wed, 09 Oct 2024 03:47:05 +0000
-X-UUID: 1e1b5a1885f111efba0aef63c0775dbf-20241008
+	id 1syNfR-00000007o7t-2UAO;
+	Wed, 09 Oct 2024 03:47:18 +0000
+X-UUID: 2658378285f111efb3adad29d29602c1-20241008
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=oqlp+hC1+rn6mVdWdXR2LN/CqTCqC5lEUqhZ8cUD4OI=;
-	b=oAGx7rT9mLDb/NY13oPRpvA1wwmebFi/Zh/KBtQzGEO6B4hNIZ/OmbKsglaU2zMfDDuuyXRHKllIP/4CET/LmbWKoW7+ic3FNDlvAGew2JVDBwSxgyevUw6feERfjZ/VOJlv7bCfNjMueccX2wDLnxd44TRMNV+YtX1nf3oqryg=;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=4I/AeCAq+Hpl0MXyN7V8FHQ2+3NBTc6bczzM6kzFk50=;
+	b=sdPz4L+IulyOGvuXKZ44g2pYW4dUDspDLBLikyMRlcvNQvkLcGEWYc7oiQyMYYn6ZayU90nSFYSMu79QvMK7l6OlOqTQDIndze2Tb+Q8jPHNF+cFEh4RhvAH+C2A/vUVI9tKnKE/lcnQC1wm/4YjjsI/JaKat02WUbJT9vQL88k=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:bdfc3210-d2f7-4923-b04b-d51ef8ea1072,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6dc6a47,CLOUDID:6d72f764-444a-4b47-a99a-591ade3b04b2,B
+X-CID-O-INFO: VERSION:1.1.41,REQID:912d0b67-9e9f-4126-9c0c-a22768ed69dd,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:29a9f940-8751-41b2-98dd-475503d45150,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 1e1b5a1885f111efba0aef63c0775dbf-20241008
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-UUID: 2658378285f111efb3adad29d29602c1-20241008
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1345635306; Tue, 08 Oct 2024 20:46:51 -0700
+	with ESMTP id 114956009; Tue, 08 Oct 2024 20:47:04 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1118.26; Wed, 9 Oct 2024 11:46:47 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
@@ -64,32 +64,30 @@ CC: Shawn Sung <shawn.sung@mediatek.com>, Alper Nebi Yasak
 	<jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, "Nancy
  Lin" <nancy.lin@mediatek.com>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v11 3/5] drm/mediatek: ovl: Remove the color format comment for ovl_fmt_convert()
-Date: Wed, 9 Oct 2024 11:46:44 +0800
-Message-ID: <20241009034646.13143-4-jason-jh.lin@mediatek.com>
+Subject: [PATCH v11 4/5] drm/mediatek: ovl: Add blend_modes to driver data
+Date: Wed, 9 Oct 2024 11:46:45 +0800
+Message-ID: <20241009034646.13143-5-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20241009034646.13143-1-jason-jh.lin@mediatek.com>
 References: <20241009034646.13143-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--3.679400-8.000000
-X-TMASE-MatchedRID: JqvUv0YB5EcxgGuH6sDPS8u00lnG8+PW4+ZcrqvCDkFcKZwALwMGsyc/
-	xZYu98DINdSJDUY9JRESqo3ZUfrHh25/NyTKlG694pdq9sdj8LVaNaxZBRbNWi8zQZ2rR/Opl12
-	4J4jWEmtRY9f7h2Xyki1nQIsbRW6GSJvHZYIIxMieAiCmPx4NwBnUJ0Ek6yhjxEHRux+uk8ifEz
-	J5hPndGVq6wMyJqZhvNqiXCKftsUJWCAG9E8h5zJ99RML1VXr4mL69iLkCQJ1h881CAW22/TF6c
-	AEfHrzia3prxka/F+M8fwGD9FLhvHmVKZusLp922v9OjYWA2uMMswg45VMfPadst5iAforfVlxr
-	1FJij9s=
+X-TM-AS-Result: No-10--11.742200-8.000000
+X-TMASE-MatchedRID: PIIqySEg3TIzP1+hKLmUcMu00lnG8+PWIaLR+2xKRDLb6Y+fnTZULz94
+	HX24gqtC170RpEE9+Ch41slfouzT+EIjaJSsaV6q9Jn/ZrGuc8HSL+EVfOJR07FRmrhHzmfvR+m
+	RDHa7QqxsMMavja2AExKqjdlR+seHLVayL7k7olyQOktEo73GFArefVId6fzVCqIJhrrDy28j7P
+	LDbldk2nqqxcrRKidevws8hDIFFaPGWQHDiYaPQNF8NCC76P7lS8T7akvAZuebKItl61J/yZ+in
+	TK0bC9eKrauXd3MZDXu282lqx9QkRwU5Kg3aRB1xs5/VGEFZEg3L6DvyWRHENmgQRUe+/9l
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--3.679400-8.000000
+X-TMASE-Result: 10--11.742200-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: FF68AA1BB74E71C70A2BE84749CA8EB0F84B94363C9B5A4B3B201A7973343AA92000:8
+X-TM-SNTS-SMTP: 6559183837046EBD708A579C3BBA0B896C90332D6566301B44ACC9C25E53A8D02000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241008_204703_967309_3A80055F 
-X-CRM114-Status: UNSURE (   9.09  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241008_204717_650892_59C0F4D4 
+X-CRM114-Status: GOOD (  20.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,32 +102,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since we changed MACROs to be consistent with DRM input color format
-naming, the comment for ovl_fmt_conver() is no longer needed.
+OVL_CON_CLRFMT_MAN is a configuration for extending color format
+settings of DISP_REG_OVL_CON(n).
+It will change some of the original color format settings.
 
-Fixes: 9f428b95ac89 ("drm/mediatek: Add new color format MACROs in OVL")
+Take the settings of (3 << 12) for example.
+- If OVL_CON_CLRFMT_MAN = 0 means OVL_CON_CLRFMT_RGBA8888.
+- If OVL_CON_CLRFMT_MAN = 1 means OVL_CON_CLRFMT_PARGB8888.
+
+Since previous SoCs did not support OVL_CON_CLRFMT_MAN, this means
+that the SoC does not support the premultiplied color format.
+It will break the original color format setting of MT8173.
+
+Therefore, the blend_modes is added to the driver data and then
+mtk_ovl_fmt_convert() will check the blend_modes to see if
+pre-multiplied is supported in the current platform.
+If it is not supported, use coverage mode to set it to the supported
+color formats to solve the degradation problem.
+
+Fixes: a3f7f7ef4bfe ("drm/mediatek: Support "Pre-multiplied" blending in OVL")
 Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 5 -----
- 1 file changed, 5 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 34 ++++++++++++++++++++++---
+ 1 file changed, 31 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 0d3a9c5e8d26..1ccb700858cf 100644
+index 1ccb700858cf..fab23b1904bd 100644
 --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
 +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -389,11 +389,6 @@ void mtk_ovl_layer_off(struct device *dev, unsigned int idx,
- static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt,
- 				    unsigned int blend_mode)
+@@ -146,6 +146,7 @@ struct mtk_disp_ovl_data {
+ 	bool fmt_rgb565_is_0;
+ 	bool smi_id_en;
+ 	bool supports_afbc;
++	const u32 blend_modes;
+ 	const u32 *formats;
+ 	size_t num_formats;
+ 	bool supports_clrfmt_ext;
+@@ -386,9 +387,27 @@ void mtk_ovl_layer_off(struct device *dev, unsigned int idx,
+ 		      DISP_REG_OVL_RDMA_CTRL(idx));
+ }
+ 
+-static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt,
+-				    unsigned int blend_mode)
++static unsigned int mtk_ovl_fmt_convert(struct mtk_disp_ovl *ovl,
++					struct mtk_plane_state *state)
  {
--	/* The return value in switch "MEM_MODE_INPUT_FORMAT_XXX"
--	 * is defined in mediatek HW data sheet.
--	 * The alphabet order in XXX is no relation to data
--	 * arrangement in memory.
--	 */
++	unsigned int fmt = state->pending.format;
++	unsigned int blend_mode = DRM_MODE_BLEND_COVERAGE;
++
++	/*
++	 * For the platforms where OVL_CON_CLRFMT_MAN is defined in the hardware data sheet
++	 * and supports premultiplied color formats, such as OVL_CON_CLRFMT_PARGB8888.
++	 *
++	 * Check blend_modes in the driver data to see if premultiplied mode is supported.
++	 * If not, use coverage mode instead to set it to the supported color formats.
++	 *
++	 * Current DRM assumption is that alpha is default premultiplied, so the bitmask of
++	 * blend_modes must include BIT(DRM_MODE_BLEND_PREMULTI). Otherwise, mtk_plane_init()
++	 * will get an error return from drm_plane_create_blend_mode_property() and
++	 * state->base.pixel_blend_mode should not be used.
++	 */
++	if (ovl->data->blend_modes & BIT(DRM_MODE_BLEND_PREMULTI))
++		blend_mode = state->base.pixel_blend_mode;
++
  	switch (fmt) {
  	default:
  	case DRM_FORMAT_RGB565:
+@@ -466,7 +485,7 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
+ 		return;
+ 	}
+ 
+-	con = ovl_fmt_convert(ovl, fmt, blend_mode);
++	con = mtk_ovl_fmt_convert(ovl, state);
+ 	if (state->base.fb) {
+ 		con |= state->base.alpha & OVL_CON_ALPHA;
+ 
+@@ -664,6 +683,9 @@ static const struct mtk_disp_ovl_data mt8192_ovl_driver_data = {
+ 	.layer_nr = 4,
+ 	.fmt_rgb565_is_0 = true,
+ 	.smi_id_en = true,
++	.blend_modes = BIT(DRM_MODE_BLEND_PREMULTI) |
++		       BIT(DRM_MODE_BLEND_COVERAGE) |
++		       BIT(DRM_MODE_BLEND_PIXEL_NONE),
+ 	.formats = mt8173_formats,
+ 	.num_formats = ARRAY_SIZE(mt8173_formats),
+ };
+@@ -674,6 +696,9 @@ static const struct mtk_disp_ovl_data mt8192_ovl_2l_driver_data = {
+ 	.layer_nr = 2,
+ 	.fmt_rgb565_is_0 = true,
+ 	.smi_id_en = true,
++	.blend_modes = BIT(DRM_MODE_BLEND_PREMULTI) |
++		       BIT(DRM_MODE_BLEND_COVERAGE) |
++		       BIT(DRM_MODE_BLEND_PIXEL_NONE),
+ 	.formats = mt8173_formats,
+ 	.num_formats = ARRAY_SIZE(mt8173_formats),
+ };
+@@ -685,6 +710,9 @@ static const struct mtk_disp_ovl_data mt8195_ovl_driver_data = {
+ 	.fmt_rgb565_is_0 = true,
+ 	.smi_id_en = true,
+ 	.supports_afbc = true,
++	.blend_modes = BIT(DRM_MODE_BLEND_PREMULTI) |
++		       BIT(DRM_MODE_BLEND_COVERAGE) |
++		       BIT(DRM_MODE_BLEND_PIXEL_NONE),
+ 	.formats = mt8195_formats,
+ 	.num_formats = ARRAY_SIZE(mt8195_formats),
+ 	.supports_clrfmt_ext = true,
 -- 
 2.43.0
 
