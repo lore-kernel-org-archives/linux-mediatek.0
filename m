@@ -4,101 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4B4BCEDD9E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Oct 2024 14:15:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDCD8CEDD9E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Oct 2024 14:23:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iI/qf58LmUA8momT4giUYnjiWk7hGMnms4c27DSsHjk=; b=tAWO27BVudBlZaNeCPGtiCMfkk
-	qmNlv7VFqMtl5loauGjRHid6NMu0vAi0FHCzqbgfRHshMHBZ1PsEhzJMpa9iOleo82OP3N+o6yED5
-	6oYVTPyBI8eM6Ijd77x446N7DFqXlOx2V586p1m8iONWM8IZWzTT8zstssTyyM5lFE/JsFx/2d0JF
-	+yu0Uycpj22STrUNaDTjjosaSzhyDvAOXC2KNOfn6I8vLDVi7FomHqFBYjkltvad6eTZw2dyZ5643
-	Yq3A5d0EwVq5g3C4vPePhxLCi+H7RPRNThK4IaI0IHpC+oD0/YEidl1Q3klk/ld5wjUFTDPxX+khk
-	nwwm26ug==;
+	bh=Ve3dTlv2NLb+rNJAwdnJdMwBx1skRXL4bHMnIRfzEqY=; b=XbpO0MKfw6NP7zgfdIQ+/diIth
+	VQv9BalupB69UoU8n/sZoWZlcpABsjbumIT3VIdcms7PU1G4KfOHBf2xJn0LHL5rppmHFuYtD8NYd
+	6zcwFseFNGX91jRMj2Mc0wippcH77JhcBvTEDwBi9/6U4Tg4FjR1Z/oNEJvh8q+PTJtUMYan7LOLs
+	WEzl7sRk0KflVwjah7GR20dF7fDE3kbUutSTWgEvAVQZeNCbLwrt6iGDXHOBz6wN6zVblYuCVxzfT
+	5hOg7zO8EjuePVZQJ8zqn7H/akMvRmgMxOkJH0IB5qCXQ6XsoMX9E1lP0gg82AqikA/qFwjKGCppM
+	SyHi75DA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syXTj-00000009YQb-26AP;
-	Wed, 09 Oct 2024 14:15:51 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1syXb2-00000009ZdX-3H7T;
+	Wed, 09 Oct 2024 14:23:24 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syWIO-00000009K9d-1zFc
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 09 Oct 2024 13:00:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=iI/qf58LmUA8momT4giUYnjiWk7hGMnms4c27DSsHjk=; b=VNRUJmDPp/7mGvROjlItVBTbaU
-	Ex6kj0t6FWjIWP5y+wlWU4DuHs+lRA4tJW0xTCeSNkZunm0Kn584U3jtW4RQS9fYpo+nUZdUFwM87
-	/55T+amCNYODcjp5taXOu3HMu6GYFRvYtiF+CUyEvRgL9bjpKP1+2FVxwOV4R5/n273xVP8MPElKE
-	43l5q63UlAiIup2rK2bx0UOUrJ0HayvoCSTNHeidOEjmI0ZuR49zZhEOwGxTjMdV3QiUCDzZAeXHS
-	kDLqTnqVCq+irYw+g6JJ8mRNZm5+UvUQg2WtUWSpmFf2E/XibNy04P/a1sQ5rW979WDs5YJUIbq10
-	BVqT7zTg==;
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syWIL-00000004xBr-1wjC
-	for linux-mediatek@lists.infradead.org;
-	Wed, 09 Oct 2024 13:00:03 +0000
-Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-20b7259be6fso75319295ad.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 09 Oct 2024 05:59:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1728478798; x=1729083598; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=iI/qf58LmUA8momT4giUYnjiWk7hGMnms4c27DSsHjk=;
-        b=gOBx4rJku7B5IFSUkrXCIuK/nYdPr8b0ofZWijp2GXZLBDNJ4++4gb7sWU1a85fkVZ
-         6dEXe4mqSPWGkxVv2lnDFiGassrZr49oSqCSzXkJFiAa0o6njRDttF7oSho3gHZrGky5
-         qBwrcmkEI6VaWX2rHCtx8ZDAKJW5EJc8NsW6U=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728478798; x=1729083598;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=iI/qf58LmUA8momT4giUYnjiWk7hGMnms4c27DSsHjk=;
-        b=bGVFlye398ClQ/wbwjK4XeHq70a8uBgkgAb45G/5hERSJMYPKcZDWM/TgAsm+G1sPB
-         PgNS5PpNHLXkS9dY1+AF3hD3qMMZvMPBxbEu7IuVdL2lYe7dvF1+4BMdN2bp0fZDOi9K
-         wrC85y7i3CA3fMBxxI/vhmshaqDQ0QRO0H4M8dQnA6UT2qw+CzL1jWU4lmCbKffBOr2T
-         IZy+DCRAJ+ePmNp/gPBqLqqKvXNbLpEkALW79Jlg4gSLZPEzXF3HlcVhR3UgIzzeCcvW
-         9tfk/mL+8Xh8ftr60qsawms6e+zaNnj7+yERl29Hd1nQxsRwgZWDAomc7xL12AY4bF7x
-         PeAw==
-X-Forwarded-Encrypted: i=1; AJvYcCXiVeJmxchKv8Utt/xJdgWaRr7lfI6xBowm49mrYHS808+WFLX/IUoKZzs6oVsTkVCPiGdhbYzgMgQ/vpORIA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyS4Shzq2TMyuR3xCiTQGAsFoUsoOTB8jvWITwSVjymRIxPfJWW
-	Vjvig18EzxGuG/qvHudYzO07Q7pXW6MIHzXYJm0KuFLvnmSVhD46aI7HFr7gfA==
-X-Google-Smtp-Source: AGHT+IGVQbp9AMZDcYNINvFve/A6sPV0aMBAnUCzOdw6BflJ8wMGhXYCVLSldMttzoUEOvs/NA60EQ==
-X-Received: by 2002:a17:902:d484:b0:20b:751f:c9ca with SMTP id d9443c01a7336-20c636d6b7dmr30492745ad.5.1728478798539;
-        Wed, 09 Oct 2024 05:59:58 -0700 (PDT)
-Received: from yuanhsinte-p620-1.tpe.corp.google.com ([2401:fa00:1:10:bfd7:eb4:8571:b3f4])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c51c21535sm27434005ad.216.2024.10.09.05.59.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Oct 2024 05:59:58 -0700 (PDT)
-From: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Date: Wed, 09 Oct 2024 20:59:46 +0800
-Subject: [PATCH 3/4] arm64: dts: mt8183: cozmo: add i2c2's
- i2c-scl-internal-delay-ns
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20241009-i2c-delay-v1-3-6cf59721c1d1@chromium.org>
-References: <20241009-i2c-delay-v1-0-6cf59721c1d1@chromium.org>
-In-Reply-To: <20241009-i2c-delay-v1-0-6cf59721c1d1@chromium.org>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
+	id 1syXYa-00000009ZEj-0oe7;
+	Wed, 09 Oct 2024 14:20:53 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 1199FA43C7B;
+	Wed,  9 Oct 2024 14:20:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0D826C4CEC3;
+	Wed,  9 Oct 2024 14:20:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728483650;
+	bh=QViY9lx7IRmLT83VCb/QN5MYrQn/DBbOjGPf3qXYL5s=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=PYLSgIOnaefqWMugYlxXrb0D/Ib2TT0NidJoR91A+I1KWnvbwjXA0TxGSS0XmSl/t
+	 e1h6UyqPFeZRjST9LWLXu/xaRjJm09Wwqh+ivTZ2pJHOuW5b1ziZDieAyV1AHxfoh5
+	 XlHRXxaULCD77+zDBcjrqONuXkTD9gHK7jaPvJ5oBraQM0/TDKqWKc/tLkoMY/NEwb
+	 sgN5WDbkK/YRwUZNth0ww+iuxri65xvNLYd5sOxsUSeL/0hbp4iFspHsDXjOUaYp21
+	 i9ADNApYJRTUBPG17ZeZkWmSrrI+wtRizpR3mthj9G/+KycKO84hmPqYJdjET+30xB
+	 PmzE+wa1LVh7Q==
+From: Lee Jones <lee@kernel.org>
+To: Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Hsin-Yi Wang <hsinyi@chromium.org>, 
- Enric Balletbo i Serra <eballetbo@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ Gene Chen <gene_chen@richtek.com>, 
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>, 
+ Bartosz Golaszewski <brgl@bgdev.pl>, Chen-Yu Tsai <wens@csie.org>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, 
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>, 
+ Javier Carrasco <javier.carrasco.cruz@gmail.com>
+Cc: linux-leds@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Hsin-Te Yuan <yuanhsinte@chromium.org>, 
- Daolong Zhu <jg_daolongzhu@mediatek.corp-partner.google.com>
-X-Mailer: b4 0.15-dev-2a633
+ linux-sunxi@lists.linux.dev, stable@vger.kernel.org
+In-Reply-To: <20240927-leds_device_for_each_child_node_scoped-v1-0-95c0614b38c8@gmail.com>
+References: <20240927-leds_device_for_each_child_node_scoped-v1-0-95c0614b38c8@gmail.com>
+Subject: Re: [PATCH 00/18] leds: switch to
+ device_for_each_child_node_scoped()
+Message-Id: <172848364679.581850.9636321610214125502.b4-ty@kernel.org>
+Date: Wed, 09 Oct 2024 15:20:46 +0100
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241009_140001_673783_7CC40766 
-X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-CacheID: sfid-20241009_072052_793952_F86A0F12 
+X-CRM114-Status: UNSURE (   9.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -114,34 +83,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Daolong Zhu <jg_daolongzhu@mediatek.corp-partner.google.com>
+On Fri, 27 Sep 2024 01:20:51 +0200, Javier Carrasco wrote:
+> This series switches from the device_for_each_child_node() macro to its
+> scoped variant, which in general makes the code more robust if new early
+> exits are added to the loops, because there is no need for explicit
+> calls to fwnode_handle_put(). Depending on the complexity of the loop
+> and its error handling, the code gets simplified and it gets easier to
+> follow.
+> 
+> [...]
 
-Add i2c2's i2c-scl-internal-delay-ns.
+Applied, thanks!
 
-Fixes: 52e84f233459 ("arm64: dts: mt8183: Add kukui-jacuzzi-cozmo board")
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Daolong Zhu <jg_daolongzhu@mediatek.corp-partner.google.com>
-Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dts | 2 ++
- 1 file changed, 2 insertions(+)
+[01/18] leds: flash: mt6360: fix device_for_each_child_node() refcounting in error paths
+        commit: 73b03b27736e440e3009fe1319cbc82d2cd1290c
+[02/18] leds: flash: mt6370: switch to device_for_each_child_node_scoped()
+        commit: 19d1cc765e7d477070ddda02c9a07a1ebcdf4b2d
+[03/18] leds: flash: leds-qcom-flash: switch to device_for_each_child_node_scoped()
+        commit: f64dd42a4f939fb5acc3f3568ef2118487617996
+[04/18] leds: aw200xx: switch to device_for_each_child_node_scoped()
+        commit: a361af3c1622d4b8ede54493fa88633fb12201d0
+[05/18] leds: cr0014114: switch to device_for_each_child_node_scoped()
+        commit: 65135e2ccf5ad0853c1df0ffeefc372066a62909
+[06/18] leds: el15203000: switch to device_for_each_child_node_scoped()
+        commit: 9e445e28ae0c6fe24369127cf2302cd4f3a1b42b
+[07/18] leds: gpio: switch to device_for_each_child_node_scoped()
+        commit: 42b49671602f9badb14fd2c32e6791a24d8cbf02
+[08/18] leds: lm3532: switch to device_for_each_child_node_scoped()
+        commit: 7bd4b9277b9831d115f14d26000c0ba32c83d109
+[09/18] leds: lm3697: switch to device_for_each_child_node_scoped()
+        commit: 6e2d1d83b70bd736228529fd1cb4f98e0ab77eb8
+[10/18] leds: lp50xx: switch to device_for_each_child_node_scoped()
+        commit: ba35b9a4c1b074218880c47ca09d19a3c69f904d
+[11/18] leds: max77650: switch to device_for_each_child_node_scoped()
+        commit: 4ab3ae432da1706b5e1624ecea3c670faaec39d7
+[12/18] leds: ns2: switch to device_for_each_child_node_scoped()
+        commit: 5b5d936db0d2fb9e81d240ed91d062b8c8f0d224
+[13/18] leds: pca963x: switch to device_for_each_child_node_scoped()
+        commit: dea90acb09324efe640ab69766c12d8d387ee97f
+[14/18] leds: pwm: switch to device_for_each_child_node_scoped()
+        commit: e3456071853597229012622c97b76109c0fa8754
+[15/18] leds: sun50i-a100: switch to device_for_each_child_node_scoped()
+        commit: 8cf103de9a002fb02125491c06d9cd60762d70e5
+[16/18] leds: tca6507: switch to device_for_each_child_node_scoped()
+        commit: 01728d041986a6992d0b2499e88db4569e65a535
+[17/18] leds: rgb: ktd202x: switch to device_for_each_child_node_scoped()
+        commit: 48259638fe5986afe8ed2a49e35f0641d953c311
+[18/18] leds: rgb: mt6370: switch to device_for_each_child_node_scoped()
+        commit: bf3fba727695dcd1ac3f9d17d88845223f56c14f
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dts
-index f34964afe39b5353de7b17e82d14d1fba88551ab..83bbcfe620835ab6d34cd2f4c2183fbdf11d0909 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dts
-@@ -18,6 +18,8 @@ &i2c_tunnel {
- };
- 
- &i2c2 {
-+	i2c-scl-internal-delay-ns = <25000>;
-+
- 	trackpad@2c {
- 		compatible = "hid-over-i2c";
- 		reg = <0x2c>;
-
--- 
-2.47.0.rc0.187.ge670bccf7e-goog
+--
+Lee Jones [李琼斯]
 
 
