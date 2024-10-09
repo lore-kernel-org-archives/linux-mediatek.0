@@ -4,86 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C689CEE339
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Oct 2024 17:49:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45AE3CEE33A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Oct 2024 17:49:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TCrrrWhv3dQaAiqQKhwPQGsc5yyQQKRtf0rbAQxCapE=; b=LBWRI4aKFA+5ZJrMqbshyjuxwe
-	9T3AlfjwuRrhoR987RLQ+gugeEgu8AImkdNlF06mGqhsjk0d1KYkxyxYqRbwFzKzitgFuPOfQP6Je
-	rlD19AtZMtF/p/KgxHPxBY3AH+ZRP6Lc+zDrtSuK6UzFNnzRkGMstZtZOmYBPnxPicFPQE1bKV+eE
-	uihC6KfeAu9na1P+JfHAIKKOHNg2oXfF9SxeQlZVhjmer/F3imTObQZeR+E+jdgmaJk9AC3PDWwoj
-	SpfWfodJs0dVAwT4DlJX/Gjt2uP1/wrEMXd4K05pa5MT09+bMnLGUvGrlGjVcocac2U2022YvjwYu
-	RKa1xKTQ==;
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eoLwY9alRedsCYPnuiD5CtfLiZIf2xHE4cOKKcZfTTY=; b=dXP0hOw/atOhsT2oxD6jUL16xk
+	V6plLCCm+ZRVJ8MNoMqTjDrNOuYvInySWYIVpmzLcFSZ3biLmh61eZNgCNIchTXiWh2azddZMf4we
+	2vhy2jPfHYkvtpeqHpVzgDzeznExCi2LbYhF2cv9nlDJdPAMUJ7m+wSl7IFrsfhCJbLZQLGIANzm3
+	11mxYPZgIBOdCyWzvKhtDUMcohi5JqNw3YHO2Ttg+/PpkBrk6lQBg78bkp4/GLYaIMVNj6vZqMVE7
+	MEiciGKHfUfiVIPVUZ+GxdjrEctRI5PaxM/8/nMOT2Rn39CfkpTyZg5iuLDLELn7B5cG+bA5reb/o
+	mdp04pVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syaoL-0000000AGLB-1BDc;
-	Wed, 09 Oct 2024 17:49:21 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1syaoO-0000000AGNi-1V6q;
+	Wed, 09 Oct 2024 17:49:24 +0000
+Received: from mout.gmx.net ([212.227.17.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syaFA-0000000A84b-00DL;
-	Wed, 09 Oct 2024 17:13:01 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-43058268d91so98285e9.0;
-        Wed, 09 Oct 2024 10:12:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1728493977; x=1729098777; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:from:to:cc:subject:date:message-id:reply-to;
-        bh=TCrrrWhv3dQaAiqQKhwPQGsc5yyQQKRtf0rbAQxCapE=;
-        b=e/SQ71slzxriGPl+7bKJsNyV4IruRESxjX2FHmmRgJIMVCRmipCG/is5BM8Sax7s/p
-         bBxF1geoEQQZB4+ROt6gDKwArDKbdq/jg/DVoio1NWCvELrfcisn4NdFBKkZWct6VbwT
-         NhlsDgvibHKaunLoVvoQn/b795tg6cQylidLnKSmsbpcVFA1gC4+6dHm24gp5onTo2PF
-         BBB8A5e9ysSI8hE6gXKvXZ0TSl0OV6md83Aeq9tedI1NLwzH3Xg+5jqTGUXxWrhkMtVH
-         hYrQzYOEW1Dbvr0QsHqLi61X/7c27dHo44/nhZZMOGGDJEVGM7ZYj2PQ4a0j7nV8xCMs
-         twjg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728493977; x=1729098777;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=TCrrrWhv3dQaAiqQKhwPQGsc5yyQQKRtf0rbAQxCapE=;
-        b=bcHGQ7WjNtIfTB4YYTadvFdJV9MpRWe5l6g7wubxgelNwcyff0kYb1SKznG9rXuvbW
-         A5RQ7LamkhTXfz+PNcv1gob+QVjfWji10MxTMP3soDoo/QOeJ9UH3gIFqrHD35RpXoNf
-         ZKkg6rigS1KdMXYUq6Tq+h1Fd39ABDhPkzSiuPRU1Fy/y5eXzmPOQS1fNQFwmCuYXsyN
-         Ly3TBmHDaoHb6pfQQm/AAa+6np8Gko5DNTbCDtQw9ateiZK8dG3QHxB0YjrqBsqH+tAf
-         2/t66K/g0AHboAThP0LAOBQIEoX5C7wpCsITiOC8TblhcQB4TYUCN44pcJPuBdXItWrl
-         dJhg==
-X-Forwarded-Encrypted: i=1; AJvYcCVsjy2EoHfiTYtOg0IbGZejatQZZ9jLaDXRNIvbeP8v9QnnFc1SOB+WZymOYZP2rmsACduH54HUtYNElP/iZTCi@lists.infradead.org, AJvYcCWEm58nJzB0sEE+dUY9aMQju8huDs+5D0RH/ZGVJcBbHqMaJuvcfw9xvqKa9AxMLa/7sCrnb46WEhcwVHwv88E=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyAmDNTrHmU/OhL6y2gDFrnNFVe68BkZRt8tTXaplzZS6Spx4cE
-	LEJEcmlf5lCPo0dOiFMBqNLHR9qg91M390z9AaPjl5Tjs5cxeYe/
-X-Google-Smtp-Source: AGHT+IF4I5CmGa9hcugWiBWjkOlBhbMKeUrlWDazU08v09g6kAUQr2elrd5mrvrr7e4MNY0RZYyfxA==
-X-Received: by 2002:a05:600c:19ca:b0:42c:df54:1908 with SMTP id 5b1f17b1804b1-430ccf4c829mr23359995e9.18.1728493977265;
-        Wed, 09 Oct 2024 10:12:57 -0700 (PDT)
-Received: from localhost.localdomain (93-34-90-105.ip49.fastwebnet.it. [93.34.90.105])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-430ccf5f5e1sm25778805e9.26.2024.10.09.10.12.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Oct 2024 10:12:56 -0700 (PDT)
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Herbert Xu <herbert@gondor.apana.org.au>,
-	"David S. Miller" <davem@davemloft.net>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Richard van Schagen <vschagen@icloud.com>,
-	linux-crypto@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [RFC PATCH 1/2] dt-bindings: crypto: Add Mediatek EIP-93 crypto engine
-Date: Wed,  9 Oct 2024 19:12:20 +0200
-Message-ID: <20241009171223.12695-1-ansuelsmth@gmail.com>
-X-Mailer: git-send-email 2.45.2
+	id 1syaP9-0000000AAD6-1XKv
+	for linux-mediatek@lists.infradead.org;
+	Wed, 09 Oct 2024 17:23:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1728494589; x=1729099389; i=frank-w@public-files.de;
+	bh=eoLwY9alRedsCYPnuiD5CtfLiZIf2xHE4cOKKcZfTTY=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:Date:In-Reply-To:References:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=hYHnBebew1qHjATUvOCjqBBemV5rNvc3I/6pY28I+dklGCCgh11C8xo+FYG8WhJP
+	 Z0hnCECgONfOHQzK+VQsQOCoYJti0v/0JwCMfzfREl9mupRs5BcU80fJgcOJb8Hfi
+	 gYbNfMlf09uNz6JLEAytZR0G0m3nbpp7kwxAbvZNMDH6SVeYsrbK5A5xBwMEgy4FX
+	 BflIlxlPksfLvAdiZZ9XV7wEHnGo0g1GTeaD8NSlwz6Xd5QWPBFsW50WIUqrQtAam
+	 kiCKhdAA0otKGOXmNs//txyvX+e9d5v7ZFOcwrN67I0dH88+wooEiQEG8Fhqyt9qn
+	 vs2CRuhPKDqQ6kxyhg==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.150.182] ([217.61.150.182]) by web-mail.gmx.net
+ (3c-app-gmx-bap26.server.lan [172.19.172.96]) (via HTTP); Wed, 9 Oct 2024
+ 19:23:09 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Message-ID: <trinity-67c63297-52b5-4d2c-bcdd-1e86936c4b26-1728494589152@3c-app-gmx-bap26>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Shayne Chen <shayne.chen@mediatek.com>
+Cc: linux-wireless <linux-wireless@vger.kernel.org>, Felix Fietkau
+ <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee
+ <ryder.lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>, Shayne Chen
+ <shayne.chen@mediatek.com>
+Subject: Aw: [PATCH wireless] wifi: mt76: mt7996: fix invalid interface
+ combinations
+Content-Type: text/plain; charset=UTF-8
+Date: Wed, 9 Oct 2024 19:23:09 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <20241007135133.5336-1-shayne.chen@mediatek.com>
+References: <20241007135133.5336-1-shayne.chen@mediatek.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:9iHm18CmHe68E+8f7Hz8U3kI/dYdyrVWNgGZASQ1PCW/cxaRZHw2vTLjOqpCfYhqNyi/W
+ gIP8H9h/6nq9XOc1DmNT2yglBLTwdcXLsAenuZoYUV7mSUiXAzPp2PfsKeA5ROMqT6hTrDa4JIOM
+ 4P9RTUqDk4ycmPN1qTsBVw2gEW9XApicHap1kHmn+4VhJNyaB8p4Wt21+lu7DA29EwyCSOdO4Vbv
+ XKxV3t0CDDmsUjU7Q33c72qOH4TVKP3lGA0cWnzLEMa9aMSXBvtpY/I45XA4jddJPBOjLOEnhwcu
+ Vs=
+UI-OutboundReport: notjunk:1;M01:P0:l8TrFdzR4Oc=;RiQXHB/z0Ptxlxl81pXNru1rbRy
+ wE4r+6nVBrmsUPa3xCWCikeC4+1JXAtXCY8NTMHlos42SJ440/aEhhqsHwjBexVeu6dI+PQ+b
+ 9aeq5JT9exXQH/TLMrSKo975mYZNLw7noaQSVCo4KTnbNk12rzJQ/l2riLSydW6oUd0Y6TlHl
+ rQNB1MyR35uJ0moeNZ5+dqHC8iWlPssbpMfuYXQG081vecPTzij2cYQbcr67JLFoQ29wCrVsE
+ +pIO+UgBmRW78ILtLIrUQ5zSo1U4ayTHuO6eB5bvrKAmZfj7FWVpRyAld3f1dVC6qeGDhSijj
+ dZO8af4Zxkii+qRTn8hWfCleyW6ddbcJHO2ggG3oF8fRgjYa7762LzBSCatwwk+9uM0Ow5zNT
+ F3vcaX02XHRPt/ZbQTlmSsO++LiVmUJaPrV2qJPRygslEQFBiwNP1SR0GegU9revyVC49dwg0
+ TQMS5L0VVYCUPJJbr/xUEuKN/rqvAeLIYpDLNQ3uhGt2JdmtLVaZwWtLCME3kJznIWe0W2tB7
+ TJrrRFfhnh9tZUjfT16Rdl0rxQLSABRvTpeknbTmkGSwGbjjKB9F5aGegP8y3ZO9WUSY43T+w
+ /dx+c/xA9bCL3Ec8ivmld4dmk2wR00bc1rrvOs+STbyIoryiTuSJYEGhweCzDc3/u2kHxSXYw
+ e2zX4fA5IXHV0EwHAm50Qheq7KP1V8aBGl9mEqy5bQ==
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241009_101300_080708_55BE8CC8 
-X-CRM114-Status: GOOD (  13.61  )
+X-CRM114-CacheID: sfid-20241009_102319_806288_4C94BA4C 
+X-CRM114-Status: UNSURE (   6.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,62 +99,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add bindings for the Mediatek EIP-93 crypto engine. The same IP is also
-present on Airoha SoC.
+Hi Shayne
 
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
----
- .../bindings/crypto/mediatek,mtk-eip93.yaml   | 40 +++++++++++++++++++
- 1 file changed, 40 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/crypto/mediatek,mtk-eip93.yaml
+> Gesendet: Montag, 07. Oktober 2024 um 15:51 Uhr
+> Von: "Shayne Chen" <shayne.chen@mediatek.com>
+> Betreff: [PATCH wireless] wifi: mt76: mt7996: fix invalid interface comb=
+inations
+>
+> Setting beacon_int_min_gcd and NL80211_IFTYPE_ADHOC in the same interfac=
+e
+> combination is invalid, which will trigger the following warning trace
+> and get error returned from wiphy_register().
+>
+> [   10.080325] Call trace:
+> [   10.082761]  wiphy_register+0xc4/0x76c [cfg80211]
+> [   10.087465]  ieee80211_register_hw+0x800/0xac4 [mac80211]
+> [   10.092868]  mt76_register_device+0x16c/0x2c0 [mt76]
+> [   10.097829]  mt7996_register_device+0x740/0x844 [mt7996e]
+>
+> Fix this by removing unused adhoc iftype.
+>
+> Fixes: 948f65249868 ("wifi: mt76: mt7996: advertize beacon_int_min_gcd")
+> Reported-by: Frank Wunderlich <frank-w@public-files.de>
+> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 
-diff --git a/Documentation/devicetree/bindings/crypto/mediatek,mtk-eip93.yaml b/Documentation/devicetree/bindings/crypto/mediatek,mtk-eip93.yaml
-new file mode 100644
-index 000000000000..b0173b4da42d
---- /dev/null
-+++ b/Documentation/devicetree/bindings/crypto/mediatek,mtk-eip93.yaml
-@@ -0,0 +1,40 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/crypto/mediatek,mtk-eip93.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek EIP93 crypto engine
-+
-+maintainers:
-+  - Christian Marangi <ansuelsmth@gmail.com>
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek, mtk-eip93
-+      - airoha,mtk-eip93
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+
-+    crypto@1e004000 {
-+      compatible = "airoha,mtk-eip93";
-+      reg = <0x1fb70000 0x1000>;
-+
-+      interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
-+    };
--- 
-2.45.2
+thx for the patch. I can confirm it fixes the issue/trace.
 
+regards
 
