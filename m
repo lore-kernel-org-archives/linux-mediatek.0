@@ -4,105 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 923DBCEFC5D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Oct 2024 10:14:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A2D8CEFC5D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Oct 2024 10:18:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V0s48fr9UDoQ4nIvw8H45d5IU43D+0mDn/sGZ3dzL7Q=; b=FgfPuhGJk76sTo/bTSIOBiXkdy
-	I7Q+9oF+lldpPpgl+iu2TzKwpclYS2THut6ft2pBC6ir04bpJdVg2iPP3++zMoCOxNyTwYbPlnpk8
-	GdVieap4mvlEzxAO0bF5Fqx+RH2cPh01U/ScW+H//knVx3QyTwLgAbNDo0E5eRWzvypQqTEAADrck
-	WsnRevoIQ88vFEKQzgbswBpAzkkAeZoZYYnmVMOrD8t+zHf3ti6OAj/mo5JmBFJ1O58PPdxrCCPiN
-	qXUjsPneFsqOXfkTiBLwict6GHL2Q9jUX4R44YWv1J81OsrfKJsIHhywgTfSZ3ULtgY/5bly7vG3/
-	24APX2TQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UDR43C5WdkhS1tDBLCfjlt4o2mAFTyqPTkEf7zO+TBQ=; b=SdSKMZkbpCa7oYvgshDYdIrHwi
+	IZOk+Xm5g1eJSnIJYtDGn+E2o1ElnOSaUYXM/B9pLvZrzMhoLgBGPnuha+2Nx/jy3kmIXAbntNsNQ
+	aMWF9i4NxNtUn7VcjFWcBh5fisJylitLII/GiEX6luRtDOZaY3AEyOnD5H7Nf2r6rs9JHwg+QS0fH
+	4as5Cv10hWrULvVob+01+Mqo5ef4uI4EMb9hjt/dkQs9E+kBLvg7eD7cKbVKzfe8mT0Dgtu5giU5/
+	R1o7iQls5sxxqOMkv5Va/qYRVL/BZC7EHhiF+OU3bLPV0k2r6+z26qhrCsjWvXpZqTPlXFKxz1lSI
+	a5tYbyvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syTiF-00000008pw7-2nvU;
-	Wed, 09 Oct 2024 10:14:35 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1syTlw-00000008qjT-1niQ;
+	Wed, 09 Oct 2024 10:18:24 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syTeN-00000008p1n-0QNW;
-	Wed, 09 Oct 2024 10:10:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=V0s48fr9UDoQ4nIvw8H45d5IU43D+0mDn/sGZ3dzL7Q=; b=FIRcVO7lgYIzay41NZMXShh6Hw
-	HasB4a5G6iEyS97zdFA+EKt5iJas1WP7fXiF+00/UflzcHFfHKfS/eHaPzy2bSdKWGyN5RB0pQTri
-	PTLZldiDrwtp3WPUfHeNJqS6XMPHsub5KAoLC6KzEY/wfdni9ttT1+kZOI2qun7CI1g44gA2HVyCj
-	e2T75PPFwpNSp6CbmDA+GJHsx4W5ndUilu1QGd1EcCHZOpiam2jBQcofw5ypZj7vC+9J2zhAoOHSR
-	PpsXk6Uv/OTBMezPhM8UJiL0uPUB8y8htjpHEeJsdy8u19h9/splY/6Tyy151UIQUFgIp/j6lr1Cj
-	GTJzKvLA==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syTeJ-00000004tnE-0dZU;
-	Wed, 09 Oct 2024 10:10:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1728468625;
-	bh=puMR+IJK1Sa+pBwkyW92DqYJRdUe8vBj1zXDQmMk2zQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=QA4YoKIeLvCWvdV/G+AABXak1OAFskpMp3mccqAVxs4CGSE6nR8+l/cja4dB2eIc/
-	 5Z8yxO73sJihXIX9jC42pML61DVm71rSqKOQM+WbR49RSce1frEswnXkwHAf2r1UD/
-	 95TxWvTpV2ywgN8O2fUt54ymmIK1ATMbTUdGuxY/ASL78a/cQC3tUbo4ENS1zh5Lpr
-	 1t1iSsRhDa+3Hy2OB18FuNogL+VATp5c1JGAesOpZE9h/NswP6Byq6+D4Wt9gEUeRD
-	 tnFNtaGenaMMH42HpwimCqvdvk9x6lHDnooQm76mCvQlUMQRHjenxnKSAdSlMiIovC
-	 wnTXjnN85p4KQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0079E17E1221;
-	Wed,  9 Oct 2024 12:10:24 +0200 (CEST)
-Message-ID: <0dca529a-85f2-4ed3-b3f4-132e6b233f5c@collabora.com>
-Date: Wed, 9 Oct 2024 12:10:24 +0200
+	id 1syTjY-00000008qBL-36wu;
+	Wed, 09 Oct 2024 10:15:57 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 73F2A5C5EDD;
+	Wed,  9 Oct 2024 10:15:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 38614C4CEC5;
+	Wed,  9 Oct 2024 10:15:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728468955;
+	bh=oJArf3enTGWI4lzclyQMV/yzQ9goQcfcnoHHYndnucI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bQlbSrVhseLPe3QZ/N+IXeO8Y7LGIQ0puUnCn5fIioS+vHeFwut1BjP9AtsBj76HT
+	 vvtr/r+nT/TJsWT7daiR3gHLG39/0BFEZI6in7YM8Kl5yO+JxSHWqsUMfMpM2Ubpvk
+	 XGyukpAgZEPtsF4aIfJuwCXSaHvCHClIFF73ldWmEV16eWieDTaWmx+WtLx8gGG7/T
+	 hT88HZNNYZQvbkyF+9jCusNSkJRYhTgfgSHioxsFItQ4yJG4wC+Ol/7Axpp6FxerW1
+	 tookHvRe+TK9t1Yu2+JmrN2FyK3yaMrkUQ7GzDXVUEWK6biV7YJ3mz35n2Pet+jY4f
+	 LygVL/7SlXTNA==
+Date: Wed, 9 Oct 2024 11:15:49 +0100
+From: Lee Jones <lee@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+	matthias.bgg@gmail.com, eddie.huang@mediatek.com,
+	sean.wang@mediatek.com, alexandre.belloni@bootlin.com,
+	sen.chu@mediatek.com, macpaul.lin@mediatek.com,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org,
+	kernel@collabora.com
+Subject: Re: [PATCH v1 1/3] dt-bindings: mfd: mediatek: mt6397: Add
+ start-year property to RTC
+Message-ID: <20241009101549.GB276481@google.com>
+References: <20240923100010.97470-1-angelogioacchino.delregno@collabora.com>
+ <20240923100010.97470-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 3/3] drm/mediatek: Implement OF graphs support for
- display paths
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "sui.jingfeng@linux.dev" <sui.jingfeng@linux.dev>,
- "wenst@chromium.org" <wenst@chromium.org>,
- Sjoerd Simons <sjoerd@collabora.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>,
- "mripard@kernel.org" <mripard@kernel.org>,
- =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?= <jitao.shi@mediatek.com>,
- "michael@walle.cc" <michael@walle.cc>, "daniel@ffwll.ch" <daniel@ffwll.ch>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "robh@kernel.org" <robh@kernel.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "airlied@gmail.com" <airlied@gmail.com>,
- "krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- =?UTF-8?B?WXUtY2hhbmcgTGVlICjmnY7nprnnkosp?= <Yu-chang.Lee@mediatek.com>,
- "mwalle@kernel.org" <mwalle@kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- Alexandre Mergnat <amergnat@baylibre.com>
-References: <20241007093114.35332-1-angelogioacchino.delregno@collabora.com>
- <20241007093114.35332-4-angelogioacchino.delregno@collabora.com>
- <a7fd78a9fb858552e48339bc4bf3d3423d428f3b.camel@mediatek.com>
- <6415a3a1-f00d-428e-b607-ae27ac63c11a@collabora.com>
- <13aad68b2473b5848fd9172e75501d51dc8c8d91.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <13aad68b2473b5848fd9172e75501d51dc8c8d91.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240923100010.97470-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241009_111031_419636_F0FAADF3 
-X-CRM114-Status: GOOD (  40.24  )
+X-CRM114-CacheID: sfid-20241009_031556_845689_83A14CF8 
+X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,306 +79,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/10/24 10:43, CK Hu (胡俊光) ha scritto:
-> Hi, Angelo:
-> 
-> On Tue, 2024-10-08 at 10:03 +0200, AngeloGioacchino Del Regno wrote:
->> Il 08/10/24 09:41, CK Hu (胡俊光) ha scritto:
->>> Hi, Angelo:
->>>
->>> On Mon, 2024-10-07 at 11:31 +0200, AngeloGioacchino Del Regno wrote:
->>>> It is impossible to add each and every possible DDP path combination
->>>> for each and every possible combination of SoC and board: right now,
->>>> this driver hardcodes configuration for 10 SoCs and this is going to
->>>> grow larger and larger, and with new hacks like the introduction of
->>>> mtk_drm_route which is anyway not enough for all final routes as the
->>>> DSI cannot be connected to MERGE if it's not a dual-DSI, or enabling
->>>> DSC preventively doesn't work if the display doesn't support it, or
->>>> others.
->>>>
->>>> Since practically all display IPs in MediaTek SoCs support being
->>>> interconnected with different instances of other, or the same, IPs
->>>> or with different IPs and in different combinations, the final DDP
->>>> pipeline is effectively a board specific configuration.
->>>>
->>>> Implement OF graphs support to the mediatek-drm drivers, allowing to
->>>> stop hardcoding the paths, and preventing this driver to get a huge
->>>> amount of arrays for each board and SoC combination, also paving the
->>>> way to share the same mtk_mmsys_driver_data between multiple SoCs,
->>>> making it more straightforward to add support for new chips.
->>>>
->>>> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
->>>> Tested-by: Alexandre Mergnat <amergnat@baylibre.com>
->>>> Acked-by: Sui Jingfeng <sui.jingfeng@linux.dev>
->>>> Tested-by: Michael Walle <mwalle@kernel.org> # on kontron-sbc-i1200
->>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>> ---
->>>
->>> [snip]
->>>
->>>> +
->>>> +bool mtk_ovl_adaptor_is_comp_present(struct device_node *node)
->>>> +{
->>>> +	enum mtk_ovl_adaptor_comp_type type;
->>>> +	int ret;
->>>> +
->>>> +	ret = ovl_adaptor_of_get_ddp_comp_type(node, &type);
->>>> +	if (ret)
->>>> +		return false;
->>>> +
->>>> +	if (type >= OVL_ADAPTOR_TYPE_NUM)
->>>> +		return false;
->>>> +
->>>> +	/*
->>>> +	 * In the context of mediatek-drm, ETHDR, MDP_RDMA and Padding are
->>>> +	 * used exclusively by OVL Adaptor: if this component is not one of
->>>> +	 * those, it's likely not an OVL Adaptor path.
->>>> +	 */
->>>> +	return type == OVL_ADAPTOR_TYPE_ETHDR ||
->>>> +	       type == OVL_ADAPTOR_TYPE_MDP_RDMA ||
->>>> +	       type == OVL_ADAPTOR_TYPE_PADDING;
->>>> +}
->>>> +
->>>
->>> [snip]
->>>
->>>> +
->>>> +static int mtk_drm_of_get_ddp_ep_cid(struct device_node *node,
->>>> +				     int output_port, enum mtk_crtc_path crtc_path,
->>>> +				     struct device_node **next, unsigned int *cid)
->>>> +{
->>>> +	struct device_node *ep_dev_node, *ep_out;
->>>> +	enum mtk_ddp_comp_type comp_type;
->>>> +	int ret;
->>>> +
->>>> +	ep_out = of_graph_get_endpoint_by_regs(node, output_port, crtc_path);
->>>> +	if (!ep_out)
->>>> +		return -ENOENT;
->>>> +
->>>> +	ep_dev_node = of_graph_get_remote_port_parent(ep_out);
->>>> +	of_node_put(ep_out);
->>>> +	if (!ep_dev_node)
->>>> +		return -EINVAL;
->>>> +
->>>> +	/*
->>>> +	 * Pass the next node pointer regardless of failures in the later code
->>>> +	 * so that if this function is called in a loop it will walk through all
->>>> +	 * of the subsequent endpoints anyway.
->>>> +	 */
->>>> +	*next = ep_dev_node;
->>>> +
->>>> +	if (!of_device_is_available(ep_dev_node))
->>>> +		return -ENODEV;
->>>> +
->>>> +	ret = mtk_drm_of_get_ddp_comp_type(ep_dev_node, &comp_type);
->>>> +	if (ret) {
->>>> +		if (mtk_ovl_adaptor_is_comp_present(ep_dev_node)) {
->>>> +			*cid = (unsigned int)DDP_COMPONENT_DRM_OVL_ADAPTOR;
->>>> +			return 0;
->>>> +		}
->>>> +		return ret;
->>>> +	}
->>>> +
->>>> +	ret = mtk_ddp_comp_get_id(ep_dev_node, comp_type);
->>>> +	if (ret < 0)
->>>> +		return ret;
->>>> +
->>>> +	/* All ok! Pass the Component ID to the caller. */
->>>> +	*cid = (unsigned int)ret;
->>>> +
->>>> +	return 0;
->>>> +}
->>>> +
->>>> +/**
->>>> + * mtk_drm_of_ddp_path_build_one - Build a Display HW Pipeline for a CRTC Path
->>>> + * @dev:          The mediatek-drm device
->>>> + * @cpath:        CRTC Path relative to a VDO or MMSYS
->>>> + * @out_path:     Pointer to an array that will contain the new pipeline
->>>> + * @out_path_len: Number of entries in the pipeline array
->>>> + *
->>>> + * MediaTek SoCs can use different DDP hardware pipelines (or paths) depending
->>>> + * on the board-specific desired display configuration; this function walks
->>>> + * through all of the output endpoints starting from a VDO or MMSYS hardware
->>>> + * instance and builds the right pipeline as specified in device trees.
->>>> + *
->>>> + * Return:
->>>> + * * %0       - Display HW Pipeline successfully built and validated
->>>> + * * %-ENOENT - Display pipeline was not specified in device tree
->>>> + * * %-EINVAL - Display pipeline built but validation failed
->>>> + * * %-ENOMEM - Failure to allocate pipeline array to pass to the caller
->>>> + */
->>>> +static int mtk_drm_of_ddp_path_build_one(struct device *dev, enum mtk_crtc_path cpath,
->>>> +					 const unsigned int **out_path,
->>>> +					 unsigned int *out_path_len)
->>>> +{
->>>> +	struct device_node *next, *prev, *vdo = dev->parent->of_node;
->>>> +	unsigned int temp_path[DDP_COMPONENT_DRM_ID_MAX] = { 0 };
->>>> +	unsigned int *final_ddp_path;
->>>> +	unsigned short int idx = 0;
->>>> +	bool ovl_adaptor_comp_added = false;
->>>> +	int ret;
->>>> +
->>>> +	/* Get the first entry for the temp_path array */
->>>> +	ret = mtk_drm_of_get_ddp_ep_cid(vdo, 0, cpath, &next, &temp_path[idx]);
->>>> +	if (ret) {
->>>> +		if (next && temp_path[idx] == DDP_COMPONENT_DRM_OVL_ADAPTOR) {
->>>> +			dev_dbg(dev, "Adding OVL Adaptor for %pOF\n", next);
->>>> +			ovl_adaptor_comp_added = true;
->>>> +		} else {
->>>> +			if (next)
->>>> +				dev_err(dev, "Invalid component %pOF\n", next);
->>>> +			else
->>>> +				dev_err(dev, "Cannot find first endpoint for path %d\n", cpath);
->>>> +
->>>> +			return ret;
->>>> +		}
->>>> +	}
->>>> +	idx++;
->>>> +
->>>> +	/*
->>>> +	 * Walk through port outputs until we reach the last valid mediatek-drm component.
->>>> +	 * To be valid, this must end with an "invalid" component that is a display node.
->>>> +	 */
->>>> +	do {
->>>> +		prev = next;
->>>> +		ret = mtk_drm_of_get_ddp_ep_cid(next, 1, cpath, &next, &temp_path[idx]);
->>>> +		of_node_put(prev);
->>>> +		if (ret) {
->>>> +			of_node_put(next);
->>>> +			break;
->>>> +		}
->>>> +
->>>> +		/*
->>>> +		 * If this is an OVL adaptor exclusive component and one of those
->>>> +		 * was already added, don't add another instance of the generic
->>>> +		 * DDP_COMPONENT_OVL_ADAPTOR, as this is used only to decide whether
->>>> +		 * to probe that component master driver of which only one instance
->>>> +		 * is needed and possible.
->>>> +		 */
->>>> +		if (temp_path[idx] == DDP_COMPONENT_DRM_OVL_ADAPTOR) {
->>>> +			if (!ovl_adaptor_comp_added)
->>>> +				ovl_adaptor_comp_added = true;
->>>> +			else
->>>> +				idx--;
->>>> +		}
->>>> +	} while (++idx < DDP_COMPONENT_DRM_ID_MAX);
->>>
->>> For the mt8195 external display path, the OF graph is
->>>
->>> mdp_rdma (0 ~ 7) -> padding (0 ~ 7) -> merge (1 ~ 4) -> ethdr -> merge5
->>>
->>> and this function would generate the path as
->>>
->>> ovl_adaptor -> merge (1 ~ 4) -> merge 5
->>>
->>> This is not what I expect.
->>> Is any thing wrong with me?
->>>
->>
->> I mean no offense, really, but your reply here is a contradiction...
->>
->> In [1], you explained what the path for the external display should look like
->> and said that the graph in DT should generate a path which, in the driver, shall
->> look like the current mt8195_mtk_ddp_ext[] hardcoded array.
->>
->> In [2], you repeated that you "just want the path to be like mt8195_mtk_ddp_ext[]".
->>
->> Now you're saying that this is not what you expect.
->> I don't understand your intention.
-> 
-> In [1] & [2], I want the path to be like mt8195_mtk_ddp_ext[]. I don't know where is the contradiction?
-> mt8195_mtk_ddp_ext[] is:
-> 
-> ovl_adaptor -> merge5
-> 
-> but this patch generate the path as
-> 
-> ovl_adaptor -> merge (1 ~ 4) -> merge5
-> 
-> it's not the same and this may cause something wrong.
-> I'm sorry my expression make you confused.
-> So what I want is to generate the path as
-> 
-> ovl_adaptor -> merge5
+On Mon, 23 Sep 2024, AngeloGioacchino Del Regno wrote:
 
-Ah, okay, no - you're misunderstanding how the OVL_ADAPTOR is treated here, hence
-we misunderstood each other in the end!
-
-The resulting path in mt8195_mtk_ddp_ext[] will be ovl_adaptor->merge5, because
-the merge1-4 are already taken dynamically by the ovl_adaptor driver so these
-will be *temporarily omitted* in the graph for MT8195.
-
-My intention is to add handling for the additional merge1-4 (and similar) selection
-with OF Graph support *later*, not in this series (please be aware that it will
-*not be needed* to change any bindings, and compatibility will be guaranteed with
-no additional effort).
-
-This is because I believe that the ovl_adaptor driver needs more changes than just
-a basic OF Graph implementation: as of now, that driver is practically specific to
-just MT8195 and MT8188, as the OVL_ADAPTOR specific MERGE paths are hardcoded.
-
-So, I am planning to improve the ovl_adaptor driver, but that will be a separated
-series as it's probably going to be a relatively (in relation to the size of the
-ovl_adaptor driver) big set of changes.
-
-Regards,
-Angelo
-
+> Enable evaluating the start-year property to allow shifting the
+> RTC's HW range.
 > 
-> Regards,
-> CK
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml | 2 ++
+
+No such file.
+
+>  1 file changed, 2 insertions(+)
 > 
->>
->> [1]:
->> https://lore.kernel.org/all/58ee09aeb5a224dbc8faee236ed1a77ce3fbd011.camel@mediatek.com/
->>
->> [2]:
->> https://lore.kernel.org/all/04f1506b23b41c775e0735b5b3189b4118500715.camel@mediatek.com/
->>
->> Regards,
->> Angelo
->>
->>>
->>>> +
->>>> +	/*
->>>> +	 * The device component might not be enabled: in that case, don't
->>>> +	 * check the last entry and just report that the device is missing.
->>>> +	 */
->>>> +	if (ret == -ENODEV)
->>>> +		return ret;
->>>> +
->>>> +	/* If the last entry is not a final display output, the configuration is wrong */
->>>> +	switch (temp_path[idx - 1]) {
->>>> +	case DDP_COMPONENT_DP_INTF0:
->>>> +	case DDP_COMPONENT_DP_INTF1:
->>>> +	case DDP_COMPONENT_DPI0:
->>>> +	case DDP_COMPONENT_DPI1:
->>>> +	case DDP_COMPONENT_DSI0:
->>>> +	case DDP_COMPONENT_DSI1:
->>>> +	case DDP_COMPONENT_DSI2:
->>>> +	case DDP_COMPONENT_DSI3:
->>>> +		break;
->>>> +	default:
->>>> +		dev_err(dev, "Invalid display hw pipeline. Last component: %d (ret=%d)\n",
->>>> +			temp_path[idx - 1], ret);
->>>> +		return -EINVAL;
->>>> +	}
->>>> +
->>>> +	final_ddp_path = devm_kmemdup(dev, temp_path, idx * sizeof(temp_path[0]), GFP_KERNEL);
->>>> +	if (!final_ddp_path)
->>>> +		return -ENOMEM;
->>>> +
->>>> +	dev_dbg(dev, "Display HW Pipeline built with %d components.\n", idx);
->>>> +
->>>> +	/* Pipeline built! */
->>>> +	*out_path = final_ddp_path;
->>>> +	*out_path_len = idx;
->>>> +
->>>> +	return 0;
->>>> +}
->>>> +
->>
->>
+> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> index 953358bc997a..a83cc35f51f1 100644
+> --- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> @@ -71,6 +71,8 @@ properties:
+>                    - mediatek,mt6366-rtc
+>                - const: mediatek,mt6358-rtc
+>  
+> +      start-year: true
+> +
+>      required:
+>        - compatible
+>  
+> -- 
+> 2.46.0
+> 
 
-
+-- 
+Lee Jones [李琼斯]
 
