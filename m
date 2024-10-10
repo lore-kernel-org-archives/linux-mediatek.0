@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A17ACF11F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 13:27:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCF42CF11F4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 13:28:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=7+Y0UnqSCJyK4JfiDtNuNdtFaFzWSU45KXZfcE1fxFk=; b=geO0R3zcRWPV/7rJDDoZ5jJJ50
-	ZxNGTexQ1Cvgokw8xPwiswvAEi4hlnxUhVrdOELiX1csbYmUbDfZewL8Osunki0wgVDaQ2DUoTza/
-	9tkR/gfTszLSGyJ0sXV2mX38DIBBYyuCWlHXamjO4D30FHsyyX9cyXHg/xDn2UB+xCFFZ6x0VGLi6
-	KXQArfSzLzG/KTYP73OqRW7EH+hO5uAaz+t6M+4HyR4EjJPMevZo83x9g/FGTDSxmOFuFlrf0zN0z
-	AdxhwGl7ivGFeAP+4Kx8ubT5v9o6ezQNW6dKMihnwIjZsqBHvEmoyDsZdqm4NhGwIDamrnTpVhK55
-	Zln4cAvg==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YEUlHixvAjsmgxdLLxsFEJSrhIN0gPL91jl5bKMPbuY=; b=gDMd2ISHPlqZHCfj4CpuZLQXuo
+	6dJqR2gjT8ZtZ6N0y03N0S0oE7XDLZ5GSK7SSXkjoICQr1tfUJkaikvH3CZ0EDp1iWgG3CuS/iOMA
+	YvFu8NIyl4YCQ7qtqZBa3uy3V72tb1x45m4dQ1JIygplg2p2j6fyk+PCeCxzTOV0IAwhPwusqClnZ
+	LCu1t0R3+kPIqo6knJNkEMC6PhOH/UZEXMI85QWFfYVt7iCDGOZcBZPelVKCpue+ApzzXvRdZRTAb
+	OY4fS8mGNRqnjw7o/SndsDeuop3/TDIYGCOBHQYHEcuVirUtT6XCr9tu4e+qsh7NdT7IzUHgb+45w
+	oxBLPAiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sytCN-0000000CuCS-2H58;
-	Thu, 10 Oct 2024 13:27:23 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1sytDk-0000000CuXP-3S5x;
+	Thu, 10 Oct 2024 13:28:48 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sytCL-0000000CuBs-2Q1K;
-	Thu, 10 Oct 2024 13:27:23 +0000
-Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-5c876ed9c93so1099947a12.2;
-        Thu, 10 Oct 2024 06:27:21 -0700 (PDT)
+	id 1sytCY-0000000CuFF-0jLu;
+	Thu, 10 Oct 2024 13:27:36 +0000
+Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-5c40aea5c40so1782400a12.0;
+        Thu, 10 Oct 2024 06:27:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1728566840; x=1729171640; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=7+Y0UnqSCJyK4JfiDtNuNdtFaFzWSU45KXZfcE1fxFk=;
-        b=NyrAzeduNs5DxGGZrOESvmw6XfoYmFZJqUR2T3muNLMaNO1lZHtjYRZbK7G3Z3bv2m
-         XTol2nNiAzMTcfVnzeO5oPOfzeCVtRxbBqfzqTbp/xFlIiyqchtDvSTbUq/4IYbJzE2F
-         GI6Zn2K9+9FK4fxhY80V8A1U77MBEP+zRh9QVh7tCn5ZpyKv+tZMV7iHevOL8hdu8gW1
-         +qu+b6g7of5wHHZQn1ioYf30E9wu2ByrwbZqwq/d66p3Pr/ctoYUOOREn6M7OQxMWNhD
-         mwqKCCeiP97vDgM8aiBbEU+eEmQ2sEfL/qiECR0ld8kL5GMDsoSRACahqMeqs5eyF81m
-         caYg==
+        d=gmail.com; s=20230601; t=1728566852; x=1729171652; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=YEUlHixvAjsmgxdLLxsFEJSrhIN0gPL91jl5bKMPbuY=;
+        b=BN/eHs1XgVx4htu5L4tQVYa/9nwDg8HS7K80V1zQvWj4gKG552OZkSCgv1ZivSIvae
+         9dOGK2ZAjiaNd3LsjeDB8DP0UIqa9yCjrtnB5zizibZgDp5687ZSCWRiBOMmRiuku1P9
+         MVPy9/bSNFzj7kkBQ2pzIt2jgKzGr3Ht3sAx30XlmCBDfvuyUvk1yhW/MvgSR6DqiNBy
+         8J8MJzN8p6bM+Zjl0NS4V2M/lX3kxOD0gTh9SIdLM4Pe4fbvGgjD+cDgLFQbWIDTH1Qr
+         Y+oeNiQJJeeNDry0hz85JlUWUrRGD/zSLXE8DryEZnf/Z5SkIj3m30l7d4dUCHiSOWfh
+         qg8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728566840; x=1729171640;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=7+Y0UnqSCJyK4JfiDtNuNdtFaFzWSU45KXZfcE1fxFk=;
-        b=Y5nGz+cKviHJmREFySSVLZRdJB9h294QOLqYmVLDdOY07tSWBYaMmrCPyjhFjVyEmL
-         j2OoLMtgJpkEcCegQWoRIBsKeQ9JLgzEpYe7NN0b40+K+x1K4/9+81RkQdOCZeZggUXz
-         gJoDDmYCROZyDzzb/GKlfqhPkPvGpOmOCc/8vTHCWC+41+iCJ2L7rZaETSCPtic0WpJL
-         K70VWy4nh22e07WnLMtd9ZiI5h1un/5IKCteQBwZMSlGb1kuZHcQX6EJw0OUVJcACiJ1
-         pjMosKZSwRnAXku/fnXtd4XzF0p86aFz8FNMwaHfAIlDhSwZ3bJA2NV5CJxD3/4XSgL0
-         JL4w==
-X-Forwarded-Encrypted: i=1; AJvYcCV1UAM9uMf4WIjAzgYZLg4FWpvIIrtRadMSvi7LuWJg49SuHRgoFxvcreDiOukgHHzi53f5mm8OMS1ysJqWq5U=@lists.infradead.org, AJvYcCVSiPVQ3egAYsd51nYBa1Wgeqb0lwHgJtwXWKbbBju4akc5+q4ITrnF4F7XcVGz5R2yuV67mcj+kJxvMk0uhY1/@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx1FSHF+52wbIrIVcle1RZ/4NmZJDj2CZSZOFzgZQroqRYjwKtE
-	JmDSJ//vOtuYw/6OS7gYatO3P2yQs2yHfkJzlGr+bXiksNrj68Ji
-X-Google-Smtp-Source: AGHT+IEW8/apmqrpk1UObsIY0s6nDJHzLk8B90zHTPRtOwBtMiwpp6Ft3UHhYVu8O/D/2w1tW631aA==
-X-Received: by 2002:a05:6402:42ca:b0:5c8:8fe7:73a8 with SMTP id 4fb4d7f45d1cf-5c91d538500mr5344625a12.7.1728566839821;
-        Thu, 10 Oct 2024 06:27:19 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1728566852; x=1729171652;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=YEUlHixvAjsmgxdLLxsFEJSrhIN0gPL91jl5bKMPbuY=;
+        b=LgehFl73OaCORUvPiYtgFoB1iU7Z3y5sBvVMpZJ3yeB1TaHKsRsN1W6LjhMCkJkR2a
+         kK3gtuZ4LChxYmQgr1P93Tfg6oaJvGYjmJO80jIDbkjUISXn038+thI70xeEBWnwNJhH
+         XRq4ImYiV6aSdKv7b/GPRdTrHZPh7UC5nsHBUCHYeUJVcy4lGZFdd/FnZb42aPU1PM7E
+         91GTi8iC6M4pcHt22ufSu/B6v+ufrbCQP+50Yr2PboohDQP48PgHMObxuAeFX4llKbgP
+         +FNk51Vn3a5ThFxZHG4j56tG6JIXJH8ZeLL3SPMB8dRbONjVZeLUbS+qns1rfNTYwyLJ
+         H9ew==
+X-Forwarded-Encrypted: i=1; AJvYcCUQIWa1qNcTzllBglChFOS9tqzZZcT5UvFB3lRDKrnqWuQjjSup1CRvhSD//7Www71gZl73QtQJecV5T2IH0kEJ@lists.infradead.org, AJvYcCV1bSiMbsvdaIcixeXC4UsPtyM7KcmRJixz4czQRpDXfdI7GMmtIl35R21pKScKu8EVuGAxUA2gEPvnZueRO2Q=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw7BZkwMavIHtXNZaDCp/DBUxyhBfuMdo3RKUDFvrFsXVPz7bP+
+	ZQ1I1ovVVeiIMSAHIMS1RupXn5CuIJHMUm1t3AfsdtDxtB40fhyB2/AnGHz59Jc=
+X-Google-Smtp-Source: AGHT+IEoHseiil5KfIHf3y73e2CF2ubLWm/dug6ooNtQ65sJ8O7ZKj3QkgDhImJqrGoGTI5Jl9jm9w==
+X-Received: by 2002:a05:6402:26d0:b0:5c6:3ebf:5c10 with SMTP id 4fb4d7f45d1cf-5c9335538dfmr3038781a12.10.1728566851664;
+        Thu, 10 Oct 2024 06:27:31 -0700 (PDT)
 Received: from zenbook.agu.edu.tr ([95.183.227.31])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5c937260a9asm765198a12.67.2024.10.10.06.27.16
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5c937260a9asm765198a12.67.2024.10.10.06.27.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Oct 2024 06:27:19 -0700 (PDT)
+        Thu, 10 Oct 2024 06:27:30 -0700 (PDT)
 From: Yassine Oudjana <yassine.oudjana@gmail.com>
 X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
 To: Michael Turquette <mturquette@baylibre.com>,
@@ -80,16 +81,19 @@ Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v6 0/2] MediaTek MT6735 main clock and reset drivers
-Date: Thu, 10 Oct 2024 16:26:55 +0300
-Message-ID: <20241010132659.81606-1-y.oudjana@protonmail.com>
+	linux-arm-kernel@lists.infradead.org,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v6 1/2] dt-bindings: clock: Add MediaTek MT6735 clock and reset bindings
+Date: Thu, 10 Oct 2024 16:26:56 +0300
+Message-ID: <20241010132659.81606-2-y.oudjana@protonmail.com>
 X-Mailer: git-send-email 2.46.2
+In-Reply-To: <20241010132659.81606-1-y.oudjana@protonmail.com>
+References: <20241010132659.81606-1-y.oudjana@protonmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241010_062721_645383_918CFF64 
-X-CRM114-Status: GOOD (  17.99  )
+X-CRM114-CacheID: sfid-20241010_062734_280294_59C3873C 
+X-CRM114-Status: GOOD (  18.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,84 +110,25 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Yassine Oudjana <y.oudjana@protonmail.com>
 
-These patches are part of a larger effort to support the MT6735 SoC family in
-mainline Linux. More patches (unsent or sent and pending review or revision) can
-be found here[1].
+Add clock definitions for the main clock and reset controllers of MT6735
+(apmixedsys, topckgen, infracfg and pericfg).
 
-This series adds support for the main clock and reset controllers on the
-Mediatek MT6735 SoC:
-- apmixedsys (global PLLs)
-- topckgen (global divisors and muxes)
-- infracfg (gates and resets for infrastructure blocks)
-- pericfg (gates and resets for peripherals)
-
-MT6735 has other more specialized clock/reset controllers, support for which is
-not included in this series:
-- mfgcfg (GPU)
-- imgsys (camera)
-- mmsys (display)
-- vdecsys (video decoder)
-- vencsys (video encoder)
-- audsys (audio)
-
-Changes since v5:
-- Fixed typos in driver source.
-Changes since v4:
-- Follow naming convention for DT bindings.
-- Add reset map.
-Changes since v3:
-- Squash DT binding patches.
-- Use mtk_clk_simple_probe/mtk_clk_simple_remove for topckgen.
-- Add MODULE_DEVICE_TABLE in all drivers.
-Changes since v2:
-- Add "CLK_" prefix to infracfg and pericfg clock definitions to avoid possible
-  clashes with reset bindings.
-- Replace "_RST" suffix with "RST_" prefix to maintain consistency with clock
-  bindings.
-- Use macros to define clocks.
-- Abandon mtk_clk_simple_probe/mtk_clk_simple_remove in favor of custom
-  functions in apmixedsys and topckgen drivers for the time being. 
-- Capitalize T in MediaTek in MODULE_DESCRIPTION.
-Changes since v1:
-- Rebase on some pending patches.
-- Move common clock improvements to a separate series.
-- Use mtk_clk_simple_probe/remove after making them support several clock types
-  in said series.
-- Combine all 4 drivers into one patch, and use one Kconfig symbol for all
-  following a conversation seen on a different series[2].
-- Correct APLL2 registers in apmixedsys driver (were offset backwards by 0x4).
-- Make irtx clock name lower case to match the other clocks.
-
-[1] https://gitlab.com/mt6735-mainline/linux/-/commits/mt6735-staging
-[2] https://lore.kernel.org/linux-mediatek/CAGXv+5H4gF5GXzfk8mjkG4Kry8uCs1CQbKoViBuc9LC+XdHH=A@mail.gmail.com/
-
-Yassine Oudjana (2):
-  dt-bindings: clock: Add MediaTek MT6735 clock and reset bindings
-  clk: mediatek: Add drivers for MediaTek MT6735 main clock and reset
-    drivers
-
- .../bindings/clock/mediatek,apmixedsys.yaml   |   4 +-
- .../bindings/clock/mediatek,infracfg.yaml     |   8 +-
- .../bindings/clock/mediatek,pericfg.yaml      |   1 +
- .../bindings/clock/mediatek,topckgen.yaml     |   4 +-
- MAINTAINERS                                   |  16 +
- drivers/clk/mediatek/Kconfig                  |   9 +
- drivers/clk/mediatek/Makefile                 |   1 +
- drivers/clk/mediatek/clk-mt6735-apmixedsys.c  | 138 ++++++
- drivers/clk/mediatek/clk-mt6735-infracfg.c    | 107 +++++
- drivers/clk/mediatek/clk-mt6735-pericfg.c     | 124 ++++++
- drivers/clk/mediatek/clk-mt6735-topckgen.c    | 394 ++++++++++++++++++
- .../clock/mediatek,mt6735-apmixedsys.h        |  16 +
- .../clock/mediatek,mt6735-infracfg.h          |  25 ++
- .../clock/mediatek,mt6735-pericfg.h           |  37 ++
- .../clock/mediatek,mt6735-topckgen.h          |  79 ++++
- .../reset/mediatek,mt6735-infracfg.h          |  27 ++
- .../reset/mediatek,mt6735-pericfg.h           |  31 ++
- 17 files changed, 1016 insertions(+), 5 deletions(-)
- create mode 100644 drivers/clk/mediatek/clk-mt6735-apmixedsys.c
- create mode 100644 drivers/clk/mediatek/clk-mt6735-infracfg.c
- create mode 100644 drivers/clk/mediatek/clk-mt6735-pericfg.c
- create mode 100644 drivers/clk/mediatek/clk-mt6735-topckgen.c
+Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../bindings/clock/mediatek,apmixedsys.yaml   |  4 +-
+ .../bindings/clock/mediatek,infracfg.yaml     |  8 +-
+ .../bindings/clock/mediatek,pericfg.yaml      |  1 +
+ .../bindings/clock/mediatek,topckgen.yaml     |  4 +-
+ MAINTAINERS                                   | 12 +++
+ .../clock/mediatek,mt6735-apmixedsys.h        | 16 ++++
+ .../clock/mediatek,mt6735-infracfg.h          | 25 ++++++
+ .../clock/mediatek,mt6735-pericfg.h           | 37 +++++++++
+ .../clock/mediatek,mt6735-topckgen.h          | 79 +++++++++++++++++++
+ .../reset/mediatek,mt6735-infracfg.h          | 27 +++++++
+ .../reset/mediatek,mt6735-pericfg.h           | 31 ++++++++
+ 11 files changed, 239 insertions(+), 5 deletions(-)
  create mode 100644 include/dt-bindings/clock/mediatek,mt6735-apmixedsys.h
  create mode 100644 include/dt-bindings/clock/mediatek,mt6735-infracfg.h
  create mode 100644 include/dt-bindings/clock/mediatek,mt6735-pericfg.h
@@ -191,6 +136,362 @@ Yassine Oudjana (2):
  create mode 100644 include/dt-bindings/reset/mediatek,mt6735-infracfg.h
  create mode 100644 include/dt-bindings/reset/mediatek,mt6735-pericfg.h
 
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
+index db5f48e4dd157..591a9e862c7d4 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,apmixedsys.yaml
+@@ -12,7 +12,8 @@ maintainers:
+ 
+ description:
+   The Mediatek apmixedsys controller provides PLLs to the system.
+-  The clock values can be found in <dt-bindings/clock/mt*-clk.h>.
++  The clock values can be found in <dt-bindings/clock/mt*-clk.h>
++  and <dt-bindings/clock/mediatek,mt*-apmixedsys.h>.
+ 
+ properties:
+   compatible:
+@@ -34,6 +35,7 @@ properties:
+           - enum:
+               - mediatek,mt2701-apmixedsys
+               - mediatek,mt2712-apmixedsys
++              - mediatek,mt6735-apmixedsys
+               - mediatek,mt6765-apmixedsys
+               - mediatek,mt6779-apmixed
+               - mediatek,mt6795-apmixedsys
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,infracfg.yaml b/Documentation/devicetree/bindings/clock/mediatek,infracfg.yaml
+index 252c46d316ee5..d1d30700d9b0e 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,infracfg.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,infracfg.yaml
+@@ -11,9 +11,10 @@ maintainers:
+ 
+ description:
+   The Mediatek infracfg controller provides various clocks and reset outputs
+-  to the system. The clock values can be found in <dt-bindings/clock/mt*-clk.h>,
+-  and reset values in <dt-bindings/reset/mt*-reset.h> and
+-  <dt-bindings/reset/mt*-resets.h>.
++  to the system. The clock values can be found in <dt-bindings/clock/mt*-clk.h>
++  and <dt-bindings/clock/mediatek,mt*-infracfg.h>, and reset values in
++  <dt-bindings/reset/mt*-reset.h>, <dt-bindings/reset/mt*-resets.h> and
++  <dt-bindings/reset/mediatek,mt*-infracfg.h>.
+ 
+ properties:
+   compatible:
+@@ -22,6 +23,7 @@ properties:
+           - enum:
+               - mediatek,mt2701-infracfg
+               - mediatek,mt2712-infracfg
++              - mediatek,mt6735-infracfg
+               - mediatek,mt6765-infracfg
+               - mediatek,mt6795-infracfg
+               - mediatek,mt6779-infracfg_ao
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,pericfg.yaml b/Documentation/devicetree/bindings/clock/mediatek,pericfg.yaml
+index 2f06baecfd233..b98cf45efe2f6 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,pericfg.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,pericfg.yaml
+@@ -20,6 +20,7 @@ properties:
+           - enum:
+               - mediatek,mt2701-pericfg
+               - mediatek,mt2712-pericfg
++              - mediatek,mt6735-pericfg
+               - mediatek,mt6765-pericfg
+               - mediatek,mt6795-pericfg
+               - mediatek,mt7622-pericfg
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml b/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
+index bdf3b55bd56fd..c080fb0a16181 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,topckgen.yaml
+@@ -12,7 +12,8 @@ maintainers:
+ 
+ description:
+   The Mediatek topckgen controller provides various clocks to the system.
+-  The clock values can be found in <dt-bindings/clock/mt*-clk.h>.
++  The clock values can be found in <dt-bindings/clock/mt*-clk.h> and
++  <dt-bindings/clock/mediatek,mt*-topckgen.h>.
+ 
+ properties:
+   compatible:
+@@ -31,6 +32,7 @@ properties:
+           - enum:
+               - mediatek,mt2701-topckgen
+               - mediatek,mt2712-topckgen
++              - mediatek,mt6735-topckgen
+               - mediatek,mt6765-topckgen
+               - mediatek,mt6779-topckgen
+               - mediatek,mt6795-topckgen
+diff --git a/MAINTAINERS b/MAINTAINERS
+index b1058f02e613e..a5a8f700f06f4 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -14567,6 +14567,18 @@ S:	Maintained
+ F:	Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+ F:	drivers/mmc/host/mtk-sd.c
+ 
++MEDIATEK MT6735 CLOCK & RESET DRIVERS
++M:	Yassine Oudjana <y.oudjana@protonmail.com>
++L:	linux-clk@vger.kernel.org
++L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
++S:	Maintained
++F:	include/dt-bindings/clock/mediatek,mt6735-apmixedsys.h
++F:	include/dt-bindings/clock/mediatek,mt6735-infracfg.h
++F:	include/dt-bindings/clock/mediatek,mt6735-pericfg.h
++F:	include/dt-bindings/clock/mediatek,mt6735-topckgen.h
++F:	include/dt-bindings/reset/mediatek,mt6735-infracfg.h
++F:	include/dt-bindings/reset/mediatek,mt6735-pericfg.h
++
+ MEDIATEK MT76 WIRELESS LAN DRIVER
+ M:	Felix Fietkau <nbd@nbd.name>
+ M:	Lorenzo Bianconi <lorenzo@kernel.org>
+diff --git a/include/dt-bindings/clock/mediatek,mt6735-apmixedsys.h b/include/dt-bindings/clock/mediatek,mt6735-apmixedsys.h
+new file mode 100644
+index 0000000000000..b4705204409c5
+--- /dev/null
++++ b/include/dt-bindings/clock/mediatek,mt6735-apmixedsys.h
+@@ -0,0 +1,16 @@
++/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
++
++#ifndef _DT_BINDINGS_CLK_MT6735_APMIXEDSYS_H
++#define _DT_BINDINGS_CLK_MT6735_APMIXEDSYS_H
++
++#define CLK_APMIXED_ARMPLL		0
++#define CLK_APMIXED_MAINPLL		1
++#define CLK_APMIXED_UNIVPLL		2
++#define CLK_APMIXED_MMPLL		3
++#define CLK_APMIXED_MSDCPLL		4
++#define CLK_APMIXED_VENCPLL		5
++#define CLK_APMIXED_TVDPLL		6
++#define CLK_APMIXED_APLL1		7
++#define CLK_APMIXED_APLL2		8
++
++#endif
+diff --git a/include/dt-bindings/clock/mediatek,mt6735-infracfg.h b/include/dt-bindings/clock/mediatek,mt6735-infracfg.h
+new file mode 100644
+index 0000000000000..d8dd51e15637e
+--- /dev/null
++++ b/include/dt-bindings/clock/mediatek,mt6735-infracfg.h
+@@ -0,0 +1,25 @@
++/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
++
++#ifndef _DT_BINDINGS_CLK_MT6735_INFRACFG_H
++#define _DT_BINDINGS_CLK_MT6735_INFRACFG_H
++
++#define CLK_INFRA_DBG			0
++#define CLK_INFRA_GCE			1
++#define CLK_INFRA_TRBG			2
++#define CLK_INFRA_CPUM			3
++#define CLK_INFRA_DEVAPC		4
++#define CLK_INFRA_AUDIO			5
++#define CLK_INFRA_GCPU			6
++#define CLK_INFRA_L2C_SRAM		7
++#define CLK_INFRA_M4U			8
++#define CLK_INFRA_CLDMA			9
++#define CLK_INFRA_CONNMCU_BUS		10
++#define CLK_INFRA_KP			11
++#define CLK_INFRA_APXGPT		12
++#define CLK_INFRA_SEJ			13
++#define CLK_INFRA_CCIF0_AP		14
++#define CLK_INFRA_CCIF1_AP		15
++#define CLK_INFRA_PMIC_SPI		16
++#define CLK_INFRA_PMIC_WRAP		17
++
++#endif
+diff --git a/include/dt-bindings/clock/mediatek,mt6735-pericfg.h b/include/dt-bindings/clock/mediatek,mt6735-pericfg.h
+new file mode 100644
+index 0000000000000..16bc21bbd95b7
+--- /dev/null
++++ b/include/dt-bindings/clock/mediatek,mt6735-pericfg.h
+@@ -0,0 +1,37 @@
++/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
++
++#ifndef _DT_BINDINGS_CLK_MT6735_PERICFG_H
++#define _DT_BINDINGS_CLK_MT6735_PERICFG_H
++
++#define CLK_PERI_DISP_PWM		0
++#define CLK_PERI_THERM			1
++#define CLK_PERI_PWM1			2
++#define CLK_PERI_PWM2			3
++#define CLK_PERI_PWM3			4
++#define CLK_PERI_PWM4			5
++#define CLK_PERI_PWM5			6
++#define CLK_PERI_PWM6			7
++#define CLK_PERI_PWM7			8
++#define CLK_PERI_PWM			9
++#define CLK_PERI_USB0			10
++#define CLK_PERI_IRDA			11
++#define CLK_PERI_APDMA			12
++#define CLK_PERI_MSDC30_0		13
++#define CLK_PERI_MSDC30_1		14
++#define CLK_PERI_MSDC30_2		15
++#define CLK_PERI_MSDC30_3		16
++#define CLK_PERI_UART0			17
++#define CLK_PERI_UART1			18
++#define CLK_PERI_UART2			19
++#define CLK_PERI_UART3			20
++#define CLK_PERI_UART4			21
++#define CLK_PERI_BTIF			22
++#define CLK_PERI_I2C0			23
++#define CLK_PERI_I2C1			24
++#define CLK_PERI_I2C2			25
++#define CLK_PERI_I2C3			26
++#define CLK_PERI_AUXADC			27
++#define CLK_PERI_SPI0			28
++#define CLK_PERI_IRTX			29
++
++#endif
+diff --git a/include/dt-bindings/clock/mediatek,mt6735-topckgen.h b/include/dt-bindings/clock/mediatek,mt6735-topckgen.h
+new file mode 100644
+index 0000000000000..d4b1e113cc0aa
+--- /dev/null
++++ b/include/dt-bindings/clock/mediatek,mt6735-topckgen.h
+@@ -0,0 +1,79 @@
++/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
++
++#ifndef _DT_BINDINGS_CLK_MT6735_TOPCKGEN_H
++#define _DT_BINDINGS_CLK_MT6735_TOPCKGEN_H
++
++#define CLK_TOP_AD_SYS_26M_CK		0
++#define CLK_TOP_CLKPH_MCK_O		1
++#define CLK_TOP_DMPLL			2
++#define CLK_TOP_DPI_CK			3
++#define CLK_TOP_WHPLL_AUDIO_CK		4
++
++#define CLK_TOP_SYSPLL_D2		5
++#define CLK_TOP_SYSPLL_D3		6
++#define CLK_TOP_SYSPLL_D5		7
++#define CLK_TOP_SYSPLL1_D2		8
++#define CLK_TOP_SYSPLL1_D4		9
++#define CLK_TOP_SYSPLL1_D8		10
++#define CLK_TOP_SYSPLL1_D16		11
++#define CLK_TOP_SYSPLL2_D2		12
++#define CLK_TOP_SYSPLL2_D4		13
++#define CLK_TOP_SYSPLL3_D2		14
++#define CLK_TOP_SYSPLL3_D4		15
++#define CLK_TOP_SYSPLL4_D2		16
++#define CLK_TOP_SYSPLL4_D4		17
++#define CLK_TOP_UNIVPLL_D2		18
++#define CLK_TOP_UNIVPLL_D3		19
++#define CLK_TOP_UNIVPLL_D5		20
++#define CLK_TOP_UNIVPLL_D26		21
++#define CLK_TOP_UNIVPLL1_D2		22
++#define CLK_TOP_UNIVPLL1_D4		23
++#define CLK_TOP_UNIVPLL1_D8		24
++#define CLK_TOP_UNIVPLL2_D2		25
++#define CLK_TOP_UNIVPLL2_D4		26
++#define CLK_TOP_UNIVPLL2_D8		27
++#define CLK_TOP_UNIVPLL3_D2		28
++#define CLK_TOP_UNIVPLL3_D4		29
++#define CLK_TOP_MSDCPLL_D2		30
++#define CLK_TOP_MSDCPLL_D4		31
++#define CLK_TOP_MSDCPLL_D8		32
++#define CLK_TOP_MSDCPLL_D16		33
++#define CLK_TOP_VENCPLL_D3		34
++#define CLK_TOP_TVDPLL_D2		35
++#define CLK_TOP_TVDPLL_D4		36
++#define CLK_TOP_DMPLL_D2		37
++#define CLK_TOP_DMPLL_D4		38
++#define CLK_TOP_DMPLL_D8		39
++#define CLK_TOP_AD_SYS_26M_D2		40
++
++#define CLK_TOP_AXI_SEL			41
++#define CLK_TOP_MEM_SEL			42
++#define CLK_TOP_DDRPHY_SEL		43
++#define CLK_TOP_MM_SEL			44
++#define CLK_TOP_PWM_SEL			45
++#define CLK_TOP_VDEC_SEL		46
++#define CLK_TOP_MFG_SEL			47
++#define CLK_TOP_CAMTG_SEL		48
++#define CLK_TOP_UART_SEL		49
++#define CLK_TOP_SPI_SEL			50
++#define CLK_TOP_USB20_SEL		51
++#define CLK_TOP_MSDC50_0_SEL		52
++#define CLK_TOP_MSDC30_0_SEL		53
++#define CLK_TOP_MSDC30_1_SEL		54
++#define CLK_TOP_MSDC30_2_SEL		55
++#define CLK_TOP_MSDC30_3_SEL		56
++#define CLK_TOP_AUDIO_SEL		57
++#define CLK_TOP_AUDINTBUS_SEL		58
++#define CLK_TOP_PMICSPI_SEL		59
++#define CLK_TOP_SCP_SEL			60
++#define CLK_TOP_ATB_SEL			61
++#define CLK_TOP_DPI0_SEL		62
++#define CLK_TOP_SCAM_SEL		63
++#define CLK_TOP_MFG13M_SEL		64
++#define CLK_TOP_AUD1_SEL		65
++#define CLK_TOP_AUD2_SEL		66
++#define CLK_TOP_IRDA_SEL		67
++#define CLK_TOP_IRTX_SEL		68
++#define CLK_TOP_DISPPWM_SEL		69
++
++#endif
+diff --git a/include/dt-bindings/reset/mediatek,mt6735-infracfg.h b/include/dt-bindings/reset/mediatek,mt6735-infracfg.h
+new file mode 100644
+index 0000000000000..9df9690903771
+--- /dev/null
++++ b/include/dt-bindings/reset/mediatek,mt6735-infracfg.h
+@@ -0,0 +1,27 @@
++/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
++
++#ifndef _DT_BINDINGS_RESET_MT6735_INFRACFG_H
++#define _DT_BINDINGS_RESET_MT6735_INFRACFG_H
++
++#define MT6735_INFRA_RST0_EMI_REG		0
++#define MT6735_INFRA_RST0_DRAMC0_AO		1
++#define MT6735_INFRA_RST0_AP_CIRQ_EINT		2
++#define MT6735_INFRA_RST0_APXGPT		3
++#define MT6735_INFRA_RST0_SCPSYS		4
++#define MT6735_INFRA_RST0_KP			5
++#define MT6735_INFRA_RST0_PMIC_WRAP		6
++#define MT6735_INFRA_RST0_CLDMA_AO_TOP		7
++#define MT6735_INFRA_RST0_USBSIF_TOP		8
++#define MT6735_INFRA_RST0_EMI			9
++#define MT6735_INFRA_RST0_CCIF			10
++#define MT6735_INFRA_RST0_DRAMC0		11
++#define MT6735_INFRA_RST0_EMI_AO_REG		12
++#define MT6735_INFRA_RST0_CCIF_AO		13
++#define MT6735_INFRA_RST0_TRNG			14
++#define MT6735_INFRA_RST0_SYS_CIRQ		15
++#define MT6735_INFRA_RST0_GCE			16
++#define MT6735_INFRA_RST0_M4U			17
++#define MT6735_INFRA_RST0_CCIF1			18
++#define MT6735_INFRA_RST0_CLDMA_TOP_PD		19
++
++#endif
+diff --git a/include/dt-bindings/reset/mediatek,mt6735-pericfg.h b/include/dt-bindings/reset/mediatek,mt6735-pericfg.h
+new file mode 100644
+index 0000000000000..a62bb192835a0
+--- /dev/null
++++ b/include/dt-bindings/reset/mediatek,mt6735-pericfg.h
+@@ -0,0 +1,31 @@
++/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
++
++#ifndef _DT_BINDINGS_RESET_MT6735_PERICFG_H
++#define _DT_BINDINGS_RESET_MT6735_PERICFG_H
++
++#define MT6735_PERI_RST0_UART0			0
++#define MT6735_PERI_RST0_UART1			1
++#define MT6735_PERI_RST0_UART2			2
++#define MT6735_PERI_RST0_UART3			3
++#define MT6735_PERI_RST0_UART4			4
++#define MT6735_PERI_RST0_BTIF			5
++#define MT6735_PERI_RST0_DISP_PWM_PERI		6
++#define MT6735_PERI_RST0_PWM			7
++#define MT6735_PERI_RST0_AUXADC			8
++#define MT6735_PERI_RST0_DMA			9
++#define MT6735_PERI_RST0_IRDA			10
++#define MT6735_PERI_RST0_IRTX			11
++#define MT6735_PERI_RST0_THERM			12
++#define MT6735_PERI_RST0_MSDC2			13
++#define MT6735_PERI_RST0_MSDC3			14
++#define MT6735_PERI_RST0_MSDC0			15
++#define MT6735_PERI_RST0_MSDC1			16
++#define MT6735_PERI_RST0_I2C0			17
++#define MT6735_PERI_RST0_I2C1			18
++#define MT6735_PERI_RST0_I2C2			19
++#define MT6735_PERI_RST0_I2C3			20
++#define MT6735_PERI_RST0_USB			21
++
++#define MT6735_PERI_RST1_SPI0			22
++
++#endif
 -- 
 2.46.2
 
