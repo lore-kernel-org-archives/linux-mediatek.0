@@ -4,66 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9708CEDDA9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 02:52:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BAD5CF07A0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 04:52:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/ZcN/Qujs5Cq8ZumKFpo6k2deu6EUSw7mTXA7sUO1jk=; b=0w7JdSbz1cVCfnqssjkO5XXXTH
-	2ER2951/VXcKv95VRal2XcgHbfssa+wMBxl0mHrhIVZsZuc9GdzRBhGgfKvTlqP9KxTtMS8yKfMRN
-	k7x+zm/REmD3XBEKrTHC/NbHDQxDVLFE3l1q+ytCUzsY25zuErsWd1mzdkwuZecgbtKnVLS3/dNyy
-	RXRnQ/W/uZH7Z5QNbdXXwigsSzcn8kFtvfTMNcwaebMIm5tlU5qnoNnkG6P4+KmPm8so+6K5p6CVJ
-	x35ctOBSeLFb3mgH7MZIuHcpdmdGyj8PSB9tIf0OZF9auyIaUDy/A+WgP7ECq638+ttC7onWUaX5o
-	Vo7yk7Lw==;
+	bh=2+FklhYzuQmHQOvm4IfRNh/2taM6DBxU6Bf60Dkx3cc=; b=o4rHcoPu1awPJezBNAB3HBCM87
+	Xfq5V3ZHX+ReV4em6lc0RrMxPZUq1qcsdqkd8ieyo4UyqGaAOOwdbTZLBzHKJu7q28rrLW17EEic3
+	oEeHt3BLqA8V3EEPI+SFuvxdxW06EeIlhqTRBahBP6Hjy1kHk69XayD4qzgR2pihP3fkl9vCZ5Fpp
+	l9CMq3Z0xxhSYENTQOT+BaR687kysrd3PG5H8GiziO90J+Opa2QTx6OH20W5966rMWNUS/4tGqDI1
+	oVZvXI6Hisv6hj6c82D0j/yza2xCUFStxGAKpkq/RQOXMb/nkq9j8CQqlUCVyaaoMrF6HdcZkPMK/
+	BkZ3L71A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syjHW-0000000BKW9-47Rw;
-	Thu, 10 Oct 2024 02:52:02 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1syl9h-0000000BVj3-1BKB;
+	Thu, 10 Oct 2024 04:52:05 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syjGB-0000000BKE9-0LAZ;
-	Thu, 10 Oct 2024 02:50:40 +0000
+	id 1syl8L-0000000BVaR-1sHM;
+	Thu, 10 Oct 2024 04:50:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id AF8CE5C5857;
-	Thu, 10 Oct 2024 02:50:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A3D58C4CEC3;
-	Thu, 10 Oct 2024 02:50:37 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id CCD3A5C5E62;
+	Thu, 10 Oct 2024 04:50:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B7059C4CECD;
+	Thu, 10 Oct 2024 04:50:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728528637;
-	bh=Jjo5Ww34UdYuFR9+yMdowifDaIwcyco/vTXfFwnF5gk=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=A9gKFu3kYLDeI8dldhXG0r16EY7YPYWAKcz72rpZi6Otp1cne2Fv3E1mxmmw4Iehx
-	 zFax9ctxv4apkc3BO9MkuM551sc7kwOrXhftJ8421kTw9WzO6A8rV0Dpsiq5+WCk1o
-	 F1WjchmIpVx876vqdxuKZKO9ShyVXXl2y2Qjf69wUlTwFdiwIA/IH9Y4bzgr41n5de
-	 D3M+3Lzs5/F4iGbQ7NFFNZL4NwtTHGMUHiv2/jlR4dUdr819SZvvFcIRytuQ4t8kGe
-	 mTZTEUTwLXcqbF/OPsJZKA0/W+r25Ane+0mbMKrNttqAAHN6V7IcAaW6Jx168Weur/
-	 GVhbhdnbTIMwQ==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33C533806644;
-	Thu, 10 Oct 2024 02:50:43 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1728535839;
+	bh=SJQtIAt6QYdCs7oBad8yA/2kIDjGnFvxdNmmodWlddc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=O1h08fyzrJINl9jgqXJ7H/tJQxtp9rsWinT/+y31r42NSekGF972T9S/rVng+YOHU
+	 egfswxQKok59csdpdAmbJDNdZIMUfw1xPRIyKncDyq/anqJFiBnLWfVZwIUlS7jG8x
+	 phm4zl5mKZa4BdzrBFTHI+th9AmK+ldwz33qiLzWanwrHv//OE9k/3FkCBcgqcs02c
+	 i7V6Z0hnwnJhKjUtaNUc/N+Djylmjaa9QaPNR2EdFjhtiMwuqqyxu+Z0pbKr+ncnio
+	 yq2fnlpjAi21NDmPWOoSNC1YqjQp3kV4e4cZdqqA+6IG+wIfUdvSaslBq2yLkZaYo/
+	 0iFzweyXcF26w==
+Message-ID: <997f9f43-d8dd-499d-b37a-7109d06f4e8d@kernel.org>
+Date: Thu, 10 Oct 2024 06:50:28 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v2] net: airoha: Fix EGRESS_RATE_METER_EN_MASK
- definition
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <172852864173.1545809.3295404172539567877.git-patchwork-notify@kernel.org>
-Date: Thu, 10 Oct 2024 02:50:41 +0000
-References: <20241009-airoha-fixes-v2-1-18af63ec19bf@kernel.org>
-In-Reply-To: <20241009-airoha-fixes-v2-1-18af63ec19bf@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: nbd@nbd.name, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, jacob.e.keller@intel.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCHv3 5/5] documentation: use nvmem-layout in examples
+To: Rosen Penev <rosenp@gmail.com>, devicetree@vger.kernel.org
+Cc: Miquel Raynal <miquel.raynal@bootlin.com>,
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konradybcio@kernel.org>,
+ William Zhang <william.zhang@broadcom.com>,
+ Anand Gore <anand.gore@broadcom.com>, Kursad Oney
+ <kursad.oney@broadcom.com>, Florian Fainelli
+ <florian.fainelli@broadcom.com>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <rafal@milecki.pl>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>, Andrew Lunn <andrew@lunn.ch>,
+ Gregory Clement <gregory.clement@bootlin.com>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ Christian Marangi <ansuelsmth@gmail.com>,
+ "open list:MEMORY TECHNOLOGY DEVICES (MTD)" <linux-mtd@lists.infradead.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
+ "open list:ARM/QUALCOMM SUPPORT" <linux-arm-msm@vger.kernel.org>,
+ "moderated list:BROADCOM BCMBCA ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+References: <20241009214847.67188-1-rosenp@gmail.com>
+ <20241009214847.67188-6-rosenp@gmail.com>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20241009214847.67188-6-rosenp@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241009_195039_296159_285720E8 
-X-CRM114-Status: UNSURE (   8.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241009_215041_613841_925047AB 
+X-CRM114-Status: GOOD (  14.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,31 +142,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Wed, 09 Oct 2024 00:21:47 +0200 you wrote:
-> Fix typo in EGRESS_RATE_METER_EN_MASK mask definition. This bus in not
-> introducing any user visible problem since, even if we are setting
-> EGRESS_RATE_METER_EN_MASK bit in REG_EGRESS_RATE_METER_CFG register,
-> egress QoS metering is not supported yet since we are missing some other
-> hw configurations (e.g token bucket rate, token bucket size).
+On 09/10/2024 23:48, Rosen Penev wrote:
+> nvmem-cells are deprecated and replaced with nvmem-layout. For these
+> examples, replace. They're not relevant to the main point of the
+> document anyway.
 > 
-> Introduced by commit 23020f049327 ("net: airoha: Introduce ethernet support
-> for EN7581 SoC")
+> Signed-off-by: Rosen Penev <rosenp@gmail.com>
+> ---
+
+Please use subject prefixes matching the subsystem. You can get them for
+example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
+your patch is touching. For bindings, the preferred subjects are
+explained here:
+https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patches.html#i-for-patch-submitters
+
+You already got this comment, is something unclear?
+
+>  .../mtd/partitions/qcom,smem-part.yaml        | 21 +++++++++++--------
+>  .../bindings/net/marvell,aquantia.yaml        | 13 +++++++-----
+>  2 files changed, 20 insertions(+), 14 deletions(-)
 > 
-> [...]
+> diff --git a/Documentation/devicetree/bindings/mtd/partitions/qcom,smem-part.yaml b/Documentation/devicetree/bindings/mtd/partitions/qcom,smem-part.yaml
+> index 1c2b4e780ca9..c2cc11286d80 100644
+> --- a/Documentation/devicetree/bindings/mtd/partitions/qcom,smem-part.yaml
+> +++ b/Documentation/devicetree/bindings/mtd/partitions/qcom,smem-part.yaml
+> @@ -23,7 +23,7 @@ properties:
+>  
+>  patternProperties:
+>    "^partition-[0-9a-z]+$":
+> -    $ref: nvmem-cells.yaml
+> +    $ref: nvmem-layout.yaml
 
-Here is the summary with links:
-  - [net-next,v2] net: airoha: Fix EGRESS_RATE_METER_EN_MASK definition
-    https://git.kernel.org/netdev/net-next/c/2518b1196391
+There is no such file here, so this should be full path /schemas/nvmem/....
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+but is this a nvmem? Looks like MTD and NAND. Previously this was a
+partition, now it is not. I don't understand what you are trying to
+achieve here.
 
+Best regards,
+Krzysztof
 
 
