@@ -4,86 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86CEECFC5FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 19:31:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6008D2444F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 21:27:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2ey5I40X8wpeOFEAWidfFn99884kMSMEyVVAKXuD5Ig=; b=RM1eGIObhEDIU46/AK/lrWxtgk
-	1LDwvX1r8gHKXPWpdUrtoT0NDb8Ze8Wssls6jjm5n89/csxmMAgv+/U7zQzNo0jDOYjARBTWj0lYE
-	V4Al0jf6uYsaDiDl/n+xaT2H0TRS8EvBeeYc4ovmhTOrM3bZ9Elc+kVCq8jQVNgYCIHosQxRVv9xh
-	ywkNEy9fqouIYyR7Mr3sD5Q/udut3vpZxypHjW75KBMi6mpOSk2SaGIGe9+hLtdlPh63LB1HqezPb
-	mQI5HXdhUFL+LHrKJ4Cp0SPpFUNDf1dR7cdCckoLzwGF77b+ls1xnssLMYgvU09DBB4kCAzYX2ecY
-	1h3Fg8qw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=eJW7O5XKUbOuuqLLX5pzcTQ1E4Av2AR4QeFhDmOQC8k=; b=fRGc7tkpiiUc6X
+	uLrJZh1pY9BmGJA04AEJQPykJDqegnaVUu+k5XQXbVYY++0D+fCsLFFRPtqOwIaiaNEUhq3xiarfg
+	BC5vr0aiqdQSGFg4xEwPr5InCGKW1R+gwoV2zxqnmZhwD1d0EJ8y4qxucNHwl+M8iBQSS38U8W8fK
+	O8JDKKaquB2jjynsmq3IOFl8L1+zsJXgoP9GCkwQvlQvaXq3w9b5X3mxJP7LMDCXf6LZ/wpvqFaxL
+	jQe9nVeJQ6iSlpkLQSoDSBxxrp7ajL9UwN6hkKLyuhPaWwIdBPsyb/LMcjqu+yr46Sc7cnQa51EOP
+	+dPvMN1iDr/5zPrQVfkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syysZ-0000000E7Bf-0hzG;
-	Thu, 10 Oct 2024 19:31:19 +0000
-Received: from mgamail.intel.com ([192.198.163.8])
+	id 1sz0gv-0000000EPJy-2m7z;
+	Thu, 10 Oct 2024 21:27:25 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syv9S-0000000DLhP-3A0b;
-	Thu, 10 Oct 2024 15:32:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1728574351; x=1760110351;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=MP15bS4w3vSqH5JjlnyEj+lJuyt5Y2WkrfBOlfGovZ8=;
-  b=hdlIpHYgrQ5JkCQACO2Ob6IQdjxn8egWXqagEB4ep1hdTH/modk9ua6z
-   8q8Ffoq3tzp0rWyXhTF2RJUewYxdSVBOBJP8aWI4YD6ktgViumHnJNA2w
-   m/632BPozGF7kh0P4/NjzUQdbIXX7gqmlrk9/8iBjv+PKsewEXTkZXkLO
-   DlR6NJHDZ8Y2jpvDhsIaqFYkDwANFYxP0XR35TTh3oWFN5xN/ylSxGwra
-   0Rg559p0uCUHmbtmA3/nkv63lBDI6VLwM8tRNLKZy/NpUthmHRQdoq+WD
-   vUB7fi4u5VmrURzWB8dVJL34I9SCHzo+XRJfLssM9+IXhyKtQK4i50tvW
-   Q==;
-X-CSE-ConnectionGUID: lJmnlOAhQh+Rx49LJmBgLA==
-X-CSE-MsgGUID: IdvR8vWWQEmCtXpvNJpD+g==
-X-IronPort-AV: E=McAfee;i="6700,10204,11220"; a="45456269"
-X-IronPort-AV: E=Sophos;i="6.11,193,1725346800"; 
-   d="scan'208";a="45456269"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2024 08:32:30 -0700
-X-CSE-ConnectionGUID: 8qbP8zovS+qEoDxs1TzEVw==
-X-CSE-MsgGUID: BDJjDco/TJayOTFrgGJreA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,193,1725346800"; 
-   d="scan'208";a="76828992"
-Received: from smile.fi.intel.com ([10.237.72.154])
-  by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2024 08:32:25 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1syv9K-00000001Zwx-1c2G;
-	Thu, 10 Oct 2024 18:32:22 +0300
-Date: Thu, 10 Oct 2024 18:32:22 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wolfram Sang <wsa@kernel.org>, Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, chrome-platform@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Douglas Anderson <dianders@chromium.org>,
-	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
-	linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v8 7/8] platform/chrome: Introduce device tree hardware
- prober
-Message-ID: <ZwfzhsvlPrxMi61j@smile.fi.intel.com>
-References: <20241008073430.3992087-1-wenst@chromium.org>
- <20241008073430.3992087-8-wenst@chromium.org>
- <Zwfy6ER6sbr_QxsY@smile.fi.intel.com>
+	id 1sz0fX-0000000EP2w-45qQ;
+	Thu, 10 Oct 2024 21:26:01 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-37d39d9f782so829595f8f.1;
+        Thu, 10 Oct 2024 14:25:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1728595558; x=1729200358; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=eJW7O5XKUbOuuqLLX5pzcTQ1E4Av2AR4QeFhDmOQC8k=;
+        b=JdQikdAr1udsa0//hXVUuu9oZd0rz2G8GrQqgGWVwq0U37cYmVoNj2O7fwNOMqhoyh
+         loaI9biU8xbShHXL0sxsYcLL/1+EDFSAQPrxp/zvaX5D+mUjlFuIJTtvM2Ps7x1DZNiC
+         +bQAogV0iEdXsO7YFB1i1wmfA5MwLxYx2Jz3dGLYyoxTgiPf4XJJNzytKrs1UY7KNcyU
+         smvqiljbWrnZC8O5A077xZdgNcubUQBH/F05wPKrh2jSY3DcyPr+5Y34E0H7nWl9g1ib
+         vh2TVm5cGwBU6a4FgFQamCozNbgDNtT7M0QW2o9K0vPJAvF3jnxCDT8PkHrkvVreS85E
+         3p7A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1728595558; x=1729200358;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=eJW7O5XKUbOuuqLLX5pzcTQ1E4Av2AR4QeFhDmOQC8k=;
+        b=rGDvGs1/3elledhDgyPdW2hCWNSFnDxHwQeuKBayibSOZgG3grH1S3ZRo96zw6cjyX
+         k6qk6U6DMUzLICmsXRqU6/31TtUrM/+ZYeFq2wGdsaKwjkMwUun/4xGk+GgQfRsFC3n2
+         6c7X9UdHbKyeRR0wZvrT9r3U2tSlVCwt/iYlTG9CLewDZ+BGnKGpYFKMb5cNI+vPgbcz
+         bOKrz3EMZIsO2APvvWiv/aLNcm5MjwSdZuPkioASZVcH2ruuXTCdlX7ZJiAuMsOObX99
+         deAKDsVbDqkYOvsFf3RL9S4g9XrOCT8kd/7fNy6gGHEpvsoR6Th7Ss/JJN1K/q1VniAs
+         SdDw==
+X-Forwarded-Encrypted: i=1; AJvYcCVLZuMn4Mdvs24S7joOVDiihp6hls4KzbNjguMUhIdzkc5wIn/J6idHQXJg0XgO300yH8Chs3009HzSTMYHHwo=@lists.infradead.org, AJvYcCVj0uLQI1Yol1m4cnjOavKmEjk/yUbj1Q5KitPlhz8cBQWjCH+QqL/iQH3kbujPPNJnUHVOKuXVQubYbkFlw0Y2@lists.infradead.org, AJvYcCXSliB4b6Xqywg/lLJiZCkordFySRAIWWsFIy3myvx9qPkCY8KL2N1wLwpT6PNO6Xt0ide/29PW7exhsIdldvdJnw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw02gzJJpxMoVNzcyc7WpXhydB3lQvRGWi0epUuiR1+wu4WQ/lH
+	Mn0fuRiTKiLwq8ZIsheVeuuK9YML5RdyfUfXXYLIYT6DbWVhWVU0
+X-Google-Smtp-Source: AGHT+IGjhjvs23XBaF9qo7yUB6Onp+okLGqfHWsTl1zeKUZJoKhghxIMshywkcca8h+/0cILKz7jtQ==
+X-Received: by 2002:a5d:5641:0:b0:37d:4a2d:6948 with SMTP id ffacd0b85a97d-37d552375b6mr274533f8f.33.1728595557711;
+        Thu, 10 Oct 2024 14:25:57 -0700 (PDT)
+Received: from [127.0.1.1] (2a02-8389-41cf-e200-3d08-841a-0562-b7b5.cable.dynamic.v6.surfer.at. [2a02:8389:41cf:e200:3d08:841a:562:b7b5])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37d4b6a8940sm2402083f8f.6.2024.10.10.14.25.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Oct 2024 14:25:56 -0700 (PDT)
+From: Javier Carrasco <javier.carrasco.cruz@gmail.com>
+Subject: [PATCH 00/10] input: automate of_node_put() calls for device_node
+Date: Thu, 10 Oct 2024 23:25:50 +0200
+Message-Id: <20241010-input_automate_of_node_put-v1-0-ebc62138fbf8@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Zwfy6ER6sbr_QxsY@smile.fi.intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAF5GCGcC/x3MQQqAIBBA0avErBNUamFXiRDTsWaRhloE0t2Tl
+ u8vfoWMiTDD1FVIeFOmGBpE34HdTdiQkWsGyeUgOFeMwnkVba4SD1NQR69DdKhbZGI1qPxouXQ
+ K2uBM6On55/Pyvh//OD7kbAAAAA==
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Hans de Goede <hdegoede@redhat.com>, Chen-Yu Tsai <wens@csie.org>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, 
+ Florian Fainelli <florian.fainelli@broadcom.com>, 
+ Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>
+Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-sunxi@lists.linux.dev, linux-rpi-kernel@lists.infradead.org, 
+ Javier Carrasco <javier.carrasco.cruz@gmail.com>
+X-Mailer: b4 0.14-dev
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1728595555; l=3941;
+ i=javier.carrasco.cruz@gmail.com; s=20240312; h=from:subject:message-id;
+ bh=H3QCDpR4l7Ykj3GCahYdrBiVlspqgJ1J9/SZlkURrtU=;
+ b=ts+Lle7wL/NftURW4LFEavUzl5GrcOSKdRmgSDAOu1aMNej5jIzm2CTRgJNXE6hx7mfQRYjjT
+ +ApNZbKfUf5BWFg+9nvAGVEh/pTZoGKhLCO94Qdp2GRbQN2Bm16D02B
+X-Developer-Key: i=javier.carrasco.cruz@gmail.com; a=ed25519;
+ pk=lzSIvIzMz0JhJrzLXI0HAdPwsNPSSmEn6RbS+PTS9aQ=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241010_083230_955190_39DAC5B0 
-X-CRM114-Status: GOOD (  14.38  )
+X-CRM114-CacheID: sfid-20241010_142600_060562_AD20D657 
+X-CRM114-Status: GOOD (  16.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,65 +108,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 10, 2024 at 06:29:44PM +0300, Andy Shevchenko wrote:
-> On Tue, Oct 08, 2024 at 03:34:26PM +0800, Chen-Yu Tsai wrote:
+This series removes the explicit calls to 'of_node_put()' from the input
+subsystem, either by switching from 'for_each_child_of_node()' to its
+scoped variant 'for_each_child_of_node_scoped()', or by adding the
+cleanup attribute to the device_node by means of the '__free()' macro.
 
-...
+This series simplifies the code in some cases, and it makes it in
+general more robust, as it will avoid memory leaks if early returns are
+added without the required call to 'of_node_put()', which is a rather
+common issue.
 
-> > +static const struct chromeos_i2c_probe_data chromeos_i2c_probe_dumb_touchscreen = {
-> > +	.cfg = &(const struct i2c_of_probe_cfg) {
-> 
-> Perhaps you can introduce something like
-> 
-> #define DEFINE_I2C_OF_PROBE_CFG(_type_, _ops_)		\
-> 	(struct ...) {					\
-> 		.ops = _ops_,				\
-> 		.type = #_type_,			\
-> 	}
-> 
-> and use it here as
-> 
-> 	.cfg = DEFINE_I2C_OF_PROBE_CFG(touchscreen, NULL),
-> 
-> > +		.type = "touchscreen"
-> 
-> Ditto.
+The following drivers unconditionally release the device node after
+using it:
 
-This was for leaving trailing comma.
+  - misc/twl4030-vibra.c ('of_node_put()' under an if, but only if the
+    node received a valid value).
+  - misc/sparcspkr.c
+  - serio/i8042-sparcio.h
+  - touchscreen/raspberrypi-ts.c
+  - touchscreen/ts4800-ts.c
 
-> > +	}
-> 
-> Ditto.
-> 
-> > +};
-> > +
-> > +static const struct i2c_of_probe_cfg chromeos_i2c_probe_simple_trackpad_cfg = {
-> > +	.ops = &i2c_of_probe_simple_ops,
-> > +	.type = "trackpad"
-> 
-> Leave a comma.
-> 
-> > +};
+The usage of the cleanup faciliy for these drivers offers no real gain
+at the moment, but as soon as an error path is added to them, things can
+go wrong, as it has happened multiple times with such nodes. I intended
+to remove this error-prone pattern from the subsystem, so it is not
+"borrowed" by new users. But if someone has strong feelings about the
+automatic cleanup for those drives, I will not complain if they are left
+as they are (at least until a new buggy error path is introduced ;)).
 
-...
+The approach for the variable declaration is the one that has been
+followed in previous clean ups: as near as possible to its usage,
+instead of at the top. I have no strong feelings about that either, but
+I would prefer it that way for consistency and to have a common pattern
+for future additions.
 
-> > +	.cfg = &chromeos_i2c_probe_simple_trackpad_cfg,
-> 
-> 	.cfg = DEFINE_I2C_OF_PROBE_CFG(trackpad, i2c_of_probe_simple_ops),
-> 
-> Or even
-> 
-> #define DEFINE_I2C_OF_PROBE_CFG_SIMPLE(_type_)			\
-> 	DEFINE_I2C_OF_PROBE_CFG(type, &i2c_of_probe_simple_ops)
+A single call to 'of_node_put()' has been left behind in rmi4/rmi_bus.c,
+as it is used to release a node passed as a parameter, which would make
+the use of the cleanup attribute too cumbersome for no real gain. It is
+called unconditionally, and it will probably not be used as a common
+pattern for new users of a device_node.
 
-With that also looking at the above
+There has been some previous work from Dmitry to use the cleanup
+facilities for 'fwnode_handle' and mutexes[1][2], which this series
+aims to complement for 'device_node'.
 
-#define DEFINE_I2C_OF_PROBE_CFG_NONE(_type_)				\
-	DEFINE_I2C_OF_PROBE_CFG(type, NULL)
+Link: https://lore.kernel.org/linux-input/20240904044244.1042174-1-dmitry.torokhov@gmail.com/ [1]
+Link: https://lore.kernel.org/linux-input/20240825051627.2848495-1-dmitry.torokhov@gmail.com/ [2]
 
+Signed-off-by: Javier Carrasco <javier.carrasco.cruz@gmail.com>
+---
+Javier Carrasco (10):
+      Input: cap11xx - switch to for_each_child_of_node_scoped
+      Input: mtk-pmic-keys - switch to for_each_child_of_node_scoped
+      Input: sun4i-lradc-keys - switch to for_each_child_of_node_scoped
+      Input: twl6040-vibra - use cleanup facility for device_node
+      Input: twl4030-vibra - use cleanup facility for device_node
+      Input: sparcspkr - use cleanup facility for device_node
+      Input: 88pm860x - use cleanup facility for device_node
+      Input: i8042 - use cleanup facility for device_node
+      Input: raspberrypi-ts - use cleanup facility for device_node
+      Input: ts4800-ts - use cleanup facility for device_node
+
+ drivers/input/keyboard/cap11xx.c           | 12 ++++--------
+ drivers/input/keyboard/mtk-pmic-keys.c     | 17 +++++------------
+ drivers/input/keyboard/sun4i-lradc-keys.c  |  7 ++-----
+ drivers/input/misc/sparcspkr.c             |  4 +---
+ drivers/input/misc/twl4030-vibra.c         | 11 +++--------
+ drivers/input/misc/twl6040-vibra.c         |  8 ++------
+ drivers/input/serio/i8042-sparcio.h        |  6 +-----
+ drivers/input/touchscreen/88pm860x-ts.c    | 20 +++++++-------------
+ drivers/input/touchscreen/raspberrypi-ts.c |  4 +---
+ drivers/input/touchscreen/ts4800-ts.c      |  5 ++---
+ 10 files changed, 28 insertions(+), 66 deletions(-)
+---
+base-commit: 515ef92b4939fa51f9f1ee278618e2d419b0b8b0
+change-id: 20241009-input_automate_of_node_put-1bae9f5c02d9
+
+Best regards,
 -- 
-With Best Regards,
-Andy Shevchenko
-
+Javier Carrasco <javier.carrasco.cruz@gmail.com>
 
 
