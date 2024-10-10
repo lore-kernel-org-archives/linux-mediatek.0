@@ -4,81 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 799BBCF11E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 12:42:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2385CF11E2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 12:44:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=59imeC1EBRINkn3R3jmqKGx/LboGQMiK8Ls4O9+QO10=; b=MfH6nImFP2a3wLBsKGjdoWBoCS
-	loJA9+gAKUs3klcERf3UaMLgXCidqUwc/0FJoQPAFQgvJIK49bY1pPfYz3w6TzMP41bBH4WfAw+c2
-	r6GmWO0K6eRJ+87qLameTR5gRoygc+ZbJjLTU3uz36WGpIhf2hnnXxsMbGRRUWoj4m6Df1waeATtc
-	eiKKNTa0rYg4TXScvFD5/ZDXLJdUIKpcFjhf1Cumv8qJ0g0eSvaaV1sEhzPntNXxq80Pf36tNCN+r
-	HMLDO3YlpovJJtNjQ1Sq8lOmY2knNHAtPKNODiH/GDBmbD0ppZ09Qz5qvIBuI+YgHVrBRPG5VSjkD
-	rZhrU76Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=rO56yOIVmUHKtbxELPhAbe1a+uIAvwjrpcwSDXF5EKI=; b=lBMIkF4jnH1Dk7
+	sXNHsKhdx2m9DP0Ut+5O8t2lWP4DF0V3tD3+qHz2mYGqScy35lLCB625D3DnnWGcE80A4yWIHPi4o
+	yTtXO7T06POmdgUw5Jv4Tnuq65W1PAxsuugBti+yjRKtXlqnS04oAr/8DDvQAXz16VPjTtTxsLAir
+	GjW5UFpsKM+bbVkkGE4TZiz+ZAT9nO5DUpseeOmbv4RjAOmVeBL7LjvHZ9v3ivvcotp9qBUG46Ecj
+	pe66WkDP6Cr6Ec87/a7YR5WoSBNObKDR5c2xGo4wM3k3v9ijcCLlgPIUfjY4XpWuJITWpkpp/TnNe
+	4k5N3TY38ZULQMIUWmfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sysUk-0000000CklL-2M6v;
-	Thu, 10 Oct 2024 12:42:18 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1sysWP-0000000ClVZ-3nao;
+	Thu, 10 Oct 2024 12:44:01 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sys8A-0000000Cgrp-2dak;
-	Thu, 10 Oct 2024 12:18:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=59imeC1EBRINkn3R3jmqKGx/LboGQMiK8Ls4O9+QO10=; b=FDN7Rd19bhh9+B3juIJwJL2TWh
-	7GuKWDTbvBkhWS/EuVZ1n27+Y6Hutp6sZ437ZFlLPiNjpXSdU6LZFDkySxvGJIH8nE662nvS7EiJi
-	7mdlJHQ+z9qvVW6d/xNDAbWCzBkUfQRLQNpQMzFLOHW3aj9/r9SiLEv4Jc4MwYOEHeCLNXgjIGgzV
-	xUwIhGumY2/xIwToXqKloTfjnxi1DDIgGzEACGLqwcO9Y4iZVnOWUMpfFYT66udNTWA91Z28HxxHg
-	R1FiH7UNoUeniJAXXfkaCMEmt/ig6CpAtJxKxyv2rdYYeMQo+h8OBBcXHuHd6GrSiZR3m6OO07XCW
-	HJ0wdVdQ==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sys87-00000005NDN-2gIh;
-	Thu, 10 Oct 2024 12:18:57 +0000
+	id 1sysH4-0000000ChwF-0INX;
+	Thu, 10 Oct 2024 12:29:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1728562730;
-	bh=0SgFBZq1DXQEdllYhnVxjf6h8WU7ai6jQWuuA5GI3no=;
+	s=mail; t=1728563288;
+	bh=+PiTsV/00ndEXFaBPUl+xKclCJxHDanNzdM3zXKrEqs=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=fCLZcSCb8qYWPh6Fy/5RHA/kRCTXQlgsDLGRXw+oKuwhfc9OI5zJVIAUu52Q9NsN/
-	 UI4iDHNOWHyk0+wocC+N1fYx+6Hk0Gkhx2GAyvJtRrXsavPwTwtH6cUJifgNvmkz1k
-	 4dT/vdW1RDvyJ+KSSlxCtCgmeMjtYEb+oV7j6t3DZ/ohzB2ikylh8eiiVbCMfGOL16
-	 HX+HkCFiCOGhkmFECL3XrVBc2zh0CmLWDhXoWkPrTcCtZ+ODxXa1+7EXvDIJWfONQ8
-	 Le82+W/Hhz5GcQRBZOmJKWIcU9HRhxtoQYwa6cTTBU4riIpucTRiHqO1DTpEads1i8
-	 iaLvBwRZg4IlA==
+	b=WDw06HNqskMqkhw7m36FbWwqhk5QspGxbqIN/U6aNkXmMBz2eIuM//wtKtHuWuyrC
+	 btWnFnySxse9iAyNfbHIPz5ORaQBf0EeGW+Iefq/pZUY7Nf8HquuUsyn3dXyLb3RJ6
+	 HfTemw1vaGO4KX950kY8Dcu2L9bXHBLnUbmo4H/6UnhiheDovJnRXQQcN+J/d8wXrB
+	 aC9ThAvjjBPPnUnijZeANxO4fqbM3I5on+vDyXPV/iCpyT+59KGxLeoT36Y7mfr+gW
+	 cWeV6D9GOrSUIhpUP39kNRark8P2oa0CmvFk3+FfKidTJjCA0w5fpne3FO0J97UbCS
+	 fdmGPj8IW9D9w==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6863A17E35D3;
-	Thu, 10 Oct 2024 14:18:50 +0200 (CEST)
-Message-ID: <5ac376ca-f57e-4913-86f0-4fd2187a6952@collabora.com>
-Date: Thu, 10 Oct 2024 14:18:50 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C339C17E35D9;
+	Thu, 10 Oct 2024 14:28:07 +0200 (CEST)
+Message-ID: <d1a9f533-3a9e-47c2-9476-c54653b56e68@collabora.com>
+Date: Thu, 10 Oct 2024 14:28:07 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/3] dt-bindings: mmc: mtk-sd: Add support for MT8196
-To: Andy-ld Lu <andy-ld.lu@mediatek.com>, ulf.hansson@linaro.org,
- robh@kernel.org, krzk+dt@kernel.org, matthias.bgg@gmail.com,
- wenbin.mei@mediatek.com
-Cc: linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzk@kernel.org>
-References: <20241009120203.14913-1-andy-ld.lu@mediatek.com>
- <20241009120203.14913-4-andy-ld.lu@mediatek.com>
+Subject: Re: [PATCH v4 2/4] pinctrl: mediatek: add MT7988 pinctrl driver
+To: Frank Wunderlich <linux@fw-web.de>,
+ Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@kernel.org>
+References: <20241009165222.5670-1-linux@fw-web.de>
+ <20241009165222.5670-3-linux@fw-web.de>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241009120203.14913-4-andy-ld.lu@mediatek.com>
+In-Reply-To: <20241009165222.5670-3-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241010_131855_835582_7901D69F 
-X-CRM114-Status: UNSURE (   6.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241010_052810_282630_57439AD2 
+X-CRM114-Status: GOOD (  20.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,18 +74,142 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Sam Shih <sam.shih@mediatek.com>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, linux-kernel@vger.kernel.org, daniel@makrotopia.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, john@phrozen.org, eladwf@gmail.com, ansuelsmth@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/10/24 14:01, Andy-ld Lu ha scritto:
-> Extend the devicetree bindings to include the MT8196 mmc controller,
-> new tx/rx would be supported from MT8196, and the register settings
-> of STOP_DLY_SEL and POP_EN_CNT would also be variant.
+Il 09/10/24 18:52, Frank Wunderlich ha scritto:
+> From: Daniel Golle <daniel@makrotopia.org>
 > 
-> Signed-off-by: Andy-ld Lu <andy-ld.lu@mediatek.com>
-> Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
+> Add pinctrl driver for the MediaTek MT7988 SoC.
+> 
+> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> [correctly initialise for the function_desc structure]
+> Signed-off-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>   drivers/pinctrl/mediatek/Kconfig          |    7 +
+>   drivers/pinctrl/mediatek/Makefile         |    1 +
+>   drivers/pinctrl/mediatek/pinctrl-mt7988.c | 1526 +++++++++++++++++++++
+>   3 files changed, 1534 insertions(+)
+>   create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt7988.c
+> 
+> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
+> index 7af287252834..952110c783d4 100644
+> --- a/drivers/pinctrl/mediatek/Kconfig
+> +++ b/drivers/pinctrl/mediatek/Kconfig
+> @@ -187,6 +187,13 @@ config PINCTRL_MT7986
+>   	default ARM64 && ARCH_MEDIATEK
+>   	select PINCTRL_MTK_MOORE
+>   
+> +config PINCTRL_MT7988
+> +	bool "Mediatek MT7988 pin control"
+> +	depends on OF
+> +	depends on ARM64 || COMPILE_TEST
+> +	default ARM64 && ARCH_MEDIATEK
+> +	select PINCTRL_MTK_MOORE
+> +
+>   config PINCTRL_MT8167
+>   	bool "MediaTek MT8167 pin control"
+>   	depends on OF
+> diff --git a/drivers/pinctrl/mediatek/Makefile b/drivers/pinctrl/mediatek/Makefile
+> index 680f7e8526e0..2b47ce030b54 100644
+> --- a/drivers/pinctrl/mediatek/Makefile
+> +++ b/drivers/pinctrl/mediatek/Makefile
+> @@ -27,6 +27,7 @@ obj-$(CONFIG_PINCTRL_MT7623)		+= pinctrl-mt7623.o
+>   obj-$(CONFIG_PINCTRL_MT7629)		+= pinctrl-mt7629.o
+>   obj-$(CONFIG_PINCTRL_MT7981)		+= pinctrl-mt7981.o
+>   obj-$(CONFIG_PINCTRL_MT7986)		+= pinctrl-mt7986.o
+> +obj-$(CONFIG_PINCTRL_MT7988)		+= pinctrl-mt7988.o
+>   obj-$(CONFIG_PINCTRL_MT8167)		+= pinctrl-mt8167.o
+>   obj-$(CONFIG_PINCTRL_MT8173)		+= pinctrl-mt8173.o
+>   obj-$(CONFIG_PINCTRL_MT8183)		+= pinctrl-mt8183.o
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7988.c b/drivers/pinctrl/mediatek/pinctrl-mt7988.c
+> new file mode 100644
+> index 000000000000..5479f4fa47a7
+> --- /dev/null
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mt7988.c
+> @@ -0,0 +1,1526 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * The MT7988 driver based on Linux generic pinctrl binding.
+> + *
+> + * Copyright (C) 2020 MediaTek Inc.
+> + * Author: Sam Shih <sam.shih@mediatek.com>
+> + */
+> +
+> +#include "pinctrl-moore.h"
+> +
+> +enum MT7988_PINCTRL_REG_PAGE {
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Lowercase name for the enumeration, please.
+
+> +	GPIO_BASE,
+> +	IOCFG_TR_BASE,
+> +	IOCFG_BR_BASE,
+> +	IOCFG_RB_BASE,
+> +	IOCFG_LB_BASE,
+> +	IOCFG_TL_BASE,
+> +};
+> +
+
+..snip..
+
+> +static const struct mtk_eint_hw mt7988_eint_hw = {
+> +	.port_mask = 7,
+> +	.ports = 7,
+> +	.ap_num = ARRAY_SIZE(mt7988_pins),
+> +	.db_cnt = 16,
+
+Are you sure that the EINT controller in this SoC doesn't have the
+DBNC_SET and DBNC_CLR registers?
+
+Another way of asking the same thing: are you sure that this SoC does
+not support interrupt debounce?
+
+> +};
+> +
+> +static const char * const mt7988_pinctrl_register_base_names[] = {
+> +	"gpio",	 "iocfg_tr", "iocfg_br",
+> +	"iocfg_rb", "iocfg_lb", "iocfg_tl",
+> +};
+> +
+> +static struct mtk_pin_soc mt7988_data = {
+> +	.reg_cal = mt7988_reg_cals,
+> +	.pins = mt7988_pins,
+> +	.npins = ARRAY_SIZE(mt7988_pins),
+> +	.grps = mt7988_groups,
+> +	.ngrps = ARRAY_SIZE(mt7988_groups),
+> +	.funcs = mt7988_functions,
+> +	.nfuncs = ARRAY_SIZE(mt7988_functions),
+> +	.eint_hw = &mt7988_eint_hw,
+> +	.gpio_m = 0,
+> +	.ies_present = false,
+> +	.base_names = mt7988_pinctrl_register_base_names,
+> +	.nbase_names = ARRAY_SIZE(mt7988_pinctrl_register_base_names),
+> +	.bias_disable_set = mtk_pinconf_bias_disable_set,
+> +	.bias_disable_get = mtk_pinconf_bias_disable_get,
+> +	.bias_set = mtk_pinconf_bias_set,
+> +	.bias_get = mtk_pinconf_bias_get,
+> +	.pull_type = mt7988_pull_type,
+> +	.bias_set_combo = mtk_pinconf_bias_set_combo,
+> +	.bias_get_combo = mtk_pinconf_bias_get_combo,
+> +	.drive_set = mtk_pinconf_drive_set_rev1,
+> +	.drive_get = mtk_pinconf_drive_get_rev1,
+> +	.adv_pull_get = mtk_pinconf_adv_pull_get,
+> +	.adv_pull_set = mtk_pinconf_adv_pull_set,
+> +};
+> +
+> +static const struct of_device_id mt7988_pinctrl_of_match[] = {
+
+Please compress that to a single line.
+
+{ .compatible = "mediatek,mt7988-pinctrl" },
+
+
+Cheers,
+Angelo
 
 
 
