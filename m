@@ -4,94 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ED21D24459
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 23:16:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60BCAD2445E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 23:31:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qRo5pZaJYjcwJ3wqBtd7Mqnyiz4mZlGFWnd1eshq0HI=; b=xOC2vZMDIuauwPAHYQL9nmQojy
-	O3HBG5HPzieF4W+wkdp8+WTPBaVd0f4rxPnesmxVenNTFUR5droWDi0gDuVv20OA/Zyy7nEuGb6RJ
-	YhL+Awv9wUYS6YRdysspl/Fjfszans21aIkDul2CbfXKrunrslrisufvmlxzKXSLVDOLvDVU1KSw+
-	ThUh+t0UaImI8qAqoT9WZ2gan6NkuuasO8Q1d+RH9xYzoSCqAhgijdIk0feWubM65qEFWV2ijIQKW
-	dwJTtqXYIDYxOTdqhNdiBeOhkQkp0ZklT4T7Et7lvmSYGaZd4LNplzNJZCHnJ3G4u7lv7KpruT4vX
-	7+NtzG7Q==;
+	bh=82HiPSULHr+FUteMSvvyK8noRcXFrMRkdAs1zK1bpjI=; b=MJujDoox5SWpX3IgWh6gW0cOuH
+	70s+5u2959QmdTGm7jJ5Yq0568xUBeS50F+TnHxTPOal2yAGfJ6vGM9mJVUUcbNXg1EFPLH/6IMhZ
+	DL/OCuyvn/QqsMH5X5r2V/X1CPFDwSe2n0uplWvDykjJmmjP4Q8RHEaNSpR7HriCS2zx6B9o7MoXn
+	0oxEhj5Pgiui53bPbh1LC8iN6MHLN3WnaIpUGVOvAloAB4ldV5dNGbAuZJXo0v1sYajoTE7S9MdoJ
+	/gJG2oQkhoNbPPsXJ2mvygaE3RtkgveRXxeu2qxuW2BwEFMNfDBDlp6PhkDgYQEgCZE/emgqvtiT8
+	UCQorcsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sz2OS-0000000Edks-3ND5;
-	Thu, 10 Oct 2024 23:16:28 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1sz2dB-0000000EfDM-0W2o;
+	Thu, 10 Oct 2024 23:31:41 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sz1EI-0000000EUtS-2NiH;
-	Thu, 10 Oct 2024 22:01:56 +0000
-Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-37d4ac91d97so957659f8f.2;
-        Thu, 10 Oct 2024 15:01:53 -0700 (PDT)
+	id 1sz0fc-0000000EP3j-3F7e;
+	Thu, 10 Oct 2024 21:26:06 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-37d47eff9acso719074f8f.3;
+        Thu, 10 Oct 2024 14:26:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1728597712; x=1729202512; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=qRo5pZaJYjcwJ3wqBtd7Mqnyiz4mZlGFWnd1eshq0HI=;
-        b=QBPOl/EkQ+JxjSuuct5MsBzfkVGiHqSrVt+eb6+ZYR/6eMnaTkqUNX8WCw0k4xkzCY
-         JAbTdMfAuybBPuJDIc7xj1UZXBY0Vk1UOxPxbc2ChMbjzfE9uf2huqofl8gp+VcIRlSs
-         WpHibmb91+GIl9Y7VwaYTheK8aOSRQZjxpTS6Y9FGnUtuhqUb7INSoWVB0hdFbedfeGU
-         vHgKtbt2ROvxSEYbQ0CiS9h+DYy53+teH0nthCt6R9bFPDCF7uiHm0PvZgj+Q5ZfKtmy
-         2LA7yicf2QO3fZxBD8xR5FKWv/PmnzK+2bFAH27QNoMfv7xTEnklbTQ9kmnuZSiEfQdd
-         +xAw==
+        d=gmail.com; s=20230601; t=1728595563; x=1729200363; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=82HiPSULHr+FUteMSvvyK8noRcXFrMRkdAs1zK1bpjI=;
+        b=hkXNJud721eViSGp6xC1idpcQDbDt6X+y/Ya5cPBnNzQNtP0t2kcCWnc9P/Qmbtsbx
+         xbVMz/o6/JVVXnnOKr/tCbKNZiqUx3OKwSM7yWJe+Nt72NJzJQZzuoFvASodeCWTOboI
+         Y+BnStnGaSFz2JamDdLXv6V2CXa56sNHU0qJHC02rO5MXr+AtSL9I4OVedKEE4TMnN3i
+         whGB51zvIHmjpp8ah2Ts4O/usUYLd4JSY1tcZqUWfJ6NJ/JpI2X3R3tTBPjNu/7RcSYe
+         CC8HduUf0cnklw3z6dJ2E1Sw+n5Qt1B3Hqw+o0vCoPmnpMD3Sbk6YOzXiUL2pGj79LMK
+         /yqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728597712; x=1729202512;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=qRo5pZaJYjcwJ3wqBtd7Mqnyiz4mZlGFWnd1eshq0HI=;
-        b=JiFqxSF3MBcm1E1bWSZuHPx3tl67/FizMiSqmzOkht33jLCpj8HFFbSn0KB7FBAVZ5
-         rTfDvgOkFktTyyqgOrQw43t88jR7lvfKlZpf1JWU3FU4+hsQvViOJIcDgErwRXw/ItvZ
-         /Jzlz65cVTXqxNZbCbKISlUAeEbUOL2Bd49AvoAro59qcNNd13PEKTA8E9SPn7e/mnOs
-         4IU6o2/GxtqwGODcdHzyRPA3UV1LrUi2fcAf+sv3JeIN3BY6v614U09+Jjt3yYdXeFoB
-         JobY4NHr1NqeIp69vGfcw7tiyWAxnd8guOqg3b9wS3cK09akIeeCNILZfSL1LV/JVmH8
-         lFGQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUT0zXccF02Fe0hW6fjlhblxH4vYf/LXZJSRbr2BlR8you8DcxQbKgv+I6rgyoeuBGzZm3OmTVlN0cSGZY4taQ=@lists.infradead.org, AJvYcCVMaumK6JgXvlDBsd2cQ88YN5fiKYK4YG8zmIzgLXo14845ml3HBKN6olRpRwyEcBKRf9HAN9scBY4OMKfc4cYW@lists.infradead.org, AJvYcCX7wEPYgBZD5gEd94Bm5ZuvyWUS0QJrBJlljRZbnFeH4jbOeerOdilWiu2RoBMRkMo8//O8WPLWZ610sFGkO7REbA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzWa8z4fMy2w94gc9kSu8IlAkLGr/dMKP4+r6FUuu/svixHZtaB
-	/HYzqePu1lDDQGTcDjRkv8LzQraWhk6ad+fwiGJedEQJoPZP9rw1nR8fd5MK
-X-Google-Smtp-Source: AGHT+IGXyz41JoTVviqZ6D56nKWyD7SMBw2XM/zgZy0gAt+4cCNQIYl2jc1hqRENs3/tmimOyBTBmQ==
-X-Received: by 2002:a5d:67cf:0:b0:37d:2de3:bf8a with SMTP id ffacd0b85a97d-37d551d541amr439244f8f.26.1728597712420;
-        Thu, 10 Oct 2024 15:01:52 -0700 (PDT)
-Received: from ?IPV6:2a02:8389:41cf:e200:3d08:841a:562:b7b5? (2a02-8389-41cf-e200-3d08-841a-0562-b7b5.cable.dynamic.v6.surfer.at. [2a02:8389:41cf:e200:3d08:841a:562:b7b5])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-431182d793fsm26275335e9.9.2024.10.10.15.01.49
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 10 Oct 2024 15:01:51 -0700 (PDT)
-Message-ID: <22e55eb1-8aa6-43fa-8020-d18f9f6aa6f8@gmail.com>
-Date: Fri, 11 Oct 2024 00:01:48 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 06/10] Input: sparcspkr - use cleanup facility for
- device_node
-To: Al Viro <viro@zeniv.linux.org.uk>
-Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Hans de Goede <hdegoede@redhat.com>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>, linux-input@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
- linux-rpi-kernel@lists.infradead.org
-References: <20241010-input_automate_of_node_put-v1-0-ebc62138fbf8@gmail.com>
- <20241010-input_automate_of_node_put-v1-6-ebc62138fbf8@gmail.com>
- <20241010214348.GD4017910@ZenIV>
-Content-Language: en-US, de-AT
+        d=1e100.net; s=20230601; t=1728595563; x=1729200363;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=82HiPSULHr+FUteMSvvyK8noRcXFrMRkdAs1zK1bpjI=;
+        b=TFxX8vYyXBr2L1K3PuCAA0qSIVqNHd6xdZjjlChQ5JsPEGWjLWug1nC/ayhP1oCVqw
+         Y7OiYHukik3Z8/awLTF8T9+6KWtiBHvVoryEZHduxOKfI/zqE59NPGOGV7l1tdOkWjr7
+         QMnzOGW7r9oLZy1Qim3h4L6QmoFBMa5NxkJtvzKXqBgmS2vlWmocYmf0wkDp8chHliXy
+         BXZc4QSYNwbEd5AOnR/Ntoxp4sD7bmV9QbHx7jPM+1H3UgNlcRdn510DNf3km+CNHsO8
+         D49RqRCAy+mJqgn9EpTqeRsfpI0lhvBwgetYEMV+OwjXxv6pCV96XVA4Wim4IuFTSrVz
+         /mBw==
+X-Forwarded-Encrypted: i=1; AJvYcCVHaadbcDiR3Z3hOH9zjhkWrtfw/1kAmYslkH1rp5H2TTPAeuFEXiQsNSxhfU2l+pKKJFJ+/n3lg7O0+vgth0c=@lists.infradead.org, AJvYcCVnQqQB2EiY8YHSf6nwH/c7tfhmVEjSNHWwkXShRSXXedIVOfcZTX8jod1PjLuHn5wCvr+55JO72GwLVoat9nGRdA==@lists.infradead.org, AJvYcCXCHGRvjjmSUHhKJHL4lNWJerpWaarTjqTw1LLw+zYV31pVSVUIdX7+0yixsxeiCrU0+nO3aTz1VtU4zmUe0RVB@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywl6uOTb9Jtcn1u7YsLl+K40nKJnCM37lO82Hz5eF4ibOF0VSGP
+	kGYicNt3u/oO1pI3itdRB5gTursr3XUch2h/CcB3cPMhlh2/bjuV
+X-Google-Smtp-Source: AGHT+IGXFqB+Zazmp7zehHYuM+XL6z61pYXfmG/3rSEoRILp6KFB73i+GbynVFHLtM/y3xRgpb0hmg==
+X-Received: by 2002:a05:6000:459b:b0:37d:37b2:385d with SMTP id ffacd0b85a97d-37d5519118amr285252f8f.12.1728595562834;
+        Thu, 10 Oct 2024 14:26:02 -0700 (PDT)
+Received: from [127.0.1.1] (2a02-8389-41cf-e200-3d08-841a-0562-b7b5.cable.dynamic.v6.surfer.at. [2a02:8389:41cf:e200:3d08:841a:562:b7b5])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37d4b6a8940sm2402083f8f.6.2024.10.10.14.26.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Oct 2024 14:26:02 -0700 (PDT)
 From: Javier Carrasco <javier.carrasco.cruz@gmail.com>
-In-Reply-To: <20241010214348.GD4017910@ZenIV>
-Content-Type: text/plain; charset=UTF-8
+Date: Thu, 10 Oct 2024 23:25:52 +0200
+Subject: [PATCH 02/10] Input: mtk-pmic-keys - switch to
+ for_each_child_of_node_scoped
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+Message-Id: <20241010-input_automate_of_node_put-v1-2-ebc62138fbf8@gmail.com>
+References: <20241010-input_automate_of_node_put-v1-0-ebc62138fbf8@gmail.com>
+In-Reply-To: <20241010-input_automate_of_node_put-v1-0-ebc62138fbf8@gmail.com>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Hans de Goede <hdegoede@redhat.com>, Chen-Yu Tsai <wens@csie.org>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, 
+ Florian Fainelli <florian.fainelli@broadcom.com>, 
+ Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>
+Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-sunxi@lists.linux.dev, linux-rpi-kernel@lists.infradead.org, 
+ Javier Carrasco <javier.carrasco.cruz@gmail.com>
+X-Mailer: b4 0.14-dev
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1728595555; l=2458;
+ i=javier.carrasco.cruz@gmail.com; s=20240312; h=from:subject:message-id;
+ bh=VnsjVhq/mttVM6JYsQsLgW4CuzOsRfVPLIHizOJxOgE=;
+ b=ZS797SMZjCf7D8Lm77tFOx/ESKZizmB8NLX/9NtgZRCNy1/Qe09aBZ6jGgwJT+aYB75Bagai0
+ S9JU5B7IeC2D7sgZK2eq4Xtr8wWKCnkMDiB1XWjLJ0wpWwKDsfmLIhB
+X-Developer-Key: i=javier.carrasco.cruz@gmail.com; a=ed25519;
+ pk=lzSIvIzMz0JhJrzLXI0HAdPwsNPSSmEn6RbS+PTS9aQ=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241010_150154_644973_C2746EBC 
-X-CRM114-Status: GOOD (  19.44  )
+X-CRM114-CacheID: sfid-20241010_142604_857586_77EB1471 
+X-CRM114-Status: GOOD (  13.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,60 +109,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/10/2024 23:43, Al Viro wrote:
-> On Thu, Oct 10, 2024 at 11:25:56PM +0200, Javier Carrasco wrote:
->>
->> diff --git a/drivers/input/misc/sparcspkr.c b/drivers/input/misc/sparcspkr.c
->> index 20020cbc0752..bb1c732c8f95 100644
->> --- a/drivers/input/misc/sparcspkr.c
->> +++ b/drivers/input/misc/sparcspkr.c
->> @@ -188,7 +188,6 @@ static int bbc_beep_probe(struct platform_device *op)
->>  {
->>  	struct sparcspkr_state *state;
->>  	struct bbc_beep_info *info;
->> -	struct device_node *dp;
->>  	int err = -ENOMEM;
->>  
->>  	state = kzalloc(sizeof(*state), GFP_KERNEL);
->> @@ -199,14 +198,13 @@ static int bbc_beep_probe(struct platform_device *op)
->>  	state->event = bbc_spkr_event;
->>  	spin_lock_init(&state->lock);
->>  
->> -	dp = of_find_node_by_path("/");
->>  	err = -ENODEV;
->> +	struct device_node *dp __free(device_node) = of_find_node_by_path("/");
->>  	if (!dp)
->>  		goto out_free;
-> 
-> Sigh...  See that
->         state = kzalloc(sizeof(*state), GFP_KERNEL);
-> 	if (!state)
-> 		goto out_err;
-> above?
-> 
-> IOW, this will quietly generate broken code if built with gcc (and refuse to
-> compile with clang).  Yeah, this one is trivially fixed (return -ENOMEM instead
-> of a goto), but...
-> 
-> __cleanup() can be useful, but it's really *not* safe for blind use; you
-> need to watch out for changed scopes (harmless in case of device_node)
-> and for gotos (broken here).
+Use the scoped variant of the macro to simplify the code and error
+handling. This makes the error handling more robust by ensuring that
+the child node is always freed.
 
-Hi Al Viro,
+Signed-off-by: Javier Carrasco <javier.carrasco.cruz@gmail.com>
+---
+ drivers/input/keyboard/mtk-pmic-keys.c | 17 +++++------------
+ 1 file changed, 5 insertions(+), 12 deletions(-)
 
-sorry, but I think I don't get you. First, I don't see sparc64 as a
-supported architecture for clang in the Linux documentation. Maybe the
-documentation is not up-to-date, but I tried to compile with clang and
-it seems to be true that it is not supported. Anyway, that is not the
-issue here.
+diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
+index 4364c3401ff1..5ad6be914160 100644
+--- a/drivers/input/keyboard/mtk-pmic-keys.c
++++ b/drivers/input/keyboard/mtk-pmic-keys.c
+@@ -307,7 +307,7 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
+ 	int error, index = 0;
+ 	unsigned int keycount;
+ 	struct mt6397_chip *pmic_chip = dev_get_drvdata(pdev->dev.parent);
+-	struct device_node *node = pdev->dev.of_node, *child;
++	struct device_node *node = pdev->dev.of_node;
+ 	static const char *const irqnames[] = { "powerkey", "homekey" };
+ 	static const char *const irqnames_r[] = { "powerkey_r", "homekey_r" };
+ 	struct mtk_pmic_keys *keys;
+@@ -343,24 +343,20 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
+ 		return -EINVAL;
+ 	}
+ 
+-	for_each_child_of_node(node, child) {
++	for_each_child_of_node_scoped(node, child) {
+ 		keys->keys[index].regs = &mtk_pmic_regs->keys_regs[index];
+ 
+ 		keys->keys[index].irq =
+ 			platform_get_irq_byname(pdev, irqnames[index]);
+-		if (keys->keys[index].irq < 0) {
+-			of_node_put(child);
++		if (keys->keys[index].irq < 0)
+ 			return keys->keys[index].irq;
+-		}
+ 
+ 		if (of_device_is_compatible(node, "mediatek,mt6358-keys")) {
+ 			keys->keys[index].irq_r = platform_get_irq_byname(pdev,
+ 									  irqnames_r[index]);
+ 
+-			if (keys->keys[index].irq_r < 0) {
+-				of_node_put(child);
++			if (keys->keys[index].irq_r < 0)
+ 				return keys->keys[index].irq_r;
+-			}
+ 		}
+ 
+ 		error = of_property_read_u32(child,
+@@ -369,7 +365,6 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
+ 			dev_err(keys->dev,
+ 				"failed to read key:%d linux,keycode property: %d\n",
+ 				index, error);
+-			of_node_put(child);
+ 			return error;
+ 		}
+ 
+@@ -377,10 +372,8 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
+ 			keys->keys[index].wakeup = true;
+ 
+ 		error = mtk_pmic_key_setup(keys, &keys->keys[index]);
+-		if (error) {
+-			of_node_put(child);
++		if (error)
+ 			return error;
+-		}
+ 
+ 		index++;
+ 	}
 
-Second, I might be missing something about the scopes you are
-mentioning. 'state' gets allocated before the device_node is declared,
-and when the device_node is declared and its initialization fails, it
-should jump to 'out_free' to free 'state', shouldn't it? Sorry if I have
-overlooked something here.
-
-Thank your for your feedback and best regards,
-Javier Carrasco
+-- 
+2.43.0
 
 
