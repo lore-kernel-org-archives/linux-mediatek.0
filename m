@@ -4,84 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9C9ECF11CF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 11:02:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F025CCF11CF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 11:04:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wm6MZYXLSHo1dcmzMTR+ZzKs3r2Jrq8C9K6nZwy4g50=; b=MGlRrRcqhowjkd7NHpR1P0mFg9
-	wlGdH5EZul4XTmi4MoOaIRbXI3jbmD/wZpPWPvd6weFJiYkUIUfK2sli5JCtlfSsKNf072n57JOfo
-	huWZZ8HdFqcPmRI1lOqxRHQzphX8I7R8+dIJv768hFqAQVCjiySGpVdHgHEmHWTW98qtmjxAm5Rxq
-	MmKOPHWdcZfcaWb+XvKFCeE+IL0Nkih3u4LbpePWu3nHGN8Mk76tLFqF2KisGyRb+G9y1P/HXIWmc
-	IZu26iclrwDwz1MUwNpxw7qkoVSOHP8d0z+DIDc0uMEE4/CuNXHM9rCaRGBIeQx+XbhAabruRxfgo
-	ZksxgQ6w==;
+	bh=U6hOB3WYe5ptd0V4yAFNBvH3wokk8CpFdZ0OmgAEsCA=; b=sb36svQArO2nY5JIbciaPQnSy9
+	XOL8mPNx3MIFrArAdgkCZOOZk5mjusq/+g3Mgb1g01rD+WfYWmc2iqHs+NGYB3tZHhy6l1exeMGfe
+	k+JiAaqpDLfEDXHmtEDNS7jxko72o1b7x5BKlhy1Lj0X+OIYOuuJriLAM4NTgIeZoe4yU+SWVBzYu
+	IbGL7hXd3P4hr58xV+DTQ9WabVMiW4vxxfKNsUnySNxOC3MJgN/E01Q/WT92JHAeYxMtB7TiOcBqw
+	O8o2R7sM/HcOTb148DISjTYpvrnhrxJ8tZNyK+GXjzSujMRX01GdP6a8vvztsL1ytLPtbZinjl7Hy
+	JtUnFJ4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syqwL-0000000CUMH-33h5;
-	Thu, 10 Oct 2024 11:02:41 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1syqxf-0000000CUWp-3kT9;
+	Thu, 10 Oct 2024 11:04:03 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1syqu3-0000000CU0H-0EfL;
-	Thu, 10 Oct 2024 11:00:20 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-a9951fba3b4so124656366b.1;
-        Thu, 10 Oct 2024 04:00:18 -0700 (PDT)
+	id 1syqvE-0000000CUBr-3BFu;
+	Thu, 10 Oct 2024 11:01:34 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-5c8967dd2c7so944676a12.1;
+        Thu, 10 Oct 2024 04:01:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1728558017; x=1729162817; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1728558091; x=1729162891; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=wm6MZYXLSHo1dcmzMTR+ZzKs3r2Jrq8C9K6nZwy4g50=;
-        b=HUYsWLnTpDv4H/SW9wKNb9cGp2B6/OJ5gCtzH6Byt6MMz0u7RCMLwLcmf+9rzgtBbW
-         IXbGkqf5A67b6j6oBhg9s838vBi2FyiSa86Hn4gzhN5xr5loVR06zXywWCwVID8OwyDt
-         VG7QMcCd51VES7mH7omv+YLd5okeHb5iLcAxocyx59FHS6vJtVqLAptayF5bGqK1LyeX
-         Fggijlakf4JErDKlPeo05tt6c2ulrPD2ND7RkqCnRQWSJQpcN6IFRwQI7C1BPLq3jvcC
-         Eqf6oMAwTeTrYE97LAafL9oUJ7DTwWw+64I126XC65xMCvKyNCE6aX1sP0qfgVvgm92Y
-         3G5g==
+        bh=U6hOB3WYe5ptd0V4yAFNBvH3wokk8CpFdZ0OmgAEsCA=;
+        b=iwfo0rgxi3B4siACCB3b+xsI1PmwB80jibkE7Ik/4sND1y5OF0WXh9khgzn/hkVXEl
+         xqVx5/a/Jx5tAoEa7+rFg8AF2jKqnp0M4y4GY6jDxKlKhwsGp1Z0eOnoRQrBab37jxEC
+         2PyM0jROcrEcZAkHNvAEKvocjcyH2QCA2vSdxoSQSArKXwYoyXaVRTjWHSgarbPGC+hr
+         uLLMM1as0fDit7hpf8lx5RdSxFJG2Sa6KL4blduQp5U+teEmjm9xotK4mR59Mgkp89cM
+         O9bq1FlEc6IdlIZQDFnK+1GodeHIVwRxpIo758LvNS7vQ2H112Tk1hI+zTTpHPY2SoB6
+         hnBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728558017; x=1729162817;
+        d=1e100.net; s=20230601; t=1728558091; x=1729162891;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=wm6MZYXLSHo1dcmzMTR+ZzKs3r2Jrq8C9K6nZwy4g50=;
-        b=mgZIQ6qfasGq4RV/bXvXW8EeMMAlBffDE64RXpVbqI8wNXHK2qC6Iih/IbABhLkYRY
-         H1ioExG8mwhnwJ69KDoubnt8L3sUvT7xfUDVB2LzpAWcFTp1rLmr50k5XzANroYNvvfY
-         dDyFvYTZApmR1Gvh2sgFps+goc9odwqCRHcwYwIstmS0wrJvR0ypS66hjHmtJYVtLvQ6
-         SgQIgiLS1+m8Wmc7u7JUrkRs2jEh5zN7S6jnwt8OxHrPMu0hsZTbJkH6it0dmG58cEm+
-         Y7pcS2lQ5w9KoUfrW/VuTfw5X0MnSPlFp93pzNaR7WMi6Yw1ZXGrQVHOZbIzwXMf0t5n
-         Qnzg==
-X-Forwarded-Encrypted: i=1; AJvYcCVhJsG3wkSkmOA1Hbdot5+asjr39UsPQsu33kpFJ5yA5mdKnfQBkvxcMToeYJptKnHPK3H9naZ47rFFOUuzJWE=@lists.infradead.org, AJvYcCXGs9Jf9p9evjZ7hV9tV5Jok+cg7M0c2rkXMwA1QuTyXshvfY9pJQN0JZKGTxXxo7+hC/qh/GbNfr0dzlH7EcPa@lists.infradead.org
-X-Gm-Message-State: AOJu0YzcBbJLaWuexqj214EHUvLK+/yBn8QAqA0k1dHGozdzbEfKBhQ0
-	p5FUpdu7z0h7op2Qv3ChuG7gP6oi6jcDiwEVmYvD9Ir93J98T9ZJ
-X-Google-Smtp-Source: AGHT+IF4Du3Ih2aP9a4aeYx5V5KpMHpUyahtsSe3e+80RgRQFzvJY7pAi69j/1zbBr1MglyJEAAoNQ==
-X-Received: by 2002:a17:907:1c1a:b0:a86:a4b1:d2b8 with SMTP id a640c23a62f3a-a998d11892dmr528404366b.4.1728558016851;
-        Thu, 10 Oct 2024 04:00:16 -0700 (PDT)
+        bh=U6hOB3WYe5ptd0V4yAFNBvH3wokk8CpFdZ0OmgAEsCA=;
+        b=BN31JCGe1Juv+V4qhSkaan0jtTdpz5wjRcN8D5y03boK+2X24YI7zmx5wVriOEDivc
+         1BYE/ES5qb7tbbGocAX3dodEYe7grqLLm1qtONWygRo67al6htRL1MlJl4R7hiTbN8m4
+         +g1NMsxGfovAKxbOKnMbqbC9rfwHSfNZMl3RIKfgeSwNyOPgd5z71a7Npp4FwgHSAipM
+         4tx95UVI4OSnqi2AspdEdvi0pe4NZM/lQ9Wxvfk0Sf9iwQbl7iIibEpc2SjZpaHm9MdS
+         1+AjTiD6motLH62LsKkf1BnWB+r8RFRxI7/UhOR0+VxaNuM1NF/kFIAjyy6cHxT1+I1k
+         A/WQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVZh0bYVMZAs6He2PdBUH9U1sGmc2zbgTGOn1UMILOwRj7B2sx5DpXdPvk5XYJOUJU0P3P7U1JgcS+T/RAiSFR8@lists.infradead.org, AJvYcCXPV/sFqj9xWzG5H3RlV0ktD6zeD4sOtub3DjcyuDVNJPBZKeITh/TwQdBoJTiSgib1Q1QONmRQZWBNmYFvZDM=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxcs+aojJeX97o4zNxCY6UZ9I3fOfiOZbr75Nobvk8H5csbdrv/
+	qorlZqk3SFYEPsp9cmhsOIcbNcllAB0cwCA9V1PScw7OT7FEYX4o
+X-Google-Smtp-Source: AGHT+IHbNEed4HOcT5QFwuxaCRiY2AqUAYWXaD8LyYy0wMdUUxQ+IElSGs2olFBYFKuyibS7TkhutA==
+X-Received: by 2002:a17:907:6e89:b0:a8d:250a:52a8 with SMTP id a640c23a62f3a-a998d11896cmr507786466b.3.1728558090475;
+        Thu, 10 Oct 2024 04:01:30 -0700 (PDT)
 Received: from [192.168.42.132] ([81.95.8.245])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a99a80bfc5esm73268166b.142.2024.10.10.04.00.15
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a99a7f35c46sm72920366b.89.2024.10.10.04.01.29
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 10 Oct 2024 04:00:15 -0700 (PDT)
-Message-ID: <fccf8cbd-82ec-4d97-a5aa-faf57ac78874@gmail.com>
-Date: Thu, 10 Oct 2024 13:00:14 +0200
+        Thu, 10 Oct 2024 04:01:29 -0700 (PDT)
+Message-ID: <53db6c40-10ff-45e6-b2cf-6a6a1a4f31c9@gmail.com>
+Date: Thu, 10 Oct 2024 13:01:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 1/2] ASoC: mediatek: mt8188: Remove unnecessary variable
  assignments
-To: Tang Bin <tangbin@cmss.chinamobile.com>, lgirdwood@gmail.com,
- broonie@kernel.org, perex@perex.cz, tiwai@suse.com,
- angelogioacchino.delregno@collabora.com
-Cc: linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: =?UTF-8?B?5ZSQ5b2s?= <tangbin@cmss.chinamobile.com>,
+ broonie <broonie@kernel.org>
+Cc: lgirdwood <lgirdwood@gmail.com>, perex <perex@perex.cz>,
+ tiwai <tiwai@suse.com>,
+ "angelogioacchino.delregno" <angelogioacchino.delregno@collabora.com>,
+ linux-sound <linux-sound@vger.kernel.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>
 References: <20241010073547.3720-1-tangbin@cmss.chinamobile.com>
+ <ZwejOZQlSsWbAWBg@finisterre.sirena.org.uk>
+ <202410101755089538782@cmss.chinamobile.com>
 Content-Language: en-US
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20241010073547.3720-1-tangbin@cmss.chinamobile.com>
+In-Reply-To: <202410101755089538782@cmss.chinamobile.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241010_040019_137349_2FF2743D 
-X-CRM114-Status: GOOD (  14.11  )
+X-CRM114-CacheID: sfid-20241010_040132_824935_52A394A7 
+X-CRM114-Status: GOOD (  16.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,40 +104,69 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 10/10/24 09:35, Tang Bin wrote:
-> In the function mtk_dai_hdmitx_dptx_hw_params, the variable
-> 'ret' is redundant, thus remove it.
+On 10/10/24 11:55, 唐彬 wrote:
+> I am sorry, it's my mistake. I know the rule, just mistake.
 > 
-> Signed-off-by: Tang Bin <tangbin@cmss.chinamobile.com>
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Please don't top most email but write the answer below the line you want 
+to respond to. This will help others to better understand the context.
 
-> ---
->   sound/soc/mediatek/mt8188/mt8188-dai-etdm.c | 5 +----
->   1 file changed, 1 insertion(+), 4 deletions(-)
+Best regards,
+Matthias
+
 > 
-> diff --git a/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c b/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
-> index 2a48f5fd6..69a091dad 100644
-> --- a/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
-> +++ b/sound/soc/mediatek/mt8188/mt8188-dai-etdm.c
-> @@ -2422,7 +2422,6 @@ static int mtk_dai_hdmitx_dptx_hw_params(struct snd_pcm_substream *substream,
->   	unsigned int channels = params_channels(params);
->   	snd_pcm_format_t format = params_format(params);
->   	int width = snd_pcm_format_physical_width(format);
-> -	int ret;
+> 
+> 
+> 
+> 
+> 
+> From: Mark Brown
+> 
+> 
+> 
+> Date: 2024-10-10 17:49
+> 
+> 
+> 
+> To: Tang Bin
+> 
+> 
+> 
+> CC: lgirdwood; perex; tiwai; matthias.bgg; angelogioacchino.delregno; linux-sound; linux-kernel; linux-arm-kernel; linux-mediatek
+> 
+> 
+> 
+> Subject: Re: [PATCH 1/2] ASoC: mediatek: mt8188: Remove unnecessary variable assignments
+> 
+> 
+> 
+> On Thu, Oct 10, 2024 at 03:35:47PM +0800, Tang Bin wrote:
+> 
+> 
+> 
+>> In the function mtk_dai_hdmitx_dptx_hw_params, the variable
+> 
+> 
+> 
+>> 'ret' is redundant, thus remove it.
+> 
+> 
+> 
 >   
->   	if (!is_valid_etdm_dai(dai->id))
->   		return -EINVAL;
-> @@ -2450,9 +2449,7 @@ static int mtk_dai_hdmitx_dptx_hw_params(struct snd_pcm_substream *substream,
->   		etdm_data->data_mode = MTK_DAI_ETDM_DATA_MULTI_PIN;
->   	}
->   
-> -	ret = mtk_dai_etdm_configure(afe, rate, channels, width, dai->id);
-> -
-> -	return ret;
-> +	return mtk_dai_etdm_configure(afe, rate, channels, width, dai->id);
->   }
->   
->   static int mtk_dai_hdmitx_dptx_set_sysclk(struct snd_soc_dai *dai,
+> 
+> 
+> 
+> Please don't send patch serieses without cover letters, having a cover
+> 
+> 
+> 
+> letter makes it easier to tell why the series is a series and makes it
+> 
+> 
+> 
+> easier for tooling to work with the series.
+> 
+> 
+> 
 
 
