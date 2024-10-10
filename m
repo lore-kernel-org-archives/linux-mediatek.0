@@ -4,97 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C972D2444F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 22:46:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5CF4D24459
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 22:46:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J/PQS/8RbHWMjns+hXbfTHhQVRn54n1C6fHMniju3VI=; b=Y2GmcM7LJCFzWj1N7AQkzfmx7j
-	nrQUYQpo3orxlxUmYhr5supzynyc7TQBiGNwKSXtckMsEm5n+yAlOboqfXEDmGB69PHaE3GtCC1um
-	MmB4TCyIXPHdKDvTvOBN0lGUBg3G696H4gU+n6GmRfKUfxYVSt5gRQLpFuWbjt951MoaO8soKO2qV
-	k4YkeAH28ZsqWyGQ+Bux5zFQRblZOlJjQEMMcqDtJ3PN10KLUqT9rX4yWXv3VFb1HpFmp/MSuQ674
-	+iRqJE1fMRr2/0eN9ZwfBENlSP+vaZaRuxSPvQ5vQX2geu0d4KOdsGvbpIE4cWWECwxXvpGMCYmlh
-	/8k0btuQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KXxh95N88qWLEx/TECXzHuyg9VNoozrMJ9+s2vMfAuI=; b=WSRkandfTD3Yx0EkV38rst/9ha
+	AFGEF83a0o2VClVJlVJh5Va9kp/96DxuMWdp/R9qO63D7dYeuthqdYfYUA8xjSHKce/eRqiBz9WMv
+	EYwp4j3eUTQekwblAB8B7cxLGn/OZuohpO/wWtDGc+cs8HEUzCyidP8ArPAGDkpTY3p8vw23NN07f
+	ck+kyr/iAStZKR8ShUh8wsLcGrccLO6eJczg7jUVOwcEv4bqnv5l0SMR/FOVYmJ1MwX6aG3lOqDKE
+	ldMFZAQ/Jlrca10KL8aEmkieZtV66v6bdJqGQU5xyg88SWMydK2iXsd/CHCHgcZN7WcsyNo5wPmYl
+	dCo6Lfqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sz1vQ-0000000Ea5T-0WJN;
-	Thu, 10 Oct 2024 22:46:28 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1sz1vS-0000000Ea6p-0ySe;
+	Thu, 10 Oct 2024 22:46:30 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sz0ff-0000000EP4K-0YHP;
-	Thu, 10 Oct 2024 21:26:08 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-37d4821e6b4so742156f8f.3;
-        Thu, 10 Oct 2024 14:26:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1728595565; x=1729200365; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=J/PQS/8RbHWMjns+hXbfTHhQVRn54n1C6fHMniju3VI=;
-        b=hdxNhDmROuihr3J6sriLMR6SYxcpS3lpW8YDaymhRbRGbAmTmh70tJD7eiSTTpK4lP
-         B4AYsU3DdVh8ad49vZLi0q0+tol3XQiZL/sNwVlBvyy8V7pjj8vmyfUmkIEPY6Xz7Omo
-         u89I0spKhaslv2z1vGhkKjelJkf4gpgPUL2KjDkx3anOog7C6DMXRAWk7MqTyNRzANbA
-         P/Jl8s3vcizIslPUD8MLZMpPCc0qW9PvmdQQH9ZU+N6vhmWfBi0E2Tcc0Skwqm+2mHte
-         7locgivW5wupIfOecNfDgt9eg/g2KtFaWXvhUT+6Ui3Tq65+qeVLw9SX8ER933LkJew+
-         a4zw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728595565; x=1729200365;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=J/PQS/8RbHWMjns+hXbfTHhQVRn54n1C6fHMniju3VI=;
-        b=nRntByxercVxqJPr0g3lC4y/cIVVPF97qkI1zgJD5U2O3/N42kDdhWPZWUMTe+Pm/z
-         7VTdQsWBQyegzYk9G6FUA/hlEnLogkPOETboGod+HPpVSVPGoDSoQjQx1ZieNbYSD9Mv
-         kgEba1BU2sgZThSIqCrC4utpL8ZgaYIUMa1FB+f0/Wzd8FXwsp5Fj2T5F9c4hMcD4xcQ
-         lUOgwozViwKXaes02ZMJN6Rrlwle2vQ6BDBDB9TOmO0gL4Hr84xMm9uDONxZdNelDAuT
-         KaMkRq02JHMJAyFc/6jnETTmOYF/g91wS+ZD1sP8ijsesb/hXW89tjciLNKwegxZlxni
-         R6bw==
-X-Forwarded-Encrypted: i=1; AJvYcCUDlJYCG9649CyamfScw+5PMkYTPUWa0rque1AuLY1QdXwlJY1E91yngn6KLVfu7BLXsfEuOu/HIFPho18t5fE=@lists.infradead.org, AJvYcCVJ8LVHfVLez8UHWHQUiawK9iDRDQab5ABN7HA5ZCKyctOFIpvJfk2cmLCZstlwvKUGpNaSAqduPcKN4fv+f8MV@lists.infradead.org, AJvYcCXlw/JqK8qvmyH5Ng0jJKLMUEgc1pKRQUjVREHRLwsc223gHY2pxk28k9fGO/F+Tu6RWsWpA9XzQkDjqIDCteympw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyF67lN52DTX0n1PHK0HSApjk3J3e1pgkQd4RxbA1IZgLDFZ7Pb
-	mbhqhtEJIAdPt8dSjqcPfk3wq863M0rdLQADsE67TXaX5WZ/x3zk/P//4Trn
-X-Google-Smtp-Source: AGHT+IHTagaYiTqDEo8/KQexjkWrhnQ6PMf/Wmq6Gqr6clYP1OUl5dQgDZmTtwi4XEpJMk2I20xVwA==
-X-Received: by 2002:a5d:4acc:0:b0:37d:54a0:d0a1 with SMTP id ffacd0b85a97d-37d552cdd6dmr236882f8f.56.1728595565212;
-        Thu, 10 Oct 2024 14:26:05 -0700 (PDT)
-Received: from [127.0.1.1] (2a02-8389-41cf-e200-3d08-841a-0562-b7b5.cable.dynamic.v6.surfer.at. [2a02:8389:41cf:e200:3d08:841a:562:b7b5])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37d4b6a8940sm2402083f8f.6.2024.10.10.14.26.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Oct 2024 14:26:04 -0700 (PDT)
-From: Javier Carrasco <javier.carrasco.cruz@gmail.com>
-Date: Thu, 10 Oct 2024 23:25:53 +0200
-Subject: [PATCH 03/10] Input: sun4i-lradc-keys - switch to
- for_each_child_of_node_scoped
+	id 1sz0uo-0000000ER2L-1pi3;
+	Thu, 10 Oct 2024 21:41:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=KXxh95N88qWLEx/TECXzHuyg9VNoozrMJ9+s2vMfAuI=; b=e5pr5tvRZOcDsY0x7j0GhLxvEk
+	QeYakEDiuGQDDP+TUIECjTCL2cjl5vBfF6AZ1CTRzLTgIPI1nTvM9L5UdkcDUHvdulS8kXjtf1PGT
+	I486F25YDYh5BIDpIAWgSBYOR7FcizGxaP8rzL0NlCSsUBSgoBisul+549C/AplkXygISGh1yI7NI
+	dYtWXKdUY/d3ut2q/eg2VRYbplKA5fw3vTN5PGrQUpFBzxvlKiUAfKhyQ4UFOzcztFR7fmOWKHGG1
+	YlyhyPRg4BARiLhWghUdDb4cg57DIakDZBKK/Wites/DtomK+Kqh9O9OBHLUnhjyLNihGghSZaQPH
+	fighPrOw==;
+Received: from nyc.source.kernel.org ([147.75.193.91])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1sz0uk-00000005g8o-3tRe;
+	Thu, 10 Oct 2024 21:41:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 37F57A44D0D;
+	Thu, 10 Oct 2024 21:41:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0A19DC4CEC5;
+	Thu, 10 Oct 2024 21:41:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728596498;
+	bh=Q3NSqYisG8WYYrz9LbzVCsdGWId+yQgVgrE9CldSbWY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ff4smxCowyQsOzSZBcDuIyVWqWv/61X1uavBKz8DJUX8cXkv5+Mx3jGn8sbcG38EP
+	 4fRAu7327zqxPs02gP0WqVovMYHXhL4/1XG3ck/E2sXzoWygvrJLe4pJxdskmMmggb
+	 OcR53YMM6BpHNp5pgxfil2lMD8PpEcKDVI/zvObcCJrfrHZIKhwpk2SDazat7jCQ4m
+	 uuaUReEE9U3KB1VxljIDS2k2i2iZu2Q0XV4+eJAUbI5SO1sDG73k6bDyl4bUSBQkyq
+	 s6TlXLpKUc9wiG2DPyyVafAuPndNXHQorowMctwTQ+9B2igTSUjmoo2xTB210y1KYJ
+	 n6/47pTrMCMoA==
+Date: Thu, 10 Oct 2024 23:41:36 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Christian Marangi <ansuelsmth@gmail.com>, Lee Jones <lee@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	upstream@airoha.com, benjamin.larsson@genexis.eu,
+	linux-pwm@vger.kernel.org
+Subject: Re: [PATCH v5 3/5] mfd: airoha: Add support for Airoha EN7581 MFD
+Message-ID: <ZwhKECIpL7g7ZGEC@lore-desk>
+References: <20241001-en7581-pinctrl-v5-0-dc1ce542b6c6@kernel.org>
+ <20241001-en7581-pinctrl-v5-3-dc1ce542b6c6@kernel.org>
+ <20241002132518.GD7504@google.com>
+ <ZwWscWk5axQI9H1t@lore-desk>
+ <20241009104821.GF276481@google.com>
+ <20241009105550.GG276481@google.com>
+ <6707a8ec.df0a0220.376450.293e@mx.google.com>
+ <CACRpkdanpA-wq0sYv9HRF=uVeAX_mW4LaKhE8i6TgC9+0d7bCg@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20241010-input_automate_of_node_put-v1-3-ebc62138fbf8@gmail.com>
-References: <20241010-input_automate_of_node_put-v1-0-ebc62138fbf8@gmail.com>
-In-Reply-To: <20241010-input_automate_of_node_put-v1-0-ebc62138fbf8@gmail.com>
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Hans de Goede <hdegoede@redhat.com>, Chen-Yu Tsai <wens@csie.org>, 
- Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Samuel Holland <samuel@sholland.org>, 
- Florian Fainelli <florian.fainelli@broadcom.com>, 
- Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>
-Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, linux-rpi-kernel@lists.infradead.org, 
- Javier Carrasco <javier.carrasco.cruz@gmail.com>
-X-Mailer: b4 0.14-dev
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1728595555; l=1723;
- i=javier.carrasco.cruz@gmail.com; s=20240312; h=from:subject:message-id;
- bh=AF25XcLrg1gJJCZ0loQqPaYtp8vI7GzZlTAbicwO06E=;
- b=wi6sf2KQfPxfVmYIPTgXn9ICUj6hhr2iRzOEK7JHXtgg5cLEOvCV7676G+F2C2arErdMBYj3d
- bSCk+w+kbPfAlODbaQuyP1b/Crwa0KT5OQkJ8a44SmYDIBq6lvZCcZI
-X-Developer-Key: i=javier.carrasco.cruz@gmail.com; a=ed25519;
- pk=lzSIvIzMz0JhJrzLXI0HAdPwsNPSSmEn6RbS+PTS9aQ=
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="3Fg0vtOBpPK/9AuB"
+Content-Disposition: inline
+In-Reply-To: <CACRpkdanpA-wq0sYv9HRF=uVeAX_mW4LaKhE8i6TgC9+0d7bCg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241010_142607_209739_E58FF595 
-X-CRM114-Status: GOOD (  12.55  )
+X-CRM114-CacheID: sfid-20241010_224143_412269_BBEA780F 
+X-CRM114-Status: GOOD (  17.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,60 +102,148 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the scoped variant of the macro to simplify the code and error
-handling. This makes the error handling more robust by ensuring that
-the child node is always freed.
 
-Signed-off-by: Javier Carrasco <javier.carrasco.cruz@gmail.com>
----
- drivers/input/keyboard/sun4i-lradc-keys.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+--3Fg0vtOBpPK/9AuB
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/input/keyboard/sun4i-lradc-keys.c b/drivers/input/keyboard/sun4i-lradc-keys.c
-index f304cab0ebdb..f1e269605f05 100644
---- a/drivers/input/keyboard/sun4i-lradc-keys.c
-+++ b/drivers/input/keyboard/sun4i-lradc-keys.c
-@@ -202,7 +202,7 @@ static void sun4i_lradc_close(struct input_dev *dev)
- static int sun4i_lradc_load_dt_keymap(struct device *dev,
- 				      struct sun4i_lradc_data *lradc)
- {
--	struct device_node *np, *pp;
-+	struct device_node *np;
- 	int i;
- 	int error;
- 
-@@ -223,28 +223,25 @@ static int sun4i_lradc_load_dt_keymap(struct device *dev,
- 		return -ENOMEM;
- 
- 	i = 0;
--	for_each_child_of_node(np, pp) {
-+	for_each_child_of_node_scoped(np, pp) {
- 		struct sun4i_lradc_keymap *map = &lradc->chan0_map[i];
- 		u32 channel;
- 
- 		error = of_property_read_u32(pp, "channel", &channel);
- 		if (error || channel != 0) {
- 			dev_err(dev, "%pOFn: Inval channel prop\n", pp);
--			of_node_put(pp);
- 			return -EINVAL;
- 		}
- 
- 		error = of_property_read_u32(pp, "voltage", &map->voltage);
- 		if (error) {
- 			dev_err(dev, "%pOFn: Inval voltage prop\n", pp);
--			of_node_put(pp);
- 			return -EINVAL;
- 		}
- 
- 		error = of_property_read_u32(pp, "linux,code", &map->keycode);
- 		if (error) {
- 			dev_err(dev, "%pOFn: Inval linux,code prop\n", pp);
--			of_node_put(pp);
- 			return -EINVAL;
- 		}
- 
+> On Thu, Oct 10, 2024 at 12:14=E2=80=AFPM Christian Marangi <ansuelsmth@gm=
+ail.com> wrote:
+>=20
+> > mfd: system-controller@1fbf0200 {
+>=20
+> Drop the mfd: thing, you probably don't want to reference the syscon
+> node directly
+> in the device tree. If you still give it a label just say
+> en7581_syscon: system-controller...
 
--- 
-2.43.0
+ack, I am fine with it.
 
+>=20
+> >         compatible =3D "syscon", "simple-mfd";
+> >         reg =3D <0x0 0x1fbf0200 0x0 0xc0>;
+> >
+> >         interrupt-parent =3D <&gic>;
+> >         interrupts =3D <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
+> >
+> >         gpio-controller;
+> >         #gpio-cells =3D <2>;
+> >
+> >         interrupt-controller;
+> >         #interrupt-cells =3D <2>;
+> >
+> >         gpio-ranges =3D <&mfd 0 13 47>;
+>=20
+> I think you want a separate GPIO node inside the system controller:
+>=20
+>   en7581_gpio: gpio {
+>          compatible =3D "airhoa,en7581-gpio";
+>          interrupt-parent =3D <&gic>;
+>          interrupts =3D <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
+>=20
+>          gpio-controller;
+>          #gpio-cells =3D <2>;
+>=20
+>          interrupt-controller;
+>          #interrupt-cells =3D <2>;
+>=20
+>          gpio-ranges =3D <&en7581_pinctrl 0 13 47>;
+> };
+
+So far I implemented the gpio functionalities in the en7581 pinctrl driver
+(as it is done for other mtk pinctrl drivers) but I am fine to reuse the
+gpio-en7523 driver for it. Do you prefer this second approach?
+
+>=20
+> So users pick GPIOs:
+>=20
+> foo-gpios =3D <&en7581_gpio ...>;
+>=20
+> Notice that the gpio-ranges should refer to the pin controller
+> node.
+>=20
+> >
+> >         #pwm-cells =3D <3>;
+>=20
+> Shouldn't this be inside the pwm node?
+>=20
+>          en7581_pwm: pwm {
+>                  compatible =3D "airoha,en7581-pwm";
+>                  #pwm-cells =3D <3>;
+>          };
+>=20
+> So PWM users can pick a PWM with pwms =3D <&en7581_pwm ...>;
+
+ack, I am fine with it.
+
+>=20
+> >         pio: pinctrl {
+>=20
+> I would use the label en7581_pinctrl:
+
+ack, I am fine with it.
+
+>=20
+> >                 compatible =3D "airoha,en7581-pinctrl";
+> >
+> >                 mdio_pins: mdio-pins {
+> >                         mux {
+> >                                 function =3D "mdio";
+> >                                 groups =3D "mdio";
+> >                         };
+> >
+> >                         conf {
+> >                                 pins =3D "gpio2";
+> >                                 output-high;
+> >                         };
+> >                 };
+> >
+> >                 pcie0_rst_pins: pcie0-rst-pins {
+> >                         conf {
+> >                                 pins =3D "pcie_reset0";
+> >                                 drive-open-drain =3D <1>;
+> >                         };
+> >                 };
+> >
+> >                 pcie1_rst_pins: pcie1-rst-pins {
+> >                         conf {
+> >                                 pins =3D "pcie_reset1";
+> >                                 drive-open-drain =3D <1>;
+> >                         };
+> >                 };
+> >         };
+> >
+> >         pwm {
+> >                 compatible =3D "airoha,en7581-pwm";
+> >         };
+> > };
+>=20
+> This will make subdevices probe and you can put the pure GPIO
+> driver in drivers/gpio/gpio-en7581.c
+
+We could actually reuse gpio-en7523 driver (removing the gpio part from en7=
+581
+pinctrl driver) and extend it to support irq_chip. I do not have a strong
+opinion about it.
+
+Regards,
+Lorenzo
+
+>=20
+> Yours,
+> Linus Walleij
+
+--3Fg0vtOBpPK/9AuB
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZwhKDwAKCRA6cBh0uS2t
+rImsAP9+SEsCTPYOJYMr4ud8qWMHenJk1t0UVS3lUEut+um/GAD+NxbBrcxxZ9S+
+X5f21EFnXDysNRmyWuVjeQzkIJdZ6A0=
+=CX97
+-----END PGP SIGNATURE-----
+
+--3Fg0vtOBpPK/9AuB--
 
