@@ -4,64 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47385CF11D5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 12:01:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F9B4CF11D6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 12:01:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sOKlcUDcVIYv8es7Svh5TEbxwRfsmyZvU+K9y1sAGl4=; b=Kfi1zTxAAzHDNLe0YublhbriTg
-	uauR9N6nPBDMdaWgjipTCQ5QX7xR5ZRCMNxPOVeXHsHfZxyDbxvV15vG7RiCZOAh4EKOUpJXbPkaj
-	xKrhGXXU+nY2Ylzf9sXTwgXeXIQ5iOCEaLodXVV/IPlUOQjHIdpdyjey4Nq2++v+4Z+sLcArVlmZw
-	Ram4id5o62mItcIxxI/ioC5S8fHQHLlH32+dl5RPqcPGgQqaee+UebIM6Cfwx4hOhuB+mTtCY+qVZ
-	yNX8htd2SFvYz+XXxWH+Ibi/+ayh2kRVtSz2pN+mymH3bCQDM7kvlvsDUQUWC1Dxogan4hTkp3xmD
-	WvasewBg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Message-ID:Mime-Version:References:Subject:Cc:To:From:Date:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
+	bh=gz2smKnkk2RNcrj6xuDZIDac9lwnTzKH5lj78bfhCoc=; b=B37RWOyPzOkvo0ctRtvbwIFvCr
+	B9G7mHn3F01Nv07X1l8W+wt6gm340kMKy5s4rkYT18gC4P5ioHBcQZ16ZqyvTNzs+mwtW0DKYZ7xB
+	9/E1P6dXoUqcYAphWNNooONQiXn8V8iwSMRgBnUE2XlbiTruy8eesMDJCiKeAJa4Zd8RGlnN1vqZu
+	dQbHNKBj1R/SnIa0YSFfy86UObpJfypTI68P67QXC1BxRnD3Ds9xoSwSmJrW1RGIR4TjipV6JI8HK
+	hkcM6dYkSq2tgd8w4aRKPCVU2r50/DDTbti9ZE2cAEvIlNYLd4KI2OMYcbObCXipLy2W7DK2cQLzm
+	zmJnbaSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syrqw-0000000CdEy-3ba5;
-	Thu, 10 Oct 2024 12:01:10 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1syrqy-0000000CdGJ-3hli;
+	Thu, 10 Oct 2024 12:01:12 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sypnp-0000000CIb5-3piH;
-	Thu, 10 Oct 2024 09:49:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B10425C5F4D;
-	Thu, 10 Oct 2024 09:49:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 503A7C4CEC5;
-	Thu, 10 Oct 2024 09:49:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728553788;
-	bh=sOKlcUDcVIYv8es7Svh5TEbxwRfsmyZvU+K9y1sAGl4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=PnoFtgwVFP8jz1lqnlXqpRQFN9k9Gva+GButJXcoVLTcJa80vNNGkb9YtN5UCSFpY
-	 xuCbNx4zI7qvl6rHE/B7nZJCjjyNuCwwZ/2D8HUtGZkX39z18lrF6Tw5xWrRocr2lo
-	 FV0LgQDhc5U1igE2/UBjkLizAompnTYylpbPbf2TxZzS6DAoLsxVll2k81AVEOCZP4
-	 /8CqtbwhJZBH/gf6NeWOkoZEDrlhhTwZZYO8fTBosdytGk2S7IefQuEvpLs6g2QTvc
-	 smkCJ9sAUigCuCJAod5CZ/yLQdq9uwXHH2g0fLpV5KwNjyYsVMibdjGqh1MiCgR9+t
-	 MQs71v9bWMkjg==
-Date: Thu, 10 Oct 2024 10:49:45 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Tang Bin <tangbin@cmss.chinamobile.com>
-Cc: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/2] ASoC: mediatek: mt8188: Remove unnecessary variable
- assignments
-Message-ID: <ZwejOZQlSsWbAWBg@finisterre.sirena.org.uk>
-References: <20241010073547.3720-1-tangbin@cmss.chinamobile.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="k3nsdihw8mA/diZ8"
-Content-Disposition: inline
-In-Reply-To: <20241010073547.3720-1-tangbin@cmss.chinamobile.com>
-X-Cookie: Editing is a rewording activity.
+	id 1syptE-0000000CJLJ-3f07;
+	Thu, 10 Oct 2024 09:55:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Message-ID:Mime-Version:References:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-ID:Content-Description:In-Reply-To;
+	bh=gz2smKnkk2RNcrj6xuDZIDac9lwnTzKH5lj78bfhCoc=; b=dua1VCDGwLaHYVpjhkEZwc8NnZ
+	6Lfx6MEfXsSr3I6/FMrWynpm+0YBBkbE/w9groc5kp1Mm/k6Och/WwVs3JDgg5O5OhZSENKS7l5hA
+	mYCm3dYYo4sp59RmvZAyrwxsrBdP24dNSiV+Q0CKLNPN8uiWF2YivTlHTI4ECHhSidJBby0rsYxJb
+	MD8WbZJ3Np4R9YMYmEpVQxbEQtiZ7lQu+o7UcjatMrdPwaAd+YS2ICUB5ioPHdhLl/ULPTNzozK3k
+	//60GcyxYE4y6qHIcIA6hbAFloaoYwrEW6ym69JRkz1CWB79uEwXfaQXob/oHsfYzFy5SWoAQBIMO
+	NiSETA0Q==;
+Received: from cmccmta4.chinamobile.com ([111.22.67.137] helo=cmccmta1.chinamobile.com)
+	by desiato.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1sypt9-00000005KgH-0zp8;
+	Thu, 10 Oct 2024 09:55:22 +0000
+X-RM-TagInfo: emlType=0                                       
+X-RM-SPAM-FLAG: 00000000
+Received: from spf.mail.chinamobile.com (unknown[10.188.0.87])
+	by rmmx-syy-dmz-app04-12004 (RichMail) with SMTP id 2ee46707a47c231-c8b30;
+	Thu, 10 Oct 2024 17:55:10 +0800 (CST)
+X-RM-TRANSID: 2ee46707a47c231-c8b30
+X-RM-TagInfo: emlType=0                                       
+X-RM-SPAM-FLAG: 00000000
+Received: from Honor (unknown[10.55.1.71])
+	by rmsmtp-syy-appsvr05-12005 (RichMail) with SMTP id 2ee56707a47d9cd-49527;
+	Thu, 10 Oct 2024 17:55:10 +0800 (CST)
+X-RM-TRANSID: 2ee56707a47d9cd-49527
+Date: Thu, 10 Oct 2024 17:55:09 +0800
+From: =?utf-8?B?5ZSQ5b2s?= <tangbin@cmss.chinamobile.com>
+To: broonie <broonie@kernel.org>
+Cc: lgirdwood <lgirdwood@gmail.com>, 
+	perex <perex@perex.cz>, 
+	tiwai <tiwai@suse.com>, 
+	matthias.bgg <matthias.bgg@gmail.com>, 
+	angelogioacchino.delregno <angelogioacchino.delregno@collabora.com>, 
+	linux-sound <linux-sound@vger.kernel.org>, 
+	linux-kernel <linux-kernel@vger.kernel.org>, 
+	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+	linux-mediatek <linux-mediatek@lists.infradead.org>
+Subject: Re: Re: [PATCH 1/2] ASoC: mediatek: mt8188: Remove unnecessary variable assignments
+References: <20241010073547.3720-1-tangbin@cmss.chinamobile.com>, 
+	<ZwejOZQlSsWbAWBg@finisterre.sirena.org.uk>
+X-Priority: 3
+X-Has-Attach: no
+X-Mailer: Foxmail 7.2.25.213[cn]
+Mime-Version: 1.0
+Message-ID: <202410101755089538782@cmss.chinamobile.com>
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: base64
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241010_024950_016489_8A5C78B8 
-X-CRM114-Status: GOOD (  10.14  )
+X-CRM114-CacheID: sfid-20241010_105520_082789_4E195538 
+X-CRM114-Status: UNSURE (   5.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,34 +93,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+SSBhbSBzb3JyeSwgaXQncyBteSBtaXN0YWtlLiBJIGtub3cgdGhlIHJ1bGUsIGp1c3QgbWlzdGFr
+ZS4KCgoKCgoKCkZyb206wqBNYXJrIEJyb3duCgoKCkRhdGU6wqAyMDI0LTEwLTEwwqAxNzo0OQoK
+CgpUbzrCoFRhbmcgQmluCgoKCkNDOsKgbGdpcmR3b29kOyBwZXJleDsgdGl3YWk7IG1hdHRoaWFz
+LmJnZzsgYW5nZWxvZ2lvYWNjaGluby5kZWxyZWdubzsgbGludXgtc291bmQ7IGxpbnV4LWtlcm5l
+bDsgbGludXgtYXJtLWtlcm5lbDsgbGludXgtbWVkaWF0ZWsKCgoKU3ViamVjdDrCoFJlOiBbUEFU
+Q0ggMS8yXSBBU29DOiBtZWRpYXRlazogbXQ4MTg4OiBSZW1vdmUgdW5uZWNlc3NhcnkgdmFyaWFi
+bGUgYXNzaWdubWVudHMKCgoKT24gVGh1LCBPY3QgMTAsIDIwMjQgYXQgMDM6MzU6NDdQTSArMDgw
+MCwgVGFuZyBCaW4gd3JvdGU6CgoKCj4gSW4gdGhlIGZ1bmN0aW9uIG10a19kYWlfaGRtaXR4X2Rw
+dHhfaHdfcGFyYW1zLCB0aGUgdmFyaWFibGUKCgoKPiAncmV0JyBpcyByZWR1bmRhbnQsIHRodXMg
+cmVtb3ZlIGl0LgoKCgrCoAoKCgpQbGVhc2UgZG9uJ3Qgc2VuZCBwYXRjaCBzZXJpZXNlcyB3aXRo
+b3V0IGNvdmVyIGxldHRlcnMsIGhhdmluZyBhIGNvdmVyCgoKCmxldHRlciBtYWtlcyBpdCBlYXNp
+ZXIgdG8gdGVsbCB3aHkgdGhlIHNlcmllcyBpcyBhIHNlcmllcyBhbmQgbWFrZXMgaXQKCgoKZWFz
+aWVyIGZvciB0b29saW5nIHRvIHdvcmsgd2l0aCB0aGUgc2VyaWVzLgoKCgo=
 
---k3nsdihw8mA/diZ8
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Thu, Oct 10, 2024 at 03:35:47PM +0800, Tang Bin wrote:
-> In the function mtk_dai_hdmitx_dptx_hw_params, the variable
-> 'ret' is redundant, thus remove it.
 
-Please don't send patch serieses without cover letters, having a cover=20
-letter makes it easier to tell why the series is a series and makes it
-easier for tooling to work with the series.
-
---k3nsdihw8mA/diZ8
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmcHozgACgkQJNaLcl1U
-h9BTrQf/dvyLMa5N8atLKqhwKgHzZbLbq3zfN9tjwPX11KsHTUv8NHPRtsBQWZCX
-89eRdk8SEXRIS82p5CCQU509DCJFSgzborbduFb7MDaI73hhopdRV2WLPPDMu5G6
-CNjjVHR9Lr3YgqDSR+D5vc5MvhRwnGd5rej2ymlPgvsGleSnseHtVqdzkD44tvJC
-CcZS8Rs2kaDF0hyqckQq6deQSivyJBTEaDNewRB89palzjMlmvFU/Q6FPv2aAY2O
-pZ1bXNci5zOYdSrALGKzCCzzpUA3REoyBwZjhoFqF6ujeCnYia4eUtsm0ZAOSzHs
-uGG0teM2LEb459x/lteK+r/WiCnrLg==
-=A4F3
------END PGP SIGNATURE-----
-
---k3nsdihw8mA/diZ8--
 
