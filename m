@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7320BD2444F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 21:28:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADC71D2444F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 21:33:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NP8lfF3+tt2bERQMe+43qAzEv8h11+8hyUY3IsdG9dE=; b=UHuZsOJ9IjiBZ7BJMUIFPBx4wD
-	lpWMUGZDGqY1irJbfE+1BxSd1SpfVgN5KZaD63s3Y8brzjJl//OsWPyblrGmkYgP9wv8DHsoe/ANQ
-	jSOORze6O6a6CLw/CrEshn+wFw4ci0Y1+wGcYPG82DVHjYHElhtP7SwybFCOvcz3UmFXqZKAsFUj3
-	9iVpeaKRoTUImOxiNtODA9G13r7XZck19vXqKRCklPeNmaXC8D0w108rRK2wpOcC79tJGQpoyjwLw
-	fOGW30Us15bjxD377soPjK8b8PcTUPS9nB3NUQR1LdaVsjxCL+t9gr/F+oR1Hxrq/zv5lVG/apttP
-	Mxra/c3A==;
+	bh=Gv2lnH1bFL+wtFjxRgBI14o1ODjTXUiEC0mw6OfkCr4=; b=PoiyEWsJR6nBooAa0Qm0ssjyBa
+	JtRCwo2bLpPZ+opdIyVxOGFOcOm+1816erjAULbfEF1dVFEZzXxkYjlwt+YC5GZHFhQ8pCW0ZCamc
+	3vVC2M/63qqOs68nEQgRBtX/p/byNnaglBlfZhRMGog8bAR6FII+SXyjcmtnMnElWLjlnvruIwGiA
+	W8arc1vfwzWWqIAWrPrpCxfxhesnDLUx9CPRVP6tD/hnFlIGnm4xvLkv2S0Cx8muhwER3mGdqUIL6
+	u4R9f7Whe+ZStpMKRQG4EsZ72tG7jC7y92MIrrBqwdHc0+rhCdaXX3w8z3Xm+d0KkazuDuA5GVywM
+	cnExeQNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sz0iN-0000000EPdN-1zUc;
-	Thu, 10 Oct 2024 21:28:55 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1sz0mX-0000000EQ3O-2QWS;
+	Thu, 10 Oct 2024 21:33:13 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sz0fa-0000000EP3D-0vrC;
-	Thu, 10 Oct 2024 21:26:03 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-37d495d217bso1024771f8f.0;
-        Thu, 10 Oct 2024 14:26:01 -0700 (PDT)
+	id 1sz0fk-0000000EP5P-12jG;
+	Thu, 10 Oct 2024 21:26:13 +0000
+Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-37d5038c653so535503f8f.2;
+        Thu, 10 Oct 2024 14:26:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1728595560; x=1729200360; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1728595570; x=1729200370; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=NP8lfF3+tt2bERQMe+43qAzEv8h11+8hyUY3IsdG9dE=;
-        b=ekS2NQvWC5D57LKgHx7cXEWfIGUpvYwOMEEcwZqdZ76Qj8KIXnS+vC3qwWmeP0w6Ia
-         z/K+BJ9q3r/iyZ8Sq9F4DPkx4lnk/81H+tHCYBdLprGqWEpBg/00R22+/xqklI/orTun
-         S4VPyKgDYWrWEkMRsx/QoVMvl/HHHEXCfdZ9BZqJoxWi+XMs9iOxsibTI9jxqEf4nd7r
-         XMcXrZYzLasPXBnZ1EFxKNRKe/oHBUbwrJdOd8OzJko/IpSceaO3Z/uIcogSApvQT/jw
-         mYPTzQFkGzuOyfSsqJPE5L0PNY1oVKt307Wbw0pX7+c2wymI4pjvygkO6eU4yhb6kSwj
-         j6XA==
+        bh=Gv2lnH1bFL+wtFjxRgBI14o1ODjTXUiEC0mw6OfkCr4=;
+        b=FrZKvqXA/3kCP0SZ+Sb6LMj1QBzpsUUR+smS32frwjD9bbil2Q4XTSE9Iu83Q7Jryg
+         ZthrzAGs9ZC8VGdEBlUQ6c8NoFk8Fg2c4oM5/lgRvUJPAjwUR/dSxWlqozj8S2S2P7RD
+         QmizfITd2lwnt5p5+UkOP3ABZiSNO3E/793d5FWZZGuwR8ybHVcxGvvmELWHswCVSd9B
+         KWYleCmhMloXbtViNvd4jQCysWBfSgj9SXaR24TX7+SjaRF7Z9jxxGS1FqmVbth5C28L
+         KSwg91LgPQxyEaJIzQbc4MKcBc5ZYWGVmj7O0uyRq9iFEo+qoqIBAIXcU0a7FKuWOFVS
+         DoJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728595560; x=1729200360;
+        d=1e100.net; s=20230601; t=1728595570; x=1729200370;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=NP8lfF3+tt2bERQMe+43qAzEv8h11+8hyUY3IsdG9dE=;
-        b=C7DpwWnlLo1Lv7UAwlsGXnYDs3LdVSXo8c1EzZ596kUkiNLR6QVkTbt/BXrm+benoq
-         bva+fZb0Ub6Y9D/1Pe/PnTqxDQDuWsI2CAze/EIG2UPYVaK43ThaJfmxBPFBYqgkwAB1
-         nVQpHRGXQWsRveZML+bf/yjE8N0WzgiyWC+EgCIpTNfgJuA16Kieu5SOg6M90WK42kRm
-         QgGvqxaf/E6ABhiqgPlHGQc0LGYVh3RcgNDG+K7BJ75RrLiBrmUa+nSF9Ge1875QU2Pn
-         YAZE/3LwJO99P13osB5bnIOhwwFoFzm00zFnWFf+WWwmTvvGNFF0SZY9pxxxXZw/BvW5
-         26HA==
-X-Forwarded-Encrypted: i=1; AJvYcCVZZ1K9kjs0hgkd0HqzZHqf6TTDT8dSwnx2Fs4DYSrhqpq8mqCwdt8Dwn6XL2e9CJ4icK4h9uH2kydHiEt+lRCO@lists.infradead.org, AJvYcCWJOTjhPyWRdowENzTSgH4h6S2S5SZ1TKUbkKdNTWrhN6eP8GvSV89lMHY7Q5fPzzGRfrlirncDdLd0kOq4Ez4=@lists.infradead.org, AJvYcCXF6h1Xca7THrFJAQpMrOiIT1DK1Gspw2PXxIYnwqIkQO45X9tHhhOAagS5ZwfMBhC6BC2OXgVhlJtEgesezW0NcA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzUh9CNdGW1yIBH6Gl698PI2fC5HGdASpdzxjKhmO57XLM8pORO
-	/7Y/Sr5x+1FMpVCobkZ4k6MehdKjxEyRDR5jNPguc9u3L43tGqzNdYSO1tcV
-X-Google-Smtp-Source: AGHT+IE4KFtceqWgFI5Exk1ggU7gG6fN1lLUM7411oUgT6YiAdrbwe1U80pIh0+6rzapsH7z+JsyYQ==
-X-Received: by 2002:adf:f585:0:b0:37c:d1ea:f1ce with SMTP id ffacd0b85a97d-37d551d53dbmr354861f8f.25.1728595560283;
-        Thu, 10 Oct 2024 14:26:00 -0700 (PDT)
+        bh=Gv2lnH1bFL+wtFjxRgBI14o1ODjTXUiEC0mw6OfkCr4=;
+        b=fwlYhR3cHwzNjnyMzUkyE8DlYKvqu0a9PO6Nc0XIfv+KcIdBuyToz0/K4/y6r1gNGL
+         854P5jcA5kRujzyL/4fvd0RjE+l0J7RRopjNxhX1JakRGtQq6wW51z3015Ix/VNJzh6N
+         91Kt6erepnOT5X5JRCdfu89Cepx/NOZL5Utwb8m5nQSKzCOio4Zp5nEr79USqJwnAL9M
+         VF6aM4q3VIypco9wxEv2AGTOtF9GVc1QJcFYidNrcOu9Mm7+dHxwXg1QnZKbUxMOT6j1
+         bqBCgY7w9MrqlXPH64vZ3SSyvaSnFeDm5H+N+mTvhXIIe8HWn3oVm8ZfjOZ8jG6ysOC/
+         90xQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVC7smsscjBQnFX5kYUkgaZ2Ugmq8ptQyImSg/+89Cw4/u0xZboNfCqm04LVIDoztXNZDFEshZY7frqYAjvg6U=@lists.infradead.org, AJvYcCXFaEBhL1ziQQ93IBDMe/hd2eWvHrsdBYhifekR1+n8gfYdGBapNykd/IK/IvogJI3DPksCaWC5kyRPIDMoEftGMg==@lists.infradead.org, AJvYcCXyJ6d/eTnfrxgXzTuI/W6h3ZfB2hNwDK95lvg4BdSwsDfzCr3Iq/WO6e5XrWXwuRfRAT6ovOuFG9iJG30aSia4@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz7784Cf5AWQoVTLz7drI/7o20qWRRy8w8Bpi5Bb6G0uyMJTZE+
+	+I/Vduic/CHRjgmOk+8nDcfrIWT6L+OVXluUdInrriK6/L0j+5IwzU1LW6KG
+X-Google-Smtp-Source: AGHT+IHrNABpkE9MoIs4OHjPtix9N5xn9oz/4v1rJOCBX1LbPoC+c+XJfnpTq5HfizfEkADdbQPIpw==
+X-Received: by 2002:a05:6000:1092:b0:375:c4c7:c7ac with SMTP id ffacd0b85a97d-37d552cb121mr309436f8f.49.1728595570453;
+        Thu, 10 Oct 2024 14:26:10 -0700 (PDT)
 Received: from [127.0.1.1] (2a02-8389-41cf-e200-3d08-841a-0562-b7b5.cable.dynamic.v6.surfer.at. [2a02:8389:41cf:e200:3d08:841a:562:b7b5])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37d4b6a8940sm2402083f8f.6.2024.10.10.14.25.57
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37d4b6a8940sm2402083f8f.6.2024.10.10.14.26.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Oct 2024 14:25:59 -0700 (PDT)
+        Thu, 10 Oct 2024 14:26:08 -0700 (PDT)
 From: Javier Carrasco <javier.carrasco.cruz@gmail.com>
-Date: Thu, 10 Oct 2024 23:25:51 +0200
-Subject: [PATCH 01/10] Input: cap11xx - switch to
- for_each_child_of_node_scoped
+Date: Thu, 10 Oct 2024 23:25:55 +0200
+Subject: [PATCH 05/10] Input: twl4030-vibra - use cleanup facility for
+ device_node
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20241010-input_automate_of_node_put-v1-1-ebc62138fbf8@gmail.com>
+Message-Id: <20241010-input_automate_of_node_put-v1-5-ebc62138fbf8@gmail.com>
 References: <20241010-input_automate_of_node_put-v1-0-ebc62138fbf8@gmail.com>
 In-Reply-To: <20241010-input_automate_of_node_put-v1-0-ebc62138fbf8@gmail.com>
 To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
@@ -85,16 +85,16 @@ Cc: linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, linux-rpi-kernel@lists.infradead.org, 
  Javier Carrasco <javier.carrasco.cruz@gmail.com>
 X-Mailer: b4 0.14-dev
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1728595555; l=1675;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1728595555; l=1014;
  i=javier.carrasco.cruz@gmail.com; s=20240312; h=from:subject:message-id;
- bh=t9fa1o1a5Sgyy/pkELwXsraoor0CZUbJK+3ORgewgNE=;
- b=b31gP7WKvaxSGCe8LGxC0VFmrQkeU9+dZDzn0FUk6fhSEtR5GsZSn0RkT3Hsunh8on+1vLtSE
- bY5XwOwbB/8CemBxLFfFlFJk8eGyd/NjIzj/SvQvHebIoHP0HzSadpD
+ bh=8XjuIi1Czg4gxADzAUScoPXbznvngqAftxkGhXUC4pg=;
+ b=/4+JFcJpLeL4D0LEVXjbes3plish7dWoFirHhI5dayVbYW4PEtxEp0kTrBT1nHE4UHbh0m0sS
+ RPzjoyarLQcDfkWazC5yuILBtuqtMJaAHXEwwvzs+7J+Ee6KQ/9rewD
 X-Developer-Key: i=javier.carrasco.cruz@gmail.com; a=ed25519;
  pk=lzSIvIzMz0JhJrzLXI0HAdPwsNPSSmEn6RbS+PTS9aQ=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241010_142602_298911_BA6BB94E 
-X-CRM114-Status: GOOD (  12.48  )
+X-CRM114-CacheID: sfid-20241010_142612_324832_AE9DD4EF 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,59 +109,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the scoped variant of the macro to simplify the code and error
-handling. This makes the error handling more robust by ensuring that
-the child node is always freed.
+Use the '__free(device_node)' macro to simplify the code by
+automatically freeing the device node.
 
 Signed-off-by: Javier Carrasco <javier.carrasco.cruz@gmail.com>
 ---
- drivers/input/keyboard/cap11xx.c | 12 ++++--------
- 1 file changed, 4 insertions(+), 8 deletions(-)
+ drivers/input/misc/twl4030-vibra.c | 11 +++--------
+ 1 file changed, 3 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/input/keyboard/cap11xx.c b/drivers/input/keyboard/cap11xx.c
-index b21ef9d6ff9d..0c17cbaa3d27 100644
---- a/drivers/input/keyboard/cap11xx.c
-+++ b/drivers/input/keyboard/cap11xx.c
-@@ -416,7 +416,7 @@ static int cap11xx_led_set(struct led_classdev *cdev,
- static int cap11xx_init_leds(struct device *dev,
- 			     struct cap11xx_priv *priv, int num_leds)
+diff --git a/drivers/input/misc/twl4030-vibra.c b/drivers/input/misc/twl4030-vibra.c
+index 101548b35ee3..b8ec5c7c5bce 100644
+--- a/drivers/input/misc/twl4030-vibra.c
++++ b/drivers/input/misc/twl4030-vibra.c
+@@ -165,15 +165,10 @@ static DEFINE_SIMPLE_DEV_PM_OPS(twl4030_vibra_pm_ops,
+ 
+ static bool twl4030_vibra_check_coexist(struct device_node *parent)
  {
--	struct device_node *node = dev->of_node, *child;
-+	struct device_node *node = dev->of_node;
- 	struct cap11xx_led *led;
- 	int cnt = of_get_child_count(node);
- 	int error;
-@@ -445,7 +445,7 @@ static int cap11xx_init_leds(struct device *dev,
- 	if (error)
- 		return error;
+-	struct device_node *node;
++	struct device_node *node __free(device_node) =
++		of_get_child_by_name(parent, "codec");
  
--	for_each_child_of_node(node, child) {
-+	for_each_child_of_node_scoped(node, child) {
- 		u32 reg;
+-	node = of_get_child_by_name(parent, "codec");
+-	if (node) {
+-		of_node_put(node);
+-		return true;
+-	}
+-
+-	return false;
++	return node ? true : false;
+ }
  
- 		led->cdev.name =
-@@ -458,19 +458,15 @@ static int cap11xx_init_leds(struct device *dev,
- 		led->cdev.brightness = LED_OFF;
- 
- 		error = of_property_read_u32(child, "reg", &reg);
--		if (error != 0 || reg >= num_leds) {
--			of_node_put(child);
-+		if (error != 0 || reg >= num_leds)
- 			return -EINVAL;
--		}
- 
- 		led->reg = reg;
- 		led->priv = priv;
- 
- 		error = devm_led_classdev_register(dev, &led->cdev);
--		if (error) {
--			of_node_put(child);
-+		if (error)
- 			return error;
--		}
- 
- 		priv->num_leds++;
- 		led++;
+ static int twl4030_vibra_probe(struct platform_device *pdev)
 
 -- 
 2.43.0
