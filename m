@@ -4,66 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C12ECF0437
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 09:43:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13865CF11C3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Oct 2024 10:14:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+i3CI5RXL/ZzLG9uxfLsayNL14jG2jXeQ/gfwKy81YI=; b=XJNYDawoNcji2k
-	orwxERT3S+tTVn5VaBaBq5HR1hhcuXntDmvvoTeCG07TIgKJ0SET2h4zkjmzfZ/ptQSUl8fDphQg0
-	0RFPOja5UKNiBo9jhNhUWf+g3ajSBHzmb9imMMYS/rgXAbINT1gqDq1MQsPQ08Dw9IRfaHIfn9enX
-	DvFACAAyk7uwLzXPQW4m6SsfJrkqzVjUFeFGeK00Nie03ronfdkUSYvEik/iDoplgoBsmy6qySfqn
-	rXQpubBmQ+R4ORVBG41iMhBuM4xneXCzVCrZcyJr2wqajyaGdRxb/EyyzzvaoEmvkGdlMO3gfO4/8
-	sp36TApe8YPTT4wkWe1w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NEBHPmIBUM6VSOI3jWXFPmWe5D+zUJl1ezE/xec47aQ=; b=kKwqs1m5iaXhlwiAyv2HkY7za3
+	j0eUrBxWq3CxQS+Xd3qmxb7RlkkgcOdgMKdU56SaNi9Z4EvVkE8CKz5BF9yNHiUngVDbQ4Lbma/pH
+	n96zlzNe6wr6TgF+ZiCNYCZ+M/0jL5FA0fcpHiI3n5kNmZJhuLnmVvrhPVYhoIUhB33x+KMAF9EyS
+	zTJ/NHKWDQN788DDF2qM+3brFM9dfTSz765KCjs2rEiWokQ3V+MsPOjTVmjFnI2rE8aFQK8NaNXeV
+	fjjAc6KvuPVVJL+mhTFS6oU/i3g9+ziIMvec1yViQGTkpo2YgPtZ+XKMWaADY0xQ/NRt6Y7o4M9rd
+	QFwH1SSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1syphr-0000000CHA6-18X5;
-	Thu, 10 Oct 2024 09:43:39 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1syqBO-0000000CMTW-0Q1W;
+	Thu, 10 Oct 2024 10:14:10 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sypgS-0000000CGlI-2xFv;
-	Thu, 10 Oct 2024 09:42:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1728553329;
-	bh=8lRmGtzpKCSbPzQOWXLMKG/S0oTwOaaGGVrYaPtPoSM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=H63Qc4OuDKzaagf/6BEAZRRH+6/bh9qoTk5fwBELyvN7HuZ1N426BHSVDHjrMboVA
-	 jpQ6ynBGIqwoFtXp+/juLmnYn4gF+lYD3bljIxs7YAeAeSY2WEpPjUPPCkrI/vOs8K
-	 dARCVpxi71vTHCKJzHOxI4UcXUR4WkJNy0VAKHR+kRVJ0moftd2gNYGDvyTS5pWi8u
-	 MpsAO5QLTlZOGySic6Adqj46+cFkAl1alipi28pfxJzZT/a1OGQufUCiXuIwLuU4V4
-	 DdJUvuMMxakPt838tOflXlfXT5IYkksCYSSVaU1PG9pHXGPVXNYmYEB3C7LdKCSJMr
-	 tw5jTJUTHc0oQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E458717E120F;
-	Thu, 10 Oct 2024 11:42:08 +0200 (CEST)
-Message-ID: <ce926e0c-74f3-4c7b-987f-3dc50b81a3aa@collabora.com>
-Date: Thu, 10 Oct 2024 11:42:08 +0200
+	id 1syqBL-0000000CMSl-2PdM;
+	Thu, 10 Oct 2024 10:14:08 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-42e748f78d6so5493435e9.0;
+        Thu, 10 Oct 2024 03:14:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1728555245; x=1729160045; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=NEBHPmIBUM6VSOI3jWXFPmWe5D+zUJl1ezE/xec47aQ=;
+        b=grHyPF7w3A45Q7TzWRIWoJfy2VHZgGO1e4hEdgVS7o54aL7dLZHrSaavzSnuumbAOm
+         F9HHwmf+f7EfQv42ogosfGDKQiZ0nRhdeubo9yBOfSrL2ptczy2mi2kJKkESDqAvcc9d
+         QCbtyjbwTktGIiCVYVYIJf43zQGrqz4K7644dFUCuKkznRU6gAon5MrR8qsXJwBS1CRc
+         Tk88pP3Yv6ev8a7QY5s+ufYv48/4Rnio5WiqoJMqQ66l2g7BmfjvkLOMfp2Hw7z0ELwq
+         eSVPh0R5L/12nSXq2tlvXl56BstTT9FjO7fRp5qkgiVFl5phTgz0tKFTs7Z9w/Stjg4g
+         xPbA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1728555245; x=1729160045;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=NEBHPmIBUM6VSOI3jWXFPmWe5D+zUJl1ezE/xec47aQ=;
+        b=CyqtZFaSdvk2MWwoRfaU8d0CSHBnNs9ZJaUm75FJcfPRrVHZibwpgrH9GX4qwxLBrF
+         Ys8HIfUNAbumYsTPU6ECBYHhUXbt6uXLV4S8tR8FhoV4XmgMvbETX0Mp+HnwO3GJiABN
+         48c+A+BskQ/TWtjamhC0WglQKgNgBwfTy9FHnU6UvIm6HnwtH1OkegJQFjyL3ncz372X
+         pBWX38WwKf/ai/Rg2TlIKjC+4typKTHu4Tajsf3yhWKUrL6hy5WxFS+6GWsL4nRkZMY1
+         VFt8LJeUAIRuq9MaxUmv6zYu/NBrtQTdrfquYjlXchaSQKdEyNV6C7EM+jy3+HONT2DO
+         fLKQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUnylMcCRsSHA0iAXZzYzaPOERrxFBVHu1f2USrl068RdD6ih+fkFF21PYnw5X9vjOSsD+hj2Ff5VzrtxRc59c=@lists.infradead.org, AJvYcCX8Ryrj9rTcx+Lwduc0cakkm45T4qolHWHgakS0NNueheBAcgTS0b0Jwb7IK+WPZX9yheeZy0W5M8uB311+RxqK@lists.infradead.org
+X-Gm-Message-State: AOJu0YxoI6TBgNkxWzeoWPFgdYT0IDXwfNqhQ9EDvAVSyYqUFaQkdXFJ
+	XJH2/vABS23jqkZVCQgREs2K9xeWstBR5JtaIMn9Rx0giFfqYZIQ
+X-Google-Smtp-Source: AGHT+IGDPGThMhthTE4710yoRanga/BmvaFtKZR6ry5ge58zkraATJT3E+r426UaY8y7XNd+9NOQAQ==
+X-Received: by 2002:a05:600c:47d7:b0:431:12d0:746b with SMTP id 5b1f17b1804b1-43112d0755emr31012825e9.35.1728555244842;
+        Thu, 10 Oct 2024 03:14:04 -0700 (PDT)
+Received: from Ansuel-XPS. (93-34-90-105.ip49.fastwebnet.it. [93.34.90.105])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37d4b6a8940sm1117058f8f.6.2024.10.10.03.14.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Oct 2024 03:14:04 -0700 (PDT)
+Message-ID: <6707a8ec.df0a0220.376450.293e@mx.google.com>
+X-Google-Original-Message-ID: <Zweo6cusuf9_tnnt@Ansuel-XPS.>
+Date: Thu, 10 Oct 2024 12:14:01 +0200
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Lee Jones <lee@kernel.org>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	upstream@airoha.com, benjamin.larsson@genexis.eu,
+	linux-pwm@vger.kernel.org
+Subject: Re: [PATCH v5 3/5] mfd: airoha: Add support for Airoha EN7581 MFD
+References: <20241001-en7581-pinctrl-v5-0-dc1ce542b6c6@kernel.org>
+ <20241001-en7581-pinctrl-v5-3-dc1ce542b6c6@kernel.org>
+ <20241002132518.GD7504@google.com>
+ <ZwWscWk5axQI9H1t@lore-desk>
+ <20241009104821.GF276481@google.com>
+ <20241009105550.GG276481@google.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/4] pinctrl: mediatek: add support for
- MTK_PULL_PD_TYPE
-To: Frank Wunderlich <linux@fw-web.de>,
- Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@kernel.org>
-References: <20241009165222.5670-1-linux@fw-web.de>
- <20241009165222.5670-2-linux@fw-web.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241009165222.5670-2-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241009105550.GG276481@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241010_024212_961811_8A14A37E 
-X-CRM114-Status: GOOD (  26.07  )
+X-CRM114-CacheID: sfid-20241010_031407_643122_FCDC1FC7 
+X-CRM114-Status: GOOD (  29.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,188 +104,150 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, daniel@makrotopia.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, john@phrozen.org, eladwf@gmail.com, ansuelsmth@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/10/24 18:52, Frank Wunderlich ha scritto:
-> From: Daniel Golle <daniel@makrotopia.org>
+On Wed, Oct 09, 2024 at 11:55:50AM +0100, Lee Jones wrote:
+> On Wed, 09 Oct 2024, Lee Jones wrote:
 > 
-> The MediaTek MT7988 SoC got some pins which only got configurable
-> pull-down but unlike previous designs there is no pull-up option.
-> Add new type MTK_PULL_PD_TYPE to support configuring such pins.
+> > On Wed, 09 Oct 2024, Lorenzo Bianconi wrote:
+> > 
+> > > On Oct 02, Lee Jones wrote:
+> > > > On Tue, 01 Oct 2024, Lorenzo Bianconi wrote:
+> > > > 
+> > > > > From: Christian Marangi <ansuelsmth@gmail.com>
+> > > > > 
+> > > > > Support for Airoha EN7581 Multi Function Device that
+> > > > > expose PINCTRL functionality and PWM functionality.
+> > > > 
+> > > > The device is a jumble of pinctrl registers, some of which can oscillate.
+> > > > 
+> > > > This is *still* not an MFD.
+> > > > 
+> > > > If you wish to spread this functionality over 2 drivers, use syscon to
+> > > > obtain the registers and simple-mfd to automatically probe the drivers.
+> > > 
+> > > Hi Lee,
+> > > 
+> > > IIUC you are suggesting two possible approaches here:
+> > > 
+> > > 1- have a single driver implementing both pinctrl and pwm functionalities.
+> > >    This approach will not let us reuse the code for future devices that
+> > >    have just one of them in common, like pwm (but we can live with that).
+> > 
+> > If you can have one without the other, then they are separate devices.
+> > 
+> > > 2- use a device node like the one below (something similar to [0])
+> > > 
+> > > system-controller@1fbf0200 {
+> > > 	compatible = "syscon", "simple-mfd";
+> > > 	reg = <0x0 0x1fbf0200 0x0 0xc0>;
+> > > 
+> > > 	interrupt-parent = <&gic>;
+> > > 	interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
+> > > 
+> > > 	gpio-controller;
+> > > 	#gpio-cells = <2>;
+> > > 
+> > > 	interrupt-controller;
+> > > 	#interrupt-cells = <2>;
+> > > 
+> > > 	pio: pinctrl {
+> > > 		compatible = "airoha,en7581-pinctrl";
+> > > 
+> > > 		[ some pinctrl properties here ]
+> > > 	};
+> > > 
+> > > 	#pwm-cells = <3>;
+> > > 
+> > > 	pwm {
+> > > 		compatible = "airoha,en7581-pwm";
+> > > 	};
+> > > };
+> > > 
+> > > Please correct me if I am wrong, but using syscon/simple-mfd as compatible
+> > > string for the 'parent' device, will require to introduce the compatible strings
+> > > even for the child devices in order to probe them, correct? 
+> > > If so, as pointed out by Christian, this is something nacked by Rob/Krzysztof/Conor
+> > > (this is the main reason why we introduced a full mfd driver here).
+> > > 
+> > > @Rob, Krzysztof, Conor: am I right?
+> > 
+> > I don't see why separate functionality shouldn't have separate
+> > compatible strings, even if the registers are together.  Register layout
+> > and functionality separation are not related.
 > 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->   .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  | 59 +++++++++++++++++++
->   .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  |  1 +
->   2 files changed, 60 insertions(+)
+> We've been happy to support both pinctrl and pwm devices before:
 > 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> index 54301fbba524..eff2aecd31dd 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> @@ -601,6 +601,30 @@ static int mtk_pinconf_bias_set_pu_pd(struct mtk_pinctrl *hw,
->   	return err;
->   }
->   
-> +static int mtk_pinconf_bias_set_pd(struct mtk_pinctrl *hw,
-> +				const struct mtk_pin_desc *desc,
-> +				u32 pullup, u32 arg)
-> +{
-> +	int err, pd;
-> +
-> +	if (arg == MTK_DISABLE)
+>   git grep "\-pinctrl\|\-pwm" -- drivers/mfd
+>   git grep "\-pinctrl\|\-pwm" -- arch/*/boot/dts
+> 
+>   git grep "\-pinctrl" -- arch/*/boot/dts | wc -l
+>   602
+>   git grep "\-pwm" -- arch/*/boot/dts | wc -l
+>   856
+> 
+> What makes this particular device different to all of the others?
+>
 
-if (arg != MTK_DISABLE && arg != MTK_ENABLE)
-	return -EINVAL
+Hi Lee,
 
-/* Either this */
-if (arg == MTK_DISABLE || pullup)
-	pd = 0;
-else if (!pullup)
-	pd = 1
+this would be the final DTS following the "simple-mfd" pattern.
 
-/* Or this (but it's probably a bit too cryptic) */
-pd = !(arg == MTK_DISABLE || pullup);
+Can you confirm it's correct?
 
-return mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_PD, pd);
+mfd: system-controller@1fbf0200 {
+	compatible = "syscon", "simple-mfd";
+	reg = <0x0 0x1fbf0200 0x0 0xc0>;
+ 
+	interrupt-parent = <&gic>;
+	interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
+ 
+	gpio-controller;
+	#gpio-cells = <2>;
+ 
+	interrupt-controller;
+	#interrupt-cells = <2>;
 
+	gpio-ranges = <&mfd 0 13 47>;
 
+	#pwm-cells = <3>;
+ 
+	pio: pinctrl {
+		compatible = "airoha,en7581-pinctrl";
+ 
+		mdio_pins: mdio-pins {
+			mux {
+				function = "mdio";
+				groups = "mdio";
+			};
+ 
+			conf {
+				pins = "gpio2";
+				output-high;
+			};
+		};
+ 
+		pcie0_rst_pins: pcie0-rst-pins {
+			conf {
+				pins = "pcie_reset0";
+				drive-open-drain = <1>;
+			};
+		};
+ 
+		pcie1_rst_pins: pcie1-rst-pins {
+			conf {
+				pins = "pcie_reset1";
+				drive-open-drain = <1>;
+			};
+		};
+	};
+ 
+	pwm {
+		compatible = "airoha,en7581-pwm";
+	};
+};
 
-...but then, you could otherwise modify mtk_pinconf_bias_set_pu_pd(), so that
-
-static int mtk_pinconf_bias_set_pu_pd(struct mtk_pinctrl *hw,
-				const struct mtk_pin_desc *desc,
-				u32 pullup, u32 arg, bool pd_only)
-{
-	int err, pu, pd;
-
-	if (arg == MTK_DISABLE) {
-		pu = 0;
-		pd = 0;
-	} else if ((arg == MTK_ENABLE) && pullup) {
-		pu = 1;
-		pd = 0;
-	} else if ((arg == MTK_ENABLE) && !pullup) {
-		pu = 0;
-		pd = 1;
-	} else {
-		return -EINVAL;
-	}
-
-	if (!pd_only) {
-		err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_PU, pu);
-		if (err)
-			return err;
-	}
-
-	return mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_PD, pd);
-}
-
-> +		pd = 0;
-> +	else if ((arg == MTK_ENABLE) && pullup)
-> +		pd = 0;
-> +	else if ((arg == MTK_ENABLE) && !pullup)
-> +		pd = 1;
-> +	else {
-> +		err = -EINVAL;
-> +		goto out;
-> +	}
-> +
-> +	err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_PD, pd);
-> +
-> +out:
-> +	return err;
-> +
-> +}
-> +
->   static int mtk_pinconf_bias_set_pullsel_pullen(struct mtk_pinctrl *hw,
->   				const struct mtk_pin_desc *desc,
->   				u32 pullup, u32 arg)
-> @@ -758,6 +782,12 @@ int mtk_pinconf_bias_set_combo(struct mtk_pinctrl *hw,
->   			return 0;
->   	}
->   
-> +	if (try_all_type & MTK_PULL_PD_TYPE) {
-> +		err = mtk_pinconf_bias_set_pd(hw, desc, pullup, arg);
-
-so if it is PD_TYPE, mtk_pinconf_bias_set_pu_pd(hw, desc, pullup, arg, true);
-
-> +		if (!err)
-> +			return err;
-> +	}
-> +
->   	if (try_all_type & MTK_PULL_PU_PD_TYPE) {
->   		err = mtk_pinconf_bias_set_pu_pd(hw, desc, pullup, arg);
-
-mtk_pinconf_bias_set_pu_pd(hw, desc, pullup, arg, false);
-
->   		if (!err)
-> @@ -878,6 +908,29 @@ static int mtk_pinconf_bias_get_pu_pd(struct mtk_pinctrl *hw,
->   	return err;
->   }
->   
-> +static int mtk_pinconf_bias_get_pd(struct mtk_pinctrl *hw,
-> +				const struct mtk_pin_desc *desc,
-> +				u32 *pullup, u32 *enable)
-> +{
-
-this one you can keep it as it is, because I don't think that you can get
-the get_pu_pd function to work with pd_only without making it .. well, messy.
-
-> +	int err, pd;
-> +
-> +	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_PD, &pd);
-> +	if (err)
-> +		goto out;
-> +
-> +	if (pd == 0) {
-> +		*pullup = 0;
-> +		*enable = MTK_DISABLE;
-> +	} else if (pd == 1) {
-> +		*pullup = 0;
-> +		*enable = MTK_ENABLE;
-> +	} else
-> +		err = -EINVAL;
-> +
-> +out:
-> +	return err;
-> +}
-> +
->   static int mtk_pinconf_bias_get_pullsel_pullen(struct mtk_pinctrl *hw,
->   				const struct mtk_pin_desc *desc,
->   				u32 *pullup, u32 *enable)
-> @@ -947,6 +1000,12 @@ int mtk_pinconf_bias_get_combo(struct mtk_pinctrl *hw,
->   			return 0;
->   	}
->   
-> +	if (try_all_type & MTK_PULL_PD_TYPE) {
-> +		err = mtk_pinconf_bias_get_pd(hw, desc, pullup, enable);
-> +		if (!err)
-> +			return err;
-> +	}
-> +
->   	if (try_all_type & MTK_PULL_PU_PD_TYPE) {
->   		err = mtk_pinconf_bias_get_pu_pd(hw, desc, pullup, enable);
->   		if (!err)
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-> index 23688ca6d04e..9c271dc2b521 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-> @@ -24,6 +24,7 @@
->    * turned on/off itself. But it can't be selected pull up/down
->    */
->   #define MTK_PULL_RSEL_TYPE		BIT(3)
-> +#define MTK_PULL_PD_TYPE        BIT(4)
->   /* MTK_PULL_PU_PD_RSEL_TYPE is a type which is controlled by
->    * MTK_PULL_PU_PD_TYPE and MTK_PULL_RSEL_TYPE.
->    */
-
-
-Cheers,
-Angelo
-
-
+-- 
+	Ansuel
 
