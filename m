@@ -4,83 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10349D0EE12
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Oct 2024 16:37:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0432D0EE12
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Oct 2024 16:58:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Tb6/zYZ762FrKsZuaklFpQpOK7qBPMn60N+XHfs5vRk=; b=OC/j4IMYRr6maxDsGsHPNSnoHm
-	erdy8AxTASttVrJS1di7Pvi0o3eCxWgs/LvIs3gHKQZ6sfkWo4Dh60TySJe80mXK1hhH+KhWoDHLm
-	+SSm+fbS3Qwy/gLPysP+JJLYmacY5Y6w2rW2YShdzgAzfWe6xJE8bJUuy2YtJvEI+gEtR9q4G4YGT
-	CZwhlGmCdy3GLiGCGPZ8TrNxjnS7YmcR+Xg1h/oLMnqQEKHWS1qLanKVSNG4ZCK/9mXPCOuuMR6A9
-	8Mym7r7vWn2oO8jzXFxA0u8PSE/yjBhYC0m3emD11DLE9FpxcReYSSAxHN0CZeSLddEJoiUVR0Buz
-	kukyj56A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mC0E3tAvwzuL7RaR1WUvFuQzWfJeFLyhZJacH8FyH9Y=; b=SlcVdmwyQPzzUWwfZ+FPl5vnWs
+	F1dLg6h+MpAI0uZbMYxbEY3Gj4TCJ6o+snEOjNj8Q7ce4OfeWedE0SwGZ4jlnIo06pMeiD1wfu7R+
+	7wzSKP0sRT2ntgOtVJL1v7JcLvRKESMekchQD7Fh9qRzvFcFKmti3TX66vjESz8AwP9qITGssD+Ze
+	QxmwKw1obcEGL//ptgR52Jeg0m688twDK67FxNO9A8gLzcUqu9Ew0abhFbKjY4Jnx5S6PDU8yX1RA
+	/FuhuDm4RRYri/X+0b+7Es820XH9Ry0OYPbKUZuOJAYQoPKalNaPflW3obJQbc46Utx/d9Mu37M1p
+	COLo2rvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1szIdQ-0000000Gz3J-2uDr;
-	Fri, 11 Oct 2024 16:37:00 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1szIy2-0000000H1sd-316M;
+	Fri, 11 Oct 2024 16:58:18 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1szIdN-0000000Gz1A-3SaY
-	for linux-mediatek@lists.infradead.org;
-	Fri, 11 Oct 2024 16:36:59 +0000
-X-UUID: 05e4f67087ef11efb3adad29d29602c1-20241011
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Tb6/zYZ762FrKsZuaklFpQpOK7qBPMn60N+XHfs5vRk=;
-	b=AKIRGAUkHBlahlX+sZLYIZ3zOK4nVfEMxu1IuhWQXn/iSX9O0eLVF4gQLlyJBN7xjf1dIaaabAq2Cc8Z+lNPg8hELO9E+0y79UD7SJRyT7Tr+Ejwpfdn2JnGAJq2HCoWFRlNT8g9jHNn91D8PF6sYg4yNoOK9O96gUabVm5+dP4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:7d7a0317-9908-4946-a682-491a3a2bf19e,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:5,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:a75f1d41-8751-41b2-98dd-475503d45150,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 05e4f67087ef11efb3adad29d29602c1-20241011
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <shayne.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1169705529; Fri, 11 Oct 2024 09:36:53 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 12 Oct 2024 00:36:49 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 12 Oct 2024 00:36:49 +0800
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: linux-firmware <linux-firmware@kernel.org>
-CC: Felix Fietkau <nbd@nbd.name>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>, Daniel Golle
-	<daniel@makrotopia.org>
-Subject: pull-request: mtk_wed firmware 20241011 v2
-Date: Sat, 12 Oct 2024 00:36:49 +0800
-Message-ID: <20241011163649.19110-1-shayne.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1szIwf-0000000H1mY-2jNF;
+	Fri, 11 Oct 2024 16:56:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id F0C9AA44B8D;
+	Fri, 11 Oct 2024 16:56:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3401C4CEC7;
+	Fri, 11 Oct 2024 16:56:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728665812;
+	bh=iEtHdpYrx5DVc2mfDpmhMV08XV93wcIaiwU6NFEPxW4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=GiMSdH2XoZ78kFCXCjt+1Bk9hEjlDpJ18YZd+qDVSlFtwTMWBBvles8ylKqTJ5smK
+	 vN8q3gQl06Nyr8Qblp6EeyNJvZ05rq7JpZnTrlOy7dP4Xz/w/EPeAZw1KBTegYAlMv
+	 verH1sjYtMaec26n7LYex0T8DBI0oNtVTgqAUBCL8d6UH5D9ysKzq+yBhV+9ppnGTM
+	 TBF1VQOAKhMLqcoCxMJFgHw5C7zxDYveMGo+29CyeIaAmJu5HOGHsgavO1/OXHnCfs
+	 kMUkGUbal+tatSdQir+hrWSHwrIstTvYWjoMAahOlg5CAdyih8Mcyy+JGojVlonHxI
+	 0H4Fp0Tbr3POg==
+Date: Fri, 11 Oct 2024 11:56:40 -0500
+From: Rob Herring <robh@kernel.org>
+To: Yassine Oudjana <yassine.oudjana@gmail.com>
+Cc: Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Yassine Oudjana <y.oudjana@protonmail.com>,
+	Andy Teng <andy.teng@mediatek.com>,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v6 1/8] dt-bindings: pinctrl: mediatek,mt6779-pinctrl:
+ Pull pinctrl node changes from MT6795 document
+Message-ID: <20241011165640.GA2475122-robh@kernel.org>
+References: <20241011120520.140318-1-y.oudjana@protonmail.com>
+ <20241011120520.140318-2-y.oudjana@protonmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--10.381700-8.000000
-X-TMASE-MatchedRID: 9SKQLBmTF7vgxStX0wUODsqXjImgj58bIfyQNHR2naZd9fDYSm945TC0
-	pJIQUiJOMyjG/vEwWNeun8wjeYlO74BX93VZG6SnnVTWWiNp+v+y4iyjvVWTorIPyqeQTeKkV78
-	paYC694ArIhHNwiG1WXATsg8MODVIHxPMjOKY7A8LbigRnpKlKTpcQTtiHDgWjtA42YMO2JEV0T
-	f3EbjItSrYPj2tn+n3+OgcVNG/hM8bxn22FR0dWw==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--10.381700-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 2119E5403AD242148E6EF7DA970DF9683D5BCA2DD6006F21F78561E54B8660C92000:8
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241011120520.140318-2-y.oudjana@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241011_093657_896689_01C59F55 
-X-CRM114-Status: UNSURE (   8.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241011_095653_776288_ECDF138F 
+X-CRM114-Status: GOOD (  15.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,33 +81,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Fri, Oct 11, 2024 at 03:03:46PM +0300, Yassine Oudjana wrote:
+> From: Yassine Oudjana <y.oudjana@protonmail.com>
+> 
+> mediatek,pinctrl-mt6795.yaml has different node name patterns which match
+> bindings of other MediaTek pin controllers, ref for pinmux-node.yaml which
+> has a description of the pinmux property, as well as some additional
+> descriptions for some pin configuration properties. Pull those changes
+> into mediatek,mt6779-pinctrl.yaml and adjust the example DTS to match in
+> preparation to combine the MT6795 document into it.
+> 
+> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+> ---
+>  .../pinctrl/mediatek,mt6779-pinctrl.yaml      | 38 ++++++++++++++-----
+>  1 file changed, 28 insertions(+), 10 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
+> index 3bbc00df5548d..352a88d7b135e 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
+> @@ -111,12 +111,12 @@ allOf:
+>          - "#interrupt-cells"
+>  
+>  patternProperties:
+> -  '-[0-9]*$':
+> +  '-pins$':
 
-Here's a v2 pull request which fixes CI failures.
-Please let me know if there are any problems, thanks.
+Worst case, this could be an ABI break. Best case, it's churn for 
+mt6779. Is it worth unifying?
 
-Shayne
-
-The following changes since commit d55315295cccf8ce5dc288a74d75cf09b8063cfc:
-
-  Merge branch 'superm1/qci-patches' into 'main' (2024-10-10 19:11:13 +0000)
-
-are available in the Git repository at:
-
-  https://github.com/csyuanc/linux-firmware.git mtk_wed-20241011
-
-for you to fetch changes up to 808cba847c70a91eb5a1d502a5e1a63379bb328b:
-
-  mtk_wed: add firmware for mt7988 Wireless Ethernet Dispatcher (2024-10-12 00:02:10 +0800)
-
-----------------------------------------------------------------
-Shayne Chen (1):
-      mtk_wed: add firmware for mt7988 Wireless Ethernet Dispatcher
-
- WHENCE                          |  28 ++++++++++++++++++++++------
- mediatek/mt7988/mt7988_wo_0.bin | Bin 0 -> 107816 bytes
- mediatek/mt7988/mt7988_wo_1.bin | Bin 0 -> 107752 bytes
- 3 files changed, 22 insertions(+), 6 deletions(-)
- create mode 100644 mediatek/mt7988/mt7988_wo_0.bin
- create mode 100644 mediatek/mt7988/mt7988_wo_1.bin
+Rob
 
