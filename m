@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A32D0D2447F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Oct 2024 07:01:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDD6ECEDDB7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Oct 2024 07:06:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Yol/CqMflojZ91zDJ6BWlrykjb5lk+ms5wvr74ezf+w=; b=VP88i7MzzNfIAbYyvITKlqzmzz
-	0mh1hWFJR9PkP+EoP8idcbTlUnkrkV1zFDkE94rM7vS2/43b/rHcs3mA7esAMdK2GAXxKEnCWhjAG
-	eMue2EV66LBNyForraSnh1/l+7YlTMgID/a+itmRQpLw2YzXNCglgroBjBTUrNDC1pRmJ9upW4eJ/
-	1a7sP1kcEPAw5kA0MeASEpd3dVNz/L1awAVZyspEAkT31pZc6SORW7NlEyuJ2V4Xp79WClsv79pHZ
-	+suZ5ula465TW+3hqkVNrD5wRJtIjjT5oUDEKvkJjDXIkfHKHBff/whh6IRV28PNhX+DYtE3HkgW+
-	Hbq438yw==;
+	bh=8I6A2olOCtmG5k5rmKmYtyOQFqvwL84wIi1DSFnmSP4=; b=XqLQyJyZkoef7jJX+11uucImbI
+	tiQ0HKm9AAJA3JhWzQlQwwWRyZH8dIuinMuHDghqNg4MEWOhbTV5I6m0zwuNgPxmvNKWXaKQ7Ionc
+	MmMm3FLQfs3498Wj7O81ool9bragundw8TWikob0vVjIMhBWYM6KojUis/Ee1n7qO1Iw+jCXMkxDQ
+	nu0mw48EgTIGLr13FTvvoSx5ShShzdaPlhEj6W29HcRuJVfTi7XsZ4I/a001aZ5Rok8i5J0sSRPXW
+	0gnWSI5PU3Ux00gnSp1/lCZ4RhryRavUM3ceaPgf9Q1TrSvJ4gSqMe71FPkpATTEcsPUiPJB5aW87
+	wZmwUZRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sz9er-0000000FTpI-2brc;
-	Fri, 11 Oct 2024 07:01:53 +0000
-Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
+	id 1sz9ir-0000000FUQE-3tLV;
+	Fri, 11 Oct 2024 07:06:01 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sz9VM-0000000FS4w-3BCr
-	for linux-mediatek@lists.infradead.org;
-	Fri, 11 Oct 2024 06:52:06 +0000
-Received: by mail-lj1-x235.google.com with SMTP id 38308e7fff4ca-2fad6de2590so25054941fa.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 10 Oct 2024 23:52:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728629523; x=1729234323; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Yol/CqMflojZ91zDJ6BWlrykjb5lk+ms5wvr74ezf+w=;
-        b=TAd7NL9U5p01eBHBsyLDw8guw6X14Wiias/W0v5F6r0r0T88Wzg/maBOsq8uMBd/LK
-         sl3ZhiYvxDOm3FsMJkWgyDGFmskwPAgiYQV4S2jRV9w1qusfbzNYxQP0/gffVjLg5EAJ
-         WV8LBm8M2WxTH4Sv/2/ns7GyFxrSrlgW9Wz6fAM19HFzUNpoWiUsaRXwnjr8gPpzncgY
-         PaoU1jS0uQL6PV1uixoDfl26m6rprjYbXFk8wZxbdEHmACp3JdFe+Et/tRzISAI2uSmH
-         uoqrB01bc/cBMWCL9HqkkEc+5O9SwYb1bS/kWG//5aA2GrICzCvki53T8oXlC0iEyCJN
-         00Sw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728629523; x=1729234323;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Yol/CqMflojZ91zDJ6BWlrykjb5lk+ms5wvr74ezf+w=;
-        b=rMrqs0dwGb188/VxUo4nMEgkofLaKUqbGycZo7MtFUJ2HmYe8J2yDGpQwJqsxmTnvn
-         ESI98u+hZ1btfHcUB56lWknjSJuNTnJIUB7DAhTfNfiQXt43FWiyqwwf7DlmCNu6b2Wi
-         XWw/OTRLhjz5brlpugTJf0E2GK7DryCcn+UeEzNAroZBDvRcS/axJMCjV/PIpnG7g3FG
-         SZXJfR80EYXwAPtWa7j+juKXFppzsXyhONSaQOEyXLqxxTDqEjeMkRMqXRZQLSQvqcZv
-         jgYDRxgVWiQ1llLEysQEykEyZjJzpjbaJJZlqXcA7NZqiKX6fbQMtfixouzWepVNJrH9
-         qSbw==
-X-Forwarded-Encrypted: i=1; AJvYcCVJL3xIgn1SriGWGIAVvmh8lKSd/P/66Y2NIiUBRDdbIdEsoaG7tpMWtmD1NBiId2lcJXJnux/VmgxkCp5k4Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx86cviJGdLv24NcSO3vcJwC3rZtP1SgBRJux2rF+2rKYrivhp4
-	hhS8EcQiDDSPQjUFkpF5T1ux6qOQAvNRTPRaL68RZErlKSItz9443oCHr+R9XzU5fDnfV/Z+cuI
-	9lBU8aai4i8BxvPUAChMnP2ROnTMtImFiATVSYw==
-X-Google-Smtp-Source: AGHT+IEL+j79y+MejFM6HiX8V5iKw9ViH8TW+NbeQoNVhAz74UvZoFsQPZ4rGjCGTgCqCqgVNXiU/grYNIrmU/CAJHE=
-X-Received: by 2002:a2e:a587:0:b0:2fa:de13:5c34 with SMTP id
- 38308e7fff4ca-2fb32744f3dmr8696101fa.19.1728629522773; Thu, 10 Oct 2024
- 23:52:02 -0700 (PDT)
+	id 1sz9ZZ-0000000FStL-0ELt;
+	Fri, 11 Oct 2024 06:56:26 +0000
+X-UUID: ec048956879d11efb3adad29d29602c1-20241010
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=8I6A2olOCtmG5k5rmKmYtyOQFqvwL84wIi1DSFnmSP4=;
+	b=DhDTtYN7VILXZEY+98qOUyp4UqI61eyLpzzTIeiunRvIDx6XTFEh0X75rthRuaoQUrCI+mq1eyTgpIDhXUM8gXK5lOcUa5R0SYS3bztCesFmUgRiyia4wyyCxUr/yv3EjAT6mu9/nan51goeW47r2+Iojdoaozc1X2blvNx3jm4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:be2aaae4-c5d7-4c8e-951a-ba4a8083d733,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:97101565-444a-4b47-a99a-591ade3b04b2,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|-5,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: ec048956879d11efb3adad29d29602c1-20241010
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2078057091; Thu, 10 Oct 2024 23:56:21 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 11 Oct 2024 14:56:18 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Fri, 11 Oct 2024 14:56:16 +0800
+Message-ID: <30955c9f-2133-46fe-aaa8-6709d6e301c5@mediatek.com>
+Date: Fri, 11 Oct 2024 14:56:15 +0800
 MIME-Version: 1.0
-References: <20241001-en7581-pinctrl-v5-0-dc1ce542b6c6@kernel.org>
- <20241001-en7581-pinctrl-v5-3-dc1ce542b6c6@kernel.org> <20241002132518.GD7504@google.com>
- <ZwWscWk5axQI9H1t@lore-desk> <20241009104821.GF276481@google.com>
- <20241009105550.GG276481@google.com> <6707a8ec.df0a0220.376450.293e@mx.google.com>
- <CACRpkdanpA-wq0sYv9HRF=uVeAX_mW4LaKhE8i6TgC9+0d7bCg@mail.gmail.com> <ZwhKECIpL7g7ZGEC@lore-desk>
-In-Reply-To: <ZwhKECIpL7g7ZGEC@lore-desk>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 11 Oct 2024 08:51:50 +0200
-Message-ID: <CACRpkdYxF23-Py=eOZHodeR-RvkYGen_+hn_BtiU+tCPva8BXg@mail.gmail.com>
-Subject: Re: [PATCH v5 3/5] mfd: airoha: Add support for Airoha EN7581 MFD
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Christian Marangi <ansuelsmth@gmail.com>, Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <ukleinek@kernel.org>, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	upstream@airoha.com, benjamin.larsson@genexis.eu, linux-pwm@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH] dt-bindings: phy: mediatek: tphy: add a property for
+ power-domains
+Content-Language: en-US
+To: Conor Dooley <conor@kernel.org>
+CC: Jason-ch Chen <Jason-ch.Chen@mediatek.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Chunfeng Yun
+	<chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Kishon Vijay
+ Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Alexandre
+ Mergnat <amergnat@baylibre.com>, Bear Wang <bear.wang@mediatek.com>, Pablo
+ Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, Sen Chu
+	<sen.chu@mediatek.com>, Chris-qj chen <chris-qj.chen@mediatek.com>, MediaTek
+ Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	Chen-Yu Tsai <wenst@chromium.org>
+References: <20240926101804.22471-1-macpaul.lin@mediatek.com>
+ <20240926-treadmill-purr-b2e3279a14a4@spud>
+ <3a970560-2458-f5f3-87c5-925079fa12a4@mediatek.com>
+ <20241008-disorder-slacking-d8196ceb68f7@spud>
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+In-Reply-To: <20241008-disorder-slacking-d8196ceb68f7@spud>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241010_235204_824358_FFE582FD 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20241010_235625_136761_93E3054A 
+X-CRM114-Status: GOOD (  21.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,47 +100,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 10, 2024 at 11:41=E2=80=AFPM Lorenzo Bianconi <lorenzo@kernel.o=
-rg> wrote:
-> > On Thu, Oct 10, 2024 at 12:14=E2=80=AFPM Christian Marangi <ansuelsmth@=
-gmail.com> wrote:
 
-> > I think you want a separate GPIO node inside the system controller:
-> >
-> >   en7581_gpio: gpio {
-> >          compatible =3D "airhoa,en7581-gpio";
-> >          interrupt-parent =3D <&gic>;
-> >          interrupts =3D <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
-> >
-> >          gpio-controller;
-> >          #gpio-cells =3D <2>;
-> >
-> >          interrupt-controller;
-> >          #interrupt-cells =3D <2>;
-> >
-> >          gpio-ranges =3D <&en7581_pinctrl 0 13 47>;
-> > };
->
-> So far I implemented the gpio functionalities in the en7581 pinctrl drive=
-r
-> (as it is done for other mtk pinctrl drivers) but I am fine to reuse the
-> gpio-en7523 driver for it. Do you prefer this second approach?
 
-It's fine to combine GPIO and pin control into the same node, especially
-if you will have a combined driver for it, then it's more or less mandatory=
-.
-I only wrote this looking at ansuel's sketch.
+On 10/9/24 00:31, Conor Dooley wrote:
+> On Tue, Oct 08, 2024 at 12:03:37PM +0800, Macpaul Lin wrote:
+>>
+>>
+>> On 9/27/24 00:25, Conor Dooley wrote:
+>>> On Thu, Sep 26, 2024 at 06:18:04PM +0800, Macpaul Lin wrote:
+>>>> Some platforms requires a dependency for power-domains.
+>>>
+>>> Some, so not all? Why isn't this restricted on a per compatible basis?
+>>
+>> After discussion with Chunfeng and double check tphy design in detail.
+>> Chunfeng commented that tphy dose not need to add mtcmos.
+>> It is not necessary to add it, if the power of the phy is turned off,
+>> it will affect other functions.
+>>
+>>  From the current USB hardware design perspective, even if mtcmos
+>> is added to the phy, it is always on.
+> 
+> Firstly, I have no idea what "mtcmos" means, sorry. I am a dt-bindings
+> guy, not someone familiar with mediatek hardware.
+> Secondly, it sounds like this /does/ have a power domain, so it should
+> be in the binding. That it is turned on by something else and must
+> remain on doesn't mean it shouldn't be documented here. What if those
+> things try to turn it off while the tphy is using it?
 
-> > This will make subdevices probe and you can put the pure GPIO
-> > driver in drivers/gpio/gpio-en7581.c
->
-> We could actually reuse gpio-en7523 driver (removing the gpio part from e=
-n7581
-> pinctrl driver) and extend it to support irq_chip. I do not have a strong
-> opinion about it.
+After discussion in MediaTek internal. Chunfeng agreed to
+add 'power-domains' property to DT schema. The v2 patch will
+also adding the reminder in the description for developers.
 
-Code reuse is always preferred, if possible.
+>>
+>>>> So we add property 'power-domains' and set 'maxItems: 1' in the
+>>>> DT Schema.
+>>>>
+>>>> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+>>>> ---
+>>>>    Documentation/devicetree/bindings/phy/mediatek,tphy.yaml | 3 +++
+>>>>    1 file changed, 3 insertions(+)
+>>>>
+>>>> diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+>>>> index 423b7c4e62f2..c77fe43c224a 100644
+>>>> --- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+>>>> +++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+>>>> @@ -125,6 +125,9 @@ properties:
+>>>>        $ref: /schemas/types.yaml#/definitions/uint32
+>>>>        default: 28
+>>>> +  power-domains:
+>>>> +    maxItems: 1
+>>>> +
+>>>>    # Required child node:
+>>>>    patternProperties:
+>>>>      "^(usb|pcie|sata)-phy@[0-9a-f]+$":
+>>>> -- 
+>>>> 2.45.2
+>>>>
+>>
 
-Yours,
-Linus Walleij
+[snip]
+
+V2 of this patch has been send.
+
+Thanks
+Macpaul Lin.
 
