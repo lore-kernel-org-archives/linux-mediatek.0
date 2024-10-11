@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 192C2CFD2FD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Oct 2024 09:19:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 539EFCFD354
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Oct 2024 11:46:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lU4r4tbL0K3+5Mx7gnspEYb/vcINY3gT5cXeOgb5F4w=; b=Cvtw9zNkeywNA03d3rCi/cTx11
-	0CEmQnis+GuBM/dzqhQqGmmALwIKjqkPS8GjIGvL096pCw20+WpoRUCzcfk3LAXbZ6zNDbkzhRERm
-	/7CQHH4LBItRVIaY3ya0BXzCJ4u89+Tggz7aCha8QWKz/0dGZSh4jtIOZXlm090u9vTqu015DEDhk
-	DNOmZiWEp0RF+HD2ilFZOhf8EgrJ79ZvmaDIEeHZb914/9UNeHsKGzeUaW//AdYBKt3kramNu/N7B
-	OD0j4i/dAuzuOr+hB/6ctI5ZAXLpxHWCPU4j4MdGrNP9ePeVin6n8Loc0e5u9qVX4d0NtdBBIyFCf
-	aRE0ViYg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ljavxxGKKAm3GSVsD5lJ5uz4ljKEZIvQJpDMgna7Szw=; b=IhAg0LrdaLr3K/9B8ocjxMCW6i
+	YocPku0Gyeb+GdFkZ94yPhuR8jX+r1kbwQBODj047jBe2WiLiz/38hSE3e+uwORBiJ8qtMcN4iuHJ
+	/lnR5lNPKZPVTSHGJ52ii0bbLz5pwVgUkmQcxzyrpcXWJ5jppmfb3naoLZIWGsidj0g8LsH26zc7C
+	qpgAwn3pkDdH9UwtrC3SEfRm94K0BteHZjU2oEatJaPBwyLTqt3HhE60/Bqkv7jVqBcXJwamBWNNl
+	PxIDqwhoJH5qIm+b7RznvkFYLQYmFCVLoAmgseGpUzA6Z0FjzluRx0EH5CQnf2eE3DtsZiQHWOmd9
+	nryB4ZCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1szBo9-0000000FoAN-3Xz3;
-	Fri, 11 Oct 2024 09:19:37 +0000
-Received: from hch by bombadil.infradead.org with local (Exim 4.98 #2 (Red Hat Linux))
-	id 1szBmb-0000000FnpU-3CEE;
-	Fri, 11 Oct 2024 09:18:01 +0000
-Date: Fri, 11 Oct 2024 02:18:01 -0700
-From: Christoph Hellwig <hch@infradead.org>
-To: Qun-Wei Lin <qun-wei.lin@mediatek.com>
-Cc: Jens Axboe <axboe@kernel.dk>, Minchan Kim <minchan@kernel.org>,
-	Sergey Senozhatsky <senozhatsky@chromium.org>,
-	Vishal Verma <vishal.l.verma@intel.com>,
-	Dan Williams <dan.j.williams@intel.com>,
-	Dave Jiang <dave.jiang@intel.com>, Ira Weiny <ira.weiny@intel.com>,
-	Andrew Morton <akpm@linux-foundation.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Huang, Ying" <ying.huang@intel.com>, Chris Li <chrisl@kernel.org>,
-	Ryan Roberts <ryan.roberts@arm.com>,
-	David Hildenbrand <david@redhat.com>,
-	Kairui Song <kasong@tencent.com>,
-	"Matthew Wilcox (Oracle)" <willy@infradead.org>,
-	Dan Schatzberg <schatzberg.dan@gmail.com>,
-	Barry Song <baohua@kernel.org>, linux-block@vger.kernel.org,
-	linux-kernel@vger.kernel.org, nvdimm@lists.linux.dev,
-	linux-mm@kvack.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Casper Li <casper.li@mediatek.com>,
-	Chinwen Chang <chinwen.chang@mediatek.com>,
-	Andrew Yang <andrew.yang@mediatek.com>,
-	John Hsu <john.hsu@mediatek.com>, wsd_upstream@mediatek.com
-Subject: Re: [PATCH] mm: Split BLK_FEAT_SYNCHRONOUS and SWP_SYNCHRONOUS_IO
- into separate read and write flags
-Message-ID: <ZwjtSe8zL3WO32h5@infradead.org>
-References: <20241011091133.28173-1-qun-wei.lin@mediatek.com>
+	id 1szE6M-0000000GBXj-0A1g;
+	Fri, 11 Oct 2024 11:46:34 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1szD0q-0000000FzOp-1Z6C;
+	Fri, 11 Oct 2024 10:36:50 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id BBBCE497;
+	Fri, 11 Oct 2024 03:37:14 -0700 (PDT)
+Received: from donnerap.manchester.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 9B0EC3F73F;
+	Fri, 11 Oct 2024 03:36:42 -0700 (PDT)
+Date: Fri, 11 Oct 2024 11:36:32 +0100
+From: Andre Przywara <andre.przywara@arm.com>
+To: Javier Carrasco <javier.carrasco.cruz@gmail.com>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Hans de Goede
+ <hdegoede@redhat.com>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec
+ <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, Florian
+ Fainelli <florian.fainelli@broadcom.com>, Broadcom internal kernel review
+ list <bcm-kernel-feedback-list@broadcom.com>, linux-input@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-rpi-kernel@lists.infradead.org
+Subject: Re: [PATCH 03/10] Input: sun4i-lradc-keys - switch to
+ for_each_child_of_node_scoped
+Message-ID: <20241011113632.2eee613c@donnerap.manchester.arm.com>
+In-Reply-To: <20241010-input_automate_of_node_put-v1-3-ebc62138fbf8@gmail.com>
+References: <20241010-input_automate_of_node_put-v1-0-ebc62138fbf8@gmail.com>
+	<20241010-input_automate_of_node_put-v1-3-ebc62138fbf8@gmail.com>
+Organization: ARM
+X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.32; aarch64-unknown-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241011091133.28173-1-qun-wei.lin@mediatek.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20241011_033648_535519_BA0252E1 
+X-CRM114-Status: GOOD (  16.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,21 +73,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 11, 2024 at 05:11:33PM +0800, Qun-Wei Lin wrote:
-> This patch splits the BLK_FEAT_SYNCHRONOUS feature flag into two
-> separate flags: BLK_FEAT_READ_SYNCHRONOUS and
-> BLK_FEAT_WRITE_SYNCHRONOUS. Similarly, the SWP_SYNCHRONOUS_IO flag is
-> split into SWP_READ_SYNCHRONOUS_IO and SWP_WRITE_SYNCHRONOUS_IO.
-> 
-> These changes are motivated by the need to better accommodate certain
-> swap devices that support synchronous read operations but asynchronous write
-> operations.
-> 
-> The existing BLK_FEAT_SYNCHRONOUS and SWP_SYNCHRONOUS_IO flags are not
-> sufficient for these devices, as they enforce synchronous behavior for
-> both read and write operations.
+On Thu, 10 Oct 2024 23:25:53 +0200
+Javier Carrasco <javier.carrasco.cruz@gmail.com> wrote:
 
-You're still failing to provide a user.  Without that it is dead in
-the water from the very beginning.
+Hi,
+
+> Use the scoped variant of the macro to simplify the code and error
+> handling. This makes the error handling more robust by ensuring that
+> the child node is always freed.
+> 
+> Signed-off-by: Javier Carrasco <javier.carrasco.cruz@gmail.com>
+
+Looks good to me:
+
+Reviewed-by: Andre Przywara <andre.przywara@arm.com>
+
+Cheers,
+Andre
+
+> ---
+>  drivers/input/keyboard/sun4i-lradc-keys.c | 7 ++-----
+>  1 file changed, 2 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/input/keyboard/sun4i-lradc-keys.c b/drivers/input/keyboard/sun4i-lradc-keys.c
+> index f304cab0ebdb..f1e269605f05 100644
+> --- a/drivers/input/keyboard/sun4i-lradc-keys.c
+> +++ b/drivers/input/keyboard/sun4i-lradc-keys.c
+> @@ -202,7 +202,7 @@ static void sun4i_lradc_close(struct input_dev *dev)
+>  static int sun4i_lradc_load_dt_keymap(struct device *dev,
+>  				      struct sun4i_lradc_data *lradc)
+>  {
+> -	struct device_node *np, *pp;
+> +	struct device_node *np;
+>  	int i;
+>  	int error;
+>  
+> @@ -223,28 +223,25 @@ static int sun4i_lradc_load_dt_keymap(struct device *dev,
+>  		return -ENOMEM;
+>  
+>  	i = 0;
+> -	for_each_child_of_node(np, pp) {
+> +	for_each_child_of_node_scoped(np, pp) {
+>  		struct sun4i_lradc_keymap *map = &lradc->chan0_map[i];
+>  		u32 channel;
+>  
+>  		error = of_property_read_u32(pp, "channel", &channel);
+>  		if (error || channel != 0) {
+>  			dev_err(dev, "%pOFn: Inval channel prop\n", pp);
+> -			of_node_put(pp);
+>  			return -EINVAL;
+>  		}
+>  
+>  		error = of_property_read_u32(pp, "voltage", &map->voltage);
+>  		if (error) {
+>  			dev_err(dev, "%pOFn: Inval voltage prop\n", pp);
+> -			of_node_put(pp);
+>  			return -EINVAL;
+>  		}
+>  
+>  		error = of_property_read_u32(pp, "linux,code", &map->keycode);
+>  		if (error) {
+>  			dev_err(dev, "%pOFn: Inval linux,code prop\n", pp);
+> -			of_node_put(pp);
+>  			return -EINVAL;
+>  		}
+>  
+> 
 
 
