@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D9ECD24463
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Oct 2024 02:50:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB00BD24463
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Oct 2024 02:52:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Di3M/fiBPVkpN21ApNW89b4arF3/fiEXNTGuEVnABgg=; b=VbfZukju18NA7NyjQwiubWaQ0v
-	3StZK1JdhNbrfWLkV5NPBtVI/zl3wqX2VV7PP+eIyzMDlR1h3CMaGjCNPHpKXCIkwDMGOh7e0yqMO
-	oPKVz4xAGu6fBdJRRl8u6rwYLtXtzGVCJkT1BkR+vEPPdooC02ODIR3e3D/VIQxlBIx+m4x8qMn9C
-	ZGwqrtlo6ajRi61Fkpy0GwzezKMZT6MSrzE7w9jlzahv3sGfAzuUAWU2IKwM0y1vhek0gOWQAm4S/
-	szTrekZBpPZjfoCLYrByrGlL9cfKMrA1AlU8/xPjuXEOr/4xnhb03lmNDrmmSr8Q8eT1zuBRCt99o
-	yZ1WprWA==;
+	bh=PDVQQdnaImD8P0O9nNV6I5puZthSvI10NLFPAE6AK0k=; b=EWB8e71M8G394+EPH6x0mXC6cd
+	Of3awfHsfFjtlYfUC7V4rbI+ZMEw8OIUPn/87TW/9b/XWYmiEWFSvzjMx243+y1PTg9Okepvkrmnz
+	q2QgdgXDD+zW+40odUE91VAoSUS8eyax9xPbMOxIDHV9WRkPLbJ30NEZpj5gkMkIFLWyR1Q5anQKf
+	Xaq21aMpx4UhBrbr2FTo7Vfkehwgmow4RiUVqSBcJJdaqhPEwFXV9ixvUIAuChtSd4GcVzPDoSpXD
+	t+EVeCEEEUOv8ptCVWFK7i3I+vJG+ZgPkYn/M62p6cIRjAqBcfLj8VOss76p8fgz1t+XxLXPSvlq/
+	VJTojlfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sz5jl-0000000F5YU-275x;
-	Fri, 11 Oct 2024 02:50:41 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1sz5l5-0000000F5hw-30RY;
+	Fri, 11 Oct 2024 02:52:03 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sz5ij-0000000F5MB-3GGl;
-	Fri, 11 Oct 2024 02:49:39 +0000
-X-UUID: 711448fc877b11efb3adad29d29602c1-20241010
+	id 1sz5it-0000000F5NS-43P0;
+	Fri, 11 Oct 2024 02:49:49 +0000
+X-UUID: 77b05796877b11efba0aef63c0775dbf-20241010
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Di3M/fiBPVkpN21ApNW89b4arF3/fiEXNTGuEVnABgg=;
-	b=QdvRP3YQ3721Sywx/gy9mDnmIxbGlqsJu0fQuEE4V7sOtdxNhvfxZnwMbtzCH6M3pwg8Qy2sa9R7pzhJ61p5Aju+DOlbTzMhuYMxF36DxK83AdpVlx9Rez287LyMuNxd3CsKmGjXw4shLfBZqyb9K9ruwPIBdTc+yV9pawZwi5o=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=PDVQQdnaImD8P0O9nNV6I5puZthSvI10NLFPAE6AK0k=;
+	b=cH6C1dO7QIsWNnNy79/FamXvqrPxwinbkySxjLZJ0OPMBawqkSH1cBHdB+8LSlaVdgYMugsD6nOZaTN0cFEvSHs/e0MHs/k/UOng6pUbTT2u5LsJxsEuq0ZDdpaklFiy2aglEI3M4YXG6Umz6jlT5u4PLkXezBr5E/0FPhY7asc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:cf13883f-218e-4b96-bd93-d42ecf5aefe0,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:6dc6a47,CLOUDID:10991165-444a-4b47-a99a-591ade3b04b2,B
+X-CID-O-INFO: VERSION:1.1.41,REQID:3b0dd334-a70e-468a-aa1a-2f5833417d17,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:6dc6a47,CLOUDID:c0ec9c26-5902-4533-af4f-d0904aa89b3c,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 711448fc877b11efb3adad29d29602c1-20241010
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+X-UUID: 77b05796877b11efba0aef63c0775dbf-20241010
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
 	(envelope-from <andy-ld.lu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 476816427; Thu, 10 Oct 2024 19:49:31 -0700
+	with ESMTP id 1999532644; Thu, 10 Oct 2024 19:49:43 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 11 Oct 2024 10:49:28 +0800
+ 15.2.1118.26; Fri, 11 Oct 2024 10:49:39 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 11 Oct 2024 10:49:27 +0800
+ 15.2.1118.26 via Frontend Transport; Fri, 11 Oct 2024 10:49:38 +0800
 From: Andy-ld Lu <andy-ld.lu@mediatek.com>
 To: <ulf.hansson@linaro.org>, <robh@kernel.org>, <krzk+dt@kernel.org>,
 	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
@@ -60,9 +60,9 @@ To: <ulf.hansson@linaro.org>, <robh@kernel.org>, <krzk+dt@kernel.org>,
 CC: <linux-mmc@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>, Andy-ld Lu <andy-ld.lu@mediatek.com>
-Subject: [PATCH v4 1/3] mmc: mtk-sd: Add stop_dly_sel and pop_en_cnt to platform data
-Date: Fri, 11 Oct 2024 10:48:34 +0800
-Message-ID: <20241011024906.8173-2-andy-ld.lu@mediatek.com>
+Subject: [PATCH v4 2/3] mmc: mtk-sd: Add support for MT8196
+Date: Fri, 11 Oct 2024 10:48:35 +0800
+Message-ID: <20241011024906.8173-3-andy-ld.lu@mediatek.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20241011024906.8173-1-andy-ld.lu@mediatek.com>
 References: <20241011024906.8173-1-andy-ld.lu@mediatek.com>
@@ -70,21 +70,24 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--2.274200-8.000000
-X-TMASE-MatchedRID: 5O0gWNbQ5pcvjtMPTTOa8hz2MDiYujy5wjj8dZF/W2C67Q3uPo9KI5OD
-	Y7BHORsiritsRfCiBtAZJsWyIj9CVAtrOhDKumbS9iItFUn3XkNb2iL0xnz/EiJlFuUUbH7w2d8
-	mtRIRsUPv76y9IPqLHoiBweQjSMLbt/QS4egZHO6zI1v7J4hECu3+iQEtoSj4v8D7QPW2jo9ynC
-	+RoYX/O+LzNWBegCW2wgn7iDBesS1YF3qW3Je6++Oasx+lgBcPNSjywSBJ1bhDiGqN3ff/MH3b8
-	F0426My+1XPYVjt+4MgG8ax1DW8CGbPTa/KMJFosFpblkWFlyBSFieEA0DaroSVUZZHNLr+RgV6
-	Hsqyx11QaONuZ6Jr4g9k3l8EaYIcovpDXVQHzIN+3BndfXUhXQ==
+X-TM-AS-Result: No-10-1.311600-8.000000
+X-TMASE-MatchedRID: SWUBxxlZlUch3Xy1KnQIRMnUT+eskUQPZdKh+/+x0Y6SLiCOgnAfc2fj
+	+cxYnUGbyAty1e8lFeUtY9D29dIP8wOHW1v+xYUcQPrPw3WbUAtMkOX0UoduufNhzIgXtFJVjpS
+	64nDSufiTprK7Z1jjqSP+He+Qv0HM/DD1K263pgcHtOpEBhWiFj+COaD3ynve7a71bENFnTNGlx
+	MS660FAERoinptczhNHq4MoNUkMQ766huHBXP2ABWCVBr+Ay98O69hrW/YgWEvM0Gdq0fzqfG39
+	9+Ui/tdqdtl1uWR1+kxQ033uizCMYrFHTmMFhb3h2VzUlo4HVMTbU1KYGoQpwnnMzd3ORpBnCc+
+	RLKEo8aWgbWxZQKlsRPT4WWiXjYzOVzKEd+ERcqSwdo9pBBGwIiSXIsyDf91myiLZetSf8lRN1j
+	+Z19Ne0kpbiYOUmwxWBd6ltyXuvvUmBbKGnJpyF4HQViUy1kdVvb871RAvjz6NZv42EZFBzpD0m
+	F96L1U/uWlKV+xjFmZASsUU57ulQJucB0nHudkkB8Ubwr8aS2ElVGWRzS6/kYFeh7KssddUGjjb
+	meia+IPZN5fBGmCHDkCyv2R+K5WftwZ3X11IV0=
 X-TM-AS-User-Approved-Sender: No
 X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--2.274200-8.000000
+X-TMASE-Result: 10-1.311600-8.000000
 X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: A375087005CFD509030D9F91D2F76D335C76BE4B7F73CDFEAE2B4C9AA85B96802000:8
+X-TM-SNTS-SMTP: 359D386F022439CC3F3987BB53084C3C24BA7519835F559E5CA03EEEEA33A9FF2000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241010_194937_846771_FBB42B79 
-X-CRM114-Status: GOOD (  13.57  )
+X-CRM114-CacheID: sfid-20241010_194948_045048_E1E31DC1 
+X-CRM114-Status: GOOD (  22.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,107 +102,363 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are modified register settings for STOP_DLY_SEL and POP_EN_CNT
-from our next generation SoCs, due to the advanced chip manufacturing
-process and the resulting changes in the internal signal timing.
+Mediatek SoC MT8196 features a new design for tx/rx path. The new tx
+path incorporates register settings that are closely associated with
+bus timing. And the difference between new rx path and older versions
+is the usage of distinct register bits when setting the data sampling
+edge as part of the tuning process.
 
-Add two new fields to the compatibility structure to reflect the
-modifications. For legacy SoCs, also add the original value of
-'stop_dly_sel' to the platform data, for unified code setting.
+Besides, the register settings for STOP_DLY_SEL and POP_EN_CNT are
+different from previous SoCs.
+
+For the changes mentioned in relation to the MT8196, the new compatible
+string 'mediatek,mt8196-mmc' is introduced. This is to accommodate
+different settings and workflows specific to the MT8196.
 
 Signed-off-by: Andy-ld Lu <andy-ld.lu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/mmc/host/mtk-sd.c | 21 +++++++++++++++++++--
- 1 file changed, 19 insertions(+), 2 deletions(-)
+ drivers/mmc/host/mtk-sd.c | 145 +++++++++++++++++++++++++++++++++-----
+ 1 file changed, 126 insertions(+), 19 deletions(-)
 
 diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 1efe434391af..aef30bba00b9 100644
+index aef30bba00b9..4c239a4cf8d9 100644
 --- a/drivers/mmc/host/mtk-sd.c
 +++ b/drivers/mmc/host/mtk-sd.c
-@@ -248,6 +248,7 @@
- #define MSDC_PB2_SUPPORT_64G      BIT(1)    /* RW */
+@@ -66,6 +66,7 @@
+ #define SDC_RESP3        0x4c
+ #define SDC_BLK_NUM      0x50
+ #define SDC_ADV_CFG0     0x64
++#define MSDC_NEW_RX_CFG  0x68
+ #define EMMC_IOCON       0x7c
+ #define SDC_ACMD_RESP    0x80
+ #define DMA_SA_H4BIT     0x8c
+@@ -92,6 +93,7 @@
+ #define EMMC_TOP_CONTROL	0x00
+ #define EMMC_TOP_CMD		0x04
+ #define EMMC50_PAD_DS_TUNE	0x0c
++#define LOOP_TEST_CONTROL	0x30
+ 
+ /*--------------------------------------------------------------------------*/
+ /* Register Mask                                                            */
+@@ -203,9 +205,13 @@
+ #define SDC_STS_CMDBUSY         BIT(1)	/* RW */
+ #define SDC_STS_SWR_COMPL       BIT(31)	/* RW */
+ 
+-#define SDC_DAT1_IRQ_TRIGGER	BIT(19)	/* RW */
+ /* SDC_ADV_CFG0 mask */
++#define SDC_DAT1_IRQ_TRIGGER	BIT(19)	/* RW */
+ #define SDC_RX_ENHANCE_EN	BIT(20)	/* RW */
++#define SDC_NEW_TX_EN		BIT(31)	/* RW */
++
++/* MSDC_NEW_RX_CFG mask */
++#define MSDC_NEW_RX_PATH_SEL	BIT(0)	/* RW */
+ 
+ /* DMA_SA_H4BIT mask */
+ #define DMA_ADDR_HIGH_4BIT      GENMASK(3, 0)	/* RW */
+@@ -227,6 +233,7 @@
+ 
+ /* MSDC_PATCH_BIT mask */
+ #define MSDC_PATCH_BIT_ODDSUPP    BIT(1)	/* RW */
++#define MSDC_PATCH_BIT_RD_DAT_SEL BIT(3)	/* RW */
+ #define MSDC_INT_DAT_LATCH_CK_SEL GENMASK(9, 7)
+ #define MSDC_CKGEN_MSDC_DLY_SEL   GENMASK(14, 10)
+ #define MSDC_PATCH_BIT_IODSSEL    BIT(16)	/* RW */
+@@ -249,6 +256,7 @@
  #define MSDC_PB2_RESPWAIT         GENMASK(3, 2)   /* RW */
  #define MSDC_PB2_RESPSTSENSEL     GENMASK(18, 16) /* RW */
-+#define MSDC_PB2_POP_EN_CNT       GENMASK(23, 20) /* RW */
+ #define MSDC_PB2_POP_EN_CNT       GENMASK(23, 20) /* RW */
++#define MSDC_PB2_CFGCRCSTSEDGE    BIT(25)   /* RW */
  #define MSDC_PB2_CRCSTSENSEL      GENMASK(31, 29) /* RW */
  
  #define MSDC_PAD_TUNE_DATWRDLY	  GENMASK(4, 0)		/* RW */
-@@ -403,6 +404,8 @@ struct mtk_mmc_compatible {
- 	bool data_tune;
- 	bool busy_check;
- 	bool stop_clk_fix;
-+	u8 stop_dly_sel;
-+	u8 pop_en_cnt;
+@@ -313,6 +321,12 @@
+ #define PAD_DS_DLY1		GENMASK(14, 10)	/* RW */
+ #define PAD_DS_DLY3		GENMASK(4, 0)	/* RW */
+ 
++/* LOOP_TEST_CONTROL mask */
++#define TEST_LOOP_DSCLK_MUX_SEL        BIT(0)	/* RW */
++#define TEST_LOOP_LATCH_MUX_SEL        BIT(1)	/* RW */
++#define LOOP_EN_SEL_CLK                BIT(20)	/* RW */
++#define TEST_HS400_CMD_LOOP_MUX_SEL    BIT(31)	/* RW */
++
+ #define REQ_CMD_EIO  BIT(0)
+ #define REQ_CMD_TMO  BIT(1)
+ #define REQ_DAT_ERR  BIT(2)
+@@ -393,6 +407,7 @@ struct msdc_save_para {
+ 	u32 emmc_top_control;
+ 	u32 emmc_top_cmd;
+ 	u32 emmc50_pad_ds_tune;
++	u32 loop_test_control;
+ };
+ 
+ struct mtk_mmc_compatible {
+@@ -409,6 +424,8 @@ struct mtk_mmc_compatible {
  	bool enhance_rx;
  	bool support_64g;
  	bool use_internal_cd;
-@@ -504,6 +507,7 @@ static const struct mtk_mmc_compatible mt2712_compat = {
- 	.data_tune = true,
- 	.busy_check = true,
- 	.stop_clk_fix = true,
-+	.stop_dly_sel = 3,
- 	.enhance_rx = true,
- 	.support_64g = true,
- };
-@@ -517,6 +521,7 @@ static const struct mtk_mmc_compatible mt6779_compat = {
- 	.data_tune = true,
- 	.busy_check = true,
- 	.stop_clk_fix = true,
-+	.stop_dly_sel = 3,
- 	.enhance_rx = true,
- 	.support_64g = true,
- };
-@@ -556,6 +561,7 @@ static const struct mtk_mmc_compatible mt7622_compat = {
- 	.data_tune = true,
- 	.busy_check = true,
- 	.stop_clk_fix = true,
-+	.stop_dly_sel = 3,
- 	.enhance_rx = true,
- 	.support_64g = false,
- };
-@@ -569,6 +575,7 @@ static const struct mtk_mmc_compatible mt7986_compat = {
- 	.data_tune = true,
- 	.busy_check = true,
- 	.stop_clk_fix = true,
-+	.stop_dly_sel = 3,
- 	.enhance_rx = true,
- 	.support_64g = true,
- };
-@@ -608,6 +615,7 @@ static const struct mtk_mmc_compatible mt8183_compat = {
- 	.data_tune = true,
- 	.busy_check = true,
- 	.stop_clk_fix = true,
-+	.stop_dly_sel = 3,
- 	.enhance_rx = true,
- 	.support_64g = true,
- };
-@@ -621,6 +629,7 @@ static const struct mtk_mmc_compatible mt8516_compat = {
- 	.data_tune = true,
- 	.busy_check = true,
- 	.stop_clk_fix = true,
-+	.stop_dly_sel = 3,
++	bool support_new_tx;
++	bool support_new_rx;
  };
  
+ struct msdc_tune_para {
+@@ -632,6 +649,23 @@ static const struct mtk_mmc_compatible mt8516_compat = {
+ 	.stop_dly_sel = 3,
+ };
+ 
++static const struct mtk_mmc_compatible mt8196_compat = {
++	.clk_div_bits = 12,
++	.recheck_sdio_irq = false,
++	.hs400_tune = false,
++	.pad_tune_reg = MSDC_PAD_TUNE0,
++	.async_fifo = true,
++	.data_tune = true,
++	.busy_check = true,
++	.stop_clk_fix = true,
++	.stop_dly_sel = 1,
++	.pop_en_cnt = 2,
++	.enhance_rx = true,
++	.support_64g = true,
++	.support_new_tx = true,
++	.support_new_rx = true,
++};
++
  static const struct of_device_id msdc_of_ids[] = {
-@@ -1767,8 +1776,16 @@ static void msdc_init_hw(struct msdc_host *host)
- 	sdr_set_bits(host->base + EMMC50_CFG0, EMMC50_CFG_CFCSTS_SEL);
+ 	{ .compatible = "mediatek,mt2701-mmc", .data = &mt2701_compat},
+ 	{ .compatible = "mediatek,mt2712-mmc", .data = &mt2712_compat},
+@@ -643,6 +677,7 @@ static const struct of_device_id msdc_of_ids[] = {
+ 	{ .compatible = "mediatek,mt8135-mmc", .data = &mt8135_compat},
+ 	{ .compatible = "mediatek,mt8173-mmc", .data = &mt8173_compat},
+ 	{ .compatible = "mediatek,mt8183-mmc", .data = &mt8183_compat},
++	{ .compatible = "mediatek,mt8196-mmc", .data = &mt8196_compat},
+ 	{ .compatible = "mediatek,mt8516-mmc", .data = &mt8516_compat},
  
- 	if (host->dev_comp->stop_clk_fix) {
--		sdr_set_field(host->base + MSDC_PATCH_BIT1,
--			      MSDC_PATCH_BIT1_STOP_DLY, 3);
-+		if (host->dev_comp->stop_dly_sel)
-+			sdr_set_field(host->base + MSDC_PATCH_BIT1,
-+				      MSDC_PATCH_BIT1_STOP_DLY,
-+				      host->dev_comp->stop_dly_sel);
+ 	{}
+@@ -883,6 +918,41 @@ static int msdc_ungate_clock(struct msdc_host *host)
+ 				  (val & MSDC_CFG_CKSTB), 1, 20000);
+ }
+ 
++static void msdc_new_tx_setting(struct msdc_host *host)
++{
++	if (!host->top_base)
++		return;
 +
-+		if (host->dev_comp->pop_en_cnt)
-+			sdr_set_field(host->base + MSDC_PATCH_BIT2,
-+				      MSDC_PB2_POP_EN_CNT,
-+				      host->dev_comp->pop_en_cnt);
++	sdr_set_bits(host->top_base + LOOP_TEST_CONTROL,
++		     TEST_LOOP_DSCLK_MUX_SEL);
++	sdr_set_bits(host->top_base + LOOP_TEST_CONTROL,
++		     TEST_LOOP_LATCH_MUX_SEL);
++	sdr_clr_bits(host->top_base + LOOP_TEST_CONTROL,
++		     TEST_HS400_CMD_LOOP_MUX_SEL);
 +
- 		sdr_clr_bits(host->base + SDC_FIFO_CFG,
- 			     SDC_FIFO_CFG_WRVALIDSEL);
- 		sdr_clr_bits(host->base + SDC_FIFO_CFG,
++	switch (host->timing) {
++	case MMC_TIMING_LEGACY:
++	case MMC_TIMING_MMC_HS:
++	case MMC_TIMING_SD_HS:
++	case MMC_TIMING_UHS_SDR12:
++	case MMC_TIMING_UHS_SDR25:
++	case MMC_TIMING_UHS_DDR50:
++	case MMC_TIMING_MMC_DDR52:
++		sdr_clr_bits(host->top_base + LOOP_TEST_CONTROL,
++			     LOOP_EN_SEL_CLK);
++		break;
++	case MMC_TIMING_UHS_SDR50:
++	case MMC_TIMING_UHS_SDR104:
++	case MMC_TIMING_MMC_HS200:
++	case MMC_TIMING_MMC_HS400:
++		sdr_set_bits(host->top_base + LOOP_TEST_CONTROL,
++			     LOOP_EN_SEL_CLK);
++		break;
++	default:
++		break;
++	}
++}
++
+ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
+ {
+ 	struct mmc_host *mmc = mmc_from_priv(host);
+@@ -892,6 +962,7 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
+ 	u32 sclk;
+ 	u32 tune_reg = host->dev_comp->pad_tune_reg;
+ 	u32 val;
++	bool timing_changed;
+ 
+ 	if (!hz) {
+ 		dev_dbg(host->dev, "set mclk to 0\n");
+@@ -901,6 +972,11 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
+ 		return;
+ 	}
+ 
++	if (host->timing != timing)
++		timing_changed = true;
++	else
++		timing_changed = false;
++
+ 	flags = readl(host->base + MSDC_INTEN);
+ 	sdr_clr_bits(host->base + MSDC_INTEN, flags);
+ 	if (host->dev_comp->clk_div_bits == 8)
+@@ -1007,6 +1083,9 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
+ 		sdr_set_field(host->base + tune_reg,
+ 			      MSDC_PAD_TUNE_CMDRRDLY,
+ 			      host->hs400_cmd_int_delay);
++	if (host->dev_comp->support_new_tx && timing_changed)
++		msdc_new_tx_setting(host);
++
+ 	dev_dbg(host->dev, "sclk: %d, timing: %d\n", mmc->actual_clock,
+ 		timing);
+ }
+@@ -1738,6 +1817,17 @@ static void msdc_init_hw(struct msdc_host *host)
+ 		reset_control_deassert(host->reset);
+ 	}
+ 
++	/* New tx/rx enable bit need to be 0->1 for hardware check */
++	if (host->dev_comp->support_new_tx) {
++		sdr_clr_bits(host->base + SDC_ADV_CFG0, SDC_NEW_TX_EN);
++		sdr_set_bits(host->base + SDC_ADV_CFG0, SDC_NEW_TX_EN);
++		msdc_new_tx_setting(host);
++	}
++	if (host->dev_comp->support_new_rx) {
++		sdr_clr_bits(host->base + MSDC_NEW_RX_CFG, MSDC_NEW_RX_PATH_SEL);
++		sdr_set_bits(host->base + MSDC_NEW_RX_CFG, MSDC_NEW_RX_PATH_SEL);
++	}
++
+ 	/* Configure to MMC/SD mode, clock free running */
+ 	sdr_set_bits(host->base + MSDC_CFG, MSDC_CFG_MODE | MSDC_CFG_CKPDN);
+ 
+@@ -2097,6 +2187,19 @@ static inline void msdc_set_data_delay(struct msdc_host *host, u32 value)
+ 	}
+ }
+ 
++static inline void msdc_set_data_sample_edge(struct msdc_host *host, bool rising)
++{
++	u32 value = rising ? 0 : 1;
++
++	if (host->dev_comp->support_new_rx) {
++		sdr_set_field(host->base + MSDC_PATCH_BIT, MSDC_PATCH_BIT_RD_DAT_SEL, value);
++		sdr_set_field(host->base + MSDC_PATCH_BIT2, MSDC_PB2_CFGCRCSTSEDGE, value);
++	} else {
++		sdr_set_field(host->base + MSDC_IOCON, MSDC_IOCON_DSPL, value);
++		sdr_set_field(host->base + MSDC_IOCON, MSDC_IOCON_W_DSPL, value);
++	}
++}
++
+ static int msdc_tune_response(struct mmc_host *mmc, u32 opcode)
+ {
+ 	struct msdc_host *host = mmc_priv(mmc);
+@@ -2252,8 +2355,7 @@ static int msdc_tune_data(struct mmc_host *mmc, u32 opcode)
+ 
+ 	sdr_set_field(host->base + MSDC_PATCH_BIT, MSDC_INT_DAT_LATCH_CK_SEL,
+ 		      host->latch_ck);
+-	sdr_clr_bits(host->base + MSDC_IOCON, MSDC_IOCON_DSPL);
+-	sdr_clr_bits(host->base + MSDC_IOCON, MSDC_IOCON_W_DSPL);
++	msdc_set_data_sample_edge(host, true);
+ 	for (i = 0; i < host->tuning_step; i++) {
+ 		msdc_set_data_delay(host, i);
+ 		ret = mmc_send_tuning(mmc, opcode, NULL);
+@@ -2266,8 +2368,7 @@ static int msdc_tune_data(struct mmc_host *mmc, u32 opcode)
+ 	    (final_rise_delay.start == 0 && final_rise_delay.maxlen >= 4))
+ 		goto skip_fall;
+ 
+-	sdr_set_bits(host->base + MSDC_IOCON, MSDC_IOCON_DSPL);
+-	sdr_set_bits(host->base + MSDC_IOCON, MSDC_IOCON_W_DSPL);
++	msdc_set_data_sample_edge(host, false);
+ 	for (i = 0; i < host->tuning_step; i++) {
+ 		msdc_set_data_delay(host, i);
+ 		ret = mmc_send_tuning(mmc, opcode, NULL);
+@@ -2279,12 +2380,10 @@ static int msdc_tune_data(struct mmc_host *mmc, u32 opcode)
+ skip_fall:
+ 	final_maxlen = max(final_rise_delay.maxlen, final_fall_delay.maxlen);
+ 	if (final_maxlen == final_rise_delay.maxlen) {
+-		sdr_clr_bits(host->base + MSDC_IOCON, MSDC_IOCON_DSPL);
+-		sdr_clr_bits(host->base + MSDC_IOCON, MSDC_IOCON_W_DSPL);
++		msdc_set_data_sample_edge(host, true);
+ 		final_delay = final_rise_delay.final_phase;
+ 	} else {
+-		sdr_set_bits(host->base + MSDC_IOCON, MSDC_IOCON_DSPL);
+-		sdr_set_bits(host->base + MSDC_IOCON, MSDC_IOCON_W_DSPL);
++		msdc_set_data_sample_edge(host, false);
+ 		final_delay = final_fall_delay.final_phase;
+ 	}
+ 	msdc_set_data_delay(host, final_delay);
+@@ -2309,8 +2408,7 @@ static int msdc_tune_together(struct mmc_host *mmc, u32 opcode)
+ 		      host->latch_ck);
+ 
+ 	sdr_clr_bits(host->base + MSDC_IOCON, MSDC_IOCON_RSPL);
+-	sdr_clr_bits(host->base + MSDC_IOCON,
+-		     MSDC_IOCON_DSPL | MSDC_IOCON_W_DSPL);
++	msdc_set_data_sample_edge(host, true);
+ 	for (i = 0; i < host->tuning_step; i++) {
+ 		msdc_set_cmd_delay(host, i);
+ 		msdc_set_data_delay(host, i);
+@@ -2325,8 +2423,7 @@ static int msdc_tune_together(struct mmc_host *mmc, u32 opcode)
+ 		goto skip_fall;
+ 
+ 	sdr_set_bits(host->base + MSDC_IOCON, MSDC_IOCON_RSPL);
+-	sdr_set_bits(host->base + MSDC_IOCON,
+-		     MSDC_IOCON_DSPL | MSDC_IOCON_W_DSPL);
++	msdc_set_data_sample_edge(host, false);
+ 	for (i = 0; i < host->tuning_step; i++) {
+ 		msdc_set_cmd_delay(host, i);
+ 		msdc_set_data_delay(host, i);
+@@ -2340,13 +2437,11 @@ static int msdc_tune_together(struct mmc_host *mmc, u32 opcode)
+ 	final_maxlen = max(final_rise_delay.maxlen, final_fall_delay.maxlen);
+ 	if (final_maxlen == final_rise_delay.maxlen) {
+ 		sdr_clr_bits(host->base + MSDC_IOCON, MSDC_IOCON_RSPL);
+-		sdr_clr_bits(host->base + MSDC_IOCON,
+-			     MSDC_IOCON_DSPL | MSDC_IOCON_W_DSPL);
++		msdc_set_data_sample_edge(host, true);
+ 		final_delay = final_rise_delay.final_phase;
+ 	} else {
+ 		sdr_set_bits(host->base + MSDC_IOCON, MSDC_IOCON_RSPL);
+-		sdr_set_bits(host->base + MSDC_IOCON,
+-			     MSDC_IOCON_DSPL | MSDC_IOCON_W_DSPL);
++		msdc_set_data_sample_edge(host, false);
+ 		final_delay = final_fall_delay.final_phase;
+ 	}
+ 
+@@ -2366,8 +2461,7 @@ static int msdc_execute_tuning(struct mmc_host *mmc, u32 opcode)
+ 	if (host->dev_comp->data_tune && host->dev_comp->async_fifo) {
+ 		ret = msdc_tune_together(mmc, opcode);
+ 		if (host->hs400_mode) {
+-			sdr_clr_bits(host->base + MSDC_IOCON,
+-				     MSDC_IOCON_DSPL | MSDC_IOCON_W_DSPL);
++			msdc_set_data_sample_edge(host, true);
+ 			msdc_set_data_delay(host, 0);
+ 		}
+ 		goto tune_done;
+@@ -3030,6 +3124,8 @@ static void msdc_save_reg(struct msdc_host *host)
+ 			readl(host->top_base + EMMC_TOP_CMD);
+ 		host->save_para.emmc50_pad_ds_tune =
+ 			readl(host->top_base + EMMC50_PAD_DS_TUNE);
++		host->save_para.loop_test_control =
++			readl(host->top_base + LOOP_TEST_CONTROL);
+ 	} else {
+ 		host->save_para.pad_tune = readl(host->base + tune_reg);
+ 	}
+@@ -3040,6 +3136,15 @@ static void msdc_restore_reg(struct msdc_host *host)
+ 	struct mmc_host *mmc = mmc_from_priv(host);
+ 	u32 tune_reg = host->dev_comp->pad_tune_reg;
+ 
++	if (host->dev_comp->support_new_tx) {
++		sdr_clr_bits(host->base + SDC_ADV_CFG0, SDC_NEW_TX_EN);
++		sdr_set_bits(host->base + SDC_ADV_CFG0, SDC_NEW_TX_EN);
++	}
++	if (host->dev_comp->support_new_rx) {
++		sdr_clr_bits(host->base + MSDC_NEW_RX_CFG, MSDC_NEW_RX_PATH_SEL);
++		sdr_set_bits(host->base + MSDC_NEW_RX_CFG, MSDC_NEW_RX_PATH_SEL);
++	}
++
+ 	writel(host->save_para.msdc_cfg, host->base + MSDC_CFG);
+ 	writel(host->save_para.iocon, host->base + MSDC_IOCON);
+ 	writel(host->save_para.sdc_cfg, host->base + SDC_CFG);
+@@ -3058,6 +3163,8 @@ static void msdc_restore_reg(struct msdc_host *host)
+ 		       host->top_base + EMMC_TOP_CMD);
+ 		writel(host->save_para.emmc50_pad_ds_tune,
+ 		       host->top_base + EMMC50_PAD_DS_TUNE);
++		writel(host->save_para.loop_test_control,
++		       host->top_base + LOOP_TEST_CONTROL);
+ 	} else {
+ 		writel(host->save_para.pad_tune, host->base + tune_reg);
+ 	}
 -- 
 2.46.0
 
