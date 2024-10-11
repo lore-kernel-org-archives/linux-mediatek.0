@@ -4,70 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41501D0EE34
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Oct 2024 20:28:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DD7AD0EE3F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Oct 2024 22:16:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U4RHv9v6ZhC8cnkTz8y7JlOr/v6zNKbbWEOI5pht8Z0=; b=QIpMw+8KXW8cjMMTWqXZbwqgNT
-	HYnsq7I26ah02OukTpoWCxtxvM55VPnpDv8chNGzEg6abeFS798cVpIVtcuaaRZCq2cw/3d9dGFtq
-	8SWo3OaHAWD14/mxYYw5cc5zxDGHza8yazrGQJ61BdN2iqpe3P6zIXyCCz7+fqZ1iWo5d/0J+OuPS
-	PBNmi4VtPFrn1htPwfX/ueIQEysGLTJswMkPwkJvDd3OSmlnF3S9at/oPVvvhx8zQs00mfVcDVfTM
-	ypDyjhSb+px9/jJvnEoogG8MaMhWp1lXbkEvAfkBK3wNXsZpqiwwHiL6t9Si3iIuDCZkClYlkcTl7
-	0xZCKDPw==;
+	bh=KyQm37SkwQEwPVClTlp5zR8is3bgIveYYMdhrWyx0yc=; b=Jpy0PXPgL2phdV20g7hnJqL75E
+	YJZ7qRchK+4jAZ56eKdK8EVmJ5G+dDk5/JdYI4z1skha/xFtCTKh3pUgagDoc9D4KqRhPH/4gF5Kw
+	GLun4LeKP6ceNeeNXG4XZESoyP/hObP0r597qZhEC196GDvaALZP5FaeiTqUcHJ3/+9QEwqrAQA3Z
+	Y0mc53nvlUd0yX/36tMfsKwYQAbB70bcDlH5m/PGrLJeZU6mwLohzqHn2SAA1cZfUWNr6D+42B7Qs
+	luJNN0t3E7/ZpOpMT8QKlse/YhGJiQlzVsLypbdXQgpD7OlJaft4jHgrI2WPbndWcGcXm2wt4jq0e
+	vRoVEUCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1szMF9-0000000HWi1-0WDj;
-	Fri, 11 Oct 2024 20:28:11 +0000
-Received: from mx12lb.world4you.com ([81.19.149.122])
+	id 1szNwH-000000004xW-3mT9;
+	Fri, 11 Oct 2024 22:16:50 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1szM5Y-0000000HVvE-1BV8;
-	Fri, 11 Oct 2024 20:18:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=engleder-embedded.com; s=dkim11; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=U4RHv9v6ZhC8cnkTz8y7JlOr/v6zNKbbWEOI5pht8Z0=; b=LZ+tSF9WCSrPPw0HNke0G7Gr07
-	NEzrFV5VUbOdNehlee5ZPfU/R3GT/m3SZbBtGUfBKd/NXSRcxAVbLXFec7xoFCWk3ci2nXMjRvFgc
-	Vcg8OtSxmJpPwIS0cvscKoNsO7R4bkGwz4f2/DOmR0+Y0BXqmqETD7atP+mOYLLAuawo=;
-Received: from [88.117.56.173] (helo=[10.0.0.160])
-	by mx12lb.world4you.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.97.1)
-	(envelope-from <gerhard@engleder-embedded.com>)
-	id 1szM5K-000000003cY-0f2y;
-	Fri, 11 Oct 2024 22:18:02 +0200
-Message-ID: <769f3405-9905-4a26-ba8a-baf30e591f54@engleder-embedded.com>
-Date: Fri, 11 Oct 2024 22:17:59 +0200
+	id 1szNus-000000004rt-3uRL;
+	Fri, 11 Oct 2024 22:15:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id E18BEA45131;
+	Fri, 11 Oct 2024 22:15:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AF1DEC4CED3;
+	Fri, 11 Oct 2024 22:15:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728684920;
+	bh=ELP8L478B16ztqydobuxgj5YxtYig7+S68KIYDDeqLY=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=Zjn5h6bxsTfHdSjmsw3xZzC9NnFt9LLBRiL1gLEZ9MPe2rHf2VFBr3wdq0x0zPlO0
+	 TmhfWnV4qr9xzLDdO5oFi0dQ6r4vsHF1GbotmtsS9f6GJnv3zfyZjIYQMMSDn3hp/k
+	 ZboIwLveYUg8zUwlImOW81JC2JSKpOSm/2gYCnynXm1r+f2phrg1TsIprInpBGxCPB
+	 R9rql6nRINUG7I0zAG+4AGCkXnwhltA2nz9nxglxlbuAmvCQ6nLY3wH+i3IvS7SFZC
+	 SoDq2bzKlC+4Cl/Ax8NoWbkJJTUKciau9ofuJsTa7IxaEekYlkjnQAc2CejxazXYkv
+	 F3I91Ig4z+ckA==
+Received: by mail-lf1-f54.google.com with SMTP id 2adb3069b0e04-539e1543ab8so1747353e87.2;
+        Fri, 11 Oct 2024 15:15:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCU2xND/WHSoTor8DYKdCv/VNkM7rt1C24j+qOP5ybH59tUV+ILxT3yZN3D4NzrN3+CFaVjWUZ7cGbs5vRFoNIoR@lists.infradead.org, AJvYcCVwyZuwMwiVrM/1+oYzGB4emNCsCMemtbg3m/4PRSm73/9Mt/Fv0ztYnyxU04ZU1U24RhY5ex7s1GQVfmobqF8=@lists.infradead.org
+X-Gm-Message-State: AOJu0YypZTiXunqVkxfNCTPXaFlHesgp3D4p1IV9sJZH8EGNbuZcliZJ
+	tnkwn/VS7gGj3fAyIP+beOrfs+vBnThcg3zB0Ni8cbGitbUzbrWhlYiXirLkr04n7YnIEpObooh
+	4DBaZVp2HBD2PpsCAzreEeucbzw==
+X-Google-Smtp-Source: AGHT+IGF99XBUxkOenEdwmIQtOgExe7ME91mPqvFEk96liE+RiiXVBhJMUT6h/UsrdC6DJPbt++sPunoF7UITTYb8zQ=
+X-Received: by 2002:a05:6512:e9d:b0:535:6a34:b8c3 with SMTP id
+ 2adb3069b0e04-539e54d772bmr770312e87.5.1728684918931; Fri, 11 Oct 2024
+ 15:15:18 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] net: mtk_eth_soc: use ethtool_puts
-Content-Language: en-US
-To: Rosen Penev <rosenp@gmail.com>, netdev@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
- Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-References: <20241011200225.7403-1-rosenp@gmail.com>
-From: Gerhard Engleder <gerhard@engleder-embedded.com>
-In-Reply-To: <20241011200225.7403-1-rosenp@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-AV-Do-Run: Yes
+References: <20240610085735.147134-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20240610085735.147134-1-angelogioacchino.delregno@collabora.com>
+From: Rob Herring <robh@kernel.org>
+Date: Fri, 11 Oct 2024 17:15:05 -0500
+X-Gmail-Original-Message-ID: <CAL_Jsq+F_pwhVLD1HF7=sYLp2w5kpc53UmzzffxyKzwh8WZthw@mail.gmail.com>
+Message-ID: <CAL_Jsq+F_pwhVLD1HF7=sYLp2w5kpc53UmzzffxyKzwh8WZthw@mail.gmail.com>
+Subject: Re: [PATCH v6 0/7] MediaTek DVFSRC Bus Bandwidth and Regulator knobs
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: djakov@kernel.org, krzysztof.kozlowski+dt@linaro.org, conor+dt@kernel.org, 
+	matthias.bgg@gmail.com, lgirdwood@gmail.com, broonie@kernel.org, 
+	keescook@chromium.org, gustavoars@kernel.org, henryc.chen@mediatek.com, 
+	linux-pm@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, kernel@collabora.com, wenst@chromium.org, 
+	amergnat@baylibre.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241011_131816_358592_036D4D59 
-X-CRM114-Status: GOOD (  11.79  )
+X-CRM114-CacheID: sfid-20241011_151523_125647_EDBF77E2 
+X-CRM114-Status: GOOD (  28.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,30 +86,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11.10.24 22:02, Rosen Penev wrote:
-> Allows simplifying get_strings and avoids manual pointer manipulation.
-> 
-> Tested on Belkin RT1800.
-> 
-> Signed-off-by: Rosen Penev <rosenp@gmail.com>
-> ---
->   drivers/net/ethernet/mediatek/mtk_eth_soc.c | 6 ++----
->   1 file changed, 2 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index 9aaaaa2a27dc..6d93f64f8748 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -4328,10 +4328,8 @@ static void mtk_get_strings(struct net_device *dev, u32 stringset, u8 *data)
->   	case ETH_SS_STATS: {
->   		struct mtk_mac *mac = netdev_priv(dev);
->   
-> -		for (i = 0; i < ARRAY_SIZE(mtk_ethtool_stats); i++) {
-> -			memcpy(data, mtk_ethtool_stats[i].str, ETH_GSTRING_LEN);
-> -			data += ETH_GSTRING_LEN;
-> -		}
-> +		for (i = 0; i < ARRAY_SIZE(mtk_ethtool_stats); i++)
-> +			ethtool_puts(&data, mtk_ethtool_stats[i].str);
+On Mon, Jun 10, 2024 at 3:57=E2=80=AFAM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Changes in v6:
+>  - Fixed build with clang (thanks Nathan!)
+>  - Removed unused mtk_rmw() macro in mtk-dvfsrc.c
+>  - Added MODULE_DESCRIPTION() to mtk-dvfsrc-regulator.c
+>
+> Changes in v5:
+>  - Fixed Kconfig dependencies in interconnect
+>  - Fixed module build for dvfsrc and interconnect
+>
+> Changes in v4:
+>  - Updated patch [3/7] to actually remove address/size cells
+>    as the old version got unexpectedly pushed in v3.
+>
+> Changes in v3:
+>  - Removed examples from interconnect and regulator bindings
+>    and kept example node with interconnect and regulator in
+>    the main DVFSRC binding as suggested
+>  - Removed 'reg' from interconnect and regulator, removed both
+>    address and size cells from the main DVFSRC binding as that
+>    was not really needed
+>  - Added anyOf-required entries in the regulator binding as it
+>    doesn't make sense to probe it without any regulator subnode
+>
+> Changes in v2:
+>  - Fixed issues with regulator binding about useless quotes and
+>    wrong binding path (oops)
+>  - Removed useless 'items' from DVFSRC main binding
+>  - Allowed address/size cells to DVFSRC main binding to resolve
+>    validation issues on the regulator and interconnect bindings
+>  - Changed dvfsrc node name to `system-controller`, as the DVFSRC
+>    is actually able to control multiple system components.
+>  - Added a commit to remove mtk-dvfs-regulator.c before adding the
+>    new, refactored regulator driver
+>
+>
+> This series adds support for the MediaTek Dynamic Voltage and Frequency
+> Scaling Resource Controller (DVFSRC), found on many MediaTek SoCs.
+>
+> This hardware collects requests from both software and the various remote
+> processors embededd into the SoC, and decides about a minimum operating
+> voltage and a minimum DRAM frequency to fulfill those requests, in an
+> effort to provide the best achievable performance per watt.
+>
+> Such hardware IP is capable of transparently performing direct register
+> R/W on all of the DVFSRC-controlled regulators and SoC bandwidth knobs.
+>
+> Summarizing how the DVFSRC works for Interconnect:
+>
+>              ICC provider         ICC Nodes
+>                               ----          ----
+>              _________       |CPU |   |--- |VPU |
+>     _____   |         |-----  ----    |     ----
+>    |     |->|  DRAM   |       ----    |     ----
+>    |DRAM |->|scheduler|----- |GPU |   |--- |DISP|
+>    |     |->|  (EMI)  |       ----    |     ----
+>    |_____|->|_________|---.   -----   |     ----
+>                /|\         `-|MMSYS|--|--- |VDEC|
+>                 |             -----   |     ----
+>                 |                     |     ----
+>                 | change DRAM freq    |--- |VENC|
+>              --------                 |     ----
+>     SMC --> | DVFSRC |                |     ----
+>              --------                 |--- |IMG |
+>                                       |     ----
+>                                       |     ----
+>                                       |--- |CAM |
+>                                             ----
+>
+> ...and for regulators, it's simply...
+>    SMC -> DVFSRC -> Regulator voltage decider -> (vreg) Registers R/W
+>
+> Please note that this series is based on an old (abandoned) series from
+> MediaTek [1], and reuses some parts of the code found in that.
+>
+> Besides, included in this series, there's also a refactoring of the
+> mtk-dvfsrc-regulator driver, which never got compiled at all, and would
+> not build anyway because of missing headers and typos: that commit did
+> not get any Fixes tag because, well, backporting makes no sense at all
+> as the DVFSRC support - which is critical for that driver to work - is
+> introduced with *this series*! :-)
+>
+> P.S.: The DVFSRC regulator is a requirement for the MediaTek UFSHCI
+>       controller's crypto boost feature, which is already upstream but
+>       lacking the actual regulator to work....... :-)
+>
+> [1]: https://lore.kernel.org/all/20210812085846.2628-1-dawei.chien@mediat=
+ek.com/
+>
+> AngeloGioacchino Del Regno (7):
+>   dt-bindings: regulator: Add bindings for MediaTek DVFSRC Regulators
+>   dt-bindings: interconnect: Add MediaTek EMI Interconnect bindings
+>   dt-bindings: soc: mediatek: Add DVFSRC bindings for MT8183 and MT8195
+>   soc: mediatek: Add MediaTek DVFS Resource Collector (DVFSRC) driver
 
-Reviewed-by: Gerhard Engleder <gerhard@engleder-embedded.com>
+Looks like the driver got picked up, but not the binding.
+mediatek,mt8183-dvfsrc and mediatek,mt8195-dvfsrc show up in next as
+undocumented.
+
+Rob
 
