@@ -4,85 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ABC1D0EE31
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Oct 2024 20:01:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE387D0EE30
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Oct 2024 20:04:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b3t/6WlSF/m01dr3JqwvO6A1PNlbPysSRIdrRHqnmAY=; b=cz66zECF8PaZV+XE3OM2tkv5ov
-	EZYXNEO28BpYMu7gdHIcNA1AKWfeiwcMuz9YRaUjzf4HgHpqK5GbxPAhZs2YhspqzOsW982/LY44k
-	ENzcxrfWAmSJ6lKiFPRhVRgLFCLkR0fW0ADwlkJgNN6kJnLcSe6b1qrN7CGd+lRf6VkqyWBeCHgwz
-	dfma6Lbc1dbKAqdNc0xHBQLsSOuYTyfRa848Ub2TueIYqEDk8Em8GP1g3XQLcjFNj9dtaynUD5fY9
-	r1MQsbnj4Ux7BMzRI390lBFH28HhGyZPpD0QGD1fGz57AbO6K+TSypGEYddh7ZyZMZKGtukLWfVcb
-	wJ6VNVYg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kCdDB4FzZCs+ONnQuY+4pTxcyDhIhs84SvGVwh2KpEw=; b=nxxmmcUlFEE0ENJu7PGNhbL1dG
+	VGDoCtSd7EuOiV+PUVyONTgfOiZh/PbW+8kZaju3dn+mM1KuPPsGZZRWVmgYTzkD6D/kcfKJ/BnJL
+	Y7z+7nL0hDvSQaPu9PTsOKfF7Mr31bR97TXzCUHPJzTw/dtlrZudM3/0OOdV7eWNzKf/Tz2knveOb
+	71jnY9xRmsNwObJIPckfrw3230NmAlH7hYM+EccBHTqXJyOaE/t0TqacfjaOHcWvKW1ZvTW7JR9UO
+	4NN0XzLcMDLLVCCCqR5/ZOwAmJ/6Uh5DMv1oYG0Mjf8dMlvWHJUgh5YDOI2TOhwf31rd19aXCnkwR
+	VCux5iMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1szLoy-0000000HUj0-1fMT;
-	Fri, 11 Oct 2024 20:01:08 +0000
-Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+	id 1szLsZ-0000000HVHL-3SOh;
+	Fri, 11 Oct 2024 20:04:51 +0000
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1szLnZ-0000000HURE-2ZFb
-	for linux-mediatek@lists.infradead.org;
-	Fri, 11 Oct 2024 19:59:43 +0000
-Received: by mail-yw1-x112b.google.com with SMTP id 00721157ae682-6e2e4237da4so22519407b3.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 11 Oct 2024 12:59:40 -0700 (PDT)
+	id 1szLqI-0000000HUxW-0XMU;
+	Fri, 11 Oct 2024 20:02:31 +0000
+Received: by mail-pg1-x531.google.com with SMTP id 41be03b00d2f7-7e9f998e1e4so2028122a12.1;
+        Fri, 11 Oct 2024 13:02:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1728676780; x=1729281580; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=b3t/6WlSF/m01dr3JqwvO6A1PNlbPysSRIdrRHqnmAY=;
-        b=L1fyctANTfBPVHP/HSOhHBsfsA5CuTa/TBBPm3okYOAonwq0t3yOCyZSKsvSITY75X
-         7xb5j0fHJul84zNYF6W+OhQYdnZQbrRDJSb8IbRuusUD3uaIYKOnyVJigZv/U3G91jet
-         EI5FMEMlzsi5dOJ0tykIi+V9gMOGFUmr49BGcPlFKodVFNedLdFZx5K9Irx24PLG8TM8
-         I10LvP6RWjfzivgWj7m2JEUpPJ7lfn9mF8+hYdtXAxzuwEXIA2NDgW+sSxamXmAV76B3
-         EGh8NZQ06BKcevr/ch7vSeqwNSBcwXg2z72sX8Us5kofWVtY72AUdIgdloV2S4cSaoIs
-         acRg==
+        d=gmail.com; s=20230601; t=1728676948; x=1729281748; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=kCdDB4FzZCs+ONnQuY+4pTxcyDhIhs84SvGVwh2KpEw=;
+        b=BgPza5wOc5KFvGQdIraMl72Ut9g0iT+Jx7FB1WVasT5/rBvzcj5U7BuLAlAXlZOMd+
+         I2p0WSXgrb0sZkUxg6rClYWYVnF4nt8tyGOWXRG7R7hPNwhiFBIsnKzUIH+3gtw755SI
+         RZ5qYGgejncq3IiD4z/0xPm6v78ScNat+NMf+pamATdD5Vawjtj+oxY/DN45X22E6aIp
+         21GwopQlwi+3s/OkXdIXU9wWtb6ERGlnDIXdYQ6wC9i+e+W761CUyKWJ+egscMkvFYYs
+         JQ7iV0Y4uFmz/DoIdnm2yNDJChzx8uHgTaFTZGpsolDdxeN0jCbYqsHjFPsMqIdLu4Z+
+         QQpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728676780; x=1729281580;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=b3t/6WlSF/m01dr3JqwvO6A1PNlbPysSRIdrRHqnmAY=;
-        b=CJTAVKpr3cFAnGuLkVmy/rNvrJXYrLFOxu0mgqYevbf+Jqod6JKDBYGnxUP2n96B4j
-         VjnEVR3/zD5WWWEBtHQpX6Pzch8qXpFxc2Y70L/xlLUxmh/m+hl7zNVjZMeMyM11J5K5
-         BfcNrPIglMZ8s8xm1kTl3DUViKmaihyCXp4MYSO6GRW7HfRcujFDvIoZZ7pPLZSf00eX
-         6PSu3kYFShXIdZDfcbmC/2cuDVmOLV5PvtcsZ7FioKieoXhDrTX2yHj+WoQko3mLPt8W
-         l1IyEaqmeScdZD2JFH8/TmvjeHBoSlhheSTZASqbp9VJDX6sB956y2pBVUXWmEHYxkYY
-         9okg==
-X-Forwarded-Encrypted: i=1; AJvYcCXe9JfZwOHIcuqKccLJjGRAxnUeG8OD+l8fcB+rsMwdkz07vhCOQtqnsc8OJKIpQ3ImNrBwCCTUkMIfojBR+Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyf7Jg0xQzk5uU0k2ZCoLAd+csjkFy+5AMwI66BB+hBWTdVNjCz
-	wRUv5X66EXNII7AEB+2Uflxj9VNj4C6IKe5Otm93Fxvf/aGZbSUv/pjvuMl/iqAZ5coyXDf/Mee
-	KGktxbHyIkxNmavku0GlU8daUwo2i92Oc+aH0hA==
-X-Google-Smtp-Source: AGHT+IHjM2GvHz3Aq3fHGIQKpV063T+kfFhYOorOlX0bt74yIAWxcubkag8mG5yY3qwwQRASFB0kIRqgK4TTo+XYaUs=
-X-Received: by 2002:a05:690c:5608:b0:6e2:ada7:ab89 with SMTP id
- 00721157ae682-6e3479e1d7cmr37079067b3.26.1728676779984; Fri, 11 Oct 2024
- 12:59:39 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1728676948; x=1729281748;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=kCdDB4FzZCs+ONnQuY+4pTxcyDhIhs84SvGVwh2KpEw=;
+        b=ZFbuAP59/KT6QFToEkkES4M7ZC2Ad1EBV9HSQOf+l2znAuiAa0hYGH+yw5fxjkG5eL
+         /LOq6nkV6Mk8xYmVeaVjPanhi7cIWZVpRS7Rx/rl2t3rhcRPYKbLHpwA5MHDceRBlseY
+         JfG/5gfFCpulkpgryPQe9iD3W4J0r51449E+AifjRaUWXUV0ZviPoly4i5XdSCO4mN42
+         N0VCTnXNqTBbarbjh+gpzlEnNaqf4nqXSymfKKmFNfwktZ6/e7f0IvkISshQ71Mqyefa
+         F2/BH/lcJqIGpjUyPz2lCMMzRhEwsL7xApYJGIgXLc8jqqnWGZmI7o9dz6NwFNyGyKN0
+         n08g==
+X-Forwarded-Encrypted: i=1; AJvYcCVgHEoM6s1/wdckQX49WnP08vWO4XeHbuN6i1rIY/VWiU9eFzx9i6dyxQZqULqgsEcXTe5OpPXh/D8wkc8Z7UGg@lists.infradead.org, AJvYcCWeYIInPC6u7Uo81gEN2gGRxw3KyySspIb7KA9TMJxtjcZl6IKlzXEAcNKbOi50TJSUiml1e3/GU/4JBTpd3MM=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz4I+FHlepSVk3b29i1HGMchfc4IkrchGl582+eHhlxPvKKJPa+
+	lM8UrVVuW7H0qeZa5ufGA7knPUZmDTOgPavQCnSOdKseU95qrnG/
+X-Google-Smtp-Source: AGHT+IGOd18eKj1hzHPwpzvr37oGJNs01DKuB6aPDA1ZxRfgwjuNN7VeD7FJwmq1zYNaqdVBu6/G0Q==
+X-Received: by 2002:a05:6a20:b803:b0:1d2:eaca:34ca with SMTP id adf61e73a8af0-1d8bcfb608fmr3684844637.42.1728676948064;
+        Fri, 11 Oct 2024 13:02:28 -0700 (PDT)
+Received: from ryzen.lan ([2601:644:8200:dab8::a86])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71e2a9f5271sm2966376b3a.56.2024.10.11.13.02.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 11 Oct 2024 13:02:27 -0700 (PDT)
+From: Rosen Penev <rosenp@gmail.com>
+To: netdev@vger.kernel.org
+Cc: Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH] net: mtk_eth_soc: use ethtool_puts
+Date: Fri, 11 Oct 2024 13:02:25 -0700
+Message-ID: <20241011200225.7403-1-rosenp@gmail.com>
+X-Mailer: git-send-email 2.47.0
 MIME-Version: 1.0
-References: <20241011120520.140318-1-y.oudjana@protonmail.com>
-In-Reply-To: <20241011120520.140318-1-y.oudjana@protonmail.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 11 Oct 2024 21:59:27 +0200
-Message-ID: <CACRpkdaWZ6R4wtTs_YqzbhSrUyfOCqd9tGWFP7dZTqp6v7ijzA@mail.gmail.com>
-Subject: Re: [PATCH v6 0/8] MediaTek pinctrl DT binding cleanup and MT6735
- pinctrl support
-To: Yassine Oudjana <yassine.oudjana@gmail.com>
-Cc: Sean Wang <sean.wang@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Yassine Oudjana <y.oudjana@protonmail.com>, Andy Teng <andy.teng@mediatek.com>, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241011_125941_705965_40FC6CC1 
-X-CRM114-Status: GOOD (  15.29  )
+X-CRM114-CacheID: sfid-20241011_130230_186527_509DA2A6 
+X-CRM114-Status: GOOD (  10.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,35 +99,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 11, 2024 at 2:05=E2=80=AFPM Yassine Oudjana
-<yassine.oudjana@gmail.com> wrote:
+Allows simplifying get_strings and avoids manual pointer manipulation.
 
-> From: Yassine Oudjana <y.oudjana@protonmail.com>
->
-> These patches are part of a larger effort to support the MT6735 SoC famil=
-y in
-> mainline Linux. More patches (unsent or sent and pending review or revisi=
-on) can
-> be found here[1].
->
-> This series adds a driver for the pin controller found on the MediaTek MT=
-6735
-> and MT6735M SoCs. The two differ in the last 6 physical pins, which are u=
-sed
-> for MSDC2 on MT6735 but don't exist on MT6735M (since MSDC2 doesn't exist=
- on it
-> to begin with). In preparation to document DT bindings for this pin contr=
-oller,
-> the existing documents for MT67xx SoCs are combined into one in order to
-> eliminate duplicate property definitions and standardize pin configuratio=
-n node
-> names. Necessary cleanup is done along the way.
+Tested on Belkin RT1800.
 
-Once Rob is happy with all binding patches, my plan is to merge all
-except the DTS[I] changes to an immutable branch in the pin control
-tree and then you can offer that as a base for the SoC tree if it's
-needed for the DTS[I] files.
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-Yours,
-Linus Walleij
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 9aaaaa2a27dc..6d93f64f8748 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -4328,10 +4328,8 @@ static void mtk_get_strings(struct net_device *dev, u32 stringset, u8 *data)
+ 	case ETH_SS_STATS: {
+ 		struct mtk_mac *mac = netdev_priv(dev);
+ 
+-		for (i = 0; i < ARRAY_SIZE(mtk_ethtool_stats); i++) {
+-			memcpy(data, mtk_ethtool_stats[i].str, ETH_GSTRING_LEN);
+-			data += ETH_GSTRING_LEN;
+-		}
++		for (i = 0; i < ARRAY_SIZE(mtk_ethtool_stats); i++)
++			ethtool_puts(&data, mtk_ethtool_stats[i].str);
+ 		if (mtk_page_pool_enabled(mac->hw))
+ 			page_pool_ethtool_stats_get_strings(data);
+ 		break;
+-- 
+2.47.0
+
 
