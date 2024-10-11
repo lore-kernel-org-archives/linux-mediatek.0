@@ -4,90 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4325FD2447F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Oct 2024 06:54:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A32D0D2447F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Oct 2024 07:01:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=y2T9fRA9uvlVR02QkoFnRdEwwHlGLql4m/SX4vgEwHo=; b=VLo4qKHa5oWv5vp2JRjIEcw8rK
-	qyZRknEgVJLHClmz/Im5Ub3Gb0OgWzLjLHb6BlX8G3cMbfxJcKSq0iUL94FV71uNixARy9dz2W6a+
-	OtqxRg31fnouhnL3y8PcOYBEFi3aT8HcfCot1sFVNyvzacAVNKQezSNMwVfcTSRBc60gXjwDeXaB6
-	R6jY8zjNZLSeePlLZRcA0Cz2O86nDihq6E0YIS2sWMz+i7reLDj1eDN3eYaktn6mUH8BHQyK2PAbV
-	uqktmAJ2CMKGiC3j0QsZdCU+kA+iX08WGRITz2vzxFHcv/wS0zMqqSUWj8FTzwWMpnkVDdojYKlbj
-	CeGIRrWw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Yol/CqMflojZ91zDJ6BWlrykjb5lk+ms5wvr74ezf+w=; b=VP88i7MzzNfIAbYyvITKlqzmzz
+	0mh1hWFJR9PkP+EoP8idcbTlUnkrkV1zFDkE94rM7vS2/43b/rHcs3mA7esAMdK2GAXxKEnCWhjAG
+	eMue2EV66LBNyForraSnh1/l+7YlTMgID/a+itmRQpLw2YzXNCglgroBjBTUrNDC1pRmJ9upW4eJ/
+	1a7sP1kcEPAw5kA0MeASEpd3dVNz/L1awAVZyspEAkT31pZc6SORW7NlEyuJ2V4Xp79WClsv79pHZ
+	+suZ5ula465TW+3hqkVNrD5wRJtIjjT5oUDEKvkJjDXIkfHKHBff/whh6IRV28PNhX+DYtE3HkgW+
+	Hbq438yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1sz9Y8-0000000FSc8-0qy2;
-	Fri, 11 Oct 2024 06:54:56 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1sz9er-0000000FTpI-2brc;
+	Fri, 11 Oct 2024 07:01:53 +0000
+Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1sz9Rm-0000000FR8O-366t;
-	Fri, 11 Oct 2024 06:48:24 +0000
-X-UUID: cc09489a879c11efba0aef63c0775dbf-20241010
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=y2T9fRA9uvlVR02QkoFnRdEwwHlGLql4m/SX4vgEwHo=;
-	b=GoGcYPsVH18eV2yFySiMsYYm1WP4DMT7fnZI9dlVcyPcHiNAti7DFcDS9GlGO/p89+X3GftJVU1kGkqZ0GIjHQ50h9VezV6CrdDGMrXcGTAUguyD+QFkXxCFxgiu0DFFUZ7Q8bGg35JTaVY7oo0cNpAE3JpWhze/rZrwHsemEig=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.41,REQID:b744213c-7b21-43d5-a046-a255472c04d1,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:6dc6a47,CLOUDID:2df01465-444a-4b47-a99a-591ade3b04b2,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: cc09489a879c11efba0aef63c0775dbf-20241010
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 959974817; Thu, 10 Oct 2024 23:48:17 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 11 Oct 2024 14:48:13 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 11 Oct 2024 14:48:13 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v2] dt-bindings: phy: mediatek: tphy: add a property for power-domains
-Date: Fri, 11 Oct 2024 14:48:10 +0800
-Message-ID: <20241011064810.5103-1-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1sz9VM-0000000FS4w-3BCr
+	for linux-mediatek@lists.infradead.org;
+	Fri, 11 Oct 2024 06:52:06 +0000
+Received: by mail-lj1-x235.google.com with SMTP id 38308e7fff4ca-2fad6de2590so25054941fa.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 10 Oct 2024 23:52:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1728629523; x=1729234323; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Yol/CqMflojZ91zDJ6BWlrykjb5lk+ms5wvr74ezf+w=;
+        b=TAd7NL9U5p01eBHBsyLDw8guw6X14Wiias/W0v5F6r0r0T88Wzg/maBOsq8uMBd/LK
+         sl3ZhiYvxDOm3FsMJkWgyDGFmskwPAgiYQV4S2jRV9w1qusfbzNYxQP0/gffVjLg5EAJ
+         WV8LBm8M2WxTH4Sv/2/ns7GyFxrSrlgW9Wz6fAM19HFzUNpoWiUsaRXwnjr8gPpzncgY
+         PaoU1jS0uQL6PV1uixoDfl26m6rprjYbXFk8wZxbdEHmACp3JdFe+Et/tRzISAI2uSmH
+         uoqrB01bc/cBMWCL9HqkkEc+5O9SwYb1bS/kWG//5aA2GrICzCvki53T8oXlC0iEyCJN
+         00Sw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1728629523; x=1729234323;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Yol/CqMflojZ91zDJ6BWlrykjb5lk+ms5wvr74ezf+w=;
+        b=rMrqs0dwGb188/VxUo4nMEgkofLaKUqbGycZo7MtFUJ2HmYe8J2yDGpQwJqsxmTnvn
+         ESI98u+hZ1btfHcUB56lWknjSJuNTnJIUB7DAhTfNfiQXt43FWiyqwwf7DlmCNu6b2Wi
+         XWw/OTRLhjz5brlpugTJf0E2GK7DryCcn+UeEzNAroZBDvRcS/axJMCjV/PIpnG7g3FG
+         SZXJfR80EYXwAPtWa7j+juKXFppzsXyhONSaQOEyXLqxxTDqEjeMkRMqXRZQLSQvqcZv
+         jgYDRxgVWiQ1llLEysQEykEyZjJzpjbaJJZlqXcA7NZqiKX6fbQMtfixouzWepVNJrH9
+         qSbw==
+X-Forwarded-Encrypted: i=1; AJvYcCVJL3xIgn1SriGWGIAVvmh8lKSd/P/66Y2NIiUBRDdbIdEsoaG7tpMWtmD1NBiId2lcJXJnux/VmgxkCp5k4Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx86cviJGdLv24NcSO3vcJwC3rZtP1SgBRJux2rF+2rKYrivhp4
+	hhS8EcQiDDSPQjUFkpF5T1ux6qOQAvNRTPRaL68RZErlKSItz9443oCHr+R9XzU5fDnfV/Z+cuI
+	9lBU8aai4i8BxvPUAChMnP2ROnTMtImFiATVSYw==
+X-Google-Smtp-Source: AGHT+IEL+j79y+MejFM6HiX8V5iKw9ViH8TW+NbeQoNVhAz74UvZoFsQPZ4rGjCGTgCqCqgVNXiU/grYNIrmU/CAJHE=
+X-Received: by 2002:a2e:a587:0:b0:2fa:de13:5c34 with SMTP id
+ 38308e7fff4ca-2fb32744f3dmr8696101fa.19.1728629522773; Thu, 10 Oct 2024
+ 23:52:02 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--2.165100-8.000000
-X-TMASE-MatchedRID: k8Cd32tj8sGMNoAzq9nHoWNW0DAjL5p++OI6XsK3BWHfUZT83lbkEJVD
-	ZsT0rYWCqP2RhwqsDVhYSGAnlsUp3lAXAjgfNI2iRy+94mWbR+blOkM7VYqzaZi7/tnxUUyGo8W
-	MkQWv6iXBcIE78YqRWo6HM5rqDwqt7aENEMomdGuGxZsjVPBjfObxZIv/aSQArgevuQgg4NYHJD
-	IxduTwSZmxuzUAi+Dfup5+b9g7ZTRiF54b8Md0Br5sQoYg/dmD4sOrsb4iT/K/bbEolHIgZUOc7
-	GjOamnWv5a9cmIodEspRnLV2kwrLg==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--2.165100-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 4AD9FFC112EA5D5D7D7DB547735B4F1CC3D11219A3110772C6367C57CD5144FB2000:8
-X-MTK: N
+References: <20241001-en7581-pinctrl-v5-0-dc1ce542b6c6@kernel.org>
+ <20241001-en7581-pinctrl-v5-3-dc1ce542b6c6@kernel.org> <20241002132518.GD7504@google.com>
+ <ZwWscWk5axQI9H1t@lore-desk> <20241009104821.GF276481@google.com>
+ <20241009105550.GG276481@google.com> <6707a8ec.df0a0220.376450.293e@mx.google.com>
+ <CACRpkdanpA-wq0sYv9HRF=uVeAX_mW4LaKhE8i6TgC9+0d7bCg@mail.gmail.com> <ZwhKECIpL7g7ZGEC@lore-desk>
+In-Reply-To: <ZwhKECIpL7g7ZGEC@lore-desk>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Fri, 11 Oct 2024 08:51:50 +0200
+Message-ID: <CACRpkdYxF23-Py=eOZHodeR-RvkYGen_+hn_BtiU+tCPva8BXg@mail.gmail.com>
+Subject: Re: [PATCH v5 3/5] mfd: airoha: Add support for Airoha EN7581 MFD
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Christian Marangi <ansuelsmth@gmail.com>, Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <ukleinek@kernel.org>, 
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	upstream@airoha.com, benjamin.larsson@genexis.eu, linux-pwm@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241010_234822_816705_E3F01E8D 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20241010_235204_824358_FFE582FD 
+X-CRM114-Status: GOOD (  14.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,45 +100,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MediaTek TPHY should be existed in a power-domains.
-So we add property 'power-domains' and set 'maxItems: 1' in the
-DT Schema.
+On Thu, Oct 10, 2024 at 11:41=E2=80=AFPM Lorenzo Bianconi <lorenzo@kernel.o=
+rg> wrote:
+> > On Thu, Oct 10, 2024 at 12:14=E2=80=AFPM Christian Marangi <ansuelsmth@=
+gmail.com> wrote:
 
-A reminder is also added to the description of 'power-domains'
-property.
+> > I think you want a separate GPIO node inside the system controller:
+> >
+> >   en7581_gpio: gpio {
+> >          compatible =3D "airhoa,en7581-gpio";
+> >          interrupt-parent =3D <&gic>;
+> >          interrupts =3D <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
+> >
+> >          gpio-controller;
+> >          #gpio-cells =3D <2>;
+> >
+> >          interrupt-controller;
+> >          #interrupt-cells =3D <2>;
+> >
+> >          gpio-ranges =3D <&en7581_pinctrl 0 13 47>;
+> > };
+>
+> So far I implemented the gpio functionalities in the en7581 pinctrl drive=
+r
+> (as it is done for other mtk pinctrl drivers) but I am fine to reuse the
+> gpio-en7523 driver for it. Do you prefer this second approach?
 
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../devicetree/bindings/phy/mediatek,tphy.yaml         | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+It's fine to combine GPIO and pin control into the same node, especially
+if you will have a combined driver for it, then it's more or less mandatory=
+.
+I only wrote this looking at ansuel's sketch.
 
-Changes for v2:
- - Add a reminder in description of 'power-domains' property.
- - Fix commit message from v1.
+> > This will make subdevices probe and you can put the pure GPIO
+> > driver in drivers/gpio/gpio-en7581.c
+>
+> We could actually reuse gpio-en7523 driver (removing the gpio part from e=
+n7581
+> pinctrl driver) and extend it to support irq_chip. I do not have a strong
+> opinion about it.
 
-diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-index 423b7c4e62f2..6be3aa4557e5 100644
---- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-+++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-@@ -125,6 +125,16 @@ properties:
-     $ref: /schemas/types.yaml#/definitions/uint32
-     default: 28
- 
-+  power-domains:
-+    description:
-+      The TPHY of MediaTek should exist within a power domain. The
-+      developer should be aware that the hardware design of MediaTek TPHY
-+      does not require the addition of MTCMOS. If the power to the TPHY
-+      is turned off, it will impact other functions. From the current
-+      perspective of USB hardware design, even if MTCMOS is added to the
-+      TPHY, it should remain always on.
-+    maxItems: 1
-+
- # Required child node:
- patternProperties:
-   "^(usb|pcie|sata)-phy@[0-9a-f]+$":
--- 
-2.45.2
+Code reuse is always preferred, if possible.
 
+Yours,
+Linus Walleij
 
