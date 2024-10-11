@@ -4,69 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E4ABD0EE12
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Oct 2024 17:01:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1923D0EE27
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Oct 2024 19:22:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iP4DXQKOKvv/lM32GUvNOJ+gYTLb7iWosUhQ3v2aWhM=; b=QmSJdBdne03zTNxQn8Jjj43Rkm
-	Kw7NDzwOmYr9arH4Q2jELJNBPlk1+acZyA64qTtyleR3yNkXEoYJkGBD1hqhQYfQobjl0s86fYl1/
-	xVgtInBjAJN5axxuxKYjdXLJwDYB1i3l0i1lbofntsQIf9CwFlDf4/5kd5ltieIVvONZUkCV6+NIU
-	sSe2xXuuYAE5tjyjYuTBPODTjtGI4KyGx1DGhuudi6eoRv0ZtfQ0ADRYE/K/+HN71sdVQ0kYZvjRt
-	PMkQPDz/+O9fvLxZ1afewN8dIVeomr5JwURQQ+XNhjbZtwm6MbjV/+qJwmYDp8if+bQAy/prmSdvW
-	6aWSDeNw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EYgQWgt/qKmfdHG9VXiGCkrR3Ne5T90ztqEtcBQu9CI=; b=0QTPiiFckl0sT8
+	wedRqwtElUv3lQzIzk/UNLDCq/FFERZ8zukttbTSr2hsgXpHi2oyVrRHCrxE3NXjPFr3uoA9HmpBu
+	oMfPOV9/2YSCrqSwNI+yixp4EIPOL3mT18aYGE0j06CGgXzWtGybOenSgaOxo9LNYuKWiApinf2sq
+	M87i1ARLiOmpsM2E18z5lIjVr5ItPyxLhYcw0b2r9hyhjPrxypXgvBoKK5dbg1ZPlLymi6bXQ+mDv
+	oUHeRVJXRYrd174zmDNOwXfJrM+B4zYoUWgDWj1DiZpRkTQOHETkXAJfia0/CrcMgMcuG5fNoIhJf
+	S2iMCAUDvFRTvI028fTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1szJ0l-0000000H2Ow-2KaY;
-	Fri, 11 Oct 2024 17:01:07 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1szLDW-0000000HOyo-2xyZ;
+	Fri, 11 Oct 2024 19:22:27 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1szIyd-0000000H1w7-2btK;
-	Fri, 11 Oct 2024 16:58:57 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 11CC8A44B97;
-	Fri, 11 Oct 2024 16:58:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4E9DC4CEC3;
-	Fri, 11 Oct 2024 16:58:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728665934;
-	bh=Z1+E1JGeVbHwFfLhXSVM5s/2nmC9ov0l6GX58bhyPrs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=PtsUMn7XTiN63YG35ddYTaNvjY0tQG1iQePfIoXL0FZI+zQlUs6ToKaiNXAptWVfM
-	 HKCt722/vxWK+QUka+ZKvzL7U5tuF2HOgxrPY9fg3AMHEIQLc91VWsztZbNv4CkTip
-	 6peTxbp6Klku0Dyigz0yx5PSflyLRSO8mzC/hM9/QAqhYpAhMbLBtLQJOlucYOo03o
-	 VX5sULcYfxYJAZEqLjJF0eHyoMV03bTwIj2Umni+pHzm8vxWDPIaBTdk+vcLoPQeOw
-	 TcKZEZImsLBpdnI6ObhTJLOsE+e2dOZg/lWV2EhFxqg8VO58vwc5MDzi7KcAWuMzDr
-	 5f2+r7OPgtq7A==
-Date: Fri, 11 Oct 2024 11:58:41 -0500
-From: Rob Herring <robh@kernel.org>
-To: Yassine Oudjana <yassine.oudjana@gmail.com>
-Cc: Sean Wang <sean.wang@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Yassine Oudjana <y.oudjana@protonmail.com>,
-	Andy Teng <andy.teng@mediatek.com>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v6 6/8] dt-bindings: pinctrl: mediatek: Add bindings for
- MT6735 pin controller
-Message-ID: <20241011165841.GA2504125-robh@kernel.org>
-References: <20241011120520.140318-1-y.oudjana@protonmail.com>
- <20241011120520.140318-7-y.oudjana@protonmail.com>
+	id 1szLDU-0000000HOxt-2lwW;
+	Fri, 11 Oct 2024 19:22:25 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-4311ae6426aso12986235e9.2;
+        Fri, 11 Oct 2024 12:22:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1728674543; x=1729279343; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=EYgQWgt/qKmfdHG9VXiGCkrR3Ne5T90ztqEtcBQu9CI=;
+        b=nHRmAW1lI6bCqu39YyT7EulTJ6lmMsxOECBmbxULnkQtxFAjSVE2IhhpNMp4xL3ugV
+         HLqJ43JLKUCGwx7/gfp06CNmYTjCS2/cq9RodCXrM1vy36Rbc7KaUQ3LCogRcNzO5mZP
+         FQ5rgIulOxYZrscuheSymfXOaEdsz3hnnnzKer3kWSS3TaH9NT5Pb/omL6Y/JmIXq4Ne
+         5Vs+Vk3FWMhO8oECI+RSJp6YhSKmtNNhQdqWKz0Pkg+Uzw9tao1hkTDPph7BlXCjWH6X
+         EHBpji7uzwwCgbIZmZrbOo6gJmX7s8hHg3xaC0ELkORXarAxr/MsGK2ksXa25/Kdix/1
+         h9CQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1728674543; x=1729279343;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=EYgQWgt/qKmfdHG9VXiGCkrR3Ne5T90ztqEtcBQu9CI=;
+        b=hfdQl3eDA3ve4gUsHHbFQ4zRqfdY6l48jGFSS2qFb4u5OCdRxYCv75StUGD/vAAQFd
+         ZsfyFpMBg1YmP5cAXqvkXOo/TBvj5ievtKTSkzDyzqlrbiVrsz3075b7gUP/RmsFIxDK
+         oI4tbNAP44nLYsOjyHgZHptpfc7WRmzQvrLqlaJ3F7M7JjbBJljVSYKmmy23TplpWRTB
+         Y8/4+gX+8WSM/nZWuqHCcC1Bqtbus+Wc6FxYa804YUdx4T7Qsb7ouRsGPNNX9bTTiLsx
+         eYRU3ku3tG6UlnNClxN21Sdqq9GTz0i8ZnqBve9DapPJw9Jtgseg9uNhplIUJlYTi7Jb
+         G0Lw==
+X-Forwarded-Encrypted: i=1; AJvYcCVPkKERO9LYDzMn3TFwjNwVY0KkjEDgmZMsaR8mhFHWkxT4O3+nNCEPzwCVjbZfxzoG7r7vx7UqgUF7IRVrLhyf@lists.infradead.org, AJvYcCX51mQSx6R8wCbZdy6iIMECbcuhHS71UmSeAnpQzxCfpKwRwElQ/wR0nMxcDRxs2tZ2wwYNVEfHcN4UKWpO99I=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyptdYs3S/ZFro97rjy9E5XYLhMyQMMQVEvmmVFoBfQhaxWr52n
+	5sXrWYDUlp4jd9s9BfDabV9RrtZhix0imc19jfAF/nd+0cvD2UVf
+X-Google-Smtp-Source: AGHT+IHDrJkqntC5hbJBHUdbeUAjDp6V1K7XShBIFjrWbQhxHt6e86dahsDJxOy2EMtrhVQ1CrDX1w==
+X-Received: by 2002:a05:600c:1d26:b0:426:8884:2c58 with SMTP id 5b1f17b1804b1-4311deba2a8mr23732905e9.4.1728674542675;
+        Fri, 11 Oct 2024 12:22:22 -0700 (PDT)
+Received: from [127.0.1.1] (2a02-8389-41cf-e200-55c0-165d-e76c-a019.cable.dynamic.v6.surfer.at. [2a02:8389:41cf:e200:55c0:165d:e76c:a019])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37d4b7ee49bsm4581663f8f.100.2024.10.11.12.22.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 11 Oct 2024 12:22:22 -0700 (PDT)
+From: Javier Carrasco <javier.carrasco.cruz@gmail.com>
+Subject: [PATCH 0/2] drm/mediatek: Fix child node refcount handling and use
+ scoped macro
+Date: Fri, 11 Oct 2024 21:21:50 +0200
+Message-Id: <20241011-mtk_drm_drv_memleak-v1-0-2b40c74c8d75@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241011120520.140318-7-y.oudjana@protonmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAM56CWcC/x2M0QpAMBhGX0X/tZVfVvIqktg+/DG0SWp5d8vFu
+ TgX50QK8IJATRbJ45Ygx56E84zMMuwzlNjkVBZlxQWzctfaW+8Sd+/gNgyr0qjHGpWGZUOpPD0
+ mef5r273vB8+vyTdlAAAA
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Alexandre Mergnat <amergnat@baylibre.com>, CK Hu <ck.hu@mediatek.com>, 
+ "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Javier Carrasco <javier.carrasco.cruz@gmail.com>, stable@vger.kernel.org
+X-Mailer: b4 0.14-dev
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1728674541; l=800;
+ i=javier.carrasco.cruz@gmail.com; s=20240312; h=from:subject:message-id;
+ bh=CUgnykuigeyvSk+12QRyPfcuP3wIVJxY7aInDCemjsU=;
+ b=VS2IFCGJyJpyQN++hbNfW+QHI8VE09TUL+q0ILjUhG8LFSsaeXapxeE08GCY6WIEkfxFiYrvq
+ 3o6Dsm8HPgzAHTM2Gzm1+GZnOiqBBIM/R5LsZ4CcxFrH8NtRwbJSivg
+X-Developer-Key: i=javier.carrasco.cruz@gmail.com; a=ed25519;
+ pk=lzSIvIzMz0JhJrzLXI0HAdPwsNPSSmEn6RbS+PTS9aQ=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241011_095855_745878_AFA13614 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20241011_122224_734770_6A04E6E2 
+X-CRM114-Status: UNSURE (   8.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,19 +107,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 11, 2024 at 03:03:51PM +0300, Yassine Oudjana wrote:
-> From: Yassine Oudjana <y.oudjana@protonmail.com>
-> 
-> Add DT bindings for the MT6735 pin controller, which consist of macros
-> to be used as values for the pinmux property. Each macro corresponds
-> to a unique possible pin-function combination.
-> 
-> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
-> ---
->  MAINTAINERS                                   |    6 +
->  .../pinctrl/mediatek,mt6735-pinctrl.h         | 1148 +++++++++++++++++
->  2 files changed, 1154 insertions(+)
->  create mode 100644 include/dt-bindings/pinctrl/mediatek,mt6735-pinctrl.h
+This series fixes a wrong handling of the child node within the
+for_each_child_of_node() by adding the missing call to of_node_put() to
+make it compatible with stable kernels that don't provide the scoped
+variant of the macro, which is more secure and was introduced early this
+year.
 
-This should be squatched with patch 7.
+Signed-off-by: Javier Carrasco <javier.carrasco.cruz@gmail.com>
+---
+Javier Carrasco (2):
+      drm/mediatek: Fix child node refcount handling in early exit
+      drm/mediatek: Switch to for_each_child_of_node_scoped()
+
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+---
+base-commit: d61a00525464bfc5fe92c6ad713350988e492b88
+change-id: 20241011-mtk_drm_drv_memleak-5e8b8e45ed1c
+
+Best regards,
+-- 
+Javier Carrasco <javier.carrasco.cruz@gmail.com>
+
 
