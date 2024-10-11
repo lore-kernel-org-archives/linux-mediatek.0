@@ -4,85 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FFC4D0D791
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Oct 2024 13:40:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C150CD0D7A7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Oct 2024 14:43:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TvLMHXo3BfNUkLw9ytw5UuEB+h5y/vEG9NYRyEiEEL4=; b=R8uOOB6IpDXob7x2eMjmJIW9/O
-	PC5hLtrKQdQivjAty5Yku9NAwriV3YfVjknD4DhLriYCFxvY5W2zfzhPbAGb1nQyvjsH2if5jJA2J
-	N2mimZ2wq0/FqKdCt55z8o1TmYmXLjByU+Em14SGrnA/Ab/xEWl66XjBUn2HuKjhzpSrCDP7uoeJo
-	9jWJ/Whoc620aT1mn1RMcT5eumEXEkoFxsg46a9iU68h7jfaZwC42nFsvIxTgHab6b4RFqIZSzKgN
-	iy1RhoZRTe8fEmfon3ZnaLB3s2/tRpEbRFNQaZXfCi3AvO6ul8OdJOPvgQ90/t4xthFFh/dyx8Z6+
-	7iCHTU/A==;
+	bh=lU+ODpKYzQeoYo8h67RvQnw+QkGXG4J85yFxYTyLDVo=; b=S8wBhK7iQoG9wNZH+bmZeMrrVM
+	R0gp638GHujpQQe/FlpnQl4pWMnZiQkYoIuO7DyyXZXT7f6pYCq0EjLwcmjL2DCkiy8i6d+daRCuy
+	Z1ZfyfMc2Ku5ZqqWmwYv5+57EiyoZsRt3r0YfnSHeD4bpJFF38DRKocUykPMfOc6+ulYFn4hRdnAP
+	NP29PqxLkDRGJ+lW+M3JYJDYBnuXXZpsgkfXnW0x/6od/7f/74rQjmMO0RrsmXOY31+eLpqhK7weT
+	DzGXerJScl/D56X47X6WE2KMnwqcS0BNrOlPm6w+S7SU1YSnSN4xZa/E7YFuDlCxVMCZbWPPzE2ae
+	Es+t0+Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1szFsg-0000000GTrO-0oWb;
-	Fri, 11 Oct 2024 13:40:34 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1szGrb-0000000Geim-1oqg;
+	Fri, 11 Oct 2024 14:43:31 +0000
+Received: from mout.gmx.net ([212.227.15.19])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1szFb9-0000000GR3v-06y8;
-	Fri, 11 Oct 2024 13:22:28 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-20c7ee8fe6bso15603175ad.2;
-        Fri, 11 Oct 2024 06:22:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1728652946; x=1729257746; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=TvLMHXo3BfNUkLw9ytw5UuEB+h5y/vEG9NYRyEiEEL4=;
-        b=hXp0C4PwfdvnFkg9kjLt6EkT7Aoct4En79anKx3uOrwCIOVfMh39/Q4MGozasQJnPk
-         clZqYz9lHiVqbj8YXPbfb/QW0QbiHP+wlIyreu1ZELb3SfRVd+8Txh81QAmVSzz2W82H
-         DTL6CPFHl2ku4nnj/VT0KzzgezHLvlZ5GU6OOGCBmnEHtDwu8TUbMldTapjV0HCBzTAl
-         QiHxYC3oy+DvC97HC6HgzvsT4jUjlaIfrzzi1IYPQijJp+AfcTxhc1KfIVJ9gfzGY8TW
-         JKMzYbVjlWX/njhFmoh3x9gPTH8iZl008GyH6aGSn+xMiO4IMIvaJxisT1HGIGkoW4W/
-         u2jg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728652946; x=1729257746;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=TvLMHXo3BfNUkLw9ytw5UuEB+h5y/vEG9NYRyEiEEL4=;
-        b=L3tQgkFBqTx1x6ANLR0d1EbUSo7J8ZSMJKzEoDKs6bj3rbMhwovzPBfCl69rOD9IyO
-         ZkCBNt5ARqQhgisInRfR6guFOAP7xjrpkiXIdJkKebDs3jBYx+YOaQsMqtZKNrjX/CTl
-         oqsnpuy1xrXuha6b7NhrZODuEyKd2uRJTUYlw50O+i7zkjZ5pCbTvbxFLjVhTNnZqT0X
-         15+L9BkSGTPGTgypOP4GDsWCra6DuPg8Jus4S5vFamtDmv+e+V5TzEHNuqskpnIrTuME
-         fnaV5VRIiiJFT54LdRmebV4Z9X+x2Ha69oERKVry9NtQIpEJWeb3O2luxBa1HQF0A7+Z
-         BycA==
-X-Forwarded-Encrypted: i=1; AJvYcCVMx4T7om5MHjEbu88rpqXc7Mtfu4uB6M6wm8dYppyBpzdVeKNOoLMTmWZcIS/zruJaHeoPS5iCWexKOxu8Mn8=@lists.infradead.org, AJvYcCVodAgQ6NMR/ZV+2KgLV2u7tF/43k5I7TQFgxfosDsw6CjQVZwbJfaAks2V255ajH8Td6DRlaDUXm1S3gAI62QM@lists.infradead.org
-X-Gm-Message-State: AOJu0YyTiH9DuOtdvmKnCp0hGdYqqCxDauZp2Y0YQqIs/g9YsGG0Q7ov
-	y2w5nNyybIWJvTS3tsARAft/UfkaBMsrpWRuffp8bCsaw639nWdxavGvBPUYNRA=
-X-Google-Smtp-Source: AGHT+IHVe8IOBQZmu+MX/aAlR434no8yh5BEm3aOGISvPCP+fwJlanDcT/2aukoQplmi0ob1+Zo46g==
-X-Received: by 2002:a17:902:ce89:b0:20c:8fd4:eda0 with SMTP id d9443c01a7336-20ca147b16fmr36891675ad.24.1728652945767;
-        Fri, 11 Oct 2024 06:22:25 -0700 (PDT)
-Received: from ?IPV6:2409:40c0:11a4:8d8a:687:fb0b:3c04:c809? ([2409:40c0:11a4:8d8a:687:fb0b:3c04:c809])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20c8c348986sm23257035ad.258.2024.10.11.06.22.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 11 Oct 2024 06:22:25 -0700 (PDT)
-Message-ID: <7274be28-aefe-49b1-b8e1-dd1c2bad96d0@gmail.com>
-Date: Fri, 11 Oct 2024 18:52:18 +0530
+	id 1szGnQ-0000000GdIs-051b;
+	Fri, 11 Oct 2024 14:39:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1728657543; x=1729262343; i=frank-w@public-files.de;
+	bh=lU+ODpKYzQeoYo8h67RvQnw+QkGXG4J85yFxYTyLDVo=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:Date:In-Reply-To:References:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=JqDUCICbnOrxABz9wM10IGJbjWgm04rKJRLxK9SJOon2oxxcfb1wms95jDGgGiWR
+	 2eiUGRRgroWDKdyWqQ0gsg03IFa/DjhDJGnqFeqVSh6Bb8j0R4+UljvVtZytgdTi+
+	 gNcyp59glSfajfd14YMC3/HQ7Ok0i9+kf373Qz0xWh7Ybs5600QhyQy/3/rRqZIpx
+	 EGsJHPJfCH+NWTyogYtJlaKGNvjeVlF9XXmEVXzq9VwJ2Nhf/1RVwyxBaMHPq47yI
+	 ZJ01CC1DWoY7VHwtos2MRNBPa2T+08DEF9w/fmJNiR9PF22diX0C3LaoKXi594mLO
+	 ZMkvLl70FqLLEnlcJw==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.153.152] ([217.61.153.152]) by web-mail.gmx.net
+ (3c-app-gmx-bs32.server.lan [172.19.170.84]) (via HTTP); Fri, 11 Oct 2024
+ 16:39:02 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: (subset) [PATCH] leds: Fix uninitialized variable 'ret' in
- mt6370_mc_pattern_clear
-To: Lee Jones <lee@kernel.org>, pavel@ucw.cz
-Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- linux-leds@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20241006131337.48442-1-surajsonawane0215@gmail.com>
- <172863776565.3130628.18378710932238203204.b4-ty@kernel.org>
-Content-Language: en-US
-From: Suraj Sonawane <surajsonawane0215@gmail.com>
-In-Reply-To: <172863776565.3130628.18378710932238203204.b4-ty@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Message-ID: <trinity-a263618e-97dc-4b69-bc58-577ddc6b6b6c-1728657542941@3c-app-gmx-bs32>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Frank Wunderlich <linux@fw-web.de>,
+ linux-arm-kernel@lists.infradead.org, Linus Walleij
+ <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, eladwf@gmail.com,
+ Conor Dooley <conor+dt@kernel.org>, john@phrozen.org,
+ linux-mediatek@lists.infradead.org, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, ansuelsmth@gmail.com,
+ linux-gpio@vger.kernel.org, daniel@makrotopia.org, Sean Wang
+ <sean.wang@kernel.org>
+Subject: Aw: Re: [PATCH v4 3/4] dt-bindings: pinctrl: add binding for MT7988
+ SoC
+Content-Type: text/plain; charset=UTF-8
+Date: Fri, 11 Oct 2024 16:39:02 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <172850877244.733887.12458885415029802904.robh@kernel.org>
+References: <20241009165222.5670-1-linux@fw-web.de>
+ <20241009165222.5670-4-linux@fw-web.de>
+ <172850877244.733887.12458885415029802904.robh@kernel.org>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:MUSmFu6PjzeQgExIQunxlF/xCs0a186IaUgqTQ3hv/mYU79yMFfqqDtyGqe27BxlQ00DX
+ oD9jm3pgD/qDHE1HORDb5EM7VJLpcqHM8hOeC+Bj7cVn+b2U/oyzg0CUGg3OHRIeOyfTjzM6177J
+ +4gPTzQuMu4u3MYh/yjOE+uOIzfRYyTta7+1rkjFQcwdVQekfk17jt7dwhd2GOJn48pYgO6ZhY4p
+ 8RBI12uAAz4ybuHqQuO6sMenmkRsMKZjafBzWmSgiUm7bLvdQOr7XmJh07UmbOCHtWwetYydNmIc
+ pI=
+UI-OutboundReport: notjunk:1;M01:P0:AEqOF9MZpBU=;RVC2fecryF6FkTHTvCByH0PRP/Q
+ R+CRjZb1Sya/1u4i8o84+oOSjXSU2dCKKXgIztiORmqbTn4FWDyp8zmnMNDubidtBItXOUOZH
+ uULcMTLZPadvsdW3AZSNyzzB6+4S2spEIspIAH9HEjVo3ny3+KYgnZX8aGcVRYDryVovAJI3g
+ xySppHbpJtOBjKc5cwKUO3S7WXTWgsuuGBx8OIoJVxt5rgosEhvO0fGabkk0KDJvQu4HZOEeo
+ 0vcFuF8+M9JuvuyB4aFqww0zoUdO8frNd2BZBfSV5RXI/DIhF7mu3YbGvCMbKLj1l+e/z/Vkp
+ hzbXawd5ewCccVwNj7XX9jfFiS41zSa1uyXgH5bQjx9llajl/BPJWZTrwLKfAxQkH5Iq6SEPW
+ a1m1Wy3ey6fsHKSXAuE+N2FGoLlrChH2gxG1I7DopSGGTyu50iZJxxXuNxADSEtQcL09g9Nxu
+ hcURvHwYia0+VEL4La8wu5esGo97aPWyNv/YJbATQSq/UfG/W0AMsqAySyFLPIggUDwAQ2Odh
+ 4fsL3kFRiv2D0ofMVd3oPjVGsmSRQx22A1S/7IQU/vnQkvcQgEWuOR2bTYKKfhesV8XiZn3Jm
+ oW7pby7E+lzgp5k/oBCykl03yKFfUGbn4mxhTr3z9toIimm7nmlI6KPlN7pS5Iyu3rZYb9zXU
+ h5L+tshtJJd/q428GnRLa2u7+JqWu5REtgToV84jJA==
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241011_062227_084674_BFC015BC 
-X-CRM114-Status: UNSURE (   8.23  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241011_073912_370805_EDD5596E 
+X-CRM114-Status: GOOD (  17.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,28 +104,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/10/24 14:39, Lee Jones wrote:
-> On Sun, 06 Oct 2024 18:43:37 +0530, SurajSonawane2415 wrote:
->> Fix the uninitialized symbol 'ret' in the function mt6370_mc_pattern_clear
->> to resolve the following warning:
->> drivers/leds/rgb/leds-mt6370-rgb.c:604 mt6370_mc_pattern_clear()
->> error: uninitialized symbol 'ret'.
->> Initialize 'ret' to 0 to prevent undefined behavior from uninitialized
->> access.
->>
->> [...]
-> 
-> Applied, thanks!
-> 
-> [1/1] leds: Fix uninitialized variable 'ret' in mt6370_mc_pattern_clear
->        commit: b5a5659aebfffbcddb81abafe042fb4044b6ff9e
-> 
-> --
-> Lee Jones [李琼斯]
-> 
-Thank you! I'm glad the patch was applied. I'll ensure future patches 
-follow the necessary guidelines.
 
-Best regards,
-Suraj Sonawane
+> Gesendet: Mittwoch, 09. Oktober 2024 um 23:19 Uhr
+> Von: "Rob Herring (Arm)" <robh@kernel.org>
+> Betreff: Re: [PATCH v4 3/4] dt-bindings: pinctrl: add binding for MT7988=
+ SoC
+>
+>
+> On Wed, 09 Oct 2024 18:52:13 +0200, Frank Wunderlich wrote:
+> > From: Frank Wunderlich <frank-w@public-files.de>
+> >
+> > This adds bindings for MT7988 pinctrl driver.
+> >
+> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> > ---
+> > changes in v4:
+> > - dt-binding: pinctrl: fix dt_binding_check fixed-string error
+> >
+> > '^mux$' should not be valid under {'pattern': '^\\^[a-zA-Z0-9,\\-._#@]=
++\\$$'}
+> > 	hint: Fixed strings belong in 'properties', not 'patternProperties'
+> >
+> > changes in v3:
+> > - limit conf subnode name with optional suffix like mmc on mt7986
+> > - match mux subnode without wildcards
+> >
+> > changes in v2:
+> > - drop gpio-cells description
+> > - move ref in mux subnode up
+> > - order uart-functions alphanumeric and fix typo
+> > ---
+> >  .../pinctrl/mediatek,mt7988-pinctrl.yaml      | 571 +++++++++++++++++=
++
+> >  1 file changed, 571 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek=
+,mt7988-pinctrl.yaml
+> >
+>
+> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+>
+Hi Rob,
+
+thank you for RB,
+
+i would change the drive-strength in the example also to 8 based on angelo=
+s [1] review in next version
+
++        mdio0_pins: mdio0-pins {
++          mux {
++            function =3D "eth";
++            groups =3D "mdc_mdio0";
++          };
++
++          conf {
++            pins =3D "SMI_0_MDC", "SMI_0_MDIO";
++            drive-strength =3D <MTK_DRIVE_8mA>;
++          };
++        };
+
+to
+
++        mdio0_pins: mdio0-pins {
++          mux {
++            function =3D "eth";
++            groups =3D "mdc_mdio0";
++          };
++
++          conf {
++            pins =3D "SMI_0_MDC", "SMI_0_MDIO";
++            drive-strength =3D <8>;
++          };
++        };
+
+can i leave your RB (so you do not need to look at it again) or drop it be=
+cause i change the patch?
+
+regards Frank
+
+[1] https://patchwork.kernel.org/project/linux-mediatek/patch/202410091652=
+22.5670-5-linux@fw-web.de/#26062582
 
