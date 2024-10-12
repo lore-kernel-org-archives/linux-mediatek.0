@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D080DCF2586
-	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Oct 2024 22:11:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13789CF2587
+	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Oct 2024 22:12:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4PoFI89rLN2ytSYMTWo5YqKnbvfTUnAc6PMkvYI+HSY=; b=OshRzVt5enZSS5ajsR6G/3q6s4
-	pD5YIA5dFwG7zCi/ngyYck4bpPZQ4iO/4A7BcjzyGpp1aV3NfuyzAPBrjuHhRvmDgaQlxqiBIbtXc
-	ZKan/eDe2L3ePBY6fgf3Wm29eDuD4wsXYhddB1ZecsJ1/SVCmWPfyF2PHj+R2IRt49xH/lDwxMyrB
-	XPzrqMAOM5TW+YEpzxS0ErtbeLsEzWnoHDwHCI1WnVs7KRlVzxaX4ImnqDSfKUMHueSIRbjjL2jrC
-	Fw2KguvXfcVx/Nrv83oGT2yu/Zflf/8HJMgme+oB0fB5Qw26IiNtm+iLMb4TGxXmxqL84o9Xv6/pd
-	0s0ptY+A==;
+	bh=+pqRAZvYn8244c0j483Uplr9BTjg/zBkfplxXVPF9gY=; b=FEdRSTQSTqQx3QCDG57jkKtDS4
+	LsXaXS0OLSMZU+74w52IBjFdoXMKN4JmC3KyJpFnHpem4CWkwRvsAUAhIsPAL6jvh0//9zfweDI6C
+	9hKUzih4rN0Z1tMGXuUTy/u6XvWhIAVgECqPWgFmRxjcFb+q0+n9/cKc0GGDzCeis6eqkMGUUkqaY
+	bfCtknhulMjjIy2k3Vv2ywyi1PAOBqQ9yY+ixiKmsGKEyL2vz9/1eHSlpbTEfd9cd64rBdoJy06cg
+	uTLIQW9ddZPI4c+rTkOahLKbmCuVAUrjJJdZ/TLLlTjh34z++y1iGRuzbz+HTDCIkObCGOzXFMyde
+	wqF2O0rQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1szkKD-00000001v0O-3u4r;
-	Sat, 12 Oct 2024 22:11:01 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1szkLY-00000001vAA-02nQ;
+	Sat, 12 Oct 2024 22:12:24 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1szkHX-00000001uhD-4BRc;
-	Sat, 12 Oct 2024 22:08:17 +0000
+	id 1szkHa-00000001uhr-3xQb;
+	Sat, 12 Oct 2024 22:08:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 11E91A40AEF;
-	Sat, 12 Oct 2024 22:08:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2AFB8C4CEC6;
-	Sat, 12 Oct 2024 22:08:14 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0DA435C53AE;
+	Sat, 12 Oct 2024 22:08:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B162DC4CEC6;
+	Sat, 12 Oct 2024 22:08:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728770894;
-	bh=PHnsXDPgonSGur7LNFvBXgYxGpnNy03h+D9rXnrfuM4=;
+	s=k20201202; t=1728770897;
+	bh=/0zmq7nsmue4+CmtleWwqq87kxll2TaOiGZxgSK4/aA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=fZ6VwWxcxiJFm3toWynDnVVn/2JLUpwSrMC9jiVIsRav6D6o3KFpg/Xgt/YkIs0Df
-	 XquD1Iu7EBIWa/qIc4mBVU1gcuUxAaIpuhvg1hyoe8I7rC8XyIKwiK/l2Z4At8kDmJ
-	 EOXSz9A0MUqwCxJlOLcC9W4Bzhs6tP08ciLHrTDMkQaMS1qzaX5SV8bjBlupiv8vbq
-	 y9EHiaMd3pQZBXusmr2Szv+ilxWqHnIYYpUfZFZo16fbEL9naj3Ibb/hqCOesgYCCm
-	 Q9W0jwhT0IfHVTpsv75fpobTIkuKxUlfGw5fSIm2Ph9eKfsP9SoCbDwKcvSElqllWs
-	 g3FPu1H3mj0/g==
+	b=t2CdgrZi2AgVFEk+JpDLVthblgOJVm8/5EAL/8MziVB/uy/9DXBLObLW/M+plo+03
+	 5Izv7k+0b7xoxEUNmQUFhjJKtQ72UimkoCOP0pEzKjomTGqDNGZVF1PH11doonoYAj
+	 jlVWl3OjBJcbHA79oJVrOHJhrWykFpSewDlZUi1p+AqA0vMji4hFTccLv+JQeiPuw7
+	 eK4CxMFN7UgaPMfot+4hCpKrMob8Gtn1u5eDgdpXfDJuafEY4fGWWVIUriaUT9mEn0
+	 rDzYxC7cJMGQ9CP72N2+zP9fkJWOoDEIHDo0MqWWP4tX3O0+Qu/qOULy4Y7lXWxfmA
+	 GkobIO66P+SoA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sun, 13 Oct 2024 00:07:07 +0200
-Subject: [PATCH v6 1/6] dt-bindings: arm: airoha: Add the chip-scu node for
- EN7581 SoC
+Date: Sun, 13 Oct 2024 00:07:08 +0200
+Subject: [PATCH v6 2/6] dt-bindings: pinctrl: airoha: Add EN7581 pinctrl
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20241013-en7581-pinctrl-v6-1-2048e2d099c2@kernel.org>
+Message-Id: <20241013-en7581-pinctrl-v6-2-2048e2d099c2@kernel.org>
 References: <20241013-en7581-pinctrl-v6-0-2048e2d099c2@kernel.org>
 In-Reply-To: <20241013-en7581-pinctrl-v6-0-2048e2d099c2@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>, 
@@ -65,8 +64,8 @@ Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
  linux-pwm@vger.kernel.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241012_150816_138534_E055ACF7 
-X-CRM114-Status: GOOD (  11.19  )
+X-CRM114-CacheID: sfid-20241012_150819_114997_F2A8EA07 
+X-CRM114-Status: GOOD (  11.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,63 +80,418 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds the chip-scu document bindings for EN7581 SoC.
-The airoha chip-scu block provides a configuration interface for clock,
-io-muxing and other functionalities used by multiple controllers (e.g.
-clock, pinctrl, ecc.) on EN7581 SoC.
+Introduce device-tree binding documentation for Airoha EN7581 pinctrl
+controller.
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- .../bindings/arm/airoha,en7581-chip-scu.yaml       | 42 ++++++++++++++++++++++
- 1 file changed, 42 insertions(+)
+ .../bindings/pinctrl/airoha,en7581-pinctrl.yaml    | 400 +++++++++++++++++++++
+ 1 file changed, 400 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/airoha,en7581-chip-scu.yaml b/Documentation/devicetree/bindings/arm/airoha,en7581-chip-scu.yaml
+diff --git a/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
 new file mode 100644
-index 0000000000000000000000000000000000000000..67c449d804c22b6b8268c9840995fe2584349b58
+index 0000000000000000000000000000000000000000..b2601d698dcd41c3ef32af547ea41be0d6904ae6
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/airoha,en7581-chip-scu.yaml
-@@ -0,0 +1,42 @@
++++ b/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
+@@ -0,0 +1,400 @@
 +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/arm/airoha,en7581-chip-scu.yaml#
++$id: http://devicetree.org/schemas/pinctrl/airoha,en7581-pinctrl.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: Airoha Chip SCU Controller for EN7581 SoC
++title: Airoha EN7581 Pin Controller
 +
 +maintainers:
 +  - Lorenzo Bianconi <lorenzo@kernel.org>
 +
 +description:
-+  The airoha chip-scu block provides a configuration interface for clock,
-+  io-muxing and other functionalities used by multiple controllers (e.g. clock,
-+  pinctrl, ecc) on EN7581 SoC.
++  The Airoha's EN7581 Pin controller is used to control SoC pins.
 +
 +properties:
 +  compatible:
-+    items:
-+      - enum:
-+          - airoha,en7581-chip-scu
-+      - const: syscon
++    const: airoha,en7581-pinctrl
 +
-+  reg:
++  interrupts:
 +    maxItems: 1
++
++  gpio-controller: true
++
++  '#gpio-cells':
++    const: 2
++
++  interrupt-controller: true
++
++  '#interrupt-cells':
++    const: 2
++
++allOf:
++  - $ref: pinctrl.yaml#
 +
 +required:
 +  - compatible
-+  - reg
++  - interrupts
++  - gpio-controller
++  - "#gpio-cells"
++  - interrupt-controller
++  - "#interrupt-cells"
++
++patternProperties:
++  '-pins$':
++    type: object
++
++    patternProperties:
++      '^mux(-|$)':
++        type: object
++
++        description:
++          pinmux configuration nodes.
++
++        $ref: /schemas/pinctrl/pinmux-node.yaml
++
++        properties:
++          function:
++            description:
++              A string containing the name of the function to mux to the group.
++            enum: [pon, tod_1pps, sipo, mdio, uart, i2c, jtag, pcm, spi,
++                   pcm_spi, i2s, emmc, pnand, pcie_reset, pwm, phy1_led0,
++                   phy2_led0, phy3_led0, phy4_led0, phy1_led1, phy2_led1,
++                   phy3_led1, phy4_led1]
++
++          groups:
++            description:
++              An array of strings. Each string contains the name of a group.
++
++        required:
++          - function
++          - groups
++
++        allOf:
++          - if:
++              properties:
++                function:
++                  const: pon
++            then:
++              properties:
++                groups:
++                  enum: [pon]
++          - if:
++              properties:
++                function:
++                  const: tod_1pps
++            then:
++              properties:
++                groups:
++                  enum: [pon_tod_1pps, gsw_tod_1pps]
++          - if:
++              properties:
++                function:
++                  const: sipo
++            then:
++              properties:
++                groups:
++                  enum: [sipo, sipo_rclk]
++          - if:
++              properties:
++                function:
++                  const: mdio
++            then:
++              properties:
++                groups:
++                  enum: [mdio]
++          - if:
++              properties:
++                function:
++                  const: uart
++            then:
++              properties:
++                groups:
++                  items:
++                    enum: [uart2, uart2_cts_rts, hsuart, hsuart_cts_rts,
++                           uart4, uart5]
++                  maxItems: 2
++          - if:
++              properties:
++                function:
++                  const: i2c
++            then:
++              properties:
++                groups:
++                  enum: [i2c1]
++          - if:
++              properties:
++                function:
++                  const: jtag
++            then:
++              properties:
++                groups:
++                  enum: [jtag_udi, jtag_dfd]
++          - if:
++              properties:
++                function:
++                  const: pcm
++            then:
++              properties:
++                groups:
++                  enum: [pcm1, pcm2]
++          - if:
++              properties:
++                function:
++                  const: spi
++            then:
++              properties:
++                groups:
++                  items:
++                    enum: [spi_quad, spi_cs1]
++                  maxItems: 2
++          - if:
++              properties:
++                function:
++                  const: pcm_spi
++            then:
++              properties:
++                groups:
++                  items:
++                    enum: [pcm_spi, pcm_spi_int, pcm_spi_rst, pcm_spi_cs1,
++                           pcm_spi_cs2_p156, pcm_spi_cs2_p128, pcm_spi_cs3,
++                           pcm_spi_cs4]
++                  maxItems: 7
++          - if:
++              properties:
++                function:
++                  const: i2c
++            then:
++              properties:
++                groups:
++                  enum: [i2s]
++          - if:
++              properties:
++                function:
++                  const: emmc
++            then:
++              properties:
++                groups:
++                  enum: [emmc]
++          - if:
++              properties:
++                function:
++                  const: pnand
++            then:
++              properties:
++                groups:
++                  enum: [pnand]
++          - if:
++              properties:
++                function:
++                  const: pcie_reset
++            then:
++              properties:
++                groups:
++                  enum: [pcie_reset0, pcie_reset1, pcie_reset2]
++          - if:
++              properties:
++                function:
++                  const: pwm
++            then:
++              properties:
++                groups:
++                  enum: [gpio0, gpio1, gpio2, gpio3, gpio4, gpio5, gpio6,
++                         gpio7, gpio8, gpio9, gpio10, gpio11, gpio12, gpio13,
++                         gpio14, gpio15, gpio16, gpio17, gpio18, gpio19,
++                         gpio20, gpio21, gpio22, gpio23, gpio24, gpio25,
++                         gpio26, gpio27, gpio28, gpio29, gpio30, gpio31,
++                         gpio36, gpio37, gpio38, gpio39, gpio40, gpio41,
++                         gpio42, gpio43, gpio44, gpio45, gpio46, gpio47]
++          - if:
++              properties:
++                function:
++                  const: phy1_led0
++            then:
++              properties:
++                groups:
++                  enum: [gpio33, gpio34, gpio35, gpio42]
++          - if:
++              properties:
++                function:
++                  const: phy2_led0
++            then:
++              properties:
++                groups:
++                  enum: [gpio33, gpio34, gpio35, gpio42]
++          - if:
++              properties:
++                function:
++                  const: phy3_led0
++            then:
++              properties:
++                groups:
++                  enum: [gpio33, gpio34, gpio35, gpio42]
++          - if:
++              properties:
++                function:
++                  const: phy4_led0
++            then:
++              properties:
++                groups:
++                  enum: [gpio33, gpio34, gpio35, gpio42]
++          - if:
++              properties:
++                function:
++                  const: phy1_led1
++            then:
++              properties:
++                groups:
++                  enum: [gpio43, gpio44, gpio45, gpio46]
++          - if:
++              properties:
++                function:
++                  const: phy2_led1
++            then:
++              properties:
++                groups:
++                  enum: [gpio43, gpio44, gpio45, gpio46]
++          - if:
++              properties:
++                function:
++                  const: phy3_led1
++            then:
++              properties:
++                groups:
++                  enum: [gpio43, gpio44, gpio45, gpio46]
++          - if:
++              properties:
++                function:
++                  const: phy4_led1
++            then:
++              properties:
++                groups:
++                  enum: [gpio43, gpio44, gpio45, gpio46]
++
++        additionalProperties: false
++
++      '^conf(-|$)':
++        type: object
++
++        description:
++          pinconf configuration nodes.
++
++        $ref: /schemas/pinctrl/pincfg-node.yaml
++
++        properties:
++          pins:
++            description:
++              An array of strings. Each string contains the name of a pin.
++            items:
++              enum: [uart1_txd, uart1_rxd, i2c_scl, i2c_sda, spi_cs0, spi_clk,
++                     spi_mosi, spi_miso, gpio0, gpio1, gpio2, gpio3, gpio4,
++                     gpio5, gpio6, gpio7, gpio8, gpio9, gpio10, gpio11, gpio12,
++                     gpio13, gpio14, gpio15, gpio16, gpio17, gpio18, gpio19,
++                     gpio20, gpio21, gpio22, gpio23, gpio24, gpio25, gpio26,
++                     gpio27, gpio28, gpio29, gpio30, gpio31, gpio32, gpio33,
++                     gpio34, gpio35, gpio36, gpio37, gpio38, gpio39, gpio40,
++                     gpio41, gpio42, gpio43, gpio44, gpio45, gpio46,
++                     pcie_reset0, pcie_reset1, pcie_reset2]
++            minItems: 1
++            maxItems: 58
++
++          bias-disable: true
++
++          bias-pull-up: true
++
++          bias-pull-down: true
++
++          input-enable: true
++
++          output-enable: true
++
++          output-low: true
++
++          output-high: true
++
++          drive-open-drain: true
++
++          drive-strength:
++            description:
++              Selects the drive strength for MIO pins, in mA.
++            enum: [2, 4, 6, 8]
++
++        required:
++          - pins
++
++        additionalProperties: false
++
++    additionalProperties: false
 +
 +additionalProperties: false
 +
 +examples:
 +  - |
-+    soc {
-+      #address-cells = <2>;
-+      #size-cells = <2>;
-+      syscon@1fa20000 {
-+        compatible = "airoha,en7581-chip-scu", "syscon";
-+        reg = <0x0 0x1fa20000 0x0 0x388>;
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++
++    pinctrl {
++      compatible = "airoha,en7581-pinctrl";
++
++      interrupt-parent = <&gic>;
++      interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
++
++      gpio-controller;
++      #gpio-cells = <2>;
++
++      interrupt-controller;
++      #interrupt-cells = <2>;
++
++      pcie1-rst-pins {
++        conf {
++          pins = "pcie_reset1";
++          drive-open-drain = <1>;
++        };
++      };
++
++      pwm-pins {
++        mux {
++          function = "pwm";
++          groups = "gpio18";
++        };
++      };
++
++      spi-pins {
++        mux {
++          function = "spi";
++          groups = "spi_quad", "spi_cs1";
++        };
++      };
++
++      uart2-pins {
++        mux {
++          function = "uart";
++          groups = "uart2", "uart2_cts_rts";
++        };
++      };
++
++      uar5-pins {
++        mux {
++          function = "uart";
++          groups = "uart5";
++        };
++      };
++
++      mmc-pins {
++        mux {
++          function = "emmc";
++          groups = "emmc";
++        };
++      };
++
++      mdio-pins {
++        mux {
++          function = "mdio";
++          groups = "mdio";
++        };
++
++        conf {
++          pins = "gpio2";
++          output-enable;
++        };
 +      };
 +    };
 
