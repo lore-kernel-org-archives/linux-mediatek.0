@@ -4,78 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84A99CF2564
-	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Oct 2024 11:29:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CA84CF2566
+	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Oct 2024 12:08:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BEMVwz5nnQ7Xs43B82q/jvwAQGy/9H92XKTIqJTpiqU=; b=JReVA5rV6/fpFphHnndDvXUlXz
-	TnxJcguBABDfTDxSyRoBN49CRkFStaHP2CLT4kKB/y4wRWqkKtz4XbYRrI3HSI/uNbKutuRo2xS/T
-	J/MmD6pWxvYq7F5RJszKHoyY9js30bpXYz3Vm1uRYa+dj75PyfAgSjtg2Wzo3GSbKAhTZqPKxaofI
-	aA74HWS3LMOeZE0HLoU3pv7I+8FDP4pUd8QRULDWyIlwwACKgTfLUVnZtkugS5QcpdJURheDdjYmb
-	v2YkozTb0m7wJZjQw1Hh4bEsc2N8loZOsPneIdQk04Neafy1dJYBYuw/UFAe/A8ti/AB7z06GWsIx
-	+QYHQA8A==;
+	bh=4q+5yM/yTzJBMrMhD9gLrCWAQ7obBGvJ5w2ryoNvuqE=; b=XD27KSxieIKldQBYa+pnBELK+O
+	LMjI40+dUN9Fjx1NpHZRZyiAFeFltYlqM3lxe8rJXLEXHfBnxDWLY3YXQb2gnXxSq2HbE/6PkOhGc
+	fODs76UJxcHLYx5z/z7vw58nTOJj6IjN/ZguQlmX1cSLiEi1ruixOO8ahj2jajCH027+SqapOfYVE
+	kV0vZcH6oDBe8GmnH9ijTl76IfQNFZb6L+6f8FjipLNEokqpt58qklW6OVb9B/Q4cvIIIYLuK7whr
+	0i7qw/X3fcjLXGDhgdbZ4DRclEt3OQa9IjdPhcPuT/Pdz1zeT+rnRTz+2tD9dlIQHYIhxGztmR3aw
+	Wroh58Nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1szaJJ-0000000142r-2NQR;
-	Sat, 12 Oct 2024 11:29:25 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1szav8-00000001Ai0-43rr;
+	Sat, 12 Oct 2024 12:08:30 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1szaHq-000000013co-2z4A;
-	Sat, 12 Oct 2024 11:27:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 41FF3A40571;
-	Sat, 12 Oct 2024 11:27:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 90137C4CEC6;
-	Sat, 12 Oct 2024 11:27:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728732473;
-	bh=Lw3xV5CQbRpHj7Suwhvn/ROZHULgNHJAEmyajtD6PGE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lljsPDCXyj8TBE846ZEmWDWDi1iRtyL8hgSgKh+ueveO44nWZfs0SuukTaLnJpI3a
-	 gd3AEALGGRc8bBE2K/HIo4urXpCfXF4Iuyloygw70rJquvQFYh78Fu4f79u23gj+JD
-	 vz8ds4hSfzseNp/phZHb9LD8Ay+7qO1VNhcD71P4lCDaASFLAaUKeihFvxUVBnq3TS
-	 kPOdPB9ibMxosl1Uv+duYyT5dwCb7vW4iiyVZsNSl7J+3bQox2M36rI5yFykFGgSob
-	 pc7xIXGlUSNcYOeqg6RpnAmgeX+TGucjluWOtQCLJ7cWmMkqc8itQTVEGEOx1LuFl+
-	 U6+BjNwpjZb8w==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Bert Karwatzki <spasswolf@web.de>,
-	Felix Fietkau <nbd@nbd.name>,
-	Kalle Valo <kvalo@kernel.org>,
-	Sasha Levin <sashal@kernel.org>,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	sean.wang@mediatek.com,
-	deren.wu@mediatek.com,
-	mingyen.hsieh@mediatek.com,
-	johannes.berg@intel.com,
-	hao.zhang@mediatek.com,
-	emmanuel.grumbach@intel.com,
-	leon.yen@mediatek.com,
-	linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 15/20] wifi: mt76: mt7921: fix NULL pointer access in mt7921_ipv6_addr_change
-Date: Sat, 12 Oct 2024 07:26:47 -0400
-Message-ID: <20241012112715.1763241-15-sashal@kernel.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20241012112715.1763241-1-sashal@kernel.org>
-References: <20241012112715.1763241-1-sashal@kernel.org>
+	id 1szatE-00000001AXK-3EBQ;
+	Sat, 12 Oct 2024 12:06:34 +0000
+Received: from mail.maildlp.com (unknown [172.19.88.105])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4XQhvv1XPnzkWcD;
+	Sat, 12 Oct 2024 20:03:07 +0800 (CST)
+Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
+	by mail.maildlp.com (Postfix) with ESMTPS id 66A98140393;
+	Sat, 12 Oct 2024 20:05:32 +0800 (CST)
+Received: from [10.67.120.129] (10.67.120.129) by
+ dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.11; Sat, 12 Oct 2024 20:05:32 +0800
+Message-ID: <b1fd5ece-b967-4e56-ad4f-64ec437e2634@huawei.com>
+Date: Sat, 12 Oct 2024 20:05:31 +0800
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.6.56
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net v2 0/2] fix two bugs related to page_pool
+To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
+CC: <liuyonglong@huawei.com>, <fanghaiqing@huawei.com>,
+	<zhangkun09@huawei.com>, Alexander Lobakin <aleksander.lobakin@intel.com>,
+	Robin Murphy <robin.murphy@arm.com>, Alexander Duyck
+	<alexander.duyck@gmail.com>, IOMMU <iommu@lists.linux.dev>, Alexei
+ Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper
+ Dangaard Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <netdev@vger.kernel.org>,
+	<intel-wired-lan@lists.osuosl.org>, <bpf@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+References: <20240925075707.3970187-1-linyunsheng@huawei.com>
+Content-Language: en-US
+From: Yunsheng Lin <linyunsheng@huawei.com>
+In-Reply-To: <20240925075707.3970187-1-linyunsheng@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.67.120.129]
+X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
+ dggpemf200006.china.huawei.com (7.185.36.61)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241012_042754_845041_51ADBA12 
-X-CRM114-Status: GOOD (  11.10  )
+X-CRM114-CacheID: sfid-20241012_050633_142734_F4C6757E 
+X-CRM114-Status: UNSURE (   9.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,36 +80,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bert Karwatzki <spasswolf@web.de>
+On 2024/9/25 15:57, Yunsheng Lin wrote:
+> Patch 1 fix a possible time window problem for page_pool.
+> Patch 2 fix the kernel crash problem at iommu_get_dma_domain
+> reported in [1].
 
-[ Upstream commit 479ffee68d59c599f8aed8fa2dcc8e13e7bd13c3 ]
+Hi, all
 
-When disabling wifi mt7921_ipv6_addr_change() is called as a notifier.
-At this point mvif->phy is already NULL so we cannot use it here.
+Through the discussions, it seems there are some main concerns
+as below:
+1. Semantics changing of supporting unlimited inflight pages
+   to limited inflight pages that are as large as the pool_size
+   of page_pool.
+2. The overhead of finding available pool->items in
+   page_pool_item_add().
 
-Signed-off-by: Bert Karwatzki <spasswolf@web.de>
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
-Signed-off-by: Kalle Valo <kvalo@kernel.org>
-Link: https://patch.msgid.link/20240812104542.80760-1-spasswolf@web.de
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7921/main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Any other concerns I missed here?
+As it is unclear about the impact of the above concerns, which seemed
+to lead Paolo to suggest this patchset targetting net-next tree
+instead of net tree, so I am planning to target the net-next tree
+keeping the 'Fixes' tag for the next version, if there is any other
+opinion here, please let me know.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index d8851cb5f400b..da17a29a4ce57 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -1095,7 +1095,7 @@ static void mt7921_ipv6_addr_change(struct ieee80211_hw *hw,
- 				    struct inet6_dev *idev)
- {
- 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
--	struct mt792x_dev *dev = mvif->phy->dev;
-+	struct mt792x_dev *dev = mt792x_hw_dev(hw);
- 	struct inet6_ifaddr *ifa;
- 	struct in6_addr ns_addrs[IEEE80211_BSS_ARP_ADDR_LIST_LEN];
- 	struct sk_buff *skb;
--- 
-2.43.0
+Also, I still have the page_frag refactoring patchset pending in the
+nex-next, please let me know if I should wait for that patchset to
+be applied before sending this one to the net-next tree.
 
+> 
 
