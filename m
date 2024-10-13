@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83A18CF2579
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Oct 2024 19:09:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42AA6CF2576
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Oct 2024 19:11:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9DH9O06Lp64TibMF8pahG9IPkhLX3XCOl3DriGpuFd0=; b=sGqnk02h6XTfGGRvrgkVfa1uZZ
-	80oG5dABy9tyCPOhC3qI+WrgM4DUbTLNyd+MlH/pNQU/VafRI2+tlBsNMeOtnLnVY1cUIJjftAP2W
-	6ZhoDLIXtGaSvx8696++FUaoUdeaqZCSNLKAUWIuAl3U7zbw8NSx1yloSIu0TsYl3iTLlHL7i6ODe
-	WMAGJh/udQoakoEbgSa62BR0i6SVLTIUnVGJJmi+9RXiSphZKBayyZHvQj9kMy1UNLI6bXfbdyrD8
-	KVoCKF9xhogys6VWHKAqhvKyUHqJkJejZ47RAAss1D7Pp3cJjAcEqeLqY0RLl9o0dR7k6bOJ7/qcJ
-	d/P5BgFQ==;
+	bh=/wvQCHOWWIW7US3Y24oFxpAEUoI5Ll0qD/qvu+rx8QE=; b=bKAP+PPu00g5evt0Hyq3XYeAsz
+	GEm1ujiq5veJJgBEevM4AWU2o5E9gOHbQMVyKWOy5dq0BHi6VmSLCrJtt9tpaUwxF66p/HwM2Qi95
+	5KObwi6LYNkKsb5jl7OfFnI0GHTUpyi8Qr/CZvWFqfRaxclwNQMnWoYH5UH0UIv+0kPStPI99KCDu
+	aQpxyBX2PPtjrTsmFAz1i5kbt8FNz1EPWDaB3Ry2eQuzPU6yIeKmy3o+TIUjbbdk+CKiGl+RaIX/s
+	RbsAj+Do+8/vugRZmXzxe7OXoWg2PblUg5dTO5v7OQbQkLCY2bUStZrLwbUt9la+fL2zhY9x63/ir
+	B0cAAeWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t03yK-000000036eI-0eeF;
-	Sun, 13 Oct 2024 19:09:44 +0000
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+	id 1t03zm-000000036ln-0sHf;
+	Sun, 13 Oct 2024 19:11:14 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t03kp-000000034bs-1lR1;
-	Sun, 13 Oct 2024 18:55:48 +0000
-Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-5c97c7852e8so432497a12.1;
-        Sun, 13 Oct 2024 11:55:46 -0700 (PDT)
+	id 1t03kq-000000034cY-1JhF;
+	Sun, 13 Oct 2024 18:55:50 +0000
+Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-a99ffeea60bso108393966b.3;
+        Sun, 13 Oct 2024 11:55:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1728845746; x=1729450546; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1728845747; x=1729450547; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=9DH9O06Lp64TibMF8pahG9IPkhLX3XCOl3DriGpuFd0=;
-        b=KwuEPAMZKQoi1AyB9+YUNKS/kGD0dZA4X3p6xZvQbSheqHUckvWVAudEQRBp9eQnLd
-         R1akaLJWI9CJUrvX/hFqwWpeZyOIOW6xuab1w1J8YAVEJt40uYyF/svq01ULdrh52uVE
-         qHlmO2KDES+G9A5EPmLWSCXxK/Qcp8K/9+wMo8uZGP6EMFN4AFG1F9jIYaXdTAesEggM
-         42Spuq8mD8e15EIeM39w/Dli1HEe1dN27SmTLakunBGZQz6w2PFMMGqYLJrW8SPPGNva
-         35XA0C08zhLePMfw3qN1BC40feYjw0HPyxM/nYPLlRt3U4igv/0G5PBzuJwW0E7qcISU
-         DCfg==
+        bh=/wvQCHOWWIW7US3Y24oFxpAEUoI5Ll0qD/qvu+rx8QE=;
+        b=Ris191bUauvVukcXLLC5UHc0dk0yAW+UyOAxYvtK+lv1akaz5hZ98E3WnnpvefhGTC
+         ysxUUHAK00pUdzwckjSZDPRPmQ0INltro4LCrvMxVrYZZUOO8gwQFnnBzX2XeX2mDHb4
+         2uxDl5fdjyx54PYQShI34imrHHCUUjwElKb98uIWKa7B56rfe5vrX0AoEVy72ym+7niA
+         bTEBOLGwSY+PYlyfz/NXjwHl35wV0uES7Le/FbewE9lz0KmZHfFcuHQOlhOqy+xA5Eu6
+         kdaAg6ktcY25ZHW8UbLSjNWDdYKwcuv1sSeI12X7LbwbZe94Jv6o7l/Zh7BRyYFL+A7u
+         DBXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728845746; x=1729450546;
+        d=1e100.net; s=20230601; t=1728845747; x=1729450547;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=9DH9O06Lp64TibMF8pahG9IPkhLX3XCOl3DriGpuFd0=;
-        b=rruYY6BOVdWOEoJF9lVJ9sOtM84Y/f2MjTE2Xrxj750m44td/iq1v+fnjYtIp3tltZ
-         2l9c3rOVgfKUBj2cTxgAlQxMq5woZ8gTA9m2IZAdDh8w43sJYYKctPx3YfAXvbxuG6OF
-         KGlYM2zSfnUkySy3vXKNeDcNqXsGyNmfpg93O1GfaOR9MMNo/4lVgT1JwUhMi0/Sc1U2
-         p7PAPsvBYC38XITt8Xe5ox9Ky961SzGQnBmQJ/hCdM7tA+0iDe683p6ApIsnXedUtztd
-         A9xMkNJ4cvnpNEVvC9Dz7lkHgrjLRPv8P9H2fCROILdKR9pgGn6Jp3x1AJ2KWJisvvlg
-         DNnQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWXFpaOarPWpaDxcffrfrn+8g+cLnJ5sX8tiGABivM5KOSBtoARQ5YZymU2RaBADAGIt4xo7NYM8GdOXT1Av20=@lists.infradead.org, AJvYcCXMfUrFlt+Nasysdj8x1tJDozuVle6JYUD103iJqjQwtEvBxeGc53qmjOnNuVALrf+uRC9a6wKOqKd5k4an3Xzh@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy4HjEL3EWlZ4L7Cho7qigPFUzNleLDMAFrP2WeTBmzr35noDCu
-	l0FQAaoRMnuJRm9Aftd7951CVQd+LdPVkLB9cH1LwMjPTnZTgenF
-X-Google-Smtp-Source: AGHT+IF3e958cm6WfptQrjYwvw+8nY6U3EWzISV9aoZ2s8HNdWFDat+7mlGlek7WSgxj3fgwgQWR5g==
-X-Received: by 2002:a17:907:7f12:b0:a99:f945:8776 with SMTP id a640c23a62f3a-a99f94588c4mr336725266b.24.1728845745513;
-        Sun, 13 Oct 2024 11:55:45 -0700 (PDT)
+        bh=/wvQCHOWWIW7US3Y24oFxpAEUoI5Ll0qD/qvu+rx8QE=;
+        b=u6Smhwx3tL8IxW+g4EA4t1wiDywaeBfq+L06rMS8YQLUgkRfLGhzu9eYJ1rXPAW4Z3
+         Vk2nOQ2QP3dikSQxO9DJoGDAdUz3CliX6+Vgc50utilbrdO/e6XjU68UaiREdU9JFyG6
+         9ulErVmsHYu4oy6ngrKL5kCcBnFtUzSjnD52eQ4eB5iHD7S1tuGsnfjIZHU/DvlsY0SI
+         U9e8sTwyRFxkLksObRJSDrYaDo88ETtxNCUyaVU/l574yhfGaw2qnCPcDnbBriRAW99r
+         8Jc/YRubjo1t2GDTdtb0s1zeprd22n9cEZIJaBv6ky24wna8ucbOutll4asKnLHO0Y/h
+         7POg==
+X-Forwarded-Encrypted: i=1; AJvYcCUS+jTgM44vBMcczhh1LVqvFgDWeqqSonjz7suvcipTlE4tPktYqg6SVDbSN7u2TSFerZsDwv4pjyysmO6u8PWT@lists.infradead.org, AJvYcCVlcbGpr2QNrlMkhkSgj1uHojDCLsE/BGRQqxsGfXOBcZlc1+VzDQM9agdDBYW0jKDf9HoWA1DT9Ym3UCqRKL0=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzaoW4BVqosS7dPHmQTAYI0ONI8mW1A3sHh8eqi2kH4G88C/lX7
+	A5gqgpM1lAy9khXnwvhEHpOJkcJz9IzdxNo26BkkMFNzI5OFh6Vv
+X-Google-Smtp-Source: AGHT+IFcMh7X7AR/VKEwvdjIeYhwzK2WvA/EYBgn+NK/HakHY1UTKH1K6wSO2SOJbW3fWApGJV4UEA==
+X-Received: by 2002:a17:907:6d27:b0:a99:b592:edba with SMTP id a640c23a62f3a-a99b93a7d8amr743812866b.1.1728845746819;
+        Sun, 13 Oct 2024 11:55:46 -0700 (PDT)
 Received: from corebook.localdomain (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a12d384b9sm13500866b.172.2024.10.13.11.55.44
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a12d384b9sm13500866b.172.2024.10.13.11.55.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 13 Oct 2024 11:55:45 -0700 (PDT)
+        Sun, 13 Oct 2024 11:55:46 -0700 (PDT)
 From: Eric Woudstra <ericwouds@gmail.com>
 To: "David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
@@ -86,17 +86,17 @@ Cc: netdev@vger.kernel.org,
 	bridge@lists.linux.dev,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH RFC v1 net-next 10/12] netfilter: nft_flow_offload: Add DEV_PATH_MTK_WDMA to nft_dev_path_info()
-Date: Sun, 13 Oct 2024 20:55:06 +0200
-Message-ID: <20241013185509.4430-11-ericwouds@gmail.com>
+Subject: [PATCH RFC v1 net-next 11/12] bridge: br_vlan_fill_forward_path_mode no _UNTAG_HW for dsa
+Date: Sun, 13 Oct 2024 20:55:07 +0200
+Message-ID: <20241013185509.4430-12-ericwouds@gmail.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20241013185509.4430-1-ericwouds@gmail.com>
 References: <20241013185509.4430-1-ericwouds@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241013_115547_499227_3197A528 
-X-CRM114-Status: GOOD (  12.62  )
+X-CRM114-CacheID: sfid-20241013_115548_392945_1EB73DA2 
+X-CRM114-Status: GOOD (  17.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,45 +111,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In case of using mediatek wireless, in nft_dev_fill_forward_path(), the
-forward path is filled, ending with mediatek wlan1.
+In network setup as below:
 
-Because DEV_PATH_MTK_WDMA is unknown inside nft_dev_path_info() it returns
-with info.indev = NULL. Then nft_dev_forward_path() returns without
-setting the direct transmit parameters.
+             fastpath bypass
+ .----------------------------------------.
+/                                          \
+|                        IP - forwarding    |
+|                       /                \  v
+|                      /                  wan ...
+|                     /
+|                     |
+|                     |
+|                   brlan.1
+|                     |
+|    +-------------------------------+
+|    |           vlan 1              |
+|    |                               |
+|    |     brlan (vlan-filtering)    |
+|    |               +---------------+
+|    |               |  DSA-SWITCH   |
+|    |    vlan 1     |               |
+|    |      to       |               |
+|    |   untagged    1     vlan 1    |
+|    +---------------+---------------+
+.         /                   \
+ ----->wlan1                 lan0
+       .                       .
+       .                       ^
+       ^                     vlan 1 tagged packets
+     untagged packets
 
-This results in a neighbor transmit, and direct transmit not possible.
-But we want to use it for flow between bridged interfaces.
+Now that DEV_PATH_MTK_WDMA is added to nft_dev_path_info() the forward
+path is filled also when ending with the mediatek wlan1, info.indev not
+NULL now in nft_dev_forward_path(). This results in a direct transmit
+instead of a neighbor transmit. This is how it should be, But this fails.
 
-So this patch adds DEV_PATH_MTK_WDMA to nft_dev_path_info() and makes
-direct transmission possible.
+br_vlan_fill_forward_path_mode() sets DEV_PATH_BR_VLAN_UNTAG_HW when
+filling in from brlan.1 towards wlan1. But it should be set to
+DEV_PATH_BR_VLAN_UNTAG in this case. Using BR_VLFLAG_ADDED_BY_SWITCHDEV
+is not correct. The dsa switchdev adds it as a foreign port.
+
+Use BR_VLFLAG_TAGGING_BY_SWITCHDEV to make sure DEV_PATH_BR_VLAN_UNTAG is
+set when there is a dsa-switch inside the bridge.
 
 Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
 ---
- net/netfilter/nft_flow_offload.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ net/bridge/br_private.h |  1 +
+ net/bridge/br_vlan.c    | 18 +++++++++++++++++-
+ 2 files changed, 18 insertions(+), 1 deletion(-)
 
-diff --git a/net/netfilter/nft_flow_offload.c b/net/netfilter/nft_flow_offload.c
-index 6719a810e9b5..2923286d475e 100644
---- a/net/netfilter/nft_flow_offload.c
-+++ b/net/netfilter/nft_flow_offload.c
-@@ -106,6 +106,7 @@ static void nft_dev_path_info(const struct net_device_path_stack *stack,
- 		switch (path->type) {
- 		case DEV_PATH_ETHERNET:
- 		case DEV_PATH_DSA:
-+		case DEV_PATH_MTK_WDMA:
- 		case DEV_PATH_VLAN:
- 		case DEV_PATH_PPPOE:
- 			info->indev = path->dev;
-@@ -114,7 +115,7 @@ static void nft_dev_path_info(const struct net_device_path_stack *stack,
+diff --git a/net/bridge/br_private.h b/net/bridge/br_private.h
+index 8da7798f9368..7d427214cc7c 100644
+--- a/net/bridge/br_private.h
++++ b/net/bridge/br_private.h
+@@ -180,6 +180,7 @@ enum {
+ 	BR_VLFLAG_MCAST_ENABLED = BIT(2),
+ 	BR_VLFLAG_GLOBAL_MCAST_ENABLED = BIT(3),
+ 	BR_VLFLAG_NEIGH_SUPPRESS_ENABLED = BIT(4),
++	BR_VLFLAG_TAGGING_BY_SWITCHDEV = BIT(5),
+ };
  
- 			if (path->type == DEV_PATH_ETHERNET)
- 				break;
--			if (path->type == DEV_PATH_DSA) {
-+			if (path->type == DEV_PATH_DSA || path->type == DEV_PATH_MTK_WDMA) {
- 				i = stack->num_paths;
- 				break;
- 			}
+ /**
+diff --git a/net/bridge/br_vlan.c b/net/bridge/br_vlan.c
+index 1830d7d617cd..b7877724b969 100644
+--- a/net/bridge/br_vlan.c
++++ b/net/bridge/br_vlan.c
+@@ -3,6 +3,7 @@
+ #include <linux/netdevice.h>
+ #include <linux/rtnetlink.h>
+ #include <linux/slab.h>
++#include <net/dsa.h>
+ #include <net/switchdev.h>
+ 
+ #include "br_private.h"
+@@ -100,6 +101,19 @@ static void __vlan_flags_commit(struct net_bridge_vlan *v, u16 flags)
+ 	__vlan_flags_update(v, flags, true);
+ }
+ 
++static inline bool br_vlan_tagging_by_switchdev(struct net_bridge *br)
++{
++#if IS_ENABLED(CONFIG_NET_DSA)
++	struct net_bridge_port *p;
++
++	list_for_each_entry(p, &br->port_list, list) {
++		if (dsa_user_dev_check(p->dev))
++			return false;
++	}
++#endif
++	return true;
++}
++
+ static int __vlan_vid_add(struct net_device *dev, struct net_bridge *br,
+ 			  struct net_bridge_vlan *v, u16 flags,
+ 			  struct netlink_ext_ack *extack)
+@@ -113,6 +127,8 @@ static int __vlan_vid_add(struct net_device *dev, struct net_bridge *br,
+ 	if (err == -EOPNOTSUPP)
+ 		return vlan_vid_add(dev, br->vlan_proto, v->vid);
+ 	v->priv_flags |= BR_VLFLAG_ADDED_BY_SWITCHDEV;
++	if (br_vlan_tagging_by_switchdev(br))
++		v->priv_flags |= BR_VLFLAG_TAGGING_BY_SWITCHDEV;
+ 	return err;
+ }
+ 
+@@ -1491,7 +1507,7 @@ int br_vlan_fill_forward_path_mode(struct net_bridge *br,
+ 
+ 	if (path->bridge.vlan_mode == DEV_PATH_BR_VLAN_TAG)
+ 		path->bridge.vlan_mode = DEV_PATH_BR_VLAN_KEEP;
+-	else if (v->priv_flags & BR_VLFLAG_ADDED_BY_SWITCHDEV)
++	else if (v->priv_flags & BR_VLFLAG_TAGGING_BY_SWITCHDEV)
+ 		path->bridge.vlan_mode = DEV_PATH_BR_VLAN_UNTAG_HW;
+ 	else
+ 		path->bridge.vlan_mode = DEV_PATH_BR_VLAN_UNTAG;
 -- 
 2.45.2
 
