@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BB31CF2594
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 10:51:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 010F8CF2594
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 10:53:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bHbIE73ryrUMF90M1EKKqwUfGDrayC3L5EZHVsbTKt8=; b=jV6LL18jCbbJTVjLNsHQrYF/II
-	s6EalJd1ubuJe1ts45KJst+1Ksk+UHPaoNXG7mSihjEjR1iTvlpER8c5WUMYNlX5Sx2wjgGTE3Cu2
-	Uu3pVh0CuaZGj/dvh1QPEpu4LHhkbPPSXx3DM9B4eJRjebzd0BqfMVyKaSwwKT3QPL6gxRQO3ArLz
-	MXiG77RHNreTM/3AHyPAB9MBmEgKNjXMVGS/ylT+CkdNUq3oxTa+ZRJ6ZbKAzTFA94qPhLYZ3/cwh
-	vT//eYANwGQGAx6k9kRqVxlpc+kyjLdeRKKLbQPFjKTLUUa9FSmVDnCiEBAiHpxr5uEP/0X0LYW7n
-	Z6pMJRmw==;
+	bh=5qg/JQ2Vr/1F36CJfQW+k0vRaF2NsuD86P32U/78GWk=; b=oNYOPBO+bfjL49OKyDI4rnOBoa
+	fCU+wVE4q1J+3s2fd6vA/BYOmquXIcS8DQCIlRzvg1sGpiyp19D+rry43/yy0A/S/Zb5ofVwnLuTI
+	H2uVA0UlZ9gcT6wd3VMeyGcrcrNvaTp/46m21ivTLRiRptfX07y9XbkSgY0uYTgxqtX4KXPsFOKEd
+	8q1xUR6Luo5a+Q7aeoj89RL29FE456gATjHQCX26tzN8ne5y12i9k5VYjbTnrU8dNZVa6qhlhDQdZ
+	tXNV8A/jAigKIpve51+5tGWbz5KkBxB3aqG+kTB20UUGJHXa94NxAAGo6uTABHS/XhC/j/tCNqWlj
+	rRez3aeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0Ig8-00000004ksS-0cYN;
-	Mon, 14 Oct 2024 10:51:56 +0000
+	id 1t0Ihe-00000004lVL-216Q;
+	Mon, 14 Oct 2024 10:53:30 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0IYP-00000004jFa-3zyY;
-	Mon, 14 Oct 2024 10:43:59 +0000
+	id 1t0IZq-00000004je1-0BmA;
+	Mon, 14 Oct 2024 10:45:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1728902636;
-	bh=zFfoFsOW4aI08PZHk3ptJ0clOIxFlUdsSM/Wo+lQl1c=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=KGqk5ly+yUNt70G/i3UxSCVVZp2/URpXU8o39e191dK5cPhLNukJcZqDHqR9p4mlc
-	 sIJGeWqnOtc8cAoRhDDgTFxxF157rTvDB3eOlb6FjUS+rkgq1bcs0RO4ISnyMBQWxQ
-	 5L9D69RCSpb2ZxS8z4EhKnWGkE+24fnqIuX805orU6dZvHFv9cvxz8RNf5F7WDUysQ
-	 7gi41HK2puEvWxlETJsQ6bb5PcDjOoFaImnb2CinS6qIGKs//wLxP/UvN0YiLfmBVk
-	 6uysZQdJqV8XhKhdwuCnX9xBu/tJybPLV4MtsW7R0AxTpaoNAY3ruAcsJ48XpnMa6c
-	 qysItZe/pf10w==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1728902724;
+	bh=LzevbGBn889H796YREVQWJs6MBQ0CW+YuvI8kJMU7wY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=B2L/wPeN5bTBjFe/9yQusjatVCQwxsJ/NlzvSDYpBBZtgNm+b3hvitqsy6KH4PDpB
+	 kpSoxX9IeEPU3qyV8cjMmjbHmr//8zWFan5mVq8xfaCGguCWDN+H+1PigNmBpvmQv5
+	 W8cIEpDoSs638HPMjRvkqI0cqXSWQC+Sa1t33SWnQ25v3/keer4gR5Hu25qx+2FtS4
+	 LYU05rDC+Cj2zhYpG80fG5+pLH6Iez4cijsFDmYrmQvfaq2n5u61XyWdheQFPQIExc
+	 i2jZCbK8HqVYJUptB/ZFXx/vbCAUrseJTbiXE9ir1escoTZxPuhciqxXn15J6K/o/n
+	 PB/Qt0Om3EUwQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CC9D517E1395;
-	Mon, 14 Oct 2024 12:43:55 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Alexandre Mergnat <amergnat@baylibre.com>, 
- Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>, 
- Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>, 
- Chris-qj chen <chris-qj.chen@mediatek.com>, 
- MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
- Chen-Yu Tsai <wenst@chromium.org>
-In-Reply-To: <20241007090244.1731-1-macpaul.lin@mediatek.com>
-References: <20241007090244.1731-1-macpaul.lin@mediatek.com>
-Subject: Re: [PATCH v2 1/2] arm64: dts: mediatek: mt8390-genio-700-evk:
- update regulator names
-Message-Id: <172890263578.119829.14354732422757704375.b4-ty@collabora.com>
-Date: Mon, 14 Oct 2024 12:43:55 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0190917E1395;
+	Mon, 14 Oct 2024 12:45:23 +0200 (CEST)
+Message-ID: <4c4c8e5f-80a7-46f9-a485-6cf0b5aa7e83@collabora.com>
+Date: Mon, 14 Oct 2024 12:45:23 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/2] arm64: dts: mediatek: mt8390-genio-700-evk: update
+ regulator names
+To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+ Macpaul Lin <macpaul@gmail.com>, Sen Chu <sen.chu@mediatek.com>,
+ Chris-qj chen <chris-qj.chen@mediatek.com>,
+ MediaTek Chromebook Upstream
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ Chen-Yu Tsai <wenst@chromium.org>
+References: <20241007090244.1731-1-macpaul.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20241007090244.1731-1-macpaul.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241014_034358_183088_525B7F76 
-X-CRM114-Status: UNSURE (   7.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241014_034526_267132_FA652823 
+X-CRM114-Status: GOOD (  10.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,32 +84,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 07 Oct 2024 17:02:43 +0800, Macpaul Lin wrote:
+Il 07/10/24 11:02, Macpaul Lin ha scritto:
 > Update regulator names to match schematics, replacing generic terms.
 > 1. Add system wide 'reg_vsys' node for 4.2V power rail.
 > 2. Add 'reg_vsys' node as 'vin-supply' for the following nodes
->  - common_fixed_5v, edp_panel_fixed_3v3, gpio_fixed_3v3, sdio_fixed_3v3,
->    touch0_fixed_3v3, usb_hub_fixed_3v3, usb_p0_vbus, and usb_p1_vbus.
+>   - common_fixed_5v, edp_panel_fixed_3v3, gpio_fixed_3v3, sdio_fixed_3v3,
+>     touch0_fixed_3v3, usb_hub_fixed_3v3, usb_p0_vbus, and usb_p1_vbus.
 > 3. Update regulator names according to the stable output name on
->    schematics.
->  - vdd_5v, vedp_3v3, ext_3v3, vio18_conn, wifi_3v3, vio33_tp1, vhub_3v3,
->    vbus_p0, vbus_p1.
->  - vcn18_pmu, vcn33_2_pmu, dvdd_proc_l, dvdd_core, vpa_pmu, dvdd_adsp,
->    va12_abb2_pmu, vsim1_pmu, vufs18_pmu.
+>     schematics.
+>   - vdd_5v, vedp_3v3, ext_3v3, vio18_conn, wifi_3v3, vio33_tp1, vhub_3v3,
+>     vbus_p0, vbus_p1.
+>   - vcn18_pmu, vcn33_2_pmu, dvdd_proc_l, dvdd_core, vpa_pmu, dvdd_adsp,
+>     va12_abb2_pmu, vsim1_pmu, vufs18_pmu.
 > 4. Remove usb_hub_reset_1v8. Use 'hub' node to probe USB HUB
->    in subsequent patches.
+>     in subsequent patches.
 > 
-> [...]
+> Suggested-by: Chen-Yu Tsai <wenst@chromium.org>
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 
-Applied to v6.12-next/dts64, thanks!
+Please disregard the first "applied" email, as that was on the wrong kernel tree.
 
-[1/2] arm64: dts: mediatek: mt8390-genio-700-evk: update regulator names
-      commit: 4fcf4347c2a74bbc297b6f626de4ad0ca8fee96b
-[2/2] arm64: dts: mediatek: mt8390-genio-700-evk: add keys and USB HUB
-      commit: 13799dcd86813793349bf2136937bca91ae73253
+I confirm the series was applied to v6.12-next/dts64 and that this is the
+right tree and right branch.
 
 Cheers,
 Angelo
-
-
 
