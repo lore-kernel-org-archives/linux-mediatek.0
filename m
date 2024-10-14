@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80F35CF259D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 06:38:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 241BDCFC500
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 07:01:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n/x9sCHASM4Rf3zEKoLCrNEGmjLCGHbguwi/XAkNj6o=; b=ii4DGItn9GJYwrcbJYurGvcL4h
-	Ka/SiMbmacxqMLF5zKJo6i2i3keP1m+RiL+8l9NZCmRXe6vSr7BiP+43MKdSaIkAJcMfwKGWl6NO0
-	0KyJMFp4ukweHmKu4wAoMmOpZVlrft6wtOJ/0+EVfWFWVsqMAGMk/e36sK3IbMMLi4Nd3OD57smy7
-	Inu+9syx8yRRLyRdqDhb6jyw1dRhjNxHX+OoPv2KRQRI0T32S3TLziltiL96jZ9MtigxCklwWljNS
-	jNqkAksuc1DQaM7ve5mSWl5ooRYJPByYijhfqdgwpL5BF6eOYjSkFusH4aUo+XJj0j4rDcJVRrbBO
-	jNvhhxww==;
+	bh=SbvyoL9Luo/70/PTVBa7h557couwK2dRn3xz6x5mHho=; b=F8mnHG68VQaUJ4K2zRgbKvqdL0
+	5/dQ45W1p6IUuEv6W62WZvl47WU+wuYj7j8svXFLbUF+Nzblf6TZ62Y2FjulmXqE5iOCgs28qNAPj
+	hQR8tLTeRJ5+N/29vmIqnZ1kGGAIIHNUufgxccWynnjOBbIVVz8/AWmRyTevwpgz8PekksVv9QjLn
+	BbxDYhvhp0yVHnBguJd8TFzDPuEtteaWzbrkrTg4hVrSFaCMcMAQEX+TPjxi7+jm0LOCJJcneSxW8
+	GSvkwyj6NwRS+oPI3gpsPRfSi6A3DEZD99l8jb6BxROctiQk5DktxG1xWWcGBYjWOBJ6Oa9ky3QZi
+	okMdEMow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0Eis-00000003v75-0oQI;
-	Mon, 14 Oct 2024 06:38:30 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1t0F58-00000003yfd-0ZDx;
+	Mon, 14 Oct 2024 07:01:30 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0EhR-00000003uu0-22Ut
+	id 1t0F3e-00000003yK0-2dIt
 	for linux-mediatek@lists.infradead.org;
-	Mon, 14 Oct 2024 06:37:03 +0000
-Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-5c97c7852e8so891133a12.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 13 Oct 2024 23:37:00 -0700 (PDT)
+	Mon, 14 Oct 2024 07:00:00 +0000
+Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-a99ebb390a5so273786966b.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 13 Oct 2024 23:59:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=blackwall-org.20230601.gappssmtp.com; s=20230601; t=1728887819; x=1729492619; darn=lists.infradead.org;
+        d=blackwall-org.20230601.gappssmtp.com; s=20230601; t=1728889197; x=1729493997; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=n/x9sCHASM4Rf3zEKoLCrNEGmjLCGHbguwi/XAkNj6o=;
-        b=K2q+6sDgKM/JBfqFd/vC7aNDBGliGnmCKvxMObGa8qBocRvoSIE2cvLWP4N/IQOsgg
-         Vv8lu2ZZXjGYb/CZY2UVBHNDsw3M5/mGwwjdo8Cc0CD0HkqvgVS08WSRxhu8AfhZw7tN
-         tnXVTAC6BN55v1w8nLniMxDQkAB5tsdBb1pvH+WnQ7BEbGt8adBaM10Y/MJuZPP+rKKw
-         FA1SlYMT6Z7TJ/AJAz5uqKIo/LD+I7pbUIntnnDGsSul7olcEm/c/Yx9/CtYItwBCro2
-         ke+ZcXcCf1xmicQHLzAqNBCbnPXseCoK9DIG/8+iX0QGH/Lf20vM+f4JXpaGzktzBePJ
-         +C4w==
+        bh=SbvyoL9Luo/70/PTVBa7h557couwK2dRn3xz6x5mHho=;
+        b=zLpDqKN8rGcbnYsJfBjpMoZb6hLDDDB7PhXA+kFcerN/siYqqn6aI1xXgn/9gpIzI6
+         fpesFNn60Pve98nVXeRCXsNqIHAwaB4a2wYuO2SfXaF4AOPH59EdSqt8YrzMmN54bgph
+         0tqkzXoyvq6hHmlV2RHJO3mv5UBJ2WM80iu9CE/zCst1cfFMfzeKznVtgjPgJ9E1Rgzb
+         6tVreWjIMVoUm1VQMVbd8BYFouBSWqccaPm+FBIp5yCYVgLAmioNuJpBgb/9v2GCm/u4
+         L8jnNh7puS63nzQB00/ltSAy6JeiBBs5+9cpbmT8f72zY1U0ffvbOBrpqtfjJ8eRx1To
+         LdTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728887819; x=1729492619;
+        d=1e100.net; s=20230601; t=1728889197; x=1729493997;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=n/x9sCHASM4Rf3zEKoLCrNEGmjLCGHbguwi/XAkNj6o=;
-        b=WvMJtCwxkc/cpCXP8GyaDtW4OoLzYcHLJNetD0/suOZuKBYHflclwqDiCNmB+XaG3y
-         C0X5r36HJIkCTE1GPRtJz6K+8P3ksL+BD0Fno9kQ2k5JEOCfGDInhH/F/L7IuHM2g/i7
-         3Fn77nSlqe1OqKB/8T9NM9DFETzJOSMM63KlNenwULxjyaKa5Mg+BAmocRmCaVuo1UbI
-         0EWzquwYBS9SodL8OOo9lL5GdZLW+Uayc+UD2EPc9gGWaADjGAyIjPSln8rorMsI/8vc
-         VinSquAiejo0XrBYQs5Csyu8MGzsPPvFZU0Toa6YSDoswWXTrxPCBRT5gWIexhrb8dvo
-         tRUw==
-X-Forwarded-Encrypted: i=1; AJvYcCX9d0XOTHNJlK9E5aGiuukwUWmiNdmtHEtzhOXy+FQDuxLEQ27GRNxvXNOeDJxvjMzFzSSKCUZ1kbDvSZmbtA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzp23XdOne2rL8oK9/qdP6yNyNDIbNT2Y7NTrPLPVTe5qln+7EJ
-	7N/ZCnWpUKIKrzIeF2thihs47n+XqBZY0fJfRYRU8HUJopScIPt8wDGEQtJ5TwQ=
-X-Google-Smtp-Source: AGHT+IHOmz4mXDYoNl9wKMY13pPq7T3XsGapXwSYgN3NOm+dxPajvUmbY2eZ6VnNrvCAhA5bOXjuSw==
-X-Received: by 2002:a17:907:ea2:b0:a9a:33c:f6e1 with SMTP id a640c23a62f3a-a9a033cf8b4mr405516566b.5.1728887819334;
-        Sun, 13 Oct 2024 23:36:59 -0700 (PDT)
+        bh=SbvyoL9Luo/70/PTVBa7h557couwK2dRn3xz6x5mHho=;
+        b=n8hcs4YbSLohRrWh7dILRb3XFT+ciUyc0RNC/tfZTXayOnto00s6YLeMAKFKolFveR
+         HBZaDoNjyALlhH5+PdPb5ZU+H8BbyBektVjRu0XsFrnA+slYilgAXeIIsOGFc9tGgJxh
+         z32S71o0eeBvPWSsn0AioFbdam9Js9XEUN7oHhPHwDKKsoFw+hOyIg1nackwYhZN9XRl
+         jZqTx/hvE8KRmNy1aKrIjduVKl/b86uoazghamyepA6zyid/UL5ymYZ/D2ZAAV9jlf79
+         aR2IGm6skNEVLuThGUzv7Qy1wp8XzkAjQ0iYZFVDPYNsKEhv4xbZT71I29F2YRyGX0iv
+         P1/A==
+X-Forwarded-Encrypted: i=1; AJvYcCUUaToG1a/RWu0m25XMEAjaWdD+/9BzQM/C3Q5zxhMmFMgpOYHo/sDWYQv9wYDKC/3Te+MzcXDsUBwR0n6RRg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YysxMI7qgV8u1itDVWTP4hcDbk6BXHd+eARryq4BdvSt+bu6Dnv
+	gMK2HIofg7sXubLwCGbeIazQRkUoYj8DxIFEy9gNNQ4p3G9d1/LgVPZCEYiouq4=
+X-Google-Smtp-Source: AGHT+IGOUfK99ago/evOrlGj0pi4YFg7EEKNgJdbazY59vps+t6ylGtngYjJWYkKZ58+i22OdP1stg==
+X-Received: by 2002:a17:906:eec7:b0:a77:ab9e:9202 with SMTP id a640c23a62f3a-a99a0eb9349mr1327215166b.4.1728889196586;
+        Sun, 13 Oct 2024 23:59:56 -0700 (PDT)
 Received: from [192.168.0.245] ([62.73.69.208])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a99fcb57647sm206072266b.129.2024.10.13.23.36.57
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a13f42e8bsm62471966b.58.2024.10.13.23.59.55
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 13 Oct 2024 23:36:58 -0700 (PDT)
-Message-ID: <6c0154a9-b21d-4f1d-af74-19690dad68a6@blackwall.org>
-Date: Mon, 14 Oct 2024 09:36:57 +0300
+        Sun, 13 Oct 2024 23:59:56 -0700 (PDT)
+Message-ID: <c3678626-7f5c-4446-9b4d-2650ddf5d5a6@blackwall.org>
+Date: Mon, 14 Oct 2024 09:59:54 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v1 net-next 04/12] bridge:
- br_vlan_fill_forward_path_pvid: Add port to port
+Subject: Re: [PATCH RFC v1 net-next 06/12] net: core: dev: Add
+ dev_fill_bridge_path()
 To: Eric Woudstra <ericwouds@gmail.com>, "David S. Miller"
  <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
@@ -86,15 +86,15 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  bridge@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20241013185509.4430-1-ericwouds@gmail.com>
- <20241013185509.4430-5-ericwouds@gmail.com>
+ <20241013185509.4430-7-ericwouds@gmail.com>
 Content-Language: en-US
 From: Nikolay Aleksandrov <razor@blackwall.org>
-In-Reply-To: <20241013185509.4430-5-ericwouds@gmail.com>
+In-Reply-To: <20241013185509.4430-7-ericwouds@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241013_233701_654438_1A7A8D33 
-X-CRM114-Status: GOOD (  15.79  )
+X-CRM114-CacheID: sfid-20241013_235958_682249_A21DA8E3 
+X-CRM114-Status: GOOD (  20.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,52 +110,147 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 13/10/2024 21:55, Eric Woudstra wrote:
-> Lookup vlan group from bridge port, if it is passed as argument.
+> New function dev_fill_bridge_path(), similar to dev_fill_forward_path().
+> It handles starting from a bridge port instead of the bridge master.
+> The structures ctx and nft_forward_info need to be already filled in with
+> the (vlan) encaps.
 > 
 > Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
 > ---
->  net/bridge/br_private.h | 1 +
->  net/bridge/br_vlan.c    | 6 +++++-
->  2 files changed, 6 insertions(+), 1 deletion(-)
+>  include/linux/netdevice.h |  2 +
+>  net/core/dev.c            | 77 ++++++++++++++++++++++++++++++++-------
+>  2 files changed, 66 insertions(+), 13 deletions(-)
 > 
-> diff --git a/net/bridge/br_private.h b/net/bridge/br_private.h
-> index d4bedc87b1d8..8da7798f9368 100644
-> --- a/net/bridge/br_private.h
-> +++ b/net/bridge/br_private.h
-> @@ -1581,6 +1581,7 @@ bool br_vlan_can_enter_range(const struct net_bridge_vlan *v_curr,
->  			     const struct net_bridge_vlan *range_end);
+> diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
+> index e87b5e488325..9d80f650345e 100644
+> --- a/include/linux/netdevice.h
+> +++ b/include/linux/netdevice.h
+> @@ -3069,6 +3069,8 @@ void dev_remove_offload(struct packet_offload *po);
 >  
->  void br_vlan_fill_forward_path_pvid(struct net_bridge *br,
-> +				    struct net_bridge_port *p,
->  				    struct net_device_path_ctx *ctx,
->  				    struct net_device_path *path);
->  int br_vlan_fill_forward_path_mode(struct net_bridge *br,
-
-You haven't updated the !CONFIG_BRIDGE_VLAN_FILTERING version of this helper.
-
-> diff --git a/net/bridge/br_vlan.c b/net/bridge/br_vlan.c
-> index 9c2fffb827ab..1830d7d617cd 100644
-> --- a/net/bridge/br_vlan.c
-> +++ b/net/bridge/br_vlan.c
-> @@ -1441,6 +1441,7 @@ int br_vlan_get_pvid_rcu(const struct net_device *dev, u16 *p_pvid)
->  EXPORT_SYMBOL_GPL(br_vlan_get_pvid_rcu);
+>  int dev_get_iflink(const struct net_device *dev);
+>  int dev_fill_metadata_dst(struct net_device *dev, struct sk_buff *skb);
+> +int dev_fill_bridge_path(struct net_device_path_ctx *ctx,
+> +			 struct net_device_path_stack *stack);
+>  int dev_fill_forward_path(const struct net_device *dev, const u8 *daddr,
+>  			  struct net_device_path_stack *stack);
+>  struct net_device *__dev_get_by_flags(struct net *net, unsigned short flags,
+> diff --git a/net/core/dev.c b/net/core/dev.c
+> index cd479f5f22f6..49959c4904fc 100644
+> --- a/net/core/dev.c
+> +++ b/net/core/dev.c
+> @@ -713,44 +713,95 @@ static struct net_device_path *dev_fwd_path(struct net_device_path_stack *stack)
+>  	return &stack->path[k];
+>  }
 >  
->  void br_vlan_fill_forward_path_pvid(struct net_bridge *br,
-> +				    struct net_bridge_port *p,
->  				    struct net_device_path_ctx *ctx,
->  				    struct net_device_path *path)
+> -int dev_fill_forward_path(const struct net_device *dev, const u8 *daddr,
+> -			  struct net_device_path_stack *stack)
+> +static int dev_fill_forward_path_common(struct net_device_path_ctx *ctx,
+> +					struct net_device_path_stack *stack)
 >  {
-> @@ -1453,7 +1454,10 @@ void br_vlan_fill_forward_path_pvid(struct net_bridge *br,
->  	if (!br_opt_get(br, BROPT_VLAN_ENABLED))
->  		return;
+>  	const struct net_device *last_dev;
+> -	struct net_device_path_ctx ctx = {
+> -		.dev	= dev,
+> -	};
+>  	struct net_device_path *path;
+>  	int ret = 0;
 >  
-> -	vg = br_vlan_group(br);
-> +	if (p)
-> +		vg = nbp_vlan_group(p);
-> +	else
-> +		vg = br_vlan_group(br);
+> -	memcpy(ctx.daddr, daddr, sizeof(ctx.daddr));
+> -	stack->num_paths = 0;
+> -	while (ctx.dev && ctx.dev->netdev_ops->ndo_fill_forward_path) {
+> -		last_dev = ctx.dev;
+> +	while (ctx->dev && ctx->dev->netdev_ops->ndo_fill_forward_path) {
+> +		last_dev = ctx->dev;
+>  		path = dev_fwd_path(stack);
+>  		if (!path)
+>  			return -1;
 >  
->  	if (idx >= 0 &&
->  	    ctx->vlan[idx].proto == br->vlan_proto) {
+>  		memset(path, 0, sizeof(struct net_device_path));
+> -		ret = ctx.dev->netdev_ops->ndo_fill_forward_path(&ctx, path);
+> +		ret = ctx->dev->netdev_ops->ndo_fill_forward_path(ctx, path);
+>  		if (ret < 0)
+>  			return -1;
+>  
+> -		if (WARN_ON_ONCE(last_dev == ctx.dev))
+> +		if (WARN_ON_ONCE(last_dev == ctx->dev))
+>  			return -1;
+>  	}
+>  
+> -	if (!ctx.dev)
+> +	if (!ctx->dev)
+>  		return ret;
+>  
+>  	path = dev_fwd_path(stack);
+>  	if (!path)
+>  		return -1;
+>  	path->type = DEV_PATH_ETHERNET;
+> -	path->dev = ctx.dev;
+> +	path->dev = ctx->dev;
+> +
+> +	return ret;
+> +}
+> +
+> +int dev_fill_bridge_path(struct net_device_path_ctx *ctx,
+> +			 struct net_device_path_stack *stack)
+> +{
+> +	const struct net_device *last_dev, *br_dev;
+> +	struct net_device_path *path;
+> +	int ret = 0;
+> +
+> +	stack->num_paths = 0;
+> +
+> +	if (!ctx->dev || !netif_is_bridge_port(ctx->dev))
+> +		return -1;
+> +
+> +	br_dev = netdev_master_upper_dev_get_rcu((struct net_device *)ctx->dev);
+> +	if (!br_dev || !br_dev->netdev_ops->ndo_fill_forward_path)
+> +		return -1;
+> +
+> +	last_dev = ctx->dev;
+> +	path = dev_fwd_path(stack);
+> +	if (!path)
+> +		return -1;
+> +
+> +	memset(path, 0, sizeof(struct net_device_path));
+> +	ret = br_dev->netdev_ops->ndo_fill_forward_path(ctx, path);
+> +	if (ret < 0)
+> +		return -1;
+> +
+> +	if (!ctx->dev || WARN_ON_ONCE(last_dev == ctx->dev))
+> +		return -1;
+> +
+> +	if (!netif_is_bridge_master(ctx->dev))
+
+hmm, do we expect ctx->dev to be a bridge master? Looking at
+br_fill_forward_path, it seems to be == fdb->dst->dev which
+should be the target port
+
+> +		return dev_fill_forward_path_common(ctx, stack);
+> +
+> +	path = dev_fwd_path(stack);
+> +	if (!path)
+> +		return -1;
+> +	path->type = DEV_PATH_ETHERNET;
+> +	path->dev = ctx->dev;
+>  
+>  	return ret;
+>  }
+> +EXPORT_SYMBOL_GPL(dev_fill_bridge_path);
+> +
+> +int dev_fill_forward_path(const struct net_device *dev, const u8 *daddr,
+> +			  struct net_device_path_stack *stack)
+> +{
+> +	struct net_device_path_ctx ctx = {
+> +		.dev	= dev,
+> +	};
+> +
+> +	memcpy(ctx.daddr, daddr, sizeof(ctx.daddr));
+> +
+> +	stack->num_paths = 0;
+> +
+> +	return dev_fill_forward_path_common(&ctx, stack);
+> +}
+>  EXPORT_SYMBOL_GPL(dev_fill_forward_path);
+>  
+>  /**
 
 
