@@ -4,73 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 195FFCFC503
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 08:26:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA7D8CFC500
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 08:27:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TZ4SSzd9ht3nO5p8hUVclnj7okPzLatTcVMmQ8KRexM=; b=TzewwFtm7+gAZHRcniV7/5E7Nz
-	IhHLRwcuiw8E5msttbjmfxiv4lFa8696lcOLPJmobPtxZE9eVLn6cGFkcvGvi7sHRoZClUPEub8if
-	Y1zIDagNcZf7H1BQjwoN5+rgtZDgSBG4a4w2n0h5h+keHR+RhPopc6hxXl9iPgXGabxqeas0DqJWL
-	1OfdwdkauSR2jZdduyXPYFgLdY1ZqepF2T3z1NKeHlWJ8+IVTu2SPl6jqqd5b2LjBbrYnTPi8S8jI
-	a+d1WQDHFf8jSiBrHI1CMo4wQUHercpUNyzjo2EKPUnL10xCQbAh2RclMp8dWJjJIdQ5wWb4etJSp
-	vEShaHyw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fak4JMXsYzPF8VFEtcGv7HVn+XX0G9R5/b5B+O4E2Dk=; b=sEGIey3aSf3Kxs
+	7EgGrUznRU08ljr8tkUG1Fer1yZdE4RqMV0o/umo8aHBWOBFJ7xO0jp8ObHGpjVm0vNUkLFQmJ/09
+	O+F9dXcbJtAg0MXzcashT7HoxLnSCzMOOCo6nSDDgmPANsCmBShwuaw/WMX7LrUAQ9Uesrx642rtM
+	Hlmcj8JmOS1OQsOLeRxAZUIDrDNrEl4Ph/z8EgFMLtTbKLblsui2rSSH4I1w4VV6RtVm8jmxao+P1
+	y+WlYK6FAkMrWqiILDa/kwTtH5mkwOFI1DWicRkpRmpxp/ysjgU0S1hLtCG02FzU3MibNFkTw5qxI
+	v/rkvpM923aUM4aZA8yQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0GPX-00000004HBi-3z82;
-	Mon, 14 Oct 2024 08:26:39 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1t0GPs-00000004HJQ-2UMJ;
+	Mon, 14 Oct 2024 08:27:00 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0GEv-00000004EDs-3KvW;
-	Mon, 14 Oct 2024 08:15:43 +0000
+	id 1t0GGb-00000004EYj-365v;
+	Mon, 14 Oct 2024 08:17:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1728893739;
-	bh=hqm06D9eWGblvveI9zm2J4bl6WWp02aKGJ6XS2bRRbg=;
+	s=mail; t=1728893844;
+	bh=sNFeqUVKvAjl1nESjRTycC/DuOWjM4Q2qbImXt7rNCI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Z2zrdNi+b5qul89n6xkjWIl7RRPJGVIqBlD/0HtlokH79y++2WMLYd9XQZEYaUAvl
-	 RahwrQ3GNipIMFdN9l8xzw3Su1v9MxRlH3dyIqxLQKVuiot0tvpA9dLDYj4t0UrTPL
-	 7G8A6lKT7sLQ2F4liT8MQqLEfwjf/rZZTd52lCGH57+GIrCLZZv85vSfTio3yYAF2J
-	 N+tMDHfqG4h8/SkDaO33OROB8ySXK4IDyMiZ9M2j8FPYCfKbgUaXm7eXkXZfOVNdEe
-	 /zNyupfByz8Xkv+4dxOVM/LssZFKVkyTzIO8VprtUkcQGP17VeWd0dLpS8aXNzz6CJ
-	 dZMAUocV/uUZA==
+	b=KOjr0eITABWUjH4C6qb6iXh8oG6INzI09Y6lJ+qV6b26YfZ7cqx41r/nA+IVIozK9
+	 Sk0Ho0XJ7O3gbCCDp6q0s5uuHGW1+g0i11jL369gzd3WZSKUmdKfjTQUq40b6OV72g
+	 t3H+Z/qrWlI1KhDTCoGISW3V43/1nFSNl2d/XPko9jB2LJVLAaN+8NG0t0cYgNyxhF
+	 vdtGWqfXYPCuONs9k/CNm0j1dJsCPkH7VR1HTkK/eqGoUKuDf/sC20V8v55wmaw/AK
+	 g2ubMXfEJg4lfBvRa+PloOH4A+nzybIdZlbJMY8tf5MlpMlWp9CQJEQqjzFGPju1eR
+	 Qu2mRNvCM/oow==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4613317E10D3;
-	Mon, 14 Oct 2024 10:15:39 +0200 (CEST)
-Message-ID: <2e6157fc-10e6-47a0-8270-4e51b873049c@collabora.com>
-Date: Mon, 14 Oct 2024 10:15:38 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 79FFD17E0805;
+	Mon, 14 Oct 2024 10:17:23 +0200 (CEST)
+Message-ID: <67f22131-d1fd-4da8-82a0-d756392cfcb9@collabora.com>
+Date: Mon, 14 Oct 2024 10:17:23 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: Aw: Re: [PATCH v4 4/4] arm64: dts: mediatek: mt7988: add pinctrl
- support
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Frank Wunderlich <linux@fw-web.de>,
- Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+Subject: Re: [PATCH v4 2/2] mmc: mtk-sd: add support for mt7988
+To: Frank Wunderlich <linux@fw-web.de>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@kernel.org>, linux-gpio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- daniel@makrotopia.org, john@phrozen.org, ansuelsmth@gmail.com,
- eladwf@gmail.com
-References: <20241009165222.5670-1-linux@fw-web.de>
- <20241009165222.5670-5-linux@fw-web.de>
- <4ac4c8ab-4180-4fcc-9e48-6dede7448dee@collabora.com>
- <trinity-090e30b8-45a9-4a2b-98f1-e34904616b2d-1728651225070@3c-app-gmx-bs32>
+ Wenbin Mei <wenbin.mei@mediatek.com>
+References: <20241012143826.7690-1-linux@fw-web.de>
+ <20241012143826.7690-3-linux@fw-web.de>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <trinity-090e30b8-45a9-4a2b-98f1-e34904616b2d-1728651225070@3c-app-gmx-bs32>
+In-Reply-To: <20241012143826.7690-3-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241014_011542_052274_1C0F7467 
-X-CRM114-Status: GOOD (  18.58  )
+X-CRM114-CacheID: sfid-20241014_011725_971092_C4C8B8C0 
+X-CRM114-Status: UNSURE (   7.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,119 +76,21 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, daniel@makrotopia.org, linux-mediatek@lists.infradead.org, john@phrozen.org, eladwf@gmail.com, ansuelsmth@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/10/24 14:53, Frank Wunderlich ha scritto:
-> Hi
+Il 12/10/24 16:38, Frank Wunderlich ha scritto:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
->> Gesendet: Donnerstag, 10. Oktober 2024 um 14:36 Uhr
->> Von: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>
->> Betreff: Re: [PATCH v4 4/4] arm64: dts: mediatek: mt7988: add pinctrl support
->>
->> Il 09/10/24 18:52, Frank Wunderlich ha scritto:
->>> From: Frank Wunderlich <frank-w@public-files.de>
->>>
->>> Add mt7988a pinctrl node.
->>>
->>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
->>> ---
->>> v2:
->>> - fix wrong alignment of reg values
->>> ---
->>>    arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 241 ++++++++++++++++++++++
->>>    1 file changed, 241 insertions(+)
->>>
->>> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
->>> index c9649b815276..7e15934efe0b 100644
->>> --- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
->>> +++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
->>> @@ -3,6 +3,7 @@
->>>    #include <dt-bindings/clock/mediatek,mt7988-clk.h>
->>>    #include <dt-bindings/interrupt-controller/arm-gic.h>
->>>    #include <dt-bindings/phy/phy.h>
->>> +#include <dt-bindings/pinctrl/mt65xx.h>
->>>
->>>    / {
->>>    	compatible = "mediatek,mt7988a";
->>> @@ -105,6 +106,246 @@ clock-controller@1001e000 {
->>>    			#clock-cells = <1>;
->>>    		};
->>>
->>> +		pio: pinctrl@1001f000 {
->>> +			compatible = "mediatek,mt7988-pinctrl";
->>> +			reg = <0 0x1001f000 0 0x1000>,
->>> +			      <0 0x11c10000 0 0x1000>,
->>> +			      <0 0x11d00000 0 0x1000>,
->>> +			      <0 0x11d20000 0 0x1000>,
->>> +			      <0 0x11e00000 0 0x1000>,
->>> +			      <0 0x11f00000 0 0x1000>,
->>> +			      <0 0x1000b000 0 0x1000>;
->>> +			reg-names = "gpio", "iocfg_tr",
->>> +				    "iocfg_br", "iocfg_rb",
->>> +				    "iocfg_lb", "iocfg_tl", "eint";
->>> +			gpio-controller;
->>> +			#gpio-cells = <2>;
->>> +			gpio-ranges = <&pio 0 0 84>;
->>> +			interrupt-controller;
->>> +			interrupts = <GIC_SPI 225 IRQ_TYPE_LEVEL_HIGH>;
->>> +			interrupt-parent = <&gic>;
->>> +			#interrupt-cells = <2>;
->>> +
->>> +			mdio0_pins: mdio0-pins {
->>> +				mux {
->>> +					function = "eth";
->>> +					groups = "mdc_mdio0";
->>> +				};
->>> +
->>> +				conf {
->>> +					pins = "SMI_0_MDC", "SMI_0_MDIO";
->>> +					drive-strength = <MTK_DRIVE_8mA>;
->>
->> Please do *not* use the MTK_DRIVE_(x)mA definitions anymore.
->>
->> Here it is `drive-strength = <8>`.
+> Add support for mmc on MT7988 SoC.
 > 
-> OK
+> We can use mt7986 platform data in driver, but mt7988 needs different
+> clocks so for binding we need own compatible.
 > 
->>> +				};
->>> +			};
->>> +
->>> +			i2c0_pins: i2c0-g0-pins {
->>> +				mux {
->>> +					function = "i2c";
->>> +					groups = "i2c0_1";
->>> +				};
->>> +			};
->>> +
->>> +			i2c1_pins: i2c1-g0-pins {
->>> +				mux {
->>> +					function = "i2c";
->>> +					groups = "i2c1_0";
->>> +				};
->>> +			};
->>
->> Whatever pin can be configured with one or multiple groups that can be different
->> must *not* be in the SoC dtsi, but rather in the *board* dts(i) file, as the wanted
->> configuration of those pins is *not* soc-specific but board-specific.
->>
->>   From a fast look, I can see that at least the I2C pins can be assigned to different
->> functions: for example, pins 15+16 can be either of i2c0_1, *or* u30_phy_i2c0, *or*
->> u32_phy_i2c0, *or* xfi_phy0_i2c1 ... or others, even.
->>
->> Finally - I think that *most* of the muxing that you're declaring here must instead
->> go to your board specific devicetree and not in mt7988a.dtsi.
-> 
-> As far as i see also mdio and uart0 sharing pins with other pin definitions.
-> It looks for me that nearly all (except pcie) needs to go in board(s) dts then...
-> imho this creates duplicates of same nodes, if 2 boards using the same pinconf.
-> But if it is the way to go, i drop all subnodes except the pcie-pins.
-> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 
-That's the way to go. Please drop all subnodes from this one except pcie-pins.
-
-Cheers,
-Angelo
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 
