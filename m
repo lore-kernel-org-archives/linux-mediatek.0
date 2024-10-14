@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECB2ECFC501
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 08:08:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5080ECFC500
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 08:15:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OsHvYaAZCE/KsR/TJKV5os4W8RXz4Mu6xQpI0ScFuYU=; b=1dyORnAGcviutsbsV2HfDz5MWC
-	g68BB+TLpK38MtlZuYX8zYILpPWvDrdIqqXBXsXoB3ArkQkO7nHGPx9GlaIYG3Ei5QuZnI99hIfNA
-	EMtnR+XWnVyqMnVnBLg5FHfECCQApCciU4sCo2UwVBuzDWM1sdAx6sIoo2TwDBFvfqMom3ityYVjF
-	croi3sKjgjKHm7hwX3AGq/XSW62sJJ/5BzXwf1orNwnW8WwiNAOeefFOmtThmez7FBKe41fNQXIGu
-	g4FhvuysFt4HO1TxEC73mx3Au4+2Ma8oFo44b+yIirOFAi6QVy1TOCnXyU7ftFsdFCjtIoVYvK8cz
-	MTHLwwng==;
+	bh=+WCUPYBB7n5SmPGHyanXzEw8t5rMNWSSjHruVzrei3I=; b=GI9QA2rt6HMpXqpAuKe2LrvI/u
+	oAdj3d0ylu3OojsC5/OC9khlyvTb5HVwGtwwrVumR2y03VnFixmAWpE9In/FKxQ95nToJqI7LmUA0
+	QIvlRT5VZ49sho0gdi+8/n+UkVieemMMe1Gq84+Wl/1jG3H4WRZ8F5XlGKM4jepbQ0V6f9f0CLFOO
+	UOHL7qZX/88BNZM3Q3Eic4JwZPLWSpnDpWAA15PDujXAXJUQjQ3QV9mfYXs+8RI+16zR0sMyGNaXD
+	ebSZZ2QADoyxE2bsSOZvhY+GfScIpfvqNlaDz8pp1ZmJwVzhjflvAuVI2IWKiCFXKCglgtosnFIH9
+	3p0gw9+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0G7f-00000004CeE-3xI1;
-	Mon, 14 Oct 2024 08:08:11 +0000
+	id 1t0GEh-00000004E96-1PIN;
+	Mon, 14 Oct 2024 08:15:27 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0Fyu-00000004B0Y-0gV6;
-	Mon, 14 Oct 2024 07:59:09 +0000
+	id 1t0G1Q-00000004Bc9-0fI8;
+	Mon, 14 Oct 2024 08:01:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1728892746;
-	bh=W+cHl7IlQoiGhHQv9LKkyFt5GXD/dU8V71qLOXnRP/U=;
+	s=mail; t=1728892902;
+	bh=M6TUkPMLYd41Oi3TQHyP3BZuQAAKZ7vP7NSxtsaWBls=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=J1CbHuoa5+YDRoE0wlR5ZqbuEVKI6pMJOiObf3nRtXrcnFHIeJtFsAjayselWHdXU
-	 EoMxmYpXs3JcGk8s60E5PdahN9TRnl8mdDzqXwmBMmxJTIlReV6i3Y1r6I72RHi4oJ
-	 Lg45Tp+7FUc4Evr81rkWSnjxWxeWuoxzzLjrUe5hZb3cIb4mIlYtClB1GMlQnkpP23
-	 MSVfiD/yCIhuZM9D8E+EMc/fs0AUMVIqphcVvdOaRpemD/pV0KRNn8tcmY3pJl/q62
-	 7kSqXCR/h5SXM4yQJv9/0IDLHjVYm/GojExllNa9yjWXKMB+AMsLU1atDPENJb8gnj
-	 DIRiUovB1n1MQ==
+	b=JkY4DTKGmxpg/SswlfsSk/9mwqCsQO3hTmq9zHkyXCS8Zn0+4LE946fyiB/C7F96i
+	 TrXnTbywAcuvn1vyMXm0mNFkTtujEzurxZUzzebpqnAnfixuvGwMLyVzC45MpvJbUY
+	 XVPE2qRy6PaGMTfa4WQkxb3oQtmVBtZ3nPSbL9HvY8NkA8VLUS4LP6mK+zG57bHm/D
+	 UTaCbwOrIiJVJoZcsKlPCb/b3nJD0YstZghwt1hEZgZElDMpqJvd0/6xrHIEdl/IhP
+	 soztR9N6QXtM3ej9fHGMd1L1UG3bxPA8swLvdO49bXoDvQpqp3P84toyUnnEzOCmKW
+	 QJTHdqR8RqlnQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E3E7C17E10C2;
-	Mon, 14 Oct 2024 09:59:05 +0200 (CEST)
-Message-ID: <66ad5cd6-cac2-400a-95c2-f72d68b2a706@collabora.com>
-Date: Mon, 14 Oct 2024 09:59:05 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E54C717E10C2;
+	Mon, 14 Oct 2024 10:01:41 +0200 (CEST)
+Message-ID: <4c7128aa-11fb-4536-814d-138a4be87a47@collabora.com>
+Date: Mon, 14 Oct 2024 10:01:41 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 6/8] dt-bindings: pinctrl: mediatek: Add bindings for
- MT6735 pin controller
+Subject: Re: [PATCH v6 1/8] dt-bindings: pinctrl: mediatek,mt6779-pinctrl:
+ Pull pinctrl node changes from MT6795 document
 To: Yassine Oudjana <yassine.oudjana@gmail.com>,
  Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -58,15 +58,16 @@ Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
  linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 References: <20241011120520.140318-1-y.oudjana@protonmail.com>
- <20241011120520.140318-7-y.oudjana@protonmail.com>
+ <20241011120520.140318-2-y.oudjana@protonmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241011120520.140318-7-y.oudjana@protonmail.com>
+In-Reply-To: <20241011120520.140318-2-y.oudjana@protonmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241014_005908_419388_46B4D33D 
-X-CRM114-Status: GOOD (  15.95  )
+X-CRM114-CacheID: sfid-20241014_010144_382307_B1A960DA 
+X-CRM114-Status: UNSURE (   8.24  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,60 +85,18 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 11/10/24 14:03, Yassine Oudjana ha scritto:
 > From: Yassine Oudjana <y.oudjana@protonmail.com>
 > 
-> Add DT bindings for the MT6735 pin controller, which consist of macros
-> to be used as values for the pinmux property. Each macro corresponds
-> to a unique possible pin-function combination.
+> mediatek,pinctrl-mt6795.yaml has different node name patterns which match
+> bindings of other MediaTek pin controllers, ref for pinmux-node.yaml which
+> has a description of the pinmux property, as well as some additional
+> descriptions for some pin configuration properties. Pull those changes
+> into mediatek,mt6779-pinctrl.yaml and adjust the example DTS to match in
+> preparation to combine the MT6795 document into it.
 > 
 > Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
-> ---
->   MAINTAINERS                                   |    6 +
->   .../pinctrl/mediatek,mt6735-pinctrl.h         | 1148 +++++++++++++++++
->   2 files changed, 1154 insertions(+)
->   create mode 100644 include/dt-bindings/pinctrl/mediatek,mt6735-pinctrl.h
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index e336dab6fdd1a..f95ae886f9fd8 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -18311,6 +18311,12 @@ F:	drivers/pinctrl/mediatek/pinctrl-rt2880.c
->   F:	drivers/pinctrl/mediatek/pinctrl-rt305x.c
->   F:	drivers/pinctrl/mediatek/pinctrl-rt3883.c
->   
-> +PIN CONTROLLER - MEDIATEK MT6735
-> +M:	Yassine Oudjana <y.oudjana@protonmail.com>
-> +L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
-> +S:	Maintained
-> +F:	include/dt-bindings/pinctrl/mediatek,mt6735-pinctrl.h
-> +
->   PIN CONTROLLER - MICROCHIP AT91
->   M:	Ludovic Desroches <ludovic.desroches@microchip.com>
->   L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
-> diff --git a/include/dt-bindings/pinctrl/mediatek,mt6735-pinctrl.h b/include/dt-bindings/pinctrl/mediatek,mt6735-pinctrl.h
-> new file mode 100644
-> index 0000000000000..1134caf9022c5
-> --- /dev/null
-> +++ b/include/dt-bindings/pinctrl/mediatek,mt6735-pinctrl.h
 
-They're all called "pinfunc", even the newest mt8188 one, so please:
+For the sake of consistency and reducing duplication, I agree.
 
-mediatek,mt6735-pinfunc.h
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-just for consistency and nothing else
 
-> @@ -0,0 +1,1148 @@
-> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
-> +/*
-> + * Copyright (C) 2022 Yassine Oudjana <y.oudjana@protonmail.com>
-> + */
-> +
-> +#ifndef __DT_BINDINGS_PINCTRL_MEDIATEK_MT6735_PINFUNC_H__
-> +#define __DT_BINDINGS_PINCTRL_MEDIATEK_MT6735_PINFUNC_H__
-
-#ifndef _DT_BINDINGS_PINCTRL_MEDIATEK_MT6735_PINFUNC_H
-#define _DT_BINDINGS_PINCTRL_MEDIATEK_MT6735_PINFUNC_H
-
-#endif /* _DT_BINDINGS_PINCTRL_MEDIATEK_MT6735_PINFUNC_H */
-
-Cheers,
-Angelo
 
