@@ -4,67 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6854ACFC503
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 08:27:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9208ECFC503
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 08:27:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UwqlHdsg7c729dLDMUk6ihLrDCJ3IN9vsDnLB20cfYc=; b=O6ZzoMbQz9+HDu
-	j1JFslRJ144hYa8yq5nD2sYTBK8VUrygp0rt7UC9ijehome2+9+cW8PIHBkX/TG3wIfI2Alw7YrMR
-	gosrtCZZLl6PdhIexuUR+D26RQfbldV0sycG0pLuEkAZB3ae+X6uh2oA8nQVItm5RgW0jDRJWcOGv
-	qbm5scsT6Z4aYIRMPPZaXhi9D4ojE/C9SKtPdzHdrJ6TlHjGnSacEkfDSTOU8MCh477cuzOW9ps5J
-	dZHyRJlR+LtNIkVQq/Ex2feJyROX91xCj4Wsb3gPt6thQ0p6pnV+bpTYOYgzTpcLRSFLn+wREI20i
-	7iULebHYTR8OnG7rX/DA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Uh5l30xubog7P+TrLhAYvbfarUAi5VWWy/+GFR4nnlY=; b=hbf3gUX9NmQX4Rk/utQEhs60S8
+	dRqMjBi6tU0sAR6AmtBSp5KZ9VjPyi5mqhzA3HmfMWK8ra5g7idXjRD0dc8+eb0YP954qMaQouaB2
+	QWtsKzCQ8hCLbUXH5V+49FyhnxTSz/KNWzRIORm9/+0/Faw0iy5zdcf2/+O4eDgC6mH6bInLo7M95
+	bniFiyxUjRAKPnjzUkhzWxgA6zk9SVM54alN1Qsmq/qDxb5GrAtJJDGfLEjtQEXdQO4ykQ086k66B
+	y0oIP/jAhva6qazuWR1xjxf1sE5se5h1tzccHqNjY78DeE8tTrBqiwixF6wAYOvpY6dFNpJHwB9VK
+	4Nf2SN+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0GPt-00000004HJr-150u;
-	Mon, 14 Oct 2024 08:27:01 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1t0GQ3-00000004HNg-2mPd;
+	Mon, 14 Oct 2024 08:27:11 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0GGc-00000004EZ8-2kH1;
-	Mon, 14 Oct 2024 08:17:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1728893845;
-	bh=f13sm+4uAzEq1nYOwS44NWG9Bv7vNyYaIcfkBEEaAh8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=A+XkYBCx33szv8j7fB/jBYhcRPUdNnN7j/bnNgbTpJu8toCYyTsSN1fRTYXL4VJZQ
-	 89LlFbZDdwlLiDMP8xmdLZyOwNorGH9hKzarNujhojYpta23Rsx5Aqz+SUquvpkinS
-	 iAxqRgzjjZcoBtwKoWP68L4nKydG9GZSNxDRx+z6NXMOmIZmqJvVLWHyXfopRGVUnv
-	 XCGoGmz2Z4N4U45tPsWhvDIqUCU0HVprNAX+W9VKxz91yp3xkZG84PBEtK3gaZSdsU
-	 FArlb9AWvrhm8WO9eRxEFimmjAtZYNK4hicFHY9qtg87upLOIoJor00O7j6Qdk6rl5
-	 VrSA49AN5Dsfg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6621F17E10A0;
-	Mon, 14 Oct 2024 10:17:24 +0200 (CEST)
-Message-ID: <ebc3b026-2ab5-4c78-9bb9-b8e7dc2c4731@collabora.com>
-Date: Mon, 14 Oct 2024 10:17:24 +0200
+	id 1t0GHe-00000004En5-1qSg;
+	Mon, 14 Oct 2024 08:18:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 4CB895C02A9;
+	Mon, 14 Oct 2024 08:18:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3A04EC4CEC7;
+	Mon, 14 Oct 2024 08:18:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728893909;
+	bh=WSG6JKOrpz//yHgEJmqYwVlan1AwfYYChHInmnQGJWE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Kq14tKIvdRmlqZXLADeTGOPOPtBpwWU/YWA8URdTeOFBla9CtDT8grK/h1Yyv5Cja
+	 hDfBL1aVogMWZumJzicbQ2bHE9a7NWgnFTGUzAtOb8hXIHqampAsO/SjDYPIFiZvNV
+	 d+t7v/5p6+JTrCc8fMNIY28ISzY0lQCEtGSYc7C5M56HTvU5LjQGPffMdYMmHa59bv
+	 dd43wfIL3XvMJ7PQjqJzZUnYD4t6ptLIQLZlHTjHKqC5KEjbFCv4LskEX6TGB/q1Q/
+	 zqqvFhAoq9wi3SS8/7iBZXYEr7Ew2X8yXzMk183jqVxfUt3qudmGuNI8HFKYd9b0hT
+	 2Z37ZDBiRR/fA==
+Date: Mon, 14 Oct 2024 09:18:23 +0100
+From: Simon Horman <horms@kernel.org>
+To: Sky Huang <SkyLake.Huang@mediatek.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Steven Liu <Steven.Liu@mediatek.com>
+Subject: Re: [PATCH net-next 1/1] net: phy: Refactor mediatek-ge-soc.c for
+ clarity and correctness
+Message-ID: <20241014081823.GL77519@kernel.org>
+References: <20241014040521.24949-1-SkyLake.Huang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/2] dt-bindings: mmc: mtk-sd: Add mt7988 SoC
-To: Frank Wunderlich <linux@fw-web.de>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Wenbin Mei <wenbin.mei@mediatek.com>
-References: <20241012143826.7690-1-linux@fw-web.de>
- <20241012143826.7690-2-linux@fw-web.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241012143826.7690-2-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241014040521.24949-1-SkyLake.Huang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241014_011726_905727_D6949EA2 
-X-CRM114-Status: UNSURE (   5.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241014_011830_549519_C652D8C0 
+X-CRM114-Status: GOOD (  14.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,18 +79,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, daniel@makrotopia.org, linux-mediatek@lists.infradead.org, john@phrozen.org, eladwf@gmail.com, ansuelsmth@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/10/24 16:38, Frank Wunderlich ha scritto:
-> From: Frank Wunderlich <frank-w@public-files.de>
+On Mon, Oct 14, 2024 at 12:05:21PM +0800, Sky Huang wrote:
+> From: "SkyLake.Huang" <skylake.huang@mediatek.com>
 > 
-> Add binding definitions for mmc on MT7988 SoC.
+> This patch does the following clean-up:
+> 1. Fix spelling errors and rearrange variables with reverse
+>    Xmas tree order.
+> 2. Shrink mtk-ge-soc.c line wrapping to 80 characters.
+> 3. Propagate error code correctly in cal_cycle().
+> 4. Fix some functions with FIELD_PREP()/FIELD_GET().
+> 5. Remove unnecessary outer parens of supported_triggers var.
 > 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
+> ---
+> This patch is derived from Message ID:
+> 20241004102413.5838-9-SkyLake.Huang@mediatek.com
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Hi Sky,
 
+I think this patch is trying to do two many things (at least 5 are listed
+above). Please consider breaking this up into separate patches, perhaps
+one for each of the points above.
 
+Also, I think it would be best to drop the following changes unless you are
+touching those lines for some other reason [1] or are preparing to do so:
+
+* xmas tree
+* 80 character lines
+* parentheses updates
+
+[1] https://docs.kernel.org/process/maintainer-netdev.html#clean-up-patches
 
