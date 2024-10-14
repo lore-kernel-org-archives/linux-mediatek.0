@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58CFCCF259D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 06:35:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80F35CF259D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 06:38:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EzkqcrvTVaKqpqDByKdgad826mxzpVo//v8QIefMOL8=; b=NmcaC/71H3cfvhqELqcti+Ykws
-	UQGwouva8VkB6ANogZfY2JVFMPgZeYxxMf09mBduFESTyYrSO76U2XiahXoEBejYjtvk6tAPQJoyH
-	as+ZJiMUcmttcn1ii9BQ924WBqI1Hq8I90vizN07/a88QBWLrndeEQ+8w/V0x7n3OH9lPYvZ3B4t2
-	/XbVaDdLV3Z4BP9nZJLm9ICUe1W1h8CxOPbPMPv3TS/jewahL4BPs7nqJfj6vuRc+bRPquHrmhuKp
-	7F387+1ufmzVS96PnT2BJvcCfl1fuJdZYYahKvECwnbL3uNLIbvrJ5vhN7lxcyjQvXxfvMTlPw3Ru
-	nyYxFKaA==;
+	bh=n/x9sCHASM4Rf3zEKoLCrNEGmjLCGHbguwi/XAkNj6o=; b=ii4DGItn9GJYwrcbJYurGvcL4h
+	Ka/SiMbmacxqMLF5zKJo6i2i3keP1m+RiL+8l9NZCmRXe6vSr7BiP+43MKdSaIkAJcMfwKGWl6NO0
+	0KyJMFp4ukweHmKu4wAoMmOpZVlrft6wtOJ/0+EVfWFWVsqMAGMk/e36sK3IbMMLi4Nd3OD57smy7
+	Inu+9syx8yRRLyRdqDhb6jyw1dRhjNxHX+OoPv2KRQRI0T32S3TLziltiL96jZ9MtigxCklwWljNS
+	jNqkAksuc1DQaM7ve5mSWl5ooRYJPByYijhfqdgwpL5BF6eOYjSkFusH4aUo+XJj0j4rDcJVRrbBO
+	jNvhhxww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0Eg1-00000003ugp-1UkA;
-	Mon, 14 Oct 2024 06:35:33 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1t0Eis-00000003v75-0oQI;
+	Mon, 14 Oct 2024 06:38:30 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0Efy-00000003ug3-1etU
+	id 1t0EhR-00000003uu0-22Ut
 	for linux-mediatek@lists.infradead.org;
-	Mon, 14 Oct 2024 06:35:31 +0000
-Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-5c9709c9b0cso1448278a12.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 13 Oct 2024 23:35:30 -0700 (PDT)
+	Mon, 14 Oct 2024 06:37:03 +0000
+Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-5c97c7852e8so891133a12.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 13 Oct 2024 23:37:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=blackwall-org.20230601.gappssmtp.com; s=20230601; t=1728887729; x=1729492529; darn=lists.infradead.org;
+        d=blackwall-org.20230601.gappssmtp.com; s=20230601; t=1728887819; x=1729492619; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=EzkqcrvTVaKqpqDByKdgad826mxzpVo//v8QIefMOL8=;
-        b=JGFTcuzsx46wnCRlQYBvjUX7VP0W1S7EmrUyWfj0uaLk69H0G+SqKsKj+TSoFtKgh9
-         NIcqafDzk8LHi3DYKxJuoZaD++n8V1VfqBHcN6i1JxmrJLWhpeaKv3uo12ufwYYmt/0f
-         X1aOHtvEpquzTKk/j0Hj21J13PX8Du2PzjrRQ3PlwHZrpBJRCxcgQTWvRPxyfyzeJfWl
-         BLB7OR8FxY6fNy9ptszB9iwB2R49BIl/Ggoh7a+m7OnVPAsLqo4HBMz1vU5Jy5XPvlfQ
-         IU1cwfpFt+4WAHiqiRinMdOtO2y5GLYgc/KsLFCVEtHun+G/eVvdPdRCZZvQ1yUVKSq6
-         Iuzg==
+        bh=n/x9sCHASM4Rf3zEKoLCrNEGmjLCGHbguwi/XAkNj6o=;
+        b=K2q+6sDgKM/JBfqFd/vC7aNDBGliGnmCKvxMObGa8qBocRvoSIE2cvLWP4N/IQOsgg
+         Vv8lu2ZZXjGYb/CZY2UVBHNDsw3M5/mGwwjdo8Cc0CD0HkqvgVS08WSRxhu8AfhZw7tN
+         tnXVTAC6BN55v1w8nLniMxDQkAB5tsdBb1pvH+WnQ7BEbGt8adBaM10Y/MJuZPP+rKKw
+         FA1SlYMT6Z7TJ/AJAz5uqKIo/LD+I7pbUIntnnDGsSul7olcEm/c/Yx9/CtYItwBCro2
+         ke+ZcXcCf1xmicQHLzAqNBCbnPXseCoK9DIG/8+iX0QGH/Lf20vM+f4JXpaGzktzBePJ
+         +C4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728887729; x=1729492529;
+        d=1e100.net; s=20230601; t=1728887819; x=1729492619;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=EzkqcrvTVaKqpqDByKdgad826mxzpVo//v8QIefMOL8=;
-        b=YY8HSlb58a0+T43VP1KNCo8WLux2YHHB2czwrbt2P4RipD/ghXmpovskM/KfdgBYlp
-         He1lrzFeVvjd1B5hvAogGfgZ3z+EEHlISydtdBe3dzMnCnNbkgYVCR6m/AUc+g/DDq2c
-         pr4u/pDUIliU9A5xiq8rv2HVuP9JaXUVsseI1sa193e0/8yLZEj3kCt0yu7avMwDa7Ji
-         k2pzadEtJ5JFMhy7ZXSZ1uvXv79WUcDpkWiB3e/ZA+b9gFwXuwZsKK5TjnKNMDrHhGve
-         a31beHsY98S5Pq5IL0pElBCg34Vgoa5A9lfi8YEnwRo+XWSX9WH+WF1ul+kN/M0BV7c5
-         ZoLg==
-X-Forwarded-Encrypted: i=1; AJvYcCVcxCBAepkv9CLPxHN/xYSsbXff/0fYz3ejo+IJYBm7jPI2BZx1fkCjKmd+czAAz39R3+TceogsRymLxmB07g==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw5PWZb1VxfhXeT4wIMJx4rGIoRkIEGLSOTNVP5y2i2c9n0PcYh
-	xpR8+YpVcZcHMYIPpF/mprM0nyMW2VpfnbQM/n3T3/Zf+zd39Ursg+jZNeJnGUI=
-X-Google-Smtp-Source: AGHT+IHtsfhY77d2hmhJ/UeBZXQQAahrdwUCAyfXzQzRvrPqdSAngDAVOM6fkmoaHNagJzIo6u/AkQ==
-X-Received: by 2002:a17:907:d01:b0:a99:403e:2578 with SMTP id a640c23a62f3a-a99b9313475mr1017156666b.5.1728887728814;
-        Sun, 13 Oct 2024 23:35:28 -0700 (PDT)
+        bh=n/x9sCHASM4Rf3zEKoLCrNEGmjLCGHbguwi/XAkNj6o=;
+        b=WvMJtCwxkc/cpCXP8GyaDtW4OoLzYcHLJNetD0/suOZuKBYHflclwqDiCNmB+XaG3y
+         C0X5r36HJIkCTE1GPRtJz6K+8P3ksL+BD0Fno9kQ2k5JEOCfGDInhH/F/L7IuHM2g/i7
+         3Fn77nSlqe1OqKB/8T9NM9DFETzJOSMM63KlNenwULxjyaKa5Mg+BAmocRmCaVuo1UbI
+         0EWzquwYBS9SodL8OOo9lL5GdZLW+Uayc+UD2EPc9gGWaADjGAyIjPSln8rorMsI/8vc
+         VinSquAiejo0XrBYQs5Csyu8MGzsPPvFZU0Toa6YSDoswWXTrxPCBRT5gWIexhrb8dvo
+         tRUw==
+X-Forwarded-Encrypted: i=1; AJvYcCX9d0XOTHNJlK9E5aGiuukwUWmiNdmtHEtzhOXy+FQDuxLEQ27GRNxvXNOeDJxvjMzFzSSKCUZ1kbDvSZmbtA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzp23XdOne2rL8oK9/qdP6yNyNDIbNT2Y7NTrPLPVTe5qln+7EJ
+	7N/ZCnWpUKIKrzIeF2thihs47n+XqBZY0fJfRYRU8HUJopScIPt8wDGEQtJ5TwQ=
+X-Google-Smtp-Source: AGHT+IHOmz4mXDYoNl9wKMY13pPq7T3XsGapXwSYgN3NOm+dxPajvUmbY2eZ6VnNrvCAhA5bOXjuSw==
+X-Received: by 2002:a17:907:ea2:b0:a9a:33c:f6e1 with SMTP id a640c23a62f3a-a9a033cf8b4mr405516566b.5.1728887819334;
+        Sun, 13 Oct 2024 23:36:59 -0700 (PDT)
 Received: from [192.168.0.245] ([62.73.69.208])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a99ee8da1besm278784766b.216.2024.10.13.23.35.27
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a99fcb57647sm206072266b.129.2024.10.13.23.36.57
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 13 Oct 2024 23:35:28 -0700 (PDT)
-Message-ID: <9f9f3cf0-7a78-40f1-b8d5-f06a2d428210@blackwall.org>
-Date: Mon, 14 Oct 2024 09:35:26 +0300
+        Sun, 13 Oct 2024 23:36:58 -0700 (PDT)
+Message-ID: <6c0154a9-b21d-4f1d-af74-19690dad68a6@blackwall.org>
+Date: Mon, 14 Oct 2024 09:36:57 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v1 net-next 00/12] bridge-fastpath and related
- improvements
+Subject: Re: [PATCH RFC v1 net-next 04/12] bridge:
+ br_vlan_fill_forward_path_pvid: Add port to port
 To: Eric Woudstra <ericwouds@gmail.com>, "David S. Miller"
  <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
@@ -86,14 +86,15 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  bridge@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20241013185509.4430-1-ericwouds@gmail.com>
+ <20241013185509.4430-5-ericwouds@gmail.com>
 Content-Language: en-US
 From: Nikolay Aleksandrov <razor@blackwall.org>
-In-Reply-To: <20241013185509.4430-1-ericwouds@gmail.com>
+In-Reply-To: <20241013185509.4430-5-ericwouds@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241013_233530_476732_3BB54503 
-X-CRM114-Status: GOOD (  22.21  )
+X-CRM114-CacheID: sfid-20241013_233701_654438_1A7A8D33 
+X-CRM114-Status: GOOD (  15.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,110 +109,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/10/2024 21:54, Eric Woudstra wrote:
-> This patchset makes it possible to set up a (hardware offloaded) fastpath
-> for bridged interfaces.
+On 13/10/2024 21:55, Eric Woudstra wrote:
+> Lookup vlan group from bridge port, if it is passed as argument.
 > 
+> Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
+> ---
+>  net/bridge/br_private.h | 1 +
+>  net/bridge/br_vlan.c    | 6 +++++-
+>  2 files changed, 6 insertions(+), 1 deletion(-)
+> 
+> diff --git a/net/bridge/br_private.h b/net/bridge/br_private.h
+> index d4bedc87b1d8..8da7798f9368 100644
+> --- a/net/bridge/br_private.h
+> +++ b/net/bridge/br_private.h
+> @@ -1581,6 +1581,7 @@ bool br_vlan_can_enter_range(const struct net_bridge_vlan *v_curr,
+>  			     const struct net_bridge_vlan *range_end);
+>  
+>  void br_vlan_fill_forward_path_pvid(struct net_bridge *br,
+> +				    struct net_bridge_port *p,
+>  				    struct net_device_path_ctx *ctx,
+>  				    struct net_device_path *path);
+>  int br_vlan_fill_forward_path_mode(struct net_bridge *br,
 
-The subject and this sentence are misleading, you're talking about netfilter bridge
-fastpath offload, please mention it in both places. When you just say bridge fast
-path, I think of the software fast path.
+You haven't updated the !CONFIG_BRIDGE_VLAN_FILTERING version of this helper.
 
-> To set up the fastpath with offloading, add this extra flowtable:
-> 
-> table bridge filter {
->         flowtable fb {
->                 hook ingress priority filter
->                 devices = { lan0, lan1, lan2, lan3, lan4, wlan0, wlan1 }
->                 flags offload
->         }
->         chain forward {
->                 type filter hook forward priority filter; policy accept;
-> 		ct state established flow add @fb
->         }
-> }
-> 
-> Creating a separate fastpath for bridges.
-> 
->          forward fastpath bypass
->  .----------------------------------------.
-> /                                          \
-> |                        IP - forwarding    |
-> |                       /                \  v
-> |                      /                  wan ...
-> |                     /
-> |                     |
-> |                     |
-> |                   brlan.1
-> |                     |
-> |    +-------------------------------+
-> |    |           vlan 1              |
-> |    |                               |
-> |    |     brlan (vlan-filtering)    |
-> |    +---------------+               |
-> |    |  DSA-SWITCH   |               |
-> |    |               |    vlan 1     |
-> |    |               |      to       |
-> |    |   vlan 1      |   untagged    |
-> |    +---------------+---------------+
-> .         /                   \
->  ------>lan0                 wlan1
->         .  ^                 ^
->         .  |                 |
->         .  \_________________/
->         .  bridge fastpath bypass
->         .
->         ^
->      vlan 1 tagged packets
-> 
-> To have the ability to handle xmit direct with outgoing encaps in the
-> bridge fastpass bypass, we need to be able to handle them without going
-> through vlan/pppoe devices. So I've applied, amended and squashed wenxu's
-> patchset. This patch also makes it possible to egress from vlan-filtering
-> brlan to lan0 with vlan tagged packets, if the bridge master port is doing
-> the vlan tagging, instead of the vlan-device. Without this patch, this is
-> not possible in the bridge-fastpath and also not in the forward-fastpath,
-> as seen in the figure above.
-> 
-> There are also some more fixes for filling in the forward path. These
-> fixes also apply to for the forward-fastpath. They include handling
-> DEV_PATH_MTK_WDMA in nft_dev_path_info() and avoiding
-> DEV_PATH_BR_VLAN_UNTAG_HW for bridges with ports that use dsa.
-> 
-> Conntrack bridge only tracks untagged and 802.1q. To make the bridge
-> fastpath experience more similar to the forward fastpath experience,
-> I've added double vlan, pppoe and pppoe-in-q tagged packets to bridge
-> conntrack and to bridge filter chain.
-> 
-> Eric Woudstra (12):
->   netfilter: nf_flow_table_offload: Add nf_flow_encap_push() for xmit
->     direct
->   netfilter: bridge: Add conntrack double vlan and pppoe
->   netfilter: nft_chain_filter: Add bridge double vlan and pppoe
->   bridge: br_vlan_fill_forward_path_pvid: Add port to port
->   bridge: br_fill_forward_path add port to port
->   net: core: dev: Add dev_fill_bridge_path()
->   netfilter :nf_flow_table_offload: Add nf_flow_rule_bridge()
->   netfilter: nf_flow_table_inet: Add nf_flowtable_type flowtable_bridge
->   netfilter: nft_flow_offload: Add NFPROTO_BRIDGE to validate
->   netfilter: nft_flow_offload: Add DEV_PATH_MTK_WDMA to
->     nft_dev_path_info()
->   bridge: br_vlan_fill_forward_path_mode no _UNTAG_HW for dsa
->   netfilter: nft_flow_offload: Add bridgeflow to nft_flow_offload_eval()
-> 
->  include/linux/netdevice.h                  |   2 +
->  include/net/netfilter/nf_flow_table.h      |   3 +
->  net/bridge/br_device.c                     |  20 ++-
->  net/bridge/br_private.h                    |   2 +
->  net/bridge/br_vlan.c                       |  24 +++-
->  net/bridge/netfilter/nf_conntrack_bridge.c |  86 ++++++++++--
->  net/core/dev.c                             |  77 +++++++++--
->  net/netfilter/nf_flow_table_inet.c         |  13 ++
->  net/netfilter/nf_flow_table_ip.c           |  96 ++++++++++++-
->  net/netfilter/nf_flow_table_offload.c      |  13 ++
->  net/netfilter/nft_chain_filter.c           |  20 ++-
->  net/netfilter/nft_flow_offload.c           | 154 +++++++++++++++++++--
->  12 files changed, 463 insertions(+), 47 deletions(-)
-> 
+> diff --git a/net/bridge/br_vlan.c b/net/bridge/br_vlan.c
+> index 9c2fffb827ab..1830d7d617cd 100644
+> --- a/net/bridge/br_vlan.c
+> +++ b/net/bridge/br_vlan.c
+> @@ -1441,6 +1441,7 @@ int br_vlan_get_pvid_rcu(const struct net_device *dev, u16 *p_pvid)
+>  EXPORT_SYMBOL_GPL(br_vlan_get_pvid_rcu);
+>  
+>  void br_vlan_fill_forward_path_pvid(struct net_bridge *br,
+> +				    struct net_bridge_port *p,
+>  				    struct net_device_path_ctx *ctx,
+>  				    struct net_device_path *path)
+>  {
+> @@ -1453,7 +1454,10 @@ void br_vlan_fill_forward_path_pvid(struct net_bridge *br,
+>  	if (!br_opt_get(br, BROPT_VLAN_ENABLED))
+>  		return;
+>  
+> -	vg = br_vlan_group(br);
+> +	if (p)
+> +		vg = nbp_vlan_group(p);
+> +	else
+> +		vg = br_vlan_group(br);
+>  
+>  	if (idx >= 0 &&
+>  	    ctx->vlan[idx].proto == br->vlan_proto) {
 
 
