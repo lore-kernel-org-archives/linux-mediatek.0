@@ -4,68 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06383CFC501
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 08:21:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 195FFCFC503
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 08:26:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GvYoLnerWWgLuzCyz9G0Iw+3905dX7TcsNMKGurnRX0=; b=Jt7f5OCeE21ecAX34wLiFn8oYI
-	2/zYD+nLOt9vy8QmmAX/6QCcJ5+qqByuh9O2I8zSBKFaGnbaoCDWZM5JLqy1lbjTAlei830a5rXAG
-	CrJtwa+zZFEOuU5G13wcf63epmC/Qtd8+3VqgB8YWPNUvID+LlzOiv+qUqvCU2nquVQgMZF28iFmT
-	8+rhLOFmUB1+MmADT/prtyvE92fm9PhtmCyT7csfpS4hKeXbDPu8ktP8ZaFcL34TyqBrrcdAgttwp
-	eFOYxJJ04bD8ptsOmwFKYhKf0DZGmd9LQRBrXRFVfcHRe4du0G+zb8pHiYalt4anLRseRcmQYaz8O
-	1VYH6cKQ==;
+	bh=TZ4SSzd9ht3nO5p8hUVclnj7okPzLatTcVMmQ8KRexM=; b=TzewwFtm7+gAZHRcniV7/5E7Nz
+	IhHLRwcuiw8E5msttbjmfxiv4lFa8696lcOLPJmobPtxZE9eVLn6cGFkcvGvi7sHRoZClUPEub8if
+	Y1zIDagNcZf7H1BQjwoN5+rgtZDgSBG4a4w2n0h5h+keHR+RhPopc6hxXl9iPgXGabxqeas0DqJWL
+	1OfdwdkauSR2jZdduyXPYFgLdY1ZqepF2T3z1NKeHlWJ8+IVTu2SPl6jqqd5b2LjBbrYnTPi8S8jI
+	a+d1WQDHFf8jSiBrHI1CMo4wQUHercpUNyzjo2EKPUnL10xCQbAh2RclMp8dWJjJIdQ5wWb4etJSp
+	vEShaHyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0GKG-00000004FKx-02W6;
-	Mon, 14 Oct 2024 08:21:12 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1t0GPX-00000004HBi-3z82;
+	Mon, 14 Oct 2024 08:26:39 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0G6B-00000004COi-33YZ;
-	Mon, 14 Oct 2024 08:06:42 +0000
+	id 1t0GEv-00000004EDs-3KvW;
+	Mon, 14 Oct 2024 08:15:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1728893198;
-	bh=sSQ/JLtfOylYmetmA4x1PJlINm2mWwdgTelJNw1+qv8=;
+	s=mail; t=1728893739;
+	bh=hqm06D9eWGblvveI9zm2J4bl6WWp02aKGJ6XS2bRRbg=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jGAGlW9qACfI26EUDUV9ViwMCdDvwOhgDdmF4wXFH4qKTONWDsWczOgCX4imvaOmH
-	 RcTOLerC2LWpfDhNXVQVpqUrA3eph8tCQiy0N29Vv2JLTv2HvR+lvSzkwUsL29oYPW
-	 9HgsBum46bSbUbojdRFc3n5OQOR8FiKBO/Xjzi2/yzhc87WdFFFv3cBjiTm3h0taW6
-	 mIn/VBWwLEpExGXCoPSXPm7SdaiuDZoJRsE2+t3QCxwcOt7mnY7Nbqmcss56oEsHbz
-	 HyqhcxIjjTTSgMxoVHsCrioltl/OgvtX3naJY5Oawcx5ntQ2bycFqv4gBdqFkMCUNE
-	 FbpmQOqJqH7Ag==
+	b=Z2zrdNi+b5qul89n6xkjWIl7RRPJGVIqBlD/0HtlokH79y++2WMLYd9XQZEYaUAvl
+	 RahwrQ3GNipIMFdN9l8xzw3Su1v9MxRlH3dyIqxLQKVuiot0tvpA9dLDYj4t0UrTPL
+	 7G8A6lKT7sLQ2F4liT8MQqLEfwjf/rZZTd52lCGH57+GIrCLZZv85vSfTio3yYAF2J
+	 N+tMDHfqG4h8/SkDaO33OROB8ySXK4IDyMiZ9M2j8FPYCfKbgUaXm7eXkXZfOVNdEe
+	 /zNyupfByz8Xkv+4dxOVM/LssZFKVkyTzIO8VprtUkcQGP17VeWd0dLpS8aXNzz6CJ
+	 dZMAUocV/uUZA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5405217E10C7;
-	Mon, 14 Oct 2024 10:06:37 +0200 (CEST)
-Message-ID: <863458cb-cac7-40c0-856d-edc0fa6ee6a6@collabora.com>
-Date: Mon, 14 Oct 2024 10:06:36 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4613317E10D3;
+	Mon, 14 Oct 2024 10:15:39 +0200 (CEST)
+Message-ID: <2e6157fc-10e6-47a0-8270-4e51b873049c@collabora.com>
+Date: Mon, 14 Oct 2024 10:15:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 0/7] MediaTek DVFSRC Bus Bandwidth and Regulator knobs
-To: Rob Herring <robh@kernel.org>
-Cc: djakov@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- conor+dt@kernel.org, matthias.bgg@gmail.com, lgirdwood@gmail.com,
- broonie@kernel.org, keescook@chromium.org, gustavoars@kernel.org,
- henryc.chen@mediatek.com, linux-pm@vger.kernel.org,
+Subject: Re: Aw: Re: [PATCH v4 4/4] arm64: dts: mediatek: mt7988: add pinctrl
+ support
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Frank Wunderlich <linux@fw-web.de>,
+ Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@kernel.org>, linux-gpio@vger.kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com, wenst@chromium.org, amergnat@baylibre.com
-References: <20240610085735.147134-1-angelogioacchino.delregno@collabora.com>
- <CAL_Jsq+F_pwhVLD1HF7=sYLp2w5kpc53UmzzffxyKzwh8WZthw@mail.gmail.com>
+ daniel@makrotopia.org, john@phrozen.org, ansuelsmth@gmail.com,
+ eladwf@gmail.com
+References: <20241009165222.5670-1-linux@fw-web.de>
+ <20241009165222.5670-5-linux@fw-web.de>
+ <4ac4c8ab-4180-4fcc-9e48-6dede7448dee@collabora.com>
+ <trinity-090e30b8-45a9-4a2b-98f1-e34904616b2d-1728651225070@3c-app-gmx-bs32>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <CAL_Jsq+F_pwhVLD1HF7=sYLp2w5kpc53UmzzffxyKzwh8WZthw@mail.gmail.com>
+In-Reply-To: <trinity-090e30b8-45a9-4a2b-98f1-e34904616b2d-1728651225070@3c-app-gmx-bs32>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241014_010639_944439_887E46DE 
-X-CRM114-Status: GOOD (  22.49  )
+X-CRM114-CacheID: sfid-20241014_011542_052274_1C0F7467 
+X-CRM114-Status: GOOD (  18.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,109 +85,116 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/10/24 00:15, Rob Herring ha scritto:
-> On Mon, Jun 10, 2024 at 3:57 AM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Changes in v6:
->>   - Fixed build with clang (thanks Nathan!)
->>   - Removed unused mtk_rmw() macro in mtk-dvfsrc.c
->>   - Added MODULE_DESCRIPTION() to mtk-dvfsrc-regulator.c
->>
->> Changes in v5:
->>   - Fixed Kconfig dependencies in interconnect
->>   - Fixed module build for dvfsrc and interconnect
->>
->> Changes in v4:
->>   - Updated patch [3/7] to actually remove address/size cells
->>     as the old version got unexpectedly pushed in v3.
->>
->> Changes in v3:
->>   - Removed examples from interconnect and regulator bindings
->>     and kept example node with interconnect and regulator in
->>     the main DVFSRC binding as suggested
->>   - Removed 'reg' from interconnect and regulator, removed both
->>     address and size cells from the main DVFSRC binding as that
->>     was not really needed
->>   - Added anyOf-required entries in the regulator binding as it
->>     doesn't make sense to probe it without any regulator subnode
->>
->> Changes in v2:
->>   - Fixed issues with regulator binding about useless quotes and
->>     wrong binding path (oops)
->>   - Removed useless 'items' from DVFSRC main binding
->>   - Allowed address/size cells to DVFSRC main binding to resolve
->>     validation issues on the regulator and interconnect bindings
->>   - Changed dvfsrc node name to `system-controller`, as the DVFSRC
->>     is actually able to control multiple system components.
->>   - Added a commit to remove mtk-dvfs-regulator.c before adding the
->>     new, refactored regulator driver
->>
->>
->> This series adds support for the MediaTek Dynamic Voltage and Frequency
->> Scaling Resource Controller (DVFSRC), found on many MediaTek SoCs.
->>
->> This hardware collects requests from both software and the various remote
->> processors embededd into the SoC, and decides about a minimum operating
->> voltage and a minimum DRAM frequency to fulfill those requests, in an
->> effort to provide the best achievable performance per watt.
->>
->> Such hardware IP is capable of transparently performing direct register
->> R/W on all of the DVFSRC-controlled regulators and SoC bandwidth knobs.
->>
->> Summarizing how the DVFSRC works for Interconnect:
->>
->>               ICC provider         ICC Nodes
->>                                ----          ----
->>               _________       |CPU |   |--- |VPU |
->>      _____   |         |-----  ----    |     ----
->>     |     |->|  DRAM   |       ----    |     ----
->>     |DRAM |->|scheduler|----- |GPU |   |--- |DISP|
->>     |     |->|  (EMI)  |       ----    |     ----
->>     |_____|->|_________|---.   -----   |     ----
->>                 /|\         `-|MMSYS|--|--- |VDEC|
->>                  |             -----   |     ----
->>                  |                     |     ----
->>                  | change DRAM freq    |--- |VENC|
->>               --------                 |     ----
->>      SMC --> | DVFSRC |                |     ----
->>               --------                 |--- |IMG |
->>                                        |     ----
->>                                        |     ----
->>                                        |--- |CAM |
->>                                              ----
->>
->> ...and for regulators, it's simply...
->>     SMC -> DVFSRC -> Regulator voltage decider -> (vreg) Registers R/W
->>
->> Please note that this series is based on an old (abandoned) series from
->> MediaTek [1], and reuses some parts of the code found in that.
->>
->> Besides, included in this series, there's also a refactoring of the
->> mtk-dvfsrc-regulator driver, which never got compiled at all, and would
->> not build anyway because of missing headers and typos: that commit did
->> not get any Fixes tag because, well, backporting makes no sense at all
->> as the DVFSRC support - which is critical for that driver to work - is
->> introduced with *this series*! :-)
->>
->> P.S.: The DVFSRC regulator is a requirement for the MediaTek UFSHCI
->>        controller's crypto boost feature, which is already upstream but
->>        lacking the actual regulator to work....... :-)
->>
->> [1]: https://lore.kernel.org/all/20210812085846.2628-1-dawei.chien@mediatek.com/
->>
->> AngeloGioacchino Del Regno (7):
->>    dt-bindings: regulator: Add bindings for MediaTek DVFSRC Regulators
->>    dt-bindings: interconnect: Add MediaTek EMI Interconnect bindings
->>    dt-bindings: soc: mediatek: Add DVFSRC bindings for MT8183 and MT8195
->>    soc: mediatek: Add MediaTek DVFS Resource Collector (DVFSRC) driver
+Il 11/10/24 14:53, Frank Wunderlich ha scritto:
+> Hi
 > 
-> Looks like the driver got picked up, but not the binding.
-> mediatek,mt8183-dvfsrc and mediatek,mt8195-dvfsrc show up in next as
-> undocumented.
+>> Gesendet: Donnerstag, 10. Oktober 2024 um 14:36 Uhr
+>> Von: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>
+>> Betreff: Re: [PATCH v4 4/4] arm64: dts: mediatek: mt7988: add pinctrl support
+>>
+>> Il 09/10/24 18:52, Frank Wunderlich ha scritto:
+>>> From: Frank Wunderlich <frank-w@public-files.de>
+>>>
+>>> Add mt7988a pinctrl node.
+>>>
+>>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+>>> ---
+>>> v2:
+>>> - fix wrong alignment of reg values
+>>> ---
+>>>    arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 241 ++++++++++++++++++++++
+>>>    1 file changed, 241 insertions(+)
+>>>
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+>>> index c9649b815276..7e15934efe0b 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+>>> @@ -3,6 +3,7 @@
+>>>    #include <dt-bindings/clock/mediatek,mt7988-clk.h>
+>>>    #include <dt-bindings/interrupt-controller/arm-gic.h>
+>>>    #include <dt-bindings/phy/phy.h>
+>>> +#include <dt-bindings/pinctrl/mt65xx.h>
+>>>
+>>>    / {
+>>>    	compatible = "mediatek,mt7988a";
+>>> @@ -105,6 +106,246 @@ clock-controller@1001e000 {
+>>>    			#clock-cells = <1>;
+>>>    		};
+>>>
+>>> +		pio: pinctrl@1001f000 {
+>>> +			compatible = "mediatek,mt7988-pinctrl";
+>>> +			reg = <0 0x1001f000 0 0x1000>,
+>>> +			      <0 0x11c10000 0 0x1000>,
+>>> +			      <0 0x11d00000 0 0x1000>,
+>>> +			      <0 0x11d20000 0 0x1000>,
+>>> +			      <0 0x11e00000 0 0x1000>,
+>>> +			      <0 0x11f00000 0 0x1000>,
+>>> +			      <0 0x1000b000 0 0x1000>;
+>>> +			reg-names = "gpio", "iocfg_tr",
+>>> +				    "iocfg_br", "iocfg_rb",
+>>> +				    "iocfg_lb", "iocfg_tl", "eint";
+>>> +			gpio-controller;
+>>> +			#gpio-cells = <2>;
+>>> +			gpio-ranges = <&pio 0 0 84>;
+>>> +			interrupt-controller;
+>>> +			interrupts = <GIC_SPI 225 IRQ_TYPE_LEVEL_HIGH>;
+>>> +			interrupt-parent = <&gic>;
+>>> +			#interrupt-cells = <2>;
+>>> +
+>>> +			mdio0_pins: mdio0-pins {
+>>> +				mux {
+>>> +					function = "eth";
+>>> +					groups = "mdc_mdio0";
+>>> +				};
+>>> +
+>>> +				conf {
+>>> +					pins = "SMI_0_MDC", "SMI_0_MDIO";
+>>> +					drive-strength = <MTK_DRIVE_8mA>;
+>>
+>> Please do *not* use the MTK_DRIVE_(x)mA definitions anymore.
+>>
+>> Here it is `drive-strength = <8>`.
 > 
-Thanks for making me notice. Adding it up right now.
+> OK
+> 
+>>> +				};
+>>> +			};
+>>> +
+>>> +			i2c0_pins: i2c0-g0-pins {
+>>> +				mux {
+>>> +					function = "i2c";
+>>> +					groups = "i2c0_1";
+>>> +				};
+>>> +			};
+>>> +
+>>> +			i2c1_pins: i2c1-g0-pins {
+>>> +				mux {
+>>> +					function = "i2c";
+>>> +					groups = "i2c1_0";
+>>> +				};
+>>> +			};
+>>
+>> Whatever pin can be configured with one or multiple groups that can be different
+>> must *not* be in the SoC dtsi, but rather in the *board* dts(i) file, as the wanted
+>> configuration of those pins is *not* soc-specific but board-specific.
+>>
+>>   From a fast look, I can see that at least the I2C pins can be assigned to different
+>> functions: for example, pins 15+16 can be either of i2c0_1, *or* u30_phy_i2c0, *or*
+>> u32_phy_i2c0, *or* xfi_phy0_i2c1 ... or others, even.
+>>
+>> Finally - I think that *most* of the muxing that you're declaring here must instead
+>> go to your board specific devicetree and not in mt7988a.dtsi.
+> 
+> As far as i see also mdio and uart0 sharing pins with other pin definitions.
+> It looks for me that nearly all (except pcie) needs to go in board(s) dts then...
+> imho this creates duplicates of same nodes, if 2 boards using the same pinconf.
+> But if it is the way to go, i drop all subnodes except the pcie-pins.
+> 
+
+That's the way to go. Please drop all subnodes from this one except pcie-pins.
 
 Cheers,
 Angelo
+
+
 
