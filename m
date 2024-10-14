@@ -4,97 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 241BDCFC500
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 07:01:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86045CFC503
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 07:08:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SbvyoL9Luo/70/PTVBa7h557couwK2dRn3xz6x5mHho=; b=F8mnHG68VQaUJ4K2zRgbKvqdL0
-	5/dQ45W1p6IUuEv6W62WZvl47WU+wuYj7j8svXFLbUF+Nzblf6TZ62Y2FjulmXqE5iOCgs28qNAPj
-	hQR8tLTeRJ5+N/29vmIqnZ1kGGAIIHNUufgxccWynnjOBbIVVz8/AWmRyTevwpgz8PekksVv9QjLn
-	BbxDYhvhp0yVHnBguJd8TFzDPuEtteaWzbrkrTg4hVrSFaCMcMAQEX+TPjxi7+jm0LOCJJcneSxW8
-	GSvkwyj6NwRS+oPI3gpsPRfSi6A3DEZD99l8jb6BxROctiQk5DktxG1xWWcGBYjWOBJ6Oa9ky3QZi
-	okMdEMow==;
+	bh=7ynM5W4VrPGHZiCTug5hrtZgV83Yif26KnCypK7Mhz8=; b=isGzkRZCCi5Z7KAMj2sFrrv2ac
+	QIN0STwy+FIYtc+3lPLJB5uhOStfyhIdbdUiJGto5tRqiDHCycR6JSmkKyGFIvD7BhaqRBfTMN2fi
+	MTVDF4TbMNszfJ4+DuD53yXfRwnRX3fS1YH2QobcRCLOwj21dfx+/cx9EC5aBI23e2ayWEkaBJfrl
+	xRDApqNhy0YNje9eTucAtKIEVMr9pEWFpwDaBQ+2O0LX4fAmBv/CQZnRcnnR8sdPBLF0ipdxZ1PjG
+	jDNoGKdUjSyBN4/tEmqX1zyyIvgXliGVbiBp2z8CDW4YdyHeu0Ru7UbpXROuzgpU6gL5vM86URXZw
+	Ia5ygwXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0F58-00000003yfd-0ZDx;
-	Mon, 14 Oct 2024 07:01:30 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1t0FC6-00000003zvr-1QHC;
+	Mon, 14 Oct 2024 07:08:42 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0F3e-00000003yK0-2dIt
+	id 1t0F8U-00000003zKO-0lwB
 	for linux-mediatek@lists.infradead.org;
-	Mon, 14 Oct 2024 07:00:00 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-a99ebb390a5so273786966b.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 13 Oct 2024 23:59:58 -0700 (PDT)
+	Mon, 14 Oct 2024 07:05:00 +0000
+Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-2fac9eaeafcso37320591fa.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 14 Oct 2024 00:04:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=blackwall-org.20230601.gappssmtp.com; s=20230601; t=1728889197; x=1729493997; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=SbvyoL9Luo/70/PTVBa7h557couwK2dRn3xz6x5mHho=;
-        b=zLpDqKN8rGcbnYsJfBjpMoZb6hLDDDB7PhXA+kFcerN/siYqqn6aI1xXgn/9gpIzI6
-         fpesFNn60Pve98nVXeRCXsNqIHAwaB4a2wYuO2SfXaF4AOPH59EdSqt8YrzMmN54bgph
-         0tqkzXoyvq6hHmlV2RHJO3mv5UBJ2WM80iu9CE/zCst1cfFMfzeKznVtgjPgJ9E1Rgzb
-         6tVreWjIMVoUm1VQMVbd8BYFouBSWqccaPm+FBIp5yCYVgLAmioNuJpBgb/9v2GCm/u4
-         L8jnNh7puS63nzQB00/ltSAy6JeiBBs5+9cpbmT8f72zY1U0ffvbOBrpqtfjJ8eRx1To
-         LdTA==
+        d=chromium.org; s=google; t=1728889496; x=1729494296; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=7ynM5W4VrPGHZiCTug5hrtZgV83Yif26KnCypK7Mhz8=;
+        b=I36rk0zF5sphh1aGLH3m8Nzo4d+lylSWps11uy5PbFfc0lZ1DLSiYsTn/dm+SeMv7B
+         n47/QftSFg5ALPypElCUrP2quaYsYXFjwW2mUEEtccJD1i4UHh1QXyhXp96VPi/20Alg
+         oggo2cxt/uswwulf3ga5BhVNeGOYrrouBPCe0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728889197; x=1729493997;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=SbvyoL9Luo/70/PTVBa7h557couwK2dRn3xz6x5mHho=;
-        b=n8hcs4YbSLohRrWh7dILRb3XFT+ciUyc0RNC/tfZTXayOnto00s6YLeMAKFKolFveR
-         HBZaDoNjyALlhH5+PdPb5ZU+H8BbyBektVjRu0XsFrnA+slYilgAXeIIsOGFc9tGgJxh
-         z32S71o0eeBvPWSsn0AioFbdam9Js9XEUN7oHhPHwDKKsoFw+hOyIg1nackwYhZN9XRl
-         jZqTx/hvE8KRmNy1aKrIjduVKl/b86uoazghamyepA6zyid/UL5ymYZ/D2ZAAV9jlf79
-         aR2IGm6skNEVLuThGUzv7Qy1wp8XzkAjQ0iYZFVDPYNsKEhv4xbZT71I29F2YRyGX0iv
-         P1/A==
-X-Forwarded-Encrypted: i=1; AJvYcCUUaToG1a/RWu0m25XMEAjaWdD+/9BzQM/C3Q5zxhMmFMgpOYHo/sDWYQv9wYDKC/3Te+MzcXDsUBwR0n6RRg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YysxMI7qgV8u1itDVWTP4hcDbk6BXHd+eARryq4BdvSt+bu6Dnv
-	gMK2HIofg7sXubLwCGbeIazQRkUoYj8DxIFEy9gNNQ4p3G9d1/LgVPZCEYiouq4=
-X-Google-Smtp-Source: AGHT+IGOUfK99ago/evOrlGj0pi4YFg7EEKNgJdbazY59vps+t6ylGtngYjJWYkKZ58+i22OdP1stg==
-X-Received: by 2002:a17:906:eec7:b0:a77:ab9e:9202 with SMTP id a640c23a62f3a-a99a0eb9349mr1327215166b.4.1728889196586;
-        Sun, 13 Oct 2024 23:59:56 -0700 (PDT)
-Received: from [192.168.0.245] ([62.73.69.208])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a13f42e8bsm62471966b.58.2024.10.13.23.59.55
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 13 Oct 2024 23:59:56 -0700 (PDT)
-Message-ID: <c3678626-7f5c-4446-9b4d-2650ddf5d5a6@blackwall.org>
-Date: Mon, 14 Oct 2024 09:59:54 +0300
+        d=1e100.net; s=20230601; t=1728889496; x=1729494296;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=7ynM5W4VrPGHZiCTug5hrtZgV83Yif26KnCypK7Mhz8=;
+        b=c0pB/c5N/9KvRFufmzuYe/1Q1o94IF0LlqfKMKBZ4UhsYXtgVwd3OX0myOqX5Ep/jV
+         2Xt7IxVUbgXO1sGxkG0P1cxWwCfBVWRXqmffuqrXcBHsuxdoo1j0fyntIX40goU+StZx
+         0sgMD/wDsh1Bhry52tC1B4+W+u/fz1R4Us4h4aEk3+sJZnfosgSLv7xaOmpnCeStgQW2
+         Wcdzrq7Oq4u89U+byxfCdYot60ge6XQ5aNN1r1F0OePaXGj0qGtjReMYtvgjjDpOU3kK
+         OEg3Jz2QgbznDHR2vC/RjP76zKVPh62tuPzapbQlu359pg/P21StbbEr/P1pT6CcaZTS
+         uSsw==
+X-Forwarded-Encrypted: i=1; AJvYcCWRJgEC68uCbNynsjSe25BvFjIdnxKVoYWM3NYYWdqEyiKzGobnC22nZ4edG8f0EQS17mT6Ea7wdJWThofnow==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxeFGjKIQdw4xfUFj48cUp6ieSTdLnYkfUu5PxrEwOjDYdcWRqU
+	MHZ/Wn0ECf5Z5yMR6APtiOBvVYh5akdMEMSjYe7HqNkbbATojK4uR0nbGzIirbsobO+ni4SSgIw
+	wuaq9U3mPJgHidfCmXfRRWzt1b0Jvr4taBxD6
+X-Google-Smtp-Source: AGHT+IFT7HlAXavEjKzdhXvzBtEDuZfwe6IvILZ8dpouGERPtoOe8fs5ejCzMZSurR6nnvkNUPToEI3YRpIVnaoznhU=
+X-Received: by 2002:a05:6512:b11:b0:539:8d9b:b624 with SMTP id
+ 2adb3069b0e04-539e5742bdamr2688773e87.55.1728889495769; Mon, 14 Oct 2024
+ 00:04:55 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v1 net-next 06/12] net: core: dev: Add
- dev_fill_bridge_path()
-To: Eric Woudstra <ericwouds@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Pablo Neira Ayuso <pablo@netfilter.org>,
- Jozsef Kadlecsik <kadlec@netfilter.org>, Roopa Prabhu <roopa@nvidia.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jiri Pirko <jiri@resnulli.us>,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Lorenzo Bianconi <lorenzo@kernel.org>,
- Frank Wunderlich <frank-w@public-files.de>,
- Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
- bridge@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20241013185509.4430-1-ericwouds@gmail.com>
- <20241013185509.4430-7-ericwouds@gmail.com>
-Content-Language: en-US
-From: Nikolay Aleksandrov <razor@blackwall.org>
-In-Reply-To: <20241013185509.4430-7-ericwouds@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20241008073430.3992087-1-wenst@chromium.org> <20241008073430.3992087-8-wenst@chromium.org>
+ <Zwfy6ER6sbr_QxsY@smile.fi.intel.com>
+In-Reply-To: <Zwfy6ER6sbr_QxsY@smile.fi.intel.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 14 Oct 2024 15:04:44 +0800
+Message-ID: <CAGXv+5FAhZQR+Tah_6Qxp4O7=x2RawfWuMh29_FT4mGQGQF84w@mail.gmail.com>
+Subject: Re: [PATCH v8 7/8] platform/chrome: Introduce device tree hardware prober
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
+	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
+	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, 
+	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>, linux-i2c@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241013_235958_682249_A21DA8E3 
-X-CRM114-Status: GOOD (  20.69  )
+X-CRM114-CacheID: sfid-20241014_000458_283231_90631B3E 
+X-CRM114-Status: GOOD (  42.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,148 +94,177 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/10/2024 21:55, Eric Woudstra wrote:
-> New function dev_fill_bridge_path(), similar to dev_fill_forward_path().
-> It handles starting from a bridge port instead of the bridge master.
-> The structures ctx and nft_forward_info need to be already filled in with
-> the (vlan) encaps.
-> 
-> Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
-> ---
->  include/linux/netdevice.h |  2 +
->  net/core/dev.c            | 77 ++++++++++++++++++++++++++++++++-------
->  2 files changed, 66 insertions(+), 13 deletions(-)
-> 
-> diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
-> index e87b5e488325..9d80f650345e 100644
-> --- a/include/linux/netdevice.h
-> +++ b/include/linux/netdevice.h
-> @@ -3069,6 +3069,8 @@ void dev_remove_offload(struct packet_offload *po);
->  
->  int dev_get_iflink(const struct net_device *dev);
->  int dev_fill_metadata_dst(struct net_device *dev, struct sk_buff *skb);
-> +int dev_fill_bridge_path(struct net_device_path_ctx *ctx,
-> +			 struct net_device_path_stack *stack);
->  int dev_fill_forward_path(const struct net_device *dev, const u8 *daddr,
->  			  struct net_device_path_stack *stack);
->  struct net_device *__dev_get_by_flags(struct net *net, unsigned short flags,
-> diff --git a/net/core/dev.c b/net/core/dev.c
-> index cd479f5f22f6..49959c4904fc 100644
-> --- a/net/core/dev.c
-> +++ b/net/core/dev.c
-> @@ -713,44 +713,95 @@ static struct net_device_path *dev_fwd_path(struct net_device_path_stack *stack)
->  	return &stack->path[k];
->  }
->  
-> -int dev_fill_forward_path(const struct net_device *dev, const u8 *daddr,
-> -			  struct net_device_path_stack *stack)
-> +static int dev_fill_forward_path_common(struct net_device_path_ctx *ctx,
-> +					struct net_device_path_stack *stack)
->  {
->  	const struct net_device *last_dev;
-> -	struct net_device_path_ctx ctx = {
-> -		.dev	= dev,
-> -	};
->  	struct net_device_path *path;
->  	int ret = 0;
->  
-> -	memcpy(ctx.daddr, daddr, sizeof(ctx.daddr));
-> -	stack->num_paths = 0;
-> -	while (ctx.dev && ctx.dev->netdev_ops->ndo_fill_forward_path) {
-> -		last_dev = ctx.dev;
-> +	while (ctx->dev && ctx->dev->netdev_ops->ndo_fill_forward_path) {
-> +		last_dev = ctx->dev;
->  		path = dev_fwd_path(stack);
->  		if (!path)
->  			return -1;
->  
->  		memset(path, 0, sizeof(struct net_device_path));
-> -		ret = ctx.dev->netdev_ops->ndo_fill_forward_path(&ctx, path);
-> +		ret = ctx->dev->netdev_ops->ndo_fill_forward_path(ctx, path);
->  		if (ret < 0)
->  			return -1;
->  
-> -		if (WARN_ON_ONCE(last_dev == ctx.dev))
-> +		if (WARN_ON_ONCE(last_dev == ctx->dev))
->  			return -1;
->  	}
->  
-> -	if (!ctx.dev)
-> +	if (!ctx->dev)
->  		return ret;
->  
->  	path = dev_fwd_path(stack);
->  	if (!path)
->  		return -1;
->  	path->type = DEV_PATH_ETHERNET;
-> -	path->dev = ctx.dev;
-> +	path->dev = ctx->dev;
-> +
-> +	return ret;
-> +}
-> +
-> +int dev_fill_bridge_path(struct net_device_path_ctx *ctx,
-> +			 struct net_device_path_stack *stack)
-> +{
-> +	const struct net_device *last_dev, *br_dev;
-> +	struct net_device_path *path;
-> +	int ret = 0;
-> +
-> +	stack->num_paths = 0;
-> +
-> +	if (!ctx->dev || !netif_is_bridge_port(ctx->dev))
-> +		return -1;
-> +
-> +	br_dev = netdev_master_upper_dev_get_rcu((struct net_device *)ctx->dev);
-> +	if (!br_dev || !br_dev->netdev_ops->ndo_fill_forward_path)
-> +		return -1;
-> +
-> +	last_dev = ctx->dev;
-> +	path = dev_fwd_path(stack);
-> +	if (!path)
-> +		return -1;
-> +
-> +	memset(path, 0, sizeof(struct net_device_path));
-> +	ret = br_dev->netdev_ops->ndo_fill_forward_path(ctx, path);
-> +	if (ret < 0)
-> +		return -1;
-> +
-> +	if (!ctx->dev || WARN_ON_ONCE(last_dev == ctx->dev))
-> +		return -1;
-> +
-> +	if (!netif_is_bridge_master(ctx->dev))
+On Thu, Oct 10, 2024 at 11:29=E2=80=AFPM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+>
+> On Tue, Oct 08, 2024 at 03:34:26PM +0800, Chen-Yu Tsai wrote:
+> > Some devices are designed and manufactured with some components having
+> > multiple drop-in replacement options. These components are often
+> > connected to the mainboard via ribbon cables, having the same signals
+> > and pin assignments across all options. These may include the display
+> > panel and touchscreen on laptops and tablets, and the trackpad on
+> > laptops. Sometimes which component option is used in a particular devic=
+e
+> > can be detected by some firmware provided identifier, other times that
+> > information is not available, and the kernel has to try to probe each
+> > device.
+> >
+> > This change attempts to make the "probe each device" case cleaner. The
+> > current approach is to have all options added and enabled in the device
+> > tree. The kernel would then bind each device and run each driver's prob=
+e
+> > function. This works, but has been broken before due to the introductio=
+n
+> > of asynchronous probing, causing multiple instances requesting "shared"
+> > resources, such as pinmuxes, GPIO pins, interrupt lines, at the same
+> > time, with only one instance succeeding. Work arounds for these include
+> > moving the pinmux to the parent I2C controller, using GPIO hogs or
+> > pinmux settings to keep the GPIO pins in some fixed configuration, and
+> > requesting the interrupt line very late. Such configurations can be see=
+n
+> > on the MT8183 Krane Chromebook tablets, and the Qualcomm sc8280xp-based
+> > Lenovo Thinkpad 13S.
+> >
+> > Instead of this delicate dance between drivers and device tree quirks,
+> > this change introduces a simple I2C component prober. For any given
+> > class of devices on the same I2C bus, it will go through all of them,
+> > doing a simple I2C read transfer and see which one of them responds.
+> > It will then enable the device that responds.
+> >
+> > This requires some minor modifications in the existing device tree.
+> > The status for all the device nodes for the component options must be
+> > set to "fail-needs-probe". This makes it clear that some mechanism is
+> > needed to enable one of them, and also prevents the prober and device
+> > drivers running at the same time.
+>
+> ...
+>
+> > +#include <linux/array_size.h>
+> > +#include <linux/errno.h>
+> > +#include <linux/i2c-of-prober.h>
+> > +#include <linux/module.h>
+> > +#include <linux/of.h>
+> > +#include <linux/platform_device.h>
+>
+> > +static int chromeos_i2c_component_prober(struct device *dev, const voi=
+d *_data)
+> > +{
+> > +     const struct chromeos_i2c_probe_data *data =3D _data;
+> > +     struct i2c_of_probe_simple_ctx ctx =3D {
+> > +             .opts =3D data->opts
+>
+> Leave trailing comma in such cases (when it's not a terminator and
+> not on the same line with the variable definition).
 
-hmm, do we expect ctx->dev to be a bridge master? Looking at
-br_fill_forward_path, it seems to be == fdb->dst->dev which
-should be the target port
+Ack.
 
-> +		return dev_fill_forward_path_common(ctx, stack);
-> +
-> +	path = dev_fwd_path(stack);
-> +	if (!path)
-> +		return -1;
-> +	path->type = DEV_PATH_ETHERNET;
-> +	path->dev = ctx->dev;
->  
->  	return ret;
->  }
-> +EXPORT_SYMBOL_GPL(dev_fill_bridge_path);
-> +
-> +int dev_fill_forward_path(const struct net_device *dev, const u8 *daddr,
-> +			  struct net_device_path_stack *stack)
-> +{
-> +	struct net_device_path_ctx ctx = {
-> +		.dev	= dev,
-> +	};
-> +
-> +	memcpy(ctx.daddr, daddr, sizeof(ctx.daddr));
-> +
-> +	stack->num_paths = 0;
-> +
-> +	return dev_fill_forward_path_common(&ctx, stack);
-> +}
->  EXPORT_SYMBOL_GPL(dev_fill_forward_path);
->  
->  /**
+> > +     };
+> > +
+> > +     return i2c_of_probe_component(dev, data->cfg, &ctx);
+> > +}
+> > +
+> > +static const struct chromeos_i2c_probe_data chromeos_i2c_probe_dumb_to=
+uchscreen =3D {
+> > +     .cfg =3D &(const struct i2c_of_probe_cfg) {
+>
+> Perhaps you can introduce something like
+>
+> #define DEFINE_I2C_OF_PROBE_CFG(_type_, _ops_)          \
+>         (struct ...) {                                  \
+>                 .ops =3D _ops_,                           \
+>                 .type =3D #_type_,                        \
+>         }
+>
+> and use it here as
+>
+>         .cfg =3D DEFINE_I2C_OF_PROBE_CFG(touchscreen, NULL),
 
+Overall reply about the compound literals is in my other email.
+
+> > +             .type =3D "touchscreen"
+>
+> Ditto.
+
+Ack.
+
+>
+> > +     }
+>
+> Ditto.
+>
+> > +};
+> > +
+> > +static const struct i2c_of_probe_cfg chromeos_i2c_probe_simple_trackpa=
+d_cfg =3D {
+> > +     .ops =3D &i2c_of_probe_simple_ops,
+> > +     .type =3D "trackpad"
+>
+> Leave a comma.
+
+Ack.
+
+> > +};
+>
+> ...
+>
+> > +static const struct chromeos_i2c_probe_data chromeos_i2c_probe_hana_tr=
+ackpad =3D {
+> > +     .cfg =3D &chromeos_i2c_probe_simple_trackpad_cfg,
+>
+>         .cfg =3D DEFINE_I2C_OF_PROBE_CFG(trackpad, i2c_of_probe_simple_op=
+s),
+>
+> Or even
+>
+> #define DEFINE_I2C_OF_PROBE_CFG_SIMPLE(_type_)                  \
+>         DEFINE_I2C_OF_PROBE_CFG(type, &i2c_of_probe_simple_ops)
+>
+> > +     .opts =3D &(const struct i2c_of_probe_simple_opts) {
+>
+> Perhaps also DEFINE_xxx for this compound literal?
+
+I think it's better to leave this one as is. Not every entry will
+use the same combination of parameters. And having the entry spelled
+out like this makes it easier to read which value is for what
+parameter, instead of having to go up to the macro definition.
+
+For comparison, this entry uses just two of the parameters, while for
+another platform I'm working on the full set of parameters is needed.
+
+> > +             .res_node_compatible =3D "elan,ekth3000",
+> > +             .supply_name =3D "vcc",
+> > +             /*
+> > +              * ELAN trackpad needs 2 ms for H/W init and 100 ms for F=
+/W init.
+> > +              * Synaptics trackpad needs 100 ms.
+> > +              * However, the regulator is set to "always-on", presumab=
+ly to
+> > +              * avoid this delay. The ELAN driver is also missing dela=
+ys.
+> > +              */
+> > +             .post_power_on_delay_ms =3D 0,
+> > +     }
+> > +};
+> > +
+> > +static const struct hw_prober_entry hw_prober_platforms[] =3D {
+> > +     { .compatible =3D "google,hana", .prober =3D chromeos_i2c_compone=
+nt_prober, .data =3D &chromeos_i2c_probe_dumb_touchscreen },
+> > +     { .compatible =3D "google,hana", .prober =3D chromeos_i2c_compone=
+nt_prober, .data =3D &chromeos_i2c_probe_hana_trackpad },
+>
+> These strings are a bit long, perhaps wrap on one member per line?
+
+Sure.
+
+
+ChenYu
+
+
+> > +};
+>
+> --
+> With Best Regards,
+> Andy Shevchenko
+>
+>
 
