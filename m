@@ -4,87 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0611AD16260
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 13:21:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 923FFD16261
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 13:21:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C84aza7/VvTuLHzfGmZn56l29PJNM7wErIIw1VqmLiE=; b=Vk2NyOjELFa+bvI0sRglxRmOP0
-	yLAuiE+nZ/ve9FdN2d5SHMpgZwsX1ARvnxm/frDU8TM9PqrE4x1hSsxzk7y5IUP00GQ3VXqSIQ626
-	QVPNAPCXbd56/iAWTD3sNgCxPK5pZorDdqTddjMu5OkiHDTeIv5ZwCVkjJITIlBLrK1Bfivb2afk1
-	pIzWZJrh9hwMjOXCMI0ZGLEj9zm2MFOvk9rbPmIb6dHkFSe5W4vnlwHErqKLqxeHrm4AY+uaFtUR/
-	SyYkjCak++SvK7CKgrMYLe90wjJAqQoe8ikg9hncV0bQ5RCL2H0ctYu3cc1MkSm7q1KnwLp0zeEy0
-	EOsddmPg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CscPck2GrhYI6HT+C7ZLDBkQrnO/GxuwGjlPO2Q7CMA=; b=eaz7F4qgFK02qfKwgH8FZXFXZ+
+	7BIu7sIXZEfbNQHaxlFtdlhUACZuESGW2USUtcQ1Px9tQUCuErRxDLe043M9DUrOqABAempxnWae0
+	mEbceGSODMTfnjMVuHty9nDpqKvj+CMImLftLTX+C7KILcKoFvKPi3qjBjYOsDqZz2D0oxVGkgL8C
+	SH6TRKHVG851kt8m/BMjK3iB2K1AAOCrGAMlIcXy+cvRd/yHqMLrLxIMUSG91fhHrMN6GSFcfUAbG
+	kN2tqzJ3hrm4+ak/sRqUwiY0ES0zYPT7NKgga7RnulMEnrem79KKsp6u5mT8P7jEguvYxh8FiUxkg
+	zTcAX3JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0L1I-00000005Em6-40Xe;
-	Mon, 14 Oct 2024 13:21:56 +0000
-Received: from mgamail.intel.com ([198.175.65.10])
+	id 1t0L1K-00000005EnV-3xXu;
+	Mon, 14 Oct 2024 13:21:58 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0J3e-00000004ssi-0rs9;
-	Mon, 14 Oct 2024 11:16:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1728904575; x=1760440575;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=diqbe8v7QmoEpj4SUWtjif2WUvBD6+uTDFf6w7M0FM8=;
-  b=b4+9STBItQlhN7zDuwM/DLAVYpa4GO3yHXw0KDjFPKVCszy/5haZAqZ+
-   vv4zEA2OqXhJv94FNPOBx8a36HPKztPIvXycuun23f3nJxOmI9wNp+POU
-   lBtTgmPqyeg/WCPP8AApvStTCVt95Qgo34ooLt9Swd0hRAQQaFYFOSB/a
-   8mQIOyra6QlO3enFn/PIXjcCwChoDscEli7E6TpFEE59Zt/rmJWmIaNLN
-   EYdZYs0DQA1DHxXXrSlMjyzmN2flSE+YIGqfBBbS3ScCPbMYYZprpIukO
-   BQZyzGJNu3lvDsSL2IoroJZjYW3YOITWf9DprAp6B5yFoDQQYKz2zGvOF
-   g==;
-X-CSE-ConnectionGUID: ywBNVaOHTOulTL+ygjgnjg==
-X-CSE-MsgGUID: 50EjYHjAQ5if00XBS3AKYA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="45721218"
-X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; 
-   d="scan'208";a="45721218"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Oct 2024 04:16:14 -0700
-X-CSE-ConnectionGUID: F7kxP5ktT96AFNZ0M+Zjdg==
-X-CSE-MsgGUID: 14W+s8UkRyyg6QVnDq6lyg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,202,1725346800"; 
-   d="scan'208";a="77171383"
-Received: from smile.fi.intel.com ([10.237.72.154])
-  by fmviesa006.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Oct 2024 04:16:09 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1t0J3W-00000002sPr-1VL8;
-	Mon, 14 Oct 2024 14:16:06 +0300
-Date: Mon, 14 Oct 2024 14:16:06 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wolfram Sang <wsa@kernel.org>, Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, chrome-platform@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Douglas Anderson <dianders@chromium.org>,
-	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
-	linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v8 4/8] i2c: Introduce OF component probe function
-Message-ID: <Zwz9djqb0Q6Ujmo_@smile.fi.intel.com>
-References: <20241008073430.3992087-1-wenst@chromium.org>
- <20241008073430.3992087-5-wenst@chromium.org>
- <ZwfvuA2WhD_0P3gL@smile.fi.intel.com>
- <CAGXv+5Hm62hFsF27B-cEWTJ_AKrhcfCPaqR7BxmpwnjABzwHTQ@mail.gmail.com>
+	id 1t0J6z-00000004tis-2vXk;
+	Mon, 14 Oct 2024 11:19:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1728904780;
+	bh=/fb6TY0+Ozh7vKmaHycGQhRR0AayQLHOM1cQjCfprq0=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=EdjcBH3hIss5MqTd0Ls6YLDmV2CPEqo8bKyUO6p2VHeVEE8yKhs6pwtcBald0uv26
+	 lxUhEGrsSSoV60b9V7tle9itNOmkdfffY+X8IMXPtHyfSjodqRtVHcAJ9olHc9wmns
+	 qBfxsBBaxykZdyS2b+Bkh1t2wZlUGVm2X1Fw1mHKPMezfVVwXoElnzu+9Lk57VDP3y
+	 UAR/9Dyf+ejk+xAl/eEfonw9dYkJKhH8Cicq0gbHphPIEc1jCAGoxOV313VRdx3TAX
+	 9Px2qN30N38WqtZkP00a5wmyJlS9ZX/DRj5hprFCmsRyG+uZsMEivrHQnd4cTterbN
+	 8KGXyOxqBXZoA==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B0B4817E1366;
+	Mon, 14 Oct 2024 13:19:39 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ Fei Shao <fshao@chromium.org>
+Cc: Conor Dooley <conor+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20241014111053.2294519-1-fshao@chromium.org>
+References: <20241014111053.2294519-1-fshao@chromium.org>
+Subject: Re: [PATCH v4 0/9] Add platform supports to MediaTek MT8188 SoC
+ (part 2)
+Message-Id: <172890477965.134864.8253638961403618415.b4-ty@collabora.com>
+Date: Mon, 14 Oct 2024 13:19:39 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5Hm62hFsF27B-cEWTJ_AKrhcfCPaqR7BxmpwnjABzwHTQ@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241014_041614_798178_714AEAFD 
-X-CRM114-Status: GOOD (  33.69  )
+X-CRM114-CacheID: sfid-20241014_041941_923835_ABEBF69E 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,76 +78,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 14, 2024 at 11:53:47AM +0800, Chen-Yu Tsai wrote:
-> On Thu, Oct 10, 2024 at 11:16 PM Andy Shevchenko
-> <andriy.shevchenko@linux.intel.com> wrote:
-> > On Tue, Oct 08, 2024 at 03:34:23PM +0800, Chen-Yu Tsai wrote:
+On Mon, 14 Oct 2024 19:09:22 +0800, Fei Shao wrote:
+> I'm re-sending this v4 series to hotfix a bug in the patch that adds
+> vdosys1 display nodes, as suggested in this [link].
+> 
+> Note that the previous [v3] series is in v6.12-next/dts64, so please
+> drop that series and reapply this v4 instead.
+> 
+> Sorry for causing any inconvenience.
+> 
+> [...]
 
-...
+Applied to v6.12-next/dts64, thanks!
 
-> > Fresh reading of the commit message make me think why the firmware or
-> > bootloader on such a device can't form a dynamic OF (overlay?) to fulfill
-> > the need?
-> 
-> The firmware / bootloader on existing devices are practically not upgradable.
-> On the other hand, the kernel is very easy to upgrade or swap out.
-> 
-> For said shipped devices, there is also nothing to key the detection
-> off of besides actually powering things up and doing I2C transfers,
-> which takes time that the firmware has little to spare. We (ChromeOS)
-> require that the bootloader jump into the kernel within 1 second of
-> power on. That includes DRAM calibration, whatever essential hardware
-> initialization, and loading and uncompressing the kernel. Anything
-> non-essential that can be done in the kernel is going to get deferred
-> to the kernel.
-> 
-> Also, due to project timelines oftentimes the devices are shipped with a
-> downstream kernel with downstream device trees. We don't want to tie the
-> firmware too tightly to the device tree in case the downstream stuff gets
-> reworked when upstreamed.
+[1/9] arm64: dts: mediatek: mt8188: Assign GCE aliases
+      commit: 45f57a28629ab6f37ca7c2920daf0eac90608e45
+[2/9] arm64: dts: mediatek: mt8188: Add PCIe nodes
+      commit: 355508880d41cfa5b0643515f27b6da490a1345e
+[3/9] arm64: dts: mediatek: mt8188: Add MIPI DSI nodes
+      commit: 3147d168a516e4f6f7aebb25d2206f40d3168c85
+[4/9] arm64: dts: mediatek: mt8188: Add video decoder and encoder nodes
+      commit: 3ebe1aefa27e87b688f5bdd06713e01de3f19c12
+[5/9] arm64: dts: mediatek: mt8188: Add JPEG decoder and encoder nodes
+      commit: 4d3a0bbca1b6d7d5c873f9b1ebe81be2f5301905
+[6/9] arm64: dts: mediatek: mt8188: Add display nodes for vdosys0
+      commit: 7d3008158e9ccc45bec8f85b2393e279de1b2c93
+[7/9] arm64: dts: mediatek: mt8188: Add display nodes for vdosys1
+      commit: 6a6ebbeea64256d2b69ce660dc2a510714be537d
+[8/9] arm64: dts: mediatek: mt8188: Add DP-INTF nodes
+      commit: 42bf3bbd6237a816ef3d5d66c9734618838e81d3
+[9/9] arm64: dts: mediatek: mt8188: Add eDP and DP TX nodes
+      commit: 05c2e1902c73d6bbd93d77611b4495c587664029
 
-Okay, I was always under impression that DT has at least one nice feature in
-comparison with ACPI that it can be replaced / updated in much quicker /
-independent manner. What you are telling seems like the same issue that
-ACPI-based platforms have. However, there they usually put all possible devices
-into DSDT and firmware enables them via run-time (ACPI) variables. Are you
-trying to implement something similar here?
-
-...
-
-> > Another question is that we have the autoprobing mechanism for I2C for ages,
-> > why that one can't be (re-)used / extended to cover these cases?
-> 
-> I haven't looked into it very much, but a quick read of
-> Documentation/i2c/instantiating-devices.rst suggests that it's solving
-> a different problem?
-> 
-> In our case, we know that it is just one of a handful of possible
-> devices that we already described in the device tree. We don't need
-> to probe the full address range nor the full range of drivers. We
-> already have a hacky workaround in place, but that mangles the
-> device tree in a way that doesn't really match the hardware.
-> 
-> The components that we are handling don't seem to have any hardware
-> ID register, nor do their drivers implement the .detect() callback.
-> There's also power sequencing (regulator and GPIO lines) and interrupt
-> lines from the device tree that need to be handled, something that is
-> missing in the autoprobe path.
-> 
-> Based on the above I don't think the existing autoprobe is a good fit.
-> Trying to shoehorn it in is likely going to be a mess.
-> 
-> Doug's original cover letter describes the problem in more detail,
-> including why we think this should be done in the kernel, not the
-> firmware:
-> https://lore.kernel.org/all/20230921102420.RFC.1.I9dddd99ccdca175e3ceb1b9fa1827df0928c5101@changeid/
-
-Perhaps it needs to be summarised to cover at least this question along with
-the above?
-
--- 
-With Best Regards,
-Andy Shevchenko
+Cheers,
+Angelo
 
 
 
