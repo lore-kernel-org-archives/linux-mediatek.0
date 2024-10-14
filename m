@@ -4,57 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0BBACFC500
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 08:55:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2E59CFC500
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Oct 2024 08:55:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pP4cwODVrUJxStDD1aPTkia8pJQFbGwMJs/19PntgIo=; b=Yrwr6xMqto55AmPMWUQRqyqF4S
-	5vCJjYFCUKJ+jK6hRTfGD41uaMisXmw/9tCAXO8YhFRSUqEy9VrWHA41DrmIuD0QxqLthfNR5LgM/
-	sMBSobhQ3ObgD0A09zNyd6H2Giirzlzsz6sx5u2CHMS24ZHfG9TzZMfiIAZ4VArsj7Rti9XDxY9MO
-	4W/DUv0pyverN5Dzwpc+NvQlPcbd7S2poxb4gSZQxODJdisKmfou93DxP0fdBW5lpfnELJr+dZONy
-	QMdoYdxACQUE5qXDIKNcpKIGMz17Q7ws3KyiC2E0t0bMFEDPwWFLH7Wg+LZ9WcZpA1SYUYtUIcdoc
-	cRQF1J5Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9AihMl26OKeWkDS12A5WgtGsw3JiMxkDwGdVHv9XTlk=; b=JgKgLlgx7esYkHKv61tN+R69uU
+	MrD61/SimV+bf72joAZ3j/wC8wAPqYWIVrW2a2KsQMttDLbMh6b6oJaORksfth8t+oPoKsGPqmTLw
+	BGOHfqX5hd0lBZLCzT2ed7oWNxOeCCxKc6sV/tQs33bJ0Phv+r4G0IWVwMaq1XHP4k2d1w6Fzvf8S
+	MRTG3h4HDo14zZyEXQff9/onz6rDoO+XLwedFOaCGQRcf6GQDeb0FbfMJ8iJGWanlwVLYd3R6Ghhf
+	2gAG2RRuvogauzShv3eXFN7V7ggxV/RARt5gXAhvMAmsZ2owy6MGQkO5I6G901VxZC9I2gTIOQLQ8
+	p07u4F+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0Gr1-00000004NfW-2w0N;
-	Mon, 14 Oct 2024 08:55:04 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1t0GrP-00000004Npb-1Hwx;
+	Mon, 14 Oct 2024 08:55:27 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0GnZ-00000004MK8-1mVE;
-	Mon, 14 Oct 2024 08:51:30 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 52488A416FC;
-	Mon, 14 Oct 2024 08:51:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3705C4CEC3;
-	Mon, 14 Oct 2024 08:51:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728895887;
-	bh=HlYKvFyTI+h9yfs5jdeGzQdG/BYt6ViKVZgJ3ftC7yc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=eWo5zf1RYDeR5/6QMU2aPVhosbME/qwKL2vNGtLRlYt0TWyhY9OO2Yj8/BkJGPRtB
-	 va+roREyhtt6b6wVu2BtBZrfh9JDZlrP3py/H+QW0wtsEYpO7UpLNILZQkqtt/aw5i
-	 zy0uV5CPQbd/3/lTW2O0808zKtA2iSSUYlZ91KXb4NcMC20exHBUlmu/Ubcuq+03+M
-	 JThqHyjqMfd3gdv4pMQQ70MlmdINVIYYqEH2c3++6deAuIzupc9+Z0bFrF/5mZ0sLz
-	 CLhPgGbn478N8Jb8nSiM14ZlQirTcvDY6/4Ai4WG0xbTH645eaBltR5JtgCgAG6K7T
-	 lsRhCFNSFA2rg==
-Date: Mon, 14 Oct 2024 09:51:22 +0100
-From: Simon Horman <horms@kernel.org>
-To: Eric Woudstra <ericwouds@gmail.com>
-Subject: Re: [PATCH RFC v1 net-next] net: ethernet: mtk_ppe_offload: Allow
- QinQ
-Message-ID: <20241014085122.GN77519@kernel.org>
-References: <20241013185056.4077-1-ericwouds@gmail.com>
+	id 1t0Gnx-00000004MRJ-1IpP;
+	Mon, 14 Oct 2024 08:51:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1728895911;
+	bh=VHKJi6ppW+2MikEhI6IOrSPE5QEs0ce5xLSqLV0IZEQ=;
+	h=From:To:Cc:Subject:Date:From;
+	b=X8rFcw7pZJYei2mUqs8JVFSscMwcLBr/A1ge8k+XlYwq51zVPzB05+v9MMl/oVK9o
+	 PFNF9sqmXADEwTq9U/5mHw3RsKO1hbRAyg89KrtdJ/0340oWG8TgVUexsymPnm8q9C
+	 ROXlNEzYPddCzJ2/TLki9b+KcxeDOVRoFYgwX5GDz6MfUG3anUVvOrxn5wGixMagAB
+	 g1kUJvtq0O92YYQpUGmj2e/fG9Z7kqZCSbDPkiF2MDIdCi/TUShqxYjjHCV1fQuTxn
+	 /9ByvmM2xiXt3JcD95dwUuvvlBaAPz9KVHVEl5jTmPqQDs54K2UXvNpxgMvSC7ZevU
+	 MoLuAKqmmSTMQ==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C2F0D17E1147;
+	Mon, 14 Oct 2024 10:51:50 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chunkuang.hu@kernel.org
+Cc: robh@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	conor+dt@kernel.org,
+	p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	daniel@ffwll.ch,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	shawn.sung@mediatek.com,
+	yu-chang.lee@mediatek.com,
+	ck.hu@mediatek.com,
+	jitao.shi@mediatek.com,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	wenst@chromium.org,
+	kernel@collabora.com,
+	sui.jingfeng@linux.dev,
+	michael@walle.cc,
+	sjoerd@collabora.com
+Subject: [PATCH v12 0/3] drm/mediatek: Add support for OF graphs
+Date: Mon, 14 Oct 2024 10:51:45 +0200
+Message-ID: <20241014085148.71105-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.46.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241013185056.4077-1-ericwouds@gmail.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241014_015129_593695_9B9EDCCC 
-X-CRM114-Status: GOOD (  17.33  )
+X-CRM114-CacheID: sfid-20241014_015153_537444_42124591 
+X-CRM114-Status: GOOD (  20.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,36 +90,127 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, Mark Lee <Mark-MC.Lee@mediatek.com>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Oct 13, 2024 at 08:50:56PM +0200, Eric Woudstra wrote:
-> mtk_foe_entry_set_vlan() in mtk_ppe.c already seems to support
-> double vlan tagging, but mtk_flow_offload_replace() in
-> mtk_ppe_offload.c only allows for 1 vlan tag, optionally in
-> combination with pppoe and dsa tags.
-> 
-> This patch adds QinQ support to mtk_flow_offload_replace().
-> 
-> Only PPPoE-in-Q (as before) and Q-in-Q are allowed. A combination
-> of PPPoE and Q-in-Q is not allowed.
-> 
-> As I do not have any documentation of the ppe hardware, I do not
-> know if there is any other reason to not implement Q-in-Q in
-> mtk_flow_offload_replace().
-> 
-> Tested on the BPI-R3(mini), on non-dsa-ports and dsa-ports.
-> 
-> Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
+Changes in v12:
+ - Added comment to describe graph for OVL_ADAPTOR in patch [3/3]
+   as suggested by CK Hu.
 
-Hi Eric,
+Changes in v11:
+ - Added OVL_ADAPTOR_MDP_RDMA to OVL Adaptor exclusive components list
+   to avoid failures in graphs with MDP_RDMA inside
+ - Rebased on next-20241004
 
-I see that this patch supports up to two VLANs, both with EtherType 0x8100.
-And assuming that is supported by the hardware, that seems fine to me.
+Changes in v10:
+ - Removed erroneously added *.orig/*.rej files
 
-But I winder if you know if this hardware supports other VLAN EtherTypes,
-such as  0x88a8 which is described in 802.1ad?
+Changes in v9:
+ - Rebased on next-20240910
+ - Removed redundant assignment and changed a print to dev_err()
+ - Dropped if branch to switch conversion as requested; this will
+   be sent as a separate commit out of this series.
 
-...
+Changes in v8:
+ - Rebased on next-20240617
+ - Changed to allow probing a VDO with no available display outputs
+
+Changes in v7:
+ - Fix typo in patch 3/3
+
+Changes in v6:
+ - Added EPROBE_DEFER check to fix dsi/dpi false positive DT fallback case
+ - Dropped refcount of ep_out in mtk_drm_of_get_ddp_ep_cid()
+ - Fixed double refcount drop during path building
+ - Removed failure upon finding a DT-disabled path as requested
+ - Tested again on MT8195, MT8395 boards
+
+Changes in v5:
+ - Fixed commit [2/3], changed allOf -> anyOf to get the
+   intended allowance in the binding
+
+Changes in v4:
+ - Fixed a typo that caused pure OF graphs pipelines multiple
+   concurrent outputs to not get correctly parsed (port->id); 
+ - Added OVL_ADAPTOR support for OF graph specified pipelines;
+ - Now tested with fully OF Graph specified pipelines on MT8195
+   Chromebooks and MT8395 boards;
+ - Rebased on next-20240516
+
+Changes in v3:
+ - Rebased on next-20240502 because of renames in mediatek-drm
+
+Changes in v2:
+ - Fixed wrong `required` block indentation in commit [2/3]
+
+
+The display IPs in MediaTek SoCs are *VERY* flexible and those support
+being interconnected with different instances of DDP IPs (for example,
+merge0 or merge1) and/or with different DDP IPs (for example, rdma can
+be connected with either color, dpi, dsi, merge, etc), forming a full
+Display Data Path that ends with an actual display.
+
+This series was born because of an issue that I've found while enabling
+support for MT8195/MT8395 boards with DSI output as main display: the
+current mtk_drm_route variations would not work as currently, the driver
+hardcodes a display path for Chromebooks, which have a DisplayPort panel
+with DSC support, instead of a DSI panel without DSC support.
+
+There are other reasons for which I wrote this series, and I find that
+hardcoding those paths - when a HW path is clearly board-specific - is
+highly suboptimal. Also, let's not forget about keeping this driver from
+becoming a huge list of paths for each combination of SoC->board->disp
+and... this and that.
+
+For more information, please look at the commit description for each of
+the commits included in this series.
+
+This series is essential to enable support for the MT8195/MT8395 EVK,
+Kontron i1200, Radxa NIO-12L and, mainly, for non-Chromebook boards
+and Chromebooks to co-exist without conflicts.
+
+Besides, this is also a valid option for MT8188 Chromebooks which might
+have different DSI-or-eDP displays depending on the model (as far as I
+can see from the mtk_drm_route attempt for this SoC that is already
+present in this driver).
+
+This series was tested on MT8195 Cherry Tomato and on MT8395 Radxa
+NIO-12L with both hardcoded paths, OF graph support and partially
+hardcoded paths, and pure OF graph support including pipelines that
+require OVL_ADAPTOR support.
+
+
+AngeloGioacchino Del Regno (3):
+  dt-bindings: display: mediatek: Add OF graph support for board path
+  dt-bindings: arm: mediatek: mmsys: Add OF graph support for board path
+  drm/mediatek: Implement OF graphs support for display paths
+
+ .../bindings/arm/mediatek/mediatek,mmsys.yaml |  28 ++
+ .../display/mediatek/mediatek,aal.yaml        |  40 +++
+ .../display/mediatek/mediatek,ccorr.yaml      |  21 ++
+ .../display/mediatek/mediatek,color.yaml      |  22 ++
+ .../display/mediatek/mediatek,dither.yaml     |  22 ++
+ .../display/mediatek/mediatek,dpi.yaml        |  25 +-
+ .../display/mediatek/mediatek,dsc.yaml        |  24 ++
+ .../display/mediatek/mediatek,dsi.yaml        |  27 +-
+ .../display/mediatek/mediatek,ethdr.yaml      |  22 ++
+ .../display/mediatek/mediatek,gamma.yaml      |  19 ++
+ .../display/mediatek/mediatek,merge.yaml      |  23 ++
+ .../display/mediatek/mediatek,od.yaml         |  22 ++
+ .../display/mediatek/mediatek,ovl-2l.yaml     |  22 ++
+ .../display/mediatek/mediatek,ovl.yaml        |  22 ++
+ .../display/mediatek/mediatek,postmask.yaml   |  21 ++
+ .../display/mediatek/mediatek,rdma.yaml       |  22 ++
+ .../display/mediatek/mediatek,ufoe.yaml       |  21 ++
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |   1 +
+ .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   |  43 ++-
+ drivers/gpu/drm/mediatek/mtk_dpi.c            |  21 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 253 +++++++++++++++++-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   2 +-
+ drivers/gpu/drm/mediatek/mtk_dsi.c            |  14 +-
+ 23 files changed, 712 insertions(+), 25 deletions(-)
+
+-- 
+2.46.1
+
 
