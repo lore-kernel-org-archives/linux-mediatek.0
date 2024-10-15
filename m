@@ -4,83 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30230CFC286
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 10:30:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 084F3CFC286
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 10:35:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=V2rr896UjJZIJvHhd5U5Pr+M2ve1yVZw4BPOf1jkh5k=; b=Ad3hXxAfPtAfWGQgOU4Q7Paqaw
-	JkPUOvn2dxZREhFA7JhhLl7YB6QehGXQMTnsISOFMdFVh8MXx0oAviP/qSTdTdXXhPqzrTMexJ3zc
-	rbfCFctDbRyrhT7cK9vOtRXdOKdm36kaeYQdbAC9owc2s1615+XyPCBdDwqHIEo0vWuynoE6zO3Jg
-	xrEhZPDSB3B7wUAJr5O5Agg0xcpFFqRIy8IW6D571X7LFWb4W5+dsrY9xWjkJd/5HpuD4Lagpaa1i
-	ULn2LZWcb5sULSk3qiIhXqlbDWmowOxcPg9Dn9rYu6SOH6N9sz8U3bFevFMJDV93OQDV5yHsCCDuy
-	xHxhUtaA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=46mZ5GJZQgy4wb+8yI+bn0sWqlOFsJy9zMO5GZshhYo=; b=2KwQg7XUWShjCSGESm1WTbtbrq
+	kOJAr1oZnNsNDwRJZrWlLzN0ZSa7SO0mdDhUZjtWbVOJfNNIRRlp7kCF4PHzFlFFrMI45S83outpd
+	RC6wfZaZXrbeayI81qO4qUQmFk98+k5VcK2Qid/sqZm4eitaslgBbUmhBJ4vONn0ZI9uMkzpaWf04
+	HxFyF88+1kC3WYCbTVTcSdYOghtp17uoW8cNjYjTQLrL5rQViFEacUhYgopspI34jwKyYwbLPY7Q1
+	wBz9jvAi0oaYo1VCVoG6tMSMhxttWRzGhoDdnmZS0vLTFgrfbi21wKHqP4LM4PuT6mqXG/lXFeDJH
+	4uXt9yIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0eou-00000007qOc-0m8g;
-	Tue, 15 Oct 2024 10:30:28 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1t0etu-00000007rhC-31hx;
+	Tue, 15 Oct 2024 10:35:38 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0eor-00000007qNF-0icJ
-	for linux-mediatek@lists.infradead.org;
-	Tue, 15 Oct 2024 10:30:26 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-71e5b2814f6so1899604b3a.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Oct 2024 03:30:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1728988224; x=1729593024; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=V2rr896UjJZIJvHhd5U5Pr+M2ve1yVZw4BPOf1jkh5k=;
-        b=ZFua6kT3RZVij3fmgr+gfKqLvC8e9zsAs5NysdWdX3zcII720fxHtYt3TYSCLe/9Kh
-         RtjDk1+2VZKe3x3NCJdTDz70Bj0T784yq7tnEjIjrt6r5/EcQmI71RUqdmU7oUOfq8cR
-         UnZVDPhGxieQeAgFZU0UBh5odpUP/c8qPXHQU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728988224; x=1729593024;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=V2rr896UjJZIJvHhd5U5Pr+M2ve1yVZw4BPOf1jkh5k=;
-        b=gO4DyjenaH3pY2Xkobg+3n6cS+fwTJqvM6DiRPw+df/l1nIq6RoL2w+oxlIwa8tpIA
-         qTrD2VhE63b6baGr8J3um5dloXZRbAjefze+agpcnNF71E9Ug7p87oakDnBtyg42QO93
-         wArCku1EHshJCgcO5j+8cPRbf8t0XflbsS162rdQSkX3b9o5zI/mCmTQjX/rwqhRW2SB
-         M2gDGyA61uWczNKAe3qwcwvlmjV4RwsPaScQIOtX0R2tg9wtuSy3xIZOdj6fbe4LmIKB
-         dcI7iKUoc9ROjklGPKEc8uayevaTAVb5uSDrLbeOEgzABKR6lhliec8v513C0RFHnmX7
-         9z+Q==
-X-Forwarded-Encrypted: i=1; AJvYcCV/UvNVe9zQwxSjuOhoZqa7jaGxboqNBOPY+fh1AnaNJ0ZyBAi9zBc+KjN6u1v95nRA9IowLgu33mLuyV3lhA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw7zh6Ad3uCeE+6JJ1KoD8ebfz2FRpcLEpqIEsTLn4nvdkZmg+y
-	MxA1BlRUg9jIAVUVWhGZqtFIU/qzawkAbLZdNuvIUWIsbd2IidgD8SBgerdwGQ==
-X-Google-Smtp-Source: AGHT+IFkLsd54kJuLGI+OOJF3TglxLq80CdGHR32sS02YQTnE9EsV0U9q3MfLsv+EAG7yVeyofCtWw==
-X-Received: by 2002:a05:6a00:4b12:b0:71e:6c65:e7c4 with SMTP id d2e1a72fcca58-71e6c65e883mr5595571b3a.26.1728988223751;
-        Tue, 15 Oct 2024 03:30:23 -0700 (PDT)
-Received: from yuanhsinte.c.googlers.com (176.220.194.35.bc.googleusercontent.com. [35.194.220.176])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71e77370dfdsm946011b3a.42.2024.10.15.03.30.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Oct 2024 03:30:23 -0700 (PDT)
-From: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Date: Tue, 15 Oct 2024 10:30:19 +0000
-Subject: [PATCH] drm/mediatek: Fix color format MACROs in OVL
+	id 1t0esS-00000007rJk-40iN;
+	Tue, 15 Oct 2024 10:34:10 +0000
+X-UUID: fe0c96848ae011efba0aef63c0775dbf-20241015
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=46mZ5GJZQgy4wb+8yI+bn0sWqlOFsJy9zMO5GZshhYo=;
+	b=dBmto+kNUK/lZUp0Hi9bBvquPfH071lOaXMRJx3S0+2QUgid9VACDg8auZjSFrPeK5ZM3AjwBAzrL4x6zl1AMKmlDa8FgjBQUTK5O8EEVRoiPTBooLH9EJJ/5S24RyQzVg8r/uNw6ce86gJupWF6HFi8Eb8iRXRzJtT/WKnkF7s=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:96704b15-5af1-48d3-b6b5-ba8704b97b89,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:6dc6a47,CLOUDID:f35a4765-444a-4b47-a99a-591ade3b04b2,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: fe0c96848ae011efba0aef63c0775dbf-20241015
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 682010324; Tue, 15 Oct 2024 03:34:01 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 15 Oct 2024 18:33:56 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 15 Oct 2024 18:33:56 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman
+	<gregkh@linuxfoundation.org>, Rob Herring <robh@kernel.org>, "Krzysztof
+ Kozlowski" <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	"Matthias Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, ChiYuan Huang
+	<cy_huang@richtek.com>, <linux-usb@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Chris-qj chen
+	<chris-qj.chen@mediatek.com>, Fabien Parent <fparent@baylibre.com>, Simon Sun
+	<simon.sun@yunjingtech.com>
+Subject: [PATCH 2/2] arm64: dts: mediatek: mt8395-genio-1200-evk: add support for TCPC port
+Date: Tue, 15 Oct 2024 18:33:37 +0800
+Message-ID: <20241015103337.20479-2-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20241015103337.20479-1-macpaul.lin@mediatek.com>
+References: <20241015103337.20479-1-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20241015-color-v1-1-35b01fa0a826@chromium.org>
-X-B4-Tracking: v=1; b=H4sIADpEDmcC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIxNDA0NT3eT8nPwi3VQjA9NUc9MkM5PERCWg2oKi1LTMCrA50bG1tQBJIzI
- UVwAAAA==
-X-Change-ID: 20241015-color-e205e75b64aa
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- dianders@chromium.org, Hsin-Te Yuan <yuanhsinte@chromium.org>
-X-Mailer: b4 0.15-dev-7be4f
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--3.087400-8.000000
+X-TMASE-MatchedRID: Rxvf+mQJcSjL05PW1HuK4hcqpH7D1rtQE21NSmBqEKdeARTvhomDCuHM
+	eGIgxik9FU2rnI3D77gOHPadhy5U4iUyFVKm+WpVMZ8cIdf+aBRhBfGxmdHCgvHFoBcOsKezmQJ
+	6sUxppuKjkL1tNPFpRsZqGjAGu4ch71K1g/S2Z7cQ9/tMNQ4aipSL3AH2CZxKAfnelbSvK7z+/e
+	pfiALZfjX5qFNuFL7ljdYbhXOHYJUfE8yM4pjsDwtuKBGekqUpm+MB6kaZ2g55Bwpd6xJsJwss9
+	KgMSo3mfrGPTbsXwGPyUWByt6T+uCofFl27RgzTlBOk5L4/h4cNzbvTBDU7hBglWB0w9QO2hYAi
+	cWtJQzzyNp7g4PXe0BXsxz6ujBxUq1f8XSkHBUmNJXmEMVvLtmcjFnImzvyS
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--3.087400-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: C6D7F85AEBD0D5129E358CA1986CEF593FF6154C17636121425DFB97FD909F8C2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_033025_265730_DD432821 
-X-CRM114-Status: GOOD (  11.13  )
+X-CRM114-CacheID: sfid-20241015_033409_030514_8D1875D7 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,40 +107,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In commit 9f428b95ac89 ("drm/mediatek: Add new color format MACROs in
-OVL"), some new color formats are defined in the MACROs to make the
-switch statement more concise. However, there are typos in these
-formats MACROs, which cause the return value to be incorrect. Fix the
-typos to ensure the return value remains unchanged.
+From: Fabien Parent <fparent@baylibre.com>
 
-Fix: 9f428b95ac89 ("drm/mediatek: Add new color format MACROs in OVL")
-Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+Enable USB Type-C support on MediaTek MT8395 Genio 1200 EVK by adding
+configuration for TCPC Port, USB-C connector, and related settings.
+
+Configure dual role switch capability, set up PD (Power Delivery) profiles,
+and establish endpoints for SSUSB (SuperSpeed USB).
+
+Update pinctrl configurations for U3 P0 VBus default pins and set dr_mode
+to "otg" for OTG (On-The-Go) mode operation.
+
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Signed-off-by: Simon Sun <simon.sun@yunjingtech.com>
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .../dts/mediatek/mt8395-genio-1200-evk.dts    | 51 +++++++++++++++++++
+ 1 file changed, 51 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 89b439dcf3a6af9f5799487fdc0f128a9b5cbe4a..1632ac5c23d87e1cdc41013a9cf7864728dcb63b 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -65,8 +65,8 @@
- #define OVL_CON_CLRFMT_RGB	(1 << 12)
- #define OVL_CON_CLRFMT_ARGB8888	(2 << 12)
- #define OVL_CON_CLRFMT_RGBA8888	(3 << 12)
--#define OVL_CON_CLRFMT_ABGR8888	(OVL_CON_CLRFMT_RGBA8888 | OVL_CON_BYTE_SWAP)
--#define OVL_CON_CLRFMT_BGRA8888	(OVL_CON_CLRFMT_ARGB8888 | OVL_CON_BYTE_SWAP)
-+#define OVL_CON_CLRFMT_ABGR8888	(OVL_CON_CLRFMT_ARGB8888 | OVL_CON_BYTE_SWAP)
-+#define OVL_CON_CLRFMT_BGRA8888	(OVL_CON_CLRFMT_RGBA8888 | OVL_CON_BYTE_SWAP)
- #define OVL_CON_CLRFMT_UYVY	(4 << 12)
- #define OVL_CON_CLRFMT_YUYV	(5 << 12)
- #define OVL_CON_MTX_YUV_TO_RGB	(6 << 16)
-
----
-base-commit: 75b607fab38d149f232f01eae5e6392b394dd659
-change-id: 20241015-color-e205e75b64aa
-
-Best regards,
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+index 5f16fb820580..b91a46f4a702 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+@@ -249,6 +249,39 @@ mt6360: pmic@34 {
+ 		#interrupt-cells = <1>;
+ 		pinctrl-0 = <&mt6360_pins>;
+ 
++		tcpc {
++			compatible = "mediatek,mt6360-tcpc";
++			interrupts-extended = <&pio 17 IRQ_TYPE_LEVEL_LOW>;
++			interrupt-names = "PD_IRQB";
++
++			connector {
++				compatible = "usb-c-connector";
++				label = "USB-C";
++				data-role = "dual";
++				power-role = "dual";
++				try-power-role = "sink";
++				source-pdos = <PDO_FIXED(5000, 1000, \
++					       PDO_FIXED_DUAL_ROLE | \
++					       PDO_FIXED_DATA_SWAP)>;
++				sink-pdos = <PDO_FIXED(5000, 2000, \
++					     PDO_FIXED_DUAL_ROLE | \
++					     PDO_FIXED_DATA_SWAP)>;
++				op-sink-microwatt = <10000000>;
++			};
++
++			ports {
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				port@0 {
++					reg = <0>;
++					mt6360_ssusb_ep: endpoint {
++						remote-endpoint = <&ssusb_ep>;
++					};
++				};
++			};
++		};
++
+ 		charger {
+ 			compatible = "mediatek,mt6360-chg";
+ 			richtek,vinovp-microvolt = <14500000>;
+@@ -446,6 +479,13 @@ &pciephy {
+ };
+ 
+ &pio {
++	u3_p0_vbus: u3-p0-vbus-default-pins {
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO63__FUNC_VBUSVALID>;
++			input-enable;
++		};
++	};
++
+ 	audio_default_pins: audio-default-pins {
+ 		pins-cmd-dat {
+ 			pinmux = <PINMUX_GPIO61__FUNC_DMIC1_CLK>,
+@@ -900,8 +940,19 @@ &ufsphy {
+ };
+ 
+ &ssusb0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&u3_p0_vbus>;
+ 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
++	dr_mode = "otg";
++	mediatek,usb3-drd;
++	usb-role-switch;
+ 	status = "okay";
++
++	port {
++		ssusb_ep: endpoint {
++			remote-endpoint = <&mt6360_ssusb_ep>;
++		};
++	};
+ };
+ 
+ &ssusb2 {
 -- 
-Hsin-Te Yuan <yuanhsinte@chromium.org>
+2.45.2
 
 
