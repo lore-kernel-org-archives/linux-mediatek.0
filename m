@@ -4,91 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E8B7CFC273
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 07:51:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7E27CFC273
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 07:55:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aaW2sa/1ZxtztZoldWmZYhD7VcMhjqCGkrdW4rioaxc=; b=qbisz3R2eYbPBX3nqD0Ncwqjll
-	t5tTMMZ0tsjka1VbTltbC4wJt8aeXcBH5bOPzxnly2J+9VIcbV3ITtjGDdZjsqAF56VY63lk2hNmy
-	dXBFnb0sarRBgr4JrNh56AAbAvldCjYqGrHQFXMu6mTeK4YLhUVZA+EfpvGsJcbj6xOqV3w5nMTpE
-	hVGuI+fKVLLDTdPYQ3iJQ+A1EaveTt+G02tNmYAEMstqSUcMtHQ2WvDIcJtEnozJ6v4ilD5narbrd
-	e2qDy9XxJPFSE37bBV9APN0Edg/6sclLqo2ZeTfy0szEe8YJv7g/HhgSpDAzLzF6Drz1fMVGNH1FB
-	1Koa1Rsg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WmFcFRCIYAEw2190Z4FOUZUOyxlKcujKYWug46B335c=; b=BZLkrXXxHclNsUu+AGYf+py5T4
+	XVy5Ize6z5hYPpFavOZOoCC/vm0dfpcHgzx/oHTKAZx4gwRyoxHW6KG7GxynNkerR1s+TlcnisZak
+	UtU8Ip93FXcRwnQdyym54AP3CyN8IuI/TsJaj+ehC92ivkb5zsF4p9OQ9dncWTcuKxmqrQ9bL3UHJ
+	7V4RpIP3ewLxTVeZCosOVT3s3VIzHnMP/pgnmFUWNeTNxLww6/7euxP/G1oLKYKmqKLGZFK8uCXmP
+	h6xE9ix3VP5nY+FWluhXDz00Zil+1aHfIa63ZiAQTbkYmnVCw6J5hxTIVRYR3FRlPDPWDxT27FxQw
+	FQFnnelQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0cL4-00000007OUU-0qM7;
-	Tue, 15 Oct 2024 07:51:30 +0000
-Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d])
+	id 1t0cOd-00000007PHr-3eGO;
+	Tue, 15 Oct 2024 07:55:11 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0cL1-00000007OTj-207y
+	id 1t0cOL-00000007PCT-2iRd
 	for linux-mediatek@lists.infradead.org;
-	Tue, 15 Oct 2024 07:51:28 +0000
-Received: by mail-ot1-x32d.google.com with SMTP id 46e09a7af769-717d2b8c08aso1935212a34.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Oct 2024 00:51:26 -0700 (PDT)
+	Tue, 15 Oct 2024 07:55:10 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-539eb97f26aso2490928e87.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Oct 2024 00:54:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1728978686; x=1729583486; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=aaW2sa/1ZxtztZoldWmZYhD7VcMhjqCGkrdW4rioaxc=;
-        b=VlHBof3NbyLoCg8wOufhmynCQAKBTvsmCZns4AByFVrVmqrPWzvAgq8esGDhomNk4F
-         B0WDwyBM7tnpXd5sziQuqpAHjP2orZKv0fKMxfQf5VlKtzY8Ll8JKha4GWgEKLi6XctR
-         1ROPcWrJcOQykrwTU3SWVeGKrFEuTd8ZK9rGY=
+        d=chromium.org; s=google; t=1728978892; x=1729583692; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=WmFcFRCIYAEw2190Z4FOUZUOyxlKcujKYWug46B335c=;
+        b=LxgmxAlU//mPmFUfzqZoq5jNbC7yMmwX1wFv5KGk8mZ1dMCIyg/hwZrMCS+QNjvOYl
+         J0f9uNYC4rxqXZ2mP58zj0gpGnbbcn4SXusADWexKa08AFR8a6KXvjLDkuQMU+ig2rnP
+         rC3so/dtRoHdDKQSs2Ju2YAO29mnu+kTUNvkc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728978686; x=1729583486;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=aaW2sa/1ZxtztZoldWmZYhD7VcMhjqCGkrdW4rioaxc=;
-        b=hwsRPtbvKKTxGT7ot+INz16OoCP/F/Noig6DbltyQmFXBzX61gyqbmHnqq3BuWf/8n
-         xxsh3eneztwGO8XD8xUonmyst0JS6aijBKcth1WmcrjF0IDXt3QFgn5dlaFPKnDRzcNn
-         UlBpyXEvcXKsdlCs4Mn4CLy7ePVV3pbGZimuqMfQnFTJk9kzz6EaLkjOk6C99Z9SnaTH
-         7mVbiJYsJKpYgekwfeEwfsfUrKp0AOHTcBf2z3YJzgwsVibRhv3GjjcUDX95h7zrxL/v
-         rDPWFI3iWzNferghUX6nSgm8ktIxUhXOlpwojVzy3za2lr6GjVn2TfuZCaUZMknW3Y7R
-         a25g==
-X-Forwarded-Encrypted: i=1; AJvYcCUp2ibMgY9HU/nA5MWN0X6Yde+Y0oa2Q0E15TmWKm+xHx5BlcFzJ4+dSha44hdxEAOBjqDPzcLS24JagYcXnw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy8bPve+cVQIIIt+cHZSqBOeZ8CDfczXu4JY+SQMKmbiAaHHI82
-	FFE6U0Ra0jaxWcwsB9qaFeG3vke5PzR9GK9Er/BvS8ErA0mohQkGaCREX0GMmg==
-X-Google-Smtp-Source: AGHT+IEfvWKZ1jcEyU30hF3ZW6BxaiMzf1hjuhVYl88Vngg8HNiMsojaXq2qzSwNVqU01VmSdulBrA==
-X-Received: by 2002:a05:6358:52c5:b0:1b5:a38c:11d1 with SMTP id e5c5f4694b2df-1c32bc8c0f9mr537792955d.26.1728978685952;
-        Tue, 15 Oct 2024 00:51:25 -0700 (PDT)
-Received: from google.com ([2401:fa00:1:10:f99b:9883:3b88:182a])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7ea9c713432sm730557a12.83.2024.10.15.00.51.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Oct 2024 00:51:25 -0700 (PDT)
-Date: Tue, 15 Oct 2024 15:51:21 +0800
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wolfram Sang <wsa@kernel.org>, Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, chrome-platform@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Douglas Anderson <dianders@chromium.org>,
-	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
-	linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v8 7/8] platform/chrome: Introduce device tree hardware
- prober
-Message-ID: <20241015075121.GA292890@google.com>
-References: <20241008073430.3992087-1-wenst@chromium.org>
- <20241008073430.3992087-8-wenst@chromium.org>
- <Zwfy6ER6sbr_QxsY@smile.fi.intel.com>
- <CAGXv+5FAhZQR+Tah_6Qxp4O7=x2RawfWuMh29_FT4mGQGQF84w@mail.gmail.com>
- <Zwz_p3o1PJF6sl2Y@smile.fi.intel.com>
+        d=1e100.net; s=20230601; t=1728978892; x=1729583692;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=WmFcFRCIYAEw2190Z4FOUZUOyxlKcujKYWug46B335c=;
+        b=N0Dlndg73sO2nty9Owxp9jRJyaaZYe3xmLdd83PCU2PI9uHFkeiWhlADijOLpqS04D
+         AiOyIr3FIqVOIX/bxRTOAjgLzKItK996z1lzjTw9qwVAkqN6AH1ku3cSg3yTq5ooipG9
+         jUQ6Z0K0ePENtErblj3yC9tHl5r7xsxxix9dSOaj2PpkI9fD9m37odk8jN72uRpUJzQV
+         eFTgFbZlzYB0i07jwoJ4IyRSNF0Ykao02WGeaWx9kL9Tf4ptDBtkr5DwxP3o6YfH7u7i
+         ICbavhyXuHUZ8CUBQ8IW9gUtyFOoFoM0nv7zCRmV9KTEjD5iEAdzueqAyqFe1KvFcGPv
+         pXcA==
+X-Forwarded-Encrypted: i=1; AJvYcCUEZuEobDUO83R2V5ckr4qSkFyExf2aHrL2Dgci8IkFkV/ScQuarO26CbD1OQKldRtWsUvoA5rBcNeiYNbttg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YznLmeLUXoHSgz/xUN15bXYDIiafrkclCxsbGl2r/rKzmGJZGsd
+	/5qLDe2QUDv1Il0IGkuYQGH/aX39RdOQH7TOeCU/vjZuuZkI2b7WXUCvKv4Z/IrKNB3TGLQnY/u
+	RZcz+VwxeDodGVQptyC+LLEg0kPzjOG7Sg1ey
+X-Google-Smtp-Source: AGHT+IFUgfyLoHOaQbm6qbZAsrm98uAC9lIzeFdz3VvnKSPD4b56Z9J3TfdKULBQpAMGKGfWRGt6pNsyYRyR0zqkODw=
+X-Received: by 2002:a05:6512:b22:b0:539:f8cb:f5e3 with SMTP id
+ 2adb3069b0e04-539f8cbf8a5mr3102219e87.48.1728978891625; Tue, 15 Oct 2024
+ 00:54:51 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <Zwz_p3o1PJF6sl2Y@smile.fi.intel.com>
+References: <20241014073314.18409-1-yunfei.dong@mediatek.com>
+In-Reply-To: <20241014073314.18409-1-yunfei.dong@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 15 Oct 2024 15:54:40 +0800
+Message-ID: <CAGXv+5HV5EPvhFb6oFkRBSw-EGaccxDGBrW0tVDoWQR0RAAeiQ@mail.gmail.com>
+Subject: Re: [PATCH 0/6] media: mediatek: vcodec: support h264 extend vsi
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: =?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>, 
+	Sebastian Fricke <sebastian.fricke@collabora.com>, 
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>, 
+	Daniel Almeida <daniel.almeida@collabora.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
+	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, 
+	Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_005127_569848_9AA4E71B 
-X-CRM114-Status: GOOD (  26.61  )
+X-CRM114-CacheID: sfid-20241015_005453_711720_C463FE63 
+X-CRM114-Status: GOOD (  16.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,97 +96,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 14, 2024 at 02:25:27PM +0300, Andy Shevchenko wrote:
-> On Mon, Oct 14, 2024 at 03:04:44PM +0800, Chen-Yu Tsai wrote:
-> > On Thu, Oct 10, 2024 at 11:29 PM Andy Shevchenko
-> > <andriy.shevchenko@linux.intel.com> wrote:
-> > > On Tue, Oct 08, 2024 at 03:34:26PM +0800, Chen-Yu Tsai wrote:
-> 
-> ...
-> 
-> > > > +static const struct chromeos_i2c_probe_data chromeos_i2c_probe_hana_trackpad = {
-> > > > +     .cfg = &chromeos_i2c_probe_simple_trackpad_cfg,
-> > >
-> > >         .cfg = DEFINE_I2C_OF_PROBE_CFG(trackpad, i2c_of_probe_simple_ops),
-> > >
-> > > Or even
-> > >
-> > > #define DEFINE_I2C_OF_PROBE_CFG_SIMPLE(_type_)                  \
-> > >         DEFINE_I2C_OF_PROBE_CFG(type, &i2c_of_probe_simple_ops)
-> > >
-> > > > +     .opts = &(const struct i2c_of_probe_simple_opts) {
-> > >
-> > > Perhaps also DEFINE_xxx for this compound literal?
-> > 
-> > I think it's better to leave this one as is.
-> 
-> Using a compound literal like this questions the entire approach.
+Hi,
 
-I don't follow. It's a valid use.
+On Mon, Oct 14, 2024 at 3:33=E2=80=AFPM Yunfei Dong <yunfei.dong@mediatek.c=
+om> wrote:
+>
+> The working buffer address start and end are calculated in kernel
+> side currently, can't calculate the address end if the driver only
+> getting the address file handle, not the real physical address. Need
+> to extend the vsi to calculate the address end in scp.
+>
+> Re-construct some interface and add config to support extend and non
+> extend at the same time.
+> ---
+> This patch series depends on:
+> [1] https://patchwork.kernel.org/project/linux-mediatek/cover/20241012064=
+333.27269-1-yunfei.dong@mediatek.com
+> ---
+> Yunfei Dong (6):
+>   media: mediatek: vcodec: extend h264 video share information
+>   media: mediatek: vcodec: remove parse nal info in kernel
+>   media: mediatek: vcodec: remove vsi operation in common interface
+>   media: mediatek: vcodec: rename vsi to extend vsi
+>   media: mediatek: vcodec: adding non extend struct
+>   media: mediatek: vcodec: support extend h264 driver
 
-> Why you can't you drop it and use the static initializers?
-
-Did you mean split that part out as a separate variable:
-
-	static const struct i2c_of_probe_simple_opts
-	chromeos_i2c_probe_voltorb_tch_opts = {
-		.res_node_compatible = "elan,ekth6915",
-		.supply_name = "vcc33",
-		.gpio_name = "reset",
-		.post_power_on_delay_ms = 1,
-		.post_gpio_config_delay_ms = 300,
-		.gpio_assert_to_enable = true,
-	};
-
-	static const struct chromeos_i2c_probe_data
-	chromeos_i2c_probe_voltorb_touchscreen = {
-		.cfg = &chromeos_i2c_probe_simple_touchscreen_cfg,
-		.opts = &chromeos_i2c_probe_voltorb_tch_opts,
-	};
-
-Instead of the following, which is slightly shorter, and gets rid of one
-explicit symbol name:
-
-	static const struct chromeos_i2c_probe_data
-	chromeos_i2c_probe_voltorb_touchscreen = {
-		.cfg = &chromeos_i2c_probe_simple_touchscreen_cfg,
-		.opts = &(const struct i2c_of_probe_simple_opts) {
-			.res_node_compatible = "elan,ekth6915",
-			.supply_name = "vcc33",
-			.gpio_name = "reset",
-			.post_power_on_delay_ms = 1,
-			.post_gpio_config_delay_ms = 300,
-			.gpio_assert_to_enable = true,
-		},
-	};
-
+This should be reworked so that "adding non extend struct" is not needed.
+"rename vsi to extend vsi" and "extend h264 video share information"
+could be combined so that you are "adding" the extended data structures,
+not reworking the existing ones. Otherwise the whole thing breaks existing
+systems until "adding non extend struct" is applied, making the series
+non-bisectable.
 
 
 ChenYu
 
-> > Not every entry will
-> > use the same combination of parameters. And having the entry spelled
-> > out like this makes it easier to read which value is for what
-> > parameter, instead of having to go up to the macro definition.
-> > 
-> > For comparison, this entry uses just two of the parameters, while for
-> > another platform I'm working on the full set of parameters is needed.
-> > 
-> > > > +             .res_node_compatible = "elan,ekth3000",
-> > > > +             .supply_name = "vcc",
-> > > > +             /*
-> > > > +              * ELAN trackpad needs 2 ms for H/W init and 100 ms for F/W init.
-> > > > +              * Synaptics trackpad needs 100 ms.
-> > > > +              * However, the regulator is set to "always-on", presumably to
-> > > > +              * avoid this delay. The ELAN driver is also missing delays.
-> > > > +              */
-> > > > +             .post_power_on_delay_ms = 0,
-> > > > +     }
-> > > > +};
-> 
-> -- 
-> With Best Regards,
-> Andy Shevchenko
-> 
-> 
+>
+>  .../vcodec/decoder/mtk_vcodec_dec_drv.h       |   2 +
+>  .../decoder/vdec/vdec_h264_req_multi_if.c     | 516 +++++++++++++++++-
+>  2 files changed, 493 insertions(+), 25 deletions(-)
+>
+> --
+> 2.46.0
+>
+>
 
