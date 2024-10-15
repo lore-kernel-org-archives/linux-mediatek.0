@@ -4,93 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 369A0D21690
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 12:58:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8608ED2169C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 13:09:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LCX1rA8wwXlGB/Kr0sY2myFodFORVpDd8InZ1HgTd6I=; b=xFCuGgn2CkzQPWS6VNhV/NhH4Q
-	shSt7/Xsd6v+1Hj1ReAYdoApGdhdLlMh0lXK9XCajq7mQFQSdTDJ48lhYZv4fvxvSUVYZC+pIbx5B
-	X366AqjDBWoG8aFW9FqcS+ibbhk3JHd37TL45Mt+2Kgm8pX7mE/e+pVehIYB4DhmeYZMyjIarbODO
-	WuGG+kr9lUF/4ZdXIfnFPi7FanzfyX28XfM8ZSDWuSXbPciQQqyMjFX4+GrVaUm9Ebw3CAIW7+WUw
-	r9gAoseht8bVUhgxvFwv5EvPIh+RdyiPtVI2+fSulEZ30cVCC3OP5IR6HFk3AjgP29qlZaR6sJdUh
-	WRSWkLRQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=p5BHUyPt1EyFTjMoAsnVPZVSP1YnGZbvLucwi3hkXsc=; b=hsjU9KomGGRUvxSU5fegHDCbz8
+	e/U2T4uMSb8C44Bz372u2CUd3ZCmslBG+GEXTt9wuPwxB3lTnh4tEzaV15ja7tWT24XUEPm6bi5IC
+	mGc3zIWtVKOOjS2fCNHRK5GmDgCwbXlSH+Nu3l0L1wcsMZxLq3Lya7MPhcsjsL2egglYe7qkSwXCm
+	mXYUiaiaJyQr2x43GZi8Th8hCKrW7bAi5bMCfPHv+sYUjBz2ni6KlaFz5U4oM4iFElu7PCLTlwivo
+	eyLsI0q0h/Jm3igjN2+iTMZdLHd+dbpMIXHJckW8bD+0vIqX0kwRfoYV6eFBmJ4Ap8++YGHZUaOYY
+	h9Y4tBUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0h7n-00000008GEG-1UKG;
-	Tue, 15 Oct 2024 12:58:07 +0000
-Received: from mgamail.intel.com ([192.198.163.18])
+	id 1t0hIt-00000008I1I-2RD4;
+	Tue, 15 Oct 2024 13:09:35 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0h4g-00000008Fmk-0mVb;
-	Tue, 15 Oct 2024 12:54:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1728996894; x=1760532894;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=IpUeFHHJn0wswPXOIvJ6ugRddbx0dZyA2d3iKLKDp/k=;
-  b=O3QgNzDNRMgD/32i9m8jtuLRJoCS1g4QUE+PVg9f9lsZaS6YHk4E0ieQ
-   pWa5Nk0XagmfHUTOHHXjdhU5OMTJkvucEfygygyFc2ElgmFVLwvRk8GHc
-   CNEdh4shmIQStFJcQMEqZu/bS8diqT0dxFGAbQ15/UGGLn05Yr/sVoTMZ
-   X3QSiMrKvm39XfBqXOL4mMHYTK2y7qU5qNw50fTINrWV08QR366+Guaii
-   vamnHevjF2B1ll9rlThIPi8mZEj2tsxPVCL5WxWSqLGu9OqtgguaJ1WLI
-   c38IcDaMhekbyJFUbX92NZdqYnON5mQGdLdhUmgeaYxEE1TA/ckqWEtk7
-   Q==;
-X-CSE-ConnectionGUID: ZjEY0MaQSU+ODAcre4z8aw==
-X-CSE-MsgGUID: QQEuXC3NR0CokB7+RINOQA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11225"; a="27831882"
-X-IronPort-AV: E=Sophos;i="6.11,205,1725346800"; 
-   d="scan'208";a="27831882"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Oct 2024 05:54:50 -0700
-X-CSE-ConnectionGUID: 21gC6auxR7iXSugTgjheEQ==
-X-CSE-MsgGUID: lVgSUNSMRReLO0GG2lM24A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,205,1725346800"; 
-   d="scan'208";a="78333817"
-Received: from smile.fi.intel.com ([10.237.72.154])
-  by orviesa007.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Oct 2024 05:54:46 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1t0h4U-00000003GzT-49q1;
-	Tue, 15 Oct 2024 15:54:42 +0300
-Date: Tue, 15 Oct 2024 15:54:42 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wolfram Sang <wsa@kernel.org>, Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, chrome-platform@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Douglas Anderson <dianders@chromium.org>,
-	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
-	linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v8 7/8] platform/chrome: Introduce device tree hardware
- prober
-Message-ID: <Zw5mEv_cnZzPUqII@smile.fi.intel.com>
-References: <20241008073430.3992087-1-wenst@chromium.org>
- <20241008073430.3992087-8-wenst@chromium.org>
- <Zwfy6ER6sbr_QxsY@smile.fi.intel.com>
- <ZwfzhsvlPrxMi61j@smile.fi.intel.com>
- <CAGXv+5ED7j49ndT7BaESW8ZL7_mjVUJLM_FWma8Lwkg+Uh3saw@mail.gmail.com>
- <Zwz_Kl7SwfL0ZaAZ@smile.fi.intel.com>
- <CAGXv+5H0Yvt1cwPOim-quT3C+=s9NapnryJhNxs_QW=DAyAycQ@mail.gmail.com>
- <Zw5QzP-5hnHW--F-@smile.fi.intel.com>
- <CAGXv+5FuMjSaUJ+qDrx7Vmr9o5vJ9VW=tss1ezvdJyaZZouHKw@mail.gmail.com>
+	id 1t0hHR-00000008Hi5-2QKa;
+	Tue, 15 Oct 2024 13:08:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=p5BHUyPt1EyFTjMoAsnVPZVSP1YnGZbvLucwi3hkXsc=; b=LghZXKprKdh4ZKP8MMVtLHKtNQ
+	0aWIrf57zzmuxOu2+1wHVipPHf5I5kH4/MyyXF2wdk6ZjtA0WMRAMQd+ZYJ1/siIrF+XsH1dCLLkt
+	HsPGXeNgxJ+QCxa+O7HvSVgtEznp5ish9tOfkEBTCEG3SfibiXIQzPCaK1Hxvp1Js1NI=;
+Received: from p54ae9bfc.dip0.t-ipconnect.de ([84.174.155.252] helo=nf.local)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.96)
+	(envelope-from <nbd@nbd.name>)
+	id 1t0hHC-0099iN-2Y;
+	Tue, 15 Oct 2024 15:07:50 +0200
+Message-ID: <695421bb-6f31-4bae-8c8c-6d4fccf1b497@nbd.name>
+Date: Tue, 15 Oct 2024 15:07:50 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5FuMjSaUJ+qDrx7Vmr9o5vJ9VW=tss1ezvdJyaZZouHKw@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next 4/4] net: ethernet: mtk_eth_soc: optimize dma
+ ring address/index calculation
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20241015110940.63702-1-nbd@nbd.name>
+ <20241015110940.63702-4-nbd@nbd.name>
+ <e67883e3-b278-4052-849c-8a9a8ef145f0@lunn.ch>
+From: Felix Fietkau <nbd@nbd.name>
+Content-Language: en-US
+Autocrypt: addr=nbd@nbd.name; keydata=
+ xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
+ ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
+ Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
+ AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
+ vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
+ wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
+ TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
+ l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
+ dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
+ HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
+ VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
+ CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
+ VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
+ Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
+ DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
+ wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
+ f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
+ aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
+ FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
+ TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
+ GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
+ cL98efvrjdstUfTCP2pfetyN
+In-Reply-To: <e67883e3-b278-4052-849c-8a9a8ef145f0@lunn.ch>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_055454_261443_7FD17712 
-X-CRM114-Status: GOOD (  33.31  )
+X-CRM114-CacheID: sfid-20241015_060805_650200_C7B6C0DC 
+X-CRM114-Status: GOOD (  13.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,98 +104,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 15, 2024 at 08:18:50PM +0800, Chen-Yu Tsai wrote:
-> On Tue, Oct 15, 2024 at 7:24 PM Andy Shevchenko
-> <andriy.shevchenko@linux.intel.com> wrote:
-> > On Tue, Oct 15, 2024 at 02:32:54PM +0800, Chen-Yu Tsai wrote:
-> > > On Mon, Oct 14, 2024 at 7:23 PM Andy Shevchenko
-> > > <andriy.shevchenko@linux.intel.com> wrote:
-> > > > On Mon, Oct 14, 2024 at 12:56:20PM +0800, Chen-Yu Tsai wrote:
-> > > > > On Thu, Oct 10, 2024 at 11:32 PM Andy Shevchenko
-> > > > > <andriy.shevchenko@linux.intel.com> wrote:
-> > > > > > On Thu, Oct 10, 2024 at 06:29:44PM +0300, Andy Shevchenko wrote:
-> > > > > > > On Tue, Oct 08, 2024 at 03:34:26PM +0800, Chen-Yu Tsai wrote:
-
-...
-
-> > > > > > > > +   .cfg = &chromeos_i2c_probe_simple_trackpad_cfg,
-> > > > > > >
-> > > > > > >       .cfg = DEFINE_I2C_OF_PROBE_CFG(trackpad, i2c_of_probe_simple_ops),
-> > > > > > >
-> > > > > > > Or even
-> > > > > > >
-> > > > > > > #define DEFINE_I2C_OF_PROBE_CFG_SIMPLE(_type_)                        \
-> > > > > > >       DEFINE_I2C_OF_PROBE_CFG(type, &i2c_of_probe_simple_ops)
-> > > > >
-> > > > > I'm not inclined on using compound literals here. "simple X cfg" will
-> > > > > likely get shared between multiple |chromeos_i2c_probe_data| entries,
-> > > > > and AFAIK the toolchain can't merge them. So we would end up with one
-> > > > > compound literal per entry, even if their contents are the same.
-> > > >
-> > > > I'm not sure I follow, you are using compound literal _already_.
-> > > > How does my proposal change that?
-> > >
-> > > I'm using it where it makes sense, i.e. where the embedded variable
-> > > is not going to be shared with other instances.
-> > >
-> > > For the dumb probers, there's only going to be one instance per "type".
-> > >
-> > > For the simple probers, the config part is still one instance per "type",
-> > > but the parameters are board and component specific. There will be
-> > > multiple instances. Hence the config part can be shared, while the
-> > > parameters likely won't be.
-> > >
-> > > > > > With that also looking at the above
-> > > > > >
-> > > > > > #define DEFINE_I2C_OF_PROBE_CFG_NONE(_type_)                            \
-> > > > > >         DEFINE_I2C_OF_PROBE_CFG(type, NULL)
-> > > > >
-> > > > > For the "dumb" case it makes sense though, since it would be one instance
-> > > > > per type. But we could go further and just wrap the whole
-> > > > > |chromeos_i2c_probe_data| declaration.
-> > > >
-> > > > Maybe it's too far from now...
-> > >
-> > > This is what I have:
-> > >
-> > > #define DEFINE_CHROMEOS_I2C_PROBE_DATA_DUMB(_type)
-> > >                         \
-> > >        static const struct chromeos_i2c_probe_data
-> > > chromeos_i2c_probe_dumb_ ## _type = {       \
-> >
-> > >                .cfg = &(const struct i2c_of_probe_cfg) {
-> >
-> > But the below is static initializer, why do you need a compound literal here?
+On 15.10.24 14:54, Andrew Lunn wrote:
+> On Tue, Oct 15, 2024 at 01:09:38PM +0200, Felix Fietkau wrote:
+>> Since DMA descriptor sizes are all power of 2, we can avoid costly integer
+>> division in favor or simple shifts.
 > 
-> Because .cfg takes a pointer to a struct. It's not an embedded struct.
-> The compound literal creates the internal struct, and then its address
-> is taken and assigned to the .cfg field.
-> 
-> Does that make sense?
+> Could a BUILD_BUG_ON() be added to validate this?
 
-Okay, I see now. Yeah, I have no preferences here, I saw the code like in split
-version or like in yours. I _slightly_ bend to non-compound literal variant,
-but again here it might be not worth doing a such.
+Not sure if that would be useful. I can't put the BUILD_BUG_ON in the 
+initializer macro, so I could only add it for the individual dma 
+descriptor structs.
+Since the size of those structs will not be changed (otherwise it would 
+immediately visibly break with existing hw), the remaining possibility 
+would be adding new structs that violate this expectation. However, 
+those would then not be covered by the BUILD_BUG_ON.
 
-> > >                         \
-> > >                        .type = #_type,
-> > >                         \
-> > >                },
-> > >                         \
-> > > };
-> > >
-> > > DEFINE_CHROMEOS_I2C_PROBE_DATA_DUMB(touchscreen);
-> >
-> > s/dumb/simple/g
-> 
-> "simple" is taken. This is "dumb" as in it does not need any helpers.
-> Maybe "no-op" if you don't like the negative connotation?
+> Do you have some benchmark data for this series? It would be good to
+> add to a patch 0/4.
 
-_BY_TYPE ?
+No, I just ran basic tests that everything still works well and looked 
+at the assembly diff to ensure that the generated code seems sane.
 
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+- Felix
 
