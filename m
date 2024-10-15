@@ -4,84 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E9B2CFC299
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 12:08:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B74FD21690
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 12:32:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3pkU2eRjeKvSY6f0pSdTbycrkRgeCmqTec03rjYKyF8=; b=bQlZPTKGysQCw0eacqyR5lvMxH
-	o+qYGZDSMjDb3ZRG25pWS+OuwToGDQSny4Kc4jeVjkEo7RpLyIhH6imuCwjE+gkDIzut+xRK8vKzr
-	wj/0urRZ2NMWqvap9O4mvUU8LowS0wzUVOI1WiYByccysf+JWDesAm6/yYaND2B27JpbiN3Dd8wj9
-	r1B1AcINMtE2Y5FSzHd6gPUtzDz0jYW+o9cVlX+AKgOoGvxDHpW3IeXn6CIGcW/q0xNPBqHVWAafV
-	43qHBswKzoWI5klKJaWrXC3Esucni8I0aMan23D+aPvB8WPDfnL696pdWw+bt1iWCSEgZX27vabYf
-	iiZhqTVA==;
+	bh=XieAo9HL5vyNwm1c3ghYumY3Fx+xJStWHjWEsuxERvg=; b=DNP0F7jQOHFRNydjbwnOGGGyuw
+	OamMQeQWDfswh0dyZo80swlv2RSPERuhFqTjJv1bdFvXu6I5/6juB0hrPM7JVAInwpxbMDrWCy2IA
+	z9BXBgj1Q7YPLfqiUTmxiuSauwaOm4L11wDcrZCpNWJlfVcigMfqM97qKO5MHTHXp3ah40MELZlDp
+	PlByPMywNv+T3Mz2psbGJ+VdfIpAkbR+FXNKikfv6tCqyLLQr0NqBajmu9AxnsIPHinmqrCK9msZx
+	RvM9fQTj54wy61mi1di9BqOKQSrf/Dx9ZFelk5vJM4oJa1TBynAHHrCbYNiwHWwNtid7fodOt1FZJ
+	lMLb8l8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0gM3-000000086vU-1NcU;
-	Tue, 15 Oct 2024 12:08:47 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1t0gig-00000008B6g-1XYi;
+	Tue, 15 Oct 2024 12:32:10 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0gJD-000000086WE-3ERi
-	for linux-mediatek@lists.infradead.org;
-	Tue, 15 Oct 2024 12:06:04 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-5369f1c7cb8so6622524e87.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Oct 2024 05:05:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1728993950; x=1729598750; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=3pkU2eRjeKvSY6f0pSdTbycrkRgeCmqTec03rjYKyF8=;
-        b=mwMUH6E2qdNIGAG5ksj7scDNae2NfuoBmtJyKVEoE7GdyRhnQoDU6NkIy6/FK6ZWnB
-         V1c0dByqnNXr20q+vVLNUiwjxs/x4Ggx3fZei8oH3fBHVgMjpBIe7YdR6/Zus6odaHMw
-         nmfIlR1Bl2NH8h8Rv6gT5OkoIUjeGytdpxoOU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728993950; x=1729598750;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=3pkU2eRjeKvSY6f0pSdTbycrkRgeCmqTec03rjYKyF8=;
-        b=Zxuc2yuGg4kODzNxa+7q1xyiUT3tYzSnJGCUwXI5+BEYz9GlPuYDhAqNybiBoRjULf
-         YY7/Eut/3CzOmGbMzrxJ803HV/RRGgUPbVcyw6jMgdllSGMoCBsbXn+MPJWVsajodHAs
-         tbA+OSYf84RYbT9t47a1PxFH6bKzVqs/EmsKruu0AdSnznL8MnlheD0vUuoa7jgKRdWc
-         rv9Tiytm5G9LCouSaXRf29Kp9M/jcssrtc97csosmyTjqAvFYwbEyXgmzXmL7hKOy7pk
-         JRMkSxtMehdv3gyiIYRaedyevST9j4XwCJXtX4lRNy/LMUuKukfq9UJ4ruAW09cJC86L
-         RHhw==
-X-Forwarded-Encrypted: i=1; AJvYcCXWSmCqptIbZwieOO53mw3By+LcZc7+HVaobeON6/GPLMbG3NAAtEbYr/apejRxZJtR9ieIvX9roHhSxfODLQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx9H1ZIA8kFNocmoAM7Go7JbUcvU4jS4ntd8etxKOL0QZQvVpdq
-	CJJav1T9qki4OfNvHHul9ap8IKVNw33Y6B6NN9wpbUYCay8Gkv4rBvYPFGzVoqNUgQAU50xiRu0
-	jpnhypyi2bubxQwfWikk58pTswXGlYHS1082r
-X-Google-Smtp-Source: AGHT+IEQXdmQdNm+HUimDjCPdKjEChhYuf8aN9wLvl2NObC3Ky9RVqgYEBecyoCudKfI+sGJ8TfqR02sf0yymk/NXVk=
-X-Received: by 2002:a05:6512:3da6:b0:536:a275:9d61 with SMTP id
- 2adb3069b0e04-539e551624bmr5918785e87.21.1728993949587; Tue, 15 Oct 2024
- 05:05:49 -0700 (PDT)
+	id 1t0gUD-0000000889m-3tOW;
+	Tue, 15 Oct 2024 12:17:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=XieAo9HL5vyNwm1c3ghYumY3Fx+xJStWHjWEsuxERvg=; b=LQRJxS3d8EEzk5CygKZkzSHCTs
+	lXK+k6n8WMjYXlQyvTMXFODG+6BILFSq1lndW23xP5oHk3beQYvFwW136ysQoPwnWVT/NUGA6a4FN
+	5J+hbozH7mJddHnpR+bbd6Wg0z8AA1u/ONYUNC1pLVaqilwRs112O1yfMCeA2Xm6Wc5E=;
+Received: from p54ae9bfc.dip0.t-ipconnect.de ([84.174.155.252] helo=nf.local)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.96)
+	(envelope-from <nbd@nbd.name>)
+	id 1t0gTm-0098D2-11;
+	Tue, 15 Oct 2024 14:16:46 +0200
+Message-ID: <0b0a92f2-2e80-429c-8fcd-d4dc162e6e1f@nbd.name>
+Date: Tue, 15 Oct 2024 14:16:45 +0200
 MIME-Version: 1.0
-References: <20241008073430.3992087-1-wenst@chromium.org> <20241008073430.3992087-7-wenst@chromium.org>
- <Zwfwv-O9ln-PVMdc@smile.fi.intel.com> <CAGXv+5F=5f4R5AExANxOwgTL6_VbpHdNKKhHnzy_PDcxtcFoEQ@mail.gmail.com>
- <Zwz-benEP4PHbRb2@smile.fi.intel.com> <CAGXv+5EwSZFoE-Uzb5x1QfknkVfd64Z_uzR0YcvZ_pR9ktGUBA@mail.gmail.com>
- <Zw5PxMOrF8Ape3if@smile.fi.intel.com>
-In-Reply-To: <Zw5PxMOrF8Ape3if@smile.fi.intel.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 15 Oct 2024 20:05:38 +0800
-Message-ID: <CAGXv+5GXVdLg8+gHTAY2ur1u35HLFqq33DLfef_P3geDr3XrMQ@mail.gmail.com>
-Subject: Re: [PATCH v8 6/8] i2c: of-prober: Add GPIO support to simple helpers
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
-	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
-	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, 
-	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>, linux-i2c@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RFC v1 net-next 00/12] bridge-fastpath and related
+ improvements
+To: Eric Woudstra <ericwouds@gmail.com>,
+ Nikolay Aleksandrov <razor@blackwall.org>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Pablo Neira Ayuso <pablo@netfilter.org>,
+ Jozsef Kadlecsik <kadlec@netfilter.org>, Roopa Prabhu <roopa@nvidia.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jiri Pirko <jiri@resnulli.us>,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Lorenzo Bianconi <lorenzo@kernel.org>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Daniel Golle <daniel@makrotopia.org>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
+ bridge@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20241013185509.4430-1-ericwouds@gmail.com>
+ <9f9f3cf0-7a78-40f1-b8d5-f06a2d428210@blackwall.org>
+ <a07cadd3-a8ff-4d1c-9dca-27a5dba907c3@gmail.com>
+From: Felix Fietkau <nbd@nbd.name>
+Content-Language: en-US
+Autocrypt: addr=nbd@nbd.name; keydata=
+ xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
+ ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
+ Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
+ AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
+ vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
+ wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
+ TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
+ l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
+ dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
+ HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
+ VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
+ CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
+ VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
+ Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
+ DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
+ wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
+ f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
+ aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
+ FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
+ TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
+ GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
+ cL98efvrjdstUfTCP2pfetyN
+In-Reply-To: <a07cadd3-a8ff-4d1c-9dca-27a5dba907c3@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_050551_876346_99507723 
-X-CRM114-Status: GOOD (  35.02  )
+X-CRM114-CacheID: sfid-20241015_051714_003375_E800DEB0 
+X-CRM114-Status: GOOD (  14.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,113 +112,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 15, 2024 at 7:19=E2=80=AFPM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
->
-> On Tue, Oct 15, 2024 at 01:31:40PM +0800, Chen-Yu Tsai wrote:
-> > On Mon, Oct 14, 2024 at 7:20=E2=80=AFPM Andy Shevchenko
-> > <andriy.shevchenko@linux.intel.com> wrote:
-> > > On Mon, Oct 14, 2024 at 12:06:16PM +0800, Chen-Yu Tsai wrote:
-> > > > On Thu, Oct 10, 2024 at 11:20=E2=80=AFPM Andy Shevchenko
-> > > > <andriy.shevchenko@linux.intel.com> wrote:
-> > > > > On Tue, Oct 08, 2024 at 03:34:25PM +0800, Chen-Yu Tsai wrote:
->
-> ...
->
-> > > > > > +static void i2c_of_probe_simple_disable_gpio(struct device *de=
-v, struct i2c_of_probe_simple_ctx *ctx)
-> > > > > > +{
-> > > > > > +     if (!ctx->gpiod)
-> > > > > > +             return;
-> > > > >
-> > > > > Do you need this check for the future patches?
-> > > >
-> > > > Not sure I follow. The check is needed because this function is cal=
-led
-> > > > in i2c_of_probe_simple_cleanup(), but the GPIO could have been rele=
-ased
-> > > > earlier in i2c_of_probe_simple_cleanup_early(), and that makes this
-> > > > function a no-op.
-> > >
-> > > Do you have a known race condition then? This is bad. You shouldn't r=
-ely on
-> > > the sequence of events here, or the serialisation has to be added.
-> >
-> > No there isn't. Explanation below.
-> >
-> > > > The helpers for the release side are quite short, but the ones on t=
-he
-> > > > request side wrap some conditional and error handling. I think it's
-> > > > better to keep it symmetric?
-> > >
-> > > Yes, but why do you need the above check, I didn't still get...
-> > > I.o.w. you think that there is a gap in time that (if no check) the G=
-PIO
-> > > descriptor might be changed? But then how does it affect anyway the p=
-ossibility
-> > > that it becomes not NULL even with the current code.
-> >
-> > There are two codes paths, either
-> >
-> >     a) successfully finding a device and enabling it, or
-> >     b) exhausting all options and not finding a device, because it was
-> >        optional or it is malfunctioning.
-> >
-> > After either code path, this cleanup function is called.
-> >
-> > In path (a), the GPIO descriptor is released prior to enabling the devi=
-ce,
-> > because the descriptor is an exclusive resource, and as soon as the dev=
-ice
-> > is enabled, its corresponding driver may probe and request the same GPI=
-O,
-> > and would fail if it was not released.
-> >
-> > In path (b), nothing was enabled, and the GPIO descriptor was not relea=
-sed
-> > early.
-> >
-> > The cleanup function here accounts for both cases, hence the check.
->
-> Yes, but the very same check is inside gpiod_set_value(). I'm still puzzl=
-ed
-> about the duplication. Maybe I'm missing something...
+Hi Eric,
 
-My bad. I did not check if the GPIO descriptor API had these checks.
-In that case I will drop the check in this patch.
+On 14.10.24 20:29, Eric Woudstra wrote:
+> It would be no problem for me to change the subject and body, if you
+> think that is better.
+> 
+> The thing is, these patches actually make it possible to set up a fully
+> functional software fastpath between bridged interfaces. Only after the
+> software fastpath is set up and functional, it can be offloaded, which
+> happens to by my personal motivation to write this patch-set.
+> 
+> If the offload flag is set in the flowtable, the software fastpath will
+> be offloaded. But in this patch-set, there is nothing that changes
+> anything there, the existing code is used unchanged.
 
+FWIW, a while back, I also wanted to add a software fast path for the 
+bridge layer to the kernel, also with the intention of using it for 
+hardware offload. It wasn't accepted back then, because (if I remember 
+correctly) people didn't want any extra complexity in the network stack 
+to make the bridge layer faster.
 
-Thanks
-ChenYu
+Because of that, I created this piece of software:
+https://github.com/nbd168/bridger
 
-> > A step-by-step description might be clearer:
-> >
-> > 1. i2c_of_probe_simple_enable()
-> >    ...
-> >    1a. i2c_of_probe_simple_get_supply()
-> >    1b. i2c_of_probe_simple_get_gpiod()
-> >    1c. i2c_of_probe_simple_enable_regulator()
-> >    1d. i2c_of_probe_simple_set_gpio()
-> >
-> > 2. Loop through potential component options and probe; if one is found:
-> >    2a. i2c_of_probe_simple_cleanup_early()
-> >        2a-i. i2c_of_probe_simple_put_gpiod
-> >    2b. Enable device and driver's probe() gets called
-> >
-> > 3. i2c_of_probe_simple_cleanup()
-> >    3a. i2c_of_probe_simple_disable_gpio()
-> >    3b. i2c_of_probe_simple_put_gpiod()
-> >    3c. i2c_of_probe_simple_disable_regulator()
-> >    3d. i2c_of_probe_simple_put_supply()
-> >
-> > > > > > +     /* Ignore error if GPIO is not in output direction */
-> > > > > > +     gpiod_set_value(ctx->gpiod, !ctx->opts->gpio_assert_to_en=
-able);
-> > > > > > +}
->
-> --
-> With Best Regards,
-> Andy Shevchenko
->
->
+It uses an eBPF TC classifier for discovering flows and handling the 
+software fast path, and also creates hardware offload rules for flows.
+With that, hardware offloading for bridged LAN->WLAN flows is fully 
+supported on MediaTek hardware with upstream kernels.
+
+- Felix
 
