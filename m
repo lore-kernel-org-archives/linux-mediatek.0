@@ -4,68 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75740CFC288
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 11:20:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FB70CFC28A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 11:23:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gFUcBA7bMz011Qon0HV0vr2eacg00nel3rbA3DLVt/4=; b=2I1LfQ1stQm2q2oWUvh+eQQakh
-	ZCmhBJ67I2NJWUrF+OMM1QAE7RWZbxr90SVDojkHXp8asNUUOK64XdZWowJXPCMePLaKw5O4Q74zi
-	ybpBfrSdpytZd/WiUT0tJWTmSVNip1o/5zuiGgfvOFTQWx8we/f2FKmIzWW9FjuFhGhIP1HSLLhT4
-	loE8ax0R6y39lbcB/KGp7n3za4/nw//xsLm9tzZbtFhhlevkEJdnae4+Jax2FrLc6T+GF7nxLq8yr
-	HQLnsXo5JAMylc+0bxyt/AiuiMFtQJ7FxFkDE42NtALIP9NbRO/kAZH8m4w0E/PjyH04/XgUI+rbX
-	mI4G5C0Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Yxe9gdkvuTNTpQ41mDo6m9bR2y1zwu/bf2kZS7t+EqU=; b=B2L4AfffVlKA7kK7CT2n4dd/u1
+	TB2EM+IEXwjMN7j7MNEtb92i1Zd3UQUgSzspUsZuP+mQm2SHtvwTyhUe0jRyTa6sI8PyxqQanHagQ
+	DhJaTnEV7B8QMLgAtR3y4ts/0YInRQB/rCz3DhWwH1Eo72Z8RG7k1us5dwhOh48EilENSP6jXS3zg
+	KVU1NoXeFR3BRUTfm/l7rl64j9eJpOJprMRh0bxFVdCX5tu1MFxkZxThiRfmHCehz+M3TKYoOfjU7
+	1z8pvnAdm81/qdDEftVps3tG3uy5OD8moPev+EZg0fK5GStIWKVOX++A5ka5D25Zq1UmlPNNriI05
+	mkRKdLGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0fbZ-00000007ziw-0yz9;
-	Tue, 15 Oct 2024 11:20:45 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1t0fea-000000080eF-1JIQ;
+	Tue, 15 Oct 2024 11:23:52 +0000
+Received: from mgamail.intel.com ([192.198.163.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0fR7-00000007xwm-0Y2S;
-	Tue, 15 Oct 2024 11:09:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=gFUcBA7bMz011Qon0HV0vr2eacg00nel3rbA3DLVt/4=; b=efvsPzX+JB8We+Ih397/M3nhHV
-	tGwrL2hqnVD9l2lhYogTUfNQjcLnU30DtSJxjbaQIjI4EqkbyXH+SNGrsx5mkSV3cZiXuHXpvEyKU
-	wey3rbIQlRM3BXAZMLt3igQ0ryft0G0nmMxydsKZ0uyy5M1UdZHDYacrcasICdyVfSmQ=;
-Received: from p54ae9bfc.dip0.t-ipconnect.de ([84.174.155.252] helo=Maecks.lan)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
-	(Exim 4.96)
-	(envelope-from <nbd@nbd.name>)
-	id 1t0fQt-0096bC-2n;
-	Tue, 15 Oct 2024 13:09:43 +0200
-From: Felix Fietkau <nbd@nbd.name>
-To: netdev@vger.kernel.org,
-	Sean Wang <sean.wang@mediatek.com>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
+	id 1t0faX-00000007zd4-1grC;
+	Tue, 15 Oct 2024 11:19:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1728991181; x=1760527181;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=nHnbY3Qf1d9Iv/MtYL8kyklNX27QMs4I/0vg9sFyQ/k=;
+  b=aztDR+q89LVQiNexH2+JpL6piT4FDCD3KrUvUg8NvGUoSozycgjupaJu
+   CjOmp9d9E0771uW/Z/QJQnBpLj/SK/Q/fXSqWmwByXLd4wuf057TCgq8d
+   4VjiqESg7PtvgXkZMgCcQgmj1SonSy79ke2c+Vf+S3IAEYGzJFeX3NFr9
+   37Uo1YZz+Ewky/K3DLtZ9MgpLYxxEjzX0mkV6sDLjA2NgixiqQP+1Vehh
+   D8ugY3Nb+fjnzjHIH85BW+jwh5OeJYLyv1yslAiLcgW8d5b9/aBRqoaue
+   QmIK2R9QKKHwg6zB4K16QPsVfzv/1/WwhtGikQwCJhtdO49i/I4LdSelH
+   g==;
+X-CSE-ConnectionGUID: ycJOR3WhQzSoyfkzsBFpww==
+X-CSE-MsgGUID: qyACyI8RSWCHyg0mrr8esA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11225"; a="32297437"
+X-IronPort-AV: E=Sophos;i="6.11,204,1725346800"; 
+   d="scan'208";a="32297437"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Oct 2024 04:19:39 -0700
+X-CSE-ConnectionGUID: R9uydBfYRYeW71Emay4xrQ==
+X-CSE-MsgGUID: UZheSprSSyqQfzcSvzXGnQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,204,1725346800"; 
+   d="scan'208";a="78047063"
+Received: from smile.fi.intel.com ([10.237.72.154])
+  by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Oct 2024 04:19:36 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.98)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1t0faO-00000003FMY-2Ug5;
+	Tue, 15 Oct 2024 14:19:32 +0300
+Date: Tue, 15 Oct 2024 14:19:32 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next 4/4] net: ethernet: mtk_eth_soc: optimize dma ring address/index calculation
-Date: Tue, 15 Oct 2024 13:09:38 +0200
-Message-ID: <20241015110940.63702-4-nbd@nbd.name>
-X-Mailer: git-send-email 2.47.0
-In-Reply-To: <20241015110940.63702-1-nbd@nbd.name>
-References: <20241015110940.63702-1-nbd@nbd.name>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wolfram Sang <wsa@kernel.org>, Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>, chrome-platform@lists.linux.dev,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Douglas Anderson <dianders@chromium.org>,
+	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
+	linux-i2c@vger.kernel.org
+Subject: Re: [PATCH v8 6/8] i2c: of-prober: Add GPIO support to simple helpers
+Message-ID: <Zw5PxMOrF8Ape3if@smile.fi.intel.com>
+References: <20241008073430.3992087-1-wenst@chromium.org>
+ <20241008073430.3992087-7-wenst@chromium.org>
+ <Zwfwv-O9ln-PVMdc@smile.fi.intel.com>
+ <CAGXv+5F=5f4R5AExANxOwgTL6_VbpHdNKKhHnzy_PDcxtcFoEQ@mail.gmail.com>
+ <Zwz-benEP4PHbRb2@smile.fi.intel.com>
+ <CAGXv+5EwSZFoE-Uzb5x1QfknkVfd64Z_uzR0YcvZ_pR9ktGUBA@mail.gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAGXv+5EwSZFoE-Uzb5x1QfknkVfd64Z_uzR0YcvZ_pR9ktGUBA@mail.gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_040957_498882_58F17DF6 
-X-CRM114-Status: GOOD (  18.11  )
+X-CRM114-CacheID: sfid-20241015_041941_483209_3C94A466 
+X-CRM114-Status: GOOD (  32.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,551 +101,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since DMA descriptor sizes are all power of 2, we can avoid costly integer
-division in favor or simple shifts.
+On Tue, Oct 15, 2024 at 01:31:40PM +0800, Chen-Yu Tsai wrote:
+> On Mon, Oct 14, 2024 at 7:20 PM Andy Shevchenko
+> <andriy.shevchenko@linux.intel.com> wrote:
+> > On Mon, Oct 14, 2024 at 12:06:16PM +0800, Chen-Yu Tsai wrote:
+> > > On Thu, Oct 10, 2024 at 11:20 PM Andy Shevchenko
+> > > <andriy.shevchenko@linux.intel.com> wrote:
+> > > > On Tue, Oct 08, 2024 at 03:34:25PM +0800, Chen-Yu Tsai wrote:
 
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 143 +++++++++++---------
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |   6 +-
- 2 files changed, 83 insertions(+), 66 deletions(-)
+...
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 58b80af7230b..5e02b9576f2f 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -42,6 +42,11 @@ MODULE_PARM_DESC(msg_level, "Message level (-1=defaults,0=none,...,16=all)");
- 				  offsetof(struct mtk_hw_stats, xdp_stats.x) / \
- 				  sizeof(u64) }
- 
-+#define RX_DESC_OFS(eth, i) \
-+	((i) << (eth)->soc->rx.desc_shift)
-+#define TX_DESC_OFS(eth, i) \
-+	((i) << (eth)->soc->tx.desc_shift)
-+
- static const struct mtk_reg_map mtk_reg_map = {
- 	.tx_irq_mask		= 0x1a1c,
- 	.tx_irq_status		= 0x1a18,
-@@ -1139,23 +1144,28 @@ static void *mtk_max_lro_buf_alloc(gfp_t gfp_mask)
- static int mtk_init_fq_dma(struct mtk_eth *eth)
- {
- 	const struct mtk_soc_data *soc = eth->soc;
--	dma_addr_t phy_ring_tail;
-+	dma_addr_t phy_ring_tail, phy_ring_addr;
- 	int cnt = soc->tx.fq_dma_size;
- 	dma_addr_t dma_addr;
-+	void *ring_addr;
-+	u32 desc_size;
- 	int i, j, len;
- 
- 	if (MTK_HAS_CAPS(eth->soc->caps, MTK_SRAM))
- 		eth->scratch_ring = eth->sram_base;
- 	else
- 		eth->scratch_ring = dma_alloc_coherent(eth->dma_dev,
--						       cnt * soc->tx.desc_size,
-+						       TX_DESC_OFS(eth, cnt),
- 						       &eth->phy_scratch_ring,
- 						       GFP_KERNEL);
- 
- 	if (unlikely(!eth->scratch_ring))
- 		return -ENOMEM;
- 
--	phy_ring_tail = eth->phy_scratch_ring + soc->tx.desc_size * (cnt - 1);
-+	phy_ring_tail = eth->phy_scratch_ring + TX_DESC_OFS(eth, cnt - 1);
-+	ring_addr = eth->scratch_ring;
-+	phy_ring_addr = eth->phy_scratch_ring;
-+	desc_size = TX_DESC_OFS(eth, 1);
- 
- 	for (j = 0; j < DIV_ROUND_UP(soc->tx.fq_dma_size, MTK_FQ_DMA_LENGTH); j++) {
- 		len = min_t(int, cnt - j * MTK_FQ_DMA_LENGTH, MTK_FQ_DMA_LENGTH);
-@@ -1174,11 +1184,12 @@ static int mtk_init_fq_dma(struct mtk_eth *eth)
- 		for (i = 0; i < cnt; i++) {
- 			struct mtk_tx_dma_v2 *txd;
- 
--			txd = eth->scratch_ring + (j * MTK_FQ_DMA_LENGTH + i) * soc->tx.desc_size;
-+			txd = ring_addr;
-+			ring_addr += desc_size;
-+			phy_ring_addr += desc_size;
- 			txd->txd1 = dma_addr + i * MTK_QDMA_PAGE_SIZE;
- 			if (j * MTK_FQ_DMA_LENGTH + i < cnt)
--				txd->txd2 = eth->phy_scratch_ring +
--					    (j * MTK_FQ_DMA_LENGTH + i + 1) * soc->tx.desc_size;
-+				txd->txd2 = eth->phy_scratch_ring + phy_ring_addr;
- 
- 			txd->txd3 = TX_DMA_PLEN0(MTK_QDMA_PAGE_SIZE);
- 			if (MTK_HAS_CAPS(soc->caps, MTK_36BIT_DMA))
-@@ -1208,9 +1219,9 @@ static void *mtk_qdma_phys_to_virt(struct mtk_tx_ring *ring, u32 desc)
- }
- 
- static struct mtk_tx_buf *mtk_desc_to_tx_buf(struct mtk_tx_ring *ring,
--					     void *txd, u32 txd_size)
-+					     void *txd, u32 txd_shift)
- {
--	int idx = (txd - ring->dma) / txd_size;
-+	int idx = (txd - ring->dma) >> txd_shift;
- 
- 	return &ring->buf[idx];
- }
-@@ -1221,9 +1232,9 @@ static struct mtk_tx_dma *qdma_to_pdma(struct mtk_tx_ring *ring,
- 	return ring->dma_pdma - (struct mtk_tx_dma *)ring->dma + dma;
- }
- 
--static int txd_to_idx(struct mtk_tx_ring *ring, void *dma, u32 txd_size)
-+static int txd_to_idx(struct mtk_tx_ring *ring, void *dma, u32 txd_shift)
- {
--	return (dma - ring->dma) / txd_size;
-+	return (dma - ring->dma) >> txd_shift;
- }
- 
- static void mtk_tx_unmap(struct mtk_eth *eth, struct mtk_tx_buf *tx_buf,
-@@ -1431,7 +1442,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
- 	if (itxd == ring->last_free)
- 		return -ENOMEM;
- 
--	itx_buf = mtk_desc_to_tx_buf(ring, itxd, soc->tx.desc_size);
-+	itx_buf = mtk_desc_to_tx_buf(ring, itxd, soc->tx.desc_shift);
- 	memset(itx_buf, 0, sizeof(*itx_buf));
- 
- 	txd_info.addr = dma_map_single(eth->dma_dev, skb->data, txd_info.size,
-@@ -1485,7 +1496,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
- 			mtk_tx_set_dma_desc(dev, txd, &txd_info);
- 
- 			tx_buf = mtk_desc_to_tx_buf(ring, txd,
--						    soc->tx.desc_size);
-+						    soc->tx.desc_shift);
- 			if (new_desc)
- 				memset(tx_buf, 0, sizeof(*tx_buf));
- 			tx_buf->data = (void *)MTK_DMA_DUMMY_DESC;
-@@ -1528,7 +1539,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
- 	} else {
- 		int next_idx;
- 
--		next_idx = NEXT_DESP_IDX(txd_to_idx(ring, txd, soc->tx.desc_size),
-+		next_idx = NEXT_DESP_IDX(txd_to_idx(ring, txd, soc->tx.desc_shift),
- 					 ring->dma_size);
- 		mtk_w32(eth, next_idx, MT7628_TX_CTX_IDX0);
- 	}
-@@ -1537,7 +1548,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
- 
- err_dma:
- 	do {
--		tx_buf = mtk_desc_to_tx_buf(ring, itxd, soc->tx.desc_size);
-+		tx_buf = mtk_desc_to_tx_buf(ring, itxd, soc->tx.desc_shift);
- 
- 		/* unmap dma */
- 		mtk_tx_unmap(eth, tx_buf, NULL, false);
-@@ -1701,7 +1712,7 @@ static struct mtk_rx_ring *mtk_get_rx_ring(struct mtk_eth *eth)
- 
- 		ring = &eth->rx_ring[i];
- 		idx = NEXT_DESP_IDX(ring->calc_idx, ring->dma_size);
--		rxd = ring->dma + idx * eth->soc->rx.desc_size;
-+		rxd = ring->dma + RX_DESC_OFS(eth, idx);
- 		if (rxd->rxd2 & RX_DMA_DONE) {
- 			ring->calc_idx_update = true;
- 			return ring;
-@@ -1869,7 +1880,7 @@ static int mtk_xdp_submit_frame(struct mtk_eth *eth, struct xdp_frame *xdpf,
- 	}
- 	htxd = txd;
- 
--	tx_buf = mtk_desc_to_tx_buf(ring, txd, soc->tx.desc_size);
-+	tx_buf = mtk_desc_to_tx_buf(ring, txd, soc->tx.desc_shift);
- 	memset(tx_buf, 0, sizeof(*tx_buf));
- 	htx_buf = tx_buf;
- 
-@@ -1888,7 +1899,7 @@ static int mtk_xdp_submit_frame(struct mtk_eth *eth, struct xdp_frame *xdpf,
- 				goto unmap;
- 
- 			tx_buf = mtk_desc_to_tx_buf(ring, txd,
--						    soc->tx.desc_size);
-+						    soc->tx.desc_shift);
- 			memset(tx_buf, 0, sizeof(*tx_buf));
- 			n_desc++;
- 		}
-@@ -1926,7 +1937,7 @@ static int mtk_xdp_submit_frame(struct mtk_eth *eth, struct xdp_frame *xdpf,
- 	} else {
- 		int idx;
- 
--		idx = txd_to_idx(ring, txd, soc->tx.desc_size);
-+		idx = txd_to_idx(ring, txd, soc->tx.desc_shift);
- 		mtk_w32(eth, NEXT_DESP_IDX(idx, ring->dma_size),
- 			MT7628_TX_CTX_IDX0);
- 	}
-@@ -1937,7 +1948,7 @@ static int mtk_xdp_submit_frame(struct mtk_eth *eth, struct xdp_frame *xdpf,
- 
- unmap:
- 	while (htxd != txd) {
--		tx_buf = mtk_desc_to_tx_buf(ring, htxd, soc->tx.desc_size);
-+		tx_buf = mtk_desc_to_tx_buf(ring, htxd, soc->tx.desc_shift);
- 		mtk_tx_unmap(eth, tx_buf, NULL, false);
- 
- 		htxd->txd3 = TX_DMA_LS0 | TX_DMA_OWNER_CPU;
-@@ -2069,7 +2080,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 			goto rx_done;
- 
- 		idx = NEXT_DESP_IDX(ring->calc_idx, ring->dma_size);
--		rxd = ring->dma + idx * eth->soc->rx.desc_size;
-+		rxd = ring->dma + RX_DESC_OFS(eth, idx);
- 		data = ring->data[idx];
- 
- 		if (!mtk_rx_get_desc(eth, &trxd, rxd))
-@@ -2329,7 +2340,7 @@ static int mtk_poll_tx_qdma(struct mtk_eth *eth, int budget,
- 			break;
- 
- 		tx_buf = mtk_desc_to_tx_buf(ring, desc,
--					    eth->soc->tx.desc_size);
-+					    eth->soc->tx.desc_shift);
- 		if (!tx_buf->data)
- 			break;
- 
-@@ -2380,7 +2391,7 @@ static int mtk_poll_tx_pdma(struct mtk_eth *eth, int budget,
- 		}
- 		mtk_tx_unmap(eth, tx_buf, &bq, true);
- 
--		desc = ring->dma + cpu * eth->soc->tx.desc_size;
-+		desc = ring->dma + TX_DESC_OFS(eth, cpu);
- 		ring->last_free = desc;
- 		atomic_inc(&ring->free_count);
- 
-@@ -2498,10 +2509,13 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
- {
- 	const struct mtk_soc_data *soc = eth->soc;
- 	struct mtk_tx_ring *ring = &eth->tx_ring;
--	int i, sz = soc->tx.desc_size;
- 	struct mtk_tx_dma_v2 *txd;
-+	dma_addr_t desc_phys;
-+	void *desc_addr;
-+	u32 desc_size;
- 	int ring_size;
- 	u32 ofs, val;
-+	int i;
- 
- 	if (MTK_HAS_CAPS(soc->caps, MTK_QDMA))
- 		ring_size = MTK_QDMA_RING_SIZE;
-@@ -2514,22 +2528,24 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
- 		goto no_tx_mem;
- 
- 	if (MTK_HAS_CAPS(soc->caps, MTK_SRAM)) {
--		ring->dma = eth->sram_base + soc->tx.fq_dma_size * sz;
--		ring->phys = eth->phy_scratch_ring + soc->tx.fq_dma_size * (dma_addr_t)sz;
-+		ring->dma = eth->sram_base + TX_DESC_OFS(eth, soc->tx.fq_dma_size);
-+		ring->phys = eth->phy_scratch_ring + TX_DESC_OFS(eth, soc->tx.fq_dma_size);
- 	} else {
--		ring->dma = dma_alloc_coherent(eth->dma_dev, ring_size * sz,
-+		ring->dma = dma_alloc_coherent(eth->dma_dev, TX_DESC_OFS(eth, ring_size),
- 					       &ring->phys, GFP_KERNEL);
- 	}
- 
- 	if (!ring->dma)
- 		goto no_tx_mem;
- 
-+	desc_addr = ring->dma;
-+	desc_phys = ring->phys;
-+	desc_size = TX_DESC_OFS(eth, 1);
- 	for (i = 0; i < ring_size; i++) {
--		int next = (i + 1) % ring_size;
--		u32 next_ptr = ring->phys + next * sz;
--
--		txd = ring->dma + i * sz;
--		txd->txd2 = next_ptr;
-+		txd = desc_addr;
-+		desc_addr += desc_size;
-+		desc_phys += desc_size;
-+		txd->txd2 = desc_phys;
- 		txd->txd3 = TX_DMA_LS0 | TX_DMA_OWNER_CPU;
- 		txd->txd4 = 0;
- 		if (mtk_is_netsys_v2_or_greater(eth)) {
-@@ -2545,7 +2561,7 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
- 	 * descriptors in ring->dma_pdma.
- 	 */
- 	if (!MTK_HAS_CAPS(soc->caps, MTK_QDMA)) {
--		ring->dma_pdma = dma_alloc_coherent(eth->dma_dev, ring_size * sz,
-+		ring->dma_pdma = dma_alloc_coherent(eth->dma_dev, TX_DESC_OFS(eth, ring_size),
- 						    &ring->phys_pdma, GFP_KERNEL);
- 		if (!ring->dma_pdma)
- 			goto no_tx_mem;
-@@ -2560,7 +2576,7 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
- 	atomic_set(&ring->free_count, ring_size - 2);
- 	ring->next_free = ring->dma;
- 	ring->last_free = (void *)txd;
--	ring->last_free_ptr = (u32)(ring->phys + ((ring_size - 1) * sz));
-+	ring->last_free_ptr = (u32)(ring->phys + TX_DESC_OFS(eth, ring_size - 1));
- 	ring->thresh = MAX_SKB_FRAGS;
- 
- 	/* make sure that all changes to the dma ring are flushed before we
-@@ -2572,7 +2588,7 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
- 		mtk_w32(eth, ring->phys, soc->reg_map->qdma.ctx_ptr);
- 		mtk_w32(eth, ring->phys, soc->reg_map->qdma.dtx_ptr);
- 		mtk_w32(eth,
--			ring->phys + ((ring_size - 1) * sz),
-+			ring->phys + TX_DESC_OFS(eth, ring_size - 1),
- 			soc->reg_map->qdma.crx_ptr);
- 		mtk_w32(eth, ring->last_free_ptr, soc->reg_map->qdma.drx_ptr);
- 
-@@ -2621,14 +2637,14 @@ static void mtk_tx_clean(struct mtk_eth *eth)
- 	}
- 	if (!MTK_HAS_CAPS(soc->caps, MTK_SRAM) && ring->dma) {
- 		dma_free_coherent(eth->dma_dev,
--				  ring->dma_size * soc->tx.desc_size,
-+				  TX_DESC_OFS(eth, ring->dma_size),
- 				  ring->dma, ring->phys);
- 		ring->dma = NULL;
- 	}
- 
- 	if (ring->dma_pdma) {
- 		dma_free_coherent(eth->dma_dev,
--				  ring->dma_size * soc->tx.desc_size,
-+				  TX_DESC_OFS(eth, ring->dma_size),
- 				  ring->dma_pdma, ring->phys_pdma);
- 		ring->dma_pdma = NULL;
- 	}
-@@ -2684,15 +2700,13 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
- 	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_SRAM) ||
- 	    rx_flag != MTK_RX_FLAGS_NORMAL) {
- 		ring->dma = dma_alloc_coherent(eth->dma_dev,
--				rx_dma_size * eth->soc->rx.desc_size,
-+				RX_DESC_OFS(eth, rx_dma_size),
- 				&ring->phys, GFP_KERNEL);
- 	} else {
- 		struct mtk_tx_ring *tx_ring = &eth->tx_ring;
- 
--		ring->dma = tx_ring->dma + tx_ring_size *
--			    eth->soc->tx.desc_size * (ring_no + 1);
--		ring->phys = tx_ring->phys + tx_ring_size *
--			     eth->soc->tx.desc_size * (ring_no + 1);
-+		ring->dma = tx_ring->dma + TX_DESC_OFS(eth, tx_ring_size * (ring_no + 1));
-+		ring->phys = tx_ring->phys + TX_DESC_OFS(eth, tx_ring_size * (ring_no + 1));
- 	}
- 
- 	if (!ring->dma)
-@@ -2703,7 +2717,7 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
- 		dma_addr_t dma_addr;
- 		void *data;
- 
--		rxd = ring->dma + i * eth->soc->rx.desc_size;
-+		rxd = ring->dma + RX_DESC_OFS(eth, i);
- 		if (ring->page_pool) {
- 			data = mtk_page_pool_get_buff(ring->page_pool,
- 						      &dma_addr, GFP_KERNEL);
-@@ -2794,7 +2808,7 @@ static void mtk_rx_clean(struct mtk_eth *eth, struct mtk_rx_ring *ring, bool in_
- 			if (!ring->data[i])
- 				continue;
- 
--			rxd = ring->dma + i * eth->soc->rx.desc_size;
-+			rxd = ring->dma + RX_DESC_OFS(eth, i);
- 			if (!rxd->rxd1)
- 				continue;
- 
-@@ -2811,7 +2825,7 @@ static void mtk_rx_clean(struct mtk_eth *eth, struct mtk_rx_ring *ring, bool in_
- 
- 	if (!in_sram && ring->dma) {
- 		dma_free_coherent(eth->dma_dev,
--				  ring->dma_size * eth->soc->rx.desc_size,
-+				  RX_DESC_OFS(eth, ring->dma_size),
- 				  ring->dma, ring->phys);
- 		ring->dma = NULL;
- 	}
-@@ -3174,7 +3188,7 @@ static void mtk_dma_free(struct mtk_eth *eth)
- 			netdev_reset_queue(eth->netdev[i]);
- 	if (!MTK_HAS_CAPS(soc->caps, MTK_SRAM) && eth->scratch_ring) {
- 		dma_free_coherent(eth->dma_dev,
--				  MTK_QDMA_RING_SIZE * soc->tx.desc_size,
-+				  TX_DESC_OFS(eth, MTK_QDMA_RING_SIZE),
- 				  eth->scratch_ring, eth->phy_scratch_ring);
- 		eth->scratch_ring = NULL;
- 		eth->phy_scratch_ring = 0;
-@@ -5122,6 +5136,9 @@ static void mtk_remove(struct platform_device *pdev)
- 	mtk_mdio_cleanup(eth);
- }
- 
-+#define DESC_SIZE(struct_name)				\
-+	.desc_shift = const_ilog2(sizeof(struct_name))
-+
- static const struct mtk_soc_data mt2701_data = {
- 	.reg_map = &mtk_reg_map,
- 	.caps = MT7623_CAPS | MTK_HWLRO,
-@@ -5130,14 +5147,14 @@ static const struct mtk_soc_data mt2701_data = {
- 	.required_pctl = true,
- 	.version = 1,
- 	.tx = {
--		.desc_size = sizeof(struct mtk_tx_dma),
-+		DESC_SIZE(struct mtk_tx_dma),
- 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
- 		.dma_len_offset = 16,
- 		.dma_size = MTK_DMA_SIZE(2K),
- 		.fq_dma_size = MTK_DMA_SIZE(2K),
- 	},
- 	.rx = {
--		.desc_size = sizeof(struct mtk_rx_dma),
-+		DESC_SIZE(struct mtk_rx_dma),
- 		.irq_done_mask = MTK_RX_DONE_INT,
- 		.dma_l4_valid = RX_DMA_L4_VALID,
- 		.dma_size = MTK_DMA_SIZE(512),
-@@ -5158,14 +5175,14 @@ static const struct mtk_soc_data mt7621_data = {
- 	.hash_offset = 2,
- 	.foe_entry_size = MTK_FOE_ENTRY_V1_SIZE,
- 	.tx = {
--		.desc_size = sizeof(struct mtk_tx_dma),
-+		DESC_SIZE(struct mtk_tx_dma),
- 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
- 		.dma_len_offset = 16,
- 		.dma_size = MTK_DMA_SIZE(2K),
- 		.fq_dma_size = MTK_DMA_SIZE(2K),
- 	},
- 	.rx = {
--		.desc_size = sizeof(struct mtk_rx_dma),
-+		DESC_SIZE(struct mtk_rx_dma),
- 		.irq_done_mask = MTK_RX_DONE_INT,
- 		.dma_l4_valid = RX_DMA_L4_VALID,
- 		.dma_size = MTK_DMA_SIZE(512),
-@@ -5188,14 +5205,14 @@ static const struct mtk_soc_data mt7622_data = {
- 	.has_accounting = true,
- 	.foe_entry_size = MTK_FOE_ENTRY_V1_SIZE,
- 	.tx = {
--		.desc_size = sizeof(struct mtk_tx_dma),
-+		DESC_SIZE(struct mtk_tx_dma),
- 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
- 		.dma_len_offset = 16,
- 		.dma_size = MTK_DMA_SIZE(2K),
- 		.fq_dma_size = MTK_DMA_SIZE(2K),
- 	},
- 	.rx = {
--		.desc_size = sizeof(struct mtk_rx_dma),
-+		DESC_SIZE(struct mtk_rx_dma),
- 		.irq_done_mask = MTK_RX_DONE_INT,
- 		.dma_l4_valid = RX_DMA_L4_VALID,
- 		.dma_size = MTK_DMA_SIZE(512),
-@@ -5217,14 +5234,14 @@ static const struct mtk_soc_data mt7623_data = {
- 	.foe_entry_size = MTK_FOE_ENTRY_V1_SIZE,
- 	.disable_pll_modes = true,
- 	.tx = {
--		.desc_size = sizeof(struct mtk_tx_dma),
-+		DESC_SIZE(struct mtk_tx_dma),
- 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
- 		.dma_len_offset = 16,
- 		.dma_size = MTK_DMA_SIZE(2K),
- 		.fq_dma_size = MTK_DMA_SIZE(2K),
- 	},
- 	.rx = {
--		.desc_size = sizeof(struct mtk_rx_dma),
-+		DESC_SIZE(struct mtk_rx_dma),
- 		.irq_done_mask = MTK_RX_DONE_INT,
- 		.dma_l4_valid = RX_DMA_L4_VALID,
- 		.dma_size = MTK_DMA_SIZE(512),
-@@ -5243,14 +5260,14 @@ static const struct mtk_soc_data mt7629_data = {
- 	.has_accounting = true,
- 	.version = 1,
- 	.tx = {
--		.desc_size = sizeof(struct mtk_tx_dma),
-+		DESC_SIZE(struct mtk_tx_dma),
- 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
- 		.dma_len_offset = 16,
- 		.dma_size = MTK_DMA_SIZE(2K),
- 		.fq_dma_size = MTK_DMA_SIZE(2K),
- 	},
- 	.rx = {
--		.desc_size = sizeof(struct mtk_rx_dma),
-+		DESC_SIZE(struct mtk_rx_dma),
- 		.irq_done_mask = MTK_RX_DONE_INT,
- 		.dma_l4_valid = RX_DMA_L4_VALID,
- 		.dma_size = MTK_DMA_SIZE(512),
-@@ -5273,14 +5290,14 @@ static const struct mtk_soc_data mt7981_data = {
- 	.has_accounting = true,
- 	.foe_entry_size = MTK_FOE_ENTRY_V2_SIZE,
- 	.tx = {
--		.desc_size = sizeof(struct mtk_tx_dma_v2),
-+		DESC_SIZE(struct mtk_tx_dma_v2),
- 		.dma_max_len = MTK_TX_DMA_BUF_LEN_V2,
- 		.dma_len_offset = 8,
- 		.dma_size = MTK_DMA_SIZE(2K),
- 		.fq_dma_size = MTK_DMA_SIZE(2K),
- 	},
- 	.rx = {
--		.desc_size = sizeof(struct mtk_rx_dma),
-+		DESC_SIZE(struct mtk_rx_dma),
- 		.irq_done_mask = MTK_RX_DONE_INT,
- 		.dma_l4_valid = RX_DMA_L4_VALID_V2,
- 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
-@@ -5303,14 +5320,14 @@ static const struct mtk_soc_data mt7986_data = {
- 	.has_accounting = true,
- 	.foe_entry_size = MTK_FOE_ENTRY_V2_SIZE,
- 	.tx = {
--		.desc_size = sizeof(struct mtk_tx_dma_v2),
-+		DESC_SIZE(struct mtk_tx_dma_v2),
- 		.dma_max_len = MTK_TX_DMA_BUF_LEN_V2,
- 		.dma_len_offset = 8,
- 		.dma_size = MTK_DMA_SIZE(2K),
- 		.fq_dma_size = MTK_DMA_SIZE(2K),
- 	},
- 	.rx = {
--		.desc_size = sizeof(struct mtk_rx_dma),
-+		DESC_SIZE(struct mtk_rx_dma),
- 		.irq_done_mask = MTK_RX_DONE_INT,
- 		.dma_l4_valid = RX_DMA_L4_VALID_V2,
- 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
-@@ -5333,14 +5350,14 @@ static const struct mtk_soc_data mt7988_data = {
- 	.has_accounting = true,
- 	.foe_entry_size = MTK_FOE_ENTRY_V3_SIZE,
- 	.tx = {
--		.desc_size = sizeof(struct mtk_tx_dma_v2),
-+		DESC_SIZE(struct mtk_tx_dma_v2),
- 		.dma_max_len = MTK_TX_DMA_BUF_LEN_V2,
- 		.dma_len_offset = 8,
- 		.dma_size = MTK_DMA_SIZE(2K),
- 		.fq_dma_size = MTK_DMA_SIZE(4K),
- 	},
- 	.rx = {
--		.desc_size = sizeof(struct mtk_rx_dma_v2),
-+		DESC_SIZE(struct mtk_rx_dma_v2),
- 		.irq_done_mask = MTK_RX_DONE_INT_V2,
- 		.dma_l4_valid = RX_DMA_L4_VALID_V2,
- 		.dma_max_len = MTK_TX_DMA_BUF_LEN_V2,
-@@ -5357,13 +5374,13 @@ static const struct mtk_soc_data rt5350_data = {
- 	.required_pctl = false,
- 	.version = 1,
- 	.tx = {
--		.desc_size = sizeof(struct mtk_tx_dma),
-+		DESC_SIZE(struct mtk_tx_dma),
- 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
- 		.dma_len_offset = 16,
- 		.dma_size = MTK_DMA_SIZE(2K),
- 	},
- 	.rx = {
--		.desc_size = sizeof(struct mtk_rx_dma),
-+		DESC_SIZE(struct mtk_rx_dma),
- 		.irq_done_mask = MTK_RX_DONE_INT,
- 		.dma_l4_valid = RX_DMA_L4_VALID_PDMA,
- 		.dma_max_len = MTK_TX_DMA_BUF_LEN,
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 654897141869..59e63ecb510d 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -1141,7 +1141,7 @@ struct mtk_reg_map {
-  * @foe_entry_size		Foe table entry size.
-  * @has_accounting		Bool indicating support for accounting of
-  *				offloaded flows.
-- * @desc_size			Tx/Rx DMA descriptor size.
-+ * @desc_shift			Tx/Rx DMA descriptor size (in power-of-2).
-  * @irq_done_mask		Rx irq done register mask.
-  * @dma_l4_valid		Rx DMA valid register mask.
-  * @dma_max_len			Max DMA tx/rx buffer length.
-@@ -1162,14 +1162,14 @@ struct mtk_soc_data {
- 	bool		has_accounting;
- 	bool		disable_pll_modes;
- 	struct {
--		u32	desc_size;
-+		u32	desc_shift;
- 		u32	dma_max_len;
- 		u32	dma_len_offset;
- 		u32	dma_size;
- 		u32	fq_dma_size;
- 	} tx;
- 	struct {
--		u32	desc_size;
-+		u32	desc_shift;
- 		u32	irq_done_mask;
- 		u32	dma_l4_valid;
- 		u32	dma_max_len;
+> > > > > +static void i2c_of_probe_simple_disable_gpio(struct device *dev, struct i2c_of_probe_simple_ctx *ctx)
+> > > > > +{
+> > > > > +     if (!ctx->gpiod)
+> > > > > +             return;
+> > > >
+> > > > Do you need this check for the future patches?
+> > >
+> > > Not sure I follow. The check is needed because this function is called
+> > > in i2c_of_probe_simple_cleanup(), but the GPIO could have been released
+> > > earlier in i2c_of_probe_simple_cleanup_early(), and that makes this
+> > > function a no-op.
+> >
+> > Do you have a known race condition then? This is bad. You shouldn't rely on
+> > the sequence of events here, or the serialisation has to be added.
+> 
+> No there isn't. Explanation below.
+> 
+> > > The helpers for the release side are quite short, but the ones on the
+> > > request side wrap some conditional and error handling. I think it's
+> > > better to keep it symmetric?
+> >
+> > Yes, but why do you need the above check, I didn't still get...
+> > I.o.w. you think that there is a gap in time that (if no check) the GPIO
+> > descriptor might be changed? But then how does it affect anyway the possibility
+> > that it becomes not NULL even with the current code.
+> 
+> There are two codes paths, either
+> 
+>     a) successfully finding a device and enabling it, or
+>     b) exhausting all options and not finding a device, because it was
+>        optional or it is malfunctioning.
+> 
+> After either code path, this cleanup function is called.
+> 
+> In path (a), the GPIO descriptor is released prior to enabling the device,
+> because the descriptor is an exclusive resource, and as soon as the device
+> is enabled, its corresponding driver may probe and request the same GPIO,
+> and would fail if it was not released.
+> 
+> In path (b), nothing was enabled, and the GPIO descriptor was not released
+> early.
+> 
+> The cleanup function here accounts for both cases, hence the check.
+
+Yes, but the very same check is inside gpiod_set_value(). I'm still puzzled
+about the duplication. Maybe I'm missing something...
+
+> A step-by-step description might be clearer:
+> 
+> 1. i2c_of_probe_simple_enable()
+>    ...
+>    1a. i2c_of_probe_simple_get_supply()
+>    1b. i2c_of_probe_simple_get_gpiod()
+>    1c. i2c_of_probe_simple_enable_regulator()
+>    1d. i2c_of_probe_simple_set_gpio()
+> 
+> 2. Loop through potential component options and probe; if one is found:
+>    2a. i2c_of_probe_simple_cleanup_early()
+>        2a-i. i2c_of_probe_simple_put_gpiod
+>    2b. Enable device and driver's probe() gets called
+> 
+> 3. i2c_of_probe_simple_cleanup()
+>    3a. i2c_of_probe_simple_disable_gpio()
+>    3b. i2c_of_probe_simple_put_gpiod()
+>    3c. i2c_of_probe_simple_disable_regulator()
+>    3d. i2c_of_probe_simple_put_supply()
+> 
+> > > > > +     /* Ignore error if GPIO is not in output direction */
+> > > > > +     gpiod_set_value(ctx->gpiod, !ctx->opts->gpio_assert_to_enable);
+> > > > > +}
+
 -- 
-2.47.0
+With Best Regards,
+Andy Shevchenko
+
 
 
