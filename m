@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62696CFC28A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 11:25:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9448CFC28B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 11:26:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QulVcZ1lWLFl8PH89tPpYuj1UcnrdpsEKzPg0KhRjvo=; b=BV20/1nP7hCbdnyUF0Z0yTi/Up
-	tIU/PwXsv6HMJoNhVruH+S4+bmqhBYZdf3kCfordhz6sYe4L3x0cZ3PPh8OiRSSe8eilyPGuxepme
-	TzTLN6MhhMZVXNRWpZ8rIg7JzWsp+9/4uMgHprecs1Al7ZIjKeUc+98fB7iNhbkJIojvMPtx+AAcz
-	Jc+4N7z+kVY+1Z2ong3hf/HFtpB+WrsngeRlYFAQIWolxECDl+zpuN7IpDuP+yZRGC3SiFvjjyVdr
-	VTl4TGZGMBhR07HkA6o/xlMtn8PbaahgAzE4P8WLwavX2q2QrBmdlAB6Ybb88VxxafvxQO3dtEd2Y
-	jhNhjp8g==;
+	bh=ZPcCsEHgYk4HW57+OZxVUKQzoA2TKv8a4HdMbEH2Iis=; b=UefoonTBFEljEg33jZYM6AAHt/
+	uyxd81OWi/iEJXAYseCtLLDJ8VQWAgIQC7joBl2lUv57I4TVMFJCLNLV3krRCu53YBjkTrdAmCnLI
+	D6+0o4K8S/q6ONSnYuhhtm9iYNEa3olYg6hbFyNQ+NX6+sJKCjg95DYyfxTzFFY59dixGr30FqBqQ
+	H01Ee7mJ0iW/Xg2gxgZ179X2+e0Qij0nr/IxYfD7Acf+QgaVDV4BrlYlW15RRnpT1nnhCSHu4wIoi
+	Bum1DUwXcbYlvZ/i1BcaOzRH4643zMavSno42jCHNpo2aJSkpax7P8M4HFK5rYdQz/P5ko5ZokYpa
+	QCQdyH2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0fg0-0000000810U-0wTe;
-	Tue, 15 Oct 2024 11:25:20 +0000
-Received: from mgamail.intel.com ([198.175.65.13])
+	id 1t0fhV-000000081KT-3s6G;
+	Tue, 15 Oct 2024 11:26:53 +0000
+Received: from mgamail.intel.com ([198.175.65.10])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0fcC-0000000806o-0Qhc;
-	Tue, 15 Oct 2024 11:21:25 +0000
+	id 1t0fen-000000080hG-2IcQ;
+	Tue, 15 Oct 2024 11:24:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1728991284; x=1760527284;
+  t=1728991446; x=1760527446;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:content-transfer-encoding:in-reply-to;
-  bh=F+LntjNMoNMukvVFd2uBIf+bs68NkbZTB14gu4OyGW0=;
-  b=B6nY23UozYbDybJpaOnPKHpCH8lphh70ypsBSgI5rla0mqaXahQmIG8h
-   rnQs6OZW5bZDqOP20XiJdwhsyRALHQJfTc9tg7vQqZ4HlqvmSFWaHX0al
-   o8cy8FDAlUIXYTWrHs+j0mkT7Hb49xSrX7bq3NRCZQTkejFt1XUFggzMA
-   +CZPPmqi9lZFPzMqGyVmNjLfmBpx7Cx6ck+4U9RNDKg15DUImBPJQeSt5
-   EpJD1nt8dGX8DLF4lwKyyYJl3sa6KpsX7fML9VencfazkeV7ahN5sq9gQ
-   NSy8CskCjitgiqaS79RyLTp0Ebp99m4v3JIBIIfrRJDSU8YHQv8iVOF4I
-   A==;
-X-CSE-ConnectionGUID: o9e/kQPtTKuNJEzZLyHOng==
-X-CSE-MsgGUID: 7IVjsNyYSjuJuDmXQtQjkw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="39500324"
+  bh=Rdzp13zaH99entWKg0lm1Wx8wDdv6n9NqLsTT0PIeco=;
+  b=MwT5rQmz9B6iHZw8HZSQrPO+IOqnfveQjSuLQxfnd2AaxGeEOPvCQm+Y
+   DJjH9Mqt5VM0bk04rMqe05gx4s2oldQeztSywUPqx67Ze2B9/sdpdNQQw
+   tE3cODxTMjEqizT/du8qURxRtzc58ZSwSxzdmd2njlgKoSgfReMewiojc
+   u72h8+pE/IIFbwUm52lUqkyFucNNUlCy2AtMQKS/j7FKXUAzNh2TG4Ajj
+   DzrQLB766OCd0yV4ty21ZrJiSjCSMcNwG17u/idw2YxtJ8Enngj0bYQSG
+   FbDEEsFUlUgvg5ao3sr6lVK3CCq08CFsyxUJ/FZJD6Jwa133saMvzx+aP
+   g==;
+X-CSE-ConnectionGUID: gekHEaOUR1uWpXGDrhrRbQ==
+X-CSE-MsgGUID: fEMjilrsRGevSCsjSas+ZQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="45850678"
 X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; 
-   d="scan'208";a="39500324"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Oct 2024 04:21:19 -0700
-X-CSE-ConnectionGUID: piYH8dHzQlyF9xS4V6a0lA==
-X-CSE-MsgGUID: YjuABOffSRCNBgXlDBh9NQ==
+   d="scan'208";a="45850678"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Oct 2024 04:24:04 -0700
+X-CSE-ConnectionGUID: XjzeGirsRkyt2NS4hd72oA==
+X-CSE-MsgGUID: UxyCuKF0TkCwvW1mvnN1dA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.11,204,1725346800"; 
-   d="scan'208";a="77734747"
+   d="scan'208";a="77948538"
 Received: from smile.fi.intel.com ([10.237.72.154])
-  by orviesa009.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Oct 2024 04:21:16 -0700
+  by fmviesa008.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Oct 2024 04:24:00 -0700
 Received: from andy by smile.fi.intel.com with local (Exim 4.98)
 	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1t0fc0-00000003FO9-1pHB;
-	Tue, 15 Oct 2024 14:21:12 +0300
-Date: Tue, 15 Oct 2024 14:21:12 +0300
+	id 1t0fef-00000003FQr-0uQa;
+	Tue, 15 Oct 2024 14:23:57 +0300
+Date: Tue, 15 Oct 2024 14:23:56 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
@@ -70,23 +70,25 @@ Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
 	Douglas Anderson <dianders@chromium.org>,
 	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
 	linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v8 6/8] i2c: of-prober: Add GPIO support to simple helpers
-Message-ID: <Zw5QKDoZkn6QZtNO@smile.fi.intel.com>
+Subject: Re: [PATCH v8 7/8] platform/chrome: Introduce device tree hardware
+ prober
+Message-ID: <Zw5QzP-5hnHW--F-@smile.fi.intel.com>
 References: <20241008073430.3992087-1-wenst@chromium.org>
- <20241008073430.3992087-7-wenst@chromium.org>
- <Zwfwv-O9ln-PVMdc@smile.fi.intel.com>
- <CAGXv+5F=5f4R5AExANxOwgTL6_VbpHdNKKhHnzy_PDcxtcFoEQ@mail.gmail.com>
- <Zwz-benEP4PHbRb2@smile.fi.intel.com>
- <CAGXv+5HtDqf9MbGc53axP276fFA6riM85+Sa7nXHPvZcCb5-Pg@mail.gmail.com>
+ <20241008073430.3992087-8-wenst@chromium.org>
+ <Zwfy6ER6sbr_QxsY@smile.fi.intel.com>
+ <ZwfzhsvlPrxMi61j@smile.fi.intel.com>
+ <CAGXv+5ED7j49ndT7BaESW8ZL7_mjVUJLM_FWma8Lwkg+Uh3saw@mail.gmail.com>
+ <Zwz_Kl7SwfL0ZaAZ@smile.fi.intel.com>
+ <CAGXv+5H0Yvt1cwPOim-quT3C+=s9NapnryJhNxs_QW=DAyAycQ@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5HtDqf9MbGc53axP276fFA6riM85+Sa7nXHPvZcCb5-Pg@mail.gmail.com>
+In-Reply-To: <CAGXv+5H0Yvt1cwPOim-quT3C+=s9NapnryJhNxs_QW=DAyAycQ@mail.gmail.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_042124_564450_B054D408 
-X-CRM114-Status: GOOD (  29.32  )
+X-CRM114-CacheID: sfid-20241015_042405_672897_EC8ACA8D 
+X-CRM114-Status: GOOD (  26.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,49 +103,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 15, 2024 at 01:34:52PM +0800, Chen-Yu Tsai wrote:
-> On Mon, Oct 14, 2024 at 7:20 PM Andy Shevchenko
+On Tue, Oct 15, 2024 at 02:32:54PM +0800, Chen-Yu Tsai wrote:
+> On Mon, Oct 14, 2024 at 7:23 PM Andy Shevchenko
 > <andriy.shevchenko@linux.intel.com> wrote:
-> > On Mon, Oct 14, 2024 at 12:06:16PM +0800, Chen-Yu Tsai wrote:
-> > > On Thu, Oct 10, 2024 at 11:20 PM Andy Shevchenko
+> > On Mon, Oct 14, 2024 at 12:56:20PM +0800, Chen-Yu Tsai wrote:
+> > > On Thu, Oct 10, 2024 at 11:32 PM Andy Shevchenko
 > > > <andriy.shevchenko@linux.intel.com> wrote:
-> > > > On Tue, Oct 08, 2024 at 03:34:25PM +0800, Chen-Yu Tsai wrote:
+> > > > On Thu, Oct 10, 2024 at 06:29:44PM +0300, Andy Shevchenko wrote:
+> > > > > On Tue, Oct 08, 2024 at 03:34:26PM +0800, Chen-Yu Tsai wrote:
 
 ...
 
-> > > > > +static void i2c_of_probe_simple_disable_gpio(struct device *dev, struct i2c_of_probe_simple_ctx *ctx)
-> > > > > +{
-> > > > > +     if (!ctx->gpiod)
-> > > > > +             return;
-> > > >
-> > > > Do you need this check for the future patches?
+> > > > > > +   .cfg = &chromeos_i2c_probe_simple_trackpad_cfg,
+> > > > >
+> > > > >       .cfg = DEFINE_I2C_OF_PROBE_CFG(trackpad, i2c_of_probe_simple_ops),
+> > > > >
+> > > > > Or even
+> > > > >
+> > > > > #define DEFINE_I2C_OF_PROBE_CFG_SIMPLE(_type_)                        \
+> > > > >       DEFINE_I2C_OF_PROBE_CFG(type, &i2c_of_probe_simple_ops)
 > > >
-> > > Not sure I follow. The check is needed because this function is called
-> > > in i2c_of_probe_simple_cleanup(), but the GPIO could have been released
-> > > earlier in i2c_of_probe_simple_cleanup_early(), and that makes this
-> > > function a no-op.
+> > > I'm not inclined on using compound literals here. "simple X cfg" will
+> > > likely get shared between multiple |chromeos_i2c_probe_data| entries,
+> > > and AFAIK the toolchain can't merge them. So we would end up with one
+> > > compound literal per entry, even if their contents are the same.
 > >
-> > Do you have a known race condition then? This is bad. You shouldn't rely on
-> > the sequence of events here, or the serialisation has to be added.
-> >
-> > > The helpers for the release side are quite short, but the ones on the
-> > > request side wrap some conditional and error handling. I think it's
-> > > better to keep it symmetric?
-> >
-> > Yes, but why do you need the above check, I didn't still get...
-> > I.o.w. you think that there is a gap in time that (if no check) the GPIO
-> > descriptor might be changed? But then how does it affect anyway the possibility
-> > that it becomes not NULL even with the current code.
+> > I'm not sure I follow, you are using compound literal _already_.
+> > How does my proposal change that?
 > 
-> The opposite actually. Either it is always NULL, or it was initially valid,
-> but the early cleanup function released it and thus it became NULL by the
-> time this function gets called.
+> I'm using it where it makes sense, i.e. where the embedded variable
+> is not going to be shared with other instances.
+> 
+> For the dumb probers, there's only going to be one instance per "type".
+> 
+> For the simple probers, the config part is still one instance per "type",
+> but the parameters are board and component specific. There will be
+> multiple instances. Hence the config part can be shared, while the
+> parameters likely won't be.
+> 
+> > > > With that also looking at the above
+> > > >
+> > > > #define DEFINE_I2C_OF_PROBE_CFG_NONE(_type_)                            \
+> > > >         DEFINE_I2C_OF_PROBE_CFG(type, NULL)
+> > >
+> > > For the "dumb" case it makes sense though, since it would be one instance
+> > > per type. But we could go further and just wrap the whole
+> > > |chromeos_i2c_probe_data| declaration.
+> >
+> > Maybe it's too far from now...
+> 
+> This is what I have:
+> 
+> #define DEFINE_CHROMEOS_I2C_PROBE_DATA_DUMB(_type)
+>                         \
+>        static const struct chromeos_i2c_probe_data
+> chromeos_i2c_probe_dumb_ ## _type = {       \
 
-Then I don't see any points to have this check (details in the other reply).
+>                .cfg = &(const struct i2c_of_probe_cfg) {
 
-> > > > > +     /* Ignore error if GPIO is not in output direction */
-> > > > > +     gpiod_set_value(ctx->gpiod, !ctx->opts->gpio_assert_to_enable);
-> > > > > +}
+But the below is static initializer, why do you need a compound literal here?
+
+>                         \
+>                        .type = #_type,
+>                         \
+>                },
+>                         \
+> };
+> 
+> DEFINE_CHROMEOS_I2C_PROBE_DATA_DUMB(touchscreen);
+
+s/dumb/simple/g
 
 -- 
 With Best Regards,
