@@ -4,73 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB485D1D893
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 18:25:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10313D1D89D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 18:40:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xkkUPaaFKSKR+PIT0UHypuJjuSNncGPG5xTJ06RAQuI=; b=OgcnLDo0ZxKtR3RzKPXLA0fwju
-	h78zg0kHYhdzE6SrMulXi+Khu/4exzXWjRsFxjvMVjZ5qy/J/Psk1+Jlze5SkM6L8E8VEp6hofEQZ
-	VSm1gJHegRepuAw0GIru9hB1QUrtd2Iscfw4qJfcr6ZYfVKptBVxBvtxE63LB/Km14SF34kIpea+W
-	cWjgiLCvQaXRUpZpHG0v17JtNbEJQR+EvzTC0gvSDqvUUrOgvbwjMpaXVHUm2A6hHCf92fzIqTMPj
-	3EkVrXqbSL1XEEk8o4bUg81wouzjXDOdDr/3nsRqq9rtXAU+kWFymQw6RY+cz1QTT58w/uVuKJmhT
-	nTrpB06w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8ZIAcIQNXFU0HJAbelK5w6AajE5AfFCSDcserEzGKO8=; b=5B6IPiyWB3TJUy0j4+h9EpwBk/
+	WIp78USkKm2RX6N95gssKnDaBoi53u+ZOWX45SSjc9dMvlMxVrIJPmwEwOegsTWvofFWZp9nFNJMb
+	wgyUqWfNez0yVmL75/UUbqlsjaCt1gGIJlNwrPMvMnpBh7RyyB8jmib5ul/3AfSCALXTigZyQIB/A
+	JJIcX4oxi6s/MlDLv12pgrJzntcd9nUknhzqN/OxxuBHGULEkzh15U7sDERi715rBEZvNtZzOqP2U
+	aDy5uq+wyFdHkf0lAnEechlxpti2bjYwSa5HaA7ynaFE9DFKFIawkjzHxdTa9HqjBD2UJdzRD0X1A
+	6VDrb2MA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0mF3-00000009BZP-3lCi;
-	Tue, 15 Oct 2024 18:25:57 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1t0mT0-00000009FhB-33iv;
+	Tue, 15 Oct 2024 18:40:22 +0000
+Received: from mail-qv1-xf32.google.com ([2607:f8b0:4864:20::f32])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0m9k-00000009AZn-0Mzg;
-	Tue, 15 Oct 2024 18:20:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729016426;
-	bh=E2gOs3UqePmkVJladD+DLQjs/f55bJHoGr84z8564Nc=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=jH4OoGPDk0aVyfiS/cLKMzw17XYyB94r8zru2XB5x1vumpgmLUYp43Uu08VsDvo+D
-	 LvwnBCKHcXC3kWjR9iMaTMPFbllHPgOACPH8YrgLgvuNDr1XOSPEdGgcY2Xa43LCyz
-	 KK+F37ETvJW4LX/Q3JKL4eKGntWxjo3fNxfel2FFT4r5HsWLUtUBw7hxsP8lnwXql+
-	 OYdzdjJEtT1dSinjiYq6WhpdkEJbDEZu5Zhs1X+tddRLNE42yPx/euBRk6HXnuEQBU
-	 wgJYTFAe9r3kVt7PqBbK/p1EZjTVVTumFHYih8mDCXdHU5BKPIPEiU1uZkyXH8txl0
-	 6itdU6TIKv6kg==
-Received: from [192.168.1.206] (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AC39B17E369C;
-	Tue, 15 Oct 2024 20:20:24 +0200 (CEST)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Tue, 15 Oct 2024 14:15:02 -0400
-Subject: [PATCH 2/2] arm64: dts: mediatek: mt8390-genio-700-evk: Enable
- ethernet
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20241015-genio700-eth-v1-2-16a1c9738cf4@collabora.com>
-References: <20241015-genio700-eth-v1-0-16a1c9738cf4@collabora.com>
-In-Reply-To: <20241015-genio700-eth-v1-0-16a1c9738cf4@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Richard Cochran <richardcochran@gmail.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+	id 1t0mSx-00000009Fer-0Isc
+	for linux-mediatek@lists.infradead.org;
+	Tue, 15 Oct 2024 18:40:20 +0000
+Received: by mail-qv1-xf32.google.com with SMTP id 6a1803df08f44-6cbe700dcc3so43741916d6.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Oct 2024 11:40:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1729017618; x=1729622418; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=8ZIAcIQNXFU0HJAbelK5w6AajE5AfFCSDcserEzGKO8=;
+        b=OoMYByIVyG0Ebnks72kfP2AHmILdVuGnCRvyn7arfZEE0B492vN6NFhZXhE+ZkjMwb
+         ZDGOQwhYdKE+c7OMZO+wdyL8vVHQ6AKPjk61SKcxqLyd2Dodrbnu7z2Qh2EUtY1ANdqt
+         UA4lXA0yTbBbGEBRyXAohANpDMrbrx4qq/p3C2uHUz1Aj7AzojqhrcgLcPLaGEb23LvT
+         LFl0clq7mz3fCJmr5pXLZBRmbTZtQPNx5jksLedI/CsGWLza/0R5Gy9FSHYU7Imb9di2
+         vS/bsRBo5T7d5NnnmKHFj01Njj9fcbpDvH2TQ28tBZIEmcF8d8z5naFZQSWXZBApnFcH
+         LoCQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729017618; x=1729622418;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=8ZIAcIQNXFU0HJAbelK5w6AajE5AfFCSDcserEzGKO8=;
+        b=XN/wUkhikePyRYRq+Y4S2MxZR7R3u9Wn6tjSZJigpgxlXwZ5I11BdmODSyaQvWYta4
+         ahsucCTGX49gRv1rsWvSb1JPowWKYpwj0O5M/uYyplNXAoSrjoDSNsxICVCULpMHopZq
+         vrMBNl9y5b836qxE16CHpfUCX2MFNu7pNmC7hnmkXbqvysp9QS1OxqtSOdIRFRAJW/Vw
+         y45M8XcoFvPXajMfDIMzTTIJc68w3jtnHdo5yDtONTsyre7bEycn+ZMeQhPNELYAUEZ5
+         58/8A95WTaB7iMAX+5qcG25KJwuT2OTDdNG9Ujt30i4FEkP1gHg3GYboBhMWSCO0J0uj
+         J0hQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWYuK84/DJ400JTwlDX5/zw9GjHEj64iDogE2bRCsoHDNVu4qdM1OyBleaKVAF9TjbT5kpNtFaOoWkTeEcFHg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzso8+5QcJp5YItqgYrkx0YEL/5lWkOpg4XKjQWHXcHfD6m0oEo
+	E4TjYboOsox6LAnANyBHhblSyHLG8o5+3c5oFem+dApjEYveLQV7f+ZaGxALa3SFXNU9H2yhxLe
+	TtXo=
+X-Google-Smtp-Source: AGHT+IFusBTYb7gPAxZixD4vre5MF4aNXpzmSWO1sCDmCktW5i/0FD6ZzrAV8Ze8EESk75jqueZHlQ==
+X-Received: by 2002:a05:6214:469b:b0:6cb:faee:76da with SMTP id 6a1803df08f44-6cc2b923c6fmr17530536d6.48.1729017618017;
+        Tue, 15 Oct 2024 11:40:18 -0700 (PDT)
+Received: from nicolas-tpx395.lan ([2606:6d00:15:862e::7a9])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6cc22959b4fsm9683206d6.84.2024.10.15.11.40.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 15 Oct 2024 11:40:17 -0700 (PDT)
+Message-ID: <ef6f582876782339a6abed5e5d114efade10f9ec.camel@ndufresne.ca>
+Subject: Re: [PATCH v1 00/10] Add MediaTek ISP7 camera system driver
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Shu-hsiang Yang <Shu-hsiang.Yang@mediatek.com>, Mauro Carvalho Chehab
+	 <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+	 <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	 <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	 <angelogioacchino.delregno@collabora.com>, Sumit Semwal
+	 <sumit.semwal@linaro.org>, Christian Konig <christian.koenig@amd.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
- Jianguo Zhang <jianguo.zhang@mediatek.com>, 
- Macpaul Lin <macpaul.lin@mediatek.com>, 
- Hsuan-Yu Lin <shane.lin@canonical.com>, Pablo Sun <pablo.sun@mediatek.com>, 
- fanyi zhang <fanyi.zhang@mediatek.com>
-X-Mailer: b4 0.14.2
+ linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
+ linaro-mm-sig@lists.linaro.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com, yaya.chang@mediatek.com,
+  teddy.chen@mediatek.com, hidenorik@chromium.org, yunkec@chromium.org, 
+ shun-yi.wang@mediatek.com
+Date: Tue, 15 Oct 2024 14:40:16 -0400
+In-Reply-To: <20241009111551.27052-1-Shu-hsiang.Yang@mediatek.com>
+References: <20241009111551.27052-1-Shu-hsiang.Yang@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.52.4 (3.52.4-1.fc40) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_112028_299401_2F196B09 
-X-CRM114-Status: UNSURE (   9.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241015_114019_385447_03417B66 
+X-CRM114-Status: GOOD (  19.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,66 +104,245 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable ethernet on the Genio 700 EVK board. It has been tested to work
-with speeds up to 1000Gbps.
+Hi,
 
-Signed-off-by: Jianguo Zhang <jianguo.zhang@mediatek.com>
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-Signed-off-by: Hsuan-Yu Lin <shane.lin@canonical.com>
-Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
-Signed-off-by: fanyi zhang <fanyi.zhang@mediatek.com>
-[Cleaned up to pass dtbs_check, follow DTS style guidelines, and split
-between mt8188 and genio700 commits]
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- .../boot/dts/mediatek/mt8390-genio-700-evk.dts     | 25 ++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
+Le mercredi 09 octobre 2024 =C3=A0 19:15 +0800, Shu-hsiang Yang a =C3=A9cri=
+t=C2=A0:
+> Based on linux-next/master, tag: next-20241008
+>=20
+> The patch set adds the MediaTek ISP7.x camera system hardware driver.
+>=20
+> This driver sets up ISP hardware, handles interrupts, and initializes
+> V4L2 device nodes and functions. Moreover, implement V4L2 standard
+> video driver that utilizes media framework APIs. It also connects
+> the sensors and ISP, bridging with the seninf interface. Communicate
+> with SCP co-processor to compose ISP registers in the firmware.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-index 0a6c9871b41e5f913740e68853aea78bc33d02aa..73e34e98726d36785e8b2cef73f532b6bb07c97f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-@@ -24,6 +24,7 @@ / {
- 
- 	aliases {
- 		serial0 = &uart0;
-+		ethernet0 = &eth;
- 	};
- 
- 	chosen {
-@@ -845,6 +846,30 @@ pins-wifi-enable {
- 	};
- };
- 
-+&eth {
-+	phy-mode ="rgmii-rxid";
-+	phy-handle = <&ethernet_phy0>;
-+	pinctrl-names = "default", "sleep";
-+	pinctrl-0 = <&eth_default_pins>;
-+	pinctrl-1 = <&eth_sleep_pins>;
-+	snps,reset-gpio = <&pio 147 GPIO_ACTIVE_HIGH>;
-+	snps,reset-delays-us = <0 10000 10000>;
-+	mediatek,tx-delay-ps = <2030>;
-+	mediatek,mac-wol;
-+	status = "okay";
-+
-+	mdio {
-+		compatible = "snps,dwmac-mdio";
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		ethernet_phy0: ethernet-phy@1 {
-+			compatible = "ethernet-phy-id001c.c916";
-+			reg = <0x1>;
-+		};
-+	};
-+};
-+
- &pmic {
- 	interrupt-parent = <&pio>;
- 	interrupts = <222 IRQ_TYPE_LEVEL_HIGH>;
+Thanks for this work. If I read you correctly, this will depends on an scp
+firmware update. Its probably early at rev1, but we appreciate if you can c=
+ross-
+reference your associated linux-firmware submission (or document which MT
+flavour of SCP firmware) contains this support already.
 
--- 
-2.47.0
+For ISP drivers reviewers, we have the experience with SCP that the IPC is =
+not
+versioned, making it difficult to maintain backward compatibility. Won't ma=
+tter
+until this is merged, but be aware that unless this SCP IPC design issue ha=
+s
+been fixed, any change to the -if headers means a modification to the SCP h=
+as
+been made, and often we have had to ask MTK to revisit the firmware code to
+unbreak backward compatibility.
+
+If this specific part of the SCP IPC is versioned, please let us know. I do=
+n't
+want this to be alarming message, just something we need to collectively be
+aware of not to break userspace, which may not update their firmwares in lo=
+ck
+step with the kernel.
+
+regards,
+Nicolas
+
+p.s. for those new to MTK architecture, the SCP firmware provides services =
+to
+everything multimedia in the platform, including CODECs, color converter an=
+d
+scalers, etc.
+
+>=20
+> These patches include CSI received data from sensors, sensor interface
+> bridge, raw/YUV image pre-processing, ISP utility and ISP control parts.
+>=20
+> Thank you for reviewing these patches.
+>=20
+> Shu-hsiang Yang (10):
+>   dt-bindings: media: mediatek: add camsys device
+>   media: platform: mediatek: add seninf controller
+>   media: platform: mediatek: add isp_7x seninf unit
+>   media: platform: mediatek: add isp_7x cam-raw unit
+>   media: platform: mediatek: add isp_7x camsys unit
+>   media: platform: mediatek: add isp_7x utility
+>   media: platform: mediatek: add isp_7x video ops
+>   media: platform: mediatek: add isp_7x state ctrl
+>   media: platform: mediatek: add isp_7x build config
+>   uapi: linux: add mediatek isp_7x camsys user api
+>=20
+>  .../media/mediatek/mediatek,cam-raw.yaml      |  169 +
+>  .../media/mediatek/mediatek,cam-yuv.yaml      |  148 +
+>  .../media/mediatek/mediatek,camisp.yaml       |   71 +
+>  .../media/mediatek/mediatek,seninf-core.yaml  |  106 +
+>  .../media/mediatek/mediatek,seninf.yaml       |   88 +
+>  drivers/media/platform/mediatek/Kconfig       |    1 +
+>  drivers/media/platform/mediatek/Makefile      |    2 +
+>  drivers/media/platform/mediatek/isp/Kconfig   |   21 +
+>  .../platform/mediatek/isp/isp_7x/Makefile     |    7 +
+>  .../mediatek/isp/isp_7x/camsys/Makefile       |   16 +
+>  .../isp_7x/camsys/kd_imgsensor_define_v4l2.h  |   87 +
+>  .../mediatek/isp/isp_7x/camsys/mtk_cam-ctrl.c | 1797 ++++++
+>  .../mediatek/isp/isp_7x/camsys/mtk_cam-ctrl.h |  140 +
+>  .../isp/isp_7x/camsys/mtk_cam-debug.c         | 1271 ++++
+>  .../isp/isp_7x/camsys/mtk_cam-debug.h         |  273 +
+>  .../mediatek/isp/isp_7x/camsys/mtk_cam-defs.h |  168 +
+>  .../isp/isp_7x/camsys/mtk_cam-dmadbg.h        |  721 +++
+>  .../isp/isp_7x/camsys/mtk_cam-feature.c       |   40 +
+>  .../isp/isp_7x/camsys/mtk_cam-feature.h       |   26 +
+>  .../mediatek/isp/isp_7x/camsys/mtk_cam-fmt.h  |   87 +
+>  .../mediatek/isp/isp_7x/camsys/mtk_cam-ipi.h  |  233 +
+>  .../isp/isp_7x/camsys/mtk_cam-meta-mt8188.h   | 2436 ++++++++
+>  .../isp/isp_7x/camsys/mtk_cam-plat-util.c     |  207 +
+>  .../isp/isp_7x/camsys/mtk_cam-plat-util.h     |   16 +
+>  .../mediatek/isp/isp_7x/camsys/mtk_cam-pool.c |  393 ++
+>  .../mediatek/isp/isp_7x/camsys/mtk_cam-pool.h |   28 +
+>  .../mediatek/isp/isp_7x/camsys/mtk_cam-raw.c  | 5359 +++++++++++++++++
+>  .../mediatek/isp/isp_7x/camsys/mtk_cam-raw.h  |  325 +
+>  .../isp/isp_7x/camsys/mtk_cam-raw_debug.c     |  403 ++
+>  .../isp/isp_7x/camsys/mtk_cam-raw_debug.h     |   39 +
+>  .../isp/isp_7x/camsys/mtk_cam-regs-mt8188.h   |  382 ++
+>  .../isp/isp_7x/camsys/mtk_cam-seninf-def.h    |  193 +
+>  .../isp/isp_7x/camsys/mtk_cam-seninf-drv.c    | 1741 ++++++
+>  .../isp/isp_7x/camsys/mtk_cam-seninf-drv.h    |   16 +
+>  .../isp/isp_7x/camsys/mtk_cam-seninf-hw.h     |  120 +
+>  .../isp/isp_7x/camsys/mtk_cam-seninf-if.h     |   28 +
+>  .../isp/isp_7x/camsys/mtk_cam-seninf-regs.h   |   40 +
+>  .../isp/isp_7x/camsys/mtk_cam-seninf-route.c  |  356 ++
+>  .../isp/isp_7x/camsys/mtk_cam-seninf-route.h  |   23 +
+>  .../isp/isp_7x/camsys/mtk_cam-seninf.h        |  170 +
+>  .../isp/isp_7x/camsys/mtk_cam-timesync.c      |  125 +
+>  .../isp/isp_7x/camsys/mtk_cam-timesync.h      |   12 +
+>  .../isp/isp_7x/camsys/mtk_cam-ufbc-def.h      |   59 +
+>  .../isp/isp_7x/camsys/mtk_cam-video.c         | 1817 ++++++
+>  .../isp/isp_7x/camsys/mtk_cam-video.h         |  224 +
+>  .../mediatek/isp/isp_7x/camsys/mtk_cam.c      | 4168 +++++++++++++
+>  .../mediatek/isp/isp_7x/camsys/mtk_cam.h      |  733 +++
+>  .../isp_7x/camsys/mtk_camera-v4l2-controls.h  |   65 +
+>  .../isp_7x/camsys/mtk_csi_phy_2_0/Makefile    |    5 +
+>  .../mtk_csi_phy_2_0/mtk_cam-seninf-cammux.h   |  911 +++
+>  .../mtk_cam-seninf-csi0-cphy.h                |   69 +
+>  .../mtk_cam-seninf-csi0-dphy.h                |  139 +
+>  .../mtk_cam-seninf-hw_phy_2_0.c               | 2879 +++++++++
+>  .../mtk_cam-seninf-mipi-rx-ana-cdphy-csi0a.h  |  257 +
+>  .../mtk_cam-seninf-seninf1-csi2.h             |  415 ++
+>  .../mtk_cam-seninf-seninf1-mux.h              |  147 +
+>  .../mtk_csi_phy_2_0/mtk_cam-seninf-seninf1.h  |   47 +
+>  .../mtk_csi_phy_2_0/mtk_cam-seninf-tg1.h      |   49 +
+>  .../mtk_csi_phy_2_0/mtk_cam-seninf-top-ctrl.h |   99 +
+>  include/uapi/linux/mtkisp_camsys.h            |  227 +
+>  60 files changed, 30194 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek/medi=
+atek,cam-raw.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek/medi=
+atek,cam-yuv.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek/medi=
+atek,camisp.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek/medi=
+atek,seninf-core.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek/medi=
+atek,seninf.yaml
+>  create mode 100644 drivers/media/platform/mediatek/isp/Kconfig
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/Makefile
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/Mak=
+efile
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/kd_=
+imgsensor_define_v4l2.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-ctrl.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-ctrl.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-debug.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-debug.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-defs.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-dmadbg.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-feature.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-feature.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-fmt.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-ipi.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-meta-mt8188.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-plat-util.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-plat-util.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-pool.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-pool.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-raw.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-raw.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-raw_debug.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-raw_debug.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-regs-mt8188.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-seninf-def.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-seninf-drv.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-seninf-drv.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-seninf-hw.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-seninf-if.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-seninf-regs.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-seninf-route.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-seninf-route.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-seninf.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-timesync.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-timesync.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-ufbc-def.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-video.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam-video.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_cam.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_camera-v4l2-controls.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_csi_phy_2_0/Makefile
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_csi_phy_2_0/mtk_cam-seninf-cammux.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_csi_phy_2_0/mtk_cam-seninf-csi0-cphy.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_csi_phy_2_0/mtk_cam-seninf-csi0-dphy.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_csi_phy_2_0/mtk_cam-seninf-hw_phy_2_0.c
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_csi_phy_2_0/mtk_cam-seninf-mipi-rx-ana-cdphy-csi0a.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_csi_phy_2_0/mtk_cam-seninf-seninf1-csi2.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_csi_phy_2_0/mtk_cam-seninf-seninf1-mux.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_csi_phy_2_0/mtk_cam-seninf-seninf1.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_csi_phy_2_0/mtk_cam-seninf-tg1.h
+>  create mode 100644 drivers/media/platform/mediatek/isp/isp_7x/camsys/mtk=
+_csi_phy_2_0/mtk_cam-seninf-top-ctrl.h
+>  create mode 100644 include/uapi/linux/mtkisp_camsys.h
+>=20
 
 
