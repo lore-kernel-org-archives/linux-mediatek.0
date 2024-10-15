@@ -4,66 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21610CFC276
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 08:46:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E5B5CFC276
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 09:13:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0MUmG4E6Ao2cq8gDE1Y3FGj1aD6rjzZ7g8nJkKmT450=; b=0AoOFMqWA/M6rML+o0LxGd5dEh
-	XKf9ori8cw9QaGccEX73oHvSHzaNz3LPbQYJczrGnz8XLQT0tNlGQ5MNSFMzE9vTRSgrz+qQsxiRo
-	VgVQNWnrTbBkH/TMX3PHGIkrLmlrKd+EHWixUzGMu+axrohWiEvo7id9K+qXWkVtyL5l92AtGh7dw
-	C6sM+vuJQDHOe3kFFcTixqaKftcKXMLlKGIefEDsnjvN8wYAyXh4JLmlpAHgmIdPeywPHSrmgwagD
-	R59EN7/5zick7G210DhO4G7ru/nyZC4dANsct8oROc9TGVX4vobQnQZ0YhH9uF/B/bYz7X0KcBfno
-	sqRGfV8A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WP+N4UsAZPKjj4EmRlhQL6H0TyFGjSIDUToljQw55Cc=; b=yWLVRGE0Yujs5fn8RoVmrGBCnD
+	sem8lx+KRfsG4ZhjyIVKuzyRL/4Qg4K73BqDp6BIkaEvNbF8OBrWk2v1pEdr1osTTfgGfz8qx7KgM
+	vrVeEMCATvqKzJ4FwBHqZPTN/coMbaATfn1Uq2u93r3FcHFk2b5LG0AgIu5pfO3B5LhYSA2xPJrmD
+	/sHAe8+cX4lCcW+U+03Rhy2IpaU7RFRJI11XdRkpqDwMmdi5rin6XH6+x6ZAuLzIbjY5nSFRbetY1
+	3zogn8lRmmtqMDNEohZ/b164ouCUc+C2wKoOl/ilUZg9FZ2KyTUHYMoO/Pjdvu19UE9AsbJ4F2fje
+	1KHpeUBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0dBt-00000007Yr6-47P8;
-	Tue, 15 Oct 2024 08:46:05 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1t0dcN-00000007eo6-2QnB;
+	Tue, 15 Oct 2024 09:13:27 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0dBr-00000007YqZ-1sAB
-	for linux-mediatek@lists.infradead.org;
-	Tue, 15 Oct 2024 08:46:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1728981961;
-	bh=7vHIM87eNaX3ejUjqfIM2HsQR797Aj6VtuCHdl+ICYE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=eS1gMytK/UkljJJVHSCeaQIbsyRBquDiJfBUWJ/am1MjvKN4hx42JaWncX4mjQcV8
-	 Xr1JOmxl/FerSNfczs1nQXoAsV3I+2/mWYw2fqffgyTNrVtTnVG0xye0jtlv7FS9u7
-	 x5DT7MEtXOoJVM0kFOCppXXGVrMqf4MJYNUR6OjzF8scFdcQRLRM18KoUgdz7sCLJn
-	 +HLj727BEmeg6sYkH/1mkQvRwD0GJUATssOcooQ9MJ2JF13h4OfQ8kgYAA6maan0Ln
-	 IA2ZZMjkZsIgv9AcB9AMOjAjd8Zz/LE/GghuiGItvNPZcu0Cipc0ErANr7hzwxBNUI
-	 1RHvRfgyPMoHA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2AB9417E1167;
-	Tue, 15 Oct 2024 10:46:01 +0200 (CEST)
-Message-ID: <f0b77d1a-b2b6-46a3-a6a1-44dc601e8584@collabora.com>
-Date: Tue, 15 Oct 2024 10:46:00 +0200
+	id 1t0dOC-00000007axW-11Y3;
+	Tue, 15 Oct 2024 08:58:49 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id C05B75C5C2B;
+	Tue, 15 Oct 2024 08:58:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2FC14C4CEC6;
+	Tue, 15 Oct 2024 08:58:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1728982726;
+	bh=jAGoNoLVAbRIcXL7z9HRSFMPr+Mhu705XIwf+Uer1jQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=mL3AQxYhpqOS657KY4KyNUFpIpD0dZiiW8+n21zMH916n1KfWI2lTQ5OwCKcsgiaO
+	 MMmDNerfrPDwONsQjoORWai+TitJErYqNQRtHr+9GBnXU7GL6QOoVUPBu1Fxh26AE4
+	 41j0WRrEZXJoTUHrBK2IQ6jHVpQzWpmuJnrx4VsDJUNOLzJOlGRSbnNaZUFkmjkNe3
+	 zGDupd0EbdeYEBUp67fLA+XGOPsEnG3+btDBBgw8akmvG+GEMUq6pFmZk1MOa8ZJhg
+	 7AbZTooqfZru4R9+OXZi8aVQdkFNpc1a+QsA6Gzrke5aczhY+AOOa42gE3VR7f9hSa
+	 r/d4sAAMDOryg==
+Date: Tue, 15 Oct 2024 09:58:42 +0100
+From: Lee Jones <lee@kernel.org>
+To: Suraj Sonawane <surajsonawane0215@gmail.com>
+Cc: pavel@ucw.cz, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, linux-leds@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: (subset) [PATCH] leds: Fix uninitialized variable 'ret' in
+ mt6370_mc_pattern_clear
+Message-ID: <20241015085842.GC8348@google.com>
+References: <20241006131337.48442-1-surajsonawane0215@gmail.com>
+ <172863776565.3130628.18378710932238203204.b4-ty@kernel.org>
+ <7274be28-aefe-49b1-b8e1-dd1c2bad96d0@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RESEND] Bluetooth: btmtksdio: Lookup device node only as
- fallback
-To: Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: Marcel Holtmann <marcel@holtmann.org>, Sean Wang <sean.wang@kernel.org>,
- linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20241008082721.4004100-1-wenst@chromium.org>
- <CABBYNZ+UGx8TtW+aXZer_j=L79NYEP28+FcSeRqT3BKN7L+CGw@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CABBYNZ+UGx8TtW+aXZer_j=L79NYEP28+FcSeRqT3BKN7L+CGw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <7274be28-aefe-49b1-b8e1-dd1c2bad96d0@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_014603_818938_CDA87FF8 
-X-CRM114-Status: GOOD (  19.32  )
+X-CRM114-CacheID: sfid-20241015_015848_345210_9B371434 
+X-CRM114-Status: GOOD (  12.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,92 +76,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/10/24 15:39, Luiz Augusto von Dentz ha scritto:
-> Hi,
-> 
-> On Tue, Oct 8, 2024 at 4:27 AM Chen-Yu Tsai <wenst@chromium.org> wrote:
->>
->> If the device tree is properly written, the SDIO function device node
->> should be correctly defined, and the mmc core in Linux should correctly
->> tie it to the device being probed.
->>
->> Only fall back to searching for the device node by compatible if the
->> original device node tied to the device is incorrect, as seen in older
->> device trees.
->>
->> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> 
-> I was hoping to see some Reviewed-by/Tested-by here, were the mediatek
-> made aware of these changes?
-> 
+On Fri, 11 Oct 2024, Suraj Sonawane wrote:
 
-Sorry I didn't see this patch in my .. rather big .. stack of patches :-D
+> On 11/10/24 14:39, Lee Jones wrote:
+> > On Sun, 06 Oct 2024 18:43:37 +0530, SurajSonawane2415 wrote:
+> > > Fix the uninitialized symbol 'ret' in the function mt6370_mc_pattern_clear
+> > > to resolve the following warning:
+> > > drivers/leds/rgb/leds-mt6370-rgb.c:604 mt6370_mc_pattern_clear()
+> > > error: uninitialized symbol 'ret'.
+> > > Initialize 'ret' to 0 to prevent undefined behavior from uninitialized
+> > > access.
+> > > 
+> > > [...]
+> > 
+> > Applied, thanks!
+> > 
+> > [1/1] leds: Fix uninitialized variable 'ret' in mt6370_mc_pattern_clear
+> >        commit: b5a5659aebfffbcddb81abafe042fb4044b6ff9e
+> > 
+> > --
+> > Lee Jones [李琼斯]
+> > 
+> Thank you! I'm glad the patch was applied. I'll ensure future patches follow
+> the necessary guidelines.
 
-I can confirm
+Sorry, this is a tooling error.  The patch was not meant to be applied.
 
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> # 
-MT8186 Corsola
+Please resubmit it using your updated .gitconfig file.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Cheers,
-Angelo
-
->> ---
->> Resending after three and a half months.
->>
->> This follows up on the MT7921S bluetooth binding and DT fixup patches [1].
->> This should not be backported.
->>
->> [1] https://lore.kernel.org/linux-bluetooth/20240412073046.1192744-1-wenst@chromium.org/
->>
->>   drivers/bluetooth/btmtksdio.c | 17 +++++++++++++++--
->>   1 file changed, 15 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
->> index cc097aedc1e1..a1dfcfe43d3a 100644
->> --- a/drivers/bluetooth/btmtksdio.c
->> +++ b/drivers/bluetooth/btmtksdio.c
->> @@ -1328,6 +1328,8 @@ static int btmtksdio_probe(struct sdio_func *func,
->>   {
->>          struct btmtksdio_dev *bdev;
->>          struct hci_dev *hdev;
->> +       struct device_node *old_node;
->> +       bool restore_node;
->>          int err;
->>
->>          bdev = devm_kzalloc(&func->dev, sizeof(*bdev), GFP_KERNEL);
->> @@ -1411,13 +1413,24 @@ static int btmtksdio_probe(struct sdio_func *func,
->>          if (err)
->>                  bt_dev_err(hdev, "failed to initialize device wakeup");
->>
->> -       bdev->dev->of_node = of_find_compatible_node(NULL, NULL,
->> -                                                    "mediatek,mt7921s-bluetooth");
->> +       restore_node = false;
->> +       if (!of_device_is_compatible(bdev->dev->of_node, "mediatek,mt7921s-bluetooth")) {
->> +               restore_node = true;
->> +               old_node = bdev->dev->of_node;
->> +               bdev->dev->of_node = of_find_compatible_node(NULL, NULL,
->> +                                                            "mediatek,mt7921s-bluetooth");
->> +       }
->> +
->>          bdev->reset = devm_gpiod_get_optional(bdev->dev, "reset",
->>                                                GPIOD_OUT_LOW);
->>          if (IS_ERR(bdev->reset))
->>                  err = PTR_ERR(bdev->reset);
->>
->> +       if (restore_node) {
->> +               of_node_put(bdev->dev->of_node);
->> +               bdev->dev->of_node = old_node;
->> +       }
->> +
->>          return err;
->>   }
->>
->> --
->> 2.47.0.rc0.187.ge670bccf7e-goog
->>
-> 
-> 
-
+-- 
+Lee Jones [李琼斯]
 
