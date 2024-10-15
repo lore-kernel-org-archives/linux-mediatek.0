@@ -4,91 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8608ED2169C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 13:09:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 995BFD216A2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 13:15:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p5BHUyPt1EyFTjMoAsnVPZVSP1YnGZbvLucwi3hkXsc=; b=hsjU9KomGGRUvxSU5fegHDCbz8
-	e/U2T4uMSb8C44Bz372u2CUd3ZCmslBG+GEXTt9wuPwxB3lTnh4tEzaV15ja7tWT24XUEPm6bi5IC
-	mGc3zIWtVKOOjS2fCNHRK5GmDgCwbXlSH+Nu3l0L1wcsMZxLq3Lya7MPhcsjsL2egglYe7qkSwXCm
-	mXYUiaiaJyQr2x43GZi8Th8hCKrW7bAi5bMCfPHv+sYUjBz2ni6KlaFz5U4oM4iFElu7PCLTlwivo
-	eyLsI0q0h/Jm3igjN2+iTMZdLHd+dbpMIXHJckW8bD+0vIqX0kwRfoYV6eFBmJ4Ap8++YGHZUaOYY
-	h9Y4tBUw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2XP5y9z+Zc+jzgswAxP/FFf9hvKLL+uAJ4Hn3GaWj2A=; b=OX8woRbjkQo3q+SCmWTnccl8uz
+	rtKz6cS2o5IUDvs+K69XRV2R6r3oprV6egQHOg8IPA/b9H12OeLH2EPniIh7oUjbuq0yruBYJH63v
+	e2jUFnHbvErI6kvrUjNB4J1nLkI7sEGYYfCfl2lOpR3DjOjOoUstzXE7vmm20o6J9HMFSXiEXbSjh
+	NZrO4g5FyfavLLahjjWe8K4Y46uJRtPDgrDlBtw2YOrWsNfvTu/UB9kIvmYaPMHhYlW/hATa75WVB
+	gNL2DT3uzYhcppO4LfJ3lOu9A+mQ+pikE7/sIxYBwI9wLc+Qw5YxqodusPzgcduXXyHwisv4AefrR
+	zdwx8g4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0hIt-00000008I1I-2RD4;
-	Tue, 15 Oct 2024 13:09:35 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1t0hOh-00000008IyU-0MgM;
+	Tue, 15 Oct 2024 13:15:35 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0hHR-00000008Hi5-2QKa;
-	Tue, 15 Oct 2024 13:08:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=p5BHUyPt1EyFTjMoAsnVPZVSP1YnGZbvLucwi3hkXsc=; b=LghZXKprKdh4ZKP8MMVtLHKtNQ
-	0aWIrf57zzmuxOu2+1wHVipPHf5I5kH4/MyyXF2wdk6ZjtA0WMRAMQd+ZYJ1/siIrF+XsH1dCLLkt
-	HsPGXeNgxJ+QCxa+O7HvSVgtEznp5ish9tOfkEBTCEG3SfibiXIQzPCaK1Hxvp1Js1NI=;
-Received: from p54ae9bfc.dip0.t-ipconnect.de ([84.174.155.252] helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.96)
-	(envelope-from <nbd@nbd.name>)
-	id 1t0hHC-0099iN-2Y;
-	Tue, 15 Oct 2024 15:07:50 +0200
-Message-ID: <695421bb-6f31-4bae-8c8c-6d4fccf1b497@nbd.name>
-Date: Tue, 15 Oct 2024 15:07:50 +0200
+	id 1t0gMR-0000000874D-1vjL;
+	Tue, 15 Oct 2024 12:09:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
+	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
+	In-Reply-To:References; bh=2XP5y9z+Zc+jzgswAxP/FFf9hvKLL+uAJ4Hn3GaWj2A=; b=oq
+	7WihviQrPVKXcxGTit4/qgULQrRYwGRWyF+PyYkezLoWslXj2GzuLJb7AP6IidoDfsv+nPv6BqRHm
+	d07M4irZbYJtD3hYhXZaLatHHzX63e4BQtnBq1qem8SdbjqntHFBI92EyS8Td7UlzFcDLCL4Ejo25
+	Dl+FXtB+qDaY+7c=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1t0gM3-00A1eh-EX; Tue, 15 Oct 2024 14:08:47 +0200
+Date: Tue, 15 Oct 2024 14:08:47 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: =?utf-8?B?5ZCz6YC86YC8?= <wojackbb@gmail.com>
+Cc: netdev@vger.kernel.org, chandrashekar.devegowda@intel.com,
+	chiranjeevi.rapolu@linux.intel.com, haijun.liu@mediatek.com,
+	m.chetan.kumar@linux.intel.com, ricardo.martinez@linux.intel.com,
+	loic.poulain@linaro.org, ryazanov.s.a@gmail.com,
+	johannes@sipsolutions.net, davem@davemloft.net, edumazet@google.com,
+	kuba@kernel.org, pabeni@redhat.com,
+	linux-arm-kernel@lists.infradead.org,
+	angelogioacchino.delregno@collabora.com,
+	linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com
+Subject: Re: [PATCH] [net,v2] net: wwan: t7xx: add
+ PM_AUTOSUSPEND_MS_BY_DW5933E for Dell DW5933e
+Message-ID: <562c8ee8-7ce3-4343-9d93-b01be1235954@lunn.ch>
+References: <20240930031624.2116592-1-wojackbb@gmail.com>
+ <e2f390c7-4d58-47fb-ba86-b1e5ccd6e546@lunn.ch>
+ <CAAQ7Y6Z2xkgxv36=WOxbUArCw3eBeY0nx_7nAH36+Wicjs_fPg@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 4/4] net: ethernet: mtk_eth_soc: optimize dma
- ring address/index calculation
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
- Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20241015110940.63702-1-nbd@nbd.name>
- <20241015110940.63702-4-nbd@nbd.name>
- <e67883e3-b278-4052-849c-8a9a8ef145f0@lunn.ch>
-From: Felix Fietkau <nbd@nbd.name>
-Content-Language: en-US
-Autocrypt: addr=nbd@nbd.name; keydata=
- xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
- ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
- Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
- AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
- vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
- wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
- TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
- l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
- dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
- HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
- VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
- CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
- VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
- Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
- DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
- wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
- f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
- aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
- FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
- TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
- GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
- cL98efvrjdstUfTCP2pfetyN
-In-Reply-To: <e67883e3-b278-4052-849c-8a9a8ef145f0@lunn.ch>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAAQ7Y6Z2xkgxv36=WOxbUArCw3eBeY0nx_7nAH36+Wicjs_fPg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_060805_650200_C7B6C0DC 
+X-CRM114-CacheID: sfid-20241015_050911_520900_0D636213 
 X-CRM114-Status: GOOD (  13.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -104,26 +78,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 15.10.24 14:54, Andrew Lunn wrote:
-> On Tue, Oct 15, 2024 at 01:09:38PM +0200, Felix Fietkau wrote:
->> Since DMA descriptor sizes are all power of 2, we can avoid costly integer
->> division in favor or simple shifts.
+On Tue, Oct 15, 2024 at 10:48:15AM +0800, 吳逼逼 wrote:
+> Hi Andrew,
 > 
-> Could a BUILD_BUG_ON() be added to validate this?
+> We have a power test that uses a small script to loop through the power_state
+> of Dell DW5933e.(/sys/bus/pci/devices/..../power_state)
+> 
+> We expect that PCIE can enter the D3 state when Host don;t have data packet
+> transmission,
+> but the experimental result of the small script test is that it is only in the
+> D3 state about 5% of the time.
+> 
+> We analyze logs to found that Dell DW5933e occasionally sends signal change
+> notifications, and ModemManager occasionally captures Modem status.
+> Although these situations are not very frequent,
+> However, since the default auto suspend time is 20 seconds, the chance of PCIE
+> being able to enter the D3 state is very small.
+> 
+> After we changed auto suspend to 5 seconds, PCIE have 50% of the time was in D3
+> state, which met Dell's requirements.
 
-Not sure if that would be useful. I can't put the BUILD_BUG_ON in the 
-initializer macro, so I could only add it for the individual dma 
-descriptor structs.
-Since the size of those structs will not be changed (otherwise it would 
-immediately visibly break with existing hw), the remaining possibility 
-would be adding new structs that violate this expectation. However, 
-those would then not be covered by the BUILD_BUG_ON.
+So you answered some of my questions. But missed:
 
-> Do you have some benchmark data for this series? It would be good to
-> add to a patch 0/4.
+What makes this machine special?
 
-No, I just ran basic tests that everything still works well and looked 
-at the assembly diff to ensure that the generated code seems sane.
+It is maybe because this machine occasionally sends signal change
+notifications? There are modem status changes?
 
-- Felix
+Have you compared this to other machines with the same hardware? Do
+they do the same? Or is this Dell special? If it is special, why is it
+special?
+
+	Andrew
 
