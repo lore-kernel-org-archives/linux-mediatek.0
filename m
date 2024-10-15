@@ -4,85 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C138ED21694
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 12:32:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A99BDD21694
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 12:37:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E2Nzr/f3LnLUD1j4bkCrqVzP0/G5tRk6VST+iGhoZ4s=; b=nZOeCX4MIoudNqg3e2RR0EKcOL
-	SAupZtx/1SpuxT3fg+CvT99qSJCpVb8bPmAy/p3xEWlpzHFx7aOv6zt5x8Y2qqGqF+qQUEHtVuH1z
-	5aA6sDvJ5BVP4ut9LFqhZ/hKgWY7+ak0WXQwqNVjwsRs9pnlAKCPmXbiufQCy/KBXCJZM3Rdtav4W
-	Nzl48Sj1Rh4yWOEhm27TKvelbzf+G4LMQxBhYT/lS7tBWxY3bEHv5Pem/8oW0Q55kdpHP+W0i+2iH
-	KROSJFnSGMKmM0PcgfFP3qRRep1RlCLcLM415djJxPGm8PbTxfFeUS+enURxhUsjiRkPcaUc4TKN4
-	rttw1PYw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=TAxqVXv28hN1E9g2AdYt07OnRxWBCBISUSonsrhZhRw=; b=LFeQg4kH/jCXsdg4oj1G2h91HR
+	AKQX6dzmSodiUKBWuvAUoTkkqSjKDfhuQYYQJ/WchlNX5uDzUB5GzQRBRwCuDa42mxr5pGrKkeKNo
+	Gq5b2ATrFjQ92ktx71TpVntKNmiQb0lYgCcwurjnkjH95BDhzsBAv9DEztYEkdCoxYu7ASiajiaba
+	Zadp4eQrt0qT2UUN9rj0oSAC6gTfyRpjzsIKKUeXWMjvFot/EaLcbmXDqli379Op1itlixEql/GOD
+	Vn6nTOaA+dsrq35iqWN5t1MRgrNn4Okz1pFIL2HQCrK4moklfFlAPuJDJB3kkwxCScCBvXZHrRwe6
+	XwDrbMKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0gig-00000008B6o-31iq;
-	Tue, 15 Oct 2024 12:32:10 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1t0goB-00000008Bv6-3aDl;
+	Tue, 15 Oct 2024 12:37:51 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0gVz-000000088cp-3Twf
+	id 1t0gd5-000000089zn-2AdJ
 	for linux-mediatek@lists.infradead.org;
-	Tue, 15 Oct 2024 12:19:05 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-539f8490856so2160675e87.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Oct 2024 05:19:03 -0700 (PDT)
+	Tue, 15 Oct 2024 12:26:25 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id 98e67ed59e1d1-2e2b93d2da6so472707a91.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Oct 2024 05:26:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1728994742; x=1729599542; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
+        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1728995182; x=1729599982; darn=lists.infradead.org;
+        h=message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=E2Nzr/f3LnLUD1j4bkCrqVzP0/G5tRk6VST+iGhoZ4s=;
-        b=AHy+l1NjNNz/dErGKBHucWg0pgzgXPVgqs87hRpuKirDU6+EjyQNeWMjRNKZULBg/n
-         R5wciToLIoLH+3MxGOCmWYmt39MKP9QHqkkYFLzfLW3rfspCCuMTJCBvrCNLOev/ttPn
-         cCT8NWCLQx9dPEw3unlRnH7agNO+4L/oq657E=
+        bh=TAxqVXv28hN1E9g2AdYt07OnRxWBCBISUSonsrhZhRw=;
+        b=bzhR4opXuLrwexRkvf/4X5rR6CKc/INNdsqdtV8M0Ge/W7fppShJ9gnRvlavs3s6O1
+         qQXRXxFiNm5VFZpNv2+VvhWbVlnur2hiX/OACowzoge5zUpWFA5Q45eIbsxpBVu0Mh6P
+         yVgqHaUWohqaqildO1uDo3GOzio5dwlXw2I1zRdP1qTUgxgF3A6nZUqlCWlBSnaUGz4E
+         3ciLeBuwEWTv14z9mU9TSB3CmCJcOzoDzNkY5r9WQ07MZfKsAnIKq1uPfE0C0j1bi0y3
+         xjIKdXjEWNv+OwUMNZ5TLtyvSyTCJjyPPpYOFadtDoWf+W34zUZrwttCat09r28QNXNU
+         o1Ew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728994742; x=1729599542;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1728995182; x=1729599982;
+        h=message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=E2Nzr/f3LnLUD1j4bkCrqVzP0/G5tRk6VST+iGhoZ4s=;
-        b=BjH3C6liC2Hxs/1iqs1K+bVAjNA619UXjBf4rdhis6ewJm6GzRRojSOicBPxb2lwTL
-         x6sIQpM+ay1b+itRVj/qCsfoXakvWp03mIqSQrLcJeeHCix8TjzUyBXcW6WFGfnSP2fS
-         i2cDLJW919AKZh49inLiTVSH5inbd3/Tk642Fk4yv7bziBHrlX3hi9OgHWcn9uz7ts6Q
-         Gosqx5I+YGmloq4yoF6P6v2Lz+nApJIWKvGyyBNO+cB22YtILm8Y8mWKPaDaw8lNxKnt
-         KDUrnbro2eshIgmop4Tr7Wn0vAyjgjE88ZQmAsyKicla3FcOKQ8+dvAowDmHVlOIsVP7
-         VZGA==
-X-Forwarded-Encrypted: i=1; AJvYcCVIQ9giCDjlsQVUsLRuf2301xFSowSPNgSrQk/h41K1UplIleyA0Qe7marMBUoboRApr0bOxhwp28vdcJ1nOQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyVlElp+/yTTPMhllwNmpH0+jONkXUTDtooLCr1h02GbGakdcG2
-	JYgbjUJ2cDL3aVny+z8vR2iPymNbytfz4tlWkWboDLYmsNQ+QfKgEKLky12OJKU56i3A1qsmuYY
-	GWMzL34oh3gM+ABu1rHdzi0QUFEiUisBoyEY5
-X-Google-Smtp-Source: AGHT+IHhelc1sPDiNO+kxEEhE8ky8z+lqqPZB1C0Uie/J5s8p86hdxcscCA4LhHzO10mmd95cq8TFxe0+nBzft1TCjY=
-X-Received: by 2002:a05:6512:687:b0:52c:a5cb:69e4 with SMTP id
- 2adb3069b0e04-539da599f59mr5899850e87.54.1728994742015; Tue, 15 Oct 2024
- 05:19:02 -0700 (PDT)
-MIME-Version: 1.0
-References: <20241008073430.3992087-1-wenst@chromium.org> <20241008073430.3992087-8-wenst@chromium.org>
- <Zwfy6ER6sbr_QxsY@smile.fi.intel.com> <ZwfzhsvlPrxMi61j@smile.fi.intel.com>
- <CAGXv+5ED7j49ndT7BaESW8ZL7_mjVUJLM_FWma8Lwkg+Uh3saw@mail.gmail.com>
- <Zwz_Kl7SwfL0ZaAZ@smile.fi.intel.com> <CAGXv+5H0Yvt1cwPOim-quT3C+=s9NapnryJhNxs_QW=DAyAycQ@mail.gmail.com>
- <Zw5QzP-5hnHW--F-@smile.fi.intel.com>
-In-Reply-To: <Zw5QzP-5hnHW--F-@smile.fi.intel.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 15 Oct 2024 20:18:50 +0800
-Message-ID: <CAGXv+5FuMjSaUJ+qDrx7Vmr9o5vJ9VW=tss1ezvdJyaZZouHKw@mail.gmail.com>
-Subject: Re: [PATCH v8 7/8] platform/chrome: Introduce device tree hardware prober
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
-	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
-	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, 
-	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>, linux-i2c@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+        bh=TAxqVXv28hN1E9g2AdYt07OnRxWBCBISUSonsrhZhRw=;
+        b=osUVlX0sF95gzBA1yVQZMKgm6vzhvR5GF/j7sL/1mDKB5dyqmmq04N10CSachcm8bu
+         YQrSJ/kCM+WqmWnsOnXkb2pA/1/RSZML69sIejlKpFyZiSCa37PAarNkG+D5VNXtkHop
+         93JeRl26pJCbmDxRd7xxhHDL6Gd0YUY3LL8uHCmrxuqTM8BgHtlQEqpoy7jckwWcdd+D
+         raRuvN+1HKxcqpsnHJmtZf263kViQ7j6HMwufaV3hHIJzlg13oiE9stpYyMPEpUJzd7a
+         U2halfMm0TenZ7e3jXJ6s87VAGWbACCVCJfOp/zvzjhwbYzaZ6BPmnPg56Hkg31vVroe
+         eZTA==
+X-Forwarded-Encrypted: i=1; AJvYcCW1X+gKOUzw9gL3WIzH6WYJ+uYVK9elwYLbxoM64kta3/BLk/0r9vVTrIMZzocW/zuegmec5hGVCkniHJk0SA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzDPSwqDz9OmQ8a+hMJZCTW9S0dndfdud7Hm5ixuiTVswNLbLsT
+	YrT1xDQ6WVgd4XWOgHcQWckC9bVPS7y7bklHlKTKwu3RZTZltYGFDvVBEMxxJWw=
+X-Google-Smtp-Source: AGHT+IEGHlpnJAZtdipLy3VlbZOb3D+QyT0Utpz7dB0pTEMkZhLWJL4iV3YD01cqEygPQrp+ZAwIVQ==
+X-Received: by 2002:a17:90b:1d01:b0:2e3:1af7:6ead with SMTP id 98e67ed59e1d1-2e31af76f40mr5840571a91.5.1728995182180;
+        Tue, 15 Oct 2024 05:26:22 -0700 (PDT)
+Received: from ubuntu.huaqin.com ([116.66.212.162])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2e392e8cdc7sm1592844a91.10.2024.10.15.05.26.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 15 Oct 2024 05:26:21 -0700 (PDT)
+From: Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
+To: devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	wenst@chromium.org,
+	hsinyi@chromium.org,
+	rafal@milecki.pl,
+	macpaul.lin@mediatek.com,
+	sean.wang@mediatek.com,
+	Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
+Subject: [PATCH v1 0/3] Add MT8186 Chinchou Chromebooks
+Date: Tue, 15 Oct 2024 20:26:05 +0800
+Message-Id: <20241015122608.24569-1-xiazhengqiao@huaqin.corp-partner.google.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_051903_910905_DAB79E1F 
-X-CRM114-Status: GOOD (  29.36  )
+X-CRM114-CacheID: sfid-20241015_052623_800361_61C6412A 
+X-CRM114-Status: UNSURE (   9.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,98 +99,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 15, 2024 at 7:24=E2=80=AFPM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
->
-> On Tue, Oct 15, 2024 at 02:32:54PM +0800, Chen-Yu Tsai wrote:
-> > On Mon, Oct 14, 2024 at 7:23=E2=80=AFPM Andy Shevchenko
-> > <andriy.shevchenko@linux.intel.com> wrote:
-> > > On Mon, Oct 14, 2024 at 12:56:20PM +0800, Chen-Yu Tsai wrote:
-> > > > On Thu, Oct 10, 2024 at 11:32=E2=80=AFPM Andy Shevchenko
-> > > > <andriy.shevchenko@linux.intel.com> wrote:
-> > > > > On Thu, Oct 10, 2024 at 06:29:44PM +0300, Andy Shevchenko wrote:
-> > > > > > On Tue, Oct 08, 2024 at 03:34:26PM +0800, Chen-Yu Tsai wrote:
->
-> ...
->
-> > > > > > > +   .cfg =3D &chromeos_i2c_probe_simple_trackpad_cfg,
-> > > > > >
-> > > > > >       .cfg =3D DEFINE_I2C_OF_PROBE_CFG(trackpad, i2c_of_probe_s=
-imple_ops),
-> > > > > >
-> > > > > > Or even
-> > > > > >
-> > > > > > #define DEFINE_I2C_OF_PROBE_CFG_SIMPLE(_type_)                 =
-       \
-> > > > > >       DEFINE_I2C_OF_PROBE_CFG(type, &i2c_of_probe_simple_ops)
-> > > >
-> > > > I'm not inclined on using compound literals here. "simple X cfg" wi=
-ll
-> > > > likely get shared between multiple |chromeos_i2c_probe_data| entrie=
-s,
-> > > > and AFAIK the toolchain can't merge them. So we would end up with o=
-ne
-> > > > compound literal per entry, even if their contents are the same.
-> > >
-> > > I'm not sure I follow, you are using compound literal _already_.
-> > > How does my proposal change that?
-> >
-> > I'm using it where it makes sense, i.e. where the embedded variable
-> > is not going to be shared with other instances.
-> >
-> > For the dumb probers, there's only going to be one instance per "type".
-> >
-> > For the simple probers, the config part is still one instance per "type=
-",
-> > but the parameters are board and component specific. There will be
-> > multiple instances. Hence the config part can be shared, while the
-> > parameters likely won't be.
-> >
-> > > > > With that also looking at the above
-> > > > >
-> > > > > #define DEFINE_I2C_OF_PROBE_CFG_NONE(_type_)                     =
-       \
-> > > > >         DEFINE_I2C_OF_PROBE_CFG(type, NULL)
-> > > >
-> > > > For the "dumb" case it makes sense though, since it would be one in=
-stance
-> > > > per type. But we could go further and just wrap the whole
-> > > > |chromeos_i2c_probe_data| declaration.
-> > >
-> > > Maybe it's too far from now...
-> >
-> > This is what I have:
-> >
-> > #define DEFINE_CHROMEOS_I2C_PROBE_DATA_DUMB(_type)
-> >                         \
-> >        static const struct chromeos_i2c_probe_data
-> > chromeos_i2c_probe_dumb_ ## _type =3D {       \
->
-> >                .cfg =3D &(const struct i2c_of_probe_cfg) {
->
-> But the below is static initializer, why do you need a compound literal h=
-ere?
+MT8186 chinchou, known as ASUS Chromebook CZ12 Flip, is a
+MT8186 based laptop. It is based on the "corsola" design.
+It includes chinchou and chinchou360, including LTE, stylus,
+touchscreen combinations.
 
-Because .cfg takes a pointer to a struct. It's not an embedded struct.
-The compound literal creates the internal struct, and then its address
-is taken and assigned to the .cfg field.
+Zhengqiao Xia (3):
+  dt-bindings: arm: mediatek: Add MT8186 Chinchou Chromebook
+  arm64: dts: mediatek: Add MT8186 Chinchou Chromebooks
+  arm64: dts: mediatek: Add exton node for DP bridge
 
-Does that make sense?
+ .../devicetree/bindings/arm/mediatek.yaml     |  26 ++
+ arch/arm64/boot/dts/mediatek/Makefile         |   3 +
+ .../mediatek/mt8186-corsola-chinchou-sku0.dts |  18 ++
+ .../mediatek/mt8186-corsola-chinchou-sku1.dts |  34 ++
+ .../mt8186-corsola-chinchou-sku16.dts         |  28 ++
+ .../dts/mediatek/mt8186-corsola-chinchou.dtsi | 296 ++++++++++++++++++
+ .../boot/dts/mediatek/mt8186-corsola.dtsi     |   6 +
+ 7 files changed, 411 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
 
-> >                         \
-> >                        .type =3D #_type,
-> >                         \
-> >                },
-> >                         \
-> > };
-> >
-> > DEFINE_CHROMEOS_I2C_PROBE_DATA_DUMB(touchscreen);
->
-> s/dumb/simple/g
+-- 
+2.17.1
 
-"simple" is taken. This is "dumb" as in it does not need any helpers.
-Maybe "no-op" if you don't like the negative connotation?
-
-
-ChenYu
 
