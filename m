@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68B76CFC28A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 11:16:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A60FBCFC288
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 11:17:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/mrBSUlA65UftkpATPLrRQIlIiwqBHNpOsskKA65gcc=; b=LNlDYtceU/yyecLc2WJkBZoDpT
-	42n8QJEQiDheMaTHNzpp7QOuYI1fG5/2SXat8Jm4xsY+LcfjlrRjG6Htpd7FuRpoe+cknlqeYUv+A
-	BYrgng44BLmqk5m+BYxwlTOYFZlfRY/IYPsEgDpRbEnJcYb6kwF28ltsQeM2uWxzTJk62wLZGfu5d
-	3l40arKr1iF54l20fwPHHDKgBqSa6F0k5Q5FFl1kiqzo1TONqGFf8UDWx/X13soPe+Zpu24Y1KJoS
-	ZUhB1NVAImcOVmatWEYIyGIm7A7aC9U1qLz9uVXjetLUqScW8l2H751bl+kaHYHgG13QoXObgxZ4c
-	p/tRHTiQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=00J3RVPq4/h4Gn9zjAJgxg9MqOXs2BDYFaepZNulNug=; b=jbuqXAToC3qb0HHKk/Dy6leC7A
+	9+wpFyx3cOnnxXeV0Nzv2ypT9xtgYvZeOy/XqEP0s8bI9EOh/vkSyNzhja0I4b5lMK9+9206hAPR2
+	DZntnQvfWy4xWjTGDWF7Cf+BszWy7oM0bkm6+tORcqlTtNT3Vw6dip7A9l3wNmUnpMqrhP+XxJ8dQ
+	o3PPNVDbCH2G2ZbCQ0f123LkdOf+xU8/OOJvUew/o8moCTDaBIAckxVpU8ZA1SBhXhzvKe2UAORMx
+	SM3ApDJS5WFbJ1SuZ+7suF7gmsw+BqcfUjjPhV5zwh9Gi57/M8yprz3iza1p0hV2HuXUxeLOGGXNT
+	hlzQKH9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0fXP-00000007zCg-176P;
-	Tue, 15 Oct 2024 11:16:27 +0000
+	id 1t0fYm-00000007zOX-2vfR;
+	Tue, 15 Oct 2024 11:17:52 +0000
 Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0fR5-00000007xvV-27hq;
+	id 1t0fR5-00000007xvW-28Wi;
 	Tue, 15 Oct 2024 11:09:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+	s=20160729; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:
+	Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
 	List-Post:List-Owner:List-Archive;
-	bh=/mrBSUlA65UftkpATPLrRQIlIiwqBHNpOsskKA65gcc=; b=Ja3YFPd0tLHgX6PRBueMkS+dNx
-	l3dbc091tXL2lZ84yyHZpccPr7mZ9aKtHnGVTgh/lQe6ge3CFl33L0u1Uz0RzJh16UKyroGu8V6Qq
-	a+X/uWsrhfmfkMtbdu18El3J0IrjHaz+2zqI/JF/8CgnIvzkdUg52JJ2FQRGQG3F+w5Y=;
+	bh=00J3RVPq4/h4Gn9zjAJgxg9MqOXs2BDYFaepZNulNug=; b=murZkFD/6e9FjDuEIp5PZR/1bR
+	LzkxMjmNagb5GYM9dLk9SPNm82n01g+KRK4q1pS/kxvZtPVk6yOcwEi11P8OhLOpqvt7eINvvQITQ
+	k3/q7lK4AqPOn78czVrT/yEXLrfQZPESdR/piJAnS3FouSWuV2BccVYUtUouh8Cz5leM=;
 Received: from p54ae9bfc.dip0.t-ipconnect.de ([84.174.155.252] helo=Maecks.lan)
 	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
 	(Exim 4.96)
 	(envelope-from <nbd@nbd.name>)
-	id 1t0fQr-0096bC-38;
-	Tue, 15 Oct 2024 13:09:42 +0200
+	id 1t0fQr-0096bC-0o;
+	Tue, 15 Oct 2024 13:09:41 +0200
 From: Felix Fietkau <nbd@nbd.name>
 To: netdev@vger.kernel.org,
 	Sean Wang <sean.wang@mediatek.com>,
@@ -55,17 +55,16 @@ To: netdev@vger.kernel.org,
 Cc: linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next 2/4] net: ethernet: mtk_eth_soc: use napi_build_skb()
-Date: Tue, 15 Oct 2024 13:09:36 +0200
-Message-ID: <20241015110940.63702-2-nbd@nbd.name>
+Subject: [PATCH net-next 1/4] net: ethernet: mtk_eth_soc: compile out netsys v2+ code on mt7621
+Date: Tue, 15 Oct 2024 13:09:35 +0200
+Message-ID: <20241015110940.63702-1-nbd@nbd.name>
 X-Mailer: git-send-email 2.47.0
-In-Reply-To: <20241015110940.63702-1-nbd@nbd.name>
-References: <20241015110940.63702-1-nbd@nbd.name>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_040955_646236_71FD71F0 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20241015_040955_649893_79DC478C 
+X-CRM114-Status: UNSURE (   9.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,36 +79,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The napi_build_skb() can reuse the skb in skb cache per CPU or
-can allocate skbs in bulk, which helps improve the performance.
+Avoid some branches in the hot path on low-end devices with limited CPU power,
+and reduce code size
 
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 4a9cf06bdff5..4e4ece5e257a 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -2137,7 +2137,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 			if (ret != XDP_PASS)
- 				goto skip_rx;
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 0d5225f1d3ee..654897141869 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -1324,16 +1324,22 @@ extern const struct of_device_id of_mtk_match[];
  
--			skb = build_skb(data, PAGE_SIZE);
-+			skb = napi_build_skb(data, PAGE_SIZE);
- 			if (unlikely(!skb)) {
- 				page_pool_put_full_page(ring->page_pool,
- 							page, true);
-@@ -2175,7 +2175,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 			dma_unmap_single(eth->dma_dev, ((u64)trxd.rxd1 | addr64),
- 					 ring->buf_size, DMA_FROM_DEVICE);
+ static inline bool mtk_is_netsys_v1(struct mtk_eth *eth)
+ {
++	if (IS_ENABLED(CONFIG_SOC_MT7621))
++		return true;
+ 	return eth->soc->version == 1;
+ }
  
--			skb = build_skb(data, ring->frag_size);
-+			skb = napi_build_skb(data, ring->frag_size);
- 			if (unlikely(!skb)) {
- 				netdev->stats.rx_dropped++;
- 				skb_free_frag(data);
+ static inline bool mtk_is_netsys_v2_or_greater(struct mtk_eth *eth)
+ {
++	if (IS_ENABLED(CONFIG_SOC_MT7621))
++		return false;
+ 	return eth->soc->version > 1;
+ }
+ 
+ static inline bool mtk_is_netsys_v3_or_greater(struct mtk_eth *eth)
+ {
++	if (IS_ENABLED(CONFIG_SOC_MT7621))
++		return false;
+ 	return eth->soc->version > 2;
+ }
+ 
 -- 
 2.47.0
 
