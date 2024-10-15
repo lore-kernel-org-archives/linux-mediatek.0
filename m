@@ -4,94 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4690ED1D88B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 18:00:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94BE2D1D893
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 18:04:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=d+ea8ccZvUXgrS7wSLnvXQm/IOSNZR9uPNXAF5KAZsk=; b=c+lSPs4ZlIdh8HLd6dpWCY0twg
-	IxADhgIe6R0qqscJR3w5UvdSJGqXCJXTZ1WNI0fdIzMs2egUTNdhoN9BcF4hfoZGbrgWeJFGR+jRX
-	TyhrgoJnunHySnO7DEUP9zNbdd3uXKwduuwv8TO5Lb9PozmyLUUC6xrIzTL80605leky4nkai0Ey9
-	UWCoTRc5v54/Ga4sI7DNpmYIx/v3KMP9gKAuYiPZyks8DUFr7NNKRsZnDS5fdY+SH17JWY3cfn1Ki
-	vTIkqmpVRrzmbaeRPYvEGFsrsoSSf94HMChlVvtsd5Ah+sX+umzRo8i0g8l/dyv0Da/bW9C/sZCrH
-	5oa57NlQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PVqsL/V4GT+sMAadflCYXaBC+UFJTg07v0dEWhJESbk=; b=ho9c7w63cv/1Qe8dnmC26MimZy
+	FNoekL/BVBtokGFPpge8yZXOLshiJkRjotnLGCYPKUiOvvBruOYJP3T/dHEnwQGs9VQkQEwUs9je6
+	BkT3LYXR+0E2mrgAYecOaHCBYdPqF8PbMDHTu63a5ZHOnFGRfEZbsAAubL9LgKNqs7gz4bEdCi9XU
+	pjVzLIEfTDg+tvzyurIeKM1/cKPAl26imLtPU9+w+DNNCuesvfrELN9tucaiSMQzgMFJU7p9zaKws
+	9lP1v+oAThpRJHM4wIZdc3mVt2TP34DQ4fb1aLJzxZz3+XMPMxvQHNj8XlzM4okKpCIgIHFtf0/8d
+	NbcrP4QA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0lqQ-000000096wj-2pSD;
-	Tue, 15 Oct 2024 18:00:30 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1t0lud-0000000982L-2pyW;
+	Tue, 15 Oct 2024 18:04:51 +0000
+Received: from mgamail.intel.com ([192.198.163.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0lp0-000000096gj-3rpw
-	for linux-mediatek@lists.infradead.org;
-	Tue, 15 Oct 2024 17:59:04 +0000
-Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-539f2b95775so3272381e87.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Oct 2024 10:59:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1729015139; x=1729619939; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=d+ea8ccZvUXgrS7wSLnvXQm/IOSNZR9uPNXAF5KAZsk=;
-        b=IRirfrf/hJvwnBEEEBDeL6AZfRBTwU/2t1hc7ZGvRK6muuZEXfpT4d6tZq9L8btSu5
-         qYDvw+JC4KtKryuE6F+C72GLMNvTOdXkTDOtv+56oJb1BvuThrCPLX01J+ebsjXzcUu/
-         RAwVm4PUcSzyvTz0dbfnASCLMscfPkvPJU7fY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729015139; x=1729619939;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=d+ea8ccZvUXgrS7wSLnvXQm/IOSNZR9uPNXAF5KAZsk=;
-        b=GKhVeQXog0CpPbo/20OIDPZS/K5sqAajZWxE8WRVhTzWh9DDyYbMSn1k1Bdnp9YmUq
-         Lrl+HOJ8IP0y8sUPMQdzFJgwc02RoNQ44PWDXsD8Ms+4AXtRaP8sxrdsccGUy7T/oAJY
-         3/0hLYmduC78a2VqrKAO3tDQ0fIkK1ueP162iCAhutieMY853i6IM3iZ8ETGBOzpHgy8
-         QSK5wB60n2vzSMqALL1hoe148DzR2XvY6KrXgy38ogYKQZ/i7VbbHw9IM2phVUJHJFcQ
-         alIvRZU4T+rG0+t/5Rj9qJYbRrvYsSaCGBsTX0jmU7Qc7qhxIHQbSQVqng2hsJpZuu8l
-         9EeQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUCswXaVXbf/hcNFmBQo1RIZSPNd3lvH+kTuorXIWp4qs9S9q3QrtcnEvqdHNWFjGkZYDBXZiUiozznfR4oFQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxuDgIvtex1Qm/y67gkCshPWPFmknSwAawHalZRr0JdsaW+bLmW
-	zuILrtqaS0f2ERuYQwT1HNzEkM9g3/mG+w/xGrNP0UM0p8faxJBV+Nke6dYxkXhkIC5P57d3WNa
-	96pkx
-X-Google-Smtp-Source: AGHT+IF8goMNj0FJo2DOSE4GhX3ZJjRZ2cf//bjYu9OYUFGJKAm6iuabnTcbN2eJM/KsH1Fr0vbrww==
-X-Received: by 2002:a05:6512:1252:b0:539:e0e6:cf42 with SMTP id 2adb3069b0e04-539e571ce19mr7531462e87.43.1729015139384;
-        Tue, 15 Oct 2024 10:58:59 -0700 (PDT)
-Received: from mail-lf1-f54.google.com (mail-lf1-f54.google.com. [209.85.167.54])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-539fffb1e37sm223809e87.83.2024.10.15.10.58.57
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 15 Oct 2024 10:58:58 -0700 (PDT)
-Received: by mail-lf1-f54.google.com with SMTP id 2adb3069b0e04-539fb49c64aso3280336e87.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Oct 2024 10:58:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVB3fIg6o5/TeWetLtK172JFLT1CEWwav0TVSkh7D77zC4Xo/azwVKjEzKstsT0jpunuiUDCtEa6Yq9bJYl7Q==@lists.infradead.org
-X-Received: by 2002:a05:6512:3e01:b0:539:df2f:e114 with SMTP id
- 2adb3069b0e04-539e571c9femr7438846e87.45.1729015137476; Tue, 15 Oct 2024
- 10:58:57 -0700 (PDT)
-MIME-Version: 1.0
-References: <20241008073430.3992087-1-wenst@chromium.org> <20241008073430.3992087-6-wenst@chromium.org>
-In-Reply-To: <20241008073430.3992087-6-wenst@chromium.org>
-From: Doug Anderson <dianders@chromium.org>
-Date: Tue, 15 Oct 2024 10:58:41 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=Vs2bekyqBN_Lro_u32Dg9WM-bjDZr_tx-KyYH_toabVg@mail.gmail.com>
-Message-ID: <CAD=FV=Vs2bekyqBN_Lro_u32Dg9WM-bjDZr_tx-KyYH_toabVg@mail.gmail.com>
-Subject: Re: [PATCH v8 5/8] i2c: of-prober: Add simple helpers for regulator support
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
-	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
-	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>, 
-	Jiri Kosina <jikos@kernel.org>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	id 1t0ltC-000000097gq-0v9s;
+	Tue, 15 Oct 2024 18:03:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1729015402; x=1760551402;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=eh6byDyRvz0D0m9V0d4eNpB5N5SL207MeVOFPzaUivs=;
+  b=j7DpASe7RLW9RIYZjwlhNO/THE0O8BNdUQqyYwYp2heZMqP2W4vvY9Vy
+   Zf/dY3vQc1om0tt1gxjakXUOd+TjrL0SuIcFOzF9Os7ewn0eosaxYPyeu
+   TjUBU9QjKpRxvhGCum5lPHjrjnCN6zkD97HpCptsIX+LDW5lm13cL6n3q
+   hUVQLyvoiZl2XVUTFWRN0jYAwf6Eoc+zzI45OFj2B656+HWcsgBHh8HQ4
+   C+FSzG9ZO+u2+8ywF1hGTwKKdsT/guWffMJhc4vkfC9zu2mMQ2Vy5YFuC
+   YdfJadfudEN/iGgLDEUtwPrf6LraRENnhuFx75Uh029GXpkNOmCVtVhSl
+   g==;
+X-CSE-ConnectionGUID: eKz4Cn4IQWemIuHlI/BFAQ==
+X-CSE-MsgGUID: +yBmKYsdTmuaKfyK+vg2tQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11225"; a="28558238"
+X-IronPort-AV: E=Sophos;i="6.11,205,1725346800"; 
+   d="scan'208";a="28558238"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Oct 2024 11:03:21 -0700
+X-CSE-ConnectionGUID: jDCVe1NaS82xc497trlqsA==
+X-CSE-MsgGUID: 0g268ps7TfOSgloJEy9fVA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,205,1725346800"; 
+   d="scan'208";a="77988218"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by fmviesa009.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Oct 2024 11:03:17 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.98)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1t0lt4-00000003Tee-1SQx;
+	Tue, 15 Oct 2024 21:03:14 +0300
+Date: Tue, 15 Oct 2024 21:03:14 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Doug Anderson <dianders@chromium.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh@kernel.org>,
+	Saravana Kannan <saravanak@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wolfram Sang <wsa@kernel.org>, Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>, chrome-platform@lists.linux.dev,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
 	linux-i2c@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v8 4/8] i2c: Introduce OF component probe function
+Message-ID: <Zw6uYl0CXhl_ru08@smile.fi.intel.com>
+References: <20241008073430.3992087-1-wenst@chromium.org>
+ <20241008073430.3992087-5-wenst@chromium.org>
+ <CAD=FV=WRSjk3U9Kau0wqkgv3KB=9jM6wCM9Gs-WxWai35sfxTg@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAD=FV=WRSjk3U9Kau0wqkgv3KB=9jM6wCM9Gs-WxWai35sfxTg@mail.gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_105903_055672_3685FB42 
-X-CRM114-Status: UNSURE (   9.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241015_110322_294450_02B72859 
+X-CRM114-Status: GOOD (  15.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,24 +98,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Tue, Oct 15, 2024 at 10:58:31AM -0700, Doug Anderson wrote:
+> On Tue, Oct 8, 2024 at 12:35 AM Chen-Yu Tsai <wenst@chromium.org> wrote:
 
-On Tue, Oct 8, 2024 at 12:35=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> w=
-rote:
->
-> +/**
-> + * i2c_of_probe_simple_cleanup - Clean up and release resources for I2C =
-OF prober simple helpers
-> + * @dev: Pointer to the &struct device of the caller, only used for dev_=
-printk() messages
-> + * @data: Pointer to &struct i2c_of_probe_simple_ctx helper context.
-> + *
-> + * * If a regulator supply was found, disable that regulator and release=
- it.
+...
 
-nit: was the double "*" starting the line above intentional?
+> > +       struct device_node *i2c_node __free(device_node) = i2c_of_probe_get_i2c_node(dev, type);
+> > +       if (IS_ERR(i2c_node))
+> > +               return PTR_ERR(i2c_node);
+> 
+> I'm still getting comfortable with the __free() syntax so sorry if I'm
+> wrong, but I _think_ the above is buggy. I believe that the definition
+> of the free function for "device_node" is from:
+> 
+> DEFINE_FREE(device_node, struct device_node *, if (_T) of_node_put(_T))
+> 
+> ...which means it'll call of_node_put() to free "i2c_node" when it
+> goes out of scope. of_node_put() handles NULL pointers but _not_ ERR
+> pointers. So I think that if you get an error back and then return via
+> the PTR_ERR(i2c_node) then it'll crash because it will try to free an
+> ERR pointer. Did I get that right? Presumably you need to instead do:
+> 
+>   return PTR_ERR(no_free_ptr(i2c_node));
+> 
+> ...or change of_node_put() to be a noop for error pointers?
 
-Other than the nit, this looks good to me:
+I could state that device_node FREE class has to be updated for these cases.
+fwnode, for example, handles both error pointers and NULL.
 
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
 
