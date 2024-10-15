@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C56BCFC267
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 05:23:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5D5BCFC267
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 05:33:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2amfIbZSfwwrInuc60WPLo9Bq9qEZCLpcMAyCEJ6kmU=; b=YA7xdQ41eYXPNt5Jkdb2iY7ta7
-	EhlrYDD6PXzsCyBE8suZLrOPrHDchobvnUHPjAW3JbChEwlWLtUsmfC3xHk8hV+Ct/IKYv+xvoIut
-	gZv8OOE7XNWl7X1Ou+/xkM8e80nBq1Zg+H/mY5ku5qrWBVzvDErinLrSJJUgT8wVObbNVblY9Rtmf
-	JyzZe8hWyWOqQfJa9NbXS6eeRmQJReGzmRxuAnsxsE9pC0mKABd7pYIpw6IDQarQrxcWpG1wPAKj3
-	T3WmnsGq26TEBGWcEbuhkgaq7YB2i+rPoEuHgTklx72jB+j4B6XKm4I/pljMahm74oXN/KRIWtiR1
-	LXoySzXQ==;
+	bh=6I9X4HeUOqY4U0CtpRUmEBHzfHV0sdEz17jGz7AVasM=; b=c2ZT56oTgqvIMCEJVdoBKoDbgV
+	2Prgdih246Gi7zV9kBG/m4x29XU1LecfTXsPALMQEuM/JaDkfTZgWCibKQSQAdSG8TiN/g600qDTe
+	Te4EX+sz2shzCzWvYohfcmClB+3w6Pksgm2LT+hJx69eHS7vRsfwGD+bmoMfofegfude5HMSnvlyY
+	OiFANd16CXVwwTxGrhvDn/EJq6tlBwcTF67+O7NFZBJY8+zr2F/Yy50L9FQq3oedfAw9YNduQkJfV
+	3t23fp7QLlNHWYWbTaSXoNjniD621X86+nAemCsGehzvqqNSCKQRVLl79lQvtuuGb2pOLG/+egMDQ
+	kMJxuedw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0a2G-000000076Ku-2Gqg;
-	Tue, 15 Oct 2024 05:23:56 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1t0aBO-000000076wQ-2bu4;
+	Tue, 15 Oct 2024 05:33:22 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0a0p-000000076E5-3hgd
+	id 1t0a9x-000000076nj-2zHD
 	for linux-mediatek@lists.infradead.org;
-	Tue, 15 Oct 2024 05:22:29 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-539f53973fdso1402038e87.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 14 Oct 2024 22:22:26 -0700 (PDT)
+	Tue, 15 Oct 2024 05:31:56 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-539e6c754bdso2099558e87.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 14 Oct 2024 22:31:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1728969745; x=1729574545; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1728970312; x=1729575112; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=2amfIbZSfwwrInuc60WPLo9Bq9qEZCLpcMAyCEJ6kmU=;
-        b=HFVLbKzeZxGuprppO9lFj1gaH2xJy2EWtCoRHn7hJJoUKImojr3QsgEBKRcRERXLS0
-         8BwhiV0ZB0qye73zfBMZacl5y4s18VN2g7YGDAIqoiOq+Yx+DZzmJrJTTFCexp9TnFOf
-         TXIBTyDtDVMo3M6uo5kPU1LXKBrrflL+d3I+c=
+        bh=6I9X4HeUOqY4U0CtpRUmEBHzfHV0sdEz17jGz7AVasM=;
+        b=C5ftR86NF/WBeyFwgara2wsiRJUKdJ/kNKQ+M9yBd9gQQWfP/hdBMrHA89cxlcFuMS
+         BsmwjrjE+9GUZuDlwGWw2aVV7PPBVsqgF0KzggPN8/Y6hauBLZvc09jSGWhhyCVEO+1n
+         lTsL5Xq81TRz2ViQEfVZ4v4gNWesuvD6LBqLk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728969745; x=1729574545;
+        d=1e100.net; s=20230601; t=1728970312; x=1729575112;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=2amfIbZSfwwrInuc60WPLo9Bq9qEZCLpcMAyCEJ6kmU=;
-        b=fVWON2w58Mx8RB9t9GqGQQ+HHcOlhLZtYhkM7IpIMgkWH/c2N/A7ToBfa9oLPW1ju8
-         HJUWn+Wp2dK5+kM3lRd8AKmFE+tn/OE9lL70ajlS3LMoBEkqqDsX/mZVJ3nq5KwFT6sC
-         NnA15eGfARQ0+ZA2WijEGCnXoEfTpY5c16k5rmziTH1HzfcBVjNPU3ZXUJomQiC5K3M4
-         24Dz5uDaR4CvzeomGC7v2+SLrzSRG3G1yh8aX4fm58QV/SCAf7uu+L4UpFXmjLzJarFb
-         oRk7pluhViUbmGxjWJxea57u4BoLpS+wMmcCkAy34q/eHf/3y4O5Gv9lQzI0u6im8ZGJ
-         qdfQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVbbw9u/W9qa8rmDwVg3+4awZ7gK5AVxiXOeYZpopuvCQuc2whdPkKYQ3INY3Qm+mpyKyAGRvCbThnZViJLuw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzg7eYkT8EfgrIqbSZL3t9z/LuDgxPU+5h6cUvdIBC8isRKxPCV
-	ip5Fl3h18NX5CC7gNYtrUpimqwAe/6a9/WDnfWuB3z6pAEiFVB6rmGkv35QAyVQPg2ApD6T+Tp2
-	Bl5I7IV9iw3FCdn8rU1nHkjpCnVPJ9VS5ZN8N
-X-Google-Smtp-Source: AGHT+IGnCYIKC4fxrTKf7KXrK4wtSw6kzD/gty96rpQnFBMMz91hHJcgXAFaBjG2JNXIFl/CWbfvb9I+Di9bhTdNMZc=
-X-Received: by 2002:ac2:4f0a:0:b0:539:e263:331c with SMTP id
- 2adb3069b0e04-539e26334a7mr4023423e87.17.1728969744956; Mon, 14 Oct 2024
- 22:22:24 -0700 (PDT)
+        bh=6I9X4HeUOqY4U0CtpRUmEBHzfHV0sdEz17jGz7AVasM=;
+        b=Scx2x6PaTJE1PiPE2sjmAhULhLarONQMNpGpFfPeZfft5Zsu7CQmO8V9Cv1Guamo9B
+         3zuI6oZhq2ZAOBmg8IDCRA2lcfZrhKpwORpY9u0hsFe8ETD+eLfQRppd6n1u6OF5Nju5
+         U1pIayfq3jU3zaAJLLeucfG70y/s+/iTOBKsQJBBlhW/ekog+56NO46+VT/gdvyZ4KKp
+         JjexJQzaDy0DxuYDm1Jc+nI/ia0GGrqrJOeNNg26hX92jsAuy3gT3b+TFmkJrr9BRTHY
+         mLEJfNwv3vwUlrvH333kbMWjetzB0pViMdCVzxHD5WlBwsXFct9Ttdh/c4/PRqhqzELO
+         wkeg==
+X-Forwarded-Encrypted: i=1; AJvYcCXIYrS2AmSgA1hAE1h7F/p3jQLqMpVAV5xZk11L7FuXIWhBB4CVqz6FYGb2ta1m3E/wyCdFUp9VLsql7VFEYg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxZreWA4uoFAzvmbQPrn3b9EazcQAhrJpXFY9L+eFr7IGnSG9cx
+	CMRusGzNR2Sl8JNeSXPuVEh7+v9UCqAOBCGLuJ0M8N6wRuKPVwxb+uqZ6p1+B3ZFohA7rJ2DfSV
+	+SBkf6k4hQy/oCQBgD8D9ttfvRhPQUt47p9TU
+X-Google-Smtp-Source: AGHT+IFnv6XcJ0IaPSidwG2NAv6IbIwCRYACAiR+zoSqxUioN+OKGyLgyzBfN8IaMOcvrXfdKkawj5iYaHp4/g0qQYA=
+X-Received: by 2002:a05:6512:2811:b0:539:f4ab:5638 with SMTP id
+ 2adb3069b0e04-539f4ab57c9mr2610100e87.60.1728970311498; Mon, 14 Oct 2024
+ 22:31:51 -0700 (PDT)
 MIME-Version: 1.0
-References: <20241008073430.3992087-1-wenst@chromium.org> <20241008073430.3992087-5-wenst@chromium.org>
- <ZwfvuA2WhD_0P3gL@smile.fi.intel.com> <CAGXv+5Hm62hFsF27B-cEWTJ_AKrhcfCPaqR7BxmpwnjABzwHTQ@mail.gmail.com>
- <Zwz9djqb0Q6Ujmo_@smile.fi.intel.com>
-In-Reply-To: <Zwz9djqb0Q6Ujmo_@smile.fi.intel.com>
+References: <20241008073430.3992087-1-wenst@chromium.org> <20241008073430.3992087-7-wenst@chromium.org>
+ <Zwfwv-O9ln-PVMdc@smile.fi.intel.com> <CAGXv+5F=5f4R5AExANxOwgTL6_VbpHdNKKhHnzy_PDcxtcFoEQ@mail.gmail.com>
+ <Zwz-benEP4PHbRb2@smile.fi.intel.com>
+In-Reply-To: <Zwz-benEP4PHbRb2@smile.fi.intel.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 15 Oct 2024 13:22:13 +0800
-Message-ID: <CAGXv+5EGq=OAymON-wj0OzQjK1VxRzdvgJgbHxaYPKP_pmTN2A@mail.gmail.com>
-Subject: Re: [PATCH v8 4/8] i2c: Introduce OF component probe function
+Date: Tue, 15 Oct 2024 13:31:40 +0800
+Message-ID: <CAGXv+5EwSZFoE-Uzb5x1QfknkVfd64Z_uzR0YcvZ_pR9ktGUBA@mail.gmail.com>
+Subject: Re: [PATCH v8 6/8] i2c: of-prober: Add GPIO support to simple helpers
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -79,8 +79,8 @@ Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241014_222227_976976_2C588B1A 
-X-CRM114-Status: GOOD (  47.00  )
+X-CRM114-CacheID: sfid-20241014_223153_802699_767B87FE 
+X-CRM114-Status: GOOD (  37.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,127 +95,135 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 14, 2024 at 7:16=E2=80=AFPM Andy Shevchenko
+On Mon, Oct 14, 2024 at 7:20=E2=80=AFPM Andy Shevchenko
 <andriy.shevchenko@linux.intel.com> wrote:
 >
-> On Mon, Oct 14, 2024 at 11:53:47AM +0800, Chen-Yu Tsai wrote:
-> > On Thu, Oct 10, 2024 at 11:16=E2=80=AFPM Andy Shevchenko
+> On Mon, Oct 14, 2024 at 12:06:16PM +0800, Chen-Yu Tsai wrote:
+> > On Thu, Oct 10, 2024 at 11:20=E2=80=AFPM Andy Shevchenko
 > > <andriy.shevchenko@linux.intel.com> wrote:
-> > > On Tue, Oct 08, 2024 at 03:34:23PM +0800, Chen-Yu Tsai wrote:
->
-> ...
->
-> > > Fresh reading of the commit message make me think why the firmware or
-> > > bootloader on such a device can't form a dynamic OF (overlay?) to ful=
-fill
-> > > the need?
-> >
-> > The firmware / bootloader on existing devices are practically not upgra=
-dable.
-> > On the other hand, the kernel is very easy to upgrade or swap out.
-> >
-> > For said shipped devices, there is also nothing to key the detection
-> > off of besides actually powering things up and doing I2C transfers,
-> > which takes time that the firmware has little to spare. We (ChromeOS)
-> > require that the bootloader jump into the kernel within 1 second of
-> > power on. That includes DRAM calibration, whatever essential hardware
-> > initialization, and loading and uncompressing the kernel. Anything
-> > non-essential that can be done in the kernel is going to get deferred
-> > to the kernel.
-> >
-> > Also, due to project timelines oftentimes the devices are shipped with =
-a
-> > downstream kernel with downstream device trees. We don't want to tie th=
+> > > On Tue, Oct 08, 2024 at 03:34:25PM +0800, Chen-Yu Tsai wrote:
+> > > > Add GPIO support to the simple helpers for the I2C OF component pro=
+ber.
+> > > > Components that the prober intends to probe likely require their
+> > > > regulator supplies be enabled, and GPIOs be toggled to enable them =
+or
+> > > > bring them out of reset before they will respond to probe attempts.
+> > > > Regulator supplies were handled in the previous patch.
+> > > >
+> > > > The assumption is that the same class of components to be probed ar=
 e
-> > firmware too tightly to the device tree in case the downstream stuff ge=
-ts
-> > reworked when upstreamed.
+> > > > always connected in the same fashion with the same regulator supply
+> > > > and GPIO. The names may vary due to binding differences, but the
+> > > > physical layout does not change.
+> > > >
+> > > > This supports at most one GPIO pin. The user must specify the GPIO =
+name,
+> > > > the polarity, and the amount of time to wait after the GPIO is togg=
+led.
+> > > > Devices with more than one GPIO pin likely require specific power
+> > > > sequencing beyond what generic code can easily support.
 >
-> Okay, I was always under impression that DT has at least one nice feature=
- in
-> comparison with ACPI that it can be replaced / updated in much quicker /
-> independent manner. What you are telling seems like the same issue that
+> ...
+>
+> > > > +     /* An empty string signals an unnamed GPIO */
+> > > > +     if (!ctx->opts->gpio_name[0])
+> > > > +             con_id =3D NULL;
+> > > > +     else
+> > > > +             con_id =3D ctx->opts->gpio_name;
+> > >
+> > > Can it use positive conditional?
+> > >
+> > >         if (ctx->opts->gpio_name[0])
+> > >                 con_id =3D ctx->opts->gpio_name;
+> > >         else
+> > >                 con_id =3D NULL;
+> >
+> > You suggested writing it this way in your reply to v7. Please pick one.
+>
+> Oh, whatever you will finish with then, sorry for the noise.
 
-That depends on which camp one is in. Some folks advocate for shipping the
-DT with the firmware. In that case you are limited by how easy the firmware
-is to upgrade. Or they would leave an option for the firmware to load a
-newer DT from disk.
-
-The other camp is shipping the DT with the kernel image, which ChromeOS and
-some Linux distros do.  Then the DT is as easy to upgrade as the kernel.
-Opponents would argue that the DT is a hardware description and should
-be separate from the kernel. However as with all hardware bringup
-development, one can't really describe something that hasn't been
-developed and gone through review.
-
-However here I am specifically talking about the firmware _code_ being tied
-to the DT. To implement the probing feature in firmware, one needs to eithe=
-r
-add a lot more code about what devices the system might have, or implement
-the equivalent of this series in firmware, or something in between. This
-is a lot of code that depends on the structure of the DT it was developed
-against, which most likely was downstream at that point.
-
-Say someone screwed up some DT structure downstream at the time of release,
-such as the node name or address prefix, and that was fixed upstream. The
-new upstream DT no longer has the structure the firmware is expecting, and
-the firmware might not be able to handle it anymore, resulting in some
-peripheral no longer getting probed or enabled. And you don't have a way
-to upgrade the firmware to fix this.
-
-> ACPI-based platforms have. However, there they usually put all possible d=
-evices
-> into DSDT and firmware enables them via run-time (ACPI) variables. Are yo=
-u
-> trying to implement something similar here?
-
-Yes, that sounds similar. However for us the DT is tied to the kernel, not
-the firmware, i.e. not provided by the firmware. There's also no UEFI in
-our case.
+Thank you.
 
 > ...
 >
-> > > Another question is that we have the autoprobing mechanism for I2C fo=
-r ages,
-> > > why that one can't be (re-)used / extended to cover these cases?
+> > > > +static void i2c_of_probe_simple_disable_gpio(struct device *dev, s=
+truct i2c_of_probe_simple_ctx *ctx)
+> > > > +{
+> > > > +     if (!ctx->gpiod)
+> > > > +             return;
+> > >
+> > > Do you need this check for the future patches?
 > >
-> > I haven't looked into it very much, but a quick read of
-> > Documentation/i2c/instantiating-devices.rst suggests that it's solving
-> > a different problem?
-> >
-> > In our case, we know that it is just one of a handful of possible
-> > devices that we already described in the device tree. We don't need
-> > to probe the full address range nor the full range of drivers. We
-> > already have a hacky workaround in place, but that mangles the
-> > device tree in a way that doesn't really match the hardware.
-> >
-> > The components that we are handling don't seem to have any hardware
-> > ID register, nor do their drivers implement the .detect() callback.
-> > There's also power sequencing (regulator and GPIO lines) and interrupt
-> > lines from the device tree that need to be handled, something that is
-> > missing in the autoprobe path.
-> >
-> > Based on the above I don't think the existing autoprobe is a good fit.
-> > Trying to shoehorn it in is likely going to be a mess.
-> >
-> > Doug's original cover letter describes the problem in more detail,
-> > including why we think this should be done in the kernel, not the
-> > firmware:
-> > https://lore.kernel.org/all/20230921102420.RFC.1.I9dddd99ccdca175e3ceb1=
-b9fa1827df0928c5101@changeid/
+> > Not sure I follow. The check is needed because this function is called
+> > in i2c_of_probe_simple_cleanup(), but the GPIO could have been released
+> > earlier in i2c_of_probe_simple_cleanup_early(), and that makes this
+> > function a no-op.
 >
-> Perhaps it needs to be summarised to cover at least this question along w=
-ith
-> the above?
+> Do you have a known race condition then? This is bad. You shouldn't rely =
+on
+> the sequence of events here, or the serialisation has to be added.
 
-For the first question, it boils down to we think that the firmware should
-be simple and do as little as possible. It also should not be tied to a
-specific DT, so editing or fixing up the DT in firmware is something we
-avoid. The firmware can do overlays if they are provided, however in this
-particular case, the identifiers used by the bootloader don't cover the
-variations of the I2C-based second source components.
+No there isn't. Explanation below.
 
-For why autoprobing isn't a good fit, I believe my answer above covers it.
+> > The helpers for the release side are quite short, but the ones on the
+> > request side wrap some conditional and error handling. I think it's
+> > better to keep it symmetric?
+>
+> Yes, but why do you need the above check, I didn't still get...
+> I.o.w. you think that there is a gap in time that (if no check) the GPIO
+> descriptor might be changed? But then how does it affect anyway the possi=
+bility
+> that it becomes not NULL even with the current code.
+
+There are two codes paths, either
+
+    a) successfully finding a device and enabling it, or
+    b) exhausting all options and not finding a device, because it was
+       optional or it is malfunctioning.
+
+After either code path, this cleanup function is called.
+
+In path (a), the GPIO descriptor is released prior to enabling the device,
+because the descriptor is an exclusive resource, and as soon as the device
+is enabled, its corresponding driver may probe and request the same GPIO,
+and would fail if it was not released.
+
+In path (b), nothing was enabled, and the GPIO descriptor was not released
+early.
+
+The cleanup function here accounts for both cases, hence the check.
+
+A step-by-step description might be clearer:
+
+1. i2c_of_probe_simple_enable()
+   ...
+   1a. i2c_of_probe_simple_get_supply()
+   1b. i2c_of_probe_simple_get_gpiod()
+   1c. i2c_of_probe_simple_enable_regulator()
+   1d. i2c_of_probe_simple_set_gpio()
+
+2. Loop through potential component options and probe; if one is found:
+   2a. i2c_of_probe_simple_cleanup_early()
+       2a-i. i2c_of_probe_simple_put_gpiod
+   2b. Enable device and driver's probe() gets called
+
+3. i2c_of_probe_simple_cleanup()
+   3a. i2c_of_probe_simple_disable_gpio()
+   3b. i2c_of_probe_simple_put_gpiod()
+   3c. i2c_of_probe_simple_disable_regulator()
+   3d. i2c_of_probe_simple_put_supply()
+
 
 ChenYu
+
+> > > > +     /* Ignore error if GPIO is not in output direction */
+> > > > +     gpiod_set_value(ctx->gpiod, !ctx->opts->gpio_assert_to_enable=
+);
+> > > > +}
+>
+> --
+> With Best Regards,
+> Andy Shevchenko
+>
+>
 
