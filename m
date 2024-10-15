@@ -4,90 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91970D1D87B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 16:00:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8D7CD1D887
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 16:12:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f8q7MgnvGlQX6akYRxirKYZTLEprABkBbW76qdniZOI=; b=r9stFmvVCh3XQoBxKcEYL2vc0U
-	aarv/w5G/099YmhDvPTLEnDXXqLvuOtr5ARvf8/Cj1S0yI1tn2ylbHPk+zXEHV2HJ1xWdkFCEEd5V
-	aYGiAkDwZV8CMbdJ1cd+bdm3RB6/OopwE5aTxEN1xYfmBO0drwkCrsOzpcb8b3ImN3XA1KeWVwQxi
-	pUf5/5jJuq5dHjB7zAiVMBEjcTg6jtZH8FrCZ7yqUdByR5KwsgRtJqmIdiYqDK+yXIGWpEk+Jx0JV
-	xlMbxI7NaC1YqcSC1qnuxOLA/eXwb4F+OLEle1JhijrcUTuYx+3Hvr00U9wwj7A8RipCSrogJgT62
-	A2A0SuVw==;
+	bh=nvYuhXQlkuX8kb7ZMaWIwZNGR4o4GQl6VYNilwOgM2M=; b=jXO8z5x5gMHJ2gRHY7trIdjsdu
+	CYhhYqp5llj4mNtrn7AhjB+G2Z+2yJISV8HsGJn6cpurR/qTaWHmk02lORfLav7ELpuJqDgMJ6zel
+	qVTAiS4FFPNv8MITv3sbTUCEZYY4AmsTt9OO5BCFUeUaEMBKw4orFgL+6zm8iEgHiSEDXFWGRvz8B
+	LXEFtqWsXExd8Fh+BZylEHmB9v8pPhKbhfWV2jKfFzNUYGiL9FjjyqIInop+zcYO6nS4OStwfcfmO
+	e5G/S0AKRbDLTbFhE0SQxhuS5vwjP1rYt56f5A1Sk/Xz5Ll5jCasF0868xtrJi+0gLVy6/X24s/WG
+	S1mYek8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0jyF-00000008oQw-1hzd;
-	Tue, 15 Oct 2024 16:00:27 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1t0kAE-00000008q5S-3tuw;
+	Tue, 15 Oct 2024 16:12:50 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0jwo-00000008o2O-3h98
-	for linux-mediatek@lists.infradead.org;
-	Tue, 15 Oct 2024 15:59:00 +0000
-Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-539e5c15fd3so3152447e87.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Oct 2024 08:58:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1729007934; x=1729612734; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=f8q7MgnvGlQX6akYRxirKYZTLEprABkBbW76qdniZOI=;
-        b=oPUuuLz81Lc0kDRDNo5ROkcYyBTV5gRUo0Aq2AiZWq1VQKj+7IlI01gGTFQLPz4yB8
-         gmv+eR+yIGKBtFsVYAeuznKY//w7uu68M8yWpHSBkDl3lam7VjtkScC/VaJLTCavm69S
-         e6eir0LNAEhue4yLjnLXDKcXqEg2/7BeituLU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729007934; x=1729612734;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=f8q7MgnvGlQX6akYRxirKYZTLEprABkBbW76qdniZOI=;
-        b=MdqWtxNMYRzrGiCKxtKJA5KutHT9GsgWg9W23NhkvS6yqocoi6xNwnjrgdTOCmdKZv
-         gecQ5t4WdlV23DDeA8gN56bMcdwPMntE2LKtYCLiKykCeMPehLUqene16Vp5V8Il3KXi
-         g6JXWKN2lJw1y+D69xOeghKTuBbyBMTv/IcSu+PVrn9T24PpJaO1DOAF2NL/r0gxStNG
-         hxsj4EgccMkMEcbdZPCHqY+5a5rcv89CKNgq637A2w9yRTA4dvcpA5+Y6DgOb0ZgmE3M
-         7UM7I66nDZHKO1TtiFqoW2MgTjMa29BRmdbliV3elqhBTKZRP+c5LstzUnHE2KRxwiW3
-         Erdg==
-X-Forwarded-Encrypted: i=1; AJvYcCU15VXlFlb3i9KC3btbPxm8YTimLiS1kjnYEzXLovc/KNP0uPdDT/Ujhohk8+rGexsOrsWU2L/AcnlV2h3qPw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxlri28Ot2nbcgxN4R/lAnaspOwdZ8L/FRzVWIqLthreGSDp9vD
-	UN0c+zZdTIKVFcog0PY310iIZKcGNAD337qdJvSzbkicRH1w3T8XkfKmOQds8PbTccqc5gTz5Df
-	RRQ==
-X-Google-Smtp-Source: AGHT+IHxfd47WukJ8hwoD6UdIZiPcH/PDQhC6Ob1FIs+qZ/LNHT5aWQ6gZ8i28NLJQwDtHcCgXipcw==
-X-Received: by 2002:a05:6512:3b98:b0:539:ed36:eb8f with SMTP id 2adb3069b0e04-53a03f2f0eemr573281e87.24.1729007934122;
-        Tue, 15 Oct 2024 08:58:54 -0700 (PDT)
-Received: from mail-lf1-f46.google.com (mail-lf1-f46.google.com. [209.85.167.46])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-539fffa89f1sm202048e87.62.2024.10.15.08.58.53
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 15 Oct 2024 08:58:53 -0700 (PDT)
-Received: by mail-lf1-f46.google.com with SMTP id 2adb3069b0e04-539f6e1f756so2605404e87.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Oct 2024 08:58:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCWEpukcsjUgIPzGWEc/dBjIiewrdKNMCKn0LzizCeDRHS5Y7xj0nt8exsWaW2OCiAnXAXQsh93nUOAkjzqk5A==@lists.infradead.org
-X-Received: by 2002:a05:6512:692:b0:530:c212:4a5a with SMTP id
- 2adb3069b0e04-53a03f1af4amr688286e87.22.1729007932572; Tue, 15 Oct 2024
- 08:58:52 -0700 (PDT)
+	id 1t0k7P-00000008pWV-3xkp;
+	Tue, 15 Oct 2024 16:09:57 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id D26BD5C57D6;
+	Tue, 15 Oct 2024 16:09:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0D34EC4CEC6;
+	Tue, 15 Oct 2024 16:09:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1729008594;
+	bh=uiNbKZymrQtXd06YpQ4Y9UYqOaQxvSWTKDoL7yi1U34=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=BncWv6f8nxxYbDxv+zumwT4cANZa+684oDXRaD2IKtNGVbffbdzwl+u95lBOk+7Lh
+	 +RWHXZaqRcjbnYDkqsMbWeiOC6JEqF3SfUADHxqheYhVX8Y9awqxN9mh3F5ZK6peuY
+	 spR5K/DOCyvsjeKfkQ5ieu8CbFtXiweJIyhNrkjTXzam2hwQSb4DwkTL+YpOkPhVW4
+	 u5Fqi5E22kTdGnz0uLxaDsS7wrTwL+s4vOpQiVxB4H8EwzeyjQfcKP4SIUAc/KXs7b
+	 egkcbMZhXxiljEMC6KuFUh44o6CTQbAx8ZTMtLeIqzTGvkvbUVAWFnshhVmwCEfauz
+	 4T1PmY3V+ddvw==
+Date: Tue, 15 Oct 2024 09:09:52 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, Mark
+ Lee <Mark-MC.Lee@mediatek.com>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, upstream@airoha.com
+Subject: Re: [PATCH net-next v2] net: airoha: Implement BQL support
+Message-ID: <20241015090952.6bcb5856@kernel.org>
+In-Reply-To: <Zw6QUxpdnJtorc_e@lore-desk>
+References: <20241012-en7581-bql-v2-1-4deb4efdb60b@kernel.org>
+	<20241015073255.74070172@kernel.org>
+	<Zw5-jJUIWhG6-Ja4@lore-desk>
+	<20241015075255.7a50074f@kernel.org>
+	<Zw6QUxpdnJtorc_e@lore-desk>
 MIME-Version: 1.0
-References: <20241015-color-v1-1-35b01fa0a826@chromium.org>
-In-Reply-To: <20241015-color-v1-1-35b01fa0a826@chromium.org>
-From: Doug Anderson <dianders@chromium.org>
-Date: Tue, 15 Oct 2024 08:58:36 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=XrrhUoB9=JuPY2erLMA7S-EREqvP5t8NNuBuUiA4rZjQ@mail.gmail.com>
-Message-ID: <CAD=FV=XrrhUoB9=JuPY2erLMA7S-EREqvP5t8NNuBuUiA4rZjQ@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: Fix color format MACROs in OVL
-To: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_085858_968861_533D98EB 
-X-CRM114-Status: GOOD (  20.30  )
+X-CRM114-CacheID: sfid-20241015_090956_060931_70E4DD56 
+X-CRM114-Status: GOOD (  16.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,58 +79,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Tue, 15 Oct 2024 17:54:59 +0200 Lorenzo Bianconi wrote:
+> > Oh, thought its called on stop. In that case we're probably good
+> > from BQL perspective.
+> > 
+> > But does it mean potentially very stale packets can sit on the Tx
+> > ring when the device is stopped, until it's started again?  
+> 
+> Do you mean the packets that the stack is transmitting when the .ndo_stop()
+> is run?
 
-On Tue, Oct 15, 2024 at 3:30=E2=80=AFAM Hsin-Te Yuan <yuanhsinte@chromium.o=
-rg> wrote:
->
-> In commit 9f428b95ac89 ("drm/mediatek: Add new color format MACROs in
-> OVL"), some new color formats are defined in the MACROs to make the
-> switch statement more concise. However, there are typos in these
-> formats MACROs, which cause the return value to be incorrect. Fix the
-> typos to ensure the return value remains unchanged.
+Whatever is in the queue at the time ndo_stop() gets called.
+Could be the full descriptor ring I presume?
 
-Right. I had a little bit of time figuring it out from the commit
-message of the original CL, but I think the commit you're fixing was
-_intended_ to be a noop and just a cleanup. ...but after resolving the
-#defines before and after I can see that it wasn't.
+> In airoha_dev_stop() we call netif_tx_disable() to disable the transmission
+> on new packets and inflight packets will be consumed by the completion napi,
+> is it not enough?
 
+They will only get consumed if the DMA gets to them right?
+Stop seems to stop the DMA.
 
-> Fix: 9f428b95ac89 ("drm/mediatek: Add new color format MACROs in OVL")
+> I guess we can even add netdev_tx_reset_subqueue() for all netdev
+> queues in airoha_dev_stop(), I do not have a strong opinion about it. What
+> do you prefer?
 
-The above syntax isn't quite right. It should be:
-
-Fixes: 9f428b95ac89 ("drm/mediatek: Add new color format MACROs in OVL")
-
-See `Documentation/process/submitting-patches.rst` which talks about
-how to get `git` to format it for you.
-
-
-> Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
-> ---
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/me=
-diatek/mtk_disp_ovl.c
-> index 89b439dcf3a6af9f5799487fdc0f128a9b5cbe4a..1632ac5c23d87e1cdc41013a9=
-cf7864728dcb63b 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> @@ -65,8 +65,8 @@
->  #define OVL_CON_CLRFMT_RGB     (1 << 12)
->  #define OVL_CON_CLRFMT_ARGB8888        (2 << 12)
->  #define OVL_CON_CLRFMT_RGBA8888        (3 << 12)
-> -#define OVL_CON_CLRFMT_ABGR8888        (OVL_CON_CLRFMT_RGBA8888 | OVL_CO=
-N_BYTE_SWAP)
-> -#define OVL_CON_CLRFMT_BGRA8888        (OVL_CON_CLRFMT_ARGB8888 | OVL_CO=
-N_BYTE_SWAP)
-> +#define OVL_CON_CLRFMT_ABGR8888        (OVL_CON_CLRFMT_ARGB8888 | OVL_CO=
-N_BYTE_SWAP)
-> +#define OVL_CON_CLRFMT_BGRA8888        (OVL_CON_CLRFMT_RGBA8888 | OVL_CO=
-N_BYTE_SWAP)
-
-Other than the slightly broken "Fixes" tag, the above looks right to me.
-
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+So to be clear I think this patch is correct as of the current driver
+code. I'm just wondering if we should call airoha_qdma_cleanup_tx_queue()
+on stop as well, and then that should come with the reset.
+I think having a packet stuck in a queue may lead to all sort of oddness
+so my recommendation would be to flush the queues.
 
