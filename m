@@ -4,69 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56F59D18157
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 00:15:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2079CD1815E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 01:12:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D1bOouhGYp8qYUjvtk9VBz/g0FK7jRRodQ+2KCWlw7I=; b=k5S4b8mRRWGUFxt9cNNW0dr8s3
-	2lqA5t0Kukh2VrIgEcMVcFooYRhIk2t1/tza7/rue6FLk63DTjS4fgPHwKSDNebpK9Pv00/SmHh6t
-	FnK3+4o0Y9e22fssCIB/NwInAYywHCDa7t9JKOVJJkyMACRgxnSYRBVE7k8wEscYaNDGlnafJ3asV
-	f6epHz534Lx3Psjoo9yFBxRP6E6t/Xu4dMfM9B+bwSxesYZYPe6+rL+Ev+QbkSKf6bo81iHB2La/B
-	yfayuFWyhG9pNlrx9xEovnrIc+wG0n0YTLnXDcoT+hbSJhXwVhU1dSwu0ld2F7yoFtNDXHcNvIgns
-	sN8miFWw==;
+	bh=ravJTlOXu8ojJTQkL/Ob5BlmUv3r87cKAcT8CjYvcHA=; b=Mnw630tTEc+EYx1uJAlalrtNeq
+	oawFp+1Pq03gUpW6oa0PURIUS68ob/NiEoI1CirqqHoBf6s0dQJwbxafXWKssiultjxlr5r7Pi4AU
+	WvSt0qr7hwp+S9awzqoexEYCgc/XaN5B6qPxf+3WB9O+GkhZCkrnPkhBs6T+3qP7IqS+huLQOXpRS
+	uWWWFquvdMe/I17ZWaxc3JZSb2G/OBaoZTcxPdwlm343D+IbNzq+3VDE6QXfJUS4Tz/JxcOOJoDoX
+	DvGSE1F8f6dOD3n20gEuxSdqZDv4HyjZr+yV/yEsiFLOAr+IrgbgxR3duDy203RjT2KI5YfVOUVha
+	UNjqkwHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0VDt-00000006gkw-0Uil;
-	Tue, 15 Oct 2024 00:15:37 +0000
+	id 1t0W6V-00000006kXa-48Lz;
+	Tue, 15 Oct 2024 01:12:03 +0000
 Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0VCT-00000006gZH-2rYB;
-	Tue, 15 Oct 2024 00:14:11 +0000
+	id 1t0W54-00000006kAt-2O3C;
+	Tue, 15 Oct 2024 01:10:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 98022A42980;
-	Tue, 15 Oct 2024 00:13:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69880C4CEC3;
-	Tue, 15 Oct 2024 00:14:07 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 07486A40178;
+	Tue, 15 Oct 2024 01:10:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 94BCAC4CEC6;
+	Tue, 15 Oct 2024 01:10:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1728951248;
-	bh=vC2js+3LTh37+eK6v22mAPM7Aj/mMz6+h5IByLtkN9E=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=KA8B/kcn+CyFsGvB5lRCxHl/oMJ1/+ytr1xDfxtbTs2DknFuUjJajsNy0pBQtNinE
-	 aBThc9YZ1cFhAt31Z5v+RM/dhm2JAPTKuGtyuje64hxEH/H5VEHEbjO4USBbUN1fAj
-	 guPIt3CzR7l2Z+1Z0iyzUflxo7LwX4BZfgu0zRLrp0OQKlnGPZAWBX+nVhbl7Gsjv6
-	 QUT/nM9S1klJHU1VYvDFpllFdm+q/ha04BQtbSPGDMqXRkoJOlhnkVy9vfNjYfYlgJ
-	 jQjJ7ODdnQfVsF0VXXApSdXdP/on+vs9Gx0cHlCCgG8uaZ6zjBRSt7o7Mfyx1NvgCU
-	 8QE2ujuElZjug==
-Date: Mon, 14 Oct 2024 17:14:06 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Yunsheng Lin <linyunsheng@huawei.com>
-Cc: <davem@davemloft.net>, <pabeni@redhat.com>, <liuyonglong@huawei.com>,
- <fanghaiqing@huawei.com>, <zhangkun09@huawei.com>, Alexander Lobakin
- <aleksander.lobakin@intel.com>, Robin Murphy <robin.murphy@arm.com>,
- Alexander Duyck <alexander.duyck@gmail.com>, IOMMU <iommu@lists.linux.dev>,
- Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann
- <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, John
- Fastabend <john.fastabend@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, <netdev@vger.kernel.org>,
- <intel-wired-lan@lists.osuosl.org>, <bpf@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH net v2 0/2] fix two bugs related to page_pool
-Message-ID: <20241014171406.43e730c9@kernel.org>
-In-Reply-To: <b1fd5ece-b967-4e56-ad4f-64ec437e2634@huawei.com>
-References: <20240925075707.3970187-1-linyunsheng@huawei.com>
-	<b1fd5ece-b967-4e56-ad4f-64ec437e2634@huawei.com>
+	s=k20201202; t=1728954632;
+	bh=UOJbWPQWmTdSA81rRftszQfoSPKSv3GWQ0BhskXRA1Q=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=Hcqc9zXWMU9uInhPEYS18uZ18agL7FETCOaPCOiNIvw2HOxui9j/HJQXDlxgLyhvc
+	 7P7YHkfk2qIe/vYDYq4JNKy/qpc2bk9LJgCobv/+idYbJdwS0brsGYZtF2/M+ag1x8
+	 cLMNv+X7ueeSFXWrTKpv5sMWwrfrfOqcCpJViPYGKiE3XdIWaMhtQia7qUHl9Wc3Y1
+	 WDBQuE/6nf8WpF+BCm953upU5QeW4QZCXVCPmCMl8h214KsupcF1e7ylGKn5Nk27EC
+	 KwstXL5YPECB9NaHjgjJOZ0IFKareUYpP/Ak1CDpEcog4HH8TXjCCJWb/3Hj4FglXc
+	 WjGVbjL7od4bQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EAF983822E4C;
+	Tue, 15 Oct 2024 01:10:38 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH] net: mtk_eth_soc: use ethtool_puts
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <172895463776.686374.17879317591216862359.git-patchwork-notify@kernel.org>
+Date: Tue, 15 Oct 2024 01:10:37 +0000
+References: <20241011200225.7403-1-rosenp@gmail.com>
+In-Reply-To: <20241011200225.7403-1-rosenp@gmail.com>
+To: Rosen Penev <rosenp@gmail.com>
+Cc: netdev@vger.kernel.org, nbd@nbd.name, sean.wang@mediatek.com,
+ Mark-MC.Lee@mediatek.com, lorenzo@kernel.org, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241014_171409_822076_36566404 
-X-CRM114-Status: UNSURE (   8.59  )
+X-CRM114-CacheID: sfid-20241014_181034_689805_F7A0CCD7 
+X-CRM114-Status: UNSURE (   8.93  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,19 +78,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 12 Oct 2024 20:05:31 +0800 Yunsheng Lin wrote:
-> 1. Semantics changing of supporting unlimited inflight pages
->    to limited inflight pages that are as large as the pool_size
->    of page_pool.
+Hello:
 
-How can this possibly work?
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-The main thing stopping me from reposting my fix that it'd be nice to
-figure out if a real IOMMU device is bound or not. If we don't have
-real per-device mappings we presumably don't have to wait. If we can 
-check this condition we are guaranteed not to introduce regressions,
-since we would be replacing a crash by a wait, which is strictly better.
+On Fri, 11 Oct 2024 13:02:25 -0700 you wrote:
+> Allows simplifying get_strings and avoids manual pointer manipulation.
+> 
+> Tested on Belkin RT1800.
+> 
+> Signed-off-by: Rosen Penev <rosenp@gmail.com>
+> ---
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
 
-If we'd need to fiddle with too many internals to find out if we have
-to wait - let's just always wait and see if anyone complains.
+Here is the summary with links:
+  - net: mtk_eth_soc: use ethtool_puts
+    https://git.kernel.org/netdev/net-next/c/2a22bead433e
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
