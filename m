@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58AD2CFC268
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 05:36:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39A62CFC26E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 06:46:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2HWrH+K7cTgTjTPYZ+dL7fGmCBNocSiDK/Hn2JY2vEs=; b=kU2lnRG/exEoC90Sn8Xt4nbhZ5
-	jssTxwEaxdZe1PorTMEnRNgY9lm6YP8p7arRo9USgqn1NPgC4IeaxIm8iEXbCv/98QZ8SpobyvHC+
-	iff1jidOGUrLXPEjc8/+KFNeLtmPUE09Ky2mbDpxKnEWTUIheiraog6DEwNnzZCr+rc9n6x42Z6DH
-	4adeNxN9xsrePlewPmsBNSn7FMIlPsTzRuNUmpGYis86+TvVJD2pttyXAPbclplIr9RvP88I76heP
-	y02z7l29OSWKQadsnTOt5X+uWHzGfDG/MyqfxdHHCiEUX4oRc7rQ9AYyMsGCrxIBz16x5IVKt96AN
-	ZzWTLaQw==;
+	bh=LSQe+OWkJptNhalICgZHHnWYpzgrAnYhHgBYOyd2y2A=; b=su6UwG17xLK9kbV3MxooeDuXh8
+	VVFjp5gvBrfkzZ5DvjcYBun0B1QCcH4gR7ddwghmlVWXDGOp2McNvfH9vYcYjpXGEFmzoM3R8oXnS
+	3cXvnSuYosRCZlwjXhGJJKtKTMVHueD4M+tOjOvRZLmw5m9Uz6Prf7guGYcHADwdSanSrftham4/d
+	DbZnBSuyHtqD5oCNfHctuq7+LO7Zp0TLzuLRb+n/dywoJHnygdthJqdlW4YNcCNf23cmjWvx/AZWQ
+	OMF9N5l+DvAL8eI59RWOxoWVL+qcb+ZQC+WxNcNpbaSdX3LJDbkrtbziGmMmYwk8TTgTj6QgqnzoO
+	PwZqObDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0aEU-000000077Ll-1MtZ;
-	Tue, 15 Oct 2024 05:36:34 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1t0bK8-00000007Fki-0Y9H;
+	Tue, 15 Oct 2024 06:46:28 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0aD3-0000000779Z-1llC
+	id 1t0b7E-00000007E2j-0VOD
 	for linux-mediatek@lists.infradead.org;
-	Tue, 15 Oct 2024 05:35:06 +0000
-Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-539e690479cso2599186e87.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 14 Oct 2024 22:35:04 -0700 (PDT)
+	Tue, 15 Oct 2024 06:33:09 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-539eb97f26aso2395294e87.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 14 Oct 2024 23:33:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1728970503; x=1729575303; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1728973986; x=1729578786; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=2HWrH+K7cTgTjTPYZ+dL7fGmCBNocSiDK/Hn2JY2vEs=;
-        b=n4N9GT+oiFJIu+6hEFkVLyPUiRiTGuR2qvoC/K4T93/cn9UTwRcfS9/QU7stab1EiN
-         Rha4HE2Mzk4IOxgxRrTdbQigrqyGOKiK8Hd2lOMH7y1qxGr1JZhf+lfXVVp697AA0rGW
-         6OvAT/Xk0kzvXg5pgngMMY73OGY2f6BB/biLE=
+        bh=LSQe+OWkJptNhalICgZHHnWYpzgrAnYhHgBYOyd2y2A=;
+        b=Mjm2TwUjF8tVeV60WrV7sEuGsVw1Qg2pNkwASz3Sqi/gL8+krGRVopeim3B2qz7Ojv
+         qu53BDgEFLuouNJFo6ol82usE+9rR1VonFuhjvNy4zui+Yi6HnpDCEQwUXumjq0Uq7Zc
+         qXzLMJKPO8yUQOPPM+IQfqOdY0oTjUm2l4cwc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1728970503; x=1729575303;
+        d=1e100.net; s=20230601; t=1728973986; x=1729578786;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=2HWrH+K7cTgTjTPYZ+dL7fGmCBNocSiDK/Hn2JY2vEs=;
-        b=trMxj+2IzpgqU0p2yNNt/JDyXk12jJW5U0LdtxLPayIJtzWyb+6pTTlYiR2Zj8q/6V
-         /Xfk6KYzq7BiPNtYv0PGKIuGqGLMVJm/igY33h3XLDbCY1Zp1PlKCJ8peSnaMFhZUcd4
-         0v2JwILL6qjd72wle1Bd2xNb6lOyrZ4hoS9d58MgJ+5fHrrXyU/5in4Nf0zdnxDYtYT3
-         b1t0JdG46+KzaCBTQPizuylGf8xnxj7/FKPRrQCEVmTgRP5OVWWopELiqFmjooB3VuZ4
-         ieyiooXMbeTXnwgtMWs56mUiKUOyNvTOLW5xLL+j5vAX+FBwLzmw3ayplpVY5rA2Ujs3
-         rycQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWIV+4PNmV8w3+ogrykGlL+bmO68JNz8wGwjiaqvsOPCNyFRWNfi5YiRDwqL/k+zLRTgmrkquomatIM13O8ZA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywfc1gkhmpB0+ZP8sbSs1nE+meJMA7hw1aB54378xPxP1/X+ntJ
-	d0fjPVFVvXiei4k+W5+e1Dx4t0ZfHshaQP5UY2LM+O25Xl2qVM/UEWbwr7it4BjMJIny//CCl8S
-	pyJ00+BhlQj4gLgkRZ4rr69lqhevlJxamqC9l
-X-Google-Smtp-Source: AGHT+IE/CwxLRzqmXVYjkMDrcTm2+DQg9NcGd7Zyw9exDfJ8teYEZF+svaLAA8rUa5571DxzVoiZK6455ROycmYsGCQ=
-X-Received: by 2002:a05:6512:1598:b0:539:9155:e8d4 with SMTP id
- 2adb3069b0e04-539e54d77ecmr4621333e87.8.1728970503111; Mon, 14 Oct 2024
- 22:35:03 -0700 (PDT)
+        bh=LSQe+OWkJptNhalICgZHHnWYpzgrAnYhHgBYOyd2y2A=;
+        b=QtLIekAt4wbJFQ5gKcPpSYOkiwRUg+Nf7xly99ns6V5sEsoQL/n5pYb1Cvj1lLTFE2
+         UuzAvLu3p0G9qTWYOQkSOOV0i14tNetQw4sEbMMcO9hLlwoZ5xCKUers2FMo5b7p2N99
+         APXfhabWHvlnYDI0+c+hj+BxpdI7CAniIYAPGZinQ5ThaZD5w/ukk4c8M7Ips1/uI9Av
+         Y8aEkja3paAwl5eSKTJCSZwlG3ykSWxgIwe/fQ8XUhUY4WPP3PQ7e5BL2RqMkWR0YZAK
+         iWb3u/x1iDJoT12KJu7jVpr9VfPu9qyJQmct71oO/GbGcpkdTK4VvjbDNKaAM/YqWVvj
+         orcA==
+X-Forwarded-Encrypted: i=1; AJvYcCWBPfPn9iKziQLpwUPsP/IKWsjxtYkZHoyei9kJR0s6+9uR+bm0LIWepGCa8sZhhJEHuTP7xZESWw+qp5j0gQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzys3u5TLU1AI9uDFrEoTE2LvI8x+ZsXFli/Pv2SI5Ck7tpRag4
+	ebLOP1YPP1ZaCDKnaWCHz3+YkvyOR2ITQijHN8p2cmCEygaMwzyICI66/bwBKFMtKZWNcbZr1cA
+	uAmD7vwL7n4aXMrXPAwgyAj5AyY853DwuUIzq
+X-Google-Smtp-Source: AGHT+IEi5VM5BInri+Xle/NpCFhUkRIBDd77CTdk9H6/daGndiGJT4jSou7J34vtaK0aKDEUC8sIsGSEXiAysfqU1+Q=
+X-Received: by 2002:a05:6512:2396:b0:539:eb82:d453 with SMTP id
+ 2adb3069b0e04-539eb82d67dmr3760676e87.39.1728973986262; Mon, 14 Oct 2024
+ 23:33:06 -0700 (PDT)
 MIME-Version: 1.0
-References: <20241008073430.3992087-1-wenst@chromium.org> <20241008073430.3992087-7-wenst@chromium.org>
- <Zwfwv-O9ln-PVMdc@smile.fi.intel.com> <CAGXv+5F=5f4R5AExANxOwgTL6_VbpHdNKKhHnzy_PDcxtcFoEQ@mail.gmail.com>
- <Zwz-benEP4PHbRb2@smile.fi.intel.com>
-In-Reply-To: <Zwz-benEP4PHbRb2@smile.fi.intel.com>
+References: <20241008073430.3992087-1-wenst@chromium.org> <20241008073430.3992087-8-wenst@chromium.org>
+ <Zwfy6ER6sbr_QxsY@smile.fi.intel.com> <ZwfzhsvlPrxMi61j@smile.fi.intel.com>
+ <CAGXv+5ED7j49ndT7BaESW8ZL7_mjVUJLM_FWma8Lwkg+Uh3saw@mail.gmail.com> <Zwz_Kl7SwfL0ZaAZ@smile.fi.intel.com>
+In-Reply-To: <Zwz_Kl7SwfL0ZaAZ@smile.fi.intel.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 15 Oct 2024 13:34:52 +0800
-Message-ID: <CAGXv+5HtDqf9MbGc53axP276fFA6riM85+Sa7nXHPvZcCb5-Pg@mail.gmail.com>
-Subject: Re: [PATCH v8 6/8] i2c: of-prober: Add GPIO support to simple helpers
+Date: Tue, 15 Oct 2024 14:32:54 +0800
+Message-ID: <CAGXv+5H0Yvt1cwPOim-quT3C+=s9NapnryJhNxs_QW=DAyAycQ@mail.gmail.com>
+Subject: Re: [PATCH v8 7/8] platform/chrome: Introduce device tree hardware prober
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -79,8 +79,8 @@ Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241014_223505_479723_F48D6D35 
-X-CRM114-Status: GOOD (  37.58  )
+X-CRM114-CacheID: sfid-20241014_233308_212874_B86AC9E0 
+X-CRM114-Status: GOOD (  20.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,96 +95,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 14, 2024 at 7:20=E2=80=AFPM Andy Shevchenko
+On Mon, Oct 14, 2024 at 7:23=E2=80=AFPM Andy Shevchenko
 <andriy.shevchenko@linux.intel.com> wrote:
 >
-> On Mon, Oct 14, 2024 at 12:06:16PM +0800, Chen-Yu Tsai wrote:
-> > On Thu, Oct 10, 2024 at 11:20=E2=80=AFPM Andy Shevchenko
+> On Mon, Oct 14, 2024 at 12:56:20PM +0800, Chen-Yu Tsai wrote:
+> > On Thu, Oct 10, 2024 at 11:32=E2=80=AFPM Andy Shevchenko
 > > <andriy.shevchenko@linux.intel.com> wrote:
-> > > On Tue, Oct 08, 2024 at 03:34:25PM +0800, Chen-Yu Tsai wrote:
-> > > > Add GPIO support to the simple helpers for the I2C OF component pro=
-ber.
-> > > > Components that the prober intends to probe likely require their
-> > > > regulator supplies be enabled, and GPIOs be toggled to enable them =
-or
-> > > > bring them out of reset before they will respond to probe attempts.
-> > > > Regulator supplies were handled in the previous patch.
-> > > >
-> > > > The assumption is that the same class of components to be probed ar=
-e
-> > > > always connected in the same fashion with the same regulator supply
-> > > > and GPIO. The names may vary due to binding differences, but the
-> > > > physical layout does not change.
-> > > >
-> > > > This supports at most one GPIO pin. The user must specify the GPIO =
-name,
-> > > > the polarity, and the amount of time to wait after the GPIO is togg=
-led.
-> > > > Devices with more than one GPIO pin likely require specific power
-> > > > sequencing beyond what generic code can easily support.
+> > > On Thu, Oct 10, 2024 at 06:29:44PM +0300, Andy Shevchenko wrote:
+> > > > On Tue, Oct 08, 2024 at 03:34:26PM +0800, Chen-Yu Tsai wrote:
 >
 > ...
 >
-> > > > +     /* An empty string signals an unnamed GPIO */
-> > > > +     if (!ctx->opts->gpio_name[0])
-> > > > +             con_id =3D NULL;
-> > > > +     else
-> > > > +             con_id =3D ctx->opts->gpio_name;
-> > >
-> > > Can it use positive conditional?
-> > >
-> > >         if (ctx->opts->gpio_name[0])
-> > >                 con_id =3D ctx->opts->gpio_name;
-> > >         else
-> > >                 con_id =3D NULL;
+> > > > > +   .cfg =3D &chromeos_i2c_probe_simple_trackpad_cfg,
+> > > >
+> > > >       .cfg =3D DEFINE_I2C_OF_PROBE_CFG(trackpad, i2c_of_probe_simpl=
+e_ops),
+> > > >
+> > > > Or even
+> > > >
+> > > > #define DEFINE_I2C_OF_PROBE_CFG_SIMPLE(_type_)                     =
+   \
+> > > >       DEFINE_I2C_OF_PROBE_CFG(type, &i2c_of_probe_simple_ops)
 > >
-> > You suggested writing it this way in your reply to v7. Please pick one.
+> > I'm not inclined on using compound literals here. "simple X cfg" will
+> > likely get shared between multiple |chromeos_i2c_probe_data| entries,
+> > and AFAIK the toolchain can't merge them. So we would end up with one
+> > compound literal per entry, even if their contents are the same.
 >
-> Oh, whatever you will finish with then, sorry for the noise.
->
-> ...
->
-> > > > +static void i2c_of_probe_simple_disable_gpio(struct device *dev, s=
-truct i2c_of_probe_simple_ctx *ctx)
-> > > > +{
-> > > > +     if (!ctx->gpiod)
-> > > > +             return;
-> > >
-> > > Do you need this check for the future patches?
-> >
-> > Not sure I follow. The check is needed because this function is called
-> > in i2c_of_probe_simple_cleanup(), but the GPIO could have been released
-> > earlier in i2c_of_probe_simple_cleanup_early(), and that makes this
-> > function a no-op.
->
-> Do you have a known race condition then? This is bad. You shouldn't rely =
-on
-> the sequence of events here, or the serialisation has to be added.
->
-> > The helpers for the release side are quite short, but the ones on the
-> > request side wrap some conditional and error handling. I think it's
-> > better to keep it symmetric?
->
-> Yes, but why do you need the above check, I didn't still get...
-> I.o.w. you think that there is a gap in time that (if no check) the GPIO
-> descriptor might be changed? But then how does it affect anyway the possi=
-bility
-> that it becomes not NULL even with the current code.
+> I'm not sure I follow, you are using compound literal _already_.
+> How does my proposal change that?
 
-The opposite actually. Either it is always NULL, or it was initially valid,
-but the early cleanup function released it and thus it became NULL by the
-time this function gets called.
+I'm using it where it makes sense, i.e. where the embedded variable
+is not going to be shared with other instances.
+
+For the dumb probers, there's only going to be one instance per "type".
+
+For the simple probers, the config part is still one instance per "type",
+but the parameters are board and component specific. There will be
+multiple instances. Hence the config part can be shared, while the
+parameters likely won't be.
+
+> > > With that also looking at the above
+> > >
+> > > #define DEFINE_I2C_OF_PROBE_CFG_NONE(_type_)                         =
+   \
+> > >         DEFINE_I2C_OF_PROBE_CFG(type, NULL)
+> >
+> > For the "dumb" case it makes sense though, since it would be one instan=
+ce
+> > per type. But we could go further and just wrap the whole
+> > |chromeos_i2c_probe_data| declaration.
+>
+> Maybe it's too far from now...
+
+This is what I have:
+
+#define DEFINE_CHROMEOS_I2C_PROBE_DATA_DUMB(_type)
+                        \
+       static const struct chromeos_i2c_probe_data
+chromeos_i2c_probe_dumb_ ## _type =3D {       \
+               .cfg =3D &(const struct i2c_of_probe_cfg) {
+                        \
+                       .type =3D #_type,
+                        \
+               },
+                        \
+};
+
+DEFINE_CHROMEOS_I2C_PROBE_DATA_DUMB(touchscreen);
+
 
 ChenYu
-
-> > > > +     /* Ignore error if GPIO is not in output direction */
-> > > > +     gpiod_set_value(ctx->gpiod, !ctx->opts->gpio_assert_to_enable=
-);
-> > > > +}
->
-> --
-> With Best Regards,
-> Andy Shevchenko
->
->
 
