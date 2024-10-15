@@ -4,73 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C751D216A7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 13:53:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86EA2D216AD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 14:26:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JtntzD4T+lk4EFDlN8LbGPa46tKTx4hoJRirAyYOZRI=; b=lbnJTt5MCgyO0oSmLLzupW+GmN
-	T9AceWWTV0HaTMRQgHRsBGdEg4ZQZxqPIy6XbUMt6mNBd+EIkWGPr9xItGKGnMw3sCDvjAFhun0IO
-	QXhMp41RjVoyV6s8n5Rq8JRMgU++nTEK1msqks/qSIU6zK4VIXsGEHbYlfu/49UHt2cPRicTU+38a
-	lH4pZkX6G4/rAPwUsaAzgxM2eiccWNosiOmzG178zsP3ogQHntMaVbKb+ccs0MWDhJCuJgtTBSP2E
-	EYW0F4/4lpCymXxXX6nCSKRrTC0uh2TjBmDPRDm9HkLuNF40rKr/ijQbhTeedf+eHfmVEU+9F51TE
-	RxubSKNg==;
+	bh=FiHe6e3AFwblX7GlGI1M3psvCDtCwffLLetd2q1nO5s=; b=Is0hSGJae+ZOXAOZs8rVgTybxY
+	WUtlDcfF8TQBI/XMn8kELEZXvys/CrATwSPh+HA9/nqMFm0kgB7gL5+a3acyGMSiRLiwGBxpPUsQT
+	Hvyou40Wc8+9rVX2CntAu8zAiX0y5NjCw5GG90ZUnsAqQ9laZSy4dsehn4hd1AEVeiiVpEn8rHrih
+	GGTMEi27gWz+JtZxgvrpMBD+NoB4kWEUvSo8JVcqpYOfV0plHXTGSdrSrVLSBkRgrrq3NFFJ0MJK7
+	nuCCNRZXpmKScx1DC4kqiW6xf3JV5NKj9JNgTTNwSIpuo2GE/qEUYdxFwm/EmjQ4UvXcpX1P1/yON
+	o8Ee1aLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0hzg-00000008QiO-1r6i;
-	Tue, 15 Oct 2024 13:53:48 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1t0iUv-00000008VmF-1yRu;
+	Tue, 15 Oct 2024 14:26:05 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0hu9-00000008Q4E-3RQh;
-	Tue, 15 Oct 2024 13:48:07 +0000
+	id 1t0iMw-00000008UTU-0LFw;
+	Tue, 15 Oct 2024 14:17:52 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 6F9825C553D;
-	Tue, 15 Oct 2024 13:48:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8040C4CEC6;
-	Tue, 15 Oct 2024 13:48:03 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id B11095C5D8F;
+	Tue, 15 Oct 2024 14:17:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C4C0C4CEC6;
+	Tue, 15 Oct 2024 14:17:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729000084;
-	bh=/NmfRsrehmeVAhyHDDve2yS9vV0V1XSran4v1dvYbn4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=kaSTKnHdTsmNQLGgh9abZGKDCqSpFnT13kTPLP9Y0s1KaqxBaR1lfvW3ZMqA642L6
-	 XrSGjYffLr6DeVcuUQAfPybqRYg4ygD6XQ2YwpsH+42oe7xFPPrnbIVB8rIRPsn/11
-	 59sapKV5O7/GohV4PBVKShUFwW9a9Iq904+/LSBZUNKI6AOlFt+lL9EuHe2ADC6CV4
-	 zNn/WiuOQT4UrbLfbrqThg4x+G2ZTueQdJPSVDVjQGdUxUtd8LOtJLxV0BvOb6ry49
-	 DNsiFvoelNxka/2Jt5cx0kdVZTLBKYsV83AaIiSQu79dM3NnZWnu7B6fU3t+pJAwn7
-	 PxZmMsCngPbpA==
-Date: Tue, 15 Oct 2024 08:48:02 -0500
-From: Rob Herring <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	conor+dt@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
-	daniel@ffwll.ch, maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org, tzimmermann@suse.de, matthias.bgg@gmail.com,
-	shawn.sung@mediatek.com, yu-chang.lee@mediatek.com,
-	ck.hu@mediatek.com, jitao.shi@mediatek.com,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, wenst@chromium.org,
-	kernel@collabora.com, sui.jingfeng@linux.dev, michael@walle.cc,
-	sjoerd@collabora.com, Alexandre Mergnat <amergnat@baylibre.com>,
-	Michael Walle <mwalle@kernel.org>
-Subject: Re: [PATCH v12 1/3] dt-bindings: display: mediatek: Add OF graph
- support for board path
-Message-ID: <20241015134802.GB447702-robh@kernel.org>
-References: <20241014085148.71105-1-angelogioacchino.delregno@collabora.com>
- <20241014085148.71105-2-angelogioacchino.delregno@collabora.com>
- <CAL_Jsq+hpTPCkuXoCF88nyS_D+iFZB5osrt1q04RxffDsY7cXw@mail.gmail.com>
- <ec14b01e-7237-4f52-82a6-b8de42fb120b@collabora.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+	s=k20201202; t=1729001868;
+	bh=iZqNn7g9OXXe6WGfli4O7RtbH/+szUKN4vMHdvXmN+g=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=kP1MDclPUrNREYEAwxiyR80xbeOTPqkTkG/X952td+u/RHZ7rHSNdXzC3EFOeEeph
+	 fYvaVdAxWxBofYTsqm3KQ3hBZfY4PozFgds6U89KcImxmX6E9wVASRJARLOPAKQnQp
+	 n5cjs26QM5B+49JeTL/ksTRb0ZWg2xCpoVPu6cinHhX6/UbjdY9QVf0JYwZVB1aayc
+	 G+U4DDbzzy1aLlaYljoe4fezguILi+m90W/vw8HNDD/fIXFgcY0GWV7U2mtzLQ/lK1
+	 JK27TqLOnX1csuMRwVzINFCLfPeKTh25J+fKcSCfQ0V/8sXeVGhiDpD79+AVuaAXec
+	 LnUNJDDqL+MyQ==
+Date: Tue, 15 Oct 2024 09:17:46 -0500
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <ec14b01e-7237-4f52-82a6-b8de42fb120b@collabora.com>
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ linux-mediatek@lists.infradead.org, 
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, devicetree@vger.kernel.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, 
+ ChiYuan Huang <cy_huang@richtek.com>, Bear Wang <bear.wang@mediatek.com>, 
+ Macpaul Lin <macpaul@gmail.com>, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Pablo Sun <pablo.sun@mediatek.com>, 
+ Chris-qj chen <chris-qj.chen@mediatek.com>
+In-Reply-To: <20241015103337.20479-1-macpaul.lin@mediatek.com>
+References: <20241015103337.20479-1-macpaul.lin@mediatek.com>
+Message-Id: <172900161055.732877.16548202853893861395.robh@kernel.org>
+Subject: Re: [PATCH 1/2] dt-bindings: usb: mediatek,mt6360-tcpc: add ports
+ properties
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_064805_978246_27C65869 
-X-CRM114-Status: GOOD (  48.70  )
+X-CRM114-CacheID: sfid-20241015_071750_195723_CB8CBEDB 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,286 +82,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 15, 2024 at 10:32:22AM +0200, AngeloGioacchino Del Regno wrote:
-> Il 14/10/24 19:36, Rob Herring ha scritto:
-> > On Mon, Oct 14, 2024 at 3:51 AM AngeloGioacchino Del Regno
-> > <angelogioacchino.delregno@collabora.com> wrote:
-> > > 
-> > > The display IPs in MediaTek SoCs support being interconnected with
-> > > different instances of DDP IPs (for example, merge0 or merge1) and/or
-> > > with different DDP IPs (for example, rdma can be connected with either
-> > > color, dpi, dsi, merge, etc), forming a full Display Data Path that
-> > > ends with an actual display.
-> > > 
-> > > The final display pipeline is effectively board specific, as it does
-> > > depend on the display that is attached to it, and eventually on the
-> > > sensors supported by the board (for example, Adaptive Ambient Light
-> > > would need an Ambient Light Sensor, otherwise it's pointless!), other
-> > > than the output type.
-> > > 
-> > > Add support for OF graphs to most of the MediaTek DDP (display) bindings
-> > > to add flexibility to build custom hardware paths, hence enabling board
-> > > specific configuration of the display pipeline and allowing to finally
-> > > migrate away from using hardcoded paths.
-> > > 
-> > > Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-> > > Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-> > > Tested-by: Alexandre Mergnat <amergnat@baylibre.com>
-> > > Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> > > Tested-by: Michael Walle <mwalle@kernel.org> # on kontron-sbc-i1200
-> > > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > > ---
-> > >   .../display/mediatek/mediatek,aal.yaml        | 40 +++++++++++++++++++
-> > >   .../display/mediatek/mediatek,ccorr.yaml      | 21 ++++++++++
-> > >   .../display/mediatek/mediatek,color.yaml      | 22 ++++++++++
-> > >   .../display/mediatek/mediatek,dither.yaml     | 22 ++++++++++
-> > >   .../display/mediatek/mediatek,dpi.yaml        | 25 +++++++++++-
-> > >   .../display/mediatek/mediatek,dsc.yaml        | 24 +++++++++++
-> > >   .../display/mediatek/mediatek,dsi.yaml        | 27 ++++++++++++-
-> > >   .../display/mediatek/mediatek,ethdr.yaml      | 22 ++++++++++
-> > >   .../display/mediatek/mediatek,gamma.yaml      | 19 +++++++++
-> > >   .../display/mediatek/mediatek,merge.yaml      | 23 +++++++++++
-> > >   .../display/mediatek/mediatek,od.yaml         | 22 ++++++++++
-> > >   .../display/mediatek/mediatek,ovl-2l.yaml     | 22 ++++++++++
-> > >   .../display/mediatek/mediatek,ovl.yaml        | 22 ++++++++++
-> > >   .../display/mediatek/mediatek,postmask.yaml   | 21 ++++++++++
-> > >   .../display/mediatek/mediatek,rdma.yaml       | 22 ++++++++++
-> > >   .../display/mediatek/mediatek,ufoe.yaml       | 21 ++++++++++
-> > >   16 files changed, 372 insertions(+), 3 deletions(-)
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-> > > index cf24434854ff..47ddba5c41af 100644
-> > > --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-> > > +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-> > > @@ -62,6 +62,27 @@ properties:
-> > >       $ref: /schemas/types.yaml#/definitions/phandle-array
-> > >       maxItems: 1
-> > > 
-> > > +  ports:
-> > > +    $ref: /schemas/graph.yaml#/properties/ports
-> > > +    description:
-> > > +      Input and output ports can have multiple endpoints, each of those
-> > > +      connects to either the primary, secondary, etc, display pipeline.
-> > > +
-> > > +    properties:
-> > > +      port@0:
-> > > +        $ref: /schemas/graph.yaml#/properties/port
-> > > +        description: AAL input port
-> > > +
-> > > +      port@1:
-> > > +        $ref: /schemas/graph.yaml#/properties/port
-> > > +        description:
-> > > +          AAL output to the next component's input, for example could be one
-> > > +          of many gamma, overdrive or other blocks.
-> > > +
-> > > +    required:
-> > > +      - port@0
-> > > +      - port@1
-> > > +
-> > >   required:
-> > >     - compatible
-> > >     - reg
-> > > @@ -89,5 +110,24 @@ examples:
-> > >              power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
-> > >              clocks = <&mmsys CLK_MM_DISP_AAL>;
-> > >              mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x5000 0x1000>;
-> > > +
-> > > +           ports {
-> > > +               #address-cells = <1>;
-> > > +               #size-cells = <0>;
-> > > +
-> > > +               port@0 {
-> > > +                   reg = <0>;
-> > > +                   aal0_in: endpoint {
-> > > +                       remote-endpoint = <&ccorr0_out>;
-> > > +                   };
-> > > +               };
-> > > +
-> > > +               port@1 {
-> > > +                   reg = <1>;
-> > > +                   aal0_out: endpoint {
-> > > +                       remote-endpoint = <&gamma0_in>;
-> > > +                   };
-> > > +               };
-> > > +           };
-> > >          };
-> > >       };
-> > > diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-> > > index 9f8366763831..fca8e7bb0cbc 100644
-> > > --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-> > > +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-> > > @@ -57,6 +57,27 @@ properties:
-> > >       $ref: /schemas/types.yaml#/definitions/phandle-array
-> > >       maxItems: 1
-> > > 
-> > > +  ports:
-> > > +    $ref: /schemas/graph.yaml#/properties/ports
-> > > +    description:
-> > > +      Input and output ports can have multiple endpoints, each of those
-> > > +      connects to either the primary, secondary, etc, display pipeline.
-> > > +
-> > > +    properties:
-> > > +      port@0:
-> > > +        $ref: /schemas/graph.yaml#/properties/port
-> > > +        description: CCORR input port
-> > > +
-> > > +      port@1:
-> > > +        $ref: /schemas/graph.yaml#/properties/port
-> > > +        description:
-> > > +          CCORR output to the input of the next desired component in the
-> > > +          display pipeline, usually only one of the available AAL blocks.
-> > > +
-> > > +    required:
-> > > +      - port@0
-> > > +      - port@1
-> > > +
-> > >   required:
-> > >     - compatible
-> > >     - reg
-> > > diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-> > > index 7df786bbad20..6160439ce4d7 100644
-> > > --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-> > > +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-> > > @@ -65,6 +65,28 @@ properties:
-> > >       $ref: /schemas/types.yaml#/definitions/phandle-array
-> > >       maxItems: 1
-> > > 
-> > > +  ports:
-> > > +    $ref: /schemas/graph.yaml#/properties/ports
-> > > +    description:
-> > > +      Input and output ports can have multiple endpoints, each of those
-> > > +      connects to either the primary, secondary, etc, display pipeline.
-> > > +
-> > > +    properties:
-> > > +      port@0:
-> > > +        $ref: /schemas/graph.yaml#/properties/port
-> > > +        description: COLOR input port
-> > > +
-> > > +      port@1:
-> > > +        $ref: /schemas/graph.yaml#/properties/port
-> > > +        description:
-> > > +          COLOR output to the input of the next desired component in the
-> > > +          display pipeline, for example one of the available CCORR or AAL
-> > > +          blocks.
-> > > +
-> > > +    required:
-> > > +      - port@0
-> > > +      - port@1
-> > > +
-> > >   required:
-> > >     - compatible
-> > >     - reg
-> > > diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
-> > > index 6fceb1f95d2a..abaf27916d13 100644
-> > > --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
-> > > +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
-> > > @@ -56,6 +56,28 @@ properties:
-> > >       $ref: /schemas/types.yaml#/definitions/phandle-array
-> > >       maxItems: 1
-> > > 
-> > > +  ports:
-> > > +    $ref: /schemas/graph.yaml#/properties/ports
-> > > +    description:
-> > > +      Input and output ports can have multiple endpoints, each of those
-> > > +      connects to either the primary, secondary, etc, display pipeline.
-> > > +
-> > > +    properties:
-> > > +      port@0:
-> > > +        $ref: /schemas/graph.yaml#/properties/port
-> > > +        description: DITHER input, usually from a POSTMASK or GAMMA block.
-> > > +
-> > > +      port@1:
-> > > +        $ref: /schemas/graph.yaml#/properties/port
-> > > +        description:
-> > > +          DITHER output to the input of the next desired component in the
-> > > +          display pipeline, for example one of the available DSC compressors,
-> > > +          DP_INTF, DSI, LVDS or others.
-> > > +
-> > > +    required:
-> > > +      - port@0
-> > > +      - port@1
-> > > +
-> > >   required:
-> > >     - compatible
-> > >     - reg
-> > > diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-> > > index 3a82aec9021c..b567e3d58aa1 100644
-> > > --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-> > > +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-> > > @@ -71,13 +71,34 @@ properties:
-> > >         Output port node. This port should be connected to the input port of an
-> > >         attached HDMI, LVDS or DisplayPort encoder chip.
-> > > 
-> > > +  ports:
-> > > +    $ref: /schemas/graph.yaml#/properties/ports
-> > > +
-> > > +    properties:
-> > > +      port@0:
-> > > +        $ref: /schemas/graph.yaml#/properties/port
-> > > +        description: DPI input port
-> > > +
-> > > +      port@1:
-> > > +        $ref: /schemas/graph.yaml#/properties/port
-> > > +        description: DPI output to an HDMI, LVDS or DisplayPort encoder input
-> > 
-> > This is wrong. The existing 'port' is the output. 'port' and 'port@0'
-> > are treated as the same thing. Since you are adding an input port, the
-> > new port has to be 'port@1' (or any number but 0).
-> > 
-> > I haven't looked at the driver code, but it should request port 0 and
-> > always get the output port. And requesting port 1 will return an error
-> > or the input port.
+
+On Tue, 15 Oct 2024 18:33:36 +0800, Macpaul Lin wrote:
+> Add 'ports' and sub node 'port' properties to specify connectors on the
+> High-Speed/Super-Speed data bus, or Sideband Use (SBU) AUX lines
+> endpoints of the USB controller.
 > 
-> Hello Rob,
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> ---
+>  .../bindings/usb/mediatek,mt6360-tcpc.yaml    | 21 +++++++++++++++++++
+>  1 file changed, 21 insertions(+)
 > 
-> I want to remind you that in v2 of this series you said that it'd be wrong for
-> port@0 to be an output, I replied that you misread that as I had modeled it indeed
-> as an input, and then you gave me your Reviewed-by tag.
 
-I have not misread it. Then I guess I forgot about it and missed it the 
-next time on v3.
 
-> Anyway - I get your concern about the previous behavior of `port`, but I chose to
-> model this that way purely for consistency.
-> 
-> First of all - the driver(s) will check if we're feeding a full graph, as it will
-> indeed first check if port@1 is present: if it is, then it follows this scheme with
-> port@0 as INPUT and port@1 as OUTPUT.
-> If the component in port@0 is an OUTPUT, the bridge attach will fail.
-> 
-> Getting to bindings themselves, then... it would be a mistake to model port@0 as an
-> output and port@1 as an input, because that would be not only inconsistent with the
-> DRM Bridge bindings, but would be highly confusing when reading the devicetree.
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
 
-Somewhat confusing, yes. Highly, no. Put a comment in the DT.
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
 
-> Please note that the bridge bindings are always declaring port@0 as an INPUT and
-> other ports as OUTPUT(s).
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
 
-There is no guarantee on that. Port numbering is local to the bridge and 
-opaque to anything outside that bridge. That is why you have to document 
-what each port represents.
+  pip3 install dtschema --upgrade
 
-Would we have followed that convention if all the ports were defined 
-from the start? Certainly. But that didn't happen and you are stuck with 
-the existing binding and ABI.
 
-> As an example, you can check display/bridge/analogix,anx7625.yaml or
-> display/bridge/samsung,mipi-dsim.yaml (and others) for bridges, otherwise
-> display/st,stm32mp25-lvds.yaml or display/allwinner,sun4i-a10-display-frontend.yaml
-> (and others) for display controllers, which do all conform to this logic, where
-> the input is always @0, and the output is @1.
-> 
-> Of course, doing this required me to do extra changes to the MTK DRM drivers to
-> actually be retro-compatible with the old devicetrees as I explained before.
+New warnings running 'make CHECK_DTBS=y mediatek/mt8395-genio-1200-evk.dtb' for 20241015103337.20479-1-macpaul.lin@mediatek.com:
 
-You can't fix existing software...
+arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dtb: usb@11201000: 'mediatek,usb3-drd' does not match any of the regexes: '^usb@[0-9a-f]+$', 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/usb/mediatek,mtu3.yaml#
 
-If you want to break the ABI, then that's ultimately up to you and 
-Mediatek maintainers to decide0. This case is easy to avoid, why would 
-you knowingly break the ABI here. OTOH, this seems like a big enough 
-change I would imagine it is a matter of time before supporting a 
-missing OF graph for the components will be a problem.
 
-Rob
+
+
+
 
