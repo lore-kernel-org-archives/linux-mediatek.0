@@ -4,67 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84F53D20682
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Oct 2024 23:03:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 821A7D2068A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 01:20:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mUFuUDjPLb+T13crf9T6WeNqvmmZOjE+1O9AdsG9ipM=; b=KQHjQpxfQz4awt20tU91iH7iPC
-	aNY0CxukrQ0U9pUHQIjBvfpQJ6BI0CImL0/8r7O5iFEY0cnnpAQhCLM9z1Sa3KIlW1xgNWnxHfU7N
-	Naqe5/WgoPIEOOBbPxuZkv3zZT7RI2Mn6yap1h08G6IuQMIwUcY6+7/xIudon43xkPSCKmBZktug9
-	zX6Wizw+8Dw5tFrb2RweUam3YnRDGdati9U9bdGy5r4e9HuagneemoYCbfQ+5LHHWlf0URhNPvr3r
-	1lVaBcQSlw4NSicUcpOtzeSyDRUXXsygUF02b7zWbTlAE2Q1Wv8x+W1hbQNK9U4u3kF44f4AzsUWL
-	Gj8cLGDQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+cSbu2W6mFnWCrqPvp1mLcsyiP30Ux9cQDkn1N90xME=; b=QE56ex9FEgkbQ5tlk5AY1SrbCc
+	BInFZIk0kXFT5IbTeWSHVoYp7J9xNKoAZVNlRh4iD5rEVYoypJxGwbXmNGlvrZJIVuAf89DboFdCO
+	IS+2E1aWLCMAMgTc94/JVcqasXGVZTqYkLfW8if4b6McZj+izBwxXvl+ns762Uv413v9OQvKXj8qR
+	1nG10AXm94qmD3APUWPzwi/dUjOTc3mCWWCt/0obzYRgg74FaBzzUQ0UMB1scpHg4PLuRyij1lVwv
+	xzQcg1J+2qoFi/cc7/IgRyTFsDvjmZf6oGZQ93+W2N6sp/E3dTSCFEWUK7p//bsg7Z6PYbY9zzqds
+	Bz/Lyp2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0qZb-00000009sEj-1hay;
-	Tue, 15 Oct 2024 23:03:27 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0qYA-00000009ryq-0bOb;
-	Tue, 15 Oct 2024 23:01:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=mUFuUDjPLb+T13crf9T6WeNqvmmZOjE+1O9AdsG9ipM=; b=qd2vWfI3e7rgHEMZNX9dxj2kbz
-	Ic4V1IerIJC807KDM9PXjN29Gle5kMyhV1ByvlEoDQekg4sZHMG/+XoUuhCIPojHxa59pIrvZVqPb
-	8NxmDPdTHh2tyJcY4FmarWCIDbaJ7HoMKpoZz5026Jxbz27r45lXKV5YjiXzMkNVcQ9s=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1t0qY1-00A5JG-Cn; Wed, 16 Oct 2024 01:01:49 +0200
-Date: Wed, 16 Oct 2024 01:01:49 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Richard Cochran <richardcochran@gmail.com>, kernel@collabora.com,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	id 1t0sic-0000000A7Es-2nHv;
+	Wed, 16 Oct 2024 01:20:54 +0000
+Received: from cmccmta6.chinamobile.com ([111.22.67.139] helo=cmccmta1.chinamobile.com)
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1t0shA-0000000A74J-37DL;
+	Wed, 16 Oct 2024 01:19:27 +0000
+X-RM-TagInfo: emlType=0                                       
+X-RM-SPAM-FLAG: 00000000
+Received: from spf.mail.chinamobile.com (unknown[10.188.0.87])
+	by rmmx-syy-dmz-app01-12001 (RichMail) with SMTP id 2ee1670f1492c5b-f7569;
+	Wed, 16 Oct 2024 09:19:15 +0800 (CST)
+X-RM-TRANSID: 2ee1670f1492c5b-f7569
+X-RM-TagInfo: emlType=0                                       
+X-RM-SPAM-FLAG: 00000000
+Received: from leadsec.example.com.localdomain (unknown[10.55.1.71])
+	by rmsmtp-syy-appsvr04-12004 (RichMail) with SMTP id 2ee4670f14888e0-200ed;
+	Wed, 16 Oct 2024 09:19:15 +0800 (CST)
+X-RM-TRANSID: 2ee4670f14888e0-200ed
+From: Tang Bin <tangbin@cmss.chinamobile.com>
+To: lgirdwood@gmail.com,
+	broonie@kernel.org,
+	perex@perex.cz,
+	tiwai@suse.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	Jianguo Zhang <jianguo.zhang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	Hsuan-Yu Lin <shane.lin@canonical.com>,
-	Pablo Sun <pablo.sun@mediatek.com>,
-	fanyi zhang <fanyi.zhang@mediatek.com>
-Subject: Re: [PATCH 2/2] arm64: dts: mediatek: mt8390-genio-700-evk: Enable
- ethernet
-Message-ID: <0e72a636-19e1-4f2d-8ea2-f1666c525400@lunn.ch>
-References: <20241015-genio700-eth-v1-0-16a1c9738cf4@collabora.com>
- <20241015-genio700-eth-v1-2-16a1c9738cf4@collabora.com>
+	linux-mediatek@lists.infradead.org,
+	Tang Bin <tangbin@cmss.chinamobile.com>
+Subject: [PATCH] ASoC: mediatek: mt8188: remove unnecessary variable assignment
+Date: Wed, 16 Oct 2024 09:18:51 +0800
+Message-Id: <20241016011851.2023-1-tangbin@cmss.chinamobile.com>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241015-genio700-eth-v1-2-16a1c9738cf4@collabora.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_160158_208565_BAAA266A 
-X-CRM114-Status: UNSURE (   6.23  )
+X-CRM114-CacheID: sfid-20241015_181925_337770_42F79CDD 
+X-CRM114-Status: UNSURE (   6.96  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,17 +74,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> +&eth {
-> +	phy-mode ="rgmii-rxid";
-> +	phy-handle = <&ethernet_phy0>;
-> +	pinctrl-names = "default", "sleep";
-> +	pinctrl-0 = <&eth_default_pins>;
-> +	pinctrl-1 = <&eth_sleep_pins>;
-> +	snps,reset-gpio = <&pio 147 GPIO_ACTIVE_HIGH>;
-> +	snps,reset-delays-us = <0 10000 10000>;
-> +	mediatek,tx-delay-ps = <2030>;
+In the function mt8188_adda_mtkaif_init, 'val' to 0 is repeated,
+thus delete one.
 
-Can you set phy-mode to rgmii-id, and remove the tx-delay-ps property?
+Signed-off-by: Tang Bin <tangbin@cmss.chinamobile.com>
+---
+ sound/soc/mediatek/mt8188/mt8188-dai-adda.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-    Andrew
+diff --git a/sound/soc/mediatek/mt8188/mt8188-dai-adda.c b/sound/soc/mediatek/mt8188/mt8188-dai-adda.c
+index 8a17d1935..436703166 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-dai-adda.c
++++ b/sound/soc/mediatek/mt8188/mt8188-dai-adda.c
+@@ -63,7 +63,6 @@ static int mt8188_adda_mtkaif_init(struct mtk_base_afe *afe)
+ 			param->mtkaif_phase_cycle[MT8188_MTKAIF_MISO_0];
+ 	}
+ 
+-	val = 0;
+ 	mask = (MTKAIF_RXIF_DELAY_DATA | MTKAIF_RXIF_DELAY_CYCLE_MASK);
+ 	val |= FIELD_PREP(MTKAIF_RXIF_DELAY_CYCLE_MASK, delay_cycle);
+ 	val |= FIELD_PREP(MTKAIF_RXIF_DELAY_DATA, delay_data);
+-- 
+2.33.0
+
+
+
 
