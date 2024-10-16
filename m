@@ -4,78 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F158ED2A52B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 15:34:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ABA4D2A52C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 15:35:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=felV7+3wHSVMs5ru8EE4IfFhIjeYcTHp/9Yl7ldxGbE=; b=HFaRiWb9/g3bdD8d3AAMCA0g7M
-	pPznV1SA/JUV0wJtw43KXb3vDxo1pqgyanY3yK60kHRqH7ZZrpuFL1QB4nozXPj9jU+qAnSlyGm6q
-	rGrysr16KzmEqtWgcbWo06ygbwQFviJ0Cu47IvJI1F/LXv7aNmVpFxCpmWVWCUpylo+9TleezyHan
-	OO/OLZt1EV1CcBZ2AmtRJrEbYjR6qilnwtTt7ajytrKfnnWz6PbyPM4nwfqW/O+eQbCWyOVf3OKqC
-	zXI1IizwfnwI0HRgvQx3mqPXZhT6FKOX9Fwet5bXydQS2sMo3UuTq/5KbMRBMH87tGcagBg9UDbKh
-	PZ9HG1mw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=saZKAW0UGJseZ+w8IBbjt85ZVV1mtNyGSss2qQL+bCY=; b=iMF4L0gleWQuOIFXpt8ILT0NmU
+	Wb3R/ecCmMNZnfwWN+ZRyKYh6bngoCbzCl1Twh9gvsWEUFMB9G8P49d5ds7yYQZme9aTF+oh1KhA6
+	u7Fo8lRPo3ML+bORNatPLKoCjY8ocxFOOfR8YJQzkWjLcYCLfiR75mBkMFL/AmgfusWdokOhJcth4
+	hflOJsuKWXr6Tj4hUti5Pu51vahvADwiZzBWW83jpdP0uZLpg9eiCqNMfhfpTzo4Lv+U/otdBqwbi
+	QEw+LvF62pqlsPK7sqQdeDq0dlkAdYPdKHjOU6kE7Er6NE3tpo9NughwqvbkPHgFd6gF6B+M9L5JP
+	vaio4Y8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1638-0000000CGQr-20A7;
+	id 1t1638-0000000CGR3-3Qkn;
 	Wed, 16 Oct 2024 15:34:58 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t15uz-0000000CElF-09pq;
-	Wed, 16 Oct 2024 15:26:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729092390;
-	bh=1Nw8ME/NSDosytQT61D7v8ofFQrcqq7MOC/qYrcHz6Y=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NVKBQCZbSLME0147VhKGH7izwhBZCeWagzE6hveHT+pJBte8YwfUg2ira1bKdTnkY
-	 sa/g8pBlFJu1RvQe/yASuQ9XK7tcZz9LsU8R6boZIcUiwjzIUyLPa6d9Mi2xiTdY/q
-	 UM+In8CcGgf8ffZGY8co0SuIEqNu1jlVBj2JBw/wZXm0m1gUGMQ1dNfuUylonSWbMf
-	 y5n+KCzSGC1LAhrrQyYZ+mMXLUcgQbvktFhmhoYNv4t22/y4d9jczooEdRYsa7KDat
-	 FsVLggIEc+Nx0yTQbpuqjApqHBiLz+C085eADfDK/M1ADK085bUd4z6VJnie1tCIbN
-	 QYFsj1Ci5/LsA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D59B117E3624;
-	Wed, 16 Oct 2024 17:26:29 +0200 (CEST)
-Message-ID: <ff272e72-c5a2-4b67-a8c9-ee41219aa1bb@collabora.com>
-Date: Wed, 16 Oct 2024 17:26:29 +0200
+	id 1t15wl-0000000CF7D-2KEi;
+	Wed, 16 Oct 2024 15:28:25 +0000
+Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-539f1292a9bso4813225e87.2;
+        Wed, 16 Oct 2024 08:28:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1729092501; x=1729697301; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=saZKAW0UGJseZ+w8IBbjt85ZVV1mtNyGSss2qQL+bCY=;
+        b=G2MIoV/vVzfqYt85bGeT0c7ZBceSWCqjq8PJjKJgZeSGU13MHeYU3TmKypBKIyrHP4
+         FvjFyI+Xk+mnyi30m/UU2WyuzV7EWmvPG+1y7fCjBNWKoPji0nbs2WUF0Xyz4GdHpISo
+         XHLFux2xAv3q1oCgCrzcIXj2KDULcRkSE1wQzPGRvQ5/8H1Ku/G1Vcr00FhahO/xl/Aa
+         aQ9bviJ+Qrs3zzb1DhRpW06QDl1peZZyCx13FuYQDJO15N/iSmhogTZFBRxLBdzXgzHS
+         DfsaH1SyNvEPr1Uhdd8jCSKJ6XcUXR5HmyLqPDsTaMvlpimfrMaD32pVogL+f/zqc47g
+         mBMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729092501; x=1729697301;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=saZKAW0UGJseZ+w8IBbjt85ZVV1mtNyGSss2qQL+bCY=;
+        b=PAdn4GNbF6ZntUyLA5cA1fEC1aZA7f6ccgRYOCPTMv0yNrFOrEBxMsK6hFnSCrdZo8
+         zTQzQWDrtn1yVLK0YhIdor0p9UTqr+PdCBuYQ03NJssqRwYhgO3EzkzxukI0xMbOaau0
+         XJQMXd6vP7tPm3PVNcY4wSNqOEZAmN9T/QQgUZ2PW9w8b455wQynyGVW0VU0ifqqUUIA
+         MZlnFhdp3ZBmRqyhMmN9kN9fZ8hAw20R1o7WRqYQDAWXkghmmyYhiaOGQPwlqw12Kwoy
+         AzBWtXhr0PTIlTr6HjmD4j94et2YZYlCU2Ulefsdn6Ss86CzDG6dmiN+Sp1NTa0HpvUz
+         AlHg==
+X-Forwarded-Encrypted: i=1; AJvYcCWHicn43J9nrHZqFMBtNvDPzUdXk2owAmStwTZOzHpDgfkuwH226Kra1A5H2Hn5nq42zkVKgz0kfmWGyb7z3Hla@lists.infradead.org, AJvYcCXInt5uLD9AP95HtzxxVq+pc3VbnEaX/z4SsbrjDH8DsY1YLbwE5AgArj2lYSyQYKz2SLWy5UYaLm0eIOkmcfw=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw/7T9Gr7UzNQ7aMx2H+wWpG8Y+7YVL7A1FxaqE94d6v15VrVBk
+	ians2JEPNb/+pgV6bQDaScnBt3UXmicMxax3cENdKGCqkSKBNyEv
+X-Google-Smtp-Source: AGHT+IGLBopEDxkxtLhLypJ1H+KrR+110xsvdIMHIN7/M68jZkFqqqTyNtLJJYFD/HtuW8CwSSOToA==
+X-Received: by 2002:a05:6512:220b:b0:539:f886:31da with SMTP id 2adb3069b0e04-53a03f826eemr3084461e87.53.1729092501079;
+        Wed, 16 Oct 2024 08:28:21 -0700 (PDT)
+Received: from Ansuel-XPS. ([62.19.118.125])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a2984338bsm197276666b.147.2024.10.16.08.28.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 16 Oct 2024 08:28:20 -0700 (PDT)
+Message-ID: <670fdb94.170a0220.88fbd.a384@mx.google.com>
+X-Google-Original-Message-ID: <Zw_bjf_-VvvwbeuK@Ansuel-XPS.>
+Date: Wed, 16 Oct 2024 17:28:13 +0200
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Lee Jones <lee@kernel.org>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	upstream@airoha.com, benjamin.larsson@genexis.eu,
+	linux-pwm@vger.kernel.org
+Subject: Re: [PATCH v7 6/6] pwm: airoha: Add support for EN7581 SoC
+References: <20241016-en7581-pinctrl-v7-0-4ff611f263a7@kernel.org>
+ <20241016-en7581-pinctrl-v7-6-4ff611f263a7@kernel.org>
+ <069d220c-b682-40ba-a254-9f60167c56dd@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v12 1/3] dt-bindings: display: mediatek: Add OF graph
- support for board path
-To: Rob Herring <robh@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, matthias.bgg@kernel.org,
- chunkuang.hu@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- conor+dt@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
- daniel@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org,
- tzimmermann@suse.de, shawn.sung@mediatek.com, yu-chang.lee@mediatek.com,
- ck.hu@mediatek.com, jitao.shi@mediatek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- wenst@chromium.org, kernel@collabora.com, sui.jingfeng@linux.dev,
- michael@walle.cc, sjoerd@collabora.com,
- Alexandre Mergnat <amergnat@baylibre.com>, Michael Walle <mwalle@kernel.org>
-References: <20241014085148.71105-1-angelogioacchino.delregno@collabora.com>
- <20241014085148.71105-2-angelogioacchino.delregno@collabora.com>
- <CAL_Jsq+hpTPCkuXoCF88nyS_D+iFZB5osrt1q04RxffDsY7cXw@mail.gmail.com>
- <ec14b01e-7237-4f52-82a6-b8de42fb120b@collabora.com>
- <20241015134802.GB447702-robh@kernel.org>
- <e5612a1d-b609-4f4a-aec4-601f7060e4cf@collabora.com>
- <CAL_JsqLsFbJbLn76QYwzCfu+bmpjfsxCDp_OuKAFnktMXMbTBA@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAL_JsqLsFbJbLn76QYwzCfu+bmpjfsxCDp_OuKAFnktMXMbTBA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <069d220c-b682-40ba-a254-9f60167c56dd@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_082633_418921_572B7780 
-X-CRM114-Status: GOOD (  30.13  )
+X-CRM114-CacheID: sfid-20241016_082823_623232_5953B0A5 
+X-CRM114-Status: GOOD (  42.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,377 +104,245 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/10/24 16:00, Rob Herring ha scritto:
-> On Wed, Oct 16, 2024 at 4:23 AM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Il 15/10/24 15:48, Rob Herring ha scritto:
->>> On Tue, Oct 15, 2024 at 10:32:22AM +0200, AngeloGioacchino Del Regno wrote:
->>>> Il 14/10/24 19:36, Rob Herring ha scritto:
->>>>> On Mon, Oct 14, 2024 at 3:51 AM AngeloGioacchino Del Regno
->>>>> <angelogioacchino.delregno@collabora.com> wrote:
->>>>>>
->>>>>> The display IPs in MediaTek SoCs support being interconnected with
->>>>>> different instances of DDP IPs (for example, merge0 or merge1) and/or
->>>>>> with different DDP IPs (for example, rdma can be connected with either
->>>>>> color, dpi, dsi, merge, etc), forming a full Display Data Path that
->>>>>> ends with an actual display.
->>>>>>
->>>>>> The final display pipeline is effectively board specific, as it does
->>>>>> depend on the display that is attached to it, and eventually on the
->>>>>> sensors supported by the board (for example, Adaptive Ambient Light
->>>>>> would need an Ambient Light Sensor, otherwise it's pointless!), other
->>>>>> than the output type.
->>>>>>
->>>>>> Add support for OF graphs to most of the MediaTek DDP (display) bindings
->>>>>> to add flexibility to build custom hardware paths, hence enabling board
->>>>>> specific configuration of the display pipeline and allowing to finally
->>>>>> migrate away from using hardcoded paths.
->>>>>>
->>>>>> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
->>>>>> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
->>>>>> Tested-by: Alexandre Mergnat <amergnat@baylibre.com>
->>>>>> Reviewed-by: CK Hu <ck.hu@mediatek.com>
->>>>>> Tested-by: Michael Walle <mwalle@kernel.org> # on kontron-sbc-i1200
->>>>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>>>> ---
->>>>>>     .../display/mediatek/mediatek,aal.yaml        | 40 +++++++++++++++++++
->>>>>>     .../display/mediatek/mediatek,ccorr.yaml      | 21 ++++++++++
->>>>>>     .../display/mediatek/mediatek,color.yaml      | 22 ++++++++++
->>>>>>     .../display/mediatek/mediatek,dither.yaml     | 22 ++++++++++
->>>>>>     .../display/mediatek/mediatek,dpi.yaml        | 25 +++++++++++-
->>>>>>     .../display/mediatek/mediatek,dsc.yaml        | 24 +++++++++++
->>>>>>     .../display/mediatek/mediatek,dsi.yaml        | 27 ++++++++++++-
->>>>>>     .../display/mediatek/mediatek,ethdr.yaml      | 22 ++++++++++
->>>>>>     .../display/mediatek/mediatek,gamma.yaml      | 19 +++++++++
->>>>>>     .../display/mediatek/mediatek,merge.yaml      | 23 +++++++++++
->>>>>>     .../display/mediatek/mediatek,od.yaml         | 22 ++++++++++
->>>>>>     .../display/mediatek/mediatek,ovl-2l.yaml     | 22 ++++++++++
->>>>>>     .../display/mediatek/mediatek,ovl.yaml        | 22 ++++++++++
->>>>>>     .../display/mediatek/mediatek,postmask.yaml   | 21 ++++++++++
->>>>>>     .../display/mediatek/mediatek,rdma.yaml       | 22 ++++++++++
->>>>>>     .../display/mediatek/mediatek,ufoe.yaml       | 21 ++++++++++
->>>>>>     16 files changed, 372 insertions(+), 3 deletions(-)
->>>>>>
->>>>>> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
->>>>>> index cf24434854ff..47ddba5c41af 100644
->>>>>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
->>>>>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
->>>>>> @@ -62,6 +62,27 @@ properties:
->>>>>>         $ref: /schemas/types.yaml#/definitions/phandle-array
->>>>>>         maxItems: 1
->>>>>>
->>>>>> +  ports:
->>>>>> +    $ref: /schemas/graph.yaml#/properties/ports
->>>>>> +    description:
->>>>>> +      Input and output ports can have multiple endpoints, each of those
->>>>>> +      connects to either the primary, secondary, etc, display pipeline.
->>>>>> +
->>>>>> +    properties:
->>>>>> +      port@0:
->>>>>> +        $ref: /schemas/graph.yaml#/properties/port
->>>>>> +        description: AAL input port
->>>>>> +
->>>>>> +      port@1:
->>>>>> +        $ref: /schemas/graph.yaml#/properties/port
->>>>>> +        description:
->>>>>> +          AAL output to the next component's input, for example could be one
->>>>>> +          of many gamma, overdrive or other blocks.
->>>>>> +
->>>>>> +    required:
->>>>>> +      - port@0
->>>>>> +      - port@1
->>>>>> +
->>>>>>     required:
->>>>>>       - compatible
->>>>>>       - reg
->>>>>> @@ -89,5 +110,24 @@ examples:
->>>>>>                power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
->>>>>>                clocks = <&mmsys CLK_MM_DISP_AAL>;
->>>>>>                mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x5000 0x1000>;
->>>>>> +
->>>>>> +           ports {
->>>>>> +               #address-cells = <1>;
->>>>>> +               #size-cells = <0>;
->>>>>> +
->>>>>> +               port@0 {
->>>>>> +                   reg = <0>;
->>>>>> +                   aal0_in: endpoint {
->>>>>> +                       remote-endpoint = <&ccorr0_out>;
->>>>>> +                   };
->>>>>> +               };
->>>>>> +
->>>>>> +               port@1 {
->>>>>> +                   reg = <1>;
->>>>>> +                   aal0_out: endpoint {
->>>>>> +                       remote-endpoint = <&gamma0_in>;
->>>>>> +                   };
->>>>>> +               };
->>>>>> +           };
->>>>>>            };
->>>>>>         };
->>>>>> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
->>>>>> index 9f8366763831..fca8e7bb0cbc 100644
->>>>>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
->>>>>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
->>>>>> @@ -57,6 +57,27 @@ properties:
->>>>>>         $ref: /schemas/types.yaml#/definitions/phandle-array
->>>>>>         maxItems: 1
->>>>>>
->>>>>> +  ports:
->>>>>> +    $ref: /schemas/graph.yaml#/properties/ports
->>>>>> +    description:
->>>>>> +      Input and output ports can have multiple endpoints, each of those
->>>>>> +      connects to either the primary, secondary, etc, display pipeline.
->>>>>> +
->>>>>> +    properties:
->>>>>> +      port@0:
->>>>>> +        $ref: /schemas/graph.yaml#/properties/port
->>>>>> +        description: CCORR input port
->>>>>> +
->>>>>> +      port@1:
->>>>>> +        $ref: /schemas/graph.yaml#/properties/port
->>>>>> +        description:
->>>>>> +          CCORR output to the input of the next desired component in the
->>>>>> +          display pipeline, usually only one of the available AAL blocks.
->>>>>> +
->>>>>> +    required:
->>>>>> +      - port@0
->>>>>> +      - port@1
->>>>>> +
->>>>>>     required:
->>>>>>       - compatible
->>>>>>       - reg
->>>>>> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
->>>>>> index 7df786bbad20..6160439ce4d7 100644
->>>>>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
->>>>>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
->>>>>> @@ -65,6 +65,28 @@ properties:
->>>>>>         $ref: /schemas/types.yaml#/definitions/phandle-array
->>>>>>         maxItems: 1
->>>>>>
->>>>>> +  ports:
->>>>>> +    $ref: /schemas/graph.yaml#/properties/ports
->>>>>> +    description:
->>>>>> +      Input and output ports can have multiple endpoints, each of those
->>>>>> +      connects to either the primary, secondary, etc, display pipeline.
->>>>>> +
->>>>>> +    properties:
->>>>>> +      port@0:
->>>>>> +        $ref: /schemas/graph.yaml#/properties/port
->>>>>> +        description: COLOR input port
->>>>>> +
->>>>>> +      port@1:
->>>>>> +        $ref: /schemas/graph.yaml#/properties/port
->>>>>> +        description:
->>>>>> +          COLOR output to the input of the next desired component in the
->>>>>> +          display pipeline, for example one of the available CCORR or AAL
->>>>>> +          blocks.
->>>>>> +
->>>>>> +    required:
->>>>>> +      - port@0
->>>>>> +      - port@1
->>>>>> +
->>>>>>     required:
->>>>>>       - compatible
->>>>>>       - reg
->>>>>> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
->>>>>> index 6fceb1f95d2a..abaf27916d13 100644
->>>>>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
->>>>>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
->>>>>> @@ -56,6 +56,28 @@ properties:
->>>>>>         $ref: /schemas/types.yaml#/definitions/phandle-array
->>>>>>         maxItems: 1
->>>>>>
->>>>>> +  ports:
->>>>>> +    $ref: /schemas/graph.yaml#/properties/ports
->>>>>> +    description:
->>>>>> +      Input and output ports can have multiple endpoints, each of those
->>>>>> +      connects to either the primary, secondary, etc, display pipeline.
->>>>>> +
->>>>>> +    properties:
->>>>>> +      port@0:
->>>>>> +        $ref: /schemas/graph.yaml#/properties/port
->>>>>> +        description: DITHER input, usually from a POSTMASK or GAMMA block.
->>>>>> +
->>>>>> +      port@1:
->>>>>> +        $ref: /schemas/graph.yaml#/properties/port
->>>>>> +        description:
->>>>>> +          DITHER output to the input of the next desired component in the
->>>>>> +          display pipeline, for example one of the available DSC compressors,
->>>>>> +          DP_INTF, DSI, LVDS or others.
->>>>>> +
->>>>>> +    required:
->>>>>> +      - port@0
->>>>>> +      - port@1
->>>>>> +
->>>>>>     required:
->>>>>>       - compatible
->>>>>>       - reg
->>>>>> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
->>>>>> index 3a82aec9021c..b567e3d58aa1 100644
->>>>>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
->>>>>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
->>>>>> @@ -71,13 +71,34 @@ properties:
->>>>>>           Output port node. This port should be connected to the input port of an
->>>>>>           attached HDMI, LVDS or DisplayPort encoder chip.
->>>>>>
->>>>>> +  ports:
->>>>>> +    $ref: /schemas/graph.yaml#/properties/ports
->>>>>> +
->>>>>> +    properties:
->>>>>> +      port@0:
->>>>>> +        $ref: /schemas/graph.yaml#/properties/port
->>>>>> +        description: DPI input port
->>>>>> +
->>>>>> +      port@1:
->>>>>> +        $ref: /schemas/graph.yaml#/properties/port
->>>>>> +        description: DPI output to an HDMI, LVDS or DisplayPort encoder input
->>>>>
->>>>> This is wrong. The existing 'port' is the output. 'port' and 'port@0'
->>>>> are treated as the same thing. Since you are adding an input port, the
->>>>> new port has to be 'port@1' (or any number but 0).
->>>>>
->>>>> I haven't looked at the driver code, but it should request port 0 and
->>>>> always get the output port. And requesting port 1 will return an error
->>>>> or the input port.
->>>>
->>>> Hello Rob,
->>>>
->>>> I want to remind you that in v2 of this series you said that it'd be wrong for
->>>> port@0 to be an output, I replied that you misread that as I had modeled it indeed
->>>> as an input, and then you gave me your Reviewed-by tag.
->>>
->>> I have not misread it. Then I guess I forgot about it and missed it the
->>> next time on v3.
->>>
->>
->> Okay, that was some misunderstanding then - it's fine, no problem.
->>
->>>> Anyway - I get your concern about the previous behavior of `port`, but I chose to
->>>> model this that way purely for consistency.
->>>>
->>>> First of all - the driver(s) will check if we're feeding a full graph, as it will
->>>> indeed first check if port@1 is present: if it is, then it follows this scheme with
->>>> port@0 as INPUT and port@1 as OUTPUT.
->>>> If the component in port@0 is an OUTPUT, the bridge attach will fail.
->>>>
->>>> Getting to bindings themselves, then... it would be a mistake to model port@0 as an
->>>> output and port@1 as an input, because that would be not only inconsistent with the
->>>> DRM Bridge bindings, but would be highly confusing when reading the devicetree.
->>>
->>> Somewhat confusing, yes. Highly, no. Put a comment in the DT.
->>>
->>
->> "Somewhat or highly" boils down to personal opinion, so I still go for "highly"
->> but won't argue about that as wouldn't be productive and would bring us nowhere
->> anyway, so, whatever :-)
->>
->> Putting a comment in DT is an option, yes, but that comment would need to be put
->> on all of the MediaTek SoC device trees - current and future - and IMO would scream
->> "inconsistency warning" (in different words, of course) all over, which honestly
->> doesn't really look clean... at least to my eyes...
+On Wed, Oct 16, 2024 at 12:25:45PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 16/10/24 12:07, Lorenzo Bianconi ha scritto:
+> > From: Benjamin Larsson <benjamin.larsson@genexis.eu>
+> > 
+> > Introduce driver for PWM module available on EN7581 SoC.
+> > 
+> > Signed-off-by: Benjamin Larsson <benjamin.larsson@genexis.eu>
+> > Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > ---
+> >   drivers/pwm/Kconfig      |  11 ++
+> >   drivers/pwm/Makefile     |   1 +
+> >   drivers/pwm/pwm-airoha.c | 408 +++++++++++++++++++++++++++++++++++++++++++++++
+> >   3 files changed, 420 insertions(+)
+> > 
+> > diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
+> > index 0915c1e7df16d451e987dcc5f10e0b57edc32ee1..99aa87136c272555c10102590fcf9f911161c3d3 100644
+> > --- a/drivers/pwm/Kconfig
+> > +++ b/drivers/pwm/Kconfig
+> > @@ -54,6 +54,17 @@ config PWM_ADP5585
+> >   	  This option enables support for the PWM function found in the Analog
+> >   	  Devices ADP5585.
+> > +config PWM_AIROHA
+> > +	tristate "Airoha PWM support"
+> > +	depends on ARCH_AIROHA || COMPILE_TEST
+> > +	depends on OF
+> > +	select REGMAP_MMIO
+> > +	help
+> > +	  Generic PWM framework driver for Airoha SoC.
+> > +
+> > +	  To compile this driver as a module, choose M here: the module
+> > +	  will be called pwm-airoha.
+> > +
+> >   config PWM_APPLE
+> >   	tristate "Apple SoC PWM support"
+> >   	depends on ARCH_APPLE || COMPILE_TEST
+> > diff --git a/drivers/pwm/Makefile b/drivers/pwm/Makefile
+> > index 9081e0c0e9e09713fe05479c257eebe5f02b91e9..fbf7723d845807fd1e2893c6ea4f736785841b0d 100644
+> > --- a/drivers/pwm/Makefile
+> > +++ b/drivers/pwm/Makefile
+> > @@ -2,6 +2,7 @@
+> >   obj-$(CONFIG_PWM)		+= core.o
+> >   obj-$(CONFIG_PWM_AB8500)	+= pwm-ab8500.o
+> >   obj-$(CONFIG_PWM_ADP5585)	+= pwm-adp5585.o
+> > +obj-$(CONFIG_PWM_AIROHA)	+= pwm-airoha.o
+> >   obj-$(CONFIG_PWM_APPLE)		+= pwm-apple.o
+> >   obj-$(CONFIG_PWM_ATMEL)		+= pwm-atmel.o
+> >   obj-$(CONFIG_PWM_ATMEL_HLCDC_PWM)	+= pwm-atmel-hlcdc.o
+> > diff --git a/drivers/pwm/pwm-airoha.c b/drivers/pwm/pwm-airoha.c
+> > new file mode 100644
+> > index 0000000000000000000000000000000000000000..f1587ebf5adf1950cdf953600a2772b2c9ab6e73
+> > --- /dev/null
+> > +++ b/drivers/pwm/pwm-airoha.c
+> > @@ -0,0 +1,408 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +/*
+> > + * Copyright 2022 Markus Gothe <markus.gothe@genexis.eu>
+> > + *
+> > + *  Limitations:
+> > + *  - No disable bit, so a disabled PWM is simulated by setting duty_cycle to 0
+> > + *  - Only 8 concurrent waveform generators are available for 8 combinations of
+> > + *    duty_cycle and period. Waveform generators are shared between 16 GPIO
+> > + *    pins and 17 SIPO GPIO pins.
+> > + *  - Supports only normal polarity.
+> > + *  - On configuration the currently running period is completed.
+> > + */
+> > +
+> > +#include <linux/bitfield.h>
+> > +#include <linux/err.h>
+> > +#include <linux/io.h>
+> > +#include <linux/iopoll.h>
+> > +#include <linux/mfd/syscon.h>
+> > +#include <linux/module.h>
+> > +#include <linux/of.h>
+> > +#include <linux/platform_device.h>
+> > +#include <linux/pwm.h>
+> > +#include <linux/gpio.h>
+> > +#include <linux/bitops.h>
+> > +#include <linux/regmap.h>
+> > +#include <asm/div64.h>
+> > +
+> > +#define REG_SGPIO_LED_DATA		0x0024
+> > +#define SGPIO_LED_DATA_SHIFT_FLAG	BIT(31)
+> > +#define SGPIO_LED_DATA_DATA		GENMASK(16, 0)
+> > +
+> > +#define REG_SGPIO_CLK_DIVR		0x0028
+> > +#define REG_SGPIO_CLK_DLY		0x002c
+> > +
+> > +#define REG_SIPO_FLASH_MODE_CFG		0x0030
+> > +#define SERIAL_GPIO_FLASH_MODE		BIT(1)
+> > +#define SERIAL_GPIO_MODE		BIT(0)
+> > +
+> > +#define REG_GPIO_FLASH_PRD_SET(_n)	(0x003c + ((_n) << 2))
+> > +#define GPIO_FLASH_PRD_MASK(_n)		GENMASK(15 + ((_n) << 4), ((_n) << 4))
+> > +
+> > +#define REG_GPIO_FLASH_MAP(_n)		(0x004c + ((_n) << 2))
+> > +#define GPIO_FLASH_SETID_MASK(_n)	GENMASK(2 + ((_n) << 2), ((_n) << 2))
+> > +#define GPIO_FLASH_EN(_n)		BIT(3 + ((_n) << 2))
+> > +
+> > +#define REG_SIPO_FLASH_MAP(_n)		(0x0054 + ((_n) << 2))
+> > +
+> > +#define REG_CYCLE_CFG_VALUE(_n)		(0x0098 + ((_n) << 2))
+> > +#define WAVE_GEN_CYCLE_MASK(_n)		GENMASK(7 + ((_n) << 3), ((_n) << 3))
+> > +
 > 
-> What I find more confusing is my updated DT doesn't work with my
-> existing kernel...
+> Probably boils down to personal opinion, but I would do:
 > 
->>>> Please note that the bridge bindings are always declaring port@0 as an INPUT and
->>>> other ports as OUTPUT(s).
->>>
->>> There is no guarantee on that. Port numbering is local to the bridge and
->>> opaque to anything outside that bridge. That is why you have to document
->>> what each port represents.
->>>
->>
->> I know and I agree that there's no guarantee on the numbering. I can see that in
->> other non-drm-bridge bindings, and that's fine.
->>
->>> Would we have followed that convention if all the ports were defined
->>> from the start? Certainly. But that didn't happen and you are stuck with
->>> the existing binding and ABI.
->>>
->>
->> I thought about adding a new compatible for the new port scheme, but that looked
->> even worse to me as, after doing that (yeah, I actually went for it in the first
->> version that I have never sent upstream) during my own proof-read I started
->> screaming "HACK! HACK! NOOO!" all over, and rewritten the entire thing.
->>
->>>> As an example, you can check display/bridge/analogix,anx7625.yaml or
->>>> display/bridge/samsung,mipi-dsim.yaml (and others) for bridges, otherwise
->>>> display/st,stm32mp25-lvds.yaml or display/allwinner,sun4i-a10-display-frontend.yaml
->>>> (and others) for display controllers, which do all conform to this logic, where
->>>> the input is always @0, and the output is @1.
->>>>
->>>> Of course, doing this required me to do extra changes to the MTK DRM drivers to
->>>> actually be retro-compatible with the old devicetrees as I explained before.
->>>
->>> You can't fix existing software...
->>>
->>
->> That's true, but I don't see that as an "excuse" (grant me this term please) to
->> "carelessly" keep it in a suboptimal state.
->>
->> This driver has been growing almost uncontrollably with (wrong, anyway!)
->> board-specific component vectors - and writing a new one would just add up
->> more code duplication to the mix and/or worsen the maintainability of older
->> MediaTek SoCs (as the "old" driver will get forgotten and never updated anymore).
->>
->>> If you want to break the ABI, then that's ultimately up to you and
->>> Mediatek maintainers to decide0. This case is easy to avoid, why would
->>> you knowingly break the ABI here.
->>
->> Because if we don't do this, we condemn (forever) this driver, or part of it
->> to have an inverted port scheme compared to either:
->>    A. The other drm/mediatek components; or
->>    B. The other bridge drivers (of which, some are used with MTK as well)
->>
->> ...and we also condemn (forever, again) all MediaTek device trees to scream
->> "port inconsistency warning: A for drm/mediatek components, B for every other
->> thing", which would scream "drm/mediatek is somewhat broken", which can be
->> avoided.
+> struct airoha_pwm_bucket {
+> 	....stuff...
+> }
 > 
-> Sure. The cost is just an ABI break to do that.
+> > +struct airoha_pwm {
+> > +	struct regmap *regmap;
+> > +
+> > +	struct device_node *np;
+> > +	u64 initialized;
+> > +
 > 
->>> OTOH, this seems like a big enough
->>> change I would imagine it is a matter of time before supporting a
->>> missing OF graph for the components will be a problem.
->>>
->>
->> Sorry I didn't understand this part, can you please-please-please reword?
+> 	struct airoha_pwm_bucket bucket[EN7581_NUM_BUCKETS];
 > 
-> I think keeping the kernel working with the old and new binding will
-> be a challenge. Partly because testing with the old binding won't
-> happen, but also if the binding and drivers continue to evolve. So
-> while maintaining old ABI might be possible with this change, it will
-> continue to be an issue with each change.
-
-That's... exactly my point, so I am happy that we agree on that.
-
-> BTW, did you actually test
-> backwards compatibility with this? I can see you fallback to the old
-> binding, but there's a lot of other changes in there I can't really
-> tell by looking at it.
-
-
-Short answer: Yes, largely
-
-Long answer:
-
-Yes, with this series applied, I have tested both *old* and *new* devicetrees on
-7 boards with 4 different SoCs and different display pipelines (hence, graphs):
-one smartphone (MT6795), a "bunch of" Chromebooks (MT8173, MT8186, MT8195), and
-a SBC (MT8195).
-
-Of course those had DSI or eDP displays, with or without DisplayPort external
-display support.
-
+> > +	struct {
+> > +		/* Bitmask of PWM channels using this bucket */
+> > +		u64 used;
+> > +		u64 period_ns;
+> > +		u64 duty_ns;
+> > +	} bucket[8];
+> > +};
+> > +
+> > +/*
+> > + * The first 16 GPIO pins, GPIO0-GPIO15, are mapped into 16 PWM channels, 0-15.
+> > + * The SIPO GPIO pins are 17 pins which are mapped into 17 PWM channels, 16-32.
+> > + * However, we've only got 8 concurrent waveform generators and can therefore
+> > + * only use up to 8 different combinations of duty cycle and period at a time.
+> > + */
+> > +#define PWM_NUM_GPIO	16
+> > +#define PWM_NUM_SIPO	17
+> > +
+> > +/* The PWM hardware supports periods between 4 ms and 1 s */
+> > +#define PERIOD_MIN_NS	(4 * NSEC_PER_MSEC)
+> > +#define PERIOD_MAX_NS	(1 * NSEC_PER_SEC)
+> > +/* It is represented internally as 1/250 s between 1 and 250 */
+> > +#define PERIOD_MIN	1
+> > +#define PERIOD_MAX	250
+> > +/* Duty cycle is relative with 255 corresponding to 100% */
+> > +#define DUTY_FULL	255
+> > +
 > 
-> What I haven't heard from you is "yes, we need to maintain the ABI" or
-> "no, we can break it". Decide that, then the path here is simple.
+> ..snip..
+> 
+> > +
+> > +static int airoha_pwm_sipo_init(struct airoha_pwm *pc)
+> > +{
+> > +	u32 clk_divr_val = 3, sipo_clock_delay = 1;
+> > +	u32 val, sipo_clock_divisor = 32;
+> 
+> u32 clk_divr_val, sipo_clock_delay, sipo_clock_divisor, val;
+> int ret;
+> 
+> > +
+> > +	if (!(pc->initialized >> PWM_NUM_GPIO))
+> > +		return 0;
+> > +
+> > +	/* Select the right shift register chip */
+> > +	if (of_property_read_bool(pc->np, "hc74595"))
+> 
+> "airoha,serial-gpio-mode"
+> 
 
-No, we have to break it.
+Hi, thanks for the review. I'm keeping the strange name and renaming
+this to "airoha,74hc595-mode".
 
-Cheers,
-Angelo
+Contrary to the confusing (taken from documentation) register name,
+this actually select what shift register chip is used with 0 as 74HC164
+and 1 as 74HC595. The main difference between the 2 chip is the fact
+that a latch pin needs to be triggered to the configuration to be
+applied. This is handled internally by the SoC but require the correct
+chip used in the device to be set in this register, hence the more
+descriprtive property. Hope it's O.K.
 
+(Off-topic and sorry for asking, any chance you can help and check also
+the clock driver series? It's just some small fixup and regmap
+conversion due to EN7581 strange registry mapping. [1]
+
+[1] https://lore.kernel.org/linux-arm-kernel/172546204488.2561174.6649654649913061182.robh@kernel.org/T/
+)
+
+> > +		regmap_set_bits(pc->regmap, REG_SIPO_FLASH_MODE_CFG,
+> > +				SERIAL_GPIO_MODE);
+> > +	else
+> > +		regmap_clear_bits(pc->regmap, REG_SIPO_FLASH_MODE_CFG,
+> > +				  SERIAL_GPIO_MODE);
+> > +
+> > +	if (!of_property_read_u32(pc->np, "sipo-clock-divisor",
+> > +				  &sipo_clock_divisor)) {
+> 
+> ret = of_property_read_u32(pc->np, "airoha,sipo-clock-divisor", &sipo_clock_divisor);
+> if (ret)
+> 	sipo_clock_divisor = 32;
+> 
+> switch (sipo_clock_divisor) {
+> ......
+> }
+> 
+> > +		switch (sipo_clock_divisor) {
+> > +		case 4:
+> > +			clk_divr_val = 0;
+> > +			break;
+> > +		case 8:
+> > +			clk_divr_val = 1;
+> > +			break;
+> > +		case 16:
+> > +			clk_divr_val = 2;
+> > +			break;
+> > +		case 32:
+> > +			clk_divr_val = 3;
+> > +			break;
+> > +		default:
+> > +			return -EINVAL;
+> > +		}
+> > +	}
+> > +	/* Configure shift register timings */
+> > +	regmap_write(pc->regmap, REG_SGPIO_CLK_DIVR, clk_divr_val);
+> > +
+> > +	of_property_read_u32(pc->np, "sipo-clock-delay", &sipo_clock_delay);
+> 
+> "airoha,sipo-clock-delay"
+> 
+> ret = ...
+> if (ret)
+> 	sipo_clock_delay = 1;
+> 
+> > +	if (sipo_clock_delay < 1 || sipo_clock_delay > sipo_clock_divisor / 2)
+> > +		return -EINVAL;
+> > +
+> Everything else looks good to me.
+> 
+> Cheers,
+> Angelo
+
+-- 
+	Ansuel
 
