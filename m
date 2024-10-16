@@ -4,88 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B45ECD2069A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 05:47:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D145D206A2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 06:59:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=cwJJmP/ZXKEl//vPqzZxNk4JrFy3Wy0nARrCJ7oJJlA=; b=aGXdEgASxGAdUZyrx9KSC69EfD
-	7nAXr1c9aUs6UMKx1FmhJLxInuYeCln0pEL6wo+18psKVoAh5pjQQOilwzb+BvMllwm8YCSpqpVIb
-	HTwhZxtvz2ln3iXKho8EihRjqt4CPKy9GJ9/WlbEI1PFZn+oAkR+1VhB348m80xaQwg8GYcjerf5F
-	Y0PoyhpoijNpUtJSo4iKhBIOViiZ2Oa9e9Y9OQ+ptQEzP+thdRSUnGsaMLWlTNZPFjrhSLpvcCsQc
-	ohU5h2zkSoDt66iQa7w2QEvGUdNg6UYHWEOmbjhqr0W8nj55xJFKlx13D1EXfbT21wp905NeUu4g7
-	jT35NwuQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TO59C4XZYRdTYQJuScmu2mLEcBL9KTSKA3Aj17XZnXs=; b=FhusYuysGwTlsW11+5Ayo+2W21
+	FX3fci9cPLNJLldZSTtBOdEoglOyXLfMD+K4zSOV+6bh8CpnWlicC3gVY4DSrJ8BpU1rQ0NpGGfm4
+	rqdveyojwmWwaiW5zHipAxulEJgD4HYKyhxMvvZuC0dwWPoJWM43cTDp16jWxeYgMG3ftSsIaDVIJ
+	2m2PI5jomHkK9h3q97fF/eEK59U6ab9MYuHJRCD48xSR2JN5A9BNSHWeFdOmIaBSvMtDfS7812AM+
+	xYQDFJq9W7hc8HLm+r7YmGUREGPoKvsLVVi1U2AAg4ivNHFPpDPXzyL4yb50XOrnBz9goTTw4GI7/
+	4Gj285Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0wsU-0000000Abox-319M;
-	Wed, 16 Oct 2024 05:47:22 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1t0y06-0000000Al8G-22Cx;
+	Wed, 16 Oct 2024 06:59:18 +0000
+Received: from mail-oo1-xc2a.google.com ([2607:f8b0:4864:20::c2a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0wr3-0000000Abhm-2357
+	id 1t0xri-0000000AjWz-2mdF
 	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Oct 2024 05:45:55 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-20c7ee8fe6bso44899395ad.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Oct 2024 22:45:52 -0700 (PDT)
+	Wed, 16 Oct 2024 06:50:40 +0000
+Received: by mail-oo1-xc2a.google.com with SMTP id 006d021491bc7-5eb644561ecso1407eaf.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Oct 2024 23:50:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1729057552; x=1729662352; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=cwJJmP/ZXKEl//vPqzZxNk4JrFy3Wy0nARrCJ7oJJlA=;
-        b=Skme/e3tGIRhMpweqFcgGCwZ/C/pbq6jw8AdDMINZS86873cZRl/sCVQmLo0z0Y9LS
-         u3NA1uxXwCLg5C6Am4xHH84pg74OMCxm8h9a5osdk3iQt6a0HhseuMUgOm3qjJ0vjyDD
-         whwGNpNFaobImRISYDieF8ZkS76EAzNUIZEPc=
+        d=google.com; s=20230601; t=1729061437; x=1729666237; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=TO59C4XZYRdTYQJuScmu2mLEcBL9KTSKA3Aj17XZnXs=;
+        b=IMj1yIFY1SszkFjrtFX1f1MgIaBrsCPAX+A5S7rMWTlb0P6uxkBcyAptxSsjsfMaWw
+         jLSf/SlpqB2pUdX6YpcSJOn1P1d7lO6wEW+ZnanKu8eOnYHKbb66XftITLjtUxc0Pbf2
+         zpejSqS9f8bYyJKxi+4adhFeWfFbMsVwT26m/R9SZKyW+El8vjDaDQNhIb5KrYLfN7mu
+         6iyhluXSI99rG1GXt36s4OaDb9oh2aW4glnyFRY3tcEH3iNv8+MI5cPvHJlqmE2TukcW
+         CsH76g0g9bufuDE3cKlksQubILy90KMR05K2ZgmEcmgsHODDdpHcRV1VwjkZ8a0tE6+x
+         Tn7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729057552; x=1729662352;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=cwJJmP/ZXKEl//vPqzZxNk4JrFy3Wy0nARrCJ7oJJlA=;
-        b=OF8/o13Y2atvt0qlqj6X0tQxEuRSh4mxrsZm2XUl8sG0QC7yI4FPeJX2lz6yo0gVmi
-         SSuqOdTb8oI4cCpMm2csWsfhT75e1qcHbfJpVXSRvTMmNV/s+MlGCPAJXu+G4x5Tg4M/
-         Yvmq55qDC720f6AduWiVvZprKA7toD1keqIPL7bFbcxiFAmp9fxuKG//6KRUPM2bfJbC
-         LwqR70mLN42Fmo5KLYtaz9+sPXnFE49K3Yz26Ssu4CN5b0Oi1jERRJFp2UMI4rt4uABL
-         leCn6uHibGfCd4j/xOweaP7Kf8sVCiRe1S76IjorSEcJFdnoDSStxwiiqQNIK7kt+7RQ
-         IubQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXcvFtqCktrSwaM5IBSL3Bm+nk2ub7jM1JitXJY6663ggDemYR6M9IR9GKNDY6pz3Q5ERIyE8LnzApOkzjIlQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyJvZAkQGqyp1CRrqp3DnUm8OdGiYdkknQfFbJDFqy8nuAUH0/I
-	q9GiL2xP9fDNCk9JDd3p1Clh3YhCyrAqmY85LUakLryUthnhqhiB698f+Eyilw==
-X-Google-Smtp-Source: AGHT+IH3whYd/baJm6rc+ZppTWb+JBSQWjk0NVYypdzoLrAlYYZJ3ieGQmoMLJmDKyJB4k56J9jq5g==
-X-Received: by 2002:a17:903:1211:b0:20c:f648:e3a7 with SMTP id d9443c01a7336-20d27f20cf6mr33038135ad.50.1729057552365;
-        Tue, 15 Oct 2024 22:45:52 -0700 (PDT)
-Received: from yuanhsinte.c.googlers.com (176.220.194.35.bc.googleusercontent.com. [35.194.220.176])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20d1805ba92sm21449385ad.255.2024.10.15.22.45.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Oct 2024 22:45:51 -0700 (PDT)
-From: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Date: Wed, 16 Oct 2024 05:45:46 +0000
-Subject: [PATCH RESEND v12] thermal/drivers/mediatek: add another get_temp
- ops for thermal sensors
+        d=1e100.net; s=20230601; t=1729061437; x=1729666237;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=TO59C4XZYRdTYQJuScmu2mLEcBL9KTSKA3Aj17XZnXs=;
+        b=M7r+e0wnNe8c1fHGt3GoTmYFp9tUQz2lIBv4Ybu+N/cQQ8UQOaRc2zBNkfuH+HpZmM
+         GNyfaMKsTmxj/5BdJ/uMyL9zXPaws2oWHkDa9lxorGgEwL/MEfikYBva7gQcLNfTbbSj
+         VFRR5mav/gSJ2HXtNPw1tTJ5Qtd5/rt6A2L9oYVAGqzUjVhBNuNEXStYJCjcYruy3DMS
+         CzQcNiLt1w//h8cuib5UA3DuB5+8bx6+FdoGc77Zyl/r7divD1nFCamXfp9CVji2Di5Q
+         aEgCtFqdXbSlgEjBFnXYNe3PeW9zvn+nTbWFddILMPmObfaE2aMVagoupfJPfibf1bye
+         sWaw==
+X-Forwarded-Encrypted: i=1; AJvYcCXEvKClrAScx2TnlSo7/rRtCJA+SwQdzUIPxjg2tnc+cEXevRn/dQvUxa+75Up3QncV2Cvxk0alewfxZhbJhA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw6Wko7TTXPo31HxO5GfSJeRMRSR7f2CizpVPgRn+QP/qaiqUV8
+	bl4KHUhzAQTeQ8b0LifTidypoPICHMFBEt2vP/k08vaRzFlaX0/VykHKRYrzSkirlpl59MCGzl6
+	gMrLaYcq10ktZVFs2L8LoUzsw5BDZ7fSOMQ0EaQ==
+X-Google-Smtp-Source: AGHT+IGiy4dUwz9Pj2nWJ8Pq6IB3QUE4cA66e4zLDPayeTK7oE28UFMNPT48jIBPfI0w4Wc00qU0WdFD7Xz2C4EsOKU=
+X-Received: by 2002:a05:6870:700b:b0:27b:9f8b:277e with SMTP id
+ 586e51a60fabf-2886e041fbfmr3125221fac.13.1729061437077; Tue, 15 Oct 2024
+ 23:50:37 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20241016-auxadc_thermal-v12-1-c0433e9f61af@chromium.org>
-X-B4-Tracking: v=1; b=H4sIAAlTD2cC/3XNvQ6CMBQF4Fchna3pXxCcHGR10NEYUy4tbSLUt
- EAwhHe36eCgcbzn5Hx3QUF5qwLaZwvyarLBuj4elG0yBEb2rcK2iQFihAlSkBLLcZYN3AejfCc
- fuKwV54WCoqaA4ujplbZzEq/oXF2q0xHdYm5sGJx/pUcTpan+Z8YeUyw1zwF2QnPJD2C86+zYb
- Z1vkzdR9jEoIfTXYNFgdZEDKYXWIv8y1nV9A8Tjfan+AAAA
-X-Change-ID: 20240809-auxadc_thermal-9be338ec8b1c
-To: "Rafael J. Wysocki" <rafael@kernel.org>, 
- Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
- Lukasz Luba <lukasz.luba@arm.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- James Lo <james.lo@mediatek.com>, Michael Kao <michael.kao@mediatek.com>, 
- Hsin-Yi Wang <hsinyi@chromium.org>, Ben Tseng <ben.tseng@mediatek.com>, 
- Hsin-Te Yuan <yuanhsinte@chromium.org>
-X-Mailer: b4 0.15-dev-7be4f
+References: <20241015122608.24569-1-xiazhengqiao@huaqin.corp-partner.google.com>
+ <172900161180.733089.8963543745385219831.robh@kernel.org>
+In-Reply-To: <172900161180.733089.8963543745385219831.robh@kernel.org>
+From: Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
+Date: Wed, 16 Oct 2024 14:50:26 +0800
+Message-ID: <CADYyEwRpn7afZ98ttQbBp1Dkm-SQB82_5tY0D61cBW3vkC28Gg@mail.gmail.com>
+Subject: Re: [PATCH v1 0/3] Add MT8186 Chinchou Chromebooks
+To: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: wenst@chromium.org, rafal@milecki.pl, linux-mediatek@lists.infradead.org, 
+	angelogioacchino.delregno@collabora.com, conor+dt@kernel.org, 
+	sean.wang@mediatek.com, devicetree@vger.kernel.org, macpaul.lin@mediatek.com, 
+	krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, 
+	matthias.bgg@gmail.com, linux-kernel@vger.kernel.org, hsinyi@chromium.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241015_224553_704888_AA8152E8 
-X-CRM114-Status: GOOD (  24.96  )
+X-CRM114-CacheID: sfid-20241015_235038_726003_D5278984 
+X-CRM114-Status: GOOD (  21.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,228 +94,414 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: James Lo <james.lo@mediatek.com>
+Hi Rob,
+  I am so sorry that I didn't check dts, I have some questions.
 
-Previously, the driver only supported reading the temperature from all
-sensors and returning the maximum value. This updatea adds another
-get_temp ops to support reading the temperature from each sensor
-separately.
+Rob Herring (Arm) <robh@kernel.org> =E4=BA=8E2024=E5=B9=B410=E6=9C=8815=E6=
+=97=A5=E5=91=A8=E4=BA=8C 22:17=E5=86=99=E9=81=93=EF=BC=9A
+>
+>
+> On Tue, 15 Oct 2024 20:26:05 +0800, Zhengqiao Xia wrote:
+> > MT8186 chinchou, known as ASUS Chromebook CZ12 Flip, is a
+> > MT8186 based laptop. It is based on the "corsola" design.
+> > It includes chinchou and chinchou360, including LTE, stylus,
+> > touchscreen combinations.
+> >
+> > Zhengqiao Xia (3):
+> >   dt-bindings: arm: mediatek: Add MT8186 Chinchou Chromebook
+> >   arm64: dts: mediatek: Add MT8186 Chinchou Chromebooks
+> >   arm64: dts: mediatek: Add exton node for DP bridge
+> >
+> >  .../devicetree/bindings/arm/mediatek.yaml     |  26 ++
+> >  arch/arm64/boot/dts/mediatek/Makefile         |   3 +
+> >  .../mediatek/mt8186-corsola-chinchou-sku0.dts |  18 ++
+> >  .../mediatek/mt8186-corsola-chinchou-sku1.dts |  34 ++
+> >  .../mt8186-corsola-chinchou-sku16.dts         |  28 ++
+> >  .../dts/mediatek/mt8186-corsola-chinchou.dtsi | 296 ++++++++++++++++++
+> >  .../boot/dts/mediatek/mt8186-corsola.dtsi     |   6 +
+> >  7 files changed, 411 insertions(+)
+> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chincho=
+u-sku0.dts
+> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chincho=
+u-sku1.dts
+> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chincho=
+u-sku16.dts
+> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chincho=
+u.dtsi
+> >
+> > --
+> > 2.17.1
+> >
+> >
+> >
+>
+>
+> My bot found new DTB warnings on the .dts files added or changed in this
+> series.
+>
+> Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+> are fixed by another series. Ultimately, it is up to the platform
+> maintainer whether these warnings are acceptable or not. No need to reply
+> unless the platform maintainer has comments.
+>
+> If you already ran DT checks and didn't see these error(s), then
+> make sure dt-schema is up to date:
+>
+>   pip3 install dtschema --upgrade
+>
+>
+> New warnings running 'make CHECK_DTBS=3Dy mediatek/mt8186-corsola-chincho=
+u-sku0.dtb mediatek/mt8186-corsola-chinchou-sku1.dtb mediatek/mt8186-corsol=
+a-chinchou-sku16.dtb' for 20241015122608.24569-1-xiazhengqiao@huaqin.corp-p=
+artner.google.com:
+>
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: /: compati=
+ble: 'oneOf' conditional failed, one must be fixed:
+>         ['google,chinchou-sku1', 'google,chinchou-sku17', 'google,chincho=
+u-sku3', 'google,chinchou-sku6', 'google,chinchou-sku7', 'google,chinchou-s=
+ku20', 'google,chinchou-sku22', 'google,chinchou-sku23', 'mediatek,mt8186']=
+ is too long
+>         'google,chinchou-sku1' is not one of ['mediatek,mt2701-evb']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt2712-evb']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt6580-evbp1']
+>         'google,chinchou-sku1' is not one of ['prestigio,pmt5008-3g']
+>         'google,chinchou-sku1' is not one of ['fairphone,fp1', 'mundoread=
+er,bq-aquaris5']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt6592-evb']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt6755-evb']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt6765-evb']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt6779-evb']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt6795-evb', 'son=
+y,xperia-m5']
+>         'google,chinchou-sku1' is not one of ['archermind,mt6797-x20-dev'=
+, 'mediatek,mt6797-evb']
+>         'google,chinchou-sku1' is not one of ['bananapi,bpi-r64', 'mediat=
+ek,mt7622-rfb1']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt7623a-rfb-emmc'=
+, 'mediatek,mt7623a-rfb-nand', 'mediatek,mt7623n-rfb-emmc', 'bananapi,bpi-r=
+2']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt7629-rfb']
+>         'google,chinchou-sku1' is not one of ['cudy,wr3000-v1', 'openwrt,=
+one', 'xiaomi,ax3000t']
+>         'google,chinchou-sku1' is not one of ['acelink,ew-7886cax', 'bana=
+napi,bpi-r3', 'bananapi,bpi-r3mini', 'mediatek,mt7986a-rfb']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt7986b-rfb']
+>         'google,chinchou-sku1' is not one of ['bananapi,bpi-r4']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt8127-moose']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt8135-evbp1']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt8167-pumpkin']
+>         'google,elm-rev8' was expected
+>         'google,hana-rev6' was expected
+>         'google,hana-rev7' was expected
+>         'google,chinchou-sku1' is not one of ['mediatek,mt8173-evb']
+>         'google,burnet' was expected
+>         'google,cozmo' was expected
+>         'google,damu' was expected
+>         'google,chinchou-sku1' is not one of ['google,fennel-sku0', 'goog=
+le,fennel-sku1', 'google,fennel-sku2', 'google,fennel-sku6', 'google,fennel=
+-sku7']
+>         'google,chinchou-sku1' is not one of ['google,juniper-sku16', 'go=
+ogle,juniper-sku17']
+>         'google,kakadu-rev3' was expected
+>         'google,kakadu-rev3-sku22' was expected
+>         'google,kappa' was expected
+>         'google,chinchou-sku1' is not one of ['google,katsu-sku32', 'goog=
+le,katsu-sku38']
+>         'google,chinchou-sku1' is not one of ['google,kodama-sku16', 'goo=
+gle,kodama-sku272', 'google,kodama-sku288', 'google,kodama-sku32']
+>         'google,chinchou-sku1' is not one of ['google,krane-sku0', 'googl=
+e,krane-sku176']
+>         'google,chinchou-sku1' is not one of ['google,makomo-sku0', 'goog=
+le,makomo-sku1']
+>         'google,chinchou-sku1' is not one of ['google,pico-sku1', 'google=
+,pico-sku2']
+>         'google,chinchou-sku1' is not one of ['google,willow-sku0', 'goog=
+le,willow-sku1']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt8183-evb']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt8183-pumpkin']
+>         'google,chinchou-sku0' was expected
+>         'google,chinchou-sku16' was expected
+>         'google,steelix-sku393219' was expected
+>         'google,steelix-sku393220' was expected
+>         'google,steelix-sku393221' was expected
+>         'google,steelix-sku196609' was expected
+>         'google,chinchou-sku1' is not one of ['google,steelix-sku131072',=
+ 'google,steelix-sku131073']
+>         'google,tentacruel-sku262147' was expected
+>         'google,tentacruel-sku262151' was expected
+>         'google,tentacruel-sku327681' was expected
+>         'google,tentacruel-sku327683' was expected
+>         'google,chinchou-sku1' is not one of ['google,voltorb-sku589824',=
+ 'google,voltorb-sku589825']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt8186-evb']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt8188-evb']
+>         'google,hayato-rev1' was expected
+>         'google,hayato-rev5-sku2' was expected
+>         'google,spherion-rev3' was expected
+>         'google,spherion-rev4' was expected
+>         'google,chinchou-sku1' is not one of ['mediatek,mt8192-evb']
+>         'google,chinchou-sku1' is not one of ['google,tomato-rev2', 'goog=
+le,tomato-rev1']
+>         'google,tomato-rev4' was expected
+>         'google,dojo-sku7' was expected
+>         'google,chinchou-sku1' is not one of ['mediatek,mt8195-demo', 'me=
+diatek,mt8195-evb']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt8365-evk']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt8390-evk']
+>         'google,chinchou-sku1' is not one of ['kontron,3-5-sbc-i1200', 'm=
+ediatek,mt8395-evk', 'radxa,nio-12l']
+>         'google,chinchou-sku1' is not one of ['mediatek,mt8516-pumpkin']
+>         'mediatek,mt2701' was expected
+>         'mediatek,mt2712' was expected
+>         'mediatek,mt6580' was expected
+>         'mediatek,mt6582' was expected
+>         'mediatek,mt6589' was expected
+>         'mediatek,mt6592' was expected
+>         'mediatek,mt6755' was expected
+>         'mediatek,mt6765' was expected
+>         'mediatek,mt6779' was expected
+>         'mediatek,mt6795' was expected
+>         'mediatek,mt6797' was expected
+>         'mediatek,mt7622' was expected
+>         'mediatek,mt7623' was expected
+>         'mediatek,mt7629' was expected
+>         'mediatek,mt7981b' was expected
+>         'mediatek,mt7986a' was expected
+>         'mediatek,mt7986b' was expected
+>         'mediatek,mt7988a' was expected
+>         'mediatek,mt8127' was expected
+>         'mediatek,mt8135' was expected
+>         'mediatek,mt8167' was expected
+>         'google,elm-rev7' was expected
+>         'google,hana-rev5' was expected
+>         'mediatek,mt8173' was expected
+>         'mediatek,mt8183' was expected
+>         'google,fennel' was expected
+>         'google,juniper' was expected
+>         'google,kakadu-rev2' was expected
+>         'google,kakadu-rev2-sku22' was expected
+>         'google,katsu' was expected
+>         'google,kodama' was expected
+>         'google,krane' was expected
+>         'google,makomo' was expected
+>         'google,pico' was expected
+>         'google,willow' was expected
+>         'google,chinchou-sku2' was expected
+>         'google,chinchou-sku3' was expected
+>         'google,chinchou-sku18' was expected
+>         'google,steelix-sku393216' was expected
+>         'google,steelix-sku393217' was expected
+>         'google,steelix-sku393218' was expected
+>         'google,steelix-sku196608' was expected
+>         'google,steelix' was expected
+>         'google,tentacruel-sku262146' was expected
+>         'google,tentacruel-sku262150' was expected
+>         'google,tentacruel' was expected
+>         'google,voltorb' was expected
+>         'mediatek,mt8186' was expected
+>         'mediatek,mt8188' was expected
+>         'google,hayato' was expected
+>         'google,hayato-sku2' was expected
+>         'google,spherion-rev2' was expected
+>         'google,spherion' was expected
+>         'mediatek,mt8192' was expected
+>         'google,tomato' was expected
+>         'google,tomato-rev3' was expected
+>         'google,dojo-sku5' was expected
+>         'mediatek,mt8195' was expected
+>         'mediatek,mt8365' was expected
+>         'mediatek,mt8390' was expected
+>         'mediatek,mt8395' was expected
+>         'mediatek,mt8516' was expected
+>         'google,elm-rev6' was expected
+>         'google,hana-rev4' was expected
+>         'google,kakadu' was expected
+>         'google,chinchou-sku4' was expected
+>         'google,chinchou-sku6' was expected
+>         'google,chinchou-sku19' was expected
+>         'google,tentacruel-sku262145' was expected
+>         'google,tentacruel-sku262149' was expected
+>         'google,spherion-rev1' was expected
+>         'google,dojo-sku3' was expected
+>         'google,elm-rev5' was expected
+>         'google,hana-rev3' was expected
+>         'google,chinchou-sku5' was expected
+>         'google,chinchou-sku7' was expected
+>         'google,chinchou-sku21' was expected
+>         'google,tentacruel-sku262144' was expected
+>         'google,tentacruel-sku262148' was expected
+>         'google,spherion-rev0' was expected
+>         'google,dojo-sku1' was expected
+>         'google,elm-rev4' was expected
+>         'google,hana' was expected
+>         'google,chinchou' was expected
+>         'google,chinchou-sku17' was expected
+>         'google,dojo' was expected
+>         'google,elm-rev3' was expected
+>         'google,elm' was expected
 
-This feature provides the ability to read all thermal sensor values in
-the SoC through the node /sys/class/thermal.
+I don't know how to solve this, there are so many skus in chinchou, I
+can't remove that.
 
-Signed-off-by: Michael Kao <michael.kao@mediatek.com>
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
-Signed-off-by: James Lo <james.lo@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
----
-Changes in v12:
-- Remove unnecessary check and unused variable assignment in mtk_read_sensor_temp.
-- Add more about what this patch achieves in the commit message.
-- Link to v11: https://lore.kernel.org/r/20240809-auxadc_thermal-v11-1-af36cc74f3a3@chromium.org
+>         from schema $id: http://devicetree.org/schemas/arm/mediatek.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: pinctrl@1=
+0005000: 'pin-report' does not match any of the regexes: '-pins$', 'pinctrl=
+-[0-9]+'
+>         from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,m=
+t8186-pinctrl.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: pinctrl@10=
+005000: 'pin-report' does not match any of the regexes: '-pins$', 'pinctrl-=
+[0-9]+'
+>         from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,m=
+t8186-pinctrl.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: pinctrl@10=
+005000: 'pin-report' does not match any of the regexes: '-pins$', 'pinctrl-=
+[0-9]+'
+>         from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,m=
+t8186-pinctrl.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: /soc/pwra=
+p@1000d000/pmic: failed to match any schema with compatible: ['mediatek,mt6=
+366', 'mediatek,mt6358']
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: /soc/pwra=
+p@1000d000/pmic: failed to match any schema with compatible: ['mediatek,mt6=
+366', 'mediatek,mt6358']
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: /soc/pwra=
+p@1000d000/pmic/codec: failed to match any schema with compatible: ['mediat=
+ek,mt6366-sound', 'mediatek,mt6358-sound']
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: /soc/pwra=
+p@1000d000/pmic/codec: failed to match any schema with compatible: ['mediat=
+ek,mt6366-sound', 'mediatek,mt6358-sound']
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: /soc/pwrap=
+@1000d000/pmic: failed to match any schema with compatible: ['mediatek,mt63=
+66', 'mediatek,mt6358']
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: /soc/pwrap=
+@1000d000/pmic: failed to match any schema with compatible: ['mediatek,mt63=
+66', 'mediatek,mt6358']
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: /soc/pwrap=
+@1000d000/pmic: failed to match any schema with compatible: ['mediatek,mt63=
+66', 'mediatek,mt6358']
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: /soc/pwrap=
+@1000d000/pmic/codec: failed to match any schema with compatible: ['mediate=
+k,mt6366-sound', 'mediatek,mt6358-sound']
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: /soc/pwrap=
+@1000d000/pmic: failed to match any schema with compatible: ['mediatek,mt63=
+66', 'mediatek,mt6358']
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: /soc/pwrap=
+@1000d000/pmic/codec: failed to match any schema with compatible: ['mediate=
+k,mt6366-sound', 'mediatek,mt6358-sound']
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: /soc/pwrap=
+@1000d000/pmic/codec: failed to match any schema with compatible: ['mediate=
+k,mt6366-sound', 'mediatek,mt6358-sound']
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: /soc/pwrap=
+@1000d000/pmic/codec: failed to match any schema with compatible: ['mediate=
+k,mt6366-sound', 'mediatek,mt6358-sound']
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: /soc/pwra=
+p@1000d000/pmic/rtc: failed to match any schema with compatible: ['mediatek=
+,mt6366-rtc', 'mediatek,mt6358-rtc']
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: /soc/pwra=
+p@1000d000/pmic/rtc: failed to match any schema with compatible: ['mediatek=
+,mt6366-rtc', 'mediatek,mt6358-rtc']
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: /soc/pwrap=
+@1000d000/pmic/rtc: failed to match any schema with compatible: ['mediatek,=
+mt6366-rtc', 'mediatek,mt6358-rtc']
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: /soc/pwrap=
+@1000d000/pmic/rtc: failed to match any schema with compatible: ['mediatek,=
+mt6366-rtc', 'mediatek,mt6358-rtc']
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: /soc/pwrap=
+@1000d000/pmic/rtc: failed to match any schema with compatible: ['mediatek,=
+mt6366-rtc', 'mediatek,mt6358-rtc']
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: /soc/pwrap=
+@1000d000/pmic/rtc: failed to match any schema with compatible: ['mediatek,=
+mt6366-rtc', 'mediatek,mt6358-rtc']
 
-Changes in V11:
-    - Rebase on kernel v6.11-rc2
-    - Use mtk_thermal_temp_is_valid in mtk_read_sensor_temp just like
-      mtk_thermal_bank_temperature
-    - Change the error handling of devm_thermal_of_zone_register return
-      value
-    - link to V10: https://lore.kernel.org/lkml/20220519101044.16765-1-james.lo@mediatek.com/
+These errors are not caused by me, do I need to add them?
 
-Changes in V10:
-    - Rebase to kernel-v5.18-rc7
-    - Resend
-
-Changes in V9:
-    - Rebase to kernel-v5.14-rc1
-    - Bind raw_to_mcelsius_v1 or raw_to_mcelsius_v2 to compatible
-      data of struct mtk_thermal_data
-    - Remove duplicate struct 'mtk_thermal_bank'
-    - Remove unnecessary if condition check
-    - Return error if any thermal zone fail to register
-
-Changes in V8:
-    - Rebase to kernel-v5.13-rc1
-    - Resend
-
-Changes in v7:
-    - Fix build error in v6.
-
-Changes in v6:
-    - Rebase to kernel-5.11-rc1.
-    - [1/3]
-        - add interrupts property.
-    - [2/3]
-        - add the Tested-by in the commit message.
-    - [3/3]
-        - use the mt->conf->msr[id] instead of conf->msr[id] in the
-          _get_sensor_temp and mtk_thermal_bank_temperature.
-        - remove the redundant space in _get_sensor_temp and
-          mtk_read_sensor_temp.
-        - change kmalloc to dev_kmalloc in mtk_thermal_probe.
-
-Changes in v5:
-    - Rebase to kernel-5.9-rc1.
-    - Revise the title of cover letter.
-    - Drop "[v4,7/7] thermal: mediatek: use spinlock to protect PTPCORESEL"
-    - [2/2]
-        -  Add the judgement to the version of raw_to_mcelsius.
-
-Changes in v4:
-    - Rebase to kernel-5.6-rc1.
-    - [1/7]
-        - Squash thermal zone settings in the dtsi from [v3,5/8]
-          arm64: dts: mt8183: Increase polling frequency for CPU thermal zone.
-        - Remove the property of interrupts and mediatek,hw-reset-temp.
-    - [2/7]
-        - Correct commit message.
-    - [4/7]
-        - Change the target temperature to the 80C and change the commit message.
-    - [6/7]
-        - Adjust newline alignment.
-        - Fix the judgement on the return value of registering thermal zone.
-
-Changes in v3:
-    - Rebase to kernel-5.5-rc1.
-    - [1/8]
-        - Update sustainable power of cpu, tzts1~5 and tztsABB.
-    - [7/8]
-        - Bypass the failure that non cpu_thermal sensor is not find in thermal-zones
-          in dts, which is normal for mt8173, so prompt a warning here instead of
-          failing.
-
-    Return -EAGAIN instead of -EACCESS on the first read of sensor that
-        often are bogus values. This can avoid following warning on boot:
-
-          thermal thermal_zone6: failed to read out thermal zone (-13)
-
-Changes in v2:
-    - [1/8]
-        - Add the sustainable-power,trips,cooling-maps to the tzts1~tztsABB.
-    - [4/8]
-        - Add the min opp of cpu throttle.
----
-
----
- drivers/thermal/mediatek/auxadc_thermal.c | 70 +++++++++++++++++++++++++++----
- 1 file changed, 62 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
-index 9ee2e7283435acfcbb1a956303b6122a08affecc..10938be2e5545fba2fff7d5cc5a0269d42e5d44d 100644
---- a/drivers/thermal/mediatek/auxadc_thermal.c
-+++ b/drivers/thermal/mediatek/auxadc_thermal.c
-@@ -847,7 +847,8 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
- 
- static int mtk_read_temp(struct thermal_zone_device *tz, int *temperature)
- {
--	struct mtk_thermal *mt = thermal_zone_device_priv(tz);
-+	struct mtk_thermal_bank *bank = thermal_zone_device_priv(tz);
-+	struct mtk_thermal *mt = bank->mt;
- 	int i;
- 	int tempmax = INT_MIN;
- 
-@@ -866,10 +867,41 @@ static int mtk_read_temp(struct thermal_zone_device *tz, int *temperature)
- 	return 0;
- }
- 
-+static int mtk_read_sensor_temp(struct thermal_zone_device *tz, int *temperature)
-+{
-+	struct mtk_thermal_bank *bank = thermal_zone_device_priv(tz);
-+	struct mtk_thermal *mt = bank->mt;
-+	const struct mtk_thermal_data *conf = mt->conf;
-+	int id = bank->id - 1;
-+	int temp = INT_MIN;
-+	u32 raw;
-+
-+	raw = readl(mt->thermal_base + conf->msr[id]);
-+
-+	temp = mt->raw_to_mcelsius(mt, id, raw);
-+
-+	/*
-+	 * The first read of a sensor often contains very high bogus
-+	 * temperature value. Filter these out so that the system does
-+	 * not immediately shut down.
-+	 */
-+
-+	if (unlikely(!mtk_thermal_temp_is_valid(temp)))
-+		return -EAGAIN;
-+
-+	*temperature = temp;
-+
-+	return 0;
-+}
-+
- static const struct thermal_zone_device_ops mtk_thermal_ops = {
- 	.get_temp = mtk_read_temp,
- };
- 
-+static const struct thermal_zone_device_ops mtk_thermal_sensor_ops = {
-+	.get_temp = mtk_read_sensor_temp,
-+};
-+
- static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
- 				  u32 apmixed_phys_base, u32 auxadc_phys_base,
- 				  int ctrl_id)
-@@ -1199,6 +1231,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 	u64 auxadc_phys_base, apmixed_phys_base;
- 	struct thermal_zone_device *tzdev;
- 	void __iomem *apmixed_base, *auxadc_base;
-+	struct mtk_thermal_bank *tz;
- 
- 	mt = devm_kzalloc(&pdev->dev, sizeof(*mt), GFP_KERNEL);
- 	if (!mt)
-@@ -1285,14 +1318,35 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 			mtk_thermal_init_bank(mt, i, apmixed_phys_base,
- 					      auxadc_phys_base, ctrl_id);
- 
--	tzdev = devm_thermal_of_zone_register(&pdev->dev, 0, mt,
--					      &mtk_thermal_ops);
--	if (IS_ERR(tzdev))
--		return PTR_ERR(tzdev);
-+	for (i = 0; i <= mt->conf->num_sensors; i++) {
-+		tz = devm_kmalloc(&pdev->dev, sizeof(*tz), GFP_KERNEL);
-+		if (!tz)
-+			return -ENOMEM;
-+
-+		tz->mt = mt;
-+		tz->id = i;
-+
-+		tzdev = devm_thermal_of_zone_register(&pdev->dev, i,
-+						      tz, (i == 0) ?
-+						      &mtk_thermal_ops
-+						      : &mtk_thermal_sensor_ops);
-+
-+		if (IS_ERR(tzdev)) {
-+			ret = PTR_ERR(tzdev);
-+			if (ret == -ENODEV) {
-+				dev_warn(&pdev->dev, "can't find thermal sensor %d\n", i);
-+				continue;
-+			}
-+			dev_err(&pdev->dev,
-+				"Error: Failed to register thermal zone %d, ret = %d\n",
-+				i, ret);
-+			return ret;
-+		}
- 
--	ret = devm_thermal_add_hwmon_sysfs(&pdev->dev, tzdev);
--	if (ret)
--		dev_warn(&pdev->dev, "error in thermal_add_hwmon_sysfs");
-+		ret = devm_thermal_add_hwmon_sysfs(&pdev->dev, tzdev);
-+		if (ret)
-+			dev_warn(&pdev->dev, "error in thermal_add_hwmon_sysfs: %d\n", ret);
-+	}
- 
- 	return 0;
- }
-
----
-base-commit: b589839414be04b2b37e4bf6f84af576c99faf64
-change-id: 20240809-auxadc_thermal-9be338ec8b1c
-
-Best regards,
--- 
-Hsin-Te Yuan <yuanhsinte@chromium.org>
-
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: touchscre=
+en@41: 'vcc33-supply' is a required property
+>         from schema $id: http://devicetree.org/schemas/input/ilitek,ili29=
+01.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: touchscree=
+n@41: 'vcc33-supply' is a required property
+>         from schema $id: http://devicetree.org/schemas/input/ilitek,ili29=
+01.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: rt5650@1a=
+: 'cpvdd-supply' is a required property
+>         from schema $id: http://devicetree.org/schemas/sound/realtek,rt56=
+45.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: rt5650@1a=
+: Unevaluated properties are not allowed ('cbj-sleeve-gpio' was unexpected)
+>         from schema $id: http://devicetree.org/schemas/sound/realtek,rt56=
+45.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: rt5650@1a:=
+ 'cpvdd-supply' is a required property
+>         from schema $id: http://devicetree.org/schemas/sound/realtek,rt56=
+45.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: rt5650@1a:=
+ Unevaluated properties are not allowed ('cbj-sleeve-gpio' was unexpected)
+>         from schema $id: http://devicetree.org/schemas/sound/realtek,rt56=
+45.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: rt5650@1a:=
+ 'cpvdd-supply' is a required property
+>         from schema $id: http://devicetree.org/schemas/sound/realtek,rt56=
+45.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: rt5650@1a:=
+ Unevaluated properties are not allowed ('cbj-sleeve-gpio' was unexpected)
+>         from schema $id: http://devicetree.org/schemas/sound/realtek,rt56=
+45.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: sound: 'm=
+odel' is a required property
+>         from schema $id: http://devicetree.org/schemas/sound/mt8186-mt636=
+6-rt1019-rt5682s.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: sound: pl=
+ayback-codecs:sound-dai: [[183]] is too short
+>         from schema $id: http://devicetree.org/schemas/sound/mt8186-mt636=
+6-rt1019-rt5682s.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: sound: Un=
+evaluated properties are not allowed ('playback-codecs' was unexpected)
+>         from schema $id: http://devicetree.org/schemas/sound/mt8186-mt636=
+6-rt1019-rt5682s.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: sound: 'mo=
+del' is a required property
+>         from schema $id: http://devicetree.org/schemas/sound/mt8186-mt636=
+6-rt1019-rt5682s.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: sound: pla=
+yback-codecs:sound-dai: [[183]] is too short
+>         from schema $id: http://devicetree.org/schemas/sound/mt8186-mt636=
+6-rt1019-rt5682s.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: sound: Une=
+valuated properties are not allowed ('playback-codecs' was unexpected)
+>         from schema $id: http://devicetree.org/schemas/sound/mt8186-mt636=
+6-rt1019-rt5682s.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: sound: 'mo=
+del' is a required property
+>         from schema $id: http://devicetree.org/schemas/sound/mt8186-mt636=
+6-rt1019-rt5682s.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: sound: pla=
+yback-codecs:sound-dai: [[181]] is too short
+>         from schema $id: http://devicetree.org/schemas/sound/mt8186-mt636=
+6-rt1019-rt5682s.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: sound: Une=
+valuated properties are not allowed ('playback-codecs' was unexpected)
+>         from schema $id: http://devicetree.org/schemas/sound/mt8186-mt636=
+6-rt1019-rt5682s.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: regulator=
+-pp1800-tchscr-report-disable: Unevaluated properties are not allowed ('ena=
+ble-active-low' was unexpected)
+>         from schema $id: http://devicetree.org/schemas/regulator/fixed-re=
+gulator.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: regulator-=
+pp1800-tchscr-report-disable: Unevaluated properties are not allowed ('enab=
+le-active-low' was unexpected)
+>         from schema $id: http://devicetree.org/schemas/regulator/fixed-re=
+gulator.yaml#
+> arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: regulator-=
+pp1800-tchscr-report-disable: Unevaluated properties are not allowed ('enab=
+le-active-low' was unexpected)
+>         from schema $id: http://devicetree.org/schemas/regulator/fixed-re=
+gulator.yaml#
+>
+>
+>
+>
+>
 
