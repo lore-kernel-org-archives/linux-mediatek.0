@@ -4,78 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45425D2A52F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 16:08:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 156F2D2A530
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 16:16:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Kr7rIycrQNv+7/aCXXtLO3K0Lzcz8kTMlFvA5SaaB3I=; b=rJqjQwrinYY3EIviTNDvKlW7dd
-	JBTN3Q2HjC6K1FEyV2LozpDDpyJ1lsLp6LqDyuY6VQNI4J2NGhYGIMmMCe3Jsa2r1KcsiJv5IC5CC
-	DGjEvYXDcoIjkIakCuQCVylrHZx90eXCYqz7qokp+cCyi0CDbFXpYrMTBMwxNVX+Zvt3rGK2Tp0Or
-	LaP4JB4DabiaMgw/Ru50UZjnRvpLFxaP3x3MHo7jTF97xgAevkVEjqPR0lohQ7jytlWBj0qd+oIn6
-	1XAjLY5payMba1PUXrIXf2RqrKjHJIqn4qom1PTUF6ckDc1IhCRtkiiTDCROCPEZFM+HpVXnq26CH
-	BHUU9LBg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RiQonn6BhqWpfgbEB2vaDtiGSgKUpiKQY8eThhn544c=; b=0taBxp4eEfhFe72sgRCCdrkiQv
+	92kuREovfhpFNRs2UrJqd9zozJR0UOGnTyTyWQ4z9y1ctQqLZlhqgS6OZIRuKqYi8xBfMkaTGSmxU
+	efcgs9xJ2D73Bw4Wa/UekB1/7C+3cLHOv0kCHeJWa11btLbgQvEaEQjHWLUbRfZxPHzMI1d+XMwGd
+	ebDaW9/umEHQYAS2V+eR0MfmhWEgljTnksr5eNOBzrE4QKayQiS22yjAXfF1wdJ1Di8jZBTcznkMU
+	EkvR33NErnQn6OX52/e2s+WXgZgBdofjn61rUwE0gSr4JT6lol7srq9HsPruapeygBclq5ES8oDTU
+	TyluGu/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t16Z5-0000000CMSf-01IT;
-	Wed, 16 Oct 2024 16:07:59 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1t16hf-0000000CO0c-432u;
+	Wed, 16 Oct 2024 16:16:51 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t16Yf-0000000CMNf-1GZo;
-	Wed, 16 Oct 2024 16:07:35 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1729094836; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=AW33EU2mROFqz8gJGT9DEjsYHa6VTR4uKPZls9h6YaDHN3u3egb3b2iRAD9YlXgzbRb7x7YLUx1/28Qj1V7nl6U6xERC9pHIkprncuRy65RdAA12O5ehcArZGKAfVPpPOyx7BYfiOveOeZ+tKkkqXqv/004bXZ5wHS5WJlLyR2o=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1729094836; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Kr7rIycrQNv+7/aCXXtLO3K0Lzcz8kTMlFvA5SaaB3I=; 
-	b=W6Y2LmvatyAsB1rCg4h6dyWg+slJO722R03JwGEsZsiVnyrSA1WUkkTwlsaK8Vzwz3aiOF5i8+wHkwljz3CqGFDaS/Otb6P3Xbt+6xUubjSOjKZm3uhcsoCUTRvdqPVMhDQGlEouV2VeaKhUMUovIYyMw9hjJNTeORv29+GyRyk=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1729094835;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=Kr7rIycrQNv+7/aCXXtLO3K0Lzcz8kTMlFvA5SaaB3I=;
-	b=T0PwhF4zBOxc0Feo2lU3E3y8JOWmbbtVhmy7t71xKvfpRE90OthssrtowwFmna4P
-	FdpqVKnY9LTuuL3dAUSAPKzfu5ruLcMEgok46oHleaivTuu2281O2bSQBjz0VWwpPRw
-	TXkSV6wwJU2srhgrjVFmlE3XbMXxv0vfeADOHshI=
-Received: by mx.zohomail.com with SMTPS id 1729094834938486.39137892805354;
-	Wed, 16 Oct 2024 09:07:14 -0700 (PDT)
-Received: by mercury (Postfix, from userid 1000)
-	id 3E82C106044F; Wed, 16 Oct 2024 18:07:09 +0200 (CEST)
-Date: Wed, 16 Oct 2024 18:07:09 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Michael Turquette <mturquette@baylibre.com>, 
-	Stephen Boyd <sboyd@kernel.org>, Russell King <linux@armlinux.org.uk>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jingoo Han <jingoohan1@gmail.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, 
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Rob Herring <robh@kernel.org>, 
-	Bjorn Helgaas <bhelgaas@google.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, kernel@collabora.com, linux-clk@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-samsung-soc@vger.kernel.org
-Subject: Re: [PATCH v2 0/4] Provide devm_clk_bulk_get_all_enabled() helper
-Message-ID: <bi7pxgkf6qylkcfa6x2uerfe6zyctbidwravqb4okefjctlvuu@fxmi4pt3fktu>
-References: <20240926-clk_bulk_ena_fix-v2-0-9c767510fbb5@collabora.com>
- <9ca2a9dc-b643-40ce-8177-68533d0733d1@collabora.com>
+	id 1t16b8-0000000CMyz-1XoY;
+	Wed, 16 Oct 2024 16:10:08 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id A8F15A404B5;
+	Wed, 16 Oct 2024 16:09:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE96CC4CEC5;
+	Wed, 16 Oct 2024 16:10:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1729095004;
+	bh=/8oRRUNfNwnsU8fQTXriVpNbZe0khd8XO4L+5CG/c30=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=ISX0itdKvxuhzkcXl31Jr+FH7gR8rHpf0hU180oSkKAI1qRNn/OFaWmdP3wZO0z7Z
+	 MKG3pvsRPPAggRL2plm9MkFvozeSSaRIVazkGHOI9gRTGtlKz3zbrjMNTtsZTLkws8
+	 fqLAcZFyUzyJsF1Q9pIt+bJIaVnejKhn1hMu0KhW4m5PdK5i3998NZP0pAS9GRJaWb
+	 C1tfXOQ2mWeXxJWAD9uX42cOAD9pQpO+omF6GcrGARmD1mMCTzOrPc/T7PpNUYka8X
+	 EPMdCqtMbiTYrhCKOHUz5XWvwqkbSLz8hdPstzD434e7edqHaYhXYlQtzbFpBisLyZ
+	 pkRDYxyz8MYxQ==
+Received: by mail-lf1-f53.google.com with SMTP id 2adb3069b0e04-539e8586b53so970210e87.1;
+        Wed, 16 Oct 2024 09:10:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCUHdWK0Yu5RyhDFFZNp0hPod2CKHsTUWCU3V0stILAr97uFQTxAOFhAexZhnatA6SxrJc9MP++N9DoKwYa0NKU=@lists.infradead.org, AJvYcCX7cQ+OtvjasX9vshRXvkipfFF29ssq9MLxAyLRu4D4g/dtBfTP1Jtfxry1KHF6+UlHgOkt5g1SKR0T0/SmnmBH@lists.infradead.org
+X-Gm-Message-State: AOJu0YzV2WBZXDlcWFYGD3gxaEw1bue6QLOCvwuP7owLHCskTrh+AJEb
+	zouQxws0Sxbc8DHYDrjhMt71kITuKYVM2XJf+D1qRuC8DN9d2VZCA1//MrcPFfNGCz+hRV6qmPe
+	SuEm8AxZd2skfyK0lJFijaRED0A==
+X-Google-Smtp-Source: AGHT+IF/6QT0m3wzFuScuoqgOYXxIDr4vByNBtyuhCH5zx/e1EquI+cWB+AcczT01dHOus+rfCXDCHNzCj4kuz2U5mk=
+X-Received: by 2002:a05:6512:308d:b0:539:e2cc:d37c with SMTP id
+ 2adb3069b0e04-53a0c6a76e0mr45312e87.3.1729095002207; Wed, 16 Oct 2024
+ 09:10:02 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="re7lds35svwv2quv"
-Content-Disposition: inline
-In-Reply-To: <9ca2a9dc-b643-40ce-8177-68533d0733d1@collabora.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-1.3.1/228.222.7
-X-ZohoMailClient: External
+References: <20241014085148.71105-1-angelogioacchino.delregno@collabora.com>
+ <20241014085148.71105-2-angelogioacchino.delregno@collabora.com>
+ <CAL_Jsq+hpTPCkuXoCF88nyS_D+iFZB5osrt1q04RxffDsY7cXw@mail.gmail.com>
+ <ec14b01e-7237-4f52-82a6-b8de42fb120b@collabora.com> <20241015134802.GB447702-robh@kernel.org>
+ <e5612a1d-b609-4f4a-aec4-601f7060e4cf@collabora.com> <CAL_JsqLsFbJbLn76QYwzCfu+bmpjfsxCDp_OuKAFnktMXMbTBA@mail.gmail.com>
+ <ff272e72-c5a2-4b67-a8c9-ee41219aa1bb@collabora.com>
+In-Reply-To: <ff272e72-c5a2-4b67-a8c9-ee41219aa1bb@collabora.com>
+From: Rob Herring <robh@kernel.org>
+Date: Wed, 16 Oct 2024 11:09:49 -0500
+X-Gmail-Original-Message-ID: <CAL_JsqKXD=2zwckmNvCuZ2qyaopaxDE7WnaYUXkWPXBK2EYBQg@mail.gmail.com>
+Message-ID: <CAL_JsqKXD=2zwckmNvCuZ2qyaopaxDE7WnaYUXkWPXBK2EYBQg@mail.gmail.com>
+Subject: Re: [PATCH v12 1/3] dt-bindings: display: mediatek: Add OF graph
+ support for board path
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, matthias.bgg@kernel.org, 
+	chunkuang.hu@kernel.org, krzysztof.kozlowski+dt@linaro.org, 
+	conor+dt@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
+	daniel@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
+	tzimmermann@suse.de, shawn.sung@mediatek.com, yu-chang.lee@mediatek.com, 
+	ck.hu@mediatek.com, jitao.shi@mediatek.com, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	wenst@chromium.org, kernel@collabora.com, sui.jingfeng@linux.dev, 
+	michael@walle.cc, sjoerd@collabora.com, 
+	Alexandre Mergnat <amergnat@baylibre.com>, Michael Walle <mwalle@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_090733_402880_FFF0470C 
-X-CRM114-Status: GOOD (  27.40  )
+X-CRM114-CacheID: sfid-20241016_091006_573898_E57BEE74 
+X-CRM114-Status: GOOD (  29.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,89 +96,485 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, Oct 16, 2024 at 10:26=E2=80=AFAM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 16/10/24 16:00, Rob Herring ha scritto:
+> > On Wed, Oct 16, 2024 at 4:23=E2=80=AFAM AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com> wrote:
+> >>
+> >> Il 15/10/24 15:48, Rob Herring ha scritto:
+> >>> On Tue, Oct 15, 2024 at 10:32:22AM +0200, AngeloGioacchino Del Regno =
+wrote:
+> >>>> Il 14/10/24 19:36, Rob Herring ha scritto:
+> >>>>> On Mon, Oct 14, 2024 at 3:51=E2=80=AFAM AngeloGioacchino Del Regno
+> >>>>> <angelogioacchino.delregno@collabora.com> wrote:
+> >>>>>>
+> >>>>>> The display IPs in MediaTek SoCs support being interconnected with
+> >>>>>> different instances of DDP IPs (for example, merge0 or merge1) and=
+/or
+> >>>>>> with different DDP IPs (for example, rdma can be connected with ei=
+ther
+> >>>>>> color, dpi, dsi, merge, etc), forming a full Display Data Path tha=
+t
+> >>>>>> ends with an actual display.
+> >>>>>>
+> >>>>>> The final display pipeline is effectively board specific, as it do=
+es
+> >>>>>> depend on the display that is attached to it, and eventually on th=
+e
+> >>>>>> sensors supported by the board (for example, Adaptive Ambient Ligh=
+t
+> >>>>>> would need an Ambient Light Sensor, otherwise it's pointless!), ot=
+her
+> >>>>>> than the output type.
+> >>>>>>
+> >>>>>> Add support for OF graphs to most of the MediaTek DDP (display) bi=
+ndings
+> >>>>>> to add flexibility to build custom hardware paths, hence enabling =
+board
+> >>>>>> specific configuration of the display pipeline and allowing to fin=
+ally
+> >>>>>> migrate away from using hardcoded paths.
+> >>>>>>
+> >>>>>> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+> >>>>>> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+> >>>>>> Tested-by: Alexandre Mergnat <amergnat@baylibre.com>
+> >>>>>> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> >>>>>> Tested-by: Michael Walle <mwalle@kernel.org> # on kontron-sbc-i120=
+0
+> >>>>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delreg=
+no@collabora.com>
+> >>>>>> ---
+> >>>>>>     .../display/mediatek/mediatek,aal.yaml        | 40 +++++++++++=
+++++++++
+> >>>>>>     .../display/mediatek/mediatek,ccorr.yaml      | 21 ++++++++++
+> >>>>>>     .../display/mediatek/mediatek,color.yaml      | 22 ++++++++++
+> >>>>>>     .../display/mediatek/mediatek,dither.yaml     | 22 ++++++++++
+> >>>>>>     .../display/mediatek/mediatek,dpi.yaml        | 25 +++++++++++=
+-
+> >>>>>>     .../display/mediatek/mediatek,dsc.yaml        | 24 +++++++++++
+> >>>>>>     .../display/mediatek/mediatek,dsi.yaml        | 27 +++++++++++=
++-
+> >>>>>>     .../display/mediatek/mediatek,ethdr.yaml      | 22 ++++++++++
+> >>>>>>     .../display/mediatek/mediatek,gamma.yaml      | 19 +++++++++
+> >>>>>>     .../display/mediatek/mediatek,merge.yaml      | 23 +++++++++++
+> >>>>>>     .../display/mediatek/mediatek,od.yaml         | 22 ++++++++++
+> >>>>>>     .../display/mediatek/mediatek,ovl-2l.yaml     | 22 ++++++++++
+> >>>>>>     .../display/mediatek/mediatek,ovl.yaml        | 22 ++++++++++
+> >>>>>>     .../display/mediatek/mediatek,postmask.yaml   | 21 ++++++++++
+> >>>>>>     .../display/mediatek/mediatek,rdma.yaml       | 22 ++++++++++
+> >>>>>>     .../display/mediatek/mediatek,ufoe.yaml       | 21 ++++++++++
+> >>>>>>     16 files changed, 372 insertions(+), 3 deletions(-)
+> >>>>>>
+> >>>>>> diff --git a/Documentation/devicetree/bindings/display/mediatek/me=
+diatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediat=
+ek,aal.yaml
+> >>>>>> index cf24434854ff..47ddba5c41af 100644
+> >>>>>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+aal.yaml
+> >>>>>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+aal.yaml
+> >>>>>> @@ -62,6 +62,27 @@ properties:
+> >>>>>>         $ref: /schemas/types.yaml#/definitions/phandle-array
+> >>>>>>         maxItems: 1
+> >>>>>>
+> >>>>>> +  ports:
+> >>>>>> +    $ref: /schemas/graph.yaml#/properties/ports
+> >>>>>> +    description:
+> >>>>>> +      Input and output ports can have multiple endpoints, each of=
+ those
+> >>>>>> +      connects to either the primary, secondary, etc, display pip=
+eline.
+> >>>>>> +
+> >>>>>> +    properties:
+> >>>>>> +      port@0:
+> >>>>>> +        $ref: /schemas/graph.yaml#/properties/port
+> >>>>>> +        description: AAL input port
+> >>>>>> +
+> >>>>>> +      port@1:
+> >>>>>> +        $ref: /schemas/graph.yaml#/properties/port
+> >>>>>> +        description:
+> >>>>>> +          AAL output to the next component's input, for example c=
+ould be one
+> >>>>>> +          of many gamma, overdrive or other blocks.
+> >>>>>> +
+> >>>>>> +    required:
+> >>>>>> +      - port@0
+> >>>>>> +      - port@1
+> >>>>>> +
+> >>>>>>     required:
+> >>>>>>       - compatible
+> >>>>>>       - reg
+> >>>>>> @@ -89,5 +110,24 @@ examples:
+> >>>>>>                power-domains =3D <&scpsys MT8173_POWER_DOMAIN_MM>;
+> >>>>>>                clocks =3D <&mmsys CLK_MM_DISP_AAL>;
+> >>>>>>                mediatek,gce-client-reg =3D <&gce SUBSYS_1401XXXX 0=
+x5000 0x1000>;
+> >>>>>> +
+> >>>>>> +           ports {
+> >>>>>> +               #address-cells =3D <1>;
+> >>>>>> +               #size-cells =3D <0>;
+> >>>>>> +
+> >>>>>> +               port@0 {
+> >>>>>> +                   reg =3D <0>;
+> >>>>>> +                   aal0_in: endpoint {
+> >>>>>> +                       remote-endpoint =3D <&ccorr0_out>;
+> >>>>>> +                   };
+> >>>>>> +               };
+> >>>>>> +
+> >>>>>> +               port@1 {
+> >>>>>> +                   reg =3D <1>;
+> >>>>>> +                   aal0_out: endpoint {
+> >>>>>> +                       remote-endpoint =3D <&gamma0_in>;
+> >>>>>> +                   };
+> >>>>>> +               };
+> >>>>>> +           };
+> >>>>>>            };
+> >>>>>>         };
+> >>>>>> diff --git a/Documentation/devicetree/bindings/display/mediatek/me=
+diatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/medi=
+atek,ccorr.yaml
+> >>>>>> index 9f8366763831..fca8e7bb0cbc 100644
+> >>>>>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+ccorr.yaml
+> >>>>>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+ccorr.yaml
+> >>>>>> @@ -57,6 +57,27 @@ properties:
+> >>>>>>         $ref: /schemas/types.yaml#/definitions/phandle-array
+> >>>>>>         maxItems: 1
+> >>>>>>
+> >>>>>> +  ports:
+> >>>>>> +    $ref: /schemas/graph.yaml#/properties/ports
+> >>>>>> +    description:
+> >>>>>> +      Input and output ports can have multiple endpoints, each of=
+ those
+> >>>>>> +      connects to either the primary, secondary, etc, display pip=
+eline.
+> >>>>>> +
+> >>>>>> +    properties:
+> >>>>>> +      port@0:
+> >>>>>> +        $ref: /schemas/graph.yaml#/properties/port
+> >>>>>> +        description: CCORR input port
+> >>>>>> +
+> >>>>>> +      port@1:
+> >>>>>> +        $ref: /schemas/graph.yaml#/properties/port
+> >>>>>> +        description:
+> >>>>>> +          CCORR output to the input of the next desired component=
+ in the
+> >>>>>> +          display pipeline, usually only one of the available AAL=
+ blocks.
+> >>>>>> +
+> >>>>>> +    required:
+> >>>>>> +      - port@0
+> >>>>>> +      - port@1
+> >>>>>> +
+> >>>>>>     required:
+> >>>>>>       - compatible
+> >>>>>>       - reg
+> >>>>>> diff --git a/Documentation/devicetree/bindings/display/mediatek/me=
+diatek,color.yaml b/Documentation/devicetree/bindings/display/mediatek/medi=
+atek,color.yaml
+> >>>>>> index 7df786bbad20..6160439ce4d7 100644
+> >>>>>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+color.yaml
+> >>>>>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+color.yaml
+> >>>>>> @@ -65,6 +65,28 @@ properties:
+> >>>>>>         $ref: /schemas/types.yaml#/definitions/phandle-array
+> >>>>>>         maxItems: 1
+> >>>>>>
+> >>>>>> +  ports:
+> >>>>>> +    $ref: /schemas/graph.yaml#/properties/ports
+> >>>>>> +    description:
+> >>>>>> +      Input and output ports can have multiple endpoints, each of=
+ those
+> >>>>>> +      connects to either the primary, secondary, etc, display pip=
+eline.
+> >>>>>> +
+> >>>>>> +    properties:
+> >>>>>> +      port@0:
+> >>>>>> +        $ref: /schemas/graph.yaml#/properties/port
+> >>>>>> +        description: COLOR input port
+> >>>>>> +
+> >>>>>> +      port@1:
+> >>>>>> +        $ref: /schemas/graph.yaml#/properties/port
+> >>>>>> +        description:
+> >>>>>> +          COLOR output to the input of the next desired component=
+ in the
+> >>>>>> +          display pipeline, for example one of the available CCOR=
+R or AAL
+> >>>>>> +          blocks.
+> >>>>>> +
+> >>>>>> +    required:
+> >>>>>> +      - port@0
+> >>>>>> +      - port@1
+> >>>>>> +
+> >>>>>>     required:
+> >>>>>>       - compatible
+> >>>>>>       - reg
+> >>>>>> diff --git a/Documentation/devicetree/bindings/display/mediatek/me=
+diatek,dither.yaml b/Documentation/devicetree/bindings/display/mediatek/med=
+iatek,dither.yaml
+> >>>>>> index 6fceb1f95d2a..abaf27916d13 100644
+> >>>>>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+dither.yaml
+> >>>>>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+dither.yaml
+> >>>>>> @@ -56,6 +56,28 @@ properties:
+> >>>>>>         $ref: /schemas/types.yaml#/definitions/phandle-array
+> >>>>>>         maxItems: 1
+> >>>>>>
+> >>>>>> +  ports:
+> >>>>>> +    $ref: /schemas/graph.yaml#/properties/ports
+> >>>>>> +    description:
+> >>>>>> +      Input and output ports can have multiple endpoints, each of=
+ those
+> >>>>>> +      connects to either the primary, secondary, etc, display pip=
+eline.
+> >>>>>> +
+> >>>>>> +    properties:
+> >>>>>> +      port@0:
+> >>>>>> +        $ref: /schemas/graph.yaml#/properties/port
+> >>>>>> +        description: DITHER input, usually from a POSTMASK or GAM=
+MA block.
+> >>>>>> +
+> >>>>>> +      port@1:
+> >>>>>> +        $ref: /schemas/graph.yaml#/properties/port
+> >>>>>> +        description:
+> >>>>>> +          DITHER output to the input of the next desired componen=
+t in the
+> >>>>>> +          display pipeline, for example one of the available DSC =
+compressors,
+> >>>>>> +          DP_INTF, DSI, LVDS or others.
+> >>>>>> +
+> >>>>>> +    required:
+> >>>>>> +      - port@0
+> >>>>>> +      - port@1
+> >>>>>> +
+> >>>>>>     required:
+> >>>>>>       - compatible
+> >>>>>>       - reg
+> >>>>>> diff --git a/Documentation/devicetree/bindings/display/mediatek/me=
+diatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediat=
+ek,dpi.yaml
+> >>>>>> index 3a82aec9021c..b567e3d58aa1 100644
+> >>>>>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+dpi.yaml
+> >>>>>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+dpi.yaml
+> >>>>>> @@ -71,13 +71,34 @@ properties:
+> >>>>>>           Output port node. This port should be connected to the i=
+nput port of an
+> >>>>>>           attached HDMI, LVDS or DisplayPort encoder chip.
+> >>>>>>
+> >>>>>> +  ports:
+> >>>>>> +    $ref: /schemas/graph.yaml#/properties/ports
+> >>>>>> +
+> >>>>>> +    properties:
+> >>>>>> +      port@0:
+> >>>>>> +        $ref: /schemas/graph.yaml#/properties/port
+> >>>>>> +        description: DPI input port
+> >>>>>> +
+> >>>>>> +      port@1:
+> >>>>>> +        $ref: /schemas/graph.yaml#/properties/port
+> >>>>>> +        description: DPI output to an HDMI, LVDS or DisplayPort e=
+ncoder input
+> >>>>>
+> >>>>> This is wrong. The existing 'port' is the output. 'port' and 'port@=
+0'
+> >>>>> are treated as the same thing. Since you are adding an input port, =
+the
+> >>>>> new port has to be 'port@1' (or any number but 0).
+> >>>>>
+> >>>>> I haven't looked at the driver code, but it should request port 0 a=
+nd
+> >>>>> always get the output port. And requesting port 1 will return an er=
+ror
+> >>>>> or the input port.
+> >>>>
+> >>>> Hello Rob,
+> >>>>
+> >>>> I want to remind you that in v2 of this series you said that it'd be=
+ wrong for
+> >>>> port@0 to be an output, I replied that you misread that as I had mod=
+eled it indeed
+> >>>> as an input, and then you gave me your Reviewed-by tag.
+> >>>
+> >>> I have not misread it. Then I guess I forgot about it and missed it t=
+he
+> >>> next time on v3.
+> >>>
+> >>
+> >> Okay, that was some misunderstanding then - it's fine, no problem.
+> >>
+> >>>> Anyway - I get your concern about the previous behavior of `port`, b=
+ut I chose to
+> >>>> model this that way purely for consistency.
+> >>>>
+> >>>> First of all - the driver(s) will check if we're feeding a full grap=
+h, as it will
+> >>>> indeed first check if port@1 is present: if it is, then it follows t=
+his scheme with
+> >>>> port@0 as INPUT and port@1 as OUTPUT.
+> >>>> If the component in port@0 is an OUTPUT, the bridge attach will fail=
+.
+> >>>>
+> >>>> Getting to bindings themselves, then... it would be a mistake to mod=
+el port@0 as an
+> >>>> output and port@1 as an input, because that would be not only incons=
+istent with the
+> >>>> DRM Bridge bindings, but would be highly confusing when reading the =
+devicetree.
+> >>>
+> >>> Somewhat confusing, yes. Highly, no. Put a comment in the DT.
+> >>>
+> >>
+> >> "Somewhat or highly" boils down to personal opinion, so I still go for=
+ "highly"
+> >> but won't argue about that as wouldn't be productive and would bring u=
+s nowhere
+> >> anyway, so, whatever :-)
+> >>
+> >> Putting a comment in DT is an option, yes, but that comment would need=
+ to be put
+> >> on all of the MediaTek SoC device trees - current and future - and IMO=
+ would scream
+> >> "inconsistency warning" (in different words, of course) all over, whic=
+h honestly
+> >> doesn't really look clean... at least to my eyes...
+> >
+> > What I find more confusing is my updated DT doesn't work with my
+> > existing kernel...
+> >
+> >>>> Please note that the bridge bindings are always declaring port@0 as =
+an INPUT and
+> >>>> other ports as OUTPUT(s).
+> >>>
+> >>> There is no guarantee on that. Port numbering is local to the bridge =
+and
+> >>> opaque to anything outside that bridge. That is why you have to docum=
+ent
+> >>> what each port represents.
+> >>>
+> >>
+> >> I know and I agree that there's no guarantee on the numbering. I can s=
+ee that in
+> >> other non-drm-bridge bindings, and that's fine.
+> >>
+> >>> Would we have followed that convention if all the ports were defined
+> >>> from the start? Certainly. But that didn't happen and you are stuck w=
+ith
+> >>> the existing binding and ABI.
+> >>>
+> >>
+> >> I thought about adding a new compatible for the new port scheme, but t=
+hat looked
+> >> even worse to me as, after doing that (yeah, I actually went for it in=
+ the first
+> >> version that I have never sent upstream) during my own proof-read I st=
+arted
+> >> screaming "HACK! HACK! NOOO!" all over, and rewritten the entire thing=
+.
+> >>
+> >>>> As an example, you can check display/bridge/analogix,anx7625.yaml or
+> >>>> display/bridge/samsung,mipi-dsim.yaml (and others) for bridges, othe=
+rwise
+> >>>> display/st,stm32mp25-lvds.yaml or display/allwinner,sun4i-a10-displa=
+y-frontend.yaml
+> >>>> (and others) for display controllers, which do all conform to this l=
+ogic, where
+> >>>> the input is always @0, and the output is @1.
+> >>>>
+> >>>> Of course, doing this required me to do extra changes to the MTK DRM=
+ drivers to
+> >>>> actually be retro-compatible with the old devicetrees as I explained=
+ before.
+> >>>
+> >>> You can't fix existing software...
+> >>>
+> >>
+> >> That's true, but I don't see that as an "excuse" (grant me this term p=
+lease) to
+> >> "carelessly" keep it in a suboptimal state.
+> >>
+> >> This driver has been growing almost uncontrollably with (wrong, anyway=
+!)
+> >> board-specific component vectors - and writing a new one would just ad=
+d up
+> >> more code duplication to the mix and/or worsen the maintainability of =
+older
+> >> MediaTek SoCs (as the "old" driver will get forgotten and never update=
+d anymore).
+> >>
+> >>> If you want to break the ABI, then that's ultimately up to you and
+> >>> Mediatek maintainers to decide0. This case is easy to avoid, why woul=
+d
+> >>> you knowingly break the ABI here.
+> >>
+> >> Because if we don't do this, we condemn (forever) this driver, or part=
+ of it
+> >> to have an inverted port scheme compared to either:
+> >>    A. The other drm/mediatek components; or
+> >>    B. The other bridge drivers (of which, some are used with MTK as we=
+ll)
+> >>
+> >> ...and we also condemn (forever, again) all MediaTek device trees to s=
+cream
+> >> "port inconsistency warning: A for drm/mediatek components, B for ever=
+y other
+> >> thing", which would scream "drm/mediatek is somewhat broken", which ca=
+n be
+> >> avoided.
+> >
+> > Sure. The cost is just an ABI break to do that.
+> >
+> >>> OTOH, this seems like a big enough
+> >>> change I would imagine it is a matter of time before supporting a
+> >>> missing OF graph for the components will be a problem.
+> >>>
+> >>
+> >> Sorry I didn't understand this part, can you please-please-please rewo=
+rd?
+> >
+> > I think keeping the kernel working with the old and new binding will
+> > be a challenge. Partly because testing with the old binding won't
+> > happen, but also if the binding and drivers continue to evolve. So
+> > while maintaining old ABI might be possible with this change, it will
+> > continue to be an issue with each change.
+>
+> That's... exactly my point, so I am happy that we agree on that.
+>
+> > BTW, did you actually test
+> > backwards compatibility with this? I can see you fallback to the old
+> > binding, but there's a lot of other changes in there I can't really
+> > tell by looking at it.
+>
+>
+> Short answer: Yes, largely
+>
+> Long answer:
+>
+> Yes, with this series applied, I have tested both *old* and *new* devicet=
+rees on
+> 7 boards with 4 different SoCs and different display pipelines (hence, gr=
+aphs):
+> one smartphone (MT6795), a "bunch of" Chromebooks (MT8173, MT8186, MT8195=
+), and
+> a SBC (MT8195).
+>
+> Of course those had DSI or eDP displays, with or without DisplayPort exte=
+rnal
+> display support.
+>
+> >
+> > What I haven't heard from you is "yes, we need to maintain the ABI" or
+> > "no, we can break it". Decide that, then the path here is simple.
+>
+> No, we have to break it.
 
---re7lds35svwv2quv
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v2 0/4] Provide devm_clk_bulk_get_all_enabled() helper
-MIME-Version: 1.0
+Okay, then my reviewed-by stands. But please make it clear in the
+binding and dts commit msgs that it is an ABI break.
 
-Hi,
-
-On Wed, Oct 16, 2024 at 12:28:37PM +0300, Cristian Ciocaltea wrote:
-> On 9/26/24 1:43 PM, Cristian Ciocaltea wrote:
-> > Commit 265b07df758a ("clk: Provide managed helper to get and enable bulk
-> > clocks") added devm_clk_bulk_get_all_enable() function, but missed to
-> > return the number of clocks stored in the clk_bulk_data table referenced
-> > by the clks argument.
-> >=20
-> > That is required in case there is a need to iterate these clocks later,
-> > therefore I couldn't see any use case of this parameter and should have
-> > been simply removed from the function declaration.
-> >=20
-> > The first patch in the series provides devm_clk_bulk_get_all_enabled()
-> > variant, which is consistent with devm_clk_bulk_get_all() in terms of
-> > the returned value:
-> >=20
-> >  > 0 if one or more clocks have been stored
-> >  =3D 0 if there are no clocks
-> >  < 0 if an error occurred
-> >=20
-> > Moreover, the naming is consistent with devm_clk_get_enabled(), i.e. use
-> > the past form of 'enable'.
-> >=20
-> > The next two patches switch existing users of devm_clk_get_enable() to
-> > the new helper - there were only two, as of next-20240913.
-> >=20
-> > The last patch drops the now obsolete devm_clk_bulk_get_all_enable()
-> > helper.
-> >=20
-> > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> > ---
-> > Changes in v2:
-> > - Dropped references to 'broken' API in commit descriptions, per Mani's
-> >   suggestion
-> > - Added R-b tags from Angelo and Mani
-> > - Link to v1:
-> >   https://lore.kernel.org/r/20240914-clk_bulk_ena_fix-v1-0-ce3537585c06=
-@collabora.com
->=20
-> [...]
->=20
-> This still applies cleanly on next-20241016 and there are no new users
-> of devm_clk_bulk_get_all_enable(), hence I wonder if anything else is
-> missing to get it merged.
-
-FWIW another potential user for the new function is just being added
-to the kernel:
-
-https://lore.kernel.org/linux-rockchip/20241011065140.19999-1-frawang.cn@gm=
-ail.com/
-
-Greetings,
-
--- Sebastian
-
---re7lds35svwv2quv
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmcP5KUACgkQ2O7X88g7
-+pqNIA//eIgyPRPVGxCRGq0n6vayNEPD4IlGMAx1j6M7fmkBgwz/xQvRomNBkwib
-r3o3EYdHbjrcpaSr5mt28GusSOdNrv1Q3OvjHA39mft6dd2vxFkYNxJ5sZ9q0Eo6
-aUO3vkIrt1n0a+HWY7te6uMhs8n9OCs536CcLJ15p2ZsLuEpezFvbb4NU5Ydu1qs
-LdQev0ZSsMQwgUY6HCN8jL2n+pZBEv1epp/ZtHv5W4lnsKghDZMwoPLt2amZER/0
-WgnGswUGQuTPjVrJE16Uq9EI7xS5ueE8oZ3tT3ysJmWSBYvbYApM19Ud2k3Md5xr
-H8DvI99FajZa6t7DCYzv9gCOFz+59pmpJp8+H3pzkkyT9XAPHzHA/039DRY6fmIp
-WrC7EWuilOtOLYn6u5/Vqc1xwvrJETZLCmEnBPXc0IFFh/WR9ujOwevpt/JLB+yJ
-htvchSWQvmbss1Uyjep/Ou0qCtXkBfs5vRwuSBMsaxafaPSoOSkWKRQVhLEvUkXD
-QYktMUFf7ER0Fe2gqkalUqoS1YZijRisdHawJ9rDmqQGfIhxaCWNa+EnPZBwh8Y3
-ZzcBFiB4axozX9By+UtBRoCiQEbwj1+zzH6ALDSGhlWD8YUiyFUr8DlLAbMvbRvX
-3M0dA9Y/vuaxeWbIJSm5t+aMccuTWUuEtFAyHqNKykjQ5FdCOqs=
-=xIQC
------END PGP SIGNATURE-----
-
---re7lds35svwv2quv--
+Rob
 
