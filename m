@@ -4,98 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD5A6D1AD24
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 08:15:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE324D1AD2A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 08:17:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aPSA6U2IhZgMRSFXZK5Yj7RxoQjZFaD6SSlWNz1Yb8o=; b=UKUCRefU5jTJQhqNUaLNY/+acg
-	cOuRmZBi0Av8AA2gi8JH4x/6JVwk/iUMmAA4K5daZBHVhe+Jj6UP71ZOIar878CX72TC6DQoHUo5R
-	UdGZxbLk1gEpXzHNhwgyvrjAugQ52bcDWGoRXkETid2KPVjYR/WOYRQAE3gctsKaMIAElXKdnHJ+g
-	vLeogkuDtx9E2RRE3rmL6KBPYc9GpR85egnTLcwwQsaL3swvi9q/hZFciro6wFOVv5vKf9nCgWdbk
-	rcXxuAbEAaf7PFJ57RO1js4fb1TavGgj6v9Sk5IkD1CUkW8MzK3mEaXD+qp2FiuMUXNUXlACDNLt+
-	hFIoKG2Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7mvARbqpJ0ukMM8eVJDtDBpdcdn/sTBaKZ+KDs43CsM=; b=FTbUQSS1giDPj9pNFy2GP6iY1R
+	5TunJcQTk4olSkhVYEgYBBTGY7X/SQvXPhzMJGvyFstuI4XrK9BwEwMhYHLc8DRkJdLNkfScY0dpJ
+	u4KiEJTxdBL/zxw4eeaxi4niH+o6IttiOX9BWBwAhIziDnR0WjtGSH3OY2peptnT5m2nee9gO+gqA
+	sIuoCZ0kyMDaRmqIBWXBFf1s2cWWdzvsEhqy6u7aGTjUB+dwzdl+8Cobwogp2Lk/r7CP2soD8nVQx
+	PEU9rsI8U4QFYPrdcCfwOGNVcJSoqdsP4cchPX1SMhWax1Ui4VA1w0Jz4k9YK4sR7HmAYlKWRBto9
+	0EwyeraA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0zC4-0000000AyhJ-0Tvj;
-	Wed, 16 Oct 2024 08:15:44 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1t0zE5-0000000AzYA-3Vpx;
+	Wed, 16 Oct 2024 08:17:49 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0y2Q-0000000AmC7-0LIm
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 16 Oct 2024 07:01:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=aPSA6U2IhZgMRSFXZK5Yj7RxoQjZFaD6SSlWNz1Yb8o=; b=H5Adr+zpvC44gknc5J+oZk312t
-	31QbxqY4k/KeBAxqZsXwVDovv6mw1q8O4AUejqKOW3jcsxMhF+oFuRAJEjygy96L+h/LYJWV8qxat
-	3Gup+9LIvk5k2D0BiYTXsbrVBiOweeJGEKcASRHPJrb80acUVzKlu05K4uAyMU5a2nnSgAmCs4hjK
-	OijNWtLqPlxjJFpOdSRsyr1pYbEZZDP4J08GXYMpIQrhSXXRxi11MyGUfKeVC5yJtpcVOGPkKpoSw
-	N6FaslMWsfkZ4jEsVevZnNegC+aP+s++lgmbhQfilI4fVGOFOn+vPWghCmANxI9PYHBtuBmWv2as8
-	/fTO4zkQ==;
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t0y2H-00000006joV-41AU
-	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Oct 2024 07:01:38 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-539f58c68c5so5170662e87.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Oct 2024 00:01:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1729062089; x=1729666889; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=aPSA6U2IhZgMRSFXZK5Yj7RxoQjZFaD6SSlWNz1Yb8o=;
-        b=HZ5l4NwoIcz23NZz+Q+1yx79aERwD+o5//5FxIOliWxzI/ai8WJQvTbHF/ZlLc1n2U
-         Nwdk9GWCT93YO8ywGRl0u8o/ip8ETtCZjmRVvdoSlKaE0WHorvIyQvLMgyWYqTq59lG/
-         YqKmq4HcDsC/zk7ClVNRKkCGt2yG1JhZoAT3c=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729062089; x=1729666889;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=aPSA6U2IhZgMRSFXZK5Yj7RxoQjZFaD6SSlWNz1Yb8o=;
-        b=vF49pgLpwP4BlEM6tyOpIZHoZzFw9mJ/4DFxl0fGtXjoaUkBaw95JHsVArXbgAHD0V
-         M02KKBE9cYu/ROnshkyUcpXxRxGo0/WSqR4TIdTKkacrjfWLDb0o3mAiZ5UJiGxHI65h
-         Nl9yYHiy+SJ9QfqMf/DDtATWqVLlpVNGWPtZAoYb8a/L7hcLWgCru3TM0pPpKqdelst8
-         SOBW2jIM81V1d5AskVYccxFpBoY6t2aV0ri9jtVvPAYXViLef1XDYqu1fQOp2q4F/9wX
-         Fwf8E6CBDwXlAIk6MWhfYsYJNR5M5zzX24I33d1oDtjekwmBwJx0ink2TwP8kcm51TG9
-         Przg==
-X-Forwarded-Encrypted: i=1; AJvYcCX4bedXPr7b9sMckjTYEbrXD6cSJHNEM3NtzdrZpzJ167xe8DvwfsVgKfp+I2ExEEJZA1z+ND4c9Yu2GnXI0g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxFWgqTycDWhAGWrK/9gdR+c6qN0eEy2OAbG9cdolO0m467TUW5
-	9WcdwY+0H0eQXTc4MPZdoT7tTp7vxQBQitTutgmDFjkQBOmlcp0noRrJX/wHtzPjIs4kIcYLuT2
-	yoMxaeI5PlKqTjNDiUxphdOxSJWc3pAqP/VIh
-X-Google-Smtp-Source: AGHT+IF9nGtCldCGOeLQrTN0Aa5+OFXxu1e3xzkOPVJhXANUIs3qmwtgnQsHFXF0n+2Y3Vn8cKEwmSavH38AfXohfvY=
-X-Received: by 2002:a05:6512:2398:b0:536:741a:6bc5 with SMTP id
- 2adb3069b0e04-539e54d6122mr10014310e87.12.1729062089143; Wed, 16 Oct 2024
- 00:01:29 -0700 (PDT)
+	id 1t0yzj-0000000Avzl-3lb6;
+	Wed, 16 Oct 2024 08:03:02 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 80D265C5BDB;
+	Wed, 16 Oct 2024 08:02:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25CC7C4CED0;
+	Wed, 16 Oct 2024 08:02:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1729065778;
+	bh=VQWxLbP46Yk3JT2ruUu0Qw3xjvSUtKf+K6RBYmBe+lM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=EdZQu0lvkqQKp6i7wnzriOv0ggkWZWcHotek7nZZSEdw35cKxZpgEDMR9IrMPXZbQ
+	 WYoop23uy1X0RnPZxv+h22a0dffsyAWGe47B3VkLwdnV46GNOwJL0i3dnbOWnL5pqV
+	 omdNB+UMVqzfLHYIcQhnCKXUFkU6z65UbCHDFkDyHmnnjxUI+O5bzUMFG8CnQdhrus
+	 XL9m9kdJ61u2FNby/2sWKy01wPxw1/DeGD4aTCMMTOmDF7gVJmeIWCVkItZEaRNeJH
+	 MyKxVJEiK6L05viEsJafMLkbLfvaL3SZzmumCECEL5gaUXlP26Z9cagMEpkoaYU6ij
+	 1iyG5JVbDWBUg==
+Date: Wed, 16 Oct 2024 09:02:48 +0100
+From: Lee Jones <lee@kernel.org>
+To: Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Pavel Machek <pavel@ucw.cz>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Sebastian Reichel <sre@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	linux-input@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-leds@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
+	netdev@vger.kernel.org, linux-rtc@vger.kernel.org,
+	linux-sound@vger.kernel.org,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Bear Wang <bear.wang@mediatek.com>,
+	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
+	Chris-qj chen <chris-qj.chen@mediatek.com>,
+	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	Chen-Yu Tsai <wenst@chromium.org>
+Subject: Re: [PATCH v8 3/3] dt-bindings: mfd: mediatek: mt6397: Convert to DT
+ schema format
+Message-ID: <20241016080248.GN8348@google.com>
+References: <20241001104145.24054-1-macpaul.lin@mediatek.com>
+ <20241001104145.24054-3-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
-References: <20241008073430.3992087-1-wenst@chromium.org> <20241008073430.3992087-5-wenst@chromium.org>
- <CAD=FV=WRSjk3U9Kau0wqkgv3KB=9jM6wCM9Gs-WxWai35sfxTg@mail.gmail.com>
-In-Reply-To: <CAD=FV=WRSjk3U9Kau0wqkgv3KB=9jM6wCM9Gs-WxWai35sfxTg@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 16 Oct 2024 15:01:17 +0800
-Message-ID: <CAGXv+5FW0UTjR_ZiqZ8VEOQkBemt54omtJe_aTj3jvScC-LuMw@mail.gmail.com>
-Subject: Re: [PATCH v8 4/8] i2c: Introduce OF component probe function
-To: Doug Anderson <dianders@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
-	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
-	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>, 
-	Jiri Kosina <jikos@kernel.org>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
-	linux-i2c@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20241001104145.24054-3-macpaul.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_080136_161524_C7AFFD0C 
-X-CRM114-Status: GOOD (  20.59  )
+X-CRM114-CacheID: sfid-20241016_010300_115619_1E31F3A7 
+X-CRM114-Status: GOOD (  13.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,75 +100,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 16, 2024 at 1:58=E2=80=AFAM Doug Anderson <dianders@chromium.or=
-g> wrote:
->
-> Hi,
->
-> On Tue, Oct 8, 2024 at 12:35=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org>=
- wrote:
-> >
-> > +int i2c_of_probe_component(struct device *dev, const struct i2c_of_pro=
-be_cfg *cfg, void *ctx)
-> > +{
-> > +       const struct i2c_of_probe_ops *ops;
-> > +       const char *type;
-> > +       struct i2c_adapter *i2c;
-> > +       int ret;
-> > +
-> > +       ops =3D cfg->ops ?: &i2c_of_probe_dummy_ops;
-> > +       type =3D cfg->type;
-> > +
-> > +       struct device_node *i2c_node __free(device_node) =3D i2c_of_pro=
-be_get_i2c_node(dev, type);
-> > +       if (IS_ERR(i2c_node))
-> > +               return PTR_ERR(i2c_node);
->
-> I'm still getting comfortable with the __free() syntax so sorry if I'm
-> wrong, but I _think_ the above is buggy. I believe that the definition
-> of the free function for "device_node" is from:
->
-> DEFINE_FREE(device_node, struct device_node *, if (_T) of_node_put(_T))
->
-> ...which means it'll call of_node_put() to free "i2c_node" when it
-> goes out of scope. of_node_put() handles NULL pointers but _not_ ERR
-> pointers. So I think that if you get an error back and then return via
-> the PTR_ERR(i2c_node) then it'll crash because it will try to free an
-> ERR pointer. Did I get that right? Presumably you need to instead do:
->
->   return PTR_ERR(no_free_ptr(i2c_node));
->
-> ...or change of_node_put() to be a noop for error pointers?
+Argh, I couldn't bring myself to do it!  Here's a PR instead:
 
-Good catch! As Andy suggested, it should be updated to handle both.
-I'll add a patch for this.
+The following changes since commit 9852d85ec9d492ebef56dc5f229416c925758edc:
 
-> > +struct i2c_of_probe_ops {
-> > +       /**
-> > +        * @enable: Retrieve and enable resources so that the component=
-s respond to probes.
-> > +        *
-> > +        * Resources should be reverted to their initial state before r=
-eturning if this fails.
->
-> nit: might be worth explicitly noting that returning -EPROBE_DEFER is
-> OK here because this both retrieves resources and enables.
+  Linux 6.12-rc1 (2024-09-29 15:06:19 -0700)
 
-Makes sense. Will do.
+are available in the Git repository at:
 
-> > +        */
-> > +       int (*enable)(struct device *dev, struct device_node *bus_node,=
- void *data);
-> > +
-> > +       /**
-> > +        * @cleanup_early: Release exclusive resources prior to enablin=
-g component.
->
-> nit: change the word "enabling" to "calling probe() on a detected"
-> since otherwise it could be confused with the "enable" function above.
+  ssh://git@gitolite.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git tags/ib-dt-mfd-input-leds-power-rtc-v6.13
 
-Makes sense. Will do.
+for you to fetch changes up to 6e357f572638547e9c9e8d8abb7dc572c12032f3:
 
+  dt-bindings: mfd: mediatek: mt6397: Convert to DT schema format (2024-10-16 09:00:38 +0100)
 
-ChenYu
+----------------------------------------------------------------
+Immutable branch between DT, MFD, Input, LEDs Power and RTC due for the v6.13 merge window
+
+----------------------------------------------------------------
+Macpaul Lin (1):
+      dt-bindings: mfd: mediatek: mt6397: Convert to DT schema format
+
+ .../bindings/input/mediatek,pmic-keys.yaml         |   2 +-
+ .../devicetree/bindings/leds/leds-mt6323.txt       |  63 ---
+ .../devicetree/bindings/mfd/mediatek,mt6397.yaml   | 588 +++++++++++++++++++++
+ Documentation/devicetree/bindings/mfd/mt6397.txt   | 110 ----
+ .../bindings/power/reset/mt6323-poweroff.txt       |  20 -
+ .../devicetree/bindings/rtc/rtc-mt6397.txt         |  31 --
+ MAINTAINERS                                        |   8 +-
+ 7 files changed, 595 insertions(+), 227 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/leds/leds-mt6323.txt
+ create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+ delete mode 100644 Documentation/devicetree/bindings/mfd/mt6397.txt
+ delete mode 100644 Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
+ delete mode 100644 Documentation/devicetree/bindings/rtc/rtc-mt6397.txtThe following changes since commit 9852d85ec9d492ebef56dc5f229416c925758edc:
+
+  Linux 6.12-rc1 (2024-09-29 15:06:19 -0700)
+
+are available in the Git repository at:
+
+  ssh://git@gitolite.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git tags/ib-dt-mfd-input-leds-power-rtc-v6.13
+
+for you to fetch changes up to 6e357f572638547e9c9e8d8abb7dc572c12032f3:
+
+  dt-bindings: mfd: mediatek: mt6397: Convert to DT schema format (2024-10-16 09:00:38 +0100)
+
+----------------------------------------------------------------
+Immutable branch between DT, MFD, Input, LEDs Power and RTC due for the v6.13 merge window
+
+----------------------------------------------------------------
+Macpaul Lin (1):
+      dt-bindings: mfd: mediatek: mt6397: Convert to DT schema format
+
+ .../bindings/input/mediatek,pmic-keys.yaml         |   2 +-
+ .../devicetree/bindings/leds/leds-mt6323.txt       |  63 ---
+ .../devicetree/bindings/mfd/mediatek,mt6397.yaml   | 588 +++++++++++++++++++++
+ Documentation/devicetree/bindings/mfd/mt6397.txt   | 110 ----
+ .../bindings/power/reset/mt6323-poweroff.txt       |  20 -
+ .../devicetree/bindings/rtc/rtc-mt6397.txt         |  31 --
+ MAINTAINERS                                        |   8 +-
+ 7 files changed, 595 insertions(+), 227 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/leds/leds-mt6323.txt
+ create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+ delete mode 100644 Documentation/devicetree/bindings/mfd/mt6397.txt
+ delete mode 100644 Documentation/devicetree/bindings/power/reset/mt6323-poweroff.txt
+ delete mode 100644 Documentation/devicetree/bindings/rtc/rtc-mt6397.txt
+
+-- 
+Lee Jones [李琼斯]
 
