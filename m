@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46AE3D1AD43
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 10:40:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 824C3D1AD46
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 10:43:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ih3ly1FQg1lIrqrp8kMx0CPxL9jTZmbg1cIqz0aDosU=; b=NwqfdjcMdv48ycXyFh8OHWFnym
-	6YbjNYE3bCQh3BlxcKZmXsrhlJmBlfzY2qCUrhHpB3eTCk43S69+YfuN633rj5TCnWxIZ8HleXUQN
-	rDYdggEZnsiBBhIPLEddbyA0xhuwxAtJy17kaJlniSsDm/8+OUbVjMOniyUy3eB+8Oc7nEyX7/4k6
-	G4GhFMIkqAL2i9087uEPJs6EA/BfsYPHtflrZqiGYSNDe2TVRra9WgOuZFi2v72Ajz35XoJ4S9Xlz
-	L972FZdvtIiAjPdI6z5mcnAsSNwMeX7I1kN0Cqe+nd10572wmuRwSdn0nCG2LYH9m1hF7/YOoRfgY
-	4hEtFuiw==;
+	bh=lnfvp6vTI7+KAOQWxc4ooVofR6+qDYYPeSw3mrype14=; b=pKGynp5TAGu8UV4WUO9K4sK2vv
+	F+fQnhXtA8Dw+RQAMyIK08OSmwROD+m5HGmqhKrHCMaRZnNIGznz0pWRi88BvF2kpSpHRN/N2NmHC
+	U9++5E3LEmPNzPT0UiRZdNey2rYyVJq7x1JXf0D3jTROve7OXwqRYCfRE4AVe2GpoQK/6fZW0HzQ0
+	1Frlgoqm/ZjKGc2L6++Al5Kz50K/4WpJBQl6uUSNM5HcV3T+YkbWOYmlaJFOHRvge7MFzrMtoR3eX
+	JSTUDTIXnFQrX5aEuHPov7uFuoq84ql+snDdja5kFdVY3a8bsE4mCThMBBnSWZNJb98/x3YhMi5eI
+	K/vKMvzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t11SF-0000000BUH2-0RkA;
-	Wed, 16 Oct 2024 10:40:35 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1t11V3-0000000BUlu-1rXk;
+	Wed, 16 Oct 2024 10:43:29 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t11EJ-0000000BQzJ-1SxO;
-	Wed, 16 Oct 2024 10:26:15 +0000
+	id 1t11Fj-0000000BRT6-0m5I;
+	Wed, 16 Oct 2024 10:27:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729074369;
-	bh=UH6An7zktsxQ7GL3P6sIPgkfAT+XZCHpUixfpH1byNE=;
+	s=mail; t=1729074457;
+	bh=md6N/XQGzlUgrB8oUbFlx4cVulC8rjoqYcCGd7LBoRQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=DCiZLUuqPZZCn21ZLZ3BXmll/WogG9s/QHGn1ZD0+5xiBeF/rCTvsBSAX86VW97+Y
-	 +KkpVd2Etfmx8PxYt7IHMNzOOmg4pL16vLAVP2N6FRQKHBGavQzNG+MZWkhGGEA2at
-	 BXENq2qegMMaD2ALl+rUxpD7cTqosJHXOev+L4YwMnPrtIZUgHbGJOEUC0JMl4WHsA
-	 3n/3cEewZ9BSotSyKClL1Ol6PViVLIr9MSQIhmkCmL5AkVYUiSruKme59U++CYJRTe
-	 eP4uKovDnM1wwqQOtk+a4ybnvtXFe+YhLO06NtLgUylg/N2V7JK360ZtWECPMGiZ3h
-	 zszXmAWSxxtqQ==
+	b=JsWfXgOWmZ0+VTUeT9qZFbbnRMZv3r/mQcpNmMgwaKcb7xmhFovuvwtz+hl2psPNm
+	 tAbwaDwCxEwkGNqS6zc8/xPA8oZd7frUmiebwXJBD+N2YDznuE0zW1yeSjot0JF5AH
+	 x5m4UA5ui8ttORQAdhM2zKU2q7R9AWDVR4UoMcQ0e14e3+HacsvL8M+w4I5lB03GFa
+	 Y6C7yr5ILsAx0CRk4QE+WOOLGAg58rtWBMX1zqrv03CsTamvRuS3WPIUpyw1KRCIne
+	 BstHvKZoHDWww7mKJSR8/LEHQE0GZlZ2Vb9yT6gTg+1Nw117mNGS9IXc4rCMxxZs3O
+	 x8OPNyKQZdAkg==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C734417E1003;
-	Wed, 16 Oct 2024 12:26:08 +0200 (CEST)
-Message-ID: <3dfc6d8c-a816-4ae1-b3e7-d948734960be@collabora.com>
-Date: Wed, 16 Oct 2024 12:26:08 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0878F17E1003;
+	Wed, 16 Oct 2024 12:27:36 +0200 (CEST)
+Message-ID: <3a70c755-3a33-48ff-842b-c24a6a37bbd0@collabora.com>
+Date: Wed, 16 Oct 2024 12:27:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 4/6] dt-bindings: mfd: Add support for Airoha EN7581
- GPIO System Controller
+Subject: Re: [PATCH v7 5/6] pinctrl: airoha: Add support for EN7581 SoC
 To: Lorenzo Bianconi <lorenzo@kernel.org>,
  Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
@@ -60,15 +59,15 @@ Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
  upstream@airoha.com, benjamin.larsson@genexis.eu, ansuelsmth@gmail.com,
  linux-pwm@vger.kernel.org
 References: <20241016-en7581-pinctrl-v7-0-4ff611f263a7@kernel.org>
- <20241016-en7581-pinctrl-v7-4-4ff611f263a7@kernel.org>
+ <20241016-en7581-pinctrl-v7-5-4ff611f263a7@kernel.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241016-en7581-pinctrl-v7-4-4ff611f263a7@kernel.org>
+In-Reply-To: <20241016-en7581-pinctrl-v7-5-4ff611f263a7@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_032612_071984_62EB8970 
-X-CRM114-Status: UNSURE (   7.91  )
+X-CRM114-CacheID: sfid-20241016_032739_421185_1E573DDD 
+X-CRM114-Status: UNSURE (   7.93  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,19 +84,20 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 16/10/24 12:07, Lorenzo Bianconi ha scritto:
-> From: Christian Marangi <ansuelsmth@gmail.com>
+> Introduce pinctrl driver for EN7581 SoC. Current EN7581 pinctrl driver
+> supports the following functionalities:
+> - pin multiplexing
+> - pin pull-up, pull-down, open-drain, current strength,
+>    {input,output}_enable, output_{low,high}
+> - gpio controller
+> - irq controller
 > 
-> Add support for Airoha EN7581 GPIO System Controller which provide a
-> register map for controlling the GPIO, pinctrl and PWM of the SoC via
-> dedicated pinctrl and pwm child nodes.
-> 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> Tested-by: Benjamin Larsson <benjamin.larsson@genexis.eu>
+> Co-developed-by: Benjamin Larsson <benjamin.larsson@genexis.eu>
+> Signed-off-by: Benjamin Larsson <benjamin.larsson@genexis.eu>
 > Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
-> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-> Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
 
 
