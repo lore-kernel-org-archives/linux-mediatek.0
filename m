@@ -4,83 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C7E0D1AD47
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 11:10:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF5E0D1AD48
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 11:40:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=l4u1X+4asBMPU91TR1WAl6Ub71JuEkCWwBm90GJmfMc=; b=llVyStuAV7gwM2Meyef448aSGa
-	j7HibIXe46NoL+pkuUpYPlef4vmniLY4wczO6XTi3fP3kTKaUYDr7WFuvWO9PzZIw+Owm181jGGCC
-	fE0gWn+3zCAWfz0M9VidubpE0+06KXMxiN0LhuC0DWFYX2sPHs13mSfB2AZC6bKDmxzUSPziimM5Q
-	QQaMJM2J2QjgXndtwTRgZgf8r5d0BTQcMC3X3rRMDeX1+x8YHTkmjId8eOH0jdqYckq11gVbvumOv
-	YaV672YT4X2wn18Ki6lk3+hOdsFTDtIu2fLHL/2fmuuBc+WhQgln3IWl6pAiQaIZduIuLwchBA4c+
-	/dJqO3xg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=leMIz+S2hdMoCIQxXqMQsph8MlFS4sT6v52ga1WkYdE=; b=s7l8gHr/Zfno7cgwjgBBhuwgEu
+	thm7z52qlJrW2YbhNILoL7R2H68FRKUZq2K3ONU5EaXhORf28t381FkSjOE408HyBk8n3DxrbKaXE
+	AKqMwe9cTPRao+YUttIQPcA3vJ+PgLQd6292dM4zOr1VSWRMgUYX1t6ma7p5ZCkUn9UweTl4hDEal
+	K7wBfoiV3ig5vo2rujLl4M2JGpKJIa+GGpIDGgxC7x8kM6KKxa86g1q9JLws8vP/Y8OKBgkYf55AE
+	3CIa9dVZiq5EojHkwl5tPk05XKZgxCVCVgMQCchUUbH1HJhri6NjRNNBOmQhXqLXUuvUkygtP4CTN
+	t3jVomJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t11v1-0000000BYnX-1cqf;
-	Wed, 16 Oct 2024 11:10:19 +0000
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
+	id 1t12Nr-0000000Bc5x-2c8L;
+	Wed, 16 Oct 2024 11:40:07 +0000
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t11tZ-0000000BYXV-1LBt
-	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Oct 2024 11:08:51 +0000
-Received: by mail-pg1-x533.google.com with SMTP id 41be03b00d2f7-7db1f13b14aso5361179a12.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Oct 2024 04:08:47 -0700 (PDT)
+	id 1t12MP-0000000BblW-2TSV;
+	Wed, 16 Oct 2024 11:38:38 +0000
+Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-71e8c0bd2c3so28616b3a.2;
+        Wed, 16 Oct 2024 04:38:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1729076927; x=1729681727; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=l4u1X+4asBMPU91TR1WAl6Ub71JuEkCWwBm90GJmfMc=;
-        b=l+BuR8IyzMOZyUg14I3b0wCCZEz0Cl1w29Pn6oVGNrCio7eKblDkkYYdD8kZzQPmlM
-         IOZj+VegNchx5Rzq25OE2zq3hnPhh33J8NZ6fISBzeSqrl5oQRJyK4zq7RcKwxFYoou3
-         5mZh7KBFZjPPDX5UWtvZcWOGjSMY0fMzKciWU=
+        d=gmail.com; s=20230601; t=1729078716; x=1729683516; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=leMIz+S2hdMoCIQxXqMQsph8MlFS4sT6v52ga1WkYdE=;
+        b=mqxclBmJZRR4TrfUKfAZfqzV74qOJ92HDXMVrqyT96dqxpIVkaGcTKbrx5R/WaZ0z+
+         T++yPEm3WnhCBZ6wep7x9JZcAA0RnMmHHom3sbALoaQ/O2V7bKfJzR3bZqwGhzsmCxCt
+         JsH1EVSKqy1LcsT+pgqc49NJr1neDDxcpd0oASBcFiJdkRUnmY5gH8irJnO4VHaH3w4D
+         d9b44dRqF563lZ8SN5lgKYkIOu+hlyG3MVDrjAbkY8wnQ4bA5FnYnnwQKqCpjVrKqQCL
+         u3ytMYqx1zH538yyeVR1WGkewBmK25FHDDgdKjj3PhanjytZ2hC8ZbvBZ1h0CQdHW0li
+         f6fg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729076927; x=1729681727;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20230601; t=1729078716; x=1729683516;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=l4u1X+4asBMPU91TR1WAl6Ub71JuEkCWwBm90GJmfMc=;
-        b=nDYqi/wLhYrT0p18J1SFeFy7ZNFojI83R4ohBs25i2rWXKo7C5ABHS0OUH7IL9cdsz
-         RKEboixmf8JPqplmHglqKYLOSGPjWIUrNLtjOuKhVLE20OYs8J0R6R+qP9VPRQdA8whd
-         JpyS+DEFzRvbzYvSY3sqAHseg4Xv/4GMOhWkUT8oWQ5eZ5+Lwh6nP01kacjlIvTFS7Qg
-         3F2CB2RIKteaunbAJZJbjA4gw9ziDnNU+m6E1V8dW07ISOGqehub3SfpZkddCIXvTEGR
-         sl2QYMFKi5MRcDgFpy+MzReTCZn3yOJkKbwVBSwvZ25VnQf4ugz4iJobeQcKuiiYDdWB
-         G7PQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXysb/S/VtU6hn33DERvF/ap62eUijVMODWIE6n78xvUFHBjMYukLxxwsfmSUHO66bO2fUsNC5t4Fq5gQy0MQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzjfnNn4WMj38QWNrMUzZMSlwDdZmPKXkDgbBWRs6eiL8kiAINL
-	gkf+q7vdcEjwNW3KS9y8Zlt25WAVLMkUY0xvO/AQtugEzn4x3yAmQuyfyOfHaw==
-X-Google-Smtp-Source: AGHT+IGbiRRm9/GVZ2H2pkAbe5Hh0MuXI6tyXwqFg8lOcZTaM/hUsZa8Rxc3qKSg6bWgPyMziv1sPw==
-X-Received: by 2002:a05:6a20:d504:b0:1d9:542:8d40 with SMTP id adf61e73a8af0-1d905e99a58mr5466764637.5.1729076927053;
-        Wed, 16 Oct 2024 04:08:47 -0700 (PDT)
-Received: from yuanhsinte.c.googlers.com (176.220.194.35.bc.googleusercontent.com. [35.194.220.176])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71e773b13a0sm2826188b3a.77.2024.10.16.04.08.44
+        bh=leMIz+S2hdMoCIQxXqMQsph8MlFS4sT6v52ga1WkYdE=;
+        b=VBHpsoCbVouOmdX+u5/Z5KoAqQ/FQugiu/f6yrZ2kAZtpt5RImIJcpTIoh3eVSvTeN
+         jfP35giF93gZFqn52a58AaMKesCgGY1eXtmLYVFr+49tkmohhCYLI3Vza0bsvedm83qd
+         lI2AIWiQ0cVf0devPxpnHLxNmStKO0+tKguufGHNu5p9GpZqBiPNYHRbTDJp/0Mn9LvV
+         ZebkSbgphG3OvZnYugC3c/9AVcpLG7lOUIEnYmUhIUpMJndLFmsdbAabphHg0hCUC9M4
+         qc49ApkFGXp5E9zUIIeQZRe+oYIC5nAh+1kBTLEVGTfAXQBqhsrf1ZV7ciJJqKRxE0BZ
+         gA3Q==
+X-Forwarded-Encrypted: i=1; AJvYcCUf3DQX4QJ3IDq5WF4DGLna/PcmZ1XANQjZReDk7fujanFVwrTeWfc/rvGiaakcau23TDy6BxxC9qYEr1fnWOE=@lists.infradead.org, AJvYcCVfArdtO1CyBkZHDBnBHh70VkMevMJqotr/ckSmbXpjHnj64LVxtb0hJdsWPjTWVTmDRRvXev+gyEziJh3v5KD3@lists.infradead.org
+X-Gm-Message-State: AOJu0YxA7tYjEqhKnlYyK20u2nJw9Xmo6sT17YNSjYBlgKTyYRKAq5KT
+	IksPiA3uFPrOUlFwsPRb+5bCeqDgZqmFJoOuk0KE7/qrqaHOuTVH
+X-Google-Smtp-Source: AGHT+IFlTJEDuRawJmNHK9InnAgh+iHuDxeBCY8ZpQR+u0AgCari149kEVX4ecjZSxAciJY7lw309Q==
+X-Received: by 2002:a05:6a20:e94:b0:1d9:ee1:3bfe with SMTP id adf61e73a8af0-1d90ee13cecmr2012870637.13.1729078715892;
+        Wed, 16 Oct 2024 04:38:35 -0700 (PDT)
+Received: from archlinux.. ([2405:201:e00c:517f:5e87:9cff:fe63:6000])
+        by smtp.googlemail.com with ESMTPSA id d2e1a72fcca58-71e77518a76sm2883040b3a.220.2024.10.16.04.38.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Oct 2024 04:08:46 -0700 (PDT)
-From: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Date: Wed, 16 Oct 2024 11:08:39 +0000
-Subject: [PATCH v2] drm/mediatek: Fix color format MACROs in OVL
+        Wed, 16 Oct 2024 04:38:35 -0700 (PDT)
+From: Mohammed Anees <pvmohammedanees2003@gmail.com>
+To: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sebastian Fricke <sebastian.fricke@collabora.com>,
+	Moudy Ho <moudy.ho@mediatek.com>,
+	Ricardo Ribalda <ribalda@chromium.org>,
+	Mohammed Anees <pvmohammedanees2003@gmail.com>
+Subject: [PATCH] media: platform: mtk-mdp3: Remove unwanted else in mdp-cmdp-prepare()
+Date: Wed, 16 Oct 2024 17:08:08 +0530
+Message-ID: <20241016113808.4311-1-pvmohammedanees2003@gmail.com>
+X-Mailer: git-send-email 2.47.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20241016-color-v2-1-46db5c78a54f@chromium.org>
-X-B4-Tracking: v=1; b=H4sIALeeD2cC/13MQQrCMBCF4auUWRvJxKaKK+8hXaRx2gzYRiYal
- JK7G7t0+T8e3wqJhCnBuVlBKHPiuNQwuwZ8cMtEim+1wWjTokarfLxHUWS0paMdutY5qN+H0Mj
- vzbn2tQOnZ5TPxmb8rf9CRoXqYAeNo9PuZLqLDxJnfs37KBP0pZQvRosOf50AAAA=
-X-Change-ID: 20241015-color-e205e75b64aa
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- dianders@chromium.org, Hsin-Te Yuan <yuanhsinte@chromium.org>
-X-Mailer: b4 0.15-dev-7be4f
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_040849_423644_6ED0F397 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20241016_043837_649704_B12A33F5 
+X-CRM114-Status: GOOD (  11.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,46 +96,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In commit 9f428b95ac89 ("drm/mediatek: Add new color format MACROs in
-OVL"), some new color formats are defined in the MACROs to make the
-switch statement more concise. That commit was intended to be a no-op
-cleanup. However, there are typos in these formats MACROs, which cause
-the return value to be incorrect. Fix the typos to ensure the return
-value remains unchanged.
+Since platform compatibility is already verified, the
+additional else branch is unnecessary and will never
+be executed. To fix, remove this else condition.
 
-Fixes: 9f428b95ac89 ("drm/mediatek: Add new color format MACROs in OVL")
-Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+Signed-off-by: Mohammed Anees <pvmohammedanees2003@gmail.com>
 ---
-Changes in v2:
-- Clarify that the commit get fixed was intended to be a no-op cleanup
-- Fix the typo in tag
-- Link to v1: https://lore.kernel.org/r/20241015-color-v1-1-35b01fa0a826@chromium.org
----
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 89b439dcf3a6af9f5799487fdc0f128a9b5cbe4a..1632ac5c23d87e1cdc41013a9cf7864728dcb63b 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -65,8 +65,8 @@
- #define OVL_CON_CLRFMT_RGB	(1 << 12)
- #define OVL_CON_CLRFMT_ARGB8888	(2 << 12)
- #define OVL_CON_CLRFMT_RGBA8888	(3 << 12)
--#define OVL_CON_CLRFMT_ABGR8888	(OVL_CON_CLRFMT_RGBA8888 | OVL_CON_BYTE_SWAP)
--#define OVL_CON_CLRFMT_BGRA8888	(OVL_CON_CLRFMT_ARGB8888 | OVL_CON_BYTE_SWAP)
-+#define OVL_CON_CLRFMT_ABGR8888	(OVL_CON_CLRFMT_ARGB8888 | OVL_CON_BYTE_SWAP)
-+#define OVL_CON_CLRFMT_BGRA8888	(OVL_CON_CLRFMT_RGBA8888 | OVL_CON_BYTE_SWAP)
- #define OVL_CON_CLRFMT_UYVY	(4 << 12)
- #define OVL_CON_CLRFMT_YUYV	(5 << 12)
- #define OVL_CON_MTX_YUV_TO_RGB	(6 << 16)
-
----
-base-commit: 75b607fab38d149f232f01eae5e6392b394dd659
-change-id: 20241015-color-e205e75b64aa
-
-Best regards,
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+index ea2ea119dd2a..168beed4155a 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+@@ -624,14 +624,11 @@ static struct mdp_cmdq_cmd *mdp_cmdq_prepare(struct mdp_dev *mdp,
+ 	if (ret)
+ 		goto err_free_cmd;
+ 
+-	if (CFG_CHECK(MT8183, p_id)) {
++	if (CFG_CHECK(MT8183, p_id))
+ 		num_comp = CFG_GET(MT8183, param->config, num_components);
+-	} else if (CFG_CHECK(MT8195, p_id)) {
++	else if (CFG_CHECK(MT8195, p_id))
+ 		num_comp = CFG_GET(MT8195, param->config, num_components);
+-	} else {
+-		ret = -EINVAL;
+-		goto err_destroy_pkt;
+-	}
++
+ 	comps = kcalloc(num_comp, sizeof(*comps), GFP_KERNEL);
+ 	if (!comps) {
+ 		ret = -ENOMEM;
 -- 
-Hsin-Te Yuan <yuanhsinte@chromium.org>
+2.47.0
 
 
