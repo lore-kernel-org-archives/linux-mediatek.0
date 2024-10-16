@@ -4,105 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8D49D1AD55
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 13:32:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A71C3D1AD5D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 13:54:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TREUo1lQfvBhTYNzvxLnSAftCI9jNyXaG87hpbR/7a8=; b=EHPt6ChPfQdzUDNJOSdC/A5ec1
-	Y0EsdVZAzzfbP8+5lcgNbr/JGRzxX9ZL83GlW7XBgrOphyIfNtafguiXXfGY/JXSi4rInCr8TaU3x
-	7hvq4MdLth5dNrlgDzVIbZhEbE+o1O2/vREWGjL3PSPy9D2lqkARwDjV8RmYPf6PWT6lsxI32FU23
-	uVXo6fTX5Ql5Yaqc+qY9KpNMMI/FfRBTzvEL+QXlNYtihNN3VT+OySRKJL2kmkAdSPU04uqMULPzw
-	/3G49yta2dltmt71/0AZgwrBXOycNuJsUC2aD1gm9swrhCTl1rIvKXBP3sARHJkjyqMkw5nj8x1oz
-	phD+R05w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=B4K5n0bY/MNJApsUthAN1NPIj08Soy9GOdy9ssrn3mY=; b=W9C+6KAlQ7IxfQYGY5gFK3fcfE
+	D8SEx67mTF3+H/9M/Pq/Koh/7l6WR+0N2p+Ac7yn7zaEdhBYUoRcWe5STOG9hw5BDcrnOa+hfejoS
+	71jO2HbvR5DNgFpbAoGp+wXlO53C/h51006d+PS7aHnHawiBdUZiBZIoMy+1LPxcrsQcGpQJo5kZ6
+	/LG0nWi7v2ko/7aIungX1AAmjiBELut9mwg0PVDQ1az/vLAbgIBu+udOWXvbXRTRllvLeuVhsW5KU
+	TzGBWfkB266apMPyIK5zC/wy8COMswyNiAS/cDO8lLfcy7Su4QRtlUr/rqVs4EvIkWFlA9RCpUbA6
+	gvJP1tXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t148a-0000000BwRE-3S4o;
-	Wed, 16 Oct 2024 13:32:28 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1t14TR-0000000C043-1Foc;
+	Wed, 16 Oct 2024 13:54:01 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1476-0000000Bvvt-08mz
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 16 Oct 2024 13:30:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=TREUo1lQfvBhTYNzvxLnSAftCI9jNyXaG87hpbR/7a8=; b=SWCtMCRx8uIuf77TCpGNsMmMuN
-	gbBq05+yqX52MTCnm181y1XZymMTbgPHsTRlN/WdqrlckZi98nFK3DpRWuklk2nwRhMyhe/w/Xy0y
-	ZT14bjkcBCmp8ilxEkoafYI/ucPkF09IbFT4j4alNDZzBBSX8o0I6aJby1IYtDXzDXJkxLdz7DWUf
-	d/wzQuupbPHnkQ4V79Ijc7E2oLt/0vBIbnXoMeTYau5qYqVd4ocHseaJEJD/6cjFuvTUCwsx7zsCX
-	IAm2uu/222IJTeb88dqZAVgUWGwgkuL1pa3H3nrEVrBNZBnwpaxkJ9yJpr7nhoamSeXcry1MpyZVF
-	4oISfAIA==;
-Received: from mail-vs1-xe2a.google.com ([2607:f8b0:4864:20::e2a])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1472-00000006oZ2-1Qs0
+	id 1t14Rz-0000000Bznt-0FD3
 	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Oct 2024 13:30:54 +0000
-Received: by mail-vs1-xe2a.google.com with SMTP id ada2fe7eead31-4a470d330a5so1937843137.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Oct 2024 06:30:50 -0700 (PDT)
+	Wed, 16 Oct 2024 13:52:33 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-5c97c7852e8so4780600a12.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 16 Oct 2024 06:52:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1729085448; x=1729690248; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=TREUo1lQfvBhTYNzvxLnSAftCI9jNyXaG87hpbR/7a8=;
-        b=DdZjynuII81rv8G38/28puTADKR+mcKLjaZhnXnDVI+7EAoNj9AiF7VuGfZ532kf9w
-         btqyGvkq6YZ5ETk6zgGmg7f+ZCMsO2RzUxxzp/oueI26UPlYjDYE8FmCLXE9NrhLxngE
-         3x2+ueFmolvOtLFqTs64mrnHAl0bne4YFrCJw=
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1729086749; x=1729691549; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=B4K5n0bY/MNJApsUthAN1NPIj08Soy9GOdy9ssrn3mY=;
+        b=RF/A1YPBQi4+ZqQrwnvJY7aHrSaD4VYmMvc6kgQuW0I7R6xkGhiGnsjJh9VBbnHoCW
+         EbCnLWnwGBc4Rm5AHATeOtWPt5ybodKWhsa5c0mnWCdHd5Nj/Smcpb4QfsZ5JN0ey1sH
+         XeZPop7vCXJ9I5/Y0ISl0w7mgd1nXofxy/P7q6P7q08zeZo5O4OJRN8B/SR5GAakFR+g
+         YsLSrTDBf3zf3nc9yI8Ci6pQ4b98J78A/x31tuJC39X8rkQYExwpgKqih9K+O0q1NcAz
+         xnu2ydva5F71r7Z8rpz5MpRldEiarQe03UQClvw7iQrloDmGsth+4viUKultsjt/fVZA
+         6uvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729085448; x=1729690248;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=TREUo1lQfvBhTYNzvxLnSAftCI9jNyXaG87hpbR/7a8=;
-        b=Wejhp2eX9bUWOvqtGqhF0lwIduDa9Ezzyw2DGqg4p4wkW9LYmbhZJ+zwLfXfyCxhi0
-         i+XK5LEMR42Z5SOeXhdVqN8Mlc3sQOjoKPlIF5u04wXod9eSk3qczRmqWu6vqUoeH4j2
-         UQfjUhYpAoSG1Sp7tQwt5yuv1HO8zbRXEb+e1FtyqzbsGmWSFGHaJqsX7kqpA3QJ5W4P
-         28LUhaoFDN1yJZNwLM2NMXvZAGLwfiOgX8xITxhR2p1X0xFRbgb1NwroE4D5lCpOoq9l
-         rsNxOksNQy2atq4JKqMgS3yluvWKkCGdOsbagQRNCH8a3h0spZvg80wormTjtnD2/WUa
-         kTtQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVoNG6BsxECcDF1hKja9emGCO6NhL9+bOX5hKMvYbj5pVsRaS1FhoSF1ytMfBxmZVwWNZZt4aYs3wnHTXADjQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxmGNdKKuJ3UCD55lqW8UQ4uwuurUIT/eve1idNAg6UxWpWpqmF
-	eVWdhGuRAMMWOlFSgPPjgNNNQNIE07VZCfHQtpEm4/zqpP35yBgdaDCyFUoOdb/ELYVHzTJ0cWo
-	=
-X-Google-Smtp-Source: AGHT+IEubIzUiZVCOnXc3khpkeo5pu8MIbQWxvTL3L7pJHEL2d1zkwwxzk/HHpGZEvOmEsJ1avrFEQ==
-X-Received: by 2002:a05:6102:3053:b0:4a4:8651:3c2c with SMTP id ada2fe7eead31-4a486513e43mr10874464137.20.1729085448434;
-        Wed, 16 Oct 2024 06:30:48 -0700 (PDT)
-Received: from mail-ua1-f46.google.com (mail-ua1-f46.google.com. [209.85.222.46])
-        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-4a5acedd60bsm534042137.23.2024.10.16.06.30.47
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 16 Oct 2024 06:30:47 -0700 (PDT)
-Received: by mail-ua1-f46.google.com with SMTP id a1e0cc1a2514c-84fe454176bso1625489241.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Oct 2024 06:30:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUJkzII7t7cce8TiIg6UPnPfB0yGTGdwNDE4WoEvPN+g0+ToVSJ81kbJIQKxoj6664xuDfrPZ21yEWaVLLfVA==@lists.infradead.org
-X-Received: by 2002:a05:6122:469b:b0:50d:5be4:c39d with SMTP id
- 71dfb90a1353d-50d5be4c7a8mr9674315e0c.0.1729085447232; Wed, 16 Oct 2024
- 06:30:47 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1729086749; x=1729691549;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=B4K5n0bY/MNJApsUthAN1NPIj08Soy9GOdy9ssrn3mY=;
+        b=iAOJMmcP/K0fnyM/eQSTtWg8KRLhUnqPD4xqpIFrBilQBZqCnf3SfJpcfFO/ismJdf
+         U6PkehbcHOnf913+nytjY8vZ48eV2wYvI1E/VW2lkRbH6Eu1AVheVO+4pQkzgpgjK0Gu
+         jdXYx4V19sUEewYwXm1xvMK817hq4y5pfyHFoc0yACkuTsuq2h4yg/+B92QJj+j0c2Wu
+         2yydza/U83e7WgrPfUIYbFj3HgU36Wsw1re5qXecnFUKi4Pb2E0bTmnASDg3wiJ+yELn
+         i/h1ezljQcNXa6CmPB10MG1/UpaZJJomP6WUCfYie3JP2ZuZ/HSChEDW12byb9lliMEq
+         PHvw==
+X-Forwarded-Encrypted: i=1; AJvYcCU8hWcuNUSNbIWqIt94oZMCyXI+K7bSiDxxf48nB0xBuAzPh5UARmuATaD4aN/6+htR6CjHuJ+JGzCXGMPxvg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yym9vLAUz7SYB/tK6K/n4oVXLKfbd25mZ4ZBPzZ6gDmF8KugxWE
+	NJBen9QL2HnEQ310gxcaZCJb5w/JYjFG6Bz6emySKJ3pxYQXyElPpZkmar/mSlY=
+X-Google-Smtp-Source: AGHT+IGoNQzV+Bg1qNjVUvhK/C+rlK7lfaTe4z86a7lUttjr0E2+hamRKC5LOMtljrg6bMBomFnMuA==
+X-Received: by 2002:a05:6402:42c6:b0:5c9:8d36:e2e7 with SMTP id 4fb4d7f45d1cf-5c98d36e3b1mr5159175a12.33.1729086748713;
+        Wed, 16 Oct 2024 06:52:28 -0700 (PDT)
+Received: from localhost ([2a02:8071:b783:6940:e416:44e3:8348:4e6f])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5c98d7b4a63sm1754723a12.79.2024.10.16.06.52.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 16 Oct 2024 06:52:28 -0700 (PDT)
+Date: Wed, 16 Oct 2024 15:52:25 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Yassine Oudjana <yassine.oudjana@gmail.com>, 
+	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Sam Shih <sam.shih@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, 
+	Bartosz Golaszewski <brgl@bgdev.pl>, Yassine Oudjana <y.oudjana@protonmail.com>, 
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v6 2/2] clk: mediatek: Add drivers for MediaTek MT6735
+ main clock and reset drivers
+Message-ID: <2ceewj7y4ybqyv4xxnms63zsi3bbw5t6opvjf3z4rorsxlwfq6@jlwzyy4umyif>
+References: <20241010132659.81606-1-y.oudjana@protonmail.com>
+ <20241010132659.81606-3-y.oudjana@protonmail.com>
+ <vn466kmo2uqrf6ap54oat2bipj4lsfri7asnsrptrlthva6j5m@dop6xit2pzjk>
+ <ad000fdb-4474-49c4-9357-f23491231b07@collabora.com>
 MIME-Version: 1.0
-References: <20241016-color-v2-1-46db5c78a54f@chromium.org>
-In-Reply-To: <20241016-color-v2-1-46db5c78a54f@chromium.org>
-From: Fei Shao <fshao@chromium.org>
-Date: Wed, 16 Oct 2024 21:30:10 +0800
-X-Gmail-Original-Message-ID: <CAC=S1niFFuKiw1hC-pV-dSVP_cd6YiAU+7a7xLYgokLc-DtOcQ@mail.gmail.com>
-Message-ID: <CAC=S1niFFuKiw1hC-pV-dSVP_cd6YiAU+7a7xLYgokLc-DtOcQ@mail.gmail.com>
-Subject: Re: [PATCH v2] drm/mediatek: Fix color format MACROs in OVL
-To: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, dianders@chromium.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="nn67jih5s63rwj76"
+Content-Disposition: inline
+In-Reply-To: <ad000fdb-4474-49c4-9357-f23491231b07@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_143052_822943_0DDA43E4 
-X-CRM114-Status: GOOD (  19.19  )
+X-CRM114-CacheID: sfid-20241016_065231_123054_587F85B6 
+X-CRM114-Status: GOOD (  14.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,65 +102,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 16, 2024 at 7:10=E2=80=AFPM Hsin-Te Yuan <yuanhsinte@chromium.o=
-rg> wrote:
->
-> In commit 9f428b95ac89 ("drm/mediatek: Add new color format MACROs in
-> OVL"), some new color formats are defined in the MACROs to make the
-> switch statement more concise. That commit was intended to be a no-op
-> cleanup. However, there are typos in these formats MACROs, which cause
-> the return value to be incorrect. Fix the typos to ensure the return
-> value remains unchanged.
->
-> Fixes: 9f428b95ac89 ("drm/mediatek: Add new color format MACROs in OVL")
-> Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
-> ---
-> Changes in v2:
-> - Clarify that the commit get fixed was intended to be a no-op cleanup
-> - Fix the typo in tag
-> - Link to v1: https://lore.kernel.org/r/20241015-color-v1-1-35b01fa0a826@=
-chromium.org
-> ---
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/me=
-diatek/mtk_disp_ovl.c
-> index 89b439dcf3a6af9f5799487fdc0f128a9b5cbe4a..1632ac5c23d87e1cdc41013a9=
-cf7864728dcb63b 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> @@ -65,8 +65,8 @@
->  #define OVL_CON_CLRFMT_RGB     (1 << 12)
->  #define OVL_CON_CLRFMT_ARGB8888        (2 << 12)
->  #define OVL_CON_CLRFMT_RGBA8888        (3 << 12)
-> -#define OVL_CON_CLRFMT_ABGR8888        (OVL_CON_CLRFMT_RGBA8888 | OVL_CO=
-N_BYTE_SWAP)
-> -#define OVL_CON_CLRFMT_BGRA8888        (OVL_CON_CLRFMT_ARGB8888 | OVL_CO=
-N_BYTE_SWAP)
-> +#define OVL_CON_CLRFMT_ABGR8888        (OVL_CON_CLRFMT_ARGB8888 | OVL_CO=
-N_BYTE_SWAP)
-> +#define OVL_CON_CLRFMT_BGRA8888        (OVL_CON_CLRFMT_RGBA8888 | OVL_CO=
-N_BYTE_SWAP)
->  #define OVL_CON_CLRFMT_UYVY    (4 << 12)
->  #define OVL_CON_CLRFMT_YUYV    (5 << 12)
->  #define OVL_CON_MTX_YUV_TO_RGB (6 << 16)
->
-> ---
-> base-commit: 75b607fab38d149f232f01eae5e6392b394dd659
-> change-id: 20241015-color-e205e75b64aa
->
-> Best regards,
-> --
-> Hsin-Te Yuan <yuanhsinte@chromium.org>
->
 
-You missed Doug's R-b tag in v1:
-https://lore.kernel.org/all/CAD=3DFV=3DXrrhUoB9=3DJuPY2erLMA7S-EREqvP5t8NNu=
-BuUiA4rZjQ@mail.gmail.com/
+--nn67jih5s63rwj76
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v6 2/2] clk: mediatek: Add drivers for MediaTek MT6735
+ main clock and reset drivers
+MIME-Version: 1.0
 
-Can you resend v3 with both R-b tags this time?
+Hello,
 
-Thanks,
-Fei
+On Wed, Oct 16, 2024 at 11:57:12AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 16/10/24 11:28, Uwe Kleine-K=F6nig ha scritto:
+> > On Thu, Oct 10, 2024 at 04:26:57PM +0300, Yassine Oudjana wrote:
+> > > +static struct platform_driver clk_mt6735_apmixedsys =3D {
+> > > +	.probe =3D clk_mt6735_apmixed_probe,
+> > > +	.remove_new =3D clk_mt6735_apmixed_remove,
+> > > +	.driver =3D {
+> > > +		.name =3D "clk-mt6735-apmixedsys",
+> > > +		.of_match_table =3D of_match_mt6735_apmixedsys,
+> > > +	},
+> > > +};
+> >=20
+> > After commit 0edb555a65d1 ("platform: Make platform_driver::remove()
+> > return void") .remove() is (again) the right callback to implement for
+> > platform drivers. Please just drop "_new".
+>=20
+> Oh wow, I didn't notice that during my review. Sorry about that.
+
+No problem, I blame noone. You cannot be aware of every change in the
+tree.
+
+Best regards
+Uwe
+
+--nn67jih5s63rwj76
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmcPxQ8ACgkQj4D7WH0S
+/k5qMAgAp6xUYRchPuw1po6lUEMN+JvpwOJDGGuzkdLZRYtB3pAzVFj+6l9LFhDG
+ABrboGHLYWfrdSXu1A6GG/6JkqhqPARGgDcggUaN7v5V7c9uQi7xh07FnEObuj08
+B/UINBv6DDchFLGMFoyla0einCWSwOS9wYejj2w8OtVKl3C934Eyx2FCHmmyS64a
+KNzoeRj8YgFzvOtwyrIshytiX6CwCwDOTNqgVi2KWT60znHiFY2AW4ymZ0Lb/Spv
+jIgDU4PMBuATWRqfcqveSiYi68xVmC92QY1ygM7dHGzFMHy3DlYTeSqzYA0JdM3g
+5Q2yDUlNkA4pfm5E3QiIgZPPfjbC2g==
+=a556
+-----END PGP SIGNATURE-----
+
+--nn67jih5s63rwj76--
 
