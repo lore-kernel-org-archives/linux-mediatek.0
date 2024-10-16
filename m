@@ -4,95 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ADADD2A529
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 15:37:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EACFD2A52C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 15:42:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nJMbjUcKi6EbniPKKMf5mPOzUN+tw8qhO/6T2EniAjY=; b=B0VVa7CjV1oSqi3oXDgJ43+MwN
-	ga/J7j2OaMp355sH5w/2pj8TDRbW/FxE8MiJKKxNS4MGxvk/CFY6zlQ7Hd5CdBJDgk/yEclIAzGFG
-	n0OaIxDxkL/uUXHriDceibXsRrM5CTzQYOh5OI8PLsqiPRdPIw2bb24s0PmI7+JxmbYjWOtBNvYDb
-	MrjQ0TSg4JXD7y1t3ghqFWsEp4BKiStn9Xgya8ToLS7GWDYf8sevliWE2sTQe6BGTh1MbusLzk8qx
-	u/hGCyLlmJFJb+EmBUzRM68HdH1QO8ohFnZHH4+0IIX741xFOBv1UlIWCT1ugF3sZxEhOFa1SxsC4
-	UKzU5dOg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Fg3CpUrkJ3oexhf4ADUo2Et/SRVO9cENFfLqfG+CTUE=; b=3Th+si4PZ9QBN0Sk4GU7SqXIyH
+	e4S0BnoMhQ2XPKdnCcFVyh2J1okci7ylzOcod/U65pSLucdAM2nBuI9c22/qy8spL3lYkryAeFQ9T
+	knAqF9F7I6CZ2WWdip65CWSX083G7Yu4jIIlsBgnHvhwq1vvOLashw6bnYAR5ZXspsVEB51RXBlJ2
+	y5I9upceFkbhI7EjnHasaWhDyx6yy09J3/ZO2fqVpQeOMJsHWfp+VXu+/Lr8KRTbi+G+e9h380Tx6
+	cUAxAnvF/w7RYqd/QYIRXta+7RFB0VMo/BYau7904zJLha7NBKicwdW8XaidmkcPKxSZBC16HvHLC
+	oZVlGHBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t165x-0000000CH3J-1nlz;
-	Wed, 16 Oct 2024 15:37:53 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1t16AD-0000000CHoI-2XIj;
+	Wed, 16 Oct 2024 15:42:17 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t162Y-0000000CGIf-01Ru
-	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Oct 2024 15:34:23 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-539eb97f26aso4645553e87.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Oct 2024 08:34:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1729092860; x=1729697660; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=nJMbjUcKi6EbniPKKMf5mPOzUN+tw8qhO/6T2EniAjY=;
-        b=HXN7ubn/lElhVmG7JXn4nF0rCwm95wsctbl2maMuZ3eklQ30JX5bDQODwGnG8Fd4lA
-         EYi4jDjIbH+oTlpSWfNLRhmtEOGMQfc2XgTmz09C9W42FIovY9GEOggxSMC+VkcCKmZ6
-         ZO7RKuN2a3UjnpZ+8tqLhZjlIcFdAmkxbyHsQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729092860; x=1729697660;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=nJMbjUcKi6EbniPKKMf5mPOzUN+tw8qhO/6T2EniAjY=;
-        b=gHDdvmbLL9cLPvUl/c/CmdpQtgb5p39rI9BNdIbz2zB4WbypubYRnwWAsZoJEvlz0+
-         cFV+SeEKt96jAzXyvMFBBiN0R7qTBcNkw7wht/MH6JBne/QpIFmYadTvlMNjpV+mmUDl
-         FjbIb099Op3SLOAfKGj1IT9h/4Q8aYked2Q4ogEixyYZ/JWuokcQ+FXewFsm6ozxc0xX
-         3ApdSXPB5yrMuXrgJSy9UyPHG+0eHAurJol9IfiSEM0nlAk0xrIhm+7JulJ4bh3/x4/x
-         4D2dnnUG9lKZs+IDyDgRTdVtK1Sr2NeYc/DsVgf1MmVqM5gB2wTL2e3nVIwKG1Khu79I
-         cJUg==
-X-Forwarded-Encrypted: i=1; AJvYcCWVHxEGstmNjlJZeh0lLYsl1fn+P8B86zS2yYyMCuJSp/a0jzuUCgcYDuME3ISsMMcu5r7fvr2YDicbwk8uRg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw3yq7n80YSIOtWIn4EAPyu4lmrvvjgJzHpIUEWDkIRAmg9eLtx
-	utUeKhl+QxSfxrQpj1p3qGesWfXMRCcoq3sPXo0fg1F06ZV65Sb+/yspziO31W3WVyc6gFGPrvQ
-	zwmAd
-X-Google-Smtp-Source: AGHT+IESeI4PfF/oZPk5yYHFRJ3z1sYx2oOlruh3ZVz29aqpie98UgeDwBw9zyVfSuGUO1F0zH5I0Q==
-X-Received: by 2002:a05:6512:138f:b0:539:f2f6:c70f with SMTP id 2adb3069b0e04-539f2f6ca6fmr6800823e87.8.1729092858245;
-        Wed, 16 Oct 2024 08:34:18 -0700 (PDT)
-Received: from mail-lj1-f176.google.com (mail-lj1-f176.google.com. [209.85.208.176])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-539fffa88fbsm487791e87.48.2024.10.16.08.34.17
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 16 Oct 2024 08:34:17 -0700 (PDT)
-Received: by mail-lj1-f176.google.com with SMTP id 38308e7fff4ca-2fb561f273eso31527391fa.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Oct 2024 08:34:17 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCWAkJOhEBzqymq4I/Hj9GFkk7a4YUOgh2nJiw+gZ2/wLasDgTH9UbjoCICRmt2apVhe29fVeafkNmFB10P5lw==@lists.infradead.org
-X-Received: by 2002:a05:651c:1509:b0:2fb:6465:3183 with SMTP id
- 38308e7fff4ca-2fb64653a19mr17100581fa.3.1729092857448; Wed, 16 Oct 2024
- 08:34:17 -0700 (PDT)
+	id 1t166c-0000000CHCx-1R7a;
+	Wed, 16 Oct 2024 15:38:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 6C91B5C5D3F;
+	Wed, 16 Oct 2024 15:38:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4502EC4CEC7;
+	Wed, 16 Oct 2024 15:38:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1729093113;
+	bh=dFW8u8wREC5V/rE4CPEL3TXXHyVXddI7PBsgSDXHwTM=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=I6ZyP12hU9L6hiBtylHFmizE+cd2yG3IZLUQTA3nmpFMGeAdr02jM6p0dMcfaklMs
+	 Vf9+YyPNTy2j1ZkKaIKGnCG/wD7TzTD7meVPIU5kT5tO0tM5s3kcmqRP+BQRADvwGP
+	 UpC5ncTZ1BKst5FUFa2lkvY8h+TM1F1S6U1yMRAFinzR/GjUEBUteaqwJxr4XNi4kx
+	 TqFv6KMho9uPIPS0+W21HQesrR3TaB3JqQjXqfT6GasoXsIbmyMxSg+BU6bZu26UAi
+	 dke3/kEzJNQ62V8oJFGkfWI5udhRBN+frLhNIgrZpcqM/7/al+RDl4W+o3/dbKFx75
+	 m/l1Lmi7OQojA==
+Date: Wed, 16 Oct 2024 10:38:32 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-References: <20241008073430.3992087-1-wenst@chromium.org> <20241008073430.3992087-7-wenst@chromium.org>
- <CAD=FV=X+_iYi0_RSakh6bzVYuNpiqUvjHTrL81n8h4dO+WZf9g@mail.gmail.com> <CAGXv+5FTdNqK14OYe=PN5_BcF9Ve7-FyBTKz=mJ+1QiiUzu0_Q@mail.gmail.com>
-In-Reply-To: <CAGXv+5FTdNqK14OYe=PN5_BcF9Ve7-FyBTKz=mJ+1QiiUzu0_Q@mail.gmail.com>
-From: Doug Anderson <dianders@chromium.org>
-Date: Wed, 16 Oct 2024 08:34:01 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=XNZJ82e2rfMicAiXmxAx5hwydsnMVO8naaakRfroyNow@mail.gmail.com>
-Message-ID: <CAD=FV=XNZJ82e2rfMicAiXmxAx5hwydsnMVO8naaakRfroyNow@mail.gmail.com>
-Subject: Re: [PATCH v8 6/8] i2c: of-prober: Add GPIO support to simple helpers
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, 
-	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
-	chrome-platform@lists.linux.dev, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Johan Hovold <johan@kernel.org>, 
-	Jiri Kosina <jikos@kernel.org>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
-	linux-i2c@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Jianguo Zhang <jianguo.zhang@mediatek.com>, 
+ Hsuan-Yu Lin <shane.lin@canonical.com>, 
+ fanyi zhang <fanyi.zhang@mediatek.com>, netdev@vger.kernel.org, 
+ Macpaul Lin <macpaul.lin@mediatek.com>, Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Richard Cochran <richardcochran@gmail.com>, 
+ Pablo Sun <pablo.sun@mediatek.com>
+In-Reply-To: <20241015-genio700-eth-v1-0-16a1c9738cf4@collabora.com>
+References: <20241015-genio700-eth-v1-0-16a1c9738cf4@collabora.com>
+Message-Id: <172909289110.1676363.14494745221795348933.robh@kernel.org>
+Subject: Re: [PATCH 0/2] Enable Ethernet on the Genio 700 EVK board
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_083422_092058_DB70CFFB 
-X-CRM114-Status: UNSURE (   8.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241016_083834_455466_D5AF9A23 
+X-CRM114-Status: GOOD (  13.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,19 +80,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-On Wed, Oct 16, 2024 at 12:49=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> =
-wrote:
->
-> > Just commenting nits, so:
-> >
-> > Reviewed-by: Douglas Anderson <dianders@chromium.org>
->
-> I assume this stands even after Andy's suggestion to drop the gpiod check
-> is applied.
+On Tue, 15 Oct 2024 14:15:00 -0400, Nícolas F. R. A. Prado wrote:
+> The patches in this series add the ethernet node on mt8188 and enable it
+> on the Genio 700 EVK board.
+> 
+> The changes were picked up from the downstream branch at
+> https://git.launchpad.net/~canonical-kernel/ubuntu/+source/linux-mtk/+git/jammy,
+> cleaned up and split into two commits.
+> 
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> ---
+> Nícolas F. R. A. Prado (2):
+>       arm64: dts: mediatek: mt8188: Add ethernet node
+>       arm64: dts: mediatek: mt8390-genio-700-evk: Enable ethernet
+> 
+>  arch/arm64/boot/dts/mediatek/mt8188.dtsi           | 95 ++++++++++++++++++++++
+>  .../boot/dts/mediatek/mt8390-genio-700-evk.dts     | 25 ++++++
+>  2 files changed, 120 insertions(+)
+> ---
+> base-commit: 7f773fd61baa9b136faa5c4e6555aa64c758d07c
+> change-id: 20241015-genio700-eth-252304da766c
+> 
+> Best regards,
+> --
+> Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> 
+> 
 
-Yeah, sounds fine.
 
--Doug
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y mediatek/mt8390-genio-700-evk.dtb' for 20241015-genio700-eth-v1-0-16a1c9738cf4@collabora.com:
+
+arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dtb: jpeg-decoder@1a040000: iommus: [[118, 685], [118, 686], [118, 690], [118, 691], [118, 692], [118, 693]] is too long
+	from schema $id: http://devicetree.org/schemas/media/mediatek-jpeg-decoder.yaml#
+
+
+
+
+
 
