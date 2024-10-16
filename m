@@ -4,78 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C399AD2A53D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 19:00:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C818D2A53F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 19:08:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jJE57QERgDknKGW7NPSs5mCwqH+t/ymPS7PbFKtY+i4=; b=OY2lz54PA/70b74kAozMd+CqFF
-	qu743GnuSdtKkkY70mKzfQHLgmbGCfKI5GTPVXj6LUB3Lw7UmBtKL023Rc5gxiyxSYx3vuoqJ/dp7
-	TIR6pAKaua9D+4ldvvr2xhTc5fkonE6b687JgCskqz0OjNWwPZ86pg3H/eTsN0x+mRmPaK4YnZH02
-	VOM3u7xFCZjJix6Fephh4Scrg3v+aE5edF21bNzWpr9KPnsCHl4EUDgO6H4ZfyBFQUOHSykcQeMbn
-	H6iGWru4WDGlIZH+rp+B7gvk5Qkwh3AtlM3FUXqT4gXuLWZQ+HystYyWi+w60DwYxr8wzLuEthtxR
-	BoGyhAFQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cfoPyOsmNKBpbW4UUVilRw1fzgl5ccqhl9fH1mrp5ew=; b=14CO6Nd+zfasAVy0b4VO5bBtwc
+	AZto4/Lzn4AoXYtM+8s9IAW27w2GWFKqkm7Y/AHFAQpIKtwnzwrmcHDZ2TAkTIr9OsaPuCql9GN8I
+	aJPyqzRx5gwnqxlO8FOhj7t09tvnKx/USvnO2kEuYriIZMYgamIEdJo62DTIMHf+WBxbZvWkjFhsQ
+	Fli+Sjf0DQdPdchzmLZufdTHsdD3Yeyj+7/sRCwsPMHNFjMlKtZg4j6X8M6kcfNovwe8VnINOT5C2
+	P0wJk6W/hUtCItt6BYiWELc/n0boY93wnd9g9iTUqqNeEW1h+oVaOkv+ygu9O6aAM4FnjS6jwGMQp
+	y7DT4EFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t19G3-0000000CkpZ-2HgD;
-	Wed, 16 Oct 2024 19:00:31 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1t19Nf-0000000Cm5M-49eV;
+	Wed, 16 Oct 2024 19:08:23 +0000
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t19Du-0000000CkMn-3EAF;
-	Wed, 16 Oct 2024 18:58:19 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 936505C5627;
-	Wed, 16 Oct 2024 18:58:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84A48C4CEC5;
-	Wed, 16 Oct 2024 18:58:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729105097;
-	bh=DI3vXOs2FhFrx3JN5uzYaOYxEOMRWbXlYRHowN6BJ1U=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FaLFxaRBwMouJqTGwQCi8Yd5NnSQSDeodJdyqNVUIn0NJp/d46McB2rselzO9Laze
-	 m99l/Icwlm2YZho4RVZrZYGmwfmM38H6kNCGE6CfTWP3iCqVx9AiByZ4iBB5ykm/nU
-	 wP9dkP0rAieddfzfLpRSY/kcaf+dJvnMbP2T8ALSlFrjl3IpuGzQ9QWxY9EWIAhRhl
-	 9B/vlic1SnNh+Flbvyq0gwKBNb00AT2+zPRhhJ2okrs4uC2OHL0Dtg95UC/UOL6z7O
-	 UdGXY8i6IjOaGQJoiLjcYUhkvgy4DagbBTMgXkEZXzoYkEkHgcqDlJJAbkTqAVbEqr
-	 tJ4X+A0B4RaaQ==
-Date: Wed, 16 Oct 2024 19:58:12 +0100
-From: Simon Horman <horms@kernel.org>
-To: SkyLake Huang =?utf-8?B?KOm7g+WVn+a+pCk=?= <SkyLake.Huang@mediatek.com>
-Cc: "andrew@lunn.ch" <andrew@lunn.ch>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"kuba@kernel.org" <kuba@kernel.org>,
-	"pabeni@redhat.com" <pabeni@redhat.com>,
-	"edumazet@google.com" <edumazet@google.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"dqfext@gmail.com" <dqfext@gmail.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	Steven Liu =?utf-8?B?KOWKieS6uuixqik=?= <steven.liu@mediatek.com>,
-	"davem@davemloft.net" <davem@davemloft.net>,
-	"hkallweit1@gmail.com" <hkallweit1@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"daniel@makrotopia.org" <daniel@makrotopia.org>
-Subject: Re: [PATCH net-next 1/1] net: phy: Refactor mediatek-ge-soc.c for
- clarity and correctness
-Message-ID: <20241016185812.GN2162@kernel.org>
-References: <20241014040521.24949-1-SkyLake.Huang@mediatek.com>
- <20241014081823.GL77519@kernel.org>
- <d2c24d063bea99be5380203ec4fafe3e4f0f9043.camel@mediatek.com>
- <20241016143431.GJ2162@kernel.org>
- <a498aca1ac932d66d38282fbfe614d927691ec01.camel@mediatek.com>
+	id 1t19Nd-0000000Cm4q-01Qf
+	for linux-mediatek@lists.infradead.org;
+	Wed, 16 Oct 2024 19:08:22 +0000
+Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-2fb4af0b6beso2935931fa.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 16 Oct 2024 12:08:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1729105698; x=1729710498; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=cfoPyOsmNKBpbW4UUVilRw1fzgl5ccqhl9fH1mrp5ew=;
+        b=avDAYvMEiDAL6Tw3saRn0A1UPnJroW8yZlaU1th5TEGLng+Pk475/zCrRrolPm132y
+         lSSmhdpIrmLlE1CTanfcA4U/djJMtqYaCYVDIaRWcILAO9Hyfgl4oJD38ouHvczdMc9M
+         CKmvpeE+YUNOPSc66f3Tzq1iuhGciv1MUH5wRrH3U2HmaRBc9zIzajxZ884GTLqngEaC
+         18gvid2mC5VJKvDX96HkJoekHmsqOy8ISUFIhTrXjBQM5Q62V+78eF1KtRbVdGYlLSdO
+         gZoTb5rPWy+mc9Aykzh8gstSAfd+g1Jc0njUco/zz360SQ/yg6TfVGFtYarq7GH7lQw0
+         hDcg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729105698; x=1729710498;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=cfoPyOsmNKBpbW4UUVilRw1fzgl5ccqhl9fH1mrp5ew=;
+        b=KER4VVs7zZDO5yg/nm9mTU4UV1ugJ14i4InaV7KiRbwoAR2UVGI15Ip+NiDyHXTGOc
+         vH6+gPzgng0fc9LX2kNO9/kPrbdveDN0WNxv5QgB05K46nLSFz71hdrE5XCkR4CoMYrO
+         yf6c79i2ZfGM8yrQrVh5kpnxKr9/qWQK3cY4Ys4MxlO0Icu3c9+aRNSM+/E1YWM/geAb
+         qisvrMZosOuxuHriDYrjLIFaE3qxLI/+HS3go/1BoNjVR5qh/HeNGkYbz2kLqa6fCGnq
+         pA3w68Q6MtDVcFHplTHotcvFmHe6CdHDt4DQFY5rDWLqZgGNBVgPaqZbTCDP52D8aQ5o
+         ePxg==
+X-Forwarded-Encrypted: i=1; AJvYcCXOyH3TBWFa8Y87YX+LP95vm/rgUVShsJw5RAb4ISPCC4u9dcg0lSl76RZC9hrpo+QtkiPJ/OLfOEfjWRXnWw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx6q7rKfirSkZe2ccdN6xASk76Ji8dIIrYJ1hSQ65fhyYAsZMxk
+	8dfwg1uga6+KVtk5rUJji8ytWRdficIJTVoWL2ONUsoRxtP02PHyhFgSO3HwzaYYtohZyyDtQtH
+	uMk1YoxP5/IBoY5E+AxmgmA4MHXI=
+X-Google-Smtp-Source: AGHT+IFpMThFFX120dLLOYTQhI9ofrhgYrUm3CaUjbVmWJRaHSuAFYnolyq+nLH/xIMlkYVB0yPbfcJXrZtV1Hw3l5g=
+X-Received: by 2002:a2e:6101:0:b0:2fb:51a:d2a with SMTP id 38308e7fff4ca-2fb3f197c65mr92963161fa.12.1729105698221;
+ Wed, 16 Oct 2024 12:08:18 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <a498aca1ac932d66d38282fbfe614d927691ec01.camel@mediatek.com>
+References: <CAAhaqxrW=0g9E2qWdEXTGkjv5cxZLAu-6UGDO5tGLxZDdQXvJg@mail.gmail.com>
+ <CABBYNZKu465GRDOCGepyckgrk4CZF4tOwbzUN6HQyG8ZKfg=8w@mail.gmail.com>
+In-Reply-To: <CABBYNZKu465GRDOCGepyckgrk4CZF4tOwbzUN6HQyG8ZKfg=8w@mail.gmail.com>
+From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
+Date: Wed, 16 Oct 2024 15:08:05 -0400
+Message-ID: <CABBYNZ+pYGDBUWg1=+X8JiHVeTHe4rZM20ckTixpGW6bLsnaBw@mail.gmail.com>
+Subject: Re: Bluetooth not working on 13d3:3585 IMC Networks Wireless_Device
+To: Grimoire April <aprilgrimoire@gmail.com>, Chris Lu <chris.lu@mediatek.com>
+Cc: linux-bluetooth@vger.kernel.org, 
+	linux-mediatek <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_115818_871923_7595F6E4 
-X-CRM114-Status: GOOD (  14.71  )
+X-CRM114-CacheID: sfid-20241016_120821_072184_E1BA09C1 
+X-CRM114-Status: GOOD (  16.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,21 +90,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 16, 2024 at 04:25:14PM +0000, SkyLake Huang (黃啟澤) wrote:
-> > I do think that would be best.
-> > But if you strongly think otherwise I can try to review it as-is.
-> 
-> Hi Simon,
->   If this does cause trouble for reviewing, I can split it into a few
-> patches:
-> Patch 1: Fix spelling errors + reverse Xmas tree + remove unnecessary
-> parens
-> Patch 2: Shrink mtk-ge-soc.c line wrapping to 80 characters.
-> Patch 3: Propagate error code correctly in cal_cycle() + FIELD_GET()
-> change
-> Patch 4: Fix multi functions with FIELD_PREP().
-> 
->   Is this okay for you? Do I need to split them into more patches?
+Hi Chris,
 
-Yes, I think that is a good way to split things up.
+On Wed, Oct 16, 2024 at 2:51=E2=80=AFPM Luiz Augusto von Dentz
+<luiz.dentz@gmail.com> wrote:
+>
+> Hi Grimoire,
+>
+> On Wed, Oct 16, 2024 at 3:28=E2=80=AFAM Grimoire April <aprilgrimoire@gma=
+il.com> wrote:
+> >
+> > Hi. I have a laptop with an integrated bluetooth adaptor recognized as
+> > a usb device. However, it fails to initialize properly. Searching for
+> > other instances on bugzilla, it seems others had success with
+> > 13d3:3585 adaptors.
+> >
+> > (base) =E2=9E=9C  ~ sudo dmesg | grep Bluetooth
+> > [    0.422244] Bluetooth: Core ver 2.22
+> > [    0.422254] Bluetooth: HCI device and connection manager initialized
+> > [    0.422257] Bluetooth: HCI socket layer initialized
+> > [    0.422261] Bluetooth: L2CAP socket layer initialized
+> > [    0.422265] Bluetooth: SCO socket layer initialized
+> > [    0.530052] Bluetooth: HCI UART driver ver 2.3
+> > [    0.535346] Bluetooth: HIDP (Human Interface Emulation) ver 1.2
+> > [    0.535355] Bluetooth: HIDP socket layer initialized
+> > [    3.556068] Bluetooth: hci0: Opcode 0x0c03 failed: -110
+> >
+> > https://bugzilla.kernel.org/show_bug.cgi?id=3D218472
+> >
+> > I updated to 6.11.1 and the issue persists.
+>
+> Well it looks like the reset command is timing out, but the issue was
+> originally the PID:VID was not supported in btusb so perhaps something
+> else is happening, perhaps another manufacturer that don't support
+> short-transfer which was introduced by 7b05933340f4 ("Bluetooth:
+> btusb: Fix not handling ZPL/short-transfer") so try reverting that to
+> see if it helps.
+
+Seems this appears to be a Mediatek chip are you guys able to verify
+the above change doesn't break with your controllers?
+
+>
+> > Thank you.
+> >
+>
+>
+> --
+> Luiz Augusto von Dentz
+
+
+
+--=20
+Luiz Augusto von Dentz
 
