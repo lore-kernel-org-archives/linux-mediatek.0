@@ -4,88 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAD2CD2F7DA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 03:09:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1435D2F7E5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 03:22:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rGntS9xOFiEeM/CMGDTBCcX5N9b7TzQhEkYEMSmKp44=; b=tXLdFiXF4S+8vQwbKwdv1JYRQe
-	E057DdXnZoVfgokW9Da+LokfTvq3LwcNlxr5vKNhjxiNSlI6xGYIaSTzdWXlohcuGN0dg3qVgn/1n
-	701J+hYJ6LMw1WyD2ZIRfl50LYDyK5j6APoQz+5ffCYWLKxK+gATX++oWRJYGxJDaDWan932jaVjT
-	MZtDnEqgPqeNkhp6TZFNwDILiKIxE5rWhX/XviP2XLm97GI1GDC7HyOpNeiQsoge4nrHDAm2BFjoE
-	c+lBt4XYynFa2XvquHXYgnj0g28qGl9G2gvt6DdWIpZfhFkCko/rzo4aL2KZatABTbvkwG+gS5PV+
-	OV+ziJig==;
+	bh=xEZ+LwBUCV79LCq35La2F6jUeHl/a28MFnYkiN7pkkQ=; b=fdhkZ1zNADFSfMvPuUvHcdZRUE
+	VMkJnS3Jj4wrtHhSl9i2NKzcIdVjJZsdk2Eoyxt/8zAGp7ZSsSXDIOd6tvdp9B0OnXFnVGp3uI6tC
+	7AuJFEJw/lHy/I03pBNOOOHxZ4hSAl9kIR7RHOifkNCDCHX1wklHLvmqHWapUhHEGD9wQ8m8u73np
+	iY65pnreKVKv1pM/BbCkSjPCHWMGeaCGmjWVi0pg7e4GH5NxkGMd0SaHhbhhwQqXJyvhz1w2YoRyY
+	DcLyS+XunlQeIXNyvl4UXghaNRS3t/pAQslfohcpB4lHvpHlwz5tK2kJ1Fv2TQlgtTYL61Kl0Y3Uf
+	eKlx7rnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1Gsy-0000000DcwL-2OJq;
-	Thu, 17 Oct 2024 03:09:12 +0000
-Received: from smtpbgeu1.qq.com ([52.59.177.22])
+	id 1t1H5w-0000000DeLQ-2WAi;
+	Thu, 17 Oct 2024 03:22:36 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1GrT-0000000Dcnz-41oI;
-	Thu, 17 Oct 2024 03:07:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=uniontech.com;
-	s=onoh2408; t=1729134399;
-	bh=rGntS9xOFiEeM/CMGDTBCcX5N9b7TzQhEkYEMSmKp44=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version;
-	b=XA9R44voNHMqBepq1VReiYD/fB618XAH1SIbthnQc8t4Gmy9XUJlMF2tRqNuG0JH5
-	 IIjDN450loyVjC6TcVwtAbqGFYDatH+CfHex2gGxeqEZfQ1uNbSkgkD/tNsEV3Wgvw
-	 8f5cFMf8oCVyzMO+8FsYm7R1uywfr2h+jn8Umbc0=
-X-QQ-mid: bizesmtpsz14t1729134356tiqk8w
-X-QQ-Originating-IP: JzxPHKK/gP3irJfApYxXxk8Z6DxYHx70zkel4N+qhuk=
-Received: from localhost.localdomain ( [113.57.152.160])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Thu, 17 Oct 2024 11:05:54 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 1
-X-BIZMAIL-ID: 5622655037225638582
-From: WangYuli <wangyuli@uniontech.com>
-To: nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	kvalo@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	raoxu@uniontech.com,
-	guanwentao@uniontech.com,
-	zhanjun@uniontech.com,
-	WangYuli <wangyuli@uniontech.com>
-Subject: [RESEND. PATCH] mt76: mt76u_vendor_request: Do not print error messages when -EPROTO
-Date: Thu, 17 Oct 2024 11:05:50 +0800
-Message-ID: <08A72BFE4FA79ABB+20241017030551.85817-1-wangyuli@uniontech.com>
-X-Mailer: git-send-email 2.45.2
+	id 1t1H5r-0000000DeKO-0ncO;
+	Thu, 17 Oct 2024 03:22:35 +0000
+X-UUID: 04fe39aa8c3711ef82ff63e91e7eb18c-20241016
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=xEZ+LwBUCV79LCq35La2F6jUeHl/a28MFnYkiN7pkkQ=;
+	b=A9tS89uKRi1DuY0tMXKh5a4818i3z7gSqxPJUzNXAZ2HgrREmYEZ+JfUuC7J3qG4Jo2BJF4hmFy5JR6SfXGskdDrLgP2bUodabWbq2LOkxBdRkdNeoiR8qN2sYvTeSeIHn3Cm7Qrw1ie5KgiocXtBkP8nVdk4QmlPlYMhv9gAgg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.41,REQID:2e0c031b-94b4-4c5e-8a32-c22fbbeccf4c,IP:0,U
+	RL:0,TC:0,Content:41,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:41
+X-CID-META: VersionHash:6dc6a47,CLOUDID:3d7aea06-3d5c-41f6-8d90-a8be388b5b5b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:3,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 04fe39aa8c3711ef82ff63e91e7eb18c-20241016
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+	(envelope-from <skylake.huang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1378682502; Wed, 16 Oct 2024 20:22:20 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 17 Oct 2024 11:22:15 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 17 Oct 2024 11:22:15 +0800
+From: Sky Huang <SkyLake.Huang@mediatek.com>
+To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>, "David S. Miller"
+	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Daniel Golle
+	<daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
+	<SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Simon
+ Horman" <horms@kernel.org>, <linux-kernel@vger.kernel.org>,
+	<netdev@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+CC: Steven Liu <Steven.Liu@mediatek.com>, SkyLake.Huang
+	<skylake.huang@mediatek.com>
+Subject: [PATCH net-next v2 0/3] net: phy: Refactor mediatek-ge-soc.c for clarity and correctness
+Date: Thu, 17 Oct 2024 11:22:10 +0800
+Message-ID: <20241017032213.22256-1-SkyLake.Huang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtpsz:uniontech.com:qybglogicsvrgz:qybglogicsvrgz8a-1
-X-QQ-XMAILINFO: MXBlLHWRHBZ3NlBZw6kwLL6jbfJ+c9nSwmtIfnJ+3C2qF4wrb4Nxgg0w
-	RzfPkjpccstGCyf555LTAhVNJ3gDIHNVDENlkJ5eoDwkgufGOxCJaIlOSuwZ2azX/pnnucc
-	gtV5iQyWgNJAWLyvTmfos9dmsuJ/toW29o9qrkwm66sCB2GMyY/R7KnH/AFKVvUisdw3qev
-	HD7j+MowvrHs+vXeqgL3sa4cfUk6Uqpm3uipE5MFgUUmTDvwYvJ0xPu40ooW7KMWIN760zE
-	EukoO3jFC+7BC3rMfFumdKt7UhkoRNMCKOaI4mRShiV+ZyaQ7QDgcFQ79YN31slVSeSZxZd
-	tVESyjyBbvivb3b6wig6xE3NhjI+GBPk9DhVOVOyZKW7wTIF+uxNJ0xUtgkQthRM2bsQDSG
-	a7LHx7C3jnz8QkbXCuXlFVggFK78QdppH7gEFY1u6+Na/3Eczlq04fp13iiXeOVmtao7+01
-	iGKy9eoTtP4Mrytu9qifbD4eCHr3fsUVtvFzFcxc7grPIaOAZpocQWc3QdAPfMp73v+m6eJ
-	qSb5H99/46Zpd1DJAw5W6NUTT09PNyPpDFRvfKbfPldzG8fbt9HuZcEHpgP4oCcWET5hfUc
-	rYbDOaaClIsxL2i/zRT/Uhlj/21Mir8hCXqqQgVkfO7X3kqpM71+uLGbgGkQCy1StY49Mws
-	QO1/qRYgVDELpzD1U6a5ooHD9BY5z+fTrVYt6ZRzCdBXg822Omk2ODEzL3cVvr9MESQET/z
-	nB7AXp6JffidKiW/5Z+cUS17Fc1MEkt81PNQBjjrx8i5OPy16LrPzazjp/Mhgwn3aFxTVks
-	/XF7kIad5m1fQVdxaxDQ+0Z1u6i6qj897FvVrsgbR+s7NgTxM6wyRW/iXmAJc66UZ55gMyh
-	+sEGsjxtGzptWmyjlbkMFFkJxzbTf67P5YKkb3ziInrxVohMhrMRFFSxUbN1kVxlBdjsW3r
-	E5eh/Pfi1u3LGpNbDA+hSdopn69B0C8dx4GKAvhGZJwAjtJUnKyCRJ0stHKdb0We0zO8=
-X-QQ-XMRINFO: NyFYKkN4Ny6FSmKK/uo/jdU=
-X-QQ-RECHKSPAM: 0
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--3.424900-8.000000
+X-TMASE-MatchedRID: NJitR9TboxyxxK6sBu9wbjPDkSOzeDWWpmFKNfn3zvqvloAnGr4qhgsp
+	V4Rw6UcDTyYk6EbjbakrQIMF24cmclxxDx5qbkR9FEUknJ/kEl5jFT88f69nG/oLR4+zsDTt9xS
+	3mVzWUuCMx6OO8+QGvo0CcEBNsKjT7Jh/mb/5GwpZ2gLfD/Jnn00q3uacyXFBeAj59SFC260HRR
+	KnqfqqUZkyQcsvHZ56x8NgR4aMEWtB+RoVxwyzrnmVKZusLp922v9OjYWA2uMMswg45VMfPadst
+	5iAforfVlxr1FJij9s=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--3.424900-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: DDE2CE34B4A85491DA0C020F95E0AF2C4B528F136A20B9556CB3D39366A7E3E12000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_200740_459480_896267E8 
-X-CRM114-Status: UNSURE (   8.22  )
+X-CRM114-CacheID: sfid-20241016_202231_280919_587833FC 
+X-CRM114-Status: UNSURE (   7.55  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,32 +103,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When initializing the network card, unplugging the device will
-trigger an -EPROTO error, resulting in a flood of error messages
-being printed frantically.
+From: "SkyLake.Huang" <skylake.huang@mediatek.com>
 
-Signed-off-by: Xu Rao <raoxu@uniontech.com>
-Signed-off-by: WangYuli <wangyuli@uniontech.com>
+This patch is derived from patch 8/9 of Message ID:
+20241004102413.5838-9-SkyLake.Huang@mediatek.com.
+This patch does some simple clean-ups, however, this is necessary
+because the rest patches in
+"20241004102413.5838-9-SkyLake.Huang@mediatek.com" rely on this.
+
+Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/usb.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Changes in v2:
+Split into 3 patches for reviewing.
+---
+SkyLake.Huang (3):
+  net: phy: mediatek-ge-soc: Fix coding style
+  net: phy: mediatek-ge-soc: Shrink line wrapping to 80 characters
+  net: phy: mediatek-ge-soc: Propagate error code correctly in
+    cal_cycle()
 
-diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wireless/mediatek/mt76/usb.c
-index 58ff06823389..f9e67b8c3b3c 100644
---- a/drivers/net/wireless/mediatek/mt76/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/usb.c
-@@ -33,9 +33,9 @@ int __mt76u_vendor_request(struct mt76_dev *dev, u8 req, u8 req_type,
- 
- 		ret = usb_control_msg(udev, pipe, req, req_type, val,
- 				      offset, buf, len, MT_VEND_REQ_TOUT_MS);
--		if (ret == -ENODEV)
-+		if (ret == -ENODEV || ret == -EPROTO)
- 			set_bit(MT76_REMOVED, &dev->phy.state);
--		if (ret >= 0 || ret == -ENODEV)
-+		if (ret >= 0 || ret == -ENODEV || ret == -EPROTO)
- 			return ret;
- 		usleep_range(5000, 10000);
- 	}
+ drivers/net/phy/mediatek-ge-soc.c | 169 ++++++++++++++++++++----------
+ 1 file changed, 112 insertions(+), 57 deletions(-)
+
 -- 
 2.45.2
 
