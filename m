@@ -4,84 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D002D3C530
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 20:20:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9169BD3C530
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 20:24:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=pLuLB8ZqbIpBpx1ND1vbb+62qdXEaSB4nVeZdMJrGZc=; b=A0kRhDlyRqW7DfX+solc7oe+81
-	KShRMDJ9L4Objiz8UwF4W6syWPRcdoQbZOq/XgoLog3FjeBe9qmN6XjywowsNzlhgHPSoxTHNT7jq
-	iK0ZkQUJhXBV6SP00pjBwull3O6UhrCT5j5gsPOEVTFZw0Qc+A+9OUWVJEPur6umDfB5RP5Sv4S/q
-	scX2zj1CCF218w60BJiW2S336enQho3kKJmEgcvBPKsWi9MSYBi8Kxq1FtrAanojvJjZF53qjdZkv
-	BGiqjDzJW0m/MucChGEXneMmyPmOO7COAWxVy0GSSZOkdBWDSZ+AGsaDnbGyW15kBpM1r8oNopbw0
-	CFbkgRLw==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=38u4+lvEP3MwxaW3jAQulStrKf3LnsiUKlHFBeOP4Rk=; b=Q/evhHHdmQEHHPPtJmXAUi9ahg
+	jCG8puN2+v4yo5RzJF3kzXbYEjEsCOXH4dHjALhuByRd3x/idaLL/etvVn9ADXqLZrFY0wNvr/BkE
+	l+v9Ql/qTsR/ptGWfM9MAuZOShYPloscJKtYMJyfUuUSLf6McEwEms8ZCaB8a97rmzgS7ecAs4R5r
+	x1fRvRM21pbTEnN1wRAZEWsbPFOde8+X3QmJ00hRZr1X1mP3NEbyN7S81aGwoIRjprJmGTOwXPljf
+	Yp9nfBUzQ6sFmyvhb1m7vns4pLPloq6gXrDz23yQ4LLqRRQ7qlXvAa+ZwTcWWWNN3QM4VpAoKKgho
+	1FW++rbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1Wz9-0000000G6gB-0OJp;
-	Thu, 17 Oct 2024 20:20:39 +0000
+	id 1t1X3F-0000000G796-2pMd;
+	Thu, 17 Oct 2024 20:24:53 +0000
 Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1Wxg-0000000G6X3-0xBo;
-	Thu, 17 Oct 2024 20:19:09 +0000
-Received: by mail-pg1-x535.google.com with SMTP id 41be03b00d2f7-7eab7622b61so1141010a12.1;
-        Thu, 17 Oct 2024 13:19:07 -0700 (PDT)
+	id 1t1X1k-0000000G6xQ-3jru;
+	Thu, 17 Oct 2024 20:23:23 +0000
+Received: by mail-pg1-x535.google.com with SMTP id 41be03b00d2f7-7db238d07b3so1114699a12.2;
+        Thu, 17 Oct 2024 13:23:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729196346; x=1729801146; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=pLuLB8ZqbIpBpx1ND1vbb+62qdXEaSB4nVeZdMJrGZc=;
-        b=gkrD2WokgAWzasaow1xwC/kvuGJTHzVZg5016woNVz34gkhWBGn5Vk+xUk1PBmNFpb
-         d88xH4L7RA6KXeOOhI3dDt0yRjncQGjJYqybFzHfJ9NMUhEghtGOJaX1CFCI/LYBGbKq
-         Fdf8Io3A0P5vz3O73vTsr1ARWNFPDORY8sDrQ3ehaNW3c3nb8JUGxgqp//zy7oDVtl/f
-         Z1JJMhghIYTxh/T1YJs/bvYZYCnGjguHCHpXXHmc75QbPnEMiAQ8LMq6Ia+ObDIlBG5J
-         dLy/ubFw7j10dMniG9uJP4/I/D/Eri4j+F4GsBKLcVrSxH2yPk9nVXVmK1nenr4BnXC4
-         GQlQ==
+        d=gmail.com; s=20230601; t=1729196600; x=1729801400; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=38u4+lvEP3MwxaW3jAQulStrKf3LnsiUKlHFBeOP4Rk=;
+        b=ejgO2IzvoprL4EMGFviqo5wkMHPG5OeeSI4Ogh8aQ2vTOSV6AYXsjKXsS/xDFdVDs6
+         hKXy/Jabwxq3bBPvDcQ62+j3Ro3roNDlCQ5M6jdhcElzaGQA5qE/D2HFB+SB/IcpvQ36
+         t44VLMLkLw+aX0PboFXH2UF9b/6IKEcjZtyuyOWC8dUIAh96ascdFSSodJjxqy3CytMB
+         NPxQt9QhfSzKjJCIVZCiwBYC9xx29BoKgIUyeNbJpcLyyl76pknHRcA10gLBcpdna/yy
+         +VZ7J0SZQ7q3dvlaSQLi5OvmCatwMmmqbVUrphm2drHJLks+4wpjMFZPA/oxQQ2lsBZW
+         KkUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729196346; x=1729801146;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=pLuLB8ZqbIpBpx1ND1vbb+62qdXEaSB4nVeZdMJrGZc=;
-        b=eW83KQZz80Uo+rwHMxcBfnmR98Zwgui+YiMDDcroQ4GzyKuDeRF15+AcNl3F04so/4
-         tooCGnKC3iiPG3xtEBJaDbZj84cVGHCc2Ym/tfOaCvd6xkv+aCQUiSytt8QsKvFbiLSP
-         IMF5uUTXlJI/Z+bZE4klmzUyGBtf/EurWhtZDRTtIdXPTIZwiCAojn709q8qNFIlIMJp
-         zmqNtOB+mvJerhVonfaYX/LstPO2ydor9DjgNWgSDiGAhG6mW42GUA4GWIW6onNVRgjo
-         WLZHsxzAIT+MCim9INTGqnSZrf2GGXBijVAzgZS5jSgVXCvLC6hSPTqBYIlCnmfw4W3l
-         k6vg==
-X-Forwarded-Encrypted: i=1; AJvYcCUl0QoaQyu0FRB9aVbxTL4oF/YUyOW6r+r3RnXVFjE8xKwshW7lHQWZRyQ1SNZ4lXJ2p9Pc+edgBxWSnKp7B+k=@lists.infradead.org, AJvYcCVPFDWqNOdGU83CpsNpx4+f8hxUj+8KXrDvlBjjo8Rh/PwTGr5XkNXGTjBUMJr04UG0ZQtpz6GKxC71aZRGmVgm@lists.infradead.org
-X-Gm-Message-State: AOJu0YwFqoiorhrrElMGBcgJtjdsesu034B+HOruZywH+lummxGjgyj2
-	oHBJi+esuGDvQSn/00el3U3PFCZhAFhxqzTDUF+CDYHD0M3cxoUX
-X-Google-Smtp-Source: AGHT+IHAshLs1c4PMHir3QhIZHAZUUg/NgBSZeGahxS7a6BaavGEOXnUpiPvqGX4ruCodcMKaJ/XpA==
-X-Received: by 2002:a17:90a:dd93:b0:2e2:bb32:73eb with SMTP id 98e67ed59e1d1-2e561a012camr226188a91.31.1729196346330;
-        Thu, 17 Oct 2024 13:19:06 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1729196600; x=1729801400;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=38u4+lvEP3MwxaW3jAQulStrKf3LnsiUKlHFBeOP4Rk=;
+        b=OF0FbEhIFqeBi+hJocaLj7J6ffOva2ber4h2yLzAQRMUDP5SjsXKHtbE5LEBHbsOCG
+         R43BpOkflobOy9uwKVcAhh3rUueB7XG341thFZuztwM14wJTw3W5lSe7ixGiiEiQon3Z
+         Yrymzm64sakbSoXAQTay6+05TZbnYBkTifrkf9cra/kOiFSx044O7NMvH0SoMvmL3BWr
+         TnrWUe5hVhb8v56bUVa6qLGuFE29kHwMuOXE/t7TawJtUBHh+oJ0/4f/TWOhkNyq4OO3
+         6sQreY+ZcBW4emk1w6BLXJY1QYhv18x1ItW4W3ol1hxGbuDXbHIqMuh9wCmcZn9T0jEv
+         54EQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWYE5TD2yjOB1KUx5GLzbK4Sa1078aWGto8V96ILX+wISN+wE+cbofY+H/QDyFUT914esy2Q0Wg7GRz3kGFsg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywl/26MHEhoihO/12IniUErC3z/wahePVBdNHXwK7N66DrH7lNg
+	yfVn7MpD9it+/s1LfRVwMSf26aGu+9jzJ2oIB4Ut3DEDbFdtBN62
+X-Google-Smtp-Source: AGHT+IGMAWQD6p2HxyTayb3FsLXe59RkwnRVgQe15THThCv3iM/TQVQ9CJUSlYItiOMujnRF+Gx7RA==
+X-Received: by 2002:a17:90b:4c8f:b0:2e2:d82b:d144 with SMTP id 98e67ed59e1d1-2e561a3281cmr234135a91.37.1729196600158;
+        Thu, 17 Oct 2024 13:23:20 -0700 (PDT)
 Received: from archlinux.. ([2405:201:e00c:517f:5e87:9cff:fe63:6000])
-        by smtp.googlemail.com with ESMTPSA id 98e67ed59e1d1-2e5610b59b0sm133201a91.7.2024.10.17.13.19.00
+        by smtp.googlemail.com with ESMTPSA id 98e67ed59e1d1-2e55d216012sm232832a91.0.2024.10.17.13.23.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 17 Oct 2024 13:19:05 -0700 (PDT)
+        Thu, 17 Oct 2024 13:23:19 -0700 (PDT)
 From: Mohammed Anees <pvmohammedanees2003@gmail.com>
-To: linux-media@vger.kernel.org,
+To: angelogioacchino.delregno@collabora.com
+Cc: linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sebastian Fricke <sebastian.fricke@collabora.com>,
-	Moudy Ho <moudy.ho@mediatek.com>,
-	Ricardo Ribalda <ribalda@chromium.org>,
-	Mohammed Anees <pvmohammedanees2003@gmail.com>
-Subject: [PATCH] media: platform: mtk-mdp3: cmdq: Remove duplicated platforms checks
-Date: Fri, 18 Oct 2024 01:46:12 +0530
-Message-ID: <20241017201612.2607-1-pvmohammedanees2003@gmail.com>
+	linux-media@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	matthias.bgg@gmail.com,
+	mchehab@kernel.org,
+	moudy.ho@mediatek.com,
+	pvmohammedanees2003@gmail.com,
+	ribalda@chromium.org,
+	sebastian.fricke@collabora.com
+Subject: Re: [PATCH] media: platform: mtk-mdp3: Remove unwanted else in mdp-cmdp-prepare()
+Date: Fri, 18 Oct 2024 01:51:27 +0530
+Message-ID: <20241017202127.2943-1-pvmohammedanees2003@gmail.com>
 X-Mailer: git-send-email 2.47.0
+In-Reply-To: <f771788c-bdcd-4378-a9c4-4bd6bbf93591@collabora.com>
+References: <f771788c-bdcd-4378-a9c4-4bd6bbf93591@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241017_131908_290816_DE3F1080 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20241017_132320_948590_F9D2242D 
+X-CRM114-Status: UNSURE (   5.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,74 +100,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The platform compatibility checks for MT8183 and
-MT8195 in mdp_cmdq_prepare() are redundant as they are
-done in __get_config_offset() itself. Furthermore
-there are two if-else branch in __get_config_offset()
-which have similar conditions and are redundant.
-To address this, remove the check in mdp_cmdq_prepare()
-and combine the two if-else branch into one in
-__get_config_offset().
+Thank you for your feedback! I have made the 
+required changes and sent over the new one.
 
-Signed-off-by: Mohammed Anees <pvmohammedanees2003@gmail.com>
----
- .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    | 24 ++++++-------------
- 1 file changed, 7 insertions(+), 17 deletions(-)
-
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-index ea2ea119dd2a..6eb5affb0366 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-@@ -114,19 +114,15 @@ static struct img_config *__get_config_offset(struct mdp_dev *mdp,
- 	if (pp_idx >= mdp->mdp_data->pp_used)
- 		goto err_param;
- 
--	if (CFG_CHECK(MT8183, p_id))
-+	if (CFG_CHECK(MT8183, p_id)) {
- 		cfg_c = CFG_OFST(MT8183, param->config, pp_idx);
--	else if (CFG_CHECK(MT8195, p_id))
--		cfg_c = CFG_OFST(MT8195, param->config, pp_idx);
--	else
--		goto err_param;
--
--	if (CFG_CHECK(MT8183, p_id))
- 		cfg_n = CFG_OFST(MT8183, param->config, pp_idx + 1);
--	else if (CFG_CHECK(MT8195, p_id))
-+	} else if (CFG_CHECK(MT8195, p_id)) {
-+		cfg_c = CFG_OFST(MT8195, param->config, pp_idx);
- 		cfg_n = CFG_OFST(MT8195, param->config, pp_idx + 1);
--	else
-+	} else {
- 		goto err_param;
-+	}
- 
- 	if ((long)cfg_n - (long)mdp->vpu.config > bound) {
- 		dev_err(dev, "config offset %ld OOB %ld\n", (long)cfg_n, bound);
-@@ -607,13 +603,6 @@ static struct mdp_cmdq_cmd *mdp_cmdq_prepare(struct mdp_dev *mdp,
- 		goto err_uninit;
- 	}
- 
--	if (CFG_CHECK(MT8183, p_id))
--		num_comp = CFG_GET(MT8183, config, num_components);
--	else if (CFG_CHECK(MT8195, p_id))
--		num_comp = CFG_GET(MT8195, config, num_components);
--	else
--		goto err_uninit;
--
- 	cmd = kzalloc(sizeof(*cmd), GFP_KERNEL);
- 	if (!cmd) {
- 		ret = -ENOMEM;
-@@ -631,7 +620,8 @@ static struct mdp_cmdq_cmd *mdp_cmdq_prepare(struct mdp_dev *mdp,
- 	} else {
- 		ret = -EINVAL;
- 		goto err_destroy_pkt;
--	}
-+	}
-+
- 	comps = kcalloc(num_comp, sizeof(*comps), GFP_KERNEL);
- 	if (!comps) {
- 		ret = -ENOMEM;
--- 
-2.47.0
-
+Thanks!
 
