@@ -4,74 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F5ECD374A8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 15:18:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6279D37499
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 15:47:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j6Nj0Rfpdyoq10iq7UgQfGTtJaa6DSb11+8YIu4sxyI=; b=esN9srctFaNNSp8oh7QLe/hdjL
-	xw+0ITOui2CS1cqdnaslvhRcatg2F2kwo/m23jZzFKmAztCuGdE+l3t+fgg8tyNohwWQLlQW/j5HI
-	gcj/ZIHBI51/riwBtdM28Tx1AzQXd5TrbHD79x42n4pRQCHhXSCnEtNGs9wmWSyE/xEBDmLHh0PcG
-	KWtnz3uOLZu/+WW2hqSh2aXGpn806bXnYXidTwU0fNmKYULV98naTylxsam3+h+ts3wMaqNMc819V
-	RpEiSRiudoqjtrHsTu40jNMeCqzWEwAlpoM9YmGICd2kL9lgSxnuyH2nVtER7ZoT8jQoBBtDtLo5h
-	ogq5ILLw==;
+	bh=K4uqH2WaDORCDyS4Kfh9ETbVIBGyMrAnowdInK4g/jQ=; b=C91A/+bgGf5q8Z/Rzmt9FXF4rQ
+	Z7kyi/FmINX4cQ258wXIls1ePFteHAUwoO2SFZ8M/YV1r75H9u82kLePdLkxcPTL51JpPCa+OMFj0
+	A6CIzL8TI0ROFrDIzZWIYcUnbkZw7Vzq05K8DDpwbYy/LVYBb5QiljpS7LOrm2kCDydkh/NeSalhV
+	PeP8AqFpIJQEP8dBdekJMFhXfsuOpyBakhl+pCp/EvwrOh8+okD/W4OgjMuoooM8dQSLhAeRHBshM
+	UCeGOeBmCIsSaP7tQJO96lRWYw8w0Y2m8caf+AfBDPWiJNqlnYp/QtQCh78/r3R2Qv9kIx5c0PdDB
+	V/GNmMdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1SGn-0000000FFsH-3fuL;
-	Thu, 17 Oct 2024 15:18:33 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1t1SiR-0000000FLl3-2xEu;
+	Thu, 17 Oct 2024 15:47:07 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1SFF-0000000FFSM-0bJh;
-	Thu, 17 Oct 2024 15:17:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729178215;
-	bh=gd20f80yTEmwu2bmB1AQUde4L01fBQKHuNSU5h8gwbM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=kN4rlgt7X0KurSY+FfEzXB95IEYtLCwFJrQI2P4UxQM7h2nJp4cVsxAd7GYJCaJlI
-	 VTsknOmbJhQ+ff7UC1hegJ/2sWRdGOpbfXkfnSm0Xjqb2GmF+uBfrAQ65IRe922k5K
-	 sBo7bgxehaQOK+WehqVl4aFsPMFUEYxpEtmELuv9t7g+gsZW5OSz4NCWYtShuzDTpI
-	 kdF+U3Kc78DisiKd62YueytiQ3WsO1o+NKStOIUcvDNr15OTDDXlB+//ogPkgEtPoi
-	 0i2b5A7eQ48Lk1oukRT00GUa1tJZhstNboFN8VCSfsTbns6ZUY5yWkvsXOcIMHrnTK
-	 21CcnXXnqE53g==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9A8D917E3621;
-	Thu, 17 Oct 2024 17:16:54 +0200 (CEST)
-Message-ID: <ccacc376-8494-4941-a4b8-dbb4d09914ee@collabora.com>
-Date: Thu, 17 Oct 2024 17:16:54 +0200
+	id 1t1SXo-0000000FIwN-2reA;
+	Thu, 17 Oct 2024 15:36:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id CCF3CA44132;
+	Thu, 17 Oct 2024 15:35:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2FC5CC4CEC7;
+	Thu, 17 Oct 2024 15:36:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1729179367;
+	bh=0r0JjnkkjqSE3jNgXwiFfV5tkiZFhPe4hiVJEamy0fA=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=sZVYgJ2J5a0gA6RIyL4Yvbt9ouXNMdspscC7MUdDEmKFY3iJFg6AJ7J4ZkKphTPVn
+	 Zjs7ZS30LO58nKjNB7qjkuuJNp9WbvRDcBR6pjaalJzdgJAeI1n9BmRuzFzfj0nC2O
+	 WHtkfKreWXzg4BSNjLezKCifxYQ0Kw3rdWyggSAEZ28JPFkUU7uiY2z3valjvBct46
+	 nSFeMC5HyScWkPYCytouRLKYiKEVDMXHB9zO4kabMU1yWekDOqxVAR2XqPu6TkIoYi
+	 0+ejBlf1gxjAcuMNsdEaG5Bt9vQuLsquZl1ve5n5cArMdOiSPIH1wvn82OElNTE4vY
+	 oQhFG4m0nxCNg==
+From: Vinod Koul <vkoul@kernel.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>, 
+ Macpaul Lin <macpaul@gmail.com>, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+In-Reply-To: <20241012035016.17667-1-macpaul.lin@mediatek.com>
+References: <20241012035016.17667-1-macpaul.lin@mediatek.com>
+Subject: Re: [PATCH v3] dt-bindings: phy: mediatek: tphy: add a property
+ for power-domains
+Message-Id: <172917936283.288841.9548294790735623997.b4-ty@kernel.org>
+Date: Thu, 17 Oct 2024 21:06:02 +0530
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] watchdog: mtk_wdt: Add support for MT6735 WDT
-To: Guenter Roeck <linux@roeck-us.net>, yassine.oudjana@gmail.com
-Cc: Wim Van Sebroeck <wim@linux-watchdog.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Yassine Oudjana <y.oudjana@protonmail.com>, linux-watchdog@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20230302124015.75546-1-y.oudjana@protonmail.com>
- <20230302124015.75546-3-y.oudjana@protonmail.com>
- <0398e95e-dbb8-2e41-7b36-12e36b8729f0@collabora.com>
- <f9b09f59-a222-4b75-a6ef-c7fb7c2cff9e@gmail.com>
- <9bd327fb-5f67-453d-947d-4742134b32b1@collabora.com>
- <WOMHLS.HLNVQWWVER5T1@gmail.com>
- <4e3545ce-5740-48b6-8c10-666548d31908@roeck-us.net>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <4e3545ce-5740-48b6-8c10-666548d31908@roeck-us.net>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241017_081657_365486_86C82EE1 
-X-CRM114-Status: GOOD (  35.69  )
+X-CRM114-CacheID: sfid-20241017_083608_827545_16FD4A15 
+X-CRM114-Status: UNSURE (   5.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,104 +82,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/10/24 16:09, Guenter Roeck ha scritto:
-> On 10/16/24 23:43, yassine.oudjana@gmail.com wrote:
-> ...
->>>>
->>>> Say I don't want to use the watchdog (which I don't, all I need from TOPRGU is 
->>>> the resets, I don't care about the watchdog). Not starting the watchdog means 
->>>> I can't reset the system because all mtk_wdt_restart will do is make TOPRGU 
->>>> send me an IRQ that I have no use for.
->>>
->>> If you don't want to use the watchdog, then you don't need to care about bark
->>> interrupts and you don't need any mtk_wdt_restart() functionality at all :-)
->>
->> I need mtk_wdt_restart to restart my system. I shouldn't need to take off my 
->> phone's back cover and remove the battery every time :)
->>
->>>
->> I think what Guenter said makes sense. We should make sure the watchdog is 
->> started when calling mtk_wdt_restart or at least configured in such a way that we 
->> are sure it will issue a system reset.
->>
+
+On Sat, 12 Oct 2024 11:50:16 +0800, Macpaul Lin wrote:
+> Include the MediaTek TPHY in a power domain.  Add the 'power-domains'
+> property in the Device Tree (DT) Schema and set 'maxItems: 1'.
 > 
-> It is more than that. There is no limitation in the watchdog API that says
-> "you must only use the watchdog kernel driver to reset the system if the
-> watchdog has been activated from userspace". Such a limitation would be
-> completely arbitrary and not make any sense. It is perfectly fine to enable
-> the watchdog from the restart callback if needed. Actually, all restart
-> handlers in watchdog drivers have to do that if they indeed use a watchdog
-> to reset the system.
+> Also, include a reminder in the description of the 'power-domains'
+> property.
 > 
-> Actually, I am not entirely sure I understand what we are arguing about.
 > 
+> [...]
 
-Guenter:
-We're arguing about bad configuration and lots of misunderstanding.
+Applied, thanks!
 
-Regarding WDT_MODE_EXRST_EN: when enabled, it enables an external output
-reset signal - meaning that it's going to flip the state of a GPIO to active
-(high in Yassine's case - as that's configured through WDT_MODE BIT(1) and
-his 0x5c means that it's flipped on), signaling to another chip (usually,
-the PMIC...!) that we want to reset the system.
+[1/1] dt-bindings: phy: mediatek: tphy: add a property for power-domains
+      commit: 2ac03d0811b94c2397d5ec3c82a65a112aeab5b0
 
-Explaining what Yassine is doing with this commit: he is flipping the IRQ_EN
-bit [BIT(5)] in WDT_MODE.
+Best regards,
+-- 
+~Vinod
 
-When bit 5 *is set*, the watchdog bark event will only raise an interrupt and
-will not reset the system (that's left to be done to an interrupt handler in
-the driver).
-
-When bit 5 *is NOT set*, the watchdog bark event will trigger a CPU reset.
-
-Now, my confusion came from the fact that he's trying to fix a watchdog bark
-event so that it triggers system reset, but I didn't understand the actual
-reason why he wants to do that - which is powering off the system!
-
-
-Yassine:
-
-You don't *have to* rely on the watchdog to reset the system, and if you use
-only that - especially on a smartphone - I'm mostly sure that you'll get
-power leakage.
-
-Before you read the following - please note that this is platform dependent
-so, take this with a grain of salt: it is the PMIC that should get configured
-to take your system down! I have a hunch that this works for you only because
-the platform will reboot, and then the bootloader will decide to turn off the
-system for you by default (that, unless you send a warm reboot indication).
-
-That flow looks more like a hack than a solution for an actual problem.
-
-
-Now - whether you want to fix your platform or not, this is out of the scope
-of this commit, which is - in the end - still fixing something that is wrong.
-
-Effectively, as Guenter said, if the watchdog is never started, the restart
-function is not going to reboot the system, so yes this problem needs to be
-fixed.
-
-There are two problems in this driver that can be solved with:
-  1. Disable IRQ generation when *no irq* is found in DT; and
-  2. Implement support for reboot in mtk_wdt_isr() by reading the WDT_STA
-     register and by then taking appropriate actions.
-
-Of course my preference would be N.2 because:
-  - The pretimeout way is already supported in the driver, and if you specify
-    a pretimeout, then the watchdog will never trigger SYSRST->XRST: this
-    is actually a bug (IMO!!), as declaring an IRQ in DT means losing reset (!);
-  - The WDT_STA register tells you more than just "SW/HW watchdog reset asserted"
-    and that can be extended in the future to support more than that.
-
-However, I recognize that this may be too much work for you, so, if there's no
-way for you to properly add support for N.2 - I can chime in.
-
-As for N.1, the solution is simple: check if platform_get_irq_optional fails
-and - if it does - force unsetting (WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN) in
-WDT_MODE, if and only if WDT_EN is not set.. but that, in the probe function!
-
-
-Cheers,
-Angelo
 
 
