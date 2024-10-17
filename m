@@ -4,70 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D268D374A1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 14:29:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F5ECD374A8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 15:18:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pbtD+3zFPrQp4aBWmMOpsADMGE9gUQ5G8OEfwzcTsFk=; b=jpjxaCn6OYstFa1uS+cysEzW5x
-	P03QERhcEcjS6tUrfzUQ1gIsUP/3cHqcfKkGIqkT6Aj8Y+dSopjxFonXxnlw2Kdt3v/UA7B0Si5EF
-	Aa6tk/zUiSxXYe5+zKQV7qwtmUXrvLBtrP5M8TWQlkfMBA6iBaSQw0GsyqDnkenoxSxCSirOuBK7J
-	ZCvPYWClGinYfyl4XVBtOx5yX7siz0IlnRDWeHwJIXfr+rtwoDB1Mzsu680etLNT+WmqnhVSAhCgn
-	DPEt7A5o5kQ5v1AAi2QFS1qLPuhULn7jsFEJRrulS7con1fVllS7SSU4MxWsRJ7DJ3lEPXP5Hq89F
-	0zJZxgnA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=j6Nj0Rfpdyoq10iq7UgQfGTtJaa6DSb11+8YIu4sxyI=; b=esN9srctFaNNSp8oh7QLe/hdjL
+	xw+0ITOui2CS1cqdnaslvhRcatg2F2kwo/m23jZzFKmAztCuGdE+l3t+fgg8tyNohwWQLlQW/j5HI
+	gcj/ZIHBI51/riwBtdM28Tx1AzQXd5TrbHD79x42n4pRQCHhXSCnEtNGs9wmWSyE/xEBDmLHh0PcG
+	KWtnz3uOLZu/+WW2hqSh2aXGpn806bXnYXidTwU0fNmKYULV98naTylxsam3+h+ts3wMaqNMc819V
+	RpEiSRiudoqjtrHsTu40jNMeCqzWEwAlpoM9YmGICd2kL9lgSxnuyH2nVtER7ZoT8jQoBBtDtLo5h
+	ogq5ILLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1RVY-0000000F7B6-1Qnj;
-	Thu, 17 Oct 2024 14:29:44 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1t1SGn-0000000FFsH-3fuL;
+	Thu, 17 Oct 2024 15:18:33 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1RU1-0000000F6yc-47SD;
-	Thu, 17 Oct 2024 14:28:14 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 2EA6AA43EB3;
-	Thu, 17 Oct 2024 14:28:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E54DC4CEC7;
-	Thu, 17 Oct 2024 14:28:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729175288;
-	bh=cG1ujo3dHNKa9WqVdQiAckTISmwm/fCx/SWHY+8ljuQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ozDrKY+xx8pM3y0YaTW/FDyLDweOtlQ19ddNuFDlkNz1Cl5bNZWmVXDpdCOs7ji4l
-	 iXdT2PD4s0LoC+ptlSSi+qblh2Bz6k0cfhaKYsMkk5HHNJcN76yZSAP5Rtzl/ormwl
-	 cPFPs+Mff5tgW3bbx1HyHM+4hNEvPTrsp8EThQzhhba/2HwNzMSSLvp3i1tkV5cen8
-	 xyC7iAN7IM7VeOJ9GJipIMzggmx15Si3H+hnYrD1476SMa4P6iBXBtxGH/CHKO/8Xw
-	 vtblIOnKuCZK8BwvDm2IUv47V5HIPjhEjEEiK8XBrSCCireYX/DbJkjsKU1h2nzudP
-	 i6WQBcP1iJ9Cg==
-Date: Thu, 17 Oct 2024 16:28:06 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Lee Jones <lee@kernel.org>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	upstream@airoha.com, benjamin.larsson@genexis.eu,
-	ansuelsmth@gmail.com, linux-pwm@vger.kernel.org
-Subject: Re: [PATCH v7 3/6] dt-bindings: pwm: airoha: Add EN7581 pwm
-Message-ID: <ZxEe9gGd1qW4ksEo@lore-desk>
-References: <20241016-en7581-pinctrl-v7-0-4ff611f263a7@kernel.org>
- <20241016-en7581-pinctrl-v7-3-4ff611f263a7@kernel.org>
- <834bfc12-4ce7-4ce1-a0c7-5bc8be3587b7@collabora.com>
+	id 1t1SFF-0000000FFSM-0bJh;
+	Thu, 17 Oct 2024 15:17:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1729178215;
+	bh=gd20f80yTEmwu2bmB1AQUde4L01fBQKHuNSU5h8gwbM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=kN4rlgt7X0KurSY+FfEzXB95IEYtLCwFJrQI2P4UxQM7h2nJp4cVsxAd7GYJCaJlI
+	 VTsknOmbJhQ+ff7UC1hegJ/2sWRdGOpbfXkfnSm0Xjqb2GmF+uBfrAQ65IRe922k5K
+	 sBo7bgxehaQOK+WehqVl4aFsPMFUEYxpEtmELuv9t7g+gsZW5OSz4NCWYtShuzDTpI
+	 kdF+U3Kc78DisiKd62YueytiQ3WsO1o+NKStOIUcvDNr15OTDDXlB+//ogPkgEtPoi
+	 0i2b5A7eQ48Lk1oukRT00GUa1tJZhstNboFN8VCSfsTbns6ZUY5yWkvsXOcIMHrnTK
+	 21CcnXXnqE53g==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9A8D917E3621;
+	Thu, 17 Oct 2024 17:16:54 +0200 (CEST)
+Message-ID: <ccacc376-8494-4941-a4b8-dbb4d09914ee@collabora.com>
+Date: Thu, 17 Oct 2024 17:16:54 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="uoePblPqdHNb3UAq"
-Content-Disposition: inline
-In-Reply-To: <834bfc12-4ce7-4ce1-a0c7-5bc8be3587b7@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] watchdog: mtk_wdt: Add support for MT6735 WDT
+To: Guenter Roeck <linux@roeck-us.net>, yassine.oudjana@gmail.com
+Cc: Wim Van Sebroeck <wim@linux-watchdog.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Yassine Oudjana <y.oudjana@protonmail.com>, linux-watchdog@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20230302124015.75546-1-y.oudjana@protonmail.com>
+ <20230302124015.75546-3-y.oudjana@protonmail.com>
+ <0398e95e-dbb8-2e41-7b36-12e36b8729f0@collabora.com>
+ <f9b09f59-a222-4b75-a6ef-c7fb7c2cff9e@gmail.com>
+ <9bd327fb-5f67-453d-947d-4742134b32b1@collabora.com>
+ <WOMHLS.HLNVQWWVER5T1@gmail.com>
+ <4e3545ce-5740-48b6-8c10-666548d31908@roeck-us.net>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <4e3545ce-5740-48b6-8c10-666548d31908@roeck-us.net>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241017_072810_170132_1584EAA5 
-X-CRM114-Status: GOOD (  15.53  )
+X-CRM114-CacheID: sfid-20241017_081657_365486_86C82EE1 
+X-CRM114-Status: GOOD (  35.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,88 +86,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 17/10/24 16:09, Guenter Roeck ha scritto:
+> On 10/16/24 23:43, yassine.oudjana@gmail.com wrote:
+> ...
+>>>>
+>>>> Say I don't want to use the watchdog (which I don't, all I need from TOPRGU is 
+>>>> the resets, I don't care about the watchdog). Not starting the watchdog means 
+>>>> I can't reset the system because all mtk_wdt_restart will do is make TOPRGU 
+>>>> send me an IRQ that I have no use for.
+>>>
+>>> If you don't want to use the watchdog, then you don't need to care about bark
+>>> interrupts and you don't need any mtk_wdt_restart() functionality at all :-)
+>>
+>> I need mtk_wdt_restart to restart my system. I shouldn't need to take off my 
+>> phone's back cover and remove the battery every time :)
+>>
+>>>
+>> I think what Guenter said makes sense. We should make sure the watchdog is 
+>> started when calling mtk_wdt_restart or at least configured in such a way that we 
+>> are sure it will issue a system reset.
+>>
+> 
+> It is more than that. There is no limitation in the watchdog API that says
+> "you must only use the watchdog kernel driver to reset the system if the
+> watchdog has been activated from userspace". Such a limitation would be
+> completely arbitrary and not make any sense. It is perfectly fine to enable
+> the watchdog from the restart callback if needed. Actually, all restart
+> handlers in watchdog drivers have to do that if they indeed use a watchdog
+> to reset the system.
+> 
+> Actually, I am not entirely sure I understand what we are arguing about.
+> 
 
---uoePblPqdHNb3UAq
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Guenter:
+We're arguing about bad configuration and lots of misunderstanding.
 
-> Il 16/10/24 12:07, Lorenzo Bianconi ha scritto:
-> > Introduce device-tree binding documentation for Airoha EN7581 pwm
-> > controller.
-> >=20
-> > Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > ---
-> >   .../devicetree/bindings/pwm/airoha,en7581-pwm.yaml | 34 +++++++++++++=
-+++++++++
-> >   1 file changed, 34 insertions(+)
-> >=20
-> > diff --git a/Documentation/devicetree/bindings/pwm/airoha,en7581-pwm.ya=
-ml b/Documentation/devicetree/bindings/pwm/airoha,en7581-pwm.yaml
-> > new file mode 100644
-> > index 0000000000000000000000000000000000000000..f36387572a9781636aeacdb=
-cc8947017c7ca75a0
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/pwm/airoha,en7581-pwm.yaml
-> > @@ -0,0 +1,34 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/pwm/airoha,en7581-pwm.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Airoha EN7581 PWM Controller
-> > +
-> > +maintainers:
-> > +  - Lorenzo Bianconi <lorenzo@kernel.org>
-> > +
-> > +allOf:
-> > +  - $ref: pwm.yaml#
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: airoha,en7581-pwm
-> > +
-> > +  "#pwm-cells":
-> > +    const: 3
-> > +
-> > +required:
-> > +  - compatible
-> > +  - "#pwm-cells"
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    pwm {
-> > +      compatible =3D "airoha,en7581-pwm";
-> > +
-> > +      #pwm-cells =3D <3>;
-> > +    };
-> >=20
->=20
-> There are undocumented properties that the driver tries to parse. Please =
-fix.
->=20
-> Regards,
-> Angelo
+Regarding WDT_MODE_EXRST_EN: when enabled, it enables an external output
+reset signal - meaning that it's going to flip the state of a GPIO to active
+(high in Yassine's case - as that's configured through WDT_MODE BIT(1) and
+his 0x5c means that it's flipped on), signaling to another chip (usually,
+the PMIC...!) that we want to reset the system.
 
-ack, I will fix them.
+Explaining what Yassine is doing with this commit: he is flipping the IRQ_EN
+bit [BIT(5)] in WDT_MODE.
 
-Regards,
-Lorenzo
+When bit 5 *is set*, the watchdog bark event will only raise an interrupt and
+will not reset the system (that's left to be done to an interrupt handler in
+the driver).
 
---uoePblPqdHNb3UAq
-Content-Type: application/pgp-signature; name="signature.asc"
+When bit 5 *is NOT set*, the watchdog bark event will trigger a CPU reset.
 
------BEGIN PGP SIGNATURE-----
+Now, my confusion came from the fact that he's trying to fix a watchdog bark
+event so that it triggers system reset, but I didn't understand the actual
+reason why he wants to do that - which is powering off the system!
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZxEe9gAKCRA6cBh0uS2t
-rDpoAQC2ELyAKCz2bRRpe2BaRF6RYKIf0qfZ6xsbD9FbUklpFAD/Yy963j4FOSpU
-JxqA9L3uYDf/UeDg2nJTj3ZUokwBQQg=
-=HeFD
------END PGP SIGNATURE-----
 
---uoePblPqdHNb3UAq--
+Yassine:
+
+You don't *have to* rely on the watchdog to reset the system, and if you use
+only that - especially on a smartphone - I'm mostly sure that you'll get
+power leakage.
+
+Before you read the following - please note that this is platform dependent
+so, take this with a grain of salt: it is the PMIC that should get configured
+to take your system down! I have a hunch that this works for you only because
+the platform will reboot, and then the bootloader will decide to turn off the
+system for you by default (that, unless you send a warm reboot indication).
+
+That flow looks more like a hack than a solution for an actual problem.
+
+
+Now - whether you want to fix your platform or not, this is out of the scope
+of this commit, which is - in the end - still fixing something that is wrong.
+
+Effectively, as Guenter said, if the watchdog is never started, the restart
+function is not going to reboot the system, so yes this problem needs to be
+fixed.
+
+There are two problems in this driver that can be solved with:
+  1. Disable IRQ generation when *no irq* is found in DT; and
+  2. Implement support for reboot in mtk_wdt_isr() by reading the WDT_STA
+     register and by then taking appropriate actions.
+
+Of course my preference would be N.2 because:
+  - The pretimeout way is already supported in the driver, and if you specify
+    a pretimeout, then the watchdog will never trigger SYSRST->XRST: this
+    is actually a bug (IMO!!), as declaring an IRQ in DT means losing reset (!);
+  - The WDT_STA register tells you more than just "SW/HW watchdog reset asserted"
+    and that can be extended in the future to support more than that.
+
+However, I recognize that this may be too much work for you, so, if there's no
+way for you to properly add support for N.2 - I can chime in.
+
+As for N.1, the solution is simple: check if platform_get_irq_optional fails
+and - if it does - force unsetting (WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN) in
+WDT_MODE, if and only if WDT_EN is not set.. but that, in the probe function!
+
+
+Cheers,
+Angelo
+
 
