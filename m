@@ -4,96 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FFABD2F7F7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 07:20:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79A7CD2F7FC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 07:57:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xu/0w9a/rualnXhWqe76Y/2ECmjlhw8WcTNJafrgjqI=; b=1onmjM7hXG8qpPx+Mrt60Nkv2B
-	EEsat39fO9BHUTq4pDgH6+F9X/iEo3Vgi+gwzatJ7+8VWzc58pfqP2ql0hSvOoK8z8nvkcNAetCW6
-	U4RTGGo0owVFUJRz6axbad9KSzJj52d00CmHrBQ+sSIkyitd0QocVSx8l8xkS8bUL3J3hncKti9UU
-	x4aB+K6Dc/FrvQULJjWKyt28HzRrgoAG9f704Q+A17oKJif5HAS0h6K0Dy8rDIjUcE6Tt/rbGzmqu
-	Vftr45oMwQjY5A/CHa0OR04NIwgBhAr5rW8aUJz8+KSKpYiiUEx5QPNKICZ6yPOTmQ+NXKF3lhVXC
-	99XC8tFw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NG+cvB78j3HgiyVriRt2aR///VFc6kWwgdG3Bs9Odiw=; b=3rEsFKnN04BC846uuCUXq/QvTU
+	dxvorblOKvgDAlYeTeWHmyt9O5FTipX0+pHGbjDaMEAHWIiimxDbdQICqdTsCDf4U2dSmKjsPSXc2
+	rNSUQCwTuUwvptNdnGhLyd4S19AIrvbfO4N1Zv1TfFvpGfIsFc+F9ohjXwcR2QTn8HPb02hfhg2sO
+	cUZlofe6dVFMPkjtSTQ4pZQYCNKGngGf+mqHgeQ0mo+dPjJ5s8dQX35OweRSUD7S0v5IscnW7SYiA
+	VIsgK547nyT5qsumFdDAUFGiHJV5jo79QyvFc4JRiJvMc363jVXa5NGc6PJh9QDvGV8n66bzvwY2h
+	Py1W4m5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1KoJ-0000000DytU-0aes;
-	Thu, 17 Oct 2024 07:20:39 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1t1LNb-0000000E3Ap-2umq;
+	Thu, 17 Oct 2024 07:57:07 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1KlO-0000000DyPu-2cCA;
-	Thu, 17 Oct 2024 07:17:42 +0000
-Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-5c984352742so701259a12.1;
-        Thu, 17 Oct 2024 00:17:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729149456; x=1729754256; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Xu/0w9a/rualnXhWqe76Y/2ECmjlhw8WcTNJafrgjqI=;
-        b=itbjNcWVwXa/+NAwmGOpBV7WQ1inBAAA0NsAwK8TKwrFRzH6mAREfBShtFnTw6uI2l
-         gfkMoc/xmTl0tgK0uKHigrJNByNbv8Tn412mxPEQYjnnW/wR3+pC70nc9Yx6Knz+VpEE
-         MujBVOM1WpjdQO8mxQnfUg+0Slq1VancS4PJEv5mI9Pv2Jk3L/HASbzaPXW7ZanzTNQD
-         HXVN+Orh6lwAMh1/7G9t7E7Is8uhLot7CXMatbEqJAIQZpWWvOjflVHfi7XXoi+Bliv6
-         VivMi6qxpXc33JmZ9gaDRmRPUYlIwlVMqkxxaYazcli7nYPv32Cx4swZgp+BFKqJ0xQ0
-         9OpA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729149456; x=1729754256;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Xu/0w9a/rualnXhWqe76Y/2ECmjlhw8WcTNJafrgjqI=;
-        b=NrgIZFxMnYG+XPoRZabcXN5Go71S9mTJotcHErvWG7pmsngeplqWBXJGitAbGQD085
-         Ce1EnnfFlWLnsxmKWbgjSPcQ2ZppccpIMzCg9fnLZStf7+hKI9louXixEmgtIjFwNWVu
-         uTJ/fyKhq1MooxBlzaYyIl43qCKZ76zeIV2fYDMEdfy9xfO0pV632WS235NTmEur9izq
-         0bI1YyNoJVnnsOTxTKJhAlTBuA3sYJ8ILkaUF04rIoKIDvbO9/QCyt6nk0r7ehHHVDrn
-         OiV/uUt1qk1IUsXN4p8b8Sl29BgZ9FvPaGzQxlpIilvau68AZJNBXQbh75EdP8POaBdc
-         AFBw==
-X-Forwarded-Encrypted: i=1; AJvYcCVJ2Qbg7QZcH2TMceuEVe2Nl9UwLGyevq0Aqr4Y7ESe7XqsJrWQpXlMMXqXugCn0ssyqKAfHNrpUy7MbvzcUJ+U@lists.infradead.org, AJvYcCVVCnXJ952keFFAwGrdTk/i5VFCMZYTxaKJ9DkSbZSeontWhBAd2AhCxvYPfMid3ZHn724e+0bM0R8orueLtI0=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzZlKtpiV3ZZ526Ns0o8GCGnmPQsJ7Cp3TPK67F0mhs4ZVZZPbg
-	xbZEs113PXgNRc+YkL4SU0rKZbM4xL0eU8y4/FRCbiYFvaOH+6Fk
-X-Google-Smtp-Source: AGHT+IEt/F1GOgMJELDTtcdzueumU91LaWi27ZCaZXwCBfrC9EsegsyuF3wTsZ9y+FGek8UT7oG9dQ==
-X-Received: by 2002:a05:6402:845:b0:5c5:cd4b:5c4d with SMTP id 4fb4d7f45d1cf-5c9950e0e77mr5177037a12.8.1729149456081;
-        Thu, 17 Oct 2024 00:17:36 -0700 (PDT)
-Received: from zenbook.agu.edu.tr ([95.183.227.34])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5c98d778266sm2392174a12.70.2024.10.17.00.17.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 17 Oct 2024 00:17:35 -0700 (PDT)
-From: Yassine Oudjana <yassine.oudjana@gmail.com>
-X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Sam Shih <sam.shih@mediatek.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
-	Yassine Oudjana <y.oudjana@protonmail.com>,
-	Yassine Oudjana <yassine.oudjana@gmail.com>,
-	linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v7 2/2] clk: mediatek: Add drivers for MediaTek MT6735 main clock and reset drivers
-Date: Thu, 17 Oct 2024 10:17:06 +0300
-Message-ID: <20241017071708.38663-3-y.oudjana@protonmail.com>
-X-Mailer: git-send-email 2.47.0
-In-Reply-To: <20241017071708.38663-1-y.oudjana@protonmail.com>
-References: <20241017071708.38663-1-y.oudjana@protonmail.com>
+	id 1t1LM5-0000000E33H-18NV;
+	Thu, 17 Oct 2024 07:55:39 +0000
+X-UUID: 2c5a0e688c5d11ef9048ed6ed365623b-20241017
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=NG+cvB78j3HgiyVriRt2aR///VFc6kWwgdG3Bs9Odiw=;
+	b=KCW8rkDUF8CLUmke9TvcqGoUs2gi+JB9QsV4AwUvtAPGVeWRp8qtaobQ+U9zgpaNnjnjTJ1sjSkKPSGxu7hUq3yHDePKeGOfAx3uqJpe47dTfLt4jE40MX4gLGiCkDDHcWMmlO58iFR74nPkrYEZ/XmDFjR+HAXjsZ2HGR1VN+Y=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.42,REQID:d470d379-4010-4373-ae1b-7043531b42f6,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:b6656465-444a-4b47-a99a-591ade3b04b2,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 2c5a0e688c5d11ef9048ed6ed365623b-20241017
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <bo.ye@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 217214500; Thu, 17 Oct 2024 00:55:27 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 17 Oct 2024 00:55:24 -0700
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 17 Oct 2024 15:55:24 +0800
+From: Bo Ye <bo.ye@mediatek.com>
+To: Sean Wang <sean.wang@kernel.org>, Linus Walleij
+	<linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: Yongdong Zhang <yongdong.zhang@mediatek.com>, Xiujuan Tan
+	<xiujuan.tan@mediatek.com>, Browse Zhang <browse.zhang@mediatek.com>, Bo Ye
+	<bo.ye@mediatek.com>, Light Hsieh <light.hsieh@mediatek.com>, Evan Cao
+	<ot_evan.cao@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<linux-gpio@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>
+Subject: [PATCH] pinctrl: mediatek: paris: Revert "Rework support for PIN_CONFIG_{INPUT,OUTPUT}_ENABLE"
+Date: Thu, 17 Oct 2024 15:55:19 +0800
+Message-ID: <20241017075522.178337-1-bo.ye@mediatek.com>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241017_001738_813406_16FF7CFF 
-X-CRM114-Status: GOOD (  21.96  )
+X-CRM114-CacheID: sfid-20241017_005533_417026_610BEC8D 
+X-CRM114-Status: GOOD (  15.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,864 +87,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yassine Oudjana <y.oudjana@protonmail.com>
+[This reverts commit c5d3b64c568a344e998830e0e94a7c04e372f89b.]
 
-Add drivers for MT6735 apmixedsys, topckgen, infracfg and pericfg
-clock and reset controllers. These provide the base clocks and resets
-on the platform, enough to bring up all essential blocks including
-PWRAP, MSDC and peripherals (UART, I2C, SPI).
+For MTK HW,
+1. to enable GPIO input direction: set DIR=0, IES=1
+2. to enable GPIO output direction: set DIR=1, and set DO=1 to output high, set DO=0 to out low
 
-Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+The PIN_CONFIG_INPUT/PIN_CONFIG_OUTPUT/PIN_CONFIG_INPUT_ENABLE/PIN_CONFIG_OUTPUT_ENABLE shall
+be implemented according to view of its purpose - set GPIO direction and output value (for
+output only) according to specific HW design.
+
+However, the reverted patch implement according to author's own explanation of IES without
+understanding of MTK's HW. Such patch does not correctly set DIR/IES bit to control GPIO
+direction on MTK's HW.
+
+Signed-off-by: Light Hsieh <light.hsieh@mediatek.com>
+Signed-off-by: Evan Cao <ot_evan.cao@mediatek.com>
+Signed-off-by: Bo Ye <bo.ye@mediatek.com>
 ---
- MAINTAINERS                                  |   4 +
- drivers/clk/mediatek/Kconfig                 |   9 +
- drivers/clk/mediatek/Makefile                |   1 +
- drivers/clk/mediatek/clk-mt6735-apmixedsys.c | 138 +++++++
- drivers/clk/mediatek/clk-mt6735-infracfg.c   | 107 +++++
- drivers/clk/mediatek/clk-mt6735-pericfg.c    | 124 ++++++
- drivers/clk/mediatek/clk-mt6735-topckgen.c   | 394 +++++++++++++++++++
- 7 files changed, 777 insertions(+)
- create mode 100644 drivers/clk/mediatek/clk-mt6735-apmixedsys.c
- create mode 100644 drivers/clk/mediatek/clk-mt6735-infracfg.c
- create mode 100644 drivers/clk/mediatek/clk-mt6735-pericfg.c
- create mode 100644 drivers/clk/mediatek/clk-mt6735-topckgen.c
+ drivers/pinctrl/mediatek/pinctrl-paris.c | 38 +++++++++++++++++-------
+ 1 file changed, 27 insertions(+), 11 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 4cbf582baf7a0..9462aff539757 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -14591,6 +14591,10 @@ M:	Yassine Oudjana <y.oudjana@protonmail.com>
- L:	linux-clk@vger.kernel.org
- L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
- S:	Maintained
-+F:	drivers/clk/mediatek/clk-mt6735-apmixedsys.c
-+F:	drivers/clk/mediatek/clk-mt6735-infracfg.c
-+F:	drivers/clk/mediatek/clk-mt6735-pericfg.c
-+F:	drivers/clk/mediatek/clk-mt6735-topckgen.c
- F:	include/dt-bindings/clock/mediatek,mt6735-apmixedsys.h
- F:	include/dt-bindings/clock/mediatek,mt6735-infracfg.h
- F:	include/dt-bindings/clock/mediatek,mt6735-pericfg.h
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index 486401e1f2f19..7a33f9e92d963 100644
---- a/drivers/clk/mediatek/Kconfig
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -124,6 +124,15 @@ config COMMON_CLK_MT2712_VENCSYS
- 	help
- 	  This driver supports MediaTek MT2712 vencsys clocks.
+diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+index 87e958d827bf..a8af62e6f8ca 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-paris.c
++++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+@@ -165,21 +165,20 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
+ 		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_SR, &ret);
+ 		break;
+ 	case PIN_CONFIG_INPUT_ENABLE:
+-		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_IES, &ret);
+-		if (!ret)
+-			err = -EINVAL;
+-		break;
+-	case PIN_CONFIG_OUTPUT:
++	case PIN_CONFIG_OUTPUT_ENABLE:
+ 		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &ret);
+ 		if (err)
+ 			break;
++		/*     CONFIG     Current direction return value
++		 * -------------  ----------------- ----------------------
++		 * OUTPUT_ENABLE       output       1 (= HW value)
++		 *                     input        0 (= HW value)
++		 * INPUT_ENABLE        output       0 (= reverse HW value)
++		 *                     input        1 (= reverse HW value)
++		 */
++		if (param == PIN_CONFIG_INPUT_ENABLE)
++			ret = !ret;
  
-+config COMMON_CLK_MT6735
-+	tristate "Main clock drivers for MediaTek MT6735"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	select COMMON_CLK_MEDIATEK
-+	help
-+	  This enables drivers for clocks and resets provided
-+	  by apmixedsys, topckgen, infracfg and pericfg on the
-+	  MediaTek MT6735 SoC.
-+
- config COMMON_CLK_MT6765
-        bool "Clock driver for MediaTek MT6765"
-        depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index eeccfa039896f..70456ffc6c492 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -2,6 +2,7 @@
- obj-$(CONFIG_COMMON_CLK_MEDIATEK) += clk-mtk.o clk-pll.o clk-gate.o clk-apmixed.o clk-cpumux.o reset.o clk-mux.o
- obj-$(CONFIG_COMMON_CLK_MEDIATEK_FHCTL) += clk-fhctl.o clk-pllfh.o
- 
-+obj-$(CONFIG_COMMON_CLK_MT6735) += clk-mt6735-apmixedsys.o clk-mt6735-infracfg.o clk-mt6735-pericfg.o clk-mt6735-topckgen.o
- obj-$(CONFIG_COMMON_CLK_MT6765) += clk-mt6765.o
- obj-$(CONFIG_COMMON_CLK_MT6765_AUDIOSYS) += clk-mt6765-audio.o
- obj-$(CONFIG_COMMON_CLK_MT6765_CAMSYS) += clk-mt6765-cam.o
-diff --git a/drivers/clk/mediatek/clk-mt6735-apmixedsys.c b/drivers/clk/mediatek/clk-mt6735-apmixedsys.c
-new file mode 100644
-index 0000000000000..104722a61dfd4
---- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt6735-apmixedsys.c
-@@ -0,0 +1,138 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2022 Yassine Oudjana <y.oudjana@protonmail.com>
-+ */
-+
-+#include <linux/clk-provider.h>
-+#include <linux/platform_device.h>
-+
-+#include "clk-mtk.h"
-+#include "clk-pll.h"
-+
-+#include <dt-bindings/clock/mediatek,mt6735-apmixedsys.h>
-+
-+#define AP_PLL_CON_5		0x014
-+#define ARMPLL_CON0		0x200
-+#define ARMPLL_CON1		0x204
-+#define ARMPLL_PWR_CON0		0x20c
-+#define MAINPLL_CON0		0x210
-+#define MAINPLL_CON1		0x214
-+#define MAINPLL_PWR_CON0	0x21c
-+#define UNIVPLL_CON0		0x220
-+#define UNIVPLL_CON1		0x224
-+#define UNIVPLL_PWR_CON0	0x22c
-+#define MMPLL_CON0		0x230
-+#define MMPLL_CON1		0x234
-+#define MMPLL_PWR_CON0		0x23c
-+#define MSDCPLL_CON0		0x240
-+#define MSDCPLL_CON1		0x244
-+#define MSDCPLL_PWR_CON0	0x24c
-+#define VENCPLL_CON0		0x250
-+#define VENCPLL_CON1		0x254
-+#define VENCPLL_PWR_CON0	0x25c
-+#define TVDPLL_CON0		0x260
-+#define TVDPLL_CON1		0x264
-+#define TVDPLL_PWR_CON0		0x26c
-+#define APLL1_CON0		0x270
-+#define APLL1_CON1		0x274
-+#define APLL1_CON2		0x278
-+#define APLL1_PWR_CON0		0x280
-+#define APLL2_CON0		0x284
-+#define APLL2_CON1		0x288
-+#define APLL2_CON2		0x28c
-+#define APLL2_PWR_CON0		0x294
-+
-+#define CON0_RST_BAR		BIT(24)
-+
-+#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _rst_bar_mask,	\
-+	    _pd_reg, _pd_shift, _tuner_reg, _tuner_en_reg,		\
-+	    _tuner_en_bit, _pcw_reg, _pcwbits, _flags) {		\
-+		.id = _id,						\
-+		.name = _name,						\
-+		.parent_name = "clk26m",				\
-+		.reg = _reg,						\
-+		.pwr_reg = _pwr_reg,					\
-+		.en_mask = _en_mask,					\
-+		.rst_bar_mask = _rst_bar_mask,				\
-+		.pd_reg = _pd_reg,					\
-+		.pd_shift = _pd_shift,					\
-+		.tuner_reg = _tuner_reg,				\
-+		.tuner_en_reg = _tuner_en_reg,				\
-+		.tuner_en_bit = _tuner_en_bit,				\
-+		.pcw_reg = _pcw_reg,					\
-+		.pcw_chg_reg = _pcw_reg,				\
-+		.pcwbits = _pcwbits,					\
-+		.flags = _flags,					\
-+	}
-+
-+static const struct mtk_pll_data apmixedsys_plls[] = {
-+	PLL(CLK_APMIXED_ARMPLL, "armpll", ARMPLL_CON0, ARMPLL_PWR_CON0, 0x00000001, 0, ARMPLL_CON1, 24, 0, 0, 0, ARMPLL_CON1, 21, PLL_AO),
-+	PLL(CLK_APMIXED_MAINPLL, "mainpll", MAINPLL_CON0, MAINPLL_PWR_CON0, 0xf0000101, CON0_RST_BAR, MAINPLL_CON1, 24, 0, 0, 0, MAINPLL_CON1, 21, HAVE_RST_BAR),
-+	PLL(CLK_APMIXED_UNIVPLL, "univpll", UNIVPLL_CON0, UNIVPLL_PWR_CON0, 0xfc000001, CON0_RST_BAR, UNIVPLL_CON1, 24, 0, 0, 0, UNIVPLL_CON1, 21, HAVE_RST_BAR),
-+	PLL(CLK_APMIXED_MMPLL, "mmpll", MMPLL_CON0, MMPLL_PWR_CON0, 0x00000001, 0, MMPLL_CON1, 24, 0, 0, 0, MMPLL_CON1, 21, 0),
-+	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", MSDCPLL_CON0, MSDCPLL_PWR_CON0, 0x00000001, 0, MSDCPLL_CON1, 24, 0, 0, 0, MSDCPLL_CON1, 21, 0),
-+	PLL(CLK_APMIXED_VENCPLL, "vencpll", VENCPLL_CON0, VENCPLL_PWR_CON0, 0x00000001, CON0_RST_BAR, VENCPLL_CON1, 24, 0, 0, 0, VENCPLL_CON1, 21, HAVE_RST_BAR),
-+	PLL(CLK_APMIXED_TVDPLL, "tvdpll", TVDPLL_CON0, TVDPLL_PWR_CON0, 0x00000001, 0, TVDPLL_CON1, 24, 0, 0, 0, TVDPLL_CON1, 21, 0),
-+	PLL(CLK_APMIXED_APLL1, "apll1", APLL1_CON0, APLL1_PWR_CON0, 0x00000001, 0, APLL1_CON0, 4, APLL1_CON2, AP_PLL_CON_5, 0, APLL1_CON1, 31, 0),
-+	PLL(CLK_APMIXED_APLL2, "apll2", APLL2_CON0, APLL2_PWR_CON0, 0x00000001, 0, APLL2_CON0, 4, APLL2_CON2, AP_PLL_CON_5, 1, APLL2_CON1, 31, 0)
-+};
-+
-+static int clk_mt6735_apmixed_probe(struct platform_device *pdev)
-+{
-+	void __iomem *base;
-+	struct resource *res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	struct clk_hw_onecell_data *clk_data;
-+	int ret;
-+
-+	base = devm_ioremap_resource(&pdev->dev, res);
-+	if (IS_ERR(base))
-+		return PTR_ERR(base);
-+
-+	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(apmixedsys_plls));
-+	if (!clk_data)
-+		return -ENOMEM;
-+	platform_set_drvdata(pdev, clk_data);
-+
-+	ret = mtk_clk_register_plls(pdev->dev.of_node, apmixedsys_plls,
-+				   ARRAY_SIZE(apmixedsys_plls), clk_data);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Failed to register PLLs: %d\n", ret);
-+		return ret;
-+	}
-+
-+	ret = devm_of_clk_add_hw_provider(&pdev->dev, of_clk_hw_onecell_get,
-+					  clk_data);
-+	if (ret)
-+		dev_err(&pdev->dev,
-+			"Failed to register clock provider: %d\n", ret);
-+
-+	return ret;
-+}
-+
-+static void clk_mt6735_apmixed_remove(struct platform_device *pdev)
-+{
-+	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
-+
-+	mtk_clk_unregister_plls(apmixedsys_plls, ARRAY_SIZE(apmixedsys_plls), clk_data);
-+	mtk_free_clk_data(clk_data);
-+}
-+
-+static const struct of_device_id of_match_mt6735_apmixedsys[] = {
-+	{ .compatible = "mediatek,mt6735-apmixedsys" },
-+	{ /* sentinel */ }
-+};
-+MODULE_DEVICE_TABLE(of, of_match_mt6735_apmixedsys);
-+
-+static struct platform_driver clk_mt6735_apmixedsys = {
-+	.probe = clk_mt6735_apmixed_probe,
-+	.remove = clk_mt6735_apmixed_remove,
-+	.driver = {
-+		.name = "clk-mt6735-apmixedsys",
-+		.of_match_table = of_match_mt6735_apmixedsys,
-+	},
-+};
-+module_platform_driver(clk_mt6735_apmixedsys);
-+
-+MODULE_AUTHOR("Yassine Oudjana <y.oudjana@protonmail.com>");
-+MODULE_DESCRIPTION("MediaTek MT6735 apmixedsys clock driver");
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/mediatek/clk-mt6735-infracfg.c b/drivers/clk/mediatek/clk-mt6735-infracfg.c
-new file mode 100644
-index 0000000000000..c1171f903cfae
---- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt6735-infracfg.c
-@@ -0,0 +1,107 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2022 Yassine Oudjana <y.oudjana@protonmail.com>
-+ */
-+
-+#include <linux/clk-provider.h>
-+#include <linux/platform_device.h>
-+
-+#include "clk-gate.h"
-+#include "clk-mtk.h"
-+
-+#include <dt-bindings/clock/mediatek,mt6735-infracfg.h>
-+#include <dt-bindings/reset/mediatek,mt6735-infracfg.h>
-+
-+#define INFRA_RST0			0x30
-+#define INFRA_GLOBALCON_PDN0		0x40
-+#define INFRA_PDN1			0x44
-+#define INFRA_PDN_STA			0x48
-+
-+#define RST_NR_PER_BANK			32
-+
-+static struct mtk_gate_regs infra_cg_regs = {
-+	.set_ofs = INFRA_GLOBALCON_PDN0,
-+	.clr_ofs = INFRA_PDN1,
-+	.sta_ofs = INFRA_PDN_STA,
-+};
-+
-+static const struct mtk_gate infracfg_gates[] = {
-+	GATE_MTK(CLK_INFRA_DBG, "dbg", "axi_sel", &infra_cg_regs, 0, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_INFRA_GCE, "gce", "axi_sel", &infra_cg_regs, 1, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_INFRA_TRBG, "trbg", "axi_sel", &infra_cg_regs, 2, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_INFRA_CPUM, "cpum", "axi_sel", &infra_cg_regs, 3, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_INFRA_DEVAPC, "devapc", "axi_sel", &infra_cg_regs, 4, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_INFRA_AUDIO, "audio", "aud_intbus_sel", &infra_cg_regs, 5, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_INFRA_GCPU, "gcpu", "axi_sel", &infra_cg_regs, 6, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_INFRA_L2C_SRAM, "l2csram", "axi_sel", &infra_cg_regs, 7, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_INFRA_M4U, "m4u", "axi_sel", &infra_cg_regs, 8, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_INFRA_CLDMA, "cldma", "axi_sel", &infra_cg_regs, 12, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_INFRA_CONNMCU_BUS, "connmcu_bus", "axi_sel", &infra_cg_regs, 15, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_INFRA_KP, "kp", "axi_sel", &infra_cg_regs, 16, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK_FLAGS(CLK_INFRA_APXGPT, "apxgpt", "axi_sel", &infra_cg_regs, 18, &mtk_clk_gate_ops_setclr, CLK_IS_CRITICAL),
-+	GATE_MTK(CLK_INFRA_SEJ, "sej", "axi_sel", &infra_cg_regs, 19, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_INFRA_CCIF0_AP, "ccif0ap", "axi_sel", &infra_cg_regs, 20, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_INFRA_CCIF1_AP, "ccif1ap", "axi_sel", &infra_cg_regs, 21, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_INFRA_PMIC_SPI, "pmicspi", "pmicspi_sel", &infra_cg_regs, 22, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_INFRA_PMIC_WRAP, "pmicwrap", "axi_sel", &infra_cg_regs, 23, &mtk_clk_gate_ops_setclr)
-+};
-+
-+static u16 infracfg_rst_bank_ofs[] = { INFRA_RST0 };
-+
-+static u16 infracfg_rst_idx_map[] = {
-+	[MT6735_INFRA_RST0_EMI_REG]		= 0 * RST_NR_PER_BANK + 0,
-+	[MT6735_INFRA_RST0_DRAMC0_AO]		= 0 * RST_NR_PER_BANK + 1,
-+	[MT6735_INFRA_RST0_AP_CIRQ_EINT]	= 0 * RST_NR_PER_BANK + 3,
-+	[MT6735_INFRA_RST0_APXGPT]		= 0 * RST_NR_PER_BANK + 4,
-+	[MT6735_INFRA_RST0_SCPSYS]		= 0 * RST_NR_PER_BANK + 5,
-+	[MT6735_INFRA_RST0_KP]			= 0 * RST_NR_PER_BANK + 6,
-+	[MT6735_INFRA_RST0_PMIC_WRAP]		= 0 * RST_NR_PER_BANK + 7,
-+	[MT6735_INFRA_RST0_CLDMA_AO_TOP]	= 0 * RST_NR_PER_BANK + 8,
-+	[MT6735_INFRA_RST0_USBSIF_TOP]		= 0 * RST_NR_PER_BANK + 9,
-+	[MT6735_INFRA_RST0_EMI]			= 0 * RST_NR_PER_BANK + 16,
-+	[MT6735_INFRA_RST0_CCIF]		= 0 * RST_NR_PER_BANK + 17,
-+	[MT6735_INFRA_RST0_DRAMC0]		= 0 * RST_NR_PER_BANK + 18,
-+	[MT6735_INFRA_RST0_EMI_AO_REG]		= 0 * RST_NR_PER_BANK + 19,
-+	[MT6735_INFRA_RST0_CCIF_AO]		= 0 * RST_NR_PER_BANK + 20,
-+	[MT6735_INFRA_RST0_TRNG]		= 0 * RST_NR_PER_BANK + 21,
-+	[MT6735_INFRA_RST0_SYS_CIRQ]		= 0 * RST_NR_PER_BANK + 22,
-+	[MT6735_INFRA_RST0_GCE]			= 0 * RST_NR_PER_BANK + 23,
-+	[MT6735_INFRA_RST0_M4U]			= 0 * RST_NR_PER_BANK + 24,
-+	[MT6735_INFRA_RST0_CCIF1]		= 0 * RST_NR_PER_BANK + 25,
-+	[MT6735_INFRA_RST0_CLDMA_TOP_PD]	= 0 * RST_NR_PER_BANK + 26
-+};
-+
-+static const struct mtk_clk_rst_desc infracfg_resets = {
-+	.version = MTK_RST_SIMPLE,
-+	.rst_bank_ofs = infracfg_rst_bank_ofs,
-+	.rst_bank_nr = ARRAY_SIZE(infracfg_rst_bank_ofs),
-+	.rst_idx_map = infracfg_rst_idx_map,
-+	.rst_idx_map_nr = ARRAY_SIZE(infracfg_rst_idx_map)
-+};
-+
-+static const struct mtk_clk_desc infracfg_clks = {
-+	.clks = infracfg_gates,
-+	.num_clks = ARRAY_SIZE(infracfg_gates),
-+
-+	.rst_desc = &infracfg_resets
-+};
-+
-+static const struct of_device_id of_match_mt6735_infracfg[] = {
-+	{ .compatible = "mediatek,mt6735-infracfg", .data = &infracfg_clks },
-+	{ /* sentinel */ }
-+};
-+MODULE_DEVICE_TABLE(of, of_match_mt6735_infracfg);
-+
-+static struct platform_driver clk_mt6735_infracfg = {
-+	.probe = mtk_clk_simple_probe,
-+	.remove = mtk_clk_simple_remove,
-+	.driver = {
-+		.name = "clk-mt6735-infracfg",
-+		.of_match_table = of_match_mt6735_infracfg,
-+	},
-+};
-+module_platform_driver(clk_mt6735_infracfg);
-+
-+MODULE_AUTHOR("Yassine Oudjana <y.oudjana@protonmail.com>");
-+MODULE_DESCRIPTION("MediaTek MT6735 infracfg clock and reset driver");
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/mediatek/clk-mt6735-pericfg.c b/drivers/clk/mediatek/clk-mt6735-pericfg.c
-new file mode 100644
-index 0000000000000..cbdf6d25c1b25
---- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt6735-pericfg.c
-@@ -0,0 +1,124 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2022 Yassine Oudjana <y.oudjana@protonmail.com>
-+ */
-+
-+#include <linux/clk-provider.h>
-+#include <linux/platform_device.h>
-+
-+#include "clk-gate.h"
-+#include "clk-mtk.h"
-+
-+#include <dt-bindings/clock/mediatek,mt6735-pericfg.h>
-+#include <dt-bindings/reset/mediatek,mt6735-pericfg.h>
-+
-+#define PERI_GLOBALCON_RST0		0x00
-+#define PERI_GLOBALCON_RST1		0x04
-+#define PERI_GLOBALCON_PDN0_SET		0x08
-+#define PERI_GLOBALCON_PDN0_CLR		0x10
-+#define PERI_GLOBALCON_PDN0_STA		0x18
-+
-+#define RST_NR_PER_BANK			32
-+
-+static struct mtk_gate_regs peri_cg_regs = {
-+	.set_ofs = PERI_GLOBALCON_PDN0_SET,
-+	.clr_ofs = PERI_GLOBALCON_PDN0_CLR,
-+	.sta_ofs = PERI_GLOBALCON_PDN0_STA,
-+};
-+
-+static const struct mtk_gate pericfg_gates[] = {
-+	GATE_MTK(CLK_PERI_DISP_PWM, "disp_pwm", "disppwm_sel", &peri_cg_regs, 0, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_THERM, "therm", "axi_sel", &peri_cg_regs, 1, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_PWM1, "pwm1", "axi_sel", &peri_cg_regs, 2, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_PWM2, "pwm2", "axi_sel", &peri_cg_regs, 3, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_PWM3, "pwm3", "axi_sel", &peri_cg_regs, 4, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_PWM4, "pwm4", "axi_sel", &peri_cg_regs, 5, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_PWM5, "pwm5", "axi_sel", &peri_cg_regs, 6, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_PWM6, "pwm6", "axi_sel", &peri_cg_regs, 7, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_PWM7, "pwm7", "axi_sel", &peri_cg_regs, 8, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_PWM, "pwm", "axi_sel", &peri_cg_regs, 9, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_USB0, "usb0", "usb20_sel", &peri_cg_regs, 10, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_IRDA, "irda", "irda_sel", &peri_cg_regs, 11, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_APDMA, "apdma", "axi_sel", &peri_cg_regs, 12, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_MSDC30_0, "msdc30_0", "msdc30_0_sel", &peri_cg_regs, 13, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_MSDC30_1, "msdc30_1", "msdc30_1_sel", &peri_cg_regs, 14, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_MSDC30_2, "msdc30_2", "msdc30_2_sel", &peri_cg_regs, 15, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_MSDC30_3, "msdc30_3", "msdc30_3_sel", &peri_cg_regs, 16, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_UART0, "uart0", "uart_sel", &peri_cg_regs, 17, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_UART1, "uart1", "uart_sel", &peri_cg_regs, 18, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_UART2, "uart2", "uart_sel", &peri_cg_regs, 19, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_UART3, "uart3", "uart_sel", &peri_cg_regs, 20, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_UART4, "uart4", "uart_sel", &peri_cg_regs, 21, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_BTIF, "btif", "axi_sel", &peri_cg_regs, 22, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_I2C0, "i2c0", "axi_sel", &peri_cg_regs, 23, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_I2C1, "i2c1", "axi_sel", &peri_cg_regs, 24, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_I2C2, "i2c2", "axi_sel", &peri_cg_regs, 25, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_I2C3, "i2c3", "axi_sel", &peri_cg_regs, 26, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_AUXADC, "auxadc", "axi_sel", &peri_cg_regs, 27, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_SPI0, "spi0", "spi_sel", &peri_cg_regs, 28, &mtk_clk_gate_ops_setclr),
-+	GATE_MTK(CLK_PERI_IRTX, "irtx", "irtx_sel", &peri_cg_regs, 29, &mtk_clk_gate_ops_setclr)
-+};
-+
-+static u16 pericfg_rst_bank_ofs[] = { PERI_GLOBALCON_RST0, PERI_GLOBALCON_RST1 };
-+
-+static u16 pericfg_rst_idx_map[] = {
-+	[MT6735_PERI_RST0_UART0]		= 0 * RST_NR_PER_BANK + 0,
-+	[MT6735_PERI_RST0_UART1]		= 0 * RST_NR_PER_BANK + 1,
-+	[MT6735_PERI_RST0_UART2]		= 0 * RST_NR_PER_BANK + 2,
-+	[MT6735_PERI_RST0_UART3]		= 0 * RST_NR_PER_BANK + 3,
-+	[MT6735_PERI_RST0_UART4]		= 0 * RST_NR_PER_BANK + 4,
-+	[MT6735_PERI_RST0_BTIF]			= 0 * RST_NR_PER_BANK + 6,
-+	[MT6735_PERI_RST0_DISP_PWM_PERI]	= 0 * RST_NR_PER_BANK + 7,
-+	[MT6735_PERI_RST0_PWM]			= 0 * RST_NR_PER_BANK + 8,
-+	[MT6735_PERI_RST0_AUXADC]		= 0 * RST_NR_PER_BANK + 10,
-+	[MT6735_PERI_RST0_DMA]			= 0 * RST_NR_PER_BANK + 11,
-+	[MT6735_PERI_RST0_IRDA]			= 0 * RST_NR_PER_BANK + 12,
-+	[MT6735_PERI_RST0_IRTX]			= 0 * RST_NR_PER_BANK + 13,
-+	[MT6735_PERI_RST0_THERM]		= 0 * RST_NR_PER_BANK + 16,
-+	[MT6735_PERI_RST0_MSDC2]		= 0 * RST_NR_PER_BANK + 17,
-+	[MT6735_PERI_RST0_MSDC3]		= 0 * RST_NR_PER_BANK + 18,
-+	[MT6735_PERI_RST0_MSDC0]		= 0 * RST_NR_PER_BANK + 19,
-+	[MT6735_PERI_RST0_MSDC1]		= 0 * RST_NR_PER_BANK + 20,
-+	[MT6735_PERI_RST0_I2C0]			= 0 * RST_NR_PER_BANK + 22,
-+	[MT6735_PERI_RST0_I2C1]			= 0 * RST_NR_PER_BANK + 23,
-+	[MT6735_PERI_RST0_I2C2]			= 0 * RST_NR_PER_BANK + 24,
-+	[MT6735_PERI_RST0_I2C3]			= 0 * RST_NR_PER_BANK + 25,
-+	[MT6735_PERI_RST0_USB]			= 0 * RST_NR_PER_BANK + 28,
-+
-+	[MT6735_PERI_RST1_SPI0]			= 1 * RST_NR_PER_BANK + 1,
-+};
-+
-+static const struct mtk_clk_rst_desc pericfg_resets = {
-+	.version = MTK_RST_SIMPLE,
-+	.rst_bank_ofs = pericfg_rst_bank_ofs,
-+	.rst_bank_nr = ARRAY_SIZE(pericfg_rst_bank_ofs),
-+	.rst_idx_map = pericfg_rst_idx_map,
-+	.rst_idx_map_nr = ARRAY_SIZE(pericfg_rst_idx_map)
-+};
-+
-+static const struct mtk_clk_desc pericfg_clks = {
-+	.clks = pericfg_gates,
-+	.num_clks = ARRAY_SIZE(pericfg_gates),
-+
-+	.rst_desc = &pericfg_resets
-+};
-+
-+static const struct of_device_id of_match_mt6735_pericfg[] = {
-+	{ .compatible = "mediatek,mt6735-pericfg", .data = &pericfg_clks },
-+	{ /* sentinel */ }
-+};
-+MODULE_DEVICE_TABLE(of, of_match_mt6735_pericfg);
-+
-+static struct platform_driver clk_mt6735_pericfg = {
-+	.probe = mtk_clk_simple_probe,
-+	.remove = mtk_clk_simple_remove,
-+	.driver = {
-+		.name = "clk-mt6735-pericfg",
-+		.of_match_table = of_match_mt6735_pericfg,
-+	},
-+};
-+module_platform_driver(clk_mt6735_pericfg);
-+
-+MODULE_AUTHOR("Yassine Oudjana <y.oudjana@protonmail.com>");
-+MODULE_DESCRIPTION("MediaTek MT6735 pericfg clock driver");
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/mediatek/clk-mt6735-topckgen.c b/drivers/clk/mediatek/clk-mt6735-topckgen.c
-new file mode 100644
-index 0000000000000..2589ebfe22716
---- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt6735-topckgen.c
-@@ -0,0 +1,394 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2022 Yassine Oudjana <y.oudjana@protonmail.com>
-+ */
-+
-+#include <linux/clk-provider.h>
-+#include <linux/platform_device.h>
-+
-+#include "clk-mtk.h"
-+#include "clk-mux.h"
-+
-+#include <dt-bindings/clock/mediatek,mt6735-topckgen.h>
-+
-+#define CLK_CFG_0		0x40
-+#define CLK_CFG_0_SET		0x44
-+#define CLK_CFG_0_CLR		0x48
-+#define CLK_CFG_1		0x50
-+#define CLK_CFG_1_SET		0x54
-+#define CLK_CFG_1_CLR		0x58
-+#define CLK_CFG_2		0x60
-+#define CLK_CFG_2_SET		0x64
-+#define CLK_CFG_2_CLR		0x68
-+#define CLK_CFG_3		0x70
-+#define CLK_CFG_3_SET		0x74
-+#define CLK_CFG_3_CLR		0x78
-+#define CLK_CFG_4		0x80
-+#define CLK_CFG_4_SET		0x84
-+#define CLK_CFG_4_CLR		0x88
-+#define CLK_CFG_5		0x90
-+#define CLK_CFG_5_SET		0x94
-+#define CLK_CFG_5_CLR		0x98
-+#define CLK_CFG_6		0xa0
-+#define CLK_CFG_6_SET		0xa4
-+#define CLK_CFG_6_CLR		0xa8
-+#define CLK_CFG_7		0xb0
-+#define CLK_CFG_7_SET		0xb4
-+#define CLK_CFG_7_CLR		0xb8
-+
-+static DEFINE_SPINLOCK(mt6735_topckgen_lock);
-+
-+/* Some clocks with unknown details are modeled as fixed clocks */
-+static const struct mtk_fixed_clk topckgen_fixed_clks[] = {
-+	/*
-+	 * This clock is available as a parent option for multiple
-+	 * muxes and seems like an alternative name for clk26m at first,
-+	 * but it appears alongside it in several muxes which should
-+	 * mean it is a separate clock.
-+	 */
-+	FIXED_CLK(CLK_TOP_AD_SYS_26M_CK, "ad_sys_26m_ck", "clk26m", 26 * MHZ),
-+	/*
-+	 * This clock is the parent of DMPLL divisors. It might be MEMPLL
-+	 * or its parent, as DMPLL appears to be an alternative name for
-+	 * MEMPLL.
-+	 */
-+	FIXED_CLK(CLK_TOP_CLKPH_MCK_O, "clkph_mck_o", NULL, 0),
-+	/*
-+	 * DMPLL clock (dmpll_ck), controlled by DDRPHY.
-+	 */
-+	FIXED_CLK(CLK_TOP_DMPLL, "dmpll", "clkph_mck_o", 0),
-+	/*
-+	 * MIPI DPI clock. Parent option for dpi0_sel. Unknown parent.
-+	 */
-+	FIXED_CLK(CLK_TOP_DPI_CK, "dpi_ck", NULL, 0),
-+	/*
-+	 * This clock is a child of WHPLL which is controlled by
-+	 * the modem.
-+	 */
-+	FIXED_CLK(CLK_TOP_WHPLL_AUDIO_CK, "whpll_audio_ck", NULL, 0)
-+};
-+
-+static const struct mtk_fixed_factor topckgen_factors[] = {
-+	FACTOR(CLK_TOP_SYSPLL_D2, "syspll_d2", "mainpll", 1, 2),
-+	FACTOR(CLK_TOP_SYSPLL_D3, "syspll_d3", "mainpll", 1, 3),
-+	FACTOR(CLK_TOP_SYSPLL_D5, "syspll_d5", "mainpll", 1, 5),
-+	FACTOR(CLK_TOP_SYSPLL1_D2, "syspll1_d2", "mainpll", 1, 2),
-+	FACTOR(CLK_TOP_SYSPLL1_D4, "syspll1_d4", "mainpll", 1, 4),
-+	FACTOR(CLK_TOP_SYSPLL1_D8, "syspll1_d8", "mainpll", 1, 8),
-+	FACTOR(CLK_TOP_SYSPLL1_D16, "syspll1_d16", "mainpll", 1, 16),
-+	FACTOR(CLK_TOP_SYSPLL2_D2, "syspll2_d2", "mainpll", 1, 2),
-+	FACTOR(CLK_TOP_SYSPLL2_D4, "syspll2_d4", "mainpll", 1, 4),
-+	FACTOR(CLK_TOP_SYSPLL3_D2, "syspll3_d2", "mainpll", 1, 2),
-+	FACTOR(CLK_TOP_SYSPLL3_D4, "syspll3_d4", "mainpll", 1, 4),
-+	FACTOR(CLK_TOP_SYSPLL4_D2, "syspll4_d2", "mainpll", 1, 2),
-+	FACTOR(CLK_TOP_SYSPLL4_D4, "syspll4_d4", "mainpll", 1, 4),
-+	FACTOR(CLK_TOP_UNIVPLL_D2, "univpll_d2", "univpll", 1, 2),
-+	FACTOR(CLK_TOP_UNIVPLL_D3, "univpll_d3", "univpll", 1, 3),
-+	FACTOR(CLK_TOP_UNIVPLL_D5, "univpll_d5", "univpll", 1, 5),
-+	FACTOR(CLK_TOP_UNIVPLL_D26, "univpll_d26", "univpll", 1, 26),
-+	FACTOR(CLK_TOP_UNIVPLL1_D2, "univpll1_d2", "univpll", 1, 2),
-+	FACTOR(CLK_TOP_UNIVPLL1_D4, "univpll1_d4", "univpll", 1, 4),
-+	FACTOR(CLK_TOP_UNIVPLL1_D8, "univpll1_d8", "univpll", 1, 8),
-+	FACTOR(CLK_TOP_UNIVPLL2_D2, "univpll2_d2", "univpll", 1, 2),
-+	FACTOR(CLK_TOP_UNIVPLL2_D4, "univpll2_d4", "univpll", 1, 4),
-+	FACTOR(CLK_TOP_UNIVPLL2_D8, "univpll2_d8", "univpll", 1, 8),
-+	FACTOR(CLK_TOP_UNIVPLL3_D2, "univpll3_d2", "univpll", 1, 2),
-+	FACTOR(CLK_TOP_UNIVPLL3_D4, "univpll3_d4", "univpll", 1, 4),
-+	FACTOR(CLK_TOP_MSDCPLL_D2, "msdcpll_d2", "msdcpll", 1, 2),
-+	FACTOR(CLK_TOP_MSDCPLL_D4, "msdcpll_d4", "msdcpll", 1, 4),
-+	FACTOR(CLK_TOP_MSDCPLL_D8, "msdcpll_d8", "msdcpll", 1, 8),
-+	FACTOR(CLK_TOP_MSDCPLL_D16, "msdcpll_d16", "msdcpll", 1, 16),
-+	FACTOR(CLK_TOP_VENCPLL_D3, "vencpll_d3", "vencpll", 1, 3),
-+	FACTOR(CLK_TOP_TVDPLL_D2, "tvdpll_d2", "tvdpll", 1, 2),
-+	FACTOR(CLK_TOP_TVDPLL_D4, "tvdpll_d4", "tvdpll", 1, 4),
-+	FACTOR(CLK_TOP_DMPLL_D2, "dmpll_d2", "clkph_mck_o", 1, 2),
-+	FACTOR(CLK_TOP_DMPLL_D4, "dmpll_d4", "clkph_mck_o", 1, 4),
-+	FACTOR(CLK_TOP_DMPLL_D8, "dmpll_d8", "clkph_mck_o", 1, 8),
-+	FACTOR(CLK_TOP_AD_SYS_26M_D2, "ad_sys_26m_d2", "clk26m", 1, 2)
-+};
-+
-+static const char * const axi_sel_parents[] = {
-+	"clk26m",
-+	"syspll1_d2",
-+	"syspll_d5",
-+	"syspll1_d4",
-+	"univpll_d5",
-+	"univpll2_d2",
-+	"dmpll",
-+	"dmpll_d2"
-+};
-+
-+static const char * const mem_sel_parents[] = {
-+	"clk26m",
-+	"dmpll"
-+};
-+
-+static const char * const ddrphycfg_parents[] = {
-+	"clk26m",
-+	"syspll1_d8"
-+};
-+
-+static const char * const mm_sel_parents[] = {
-+	"clk26m",
-+	"vencpll",
-+	"syspll1_d2",
-+	"syspll_d5",
-+	"syspll1_d4",
-+	"univpll_d5",
-+	"univpll2_d2",
-+	"dmpll"
-+};
-+
-+static const char * const pwm_sel_parents[] = {
-+	"clk26m",
-+	"univpll2_d4",
-+	"univpll3_d2",
-+	"univpll1_d4"
-+};
-+
-+static const char * const vdec_sel_parents[] = {
-+	"clk26m",
-+	"syspll1_d2",
-+	"syspll_d5",
-+	"syspll1_d4",
-+	"univpll_d5",
-+	"syspll_d2",
-+	"syspll2_d2",
-+	"msdcpll_d2"
-+};
-+
-+static const char * const mfg_sel_parents[] = {
-+	"clk26m",
-+	"mmpll",
-+	"clk26m",
-+	"clk26m",
-+	"clk26m",
-+	"clk26m",
-+	"clk26m",
-+	"clk26m",
-+	"clk26m",
-+	"syspll_d3",
-+	"syspll1_d2",
-+	"syspll_d5",
-+	"univpll_d3",
-+	"univpll1_d2"
-+};
-+
-+static const char * const camtg_sel_parents[] = {
-+	"clk26m",
-+	"univpll_d26",
-+	"univpll2_d2",
-+	"syspll3_d2",
-+	"syspll3_d4",
-+	"msdcpll_d4"
-+};
-+
-+static const char * const uart_sel_parents[] = {
-+	"clk26m",
-+	"univpll2_d8"
-+};
-+
-+static const char * const spi_sel_parents[] = {
-+	"clk26m",
-+	"syspll3_d2",
-+	"msdcpll_d8",
-+	"syspll2_d4",
-+	"syspll4_d2",
-+	"univpll2_d4",
-+	"univpll1_d8"
-+};
-+
-+static const char * const usb20_sel_parents[] = {
-+	"clk26m",
-+	"univpll1_d8",
-+	"univpll3_d4"
-+};
-+
-+static const char * const msdc50_0_sel_parents[] = {
-+	"clk26m",
-+	"syspll1_d2",
-+	"syspll2_d2",
-+	"syspll4_d2",
-+	"univpll_d5",
-+	"univpll1_d4"
-+};
-+
-+static const char * const msdc30_0_sel_parents[] = {
-+	"clk26m",
-+	"msdcpll",
-+	"msdcpll_d2",
-+	"msdcpll_d4",
-+	"syspll2_d2",
-+	"syspll1_d4",
-+	"univpll1_d4",
-+	"univpll_d3",
-+	"univpll_d26",
-+	"syspll2_d4",
-+	"univpll_d2"
-+};
-+
-+static const char * const msdc30_1_2_sel_parents[] = {
-+	"clk26m",
-+	"univpll2_d2",
-+	"msdcpll_d4",
-+	"syspll2_d2",
-+	"syspll1_d4",
-+	"univpll1_d4",
-+	"univpll_d26",
-+	"syspll2_d4"
-+};
-+
-+static const char * const msdc30_3_sel_parents[] = {
-+	"clk26m",
-+	"univpll2_d2",
-+	"msdcpll_d4",
-+	"syspll2_d2",
-+	"syspll1_d4",
-+	"univpll1_d4",
-+	"univpll_d26",
-+	"msdcpll_d16",
-+	"syspll2_d4"
-+};
-+
-+static const char * const audio_sel_parents[] = {
-+	"clk26m",
-+	"syspll3_d4",
-+	"syspll4_d4",
-+	"syspll1_d16"
-+};
-+
-+static const char * const aud_intbus_sel_parents[] = {
-+	"clk26m",
-+	"syspll1_d4",
-+	"syspll4_d2",
-+	"dmpll_d4"
-+};
-+
-+static const char * const pmicspi_sel_parents[] = {
-+	"clk26m",
-+	"syspll1_d8",
-+	"syspll3_d4",
-+	"syspll1_d16",
-+	"univpll3_d4",
-+	"univpll_d26",
-+	"dmpll_d4",
-+	"dmpll_d8"
-+};
-+
-+static const char * const scp_sel_parents[] = {
-+	"clk26m",
-+	"syspll1_d8",
-+	"dmpll_d2",
-+	"dmpll_d4"
-+};
-+
-+static const char * const atb_sel_parents[] = {
-+	"clk26m",
-+	"syspll1_d2",
-+	"syspll_d5",
-+	"dmpll"
-+};
-+
-+static const char * const dpi0_sel_parents[] = {
-+	"clk26m",
-+	"tvdpll",
-+	"tvdpll_d2",
-+	"tvdpll_d4",
-+	"dpi_ck"
-+};
-+
-+static const char * const scam_sel_parents[] = {
-+	"clk26m",
-+	"syspll3_d2",
-+	"univpll2_d4",
-+	"vencpll_d3"
-+};
-+
-+static const char * const mfg13m_sel_parents[] = {
-+	"clk26m",
-+	"ad_sys_26m_d2"
-+};
-+
-+static const char * const aud_1_2_sel_parents[] = {
-+	"clk26m",
-+	"apll1"
-+};
-+
-+static const char * const irda_sel_parents[] = {
-+	"clk26m",
-+	"univpll2_d4"
-+};
-+
-+static const char * const irtx_sel_parents[] = {
-+	"clk26m",
-+	"ad_sys_26m_ck"
-+};
-+
-+static const char * const disppwm_sel_parents[] = {
-+	"clk26m",
-+	"univpll2_d4",
-+	"syspll4_d2_d8",
-+	"ad_sys_26m_ck"
-+};
-+
-+static const struct mtk_mux topckgen_muxes[] = {
-+	MUX_CLR_SET_UPD(CLK_TOP_AXI_SEL, "axi_sel", axi_sel_parents, CLK_CFG_0, CLK_CFG_0_SET, CLK_CFG_0_CLR, 0, 3, 0, 0),
-+	MUX_CLR_SET_UPD(CLK_TOP_MEM_SEL, "mem_sel", mem_sel_parents, CLK_CFG_0, CLK_CFG_0_SET, CLK_CFG_0_CLR, 8, 1, 0, 0),
-+	MUX_CLR_SET_UPD(CLK_TOP_DDRPHY_SEL, "ddrphycfg_sel", ddrphycfg_parents, CLK_CFG_0, CLK_CFG_0_SET, CLK_CFG_0_CLR, 16, 1, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_MM_SEL, "mm_sel", mm_sel_parents, CLK_CFG_0, CLK_CFG_0_SET, CLK_CFG_0_CLR, 24, 3, 31, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_PWM_SEL, "pwm_sel", pwm_sel_parents, CLK_CFG_1, CLK_CFG_1_SET, CLK_CFG_1_CLR, 0, 2, 7, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_VDEC_SEL, "vdec_sel", vdec_sel_parents, CLK_CFG_1, CLK_CFG_1_SET, CLK_CFG_1_CLR, 8, 3, 15, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_MFG_SEL, "mfg_sel", mfg_sel_parents, CLK_CFG_1, CLK_CFG_1_SET, CLK_CFG_1_CLR, 16, 4, 23, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_CAMTG_SEL, "camtg_sel", camtg_sel_parents, CLK_CFG_1, CLK_CFG_1_SET, CLK_CFG_1_CLR, 24, 3, 31, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_UART_SEL, "uart_sel", uart_sel_parents, CLK_CFG_2, CLK_CFG_2_SET, CLK_CFG_2_CLR, 0, 1, 7, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_SPI_SEL, "spi_sel", spi_sel_parents, CLK_CFG_2, CLK_CFG_2_SET, CLK_CFG_2_CLR, 8, 3, 15, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_USB20_SEL, "usb20_sel", usb20_sel_parents, CLK_CFG_2, CLK_CFG_2_SET, CLK_CFG_2_CLR, 16, 2, 23, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC50_0_SEL, "msdc50_0_sel", msdc50_0_sel_parents, CLK_CFG_2, CLK_CFG_2_SET, CLK_CFG_2_CLR, 24, 3, 31, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC30_0_SEL, "msdc30_0_sel", msdc30_0_sel_parents, CLK_CFG_3, CLK_CFG_3_SET, CLK_CFG_3_CLR, 0, 4, 7, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC30_1_SEL, "msdc30_1_sel", msdc30_1_2_sel_parents, CLK_CFG_3, CLK_CFG_3_SET, CLK_CFG_3_CLR, 8, 3, 15, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC30_2_SEL, "msdc30_2_sel", msdc30_1_2_sel_parents, CLK_CFG_3, CLK_CFG_3_SET, CLK_CFG_3_CLR, 16, 3, 23, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_MSDC30_3_SEL, "msdc30_3_sel", msdc30_3_sel_parents, CLK_CFG_3, CLK_CFG_3_SET, CLK_CFG_3_CLR, 24, 4, 31, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_AUDIO_SEL, "audio_sel", audio_sel_parents, CLK_CFG_4, CLK_CFG_4_SET, CLK_CFG_4_CLR, 0, 2, 7, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_AUDINTBUS_SEL, "aud_intbus_sel", aud_intbus_sel_parents, CLK_CFG_4, CLK_CFG_4_SET, CLK_CFG_4_CLR, 8, 2, 15, 0, 0),
-+	MUX_CLR_SET_UPD(CLK_TOP_PMICSPI_SEL, "pmicspi_sel", pmicspi_sel_parents, CLK_CFG_4, CLK_CFG_4_SET, CLK_CFG_4_CLR, 16, 3, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_SCP_SEL, "scp_sel", scp_sel_parents, CLK_CFG_4, CLK_CFG_4_SET, CLK_CFG_4_CLR, 24, 2, 31, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_ATB_SEL, "atb_sel", atb_sel_parents, CLK_CFG_5, CLK_CFG_5_SET, CLK_CFG_5_CLR, 0, 2, 7, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_DPI0_SEL, "dpi0_sel", dpi0_sel_parents, CLK_CFG_5, CLK_CFG_5_SET, CLK_CFG_5_CLR, 8, 3, 15, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_SCAM_SEL, "scam_sel", scam_sel_parents, CLK_CFG_5, CLK_CFG_5_SET, CLK_CFG_5_CLR, 16, 2, 23, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_MFG13M_SEL, "mfg13m_sel", mfg13m_sel_parents, CLK_CFG_5, CLK_CFG_5_SET, CLK_CFG_5_CLR, 24, 1, 31, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_AUD1_SEL, "aud_1_sel", aud_1_2_sel_parents, CLK_CFG_6, CLK_CFG_6_SET, CLK_CFG_6_CLR, 0, 1, 7, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_AUD2_SEL, "aud_2_sel", aud_1_2_sel_parents, CLK_CFG_6, CLK_CFG_6_SET, CLK_CFG_6_CLR, 8, 1, 15, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_IRDA_SEL, "irda_sel", irda_sel_parents, CLK_CFG_6, CLK_CFG_6_SET, CLK_CFG_6_CLR, 16, 1, 23, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_IRTX_SEL, "irtx_sel", irtx_sel_parents, CLK_CFG_6, CLK_CFG_6_SET, CLK_CFG_6_CLR, 24, 1, 31, 0, 0),
-+	MUX_GATE_CLR_SET_UPD(CLK_TOP_DISPPWM_SEL, "disppwm_sel", disppwm_sel_parents, CLK_CFG_7, CLK_CFG_7_SET, CLK_CFG_7_CLR, 0, 2, 7, 0, 0),
-+};
-+
-+static const struct mtk_clk_desc topckgen_desc = {
-+	.fixed_clks = topckgen_fixed_clks,
-+	.num_fixed_clks = ARRAY_SIZE(topckgen_fixed_clks),
-+	.factor_clks = topckgen_factors,
-+	.num_factor_clks = ARRAY_SIZE(topckgen_factors),
-+	.mux_clks = topckgen_muxes,
-+	.num_mux_clks = ARRAY_SIZE(topckgen_muxes),
-+	.clk_lock = &mt6735_topckgen_lock,
-+};
-+
-+static const struct of_device_id of_match_mt6735_topckgen[] = {
-+	{ .compatible = "mediatek,mt6735-topckgen", .data = &topckgen_desc},
-+	{ /* sentinel */ }
-+};
-+MODULE_DEVICE_TABLE(of, of_match_mt6735_topckgen);
-+
-+static struct platform_driver clk_mt6735_topckgen = {
-+	.probe = mtk_clk_simple_probe,
-+	.remove = mtk_clk_simple_remove,
-+	.driver = {
-+		.name = "clk-mt6735-topckgen",
-+		.of_match_table = of_match_mt6735_topckgen,
-+	},
-+};
-+module_platform_driver(clk_mt6735_topckgen);
-+
-+MODULE_AUTHOR("Yassine Oudjana <y.oudjana@protonmail.com>");
-+MODULE_DESCRIPTION("MediaTek MT6735 topckgen clock driver");
-+MODULE_LICENSE("GPL");
+-		if (!ret) {
+-			err = -EINVAL;
+-			break;
+-		}
+-
+-		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DO, &ret);
+ 		break;
+ 	case PIN_CONFIG_INPUT_SCHMITT_ENABLE:
+ 		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &ret);
+@@ -284,9 +283,26 @@ static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
+ 			break;
+ 		err = hw->soc->bias_set_combo(hw, desc, 0, arg);
+ 		break;
++	case PIN_CONFIG_OUTPUT_ENABLE:
++		err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT,
++				       MTK_DISABLE);
++		/* Keep set direction to consider the case that a GPIO pin
++		 *  does not have SMT control
++		 */
++		if (err != -ENOTSUPP)
++			break;
++
++		err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DIR,
++				       MTK_OUTPUT);
++		break;
+ 	case PIN_CONFIG_INPUT_ENABLE:
+ 		/* regard all non-zero value as enable */
+ 		err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_IES, !!arg);
++		if (err)
++			break;
++
++		err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DIR,
++				       MTK_INPUT);
+ 		break;
+ 	case PIN_CONFIG_SLEW_RATE:
+ 		/* regard all non-zero value as enable */
 -- 
-2.47.0
+2.17.0
 
 
