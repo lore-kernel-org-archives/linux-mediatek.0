@@ -4,84 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17B8DD2F7D1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Oct 2024 22:33:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18BD9D2F7DA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 02:27:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=J0Sh3029V3MK51x11tytW0IURI4Fv8hVCwwtjTn58GU=; b=SwPBrRiZSP1IMEHx4jEs+2iGMm
-	KMYA5t/wpdCYxZdxpBSR//NfAlo/te/2JmCYWArMqgEvEO6ZKg5QDrIfAgfiU2ImYZtuO4VHKXCwg
-	+eBNL5GFCwY8vbstAAp1gI/p99BgVQMW2GbYd/ig89aPnE5Sb7iVrok4oHwYbQTE1SNRjzE7PW1VD
-	6HNCULFWpN7QCPLCQmGAg+t3oEvSPOTIrwIX3yYr65mEo7TFiWa2PnFdlh2IHC1CnnFO60k7iGZ/k
-	zE5bl3dpcIrmGyOqEc1A5kXevWJp2u0EqGXEWoU0DfrsjaQ16599xg2kyjETZFePZAPrzUFF2t/G1
-	UC3cSCww==;
+	bh=rZHvVfowzI3daZqCxdNalDtcmaBy5OTc9UKJrJPe1mo=; b=jH68de1a3hGtGyD6UmGf94yYHJ
+	vpcKssBC/vpl8EjC5jnK3P+eaHt/qnIc5x+XSH7IGPmYiO1tmadFO3QOFIDiT7ESXFaxe66Ttdxap
+	XGdr92Q11itLDDzPEEFc3oysuZ6f5F99CbKodNOangMAEG5oZLxNWoVoCPn+Rre29wWDPUklxwtlB
+	Ph57SaU1DeWdv/cVq6gmrJhk8V7JjZn/tEmx8ZrNrJ046kSf33WEDSvZXZtcd+tXaL37NG+tFYTV5
+	tmTFUQgu5OdAsw7PSJQXbsYTifwS5XJt8PfmC772I3pen/NtvPzt0cBEjEmr1XS+nQqyeKx4YPIN2
+	GOpXYCWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1Ca2-0000000DA4P-31D4;
-	Wed, 16 Oct 2024 22:33:22 +0000
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	id 1t1GEs-0000000DYUF-0mBu;
+	Thu, 17 Oct 2024 02:27:46 +0000
+Received: from smtpbguseast2.qq.com ([54.204.34.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1CZz-0000000DA3i-3M2t
-	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Oct 2024 22:33:21 +0000
-Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-20c8c50fdd9so9935445ad.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Oct 2024 15:33:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1729117998; x=1729722798; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=J0Sh3029V3MK51x11tytW0IURI4Fv8hVCwwtjTn58GU=;
-        b=OU7qCXQx2NKC+mGbTsrap5Ao2UlIM50d4N3yCfA9cUIjUHUxIhldVBKZX0fNVZO62g
-         LLQ9Bt0FO2nSp6lyjDO02gTh1z5lUEAH3rOSWdkdlb5ZoRazgv3OXVBV+4XH1FudDv6g
-         COPX4g/M6Hmv3dIvLb83QOIhaGIwDWdCc9IFs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729117998; x=1729722798;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=J0Sh3029V3MK51x11tytW0IURI4Fv8hVCwwtjTn58GU=;
-        b=aT1wdrHUvQ/iMNPFWJ82PST0Rgn8w2YlLLpQCjQ71jXp/Y/OYdHCXkRMqZeFqvx34T
-         7JB4rP0eF7ey0y2Ql/pjf2XHoFQHVL9aMkizacdVFUui+dbmj+slN+AXUllrc5h1vF5p
-         zwLaoAXgzAZmBaAR5uG4uDc2XI778oTfLxLzI/rlSRU9nrmeDzQya8NF3ORBmS3mGahj
-         mKvyiyHDDpdWmBI7Ikrg5i+kVwA7BcxWieQWOpE3Bpy8uoKFcA4pY17/H1jBdjjOxbAw
-         2j62UbstqQh1eHDhq2N29XPF5IELKPPz6rurfWMjJ2kvovXSdc4/XeF7uVAgPv15DHni
-         Espw==
-X-Forwarded-Encrypted: i=1; AJvYcCXKyIfDiZG8YDvU/g5DML6p+FWV/atG5L+ttopq88Co2u504DVhQlfCcm/mtHHKU147OkPNOvnxYcs2GD+MOw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw7KS4WPDM8fvKd/8GegtUL+D3529zYYOvQDisjf0yao73VU2pm
-	7gGQ9l4ee5QRIo5KGlYKuk1otC18wBptLU8Mks3NK+nAKp8CzZoKgjvYeEZlXpBWe7Nl5O4Ibhs
-	=
-X-Google-Smtp-Source: AGHT+IG0tsd413azSd2z2aQQ6JvNbIUWii6V7rLAFfiINNm/TURRGSMl6gwvfVgmDrvrJ5OSs6C+nw==
-X-Received: by 2002:a17:903:181:b0:20c:ceaf:e65f with SMTP id d9443c01a7336-20d4797b143mr15638175ad.25.1729117998315;
-        Wed, 16 Oct 2024 15:33:18 -0700 (PDT)
-Received: from treapking.tpe.corp.google.com ([2401:fa00:1:10:aab3:ae1c:d5a8:7fba])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20d1805b040sm33441645ad.252.2024.10.16.15.33.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Oct 2024 15:33:18 -0700 (PDT)
-From: Pin-yen Lin <treapking@chromium.org>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Jitao Shi <jitao.shi@mediatek.com>,
-	Hsin-Yi Wang <hsinyi@chromium.org>,
-	linux-mediatek@lists.infradead.org,
+	id 1t1GDN-0000000DYLu-0Ld9;
+	Thu, 17 Oct 2024 02:26:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=uniontech.com;
+	s=onoh2408; t=1729131914;
+	bh=rZHvVfowzI3daZqCxdNalDtcmaBy5OTc9UKJrJPe1mo=;
+	h=From:To:Subject:Date:Message-ID:MIME-Version;
+	b=hyWWmKpMObmnWtr9UJ+WHOk1f9+bfsVUtoUPTLpUYtDnzt/9qAF8EBjIk6UDbO3K8
+	 OlEEYiYGhFcmUkU0MFARq0RZ+DL2BM6vKd0NSslG/Mp1Dmh93X7DbPn5M94Fbs98wP
+	 G79iFp/O13uB26ke/BjDEQt1q9fL9ARiJxM8Yxp0=
+X-QQ-mid: bizesmtpsz13t1729131878t8vehn
+X-QQ-Originating-IP: R8LP9wFVVRb29t4eRnx8s4PSHdaUWr6JRjPv5XZ/nhM=
+Received: from localhost.localdomain ( [113.57.152.160])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Thu, 17 Oct 2024 10:24:36 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 1
+X-BIZMAIL-ID: 16719627143748163980
+From: WangYuli <wangyuli@uniontech.com>
+To: marcel@holtmann.org,
+	luiz.dentz@gmail.com,
+	johan.hedberg@gmail.com,
+	matthias.bgg@gmail.com,
+	hello@felixjara.me,
+	wangyuli@uniontech.com
+Cc: linux-bluetooth@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	Pin-yen Lin <treapking@chromium.org>
-Subject: [PATCH] arm64: dts: mt8183: Add port node to mt8183.dtsi
-Date: Thu, 17 Oct 2024 06:32:52 +0800
-Message-ID: <20241016223312.3430051-1-treapking@chromium.org>
-X-Mailer: git-send-email 2.47.0.rc1.288.g06298d1525-goog
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	guanwentao@uniontech.com,
+	zhanjun@uniontech.com,
+	aaron.ma@canonical.com
+Subject: [RESEND. PATCH v2] Bluetooth: btusb: Add MT7925 support for ID 0x13d3:0x3608
+Date: Thu, 17 Oct 2024 10:24:33 +0800
+Message-ID: <3DBBE09166DE4374+20241017022433.50800-1-wangyuli@uniontech.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-QQ-SENDSIZE: 520
+Feedback-ID: bizesmtpsz:uniontech.com:qybglogicsvrgz:qybglogicsvrgz8a-1
+X-QQ-XMAILINFO: OEbZSWfyiQCUR+5mE0k0JnUQla4wPZJwj8Otq4Ia/tRPBe9iDTnh/4si
+	3wUG56yqlJ9E0gny5kJtdLKSGIhDRTb3SdUpkw8mAncEnAnwhL7pepINh+q01kQZFeVeDx0
+	KdXFKL0RouWT9OXDyoPaicjmc+tJLzgNuV2zlrfQsByTy2JPA0vN/rDn9jvA9AuGorlbDV6
+	dOEpJ9Ft0sUfU1/KFpWKzlRDGKpcToWGJTkdn2ZW9uEBNrVAe7qUDkL3OLTHT52mjDJa5bi
+	O2Q/5CSAqeae9hCL+SK66VD/TnpWdwzPIzcfQPbKN3BlSEzchvIf1EzneGyl2YaGsKYY6NN
+	aUVtDGhHv3S2qoInWXYAkrqhdhK8Au6DN/+j+eq7Ty1/Q4E5iZyBAaagmv7ZxMrVb8zmg0T
+	CZgHGBpmG+OWXaX8tNMesDroRjgZtGu6jPlItYidxF7h10rNRg6Jr0EMlA8WI7qm1mN15Q+
+	xH4StL5nSyDmsVc1vA8kZuZqEhnRVwHR4l2MOaAEz13fEqqcSlFwmrLGFHraeG1uIbD/i36
+	YpN5dLVAEfZMaC/BdVX8u39Ovx/p4R/s14hubxzxSU4UPXXcCmQFCYqN3LU9iwLB0ectzo/
+	hhHc7m3QGo067vCKG5WKFSb3EjDoZPh67qd/7Mi6TDXblPWndO9keT6etTXuZsh7swl+zSE
+	w6J1rqGxTVdGzKoOC6CYTMmL0PApQhiiOUwtgX8sRUsPdfU3yAegGjwxxgH6CY1qutlQprr
+	vkiGs5zIEEcm6OUmeFdIY+i0s+t2JujJ5cBgC+1s5LcHDe/HkXMpfbAalMHR4IBmECJ/MsR
+	RoTrPBqRX9yfxQTQPA5B+TtJYxG5XiBrmuqrrqPIH8pvUgapLIqW6JZ1NRUA/4BBTuHFwwC
+	HayjJZbWUpQkX8yuM+x3yvx7nn0/gzgJCsRbNtqlaIRVf+cXdkMPAFhLwPp6gYM/eSOWVHA
+	rm/8bz+xqypF656uA+KtaXO5hXPYn2Rv4R7XeuMUzzf7GRJjCvkXWInWh
+X-QQ-XMRINFO: Mp0Kj//9VHAxr69bL5MkOOs=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241016_153319_880537_831773CD 
-X-CRM114-Status: GOOD (  10.96  )
+X-CRM114-CacheID: sfid-20241016_192614_054098_52F73699 
+X-CRM114-Status: UNSURE (   8.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,57 +99,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the port node to fix the binding schema check. Also update
-mt8183-kukui to reference the new port node.
+From: Félix Jara <hello@felixjara.me>
 
-Fixes: 88ec840270e6 ("arm64: dts: mt8183: Add dsi node")
-Fixes: 27eaf34df364 ("arm64: dts: mt8183: config dsi node")
-Signed-off-by: Pin-yen Lin <treapking@chromium.org>
+Add compatibility Bluetooth device MT7925 for Asus UM5606 with
+ID 13d3:3608.
 
+The device info from /sys/kernel/debug/usb/devices as below.
+
+T:  Bus=03 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
+D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+P:  Vendor=13d3 ProdID=3608 Rev= 1.00
+S:  Manufacturer=MediaTek Inc.
+S:  Product=Wireless_Device
+S:  SerialNumber=000000000
+C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+
+Tested in Asus Zenbook S 16 UM5606XA
+
+Co-developed-by: Félix Jara <hello@felixjara.me>
+Signed-off-by: Félix Jara <hello@felixjara.me>
+Tested-by: Félix Jara <hello@felixjara.me>
+Link: https://github.com/openSUSE/kernel/pull/10
+Signed-off-by: WangYuli <wangyuli@uniontech.com>
 ---
+ drivers/bluetooth/btusb.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 10 +++-------
- arch/arm64/boot/dts/mediatek/mt8183.dtsi       |  4 ++++
- 2 files changed, 7 insertions(+), 7 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index 07ae3c8e897b..b7b3d8fbf1e0 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -280,14 +280,10 @@ panel_in: endpoint {
- 			};
- 		};
- 	};
-+};
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index cd22b34542d5..4adae0be8222 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -512,6 +512,11 @@ static const struct usb_device_id blacklist_table[] = {
+ 						     BTUSB_WIDEBAND_SPEECH |
+ 						     BTUSB_VALID_LE_STATES },
  
--	ports {
--		port {
--			dsi_out: endpoint {
--				remote-endpoint = <&panel_in>;
--			};
--		};
--	};
-+&dsi_out {
-+	remote-endpoint = <&panel_in>;
- };
- 
- &dpi0 {
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 1afeeb1155f5..e4899cd6fef1 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1834,6 +1834,10 @@ dsi0: dsi@14014000 {
- 			resets = <&mmsys MT8183_MMSYS_SW0_RST_B_DISP_DSI0>;
- 			phys = <&mipi_tx0>;
- 			phy-names = "dphy";
++	/* MediaTek MT7925 Bluetooth devices */
++	{ USB_DEVICE(0x13d3, 0x3608), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH |
++						     BTUSB_VALID_LE_STATES },
 +
-+			port {
-+				dsi_out: endpoint { };
-+			};
- 		};
- 
- 		dpi0: dpi@14015000 {
+ 	/* Additional Realtek 8723AE Bluetooth devices */
+ 	{ USB_DEVICE(0x0930, 0x021d), .driver_info = BTUSB_REALTEK },
+ 	{ USB_DEVICE(0x13d3, 0x3394), .driver_info = BTUSB_REALTEK },
 -- 
-2.47.0.rc1.288.g06298d1525-goog
+2.45.2
 
 
