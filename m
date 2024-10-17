@@ -4,86 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 403FCD21261
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 09:06:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE7CAD21264
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 09:16:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=eq4DcLX81xhHJQxcCvF71zsYnZphDuzGs7+nmZig8nY=; b=OfP16C8lCTfAO30BcMB5FDmEBW
-	MF3lc9BWkUlRm19DkshLgmRfg/F5ne99WeTPjw0Qn9eYuQQoKAqTA4Vwndj76nD0YR+ECDFD2JyxP
-	Z3RjK/XxlovDQGYUTnxDORfYw3groPGicIs/Wq6NRY0rcHoIm1xhLdm+NV8scRp8FBfR7QVutwSo+
-	X5oYU6Bz+pX/7qnigAGB//9EhhXGttSaU4Ly6XSBuHG9M3m/36kW5WdLX2FwcddYlotsy2mw6LHMe
-	c7F0U8VkId86/9oz17BsJSfsb2zb3Ii0zFzRIwqdZdBthNHAnyBSM2Pz+A3wq26O9cg8GbwB1rATs
-	Yd8762sg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mh9+gxbI0a2SUdKDoNPUGs5qDkayXH7hjsv/TJG1FDk=; b=Y05U2xglMyps9Nj1i1kzsbizD7
+	+5RW1E2sj14elqK58YF8XIJ1Y7DVoDqlYvJv/PqUFW/T9MhKAOjhghplWvsoTCy8xOb18bzXV1dsB
+	RvakSe7pqL/V7mqejZBbriswuV3qlrjxM8h0Mp4qWG7/0dC6BtgNB7iEssOXfdH8pdjQ4NqItAxgr
+	wAFxL4fR4gRRtaD+kZlSYRehqAOFwWwE5PErtGkokhgw/ZR8bbT8B03LNyde4poJfNQu3Ozmrhqt/
+	8RbG2c4BzSqYKGbPR/qSa+QXGiLZCg9ksMrRFFpebQ74gX+k32LErprEuw9js3VLhHNFOS+lze2C/
+	WLizIsOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1MT9-0000000EHAq-14kk;
-	Thu, 17 Oct 2024 09:06:55 +0000
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
+	id 1t1Mc0-0000000EIkq-3rdq;
+	Thu, 17 Oct 2024 09:16:04 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1MRd-0000000EH1Y-33IL
-	for linux-mediatek@lists.infradead.org;
-	Thu, 17 Oct 2024 09:05:27 +0000
-Received: by mail-pg1-x52c.google.com with SMTP id 41be03b00d2f7-7ea12e0dc7aso430497a12.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 17 Oct 2024 02:05:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1729155920; x=1729760720; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=eq4DcLX81xhHJQxcCvF71zsYnZphDuzGs7+nmZig8nY=;
-        b=av+YH6ujsgmAiTscY5JwQlD5dOvVrVA80dltlFYUn36ms5RhIGvqFsRWt5EENtNPFU
-         jmCEMO6boxfjqeWX8ksThqifeo2xvwYWTIsHXODo1MXzcs8z+HuZQ6AXALGToND8WLLm
-         fIexTxai9Mm3y6QC0raiSQ97c3ybmPs4NvRyc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729155920; x=1729760720;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=eq4DcLX81xhHJQxcCvF71zsYnZphDuzGs7+nmZig8nY=;
-        b=ZOS+Ps5D17GCLZ5WA8AeCHR7QwfZGs+nnpUhl0DAEqBAFoErKeCEhmihdxiR5bx/0x
-         Wy5SzWuy0eHfxvvJQVIPjKPJmQ0u94xNxXnngua4eR08ldLRe90yHTlQPEbAJzAgdl5e
-         gUDJsArxlaieFdRs9LVUWb+YOA8evJv6gJvVBc9XfsCXv1i/TBKycSZEhj1qHWWmiCC/
-         H+Uk409yf/2L+8cgQxWrwYTxK+VlDLfv4nMddsEIMUolvfKF4m+G1Y1EbxjckMl1aLlz
-         oedFtv9p0awFAeeuRonb/279qPOYkuBgdSbUC7+x+J24cnX9o2H9gzhqeJNL3SU1tfP2
-         bo+w==
-X-Forwarded-Encrypted: i=1; AJvYcCWZ1Vg7RPH7cjSJGiU68yoCzVbzEvHw03Axi7yf9hdPUSFJbERdcuky7I8/76Rg0SeGvYLe3pL0TVDT4jWlaA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy2ZdLDvc6q73BPdaUg1Puq+RmPBHKuRt6tqHCyVVTCORK7GNIn
-	fmxjSSy2Mu5XpAU7qWFmN1PWVk0iInkxLrhiEI1dcntqeT4Bj7MzXZvh3vRo/g==
-X-Google-Smtp-Source: AGHT+IE8sc7gGXO+epscpZQ4+3ix7OqJhkRjhM95PD83qJR77jaGJm3mMk8J1ijNb16KGYomMx1MwA==
-X-Received: by 2002:a17:90a:fe18:b0:2e2:af52:a7b7 with SMTP id 98e67ed59e1d1-2e31536e834mr19968279a91.34.1729155920193;
-        Thu, 17 Oct 2024 02:05:20 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:fabb:a7ab:3d7:9aaa])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2e3e08c0405sm1344305a91.14.2024.10.17.02.05.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 17 Oct 2024 02:05:19 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Amit Kucheria <amitk@kernel.org>,
-	Zhang Rui <rui.zhang@intel.com>
-Cc: Icenowy Zheng <uwu@icenowy.me>,
-	Mark Brown <broonie@kernel.org>,
-	linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-mediatek@lists.infradead.org,
-	Hsin-Te Yuan <yuanhsinte@chromium.org>,
-	Chen-Yu Tsai <wenst@chromium.org>
-Subject: [PATCH v3] thermal/of: support thermal zones w/o trips subnode
-Date: Thu, 17 Oct 2024 17:05:02 +0800
-Message-ID: <20241017090503.1006068-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.47.0.rc1.288.g06298d1525-goog
+	id 1t1MaP-0000000EICf-2uE8;
+	Thu, 17 Oct 2024 09:14:29 +0000
+X-UUID: 308118c88c6811ef82ff63e91e7eb18c-20241017
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=mh9+gxbI0a2SUdKDoNPUGs5qDkayXH7hjsv/TJG1FDk=;
+	b=buisB53uZxrO1zJ3trUY0t4r/LTpwDNH+JyifRlRRKRr0H6gHFzkZt9pxisIbjsnobO91dJ/OKg/+UYhO1r42X01pKY00X5WFxKXijXxa2niX4nVaIHk9bpc82iFFil0zSWrqv2qQC4IABwDd5MlAAMUM0S0uGxseVN9olqptxo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.42,REQID:d0bb3ea8-e657-410b-9b88-3ec159f3e29d,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:04d5ef06-3d5c-41f6-8d90-a8be388b5b5b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 308118c88c6811ef82ff63e91e7eb18c-20241017
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
+	(envelope-from <bo.ye@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1830323854; Thu, 17 Oct 2024 02:14:19 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 17 Oct 2024 17:14:16 +0800
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 17 Oct 2024 17:14:15 +0800
+From: Bo Ye <bo.ye@mediatek.com>
+To: Sean Wang <sean.wang@kernel.org>, Linus Walleij
+	<linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu
+ Tsai <wenst@chromium.org>
+CC: Yongdong Zhang <yongdong.zhang@mediatek.com>, Xiujuan Tan
+	<xiujuan.tan@mediatek.com>, Browse Zhang <browse.zhang@mediatek.com>, Bo Ye
+	<bo.ye@mediatek.com>, Light Hsieh <light.hsieh@mediatek.com>, Evan Cao
+	<ot_evan.cao@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<linux-gpio@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>
+Subject: [RESEND. PATCH v1] pinctrl: mediatek: paris: Revert "Rework support for PIN_CONFIG_{INPUT,OUTPUT}_ENABLE"
+Date: Thu, 17 Oct 2024 17:14:09 +0800
+Message-ID: <20241017091410.181093-1-bo.ye@mediatek.com>
+X-Mailer: git-send-email 2.17.0
+In-Reply-To: <20241017091238.180920-1-bo.ye@mediatek.com>
+References: <20241017091238.180920-1-bo.ye@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241017_020521_931513_CB9E15D6 
-X-CRM114-Status: GOOD (  15.18  )
+X-CRM114-CacheID: sfid-20241017_021425_772500_DFD15E7B 
+X-CRM114-Status: GOOD (  15.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,89 +90,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Icenowy Zheng <uwu@icenowy.me>
+[This reverts commit c5d3b64c568a344e998830e0e94a7c04e372f89b.]
 
-Although the current device tree binding of thermal zones require the
-trips subnode, the binding in kernel v5.15 does not require it, and many
-device trees shipped with the kernel, for example,
-allwinner/sun50i-a64.dtsi and mediatek/mt8183-kukui.dtsi in ARM64, still
-comply to the old binding and contain no trips subnode.
+For MTK HW,
+1. to enable GPIO input direction: set DIR=0, IES=1
+2. to enable GPIO output direction: set DIR=1, and set DO=1 to output high, set DO=0 to out low
 
-Allow the code to successfully register thermal zones w/o trips subnode
-for DT binding compatibility now.
+The PIN_CONFIG_INPUT/PIN_CONFIG_OUTPUT/PIN_CONFIG_INPUT_ENABLE/PIN_CONFIG_OUTPUT_ENABLE shall
+be implemented according to view of its purpose - set GPIO direction and output value (for
+output only) according to specific HW design.
 
-Furtherly, the inconsistency between DTs and bindings should be resolved
-by either adding empty trips subnode or dropping the trips subnode
-requirement.
+However, the reverted patch implement according to author's own explanation of IES without
+understanding of MTK's HW. Such patch does not correctly set DIR/IES bit to control GPIO
+direction on MTK's HW.
 
-Fixes: d0c75fa2c17f ("thermal/of: Initialize trip points separately")
-Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
-Reviewed-by: Mark Brown <broonie@kernel.org>
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Fixes: c5d3b64c568 ("pinctrl: mediatek: paris: Rework support for PIN_CONFIG_{INPUT,OUTPUT}_ENABLE")
+Signed-off-by: Light Hsieh <light.hsieh@mediatek.com>
+Signed-off-by: Evan Cao <ot_evan.cao@mediatek.com>
+Signed-off-by: Bo Ye <bo.ye@mediatek.com>
 ---
-Changes since v2:
-- Stacked on top of Krzysztof's cleanup patches
-  - thermal: of: Use scoped memory and OF handling to simplify thermal_of_trips_init() [1]
-- Adjusted to account for eliminated error path
+ drivers/pinctrl/mediatek/pinctrl-paris.c | 38 +++++++++++++++++-------
+ 1 file changed, 27 insertions(+), 11 deletions(-)
 
-[1] https://lore.kernel.org/all/20241010-b4-cleanup-h-of-node-put-thermal-v4-2-bfbe29ad81f4@linaro.org/
-
-Changes since v1:
-- set *ntrips at beginning of thermal_of_trips_init()
-- Keep goto out_of_node_put in of_get_child_count(trips) == 0 branch
-- Check return value of thermal_of_trips_init(), if it is -ENXIO, print
-  warning and clear |trips| pointer
-- Drop |mask| change, as the variable was removed
-
-I kept Mark's reviewed-by since the changes are more stylish than
-functional.
----
- drivers/thermal/thermal_of.c | 20 +++++++++++++-------
- 1 file changed, 13 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/thermal/thermal_of.c b/drivers/thermal/thermal_of.c
-index 93f7c6f8d06d..be1fa6478c21 100644
---- a/drivers/thermal/thermal_of.c
-+++ b/drivers/thermal/thermal_of.c
-@@ -99,14 +99,14 @@ static struct thermal_trip *thermal_of_trips_init(struct device_node *np, int *n
+diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+index 87e958d827bf..a8af62e6f8ca 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-paris.c
++++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+@@ -165,21 +165,20 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
+ 		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_SR, &ret);
+ 		break;
+ 	case PIN_CONFIG_INPUT_ENABLE:
+-		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_IES, &ret);
+-		if (!ret)
+-			err = -EINVAL;
+-		break;
+-	case PIN_CONFIG_OUTPUT:
++	case PIN_CONFIG_OUTPUT_ENABLE:
+ 		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &ret);
+ 		if (err)
+ 			break;
++		/*     CONFIG     Current direction return value
++		 * -------------  ----------------- ----------------------
++		 * OUTPUT_ENABLE       output       1 (= HW value)
++		 *                     input        0 (= HW value)
++		 * INPUT_ENABLE        output       0 (= reverse HW value)
++		 *                     input        1 (= reverse HW value)
++		 */
++		if (param == PIN_CONFIG_INPUT_ENABLE)
++			ret = !ret;
  
- 	struct device_node *trips __free(device_node) = of_get_child_by_name(np, "trips");
- 	if (!trips) {
--		pr_err("Failed to find 'trips' node\n");
--		return ERR_PTR(-EINVAL);
-+		pr_debug("Failed to find 'trips' node\n");
-+		return ERR_PTR(-ENXIO);
- 	}
- 
- 	count = of_get_child_count(trips);
- 	if (!count) {
--		pr_err("No trip point defined\n");
--		return ERR_PTR(-EINVAL);
-+		pr_debug("No trip point defined\n");
-+		return ERR_PTR(-ENXIO);
- 	}
- 
- 	struct thermal_trip *tt __free(kfree) = kzalloc(sizeof(*tt) * count, GFP_KERNEL);
-@@ -386,9 +386,15 @@ static struct thermal_zone_device *thermal_of_zone_register(struct device_node *
- 
- 	trips = thermal_of_trips_init(np, &ntrips);
- 	if (IS_ERR(trips)) {
--		pr_err("Failed to find trip points for %pOFn id=%d\n", sensor, id);
--		ret = PTR_ERR(trips);
--		goto out_of_node_put;
-+		if (PTR_ERR(trips) != -ENXIO) {
-+			pr_err("Failed to find trip points for %pOFn id=%d\n", sensor, id);
-+			ret = PTR_ERR(trips);
-+			goto out_of_node_put;
-+		}
+-		if (!ret) {
+-			err = -EINVAL;
+-			break;
+-		}
+-
+-		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DO, &ret);
+ 		break;
+ 	case PIN_CONFIG_INPUT_SCHMITT_ENABLE:
+ 		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &ret);
+@@ -284,9 +283,26 @@ static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
+ 			break;
+ 		err = hw->soc->bias_set_combo(hw, desc, 0, arg);
+ 		break;
++	case PIN_CONFIG_OUTPUT_ENABLE:
++		err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT,
++				       MTK_DISABLE);
++		/* Keep set direction to consider the case that a GPIO pin
++		 *  does not have SMT control
++		 */
++		if (err != -ENOTSUPP)
++			break;
 +
-+		pr_warn("Failed to find trip points for %pOFn id=%d\n", sensor, id);
-+		trips = NULL;
-+		ntrips = 0;
- 	}
- 
- 	ret = thermal_of_monitor_init(np, &delay, &pdelay);
++		err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DIR,
++				       MTK_OUTPUT);
++		break;
+ 	case PIN_CONFIG_INPUT_ENABLE:
+ 		/* regard all non-zero value as enable */
+ 		err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_IES, !!arg);
++		if (err)
++			break;
++
++		err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DIR,
++				       MTK_INPUT);
+ 		break;
+ 	case PIN_CONFIG_SLEW_RATE:
+ 		/* regard all non-zero value as enable */
 -- 
-2.47.0.rc1.288.g06298d1525-goog
+2.17.0
 
 
