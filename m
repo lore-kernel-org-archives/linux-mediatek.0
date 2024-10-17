@@ -4,60 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C053BD21274
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 11:00:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD3E8D21279
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 11:00:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:
-	References:Date:Message-Id:From:Subject:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=m45cveGsvYgJKU8lYwyu0PJLjw9HdMs66SpK2cDnSTc=; b=Vuk0u6UhVdyVOyszu40+hvWkMk
-	NpV/LFuSukUs0M78a+EwWEWeoQXvhSWg2Z7dXrbOA0Alk9CpJoXvV3rvN4lza0C53SPQMnEMFwhbc
-	BzidOiQhNH6CSizisBIadsxra/Db19MLYsj+qTe1ISgZqedz26pILUeN6HVODNaghEDp9nbDSfpbD
-	8Gkokt341Qn78/oD6y9Lcv/HkRQPV7J2CuhNzETG5HwH4fxglBicrTN3tzFopTKbNEbOEwF0k0mq3
-	5CvW6YgVrWWP5OEJYlBQGn607pUdg9W0Vb1F5L7pMwPfS3I8Gn6DD+lTf8wdXZbTwRl35Y+Cr04NQ
-	TNVAQ6iQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vIYYnyvx0NHfdSZanxSphX76OXMhVhjF8pE5cbgDEuo=; b=s83EUihK3Maak7cTP5g2tIPVIS
+	JiGtT1NmUKobTefENr0qYl7Wzcy7tldQ2ZIxt51BDyQYhMDTnK6L/rMVBmjkjaaEWOUAQZbiKB9NC
+	G8gvX6CF96WnqXUjq+x+fHOdBwGzEspTken4jM5iI/UvhOvoKXYdpNtvk89Hnx7w9txsogoYv0WEk
+	pgXg4THgHGTRtHQ74DcO04nse72T1iiRBU5dfxIhUjUMx1jbhY/9cJ69zAoHb+qmA/z4pTMxu2+pg
+	+M78IaNvei+yOepifv91TNSPpxFW8LPJs4ASxNy6hN/dgfQfZikZKyZWLWqNx/Htz88WLhaJp1rVh
+	yM5Tnrcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1OFF-0000000EZ0I-1o8S;
-	Thu, 17 Oct 2024 11:00:41 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1t1OFG-0000000EZ0h-2XKN;
+	Thu, 17 Oct 2024 11:00:42 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1NSc-0000000ETiF-04BL;
-	Thu, 17 Oct 2024 10:10:27 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id AE1685C60C6;
-	Thu, 17 Oct 2024 10:10:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C6080C4CEC3;
-	Thu, 17 Oct 2024 10:10:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729159824;
-	bh=qK9if0V62/LzQWBlKRcpC6PM3ji6S+P+acYeI9Zd+NQ=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=HTN0+hZMAlW8S/EK0ddqXSUNYFqS6jkagxKBaGkgWkORYq4wAIKDNFokgX3kw2pAh
-	 vRuu7QhDyDsdm1VfsbzFz+fTR3bh/zLIe8eD8lvF2GonjujhYEgY48KKRK1wFdH197
-	 oeaatIKnXIdslu8lzCT0qtmKOVmVBkEEHeWQv2QcKCF2sKMKIM0G5xgZFMoqDRbld1
-	 Xund5j1ZE1QwhX2R5HPI47tcYPjWdARJtTNsi0zFvVXhw6h+/QL5SlBsjK/+sUpWa6
-	 LrwMl5rtHRqs5stcTO8DxIlkhbZu50KZT4SuRz+n95VjvSm4kqDuq5oNbMuqVqodpD
-	 BMF3NdiYBet9w==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 70C123805CC0;
-	Thu, 17 Oct 2024 10:10:31 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1t1NYb-0000000EUWu-1HwS;
+	Thu, 17 Oct 2024 10:16:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1729160194;
+	bh=RwqIFfRGEqyQW9D+vcB52y+EorSTxslTKNQrItVQj8I=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=SZv7EJsEYTOyLVOmgPHOkmX/FgACtcDz4NaZtZYGRAjThR7/05LMATp3LlgAkoFn5
+	 KDaX5qqWC5o7jP8Su4IXglFwEgCD8gMzue6evaLee2QCty3JudlV2bIDMntsJFzhs7
+	 Hmk8FO67Aik9t4tO+Sa+qcIus2mX0/iurdq6CuvO9IJYfIMZqtEjwedVFjnG2mLV7V
+	 8BJ9IsKmfqw1jK1QLi6+4mko79ZgNKWqqXi3q5b8r3S7n5w6lc50cVaGCZHgdD9QYa
+	 JypAIBjqHInbR3YLCOD/gDkhPy8Uqwv4mo6erep/YhIcYjTSgHzqGNgaUShss3D+fR
+	 Wyv+v9tuQXfag==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BEBF217E137D;
+	Thu, 17 Oct 2024 12:16:33 +0200 (CEST)
+Message-ID: <d775bf60-f876-475e-8db0-511e87667a19@collabora.com>
+Date: Thu, 17 Oct 2024 12:16:33 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: fix memory corruption during
- fq dma init
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <172915983028.2422040.9005274302836584755.git-patchwork-notify@kernel.org>
-Date: Thu, 17 Oct 2024 10:10:30 +0000
-References: <20241015081755.31060-1-nbd@nbd.name>
-In-Reply-To: <20241015081755.31060-1-nbd@nbd.name>
-To: Felix Fietkau <nbd@nbd.name>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/2] dt-bindings: power: Add binding for MediaTek
+ MT6735 power controller
+To: Yassine Oudjana <yassine.oudjana@gmail.com>, Rob Herring
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Alexandre Mergnat <amergnat@baylibre.com>,
+ Fabien Parent <fparent@baylibre.com>,
+ Markus Schneider-Pargmann <msp@baylibre.com>,
+ Alexandre Bailon <abailon@baylibre.com>, Chen-Yu Tsai <wenst@chromium.org>,
+ Eugen Hristev <eugen.hristev@collabora.com>,
+ MandyJH Liu <mandyjh.liu@mediatek.com>
+Cc: Yassine Oudjana <y.oudjana@protonmail.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20241017085136.68053-1-y.oudjana@protonmail.com>
+ <20241017085136.68053-2-y.oudjana@protonmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20241017085136.68053-2-y.oudjana@protonmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241017_031026_124606_01C9691C 
-X-CRM114-Status: UNSURE (   8.30  )
+X-CRM114-CacheID: sfid-20241017_031637_537321_35C47F4D 
+X-CRM114-Status: UNSURE (   8.22  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -70,33 +84,23 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: jacob.e.keller@intel.com, netdev@vger.kernel.org, sean.wang@mediatek.com, linux-kernel@vger.kernel.org, Mark-MC.Lee@mediatek.com, andrew+netdev@lunn.ch, edumazet@google.com, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, kuba@kernel.org, pabeni@redhat.com, lorenzo@kernel.org, davem@davemloft.net, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This patch was applied to netdev/net.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
-
-On Tue, 15 Oct 2024 10:17:55 +0200 you wrote:
-> The loop responsible for allocating up to MTK_FQ_DMA_LENGTH buffers must
-> only touch as many descriptors, otherwise it ends up corrupting unrelated
-> memory. Fix the loop iteration count accordingly.
+Il 17/10/24 10:51, Yassine Oudjana ha scritto:
+> From: Yassine Oudjana <y.oudjana@protonmail.com>
 > 
-> Fixes: c57e55819443 ("net: ethernet: mtk_eth_soc: handle dma buffer size soc specific")
-> Signed-off-by: Felix Fietkau <nbd@nbd.name>
+> Add DT binding for MediaTek MT6735 SCPSYS power controller.
 > 
-> [...]
+> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+> ---
+>   .../bindings/power/mediatek,power-controller.yaml  |  1 +
+>   .../devicetree/bindings/soc/mediatek/scpsys.txt    |  1 +
+>   .../power/mediatek,mt6735-power-controller.h       | 14 ++++++++++++++
+>   3 files changed, 16 insertions(+)
+>   create mode 100644 include/dt-bindings/power/mediatek,mt6735-power-controller.h
 
-Here is the summary with links:
-  - [net] net: ethernet: mtk_eth_soc: fix memory corruption during fq dma init
-    https://git.kernel.org/netdev/net/c/88806efc034a
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+Reviewed-by: AngeloGioacchino Del Regno <angelogiaocchino.delregno@collabora.com>
 
 
 
