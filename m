@@ -4,81 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A48B2D2F7FD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 08:18:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4AD3D2125F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 08:53:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PB5WhQujeElFpl56LXFf3cDTX5MtznAh+J+4T0I+trg=; b=W9kqV5v6Bb1holSLflqMzNYCE8
-	ttFpWJgvZhpM2fy3NFgG1A6eojlThWr7UuhsFptHEvRcZMh0zrwBoOWFggWiRcSi8oPmjPQlv69MV
-	RH5eLWp8tAdnHKZlBEoZkWmE7Alj6M3bPezvIXnGl+Z9z0AxO9kFJ1msLROkar/iFOJz7KFlq5clz
-	mWsKNd8XEdjTzGxnfmDs047zNSflh9hOJVi7fuQI5hHCckuFHSQE0KjnJ7aUboxChOKM21G4ZI5Wq
-	lqbmys5nelM3ifqdwCToL8bgT1stAQibH+uCRm8F5xW/Z9w/zv/PLQO+g2gzESHpnhKfPM7IgQqhe
-	X6aQyJJw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qmmjYCeB18CbyqQJcVn0ADXJ6qrNFmHuW7KL3HqRqgo=; b=cc0WgRw+P98uSm49cfTAljzuE/
+	1wikjJSLZRTmDyxr1duQfSkbZNWknMxDjz0K5PcF0KTMozs716DY4WhyRDiL7ehYFfvAnV6Ezir4n
+	2n+UxGH4Cwii8rKqjzH/QztxouiJdSizJGhjZdUHIzg3UOloUKe7ggNbxEijG+44pmxHbSfC/lqig
+	n7iCntScH6lvdlkz0FAmYGW1PvgG2LQKt8/D9Rq4LxsaVKd8L/PhxS9BqrJaoH8/sFb7XRFvP88A3
+	vWh2TGb5w8mUIOilgW/tI+SL2YREguDNJov2vziKjFCLp8zCirEU7xhFY/+cLZHC2LhcLazmtxouw
+	lhZqCaZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1Lhn-0000000E9A0-0CZS;
-	Thu, 17 Oct 2024 08:17:59 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1t1MGA-0000000EF0q-2pZr;
+	Thu, 17 Oct 2024 08:53:30 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1Lfa-0000000E7yL-1dHt;
-	Thu, 17 Oct 2024 08:15:46 +0000
-X-UUID: fc1e0d008c5f11ef82ff63e91e7eb18c-20241017
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=PB5WhQujeElFpl56LXFf3cDTX5MtznAh+J+4T0I+trg=;
-	b=TMEq17bF1nBaefJOAFQXpHGpHQlT/ttuFUD1zuqdA7N9VjSyXm2u3+IArrmLmwSD843jncwcRetX/K8vYQZ0qUxuKp5lhrtbOSlgXpHU1QBDcQ1jCanKKyrprce1tbtnOsKDWNc6QNXJnyG3B2i+v3+2GOrmzz1A1CGsuZYy2MY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.42,REQID:6e75d7fd-6590-4f98-a892-47d1256d2fdb,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:b0fcdc3,CLOUDID:67be6465-444a-4b47-a99a-591ade3b04b2,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|-5,EDM:-3,IP:ni
-	l,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
-	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 1,FCT|NGT
-X-CID-BAS: 1,FCT|NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
-X-UUID: fc1e0d008c5f11ef82ff63e91e7eb18c-20241017
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1269398809; Thu, 17 Oct 2024 01:15:35 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 17 Oct 2024 16:15:32 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkmbs13n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
- Transport; Thu, 17 Oct 2024 16:15:32 +0800
-Message-ID: <433295fe-8d34-af8b-f6bf-be1953b6e479@mediatek.com>
-Date: Thu, 17 Oct 2024 16:15:30 +0800
+	id 1t1MEd-0000000EEmJ-38s3;
+	Thu, 17 Oct 2024 08:51:59 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-a9a0474e70eso89237166b.0;
+        Thu, 17 Oct 2024 01:51:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1729155114; x=1729759914; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=qmmjYCeB18CbyqQJcVn0ADXJ6qrNFmHuW7KL3HqRqgo=;
+        b=Xdll1S60GWKmGUTZqdh6dtMrUBSuNTyI/LUEfgPyw7Lc/lGj+RTd2NbJtA9ZZwbUn4
+         xKvA4lA3HfP5UC6pzoxmDEMJhZjDLYuMn5wLiuxEHI3Dren16LVdNTYielZOWsCTpEFq
+         cBJROlCA2YnlCLovgNzTcScib1UlqzQvVUC7GSGqBgntwW/LJBqVvluUAOdSvF6OTUri
+         42G36FwQq/k1I3AMSlNeXRmv+arGqxui18vRQglX5mMrpnfE6OAfCBLO/RpBoqF1vG2I
+         4F7Brqhkisoep+3KmfIqhbAYzfEK8ZhVi6n4tOiKflu2V3mFsT0hWm++WeCvug/vCzAA
+         uNrA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729155114; x=1729759914;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=qmmjYCeB18CbyqQJcVn0ADXJ6qrNFmHuW7KL3HqRqgo=;
+        b=k2bFQ9zbY3+vkvAt4PKSwi/cjjvMV6DDU1BclGjQ5r9G7Grhp3F0J1vILVUsVkh4wJ
+         2nZle6rNoGETHL3t/CEo1ArlqV3a06RO9uFS61izk0alcF9L2a9JXM4LOaL41FT53I0m
+         BVmlqzMZJiIKDD2h/9uV4dmnNf5ZqXVZt1RP1C12GUkRZX4EHLZCFVNayIy+q82gs+dC
+         cek65+ECxUY1b8TTtxjuZM7ggVrIPoc57gOVVUzO6717hD6B7D9KGV8kFfQWlGMPf9j2
+         VzMjs5NL+4F5NEiCLLM6oGNkAEGdZtXrH1urfpvae5c4KvnfJWttR3C31jTEPY6ORp0o
+         4TEQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXD9pqhyz2uKfyiNGS28OvOqYG/lTw7dHHAmtaxuFYiQLealNlT8EYlG03FyPlioIJ70K98fKhuAR1ZVAzxHQEz@lists.infradead.org, AJvYcCXTSK9M+q3+n/BeqUEay51dtwTCZwtV9hbCkvhoKhFXnVRILHiGnP42LyLeDNQy6mxjL01kDyt6qwXWLDLPzPg=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwVqXfVlbDK/o/4QucAZUuSHxd7pDLrM2bXFFvJCS107c2jz19A
+	iBr8LS51eYhvrjqOcZfSdVLtqwnte+HzqyIaxRRFfUQcWmyuwof+
+X-Google-Smtp-Source: AGHT+IHvrx94gDRBDzTK1SQ1fRhoIwm949VyNvL5+yIRliyURYMzRlOD6rRrQPmQzzu2BY5fCvgDow==
+X-Received: by 2002:a17:907:86a3:b0:a9a:522a:ba70 with SMTP id a640c23a62f3a-a9a522ac213mr175985466b.32.1729155113699;
+        Thu, 17 Oct 2024 01:51:53 -0700 (PDT)
+Received: from zenbook.agu.edu.tr ([95.183.227.32])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a29816c24sm267045266b.110.2024.10.17.01.51.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 17 Oct 2024 01:51:53 -0700 (PDT)
+From: Yassine Oudjana <yassine.oudjana@gmail.com>
+X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Fabien Parent <fparent@baylibre.com>,
+	Markus Schneider-Pargmann <msp@baylibre.com>,
+	Alexandre Bailon <abailon@baylibre.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Eugen Hristev <eugen.hristev@collabora.com>,
+	MandyJH Liu <mandyjh.liu@mediatek.com>
+Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
+	Yassine Oudjana <yassine.oudjana@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v3 0/2] MediaTek MT6735 SCPSYS support
+Date: Thu, 17 Oct 2024 11:51:33 +0300
+Message-ID: <20241017085136.68053-1-y.oudjana@protonmail.com>
+X-Mailer: git-send-email 2.47.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH] pinctrl: mediatek: paris: Revert "Rework support for
- PIN_CONFIG_{INPUT,OUTPUT}_ENABLE"
-Content-Language: en-US
-To: Bo Ye <bo.ye@mediatek.com>, Sean Wang <sean.wang@kernel.org>, Linus
- Walleij <linus.walleij@linaro.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, <Jades.shih@mediatek.com>,
-	<ivan.tseng@mediatek.com>
-CC: Yongdong Zhang <yongdong.zhang@mediatek.com>, Xiujuan Tan
-	<xiujuan.tan@mediatek.com>, Browse Zhang <browse.zhang@mediatek.com>, Light
- Hsieh <light.hsieh@mediatek.com>, Evan Cao <ot_evan.cao@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>
-References: <20241017075522.178337-1-bo.ye@mediatek.com>
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-In-Reply-To: <20241017075522.178337-1-bo.ye@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241017_011542_571721_EFB092B0 
-X-CRM114-Status: GOOD (  23.40  )
+X-CRM114-CacheID: sfid-20241017_015155_813790_51CC024E 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,104 +106,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Yassine Oudjana <y.oudjana@protonmail.com>
 
+These patches are part of a larger effort to support the MT6735 SoC family in
+mainline Linux. More patches (unsent or sent and pending review or revision)
+can be found here[1].
 
-On 10/17/24 15:55, Bo Ye wrote:
-> [This reverts commit c5d3b64c568a344e998830e0e94a7c04e372f89b.]
-> 
-> For MTK HW,
-> 1. to enable GPIO input direction: set DIR=0, IES=1
-> 2. to enable GPIO output direction: set DIR=1, and set DO=1 to output high, set DO=0 to out low
-> 
-> The PIN_CONFIG_INPUT/PIN_CONFIG_OUTPUT/PIN_CONFIG_INPUT_ENABLE/PIN_CONFIG_OUTPUT_ENABLE shall
-> be implemented according to view of its purpose - set GPIO direction and output value (for
-> output only) according to specific HW design.
-> 
-> However, the reverted patch implement according to author's own explanation of IES without
-> understanding of MTK's HW. Such patch does not correctly set DIR/IES bit to control GPIO
-> direction on MTK's HW.
-> 
-> Signed-off-by: Light Hsieh <light.hsieh@mediatek.com>
-> Signed-off-by: Evan Cao <ot_evan.cao@mediatek.com>
-> Signed-off-by: Bo Ye <bo.ye@mediatek.com>
+This series adds support for most SCPSYS power domains on MT6735. See patches
+for details.
 
-The "Fixes:" tag is missing. Please add it.
+Changes since v2:
+- Rename DT bindings header to mediatek,mt6735-power-controller.h
+- Remove comment citing header from DT bindings
+Changes since v1:
+- Squash DT binding patches
+- Dual-licence DT binding as GPL/BSD
+- Switch to mtk-pm-domains driver
+- Add MFG bus protection bit
 
-Besides, please update "MAINTAINERS" file with the correct owner.
+[1] https://gitlab.com/mt6735-mainline/linux/-/commits/mt6735-staging
 
-The Linux kernel is open source and anyone modify it.
-If the patch appears reasonable and has been tested, it usually
-will be accepted as long as there are no opposing review opinions.
+Yassine Oudjana (2):
+  dt-bindings: power: Add binding for MediaTek MT6735 power controller
+  soc: mediatek: pm-domains: Add support for MT6735
 
+ .../power/mediatek,power-controller.yaml      |  1 +
+ .../bindings/soc/mediatek/scpsys.txt          |  1 +
+ drivers/pmdomain/mediatek/mt6735-pm-domains.h | 96 +++++++++++++++++++
+ drivers/pmdomain/mediatek/mtk-pm-domains.c    |  5 +
+ drivers/pmdomain/mediatek/mtk-pm-domains.h    |  2 +
+ .../power/mediatek,mt6735-power-controller.h  | 14 +++
+ include/linux/soc/mediatek/infracfg.h         |  5 +
+ 7 files changed, 124 insertions(+)
+ create mode 100644 drivers/pmdomain/mediatek/mt6735-pm-domains.h
+ create mode 100644 include/dt-bindings/power/mediatek,mt6735-power-controller.h
 
-> ---
->   drivers/pinctrl/mediatek/pinctrl-paris.c | 38 +++++++++++++++++-------
->   1 file changed, 27 insertions(+), 11 deletions(-)
-> 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-> index 87e958d827bf..a8af62e6f8ca 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-> @@ -165,21 +165,20 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
->   		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_SR, &ret);
->   		break;
->   	case PIN_CONFIG_INPUT_ENABLE:
-> -		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_IES, &ret);
-> -		if (!ret)
-> -			err = -EINVAL;
-> -		break;
-> -	case PIN_CONFIG_OUTPUT:
-> +	case PIN_CONFIG_OUTPUT_ENABLE:
->   		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &ret);
->   		if (err)
->   			break;
-> +		/*     CONFIG     Current direction return value
-> +		 * -------------  ----------------- ----------------------
-> +		 * OUTPUT_ENABLE       output       1 (= HW value)
-> +		 *                     input        0 (= HW value)
-> +		 * INPUT_ENABLE        output       0 (= reverse HW value)
-> +		 *                     input        1 (= reverse HW value)
-> +		 */
-> +		if (param == PIN_CONFIG_INPUT_ENABLE)
-> +			ret = !ret;
->   
-> -		if (!ret) {
-> -			err = -EINVAL;
-> -			break;
-> -		}
-> -
-> -		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DO, &ret);
->   		break;
->   	case PIN_CONFIG_INPUT_SCHMITT_ENABLE:
->   		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &ret);
-> @@ -284,9 +283,26 @@ static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
->   			break;
->   		err = hw->soc->bias_set_combo(hw, desc, 0, arg);
->   		break;
-> +	case PIN_CONFIG_OUTPUT_ENABLE:
-> +		err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_SMT,
-> +				       MTK_DISABLE);
-> +		/* Keep set direction to consider the case that a GPIO pin
-> +		 *  does not have SMT control
-> +		 */
-> +		if (err != -ENOTSUPP)
-> +			break;
-> +
-> +		err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DIR,
-> +				       MTK_OUTPUT);
-> +		break;
->   	case PIN_CONFIG_INPUT_ENABLE:
->   		/* regard all non-zero value as enable */
->   		err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_IES, !!arg);
-> +		if (err)
-> +			break;
-> +
-> +		err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DIR,
-> +				       MTK_INPUT);
->   		break;
->   	case PIN_CONFIG_SLEW_RATE:
->   		/* regard all non-zero value as enable */
+-- 
+2.47.0
 
-Best regards,
-Macpaul Lin
 
