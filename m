@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDC57D21274
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 10:15:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75631D21274
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 10:26:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P/ldqU0lzpC+jigHKiT3H8mRxHitUqgK5gR/502ALFc=; b=Vgo1bT5meUQ+g8p/cE8Z+pGQDZ
-	y1LTbl0qLYrV15ImSVFMgBXL4awCdipwF+r5XnVyFjip7xz4brDsMgsqEY1SV8axKKGlvLX9wKh1j
-	dOf9g/uPx7t7PA7wziVUWiDQRtkQ+iaHMBBKzmdGfIuc+grh45u+l+5yxuM1J+xAOri7i+oSnNC9E
-	eItVco9kGIdk2grEC7gAVjYqODpeQu7X6VLqS5WId9KL2F3zYUWqlWr/beoU8NFxxVEmjH2yD2NXH
-	vrRDIDkefPT61E9ppCkN9G/wj4Xgtybisf8vOR7nw5steLi6rCZRuAY5BgUM3u5llNAXdQLxcEvbB
-	fdnU/jwQ==;
+	bh=KJ+BdGXQtTmbT+P9cEUt353sOLxGJLpTG39VFrW+Zl8=; b=28d96qGUFtJioFCyV+D/jHQmg1
+	aIE+FBGuanHXhHPeEp3fpWUaUDeFsWqbDbNTioHMF8PBSDaVpOAel6pKic1PmhPNNut9n5wY+57kn
+	iAtwUqT6YCWCwdrrKkaJKxococoZsbcGxKccp3OZCt9w8dCg7VJCDSCv1xDHqon9c8GYDq/FQXFkC
+	Cz7ueV/dO0PEKHFbO+9RlEIlSwMn3jdJtjOMcViTj87upNFLHjkSIJ3n2phs9Iz11LumUYxtlRGoh
+	LJhmgGEezjHOeJ0ml3IXLKMhVUiFZdUPD4Oh3g2EaTDPuqzFyEzIPEmP1ZZMCirp6u93KJdGFtB5h
+	YkmtEMEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1NXr-0000000EUPu-2jB0;
-	Thu, 17 Oct 2024 10:15:51 +0000
-Received: from mgamail.intel.com ([192.198.163.16])
+	id 1t1Nhn-0000000EVfq-1he0;
+	Thu, 17 Oct 2024 10:26:07 +0000
+Received: from mgamail.intel.com ([192.198.163.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1NAx-0000000EQ44-2WQP;
-	Thu, 17 Oct 2024 09:52:15 +0000
+	id 1t1NJ9-0000000ES3O-3jdk;
+	Thu, 17 Oct 2024 10:00:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1729158731; x=1760694731;
+  t=1729159240; x=1760695240;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=qOkRZ7dA9PBpum+aq1ZRnwF90KyGgZL2XumS6gLtwOI=;
-  b=mTkcc8po1eqEXVjwQSh8hBIYqW99o/GsoUP0HmM4ErKTPVgv8Fn7XlJD
-   naN+PEeP6BebPws93s0mwYVz1hO9+gBDOTZU7mxMHFRbT+JOBlFRpU0ZR
-   6UV2pP92+UB7jshcDFTyjFMfJMSr+cS3vh6oLotSTYMMvSExTg+Scz3vB
-   iPOdOAZvD44O8Gi2w4U6CSFB6SZTFiymiUjrrvqQwYFD2gcJOuL25xlwp
-   1dHKaq8VGzxaT931r8+wthH2PlNvA8flbhcIxPl2i2GMe7ej/H6FdzO5o
-   uxVfjuerWcoJSPeSUqoTWQPUrnDBp/IU7p7jkslPi3KGeHRABVtB/8UvO
-   A==;
-X-CSE-ConnectionGUID: 5CRp3x/VR/eBCinocKQcmA==
-X-CSE-MsgGUID: 4kt8ToNaRa+VxV9fFp0rEA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11227"; a="16254568"
+  bh=j6dtf+1nsGntL6BOPrfU67/30TxswPd84Ugr4PzJXJU=;
+  b=M9z1zxcRY7dhIoPI2MlZ2ffFJpmZ/GGXyAuoqpE3taxzWprC6PEEmZtD
+   BzCtZUlmk55RxGOr0hkKb47gwLa7C8b4CaYatdbNUrF9IvCyfsL7MNs+j
+   gL5n3THdElHld/V2Z2lkymvmjxgF5hXcR88fRjJOyLL3+BcqmF+mMgtgT
+   JrU28Ay9dJQowEbdYUbmwhgUNqxRgExdsb6Cuj0E8Fz2R8UCN7uQPXXpn
+   UpYSBKmheywqX72ExY3dHf4PAenIu8bYufSy87coMsZFnBKQOcgc6DypN
+   EhebX6Z0hzH2Z0LcDx3W0uJh3bhPc4m2SP2/2xbQNCSR7FuwvU0lBMfUi
+   Q==;
+X-CSE-ConnectionGUID: wf1kQAtgQt2bgPGA1NfwPA==
+X-CSE-MsgGUID: 9xQWIQPnSsGT044oZAgHPA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11227"; a="28845184"
 X-IronPort-AV: E=Sophos;i="6.11,210,1725346800"; 
-   d="scan'208";a="16254568"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Oct 2024 02:52:08 -0700
-X-CSE-ConnectionGUID: PFFFUSpWQdyCQtOZxuGdoA==
-X-CSE-MsgGUID: 2P9XLtXyRTCx1SyNHhTWHQ==
+   d="scan'208";a="28845184"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Oct 2024 03:00:39 -0700
+X-CSE-ConnectionGUID: Vd/xbfNLREKHhrzvo/Ki8A==
+X-CSE-MsgGUID: pH7o0+e9SXWfNTmMB00Ypw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.11,210,1725346800"; 
-   d="scan'208";a="83567930"
+   d="scan'208";a="109247908"
 Received: from smile.fi.intel.com ([10.237.72.154])
-  by orviesa004.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Oct 2024 02:52:04 -0700
+  by fmviesa001.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Oct 2024 03:00:35 -0700
 Received: from andy by smile.fi.intel.com with local (Exim 4.98)
 	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1t1NAn-000000044du-1N8X;
-	Thu, 17 Oct 2024 12:52:01 +0300
-Date: Thu, 17 Oct 2024 12:52:01 +0300
+	id 1t1NJ2-000000044ml-3TYc;
+	Thu, 17 Oct 2024 13:00:32 +0300
+Date: Thu, 17 Oct 2024 13:00:32 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
@@ -70,18 +70,17 @@ Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
 	Douglas Anderson <dianders@chromium.org>,
 	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
 	linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v9 3/7] i2c: Introduce OF component probe function
-Message-ID: <ZxDeQcLVR1LK24Zr@smile.fi.intel.com>
+Subject: Re: [PATCH v9 0/7] platform/chrome: Introduce DT hardware prober
+Message-ID: <ZxDgQISmr_gn_aDF@smile.fi.intel.com>
 References: <20241017094222.1014936-1-wenst@chromium.org>
- <20241017094222.1014936-4-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241017094222.1014936-4-wenst@chromium.org>
+In-Reply-To: <20241017094222.1014936-1-wenst@chromium.org>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241017_025211_676105_FADC230A 
-X-CRM114-Status: GOOD (  24.64  )
+X-CRM114-CacheID: sfid-20241017_030039_966522_F5A632C8 
+X-CRM114-Status: GOOD (  19.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,55 +95,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 17, 2024 at 05:34:38PM +0800, Chen-Yu Tsai wrote:
-> Some devices are designed and manufactured with some components having
-> multiple drop-in replacement options. These components are often
-> connected to the mainboard via ribbon cables, having the same signals
-> and pin assignments across all options. These may include the display
-> panel and touchscreen on laptops and tablets, and the trackpad on
-> laptops. Sometimes which component option is used in a particular device
-> can be detected by some firmware provided identifier, other times that
-> information is not available, and the kernel has to try to probe each
-> device.
-> 
-> This change attempts to make the "probe each device" case cleaner. The
-> current approach is to have all options added and enabled in the device
-> tree. The kernel would then bind each device and run each driver's probe
-> function. This works, but has been broken before due to the introduction
-> of asynchronous probing, causing multiple instances requesting "shared"
-> resources, such as pinmuxes, GPIO pins, interrupt lines, at the same
-> time, with only one instance succeeding. Work arounds for these include
-> moving the pinmux to the parent I2C controller, using GPIO hogs or
-> pinmux settings to keep the GPIO pins in some fixed configuration, and
-> requesting the interrupt line very late. Such configurations can be seen
-> on the MT8183 Krane Chromebook tablets, and the Qualcomm sc8280xp-based
-> Lenovo Thinkpad 13S.
-> 
-> Instead of this delicate dance between drivers and device tree quirks,
-> this change introduces a simple I2C component probe function. For a
-> given class of devices on the same I2C bus, it will go through all of
-> them, doing a simple I2C read transfer and see which one of them responds.
-> It will then enable the device that responds.
-> 
-> This requires some minor modifications in the existing device tree. The
-> status for all the device nodes for the component options must be set
-> to "fail-needs-probe". This makes it clear that some mechanism is
-> needed to enable one of them, and also prevents the prober and device
-> drivers running at the same time.
+On Thu, Oct 17, 2024 at 05:34:35PM +0800, Chen-Yu Tsai wrote:
 
-...
+> For the I2C component (touchscreens and trackpads) case from the
+> original series, the hardware prober driver finds the particular
+> class of device in the device tree, gets its parent I2C adapter,
+> and tries to initiate a simple I2C read for each device under that
+> I2C bus. When it finds one that responds, it considers that one
+> present, marks it as "okay", and returns, letting the driver core
+> actually probe the device.
+> 
+> This works fine in most cases since these components are connected
+> via a ribbon cable and always have the same resources. The prober
+> will also grab these resources and enable them.
+> 
+> The other case, selecting a display panel to use based on the SKU ID
+> from the firmware, hit a bit of an issue with fixing the OF graph.
+> It has been left out since v3.
+> 
+> Patch 1 adds of_changeset_update_prop_string(), as requested by Rob.
+> 
+> Patch 2 adds for_each_child_of_node_with_prefix(), as suggested by Andy.
 
-> +#include <linux/cleanup.h>
-> +#include <linux/device.h>
-> +#include <linux/dev_printk.h>
-> +#include <linux/err.h>
-> +#include <linux/i2c.h>
-> +#include <linux/i2c-of-prober.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/slab.h>
+> Patch 3 implements probing the I2C bus for presence of components as
+> a hookable helper function in the I2C core.
+> 
+> Patch 4 implements regulator supply support as a set of simple helpers
+> for the I2C component prober.
+> 
+> Patch 5 implements GPIO support for the I2C component prober simple
+> helpers.
 
-In case you need a new version, also add stddef.h for NULL definition.
+Not that I am really a fan of the idea, but I have nothing to counter propose.
+Also my big concern about random msleep() calls seems to be addressed in a way
+that it's now a caller's problem to supply the (correct) one.
+
+Hence FWIW,
+Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+for patches 3,4, and 5.
+
+> Patch 6 adds a ChromeOS specific DT hardware prober. This initial
+> version targets the Hana Chromebooks, probing its I2C trackpads and
+> touchscreens.
+> 
+> Patch 7 modifies the Hana device tree and marks the touchscreens
+> and trackpads as "fail-needs-probe", ready for the driver to probe.
 
 -- 
 With Best Regards,
