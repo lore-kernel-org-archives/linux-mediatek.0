@@ -4,90 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D235D3C52B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 18:39:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78BBBD3C52C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 19:26:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pXm+8IBFvz1ujYC5/BdUieoeB4O8UBo9KmKYceLh5ts=; b=ZSbciUd5lYkvnq
-	NZlt9j5+puhZB956g/46nkhu3KgoaUoaUnIJwDvfAtmRnmwheZ1ESeo6/Z6y7goBpHQeghMVpCR4j
-	xDu8gffaU4ZhqfTppiJ9aM+SvYXYiGHo1Hy3n8/TPCMaGutJa8lRe0MqHnbWA/LLt468p+RzqS638
-	A581p2uXcxvGjYEFH7PIGSAtuI9uRKjo387V2zINjOsErU9z8HcvogNtKkJt1gIvZ7wLAVxDGCIwP
-	S48/vnKFgquR9O0hDh9zgwFUB6xsGBXbdkJtSBVMY1xa92MWhmxBA77AA/sz4E8Srh1kxX8b+qzq8
-	eGDqYedSpQvnyzi1y5nw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=E89hryLxgKiF/GmdeFH0jIvDQbgZ8NL6L5dKM51hM+E=; b=PMs3CjSwXAhGNgDE0ITsF5yNPl
+	fwzhBlfXkOh1jzCvD9HfQJtmktRA39klBymINxQ9Fh1jkSZSg1wlnmvieC/iLDqIgxY5Tann/Bc7a
+	/zC9AO26eikKOF+G6/0OXcipS+LfCWl3zl4KbULaomrtpH9j46x1LsOhmRB1wik9/94XYS7MLk8Ft
+	GPEWpYPXqLcaLgit8y5pdZG9eUC8iuZWlyN5T8SZgQnbvk0Tl3rkjls53bVq2PyXynnObN/HQoY9I
+	lG77zBmvErEN2UfD6UszLqZ6WOtX90gSGZ7hq1FbEDy0pAGYoZkowwqP29VGRtxgvCdVCH72KksLT
+	KwuU3fyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1VPc-0000000Ftru-480R;
-	Thu, 17 Oct 2024 18:39:52 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1t1W8t-0000000G1kF-2Ryz;
+	Thu, 17 Oct 2024 19:26:39 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1VPM-0000000Ftmq-13he;
-	Thu, 17 Oct 2024 18:39:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=pXm+8IBFvz1ujYC5/BdUieoeB4O8UBo9KmKYceLh5ts=; b=N5VrXGkgAWFovrbKgWzKyOBDom
-	d46SQYNLOSfMSOWuHmaIHAObkvJwCWdni6bSN1N8KpOLojafzKd21+7Ys++FKchnkzKicr/jZeVOE
-	AB5cuhC6sIIQGfik6tREtlG4yFK3VUEAilMGd9OUAz7A0au20F+kOiUsxFf7OBUtPyU4=;
-Received: from p4ff13b65.dip0.t-ipconnect.de ([79.241.59.101] helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.96)
-	(envelope-from <nbd@nbd.name>)
-	id 1t1VP4-00AwP2-1f;
-	Thu, 17 Oct 2024 20:39:18 +0200
-Message-ID: <b78b8659-d89d-4fd4-b922-f3c24b705deb@nbd.name>
-Date: Thu, 17 Oct 2024 20:39:17 +0200
+	id 1t1W7Q-0000000G1eG-0R3t;
+	Thu, 17 Oct 2024 19:25:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 938D1A40E2F;
+	Thu, 17 Oct 2024 19:24:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2F66FC4CEC3;
+	Thu, 17 Oct 2024 19:25:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1729193106;
+	bh=E89hryLxgKiF/GmdeFH0jIvDQbgZ8NL6L5dKM51hM+E=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=tdVfDNpI9yLmY7DxePm14sqBwMo5ii05QPABekiRvSI+nObMfBPAUUubx78jTxvuS
+	 gmzdn0VjgdJDAz1bcfFdPy8DWMfhzViV06rQYw5+ii1OujVrlA9oVj7EZ1kLaL6oLg
+	 arSXURs+JG8aBP4I5xpuTL6EvLXqG3NwsJWiz4vq1QM524fDyKaGWyzGglDq57VLTO
+	 Zy5UvHuOzQAVU+h5HQJtS+QIBMsiwPbGLUi5JQX4Pp8PA3+yoZvaghoyLvJHfXapZN
+	 swh24zJetDqkNslAKHJrfU/RGkPmE38AF/Cq+DhoVr1EjRVexqbdPmGA6PklzxsVC+
+	 D5Nc+EXSudn7g==
+Message-ID: <d1b1c3cfb6b97c32aa63a07d3468a1f7.sboyd@kernel.org>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v1 net-next 00/12] bridge-fastpath and related
- improvements
-To: Pablo Neira Ayuso <pablo@netfilter.org>
-References: <20241013185509.4430-1-ericwouds@gmail.com>
- <9f9f3cf0-7a78-40f1-b8d5-f06a2d428210@blackwall.org>
- <a07cadd3-a8ff-4d1c-9dca-27a5dba907c3@gmail.com>
- <0b0a92f2-2e80-429c-8fcd-d4dc162e6e1f@nbd.name>
- <137aa23a-db21-43c2-8fb0-608cfe221356@gmail.com>
- <a7ab80d5-ff49-4277-ba73-db46547a8a8e@nbd.name>
- <d7d48102-4c52-4161-a21c-4d5b42539fbb@gmail.com>
- <b5739f78-9cd5-4fd0-ae63-d80a5a37aaf0@nbd.name> <ZxEFdX1uoBYSFhBF@calendula>
- <eb9006ae-4ded-4249-ad0e-cf5b3d97a4cb@nbd.name> <ZxFS7XBgFXsqUlkO@calendula>
-From: Felix Fietkau <nbd@nbd.name>
-Content-Language: en-US
-Autocrypt: addr=nbd@nbd.name; keydata=
- xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
- ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
- Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
- AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
- vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
- wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
- TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
- l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
- dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
- HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
- VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
- CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
- VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
- Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
- DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
- wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
- f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
- aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
- FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
- TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
- GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
- cL98efvrjdstUfTCP2pfetyN
-In-Reply-To: <ZxFS7XBgFXsqUlkO@calendula>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20241017071708.38663-2-y.oudjana@protonmail.com>
+References: <20241017071708.38663-1-y.oudjana@protonmail.com> <20241017071708.38663-2-y.oudjana@protonmail.com>
+Subject: Re: [PATCH v7 1/2] dt-bindings: clock: Add MediaTek MT6735 clock and reset bindings
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: Uwe =?utf-8?q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>, Yassine Oudjana <y.oudjana@protonmail.com>, Yassine Oudjana <yassine.oudjana@gmail.com>, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Conor Dooley <conor.dooley@microchip.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Bartosz Golaszewski <brgl@bgdev.pl>, Conor Dooley <conor+dt@kernel.org>, Daniel Golle <daniel@makrotopia.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>, Sam Shih <sam.shih@mediatek.com>, Yassine Oudjana <yassine.oudjana@gmail.com>
+Date: Thu, 17 Oct 2024 12:25:04 -0700
+User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241017_113936_333582_1CA11CA6 
-X-CRM114-Status: GOOD (  24.26  )
+X-CRM114-CacheID: sfid-20241017_122508_235159_66997FF6 
+X-CRM114-Status: UNSURE (   5.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,68 +68,20 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nikolay Aleksandrov <razor@blackwall.org>, Daniel Golle <daniel@makrotopia.org>, Eric Dumazet <edumazet@google.com>, Jozsef Kadlecsik <kadlec@netfilter.org>, coreteam@netfilter.org, Roopa Prabhu <roopa@nvidia.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, Jiri Pirko <jiri@resnulli.us>, bridge@lists.linux.dev, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, netfilter-devel@vger.kernel.org, Eric Woudstra <ericwouds@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17.10.24 20:09, Pablo Neira Ayuso wrote:
-> On Thu, Oct 17, 2024 at 07:06:51PM +0200, Felix Fietkau wrote:
->> On 17.10.24 14:39, Pablo Neira Ayuso wrote:
->> > On Thu, Oct 17, 2024 at 11:17:09AM +0200, Felix Fietkau wrote:
->> > [...]
->> > > By the way, based on some reports that I received, I do believe that the
->> > > existing forwarding fastpath also doesn't handle roaming properly.
->> > > I just didn't have the time to properly look into that yet.
->> > 
->> > I think it should work for the existing forwarding fastpath.
->> > 
->> > - If computer roams from different port, packets follow classic path,
->> >    then new flow entry is created. The flow old entry expires after 30
->> >    seconds.
->> > - If route is stale, flow entry is also removed.
->> > 
->> > Maybe I am missing another possible scenario?
->> 
->> I'm mainly talking about the scenario where a computer moves to a different
->> switch port on L2 only, so all routes remain the same.
->> 
->> I haven't fully analyzed the issue, but I did find a few potential issues
->> with what you're describing.
->> 
->> 1. Since one direction remains the same when a computer roams, a new flow
->> entry would probably fail to be added because of an existing entry in the
->> flow hash table.
-> 
-> I don't think so, hash includes iifidx.
+Quoting Yassine Oudjana (2024-10-17 00:17:05)
+> From: Yassine Oudjana <y.oudjana@protonmail.com>
+>=20
+> Add clock definitions for the main clock and reset controllers of MT6735
+> (apmixedsys, topckgen, infracfg and pericfg).
+>=20
+> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+> Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> ---
 
-I'm talking about the side where the input ifindex remains the same, but 
-the output interface doesn't.
-
->> 2. Even with that out of the way, the MTK hardware offload currently does
->> not support matching the incoming switch/ethernet port.
->> So even if we manage to add an updated entry, the old entry could still be
->> kept alive by the hardware.
-> 
-> OK, that means probably driver needs to address the lack of iifidx in
-> the matching by dealling with more than one single flow entry to point
-> to one single hardware entry (refcounting?).
-
-If we have multiple colliding entries, I think a more reasonable 
-behavior would be allowing the newer flow to override the older one.
-
->> The issues I found probably wouldn't cause connection hangs in pure L3
->> software flow offload, since it will use the bridge device for xmit instead
->> of its members. But since hardware offload needs to redirect traffic to
->> individual bridge ports, it could cause connection hangs with stale flow
->> entries.
-> 
-> I would not expect a hang, packets will just flow over classic path
-> for a little while for the computer that is roaming until the new flow
-> entry is added.
-
-If the hardware still handles traffic, but redirects it to the wrong 
-destination port, the connection will hang.
-
-- Felix
-
+Applied to clk-next
 
