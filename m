@@ -4,78 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6A49D2127C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 11:22:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6204D37487
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 12:50:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
-	Subject:Message-ID:Mime-Version:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=n8lX1GmEtOr6LjU6fqL4HANwkfAPHfX1qh42rxSH5WY=; b=UOX+R/AuiEGF1tQUv0eEiNhpzZ
-	uZ4v7Iz6h5D6DkgI/DhjF8ZxXm7HkrX+xJ73BesDp38sRUTr82NvZvrcJTo8jkuHm1zOIVvCCxwl1
-	RA2VOMsKUVOdE6IuYe+ElpkESPlPKSZ2fegvPgWeXEa5g6nynMlMuj2TQslQxullaK9UFOYyM7LQK
-	A4FHfvXUxo6ysD78lx3oMwZsMgv+EaxqHHWspCDf3FfgiXhLSHyZdGaZWjsvpUvxA0g673VhNEpyw
-	+37/ESQwAgULi4qA0BTaE+Mho4r75AGXLAwaWWjZXEfUQLFsYexOjZ8jxZA6tYWMtkpxGeIY2RCGu
-	yf3wGVhw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gYE2gysXr1blfj4n407WZybSRxm2Uc9PlWzDKaMkeJA=; b=Y7ghwbDLqmyqSt915qP3wcpGxY
+	uWGjzEYJt3cwJXlK/vo5yoYQk/JI/f7i34sv+Re9nuX02TGACJ5FpKFwFFsonDB5uXYhdGW3ndvno
+	NwnKOJqG0eujP2vDzccaLxsdsieDKDS2TromheL/e6CknZTrsX500kxPRTqKjHBZXQ859u9GzRTcU
+	Z3ql7Oc/WpeqbnpNc5cW0nOLHfUKQyYrg85L8+euMDQsM9KNl61Pwij0cRGz5TK1L+N+Za3OsRoWR
+	31rlL3Jlw+t2z5OKIhN3yI7yUBlB/YvSqBsNYreBd+f88gzi/1k6sQqhngjVSmnNNhj9Iem0xvVD9
+	8Ox0B/8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1Oa8-0000000Ed1K-1WRY;
-	Thu, 17 Oct 2024 11:22:16 +0000
-Received: from mail-ej1-x649.google.com ([2a00:1450:4864:20::649])
+	id 1t1Pxk-0000000Epma-0Wv6;
+	Thu, 17 Oct 2024 12:50:44 +0000
+Received: from ganesha.gnumonks.org ([2001:780:45:1d:225:90ff:fe52:c662])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1OYd-0000000EcrQ-0q34
-	for linux-mediatek@lists.infradead.org;
-	Thu, 17 Oct 2024 11:20:47 +0000
-Received: by mail-ej1-x649.google.com with SMTP id a640c23a62f3a-a99ef476aadso54699066b.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 17 Oct 2024 04:20:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1729164041; x=1729768841; darn=lists.infradead.org;
-        h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=n8lX1GmEtOr6LjU6fqL4HANwkfAPHfX1qh42rxSH5WY=;
-        b=O8aBiZP8rslhjCL84Q+aTAS9L76PjuZwpRpND75lgtNqEkcJmb9Lkn6qS4BkPI9ftd
-         2mvqQwJHB2hvpIn2XV3JdtYB+x+Tyw2okVXoGuWEiqoZDc7kA+Rqe6JQ2OLbEuJuHQTa
-         H/7970IMLqst1ZBmgTIaDXzbDabi8IvovQ7sbWJi4pdnAhggLNoDRioaFKW3WczQGQS8
-         JPUtjAaBUGpJ2HV8toXZ8m6HNH02jw3ShU865v2tLA7krRqgEXoEUjSZvbXXIaUHOIto
-         vBLoArnlUiWhryOU/DjPb5+y/zaSaR1ed13oIAvpa2E2fdPzWawMVySVthFNJ0BK9jDf
-         UN4g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729164041; x=1729768841;
-        h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=n8lX1GmEtOr6LjU6fqL4HANwkfAPHfX1qh42rxSH5WY=;
-        b=hiU1bldo2rZb+3sQM4JytwhCy5YI2ls501XCTPeNY9MBGUxGfg9u9HchE5eNgrh7wX
-         ru9z/PUjq7D+5lW95BlUXyXpi+Rh9g6+0NugrjyfC3EJm9gBzs6M9v4tAvh36T9Z+QAs
-         JmBUgH1ve3OmXLNRdTNh6bJknKaDr1c12L7x97l/LipTNLNyjbbVBJ/MW68l+07H3z8G
-         sp//gHgnItH7JhpaJ/vv1vqK29ntvNpdBZ4osFOSB/StGykKn1+qM2cXQRJi4BGP7Eek
-         kbgHV6+8VTH6meVokdHsl0lAwqDu5uiIduXsuqFZ1OeQPAoTQlxcD325sIeLImkTZEUA
-         UcBw==
-X-Forwarded-Encrypted: i=1; AJvYcCV6uRR3TrDPK2iA3GZL/oljaGDXg1iLDAadkv9RTBXeJHaXPABSNFIj9rnn5dCh7QfBm2udS56zqDu1LMhMRg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyuDqFxnFxg5seVfuzcZinyoP93RoAQWikKbsmC6ceRsfFkt6eW
-	spY3sFgC4gqh2SHUymiH+6sbanIng2tUn23gd9tDb7F0m/nJqGw/+JKgt542Tg+8VrY/AmA89y/
-	v5+t5Uw==
-X-Google-Smtp-Source: AGHT+IEDyt+T9WSjQe2tPO5YQX5MHOujfHpdD7iqlf6ce9MuLBoasfebCTsbGQEpakvLtWeTyF2ZgqEh5dA8
-X-Received: from al-for-all.c.googlers.com ([fda3:e722:ac3:cc00:31:98fb:c0a8:545])
- (user=konrada job=sendgmr) by 2002:a17:906:bcc5:b0:a99:fe61:adcb with SMTP id
- a640c23a62f3a-a9a34c7ac36mr210566b.1.1729164040346; Thu, 17 Oct 2024 04:20:40
- -0700 (PDT)
-Date: Thu, 17 Oct 2024 11:20:36 +0000
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.47.0.105.g07ac214952-goog
-Message-ID: <20241017112036.368772-1-konrada@google.com>
-Subject: [PATCH] iommu/mediatek: Add PGTABLE_PA_35_EN to mt8186 platform data
-From: Konrad Adamczyk <konrada@google.com>
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, 
-	Robin Murphy <robin.murphy@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, iommu@lists.linux.dev, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Cc: Wojciech Macek <wmacek@google.com>, Konrad Adamczyk <konrada@google.com>
-Content-Type: text/plain; charset="UTF-8"
+	id 1t1Pmq-0000000EnZN-3pXy;
+	Thu, 17 Oct 2024 12:39:30 +0000
+Received: from [78.30.37.63] (port=43634 helo=gnumonks.org)
+	by ganesha.gnumonks.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <pablo@gnumonks.org>)
+	id 1t1Pmg-00Eunf-4s; Thu, 17 Oct 2024 14:39:20 +0200
+Date: Thu, 17 Oct 2024 14:39:17 +0200
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Felix Fietkau <nbd@nbd.name>
+Subject: Re: [PATCH RFC v1 net-next 00/12] bridge-fastpath and related
+ improvements
+Message-ID: <ZxEFdX1uoBYSFhBF@calendula>
+References: <20241013185509.4430-1-ericwouds@gmail.com>
+ <9f9f3cf0-7a78-40f1-b8d5-f06a2d428210@blackwall.org>
+ <a07cadd3-a8ff-4d1c-9dca-27a5dba907c3@gmail.com>
+ <0b0a92f2-2e80-429c-8fcd-d4dc162e6e1f@nbd.name>
+ <137aa23a-db21-43c2-8fb0-608cfe221356@gmail.com>
+ <a7ab80d5-ff49-4277-ba73-db46547a8a8e@nbd.name>
+ <d7d48102-4c52-4161-a21c-4d5b42539fbb@gmail.com>
+ <b5739f78-9cd5-4fd0-ae63-d80a5a37aaf0@nbd.name>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <b5739f78-9cd5-4fd0-ae63-d80a5a37aaf0@nbd.name>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241017_042043_260462_E0459060 
-X-CRM114-Status: GOOD (  10.30  )
+X-CRM114-CacheID: sfid-20241017_053928_997584_6F3A8029 
+X-CRM114-Status: UNSURE (   9.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,33 +64,24 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Nikolay Aleksandrov <razor@blackwall.org>, Daniel Golle <daniel@makrotopia.org>, Eric Dumazet <edumazet@google.com>, Jozsef Kadlecsik <kadlec@netfilter.org>, coreteam@netfilter.org, Roopa Prabhu <roopa@nvidia.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, Jiri Pirko <jiri@resnulli.us>, bridge@lists.linux.dev, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, netfilter-devel@vger.kernel.org, Eric Woudstra <ericwouds@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8186 chip supports 35-bit physical addresses in page table [1].
-Set this platform flag.
+On Thu, Oct 17, 2024 at 11:17:09AM +0200, Felix Fietkau wrote:
+[...]
+> By the way, based on some reports that I received, I do believe that the
+> existing forwarding fastpath also doesn't handle roaming properly.
+> I just didn't have the time to properly look into that yet.
 
-[1] MT8186G_Application Processor Functional Specification_v1.0
+I think it should work for the existing forwarding fastpath.
 
-Signed-off-by: Konrad Adamczyk <konrada@google.com>
----
- drivers/iommu/mtk_iommu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+- If computer roams from different port, packets follow classic path,
+  then new flow entry is created. The flow old entry expires after 30
+  seconds.
+- If route is stale, flow entry is also removed.
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 6a2707fe7a78..c45313c43b9e 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -1599,7 +1599,7 @@ static const unsigned int mt8186_larb_region_msk[MT8192_MULTI_REGION_NR_MAX][MTK
- static const struct mtk_iommu_plat_data mt8186_data_mm = {
- 	.m4u_plat       = M4U_MT8186,
- 	.flags          = HAS_BCLK | HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN |
--			  WR_THROT_EN | IOVA_34_EN | MTK_IOMMU_TYPE_MM,
-+			  WR_THROT_EN | IOVA_34_EN | MTK_IOMMU_TYPE_MM | PGTABLE_PA_35_EN,
- 	.larbid_remap   = {{0}, {1, MTK_INVALID_LARBID, 8}, {4}, {7}, {2}, {9, 11, 19, 20},
- 			   {MTK_INVALID_LARBID, 14, 16},
- 			   {MTK_INVALID_LARBID, 13, MTK_INVALID_LARBID, 17}},
--- 
-2.47.0.105.g07ac214952-goog
+Maybe I am missing another possible scenario?
 
+Thanks.
 
