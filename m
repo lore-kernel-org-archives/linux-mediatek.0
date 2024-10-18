@@ -4,74 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 233EAD30016
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 15:23:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3982D30016
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 15:25:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PxEsjCf31Tkw005I9P1OmCSB7WQrpxMmqDKHcNpjckI=; b=k84crakrDphbabOcoZBIxhzd44
-	FSv4WttFUo6O3oTYWNSb3CBXagayk7XMRTlLpAmImfH+8rzBEHT+rlFTHvfG7yJahbq2VapE0sTHf
-	Vg4XIzKSl3h4HKkzoyenDSqd5n6hWLbU79Fo8hqQ+hA/aObhYiAFx+2OFiWoEuaWOKfQ+Goqnx94I
-	DWRmIo0oAmJhH71gH0F0hS/wheSThsgErvWMHNnQeU3Jc2t3hJKUj/6q8F4FFOTjAyu9ajVPLQvWu
-	xb4fZ+la+rMn8dtDJoL2uW/VyYh7A+vDXw4Ryx9f33WcOdb7tSFT2g+DovpCwfQr+8qadsPJWJsOP
-	GLtg/U1Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Zep2EuvDBdAiZzmLhkCCAPTJ0RyrRJFef4D5N64eSCQ=; b=p7WBJhLcWz+Q+q
+	ZAuhfmqLAZqCrS7odW1XLK1Qyb2C1OUTslpzIaebRPqi5vsUgGnBTDGVfL2NNisYAVuBY5ZtSthFe
+	YHWu02GlnNvSuQS2WF36QGWUxJDK4ayY+LmXgQHd0acJn1bgstACQRSgWhQH7rS70oSTNuFliuR7i
+	C0ciCcGBKZEnmdZgm5Pr/P3WC5xYCN7KTUcS8YbEd9KHrQlYdKesNsAS7locMsNzvCU2A5B5iQyna
+	SL0KUGpj4aqAvP0LVByvhTt6uOEFz5BpRvzDqW61OCgEQoGq67o4XeCZ39emj2rnkpcYOC+aBc2nf
+	m29MVEBUcDoiKvS0V2hA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1opM-00000001BNu-0d8r;
-	Fri, 18 Oct 2024 15:23:44 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1t1oqn-00000001Bbj-1Mb5;
+	Fri, 18 Oct 2024 15:25:13 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1ol0-00000001ASI-3GLS;
-	Fri, 18 Oct 2024 15:19:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729264752;
-	bh=SxTw5Ce/pOnrjKwvBcbYJ7lzE+rssP9CUicVkJ98jZQ=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=I/Q1zbdJ8AWzIFGD0LOOQFgW6ip2mU0szB6ZlEsOCRooFwWD5f2USaSlh6+s4RJYd
-	 p8oomaAEBujBAbPDsLqMoPPTLD3QCx2+rb9e7gZX6xoH49E/HyvCq76sA63FO28kwf
-	 KKFCyWfFYLtXi+BJw6fqpdemBEIYZ68E/IaqBFeJqwTpilMjypnG7csikHSeQldDzJ
-	 VVTEtTx4PMubtB+KRV6bHIml1JPIiQu7a1CtBZGhn7H8LVsFJS81vg+s0LaQb8YFf1
-	 z23nrIyaJm5EesCtsZ58Ds86Sd7Z8xjCStq6g6ccneKjyGiDbmzJjPeVTlynMAzBss
-	 1G3AT+i2JeOmw==
-Received: from [192.168.1.218] (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2E0FE17E3630;
-	Fri, 18 Oct 2024 17:19:09 +0200 (CEST)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Fri, 18 Oct 2024 11:19:03 -0400
-Subject: [PATCH v2 2/2] arm64: dts: mediatek: mt8390-genio-700-evk: Enable
- ethernet
+	id 1t1onH-00000001AyT-1g6a;
+	Fri, 18 Oct 2024 15:21:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 75546A43E1E;
+	Fri, 18 Oct 2024 15:21:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28513C4CEC3;
+	Fri, 18 Oct 2024 15:21:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1729264894;
+	bh=mx87PZ0fJUAC0aOMm3blO7HIkucZJPoFvoNzVO2DGLE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=bwlbPMPmuPOb+/LqJ4WWncgzj2FxM9cJbcXhcNpVUBcuxbuOLQmxcIwfK2EQiaAM2
+	 wFW+zK6d9BgpayW1uV2DDKEJzHDzPGQdwW5P5SbcxxSi/WWWP8RC218y679NVZFbve
+	 Gfdf8hG7p2CdRRC4m/fW9y2L+cLdWsySOdOtalASlfjX7eu6p5RH7PmppentunxdkY
+	 nMcB7FI2w4FI/qiI18Rje10jYVIg1m/VFNst5Tj/Gyl4dagpE9Mq+pQD6ZVTlL6lUu
+	 rgE355uhVy6JVgvJFz5jlu3ThFMqgqjMIpfNaXquZ1lE9W1IiuWby/GpZjexiBoSfJ
+	 tJhIEAUL6c7Qg==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Nathan Chancellor <nathan@kernel.org>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Alexandre Courbot <acourbot@chromium.org>
+Subject: [PATCH] media: mtk-vcodec: venc: avoid -Wenum-compare-conditional warning
+Date: Fri, 18 Oct 2024 15:21:10 +0000
+Message-Id: <20241018152127.3958436-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20241018-genio700-eth-v2-2-f3c73b85507b@collabora.com>
-References: <20241018-genio700-eth-v2-0-f3c73b85507b@collabora.com>
-In-Reply-To: <20241018-genio700-eth-v2-0-f3c73b85507b@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Richard Cochran <richardcochran@gmail.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Andrew Lunn <andrew@lunn.ch>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
- Jianguo Zhang <jianguo.zhang@mediatek.com>, 
- Macpaul Lin <macpaul.lin@mediatek.com>, 
- Hsuan-Yu Lin <shane.lin@canonical.com>, Pablo Sun <pablo.sun@mediatek.com>, 
- fanyi zhang <fanyi.zhang@mediatek.com>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241018_081914_992180_BF1BA3AF 
-X-CRM114-Status: UNSURE (   9.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241018_082135_514456_E5D7B843 
+X-CRM114-Status: GOOD (  10.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,65 +71,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Arnd Bergmann <arnd@arndb.de>, llvm@lists.linux.dev, Nick Desaulniers <ndesaulniers@google.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable ethernet on the Genio 700 EVK board. It has been tested to work
-with speeds up to 1000Mbps.
+From: Arnd Bergmann <arnd@arndb.de>
 
-Signed-off-by: Jianguo Zhang <jianguo.zhang@mediatek.com>
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-Signed-off-by: Hsuan-Yu Lin <shane.lin@canonical.com>
-Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
-Signed-off-by: fanyi zhang <fanyi.zhang@mediatek.com>
-[Cleaned up to pass dtbs_check, follow DTS style guidelines, and split
-between mt8188 and genio700 commits, and addressed further feedback from
-the mailing list]
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+This is one of three clang warnings about incompatible enum types
+in a conditional expression:
+
+drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c:597:29: error: conditional expression between different enumeration types ('enum scp_ipi_id' and 'enum ipi_id') [-Werror,-Wenum-compare-conditional]
+  597 |         inst->vpu_inst.id = is_ext ? SCP_IPI_VENC_H264 : IPI_VENC_H264;
+      |                                    ^ ~~~~~~~~~~~~~~~~~   ~~~~~~~~~~~~~
+
+The code is correct, so just rework it to avoid the warning.
+
+Fixes: 0dc4b3286125 ("media: mtk-vcodec: venc: support SCP firmware")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 ---
- .../arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ .../platform/mediatek/vcodec/encoder/venc/venc_h264_if.c    | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-index 0a6c9871b41e5f913740e68853aea78bc33d02aa..a063c7504cce08707a308b72559f2425eee515e1 100644
---- a/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts
-@@ -24,6 +24,7 @@ / {
+diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
+index f8145998fcaf..8522f71fc901 100644
+--- a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
++++ b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
+@@ -594,7 +594,11 @@ static int h264_enc_init(struct mtk_vcodec_enc_ctx *ctx)
  
- 	aliases {
- 		serial0 = &uart0;
-+		ethernet0 = &eth;
- 	};
- 
- 	chosen {
-@@ -845,6 +846,25 @@ pins-wifi-enable {
- 	};
- };
- 
-+&eth {
-+	phy-mode ="rgmii-id";
-+	phy-handle = <&ethernet_phy0>;
-+	pinctrl-names = "default", "sleep";
-+	pinctrl-0 = <&eth_default_pins>;
-+	pinctrl-1 = <&eth_sleep_pins>;
-+	mediatek,mac-wol;
-+	snps,reset-gpio = <&pio 147 GPIO_ACTIVE_HIGH>;
-+	snps,reset-delays-us = <0 10000 10000>;
-+	status = "okay";
-+};
+ 	inst->ctx = ctx;
+ 	inst->vpu_inst.ctx = ctx;
+-	inst->vpu_inst.id = is_ext ? SCP_IPI_VENC_H264 : IPI_VENC_H264;
++	if (is_ext)
++		inst->vpu_inst.id = SCP_IPI_VENC_H264;
++	else
++		inst->vpu_inst.id = IPI_VENC_H264;
 +
-+&eth_mdio {
-+	ethernet_phy0: ethernet-phy@1 {
-+		compatible = "ethernet-phy-id001c.c916";
-+		reg = <0x1>;
-+	};
-+};
-+
- &pmic {
- 	interrupt-parent = <&pio>;
- 	interrupts = <222 IRQ_TYPE_LEVEL_HIGH>;
-
+ 	inst->hw_base = mtk_vcodec_get_reg_addr(inst->ctx->dev->reg_base, VENC_SYS);
+ 
+ 	ret = vpu_enc_init(&inst->vpu_inst);
 -- 
-2.47.0
+2.39.5
 
 
