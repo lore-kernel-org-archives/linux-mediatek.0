@@ -4,86 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F56FD2FFF8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 12:07:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08D9CD30006
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 12:56:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pKGlVab4i7DHl/ffkFGpIlho3hvAo5V5WFM3UhTHe/o=; b=aS4dZET9/tHYA8jx4sfFl8FUi5
-	q+j8LLPGRS6w+I3IwlHDK/MrNtFmlZBelpOErKTiGTgfpmJ+8z2oMTlBk+mgHEz+NhnA53R2yyumc
-	FUrQnGlOC/jj1i15jK6sTjB0+KUNBoMbpNzF8S/8UCTWwHIs2EJmZS5ovVmYtMBJ2zJiJsAwiZTo6
-	qpInF8t4LqFBXR2AVxggzoliZlPzIKrYXTVtCDuzPEiLv4fjkHvGOMAKMlb5736UGD+l1eWdnfvWr
-	1HkcnZa6MnGxrovex3RWOwqPo67zvTD14HDSg/nRFdJQghEYOvcYB6QpHSjv5artgGbtGfTMlCR10
-	jrO3nzDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:Cc:To:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PdVzz3yAtg/fP1vQIKHu7QMT64Vw6aqPNEm/Spjq1DE=; b=Lsz7kDSpXBffFjXzSyZlLq+WcT
+	UOHcKtFyLPBGRusnRNp3opl4/dPcUlbPEdxeRKbCKItlEMv4jko7LZbEUCZgHJrSUgrtqLKwwNnfW
+	wiZO02RVjep7Cz2Vjifkm8yTIxFRn6Obnd07Ieh2hu8SMjxYyuFckCEqmz3Am2v5E+cxa22EKvBDy
+	SkSEriH8OkGUEeYIgmKVo5G1RGh1upr17SyfwDUfKqceszSDy++bCfNfKKu09IQVIKhGUmcQRa1Al
+	dNF73HL+In/IeFDhGUICJWg5AzYmdHkuk7ZactEVoGyITs7LksFE+BPzx7pNtaW+9KoeaECiWP7ju
+	BRmcuWgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1llf-00000000iMq-0FlJ;
-	Fri, 18 Oct 2024 12:07:43 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1t1mXJ-00000000oOO-3suS;
+	Fri, 18 Oct 2024 12:56:57 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1lhM-00000000hfP-3Qvc
-	for linux-mediatek@lists.infradead.org;
-	Fri, 18 Oct 2024 12:03:18 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-71e625b00bcso1534393b3a.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 18 Oct 2024 05:03:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1729252996; x=1729857796; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=pKGlVab4i7DHl/ffkFGpIlho3hvAo5V5WFM3UhTHe/o=;
-        b=ME2BQX6Yy8IBOzbu3UzPahUkvvw76lW64XYZuePbO3hg0TvWamaU4sniopUvWX8WTl
-         xrlCww9YUu3+gajkoPeN1qWyy5IfsGe26oArVHc2xVcmaPZaDaxPgV8Fe28cjQoGaFNi
-         BgbHAXFmEP0Df1BfDhYMwb4iJPQsVoOjlv/m4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729252996; x=1729857796;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=pKGlVab4i7DHl/ffkFGpIlho3hvAo5V5WFM3UhTHe/o=;
-        b=Y13FZtpea9o5BZ+/D1OTJ9q124hoGj4gOHSivPbTsItkXgBGMJMmmak9geftlOfNJS
-         aJz56n429ZnRSonKPHd4oro/HaxBCAdtP6wKmAgH3dJ8CECz195DVWWJaKCeTrHiS/4f
-         v0ds+zMQmpFWbUI3yaie4vKDQMYcGd5G9hK1KcAjJTc9jPtjmltNjj9BptlC6CafaenV
-         WOPJrhEJ63GSXD2JjsE0OzznI63o719wVb86WZBoEde4a/FzR3G8uRj0eNrBVNR2L8Ju
-         ezK35r0XKbUNNJT2p9hKjdO/4aVq+GFEdQvEM5b2X4XMHNU9nsf1tgaSawYgGRVzaMwi
-         gXbw==
-X-Forwarded-Encrypted: i=1; AJvYcCUFGBYOM+lIPUdXmwKqOPQu9Ox6c3PWDTfoTaHROGTDCA49WiaaiGIXloGnFcZsTAR64LVE79lwSVfosS1rSQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy3Q3falVf4sbAazW7C822kqIRy+mseUAN5rNsd4PlpWmZjoxGe
-	A90QPmmwzO5V7DeESHam64c/uG7EjvUYShXM6GSssbogZyx/YdiYzTv7jI6uvg==
-X-Google-Smtp-Source: AGHT+IEMoyV6BqxdhGrDIRhbQDdZfec7fHmtNYn4YW1cd/EZHjfSnxgL4d4cV9mzhYNOQP54WR2zaw==
-X-Received: by 2002:a05:6a00:cc4:b0:71e:3b8:666b with SMTP id d2e1a72fcca58-71ea325b489mr2897763b3a.15.1729252995698;
-        Fri, 18 Oct 2024 05:03:15 -0700 (PDT)
-Received: from yuanhsinte.c.googlers.com (176.220.194.35.bc.googleusercontent.com. [35.194.220.176])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71ea34ae672sm1274014b3a.204.2024.10.18.05.03.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 18 Oct 2024 05:03:15 -0700 (PDT)
-From: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Date: Fri, 18 Oct 2024 12:03:05 +0000
-Subject: [PATCH 2/2] arm64: dts: mediatek: mt8183: Switch to Elan
- touchscreen driver
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+	id 1t1mT0-00000000nml-3e0T;
+	Fri, 18 Oct 2024 12:52:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 1D12CA43FA8;
+	Fri, 18 Oct 2024 12:52:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BE018C4CECF;
+	Fri, 18 Oct 2024 12:52:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1729255949;
+	bh=wcjdS04309JEdjmFyG61jjDT88GK+yM48adeQ4B/XXg=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+	b=AWM+De/Gt5ea4aMATDJAyW908HnRRFIiQ2/25JFnrUiC7Adcw6DB9go2SFdCGkfSs
+	 S7thuAKMZjbvGUcSx7kVVxPyUyX0w2OppZWnzWIfI7CMZ9se6GEOefnjmHoru00e1s
+	 hsArXDoC1B+13wIuE90STwcrEpih+1p0cGDPeoNGQTZ/yOcw0iO4kpRY62sCSlb/Xp
+	 Z3nP7p86DSE7se3m+9t842fFuYiHZYsJW9p4k4M3bPAhfGw2rd6Y83MA/TssLz3W55
+	 Y7+Ygr9kPvgC/lV5ZQXQ+xLCdQePzULgThzb5MrcQJBE4p2dCgwNUSnY0H1NRmcTE+
+	 MJ1nBLKBkSmpQ==
+Date: Fri, 18 Oct 2024 07:52:28 -0500
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20241018-post-reset-v1-2-5aadb7550037@chromium.org>
-References: <20241018-post-reset-v1-0-5aadb7550037@chromium.org>
-In-Reply-To: <20241018-post-reset-v1-0-5aadb7550037@chromium.org>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Enric Balletbo i Serra <eballetbo@kernel.org>, 
- Hsin-Yi Wang <hsinyi@chromium.org>, Benjamin Tissoires <bentiss@kernel.org>, 
- Hans de Goede <hdegoede@redhat.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Hsin-Te Yuan <yuanhsinte@chromium.org>
-X-Mailer: b4 0.15-dev-7be4f
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
+Cc: devicetree@vger.kernel.or, wenst@chromium.org, matthias.bgg@gmail.com, 
+ linux-mediatek@lists.infradead.org, angelogioacchino.delregno@collabora.com, 
+ hsinyi@chromium.org, sean.wang@mediatek.com, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ krzk+dt@kernel.org, conor+dt@kernel.org
+In-Reply-To: <20241018091135.17075-1-xiazhengqiao@huaqin.corp-partner.google.com>
+References: <20241018091135.17075-1-xiazhengqiao@huaqin.corp-partner.google.com>
+Message-Id: <172925540039.17739.8191775806524492819.robh@kernel.org>
+Subject: Re: [PATCH v2 0/3] arm64: dts: mediatek: Add MT8186 Chinchou
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241018_050316_871010_DC7C57CD 
-X-CRM114-Status: GOOD (  11.00  )
+X-CRM114-CacheID: sfid-20241018_055231_077402_07A99B93 
+X-CRM114-Status: GOOD (  14.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,109 +73,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-After commit 2be404486c05 ("HID: i2c-hid-of: Add reset GPIO support to
-i2c-hid-of"), the i2c-hid-of driver used by some mt8183 devices resets
-the touchscreen without having enough post-reset delay. This makes those
-touchscreen fail to get probed.
 
-Switch to Elan touchscreen driver, which has enough post-reset delay.
+On Fri, 18 Oct 2024 17:11:32 +0800, Zhengqiao Xia wrote:
+> This is v2 of the MT8186 Chromebook device tree series to support
+> MT8186 chinchou platform. It is based on the "corsola" design.
+> It includes chinchou and chinchou360, including LTE, stylus,
+> touchscreen combinations.
+> 
+> Changes in v2:
+> - Modify location of "const: google,chinchou-sku17" in mediatek.yaml
+> - rename "pin-report" to "pin-report-pins"
+> - add "vcc33-supply" and "vcc33-supply"
+> - rename "cbj-sleeve-gpio" to "cbj-sleeve-gpios"
+> - modify subnode of sound
+> - Link to v1: https://lore.kernel.org/all/172900161180.733089.8963543745385219831.robh@kernel.org/
+> 
+> Zhengqiao Xia (3):
+>   dt-bindings: arm: mediatek: Add MT8186 Chinchou Chromebook
+>   arm64: dts: mediatek: Add MT8186 Chinchou Chromebooks
+>   arm64: dts: mediatek: Add exton node for DP bridge
+> 
+>  .../devicetree/bindings/arm/mediatek.yaml     |  29 ++
+>  arch/arm64/boot/dts/mediatek/Makefile         |   3 +
+>  .../mediatek/mt8186-corsola-chinchou-sku0.dts |  18 +
+>  .../mediatek/mt8186-corsola-chinchou-sku1.dts |  35 ++
+>  .../mt8186-corsola-chinchou-sku16.dts         |  29 ++
+>  .../dts/mediatek/mt8186-corsola-chinchou.dtsi | 321 ++++++++++++++++++
+>  .../boot/dts/mediatek/mt8186-corsola.dtsi     |   6 +
+>  7 files changed, 441 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
+> 
+> --
+> 2.17.1
+> 
+> 
+> 
 
-Fixes: 2be404486c05 ("HID: i2c-hid-of: Add reset GPIO support to i2c-hid-of")
-Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts     | 10 +++-------
- .../boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dts     |  9 ++-------
- .../boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dts     |  9 ++-------
- .../boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dts     |  9 ++-------
- 4 files changed, 9 insertions(+), 28 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
-index ebe6e161354c414d91859494ec9295db75a3baf9..b98a3530511e576347a4ed291d37d45dd42fec97 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
-@@ -14,14 +14,10 @@ / {
- };
- 
- &touchscreen {
--	status = "okay";
-+	compatible = "elan,ekth6a12nay";
- 
--	compatible = "hid-over-i2c";
--	reg = <0x10>;
--	interrupts-extended = <&pio 155 IRQ_TYPE_LEVEL_LOW>;
--
--	post-power-on-delay-ms = <10>;
--	hid-descr-addr = <0x0001>;
-+	vcc33-supply = <&pp3300_alw>;
-+	vccio-supply = <&pp1800_alw>;
- };
- 
- &qca_wifi {
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dts
-index 2dc64cc539f815b9848b8243e5b487f22d605a6d..9fb329626a82034e44fb5fbd2d0ad9675c0a5afa 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dts
-@@ -27,14 +27,9 @@ &cros_ec_pwm {
- };
- 
- &touchscreen {
--	status = "okay";
--
--	compatible = "hid-over-i2c";
--	reg = <0x10>;
--	interrupts-extended = <&pio 155 IRQ_TYPE_LEVEL_LOW>;
-+	compatible = "elan,ekth6a12nay";
- 
--	post-power-on-delay-ms = <10>;
--	hid-descr-addr = <0x0001>;
-+	vcc33-supply = <&pp3300_alw>;
- };
- 
- &qca_wifi {
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dts
-index 53e996f9c605dc36df03d4b0051a91e19fefb38d..6d547361fc4f9d2ab1f9b048af443495c9bed323 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dts
-@@ -14,14 +14,9 @@ / {
- };
- 
- &touchscreen {
--	status = "okay";
-+	compatible = "elan,ekth6a12nay";
- 
--	compatible = "hid-over-i2c";
--	reg = <0x10>;
--	interrupts-extended = <&pio 155 IRQ_TYPE_LEVEL_LOW>;
--
--	post-power-on-delay-ms = <10>;
--	hid-descr-addr = <0x0001>;
-+	vcc33-supply = <&pp3300_alw>;
- };
- 
- 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dts
-index d7db621383c6b823af08ca07e0794758d062e211..39ab09ce28aa2ed4335d5279a965f23a8458688e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dts
-@@ -14,14 +14,9 @@ / {
- };
- 
- &touchscreen {
--	status = "okay";
-+	compatible = "elan,ekth6a12nay";
- 
--	compatible = "hid-over-i2c";
--	reg = <0x10>;
--	interrupts-extended = <&pio 155 IRQ_TYPE_LEVEL_LOW>;
--
--	post-power-on-delay-ms = <10>;
--	hid-descr-addr = <0x0001>;
-+	vcc33-supply = <&pp3300_alw>;
- };
- 
- 
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
 
--- 
-2.47.0.rc1.288.g06298d1525-goog
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+New warnings running 'make CHECK_DTBS=y mediatek/mt8186-corsola-chinchou-sku0.dtb mediatek/mt8186-corsola-chinchou-sku1.dtb mediatek/mt8186-corsola-chinchou-sku16.dtb' for 20241018091135.17075-1-xiazhengqiao@huaqin.corp-partner.google.com:
+
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dtb: pmic: 'codec' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dtb: pmic: 'codec' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dtb: pmic: 'codec' does not match any of the regexes: 'pinctrl-[0-9]+'
+	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
+
+
+
+
 
 
