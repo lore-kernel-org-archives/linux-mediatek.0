@@ -4,94 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB2C5D3DEA9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 19:10:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 612EED3E18D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 22:43:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tCWiI7Mk5Pc1ToBG0yRJeA7emmBaVqdcvJdezV41wZ8=; b=Wwx02yUPws3456jcaJS6pIUU7Q
-	wP064eswOzR0fO/DpL68IWfokbASkfjkcD+PtW2O4I4fwB+JMED3qrS4eZKkH5HEShCjdB5lQemgo
-	WD5Gaju6OMMEpQb7akmGiB1kJCumnhX6EXOZl/QtLzOXmv9hu3FNN3sYKUQOnRTVTA1Ls61kIzZ8U
-	Cjv439oF7gsndsKoh9rj5yZGJII+xaj1vqgyi7AyzE2RV22mcsW4u1f5kc/MGPWUfiYYTn7DJBTNv
-	qfHnQFeG9XLD3fd3C2oirVgo0u5pEFsWXDqLK7+ZfaAS8/wggh5X42pzugLqJeV1qMTh9L8Jb/PDQ
-	TEb2a6sA==;
+	bh=Of73KtYHZF5VGPuc2VVBApwFV0wGjbK7ryGZCnOyECM=; b=jaUp2qozAVGERZ5pq5awMhFMHw
+	qE2LMvddPhTtRgu1J+fksgi7QQDDF77P8PlwSVtbW2K13RipCUOAgJgtHa99OW00ez1GBUgS4OejQ
+	LgZxHO5QFU52jnnbaGKHXgIy0JsPaQQ2gStPIej+kVEnG+b5vG/vIlBdnA6c6SU1cw15Z4Mp7wepz
+	4TeqhAP9Ro/6T+AKtbCyIAyeF7U8Y+Jp3/cJQZVlfNf5KmDwr0fN7ucklckg1dUWyNg5eL5kVE+kN
+	hEQU/hrZqGDJ9iHQ4IprbZM4wkHHZXYuYlE/lZ2oE2sGAbGHlp3bvpvohiwBAMWURoqjl4uNkKdse
+	DgpnmekQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1sNC-00000001kvx-3PQP;
-	Fri, 18 Oct 2024 19:10:54 +0000
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+	id 1t1vgd-00000002CKF-3b5R;
+	Fri, 18 Oct 2024 22:43:11 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1sLh-00000001kdB-2ZUU;
-	Fri, 18 Oct 2024 19:09:23 +0000
-Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-20e576dbc42so12774535ad.0;
-        Fri, 18 Oct 2024 12:09:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729278560; x=1729883360; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=tCWiI7Mk5Pc1ToBG0yRJeA7emmBaVqdcvJdezV41wZ8=;
-        b=S+KEuc/9pRh+dfE+/dONqvoiBQng7zUOLtbub8pkmi0QHDMznvridziDU2UzxTygu4
-         xO31yOLfhF7YTdimL7XVfAQxuYozi8WXq2mTwaSpKfO9BwC+TIRJUwio93l6vkItpIN8
-         6xZLpdtneVIqOTqcVQoqi4JSDgAhcWSgDZurjg/sUhbYPwAYZD2C7WS0Zp05BIG2S+8t
-         74808pJ3uDmb2U5tSbtJoCIu8U2sRH7EuTK/ng12pR4RFkxVx6kcrxXrXiioBBtqy1mw
-         CXoomerUXIYO+Xcec0xIcna0bfZW+gj4lR2NRZZaNJw7fB6R9v8ym428slA97rbd50xs
-         q02A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729278560; x=1729883360;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=tCWiI7Mk5Pc1ToBG0yRJeA7emmBaVqdcvJdezV41wZ8=;
-        b=LY2wPFJZJl5cs9nHN12WtTHwkSvCGp54dpZm0Kt0HRa6fzs5RcIdMj3Grq78Tuoj0k
-         E5+F7lxMoDCxJQ+HsL9HL7xFIjQQoTGiKG24P4pDZ4b9OoH603ffwuT8F5g/Y4bf9hIf
-         6OcOACyoEeeVYnWmQfZ5pbyPYtH47xgge3tkRBoPR7jMlIolLJgnlU9YuiwUD56cv50D
-         yhrioyeJ14KIQStXNnCE94Tj1Ce1eBE7uT4hg3LB38zfL6f5z54Uwu8WimzzlmUWBVn4
-         X/vZd5Tr3YSUufVAxKKhXPVCuFmr/sMry86KuecVOX2hY1lSOjOhx/S2pUGPxHDFNZ0e
-         6GcQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWTlFPZE4e0cWRo+oGyHKt1xSLX6omMDC5DrtGs3o6WbOEztW4mdgJ6JsdwVGEhtnHFI6PRecxakkhWZ5QGIBY=@lists.infradead.org, AJvYcCXKbew1FxuoUWFevSj6aAWpfj+yVDrM/P5Sv5bgIoZTnvzjQsYqtx88gt4wmce/8JkAtskcM/YuNsPJkdy9K9we@lists.infradead.org
-X-Gm-Message-State: AOJu0YydS1RHNFJGd8PSFvaCF5WE0dug/3lGKNmIkdYTAGfzxO8Iv+7q
-	0VO/TCeqYT3wrttFaeiELQ/vpJGJvwJxGZusdhxi42DMqp+YEDEs
-X-Google-Smtp-Source: AGHT+IEruX+cxyVH+gwEEsGDweblTcIgnGhNv3IgeQH5Htuac5wGmq7mHQTOxWYmy6TV37BjA3ZgmQ==
-X-Received: by 2002:a17:902:c94e:b0:20c:dd71:c94f with SMTP id d9443c01a7336-20e5a95110fmr44504275ad.41.1729278560033;
-        Fri, 18 Oct 2024 12:09:20 -0700 (PDT)
-Received: from google.com ([2620:15c:9d:2:351c:e27f:10e5:484c])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20e5a71eae8sm16052525ad.45.2024.10.18.12.09.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 18 Oct 2024 12:09:19 -0700 (PDT)
-Date: Fri, 18 Oct 2024 12:09:16 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Yassine Oudjana <yassine.oudjana@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	jason-ch chen <Jason-ch.Chen@mediatek.com>,
-	Chen Zhong <chen.zhong@mediatek.com>,
-	Flora Fu <flora.fu@mediatek.com>,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	Yassine Oudjana <y.oudjana@protonmail.com>,
-	linux-input@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 6/6] Input: mtk-pmic-keys - Add support for MT6328
-Message-ID: <ZxKyXFZFFNwD6Tsg@google.com>
-References: <20241018081050.23592-1-y.oudjana@protonmail.com>
- <20241018081050.23592-7-y.oudjana@protonmail.com>
+	id 1t1vfA-00000002C6k-2so4;
+	Fri, 18 Oct 2024 22:41:41 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 25681A44BD2;
+	Fri, 18 Oct 2024 22:41:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF23AC4CEC3;
+	Fri, 18 Oct 2024 22:41:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1729291298;
+	bh=9MYUEN+y7bGhQ5uRf0uI07lO/K3C7KNY5c2cLXqPh0w=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=evCiJPUCO4yWevyL7//o8c6xzDvBdx/+3P2JRJAqCmxhOZZopbmfBAFE3SkJ2WB4F
+	 N3epTMeT3tBOeG0y4vV5TL3iB5+jmxyD9kNSL6nWxs9ZMV1iTQ1IkqhcsJqU2yKAwu
+	 S1FAYgcgxQacKOd5biXHyWF17AI7ZQ7SxQELEuQRU+4Hhss2hi0M4g0mk7xsk6yny1
+	 IHn4kMB3qyiF+HxFqtNeLZNP9rs+SW7W+COuFysLxjLdcKa33lcFLjbXD4bFjL9thn
+	 JfzDmpIDXTh63O2CEqPlHNDUEOkMw5CNFJghTHun6XRErBfJxQXJABqLecAldvKfHf
+	 2s0Gi/iuKgAsw==
+Date: Fri, 18 Oct 2024 15:41:36 -0700
+From: Nathan Chancellor <nathan@kernel.org>
+To: Arnd Bergmann <arnd@kernel.org>
+Subject: Re: [PATCH] media: mtk-vcodec: venc: avoid
+ -Wenum-compare-conditional warning
+Message-ID: <20241018224136.GB2635543@thelio-3990X>
+References: <20241018152127.3958436-1-arnd@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241018081050.23592-7-y.oudjana@protonmail.com>
+In-Reply-To: <20241018152127.3958436-1-arnd@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241018_120921_685438_2F2510EB 
-X-CRM114-Status: GOOD (  10.44  )
+X-CRM114-CacheID: sfid-20241018_154140_814576_6AE8EEB4 
+X-CRM114-Status: GOOD (  18.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,23 +66,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, Alexandre Courbot <acourbot@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>, llvm@lists.linux.dev, Nick Desaulniers <ndesaulniers@google.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, Hans Verkuil <hverkuil@xs4all.nl>, linux-mediatek@lists.infradead.org, Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 18, 2024 at 11:10:48AM +0300, Yassine Oudjana wrote:
-> From: Yassine Oudjana <y.oudjana@protonmail.com>
+On Fri, Oct 18, 2024 at 03:21:10PM +0000, Arnd Bergmann wrote:
+> From: Arnd Bergmann <arnd@arndb.de>
 > 
-> Add a compatible string and related data for the PMIC keys on the
-> MT6328 PMIC.
+> This is one of three clang warnings about incompatible enum types
+> in a conditional expression:
 > 
-> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+> drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c:597:29: error: conditional expression between different enumeration types ('enum scp_ipi_id' and 'enum ipi_id') [-Werror,-Wenum-compare-conditional]
+>   597 |         inst->vpu_inst.id = is_ext ? SCP_IPI_VENC_H264 : IPI_VENC_H264;
+>       |                                    ^ ~~~~~~~~~~~~~~~~~   ~~~~~~~~~~~~~
+> 
+> The code is correct, so just rework it to avoid the warning.
+> 
+> Fixes: 0dc4b3286125 ("media: mtk-vcodec: venc: support SCP firmware")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
-Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Reviewed-by: Nathan Chancellor <nathan@kernel.org>
 
-Feel free to merge with the rest of the patches.
-
-Thanks.
-
--- 
-Dmitry
+> ---
+>  .../platform/mediatek/vcodec/encoder/venc/venc_h264_if.c    | 6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
+> index f8145998fcaf..8522f71fc901 100644
+> --- a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
+> +++ b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_h264_if.c
+> @@ -594,7 +594,11 @@ static int h264_enc_init(struct mtk_vcodec_enc_ctx *ctx)
+>  
+>  	inst->ctx = ctx;
+>  	inst->vpu_inst.ctx = ctx;
+> -	inst->vpu_inst.id = is_ext ? SCP_IPI_VENC_H264 : IPI_VENC_H264;
+> +	if (is_ext)
+> +		inst->vpu_inst.id = SCP_IPI_VENC_H264;
+> +	else
+> +		inst->vpu_inst.id = IPI_VENC_H264;
+> +
+>  	inst->hw_base = mtk_vcodec_get_reg_addr(inst->ctx->dev->reg_base, VENC_SYS);
+>  
+>  	ret = vpu_enc_init(&inst->vpu_inst);
+> -- 
+> 2.39.5
+> 
 
