@@ -4,86 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE2B6D2F7ED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 09:20:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4376AD2FFE1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 09:44:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Js96B82vpvasO7dH54aWNj4yi7wPO0A7/Og4/faXgF0=; b=dCF/XGUY6s4IcjefN272uFJAR7
-	qiPGY8mQg/2PFGtYgG7EVSEnk8mCzIwDKMGPV0xfhQV2SiPhzWCgPnnl+sFl7y/5vxKTwLIHkq1uM
-	ICbdlVxivibukUNOQVXaV2WWl5kS4u/HlA/uawcDG860Cb1vDwz9pILBstWmX2RO45mkzi9uNj4oi
-	R1avyV+lADoOUpctH5X+eFelQOt9uY1ynOgnyv3TBhiOIaaF2DJSH/E85jY4pdsSEHWiHuvzMnlz1
-	tb47k4gEjFDWQBtQESRnLFmWiAzRu7q1syJyNZfrg3BnVOzdVVqD+y84AaHSRtnaWgCcIVrtaguuE
-	V00t8v1Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:From:Subject:Message-ID:Mime-Version:Date:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZLLeXqOR+j4J5K80kKtmagY5cg9UQK6bpjzIEEsrbRk=; b=l1/lGgDl8SYWyvN8+j84xPhsMV
+	b+lEbPMGB6M6xrpS7m9eWVlL4rAsBxQ/ZXZjJ/yz5vFK6A+L4DqB7TkgVT1ZMUGVeD/PEJf4Q2G7S
+	vD1UbmmCg2uDhkkKhrxZIq1UZ1tnccimCN1akpApvetiU1tYlpmgQagkglpf+sMS6CgzimjgWNOQu
+	18itpekUp8KmbwuAQGInaAIGF8blbGqiDSKdHhDdIY23FL6E8mv3M7NBDuK7ozAmLbWuimORsEDQ5
+	Da3ZL0jBQ6h41/YkbAiihoLtZZpY/TDjuou+Q4iF53jcqFn7PGomjHzANz5QKylZM8NXoX9i/jBEa
+	ff94bqxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1j9f-00000000ARe-0CJy;
-	Fri, 18 Oct 2024 09:20:19 +0000
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+	id 1t1jXE-00000000EWr-2EMS;
+	Fri, 18 Oct 2024 09:44:40 +0000
+Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1j1Y-000000008Fd-1p70
+	id 1t1jVW-00000000E45-2ewj
 	for linux-mediatek@lists.infradead.org;
-	Fri, 18 Oct 2024 09:11:59 +0000
-Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-20cf3f68ff2so1875975ad.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 18 Oct 2024 02:11:56 -0700 (PDT)
+	Fri, 18 Oct 2024 09:42:56 +0000
+Received: by mail-yb1-xb4a.google.com with SMTP id 3f1490d57ef6-e293150c2c6so4118922276.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 18 Oct 2024 02:42:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1729242715; x=1729847515; darn=lists.infradead.org;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=Js96B82vpvasO7dH54aWNj4yi7wPO0A7/Og4/faXgF0=;
-        b=kqjNubBKsoJ/xpMuTsL9GMBasZNaZbteMfN7L6SNtXnuakT0EJ0x7e97B/HZaOMfMd
-         VmhQdIueyy/2cHNkX4WnF3uJRGuKmIHdmxa/R9wdHfSOZrnoc6I2+B4w8OR29BZqS8Xy
-         QD5hiScyqYUBQ+WlI+IAvPsGdDC6cTFSEbQwyAfvcQ5x81jPksxw4CU87RBYD1HaCL7B
-         yfHvA2lp7MXCVZQdSw4bHeiqVKt+9ZXPycxetBpNV1fKYiYheNupEYvDL4Jo8n24FS5Y
-         rWealRQATK9tsYLMKtZNjOQPW5FYqEkn/CP7a/32JHkToxKpEiLl2LkRdrIMUrNENoN9
-         N1Ug==
+        d=google.com; s=20230601; t=1729244572; x=1729849372; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:from:subject:message-id
+         :mime-version:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZLLeXqOR+j4J5K80kKtmagY5cg9UQK6bpjzIEEsrbRk=;
+        b=U7SCxtFVxqUNgECwmgCYF1Q1J2y/NqQ1Rvw6TbgH1N+pIrM7i1N16gRm91aFHYpF5s
+         YYQvV+KIS6LqH+JD/ZU6KX2wv8idi8wCaT8dezKSmCfmW/1x/ZviDUnHJVnQrGpQeZPd
+         XLZ7fGWhjtr6Tx1WtjvWxc5K0W3WvIntsvKli976/zBz4LhNqoi9M81qTkpMhoZUOGdV
+         1R3EYMr4HKAxSQ+5MLkYwZsKdpuuUe55EL5xAEO2fWE9LAa7LysAxSBkuzH01ezs9AW5
+         Dz/hnf9eY8Ubwoj16SyGCfslRtL8EtNoZKPLSuy4hTxr98FXoGaAMD8PZ5VCfzu/daaO
+         pykQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729242715; x=1729847515;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Js96B82vpvasO7dH54aWNj4yi7wPO0A7/Og4/faXgF0=;
-        b=oU6hicMXsy0mAtPcgC5OW9LCMxLq4PRxe3gH8JwLa2RGfg+j1J0PPCG136uwzR5rOk
-         NzFrrRWrz197zTzVjwAPXy4YYAVJmlYXho/ysKl0S+0gBHwuW/2ytssmxXuxB0PBCE0e
-         qGlMcewQAjUqF+CJVknTZ7TNb00Vk0ulLzM2rNS4RZWm1nAfMdhu7uSePQKEkGTsMEH8
-         7GsN+F2xMNeaEeq9vwCCEVcr5nr4bTjOLqNjzAEoTsq245VMG4yTpbIM6wXAvEGNY4YT
-         apj/TwrAYfzYnT6H46Lv5XfqKZ/ErzFOPLOhUn0ZirPBbKuGC28CVkhyoJFENXCOp+P/
-         dpGg==
-X-Forwarded-Encrypted: i=1; AJvYcCVst24W6+ygSkCVxryg3d7HZNOPP9tD/ntU9us7gEha4nUQy9D9mnSDtbh6L8P5+9LGu092hyZfX2iWQ3ExCA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwymAgucH79xx8xeAicjrMNYDbxpiMr6NWYTLPRCWKntmgm89bs
-	WFtCKXlU+cTbKrrQ2MGDbzC/IFUmJIbtqO3vsXT5lEmeg6ld7Xw8K+WIwBLpKWQ=
-X-Google-Smtp-Source: AGHT+IGSAC/Nvepkh3x2DbZKLwbgK0Pqtd70a5tGyETkUmgXPcdC4iEF1WcXQvN/frbK4vEd1t9Iug==
-X-Received: by 2002:a17:902:da8f:b0:20c:9285:e951 with SMTP id d9443c01a7336-20e5a71b46dmr10654425ad.3.1729242715535;
-        Fri, 18 Oct 2024 02:11:55 -0700 (PDT)
-Received: from ubuntu.huaqin.com ([116.66.212.162])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20e5a747925sm8659115ad.71.2024.10.18.02.11.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 18 Oct 2024 02:11:55 -0700 (PDT)
-From: Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
-To: devicetree@vger.kernel.or,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	wenst@chromium.org,
-	hsinyi@chromium.org,
-	sean.wang@mediatek.com,
-	Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
-Subject: [PATCH v2 2/3] arm64: dts: mediatek: Add MT8186 Chinchou Chromebooks
-Date: Fri, 18 Oct 2024 17:11:34 +0800
-Message-Id: <20241018091135.17075-3-xiazhengqiao@huaqin.corp-partner.google.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20241018091135.17075-1-xiazhengqiao@huaqin.corp-partner.google.com>
-References: <20241018091135.17075-1-xiazhengqiao@huaqin.corp-partner.google.com>
+        d=1e100.net; s=20230601; t=1729244572; x=1729849372;
+        h=content-transfer-encoding:cc:to:from:subject:message-id
+         :mime-version:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ZLLeXqOR+j4J5K80kKtmagY5cg9UQK6bpjzIEEsrbRk=;
+        b=HOTq13K0u2CeyDxaU1MZlQ2EW0YgSMXLUBr5fq746df0jA2u1EWU+OXhE8TX1JLZTQ
+         gmHZbqBnYgMLvBbyDXJSh/1k3T7EJo3gdhd3pMNo1bOK6xuTGzS1NaBAaVFKthjx2E3a
+         4tzHOiXGWiDjm8MXCYMfnjvPf6oELFkma1SKVVicnd68ViOO7y5+fOi9ruCnAhj5SsT/
+         qt79yrsxeAfDGsltUgb6RLo7CXKA0k22gacI/iLUO61Gt7Kc9JnxcKfq5uthvsi097HB
+         D8O8zv2pj5VDdd+eWp9apLGnYKiweTL2FETKPb2PYDg7qVGNcX7YtACr/b3KD0YkOtkn
+         KwkQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWIyjQz71LlEQmaJVubadrsnKkpD59f7lJTou4mkxpO09AjxVdUTj7xA56fwDJK/y5ZRksB7sQKFfEK90juCg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwTvPjtyaM2iPTYMt8L6WziIwjMKBoYTwfv5gZap9DlSdhxSoBQ
+	Xc/uzoSTTqfp3HheQ4rqALEU16Q08dNhPfO2hdpdMoymeQNIlfs6iMdXEFPb9HRSrwGbK0dkHRB
+	4b/2R3Q==
+X-Google-Smtp-Source: AGHT+IGSb0cw0pG+y/p+bObtKjZ2/Bbc3rekx20QPwcvKWAaCsQSzG1nltOqjouiHxq2r34MIkLGayvZUvNB
+X-Received: from malysz.c.googlers.com ([fda3:e722:ac3:cc00:cb:de80:ac1c:6aa9])
+ (user=jakiela job=sendgmr) by 2002:a5b:702:0:b0:e0e:8b26:484e with SMTP id
+ 3f1490d57ef6-e2bb1699b0fmr1108276.8.1729244572306; Fri, 18 Oct 2024 02:42:52
+ -0700 (PDT)
+Date: Fri, 18 Oct 2024 09:42:34 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.47.0.rc1.288.g06298d1525-goog
+Message-ID: <20241018094234.2633366-1-jakiela@google.com>
+Subject: [PATCH] arm64: dts: mt8186: Update regulators voltages
+From: "=?UTF-8?q?Albert=20Jakie=C5=82a?=" <jakiela@google.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	"=?UTF-8?q?Albert=20Jakie=C5=82a?=" <jakiela@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241018_021156_590669_CB7098A0 
-X-CRM114-Status: GOOD (  13.53  )
+X-CRM114-CacheID: sfid-20241018_024254_741547_64D42651 
+X-CRM114-Status: UNSURE (   9.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,466 +93,299 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8186 chinchou, known as ASUS Chromebook CZ12 Flip (CZ1204F)
-and CZ12(CZ1204C), is a MT8186 based laptop.
-It is based on the "corsola" design.It includes chinchou and chinchou360,
-including LTE, stylus, touchscreen combinations.
+Update minimum and maximum voltages and add
+missing regulators.
 
-Signed-off-by: Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
+Signed-off-by: Albert Jakie=C5=82a <jakiela@google.com>
 ---
- arch/arm64/boot/dts/mediatek/Makefile         |   3 +
- .../mediatek/mt8186-corsola-chinchou-sku0.dts |  18 +
- .../mediatek/mt8186-corsola-chinchou-sku1.dts |  35 ++
- .../mt8186-corsola-chinchou-sku16.dts         |  29 ++
- .../dts/mediatek/mt8186-corsola-chinchou.dtsi | 321 ++++++++++++++++++
- 5 files changed, 406 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
+ .../boot/dts/mediatek/mt8186-corsola.dtsi     | 107 +++++++++++-------
+ 1 file changed, 63 insertions(+), 44 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index 8fd7b2bb7a15..0db7770e8907 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -55,6 +55,9 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku32.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-pumpkin.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-chinchou-sku0.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-chinchou-sku1.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-chinchou-sku16.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393216.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393217.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393218.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts
-new file mode 100644
-index 000000000000..5d012bc4ff0d
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts
-@@ -0,0 +1,18 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2024 Google LLC
-+ */
-+
-+/dts-v1/;
-+#include "mt8186-corsola-chinchou.dtsi"
-+
-+/ {
-+	model = "Google chinchou CZ1104CM2A/CZ1204CM2A";
-+	compatible = "google,chinchou-sku0", "google,chinchou-sku2",
-+			"google,chinchou-sku4", "google,chinchou-sku5",
-+			"google,chinchou", "mediatek,mt8186";
-+};
-+
-+&gpio_keys {
-+	status = "disabled";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts
-new file mode 100644
-index 000000000000..c18f473f6a0f
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts
-@@ -0,0 +1,35 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2024 Google LLC
-+ */
-+
-+/dts-v1/;
-+#include "mt8186-corsola-chinchou.dtsi"
-+
-+/ {
-+	model = "Google chinchou CZ1104FM2A/CZ1204FM2A/CZ1104CM2A/CZ1204CM2A";
-+	compatible = "google,chinchou-sku1", "google,chinchou-sku17",
-+			"google,chinchou-sku3", "google,chinchou-sku6",
-+			"google,chinchou-sku7", "google,chinchou-sku20",
-+			"google,chinchou-sku22", "google,chinchou-sku23",
-+			"google,chinchou", "mediatek,mt8186";
-+};
-+
-+&gpio_keys {
-+	status = "disabled";
-+};
-+
-+&i2c1 {
-+	i2c-scl-internal-delay-ns = <10000>;
-+
-+	touchscreen: touchscreen@41 {
-+		compatible = "ilitek,ili2901";
-+		reg = <0x41>;
-+		interrupts-extended = <&pio 12 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&touchscreen_pins>;
-+		reset-gpios = <&pio 60 GPIO_ACTIVE_LOW>;
-+		vccio-supply = <&pp1800_tchscr_report_disable>;
-+		vcc33-supply = <&pp3300_z2>;
-+	};
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts
-new file mode 100644
-index 000000000000..eb377de1fcde
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts
-@@ -0,0 +1,29 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2024 Google LLC
-+ */
-+
-+/dts-v1/;
-+#include "mt8186-corsola-chinchou.dtsi"
-+
-+/ {
-+	model = "Google chinchou CZ1104FM2A/CZ1204FM2A";
-+	compatible = "google,chinchou-sku16", "google,chinchou-sku18",
-+			"google,chinchou-sku19", "google,chinchou-sku21",
-+			"google,chinchou", "mediatek,mt8186";
-+};
-+
-+&i2c1 {
-+	i2c-scl-internal-delay-ns = <10000>;
-+
-+	touchscreen: touchscreen@41 {
-+		compatible = "ilitek,ili2901";
-+		reg = <0x41>;
-+		interrupts-extended = <&pio 12 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&touchscreen_pins>;
-+		reset-gpios = <&pio 60 GPIO_ACTIVE_LOW>;
-+		vccio-supply = <&pp1800_tchscr_report_disable>;
-+		vcc33-supply = <&pp3300_z2>;
-+	};
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
-new file mode 100644
-index 000000000000..389f8b66e968
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
-@@ -0,0 +1,321 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2024 Google LLC
-+ */
-+
-+/dts-v1/;
-+#include "mt8186-corsola.dtsi"
-+
-+/ {
-+	/delete-node/ speaker-codec;
-+
-+	pp1000_edpbrdg: regulator-pp1000-edpbrdg {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pp1000_edpbrdg";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&en_pp1000_edpbrdg>;
-+		enable-active-high;
-+		regulator-boot-on;
-+		gpio = <&pio 29 GPIO_ACTIVE_HIGH>;
-+		vin-supply = <&pp3300_z2>;
-+	};
-+
-+	pp1800_edpbrdg_dx: regulator-pp1800-edpbrdg-dx {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pp1800_edpbrdg_dx";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&en_pp1800_edpbrdg>;
-+		enable-active-high;
-+		regulator-boot-on;
-+		gpio = <&pio 30 GPIO_ACTIVE_HIGH>;
-+		vin-supply = <&mt6366_vio18_reg>;
-+	};
-+
-+	pp3300_edp_dx: regulator-pp3300-edp-dx {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pp3300_edp_dx";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&en_pp3300_edpbrdg>;
-+		enable-active-high;
-+		regulator-boot-on;
-+		gpio = <&pio 31 GPIO_ACTIVE_HIGH>;
-+		vin-supply = <&pp3300_z2>;
-+	};
-+
-+	pp1800_tchscr_report_disable: regulator-pp1800-tchscr-report-disable {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pp1800_tchscr_report_disable";
-+		pinctrl-names = "default";
-+		regulator-boot-on;
-+		pinctrl-0 = <&touch_pin_report>;
-+		gpio = <&pio 37 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+&dsi_out {
-+	remote-endpoint = <&anx7625_in>;
-+};
-+
-+&i2c0 {
-+	clock-frequency = <400000>;
-+
-+	anx_bridge: anx7625@58 {
-+		compatible = "analogix,anx7625";
-+		reg = <0x58>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&anx7625_pins>;
-+		enable-gpios = <&pio 96 GPIO_ACTIVE_HIGH>;
-+		reset-gpios = <&pio 98 GPIO_ACTIVE_HIGH>;
-+		vdd10-supply = <&pp1000_edpbrdg>;
-+		vdd18-supply = <&pp1800_edpbrdg_dx>;
-+		vdd33-supply = <&pp3300_edp_dx>;
-+		analogix,lane0-swing = /bits/ 8 <0x70 0x30>;
-+		analogix,lane1-swing = /bits/ 8 <0x70 0x30>;
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			port@0 {
-+				reg = <0>;
-+
-+				anx7625_in: endpoint {
-+					remote-endpoint = <&dsi_out>;
-+					data-lanes = <0 1 2 3>;
-+				};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi b/arch/arm64/=
+boot/dts/mediatek/mt8186-corsola.dtsi
+index 682c6ad2574d..62158eac45d0 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
+@@ -1302,8 +1302,8 @@ mt6366_regulators: regulators {
+=20
+ 			vcore {
+ 				regulator-name =3D "pp0750_dvdd_core";
+-				regulator-min-microvolt =3D <550000>;
+-				regulator-max-microvolt =3D <800000>;
++				regulator-min-microvolt =3D <500000>;
++				regulator-max-microvolt =3D <1293750>;
+ 				regulator-ramp-delay =3D <6250>;
+ 				regulator-enable-ramp-delay =3D <200>;
+ 				regulator-allowed-modes =3D <MT6397_BUCK_MODE_AUTO
+@@ -1313,8 +1313,8 @@ vcore {
+=20
+ 			mt6366_vdram1_reg: vdram1 {
+ 				regulator-name =3D "pp1125_emi_vdd2";
+-				regulator-min-microvolt =3D <1125000>;
+-				regulator-max-microvolt =3D <1125000>;
++				regulator-min-microvolt =3D <500000>;
++				regulator-max-microvolt =3D <2087500>;
+ 				regulator-ramp-delay =3D <12500>;
+ 				regulator-enable-ramp-delay =3D <0>;
+ 				regulator-allowed-modes =3D <MT6397_BUCK_MODE_AUTO
+@@ -1322,6 +1322,16 @@ mt6366_vdram1_reg: vdram1 {
+ 				regulator-always-on;
+ 			};
+=20
++			mt6366_vpa_reg: vpa {
++				regulator-name =3D "ppvar_dvdd_vpa";
++				regulator-min-microvolt =3D <500000>;
++				regulator-max-microvolt =3D <3650000>;
++				regulator-ramp-delay =3D <50000>;
++				regulator-enable-ramp-delay =3D <250>;
++				regulator-allowed-modes =3D <MT6397_BUCK_MODE_AUTO
++							   MT6397_BUCK_MODE_FORCE_PWM>;
 +			};
 +
-+			port@1 {
-+				reg = <1>;
-+
-+				anx7625_out: endpoint {
-+					remote-endpoint = <&panel_in>;
-+				};
+ 			mt6366_vgpu_reg: vgpu {
+ 				/*
+ 				 * Called "ppvar_dvdd_gpu" in the schematic.
+@@ -1330,19 +1340,17 @@ mt6366_vgpu_reg: vgpu {
+ 				 */
+ 				regulator-name =3D "ppvar_dvdd_vgpu";
+ 				regulator-min-microvolt =3D <500000>;
+-				regulator-max-microvolt =3D <950000>;
++				regulator-max-microvolt =3D <1293750>;
+ 				regulator-ramp-delay =3D <6250>;
+ 				regulator-enable-ramp-delay =3D <200>;
+ 				regulator-allowed-modes =3D <MT6397_BUCK_MODE_AUTO
+ 							   MT6397_BUCK_MODE_FORCE_PWM>;
+-				regulator-coupled-with =3D <&mt6366_vsram_gpu_reg>;
+-				regulator-coupled-max-spread =3D <10000>;
+ 			};
+=20
+ 			mt6366_vproc11_reg: vproc11 {
+ 				regulator-name =3D "ppvar_dvdd_proc_bc_mt6366";
+-				regulator-min-microvolt =3D <600000>;
+-				regulator-max-microvolt =3D <1200000>;
++				regulator-min-microvolt =3D <500000>;
++				regulator-max-microvolt =3D <1293750>;
+ 				regulator-ramp-delay =3D <6250>;
+ 				regulator-enable-ramp-delay =3D <200>;
+ 				regulator-allowed-modes =3D <MT6397_BUCK_MODE_AUTO
+@@ -1352,8 +1360,8 @@ mt6366_vproc11_reg: vproc11 {
+=20
+ 			mt6366_vproc12_reg: vproc12 {
+ 				regulator-name =3D "ppvar_dvdd_proc_lc";
+-				regulator-min-microvolt =3D <600000>;
+-				regulator-max-microvolt =3D <1200000>;
++				regulator-min-microvolt =3D <500000>;
++				regulator-max-microvolt =3D <1293750>;
+ 				regulator-ramp-delay =3D <6250>;
+ 				regulator-enable-ramp-delay =3D <200>;
+ 				regulator-allowed-modes =3D <MT6397_BUCK_MODE_AUTO
+@@ -1361,10 +1369,21 @@ mt6366_vproc12_reg: vproc12 {
+ 				regulator-always-on;
+ 			};
+=20
++			mt6366_vmodem_reg: vmodem {
++				regulator-name =3D "ppvar_vmodem";
++				regulator-min-microvolt =3D <500000>;
++				regulator-max-microvolt =3D <1293750>;
++				regulator-ramp-delay =3D <6250>;
++				regulator-enable-ramp-delay =3D <900>;
++				regulator-allowed-modes =3D <MT6397_BUCK_MODE_AUTO
++							   MT6397_BUCK_MODE_FORCE_PWM>;
++				regulator-always-on;
 +			};
-+		};
 +
-+		aux-bus {
-+			panel: panel {
-+				compatible = "edp-panel";
-+				power-supply = <&pp3300_disp_x>;
-+				backlight = <&backlight_lcd0>;
-+
-+				port {
-+					panel_in: endpoint {
-+						remote-endpoint = <&anx7625_out>;
-+					};
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+&i2c2 {
-+	/delete-node/ trackpad@15;
-+
-+	touchpad@15 {
-+		compatible = "hid-over-i2c";
-+		reg = <0x15>;
-+		interrupts-extended = <&pio 11 IRQ_TYPE_LEVEL_LOW>;
-+		post-power-on-delay-ms = <10>;
-+		hid-descr-addr = <0x0001>;
-+		vdd-supply = <&pp3300_s3>;
-+		wakeup-source;
-+	};
-+};
-+
-+&i2c5 {
-+	clock-frequency = <400000>;
-+	/delete-node/ codec@1a;
-+
-+	rt5650: rt5650@1a {
-+		compatible = "realtek,rt5650";
-+		reg = <0x1a>;
-+		avdd-supply = <&mt6366_vio18_reg>;
-+		cpvdd-supply = <&mt6366_vio18_reg>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&rt1019p_pins_default>;
-+		cbj-sleeve-gpios = <&pio 150 GPIO_ACTIVE_HIGH>;
-+		interrupt-parent = <&pio>;
-+		interrupts = <17 IRQ_TYPE_EDGE_BOTH>;
-+		#sound-dai-cells = <0>;
-+		realtek,dmic1-data-pin = <2>;
-+		realtek,jd-mode = <2>;
-+	};
-+};
-+
-+&i2c_tunnel {
-+	/delete-node/ sbs-battery@b;
-+
-+	battery: sbs-battery@f {
-+		compatible = "sbs,sbs-battery";
-+		reg = <0xf>;
-+		sbs,i2c-retry-count = <2>;
-+		sbs,poll-retry-count = <1>;
-+	};
-+};
-+
-+&keyboard_controller {
-+	keypad,num-columns = <15>;
-+
-+	function-row-physmap = <
-+		MATRIX_KEY(0x00, 0x02, 0)        /* T1 */
-+		MATRIX_KEY(0x03, 0x02, 0)        /* T2 */
-+		MATRIX_KEY(0x02, 0x02, 0)        /* T3 */
-+		MATRIX_KEY(0x01, 0x02, 0)        /* T4 */
-+		MATRIX_KEY(0x03, 0x04, 0)        /* T5 */
-+		MATRIX_KEY(0x02, 0x04, 0)        /* T6 */
-+		MATRIX_KEY(0x01, 0x04, 0)        /* T7 */
-+		MATRIX_KEY(0x02, 0x09, 0)        /* T8 */
-+		MATRIX_KEY(0x01, 0x09, 0)        /* T9 */
-+		MATRIX_KEY(0x00, 0x04, 0)        /* T10 */
-+		MATRIX_KEY(0x00, 0x01, 0)        /* T11 */
-+		MATRIX_KEY(0x01, 0x05, 0)        /* T12 */
-+	>;
-+
-+	linux,keymap = <
-+		CROS_STD_MAIN_KEYMAP
-+		MATRIX_KEY(0x00, 0x02, KEY_BACK)           /* T1 */
-+		MATRIX_KEY(0x03, 0x02, KEY_REFRESH)        /* T2 */
-+		MATRIX_KEY(0x02, 0x02, KEY_ZOOM)           /* T3 */
-+		MATRIX_KEY(0x01, 0x02, KEY_SCALE)          /* T4 */
-+		MATRIX_KEY(0x03, 0x04, KEY_SYSRQ)          /* T5 */
-+		MATRIX_KEY(0x02, 0x04, KEY_BRIGHTNESSDOWN) /* T6 */
-+		MATRIX_KEY(0x01, 0x04, KEY_BRIGHTNESSUP)   /* T7 */
-+		MATRIX_KEY(0x02, 0x09, KEY_MUTE)           /* T8 */
-+		MATRIX_KEY(0x01, 0x09, KEY_VOLUMEDOWN)	   /* T9 */
-+		MATRIX_KEY(0x00, 0x04, KEY_VOLUMEUP)	   /* T10 */
-+		MATRIX_KEY(0x00, 0x01, KEY_MICMUTE)        /* T11 */
-+		MATRIX_KEY(0x01, 0x05, KEY_CONTROLPANEL)   /* T12 */
-+		MATRIX_KEY(0x03, 0x05, KEY_PREVIOUSSONG)   /* T13 */
-+		MATRIX_KEY(0x00, 0x09, KEY_PLAYPAUSE)	   /* T14 */
-+		MATRIX_KEY(0x00, 0x0b, KEY_NEXTSONG)	   /* T15 */
-+		MATRIX_KEY(0x03, 0x00, KEY_LEFTMETA)	   /* Search*/
-+		MATRIX_KEY(0x01, 0x0e, KEY_LEFTCTRL)	   /* Left Control*/
-+		MATRIX_KEY(0x06, 0x0d, KEY_LEFTALT)        /* Left ALT*/
-+		MATRIX_KEY(0x03, 0x0e, KEY_RIGHTCTRL)      /* Right Control*/
-+		MATRIX_KEY(0x06, 0x0a, KEY_BACKSLASH)      /* BACKSLASH*/
-+	>;
-+};
-+
-+&mmc1_pins_default {
-+	pins-clk {
-+		drive-strength = <MTK_DRIVE_8mA>;
-+	};
-+
-+	pins-cmd-dat {
-+		drive-strength = <MTK_DRIVE_8mA>;
-+	};
-+};
-+
-+&mmc1_pins_uhs {
-+	pins-clk {
-+		drive-strength = <MTK_DRIVE_8mA>;
-+	};
-+
-+	pins-cmd-dat {
-+		drive-strength = <MTK_DRIVE_8mA>;
-+	};
-+};
-+
-+&pen_insert {
-+	wakeup-event-action = <EV_ACT_ANY>;
-+};
-+
-+&pio {
-+	anx7625_pins: anx7625-pins {
-+		pins-int {
-+			pinmux = <PINMUX_GPIO9__FUNC_GPIO9>;
-+			input-enable;
-+			bias-disable;
-+		};
-+
-+		pins-reset {
-+			pinmux = <PINMUX_GPIO98__FUNC_GPIO98>;
-+			output-low;
-+		};
-+
-+		pins-power-en {
-+			pinmux = <PINMUX_GPIO96__FUNC_GPIO96>;
-+			output-low;
-+		};
-+	};
-+
-+	en_pp1000_edpbrdg: pp1000-edpbrdg-en-pins {
-+		pins-vreg-en {
-+			pinmux = <PINMUX_GPIO29__FUNC_GPIO29>;
-+			output-low;
-+		};
-+	};
-+
-+	en_pp1800_edpbrdg: pp1800-edpbrdg-en-pins {
-+		pins-vreg-en {
-+			pinmux = <PINMUX_GPIO30__FUNC_GPIO30>;
-+			output-low;
-+		};
-+	};
-+
-+	en_pp3300_edpbrdg: pp3300-edpbrdg-en-pins {
-+		pins-vreg-en {
-+			pinmux = <PINMUX_GPIO31__FUNC_GPIO31>;
-+			output-low;
-+		};
-+	};
-+
-+	touch_pin_report: pin-report-pins {
-+		pins-touch-en {
-+			pinmux = <PINMUX_GPIO37__FUNC_GPIO37>;
-+			output-low;
-+		};
-+	};
-+};
-+
-+&sound {
-+	compatible = "mediatek,mt8186-mt6366-rt5650-sound";
-+	model = "mt8186_rt5650";
-+	mediatek,adsp = <&adsp>;
-+
-+	audio-routing =
-+		"Headphone", "HPOL",
-+		"Headphone", "HPOR",
-+		"IN1P", "Headset Mic",
-+		"IN1N", "Headset Mic",
-+		"Speakers", "SPOL",
-+		"Speakers", "SPOR",
-+		"HDMI1", "TX";
-+
-+	hs-playback-dai-link {
-+		codec {
-+			sound-dai = <&rt5650>;
-+		};
-+	};
-+
-+	hs-capture-dai-link {
-+		codec {
-+			sound-dai = <&rt5650>;
-+		};
-+	};
-+
-+	spk-share-dai-link {
-+	};
-+
-+	spk-hdmi-playback-dai-link {
-+		codec {
-+			sound-dai = <&it6505dptx>;
-+		};
-+	};
-+};
-+
-+&touchscreen_pins {
-+	/delete-node/ pins-report-sw;
-+};
-+
-+&wifi_enable_pin {
-+	pins-wifi-enable {
-+		pinmux = <PINMUX_GPIO51__FUNC_GPIO51>;
-+	};
-+};
-+
-+&wifi_pwrseq {
-+	reset-gpios = <&pio 51 GPIO_ACTIVE_LOW>;
-+};
--- 
-2.17.1
+ 			mt6366_vs1_reg: vs1 {
+ 				regulator-name =3D "pp2000_vs1";
+-				regulator-min-microvolt =3D <2000000>;
+-				regulator-max-microvolt =3D <2000000>;
++				regulator-min-microvolt =3D <1000000>;
++				regulator-max-microvolt =3D <2587500>;
+ 				regulator-ramp-delay =3D <12500>;
+ 				regulator-enable-ramp-delay =3D <0>;
+ 				regulator-always-on;
+@@ -1372,8 +1391,8 @@ mt6366_vs1_reg: vs1 {
+=20
+ 			mt6366_vs2_reg: vs2 {
+ 				regulator-name =3D "pp1350_vs2";
+-				regulator-min-microvolt =3D <1350000>;
+-				regulator-max-microvolt =3D <1350000>;
++				regulator-min-microvolt =3D <500000>;
++				regulator-max-microvolt =3D <2087500>;
+ 				regulator-ramp-delay =3D <12500>;
+ 				regulator-enable-ramp-delay =3D <0>;
+ 				regulator-always-on;
+@@ -1397,7 +1416,7 @@ mt6366_vaud28_reg: vaud28 {
+ 			mt6366_vaux18_reg: vaux18 {
+ 				regulator-name =3D "pp1840_vaux18";
+ 				regulator-min-microvolt =3D <1800000>;
+-				regulator-max-microvolt =3D <1840000>;
++				regulator-max-microvolt =3D <1800000>;
+ 				regulator-enable-ramp-delay =3D <270>;
+ 			};
+=20
+@@ -1410,8 +1429,8 @@ mt6366_vbif28_reg: vbif28 {
+=20
+ 			mt6366_vcn18_reg: vcn18 {
+ 				regulator-name =3D "pp1800_vcn18_x";
+-				regulator-min-microvolt =3D <1800000>;
+-				regulator-max-microvolt =3D <1800000>;
++				regulator-min-microvolt =3D <600000>;
++				regulator-max-microvolt =3D <2100000>;
+ 				regulator-enable-ramp-delay =3D <270>;
+ 			};
+=20
+@@ -1424,8 +1443,8 @@ mt6366_vcn28_reg: vcn28 {
+=20
+ 			mt6366_vefuse_reg: vefuse {
+ 				regulator-name =3D "pp1800_vefuse";
+-				regulator-min-microvolt =3D <1800000>;
+-				regulator-max-microvolt =3D <1800000>;
++				regulator-min-microvolt =3D <1700000>;
++				regulator-max-microvolt =3D <1900000>;
+ 				regulator-enable-ramp-delay =3D <270>;
+ 			};
+=20
+@@ -1438,15 +1457,15 @@ mt6366_vfe28_reg: vfe28 {
+=20
+ 			mt6366_vemc_reg: vemc {
+ 				regulator-name =3D "pp3000_vemc";
+-				regulator-min-microvolt =3D <3000000>;
+-				regulator-max-microvolt =3D <3000000>;
++				regulator-min-microvolt =3D <2900000>;
++				regulator-max-microvolt =3D <3300000>;
+ 				regulator-enable-ramp-delay =3D <60>;
+ 			};
+=20
+ 			mt6366_vibr_reg: vibr {
+ 				regulator-name =3D "pp2800_vibr_x";
+-				regulator-min-microvolt =3D <2800000>;
+-				regulator-max-microvolt =3D <2800000>;
++				regulator-min-microvolt =3D <1200000>;
++				regulator-max-microvolt =3D <3300000>;
+ 				regulator-enable-ramp-delay =3D <60>;
+ 			};
+=20
+@@ -1482,30 +1501,30 @@ mt6366_vmc_reg: vmc {
+=20
+ 			mt6366_vmddr_reg: vmddr {
+ 				regulator-name =3D "pm0750_emi_vmddr";
+-				regulator-min-microvolt =3D <700000>;
+-				regulator-max-microvolt =3D <750000>;
++				regulator-min-microvolt =3D <600000>;
++				regulator-max-microvolt =3D <2100000>;
+ 				regulator-enable-ramp-delay =3D <325>;
+ 				regulator-always-on;
+ 			};
+=20
+ 			mt6366_vmch_reg: vmch {
+ 				regulator-name =3D "pp3000_vmch";
+-				regulator-min-microvolt =3D <3000000>;
+-				regulator-max-microvolt =3D <3000000>;
++				regulator-min-microvolt =3D <2900000>;
++				regulator-max-microvolt =3D <3300000>;
+ 				regulator-enable-ramp-delay =3D <60>;
+ 			};
+=20
+ 			mt6366_vcn33_reg: vcn33 {
+ 				regulator-name =3D "pp3300_vcn33_x";
+ 				regulator-min-microvolt =3D <3300000>;
+-				regulator-max-microvolt =3D <3300000>;
++				regulator-max-microvolt =3D <3500000>;
+ 				regulator-enable-ramp-delay =3D <270>;
+ 			};
+=20
+ 			vdram2 {
+ 				regulator-name =3D "pp0600_emi_vddq";
+ 				regulator-min-microvolt =3D <600000>;
+-				regulator-max-microvolt =3D <600000>;
++				regulator-max-microvolt =3D <1800000>;
+ 				regulator-enable-ramp-delay =3D <3300>;
+ 				regulator-always-on;
+ 			};
+@@ -1518,6 +1537,7 @@ mt6366_vrf12_reg: vrf12 {
+ 			};
+=20
+ 			mt6366_vrf18_reg: vrf18 {
++				compatible =3D "regulator-fixed";
+ 				regulator-name =3D "pp1800_vrf18_x";
+ 				regulator-min-microvolt =3D <1800000>;
+ 				regulator-max-microvolt =3D <1800000>;
+@@ -1526,8 +1546,8 @@ mt6366_vrf18_reg: vrf18 {
+=20
+ 			vsim1 {
+ 				regulator-name =3D "pp1860_vsim1_x";
+-				regulator-min-microvolt =3D <1800000>;
+-				regulator-max-microvolt =3D <1860000>;
++				regulator-min-microvolt =3D <1700000>;
++				regulator-max-microvolt =3D <3100000>;
+ 				regulator-enable-ramp-delay =3D <540>;
+ 			};
+=20
+@@ -1540,18 +1560,17 @@ mt6366_vsim2_reg: vsim2 {
+=20
+ 			mt6366_vsram_gpu_reg: vsram-gpu {
+ 				regulator-name =3D "pp0900_dvdd_sram_gpu";
+-				regulator-min-microvolt =3D <850000>;
+-				regulator-max-microvolt =3D <1050000>;
++				regulator-min-microvolt =3D <500000>;
++				regulator-max-microvolt =3D <1293750>;
+ 				regulator-ramp-delay =3D <6250>;
+ 				regulator-enable-ramp-delay =3D <240>;
+-				regulator-coupled-with =3D <&mt6366_vgpu_reg>;
+-				regulator-coupled-max-spread =3D <10000>;
++				regulator-always-on;
+ 			};
+=20
+ 			mt6366_vsram_others_reg: vsram-others {
+ 				regulator-name =3D "pp0900_dvdd_sram_core";
+-				regulator-min-microvolt =3D <900000>;
+-				regulator-max-microvolt =3D <900000>;
++				regulator-min-microvolt =3D <500000>;
++				regulator-max-microvolt =3D <1293750>;
+ 				regulator-ramp-delay =3D <6250>;
+ 				regulator-enable-ramp-delay =3D <240>;
+ 				regulator-always-on;
+@@ -1559,8 +1578,8 @@ mt6366_vsram_others_reg: vsram-others {
+=20
+ 			mt6366_vsram_proc11_reg: vsram-proc11 {
+ 				regulator-name =3D "pp0900_dvdd_sram_bc";
+-				regulator-min-microvolt =3D <850000>;
+-				regulator-max-microvolt =3D <1120000>;
++				regulator-min-microvolt =3D <500000>;
++				regulator-max-microvolt =3D <1293750>;
+ 				regulator-ramp-delay =3D <6250>;
+ 				regulator-enable-ramp-delay =3D <240>;
+ 				regulator-always-on;
+@@ -1568,8 +1587,8 @@ mt6366_vsram_proc11_reg: vsram-proc11 {
+=20
+ 			mt6366_vsram_proc12_reg: vsram-proc12 {
+ 				regulator-name =3D "pp0900_dvdd_sram_lc";
+-				regulator-min-microvolt =3D <850000>;
+-				regulator-max-microvolt =3D <1120000>;
++				regulator-min-microvolt =3D <500000>;
++				regulator-max-microvolt =3D <1293750>;
+ 				regulator-ramp-delay =3D <6250>;
+ 				regulator-enable-ramp-delay =3D <240>;
+ 				regulator-always-on;
+@@ -1578,7 +1597,7 @@ mt6366_vsram_proc12_reg: vsram-proc12 {
+ 			vusb {
+ 				regulator-name =3D "pp3070_vusb";
+ 				regulator-min-microvolt =3D <3000000>;
+-				regulator-max-microvolt =3D <3070000>;
++				regulator-max-microvolt =3D <3100000>;
+ 				regulator-enable-ramp-delay =3D <270>;
+ 				regulator-always-on;
+ 			};
+@@ -1586,7 +1605,7 @@ vusb {
+ 			vxo22 {
+ 				regulator-name =3D "pp2240_vxo22";
+ 				regulator-min-microvolt =3D <2200000>;
+-				regulator-max-microvolt =3D <2240000>;
++				regulator-max-microvolt =3D <2200000>;
+ 				regulator-enable-ramp-delay =3D <120>;
+ 				/* Feeds DCXO internally */
+ 				regulator-always-on;
+--=20
+2.47.0.rc1.288.g06298d1525-goog
 
 
