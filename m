@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7214CD30007
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 13:32:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2652D30007
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 13:33:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BTueToM8KZ/WRANPLM2oymKVxyH6UpeHkkFKXDhySoY=; b=qh9d+/GJDB4JQjEiGEC+HNcich
-	7FW/h8UIbgxKScIhBCNyqL4ypPtQbQahndwGXQXKKryJZ7kmauIVbNx8uq98MREdlbtd6puR2jQ/9
-	lu3JTl9KDBKlsYCoQOpCsY/W8+8/F0knuffEH+NG8AGDPfsNwm0WE72vvzsa2Wsa2CQBDy+Z/Rclg
-	/T9mBKEiH4Xcg5LDXdj0ZN8ugtMNIO70KSod0Yomk1XGNXWLi4bDjJT5EPaMvmjoxWfMHwmnFxXns
-	vIyPrKo5rXqDkGSL6hiAnIQ/vKJqyGT4s+QeW61Fi+IYWRggo584tyZZouBjQyLAab4CsIRDyPKxq
-	7TOJJ6Uw==;
+	bh=wdqI0ZWw5gN+1i3VZd9rkRuykNKofRY+f1Ev5MQYoFg=; b=KylXimeP3y22h87q1Vj9xAoA3/
+	TxBiqGKTcLT8WmhV6qnfzOuBlMOY9M9GLNOcRlFy/HGoweGb5wU+WCErcgUWkJuxDBh7A2jbA0geB
+	ChFE+hiIhsQqMLO1mzDxs0D10mJwCOKP/ZPWlbLwPEN5GbwyyQ1tw1Crv8IDUPg8937LSATU1caBS
+	JtOxRVLq3caTd1XNJf4E4TJPQoFCcKr9fOqRvUP8IU0Ooh+0aLNxZE9mHFQOhRAiIfA+0lMGspVOb
+	UV2hNyHmTq7bI8gi2vJ9WZy93G7zI7eb6FcDFZKDZd8UKMDAO+nW8oT6Ug3ffVcJDlbzxr54VsFes
+	H6KMtBKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1n5e-00000000tF0-1Lmw;
-	Fri, 18 Oct 2024 13:32:26 +0000
+	id 1t1n75-00000000tSI-3Zds;
+	Fri, 18 Oct 2024 13:33:55 +0000
 Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1mtK-00000000rJo-35av;
-	Fri, 18 Oct 2024 13:19:44 +0000
+	id 1t1mtO-00000000rL6-2hjN;
+	Fri, 18 Oct 2024 13:19:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id C5D94A43B5B;
-	Fri, 18 Oct 2024 13:19:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6EB9C4CEC3;
-	Fri, 18 Oct 2024 13:19:40 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 9867EA43B85;
+	Fri, 18 Oct 2024 13:19:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3927C4CEC3;
+	Fri, 18 Oct 2024 13:19:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729257581;
-	bh=eB3BfaRHbAYsShmwieKgK+tyQ9QuJAeGouECbmRe0ng=;
+	s=k20201202; t=1729257585;
+	bh=zrSswidO56FtbeNZMQXSi7aPMw7zkb3G9ZpSYil9sWg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=ZiXyNnANDDto5wGex3YPjx4ArU1KPSrhedpJYtpLZ1BaAAUvCVtu1WsyDfOffBGSJ
-	 4td1aWS/HTNG+UYaT76FaCTsa4iqtfssCTpW+VI0E6f2+WBOBPavdKTyrbe6F0LZWv
-	 9+hzNrkolUoLEugROSshLgGVEff8Q5Zc45GVnp0MjAzmDlvOBBHhuPjmHfeQVHiLyG
-	 dRb/5gVqCYIh5XDT3mV8KId2V/uuitHUK1/Ff+aJwKD8sNeUEAFXtOVOOrytt1fjiX
-	 QrEGDtfzhzYOSCWtiZJZvO3cO+T0ZbYHjjUKKl86vHkxZFQZx62HIBa4CM+YB3rgTd
-	 ckAF0Y5pQwdrg==
+	b=cVwEx1dzwq0/4S+QwX1asXIQjHRbpsThO945b7eYKqXudCoRw8boZLYRx/u9EU3Pi
+	 LaDxry7jk+HANB9efMEUKphic8FVt05Eej3wNEi0GIM4+2feIO1JX344ybEH7uE5Gj
+	 XJ75fb2uR6Cf3IZ887nc5kxqg15/0rvuzbANw6GPDB5Ciw3urh9B6PXbqtdSVbNYYP
+	 QwYyxnm/xOQ2gENzonsYwn5u5fWC57k3FxWXWtQMZLzOWpCmARn7GXuPERN9sWj5Ca
+	 5q4E/Tdbv+IqdoCNLzO2wGhibNgeEn8tC1vJSsaxJ6LERwfZeIrvYubTNwh3jYMk9r
+	 BVkY3AtUF4ZZA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 18 Oct 2024 15:19:04 +0200
-Subject: [PATCH v8 3/6] dt-bindings: pwm: airoha: Add EN7581 pwm
+Date: Fri, 18 Oct 2024 15:19:05 +0200
+Subject: [PATCH v8 4/6] dt-bindings: mfd: Add support for Airoha EN7581
+ GPIO System Controller
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20241018-en7581-pinctrl-v8-3-b676b966a1d1@kernel.org>
+Message-Id: <20241018-en7581-pinctrl-v8-4-b676b966a1d1@kernel.org>
 References: <20241018-en7581-pinctrl-v8-0-b676b966a1d1@kernel.org>
 In-Reply-To: <20241018-en7581-pinctrl-v8-0-b676b966a1d1@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>, 
@@ -64,8 +65,8 @@ Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
  linux-pwm@vger.kernel.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241018_061942_942347_9DD61A12 
-X-CRM114-Status: GOOD (  12.41  )
+X-CRM114-CacheID: sfid-20241018_061946_864367_6934ECEE 
+X-CRM114-Status: GOOD (  11.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,82 +81,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce device-tree binding documentation for Airoha EN7581 pwm
-controller.
+From: Christian Marangi <ansuelsmth@gmail.com>
 
-Co-developed-by: Christian Marangi <ansuelsmth@gmail.com>
+Add support for Airoha EN7581 GPIO System Controller which provide a
+register map for controlling the GPIO, pinctrl and PWM of the SoC via
+dedicated pinctrl and pwm child nodes.
+
 Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- .../devicetree/bindings/pwm/airoha,en7581-pwm.yaml | 61 ++++++++++++++++++++++
- 1 file changed, 61 insertions(+)
+ .../bindings/mfd/airoha,en7581-gpio-sysctl.yaml    | 90 ++++++++++++++++++++++
+ 1 file changed, 90 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/pwm/airoha,en7581-pwm.yaml b/Documentation/devicetree/bindings/pwm/airoha,en7581-pwm.yaml
+diff --git a/Documentation/devicetree/bindings/mfd/airoha,en7581-gpio-sysctl.yaml b/Documentation/devicetree/bindings/mfd/airoha,en7581-gpio-sysctl.yaml
 new file mode 100644
-index 0000000000000000000000000000000000000000..fb68c10b037b840a571a2ceee57f13cbae78da66
+index 0000000000000000000000000000000000000000..4a81ed82ef34dc2b99594098584cc77f67f276c8
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/pwm/airoha,en7581-pwm.yaml
-@@ -0,0 +1,61 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++++ b/Documentation/devicetree/bindings/mfd/airoha,en7581-gpio-sysctl.yaml
+@@ -0,0 +1,90 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/pwm/airoha,en7581-pwm.yaml#
++$id: http://devicetree.org/schemas/mfd/airoha,en7581-gpio-sysctl.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: Airoha EN7581 PWM Controller
++title: Airoha EN7581 GPIO System Controller
 +
 +maintainers:
++  - Christian Marangi <ansuelsmth@gmail.com>
 +  - Lorenzo Bianconi <lorenzo@kernel.org>
 +
-+allOf:
-+  - $ref: pwm.yaml#
++description:
++  Airoha EN7581 SoC GPIO system controller which provided a register map
++  for controlling the GPIO, pins and PWM of the SoC.
 +
 +properties:
 +  compatible:
-+    const: airoha,en7581-pwm
++    items:
++      - const: airoha,en7581-gpio-sysctl
++      - const: syscon
++      - const: simple-mfd
 +
-+  "#pwm-cells":
-+    const: 3
++  reg:
++    maxItems: 1
 +
-+  airoha,74hc595-mode:
-+    description: Set the PWM to handle attached shift register chip 74HC595.
++  pinctrl:
++    type: object
++    $ref: /schemas/pinctrl/airoha,en7581-pinctrl.yaml
++    description:
++      Child node definition for EN7581 Pin controller
 +
-+      With this disabled, PWM assume a 74HC164 chip attached.
-+
-+      The main difference between the 2 chip is the presence of a latch pin
-+      that needs to triggered to apply the configuration and PWM needs to
-+      account for that.
-+    type: boolean
-+
-+  airoha,sipo-clock-divisor:
-+    description: Declare Shift Register chip clock divisor (clock source is
-+      from SoC APB Clock)
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    default: 32
-+    enum: [4, 8, 16, 32]
-+
-+  airoha,sipo-clock-delay:
-+    description: Declare Serial GPIO Clock delay.
-+      This can be needed to permit the attached shift register to correctly
-+      setup and apply settings. Value must NOT be greater than
-+      "airoha,sipo-clock-divisor" / 2
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    default: 1
-+    minimum: 1
-+    maximum: 16
++  pwm:
++    type: object
++    $ref: /schemas/pwm/airoha,en7581-pwm.yaml
++    description:
++      Child node definition for EN7581 PWM controller
 +
 +required:
 +  - compatible
-+  - "#pwm-cells"
++  - reg
 +
 +additionalProperties: false
 +
 +examples:
 +  - |
-+    pwm {
-+      compatible = "airoha,en7581-pwm";
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
 +
-+      #pwm-cells = <3>;
++    system-controller@1fbf0200 {
++      compatible = "airoha,en7581-gpio-sysctl", "syscon", "simple-mfd";
++      reg = <0x1fbf0200 0xc0>;
++
++      pinctrl {
++        compatible = "airoha,en7581-pinctrl";
++
++        interrupt-parent = <&gic>;
++        interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
++
++        gpio-controller;
++        #gpio-cells = <2>;
++
++        interrupt-controller;
++        #interrupt-cells = <2>;
++
++        mmc-pins {
++          mux {
++            function = "emmc";
++            groups = "emmc";
++          };
++        };
++
++        mdio-pins {
++          mux {
++            function = "mdio";
++            groups = "mdio";
++          };
++
++          conf {
++            pins = "gpio2";
++            output-enable;
++          };
++        };
++      };
++
++      pwm {
++        compatible = "airoha,en7581-pwm";
++
++        #pwm-cells = <3>;
++      };
 +    };
 
 -- 
