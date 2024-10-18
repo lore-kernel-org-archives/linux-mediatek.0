@@ -4,86 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E714AD3C55E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 07:33:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E996D2127B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 07:54:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=IlPybqmG9m/ZAU4ubVutLFbdpffPKHkEonNeryEzP1o=; b=zM2yNPmRNfBuSauV2k12WNiZrM
-	1aHp2S3mx5lVYPmJAr2xiP+dCEXSM0XxYffsxa2LuPienXXePZXopA5b8Yr/B9l9m/UgJxYy8MR52
-	u6ZQYLdA7hGgEpnTZ9C+TdhhSZ78oo10ctKlb4pBF2GmIIIbPQ1UcE+lOxU+SmyPLIXYyNSY+hxGM
-	xQCT82SqfXTRZNPkrwpLZ1VGzWpTD5eqwUa07xpGyCFLGYxfsDHAKcEvapp5744RvFfaqPsvLPXeG
-	ct5GMR0mEuXazgg9+2V5XU9l4yGZFKBOpfhJPX/MGZTiOYQyBoab9Y5PFpXREIwSMdUAXMQP2/oUf
-	tr25nAeA==;
+	bh=1isxM+T848GFvJvzymmh7gVtU9Db8eItqMO8i4yplDI=; b=qE7Er3aSyO0IRBjFI9/63KRuS3
+	kgyHSslWGvNXaD4+7NRn5paeUftk2gs4zYzIguQwyOukmjTT5vOa0u4QHAllpTzVzLhG70HyG0n5P
+	Om1r5xAfBmMmB55+/npwS4impgJsBwWbQUCfXGCCZYz9FNEasp6mK8kjRwFDOJQ6BkAAhQyYQUzgp
+	0r0d7k6NoGFc29SvMkUM0c550eyqvaXYTLzuY9E0T3Rfrn8Yz+Fp/8skRpvc9pmAtMPZZiWD93XJr
+	0TV4ymFWxJDgsndYpw5cgYIpVarIqhpFYnvl/U7jDzgccpds35tJw0ArM3QpyvWw7b9dWDT9Gi4/E
+	mn1TOJ4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1hUA-0000000HLP1-3P8w;
-	Fri, 18 Oct 2024 07:33:22 +0000
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
+	id 1t1hoI-0000000HPEv-0iLU;
+	Fri, 18 Oct 2024 07:54:10 +0000
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1hSf-0000000HL66-3bXN
-	for linux-mediatek@lists.infradead.org;
-	Fri, 18 Oct 2024 07:31:52 +0000
-Received: by mail-pg1-x530.google.com with SMTP id 41be03b00d2f7-656d8b346d2so1218332a12.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 18 Oct 2024 00:31:49 -0700 (PDT)
+	id 1t1hjr-0000000HOYo-12qa;
+	Fri, 18 Oct 2024 07:49:36 +0000
+Received: by mail-pg1-x535.google.com with SMTP id 41be03b00d2f7-7ea7e250c54so1274772a12.0;
+        Fri, 18 Oct 2024 00:49:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1729236709; x=1729841509; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1729237774; x=1729842574; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=IlPybqmG9m/ZAU4ubVutLFbdpffPKHkEonNeryEzP1o=;
-        b=i5AN6uTuQRThIjZPvF2hSrrE6k+ztpv2QxXY6jKbN9n2VrzLzH5XYN8KtRflhBLTbQ
-         kUeqI7j2bbfVKgqTmVatPxSJoRaNfakEReiP6c59ESaOI2fyUqETfhXka2K3eSuoeXZG
-         hkVXhoGRbZsbiol9PFv0hnnNep68xqJNsxr7I=
+        bh=1isxM+T848GFvJvzymmh7gVtU9Db8eItqMO8i4yplDI=;
+        b=ZWlnA3otFWcKv5UJmRCxcTcaVk5Pd3qRVdQAKDmQ3tLUO1mUuhZCb/J+phsfMaKzkP
+         8hlXzUmXonGqqeuIgO3ewBYk02G/mmLI9GWx4zb9VLQyKT9xavdVbq0Fhvc3/w6Ai/zS
+         pXSmEFygrgDEkZl4WOnunIhPypXzobDvefHRttSynrnENwr4VYM6vqpo9dfS9RhJIccF
+         OjfMGyzVP7UX7lfWVS2lzXdBN4LQ8Hp14ZaPLAWZlpaVIAYe7PhfaSrZnf4o4p0tT3tT
+         DuB8T7avlR+yaj0Z56GsQr/JuQ+3Hp/zpz31A7G3Wi0JX7b/1RBF6uAP2xsbKrsp4/9o
+         0NfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729236709; x=1729841509;
+        d=1e100.net; s=20230601; t=1729237774; x=1729842574;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=IlPybqmG9m/ZAU4ubVutLFbdpffPKHkEonNeryEzP1o=;
-        b=VLFqkoIhXdNjQG973d/POpv3UNwLz+IuLbfTugEnDVJoUHYCnhHj1W6o2UyvzCVvxw
-         8v79u441dZAerJTDz7/sc2mBxyJASn/FLnqs4s1G4fKnTEbUwSiAPQ6MZ3MRMpYQTrUr
-         Qp1kSX8mkWbRs32Oqle9vk7s45pJ9SKcNHGcZiV6sLrfR+OKRvQ/HXIH9CFC1Dls225Q
-         mWwiMH9wwywglCay645H91Hwpe36qKk/vmACjRfSrJf4Ts5mmDc4xrM6Eu2pyHh1UcHC
-         FV2+rkAqc798+B//WAPilkQYN8+dQ5SnIPW4on4A0olsVg+ZJuqORdWB4TDSHFFh+8M5
-         xNBg==
-X-Forwarded-Encrypted: i=1; AJvYcCU8TKhRHp7y97ciG4b8JTLezI8liJqj8SnBPo9uXZbR0rjDWCTgaJlZ563Wu6q7fhbKCzg42mBO2CK1XEMxnQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxJPKRKJ3G4/Fo2TETG/Kc/bSL6cQbESMZjmBs4JzJZUzrfPVLo
-	S4BtkcEKGe645O+ES40QSiIquCd+cxP2vmHFZ3cMp4vCH+X/hF6sqLh7MnJQmg==
-X-Google-Smtp-Source: AGHT+IHLIrR9ytIHJoh0tpY7PloSKaVtl6gokdxvrnHnBae8s/7gjJhQ59rft77DxeV3cTP3OmeRAA==
-X-Received: by 2002:a05:6a21:70c8:b0:1d9:575:6659 with SMTP id adf61e73a8af0-1d92c58fa40mr2750256637.49.1729236708639;
-        Fri, 18 Oct 2024 00:31:48 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:5e77:354e:2385:7baa])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7eacc229a7dsm745320a12.20.2024.10.18.00.31.45
+        bh=1isxM+T848GFvJvzymmh7gVtU9Db8eItqMO8i4yplDI=;
+        b=sn8hxtPBuM/wy8ep3s8Gw7Owcw5MdJNphWLBFJjLs3AhtJP8OuHwkrCilYmChKgkbF
+         2E74dEkM7iigY4C5rBcCUM+uGBG5g9AcysrZ3RSCzny9u9UH3D+5J2G7St/gV4FHk+xJ
+         V+m+SZrD+T+f6Xi4dD9cQGnmB7skr9AsyfWmbcPR2E4WYhwvXLyEC9Usd5eHpckp2Vcj
+         pSBbHBiGDA7/jF/o4PuN5gVQSxatF5YNvO3uEKj1EiqCDarwZXVD7aJUobKfNy3KOU6M
+         BOMqfbT/AODpmBLWAHnYSsZP0z9g5KBVnquHzhmBfor0PEUypUW3OuvAHj3J2RNWFudj
+         XZ/A==
+X-Forwarded-Encrypted: i=1; AJvYcCWJBb/lkUNUD65RKze7Gcbx/JqL8t3umjfjvuqYDhT28LzR6DMDxvv0OKhpAF6Da22x/a9s5NojHekMQiBc4EDj@lists.infradead.org, AJvYcCWe6XQI8QsBIjENtHAlVKFnGszaeKOPHOwcOHQZz3HxO9xg/gLtoQcHkUI3JTEPyXJac2wW/LWvuwpiTFF/C7A=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx6wGIa3dofUx4kGfyT/a7y8gmaMPAUPSsxXMSUWQBVfSCtilDE
+	GE4fvplAFJ1mjfxACWQHZQys3zMCg0XNyn/uFBOx5NfPiMszilOq
+X-Google-Smtp-Source: AGHT+IGq9xXBjZ7B+bmpZuX1zHoZ3akorwGczXJzcLA0dPqp+H4yvzKs0UT4OCM9H+bsNsIXFm5osw==
+X-Received: by 2002:a05:6a21:3a94:b0:1d9:282f:3d16 with SMTP id adf61e73a8af0-1d92c56cad7mr2315018637.32.1729237773888;
+        Fri, 18 Oct 2024 00:49:33 -0700 (PDT)
+Received: from localhost ([2402:7500:479:5c7a:4a5c:7794:109d:58b])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20e5a8d674asm7346715ad.169.2024.10.18.00.49.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 18 Oct 2024 00:31:48 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: "Rafael J. Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Zhang Rui <rui.zhang@intel.com>,
-	Lukasz Luba <lukasz.luba@arm.com>
-Cc: Icenowy Zheng <uwu@icenowy.me>,
-	Mark Brown <broonie@kernel.org>,
-	linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+        Fri, 18 Oct 2024 00:49:33 -0700 (PDT)
+From: wojackbb@gmail.com
+To: netdev@vger.kernel.org,
+	linux-usb@vger.kernel.org
+Cc: chandrashekar.devegowda@intel.com,
+	chiranjeevi.rapolu@linux.intel.com,
+	haijun.liu@mediatek.com,
+	m.chetan.kumar@linux.intel.com,
+	ricardo.martinez@linux.intel.com,
+	loic.poulain@linaro.org,
+	ryazanov.s.a@gmail.com,
+	johannes@sipsolutions.net,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
 	linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev,
-	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	angelogioacchino.delregno@collabora.com,
 	linux-mediatek@lists.infradead.org,
-	Hsin-Te Yuan <yuanhsinte@chromium.org>,
-	Chen-Yu Tsai <wenst@chromium.org>
-Subject: [PATCH v4] thermal/of: support thermal zones w/o trips subnode
-Date: Fri, 18 Oct 2024 15:31:36 +0800
-Message-ID: <20241018073139.1268995-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.47.0.rc1.288.g06298d1525-goog
+	matthias.bgg@gmail.com,
+	johan@kernel.org,
+	Jack Wu <wojackbb@gmail.com>
+Subject: [PATCH 1/2] [net,v3] net: wwan: t7xx: add PM_AUTOSUSPEND_MS_BY_DW5933E for Dell DW5933e
+Date: Fri, 18 Oct 2024 15:48:41 +0800
+Message-Id: <20241018074841.23546-1-wojackbb@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241018_003149_907906_11B1E4C6 
-X-CRM114-Status: GOOD (  16.35  )
+X-CRM114-CacheID: sfid-20241018_004935_337126_0AF6638C 
+X-CRM114-Status: GOOD (  18.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,100 +105,147 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Icenowy Zheng <uwu@icenowy.me>
+From: Jack Wu <wojackbb@gmail.com>
 
-Although the current device tree binding of thermal zones require the
-trips subnode, the binding in kernel v5.15 does not require it, and many
-device trees shipped with the kernel, for example,
-allwinner/sun50i-a64.dtsi and mediatek/mt8183-kukui.dtsi in ARM64, still
-comply to the old binding and contain no trips subnode.
+Because optimizing the power consumption of Dell DW5933e,
+Add a new auto suspend time for Dell DW5933e.
 
-Allow the code to successfully register thermal zones w/o trips subnode
-for DT binding compatibility now.
+The Tests uses a small script to loop through the power_state
+of Dell DW5933e.
+(for example: /sys/bus/pci/devices/0000\:72\:00.0/power_state)
 
-Furtherly, the inconsistency between DTs and bindings should be resolved
-by either adding empty trips subnode or dropping the trips subnode
-requirement.
+* If Auto suspend is 20 seconds,
+  test script show power_state have 5% of the time was in D3 state
+  when host don't have data packet transmission.
 
-Fixes: d0c75fa2c17f ("thermal/of: Initialize trip points separately")
-Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
-[wenst@chromium.org: Reworked logic and kernel log messages]
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+* Changed auto suspend time to 5 seconds,
+  test script show power_state have 50% of the time was in D3 state
+  when host don't have data packet transmission.
+
+Signed-off-by: Jack Wu <wojackbb@gmail.com>
 ---
-This patch is based on Krzysztof's cleanup patches
-  - thermal: of: Use scoped memory and OF handling to simplify thermal_of_trips_init() [1]
-
-Changes since v3:
-  - Set *ntrips = 0 and return NULL from thermal_of_trips_init() if
-    no trip points are found in the device tree (Rafael)
-  - Dropped log level of "no trip points found" message to INFO
-  - Reworded new "failed to find trip points" message to "no trip points
-    found"
-  - Reworded existing "failed to find trip points" message to "failed to
-    parse trip points"
-
-I dropped Mark's reviewed-by because of the new changes.
-
-Changes since v2:
-- Stacked on top of Krzysztof's cleanup patches
-  - thermal: of: Use scoped memory and OF handling to simplify thermal_of_trips_init() [1]
-- Adjusted to account for eliminated error path
-
-[1] https://lore.kernel.org/all/20241010-b4-cleanup-h-of-node-put-thermal-v4-2-bfbe29ad81f4@linaro.org/
-
-Changes since v1:
-- set *ntrips at beginning of thermal_of_trips_init()
-- Keep goto out_of_node_put in of_get_child_count(trips) == 0 branch
-- Check return value of thermal_of_trips_init(), if it is -ENXIO, print
-  warning and clear |trips| pointer
-- Drop |mask| change, as the variable was removed
-
+V3:
+ * supplementary commit information
+V2:
+ * Fix code style error
 ---
- drivers/thermal/thermal_of.c | 15 ++++++++++-----
- 1 file changed, 10 insertions(+), 5 deletions(-)
+---
+ drivers/net/wwan/t7xx/t7xx_pci.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/thermal/thermal_of.c b/drivers/thermal/thermal_of.c
-index 93f7c6f8d06d..abafce22c91f 100644
---- a/drivers/thermal/thermal_of.c
-+++ b/drivers/thermal/thermal_of.c
-@@ -99,14 +99,16 @@ static struct thermal_trip *thermal_of_trips_init(struct device_node *np, int *n
+diff --git a/drivers/net/wwan/t7xx/t7xx_pci.c b/drivers/net/wwan/t7xx/t7xx_pci.c
+index e556e5bd49ab..ec567153ea6e 100644
+--- a/drivers/net/wwan/t7xx/t7xx_pci.c
++++ b/drivers/net/wwan/t7xx/t7xx_pci.c
+@@ -49,6 +49,7 @@
+ #define PM_SLEEP_DIS_TIMEOUT_MS		20
+ #define PM_ACK_TIMEOUT_MS		1500
+ #define PM_AUTOSUSPEND_MS		20000
++#define PM_AUTOSUSPEND_MS_BY_DW5933E 5000
+ #define PM_RESOURCE_POLL_TIMEOUT_US	10000
+ #define PM_RESOURCE_POLL_STEP_US	100
  
- 	struct device_node *trips __free(device_node) = of_get_child_by_name(np, "trips");
- 	if (!trips) {
--		pr_err("Failed to find 'trips' node\n");
--		return ERR_PTR(-EINVAL);
-+		pr_debug("Failed to find 'trips' node\n");
-+		*ntrips = 0;
-+		return NULL;
- 	}
+@@ -174,7 +175,7 @@ static int t7xx_wait_pm_config(struct t7xx_pci_dev *t7xx_dev)
+ 	return ret;
+ }
  
- 	count = of_get_child_count(trips);
- 	if (!count) {
--		pr_err("No trip point defined\n");
--		return ERR_PTR(-EINVAL);
-+		pr_debug("No trip point defined\n");
-+		*ntrips = 0;
-+		return NULL;
- 	}
+-static int t7xx_pci_pm_init(struct t7xx_pci_dev *t7xx_dev)
++static int t7xx_pci_pm_init(struct t7xx_pci_dev *t7xx_dev, int pm_autosuspend_ms)
+ {
+ 	struct pci_dev *pdev = t7xx_dev->pdev;
  
- 	struct thermal_trip *tt __free(kfree) = kzalloc(sizeof(*tt) * count, GFP_KERNEL);
-@@ -386,11 +388,14 @@ static struct thermal_zone_device *thermal_of_zone_register(struct device_node *
+@@ -191,7 +192,7 @@ static int t7xx_pci_pm_init(struct t7xx_pci_dev *t7xx_dev)
+ 				DPM_FLAG_NO_DIRECT_COMPLETE);
  
- 	trips = thermal_of_trips_init(np, &ntrips);
- 	if (IS_ERR(trips)) {
--		pr_err("Failed to find trip points for %pOFn id=%d\n", sensor, id);
-+		pr_err("Failed to parse trip points for %pOFn id=%d\n", sensor, id);
- 		ret = PTR_ERR(trips);
- 		goto out_of_node_put;
- 	}
+ 	iowrite32(T7XX_L1_BIT(0), IREG_BASE(t7xx_dev) + DISABLE_ASPM_LOWPWR);
+-	pm_runtime_set_autosuspend_delay(&pdev->dev, PM_AUTOSUSPEND_MS);
++	pm_runtime_set_autosuspend_delay(&pdev->dev, pm_autosuspend_ms);
+ 	pm_runtime_use_autosuspend(&pdev->dev);
  
-+	if (!trips)
-+		pr_info("No trip points found for %pOFn id=%d\n", sensor, id);
-+
- 	ret = thermal_of_monitor_init(np, &delay, &pdelay);
- 	if (ret) {
- 		pr_err("Failed to initialize monitoring delays from %pOFn\n", np);
+ 	return 0;
+@@ -824,7 +825,13 @@ static int t7xx_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+ 	IREG_BASE(t7xx_dev) = pcim_iomap_table(pdev)[T7XX_PCI_IREG_BASE];
+ 	t7xx_dev->base_addr.pcie_ext_reg_base = pcim_iomap_table(pdev)[T7XX_PCI_EREG_BASE];
+ 
+-	ret = t7xx_pci_pm_init(t7xx_dev);
++	if (id->vendor == 0x14c0 && id->device == 0x4d75) {
++		/* Dell DW5933e */
++		ret = t7xx_pci_pm_init(t7xx_dev, PM_AUTOSUSPEND_MS_BY_DW5933E);
++	} else {
++		/* Other devices */
++		ret = t7xx_pci_pm_init(t7xx_dev, PM_AUTOSUSPEND_MS);
++	}
+ 	if (ret)
+ 		return ret;
+ 
 -- 
-2.47.0.rc1.288.g06298d1525-goog
+2.34.1
+
+
+From cd3c4bb25637348806e92e2fe9d51a05c5ddbafd Mon Sep 17 00:00:00 2001
+From: Jack Wu <wojackbb@gmail.com>
+Date: Fri, 18 Oct 2024 15:44:11 +0800
+Subject: [PATCH 2/2] Add support for Sierra Wireless EM86xx with USB-id
+ 0x1199:0x90e5 & 0x1199:0x90e4.
+
+It is 0x1199:0x90e5
+T:  Bus=03 Lev=01 Prnt=01 Port=05 Cnt=01 Dev#= 14 Spd=480  MxCh= 0
+D:  Ver= 2.00 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+P:  Vendor=1199 ProdID=90e5 Rev= 5.15
+S:  Manufacturer=Sierra Wireless, Incorporated
+S:  Product=Semtech EM8695 Mobile Broadband Adapter
+S:  SerialNumber=004403161882339
+C:* #Ifs= 6 Cfg#= 1 Atr=a0 MxPwr=500mA
+A:  FirstIf#=12 IfCount= 2 Cls=02(comm.) Sub=0e Prot=00
+I:* If#= 0 Alt= 0 #EPs= 2 Cls=ff(vend.) Sub=ff Prot=30 Driver=qcserial
+E:  Ad=01(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+E:  Ad=81(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+I:* If#= 1 Alt= 0 #EPs= 2 Cls=ff(vend.) Sub=42 Prot=01 Driver=usbfs
+E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+I:* If#= 3 Alt= 0 #EPs= 3 Cls=ff(vend.) Sub=ff Prot=40 Driver=qcserial
+E:  Ad=84(I) Atr=03(Int.) MxPS=  10 Ivl=32ms
+E:  Ad=83(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+E:  Ad=03(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+I:* If#= 4 Alt= 0 #EPs= 1 Cls=ff(vend.) Sub=ff Prot=ff Driver=(none)
+E:  Ad=85(I) Atr=03(Int.) MxPS=  64 Ivl=32ms
+I:* If#=12 Alt= 0 #EPs= 1 Cls=02(comm.) Sub=0e Prot=00 Driver=cdc_mbim
+E:  Ad=87(I) Atr=03(Int.) MxPS=  64 Ivl=32ms
+I:  If#=13 Alt= 0 #EPs= 0 Cls=0a(data ) Sub=00 Prot=02 Driver=cdc_mbim
+I:* If#=13 Alt= 1 #EPs= 2 Cls=0a(data ) Sub=00 Prot=02 Driver=cdc_mbim
+E:  Ad=86(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+E:  Ad=04(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+
+It is 0x1199:0x90e4
+T:  Bus=03 Lev=01 Prnt=01 Port=05 Cnt=01 Dev#= 16 Spd=480  MxCh= 0
+D:  Ver= 2.00 Cls=00(>ifc ) Sub=00 Prot=00 MxPS=64 #Cfgs=  1
+P:  Vendor=1199 ProdID=90e4 Rev= 0.00
+S:  Manufacturer=Sierra Wireless, Incorporated
+S:  SerialNumber=004403161882339
+C:* #Ifs= 1 Cfg#= 1 Atr=a0 MxPwr=  2mA
+I:* If#= 0 Alt= 0 #EPs= 2 Cls=ff(vend.) Sub=ff Prot=10 Driver=qcserial
+E:  Ad=81(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+E:  Ad=01(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+
+Signed-off-by: JackBB Wu <wojackbb@gmail.com>
+---
+ drivers/usb/serial/qcserial.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/usb/serial/qcserial.c b/drivers/usb/serial/qcserial.c
+index 703a9c563557..bd0768e61b26 100644
+--- a/drivers/usb/serial/qcserial.c
++++ b/drivers/usb/serial/qcserial.c
+@@ -168,6 +168,8 @@ static const struct usb_device_id id_table[] = {
+ 	{DEVICE_SWI(0x1199, 0x90d2)},	/* Sierra Wireless EM9191 QDL */
+ 	{DEVICE_SWI(0x1199, 0xc080)},	/* Sierra Wireless EM7590 QDL */
+ 	{DEVICE_SWI(0x1199, 0xc081)},	/* Sierra Wireless EM7590 */
++	{DEVICE_SWI(0x1199, 0x90e4)},	/* Sierra Wireless EM86xx QDL*/
++	{DEVICE_SWI(0x1199, 0x90e5)},	/* Sierra Wireless EM86xx */
+ 	{DEVICE_SWI(0x413c, 0x81a2)},	/* Dell Wireless 5806 Gobi(TM) 4G LTE Mobile Broadband Card */
+ 	{DEVICE_SWI(0x413c, 0x81a3)},	/* Dell Wireless 5570 HSPA+ (42Mbps) Mobile Broadband Card */
+ 	{DEVICE_SWI(0x413c, 0x81a4)},	/* Dell Wireless 5570e HSPA+ (42Mbps) Mobile Broadband Card */
+-- 
+2.34.1
 
 
