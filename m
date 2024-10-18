@@ -4,75 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 623D0D374BF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 16:38:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A625AD3DEA0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 17:08:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5e/JvhJqKlCVYQa+Omsxw8MYAu5fhQVMZnj7/8Zte/A=; b=W/mQKhmfP+Y+fQylvWGmEoo/+g
-	T89GgBMhKX1F6AmOXHKbnYiBjxnn2OxuBoCcdoBlUmUORYn3+FLIi1p/nJVWK2zvL3egGnSy37vHR
-	dLINKhnPeKqNkhfHqgdLalpBLvWmd2X3dVaJaql89zKYuo//G7bmlXmOIc5NAH5VplonXKiCpFCN4
-	DBmJZKA51q/jhDvCkzQuzD8tW7NBl7sLn2rrFFunio0ORrI4Y0d0Pn0tfwAdEESSB4bZiwFb247gf
-	9kF6BxOR1udQyx5NBreVPVrcc23TSeYVOXPU4OaQB75GgHhZPf+ruGQTu9eO5F43VkK/QZhZ8ylPf
-	eomhhZfw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=86Chs4ufIR1yiNI3+jlRXdlCATqvdX/rue8dEZfqmY8=; b=cv5ZqX+IhILHqNq+Gbc9pnkiWN
+	k/I4b2pXZo1T+xStebx0/lbhdG4TBWT+YLkpvwWFiWcpNsYytlgykaEp5BiwGv5FHLpV2ZZhoZcQI
+	8GlJHhatmSp96jVQp8p/gYKyAQb0vx2VXJjenIlulh6ZMGkusKto6ddz1OwLQ/ranfxzE1r0ZXcKI
+	D6cF+FddB99u82HwwRzjnlEXt4vmzm1WxDLaqiqjVpwzxDtiiNMG6qB2mKguf/xOJd+ZfM/IDyGUw
+	6hcZpJ+xwk3yq7Se3BKSggJ9Ab4PBSMtUYDg0NvHwt2ZoSshP660FLLkjAafMLICXG3pXzEMzjYbi
+	bzB7jsyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1pzR-00000001NOL-1Mr0;
-	Fri, 18 Oct 2024 16:38:13 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1t1qSJ-00000001Qg6-1PK7;
+	Fri, 18 Oct 2024 17:08:03 +0000
+Received: from smtp-23.smtpout.orange.fr ([80.12.242.23] helo=smtp.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1pxx-00000001NDA-2nBd;
-	Fri, 18 Oct 2024 16:36:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 0DF7EA44753;
-	Fri, 18 Oct 2024 16:36:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E60A1C4CED5;
-	Fri, 18 Oct 2024 16:36:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729269398;
-	bh=jq7Y7/frNkQWdKn6/pE62Zi+RO0e0r/Z5zuFlEysqj8=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=I54s75ab423OKHdT4qZEmxInLP1Stn4BTpeGesyteaCQGb+0Mrh2gTD9v6Pt4ola/
-	 1jYN1BWEIkKK5Mpz3DTgh110hZhUOV8+pX3dfWMnvDIDWi9t5+7apjfj0RhsyDRfou
-	 6yHdojYXAfQEgpxrK2pJGCEfZxNjdj/OSAgAPPA4UesViFH/E/vrWW3ZDudcqn1jH/
-	 C70gufEGp4Z42suCNypxF3BSecmzI1l6KTY55ZJh/ZYzWOR2754uRAy6waivDq1dgG
-	 z6WF0yV730QReLMl4yiXY4PFjM+DkwilEFpmXxl8Ehdge1ZeXO5gAL1nmuZe08BmuA
-	 KWy6dRoIb4Pow==
-Received: by mail-oa1-f42.google.com with SMTP id 586e51a60fabf-2884e7fadb8so1190455fac.2;
-        Fri, 18 Oct 2024 09:36:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCV8LdGZrfOQzrUfQ0XVNzAdqApm1AwcYYnrAdezOmOrdInAoRuekVi3WC0/t98nZ5UX9R319v2pUT2O0nN1gxE=@lists.infradead.org, AJvYcCVISS3BFfXb7BzoX3F/mapD0+jeKXD8/MVjpeBB1F702fdDwNlEp7TMKQuveGNRpjvspckkENAtfeBI1bSG1wwx@lists.infradead.org
-X-Gm-Message-State: AOJu0YyFmS0bOeOEYPZ45W5gITwdXrT0WlzWVll6aVSvVRhRlTYksGbo
-	8Wf442ScLyawMild3RagEvqTRlk6atU2u0hV1g2U4/iDKYWhNmQhJhal1UtDEpW+slGwzEGIaK3
-	gZNbFpPcr1ZjqJOpWdfOszI9O++E=
-X-Google-Smtp-Source: AGHT+IF/9GJqtgMfEJw36ojuns+DX+VC12ggt1IRZE7FcP/Z+sN2K2q6OqZVUcCj0lDRDIR1nrTiGTo2/XYmlcO1fzI=
-X-Received: by 2002:a05:6870:c0ce:b0:260:e3fa:ab8d with SMTP id
- 586e51a60fabf-2892c562e82mr2714739fac.37.1729269398081; Fri, 18 Oct 2024
- 09:36:38 -0700 (PDT)
+	id 1t1qQf-00000001QNp-3Fso;
+	Fri, 18 Oct 2024 17:06:26 +0000
+Received: from localhost.localdomain ([90.11.132.44])
+	by smtp.orange.fr with ESMTPA
+	id 1qQZtV2hkZN8O1qQatW0HN; Fri, 18 Oct 2024 19:06:18 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1729271178;
+	bh=86Chs4ufIR1yiNI3+jlRXdlCATqvdX/rue8dEZfqmY8=;
+	h=From:To:Subject:Date:Message-ID:MIME-Version;
+	b=NFYt2vTChDSlF/Hz8uFqAOz7QfY9oKjoSlUy5akyaSBEv++hkr2Q+elOaa92OS9nZ
+	 SIzEhw8fzbYEO3kCmCcSCy0Hsbi3ZdBA1pVFk01XW5R9hjn4oVAnDeP2wVhwA993qK
+	 aeLsWd/xPsc1NdypyYuOXfjzdNMvQFEgawtadaou5J7cpM7oPSOm3MncZe9T2fAYeQ
+	 ycc6LZGHeTIvjF+5gy523jKJTEtPnl2IQ/QRy89mkC17+X8lWSvBbmh0YP9yU/4k4D
+	 NbsgafSHeEQOSXg6v791LqBCqJ7ngy8A0BIxnMxaMseLD4KNM7WuechRJd9Z0aAHMI
+	 CZ0VGPtWBM/xQ==
+X-ME-Helo: localhost.localdomain
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Fri, 18 Oct 2024 19:06:18 +0200
+X-ME-IP: 90.11.132.44
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: Miquel Raynal <miquel.raynal@bootlin.com>,
+	Richard Weinberger <richard@nod.at>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Mark Brown <broonie@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	linux-mtd@lists.infradead.org,
+	linux-spi@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] mtd: spinand: Constify struct nand_ecc_engine_ops
+Date: Fri, 18 Oct 2024 19:05:57 +0200
+Message-ID: <72597e9de2320a4109be2112e696399592edacd4.1729271136.git.christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.47.0
 MIME-Version: 1.0
-References: <20241018073139.1268995-1-wenst@chromium.org>
-In-Reply-To: <20241018073139.1268995-1-wenst@chromium.org>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Fri, 18 Oct 2024 18:36:25 +0200
-X-Gmail-Original-Message-ID: <CAJZ5v0g5B_h0BudqnHKRD0GL5-xpiwp21=Hx+dH-FaRXD6yu8g@mail.gmail.com>
-Message-ID: <CAJZ5v0g5B_h0BudqnHKRD0GL5-xpiwp21=Hx+dH-FaRXD6yu8g@mail.gmail.com>
-Subject: Re: [PATCH v4] thermal/of: support thermal zones w/o trips subnode
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, 
-	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, 
-	Icenowy Zheng <uwu@icenowy.me>, Mark Brown <broonie@kernel.org>, linux-pm@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev, 
-	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	linux-mediatek@lists.infradead.org, Hsin-Te Yuan <yuanhsinte@chromium.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241018_093641_861704_5C53FF6E 
-X-CRM114-Status: GOOD (  26.54  )
+X-CRM114-CacheID: sfid-20241018_100623_192711_6A37A514 
+X-CRM114-Status: GOOD (  14.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,115 +80,202 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 18, 2024 at 9:31=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> w=
-rote:
->
-> From: Icenowy Zheng <uwu@icenowy.me>
->
-> Although the current device tree binding of thermal zones require the
-> trips subnode, the binding in kernel v5.15 does not require it, and many
-> device trees shipped with the kernel, for example,
-> allwinner/sun50i-a64.dtsi and mediatek/mt8183-kukui.dtsi in ARM64, still
-> comply to the old binding and contain no trips subnode.
->
-> Allow the code to successfully register thermal zones w/o trips subnode
-> for DT binding compatibility now.
->
-> Furtherly, the inconsistency between DTs and bindings should be resolved
-> by either adding empty trips subnode or dropping the trips subnode
-> requirement.
->
-> Fixes: d0c75fa2c17f ("thermal/of: Initialize trip points separately")
-> Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
-> [wenst@chromium.org: Reworked logic and kernel log messages]
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+'struct nand_ecc_engine_ops' are not modified in these drivers.
 
-Reviewed-by: Rafael J. Wysocki <rafael@kernel.org>
+Constifying this structure moves some data to a read-only section, so
+increases overall security, especially when the structure holds some
+function pointers.
 
-> ---
-> This patch is based on Krzysztof's cleanup patches
->   - thermal: of: Use scoped memory and OF handling to simplify thermal_of=
-_trips_init() [1]
->
-> Changes since v3:
->   - Set *ntrips =3D 0 and return NULL from thermal_of_trips_init() if
->     no trip points are found in the device tree (Rafael)
->   - Dropped log level of "no trip points found" message to INFO
->   - Reworded new "failed to find trip points" message to "no trip points
->     found"
->   - Reworded existing "failed to find trip points" message to "failed to
->     parse trip points"
->
-> I dropped Mark's reviewed-by because of the new changes.
->
-> Changes since v2:
-> - Stacked on top of Krzysztof's cleanup patches
->   - thermal: of: Use scoped memory and OF handling to simplify thermal_of=
-_trips_init() [1]
-> - Adjusted to account for eliminated error path
->
-> [1] https://lore.kernel.org/all/20241010-b4-cleanup-h-of-node-put-thermal=
--v4-2-bfbe29ad81f4@linaro.org/
->
-> Changes since v1:
-> - set *ntrips at beginning of thermal_of_trips_init()
-> - Keep goto out_of_node_put in of_get_child_count(trips) =3D=3D 0 branch
-> - Check return value of thermal_of_trips_init(), if it is -ENXIO, print
->   warning and clear |trips| pointer
-> - Drop |mask| change, as the variable was removed
->
-> ---
->  drivers/thermal/thermal_of.c | 15 ++++++++++-----
->  1 file changed, 10 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/thermal/thermal_of.c b/drivers/thermal/thermal_of.c
-> index 93f7c6f8d06d..abafce22c91f 100644
-> --- a/drivers/thermal/thermal_of.c
-> +++ b/drivers/thermal/thermal_of.c
-> @@ -99,14 +99,16 @@ static struct thermal_trip *thermal_of_trips_init(str=
-uct device_node *np, int *n
->
->         struct device_node *trips __free(device_node) =3D of_get_child_by=
-_name(np, "trips");
->         if (!trips) {
-> -               pr_err("Failed to find 'trips' node\n");
-> -               return ERR_PTR(-EINVAL);
-> +               pr_debug("Failed to find 'trips' node\n");
-> +               *ntrips =3D 0;
-> +               return NULL;
->         }
->
->         count =3D of_get_child_count(trips);
->         if (!count) {
-> -               pr_err("No trip point defined\n");
-> -               return ERR_PTR(-EINVAL);
-> +               pr_debug("No trip point defined\n");
-> +               *ntrips =3D 0;
-> +               return NULL;
->         }
->
->         struct thermal_trip *tt __free(kfree) =3D kzalloc(sizeof(*tt) * c=
-ount, GFP_KERNEL);
-> @@ -386,11 +388,14 @@ static struct thermal_zone_device *thermal_of_zone_=
-register(struct device_node *
->
->         trips =3D thermal_of_trips_init(np, &ntrips);
->         if (IS_ERR(trips)) {
-> -               pr_err("Failed to find trip points for %pOFn id=3D%d\n", =
-sensor, id);
-> +               pr_err("Failed to parse trip points for %pOFn id=3D%d\n",=
- sensor, id);
->                 ret =3D PTR_ERR(trips);
->                 goto out_of_node_put;
->         }
->
-> +       if (!trips)
-> +               pr_info("No trip points found for %pOFn id=3D%d\n", senso=
-r, id);
-> +
->         ret =3D thermal_of_monitor_init(np, &delay, &pdelay);
->         if (ret) {
->                 pr_err("Failed to initialize monitoring delays from %pOFn=
-\n", np);
-> --
+Update the prototype of mxic_ecc_get_pipelined_ops() accordingly.
+
+On a x86_64, with allmodconfig, as an example:
+Before:
+======
+   text	   data	    bss	    dec	    hex	filename
+  16709	   1374	     16	  18099	   46b3	drivers/mtd/nand/ecc-mxic.o
+
+After:
+=====
+   text	   data	    bss	    dec	    hex	filename
+  16789	   1294	     16	  18099	   46b3	drivers/mtd/nand/ecc-mxic.o
+
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+---
+Compile tested only.
+---
+ drivers/mtd/nand/ecc-mxic.c       |  6 +++---
+ drivers/mtd/nand/ecc-sw-bch.c     |  2 +-
+ drivers/mtd/nand/ecc-sw-hamming.c |  2 +-
+ drivers/mtd/nand/spi/core.c       |  2 +-
+ drivers/spi/spi-mtk-snfi.c        |  2 +-
+ drivers/spi/spi-mxic.c            | 10 +++++-----
+ include/linux/mtd/nand-ecc-mxic.h |  4 ++--
+ include/linux/mtd/nand.h          |  2 +-
+ 8 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/drivers/mtd/nand/ecc-mxic.c b/drivers/mtd/nand/ecc-mxic.c
+index 47e10945b8d2..86895e09328f 100644
+--- a/drivers/mtd/nand/ecc-mxic.c
++++ b/drivers/mtd/nand/ecc-mxic.c
+@@ -723,21 +723,21 @@ static int mxic_ecc_finish_io_req_pipelined(struct nand_device *nand,
+ 	return ret;
+ }
+ 
+-static struct nand_ecc_engine_ops mxic_ecc_engine_external_ops = {
++static const struct nand_ecc_engine_ops mxic_ecc_engine_external_ops = {
+ 	.init_ctx = mxic_ecc_init_ctx_external,
+ 	.cleanup_ctx = mxic_ecc_cleanup_ctx,
+ 	.prepare_io_req = mxic_ecc_prepare_io_req_external,
+ 	.finish_io_req = mxic_ecc_finish_io_req_external,
+ };
+ 
+-static struct nand_ecc_engine_ops mxic_ecc_engine_pipelined_ops = {
++static const struct nand_ecc_engine_ops mxic_ecc_engine_pipelined_ops = {
+ 	.init_ctx = mxic_ecc_init_ctx_pipelined,
+ 	.cleanup_ctx = mxic_ecc_cleanup_ctx,
+ 	.prepare_io_req = mxic_ecc_prepare_io_req_pipelined,
+ 	.finish_io_req = mxic_ecc_finish_io_req_pipelined,
+ };
+ 
+-struct nand_ecc_engine_ops *mxic_ecc_get_pipelined_ops(void)
++const struct nand_ecc_engine_ops *mxic_ecc_get_pipelined_ops(void)
+ {
+ 	return &mxic_ecc_engine_pipelined_ops;
+ }
+diff --git a/drivers/mtd/nand/ecc-sw-bch.c b/drivers/mtd/nand/ecc-sw-bch.c
+index 405552d014a8..0d9310dd6f52 100644
+--- a/drivers/mtd/nand/ecc-sw-bch.c
++++ b/drivers/mtd/nand/ecc-sw-bch.c
+@@ -384,7 +384,7 @@ static int nand_ecc_sw_bch_finish_io_req(struct nand_device *nand,
+ 	return max_bitflips;
+ }
+ 
+-static struct nand_ecc_engine_ops nand_ecc_sw_bch_engine_ops = {
++static const struct nand_ecc_engine_ops nand_ecc_sw_bch_engine_ops = {
+ 	.init_ctx = nand_ecc_sw_bch_init_ctx,
+ 	.cleanup_ctx = nand_ecc_sw_bch_cleanup_ctx,
+ 	.prepare_io_req = nand_ecc_sw_bch_prepare_io_req,
+diff --git a/drivers/mtd/nand/ecc-sw-hamming.c b/drivers/mtd/nand/ecc-sw-hamming.c
+index 254db2e7f8bb..f2d0effad9d2 100644
+--- a/drivers/mtd/nand/ecc-sw-hamming.c
++++ b/drivers/mtd/nand/ecc-sw-hamming.c
+@@ -638,7 +638,7 @@ static int nand_ecc_sw_hamming_finish_io_req(struct nand_device *nand,
+ 	return max_bitflips;
+ }
+ 
+-static struct nand_ecc_engine_ops nand_ecc_sw_hamming_engine_ops = {
++static const struct nand_ecc_engine_ops nand_ecc_sw_hamming_engine_ops = {
+ 	.init_ctx = nand_ecc_sw_hamming_init_ctx,
+ 	.cleanup_ctx = nand_ecc_sw_hamming_cleanup_ctx,
+ 	.prepare_io_req = nand_ecc_sw_hamming_prepare_io_req,
+diff --git a/drivers/mtd/nand/spi/core.c b/drivers/mtd/nand/spi/core.c
+index 4d76f9f71a0e..b1df7f627161 100644
+--- a/drivers/mtd/nand/spi/core.c
++++ b/drivers/mtd/nand/spi/core.c
+@@ -337,7 +337,7 @@ static int spinand_ondie_ecc_finish_io_req(struct nand_device *nand,
+ 	return ret;
+ }
+ 
+-static struct nand_ecc_engine_ops spinand_ondie_ecc_engine_ops = {
++static const struct nand_ecc_engine_ops spinand_ondie_ecc_engine_ops = {
+ 	.init_ctx = spinand_ondie_ecc_init_ctx,
+ 	.cleanup_ctx = spinand_ondie_ecc_cleanup_ctx,
+ 	.prepare_io_req = spinand_ondie_ecc_prepare_io_req,
+diff --git a/drivers/spi/spi-mtk-snfi.c b/drivers/spi/spi-mtk-snfi.c
+index debe0e3c1c8b..4169d622f28c 100644
+--- a/drivers/spi/spi-mtk-snfi.c
++++ b/drivers/spi/spi-mtk-snfi.c
+@@ -776,7 +776,7 @@ static int mtk_snand_ecc_finish_io_req(struct nand_device *nand,
+ 	return snf->ecc_stats.failed ? -EBADMSG : snf->ecc_stats.bitflips;
+ }
+ 
+-static struct nand_ecc_engine_ops mtk_snfi_ecc_engine_ops = {
++static const struct nand_ecc_engine_ops mtk_snfi_ecc_engine_ops = {
+ 	.init_ctx = mtk_snand_ecc_init_ctx,
+ 	.cleanup_ctx = mtk_snand_ecc_cleanup_ctx,
+ 	.prepare_io_req = mtk_snand_ecc_prepare_io_req,
+diff --git a/drivers/spi/spi-mxic.c b/drivers/spi/spi-mxic.c
+index 9699e0bb6a5e..809767d3145c 100644
+--- a/drivers/spi/spi-mxic.c
++++ b/drivers/spi/spi-mxic.c
+@@ -649,7 +649,7 @@ static int mxic_spi_transfer_one(struct spi_controller *host,
+ /* ECC wrapper */
+ static int mxic_spi_mem_ecc_init_ctx(struct nand_device *nand)
+ {
+-	struct nand_ecc_engine_ops *ops = mxic_ecc_get_pipelined_ops();
++	const struct nand_ecc_engine_ops *ops = mxic_ecc_get_pipelined_ops();
+ 	struct mxic_spi *mxic = nand->ecc.engine->priv;
+ 
+ 	mxic->ecc.use_pipelined_conf = true;
+@@ -659,7 +659,7 @@ static int mxic_spi_mem_ecc_init_ctx(struct nand_device *nand)
+ 
+ static void mxic_spi_mem_ecc_cleanup_ctx(struct nand_device *nand)
+ {
+-	struct nand_ecc_engine_ops *ops = mxic_ecc_get_pipelined_ops();
++	const struct nand_ecc_engine_ops *ops = mxic_ecc_get_pipelined_ops();
+ 	struct mxic_spi *mxic = nand->ecc.engine->priv;
+ 
+ 	mxic->ecc.use_pipelined_conf = false;
+@@ -670,7 +670,7 @@ static void mxic_spi_mem_ecc_cleanup_ctx(struct nand_device *nand)
+ static int mxic_spi_mem_ecc_prepare_io_req(struct nand_device *nand,
+ 					   struct nand_page_io_req *req)
+ {
+-	struct nand_ecc_engine_ops *ops = mxic_ecc_get_pipelined_ops();
++	const struct nand_ecc_engine_ops *ops = mxic_ecc_get_pipelined_ops();
+ 
+ 	return ops->prepare_io_req(nand, req);
+ }
+@@ -678,12 +678,12 @@ static int mxic_spi_mem_ecc_prepare_io_req(struct nand_device *nand,
+ static int mxic_spi_mem_ecc_finish_io_req(struct nand_device *nand,
+ 					  struct nand_page_io_req *req)
+ {
+-	struct nand_ecc_engine_ops *ops = mxic_ecc_get_pipelined_ops();
++	const struct nand_ecc_engine_ops *ops = mxic_ecc_get_pipelined_ops();
+ 
+ 	return ops->finish_io_req(nand, req);
+ }
+ 
+-static struct nand_ecc_engine_ops mxic_spi_mem_ecc_engine_pipelined_ops = {
++static const struct nand_ecc_engine_ops mxic_spi_mem_ecc_engine_pipelined_ops = {
+ 	.init_ctx = mxic_spi_mem_ecc_init_ctx,
+ 	.cleanup_ctx = mxic_spi_mem_ecc_cleanup_ctx,
+ 	.prepare_io_req = mxic_spi_mem_ecc_prepare_io_req,
+diff --git a/include/linux/mtd/nand-ecc-mxic.h b/include/linux/mtd/nand-ecc-mxic.h
+index b125926e458c..0da4b2999576 100644
+--- a/include/linux/mtd/nand-ecc-mxic.h
++++ b/include/linux/mtd/nand-ecc-mxic.h
+@@ -16,7 +16,7 @@ struct mxic_ecc_engine;
+ 
+ #if IS_ENABLED(CONFIG_MTD_NAND_ECC_MXIC) && IS_REACHABLE(CONFIG_MTD_NAND_CORE)
+ 
+-struct nand_ecc_engine_ops *mxic_ecc_get_pipelined_ops(void);
++const struct nand_ecc_engine_ops *mxic_ecc_get_pipelined_ops(void);
+ struct nand_ecc_engine *mxic_ecc_get_pipelined_engine(struct platform_device *spi_pdev);
+ void mxic_ecc_put_pipelined_engine(struct nand_ecc_engine *eng);
+ int mxic_ecc_process_data_pipelined(struct nand_ecc_engine *eng,
+@@ -24,7 +24,7 @@ int mxic_ecc_process_data_pipelined(struct nand_ecc_engine *eng,
+ 
+ #else /* !CONFIG_MTD_NAND_ECC_MXIC */
+ 
+-static inline struct nand_ecc_engine_ops *mxic_ecc_get_pipelined_ops(void)
++static inline const struct nand_ecc_engine_ops *mxic_ecc_get_pipelined_ops(void)
+ {
+ 	return NULL;
+ }
+diff --git a/include/linux/mtd/nand.h b/include/linux/mtd/nand.h
+index 1e4208040956..0e2f228e8b4a 100644
+--- a/include/linux/mtd/nand.h
++++ b/include/linux/mtd/nand.h
+@@ -293,7 +293,7 @@ enum nand_ecc_engine_integration {
+ struct nand_ecc_engine {
+ 	struct device *dev;
+ 	struct list_head node;
+-	struct nand_ecc_engine_ops *ops;
++	const struct nand_ecc_engine_ops *ops;
+ 	enum nand_ecc_engine_integration integration;
+ 	void *priv;
+ };
+-- 
+2.47.0
+
 
