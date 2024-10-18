@@ -4,91 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0376D3C55E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 08:04:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E01BCD2F7E1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 08:23:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=1isxM+T848GFvJvzymmh7gVtU9Db8eItqMO8i4yplDI=; b=GFHfdqJeJTSG6+oDrbK5kyBopS
-	/OOu/K4hXn49YXl3Eb96yjQfT7GgtAR7nDAK1at8WU03dkoGsXfInuNCK4Q+N63DUYu3dqDLdkbUA
-	jJuGSMvq8d9LBbpTDrr8r9brCCBvW0Y+VQwgpnvwHplfAZ1RWPyDA9AaNqKapq9Dd9BzB6KPHY9oD
-	sh4LwSXZy5LCkP1AAdXTJzjcIY3lMcccyPUc197+QVb/E8XJ+XnFtTH/SPU3r1GaulJ5JEGa4CpxA
-	R5hxp9ypbBTfPXma3jIie43ff/VBx4Uk7nrFXoJxdKFeV1NyxBC7Cgc9LPzIYyZX0XqVegwdMeEoH
-	OiqvT+iw==;
+	bh=Gob43/+gAdlsPFue9el9gcoewwrv63+OSZMDYy79pec=; b=5C1EAC3Sx2ys9cO3pnGT1/3iaw
+	QZ/XNKrq1TVS24/U2ELMhYEo1y3thjNT84/rE39ttSsAkIjLMTRBH6ZQ3iOIrOSKjVm7boOpRXkzy
+	FM7knH/6VasDMEDDqxzUGcHsfTQUw62oMZ10lesOiVJaCfTqlUFgx9Ya3IKPRpk3ETjUs4DmvVA4x
+	RnGt/PUvvN4TiubYWX7R0H8kZJcyOyCDAhjnpnTz9WKW3QCOvRvCgHJCE1jxH1zucnklUmxysXFGc
+	TAA8gRicg2minGkKmlTMb1YzikCIQjs/QCnDaUfvNEfmnW2p9cIIBndKNxg8KVrQHNcIkPwgkd7SN
+	z33JM0Wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1hyR-0000000HQsQ-3AuB;
-	Fri, 18 Oct 2024 08:04:39 +0000
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+	id 1t1iGw-0000000HVKy-3bqS;
+	Fri, 18 Oct 2024 08:23:46 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1hqj-0000000HPwX-2LO3;
-	Fri, 18 Oct 2024 07:56:42 +0000
-Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-20cbcd71012so16702155ad.3;
-        Fri, 18 Oct 2024 00:56:41 -0700 (PDT)
+	id 1t1i59-0000000HSLT-2qWw;
+	Fri, 18 Oct 2024 08:11:37 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-5366fd6fdf1so2959909e87.0;
+        Fri, 18 Oct 2024 01:11:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729238200; x=1729843000; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1729239093; x=1729843893; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=1isxM+T848GFvJvzymmh7gVtU9Db8eItqMO8i4yplDI=;
-        b=GShr0hOF35rsc5fjJhRJ1ItKj0PiwUjCi0pyc5Tnl/NrdY8OZqgOsIYQJjBtSEMCqp
-         MTPml+6DMIM0TrafDdCDbwxbwJMJp92gCIvjZPokvsvFGg5aT2ltJSRabyw57RKdcTHJ
-         kv+gjbrauDXcbv5q+yAW4zauR4rPNePptX8XP1qUIGDyI2XSDVF/mFVx1k+gQCZDyvWp
-         i6ErS3z3VcryKTxgwQiSSzqjDNKK6wgowZ2vdLFJpN322eE1GPQNlRPdTt2B3seXmJex
-         wlBiJnOfGlFU0pq+GU24hB2k6Cm4BVPGQdiCxc+GQuvlG170Gln7pJi3e8tXObl6LDMm
-         OC2w==
+        bh=Gob43/+gAdlsPFue9el9gcoewwrv63+OSZMDYy79pec=;
+        b=NAeF0jOfM2tcezPzAkVMZZA5lGna79wX5mrN11kIwzJmgX+7KCV+V0pti5hkku5o2i
+         jSfrHvGTL/Fcsy+uJ9Pyv2XauyxMnUYLMp0M7yLudC/VqBeS1huBFV4rB6zF0xyoTFf/
+         QA2MRhexOEV1x+6yKlcoPYcYivUU7ucNa5ayUq3TGM5QlSaIJBVRTAp+Oom6Xqmgu3HL
+         cdk5parZIysYhK5icIOntGmrdJlYk21o1nLPaWvmJ3h7uXv8Tnl/+zv19c1PCGCH0Pi3
+         RHtfCOAgs39dJFGv70sEUUF9dExnxonyyXCDDK01EOgTChwPTX2DCLLrQNoWHgSXkFWQ
+         fhNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729238200; x=1729843000;
+        d=1e100.net; s=20230601; t=1729239093; x=1729843893;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=1isxM+T848GFvJvzymmh7gVtU9Db8eItqMO8i4yplDI=;
-        b=WocqVn/MbkxcEj6smpzR+GNN2wAmcfU5Fy89xwQCRjWTcKN9o9G6yJHPf5GZAvwtZe
-         ACvApkz7KpvNI4hPKfa/JjQ8MSJUZoIMuuQRY815HMJOAI5x1nFpGxsq5nDAWMLAhJTL
-         kv1DC2zyPWBDb/IkChljWgwGASpwlCuASKo6iJJ99TFkE2Mih49kqKXE1XJj3U6AaPx5
-         dcJOusZ6gQhW0OqMuy9XR8gzEBganKqXtiz+OIFDKVG/pWsdTywoNJeVD2mA6yLQ9SeW
-         JiwlL0x4M03cmgTtGgG2TP6MMfm0pzHoCN8ZBJfYqWRN9pj/PK9HEay6oPbJVD1Oykue
-         Iv9w==
-X-Forwarded-Encrypted: i=1; AJvYcCVgIUhD5UA73u+Ww7LjDkqWLk2qR6n4Y2NBqBuPX9goq6XFWPXmvNSAYqYItVd3p8LlID650qlQr6903anQRQMt@lists.infradead.org, AJvYcCWyZlbXptiO/h89A921vibyvQNABBhPEBSDpw0nJgF7Rw9CKdz0MquxMR1u2RUBHVW9Tgu1tFOFB+Dt8QAFZO8=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzuCVnvnbz/DWmJC5B/MPelvkpWHY6WrstGBIC/vWRprr2pXWvw
-	nc84d7RIk4TS/TyM6PjuhObp5DVaFs+RzZmjOseXIboHWwfyd/PP
-X-Google-Smtp-Source: AGHT+IF7ZldHx0wD+cqrWfekEnfPoCvlr04Fj/LiGEuZqywK9tWmEIJchJUGgdn7mbllI11GndaPdw==
-X-Received: by 2002:a17:902:fc4d:b0:20e:5aaf:32c1 with SMTP id d9443c01a7336-20e5aaf4098mr24429335ad.30.1729238200498;
-        Fri, 18 Oct 2024 00:56:40 -0700 (PDT)
-Received: from localhost ([2402:7500:479:5c7a:4a5c:7794:109d:58b])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20e5a71ec0esm7492595ad.62.2024.10.18.00.56.39
+        bh=Gob43/+gAdlsPFue9el9gcoewwrv63+OSZMDYy79pec=;
+        b=aNZhuvHeV1DFN5g4DVxOqKedk0px6BqFGGU16AZ8Rypkxl6Ha4inJvUT6L3tP41txq
+         Hzgx6OSJYpuJMJo9UQbLSgqN75q5e2ulZ4zB6bg3+EUO+tUmcijtEv4DYsUADaIVr1Km
+         CWuQR4iIemjzQqF4bPR5/BnE1pf38CK2K4i+6HEqC+niiDTSzWxIF6+zDVoeP6LS6rfh
+         TxIV1is81De28pEhHlUPNmGIRlLpCsuoEOYh+bwGG4M5GE92/8oQSU8YpUw4ygcZUIh9
+         pYz1aFZ1VPtFPuAww67RrfXh2Y8E0hl7Vx/sbmZ63mHbCJnsTlbQdDG+OOlrCQsuGIod
+         pkmg==
+X-Forwarded-Encrypted: i=1; AJvYcCXPcDv9VZXr772E4YtT5LtJOspHyLUoVoiKOwI+oynnESLGaGdgHoZsfpFjY3OQR7JGOsYsCwm2owUvaIsRCBU=@lists.infradead.org, AJvYcCXzV+W+6cETffN37Q61nn/34i2lpriYigfenyoXD27gaueGL00UwiiAVxZYMnGVeKwLGJ4hTBMjTZVylg3Mbczi@lists.infradead.org
+X-Gm-Message-State: AOJu0YyiPq9GuyZZKwCs/P1Z+YbxgPJxGC8lyj7u43E1NGcVcV2jKwtY
+	Or7p2TIcfEpB6ZHkXvyX+ThEysccgYm5o9VtTu3pwFj+qejl5jTip5cm2yZt
+X-Google-Smtp-Source: AGHT+IG/FXLUUpVPX3ROT5kd9YPxAoOY00obRdb0wk6QPFIDPBYVog79O1m31Xhkog/xCiQfLs20GQ==
+X-Received: by 2002:a05:6512:12d6:b0:539:968a:9196 with SMTP id 2adb3069b0e04-53a154ce943mr1009789e87.48.1729239092911;
+        Fri, 18 Oct 2024 01:11:32 -0700 (PDT)
+Received: from zenbook.agu.edu.tr ([95.183.227.33])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a68a8e734sm61129666b.24.2024.10.18.01.11.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 18 Oct 2024 00:56:40 -0700 (PDT)
-From: wojackbb@gmail.com
-To: wojackbb@gmail.com
-Cc: chandrashekar.devegowda@intel.com,
-	chiranjeevi.rapolu@linux.intel.com,
-	haijun.liu@mediatek.com,
-	m.chetan.kumar@linux.intel.com,
-	ricardo.martinez@linux.intel.com,
-	loic.poulain@linaro.org,
-	ryazanov.s.a@gmail.com,
-	johannes@sipsolutions.net,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
+        Fri, 18 Oct 2024 01:11:31 -0700 (PDT)
+From: Yassine Oudjana <yassine.oudjana@gmail.com>
+X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sen Chu <sen.chu@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>,
+	Lee Jones <lee@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	jason-ch chen <Jason-ch.Chen@mediatek.com>,
+	Chen Zhong <chen.zhong@mediatek.com>,
+	Flora Fu <flora.fu@mediatek.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
+	Yassine Oudjana <yassine.oudjana@gmail.com>,
+	linux-input@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	angelogioacchino.delregno@collabora.com,
-	linux-mediatek@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	johan@kernel.org
-Subject: [PATCH 1/2] [net,v3] net: wwan: t7xx: add PM_AUTOSUSPEND_MS_BY_DW5933E for Dell DW5933e
-Date: Fri, 18 Oct 2024 15:56:26 +0800
-Message-Id: <20241018075626.23702-1-wojackbb@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 0/6] MediaTek MT6735+MT6328 SoC/PMIC pair base support
+Date: Fri, 18 Oct 2024 11:10:42 +0300
+Message-ID: <20241018081050.23592-1-y.oudjana@protonmail.com>
+X-Mailer: git-send-email 2.47.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241018_005641_604559_FD475CCB 
-X-CRM114-Status: GOOD (  18.19  )
+X-CRM114-CacheID: sfid-20241018_011135_743989_5019D84D 
+X-CRM114-Status: GOOD (  13.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,147 +110,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jack Wu <wojackbb@gmail.com>
+From: Yassine Oudjana <y.oudjana@protonmail.com>
 
-Because optimizing the power consumption of Dell DW5933e,
-Add a new auto suspend time for Dell DW5933e.
+These patches are part of a larger effort to support the MT6735 SoC family in
+mainline Linux. More patches (unsent or sent and pending review or revision)
+can be found here[1].
 
-The Tests uses a small script to loop through the power_state
-of Dell DW5933e.
-(for example: /sys/bus/pci/devices/0000\:72\:00.0/power_state)
+This series adds base support for the MediaTek MT6735 SoC and MT6328 PMIC pair.
+This includes PMIC wrapper support on the SoC side and regulators and keys on
+the PMIC side. The PMIC has other blocks such as an audio codec and battery
+charger which can be supported in the future.
 
-* If Auto suspend is 20 seconds,
-  test script show power_state have 5% of the time was in D3 state
-  when host don't have data packet transmission.
+[1] https://gitlab.com/mt6735-mainline/linux/-/commits/mt6735-staging
 
-* Changed auto suspend time to 5 seconds,
-  test script show power_state have 50% of the time was in D3 state
-  when host don't have data packet transmission.
+Yassine Oudjana (6):
+  dt-bindings: mediatek: pwrap: Add MT6735 compatible
+  dt-bindings: mfd: mediatek: mt6397: Add bindings for MT6328
+  soc: mediatek: pwrap: Add support for MT6735 and MT6328 SoC/PMIC pair
+  mfd: mt6397: Add initial support for MT6328
+  regulator: Add driver for MediaTek MT6328 PMIC regulators
+  Input: mtk-pmic-keys - Add support for MT6328
 
-Signed-off-by: Jack Wu <wojackbb@gmail.com>
----
-V3:
- * supplementary commit information
-V2:
- * Fix code style error
----
----
- drivers/net/wwan/t7xx/t7xx_pci.c | 13 ++++++++++---
- 1 file changed, 10 insertions(+), 3 deletions(-)
+ .../bindings/input/mediatek,pmic-keys.yaml    |   1 +
+ .../bindings/mfd/mediatek,mt6397.yaml         |   2 +
+ .../bindings/soc/mediatek/mediatek,pwrap.yaml |   1 +
+ drivers/input/keyboard/mtk-pmic-keys.c        |  15 +
+ drivers/mfd/mt6397-core.c                     |  32 +
+ drivers/mfd/mt6397-irq.c                      |  23 +
+ drivers/regulator/Kconfig                     |   9 +
+ drivers/regulator/Makefile                    |   1 +
+ drivers/regulator/mt6328-regulator.c          | 479 ++++++++++
+ drivers/soc/mediatek/mtk-pmic-wrap.c          | 251 +++++-
+ include/linux/mfd/mt6328/core.h               |  53 ++
+ include/linux/mfd/mt6328/registers.h          | 822 ++++++++++++++++++
+ include/linux/mfd/mt6397/core.h               |  11 +-
+ include/linux/regulator/mt6328-regulator.h    |  49 ++
+ 14 files changed, 1741 insertions(+), 8 deletions(-)
+ create mode 100644 drivers/regulator/mt6328-regulator.c
+ create mode 100644 include/linux/mfd/mt6328/core.h
+ create mode 100644 include/linux/mfd/mt6328/registers.h
+ create mode 100644 include/linux/regulator/mt6328-regulator.h
 
-diff --git a/drivers/net/wwan/t7xx/t7xx_pci.c b/drivers/net/wwan/t7xx/t7xx_pci.c
-index e556e5bd49ab..ec567153ea6e 100644
---- a/drivers/net/wwan/t7xx/t7xx_pci.c
-+++ b/drivers/net/wwan/t7xx/t7xx_pci.c
-@@ -49,6 +49,7 @@
- #define PM_SLEEP_DIS_TIMEOUT_MS		20
- #define PM_ACK_TIMEOUT_MS		1500
- #define PM_AUTOSUSPEND_MS		20000
-+#define PM_AUTOSUSPEND_MS_BY_DW5933E 5000
- #define PM_RESOURCE_POLL_TIMEOUT_US	10000
- #define PM_RESOURCE_POLL_STEP_US	100
- 
-@@ -174,7 +175,7 @@ static int t7xx_wait_pm_config(struct t7xx_pci_dev *t7xx_dev)
- 	return ret;
- }
- 
--static int t7xx_pci_pm_init(struct t7xx_pci_dev *t7xx_dev)
-+static int t7xx_pci_pm_init(struct t7xx_pci_dev *t7xx_dev, int pm_autosuspend_ms)
- {
- 	struct pci_dev *pdev = t7xx_dev->pdev;
- 
-@@ -191,7 +192,7 @@ static int t7xx_pci_pm_init(struct t7xx_pci_dev *t7xx_dev)
- 				DPM_FLAG_NO_DIRECT_COMPLETE);
- 
- 	iowrite32(T7XX_L1_BIT(0), IREG_BASE(t7xx_dev) + DISABLE_ASPM_LOWPWR);
--	pm_runtime_set_autosuspend_delay(&pdev->dev, PM_AUTOSUSPEND_MS);
-+	pm_runtime_set_autosuspend_delay(&pdev->dev, pm_autosuspend_ms);
- 	pm_runtime_use_autosuspend(&pdev->dev);
- 
- 	return 0;
-@@ -824,7 +825,13 @@ static int t7xx_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 	IREG_BASE(t7xx_dev) = pcim_iomap_table(pdev)[T7XX_PCI_IREG_BASE];
- 	t7xx_dev->base_addr.pcie_ext_reg_base = pcim_iomap_table(pdev)[T7XX_PCI_EREG_BASE];
- 
--	ret = t7xx_pci_pm_init(t7xx_dev);
-+	if (id->vendor == 0x14c0 && id->device == 0x4d75) {
-+		/* Dell DW5933e */
-+		ret = t7xx_pci_pm_init(t7xx_dev, PM_AUTOSUSPEND_MS_BY_DW5933E);
-+	} else {
-+		/* Other devices */
-+		ret = t7xx_pci_pm_init(t7xx_dev, PM_AUTOSUSPEND_MS);
-+	}
- 	if (ret)
- 		return ret;
- 
 -- 
-2.34.1
-
-
-From cd3c4bb25637348806e92e2fe9d51a05c5ddbafd Mon Sep 17 00:00:00 2001
-From: Jack Wu <wojackbb@gmail.com>
-Date: Fri, 18 Oct 2024 15:44:11 +0800
-Subject: [PATCH 2/2] Add support for Sierra Wireless EM86xx with USB-id
- 0x1199:0x90e5 & 0x1199:0x90e4.
-
-It is 0x1199:0x90e5
-T:  Bus=03 Lev=01 Prnt=01 Port=05 Cnt=01 Dev#= 14 Spd=480  MxCh= 0
-D:  Ver= 2.00 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=1199 ProdID=90e5 Rev= 5.15
-S:  Manufacturer=Sierra Wireless, Incorporated
-S:  Product=Semtech EM8695 Mobile Broadband Adapter
-S:  SerialNumber=004403161882339
-C:* #Ifs= 6 Cfg#= 1 Atr=a0 MxPwr=500mA
-A:  FirstIf#=12 IfCount= 2 Cls=02(comm.) Sub=0e Prot=00
-I:* If#= 0 Alt= 0 #EPs= 2 Cls=ff(vend.) Sub=ff Prot=30 Driver=qcserial
-E:  Ad=01(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-E:  Ad=81(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=ff(vend.) Sub=42 Prot=01 Driver=usbfs
-E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-I:* If#= 3 Alt= 0 #EPs= 3 Cls=ff(vend.) Sub=ff Prot=40 Driver=qcserial
-E:  Ad=84(I) Atr=03(Int.) MxPS=  10 Ivl=32ms
-E:  Ad=83(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-E:  Ad=03(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-I:* If#= 4 Alt= 0 #EPs= 1 Cls=ff(vend.) Sub=ff Prot=ff Driver=(none)
-E:  Ad=85(I) Atr=03(Int.) MxPS=  64 Ivl=32ms
-I:* If#=12 Alt= 0 #EPs= 1 Cls=02(comm.) Sub=0e Prot=00 Driver=cdc_mbim
-E:  Ad=87(I) Atr=03(Int.) MxPS=  64 Ivl=32ms
-I:  If#=13 Alt= 0 #EPs= 0 Cls=0a(data ) Sub=00 Prot=02 Driver=cdc_mbim
-I:* If#=13 Alt= 1 #EPs= 2 Cls=0a(data ) Sub=00 Prot=02 Driver=cdc_mbim
-E:  Ad=86(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-E:  Ad=04(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-
-It is 0x1199:0x90e4
-T:  Bus=03 Lev=01 Prnt=01 Port=05 Cnt=01 Dev#= 16 Spd=480  MxCh= 0
-D:  Ver= 2.00 Cls=00(>ifc ) Sub=00 Prot=00 MxPS=64 #Cfgs=  1
-P:  Vendor=1199 ProdID=90e4 Rev= 0.00
-S:  Manufacturer=Sierra Wireless, Incorporated
-S:  SerialNumber=004403161882339
-C:* #Ifs= 1 Cfg#= 1 Atr=a0 MxPwr=  2mA
-I:* If#= 0 Alt= 0 #EPs= 2 Cls=ff(vend.) Sub=ff Prot=10 Driver=qcserial
-E:  Ad=81(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-E:  Ad=01(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-
-Signed-off-by: JackBB Wu <wojackbb@gmail.com>
----
- drivers/usb/serial/qcserial.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/usb/serial/qcserial.c b/drivers/usb/serial/qcserial.c
-index 703a9c563557..bd0768e61b26 100644
---- a/drivers/usb/serial/qcserial.c
-+++ b/drivers/usb/serial/qcserial.c
-@@ -168,6 +168,8 @@ static const struct usb_device_id id_table[] = {
- 	{DEVICE_SWI(0x1199, 0x90d2)},	/* Sierra Wireless EM9191 QDL */
- 	{DEVICE_SWI(0x1199, 0xc080)},	/* Sierra Wireless EM7590 QDL */
- 	{DEVICE_SWI(0x1199, 0xc081)},	/* Sierra Wireless EM7590 */
-+	{DEVICE_SWI(0x1199, 0x90e4)},	/* Sierra Wireless EM86xx QDL*/
-+	{DEVICE_SWI(0x1199, 0x90e5)},	/* Sierra Wireless EM86xx */
- 	{DEVICE_SWI(0x413c, 0x81a2)},	/* Dell Wireless 5806 Gobi(TM) 4G LTE Mobile Broadband Card */
- 	{DEVICE_SWI(0x413c, 0x81a3)},	/* Dell Wireless 5570 HSPA+ (42Mbps) Mobile Broadband Card */
- 	{DEVICE_SWI(0x413c, 0x81a4)},	/* Dell Wireless 5570e HSPA+ (42Mbps) Mobile Broadband Card */
--- 
-2.34.1
+2.47.0
 
 
