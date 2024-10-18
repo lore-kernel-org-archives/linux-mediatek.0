@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E01BCD2F7E1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 08:23:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A491D2127B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 08:24:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Gob43/+gAdlsPFue9el9gcoewwrv63+OSZMDYy79pec=; b=5C1EAC3Sx2ys9cO3pnGT1/3iaw
-	QZ/XNKrq1TVS24/U2ELMhYEo1y3thjNT84/rE39ttSsAkIjLMTRBH6ZQ3iOIrOSKjVm7boOpRXkzy
-	FM7knH/6VasDMEDDqxzUGcHsfTQUw62oMZ10lesOiVJaCfTqlUFgx9Ya3IKPRpk3ETjUs4DmvVA4x
-	RnGt/PUvvN4TiubYWX7R0H8kZJcyOyCDAhjnpnTz9WKW3QCOvRvCgHJCE1jxH1zucnklUmxysXFGc
-	TAA8gRicg2minGkKmlTMb1YzikCIQjs/QCnDaUfvNEfmnW2p9cIIBndKNxg8KVrQHNcIkPwgkd7SN
-	z33JM0Wg==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=V/zn5scuA4cBnjeDcZDLfq+bKDyVI2Q6beFukEjg47s=; b=Y+BfZ8TbR6Bt4ATMFKJT52iL+s
+	8vkr3X+NEkVNF2ySeN96McnUIXrM3DBL9ol2KH4SORsp30kxXGBHamU3qxO/Efn50e8GULqVRWRmS
+	3DkcRmrf3igldPEwQAjO7D5HdsKJmTOxFtfiwH5x7GUaidi6idQPhz+0oET6jSgp78rClYvD6rMaz
+	QTbsxiHR4iR15OFjNhV3WMg7imStFDbvyfbnOBUKbcrdHN3DKrDecHi6XirxASVOHbqZSSoVPqqUH
+	toQ0l2TUiC6K+JbTmWOMbcx0CR0GRRY+eaf2TggJ6JbjLCuAEZgtmKXxkMyHjrCluGhJ4biFYWKgZ
+	2/P106mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1iGw-0000000HVKy-3bqS;
-	Fri, 18 Oct 2024 08:23:46 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1t1iHG-0000000HVUI-32fC;
+	Fri, 18 Oct 2024 08:24:06 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1i59-0000000HSLT-2qWw;
-	Fri, 18 Oct 2024 08:11:37 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-5366fd6fdf1so2959909e87.0;
-        Fri, 18 Oct 2024 01:11:34 -0700 (PDT)
+	id 1t1i5I-0000000HSQ4-3X9p;
+	Fri, 18 Oct 2024 08:11:46 +0000
+Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-a9a4031f69fso244612466b.0;
+        Fri, 18 Oct 2024 01:11:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729239093; x=1729843893; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Gob43/+gAdlsPFue9el9gcoewwrv63+OSZMDYy79pec=;
-        b=NAeF0jOfM2tcezPzAkVMZZA5lGna79wX5mrN11kIwzJmgX+7KCV+V0pti5hkku5o2i
-         jSfrHvGTL/Fcsy+uJ9Pyv2XauyxMnUYLMp0M7yLudC/VqBeS1huBFV4rB6zF0xyoTFf/
-         QA2MRhexOEV1x+6yKlcoPYcYivUU7ucNa5ayUq3TGM5QlSaIJBVRTAp+Oom6Xqmgu3HL
-         cdk5parZIysYhK5icIOntGmrdJlYk21o1nLPaWvmJ3h7uXv8Tnl/+zv19c1PCGCH0Pi3
-         RHtfCOAgs39dJFGv70sEUUF9dExnxonyyXCDDK01EOgTChwPTX2DCLLrQNoWHgSXkFWQ
-         fhNw==
+        d=gmail.com; s=20230601; t=1729239103; x=1729843903; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=V/zn5scuA4cBnjeDcZDLfq+bKDyVI2Q6beFukEjg47s=;
+        b=Jr9RkkR1UMzpav8A93SckzmpsKk+bNiha+KdQcJX1PJhXqFpqLBOtzg79VnJloOIJm
+         xQfXfwcF49O8uFxSseY3fe8lE82Ua1E2fCgaa9yXpBRZqikCq05gZnYVqBli0txDdqEb
+         v/rlRJUQ7SBjCPLs00Qjnbzu3vPAZ0CeP4E/Nlgkzt+B5qojW6RjNP39kTaM6xzjsfUF
+         27ovpde7QW/ApFdGwbWHVp28KFPvnsi9w+8PGAb+4BUuo6BgIxpeacHzLwvxDivP2pnT
+         9k+rrGAI7vun/LLR+GBVPNYTs2ayjsF/CdusG8e/ahWGSVEYiwVv9QPmDN8NmjsNH34t
+         iP+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729239093; x=1729843893;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Gob43/+gAdlsPFue9el9gcoewwrv63+OSZMDYy79pec=;
-        b=aNZhuvHeV1DFN5g4DVxOqKedk0px6BqFGGU16AZ8Rypkxl6Ha4inJvUT6L3tP41txq
-         Hzgx6OSJYpuJMJo9UQbLSgqN75q5e2ulZ4zB6bg3+EUO+tUmcijtEv4DYsUADaIVr1Km
-         CWuQR4iIemjzQqF4bPR5/BnE1pf38CK2K4i+6HEqC+niiDTSzWxIF6+zDVoeP6LS6rfh
-         TxIV1is81De28pEhHlUPNmGIRlLpCsuoEOYh+bwGG4M5GE92/8oQSU8YpUw4ygcZUIh9
-         pYz1aFZ1VPtFPuAww67RrfXh2Y8E0hl7Vx/sbmZ63mHbCJnsTlbQdDG+OOlrCQsuGIod
-         pkmg==
-X-Forwarded-Encrypted: i=1; AJvYcCXPcDv9VZXr772E4YtT5LtJOspHyLUoVoiKOwI+oynnESLGaGdgHoZsfpFjY3OQR7JGOsYsCwm2owUvaIsRCBU=@lists.infradead.org, AJvYcCXzV+W+6cETffN37Q61nn/34i2lpriYigfenyoXD27gaueGL00UwiiAVxZYMnGVeKwLGJ4hTBMjTZVylg3Mbczi@lists.infradead.org
-X-Gm-Message-State: AOJu0YyiPq9GuyZZKwCs/P1Z+YbxgPJxGC8lyj7u43E1NGcVcV2jKwtY
-	Or7p2TIcfEpB6ZHkXvyX+ThEysccgYm5o9VtTu3pwFj+qejl5jTip5cm2yZt
-X-Google-Smtp-Source: AGHT+IG/FXLUUpVPX3ROT5kd9YPxAoOY00obRdb0wk6QPFIDPBYVog79O1m31Xhkog/xCiQfLs20GQ==
-X-Received: by 2002:a05:6512:12d6:b0:539:968a:9196 with SMTP id 2adb3069b0e04-53a154ce943mr1009789e87.48.1729239092911;
-        Fri, 18 Oct 2024 01:11:32 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1729239103; x=1729843903;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=V/zn5scuA4cBnjeDcZDLfq+bKDyVI2Q6beFukEjg47s=;
+        b=sBFyr+GheBXvJacNeAg/XPcI68gG7u0cQD4z5F5kiZ3Dx3dYOTyw45doWJEV56byuc
+         HiWPeGa8bMlPmK/wZx42JBKY2gfbfAjw1qURjyYDMu/WdVaaKSz5S6nzxVI4M+39I0Yo
+         ys4R64IEUsDGC5IpXNRfk5l0IdHLcTwKwmhGEwe/OqPrGakijgJqaHX6tQeqr2AY9jQL
+         aFgeX/pk6uv8k0U38ijgw74d10nzmIrL9k+P6r/C9bhwztVkr7bNQU4/2trReXTZuqLd
+         UcBWsPkH16d6rGQnn7s3eiNI90y+ArwsRkRNZUOrsKkYXMCIaXVkiKSeX2+ga3oPjzyP
+         H8fQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVSHNE0O2b/HSQXX8U30UwgGnB6d7GWyVkCFrfJmKCuP6xBv751iC8BuV0YKHiujSWfurLGDNV4HzRvuT9mMQA=@lists.infradead.org, AJvYcCVhgG/+ctK5rF6x5LFewEHfkBjI14S8WCbJDVvelz7DeAJl1CcGKiKvG3LY91JtdK8ATNZAVF+nEF0Uf2/IecVd@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxx9eAOw6uw514YpQMTo5H6YJ6CwWmXGR3DaguVyxDKY+ayTPCv
+	ZFKVqhQ4azgkAFfluSbLxR15bUjX2V5lt6FjnSmBw9vDd7u0h22Ji9cIBetA
+X-Google-Smtp-Source: AGHT+IEJndJ7T4QgNQNyzgKQM38xfv83GpmaPCAjcHMYMqbxlqndRz6v+yB2Ezb0u8Tsr5rWSpM9Wg==
+X-Received: by 2002:a17:906:d551:b0:a9a:13dd:2734 with SMTP id a640c23a62f3a-a9a69bb59acmr139359666b.36.1729239102699;
+        Fri, 18 Oct 2024 01:11:42 -0700 (PDT)
 Received: from zenbook.agu.edu.tr ([95.183.227.33])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a68a8e734sm61129666b.24.2024.10.18.01.11.29
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a68a8e734sm61129666b.24.2024.10.18.01.11.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 18 Oct 2024 01:11:31 -0700 (PDT)
+        Fri, 18 Oct 2024 01:11:42 -0700 (PDT)
 From: Yassine Oudjana <yassine.oudjana@gmail.com>
 X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
 To: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
@@ -87,15 +88,18 @@ Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
 	linux-pm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 0/6] MediaTek MT6735+MT6328 SoC/PMIC pair base support
-Date: Fri, 18 Oct 2024 11:10:42 +0300
-Message-ID: <20241018081050.23592-1-y.oudjana@protonmail.com>
+Subject: [PATCH 1/6] dt-bindings: mediatek: pwrap: Add MT6735 compatible
+Date: Fri, 18 Oct 2024 11:10:43 +0300
+Message-ID: <20241018081050.23592-2-y.oudjana@protonmail.com>
 X-Mailer: git-send-email 2.47.0
+In-Reply-To: <20241018081050.23592-1-y.oudjana@protonmail.com>
+References: <20241018081050.23592-1-y.oudjana@protonmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241018_011135_743989_5019D84D 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20241018_011144_952110_11CDF80F 
+X-CRM114-Status: UNSURE (   9.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,45 +116,25 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Yassine Oudjana <y.oudjana@protonmail.com>
 
-These patches are part of a larger effort to support the MT6735 SoC family in
-mainline Linux. More patches (unsent or sent and pending review or revision)
-can be found here[1].
+Add a compatible string for MT6735 PMIC wrapper.
 
-This series adds base support for the MediaTek MT6735 SoC and MT6328 PMIC pair.
-This includes PMIC wrapper support on the SoC side and regulators and keys on
-the PMIC side. The PMIC has other blocks such as an audio codec and battery
-charger which can be supported in the future.
+Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+---
+ .../devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml         | 1 +
+ 1 file changed, 1 insertion(+)
 
-[1] https://gitlab.com/mt6735-mainline/linux/-/commits/mt6735-staging
-
-Yassine Oudjana (6):
-  dt-bindings: mediatek: pwrap: Add MT6735 compatible
-  dt-bindings: mfd: mediatek: mt6397: Add bindings for MT6328
-  soc: mediatek: pwrap: Add support for MT6735 and MT6328 SoC/PMIC pair
-  mfd: mt6397: Add initial support for MT6328
-  regulator: Add driver for MediaTek MT6328 PMIC regulators
-  Input: mtk-pmic-keys - Add support for MT6328
-
- .../bindings/input/mediatek,pmic-keys.yaml    |   1 +
- .../bindings/mfd/mediatek,mt6397.yaml         |   2 +
- .../bindings/soc/mediatek/mediatek,pwrap.yaml |   1 +
- drivers/input/keyboard/mtk-pmic-keys.c        |  15 +
- drivers/mfd/mt6397-core.c                     |  32 +
- drivers/mfd/mt6397-irq.c                      |  23 +
- drivers/regulator/Kconfig                     |   9 +
- drivers/regulator/Makefile                    |   1 +
- drivers/regulator/mt6328-regulator.c          | 479 ++++++++++
- drivers/soc/mediatek/mtk-pmic-wrap.c          | 251 +++++-
- include/linux/mfd/mt6328/core.h               |  53 ++
- include/linux/mfd/mt6328/registers.h          | 822 ++++++++++++++++++
- include/linux/mfd/mt6397/core.h               |  11 +-
- include/linux/regulator/mt6328-regulator.h    |  49 ++
- 14 files changed, 1741 insertions(+), 8 deletions(-)
- create mode 100644 drivers/regulator/mt6328-regulator.c
- create mode 100644 include/linux/mfd/mt6328/core.h
- create mode 100644 include/linux/mfd/mt6328/registers.h
- create mode 100644 include/linux/regulator/mt6328-regulator.h
-
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
+index 4737e5f45d541..d5965dd38df0e 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
+@@ -31,6 +31,7 @@ properties:
+       - items:
+           - enum:
+               - mediatek,mt2701-pwrap
++              - mediatek,mt6735-pwrap
+               - mediatek,mt6765-pwrap
+               - mediatek,mt6779-pwrap
+               - mediatek,mt6795-pwrap
 -- 
 2.47.0
 
