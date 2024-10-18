@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56180D3DEA0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 17:45:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 096E2D3DEA4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 18:14:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TrTL/jjGzCvqH/yeN5UwgYSLJOMowWMElMOJP+0rKm8=; b=o/b9UuvNFPWrLwCTmDA3Q09GeH
-	rSmovxPWKiKY4XFEljrmPYbYsYDVnkEnzyvUyJre+VvUZOOWWi+LuLFaqd730uF0AU8apeWC+rfQF
-	mD9N3Scs87U81zt8vzGtz/i4E3IL9PumQDEYE5bmGkH4bZBDUOLypgAAKT6yKVOQV6RUlsUXhGPVo
-	YdAHTE8DGcXKQ4TmsdpvxboNx5Jy+3v61j+OnRRsX/+3zkooEcxuL9qHB/axAeQ3ljz8UgUr04ccE
-	2BqhZGPgvGcKOspFLeHuBhwoUptq0AJBmIa+ghmVVpcAwp6gxzQvq23sYikcaZ0ok7eUbQmzkBsRa
-	+ScZBfKw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rBbNs22uQervbwsUW0laACDJM6LC5rVXIqgu0VnFg1I=; b=KXJgHOC17ptIy0IfgLzP53c39K
+	hozKrVd7nFu7pcoLf4LIkRPpadZHHoWbqs3H48f4J+Qze1v0wrbGZKj7YOCZmoYyCGQ+c7cO2QTe8
+	khs/aGESsNpn99ExRxJetXUm83erbPzYEuk6xaXXJiLdkttsXxfWNoUOn0BiuiQwV/tgLQk7qB7VK
+	g2IVdmniCdNMtyZRhCWmgceS7E4OauOq55rPIPQkSm7wnXHUnlSFZbU8g5vkbdQ78ZPjUaNqU1NGK
+	MEljmXrPkwSDOeaNCCcTssZvrsFPIlzKO5/3lxJmX+X7DH0FYSA+gqpJ2x1enmzOakDmgWycnqNVY
+	UvmSDfcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1r2O-00000001Yid-0tGn;
-	Fri, 18 Oct 2024 17:45:20 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1t1rUI-00000001bme-1Sv6;
+	Fri, 18 Oct 2024 18:14:10 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1r0r-00000001YGm-3XeZ;
-	Fri, 18 Oct 2024 17:43:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CA9685C51A4;
-	Fri, 18 Oct 2024 17:43:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F19BDC4CEC5;
-	Fri, 18 Oct 2024 17:43:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729273424;
-	bh=XbeyX7FNDvoei3M13wTCf/2lpZ7+fW2VCTRPNVZNE+Q=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=GIzd0MvGmMYK3Bfj9BzYhzagaM5G44stCvZx+ikR2dsO+1wyxiS7PV63zcuYistOP
-	 a0etq+SfIZ78vO/8bCg+C4wnpir6EINk2DJ1HU3T0klqa54yIKMCdJTDOZy0NimNBC
-	 333VhLoggzddiYxk6P8YLY8gBQCZPun6LxsnTkHG8qy5KvVLldZ8NGrlZ40lpI8y6n
-	 5oD80cekAjJgfeAkUqyS/eNpNzCbkDhROEHd7ytPVWnQRA1z4i0a1tIFANGc7578FW
-	 O6mN5TCSAP7/OO0FP03z18AdvnSmr3stbIW3FSA7e3cd5W3yukHR2ggl8X99peBxPm
-	 SmhPeIb5gka2A==
-From: Mark Brown <broonie@kernel.org>
-To: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, 
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
- Tang Bin <tangbin@cmss.chinamobile.com>
-Cc: linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20241016011851.2023-1-tangbin@cmss.chinamobile.com>
-References: <20241016011851.2023-1-tangbin@cmss.chinamobile.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8188: remove unnecessary variable
- assignment
-Message-Id: <172927342272.163659.4351031993017950860.b4-ty@kernel.org>
-Date: Fri, 18 Oct 2024 18:43:42 +0100
+	id 1t1rSp-00000001bci-1nuG;
+	Fri, 18 Oct 2024 18:12:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=rBbNs22uQervbwsUW0laACDJM6LC5rVXIqgu0VnFg1I=; b=4XpRXC1NF2Ox4BEDGsO6IEWoAq
+	grScfco3CXGZ7Wk7NoSiytQxlILPdf8dzlHeVEi2Uh64VmrgtxTsLaWowoHNS0bZ345QqJtxCiyX5
+	Q5xE5vRs05AB3KvgEvAKj3hxKqArajqJRfHfX9M6Ve7caqiVT3mrKz8YInLiXYlpRY5s=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1t1rSY-00AYYG-95; Fri, 18 Oct 2024 20:12:22 +0200
+Date: Fri, 18 Oct 2024 20:12:22 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: wojackbb@gmail.com
+Cc: netdev@vger.kernel.org, linux-usb@vger.kernel.org,
+	chandrashekar.devegowda@intel.com,
+	chiranjeevi.rapolu@linux.intel.com, haijun.liu@mediatek.com,
+	m.chetan.kumar@linux.intel.com, ricardo.martinez@linux.intel.com,
+	loic.poulain@linaro.org, ryazanov.s.a@gmail.com,
+	johannes@sipsolutions.net, davem@davemloft.net, edumazet@google.com,
+	kuba@kernel.org, pabeni@redhat.com,
+	linux-arm-kernel@lists.infradead.org,
+	angelogioacchino.delregno@collabora.com,
+	linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+	johan@kernel.org
+Subject: Re: [PATCH 1/2] [net,v3] net: wwan: t7xx: add
+ PM_AUTOSUSPEND_MS_BY_DW5933E for Dell DW5933e
+Message-ID: <118ae5ef-6c6c-4e9f-80f6-9ccbced4a397@lunn.ch>
+References: <20241018074841.23546-1-wojackbb@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-9b746
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241018074841.23546-1-wojackbb@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241018_104345_960797_5390D716 
-X-CRM114-Status: UNSURE (   9.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241018_111239_493458_D8F5FC1E 
+X-CRM114-Status: GOOD (  10.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,38 +76,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 16 Oct 2024 09:18:51 +0800, Tang Bin wrote:
-> In the function mt8188_adda_mtkaif_init, 'val' to 0 is repeated,
-> thus delete one.
+On Fri, Oct 18, 2024 at 03:48:41PM +0800, wojackbb@gmail.com wrote:
+> From: Jack Wu <wojackbb@gmail.com>
 > 
+> Because optimizing the power consumption of Dell DW5933e,
+> Add a new auto suspend time for Dell DW5933e.
 > 
+> The Tests uses a small script to loop through the power_state
+> of Dell DW5933e.
+> (for example: /sys/bus/pci/devices/0000\:72\:00.0/power_state)
+> 
+> * If Auto suspend is 20 seconds,
+>   test script show power_state have 5% of the time was in D3 state
+>   when host don't have data packet transmission.
+> 
+> * Changed auto suspend time to 5 seconds,
+>   test script show power_state have 50% of the time was in D3 state
+>   when host don't have data packet transmission.
 
-Applied to
+Only patch [1/2] made it to the list.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+And you still have not explained why it is special.
 
-Thanks!
+    Andrew
 
-[1/1] ASoC: mediatek: mt8188: remove unnecessary variable assignment
-      commit: d3170359c96082302e7b6de624cb8592d8954e7d
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+---
+pw-bot: cr
 
