@@ -4,75 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E2E1D3C533
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2024 23:26:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A342D3C544
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2024 02:51:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JnF4DhQWEcKTIPI030OJAqd4YC80q8oD4ETGn9LVGQU=; b=v2DcjgwhQpdobubKKYVVydfvbA
-	Vt/7aXovonnffRmcnm6y2hhlgq7kQJu6wqZFsAhBPWu6u6/7vV5rsuH9T7IYK9QZkoBwORdwg16fu
-	MoHWJR4q2GwJmvlz+4LpplqFIOMqpojSlgWOEwDPD5acZKexf5XCKrO4eAvPJQ/Zqw9U+fVqSaECY
-	iIqON2KrP9VPb9tvGeXqYAa1WkPHKrquPjER6CH0uyqi/cPEXV1ZBmi+3SVoWWrxBEqsFlTC6k2Vj
-	QJjZMmVthw8CsJ2sOq/rtJatO1cklaUw6EPPhdoN5TXR3mICkgSK6pWjSiZm8hLQtov58hV/R0o/c
-	fXblHiaw==;
+	bh=FInH6rmEGrI96heFWpKbOa008U589xCU7r9Fs7pLT7g=; b=PUMnrylDIFGUT/E3jIj9NAiIWz
+	UzKazrVch6zGj49GoIuxb3wTKfYje9NHmVk0FwXw3FmAWsk7KY4MsDqa6Y7YE0om3Kvk8LDvb8B9U
+	6VrJMFJ2MLpSSrCv7nPQSSbnIvAIni4jbcFQ8wSW9T1x84DQ8n73j2p8LsVJTEU7YRxb7pbkiydbS
+	XzHoO8OhZvcZSZ+oIFQQ8Fz/ws9CyXHjC5O0mWRPEjyg7AwxZX+an1LKhBT/1/nAoZ8n+QqhEIRsV
+	Q5MAcGi6Jp75dwkbDEe/64lp97IiOdbUI3WlF3m8HgMUebcirW7qwtn/fjom+rbYluMUJ12DWG+ou
+	clupwUqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1ZtD-0000000GQsu-1zfz;
-	Thu, 17 Oct 2024 23:26:43 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1t1d5o-0000000Gim7-1XFE;
+	Fri, 18 Oct 2024 02:51:56 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t1Zqc-0000000GQYV-3soy;
-	Thu, 17 Oct 2024 23:24:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729207441;
-	bh=stynPAKb67QZa/lU7ZIP8zDcPVSvZM4VE/kuZgRvW68=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=a8ExjZa7BXve8hN7bF41EjrnBaIRjB1DZGyLFYJFg5m3YcIb8+01SRWT4XOuSnd1g
-	 951q26phmb2PPL+3JnRQbyvLhpoHdGOKwtJIFiIAj0UaCR1uSIVU4LMo/RKPMlC16b
-	 zoYykMa8grW3NO3hvmHH3U/PIa6K3YRAhsKQntX4yAnXJr24bMMyBx29558glxL2uZ
-	 kdky/hm5Tr3xB3CThNHTnDJtDvSu3MkYd1powH5Xrhaw4tEWzh5QSo8+JJAjuJED7P
-	 67Ykrw+4TGTsg9Vh41NW9DjkPofMi25k8i7cDnvFWZ/gKCFbIQMyjQxIjvlTLidC7Y
-	 6N1rL2y+qSwTw==
-Received: from [192.168.1.90] (unknown [188.24.146.62])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7079317E0ED2;
-	Fri, 18 Oct 2024 01:24:00 +0200 (CEST)
-Message-ID: <6acaeefe-54f1-4a7f-9e07-bc8b1bfbab08@collabora.com>
-Date: Fri, 18 Oct 2024 02:23:59 +0300
+	id 1t1d4L-0000000Gigu-3VdT;
+	Fri, 18 Oct 2024 02:50:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id C0F90A4453F;
+	Fri, 18 Oct 2024 02:50:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6FBD2C4CEC3;
+	Fri, 18 Oct 2024 02:50:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1729219824;
+	bh=TV2vZOfHCYzI29IT082PlVZm8+DxBeGHheYHxpV28A8=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=t82sFMykzQEpfZSeeZ4n5Y1mqB6qfrEIeJXvvgb6lbSlVKYd5rnZybsbO5QnltehT
+	 ZWhy20eaCmRX8zoqo+W/xN0vRdF8W3X/FyI30DD7f7LpJOryIsLkinUO2biOl4vGFH
+	 K219DWkcucAVMyR/dPnmPBD54aOiEt/TJXPb74Not+fcdsU/uaLZscyzmUMHQlOSJs
+	 G+tyuS1fD8iny7GzrsF79V8vF7v3akUjzLcrZshtDNtBsKXT7ovrTXV6uw/+Wfi5Lk
+	 8bq/Ij4IuLYbA+83Q35LMEAopVXgUIQmRSi8hqm2qPga2pnFMsLUnsckXw4kqPE0zR
+	 5sao5WktngWXg==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33CBC3809A8A;
+	Fri, 18 Oct 2024 02:50:31 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/4] clk: Provide devm_clk_bulk_get_all_enabled()
- helper
-To: Stephen Boyd <sboyd@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Jingoo Han <jingoohan1@gmail.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
- <kw@linux.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Michael Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>,
- Russell King <linux@armlinux.org.uk>
-Cc: kernel@collabora.com, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org
-References: <20240926-clk_bulk_ena_fix-v2-0-9c767510fbb5@collabora.com>
- <20240926-clk_bulk_ena_fix-v2-1-9c767510fbb5@collabora.com>
- <347771679b3ac765de3f79c26f3d3595.sboyd@kernel.org>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <347771679b3ac765de3f79c26f3d3595.sboyd@kernel.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next] net: airoha: Fix typo in REG_CDM2_FWD_CFG
+ configuration
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <172921983001.2667083.1676500266510353428.git-patchwork-notify@kernel.org>
+Date: Fri, 18 Oct 2024 02:50:30 +0000
+References: <20241015-airoha-eth-cdm2-fixes-v1-1-9dc6993286c3@kernel.org>
+In-Reply-To: <20241015-airoha-eth-cdm2-fixes-v1-1-9dc6993286c3@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: nbd@nbd.name, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, chihwei.cheng@airoha.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241017_162403_148847_34E5A78A 
-X-CRM114-Status: GOOD (  11.47  )
+X-CRM114-CacheID: sfid-20241017_195025_957782_5513615B 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,36 +78,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/17/24 10:45 PM, Stephen Boyd wrote:
-> Quoting Cristian Ciocaltea (2024-09-26 03:43:20)
->> Commit 265b07df758a ("clk: Provide managed helper to get and enable bulk
->> clocks") added devm_clk_bulk_get_all_enable() function, but missed to
->> return the number of clocks stored in the clk_bulk_data table referenced
->> by the clks argument.  Without knowing the number, it's not possible to
->> iterate these clocks when needed, hence the argument is useless and
->> could have been simply removed.
->>
->> Introduce devm_clk_bulk_get_all_enabled() variant, which is consistent
->> with devm_clk_bulk_get_all() in terms of the returned value:
->>
->>  > 0 if one or more clocks have been stored
->>  = 0 if there are no clocks
->>  < 0 if an error occurred
->>
->> Moreover, the naming is consistent with devm_clk_get_enabled(), i.e. use
->> the past form of 'enable'.
+Hello:
 
-[...]
+This patch was applied to netdev/net-next.git (main)
+by Andrew Lunn <andrew@lunn.ch>:
 
-> Instead of duplicating can you make devm_clk_bulk_get_all_enable() use
-> the devm_clk_bulk_get_all_enabled() function but not return the number
-> of clks all in this patch? It will make the diff much more readable that
-> way.
+On Tue, 15 Oct 2024 09:58:09 +0200 you wrote:
+> Fix typo in airoha_fe_init routine configuring CDM2_OAM_QSEL_MASK field
+> of REG_CDM2_FWD_CFG register.
+> This bug is not introducing any user visible problem since Frame Engine
+> CDM2 port is used just by the second QDMA block and we currently enable
+> just QDMA1 block connected to the MT7530 dsa switch via CDM1 port.
+> 
+> Introduced by commit 23020f049327 ("net: airoha: Introduce ethernet
+> support for EN7581 SoC")
+> 
+> [...]
 
-Done in v3 [1].
+Here is the summary with links:
+  - [net-next] net: airoha: Fix typo in REG_CDM2_FWD_CFG configuration
+    https://git.kernel.org/netdev/net-next/c/30d9d8f6a2d7
 
-Thanks for reviewing,
-Cristian
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-[1] https://lore.kernel.org/all/20241018-clk_bulk_ena_fix-v3-0-57e8bb82460c@collabora.com/
+
 
