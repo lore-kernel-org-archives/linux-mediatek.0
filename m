@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95D1BD3C909
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Oct 2024 11:23:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16404D3C909
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Oct 2024 11:23:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SGyABxNo9pEi/auMJXJlsbF8ZtL8IFs495dpVyyRJLw=; b=xOwWTs4R/UuUp+bwz2N85Y/jnV
-	QxlPwRM0lLJbBcItKKDBlC+zpDS9Mg/XVpgGHn9gjnn80oVOAnfXdBEGBE6LfHMRK61pkK5yzd/Fr
-	uRV4AUPCshdTRJTK//zjqcgP2FaSX/SiBTSiO2Uye87Tw1ab1aL43XbLrTUp2rvK8yQnHZ/zffXvR
-	inX4azNpluAZaJgm9H6tCVgjzTO0VVkDYP/yJBeBYwZ2SAEq6Ynrt4yFLGTFTrYturmKYUzx7hDQ2
-	QIL0Pcqgf+Co3wr3+wf0eSOTfS1vwNA18y8JSCyBlJIWyMg1q4zcf4phA+dF5QtiI9f+Q+Nkd5xzl
-	hzQYCjcw==;
+	bh=YohracUhsDVEh+aMbdi9Y0PHB0rj7dLCkbDga3Dg0Fk=; b=KbnyLCW2Dv8U18QnLEL9Un0XxY
+	HAPHJN9xzpdZCEXhQeVNbbMY3HV+pt8mx7U8AIVicFQRpKoLbqScQuWESU5KYirZakirZyUEQ7ZM7
+	bbA+Vbbn42Cf9sgyXtrPTWF+0jqwtaqXmlshLvBLwcWMm+4OLTmQ9hNhXRTnazJ2JbDFDk8Mr8Pnw
+	k9vHF7A/eEbjjdyFH/wl6bLEjK4nqxoakcm+EhvVfuitz5osYvS7p/7ocSJH4J81Ate4jf8qi0C2C
+	1FcfoolMpqBX6AF35v+znXCIWj6bt8YPcXnweBHVm/btrzv9LPiEXBkizQT2b9Pdi/rK0saiTObC2
+	ZZQ6yP4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t27Yd-00000003DBK-2MpO;
-	Sat, 19 Oct 2024 11:23:43 +0000
+	id 1t27Yn-00000003DD3-0bEu;
+	Sat, 19 Oct 2024 11:23:53 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t27RQ-00000003BWC-1ci7;
-	Sat, 19 Oct 2024 11:16:17 +0000
+	id 1t27VN-00000003Cfj-2HBj;
+	Sat, 19 Oct 2024 11:20:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729336574;
-	bh=nwnH2KnIkk1D0r4Y5YjAkX/ex3xblGmY05q5UghzuYc=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=bWe+LYlJ+pQOag0E5xHE7EuueK+0GVC8RcVxylv8YC87PqUsSZm9vt4yZxVZiaPsH
-	 9QBMh68gROeNvwwTxJggCHvEvRu0SJywBsp0KflY9zmDZdCUIqLSPigU7ePrJ+Wfhu
-	 0hoQPGY4g4i704gw3dStPBsAGp3IlHpP7Op1A3pycDrwXgrNVuMt2aLFQAlCVRjtk6
-	 WjCCNyNdDGYd+KO4SliUXTDSF3bIVNKEMM1PyW6fZALEZFvny0LNhUl/QlShjfrGEm
-	 TwMv5ia2KYeUyGZsqQ5/2stzj4hJsljgakdei/fwbq0bi31wFPNmNOXZKCvPngIbDw
-	 11AnIgf7CRZ/w==
-Received: from localhost (unknown [188.24.146.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1729336819;
+	bh=fgM8dTXtogJtNbM27u29QltmLJFMCoLsfeW9/uhqMqM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=XhIhRl1WjbKZQ+6IgcdASB3u6DRcer54NStItAFOZjmoAll1fvPNLoyB4DXDNkBs4
+	 aBvU8QCX6v+fuWSeAsMn0iW3pGIV0yNxpivb/CkuO0PwSK67EWkS0LDd/kKIa3CaFt
+	 sji7AM/Bbvqx97vGIijbg8vPrq/DWfcUGlSIPIeFdcXkHjEfOeJtPjhKNKLccpbWJT
+	 XAmRQkDj5w7rSO1WkS2TC8E5YOVgsMCkXeAue2+KUcK3WIazSoVOIQyJ+tQrkxDWPk
+	 UoZeM1zjOa50zZFaiT27nRbhvmr5sPruDdJoY+QpObAl8Ck+lsofSgeQ5RBXEpyXCL
+	 RUK0Lhe583A1Q==
+Received: from [192.168.1.90] (unknown [188.24.146.62])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C188C17E35E0;
-	Sat, 19 Oct 2024 13:16:14 +0200 (CEST)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Sat, 19 Oct 2024 14:16:03 +0300
-Subject: [PATCH v4 4/4] clk: Drop obsolete devm_clk_bulk_get_all_enable()
- helper
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3759717E1411;
+	Sat, 19 Oct 2024 13:20:19 +0200 (CEST)
+Message-ID: <9455cce5-af97-48cb-8042-24b714f29401@collabora.com>
+Date: Sat, 19 Oct 2024 14:20:18 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20241019-clk_bulk_ena_fix-v4-4-57f108f64e70@collabora.com>
-References: <20241019-clk_bulk_ena_fix-v4-0-57f108f64e70@collabora.com>
-In-Reply-To: <20241019-clk_bulk_ena_fix-v4-0-57f108f64e70@collabora.com>
-To: Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Russell King <linux@armlinux.org.uk>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Jingoo Han <jingoohan1@gmail.com>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
- Krzysztof Kozlowski <krzk@kernel.org>, 
- Alim Akhtar <alim.akhtar@samsung.com>
-Cc: kernel@collabora.com, linux-clk@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, 
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/4] clk: Provide devm_clk_bulk_get_all_enabled()
+ helper
+To: Stephen Boyd <sboyd@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Jingoo Han <jingoohan1@gmail.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
+ <kw@linux.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Michael Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>,
+ Russell King <linux@armlinux.org.uk>
+Cc: kernel@collabora.com, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
  linux-samsung-soc@vger.kernel.org
-X-Mailer: b4 0.14.2
+References: <20241018-clk_bulk_ena_fix-v3-0-57e8bb82460c@collabora.com>
+ <20241018-clk_bulk_ena_fix-v3-1-57e8bb82460c@collabora.com>
+ <c0afdf9f8c9773ef83274cb119d14c90.sboyd@kernel.org>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <c0afdf9f8c9773ef83274cb119d14c90.sboyd@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241019_041616_626302_4954C3D9 
-X-CRM114-Status: GOOD (  12.23  )
+X-CRM114-CacheID: sfid-20241019_042021_769542_5D0C713C 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,89 +87,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Commit 265b07df758a ("clk: Provide managed helper to get and enable bulk
-clocks") added devm_clk_bulk_get_all_enable() function, but missed to
-return the number of clocks stored in the clk_bulk_data table referenced
-by the clks argument.  Without knowing the number, it's not possible to
-iterate these clocks when needed, hence the argument is useless and
-could have been simply removed.
+On 10/19/24 8:56 AM, Stephen Boyd wrote:
+> Quoting Cristian Ciocaltea (2024-10-17 16:17:29)
+>> diff --git a/drivers/clk/clk-devres.c b/drivers/clk/clk-devres.c
+>> index 82ae1f26e634572b943d18b8d86267f0a69911a6..0d0fe364b66a8590d5e7c63dc6c1e70c59d53e89 100644
+>> --- a/drivers/clk/clk-devres.c
+>> +++ b/drivers/clk/clk-devres.c
+>> @@ -230,25 +239,27 @@ int __must_check devm_clk_bulk_get_all_enable(struct device *dev,
+>>                 return -ENOMEM;
+>>  
+>>         ret = clk_bulk_get_all(dev, &devres->clks);
+>> -       if (ret > 0) {
+>> -               *clks = devres->clks;
+>> -               devres->num_clks = ret;
+>> -       } else {
+>> -               devres_free(devres);
+>> -               return ret;
+>> -       }
+>> +       if (ret <= 0)
+>> +               goto err_free_devres;
+> 
+> Please don't use goto so that the diff is minimized.
 
-A new helper devm_clk_bulk_get_all_enabled() has been introduced, which
-is consistent with devm_clk_bulk_get_all() in terms of the returned
-value.
+Done in v4:
 
-Drop the obsolete function since all users switched to the new helper.
+https://lore.kernel.org/all/20241019-clk_bulk_ena_fix-v4-0-57f108f64e70@collabora.com/
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- drivers/clk/clk-devres.c |  9 ---------
- include/linux/clk.h      | 22 ----------------------
- 2 files changed, 31 deletions(-)
-
-diff --git a/drivers/clk/clk-devres.c b/drivers/clk/clk-devres.c
-index 975fac29b27f3709e292531a114975c9108287db..0ae385403f9b08d29d0ec7cb2066f02d46cb90c9 100644
---- a/drivers/clk/clk-devres.c
-+++ b/drivers/clk/clk-devres.c
-@@ -218,15 +218,6 @@ static void devm_clk_bulk_release_all_enable(struct device *dev, void *res)
- 	clk_bulk_put_all(devres->num_clks, devres->clks);
- }
- 
--int __must_check devm_clk_bulk_get_all_enable(struct device *dev,
--					      struct clk_bulk_data **clks)
--{
--	int ret = devm_clk_bulk_get_all_enabled(dev, clks);
--
--	return ret > 0 ? 0 : ret;
--}
--EXPORT_SYMBOL_GPL(devm_clk_bulk_get_all_enable);
--
- int __must_check devm_clk_bulk_get_all_enabled(struct device *dev,
- 					       struct clk_bulk_data **clks)
- {
-diff --git a/include/linux/clk.h b/include/linux/clk.h
-index 158c5072852e36c1583dc47ca7516fcdd928fe59..b607482ca77e987b9344c38f25ebb5c8d35c1d39 100644
---- a/include/linux/clk.h
-+++ b/include/linux/clk.h
-@@ -495,22 +495,6 @@ int __must_check devm_clk_bulk_get_optional(struct device *dev, int num_clks,
- int __must_check devm_clk_bulk_get_all(struct device *dev,
- 				       struct clk_bulk_data **clks);
- 
--/**
-- * devm_clk_bulk_get_all_enable - Get and enable all clocks of the consumer (managed)
-- * @dev: device for clock "consumer"
-- * @clks: pointer to the clk_bulk_data table of consumer
-- *
-- * Returns success (0) or negative errno.
-- *
-- * This helper function allows drivers to get all clocks of the
-- * consumer and enables them in one operation with management.
-- * The clks will automatically be disabled and freed when the device
-- * is unbound.
-- */
--
--int __must_check devm_clk_bulk_get_all_enable(struct device *dev,
--					      struct clk_bulk_data **clks);
--
- /**
-  * devm_clk_bulk_get_all_enabled - Get and enable all clocks of the consumer (managed)
-  * @dev: device for clock "consumer"
-@@ -1052,12 +1036,6 @@ static inline int __must_check devm_clk_bulk_get_all(struct device *dev,
- 	return 0;
- }
- 
--static inline int __must_check devm_clk_bulk_get_all_enable(struct device *dev,
--						struct clk_bulk_data **clks)
--{
--	return 0;
--}
--
- static inline int __must_check devm_clk_bulk_get_all_enabled(struct device *dev,
- 						struct clk_bulk_data **clks)
- {
-
--- 
-2.47.0
-
+Regards,
+Cristian
 
