@@ -4,74 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D879CD3C547
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Oct 2024 05:30:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 391C9D3DEA7
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Oct 2024 05:36:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=cJNuS83mrwWL8W8iH3SFWUNmmnjimhgt4bHtgaT67XI=; b=lxvjUPW9n1xBtt
-	ddE9vtCngkLlhgl+5ma5BvFymdJd7Xce673ClkYfGq4AkVmY/JIlf+vObgnwOvL/JRzyTifD3gKO7
-	EQK1UZrXZSJcjEJVisyJsZmNPjqn8WnoD/FLdrkaQNMnO6A4fQ13b6KoxCy1TziOAl6TbUUQDrFml
-	L+oY40tcaBjYx3Hv5uxiR8fJ8tK4i3UE9vhPhgSMeYEh1pVhSn9OCDpX4RsfbvfDIN9hN6JhoKAbS
-	tEv0fLRZyn38uC+fgnGPsDTvsXByjaViyj/HeCfQdDPajYtGhRhe4wQO+wfz6DwuQTj/qhPRuu2a1
-	d505ltOVd4hMyxHmS/Zw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lzfvgqsAxHWenBWftlkZ/uVSGEyAz3grmzhqBSSTfDI=; b=reB2Qa8TSNcqMOaL5nyr8fcDfh
+	q3oiZlpY/gv2G+wFzW47NMCNgGP6OCqjHOvuZsioHFfDg8kmkzAc7tV8n0rTVVD+ZgIRUiA5l/XUk
+	+EP12aWB0LopKoMQ43ZdcJhfp5RS06ymzdkLG4D7I5CJJIUduPL5CoYNAJ3jtNf12mogQZubRFda6
+	LT4LgH1Arm90VcCYlHyMq5q/7K1JFMdYrgE2Jtxb6sUD0Qycn6CeUT50MYKlk4yVM/O8Pi8E4bHhX
+	EJmaJFhKDQhBXW7CiWe3mwnKJUNSpmMl+gqOVe+wDUnVm3GVYnhFiCQeVYTfGZZ13WDGBPPV/AzXf
+	IDy9jx4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t222X-00000002apl-2FAs;
-	Sat, 19 Oct 2024 05:30:13 +0000
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
+	id 1t228d-00000002bHB-0Wld;
+	Sat, 19 Oct 2024 05:36:31 +0000
+Received: from mail-vs1-xe31.google.com ([2607:f8b0:4864:20::e31])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t222U-00000002aoi-0vBm
+	id 1t228a-00000002bGP-36ZE
 	for linux-mediatek@lists.infradead.org;
-	Sat, 19 Oct 2024 05:30:11 +0000
-Received: by mail-pg1-x536.google.com with SMTP id 41be03b00d2f7-7ea8de14848so2073274a12.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 18 Oct 2024 22:30:09 -0700 (PDT)
+	Sat, 19 Oct 2024 05:36:30 +0000
+Received: by mail-vs1-xe31.google.com with SMTP id ada2fe7eead31-4a47d70cd8aso837505137.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 18 Oct 2024 22:36:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1729315809; x=1729920609; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=cJNuS83mrwWL8W8iH3SFWUNmmnjimhgt4bHtgaT67XI=;
-        b=LqN0Uaq7CKKrt/7yx/ncIVcgiE+hbtVXbvDwdKrOwprpQnj7AvfJ3/z03IPmCi6WRV
-         +7UU5CzgWjUVTlhkyLFvbcIrNaRFM4rNWFdNJ+Zkcc9LelQQdP0xf6b1fDtyQxeZUeAr
-         t0GpPl4ERWFoo3pPNQyeA8yO0WT4rFZ86nyhE=
+        d=chromium.org; s=google; t=1729316187; x=1729920987; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=lzfvgqsAxHWenBWftlkZ/uVSGEyAz3grmzhqBSSTfDI=;
+        b=ZYzU9/Psoi/rJYZ+vqrqIqGBdrugeCI+CIYviN0UTKHndp+JO2bbj/uXDXYMhkhwPU
+         GG0YP7Vek2mINe8ARXrjOyiFtUZmHeB+s4t3FOHaP7tdy9mtQxXYxSg9DO94Wur/sbPI
+         HdN8XIhQUaXTOaW1duI2hvosa7U77AKwP72C0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729315809; x=1729920609;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=cJNuS83mrwWL8W8iH3SFWUNmmnjimhgt4bHtgaT67XI=;
-        b=o2QoE9mYXwLW7cyUQnEA44wjKdSzAOBfrb0M06E4Qfo/F8I1kLPyyBzMmhxBQM3e+X
-         0EpO+Ttn/YFelhXL0ZG85iKSUGDoVQ7022yyawB5EyT2HGTIttepgpxS3WVQ2cW4Ls6H
-         b/vnu7d32Mn1ywosWi9xFXf/lPshv24tStdnbLJe1T+CKQx/gubXu4YkYtgyBvOEt/vq
-         Uo4JvccDPpg32cjZBYc+g3VRr9amQ7TRHu7+VSgGMYfAMKFGFWAvFp2R3Amp0v7QiWj3
-         46fvVXgaFNMqZZbcDNKbLz55/1HJHP9oaCwOwuO8OsmFC6u2k9kJZ6ZiPIIbjiDZFX6s
-         zC9g==
-X-Forwarded-Encrypted: i=1; AJvYcCV92EfPLkTs97G9edpVjY9Mp+u+CuValSQDNOw70hnmTweO5GXO0JRLfdW/IOLdrSp8ZgsM2Pn24dOcudXtyA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx3HXjQ1ntCKID4e6sETWjh9p/ZmCZ6/BnihLNlmiXO6B23NiNN
-	4emwwilkbH2Bt7gTJpCza1RBF4duC2aVRmd+8uuvUZb8gX+jO5LP/3cyL2cBdQ==
-X-Google-Smtp-Source: AGHT+IH7n9UXYo5nlALMpZiRBbTQ8pp4m9cx7aacSoU54soAc/R6mjW8EzAU5xHiakUlodnb2D1f8Q==
-X-Received: by 2002:a05:6a21:458a:b0:1d7:118a:327b with SMTP id adf61e73a8af0-1d92c4a1d2emr6720501637.9.1729315808788;
-        Fri, 18 Oct 2024 22:30:08 -0700 (PDT)
-Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:baba:fa50:ff3b:337])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71ea333bea3sm2370438b3a.57.2024.10.18.22.30.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 18 Oct 2024 22:30:08 -0700 (PDT)
-From: Fei Shao <fshao@chromium.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Subject: [PATCH] dt-bindings: display: mediatek: dpi: Update device list with power-domains
-Date: Sat, 19 Oct 2024 13:26:56 +0800
-Message-ID: <20241019052935.553886-1-fshao@chromium.org>
-X-Mailer: git-send-email 2.47.0.rc1.288.g06298d1525-goog
+        d=1e100.net; s=20230601; t=1729316187; x=1729920987;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=lzfvgqsAxHWenBWftlkZ/uVSGEyAz3grmzhqBSSTfDI=;
+        b=HMglM82jxRgfdTfkFxwqaUtZPD3vFWgchfFwQcmaJlwx6iSy712PCS6Crewjat6LL0
+         5AE754KccM2f9N2+5/ag4/n8+ia2ROdvFrQzf06se1ytvNbaXB4JNRl9TPXTOojqZeJm
+         I6x9kfzRUYACmmbXfJtlTPTEQcAM6qizhIBMHW/hT1r15vb+i8UzCubZIdcS/7Y7AsIC
+         Ga42uwmvyLyarfiFm5gKQB6g50apX7u3mB/1LraSc6SasF59HhN0vox4ebwo8/Nw8r6p
+         +z9Vn7dn3QGYljrb/FM5rzhSvvn59gF4aZ826hQ0pRVYA2LcEgJ2WMLhpOpsvyWZSGc7
+         Q40w==
+X-Forwarded-Encrypted: i=1; AJvYcCUtiYqgyTpilaBp8/IruQ7xlixRlb65/gIR/Tl2kwqOqeufwpFYO1wzwEKc+EE1AOFimquCkGHFnAeGy+xHVg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz8Gfa6n34hmchY9WKq8EgQ3zoGkx0BDxgDMWxgG6x4d5S2qd+y
+	y3Cx8vBsAQyesZ2bFBIkiu7F9ZMCbBewzaMTGG959rdbzW2YH0Q8MZdh1vgiGcnvuxHVnm48yg2
+	5jg==
+X-Google-Smtp-Source: AGHT+IF+Ge3rQCs7DGBIKh+phFBv15rHA3p8fK3W6GNEAuZibbSEZHm2Gd069RumjwMGGzEQeRbCkg==
+X-Received: by 2002:a05:6102:304c:b0:4a3:dd83:c0ac with SMTP id ada2fe7eead31-4a5d6bb72efmr5280531137.20.1729316186574;
+        Fri, 18 Oct 2024 22:36:26 -0700 (PDT)
+Received: from mail-vk1-f182.google.com (mail-vk1-f182.google.com. [209.85.221.182])
+        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-4a5d6228392sm469110137.9.2024.10.18.22.36.25
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 18 Oct 2024 22:36:25 -0700 (PDT)
+Received: by mail-vk1-f182.google.com with SMTP id 71dfb90a1353d-50d4a333a87so878864e0c.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 18 Oct 2024 22:36:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCU/FD4ddKxqaTUd+tGN2t0pkLXmUMxt1Yac7Nan5r2DM6ydZFhh83Of0NbnpwIcOrp016VrXzYauOntqCmA8Q==@lists.infradead.org
+X-Received: by 2002:a05:6102:3711:b0:48f:de23:14f0 with SMTP id
+ ada2fe7eead31-4a5d6ad1703mr5830263137.8.1729316184547; Fri, 18 Oct 2024
+ 22:36:24 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20241018-post-reset-v1-0-5aadb7550037@chromium.org> <172925540096.17773.4550001283125132036.robh@kernel.org>
+In-Reply-To: <172925540096.17773.4550001283125132036.robh@kernel.org>
+From: Fei Shao <fshao@chromium.org>
+Date: Sat, 19 Oct 2024 13:35:47 +0800
+X-Gmail-Original-Message-ID: <CAC=S1njH=D247j80MezGPHjwg_ZLWtH5gasXfOB-Y9Geq50frA@mail.gmail.com>
+Message-ID: <CAC=S1njH=D247j80MezGPHjwg_ZLWtH5gasXfOB-Y9Geq50frA@mail.gmail.com>
+Subject: Re: [PATCH 0/2] Using i2c-hid-of-elan driver instead of i2c-hid-of driver
+To: "Rob Herring (Arm)" <robh@kernel.org>, Hsin-Te Yuan <yuanhsinte@chromium.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, 
+	Hsin-Yi Wang <hsinyi@chromium.org>, Benjamin Tissoires <bentiss@kernel.org>, linux-kernel@vger.kernel.org, 
+	Conor Dooley <conor+dt@kernel.org>, Enric Balletbo i Serra <eballetbo@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Hans de Goede <hdegoede@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241018_223010_416061_8B1A7010 
-X-CRM114-Status: UNSURE (   9.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241018_223628_829229_2E896E38 
+X-CRM114-Status: GOOD (  24.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,58 +99,107 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are two kinds of MediaTek DPI devices in the tree: the ones with a
-power domain and those without (or missing). The former are the majority
-and are more common in newer DTs. Only three older DTs fall into the
-latter category: MT2701, MT7623 and MT8192.
+On Fri, Oct 18, 2024 at 8:57=E2=80=AFPM Rob Herring (Arm) <robh@kernel.org>=
+ wrote:
+>
+>
+> On Fri, 18 Oct 2024 12:03:03 +0000, Hsin-Te Yuan wrote:
+> > After commit 2be404486c05 ("HID: i2c-hid-of: Add reset GPIO support to
+> > i2c-hid-of"), i2c-hid-of driver resets the touchscreen without having
+> > proper post-reset delay on OF platform.  From the commit message of tha=
+t
+> > commit, not to decribe poset-reset delay in device tree is intended.
+> > Instead, describing the delay in platform data and changing to use
+> > specialized driver is more preferable solution.
+> >
+> > Also workaround the race condition of pinctrl used by touchscreen and
+> > trackpad in this series to avoid merge conflict.
+> >
+> > Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+> > ---
+> > Hsin-Te Yuan (2):
+> >       arm64: dts: mediatek: mt8183: Fix race condition of pinctrl
+> >       arm64: dts: mediatek: mt8183: Switch to Elan touchscreen driver
+> >
+> >  arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dts |  2 --
+> >  arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dts  |  3 ---
+> >  arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts   | 12 +++-=
+--------
+> >  .../boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dts   | 11 ++--=
+-------
+> >  .../boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dts   | 11 ++--=
+-------
+> >  .../boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dts   | 11 ++--=
+-------
+> >  .../arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel.dtsi |  3 ---
+> >  .../boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper.dtsi      |  3 ---
+> >  arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico.dts   |  3 ---
+> >  arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dts  |  3 ---
+> >  .../arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow.dtsi |  3 ---
+> >  arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi       | 10 +++-=
+------
+> >  12 files changed, 12 insertions(+), 63 deletions(-)
+> > ---
+> > base-commit: eca631b8fe808748d7585059c4307005ca5c5820
+> > change-id: 20241018-post-reset-ac66b0351613
+> >
+> > Best regards,
+> > --
+> > Hsin-Te Yuan <yuanhsinte@chromium.org>
+> >
+> >
+> >
+>
+>
+> My bot found new DTB warnings on the .dts files added or changed in this
+> series.
+>
+> Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+> are fixed by another series. Ultimately, it is up to the platform
+> maintainer whether these warnings are acceptable or not. No need to reply
+> unless the platform maintainer has comments.
+>
+> If you already ran DT checks and didn't see these error(s), then
+> make sure dt-schema is up to date:
+>
+>   pip3 install dtschema --upgrade
+>
+>
+> New warnings running 'make CHECK_DTBS=3Dy mediatek/mt8183-kukui-jacuzzi-b=
+urnet.dtb mediatek/mt8183-kukui-jacuzzi-cozmo.dtb mediatek/mt8183-kukui-jac=
+uzzi-damu.dtb mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dtb mediatek/mt8183=
+-kukui-jacuzzi-fennel-sku6.dtb mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dt=
+b mediatek/mt8183-kukui-jacuzzi-pico.dtb mediatek/mt8183-kukui-jacuzzi-pico=
+6.dtb' for 20241018-post-reset-v1-0-5aadb7550037@chromium.org:
+>
+> arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico.dtb: dpi@14015000:=
+ power-domains: False schema does not allow [[92, 7]]
+>         from schema $id: http://devicetree.org/schemas/display/mediatek/m=
+ediatek,dpi.yaml#
+> arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dtb: dpi@14015000:=
+ power-domains: False schema does not allow [[94, 7]]
+>         from schema $id: http://devicetree.org/schemas/display/mediatek/m=
+ediatek,dpi.yaml#
+> arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dtb: dpi@14015000=
+: power-domains: False schema does not allow [[92, 7]]
+>         from schema $id: http://devicetree.org/schemas/display/mediatek/m=
+ediatek,dpi.yaml#
+> arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-pico6.dtb: dpi@14015000=
+: power-domains: False schema does not allow [[90, 7]]
+>         from schema $id: http://devicetree.org/schemas/display/mediatek/m=
+ediatek,dpi.yaml#
+> arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dtb: dpi@1401500=
+0: power-domains: False schema does not allow [[92, 7]]
+>         from schema $id: http://devicetree.org/schemas/display/mediatek/m=
+ediatek,dpi.yaml#
+>
 
-However, the current binding only allows particular DPI devices to have
-power domains, which results in spurious binding check errors against
-existing and new DTs.
+I sent a patch that should fix these errors:
+https://lore.kernel.org/all/20241019052935.553886-1-fshao@chromium.org/
 
-Instead of diligently maintaining the allowed list, let's do it the
-other way around - create an exception list for devices that are fine
-not specifying a power domain. This list is expected to be fixed, and it
-encourages new MTK DPI devices to describe their power domain whenever
-possible; if not, those should be listed with proper rationale.
-
-Signed-off-by: Fei Shao <fshao@chromium.org>
----
-
- .../bindings/display/mediatek/mediatek,dpi.yaml   | 15 +++++++--------
- 1 file changed, 7 insertions(+), 8 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-index 3a82aec9021c..c464642bbfb6 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
-@@ -81,14 +81,13 @@ required:
- 
- allOf:
-   - if:
--      not:
--        properties:
--          compatible:
--            contains:
--              enum:
--                - mediatek,mt6795-dpi
--                - mediatek,mt8173-dpi
--                - mediatek,mt8186-dpi
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - mediatek,mt2701-dpi
-+              - mediatek,mt7623-dpi
-+              - mediatek,mt8192-dpi
-     then:
-       properties:
-         power-domains: false
--- 
-2.47.0.rc1.288.g06298d1525-goog
-
+Regards,
+Fei
 
