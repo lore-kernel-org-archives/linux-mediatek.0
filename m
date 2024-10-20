@@ -4,67 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14B22D3C92D
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Oct 2024 16:12:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23DD5D3C92A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Oct 2024 16:13:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HBCGrXmLqeqbwmyMbK0LG0RuhCufhe/yeF9xGI9LMvU=; b=h2HgVLsOP1GwrVDqG40WIZGz9E
-	aZH8j/6n/JosodyK31skG17OoIl2n2N7HYiHawPJPe+/bCuCtef5ezGcGPopq8eXLwxgYsdg8qPZI
-	VNgujBMygv3n+H+Vg/muim8WyJPVHSLb3qqledHmWfPXxtedzLdN/BjSU1EAn0GSV0XkKSwr70Iqe
-	3OB7MsEU8+MnJGlqxOBPEuwq3kf2+Jv/nUdJ+qM5wYDP2naijRFdXLysZs1TeYv9gRv/IR00F9ZLq
-	OPs+f1qEL3voC8+EOspycHJ1A86O2Y/SihfS7gqS/4InAKj0bhcbqRfTJQaU2XasZ5HCZr8N7qn9B
-	ynC5y9mg==;
+	bh=xk3cv0eOdnISfDPXATq8EPea6JNn0juO8Fujq5I8JL8=; b=2OxF485Fp9mLiUbynOyXJCjznR
+	pYb/Of9/2Zq96YKCsoh0O8Y69VEqIMUIv66zSXCNjfpoPpXl/cLqMMbDME/sH4p2YUzgV597k/NiJ
+	zY+vci15GzhPuuU+/J4GcqveZpaPI4oSOXWKSAdIp41zCrsDA8CLi/S/flHz7PUIFztUibK06Hwsa
+	Ji56lxZ9+hvA8pHJ5+Vk9z2k7leHM2kQI0Xlkb7ddKdgS49enBVMmvRwqpIFYYiURVP2BZbz4LHPc
+	WFgX2/MMPSioIiBMDYrCqrl6+Uy51E7deTn1gvv2jNREvuz7if+NMlxFW4h1425JAD2btk+Jk5E03
+	2qZXTg8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2YXA-000000056Aj-3jUw;
-	Sun, 20 Oct 2024 16:12:00 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1t2YYb-000000056HF-0Gzh;
+	Sun, 20 Oct 2024 16:13:29 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2YVf-000000055qd-0jNX;
-	Sun, 20 Oct 2024 16:10:28 +0000
+	id 1t2YVn-000000055rR-0Cbd;
+	Sun, 20 Oct 2024 16:10:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 661FDA418A0;
-	Sun, 20 Oct 2024 16:10:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19691C4CEC7;
-	Sun, 20 Oct 2024 16:10:25 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 638D55C58E1;
+	Sun, 20 Oct 2024 16:10:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95DF0C4CEE5;
+	Sun, 20 Oct 2024 16:10:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729440625;
-	bh=i/w/Ikg5srtLKQmcdWO2THgNjJN21VBQ36TzWecTZfg=;
+	s=k20201202; t=1729440633;
+	bh=UUabHuMBj6T5Mw4+gO7s2Bb8IsFaQraBLWnCpJUJ2bk=;
 	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=GuPcQDIAuHExaaj9b7S31rC/XhaRsN3iJss2glmIfrY3Zbm9KS/DGRi06R/Jr3cTq
-	 ngp/uTY5Q2rPSQTE/1LhEql2vfK90U2i736MDjykID3j4MTCuC6yTMXsweU60Cnimh
-	 6O8wVVM8tnm96rGbSkf7viYpzf2c9js54KzvwgHwI5h1omBzSC+DFoinBjJ4QbRbim
-	 RnFikBRww3dWG99KGy/ic5md5wcoZkQm3LJBD7Bwv8AUrmRr/zsfgsSWBncKC7Fi+9
-	 Dtve6TUbaQGUrw2iSueTTvn9+5D9Gpo0lp2tERHmL7bcOXMsj0Dl/GOCKy5RGB5QRA
-	 WuCrYl3RnlyDQ==
+	b=d5hxtTMNP+Sl0JKcs0vDqDEEtY2wPvgy+1OE6BNPOZCWVzY2iml4L0//pDJOPi/QR
+	 S2WMmM226Z8ruDnUb90Ujk7l4JAEBMuH5tcZ6uHRVs1FiMoVAbskf7P45pMCP1gofm
+	 c4w1YAj1UCBgmg/R1+bvOBj+RwBxXu1xR3pt+pfzFj1jGmi67/9qCYc9GgJ5/+SOzL
+	 Vz5wAegMhp7JOnhxCN6vrS6LCN4c1RQd5TNTPejNRbhkUiw2ZJ/aKRb5RtKlbt9mYa
+	 Rw82xy4ULmMa6JIqi0LTwg+7OPadgb8XMZVLyTRJ+sx1STKegvgNaFxNuigyr1JZW4
+	 y8OxiYo+SC8gg==
 Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33BF63805CC0;
-	Sun, 20 Oct 2024 16:10:32 +0000 (UTC)
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id AE01B3805CC0;
+	Sun, 20 Oct 2024 16:10:40 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v2 0/3] net: phy: Refactor mediatek-ge-soc.c for
- clarity and correctness
+Subject: Re: [PATCH net-next] net: airoha: Reset BQL stopping the netdevice
 From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <172944063101.3604255.4238646255355667605.git-patchwork-notify@kernel.org>
-Date: Sun, 20 Oct 2024 16:10:31 +0000
-References: <20241017032213.22256-1-SkyLake.Huang@mediatek.com>
-In-Reply-To: <20241017032213.22256-1-SkyLake.Huang@mediatek.com>
-To: Sky Huang <skylake.huang@mediatek.com>
-Cc: andrew@lunn.ch, hkallweit1@gmail.com, linux@armlinux.org.uk,
+Message-Id: <172944063949.3604255.311498943475544885.git-patchwork-notify@kernel.org>
+Date: Sun, 20 Oct 2024 16:10:39 +0000
+References: <20241017-airoha-en7581-reset-bql-v1-1-08c0c9888de5@kernel.org>
+In-Reply-To: <20241017-airoha-en7581-reset-bql-v1-1-08c0c9888de5@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: nbd@nbd.name, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
  davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- daniel@makrotopia.org, dqfext@gmail.com, SkyLake.Huang@mediatek.com,
  matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- horms@kernel.org, linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Steven.Liu@mediatek.com
+ netdev@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241020_091027_305531_C3943874 
-X-CRM114-Status: UNSURE (   9.51  )
+X-CRM114-CacheID: sfid-20241020_091035_207333_D2BA06AB 
+X-CRM114-Status: UNSURE (   9.00  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,27 +79,23 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hello:
 
-This series was applied to netdev/net-next.git (main)
+This patch was applied to netdev/net-next.git (main)
 by Andrew Lunn <andrew@lunn.ch>:
 
-On Thu, 17 Oct 2024 11:22:10 +0800 you wrote:
-> From: "SkyLake.Huang" <skylake.huang@mediatek.com>
+On Thu, 17 Oct 2024 16:01:41 +0200 you wrote:
+> Run airoha_qdma_cleanup_tx_queue() in ndo_stop callback in order to
+> unmap pending skbs. Moreover, reset BQL txq state stopping the netdevice,
 > 
-> This patch is derived from patch 8/9 of Message ID:
-> 20241004102413.5838-9-SkyLake.Huang@mediatek.com.
-> This patch does some simple clean-ups, however, this is necessary
-> because the rest patches in
-> "20241004102413.5838-9-SkyLake.Huang@mediatek.com" rely on this.
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  drivers/net/ethernet/mediatek/airoha_eth.c | 10 +++++++++-
+>  1 file changed, 9 insertions(+), 1 deletion(-)
 > 
 > [...]
 
 Here is the summary with links:
-  - [net-next,v2,1/3] net: phy: mediatek-ge-soc: Fix coding style
-    https://git.kernel.org/netdev/net-next/c/b544223bec9f
-  - [net-next,v2,2/3] net: phy: mediatek-ge-soc: Shrink line wrapping to 80 characters
-    https://git.kernel.org/netdev/net-next/c/b0f90a863ca5
-  - [net-next,v2,3/3] net: phy: mediatek-ge-soc: Propagate error code correctly in cal_cycle()
-    https://git.kernel.org/netdev/net-next/c/93a610c00ffd
+  - [net-next] net: airoha: Reset BQL stopping the netdevice
+    https://git.kernel.org/netdev/net-next/c/c9f947769b77
 
 You are awesome, thank you!
 -- 
