@@ -4,65 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23DD5D3C92A
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Oct 2024 16:13:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DC54D3C92D
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Oct 2024 18:08:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xk3cv0eOdnISfDPXATq8EPea6JNn0juO8Fujq5I8JL8=; b=2OxF485Fp9mLiUbynOyXJCjznR
-	pYb/Of9/2Zq96YKCsoh0O8Y69VEqIMUIv66zSXCNjfpoPpXl/cLqMMbDME/sH4p2YUzgV597k/NiJ
-	zY+vci15GzhPuuU+/J4GcqveZpaPI4oSOXWKSAdIp41zCrsDA8CLi/S/flHz7PUIFztUibK06Hwsa
-	Ji56lxZ9+hvA8pHJ5+Vk9z2k7leHM2kQI0Xlkb7ddKdgS49enBVMmvRwqpIFYYiURVP2BZbz4LHPc
-	WFgX2/MMPSioIiBMDYrCqrl6+Uy51E7deTn1gvv2jNREvuz7if+NMlxFW4h1425JAD2btk+Jk5E03
-	2qZXTg8Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:MIME-Version:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7OOwWusk6gEaG/8hbzuWvjxkguVQUEpUcpHpEOGOhQA=; b=Fs6G2sMZ/OLhAS6hZjPKrAsOSm
+	UTd45w5durF3HS8XmqsjIGu6vBdSjyB6L4oyUI6mIq59aG6Yo0TYnPWV1hUEj4iAaKCf5L81Kv5UT
+	g5BMI8C2JLFkpo5VaBBn2P7q3p3coYqrQK5jcRKaxrDDbJD61MQEVDJlFW+c8L9cHyfecRdM4X5WL
+	gOvTngXtFkabhFnWlcuRyKWEa4tbUcvcdYNqAQ71Q4CM1uiRlKVkUpbhKKsk46Rbk+ETVYG6LrjUn
+	XDUD8i79DILteg50G5Qj1q6Qj4Z9voVrtpH6xQC3BKwT0tS103JeRQCzRLCRjopUFxjXLXUnTX+dF
+	DbF6qkeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2YYb-000000056HF-0Gzh;
-	Sun, 20 Oct 2024 16:13:29 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1t2aLU-00000005EUV-3uuH;
+	Sun, 20 Oct 2024 18:08:04 +0000
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2YVn-000000055rR-0Cbd;
-	Sun, 20 Oct 2024 16:10:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 638D55C58E1;
-	Sun, 20 Oct 2024 16:10:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95DF0C4CEE5;
-	Sun, 20 Oct 2024 16:10:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729440633;
-	bh=UUabHuMBj6T5Mw4+gO7s2Bb8IsFaQraBLWnCpJUJ2bk=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=d5hxtTMNP+Sl0JKcs0vDqDEEtY2wPvgy+1OE6BNPOZCWVzY2iml4L0//pDJOPi/QR
-	 S2WMmM226Z8ruDnUb90Ujk7l4JAEBMuH5tcZ6uHRVs1FiMoVAbskf7P45pMCP1gofm
-	 c4w1YAj1UCBgmg/R1+bvOBj+RwBxXu1xR3pt+pfzFj1jGmi67/9qCYc9GgJ5/+SOzL
-	 Vz5wAegMhp7JOnhxCN6vrS6LCN4c1RQd5TNTPejNRbhkUiw2ZJ/aKRb5RtKlbt9mYa
-	 Rw82xy4ULmMa6JIqi0LTwg+7OPadgb8XMZVLyTRJ+sx1STKegvgNaFxNuigyr1JZW4
-	 y8OxiYo+SC8gg==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id AE01B3805CC0;
-	Sun, 20 Oct 2024 16:10:40 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1t2aI4-00000005ECe-1vyM
+	for linux-mediatek@lists.infradead.org;
+	Sun, 20 Oct 2024 18:04:34 +0000
+Received: by mail-yw1-x1133.google.com with SMTP id 00721157ae682-6e5b85d41deso27623597b3.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 20 Oct 2024 11:04:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=rothemail-net.20230601.gappssmtp.com; s=20230601; t=1729447471; x=1730052271; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=7OOwWusk6gEaG/8hbzuWvjxkguVQUEpUcpHpEOGOhQA=;
+        b=UK/CZWaBtVTc+8czilztTcPgRCzztigpIf0kD6wRcFiL7Gyuqj05m0vpmaXIEbeLYD
+         +O2vZKH40MH42QgKys3badcHwBNmhpESP1w3wPTJt2/JrMODJBvYOl+IqDsawMYDYLo6
+         GSS+BRsB7Gq838V8pQKTjpsNE03Q6dpcvgvokZxeunt/fVg+Q2rdv4LxkyEwzAETAecQ
+         xwu4Od3L5NTZoULBx21Hj5j5MVFo7HVGA3Y/PVIbEaR9mFr0XG8IxgyYEC6XrrlqwwCB
+         wAKg6cxbhaGFNLmTiuEpVM8jl0zzfOO/lIYAa/bXCjdV0sA/kOPX9S190exzagS7cWnQ
+         Sz6w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729447471; x=1730052271;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=7OOwWusk6gEaG/8hbzuWvjxkguVQUEpUcpHpEOGOhQA=;
+        b=FwYyEnfEf98ZfiFnmHnm/+PpkZQbQZ/in+CwNe99PZXxPeSmmgUrc0jjtGRrru40eW
+         VW81uKrvWFUV3V8NSx6KMLuG87mB3qU0gtxxx0AF2Oc+IoYh0MkHSD4/anKOdTJODCsy
+         YokfsmdCOG7fWO+On/+GkGe6bx2+Je9EDvCzXri5fUE66zwINMXfBBrrSHTBQZXR0bZg
+         ZoB0wOsOcwmwqZWC6MA2veJzlWF9VodYE/SP4rx2VjEEXSNd1/459E88mOMecMmHhaxN
+         NmD2A3GFvitKqheeYyxH/Qkb5lEVzB9dC5hPPVigJkjqdlBRtcTXT5YCSsOUfpdLZjFq
+         0+YQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVVBYGr1e+Pgohf4NQcZaPxADJiID+nyd3pG+cTDLvZ+o/3zg72YRieX8eV/TYahNdPwYxgpOUQeX7oHiUpsQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw7mjt/HVOaALo2X0v2WwQotcqU7gnG0VCBUjnc3/XFLZTqTAs5
+	W8eNgtkygmgt78DHAf7chC9NREFJN2e/DZV6YPQ4ECqHaiZrnxt9Nx0XuDnzAwf45IGPtlUEqXo
+	WlfDQ0VyzsNlZiJXYbeAl//QkZRH50bImccNuIQ==
+X-Google-Smtp-Source: AGHT+IF8tda2rePv5A+duyzJqGM5e/U7BomZq6sQw+zaQZl7zuF0j93HaSioMcmaiDUo0U6AiZmyGyOi0SdPfStiUpQ=
+X-Received: by 2002:a05:690c:3747:b0:6e3:34b9:961d with SMTP id
+ 00721157ae682-6e5bfc8ce70mr82212367b3.38.1729447470821; Sun, 20 Oct 2024
+ 11:04:30 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next] net: airoha: Reset BQL stopping the netdevice
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <172944063949.3604255.311498943475544885.git-patchwork-notify@kernel.org>
-Date: Sun, 20 Oct 2024 16:10:39 +0000
-References: <20241017-airoha-en7581-reset-bql-v1-1-08c0c9888de5@kernel.org>
-In-Reply-To: <20241017-airoha-en7581-reset-bql-v1-1-08c0c9888de5@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: nbd@nbd.name, sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org
+From: Nicholas Roth <nicholas@rothemail.net>
+Date: Sun, 20 Oct 2024 14:04:22 -0400
+Message-ID: <CAD2rFCq7VAr=xVxppToAePQtNBUY2j3FNk+dXgMXDv32LHyRng@mail.gmail.com>
+Subject: [REGRESSION] bluetooth: mt7921: Crash on Resume From Suspend And Hibernate
+To: Sean Wang <sean.wang@mediatek.com>, linux-bluetooth@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Cc: regressions@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241020_091035_207333_D2BA06AB 
-X-CRM114-Status: UNSURE (   9.00  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241020_110432_787399_16304314 
+X-CRM114-Status: GOOD (  13.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,30 +87,145 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+#regzbot introduced: v6.10..v6.11
 
-This patch was applied to netdev/net-next.git (main)
-by Andrew Lunn <andrew@lunn.ch>:
+My Framework 16 laptop (Ryzen=E2=84=A2 7 7840HS + AMD Radeon=E2=84=A2 RX 77=
+00S)
+recently started hanging when I open the lid after resuming from
+hibernation on the very-lightly-patched 6.11.4 kernel that Arch ships
+as `linux`. From the error message, this appears to be a crash.
 
-On Thu, 17 Oct 2024 16:01:41 +0200 you wrote:
-> Run airoha_qdma_cleanup_tx_queue() in ndo_stop callback in order to
-> unmap pending skbs. Moreover, reset BQL txq state stopping the netdevice,
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  drivers/net/ethernet/mediatek/airoha_eth.c | 10 +++++++++-
->  1 file changed, 9 insertions(+), 1 deletion(-)
-> 
-> [...]
+I'm compiling torvalds/linux locally and will be able to use that to
+help answer follow-up questions, but I may be slow to respond as I
+have a day job. The kernel I've tested so far is _very_ close to
+mainline-- at https://github.com/archlinux/linux I only see ARM/fixes,
+dmaengine: cirrus:, and btrfs: send:). I posted the issue at
+https://community.frame.work/t/framework-16-fails-to-resume-from-hibernate/=
+59297
+and it appears others see this too. Note that the 6.10-6.11 range
+comes from @callahad on the forums-- I can only say for sure on the
+close-to-mainline kernel that this definitely affects 6.11.4.
 
-Here is the summary with links:
-  - [net-next] net: airoha: Reset BQL stopping the netdevice
-    https://git.kernel.org/netdev/net-next/c/c9f947769b77
+I was not able to collect complete logs since they don't get saved to
+the journal and I don't have a serial adapter on me suitable for a
+kernel TTY, but with `no_console_suspend` I was able to enhance and
+OCR an image (see the forums for the original), which I'm posting in
+full at the end of this mail under "Partial Panic (OCR)". Highlights
+include:
+[ 146.054908] RIP: 0010:hci_unregister_dev+0x45/8x1f@ [bluetooth]
+...
+[ 146.855890) Call Trace:
+[ 146.055187] ? __die_body.cold+0x19/0=C3=9727
+[ 146.055122] ? die_addr+0x3c/0x60
+[ 146.055134] ? exc_general_protection+0x17d/0x400
+...
+[ 146.855238] ? hci_unregister_dev+0x3e/0x1f0 [bluetooth
+1400000003000000474e5500314a936b2959fa34)
+[ 146.055288] btusb_disconnect+0x67/0x170 [btusb
+1400000003000000474e55007dd0b46154bf4bec]
+...
+[ 148.449222] mt7921e 8000:04:00.0: Message 00020007 (seq 4) timeout
+[ 148.451497] mt7921e 0000:04:00.0: PM: dpm_run_callback();
+pci_pm_restore returns -110
+[ 148.454598] mt7921e 8000:04:00.0: PM: failed to restore async: error -110
+[ 148.534371] mt7921e 0000:04:00.0: HW/SW Version; 8x8a188a10, Build
+Time: 20240716163242a
+[ 148.534371]
+[ 148.912088] mt7921e 0000:04:00.0: WM Firmware Version: ____000000,
+Build Time: 20240716163327
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+The kernel appears to be tainted with an unrelated warning.
 
+chktaint:
+$ ./kernel-chktaint.sh
+Kernel is "tainted" for the following reasons:
+ * kernel issued warning (#9)
+For a more detailed explanation of the various taint flags see
+ Documentation/admin-guide/tainted-kernels.rst in the Linux kernel sources
+ or https://kernel.org/doc/html/latest/admin-guide/tainted-kernels.html
+Raw taint value as int/string: 512/'G        W         '
 
+Warnings:
+# dmesg | grep -i warn
+[    2.333170] WARNING: CPU: 10 PID: 229 at
+drivers/gpu/drm/amd/amdgpu/../display/dc/dcn31/dcn31_panel_cntl.c:186
+dcn31_panel_cntl_construct.cold+0x1e/0x2e [amdgpu]
+[    2.333967]  ? __warn.cold+0x8e/0xe8
+[ 2814.691588] warning: `ThreadPoolForeg' uses wireless extensions
+which will stop working for Wi-Fi 7 hardware; use nl80211
+
+Partial Panic (OCR):
+[ 146.0548891] Workqueue: async async_run_entry_fn
+[ 146.054908] RIP: 0010:hci_unregister_dev+0x45/8x1f@ [bluetooth]
+[ 146.054962] Code: 89 ef e8 ae 03 8b d2 f0 80 8b e9 De 00 00 08 48 89
+ef e8 0e f1 8a d2 48 c7 c7 68 20 c4 c1 e8 22 52 8b d2 48 8b 43 08 48
+8b 13 <48> 3b 18 0f 85 b5 c7 06 00 48 3b 5a 08 Of 85 ab c7 06 00 48 89
+42
+[ 146.054984] RSP: 0018: ffffbba241defcc8 EFLAGS: 00010246
+[ 146.054996] RAX: dead000000000122 RBX: ffffa86a81276000 RCX: 000000000000=
+0000
+[ 146.055007] RDX: dead000000000100 RSI: ffffa06a81a47910 RDI: ffffffffc1c4=
+2068
+[ 146.055018] RBP: ffffa06a812764d0 R08: 0000000000000000 R89: ffffa06a801d=
+9610
+[ 146.055028] R10: ffffbba241defcd0 R11: ffffbba241defcd8 R12: ffffa06a8127=
+6000
+[ 146.055038] R13: ffffffffc2323278 R14: ffffffffc2323278 R15:
+ffffa06a8f9f0850 146.055050] FS:
+[ 146.055050] FS: 0000000000000000(0000) GS:ffffa07960000000(0000)
+kn1GS:0000000000000000
+[ 146.055062] CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 146.055072] CR2: 0000000000000000 CR3: 000000070ba22000 CR4: 0000000000f5=
+0ef0
+[ 146.055083] PKRU: 55555554
+[ 146.855890) Call Trace:
+[ 146.055099]
+[ 146.055187] ? __die_body.cold+0x19/0=C3=9727
+[ 146.055122] ? die_addr+0x3c/0x60
+[ 146.055134] ? exc_general_protection+0x17d/0x400
+[ 146.055147] ? ep_poll_callback+0x24d/0x2a0
+[ 146.055164] ? asm_exc_general_protection+0x26/0x30
+[ 146.055184] ? hci_unregister_dev+0x45/0x1f@ [bluetooth
+1400000003000888474e5500314a936b2959fa34]
+[ 146.855238] ? hci_unregister_dev+0x3e/0x1f0 [bluetooth
+1400000003000000474e5500314a936b2959fa34)
+[ 146.055288] btusb_disconnect+0x67/0x170 [btusb
+1400000003000000474e55007dd0b46154bf4bec]
+[ 146.055307] usb_unbind_interface+0x90/0x290
+[ 146.055325] device_release_driver_internal+0x19c/0x200
+[ 146.055341] usb_forced_unbind_intf+0x75/0xb0
+[ 146.055354] unbind_marked_interfaces.isra.0+0x59/0=C3=9780
+[ 146.055368] ? __pfx_usb_dev_restore+0x10/0x10
+[ 146.055381] usb_resume+0x5a/0x60
+[ 146.055392] _dp_run_callback+0x47/0x150
+[ 146.055407] device_resume+0xb0/0=C3=97280
+[ 146.055419] async_resume+0x1d/8x30
+[ 146.055431] async_run_entry_fn+0x31/0=C3=97140
+[ 146.055444] process_one_work+0x17b/0x330
+[ 147.894397] [drm] ring gfx_32772.1.1 was addedmes_kiq_3.1.0 uses VM
+inv eng 13 on hub 0vailable 68 20 c4 c1 e8 22 52 Bb d2 48 8b 43 08 48
+8b 13 <48> 3b 18 0f
+[ 147.896995] [drm] ring compute_32772.2.2 was added
+[ 147.098944] [drm] ring sdma_32772.3.3 was added
+[ 147.102569] [dro] ring gfx_32772.1.1 ib test pass
+[ 147.186131] [drm] ring compute_32772.2.2 ib test pass
+[ 147.188302] [drm] ring sdma_32772.3.3 ib test pass
+[ 147.136203] usb 1-4.3: reset full-speed USB device number 8 using xhci_hc=
+d
+[ 147.238067] usb 1-4.3: unable to get BOS descriptor set
+[ 148.449222] mt7921e 8000:04:00.0: Message 00020007 (seq 4) timeout
+[ 148.451497] mt7921e 0000:04:00.0: PM: dpm_run_callback();
+pci_pm_restore returns -110
+[ 148.454598] mt7921e 8000:04:00.0: PM: failed to restore async: error -110
+[ 148.534371] mt7921e 0000:04:00.0: HW/SW Version; 8x8a188a10, Build
+Time: 20240716163242a
+[ 148.534371]
+[ 148.912088] mt7921e 0000:04:00.0: WM Firmware Version: ____000000,
+Build Time: 20240716163327
+
+Please let me know if I am missing anything or should do something
+differently. I am new to these lists.
+
+Thanks, all!
+-Nicholas
 
