@@ -4,73 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE50ED0E6C1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2024 08:15:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0995CD0E6C8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2024 08:30:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=AnvHyOnj93OGsSuS3Yy5YdOPX+qDA4+kJEwXl0YhTUg=; b=YwLhlMf3dJrE0w
-	CP0FBzuCyuuWkryQWRRfL4Ax4eYXrLYoIWEqKNfh22Q81E8rAhUXUJfU57c1FYHuMRheQxrDHyPUM
-	J98uj2Nfnv1z1KyEBHw1eKf9ykRjOuBehNvZWieiaKAzjn4gpkejN9PuM8OQUCjYNqxtF1u3J53NA
-	XgAUnH7mWRoB8KCZNqIU1rKmPFwhOruoxfuARoMNAkeZlyMSUY/eVeySltCs3n/KLm7vMUsZDUC3j
-	n4qLo/a6dg5WTuhheNk0hvExotPXasTAyUpV6Jhin5GSiiXICm80UNeZZjyd4aTV0F4T0OwhKafl4
-	LJh6o030gyZhmeP4fJog==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cAUk5W98O64U9IZMaqTyyBAdnws1M/z10hXkJohh3N0=; b=MsGGSE5Ar0Jr/kOw9Edfds3S0r
+	3MpKS3SrzruwAjZrnmumWzZZLeawMtJtvEz/a+xrORlvNfX1zUamfvBX5XZwSKGds/hzBQ9lhwNUC
+	zN8LOUsasd9jGRdfkTxYnV7csqauaOkWt+Zfo4GDF1Kj+6glRWJWmwcmij04aQBFFPLG11t8bgaMG
+	zNi8EglDNjJt83wENEoieUdea3XVKRWwnAs8ygLMTSlKTkajMwrh/IOuSvYjm0L2VcQnLZodgGtI3
+	vyvzlQHmri0qnZr6/ymGGu8QINW7/LIoDavYv2hfFhIfKhckdxkFR8PorneBQuwemp5M+aI/Uth4b
+	SfTjemqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2nZV-00000006Vh5-1jqz;
-	Mon, 21 Oct 2024 08:15:25 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1t2nnz-00000006Y4z-2oC6;
+	Mon, 21 Oct 2024 08:30:23 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2nXp-00000006VKb-3k23
-	for linux-mediatek@lists.infradead.org;
-	Mon, 21 Oct 2024 08:13:43 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-71e70c32cd7so3388200b3a.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Oct 2024 01:13:41 -0700 (PDT)
+	id 1t2mfL-00000006KsW-21Mu;
+	Mon, 21 Oct 2024 07:17:25 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-2e3686088c3so3019314a91.0;
+        Mon, 21 Oct 2024 00:17:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1729498420; x=1730103220; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=AnvHyOnj93OGsSuS3Yy5YdOPX+qDA4+kJEwXl0YhTUg=;
-        b=nx7HRZdGtuqUbXAtEQNoFuWJWgLFWPmlTic7+/OIGzShtl1qwu62VkeI6LH0W3W9i1
-         JmH/1pCs3zNVygl+MKhCpUpjBnvzYiyauxr40d3UZq89W3JFSTreXgGcGQlNbIxesMLb
-         Fu/e4W9lBQHeRpCLmdfZDlmk3+plqxUib31G4=
+        d=gmail.com; s=20230601; t=1729495042; x=1730099842; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=cAUk5W98O64U9IZMaqTyyBAdnws1M/z10hXkJohh3N0=;
+        b=Cc7vZrJXZSACjN0NigfaGSDIXJ6MSCL8tD80Y+t5GWt3vEV6sR0MopZOgMGylk2gsS
+         Og9Xp3kq/ZAqJagiiR3ZCWV0Pv9nVSB7MFad65T5n0dFMdzROwRsV5svA5v7Xm3yBvYT
+         hLiq0lHyd4rqL+TZn3m2DJ4/hJ1a6gE9+5qcHrX8Bg6h+ppC6qXy682FhAe/3vAmZNBu
+         RSKw0lonGfWQR/5hq+opmzJpXSXybmX54Uihw1kB7Capwo5pPv/rbf4dHdbkvBxAlVIe
+         TsvEP5sQ6N+RYiMPLpDdfvWXdtr87SIbFSgKcwAMIvEYljPcjoQUYxgkHOQVpjqqH652
+         /9Kg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729498420; x=1730103220;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=AnvHyOnj93OGsSuS3Yy5YdOPX+qDA4+kJEwXl0YhTUg=;
-        b=PnIFdanPBhSMWVNMkDtn39g4gcdHJ6atbwaCa7C1MdyUVdyasEaKyQVXyHJsutEZnw
-         flu1/owrW7IliUnrwuSidyF72IgLZvlQtqjME11CA6arRZIA2u5A4a6hp3ZAzjAciL5O
-         USgpd6bJ7MtSyGDb3pG2Hf496aeqL3SJHWjZX06Lep0510HwAjY05WCZ3RCsQmN+EtBl
-         9rizOcojYoU2t/J2E+T7I+5dR3hq8w3ULWpIhu0WDq475dZewZ8pq8J3I+Sn69BAuOvT
-         PuhIH0floACNsmDasEzC2eQJBbADI4oPnwYDmxb7BqN78+42/ionVDv2MaqmqtSjkHRC
-         yQfg==
-X-Forwarded-Encrypted: i=1; AJvYcCUaT5ANaRzEHdg/WrlaRHyGTxH6kdWj3XuZEhUKtXzQEIijV+/Gfl5Yq6NIGfdtyn9oMm28/784Y8iMfwmIMg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzvtShfIGRcX5pQ4WpYR9kfQ6qjhoMQCvQqat8jIG8Qq/dlE9mm
-	aWNbVYijXB1FpgVUAVEpdnyM0bvS9R5893EXYh60eYPcwgpwWmy6e1XmNQ1GJA==
-X-Google-Smtp-Source: AGHT+IHTst4CzwxlMo6qckbiC0esr8PkpKeIcvOCjqA/wtxgMHgUKyWplxQGBAiUUbJyZZiGDF4Cxw==
-X-Received: by 2002:a05:6a00:2e1d:b0:71e:744a:3fbd with SMTP id d2e1a72fcca58-71ea31d3048mr14987728b3a.20.1729498420532;
-        Mon, 21 Oct 2024 01:13:40 -0700 (PDT)
-Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:66d2:3298:fcb4:c6c9])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71ec13336f1sm2291945b3a.81.2024.10.21.01.13.38
+        d=1e100.net; s=20230601; t=1729495042; x=1730099842;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=cAUk5W98O64U9IZMaqTyyBAdnws1M/z10hXkJohh3N0=;
+        b=cnn4HkhgVUsDOZJtJcvu+e7+kOh8IwvdUirxUlDfYguW0lkk2aiB4PHkN9tto3JvaP
+         twmTgqbbD/NISpJZJ5/OGSCb1vq2MYJp7rokQgA0TvoxFxCKsaoAWw2DzAeX006aHDJp
+         iL/r2EwqdE0fxo04YWHuV2W5ct4wa4HzlHqh7SPTQyJJjJsymGhDQ2GFSXWBdisEzscV
+         +Id4c1EYy760oAOJIflmHhn6nisnG7rT1WRvZqqca8TXIt3gkqTtBu7Q4SbEpsmF2jrJ
+         orR3Mc4X1Y0iTd1sbEKoAPywqDmRfO0XMdR8BIUYpepNf1vAhZZO2zXS17+V5ziMeh6K
+         VKwQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXcAI0FUIMdEYgSYbw/1lf0D7le+ObqX1bPJ5AR2GT1ylEPJssuKT8+ophoIEVqA+kRLbG0gZapHV0Q8NOfzRw=@lists.infradead.org, AJvYcCXjbWYV9NTlXY5jTJa8rKAKfO6nZTWE+ZG4vAbxDVS13ZKBjlOOPA86ujUWibOZd9Y9f232PLTSQL3eyfDaOjVf@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx2zha76klP9GTkc5ncgLK8mVrtMxPkPgHcrSR6GQgq1syowQRg
+	cJqD9+hOBj4zWidbAFr3TYzkfisggKcRnkmeCCzHRN3ch0MT0s7hyjeMcA==
+X-Google-Smtp-Source: AGHT+IGneQjtaluKEP/Dr7JWISPzjl8lPXj+gklNXWwqzoxaJiGA1EN7a1TRxGE1qWenqDLpbFxmXA==
+X-Received: by 2002:a17:90a:8d14:b0:2e2:c00c:cb79 with SMTP id 98e67ed59e1d1-2e5616db842mr11923766a91.3.1729495042427;
+        Mon, 21 Oct 2024 00:17:22 -0700 (PDT)
+Received: from google.com ([2620:15c:9d:2:6e21:7092:f7c7:3951])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2e5ad389146sm2818628a91.26.2024.10.21.00.17.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Oct 2024 01:13:40 -0700 (PDT)
-From: Fei Shao <fshao@chromium.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH] arm64: dts: mediatek: mt8188: Fix USB3 PHY port default status
-Date: Mon, 21 Oct 2024 16:10:47 +0800
-Message-ID: <20241021081311.543625-1-fshao@chromium.org>
-X-Mailer: git-send-email 2.47.0.rc1.288.g06298d1525-goog
+        Mon, 21 Oct 2024 00:17:22 -0700 (PDT)
+Date: Mon, 21 Oct 2024 00:17:19 -0700
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+	matthias.bgg@gmail.com, chen.zhong@mediatek.com,
+	linux-input@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, macpaul.lin@mediatek.com,
+	kernel@collabora.com
+Subject: Re: [PATCH] dt-bindings: input: mediatek,pmic-keys: Add compatible
+ for MT6359 keys
+Message-ID: <ZxX__86dGl5QNsYE@google.com>
+References: <20241008074137.20269-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241008074137.20269-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241021_011341_988396_25669890 
-X-CRM114-Status: GOOD (  10.90  )
+X-CRM114-CacheID: sfid-20241021_001723_556093_E6A4BB36 
+X-CRM114-Status: UNSURE (   7.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,39 +93,16 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The T-PHY controller at 0x11e40000 controls two underlying USB2 and USB3
-PHY ports. The USB3 port works normally just like the others, so there's
-no point in disabling it separately. Otherwise, board DTs would have to
-enable both the T-PHY controller and one of its sub-nodes in particular,
-which is slightly redundant and confusing.
+On Tue, Oct 08, 2024 at 09:41:37AM +0200, AngeloGioacchino Del Regno wrote:
+> Add a compatible for the keys found on the MT6359 PMIC.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Remove the status line in the u3port1 node, so it's ready to be used
-once the T-PHY controller is enabled.
+Applied, thank you.
 
-Fixes: 9461e0caac9e ("arm64: dts: Add MediaTek MT8188 dts and evaluation board and Makefile")
-Signed-off-by: Fei Shao <fshao@chromium.org>
----
-
- arch/arm64/boot/dts/mediatek/mt8188.dtsi | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-index 2710e18ce696..3d11a989f39f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-@@ -1961,7 +1961,6 @@ u3port1: usb-phy@700 {
- 					 <&clk26m>;
- 				clock-names = "ref", "da_ref";
- 				#phy-cells = <1>;
--				status = "disabled";
- 			};
- 		};
- 
 -- 
-2.47.0.rc1.288.g06298d1525-goog
-
+Dmitry
 
