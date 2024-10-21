@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F25BD15D8C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2024 13:40:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D80DD15D8C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2024 13:41:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AshhJ00JycUwGfeVpQLMR0164B5YJunXVaEUDL3esL4=; b=ztLyrmwKQUU0zYE/ypblUCEiIK
-	cOtEkoTMihujH3xOWVe6pTW5Ovq4EPCPSl4nYU68f7jpC08HA1Ci8/Kq2vU1HmS13XoakSDb07XXH
-	/JLi/Kg9z/7kTlfrmb/wCcG3MguSqjindjoo3nna8/px8roUKBXwcyLi6FeQYo1QvobMgBxniVVIs
-	8eiKvDRztochbL7vmWNwNqHoM2G5KGXJZTMDTyvarpqsvKEWcT+aXdNONlydm5evY9GxV84617mv3
-	S64/Z3WNZk0qwR8l9ZCBJxDDlL8ewbfqKddDeORY3HX1W7rG6ItMwek0As5hw0R7VggKfl0xkQNUu
-	j6wizvww==;
+	bh=7fZrBDv5aFEMI2hHogb1wc5j+ZhzhjDvL7rd2F1ftmg=; b=ETnqWooeARHtdlmqVeEfC1Amzc
+	Ev/7X577gsESa0+ZxLP+nKeBwbCPCM6++s+YEfg07Jrml3hMMSHrc3DZhb1aFb4wqKce69O4uqZPS
+	dkTWZxFvOdA6RFxUu0Z4eDYaKY2Nmu3pU+ipdMDvllGcCf1fwGFm3tvozqzjqzyBgMkhkcJhP0UZ5
+	/dbgsP32nRMEbwvb5Xwuoeu57blLA8gIySvm/ic3WlGR6qW8n7HsJu163baAQ8O5EfCv2HZuuUGgU
+	5LdB8iNddBZ5ox5y5vaoXkwicaJuvZ9qZ8K/Uo1wn6Lh6aGvuUrtkglxj68cXJUeTSlBZKFdRpMOI
+	fRRpuaWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2sdc-00000007S2h-1Z5Z;
-	Mon, 21 Oct 2024 13:40:00 +0000
+	id 1t2sf6-00000007SMO-107P;
+	Mon, 21 Oct 2024 13:41:32 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2sP2-00000007PSN-3q3e;
-	Mon, 21 Oct 2024 13:24:58 +0000
+	id 1t2sP9-00000007PU6-2Mjh;
+	Mon, 21 Oct 2024 13:25:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729517095;
-	bh=a6no6SukAF7TPDcSQa66DG7acqCpfgzjuCnc6eY9CEY=;
+	s=mail; t=1729517102;
+	bh=AUAhAgskxThRMePyyMce4M7UR6fLNXfYYQVzhMdRuKc=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oMhaaCvGRrKoWi7djsxzsCNS6HW+aiFMVwECybnqkd0MRSiLwvj63HVjiScOXdbAb
-	 vQZls2RK0wJvk7za/Z5xZcm7x2qT1bk2Ke+81YmNchjyobN0q+UsfJi3p/BolV7z8y
-	 hKAPUG9f2KT+iJLKObjiT96SdgO7GfWsPQC9sCwyWFYqyHPwixhVeldh2uL2FT8SZL
-	 iDhyrNt4Gu5x4JoFOO7NXqJGV7sFlmMStV329M7fx9XsBKUe8/+cuHUsFidjYCxVfl
-	 JKL0w6mX69kf6rweyWirzWHmlVQS92oVNhsjoGxx2bue3F/wXLJNBDCik/i1UvyXYk
-	 qX9BU0UlS7lnQ==
+	b=B1TtMsZQ8sHZ188gbXwS2WXJ33vpZx+YyJf04Vp8O/iflRVQ8nPAO1uTMWfv2FYpA
+	 p4msJ2C9PcNSKxiuLcMyU9268WhfQzgFRvQsSwI6W0EcDUUIGszKkXuXkwgx//dNCk
+	 FnvtSjwbLgnT1aQi0ScGUupWB48mbgQlP37o73mhUdw5Us4F9xQKVZTKO+qL/MdufN
+	 w6kESLEsaqN1F0NDk93vjW066EjG4/qGN7I/q4D9JbMzl0Z3l50gnQIZ1kXpombLa0
+	 /J6xlqv+s8XGAX53YAQnkalid+IEg0NNgqaJP2t2zH7leGg9K/NjqrJzuRiQy+Z3Hl
+	 uR8GdLxiOcVOg==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1DF9017E361A;
-	Mon, 21 Oct 2024 15:24:54 +0200 (CEST)
-Message-ID: <9fbe6e8e-623a-4c8c-b6ea-c3aea8a5a56d@collabora.com>
-Date: Mon, 21 Oct 2024 15:24:54 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5378B17E3616;
+	Mon, 21 Oct 2024 15:25:01 +0200 (CEST)
+Message-ID: <b24d984f-c944-4faf-bce9-96052abb085b@collabora.com>
+Date: Mon, 21 Oct 2024 15:25:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/6] mfd: mt6397: Add initial support for MT6328
+Subject: Re: [PATCH 3/6] soc: mediatek: pwrap: Add support for MT6735 and
+ MT6328 SoC/PMIC pair
 To: Yassine Oudjana <yassine.oudjana@gmail.com>,
  Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
@@ -63,16 +64,15 @@ Cc: Yassine Oudjana <y.oudjana@protonmail.com>, linux-input@vger.kernel.org,
  linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20241018081050.23592-1-y.oudjana@protonmail.com>
- <20241018081050.23592-5-y.oudjana@protonmail.com>
+ <20241018081050.23592-4-y.oudjana@protonmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241018081050.23592-5-y.oudjana@protonmail.com>
+In-Reply-To: <20241018081050.23592-4-y.oudjana@protonmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241021_062457_137675_B4FA8789 
-X-CRM114-Status: UNSURE (   9.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241021_062503_801626_A32EEE8E 
+X-CRM114-Status: GOOD (  24.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,19 +90,144 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 18/10/24 10:10, Yassine Oudjana ha scritto:
 > From: Yassine Oudjana <y.oudjana@protonmail.com>
 > 
-> The MT6328 PMIC is commonly used with the MT6735 SoC. Add initial
-> support for this PMIC.
+> Add register definitions and configuration for the MT6735 SoC and the
+> MT6328 PMIC which are commonly paired and communicate through the PMIC
+> wrapper.
+> 
+> Note that the PMIC wrapper on MT6735M has a slightly different register
+> map and is therefore NOT compatible with MT6735.
 > 
 > Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+> ---
+>   drivers/soc/mediatek/mtk-pmic-wrap.c | 251 ++++++++++++++++++++++++++-
+>   1 file changed, 248 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> index 9fdc0ef792026..b9e8dd2a5999d 100644
+> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> @@ -3,6 +3,7 @@
+>    * Copyright (c) 2014 MediaTek Inc.
+>    * Author: Flora Fu, MediaTek
+>    */
+> +
+>   #include <linux/clk.h>
+>   #include <linux/interrupt.h>
+>   #include <linux/io.h>
+> @@ -100,7 +101,7 @@ enum dew_regs {
+>   	PWRAP_DEW_CIPHER_MODE,
+>   	PWRAP_DEW_CIPHER_SWRST,
+>   
+> -	/* MT6323 only regs */
+> +	/* MT6323 and MT6328 only regs */
+>   	PWRAP_DEW_CIPHER_EN,
+>   	PWRAP_DEW_RDDMY_NO,
+>   
+> @@ -121,8 +122,10 @@ enum dew_regs {
+>   	PWRAP_RG_SPI_CON13,
+>   	PWRAP_SPISLV_KEY,
+>   
+> -	/* MT6359 only regs */
+> +	/* MT6359 and MT6328 only regs */
+>   	PWRAP_DEW_CRC_SWRST,
+> +
+> +	/* MT6359 only regs */
+>   	PWRAP_DEW_RG_EN_RECORD,
+>   	PWRAP_DEW_RECORD_CMD0,
+>   	PWRAP_DEW_RECORD_CMD1,
+> @@ -171,6 +174,23 @@ static const u32 mt6323_regs[] = {
+>   	[PWRAP_DEW_RDDMY_NO] =		0x01a4,
+>   };
+>   
+> +static const u32 mt6328_regs[] = {
+> +	[PWRAP_DEW_DIO_EN] =		0x02d4,
+> +	[PWRAP_DEW_READ_TEST] =		0x02d6,
+> +	[PWRAP_DEW_WRITE_TEST] =	0x02d8,
+> +	[PWRAP_DEW_CRC_SWRST] =		0x02da,
+> +	[PWRAP_DEW_CRC_EN] =		0x02dc,
+> +	[PWRAP_DEW_CRC_VAL] =		0x02de,
+> +	[PWRAP_DEW_MON_GRP_SEL] =	0x02e0,
+> +	[PWRAP_DEW_CIPHER_KEY_SEL] =	0x02e2,
+> +	[PWRAP_DEW_CIPHER_IV_SEL] =	0x02e4,
+> +	[PWRAP_DEW_CIPHER_EN] =		0x02e6,
+> +	[PWRAP_DEW_CIPHER_RDY] =	0x02e8,
+> +	[PWRAP_DEW_CIPHER_MODE] =	0x02ea,
+> +	[PWRAP_DEW_CIPHER_SWRST] =	0x02ec,
+> +	[PWRAP_DEW_RDDMY_NO] =		0x02ee,
+> +};
+> +
+>   static const u32 mt6331_regs[] = {
+>   	[PWRAP_DEW_DIO_EN] =		0x018c,
+>   	[PWRAP_DEW_READ_TEST] =		0x018e,
+> @@ -394,7 +414,7 @@ enum pwrap_regs {
+>   	PWRAP_ADC_RDATA_ADDR1,
+>   	PWRAP_ADC_RDATA_ADDR2,
+>   
+> -	/* MT7622 only regs */
+> +	/* MT7622 and MT6735 only regs */
+>   	PWRAP_STA,
+>   	PWRAP_CLR,
+>   	PWRAP_DVFS_ADR8,
+> @@ -417,6 +437,8 @@ enum pwrap_regs {
+>   	PWRAP_ADC_RDATA_ADDR,
+>   	PWRAP_GPS_STA,
+>   	PWRAP_SW_RST,
+> +
+> +	/* MT7622 only regs */
+>   	PWRAP_DVFS_STEP_CTRL0,
+>   	PWRAP_DVFS_STEP_CTRL1,
+>   	PWRAP_DVFS_STEP_CTRL2,
+> @@ -481,6 +503,50 @@ enum pwrap_regs {
+>   	/* MT8516 only regs */
+>   	PWRAP_OP_TYPE,
+>   	PWRAP_MSB_FIRST,
+> +
+> +	/* MT6735 only regs */
+> +	PWRAP_WACS3_EN,
+> +	PWRAP_INIT_DONE3,
+> +	PWRAP_WACS3_CMD,
+> +	PWRAP_WACS3_RDATA,
+> +	PWRAP_WACS3_VLDCLR,
 
-You're sending this from another email... and you have to add or change the signoff
-to the other email....
+Are you sure that you need the PWRAP_MD_ADC_xxxx registers in here?
 
-...but yeah I know it's still you, so I'm confident to tell you that in your
-correctly signed off v2 you can add my
+Since MD is relatively big on its own, I'm not sure how to proceed here.. it may
+make sense to split the MD part to a different array, or it may not... I do need
+to understand what's going on.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Can you please point me at some reference code to look at, so that I can understand
+the situation a bit?
+
+Besides, I'm noticing that the "MD_ADC_RDATA_ADDR_R(x)" are sequential registers
+and that's on more than just MT6735: instead of having 32 more entries, it might
+make more sense to set only the first and declare the number (or size) of regs...
+
+Something like:
+
+enum pwrap_regs {
+	.....
+	PWRAP_MD_ADC_RDATA_ADDR_LATEST,
+	PWRAP_MD_ADC_RDATA_ADDR_WP,
+	PWRAP_MD_ADC_RDATA_ADDR_R0,
+	PWRAP_MD_ADC_STA0,
+	PWRAP_MD_ADC_STA1,
+	PWRAP_MD_ADC_STA2
+};
+
+static const struct pmic_wrapper_type pwrap_mt6735 = {
+	.regs = mt6735_regs,
+	.num_md_addr = 32,
+	[other stuff]
+};
+
+...but again, please, if you can point me at an implementation that actually
+uses the R(x) registers, that'd be better ... so that we can choose the best
+option to add those in there.
+
+Everything else is great: good job :-)
 
 Cheers,
 Angelo
+
+
 
