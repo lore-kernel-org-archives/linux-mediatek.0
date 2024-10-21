@@ -4,82 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB1D0D15D9A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2024 14:30:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33AEAD15D9E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2024 14:33:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7K5v5ZY4zeUHGzQFv6PebieE5LwgNrwfdhsPGijF2ik=; b=BRjeu1mzcOuT8Cl+BMrTn1GXJ7
-	FHAKMLyhzgE5makqsGlaYGZs0QIrdBc0/0vPyjw82PQegIMYWen18KglVTDTLT5jx8gcxWGuvRqYZ
-	sOmplm4/+b4Y/XeQeiNiUEE9cpm7DXXyYOvoANGfb0cG4Bc58ce7NjGufrvtPz1gBonRdfqXvdE5T
-	5HEH6sO4gstvepfPPNg7yFcposkfb5mvbpP931Ot+hFivHeK5BYlu7ZmDpH8OVV9Uj5HJJSqRs7nV
-	V6sqNQhGaj8xi8DXHebBxmeQFskZCCZXK5wjhyCQhagMVkVw8LXxM9bFRU2i3qRW8uMtq6oZXahrs
-	KujrmavQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UBz3NkrC82OKQpSmi69OYdhqAwX0TXP1QyvDFGOnPtE=; b=B8BGDN8q3JJmCsjE9GahQfPIMi
+	x2wbSZiyXcvmkKecsD6uME81TQtwu/tdz5YgJCFsbW88wGOYQUICAMQpAagCO7hq4G1hmkrIhaOYD
+	ucPGWKZ0KHmuPzaQ6vw42le802Fx8AbxZzhMtpcTrcUIxKr5i2IMWuip+qKbsbOmLwGjm8++letaX
+	CSlrEp5TpDjeuytuIXwtek8UMFYZ3Ooq1Nx/GdlaQj5GIDbXRG6zViPehty+nOnSRKXPeWRSIRFfL
+	WQHK2AIj0UUaRyHbIgWRqcIK+GTMrpuufu5dezMWDHQvyftdn2aNjmuNipwYFE8UBWY6LdMpT2+7y
+	18b6SDXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2tQC-00000007cZw-3Gzk;
-	Mon, 21 Oct 2024 14:30:12 +0000
-Received: from pandora.armlinux.org.uk ([78.32.30.218])
+	id 1t2tT7-00000007d5g-12t7;
+	Mon, 21 Oct 2024 14:33:13 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2t8E-00000007ZcM-0Agz;
-	Mon, 21 Oct 2024 14:11:39 +0000
+	id 1t2tBu-00000007aLO-4AV7;
+	Mon, 21 Oct 2024 14:15:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=7K5v5ZY4zeUHGzQFv6PebieE5LwgNrwfdhsPGijF2ik=; b=r4kvZTeQKPzFsBGVTHgUYy+0YZ
-	ppHjYn/ra/ADYAFKKcXttGtKerJ0yHoFkifnPIDSWcbYyen3gPlZEsb5pfadAclUgpZ1S95wWPp5z
-	zj7eCkHk3gGPdtKeWXF8Bjt3ZQlZwk49URuG9iBm0VgI7/SL01YYkxBB9gIBq+elopD0mm1bsY4qn
-	U4445THvEsbgpn7Chu5aBzbbLF6/eebtS7EgN1cYHd4nhjss5Ciz02OPw27K9nRAROvjEfhflzDGf
-	0/2yiYpzzn7ho0MMzChf6ErEfEy4i8V7vZP44n2tOY5LNEGmufxRddaadDF70Ebglscw59n6xN6pT
-	RGK1uTPQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:51242)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1t2t7w-0003V4-0Z;
-	Mon, 21 Oct 2024 15:11:20 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1t2t7p-0001n9-0G;
-	Mon, 21 Oct 2024 15:11:13 +0100
-Date: Mon, 21 Oct 2024 15:11:12 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Christian Marangi <ansuelsmth@gmail.com>,
-	=?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [net-next RFC PATCH 0/4] net: dsa: Add Airoha AN8855 support
-Message-ID: <ZxZhADBe6UtdCTsu@shell.armlinux.org.uk>
-References: <20241021130209.15660-1-ansuelsmth@gmail.com>
- <20241021133605.yavvlsgp2yikeep4@skbuf>
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=UBz3NkrC82OKQpSmi69OYdhqAwX0TXP1QyvDFGOnPtE=; b=KG9ptv1j+KyIkEAiLaGg8hBcbr
+	7Kekmetg6DP+0lFJ7ZG+wVmarWrgWX20tMfS8bmchHI5AfTWfC6pAtdDrpsBwzNRQqkwoFyEmm8Fs
+	8oUpR532UJOMOObmRy0SL5PuVNSqc12ElmkOXqPgqSLtHLS96tL/znUBJ98i/mPxFOM3SVC4Vv28/
+	EMlVX7F4LdUbCW8QUJ4EbcTUFUlZmEzpVvbufkJbV2ySwK3rg4wlgr6iXiTEz/1ADKvhwk+TRtRgj
+	D2Tsel1iriVNNfdZAw8MA3ixi81etI4kVSoEIKQFnEydElF/1VPwcOrgUupDQEdh3eRtLd3yffncU
+	Cw/SfCmw==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1t2tBs-00000007yYa-00hy;
+	Mon, 21 Oct 2024 14:15:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1729520122;
+	bh=pHf5twCTnnJnfQtRd2qMSTYSiWrNRBO3RQNcXpO/2E0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=KPx6R/4PiHZUyF7n8wGcXnnV2x85EriAD8S+BM+eA3Q4CEj3onekWZW1AsjtP5noN
+	 pxUPRFt+wCQLXNA2i+WeW/9SIagFaP3ndf8iT0vd/aSpDIF0NYuxtRAgR93uFkkodf
+	 d4tXFpx2LgQdkgFj57sDL2n4gWkAOuz8/s9ntrcUP75aFtTPcyLOZnKS6hwR4dQ6zK
+	 9FA6C4UVa56+Yvb5GwxvociS6wpdhAYvGiwjddSepI6MjuNDGc2IlfINu99q6yRhuv
+	 QYxEcWPtjsNSGjdry4zSWKkUxsjcyaRG1Gmgk17v8DzPuUi7gFEpJp4SSUlwa69fbV
+	 tZrXtgT7kK5Ow==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E6D7517E3621;
+	Mon, 21 Oct 2024 16:15:21 +0200 (CEST)
+Message-ID: <b403ea3c-6a03-43fd-a9fb-daee6e1c425c@collabora.com>
+Date: Mon, 21 Oct 2024 16:15:21 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241021133605.yavvlsgp2yikeep4@skbuf>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8186-corsola: Fix GPU supply
+ coupling max-spread
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ stable@vger.kernel.org
+References: <20241021140537.3049232-1-wenst@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20241021140537.3049232-1-wenst@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241021_071138_099334_C034DB92 
-X-CRM114-Status: GOOD (  12.39  )
+X-CRM114-CacheID: sfid-20241021_151524_356596_CD8D4FA0 
+X-CRM114-Status: UNSURE (   7.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,23 +92,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 21, 2024 at 04:36:05PM +0300, Vladimir Oltean wrote:
-> On Mon, Oct 21, 2024 at 03:01:55PM +0200, Christian Marangi wrote:
-> > It's conceptually similar to mediatek switch but register and bits
-> > are different.
+Il 21/10/24 16:05, Chen-Yu Tsai ha scritto:
+> The GPU SRAM supply is supposed to be always at least 0.1V higher than
+> the GPU supply. However when the DT was upstreamed, the spread was
+> incorrectly set to 0.01V.
 > 
-> Is it impractical to use struct regmap_field to abstract those
-> differences away and reuse the mt7530 driver's control flow? What is the
-> relationship between the Airoha and Mediatek IP anyway? The mt7530
-> maintainers should also be consulted w.r.t. whether code sharing is in
-> the common interest (I copied them).
+> Fixes: 8855d01fb81f ("arm64: dts: mediatek: Add MT8186 Krabby platform based Tentacruel / Tentacool")
+> Cc: <stable@vger.kernel.org>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-That thought crossed my mind while reviewing patch 3. I compared the
-PMCR and PMSR, a lot of the bits are in completely different places
-between the two. I didn't check further, but I got the feeling that
-would invite more complexity.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+
 
