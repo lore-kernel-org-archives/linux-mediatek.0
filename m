@@ -4,73 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E42BD0E6F4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2024 11:45:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D9D2D15D84
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2024 12:17:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=pFGqW2cFYVEn/q/mCaxZhdSAZg1df4AGxlVE7Nd7m2M=; b=u+4KBte5GjJVrb
-	bJglOyswlDkesZHmvzAVbsCf+qMhoYIU8T1EEKSWAFvLspYUMumDPAKxktShbilEUdVF6OBKEVvhU
-	oViCDfluHwnIGVDc2+3wedNgnDZ8tw8inZbt71Q3ok7XZlWRIuAog22k0Gs5RwR2FuSDzwiE4mp35
-	6YFF5glP3Bn0+dZb0H2W92ty9Y1o07ytY0V8lS78KthOQKogdIO7LMLRo+WZHG4PDmWq+cl8mZIzZ
-	vgkc4kN3AmRP1PKT9Q+lBbB4COzanPX9T9gSTzsH2a7vHFl/es14N/wT4zyX6E+0Fb4fHcEZvVc3K
-	gqG0gsjnXK5Bj8B95lEg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=H/1MCTmxbUO44rwyL5iC5PLrKibwoBMeTpyT0L8eV+g=; b=elOuTgwCDwUrI43EHqbKhuabWt
+	/qzpXmeLdToXRCZltPHBEgdJrg71qxAAQSjOdqQ/CJk7mjfWLtuzdnEvu2aJGe4oACyn65ReD3CiS
+	48L7/P1tbYOgDpOAQb29orA++YDNLne1q4XG0JAN2JWB0A00l8cBvmjgmAoib6UFihXD6eUkPFKmR
+	ug7PiitAIKMRO5nd6aJOSvk+tOcJ4tmx0VbcOwW9LTmIBoZbD/iY/93UiCIx8ZaPg1/+qGhcuvpRZ
+	iLVNK4CwBmxVML42Jaw6j7meJG798gK92c/lClX3WWfQ4nMg7V2OfJFdrH7n9Rg7aOc52JjjOeq8X
+	8hMmFw3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2qqZ-000000075nu-3LIw;
-	Mon, 21 Oct 2024 11:45:15 +0000
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+	id 1t2rLU-00000007C7n-0yNg;
+	Mon, 21 Oct 2024 12:17:12 +0000
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2qp3-000000075QP-2AC2
-	for linux-mediatek@lists.infradead.org;
-	Mon, 21 Oct 2024 11:43:43 +0000
-Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-208cf673b8dso42177075ad.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Oct 2024 04:43:41 -0700 (PDT)
+	id 1t2rKq-00000007BzX-17TG;
+	Mon, 21 Oct 2024 12:16:33 +0000
+Received: by mail-lj1-x233.google.com with SMTP id 38308e7fff4ca-2fb584a8f81so46507761fa.3;
+        Mon, 21 Oct 2024 05:16:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1729511021; x=1730115821; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1729512990; x=1730117790; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=pFGqW2cFYVEn/q/mCaxZhdSAZg1df4AGxlVE7Nd7m2M=;
-        b=U+zEb/xntIkcCwXnMSvHeLubpHL/UWS8rF/xbQ0BMX2DA/eYsuq9kDCjWfM9IRQj4q
-         qiTlqBGFrtUToAml6J5ELTvc1MJtnLDMdnnoSBw5E76flQgzDR552/P0KJA72rGMXRHe
-         LPgnyFESNcZ3KPnp5HylLPcmrj6zRqOchZGVo=
+        bh=H/1MCTmxbUO44rwyL5iC5PLrKibwoBMeTpyT0L8eV+g=;
+        b=PUmP5EikS1YoKFjCRfu87TcVB2/92G5rSUGrkG5TsHILRV4d/3N9flIsdV7CFuEAgZ
+         PBO+qMggZ+JUml4m4qXq07rNRapiwtIg8VdU8Zw5qIhwySLZOrn2I5pHnS7aN/BqpArj
+         kgZV0R5f83ccgflnSfNUco/avmmJOpeG1orCYCbWMOY9+EcnPfVn7nFArEeQiT9KfhAJ
+         QxYgSSG43OhJzKoChRxnbxwYDo+2scv8t0gCR1kEoehKsV67g6IiL/CuDqMV71pL5nF7
+         ZcFjlRcqrj96AWORR1lH+3J/qn+ys3SgrEmOw+ATFYTaKtqpz4efGxe0j0cXx2v19H3n
+         TSVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729511021; x=1730115821;
+        d=1e100.net; s=20230601; t=1729512990; x=1730117790;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=pFGqW2cFYVEn/q/mCaxZhdSAZg1df4AGxlVE7Nd7m2M=;
-        b=km2lkoJKnKWIaj4g+oyjipSWifr1rptOuRvFT2koqGlWx8/4ZuyZfItRfh2bwwGdIy
-         ssANjXHtbfQKIYJi0yUZBA05qTL3jJzJAohLZF+d3OkiDszMSnj90zZTy6of1K5rv0xq
-         BZpm9wxCQYlymTVsD26t0kszeRx5je+g9sgGpgRXvU4C8N+rWgF+188M/xgr2Hl5q35F
-         fi0wMTnAS3W3pdTT3Y0I72QW/Ylb1sW1/z0Ofk+tsQiKPIreLbtdbs3mP6TxxQapybjl
-         TWUiowj4m2oxYD+YYxs5GMHOS/k2+klGM2f70d7bn7fOSOqmh+QczuHKIlajQrMxh74/
-         ppyw==
-X-Forwarded-Encrypted: i=1; AJvYcCV1Cbo5b3MV5DnbEm+197CpgMuO7k1W7kqyW0YwM3coDarjJJAMjljzng6rE6jvDtcDaekSmCdLr5VUSvLLtQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzI+92O2mXPibhuKMMmXly9kSQUN78ipRuuFuV81Chj8sDm1+NK
-	pyh6B/jUPz0ye633QfV4+fJFbbWlh+T2z3YNlgFctiSn//JVit7aOKHMzXrQoA==
-X-Google-Smtp-Source: AGHT+IH6P9i9bth3v9J1SxyMP+yL7cKvTFdnB58JeaUhpcK0fnL4b/zRVxwRyWOMVGHEvr9v/WRN+w==
-X-Received: by 2002:a17:90a:c590:b0:2e0:d693:7884 with SMTP id 98e67ed59e1d1-2e5616de895mr14134967a91.5.1729511020820;
-        Mon, 21 Oct 2024 04:43:40 -0700 (PDT)
-Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:66d2:3298:fcb4:c6c9])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2e5ad366cb8sm3536518a91.20.2024.10.21.04.43.39
+        bh=H/1MCTmxbUO44rwyL5iC5PLrKibwoBMeTpyT0L8eV+g=;
+        b=wSzWC21WmZPR8/1m857waG7+f2IMI21zDdiFeL5U/168Fhz6xPwxokuRi5zjfaw3yR
+         iQLobGzgj+Mp04O0PZULmZTDEfP7cJ+qCkHkYcAIMIZYUBXc3iADIeTrheg+YsJZS4r5
+         NBeahr6VjhxcOM/fjMqpmOTwv7oLju4l1yPDibSYrJ+b7yDl+XhOpeXoV4Gwtjfs9pVT
+         or3Ovn/krDNVd1g09Xn7WXj1Fsq6gLaXv2c6qSWKgfCdouxC0PZsGK/qZhQalycZnr8D
+         WlreWxvST4zXguf//IJhtRdP4CTG0U55VIO0qUNKpbyIrTSQ0EEwmmNLv2/34FUumJqH
+         50CA==
+X-Forwarded-Encrypted: i=1; AJvYcCVhHxy4HA1ON/pLCBko37XgpmwkO11dpcW7cN+0Lfm8WZWQIzv2NMDXkLhT0WrReKBgWMMqHvkXWQycmGwPM7w=@lists.infradead.org, AJvYcCXUBhce7YAwesXNfi0CyRfT1TlcEeIKf9EUP7cJIogCgzj4pk3vYgxkV1+8paZHFL4kIrnh6TsBOtFDlK9HKvJP@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxc2Yp+4/TTKkfh2VTpeLDHL0jq4F+h286Hclft6d2Dr5t5LRTt
+	WPMSkd5KPjF0NgPXGm6r/IDx33pE35HrkWuKWnFe5zlZmGlbR5Y/
+X-Google-Smtp-Source: AGHT+IHR6MsGMRBzU5JPSi1HY55LtpEFaaIUqbCyIY5gOO8fE50iJxRU2yRt/DZvTwuMoUyyjo0iyg==
+X-Received: by 2002:a05:6512:1304:b0:539:f760:6031 with SMTP id 2adb3069b0e04-53a1520bd73mr5457779e87.4.1729512989592;
+        Mon, 21 Oct 2024 05:16:29 -0700 (PDT)
+Received: from zenbook.agu.edu.tr ([95.183.227.34])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a912d6ee6sm197068966b.4.2024.10.21.05.16.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Oct 2024 04:43:40 -0700 (PDT)
-From: Fei Shao <fshao@chromium.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH] arm64: dts: mediatek: mt8195-cherry: Use correct audio codec DAI
-Date: Mon, 21 Oct 2024 19:39:33 +0800
-Message-ID: <20241021114318.1358681-1-fshao@chromium.org>
-X-Mailer: git-send-email 2.47.0.rc1.288.g06298d1525-goog
+        Mon, 21 Oct 2024 05:16:28 -0700 (PDT)
+From: Yassine Oudjana <yassine.oudjana@gmail.com>
+X-Google-Original-From: Yassine Oudjana <y.oudjana@protonmail.com>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Lukas Bulwahn <lukas.bulwahn@redhat.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Sam Shih <sam.shih@mediatek.com>
+Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
+	Yassine Oudjana <yassine.oudjana@gmail.com>,
+	linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH 0/2] MediaTek MT6735 syscon clock/reset controller support
+Date: Mon, 21 Oct 2024 15:16:14 +0300
+Message-ID: <20241021121618.151079-1-y.oudjana@protonmail.com>
+X-Mailer: git-send-email 2.47.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241021_044341_574674_B212F18F 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20241021_051632_331566_6A17AD7C 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,59 +101,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The RT5682i and RT5682s drivers describe two DAIs: AIF1 supports both
-playback and capture, while AIF2 supports capture only.
+From: Yassine Oudjana <y.oudjana@protonmail.com>
 
-Cherry doesn't specify which DAI to use. Although this doesn't cause
-real issues because AIF1 happens to be the first DAI, it should be
-corrected:
-    codec@1a: #sound-dai-cells: 1 was expected
+These patches are part of a larger effort to support the MT6735 SoC family
+in mainline Linux. More patches can found here[1].
 
-Update #sound-dai-cells to 1 and adjust DAI link usages accordingly.
+This series adds support for clocks and resets of the following blocks:
+- IMGSYS (Camera)
+- MFGCFG (GPU)
+- VDECSYS (Video decoder)
+- VENCSYS (Video encoder, also has JPEG codec clocks)
 
-Fixes: 87728e3ccf35 ("arm64: dts: mediatek: mt8195-cherry: Specify sound DAI links and routing")
-Signed-off-by: Fei Shao <fshao@chromium.org>
----
+[1] https://gitlab.com/mt6735-mainline/linux/-/commits/mt6735-staging
 
- arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Yassine Oudjana (2):
+  dt-bindings: clock: mediatek: Add bindings for MT6735 syscon clock and
+    reset controllers
+  clk: mediatek: Add drivers for MT6735 syscon clock and reset
+    controllers
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index 75d56b2d5a3d..2c7b2223ee76 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -438,7 +438,7 @@ audio_codec: codec@1a {
- 		/* Realtek RT5682i or RT5682s, sharing the same configuration */
- 		reg = <0x1a>;
- 		interrupts-extended = <&pio 89 IRQ_TYPE_EDGE_BOTH>;
--		#sound-dai-cells = <0>;
-+		#sound-dai-cells = <1>;
- 		realtek,jd-src = <1>;
- 
- 		AVDD-supply = <&mt6359_vio18_ldo_reg>;
-@@ -1181,7 +1181,7 @@ hs-playback-dai-link {
- 		link-name = "ETDM1_OUT_BE";
- 		mediatek,clk-provider = "cpu";
- 		codec {
--			sound-dai = <&audio_codec>;
-+			sound-dai = <&audio_codec 0>;
- 		};
- 	};
- 
-@@ -1189,7 +1189,7 @@ hs-capture-dai-link {
- 		link-name = "ETDM2_IN_BE";
- 		mediatek,clk-provider = "cpu";
- 		codec {
--			sound-dai = <&audio_codec>;
-+			sound-dai = <&audio_codec 0>;
- 		};
- 	};
- 
+ .../bindings/clock/mediatek,syscon.yaml       |  4 +
+ MAINTAINERS                                   | 10 +++
+ drivers/clk/mediatek/Kconfig                  | 32 ++++++++
+ drivers/clk/mediatek/Makefile                 |  4 +
+ drivers/clk/mediatek/clk-mt6735-imgsys.c      | 57 +++++++++++++
+ drivers/clk/mediatek/clk-mt6735-mfgcfg.c      | 61 ++++++++++++++
+ drivers/clk/mediatek/clk-mt6735-vdecsys.c     | 81 +++++++++++++++++++
+ drivers/clk/mediatek/clk-mt6735-vencsys.c     | 53 ++++++++++++
+ .../clock/mediatek,mt6735-imgsys.h            | 15 ++++
+ .../clock/mediatek,mt6735-mfgcfg.h            |  8 ++
+ .../clock/mediatek,mt6735-vdecsys.h           |  9 +++
+ .../clock/mediatek,mt6735-vencsys.h           | 11 +++
+ .../reset/mediatek,mt6735-mfgcfg.h            |  9 +++
+ .../reset/mediatek,mt6735-vdecsys.h           | 10 +++
+ 14 files changed, 364 insertions(+)
+ create mode 100644 drivers/clk/mediatek/clk-mt6735-imgsys.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6735-mfgcfg.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6735-vdecsys.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6735-vencsys.c
+ create mode 100644 include/dt-bindings/clock/mediatek,mt6735-imgsys.h
+ create mode 100644 include/dt-bindings/clock/mediatek,mt6735-mfgcfg.h
+ create mode 100644 include/dt-bindings/clock/mediatek,mt6735-vdecsys.h
+ create mode 100644 include/dt-bindings/clock/mediatek,mt6735-vencsys.h
+ create mode 100644 include/dt-bindings/reset/mediatek,mt6735-mfgcfg.h
+ create mode 100644 include/dt-bindings/reset/mediatek,mt6735-vdecsys.h
+
 -- 
-2.47.0.rc1.288.g06298d1525-goog
+2.47.0
 
 
