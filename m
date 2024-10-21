@@ -4,89 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC0E1D15DA5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10933D15DAA
 	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2024 14:58:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-Id:Cc:To:Subject:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jdnEF4MP3z9LmQ+YWnGEuDQLrVcu+Y+YkXjsN21Vacw=; b=SGqf88wlKE8zseDHRsZhJDBiTZ
-	Wp8HHSIrd1IJx6r/+ooblA/184KmL7Bodbtal6KlPs+d0qC3fHxIeDLa7D91eXDvoU2hnpmkvwIpN
-	5KyIj27zAuHk4R7PweXUYXCh2G7AiVoelnGkr4DikcwjPls0TdkNRujz3Vc7P1suRP/lvLJMulmFT
-	eWDLa+QrL/6R2NLKt5sjAIQ2qEs9Pvj0RfDL5FmND0PDnrQffv9R4pmAu8BuPSxMCPf2TttZHXrmT
-	1qAN6JMlhz31Xl9/AjwH/cILEySIhskbXdmckuK6QwyA6Mf2a5lpt5+SMOidmz6dCNHl3vpn1+InR
-	OgLyKdrA==;
+	bh=rN0Gqqba15WwDZ9/bl5jrI8tOrKEX3V1dWIhctm5ZSg=; b=hJu90J/eyxHw4TkTyzmfuxdBVp
+	V+jHNxlzzaJkq1dBAzgNMjnAnwH/4cZeOWoScjJ2I+fd1U16JOb29nCyPzTHWmVqDMj5hyfi1ghqP
+	51eBVLf4iW4dstIq7JclzbGQmcx+zO3D/llXd5wvi4O1p4bqMJOErK1XrEFaWLDbPg7Z3MLV+VC6x
+	Cl1YP7ALcxyooZaIDX+d//PMwUfg86Sp0iqWfcLqHx/mjZ4oC20++0p+N6pX4VNJXg7T+ZE9Wt4ml
+	0+6ZHD9fT0X08vXhDAg7jG91l0vbygy/aVE/RGHbCmK0cKUYQ7zpP5QsfQx6HeTnyeu/TxO2qFln4
+	sl9os4dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2trz-00000007hZN-1VWX;
-	Mon, 21 Oct 2024 14:58:55 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1t2try-00000007hYt-3f8o;
+	Mon, 21 Oct 2024 14:58:54 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2tZg-00000007e57-2G3m;
-	Mon, 21 Oct 2024 14:40:01 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-539f2b95775so5334526e87.1;
-        Mon, 21 Oct 2024 07:39:59 -0700 (PDT)
+	id 1t2tZK-00000007e13-05jb;
+	Mon, 21 Oct 2024 14:39:41 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-37d462c91a9so3302281f8f.2;
+        Mon, 21 Oct 2024 07:39:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729521597; x=1730126397; darn=lists.infradead.org;
-        h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
-         :date:from:to:cc:subject:date:message-id:reply-to;
-        bh=jdnEF4MP3z9LmQ+YWnGEuDQLrVcu+Y+YkXjsN21Vacw=;
-        b=dUiXLLKRmEUZe8tCLINNIJa+KXB+/5JeBnTp2Nt4s16zRxJtC7jv++PJrpJZ3OmaOg
-         RF+/XMTVL4A0rc5wmv678Nz2+z9qHr6MUm+xQfdximvqfRrcXOGoYf6p1ihFtzu4VXGK
-         SSPORMCydBqeTkxpYBzXr5/7hCqTN5yC8ppqbgxcCFSa/vpu9JZYD8QoA7MKb/Z6l77K
-         7K1jJpCUo7N/42DG4tG5WuVLHp6rpRU/Ez1QYYvsXEZNcs1skY3ZXEj31tswFi/bBQoR
-         PHpru5YFACFhrmM3gxNK1bQnWEpf2gXtVvva2ZENiGGzCofpiHEUCqIa3KMlKnhCe9mN
-         UHPQ==
+        d=gmail.com; s=20230601; t=1729521576; x=1730126376; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=rN0Gqqba15WwDZ9/bl5jrI8tOrKEX3V1dWIhctm5ZSg=;
+        b=JzwdlcedPRk873gP8JkvcUWHqhXFtxL5cFgXTjS1ZEZJPiabk9T2xi4X+g5YVb2Ret
+         UNbwkWqmwJVH2D4BoxGGkl0D+AD589rB+vjp8d/Mm3lfMnqNucnYrY3oJg7kTIXGCNTl
+         VYwYvsGb4A01ck863zXTZ1TIhg0JNUIrVUSVl0vTvSnRr7pusH4L9NJ0GXsRP6Iw2QKM
+         3uZjFaqIxOaJGMU+JKY3sg2y3KtahCzmJnrFtgxuy/J3PsHhRCmmjS4sS0XO5UhPGROl
+         oiZQD8JovsUpQhghsMg6gKA9+8XEQVG5G2xZy5xVjv9qA1ygiOMamRAjYJEIdd2ysmhd
+         ip6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729521597; x=1730126397;
-        h=mime-version:references:in-reply-to:message-id:cc:to:subject:from
-         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=jdnEF4MP3z9LmQ+YWnGEuDQLrVcu+Y+YkXjsN21Vacw=;
-        b=ne77rUgbOgu3zersQMreAwzn76IzrPBpgadLqkQZ/ln47NXlbpNo8RXF8PPX+GavY0
-         dxiRzgyQtionT6RcEpa5TxkqBlLq1ndxwz1yUuaBSN21uHozUbOz+VaQMA1sccgrM0yd
-         UKDQfgm4oaUi2I2l/8wwPERWabaJfA67Q3AS/gj5O1SD7wCzXgk+WPBtadd8GSA2YAMh
-         cw1uZls6U2ZfLBN90tt3VkT3jdRkIOEFwc3T89t+J0E6ibLMO8A/ipIDW3J+Mq7w3UFu
-         s5PHoCUDqE7nu4Mha29KUQv6GL3reexWq3mACXmt2geIA00s/q0O254hWVF8L9AWwJfa
-         1sVw==
-X-Forwarded-Encrypted: i=1; AJvYcCUtci1ro4W7aFlsq51y0v8d0HN678f/wjXgF0FI33vvaqWyyzUwwmRCLyzrIjU4oRk5c2lLoeKPrRhqo/Ub3Ag=@lists.infradead.org, AJvYcCXvcTfN5+MhKZY9fPTJX45eAHfGgUca5rAwhfo7KoRH6Q0y1B8+/xMbBgwQZUwv9coP/5dyHml+62WWyU3SiZWP@lists.infradead.org
-X-Gm-Message-State: AOJu0YyK6ve7DL0l1szRyy8naR03m65TJhwAsKi73PEb8Pir00pAa+yV
-	Sk6OwL8cNEbqJt2zOURrgEISWA4JSTSdiwG3liPfn3mh/+ef27xJ
-X-Google-Smtp-Source: AGHT+IFL60DydO7Av+sfeNcrf7sWojkZTRh14YqR9IlCxxqK5nbQT1J0lusnZXVd2ELtK5zqE3wQSQ==
-X-Received: by 2002:a05:6512:e9a:b0:535:6951:9e1c with SMTP id 2adb3069b0e04-53a15444616mr8301354e87.15.1729521596991;
-        Mon, 21 Oct 2024 07:39:56 -0700 (PDT)
-Received: from [10.50.4.74] ([95.183.227.50])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a912f67e6sm209033166b.82.2024.10.21.07.39.54
+        d=1e100.net; s=20230601; t=1729521576; x=1730126376;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=rN0Gqqba15WwDZ9/bl5jrI8tOrKEX3V1dWIhctm5ZSg=;
+        b=n29Q63UCcKtWd4af5bJ4Z5p+7r8H6toXg/GST8tkc+PmuEAATSyckdmkygiwRaH+6N
+         sS7oU9qJGMzgF7Amutfx4Ay9dWw0fylshztBBMeXZWCyprOJCvCvKRmbjPSbuV91pJvU
+         xUKZ2lokNicsBnyjsGDtPpd9kfDffdqmfNFSpU/zIig46fzDAFdi4K04yZZa0nvi7ecQ
+         vS/cmf0ZfaKpQ7cPpimV6GX0m6gwrYt52nfivTL9fXhUsfZC23Nfh3szjzyPYx3bhB0a
+         frVDQxD06MpQAg8oyQjXTQ3ozF72KWtk2bsGfTb50nrrPkSK7CQKHaH+nMQRDCP+8ERi
+         ewsw==
+X-Forwarded-Encrypted: i=1; AJvYcCUuE2vmqZXszLxiCjskqiuGj3ntZHBRsXXQMEQkireTWECDUEBYf0p0t3VjP67hW1FJ2jCLftjNTVTzYseLAEDs@lists.infradead.org, AJvYcCX6CvY09stFSfJJjHCQmYgcdMiziKXolGoamWFfNYQ1vgaGQWImG59VS01fh4nTeqziYZGkxRkmqypAMnZJFzs=@lists.infradead.org
+X-Gm-Message-State: AOJu0YydfSuzaeEL0GNiVu/sOblywH1oHrXSKzUlbaaLAlxjfSARW0CS
+	OvR/gUH0m9U/jwwRUd6vFHMA0bhGJP57RX/GrmwG6YA8kVzumrSw
+X-Google-Smtp-Source: AGHT+IHXaAyFtOLtAyPyji7rZDFAycXW8OuvR1XAT4lsB96qN85oCVY5h93hKm7lzYHJGhFIXmLtDw==
+X-Received: by 2002:adf:f8cc:0:b0:37d:3939:ad98 with SMTP id ffacd0b85a97d-37ef0b61e68mr17363f8f.3.1729521575470;
+        Mon, 21 Oct 2024 07:39:35 -0700 (PDT)
+Received: from Ansuel-XPS. (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37ee0b9433asm4478707f8f.80.2024.10.21.07.39.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Oct 2024 07:39:56 -0700 (PDT)
-Date: Mon, 21 Oct 2024 17:39:48 +0300
-From: Yassine Oudjana <yassine.oudjana@gmail.com>
-Subject: Re: [PATCH 4/6] mfd: mt6397: Add initial support for MT6328
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring
-	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
-	<conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>, Sean Wang
-	<sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones
-	<lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Liam Girdwood
-	<lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, jason-ch chen
-	<Jason-ch.Chen@mediatek.com>, Chen Zhong <chen.zhong@mediatek.com>, Flora Fu
-	<flora.fu@mediatek.com>, Alexandre Mergnat <amergnat@baylibre.com>,
-	Yassine Oudjana <y.oudjana@protonmail.com>, linux-input@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Message-Id: <CENPLS.CE17IF58CL3J@gmail.com>
-In-Reply-To: <9fbe6e8e-623a-4c8c-b6ea-c3aea8a5a56d@collabora.com>
-References: <20241018081050.23592-1-y.oudjana@protonmail.com>
-	<20241018081050.23592-5-y.oudjana@protonmail.com>
-	<9fbe6e8e-623a-4c8c-b6ea-c3aea8a5a56d@collabora.com>
-X-Mailer: geary/46.0
+        Mon, 21 Oct 2024 07:39:34 -0700 (PDT)
+Message-ID: <671667a6.5d0a0220.3461f5.c0f9@mx.google.com>
+X-Google-Original-Message-ID: <ZxZnok9jFjS4um9o@Ansuel-XPS.>
+Date: Mon, 21 Oct 2024 16:39:30 +0200
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [net-next RFC PATCH 3/4] net: dsa: Add Airoha AN8855 5-Port
+ Gigabit DSA Switch driver
+References: <20241021130209.15660-1-ansuelsmth@gmail.com>
+ <20241021130209.15660-4-ansuelsmth@gmail.com>
+ <ZxZgWGlrWP2vnUjV@shell.armlinux.org.uk>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZxZgWGlrWP2vnUjV@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241021_074000_602058_586F12E9 
-X-CRM114-Status: GOOD (  14.78  )
+X-CRM114-CacheID: sfid-20241021_073938_136453_63D8161C 
+X-CRM114-Status: GOOD (  51.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,30 +106,1042 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Mon, Oct 21 2024 at 15:24:54 +02:00:00, AngeloGioacchino Del Regno 
-<angelogioacchino.delregno@collabora.com> wrote:
-> Il 18/10/24 10:10, Yassine Oudjana ha scritto:
->> From: Yassine Oudjana <y.oudjana@protonmail.com>
->> 
->> The MT6328 PMIC is commonly used with the MT6735 SoC. Add initial
->> support for this PMIC.
->> 
->> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+On Mon, Oct 21, 2024 at 03:08:24PM +0100, Russell King (Oracle) wrote:
+> On Mon, Oct 21, 2024 at 03:01:58PM +0200, Christian Marangi wrote:
+> > +static int an8855_mii_read32(struct mii_bus *bus, u8 phy_id, u32 reg, u32 *val)
+> > +{
+> > +	u16 lo, hi;
+> > +	int ret;
+> > +
+> > +	ret = bus->write(bus, phy_id, 0x1f, 0x4);
+> > +	ret = bus->write(bus, phy_id, 0x10, 0);
+> > +
+> > +	ret = bus->write(bus, phy_id, 0x15, ((reg >> 16) & 0xFFFF));
 > 
-> You're sending this from another email... and you have to add or 
-> change the signoff
-> to the other email....
+> These assignments above are useless on their own. What if one of them
+> fails?
+> 
+> Please also consider __mdiobus_write() and __mdiobus_read() which will
+> check that the bus lock is held, and also give the ability to trace
+> the bus activity.
+> 
+> > +	ret = bus->write(bus, phy_id, 0x16, (reg & 0xFFFF));
+> > +	if (ret < 0) {
+> > +		dev_err_ratelimited(&bus->dev,
+> > +				    "failed to read an8855 register\n");
+> > +		return ret;
+> > +	}
+> > +
+> > +	lo = bus->read(bus, phy_id, 0x18);
+> > +	hi = bus->read(bus, phy_id, 0x17);
+> 
+> What if one of these fails, and the negative value gets clamped to a
+> u16?
+> 
+> > +
+> > +	ret = bus->write(bus, phy_id, 0x1f, 0);
+> > +	if (ret < 0) {
+> > +		dev_err_ratelimited(&bus->dev,
+> > +				    "failed to read an8855 register\n");
+> > +		return ret;
+> > +	}
+> > +
+> > +	*val = (hi << 16) | (lo & 0xffff);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int an8855_regmap_read(void *ctx, uint32_t reg, uint32_t *val)
+> > +{
+> > +	struct an8855_priv *priv = ctx;
+> > +	struct mii_bus *bus = priv->bus;
+> > +	int ret;
+> > +
+> > +	scoped_guard(mdio_mutex_nested, &bus->mdio_lock)
+> > +		ret = an8855_mii_read32(bus, priv->phy_base,
+> > +					reg, val);
+> 
+> I'm really not a fan of these non-C like code structures that make the
+> code harder to review, and can add (and already have resulted in) bugs,
+> but everyone to their own. Al Viro found a whole new class of bug caused
+> by these magic things. I'd much prefer explicit C code that can be read
+> and reviewed over "let the compiler do magic" stuff.
+>
 
-I was using that email for a while to send patches but then I started 
-having issues with it so I switched to the current email. Since I 
-already had the old email in a few places in MAINTAINERS and I was 
-always signing off with it I kept doing so while sending with the new 
-email. I had this conversation with another maintainer when I first 
-switched and they suggested that I add the From tag with the same email 
-as the signoff, and I've been doing that ever since and it has been 
-fine.
+Eh I hoped some of the cleanup API could be used... I received some
+request to start using it. I will drop them entirely ok.
 
+> > +
+> > +	return ret < 0 ? ret : 0;
+> > +}
+> > +
+> > +static int an8855_mii_write32(struct mii_bus *bus, u8 phy_id, u32 reg, u32 val)
+> > +{
+> > +	int ret;
+> > +
+> > +	ret = bus->write(bus, phy_id, 0x1f, 0x4);
+> > +	ret = bus->write(bus, phy_id, 0x10, 0);
+> > +
+> > +	ret = bus->write(bus, phy_id, 0x11, ((reg >> 16) & 0xFFFF));
+> > +	ret = bus->write(bus, phy_id, 0x12, (reg & 0xFFFF));
+> > +
+> > +	ret = bus->write(bus, phy_id, 0x13, ((val >> 16) & 0xFFFF));
+> > +	ret = bus->write(bus, phy_id, 0x14, (val & 0xFFFF));
+> 
+> Same as above.
+> 
+> > +
+> > +	ret = bus->write(bus, phy_id, 0x1f, 0);
+> > +	if (ret < 0)
+> > +		dev_err_ratelimited(&bus->dev,
+> > +				    "failed to write an8855 register\n");
+> > +
+> > +	return 0;
+> > +}
+> 
+> ...
+> 
+> > +static int an8855_set_mac_eee(struct dsa_switch *ds, int port,
+> > +			      struct ethtool_keee *eee)
+> > +{
+> > +	struct an8855_priv *priv = ds->priv;
+> > +	u32 reg;
+> > +	int ret;
+> > +
+> > +	if (eee->eee_enabled) {
+> > +		ret = regmap_read(priv->regmap, AN8855_PMCR_P(port), &reg);
+> > +		if (ret)
+> > +			return ret;
+> > +		if (reg & AN8855_PMCR_FORCE_MODE) {
+> > +			switch (reg & AN8855_PMCR_FORCE_SPEED) {
+> > +			case AN8855_PMCR_FORCE_SPEED_1000:
+> > +				reg |= AN8855_PMCR_FORCE_EEE1G;
+> > +				break;
+> > +			case AN8855_PMCR_FORCE_SPEED_100:
+> > +				reg |= AN8855_PMCR_FORCE_EEE100;
+> > +				break;
+> > +			default:
+> > +				break;
+> > +			}
+> > +			ret = regmap_write(priv->regmap, AN8855_PMCR_P(port), reg);
+> > +			if (ret)
+> > +				return ret;
+> 
+> What logic are you trying to implement here? It looks like you're
+> forcing EEE to be enabled here if AN8855_PMCR_FORCE_MODE was set, which,
+> reading the code in link_{up,down} it always will be when the link
+> happens to be down when the user configures EEE. This makes no sense.
+> 
+> EEE is supposed to be enabled as a result of the PHY's negotiation with
+> the link partner. There shouldn't be any forcing.
+> 
+> > +		}
+> > +		if (eee->tx_lpi_enabled) {
+> > +			ret = regmap_set_bits(priv->regmap, AN8855_PMEEECR_P(port),
+> > +					      AN8855_LPI_MODE_EN);
+> > +			if (ret)
+> > +				return ret;
+> > +		} else {
+> > +			ret = regmap_clear_bits(priv->regmap, AN8855_PMEEECR_P(port),
+> > +						AN8855_LPI_MODE_EN);
+> > +			if (ret)
+> > +				return ret;
+> > +		}
+> 
+> Maybe:
+> 
+> 		ret = regmap_update_bits(priv->regmap, AN8855_PMEEECR_P(port),
+> 					 AN8855_LPI_MODE_EN,
+> 					 eee->tx_lpi_enabled ?
+> 					   AN8855_LPI_MODE_EN : 0);
+> 		if (ret)
+> 			return ret;
+> 
+> > +	} else {
+> > +		ret = regmap_clear_bits(priv->regmap, AN8855_PMCR_P(port),
+> > +					AN8855_PMCR_FORCE_EEE1G |
+> > +					AN8855_PMCR_FORCE_EEE100);
+> > +		if (ret)
+> > +			return ret;
+> > +
+> > +		ret = regmap_clear_bits(priv->regmap, AN8855_PMEEECR_P(port),
+> > +					AN8855_LPI_MODE_EN);
+> > +		if (ret)
+> > +			return ret;
+> 
+> This probably needs to interact with the link up/down state.
+> 
+> Really, I need to find the time to sort out adding EEE stuff to phylink
+> that is keyed from phylib's implementation, but not at the moment.
+> 
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int an8855_get_mac_eee(struct dsa_switch *ds, int port,
+> > +			      struct ethtool_keee *eee)
+> > +{
+> > +	struct an8855_priv *priv = ds->priv;
+> > +	u32 reg;
+> > +	int ret;
+> > +
+> > +	ret = regmap_read(priv->regmap, AN8855_PMEEECR_P(port), &reg);
+> > +	if (ret)
+> > +		return ret;
+> > +	eee->tx_lpi_enabled = reg & AN8855_LPI_MODE_EN;
+> 
+> This is fine, the MAC is responsible for LPI transmission.
+> 
+> > +
+> > +	ret = regmap_read(priv->regmap, AN8855_CKGCR, &reg);
+> > +	if (ret)
+> > +		return ret;
+> > +	/* Global LPI TXIDLE Threshold, default 60ms (unit 2us) */
+> > +	eee->tx_lpi_timer = FIELD_GET(AN8855_LPI_TXIDLE_THD_MASK, reg) / 500;
+> 
+> Also fine.
+> 
+> > +
+> > +	ret = regmap_read(priv->regmap, AN8855_PMSR_P(port), &reg);
+> > +	if (ret)
+> > +		return ret;
+> > +	eee->eee_active = reg & (AN8855_PMSR_EEE1G | AN8855_PMSR_EEE100M);
+> 
+> This isn't. You're overwriting the value set by
+> genphy_c45_ethtool_get_eee(), which has already determined whether
+> EEE is active from the PHY's negotiation state, and this is what
+> eee_active is supposed to indicate.
+> 
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static u32 en8855_get_phy_flags(struct dsa_switch *ds, int port)
+> > +{
+> > +	struct an8855_priv *priv = ds->priv;
+> > +	u8 calibration_data[4] = { };
+> > +	u8 shift_sel;
+> > +	u32 val;
+> > +	int ret;
+> > +	int i;
+> > +
+> > +	/* PHY doesn't need calibration */
+> > +	if (!priv->phy_require_calib)
+> > +		return 0;
+> > +
+> > +	/* Read Calibration value */
+> > +	for (i = 0; i < sizeof(u32); i++) {
+> > +		ret = regmap_read(priv->regmap, AN8855_EFUSE_DATA0 +
+> > +				  ((3 + i + (4 * port)) * 4), &val);
+> > +		if (ret)
+> > +			return 0;
+> > +
+> > +		shift_sel = FIELD_GET(AN8855_EFUSE_R50O, val);
+> > +		calibration_data[i] = en8855_get_r50ohm_val(shift_sel);
+> > +	}
+> > +
+> > +	memcpy(&val, calibration_data, sizeof(u32));
+> > +	return val;
+> 
+> Ewwwwwww.
+> 
+> So you're reading from fuses, and then passing them as phy flags.
+> PHY flags are no longer 100% available for whatever you want to use
+> them for - some have standard meanings:
+> 
 
+Yep this is the main reason of RFC... Any hint on how to handle this?
 
+Actually the Switch have some special regs to access the PHY indirectly
+so maybe I can do the calibration from the switch but I would really
+love to find a way to pass these kind of data and handle them entirely
+in the PHY driver code.
+
+The first solution that comes to mind is shared global header in
+include/linux/dsa and implement some kind of OPs or additional entry in
+struct phy to declare a pointer and the size of it? Or with the global
+header a struct directly? But this would be very special and just for
+these case of internal PHY.
+
+>  *      - Bits [15:0] are free to use by the PHY driver to communicate
+>  *        driver specific behavior.
+>  *      - Bits [23:16] are currently reserved for future use.
+>  *      - Bits [31:24] are reserved for defining generic
+>  *        PHY driver behavior.
+> 
+> For example, PHY_F_NO_IRQ and PHY_F_RXC_ALWAYS_ON are already allocated
+> in the top 8 bits.
+> 
+
+I checked the DSA code and hoped I could use the full register.
+
+> > +static void
+> > +an8855_phylink_mac_config(struct phylink_config *config, unsigned int mode,
+> > +			  const struct phylink_link_state *state)
+> > +{
+> > +	struct dsa_port *dp = dsa_phylink_to_port(config);
+> > +	struct dsa_switch *ds = dp->ds;
+> > +	struct an8855_priv *priv;
+> > +	int port = dp->index;
+> > +
+> > +	priv = ds->priv;
+> > +
+> > +	switch (port) {
+> > +	case 0:
+> > +	case 1:
+> > +	case 2:
+> > +	case 3:
+> > +	case 4:
+> > +		return;
+> > +	case 5:
+> > +		break;
+> > +	default:
+> > +		dev_err(ds->dev, "unsupported port: %d", port);
+> > +		return;
+> > +	}
+> > +
+> > +	if (state->interface == PHY_INTERFACE_MODE_2500BASEX &&
+> > +	    phylink_autoneg_inband(mode))
+> > +		dev_err(ds->dev, "in-band negotiation unsupported");
+> 
+> Please check this in the PCS code.
+> 
+> > +
+> > +	regmap_update_bits(priv->regmap, AN8855_PMCR_P(port),
+> > +			   AN8855_PMCR_IFG_XMIT | AN8855_PMCR_MAC_MODE |
+> > +			   AN8855_PMCR_BACKOFF_EN | AN8855_PMCR_BACKPR_EN,
+> > +			   FIELD_PREP(AN8855_PMCR_IFG_XMIT, 0x1) |
+> > +			   AN8855_PMCR_MAC_MODE | AN8855_PMCR_BACKOFF_EN |
+> > +			   AN8855_PMCR_BACKPR_EN);
+> > +}
+> > +
+> > +static void an8855_phylink_get_caps(struct dsa_switch *ds, int port,
+> > +				    struct phylink_config *config)
+> > +{
+> > +	switch (port) {
+> > +	case 0:
+> > +	case 1:
+> > +	case 2:
+> > +	case 3:
+> > +	case 4:
+> > +		__set_bit(PHY_INTERFACE_MODE_GMII,
+> > +			  config->supported_interfaces);
+> > +		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
+> > +			  config->supported_interfaces);
+> > +		break;
+> > +	case 5:
+> > +		phy_interface_set_rgmii(config->supported_interfaces);
+> > +		__set_bit(PHY_INTERFACE_MODE_SGMII,
+> > +			  config->supported_interfaces);
+> > +		__set_bit(PHY_INTERFACE_MODE_2500BASEX,
+> > +			  config->supported_interfaces);
+> > +		break;
+> > +	}
+> > +
+> > +	config->mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
+> > +				   MAC_10 | MAC_100 | MAC_1000FD;
+> > +}
+> > +
+> > +static void
+> > +an8855_phylink_mac_link_down(struct phylink_config *config, unsigned int mode,
+> > +			     phy_interface_t interface)
+> > +{
+> > +	struct dsa_port *dp = dsa_phylink_to_port(config);
+> > +	struct an8855_priv *priv = dp->ds->priv;
+> > +
+> > +	/* Disable TX/RX, force link down */
+> > +	regmap_update_bits(priv->regmap, AN8855_PMCR_P(dp->index),
+> > +			   AN8855_PMCR_TX_EN | AN8855_PMCR_RX_EN |
+> > +			   AN8855_PMCR_FORCE_MODE | AN8855_PMCR_FORCE_LNK,
+> > +			   AN8855_PMCR_FORCE_MODE);
+> 
+> Does forcing the link down prevent the AN8855_PMSR_LNK bit being set?
+> If not, please document that here because the current code goes against
+> what's documented in phylink:
+>  
+>  * If @mode is not an in-band negotiation mode (as defined by
+>    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  * phylink_autoneg_inband()), force the link down and disable any
+>  * Energy Efficient Ethernet MAC configuration. ...
+> 
+
+Mhhh the force bit just "force" the configutation, AKA it does set the
+link down. We can keep the link up and just disable TX and RX.
+
+In the current code, I enable force bit, and clear the LINK bit if it
+was set prev and disable TX and RX.
+
+Soo with the comments, with autoneg I should just disable TX and RX
+correct?
+
+> > +}
+> > +
+> > +static void
+> > +an8855_phylink_mac_link_up(struct phylink_config *config,
+> > +			   struct phy_device *phydev, unsigned int mode,
+> > +			   phy_interface_t interface, int speed, int duplex,
+> > +			   bool tx_pause, bool rx_pause)
+> > +{
+> > +	struct dsa_port *dp = dsa_phylink_to_port(config);
+> > +	struct an8855_priv *priv = dp->ds->priv;
+> > +	int port = dp->index;
+> > +	u32 reg;
+> > +
+> > +	reg = regmap_read(priv->regmap, AN8855_PMCR_P(port), &reg);
+> > +	if (phylink_autoneg_inband(mode)) {
+> > +		reg &= ~AN8855_PMCR_FORCE_MODE;
+> > +	} else {
+> > +		reg |= AN8855_PMCR_FORCE_MODE | AN8855_PMCR_FORCE_LNK;
+> > +
+> > +		reg &= ~AN8855_PMCR_FORCE_SPEED;
+> > +		switch (speed) {
+> > +		case SPEED_10:
+> > +			reg |= AN8855_PMCR_FORCE_SPEED_10;
+> > +			break;
+> > +		case SPEED_100:
+> > +			reg |= AN8855_PMCR_FORCE_SPEED_100;
+> > +			break;
+> > +		case SPEED_1000:
+> > +			reg |= AN8855_PMCR_FORCE_SPEED_1000;
+> > +			break;
+> > +		case SPEED_2500:
+> > +			reg |= AN8855_PMCR_FORCE_SPEED_2500;
+> > +			break;
+> > +		case SPEED_5000:
+> > +			reg |= AN8855_PMCR_FORCE_SPEED_5000;
+> > +			break;
+> > +		}
+> > +
+> > +		reg &= AN8855_PMCR_FORCE_FDX;
+> > +		if (duplex == DUPLEX_FULL)
+> > +			reg |= AN8855_PMCR_FORCE_FDX;
+> > +
+> > +		reg &= AN8855_PMCR_RX_FC_EN;
+> > +		if (rx_pause || dsa_port_is_cpu(dp))
+> > +			reg |= AN8855_PMCR_RX_FC_EN;
+> > +
+> > +		reg &= AN8855_PMCR_TX_FC_EN;
+> > +		if (rx_pause || dsa_port_is_cpu(dp))
+> > +			reg |= AN8855_PMCR_TX_FC_EN;
+> > +
+> > +		/* Disable any EEE options */
+> > +		reg &= ~(AN8855_PMCR_FORCE_EEE5G | AN8855_PMCR_FORCE_EEE2P5G |
+> > +			 AN8855_PMCR_FORCE_EEE1G | AN8855_PMCR_FORCE_EEE100);
+> > +	}
+> > +
+> > +	reg |= AN8855_PMCR_TX_EN | AN8855_PMCR_RX_EN;
+> > +
+> > +	regmap_write(priv->regmap, AN8855_PMCR_P(port), reg);
+> > +}
+> > +
+> > +static void an8855_pcs_get_state(struct phylink_pcs *pcs,
+> > +				 struct phylink_link_state *state)
+> > +{
+> > +	struct an8855_priv *priv = container_of(pcs, struct an8855_priv, pcs);
+> > +	u32 val;
+> > +	int ret;
+> > +
+> > +	ret = regmap_read(priv->regmap, AN8855_PMSR_P(AN8855_CPU_PORT), &val);
+> > +	if (ret < 0) {
+> > +		state->link = false;
+> > +		return;
+> > +	}
+> > +
+> > +	state->link = !!(val & AN8855_PMSR_LNK);
+> > +	state->an_complete = state->link;
+> > +	state->duplex = (val & AN8855_PMSR_DPX) ? DUPLEX_FULL :
+> > +						  DUPLEX_HALF;
+> > +
+> > +	switch (val & AN8855_PMSR_SPEED) {
+> > +	case AN8855_PMSR_SPEED_10:
+> > +		state->speed = SPEED_10;
+> > +		break;
+> > +	case AN8855_PMSR_SPEED_100:
+> > +		state->speed = SPEED_100;
+> > +		break;
+> > +	case AN8855_PMSR_SPEED_1000:
+> > +		state->speed = SPEED_1000;
+> > +		break;
+> > +	case AN8855_PMSR_SPEED_2500:
+> > +		state->speed = SPEED_2500;
+> > +		break;
+> > +	case AN8855_PMSR_SPEED_5000:
+> > +		state->speed = SPEED_5000;
+> > +		break;
+> > +	default:
+> > +		state->speed = SPEED_UNKNOWN;
+> > +		break;
+> > +	}
+> > +
+> > +	if (val & AN8855_PMSR_RX_FC)
+> > +		state->pause |= MLO_PAUSE_RX;
+> > +	if (val & AN8855_PMSR_TX_FC)
+> > +		state->pause |= MLO_PAUSE_TX;
+> > +}
+> > +
+> > +static int an8855_pcs_config(struct phylink_pcs *pcs, unsigned int neg_mode,
+> > +			     phy_interface_t interface,
+> > +			     const unsigned long *advertising,
+> > +			     bool permit_pause_to_mac)
+> > +{
+> > +	struct an8855_priv *priv = container_of(pcs, struct an8855_priv, pcs);
+> > +	u32 val;
+> > +	int ret;
+> > +
+> > +	switch (interface) {
+> > +	case PHY_INTERFACE_MODE_RGMII:
+> > +		return 0;
+> > +	case PHY_INTERFACE_MODE_SGMII:
+> > +		break;
+> > +	case PHY_INTERFACE_MODE_2500BASEX:
+> > +		if (neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED)
+> > +			return -EINVAL;
+> > +
+> > +		break;
+> > +	default:
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	/*                   !!! WELCOME TO HELL !!!                   */
+> > +
+> > +	/* TX FIR - improve TX EYE */
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_INTF_CTRL_10, GENMASK(21, 16),
+> > +				 FIELD_PREP(GENMASK(21, 16), 0x20));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_INTF_CTRL_10, GENMASK(28, 24),
+> > +				 FIELD_PREP(GENMASK(28, 24), 0x4));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_set_bits(priv->regmap, AN8855_INTF_CTRL_10, BIT(29));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	if (interface == PHY_INTERFACE_MODE_2500BASEX)
+> > +		val = 0x0;
+> > +	else
+> > +		val = 0xd;
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_INTF_CTRL_11, GENMASK(5, 0),
+> > +				 FIELD_PREP(GENMASK(5, 0), val));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_set_bits(priv->regmap, AN8855_INTF_CTRL_11, BIT(6));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* RX CDR - improve RX Jitter Tolerance */
+> > +	if (interface == PHY_INTERFACE_MODE_2500BASEX)
+> > +		val = 0x5;
+> > +	else
+> > +		val = 0x6;
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RG_QP_CDR_LPF_BOT_LIM, GENMASK(26, 24),
+> > +				 FIELD_PREP(GENMASK(26, 24), val));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RG_QP_CDR_LPF_BOT_LIM, GENMASK(22, 20),
+> > +				 FIELD_PREP(GENMASK(22, 20), val));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* PLL */
+> > +	if (interface == PHY_INTERFACE_MODE_2500BASEX)
+> > +		val = 0x1;
+> > +	else
+> > +		val = 0x0;
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_QP_DIG_MODE_CTRL_1, GENMASK(3, 2),
+> > +				 FIELD_PREP(GENMASK(3, 2), val));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* PLL - LPF */
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_PLL_CTRL_2, GENMASK(1, 0),
+> > +				 FIELD_PREP(GENMASK(1, 0), 0x1));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_PLL_CTRL_2, GENMASK(4, 2),
+> > +				 FIELD_PREP(GENMASK(4, 2), 0x5));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_PLL_CTRL_2, BIT(6) | BIT(7));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_PLL_CTRL_2, GENMASK(10, 8),
+> > +				 FIELD_PREP(GENMASK(10, 8), 0x3));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_set_bits(priv->regmap, AN8855_PLL_CTRL_2, BIT(29));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_PLL_CTRL_2, BIT(12) | BIT(13));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* PLL - ICO */
+> > +	ret = regmap_set_bits(priv->regmap, AN8855_PLL_CTRL_4, BIT(2));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_PLL_CTRL_2, BIT(14));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* PLL - CHP */
+> > +	if (interface == PHY_INTERFACE_MODE_2500BASEX)
+> > +		val = 0x6;
+> > +	else
+> > +		val = 0x4;
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_PLL_CTRL_2, GENMASK(19, 16),
+> > +				 FIELD_PREP(GENMASK(19, 16), val));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* PLL - PFD */
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_PLL_CTRL_2, GENMASK(21, 20),
+> > +				 FIELD_PREP(GENMASK(21, 20), 0x1));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_PLL_CTRL_2, GENMASK(25, 24),
+> > +				 FIELD_PREP(GENMASK(25, 24), 0x1));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_PLL_CTRL_2, BIT(26));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* PLL - POSTDIV */
+> > +	ret = regmap_set_bits(priv->regmap, AN8855_PLL_CTRL_2, BIT(22));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_PLL_CTRL_2, BIT(27));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_PLL_CTRL_2, BIT(28));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* PLL - SDM */
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_PLL_CTRL_4, BIT(3) | BIT(4));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_PLL_CTRL_2, BIT(30));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_SS_LCPLL_PWCTL_SETTING_2,
+> > +				 GENMASK(17, 16),
+> > +				 FIELD_PREP(GENMASK(17, 16), 0x1));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	if (interface == PHY_INTERFACE_MODE_2500BASEX)
+> > +		val = 0x7a000000;
+> > +	else
+> > +		val = 0x48000000;
+> > +	ret = regmap_write(priv->regmap, AN8855_SS_LCPLL_TDC_FLT_2, val);
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_write(priv->regmap, AN8855_SS_LCPLL_TDC_PCW_1, val);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_SS_LCPLL_TDC_FLT_5, BIT(24));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_PLL_CK_CTRL_0, BIT(8));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* PLL - SS */
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_PLL_CTRL_3, GENMASK(15, 0));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_PLL_CTRL_4, GENMASK(1, 0));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_PLL_CTRL_3, GENMASK(31, 16));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* PLL - TDC */
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_PLL_CK_CTRL_0, BIT(9));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = regmap_set_bits(priv->regmap, AN8855_RG_QP_PLL_SDM_ORD, BIT(3));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_set_bits(priv->regmap, AN8855_RG_QP_PLL_SDM_ORD, BIT(4));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RG_QP_RX_DAC_EN, GENMASK(17, 16),
+> > +				 FIELD_PREP(GENMASK(17, 16), 0x2));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* TCL Disable (only for Co-SIM) */
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_PON_RXFEDIG_CTRL_0, BIT(12));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* TX Init */
+> > +	if (interface == PHY_INTERFACE_MODE_2500BASEX)
+> > +		val = 0x4;
+> > +	else
+> > +		val = 0x0;
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_RG_QP_TX_MODE_16B_EN, BIT(0));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RG_QP_TX_MODE_16B_EN,
+> > +				 GENMASK(31, 16),
+> > +				 FIELD_PREP(GENMASK(31, 16), val));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* RX Control/Init */
+> > +	ret = regmap_set_bits(priv->regmap, AN8855_RG_QP_RXAFE_RESERVE, BIT(11));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	if (interface == PHY_INTERFACE_MODE_2500BASEX)
+> > +		val = 0x1;
+> > +	else
+> > +		val = 0x2;
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RG_QP_CDR_LPF_MJV_LIM,
+> > +				 GENMASK(5, 4),
+> > +				 FIELD_PREP(GENMASK(5, 4), val));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RG_QP_CDR_LPF_SETVALUE,
+> > +				 GENMASK(28, 25),
+> > +				 FIELD_PREP(GENMASK(28, 25), 0x1));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RG_QP_CDR_LPF_SETVALUE,
+> > +				 GENMASK(31, 29),
+> > +				 FIELD_PREP(GENMASK(31, 29), 0x6));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	if (interface == PHY_INTERFACE_MODE_2500BASEX)
+> > +		val = 0xf;
+> > +	else
+> > +		val = 0xc;
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RG_QP_CDR_PR_CKREF_DIV1,
+> > +				 GENMASK(12, 8),
+> > +				 FIELD_PREP(GENMASK(12, 8), val));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RG_QP_CDR_PR_KBAND_DIV_PCIE,
+> > +				 GENMASK(12, 8),
+> > +				 FIELD_PREP(GENMASK(12, 8), 0x19));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_RG_QP_CDR_PR_KBAND_DIV_PCIE, BIT(6));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RG_QP_CDR_FORCE_IBANDLPF_R_OFF,
+> > +				 GENMASK(12, 6),
+> > +				 FIELD_PREP(GENMASK(12, 6), 0x21));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RG_QP_CDR_FORCE_IBANDLPF_R_OFF,
+> > +				 GENMASK(17, 16),
+> > +				 FIELD_PREP(GENMASK(17, 16), 0x2));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_RG_QP_CDR_FORCE_IBANDLPF_R_OFF, BIT(13));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_RG_QP_CDR_PR_KBAND_DIV_PCIE, BIT(30));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RG_QP_CDR_PR_CKREF_DIV1,
+> > +				 GENMASK(26, 24),
+> > +				 FIELD_PREP(GENMASK(26, 24), 0x4));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = regmap_set_bits(priv->regmap, AN8855_RX_CTRL_26, BIT(23));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_RX_CTRL_26, BIT(24));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_set_bits(priv->regmap, AN8855_RX_CTRL_26, BIT(26));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RX_DLY_0, GENMASK(7, 0),
+> > +				 FIELD_PREP(GENMASK(7, 0), 0x6f));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_set_bits(priv->regmap, AN8855_RX_DLY_0, GENMASK(13, 8));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RX_CTRL_42, GENMASK(12, 0),
+> > +				 FIELD_PREP(GENMASK(12, 0), 0x150));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RX_CTRL_2, GENMASK(28, 16),
+> > +				 FIELD_PREP(GENMASK(28, 16), 0x150));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_PON_RXFEDIG_CTRL_9,
+> > +				 GENMASK(2, 0),
+> > +				 FIELD_PREP(GENMASK(2, 0), 0x1));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RX_CTRL_8, GENMASK(27, 16),
+> > +				 FIELD_PREP(GENMASK(27, 16), 0x200));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RX_CTRL_8, GENMASK(14, 0),
+> > +				 FIELD_PREP(GENMASK(14, 0), 0xfff));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* Frequency meter */
+> > +	if (interface == PHY_INTERFACE_MODE_2500BASEX)
+> > +		val = 0x10;
+> > +	else
+> > +		val = 0x28;
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RX_CTRL_5, GENMASK(29, 10),
+> > +				 FIELD_PREP(GENMASK(29, 10), val));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RX_CTRL_6, GENMASK(19, 0),
+> > +				 FIELD_PREP(GENMASK(19, 0), 0x64));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_RX_CTRL_7, GENMASK(19, 0),
+> > +				 FIELD_PREP(GENMASK(19, 0), 0x2710));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = regmap_set_bits(priv->regmap, AN8855_PLL_CTRL_0, BIT(0));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* PCS Init */
+> > +	if (interface == PHY_INTERFACE_MODE_SGMII &&
+> > +	    neg_mode == PHYLINK_PCS_NEG_INBAND_DISABLED) {
+> > +		ret = regmap_clear_bits(priv->regmap, AN8855_QP_DIG_MODE_CTRL_0,
+> > +					BIT(0));
+> > +		if (ret)
+> > +			return ret;
+> > +		ret = regmap_clear_bits(priv->regmap, AN8855_QP_DIG_MODE_CTRL_0,
+> > +					GENMASK(5, 4));
+> > +		if (ret)
+> > +			return ret;
+> 
+> Do these really need to be done separately, or can the two be combined?
+> 
+> 		ret = regmap_clear_bits(priv->regmap, AN8855_QP_DIG_MODE_CTRL_0,
+> 					GENMASK(5, 4) | BIT(0));
+> 
+> ?
+
+I decided to separate them as much as possible following the pattern
+used in SDK to make this mess more readable. If needed yes I can combine
+the 2.
+
+> 
+> > +	}
+> > +
+> > +	ret = regmap_clear_bits(priv->regmap, AN8855_RG_HSGMII_PCS_CTROL_1, BIT(30));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	if (neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED) {
+> > +		/* Set AN Ability - Interrupt */
+> > +		ret = regmap_set_bits(priv->regmap, AN8855_SGMII_REG_AN_FORCE_CL37, BIT(0));
+> > +		if (ret)
+> > +			return ret;
+> > +
+> > +		ret = regmap_update_bits(priv->regmap, AN8855_SGMII_REG_AN_13,
+> > +					 GENMASK(5, 0),
+> > +					 FIELD_PREP(GENMASK(5, 0), 0xb));
+> > +		if (ret)
+> > +			return ret;
+> > +		ret = regmap_set_bits(priv->regmap, AN8855_SGMII_REG_AN_13, BIT(8));
+> > +		if (ret)
+> > +			return ret;
+> > +	}
+> 
+> Eh?
+> 
+> > +
+> > +	/* Rate Adaption - GMII path config. */
+> > +	if (interface == PHY_INTERFACE_MODE_2500BASEX) {
+> > +		ret = regmap_clear_bits(priv->regmap, AN8855_RATE_ADP_P0_CTRL_0, BIT(31));
+> > +		if (ret)
+> > +			return ret;
+> > +	} else {
+> > +		if (neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED) {
+> > +			ret = regmap_set_bits(priv->regmap, AN8855_MII_RA_AN_ENABLE, BIT(0));
+> > +			if (ret)
+> > +				return ret;
+> > +		} else {
+> > +			ret = regmap_set_bits(priv->regmap, AN8855_RG_AN_SGMII_MODE_FORCE,
+> > +					      BIT(0));
+> > +			if (ret)
+> > +				return ret;
+> > +			ret = regmap_clear_bits(priv->regmap, AN8855_RG_AN_SGMII_MODE_FORCE,
+> > +						GENMASK(5, 4));
+> > +			if (ret)
+> > +				return ret;
+> > +
+> > +			ret = regmap_clear_bits(priv->regmap, AN8855_RATE_ADP_P0_CTRL_0,
+> > +						GENMASK(3, 0));
+> > +			if (ret)
+> > +				return ret;
+> > +		}
+> > +
+> > +		ret = regmap_set_bits(priv->regmap, AN8855_RATE_ADP_P0_CTRL_0, BIT(28));
+> > +		if (ret)
+> > +			return ret;
+> > +	}
+> > +
+> > +	ret = regmap_set_bits(priv->regmap, AN8855_RG_RATE_ADAPT_CTRL_0, BIT(0));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_set_bits(priv->regmap, AN8855_RG_RATE_ADAPT_CTRL_0, BIT(4));
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_set_bits(priv->regmap, AN8855_RG_RATE_ADAPT_CTRL_0, GENMASK(27, 26));
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* Disable AN */
+> > +	if (neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED) {
+> > +		ret = regmap_set_bits(priv->regmap, AN8855_SGMII_REG_AN0,
+> > +				      AN8855_SGMII_AN_ENABLE);
+> > +		if (ret)
+> > +			return ret;
+> > +	} else {
+> > +		ret = regmap_clear_bits(priv->regmap, AN8855_SGMII_REG_AN0,
+> > +					AN8855_SGMII_AN_ENABLE);
+> > +		if (ret)
+> > +			return ret;
+> > +	}
+> 
+> Again, using regmap_update_bits() with a mask and value is probably more
+> readable here. This looks like it's twiddling a standard BMCR_ANENABLE
+> bit.
+> 
+
+Looks like so... the 2 bit are the same... (btw these are the ONLY bits
+I have in documentation...)
+
+> > +
+> > +	if (interface == PHY_INTERFACE_MODE_SGMII &&
+> > +	    neg_mode == PHYLINK_PCS_NEG_INBAND_DISABLED) {
+> > +		ret = regmap_set_bits(priv->regmap, AN8855_PHY_RX_FORCE_CTRL_0, BIT(4));
+> > +		if (ret)
+> > +			return ret;
+> > +	}
+> 
+> Eh?
+> 
+> > +
+> > +	/* Force Speed */
+> > +	if (interface == PHY_INTERFACE_MODE_2500BASEX ||
+> > +	    neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED) {
+> > +		if (interface == PHY_INTERFACE_MODE_2500BASEX)
+> > +			val = 0x3;
+> > +		else
+> > +			val = 0x2;
+> > +		ret = regmap_set_bits(priv->regmap, AN8855_SGMII_STS_CTRL_0, BIT(2));
+> > +		if (ret)
+> > +			return ret;
+> > +		ret = regmap_update_bits(priv->regmap, AN8855_SGMII_STS_CTRL_0,
+> > +					 GENMASK(5, 4),
+> > +					 FIELD_PREP(GENMASK(5, 4), val));
+> > +		if (ret)
+> > +			return ret;
+> > +	}
+> 
+> I don't understand why speed should be forced if inband is enabled or
+> we're using 2500base-X.
+> 
+
+Again no documentation. From my test with the value set to 0 CPU port
+can't send traffic.
+
+I assume this is some kind of max speed value.
+
+3 2500
+2 1000
+1 100
+0 10
+
+Maybe?
+
+> > +
+> > +	/* bypass flow control to MAC */
+> > +	ret = regmap_write(priv->regmap, AN8855_MSG_RX_LIK_STS_0, 0x01010107);
+> > +	if (ret)
+> > +		return ret;
+> > +	ret = regmap_write(priv->regmap, AN8855_MSG_RX_LIK_STS_2, 0x00000EEF);
+> > +	if (ret)
+> > +		return ret;
+> 
+> Overall, I'd like more comments about what stuff is doing, especially
+> the AN stuff. I can't make head nor tail of e.g. is there any
+> advertisement being programmed or not.
+> 
+> Also, given that this will be called _on its own_ if the user requests
+> the inband advertisement to be changed, we don't want to unnecessarily
+> disrupt the link. What would happen if this code runs when the link is
+> up?
+
+I will try to gather more info about all of these configuration but
+honestly chance are very low...
+
+From what I observed these values doesn't interrupt the link but maybe
+this code can be moved in different OPs to better handle changing case?
+
+> 
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static void an8855_pcs_an_restart(struct phylink_pcs *pcs)
+> > +{
+> > +	struct an8855_priv *priv = container_of(pcs, struct an8855_priv, pcs);
+> > +
+> > +	regmap_set_bits(priv->regmap, AN8855_SGMII_REG_AN0,
+> > +			AN8855_SGMII_AN_RESTART);
+> 
+> Again, looks like a standard PHY BMCR.
+> 
+> I haven't done a full review, but these are just what I've spotted so
+> far.
+>
+
+Thanks a lot for the initial review, I will check the EEE part better.
+
+Again the big problem is the PCS setup with all that nightmares
+values... The Documentation is empty (only AN value are there) and the
+values from the SDK by compacting the sgmii(inband and forced)/hsgmii in
+one single code by checking all the common piece.
+
+This if why you have all those if condition and all... They comes from
+compacting the functions, that part of code is still a blackbox more or
+less currently...
+
+-- 
+	Ansuel
 
