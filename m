@@ -4,78 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDE6BD3C937
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2024 07:11:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 498BED3E18D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2024 07:21:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XNidV6zQRVAttNm6/BViiBS78cigdlLuD+Cor4bHBRU=; b=qcefQ0CjBNoJCHMt5wLvXGUDIS
-	jVahqZBe71vAwuRjDurj8y3+fKXpW5aXhjKxfFUwP5dYeui8UcuwhUhRJtgIfmTufIbmYHRjTuYZh
-	fCtEfTUDqn+/M+sPaHZaPpJEG/6mnYEpwhE5hD1w4kRF2bx0xOFuFi8RkIyoNCj3C3olvrzsp1S7w
-	DvZBx4SXQXqPmLHKdGsa/njC+wQduAGh4yKekeTmk0d62tftBhJdB9tXkHU40ENYO94kwcIeiSyFt
-	U9z4eTyPTprrb5ho3bz2MyH+BuNqF08e2eoBq+yrJUfv6F2VW9Z5+pB7RgjKNYA6093Td7nDJFa9p
-	I16CbEiA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=smZfrGjVtvMSg3iZLlvbi89YS5i9FVGvaFb9EE1aWv8=; b=ynHaIFQawbhlPSRLi5lpnbEP5Y
+	Ofz11EzJvyzZjZE120e/nR+WUEhp3hFFZ4uRX9LWqk99RpYc0nqQx4uSO4BI0aoq2pqgZr2Sw6f2S
+	Cuqv1lijGPhYW2QUCnqyMgCOmqxlfyEnJzRwtzN1Gcw5WvIoY7HHrqkucuL03I9+kJiQ5SlevVgDC
+	vaj3KEQGnZlm1GsWxCYBKDtHoGOzz9np6EJTlYAAgyLULRz11eBHYSZ7VdKs2upgs/5MOAC3OryW9
+	K5HZnm1SrWPXiYRJKnfTXinYNt+sL7K/1RvjH+DE56qkaVD9W8LXTsZBQ35ZMDCsdNQ5e+jQ5pQT+
+	rXwS86Qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2mZk-00000006JoF-3fpv;
-	Mon, 21 Oct 2024 07:11:36 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1t2mjJ-00000006Lq1-0hjU;
+	Mon, 21 Oct 2024 07:21:29 +0000
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2mKj-00000006Heb-1TFo
-	for linux-mediatek@lists.infradead.org;
-	Mon, 21 Oct 2024 06:56:06 +0000
-Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-539f53973fdso3209374e87.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 20 Oct 2024 23:56:04 -0700 (PDT)
+	id 1t2mdE-00000006KKT-0sVO;
+	Mon, 21 Oct 2024 07:15:14 +0000
+Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-20c9978a221so47573025ad.1;
+        Mon, 21 Oct 2024 00:15:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1729493763; x=1730098563; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=XNidV6zQRVAttNm6/BViiBS78cigdlLuD+Cor4bHBRU=;
-        b=TGghS36Gk2cH0Tp/TmbqOf/Lk8pOBJ3uH8F5KPz4kMgc1PfedHn8l1So4xvPowyO2s
-         ehYGhMSDmv3Kh0KGXyr1OPbyEj62W5cWQWlz+FD73H4cwgpru9qXlG3nEvJRbTwneIty
-         LaTnn7dUK7QZuv0zqTe0zP+93rQq6TIW7yH2U=
+        d=gmail.com; s=20230601; t=1729494908; x=1730099708; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=smZfrGjVtvMSg3iZLlvbi89YS5i9FVGvaFb9EE1aWv8=;
+        b=iBb3diZRT0ZuQcS7bsxYy1NmdtaLH3UZlz6Yj3Ntv+7rouQUKChAbxuj86IeNgYPkl
+         vu0uQOBe6Vp/b6PNDyp+2O1hJniudGBFabf2SPZ7p4gPY6g+XMgnu+4BBK4ZrvgQqOcb
+         5SI9eFMPuG9te1rt3VlRUF/ZUXORkbtsDQxK6PIyol5IMEh3dPtH5L+uZ+4VIe4iLhDt
+         btd8ns0z5dMGqckLv3UT7LP0TIXLQoPiPZa/vzAZKmemANyeX2hPJkN7x2NrT2gYoAXh
+         HFC7d+xqXssPCZMlbwyXlDlpOTWG6r8EWpWn5AVUXiRTnaCr59w9rrYlLCnCbgNbhFaL
+         SE7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729493763; x=1730098563;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=XNidV6zQRVAttNm6/BViiBS78cigdlLuD+Cor4bHBRU=;
-        b=fZDrXsQ+JkeoVRVTqm/owhseQkikrBZm8pMttBmNexhY0mQX70WNRI/HHCq2vjtlti
-         5byLI+06QbyGlqikzMoR9dhZEHbbA5V+vk0GPBg5gZQwRWHG1/5QTDlbD2WFYhiOVR+8
-         ZmrFWIFIeZm85iyEDqsNYq37yvut//o3dD1/kleXXKHGBxdF4tLdF+g2Lp4OkjkFjyOU
-         io/fOWvh3K3ThhlolMtxyzX5jE6WNlWI+/3Gu1ndmlSHIahMehZPZZfMNMRvxFwKADRK
-         eZbL3TQ7zMW929j8b2q/n+Fsl12kDM5Vg0c5YRkMAkBGRyqOHhD39SBp0rIAWZ8vovXU
-         Bgwg==
-X-Forwarded-Encrypted: i=1; AJvYcCWigMaHX99xN839GJWzf805/aldbnw9rPLtGA+EnmroOdYEU2pyRiYtBu45AEKsEAmgbPK4LQL/tQEA4MwswA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyXtOj9D8nWxXBx+ai04+ihL35//e7uTvdqrFu5TXVWmyE49moK
-	Y9mxIR0svaB+aPyIci8Z65GrAcrROGi+OE2iw1tl4qkCKqixWE3s1FnduDNQ9gBUqJAUFiLqLml
-	KFIqTIMvYomPlVvwLb7RHPx0TJHx5BQflsqdY
-X-Google-Smtp-Source: AGHT+IH2grfsk2J11/R+DtqJL9MsiARRehfvs3wTJ4dpT61anw0+qbBHxQCnXBmSmtIOZmW35lIuuB1aQSapi3a6q+Y=
-X-Received: by 2002:a05:6512:3b2b:b0:53a:1b6:4624 with SMTP id
- 2adb3069b0e04-53a0c6a5c2cmr4349435e87.5.1729493762768; Sun, 20 Oct 2024
- 23:56:02 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1729494908; x=1730099708;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=smZfrGjVtvMSg3iZLlvbi89YS5i9FVGvaFb9EE1aWv8=;
+        b=JOh9mCSg1Ag6XVESgRJCJzS0ioYTY9xXCG3iLwo5JawgcM656UEWPku7JFvl6zF4QZ
+         lJ9++3VWI/PFJVjDeSQhVv49pcboXyj4/XWWljm1gFCVvp2xtuVhEWyFwTKg477Zicte
+         hkpB9m1HVNctXT2WjX4wxil7UwMcsmQ2FqDLt54+4d0hoh0IzdmVZYFSu9BRSxcOx91c
+         yLdiaHx5joVNEWsAN/xDdCmZN/YmhiY770NBmwzGeXqRLqbvClrpPzTQ0Xc0VK1ZYiHf
+         gu5P5LjRyF0KG16UUfxiB4FZWZZ9pjLToobn6QOjjFnxOePC/hDXYkE2157EieGrQ7rq
+         VF3w==
+X-Forwarded-Encrypted: i=1; AJvYcCXWQGmVMEQEsNoc0uxsTGo/57pzY/HHlNK4GjntEixfziWsjH8snSITb96M8AWe7Lmn6+eynG2odmth50Cli64=@lists.infradead.org, AJvYcCXj2Ok6RpqYT9Dok2UXQrwBfAtBYj8HIKBtIzoivSsCTOD4eqSsY3nrybmltXK7nRzuPwPHaUhAirVRD7c+k5Dy@lists.infradead.org, AJvYcCXoe7H0popC7F3bbrE5CMYOjN/AT0oH30p1dLgCkaV2iy2CiDWefnIgUIrslqxGb3T9uut4Gmp2bSwD2EJaZS39/g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxGxQEWbas5THZQR/RW0L4GW5Hc71bFh1EvccWr4TJqtzITm7AQ
+	7tMSUsD1+NTBCr+ylpcPVHBZwDZca0seTAGFRhrcpahpu8ClLVTRySJxbg==
+X-Google-Smtp-Source: AGHT+IHy2ChbQeyZrKCx28/8OkE6XbQjadUgTgmofH8VjxpMdlc/BulLZcrsT3LIRUIu1mJy2aFspg==
+X-Received: by 2002:a17:902:ce07:b0:20c:c9db:7c45 with SMTP id d9443c01a7336-20e5a7604famr168254115ad.20.1729494908190;
+        Mon, 21 Oct 2024 00:15:08 -0700 (PDT)
+Received: from google.com ([2620:15c:9d:2:6e21:7092:f7c7:3951])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20e7ef0d6besm19607365ad.104.2024.10.21.00.15.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 21 Oct 2024 00:15:07 -0700 (PDT)
+Date: Mon, 21 Oct 2024 00:15:04 -0700
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Javier Carrasco <javier.carrasco.cruz@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hans de Goede <hdegoede@redhat.com>, Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-rpi-kernel@lists.infradead.org
+Subject: Re: [PATCH v2] Input: sparcspkr - use cleanup facility for
+ device_node
+Message-ID: <ZxX_eL_hs-_eKW0h@google.com>
+References: <20241020-input_automate_of_node_put-v2-1-ddec58b4b99e@gmail.com>
 MIME-Version: 1.0
-References: <20241021025938.676-1-xiazhengqiao@huaqin.corp-partner.google.com> <20241021025938.676-2-xiazhengqiao@huaqin.corp-partner.google.com>
-In-Reply-To: <20241021025938.676-2-xiazhengqiao@huaqin.corp-partner.google.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 21 Oct 2024 14:55:51 +0800
-Message-ID: <CAGXv+5HRc6MrNuNxqAi9mst3X4pieUpRW5jzbjKgtBjTUT0P8g@mail.gmail.com>
-Subject: Re: [PATCH v3 1/4] dt-bindings: arm: mediatek: Add MT8186 Chinchou Chromebook
-To: Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
-Cc: devicetree@vger.kernel.or, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
-	hsinyi@chromium.org, sean.wang@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241020-input_automate_of_node_put-v2-1-ddec58b4b99e@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241020_235605_559529_2808D2F3 
-X-CRM114-Status: GOOD (  16.02  )
+X-CRM114-CacheID: sfid-20241021_001512_301947_A9A5CB06 
+X-CRM114-Status: GOOD (  11.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,77 +100,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 21, 2024 at 11:01=E2=80=AFAM Zhengqiao Xia
-<xiazhengqiao@huaqin.corp-partner.google.com> wrote:
->
-> Add an entry for the MT8186 based Chinchou Chromebook, also known as the
-> ASUS Chromebook CZ12 Flip (CZ1204F) and CZ12(CZ1204C).
->
-> Signed-off-by: Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com=
->
+Hi Javier,
 
-Hi,
-
-For upstream Linux kernel development, it is customary to have the maintain=
-ers
-and anyone that may take action on the patches to be in the recipients list
-or "To:" list, while the mailing lists and anyone that might have an intere=
-st
-be in the "Cc:" list.
-
-Here you mostly have it backwards.
-
-ChenYu
-
+On Sun, Oct 20, 2024 at 08:27:13PM +0200, Javier Carrasco wrote:
+> Use the 'free(device_node)' macro to simplify the code by automatically
+> freeing the device node, which removes the need for explicit calls to
+> 'of_node_put()'.
+> 
+> Signed-off-by: Javier Carrasco <javier.carrasco.cruz@gmail.com>
 > ---
->  .../devicetree/bindings/arm/mediatek.yaml     | 28 +++++++++++++++++++
->  1 file changed, 28 insertions(+)
->
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Docume=
-ntation/devicetree/bindings/arm/mediatek.yaml
-> index 1d4bb50fcd8d..3efab59b8a73 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -239,6 +239,34 @@ properties:
->            - enum:
->                - mediatek,mt8183-pumpkin
->            - const: mediatek,mt8183
-> +      - description: Google Chinchou (Asus Chromebook CZ1104CM2A/CZ1204C=
-M2A)
-> +        items:
-> +          - const: google,chinchou-sku0
-> +          - const: google,chinchou-sku2
-> +          - const: google,chinchou-sku4
-> +          - const: google,chinchou-sku5
-> +          - const: google,chinchou
-> +          - const: mediatek,mt8186
-> +      - description: Google Chinchou (Asus Chromebook CZ1104FM2A/CZ1204F=
-M2A/CZ1104CM2A/CZ1204CM2A)
-> +        items:
-> +          - const: google,chinchou-sku1
-> +          - const: google,chinchou-sku17
-> +          - const: google,chinchou-sku3
-> +          - const: google,chinchou-sku6
-> +          - const: google,chinchou-sku7
-> +          - const: google,chinchou-sku20
-> +          - const: google,chinchou-sku22
-> +          - const: google,chinchou-sku23
-> +          - const: google,chinchou
-> +          - const: mediatek,mt8186
-> +      - description: Google Chinchou360 (Asus Chromebook CZ1104FM2A/CZ12=
-04FM2A Flip)
-> +        items:
-> +          - const: google,chinchou-sku16
-> +          - const: google,chinchou-sku18
-> +          - const: google,chinchou-sku19
-> +          - const: google,chinchou-sku21
-> +          - const: google,chinchou
-> +          - const: mediatek,mt8186
->        - description: Google Magneton (Lenovo IdeaPad Slim 3 Chromebook (=
-14M868))
->          items:
->            - const: google,steelix-sku393219
-> --
-> 2.17.1
->
+> Changes in v2:
+> - rebase onto input/next, drop applied patches.
+> - sparcspkr: drop goto before node declaration and return -ENOMEM.
+
+Can we switch the driver to devm so that issues with cleanup and gotos
+will have less chances of resurfacing?
+
+Thanks.
+
+-- 
+Dmitry
 
