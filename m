@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 023E1D0E6C2
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2C68D0E6C1
 	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2024 07:38:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,55 +12,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:MIME-Version:Content-Type:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RwvmpL8qKj3SLwmzOmr8dF0fJatg9G7HpxkdxZupeyM=; b=ynRWRM7IaXCKheNkq2N3MUTZbr
-	dhElt0wxhs9QvKpR1tarln1h6gC6UVmGjCfh0WcgybbNG9FIC5Rmg1ayQLVO1kOOcO77d3ixc400N
-	qh8rnTB40AH6+nk6s/tcH95/v4QS11lAI5PBeLHz2uN1hykSBNcHrENIoohfvrJUBvaActksOsmBM
-	JlM+tDZRhDPRSNpQkpAYghME/eHEX2XcldA1ELujH9rbdkSjPq5foBZoj5kdl5AMiZlNRWrY9uK9z
-	/srdUmRiEBxAX+4MT0FJqIxN6IYUlVRq2yFpDxm+tjyG0e3h3t8e9af3xfjCx+d0NCtrRIRcOmSFe
-	7VIiK2Rw==;
+	bh=Js96B82vpvasO7dH54aWNj4yi7wPO0A7/Og4/faXgF0=; b=d38p8imPeiTIQLn7n1iN0gGtga
+	Wkz9xaqQdljpLHSMtXW74D46Q2HKmmXMd3kvkQy4qSk/FfcvTyN/reFGn/oq2vrbhcEMkHcSMQLma
+	E8GUsX8w22E9RVSmnGZRUIp//UBDBmqsyevOuqN8+VhsZDtSyEQbdkU90GnMyc0Cv3nu5pXGuwxCy
+	afv04EiLwvSRQzafuXfkFnDiEMjR9xmO19crnKZ3LcyCeeEkYh743/tl1PS19Mctw/8DVwmwJVLKV
+	7V8/WuruaBKfGWKMJhM9lehVnDb5ra46VRvPq3kFggf9YK4KbVDRIpRQK35qyUOe6rZQYkfUkgrAK
+	joaGVukg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2mzQ-00000006Oj0-0KOZ;
-	Mon, 21 Oct 2024 07:38:08 +0000
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
+	id 1t2mzP-00000006Oio-2yoR;
+	Mon, 21 Oct 2024 07:38:07 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2mpJ-00000006NJV-4BXY
+	id 1t2mpE-00000006NHq-0oGA
 	for linux-mediatek@lists.infradead.org;
-	Mon, 21 Oct 2024 07:29:10 +0000
-Received: by mail-pj1-x1036.google.com with SMTP id 98e67ed59e1d1-2e5b1aaad96so220059a91.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Oct 2024 00:27:41 -0700 (PDT)
+	Mon, 21 Oct 2024 07:29:03 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-20c83c2e967so2259545ad.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Oct 2024 00:27:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1729495661; x=1730100461; darn=lists.infradead.org;
+        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1729495656; x=1730100456; darn=lists.infradead.org;
         h=references:in-reply-to:message-id:date:subject:cc:to:from:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=RwvmpL8qKj3SLwmzOmr8dF0fJatg9G7HpxkdxZupeyM=;
-        b=JCiGfJ2d0xG+eKMlAFNaz5hZeyHvclo5oP/gL+gJHNkMKItDLy1t4vfwrTyCmOIg3U
-         vy5bMm7mnq5nt/B3GpSC2B7lIlhg4XJt94uRo/WkQzvyvGDTe3kO3H0zWX2ecRsVIMd5
-         rcaGBsgX61fUUD504kVBZc8eFbHLXGAqvcg1ug+jgpdc9LkmUfjTTiM7fhqM5SQWlV0J
-         C2HHutCSSoFF+7Gc44tTJMLeTbNj8PGYm/b5V0Ef/S5t8PPFu6lsrEOx3A5+haPUL9k3
-         tMAxTFXVZ0q9A3oVUvFlGho8uUYydNUK66jli8TqRxx+N64ZIgXdAEoJGdjB5XuEukFe
-         1ODw==
+        bh=Js96B82vpvasO7dH54aWNj4yi7wPO0A7/Og4/faXgF0=;
+        b=LfqPVYZq2VwUnMsfwqFGTSAEgWz0N2wh6AjYH8yd7H2ClwpK6a86v3b08gV/Y22eEd
+         is5OiCrk3P1Tnuvh9/JQfbId/a6fV2Y57bTcPNy97PAa2szvd8VuK8KVEn/ZeP+ePq0k
+         fVu5Q4OcN7TkLGRus5mhh9+QeLZkeb+yFFkDdKv9SawwH3/weymE48Y4YSv93mtvN90w
+         M2ElTwtL/MU+qXur52zd2y2g5qqNFbXcxqqWl5zjuuog3CXrzPXS3+ikKwEmJOovWnJo
+         VAebOAZ3BtBw0avfs1U6jCFHfPbjCPPzfex22pspKKLkl/yNYFQHYCI9uFojkECqENWh
+         F9eg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729495661; x=1730100461;
+        d=1e100.net; s=20230601; t=1729495656; x=1730100456;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=RwvmpL8qKj3SLwmzOmr8dF0fJatg9G7HpxkdxZupeyM=;
-        b=BOA1hKTgj4VKiKvba3EMhwl1NICsGCy2Alk5L7/hbda1UcvlD6LarFNFReswlFk9eP
-         MzYvGoYZW6CcGor48bJzZGrlEZKyAhqh8A3qAbCscCYmYt6rVEcEaaXPa54Xp4ApmDKy
-         o1m/Jmq5EdIof3coSf/YzC10c8/QWdhyGCfz4qUfcXZNP1gN7Nz07A64eyxTanIlbLKg
-         4tbTbTvnDsNaGl3Kysjq/S/G2fy/PU50nf5wNmdDDpRlXtt7+FTiBzQZm2Pvzy6lDy5/
-         1kUdKzEwzHle5ZVMT0QpMzSG2DwB2oRCA1giSxZyVmH65N3jauSru7ay4rdBoH70w/2Q
-         HjPA==
-X-Forwarded-Encrypted: i=1; AJvYcCVQSpQiq1KALauzSNUVGZzdxRE3MrJnpX+8WE5ghnf7hP8Z+NdzeXLOFXH1eWM12ZeVC4C2VunS1+A3jZ6v4Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxVGQ/vQt0HJxvZRlr3XtRNCYMd0ro+dFKD0wj0nZYuRySWUXTO
-	AiG0EY8xQmU4r27fGocQY4j5U1MgZ+oblBzlX21V6Lty+O1iN60Hk5OFdRPECNM=
-X-Google-Smtp-Source: AGHT+IG7O4MTB4RTMZwzLlrbW/3WFjdoM5Duu6oLxtC3YUEZUKgcz7nk76eEdwRy5PZ8e1hJ3H2RpA==
-X-Received: by 2002:a17:902:da8f:b0:20c:9285:e951 with SMTP id d9443c01a7336-20e5a71b46dmr62715575ad.3.1729495660913;
-        Mon, 21 Oct 2024 00:27:40 -0700 (PDT)
+        bh=Js96B82vpvasO7dH54aWNj4yi7wPO0A7/Og4/faXgF0=;
+        b=X3bFjyMusSo2ypo0D90eODFRHEU7TZT0fSL+5PDSuYASyth8IIV2ztsiwXyz0Wa+Bs
+         i19r1+4v0d9VRc2uexJhVhaNGYgPY5gihZquL6FU8uEL9SiX/8WJRY6K+m+Im3ivtQxX
+         SFEfObl+ZeQjBhQk6LEZq4hdASwaTsojjwl2YgXtd0FKPDkC//rsDIaY6cYCtap+Mk5/
+         BXHPSkIF9Q7tqUA1/xCUpuD/q8ZY5SLVYDg5pwzLXdxIO2MIMWW2UmaOs4gR0ngarHxA
+         7lG+VEkk+E8zUpet6JNK0jauqfsdIfyUKgCKQtu2geGvX0mz9WaVVjUPe5/uk265f8MZ
+         5/QA==
+X-Forwarded-Encrypted: i=1; AJvYcCWGesc249dhZr7Pp2yxu/0tiKf5d7XkjNGVFbYaVwas6J4szerk+fEPOaSmKFdX4Lh/2bkvAg8EleoWFodliw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzAzt5WJawkL9+b2aFLxp1YCSMuY2u4l7SOA5V/gs5Acp7YiAKE
+	mAgzF70sJai3tKuBB15pNSj9HwsSaRaqEHJhg9YCPmLgM6vYOnvGFletInuA/10=
+X-Google-Smtp-Source: AGHT+IHjxv29kLHZ8Fo/dsNBkftvA7EEKBCKkpaOY6CKVDCBvDvdsxOkGm7rtczS+9yz4TSx0Tg94Q==
+X-Received: by 2002:a17:902:da8f:b0:20c:e0ed:218 with SMTP id d9443c01a7336-20e5a8bd5demr61477435ad.9.1729495655608;
+        Mon, 21 Oct 2024 00:27:35 -0700 (PDT)
 Received: from ubuntu.huaqin.com ([116.66.212.162])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20e7f0db2desm19749595ad.203.2024.10.21.00.27.38
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20e7f0db2desm19749595ad.203.2024.10.21.00.27.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Oct 2024 00:27:40 -0700 (PDT)
+        Mon, 21 Oct 2024 00:27:35 -0700 (PDT)
 From: Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
 To: robh@kernel.org,
 	krzk+dt@kernel.org,
@@ -75,15 +75,15 @@ Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
-Subject: [PATCH v3 RESEND 4/4] arm64: dts: mediatek: Modify audio codec name for pmic
-Date: Mon, 21 Oct 2024 15:26:26 +0800
-Message-Id: <20241021072626.15102-5-xiazhengqiao@huaqin.corp-partner.google.com>
+Subject: [PATCH v3 RESEND 2/4] arm64: dts: mediatek: Add MT8186 Chinchou Chromebooks
+Date: Mon, 21 Oct 2024 15:26:24 +0800
+Message-Id: <20241021072626.15102-3-xiazhengqiao@huaqin.corp-partner.google.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20241021072626.15102-1-xiazhengqiao@huaqin.corp-partner.google.com>
 References: <20241021072626.15102-1-xiazhengqiao@huaqin.corp-partner.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241021_002742_047555_B671A5F6 
-X-CRM114-Status: GOOD (  10.14  )
+X-CRM114-CacheID: sfid-20241021_002736_258317_DBDF63D6 
+X-CRM114-Status: GOOD (  13.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,26 +98,465 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-change `codec` in pmic (in mt8186-corsola.dtsi) to `audio-codec`
+MT8186 chinchou, known as ASUS Chromebook CZ12 Flip (CZ1204F)
+and CZ12(CZ1204C), is a MT8186 based laptop.
+It is based on the "corsola" design.It includes chinchou and chinchou360,
+including LTE, stylus, touchscreen combinations.
 
 Signed-off-by: Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/Makefile         |   3 +
+ .../mediatek/mt8186-corsola-chinchou-sku0.dts |  18 +
+ .../mediatek/mt8186-corsola-chinchou-sku1.dts |  35 ++
+ .../mt8186-corsola-chinchou-sku16.dts         |  29 ++
+ .../dts/mediatek/mt8186-corsola-chinchou.dtsi | 321 ++++++++++++++++++
+ 5 files changed, 406 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-index 943837f20377..13e464dac1be 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-@@ -1276,7 +1276,7 @@
- 		interrupts-extended = <&pio 201 IRQ_TYPE_LEVEL_HIGH>;
- 		#interrupt-cells = <2>;
- 
--		mt6366codec: codec {
-+		mt6366codec: audio-codec {
- 			compatible = "mediatek,mt6366-sound", "mediatek,mt6358-sound";
- 			Avdd-supply = <&mt6366_vaud28_reg>;
- 			mediatek,dmic-mode = <1>; /* one-wire */
+diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+index 8fd7b2bb7a15..0db7770e8907 100644
+--- a/arch/arm64/boot/dts/mediatek/Makefile
++++ b/arch/arm64/boot/dts/mediatek/Makefile
+@@ -55,6 +55,9 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku32.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-pumpkin.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-chinchou-sku0.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-chinchou-sku1.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-chinchou-sku16.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393216.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393217.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393218.dtb
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts
+new file mode 100644
+index 000000000000..5d012bc4ff0d
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts
+@@ -0,0 +1,18 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2024 Google LLC
++ */
++
++/dts-v1/;
++#include "mt8186-corsola-chinchou.dtsi"
++
++/ {
++	model = "Google chinchou CZ1104CM2A/CZ1204CM2A";
++	compatible = "google,chinchou-sku0", "google,chinchou-sku2",
++			"google,chinchou-sku4", "google,chinchou-sku5",
++			"google,chinchou", "mediatek,mt8186";
++};
++
++&gpio_keys {
++	status = "disabled";
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts
+new file mode 100644
+index 000000000000..c18f473f6a0f
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts
+@@ -0,0 +1,35 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2024 Google LLC
++ */
++
++/dts-v1/;
++#include "mt8186-corsola-chinchou.dtsi"
++
++/ {
++	model = "Google chinchou CZ1104FM2A/CZ1204FM2A/CZ1104CM2A/CZ1204CM2A";
++	compatible = "google,chinchou-sku1", "google,chinchou-sku17",
++			"google,chinchou-sku3", "google,chinchou-sku6",
++			"google,chinchou-sku7", "google,chinchou-sku20",
++			"google,chinchou-sku22", "google,chinchou-sku23",
++			"google,chinchou", "mediatek,mt8186";
++};
++
++&gpio_keys {
++	status = "disabled";
++};
++
++&i2c1 {
++	i2c-scl-internal-delay-ns = <10000>;
++
++	touchscreen: touchscreen@41 {
++		compatible = "ilitek,ili2901";
++		reg = <0x41>;
++		interrupts-extended = <&pio 12 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&touchscreen_pins>;
++		reset-gpios = <&pio 60 GPIO_ACTIVE_LOW>;
++		vccio-supply = <&pp1800_tchscr_report_disable>;
++		vcc33-supply = <&pp3300_z2>;
++	};
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts
+new file mode 100644
+index 000000000000..eb377de1fcde
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts
+@@ -0,0 +1,29 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2024 Google LLC
++ */
++
++/dts-v1/;
++#include "mt8186-corsola-chinchou.dtsi"
++
++/ {
++	model = "Google chinchou CZ1104FM2A/CZ1204FM2A";
++	compatible = "google,chinchou-sku16", "google,chinchou-sku18",
++			"google,chinchou-sku19", "google,chinchou-sku21",
++			"google,chinchou", "mediatek,mt8186";
++};
++
++&i2c1 {
++	i2c-scl-internal-delay-ns = <10000>;
++
++	touchscreen: touchscreen@41 {
++		compatible = "ilitek,ili2901";
++		reg = <0x41>;
++		interrupts-extended = <&pio 12 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&touchscreen_pins>;
++		reset-gpios = <&pio 60 GPIO_ACTIVE_LOW>;
++		vccio-supply = <&pp1800_tchscr_report_disable>;
++		vcc33-supply = <&pp3300_z2>;
++	};
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
+new file mode 100644
+index 000000000000..389f8b66e968
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
+@@ -0,0 +1,321 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2024 Google LLC
++ */
++
++/dts-v1/;
++#include "mt8186-corsola.dtsi"
++
++/ {
++	/delete-node/ speaker-codec;
++
++	pp1000_edpbrdg: regulator-pp1000-edpbrdg {
++		compatible = "regulator-fixed";
++		regulator-name = "pp1000_edpbrdg";
++		pinctrl-names = "default";
++		pinctrl-0 = <&en_pp1000_edpbrdg>;
++		enable-active-high;
++		regulator-boot-on;
++		gpio = <&pio 29 GPIO_ACTIVE_HIGH>;
++		vin-supply = <&pp3300_z2>;
++	};
++
++	pp1800_edpbrdg_dx: regulator-pp1800-edpbrdg-dx {
++		compatible = "regulator-fixed";
++		regulator-name = "pp1800_edpbrdg_dx";
++		pinctrl-names = "default";
++		pinctrl-0 = <&en_pp1800_edpbrdg>;
++		enable-active-high;
++		regulator-boot-on;
++		gpio = <&pio 30 GPIO_ACTIVE_HIGH>;
++		vin-supply = <&mt6366_vio18_reg>;
++	};
++
++	pp3300_edp_dx: regulator-pp3300-edp-dx {
++		compatible = "regulator-fixed";
++		regulator-name = "pp3300_edp_dx";
++		pinctrl-names = "default";
++		pinctrl-0 = <&en_pp3300_edpbrdg>;
++		enable-active-high;
++		regulator-boot-on;
++		gpio = <&pio 31 GPIO_ACTIVE_HIGH>;
++		vin-supply = <&pp3300_z2>;
++	};
++
++	pp1800_tchscr_report_disable: regulator-pp1800-tchscr-report-disable {
++		compatible = "regulator-fixed";
++		regulator-name = "pp1800_tchscr_report_disable";
++		pinctrl-names = "default";
++		regulator-boot-on;
++		pinctrl-0 = <&touch_pin_report>;
++		gpio = <&pio 37 GPIO_ACTIVE_LOW>;
++	};
++};
++
++&dsi_out {
++	remote-endpoint = <&anx7625_in>;
++};
++
++&i2c0 {
++	clock-frequency = <400000>;
++
++	anx_bridge: anx7625@58 {
++		compatible = "analogix,anx7625";
++		reg = <0x58>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&anx7625_pins>;
++		enable-gpios = <&pio 96 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&pio 98 GPIO_ACTIVE_HIGH>;
++		vdd10-supply = <&pp1000_edpbrdg>;
++		vdd18-supply = <&pp1800_edpbrdg_dx>;
++		vdd33-supply = <&pp3300_edp_dx>;
++		analogix,lane0-swing = /bits/ 8 <0x70 0x30>;
++		analogix,lane1-swing = /bits/ 8 <0x70 0x30>;
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			port@0 {
++				reg = <0>;
++
++				anx7625_in: endpoint {
++					remote-endpoint = <&dsi_out>;
++					data-lanes = <0 1 2 3>;
++				};
++			};
++
++			port@1 {
++				reg = <1>;
++
++				anx7625_out: endpoint {
++					remote-endpoint = <&panel_in>;
++				};
++			};
++		};
++
++		aux-bus {
++			panel: panel {
++				compatible = "edp-panel";
++				power-supply = <&pp3300_disp_x>;
++				backlight = <&backlight_lcd0>;
++
++				port {
++					panel_in: endpoint {
++						remote-endpoint = <&anx7625_out>;
++					};
++				};
++			};
++		};
++	};
++};
++
++&i2c2 {
++	/delete-node/ trackpad@15;
++
++	touchpad@15 {
++		compatible = "hid-over-i2c";
++		reg = <0x15>;
++		interrupts-extended = <&pio 11 IRQ_TYPE_LEVEL_LOW>;
++		post-power-on-delay-ms = <10>;
++		hid-descr-addr = <0x0001>;
++		vdd-supply = <&pp3300_s3>;
++		wakeup-source;
++	};
++};
++
++&i2c5 {
++	clock-frequency = <400000>;
++	/delete-node/ codec@1a;
++
++	rt5650: rt5650@1a {
++		compatible = "realtek,rt5650";
++		reg = <0x1a>;
++		avdd-supply = <&mt6366_vio18_reg>;
++		cpvdd-supply = <&mt6366_vio18_reg>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&rt1019p_pins_default>;
++		cbj-sleeve-gpios = <&pio 150 GPIO_ACTIVE_HIGH>;
++		interrupt-parent = <&pio>;
++		interrupts = <17 IRQ_TYPE_EDGE_BOTH>;
++		#sound-dai-cells = <0>;
++		realtek,dmic1-data-pin = <2>;
++		realtek,jd-mode = <2>;
++	};
++};
++
++&i2c_tunnel {
++	/delete-node/ sbs-battery@b;
++
++	battery: sbs-battery@f {
++		compatible = "sbs,sbs-battery";
++		reg = <0xf>;
++		sbs,i2c-retry-count = <2>;
++		sbs,poll-retry-count = <1>;
++	};
++};
++
++&keyboard_controller {
++	keypad,num-columns = <15>;
++
++	function-row-physmap = <
++		MATRIX_KEY(0x00, 0x02, 0)        /* T1 */
++		MATRIX_KEY(0x03, 0x02, 0)        /* T2 */
++		MATRIX_KEY(0x02, 0x02, 0)        /* T3 */
++		MATRIX_KEY(0x01, 0x02, 0)        /* T4 */
++		MATRIX_KEY(0x03, 0x04, 0)        /* T5 */
++		MATRIX_KEY(0x02, 0x04, 0)        /* T6 */
++		MATRIX_KEY(0x01, 0x04, 0)        /* T7 */
++		MATRIX_KEY(0x02, 0x09, 0)        /* T8 */
++		MATRIX_KEY(0x01, 0x09, 0)        /* T9 */
++		MATRIX_KEY(0x00, 0x04, 0)        /* T10 */
++		MATRIX_KEY(0x00, 0x01, 0)        /* T11 */
++		MATRIX_KEY(0x01, 0x05, 0)        /* T12 */
++	>;
++
++	linux,keymap = <
++		CROS_STD_MAIN_KEYMAP
++		MATRIX_KEY(0x00, 0x02, KEY_BACK)           /* T1 */
++		MATRIX_KEY(0x03, 0x02, KEY_REFRESH)        /* T2 */
++		MATRIX_KEY(0x02, 0x02, KEY_ZOOM)           /* T3 */
++		MATRIX_KEY(0x01, 0x02, KEY_SCALE)          /* T4 */
++		MATRIX_KEY(0x03, 0x04, KEY_SYSRQ)          /* T5 */
++		MATRIX_KEY(0x02, 0x04, KEY_BRIGHTNESSDOWN) /* T6 */
++		MATRIX_KEY(0x01, 0x04, KEY_BRIGHTNESSUP)   /* T7 */
++		MATRIX_KEY(0x02, 0x09, KEY_MUTE)           /* T8 */
++		MATRIX_KEY(0x01, 0x09, KEY_VOLUMEDOWN)	   /* T9 */
++		MATRIX_KEY(0x00, 0x04, KEY_VOLUMEUP)	   /* T10 */
++		MATRIX_KEY(0x00, 0x01, KEY_MICMUTE)        /* T11 */
++		MATRIX_KEY(0x01, 0x05, KEY_CONTROLPANEL)   /* T12 */
++		MATRIX_KEY(0x03, 0x05, KEY_PREVIOUSSONG)   /* T13 */
++		MATRIX_KEY(0x00, 0x09, KEY_PLAYPAUSE)	   /* T14 */
++		MATRIX_KEY(0x00, 0x0b, KEY_NEXTSONG)	   /* T15 */
++		MATRIX_KEY(0x03, 0x00, KEY_LEFTMETA)	   /* Search*/
++		MATRIX_KEY(0x01, 0x0e, KEY_LEFTCTRL)	   /* Left Control*/
++		MATRIX_KEY(0x06, 0x0d, KEY_LEFTALT)        /* Left ALT*/
++		MATRIX_KEY(0x03, 0x0e, KEY_RIGHTCTRL)      /* Right Control*/
++		MATRIX_KEY(0x06, 0x0a, KEY_BACKSLASH)      /* BACKSLASH*/
++	>;
++};
++
++&mmc1_pins_default {
++	pins-clk {
++		drive-strength = <MTK_DRIVE_8mA>;
++	};
++
++	pins-cmd-dat {
++		drive-strength = <MTK_DRIVE_8mA>;
++	};
++};
++
++&mmc1_pins_uhs {
++	pins-clk {
++		drive-strength = <MTK_DRIVE_8mA>;
++	};
++
++	pins-cmd-dat {
++		drive-strength = <MTK_DRIVE_8mA>;
++	};
++};
++
++&pen_insert {
++	wakeup-event-action = <EV_ACT_ANY>;
++};
++
++&pio {
++	anx7625_pins: anx7625-pins {
++		pins-int {
++			pinmux = <PINMUX_GPIO9__FUNC_GPIO9>;
++			input-enable;
++			bias-disable;
++		};
++
++		pins-reset {
++			pinmux = <PINMUX_GPIO98__FUNC_GPIO98>;
++			output-low;
++		};
++
++		pins-power-en {
++			pinmux = <PINMUX_GPIO96__FUNC_GPIO96>;
++			output-low;
++		};
++	};
++
++	en_pp1000_edpbrdg: pp1000-edpbrdg-en-pins {
++		pins-vreg-en {
++			pinmux = <PINMUX_GPIO29__FUNC_GPIO29>;
++			output-low;
++		};
++	};
++
++	en_pp1800_edpbrdg: pp1800-edpbrdg-en-pins {
++		pins-vreg-en {
++			pinmux = <PINMUX_GPIO30__FUNC_GPIO30>;
++			output-low;
++		};
++	};
++
++	en_pp3300_edpbrdg: pp3300-edpbrdg-en-pins {
++		pins-vreg-en {
++			pinmux = <PINMUX_GPIO31__FUNC_GPIO31>;
++			output-low;
++		};
++	};
++
++	touch_pin_report: pin-report-pins {
++		pins-touch-en {
++			pinmux = <PINMUX_GPIO37__FUNC_GPIO37>;
++			output-low;
++		};
++	};
++};
++
++&sound {
++	compatible = "mediatek,mt8186-mt6366-rt5650-sound";
++	model = "mt8186_rt5650";
++	mediatek,adsp = <&adsp>;
++
++	audio-routing =
++		"Headphone", "HPOL",
++		"Headphone", "HPOR",
++		"IN1P", "Headset Mic",
++		"IN1N", "Headset Mic",
++		"Speakers", "SPOL",
++		"Speakers", "SPOR",
++		"HDMI1", "TX";
++
++	hs-playback-dai-link {
++		codec {
++			sound-dai = <&rt5650>;
++		};
++	};
++
++	hs-capture-dai-link {
++		codec {
++			sound-dai = <&rt5650>;
++		};
++	};
++
++	spk-share-dai-link {
++	};
++
++	spk-hdmi-playback-dai-link {
++		codec {
++			sound-dai = <&it6505dptx>;
++		};
++	};
++};
++
++&touchscreen_pins {
++	/delete-node/ pins-report-sw;
++};
++
++&wifi_enable_pin {
++	pins-wifi-enable {
++		pinmux = <PINMUX_GPIO51__FUNC_GPIO51>;
++	};
++};
++
++&wifi_pwrseq {
++	reset-gpios = <&pio 51 GPIO_ACTIVE_LOW>;
++};
 -- 
 2.17.1
 
