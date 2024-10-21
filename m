@@ -4,83 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0995CD0E6C8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2024 08:30:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79782D0E6C8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2024 08:31:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cAUk5W98O64U9IZMaqTyyBAdnws1M/z10hXkJohh3N0=; b=MsGGSE5Ar0Jr/kOw9Edfds3S0r
-	3MpKS3SrzruwAjZrnmumWzZZLeawMtJtvEz/a+xrORlvNfX1zUamfvBX5XZwSKGds/hzBQ9lhwNUC
-	zN8LOUsasd9jGRdfkTxYnV7csqauaOkWt+Zfo4GDF1Kj+6glRWJWmwcmij04aQBFFPLG11t8bgaMG
-	zNi8EglDNjJt83wENEoieUdea3XVKRWwnAs8ygLMTSlKTkajMwrh/IOuSvYjm0L2VcQnLZodgGtI3
-	vyvzlQHmri0qnZr6/ymGGu8QINW7/LIoDavYv2hfFhIfKhckdxkFR8PorneBQuwemp5M+aI/Uth4b
-	SfTjemqQ==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=WzxieUov7gUMeB2aP814TI9QYjdp88kKTPX9D7imhU4=; b=eLvB0ZIx12GSF4
+	5ZKTwgMP6P6TZefEgFTRnfZhutofHQqW2+9ZMyv4lPn7z5Q/rIXMIbfqRN8WkQyVFqyzXeMtkci7F
+	PYpq60niZYXh9F5r+0kvb0GDGlzsqp0eG69ZbxQK8skU55h+B9VQKEKUuogMDNDnPVecif4TZsx1g
+	YO1y8ps0mGpYO4iS/BUJ9DEmudDOpcxAC9CSPrpdYMSwdcFs8TCaQv/rt6v00wWQf5RV7v86HFRrW
+	lVolLXQJ584jtaxVRoT3xsbAu4Ycctk2WIHzC3iHUAZfQo+rDahWzZqRVtNJ3LSH0RfeLVD5wA+ov
+	B/WfgrYN2sqSvH3LLiDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2nnz-00000006Y4z-2oC6;
-	Mon, 21 Oct 2024 08:30:23 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1t2nov-00000006YwO-0cs7;
+	Mon, 21 Oct 2024 08:31:21 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2mfL-00000006KsW-21Mu;
-	Mon, 21 Oct 2024 07:17:25 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-2e3686088c3so3019314a91.0;
-        Mon, 21 Oct 2024 00:17:23 -0700 (PDT)
+	id 1t2mo8-00000006Mz1-2DWw
+	for linux-mediatek@lists.infradead.org;
+	Mon, 21 Oct 2024 07:26:39 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-4315baa51d8so39931915e9.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Oct 2024 00:26:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729495042; x=1730099842; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=cAUk5W98O64U9IZMaqTyyBAdnws1M/z10hXkJohh3N0=;
-        b=Cc7vZrJXZSACjN0NigfaGSDIXJ6MSCL8tD80Y+t5GWt3vEV6sR0MopZOgMGylk2gsS
-         Og9Xp3kq/ZAqJagiiR3ZCWV0Pv9nVSB7MFad65T5n0dFMdzROwRsV5svA5v7Xm3yBvYT
-         hLiq0lHyd4rqL+TZn3m2DJ4/hJ1a6gE9+5qcHrX8Bg6h+ppC6qXy682FhAe/3vAmZNBu
-         RSKw0lonGfWQR/5hq+opmzJpXSXybmX54Uihw1kB7Capwo5pPv/rbf4dHdbkvBxAlVIe
-         TsvEP5sQ6N+RYiMPLpDdfvWXdtr87SIbFSgKcwAMIvEYljPcjoQUYxgkHOQVpjqqH652
-         /9Kg==
+        d=linaro.org; s=google; t=1729495586; x=1730100386; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=WzxieUov7gUMeB2aP814TI9QYjdp88kKTPX9D7imhU4=;
+        b=Sas/GPXCLSTsmjpebGRKVQtDgMMC+Pl1+xop+esKznRHZukY5a6BuiQ7tf0t/Twhm8
+         z9hC21KnJm16VKUOr/4vyhR/qhcGWryabvFJy9Vb2fLTa/JFZ6DI8Z0sTfDKTKKfmmUP
+         nKvgObM1WizEzyX6mFPAp9HrO3RC60IrETZ8igq9b8B2vbjpUWkn5e/igj0niG/HV0u+
+         yYtndbkvyKD3RQGmsaHxFvr1dn0o0Ry6StUa7OkZ5oq54Bl4DBC5Cv6Q/HBG2XD6puxQ
+         sncqvzGl88wOD3yvXOX+GARzH/wbDOsSvXB9TGNkYmM+it35doUCjO3q1BfXYVdNPeok
+         25OA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729495042; x=1730099842;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=cAUk5W98O64U9IZMaqTyyBAdnws1M/z10hXkJohh3N0=;
-        b=cnn4HkhgVUsDOZJtJcvu+e7+kOh8IwvdUirxUlDfYguW0lkk2aiB4PHkN9tto3JvaP
-         twmTgqbbD/NISpJZJ5/OGSCb1vq2MYJp7rokQgA0TvoxFxCKsaoAWw2DzAeX006aHDJp
-         iL/r2EwqdE0fxo04YWHuV2W5ct4wa4HzlHqh7SPTQyJJjJsymGhDQ2GFSXWBdisEzscV
-         +Id4c1EYy760oAOJIflmHhn6nisnG7rT1WRvZqqca8TXIt3gkqTtBu7Q4SbEpsmF2jrJ
-         orR3Mc4X1Y0iTd1sbEKoAPywqDmRfO0XMdR8BIUYpepNf1vAhZZO2zXS17+V5ziMeh6K
-         VKwQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXcAI0FUIMdEYgSYbw/1lf0D7le+ObqX1bPJ5AR2GT1ylEPJssuKT8+ophoIEVqA+kRLbG0gZapHV0Q8NOfzRw=@lists.infradead.org, AJvYcCXjbWYV9NTlXY5jTJa8rKAKfO6nZTWE+ZG4vAbxDVS13ZKBjlOOPA86ujUWibOZd9Y9f232PLTSQL3eyfDaOjVf@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx2zha76klP9GTkc5ncgLK8mVrtMxPkPgHcrSR6GQgq1syowQRg
-	cJqD9+hOBj4zWidbAFr3TYzkfisggKcRnkmeCCzHRN3ch0MT0s7hyjeMcA==
-X-Google-Smtp-Source: AGHT+IGneQjtaluKEP/Dr7JWISPzjl8lPXj+gklNXWwqzoxaJiGA1EN7a1TRxGE1qWenqDLpbFxmXA==
-X-Received: by 2002:a17:90a:8d14:b0:2e2:c00c:cb79 with SMTP id 98e67ed59e1d1-2e5616db842mr11923766a91.3.1729495042427;
-        Mon, 21 Oct 2024 00:17:22 -0700 (PDT)
-Received: from google.com ([2620:15c:9d:2:6e21:7092:f7c7:3951])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2e5ad389146sm2818628a91.26.2024.10.21.00.17.21
+        d=1e100.net; s=20230601; t=1729495586; x=1730100386;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=WzxieUov7gUMeB2aP814TI9QYjdp88kKTPX9D7imhU4=;
+        b=jTkWqR5bT4sm/DJ5CEQ3d4u0xwXOspLAB0mL+4Dm6x/QMw/QzlV3NBUu4clDfr5r7p
+         Vns+AyukdooST1MPUC/Uj5Wmg2PxvNb0MS1dMwYXZfIMbe8NIajCQjjLSJ1wJ2vgSFTu
+         dYkvuIUwIe4v2yudjiKm8UyQ/LbgNSMdGks2l7wBiBKz68xnmbgRK8wmfw9SexaK7uX2
+         LKc4KBISlL4e36tLNt5xWVscbfLrROsUdKKd5oFKYKl/QAHLTy195kYpf/kBlWTa1SDF
+         VQRv9zYmYHviBAyWDNmr8yiEC95jxvJPOj2Sa+rf3quXVy9Y7xHgJEgNZ4InSnhfIcmp
+         g+Aw==
+X-Forwarded-Encrypted: i=1; AJvYcCXUJfc5AVbGvVUoNBXfvnd6PLQ4ao0yDeDNyATU6tG66oHUWzd1ewGVr40/Y5a5eudv/GVXWYsDgTgYTXcb6A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxnDy5Hdnp3oZtvpyoTx2l9PZWIOel4jPYhudhdMbwqrU3/lpYy
+	AkLwwpNeIlDvCTVo0S43Cmx27bLO/aqxJHwUYqY677zecGeCTGkER+gke1yVosE=
+X-Google-Smtp-Source: AGHT+IGRWrE0//mu6WZwxi/0r2C3AHfF6+eS6gx1UzTzYGI7pL3TplO6Tw+K257ZLYnvYye8kQkAuQ==
+X-Received: by 2002:a5d:4983:0:b0:37d:4d31:e86c with SMTP id ffacd0b85a97d-37eb487a580mr6500095f8f.44.1729495586128;
+        Mon, 21 Oct 2024 00:26:26 -0700 (PDT)
+Received: from localhost ([196.207.164.177])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37ee0b9baa7sm3523765f8f.96.2024.10.21.00.26.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Oct 2024 00:17:22 -0700 (PDT)
-Date: Mon, 21 Oct 2024 00:17:19 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-	matthias.bgg@gmail.com, chen.zhong@mediatek.com,
-	linux-input@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, macpaul.lin@mediatek.com,
-	kernel@collabora.com
-Subject: Re: [PATCH] dt-bindings: input: mediatek,pmic-keys: Add compatible
- for MT6359 keys
-Message-ID: <ZxX__86dGl5QNsYE@google.com>
-References: <20241008074137.20269-1-angelogioacchino.delregno@collabora.com>
+        Mon, 21 Oct 2024 00:26:25 -0700 (PDT)
+Date: Mon, 21 Oct 2024 10:26:22 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: oe-kbuild@lists.linux.dev, Yunfei Dong <yunfei.dong@mediatek.com>,
+	=?iso-8859-1?Q?N=EDcolas_F_=2E_R_=2E_A_=2E?= Prado <nfraprado@collabora.com>,
+	Sebastian Fricke <sebastian.fricke@collabora.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Nathan Hebert <nhebert@chromium.org>,
+	Daniel Almeida <daniel.almeida@collabora.com>
+Cc: lkp@intel.com, oe-kbuild-all@lists.linux.dev,
+	Hsin-Yi Wang <hsinyi@chromium.org>,
+	Fritz Koenig <frkoenig@chromium.org>,
+	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>,
+	Yunfei Dong <yunfei.dong@mediatek.com>, linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v5 1/5] media: mediatek: vcodec: setting request complete
+ before buffer done
+Message-ID: <f08b11c7-43b7-4fe5-be36-f069527cbd69@stanley.mountain>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241008074137.20269-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20241012064333.27269-2-yunfei.dong@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241021_001723_556093_E6A4BB36 
-X-CRM114-Status: UNSURE (   7.78  )
+X-CRM114-CacheID: sfid-20241021_002628_600819_E7DBACC4 
+X-CRM114-Status: UNSURE (   7.59  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,13 +107,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 08, 2024 at 09:41:37AM +0200, AngeloGioacchino Del Regno wrote:
-> Add a compatible for the keys found on the MT6359 PMIC.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Hi Yunfei,
 
-Applied, thank you.
+kernel test robot noticed the following build warnings:
+
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Yunfei-Dong/media-mediatek-vcodec-setting-request-complete-before-buffer-done/20241012-144607
+base:   git://linuxtv.org/media_tree.git master
+patch link:    https://lore.kernel.org/r/20241012064333.27269-2-yunfei.dong%40mediatek.com
+patch subject: [PATCH v5 1/5] media: mediatek: vcodec: setting request complete before buffer done
+config: arm-randconfig-r072-20241016 (https://download.01.org/0day-ci/archive/20241019/202410192150.2YkqysDO-lkp@intel.com/config)
+compiler: arm-linux-gnueabi-gcc (GCC) 14.1.0
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
+| Closes: https://lore.kernel.org/r/202410192150.2YkqysDO-lkp@intel.com/
+
+smatch warnings:
+drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c:272 mtk_vdec_stateless_cap_to_disp() warn: variable dereferenced before check 'vb2_v4l2_src' (see line 268)
+
+vim +/vb2_v4l2_src +272 drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+
+01abf5fbb081c0 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2023-07-29  247  static void mtk_vdec_stateless_cap_to_disp(struct mtk_vcodec_dec_ctx *ctx, int error,
+5c46486b8d2760 drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c Yunfei Dong 2024-10-12  248  					   struct vb2_v4l2_buffer *vb2_v4l2_src)
+8cdc3794b2e34b drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c              Yunfei Dong 2021-08-06  249  {
+7b182b8d9c8523 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2022-05-12  250  	struct vb2_v4l2_buffer *vb2_dst;
+7b182b8d9c8523 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2022-05-12  251  	enum vb2_buffer_state state;
+5c46486b8d2760 drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c Yunfei Dong 2024-10-12  252  	struct media_request *src_buf_req;
+8cdc3794b2e34b drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c              Yunfei Dong 2021-08-06  253  
+7b182b8d9c8523 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2022-05-12  254  	if (error)
+7b182b8d9c8523 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2022-05-12  255  		state = VB2_BUF_STATE_ERROR;
+7b182b8d9c8523 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2022-05-12  256  	else
+7b182b8d9c8523 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2022-05-12  257  		state = VB2_BUF_STATE_DONE;
+7b182b8d9c8523 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2022-05-12  258  
+7b182b8d9c8523 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2022-05-12  259  	vb2_dst = v4l2_m2m_dst_buf_remove(ctx->m2m_ctx);
+d879f770e4d1d5 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2022-11-17  260  	if (vb2_dst) {
+7b182b8d9c8523 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2022-05-12  261  		v4l2_m2m_buf_done(vb2_dst, state);
+41f03c673cb7b5 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2023-07-29  262  		mtk_v4l2_vdec_dbg(2, ctx, "free frame buffer id:%d to done list",
+7b182b8d9c8523 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2022-05-12  263  				  vb2_dst->vb2_buf.index);
+d879f770e4d1d5 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2022-11-17  264  	} else {
+41f03c673cb7b5 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2023-07-29  265  		mtk_v4l2_vdec_err(ctx, "dst buffer is NULL");
+d879f770e4d1d5 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2022-11-17  266  	}
+7b182b8d9c8523 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2022-05-12  267  
+5c46486b8d2760 drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c Yunfei Dong 2024-10-12 @268  	src_buf_req = vb2_v4l2_src->vb2_buf.req_obj.req;
+                                                                                                                                      ^^^^^^^^^^^^^^^
+Dereference
+
+7b182b8d9c8523 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2022-05-12  269  	if (src_buf_req)
+7b182b8d9c8523 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2022-05-12  270  		v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
+5c46486b8d2760 drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c Yunfei Dong 2024-10-12  271  
+5c46486b8d2760 drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c Yunfei Dong 2024-10-12 @272  	if (vb2_v4l2_src)
+                                                                                                                            ^^^^^^^^^^^^
+Checked too late
+
+5c46486b8d2760 drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c Yunfei Dong 2024-10-12  273  		v4l2_m2m_buf_done(vb2_v4l2_src, state);
+7b182b8d9c8523 drivers/media/platform/mediatek/vcodec/mtk_vcodec_dec_stateless.c         Yunfei Dong 2022-05-12  274  }
 
 -- 
-Dmitry
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
+
 
