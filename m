@@ -4,99 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5541CD0E6CF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2024 08:45:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E53AED0E6D5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2024 09:27:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4RuLV+gJE30OXtNyG+M95n2ScV6KSGMzKjcPSGYqH7I=; b=D3FmSXlx5VGteZfBgDYMWQm6qI
-	+nJGsPX+p1TUW3ykKNGcNCwdLuB2NA5vB4Fd/HZMk3dYPobM+vWQa3rANnpoEyp28rWxRsFo3CGyo
-	wh1RyGzFjuay7v89aCaE5DSc8aEC2Wx/0B54nNHkSUzz1cD1OI7CbCsENgVdRadpfBJMnNcBsal3/
-	8zdsHklxgiCLr+tpYFCeXBgHryFZv7CGvlYjo8OWD6B54ZA/FNKLtgo6MHo+/h+h8+wukse7zQIq3
-	NdomERcfySQYEmAUqgxJqRWAvkBq7xdVo81aAyBaSl1niEtJET4i8pN5q807rrOSbig3+90zZay+y
-	2ljvIhEg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZOPzM8nTUFqwLn8ohf0g1jVEfJikuSPUMDsCZxkKDsM=; b=lYWyHkQ1FB0aMMZdol52e/dvls
+	3ZZVGANwTDrxR/P4Z/B/T0ZJ//UyM5ctQfgFuL2sFOx3XEUcip3YK2cE//YN3pdNjuB7FtTFYcMq7
+	KfcwiP0+6OC11fsv2gXQX5Srz+y95YIa1enSUPVXC0WCiUwMyxgfCJ7x/yoeM/elyBaviEVsFWBkE
+	IQf7k6Z02ZDpfjxn8TvcFBUAApnIPzEKsV8DQpGiLgMtadO8S/9Ak+ZlBpo3DmnGVnY4j3iGMuVtN
+	bDOO1UwgV1+or+TSM56IysgHxcYowKmQysBz6dH+KxikoXJ7Md2f7j2xt90AnXYh2DqLxDT9fxoLx
+	Qe38GHMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2o2X-00000006bGG-3abh;
-	Mon, 21 Oct 2024 08:45:26 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1t2ohd-00000006hNk-3SXI;
+	Mon, 21 Oct 2024 09:27:53 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2mp4-00000006NEo-1LL4
-	for linux-mediatek@bombadil.infradead.org;
-	Mon, 21 Oct 2024 07:27:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Message-Id:Date:Subject:Cc:To:From:
-	Sender:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:In-Reply-To:References;
-	bh=4RuLV+gJE30OXtNyG+M95n2ScV6KSGMzKjcPSGYqH7I=; b=bRR/cQWLXgmwxAsysozN/Qd20I
-	4wTuiL+8lbmsfmTmAreRUBEQY0+X/bOskq+B9qd+VIL8PDKgO87l3Eh7y1S/87HbAO7ZYhLI9aTcL
-	0hC6Xky2lnRoZLvYyCKmYKFmw7Ifm8hvAoqJ55gw6VSg6Zd9iz26/r6VP6xnmykf5we/T9RkcSDbn
-	4bupEj9Bx1fK4ErxvA7GHaKl0WBzbR6HZYE0NP3rbQn4VaGqlV5nEciaDOvQ67d5KQ0+YECZyMc4K
-	06+8MIP/+6jF98LLDQCr5X7gGg3IHuDP5D5mdu/upP08EwHoRShEVktY3pymcAbLEF8FUS0KkbPk+
-	hbVIZTqw==;
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t2moz-00000007qdD-3rMI
+	id 1t2odd-00000006gcu-3K4m
 	for linux-mediatek@lists.infradead.org;
-	Mon, 21 Oct 2024 07:27:25 +0000
-Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-2e2e31aacbbso647126a91.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Oct 2024 00:27:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1729495638; x=1730100438; darn=lists.infradead.org;
-        h=message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=4RuLV+gJE30OXtNyG+M95n2ScV6KSGMzKjcPSGYqH7I=;
-        b=jruwE1KpLeECeXqsr+O/fuL0WcRiM3c0wJMRTwwvZBGNOOgcYKq2i+YnB5fkZtcczf
-         tHOIa5h8m+cVCDMnnqPHaOABi2xqABGY4R4ub3yOtQpMEHpsbQxM+QUpoa1LtsZmFnj3
-         er2zh/9IbT4kO6Fs0ZaYDRRBI64qFVy5w6Eh1oktUi4XzCKQVcGGw0PbODW0ixqcfjFA
-         nMGcCwrRLPUomN3W3yA5H0DvZRnDAalNL/mDN60NVGL0h9jPL6O2SbyJdXO5LPqukejp
-         nOmRbbbtJIq/ELWPFNFmnVIkUAuuQpq7P8A/ARNTwdcOzivChYRzeQwn4cmqZ5HCLNE9
-         CPvA==
+	Mon, 21 Oct 2024 09:23:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1729502623;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ZOPzM8nTUFqwLn8ohf0g1jVEfJikuSPUMDsCZxkKDsM=;
+	b=LAycIl5dpPbrEcT0Y6qkrq0DF/UKaZ2keuvnELpPQTNfH3aRLU0fgGOB/qVVkN0MvngJwt
+	nLOg6mLn71e+2PYK0Jk3LLSX/aR8ApAsSNxZJuEBCAD2gYJlkQm03b5t1wnK0ktQXvoRqv
+	AEJaP48dUjJ1ITCWN6LzIJUgEJ0og9U=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-433-t51yIRAPO-yZc-mP-wuhDQ-1; Mon, 21 Oct 2024 05:23:40 -0400
+X-MC-Unique: t51yIRAPO-yZc-mP-wuhDQ-1
+Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-37d603515cfso1883078f8f.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Oct 2024 02:23:39 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729495638; x=1730100438;
-        h=message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=4RuLV+gJE30OXtNyG+M95n2ScV6KSGMzKjcPSGYqH7I=;
-        b=Xte8QIJVJgmJS90qo8SnyluhIlpuViY6OSzqt6LBc9S3JHjK0qd/uwWEHAf3HZw9oq
-         bz3+fyt8cVGmMexbukiRZr1WGhUtW/l/iZ9H57VxmFuxqXntXd2PCmjHFhN6U9FGltKc
-         Nler7qdqA5hWy3zNabqa1/NLBBloxD6TCix65CG1GUEjJfdTJWwKKY3kYxuHdHWxCWsy
-         MUcOauZr4Yg5I492OKLNB1yo/jnFn8XlVn+jJuLbpUEQaTeKSPgSBCiIcwJ6lW/V1JDM
-         p4xzMVTo+ITTQVE7XSQi+/+4LKwoKInQWgsD1HsLJl2vr+/SSuLhkPf6GqXMe+a+cDgK
-         YXOQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWOxFUU1UOMiEyI34i59VyiOyCb2ktfAHwkq2w/5slRCo6pG6LhIRNYZ3hQ7hamqm+glKo4bo5nuziD/08Jlw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwtpJGsMXg9OYVFGWbUcNKBHegQzshPfjVAw0GXl6RYGgvH8dne
-	KieC1pVlAh03LzRhCUY6klUvk1RtN1vcnpmF+Do5txF0mPWSlpimzAjkWvKuwHY=
-X-Google-Smtp-Source: AGHT+IFpx0iTKEAwT3WlvkO5e1PC1FRTIM+OU/OYf9CVrGfExwAKk4Zt8qzMrBocxp4f1FZgpGEoUQ==
-X-Received: by 2002:a17:902:da8f:b0:20c:9285:e951 with SMTP id d9443c01a7336-20e5a71b46dmr62711105ad.3.1729495637905;
-        Mon, 21 Oct 2024 00:27:17 -0700 (PDT)
-Received: from ubuntu.huaqin.com ([116.66.212.162])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20e7f0db2desm19749595ad.203.2024.10.21.00.27.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Oct 2024 00:27:17 -0700 (PDT)
-From: Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
-To: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	wenst@chromium.org,
-	hsinyi@chromium.org,
-	sean.wang@mediatek.com
-Cc: devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
-Subject: [PATCH v3 RESEND 0/4] arm64: dts: mediatek: Add MT8186 Chinchou
-Date: Mon, 21 Oct 2024 15:26:22 +0800
-Message-Id: <20241021072626.15102-1-xiazhengqiao@huaqin.corp-partner.google.com>
-X-Mailer: git-send-email 2.17.1
+        d=1e100.net; s=20230601; t=1729502619; x=1730107419;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZOPzM8nTUFqwLn8ohf0g1jVEfJikuSPUMDsCZxkKDsM=;
+        b=HoBDySdMGkG9ubWO101Lw02j7ssdNP4o22yqy2TBZ1Rb/jNKPKk/4JVhTuOeoOlM7K
+         imCGLLZOIj7CIkeaMPyws4QG2kbMG+hArsmZY2UjbxQ2D9sdo9ke6ab3VMBYHVmV06n3
+         DWo2k7BJmqJDOzJO+dncyIUkh9YRSBtnsRuSDpW7g052hAIz4S19ThjloFRtcPuLdQ7B
+         lWLjr8IXKYydHXoXybwPJ3ia0jfjtzC1W2AVFos/9E1STlDusTt76oodVfnHLxnklrAe
+         Og2HUnVeN0FiU37ga40e6TNFL0STlUlfILdwGy/MONJiNuHb4vrqqEb5LBdnPPufoLbY
+         QpHw==
+X-Forwarded-Encrypted: i=1; AJvYcCUeiD2cayc56WGQ6+V/YHqx30xNmU6qCIVa3XNfSrRwSk3XCnx0a/ndcO/T1rOkKLWI26UZClwOarYrXrEgIA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyeir2e47UeKDc0OdBlCBHatoGA+uBsWxgUCq6xjVZ4yUwnFjZP
+	q0rxcBHHETp45lqpz2zHGn8zRYJEpFn6zr54asyOsRA+Ev32+FBFKI+XJ1g1R2SsVepbRSHQGKX
+	povYVmf1f6KwVcY2yQRbVsREs+U2UihJmv7/3zNeh2yALlyCcDRvnFWUPrV8xz00JXnnBQw==
+X-Received: by 2002:adf:f591:0:b0:37d:39df:8658 with SMTP id ffacd0b85a97d-37eab72a94dmr6219396f8f.58.1729502619018;
+        Mon, 21 Oct 2024 02:23:39 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHysyLKLLu8ecA+EiDeIyFSZdEdGbiDbJIKLmvhlv8Jpyw7lbNkChKbBAKP5wBfWcUaSVANmA==
+X-Received: by 2002:adf:f591:0:b0:37d:39df:8658 with SMTP id ffacd0b85a97d-37eab72a94dmr6219383f8f.58.1729502618678;
+        Mon, 21 Oct 2024 02:23:38 -0700 (PDT)
+Received: from ?IPV6:2a0d:3344:1b73:a910::f71? ([2a0d:3344:1b73:a910::f71])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4316f5cbe7dsm51045765e9.39.2024.10.21.02.23.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 21 Oct 2024 02:23:38 -0700 (PDT)
+Message-ID: <6b95c3c9-3b8b-4db3-b755-a3652c1a59cc@redhat.com>
+Date: Mon, 21 Oct 2024 11:23:36 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next 4/4] net: ethernet: mtk_eth_soc: optimize dma
+ ring address/index calculation
+To: Felix Fietkau <nbd@nbd.name>, Andrew Lunn <andrew@lunn.ch>
+Cc: netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20241015110940.63702-1-nbd@nbd.name>
+ <20241015110940.63702-4-nbd@nbd.name>
+ <e67883e3-b278-4052-849c-8a9a8ef145f0@lunn.ch>
+ <695421bb-6f31-4bae-8c8c-6d4fccf1b497@nbd.name>
+From: Paolo Abeni <pabeni@redhat.com>
+In-Reply-To: <695421bb-6f31-4bae-8c8c-6d4fccf1b497@nbd.name>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241021_082722_190047_465C37D1 
-X-CRM114-Status: GOOD (  11.61  )
+X-CRM114-CacheID: sfid-20241021_022345_955255_B2E3C254 
+X-CRM114-Status: GOOD (  17.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,43 +111,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is v3 of the MT8186 Chromebook device tree series to support
-MT8186 chinchou platform. It is based on the "corsola" design.
-It includes chinchou and chinchou360, including LTE, stylus,
-touchscreen combinations.
+On 10/15/24 15:07, Felix Fietkau wrote:
+> On 15.10.24 14:54, Andrew Lunn wrote:
+>> On Tue, Oct 15, 2024 at 01:09:38PM +0200, Felix Fietkau wrote:
+>>> Since DMA descriptor sizes are all power of 2, we can avoid costly integer
+>>> division in favor or simple shifts.
+>>
+>> Could a BUILD_BUG_ON() be added to validate this?
+> 
+> Not sure if that would be useful. I can't put the BUILD_BUG_ON in the 
+> initializer macro, so I could only add it for the individual dma 
+> descriptor structs.
+> Since the size of those structs will not be changed (otherwise it would 
+> immediately visibly break with existing hw), the remaining possibility 
+> would be adding new structs that violate this expectation. However, 
+> those would then not be covered by the BUILD_BUG_ON.
+> 
+>> Do you have some benchmark data for this series? It would be good to
+>> add to a patch 0/4.
+> 
+> No, I just ran basic tests that everything still works well and looked 
+> at the assembly diff to ensure that the generated code seems sane.
 
-Changes in v3:
-- Add a patch to change codec in pmic (in mt8186-corsola.dtsi) to audio-codec
-- Link to v2: https://lore.kernel.org/all/20241018091135.17075-1-xiazhengqiao@huaqin.corp-partner.google.com/
+Since this series is about performances, some related quick figures
+would be really a plus.
 
-Changes in v2:
-- Modify location of "const: google,chinchou-sku17" in mediatek.yaml
-- rename "pin-report" to "pin-report-pins"
-- add "vcc33-supply" and "vcc33-supply" 
-- rename "cbj-sleeve-gpio" to "cbj-sleeve-gpios"
-- modify subnode of sound 
-- Link to v1: https://lore.kernel.org/all/172900161180.733089.8963543745385219831.robh@kernel.org/
+At least we need a cover-letter to try to keep the git log history
+clean. Otherwise cooking the net-next PR at the end of the cycle will be
+a 10w worth task;)
 
-Zhengqiao Xia (4):
-  dt-bindings: arm: mediatek: Add MT8186 Chinchou Chromebook
-  arm64: dts: mediatek: Add MT8186 Chinchou Chromebooks
-  arm64: dts: mediatek: Add exton node for DP bridge
-  arm64: dts: mediatek: Modify audio codec name for pmic
+Please re-send with a cover letter.
+Thanks,
 
- .../devicetree/bindings/arm/mediatek.yaml     |  28 ++
- arch/arm64/boot/dts/mediatek/Makefile         |   3 +
- .../mediatek/mt8186-corsola-chinchou-sku0.dts |  18 +
- .../mediatek/mt8186-corsola-chinchou-sku1.dts |  35 ++
- .../mt8186-corsola-chinchou-sku16.dts         |  29 ++
- .../dts/mediatek/mt8186-corsola-chinchou.dtsi | 321 ++++++++++++++++++
- .../boot/dts/mediatek/mt8186-corsola.dtsi     |   8 +-
- 7 files changed, 441 insertions(+), 1 deletion(-)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
-
--- 
-2.17.1
+Paolo
 
 
