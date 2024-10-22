@@ -4,84 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10B7CD15D9D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2024 11:14:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26EB0D2C54B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2024 12:59:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0lIW4Wb18nTyhM0bbi98WhNBwSHn7JFubcRs4dz0PzM=; b=h3aOdByWdidinLGBh11RzxwsrH
-	d2v6dxgIQVS6Uj9IM4f1QTDg/b/hqTB1RVECzNieP7fdJ/DPrO31ECiCQiVZUfihfLnMRAKOebg9W
-	2K+73IO/Xn6pfXfpX88/kDJCHgXdorQyf6VhXCYUs8PS2Iv1YmW3egnB/9hEgRLVHuh56PNagOX3Y
-	DKKXLOASlUrIFkOvxLghtMZJRs18tGoSnOLXum/WVuQ7J+d/EFKBLghm2dNva/x7MyujH4m/HzMHc
-	W2WnC6qYzPhI+ruHI1p3lA2Kzzp8+f/uilHkDzMpNvTSh0nyYNExdZpmuAfZRbLrEx8t683/YZf5q
-	fL4RrfRQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UpmCaq26BAB4tD60HxMfnCodU9sI9yR7/v7ZAMT12Zg=; b=c6GOJUWgPwvB/Vg/Czax3qdFA8
+	/BFNW6I/LP1VwX2k923hAZS548Z3IvpnZg/ADnzuVDVaDhT3II9OBNcul+EHIed/ptENELubRKQW4
+	jGfPmoJ9D3zQ79oZUiMlP5gSgpoUdmrePPSYXDZjaF5+k63m8lXRkKQ4DlZhDPObuVZASb1EKvX5v
+	EAfDyWQGHeNhZ6Qjoou/eWyUYCXrH78YLuCQD/DhETx1ezweDdEasqH2sIATjH+4a9dvFrBS1HLyQ
+	vwcBsbFHm+XIlWrYlLjUCt3XnJLn0gdvujL9LzhbNGW8T3HCGvgakifb2E6rJur6d1FfNG2CPmpnp
+	48qL1CCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3Cqe-0000000Af66-3V3t;
-	Tue, 22 Oct 2024 11:14:48 +0000
-Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
+	id 1t3ETr-0000000AtCI-3UAJ;
+	Tue, 22 Oct 2024 12:59:23 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3Cqb-0000000Af3t-27SU
-	for linux-mediatek@lists.infradead.org;
-	Tue, 22 Oct 2024 11:14:46 +0000
-Received: by mail-yb1-xb36.google.com with SMTP id 3f1490d57ef6-e291f1d659aso4999488276.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 22 Oct 2024 04:14:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1729595684; x=1730200484; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=0lIW4Wb18nTyhM0bbi98WhNBwSHn7JFubcRs4dz0PzM=;
-        b=mRnop8Phs6CMxI/LqKhj77r3Sz8yY8MCOCvZ3ox/PFlrQJulF09bWzvUAyOoy8wvGg
-         W37Mxm1Ot6QVucaoSx3E46Q26H1GN/oN4oHZTHAyWzst3qC6DxO04t522j1GziqDZjjI
-         hf7VClupDuDKATEWEqGX91253hT08IEZw0xp9LYeHAOwhyWwFm07PmxabCB/u4qbbWZN
-         oT2J4yYr5oaOWnB6ogob9+mXc3UiMYdOr+9QA4AUYj1EmM5A2LobFSVYJD6azFfkpobK
-         ICw8apubZnagKzvlA/xomkTYYC/X9j0bvyvr2k4AzdNb/0LBbMUpRXxQeUTnKldSbEJP
-         ud3Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729595684; x=1730200484;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=0lIW4Wb18nTyhM0bbi98WhNBwSHn7JFubcRs4dz0PzM=;
-        b=C11Z9exfcNXXCUsg4CkgMOkZN73KUuxxQnREGKI5H6C05krcgf94xGQULwFROlL3ec
-         CrpcW2pBbmE7iNo9v2tZbtZdtybGzPPiiOB8oyjO6K+yhsikzQ0oddgw4KiEauxJWJrg
-         B82HBLulPrFBfewFU3jjZxI3JmNf5xAKqffn3l7zmVZYLVBRju4aZJnthDYxwPbwXp8f
-         Uwljzf63CySo2t5PIeYyNWcwIE4xCQJv1SiDyIlsUx5CZ1Lwvy8bi2uviVIOECoYxWBw
-         Yf2RrjJ+fALfnKbBwjPlKn5ortSsN4r9B3TwurNy4zMebgKWJVqOJedBC4SOTloFnMfp
-         bA9A==
-X-Forwarded-Encrypted: i=1; AJvYcCVhNwo/vlV3tAL1uGcDpeRs7RDL0PTWKwy5EjNoLyUVJQZ0YamgJ/368zkitQgdaJmMG0Grd4WhVpbxRzF3gw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yya4S7yu7Ev2AaLaHKY7zQ7LmaJc+3EWcaj/G9blnItSukQlzeu
-	/L3VY9QOEC3VpgCWHs9uSgwGPi7wvOLPDwCdcbL1w9Bi7XY0y1P5Ng684YU8mleAFRmT6B/tTgT
-	DWSUS8G81uJwGI9ogZ07G+DDr9IHokn/xwICfAQ==
-X-Google-Smtp-Source: AGHT+IFpse40o4X8e1WY4RLX2IO8eNJPCGg/k4PLRJOFjrePcxo0X9oUrn9Lc5Wix32KzQ4Lv5WuGRPtSxG1lG0RICc=
-X-Received: by 2002:a05:6902:2b06:b0:e2b:db9c:5366 with SMTP id
- 3f1490d57ef6-e2bdb9c5505mr7783762276.37.1729595684226; Tue, 22 Oct 2024
- 04:14:44 -0700 (PDT)
+	id 1t3ESI-0000000Asxv-1H8B;
+	Tue, 22 Oct 2024 12:57:47 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 77F39A432B7;
+	Tue, 22 Oct 2024 12:57:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 43DC0C4CEE6;
+	Tue, 22 Oct 2024 12:57:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1729601864;
+	bh=GhYhjo2Z9FXBqZLMmzftfla/w2fS4jR3pdlc1PSB8Es=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=Y7Zy40NTxTXzsVIMsT9PJtRoaaQy4RFyKGIWk61W5cmWzS5rRfY0G/Oz0fmT8LXSi
+	 wVvAorDhk+7Qvax7NV4h8J/UCddznFam5pyWU6sfWXu+y6ubcTYmUOLXy4rft3JVP2
+	 J58AFoY7rC7DLQNBzgdolMPwSOHZ2cwe4Yzn+POs51/QuMElvucxUchAlyn7CAwCOZ
+	 rf1IwrZHCLjORkZM3papXb2oVlmNNqjEeQ6M+EX3uqgf13jmph6KtSYBZhgGxBR6o3
+	 8RjqK57K09VN63qgbvNT0nlHQ8PbEiQM5dq7lMdJ8r+JHYe/SBeuBD6//elaqTm3Ok
+	 i+OwBaejHNnlw==
+Received: by mail-pj1-f44.google.com with SMTP id 98e67ed59e1d1-2e2e8c8915eso4422176a91.3;
+        Tue, 22 Oct 2024 05:57:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCUJe8htt6OLoAaQuQzOdPSR1Z/lI9F133sSd+JlOQhAeX26u9cOlsLedX8rCPRRblhlkI8ECr3nir0fZcBB6Gv5@lists.infradead.org, AJvYcCWMILnQSKhQLvKdYCF4JziuQ8HB6OdlblfnFh9CMrW8tNCOaJMtbxh89bZMFfQhCxC7JqTDl60oOAbbH+aL2/o=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwLKGdQH8l9WvktxzlxhlPzhvkFd70h6+EE6qZq14z8Etyvl5gK
+	0lFopYM2fQOOjpJswT7k5JAzU/V7P3VbJ3TmVsdCrHJm9zwCcJDpVHgNn3fO3ANFQzMPQaM9nro
+	d0VHjsS7kMqt+XX6CQBQT7OkBMA==
+X-Google-Smtp-Source: AGHT+IHDPBVccyietVt0eoOPH++rNW8m28x85sMWW+Dmxt+0VFr1aS34/bDRGwrVWPxtoil8Pjk3sREsZd5vx2UMbic=
+X-Received: by 2002:a17:90b:1649:b0:2e2:a2f0:e199 with SMTP id
+ 98e67ed59e1d1-2e5616c543cmr16488894a91.8.1729601862855; Tue, 22 Oct 2024
+ 05:57:42 -0700 (PDT)
 MIME-Version: 1.0
-References: <20241017085136.68053-1-y.oudjana@protonmail.com>
-In-Reply-To: <20241017085136.68053-1-y.oudjana@protonmail.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Tue, 22 Oct 2024 13:14:08 +0200
-Message-ID: <CAPDyKFqck_0vwNVLzAubHArF2XH_S5pWNwPOfFkom1pPE0hoVg@mail.gmail.com>
-Subject: Re: [PATCH v3 0/2] MediaTek MT6735 SCPSYS support
-To: Yassine Oudjana <yassine.oudjana@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+References: <20241009034646.13143-1-jason-jh.lin@mediatek.com>
+In-Reply-To: <20241009034646.13143-1-jason-jh.lin@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Tue, 22 Oct 2024 20:58:03 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__fuUpvFeFXZrmvmFAM+92a-UJ9-ye6hQZHS_BHXpbAUA@mail.gmail.com>
+Message-ID: <CAAOTY__fuUpvFeFXZrmvmFAM+92a-UJ9-ye6hQZHS_BHXpbAUA@mail.gmail.com>
+Subject: Re: [PATCH v11 0/5] Fix degradation problem of alpha blending series
+To: "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+Cc: Adam Thiede <me@adamthiede.com>, Yassine Oudjana <yassine.oudjana@gmail.com>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Alexandre Mergnat <amergnat@baylibre.com>, Fabien Parent <fparent@baylibre.com>, 
-	Markus Schneider-Pargmann <msp@baylibre.com>, Alexandre Bailon <abailon@baylibre.com>, 
-	Chen-Yu Tsai <wenst@chromium.org>, Eugen Hristev <eugen.hristev@collabora.com>, 
-	MandyJH Liu <mandyjh.liu@mediatek.com>, Yassine Oudjana <y.oudjana@protonmail.com>, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
+	Shawn Sung <shawn.sung@mediatek.com>, Alper Nebi Yasak <alpernebiyasak@gmail.com>, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	Singo Chang <singo.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241022_041445_566565_0B8D8522 
-X-CRM114-Status: GOOD (  15.05  )
+X-CRM114-CacheID: sfid-20241022_055746_511146_D85C0BE2 
+X-CRM114-Status: GOOD (  19.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,49 +87,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 17 Oct 2024 at 10:51, Yassine Oudjana <yassine.oudjana@gmail.com> wrote:
->
-> From: Yassine Oudjana <y.oudjana@protonmail.com>
->
-> These patches are part of a larger effort to support the MT6735 SoC family in
-> mainline Linux. More patches (unsent or sent and pending review or revision)
-> can be found here[1].
->
-> This series adds support for most SCPSYS power domains on MT6735. See patches
-> for details.
->
-> Changes since v2:
-> - Rename DT bindings header to mediatek,mt6735-power-controller.h
-> - Remove comment citing header from DT bindings
-> Changes since v1:
-> - Squash DT binding patches
-> - Dual-licence DT binding as GPL/BSD
-> - Switch to mtk-pm-domains driver
-> - Add MFG bus protection bit
->
-> [1] https://gitlab.com/mt6735-mainline/linux/-/commits/mt6735-staging
->
-> Yassine Oudjana (2):
->   dt-bindings: power: Add binding for MediaTek MT6735 power controller
->   soc: mediatek: pm-domains: Add support for MT6735
->
->  .../power/mediatek,power-controller.yaml      |  1 +
->  .../bindings/soc/mediatek/scpsys.txt          |  1 +
->  drivers/pmdomain/mediatek/mt6735-pm-domains.h | 96 +++++++++++++++++++
->  drivers/pmdomain/mediatek/mtk-pm-domains.c    |  5 +
->  drivers/pmdomain/mediatek/mtk-pm-domains.h    |  2 +
->  .../power/mediatek,mt6735-power-controller.h  | 14 +++
->  include/linux/soc/mediatek/infracfg.h         |  5 +
->  7 files changed, 124 insertions(+)
->  create mode 100644 drivers/pmdomain/mediatek/mt6735-pm-domains.h
->  create mode 100644 include/dt-bindings/power/mediatek,mt6735-power-controller.h
->
+Hi, Jason:
 
-Applied for next, thanks!
+Jason-JH.Lin <jason-jh.lin@mediatek.com> =E6=96=BC 2024=E5=B9=B410=E6=9C=88=
+9=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8A=E5=8D=8811:46=E5=AF=AB=E9=81=93=EF=
+=BC=9A
+>
+> Some SoCs do not support the ignore_pixl_alpha flag, which breaks the
+> XRGB8888 format. Some SoCs do not support pre-multiplied pixel formats
+> and extending configuration of OVL pre-multiplied color formats,
+> such as MT8173.
+>
+> Fix the SoC degradation problem by this series.
 
-While applying I took the liberty to change the prefix of patch 2 into
-"pmdomain: mediatek".
+For this series, applied to mediatek-drm-fixes [1], thanks.
 
-Kind regards
-Uffe
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-fixes
+
+Regards,
+Chun-Kuang.
+
+>
+> Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+>
+> Change in v11:
+> Fix typo in commit message.
+>
+> Change in v10:
+> 1. Fix the commit message and comment for OVL_CON_AEN
+>
+> Change in v9:
+> 1. Add the fix patch for the XRGB8888 downgrade issue of MT8173
+> 2. Add the refine patch for ignore_pixel_alpha statement
+>
+> Change in v8:
+> Remove blend_modes for not supported pre-multiplied SoCs to fix the
+> return error from drm_plane_create_blend_mode_property().
+>
+> Change in v7:
+> 1. Add the remove color format comment patch for OVL
+> 2. Fix warning: 'const' type qualifier on return type has no effect
+>
+> Chnage in v6:
+> 1. Use blend_modes instead of function pointer in OVL
+> 2. Use ethdr instead of mdp_rdma to get blend_modes
+> 3. Add 0 checking for adding blend_mode property for mtk_plane
+>
+> Change in v5:
+> Add fix patch for mtk_plane
+>
+> Change in v4:
+> Add lost cases of mtk_ovl_fmt_convert_with_blend
+>
+> Change in v3:
+> Change MACRO approach to function pointer in driver data
+>
+> Change in v2:
+> Fix build error and typo
+>
+> Change in v1:
+> Add fix patch for OVL unsupport color format settings by driver data
+>
+> ---
+>
+> Jason-JH.Lin (5):
+>   drm/mediatek: ovl: Fix XRGB format breakage for blend_modes
+>     unsupported SoCs
+>   drm/mediatek: ovl: Refine ignore_pixel_alpha comment and placement
+>   drm/mediatek: ovl: Remove the color format comment for
+>     ovl_fmt_convert()
+>   drm/mediatek: ovl: Add blend_modes to driver data
+>   drm/mediatek: Add blend_modes to mtk_plane_init() for different SoCs
+>
+>  drivers/gpu/drm/mediatek/mtk_crtc.c           |  1 +
+>  drivers/gpu/drm/mediatek/mtk_ddp_comp.c       |  2 +
+>  drivers/gpu/drm/mediatek/mtk_ddp_comp.h       | 10 +++
+>  drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  2 +
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c       | 70 ++++++++++++++-----
+>  .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   |  7 ++
+>  drivers/gpu/drm/mediatek/mtk_ethdr.c          |  7 ++
+>  drivers/gpu/drm/mediatek/mtk_ethdr.h          |  1 +
+>  drivers/gpu/drm/mediatek/mtk_plane.c          | 15 ++--
+>  drivers/gpu/drm/mediatek/mtk_plane.h          |  4 +-
+>  10 files changed, 92 insertions(+), 27 deletions(-)
+>
+> --
+> 2.43.0
+>
 
