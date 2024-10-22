@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98E62D1CDC7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2024 09:18:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B8F8D1CDC8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2024 09:19:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V/i9UNKzeNlJvAobgPCyINeJt6Eg4b1cJLzbszZhyTc=; b=peR+Db7cJh5xSER/9DmBCHBEE9
-	IRbg7uNZFMRm3nXadOBRqmA4YRHA6bwkqg0XSqXesVxU3ifgeK8PrQ3VleVrDCCNqK+XcuAHrTMnv
-	yu4tnHUfFi0fKiLRrsTD07Cx4h/iVDzShbNEwQnUIVTDXG8gEvqOz4M65rDaNrmasFpN0/CGbocql
-	BOlRweef0cR9gPtjy5Xu3HQhpCImQ4fcMpFju7i0C5/lsuWzCxRjk5G8juEIvBEihy1h7ZoVFTnWL
-	sfS5UWzBvYlbMmgexVyFm2ByyZucVFPJM9hAOdm5rzksooSny3oyASlJkHdeSyv5blUBgYrbdNPeg
-	/m4rH/Zw==;
+	bh=oYE7u2NNMhizaVu4uj0xF1gP32vqIhz69DY3rZXnlDA=; b=iDEceskNcNioHQ7BPznF6CykI0
+	lLiG3D41SEGAgebFsu/Rdofg0Yy/UDShoe4NvQLo3iZgGzy2Fu6fLgpzEUiEPP2X/b3HaL4dG2dZt
+	rkvEwnmzEsrwaXie3ix0wjbgcW3HAIVFx6hEL9ZpACPWQlGfz3UJL1NQqnud3x7Mw9JXF+V5faGHe
+	FwGRicMH3rG3HMJ+rUID4Vm3umeVElgRdiv95tWn3JSiFheSNY3OBm+xoAcjy7wmPnEYPuVH0G2xj
+	BkX3vahZu5ffFP1Zf5mZXEUSvu7ISgRDAS3Elmuu9EB7tTxrwgLHVSciL969P9urXXVT6cR1LinzK
+	MlHedqYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3B2Y-0000000AK6u-16zV;
-	Tue, 22 Oct 2024 09:18:58 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1t3B2i-0000000AKDH-2oHM;
+	Tue, 22 Oct 2024 09:19:08 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3Azt-0000000AIx1-0Gl7;
-	Tue, 22 Oct 2024 09:16:15 +0000
+	id 1t3Azt-0000000AIx5-1zkj;
+	Tue, 22 Oct 2024 09:16:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1729588571;
-	bh=8I1J+Ow2u6TaDaq3YClWuoQ4+wuldxjkbbLHsfWOIOI=;
+	bh=Nx4K4qHhijgkkN36huYLT2ycTLY7lXkDiYfysKifHAg=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=fsd1JyMo0inTZbf/lAH97EXxZxpTJpitc/x4HavJUZTAt1HnAYyIxAH6Pdrn44LtR
-	 k4/QyQTR/zMkyxJlVEAkUIjqV+9QB2ERlN3LL+jmdTdTpGP19b52qLLqoORYUuLW3K
-	 mnEW3XoE6VBXH8f/6JHhxUwb5ZGa9q7Xk88va/rnA1m1FGK+ImaoH9HwvfghHEQ5rs
-	 0chn5pnDUPipDSqfKm0S0hEoouCsKCB5pbQsS4y0Gr7yn3lV5q6W1rT/2ZV5MkKrPc
-	 4rK4ofl+M3uWt3/bXHEpDGk+gtmAPN0CIAjepx0h1Mrl7jhTj9xi43rL7DWqU7MPmX
-	 xtaulbxExcGGg==
+	b=SO8kGZtPX+MyHyxdiQqp0nQPXAE17o02MF1xL8Vf3WOvCHf1rRS8SjtKDsuHkSe2k
+	 7O9JO4WPXAdy1WnX6VqU71/EehHrUJkZvaa4HDwB8g4CzpHALAwy3TQYw8zZCwnu44
+	 QevXoLw2UzyktMYd/xn0mJG1S8fWzd/rS1z6GZjuXxIvOrt04h8Jh7jJncb/ZA6Ci2
+	 cel7ctySV33J/PXAtZVBAWaFVDItIZfecJAwEyMenhqddqLpjUsx63SngpTktC2nXU
+	 hlofxSohgPqN1/HkOzJYMNe2MvkjPhAJZLMG1oWwAj7R9tTGC8m+0fPAiE4Wf7MznI
+	 keRmUz8HDpJgA==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2CD8217E12D6;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8CEF317E137D;
 	Tue, 22 Oct 2024 11:16:11 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, 
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20241018082001.1296963-1-wenst@chromium.org>
-References: <20241018082001.1296963-1-wenst@chromium.org>
-Subject: Re: [PATCH v2] arm64: dts: mediatek: mt8173-elm-hana: Add
- vdd-supply to second source trackpad
-Message-Id: <172958857114.72613.13256249212455678116.b4-ty@collabora.com>
+ Fei Shao <fshao@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20241021081311.543625-1-fshao@chromium.org>
+References: <20241021081311.543625-1-fshao@chromium.org>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8188: Fix USB3 PHY port
+ default status
+Message-Id: <172958857153.72613.8539161640798181554.b4-ty@collabora.com>
 Date: Tue, 22 Oct 2024 11:16:11 +0200
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241022_021613_282700_372FFE30 
-X-CRM114-Status: UNSURE (   9.82  )
+X-CRM114-CacheID: sfid-20241022_021613_785108_58B52FCC 
+X-CRM114-Status: UNSURE (   9.36  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,21 +76,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 18 Oct 2024 16:20:00 +0800, Chen-Yu Tsai wrote:
-> The Hana device has a second source option trackpad, but it is missing
-> its regulator supply. It only works because the regulator is marked as
-> always-on.
+On Mon, 21 Oct 2024 16:10:47 +0800, Fei Shao wrote:
+> The T-PHY controller at 0x11e40000 controls two underlying USB2 and USB3
+> PHY ports. The USB3 port works normally just like the others, so there's
+> no point in disabling it separately. Otherwise, board DTs would have to
+> enable both the T-PHY controller and one of its sub-nodes in particular,
+> which is slightly redundant and confusing.
 > 
-> Add the regulator supply, but leave out the post-power-on delay. Instead,
-> document the post-power-on delay along with the reason for not adding
-> it in a comment.
+> Remove the status line in the u3port1 node, so it's ready to be used
+> once the T-PHY controller is enabled.
 > 
 > [...]
 
 Applied to v6.12-next/dts64, thanks!
 
-[1/1] arm64: dts: mediatek: mt8173-elm-hana: Add vdd-supply to second source trackpad
-      commit: f766fae08f6a2eaeb45d8d2c053724c91526835c
+[1/1] arm64: dts: mediatek: mt8188: Fix USB3 PHY port default status
+      commit: 6bb64877a41561bc78e0f4e9e04d524a0155d6aa
 
 Cheers,
 Angelo
