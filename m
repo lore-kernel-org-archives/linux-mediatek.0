@@ -4,164 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE570D1CDB8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2024 08:50:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4955D1CDC7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2024 09:16:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=X6hrUn/HotgPfyIsbxxBO3trV1dgy7qwIeCsrEiWcvs=; b=1JlGPN9LM5M27TVgwmnBDQ1lyb
-	uw2aMeoN+osawWfH1O+qWOnL5VJos1C4EcvW/I64Iw/oATSm5gs+1VnDqABcri+GL6YVvfzb44BjX
-	qQBBCq87G6Wd5Iyen8u7XQd5wprgVPRlNwtkklDg1kPNv0E7wkxfJq94Y6QHHaVpbn9dFgMyFOHBt
-	IIwtUdY7mzjkVwxBw2Tmcg2kI3SWA24AtIXv8TTIyJ7puhu0UqVkAtSTXDhuKBxJo/xQuRbMnI9bG
-	VyJ6JZ7NK4pspIdmkwFJa0el0qTQ8p3ZRl3sXBtMiG5vz42kmKMQDrETm8SSYCNqMyUgJqA327FOZ
-	5aXJhzxA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vRfqxnoK/KLTdp/ck4/0XIblrGEl3H6NYMSAWeEIXNk=; b=QSLRHQnPvUFrlM/QAMTAdrxzZW
+	uOT5PaGPN8b+SADjxh953TAshW4abw1+w1nnro26NXVatj+lj8Yo5c7tH9m26K3crkBqQBXTCxhv8
+	x8zWzNMq6iog1EzTZJk7rURNQsqyxeon1+OvJrOpHJmMc2rXVmmcsqnzrGs8Ec16XyRMdklyrrXRL
+	X9+ACDPCC+5LV2YPkLnmbw5RtJ/U79h+xBc87XsrMviNp6USfP9se0G5mRGUYLbyT3PJOxfW2ZlFl
+	gMS/4LUgSV8nvAVf2Dck3wWOcGJSHXcXfu/fA/BIV0ib7SPm3ldsA8lBpmKr0KdtIpsSRRjyDhFU1
+	7YCCLuHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3Ab8-0000000AERB-30lS;
-	Tue, 22 Oct 2024 08:50:38 +0000
-Received: from mail-psaapc01on20705.outbound.protection.outlook.com ([2a01:111:f403:200e::705] helo=APC01-PSA-obe.outbound.protection.outlook.com)
+	id 1t3B0W-0000000AJ9q-2GBY;
+	Tue, 22 Oct 2024 09:16:52 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3AVI-0000000ADH1-1h6h;
-	Tue, 22 Oct 2024 08:44:37 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=WN7MLG+7ZGOGdPe7KuNVHDbiEnd3yquHJZc/xEz92h/nQKL1f17XzrUG7ZH4jsJcwlbst5b7Q81Qfco0DSENp03U2VuptcNuWk40T/xO9Hg5YRp+NyMsxOJBDzyo0kA0UQyHfdXCwna8wyGxoO9cKcI5GcKMyzAnJ9gQOZMUfAPnN3i24h9+bKfi/e5q9aitgQOvJLM+oin09xA+boIhxnuAvyPcMJGINDWvWnWGcCvfhdaHIhkePkv3vVNp25O2Ap0lEeXSqsU65/l3VVdJX1e/geoSZjj/6adeoMK4tnSacv1DJuSmO8j8UA2CHyWg/7h9e8sXePP/cb7b9bpXMQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=X6hrUn/HotgPfyIsbxxBO3trV1dgy7qwIeCsrEiWcvs=;
- b=YDa2BSyBbeSNRJYUPPVwGgzFSDP9fEfmqVCpUWH8eXbWcLZ8nlb01B0V2/U3lUsyupcMmtbpaXv2l196sDcskcnVqmCQAMIOHMq11uOHPE9n278ihhqH0LnTiCQBntUddDa7cDfxclSF/eU5WXgx2NVLrJQFY2kjKxAJquv6rKfIILNe5U3MxwRD4bc2tXaHFfcCQPDgmc47JfuG8Wt50wDl1hAa1pJRwBtPT2oqLNqvhLEj1fqPDLDF4QO0ETrHogwtnGIgkkqO1V1tP8KpVrrjdid1jQAnvUcSPFesV5lpJGreStyGi5Hk9QNGHF/KQ5JYJdlmEdJoi1KCWErVlA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fibocom.com; dmarc=pass action=none header.from=fibocom.com;
- dkim=pass header.d=fibocom.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fibocomcorp.onmicrosoft.com; s=selector1-fibocomcorp-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=X6hrUn/HotgPfyIsbxxBO3trV1dgy7qwIeCsrEiWcvs=;
- b=RZyKmLDXk2J1bFZQRvlfjxu9+CL+cR/PAu2Yqv9xm/sOkK3EmEbwKzepKnPwrJfw1N4joVrllSUnQfxKt2a/GwjWX2iRyLSP2l5xu4jhTsMfv3b6/sJzMN3iBXvyhtp5id1fqFP0zfDqAB1UUDxvLc41fweGivCXy5MwWw7RNjs=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=fibocom.com;
-Received: from TY0PR02MB5766.apcprd02.prod.outlook.com (2603:1096:400:1b5::6)
- by SI2PR02MB5562.apcprd02.prod.outlook.com (2603:1096:4:1a6::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8069.23; Tue, 22 Oct
- 2024 08:44:11 +0000
-Received: from TY0PR02MB5766.apcprd02.prod.outlook.com
- ([fe80::f53d:47b:3b04:9a8b]) by TY0PR02MB5766.apcprd02.prod.outlook.com
- ([fe80::f53d:47b:3b04:9a8b%4]) with mapi id 15.20.8069.027; Tue, 22 Oct 2024
- 08:44:10 +0000
-From: Jinjian Song <jinjian.song@fibocom.com>
-To: chandrashekar.devegowda@intel.com,
-	chiranjeevi.rapolu@linux.intel.com,
-	haijun.liu@mediatek.com,
-	m.chetan.kumar@linux.intel.com,
-	ricardo.martinez@linux.intel.com,
-	loic.poulain@linaro.org,
-	ryazanov.s.a@gmail.com,
-	johannes@sipsolutions.net,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com
-Cc: linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org,
-	linux-doc@vger.kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	linux-arm-kernel@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	corbet@lwn.net,
-	linux-mediatek@lists.infradead.org,
-	helgaas@kernel.org,
-	danielwinkler@google.com,
-	korneld@google.com,
-	Jinjian Song <jinjian.song@fibocom.com>
-Subject: [net-next v2] net: wwan: t7xx: reset device if suspend fails
-Date: Tue, 22 Oct 2024 16:43:48 +0800
-Message-Id: <20241022084348.4571-1-jinjian.song@fibocom.com>
-X-Mailer: git-send-email 2.34.1
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SI2PR01CA0027.apcprd01.prod.exchangelabs.com
- (2603:1096:4:192::7) To TY0PR02MB5766.apcprd02.prod.outlook.com
- (2603:1096:400:1b5::6)
+	id 1t3Ap5-0000000AHPV-1CDD;
+	Tue, 22 Oct 2024 09:05:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1729587901;
+	bh=5iu6JqvvAtNgyBgmiOLgxENxQr9OSKzp8LjyujT2ZTM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=RrPFZbvgm/IfWOJmUOAv8ZJB4bNUTP+Tfu7cUrikht4HUak/YTmWQ/P09iheSjDQQ
+	 lPyiywZQZCdzbBHILAEWKTyYuLsN1AJcb3fWTN6b9KzZaXYTnSZB83mMGCY/ximD3N
+	 oaxSRnNdrZAqQGJoA3Fah5xgEUlafcxPzQc2QDRVTQc4O3JGA9Qsh6x5ZiZ27jadkh
+	 lF9t+MmbLjO15+ONNL7ZRlLF2nU2KSik8NfZl7pZzAYScTGdmbN15z40r7xMzyXv8G
+	 gkzpwGu6Dbb2bN+OysdBltqDNn3DyPzY98+uVvJ9tLr1ezFo3cV6TVsTpLTY5LMu6v
+	 dabizLxHPp6BQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 53F3417E124E;
+	Tue, 22 Oct 2024 11:05:00 +0200 (CEST)
+Message-ID: <3a550c82-7099-4544-bdff-e1ea411b1636@collabora.com>
+Date: Tue, 22 Oct 2024 11:04:59 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TY0PR02MB5766:EE_|SI2PR02MB5562:EE_
-X-MS-Office365-Filtering-Correlation-Id: 31570f44-8815-4824-80f7-08dcf275b299
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|52116014|376014|7416014|366016|1800799024|38350700014|921020;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?cAId+YUbnXXqRo3S9hvSDBLzXgac0C5oCSt33epIh/sGbH/RHG6a80PVOqIO?=
- =?us-ascii?Q?nHKxvzE/ttNk82AxcVc8GmnuSouJZOtOyiSuJ2Mfq9NH3nHuezzbYbJkUAqU?=
- =?us-ascii?Q?kLfr+xUT3tzvZ9CN3SGTPLTiLyp/Qxw/3RnogR3u0/Nbjez+3exvMiIV2T2Q?=
- =?us-ascii?Q?wSvutLgumWfqR20m437bKCTOCsZC84G01N6yrqxAHrGYfEiQdV5uZOL8qGiW?=
- =?us-ascii?Q?lYNYvGSVWrTUMySuoXy1l1ci8NXBu6D0plOe3B/VaUxvKP4WanWfpKjReoiu?=
- =?us-ascii?Q?vWPSVyUl8kxJN2Iov/4Byk9Q1nCC6sbBZ/WmeWfOQ2dQX2EL+FOjqzwWf1b+?=
- =?us-ascii?Q?Gbg7xRuWtczaZtJz7jy9wy6pCJyubMunkcq0j8T+6DCdOxQ0VFv/vGV80hcD?=
- =?us-ascii?Q?5ga/HtjEFXJ/1xSyF5WLETYpO6ETwHeX5UMscfC8sja62N5MMhB+lwKjHQuS?=
- =?us-ascii?Q?gihG6jdFmPxrYZuWGxcwlNSfxflSQZKf4IE4+GgXG5mqVKtTuSX3DiKNZ+TJ?=
- =?us-ascii?Q?p8Y19T7R0A8CSXJdzZ/DPNitD5sMR5re9zaWE/JOQAj2myfNjw/QaJ+FirSF?=
- =?us-ascii?Q?3iIvKoG8MYLtTx94ZIyc+E/8JRRJhIN4Xp+1YLnvgiuYvWNxHJyj9F4jN16Z?=
- =?us-ascii?Q?XP0N5L5JpsxqKvna+GsMQF730umpuNu4DF/JmCQWRDeZcQOhMctgRgCf2fAC?=
- =?us-ascii?Q?6OsZKKp4Qrsp/m4nd6wPHVHatqxyOUeFIuSY+7RjNjtojc2lr+2LIqBEiPtD?=
- =?us-ascii?Q?UOfPnJDKIP/yJOJptavA5WtqYo2iX7phAKccLo4UrWHMh2S2aZNmaeyfPNeE?=
- =?us-ascii?Q?PYCrwKI5MZchPWFW9pOnYolpoTkaRcbihZEk9qojYE09ifv1vShRLlm6m66t?=
- =?us-ascii?Q?fI+Ac8h+sabTgRNrX1oSISZ0q0VbslSPfygTM0LgVA/3UIlU2CH3bVzBYdyO?=
- =?us-ascii?Q?w2FuvryE+hMhFm7bRWS1TKyJJ5OBIpOsOMRVQuNlhBbeMKf9VeMyIWJaTo/F?=
- =?us-ascii?Q?fWQO41fI7W44p/BcxefiJM7g8RSLYt0P9t32sIBvkdJjZ2XAJMfBHCrd+tSz?=
- =?us-ascii?Q?Ly937QgF+7LU0Q7hbeyqDJ+xyN5v7LGd6Nrj5B7U4+rA+JfkTR490T7kqayT?=
- =?us-ascii?Q?JK55eglKivaCaVfNcPupG4merfmYs69SptJhflW332FL5fhXAG/hZ8VBHm3P?=
- =?us-ascii?Q?n84ha++dzsTGf7qVyqXn3Im5T0QycthLjIS/gsFqtmeZDAZhXuaUptacbs1d?=
- =?us-ascii?Q?rSNYPQMGLSThf3TG9FleR5uG0R7pIn2aimNRfc8GkmeofeUgbFQKAcsY2Qi0?=
- =?us-ascii?Q?t7B2mhXAXCbu1Pdx+34mYel7iTl3Hb5K5e35FKrAM8oaOrSi1ek09ZVGLmsQ?=
- =?us-ascii?Q?+oHqDzCmr+J7ffTki6lFz7xd31dG?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR02MB5766.apcprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(52116014)(376014)(7416014)(366016)(1800799024)(38350700014)(921020);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?jSPezyVLB51jNmDWvwpHidWpBS8A7G/DdRlBgTZWFMC6wGmPVlGzzAxy7vcn?=
- =?us-ascii?Q?C5J2Er6mJWwHd0O6i2S3U2Lqt2OG16EbeRQ0XzTOOCx02E1XJEfdSk5zxdnM?=
- =?us-ascii?Q?rVDgeUwSE4DdABm0PrMU5JWdwLkyhzbPI+H3Mi6Hyjs9O4z6UUf6FhtTY9iR?=
- =?us-ascii?Q?Kv3qMGkbpi5G20jftBJxpltUsZIjaslg3tbo/7tc7wk5i5BU7279puGpEhy+?=
- =?us-ascii?Q?Rg9n8YnMjblwFOsFvFtIe49msuVwrJSbE4vi64cdE8GLQGEPsEWSGzOE7OZ9?=
- =?us-ascii?Q?E5iqphkqcjq+n2bitFnDbRPKqeFGZzNqDKFN3TcCIRnOvoZnmY+g0yJhPdvc?=
- =?us-ascii?Q?1xJuhEfZuamybjQsVKnuW6zs8NjAaSwXYr0et/vQVD1C1rBK2wIfHFojwqxv?=
- =?us-ascii?Q?Cgy2OhwBrZ69Fsanhi0bieLdy1Wyg1o5gKBY08WJ+o7Ua0jQMG8NFPAXij1/?=
- =?us-ascii?Q?y8co79ApK4b79hU6u5PkqFBxNtMFSLsx/u7Cmie0yrf/Ejj0nFD1IwKA5wJc?=
- =?us-ascii?Q?hkn7lx0Q1f2JrIN/BwO1ffZr45wbNo2fzRb2yI3L5kyQjJBsjuMAV+8H/nfk?=
- =?us-ascii?Q?5rmvhrQo3/jCqL424AjiWctIz8GIX+1VelY7NhDXdfEEyaZ4CtQhUEXQBpKn?=
- =?us-ascii?Q?qM92VHmhpsnPOn2jHc7QL83jClRKBr4WQlQEQq3MBbkAb0XO+6FE5vug9sxg?=
- =?us-ascii?Q?LXiZOjwQ/5LTRFjhqUzCvGd4krccoZF8iXiK5Ibvu3g0zPWCUEP3N5dQM2Df?=
- =?us-ascii?Q?QdqmVf5pMrFpbt63qAdxJc9kOeG3R6cajtk342n1m9uwnm2KUZRsvf3RQ7/i?=
- =?us-ascii?Q?x3WQ3MccFVtXPu5Z3pZIyunpZZawW49U2QDH30Ycest0jmbNQaVsbJq2Ia+D?=
- =?us-ascii?Q?pR0Ee4YXn6t9xXoe4ADoErnpA+FxWb9Kr2MWKz+D61+KpjiR8EzKtnCCMyn4?=
- =?us-ascii?Q?LmC53uYIgX1cFhBK7aIsLpCIQ2bfhoL6dlT5AQbC8v+TuK3SqsFUJKqponfF?=
- =?us-ascii?Q?tDuKC9Ef5fZE6Df4A/4shFq0gbaHEl1yvIzWrjwUnVxxKvwD8wSVrAKnsXFw?=
- =?us-ascii?Q?CFofZIDloUvZyBqI8enVoClE4+j9MwCuR+Oa16jkfLZ4bn2FBTf8WxEOI02S?=
- =?us-ascii?Q?Y+guunAa5uVYy9tga2qAqlfUIufMAAuE8WN/fkiAuwYH3vtmCECTxnSMXq6U?=
- =?us-ascii?Q?kx5HU0kebNO+21GAyyeV0DtJf36seV5JsN2e59z3NWD/8AaS4ClbCNTabQJJ?=
- =?us-ascii?Q?Elh6H2flNvfGYqstU8KHQkz0qLA74sWVqJQVfHpBiDvzxaZ1Y2T6MnCFIfaO?=
- =?us-ascii?Q?WMlvNZc+ZQx1mNqbndbehM98/GSWD4EFilFKhV+sOw99VdgusbQbyJujF31c?=
- =?us-ascii?Q?WYBiuzqRz+hORBhYosb2Z5EJXYZuKqC7sNYVjYu4fKjrJDnoZNI5LZUtSMw0?=
- =?us-ascii?Q?ZGn8auIfjxUY4wdB/23/I+1Hm83gTWvoQJAzbH9XjnlrtmbpJzDnUCTMfAEO?=
- =?us-ascii?Q?wbKXkby/GoDGQEDRb3UNoSXhWlRwT3e/qw+MUvUpP1cUufM7tJMr1e9tejm1?=
- =?us-ascii?Q?08sXvR6DCOE+RxkJqdwclON4BK+3BqLK9ztgoVzV/QI+n1qpw/iOfNBSUfEi?=
- =?us-ascii?Q?3Q=3D=3D?=
-X-OriginatorOrg: fibocom.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 31570f44-8815-4824-80f7-08dcf275b299
-X-MS-Exchange-CrossTenant-AuthSource: TY0PR02MB5766.apcprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Oct 2024 08:44:10.4853
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 889bfe61-8c21-436b-bc07-3908050c8236
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: KduZDVeG8o1ij6ie4xqdRKuFT2c+mOwYAhR+AQU73HbfYAd/Xwvi2kFCUEdB6+atRuwk5dnPZjAJYCElUGGdaF3MmzYmzLjieXTH41a0BCQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR02MB5562
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] dt-bindings: clock: mediatek: Add bindings for MT6735
+ syscon clock and reset controllers
+To: Yassine Oudjana <yassine.oudjana@gmail.com>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Lukas Bulwahn <lukas.bulwahn@redhat.com>,
+ Daniel Golle <daniel@makrotopia.org>, Sam Shih <sam.shih@mediatek.com>
+Cc: Yassine Oudjana <y.oudjana@protonmail.com>, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+References: <20241021121618.151079-1-y.oudjana@protonmail.com>
+ <20241021121618.151079-2-y.oudjana@protonmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20241021121618.151079-2-y.oudjana@protonmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241022_014436_453957_C0EE2539 
-X-CRM114-Status: UNSURE (   9.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241022_020503_520211_697050F6 
+X-CRM114-Status: GOOD (  14.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -176,34 +84,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If driver fails to set the device to suspend, it means that the
-device is abnormal. In this case, reset the device to recover
-when PCIe device is offline.
+Il 21/10/24 14:16, Yassine Oudjana ha scritto:
+> From: Yassine Oudjana <y.oudjana@protonmail.com>
+> 
+> Add device tree bindings for syscon clock and reset controllers (IMGSYS,
+> MFGCFG, VDECSYS and VENCSYS).
+> 
+> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+> ---
+>   .../bindings/clock/mediatek,syscon.yaml           |  4 ++++
+>   MAINTAINERS                                       |  6 ++++++
+>   .../dt-bindings/clock/mediatek,mt6735-imgsys.h    | 15 +++++++++++++++
+>   .../dt-bindings/clock/mediatek,mt6735-mfgcfg.h    |  8 ++++++++
+>   .../dt-bindings/clock/mediatek,mt6735-vdecsys.h   |  9 +++++++++
+>   .../dt-bindings/clock/mediatek,mt6735-vencsys.h   | 11 +++++++++++
+>   .../dt-bindings/reset/mediatek,mt6735-mfgcfg.h    |  9 +++++++++
+>   .../dt-bindings/reset/mediatek,mt6735-vdecsys.h   | 10 ++++++++++
+>   8 files changed, 72 insertions(+)
+>   create mode 100644 include/dt-bindings/clock/mediatek,mt6735-imgsys.h
+>   create mode 100644 include/dt-bindings/clock/mediatek,mt6735-mfgcfg.h
+>   create mode 100644 include/dt-bindings/clock/mediatek,mt6735-vdecsys.h
+>   create mode 100644 include/dt-bindings/clock/mediatek,mt6735-vencsys.h
+>   create mode 100644 include/dt-bindings/reset/mediatek,mt6735-mfgcfg.h
+>   create mode 100644 include/dt-bindings/reset/mediatek,mt6735-vdecsys.h
+> 
 
-Signed-off-by: Jinjian Song <jinjian.song@fibocom.com>
----
-V2:
- * Add judgment, reset when device is offline 
----
- drivers/net/wwan/t7xx/t7xx_pci.c | 4 ++++
- 1 file changed, 4 insertions(+)
+..snip..
 
-diff --git a/drivers/net/wwan/t7xx/t7xx_pci.c b/drivers/net/wwan/t7xx/t7xx_pci.c
-index e556e5bd49ab..4f89a353588b 100644
---- a/drivers/net/wwan/t7xx/t7xx_pci.c
-+++ b/drivers/net/wwan/t7xx/t7xx_pci.c
-@@ -427,6 +427,10 @@ static int __t7xx_pci_pm_suspend(struct pci_dev *pdev)
- 	iowrite32(T7XX_L1_BIT(0), IREG_BASE(t7xx_dev) + ENABLE_ASPM_LOWPWR);
- 	atomic_set(&t7xx_dev->md_pm_state, MTK_PM_RESUMED);
- 	t7xx_pcie_mac_set_int(t7xx_dev, SAP_RGU_INT);
-+	if (pci_channel_offline(pdev)) {
-+		dev_err(&pdev->dev, "Device offline, reset to recover\n");
-+		t7xx_reset_device(t7xx_dev, PLDR);
-+	}
- 	return ret;
- }
- 
--- 
-2.34.1
+> diff --git a/include/dt-bindings/reset/mediatek,mt6735-vdecsys.h b/include/dt-bindings/reset/mediatek,mt6735-vdecsys.h
+> new file mode 100644
+> index 0000000000000..90ad73af50a3f
+> --- /dev/null
+> +++ b/include/dt-bindings/reset/mediatek,mt6735-vdecsys.h
+> @@ -0,0 +1,10 @@
+> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
+> +
+> +#ifndef _DT_BINDINGS_RESET_MT6735_VDECSYS_H
+> +#define _DT_BINDINGS_RESET_MT6735_VDECSYS_H
+> +
+> +#define MT6735_VDEC_RST0_VDEC			0
+> +
+
+Since you anyway have to send a new version, please remove this extra and
+unneeded blank line for v2.
+
+Anyway...
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
