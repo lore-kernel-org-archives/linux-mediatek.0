@@ -4,77 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E195AD1715C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2024 03:32:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 235E4D1715E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2024 03:58:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uOEAAFgIpXYqCB3c3c+YxjmfF/rcgaD82HGj1MCXtXw=; b=MBun9w9o81V28jBOD3UlsgHZ3n
-	AiUZGPJnCmS4PbKYtiGSKgfuJl5ExT8P+1mlLcU3jQQnTaD/RN3BH8IEGfL1FrgoDIizjAizSHrYn
-	bH8+yh9nDPHPSPo5ERZ1xDgDcePQokn0/tWt0rTnnD/94PTRxJiTg6oaLzhwUpVuEdG+Yx7caB/2t
-	stV3iP8InRopp5aE01UrQv9JK2n9exMFcs8DluR+i6hjGzk8IqnHTqhLsCZrByHn4vNIW56dPBExu
-	uG9pLs+hWLd3lGAYZqrIReabPuTz4FRSfkJ6iWfcjvjVA+xcw3Y1PcRgjFFK2PSX3uflA4bppNprL
-	nBlCBwkw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=26QZsdFfjNaf2R0pL13dD/w4NeLPSwhQ9nw1ajQqK40=; b=SsgWmXl7WTCvmdso+2pWY1gTHz
+	433IjOiLOqq6I9LxLjPhXDrQE8d4kRccufXLw/8aB9rkGC8ELROttC5EoubFKHW6zEJOtQ+Lf6gUd
+	qQMECJFldahjh5rX7zz7n06wUFHlFJjxaUbOMQhNLz9ulWarGy1aKNLg/GUQonOVIi+kcKcRUdxXP
+	U0YPDNLt0OW+lwrKzS3i82uciNdjYEO558Fki0VcOulnpTXrrgkC+pOIBkp7JxrkjZ+WQ+4A1Aq3g
+	YiBHpS0On+BZNSDPEBfLrKLqchMJw/AIqgzzinmb9eA7XqlFyAJi6Pi8sn8b99Ovz6dCuY7YvPpve
+	aGYWGhwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t35dd-00000009TLR-3vk4;
-	Tue, 22 Oct 2024 03:32:53 +0000
-Received: from szxga05-in.huawei.com ([45.249.212.191])
+	id 1t362d-00000009Vty-3nnu;
+	Tue, 22 Oct 2024 03:58:43 +0000
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t35ZX-00000009SD5-1gL2;
-	Tue, 22 Oct 2024 03:28:41 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.17])
-	by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4XXcwZ50T1z1HLCp;
-	Tue, 22 Oct 2024 11:24:14 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
-	by mail.maildlp.com (Postfix) with ESMTPS id 38F861A0188;
-	Tue, 22 Oct 2024 11:28:34 +0800 (CST)
-Received: from localhost.localdomain (10.90.30.45) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Tue, 22 Oct 2024 11:28:33 +0800
-From: Yunsheng Lin <linyunsheng@huawei.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <zhangkun09@huawei.com>, <fanghaiqing@huawei.com>,
-	<liuyonglong@huawei.com>, Yunsheng Lin <linyunsheng@huawei.com>, Wei Fang
-	<wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang
-	<xiaoning.wang@nxp.com>, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet
-	<edumazet@google.com>, Jeroen de Borst <jeroendb@google.com>, Praveen
- Kaligineedi <pkaligineedi@google.com>, Shailend Chand <shailend@google.com>,
-	Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel
-	<przemyslaw.kitszel@intel.com>, Alexander Lobakin
-	<aleksander.lobakin@intel.com>, Alexei Starovoitov <ast@kernel.org>, Daniel
- Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
-	John Fastabend <john.fastabend@gmail.com>, Saeed Mahameed
-	<saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Tariq Toukan
-	<tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
-	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
-	<shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Kalle Valo
-	<kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Ilias
- Apalodimas <ilias.apalodimas@linaro.org>, <imx@lists.linux.dev>,
-	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<intel-wired-lan@lists.osuosl.org>, <bpf@vger.kernel.org>,
-	<linux-rdma@vger.kernel.org>, <linux-wireless@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH net-next v3 1/3] page_pool: introduce page_pool_to_pp() API
-Date: Tue, 22 Oct 2024 11:22:11 +0800
-Message-ID: <20241022032214.3915232-2-linyunsheng@huawei.com>
-X-Mailer: git-send-email 2.30.0
-In-Reply-To: <20241022032214.3915232-1-linyunsheng@huawei.com>
-References: <20241022032214.3915232-1-linyunsheng@huawei.com>
+	id 1t362b-00000009Vt6-0UyH
+	for linux-mediatek@lists.infradead.org;
+	Tue, 22 Oct 2024 03:58:42 +0000
+Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-2fb498a92f6so56106851fa.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Oct 2024 20:58:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1729569518; x=1730174318; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=26QZsdFfjNaf2R0pL13dD/w4NeLPSwhQ9nw1ajQqK40=;
+        b=Bi6wDPOtYYuRVjDpUvRGbOLPrmQAZKmNiF9qEktq4UTZTfpeAFT/t/h8DulSDvarbY
+         PhI6Dy2t0ji+8q85LOEoPlmR9UzL5upyLQM77yoemMRP0O2GEL1uiiHSyX/tx4N++sXL
+         VD0uOMA1bvFHTiTSaEfoiFbGuICpFq033jFNs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729569518; x=1730174318;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=26QZsdFfjNaf2R0pL13dD/w4NeLPSwhQ9nw1ajQqK40=;
+        b=c6kbQTGm2nyytIHDk6Ce+6lEeR4AsytMnWNRKSI6dz+FLlcMnykDON03J24/YNumM1
+         +7PajQ/QYled+OtGvw/qXU+7TOS3KlqA5qlczfdgGhT8IFBDg2tJpmE5dSeWpQsQfy4w
+         6NX9JMPEKW8zyUBSfjDUUp3H74S/b3IR0wAyAbbZk3iBmRvEzDkHckLkW89ahK94XYnD
+         YzMfUB82HakasRfj/9Gh2Ec+uAz5TS9cy8AvvrhEzPCi9zMK2+7LnOLAUZilj+40lKxo
+         vSLHLRT6Uf3wE4Z1/HW4SverkRW0odCxRV+LAX51QQ4CRcnVC7ZVjIo6EpgWobJKtPrb
+         5UcA==
+X-Forwarded-Encrypted: i=1; AJvYcCWgA0hPVkvnfekWfTzwEl0BSAIfbI6ewFj9L17Ry9631PLBYf93M4m4z8fVg8c3zG9wG1DYCdS6dETgSbqI3g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YynfeAYY9T4h5f3sq8kIiB7XDH4fA2QVjQUqOUBfr94R4gJ7s2b
+	zUqwLf5Fegyyh9WGupAT9AEjd4kRq38VfOQnOOsZA9Z14R+NIU3QIfSfVmlEUNEji5DYCiQGN16
+	E+z1L6YqYb80yUovbVbwa4T2ka6EL82y2sMTo
+X-Google-Smtp-Source: AGHT+IFqMhHSx8Ip59Ca3lTQjk0rTWzLpRf1LICtZkUGARVmXCcNDbvtoO7vAUrk/aZyUBhNLkQE7MFo/l8i4R5X7hA=
+X-Received: by 2002:a2e:bc08:0:b0:2fb:51e0:91b with SMTP id
+ 38308e7fff4ca-2fb832285d4mr68651001fa.43.1729569517643; Mon, 21 Oct 2024
+ 20:58:37 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.90.30.45]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- dggpemf200006.china.huawei.com (7.185.36.61)
+References: <20241016034927.8181-1-yunfei.dong@mediatek.com> <20241016034927.8181-2-yunfei.dong@mediatek.com>
+In-Reply-To: <20241016034927.8181-2-yunfei.dong@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 22 Oct 2024 11:58:26 +0800
+Message-ID: <CAGXv+5GMisONhxu5nnRdLvkav4ttwtrupft26-J01P8ACDx=9A@mail.gmail.com>
+Subject: Re: [PATCH v2 1/4] media: mediatek: vcodec: remove vsi operation in
+ common interface
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: =?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>, 
+	Sebastian Fricke <sebastian.fricke@collabora.com>, 
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>, 
+	Daniel Almeida <daniel.almeida@collabora.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
+	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, 
+	Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241021_202840_287068_D3C16CA8 
-X-CRM114-Status: GOOD (  16.50  )
+X-CRM114-CacheID: sfid-20241021_205841_201281_E1A1B840 
+X-CRM114-Status: GOOD (  18.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,266 +97,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-introduce page_pool_to_pp() API to avoid caller accessing
-page->pp directly.
+On Wed, Oct 16, 2024 at 11:49=E2=80=AFAM Yunfei Dong <yunfei.dong@mediatek.=
+com> wrote:
+>
+> Remove vsi related operation in common interface to make sure the
+> interface can be called by different architecture at the same time.
 
-Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
----
- drivers/net/ethernet/freescale/fec_main.c          |  8 +++++---
- .../net/ethernet/google/gve/gve_buffer_mgmt_dqo.c  |  4 ++--
- drivers/net/ethernet/intel/iavf/iavf_txrx.c        |  6 ++++--
- drivers/net/ethernet/intel/idpf/idpf_txrx.c        | 14 +++++++++-----
- drivers/net/ethernet/intel/libeth/rx.c             |  2 +-
- drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c   |  3 ++-
- drivers/net/netdevsim/netdev.c                     |  6 ++++--
- drivers/net/wireless/mediatek/mt76/mt76.h          |  2 +-
- include/net/libeth/rx.h                            |  3 ++-
- include/net/page_pool/helpers.h                    |  5 +++++
- net/core/skbuff.c                                  |  3 ++-
- net/core/xdp.c                                     |  3 ++-
- 12 files changed, 39 insertions(+), 20 deletions(-)
+Nit: it would be nice to provide more context here. You could mention
+that a new extended interface with a different shared memory layout (vsi)
+will be introduced in later patches.
 
-diff --git a/drivers/net/ethernet/freescale/fec_main.c b/drivers/net/ethernet/freescale/fec_main.c
-index 1b55047c0237..98fce41d088c 100644
---- a/drivers/net/ethernet/freescale/fec_main.c
-+++ b/drivers/net/ethernet/freescale/fec_main.c
-@@ -1009,7 +1009,8 @@ static void fec_enet_bd_init(struct net_device *dev)
- 				struct page *page = txq->tx_buf[i].buf_p;
- 
- 				if (page)
--					page_pool_put_page(page->pp, page, 0, false);
-+					page_pool_put_page(page_pool_to_pp(page),
-+							   page, 0, false);
- 			}
- 
- 			txq->tx_buf[i].buf_p = NULL;
-@@ -1549,7 +1550,7 @@ fec_enet_tx_queue(struct net_device *ndev, u16 queue_id, int budget)
- 			xdp_return_frame_rx_napi(xdpf);
- 		} else { /* recycle pages of XDP_TX frames */
- 			/* The dma_sync_size = 0 as XDP_TX has already synced DMA for_device */
--			page_pool_put_page(page->pp, page, 0, true);
-+			page_pool_put_page(page_pool_to_pp(page), page, 0, true);
- 		}
- 
- 		txq->tx_buf[index].buf_p = NULL;
-@@ -3311,7 +3312,8 @@ static void fec_enet_free_buffers(struct net_device *ndev)
- 			} else {
- 				struct page *page = txq->tx_buf[i].buf_p;
- 
--				page_pool_put_page(page->pp, page, 0, false);
-+				page_pool_put_page(page_pool_to_pp(page),
-+						   page, 0, false);
- 			}
- 
- 			txq->tx_buf[i].buf_p = NULL;
-diff --git a/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c b/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
-index 05bf1f80a79c..dd5b45adf5cc 100644
---- a/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
-+++ b/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
-@@ -210,8 +210,8 @@ void gve_free_to_page_pool(struct gve_rx_ring *rx,
- 	if (!page)
- 		return;
- 
--	page_pool_put_page(page->pp, page, buf_state->page_info.buf_size,
--			   allow_direct);
-+	page_pool_put_page(page_pool_to_pp(page), page,
-+			   buf_state->page_info.buf_size, allow_direct);
- 	buf_state->page_info.page = NULL;
- }
- 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-index 26b424fd6718..658d8f9a6abb 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-@@ -1050,7 +1050,8 @@ static void iavf_add_rx_frag(struct sk_buff *skb,
- 			     const struct libeth_fqe *rx_buffer,
- 			     unsigned int size)
- {
--	u32 hr = rx_buffer->page->pp->p.offset;
-+	struct page_pool *pool = page_pool_to_pp(rx_buffer->page);
-+	u32 hr = pool->p.offset;
- 
- 	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buffer->page,
- 			rx_buffer->offset + hr, size, rx_buffer->truesize);
-@@ -1067,7 +1068,8 @@ static void iavf_add_rx_frag(struct sk_buff *skb,
- static struct sk_buff *iavf_build_skb(const struct libeth_fqe *rx_buffer,
- 				      unsigned int size)
- {
--	u32 hr = rx_buffer->page->pp->p.offset;
-+	struct page_pool *pool = page_pool_to_pp(rx_buffer->page);
-+	u32 hr = pool->p.offset;
- 	struct sk_buff *skb;
- 	void *va;
- 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-index d4e6f0e10487..e3389f1a215f 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-@@ -385,7 +385,8 @@ static void idpf_rx_page_rel(struct libeth_fqe *rx_buf)
- 	if (unlikely(!rx_buf->page))
- 		return;
- 
--	page_pool_put_full_page(rx_buf->page->pp, rx_buf->page, false);
-+	page_pool_put_full_page(page_pool_to_pp(rx_buf->page), rx_buf->page,
-+				false);
- 
- 	rx_buf->page = NULL;
- 	rx_buf->offset = 0;
-@@ -3097,7 +3098,8 @@ idpf_rx_process_skb_fields(struct idpf_rx_queue *rxq, struct sk_buff *skb,
- void idpf_rx_add_frag(struct idpf_rx_buf *rx_buf, struct sk_buff *skb,
- 		      unsigned int size)
- {
--	u32 hr = rx_buf->page->pp->p.offset;
-+	struct page_pool *pool = page_pool_to_pp(rx_buf->page);
-+	u32 hr = pool->p.offset;
- 
- 	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buf->page,
- 			rx_buf->offset + hr, size, rx_buf->truesize);
-@@ -3129,8 +3131,10 @@ static u32 idpf_rx_hsplit_wa(const struct libeth_fqe *hdr,
- 	if (!libeth_rx_sync_for_cpu(buf, copy))
- 		return 0;
- 
--	dst = page_address(hdr->page) + hdr->offset + hdr->page->pp->p.offset;
--	src = page_address(buf->page) + buf->offset + buf->page->pp->p.offset;
-+	dst = page_address(hdr->page) + hdr->offset +
-+		page_pool_to_pp(hdr->page)->p.offset;
-+	src = page_address(buf->page) + buf->offset +
-+		page_pool_to_pp(buf->page)->p.offset;
- 	memcpy(dst, src, LARGEST_ALIGN(copy));
- 
- 	buf->offset += copy;
-@@ -3148,7 +3152,7 @@ static u32 idpf_rx_hsplit_wa(const struct libeth_fqe *hdr,
-  */
- struct sk_buff *idpf_rx_build_skb(const struct libeth_fqe *buf, u32 size)
- {
--	u32 hr = buf->page->pp->p.offset;
-+	u32 hr = page_pool_to_pp(buf->page)->p.offset;
- 	struct sk_buff *skb;
- 	void *va;
- 
-diff --git a/drivers/net/ethernet/intel/libeth/rx.c b/drivers/net/ethernet/intel/libeth/rx.c
-index f20926669318..385afca0e61d 100644
---- a/drivers/net/ethernet/intel/libeth/rx.c
-+++ b/drivers/net/ethernet/intel/libeth/rx.c
-@@ -207,7 +207,7 @@ EXPORT_SYMBOL_NS_GPL(libeth_rx_fq_destroy, LIBETH);
-  */
- void libeth_rx_recycle_slow(struct page *page)
- {
--	page_pool_recycle_direct(page->pp, page);
-+	page_pool_recycle_direct(page_pool_to_pp(page), page);
- }
- EXPORT_SYMBOL_NS_GPL(libeth_rx_recycle_slow, LIBETH);
- 
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-index 4610621a340e..83511a45a6dc 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-@@ -716,7 +716,8 @@ static void mlx5e_free_xdpsq_desc(struct mlx5e_xdpsq *sq,
- 				/* No need to check ((page->pp_magic & ~0x3UL) == PP_SIGNATURE)
- 				 * as we know this is a page_pool page.
- 				 */
--				page_pool_recycle_direct(page->pp, page);
-+				page_pool_recycle_direct(page_pool_to_pp(page),
-+							 page);
- 			} while (++n < num);
- 
- 			break;
-diff --git a/drivers/net/netdevsim/netdev.c b/drivers/net/netdevsim/netdev.c
-index cad85bb0cf54..7590ddd14dda 100644
---- a/drivers/net/netdevsim/netdev.c
-+++ b/drivers/net/netdevsim/netdev.c
-@@ -632,7 +632,8 @@ nsim_pp_hold_write(struct file *file, const char __user *data,
- 		if (!ns->page)
- 			ret = -ENOMEM;
- 	} else {
--		page_pool_put_full_page(ns->page->pp, ns->page, false);
-+		page_pool_put_full_page(page_pool_to_pp(ns->page), ns->page,
-+					false);
- 		ns->page = NULL;
- 	}
- 	rtnl_unlock();
-@@ -827,7 +828,8 @@ void nsim_destroy(struct netdevsim *ns)
- 
- 	/* Put this intentionally late to exercise the orphaning path */
- 	if (ns->page) {
--		page_pool_put_full_page(ns->page->pp, ns->page, false);
-+		page_pool_put_full_page(page_pool_to_pp(ns->page), ns->page,
-+					false);
- 		ns->page = NULL;
- 	}
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 0b75a45ad2e8..94a277290909 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -1688,7 +1688,7 @@ static inline void mt76_put_page_pool_buf(void *buf, bool allow_direct)
- {
- 	struct page *page = virt_to_head_page(buf);
- 
--	page_pool_put_full_page(page->pp, page, allow_direct);
-+	page_pool_put_full_page(page_pool_to_pp(page), page, allow_direct);
- }
- 
- static inline void *
-diff --git a/include/net/libeth/rx.h b/include/net/libeth/rx.h
-index 43574bd6612f..beee7ddd77a5 100644
---- a/include/net/libeth/rx.h
-+++ b/include/net/libeth/rx.h
-@@ -137,7 +137,8 @@ static inline bool libeth_rx_sync_for_cpu(const struct libeth_fqe *fqe,
- 		return false;
- 	}
- 
--	page_pool_dma_sync_for_cpu(page->pp, page, fqe->offset, len);
-+	page_pool_dma_sync_for_cpu(page_pool_to_pp(page), page, fqe->offset,
-+				   len);
- 
- 	return true;
- }
-diff --git a/include/net/page_pool/helpers.h b/include/net/page_pool/helpers.h
-index 793e6fd78bc5..1659f1995985 100644
---- a/include/net/page_pool/helpers.h
-+++ b/include/net/page_pool/helpers.h
-@@ -83,6 +83,11 @@ static inline u64 *page_pool_ethtool_stats_get(u64 *data, const void *stats)
- }
- #endif
- 
-+static inline struct page_pool *page_pool_to_pp(struct page *page)
-+{
-+	return page->pp;
-+}
-+
- /**
-  * page_pool_dev_alloc_pages() - allocate a page.
-  * @pool:	pool from which to allocate
-diff --git a/net/core/skbuff.c b/net/core/skbuff.c
-index 00afeb90c23a..649e02e2cbc8 100644
---- a/net/core/skbuff.c
-+++ b/net/core/skbuff.c
-@@ -1033,7 +1033,8 @@ bool napi_pp_put_page(netmem_ref netmem)
- 	if (unlikely(!is_pp_netmem(netmem)))
- 		return false;
- 
--	page_pool_put_full_netmem(netmem_get_pp(netmem), netmem, false);
-+	page_pool_put_full_netmem(page_pool_to_pp(netmem_to_page(netmem)),
-+				  netmem, false);
- 
- 	return true;
- }
-diff --git a/net/core/xdp.c b/net/core/xdp.c
-index bcc5551c6424..e8582036b411 100644
---- a/net/core/xdp.c
-+++ b/net/core/xdp.c
-@@ -384,7 +384,8 @@ void __xdp_return(void *data, struct xdp_mem_info *mem, bool napi_direct,
- 		/* No need to check ((page->pp_magic & ~0x3UL) == PP_SIGNATURE)
- 		 * as mem->type knows this a page_pool page
- 		 */
--		page_pool_put_full_page(page->pp, page, napi_direct);
-+		page_pool_put_full_page(page_pool_to_pp(page), page,
-+					napi_direct);
- 		break;
- 	case MEM_TYPE_PAGE_SHARED:
- 		page_frag_free(data);
--- 
-2.33.0
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> ---
+>  .../decoder/vdec/vdec_h264_req_multi_if.c     | 19 ++++++++++---------
+>  1 file changed, 10 insertions(+), 9 deletions(-)
+>
+> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h26=
+4_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec=
+_h264_req_multi_if.c
+> index 732d78f63e5a..57c85af5ffb4 100644
+> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_m=
+ulti_if.c
+> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_m=
+ulti_if.c
+> @@ -171,9 +171,9 @@ struct vdec_h264_slice_inst {
+>  };
+>
+>  static int vdec_h264_slice_fill_decode_parameters(struct vdec_h264_slice=
+_inst *inst,
+> -                                                 struct vdec_h264_slice_=
+share_info *share_info)
+> +                                                 struct vdec_h264_slice_=
+share_info *share_info,
+> +                                                 struct vdec_h264_slice_=
+lat_dec_param *slice_data)
 
+Nit: you could just name this new parameter |slice_param| and avoid the
+changes in the next bit.
+
+>  {
+> -       struct vdec_h264_slice_lat_dec_param *slice_param =3D &inst->vsi-=
+>h264_slice_params;
+>         const struct v4l2_ctrl_h264_decode_params *dec_params;
+>         const struct v4l2_ctrl_h264_scaling_matrix *src_matrix;
+>         const struct v4l2_ctrl_h264_sps *sps;
+> @@ -203,9 +203,9 @@ static int vdec_h264_slice_fill_decode_parameters(str=
+uct vdec_h264_slice_inst *i
+>                 return -EINVAL;
+>         }
+>
+> -       mtk_vdec_h264_copy_sps_params(&slice_param->sps, sps);
+> -       mtk_vdec_h264_copy_pps_params(&slice_param->pps, pps);
+> -       mtk_vdec_h264_copy_scaling_matrix(&slice_param->scaling_matrix, s=
+rc_matrix);
+> +       mtk_vdec_h264_copy_sps_params(&slice_data->sps, sps);
+> +       mtk_vdec_h264_copy_pps_params(&slice_data->pps, pps);
+> +       mtk_vdec_h264_copy_scaling_matrix(&slice_data->scaling_matrix, sr=
+c_matrix);
+>
+>         memcpy(&share_info->sps, sps, sizeof(*sps));
+>         memcpy(&share_info->dec_params, dec_params, sizeof(*dec_params));
+> @@ -266,9 +266,6 @@ static int get_vdec_sig_decode_parameters(struct vdec=
+_h264_slice_inst *inst)
+>         mtk_vdec_h264_get_ref_list(b0_reflist, v4l2_b0_reflist, reflist_b=
+uilder.num_valid);
+>         mtk_vdec_h264_get_ref_list(b1_reflist, v4l2_b1_reflist, reflist_b=
+uilder.num_valid);
+>
+> -       memcpy(&inst->vsi_ctx.h264_slice_params, slice_param,
+> -              sizeof(inst->vsi_ctx.h264_slice_params));
+> -
+>         return 0;
+>  }
+>
+> @@ -608,7 +605,8 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, s=
+truct mtk_vcodec_mem *bs,
+>         lat_buf->vb2_v4l2_src =3D &src_buf_info->m2m_buf.vb;
+>         v4l2_m2m_buf_copy_metadata(&src_buf_info->m2m_buf.vb, &lat_buf->t=
+s_info, true);
+>
+> -       err =3D vdec_h264_slice_fill_decode_parameters(inst, share_info);
+> +       err =3D vdec_h264_slice_fill_decode_parameters(inst, share_info,
+> +                                                    &inst->vsi->h264_sli=
+ce_params);
+>         if (err)
+>                 goto err_free_fb_out;
+>
+> @@ -749,6 +747,9 @@ static int vdec_h264_slice_single_decode(void *h_vdec=
+, struct mtk_vcodec_mem *bs
+>         if (err)
+>                 goto err_free_fb_out;
+>
+> +       memcpy(&inst->vsi_ctx.h264_slice_params, &inst->h264_slice_param,
+> +              sizeof(inst->vsi_ctx.h264_slice_params));
+> +
+>         buf =3D (unsigned char *)bs->va;
+>         nal_start_idx =3D mtk_vdec_h264_find_start_code(buf, bs->size);
+>         if (nal_start_idx < 0) {
+
+Code wise this patch seems fine.
+
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
