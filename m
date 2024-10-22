@@ -4,74 +4,200 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3352D1CDCB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2024 09:46:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DAD4D1CDCA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2024 09:48:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7ABaYLL7EBSznBRnb3+vEGirPHzL20pXotqnemHm9NQ=; b=xI1l5ZandDh+WL9Lxa1Fwn92W5
-	nTwUfHbz3+2pQqfsAVXFPoNsQL8aRbh+D3Y4B3Vird58SmtVYcQtr66/oX3FRnOvlweUQSpDTXNgd
-	fpdpO8DH5gLnyz10BcmtH3VmxNo6UyWyQ3juM5PYg9Gp5BfBM5vv/0U1hq42hrNm6XgfGQt5jiVvS
-	gTrp+rZ2mx9Z+BUBWikAfT0T0YtOboRHL1ZIka4h0OLgJKB1ORTyd8+KE+/do+2H5tLUWyH8z5Pg4
-	QrBq5ZHP+wnssMPKHtCaMwJzBjU6bblm4zDnKVThTtibyJatFQY4NgFsMyUmcg1+w8MLTacCExJQM
-	Wb2iAmTg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=X66bBHKT9f/4AFyzDYIcBIpvSCYj+vexFdDGkItd+LM=; b=0U4GfQdLOlu64Q6WUStuIcUzCV
+	K9LwHnAXqjGvpm0kKawlwwBbc1UECWYEYCB2+hik49ZOZvsLAP3Y6Zh584Rn2MAZyb16XBFnTsUwf
+	+aXEl1l/dZJ7f8Y/8OuGZ/Hy+w4jl2TyegIcBhF4NrU3iHJOqsjiTS6AO5sLlgdq4LLcUvS2xfe7h
+	BgdMveHw87eak+9DLaHP2YcXRW+hKHHbsxPJkyhANH1OSmp4VXmdYks5jzo9pivY2x9vIllaZw0j/
+	zlWUDT/y64b1GakGkdbLmlt2SAEB3mYUc1/dxWDdvjSWAfYtW1iMHds77dYS7BrcAQi1M5oAsq8H2
+	wzpG7K2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3BTK-0000000APj4-44Pg;
-	Tue, 22 Oct 2024 09:46:38 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1t3BUt-0000000AQBf-1M4P;
+	Tue, 22 Oct 2024 09:48:15 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3BJQ-0000000AN73-01Ne;
-	Tue, 22 Oct 2024 09:36:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729589781;
-	bh=rYYlihFu8PwLnQ37fCubpAZgvwlduc501eQg14BRZc4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=RyS8qpAUyS0IdeSFrKR+nTTgfdVJnszWGypO/0WWgWeZwMX8CoQ37F9+M/7Bw80OR
-	 0sqyi88RHtBkm3cdWfmnO2tHE3Qs5cDGvgSyIDXyh209dLhb60yeKeb+kefkhDvlYR
-	 HVe1W2pVbiT7CAIRpljRIkG21YOq1TGlJ3ObLDO22ACz5XxAiuKG+t65REIRzit7r/
-	 e1QQDtH8gfLvZwsXLbZmg9GZh0ojE05UZNaPYstj/bmazndwJ0yllZZRSqBH+Mwmg5
-	 NRIgE4oOJS8SLtCoi891uVpndk3Spgonx8BogTkf4JZM0VoItXMnoXuyITB22tXLNW
-	 0LY7srv+LFoIQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4C65A17E137F;
-	Tue, 22 Oct 2024 11:36:21 +0200 (CEST)
-Message-ID: <78f4da13-cbff-415b-a8eb-ec16108b5c00@collabora.com>
-Date: Tue, 22 Oct 2024 11:36:20 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: clock: mediatek: Add bindings for MT6735
- syscon clock and reset controllers
-To: Conor Dooley <conor@kernel.org>,
- Yassine Oudjana <yassine.oudjana@gmail.com>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Lukas Bulwahn <lukas.bulwahn@redhat.com>,
- Daniel Golle <daniel@makrotopia.org>, Sam Shih <sam.shih@mediatek.com>,
- Yassine Oudjana <y.oudjana@protonmail.com>, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-References: <20241021121618.151079-1-y.oudjana@protonmail.com>
- <20241021121618.151079-2-y.oudjana@protonmail.com>
- <20241021-goatskin-wafer-7582dbcfe1d1@spud>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+	id 1t3BKn-0000000ANMR-1Oz5;
+	Tue, 22 Oct 2024 09:37:50 +0000
+X-UUID: 48ccea7a905911ef82ff63e91e7eb18c-20241022
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=X66bBHKT9f/4AFyzDYIcBIpvSCYj+vexFdDGkItd+LM=;
+	b=VkeE4GBRkB0YXdCTJ7plfPm5d866r5zqoqxwbhrMC+WrrGj5l5WEXHalfWm7tiIoux/lTZ/TlKqSk0ICeEP8qMV+gtjybEsZAS+PvyGrpLiMLlHdqW8TmyLj0t92/IQIEEsiDfhtauOP5sHoejiHE2vZM+hW8MWkqeo7cHiurJ0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.42,REQID:60b05956-6cdb-47c5-b6df-f60e562f5c87,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:b8fca541-8751-41b2-98dd-475503d45150,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1|-5,EDM:-3,IP:ni
+	l,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
+	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 48ccea7a905911ef82ff63e91e7eb18c-20241022
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1005470405; Tue, 22 Oct 2024 02:37:41 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 22 Oct 2024 02:37:39 -0700
+Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 22 Oct 2024 17:37:39 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=iZ7G0osOSr7fc7pWYeCV8ffm1Xjw//AdhjUyYM6OkMvhT7D4yMtnJdF4yqr5pmLtBUK3nVXydMOfIefj/e9Lx6IMuk8zrzgOfzv7QmEn5F9tEW+FlTkXVbl8Akm43vIzGGqaP30YeIBnauBHJE24TrTZsvjpgU4WDdjcvjdN5L366JKYmF1TVdMf8wnJobwTCkFi9FE4VwHmCXmGQJvXo4NkfDh+ZgzW8bY1PkUVJLCDTix0+7x3zdn6VIUejLG/9uiy1Xj5D2nU+iW96DfE4t+72TSuJRqjRVtSPkJlQ9Zv0JJuN9M0RGPZ8d/X1FYs/mLfjrHqwBIoFG74LGqIfQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=X66bBHKT9f/4AFyzDYIcBIpvSCYj+vexFdDGkItd+LM=;
+ b=tMLqzL7CSsMZZNiiT11Z7fyqS+ely12J20qDysY/F6SF/g8xh7WU1Tbv5tgIRjtKlnOleh0Wck3fyteYz5uXB2vsrJ34i24HLEvpYBxYibUcT+zVRVtWylPDQ40cDn2FN1Af41Je85scJ21UUuryPA35JTmp/8LtHrxoIyxYz2lB+6eYkBnp8tE+QQwGEw9O6ZbHOKFyp7Hg7eTsGIFgTTLXLgUwqJfzQksQsS6Kv4wUBMG9Or2A2I2dAwZOxmQigxfposT35CpB7cGxgM1SQPErp3ai5wHRyLsLFdKrU2Nh/LpsLHWTcLPU5RjIulMofW/qBy0PBpvWdozMy39rtA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=X66bBHKT9f/4AFyzDYIcBIpvSCYj+vexFdDGkItd+LM=;
+ b=r8h6iBa+EHsx7S3WtrCxyWfAtNRQ4DoUgT53rb5HeNcBRE2PCVnwodq2cC7kLrJYcuT3rGfChDka+GCnug06WiPyIlbd6dkAr0PCKz7Nc8YHj6C9nuaPMKgMGzw9H9fDfqDnk2DdYtl48wfcpYqpx562UJ8IW/DR179arTPQINY=
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
+ by SEYPR03MB8768.apcprd03.prod.outlook.com (2603:1096:101:208::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8069.28; Tue, 22 Oct
+ 2024 09:37:36 +0000
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::9ce6:1e85:c4a7:2a54]) by TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::9ce6:1e85:c4a7:2a54%7]) with mapi id 15.20.8069.024; Tue, 22 Oct 2024
+ 09:37:36 +0000
+From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
+To: "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, "airlied@gmail.com"
+	<airlied@gmail.com>, "yuanhsinte@chromium.org" <yuanhsinte@chromium.org>,
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, "simona@ffwll.ch"
+	<simona@ffwll.ch>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>
+CC: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "dianders@chromium.org"
+	<dianders@chromium.org>
+Subject: Re: [PATCH v3] drm/mediatek: Fix color format MACROs in OVL
+Thread-Topic: [PATCH v3] drm/mediatek: Fix color format MACROs in OVL
+Thread-Index: AQHbH9YyuB7wZxXG9UO5j9efzdzKCrKSjGEA
+Date: Tue, 22 Oct 2024 09:37:36 +0000
+Message-ID: <e4aca41996a991cb64f7a6f2e94c3c1985164890.camel@mediatek.com>
+References: <20241016-color-v3-1-e0f5f44a72d8@chromium.org>
+In-Reply-To: <20241016-color-v3-1-e0f5f44a72d8@chromium.org>
+Accept-Language: en-US
 Content-Language: en-US
-In-Reply-To: <20241021-goatskin-wafer-7582dbcfe1d1@spud>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|SEYPR03MB8768:EE_
+x-ms-office365-filtering-correlation-id: f2077078-e594-42dc-2cf6-08dcf27d29f0
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|376014|7416014|366016|38070700018;
+x-microsoft-antispam-message-info: =?utf-8?B?N0poRzJ2TkU0Yi9ON0hhNVowditmTjN1dUhleS9ralZHbVFpVVVGcWVSWU95?=
+ =?utf-8?B?ckVPTnp3UVN2Rnk0TFpoNmdWNThNZytvSnE3aDluLzRqNWdVWW9JT1FWK2pX?=
+ =?utf-8?B?SUxFTFBMYzRrY1pPdVdhSE9TSDdheXNHUE04ZTVqczZVM2RzOCtzKyswakZS?=
+ =?utf-8?B?OUYzTnJpT0V6TmNwa2JMOVZyS3UvdGVaaXhKTTYwTWtqZDJvRzV0RmhPblRR?=
+ =?utf-8?B?Z1VoaDBrMVZmdnU5QkExQ0xKanovSDhmUGJtMzhoam1wdm1iU3E0YkYvTDU1?=
+ =?utf-8?B?RG9mSzlFWW5PVnl2dzl6QzQydm40UE5jRDNadUVQSjhUZXFUcC80d1NSNkFX?=
+ =?utf-8?B?ckM0RVdzL2srMkc1ZlVaMFRDSVdmV3AwV0lDR0tWRmdCSk1HT1owa3RSWk4w?=
+ =?utf-8?B?WFZ3TlFTSHpBamxPSTNaM3ZGRnBySTB0Z3kvNlcvTEhqVC9paGlUUmlsUWIw?=
+ =?utf-8?B?bS82aGJUc3B4TFgzZGRiSCtQRS9XNzlucC8zU0xnaTZTYkkyRFFDRXdnYXp3?=
+ =?utf-8?B?UExvRFZGN3RUUU4ycEVNeUNIcVhOQWNWUmgvVXlIZVdPV3ZLRVJvZU1GVFV6?=
+ =?utf-8?B?Vkl5Q0czL0lLSE5ndmU3SnFTZzFSMFNIK1pDZGcxZjFBa3c5dm5Ob0pFM0FL?=
+ =?utf-8?B?T1JwWjMwMjVZR2k3cVZaSWVJaFdiTG5ub3J1bGJxNE9ZZ1pESlpUOWdYd3ZD?=
+ =?utf-8?B?VHF0eitpUG0wS21hN0FQNzFuSitJREJVSTU5aEZVcjJaaS84R3FES0V5RjdF?=
+ =?utf-8?B?Qk5JNzBHY1VDbU9jb3I4NXBSY25ScXRaMTB3N2xsSGphbmY3bWNFOWJwbDdW?=
+ =?utf-8?B?UUpPMFZGSkoxam9zd0N0Y2lPdzFVOHlkRFdHaXFaZE80dVNNRDdocFRhN3p2?=
+ =?utf-8?B?Z0VZMVhNYytVZDNrYUhqWVpseElrQUUvdzFZSElUYjVyTWtudnVwR1pIKzVo?=
+ =?utf-8?B?K1NpWkNrSFFhUHFCbTJnUFRBSmlvUmNFSGhqTmdjeHdEanRzTUZxRzhZUjYw?=
+ =?utf-8?B?MjdpM3FmUG04cjJwc1puY3NsTDl1cGpKajBNNjJKVjRLSm1WaytLVEJQMEk3?=
+ =?utf-8?B?TEEwbllmTS9SSUNjdDlzZU9INklUR0YvZlJnUDhaeDRFL1M2RHpkRGdhVDQ4?=
+ =?utf-8?B?RGdtdVA4OGlqNWtEZUNFQSs1T21YYldFYkcrcC9xUG42UFRLMGZ3UDBMLzV0?=
+ =?utf-8?B?K1RxdjQwNkEyUmpabDgvVWdCZEZ1bDZNNm9oY3B1V0NneUFJS0RpQUI2T1pm?=
+ =?utf-8?B?cllOQjdpVkVZZmIyenpZRkdwSkVzeE4zV3JZajhVWkdBdmp3L0M0S2JtWk4v?=
+ =?utf-8?B?dW1kalFaSUQ4ZXZvNXhESGFSUDBVVlVJeWdTTkdwL1JlOVJkNHVLNHpPa2RP?=
+ =?utf-8?B?cVdnSUFXeTFuOE1mVGpsZEJibUpBTWpsdXlHVlJiZk40amZnUWxmcjk5NDFU?=
+ =?utf-8?B?bTIrbUNFLzF5T0VkeDBNMk55cVFYR2o4a0NpNjBBT0ZqQ0ZEUmY3dllCdm5T?=
+ =?utf-8?B?d2swTjBMVW03bUQvWDNKQXQ4Y1dTQzVVaEJtSU1NSTJkOUxuMlFoaGtJT1Qr?=
+ =?utf-8?B?dVh5WDNuNFR6cm1HclRIakVlY0tVQkwwNGRqZk1WTzJicklNMVFRdjg0Q1Ax?=
+ =?utf-8?B?RjhMeGh5SllNcXYwK0tKV3dsb01SZnNyRW9GWVAwVEgxVlZOd3BjSEFwdWVy?=
+ =?utf-8?B?MXF5azRqb2ZUNXR1am5NdEpSM2Q2Vm4rUjRKUGw3dDVOQVNwQm9WbkZONjF2?=
+ =?utf-8?B?dzNVTlhMOUxkRnFLVEE3SC9yY0g4YTNiK3lpKzdzSnAyMVhGMk1WbVRCUk94?=
+ =?utf-8?B?WUFOalFQeVFlWVpSYVdLbitNeVJ4TDErWGxxaVRnZzFORklCZVZEbW93QjJN?=
+ =?utf-8?Q?cfRpcuNoWtVaH?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(7416014)(366016)(38070700018);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?dmpGQkM1UjhHbVZpWWE3UitheEp3QTZyaVBjTzBZSklIVzNQa2gzVlBkRDFv?=
+ =?utf-8?B?UnB0Y2tDRm0xWldBK01oRjBVV2pzMDRPNzgwaU1vSzA1SVFJSDZRd3h3Zmpi?=
+ =?utf-8?B?QnpOc1lTanE1c2wyQkFQeFhKYkZlZzlQRTM1QWttMkdwMWNSazl5SXd0NEJR?=
+ =?utf-8?B?VnZPelVWZVJheWFSaWpWMnZ1ZUgvTC9uaW1YZ0d3MU03Q1RmTDdhNm1BZXhw?=
+ =?utf-8?B?WjY1ekhzUUNuNzZxSVh4Ny9PUWg4MldJYWoyZWo2L1lCeHl3VHl0M0czUGYv?=
+ =?utf-8?B?Slo4UlVjU3o5T0tSZy9VNGJlblJQendqLzAzcjFNemEwRlVVYXUrQjh2UXJG?=
+ =?utf-8?B?WTdWckVVSys3YlA2QWZxSXhCbmRVajFvNXdROENXK1VHdnpqVFNOVXljaWI2?=
+ =?utf-8?B?d3B2d2VWRko5MEdxYkpFaHJXVzdJeGlMTjErU29Ib3FNZXBBTHFLNzFwYTdK?=
+ =?utf-8?B?LzdSeVdUd3J1UXZFMFUrQzVIN0VwNjlETEhLdnhZajVySWdwNnk3MWJDNTNE?=
+ =?utf-8?B?Y1RHUmxMV2xjQ2ExeTVBQ1g3QnMwVnpLZG1Rd2cyOWZlbmdkdVZ1Q3VhY2Fs?=
+ =?utf-8?B?akthVFoxM0NZem9xVUNHRmdQWjJENW5hV3crOVJVU0VIMWZYTDUwUFFYWHgx?=
+ =?utf-8?B?YkVIa2paamlRTks1VFJJazVNTTd1SEJWWFRwZmRBUHhCV1g3QUJVd2FMZjYz?=
+ =?utf-8?B?azdRZ09Cc2ZFUWhsU3FYbVpYTThHTXdRNmNVRXdES2x5TFhIK3VSYzgvZWVE?=
+ =?utf-8?B?OVhMTE44S2x2eGFsc2J0dEIxWjRkZGpDVUM0NnpYTHJxcTJKSUN2NHVGN3VG?=
+ =?utf-8?B?ampjaUVKU2VuQll0TlpLVEhQQjh3WnpCUnkrT1FCVTlJQmptbGhZeDVDbDJQ?=
+ =?utf-8?B?bzZ6UVVLaHhrQU1GQmtiaVFMYjNIWVVpZGg1S3FjMXJZT1Rnc1d3T0x5cUVo?=
+ =?utf-8?B?clNxZWl6WURRNXZuRGF6RFVWNlpjVFVEYUczOHRKcGIyWGFDOG8wVTFpaGMr?=
+ =?utf-8?B?SlBGQTdvMzc1SWV5MjVVOVpNVm8ydUxGanlpNGZPYVhuZkFTVWV5TmltWXdR?=
+ =?utf-8?B?THc0OFVTaG1yajFkY1RWY1dCd3RQbElscFJtc3ovOTlBOE5nRmVBT2dqdWFR?=
+ =?utf-8?B?bW5tQ0lSZVRwNXlvOEZvV2tVUEpUUktrOEhXNG9mbG11YU8wNEJZU1JJMVFR?=
+ =?utf-8?B?WXJwcTRrU0h3RnBLcGo1MEl3N3djOS83ZVBTaGJidHNEa2s1SzhzWjFhL3lO?=
+ =?utf-8?B?UmNCb1RXbE93NjdLYWc2VVVzb1ZMN2NNb0NBUkxTY3NnaGpFMU43am12dkpF?=
+ =?utf-8?B?dmtCM25ySllEWWQyVHlaVzd2MjBRQ2RXdkFyanVVaG84MDdROUQvN1hjaytm?=
+ =?utf-8?B?WVI5SHNGMVc4Qzh4cGV4bXR6bUdhY1gvS2JDU29aa0Qyd29zN1RvdUhidVVw?=
+ =?utf-8?B?a0ZQU1ZMb21HSUFnR09IbFZVWjR3M25kcEFPSHNRbjk0bFRSNjZudjdwT29W?=
+ =?utf-8?B?YnA3NEtVQUtDSXVsd2R0Ly8yOEdvL0dEdjNFRDM0MEkzWTlxaWlzVDErM0Nx?=
+ =?utf-8?B?VWZsd05ySUhiQzJudWdxbHZtMDNhQThDUzhqQmVyZlR1OTU5RUdSSmFweTVp?=
+ =?utf-8?B?alo3YVBNdTNqY2xzSE1PMUVnM0JKOVlYbTdYM3JPc1hveldKdTN2S1ZIOVJW?=
+ =?utf-8?B?OVAyWGtlMzBtTWtzdUVGVkJmZjNrYnBmeFdXWGx2L3NDVU02UytHMGpSRlgz?=
+ =?utf-8?B?S3ExY1V4di83SHVsQXpKb0FyM0pOR1FyZ01HVTNJcWVLeUI2Q0dHbU5JNUp3?=
+ =?utf-8?B?eVYxSFZtNnhkY1o1V0c1a0JvM3pxMmN3d0VheDFxbkU4V0llRkZtaFBGVEdz?=
+ =?utf-8?B?V3NpSklycVVCTEVBdzZBZ2xaa2RLR3MzZ05XSnhsZW5vZmtHcEtDdndwdDZh?=
+ =?utf-8?B?VldjKzFtNXFhNkdsRS9QMU5zdkZxQTNvZTFaaXlwcFNjeWc2VlhKK2crVm4w?=
+ =?utf-8?B?ckZuL2REWUM4NmdreG0rTUlGQnNnY0tDOW9uZENvd0lSL3lHbFhzTTBjRHJY?=
+ =?utf-8?B?WFowT3BJVVBNVzJsUUdmUkgvV1ZYQ25XcW9rUE5PL2ZnSGtnU0ZJOTlOdDBj?=
+ =?utf-8?B?OHdkY0FyWlFicUgxbURJU3p4U3VBb3NyY2ozMXFJRnc5ZURnb0pHSWpYQ1Nt?=
+ =?utf-8?B?dVE9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <D0934BCA39BD4247B9DEA01F571682BF@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f2077078-e594-42dc-2cf6-08dcf27d29f0
+X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Oct 2024 09:37:36.7636
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: g6S35Ju5yOIHXyo9EqX0+E4OjogoaLoiVuP8TK46sg4sL0MpXp55eZtjXhZh4+XCchrZhgXZJQSJei2JjBUzSw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR03MB8768
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241022_023624_385656_9A293E0A 
-X-CRM114-Status: GOOD (  17.66  )
+X-CRM114-CacheID: sfid-20241022_023749_421598_8786CFAB 
+X-CRM114-Status: GOOD (  20.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,188 +212,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/10/24 18:56, Conor Dooley ha scritto:
-> On Mon, Oct 21, 2024 at 03:16:15PM +0300, Yassine Oudjana wrote:
->> From: Yassine Oudjana <y.oudjana@protonmail.com>
->>
->> Add device tree bindings for syscon clock and reset controllers (IMGSYS,
->> MFGCFG, VDECSYS and VENCSYS).
->>
->> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
->> ---
->>   .../bindings/clock/mediatek,syscon.yaml           |  4 ++++
->>   MAINTAINERS                                       |  6 ++++++
->>   .../dt-bindings/clock/mediatek,mt6735-imgsys.h    | 15 +++++++++++++++
->>   .../dt-bindings/clock/mediatek,mt6735-mfgcfg.h    |  8 ++++++++
->>   .../dt-bindings/clock/mediatek,mt6735-vdecsys.h   |  9 +++++++++
->>   .../dt-bindings/clock/mediatek,mt6735-vencsys.h   | 11 +++++++++++
->>   .../dt-bindings/reset/mediatek,mt6735-mfgcfg.h    |  9 +++++++++
->>   .../dt-bindings/reset/mediatek,mt6735-vdecsys.h   | 10 ++++++++++
-> 
-> Is it really necessary to have individual files foe each of these? Seems
-> a bit extra, no?
-> 
-
-It's only good for including smaller headers in each driver (and/or DT, but
-then the SoC DT will anyway include them all).
-
-I'm fine with that, but I'm also fine with one header for clock and one for reset.
-
-So.. Conor, it's however you prefer :-)
-
-Cheers,
-Angelo
-
-> Cheers,
-> Conor.
-> 
->>   8 files changed, 72 insertions(+)
->>   create mode 100644 include/dt-bindings/clock/mediatek,mt6735-imgsys.h
->>   create mode 100644 include/dt-bindings/clock/mediatek,mt6735-mfgcfg.h
->>   create mode 100644 include/dt-bindings/clock/mediatek,mt6735-vdecsys.h
->>   create mode 100644 include/dt-bindings/clock/mediatek,mt6735-vencsys.h
->>   create mode 100644 include/dt-bindings/reset/mediatek,mt6735-mfgcfg.h
->>   create mode 100644 include/dt-bindings/reset/mediatek,mt6735-vdecsys.h
->>
->> diff --git a/Documentation/devicetree/bindings/clock/mediatek,syscon.yaml b/Documentation/devicetree/bindings/clock/mediatek,syscon.yaml
->> index 10483e26878fb..a86a64893c675 100644
->> --- a/Documentation/devicetree/bindings/clock/mediatek,syscon.yaml
->> +++ b/Documentation/devicetree/bindings/clock/mediatek,syscon.yaml
->> @@ -28,6 +28,10 @@ properties:
->>                 - mediatek,mt2712-mfgcfg
->>                 - mediatek,mt2712-vdecsys
->>                 - mediatek,mt2712-vencsys
->> +              - mediatek,mt6735-imgsys
->> +              - mediatek,mt6735-mfgcfg
->> +              - mediatek,mt6735-vdecsys
->> +              - mediatek,mt6735-vencsys
->>                 - mediatek,mt6765-camsys
->>                 - mediatek,mt6765-imgsys
->>                 - mediatek,mt6765-mipi0a
->> diff --git a/MAINTAINERS b/MAINTAINERS
->> index 2ce38c6c0e6ff..25484783f6a0b 100644
->> --- a/MAINTAINERS
->> +++ b/MAINTAINERS
->> @@ -14537,11 +14537,17 @@ F:	drivers/clk/mediatek/clk-mt6735-infracfg.c
->>   F:	drivers/clk/mediatek/clk-mt6735-pericfg.c
->>   F:	drivers/clk/mediatek/clk-mt6735-topckgen.c
->>   F:	include/dt-bindings/clock/mediatek,mt6735-apmixedsys.h
->> +F:	include/dt-bindings/clock/mediatek,mt6735-imgsys.h
->>   F:	include/dt-bindings/clock/mediatek,mt6735-infracfg.h
->> +F:	include/dt-bindings/clock/mediatek,mt6735-mfgcfg.h
->>   F:	include/dt-bindings/clock/mediatek,mt6735-pericfg.h
->>   F:	include/dt-bindings/clock/mediatek,mt6735-topckgen.h
->> +F:	include/dt-bindings/clock/mediatek,mt6735-vdecsys.h
->> +F:	include/dt-bindings/clock/mediatek,mt6735-vencsys.h
->>   F:	include/dt-bindings/reset/mediatek,mt6735-infracfg.h
->> +F:	include/dt-bindings/reset/mediatek,mt6735-mfgcfg.h
->>   F:	include/dt-bindings/reset/mediatek,mt6735-pericfg.h
->> +F:	include/dt-bindings/reset/mediatek,mt6735-vdecsys.h
->>   
->>   MEDIATEK MT76 WIRELESS LAN DRIVER
->>   M:	Felix Fietkau <nbd@nbd.name>
->> diff --git a/include/dt-bindings/clock/mediatek,mt6735-imgsys.h b/include/dt-bindings/clock/mediatek,mt6735-imgsys.h
->> new file mode 100644
->> index 0000000000000..f250c26c5eb4d
->> --- /dev/null
->> +++ b/include/dt-bindings/clock/mediatek,mt6735-imgsys.h
->> @@ -0,0 +1,15 @@
->> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
->> +
->> +#ifndef _DT_BINDINGS_CLK_MT6735_IMGSYS_H
->> +#define _DT_BINDINGS_CLK_MT6735_IMGSYS_H
->> +
->> +#define CLK_IMG_SMI_LARB2		0
->> +#define CLK_IMG_CAM_SMI			1
->> +#define CLK_IMG_CAM_CAM			2
->> +#define CLK_IMG_SEN_TG			3
->> +#define CLK_IMG_SEN_CAM			4
->> +#define CLK_IMG_CAM_SV			5
->> +#define CLK_IMG_SUFOD			6
->> +#define CLK_IMG_FD			7
->> +
->> +#endif /* _DT_BINDINGS_CLK_MT6735_IMGSYS_H */
->> diff --git a/include/dt-bindings/clock/mediatek,mt6735-mfgcfg.h b/include/dt-bindings/clock/mediatek,mt6735-mfgcfg.h
->> new file mode 100644
->> index 0000000000000..d2d99a48348a0
->> --- /dev/null
->> +++ b/include/dt-bindings/clock/mediatek,mt6735-mfgcfg.h
->> @@ -0,0 +1,8 @@
->> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
->> +
->> +#ifndef _DT_BINDINGS_CLK_MT6735_MFGCFG_H
->> +#define _DT_BINDINGS_CLK_MT6735_MFGCFG_H
->> +
->> +#define CLK_MFG_BG3D			0
->> +
->> +#endif /* _DT_BINDINGS_CLK_MT6735_MFGCFG_H */
->> diff --git a/include/dt-bindings/clock/mediatek,mt6735-vdecsys.h b/include/dt-bindings/clock/mediatek,mt6735-vdecsys.h
->> new file mode 100644
->> index 0000000000000..f94cec10c89ff
->> --- /dev/null
->> +++ b/include/dt-bindings/clock/mediatek,mt6735-vdecsys.h
->> @@ -0,0 +1,9 @@
->> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
->> +
->> +#ifndef _DT_BINDINGS_CLK_MT6735_VDECSYS_H
->> +#define _DT_BINDINGS_CLK_MT6735_VDECSYS_H
->> +
->> +#define CLK_VDEC_VDEC			0
->> +#define CLK_VDEC_SMI_LARB1		1
->> +
->> +#endif /* _DT_BINDINGS_CLK_MT6735_VDECSYS_H */
->> diff --git a/include/dt-bindings/clock/mediatek,mt6735-vencsys.h b/include/dt-bindings/clock/mediatek,mt6735-vencsys.h
->> new file mode 100644
->> index 0000000000000..e5a9cb4f269ff
->> --- /dev/null
->> +++ b/include/dt-bindings/clock/mediatek,mt6735-vencsys.h
->> @@ -0,0 +1,11 @@
->> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
->> +
->> +#ifndef _DT_BINDINGS_CLK_MT6735_VENCSYS_H
->> +#define _DT_BINDINGS_CLK_MT6735_VENCSYS_H
->> +
->> +#define CLK_VENC_SMI_LARB3			0
->> +#define CLK_VENC_VENC			1
->> +#define CLK_VENC_JPGENC			2
->> +#define CLK_VENC_JPGDEC			3
->> +
->> +#endif /* _DT_BINDINGS_CLK_MT6735_VENCSYS_H */
->> diff --git a/include/dt-bindings/reset/mediatek,mt6735-mfgcfg.h b/include/dt-bindings/reset/mediatek,mt6735-mfgcfg.h
->> new file mode 100644
->> index 0000000000000..c489242b226e2
->> --- /dev/null
->> +++ b/include/dt-bindings/reset/mediatek,mt6735-mfgcfg.h
->> @@ -0,0 +1,9 @@
->> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
->> +
->> +#ifndef _DT_BINDINGS_RESET_MT6735_MFGCFG_H
->> +#define _DT_BINDINGS_RESET_MT6735_MFGCFG_H
->> +
->> +#define MT6735_MFG_RST0_AXI		0
->> +#define MT6735_MFG_RST0_G3D		1
->> +
->> +#endif /* _DT_BINDINGS_RESET_MT6735_MFGCFG_H */
->> diff --git a/include/dt-bindings/reset/mediatek,mt6735-vdecsys.h b/include/dt-bindings/reset/mediatek,mt6735-vdecsys.h
->> new file mode 100644
->> index 0000000000000..90ad73af50a3f
->> --- /dev/null
->> +++ b/include/dt-bindings/reset/mediatek,mt6735-vdecsys.h
->> @@ -0,0 +1,10 @@
->> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
->> +
->> +#ifndef _DT_BINDINGS_RESET_MT6735_VDECSYS_H
->> +#define _DT_BINDINGS_RESET_MT6735_VDECSYS_H
->> +
->> +#define MT6735_VDEC_RST0_VDEC			0
->> +
->> +#define MT6735_VDEC_RST1_SMI_LARB1		1
->> +
->> +#endif /* _DT_BINDINGS_RESET_MT6735_VDECSYS_H */
->> -- 
->> 2.47.0
->>
-
-
-
+SGksIEhzaW4tdGU6DQoNCk9uIFdlZCwgMjAyNC0xMC0xNiBhdCAxNDoxNyArMDAwMCwgSHNpbi1U
+ZSBZdWFuIHdyb3RlOg0KPiAgCSANCj4gRXh0ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90IGNs
+aWNrIGxpbmtzIG9yIG9wZW4gYXR0YWNobWVudHMgdW50aWwgeW91IGhhdmUgdmVyaWZpZWQgdGhl
+IHNlbmRlciBvciB0aGUgY29udGVudC4NCj4gIEluIGNvbW1pdCA5ZjQyOGI5NWFjODkgKCJkcm0v
+bWVkaWF0ZWs6IEFkZCBuZXcgY29sb3IgZm9ybWF0IE1BQ1JPcyBpbg0KPiBPVkwiKSwgc29tZSBu
+ZXcgY29sb3IgZm9ybWF0cyBhcmUgZGVmaW5lZCBpbiB0aGUgTUFDUk9zIHRvIG1ha2UgdGhlDQo+
+IHN3aXRjaCBzdGF0ZW1lbnQgbW9yZSBjb25jaXNlLiBUaGF0IGNvbW1pdCB3YXMgaW50ZW5kZWQg
+dG8gYmUgYSBuby1vcA0KPiBjbGVhbnVwLiBIb3dldmVyLCB0aGVyZSBhcmUgdHlwb3MgaW4gdGhl
+c2UgZm9ybWF0cyBNQUNST3MsIHdoaWNoIGNhdXNlDQo+IHRoZSByZXR1cm4gdmFsdWUgdG8gYmUg
+aW5jb3JyZWN0LiBGaXggdGhlIHR5cG9zIHRvIGVuc3VyZSB0aGUgcmV0dXJuDQo+IHZhbHVlIHJl
+bWFpbnMgdW5jaGFuZ2VkLg0KDQpSZXZpZXdlZC1ieTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNv
+bT4NCg0KPiANCj4gRml4ZXM6IDlmNDI4Yjk1YWM4OSAoImRybS9tZWRpYXRlazogQWRkIG5ldyBj
+b2xvciBmb3JtYXQgTUFDUk9zIGluIE9WTCIpDQo+IFJldmlld2VkLWJ5OiBEb3VnbGFzIEFuZGVy
+c29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+DQo+IFJldmlld2VkLWJ5OiBNYXR0aGlhcyBCcnVn
+Z2VyIDxtYXR0aGlhcy5iZ2dAZ21haWwuY29tPg0KPiBTaWduZWQtb2ZmLWJ5OiBIc2luLVRlIFl1
+YW4gPHl1YW5oc2ludGVAY2hyb21pdW0ub3JnPg0KPiAtLS0NCj4gQ2hhbmdlcyBpbiB2MzoNCj4g
+LSBBZGQgbWlzc2luZyBSZXZpZXdlZC1ieSB0YWcNCj4gLSBMaW5rIHRvIHYyOiBodHRwczovL2xv
+cmUua2VybmVsLm9yZy9yLzIwMjQxMDE2LWNvbG9yLXYyLTEtNDZkYjVjNzhhNTRmQGNocm9taXVt
+Lm9yZw0KPiANCj4gQ2hhbmdlcyBpbiB2MjoNCj4gLSBDbGFyaWZ5IHRoYXQgdGhlIGNvbW1pdCBn
+ZXQgZml4ZWQgd2FzIGludGVuZGVkIHRvIGJlIGEgbm8tb3AgY2xlYW51cA0KPiAtIEZpeCB0aGUg
+dHlwbyBpbiB0YWcNCj4gLSBMaW5rIHRvIHYxOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9yLzIw
+MjQxMDE1LWNvbG9yLXYxLTEtMzViMDFmYTBhODI2QGNocm9taXVtLm9yZw0KPiAtLS0NCj4gIGRy
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYyB8IDQgKystLQ0KPiAgMSBmaWxl
+IGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkNCj4gDQo+IGRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMgYi9kcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMNCj4gaW5kZXggODliNDM5ZGNmM2E2YWY5ZjU3
+OTk0ODdmZGMwZjEyOGE5YjVjYmU0YS4uMTYzMmFjNWMyM2Q4N2UxY2RjNDEwMTNhOWNmNzg2NDcy
+OGRjYjYzYiAxMDA2NDQNCj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNw
+X292bC5jDQo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYw0K
+PiBAQCAtNjUsOCArNjUsOCBAQA0KPiAgI2RlZmluZSBPVkxfQ09OX0NMUkZNVF9SR0IoMSA8PCAx
+MikNCj4gICNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfQVJHQjg4ODgoMiA8PCAxMikNCj4gICNkZWZp
+bmUgT1ZMX0NPTl9DTFJGTVRfUkdCQTg4ODgoMyA8PCAxMikNCj4gLSNkZWZpbmUgT1ZMX0NPTl9D
+TFJGTVRfQUJHUjg4ODgoT1ZMX0NPTl9DTFJGTVRfUkdCQTg4ODggfCBPVkxfQ09OX0JZVEVfU1dB
+UCkNCj4gLSNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfQkdSQTg4ODgoT1ZMX0NPTl9DTFJGTVRfQVJH
+Qjg4ODggfCBPVkxfQ09OX0JZVEVfU1dBUCkNCj4gKyNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfQUJH
+Ujg4ODgoT1ZMX0NPTl9DTFJGTVRfQVJHQjg4ODggfCBPVkxfQ09OX0JZVEVfU1dBUCkNCj4gKyNk
+ZWZpbmUgT1ZMX0NPTl9DTFJGTVRfQkdSQTg4ODgoT1ZMX0NPTl9DTFJGTVRfUkdCQTg4ODggfCBP
+VkxfQ09OX0JZVEVfU1dBUCkNCj4gICNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfVVlWWSg0IDw8IDEy
+KQ0KPiAgI2RlZmluZSBPVkxfQ09OX0NMUkZNVF9ZVVlWKDUgPDwgMTIpDQo+ICAjZGVmaW5lIE9W
+TF9DT05fTVRYX1lVVl9UT19SR0IoNiA8PCAxNikNCj4gDQo+IC0tLQ0KPiBiYXNlLWNvbW1pdDog
+NzViNjA3ZmFiMzhkMTQ5ZjIzMmYwMWVhZTVlNjM5MmIzOTRkZDY1OQ0KPiBjaGFuZ2UtaWQ6IDIw
+MjQxMDE1LWNvbG9yLWUyMDVlNzViNjRhYQ0KPiANCj4gQmVzdCByZWdhcmRzLA0KPiAtLSANCj4g
+SHNpbi1UZSBZdWFuIDx5dWFuaHNpbnRlQGNocm9taXVtLm9yZz4NCj4gDQo=
 
