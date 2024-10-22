@@ -4,88 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DDFCCDD0F4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2024 21:00:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F638CDD0F4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2024 21:07:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rGcVubgeABd0/PmmPiE/7qXUdJE2sMJ6ZOzH8qpp0iI=; b=4Q6irouE54D5RJo5bsQvlCY338
-	ju31/Bq54SogXK8u7Dx6VAVeh8sGMiNBUFtyv8rQvPc92eM2cY7Liaw+e73a7Ak1bt8Q2uXRH9WEF
-	kQ3W8x/cURz+WPlXYZ9Med5wM4GvA+1BgvGlEb8dtNGLgFHjbX1+o4wvLfpkcgaftr40RO8DEaUPE
-	rvPqn4fVhWvrv1qvH0wRr31GWjbd4VWRjAFkbKL0QXNtoi/5XDUtGP3NzjOz4snUMOO6ShjAvyuAD
-	i5YEfXdawaQt3lOm7ATME6fdOdaP6MQqwevnZE9jWzvEqs1o/dVcDYGhluYogLpBelQaLudpU0TMC
-	59pN1pcw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YEFo7BD1oIAuDiZnvSmWjv5wnv258VyoeJThoykpJK0=; b=qTogIa7awVqp1KZ4a+nUc0LwAQ
+	mOiUzrI/luwpa26V+esisEt2F/tpqI6nXTfPhFZdLfhsVPkhG9DfMCfIAYSuNE99zHwMX+FmcYl/7
+	vEBJGNhDozRpxjBKTf36XCGYYEDrUwBK8l0wEdyjhJOZPDwg6XphFBI4yg5GdUN9B882Lg62yzWFR
+	oQ/3BGSVd55rPd9+op1Yiy9NuQp75orHtH+rwXmZuMKWTMKeh+dVvDBiwa/3lZoQ2w45Jo+p59FR6
+	fB3YkQTZzzLVY8qcVU2Fwa4bI34EXiGqF3vEHaoWLXWC70/JXZ13j8V3JickXGtxF6wZ7kWSZfW+6
+	xKXiSBiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3Lzk-0000000C9sf-3U1y;
-	Tue, 22 Oct 2024 21:00:48 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1t3M5k-0000000CAhC-2FVD;
+	Tue, 22 Oct 2024 21:07:00 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3LyD-0000000C9fy-0loa;
-	Tue, 22 Oct 2024 20:59:14 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-20c8b557f91so61145185ad.2;
-        Tue, 22 Oct 2024 13:59:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729630752; x=1730235552; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=rGcVubgeABd0/PmmPiE/7qXUdJE2sMJ6ZOzH8qpp0iI=;
-        b=OIfDhVktHfadgV9LNT6DaZBbnhhAcpf1P83wXzN+UhQEhGV5qFj2Br6SpOjA1Q3I/H
-         yS5R4hSgcYYpP6plVzIZ/gjf5GGbAILhwPwEcOJAhfGVOPDDTGkeb6kGrr2HRQwTSXks
-         dbovfxsuA92zuW1XSy8NevYTZCNQzJ0jvc6RqcHEofGGtWYcYK322+MKx6s1jIhHmHQz
-         44i4HyK6hbCslKG/CMEF9NKZa2r0fqXXyu/WlMADJKh2UKy/kicyap8XQWALMozzHjmO
-         mlPzdU6y1PGhJUSJ125QPoVQdnNUBhP7Wn9S3nJYOVqewpVC8OlVvLKmX0HCnio9uIqz
-         sRnw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729630752; x=1730235552;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=rGcVubgeABd0/PmmPiE/7qXUdJE2sMJ6ZOzH8qpp0iI=;
-        b=KbJGMU/9MNp+29+Lq6rp7TJgW0SDiYify4f93Zq7JDGgmDUgs/PHtKL7fETRQlBK7G
-         AnuCjVRTnKfaEnf6zArf2APNyINfheoIF8AIjYvgACk9m+OAEdw10VxZPR86EpjJtVGa
-         zosTA9rbZQEEOOzmRSG7Dh0d2vc4yyicNYqkg5QPCMlNL31M6/8703J71ZBf09jyWIAI
-         aieD4C9lVf4eESSVx1fXfWtxxP9PrnGuyvqMvvUtIAOZI2XpCdMd0aAX2TzOJMJvJUcM
-         41cjxLLwHa9Ve51e2DxJ30fdwuZpSlaAMpmrr3Cnxsq43vbZYdTLg44XcPi+zWX84Yzo
-         6zrg==
-X-Forwarded-Encrypted: i=1; AJvYcCVcC8V/3e7MCGzkSCb6EOoN0X2Srgf42hqotZTbv1Nyg979yTVWnvSPZ8Q9P0YGxYwfCgdlG+oNElWbYtAUDH06@lists.infradead.org, AJvYcCWB0yCLHTJKpZ/93fmwO9+Mm4REJc0T0EA8F1czdl1Ewx8oI3kn/1RsmG/PbRUY7RE0rYErgjP88jKxG35m2oU=@lists.infradead.org, AJvYcCXuyeBQvO2aL2Tt/XNro2LeTelrKGsmEhr9lxTM/FwP83x+dF0YGosrER5G8IT5QzuVJ851lSfGN8KUpCyWvDolEA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxRlGANf9svj0f0L3t5dR5M1+exdg7hpo6E9PO85N42M1MRFzln
-	ftoYG7lX+tkZXEzAE95yyMF2bHAhMxYMGPD+KZ9uDWvtK/jhT+EB+3uW8A==
-X-Google-Smtp-Source: AGHT+IGJNU/cLwbWsuoQCsE3dJTP2JypH6Hr2f1MS7P2CbI5aJ0sG6TzIyW1dqVhAweQ4wLOdWoaaQ==
-X-Received: by 2002:a17:903:2312:b0:20c:ceb4:aa7f with SMTP id d9443c01a7336-20fa9e298c1mr6239915ad.11.1729630750519;
-        Tue, 22 Oct 2024 13:59:10 -0700 (PDT)
-Received: from google.com ([2620:15c:9d:2:94ec:f4e5:1552:e2cc])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20e7f0c0e2dsm46581055ad.123.2024.10.22.13.59.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 22 Oct 2024 13:59:10 -0700 (PDT)
-Date: Tue, 22 Oct 2024 13:59:07 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Javier Carrasco <javier.carrasco.cruz@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hans de Goede <hdegoede@redhat.com>, Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-rpi-kernel@lists.infradead.org
-Subject: Re: [PATCH v3 0/2] input: automate of_node_put() calls for
- device_node
-Message-ID: <ZxgSG55LUbw08mp8@google.com>
-References: <20241021-input_automate_of_node_put-v3-0-cc73f636e1bc@gmail.com>
+	id 1t3M4C-0000000CAW0-0u1q;
+	Tue, 22 Oct 2024 21:05:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B13785C5D54;
+	Tue, 22 Oct 2024 21:05:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CFEF3C4CEC7;
+	Tue, 22 Oct 2024 21:05:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1729631120;
+	bh=bJvQz9MiC/VgurH813d2V4r5Zs0ZMaCBNkCiF5+fGYo=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=bwm6Wyj3RPaPraAlcmvAbRAZqObSQRJe2bWoon+CeM3CxXWDRXTGMM/adJVqCa0Jl
+	 lYOZYOo9QA4oYRAIDvt9eSuiLR6oeCeth/W24QCnX4q9U3SObA3PVnK5y9L/o8ZOcd
+	 TtIIjLuI7T05fQsjo8nePYCkRynbGv3mFRcZlZpH1XQhV38CruVJfmyCVB9i2d15nY
+	 4Br4LOO/1E5IYAoXfDaaFN9Uu5GOFBk7lHrpE3ur3LHw0CAlp7g2lAnUcxxFHD1D1h
+	 QcDTWsIqNg6qGKH1hzvxHv4H+nLUvoI1K3yDnyLl25RIFUWB5BxaaIeT1wuBTmVS0O
+	 w32DLwpJeaYCw==
+Message-ID: <df9044e1f49f4b6567708693f41dbf9c.sboyd@kernel.org>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241021-input_automate_of_node_put-v3-0-cc73f636e1bc@gmail.com>
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20241019-clk_bulk_ena_fix-v4-1-57f108f64e70@collabora.com>
+References: <20241019-clk_bulk_ena_fix-v4-0-57f108f64e70@collabora.com> <20241019-clk_bulk_ena_fix-v4-1-57f108f64e70@collabora.com>
+Subject: Re: [PATCH v4 1/4] clk: Provide devm_clk_bulk_get_all_enabled() helper
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: kernel@collabora.com, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, linux-samsung-soc@vger.kernel.org
+To: Alim Akhtar <alim.akhtar@samsung.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Bjorn Helgaas <bhelgaas@google.com>, Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, Jingoo Han <jingoohan1@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>, Krzysztof =?utf-8?q?Wilczy=C5=84ski?= <kw@linux.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>, Russell King <linux@armlinux.org.uk>
+Date: Tue, 22 Oct 2024 14:05:18 -0700
+User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241022_135913_244902_7BBAE8A1 
-X-CRM114-Status: GOOD (  11.19  )
+X-CRM114-CacheID: sfid-20241022_140524_371053_C8D782F7 
+X-CRM114-Status: GOOD (  20.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,16 +70,153 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 21, 2024 at 10:28:22PM +0200, Javier Carrasco wrote:
-> The first patch of the series provides device managed memory, which
-> simplifies bbc_bee_probe() and removes the need for the goto
-> instructions That also prepares the function for the second patch where
-> the cleanup attribute is used for 'dp'.
-> 
-> Signed-off-by: Javier Carrasco <javier.carrasco.cruz@gmail.com>
+Quoting Cristian Ciocaltea (2024-10-19 04:16:00)
+> Commit 265b07df758a ("clk: Provide managed helper to get and enable bulk
+> clocks") added devm_clk_bulk_get_all_enable() function, but missed to
+> return the number of clocks stored in the clk_bulk_data table referenced
+> by the clks argument.  Without knowing the number, it's not possible to
+> iterate these clocks when needed, hence the argument is useless and
+> could have been simply removed.
+>=20
+> Introduce devm_clk_bulk_get_all_enabled() variant, which is consistent
+> with devm_clk_bulk_get_all() in terms of the returned value:
+>=20
+>  > 0 if one or more clocks have been stored
+>  =3D 0 if there are no clocks
+>  < 0 if an error occurred
+>=20
+> Moreover, the naming is consistent with devm_clk_get_enabled(), i.e. use
+> the past form of 'enable'.
+>=20
+> To reduce code duplication and improve patch readability, make
+> devm_clk_bulk_get_all_enable() use the new helper, as suggested by
+> Stephen Boyd.
+>=20
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
 
-Applied the series, thank you.
+I have minimized the diff further. Applied to clk-next (clk-devm). If
+the other patches can be merged through clk tree I'll need the PCI
+maintainers to ack, likely Bjorn?
 
--- 
-Dmitry
+diff --git a/drivers/clk/clk-devres.c b/drivers/clk/clk-devres.c
+index 975fac29b27f..5368d92d9b39 100644
+--- a/drivers/clk/clk-devres.c
++++ b/drivers/clk/clk-devres.c
+@@ -218,15 +218,6 @@ static void devm_clk_bulk_release_all_enable(struct de=
+vice *dev, void *res)
+ 	clk_bulk_put_all(devres->num_clks, devres->clks);
+ }
+=20
+-int __must_check devm_clk_bulk_get_all_enable(struct device *dev,
+-					      struct clk_bulk_data **clks)
+-{
+-	int ret =3D devm_clk_bulk_get_all_enabled(dev, clks);
+-
+-	return ret > 0 ? 0 : ret;
+-}
+-EXPORT_SYMBOL_GPL(devm_clk_bulk_get_all_enable);
+-
+ int __must_check devm_clk_bulk_get_all_enabled(struct device *dev,
+ 					       struct clk_bulk_data **clks)
+ {
+@@ -239,23 +230,23 @@ int __must_check devm_clk_bulk_get_all_enabled(struct=
+ device *dev,
+ 		return -ENOMEM;
+=20
+ 	ret =3D clk_bulk_get_all(dev, &devres->clks);
+-	if (ret <=3D 0) {
++	if (ret > 0) {
++		*clks =3D devres->clks;
++		devres->num_clks =3D ret;
++	} else {
+ 		devres_free(devres);
+ 		return ret;
+ 	}
+=20
+-	*clks =3D devres->clks;
+-	devres->num_clks =3D ret;
+-
+ 	ret =3D clk_bulk_prepare_enable(devres->num_clks, *clks);
+-	if (ret) {
++	if (!ret) {
++		devres_add(dev, devres);
++	} else {
+ 		clk_bulk_put_all(devres->num_clks, devres->clks);
+ 		devres_free(devres);
+ 		return ret;
+ 	}
+=20
+-	devres_add(dev, devres);
+-
+ 	return devres->num_clks;
+ }
+ EXPORT_SYMBOL_GPL(devm_clk_bulk_get_all_enabled);
+diff --git a/include/linux/clk.h b/include/linux/clk.h
+index 158c5072852e..1dcee6d701e4 100644
+--- a/include/linux/clk.h
++++ b/include/linux/clk.h
+@@ -495,22 +495,6 @@ int __must_check devm_clk_bulk_get_optional(struct dev=
+ice *dev, int num_clks,
+ int __must_check devm_clk_bulk_get_all(struct device *dev,
+ 				       struct clk_bulk_data **clks);
+=20
+-/**
+- * devm_clk_bulk_get_all_enable - Get and enable all clocks of the consume=
+r (managed)
+- * @dev: device for clock "consumer"
+- * @clks: pointer to the clk_bulk_data table of consumer
+- *
+- * Returns success (0) or negative errno.
+- *
+- * This helper function allows drivers to get all clocks of the
+- * consumer and enables them in one operation with management.
+- * The clks will automatically be disabled and freed when the device
+- * is unbound.
+- */
+-
+-int __must_check devm_clk_bulk_get_all_enable(struct device *dev,
+-					      struct clk_bulk_data **clks);
+-
+ /**
+  * devm_clk_bulk_get_all_enabled - Get and enable all clocks of the consum=
+er (managed)
+  * @dev: device for clock "consumer"
+@@ -1052,12 +1036,6 @@ static inline int __must_check devm_clk_bulk_get_all=
+(struct device *dev,
+ 	return 0;
+ }
+=20
+-static inline int __must_check devm_clk_bulk_get_all_enable(struct device =
+*dev,
+-						struct clk_bulk_data **clks)
+-{
+-	return 0;
+-}
+-
+ static inline int __must_check devm_clk_bulk_get_all_enabled(struct device=
+ *dev,
+ 						struct clk_bulk_data **clks)
+ {
+@@ -1160,6 +1138,15 @@ static inline void clk_restore_context(void) {}
+=20
+ #endif
+=20
++/* Deprecated. Use devm_clk_bulk_get_all_enabled() */
++static inline int __must_check
++devm_clk_bulk_get_all_enable(struct device *dev, struct clk_bulk_data **cl=
+ks)
++{
++	int ret =3D devm_clk_bulk_get_all_enabled(dev, clks);
++
++	return ret > 0 ? 0 : ret;
++}
++
+ /* clk_prepare_enable helps cases using clk_enable in non-atomic context. =
+*/
+ static inline int clk_prepare_enable(struct clk *clk)
+ {
 
