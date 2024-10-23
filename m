@@ -4,68 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B555CFA460
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2024 18:23:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F667CFA45C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2024 18:28:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=24JSccvs0HSbNmxvOVItJ4JQKqdo53s7Emj+lH9aPyw=; b=LVSBqZ7eFPdK+lTowp7sy6f7AZ
-	kk1qg2KxPNTCXmy9wj87cM9eWYxgcsY14Rlw/RNNaERbF8hUQIqGdgzrWf5biYh0VabYS60avhu7e
-	0TwqU8+GE/mp0iVCsfKup6JP8vRIR/azxM1sKuRUeoQZORl/snQRwntZrCyraNrpeYviR8el4D4i+
-	w81OdvAdYjmlKRznIBUZUkHRPdwVMPJ9kV91nhHBUP67HlTJ/XdoN/0o3GvJqsHgUs1rpIuj/kBKx
-	P+NfZJukovDmXl4c6mh4r/HK1mfp0/7j10HSLhMqXcZ+9FwHa/2vXRZzHPJoDAhXp5D7y8KDe+LYF
-	8zg2Iscw==;
+	bh=hCXcgtGPtEn2014ULSmg0P/AaZa90Zl7RHG/bEE0dtk=; b=fPuFkmL8cvW4XB44QhsNb/HcaA
+	0mQlfkdLIsDiM1F2+yV+GudZCR1htNuTYrvA11TIUc2BiSAGhlJBR0ocpbjON4Z5sdxut9QevW7tM
+	tBmnrjtyaXRdxEFTJt4Y8X7ExUTLrBK8+AF+IB4dTS6bugZznddEK1CG8G8aiBK2gmvXre3SXdLlM
+	PYtgFVOogeE/6AEbRaJCoVtdRlx0xETReeFl/Te3CMMWwd1mdgWk3ElvZ53dXwG+sZtKOph0c0IsD
+	6jFScOL0hY5MkZhsj9EAmx4XEvevfyWjt0RAQvMydcqCA2N7nUq6b7GRsiMvlR8ueTp00ucCcvCX1
+	BBqo/iyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3g1U-0000000FVu3-3YGm;
-	Wed, 23 Oct 2024 18:23:56 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1t3g5r-0000000FXMP-08kV;
+	Wed, 23 Oct 2024 18:28:27 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3ewV-0000000FL2d-0ren;
-	Wed, 23 Oct 2024 17:14:44 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-4314b316495so68683305e9.2;
-        Wed, 23 Oct 2024 10:14:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729703682; x=1730308482; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=24JSccvs0HSbNmxvOVItJ4JQKqdo53s7Emj+lH9aPyw=;
-        b=XVEQLNC3x1wUxCVq4rt8u2kRNxMZzxWTcY/Q0Ghgz/+jKKnVawjxLTEl6P8JzhzWYK
-         Y+v+H73T1sziUMJ4KAo6PmEweW3qT42gmOqJyD4ELUVPZEGrjE3lqJhlrGyE74OyAUQo
-         eaacqnhvca+xpbIhO5TcoP7G2zKFERphi92DNJ1CFseA6sz9iEnuo5VKXrttjoMjgrc/
-         m7p9A5qvcswmTtHT8+CAmrJu9r7NmuaAUu4Ad97jYEjFsDDie7QoSSg0RhB3TyTJwA+9
-         oFEq4ynWA/RU64ygxhrAlZSB6By2HM6WsJ3h043SgGYp5SiXrcjzOb2xVT9SqMlA2Qx1
-         4diA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729703682; x=1730308482;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=24JSccvs0HSbNmxvOVItJ4JQKqdo53s7Emj+lH9aPyw=;
-        b=ln4vBrrkynptg8+zpZuh7iVAtM2nAPRsf1Iz/WizbXw4ghX1aXL9bH01CtvqIPgsmQ
-         U7d749RzGu8RgbEx4JuwGCisp1ll410Lk8AAnKwvTjND1jAnPD+n2YnAtDBc0TN9hbVd
-         wB5kwjX7ceoilnpvine7lNzMUb8MHCLSb4plWPHPSvV40XDwU0im1fu98HWvfeDEa1Z7
-         dR8Lt1vEy7woawCLW+Qi7oicCnkyqGOIPMwtQgLIZExs/ngEbfzoAxd21ecSFwwt+VvI
-         j+ktZKIDsArIsVpLTSvtJ9DH7jN5SlU2Y+B0wa2V9wvVqq271wClyEGUUWLde0YpWmXy
-         XQdw==
-X-Forwarded-Encrypted: i=1; AJvYcCUARB73YI0fJ6mKPPAE5Av1IofdC1gD1dG/O1LDnFyefPjWt/wBPL1SmvBug9myfFol+MHkgdbDrISorh8g56c=@lists.infradead.org, AJvYcCUYJgsj2xvyvPfV+7ThlSkfMH7I23Wgmfeuteg6MchYEJZ4zIXf+FcinsE/IY72XtB6LVGyY9F5XNPQX1nITAKO@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz0BZOVArmsLQXiyICwrWWPjM2dDNroeDT/sKGYvKerr4147UuG
-	uQlhIX3C/ytX1QvSn5gNLpSK+MUaWNJNKxllMPl1f09zJasC6djj
-X-Google-Smtp-Source: AGHT+IFyL3faonwfZbopJADep8Fb7q5nglJ4asw2OSvMdOVlChDa7XsFH3HgPggJz4T2SeNw/my3rA==
-X-Received: by 2002:a05:600c:1c95:b0:42c:bd4d:e8ba with SMTP id 5b1f17b1804b1-4318413e532mr24981595e9.8.1729703681340;
-        Wed, 23 Oct 2024 10:14:41 -0700 (PDT)
-Received: from Ansuel-XPS. (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43186c3a44asm21554805e9.36.2024.10.23.10.14.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Oct 2024 10:14:40 -0700 (PDT)
-Message-ID: <67192f00.7b0a0220.343b2b.9836@mx.google.com>
-X-Google-Original-Message-ID: <Zxku_anuVj64p9nq@Ansuel-XPS.>
-Date: Wed, 23 Oct 2024 19:14:37 +0200
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Andrew Lunn <andrew@lunn.ch>
+	id 1t3fKA-0000000FOsZ-1IJd;
+	Wed, 23 Oct 2024 17:39:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=hCXcgtGPtEn2014ULSmg0P/AaZa90Zl7RHG/bEE0dtk=; b=qS0cwOVIg/cClPHaWZxurc/tnW
+	LGtkJjOm0+MOJ1UNf1vbNAFHq9PLuCpUAs420xpmvdEPR5yI0Teo3X+WkQVtRR+ickluYg7wmotKa
+	abCoX137Z4CcNo3mVF4Htvp1PwccARknsaQ2CVChwyp6IQaLcb450I7rFx0BBHqhlUvE=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1t3fK1-00Azxv-Lc; Wed, 23 Oct 2024 19:39:01 +0200
+Date: Wed, 23 Oct 2024 19:39:01 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Christian Marangi <ansuelsmth@gmail.com>
 Cc: Florian Fainelli <f.fainelli@gmail.com>,
 	Vladimir Oltean <olteanv@gmail.com>,
 	"David S. Miller" <davem@davemloft.net>,
@@ -83,16 +57,18 @@ Cc: Florian Fainelli <f.fainelli@gmail.com>,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 Subject: Re: [net-next RFC PATCH v2 1/3] dt-bindings: net: dsa: Add Airoha
  AN8855 Gigabit Switch documentation
+Message-ID: <77e99052-a14e-4495-9197-06d98257c590@lunn.ch>
 References: <20241023161958.12056-1-ansuelsmth@gmail.com>
  <20241023161958.12056-2-ansuelsmth@gmail.com>
  <5761bdc3-7224-4de6-b0f5-bedc066c09f6@lunn.ch>
+ <67192f00.7b0a0220.343b2b.9836@mx.google.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <5761bdc3-7224-4de6-b0f5-bedc066c09f6@lunn.ch>
+In-Reply-To: <67192f00.7b0a0220.343b2b.9836@mx.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241023_101443_279618_399390F1 
-X-CRM114-Status: GOOD (  23.03  )
+X-CRM114-CacheID: sfid-20241023_103910_399412_732D15AF 
+X-CRM114-Status: GOOD (  18.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,62 +83,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 23, 2024 at 07:08:57PM +0200, Andrew Lunn wrote:
-> > +  airoha,base_smi_address:
-> > +    $ref: /schemas/types.yaml#/definitions/uint32
-> > +    description:
-> > +      Configure and change the base switch PHY address to a new address on
-> > +      the bus.
-> > +      On reset, the switch PHY address is ALWAYS 1.
-> > +    default: 1
-> > +    maximum: 31
+> Well the first case that comes to mind is multiple switch and conflict.
+> I have no idea if there are hw strap to configure this so I assume if a
+> SoC have 2 switch (maybe of the same type), this permits to configure
+> them (with reset pin and deasserting them once the base address is
+> correctly configured)
+
+Is this switch internal on an internal MDIO bus, or external?
+
+Most PHYs and switches i've seen have strapping pins to set the base
+address. It would be unusual if there was not strapping.
+
+For the Marvell switches, the strapping moves all the MDIO
+registers. This is why we have a reg at the top level in mv88e6xxx:
+
+        ethernet-switch@0 {
+            compatible = "marvell,mv88e6085";
+            reg = <0>;
+
+There is one family which use the values of 0 or 16, and each switch
+uses 16 addresses. So you can put two on the bus.
+
+> > > +  mdio:
+> > > +    $ref: /schemas/net/mdio.yaml#
+> > > +    unevaluatedProperties: false
+> > > +    description:
+> > > +      Define the relative address of the internal PHY for each port.
+> > > +
+> > > +      Each reg for the PHY is relative to the switch base PHY address.
+> > 
+> > Which is not the usual meaning of reg.
+> > 
+> > > +            mdio {
+> > > +                #address-cells = <1>;
+> > > +                #size-cells = <0>;
+> > > +
+> > > +                internal_phy0: phy@0 {
+> > > +                    reg = <0>;
+> > 
+> > So given that airoha,base_smi_address defaults to 1, this is actually
+> > address 1 on the MDIO bus?
+> >
 > 
-> Given that this is a 5 port switch, what happens if i pick a value
-> greater than 31 - 5 ?
+> Yes correct. One problem I had was that moving this outside the swich
+> cause panic as it does conflict with the switch PHY address...
 
-The PHY at those address won't be reachable, I didn't think of this, you
-are right.
+I would make these addresses absolute, not relative. The example above
+from the marvell switch, the device using addresses 16-31 has its PHYs
+within that range, and we uses the absolute reg values.
 
-> 
-> Do you have a real use case for this? A board which requires the PHYs
-> get shifted from the default of 1? Vendors have all sorts of bells and
-> whistles which we never use. If its not needed, i would not add it,
-> until it is actually needed, if ever.
-
-Well the first case that comes to mind is multiple switch and conflict.
-I have no idea if there are hw strap to configure this so I assume if a
-SoC have 2 switch (maybe of the same type), this permits to configure
-them (with reset pin and deasserting them once the base address is
-correctly configured)
-
-But yes totally ok to drop this if too strange... I assume it's problematic
-that PHY change at runtime.
-
-> 
-> > +  mdio:
-> > +    $ref: /schemas/net/mdio.yaml#
-> > +    unevaluatedProperties: false
-> > +    description:
-> > +      Define the relative address of the internal PHY for each port.
-> > +
-> > +      Each reg for the PHY is relative to the switch base PHY address.
-> 
-> Which is not the usual meaning of reg.
-> 
-> > +            mdio {
-> > +                #address-cells = <1>;
-> > +                #size-cells = <0>;
-> > +
-> > +                internal_phy0: phy@0 {
-> > +                    reg = <0>;
-> 
-> So given that airoha,base_smi_address defaults to 1, this is actually
-> address 1 on the MDIO bus?
->
-
-Yes correct. One problem I had was that moving this outside the swich
-cause panic as it does conflict with the switch PHY address...
-
--- 
-	Ansuel
+	Andrew
 
