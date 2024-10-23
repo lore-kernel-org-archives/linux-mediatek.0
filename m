@@ -4,75 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F76ECF5396
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2024 14:42:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D08BACF5399
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2024 14:51:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kO9dsRxEi7Z6623tuZtbmq5loPcm88aFPb1NoxIjYoM=; b=xkzuTo8yYYYKJ6m2hB8u9Sjbxg
-	8LKDEpUMwwCXX7gAhhtYkKfdAwdi33jMftJCJFTnG8jhqtNnqCGYmTBsLAqBWt0H5H069bpMg6yhT
-	WAvhqTYtZMjzCDSI/o8IkGhIgjCzZcE7rrNY5RPNACcAvIO+F86k4yJXk7426WvKTL3A/KkvbCyy/
-	Te/Fnm/zgAHea5GAh2dfabhgOAPNutFMFRGdelRIiEWbsn76Le4orx7+KvaJ+KHqIXnPM4ejiQoN3
-	71ai8zrBvR4iiAHUcbjxId+l6EYQ4Bnqso/IzpyEKYlzCIZqUbWKbrENG0FKj+uTbwoj22rBj61Xt
-	FhomiZGA==;
+	bh=dKAMRbftUhDsnB3DO79E2412q0qL9eT88TYwlyR5GDU=; b=AHmoGM4qiE5lSx0CKMZ9/1jYDq
+	zQWMfdaqH6V+LeB1XmdvUcDFaMhpTBtcfKGdJlzejUnSVmHh5Ufi+XHQB7GcJerHE/v7rj3DcqfZM
+	DcGOhYOt9kX/6N2g7W5mgJ8cH0IhFDNizlEqcNnshmld9XQIRReZUMd+Zl6o5dN6Zs0twxZCiw/eD
+	zpuiTCn+TLJmqQ1lxNAbO9YuvSlyDp0OcKa3PCmXgQvz+gsoW2Zg/3gXr4XtnMkOmhYCU7eJ5m3Fx
+	qapzRb6SQwdSok2Yn1BGRw/AjHnTBPQmeVqaRXwgfwIC37hky29AMdmThWH179YG6iREVWdCLA9l1
+	kv1thtTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3cYi-0000000Elw0-1CFc;
-	Wed, 23 Oct 2024 14:42:00 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1t3ciK-0000000Eom2-1O9U;
+	Wed, 23 Oct 2024 14:51:56 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3cVW-0000000El3C-3Wcu;
-	Wed, 23 Oct 2024 14:38:44 +0000
+	id 1t3ci6-0000000Eofy-0WPr;
+	Wed, 23 Oct 2024 14:51:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id B9E08A44F66;
-	Wed, 23 Oct 2024 14:38:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9DCAEC4CEE4;
-	Wed, 23 Oct 2024 14:38:41 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id B5CE95C5ECA;
+	Wed, 23 Oct 2024 14:51:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8EF0C4AF0B;
+	Wed, 23 Oct 2024 14:51:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729694321;
-	bh=0JqvrPoAl0IeTaLk4IwiVcZMi7aNs5KY80Y/mwm0Ihs=;
+	s=k20201202; t=1729695099;
+	bh=V0WnmKHkiubGXH7powCeniKJAeXlAH+b4/k8QVVp3oY=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=Y7jGJCf5XPlg6FhMcZZxHnU43XGMqCWy0zgJZiTZw3LmL9uIaoEggURVp2ODsOpdo
-	 +300kakIpAx0/GKN3TnxZyh5oEhjHgtwTuMtIqsGukcF6Zndd49LtkNXg1gbGYx0vj
-	 5DGX4Dh1AZTC26GNlCEWSzsgFWMxRuV8kJFELNuCzSUcnWlNL2t+ac8d7WNbUeknf6
-	 gRz6eUNoXkcuOIN6xMWt4etfHrdyk/bG4MaA6a0DtuyUQ6tseUKopwP3cPdIzako4Y
-	 CN/903JmCJLvpQokdP3vjoykoEMq9kWDubY2Kpn9uW1DKHPuc++54KNYjkTH1GY53F
-	 +2S2JKwAzjB/g==
-Received: by mail-pf1-f175.google.com with SMTP id d2e1a72fcca58-71e467c3996so4610886b3a.2;
-        Wed, 23 Oct 2024 07:38:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVjU6H6ct9Ihe1sTOPIqNTZc/cnkMl7Vr5xaPI3PeSOt9aeaAqyW8WrWtQPJDeFMzr04sj8sYnf5ZlmGNDY5S6v@lists.infradead.org, AJvYcCWjqdF0brm6d7kNpeU5U7pJlq49QMMg9GsFBxj0vkqikV5jSfUAOyTYpCNB5i/WMPtM6DFnU9aVhV0LoL3Lub8=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyLeFp69M+qKMtXj36bw3tdzj2eeOhkJl3yMDu1r19jmI92/t3q
-	57eX3UntHrqhcAVi7vF5F77QMuZaOsjJzcRHaSJ69kjtWlCpbwBE9qF1n0v9v5McCSDIdzmIoz6
-	jUe19/93BSkY0eLA05bV/PL5ssQ==
-X-Google-Smtp-Source: AGHT+IG/RdVxY7RG85NyF0P3I6XAtxRrRLMBLPXslpGReJZYhGUeFy1bxVKhKy/eGSVOAqET/hE7xY0gvgcONdeUlT4=
-X-Received: by 2002:a05:6a00:ccf:b0:71e:795f:92e4 with SMTP id
- d2e1a72fcca58-72030a61bccmr4130356b3a.2.1729694321137; Wed, 23 Oct 2024
- 07:38:41 -0700 (PDT)
+	b=ZI5jh9RfHhvV8BXkELReKNk+DT5nZqXcJQanuVnxbnJiUgBsPdOYsrZ4QuA6Vuq+a
+	 8E75CpBgCCLrwe7L+V580X5wva+3hC4FC5gD1J+WnmyMBAYMCRHkE1nOTY19p+OlGC
+	 8GmNkH2/H8NL+4iF41aadGcdnmWOCFp9tdYr8v2ZxeMO48fhIJ+XZtLd09ZtI4goW4
+	 aq2+0nIlPcOtIx8f3RTUJXJYXIP4Z47kWuuTIYCui5KPSnfl0RgWnoB32USvY/CqT8
+	 jL0ZX85cCrSW7lldtTW0H7wxv16fFYmGswFSIE3yUaUR3HMnvCYUBgkgFwNrlJzYPJ
+	 WMs3m3CbPiqmA==
+Received: by mail-pj1-f44.google.com with SMTP id 98e67ed59e1d1-2e3d523a24dso5156495a91.0;
+        Wed, 23 Oct 2024 07:51:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCWUyqkGxTCHS+cgSvM/k21z8qnaoFMbiKypL9HkRIOYZR9dGuPniytdtc6n0mDYFu9XoFkwcSloEo8KHOo/avEz@lists.infradead.org, AJvYcCXQDxtvmZDDnk7o3e9icql44PUI1p0jwE4Cz1AdoZmlmsNFnSPqUWHSesBFwWoFYxMcGD2VGl7hUGQobAIE3j8=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxQmsO5x8TlYa88CgUqMR9EljNz2WGArDFuI4ylIQd58J8OClJN
+	05C3J9vlmDiOejG7O5QtpeZ/SuN6Vh0ol2WfC/OHIa5GEa3+m/RfKTIr2ZlCHp+94JjPP/rFqcg
+	Yg6mGE/YIF+TgPHHXoWXp3PUJRQ==
+X-Google-Smtp-Source: AGHT+IGiOV49HPeVWqZgqUDfen8sjZxWmSvuRAGE4z98/inzDbsAH3T7NKTZ/wjACKOgmYMVQ+VQCdv4ftbQedq6e9Q=
+X-Received: by 2002:a17:90a:d512:b0:2e2:e545:82c5 with SMTP id
+ 98e67ed59e1d1-2e76b5b7edcmr3019116a91.3.1729695099200; Wed, 23 Oct 2024
+ 07:51:39 -0700 (PDT)
 MIME-Version: 1.0
-References: <20241019052935.553886-1-fshao@chromium.org>
-In-Reply-To: <20241019052935.553886-1-fshao@chromium.org>
+References: <20241007022834.4609-1-moudy.ho@mediatek.com>
+In-Reply-To: <20241007022834.4609-1-moudy.ho@mediatek.com>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Wed, 23 Oct 2024 22:39:02 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_9qjcZoQS3KqEqbhKNw9nza+1ggXN44snwThzjLLJ2KNw@mail.gmail.com>
-Message-ID: <CAAOTY_9qjcZoQS3KqEqbhKNw9nza+1ggXN44snwThzjLLJ2KNw@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: display: mediatek: dpi: Update device list
- with power-domains
-To: Fei Shao <fshao@chromium.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, CK Hu <ck.hu@mediatek.com>, 
-	Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Date: Wed, 23 Oct 2024 22:52:00 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-jPWv1nHf9NnxNkVW2+ZOFOagAPf1DFQu5AD1KnCQNYw@mail.gmail.com>
+Message-ID: <CAAOTY_-jPWv1nHf9NnxNkVW2+ZOFOagAPf1DFQu5AD1KnCQNYw@mail.gmail.com>
+Subject: Re: [PATCH v5] dt-bindings: display: mediatek: split: add subschema
+ property constraints
+To: Moudy Ho <moudy.ho@mediatek.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	Macpaul Lin <macpaul.lin@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241023_073843_050359_46FE58D4 
-X-CRM114-Status: GOOD (  18.29  )
+X-CRM114-CacheID: sfid-20241023_075142_279813_BBB47BE4 
+X-CRM114-Status: GOOD (  18.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,74 +89,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Fei:
+Hi, Moudy:
 
-Fei Shao <fshao@chromium.org> =E6=96=BC 2024=E5=B9=B410=E6=9C=8819=E6=97=A5=
- =E9=80=B1=E5=85=AD =E4=B8=8B=E5=8D=881:30=E5=AF=AB=E9=81=93=EF=BC=9A
+Moudy Ho <moudy.ho@mediatek.com> =E6=96=BC 2024=E5=B9=B410=E6=9C=887=E6=97=
+=A5 =E9=80=B1=E4=B8=80 =E4=B8=8A=E5=8D=8810:28=E5=AF=AB=E9=81=93=EF=BC=9A
 >
-> There are two kinds of MediaTek DPI devices in the tree: the ones with a
-> power domain and those without (or missing). The former are the majority
-> and are more common in newer DTs. Only three older DTs fall into the
-> latter category: MT2701, MT7623 and MT8192.
+> The display node in mt8195.dtsi was triggering a CHECK_DTBS error due
+> to an excessively long 'clocks' property:
+>   display@14f06000: clocks: [[31, 14], [31, 43], [31, 44]] is too long
 >
-> However, the current binding only allows particular DPI devices to have
-> power domains, which results in spurious binding check errors against
-> existing and new DTs.
->
-> Instead of diligently maintaining the allowed list, let's do it the
-> other way around - create an exception list for devices that are fine
-> not specifying a power domain. This list is expected to be fixed, and it
-> encourages new MTK DPI devices to describe their power domain whenever
-> possible; if not, those should be listed with proper rationale.
+> To resolve this issue, the constraints for 'clocks' and
+> other properties within the subschemas will be reinforced.
 
-I've applied patch [1]. I think that patch fix the same problem with this p=
-atch.
+Applied to mediatek-drm-fixes [1], thanks.
 
 [1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
-commit/?h=3Dmediatek-drm-fixes&id=3Daf6ab107ce2c338790c6629fe0edc0333e708be=
-8
+log/?h=3Dmediatek-drm-fixes
 
 Regards,
 Chun-Kuang.
 
 >
-> Signed-off-by: Fei Shao <fshao@chromium.org>
-> ---
+> Fixes: 739058a9c5c3 ("dt-bindings: display: mediatek: split: add compatib=
+le for MT8195")
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 >
->  .../bindings/display/mediatek/mediatek,dpi.yaml   | 15 +++++++--------
->  1 file changed, 7 insertions(+), 8 deletions(-)
+> --
+> This is based on [v2] dt-bindings: display: mediatek: split: add clocks c=
+ount constraint for MT8195
+>
+> Changes since v4:
+>   - Eliminate the possibility of varying quantities in the 'clocks'
+>     property of mt8195.
+>   - Move the constraint for 'power-domains' to the top-level.
+>
+> Changes since v3:
+>   - Correct the compatible name for the mt8173 split in the subschema.
+>
+> Changes since v2:
+>   - Revise the commit message.
+>   - Enhance the descriptions of 'clocks'.
+>   - Strengthen the conditions within the subschema.
+>
+> Changes since v1:
+>   - Adding functional descriptions and quantity restrictions.
+> ---
+>  .../display/mediatek/mediatek,split.yaml      | 19 +++++++++++++++++++
+>  1 file changed, 19 insertions(+)
 >
 > diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
-dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.=
-yaml
-> index 3a82aec9021c..c464642bbfb6 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam=
-l
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam=
-l
-> @@ -81,14 +81,13 @@ required:
+split.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,sp=
+lit.yaml
+> index e4affc854f3d..4b6ff546757e 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,split.y=
+aml
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,split.y=
+aml
+> @@ -38,6 +38,7 @@ properties:
+>      description: A phandle and PM domain specifier as defined by binding=
+s of
+>        the power controller specified by phandle. See
+>        Documentation/devicetree/bindings/power/power-domain.yaml for deta=
+ils.
+> +    maxItems: 1
 >
->  allOf:
->    - if:
-> -      not:
-> -        properties:
-> -          compatible:
-> -            contains:
-> -              enum:
-> -                - mediatek,mt6795-dpi
-> -                - mediatek,mt8173-dpi
-> -                - mediatek,mt8186-dpi
+>    mediatek,gce-client-reg:
+>      description:
+> @@ -57,6 +58,9 @@ properties:
+>    clocks:
+>      items:
+>        - description: SPLIT Clock
+> +      - description: Used for interfacing with the HDMI RX signal source=
+.
+> +      - description: Paired with receiving HDMI RX metadata.
+> +    minItems: 1
+>
+>  required:
+>    - compatible
+> @@ -72,9 +76,24 @@ allOf:
+>              const: mediatek,mt8195-mdp3-split
+>
+>      then:
+> +      properties:
+> +        clocks:
+> +          minItems: 3
+> +
+>        required:
+>          - mediatek,gce-client-reg
+>
+> +  - if:
 > +      properties:
 > +        compatible:
 > +          contains:
-> +            enum:
-> +              - mediatek,mt2701-dpi
-> +              - mediatek,mt7623-dpi
-> +              - mediatek,mt8192-dpi
->      then:
->        properties:
->          power-domains: false
+> +            const: mediatek,mt8173-disp-split
+> +
+> +    then:
+> +      properties:
+> +        clocks:
+> +          maxItems: 1
+> +
+>  additionalProperties: false
+>
+>  examples:
 > --
-> 2.47.0.rc1.288.g06298d1525-goog
+> 2.34.1
 >
 
