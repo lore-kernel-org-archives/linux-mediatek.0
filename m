@@ -4,87 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 778F9CF538B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2024 13:48:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 643E9CF538D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2024 14:05:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v1ErG2T9UQjEKEnbXbgxig/MiNVygt+6QYl0dpxRA+w=; b=ZYkhcNkws83IPMOyuIqlss7ANd
-	Jel60lLJNK8aO6/8PWaZ8wWO0JZ9LhMoILJfBCeGh8bolrXJdxi9o7FV2HEjmey9XE0f/q4dBySyj
-	GH/vjFpnM0Cqmt0IneqasBJF7NSylTkGaXZcvkajtNpL/ehH0xzvWOBj6vAyNJaqa3vz2jfRY7aKe
-	JCWvIHp5uZr4n7gmHSrtJxKaEe1SpjC4YQV5QcC6qz/oU+19+t77HprggNgSpZXEBWv7cBoAKCzHc
-	dqQ+c+4PEPXXTLtJu4EKbqSIvxgFRV/YWADFMDblkwvzdepDLAaGEgvqcknChkKByvIvRts8OIc1L
-	HylL7yVg==;
+	bh=GQHwV5GUQiINaYEphBy1X8iXxqhxNRcP6yQZrpsC0VQ=; b=vR/lmniO/igzlfW5y6oW9H1U55
+	grWTkxbCgNUfAO1JAcTHAxKNzKuHCi/8GoU6ees2JYmL6izpb/rXy8KAlWpST8T2xC88rxIx0rU9h
+	XQlTy+ZS/21Lhg5Igg4tvhD5mzICKcDOZlMO/fJJmL95ljM2+fu4Kb1F3VPOj2/zCJlWdyuPdvjrV
+	WIRy49VC2SNLn+AhcP9Pam8qwWLPvxg5FuyN+F/mrP7hS1Tcll4KfkopnkW52jEyT9A3J9HSoW2eI
+	eh8HH7XzkbIkTaKqu8hUzLP8abQHTClaBSibljHXlPtkuzxJ6TFNhN51y4Lmhy/JfXxhwv/qAVQSs
+	1A2ZiR6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3bii-0000000Eb1n-1yl0;
-	Wed, 23 Oct 2024 13:48:16 +0000
-Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a])
+	id 1t3bza-0000000Edq2-08ig;
+	Wed, 23 Oct 2024 14:05:42 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3bif-0000000Eb0z-2DL7
-	for linux-mediatek@lists.infradead.org;
-	Wed, 23 Oct 2024 13:48:15 +0000
-Received: by mail-ua1-x92a.google.com with SMTP id a1e0cc1a2514c-84fc0212a60so1791906241.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 23 Oct 2024 06:48:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1729691292; x=1730296092; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=v1ErG2T9UQjEKEnbXbgxig/MiNVygt+6QYl0dpxRA+w=;
-        b=V9zT8FtaI+YaOP817lvoy4+AdFoMfTdL0WuRhZAfRaFS36+7wouu3jjmVZ7ruuvUX3
-         mmnFEXu1hUfo4eXdBeAILenVPii01ncZQ1aPiKgfyiDanSxWH7NTdbTt4YRQemIf0Caa
-         VV6P7pDNPAyguQUne+LMsJ2Cyd7goTrtfUx9k=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729691292; x=1730296092;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=v1ErG2T9UQjEKEnbXbgxig/MiNVygt+6QYl0dpxRA+w=;
-        b=toqTnx1TRWobqlfuqZuQhbSnps73aaZbIptnwJ/p1ZF06Md/R5vQi7LFE7juT68PiH
-         7bpshfu8+j7qw7I2/9Dc2fZpYtcc6rYdI8msajy7nULs2XPo2WfgFENRGbiEXUcljNx6
-         R13trmS1iMMPWET+sfZR973zgdsMvLZ1+VAN2+szcjE0jB48HyL+LcigBCTxba9xuaTL
-         tysNOgcqZcDvw9BrGppegaoqs2jQ7NrdCFHflHXZ1Hw49NDsNYT7WVHm+U6joBNjjFmd
-         cq2phjU/NPrwe0JnTZVDjUHAaKdfe2m3p9fYbfXLovWuo424mvtdJQulzgnZJ5qXqdph
-         1lug==
-X-Forwarded-Encrypted: i=1; AJvYcCVIbvKCuH6GPhaCsruno1FkWNE+2LgEMa7TNCYnmCLMleY3JHylhM6gcVM+gIq+Q/fV8btB114jHEim71QZlg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwcC4jq/yUoOPpcldshtO7oxVy++xzTgavG9iqZAWW3kkdxXmSY
-	LQdBe/W0gBo5I2Q+r+HlCLVYxjaqt6513Ks83rXbNM2wfeDV3rermlbTN3UoTsvm4hYTl2r8kLu
-	IpQ==
-X-Google-Smtp-Source: AGHT+IHQiqq/16TfiPyFT+M0LWfgWSfXa4yyKMRxkTC6rihIZBF7R/rAuzk/Rt+BexaPBi5akbRibg==
-X-Received: by 2002:a05:6122:1d42:b0:50a:12e4:2618 with SMTP id 71dfb90a1353d-50fd01b9273mr3294950e0c.2.1729691291761;
-        Wed, 23 Oct 2024 06:48:11 -0700 (PDT)
-Received: from mail-ua1-f53.google.com (mail-ua1-f53.google.com. [209.85.222.53])
-        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-50e19e9717fsm1041211e0c.23.2024.10.23.06.48.10
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 23 Oct 2024 06:48:10 -0700 (PDT)
-Received: by mail-ua1-f53.google.com with SMTP id a1e0cc1a2514c-84fd057a993so2259210241.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 23 Oct 2024 06:48:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVWKLJzk3a+nznU36Y65HJvgyDENrCjSAb2Lyfm6JRj2Re1HmekrCRdISU5Hvq2xyVzhI62Nb95XOQTqRlE+A==@lists.infradead.org
-X-Received: by 2002:a05:6122:513:b0:50a:d1e3:82f7 with SMTP id
- 71dfb90a1353d-50fd031e55fmr3184053e0c.8.1729691290235; Wed, 23 Oct 2024
- 06:48:10 -0700 (PDT)
+	id 1t3by1-0000000Ede1-2qoQ;
+	Wed, 23 Oct 2024 14:04:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2DA965C5F47;
+	Wed, 23 Oct 2024 14:04:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F7BDC4CEEF;
+	Wed, 23 Oct 2024 14:04:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1729692244;
+	bh=3MPewIa2RjMP+i+zsFQ9KeXkrzNB/sGLihdu9ZgX1Xs=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=qdbkBEO03QRVYRTMpVXLWE71cKSwutRohJy5TwoxqVHO0wkbQW0YgPfaX29DAqor+
+	 94w70E+QfzZ8tOiLhZfTmGiJXyMfqIA9WandhakNjKEstnVmIpxmGu2JbDDQdDkS/w
+	 NWQ5ig4TJSBvkyDfxXkdP1g4/5AMAMuOW+QINcxLUcscOsXdpJ71ovHR+NONEqypC5
+	 qgw07B94tMVCL2IjSWYlKY/0RtTHeZ/Be19Cfta+jos4swJIdpy6az0lvXq7d+OIrR
+	 7twC2anxpXhsptQC9SoqaW0MPESbGAV3lm1ehUPtatYHeVZzrTS+E2Vi0mR8iuJp36
+	 nvIMrFdhieGFQ==
+Received: by mail-pg1-f175.google.com with SMTP id 41be03b00d2f7-7eb00dc77f1so1296052a12.1;
+        Wed, 23 Oct 2024 07:04:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCVRB6r4IiAMX28Z8jKTyVwOn3Hiyo46ezKDOBOIXMeHjpnpnqMMSVICTNiX6fjvisUu+j7omZbhEMFJ+e7aZzac@lists.infradead.org, AJvYcCXH+qnBV+XQRX4PqonkGRk37qP0o2B2tGwn9Ts1yikF2u7aBnjdsCuxm671FpgHkFI0Fn43O1vKAq8WWsGEm58=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwpVR7+Eu5q7hvQUiWojw708kSTnYQ1KAtvRZJOtrHKk/5pSrhA
+	MLsEd05+cL/fK1c4uZBgc4yN65PGouKKUXEk7MKRNKsWDGfH8Wcx2h0zzDSQ9wm0uLrP5P+5Czb
+	E1YciOpnLZDOHjF7EGNNENuoU2Q==
+X-Google-Smtp-Source: AGHT+IF5Q62FJLxl3oE9wLeYU7rpvkWxnbOMZ2oAU54lobEqlwICxfdK2vspUXn7Guq+K/KROXh3ysDXrXOnjtvP2zM=
+X-Received: by 2002:a05:6a21:2d8b:b0:1d9:3957:8c24 with SMTP id
+ adf61e73a8af0-1d978b39ee6mr2739553637.21.1729692243502; Wed, 23 Oct 2024
+ 07:04:03 -0700 (PDT)
 MIME-Version: 1.0
-References: <20241023102059.512352-1-fshao@chromium.org> <9b12aaec-504c-4e3a-a606-240341d8e0d3@collabora.com>
- <CAC=S1niSXkCTLXeCv-0sQh4AQmv6eKm8OH_3yH=TeDoMVz72OA@mail.gmail.com>
-In-Reply-To: <CAC=S1niSXkCTLXeCv-0sQh4AQmv6eKm8OH_3yH=TeDoMVz72OA@mail.gmail.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Wed, 23 Oct 2024 21:47:39 +0800
-X-Gmail-Original-Message-ID: <CAC=S1ng=ZLB+vB=kNywLGMdeN1RRted0j6d-fC9ANoyu=ni3Mg@mail.gmail.com>
-Message-ID: <CAC=S1ng=ZLB+vB=kNywLGMdeN1RRted0j6d-fC9ANoyu=ni3Mg@mail.gmail.com>
-Subject: Re: [PATCH] soc: mediatek: mediatek-regulator-coupler: Fix comment
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20240923132521.22785-1-liankun.yang@mediatek.com>
+In-Reply-To: <20240923132521.22785-1-liankun.yang@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Wed, 23 Oct 2024 22:04:24 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__3PvRUaU0a8E0X82yaTjYe8c5J6Uud5+SzMQhew+srgA@mail.gmail.com>
+Message-ID: <CAAOTY__3PvRUaU0a8E0X82yaTjYe8c5J6Uud5+SzMQhew+srgA@mail.gmail.com>
+Subject: Re: [PATCH v5 1/1] drm/mediatek: Fix get efuse issue for MT8188 DPTX
+To: Liankun Yang <liankun.yang@mediatek.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
+	simona@ffwll.ch, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, ck.hu@mediatek.com, 
+	shuijing.li@mediatek.com, jitao.shi@mediatek.com, mac.shen@mediatek.com, 
+	peng.liu@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241023_064813_624879_837C0124 
-X-CRM114-Status: GOOD (  18.61  )
+X-CRM114-CacheID: sfid-20241023_070405_843868_36F0C2F4 
+X-CRM114-Status: GOOD (  18.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,52 +86,171 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 23, 2024 at 8:03=E2=80=AFPM Fei Shao <fshao@chromium.org> wrote=
-:
->
-> On Wed, Oct 23, 2024 at 6:40=E2=80=AFPM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
-> >
-> > Il 23/10/24 12:19, Fei Shao ha scritto:
-> > > Fix two minor issues in the comments.
-> > >
-> > > 1. We balance VSRAM voltage based on the target VGPU voltage, so the
-> > >     comment likely refers to VGPU.
-> >
-> > Function `mediatek_regulator_balance_voltage()` refers, as stated in th=
-e comment
-> > located at the top of its signature, to "GPU<->SRAM" voltages relations=
-hips.
-> >
-> > So, we're taking into consideration only two regulators:
-> >                    VGPU and VSRAM
-> >
-> > The first comment says:
-> > "If we're asked to set a voltage (implicit: to VGPU) less than VSRAM mi=
-n_uV[...]"
-> >
-> > ...so, I think that you've misunderstood what the comment says :-)
->
-> Let me make sure we're on the same page - VGPU never goes higher than
-> VSRAM (VGPU <=3D VSRAM), is that correct?
->
-> [ min VGPU, max VGPU ] ... spread ... [    min VSRAM  ,  max VSRAM    ]
->  (min_uV)  (max_uV)                         (vsram_min_uV) (vsram_max_uV)
->
-> The longer comment is
-> "If we're asked to set a voltage less than VSRAM min_uV, set the
-> minimum allowed voltage on VSRAM, ..."
-> So VSRAM is the subject here I think? Because we "set voltage *on*
-> VSRAM" based on its own minimum allowed voltage? We never set either
-> VGPU min/max voltage to vsram_min_uV?
-> And it's attached to the line that decides vsram_target_min_uV, with
-> the maximum of (1) vsram_min_uV (i.e. minimum allowed VSRAM voltage)
-> or (2) min_uV + max_spread (min VGPU + spread)
+Hi, Liankun:
 
-Ah, I just got your point. Both interpretations can explain..
-I linked the "min_uV" in the comment to the one used in code, which
-stands for VGPU min_uV, so I had the impression that it was a typo.
+Liankun Yang <liankun.yang@mediatek.com> =E6=96=BC 2024=E5=B9=B49=E6=9C=882=
+3=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=889:25=E5=AF=AB=E9=81=93=EF=
+=BC=9A
+>
+> Update efuse data for MT8188 displayport.
+>
+> The DP monitor can not display when DUT connected to USB-c to DP dongle.
+> Analysis view is invalid DP efuse data.
+
+Applied to mediatek-drm-fixes [1], thanks.
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-fixes
 
 Regards,
-Fei
+Chun-Kuang.
+
+>
+> Fixes: 350c3fe907fb ("drm/mediatek: dp: Add support MT8188 dp/edp functio=
+n")
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
+> ---
+> Changes in V5:
+> - No change.
+> Per suggestion from the previous thread:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20240905124041.=
+3658-1-liankun.yang@mediatek.com/
+>
+> Changes in V4:
+> - Remove excess newlines.
+> Per suggestion from the previous thread:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20240903121028.=
+20689-1-liankun.yang@mediatek.com/
+>
+> Changes in V3
+> - Update change log position in commit message.
+> Per suggestion from the previous thread:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20240902133736.=
+16461-1-liankun.yang@mediatek.com/
+>
+> Changes in V2
+> - Add Fixes tag.
+> - Update the commit title.
+> - Update the commit description.
+> Per suggestion from the previous thread:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20240510061716.=
+31103-1-liankun.yang@mediatek.com/
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dp.c | 85 ++++++++++++++++++++++++++++++-
+>  1 file changed, 84 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek=
+/mtk_dp.c
+> index d8796a904eca..f2bee617f063 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+> @@ -145,6 +145,89 @@ struct mtk_dp_data {
+>         u16 audio_m_div2_bit;
+>  };
+>
+> +static const struct mtk_dp_efuse_fmt mt8188_dp_efuse_fmt[MTK_DP_CAL_MAX]=
+ =3D {
+> +       [MTK_DP_CAL_GLB_BIAS_TRIM] =3D {
+> +               .idx =3D 0,
+> +               .shift =3D 10,
+> +               .mask =3D 0x1f,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0x1e,
+> +               .default_val =3D 0xf,
+> +       },
+> +       [MTK_DP_CAL_CLKTX_IMPSE] =3D {
+> +               .idx =3D 0,
+> +               .shift =3D 15,
+> +               .mask =3D 0xf,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0xe,
+> +               .default_val =3D 0x8,
+> +       },
+> +       [MTK_DP_CAL_LN_TX_IMPSEL_PMOS_0] =3D {
+> +               .idx =3D 1,
+> +               .shift =3D 0,
+> +               .mask =3D 0xf,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0xe,
+> +               .default_val =3D 0x8,
+> +       },
+> +       [MTK_DP_CAL_LN_TX_IMPSEL_PMOS_1] =3D {
+> +               .idx =3D 1,
+> +               .shift =3D 8,
+> +               .mask =3D 0xf,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0xe,
+> +               .default_val =3D 0x8,
+> +       },
+> +       [MTK_DP_CAL_LN_TX_IMPSEL_PMOS_2] =3D {
+> +               .idx =3D 1,
+> +               .shift =3D 16,
+> +               .mask =3D 0xf,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0xe,
+> +               .default_val =3D 0x8,
+> +       },
+> +       [MTK_DP_CAL_LN_TX_IMPSEL_PMOS_3] =3D {
+> +               .idx =3D 1,
+> +               .shift =3D 24,
+> +               .mask =3D 0xf,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0xe,
+> +               .default_val =3D 0x8,
+> +       },
+> +       [MTK_DP_CAL_LN_TX_IMPSEL_NMOS_0] =3D {
+> +               .idx =3D 1,
+> +               .shift =3D 4,
+> +               .mask =3D 0xf,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0xe,
+> +               .default_val =3D 0x8,
+> +       },
+> +       [MTK_DP_CAL_LN_TX_IMPSEL_NMOS_1] =3D {
+> +               .idx =3D 1,
+> +               .shift =3D 12,
+> +               .mask =3D 0xf,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0xe,
+> +               .default_val =3D 0x8,
+> +       },
+> +       [MTK_DP_CAL_LN_TX_IMPSEL_NMOS_2] =3D {
+> +               .idx =3D 1,
+> +               .shift =3D 20,
+> +               .mask =3D 0xf,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0xe,
+> +               .default_val =3D 0x8,
+> +       },
+> +       [MTK_DP_CAL_LN_TX_IMPSEL_NMOS_3] =3D {
+> +               .idx =3D 1,
+> +               .shift =3D 28,
+> +               .mask =3D 0xf,
+> +               .min_val =3D 1,
+> +               .max_val =3D 0xe,
+> +               .default_val =3D 0x8,
+> +       },
+> +};
+> +
+>  static const struct mtk_dp_efuse_fmt mt8195_edp_efuse_fmt[MTK_DP_CAL_MAX=
+] =3D {
+>         [MTK_DP_CAL_GLB_BIAS_TRIM] =3D {
+>                 .idx =3D 3,
+> @@ -2771,7 +2854,7 @@ static SIMPLE_DEV_PM_OPS(mtk_dp_pm_ops, mtk_dp_susp=
+end, mtk_dp_resume);
+>  static const struct mtk_dp_data mt8188_dp_data =3D {
+>         .bridge_type =3D DRM_MODE_CONNECTOR_DisplayPort,
+>         .smc_cmd =3D MTK_DP_SIP_ATF_VIDEO_UNMUTE,
+> -       .efuse_fmt =3D mt8195_dp_efuse_fmt,
+> +       .efuse_fmt =3D mt8188_dp_efuse_fmt,
+>         .audio_supported =3D true,
+>         .audio_pkt_in_hblank_area =3D true,
+>         .audio_m_div2_bit =3D MT8188_AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0=
+_DIV_2,
+> --
+> 2.45.2
+>
 
