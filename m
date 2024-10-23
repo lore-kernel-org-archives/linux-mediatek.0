@@ -4,62 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A8C4CDDE66
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2024 10:54:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DBFCCDDE64
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2024 10:54:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=81rgeuPwS+fbp38mlTpqzkWLyfJK+ro7UUiFz1b8Xic=; b=nVhcN8GC0HULTQwcKkGPiGEEx2
-	XumJqjEBYtiaEOH4XHR7CdG+MQE5ULEb2SG0D/2lO6CITtkWroTz2B+CLRRuirYG1NX3LgTDDqnVB
-	A99Dw8YFsVNXYKAYrVAJcDbjZBv8Qg3PfLwd3g8mCOMOHs+Gbh6ltKwB6Vv57kIdvdAQKwybFxxtY
-	OCYSC9oHt2Eaj36LTmjnFiJSTqmnsmPiAavHgEwjbeGDSj5sBf5SX5XX4NraO7Ixs/UVzG5ZxFG7v
-	gQ7JoBw9tuDk3+0sIJ8e4uoHTnoFbo8sjTE6/qiR5dzNuviOCOm6wKO4voLBiXihK2+yjIWyjJ1Sm
-	++5LxACg==;
+	bh=G1wO2zyb0c5ex6Wg73kl2dLgjmOq0KrKYmkyda00HVc=; b=Zy++uFBVPGTG+Ft6kWaUCWGkql
+	LUqlwSHdXQmQYnXiUlnE2KzSYxoaUnCn2NXjTSMqijSPjKlVdaugSwsjl/fCyAkhcX1lhP22aZchB
+	SpcY8nszIdJaO6zvQTELBtPPhQtmke/dS3n0aie9hMm5v8Cz0FE5/XZacDFWn0WGgoNfLHRTSpbxI
+	XsLpEc8MQ2Hp1qGHh+6jevy9O8gmQkDIWHLdJ8Sa3WlmWNHg2BwIV4aBlInslkDY9iNFA4oxpaW1y
+	dvtZ2vU1Y0+bAvuWvpAMYhaM1uvuD7Q9PsoqWGa0+nHZQpCZ1zE7w72xqnl48n/qLNPZJl64/qGc/
+	qoThPbbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3Z0F-0000000E3Tu-41Fq;
-	Wed, 23 Oct 2024 10:54:11 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1t3Z0G-0000000E3UP-1tqD;
+	Wed, 23 Oct 2024 10:54:12 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3Yn6-0000000E171-2o3Z;
-	Wed, 23 Oct 2024 10:40:38 +0000
+	id 1t3Yx5-0000000E32q-3OXP;
+	Wed, 23 Oct 2024 10:50:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729680033;
-	bh=o50zMYvyJy94Jo4WMf29VGc2u3pKkDKne85GzsktI+Q=;
+	s=mail; t=1729680653;
+	bh=TKS5gWQ26WbrWvfcYUusjWgWA7QNyzv+IpkLuOaZ2XM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=A4NdIEmREsvf6ijIpkWkHLbM0fdtVXxn1xmR1Lw51BoK2AgDxfEzUJu7H7bEHDO5T
-	 XYEr7dRd8WIXjEdZ5UnB8yHS4oxXfK6/+ZhzoD8dOwpESty9yE9Y1sYoN6Adn6NpZm
-	 vfhxKOVo83mtTCtPV6nBpYGFnrRgVOUB7FsJ9wjT05E1hOEwVMIvVVBvzxSzXcu/u2
-	 xeKP7aYBqSecehjt234ecBWnKqwjmnj9iWNH/NtyB21Z1gEu+EhAc2YDXwUrY2lVlp
-	 18qUM82u30evUOV1AoYDBcCKUSEAQApxJNjDLlU4IFc9jQPneo/ucXZkNiQhfZvVL0
-	 u0RxpQVHb7uvg==
+	b=JpIPPgFT47+UQJUwrpF/2XGnCqZZH5LmYkAVCJm9BKSYFn6/jIWm9RTYOR0TrHzfE
+	 cm5sdZHwRszoAgRgkBjjdg0H5JONHWJaGvQXomf/oqsAKd7b9B6yH2eTZiDBLU7AG4
+	 +jkPkFULqsPph/RNB4DoOpLgw3aWRskXY68nxqaOZKoixA8PeY4elL+AC2mJsb2Ro3
+	 FeprclnpbP/5KJhRsdg9eLEWfAa2MnnTlUiwJn3Gwf+LxKkwJSRVdrAkKrEzbfOmom
+	 Swlmq2GShzTdp82YtS9yJVlo19QVwd2B9nIBYtjdjNBxPnWM2ufKRdBXfWEKo/GSUw
+	 oDFCQL6jjLWSw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 11C2917E14EA;
-	Wed, 23 Oct 2024 12:40:33 +0200 (CEST)
-Message-ID: <9b12aaec-504c-4e3a-a606-240341d8e0d3@collabora.com>
-Date: Wed, 23 Oct 2024 12:40:32 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E3D4C17E1063;
+	Wed, 23 Oct 2024 12:50:52 +0200 (CEST)
+Message-ID: <b96beaf3-897a-4dc2-afa7-6e3e1f456783@collabora.com>
+Date: Wed, 23 Oct 2024 12:50:52 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] soc: mediatek: mediatek-regulator-coupler: Fix comment
-To: Fei Shao <fshao@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20241023102059.512352-1-fshao@chromium.org>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8395-genio-1200-evk: add adc and
+ led for mt6360
+To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+ Macpaul Lin <macpaul@gmail.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-usb@vger.kernel.org, Chris-qj chen <chris-qj.chen@mediatek.com>,
+ Yu-wen Fang <yu-wen.fang@mediatek.com>, Simon Sun <simon.sun@yunjingtech.com>
+References: <20241023085010.7524-1-macpaul.lin@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241023102059.512352-1-fshao@chromium.org>
+In-Reply-To: <20241023085010.7524-1-macpaul.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241023_034036_926924_929394A5 
-X-CRM114-Status: GOOD (  22.49  )
+X-CRM114-CacheID: sfid-20241023_035056_032994_C426AC84 
+X-CRM114-Status: UNSURE (   6.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,85 +84,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/10/24 12:19, Fei Shao ha scritto:
-> Fix two minor issues in the comments.
+Il 23/10/24 10:50, Macpaul Lin ha scritto:
+> From: Yu-wen Fang <yu-wen.fang@mediatek.com>
 > 
-> 1. We balance VSRAM voltage based on the target VGPU voltage, so the
->     comment likely refers to VGPU.
-
-Function `mediatek_regulator_balance_voltage()` refers, as stated in the comment
-located at the top of its signature, to "GPU<->SRAM" voltages relationships.
-
-So, we're taking into consideration only two regulators:
-                   VGPU and VSRAM
-
-The first comment says:
-"If we're asked to set a voltage (implicit: to VGPU) less than VSRAM min_uV[...]"
-
-...so, I think that you've misunderstood what the comment says :-)
-
-> 2. .attach_regulator() returns 0 on success and 1 if the regulator is
->     not suitable. The context suggests a successful return value (0).
-
-The comment is on top of a "refuse" or "error" case - one that wants to return 1
-and not zero.
-
-Besides, it clearly states:
-"The regulator core will keep walking through the list of couplers when any
-  .attach_regulator() callback returns 1"
-
-...which is definitely true.
-
-drivers/regulator/core.c
-function `regulator_find_coupler()`:
-
-	list_for_each_entry_reverse(coupler, &regulator_coupler_list, list) {
-		err = coupler->attach_regulator(coupler, rdev);
-		[.....]
-		if (err < 0)
-			return ERR_PTR(err);
-
-		if (err == 1)
-			continue;
-
-		break;
-	}
-
-Is that clear now?
-
-Cheers,
-Angelo
-
+> Enable ADC and LED of MT6360 for MT8395 Genio-1200-EVK board.
 > 
-> Fixes: c200774a6df4 ("soc: mediatek: Introduce mediatek-regulator-coupler driver")
-> Signed-off-by: Fei Shao <fshao@chromium.org>
-> ---
-> 
->   drivers/soc/mediatek/mtk-regulator-coupler.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-regulator-coupler.c b/drivers/soc/mediatek/mtk-regulator-coupler.c
-> index 0b6a2884145e..16df12d1c2e0 100644
-> --- a/drivers/soc/mediatek/mtk-regulator-coupler.c
-> +++ b/drivers/soc/mediatek/mtk-regulator-coupler.c
-> @@ -74,7 +74,7 @@ static int mediatek_regulator_balance_voltage(struct regulator_coupler *coupler,
->   		return ret;
->   
->   	/*
-> -	 * If we're asked to set a voltage less than VSRAM min_uV, set
-> +	 * If we're asked to set a voltage less than VGPU min_uV, set
->   	 * the minimum allowed voltage on VSRAM, as in this case it is
->   	 * safe to ignore the max_spread parameter.
->   	 */
-> @@ -108,7 +108,7 @@ static int mediatek_regulator_attach(struct regulator_coupler *coupler,
->   	 * this means that this is surely not a GPU<->SRAM couple: in that
->   	 * case, we may want to use another coupler implementation, if any,
->   	 * or the generic one: the regulator core will keep walking through
-> -	 * the list of couplers when any .attach_regulator() cb returns 1.
-> +	 * the list of couplers when any .attach_regulator() cb returns 0.
->   	 */
->   	if (rdev->coupling_desc.n_coupled > 2)
->   		return 1;
+> Signed-off-by: Yu-wen Fang <yu-wen.fang@mediatek.com>
+> Signed-off-by: Simon Sun <simon.sun@yunjingtech.com>
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 
