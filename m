@@ -4,67 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD894CFA44F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2024 16:08:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BCDECFA453
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2024 16:58:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=bu1l2ObQ2xP4luAG6wLCI+L1JC9c8VEm7Uvp5bR7kt0=; b=yy1eLiHyxhS1RI
-	v8KXIodr8zjxpDhIUICNSUbwGKypYxNmy1nGzksbWKqaFF+VypWU7a8D09bbGWB0pRSmeA/FsGYwe
-	C5dIO+zZa5qkT9S8tBWu1d3hzfN3cx9d8FApaCDmWzaS2onye/3aA4Qt6XKQVJ2QUj7XD5EPDK3UK
-	pTrRr0XYkZyqjvNn5Y0E/bA5gVDLkdbjnz/BkIZ1qIBxfSaAjRr+QX+slMJQZQNQcM1jhW88ymzF+
-	Y/wao8zBzwg95fefuL5r/k4fJTsRTgE1aOrrD0XkKdeHE8ffbrhWNUIpi5nwBteAhspa/Q8Rrg67e
-	GwcthweNYBnR+iIzrCSw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=al+2wR40GSQZ0z2UvHLWXNJ+e2sWW9EXks4CEP4E8l4=; b=LJ7uyZl/1FfBnIeai5K5datyyl
+	dcPU2eoUP6T1iQvKG3jriXR669hDFZwrpKXVWhAj57sPYtFegDEa33PT71+Z2YY9L5PXZQOcCgA21
+	ChVYuYTLomOm48qRNB5ujF2SHoD6ITZcqhBFsNyfdWggQmsOprBgzvJrjY797q7sw9b/f/X14a5SS
+	sB28xdizpY0KGZSwjDVbKmDHIGibiDqC+i4KVLMIIYPYZTUQ4NRBSk1prmBSCbjCsWyZTZupDaQAJ
+	B5Oa7bnnzVsCnIER6sldGeR6THRDI9ANaovZ8T9YJ1JVvJSgCkL0lwLRGX+gm4WghJdmOlL5Kav74
+	I6MnH6hA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3du4-0000000F5D5-23jU;
-	Wed, 23 Oct 2024 16:08:08 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1t3egx-0000000FFoZ-21lA;
+	Wed, 23 Oct 2024 16:58:39 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3d4v-0000000EuY7-2KA3;
-	Wed, 23 Oct 2024 15:15:19 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 111E65C4C78;
-	Wed, 23 Oct 2024 15:15:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10073C4CEC6;
-	Wed, 23 Oct 2024 15:15:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729696516;
-	bh=eN8F/lNDkjIAfUB0JM4j0vPqOsiKHYVixWKxi/Pt1pQ=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=TG+6cHH1+2xLbh2vi1zJtsnou/pAIZQLsuo22e4xHmh/goTCkLgpGqDRnV5Lu7/cz
-	 sJgGvRBpKTwqq+GbMRNbQY+7iVfUHEsDh1tVqS5ya6Httoz9alp1HUi+Ue7IZcslAW
-	 dauJSlRUKWwnZpFOe441ybpb5NI67PvFbMRdwI+dHotS8+cOizF2/a7gmucWmxepOJ
-	 j+BkzNm7tMF0K8W2H+cWyYkyc3jqunBWpKB9m2wYWXPCU0ssaWQxLHmYfG8eKdufh4
-	 Xngd8gMBsw34e+MbFQidmS7VTdwFiUlkFOzMd9++PXJbh6HSNNVdaRKmmUSGlCx63c
-	 b9C1xODOKVipQ==
-Date: Wed, 23 Oct 2024 10:15:14 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Jinjian Song <jinjian.song@fibocom.com>
-Cc: chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
-	haijun.liu@mediatek.com, m.chetan.kumar@linux.intel.com,
-	ricardo.martinez@linux.intel.com, loic.poulain@linaro.org,
-	ryazanov.s.a@gmail.com, johannes@sipsolutions.net,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	pabeni@redhat.com, linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org, linux-doc@vger.kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com,
-	corbet@lwn.net, linux-mediatek@lists.infradead.org,
-	danielwinkler@google.com, korneld@google.com,
-	Jinjian Song <songjinjian@hotmail.com>
-Subject: Re: [net-next,RESEND v6 2/2] net: wwan: t7xx: Add debug port
-Message-ID: <20241023151514.GA888712@bhelgaas>
+	id 1t3e6B-0000000F75a-3wJh;
+	Wed, 23 Oct 2024 16:20:41 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-37d3ecad390so803851f8f.1;
+        Wed, 23 Oct 2024 09:20:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1729700438; x=1730305238; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to;
+        bh=al+2wR40GSQZ0z2UvHLWXNJ+e2sWW9EXks4CEP4E8l4=;
+        b=dgqKu8oMk3sSHiEYR2ZROhyQNjaXh287iIrIS5tfJRbpnTt4plP8GqlISNVeCvshrV
+         YDbFnFCzGyY7+wVa+fXioUYC9qH9epbf09a7WiTGFw5IuK6jd02a7U1/XhP/boYw6GJZ
+         /7I1z35W/mWqw7nnasmT8m2qo78Aga8IMtv+6rNqqD0uVWT1l/38cM93OdOF5dxcdjpR
+         NgeejYyaGeYNrdN7A9duim342fOB3QQ/OPSBU6/3baO00JxhADiI3k3n/efG11NoQF0T
+         mOTemoosvEy2tzgceRKC3zHzm6oOaFGxezWZUsxQHDkIXIpCOHFL0Wn3LzPHzI/inc8k
+         5smg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729700438; x=1730305238;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=al+2wR40GSQZ0z2UvHLWXNJ+e2sWW9EXks4CEP4E8l4=;
+        b=EIRczdF1DMXauLV7Ro4SnMdHk/ohRX/Z0IQleXN2pq2rO22YgnMlCA0aUjOrht3A7G
+         DAoVcV7cPejfSHBi7Ng5Mp1+fy4Tyg+ruYuEO2h+hN9ON6HF4f+/tLSQ8cwpqNRIKpTa
+         qvngUpVCES3UII8EOWzatHU8/zx9ijnFyc+loBVQhiUpR5Xg43SRZB3WHucvdqW2Gmar
+         L7uoS9OzGI1M38W8l4YHeSPEdkXz9nKOekAZM6rcAF3+asjb6IaO9NVJ5NIcCtZH05Tw
+         Vwew82P1R24gyfMFUhGhrzW3LhSyDXkLO6zYFs0c6VZoup9V8DUosh8SSUjWCgH+lrim
+         N/ow==
+X-Forwarded-Encrypted: i=1; AJvYcCUEGIweWpL2P/ZKae8s+5HGFt5o3bNSgbFcAy2zZfKY5e553UGNzKaAQTawgpDUjeT/yO7o1JPD0CeARGfXHbw=@lists.infradead.org, AJvYcCVqVrBbv7GDpBjAzQWAcFww2g2KrrqdrvJzwzVZQ3yWiKxeWSGTAtOSeki9OrqnCaEa4Yq0tpo9Tv2aCzKGhFk6@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx1jZIfqDJGynk82g7XIikjQR0ldwGMt5ttZtAvALQy4YEzXuMe
+	iTQXOhs3NApwQVOIIXKw9wlMZu/sjDLvuR9/gqSe/OqTsPNZ2rkN
+X-Google-Smtp-Source: AGHT+IG1nMIvDQljj4Ctf6uXPxTVi3CrEWeOFLdBbIt5ACR/HyKAd4kiAjrt/Xyf+AiGFHmrzTEYew==
+X-Received: by 2002:a05:6000:c84:b0:37c:fdc8:77ab with SMTP id ffacd0b85a97d-37ef1271e7emr5019941f8f.7.1729700437396;
+        Wed, 23 Oct 2024 09:20:37 -0700 (PDT)
+Received: from localhost.localdomain (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-37ee0ba7dffsm9249993f8f.116.2024.10.23.09.20.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 23 Oct 2024 09:20:37 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Christian Marangi <ansuelsmth@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [net-next RFC PATCH v2 0/3] net: dsa: Add Airoha AN8855 support
+Date: Wed, 23 Oct 2024 18:19:49 +0200
+Message-ID: <20241023161958.12056-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241021121934.16317-3-jinjian.song@fibocom.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241023_081517_664542_A67B090E 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20241023_092040_003612_726A88F2 
+X-CRM114-Status: GOOD (  15.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,41 +104,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 21, 2024 at 08:19:34PM +0800, Jinjian Song wrote:
-> From: Jinjian Song <songjinjian@hotmail.com>
-> 
-> Add support for userspace to switch on the debug port(ADB,MIPC).
->  - ADB port: /dev/wwan0adb0
->  - MIPC port: /dev/wwan0mipc0
-> 
-> Application can use ADB (Android Debg Bridge) port to implement
-> functions (shell, pull, push ...) by ADB protocol commands.
-> E.g., ADB commands:
->  - A_OPEN: OPEN(local-id, 0, "destination")
->  - A_WRTE: WRITE(local-id, remote-id, "data")
->  - A_OKEY: READY(local-id, remote-id, "")
->  - A_CLSE: CLOSE(local-id, remote-id, "")
+This small series add the initial support for the Airoha AN8855 Switch.
 
-s/Debg/Debug/
+It's a 5 port Gigabit Switch with SGMII/HSGMII upstream port.
 
-> Link: https://android.googlesource.com/platform/packages/modules/adb/+/refs/heads/main/README.md
-> 
-> Application can use MIPC (Modem Information Process Center) port
-> to debug antenna tunner or noise profiling through this MTK modem
-> diagnostic interface.
+This is starting to get in the wild and there are already some router
+having this switch chip.
 
-s/tunner/tuner/
+It's conceptually similar to mediatek switch but register and bits
+are different. And there is that massive Hell that is the PCS
+configuration.
+Saddly for that part we have absolutely NO documentation currently.
 
-> +++ b/Documentation/networking/device_drivers/wwan/t7xx.rst
-> @@ -67,6 +67,28 @@ Write from userspace to set the device mode.
->  ::
->    $ echo fastboot_switching > /sys/bus/pci/devices/${bdf}/t7xx_mode
->  
-> +t7xx_port_mode
-> +--------------
-> +The sysfs interface provides userspace with access to the port mode, this interface
-> +supports read and write operations.
+There is this special thing where PHY needs to be calibrated with values
+from the switch efuse. (the thing have a whole cpu timer and MCU)
 
-This file is not completely consistent, but 90% of it fits in 80
-columns, so I would make your additions fit also.
+Some cleanup API are used and one extra patch for mdio_mutex_nested is
+introduced. As suggested some time ago, the use of such API is limited
+to scoped variants and not the guard ones.
+
+Posting as RFC as I expect in later version to add additional feature
+but this is already working and upstream-ready. So this is really to
+have a review of the very basic features and if I missed anything in
+recent implementation of DSA.
+
+Changes v2:
+- Drop mutex guard patch
+- Drop guard usage in DSA driver
+- Use __mdiobus_write/read
+- Check return condition and return errors for mii read/write
+- Fix wrong logic for EEE
+- Fix link_down (don't force link down with autoneg)
+- Fix forcing speed on sgmii autoneg
+- Better document link speed for sgmii reg
+- Use standard define for sgmii reg
+- Imlement nvmem support to expose switch EFUSE
+- Rework PHY calibration with the use of NVMEM producer/consumer
+- Update DT with new NVMEM property
+- Move aneg validation for 2500-basex in pcs_config
+- Move r50Ohm table and function to PHY driver
+
+Christian Marangi (3):
+  dt-bindings: net: dsa: Add Airoha AN8855 Gigabit Switch documentation
+  net: dsa: Add Airoha AN8855 5-Port Gigabit DSA Switch driver
+  net: phy: Add Airoha AN8855 Internal Switch Gigabit PHY
+
+ .../bindings/net/dsa/airoha,an8855.yaml       |  253 +++
+ MAINTAINERS                                   |   11 +
+ drivers/net/dsa/Kconfig                       |    9 +
+ drivers/net/dsa/Makefile                      |    1 +
+ drivers/net/dsa/an8855.c                      | 2012 +++++++++++++++++
+ drivers/net/dsa/an8855.h                      |  498 ++++
+ drivers/net/phy/Kconfig                       |    5 +
+ drivers/net/phy/Makefile                      |    1 +
+ drivers/net/phy/air_an8855.c                  |  265 +++
+ 9 files changed, 3055 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/net/dsa/airoha,an8855.yaml
+ create mode 100644 drivers/net/dsa/an8855.c
+ create mode 100644 drivers/net/dsa/an8855.h
+ create mode 100644 drivers/net/phy/air_an8855.c
+
+-- 
+2.45.2
+
 
