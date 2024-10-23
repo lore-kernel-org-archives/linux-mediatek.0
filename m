@@ -4,74 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7448ECF538E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2024 14:14:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3CF0CF5398
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2024 14:38:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ne4Jq7Z5W7H9YQ7BSzseOB2fUq6ANZj8mUKL3sXr4Gs=; b=eDOysKFN9GUvEQOZD1c6yJaCeM
-	WIvCQIPCODnjn4UVnKUi9Y3kz2gvdhpC5Kzdjoy8/BhnT+o0iTBTwBJOkD+NUBPnh57mHiWCr13na
-	5aRdGMx1FwTL4Kj0TghX5Vcpm7UfuOsoiZvQdoO6FjeYvAYzYjS4tdglZt2gfxByna7sxqzx+6VCS
-	6R4rZ6T+dLx+DwPZgo1Vm7e8nBwD65jq+pOmIbFw1Q6OoA3PLrhRfyRzddnu636tzJtPQQF3LHB19
-	700wzZl6UZa5ixYi3dUcGxbNOibXh4La143nEpoiPlfgzA7gdgoypf/JqjUbzxlEAN72pD+XzvaCh
-	/962Wh3Q==;
+	bh=drnjFIvwO+HdWpeU95+K1o2fmj1utumcRZT+ucp+B90=; b=hQUeyap+vNLW85tourelRPph0E
+	46zdAb/JiswdgPAVfV8WsG6ucnj1cSZYYkHL4UYdvQi/3FAdC2/vzk+8IqgyYMRHfkbwu7nz2rJVO
+	0ou/D1W6JcxBo6bRp6KI8K95hnxNsU7MgCTZOWV5qbVf8PVlECh8edu00hdnNWg/7qC/Eta/i8WXm
+	WhqCJzgvGEWutB9CC1kCJqzgO4ZWrGclAESN+NYhe9jouXsP0EEHJDVSM2QPhIKZryUD18CZPuEpv
+	ep3dTki04C9cM2iInMfBsDR/NmLFtBlt39zblsCbtX8pglmsivUFBWPrCgFG9yhT2qe0Ut/ShmckJ
+	Ewf8viZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3c85-0000000Ef1U-0WNw;
-	Wed, 23 Oct 2024 14:14:29 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1t3cVf-0000000El6U-3f50;
+	Wed, 23 Oct 2024 14:38:51 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3c6V-0000000Eeg0-119g;
-	Wed, 23 Oct 2024 14:12:53 +0000
+	id 1t3cSa-0000000Ek64-0YjS;
+	Wed, 23 Oct 2024 14:35:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CBEDC5C5E8A;
-	Wed, 23 Oct 2024 14:12:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 08CA9C4CECD;
-	Wed, 23 Oct 2024 14:12:50 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id DAD1FA44F78;
+	Wed, 23 Oct 2024 14:35:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56A0DC4CEC6;
+	Wed, 23 Oct 2024 14:35:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729692770;
-	bh=lT+2VpBy0BT7oY5bPbktSNUFx97M8RvIUrfH+KcF/Dc=;
+	s=k20201202; t=1729694138;
+	bh=azQJ3eGowkkRjf7a7p4DUvh4rfik/bDhwyFQa/WiKhg=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=W+br8yx0K06VIfrfvTTPp6H8RvGMv96AxJZySLP4dlcJFUhpirDAHaTFpIcPpoz/A
-	 N6QCXxzTD4M+AcJ6ap7fC3t/tpBJY9/E8+TUs6f/aQ8mO3vyHnxuTnyRZBeSEqLC7v
-	 C4Oa5C156i+HZJokRBkMJJt24mfC3vO3F05rKjaRqv9MUjPFz1MPgH3M2T16szp2XJ
-	 GhibYZl4h9CkJ46uip0M/M5DD1w9HsHBWwm8TnGy9BHdQMRTJx5OmlfCvnKkdo8UET
-	 jHEf+ItWv3xYMXwUYmIgW34LPDtXlrCeKIY8d6+WpoV8SvGQqyFeDBZybAhztAPfPV
-	 uL0NgWplSc4bg==
-Received: by mail-pg1-f181.google.com with SMTP id 41be03b00d2f7-7cd8803fe0aso4618071a12.0;
-        Wed, 23 Oct 2024 07:12:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVnDhV23ANd0Wv5Lszp3N/DXGa+u/AYheNGd6q5Xwk4kxAKVvHEKFN/IVNbAKc0x5Fu9K66VN+fA1f7as2UH6E=@lists.infradead.org, AJvYcCXJYKIG9lr0gQXOnyVkC2am7lYLJI5UfH+JHNrA6s5+HExdDxDELugbUHDM+ziffdVOSXLnzrbEm9alDEzP2EFK@lists.infradead.org
-X-Gm-Message-State: AOJu0YxnUEG9Bp+wEuGvyyeGXc+53ogTerYOt5x2bFFwUWLzPZ5ZSn9b
-	wJtqu3aHRzfiNvBDzG/NFFllCTQQTVPUfxWJTawqx2ud/e+LgzpUUFP/clNbjdgxDVEzdT0OzRE
-	y1U1a82AEmM/I/zyybUG3SiGkEQ==
-X-Google-Smtp-Source: AGHT+IFlsad2/fwPdFPf6XhOvIClD0wIrRQ18NzI0oBgziJzaXBbTh6qI7+JGmlilOHZTPE+QeviZQ7b6sPyVX5hBBk=
-X-Received: by 2002:a05:6a21:3a41:b0:1d8:a247:945d with SMTP id
- adf61e73a8af0-1d978bef8bdmr2663185637.50.1729692769613; Wed, 23 Oct 2024
- 07:12:49 -0700 (PDT)
+	b=ZnYAi8xhKVOwyN23dtadpHuhJyihl2MDeOhcQoE63BUztJTDrQrBBwrL0rvXULRRk
+	 /EFa+6zg5Ddujjug7EamJ/cDRT+F0n5FadFPs185ur2IGAhnK07Kmcr8OjBt76bQ89
+	 xdKfco3k3sJZQ9GLwbol3zWK6QVhvu+w4FRlxVHZXIFRI2mwDg7qL2wQ+HR6rKvF8G
+	 kUo/FrbFc4h6odrkyoxm7pftbyFcU+pO7+Bz6hiRg52IOGIvtWkFV3jNHNRyyPyj+a
+	 iXHCBRPQD5/Viy+XTVHPQU2zx7IYfNY9fpUDzARmP5MmPnJpLyUW0Gxe88IYv5BtAg
+	 YvuzrVYk9TYRg==
+Received: by mail-pf1-f177.google.com with SMTP id d2e1a72fcca58-71ea2643545so4675785b3a.3;
+        Wed, 23 Oct 2024 07:35:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCUeLmC8Di9NMphqUkhYZvVRac94FFyHPpZW9LkDHdRPY9b/R9sEZAqvC1PPrgu9gisNYP4ZHMC+A36yz1gSL4A=@lists.infradead.org, AJvYcCXe/AIK/QSa4XzFvfR9PVCRX1EtuknCF/tr2IpKfpP/p4LB8SbAXoJD6L0AQvr3lBWP1UA4CcAEVNTheyXEiLM/@lists.infradead.org
+X-Gm-Message-State: AOJu0YxtKh6GxxDcmjhlCGbwte35C0GgurECglvyLD4Mzbd5WtQ9oCQU
+	ESXA49e6SG1/hUbVip9PW9ODdDExOr1eP2DxCRU/5WmTaSrrQd6F70/JgklHJuClHIlcyzmkM2+
+	Fnxi7VgogWADbn1ijQmEIJ7DvBg==
+X-Google-Smtp-Source: AGHT+IGotfPUjuCyXnHej963WsiwtwAVlBk0onYdkHZONBPgcS/jZacTHxq70ShX22L6ObDnMI+HTy8A/5j0aUTa/2E=
+X-Received: by 2002:a05:6a00:3d15:b0:70b:176e:b3bc with SMTP id
+ d2e1a72fcca58-72030bdca55mr4263603b3a.28.1729694137938; Wed, 23 Oct 2024
+ 07:35:37 -0700 (PDT)
 MIME-Version: 1.0
-References: <cc537bd6-837f-4c85-a37b-1a007e268310@stanley.mountain>
-In-Reply-To: <cc537bd6-837f-4c85-a37b-1a007e268310@stanley.mountain>
+References: <20241003030919.17980-1-macpaul.lin@mediatek.com> <20241003030919.17980-4-macpaul.lin@mediatek.com>
+In-Reply-To: <20241003030919.17980-4-macpaul.lin@mediatek.com>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Wed, 23 Oct 2024 22:13:10 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_8kG67ns8OokhzujmH7UNM-O+4Aa=GruO_spLOALMeARA@mail.gmail.com>
-Message-ID: <CAAOTY_8kG67ns8OokhzujmH7UNM-O+4Aa=GruO_spLOALMeARA@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: Fix potential NULL dereference in mtk_crtc_destroy()
-To: Dan Carpenter <dan.carpenter@linaro.org>
+Date: Wed, 23 Oct 2024 22:35:58 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-6tHK7xq3JUWSX--2mZqHQE-bzfaCwzuYHY5crFtYNxQ@mail.gmail.com>
+Message-ID: <CAAOTY_-6tHK7xq3JUWSX--2mZqHQE-bzfaCwzuYHY5crFtYNxQ@mail.gmail.com>
+Subject: Re: [PATCH v6 4/4] dt-bindings: display: mediatek: dpi: correct
+ power-domains property
+To: Macpaul Lin <macpaul.lin@mediatek.com>
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
 	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Yong Wu <yong.wu@mediatek.com>, 
+	Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, kernel-janitors@vger.kernel.org, 
-	=?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Rohit Agarwal <rohiagar@chromium.org>, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, iommu@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, 
+	Alexandre Mergnat <amergnat@baylibre.com>, Bear Wang <bear.wang@mediatek.com>, 
+	Pablo Sun <pablo.sun@mediatek.com>, Macpaul Lin <macpaul@gmail.com>, 
+	Sen Chu <sen.chu@mediatek.com>, Chris-qj chen <chris-qj.chen@mediatek.com>, 
+	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
+	Chen-Yu Tsai <wenst@chromium.org>, Jitao Shi <jitao.shi@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241023_071251_474986_B49409DE 
-X-CRM114-Status: GOOD (  17.72  )
+X-CRM114-CacheID: sfid-20241023_073540_327595_7993EF0E 
+X-CRM114-Status: GOOD (  25.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,20 +97,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dan:
+Hi, Macpaul:
 
-Dan Carpenter <dan.carpenter@linaro.org> =E6=96=BC 2024=E5=B9=B49=E6=9C=881=
-2=E6=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=8B=E5=8D=884:45=E5=AF=AB=E9=81=93=EF=
+Macpaul Lin <macpaul.lin@mediatek.com> =E6=96=BC 2024=E5=B9=B410=E6=9C=883=
+=E6=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=8A=E5=8D=8811:09=E5=AF=AB=E9=81=93=EF=
 =BC=9A
 >
-> In mtk_crtc_create(), if the call to mbox_request_channel() fails then we
-> set the "mtk_crtc->cmdq_client.chan" pointer to NULL.  In that situation,
-> we do not call cmdq_pkt_create().
+> The MediaTek DPI module is typically associated with one of the
+> following multimedia power domains:
+>  - POWER_DOMAIN_DISPLAY
+>  - POWER_DOMAIN_VDOSYS
+>  - POWER_DOMAIN_MM
+> The specific power domain used varies depending on the SoC design.
 >
-> During the cleanup, we need to check if the "mtk_crtc->cmdq_client.chan"
-> is NULL first before calling cmdq_pkt_destroy().  Calling
-> cmdq_pkt_destroy() is unnecessary if we didn't call cmdq_pkt_create() and
-> it will result in a NULL pointer dereference.
+> These power domains are shared by multiple devices within the SoC.
+> In most cases, these power domains are enabled by other devices.
+> As a result, the DPI module of legacy SoCs often functions correctly
+> even without explicit configuration.
+>
+> It is recommended to explicitly add the appropriate power domain
+> property to the DPI node in the device tree. Hence drop the
+> compatible checking for specific SoCs.
 
 Applied to mediatek-drm-fixes [1], thanks.
 
@@ -110,29 +128,90 @@ Regards,
 Chun-Kuang.
 
 >
-> Fixes: 7627122fd1c0 ("drm/mediatek: Add cmdq_handle in mtk_crtc")
-> Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+> Fixes: 5474d49b2f79 ("dt-bindings: display: mediatek: dpi: Add power doma=
+ins")
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> Signed-off-by: Pablo Sun <pablo.sun@mediatek.com>
+> Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
 > ---
->  drivers/gpu/drm/mediatek/mtk_crtc.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+>  .../display/mediatek/mediatek,dpi.yaml        | 24 ++++++++-----------
+>  1 file changed, 10 insertions(+), 14 deletions(-)
 >
-> diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediat=
-ek/mtk_crtc.c
-> index 175b00e5a253..c15013792583 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
-> @@ -127,9 +127,8 @@ static void mtk_crtc_destroy(struct drm_crtc *crtc)
+> Changes for v2:
+>  - Because of the corresponding dts fix has been reviewed with a Reviewed=
+-by: tag.
+>    [1] https://lore.kernel.org/all/20240925080515.16377-1-macpaul.lin@med=
+iatek.com/
+>    We still need this change to fix the 2 dtbs_check errors.
+>    So keeps no change here.
 >
->         mtk_mutex_put(mtk_crtc->mutex);
->  #if IS_REACHABLE(CONFIG_MTK_CMDQ)
-> -       cmdq_pkt_destroy(&mtk_crtc->cmdq_client, &mtk_crtc->cmdq_handle);
+> Changes for v3:
+>  - The origin patch is [2]
+>    https://lore.kernel.org/all/20240926111449.9245-2-macpaul.lin@mediatek=
+.com/
+>  - Thanks for Conor's reminding, after MediaTek's internal discussion,
+>    This patch v3 is the replacement of [2] v2.
+>    Because the DPI module should has a explicit configuration with power =
+domain.
+>  - Drop Acked-by: tag since v3 is nearly a new patch for different approa=
+ch.
+>
+> Changes for v4:
+>  - No change. Please help to review it again.
+>
+> Changes for v5:
+>  - Add missing Reviewed-by Tag from Krzysztof. Thanks.
+>
+> Changes for v6:
+>  - No change.
+>
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
+dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.=
+yaml
+> index 3a82aec9021c..497c0eb4ed0b 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam=
+l
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yam=
+l
+> @@ -63,6 +63,16 @@ properties:
+>        - const: sleep
+>
+>    power-domains:
+> +    description: |
+> +      The MediaTek DPI module is typically associated with one of the
+> +      following multimedia power domains:
+> +        POWER_DOMAIN_DISPLAY
+> +        POWER_DOMAIN_VDOSYS
+> +        POWER_DOMAIN_MM
+> +      The specific power domain used varies depending on the SoC design.
+> +
+> +      It is recommended to explicitly add the appropriate power domain
+> +      property to the DPI node in the device tree.
+>      maxItems: 1
+>
+>    port:
+> @@ -79,20 +89,6 @@ required:
+>    - clock-names
+>    - port
+>
+> -allOf:
+> -  - if:
+> -      not:
+> -        properties:
+> -          compatible:
+> -            contains:
+> -              enum:
+> -                - mediatek,mt6795-dpi
+> -                - mediatek,mt8173-dpi
+> -                - mediatek,mt8186-dpi
+> -    then:
+> -      properties:
+> -        power-domains: false
 > -
->         if (mtk_crtc->cmdq_client.chan) {
-> +               cmdq_pkt_destroy(&mtk_crtc->cmdq_client, &mtk_crtc->cmdq_=
-handle);
->                 mbox_free_channel(mtk_crtc->cmdq_client.chan);
->                 mtk_crtc->cmdq_client.chan =3D NULL;
->         }
+>  additionalProperties: false
+>
+>  examples:
 > --
 > 2.45.2
 >
