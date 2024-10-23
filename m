@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25393CDDE6E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2024 11:47:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6D0FCDDE6E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2024 11:48:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hzwe8zczVUFeHqyn3g0svpr9zuKaqa1l8oGx78Bs5ns=; b=2zlQKqog2vUDlp7Ro1x8XThAHK
-	OvsrMFLH2DnAgGxDifybOuFEdhoFpCRSB5zeXg6WnWUaY8ZSk0FFlG29DyaI8/nSZK5zGCibN3jOC
-	GZ2XH42SZyXj5CeuplGS1uxtFESnCsTDfM/8sosdkTZHECPmhFjl+Xo/UqSS1+qtoTXHEHvOFnA1F
-	c3tglr/3a1KsS0JLHKcdJzpoBrqaAdYor/lqLm2YTAywrPSo+tvd4DKFEPvEFevFAhAP45XZcYEq6
-	GN1obkMWSo6LYbbnqO5EVaj12iiSRtKfW9HHhzYV6+ZEh/MLwM3yIacekqCvzWvyM/qwP2ak7XxLa
-	6EQv/VHA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mvzEvHiDHJCSQ9OPPoA+/DQ5g+AxJier5h97qmDMLdE=; b=Jf5bPPAChi7VwS+eGbVQwlnAqZ
+	u13k6eB1ibOKiQ7PZSfT9rcyuG+CsFEEnRBNJKuoSb7ncgqtWfR0rvVyAQNLNP65ttu3H1G0+0IyA
+	eu4NH2N+lg8vF4xvUUo1cpqlUMGetpGH3HKYVtyodln+BE7r02+bubUM9JSP8Q9tIbVqCZTpqsvil
+	W3QsBWR9RihUh1nHmwCYh+98q7MbXJ+2VZpLuYgmSEsilYsqmYLyKSXz710cayrNDZjmC0TvT5AuD
+	ESzrT8TvGNeB22jcc5IZ6/66OQ8CCjkv93DhsSqJpjDQzDV0P9Q4W2Sf1gy+9wwpCtqv0td94jvqo
+	H48O1rdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3Zq6-0000000ECjj-1oTR;
-	Wed, 23 Oct 2024 11:47:46 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1t3Zqo-0000000EDQZ-3STW;
+	Wed, 23 Oct 2024 11:48:30 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3ZCo-0000000E5Xw-3Niv;
-	Wed, 23 Oct 2024 11:07:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729681629;
-	bh=8e9uBwaZxAnoAdX6FU+kL2IHiXRh0zZ7Wcs7TopuVBE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=d/ifaD7mUx7X3IC0sUiN+TzLsGOnIissTUtkkov9oiM6M80qbQb8Wdw8uNu3VN3ya
-	 KSaLoOPBAbdkn80Dl1v7+TffChDjMZx6lY5eaxKp901LQSgDikS1pYR3sy1fJXFQWH
-	 Kdw4xCBaTDj0BQQpc3VKsfi/taKkGbi6NACPAR2qSFP5Bdpgv+0D1YK8jNUl8p+Dj0
-	 GgT9RVuEeQv0eTz3bfIICC1eAJTL9qOKKVgvcdpcZ7/6Q2jm38yinigR0f2/mVj41E
-	 +Lh3v5zBBfy3oq9/wLBTQ0OlmfWeY+NEHlWI+HQe/RUP77qCjKPkVTicwrWG78AOL1
-	 5G2OsIYIKQNcQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B624217E1576;
-	Wed, 23 Oct 2024 13:07:08 +0200 (CEST)
-Message-ID: <c4b5e78e-5337-464c-9dca-9d4e5353cc46@collabora.com>
-Date: Wed, 23 Oct 2024 13:07:08 +0200
+	id 1t3Zfo-0000000E9wN-1fBY
+	for linux-mediatek@lists.infradead.org;
+	Wed, 23 Oct 2024 11:37:09 +0000
+X-UUID: 1e746854913311ef9048ed6ed365623b-20241023
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=mvzEvHiDHJCSQ9OPPoA+/DQ5g+AxJier5h97qmDMLdE=;
+	b=bkcZMLmwbHMDE2hb5JlIxG0W4yUtg5Djo6AemnuScBdnl5zseL9BtOG0d8QgBZgtZFxZaZN8ODXHnzW9aAEEwyW7+VbUSVoEewHPAozpCQMRQTiIZ5yIGo3Px87XFDh5WOawvjP4hjmfYtxEADapzh/9rYCklTnBuoqti+pmlV8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.42,REQID:525937e3-9dfa-4067-aeca-8095c38b9521,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:7aabb641-8751-41b2-98dd-475503d45150,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 1e746854913311ef9048ed6ed365623b-20241023
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1788127344; Wed, 23 Oct 2024 04:37:01 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 23 Oct 2024 19:36:58 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 23 Oct 2024 19:36:58 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>,
+	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth
+	<linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
+Subject: [PATCH v1] Bluetooth: btmtk: adjust the position to init iso data anchor
+Date: Wed, 23 Oct 2024 19:36:26 +0800
+Message-ID: <20241023113626.12236-1-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/2] arm64: dts: mediatek: mt8395-genio-1200-evk: add
- support for TCPC port
-To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
- Macpaul Lin <macpaul@gmail.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-usb@vger.kernel.org, Chris-qj chen <chris-qj.chen@mediatek.com>,
- Fabien Parent <fparent@baylibre.com>,
- Yow-Shin Liou <yow-shin.liou@mediatek.com>,
- Simon Sun <simon.sun@yunjingtech.com>
-References: <20241023080912.15349-1-macpaul.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241023080912.15349-1-macpaul.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241023_040711_039545_CF334F15 
-X-CRM114-Status: GOOD (  20.73  )
+X-CRM114-CacheID: sfid-20241023_043708_462917_92D48235 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,148 +85,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/10/24 10:09, Macpaul Lin ha scritto:
-> From: Fabien Parent <fparent@baylibre.com>
-> 
-> Enable USB Type-C support on MediaTek MT8395 Genio 1200 EVK by adding
-> configuration for TCPC Port, USB-C connector, and related settings.
-> 
-> Configure dual role switch capability, set up PD (Power Delivery) profiles,
-> and establish endpoints for SSUSB (SuperSpeed USB).
-> 
-> Update pinctrl configurations for U3 P0 VBus default pins and set dr_mode
-> to "otg" for OTG (On-The-Go) mode operation.
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> Signed-off-by: Yow-Shin Liou <yow-shin.liou@mediatek.com>
-> Signed-off-by: Simon Sun <simon.sun@yunjingtech.com>
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> ---
->   .../dts/mediatek/mt8395-genio-1200-evk.dts    | 54 +++++++++++++++++++
->   1 file changed, 54 insertions(+)
-> 
-> Changes for v2:
->   - Drop the no need '1/2' DT Schema update patch in the 1st version.
->   - Fix intent for 'ports' node, it should under the 'connector' node.
->   - Correct the index for 'port@0' and 'port@1' node.
-> 
-> Changes for v3:
->   - Correct the order between new added nodes.
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-> index 5f16fb820580..83d520226302 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-> @@ -335,6 +335,43 @@ mt6360_ldo7: ldo7 {
->   				regulator-always-on;
->   			};
->   		};
-> +
-> +		tcpc {
-> +			compatible = "mediatek,mt6360-tcpc";
-> +			interrupts-extended = <&pio 17 IRQ_TYPE_LEVEL_LOW>;
-> +			interrupt-names = "PD_IRQB";
-> +
-> +			connector {
-> +				compatible = "usb-c-connector";
-> +				label = "USB-C";
-> +				data-role = "dual";
+MediaTek iso data anchor init should be move to where MediaTek
+claims iso data interface.
+If there is an unexpected usb disconnect during setup flow,
+it will cause a NULL pointer crash issue when releasing iso
+anchor since the anchor wan't been init yet. Adjust the position
+to do iso data anchor init.
 
-op-sink-microwatt goes here
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+---
+ drivers/bluetooth/btmtk.c | 1 -
+ drivers/bluetooth/btusb.c | 2 ++
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-> +				power-role = "dual";
-> +				try-power-role = "sink";
-> +				source-pdos = <PDO_FIXED(5000, 1000, \
-> +					       PDO_FIXED_DUAL_ROLE | \
-> +					       PDO_FIXED_DATA_SWAP)>;
-
-Please fix the indentation (and also you don't need the escaping)
-
-				source-pdos = <PDO_FIXED(5000, 1000,
-							 PDO_FIXED_DUAL_ROLE |
-							 PDO_FIXED_DATA_SWAP)>;
-
-> +				sink-pdos = <PDO_FIXED(5000, 2000, \
-> +					     PDO_FIXED_DUAL_ROLE | \
-> +					     PDO_FIXED_DATA_SWAP)>;
-> +				op-sink-microwatt = <10000000>;
-> +
-> +				ports {
-> +					#address-cells = <1>;
-> +					#size-cells = <0>;
-> +
-> +					port@0 {
-> +						reg = <0>;
-
-Just to make sure that this is ok: are you sure that this port supports
-SuperSpeed (physical connector too) and that it's not limited to HighSpeed?
-
-I have seen Rob's comment stating that ssusb_ep goes to port@1, but I think
-that his comment came after reading "ss" in "ssusb": while the controller
-does surely support SS, if the port does not, this should still go to port@0.
-
-P.S.: I didn't check the schematics - just please make sure it's correct, and
-       that this actually works.
-
-> +					};
-> +
-> +					port@1 {
-> +						reg = <1>;
-> +						mt6360_ssusb_ep: endpoint {
-> +							remote-endpoint = <&ssusb_ep>;
-> +						};
-> +					};
-> +				};
-> +			};
-> +		};
->   	};
->   };
->   
-> @@ -770,6 +807,13 @@ pins-reset {
->   		};
->   	};
->   
-> +	u3_p0_vbus: u3-p0-vbus-default-pins {
-> +		pins-cmd-dat {
-
-That's not a command nor data pin.
-
-pins-vbus {
-
-> +			pinmux = <PINMUX_GPIO63__FUNC_VBUSVALID>;
-> +			input-enable;
-> +		};
-> +	};
-> +
->   	uart0_pins: uart0-pins {
->   		pins {
->   			pinmux = <PINMUX_GPIO98__FUNC_UTXD0>,
-> @@ -900,8 +944,18 @@ &ufsphy {
->   };
->   
->   &ssusb0 {
-> +	dr_mode = "otg";
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&u3_p0_vbus>;
-
-Is this port usb host by default? If it is:
-
-	role-switch-default-mode = "host";
-
-Cheers,
-Angelo
-
-> +	usb-role-switch;
->   	vusb33-supply = <&mt6359_vusb_ldo_reg>;
->   	status = "okay";
-> +
-> +	port {
-> +		ssusb_ep: endpoint {
-> +			remote-endpoint = <&mt6360_ssusb_ep>;
-> +		};
-> +	};
->   };
->   
->   &ssusb2 {
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index b7fc14aafc74..8a3f7c3fcfec 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -1215,7 +1215,6 @@ static int btmtk_usb_isointf_init(struct hci_dev *hdev)
+ 	struct sk_buff *skb;
+ 	int err;
+ 
+-	init_usb_anchor(&btmtk_data->isopkt_anchor);
+ 	spin_lock_init(&btmtk_data->isorxlock);
+ 
+ 	__set_mtk_intr_interface(hdev);
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 9970470c9d15..15c0885c37cd 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -2628,6 +2628,8 @@ static void btusb_mtk_claim_iso_intf(struct btusb_data *data)
+ 	struct btmtk_data *btmtk_data = hci_get_priv(data->hdev);
+ 	int err;
+ 
++	init_usb_anchor(&btmtk_data->isopkt_anchor);
++
+ 	err = usb_driver_claim_interface(&btusb_driver,
+ 					 btmtk_data->isopkt_intf, data);
+ 	if (err < 0) {
+-- 
+2.18.0
 
 
