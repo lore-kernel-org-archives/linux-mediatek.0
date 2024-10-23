@@ -4,77 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D08BACF5399
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2024 14:51:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD894CFA44F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2024 16:08:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dKAMRbftUhDsnB3DO79E2412q0qL9eT88TYwlyR5GDU=; b=AHmoGM4qiE5lSx0CKMZ9/1jYDq
-	zQWMfdaqH6V+LeB1XmdvUcDFaMhpTBtcfKGdJlzejUnSVmHh5Ufi+XHQB7GcJerHE/v7rj3DcqfZM
-	DcGOhYOt9kX/6N2g7W5mgJ8cH0IhFDNizlEqcNnshmld9XQIRReZUMd+Zl6o5dN6Zs0twxZCiw/eD
-	zpuiTCn+TLJmqQ1lxNAbO9YuvSlyDp0OcKa3PCmXgQvz+gsoW2Zg/3gXr4XtnMkOmhYCU7eJ5m3Fx
-	qapzRb6SQwdSok2Yn1BGRw/AjHnTBPQmeVqaRXwgfwIC37hky29AMdmThWH179YG6iREVWdCLA9l1
-	kv1thtTg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=bu1l2ObQ2xP4luAG6wLCI+L1JC9c8VEm7Uvp5bR7kt0=; b=yy1eLiHyxhS1RI
+	v8KXIodr8zjxpDhIUICNSUbwGKypYxNmy1nGzksbWKqaFF+VypWU7a8D09bbGWB0pRSmeA/FsGYwe
+	C5dIO+zZa5qkT9S8tBWu1d3hzfN3cx9d8FApaCDmWzaS2onye/3aA4Qt6XKQVJ2QUj7XD5EPDK3UK
+	pTrRr0XYkZyqjvNn5Y0E/bA5gVDLkdbjnz/BkIZ1qIBxfSaAjRr+QX+slMJQZQNQcM1jhW88ymzF+
+	Y/wao8zBzwg95fefuL5r/k4fJTsRTgE1aOrrD0XkKdeHE8ffbrhWNUIpi5nwBteAhspa/Q8Rrg67e
+	GwcthweNYBnR+iIzrCSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3ciK-0000000Eom2-1O9U;
-	Wed, 23 Oct 2024 14:51:56 +0000
+	id 1t3du4-0000000F5D5-23jU;
+	Wed, 23 Oct 2024 16:08:08 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3ci6-0000000Eofy-0WPr;
-	Wed, 23 Oct 2024 14:51:43 +0000
+	id 1t3d4v-0000000EuY7-2KA3;
+	Wed, 23 Oct 2024 15:15:19 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B5CE95C5ECA;
-	Wed, 23 Oct 2024 14:51:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8EF0C4AF0B;
-	Wed, 23 Oct 2024 14:51:39 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 111E65C4C78;
+	Wed, 23 Oct 2024 15:15:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10073C4CEC6;
+	Wed, 23 Oct 2024 15:15:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729695099;
-	bh=V0WnmKHkiubGXH7powCeniKJAeXlAH+b4/k8QVVp3oY=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=ZI5jh9RfHhvV8BXkELReKNk+DT5nZqXcJQanuVnxbnJiUgBsPdOYsrZ4QuA6Vuq+a
-	 8E75CpBgCCLrwe7L+V580X5wva+3hC4FC5gD1J+WnmyMBAYMCRHkE1nOTY19p+OlGC
-	 8GmNkH2/H8NL+4iF41aadGcdnmWOCFp9tdYr8v2ZxeMO48fhIJ+XZtLd09ZtI4goW4
-	 aq2+0nIlPcOtIx8f3RTUJXJYXIP4Z47kWuuTIYCui5KPSnfl0RgWnoB32USvY/CqT8
-	 jL0ZX85cCrSW7lldtTW0H7wxv16fFYmGswFSIE3yUaUR3HMnvCYUBgkgFwNrlJzYPJ
-	 WMs3m3CbPiqmA==
-Received: by mail-pj1-f44.google.com with SMTP id 98e67ed59e1d1-2e3d523a24dso5156495a91.0;
-        Wed, 23 Oct 2024 07:51:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCWUyqkGxTCHS+cgSvM/k21z8qnaoFMbiKypL9HkRIOYZR9dGuPniytdtc6n0mDYFu9XoFkwcSloEo8KHOo/avEz@lists.infradead.org, AJvYcCXQDxtvmZDDnk7o3e9icql44PUI1p0jwE4Cz1AdoZmlmsNFnSPqUWHSesBFwWoFYxMcGD2VGl7hUGQobAIE3j8=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxQmsO5x8TlYa88CgUqMR9EljNz2WGArDFuI4ylIQd58J8OClJN
-	05C3J9vlmDiOejG7O5QtpeZ/SuN6Vh0ol2WfC/OHIa5GEa3+m/RfKTIr2ZlCHp+94JjPP/rFqcg
-	Yg6mGE/YIF+TgPHHXoWXp3PUJRQ==
-X-Google-Smtp-Source: AGHT+IGiOV49HPeVWqZgqUDfen8sjZxWmSvuRAGE4z98/inzDbsAH3T7NKTZ/wjACKOgmYMVQ+VQCdv4ftbQedq6e9Q=
-X-Received: by 2002:a17:90a:d512:b0:2e2:e545:82c5 with SMTP id
- 98e67ed59e1d1-2e76b5b7edcmr3019116a91.3.1729695099200; Wed, 23 Oct 2024
- 07:51:39 -0700 (PDT)
+	s=k20201202; t=1729696516;
+	bh=eN8F/lNDkjIAfUB0JM4j0vPqOsiKHYVixWKxi/Pt1pQ=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=TG+6cHH1+2xLbh2vi1zJtsnou/pAIZQLsuo22e4xHmh/goTCkLgpGqDRnV5Lu7/cz
+	 sJgGvRBpKTwqq+GbMRNbQY+7iVfUHEsDh1tVqS5ya6Httoz9alp1HUi+Ue7IZcslAW
+	 dauJSlRUKWwnZpFOe441ybpb5NI67PvFbMRdwI+dHotS8+cOizF2/a7gmucWmxepOJ
+	 j+BkzNm7tMF0K8W2H+cWyYkyc3jqunBWpKB9m2wYWXPCU0ssaWQxLHmYfG8eKdufh4
+	 Xngd8gMBsw34e+MbFQidmS7VTdwFiUlkFOzMd9++PXJbh6HSNNVdaRKmmUSGlCx63c
+	 b9C1xODOKVipQ==
+Date: Wed, 23 Oct 2024 10:15:14 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Jinjian Song <jinjian.song@fibocom.com>
+Cc: chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
+	haijun.liu@mediatek.com, m.chetan.kumar@linux.intel.com,
+	ricardo.martinez@linux.intel.com, loic.poulain@linaro.org,
+	ryazanov.s.a@gmail.com, johannes@sipsolutions.net,
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org, linux-doc@vger.kernel.org,
+	angelogioacchino.delregno@collabora.com,
+	linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com,
+	corbet@lwn.net, linux-mediatek@lists.infradead.org,
+	danielwinkler@google.com, korneld@google.com,
+	Jinjian Song <songjinjian@hotmail.com>
+Subject: Re: [net-next,RESEND v6 2/2] net: wwan: t7xx: Add debug port
+Message-ID: <20241023151514.GA888712@bhelgaas>
 MIME-Version: 1.0
-References: <20241007022834.4609-1-moudy.ho@mediatek.com>
-In-Reply-To: <20241007022834.4609-1-moudy.ho@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Wed, 23 Oct 2024 22:52:00 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_-jPWv1nHf9NnxNkVW2+ZOFOagAPf1DFQu5AD1KnCQNYw@mail.gmail.com>
-Message-ID: <CAAOTY_-jPWv1nHf9NnxNkVW2+ZOFOagAPf1DFQu5AD1KnCQNYw@mail.gmail.com>
-Subject: Re: [PATCH v5] dt-bindings: display: mediatek: split: add subschema
- property constraints
-To: Moudy Ho <moudy.ho@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	Macpaul Lin <macpaul.lin@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241021121934.16317-3-jinjian.song@fibocom.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241023_075142_279813_BBB47BE4 
-X-CRM114-Status: GOOD (  18.48  )
+X-CRM114-CacheID: sfid-20241023_081517_664542_A67B090E 
+X-CRM114-Status: GOOD (  11.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,110 +79,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Moudy:
+On Mon, Oct 21, 2024 at 08:19:34PM +0800, Jinjian Song wrote:
+> From: Jinjian Song <songjinjian@hotmail.com>
+> 
+> Add support for userspace to switch on the debug port(ADB,MIPC).
+>  - ADB port: /dev/wwan0adb0
+>  - MIPC port: /dev/wwan0mipc0
+> 
+> Application can use ADB (Android Debg Bridge) port to implement
+> functions (shell, pull, push ...) by ADB protocol commands.
+> E.g., ADB commands:
+>  - A_OPEN: OPEN(local-id, 0, "destination")
+>  - A_WRTE: WRITE(local-id, remote-id, "data")
+>  - A_OKEY: READY(local-id, remote-id, "")
+>  - A_CLSE: CLOSE(local-id, remote-id, "")
 
-Moudy Ho <moudy.ho@mediatek.com> =E6=96=BC 2024=E5=B9=B410=E6=9C=887=E6=97=
-=A5 =E9=80=B1=E4=B8=80 =E4=B8=8A=E5=8D=8810:28=E5=AF=AB=E9=81=93=EF=BC=9A
->
-> The display node in mt8195.dtsi was triggering a CHECK_DTBS error due
-> to an excessively long 'clocks' property:
->   display@14f06000: clocks: [[31, 14], [31, 43], [31, 44]] is too long
->
-> To resolve this issue, the constraints for 'clocks' and
-> other properties within the subschemas will be reinforced.
+s/Debg/Debug/
 
-Applied to mediatek-drm-fixes [1], thanks.
+> Link: https://android.googlesource.com/platform/packages/modules/adb/+/refs/heads/main/README.md
+> 
+> Application can use MIPC (Modem Information Process Center) port
+> to debug antenna tunner or noise profiling through this MTK modem
+> diagnostic interface.
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
-log/?h=3Dmediatek-drm-fixes
+s/tunner/tuner/
 
-Regards,
-Chun-Kuang.
+> +++ b/Documentation/networking/device_drivers/wwan/t7xx.rst
+> @@ -67,6 +67,28 @@ Write from userspace to set the device mode.
+>  ::
+>    $ echo fastboot_switching > /sys/bus/pci/devices/${bdf}/t7xx_mode
+>  
+> +t7xx_port_mode
+> +--------------
+> +The sysfs interface provides userspace with access to the port mode, this interface
+> +supports read and write operations.
 
->
-> Fixes: 739058a9c5c3 ("dt-bindings: display: mediatek: split: add compatib=
-le for MT8195")
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
->
-> --
-> This is based on [v2] dt-bindings: display: mediatek: split: add clocks c=
-ount constraint for MT8195
->
-> Changes since v4:
->   - Eliminate the possibility of varying quantities in the 'clocks'
->     property of mt8195.
->   - Move the constraint for 'power-domains' to the top-level.
->
-> Changes since v3:
->   - Correct the compatible name for the mt8173 split in the subschema.
->
-> Changes since v2:
->   - Revise the commit message.
->   - Enhance the descriptions of 'clocks'.
->   - Strengthen the conditions within the subschema.
->
-> Changes since v1:
->   - Adding functional descriptions and quantity restrictions.
-> ---
->  .../display/mediatek/mediatek,split.yaml      | 19 +++++++++++++++++++
->  1 file changed, 19 insertions(+)
->
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,=
-split.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,sp=
-lit.yaml
-> index e4affc854f3d..4b6ff546757e 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,split.y=
-aml
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,split.y=
-aml
-> @@ -38,6 +38,7 @@ properties:
->      description: A phandle and PM domain specifier as defined by binding=
-s of
->        the power controller specified by phandle. See
->        Documentation/devicetree/bindings/power/power-domain.yaml for deta=
-ils.
-> +    maxItems: 1
->
->    mediatek,gce-client-reg:
->      description:
-> @@ -57,6 +58,9 @@ properties:
->    clocks:
->      items:
->        - description: SPLIT Clock
-> +      - description: Used for interfacing with the HDMI RX signal source=
-.
-> +      - description: Paired with receiving HDMI RX metadata.
-> +    minItems: 1
->
->  required:
->    - compatible
-> @@ -72,9 +76,24 @@ allOf:
->              const: mediatek,mt8195-mdp3-split
->
->      then:
-> +      properties:
-> +        clocks:
-> +          minItems: 3
-> +
->        required:
->          - mediatek,gce-client-reg
->
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: mediatek,mt8173-disp-split
-> +
-> +    then:
-> +      properties:
-> +        clocks:
-> +          maxItems: 1
-> +
->  additionalProperties: false
->
->  examples:
-> --
-> 2.34.1
->
+This file is not completely consistent, but 90% of it fits in 80
+columns, so I would make your additions fit also.
 
