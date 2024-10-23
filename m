@@ -4,78 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 936FDCF5389
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2024 13:19:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 778F9CF538B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2024 13:48:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=dDkakBKHHeSI6Ly6LRF1kpJRycLvpXUtBSp9373LIMA=; b=Pumt27EC8CNUzs8i4TUMypTrfN
-	EjoOzWeK1drc5q2NIDmFGM6qglD03Cqi1tiF3Fi92Atiqlu5O2LfCfdJclLBznLrHnhU/rQfwtI2D
-	qMPBtQ3cTgV6yYBEdO41KZEe91u6ekMEAZsnmKc4LlbKQIWeqKMqp52qVSNOLteizmwH6gXyqXRjy
-	7mMCcu5hGDC2rsQo/76m2Ed/aIhePHKuEnGJfSI7jfv77ZUT2V0Pd6fzR80Ov1QqzhbLf/rodJWe4
-	bcvk251H/Xz7PjtEebcWE26Q1bUVBsj5LcvRqevU+JlRLMYDA2+BVjm9hOiX+ePDgZ76LYQeDC5Nd
-	lbEMLSUQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=v1ErG2T9UQjEKEnbXbgxig/MiNVygt+6QYl0dpxRA+w=; b=ZYkhcNkws83IPMOyuIqlss7ANd
+	Jel60lLJNK8aO6/8PWaZ8wWO0JZ9LhMoILJfBCeGh8bolrXJdxi9o7FV2HEjmey9XE0f/q4dBySyj
+	GH/vjFpnM0Cqmt0IneqasBJF7NSylTkGaXZcvkajtNpL/ehH0xzvWOBj6vAyNJaqa3vz2jfRY7aKe
+	JCWvIHp5uZr4n7gmHSrtJxKaEe1SpjC4YQV5QcC6qz/oU+19+t77HprggNgSpZXEBWv7cBoAKCzHc
+	dqQ+c+4PEPXXTLtJu4EKbqSIvxgFRV/YWADFMDblkwvzdepDLAaGEgvqcknChkKByvIvRts8OIc1L
+	HylL7yVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3bGh-0000000EVlF-0iqX;
-	Wed, 23 Oct 2024 13:19:19 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1t3bii-0000000Eb1n-1yl0;
+	Wed, 23 Oct 2024 13:48:16 +0000
+Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3bGe-0000000EVjc-1zfZ
+	id 1t3bif-0000000Eb0z-2DL7
 	for linux-mediatek@lists.infradead.org;
-	Wed, 23 Oct 2024 13:19:17 +0000
-X-UUID: 623b0a94914111ef82ff63e91e7eb18c-20241023
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=dDkakBKHHeSI6Ly6LRF1kpJRycLvpXUtBSp9373LIMA=;
-	b=TmZDJNVW8m0KhcHfqXzqZOICWgSTID33NP8R64NHVrl1sVLeY+m2Ojn23QOtKF4NEpLk76UKoO9z3cHrYJh705hX0zDsGc8CmT91wjbKhI0nq8f2bewNo3oxEJy4KTjVJ5Ni+HJ1cuJYeiyg/B9pK1Ps5U+BldtON1WZHWn9vHc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.42,REQID:20f14f12-01f1-4397-8179-bd1994b54a4a,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:b0fcdc3,CLOUDID:8f09bfcc-110e-4f79-849e-58237df93e70,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 623b0a94914111ef82ff63e91e7eb18c-20241023
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 206493097; Wed, 23 Oct 2024 06:19:07 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 23 Oct 2024 21:19:05 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 23 Oct 2024 21:19:05 +0800
-From: <peter.wang@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
-	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
-	<beanhuo@micron.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<yi-fan.peng@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>,
-	<stable@vger.kernel.org>
-Subject: [PATCH v1] ufs: core: fix another deadlock when rtc update
-Date: Wed, 23 Oct 2024 21:19:04 +0800
-Message-ID: <20241023131904.9749-1-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	Wed, 23 Oct 2024 13:48:15 +0000
+Received: by mail-ua1-x92a.google.com with SMTP id a1e0cc1a2514c-84fc0212a60so1791906241.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 23 Oct 2024 06:48:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1729691292; x=1730296092; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=v1ErG2T9UQjEKEnbXbgxig/MiNVygt+6QYl0dpxRA+w=;
+        b=V9zT8FtaI+YaOP817lvoy4+AdFoMfTdL0WuRhZAfRaFS36+7wouu3jjmVZ7ruuvUX3
+         mmnFEXu1hUfo4eXdBeAILenVPii01ncZQ1aPiKgfyiDanSxWH7NTdbTt4YRQemIf0Caa
+         VV6P7pDNPAyguQUne+LMsJ2Cyd7goTrtfUx9k=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729691292; x=1730296092;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=v1ErG2T9UQjEKEnbXbgxig/MiNVygt+6QYl0dpxRA+w=;
+        b=toqTnx1TRWobqlfuqZuQhbSnps73aaZbIptnwJ/p1ZF06Md/R5vQi7LFE7juT68PiH
+         7bpshfu8+j7qw7I2/9Dc2fZpYtcc6rYdI8msajy7nULs2XPo2WfgFENRGbiEXUcljNx6
+         R13trmS1iMMPWET+sfZR973zgdsMvLZ1+VAN2+szcjE0jB48HyL+LcigBCTxba9xuaTL
+         tysNOgcqZcDvw9BrGppegaoqs2jQ7NrdCFHflHXZ1Hw49NDsNYT7WVHm+U6joBNjjFmd
+         cq2phjU/NPrwe0JnTZVDjUHAaKdfe2m3p9fYbfXLovWuo424mvtdJQulzgnZJ5qXqdph
+         1lug==
+X-Forwarded-Encrypted: i=1; AJvYcCVIbvKCuH6GPhaCsruno1FkWNE+2LgEMa7TNCYnmCLMleY3JHylhM6gcVM+gIq+Q/fV8btB114jHEim71QZlg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwcC4jq/yUoOPpcldshtO7oxVy++xzTgavG9iqZAWW3kkdxXmSY
+	LQdBe/W0gBo5I2Q+r+HlCLVYxjaqt6513Ks83rXbNM2wfeDV3rermlbTN3UoTsvm4hYTl2r8kLu
+	IpQ==
+X-Google-Smtp-Source: AGHT+IHQiqq/16TfiPyFT+M0LWfgWSfXa4yyKMRxkTC6rihIZBF7R/rAuzk/Rt+BexaPBi5akbRibg==
+X-Received: by 2002:a05:6122:1d42:b0:50a:12e4:2618 with SMTP id 71dfb90a1353d-50fd01b9273mr3294950e0c.2.1729691291761;
+        Wed, 23 Oct 2024 06:48:11 -0700 (PDT)
+Received: from mail-ua1-f53.google.com (mail-ua1-f53.google.com. [209.85.222.53])
+        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-50e19e9717fsm1041211e0c.23.2024.10.23.06.48.10
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 23 Oct 2024 06:48:10 -0700 (PDT)
+Received: by mail-ua1-f53.google.com with SMTP id a1e0cc1a2514c-84fd057a993so2259210241.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 23 Oct 2024 06:48:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCVWKLJzk3a+nznU36Y65HJvgyDENrCjSAb2Lyfm6JRj2Re1HmekrCRdISU5Hvq2xyVzhI62Nb95XOQTqRlE+A==@lists.infradead.org
+X-Received: by 2002:a05:6122:513:b0:50a:d1e3:82f7 with SMTP id
+ 71dfb90a1353d-50fd031e55fmr3184053e0c.8.1729691290235; Wed, 23 Oct 2024
+ 06:48:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20241023102059.512352-1-fshao@chromium.org> <9b12aaec-504c-4e3a-a606-240341d8e0d3@collabora.com>
+ <CAC=S1niSXkCTLXeCv-0sQh4AQmv6eKm8OH_3yH=TeDoMVz72OA@mail.gmail.com>
+In-Reply-To: <CAC=S1niSXkCTLXeCv-0sQh4AQmv6eKm8OH_3yH=TeDoMVz72OA@mail.gmail.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Wed, 23 Oct 2024 21:47:39 +0800
+X-Gmail-Original-Message-ID: <CAC=S1ng=ZLB+vB=kNywLGMdeN1RRted0j6d-fC9ANoyu=ni3Mg@mail.gmail.com>
+Message-ID: <CAC=S1ng=ZLB+vB=kNywLGMdeN1RRted0j6d-fC9ANoyu=ni3Mg@mail.gmail.com>
+Subject: Re: [PATCH] soc: mediatek: mediatek-regulator-coupler: Fix comment
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241023_061916_545617_056B52CF 
-X-CRM114-Status: GOOD (  11.22  )
+X-CRM114-CacheID: sfid-20241023_064813_624879_837C0124 
+X-CRM114-Status: GOOD (  18.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,37 +99,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+On Wed, Oct 23, 2024 at 8:03=E2=80=AFPM Fei Shao <fshao@chromium.org> wrote=
+:
+>
+> On Wed, Oct 23, 2024 at 6:40=E2=80=AFPM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+> >
+> > Il 23/10/24 12:19, Fei Shao ha scritto:
+> > > Fix two minor issues in the comments.
+> > >
+> > > 1. We balance VSRAM voltage based on the target VGPU voltage, so the
+> > >     comment likely refers to VGPU.
+> >
+> > Function `mediatek_regulator_balance_voltage()` refers, as stated in th=
+e comment
+> > located at the top of its signature, to "GPU<->SRAM" voltages relations=
+hips.
+> >
+> > So, we're taking into consideration only two regulators:
+> >                    VGPU and VSRAM
+> >
+> > The first comment says:
+> > "If we're asked to set a voltage (implicit: to VGPU) less than VSRAM mi=
+n_uV[...]"
+> >
+> > ...so, I think that you've misunderstood what the comment says :-)
+>
+> Let me make sure we're on the same page - VGPU never goes higher than
+> VSRAM (VGPU <=3D VSRAM), is that correct?
+>
+> [ min VGPU, max VGPU ] ... spread ... [    min VSRAM  ,  max VSRAM    ]
+>  (min_uV)  (max_uV)                         (vsram_min_uV) (vsram_max_uV)
+>
+> The longer comment is
+> "If we're asked to set a voltage less than VSRAM min_uV, set the
+> minimum allowed voltage on VSRAM, ..."
+> So VSRAM is the subject here I think? Because we "set voltage *on*
+> VSRAM" based on its own minimum allowed voltage? We never set either
+> VGPU min/max voltage to vsram_min_uV?
+> And it's attached to the line that decides vsram_target_min_uV, with
+> the maximum of (1) vsram_min_uV (i.e. minimum allowed VSRAM voltage)
+> or (2) min_uV + max_spread (min VGPU + spread)
 
-When ufshcd_rtc_work calls ufshcd_rpm_put_sync and the pm's
-usage_count is 0, it will enter the runtime suspend callback.
-However, the runtime suspend callback will wait to flush
-ufshcd_rtc_work, causing a deadlock.
-Replacing ufshcd_rpm_put_sync with ufshcd_rpm_put can avoid
-the deadlock.
+Ah, I just got your point. Both interpretations can explain..
+I linked the "min_uV" in the comment to the one used in code, which
+stands for VGPU min_uV, so I had the impression that it was a typo.
 
-Fixes: 6bf999e0eb41 ("scsi: ufs: core: Add UFS RTC support")
-Cc: <stable@vger.kernel.org> 6.11.x
-
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
----
- drivers/ufs/core/ufshcd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index a63dcf48e59d..f5846598d80e 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -8219,7 +8219,7 @@ static void ufshcd_update_rtc(struct ufs_hba *hba)
- 
- 	err = ufshcd_query_attr(hba, UPIU_QUERY_OPCODE_WRITE_ATTR, QUERY_ATTR_IDN_SECONDS_PASSED,
- 				0, 0, &val);
--	ufshcd_rpm_put_sync(hba);
-+	ufshcd_rpm_put(hba);
- 
- 	if (err)
- 		dev_err(hba->dev, "%s: Failed to update rtc %d\n", __func__, err);
--- 
-2.18.0
-
+Regards,
+Fei
 
