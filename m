@@ -4,86 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ECC7CE8E8A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Oct 2024 15:41:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0374CE8E90
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Oct 2024 16:04:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W3uQQB7e6vA64fR4D2xbg8mQGZa/M0qxBwIFoh7VKto=; b=zSOPmIflyw/e4T1BwtDntEGSaX
-	4t5XdlOiuDsyMJy9ulUsQ4+6w8OwrXQW/YYoXLXhg8bmopRYVWuUIMsj2mQOFsQmEc7DfZcvQ8fPd
-	8Jpa1H7D6WuflvJd+QyqjWU5N43ImMrgqOjUOsfYHhT+Y04C4Y+/CTXQU0yxXIF0MjORD9q2vw9Qi
-	jHnddqVTFXqD4qXDpn/E5PJV1RF+xonKMKGdgWRg1rSXSE2/zewPaMRzUCVYuvafcFyLi4yz/gb7Q
-	yWTfMXlPUBlMjSHByU1jxpfox6kS+5V8IxFxWOf/9xF5sTsxs38ws72dPYxh+iLhibVDwHDvoyUAI
-	W1mh5D0g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qEBHYqB0bDnNx07fLFxGZX++G8eujkw+4riyqHCCzLs=; b=a9IeD3vwZ1CgpcBgqNZ8ihv4F8
+	03HzCYPw6vWh4qpkhQMCyvf+bTJhRUG91kqhlJSBxtrUKy/7+rBIMda/XAgJksNzhvByf3ejCBhDQ
+	u7TqddbQX81R4FWAaYdy6wv64f5IsvTfYbC9944SmNHwOGNaqfHqtjlBlcQSVseIaG1ERmHW2BfsR
+	XruJ7ROflX5F1xgZrRO4EqeQA9CFZR7XXZLjKKNiAOSVTGvIwvHOCBrtW771USmrnZBtg/+stvlxW
+	nCJKOEgobY2XIjh8V5NQhPllVpL2U5UaW/q2BPu6AKWE4R1wqv88tzUvoITiAvViHGku1GXemz76f
+	27f0Aolw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3zxq-00000000x59-1LK5;
-	Thu, 24 Oct 2024 15:41:30 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1t40Jt-000000011bS-2Bo0;
+	Thu, 24 Oct 2024 16:04:17 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3zgC-00000000toQ-3v7I;
-	Thu, 24 Oct 2024 15:23:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=W3uQQB7e6vA64fR4D2xbg8mQGZa/M0qxBwIFoh7VKto=; b=OKkGKIaxXHMDQ1maY3CDc3I0/x
-	SY3EjCIsZ2cQZpAWogyhCltY4Wiu81XZ9kQSo8cQRKKx6NulxuWd6keNq27CeBoQEoaos5C9w73FZ
-	BDH218OaXSvBEwLzusG25cQkTD5aYb3PoIlgZscdL57p4C3wKiovZf75E045Vql8a3nzrtr28DFMR
-	R/3S33UHrEQgJ/d22ff1pSwiZL/3D80TyaAEB1npYqNhuFWVai/0NFZS29Ypisge/R2b/Pc5TTAQ2
-	CoTZ84z8/o+ZALMC82tohPYjkymuHFURw7omONjcK635PXxra4/ML+Ymc1NMnZ5B1ARDdUSDB6U+G
-	dzkWI/lA==;
-Received: from dfw.source.kernel.org ([139.178.84.217])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3zg8-00000008hb1-3oSY;
-	Thu, 24 Oct 2024 15:23:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id D119B5C598E;
-	Thu, 24 Oct 2024 15:23:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0930FC4CEC7;
-	Thu, 24 Oct 2024 15:23:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729783386;
-	bh=xEjMAQfA1uXRN9RJu6qq9b5+SQpN/LVbFyfZ/9OTh98=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=rmOqeuJFEcIDXrWqUn2exb+M6Et8L2ku5O276TBDc7BgtWVRzk1YXHnehvu5y21jb
-	 66s9AE6hCn4fzrn+98UZAocCil89+KMtPjMckI2QZ21Vw0faU4kCd8ncZ2f8XA+jt4
-	 mfX4UIj3S4frOSw0s6bj/qab7dQvQE2X/CFGZuvG6wNvCgiqk3Md+zwfxnUVZKysEh
-	 WhB5AKERRRbJdU/ttIGElyNmaiHQBYxzUpjOqn81BR/xUUM/qic7mRiMepk9jstQc5
-	 ytcXhjRjp90+mVtBVH/MlqMiVNoTgCQt5T3hiVWnB52tB/KzLofDB8dK066C5W6x4T
-	 VCyNiWmzyrXgg==
-Date: Thu, 24 Oct 2024 10:23:05 -0500
-From: Rob Herring <robh@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [net-next RFC PATCH v2 1/3] dt-bindings: net: dsa: Add Airoha
- AN8855 Gigabit Switch documentation
-Message-ID: <20241024152305.GA550738-robh@kernel.org>
-References: <20241023161958.12056-1-ansuelsmth@gmail.com>
- <20241023161958.12056-2-ansuelsmth@gmail.com>
+	id 1t40Ay-0000000102R-1jIz;
+	Thu, 24 Oct 2024 15:55:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1729785302;
+	bh=4T2a4+mRhV9NvQBidUmk4rDen6/Uz+l5BXbpJTPNH2Q=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TH2U124whINBH6S9OU8xY1sdbLbiqpBIQ2run8jUDi4yuikZmiwErQwh2rxeCk6Aa
+	 gxTaGdP+Kj5ouHFLXWwZ0A7pf1qcilLze+aH9IksWitLcmThTEG+lKZlEYzFApK6yF
+	 cOZfEtzQ15Mx+0Rrx9C3OW1kb5skWgVakJ2QGs4fURkKZItmfYvNmBvZpNIRLo/obQ
+	 tSBJ8/K2zXVBqDfAZTM9LQTuCcMYF9QEbc0Ju3RSisS4x8lrJ94e2LljpNJ8fwkW+B
+	 G4zbwdhiXR8qRKgA1PHTdyuv1hgquiS1olUT5FSfQggCNV4Gak7wRQtzzIQBhFUuiS
+	 kmfgKjeBXQ2/A==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5413817E3676;
+	Thu, 24 Oct 2024 17:55:02 +0200 (CEST)
+Message-ID: <127675b8-51c5-4c32-8bd1-ecbed96cdaa0@collabora.com>
+Date: Thu, 24 Oct 2024 17:55:01 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241023161958.12056-2-ansuelsmth@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] pinctrl: mediatek: add eint new design for mt8196
+To: chang hao <ot_chhao.chang@mediatek.com>, matthias.bgg@gmail.com,
+ sean.wang@kernel.org, linus.walleij@linaro.org
+Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20241024141517.10312-1-ot_chhao.chang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20241024141517.10312-1-ot_chhao.chang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241024_162313_949136_D8209A61 
-X-CRM114-Status: GOOD (  27.29  )
+X-CRM114-CacheID: sfid-20241024_085505_712132_EF5645D1 
+X-CRM114-Status: GOOD (  41.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,304 +75,499 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 23, 2024 at 06:19:50PM +0200, Christian Marangi wrote:
-> Add Airoha AN8855 5 port Gigabit Switch documentation.
+Il 24/10/24 16:15, chang hao ha scritto:
+> From: Chhao Chang <ot_chhao.chang@mediatek.com>
 > 
-> The switch node requires an additional mdio node to describe each internal
-> PHY relative offset as the PHY address for the switch match the one for
-> the PHY ports. On top of internal PHY address, the switch base PHY address
-> is added.
+> eint is divided from the original base address into base addresses
+> in five directions: east, south, west, north, and center.
+> Stores a limited number of eint numbers in each direction.
 > 
-> Also the switch base PHY address can be configured and changed after the
-> first initialization. On reset, the switch PHY address is ALWAYS 1.
-> This can be configured with the use of "airoha,base_smi_address".
-> 
-> Calibration values might be stored in switch EFUSE and internal PHY
-> might need to be calibrated, in such case, airoha,ext_surge needs to be
-> enabled and relative NVMEM cells needs to be defined in nvmem-layout
-> node.
-> 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> Signed-off-by: Chhao Chang <ot_chhao.chang@mediatek.com>
 > ---
->  .../bindings/net/dsa/airoha,an8855.yaml       | 253 ++++++++++++++++++
->  1 file changed, 253 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/net/dsa/airoha,an8855.yaml
+>   drivers/pinctrl/mediatek/mtk-eint.c           | 830 +++++++++++++-----
+>   drivers/pinctrl/mediatek/mtk-eint.h           |  75 +-
+>   .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  |  50 +-
+>   3 files changed, 722 insertions(+), 233 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/net/dsa/airoha,an8855.yaml b/Documentation/devicetree/bindings/net/dsa/airoha,an8855.yaml
-> new file mode 100644
-> index 000000000000..5982b4c39536
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/net/dsa/airoha,an8855.yaml
-> @@ -0,0 +1,253 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/net/dsa/airoha,an8855.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Airoha AN8855 Gigabit switch
-> +
-> +maintainers:
-> +  - Christian Marangi <ansuelsmth@gmail.com>
-> +
-> +description:
+> diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
+> index 27f0a54e12bf..0bb017eb1893 100644
+> --- a/drivers/pinctrl/mediatek/mtk-eint.c
+> +++ b/drivers/pinctrl/mediatek/mtk-eint.c
+> @@ -17,16 +17,13 @@
+>   #include <linux/irqdomain.h>
+>   #include <linux/module.h>
+>   #include <linux/of_irq.h>
+> +#include <linux/of_address.h>
+>   #include <linux/platform_device.h>
+>   
+>   #include "mtk-eint.h"
+>   
+> -#define MTK_EINT_EDGE_SENSITIVE           0
+> -#define MTK_EINT_LEVEL_SENSITIVE          1
+> -#define MTK_EINT_DBNC_SET_DBNC_BITS	  4
+> -#define MTK_EINT_DBNC_MAX		  16
+> -#define MTK_EINT_DBNC_RST_BIT		  (0x1 << 1)
+> -#define MTK_EINT_DBNC_SET_EN		  (0x1 << 0)
+> +static struct mtk_eint *global_eintc;
+> +struct mtk_eint_pin pin;
 
-You need '>' to preserve paragraphs.
+Noupe, don't introduce these globals.
 
-> +  Airoha AN8855 is a 5-port Gigabit Switch.
-> +
-> +  The switch node requires an additional mdio node to describe each internal
-> +  PHY relative offset as the PHY address for the switch match the one for
-> +  the PHY ports. On top of internal PHY address, the switch base PHY address
-> +  is added.
-> +
-> +  Also the switch base PHY address can be configured and changed after the
-> +  first initialization. On reset, the switch PHY address is ALWAYS 1.
-> +
-> +properties:
-> +  compatible:
-> +    const: airoha,an8855
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  reset-gpios:
-> +    description:
-> +      GPIO to be used to reset the whole device
-> +    maxItems: 1
-> +
-> +  airoha,base_smi_address:
+>   
+>   static const struct mtk_eint_regs mtk_generic_eint_regs = {
+>   	.stat      = 0x000,
+> @@ -47,6 +44,10 @@ static const struct mtk_eint_regs mtk_generic_eint_regs = {
+>   	.dbnc_ctrl = 0x500,
+>   	.dbnc_set  = 0x600,
+>   	.dbnc_clr  = 0x700,
+> +	.event     = 0x800,
+> +	.event_set = 0x840,
+> +	.event_clr = 0x880,
+> +	.raw_stat  = 0xa00,
+>   };
+>   
+>   const unsigned int debounce_time_mt2701[] = {
+> @@ -64,60 +65,145 @@ const unsigned int debounce_time_mt6795[] = {
+>   };
+>   EXPORT_SYMBOL_GPL(debounce_time_mt6795);
+>   
+> -static void __iomem *mtk_eint_get_offset(struct mtk_eint *eint,
+> +/*
+> + * Return the iomem of specific register ofset and decode the coordinate
+> + * (instance, index) from global eint number.
+> + * If return NULL, then it must be either out-of-range or do-not-support.
+> + */
+> +static void __iomem *mtk_eint_get_ofset(struct mtk_eint *eint,
 
-s/_/-/
+You're replacing this with a typo....
 
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description:
-> +      Configure and change the base switch PHY address to a new address on
-> +      the bus.
-> +      On reset, the switch PHY address is ALWAYS 1.
+>   					 unsigned int eint_num,
+> -					 unsigned int offset)
+> +					 unsigned int ofset,
 
-The paragraphs here won't be maintained without '>' and a blank line in 
-between.
+and you're typoing offset on purpose again?! :-\
 
-Or just move the 2nd sentence up to follow the first one.
+> +					 unsigned int *instance,
+> +					 unsigned int *index)
+>   {
+> -	unsigned int eint_base = 0;
+>   	void __iomem *reg;
+>   
+> -	if (eint_num >= eint->hw->ap_num)
+> -		eint_base = eint->hw->ap_num;
+> +	if (eint_num >= eint->total_pin_number ||
+> +	    !eint->pins[eint_num].enabled) {
+> +		WARN_ON(1);
+> +		return NULL;
+> +	}
+>   
+> -	reg = eint->base + offset + ((eint_num - eint_base) / 32) * 4;
+> +	*instance = eint->pins[eint_num].instance;
+> +	*index = eint->pins[eint_num].index;
+> +	reg = eint->instances[*instance].base + ofset + (*index / MAX_BIT * REG_OFSET);
+>   
+>   	return reg;
+>   }
+>   
+> +/*
+> + * Generate helper function to access property register of a dedicate pin.
+> + */
 
-> +    default: 1
-> +    maximum: 31
-> +
-> +  airoha,ext_surge:
+...and you don't need this (sorry, ugly!) macro either, as this is only
+helping you to create a mass-duplication situation here.
 
-ditto.
+If you need a helper, write *one* function that retrieves the data for you
+from a chosen register.
 
-> +    $ref: /schemas/types.yaml#/definitions/flag
-> +    description:
-> +      Calibrate the internal PHY with the calibration values stored in EFUSE
-> +      for the r50Ohm values.
+> +#define DEFINE_EINT_GET_FUNCTION(_NAME, _OFSET) \
+> +static unsigned int mtk_eint_get_##_NAME(struct mtk_eint *eint, \
+> +				   unsigned int eint_num) \
+> +{ \
+> +	unsigned int instance, index; \
+> +	void __iomem *reg = mtk_eint_get_ofset(eint, eint_num, \
+> +						_OFSET, \
+> +						&instance, &index); \
+> +	unsigned int bit = BIT(index & 0x1f);\
+> +\
+> +	if (!reg) { \
+> +		dev_err(eint->dev, "%s invalid eint_num %d\n", \
+> +			__func__, eint_num); \
+> +		return 0;\
+> +	} \
+> +\
+> +	return !!(readl(reg) & bit); \
+> +}
 > +
-> +  '#nvmem-cell-cells':
-> +    const: 0
+> +DEFINE_EINT_GET_FUNCTION(stat, eint->comp->regs->stat);
+> +DEFINE_EINT_GET_FUNCTION(mask, eint->comp->regs->mask);
+> +DEFINE_EINT_GET_FUNCTION(sens, eint->comp->regs->sens);
+> +DEFINE_EINT_GET_FUNCTION(pol, eint->comp->regs->pol);
+> +DEFINE_EINT_GET_FUNCTION(dom_en, eint->comp->regs->dom_en);
+> +DEFINE_EINT_GET_FUNCTION(event, eint->comp->regs->event);
+> +DEFINE_EINT_GET_FUNCTION(raw_stat, eint->comp->regs->raw_stat);
 > +
-> +  nvmem-layout:
-> +    $ref: /schemas/nvmem/layouts/nvmem-layout.yaml
-> +    description:
-> +      NVMEM Layout for exposed EFUSE. (for example to propagate calibration
-> +      value for r50Ohm for internal PHYs)
+> +int dump_eint_pin_status(unsigned int eint_num)
+
+I don't think that this is necessary... also because, there's already irq/debugfs.c
+for debugging. If you really need debug, hook it to the right APIs.
+
+> +{
+> +       unsigned int stat, raw_stat, mask, sens, pol, dom_en, event;
 > +
-> +  mdio:
-> +    $ref: /schemas/net/mdio.yaml#
-> +    unevaluatedProperties: false
-> +    description:
-> +      Define the relative address of the internal PHY for each port.
+> +       if (eint_num < 0 || eint_num > global_eintc->total_pin_number)
+> +               return ENODEV;
 > +
-> +      Each reg for the PHY is relative to the switch base PHY address.
+> +       stat = mtk_eint_get_stat(global_eintc, eint_num);
+> +       raw_stat = mtk_eint_get_raw_stat(global_eintc, eint_num);
+> +       mask = mtk_eint_get_mask(global_eintc, eint_num);
+> +       sens = mtk_eint_get_sens(global_eintc, eint_num);
+> +       pol = mtk_eint_get_pol(global_eintc, eint_num);
+> +       dom_en = mtk_eint_get_dom_en(global_eintc, eint_num);
+> +       event = mtk_eint_get_event(global_eintc, eint_num);
+> +       dev_info(global_eintc->dev, "%s eint_num:%u=stat:%u,raw:%u, \
+> +		       mask:%u, sens:%u,pol:%u,dom_en:%u,event:%u\n",
+> +		       __func__, eint_num, stat, raw_stat, mask, sens,
+> +		       pol, dom_en, event);
+> +       return 0;
+> +}
+> +EXPORT_SYMBOL_GPL(dump_eint_pin_status);
 > +
-> +$ref: dsa.yaml#
+>   static unsigned int mtk_eint_can_en_debounce(struct mtk_eint *eint,
+>   					     unsigned int eint_num)
+>   {
+>   	unsigned int sens;
+> -	unsigned int bit = BIT(eint_num % 32);
+> -	void __iomem *reg = mtk_eint_get_offset(eint, eint_num,
+> -						eint->regs->sens);
+> +	unsigned int instance, index;
+> +	void __iomem *reg = mtk_eint_get_ofset(eint, eint_num,
+> +						eint->comp->regs->sens,
+> +						&instance, &index);
+> +	unsigned int bit = BIT(index & 0x1f);
+
+I'm not sure why you can't use BIT(eint_num % 32) anymore.
+
+Even though your EINT is split in 5, that should be still aligned the same as
+the "old" EINT.
+
 > +
-> +required:
-> +  - compatible
-> +  - reg
+> +	if (!reg) {
+
+That won't ever happen, because you're already checking that in callers of
+this function, hence this check is redundant, or looks like it is anyway.
+
+> +		dev_err(eint->dev, "%s invalid eint_num %d\n",
+> +			__func__, eint_num);
+> +		return 0;
+> +	}
+>   
+>   	if (readl(reg) & bit)
+>   		sens = MTK_EINT_LEVEL_SENSITIVE;
+>   	else
+>   		sens = MTK_EINT_EDGE_SENSITIVE;
+>   
+> -	if (eint_num < eint->hw->db_cnt && sens != MTK_EINT_EDGE_SENSITIVE)
+> +	if (eint->pins[eint_num].debounce &&
+> +	    sens != MTK_EINT_EDGE_SENSITIVE)
+>   		return 1;
+>   	else
+>   		return 0;
+>   }
+>   
+> -static int mtk_eint_flip_edge(struct mtk_eint *eint, int hwirq)
+> +static int mtk_eint_flip_edge(struct mtk_eint *eint, int eint_num)
+
+Why are you changing the parameter name from hwirq to eint_num?!
+
+>   {
+>   	int start_level, curr_level;
+> -	unsigned int reg_offset;
+> -	u32 mask = BIT(hwirq & 0x1f);
+> -	u32 port = (hwirq >> 5) & eint->hw->port_mask;
+> -	void __iomem *reg = eint->base + (port << 2);
+> +	unsigned int reg_ofset;
+> +	unsigned int instance, index, mask, port;
+> +	void __iomem *reg;
+>   
+> -	curr_level = eint->gpio_xlate->get_gpio_state(eint->pctl, hwirq);
+> +	reg = mtk_eint_get_ofset(eint, eint_num, MTK_EINT_NO_OFSET,
+> +				  &instance, &index);
 > +
-> +unevaluatedProperties: false
+> +	if (!reg) {
+> +		dev_err(eint->dev, "%s invalid eint_num %d\n",
+> +			__func__, eint_num);
+> +		return 0;
+> +	}
 > +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/gpio/gpio.h>
+> +	mask = BIT(index & 0x1f);
+> +	port = index >> REG_GROUP;
+> +	reg = eint->instances[instance].base + port * REG_OFSET;
 > +
-> +    mdio {
-> +        #address-cells = <1>;
-> +        #size-cells = <0>;
+
+
+..snip..
+
+> @@ -403,7 +572,20 @@ static void mtk_eint_irq_handler(struct irq_desc *desc)
+>   
+>   int mtk_eint_do_suspend(struct mtk_eint *eint)
+>   {
+> -	mtk_eint_chip_write_mask(eint, eint->base, eint->wake_mask);
+> +	unsigned int i, j, port;
 > +
-> +        switch@1 {
-> +            compatible = "airoha,an8855";
-> +            reg = <1>;
-> +            reset-gpios = <&pio 39 0>;
+> +	for (i = 0; i < eint->instance_number; i++) {
+> +		struct mtk_eint_instance inst = eint->instances[i];
+
+Just register five different instances if they really have to be separated,
+which I don't believe they do, anyway.
+
+You should really read what mtk_eint_hw is for.
+
 > +
-> +            airoha,ext_surge;
+> +		for (j = 0; j < inst.number; j += MAX_BIT) {
+> +			port = j >> REG_GROUP;
+> +			writel_relaxed(~inst.wake_mask[port],
+> +				       inst.base + port*REG_OFSET + eint->comp->regs->mask_set);
+> +			writel_relaxed(inst.wake_mask[port],
+> +				       inst.base + port*REG_OFSET + eint->comp->regs->mask_clr);
+> +		}
+> +	}
+> +	dsb(sy);
+>   
+>   	return 0;
+>   }
+
+..snip..
+
+> @@ -420,27 +615,45 @@ EXPORT_SYMBOL_GPL(mtk_eint_do_resume);
+>   int mtk_eint_set_debounce(struct mtk_eint *eint, unsigned long eint_num,
+>   			  unsigned int debounce)
+>   {
+> -	int virq, eint_offset;
+> -	unsigned int set_offset, bit, clr_bit, clr_offset, rst, i, unmask,
+> +	int virq, eint_ofset;
+> +	unsigned int set_ofset, bit, clr_bit, clr_ofset, rst, i, unmask,
+>   		     dbnc;
+> +	static const unsigned int debounce_time[] = { 156, 313, 625, 1250,
+> +		20000, 40000, 80000, 160000, 320000, 640000 };
+
+This is another mtk_eint_hw array that you're carelessly hardcoding inside of the
+eint driver.
+
+>   	struct irq_data *d;
+> +	unsigned int instance, index;
+> +	void __iomem *reg;
+>   
+> -	if (!eint->hw->db_time)
+> -		return -EOPNOTSUPP;
+> +	/*
+> +	 * Due to different number of bit field, we only decode
+> +	 * the coordinate here, instead of get the VA.
+> +	 */
+> +	reg = mtk_eint_get_ofset(eint, eint_num, MTK_EINT_NO_OFSET,
+> +				  &instance, &index);
 > +
-> +            #nvmem-cell-cells = <0>;
+> +	if (!reg) {
+> +		dev_err(eint->dev, "%s invalid eint_num %lu\n",
+> +			__func__, eint_num);
+> +		return 0;
+> +	}
+>   
+>   	virq = irq_find_mapping(eint->domain, eint_num);
+> -	eint_offset = (eint_num % 4) * 8;
+> +	eint_ofset = (index % REG_OFSET) * DB_GROUP;
+>   	d = irq_get_irq_data(virq);
+>   
+> -	set_offset = (eint_num / 4) * 4 + eint->regs->dbnc_set;
+> -	clr_offset = (eint_num / 4) * 4 + eint->regs->dbnc_clr;
+> +	reg = eint->instances[instance].base;
+> +	set_ofset = (index / REG_OFSET) * REG_OFSET + eint->comp->regs->dbnc_set;
+> +	clr_ofset = (index / REG_OFSET) * REG_OFSET + eint->comp->regs->dbnc_clr;
+>   
+>   	if (!mtk_eint_can_en_debounce(eint, eint_num))
+>   		return -EINVAL;
+>   
+> -	dbnc = eint->num_db_time;
+> -	for (i = 0; i < eint->num_db_time; i++) {
+> -		if (debounce <= eint->hw->db_time[i]) {
+> +	/*
+> +	 * Check eint number to avoid access out-of-range
+> +	 */
+> +	dbnc = ARRAY_SIZE(debounce_time) - 1;
+
+And here, you carelessly break every other supported MediaTek SoC.
+
+> +	for (i = 0; i < ARRAY_SIZE(debounce_time); i++) {
+> +		if (debounce <= debounce_time[i]) {
+>   			dbnc = i;
+>   			break;
+>   		}
+
+..snip..
+
 > +
-> +            nvmem-layout {
-> +                compatible = "fixed-layout";
-> +                #address-cells = <1>;
-> +                #size-cells = <1>;
+> +int mtk_eint_do_init_v2(struct mtk_eint *eint)
+> +{
+> +	int i, virq, matrix_number = 0;
+> +	struct device_node *node;
+> +	unsigned int ret, size, ofset;
+> +	unsigned int id, inst, idx, support_deb;
 > +
-> +                shift_sel_port0_tx_a: shift-sel-port0-tx-a@c {
-> +                    reg = <0xc 0x4>;
-> +                };
+> +	const phandle *ph;
 > +
-> +                shift_sel_port0_tx_b: shift-sel-port0-tx-b@10 {
-> +                    reg = <0x10 0x4>;
-> +                };
+> +	ph = of_get_property(eint->dev->of_node, "mediatek,eint", NULL);
+
+No, a SoC always has the same eint controller(s), always mapped to the same pins.
+
+This is not something for devicetree - but rather something that was already
+resolved in the past, when `struct mtk_eint_hw` was introduced.
+
+You should just look at how this driver works upstream and implement support for
+the new EINT in there.... not by copy-pasting something from downstream to upstream
+and expecting it to be accepted.
+
+> +	if (!ph) {
+> +		dev_err(eint->dev, "Cannot find EINT phandle in PIO node.\n");
+> +		return -ENODEV;
+> +	}
 > +
-> +                shift_sel_port0_tx_c: shift-sel-port0-tx-c@14 {
-> +                    reg = <0x14 0x4>;
-> +                };
+> +	node = of_find_node_by_phandle(be32_to_cpup(ph));
+> +	if (!node) {
+> +		dev_err(eint->dev, "Cannot find EINT node by phandle.\n");
+> +		return -ENODEV;
+> +	}
 > +
-> +                shift_sel_port0_tx_d: shift-sel-port0-tx-d@18 {
-> +                    reg = <0x18 0x4>;
-> +                };
+> +	ret = of_property_read_u32(node, "mediatek,total-pin-number",
+> +				   &eint->total_pin_number);
+
+eint_hw->ap_num is the same thing as this.
+
+> +	if (ret) {
+> +		dev_err(eint->dev,
+> +		       "%s cannot read total-pin-number from device node.\n",
+> +		       __func__);
+> +		return -EINVAL;
+> +	}
 > +
-> +                shift_sel_port1_tx_a: shift-sel-port1-tx-a@1c {
-> +                    reg = <0x1c 0x4>;
-> +                };
+> +	dev_info(eint->dev, "%s eint total %u pins.\n", __func__,
+> +		eint->total_pin_number);
 > +
-> +                shift_sel_port1_tx_b: shift-sel-port1-tx-b@20 {
-> +                    reg = <0x20 0x4>;
-> +                };
+> +	ret = of_property_read_u32(node, "mediatek,instance-num",
+> +				   &eint->instance_number);
+> +	if (ret)
+> +		eint->instance_number = 1; // only 1 instance in legacy chip
 > +
-> +                shift_sel_port1_tx_c: shift-sel-port1-tx-c@24 {
-> +                    reg = <0x24 0x4>;
-> +                };
+> +	size = eint->instance_number * sizeof(struct mtk_eint_instance);
+> +	eint->instances = devm_kzalloc(eint->dev, size, GFP_KERNEL);
+> +	if (!eint->instances)
+>   		return -ENOMEM;
+>   
+> -	eint->dual_edge = devm_kcalloc(eint->dev, eint->hw->ap_num,
+> -				       sizeof(int), GFP_KERNEL);
+> -	if (!eint->dual_edge)
+> +	size = eint->total_pin_number * sizeof(struct mtk_eint_pin);
+> +	eint->pins = devm_kzalloc(eint->dev, size, GFP_KERNEL);
+> +	if (!eint->pins)
+>   		return -ENOMEM;
+>   
+> +	for (i = 0; i < eint->instance_number; i++) {
+> +		ret = of_property_read_string_index(node, "reg-name", i,
+> +						    &(eint->instances[i].name));
+> +		if (ret) {
+> +			dev_info(eint->dev,
+> +				 "%s cannot read the name of instance %d.\n",
+> +				 __func__, i);
+> +		}
 > +
-> +                shift_sel_port1_tx_d: shift-sel-port1-tx-d@28 {
-> +                    reg = <0x28 0x4>;
-> +                };
+> +		eint->instances[i].base = of_iomap(node, i);
+> +		if (!eint->instances[i].base)
+> +			return -ENOMEM;
+> +	}
 > +
-> +                shift_sel_port2_tx_a: shift-sel-port2-tx-a@2c {
-> +                    reg = <0x2c 0x4>;
-> +                };
+> +	matrix_number = of_property_count_u32_elems(node, "mediatek,pins") / ARRAY_0;
+> +	if (matrix_number < 0) {
+> +		matrix_number = eint->total_pin_number;
+> +		dev_info(eint->dev, "%s eint in legacy mode, assign the matrix number to %u.\n",
+> +			 __func__, matrix_number);
+> +	} else
+> +		dev_info(eint->dev, "%s eint in new mode, assign the matrix number to %u.\n",
+> +			 __func__, matrix_number);
 > +
-> +                shift_sel_port2_tx_b: shift-sel-port2-tx-b@30 {
-> +                    reg = <0x30 0x4>;
-> +                };
+> +	for (i = 0; i < matrix_number; i++) {
+> +		ofset = i * REG_OFSET;
 > +
-> +                shift_sel_port2_tx_c: shift-sel-port2-tx-c@34 {
-> +                    reg = <0x34 0x4>;
-> +                };
+> +		ret = of_property_read_u32_index(node, "mediatek,pins",
+> +					   ofset, &id);
+
+So basically this means that if a SoC has 200 EINT pins, you'll have 200 values
+in devicetree?!
+
+> +		ret |= of_property_read_u32_index(node, "mediatek,pins",
+> +					   ofset+FIRST, &inst);
+> +		ret |= of_property_read_u32_index(node, "mediatek,pins",
+> +					   ofset+SECOND, &idx);
+> +		ret |= of_property_read_u32_index(node, "mediatek,pins",
+> +					   ofset+THIRD, &support_deb);
 > +
-> +                shift_sel_port2_tx_d: shift-sel-port2-tx-d@38 {
-> +                    reg = <0x38 0x4>;
-> +                };
+> +		/* Legacy chip which no need to give coordinate list */
+> +		if (ret) {
+> +			id = i;
+> +			inst = 0;
+> +			idx = i;
+> +			support_deb = (i < MAX_BIT) ? 1 : 0;
+> +		}
 > +
-> +                shift_sel_port3_tx_a: shift-sel-port3-tx-a@4c {
-> +                    reg = <0x4c 0x4>;
-> +                };
+> +		eint->pins[id].enabled = true;
+> +		eint->pins[id].instance = inst;
+> +		eint->pins[id].index = idx;
+> +		eint->pins[id].debounce = support_deb;
 > +
-> +                shift_sel_port3_tx_b: shift-sel-port3-tx-b@50 {
-> +                    reg = <0x50 0x4>;
-> +                };
+> +		eint->instances[inst].pin_list[idx] = id;
+> +		eint->instances[inst].number++;
 > +
-> +                shift_sel_port3_tx_c: shift-sel-port3-tx-c@54 {
-> +                    reg = <0x54 0x4>;
-> +                };
+
+..snip..
+
+> diff --git a/drivers/pinctrl/mediatek/mtk-eint.h b/drivers/pinctrl/mediatek/mtk-eint.h
+> index 6139b16cd225..aa17a6073029 100644
+> --- a/drivers/pinctrl/mediatek/mtk-eint.h
+> +++ b/drivers/pinctrl/mediatek/mtk-eint.h
+> @@ -11,6 +11,25 @@
+>   
+>   #include <linux/irqdomain.h>
+>   
+> +#define MAX_PIN 999
+> +#define MTK_EINT_EDGE_SENSITIVE           0
+> +#define MTK_EINT_LEVEL_SENSITIVE          1
+> +#define MTK_EINT_DBNC_SET_DBNC_BITS       4
+> +#define MTK_EINT_DBNC_RST_BIT             (0x1 << 1)
+> +#define MTK_EINT_DBNC_SET_EN              (0x1 << 0)
+> +#define MTK_EINT_NO_OFSET                 0
+
+> +#define MAX_BIT                           32
+
+MAX_BIT==32? Ok, so I was right in saying that the new eint is just the old one
+but with more than one instance.
+
+> +#define REG_OFSET                         4
+> +#define REG_GROUP                         5
+> +#define REG_VAL                           0xFFFFFFFF
+
+
+> +#define DB_GROUP                          8
+> +#define FIRST                             1
+> +#define SECOND                            2
+> +#define THIRD                             3
+> +#define ARRAY_0                           4
 > +
-> +                shift_sel_port3_tx_d: shift-sel-port3-tx-d@58 {
-> +                    reg = <0x58 0x4>;
-> +                };
-> +            };
-> +
-> +            ports {
-> +                #address-cells = <1>;
-> +                #size-cells = <0>;
-> +
-> +                port@0 {
-> +                    reg = <0>;
-> +                    label = "lan1";
-> +                    phy-mode = "internal";
-> +                    phy-handle = <&internal_phy0>;
-> +                };
-> +
-> +                port@1 {
-> +                    reg = <1>;
-> +                    label = "lan2";
-> +                    phy-mode = "internal";
-> +                    phy-handle = <&internal_phy1>;
-> +                };
-> +
-> +                port@2 {
-> +                    reg = <2>;
-> +                    label = "lan3";
-> +                    phy-mode = "internal";
-> +                    phy-handle = <&internal_phy2>;
-> +                };
-> +
-> +                port@3 {
-> +                    reg = <3>;
-> +                    label = "lan4";
-> +                    phy-mode = "internal";
-> +                    phy-handle = <&internal_phy3>;
-> +                };
-> +
-> +                port@5 {
-> +                    reg = <5>;
-> +                    label = "cpu";
-> +                    ethernet = <&gmac0>;
-> +                    phy-mode = "2500base-x";
-> +
-> +                    fixed-link {
-> +                        speed = <2500>;
-> +                        full-duplex;
-> +                        pause;
-> +                    };
-> +                };
-> +            };
-> +
-> +            mdio {
-> +                #address-cells = <1>;
-> +                #size-cells = <0>;
-> +
-> +                internal_phy0: phy@0 {
-> +                    reg = <0>;
-> +
-> +                    nvmem-cells = <&shift_sel_port0_tx_a>,
-> +                                  <&shift_sel_port0_tx_b>,
-> +                                  <&shift_sel_port0_tx_c>,
-> +                                  <&shift_sel_port0_tx_d>;
-> +                    nvmem-cell-names = "tx_a", "tx_b", "tx_c", "tx_d";
-> +                };
-> +
-> +                internal_phy1: phy@1 {
-> +                    reg = <1>;
-> +
-> +                    nvmem-cells = <&shift_sel_port1_tx_a>,
-> +                                  <&shift_sel_port1_tx_b>,
-> +                                  <&shift_sel_port1_tx_c>,
-> +                                  <&shift_sel_port1_tx_d>;
-> +                    nvmem-cell-names = "tx_a", "tx_b", "tx_c", "tx_d";
-> +                };
-> +
-> +                internal_phy2: phy@2 {
-> +                    reg = <2>;
-> +
-> +                    nvmem-cells = <&shift_sel_port2_tx_a>,
-> +                                  <&shift_sel_port2_tx_b>,
-> +                                  <&shift_sel_port2_tx_c>,
-> +                                  <&shift_sel_port2_tx_d>;
-> +                    nvmem-cell-names = "tx_a", "tx_b", "tx_c", "tx_d";
-> +                };
-> +
-> +                internal_phy3: phy@3 {
-> +                    reg = <3>;
-> +
-> +                    nvmem-cells = <&shift_sel_port3_tx_a>,
-> +                                  <&shift_sel_port3_tx_b>,
-> +                                  <&shift_sel_port3_tx_c>,
-> +                                  <&shift_sel_port3_tx_d>;
-> +                    nvmem-cell-names = "tx_a", "tx_b", "tx_c", "tx_d";
-> +                };
-> +            };
-> +        };
-> +    };
-> -- 
-> 2.45.2
-> 
+> +//#define MTK_EINT_DEBUG
+
+Those definitions are either cryptic or unneeded.
+And I'll stop my review here.
+
+To be clear, the response is a huge "NACK"; you really have to redo everything
+from scratch, but this time, just implement support for the new design on the base
+of this upstream driver.
+
+Regards,
+Angelo
 
