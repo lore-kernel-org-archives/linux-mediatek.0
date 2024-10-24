@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47D84CE8E94
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Oct 2024 16:49:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 134FACE8E9A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Oct 2024 17:50:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sbcx/f+avMo0nfnfoFrvHy0s7zMVYb5RcXeOKVfhBB0=; b=QotU16oyOD1Iq3iInMwIA/srde
-	ZEn5rCr3PSw3i0ZdtjqwnxoL1qu/R4wV2bX7HzWtIJxXjnL+FDWzA3y/cXskfPFGx/BMZTSt3JbJH
-	86yuPEXyaeJQOd1SxmBIjV/xSH2cjlZ22+X1IXxdazENafAAobDMKhnMk0qqeYIYhItkBcENKfO0d
-	NZVCIdwQx96Wjk0xGlmSfMXEn4+SSeRuXubmpRK015EsPGyCB9syYhiII7LMZo7fVCJ7Mz5Meomrz
-	58Q8QsrFu2ivlBZYAuuWHcE69BcMOixGkNOTY4UHMjHfZj39oO6D5ZGqmH9tuHFWJ6hM9Ggfkz0z7
-	/1zI+68Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6RF+0h3uJVvZLYuGZLW/jZ/HEsnjwutDdO799XJGlDs=; b=NkM5U4RZTADTmQZbtHsVrPRl52
+	1xY8NDo4bZjQeNfypQDZ5WDJSGPK1RjmHp3jyKNemV55kpYW/9wL7tMTBOnTzCuRm0d6XCS3a1S7+
+	h2z++XdKG3/eRkxp7TEY2KjlWlg+NQIe/r+HaVKd+ZzjT5CEeJvpAQoVssMzKnoUvapdBA1kpiS//
+	Q0oqab50BCgGi/GVSO+N2Eet/L3DqF+t86uGqgmJY4HjuYvLl4SkzqsnztHf0rORPcPUszy5fMH9B
+	jthdVfB63lILR90wHNiuf5Yi7M89wITj2LikkVbkXSz1t2f1GHUcb8rdeFkbpNvlJcf8261Oal0qw
+	MJr2jkJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t411c-00000001A5t-0Xaz;
-	Thu, 24 Oct 2024 16:49:28 +0000
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+	id 1t41yx-00000001LfU-2PMi;
+	Thu, 24 Oct 2024 17:50:47 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t40y7-000000018vb-3c20
-	for linux-mediatek@lists.infradead.org;
-	Thu, 24 Oct 2024 16:45:53 +0000
-Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-71e93d551a3so839637b3a.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 24 Oct 2024 09:45:51 -0700 (PDT)
+	id 1t41c8-00000001Hcu-0Ipi;
+	Thu, 24 Oct 2024 17:27:13 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-4316e9f4a40so12466795e9.2;
+        Thu, 24 Oct 2024 10:27:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1729788351; x=1730393151; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=sbcx/f+avMo0nfnfoFrvHy0s7zMVYb5RcXeOKVfhBB0=;
-        b=kAmEBD32H4nk51HvIdrW0PaqB+CI41/mad8dzHciF50dDrihiFZFYDktN+yJkG7Z+C
-         F/WYa0xp2SPvdX+42dn0rplsfV02+WiXakbS5gbdJ+dW2rgV0WKoVkGNr8u4knNmh5Dg
-         oZpEOkli4U8xJXzCch8quoepD/n8x6Q2Xc2Zt37mcEUYZV1ZawxEhYcs7hWcFHFzKnYd
-         Hmcd6hSFaAYNCAngNQaTzYfeORgV8XyBDz7jbn8dyVtVHsm85LvIF3owIgE8Mza5vNGy
-         YyHBcOyN9HmXWmkyoP6RvVfRZYdk2/PPFPXX5Phx1kKC3C8upooILvNg3dCx6tCEIjhG
-         Nqjg==
+        d=gmail.com; s=20230601; t=1729790830; x=1730395630; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=6RF+0h3uJVvZLYuGZLW/jZ/HEsnjwutDdO799XJGlDs=;
+        b=Zzj4ER+HapTjBokYAbPaekLN8zF2ABddzRLkQmJV0Epro7WRPRpzJi5+0K5yo6muGT
+         +v7RFNu45bQcT+DRvfi3YEsIMaCoZ+q3u3m5dO5Oo6DWN/JiE6JsJAQSefPkkZcIKGOC
+         nYIMIVJNQTvIvceMg4TaU8dYWZUvvdw94mrpI4vEZA55UNpSuG5k+8LjPrCUjXJJ3Uzs
+         vIMV8pqmBDG5WS1G+yz/0+zC9q54lWOotJHzQYjeVV5D356RTXZgjFswWzQBHA7tkn2w
+         BVdEG2d0iNpOa6hEw+yZk+M0RODkXZcoR70b0KsQwWSnIEWlQA7rhFiVtn9RtZC1Z/th
+         mEHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729788351; x=1730393151;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=sbcx/f+avMo0nfnfoFrvHy0s7zMVYb5RcXeOKVfhBB0=;
-        b=UlRO9JMGvyS0TbLpNndRC7zzmJGnQv7bxrPe8Dy8xiOVbaMdgJRsQSz0G9+WxfV7Wl
-         o8e0Sptp/PxyA+T6E/aXlm7LqB9+fJ/X2h1QEdqYYMxvrFd9k2i/eA7W4hfBVOd0ZC+F
-         Pk62Pjy6lzikl8DWZkeETHJeANfxE4x/ldLsZsDYo0U57Xr2MCZ0lzT0G4Flvi6QIr7/
-         Xvwedb+QC1hQ/F9mjb0bZGL6ZT2qYXTPinL7Usg4bgSX+ZJUFDvsg/DXWU/Y9L0BReVs
-         Y+h+bBxqihTTgbbP/YM+CsvCEEvOkk72OjXq1IppwM5Stgy7G4+p2UNjbzNiu/xDcgTC
-         T7ug==
-X-Forwarded-Encrypted: i=1; AJvYcCUDIZfExgTqCGGrUV2wzjWHc0dVXLCF77W9pArjXR44PzGS9Foa3bp8gU3YOwI83TwzMUA+Zpjxj34eHON1Jw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwygODM8zTGkh1D+CZWVNF5QcKalu3ySdQZC5erPhDwcFj4LeT0
-	E7uw72s3lTi4ZxoQYwEIN0SjTaNJamammPV929F59Jzc9pHQGbW87TJUkb+6PsIysPigJVkQEz2
-	jIWZL3eszCImovEyprc1mSZL/fQaqmTVy4DAr
-X-Google-Smtp-Source: AGHT+IGyVGhrIax31DbYyaNPPps689qKUUGZ/dBmIonlf0Ms5Q31B+FIXf7PnrvX0k/Y2NDzzkEVUzrdywoXgv6bmrc=
-X-Received: by 2002:a05:6a21:9d91:b0:1d7:1277:8d0f with SMTP id
- adf61e73a8af0-1d978bd6450mr8093124637.48.1729788350739; Thu, 24 Oct 2024
- 09:45:50 -0700 (PDT)
-MIME-Version: 1.0
-References: <20241024061347.1771063-1-saravanak@google.com> <2024102457-manager-counting-ff68@gregkh>
-In-Reply-To: <2024102457-manager-counting-ff68@gregkh>
-From: Saravana Kannan <saravanak@google.com>
-Date: Thu, 24 Oct 2024 09:45:10 -0700
-Message-ID: <CAGETcx_BD_G3oOHvT7aRr98Ag7-XvrMX=NW_wm9Cx9M5+qr-aw@mail.gmail.com>
-Subject: Re: [PATCH 0/3] A few minor fw_devlink fixes
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	JC Kuo <jckuo@nvidia.com>, Vinod Koul <vkoul@kernel.org>, 
-	Kishon Vijay Abraham I <kishon@kernel.org>, Thierry Reding <thierry.reding@gmail.com>, 
+        d=1e100.net; s=20230601; t=1729790830; x=1730395630;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=6RF+0h3uJVvZLYuGZLW/jZ/HEsnjwutDdO799XJGlDs=;
+        b=wJOui4WY6Sdd1pCify90Nf6dV81GcS2Dgn1Mh0kQ4xHJgBZj89gMncuOuEkyE9cV5Z
+         MLvsDYsgIxfZ2DFQefLzXosVsskrPxCvo/JA5AbRlUYZSSWiG63ya98XuZZlePjk6s1I
+         lvbwO7Q487dT5rBBOPPNdx2kyLT5TRuNOfcFRf1m2NqVLl7+vub07tS5v1y262wSjY/g
+         3ia8PD0MdXZQSXnYh4hUXGr6xewUhDy9hIm0YeW678vxnn6mdR+Afc1a1yyklPoK974w
+         BVpYnB98k4qz1DnCN6HcVBW6mh33z+LeLkOaf/Em9IaBqsOLFKLIhhJoayY/klS7hMku
+         emig==
+X-Forwarded-Encrypted: i=1; AJvYcCWDQw7sAymKo+wi61wQ9wVcpZiOgRGTS4HTiP5qa0JG200bTRhJoa05Ye7tz8PXXUDhoYk++LOsa70o9xgRkjU=@lists.infradead.org, AJvYcCX1GA2/AlhxqHRT/PJVKk2IBJ5wzM7oBLH4D4ZT+4lZ+4mbbunZqEf7xSNYzRf1aoPAGnnksKKHXjHE@lists.infradead.org, AJvYcCX6vy5OYbxeJ1ABItR9RZDh7RxxJtVbRFwDU4yWJ0kW/2CvZ1g9cgJjmDNXOBEY1wc5ZJCqzT+gVe4cVzz0NWXp@lists.infradead.org
+X-Gm-Message-State: AOJu0YzWs+fVxSfImqvFDmUJADIj1tAiHg/CeefjTznsssfjF0F3iUXB
+	du6+1dhVHJxkc/BeivQzv25Sg2N25uqIXEVXpnkldeWJR5ZDVz/1
+X-Google-Smtp-Source: AGHT+IHQ7I/9aI1UHxXx6X/2TOQl2Yy1ybsuEFl90rIKNP8aItf1olbwHtlsGOqqhIDJTGHDheR+WQ==
+X-Received: by 2002:a05:600c:1552:b0:42c:b750:1a1e with SMTP id 5b1f17b1804b1-4318beb62e6mr24564425e9.0.1729790830026;
+        Thu, 24 Oct 2024 10:27:10 -0700 (PDT)
+Received: from orome (p200300e41f26ec00f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f26:ec00:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43186bfcfd0sm52020785e9.26.2024.10.24.10.27.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 24 Oct 2024 10:27:09 -0700 (PDT)
+Date: Thu, 24 Oct 2024 19:27:07 +0200
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Saravana Kannan <saravanak@google.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	"Rafael J. Wysocki" <rafael@kernel.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, JC Kuo <jckuo@nvidia.com>, 
+	Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
 	Jonathan Hunter <jonathanh@nvidia.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	kernel-team@android.com, linux-kernel@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, linux-phy@lists.infradead.org, 
-	linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	=?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>, kernel-team@android.com, linux-kernel@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, linux-phy@lists.infradead.org, linux-tegra@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/3] drm: display: Set fwnode for aux bus devices
+Message-ID: <sn3q2kloect5pdsyks2xwiiu7avhaovl62rn3wzhs4qpznwegq@zaq3o3fuc7i2>
+References: <20241024061347.1771063-1-saravanak@google.com>
+ <20241024061347.1771063-2-saravanak@google.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="hfzjdm3gfakfovch"
+Content-Disposition: inline
+In-Reply-To: <20241024061347.1771063-2-saravanak@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241024_094551_920816_84F4D4DD 
-X-CRM114-Status: GOOD (  18.27  )
+X-CRM114-CacheID: sfid-20241024_102712_133176_E83AA00B 
+X-CRM114-Status: GOOD (  15.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,31 +100,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 24, 2024 at 12:08=E2=80=AFAM Greg Kroah-Hartman
-<gregkh@linuxfoundation.org> wrote:
->
-> On Wed, Oct 23, 2024 at 11:13:41PM -0700, Saravana Kannan wrote:
-> > Probably easiest for Greg to pull in these changes?
-> >
-> > PSA: Do not pull any of these patches into stable kernels. fw_devlink
-> > had a lot of changes that landed in the last year. It's hard to ensure
-> > cherry-picks have picked up all the dependencies correctly. If any of
-> > these really need to get cherry-picked into stable kernels, cc me and
-> > wait for my explicit Ack.
->
-> You can do that with the correct tag in the commit as per the stable
-> documentation if you really want to :)
->
-> But why would these not be able to go backwards?  What changed to
-> require them now and not be ok for older kernels?
 
-Depending on how far back we go in terms of kernel version, it'd be a
-bunch of cycle detection logic, deferred probe behavior change, etc.
-And those patches might have other dependencies themselves, etc.
+--hfzjdm3gfakfovch
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 1/3] drm: display: Set fwnode for aux bus devices
+MIME-Version: 1.0
 
-He's one example of such a breakage:
-https://lore.kernel.org/all/20241024-fixup-5-15-v1-1-74d360bd3002@mediatek.=
-com/
+On Wed, Oct 23, 2024 at 11:13:42PM -0700, Saravana Kannan wrote:
+> fwnode needs to be set for a device for fw_devlink to be able to
+> track/enforce its dependencies correctly. Without this, you'll see error
+> messages like this when the supplier has probed and tries to make sure
+> all its fwnode consumers are linked to it using device links:
+>=20
+> mediatek-drm-dp 1c500000.edp-tx: Failed to create device link (0x180) wit=
+h backlight-lcd0
+>=20
+> Reported-by: "N=C3=ADcolas F. R. A. Prado" <nfraprado@collabora.com>
+> Closes: https://lore.kernel.org/all/7b995947-4540-4b17-872e-e107adca4598@=
+notapiano/
+> Tested-by: "N=C3=ADcolas F. R. A. Prado" <nfraprado@collabora.com>
+> Signed-off-by: Saravana Kannan <saravanak@google.com>
+> ---
+>  drivers/gpu/drm/display/drm_dp_aux_bus.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
--Saravana
+Reviewed-by: Thierry Reding <treding@nvidia.com>
+
+--hfzjdm3gfakfovch
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmcag2sACgkQ3SOs138+
+s6Hj0hAAhMZxiCkgmHPpzOfFMLqQaRfXX70z+C/EbrTzA3OUMgMVTiRAMXm9USIS
+SgjCLtThw+TN8T0NPDlAi/x53qr2/K1+ifxrgdjVcukCIcvH5xda17KWjl5lMbUy
+OVUJP98lx/BCDvcsTH4HjWdNk52GLn99I31Ipkc8KXdndg/huxA9uYb5bdb5oSdB
+S3l/6TUoLTnyb6e2PAg8G2UNwF0z8fOgPrm6bn1fPAHezUuZXYu7h+2tYidyzY0M
+eh7RyFTL7Y+aX4jPJlHIKe/88qmAC2f8dKvpKuUe/FFbsjBkTIrSZK69Ynz5pXmF
+K1sErSfkghxrbLGxjJMfQ1rU7Gy8vNwiP14Nbik2EFT+KAT6y1LCFCqpsv1fF3KB
+tkzQYps46T3VBCljzQeZfV7/4ARml5DGv+Kv/CpiZV1lt2PKQTU+DHPoV8x4bzyG
+GsW8JVuWqFjeSkPyf4APslY535lufQclLzS7yI6qalJ+30XDOixO4nJ3VUXawkHX
+gJfEljNUTO5xEggz8QZ1wRSUVWV0Ik6PyYh/HneSiGCKn5D11kYTIv9ZX2d2bNBV
+yb2OI9VOjn8/T7tfB6T36coLT1xNATeLQPX56+IQC0yw5NMfu7T55/S3amfn34rv
+Wk3ki1ZLcI0tvP88rKMqTjGQSmuMDTJgPG2V41FZbUhDhfLy2Ls=
+=i3zE
+-----END PGP SIGNATURE-----
+
+--hfzjdm3gfakfovch--
 
