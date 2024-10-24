@@ -4,88 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47DDFD0BB63
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Oct 2024 06:21:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80778D0BB63
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Oct 2024 06:29:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7kDqeaAprBXUkM4Fq1Ym36ZhnawEXTDWt16M3cGZQYI=; b=b21lh5Z0sVUwGK+Vclh5hxVfzU
-	GzIfxNOODLBF/8E+c1WRFvYl+mLCiTANqLDEqHLqFktNSlX0Y+Q13eWnnhtulmeDvQGPIGJGgToHL
-	MBrTKewF1jFUM/uDcTysWwXa3HWG5ArMb5ruB3EPbn2+aGL8ZSyV63DKZtu1vx9ryC6qELzUzGO0u
-	61H3vLrEM2vkiwch88FQ0LUzxul5Gk7T7S+FDcQRZq9xSa/c69EKnl1lNLOpcp6DKwPV81mL27l2S
-	6ad9H33j4ReLbwWIZx9qm3dYUia6hBvWH5ZD35MsjXdjENQ32t+1KAT+1iviQ3AQdGw+Je7gcBL5M
-	eh+GEZnQ==;
+	bh=Uhdy0crX7jd32UBgalA4Mp+yqTEKMoy5/aHTmMprIHY=; b=e+YqBFfA4yLrWhmcM/BZkUD0MD
+	i61BiWvfZ9XBl/nnlWUdDSr/3HO06Lk2NxxIe2+pmu51qiFrJzrkmLGK+QVziS9qwAYFXPYmOfumL
+	xEGO/a5iJ6979mVgI5X7Fq4/5+k0acjKuC7e4tZApCfIekgcxVQRl0CAjyQhxGgLY7RzfBJ5NdcKW
+	ZCgvhOoPxzmKneqxUSP8UbLjiQvbKhLL+YPYiYPttFO5YKavivnGhjEKWvOEeQXAYUiUJAUacg+Wv
+	GoNNsB7TsQCbyQClCIqlkmYnD2YQOukRYviN0zlXfxn4i0n+qWbxqCqHDlA3VruLwy+LZx7glLvHT
+	aKwq18Ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3rEG-0000000Gu7l-0SFP;
-	Thu, 24 Oct 2024 06:21:52 +0000
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+	id 1t3rLq-0000000GvVN-1vCe;
+	Thu, 24 Oct 2024 06:29:42 +0000
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3r9i-0000000Gt9R-10W6
+	id 1t3rFl-0000000GuO7-3Zxt
 	for linux-mediatek@lists.infradead.org;
-	Thu, 24 Oct 2024 06:17:12 +0000
-Received: by mail-pf1-x42e.google.com with SMTP id d2e1a72fcca58-71e4244fdc6so427068b3a.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 23 Oct 2024 23:17:05 -0700 (PDT)
+	Thu, 24 Oct 2024 06:23:31 +0000
+Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-71e681bc315so398134b3a.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 23 Oct 2024 23:22:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1729750625; x=1730355425; darn=lists.infradead.org;
+        d=google.com; s=20230601; t=1729750965; x=1730355765; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=7kDqeaAprBXUkM4Fq1Ym36ZhnawEXTDWt16M3cGZQYI=;
-        b=LFz3il/FYnrvLS0T48Bxh3/IqJjJhlEBBnxpFAVLDjlniMIcEqfl4SuvIigoWpDo6A
-         YKm0uX82xojVWbwEDjT4SSEudwFXKD3CoTJCiX19CfeGHiG7bNpsI9MD6p6FZGXyhCvr
-         fquTXOkvf0ieq98Fp7q69psfAT5tA+oJMbgWAzfPkaJeC7J0OoD1opmAauOGzVFZ8lWE
-         TH5zoy/kBtNgoISnzA5E39oxpwZQlZIcBQrSt1w3hsWHclAZ+7oaS1KEJPgZDyJ8G50t
-         yhSsApAqMa2pAf8vwMXhggJQb+7OkQBQMDnMj+SDf9JAIJt7u9VjmGiSil3jCElqAJdW
-         XTtA==
+        bh=Uhdy0crX7jd32UBgalA4Mp+yqTEKMoy5/aHTmMprIHY=;
+        b=pqZPENRi4vcgry1dWwiNFvHpqR7YBD+QQfPVCZ79WR5YQt8JNybvBhgv6Xm48+M2kz
+         wt//wz5JtiDhuKIiZqsa8/mPkqtFdAtJVTPa0QCpYjVAqaj4Aw7Pqu/48ojoB5mdctDl
+         IGKrQKQhN+D6OGelKMop1a5s9I18rrj22l0bJTaLVARr/Kls7fjL8mrTz/BnnQs75pvw
+         ZPIOXIy986xn1niDdPjjrHadV5CQaAZTmFzG4K1ZZnNwc7t0UL3IsPheKlxcxQCT9B2O
+         A607LB6s9gcb7j4zE+EegoGnja0LLmfnFlSNO2xazN86kxWNXeUIkWhIWRChw+Cey4H1
+         z+8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729750625; x=1730355425;
+        d=1e100.net; s=20230601; t=1729750965; x=1730355765;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=7kDqeaAprBXUkM4Fq1Ym36ZhnawEXTDWt16M3cGZQYI=;
-        b=djOFM3XZo9gRJyJJs5mV1uwpAvnZyb48yYQXspOBnzfQ4EJPJ1cMman7DcnabUyFY9
-         zIWsGichqLcV0a7R669dwTcXA4C2o1BU/Bbrk64dHB/wVJPl9CgDjHbN2WQVxRtdbxUY
-         xhs42MQHRGLDRVMFIzWDbhwMPWUDqU8fZJrAZCsW14cpKyofDEfBnP0tq7wtDyIMZ/Ao
-         JFSNIWXAfx0w5yMB7PAu3wyZcLmem/N7U7OW0Tapf4fhYaN+Fpt41rOSNazTx7vnnxlL
-         gtYHabzQeR9ZEchrx6JtKKHbCmz8otUl7sGCmShiIqD9bCiD22EQVgQG8JG5AxySZmQW
-         2IGA==
-X-Forwarded-Encrypted: i=1; AJvYcCVUGrO84dZqoFLlAaL/GPAUbpG6ZTYRF+qzaNOnsCbmqTZCD5nm7LNhepgEFrZqCFXWNUSybiMsxw0J1myrcQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzhopPWHzHeuKDbQIz33JZoIJaOr2BWmwdF4QNXLc7gxx8mv4gU
-	4BqTYvxqtLLs+PDNZe5N4pPsaFkFvJgnyI1LdKT4tkx829CkQzQpU/KyC3p+l/rguE3wRpua7ci
-	bs00YnCRzqc9c/7A6GMFRS/ENirU0ULBBrP9c
-X-Google-Smtp-Source: AGHT+IFcCYtp7nVgkoJ5rzaztD8OtipNso126UyODrDbPTgNIyDaB+s9edBYS51aMEHDl37/TiPH24OOcDTayFV74a4=
-X-Received: by 2002:a05:6a20:5da3:b0:1d9:83cc:ef90 with SMTP id
- adf61e73a8af0-1d983ccefdamr1940597637.8.1729750624651; Wed, 23 Oct 2024
- 23:17:04 -0700 (PDT)
+        bh=Uhdy0crX7jd32UBgalA4Mp+yqTEKMoy5/aHTmMprIHY=;
+        b=fYogFGZebZy6mUsq//o3DW4vAa90TT+i/fsOzeoaUeTn/UOYDLCY3GSapxrsmItYF2
+         tiDczi6qjfiA0OYHEBFI3kaPFKvffg1I/g7gVfgEmgh0OoZpvXyFjLuHbhLSOkdCjOH4
+         e7zeac+kJLnD/okmDR+v9VGRueDDKUxsMNgfp9XiYArmYxoEfWl0tcaIzngIBjYt/74N
+         vpfMyQYgQjVp9HcNI3yY1AXuE5669FzUnMODzZsC7liUpiEywcvv8JHqbD5iui0fo2k6
+         xnCx1xAPNOrZOAz+eVvsOCsniYCcYsKGZtvOwOtSRA8FbUfmxVIcJkakf5lxmjWVdy6h
+         wmkA==
+X-Forwarded-Encrypted: i=1; AJvYcCWw6ZSiKOj11DViat/qSh49Y88YBhX7g/aL0e8eBhz9ft8C9r1P7w26R3i/KrFDfkANDht1reejgp+dSBdX3A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw7WCnxEo3diuytKuvLPqS11097P7yPlbV/dFdnsjg9ZVbS5pkx
+	chlIk1dTJILa9MBShJU77bV+UjEtGT9Hl4eRjRC9Ms+QwO0ikSg+iaPvOPFjig8n2YccgLLWLDj
+	M/nTzJA4nFiQoabvQJu/i3/OisPoXFonvEiUrjRfn/g7ffhK7k3C7+6U=
+X-Google-Smtp-Source: AGHT+IHER6S+oXayYMJOfU1uT2MMGdiQY9D03ESwl9edjBhrQ1nxNVeRSlMwT7VT0vKe79wJ+iS8Umue/ckpKLjd6Zk=
+X-Received: by 2002:a05:6a00:888:b0:71e:6a99:4732 with SMTP id
+ d2e1a72fcca58-720452dc06emr1742555b3a.11.1729750964614; Wed, 23 Oct 2024
+ 23:22:44 -0700 (PDT)
 MIME-Version: 1.0
-References: <20241024061347.1771063-1-saravanak@google.com> <20241024061347.1771063-4-saravanak@google.com>
-In-Reply-To: <20241024061347.1771063-4-saravanak@google.com>
+References: <20241023191339.1491282-1-saravanak@google.com> <7a8dede1-ef29-4553-9412-de8e2f45b860@notapiano>
+In-Reply-To: <7a8dede1-ef29-4553-9412-de8e2f45b860@notapiano>
 From: Saravana Kannan <saravanak@google.com>
-Date: Wed, 23 Oct 2024 23:16:26 -0700
-Message-ID: <CAGETcx_0gqbo5Xf9mZGrBZszZsmKBdqRreb-=O_PvOR_2Yc5Cw@mail.gmail.com>
-Subject: Re: [PATCH 3/3] drivers: core: fw_devlink: Make the error message a
- bit more useful
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+Date: Wed, 23 Oct 2024 23:22:04 -0700
+Message-ID: <CAGETcx_nSoVy-C-pt0Q3e-4wsU--9MJKoxr2ZSUfVq1UBxMjow@mail.gmail.com>
+Subject: Re: [PATCH] drm: display: Set fwnode for aux bus devices
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
 	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	JC Kuo <jckuo@nvidia.com>, Vinod Koul <vkoul@kernel.org>, 
-	Kishon Vijay Abraham I <kishon@kernel.org>, Thierry Reding <thierry.reding@gmail.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	kernel-team@android.com, linux-kernel@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, linux-phy@lists.infradead.org, 
-	linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jon Hunter <jonathanh@nvidia.com>, 
+	kernel-team@android.com, dri-devel@lists.freedesktop.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241023_231710_301934_14F5C61B 
-X-CRM114-Status: GOOD (  18.15  )
+X-CRM114-CacheID: sfid-20241023_232325_903614_2FFB2C2F 
+X-CRM114-Status: GOOD (  17.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,50 +95,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Greg,
+On Wed, Oct 23, 2024 at 12:56=E2=80=AFPM N=C3=ADcolas F. R. A. Prado
+<nfraprado@collabora.com> wrote:
+>
+> On Wed, Oct 23, 2024 at 12:13:36PM -0700, Saravana Kannan wrote:
+> > fwnode needs to be set for a device for fw_devlink to be able to
+> > track/enforce its dependencies correctly. Without this, you'll see erro=
+r
+> > messages like this when the supplier has probed and tries to make sure
+> > all its fwnode consumers are linked to it using device links:
+> >
+> > mediatek-drm-dp 1c500000.edp-tx: Failed to create device link (0x180) w=
+ith backlight-lcd0
+> > tegra-xusb-padctl 3520000.padctl: Failed to create device link (0x180) =
+with 1-0008
+> >
+> > Reported-by: "N=C3=ADcolas F. R. A. Prado" <nfraprado@collabora.com>
+> > Closes: https://lore.kernel.org/all/7b995947-4540-4b17-872e-e107adca459=
+8@notapiano/
+> > Tested-by: "N=C3=ADcolas F. R. A. Prado" <nfraprado@collabora.com>
+> > Reported-by: Jon Hunter <jonathanh@nvidia.com>
+> > Closes: https://lore.kernel.org/all/20240910130019.35081-1-jonathanh@nv=
+idia.com/
+>
+> Hi Saravana,
+>
+> the issue faced by Jon needs the exact same change but in a different pla=
+ce,
+> drivers/phy/tegra/xusb.c, which I posted at:
+> https://lore.kernel.org/all/f979aff2-34f4-4f6d-bb9a-03a02afc4635@notapian=
+o/
 
-Can you fix up the commit subject prefix to "driver core: fw_devlink:"
-please? Don't want to send v2 just for that.
+Ah sorry, I was in a hurry and missed the fact it was a different file.
+
+>
+> So we need two separate patches, one for each issue. Feel free to add tha=
+t to
+> this series. (I could send it myself, but I think it makes more sense to =
+keep
+> them together)
+
+Sent a new series. Thanks for the heads up and the fix for Jon's issue.
 
 -Saravana
-
-On Wed, Oct 23, 2024 at 11:14=E2=80=AFPM Saravana Kannan <saravanak@google.=
-com> wrote:
->
-> It would make it easier to debugs issues similar to the ones
-> reported[1][2] recently where some devices didn't have the fwnode set.
->
-> [1] - https://lore.kernel.org/all/7b995947-4540-4b17-872e-e107adca4598@no=
-tapiano/
-> [2] - https://lore.kernel.org/all/20240910130019.35081-1-jonathanh@nvidia=
-.com/
->
-> Signed-off-by: Saravana Kannan <saravanak@google.com>
-> ---
->  drivers/base/core.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/base/core.c b/drivers/base/core.c
-> index a4c853411a6b..3b13fed1c3e3 100644
-> --- a/drivers/base/core.c
-> +++ b/drivers/base/core.c
-> @@ -2181,8 +2181,8 @@ static int fw_devlink_create_devlink(struct device =
-*con,
->                 }
->
->                 if (con !=3D sup_dev && !device_link_add(con, sup_dev, fl=
-ags)) {
-> -                       dev_err(con, "Failed to create device link (0x%x)=
- with %s\n",
-> -                               flags, dev_name(sup_dev));
-> +                       dev_err(con, "Failed to create device link (0x%x)=
- with supplier %s for %pfwf\n",
-> +                               flags, dev_name(sup_dev), link->consumer)=
-;
->                         ret =3D -EINVAL;
->                 }
->
-> --
-> 2.47.0.105.g07ac214952-goog
->
 
