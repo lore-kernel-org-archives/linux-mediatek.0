@@ -4,64 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9CF1D0BB66
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Oct 2024 07:15:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DECA1D0BB6B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Oct 2024 07:15:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rk4wVIwey0Ggy8MlSIaJ76rlL6drCE/idaKrX4SIiIw=; b=DESgvkxXOUM/BMlzVvyEGabSv9
-	NDuU/yWMPCpo6Mz7MNZneSj5o+35Duw8Ty/lPVRTrJaf+endX0O9madL3hmd6x2INwH+r2cBOEjTy
-	veZUG/AU6gsH3/e0HYDzlmczY3E3AYyTmy1p3Q/XcOMdNpZSaYvDEbhbzRvumjLnLmucERcWHqh18
-	2/Zh/qU2mLkav8SitzCk/72knFS/yoFiS0CiA00sIn3zow13rgA8aHBY/gpdDnjEwGc1alyERNxPY
-	ryftR4sZczwnwMxiifPzg/NhAC8XX0Cl4GtqFO6fBO10hP0hpx1O9Mc+iBZbfxAalIkNVbONp7Ba5
-	iT6o/lsg==;
+	bh=L4aJMYOV4mQD7ik/qBlN1zo6hGHoaOy1n10tn397mrY=; b=WUQKFVCuO9MlMxUxiMmE1DyNmc
+	0XfT8JXpXpEfVXj8KsUE/gHArs2+MDKNFtyrb9ce5iZ0tPo+NHpdOgf3H3abA586iika5MvNojfGn
+	6zvWxo5++4eO8HoM40UlGTXC5sN6bw+N+W7Tpl2bWFScgc711Q63pFBH7Ftk2A/BgnIUrk+BBtEuh
+	DjyBL9xX+XSZTRf0eclKscwRv7i5xdfaSvNtK5/BTwb8WuwOrxbd32b8uDEyaO1CXJO/f4m9oorhA
+	X1BLv8WnAHbGPZKWsYT6MVxEutXTS6X85OgjlRXjzQex2fkxgnO2QY3XgpPwYel63ziZQTsj0LwI4
+	nLiJjryw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3s4A-0000000H3aC-1Yva;
-	Thu, 24 Oct 2024 07:15:30 +0000
-Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
+	id 1t3s4K-0000000H3fN-2per;
+	Thu, 24 Oct 2024 07:15:40 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3rtt-0000000H1CF-0fux
-	for linux-mediatek@lists.infradead.org;
-	Thu, 24 Oct 2024 07:04:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
-	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
-	Resent-Cc:Resent-Message-ID; bh=rk4wVIwey0Ggy8MlSIaJ76rlL6drCE/idaKrX4SIiIw=;
-	t=1729753491; x=1730963091; b=D/ad2QNTjx13q0MCh2Ewf87CShQMS6fggNPqA+OCpQMxgO4
-	7M49+eBb6fbBjj5Usr6jFUuFUT3ctOKiAHvJn80yoTgn1bl9spexKpR1mEj7md0oZsjP42Et/FNPO
-	BuP+qYR8dwTSFrrU8gwhrWPRgA70FIIjZS/lBnCNI6Fe289iWCWqneFg/QcGucv1NTijfQh3AG0J5
-	i1TPDcCvW7n8BljVMwM7MuAq6LjHbg9YkiCwmaH/g17TQ75mvlJlKXImViGG/NgNGeqaZevPMGX6U
-	F8uV8OMHw1YjFGd3weix82oQM3FBujXln0xlU4RYfwqLphYdHH5lY0Z0A0o2rU0w==;
-Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	(Exim 4.98)
-	(envelope-from <johannes@sipsolutions.net>)
-	id 1t3rtm-00000003VJr-2xUJ;
-	Thu, 24 Oct 2024 09:04:46 +0200
-Message-ID: <a8dbb6cdbe4bd308a00a89597cb056073219f1be.camel@sipsolutions.net>
-Subject: Re: [PATCH] wifi: mac80211: Add ADDBA Extension element parsing
- logics
-From: Johannes Berg <johannes@sipsolutions.net>
-To: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
-Cc: Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
- <evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>, 
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, Peter
- Chiu <chui-hao.chiu@mediatek.com>
-Date: Thu, 24 Oct 2024 09:04:45 +0200
-In-Reply-To: <20241024022105.6810-1-MeiChia.Chiu@mediatek.com>
-References: <20241024022105.6810-1-MeiChia.Chiu@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.52.4 (3.52.4-1.fc40) 
+	id 1t3rw1-0000000H1c4-3F49;
+	Thu, 24 Oct 2024 07:07:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 6C978A450D4;
+	Thu, 24 Oct 2024 07:06:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6AE1C4CEC7;
+	Thu, 24 Oct 2024 07:07:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1729753624;
+	bh=C569kiRrg8EBzvrVBxsDovVURiA3bvbD+xQMy8MTaO4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=vcR+ON1zIdm5O0maAVHBiW/e9Z+mDFWtdnlURA7545m/v7ld0MzrrHrbftr60A8UM
+	 cjD/QBovrRyxNdG8dH117G4LKWY5cxmnP2FbDJKxlXLsajOk3QcxaeixwRbG3SlP5N
+	 Cj8fmrhLFnefYYpBpd1lf0IK3VV6qe4wobNUPqdU=
+Date: Thu, 24 Oct 2024 09:06:53 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Saravana Kannan <saravanak@google.com>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	JC Kuo <jckuo@nvidia.com>, Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
+	kernel-team@android.com, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, linux-phy@lists.infradead.org,
+	linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 3/3] drivers: core: fw_devlink: Make the error message a
+ bit more useful
+Message-ID: <2024102446-robin-outcast-841b@gregkh>
+References: <20241024061347.1771063-1-saravanak@google.com>
+ <20241024061347.1771063-4-saravanak@google.com>
+ <CAGETcx_0gqbo5Xf9mZGrBZszZsmKBdqRreb-=O_PvOR_2Yc5Cw@mail.gmail.com>
 MIME-Version: 1.0
-X-malware-bazaar: not-scanned
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAGETcx_0gqbo5Xf9mZGrBZszZsmKBdqRreb-=O_PvOR_2Yc5Cw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241024_000453_237091_E0CEF419 
-X-CRM114-Status: GOOD (  14.89  )
+X-CRM114-CacheID: sfid-20241024_000705_924830_72883926 
+X-CRM114-Status: UNSURE (   7.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,93 +85,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2024-10-24 at 10:21 +0800, MeiChia Chiu wrote:
-> Add ADDBA Extension element parsing logics in ADDBA request/response
->=20
-> To support BA size of 1024,
-> the ADDBA Extension element is needed in ADDBA request/response.
-> Therefore, parsing logics is added for this missing piece.
+On Wed, Oct 23, 2024 at 11:16:26PM -0700, Saravana Kannan wrote:
+> Greg,
+> 
+> Can you fix up the commit subject prefix to "driver core: fw_devlink:"
+> please? Don't want to send v2 just for that.
 
-Ah yes, we had this only for the RX side, I guess.
-
-> +++ b/net/mac80211/agg-tx.c
-> @@ -66,10 +66,12 @@ static void ieee80211_send_addba_request(struct ieee8=
-0211_sub_if_data *sdata,
->  	struct ieee80211_local *local =3D sdata->local;
->  	struct sk_buff *skb;
->  	struct ieee80211_mgmt *mgmt;
-> +	struct ieee80211_addba_ext_ie *addba_ext;
-> +	u8 ext_size =3D agg_size >=3D 1024 ? 2 + sizeof(*addba_ext) : 0;
-> +	u8 *pos;
->  	u16 capab;
-> =20
-> -	skb =3D dev_alloc_skb(sizeof(*mgmt) + local->hw.extra_tx_headroom);
-> -
-> +	skb =3D dev_alloc_skb(sizeof(*mgmt) + local->hw.extra_tx_headroom + ext=
-_size);
-
-probably much simpler to just make that unconditional?
-Like in ieee80211_send_addba_resp().
-
-> +	if (agg_size >=3D 1024) {
-> +		pos =3D skb_put_zero(skb, ext_size);
-> +		*pos++ =3D WLAN_EID_ADDBA_EXT;
-> +		*pos++ =3D sizeof(struct ieee80211_addba_ext_ie);
-> +		addba_ext =3D (struct ieee80211_addba_ext_ie *)pos;
-> +		addba_ext->data =3D u8_encode_bits(agg_size >> IEEE80211_ADDBA_EXT_BUF=
-_SIZE_SHIFT,
-> +						 IEEE80211_ADDBA_EXT_BUF_SIZE_MASK);
-> +	}
-
-Maybe we can reuse ieee80211_add_addbaext()?
-
-Also you only described "parsing" in the commit message, so this isn't
-really part of it ;-) Please complete the commit message.
-
-> @@ -460,8 +471,11 @@ static void ieee80211_send_addba_with_timeout(struct=
- sta_info *sta,
->  	sta->ampdu_mlme.addba_req_num[tid]++;
->  	spin_unlock_bh(&sta->lock);
-> =20
-> -	if (sta->sta.deflink.he_cap.has_he) {
-> +	if (sta->sta.deflink.eht_cap.has_eht) {
->  		buf_size =3D local->hw.max_tx_aggregation_subframes;
-> +	} else if (sta->sta.deflink.he_cap.has_he) {
-> +		buf_size =3D min_t(u16, local->hw.max_tx_aggregation_subframes,
-> +				 IEEE80211_MAX_AMPDU_BUF_HE);
->  	} else {
-
-That's related, but not precisely part of what you describe in the
-commit message. Just make the commit message more general, I guess, such
-as "support EHT 1024 aggregation size in TX" or so?
-
-> @@ -970,6 +986,25 @@ void ieee80211_process_addba_resp(struct ieee80211_l=
-ocal *local,
->  	amsdu =3D capab & IEEE80211_ADDBA_PARAM_AMSDU_MASK;
->  	tid =3D u16_get_bits(capab, IEEE80211_ADDBA_PARAM_TID_MASK);
->  	buf_size =3D u16_get_bits(capab, IEEE80211_ADDBA_PARAM_BUF_SIZE_MASK);
-> +	ext_elem_len =3D len - offsetof(struct ieee80211_mgmt,
-> +				      u.action.u.addba_resp.variable);
-> +
-> +	if (ext_elem_len) {
-> +		elems =3D ieee802_11_parse_elems(mgmt->u.action.u.addba_resp.variable,
-> +					       ext_elem_len, true, NULL);
-> +
-> +		if (elems && !elems->parse_error) {
-> +			if (sta->sta.deflink.eht_cap.has_eht && elems->addba_ext_ie) {
-> +				u8 buf_size_1k =3D u8_get_bits(elems->addba_ext_ie->data,
-> +							     IEEE80211_ADDBA_EXT_BUF_SIZE_MASK);
-> +				buf_size |=3D
-> +					((u16)buf_size_1k) << IEEE80211_ADDBA_EXT_BUF_SIZE_SHIFT;
-> +			}
-> +		}
-> +
-> +		kfree(elems);
-> +	}
-
-This is all also very similar to ieee80211_process_addba_request(), so
-again perhaps it could be reused - would have to pass 'ext_elem_len' and
-the buffer to a function.
-
-johannes
+Will do, thanks!
 
