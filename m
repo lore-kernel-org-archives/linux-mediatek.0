@@ -4,103 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E558D0BB6B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Oct 2024 07:50:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6608D0BB7A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Oct 2024 09:27:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TvKw24EE97lM/kTvcvxcr9KfOF+59mbqxyxMxCjR1Go=; b=MYDMDyk/Ot8eUkzCFkC4WiiBm8
-	cYGEf8cC/LSRjYTwMGbRIwjB8pYL8d3dBrT1mumI33VD4WynZBAwdjQO87QLCtUs5VDznnoEblwpr
-	udsasco1lrhCwVgYUE//cyNmh9qkkFqzbZ7QAY2mz5Aiczlv5rkggFYc5Uwn8DSBuuHfDVToGLP4b
-	VUhd6i9Ugnc1NbxX2VVjyCTLRCrwhnWoL/Fna7ssEXrI/Cat4YvCaP1Dp62XxqUADYwQTaG5lByyR
-	HSDpZKQvOl8pYg2zpZujBQukYVjRiv5qTJODl3/GFnkHsGjTXfAVkXQ8/sUNRfcTbCCZipcYg4GjS
-	VuG0qXqA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pJpQaYRYOFoOBzvOr5AFD9WL6zha/mkCFXA5uGrTyhw=; b=FwEVSV8lGMwe/pdN39hRAsFy/A
+	4YFtcrP5h1tPAOLBl/lI9Bqb7DRK44AtKnPF2N4qZOVncd9MF4pEMhtaWq/gHYSQRaRh+yXk7pvWc
+	34QmLvm6TS+bnnW0I9ES2FI1vV6+0bMtGweDulb8leKKvYXiS8aAr8XshttVrPOBE+FVw4N3K6nmO
+	GtxBJF5F+3Oc2M+JZ2p7nUNKIott4wMEFionLqBbcwhiZjPOoZt/x6akDRLjkM2gLkEkYmx/Ngv0l
+	tcvVt+WbBH6xv7E/XHL2xsity5CLSRZJuhXFibfyqtHb6hawJKF8r8BA0+1hwyH8gEsQC2V+h7dBd
+	yT7byzPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3sbY-0000000HARc-1Zda;
-	Thu, 24 Oct 2024 07:50:00 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1t3u7a-0000000HSEn-3IIG;
+	Thu, 24 Oct 2024 09:27:10 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3sWF-0000000H8rH-0KJn;
-	Thu, 24 Oct 2024 07:44:32 +0000
-X-UUID: c99b2af891db11ef9048ed6ed365623b-20241024
+	id 1t3u7B-0000000HS4v-2mIN;
+	Thu, 24 Oct 2024 09:26:47 +0000
+X-UUID: 12abe10291ea11ef82ff63e91e7eb18c-20241024
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=TvKw24EE97lM/kTvcvxcr9KfOF+59mbqxyxMxCjR1Go=;
-	b=hWSXuUVSwmXfDsFJEZId7lP5ahbHJ+EWfbJ12K7EwxSxup8oTCM+EcQB1rlNcKn8igg+7Awjzj4WgqBYj8QdpB5MaRqkoUdtdKijy4SQyZ5fO4/3aOMHdhY/AhkvL3XQfyVY3oyQEwG6nDfUUJ+vwXkGQB8D1V3oXFwqU/h1VJs=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=pJpQaYRYOFoOBzvOr5AFD9WL6zha/mkCFXA5uGrTyhw=;
+	b=IVynVBW5NdsfSxn2yTMYtlzn0bADSgpKTrEv7zhKMq244qTYP7e2/aBQttBbyUkzHc6nF2mtp1rq2iRJ7Xl5+1IOpRL3fiSAz3Ve08vNJ/VzrJEmqGJanLOOYXlEuUeec/uROdfLedz/gVWe+pnzWYDzvk3Zu/9bGj577z8DAjw=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.42,REQID:c931ce77-4f4f-4d07-a810-762ec6370ff3,IP:0,U
-	RL:0,TC:0,Content:1,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:1
-X-CID-META: VersionHash:b0fcdc3,CLOUDID:cbe9c241-8751-41b2-98dd-475503d45150,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:4|-5,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.1.42,REQID:5f451941-c5a5-47e5-81c6-85ba70a94355,IP:0,U
+	RL:0,TC:0,Content:100,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:100
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:409fc441-8751-41b2-98dd-475503d45150,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:801|102,TC:nil,Content:3|8,EDM:-3,IP
+	:nil,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: c99b2af891db11ef9048ed6ed365623b-20241024
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 12abe10291ea11ef82ff63e91e7eb18c-20241024
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <karl.li@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1717161211; Thu, 24 Oct 2024 00:44:23 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 551122401; Thu, 24 Oct 2024 02:26:39 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 24 Oct 2024 15:44:20 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkmbs13n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
- Transport; Thu, 24 Oct 2024 15:44:18 +0800
-Message-ID: <60b490d2-30a1-dbff-36c4-992466991d49@mediatek.com>
-Date: Thu, 24 Oct 2024 15:44:16 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH v3 1/2] arm64: dts: mediatek: mt8395-genio-1200-evk: add
- support for TCPC port
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Rob
- Herring" <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, "Conor
- Dooley" <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ 15.2.1118.26; Thu, 24 Oct 2024 17:26:36 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 24 Oct 2024 17:26:36 +0800
+From: Karl.Li <karl.li@mediatek.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Karl Li <Karl.Li@mediatek.com>
+CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Alexandre Mergnat <amergnat@baylibre.com>
-CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
-	Macpaul Lin <macpaul@gmail.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-usb@vger.kernel.org>, Chris-qj chen <chris-qj.chen@mediatek.com>,
-	Fabien Parent <fparent@baylibre.com>, Yow-Shin Liou
-	<yow-shin.liou@mediatek.com>, Simon Sun <simon.sun@yunjingtech.com>
-References: <20241023080912.15349-1-macpaul.lin@mediatek.com>
- <c4b5e78e-5337-464c-9dca-9d4e5353cc46@collabora.com>
- <ba44b369-bcd7-4226-b75a-f3c5000e97ec@collabora.com>
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-In-Reply-To: <ba44b369-bcd7-4226-b75a-f3c5000e97ec@collabora.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+	Chungying Lu <chungying.lu@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Karl Li
+	<karl.li@mediatek.com>
+Subject: [PATCH 0/3] Add MediaTek APU Mailbox Support For MT8196
+Date: Thu, 24 Oct 2024 17:25:42 +0800
+Message-ID: <20241024092608.431581-1-karl.li@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--22.159300-8.000000
-X-TMASE-MatchedRID: oll/cJ/dUC4NtKv7cnNXnSa1MaKuob8PofZV/2Xa0cLBs8kDsMW7w0Cp
-	tC5f+eK3PiZe9Opl14NpkFK+Hcv8l4IUMFCMs+CvElgo9H5DnJy2McZY43zJ43TcYDPnhOj7Vr2
-	x2Dan2cBuP3qLppM0WGROSk6C4bqV9QpB8/MBSuPuykw7cfAoIEyQ5fRSh265cPDElbD+F/INir
-	voD95MYvgnZCOkc4Rc+SFdp+Cd0PefT/zxNL8LPgs9VkfCh3uAyeUl7aCTy8gNmPMcsvd5FkX+w
-	eP9mWX+BSECuGLGA17u5ezEA2FHU1d9anLxZbwb04Rmz/agfdxzd7C7BtJobg2G3vz8l/IEem0L
-	3kwJxTdX3sD7vCUiwQDzRES7L9pfm3dhKZgH9Y5IcJTn2HkqsZWr6iSXWtgPYz65TQfoDKtTIBW
-	jwoscFLHuwtg/JZZi5LrNEBlqCSgTJYL1KomVHwz4VsCc1YW+B4Ntzrj5dXQVTtVbQNElqhWMB5
-	o7Iv3SuyWVW34zvS68nGYNSACIpta/jIZoZyKFMN+B8zdlz9HKG6mjA3qUTFHpIy6wt5Uw2PdmZ
-	euCYyDHwxZ5smB8PNO0PJ8nvnJZrxpSystEXJLMrZu+Xb3+2UZAbph9cvetYe1mzp7dkwf3a1M/
-	dirxUFTPGzyxkQRkFebgClkGNp4piQbfusdLxYa7OiQBC9buCt59Uh3p/NUGW3hFnC9N1feYA0u
-	vygK3ISf7n2qaXhJftuJwrFEhTbew1twePJJB3QfwsVk0UbslCGssfkpInQ==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--22.159300-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: CEEF0D44068983702D6529708423EBC94BA24C18764B8C54F24D729610596DC82000:8
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241024_004431_314519_35F53CE6 
-X-CRM114-Status: GOOD (  36.17  )
+X-CRM114-CacheID: sfid-20241024_022645_748612_9067385D 
+X-CRM114-Status: GOOD (  13.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,253 +87,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Karl Li <karl.li@mediatek.com>
 
+Based on tag: next-20241021, linux-next/master
 
-On 10/23/24 20:00, AngeloGioacchino Del Regno wrote:
-> Il 23/10/24 13:07, AngeloGioacchino Del Regno ha scritto:
->> Il 23/10/24 10:09, Macpaul Lin ha scritto:
->>> From: Fabien Parent <fparent@baylibre.com>
->>>
->>> Enable USB Type-C support on MediaTek MT8395 Genio 1200 EVK by adding
->>> configuration for TCPC Port, USB-C connector, and related settings.
->>>
->>> Configure dual role switch capability, set up PD (Power Delivery) 
->>> profiles,
->>> and establish endpoints for SSUSB (SuperSpeed USB).
->>>
->>> Update pinctrl configurations for U3 P0 VBus default pins and set 
->>> dr_mode
->>> to "otg" for OTG (On-The-Go) mode operation.
->>>
->>> Signed-off-by: Fabien Parent <fparent@baylibre.com>
->>> Signed-off-by: Yow-Shin Liou <yow-shin.liou@mediatek.com>
->>> Signed-off-by: Simon Sun <simon.sun@yunjingtech.com>
->>> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
->>> ---
->>>   .../dts/mediatek/mt8395-genio-1200-evk.dts    | 54 +++++++++++++++++++
->>>   1 file changed, 54 insertions(+)
->>>
->>> Changes for v2:
->>>   - Drop the no need '1/2' DT Schema update patch in the 1st version.
->>>   - Fix intent for 'ports' node, it should under the 'connector' node.
->>>   - Correct the index for 'port@0' and 'port@1' node.
->>>
->>> Changes for v3:
->>>   - Correct the order between new added nodes.
->>>
->>> diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts 
->>> b/arch/arm64/ boot/dts/mediatek/mt8395-genio-1200-evk.dts
->>> index 5f16fb820580..83d520226302 100644
->>> --- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
->>> +++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
->>> @@ -335,6 +335,43 @@ mt6360_ldo7: ldo7 {
->>>                   regulator-always-on;
->>>               };
->>>           };
->>> +
->>> +        tcpc {
->>> +            compatible = "mediatek,mt6360-tcpc";
->>> +            interrupts-extended = <&pio 17 IRQ_TYPE_LEVEL_LOW>;
->>> +            interrupt-names = "PD_IRQB";
->>> +
->>> +            connector {
->>> +                compatible = "usb-c-connector";
->>> +                label = "USB-C";
->>> +                data-role = "dual";
->>
->> op-sink-microwatt goes here
+Hello,
 
-Okay, will fix it.
+This patch series introduces support for the MediaTek APU (AI Processing Unit) mailbox, a crucial component for facilitating communication between the APU and other system processors within MediaTek platforms. The APU subsystem relies on a message-passing mechanism built atop the mailbox infrastructure, necessitating enhancements to the existing mailbox framework to accommodate the APU's communication requirements.
 
->>> +                power-role = "dual";
->>> +                try-power-role = "sink";
->>> +                source-pdos = <PDO_FIXED(5000, 1000, \
->>> +                           PDO_FIXED_DUAL_ROLE | \
->>> +                           PDO_FIXED_DATA_SWAP)>;
->>
->> Please fix the indentation (and also you don't need the escaping)
+The series begins by adding the necessary device tree bindings for the APU mailbox, followed by an enhancement to the mailbox framework allowing for bottom-half processing of received data. This is particularly important for the APU's operation, as it relies on a combination of mailbox messages and shared memory for data exchange. Finally, we introduce the MediaTek APU mailbox driver itself, which implements the communication protocol and exposes additional hardware features for broader system integration.
 
-Okay, it has been complained by checkpatch about this line is too long.
-Will fix it in next version.
+Patch Summary:
+1. dt-bindings: mailbox: mediatek: Add apu-mailbox document
+   - Introduces the device tree bindings necessary for describing the APU mailbox in device tree sources, enabling the kernel to correctly configure and utilize this component.
 
->>                  source-pdos = <PDO_FIXED(5000, 1000,
->>                               PDO_FIXED_DUAL_ROLE |
->>                               PDO_FIXED_DATA_SWAP)>;
->>
->>> +                sink-pdos = <PDO_FIXED(5000, 2000, \
->>> +                         PDO_FIXED_DUAL_ROLE | \
->>> +                         PDO_FIXED_DATA_SWAP)>;
->>> +                op-sink-microwatt = <10000000>;
->>> +
->>> +                ports {
->>> +                    #address-cells = <1>;
->>> +                    #size-cells = <0>;
->>> +
->>> +                    port@0 {
->>> +                        reg = <0>;
->>
->> Just to make sure that this is ok: are you sure that this port supports
->> SuperSpeed (physical connector too) and that it's not limited to 
->> HighSpeed?
+2. mailbox: add support for bottom half received data
+   - Enhances the mailbox framework to support sleepable contexts in the processing of received messages. This is critical for APU communication, where message handling may require operations that cannot be performed in atomic contexts.
 
-This port should be able to do both HighSpeed and SuperSpeed.
-However our internal reference code set SuperSpeed at port@0 and seems
-just work for both high and supoer speeds.
-See more detail discussion below.
+3. mailbox: mediatek: Add mtk-apu-mailbox driver
+   - Adds the driver for the MediaTek APU mailbox, facilitating communication with the APU microprocessor and providing interfaces for other system components to interact with the APU through spare registers.
 
->>
->> I have seen Rob's comment stating that ssusb_ep goes to port@1, but I 
->> think
->> that his comment came after reading "ss" in "ssusb": while the controller
->> does surely support SS, if the port does not, this should still go to 
->> port@0.
->>
->> P.S.: I didn't check the schematics - just please make sure it's 
->> correct, and
->>        that this actually works.
->>
-> Sorry for the double email, but I've done some fast research on this as 
-> something
-> came to mind right after sending this review.
-> 
-> usb-connector.yaml says that the `ports` property models a data bus to 
-> the USB
-> connector, and that a single connector can have multiple data buses, of 
-> course.
-> 
-> The last statement doesn't come as a surprise, and actually makes me 
-> think about
-> what MTU3 actually provides: a High Speed data bus, and a SuperSpeed 
-> data bus.
+This work is a step towards fully integrating MediaTek's APU capabilities with the Linux kernel, enhancing support for AI features on MediaTek platforms.
 
-Ya. That's the question I was wondering, too.
-Current DT bindings of MTU3 support only 1 port which is also a required
-property. For the SSUSB0 port on MT8195, it indeed provides a High Speed
-data bus, and a SuperSpeed data bus.
+Please review and provide feedback.
 
-> Now, I see in MTU3 that only `port` is allowed and that only the HS part is
-> is exposed... so to resolve this, you want to add a binding to connect the
-> data bus of the MTU3 controller to the usb-c-connector, and obviously 
-> only then
-> you should use it here.
-> 
-> That should look like this:
-> 
-> mediatek,mtu3.yaml:
->    ports:
->      $ref: /schemas/graph.yaml#/properties/ports
-> 
->      properties:
->        port@0:
->          $ref: /schemas/graph.yaml#/properties/port
->          description: High Speed (HS) data bus.
-> 
->        port@1:
->          $ref: /schemas/graph.yaml#/properties/port
->          description: Super Speed (SS) data bus.
-> 
-> some_devicetree.dts
-> &ssusb0 {
->      ports {
->          port@0 {
->              reg = <0>;
-> 
->              /* High Speed data bus */
->              mtu3_hs0_ep: endpoint {
->                  /* connects to port@0 (HS) of usb-c-connector */
->                  remote-endpoint = <&typec_con_hs>;
->              }
->          };
-> 
->          port@1 {
->              reg = <1>;
-> 
->              /* SuperSpeed data bus */
->              mtu3_ss0_ep: endpoint {
->                  /* connects to port@1 (SS) of usb-c-connector */
->                  remote-endpoint = <&typec_con_sss>;
->              }
->          };
->      };
-> };
+Best regards
 
-Sure, but after adding that DT schema before the v3 patch has been send.
-The dt_binding_check seems show 'port' is a required property for MTU3.
-However I didn't found where it has been defined.
-I think to add the 'ports' property in MTU3's DT Schema should be better.
+Karl Li (3):
+  dt-bindings: mailbox: mediatek: Add apu-mailbox document
+  mailbox: add support for bottom half received data
+  mailbox: mediatek: Add mtk-apu-mailbox driver
 
-> I don't have time to do any testing in this precise moment, so, if you want
-> to go on and test - cool; otherwise, I can check that at a later time, but
-> on Genio 700 EVK instead (which is the same thing for this specific 
-> topic anyway).
-> 
-> Cheers,
-> Angelo
-> 
->>> +                    };
->>> +
->>> +                    port@1 {
->>> +                        reg = <1>;
->>> +                        mt6360_ssusb_ep: endpoint {
->>> +                            remote-endpoint = <&ssusb_ep>;
->>> +                        };
->>> +                    };
->>> +                };
->>> +            };
->>> +        };
->>>       };
->>>   };
->>> @@ -770,6 +807,13 @@ pins-reset {
->>>           };
->>>       };
->>> +    u3_p0_vbus: u3-p0-vbus-default-pins {
->>> +        pins-cmd-dat {
->>
->> That's not a command nor data pin.
+ .../mailbox/mediatek,apu-mailbox.yaml         |  55 +++++
+ drivers/mailbox/Kconfig                       |   9 +
+ drivers/mailbox/Makefile                      |   2 +
+ drivers/mailbox/mailbox.c                     |  16 ++
+ drivers/mailbox/mtk-apu-mailbox.c             | 222 ++++++++++++++++++
+ include/linux/mailbox/mtk-apu-mailbox.h       |  20 ++
+ include/linux/mailbox_client.h                |   2 +
+ include/linux/mailbox_controller.h            |   1 +
+ 8 files changed, 327 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mailbox/mediatek,apu-mailbox.yaml
+ create mode 100644 drivers/mailbox/mtk-apu-mailbox.c
+ create mode 100644 include/linux/mailbox/mtk-apu-mailbox.h
 
-Oh! Will fix it.
+-- 
+2.18.0
 
->> pins-vbus {
->>
->>> +            pinmux = <PINMUX_GPIO63__FUNC_VBUSVALID>;
->>> +            input-enable;
->>> +        };
->>> +    };
->>> +
->>>       uart0_pins: uart0-pins {
->>>           pins {
->>>               pinmux = <PINMUX_GPIO98__FUNC_UTXD0>,
->>> @@ -900,8 +944,18 @@ &ufsphy {
->>>   };
->>>   &ssusb0 {
->>> +    dr_mode = "otg";
->>> +    pinctrl-names = "default";
->>> +    pinctrl-0 = <&u3_p0_vbus>;
->>
->> Is this port usb host by default? If it is:
->>
->>      role-switch-default-mode = "host";
-
-This port0 is exactly a dual-role port for genio-1200-evk.
-It is usually used as gadget device port (like ADB) and
-sometimes can do OTG function with xhci0.
-
->> Cheers,
->> Angelo
->>
->>> +    usb-role-switch;
->>>       vusb33-supply = <&mt6359_vusb_ldo_reg>;
->>>       status = "okay";
->>> +
->>> +    port {
->>> +        ssusb_ep: endpoint {
->>> +            remote-endpoint = <&mt6360_ssusb_ep>;
->>> +        };
->>> +    };
->>>   };
->>>   &ssusb2 {
->>
-
-Thanks
-Macpaul Lin
 
