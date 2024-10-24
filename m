@@ -4,110 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 322B6D0BB7F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Oct 2024 09:52:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 423ABCFA456
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Oct 2024 10:06:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hPWATWeWKAE4Qxl3MmoK4v7+Dz2O59mCKh74wMPXzck=; b=H1we5erDL+IjAa0laiIFjIn4Zp
-	ML9iOhz0h5YwfsGDor9+b+BY3LDfGkHfBBpYqJJ6vdo4w4wg/3GLAFfz9z++xHlwDSXBEqKPxwxFQ
-	jPqI3Z9b7HeReJ5k1XlZvSYFrFgU8kvAcA9edpuU1pWYDTYQXVlWYGvcnGGcw8o9qQKhMkzfduNXt
-	YzbGQODcqT0IX1V4NJidZeBLnhvm4PFWOdOmFxob48yVCE3VVqgwrTmi3yGqK/vEXFJcL/fyIB61o
-	NIvjxu91Wch6vbQ0cnuWd3A17Ip15xFla+rqOJq29eyPjYEJvAercf8H4uH+TKa9qGr9vDAO1+/Fy
-	8lrDwsRQ==;
+	bh=FwrSiNuF3MmwoZvZq0oH9sht1o+yzvBlURRSwfcy8GU=; b=Jxi0J1znxXxvdU6Od65PxY1oSu
+	ApML1fPlU0JEvwiIDm34Tx/M0Cxa0QwzXqGDXuu5n/R9DoR3z1f5DbMGPiXdkFcDod6KsdJjCjsiz
+	A4x3xuekAcrJLqkgRqRAVbip5/XL4uHdlEUR9IF0fwnlTesXRltMFPTqNm9syuanKBRNOL5fLQh/2
+	SJLPUKmZxCanh8IU+8dioQV4o4Uc/gKjIvM5a9NL8eN89+G4p2sQoMHKku/3N9ZHjW+lb84ZpyxZD
+	IHj0ZCTjvdV748fZP+Yymrwveu7zbI0Qcidb0aZh6jS2ZWbSOZr4xMrX74XGhsAi9nGf8CEfqpXGX
+	MDTGIOuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3uVz-0000000HYYa-0yv5;
-	Thu, 24 Oct 2024 09:52:23 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1t3ujn-000000000YA-16Wo;
+	Thu, 24 Oct 2024 10:06:39 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3uPq-0000000HXXw-3QI4;
-	Thu, 24 Oct 2024 09:46:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 4CE8EA45296;
-	Thu, 24 Oct 2024 09:45:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 199C8C4CECC;
-	Thu, 24 Oct 2024 09:45:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729763161;
-	bh=TP20U8M2gkMXngG5jt8yo0o5myFCfbGLJyktlLYRLxE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nMB4oMO5FoeZ4p/LGdZ2lPbtjU5xPPsN3KJwkC0MLrR5sq8z2LkktpgmETu+logty
-	 7GijuQcd0H0U/78gM/myotb56r8FN02IiSc5LW4Nf4mAvry78k9Vr5RQx2aLvjFF5J
-	 51C8eeJFIWig6dQixaMrBWlLQbW7EDpLG48ilXUv+cEVCI3azduXCYv2xTcJdFo4CR
-	 KiMH5A8zOqRwhOxYKh+LH/twQNWPnaGtzmNpeOQnCiyNtId8MR25BrhhtbMKnWWIiz
-	 clzm1vlY4dQ9sjh/mYDeUgeYMMCTfCz9araohAyeFokTgj+09tStr7aq+EfcsGscPR
-	 Y30Tz1IKbvD4Q==
-Message-ID: <d1264f6b-07bd-41e4-848d-1775a1f45884@kernel.org>
-Date: Thu, 24 Oct 2024 11:45:53 +0200
+	id 1t3uaa-0000000HZfc-1yqF
+	for linux-mediatek@lists.infradead.org;
+	Thu, 24 Oct 2024 09:57:10 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-539e8607c2aso791325e87.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 24 Oct 2024 02:57:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1729763826; x=1730368626; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=FwrSiNuF3MmwoZvZq0oH9sht1o+yzvBlURRSwfcy8GU=;
+        b=Kz7Wp1fZfggTcn/DxbXmAXTk12gWkO0xCTFrM59RkA2M87as1zPyzX8NeIkXqQ6T1w
+         N1KmSfL5F5eRVWuBH7QVKJQ/YbRqEewpXau0P9+m5amrOYes6kVd/+87e1R8+hhhwWGm
+         ZqefujpaT0F5VU+HEBcz37k8nlr88M/3L26CQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729763826; x=1730368626;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=FwrSiNuF3MmwoZvZq0oH9sht1o+yzvBlURRSwfcy8GU=;
+        b=RE25l94YsxShaWuPp2lmtJeAfdE5SYVI3WJaXQ3O00HpTeS2u9Or2uYld8JWUUpfPm
+         TWoH5yXY2cfMKbpPACIBTY/GGYbhXCrXDYaNQ0yh/hM8mAv/HAKGFwkJfG9fB26VNLGP
+         OvI1qal8G1NbtnrnR3lQmnfzWYZYfX4eRo5lcZKhV0hxCWs+5SSBnZlhEF0RzWVT4kvi
+         eOJ76Sxaaj2oDSC4h9ctCOkxCV9Arx8BXF7TtfGPkmTixsqeJVmrBVPrhnx53+J7Dczz
+         6htosq4T577fqXrfpn4mrOFPuPPWF8k9Mgq5jMz+BCpkkIiWlgkIpzcuicEYOEx6xduJ
+         wpbQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU4giKCQ1fuNck1/Hsnyik6N9HYAV7Y2n00Xyla6JTrhU6L3J0KqINcE/btNKjkns+ozoOvF1P0T7ge2I0XPw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxGQJimS5hkqLjtWOqw5KzjLhfUhnqF6x+RetHfrNJ/9ZUSqtTj
+	SjqSzYsgCQ5Fp4f7bglEC+860qadYBTi8XEgS+ac90bQcmMjIWqnrQTFeDIKd2zHBZlLcnldpuU
+	rCDa9qZ7Y0oOEheZzDWaTsSnDGN8SDs8EvDSA
+X-Google-Smtp-Source: AGHT+IFt48rpRLYA5HussW5JakseDSLyUy/htwuwG7FhR+J65RPloGFGfLBvtboJpAXEd1tkRwDPgfxR7KUH2LnzgvY=
+X-Received: by 2002:a05:6512:33c8:b0:539:d05c:f553 with SMTP id
+ 2adb3069b0e04-53b23dfa2c6mr798115e87.21.1729763826215; Thu, 24 Oct 2024
+ 02:57:06 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] mailbox: mediatek: Add mtk-apu-mailbox driver
-To: "Karl.Li" <karl.li@mediatek.com>, Jassi Brar <jassisinghbrar@gmail.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Chungying Lu <chungying.lu@mediatek.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20241024092608.431581-1-karl.li@mediatek.com>
- <20241024092608.431581-4-karl.li@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <20241024092608.431581-4-karl.li@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20241016-auxadc_thermal-v12-1-c0433e9f61af@chromium.org>
+In-Reply-To: <20241016-auxadc_thermal-v12-1-c0433e9f61af@chromium.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 24 Oct 2024 17:56:54 +0800
+Message-ID: <CAGXv+5GfGg_gh0+7MKXCRHd97yoE-BWfnCU9Q5d1cxp6Ep4Epg@mail.gmail.com>
+Subject: Re: [PATCH RESEND v12] thermal/drivers/mediatek: add another get_temp
+ ops for thermal sensors
+To: Hsin-Te Yuan <yuanhsinte@chromium.org>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, 
+	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pm@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, James Lo <james.lo@mediatek.com>, 
+	Michael Kao <michael.kao@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
+	Ben Tseng <ben.tseng@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241024_024603_189992_117AF48E 
-X-CRM114-Status: GOOD (  31.66  )
+X-CRM114-CacheID: sfid-20241024_025708_613658_4BDCF30A 
+X-CRM114-Status: GOOD (  42.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,241 +94,291 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24/10/2024 11:25, Karl.Li wrote:
-> From: Karl Li <karl.li@mediatek.com>
-> 
-> Add mtk-apu-mailbox driver to support the communication with
-> APU remote microprocessor.
-> 
-> Also, the mailbox hardware contains extra spare (scratch) registers
-> that other hardware blocks use to communicate through.
-> Expose these with custom mtk_apu_mbox_(read|write)() functions.
-> 
-> Signed-off-by: Karl Li <karl.li@mediatek.com>
+Hi,
+
+The subject could be better worded, like "expose all thermal sensors".
+
+On Wed, Oct 16, 2024 at 1:47=E2=80=AFPM Hsin-Te Yuan <yuanhsinte@chromium.o=
+rg> wrote:
+>
+> From: James Lo <james.lo@mediatek.com>
+>
+> Previously, the driver only supported reading the temperature from all
+> sensors and returning the maximum value. This updatea adds another
+
+                                                      ^ typo
+
+> get_temp ops to support reading the temperature from each sensor
+> separately.
+
+You should mention why you want to expose all the thermal sensors.
+Just making them available to userspace is a good enough reason.
+You could also mention that some other drivers needs access to
+some of the individual sensor readings.
+
+You probably don't need to go into specific details about adding
+a new get_temp ops.
+
+> This feature provides the ability to read all thermal sensor values in
+> the SoC through the node /sys/class/thermal.
+
+This paragraph is redundant. It is implied by the subject.
+
+> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
+> Signed-off-by: James Lo <james.lo@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
 > ---
->  drivers/mailbox/Kconfig                 |   9 +
->  drivers/mailbox/Makefile                |   2 +
->  drivers/mailbox/mtk-apu-mailbox.c       | 222 ++++++++++++++++++++++++
->  include/linux/mailbox/mtk-apu-mailbox.h |  20 +++
->  4 files changed, 253 insertions(+)
->  create mode 100644 drivers/mailbox/mtk-apu-mailbox.c
->  create mode 100644 include/linux/mailbox/mtk-apu-mailbox.h
-> 
-> diff --git a/drivers/mailbox/Kconfig b/drivers/mailbox/Kconfig
-> index 6fb995778636..2338e08a110a 100644
-> --- a/drivers/mailbox/Kconfig
-> +++ b/drivers/mailbox/Kconfig
-> @@ -240,6 +240,15 @@ config MTK_ADSP_MBOX
->            between processors with ADSP. It will place the message to share
->  	  buffer and will access the ipc control.
->  
-> +config MTK_APU_MBOX
-> +	tristate "MediaTek APU Mailbox Support"
-> +	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +	help
-> +	  Say yes here to add support for the MediaTek APU Mailbox
-> +	  driver. The mailbox implementation provides access from the
-> +	  application processor to the MediaTek AI Processing Unit.
-> +	  If unsure say N.
+> Changes in v12:
+> - Remove unnecessary check and unused variable assignment in mtk_read_sen=
+sor_temp.
+> - Add more about what this patch achieves in the commit message.
+> - Link to v11: https://lore.kernel.org/r/20240809-auxadc_thermal-v11-1-af=
+36cc74f3a3@chromium.org
+>
+> Changes in V11:
+>     - Rebase on kernel v6.11-rc2
+>     - Use mtk_thermal_temp_is_valid in mtk_read_sensor_temp just like
+>       mtk_thermal_bank_temperature
+>     - Change the error handling of devm_thermal_of_zone_register return
+>       value
+>     - link to V10: https://lore.kernel.org/lkml/20220519101044.16765-1-ja=
+mes.lo@mediatek.com/
+>
+> Changes in V10:
+>     - Rebase to kernel-v5.18-rc7
+>     - Resend
+>
+> Changes in V9:
+>     - Rebase to kernel-v5.14-rc1
+>     - Bind raw_to_mcelsius_v1 or raw_to_mcelsius_v2 to compatible
+>       data of struct mtk_thermal_data
+>     - Remove duplicate struct 'mtk_thermal_bank'
+>     - Remove unnecessary if condition check
+>     - Return error if any thermal zone fail to register
+>
+> Changes in V8:
+>     - Rebase to kernel-v5.13-rc1
+>     - Resend
+>
+> Changes in v7:
+>     - Fix build error in v6.
+>
+> Changes in v6:
+>     - Rebase to kernel-5.11-rc1.
+>     - [1/3]
+>         - add interrupts property.
+>     - [2/3]
+>         - add the Tested-by in the commit message.
+>     - [3/3]
+>         - use the mt->conf->msr[id] instead of conf->msr[id] in the
+>           _get_sensor_temp and mtk_thermal_bank_temperature.
+>         - remove the redundant space in _get_sensor_temp and
+>           mtk_read_sensor_temp.
+>         - change kmalloc to dev_kmalloc in mtk_thermal_probe.
+>
+> Changes in v5:
+>     - Rebase to kernel-5.9-rc1.
+>     - Revise the title of cover letter.
+>     - Drop "[v4,7/7] thermal: mediatek: use spinlock to protect PTPCORESE=
+L"
+>     - [2/2]
+>         -  Add the judgement to the version of raw_to_mcelsius.
+>
+> Changes in v4:
+>     - Rebase to kernel-5.6-rc1.
+>     - [1/7]
+>         - Squash thermal zone settings in the dtsi from [v3,5/8]
+>           arm64: dts: mt8183: Increase polling frequency for CPU thermal =
+zone.
+>         - Remove the property of interrupts and mediatek,hw-reset-temp.
+>     - [2/7]
+>         - Correct commit message.
+>     - [4/7]
+>         - Change the target temperature to the 80C and change the commit =
+message.
+>     - [6/7]
+>         - Adjust newline alignment.
+>         - Fix the judgement on the return value of registering thermal zo=
+ne.
+>
+> Changes in v3:
+>     - Rebase to kernel-5.5-rc1.
+>     - [1/8]
+>         - Update sustainable power of cpu, tzts1~5 and tztsABB.
+>     - [7/8]
+>         - Bypass the failure that non cpu_thermal sensor is not find in t=
+hermal-zones
+>           in dts, which is normal for mt8173, so prompt a warning here in=
+stead of
+>           failing.
+>
+>     Return -EAGAIN instead of -EACCESS on the first read of sensor that
+>         often are bogus values. This can avoid following warning on boot:
+>
+>           thermal thermal_zone6: failed to read out thermal zone (-13)
+>
+> Changes in v2:
+>     - [1/8]
+>         - Add the sustainable-power,trips,cooling-maps to the tzts1~tztsA=
+BB.
+>     - [4/8]
+>         - Add the min opp of cpu throttle.
+> ---
+>
+> ---
+>  drivers/thermal/mediatek/auxadc_thermal.c | 70 +++++++++++++++++++++++++=
+++----
+>  1 file changed, 62 insertions(+), 8 deletions(-)
+>
+> diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/=
+mediatek/auxadc_thermal.c
+> index 9ee2e7283435acfcbb1a956303b6122a08affecc..10938be2e5545fba2fff7d5cc=
+5a0269d42e5d44d 100644
+> --- a/drivers/thermal/mediatek/auxadc_thermal.c
+> +++ b/drivers/thermal/mediatek/auxadc_thermal.c
+> @@ -847,7 +847,8 @@ static int mtk_thermal_bank_temperature(struct mtk_th=
+ermal_bank *bank)
+>
+>  static int mtk_read_temp(struct thermal_zone_device *tz, int *temperatur=
+e)
+>  {
+> -       struct mtk_thermal *mt =3D thermal_zone_device_priv(tz);
+> +       struct mtk_thermal_bank *bank =3D thermal_zone_device_priv(tz);
+> +       struct mtk_thermal *mt =3D bank->mt;
+>         int i;
+>         int tempmax =3D INT_MIN;
+>
+> @@ -866,10 +867,41 @@ static int mtk_read_temp(struct thermal_zone_device=
+ *tz, int *temperature)
+>         return 0;
+>  }
+>
+> +static int mtk_read_sensor_temp(struct thermal_zone_device *tz, int *tem=
+perature)
+> +{
+> +       struct mtk_thermal_bank *bank =3D thermal_zone_device_priv(tz);
+> +       struct mtk_thermal *mt =3D bank->mt;
+> +       const struct mtk_thermal_data *conf =3D mt->conf;
+> +       int id =3D bank->id - 1;
+> +       int temp =3D INT_MIN;
+> +       u32 raw;
 > +
->  config MTK_CMDQ_MBOX
->  	tristate "MediaTek CMDQ Mailbox Support"
->  	depends on ARCH_MEDIATEK || COMPILE_TEST
-> diff --git a/drivers/mailbox/Makefile b/drivers/mailbox/Makefile
-> index 3c3c27d54c13..6b6dcc78d644 100644
-> --- a/drivers/mailbox/Makefile
-> +++ b/drivers/mailbox/Makefile
-> @@ -53,6 +53,8 @@ obj-$(CONFIG_STM32_IPCC) 	+= stm32-ipcc.o
->  
->  obj-$(CONFIG_MTK_ADSP_MBOX)	+= mtk-adsp-mailbox.o
->  
-> +obj-$(CONFIG_MTK_APU_MBOX)	+= mtk-apu-mailbox.o
+> +       raw =3D readl(mt->thermal_base + conf->msr[id]);
 > +
->  obj-$(CONFIG_MTK_CMDQ_MBOX)	+= mtk-cmdq-mailbox.o
->  
->  obj-$(CONFIG_ZYNQMP_IPI_MBOX)	+= zynqmp-ipi-mailbox.o
-> diff --git a/drivers/mailbox/mtk-apu-mailbox.c b/drivers/mailbox/mtk-apu-mailbox.c
-> new file mode 100644
-> index 000000000000..b347ebd34ef7
-> --- /dev/null
-> +++ b/drivers/mailbox/mtk-apu-mailbox.c
-> @@ -0,0 +1,222 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2024 MediaTek Inc.
-> + */
+> +       temp =3D mt->raw_to_mcelsius(mt, id, raw);
 > +
-> +#include <asm/io.h>
-> +#include <linux/bits.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/mailbox_controller.h>
-> +#include <linux/mailbox/mtk-apu-mailbox.h>
-> +#include <linux/platform_device.h>
+> +       /*
+> +        * The first read of a sensor often contains very high bogus
+> +        * temperature value. Filter these out so that the system does
+> +        * not immediately shut down.
+> +        */
 > +
-> +#define INBOX		(0x0)
-> +#define OUTBOX		(0x20)
-> +#define INBOX_IRQ	(0xc0)
-> +#define OUTBOX_IRQ	(0xc4)
-> +#define INBOX_IRQ_MASK	(0xd0)
+> +       if (unlikely(!mtk_thermal_temp_is_valid(temp)))
+> +               return -EAGAIN;
 > +
-> +#define SPARE_OFF_START	(0x40)
-> +#define SPARE_OFF_END	(0xB0)
+> +       *temperature =3D temp;
 > +
-> +struct mtk_apu_mailbox {
-> +	struct device *dev;
-> +	void __iomem *regs;
-> +	struct mbox_controller controller;
-> +	u32 msgs[MSG_MBOX_SLOTS];
+> +       return 0;
+> +}
+> +
+>  static const struct thermal_zone_device_ops mtk_thermal_ops =3D {
+>         .get_temp =3D mtk_read_temp,
+>  };
+>
+> +static const struct thermal_zone_device_ops mtk_thermal_sensor_ops =3D {
+> +       .get_temp =3D mtk_read_sensor_temp,
 > +};
 > +
-> +struct mtk_apu_mailbox *g_mbox;
+>  static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
+>                                   u32 apmixed_phys_base, u32 auxadc_phys_=
+base,
+>                                   int ctrl_id)
+> @@ -1199,6 +1231,7 @@ static int mtk_thermal_probe(struct platform_device=
+ *pdev)
+>         u64 auxadc_phys_base, apmixed_phys_base;
+>         struct thermal_zone_device *tzdev;
+>         void __iomem *apmixed_base, *auxadc_base;
+> +       struct mtk_thermal_bank *tz;
+>
+>         mt =3D devm_kzalloc(&pdev->dev, sizeof(*mt), GFP_KERNEL);
+>         if (!mt)
+> @@ -1285,14 +1318,35 @@ static int mtk_thermal_probe(struct platform_devi=
+ce *pdev)
+>                         mtk_thermal_init_bank(mt, i, apmixed_phys_base,
+>                                               auxadc_phys_base, ctrl_id);
+>
+> -       tzdev =3D devm_thermal_of_zone_register(&pdev->dev, 0, mt,
+> -                                             &mtk_thermal_ops);
+> -       if (IS_ERR(tzdev))
+> -               return PTR_ERR(tzdev);
+> +       for (i =3D 0; i <=3D mt->conf->num_sensors; i++) {
+> +               tz =3D devm_kmalloc(&pdev->dev, sizeof(*tz), GFP_KERNEL);
+> +               if (!tz)
+> +                       return -ENOMEM;
+> +
+> +               tz->mt =3D mt;
+> +               tz->id =3D i;
+> +
+> +               tzdev =3D devm_thermal_of_zone_register(&pdev->dev, i,
+> +                                                     tz, (i =3D=3D 0) ?
+> +                                                     &mtk_thermal_ops
+> +                                                     : &mtk_thermal_sens=
+or_ops);
+> +
+> +               if (IS_ERR(tzdev)) {
+> +                       ret =3D PTR_ERR(tzdev);
+> +                       if (ret =3D=3D -ENODEV) {
+> +                               dev_warn(&pdev->dev, "can't find thermal =
+sensor %d\n", i);
 
-Why this is global? And why do you support only one device?
+"Can't find thermal zone for sensor %d; sensor skipped.\n".
 
-No, drop.
+Based on the core code, the failure is not being able to find a matching
+thermal zone node.
 
-> +
-> +static irqreturn_t mtk_apu_mailbox_irq_top_half(int irq, void *dev_id)
-> +{
-> +	struct mtk_apu_mailbox *mbox = dev_id;
-> +	struct mbox_chan *link = &mbox->controller.chans[0];
-> +	int i;
-> +
-> +	for (i = 0; i < MSG_MBOX_SLOTS; i++)
-> +		mbox->msgs[i] = readl(mbox->regs + OUTBOX + i * sizeof(u32));
-> +
-> +	mbox_chan_received_data(link, &mbox->msgs);
-> +
-> +	return IRQ_WAKE_THREAD;
-> +}
-> +
+Also, make it known to the user what happened.
 
-...
+> +                               continue;
+> +                       }
+> +                       dev_err(&pdev->dev,
+> +                               "Error: Failed to register thermal zone %=
+d, ret =3D %d\n",
+> +                               i, ret);
+> +                       return ret;
 
-> +/**
-> + * mtk_apu_mbox_write - Write value to specifice mtk_apu_mbox spare register.
-> + * @val: Value to be written.
-> + * @offset: Offset of the spare register.
-> + *
-> + * Return: 0 if successful
-> + *	   negative value if error happened
-> + */
-> +int mtk_apu_mbox_write(u32 val, u32 offset)
-> +{
-> +	if (!g_mbox) {
-> +		pr_err("mtk apu mbox was not initialized, stop writing register\n");
-> +		return -ENODEV;
-> +	}
-> +
-> +	if (offset < SPARE_OFF_START || offset >= SPARE_OFF_END) {
-> +		dev_err(g_mbox->dev, "Invalid offset %d for mtk apu mbox spare register\n", offset);
-> +		return -EINVAL;
-> +	}
-> +
-> +	writel(val, g_mbox->regs + offset);
-> +	return 0;
-> +}
-> +EXPORT_SYMBOL_NS(mtk_apu_mbox_write, MTK_APU_MAILBOX);
+return dev_err_probe(&pdev->dev, ret, "Failed to register thermal zone
+%d.\n", i);
 
-Use mailbox API. This is really poor solution.
+> +               }
+>
+> -       ret =3D devm_thermal_add_hwmon_sysfs(&pdev->dev, tzdev);
+> -       if (ret)
+> -               dev_warn(&pdev->dev, "error in thermal_add_hwmon_sysfs");
+> +               ret =3D devm_thermal_add_hwmon_sysfs(&pdev->dev, tzdev);
+> +               if (ret)
+> +                       dev_warn(&pdev->dev, "error in thermal_add_hwmon_=
+sysfs: %d\n", ret);
 
-> +
-> +/**
-> + * mtk_apu_mbox_read - Read value to specifice mtk_apu_mbox spare register.
-> + * @offset: Offset of the spare register.
-> + * @val: Pointer to store read value.
-> + *
-> + * Return: 0 if successful
-> + *	   negative value if error happened
-> + */
-> +int mtk_apu_mbox_read(u32 offset, u32 *val)
-> +{
-> +	if (!g_mbox) {
-> +		pr_err("mtk apu mbox was not initialized, stop reading register\n");
-> +		return -ENODEV;
-> +	}
-> +
-> +	if (offset < SPARE_OFF_START || offset >= SPARE_OFF_END) {
-> +		dev_err(g_mbox->dev, "Invalid offset %d for mtk apu mbox spare register\n", offset);
-> +		return -EINVAL;
-> +	}
-> +
-> +	*val = readl(g_mbox->regs + offset);
-> +
-> +	return 0;
-> +}
-> +EXPORT_SYMBOL_NS(mtk_apu_mbox_read, MTK_APU_MAILBOX);
-> +
-> +static int mtk_apu_mailbox_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct mtk_apu_mailbox *mbox;
-> +	int irq = -1, ret = 0;
-> +
-> +	mbox = devm_kzalloc(dev, sizeof(*mbox), GFP_KERNEL);
-> +	if (!mbox)
-> +		return -ENOMEM;
-> +
-> +	mbox->dev = dev;
-> +	platform_set_drvdata(pdev, mbox);
-> +
-> +	mbox->regs = devm_platform_ioremap_resource(pdev, 0);
-> +	if (IS_ERR(mbox->regs))
-> +		return PTR_ERR(mbox->regs);
-> +
-> +	mbox->controller.txdone_irq = false;
-> +	mbox->controller.txdone_poll = true;
-> +	mbox->controller.txpoll_period = 1;
-> +	mbox->controller.ops = &mtk_apu_mailbox_ops;
-> +	mbox->controller.dev = dev;
-> +	/*
-> +	 * Here we only register 1 mbox channel.
-> +	 * The remaining channels are used by other modules.
-> +	 */
-> +	mbox->controller.num_chans = 1;
-> +	mbox->controller.chans = devm_kcalloc(dev, mbox->controller.num_chans,
-> +					      sizeof(*mbox->controller.chans),
-> +					      GFP_KERNEL);
-> +	if (!mbox->controller.chans)
-> +		return -ENOMEM;
-> +
-> +	ret = devm_mbox_controller_register(dev, &mbox->controller);
-> +	if (ret)
-> +		return ret;
-> +
-> +	irq = platform_get_irq(pdev, 0);
-> +	if (irq < 0)
-> +		return irq;
-> +
-> +	ret = devm_request_threaded_irq(dev, irq, mtk_apu_mailbox_irq_top_half,
-> +					mtk_apu_mailbox_irq_btm_half, IRQF_ONESHOT,
-> +					dev_name(dev), mbox);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret, "Failed to request IRQ\n");
-> +
-> +	g_mbox = mbox;
-> +
-> +	dev_dbg(dev, "registered mtk apu mailbox\n");
+Mention which sensor ID this failed for.
 
-No, drop such stuff.
+ChenYu
 
-> +
-> +	return 0;
-> +}
-> +
-> +static void mtk_apu_mailbox_remove(struct platform_device *pdev)
-> +{
-> +	g_mbox = NULL;
-> +}
-> +
-> +static const struct of_device_id mtk_apu_mailbox_of_match[] = {
-> +	{ .compatible = "mediatek,mt8188-apu-mailbox" },
-> +	{ .compatible = "mediatek,mt8196-apu-mailbox" },
-
-So devices are compatible? Make them compatible in the binding and drop
-unneeded compatible here.
-
-Best regards,
-Krzysztof
-
+> +       }
+>
+>         return 0;
+>  }
+>
+> ---
+> base-commit: b589839414be04b2b37e4bf6f84af576c99faf64
+> change-id: 20240809-auxadc_thermal-9be338ec8b1c
+>
+> Best regards,
+> --
+> Hsin-Te Yuan <yuanhsinte@chromium.org>
+>
+>
 
