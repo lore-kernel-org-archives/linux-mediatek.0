@@ -4,88 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7157CE8E6A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Oct 2024 17:52:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4605BCE8E6A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Oct 2024 18:03:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UaHpkghq9cuCMb2HJRZAym0CXgOFGdaTduY6J1n9ZMw=; b=CBNt5mOI/rJdfy1jWkXzN9QZEd
-	/eC3lj6vgDUk5bOku29PUME2NuOlJ477VEb1lYkux2cLee+gIVukezhWRaiFP3xC6pMtLvzuSChRM
-	4pqAdNW0pLKfulAMARqvfXFG1P3UnlXCXEcvQqC0BnswzrYuHn+Ki6xEgmHm4TvvJgU4UByoRwtH2
-	6pAYU/LXTXeRzbILBlPJ6fJmTP4U38g/1x2N3OA13uLzbCRCqMFQMFbfUSdbtDsnmhiBMJ5wMLh8C
-	o8ZfXNgbFCOkn59rh+re+VLT3m+XbYzs/IBSMcUH0uneH1FvCurzoOjvEsSu8Yf6zH9TlbsHQ0YNO
-	GU1TJi3A==;
+	bh=WmLkhnUtlIFWR7yGqTqutMCpz/ZCKPyDidaM4P7NJJQ=; b=llE+vNhtTX8xqmtDofURoTn/+N
+	Q/mhYrG2CHfcMJMXCwniqQ5f9GorXZe6ZiXiDxDSk9RtkVEn+/3+Tx5oO5hHvbF18kbbRBnX+RZvL
+	64FeC/EIGZliAi03qWZsW97CAgsf5kWZenCeChrdBrujwERgWH7DVmYhTuAEgh/HmiTvattbmlUuw
+	wVrA5g+Dv4ZsXDdcMU4Ek1rPEGsmo4TYlKy36YsFiGpJh2o8twTkVifliJ/da9v7IODMP803qA9pW
+	23Sl861lfBkSknxIa26VL1sFXA2u+5C806NJlN2JMvQ6CTS+d03cqFcBYE3gwrYXGUHqdzdCcnOWJ
+	eL7X2UmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t420V-00000001MPX-3VXG;
-	Thu, 24 Oct 2024 17:52:23 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1t42BP-00000001OpY-18zz;
+	Thu, 24 Oct 2024 18:03:39 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t41cO-00000001Hiu-0W6g;
-	Thu, 24 Oct 2024 17:27:29 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-4315df7b43fso12652135e9.0;
-        Thu, 24 Oct 2024 10:27:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1729790846; x=1730395646; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=UaHpkghq9cuCMb2HJRZAym0CXgOFGdaTduY6J1n9ZMw=;
-        b=no0kT5/oUlzOqrUQBfYUsTq4IfCzYRzFWCjHP91hVom7XX6pwX0xaS2BBW6N8BxSFE
-         gSybF+c1UPCFdlwySx5a7CfUhLTwW8tlq3cp4fFsGFeiUl+II5UEm14mp7/h6RU24Upg
-         A0eIqPVlFgH+hXmgNf9Y0r7tVs/v9MYjBCNy4NlkPUOkol/OH4LTPHRGGbjHHQlsxpeB
-         mPBigw3hNg6v9ArbO0+p4C9r3wzOIM0+BOtb3vcG/4o7lrFSttspy1L6DtxoaZuPMNrL
-         vxx4/nbwPcj4kumvDkrfaIgNy/y5Fsq7O/NFxI5qQKQBSuNHETOQVKC6FtNgjqZuga+i
-         ttmQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729790846; x=1730395646;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=UaHpkghq9cuCMb2HJRZAym0CXgOFGdaTduY6J1n9ZMw=;
-        b=wY8Xoh8Q8JYYD65YxrAlm7mhztaD8elVvEWqzcI6kXUSSHAWEO3/8Znvgo4XJZyh6G
-         yqL2SXYpCq/OeUvsyVEGQJWMEwtPqJKbvDrCpkwDusnVHqaEWSe8KteSpxj0Bv+mFOxv
-         ktYOZ8KFh8RTy71ot3a5yA2i52wJaFgSSQAUoxFLYR3cTowfyrqy3xTYfSsS+XSr7gLm
-         4iEzKSVqc0lwjq83HEr1lBc1nwLLiMWuI7H7NRQxWQQlBlT6xi78CIEmqBperZBWEkPY
-         F4wnGooW7epgk5xZXsCxUi0SaSZ2721dzu1rHZoY072tz8Q9tUfN27BvN/p4s/a8fBX5
-         no0A==
-X-Forwarded-Encrypted: i=1; AJvYcCWeTDs1wwi+DJ+rMR7ydjcwLgqAureEeiUd6vhi5K7c1ZKyi6hJGp4pdjCPsT6X/j3BffDMxxSm16a43YMORYfX@lists.infradead.org, AJvYcCXOAFJvGxm8wrfxwDhtTPvvEfFK1ZmHn4HJ5JgCYxhsB173sEzKZQuOsSq3hAFgb83Q3egG1fGnvJ66xFn78ts=@lists.infradead.org, AJvYcCXaqMzRxHMKFcIW2k0aSRc1vRFjnu/s8ohT3dJ8NuprDsyjvKtPjTB7IwP751mXWTgwW2ZLdxAdfuh6@lists.infradead.org
-X-Gm-Message-State: AOJu0YyOQY/UXV7/MizY/5lHrF3d1TGEIhCX876hkSbfopn33YXri7W2
-	rudclw0LAqOPU2KAXUuWI/XGUefdE1UDpTsjWjr4SUUT3w/8AS1j
-X-Google-Smtp-Source: AGHT+IH9aeFR7EI/JBQU2YhJkoiZcmX9vYZf/rP1GuS53R5NLbNpUfaTaV9YEHJNgi6VOgAWwW1HsQ==
-X-Received: by 2002:a05:6000:1faa:b0:37d:53dd:4dec with SMTP id ffacd0b85a97d-3803ac9725fmr2225519f8f.15.1729790844879;
-        Thu, 24 Oct 2024 10:27:24 -0700 (PDT)
-Received: from orome (p200300e41f26ec00f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f26:ec00:f22f:74ff:fe1f:3a53])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-37ee0b9413fsm11839544f8f.74.2024.10.24.10.27.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 24 Oct 2024 10:27:24 -0700 (PDT)
-Date: Thu, 24 Oct 2024 19:27:22 +0200
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Saravana Kannan <saravanak@google.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	"Rafael J. Wysocki" <rafael@kernel.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, JC Kuo <jckuo@nvidia.com>, 
-	Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	=?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>, kernel-team@android.com, linux-kernel@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, linux-phy@lists.infradead.org, linux-tegra@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/3] phy: tegra: xusb: Set fwnode for xusb port devices
-Message-ID: <h7lfhtsb4qmrtmcgkeykfwdqzwmby6jfspd6hguxyx3huilu3o@sfl5dqcsc45d>
-References: <20241024061347.1771063-1-saravanak@google.com>
- <20241024061347.1771063-3-saravanak@google.com>
+	id 1t41v3-00000001Kpo-0P9d;
+	Thu, 24 Oct 2024 17:46:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1729792002;
+	bh=W3VllNwtqRwVtIeBKaJd3C2VVqpPgbov///WpOSkPlQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=pGdBVc4ASaPLaghvUgQ0DFhiGKTEDqIoVFn1+HyNer1j93XXc5Cz5BjgV87wgH0CQ
+	 B6nsj1eITJ7aMAWhWuAC9FR3zsdafizu1HIG9qFgRpaqxZbx9bzt4byAUFw5Z2MyGQ
+	 BbQxFkD3lxxVK9S1FqDJkKWKfCkVuL2nfVUjbNeCIS/bI5w3FVpYYMmV5+XbERHprI
+	 DeTa7IdFS/rJb7Kz76JJ/ZL0wYH2NE/1/QvvYzshXNOe0vtqNyDyo2X3dFX1p8mH9D
+	 de8N5I/jXKxhNl8NwmS3DALC8CeQif3oOJygSYXrzZs4IJ2uKPB9aRmPcdKHpF/3T8
+	 u2h8mOoubrz6g==
+Received: from notapiano (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 00C2F17E36B5;
+	Thu, 24 Oct 2024 19:46:40 +0200 (CEST)
+Date: Thu, 24 Oct 2024 13:46:38 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Bamvor Jian Zhang <bamv2005@gmail.com>,
+	Shuah Khan <shuah@kernel.org>, kernel@collabora.com,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kselftest@vger.kernel.org, kernelci@lists.linux.dev
+Subject: Re: [PATCH RFC 1/3] pinctrl: mediatek: paris: Expose more
+ configurations to GPIO set_config
+Message-ID: <a3d6b2b9-1379-4bab-a584-651ca66677ee@notapiano>
+References: <20240909-kselftest-gpio-set-get-config-v1-0-16a065afc3c1@collabora.com>
+ <20240909-kselftest-gpio-set-get-config-v1-1-16a065afc3c1@collabora.com>
+ <01020191e0901d10-d427a5dd-af4e-4ecf-99e1-4bb051ad1475-000000@eu-west-1.amazonses.com>
+ <8fdeec5c-5de7-44ae-9086-7930d02d610e@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="twcjumikk4cgqnzo"
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20241024061347.1771063-3-saravanak@google.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <8fdeec5c-5de7-44ae-9086-7930d02d610e@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241024_102728_193831_869951FC 
-X-CRM114-Status: GOOD (  15.16  )
+X-CRM114-CacheID: sfid-20241024_104645_339630_1683E99B 
+X-CRM114-Status: GOOD (  19.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,54 +83,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Oct 24, 2024 at 05:17:05PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 11/09/24 12:10, AngeloGioacchino Del Regno ha scritto:
+> > Il 09/09/24 20:37, Nícolas F. R. A. Prado ha scritto:
+> > > Currently the set_config callback in the gpio_chip registered by the
+> > > pinctrl_paris driver only supports PIN_CONFIG_INPUT_DEBOUNCE, despite
+> > 
+> > [...] only supports operations configuring the input debounce parameter
+> > of the EINT controller and denies configuring params on the other AP GPIOs [...]
+> > 
+> > (reword as needed)
+> > 
+> > > many other configurations already being implemented and available
+> > > through the pinctrl API for configuration of pins by the Devicetree and
+> > > other drivers.
+> > > 
+> > > Expose all configurations currently implemented through the GPIO API so
+> > > they can also be set from userspace, which is particularly useful to
+> > > allow testing them from userspace.
+> > > 
+> > > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> > > ---
+> > >   drivers/pinctrl/mediatek/pinctrl-paris.c | 20 ++++++++++----------
+> > 
+> > You can do the same for pinctrl-moore too, it's trivial.
+> > 
+> > Other than that, I agree about performing this change, as this may be useful
+> > for more than just testing.
+> > 
+> 
+> Nicolas, please don't forget to respin this patch.
 
---twcjumikk4cgqnzo
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 2/3] phy: tegra: xusb: Set fwnode for xusb port devices
-MIME-Version: 1.0
+I was hoping to get some feedback on the test itself as well, particularly from
+Linus as the pinctrl maintainer, but it's also been a while so I'll send a v2
+with the feedback here addressed.
 
-On Wed, Oct 23, 2024 at 11:13:43PM -0700, Saravana Kannan wrote:
-> fwnode needs to be set for a device for fw_devlink to be able to
-> track/enforce its dependencies correctly. Without this, you'll see error
-> messages like this when the supplier has probed and tries to make sure
-> all its fwnode consumers are linked to it using device links:
->=20
-> tegra-xusb-padctl 3520000.padctl: Failed to create device link (0x180) wi=
-th 1-0008
->=20
-> Reported-by: Jon Hunter <jonathanh@nvidia.com>
-> Closes: https://lore.kernel.org/all/20240910130019.35081-1-jonathanh@nvid=
-ia.com/
-> Tested-by: Jon Hunter <jonathanh@nvidia.com>
-> Suggested-by: "N=C3=ADcolas F. R. A. Prado" <nfraprado@collabora.com>
-> Signed-off-by: Saravana Kannan <saravanak@google.com>
-> ---
->  drivers/phy/tegra/xusb.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-
-Acked-by: Thierry Reding <treding@nvidia.com>
-
---twcjumikk4cgqnzo
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmcag3oACgkQ3SOs138+
-s6E0jA/9Hrx9YAv2LNCLCxeOKL/DQUk66osQ3tcAQYkyXH1Lf8zsvymHrcUdbWBM
-95AoBk6VHHrDM/3mW1riHBZy7wiSLA7ZH+nXiFscRZcisWchkrcSFd1Oy1LgRj2Y
-N268oEbko8jjmyKx0yTojbbilbsZtXZkKsaVhxkBgAchQ8lYuAQg4nPRABMJB6F3
-eZKMHGXBm6YQFOvV+Ahasj88hN+0WceHJNvzIQPXyWY2U6ixPpsup5J/uikzHqpI
-rmlb5zqPUHtHtG/U/ku39cIgiiOBE73/OW1r0qM5ez+UiTYWukXAQyBSCjtoWBrm
-JguDu8m/fS1Iqn+NmxlOBto5gRRABLwBb3PHWfW7XEuVk8ZdGpycBxQ0+ZOglfSC
-PUn/XxgW99w/KbP6401Bomy+Qj9MXJap2cytyVNrMGda1xlwnAPFVPDZ6qNCxZRc
-Bw1dD6hZeWOsKlFZcY9mBhn4D7nAalV/t+zKe9YdEe7zdkTv6CL4o79JjjIACdsh
-GJjfZOlG7FsLE2D5KscHSf7vxRKG2xOcpQyc892MLa2tm4MngYKUGsIEPZJOsnHF
-vkw+QmOdblNPJSILIH9uyAwwb3YDkivpKILxPTgMB2eywmWnxQaMh96hc97eipNh
-H0hKPDvcuendN6+xsu5VM4VQSp5VdAbX+YumtsJ06Dhdqt4kdoY=
-=GeOf
------END PGP SIGNATURE-----
-
---twcjumikk4cgqnzo--
+Thanks,
+Nícolas
 
