@@ -4,70 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 219F9CE8E8A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Oct 2024 15:33:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ECC7CE8E8A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Oct 2024 15:41:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HKTwxUMy4dC0SefPcl6pteogfwUbKpmnuD/CCVEZxC0=; b=wQY7Ei8gQ+6dOXGYQv7MoWLzXd
-	gkHoLKB/qG6H0wlK5eT86zjTqdb+ZIRBwHGTdo9YCiEzc5t5TZre9bgnCGuP9LCAV8DlXLiYiJj8i
-	y6YU/9CScM21sVE5LE1f9IjLp9IEeMIEsmaMXq8Yq/LRWHdvevYkiOR23KU4X00Hfqv/x74eu0Nuh
-	Bv7PntBxIbIHVcw2D8bP1Fw3dto4azhmedIyvlSm9AV05ys3j+cP2LSrOGT4Fjceyzq4jyDvJMJJk
-	ybOe5SseAVSbZyK5H0i2KPbSfTlzsA0aLM6Unoc6l39YOJltlco6E9D+MZl6E0AxSre896HMm//YR
-	YtVUQZUA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=W3uQQB7e6vA64fR4D2xbg8mQGZa/M0qxBwIFoh7VKto=; b=zSOPmIflyw/e4T1BwtDntEGSaX
+	4t5XdlOiuDsyMJy9ulUsQ4+6w8OwrXQW/YYoXLXhg8bmopRYVWuUIMsj2mQOFsQmEc7DfZcvQ8fPd
+	8Jpa1H7D6WuflvJd+QyqjWU5N43ImMrgqOjUOsfYHhT+Y04C4Y+/CTXQU0yxXIF0MjORD9q2vw9Qi
+	jHnddqVTFXqD4qXDpn/E5PJV1RF+xonKMKGdgWRg1rSXSE2/zewPaMRzUCVYuvafcFyLi4yz/gb7Q
+	yWTfMXlPUBlMjSHByU1jxpfox6kS+5V8IxFxWOf/9xF5sTsxs38ws72dPYxh+iLhibVDwHDvoyUAI
+	W1mh5D0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3zpt-00000000vPZ-0NN4;
-	Thu, 24 Oct 2024 15:33:17 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1t3zxq-00000000x59-1LK5;
+	Thu, 24 Oct 2024 15:41:30 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3zaI-00000000suB-0vpC;
-	Thu, 24 Oct 2024 15:17:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729783027;
-	bh=2Kve0loElZNKii6MgyGBUDusGqHjRRmkEVjHcH8MDHI=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=jHIPwf0da3VkiA6MyWCQRxgWZMsLgxaXSmYoBtUKQPclhbCIjta2dEo48riMRAvS/
-	 IR60w0PmCG98ZQeCVU0WSbwYlOgmdZfTPQj3Ulwg6H5UDySFiXjF7RV/D5CskfYdoH
-	 5JjB74wb4Bd2kfaOTPYr4q2hUw1HX4TTho8rMLR40duK+qL98i98jnkZL1kCnMDNqx
-	 k27UlrSnqGk5PeTfaM/pEAip5Oa/4gRZTPjmc0Is219kemSiP6pkNXsqqNRYupcdJn
-	 u2rT9NPZjRqisz8L6AlvkoxqERXHP8TyyDLCwmgi5BHdltbvl9UpNpA0Pl1XDxsOB5
-	 z2hd18mJStVjA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A23C217E1543;
-	Thu, 24 Oct 2024 17:17:06 +0200 (CEST)
-Message-ID: <8fdeec5c-5de7-44ae-9086-7930d02d610e@collabora.com>
-Date: Thu, 24 Oct 2024 17:17:05 +0200
+	id 1t3zgC-00000000toQ-3v7I;
+	Thu, 24 Oct 2024 15:23:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=W3uQQB7e6vA64fR4D2xbg8mQGZa/M0qxBwIFoh7VKto=; b=OKkGKIaxXHMDQ1maY3CDc3I0/x
+	SY3EjCIsZ2cQZpAWogyhCltY4Wiu81XZ9kQSo8cQRKKx6NulxuWd6keNq27CeBoQEoaos5C9w73FZ
+	BDH218OaXSvBEwLzusG25cQkTD5aYb3PoIlgZscdL57p4C3wKiovZf75E045Vql8a3nzrtr28DFMR
+	R/3S33UHrEQgJ/d22ff1pSwiZL/3D80TyaAEB1npYqNhuFWVai/0NFZS29Ypisge/R2b/Pc5TTAQ2
+	CoTZ84z8/o+ZALMC82tohPYjkymuHFURw7omONjcK635PXxra4/ML+Ymc1NMnZ5B1ARDdUSDB6U+G
+	dzkWI/lA==;
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1t3zg8-00000008hb1-3oSY;
+	Thu, 24 Oct 2024 15:23:15 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id D119B5C598E;
+	Thu, 24 Oct 2024 15:23:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0930FC4CEC7;
+	Thu, 24 Oct 2024 15:23:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1729783386;
+	bh=xEjMAQfA1uXRN9RJu6qq9b5+SQpN/LVbFyfZ/9OTh98=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=rmOqeuJFEcIDXrWqUn2exb+M6Et8L2ku5O276TBDc7BgtWVRzk1YXHnehvu5y21jb
+	 66s9AE6hCn4fzrn+98UZAocCil89+KMtPjMckI2QZ21Vw0faU4kCd8ncZ2f8XA+jt4
+	 mfX4UIj3S4frOSw0s6bj/qab7dQvQE2X/CFGZuvG6wNvCgiqk3Md+zwfxnUVZKysEh
+	 WhB5AKERRRbJdU/ttIGElyNmaiHQBYxzUpjOqn81BR/xUUM/qic7mRiMepk9jstQc5
+	 ytcXhjRjp90+mVtBVH/MlqMiVNoTgCQt5T3hiVWnB52tB/KzLofDB8dK066C5W6x4T
+	 VCyNiWmzyrXgg==
+Date: Thu, 24 Oct 2024 10:23:05 -0500
+From: Rob Herring <robh@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [net-next RFC PATCH v2 1/3] dt-bindings: net: dsa: Add Airoha
+ AN8855 Gigabit Switch documentation
+Message-ID: <20241024152305.GA550738-robh@kernel.org>
+References: <20241023161958.12056-1-ansuelsmth@gmail.com>
+ <20241023161958.12056-2-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC 1/3] pinctrl: mediatek: paris: Expose more
- configurations to GPIO set_config
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Bamvor Jian Zhang <bamv2005@gmail.com>, Shuah Khan <shuah@kernel.org>
-Cc: kernel@collabora.com, linux-mediatek@lists.infradead.org,
- linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kselftest@vger.kernel.org,
- kernelci@lists.linux.dev
-References: <20240909-kselftest-gpio-set-get-config-v1-0-16a065afc3c1@collabora.com>
- <20240909-kselftest-gpio-set-get-config-v1-1-16a065afc3c1@collabora.com>
- <01020191e0901d10-d427a5dd-af4e-4ecf-99e1-4bb051ad1475-000000@eu-west-1.amazonses.com>
-Content-Language: en-US
-In-Reply-To: <01020191e0901d10-d427a5dd-af4e-4ecf-99e1-4bb051ad1475-000000@eu-west-1.amazonses.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241023161958.12056-2-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241024_081710_462818_27464515 
-X-CRM114-Status: GOOD (  19.05  )
+X-CRM114-CacheID: sfid-20241024_162313_949136_D8209A61 
+X-CRM114-Status: GOOD (  27.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,93 +98,304 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/09/24 12:10, AngeloGioacchino Del Regno ha scritto:
-> Il 09/09/24 20:37, Nícolas F. R. A. Prado ha scritto:
->> Currently the set_config callback in the gpio_chip registered by the
->> pinctrl_paris driver only supports PIN_CONFIG_INPUT_DEBOUNCE, despite
+On Wed, Oct 23, 2024 at 06:19:50PM +0200, Christian Marangi wrote:
+> Add Airoha AN8855 5 port Gigabit Switch documentation.
 > 
-> [...] only supports operations configuring the input debounce parameter
-> of the EINT controller and denies configuring params on the other AP GPIOs [...]
+> The switch node requires an additional mdio node to describe each internal
+> PHY relative offset as the PHY address for the switch match the one for
+> the PHY ports. On top of internal PHY address, the switch base PHY address
+> is added.
 > 
-> (reword as needed)
+> Also the switch base PHY address can be configured and changed after the
+> first initialization. On reset, the switch PHY address is ALWAYS 1.
+> This can be configured with the use of "airoha,base_smi_address".
 > 
->> many other configurations already being implemented and available
->> through the pinctrl API for configuration of pins by the Devicetree and
->> other drivers.
->>
->> Expose all configurations currently implemented through the GPIO API so
->> they can also be set from userspace, which is particularly useful to
->> allow testing them from userspace.
->>
->> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
->> ---
->>   drivers/pinctrl/mediatek/pinctrl-paris.c | 20 ++++++++++----------
+> Calibration values might be stored in switch EFUSE and internal PHY
+> might need to be calibrated, in such case, airoha,ext_surge needs to be
+> enabled and relative NVMEM cells needs to be defined in nvmem-layout
+> node.
 > 
-> You can do the same for pinctrl-moore too, it's trivial.
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>  .../bindings/net/dsa/airoha,an8855.yaml       | 253 ++++++++++++++++++
+>  1 file changed, 253 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/dsa/airoha,an8855.yaml
 > 
-> Other than that, I agree about performing this change, as this may be useful
-> for more than just testing.
-> 
+> diff --git a/Documentation/devicetree/bindings/net/dsa/airoha,an8855.yaml b/Documentation/devicetree/bindings/net/dsa/airoha,an8855.yaml
+> new file mode 100644
+> index 000000000000..5982b4c39536
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/dsa/airoha,an8855.yaml
+> @@ -0,0 +1,253 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/net/dsa/airoha,an8855.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Airoha AN8855 Gigabit switch
+> +
+> +maintainers:
+> +  - Christian Marangi <ansuelsmth@gmail.com>
+> +
+> +description:
 
-Nicolas, please don't forget to respin this patch.
+You need '>' to preserve paragraphs.
 
-Thanks,
-Angelo
+> +  Airoha AN8855 is a 5-port Gigabit Switch.
+> +
+> +  The switch node requires an additional mdio node to describe each internal
+> +  PHY relative offset as the PHY address for the switch match the one for
+> +  the PHY ports. On top of internal PHY address, the switch base PHY address
+> +  is added.
+> +
+> +  Also the switch base PHY address can be configured and changed after the
+> +  first initialization. On reset, the switch PHY address is ALWAYS 1.
+> +
+> +properties:
+> +  compatible:
+> +    const: airoha,an8855
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  reset-gpios:
+> +    description:
+> +      GPIO to be used to reset the whole device
+> +    maxItems: 1
+> +
+> +  airoha,base_smi_address:
 
+s/_/-/
 
->>   1 file changed, 10 insertions(+), 10 deletions(-)
->>
->> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/ 
->> pinctrl-paris.c
->> index e12316c42698..668f8055a544 100644
->> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
->> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
->> @@ -255,10 +255,9 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
->>       return err;
->>   }
->> -static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
->> +static int mtk_pinconf_set(struct mtk_pinctrl *hw, unsigned int pin,
->>                  enum pin_config_param param, u32 arg)
->>   {
->> -    struct mtk_pinctrl *hw = pinctrl_dev_get_drvdata(pctldev);
->>       const struct mtk_pin_desc *desc;
->>       int err = -ENOTSUPP;
->>       u32 reg;
->> @@ -795,7 +794,7 @@ static int mtk_pconf_group_set(struct pinctrl_dev *pctldev, 
->> unsigned group,
->>       int i, ret;
->>       for (i = 0; i < num_configs; i++) {
->> -        ret = mtk_pinconf_set(pctldev, grp->pin,
->> +        ret = mtk_pinconf_set(hw, grp->pin,
->>                         pinconf_to_config_param(configs[i]),
->>                         pinconf_to_config_argument(configs[i]));
->>           if (ret < 0)
->> @@ -937,18 +936,19 @@ static int mtk_gpio_set_config(struct gpio_chip *chip, 
->> unsigned int offset,
->>   {
->>       struct mtk_pinctrl *hw = gpiochip_get_data(chip);
->>       const struct mtk_pin_desc *desc;
->> -    u32 debounce;
->> +    enum pin_config_param param = pinconf_to_config_param(config);
->> +    u32 arg = pinconf_to_config_argument(config);
->>       desc = (const struct mtk_pin_desc *)&hw->soc->pins[offset];
->> -    if (!hw->eint ||
->> -        pinconf_to_config_param(config) != PIN_CONFIG_INPUT_DEBOUNCE ||
->> -        desc->eint.eint_n == EINT_NA)
->> -        return -ENOTSUPP;
->> +    if (param == PIN_CONFIG_INPUT_DEBOUNCE) {
->> +        if (!hw->eint || desc->eint.eint_n == EINT_NA)
->> +            return -ENOTSUPP;
->> -    debounce = pinconf_to_config_argument(config);
->> +        return mtk_eint_set_debounce(hw->eint, desc->eint.eint_n, arg);
->> +    }
->> -    return mtk_eint_set_debounce(hw->eint, desc->eint.eint_n, debounce);
->> +    return mtk_pinconf_set(hw, offset, param, arg);
->>   }
->>   static int mtk_build_gpiochip(struct mtk_pinctrl *hw)
->>
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description:
+> +      Configure and change the base switch PHY address to a new address on
+> +      the bus.
+> +      On reset, the switch PHY address is ALWAYS 1.
+
+The paragraphs here won't be maintained without '>' and a blank line in 
+between.
+
+Or just move the 2nd sentence up to follow the first one.
+
+> +    default: 1
+> +    maximum: 31
+> +
+> +  airoha,ext_surge:
+
+ditto.
+
+> +    $ref: /schemas/types.yaml#/definitions/flag
+> +    description:
+> +      Calibrate the internal PHY with the calibration values stored in EFUSE
+> +      for the r50Ohm values.
+> +
+> +  '#nvmem-cell-cells':
+> +    const: 0
+> +
+> +  nvmem-layout:
+> +    $ref: /schemas/nvmem/layouts/nvmem-layout.yaml
+> +    description:
+> +      NVMEM Layout for exposed EFUSE. (for example to propagate calibration
+> +      value for r50Ohm for internal PHYs)
+> +
+> +  mdio:
+> +    $ref: /schemas/net/mdio.yaml#
+> +    unevaluatedProperties: false
+> +    description:
+> +      Define the relative address of the internal PHY for each port.
+> +
+> +      Each reg for the PHY is relative to the switch base PHY address.
+> +
+> +$ref: dsa.yaml#
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +
+> +unevaluatedProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/gpio/gpio.h>
+> +
+> +    mdio {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        switch@1 {
+> +            compatible = "airoha,an8855";
+> +            reg = <1>;
+> +            reset-gpios = <&pio 39 0>;
+> +
+> +            airoha,ext_surge;
+> +
+> +            #nvmem-cell-cells = <0>;
+> +
+> +            nvmem-layout {
+> +                compatible = "fixed-layout";
+> +                #address-cells = <1>;
+> +                #size-cells = <1>;
+> +
+> +                shift_sel_port0_tx_a: shift-sel-port0-tx-a@c {
+> +                    reg = <0xc 0x4>;
+> +                };
+> +
+> +                shift_sel_port0_tx_b: shift-sel-port0-tx-b@10 {
+> +                    reg = <0x10 0x4>;
+> +                };
+> +
+> +                shift_sel_port0_tx_c: shift-sel-port0-tx-c@14 {
+> +                    reg = <0x14 0x4>;
+> +                };
+> +
+> +                shift_sel_port0_tx_d: shift-sel-port0-tx-d@18 {
+> +                    reg = <0x18 0x4>;
+> +                };
+> +
+> +                shift_sel_port1_tx_a: shift-sel-port1-tx-a@1c {
+> +                    reg = <0x1c 0x4>;
+> +                };
+> +
+> +                shift_sel_port1_tx_b: shift-sel-port1-tx-b@20 {
+> +                    reg = <0x20 0x4>;
+> +                };
+> +
+> +                shift_sel_port1_tx_c: shift-sel-port1-tx-c@24 {
+> +                    reg = <0x24 0x4>;
+> +                };
+> +
+> +                shift_sel_port1_tx_d: shift-sel-port1-tx-d@28 {
+> +                    reg = <0x28 0x4>;
+> +                };
+> +
+> +                shift_sel_port2_tx_a: shift-sel-port2-tx-a@2c {
+> +                    reg = <0x2c 0x4>;
+> +                };
+> +
+> +                shift_sel_port2_tx_b: shift-sel-port2-tx-b@30 {
+> +                    reg = <0x30 0x4>;
+> +                };
+> +
+> +                shift_sel_port2_tx_c: shift-sel-port2-tx-c@34 {
+> +                    reg = <0x34 0x4>;
+> +                };
+> +
+> +                shift_sel_port2_tx_d: shift-sel-port2-tx-d@38 {
+> +                    reg = <0x38 0x4>;
+> +                };
+> +
+> +                shift_sel_port3_tx_a: shift-sel-port3-tx-a@4c {
+> +                    reg = <0x4c 0x4>;
+> +                };
+> +
+> +                shift_sel_port3_tx_b: shift-sel-port3-tx-b@50 {
+> +                    reg = <0x50 0x4>;
+> +                };
+> +
+> +                shift_sel_port3_tx_c: shift-sel-port3-tx-c@54 {
+> +                    reg = <0x54 0x4>;
+> +                };
+> +
+> +                shift_sel_port3_tx_d: shift-sel-port3-tx-d@58 {
+> +                    reg = <0x58 0x4>;
+> +                };
+> +            };
+> +
+> +            ports {
+> +                #address-cells = <1>;
+> +                #size-cells = <0>;
+> +
+> +                port@0 {
+> +                    reg = <0>;
+> +                    label = "lan1";
+> +                    phy-mode = "internal";
+> +                    phy-handle = <&internal_phy0>;
+> +                };
+> +
+> +                port@1 {
+> +                    reg = <1>;
+> +                    label = "lan2";
+> +                    phy-mode = "internal";
+> +                    phy-handle = <&internal_phy1>;
+> +                };
+> +
+> +                port@2 {
+> +                    reg = <2>;
+> +                    label = "lan3";
+> +                    phy-mode = "internal";
+> +                    phy-handle = <&internal_phy2>;
+> +                };
+> +
+> +                port@3 {
+> +                    reg = <3>;
+> +                    label = "lan4";
+> +                    phy-mode = "internal";
+> +                    phy-handle = <&internal_phy3>;
+> +                };
+> +
+> +                port@5 {
+> +                    reg = <5>;
+> +                    label = "cpu";
+> +                    ethernet = <&gmac0>;
+> +                    phy-mode = "2500base-x";
+> +
+> +                    fixed-link {
+> +                        speed = <2500>;
+> +                        full-duplex;
+> +                        pause;
+> +                    };
+> +                };
+> +            };
+> +
+> +            mdio {
+> +                #address-cells = <1>;
+> +                #size-cells = <0>;
+> +
+> +                internal_phy0: phy@0 {
+> +                    reg = <0>;
+> +
+> +                    nvmem-cells = <&shift_sel_port0_tx_a>,
+> +                                  <&shift_sel_port0_tx_b>,
+> +                                  <&shift_sel_port0_tx_c>,
+> +                                  <&shift_sel_port0_tx_d>;
+> +                    nvmem-cell-names = "tx_a", "tx_b", "tx_c", "tx_d";
+> +                };
+> +
+> +                internal_phy1: phy@1 {
+> +                    reg = <1>;
+> +
+> +                    nvmem-cells = <&shift_sel_port1_tx_a>,
+> +                                  <&shift_sel_port1_tx_b>,
+> +                                  <&shift_sel_port1_tx_c>,
+> +                                  <&shift_sel_port1_tx_d>;
+> +                    nvmem-cell-names = "tx_a", "tx_b", "tx_c", "tx_d";
+> +                };
+> +
+> +                internal_phy2: phy@2 {
+> +                    reg = <2>;
+> +
+> +                    nvmem-cells = <&shift_sel_port2_tx_a>,
+> +                                  <&shift_sel_port2_tx_b>,
+> +                                  <&shift_sel_port2_tx_c>,
+> +                                  <&shift_sel_port2_tx_d>;
+> +                    nvmem-cell-names = "tx_a", "tx_b", "tx_c", "tx_d";
+> +                };
+> +
+> +                internal_phy3: phy@3 {
+> +                    reg = <3>;
+> +
+> +                    nvmem-cells = <&shift_sel_port3_tx_a>,
+> +                                  <&shift_sel_port3_tx_b>,
+> +                                  <&shift_sel_port3_tx_c>,
+> +                                  <&shift_sel_port3_tx_d>;
+> +                    nvmem-cell-names = "tx_a", "tx_b", "tx_c", "tx_d";
+> +                };
+> +            };
+> +        };
+> +    };
+> -- 
+> 2.45.2
 > 
-> 
-
-
 
