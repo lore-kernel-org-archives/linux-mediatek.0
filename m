@@ -4,78 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA17BD0BB4A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Oct 2024 01:55:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F8F2D0BB50
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Oct 2024 02:35:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=3CpmCRaf0iN6t3tO+rXWbvSp6h4e8oWCGaYzYX07O2A=; b=1W+16qc7o3vatUW/idTC5JbHNi
-	eLtigv/NKgh6C0VqkvBaUMRK/svcDz/SmlE/Nv2mwx1CDQhIiUqL77aJCR7REAQ02NSOBBxs5SitX
-	avoOoojggWh/n8Mcpp7Jl6ewqUH16NgSj03cxA00ejw/3CWyaG6pNswct9l/283WWRqzt4/J/lZZo
-	UhU/H+yT2hA+vZcWxEWjLT++v5uxzcjiKe9pd5qz7oKexDoc9zZWsNSPQSj0FKYWQTNf7S3tInoag
-	qYOoh3XovwoxvDNiO5G5EHeRm9H2S2Aox+66A12WtDTIbMJbeSnHyjqzerlKexw076z2NTeFvVQJb
-	Gjek3G3g==;
+	bh=TxpVWTAXDeDiWPwWrae7vmrFsMqNNbBM2573sm7JwTs=; b=cyDohP2jsyYPlFPv7kJINGf7Ns
+	ipE1ej7fVh9SZkEYoS1BuFU1EwZyb6N3K5BwceICOWOdeUHAXLYlBOtIEMuLHXocmAJaIlbccMnFw
+	Y24YDHmpo/G/LSwDxi9NWCUyanude3iJQ6TiYT3fu6QH/kKIhliobxdqWJbVXdDQtLOycmlUxPO5T
+	ktrShzk6/QxMFke8c/EAZDXLn2uU4lbYyKHoUFPk3lw3iPtcI/b6lvbnNoGESdugc6bJX/1FfSuj6
+	Cjmou1ioUav53QYCGkWA1kxdSBxeMXBxVpMY3bZWVHvrsmIYDriPoL0qqKj1beeed0YZrkthnf1fu
+	gLpgchFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3n46-0000000GT5q-3i81;
-	Thu, 24 Oct 2024 01:55:06 +0000
+	id 1t3nhL-0000000GXBD-1I4k;
+	Thu, 24 Oct 2024 02:35:39 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t3n43-0000000GT57-2Xjx
+	id 1t3nTq-0000000GVRS-0zMg
 	for linux-mediatek@lists.infradead.org;
-	Thu, 24 Oct 2024 01:55:04 +0000
-X-UUID: f8b36c5091aa11ef9048ed6ed365623b-20241023
+	Thu, 24 Oct 2024 02:21:43 +0000
+X-UUID: b220a15a91ae11ef9048ed6ed365623b-20241023
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=3CpmCRaf0iN6t3tO+rXWbvSp6h4e8oWCGaYzYX07O2A=;
-	b=Z0awVBZks7GuVW/SHkBi3mRApiP49nHwGW4yll79KuZnr/qlvqakGKtjlNdfLrqR9qkOMBAOAr50l0IiJbI2/1JqCfNOcnFb5ICOKmk3WukZFEGrSpwN4//RRRNEeduHWVto93JtZnrw0i77p2DfObmsvHqSxPgHuiEnAMUo5+A=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=TxpVWTAXDeDiWPwWrae7vmrFsMqNNbBM2573sm7JwTs=;
+	b=pVguGuspHMzXhLo0+npV3m8uC/UhYS+NzMKq/cTyA2YROn0m5yH7rqBNKKQ5ILQrvf48indB82cEUitlA8p9dl+IWDUHNEBQOexVT7OQpWKHAvatxLg1Vp0kGSVx6CjMiLElldmosKFpQm1xz7TvoOC62Cwi00EjykO2v+/oJus=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.42,REQID:b99bf87b-1b3c-4046-97dc-cf76f9dfeeec,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:b0fcdc3,CLOUDID:e25c042e-a7a0-4b06-8464-80be82133975,B
+X-CID-O-INFO: VERSION:1.1.42,REQID:c859219e-831e-45ae-8759-cba01fa71322,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:58dd042e-a7a0-4b06-8464-80be82133975,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
 	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: f8b36c5091aa11ef9048ed6ed365623b-20241023
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
+X-UUID: b220a15a91ae11ef9048ed6ed365623b-20241023
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
+	(envelope-from <meichia.chiu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1020648889; Wed, 23 Oct 2024 18:54:57 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+	with ESMTP id 707961425; Wed, 23 Oct 2024 19:21:37 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 23 Oct 2024 18:54:55 -0700
+ 15.2.1118.26; Thu, 24 Oct 2024 10:21:33 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 24 Oct 2024 09:54:55 +0800
-From: <peter.wang@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
-	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
-	<beanhuo@micron.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<yi-fan.peng@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>,
-	<stable@vger.kernel.org>
-Subject: [PATCH v2] ufs: core: fix another deadlock when rtc update
-Date: Thu, 24 Oct 2024 09:54:53 +0800
-Message-ID: <20241024015453.21684-1-peter.wang@mediatek.com>
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 24 Oct 2024 10:21:33 +0800
+From: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
+To: Johannes Berg <johannes@sipsolutions.net>
+CC: Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	MeiChia Chiu <MeiChia.Chiu@mediatek.com>, Peter Chiu
+	<chui-hao.chiu@mediatek.com>
+Subject: [PATCH] wifi: mac80211: Add ADDBA Extension element parsing logics
+Date: Thu, 24 Oct 2024 10:21:05 +0800
+Message-ID: <20241024022105.6810-1-MeiChia.Chiu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--8.365600-8.000000
+X-TMASE-MatchedRID: l5qCKP2S+CY9PaPD4VZEncqXjImgj58bju+GX08gELAUtdRZTmEaIT/O
+	C3yK2VFNYK6NT828Xh7y7+YHWQ1L0WMhTB8sj4eyJTeTSfxLkqmANGXBz7BHp9eRD+V8yu0DJLC
+	p26f8YjS+MslyyVDSuFf+wCFGZIKvb3gilrWi3Gi5PNqdvNvYV3N3sLsG0mhuCqIJhrrDy2+/Z0
+	rAfct0pun6DTnDw4pdvfjgZWRn16tNlZ1zEcyAY23NvezwBrVmZ/rAPfrtWC0BX1w330R6VqPFj
+	JEFr+olwXCBO/GKkVr3FLeZXNZS4KBkcgGnJ4WmPP1lZIeXWqsQ4UEkN2J2kIzU1FEAnBSr4+cx
+	joa0nBB+3BndfXUhXQ==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--8.365600-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: BFAC0764EEC1F35BD44764FC19E9CD41B3C921478F2AF59682A7B7577574A2DE2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241023_185503_753662_948BB822 
-X-CRM114-Status: GOOD (  11.20  )
+X-CRM114-CacheID: sfid-20241023_192142_313369_B6EF0E2E 
+X-CRM114-Status: GOOD (  14.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,37 +98,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+Add ADDBA Extension element parsing logics in ADDBA request/response
 
-When ufshcd_rtc_work calls ufshcd_rpm_put_sync and the pm's
-usage_count is 0, it will enter the runtime suspend callback.
-However, the runtime suspend callback will wait to flush
-ufshcd_rtc_work, causing a deadlock.
-Replacing ufshcd_rpm_put_sync with ufshcd_rpm_put can avoid
-the deadlock.
+To support BA size of 1024,
+the ADDBA Extension element is needed in ADDBA request/response.
+Therefore, parsing logics is added for this missing piece.
 
-Fixes: 6bf999e0eb41 ("scsi: ufs: core: Add UFS RTC support")
-Cc: <stable@vger.kernel.org> #6.11.x
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+Reviewed-by: Shayne Chen <shayne.chen@mediatek.com>
+Reviewed-by: Money Wang <money.wang@mediatek.com>
+Co-developed-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
 ---
- drivers/ufs/core/ufshcd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/linux/ieee80211.h |  2 ++
+ net/mac80211/agg-tx.c     | 41 ++++++++++++++++++++++++++++++++++++---
+ 2 files changed, 40 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index a63dcf48e59d..f5846598d80e 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -8219,7 +8219,7 @@ static void ufshcd_update_rtc(struct ufs_hba *hba)
+diff --git a/include/linux/ieee80211.h b/include/linux/ieee80211.h
+index 456bca45ff05..05dedc45505c 100644
+--- a/include/linux/ieee80211.h
++++ b/include/linux/ieee80211.h
+@@ -1445,6 +1445,8 @@ struct ieee80211_mgmt {
+ 					__le16 status;
+ 					__le16 capab;
+ 					__le16 timeout;
++					/* followed by BA Extension */
++					u8 variable[];
+ 				} __packed addba_resp;
+ 				struct{
+ 					u8 action_code;
+diff --git a/net/mac80211/agg-tx.c b/net/mac80211/agg-tx.c
+index 04cb45cfb310..2070ca86be0c 100644
+--- a/net/mac80211/agg-tx.c
++++ b/net/mac80211/agg-tx.c
+@@ -66,10 +66,12 @@ static void ieee80211_send_addba_request(struct ieee80211_sub_if_data *sdata,
+ 	struct ieee80211_local *local = sdata->local;
+ 	struct sk_buff *skb;
+ 	struct ieee80211_mgmt *mgmt;
++	struct ieee80211_addba_ext_ie *addba_ext;
++	u8 ext_size = agg_size >= 1024 ? 2 + sizeof(*addba_ext) : 0;
++	u8 *pos;
+ 	u16 capab;
  
- 	err = ufshcd_query_attr(hba, UPIU_QUERY_OPCODE_WRITE_ATTR, QUERY_ATTR_IDN_SECONDS_PASSED,
- 				0, 0, &val);
--	ufshcd_rpm_put_sync(hba);
-+	ufshcd_rpm_put(hba);
+-	skb = dev_alloc_skb(sizeof(*mgmt) + local->hw.extra_tx_headroom);
+-
++	skb = dev_alloc_skb(sizeof(*mgmt) + local->hw.extra_tx_headroom + ext_size);
+ 	if (!skb)
+ 		return;
  
- 	if (err)
- 		dev_err(hba->dev, "%s: Failed to update rtc %d\n", __func__, err);
+@@ -93,6 +95,15 @@ static void ieee80211_send_addba_request(struct ieee80211_sub_if_data *sdata,
+ 	mgmt->u.action.u.addba_req.start_seq_num =
+ 					cpu_to_le16(start_seq_num << 4);
+ 
++	if (agg_size >= 1024) {
++		pos = skb_put_zero(skb, ext_size);
++		*pos++ = WLAN_EID_ADDBA_EXT;
++		*pos++ = sizeof(struct ieee80211_addba_ext_ie);
++		addba_ext = (struct ieee80211_addba_ext_ie *)pos;
++		addba_ext->data = u8_encode_bits(agg_size >> IEEE80211_ADDBA_EXT_BUF_SIZE_SHIFT,
++						 IEEE80211_ADDBA_EXT_BUF_SIZE_MASK);
++	}
++
+ 	ieee80211_tx_skb_tid(sdata, skb, tid, -1);
+ }
+ 
+@@ -460,8 +471,11 @@ static void ieee80211_send_addba_with_timeout(struct sta_info *sta,
+ 	sta->ampdu_mlme.addba_req_num[tid]++;
+ 	spin_unlock_bh(&sta->lock);
+ 
+-	if (sta->sta.deflink.he_cap.has_he) {
++	if (sta->sta.deflink.eht_cap.has_eht) {
+ 		buf_size = local->hw.max_tx_aggregation_subframes;
++	} else if (sta->sta.deflink.he_cap.has_he) {
++		buf_size = min_t(u16, local->hw.max_tx_aggregation_subframes,
++				 IEEE80211_MAX_AMPDU_BUF_HE);
+ 	} else {
+ 		/*
+ 		 * We really should use what the driver told us it will
+@@ -961,8 +975,10 @@ void ieee80211_process_addba_resp(struct ieee80211_local *local,
+ {
+ 	struct tid_ampdu_tx *tid_tx;
+ 	struct ieee80211_txq *txq;
++	struct ieee802_11_elems *elems;
+ 	u16 capab, tid, buf_size;
+ 	bool amsdu;
++	int ext_elem_len;
+ 
+ 	lockdep_assert_wiphy(sta->local->hw.wiphy);
+ 
+@@ -970,6 +986,25 @@ void ieee80211_process_addba_resp(struct ieee80211_local *local,
+ 	amsdu = capab & IEEE80211_ADDBA_PARAM_AMSDU_MASK;
+ 	tid = u16_get_bits(capab, IEEE80211_ADDBA_PARAM_TID_MASK);
+ 	buf_size = u16_get_bits(capab, IEEE80211_ADDBA_PARAM_BUF_SIZE_MASK);
++	ext_elem_len = len - offsetof(struct ieee80211_mgmt,
++				      u.action.u.addba_resp.variable);
++
++	if (ext_elem_len) {
++		elems = ieee802_11_parse_elems(mgmt->u.action.u.addba_resp.variable,
++					       ext_elem_len, true, NULL);
++
++		if (elems && !elems->parse_error) {
++			if (sta->sta.deflink.eht_cap.has_eht && elems->addba_ext_ie) {
++				u8 buf_size_1k = u8_get_bits(elems->addba_ext_ie->data,
++							     IEEE80211_ADDBA_EXT_BUF_SIZE_MASK);
++				buf_size |=
++					((u16)buf_size_1k) << IEEE80211_ADDBA_EXT_BUF_SIZE_SHIFT;
++			}
++		}
++
++		kfree(elems);
++	}
++
+ 	buf_size = min(buf_size, local->hw.max_tx_aggregation_subframes);
+ 
+ 	txq = sta->sta.txq[tid];
 -- 
-2.18.0
+2.45.2
 
 
