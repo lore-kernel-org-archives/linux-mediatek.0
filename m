@@ -4,85 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7998D0C609
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 13:10:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81076D0C60B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 13:16:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uaLzS2qaJigWNLOldFetiqs+rgYiakfBQHgJpJQH0ok=; b=TATYiyTMZTVHZsP+CCnNHgw9MB
-	6wpd93pLBVKpKu8fKrxu1sja72iC37zzgH8EZScirqsfjaj5W9Rm2J4X0dwenb6iS9BDgWwdUIuhH
-	k3hPkUSwF8d0Te89UkbFqp41Vlwrti0FmRzvJpIvCV5ViO9GI8z2qHxdhb/AEwXCnaTEin3YKlN2o
-	uE5veg9Tb+Jif81kXcrutTVonwyUU4wyAGg4yhmEBk5Aosm9YVM76Uc1DtBPAhlSE3rouryd+HrKD
-	2lMyIJgYmDhyke3COE0taBJnk06sK73xPgIxijxwsm6kW/s6wAB7GPIXhItnB4JRxCFp5acgo6a5J
-	cH9xGwqg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=e8yKR4BVLvMBogTBQ5uhZAmMCQQBIAWiGqlkb0ku774=; b=jTf0Ai4BzrUKW2yAZkZh7fJRbk
+	5N/NB+5XPCn8XE2MxoCw2i8EKOBBDPRS+jymtqf9n2BYVXWruCjDKJG3wcjjFps98/BNg+43a8NHV
+	REZ2negglV6jF0bx3h+1aa2vNmW4qj7fpC9BcViOjBxAdKP/Lku8rg5SI4Xj6rISKSvlZZuNT4niT
+	XndfTE3xs5+2WLzPJvZIUROQbF0UmYgBuYa4pePx8bGQOl/NtwHWtBcOHYWUnkHXHyGbIOmpVhTtC
+	Rona0psQDfAzVvwDg76bwQtwzYgXQ0px/xE6OI8hEpkTp+GkscFqYy94VAdPiHMKbDb+YV3bSFcL5
+	GzM1kUaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4K5M-00000003lqn-3PQr;
-	Fri, 25 Oct 2024 13:10:36 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1t4KAw-00000003n5t-0det;
+	Fri, 25 Oct 2024 13:16:22 +0000
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4JrX-00000003jo0-0jcg;
-	Fri, 25 Oct 2024 12:56:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=uaLzS2qaJigWNLOldFetiqs+rgYiakfBQHgJpJQH0ok=; b=UrLWioFD3+IF81Nj7052DTFI4U
-	HHlf+h2qAaAaDBGEcmYLn8yd9l8RpBEvj9lQ2CUvYIoHWC8LsngOarDnksRT6ja+T7M8hi1WLiXTS
-	5HH2fxuI+M2mWfbMwbFJk2la+fEEPtnMQXEEZFmldTftoeheMatO7DshRfbzkHChbDJG6i8PLaFl7
-	DwF3TWEhtjfthgZNHj/Q78IAaI4r8IuBLMrFIz4YjMPJtEpM9IIuaV5Rro58ehbT2iMLzM5fwrJSq
-	M0OeFvZ0Y2aPVeCk0cwh95hNllfZ37lQJ6uQ1P9X0nyyga41LglyvNENOjWEuhcDYSvilwijSIrtv
-	fCLmPphg==;
-Received: from vps0.lunn.ch ([156.67.10.101])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4JrU-00000008ui4-1Hwh;
-	Fri, 25 Oct 2024 12:56:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=uaLzS2qaJigWNLOldFetiqs+rgYiakfBQHgJpJQH0ok=; b=kp6vq3UEPeK6nUfz/w8v2v2WhE
-	Lq8d+/sHZntmUJ1c0EywObGbYOcK1hIlBIGXEV4iTq9kTQbMCedm2lXASJq7uMv9yj1nWDSTNbiP+
-	M+PgdGgfT0stpFbABjORFWF70lBaytRFHY/8X0N9d+Dc6WJ6dw6J0328StxxzbtmCvXQ=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1t4JrJ-00BFG4-9v; Fri, 25 Oct 2024 14:56:05 +0200
-Date: Fri, 25 Oct 2024 14:56:05 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [net-next RFC PATCH v2 3/3] net: phy: Add Airoha AN8855 Internal
- Switch Gigabit PHY
-Message-ID: <a8f9a6ba-b33f-4f78-97c4-757a15895104@lunn.ch>
-References: <20241023161958.12056-1-ansuelsmth@gmail.com>
- <20241023161958.12056-4-ansuelsmth@gmail.com>
- <87aad5ff-4876-4611-8cf8-5c20df3559b3@lunn.ch>
- <671b7a2e.050a0220.4431c.03f5@mx.google.com>
+	id 1t4J4A-00000003bVQ-2LWj
+	for linux-mediatek@lists.infradead.org;
+	Fri, 25 Oct 2024 12:05:20 +0000
+Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-20ca1b6a80aso18926865ad.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Oct 2024 05:05:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1729857917; x=1730462717; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=e8yKR4BVLvMBogTBQ5uhZAmMCQQBIAWiGqlkb0ku774=;
+        b=nEkHLlEm/LOJtcBV8fES6IRraP1g0SMXH2BSsfmLoAwakttk/5PoD0mRUXsvzOveu9
+         12Xo2tTYMg1wn6Zfy+60y5UkDAzHLCaZIhsG+zUA1cDH4uA8nJeDXGeTCCthdmy2Hc41
+         Oorvs08tN4UdWTSzq7Gi806i0fjNW22miFrRc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729857917; x=1730462717;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=e8yKR4BVLvMBogTBQ5uhZAmMCQQBIAWiGqlkb0ku774=;
+        b=U0E4Xx2H/S4JLCOXN/7hZK0QyxY6v897Cdi32YW5LIPoc56hWrssVs6LOhI7p9dq/p
+         1rZa3FfGiBULQl+1Lh6ZX9pnuXvwgcIr4ZR1nSsHBm2UokE1CFam4+7HDB3VMZMFEi0H
+         X1plqWVBALXnqL2qkHgYm6/Qf9EJWSZIkjTXhn4WINxnQGzQIC5mLHmJc1IOCyyWzXRj
+         VaIPOoyhZ0holmUopHx13bZim01cA311stdWdN8W+jN4VM5S3blg2idiwVR2vewGXDF7
+         mrdZMRF0na0qC2ggvNAws9vsLCvBJl3msY3ozp+BP+QJbyGctl1Z6IdEBOY81s6VRIg5
+         AbnQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVatp6Sp8lWiC70TnjPHvTic/TvfZLhcpsbw0B/h2XZ10uISjtOoxp6tKtpnvEFjUTQGOxt0BZOuAwKO05Wmw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyIeQVShGUP07qpIlouMZcJgv0XMiyfPEI9+Jy0vGI75pVM+RHe
+	O+HK/aYi1q3+rFSF0S+Wq50FD9UYC5hoZ7vbcuSS9iCqpl0RrbKD002uNEVJTA==
+X-Google-Smtp-Source: AGHT+IFgd+gptg43VdhIDSdk7mGqoF3jpDKUK7U7sWb9MrqLl4Aed6DcyNuNHfI9LnX+jfuduFQLJA==
+X-Received: by 2002:a17:903:2341:b0:20c:62e1:6361 with SMTP id d9443c01a7336-20fa9e77fd7mr131727475ad.25.1729857916917;
+        Fri, 25 Oct 2024 05:05:16 -0700 (PDT)
+Received: from yuanhsinte.c.googlers.com (176.220.194.35.bc.googleusercontent.com. [35.194.220.176])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-210bc02eb3fsm8309495ad.202.2024.10.25.05.05.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 25 Oct 2024 05:05:16 -0700 (PDT)
+From: Hsin-Te Yuan <yuanhsinte@chromium.org>
+Date: Fri, 25 Oct 2024 12:05:12 +0000
+Subject: [PATCH v14] thermal/drivers/mediatek/auxadc_thermal: expose all
+ thermal sensors
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <671b7a2e.050a0220.4431c.03f5@mx.google.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20241025-auxadc_thermal-v14-1-96ab5b60c02e@chromium.org>
+X-B4-Tracking: v=1; b=H4sIAHeJG2cC/3XP0W7CMAwF0F+p8kxQHKdZyxP/gdCUug6NtLYoh
+ apT1X8nRdMEgz3a1j1XnsXAMfAgdtksIo9hCH2XBjCbTFDjuhPLUKeF0EobVahSuuvkavq8NBx
+ b9yXLihELpqICEil0juzDdBcPxzQ3Ybj08fteMAKs63+tdJcgnUdL9GE8OtxTE/s2XNttH09i9
+ UbQvwYoBa+GToauCkuqNN4b+2xssp8o2PdRUgaRS2/B+Xf1+FCv81cD1xdyjUC5romqP8ayLDc
+ EV8lqdQEAAA==
+X-Change-ID: 20240809-auxadc_thermal-9be338ec8b1c
+To: "Rafael J. Wysocki" <rafael@kernel.org>, 
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
+ Lukasz Luba <lukasz.luba@arm.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ James Lo <james.lo@mediatek.com>, Michael Kao <michael.kao@mediatek.com>, 
+ Hsin-Yi Wang <hsinyi@chromium.org>, Ben Tseng <ben.tseng@mediatek.com>, 
+ Hsin-Te Yuan <yuanhsinte@chromium.org>
+X-Mailer: b4 0.15-dev-7be4f
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241025_135616_471837_B6B05EDE 
-X-CRM114-Status: GOOD (  12.76  )
+X-CRM114-CacheID: sfid-20241025_050518_694958_85DE9174 
+X-CRM114-Status: GOOD (  24.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,24 +101,237 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 25, 2024 at 12:59:54PM +0200, Christian Marangi wrote:
-> On Wed, Oct 23, 2024 at 06:53:14PM +0200, Andrew Lunn wrote:
-> > > +	/* Enable Asymmetric Pause Capability */
-> > > +	ret = phy_set_bits(phydev, MII_ADVERTISE, ADVERTISE_PAUSE_ASYM);
-> > > +	if (ret)
-> > > +		return ret;
-> > 
-> > The PHY driver alone does not decide this. The MAC driver needs to
-> > indicate it supports asym pause by calling phy_supports_asym_pause().
-> >
-> 
-> Sorry for the stupid question, I couldn't find this OPs. Any hit how to
-> handle this?
+From: James Lo <james.lo@mediatek.com>
 
-For phylink, set MAC_ASYM_PAUSE | MAC_SYM_PAUSE in the capabilities in
-phylink_config.
+Previously, the driver only supported reading the temperature from all
+sensors and returning the maximum value. This update adds another
+get_temp ops to support reading the temperature from each sensor
+separately.
 
-For phylib, call phy_support_asym_pause(phydev) after connecting to the PHY.
+Especially, some thermal zones registered by this patch are needed by
+MT8183 since those thermal zones are necessary for mtk-svs driver.
 
-	Andrew
+Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
+Signed-off-by: James Lo <james.lo@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+---
+Changes in v14:
+- Remove redundant error message.
+- Link to v13: https://lore.kernel.org/r/20241025-auxadc_thermal-v13-1-a5231c52dccb@chromium.org
+
+Changes in v13:
+- Make subject and commit message more clear.
+- Make error message more clear.
+- Link to v12: https://lore.kernel.org/r/20241016-auxadc_thermal-v12-1-c0433e9f61af@chromium.org
+
+Changes in v12:
+- Remove unnecessary check and unused variable assignment in mtk_read_sensor_temp.
+- Add more about what this patch achieves in the commit message.
+- Link to v11: https://lore.kernel.org/r/20240809-auxadc_thermal-v11-1-af36cc74f3a3@chromium.org
+
+Changes in V11:
+    - Rebase on kernel v6.11-rc2
+    - Use mtk_thermal_temp_is_valid in mtk_read_sensor_temp just like
+      mtk_thermal_bank_temperature
+    - Change the error handling of devm_thermal_of_zone_register return
+      value
+    - link to V10: https://lore.kernel.org/lkml/20220519101044.16765-1-james.lo@mediatek.com/
+
+Changes in V10:
+    - Rebase to kernel-v5.18-rc7
+    - Resend
+
+Changes in V9:
+    - Rebase to kernel-v5.14-rc1
+    - Bind raw_to_mcelsius_v1 or raw_to_mcelsius_v2 to compatible
+      data of struct mtk_thermal_data
+    - Remove duplicate struct 'mtk_thermal_bank'
+    - Remove unnecessary if condition check
+    - Return error if any thermal zone fail to register
+
+Changes in V8:
+    - Rebase to kernel-v5.13-rc1
+    - Resend
+
+Changes in v7:
+    - Fix build error in v6.
+
+Changes in v6:
+    - Rebase to kernel-5.11-rc1.
+    - [1/3]
+        - add interrupts property.
+    - [2/3]
+        - add the Tested-by in the commit message.
+    - [3/3]
+        - use the mt->conf->msr[id] instead of conf->msr[id] in the
+          _get_sensor_temp and mtk_thermal_bank_temperature.
+        - remove the redundant space in _get_sensor_temp and
+          mtk_read_sensor_temp.
+        - change kmalloc to dev_kmalloc in mtk_thermal_probe.
+
+Changes in v5:
+    - Rebase to kernel-5.9-rc1.
+    - Revise the title of cover letter.
+    - Drop "[v4,7/7] thermal: mediatek: use spinlock to protect PTPCORESEL"
+    - [2/2]
+        -  Add the judgement to the version of raw_to_mcelsius.
+
+Changes in v4:
+    - Rebase to kernel-5.6-rc1.
+    - [1/7]
+        - Squash thermal zone settings in the dtsi from [v3,5/8]
+          arm64: dts: mt8183: Increase polling frequency for CPU thermal zone.
+        - Remove the property of interrupts and mediatek,hw-reset-temp.
+    - [2/7]
+        - Correct commit message.
+    - [4/7]
+        - Change the target temperature to the 80C and change the commit message.
+    - [6/7]
+        - Adjust newline alignment.
+        - Fix the judgement on the return value of registering thermal zone.
+
+Changes in v3:
+    - Rebase to kernel-5.5-rc1.
+    - [1/8]
+        - Update sustainable power of cpu, tzts1~5 and tztsABB.
+    - [7/8]
+        - Bypass the failure that non cpu_thermal sensor is not find in thermal-zones
+          in dts, which is normal for mt8173, so prompt a warning here instead of
+          failing.
+
+    Return -EAGAIN instead of -EACCESS on the first read of sensor that
+        often are bogus values. This can avoid following warning on boot:
+
+          thermal thermal_zone6: failed to read out thermal zone (-13)
+
+Changes in v2:
+    - [1/8]
+        - Add the sustainable-power,trips,cooling-maps to the tzts1~tztsABB.
+    - [4/8]
+        - Add the min opp of cpu throttle.
+---
+
+---
+ drivers/thermal/mediatek/auxadc_thermal.c | 70 +++++++++++++++++++++++++++----
+ 1 file changed, 62 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
+index 9ee2e7283435acfcbb1a956303b6122a08affecc..9a9079d559a3abe9e3823f744d4c9a159a8666bd 100644
+--- a/drivers/thermal/mediatek/auxadc_thermal.c
++++ b/drivers/thermal/mediatek/auxadc_thermal.c
+@@ -847,7 +847,8 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
+ 
+ static int mtk_read_temp(struct thermal_zone_device *tz, int *temperature)
+ {
+-	struct mtk_thermal *mt = thermal_zone_device_priv(tz);
++	struct mtk_thermal_bank *bank = thermal_zone_device_priv(tz);
++	struct mtk_thermal *mt = bank->mt;
+ 	int i;
+ 	int tempmax = INT_MIN;
+ 
+@@ -866,10 +867,41 @@ static int mtk_read_temp(struct thermal_zone_device *tz, int *temperature)
+ 	return 0;
+ }
+ 
++static int mtk_read_sensor_temp(struct thermal_zone_device *tz, int *temperature)
++{
++	struct mtk_thermal_bank *bank = thermal_zone_device_priv(tz);
++	struct mtk_thermal *mt = bank->mt;
++	const struct mtk_thermal_data *conf = mt->conf;
++	int id = bank->id - 1;
++	int temp = INT_MIN;
++	u32 raw;
++
++	raw = readl(mt->thermal_base + conf->msr[id]);
++
++	temp = mt->raw_to_mcelsius(mt, id, raw);
++
++	/*
++	 * The first read of a sensor often contains very high bogus
++	 * temperature value. Filter these out so that the system does
++	 * not immediately shut down.
++	 */
++
++	if (unlikely(!mtk_thermal_temp_is_valid(temp)))
++		return -EAGAIN;
++
++	*temperature = temp;
++
++	return 0;
++}
++
+ static const struct thermal_zone_device_ops mtk_thermal_ops = {
+ 	.get_temp = mtk_read_temp,
+ };
+ 
++static const struct thermal_zone_device_ops mtk_thermal_sensor_ops = {
++	.get_temp = mtk_read_sensor_temp,
++};
++
+ static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
+ 				  u32 apmixed_phys_base, u32 auxadc_phys_base,
+ 				  int ctrl_id)
+@@ -1199,6 +1231,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 	u64 auxadc_phys_base, apmixed_phys_base;
+ 	struct thermal_zone_device *tzdev;
+ 	void __iomem *apmixed_base, *auxadc_base;
++	struct mtk_thermal_bank *tz;
+ 
+ 	mt = devm_kzalloc(&pdev->dev, sizeof(*mt), GFP_KERNEL);
+ 	if (!mt)
+@@ -1285,14 +1318,35 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 			mtk_thermal_init_bank(mt, i, apmixed_phys_base,
+ 					      auxadc_phys_base, ctrl_id);
+ 
+-	tzdev = devm_thermal_of_zone_register(&pdev->dev, 0, mt,
+-					      &mtk_thermal_ops);
+-	if (IS_ERR(tzdev))
+-		return PTR_ERR(tzdev);
++	for (i = 0; i <= mt->conf->num_sensors; i++) {
++		tz = devm_kmalloc(&pdev->dev, sizeof(*tz), GFP_KERNEL);
++		if (!tz)
++			return -ENOMEM;
++
++		tz->mt = mt;
++		tz->id = i;
++
++		tzdev = devm_thermal_of_zone_register(&pdev->dev, i,
++						      tz, (i == 0) ?
++						      &mtk_thermal_ops
++						      : &mtk_thermal_sensor_ops);
++
++		if (IS_ERR(tzdev)) {
++			ret = PTR_ERR(tzdev);
++			if (ret == -ENODEV) {
++				dev_warn(&pdev->dev,
++					 "Can't find thermal zone for sensor %d; sensor skipped.\n", i);
++				continue;
++			}
++			return dev_err_probe(&pdev->dev, ret,
++					     "Failed to register thermal zone %d.\n", i);
++		}
+ 
+-	ret = devm_thermal_add_hwmon_sysfs(&pdev->dev, tzdev);
+-	if (ret)
+-		dev_warn(&pdev->dev, "error in thermal_add_hwmon_sysfs");
++		ret = devm_thermal_add_hwmon_sysfs(&pdev->dev, tzdev);
++		if (ret)
++			dev_warn(&pdev->dev,
++				 "Sensor %d: Error in thermal_add_hwmon_sysfs: %d\n", i, ret);
++	}
+ 
+ 	return 0;
+ }
+
+---
+base-commit: b589839414be04b2b37e4bf6f84af576c99faf64
+change-id: 20240809-auxadc_thermal-9be338ec8b1c
+
+Best regards,
+-- 
+Hsin-Te Yuan <yuanhsinte@chromium.org>
+
 
