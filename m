@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37113D0C5EE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 09:10:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0EF2D0C5EC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 09:16:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0OFw5/vW+q+fbP5gIo5SEpJ9x8soqdU7yg4/CUbaxHs=; b=3jKYAGwqwj79A0vmLC4pAHShIb
-	GCv05btuG7i//i1JN8tI+bPZ1ilefmyScVIoOmc6vic+z294K4xrg6Qt2lnUYZiy8tXtNo5oD7rWf
-	ksJPYk33mUzSjkK15lSiqFt3mWqlmBb+lzxWDXM/kXyCyc2jik4LQoUYtIYfU9lUzwfhXN984h0VO
-	cGphg1LIpvtHMB6fneKvOsksKV/w5TuUgK195eV2keWBBRczBk2DbecST3WUQukWcQrLUjHDp9E1I
-	SWyPwqUiENNl8uHHQHlAfbeE8jw2V/Oj1phfiqYpIltHq8trrWK3N/ru3BSzbPzGeLRJR1KaOg3QB
-	Niq3mi/w==;
+	bh=7GKffupBzfLwE7D5fHoA26UgqV4l1meOQDhomQdcNxM=; b=dtHt4ChYi3r02R16S+b0FEaIR3
+	zboTTEFGF8GE2Di2+NBGPcNNFRr5CSKafpUTDazCqRE4NnXm9hnQWv2slHMU4Nu5FH+HSNHkHSklJ
+	x3cMkqWgK4lx63S9sQLkZ116HIoOBSPjSO6NvxnrOg0bjhZRTNRc1WP5REH6aOF0b7CKY0mOg8J/D
+	hV6D6n+3yj4pLrZEIBiP19j1xluRgWKug1Wz3UZbswWH1N4GSPS5z1FrtLCK41vHk0KfRtot5rNEE
+	isXzTUrKpwaRLLB0hNHcuC9aiMhFJMIiE1HfFRbmlDlBvLxRk4mM3F6lDav3IWDysz0m7+cJAtr5m
+	mvvl6bBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4GLD-000000037OG-13bU;
-	Fri, 25 Oct 2024 09:10:43 +0000
-Received: from cmccmta8.chinamobile.com ([111.22.67.151] helo=cmccmta1.chinamobile.com)
+	id 1t4GQZ-000000038Jw-1fv7;
+	Fri, 25 Oct 2024 09:16:15 +0000
+Received: from cmccmta2.chinamobile.com ([111.22.67.135] helo=cmccmta1.chinamobile.com)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4GKZ-000000037Iv-1r00;
-	Fri, 25 Oct 2024 09:10:06 +0000
+	id 1t4FFk-00000002tRB-3AsA;
+	Fri, 25 Oct 2024 08:01:06 +0000
 X-RM-TagInfo: emlType=0                                       
 X-RM-SPAM-FLAG: 00000000
 Received: from spf.mail.chinamobile.com (unknown[10.188.0.87])
-	by rmmx-syy-dmz-app02-12002 (RichMail) with SMTP id 2ee2671b60642fa-b2311;
-	Fri, 25 Oct 2024 17:09:56 +0800 (CST)
-X-RM-TRANSID: 2ee2671b60642fa-b2311
+	by rmmx-syy-dmz-app03-12003 (RichMail) with SMTP id 2ee3671b503001a-49836;
+	Fri, 25 Oct 2024 16:00:52 +0800 (CST)
+X-RM-TRANSID: 2ee3671b503001a-49836
 X-RM-TagInfo: emlType=0                                       
 X-RM-SPAM-FLAG: 00000000
 Received: from leadsec.example.com.localdomain (unknown[10.55.1.71])
-	by rmsmtp-syy-appsvr01-12001 (RichMail) with SMTP id 2ee1671b6061663-30edb;
-	Fri, 25 Oct 2024 17:09:56 +0800 (CST)
-X-RM-TRANSID: 2ee1671b6061663-30edb
+	by rmsmtp-syy-appsvr05-12005 (RichMail) with SMTP id 2ee5671b50267c1-2dbc8;
+	Fri, 25 Oct 2024 16:00:51 +0800 (CST)
+X-RM-TRANSID: 2ee5671b50267c1-2dbc8
 From: Tang Bin <tangbin@cmss.chinamobile.com>
 To: lgirdwood@gmail.com,
 	broonie@kernel.org,
@@ -50,15 +50,15 @@ Cc: linux-sound@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Tang Bin <tangbin@cmss.chinamobile.com>
-Subject: [PATCH] ASoC: mediatek: mt8183: Remove unnecessary variable assignments
-Date: Fri, 25 Oct 2024 17:09:38 +0800
-Message-Id: <20241025090938.3480-1-tangbin@cmss.chinamobile.com>
+Subject: [PATCH] ASoC: mediatek: mt8192-afe-pcm: Simplify probe() with local dev variable
+Date: Fri, 25 Oct 2024 16:00:26 +0800
+Message-Id: <20241025080026.2393-1-tangbin@cmss.chinamobile.com>
 X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241025_021004_192642_787DC473 
-X-CRM114-Status: UNSURE (   8.06  )
+X-CRM114-CacheID: sfid-20241025_010101_403281_6A97C32E 
+X-CRM114-Status: UNSURE (   9.91  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,37 +74,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In the function mt8183_dai_i2s_register, the variable
-'ret' is redundant, thus remove it.
+Simplify the function mt8192_afe_pcm_dev_probe() by
+using local 'dev' instead of '&pdev->dev'.
 
 Signed-off-by: Tang Bin <tangbin@cmss.chinamobile.com>
 ---
- sound/soc/mediatek/mt8183/mt8183-dai-i2s.c | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
+ sound/soc/mediatek/mt8192/mt8192-afe-pcm.c | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
 
-diff --git a/sound/soc/mediatek/mt8183/mt8183-dai-i2s.c b/sound/soc/mediatek/mt8183/mt8183-dai-i2s.c
-index 65e46ebe7..5cf559233 100644
---- a/sound/soc/mediatek/mt8183/mt8183-dai-i2s.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-dai-i2s.c
-@@ -1036,7 +1036,6 @@ static int mt8183_dai_i2s_set_priv(struct mtk_base_afe *afe)
- int mt8183_dai_i2s_register(struct mtk_base_afe *afe)
+diff --git a/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c b/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
+index 9b502f4cd..80cda7bf5 100644
+--- a/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
++++ b/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
+@@ -2158,27 +2158,26 @@ static int mt8192_afe_pcm_dev_probe(struct platform_device *pdev)
  {
- 	struct mtk_base_afe_dai *dai;
--	int ret;
+ 	struct mtk_base_afe *afe;
+ 	struct mt8192_afe_private *afe_priv;
+-	struct device *dev;
++	struct device *dev = &pdev->dev;
+ 	struct reset_control *rstc;
+ 	int i, ret, irq_id;
  
- 	dai = devm_kzalloc(afe->dev, sizeof(*dai), GFP_KERNEL);
- 	if (!dai)
-@@ -1055,9 +1054,5 @@ int mt8183_dai_i2s_register(struct mtk_base_afe *afe)
- 	dai->num_dapm_routes = ARRAY_SIZE(mtk_dai_i2s_routes);
+-	ret = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
++	ret = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(34));
+ 	if (ret)
+ 		return ret;
  
- 	/* set all dai i2s private data */
--	ret = mt8183_dai_i2s_set_priv(afe);
--	if (ret)
--		return ret;
--
--	return 0;
-+	return mt8183_dai_i2s_set_priv(afe);
- }
+-	afe = devm_kzalloc(&pdev->dev, sizeof(*afe), GFP_KERNEL);
++	afe = devm_kzalloc(dev, sizeof(*afe), GFP_KERNEL);
+ 	if (!afe)
+ 		return -ENOMEM;
+ 	platform_set_drvdata(pdev, afe);
+ 
+-	afe->platform_priv = devm_kzalloc(&pdev->dev, sizeof(*afe_priv),
++	afe->platform_priv = devm_kzalloc(dev, sizeof(*afe_priv),
+ 					  GFP_KERNEL);
+ 	if (!afe->platform_priv)
+ 		return -ENOMEM;
+ 	afe_priv = afe->platform_priv;
+ 
+-	afe->dev = &pdev->dev;
+-	dev = afe->dev;
++	afe->dev = dev;
+ 
+ 	/* init audio related clock */
+ 	ret = mt8192_init_clock(afe);
+@@ -2196,7 +2195,7 @@ static int mt8192_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		return dev_err_probe(dev, ret, "failed to trigger audio reset\n");
+ 
+-	ret = devm_pm_runtime_enable(&pdev->dev);
++	ret = devm_pm_runtime_enable(dev);
+ 	if (ret)
+ 		return ret;
+ 
+@@ -2212,13 +2211,13 @@ static int mt8192_afe_pcm_dev_probe(struct platform_device *pdev)
+ 
+ 	/* enable clock for regcache get default value from hw */
+ 	afe_priv->pm_runtime_bypass_reg_ctl = true;
+-	pm_runtime_get_sync(&pdev->dev);
++	pm_runtime_get_sync(dev);
+ 
+ 	ret = regmap_reinit_cache(afe->regmap, &mt8192_afe_regmap_config);
+ 	if (ret)
+ 		return dev_err_probe(dev, ret, "regmap_reinit_cache fail\n");
+ 
+-	pm_runtime_put_sync(&pdev->dev);
++	pm_runtime_put_sync(dev);
+ 	afe_priv->pm_runtime_bypass_reg_ctl = false;
+ 
+ 	regcache_cache_only(afe->regmap, true);
+@@ -2285,7 +2284,7 @@ static int mt8192_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	afe->runtime_suspend = mt8192_afe_runtime_suspend;
+ 
+ 	/* register platform */
+-	ret = devm_snd_soc_register_component(&pdev->dev,
++	ret = devm_snd_soc_register_component(dev,
+ 					      &mtk_afe_pcm_platform,
+ 					      afe->dai_drivers,
+ 					      afe->num_dai_drivers);
 -- 
 2.33.0
 
