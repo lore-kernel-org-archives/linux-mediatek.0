@@ -4,86 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A519D11718
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 08:09:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C48FD0C5E5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 08:32:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NDPyjQLJxhu/7enVOjQXyxhVyvrmjes2kCFmydRLWN0=; b=GywbXubFMl9Fiv5NpczetInfxL
-	yW2VTm3dgpdeOey0vWWUgsB/nvphoKeeejB7c9mJQbNgRvzCUAMadoDnXs47xEIq/24Eyb48Fl95n
-	JtHlBsDE/53IvLfN7nD31GZr+JVX1PZqxBvPZBwltDs4aPjMyv7YW5keFkYtcV5og+jRFBMK1jhW9
-	96Mg4bPo/9tgDCuFkBcUkMDBfMIeeBvhYmymy90x/IaMBQKK33PctgEr7cmlnHioPIqpXmDA/11q9
-	QUAy4Jf6rYlsPqZ2Rinw6JYjI6CpVhQmI4EnjEdfXD9XOtPu4RSA6so7mmSqE/i4AL5DtcFgZE6Az
-	YukPz5ug==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=BT/Ng943C81aesy7n0Su3FETLClPbDgwCaBp/DvtzrA=; b=uYHyNpDXVW7g4/oY9yWtVwTBwq
+	hGSKAsWK6hI7m6cmjYuagcISMjxyQO4TzrXc4ntT0eiQoDa/dWX0hSEcOBUa5ImqBaHWIQ2uWE15w
+	f7+9+5cpg+Pat+TLLvNE08MBTSovjBSoOFLMcTXyL3VkxjmRpwCoFQ8g1AeB2df7AM0geKjnVx2qR
+	pyTCM5YkqNyqEoJIdmWbiQhALmbivh/38OhAXYE/Q3m4LXlEE7l8/7/q9Cb55v9n979sxjTbVez4r
+	GKXjjXv6KNSclWtDNyMEEwW3vQFBNH7surAgvLWVHobYJob030z2KFxZGaT8c9/NojCGMq3LHNeb0
+	fo3Le6WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4FNd-00000002vtB-3mJu;
-	Fri, 25 Oct 2024 08:09:10 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1t4FkA-00000002zOn-2YFt;
+	Fri, 25 Oct 2024 08:32:26 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4FIl-00000002uCA-2gx6
-	for linux-mediatek@lists.infradead.org;
-	Fri, 25 Oct 2024 08:04:09 +0000
-Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-718e9c8bd83so1870998b3a.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Oct 2024 01:04:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1729843447; x=1730448247; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=NDPyjQLJxhu/7enVOjQXyxhVyvrmjes2kCFmydRLWN0=;
-        b=mjzev004VgHmy+sx5K9bQMIRy3UO+AiaRT5Ocl8U2Yj6qAp0TfOfZEyoByMdpYQdIv
-         P6caf19RLo+/fVl96SNxA/y2KEI2gnneg18NJIEk5Q+aZPeCfvRh/cf8zfoAM9ztWgST
-         rnz0GjM4FxPgDAk6Oj4T0WXjfiyAhxP5FfnJQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729843447; x=1730448247;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=NDPyjQLJxhu/7enVOjQXyxhVyvrmjes2kCFmydRLWN0=;
-        b=Ha/MDGzBvkpYomrSSb7RxO9WXY3R+9iLMYv8jE908VByg1VH9TkX/L5ZrK9io5UvZY
-         AglZP1icdLRxQtF6Ujk8fk6CL9q/UI2wva4zYZrxukx6zXzWDrtNIti2ctTfnJ9kQ8Qz
-         +hwx2Mcqva81wiHDGPkONRsxKkhwDfMsbNn4hTWRThchpwEropFJoOnNlu8wqq3HsinB
-         pSTCMNl30eIe9Rq8AuGt5Ok709t3Tj2xjYbGdDoImgJrNvACS5d3WzVdQFkP8xBfZdbv
-         GdVLwzIOMmuUtY0XR+bfZZf9EualmdAR0FISNsemQqMJsxfkc1XqsznufaQ7iRzFgSbB
-         f2dw==
-X-Forwarded-Encrypted: i=1; AJvYcCXHmRcyXjTphEPo92FwfajW3JsPwjqZGs4NE7GlUzYCkn1fvhEuC8pzAMvV1FhG1aRPWx5oaHmcKKZ9FL8xjA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwIJ3mJt5TD/aobXNWKklFSTkQivQGTTPk/qci9TZRsIyC1u6f4
-	yaM3n2Vd8rJXheEx0H7PM74hDlBgmN2dNP9RbFzaV29c+zGejKQczaWME4j9Rw==
-X-Google-Smtp-Source: AGHT+IGMn5krXr2bDxQcM1KTz/KFZxm5bU1vktXqYGrTsZ3ivU3U8tGvEyAJw5wPsjNKYodNBtiSog==
-X-Received: by 2002:a05:6a00:22cb:b0:71e:4a46:fdb6 with SMTP id d2e1a72fcca58-7204522aff7mr6540383b3a.3.1729843446565;
-        Fri, 25 Oct 2024 01:04:06 -0700 (PDT)
-Received: from yuanhsinte-p620-1.tpe.corp.google.com ([2401:fa00:1:10:5a9f:16cc:8d5a:55e5])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72057a0d025sm558120b3a.101.2024.10.25.01.04.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Oct 2024 01:04:05 -0700 (PDT)
-From: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Date: Fri, 25 Oct 2024 16:03:51 +0800
-Subject: [PATCH v2 4/4] arm64: dts: mt8183: Damu: add i2c2's
- i2c-scl-internal-delay-ns
+	id 1t4Fjd-00000002zEg-12bG;
+	Fri, 25 Oct 2024 08:31:54 +0000
+X-UUID: 9366e94292ab11ef9048ed6ed365623b-20241025
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=BT/Ng943C81aesy7n0Su3FETLClPbDgwCaBp/DvtzrA=;
+	b=d7+KrT+YQLkZHKtWDIIjKRc/Wl3dZ6/Q8HhhYnmaDvKuKuAoFvopb0i6UPLdjVJDIIcQ7cFXiCfoAJvqfh2Kk/E3eADWzCTS6FeZdRL3+cnVRLR0kN3EumINBstlFGXBvtEkHIOw/ASrvakkRpiTDzvaV3RRHMQZAgtiwYUKsHQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.42,REQID:f20ef7d4-3bbf-4f2a-87aa-4df81022319f,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:5260dacc-110e-4f79-849e-58237df93e70,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 9366e94292ab11ef9048ed6ed365623b-20241025
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <liankun.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1031934843; Fri, 25 Oct 2024 01:31:48 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 25 Oct 2024 16:31:44 +0800
+Received: from mszsdclx1211.gcn.mediatek.inc (10.16.7.31) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 25 Oct 2024 16:31:43 +0800
+From: Liankun Yang <liankun.yang@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+	<simona@ffwll.ch>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <ck.hu@mediatek.com>,
+	<dmitry.osipenko@collabora.com>, <msp@baylibre.com>,
+	<rex-bc.chen@mediatek.com>, <granquet@baylibre.com>, <peng.liu@mediatek.com>,
+	<jitao.shi@mediatek.com>, <mac.shen@mediatek.com>,
+	<liankun.yang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>
+Subject: [PATCH v2 0/3] Adjust YCbCr422/bandwidth/training for DP
+Date: Fri, 25 Oct 2024 16:28:26 +0800
+Message-ID: <20241025083036.8829-1-liankun.yang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20241025-i2c-delay-v2-4-9be1bcaf35e0@chromium.org>
-References: <20241025-i2c-delay-v2-0-9be1bcaf35e0@chromium.org>
-In-Reply-To: <20241025-i2c-delay-v2-0-9be1bcaf35e0@chromium.org>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Hsin-Yi Wang <hsinyi@chromium.org>, 
- Enric Balletbo i Serra <eballetbo@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Hsin-Te Yuan <yuanhsinte@chromium.org>, 
- Daolong Zhu <jg_daolongzhu@mediatek.corp-partner.google.com>
-X-Mailer: b4 0.15-dev-2a633
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--5.394300-8.000000
+X-TMASE-MatchedRID: gUuz9Ogq75WqO+wHLkIcO7E3FpMbg63SWDdWpJMntKiPaLJ/Ca3STzku
+	TGiiLo1Yx91bb4/YjfE5bsAcOzEG6DK42JVSvu3ARAvohSJUpI++1Vx7rDn4r7v408/GP5HqqcN
+	xd5hReGHi8zVgXoAltoAy6p60ZV62JW+71yEen6Zq8/xv2Um1avoLR4+zsDTtgUicvJ4MChkqZu
+	nyleO9cPKITgppfSr0LQnK66f9ldiohItm7Yy7y/cqHKzCJIUv
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--5.394300-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: F32734434536A121CD0B2F2009F6141F52AC7822B31BBEF4922DAF5077C969E42000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241025_010407_699212_1C8ED7DE 
-X-CRM114-Status: UNSURE (   9.02  )
+X-CRM114-CacheID: sfid-20241025_013153_325377_C56E764D 
+X-CRM114-Status: UNSURE (   7.64  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,32 +101,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Daolong Zhu <jg_daolongzhu@mediatek.corp-partner.google.com>
+The change in mode filtering bandwidth calculation method must rely on
+DP training at the beginning, and get the current train info to calculate
+the bandwidth.
 
-Add i2c2's i2c-scl-internal-delay-ns.
+Color format support capability must also rely on DP training time to
+get the most reliable link capability and choose which color format to use.
 
-Fixes: cabc71b08eb5 ("arm64: dts: mt8183: Add kukui-jacuzzi-damu board")
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Daolong Zhu <jg_daolongzhu@mediatek.corp-partner.google.com>
-Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts | 3 +++
- 1 file changed, 3 insertions(+)
+Fixed YCbCr422 problem and bandwidth calculation from color format are
+both in the color format category, so they are bound.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
-index 0b45aee2e29953b6117b462034a00dff2596b9ff..65860b33c01fe832f3a4b2e21d24ea6b4f0cba2b 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
-@@ -30,3 +30,6 @@ &qca_wifi {
- 	qcom,ath10k-calibration-variant = "GO_DAMU";
- };
- 
-+&i2c2 {
-+	i2c-scl-internal-delay-ns = <20000>;
-+};
+In summary, YCbCr 422 and mode valid must rely on DP training timing,
+so they are strongly bound.
+
+Liankun Yang (3):
+  drm/mediatek: Fix YCbCr422 color format issue for DP
+  drm/mediatek: Fix mode valid issue for dp
+  drm/mediatek: Adjust bandwidth limit for DP
+
+ drivers/gpu/drm/mediatek/mtk_dp.c | 78 ++++++++++++++++++-------------
+ 1 file changed, 45 insertions(+), 33 deletions(-)
 
 -- 
-2.47.0.163.g1226f6d8fa-goog
+2.45.2
 
 
