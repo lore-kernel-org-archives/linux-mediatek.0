@@ -4,70 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9040BD0C601
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 11:36:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7998D0C609
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 13:10:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VnxWSxMCu0xfiLL2f8H7uR4wdYkyKrgtCWP24cYcI8A=; b=sa+ZUX5ojh3XxD1HKmRh4mio3A
-	++hwdXoNTApXb9a8bzq3926BLaM/UnwV/itjVgjO7bqtsskFVdsbRKrofVYQTIXbyLuF2En8RNj4D
-	Hj2TjsXt/QnqRgBx3riJNUjonHONQ90uZ4aZkmMhKyud4q1gmW64OiTe2iLGvWg+k1CXi1iYEmQC5
-	VLVhEZiIsao+uwkC/vYxsSixeCAGKMfcoTWgVmVfQFvathIp88SAVGSmvVuKTFY/RzPINeAkB/CXt
-	/pDb2VYOSKIa4nTeSc4IQ9/jqcdGzwbxhjjSe8uq4mA4saecQoa0IVnnz8GSkLIGihasShgwtCoC7
-	NZ7UxOpA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uaLzS2qaJigWNLOldFetiqs+rgYiakfBQHgJpJQH0ok=; b=TATYiyTMZTVHZsP+CCnNHgw9MB
+	6wpd93pLBVKpKu8fKrxu1sja72iC37zzgH8EZScirqsfjaj5W9Rm2J4X0dwenb6iS9BDgWwdUIuhH
+	k3hPkUSwF8d0Te89UkbFqp41Vlwrti0FmRzvJpIvCV5ViO9GI8z2qHxdhb/AEwXCnaTEin3YKlN2o
+	uE5veg9Tb+Jif81kXcrutTVonwyUU4wyAGg4yhmEBk5Aosm9YVM76Uc1DtBPAhlSE3rouryd+HrKD
+	2lMyIJgYmDhyke3COE0taBJnk06sK73xPgIxijxwsm6kW/s6wAB7GPIXhItnB4JRxCFp5acgo6a5J
+	cH9xGwqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4IcT-00000003WxN-2Wyx;
-	Fri, 25 Oct 2024 11:36:41 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1t4K5M-00000003lqn-3PQr;
+	Fri, 25 Oct 2024 13:10:36 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4IOk-00000003UkP-27eh
-	for linux-mediatek@lists.infradead.org;
-	Fri, 25 Oct 2024 11:22:32 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id AA74B5C5C9A
-	for <linux-mediatek@lists.infradead.org>; Fri, 25 Oct 2024 11:21:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B2ABC4CECC
-	for <linux-mediatek@lists.infradead.org>; Fri, 25 Oct 2024 11:22:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729855349;
-	bh=fJahC5oO1QsvZp8bVM/u5FyjZO73FbZLOyBhhErl1a0=;
-	h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
-	b=CGqyHT7tJetgpMCT3T6zqOekPAt+dghiTQE76EV3LUv9VK7sc09gUTcV/adwUi4ei
-	 X7OeRSsnIGT9bydzxtZE+OL6t9h9CswW7eW2PEn09zqxjDejJ1GqSi3Mg37RqVt8Zh
-	 9ik47dWnj5bIJmAO1cvGuZ3XsgS2tPgY/BLy7lzuf8ZwtHphpZ86p+dUb7yrf4lM7a
-	 OWDUVqhtHmTYZQSS+mvqIgNXb0Obd9zD2/BbEd//ePhieXaHuUZkTT231C4uuNcer5
-	 N9mMnUcDO2XGTK0jR+MqXzyAvki4Mh/THtOWmkMAVrPmnGEmLoebP8DKbabYYhr9YG
-	 ioGz+Rx+1mhEw==
-Received: by mail-yw1-f174.google.com with SMTP id 00721157ae682-6e3881042dcso18571597b3.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Oct 2024 04:22:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUowVqvBBvTg6fKeiFdIpbCH2W+vOSse7CFzvNVe7OW10XJu7OvLCt8jqOfb+pqeRwtsFSLAq5CQOTPVk7nsw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwVM5MnGWWIhAKX65exIr2V2A9FBUGBE08HGGdgVu4jaChdKIuN
-	kFbjzlTkns37HN1w6WYZaZftivgmdwU4g9M4o2WrBOWXRkItr0YzxeqK8UnxVM7CZLm50c/rZTa
-	9jpEi81rjuDUExGJgK2wyY7/FkIc=
-X-Google-Smtp-Source: AGHT+IEsJxdh27+gzHQQUh/Ac0ROk85e+gMi4+P3qOevtukFpADUYwMYzw5j0wY6ZbzHsUThzFIPrz0yYlDo4Gx7DVw=
-X-Received: by 2002:a05:690c:b:b0:6b2:6cd4:7f95 with SMTP id
- 00721157ae682-6e7f0fd7f25mr93396347b3.38.1729855348753; Fri, 25 Oct 2024
- 04:22:28 -0700 (PDT)
+	id 1t4JrX-00000003jo0-0jcg;
+	Fri, 25 Oct 2024 12:56:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=uaLzS2qaJigWNLOldFetiqs+rgYiakfBQHgJpJQH0ok=; b=UrLWioFD3+IF81Nj7052DTFI4U
+	HHlf+h2qAaAaDBGEcmYLn8yd9l8RpBEvj9lQ2CUvYIoHWC8LsngOarDnksRT6ja+T7M8hi1WLiXTS
+	5HH2fxuI+M2mWfbMwbFJk2la+fEEPtnMQXEEZFmldTftoeheMatO7DshRfbzkHChbDJG6i8PLaFl7
+	DwF3TWEhtjfthgZNHj/Q78IAaI4r8IuBLMrFIz4YjMPJtEpM9IIuaV5Rro58ehbT2iMLzM5fwrJSq
+	M0OeFvZ0Y2aPVeCk0cwh95hNllfZ37lQJ6uQ1P9X0nyyga41LglyvNENOjWEuhcDYSvilwijSIrtv
+	fCLmPphg==;
+Received: from vps0.lunn.ch ([156.67.10.101])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1t4JrU-00000008ui4-1Hwh;
+	Fri, 25 Oct 2024 12:56:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=uaLzS2qaJigWNLOldFetiqs+rgYiakfBQHgJpJQH0ok=; b=kp6vq3UEPeK6nUfz/w8v2v2WhE
+	Lq8d+/sHZntmUJ1c0EywObGbYOcK1hIlBIGXEV4iTq9kTQbMCedm2lXASJq7uMv9yj1nWDSTNbiP+
+	M+PgdGgfT0stpFbABjORFWF70lBaytRFHY/8X0N9d+Dc6WJ6dw6J0328StxxzbtmCvXQ=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1t4JrJ-00BFG4-9v; Fri, 25 Oct 2024 14:56:05 +0200
+Date: Fri, 25 Oct 2024 14:56:05 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [net-next RFC PATCH v2 3/3] net: phy: Add Airoha AN8855 Internal
+ Switch Gigabit PHY
+Message-ID: <a8f9a6ba-b33f-4f78-97c4-757a15895104@lunn.ch>
+References: <20241023161958.12056-1-ansuelsmth@gmail.com>
+ <20241023161958.12056-4-ansuelsmth@gmail.com>
+ <87aad5ff-4876-4611-8cf8-5c20df3559b3@lunn.ch>
+ <671b7a2e.050a0220.4431c.03f5@mx.google.com>
 MIME-Version: 1.0
-References: <20241025031848.21368-1-yr.yang@mediatek.com> <20241025031848.21368-2-yr.yang@mediatek.com>
-In-Reply-To: <20241025031848.21368-2-yr.yang@mediatek.com>
-From: Josh Boyer <jwboyer@kernel.org>
-Date: Fri, 25 Oct 2024 07:22:17 -0400
-X-Gmail-Original-Message-ID: <CA+5PVA5A3E4_yqVKEvo0KnoaHf_qpyrBu4v9j7_8XBiQ4+6sZQ@mail.gmail.com>
-Message-ID: <CA+5PVA5A3E4_yqVKEvo0KnoaHf_qpyrBu4v9j7_8XBiQ4+6sZQ@mail.gmail.com>
-Subject: Re: [PATCH] mediatek: Add sof-tolg for mt8195
-To: YR Yang <yr.yang@mediatek.com>
-Cc: linux-firmware@kernel.org, linux-mediatek@lists.infradead.org, 
-	shawnku@google.com, YR Yang <yr.yang@mediatek.corp-partner.google.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <671b7a2e.050a0220.4431c.03f5@mx.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241025_042230_657703_A0B2AC72 
-X-CRM114-Status: GOOD (  15.18  )
+X-CRM114-CacheID: sfid-20241025_135616_471837_B6B05EDE 
+X-CRM114-Status: GOOD (  12.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,60 +97,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 24, 2024 at 11:18=E2=80=AFPM YR Yang <yr.yang@mediatek.com> wro=
-te:
->
-> From: YR Yang <yr.yang@mediatek.corp-partner.google.com>
->
-> Add sof-mt8195-mt6359-max98390-rt5682.tplg
->
-> Signed-off-by: YR Yang <yr.yang@mediatek.corp-partner.google.com>
+On Fri, Oct 25, 2024 at 12:59:54PM +0200, Christian Marangi wrote:
+> On Wed, Oct 23, 2024 at 06:53:14PM +0200, Andrew Lunn wrote:
+> > > +	/* Enable Asymmetric Pause Capability */
+> > > +	ret = phy_set_bits(phydev, MII_ADVERTISE, ADVERTISE_PAUSE_ASYM);
+> > > +	if (ret)
+> > > +		return ret;
+> > 
+> > The PHY driver alone does not decide this. The MAC driver needs to
+> > indicate it supports asym pause by calling phy_supports_asym_pause().
+> >
+> 
+> Sorry for the stupid question, I couldn't find this OPs. Any hit how to
+> handle this?
 
-Thank you for correcting your email identity, but you still need to
-add an entry into WHENCE for this.
+For phylink, set MAC_ASYM_PAUSE | MAC_SYM_PAUSE in the capabilities in
+phylink_config.
 
-josh
+For phylib, call phy_support_asym_pause(phydev) after connecting to the PHY.
 
-> ---
->  .../sof-mt8195-mt6359-max98390-rt5682.tplg      | Bin 0 -> 16191 bytes
->  1 file changed, 0 insertions(+), 0 deletions(-)
->  create mode 100644 mediatek/sof-tplg/sof-mt8195-mt6359-max98390-rt5682.t=
-plg
->
-> diff --git a/mediatek/sof-tplg/sof-mt8195-mt6359-max98390-rt5682.tplg b/m=
-ediatek/sof-tplg/sof-mt8195-mt6359-max98390-rt5682.tplg
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..427d6c62387b53f8ac898a86b=
-506e8c0cb4362a7
-> GIT binary patch
-> literal 16191
-> zcmeHO&1(}u6pz+w(N^lmNqX2rz=3DIIFNk73u)1-xBYy&knp+qefth6*Oq_-X_2p+7W
-> zAby-g@aSC+A_#udqem}7|BL$jxwCPS?(WQ{N!qRR;O(32zS(*6oB8Esb~BlU>2!O{
-> zkq(%+D3^pi1iL88-LUjIB2=3D7isA<F9+InIcDJ+KPhV=3Dy384^QShn|4uGnegwJPI0;
-> zFP2Knb4v>=3DH|MPUd~x+!@%k;x9`LNW4e`7nPG(^(QD#h!ap>%Raj$&)etP5OudVjY
-> zI~N!?V`aBCaQ!gs13E(<3Cn&E+R?(eo#^G2#)_&RJ!p=3D~I2qp!=3Do(_1g)KrEUl%kz
-> zKGvI<DqKNPDe#?{o*JLY=3D8{TZReV2j2TR<AkP+weU2i_T+s>z7or_;x{rLNm9RD-n
-> z`&`&KEc@n;0Z(%b*jIN9E~3nPQ=3DdW+KaP4L*L{c^l<a|dVy7d-_7pTfksr%VOpYb&
-> zgc4?@gVeAJThfN{6Q85dPtYv@^%<7()iJSe!hVM(MnA;ov#_kob6=3Do$&%^?`OU&ud
-> ze!JWq+!c2Rai^W4>US1ZEK!ZIH-Njzea>AwJa<z9A%CO7xgPFvJR-^6B)J<5v(iC=3D
-> zT7_+^xy$cQm%E)PGw%*%q<{m8a^B4p7nfI-W-WWjyMn6U^>CLh)qdymJE$9qyqnrD
-> z++~uI^X^H+hdGl>OiZGr7Wn?nyM<hz(piObJ>2E@JGn~^$Dy1roHu^IedOG^r+GI;
-> z?gqoGbU;5{QDN)F-OXdo%ex#0>N?cr?(lB7JM8wf+N%1Ug}WuH=3D;mFz2XMD<pK~`A
-> zp1b`5A%CO7xgPG4r;+4tAGsS0v(iC=3DT7_-1xr?uX%6fN%2>?RwZeW0P*Ho+{eEpWU
-> zbg2mQAeEdnVi0H)0&}>L{M%3U%!TvZm9@9A7?r;%T;&{nPlpj6I9vB_#{T1@dY!~*
-> z9X_Tk+k44Mmx}P20Cn$rR|&-w4iEzVeDt1_QRJh}+J{3*KEl^`9V!p|X?&nk3@05N
-> z%rQC$)bd{S45kshck^Q*r(VwxNr#X9mhH2)l+ngx<`|V?_~_tZj?qEDmybSkzY%<t
-> z->Du4RB-{<T8~p;8)d!(f?&O@{r=3D9WVU7lY)*w)BO*5tygMdMx2?*5wUVDu;n1Yyp
-> z_?%}1If&1F(y;t2zatvOxiJ5)kn4thza;;+!TnFk&ittN><8U2Vi0Hv0wzDU1ZLBS
-> zL7*uJL^VG$?%MpQ`z*F8K$@Ex1UwKh`OyOubIKqP5d@-|AGwy@nIHAujYMQ<Oqd4%
-> z0h1pOz#y6~{I>{1H9zwI$MQQ$J`Z-^QFfqH>=3D$!rv-U}b*++`^quP5R5wf;~>01z1
-> z#7SV)lznN$N_XELunOK3rHxLtBe2r$TM$;9cf=3D~pex~Y3f<J}XUlhhSxYg>b7=3Dz%=3D
-> mEs}c>R_;3*Vx_x(M7p)Ii2iHu=3DLqAgY*=3DytR>7MIB;P-JU)df2
->
-> literal 0
-> HcmV?d00001
->
-> --
-> 2.46.0
->
+	Andrew
 
