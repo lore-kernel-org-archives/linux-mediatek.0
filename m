@@ -4,78 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAEDAD0C5E6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 09:02:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0365D0C5EC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 09:08:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=2jONHGUQN65Wp/s13oZofhKzQ9O+ThI0+K9VkaZNt+A=; b=W27Zgx7PVHwZexjQ651uNeLjM3
-	4Cwh7KPeWel611RgVZIw2A4s+749jZupolcsC+o7hQMEeRkWdddQcy7TJpep4QzHp/bwFecWvQom1
-	t9B4DeaZFZAYI6r5vLOUhLJlyD0MU7nITP5hNGxNPopVDPgZzRfZBhUxOmUL8f5p7uxjvXN1mcihx
-	1bMktMIt4qlUKoAUhlF3FJHCIekHOtLuMz7V3iYtXGS3DIDD+vkN2jxw3Y9GSlchohhU/vke6nrgw
-	wwU/2Q8Dc5k/XuZVQXmefHEnrWk+5TcBd1dSFV+NdP6gkIorPUjDrXFBV8GGQRGFZbnXsJTjoZe/7
-	Gb6Um/+w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/m/zC+56hrmXkjDwWeD5nO5z9mcYmZfE7HQqJ8HhkoM=; b=Okdq+hiBT8KlKij/B5eVqOhtj1
+	92GMj9J6suNsR058XoH7chd4HM9S0rhQJLekTR3J55bcrUWWz45Na28VwGYJL0OvN94TLftN45/j+
+	HOkLLXV831JfwLVxTbY88oZLMUA7hVzwjXUDQa84gWkwRbPYdYk1QioNRuJ2iQ0UsSGkN5mfQccQt
+	OVCsTCyDNRjI/LcvbPU75PgyLAb4Wjv+xNsIWAcc6nT47SoQXs/UuHBLED4v3sqZNwobgWKUJzdXG
+	2QrfnOLwYr2OnyuN4c37W93s73gyVfalJBjbRmGS7dRQFVJj2DdcCZU7LTQFZooYWiaB9a7SvPn2i
+	bb6HNH7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4GDC-000000035bs-33BN;
-	Fri, 25 Oct 2024 09:02:26 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1t4GJU-0000000375z-3Mer;
+	Fri, 25 Oct 2024 09:08:56 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4G9h-000000034Nw-0Kt7;
-	Fri, 25 Oct 2024 08:58:50 +0000
-X-UUID: 545fc44a92af11ef9048ed6ed365623b-20241025
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=2jONHGUQN65Wp/s13oZofhKzQ9O+ThI0+K9VkaZNt+A=;
-	b=uKZ/SyOT3Mm9rRM83JQ/Iw08q6PU9rhMrxEew2p+XiUtQqWkzv7kjE5TagpjzwiTuQBOBCdPTGIWGDCiODcIjjZ5egMadNpE3bDio0pOFLn4nsD+g58XQiuV+UJtBrVToHQU/DYNot9nRxn1wytfTkd0BpcrZhOpIIPTyw0ebJ8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.42,REQID:3bf7653f-342f-4ed7-9734-880022faa6f9,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:b0fcdc3,CLOUDID:93051a2e-a7a0-4b06-8464-80be82133975,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 545fc44a92af11ef9048ed6ed365623b-20241025
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <qun-wei.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 910621834; Fri, 25 Oct 2024 01:58:40 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 25 Oct 2024 16:58:37 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 25 Oct 2024 16:58:37 +0800
-From: Qun-Wei Lin <qun-wei.lin@mediatek.com>
-To: Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David
- Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Andrew
- Morton <akpm@linux-foundation.org>, Vlastimil Babka <vbabka@suse.cz>, Roman
- Gushchin <roman.gushchin@linux.dev>, Hyeonggon Yoo <42.hyeyoo@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Danilo Krummrich <dakr@kernel.org>
-CC: <catalin.marinas@arm.com>, <surenb@google.com>, <linux-mm@kvack.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <bpf@vger.kernel.org>, Casper Li
-	<casper.li@mediatek.com>, Chinwen Chang <chinwen.chang@mediatek.com>, Andrew
- Yang <andrew.yang@mediatek.com>, John Hsu <john.hsu@mediatek.com>,
-	<wsd_upstream@mediatek.com>, Qun-Wei Lin <qun-wei.lin@mediatek.com>
-Subject: [PATCH] mm: krealloc: Fix MTE false alarm in __do_krealloc
-Date: Fri, 25 Oct 2024 16:58:11 +0800
-Message-ID: <20241025085811.31310-1-qun-wei.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1t4GGW-000000036Up-3MoQ;
+	Fri, 25 Oct 2024 09:05:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1729847150;
+	bh=COW3lk8+Bc9EJwhzhAxrKQJP6hCqWZJClySSSooP5M8=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=HsMv9IQISHMd8sUoNSI5iL7aDJPkZyKKJFfVFa/GPon4VDL/YCTSkRf8HSYfNK9Vo
+	 tJC/sf8O9b0BLcAgjYh3BGuH6N4EYMSZInI6cXCH0nEXNSPZf/Qpv9Y5UT4Mvi3Icv
+	 KQlR7SQBay2G5qRkk6sQ6880/jS3xnH2OxASG78wN8eajJyc2CIxTYjEXiHFi095VS
+	 Rbxlv6ojXyldiusH2ZUUZTRHfvuXYxHK8rK+LdHP+d9Sh+etZqOz4Z6h1jgxAiJeny
+	 yE+gRG4Wo4p+7DdEcl+r9hbYXVF4bib48mGOZF0A80YaOgvab/+m94GIctgQKhW+Dy
+	 8O8dgIcCUCxOw==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 61A5217E121F;
+	Fri, 25 Oct 2024 11:05:50 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Hsin-Yi Wang <hsinyi@chromium.org>, 
+ Enric Balletbo i Serra <eballetbo@kernel.org>, 
+ Hsin-Te Yuan <yuanhsinte@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Daolong Zhu <jg_daolongzhu@mediatek.corp-partner.google.com>
+In-Reply-To: <20241025-i2c-delay-v2-0-9be1bcaf35e0@chromium.org>
+References: <20241025-i2c-delay-v2-0-9be1bcaf35e0@chromium.org>
+Subject: Re: [PATCH v2 0/4] arm64: dts: mt8183: Add
+ i2c-scl-internal-delay-ns
+Message-Id: <172984715034.53952.16839871350225825079.b4-ty@collabora.com>
+Date: Fri, 25 Oct 2024 11:05:50 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241025_015849_160053_37F9E9A6 
-X-CRM114-Status: GOOD (  14.45  )
+X-CRM114-CacheID: sfid-20241025_020553_068730_4DB131B2 
+X-CRM114-Status: UNSURE (   5.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,73 +81,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch addresses an issue introduced by commit 1a83a716ec233 ("mm:
-krealloc: consider spare memory for __GFP_ZERO") which causes MTE
-(Memory Tagging Extension) to falsely report a slab-out-of-bounds error.
+On Fri, 25 Oct 2024 16:03:47 +0800, Hsin-Te Yuan wrote:
+> Add i2c-scl-internal-delay-ns for each device.
+> 
+> 
 
-The problem occurs when zeroing out spare memory in __do_krealloc. The
-original code only considered software-based KASAN and did not account
-for MTE. It does not reset the KASAN tag before calling memset, leading
-to a mismatch between the pointer tag and the memory tag, resulting
-in a false positive.
+Applied to v6.12-next/dts64, thanks!
 
-Example of the error:
-==================================================================
-swapper/0: BUG: KASAN: slab-out-of-bounds in __memset+0x84/0x188
-swapper/0: Write at addr f4ffff8005f0fdf0 by task swapper/0/1
-swapper/0: Pointer tag: [f4], memory tag: [fe]
-swapper/0:
-swapper/0: CPU: 4 UID: 0 PID: 1 Comm: swapper/0 Not tainted 6.12.
-swapper/0: Hardware name: MT6991(ENG) (DT)
-swapper/0: Call trace:
-swapper/0:  dump_backtrace+0xfc/0x17c
-swapper/0:  show_stack+0x18/0x28
-swapper/0:  dump_stack_lvl+0x40/0xa0
-swapper/0:  print_report+0x1b8/0x71c
-swapper/0:  kasan_report+0xec/0x14c
-swapper/0:  __do_kernel_fault+0x60/0x29c
-swapper/0:  do_bad_area+0x30/0xdc
-swapper/0:  do_tag_check_fault+0x20/0x34
-swapper/0:  do_mem_abort+0x58/0x104
-swapper/0:  el1_abort+0x3c/0x5c
-swapper/0:  el1h_64_sync_handler+0x80/0xcc
-swapper/0:  el1h_64_sync+0x68/0x6c
-swapper/0:  __memset+0x84/0x188
-swapper/0:  btf_populate_kfunc_set+0x280/0x3d8
-swapper/0:  __register_btf_kfunc_id_set+0x43c/0x468
-swapper/0:  register_btf_kfunc_id_set+0x48/0x60
-swapper/0:  register_nf_nat_bpf+0x1c/0x40
-swapper/0:  nf_nat_init+0xc0/0x128
-swapper/0:  do_one_initcall+0x184/0x464
-swapper/0:  do_initcall_level+0xdc/0x1b0
-swapper/0:  do_initcalls+0x70/0xc0
-swapper/0:  do_basic_setup+0x1c/0x28
-swapper/0:  kernel_init_freeable+0x144/0x1b8
-swapper/0:  kernel_init+0x20/0x1a8
-swapper/0:  ret_from_fork+0x10/0x20
-==================================================================
+[1/4] arm64: dts: mt8183: fennel: add i2c2's i2c-scl-internal-delay-ns
+      commit: c802db127dfb9602aaa9338e433c0553d34f1a9c
+[2/4] arm64: dts: mt8183: burnet: add i2c2's i2c-scl-internal-delay-ns
+      commit: 85af64983889c621e8868b744c8ca03bd5038c02
+[3/4] arm64: dts: mt8183: cozmo: add i2c2's i2c-scl-internal-delay-ns
+      commit: bd0eb3b1f7aee698b86513edf10a50e2d0c7cb14
+[4/4] arm64: dts: mt8183: Damu: add i2c2's i2c-scl-internal-delay-ns
+      commit: 6ff2d45f2121c698a57c959ae21885a048615908
 
-Fixes: 1a83a716ec233 ("mm: krealloc: consider spare memory for
-__GFP_ZERO")
-Signed-off-by: Qun-Wei Lin <qun-wei.lin@mediatek.com>
----
- mm/slab_common.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Cheers,
+Angelo
 
-diff --git a/mm/slab_common.c b/mm/slab_common.c
-index 3d26c257ed8b..3445f4500b54 100644
---- a/mm/slab_common.c
-+++ b/mm/slab_common.c
-@@ -1209,7 +1209,7 @@ __do_krealloc(const void *p, size_t new_size, gfp_t flags)
- 		/* Zero out spare memory. */
- 		if (want_init_on_alloc(flags)) {
- 			kasan_disable_current();
--			memset((void *)p + new_size, 0, ks - new_size);
-+			memset(kasan_reset_tag((void *)p + new_size), 0, ks - new_size);
- 			kasan_enable_current();
- 		}
- 
--- 
-2.45.2
 
 
