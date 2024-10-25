@@ -4,181 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E796D0C5F8
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05DD8D0C5F9
 	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 09:56:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KvxWrZ41ZMAaqHl0Ak7ybPhkjv5DvveN4GYwuAGEno0=; b=hDT+h6WedGzDlqGCMCvPnvk3aC
-	vUPFFkcdcZLVYUz1BYkWliNGPDMDykQkc1nrlhlItw7UVuwkYV9aWtGva69zM618Nho0F0DmiX1xk
-	b/mxb1NwfQAxsFi8+92deVU0AVknx2SYIDih42Y6mqy5r+WcHRvVvxBUiS3Aa22abK2U3i+/Gd0Nl
-	XJk3DKhZmztzOkcMzKj+kn7jVSj/YcbOnx96L249mudLop78v/UgZGrUpJ6rXU5WW2UHn0PShsBO4
-	XZCQAA6EJljDqIMZhKVcFGBGYKq6mb4sXekS6lJdRKZMbnI0NmjohwlacYFTZNQ5M3rJe6E4RfN6Q
-	YSogrNpQ==;
+	bh=ovzUCbOnf8ad3/AG/s6edyQx3Y96JvN5zzmYGNZvn88=; b=JBtqwmUP+9d7Gbj6XH3FGlUWfX
+	KIhUmpc1gFS3f/3CW9hII16gBsh9KbeztkpcL04+thPCxzPmtuV6nD4KIZtMKI5avmHPGVq5O32VK
+	o5MLNYd6xlwidVzkeRCFKJP3EBAFpidaPP13IVPK7RiFdnTZ8iTNkCp63PrnGd+o7oOMybsvs4+vW
+	E/259r5z3ASB+tBQENoymH5GaFLbPVABcsExfXcb69AAeHNKKtk/cOwfk+03s+MQjO+KMbc991h3g
+	tlGo/YpG7bzWaeOd5PVhjdWFy3eBd7v0yKR7nIct5I1WvL86/x7UsSUAT5IL1tbM0hUZhjn0kwYKI
+	Ti2YwwnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4H3L-00000003GfN-286h;
+	id 1t4H3L-00000003GfV-3iNi;
 	Fri, 25 Oct 2024 09:56:19 +0000
-Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4H1g-00000003GLn-1vjN;
-	Fri, 25 Oct 2024 09:54:39 +0000
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 7170321CFF;
-	Fri, 25 Oct 2024 09:54:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.cz; s=susede2_rsa;
-	t=1729850074; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=KvxWrZ41ZMAaqHl0Ak7ybPhkjv5DvveN4GYwuAGEno0=;
-	b=gpXn2BuVYVMLgm4t7yH2ZA4ZX1OJQR64gQ9yLxoLsWJZDnjdzlsy9YeKe1MN1XGjd3Sl/M
-	oXSxw9jMFPqlAdOamtxMyoKSq1QpUgh7f9/n1Z0dor5j6lCKuMgzqafTOp2SnoPLIpo3jX
-	vy26ev1A4h44pDW76UAou4pPHV2Xu48=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.cz;
-	s=susede2_ed25519; t=1729850074;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=KvxWrZ41ZMAaqHl0Ak7ybPhkjv5DvveN4GYwuAGEno0=;
-	b=ZebhwUxohutSY7l9zEUBEjwgvsezkggClO/9M4aApqv7LXW9mgQiwWk+MPyXE+XYH5HBd9
-	4buH46vO3+9JsODg==
-Authentication-Results: smtp-out1.suse.de;
-	dkim=pass header.d=suse.cz header.s=susede2_rsa header.b=gpXn2BuV;
-	dkim=pass header.d=suse.cz header.s=susede2_ed25519 header.b=ZebhwUxo
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.cz; s=susede2_rsa;
-	t=1729850074; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=KvxWrZ41ZMAaqHl0Ak7ybPhkjv5DvveN4GYwuAGEno0=;
-	b=gpXn2BuVYVMLgm4t7yH2ZA4ZX1OJQR64gQ9yLxoLsWJZDnjdzlsy9YeKe1MN1XGjd3Sl/M
-	oXSxw9jMFPqlAdOamtxMyoKSq1QpUgh7f9/n1Z0dor5j6lCKuMgzqafTOp2SnoPLIpo3jX
-	vy26ev1A4h44pDW76UAou4pPHV2Xu48=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.cz;
-	s=susede2_ed25519; t=1729850074;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=KvxWrZ41ZMAaqHl0Ak7ybPhkjv5DvveN4GYwuAGEno0=;
-	b=ZebhwUxohutSY7l9zEUBEjwgvsezkggClO/9M4aApqv7LXW9mgQiwWk+MPyXE+XYH5HBd9
-	4buH46vO3+9JsODg==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 4329E132D3;
-	Fri, 25 Oct 2024 09:54:34 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id ASkRENpqG2clfwAAD6G6ig
-	(envelope-from <vbabka@suse.cz>); Fri, 25 Oct 2024 09:54:34 +0000
-Message-ID: <e8fdbe1e-e267-41d7-ab5c-303d29ed3929@suse.cz>
-Date: Fri, 25 Oct 2024 11:54:33 +0200
+	id 1t4H1y-00000003GQi-0bq5
+	for linux-mediatek@lists.infradead.org;
+	Fri, 25 Oct 2024 09:54:56 +0000
+Received: by mail-yw1-x1129.google.com with SMTP id 00721157ae682-6e2e3e4f65dso21271567b3.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Oct 2024 02:54:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1729850093; x=1730454893; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ovzUCbOnf8ad3/AG/s6edyQx3Y96JvN5zzmYGNZvn88=;
+        b=OhbVisnZk32nWGEZa6oOboKi3liszE3ZhvomKiLWltBTK/IqDm0vnFKFjHc6/qtjQq
+         D30BHBTRfeEME6Bg6ahQEHAzvNYbqyfLIim67/tcrujqUuazEOwa3d0N9p2cslltQjqV
+         79EIu5s7V1QbOFKlJar4iCEway0WKkpIpazCT8rOzU/HsLZ2dGs0vogyGbngvl4Jbo69
+         UIg1e0d7CdTh5Uw2QhbhuYfaVfFMhHDPqKH8uQHCROGG1aJr3/YFGlqvatppiXPe4PJr
+         pELxu8CfieO+1X4s91G0NmImIL518gmToDW9Hrn+iqQ4HW7hmEYJxXvqzIXNBNNj0NkA
+         92NA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729850093; x=1730454893;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ovzUCbOnf8ad3/AG/s6edyQx3Y96JvN5zzmYGNZvn88=;
+        b=cY4g2E9gHHzvF9fi/amFi0HnhZC9weF82me7zLPyvvuhMozBKQrY+qU8R+6BKQv83f
+         LNkAahgb7giYP+W+2l6XyqFcEwrwn1dE8aGNBbaQZ2vtmVl+v0IUc3eI93OXEfssqvdM
+         3UCEX+PtCFFm3+23AB+Y0eML6/jeFRo3z8VDx67/SjSVn/bGq4dZR4XLPA7CIsSjgy3N
+         3Kfy0WWUyfQOzqCs79tOnKIX3j1PkEF3EVmvNE4wERgpcWxVQ5+JrheRd4yx4b39P9WX
+         kOgqpj4RyJqtNcM8FYKmw82QgLmjzmmCspOrT+g3j1mLh/Nb8cUYUSz+8fia5Xfr5k+T
+         4lSg==
+X-Forwarded-Encrypted: i=1; AJvYcCWGj3nRwaLzBZUDw0zyee6lARmPYoN4NRlDOHyaSgp1mKMZt3i3VP4K+8SrDHuB0MKUr2XFM7wOow2cwnTxvQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxGd8lKk94luYi7TJCZ4FV7WIXxXYcmRmHMhOQXvlTsE5xRvW0c
+	cS/40NIkTduBmkRSDJ9BAcUChDs95O0HckT3iIYC/5yAyhhecEpG5zly+of1BtaTf0M3cxkb37O
+	kYAfVVJM5F3jgg4DQJAAdek5H/X0tLj7Ga3LkxQ==
+X-Google-Smtp-Source: AGHT+IFZu/LyAjfpwX5MrN+JVkr0x0xSzSrKk0A5Mdi5tj38z9PJE4G47Yh4NVVkEqgziX0kL7VNUYJrsxipC6JS6p4=
+X-Received: by 2002:a05:690c:fc7:b0:6e7:fb87:7094 with SMTP id
+ 00721157ae682-6e85814d77fmr57343097b3.6.1729850092872; Fri, 25 Oct 2024
+ 02:54:52 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] mm: krealloc: Fix MTE false alarm in __do_krealloc
-Content-Language: en-US
-To: Qun-Wei Lin <qun-wei.lin@mediatek.com>, Christoph Lameter <cl@linux.com>,
- Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>,
- Joonsoo Kim <iamjoonsoo.kim@lge.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Roman Gushchin <roman.gushchin@linux.dev>,
- Hyeonggon Yoo <42.hyeyoo@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Danilo Krummrich <dakr@kernel.org>
-Cc: catalin.marinas@arm.com, surenb@google.com, linux-mm@kvack.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, bpf@vger.kernel.org,
- Casper Li <casper.li@mediatek.com>,
- Chinwen Chang <chinwen.chang@mediatek.com>,
- Andrew Yang <andrew.yang@mediatek.com>, John Hsu <john.hsu@mediatek.com>,
- wsd_upstream@mediatek.com
-References: <20241025085811.31310-1-qun-wei.lin@mediatek.com>
-From: Vlastimil Babka <vbabka@suse.cz>
-Autocrypt: addr=vbabka@suse.cz; keydata=
- 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
- EP+ylKVEKb0Q2A==
-In-Reply-To: <20241025085811.31310-1-qun-wei.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Rspamd-Queue-Id: 7170321CFF
-X-Rspamd-Action: no action
-X-Spamd-Result: default: False [-3.01 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	R_DKIM_ALLOW(-0.20)[suse.cz:s=susede2_rsa,suse.cz:s=susede2_ed25519];
-	MIME_GOOD(-0.10)[text/plain];
-	MX_GOOD(-0.01)[];
-	TAGGED_RCPT(0.00)[];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	FUZZY_BLOCKED(0.00)[rspamd.com];
-	ARC_NA(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[23];
-	MIME_TRACE(0.00)[0:+];
-	FREEMAIL_TO(0.00)[mediatek.com,linux.com,kernel.org,google.com,lge.com,linux-foundation.org,linux.dev,gmail.com,collabora.com];
-	MID_RHS_MATCH_FROM(0.00)[];
-	DKIM_SIGNED(0.00)[suse.cz:s=susede2_rsa,suse.cz:s=susede2_ed25519];
-	FROM_EQ_ENVFROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	TO_DN_SOME(0.00)[];
-	RCVD_TLS_ALL(0.00)[];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.cz:mid,suse.cz:dkim,mediatek.com:email];
-	RCVD_COUNT_TWO(0.00)[2];
-	DKIM_TRACE(0.00)[suse.cz:+]
-X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
+References: <20241002182200.15363-1-ville.syrjala@linux.intel.com> <ZxtMz8JP3DbzpMew@intel.com>
+In-Reply-To: <ZxtMz8JP3DbzpMew@intel.com>
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Date: Fri, 25 Oct 2024 12:54:42 +0300
+Message-ID: <CAA8EJprT=BGyMnvkjS4BkRqar1hHn_hpXFaz9gstPL_9u1rAsQ@mail.gmail.com>
+Subject: Re: [PATCH 0/2] drm: Treewide plane/crtc legacy state sweeping
+To: =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>
+Cc: dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org, 
+	Abhinav Kumar <quic_abhinavk@quicinc.com>, Alain Volmat <alain.volmat@foss.st.com>, 
+	Alex Deucher <alexander.deucher@amd.com>, Alexey Brodkin <abrodkin@synopsys.com>, 
+	amd-gfx@lists.freedesktop.org, Andy Yan <andy.yan@rock-chips.com>, 
+	=?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+	Danilo Krummrich <dakr@redhat.com>, freedreno@lists.freedesktop.org, 
+	Hans de Goede <hdegoede@redhat.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+	Inki Dae <inki.dae@samsung.com>, Jyri Sarha <jyri.sarha@iki.fi>, 
+	Karol Herbst <kherbst@redhat.com>, linux-amlogic@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-arm-msm@vger.kernel.orga, 
+	linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
+	Liviu Dudau <liviu.dudau@arm.com>, Lyude Paul <lyude@redhat.com>, 
+	=?UTF-8?B?TWHDrXJhIENhbmFs?= <mairacanal@riseup.net>, 
+	Marijn Suijten <marijn.suijten@somainline.org>, nouveau@lists.freedesktop.org, 
+	nouveau@lists.freedesktop.orga, 
+	Patrik Jakobsson <patrik.r.jakobsson@gmail.com>, Rob Clark <robdclark@gmail.com>, 
+	Russell King <linux@armlinux.org.uk>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <sean@poorly.run>, 
+	spice-devel@lists.freedesktop.org, virtualization@lists.linux.dev, 
+	xen-devel@lists.xenproject.org, Xinhui Pan <Xinhui.Pan@amd.com>, 
+	Zack Rusin <zack.rusin@broadcom.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241025_025436_836351_8768B5B6 
-X-CRM114-Status: GOOD (  19.20  )
+X-CRM114-CacheID: sfid-20241025_025454_246987_24F36928 
+X-CRM114-Status: GOOD (  22.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -193,75 +108,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/25/24 10:58, Qun-Wei Lin wrote:
-> This patch addresses an issue introduced by commit 1a83a716ec233 ("mm:
-> krealloc: consider spare memory for __GFP_ZERO") which causes MTE
-> (Memory Tagging Extension) to falsely report a slab-out-of-bounds error.
-> 
-> The problem occurs when zeroing out spare memory in __do_krealloc. The
-> original code only considered software-based KASAN and did not account
-> for MTE. It does not reset the KASAN tag before calling memset, leading
-> to a mismatch between the pointer tag and the memory tag, resulting
-> in a false positive.
-> 
-> Example of the error:
-> ==================================================================
-> swapper/0: BUG: KASAN: slab-out-of-bounds in __memset+0x84/0x188
-> swapper/0: Write at addr f4ffff8005f0fdf0 by task swapper/0/1
-> swapper/0: Pointer tag: [f4], memory tag: [fe]
-> swapper/0:
-> swapper/0: CPU: 4 UID: 0 PID: 1 Comm: swapper/0 Not tainted 6.12.
-> swapper/0: Hardware name: MT6991(ENG) (DT)
-> swapper/0: Call trace:
-> swapper/0:  dump_backtrace+0xfc/0x17c
-> swapper/0:  show_stack+0x18/0x28
-> swapper/0:  dump_stack_lvl+0x40/0xa0
-> swapper/0:  print_report+0x1b8/0x71c
-> swapper/0:  kasan_report+0xec/0x14c
-> swapper/0:  __do_kernel_fault+0x60/0x29c
-> swapper/0:  do_bad_area+0x30/0xdc
-> swapper/0:  do_tag_check_fault+0x20/0x34
-> swapper/0:  do_mem_abort+0x58/0x104
-> swapper/0:  el1_abort+0x3c/0x5c
-> swapper/0:  el1h_64_sync_handler+0x80/0xcc
-> swapper/0:  el1h_64_sync+0x68/0x6c
-> swapper/0:  __memset+0x84/0x188
-> swapper/0:  btf_populate_kfunc_set+0x280/0x3d8
-> swapper/0:  __register_btf_kfunc_id_set+0x43c/0x468
-> swapper/0:  register_btf_kfunc_id_set+0x48/0x60
-> swapper/0:  register_nf_nat_bpf+0x1c/0x40
-> swapper/0:  nf_nat_init+0xc0/0x128
-> swapper/0:  do_one_initcall+0x184/0x464
-> swapper/0:  do_initcall_level+0xdc/0x1b0
-> swapper/0:  do_initcalls+0x70/0xc0
-> swapper/0:  do_basic_setup+0x1c/0x28
-> swapper/0:  kernel_init_freeable+0x144/0x1b8
-> swapper/0:  kernel_init+0x20/0x1a8
-> swapper/0:  ret_from_fork+0x10/0x20
-> ==================================================================
-> 
-> Fixes: 1a83a716ec233 ("mm: krealloc: consider spare memory for
-> __GFP_ZERO")
-> Signed-off-by: Qun-Wei Lin <qun-wei.lin@mediatek.com>
+On Fri, 25 Oct 2024 at 10:46, Ville Syrj=C3=A4l=C3=A4
+<ville.syrjala@linux.intel.com> wrote:
+>
+> On Wed, Oct 02, 2024 at 09:21:58PM +0300, Ville Syrjala wrote:
+> > From: Ville Syrj=C3=A4l=C3=A4 <ville.syrjala@linux.intel.com>
+> >
+> > An attempt to hide the drm_plane/crtc legacy state better.
+> >
+> > This also highlights the fact that a lot of supposedly
+> > atomic drivers are poking around in the legacy crtc state,
+> > which is rather questionable. For planes we did force the
+> > legacy state to NULL already to force drivers to behave.
+> > But even then it seems capable of confusing people with
+> > its high profile location directly under drm_plane.
+> >
+> > This might end up as some kind of conflict
+> > galore, but the alternative would involve trying
+> > to wean the atomic drivers off one by one,
+> > which would probably take forever. At least with
+> > this the issue becomes visible and shouldn't be
+> > forgotten as easily.
+>
+> Ping, anyone have thoughts on this? I'd like to get something
+> like this in at some point to make the legacy state (ab)users
+> easily visible...
 
-Thanks, added to slab hotfixes for 6.12
+I think that's a good idea. I hope to find a time slot and check the
+(ab)using of legacy state in drm/msm driver.
 
-> ---
->  mm/slab_common.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/mm/slab_common.c b/mm/slab_common.c
-> index 3d26c257ed8b..3445f4500b54 100644
-> --- a/mm/slab_common.c
-> +++ b/mm/slab_common.c
-> @@ -1209,7 +1209,7 @@ __do_krealloc(const void *p, size_t new_size, gfp_t flags)
->  		/* Zero out spare memory. */
->  		if (want_init_on_alloc(flags)) {
->  			kasan_disable_current();
-> -			memset((void *)p + new_size, 0, ks - new_size);
-> +			memset(kasan_reset_tag((void *)p + new_size), 0, ks - new_size);
->  			kasan_enable_current();
->  		}
->  
+>
+> >
+> > The cc list was getting way out of hand, so I had
+> > to trim it a bit. Hopefully I didn't chop off too
+> > many names...
 
+
+
+--=20
+With best wishes
+Dmitry
 
