@@ -4,66 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A606D10399
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 15:51:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0630D149C7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 16:37:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=goXfP12NdyXqfEtjdmE+Sw+InXCrHTgSpMmeNxMM+70=; b=VV5zaWWhp+4ZCh2SyJ6ae4FF43
-	K8heWnAqbhDNpjEbBkgsd5JNO/r21CnWZLA8i4un4ind6B0OXtmQYmah6e0scxftqfL3HORILR3r+
-	y2WzjB7UYgVbleM8EnZPn0+bLanTZs2Tc2OgJ5f+7CCT6jvR6zfv0dy+2nKhyph8YQIAIZdsy6hJk
-	83sohUDOrToMDdZ0lcx2csQGVDyhkxvvT+LLJQOxnf6Erm6dTvVA/6L3jJYtmaZ3no2RQnXJNsDFy
-	0q1GFMJq4J0QqR3+f0zmBzWOfqteyr+FYtanupJ4w+KTaRZmd5/Ghk72TxBZL4hQUVr1k1mo/+0KQ
-	CuKmL5Pg==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Eq3fXe6qq3ix8jve6B/lCKB6fSeKNV8aFXZ8E3BzHv4=; b=HHuDZ4S2NPfSrXxFrjHdHcg79I
+	7xCtHKxnyC5Nipg013IDMJWUFUDkS/uNJS72igFWdQlxAld4u1j/5hrk4Xyp++ypa3d27AhfLDePI
+	kG7wdraW0xGiJxZtgWmuw3D7lw3KcnDzkMUUftpYQEjIwX1a2UY9XrDO0DGvIgrrckRn3fCqIm+0P
+	DQocYkzmeVwhdT0JqEFDDZaEWst5429lg0dN+J2w8fcrxx22XGGk3ZOu36pV9DdeMLc/7WJMGJ45o
+	c523rTRyVsrrGOOH3R9ufN+NobdHysNEaslxUiD8e7G1HeTEbIkJitLlZX0C2aisdzeQzmQpNHQqi
+	NVtqNWmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4MbO-00000004Jsu-0FtU;
-	Fri, 25 Oct 2024 15:51:50 +0000
-Received: from msa-209.smtpout.orange.fr ([193.252.23.209] helo=msa.smtpout.orange.fr)
+	id 1t4NJT-00000004SaF-3AEx;
+	Fri, 25 Oct 2024 16:37:23 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4MWB-00000004JC6-1Qrm;
-	Fri, 25 Oct 2024 15:46:29 +0000
-Received: from localhost.localdomain ([90.11.132.44])
-	by smtp.orange.fr with ESMTPA
-	id 4MW1tag1Z3B144MW2tnfRZ; Fri, 25 Oct 2024 17:46:19 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
-	s=t20230301; t=1729871179;
-	bh=goXfP12NdyXqfEtjdmE+Sw+InXCrHTgSpMmeNxMM+70=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version;
-	b=blFkic2ynkTyXgIOuzF1e+2DLRxnlptZjw3hfUUlMsZDjYbwtNaUUBvLY8aXClf3w
-	 dvOGERrp/7JvSSHsY7+oWbpY9ruJsc/+cJqM7JN/pN5G7TrkHM8YkRNW+KFPwq2om1
-	 Nn9t8U8IsFIiQiIst/Y84jZbDKzoFQgA1ta+tilwnJPxgzIVNKlT712WTFBJSEfYTN
-	 vATTdgSkMqyCfnHcB1vRJpI8ifHJHbyaR0S3NTU84T4O2poBrhRSl5uiRt/tCVqcIz
-	 tXKeNEyqgCrm+iAx3JUIxI7Sgk8alMAso59xN6Oug3y7BB1VEo2XvH2QfBcE1NP8fK
-	 UdA6NF5MjprZQ==
-X-ME-Helo: localhost.localdomain
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Fri, 25 Oct 2024 17:46:19 +0200
-X-ME-IP: 90.11.132.44
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: Yassine Oudjana <y.oudjana@protonmail.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org,
-	kernel-janitors@vger.kernel.org,
-	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
-	linux-clk@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] clk: mediatek: mt6735-apmixedsys: Fix an error handling path in clk_mt6735_apmixed_probe()
-Date: Fri, 25 Oct 2024 17:46:08 +0200
-Message-ID: <89ad840e7a484eaf4727470824acfe0fdc60fcef.1729871146.git.christophe.jaillet@wanadoo.fr>
-X-Mailer: git-send-email 2.47.0
+	id 1t4NHs-00000004SLT-2DnH
+	for linux-mediatek@lists.infradead.org;
+	Fri, 25 Oct 2024 16:35:46 +0000
+Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-2fc968b3545so23364771fa.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Oct 2024 09:35:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1729874139; x=1730478939; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Eq3fXe6qq3ix8jve6B/lCKB6fSeKNV8aFXZ8E3BzHv4=;
+        b=Sov3ror+RwtFbBaxDabQSu9bTALFJiHu6zuRsvwNz6g3q86BE2oePucb7Weaa0dj8t
+         29We6yPXCGWT8TQEcQhD2xMlCjYcb4hO0U27yRgh6kNhCfaYfXGh4/2M5EAY1zWk2dwR
+         XPE8bW4fRSvJM/3/Y7zw0UDQwiR4RS6FD+f6k=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729874139; x=1730478939;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Eq3fXe6qq3ix8jve6B/lCKB6fSeKNV8aFXZ8E3BzHv4=;
+        b=Jvkw7i6ydZ0mXE+IA697dWXENieRUmHW/5zaLrZ1ig9b3cb5Q8pSDljJgiXhZlqq9x
+         +0pSeu4/j/DpzXckSrqgpr+RIFq49M+/7xsxjeMSR8P5h75p1AP/9hK2NMmjwDz0z0qL
+         CfuNjuikV5EvhKlFMGthv+6L97ykzP/FdE4H0Fy2EvRyJ+VZcsB0Mn5rZOKMPZx+kEaU
+         y6kxJKfCHZdQ+UsJqbD3iyocmAbULQ0qWySDFIIFY2lKpcF0Wpjhv1gmAsfJ1pzj4rnt
+         a/rwW3bxQdqo3EEVsQhrWwpHQBq7Zc4iyq1DXLBiQZBNS5jnFfnNd24FAabUlIQUlERB
+         0TLQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUIHJOGBptoBw1YMKnOq8CGyft2Zx5MlirxQVEzrLpG6h2QxvLGjBAyGJhXt7YYrObTixzy+tfgPpwaLmlRBg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyjLcwl+T9qbJWxKvbmWGZeOQLhQNrVXse9BFURM8EzoGYFPIVu
+	uKK4xwKSYvnZkgAS7X1+CpkTPDxHvtd08VPBX+iUKLzX7U+RqtH1TcNkf+9yEehiKVuZP+BUad0
+	tClwk
+X-Google-Smtp-Source: AGHT+IGeEfp2MCYap7wO5rebimucZRAffFjWsTUD7SJ2rlF6vN/S/AH+KhFPUvX4YP641HRzaM1OPw==
+X-Received: by 2002:a2e:4619:0:b0:2fa:be1a:a4b0 with SMTP id 38308e7fff4ca-2fc9d329bfbmr48430851fa.21.1729874139321;
+        Fri, 25 Oct 2024 09:35:39 -0700 (PDT)
+Received: from mail-lj1-f176.google.com (mail-lj1-f176.google.com. [209.85.208.176])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-2fcb45d1beesm2389411fa.90.2024.10.25.09.35.37
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 25 Oct 2024 09:35:38 -0700 (PDT)
+Received: by mail-lj1-f176.google.com with SMTP id 38308e7fff4ca-2fb3c3d5513so22004301fa.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Oct 2024 09:35:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCV7ThkiS58eaFZFzMpUU87059oRAV9eYNnSLR6FFKTFW2F0dO42DeFXOnnInEGIpcIVjhq6mmx/G2apjWNP/Q==@lists.infradead.org
+X-Received: by 2002:a05:651c:2210:b0:2fa:beb5:11cc with SMTP id
+ 38308e7fff4ca-2fc9d582d71mr53240501fa.40.1729874137392; Fri, 25 Oct 2024
+ 09:35:37 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20240620-igt-v3-0-a9d62d2e2c7e@mediatek.com> <20240620-igt-v3-8-a9d62d2e2c7e@mediatek.com>
+ <CAD=FV=XTsPBQ7Qp_oQmBXkNY==KQWZdN7VYbuVPoBTHhMvzjUQ@mail.gmail.com> <b75276ff8dc2f73818ccd132530c0d3825e17888.camel@mediatek.com>
+In-Reply-To: <b75276ff8dc2f73818ccd132530c0d3825e17888.camel@mediatek.com>
+From: Doug Anderson <dianders@chromium.org>
+Date: Fri, 25 Oct 2024 09:35:23 -0700
+X-Gmail-Original-Message-ID: <CAD=FV=WSD9p61ePKXVOcUBGktRJkUx+KbiJXF-9QUtWE8zDt0A@mail.gmail.com>
+Message-ID: <CAD=FV=WSD9p61ePKXVOcUBGktRJkUx+KbiJXF-9QUtWE8zDt0A@mail.gmail.com>
+Subject: Re: [PATCH v3 08/14] drm/mediatek: Add DRM_MODE_ROTATE_0 to rotation property
+To: =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>
+Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	=?UTF-8?B?QmliYnkgSHNpZWggKOisnea/n+mBoCk=?= <Bibby.Hsieh@mediatek.com>, 
+	=?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>, 
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, "djkurtz@chromium.org" <djkurtz@chromium.org>, 
+	=?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, 
+	"daniel@ffwll.ch" <daniel@ffwll.ch>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, 
+	=?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>, 
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "airlied@gmail.com" <airlied@gmail.com>, 
+	=?UTF-8?B?WVQgU2hlbiAo5rKI5bKz6ZyGKQ==?= <Yt.Shen@mediatek.com>, 
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "littlecvr@chromium.org" <littlecvr@chromium.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Hsin-Yi Wang <hsinyi@chromium.org>, "zwisler@chromium.org" <zwisler@chromium.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241025_084627_812779_2446D02A 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20241025_093544_577535_FE5A6D75 
+X-CRM114-Status: GOOD (  30.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,43 +111,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If an error occurs after a successful mtk_alloc_clk_data(),
-mtk_free_clk_data() should be called, as already done in the .remove()
-function.
+Hi Shawn,
 
-Switch to mtk_devm_alloc_clk_data() in order to fix the memory leak in the
-probe function, and simplify the remove function.
+On Thu, Oct 24, 2024 at 6:32=E2=80=AFPM Shawn Sung (=E5=AE=8B=E5=AD=9D=E8=
+=AC=99)
+<Shawn.Sung@mediatek.com> wrote:
+>
+> Hi Doug,
+>
+> On Thu, 2024-10-24 at 13:47 -0700, Doug Anderson wrote:
+> >
+> > External email : Please do not click links or open attachments until
+> > you have verified the sender or the content.
+> >  Hi,
+> >
+> > On Wed, Jun 19, 2024 at 9:39=E2=80=AFAM Hsiao Chien Sung via B4 Relay
+> > <devnull+shawn.sung.mediatek.com@kernel.org> wrote:
+> > >
+> > > From: Hsiao Chien Sung <shawn.sung@mediatek.com>
+> > >
+> > > Always add DRM_MODE_ROTATE_0 to rotation property to meet
+> > > IGT's (Intel GPU Tools) requirement.
+> > >
+> > > Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> > > Reviewed-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > > Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC
+> > MT8173.")
+> > > Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
+> > > ---
+> > >  drivers/gpu/drm/mediatek/mtk_ddp_comp.h |  6 +++++-
+> > >  drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 17 +++++------------
+> > >  drivers/gpu/drm/mediatek/mtk_plane.c    |  2 +-
+> > >  3 files changed, 11 insertions(+), 14 deletions(-)
+> >
+> > FWIW, this patch got into ChromeOS's 5.15 branch via stable merge and
+> > apparently broke things. As a short term fix we've reverted it there:
+> >
+> > https://crrev.com/c/5960799
+>
+> Thank you for reporting this issue. We are currently investigating the
+> bug.
+>
+> Since I am unable to access the Google issue tracker [1], could you
+> please provide more details about this bug? The message in the revert
+> commit mentions "hana/sycamore360" (MT8173) and it appears that there
+> is a rotation issue in tablet mode.
 
-Fixes: 43c04ed79189 ("clk: mediatek: Add drivers for MediaTek MT6735 main clock and reset drivers")
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
----
-Compile tested only
----
- drivers/clk/mediatek/clk-mt6735-apmixedsys.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Thanks for the followup. I've only been peripherally involved in the
+problem, but I can at least copy the relevant bits over.
 
-diff --git a/drivers/clk/mediatek/clk-mt6735-apmixedsys.c b/drivers/clk/mediatek/clk-mt6735-apmixedsys.c
-index 104722a61dfd..e0949911e8f7 100644
---- a/drivers/clk/mediatek/clk-mt6735-apmixedsys.c
-+++ b/drivers/clk/mediatek/clk-mt6735-apmixedsys.c
-@@ -88,7 +88,7 @@ static int clk_mt6735_apmixed_probe(struct platform_device *pdev)
- 	if (IS_ERR(base))
- 		return PTR_ERR(base);
- 
--	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(apmixedsys_plls));
-+	clk_data = mtk_devm_alloc_clk_data(&pdev->dev, ARRAY_SIZE(apmixedsys_plls));
- 	if (!clk_data)
- 		return -ENOMEM;
- 	platform_set_drvdata(pdev, clk_data);
-@@ -114,7 +114,6 @@ static void clk_mt6735_apmixed_remove(struct platform_device *pdev)
- 	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
- 
- 	mtk_clk_unregister_plls(apmixedsys_plls, ARRAY_SIZE(apmixedsys_plls), clk_data);
--	mtk_free_clk_data(clk_data);
- }
- 
- static const struct of_device_id of_match_mt6735_apmixedsys[] = {
--- 
-2.47.0
+It looks as if the problem is somehow only showing up when running
+Android apps on those devices, so whatever the problem is it's subtle.
+The report says that the apps work OK when the device is in tablet
+mode and in one rotation but the problem shows up when rotated 90
+degrees. The report says that "Screen content appears inverted". To me
+it also sounds _possible_ that the problem is somewhere in our
+userspace.
 
+I think Hsin-Yi and Ross are continuing to dig a bit more. Maybe once
+they've dug they can add any details they find or can loop in others
+as it makes sense?
+
+
+> > ...apparently the patch is fine on newer kernels so maybe there is a
+> > missing dependency? Hopefully someone on this list can dig into this
+> > and either post the revert to stable 5.15 kernels or suggest
+> > additional backports.
+> >
+>
+> There are known issues [2] regarding forward compatibility. Could you
+> confirm whether this patch is unable to resolve the mentioned problem?
+> Thanks.
+>
+> [1] https://issuetracker.google.com/issues/369688659
+> [2]
+> https://patchwork.kernel.org/project/linux-mediatek/list/?series=3D896964
+
+The patches in [2] look related to alpha blending but I think they are
+seeing issues related to rotation. ...so I'm going to assume it's
+different? I don't have this hardware in front of me, so I'm just
+going by the report.
+
+-Doug
 
