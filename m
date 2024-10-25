@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A49CD0C5E5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 08:34:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAEDAD0C5E6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 09:02:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jHk7k0mLNr2tL+X1mT3LjPHy3SzInMKuWg8T+fWq1Bs=; b=1tc2FlSuaN/ZtnsRB3EZPJWt6B
-	4XttzFCZ+vyUHG/1aDYUgjedQHnLiinJceRGnNCyVWvoNbJ9lnA7LQWL5ToFhpgHPfaARAH1SKqqo
-	KQyTIYqrFcBeJ+F8a2MwZNznVnHVC30EC6jkKw1r47rY/5cZR5vXv7qmqhTUYhdDbSC3+XjhNhH4C
-	xCsojmym6W8SMIoZfPaSKS//nslGJFIsAL96FGbNiPMe1M5KKeO9X83kQPKaKJGsIDIAbYfXfCdoY
-	NTKC0tIrq4QIDLnc2ywZQixwnA4/nZ0VQd07iPWHZNqZSjpwhgIH1YOd7W1fmPYwMzFx2UJy8ja0R
-	Gg+eTHBQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=2jONHGUQN65Wp/s13oZofhKzQ9O+ThI0+K9VkaZNt+A=; b=W27Zgx7PVHwZexjQ651uNeLjM3
+	4Cwh7KPeWel611RgVZIw2A4s+749jZupolcsC+o7hQMEeRkWdddQcy7TJpep4QzHp/bwFecWvQom1
+	t9B4DeaZFZAYI6r5vLOUhLJlyD0MU7nITP5hNGxNPopVDPgZzRfZBhUxOmUL8f5p7uxjvXN1mcihx
+	1bMktMIt4qlUKoAUhlF3FJHCIekHOtLuMz7V3iYtXGS3DIDD+vkN2jxw3Y9GSlchohhU/vke6nrgw
+	wwU/2Q8Dc5k/XuZVQXmefHEnrWk+5TcBd1dSFV+NdP6gkIorPUjDrXFBV8GGQRGFZbnXsJTjoZe/7
+	Gb6Um/+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4FmA-00000002zim-1THh;
-	Fri, 25 Oct 2024 08:34:30 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1t4GDC-000000035bs-33BN;
+	Fri, 25 Oct 2024 09:02:26 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4Fjg-00000002zFL-0hk4;
-	Fri, 25 Oct 2024 08:31:58 +0000
-X-UUID: 9323af6092ab11ef82ff63e91e7eb18c-20241025
+	id 1t4G9h-000000034Nw-0Kt7;
+	Fri, 25 Oct 2024 08:58:50 +0000
+X-UUID: 545fc44a92af11ef9048ed6ed365623b-20241025
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=jHk7k0mLNr2tL+X1mT3LjPHy3SzInMKuWg8T+fWq1Bs=;
-	b=Z4CPxdB6x9O2woEeRVDZeQlG06ZZl9nQlyV3vTo5Y4nVAdCk1E0rmr8Y/fR3cVTil/l5KCfjhH/ZvV0HSq+vPRA+zS1atyqGw43nIde/Wi7snaqMr7bwrrn+mdzmRzrzmq3h8eCa80hg8NMZPyRAS8Q/JqHBywC24tqL/gdYGuk=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=2jONHGUQN65Wp/s13oZofhKzQ9O+ThI0+K9VkaZNt+A=;
+	b=uKZ/SyOT3Mm9rRM83JQ/Iw08q6PU9rhMrxEew2p+XiUtQqWkzv7kjE5TagpjzwiTuQBOBCdPTGIWGDCiODcIjjZ5egMadNpE3bDio0pOFLn4nsD+g58XQiuV+UJtBrVToHQU/DYNot9nRxn1wytfTkd0BpcrZhOpIIPTyw0ebJ8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.42,REQID:9c4790e7-0e7e-48ec-bcf4-99a3b4a3512c,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:b0fcdc3,CLOUDID:6d60dacc-110e-4f79-849e-58237df93e70,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+X-CID-O-INFO: VERSION:1.1.42,REQID:3bf7653f-342f-4ed7-9734-880022faa6f9,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:93051a2e-a7a0-4b06-8464-80be82133975,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 9323af6092ab11ef82ff63e91e7eb18c-20241025
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
-	(envelope-from <liankun.yang@mediatek.com>)
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 545fc44a92af11ef9048ed6ed365623b-20241025
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <qun-wei.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 144732581; Fri, 25 Oct 2024 01:31:47 -0700
+	with ESMTP id 910621834; Fri, 25 Oct 2024 01:58:40 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 25 Oct 2024 16:31:44 +0800
-Received: from mszsdclx1211.gcn.mediatek.inc (10.16.7.31) by
+ 15.2.1118.26; Fri, 25 Oct 2024 16:58:37 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 25 Oct 2024 16:31:44 +0800
-From: Liankun Yang <liankun.yang@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
-	<simona@ffwll.ch>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <ck.hu@mediatek.com>,
-	<dmitry.osipenko@collabora.com>, <msp@baylibre.com>,
-	<rex-bc.chen@mediatek.com>, <granquet@baylibre.com>, <peng.liu@mediatek.com>,
-	<jitao.shi@mediatek.com>, <mac.shen@mediatek.com>,
-	<liankun.yang@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>
-Subject: [PATCH v2 1/3] drm/mediatek: Fix YCbCr422 color format issue for DP
-Date: Fri, 25 Oct 2024 16:28:27 +0800
-Message-ID: <20241025083036.8829-2-liankun.yang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241025083036.8829-1-liankun.yang@mediatek.com>
-References: <20241025083036.8829-1-liankun.yang@mediatek.com>
+ 15.2.1118.26 via Frontend Transport; Fri, 25 Oct 2024 16:58:37 +0800
+From: Qun-Wei Lin <qun-wei.lin@mediatek.com>
+To: Christoph Lameter <cl@linux.com>, Pekka Enberg <penberg@kernel.org>, David
+ Rientjes <rientjes@google.com>, Joonsoo Kim <iamjoonsoo.kim@lge.com>, Andrew
+ Morton <akpm@linux-foundation.org>, Vlastimil Babka <vbabka@suse.cz>, Roman
+ Gushchin <roman.gushchin@linux.dev>, Hyeonggon Yoo <42.hyeyoo@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Danilo Krummrich <dakr@kernel.org>
+CC: <catalin.marinas@arm.com>, <surenb@google.com>, <linux-mm@kvack.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <bpf@vger.kernel.org>, Casper Li
+	<casper.li@mediatek.com>, Chinwen Chang <chinwen.chang@mediatek.com>, Andrew
+ Yang <andrew.yang@mediatek.com>, John Hsu <john.hsu@mediatek.com>,
+	<wsd_upstream@mediatek.com>, Qun-Wei Lin <qun-wei.lin@mediatek.com>
+Subject: [PATCH] mm: krealloc: Fix MTE false alarm in __do_krealloc
+Date: Fri, 25 Oct 2024 16:58:11 +0800
+Message-ID: <20241025085811.31310-1-qun-wei.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241025_013156_263653_ABAD5591 
-X-CRM114-Status: GOOD (  11.49  )
+X-CRM114-CacheID: sfid-20241025_015849_160053_37F9E9A6 
+X-CRM114-Status: GOOD (  14.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,63 +90,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Setting up misc0 for Pixel Encoding Format.
+This patch addresses an issue introduced by commit 1a83a716ec233 ("mm:
+krealloc: consider spare memory for __GFP_ZERO") which causes MTE
+(Memory Tagging Extension) to falsely report a slab-out-of-bounds error.
 
-According to the definition of YCbCr in spec 1.2a Table 2-96,
-0x1 << 1 should be written to the register.
+The problem occurs when zeroing out spare memory in __do_krealloc. The
+original code only considered software-based KASAN and did not account
+for MTE. It does not reset the KASAN tag before calling memset, leading
+to a mismatch between the pointer tag and the memory tag, resulting
+in a false positive.
 
-Use switch case to distinguish RGB, YCbCr422,
-and unsupported color formats.
+Example of the error:
+==================================================================
+swapper/0: BUG: KASAN: slab-out-of-bounds in __memset+0x84/0x188
+swapper/0: Write at addr f4ffff8005f0fdf0 by task swapper/0/1
+swapper/0: Pointer tag: [f4], memory tag: [fe]
+swapper/0:
+swapper/0: CPU: 4 UID: 0 PID: 1 Comm: swapper/0 Not tainted 6.12.
+swapper/0: Hardware name: MT6991(ENG) (DT)
+swapper/0: Call trace:
+swapper/0:  dump_backtrace+0xfc/0x17c
+swapper/0:  show_stack+0x18/0x28
+swapper/0:  dump_stack_lvl+0x40/0xa0
+swapper/0:  print_report+0x1b8/0x71c
+swapper/0:  kasan_report+0xec/0x14c
+swapper/0:  __do_kernel_fault+0x60/0x29c
+swapper/0:  do_bad_area+0x30/0xdc
+swapper/0:  do_tag_check_fault+0x20/0x34
+swapper/0:  do_mem_abort+0x58/0x104
+swapper/0:  el1_abort+0x3c/0x5c
+swapper/0:  el1h_64_sync_handler+0x80/0xcc
+swapper/0:  el1h_64_sync+0x68/0x6c
+swapper/0:  __memset+0x84/0x188
+swapper/0:  btf_populate_kfunc_set+0x280/0x3d8
+swapper/0:  __register_btf_kfunc_id_set+0x43c/0x468
+swapper/0:  register_btf_kfunc_id_set+0x48/0x60
+swapper/0:  register_nf_nat_bpf+0x1c/0x40
+swapper/0:  nf_nat_init+0xc0/0x128
+swapper/0:  do_one_initcall+0x184/0x464
+swapper/0:  do_initcall_level+0xdc/0x1b0
+swapper/0:  do_initcalls+0x70/0xc0
+swapper/0:  do_basic_setup+0x1c/0x28
+swapper/0:  kernel_init_freeable+0x144/0x1b8
+swapper/0:  kernel_init+0x20/0x1a8
+swapper/0:  ret_from_fork+0x10/0x20
+==================================================================
 
-Fixes: f70ac097a2cf ("drm/mediatek: Add MT8195 Embedded DisplayPort driver")
-Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
+Fixes: 1a83a716ec233 ("mm: krealloc: consider spare memory for
+__GFP_ZERO")
+Signed-off-by: Qun-Wei Lin <qun-wei.lin@mediatek.com>
 ---
-Change in V2
-- Modify the value written to the register
-Per suggestion from the previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20240510021810.19302-1-liankun.yang@mediatek.com/
----
- drivers/gpu/drm/mediatek/mtk_dp.c | 13 ++++++++-----
- 1 file changed, 8 insertions(+), 5 deletions(-)
+ mm/slab_common.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index f0f6f402994a..613e1c842478 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -460,18 +460,16 @@ static int mtk_dp_set_color_format(struct mtk_dp *mtk_dp,
- 				   enum dp_pixelformat color_format)
- {
- 	u32 val;
--
--	/* update MISC0 */
--	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3034,
--			   color_format << DP_TEST_COLOR_FORMAT_SHIFT,
--			   DP_TEST_COLOR_FORMAT_MASK);
-+	u32 misc0_color;
+diff --git a/mm/slab_common.c b/mm/slab_common.c
+index 3d26c257ed8b..3445f4500b54 100644
+--- a/mm/slab_common.c
++++ b/mm/slab_common.c
+@@ -1209,7 +1209,7 @@ __do_krealloc(const void *p, size_t new_size, gfp_t flags)
+ 		/* Zero out spare memory. */
+ 		if (want_init_on_alloc(flags)) {
+ 			kasan_disable_current();
+-			memset((void *)p + new_size, 0, ks - new_size);
++			memset(kasan_reset_tag((void *)p + new_size), 0, ks - new_size);
+ 			kasan_enable_current();
+ 		}
  
- 	switch (color_format) {
- 	case DP_PIXELFORMAT_YUV422:
- 		val = PIXEL_ENCODE_FORMAT_DP_ENC0_P0_YCBCR422;
-+		misc0_color = DP_COLOR_FORMAT_YCbCr422;
- 		break;
- 	case DP_PIXELFORMAT_RGB:
- 		val = PIXEL_ENCODE_FORMAT_DP_ENC0_P0_RGB;
-+		misc0_color = DP_COLOR_FORMAT_RGB;
- 		break;
- 	default:
- 		drm_warn(mtk_dp->drm_dev, "Unsupported color format: %d\n",
-@@ -479,6 +477,11 @@ static int mtk_dp_set_color_format(struct mtk_dp *mtk_dp,
- 		return -EINVAL;
- 	}
- 
-+	/* update MISC0 */
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_3034,
-+			   misc0_color,
-+			   DP_TEST_COLOR_FORMAT_MASK);
-+
- 	mtk_dp_update_bits(mtk_dp, MTK_DP_ENC0_P0_303C,
- 			   val, PIXEL_ENCODE_FORMAT_DP_ENC0_P0_MASK);
- 	return 0;
 -- 
 2.45.2
 
