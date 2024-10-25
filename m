@@ -4,75 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97F4ED0C616
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 14:16:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C796D0C61F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 15:13:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ceLR0IvL9qdGH71mlJjn14Kdj5vXT4ULmmpb71qNMEk=; b=xkB3XlPfyed5xL
-	/ggY3pj0NXidDri+wGeGTdz6TEgKrkIwMdXcmJV1sL7rm20USnB89fM48eVtSZxuXTOa2jDKbteto
-	a0ZDQkk/vAZV7H2vj0j/DOVWiqUYu4T9/t7zTFo28HfIbGTw/lhvNYVW4omnacHkD5VQ15yzM5EUg
-	AVkiEFvg9amgOZ/EIdDxnD4GUXjbuatQ54auqGdCsDrBWytoomIENGID15AJq9t0QCLm2TgY9HVcq
-	vYG0whpmjocVtMV+ycq2v16DwFUDZW3QD6chN9sn3KBppfgcV0PL6OTSc5UrXI/4nffoDS/CZT6ce
-	Te2BgGc/+z4ZkZ10Y6Bg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zgU53FZ8la9axnoKCOcvjKd+4k0u7BILSfDtxg0QRPI=; b=UdRQoxFulgf1ojIcTMsb5FgtJN
+	YsHJzGQP2ttk0vnDxdX+8VQz9SAHNpnge+OXHc9ZwJaDw17RpwHC6m0RHXuCaJVUVNf3juo49jG6J
+	u8yCuvCUi9EoSz94OcpJs/w+qemRvO4JnJfqI+Qn3a/UjV8ceUhgGT5iAtpjFJIc9Wh84/zesT5Xo
+	CxB4a3YcrtZ2bhfhign9sDailXAAAorqN31eUkBzcYfZbviaqL6B+QDK+wtKrrlhgibiIff2zYkmp
+	poUSQW8hocTiybFbI7VeeC1v1/qrcAAf8n9i2jf9fxieYS9cf1o7W0D6qloBjErdYDICUujSvQm6B
+	VbW8AcJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4L6w-00000003yOj-4AJO;
-	Fri, 25 Oct 2024 14:16:19 +0000
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
+	id 1t4M0Y-00000004BIU-3Y8N;
+	Fri, 25 Oct 2024 15:13:46 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4HpS-00000003OkQ-3pJN
+	id 1t4LfP-000000045ZJ-1w0o
 	for linux-mediatek@lists.infradead.org;
-	Fri, 25 Oct 2024 10:46:04 +0000
-Received: by mail-pg1-x52e.google.com with SMTP id 41be03b00d2f7-7ea9739647bso1253775a12.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Oct 2024 03:46:02 -0700 (PDT)
+	Fri, 25 Oct 2024 14:52:07 +0000
+Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-a99fa009adcso141501766b.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Oct 2024 07:51:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1729853162; x=1730457962; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ceLR0IvL9qdGH71mlJjn14Kdj5vXT4ULmmpb71qNMEk=;
-        b=SWPOqIyrxPjFkBQZatM/b7TDfNTVVIRsfgGPqeDQoL32/1F8Gc61fy4zDazZ0F50Ho
-         SiestOWZXDpjgy5j2ynVjOBQyAFWRyOTdSnf6kF3lwQA4PdLQixmziNF7XKiHHMN65Hj
-         u1AehjW2K9dJa5Arh8ln87oY0DS/26F/9LK/k=
+        d=linaro.org; s=google; t=1729867912; x=1730472712; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=zgU53FZ8la9axnoKCOcvjKd+4k0u7BILSfDtxg0QRPI=;
+        b=GfAStLJtRzHEId3nLJrTLOQPwgFomFxUAsoHMqwL/gDUTruGkyGEHJC+ncxLwExSsL
+         dpHfBBIFoymMtlvRvXgXGtTeklfYDGtH1JaJUKYj//3pGjJVLIi8ubQw3WeyQs+ynlBK
+         V8JHv7c1z6NCDbpGRgr38AlA64yDEw+47PWn7DammApNj8ZEPry4EMJJSXfdqR99DuA+
+         vTpyhoKNRig+YT5uI8Z+pdXAuYw4HbscUGQ0PwFWUgX9nOdYw6oCHGMws/+2iuw7KrxH
+         yikUB0TN1vt+rmODLCsL0jx5mHiDTjPvZNGc+jpjDg51Pbm53kXv0kQCFXpxgedJfGhk
+         8AWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729853162; x=1730457962;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ceLR0IvL9qdGH71mlJjn14Kdj5vXT4ULmmpb71qNMEk=;
-        b=Kwcozv9Y7ZjMHmMVipD2iOCtvyP5bA3CerqFdYFkrAflkwseusuJ0G1J8UtlgddXfU
-         2k8RjJ2UkruWcB5YqVeXO9QZVPCj9ed0rIEJ6q5vzcYSazvW4uWgx1MfSnKWDJJJPGdM
-         jg1knN9P5UMz/Vxb6SVf1zFWFgbbK9cU77KEsbjKoAmt2QyHcjRqT7NojlzWu2kKCyun
-         Z6xnnixxtnCgDitp/jr9P5R6xEt3T86j4RNRJ7+pT2Vqr0W6Yzt++8l7S7y6nzc8NFJe
-         aPRlaNvGl69Kcw5RJkactvLU4Vod+Mj6cyrd43l5e5jUIWHfe1mThyXQrY3n+jkzSvgx
-         Ycrw==
-X-Forwarded-Encrypted: i=1; AJvYcCVIQuE6XPVOY2H2oTkFjxrTnbuaDcTfFdW9/e9ebplq3y/GItCpuAz0Ia7GtK3H/LKVjWyoz9SY04cmnCzgFA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyDNNMyNUeUC/3XFopR7G8V74K1Tv0HK+TxPh0myUc09DLJfUpe
-	KSmx6hdw2dpfQf1emucifWGIdzrPwrl9XyFi9bh8FYxAoJFmGfNpv5QAYQtLkQ==
-X-Google-Smtp-Source: AGHT+IGz6wzyyQ3d+NeaKQh7ukjIPx/hDX/N2T3R4gD20OXmJ38D2JhCFST+k71O7anmr55JG00JVA==
-X-Received: by 2002:a05:6a20:2d1f:b0:1d8:d880:2069 with SMTP id adf61e73a8af0-1d9898ff764mr4972242637.3.1729853161966;
-        Fri, 25 Oct 2024 03:46:01 -0700 (PDT)
-Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:ebe1:dd63:343d:8a4c])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72057a0d089sm829548b3a.99.2024.10.25.03.45.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Oct 2024 03:46:01 -0700 (PDT)
-From: Fei Shao <fshao@chromium.org>
-To: Mark Brown <broonie@kernel.org>
-Subject: [PATCH 1/4] ASoC: dt-bindings: mediatek,mt8188-mt6359: Add adsp and dai-link properties
-Date: Fri, 25 Oct 2024 18:44:41 +0800
-Message-ID: <20241025104548.1220076-2-fshao@chromium.org>
-X-Mailer: git-send-email 2.47.0.163.g1226f6d8fa-goog
-In-Reply-To: <20241025104548.1220076-1-fshao@chromium.org>
-References: <20241025104548.1220076-1-fshao@chromium.org>
+        d=1e100.net; s=20230601; t=1729867912; x=1730472712;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=zgU53FZ8la9axnoKCOcvjKd+4k0u7BILSfDtxg0QRPI=;
+        b=gAHXid5cYn2tVKd5ulWi6mD8T7pnZRLDVPHbgm+tQORQaH55+bWAtBtae7QtxkrvC3
+         And8yjiyISr6s7mxjUYN+YwnQVc5oIKiCAh1xJ4EBLfZVGCYxYMTxkW99Q9XItq4PCf6
+         I18zfkTy4BANNzfHXQZAUQIrsnXP0TDabfRVoGZqZloLjcZYjcHZQsKtntqwnCTaJBg/
+         ivKhwzOuzU+7mEI7jlTYr8SD1zIvKFeICnxLUrg+LpkG4Qy58xbwjSkmM774UbhrSDZ9
+         EOgHWwCW3cOpm07+gK8eV+JPSP5hh6mWuAAJEvQ90kO3NgRxwCZ6xLMHutSDPuTGTRfe
+         ehfw==
+X-Forwarded-Encrypted: i=1; AJvYcCXTp/MCzNgTch0R10YYNgmcJa7IMlq2RN9CShK9MMXGXZqIaQrrWrCLQIIQoh1860jL2g9h35Ytlmrq28makw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxaYZkdZIImRtJ2YNMav/fcQz0c56ZpevSe9z980d7paNtNeQgB
+	3elBfnAg6QdYwLwRPRGUoFxi1GrfsFl2uuXrASUbby+7YhHCQz48jwUYNAPYc6fmT1PYV/fxW/G
+	HAYGkvjwSOYaSP/CjMKteEGf7K5Dpo9UzxYwILA==
+X-Google-Smtp-Source: AGHT+IHnFb0iOpZ/0Hp5TvXS/ZuM2bGwLzFWSn0pQnl2sSkvF8LyDfB90uSqrDGmm+JEY5ML+QSfDQ6nhEYL9j8MdQM=
+X-Received: by 2002:a05:6402:254b:b0:5c9:34b4:69a8 with SMTP id
+ 4fb4d7f45d1cf-5cb8af7eb66mr11748618a12.6.1729867912198; Fri, 25 Oct 2024
+ 07:51:52 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20241011024906.8173-1-andy-ld.lu@mediatek.com>
+In-Reply-To: <20241011024906.8173-1-andy-ld.lu@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Fri, 25 Oct 2024 16:51:13 +0200
+Message-ID: <CAPDyKFrtKgqY_7MkZ6R51NhdD3s=rcp6RN41pQJr6JJZv6ugNw@mail.gmail.com>
+Subject: Re: [PATCH v4 0/3] Add mtk-sd support for MT8196
+To: Andy-ld Lu <andy-ld.lu@mediatek.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, wenbin.mei@mediatek.com, 
+	linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241025_034603_078890_AA1E726B 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20241025_075155_545689_12781F44 
+X-CRM114-Status: GOOD (  22.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,45 +88,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Trevor Wu <trevor.wu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add "mediatek,adsp" property for the ADSP handle if ADSP is enabled on
-the platform.
-Add "mediatek,dai-link" property for the required DAI links to configure
-sound card.
+On Fri, 11 Oct 2024 at 04:49, Andy-ld Lu <andy-ld.lu@mediatek.com> wrote:
+>
+> There are some new features for Mediatek SoC MT8196, which include new
+> command/data transmitting and receiving path (abbreviated as tx/rx), and
+> two modified register settings.
+>
+> The driver code has to be adapted to implement the above changes, and the
+> compatible string 'mediatek,mt8196-mmc' is added to driver and devicetree
+> bindings.
+>
+> ---
+> Changes in v4:
+> - Reorder the first two commits, and update the commit message to explain
+>   why the settings of stop_dly_sel and pop_en_cnt are variant.
 
-Both properties are commonly used in the MediaTek sound card driver.
+The series applied for next, thanks!
 
-Signed-off-by: Fei Shao <fshao@chromium.org>
----
+Note that, I have put patch3 as the first one. Updates of the DT
+bindings should come prior to the driver updates that make use of the
+them.
 
- .../bindings/sound/mediatek,mt8188-mt6359.yaml         | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+Kind regards
+Uffe
 
-diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
-index f94ad0715e32..701cedfa38d2 100644
---- a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
-+++ b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
-@@ -29,6 +29,16 @@ properties:
-     $ref: /schemas/types.yaml#/definitions/phandle
-     description: The phandle of MT8188 ASoC platform.
- 
-+  mediatek,adsp:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: The phandle of MT8188 ADSP platform.
-+
-+  mediatek,dai-link:
-+    $ref: /schemas/types.yaml#/definitions/string-array
-+    description:
-+      A list of the desired dai-links in the sound card. Each entry is a
-+      name defined in the machine driver.
-+
- patternProperties:
-   "^dai-link-[0-9]+$":
-     type: object
--- 
-2.47.0.163.g1226f6d8fa-goog
 
+>
+> Changes in v3:
+> - Separate the settings for stop_dly_sel and pop_en_cnt to a different
+>   commit;
+> - Add the original value of stop_dly_sel to the platdata of legacy SoCs,
+>   for unified code setting;
+> - Change to return if host->top_base is NULL in msdc_new_tx_setting function,
+>   to simplify coding;
+> - Optimize the location of assignment for 'timing_changed' in msdc_set_mclk
+>   function.
+>
+> Changes in v2:
+> - Use compatible string 'mediatek,mt8196-mmc' to replace 'mediatek,msdc-v2';
+> - Remove the 'mediatek,stop-dly-sel', 'mediatek,pop-en-cnt' and 'mediatek,
+>   prohibit-gate-cg' in devicetree bindings, due to SoC dependent;
+> - Add 'stop_dly_sel' and 'pop_en_cnt' to the compatiblity structure for
+>   different register settings;
+> - The SoC's upgraded version would discard the bus design that detect source
+>   clock CG when the CPU access the IP registers, so drop the related control
+>   flow with 'prohibit_gate_cg' flag.
+>
+> Link to v1:
+> https://patchwork.kernel.org/patch/13812924
+>
+> ---
+> Andy-ld Lu (3):
+>   mmc: mtk-sd: Add stop_dly_sel and pop_en_cnt to platform data
+>   mmc: mtk-sd: Add support for MT8196
+>   dt-bindings: mmc: mtk-sd: Add support for MT8196
+>
+>  .../devicetree/bindings/mmc/mtk-sd.yaml       |   2 +
+>  drivers/mmc/host/mtk-sd.c                     | 166 +++++++++++++++---
+>  2 files changed, 147 insertions(+), 21 deletions(-)
+>
+> --
+> 2.46.0
+>
 
