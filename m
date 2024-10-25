@@ -4,68 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0365D0C5EC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 09:08:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37113D0C5EE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 09:10:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/m/zC+56hrmXkjDwWeD5nO5z9mcYmZfE7HQqJ8HhkoM=; b=Okdq+hiBT8KlKij/B5eVqOhtj1
-	92GMj9J6suNsR058XoH7chd4HM9S0rhQJLekTR3J55bcrUWWz45Na28VwGYJL0OvN94TLftN45/j+
-	HOkLLXV831JfwLVxTbY88oZLMUA7hVzwjXUDQa84gWkwRbPYdYk1QioNRuJ2iQ0UsSGkN5mfQccQt
-	OVCsTCyDNRjI/LcvbPU75PgyLAb4Wjv+xNsIWAcc6nT47SoQXs/UuHBLED4v3sqZNwobgWKUJzdXG
-	2QrfnOLwYr2OnyuN4c37W93s73gyVfalJBjbRmGS7dRQFVJj2DdcCZU7LTQFZooYWiaB9a7SvPn2i
-	bb6HNH7Q==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0OFw5/vW+q+fbP5gIo5SEpJ9x8soqdU7yg4/CUbaxHs=; b=3jKYAGwqwj79A0vmLC4pAHShIb
+	GCv05btuG7i//i1JN8tI+bPZ1ilefmyScVIoOmc6vic+z294K4xrg6Qt2lnUYZiy8tXtNo5oD7rWf
+	ksJPYk33mUzSjkK15lSiqFt3mWqlmBb+lzxWDXM/kXyCyc2jik4LQoUYtIYfU9lUzwfhXN984h0VO
+	cGphg1LIpvtHMB6fneKvOsksKV/w5TuUgK195eV2keWBBRczBk2DbecST3WUQukWcQrLUjHDp9E1I
+	SWyPwqUiENNl8uHHQHlAfbeE8jw2V/Oj1phfiqYpIltHq8trrWK3N/ru3BSzbPzGeLRJR1KaOg3QB
+	Niq3mi/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4GJU-0000000375z-3Mer;
-	Fri, 25 Oct 2024 09:08:56 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4GGW-000000036Up-3MoQ;
-	Fri, 25 Oct 2024 09:05:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729847150;
-	bh=COW3lk8+Bc9EJwhzhAxrKQJP6hCqWZJClySSSooP5M8=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=HsMv9IQISHMd8sUoNSI5iL7aDJPkZyKKJFfVFa/GPon4VDL/YCTSkRf8HSYfNK9Vo
-	 tJC/sf8O9b0BLcAgjYh3BGuH6N4EYMSZInI6cXCH0nEXNSPZf/Qpv9Y5UT4Mvi3Icv
-	 KQlR7SQBay2G5qRkk6sQ6880/jS3xnH2OxASG78wN8eajJyc2CIxTYjEXiHFi095VS
-	 Rbxlv6ojXyldiusH2ZUUZTRHfvuXYxHK8rK+LdHP+d9Sh+etZqOz4Z6h1jgxAiJeny
-	 yE+gRG4Wo4p+7DdEcl+r9hbYXVF4bib48mGOZF0A80YaOgvab/+m94GIctgQKhW+Dy
-	 8O8dgIcCUCxOw==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 61A5217E121F;
-	Fri, 25 Oct 2024 11:05:50 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Hsin-Yi Wang <hsinyi@chromium.org>, 
- Enric Balletbo i Serra <eballetbo@kernel.org>, 
- Hsin-Te Yuan <yuanhsinte@chromium.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Daolong Zhu <jg_daolongzhu@mediatek.corp-partner.google.com>
-In-Reply-To: <20241025-i2c-delay-v2-0-9be1bcaf35e0@chromium.org>
-References: <20241025-i2c-delay-v2-0-9be1bcaf35e0@chromium.org>
-Subject: Re: [PATCH v2 0/4] arm64: dts: mt8183: Add
- i2c-scl-internal-delay-ns
-Message-Id: <172984715034.53952.16839871350225825079.b4-ty@collabora.com>
-Date: Fri, 25 Oct 2024 11:05:50 +0200
+	id 1t4GLD-000000037OG-13bU;
+	Fri, 25 Oct 2024 09:10:43 +0000
+Received: from cmccmta8.chinamobile.com ([111.22.67.151] helo=cmccmta1.chinamobile.com)
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1t4GKZ-000000037Iv-1r00;
+	Fri, 25 Oct 2024 09:10:06 +0000
+X-RM-TagInfo: emlType=0                                       
+X-RM-SPAM-FLAG: 00000000
+Received: from spf.mail.chinamobile.com (unknown[10.188.0.87])
+	by rmmx-syy-dmz-app02-12002 (RichMail) with SMTP id 2ee2671b60642fa-b2311;
+	Fri, 25 Oct 2024 17:09:56 +0800 (CST)
+X-RM-TRANSID: 2ee2671b60642fa-b2311
+X-RM-TagInfo: emlType=0                                       
+X-RM-SPAM-FLAG: 00000000
+Received: from leadsec.example.com.localdomain (unknown[10.55.1.71])
+	by rmsmtp-syy-appsvr01-12001 (RichMail) with SMTP id 2ee1671b6061663-30edb;
+	Fri, 25 Oct 2024 17:09:56 +0800 (CST)
+X-RM-TRANSID: 2ee1671b6061663-30edb
+From: Tang Bin <tangbin@cmss.chinamobile.com>
+To: lgirdwood@gmail.com,
+	broonie@kernel.org,
+	perex@perex.cz,
+	tiwai@suse.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Tang Bin <tangbin@cmss.chinamobile.com>
+Subject: [PATCH] ASoC: mediatek: mt8183: Remove unnecessary variable assignments
+Date: Fri, 25 Oct 2024 17:09:38 +0800
+Message-Id: <20241025090938.3480-1-tangbin@cmss.chinamobile.com>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241025_020553_068730_4DB131B2 
-X-CRM114-Status: UNSURE (   5.99  )
+X-CRM114-CacheID: sfid-20241025_021004_192642_787DC473 
+X-CRM114-Status: UNSURE (   8.06  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,24 +74,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 25 Oct 2024 16:03:47 +0800, Hsin-Te Yuan wrote:
-> Add i2c-scl-internal-delay-ns for each device.
-> 
-> 
+In the function mt8183_dai_i2s_register, the variable
+'ret' is redundant, thus remove it.
 
-Applied to v6.12-next/dts64, thanks!
+Signed-off-by: Tang Bin <tangbin@cmss.chinamobile.com>
+---
+ sound/soc/mediatek/mt8183/mt8183-dai-i2s.c | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
 
-[1/4] arm64: dts: mt8183: fennel: add i2c2's i2c-scl-internal-delay-ns
-      commit: c802db127dfb9602aaa9338e433c0553d34f1a9c
-[2/4] arm64: dts: mt8183: burnet: add i2c2's i2c-scl-internal-delay-ns
-      commit: 85af64983889c621e8868b744c8ca03bd5038c02
-[3/4] arm64: dts: mt8183: cozmo: add i2c2's i2c-scl-internal-delay-ns
-      commit: bd0eb3b1f7aee698b86513edf10a50e2d0c7cb14
-[4/4] arm64: dts: mt8183: Damu: add i2c2's i2c-scl-internal-delay-ns
-      commit: 6ff2d45f2121c698a57c959ae21885a048615908
+diff --git a/sound/soc/mediatek/mt8183/mt8183-dai-i2s.c b/sound/soc/mediatek/mt8183/mt8183-dai-i2s.c
+index 65e46ebe7..5cf559233 100644
+--- a/sound/soc/mediatek/mt8183/mt8183-dai-i2s.c
++++ b/sound/soc/mediatek/mt8183/mt8183-dai-i2s.c
+@@ -1036,7 +1036,6 @@ static int mt8183_dai_i2s_set_priv(struct mtk_base_afe *afe)
+ int mt8183_dai_i2s_register(struct mtk_base_afe *afe)
+ {
+ 	struct mtk_base_afe_dai *dai;
+-	int ret;
+ 
+ 	dai = devm_kzalloc(afe->dev, sizeof(*dai), GFP_KERNEL);
+ 	if (!dai)
+@@ -1055,9 +1054,5 @@ int mt8183_dai_i2s_register(struct mtk_base_afe *afe)
+ 	dai->num_dapm_routes = ARRAY_SIZE(mtk_dai_i2s_routes);
+ 
+ 	/* set all dai i2s private data */
+-	ret = mt8183_dai_i2s_set_priv(afe);
+-	if (ret)
+-		return ret;
+-
+-	return 0;
++	return mt8183_dai_i2s_set_priv(afe);
+ }
+-- 
+2.33.0
 
-Cheers,
-Angelo
 
 
 
