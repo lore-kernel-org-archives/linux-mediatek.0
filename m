@@ -4,99 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0630D149C7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 16:37:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDDB5D149E8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 20:06:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Eq3fXe6qq3ix8jve6B/lCKB6fSeKNV8aFXZ8E3BzHv4=; b=HHuDZ4S2NPfSrXxFrjHdHcg79I
-	7xCtHKxnyC5Nipg013IDMJWUFUDkS/uNJS72igFWdQlxAld4u1j/5hrk4Xyp++ypa3d27AhfLDePI
-	kG7wdraW0xGiJxZtgWmuw3D7lw3KcnDzkMUUftpYQEjIwX1a2UY9XrDO0DGvIgrrckRn3fCqIm+0P
-	DQocYkzmeVwhdT0JqEFDDZaEWst5429lg0dN+J2w8fcrxx22XGGk3ZOu36pV9DdeMLc/7WJMGJ45o
-	c523rTRyVsrrGOOH3R9ufN+NobdHysNEaslxUiD8e7G1HeTEbIkJitLlZX0C2aisdzeQzmQpNHQqi
-	NVtqNWmw==;
+	bh=a/dp60hBeGDxqbrgc11djchryi537nAURD/0Na12alQ=; b=oZGo7+SlXiYFHYK9zrV5zZIl9Z
+	d0c2B9PwuXjsDijWbz+1sh7xYjFIX3MCvMu/tsEjPnu2VNEMEUftACyd1XBjd9JLGE8TqbTqRfvhA
+	JyGjVMPGZqsdNuKRQoGCkRhnj+F818j2zes+dhKHqJdxi5gtXTgJcI+wQOxwYnt0P3a8CDvfY2YT0
+	UpYqrbDI403y5L2bzCOsZ+y55s0Cr/wqKZsPwrl40jgffvW9H005yW1vYPr5xBC6MXfnJHLlSGR4w
+	qnRaIJhchXBBiE6ia9zL6cHvztbMmOqQx3PnWsQA2jHXB0gsPlTMy/ci/O9FpRzhuAPN67SF1tobp
+	j1DHOq6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4NJT-00000004SaF-3AEx;
-	Fri, 25 Oct 2024 16:37:23 +0000
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	id 1t4QZs-000000054Gs-2sXZ;
+	Fri, 25 Oct 2024 20:06:32 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4NHs-00000004SLT-2DnH
-	for linux-mediatek@lists.infradead.org;
-	Fri, 25 Oct 2024 16:35:46 +0000
-Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-2fc968b3545so23364771fa.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Oct 2024 09:35:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1729874139; x=1730478939; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Eq3fXe6qq3ix8jve6B/lCKB6fSeKNV8aFXZ8E3BzHv4=;
-        b=Sov3ror+RwtFbBaxDabQSu9bTALFJiHu6zuRsvwNz6g3q86BE2oePucb7Weaa0dj8t
-         29We6yPXCGWT8TQEcQhD2xMlCjYcb4hO0U27yRgh6kNhCfaYfXGh4/2M5EAY1zWk2dwR
-         XPE8bW4fRSvJM/3/Y7zw0UDQwiR4RS6FD+f6k=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729874139; x=1730478939;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Eq3fXe6qq3ix8jve6B/lCKB6fSeKNV8aFXZ8E3BzHv4=;
-        b=Jvkw7i6ydZ0mXE+IA697dWXENieRUmHW/5zaLrZ1ig9b3cb5Q8pSDljJgiXhZlqq9x
-         +0pSeu4/j/DpzXckSrqgpr+RIFq49M+/7xsxjeMSR8P5h75p1AP/9hK2NMmjwDz0z0qL
-         CfuNjuikV5EvhKlFMGthv+6L97ykzP/FdE4H0Fy2EvRyJ+VZcsB0Mn5rZOKMPZx+kEaU
-         y6kxJKfCHZdQ+UsJqbD3iyocmAbULQ0qWySDFIIFY2lKpcF0Wpjhv1gmAsfJ1pzj4rnt
-         a/rwW3bxQdqo3EEVsQhrWwpHQBq7Zc4iyq1DXLBiQZBNS5jnFfnNd24FAabUlIQUlERB
-         0TLQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUIHJOGBptoBw1YMKnOq8CGyft2Zx5MlirxQVEzrLpG6h2QxvLGjBAyGJhXt7YYrObTixzy+tfgPpwaLmlRBg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyjLcwl+T9qbJWxKvbmWGZeOQLhQNrVXse9BFURM8EzoGYFPIVu
-	uKK4xwKSYvnZkgAS7X1+CpkTPDxHvtd08VPBX+iUKLzX7U+RqtH1TcNkf+9yEehiKVuZP+BUad0
-	tClwk
-X-Google-Smtp-Source: AGHT+IGeEfp2MCYap7wO5rebimucZRAffFjWsTUD7SJ2rlF6vN/S/AH+KhFPUvX4YP641HRzaM1OPw==
-X-Received: by 2002:a2e:4619:0:b0:2fa:be1a:a4b0 with SMTP id 38308e7fff4ca-2fc9d329bfbmr48430851fa.21.1729874139321;
-        Fri, 25 Oct 2024 09:35:39 -0700 (PDT)
-Received: from mail-lj1-f176.google.com (mail-lj1-f176.google.com. [209.85.208.176])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-2fcb45d1beesm2389411fa.90.2024.10.25.09.35.37
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 25 Oct 2024 09:35:38 -0700 (PDT)
-Received: by mail-lj1-f176.google.com with SMTP id 38308e7fff4ca-2fb3c3d5513so22004301fa.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Oct 2024 09:35:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCV7ThkiS58eaFZFzMpUU87059oRAV9eYNnSLR6FFKTFW2F0dO42DeFXOnnInEGIpcIVjhq6mmx/G2apjWNP/Q==@lists.infradead.org
-X-Received: by 2002:a05:651c:2210:b0:2fa:beb5:11cc with SMTP id
- 38308e7fff4ca-2fc9d582d71mr53240501fa.40.1729874137392; Fri, 25 Oct 2024
- 09:35:37 -0700 (PDT)
+	id 1t4QGs-000000052ET-1nF8;
+	Fri, 25 Oct 2024 19:46:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=a/dp60hBeGDxqbrgc11djchryi537nAURD/0Na12alQ=; b=XBbu3kO2H6wcTh+NYUCEGnpGHc
+	K6LNqp8/iq5tcmordkg9e1i++TFPiwld6jvmh4dgvF+n82SGQU7uA4RhcyaHrE4hp71pT9QWsDdvR
+	Qts3laYXp0EiHYcPVcqTh9YFgNXJ71WzNEuzFHj5ERGyH7ogeAW+f+/VMI9oWNnnOaQDkA//TLbjj
+	TL3EHkRQa0FyGCiCgkCeV7MjHC4LvgqgGXo6934BayWxvj/vSwFwP+eudb05qFSGBRZHVkdHF5OL0
+	nE8cjnjkcPZDXSd27tioW6/ooh11irGF135HlHLa777dM9XkovugPmzO1s0NHHzjiuk/9cyH0ILZ1
+	KnLmHSJg==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1t4QGH-000000093VL-2Bao;
+	Fri, 25 Oct 2024 19:46:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1729885570;
+	bh=xueF8NL4biPM6Tjkyld4sBVF/E87RcWAqU59Qy6ahiw=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=JfRE3Bf5Gfu+OpGxQvbs1PSFqG70Pn28Sq2qOU7LQ4hw4W+nB67hd9iDvxcsSREL8
+	 p1A7xZIQW0LnL0uAlmfFuyju47fyw5wCkybqvrQ0iysKmk0CNN/IeRPvsgskBfFpfb
+	 cRQGmn6gx9uvcSH/pBtOzK0eVcgHQZikWjxJHsRD4O9G6cSR18lERuuHtsvdKEB1UM
+	 uM+ELKf6iGPCJBfwkMCVILAsdRpXs271f0T1OL3D5U5/vJpffLXEoCfyUxbhT1VLTt
+	 Y38wrzXU4n1z55CNULfAO3TrDzcM8kEj5S+zjESHfZhrVuLDf2sx0Hg4KTI6Y9mBIK
+	 CtVOFr7/XZBLA==
+Received: from [192.168.1.54] (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BFB6817E3706;
+	Fri, 25 Oct 2024 21:46:08 +0200 (CEST)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Date: Fri, 25 Oct 2024 15:45:36 -0400
+Subject: [PATCH RFC v2 1/5] pinctrl: mediatek: paris: Expose more
+ configurations to GPIO set_config
 MIME-Version: 1.0
-References: <20240620-igt-v3-0-a9d62d2e2c7e@mediatek.com> <20240620-igt-v3-8-a9d62d2e2c7e@mediatek.com>
- <CAD=FV=XTsPBQ7Qp_oQmBXkNY==KQWZdN7VYbuVPoBTHhMvzjUQ@mail.gmail.com> <b75276ff8dc2f73818ccd132530c0d3825e17888.camel@mediatek.com>
-In-Reply-To: <b75276ff8dc2f73818ccd132530c0d3825e17888.camel@mediatek.com>
-From: Doug Anderson <dianders@chromium.org>
-Date: Fri, 25 Oct 2024 09:35:23 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=WSD9p61ePKXVOcUBGktRJkUx+KbiJXF-9QUtWE8zDt0A@mail.gmail.com>
-Message-ID: <CAD=FV=WSD9p61ePKXVOcUBGktRJkUx+KbiJXF-9QUtWE8zDt0A@mail.gmail.com>
-Subject: Re: [PATCH v3 08/14] drm/mediatek: Add DRM_MODE_ROTATE_0 to rotation property
-To: =?UTF-8?B?U2hhd24gU3VuZyAo5a6L5a2d6KyZKQ==?= <Shawn.Sung@mediatek.com>
-Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	=?UTF-8?B?QmliYnkgSHNpZWggKOisnea/n+mBoCk=?= <Bibby.Hsieh@mediatek.com>, 
-	=?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>, 
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, "djkurtz@chromium.org" <djkurtz@chromium.org>, 
-	=?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, 
-	"daniel@ffwll.ch" <daniel@ffwll.ch>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, 
-	=?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>, 
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "airlied@gmail.com" <airlied@gmail.com>, 
-	=?UTF-8?B?WVQgU2hlbiAo5rKI5bKz6ZyGKQ==?= <Yt.Shen@mediatek.com>, 
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "littlecvr@chromium.org" <littlecvr@chromium.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Hsin-Yi Wang <hsinyi@chromium.org>, "zwisler@chromium.org" <zwisler@chromium.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20241025-kselftest-gpio-set-get-config-v2-1-040d748840bb@collabora.com>
+References: <20241025-kselftest-gpio-set-get-config-v2-0-040d748840bb@collabora.com>
+In-Reply-To: <20241025-kselftest-gpio-set-get-config-v2-0-040d748840bb@collabora.com>
+To: Sean Wang <sean.wang@kernel.org>, 
+ Linus Walleij <linus.walleij@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Bamvor Jian Zhang <bamv2005@gmail.com>, Shuah Khan <shuah@kernel.org>
+Cc: kernel@collabora.com, linux-mediatek@lists.infradead.org, 
+ linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kselftest@vger.kernel.org, 
+ kernelci@lists.linux.dev, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241025_093544_577535_FE5A6D75 
-X-CRM114-Status: GOOD (  30.76  )
+X-CRM114-CacheID: sfid-20241025_204626_486607_11A4E077 
+X-CRM114-Status: GOOD (  14.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,87 +95,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Shawn,
+Currently the set_config callback in the gpio_chip registered by the
+pinctrl_paris driver only supports configuring a single parameter on
+specific pins (the input debounce of the EINT controller, on pins that
+support it), even though many other configurations are already
+implemented and available through the pinctrl API for configuration of
+pins by the Devicetree and other drivers.
 
-On Thu, Oct 24, 2024 at 6:32=E2=80=AFPM Shawn Sung (=E5=AE=8B=E5=AD=9D=E8=
-=AC=99)
-<Shawn.Sung@mediatek.com> wrote:
->
-> Hi Doug,
->
-> On Thu, 2024-10-24 at 13:47 -0700, Doug Anderson wrote:
-> >
-> > External email : Please do not click links or open attachments until
-> > you have verified the sender or the content.
-> >  Hi,
-> >
-> > On Wed, Jun 19, 2024 at 9:39=E2=80=AFAM Hsiao Chien Sung via B4 Relay
-> > <devnull+shawn.sung.mediatek.com@kernel.org> wrote:
-> > >
-> > > From: Hsiao Chien Sung <shawn.sung@mediatek.com>
-> > >
-> > > Always add DRM_MODE_ROTATE_0 to rotation property to meet
-> > > IGT's (Intel GPU Tools) requirement.
-> > >
-> > > Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> > > Reviewed-by: AngeloGioacchino Del Regno <
-> > angelogioacchino.delregno@collabora.com>
-> > > Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC
-> > MT8173.")
-> > > Signed-off-by: Hsiao Chien Sung <shawn.sung@mediatek.com>
-> > > ---
-> > >  drivers/gpu/drm/mediatek/mtk_ddp_comp.h |  6 +++++-
-> > >  drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 17 +++++------------
-> > >  drivers/gpu/drm/mediatek/mtk_plane.c    |  2 +-
-> > >  3 files changed, 11 insertions(+), 14 deletions(-)
-> >
-> > FWIW, this patch got into ChromeOS's 5.15 branch via stable merge and
-> > apparently broke things. As a short term fix we've reverted it there:
-> >
-> > https://crrev.com/c/5960799
->
-> Thank you for reporting this issue. We are currently investigating the
-> bug.
->
-> Since I am unable to access the Google issue tracker [1], could you
-> please provide more details about this bug? The message in the revert
-> commit mentions "hana/sycamore360" (MT8173) and it appears that there
-> is a rotation issue in tablet mode.
+Expose all configurations currently implemented through the GPIO API so
+they can also be set from userspace, which is particularly useful to
+allow testing them from userspace.
 
-Thanks for the followup. I've only been peripherally involved in the
-problem, but I can at least copy the relevant bits over.
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+ drivers/pinctrl/mediatek/pinctrl-paris.c | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
 
-It looks as if the problem is somehow only showing up when running
-Android apps on those devices, so whatever the problem is it's subtle.
-The report says that the apps work OK when the device is in tablet
-mode and in one rotation but the problem shows up when rotated 90
-degrees. The report says that "Screen content appears inverted". To me
-it also sounds _possible_ that the problem is somewhere in our
-userspace.
+diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+index 87e958d827bf939aa6006794287698be4936f25e..c9455de266a447ab7f5446c1511bef0ef9c9128e 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-paris.c
++++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+@@ -255,10 +255,9 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
+ 	return err;
+ }
+ 
+-static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
+-			   enum pin_config_param param, u32 arg)
++static int mtk_paris_pin_config_set(struct mtk_pinctrl *hw, unsigned int pin,
++				    enum pin_config_param param, u32 arg)
+ {
+-	struct mtk_pinctrl *hw = pinctrl_dev_get_drvdata(pctldev);
+ 	const struct mtk_pin_desc *desc;
+ 	int err = -ENOTSUPP;
+ 	u32 reg;
+@@ -795,9 +794,9 @@ static int mtk_pconf_group_set(struct pinctrl_dev *pctldev, unsigned group,
+ 	int i, ret;
+ 
+ 	for (i = 0; i < num_configs; i++) {
+-		ret = mtk_pinconf_set(pctldev, grp->pin,
+-				      pinconf_to_config_param(configs[i]),
+-				      pinconf_to_config_argument(configs[i]));
++		ret = mtk_paris_pin_config_set(hw, grp->pin,
++					       pinconf_to_config_param(configs[i]),
++					       pinconf_to_config_argument(configs[i]));
+ 		if (ret < 0)
+ 			return ret;
+ 
+@@ -937,18 +936,19 @@ static int mtk_gpio_set_config(struct gpio_chip *chip, unsigned int offset,
+ {
+ 	struct mtk_pinctrl *hw = gpiochip_get_data(chip);
+ 	const struct mtk_pin_desc *desc;
+-	u32 debounce;
++	enum pin_config_param param = pinconf_to_config_param(config);
++	u32 arg = pinconf_to_config_argument(config);
+ 
+ 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[offset];
+ 
+-	if (!hw->eint ||
+-	    pinconf_to_config_param(config) != PIN_CONFIG_INPUT_DEBOUNCE ||
+-	    desc->eint.eint_n == EINT_NA)
+-		return -ENOTSUPP;
++	if (param == PIN_CONFIG_INPUT_DEBOUNCE) {
++		if (!hw->eint || desc->eint.eint_n == EINT_NA)
++			return -ENOTSUPP;
+ 
+-	debounce = pinconf_to_config_argument(config);
++		return mtk_eint_set_debounce(hw->eint, desc->eint.eint_n, arg);
++	}
+ 
+-	return mtk_eint_set_debounce(hw->eint, desc->eint.eint_n, debounce);
++	return mtk_paris_pin_config_set(hw, offset, param, arg);
+ }
+ 
+ static int mtk_build_gpiochip(struct mtk_pinctrl *hw)
 
-I think Hsin-Yi and Ross are continuing to dig a bit more. Maybe once
-they've dug they can add any details they find or can loop in others
-as it makes sense?
+-- 
+2.47.0
 
-
-> > ...apparently the patch is fine on newer kernels so maybe there is a
-> > missing dependency? Hopefully someone on this list can dig into this
-> > and either post the revert to stable 5.15 kernels or suggest
-> > additional backports.
-> >
->
-> There are known issues [2] regarding forward compatibility. Could you
-> confirm whether this patch is unable to resolve the mentioned problem?
-> Thanks.
->
-> [1] https://issuetracker.google.com/issues/369688659
-> [2]
-> https://patchwork.kernel.org/project/linux-mediatek/list/?series=3D896964
-
-The patches in [2] look related to alpha blending but I think they are
-seeing issues related to rotation. ...so I'm going to assume it's
-different? I don't have this hardware in front of me, so I'm just
-going by the report.
-
--Doug
 
