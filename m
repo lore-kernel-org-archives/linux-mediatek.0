@@ -4,83 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 834B4D149F2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2024 21:16:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B442D149FE
+	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Oct 2024 03:18:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xaOYDKDFzL3plG01sUZwTV6ucQ677i5/nFx9cmqwF3U=; b=GgwvoIxzefuKM0nzUGmhHPMAyq
-	WVEcqWOWrSOHj1zN3BN0xcwzIbIFR6PfwxF/lrDnNQFoJW6JYelX6Gil+762V+I6GBFg2WJ7V0Mfa
-	FRuPQgHgpSp/tu+QtYf0CIRP0QpTe8WdqsQw6/tkM5tlMWwCtZbeq16oQGDpmOvm4EBwjnbEX4PQM
-	vs6KEJ9X+xWdO0ZarJ1qXohL26AyesrDJfpkO2iaIwCvV/zOF+0rKFJ4ROHtT9pRb3z5zpiQgE60E
-	zO3SywZXSTApxztTwiEVaChVSj1xwDhxHZCMUM4hqzEQYHRmStKrKH44y/DKxWdRY/6793aeQ2iLP
-	uwRVA+Tw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KcLQSd+mgrbzJFWCcO3CfOZmlLEIfHwCgqownyLI03k=; b=U+sghDgh/G9MdxYWbAm+HLytFC
+	H+aCiYeLv/RVW0Yn2ii/epVPqFGejzaOoMu+ywWJAvKi9CVLIhDlJ0NyZVfTJvVL4LavEnJXok1Oj
+	7Q+9lF0XINYE4qWCq4cNxOoL33taq2cI1gJtc1nsuYib3Vgca/4ZapiEhdvx/dOT5LU8+H/9aVi0k
+	KR+ks/59FgLv4kSmTXklvofG0iTgYxqqFva8MmXH2lI/gF886DaBiX1fH0wEcWBsjTUP1X8Kd3e/p
+	TAZaC+eGOt+gVhEb79MDOJZ8OkCQYXg3eNgNyWAkeyjsZU0AIX/FQZc87g5zxNU0TYN267pwrNW1u
+	0RkLddVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4RfZ-00000005HWp-1IMN;
-	Fri, 25 Oct 2024 21:16:29 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1t4XK2-00000005pOj-0tu4;
+	Sat, 26 Oct 2024 03:18:38 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4QGu-000000052G2-1Wda;
-	Fri, 25 Oct 2024 19:46:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=xaOYDKDFzL3plG01sUZwTV6ucQ677i5/nFx9cmqwF3U=; b=InzesxfQIk0kiC27/GIy6RJvhn
-	5ZWBBWDAu3HFxPnnJgA0Jbbg3zK6DEP5KJCM4ON3lj7zfDnA8dkEgAp2K2aVEs4POsgVTCnzoeNkF
-	fnnjEZO7vvlFuNavkpLtSow22qA2/JMotY+z6JsvXCWMMB7FR0ksnDl1CpNMpAcyic98Bjocu2eF4
-	bnA9CyOGkBObjC7rV9tMVZ/57O1s0ml9aemiG10U90XOWoui8Cz7frHqBi5I7rYpFKHJ1pPaH2vHv
-	4ium6qN8xfloVLZat8n+455gtsRpn9KgBi3qj7NRuO2VlWw6wZerRID1GxpODnxp7xVVWOPtmwdm2
-	ExFrBKkg==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t4QGH-000000093VW-2CKT;
-	Fri, 25 Oct 2024 19:46:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1729885574;
-	bh=IHDKkPuL6bGyn5e67txu92IjSUnnKlLm5rnqXrHDXfA=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=UvWdNBT8E+GAvnMABd12C2gfjEy/go+AclK2eXCzTWQodocmtcvFeSHDBB7BtvLYn
-	 beJF7K7beKxA/8UIldFBb2Fyd3xtK2p2jDm97aF4rmFpj1yjV/cECCVNpDcUipjwCR
-	 bZtRbOPxPyS8ajt+WL4xSH/Jy1vmDYQtxB3Q3NwW3Wdvj5j15DqZ8SlnlrJsyjyBJH
-	 g7c2gZIsmkj1Gd+alM3oY5/ApuW/3xFSCqPxXmVqeNqGegcwteqgI6hfbSMvxaS/GX
-	 AwneRLNuHMKz3lSYYGdHSgNGaD+gn4TQewucuYm6jsNCBv3ExSHJRzi9KOfCGc8qXv
-	 gKmVw+uA/mt4A==
-Received: from [192.168.1.54] (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A5C9D17E3750;
-	Fri, 25 Oct 2024 21:46:12 +0200 (CEST)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Fri, 25 Oct 2024 15:45:38 -0400
-Subject: [PATCH RFC v2 3/5] pinctrl: mediatek: common: Expose more
- configurations to GPIO set_config
+	id 1t4XJz-00000005pOH-13wY
+	for linux-mediatek@lists.infradead.org;
+	Sat, 26 Oct 2024 03:18:36 +0000
+X-UUID: f82dda78934811ef82ff63e91e7eb18c-20241025
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=KcLQSd+mgrbzJFWCcO3CfOZmlLEIfHwCgqownyLI03k=;
+	b=dD3MwYxEf9LyLYhnET3DNkDiB5bpqB0/HxC5+yhy+9d/IXxLZWgRcyjw83FVdXg1sjRVrl9aHt8vxO7z6y+jJz5jCrzRiNLE9OviyYHHPxn/ShPzbDRiufACinUIzUNqtKnns+XmjgR/pGHV6Rc/GHhPgoUlUQkSpgS+bruT2lI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.42,REQID:805ba402-c930-4fde-96c5-060c2810c6b0,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:d4aa212e-a7a0-4b06-8464-80be82133975,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: f82dda78934811ef82ff63e91e7eb18c-20241025
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <hao.qin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 493351559; Fri, 25 Oct 2024 20:18:28 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Sat, 26 Oct 2024 11:18:24 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Sat, 26 Oct 2024 11:18:23 +0800
+From: Hao Qin <hao.qin@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <deren.Wu@mediatek.com>,
+	Aaron Hou <aaron.hou@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, "Steve
+ Lee" <steve.lee@mediatek.com>, linux-bluetooth
+	<linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Hao Qin <hao.qin@mediatek.com>
+Subject: [PATCH] Bluetooth: btusb: Add new VID/PID 0489/e111 for MT7925
+Date: Sat, 26 Oct 2024 11:18:18 +0800
+Message-ID: <20241026031818.14719-1-hao.qin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20241025-kselftest-gpio-set-get-config-v2-3-040d748840bb@collabora.com>
-References: <20241025-kselftest-gpio-set-get-config-v2-0-040d748840bb@collabora.com>
-In-Reply-To: <20241025-kselftest-gpio-set-get-config-v2-0-040d748840bb@collabora.com>
-To: Sean Wang <sean.wang@kernel.org>, 
- Linus Walleij <linus.walleij@linaro.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Bamvor Jian Zhang <bamv2005@gmail.com>, Shuah Khan <shuah@kernel.org>
-Cc: kernel@collabora.com, linux-mediatek@lists.infradead.org, 
- linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-kselftest@vger.kernel.org, 
- kernelci@lists.linux.dev, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.14.2
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--5.230900-8.000000
+X-TMASE-MatchedRID: wDTc/wNgEcOOv/EKrwzF6CbMb0f5D0uqMApqy5cfknU2/UwdvFG5IgBu
+	o8M5Nxn42OsYla+9EV0T3bJgA9T/DR/TUHYtYA4Dbc297PAGtWak2H/b/X5aJd9RlPzeVuQQ3oz
+	JRX7b4Nk6ipv+KnW5/IAy6p60ZV62fJ5/bZ6npdjKayT/BQTiGmpLYSIdl6JxTibWIkykmaMV/7
+	NhwEFVMQrL8WGOzaM3wUWMyoUd5uE=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--5.230900-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 09859DE5732F654A41973E9833A1D16B011FA20721F1BE589D58842152CAB37E2000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241025_204627_830838_D7835A1A 
-X-CRM114-Status: GOOD (  17.29  )
+X-CRM114-CacheID: sfid-20241025_201835_346833_B58B4CEB 
+X-CRM114-Status: UNSURE (   8.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,132 +98,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently the set_config callback in the gpio_chip registered by the
-pinctrl-mtk-common driver only supports configuring a single parameter
-on specific pins (the input debounce of the EINT controller, on pins
-that support it), even though many other configurations are already
-implemented and available through the pinctrl API for configuration of
-pins by the Devicetree and other drivers.
+Add VID 0489 & PID e111 for MediaTek MT7925 USB Bluetooth chip.
 
-Expose all configurations currently implemented through the GPIO API so
-they can also be set from userspace, which is particularly useful to
-allow testing them from userspace.
+The information in /sys/kernel/debug/usb/devices about the Bluetooth
+device is listed as the below.
+
+T:  Bus=02 Lev=02 Prnt=02 Port=04 Cnt=02 Dev#=  4 Spd=480  MxCh= 0
+D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+P:  Vendor=0489 ProdID=e111 Rev= 1.00
+S:  Manufacturer=MediaTek Inc.
+S:  Product=Wireless_Device
+S:  SerialNumber=000000000
+C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+
+Signed-off-by: Hao Qin <hao.qin@mediatek.com>
 ---
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 48 ++++++++++++++++-----------
- 1 file changed, 28 insertions(+), 20 deletions(-)
+ drivers/bluetooth/btusb.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index 91edb539925a49b4302866b9ac36f580cc189fb5..7f9764b474c4e7d0d4c3d6e542bdb7df0264daec 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -62,13 +62,12 @@ static unsigned int mtk_get_port(struct mtk_pinctrl *pctl, unsigned long pin)
- 			<< pctl->devdata->port_shf;
- }
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 9970470c9d15..33513428712b 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -648,6 +648,8 @@ static const struct usb_device_id quirks_table[] = {
+ 						     BTUSB_WIDEBAND_SPEECH },
  
--static int mtk_pmx_gpio_set_direction(struct pinctrl_dev *pctldev,
--			struct pinctrl_gpio_range *range, unsigned offset,
--			bool input)
-+static int mtk_common_pin_set_direction(struct mtk_pinctrl *pctl,
-+					unsigned int offset,
-+					bool input)
- {
- 	unsigned int reg_addr;
- 	unsigned int bit;
--	struct mtk_pinctrl *pctl = pinctrl_dev_get_drvdata(pctldev);
- 
- 	reg_addr = mtk_get_port(pctl, offset) + pctl->devdata->dir_offset;
- 	bit = BIT(offset & pctl->devdata->mode_mask);
-@@ -86,6 +85,15 @@ static int mtk_pmx_gpio_set_direction(struct pinctrl_dev *pctldev,
- 	return 0;
- }
- 
-+static int mtk_pmx_gpio_set_direction(struct pinctrl_dev *pctldev,
-+			struct pinctrl_gpio_range *range, unsigned int offset,
-+			bool input)
-+{
-+	struct mtk_pinctrl *pctl = pinctrl_dev_get_drvdata(pctldev);
-+
-+	return mtk_common_pin_set_direction(pctl, offset, input);
-+}
-+
- static void mtk_gpio_set(struct gpio_chip *chip, unsigned offset, int value)
- {
- 	unsigned int reg_addr;
-@@ -363,12 +371,11 @@ static int mtk_pconf_set_pull_select(struct mtk_pinctrl *pctl,
- 	return 0;
- }
- 
--static int mtk_pconf_parse_conf(struct pinctrl_dev *pctldev,
-+static int mtk_pconf_parse_conf(struct mtk_pinctrl *pctl,
- 		unsigned int pin, enum pin_config_param param,
--		enum pin_config_param arg)
-+		u32 arg)
- {
- 	int ret = 0;
--	struct mtk_pinctrl *pctl = pinctrl_dev_get_drvdata(pctldev);
- 
- 	switch (param) {
- 	case PIN_CONFIG_BIAS_DISABLE:
-@@ -381,15 +388,15 @@ static int mtk_pconf_parse_conf(struct pinctrl_dev *pctldev,
- 		ret = mtk_pconf_set_pull_select(pctl, pin, true, false, arg);
- 		break;
- 	case PIN_CONFIG_INPUT_ENABLE:
--		mtk_pmx_gpio_set_direction(pctldev, NULL, pin, true);
-+		mtk_common_pin_set_direction(pctl, pin, true);
- 		ret = mtk_pconf_set_ies_smt(pctl, pin, arg, param);
- 		break;
- 	case PIN_CONFIG_OUTPUT:
- 		mtk_gpio_set(pctl->chip, pin, arg);
--		ret = mtk_pmx_gpio_set_direction(pctldev, NULL, pin, false);
-+		ret = mtk_common_pin_set_direction(pctl, pin, false);
- 		break;
- 	case PIN_CONFIG_INPUT_SCHMITT_ENABLE:
--		mtk_pmx_gpio_set_direction(pctldev, NULL, pin, true);
-+		mtk_common_pin_set_direction(pctl, pin, true);
- 		ret = mtk_pconf_set_ies_smt(pctl, pin, arg, param);
- 		break;
- 	case PIN_CONFIG_DRIVE_STRENGTH:
-@@ -421,7 +428,7 @@ static int mtk_pconf_group_set(struct pinctrl_dev *pctldev, unsigned group,
- 	int i, ret;
- 
- 	for (i = 0; i < num_configs; i++) {
--		ret = mtk_pconf_parse_conf(pctldev, g->pin,
-+		ret = mtk_pconf_parse_conf(pctl, g->pin,
- 			pinconf_to_config_param(configs[i]),
- 			pinconf_to_config_argument(configs[i]));
- 		if (ret < 0)
-@@ -870,19 +877,20 @@ static int mtk_gpio_set_config(struct gpio_chip *chip, unsigned offset,
- 	struct mtk_pinctrl *pctl = gpiochip_get_data(chip);
- 	const struct mtk_desc_pin *pin;
- 	unsigned long eint_n;
--	u32 debounce;
-+	enum pin_config_param param = pinconf_to_config_param(config);
-+	u32 arg = pinconf_to_config_argument(config);
- 
--	if (pinconf_to_config_param(config) != PIN_CONFIG_INPUT_DEBOUNCE)
--		return -ENOTSUPP;
-+	if (param == PIN_CONFIG_INPUT_DEBOUNCE) {
-+		pin = pctl->devdata->pins + offset;
-+		if (pin->eint.eintnum == NO_EINT_SUPPORT)
-+			return -EINVAL;
- 
--	pin = pctl->devdata->pins + offset;
--	if (pin->eint.eintnum == NO_EINT_SUPPORT)
--		return -EINVAL;
-+		eint_n = pin->eint.eintnum;
- 
--	debounce = pinconf_to_config_argument(config);
--	eint_n = pin->eint.eintnum;
-+		return mtk_eint_set_debounce(pctl->eint, eint_n, arg);
-+	}
- 
--	return mtk_eint_set_debounce(pctl->eint, eint_n, debounce);
-+	return mtk_pconf_parse_conf(pctl, offset, param, arg);
- }
- 
- static const struct gpio_chip mtk_gpio_chip = {
-
+ 	/* Additional MediaTek MT7925 Bluetooth devices */
++	{ USB_DEVICE(0x0489, 0xe111), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x0489, 0xe113), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x0489, 0xe118), .driver_info = BTUSB_MEDIATEK |
 -- 
-2.47.0
+2.18.0
 
 
