@@ -4,83 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98EA5D11707
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Oct 2024 13:34:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75895D13578
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Oct 2024 18:21:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CRby7dmwgTF0ikgqeJhgwhCuPsnBA2ft/jZDlJBhkmE=; b=GQbLWIceEDWCreoibKJqx0x8k8
-	PLPidL0KAZLrLbJHpQdkqGflyibVLtOBxfCQaoSx3R+QXLusNtGFDgRZShbdBM0lSFdNA12QsVtej
-	dRiTwgToaz4MZ24bdXgG1lm0MfBwVSWQvhKAXk8NcxKxl1d8OIECgAkZNA/7Y3CTVybFd2ib/UzWw
-	7luQdvbJk66yXMcVZ2J1NIoLWhT4KWHuRmu4ifsVCVsuhfpBZpnOIwmKrizGOz2MAESQaqrgW51Ce
-	3mBwVmrKFpxKhQ77r4Kq8psZZzEjxfpP5mBRb9e8+WaQnSjT28SbRb27uZzHDhb2MbMxmvxwdwgn5
-	gJgGOV4w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=d1bxIWA7tzzuJ88LIetAizLHq7RYaGqEOl9fJGgiZvw=; b=nh7GNcyer97w2d31llLs3oI5b0
+	TMvdqovKUbfQA1kKre1ySfNSyo7OwmWFk4bUemBqYiW7BjR+FX5pqZWsAZSWRXEoey2vH4YX+NVZP
+	evEQ20NuRdZl+MvZTIm3b0sdDhVBBBvLxcRqall8pKIX++Iy7sytgVameleRQqYchS/StevbwH400
+	A0MsU+zRSWmI1Orianm+dbUQLS+Xtn50Eg+zHgs6KFl2rc9MeWLkYLMDBzveLuHqwplBcfmhaH6PV
+	347MzuD3uHtx68HhXsgwMn9mopPr+5pYvHvh+Fc5GjRQIpTJYoSYSIruVIujwCFMHnjEm1dSZBOJH
+	cU6YdLjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t53Pc-00000008GjM-1c1p;
-	Sun, 27 Oct 2024 13:34:32 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1t57tN-00000008fdV-1Au1;
+	Sun, 27 Oct 2024 18:21:33 +0000
+Received: from mgamail.intel.com ([192.198.163.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t53Nz-00000008GXS-2FZv;
-	Sun, 27 Oct 2024 13:32:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmx.de;
-	s=s31663417; t=1730035953; x=1730640753; i=zillerbaer@gmx.de;
-	bh=CRby7dmwgTF0ikgqeJhgwhCuPsnBA2ft/jZDlJBhkmE=;
-	h=X-UI-Sender-Class:Date:From:To:Cc:Subject:Message-ID:In-Reply-To:
-	 References:MIME-Version:Content-Type:Content-Transfer-Encoding:cc:
-	 content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=PHOqhN0USMrb0agtbMuwVxj/nCIfycdeCg3UFfunRgtkmOGOM1LG/ky/oSi28uZY
-	 bBgzrUKLrfDQjIkp3MF2rf4w3hNS1tp94wyGHmYnQr+izNeUKhMK+QNBekEPAr7oK
-	 /nDx4OhBpDyr/9oW4a4HZGPJcWaDS/Tju0T3bTGwh1/AVWO+0OyAXHV+SHQdVQHIg
-	 9MepWMSofkqc4UlgJVe4b/VZglwAeW89wiuYoOxYUWVSO/2bpzusG7Aek7JLKwu4l
-	 8MyKsoI5WQqeF7LqE8wXLE1kV3SjVZG7tGF7UK5v6SaUtSlDrWbde7Jlt7gyvA6+P
-	 u4uvyuj0q+Kia6HBjA==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from schleppi.lan ([91.14.228.167]) by mail.gmx.net (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MtfNl-1tsMLm0o4F-00yCgE; Sun, 27
- Oct 2024 14:32:33 +0100
-Date: Sun, 27 Oct 2024 14:32:19 +0100
-From: Jens Ziller <zillerbaer@gmx.de>
-To: Shuijing Li <shuijing.li@mediatek.com>
-Cc: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>,
- <airlied@gmail.com>, <daniel@ffwll.ch>, <matthias.bgg@gmail.com>,
- <angelogioacchino.delregno@collabora.com>, <jitao.shi@mediatek.com>,
- <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: Re: [PATCH v2] mediatek: dsi: Correct calculation formula of PHY
- Timing
-Message-ID: <20241027143219.56e7b4d0@schleppi.lan>
-In-Reply-To: <20240412031208.30688-1-shuijing.li@mediatek.com>
-References: <20240412031208.30688-1-shuijing.li@mediatek.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.41; x86_64-pc-linux-gnu)
+	id 1t57tK-00000008fch-1Opw;
+	Sun, 27 Oct 2024 18:21:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1730053290; x=1761589290;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=M0foY50M4HsUnWQT73wNT19qOzDjY/3ojUHdpCR2Au0=;
+  b=euQ2ayl+pBz8RRviwKEyxXlfiSnffmGYeD13pgSrHajDW95OtO4fA0wu
+   fmsBCd+hB4BqQSHu5iusQqGOC+aATLsIRh/OQetZtpz51ctMDhPaf6cQ7
+   gy6StdySZsnEWBqkJ/0n6flKvy/9u6cVCfNX/1aYCGxaV89FVYuHqFGmC
+   OadeECcYqZR3cvKOne9d3eaQrznJkfv/Ml5Yz3CD1K0PUWKY3JYAlV+56
+   MDkki2qUWRbu7FK5OiPkzEs5xkZI58oCtbC5h/2pXQogLIv09d0fxCyWV
+   unFZoLbADqVNyJowwgFyJkiEsDXa6UbDdJZglWDMSnWg+l2HPxJt88xNK
+   A==;
+X-CSE-ConnectionGUID: g+2QbFDISf+TLkYslISCPA==
+X-CSE-MsgGUID: dnXekOsqT6G2Zn8/qKUAeg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11238"; a="33564715"
+X-IronPort-AV: E=Sophos;i="6.11,237,1725346800"; 
+   d="scan'208";a="33564715"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Oct 2024 11:21:23 -0700
+X-CSE-ConnectionGUID: H1QstXZTRRS7jy5jDhNBEg==
+X-CSE-MsgGUID: IpKzxFHhSB6Dxzeg+K+IdA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,237,1725346800"; 
+   d="scan'208";a="81353158"
+Received: from lkp-server01.sh.intel.com (HELO a48cf1aa22e8) ([10.239.97.150])
+  by orviesa009.jf.intel.com with ESMTP; 27 Oct 2024 11:21:20 -0700
+Received: from kbuild by a48cf1aa22e8 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1t57t7-000au5-2t;
+	Sun, 27 Oct 2024 18:21:17 +0000
+Date: Mon, 28 Oct 2024 02:20:29 +0800
+From: kernel test robot <lkp@intel.com>
+To: chang hao <ot_chhao.chang@mediatek.com>, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, sean.wang@kernel.org,
+	linus.walleij@linaro.org
+Cc: oe-kbuild-all@lists.linux.dev, linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	Chhao Chang <ot_chhao.chang@mediatek.com>
+Subject: Re: [PATCH] pinctrl: mediatek: add eint new design for mt8196
+Message-ID: <202410280230.KAMZK7aZ-lkp@intel.com>
+References: <20241025031814.21442-1-ot_chhao.chang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:Xcy5zVxWCRLQ6wQYRLlEEyAXQMtxxOLf8Uy67bys0mFVHke0mm0
- eW87nZYvbJeWK0bXYf0/H2gbewq0VQXgKnv7sV25mS3FSJoS/3L40FAhSo86M1A9MwHRz1i
- Vp5ykzLWplMIjtpFDWW/9XLXRNBYuBQMb80FDvCL1LWxuHl8vlm87FaF1Ldn5eZiNEhsJMn
- 65wOXCM/ak4MdnSCS82zA==
-UI-OutboundReport: notjunk:1;M01:P0:QaEgIXRvn+4=;kRhF5hx+fLQztGb6SOdlfogKUX3
- cZ4yacDvl+YE/uQSp3Mgv5FtcwN6NycUvL6odgmEJnGsZUXJqi+UPg+hT6moPiF/O1rNpNSQl
- XHO9KOxWATLLgRL4dhmaT1QLiBoG6iiGvEoqNHvW3jAF4DlgI646eqOSS/EUqfDWtUogabTd2
- KVAYYC3DiXWjrlu2cXSOKZ42DDLVOUgb8gsjMWz1547LIi0b8BN262McVxLlahjniUOXz/1wE
- yUwh1Xqqk5hKZ4fFEAakfQLIzjGT882ElK/Tchy67UEz/0y7d1DrZtIS4BgVVKwJQ9JouH1S0
- x/eiAVMzhQ60GKRinQi0BF/hJX1GDbQl4P+uIYeintg8urbEpVdoy8OVl0YPz6nDkDb0+W5c4
- LxypArRX6RBi3FLov0I4u3ZhHtFtLZXeL/MdL+/MDXJZlfL2YwmxhBMZwKPgyzoh+EAXRzuwQ
- KKZ5DeRR52kufNs71Oviy9TrEx6+Gb/iP3vyNmUUhJzv3evHwdNqgWDneziFB1KV8/S+kZjsR
- 6IZrRJMhSyePbRhaaWuabNoY3DC1ZMQMjK9Z5bcxF8q36COPivBAh7PNCdY56mqStlNZm48Xv
- tOPXcVgJRIE1+gpwfLVUbbLWY3RsKVEq63Zll26E2Aja9rJ+vck3+uQ6SttH1FjuzLu+3K34t
- JnW5/A6tD75atEHBJJ9UsUYuQNW2t7wA59dQ4fC4eKQrX404EJ17MvzuGUA/OqFs7h0buzGi5
- hL3R1J8DSXTSYu3cMyL8lS2njdslfQs0ks66XAQB/c1qJuE0n84M1J/jDNkmIwTicRjgJmxAg
- LXpHj0ATkquo83uh4K2vjRWA==
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241025031814.21442-1-ot_chhao.chang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241027_063251_887970_A1DBB16B 
-X-CRM114-Status: GOOD (  18.15  )
+X-CRM114-CacheID: sfid-20241027_112130_449675_AE3C613B 
+X-CRM114-Status: GOOD (  13.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,91 +90,152 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi chang,
 
-Am Fri, 12 Apr 2024 11:11:39 +0800
-schrieb Shuijing Li <shuijing.li@mediatek.com>:
+kernel test robot noticed the following build errors:
 
-> This patch correct calculation formula of PHY timing.
-> The spec define HS-PREPARE should be from 40ns+4*UI(44ns) to
-> 85ns+6*UI(91ns). But current duration is 88ns and is near the
-> boundary. So this patch make the duration to 64ns so it is near the
-> safe range.
+[auto build test ERROR on linusw-pinctrl/devel]
+[also build test ERROR on linusw-pinctrl/for-next linus/master v6.12-rc4 next-20241025]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Hi Shuijing,
+url:    https://github.com/intel-lab-lkp/linux/commits/chang-hao/pinctrl-mediatek-add-eint-new-design-for-mt8196/20241025-111952
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git devel
+patch link:    https://lore.kernel.org/r/20241025031814.21442-1-ot_chhao.chang%40mediatek.com
+patch subject: [PATCH] pinctrl: mediatek: add eint new design for mt8196
+config: s390-randconfig-r131-20241027 (https://download.01.org/0day-ci/archive/20241028/202410280230.KAMZK7aZ-lkp@intel.com/config)
+compiler: clang version 15.0.7 (https://github.com/llvm/llvm-project 8dfdcc7b7bf66834a761bd8de445840ef68e4d1a)
+reproduce: (https://download.01.org/0day-ci/archive/20241028/202410280230.KAMZK7aZ-lkp@intel.com/reproduce)
 
-with this patch the panel in the Tentacruel ASUS Chromebook CM14
-(CM1402F) flickers. There are 1 or 2 times per second a black panel.
-Stable Kernel 6.11.5 and mainline 6.12-rc4 works only when I reverse
-this patch. There's a bug inside. Can you please check that?
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202410280230.KAMZK7aZ-lkp@intel.com/
 
-Best regards
-Jens
+All errors (new ones prefixed by >>):
 
->
-> Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
-> ---
-> Changes in v2:
-> Add a commit to describe the improvements to this patch in detail,
-> per suggestion frome previous thread:
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20240315072945=
-.19502-1-shuijing.li@mediatek.com/
-> ---
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 33
-> +++++++++++++++--------------- 1 file changed, 17 insertions(+), 16
-> deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> b/drivers/gpu/drm/mediatek/mtk_dsi.c index a2fdfc8ddb15..d1bd7d671880
-> 100644 --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -235,22 +235,23 @@ static void mtk_dsi_phy_timconfig(struct
-> mtk_dsi *dsi) u32 data_rate_mhz =3D DIV_ROUND_UP(dsi->data_rate,
-> 1000000); struct mtk_phy_timing *timing =3D &dsi->phy_timing;
->
-> -	timing->lpx =3D (60 * data_rate_mhz / (8 * 1000)) + 1;
-> -	timing->da_hs_prepare =3D (80 * data_rate_mhz + 4 * 1000) /
-> 8000;
-> -	timing->da_hs_zero =3D (170 * data_rate_mhz + 10 * 1000) /
-> 8000 + 1 -
-> -			     timing->da_hs_prepare;
-> -	timing->da_hs_trail =3D timing->da_hs_prepare + 1;
-> -
-> -	timing->ta_go =3D 4 * timing->lpx - 2;
-> -	timing->ta_sure =3D timing->lpx + 2;
-> -	timing->ta_get =3D 4 * timing->lpx;
-> -	timing->da_hs_exit =3D 2 * timing->lpx + 1;
-> -
-> -	timing->clk_hs_prepare =3D 70 * data_rate_mhz / (8 * 1000);
-> -	timing->clk_hs_post =3D timing->clk_hs_prepare + 8;
-> -	timing->clk_hs_trail =3D timing->clk_hs_prepare;
-> -	timing->clk_hs_zero =3D timing->clk_hs_trail * 4;
-> -	timing->clk_hs_exit =3D 2 * timing->clk_hs_trail;
-> +	timing->lpx =3D (80 * data_rate_mhz / (8 * 1000)) + 1;
-> +	timing->da_hs_prepare =3D (59 * data_rate_mhz + 4 * 1000) /
-> 8000 + 1;
-> +	timing->da_hs_zero =3D (163 * data_rate_mhz + 11 * 1000) /
-> 8000 + 1 -
-> +		timing->da_hs_prepare;
-> +	timing->da_hs_trail =3D (78 * data_rate_mhz + 7 * 1000) / 8000
-> + 1; +
-> +	timing->ta_go =3D 4 * timing->lpx;
-> +	timing->ta_sure =3D 3 * timing->lpx / 2;
-> +	timing->ta_get =3D 5 * timing->lpx;
-> +	timing->da_hs_exit =3D (118 * data_rate_mhz / (8 * 1000)) + 1;
-> +
-> +	timing->clk_hs_prepare =3D (57 * data_rate_mhz / (8 * 1000)) +
-> 1;
-> +	timing->clk_hs_post =3D (65 * data_rate_mhz + 53 * 1000) /
-> 8000 + 1;
-> +	timing->clk_hs_trail =3D (78 * data_rate_mhz + 7 * 1000) /
-> 8000 + 1;
-> +	timing->clk_hs_zero =3D (330 * data_rate_mhz / (8 * 1000)) + 1
-> -
-> +		timing->clk_hs_prepare;
-> +	timing->clk_hs_exit =3D (118 * data_rate_mhz / (8 * 1000)) + 1;
->
->  	timcon0 =3D timing->lpx | timing->da_hs_prepare << 8 |
->  		  timing->da_hs_zero << 16 | timing->da_hs_trail <<
-> 24;
+   In file included from drivers/pinctrl/mediatek/mtk-eint.c:14:
+   In file included from include/linux/gpio/driver.h:8:
+   In file included from include/linux/irqchip/chained_irq.h:10:
+   In file included from include/linux/irq.h:20:
+   In file included from include/linux/io.h:14:
+   In file included from arch/s390/include/asm/io.h:93:
+   include/asm-generic/io.h:548:31: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           val = __raw_readb(PCI_IOBASE + addr);
+                             ~~~~~~~~~~ ^
+   include/asm-generic/io.h:561:61: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           val = __le16_to_cpu((__le16 __force)__raw_readw(PCI_IOBASE + addr));
+                                                           ~~~~~~~~~~ ^
+   include/uapi/linux/byteorder/big_endian.h:37:59: note: expanded from macro '__le16_to_cpu'
+   #define __le16_to_cpu(x) __swab16((__force __u16)(__le16)(x))
+                                                             ^
+   include/uapi/linux/swab.h:102:54: note: expanded from macro '__swab16'
+   #define __swab16(x) (__u16)__builtin_bswap16((__u16)(x))
+                                                        ^
+   In file included from drivers/pinctrl/mediatek/mtk-eint.c:14:
+   In file included from include/linux/gpio/driver.h:8:
+   In file included from include/linux/irqchip/chained_irq.h:10:
+   In file included from include/linux/irq.h:20:
+   In file included from include/linux/io.h:14:
+   In file included from arch/s390/include/asm/io.h:93:
+   include/asm-generic/io.h:574:61: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           val = __le32_to_cpu((__le32 __force)__raw_readl(PCI_IOBASE + addr));
+                                                           ~~~~~~~~~~ ^
+   include/uapi/linux/byteorder/big_endian.h:35:59: note: expanded from macro '__le32_to_cpu'
+   #define __le32_to_cpu(x) __swab32((__force __u32)(__le32)(x))
+                                                             ^
+   include/uapi/linux/swab.h:115:54: note: expanded from macro '__swab32'
+   #define __swab32(x) (__u32)__builtin_bswap32((__u32)(x))
+                                                        ^
+   In file included from drivers/pinctrl/mediatek/mtk-eint.c:14:
+   In file included from include/linux/gpio/driver.h:8:
+   In file included from include/linux/irqchip/chained_irq.h:10:
+   In file included from include/linux/irq.h:20:
+   In file included from include/linux/io.h:14:
+   In file included from arch/s390/include/asm/io.h:93:
+   include/asm-generic/io.h:585:33: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           __raw_writeb(value, PCI_IOBASE + addr);
+                               ~~~~~~~~~~ ^
+   include/asm-generic/io.h:595:59: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           __raw_writew((u16 __force)cpu_to_le16(value), PCI_IOBASE + addr);
+                                                         ~~~~~~~~~~ ^
+   include/asm-generic/io.h:605:59: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           __raw_writel((u32 __force)cpu_to_le32(value), PCI_IOBASE + addr);
+                                                         ~~~~~~~~~~ ^
+   include/asm-generic/io.h:693:20: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           readsb(PCI_IOBASE + addr, buffer, count);
+                  ~~~~~~~~~~ ^
+   include/asm-generic/io.h:701:20: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           readsw(PCI_IOBASE + addr, buffer, count);
+                  ~~~~~~~~~~ ^
+   include/asm-generic/io.h:709:20: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           readsl(PCI_IOBASE + addr, buffer, count);
+                  ~~~~~~~~~~ ^
+   include/asm-generic/io.h:718:21: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           writesb(PCI_IOBASE + addr, buffer, count);
+                   ~~~~~~~~~~ ^
+   include/asm-generic/io.h:727:21: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           writesw(PCI_IOBASE + addr, buffer, count);
+                   ~~~~~~~~~~ ^
+   include/asm-generic/io.h:736:21: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
+           writesl(PCI_IOBASE + addr, buffer, count);
+                   ~~~~~~~~~~ ^
+>> drivers/pinctrl/mediatek/mtk-eint.c:588:2: error: call to undeclared function 'dsb'; ISO C99 and later do not support implicit function declarations [-Werror,-Wimplicit-function-declaration]
+           dsb(sy);
+           ^
+   drivers/pinctrl/mediatek/mtk-eint.c:588:6: error: use of undeclared identifier 'sy'
+           dsb(sy);
+               ^
+   drivers/pinctrl/mediatek/mtk-eint.c:609:2: error: call to undeclared function 'dsb'; ISO C99 and later do not support implicit function declarations [-Werror,-Wimplicit-function-declaration]
+           dsb(sy);
+           ^
+   drivers/pinctrl/mediatek/mtk-eint.c:609:6: error: use of undeclared identifier 'sy'
+           dsb(sy);
+               ^
+   drivers/pinctrl/mediatek/mtk-eint.c:686:14: warning: no previous prototype for function 'mtk_eint_get_debounce_en' [-Wmissing-prototypes]
+   unsigned int mtk_eint_get_debounce_en(struct mtk_eint *eint,
+                ^
+   drivers/pinctrl/mediatek/mtk-eint.c:686:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+   unsigned int mtk_eint_get_debounce_en(struct mtk_eint *eint,
+   ^
+   static 
+   drivers/pinctrl/mediatek/mtk-eint.c:709:14: warning: no previous prototype for function 'mtk_eint_get_debounce_value' [-Wmissing-prototypes]
+   unsigned int mtk_eint_get_debounce_value(struct mtk_eint *eint,
+                ^
+   drivers/pinctrl/mediatek/mtk-eint.c:709:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
+   unsigned int mtk_eint_get_debounce_value(struct mtk_eint *eint,
+   ^
+   static 
+   14 warnings and 4 errors generated.
 
+
+vim +/dsb +588 drivers/pinctrl/mediatek/mtk-eint.c
+
+   572	
+   573	int mtk_eint_do_suspend(struct mtk_eint *eint)
+   574	{
+   575		unsigned int i, j, port;
+   576	
+   577		for (i = 0; i < eint->instance_number; i++) {
+   578			struct mtk_eint_instance inst = eint->instances[i];
+   579	
+   580			for (j = 0; j < inst.number; j += MAX_BIT) {
+   581				port = j >> REG_GROUP;
+   582				writel_relaxed(~inst.wake_mask[port],
+   583					       inst.base + port*REG_OFSET + eint->comp->regs->mask_set);
+   584				writel_relaxed(inst.wake_mask[port],
+   585					       inst.base + port*REG_OFSET + eint->comp->regs->mask_clr);
+   586			}
+   587		}
+ > 588		dsb(sy);
+   589	
+   590		return 0;
+   591	}
+   592	EXPORT_SYMBOL_GPL(mtk_eint_do_suspend);
+   593	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
