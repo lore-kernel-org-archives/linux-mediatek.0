@@ -4,65 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87225D33983
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2024 13:59:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D707BD33986
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2024 14:05:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=j/HyP98j8NrJPQ1le2YvAkgFepBV2kR+iOheFZEPv+s=; b=dPrpVm0FgDWAtuQDQQNuhTcbIL
-	VEmwZqhNe6XwHFqIwdBIppZXtty/4djrYuuC0LyzUFYGtJjQxTz9ztDBn4i/7aMhGVbGIT/HgXKqu
-	ZwI4Uctm1TV4Gho601aiscMyAGCE0FKT4gsgDV7opRtHgfaXRypujsWFF3zZHu1dJ3kG9296hZU68
-	k0k76FJwTQn0OxFj0HuZDcqVF5XteCYfRwifqNJW4iY59iErEZZzi8Ex7CPqg6sKgY6cOdJLsEopY
-	uG0YFjlqj0g0EwSmlehNf2ZKaDd4GW95DEh2eVAIFXaDs9wMHPR7Bp+Zrrv/fKwvCSH8Pxe8QCtOq
-	Jug6fY6A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kb4LdJWW6f8y1GhUSlZL6T9c+Ow9/VMDwR8sFapd1nA=; b=F8BJFVTDw6+w0dZByXOPnT6mYs
+	Oz395YZ70DKm9yG0uDno7+N6idKaXBaWHQIbMlr2sF317mIn5nTdCp5EvECpnhOc/GiHJ+axqVF9j
+	+vMWRwQRrkfQNJSLC0j1Hu904kVTI5aAj+UXGL31EwSbHdYd06THHLDN3sLx18pRxSLRo6N4M+uAM
+	has5yilNlP3Gn31yFhMmvqqxGuv+HIqWHZSNBeorER6EbHiU0LUINEqxsYRn5binR3t63eePWgA9N
+	m/E6mxRZfweeTwhNKIk3FTgu7QTCZkeMmt7lhh+Szp7BeCM5LDd9c6QVJ2egOKS/tL+vT3dM20DOr
+	I8nfowow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5QGn-0000000B11T-3Bbx;
-	Mon, 28 Oct 2024 13:58:57 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1t5QNH-0000000B2Oq-3r8e;
+	Mon, 28 Oct 2024 14:05:39 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5QGk-0000000B0zD-4443
-	for linux-mediatek@lists.infradead.org;
-	Mon, 28 Oct 2024 13:58:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 58BD3A4196D;
-	Mon, 28 Oct 2024 13:56:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EFE90C4CEE8;
-	Mon, 28 Oct 2024 13:58:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730123933;
-	bh=K/7KTDMPuENamkKkqsHNo5G/p+HSdxlk0n5hK36PN1E=;
-	h=From:To:Subject:Date:From;
-	b=ZyNlD4KZ+2/tN8m2oNbRkgZ62v9n/PBN1xJ4oeicGBphk8guST/GZKioUccJbN0Ol
-	 GO7BC9tJ+BHiDmXMN2gr2nrat0AJBaXEB/IoGhOETkjfo+9kgiLsjuUTeOX3po6Ou6
-	 XDKiX4CW2vw6t5F6gm5yQdmXZ8jkSd4YlzQT7eiBF6rTDw1lEZwTB0xJQ+7R7wuH3u
-	 4ZHmHIrLl40v1xI4I69W0L15XId6+ds9jEtZJeJ3S8IUqbP95RqwCWepCGYTxoRlVu
-	 gMtC556IKZZ5H4eqQSHdP1Bmh+1z0AFsDnSqOav0vrwOGozdBAvaf0zsRBEa1/2pye
-	 rjrrMZCJUeeDQ==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: David Airlie <airlied@linux.ie>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	"Jason-JH . Lin" <jason-jh.lin@mediatek.com>,
-	Hsin-Te Yuan <yuanhsinte@chromium.org>,
-	Liankun Yang <liankun.yang@mediatek.com>,
-	Dan Carpenter <dan.carpenter@linaro.org>,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	Moudy Ho <moudy.ho@mediatek.com>
-Subject: [GIT PULL] mediatek drm fixes 20241028
-Date: Mon, 28 Oct 2024 13:58:46 +0000
-Message-Id: <20241028135846.3570-1-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.34.1
+	id 1t5QKX-0000000B1g0-3wuK;
+	Mon, 28 Oct 2024 14:02:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1730124166;
+	bh=GARURTPO3rxpQXzZwj7FF8BdkvH2AjtCyCh0MqYT5vA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=BPKqAkDEwKSvzgI+d7NCdISq1yOm+4PmPcY/g1FvCeseJW1LI6xksrH7ivDzwWxY5
+	 sGqELxzRCfM4QwZcJkbonBxQkoQj/0zgG6NAKf4D5lL0u+4YE4Zr6yPVJkdfC0F3VL
+	 nwDEgq5fKNXFTNu4mJ/ZslyE8VgdhNLc7PcFvjAgUFw94CbWQWUPZRceD9j4Y/mBkt
+	 vfsLrVEOK56FqOR7pbYISoTvp5pHgDj4+zTYPHuwwWsxIRcL4FYFG93xlG0NR4USg7
+	 wV0JoYWq/+kUZY0slHTCCObmYSLpNOygG0WBNM207xU/wdum4dvi5nzqxu21z5TPhL
+	 l/sjPvx8i1Z4g==
+Received: from notapiano (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 321DF17E3613;
+	Mon, 28 Oct 2024 15:02:44 +0100 (CET)
+Date: Mon, 28 Oct 2024 10:02:41 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Bamvor Jian Zhang <bamv2005@gmail.com>,
+	Shuah Khan <shuah@kernel.org>
+Cc: kernel@collabora.com, linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kselftest@vger.kernel.org, kernelci@lists.linux.dev
+Subject: Re: [PATCH RFC v2 0/5] Verify bias functionality for pinctrl_paris
+ driver through new gpio test
+Message-ID: <cda91b70-7179-49b5-9207-3fa3a1aaa4d5@notapiano>
+References: <20241025-kselftest-gpio-set-get-config-v2-0-040d748840bb@collabora.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20241025-kselftest-gpio-set-get-config-v2-0-040d748840bb@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241028_065855_238234_19270478 
-X-CRM114-Status: UNSURE (   8.23  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241028_070250_201523_ACCDEC36 
+X-CRM114-Status: GOOD (  30.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,77 +81,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dave & Daniel:
+On Fri, Oct 25, 2024 at 03:45:35PM -0400, Nícolas F. R. A. Prado wrote:
+> This series was motivated by the regression fixed by 166bf8af9122
+> ("pinctrl: mediatek: common-v2: Fix broken bias-disable for
+> PULL_PU_PD_RSEL_TYPE"). A bug was introduced in the pinctrl_paris driver
+> which prevented certain pins from having their bias configured.
+> 
+> Running this test on the mt8195-tomato platform with the test plan
+> included below[1] shows the test passing with the fix applied, but failing
+> without the fix:
+> 
+> With fix:
+>   $ ./gpio-setget-config.py
+>   TAP version 13
+>   # Using test plan file: ./google,tomato.yaml
+>   1..3
+>   ok 1 pinctrl_paris.34.pull-up
+>   ok 2 pinctrl_paris.34.pull-down
+>   ok 3 pinctrl_paris.34.disabled
+>   # Totals: pass:3 fail:0 xfail:0 xpass:0 skip:0 error:0
+> 
+> Without fix:
+>   $ ./gpio-setget-config.py
+>   TAP version 13
+>   # Using test plan file: ./google,tomato.yaml
+>   1..3
+>   # Bias doesn't match: Expected pull-up, read pull-down.
+>   not ok 1 pinctrl_paris.34.pull-up
+>   ok 2 pinctrl_paris.34.pull-down
+>   # Bias doesn't match: Expected disabled, read pull-down.
+>   not ok 3 pinctrl_paris.34.disabled
+>   # Totals: pass:1 fail:2 xfail:0 xpass:0 skip:0 error:0
+> 
+> In order to achieve this, the first three patches expose bias
+> configuration through the GPIO API in the MediaTek pinctrl drivers,
+> notably, pinctrl_paris, patch 4 extends the gpio-mockup-cdev utility for
+> use by patch 5, and patch 5 introduces a new GPIO kselftest that takes a
+> test plan in YAML, which can be tailored per-platform to specify the
+> configurations to test, and sets and gets back each pin configuration to
+> verify that they match and thus that the driver is behaving as expected.
+> 
+> Since the GPIO uAPI only allows setting the pin configuration, getting
+> it back is done through pinconf-pins in the pinctrl debugfs folder.
+> 
+> The test currently only verifies bias but it would be easy to extend to
+> verify other pin configurations.
+> 
+> The test plan YAML file can be customized for each use-case and is
+> platform-dependant. For that reason, only an example is included in
+> patch 3 and the user is supposed to provide their test plan. That said,
+> the aim is to collect test plans for ease of use at [2].
+> 
+> [1] This is the test plan used for mt8195-tomato:
+> 
+> - label: "pinctrl_paris"
+>   tests:
+>   # Pin 34 has type MTK_PULL_PU_PD_RSEL_TYPE and is unused.
+>   # Setting bias to MTK_PULL_PU_PD_RSEL_TYPE pins was fixed by
+>   # 166bf8af9122 ("pinctrl: mediatek: common-v2: Fix broken bias-disable for PULL_PU_PD_RSEL_TYPE")
+>   - pin: 34
+>     bias: "pull-up"
+>   - pin: 34
+>     bias: "pull-down"
+>   - pin: 34
+>     bias: "disabled"
+> 
+> [2] https://github.com/kernelci/platform-test-parameters
+> 
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> ---
+> Changes in v2:
+> - Added patches 2 and 3 enabling the extra GPIO pin configurations on
+>   the other mediatek drivers: pinctrl-moore and pinctrl-mtk-common
+> - Tweaked function name in patch 1:
+>   mtk_pinconf_set -> mtk_paris_pin_config_set,
+>   to make it clear it is not a pinconf_ops
+> - Adjusted commit message to make it clear the current support is
+>   limited to pins supported by the EINT controller
+> - Link to v1: https://lore.kernel.org/r/20240909-kselftest-gpio-set-get-config-v1-0-16a065afc3c1@collabora.com
+> 
+> ---
+> Nícolas F. R. A. Prado (5):
+>       pinctrl: mediatek: paris: Expose more configurations to GPIO set_config
+>       pinctrl: mediatek: moore: Expose more configurations to GPIO set_config
+>       pinctrl: mediatek: common: Expose more configurations to GPIO set_config
 
-This includes:
+I forgot to mention that I don't have hardware that uses the moore or the common
+drivers, so I'm not able to runtime test patches 2 and 3. So help with that is
+appreciated.
 
-1. Fix degradation problem of alpha blending
-2. Fix color format MACROs in OVL
-3. Fix get efuse issue for MT8188 DPTX
-4. Fix potential NULL dereference in mtk_crtc_destroy()
-5. Correct dpi power-domains property
-6. Add split subschema property constraints
+Thanks,
+Nícolas
 
-Regards,
-Chun-Kuang.
-
-The following changes since commit 9852d85ec9d492ebef56dc5f229416c925758edc:
-
-  Linux 6.12-rc1 (2024-09-29 15:06:19 -0700)
-
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-fixes-20241028
-
-for you to fetch changes up to 3ad0edc46fb7668e75583ee6ebcce684f62ec4dc:
-
-  dt-bindings: display: mediatek: split: add subschema property constraints (2024-10-23 14:47:39 +0000)
-
-----------------------------------------------------------------
-Mediatek DRM Fixes - 20241028
-
-1. Fix degradation problem of alpha blending
-2. Fix color format MACROs in OVL
-3. Fix get efuse issue for MT8188 DPTX
-4. Fix potential NULL dereference in mtk_crtc_destroy()
-5. Correct dpi power-domains property
-6. Add split subschema property constraints
-
-----------------------------------------------------------------
-Dan Carpenter (1):
-      drm/mediatek: Fix potential NULL dereference in mtk_crtc_destroy()
-
-Hsin-Te Yuan (1):
-      drm/mediatek: Fix color format MACROs in OVL
-
-Jason-JH.Lin (5):
-      drm/mediatek: ovl: Fix XRGB format breakage for blend_modes unsupported SoCs
-      drm/mediatek: ovl: Refine ignore_pixel_alpha comment and placement
-      drm/mediatek: ovl: Remove the color format comment for ovl_fmt_convert()
-      drm/mediatek: ovl: Add blend_modes to driver data
-      drm/mediatek: Add blend_modes to mtk_plane_init() for different SoCs
-
-Liankun Yang (1):
-      drm/mediatek: Fix get efuse issue for MT8188 DPTX
-
-Macpaul Lin (1):
-      dt-bindings: display: mediatek: dpi: correct power-domains property
-
-Moudy Ho (1):
-      dt-bindings: display: mediatek: split: add subschema property constraints
-
- .../bindings/display/mediatek/mediatek,dpi.yaml    | 24 +++---
- .../bindings/display/mediatek/mediatek,split.yaml  | 19 +++++
- drivers/gpu/drm/mediatek/mtk_crtc.c                |  4 +-
- drivers/gpu/drm/mediatek/mtk_ddp_comp.c            |  2 +
- drivers/gpu/drm/mediatek/mtk_ddp_comp.h            | 10 +++
- drivers/gpu/drm/mediatek/mtk_disp_drv.h            |  2 +
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c            | 74 ++++++++++++++-----
- drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c    |  7 ++
- drivers/gpu/drm/mediatek/mtk_dp.c                  | 85 +++++++++++++++++++++-
- drivers/gpu/drm/mediatek/mtk_ethdr.c               |  7 ++
- drivers/gpu/drm/mediatek/mtk_ethdr.h               |  1 +
- drivers/gpu/drm/mediatek/mtk_plane.c               | 15 ++--
- drivers/gpu/drm/mediatek/mtk_plane.h               |  4 +-
- 13 files changed, 208 insertions(+), 46 deletions(-)
+>       selftest: gpio: Add wait flag to gpio-mockup-cdev
+>       selftest: gpio: Add a new set-get config test
+> 
+>  drivers/pinctrl/mediatek/pinctrl-moore.c           | 283 +++++++++++----------
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common.c      |  48 ++--
+>  drivers/pinctrl/mediatek/pinctrl-paris.c           |  26 +-
+>  tools/testing/selftests/gpio/Makefile              |   2 +-
+>  tools/testing/selftests/gpio/gpio-mockup-cdev.c    |  14 +-
+>  .../gpio-set-get-config-example-test-plan.yaml     |  15 ++
+>  .../testing/selftests/gpio/gpio-set-get-config.py  | 183 +++++++++++++
+>  7 files changed, 395 insertions(+), 176 deletions(-)
+> ---
+> base-commit: a39230ecf6b3057f5897bc4744a790070cfbe7a8
+> change-id: 20240906-kselftest-gpio-set-get-config-6e5bb670c1a5
+> 
+> Best regards,
+> -- 
+> Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> 
 
