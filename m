@@ -4,213 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 261DED13570
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2024 05:38:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9058CD13570
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2024 06:18:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+r+fAd4vNxm6/AO4W7MSpl4pT+vNd9ypdUN5u8/jpXI=; b=ztLsUBMchCxwYdhYTnrhUr4GD7
-	gyrRzKr5dF/gUvCokuyUWPvMb3R3F4IwgK8+TWG8cShb3HMMYJ0eGON8LG6JmjhTgEpaQ8CHQuflg
-	ILmZfnIlCrIijABu9iap1SGrk0A4E7Uvn1H59EOG0Ybtsyvd/5PVgPwlbHk+b1uT6v9TtZIhlv6f7
-	OBj2kQihr0c+wL+chDDtrC6DGjYhLNX2nOu1Ny7sPNot+6cDSPL60lw9u4jjl+Z+ufrLZMbiEE5D5
-	yjei9FERcTpLGtzDEEdzXnQWyp/tfZEjJa352RNqRfbChb743pZtgWYuoroG0MNfM+KRhmQELMgV+
-	R9iJHKew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ce0zNBQeVdRQ8Ne1/EW2HUiLxw/YLpcNrQUx0YR1py8=; b=DnWPrHozqU7ME6P5XS+8FCr9Tr
+	L/BALCreMFsfljceCkObeMhzPKmUFKtIqfla+U2WMWBMf8QkSaXLkAY/0zNJlKOHiUELop4DVuupD
+	j/DTgL3p1gNmQGT0J+tgmYGUu3I4lft7izT3jFjMeoMeAZgL+ZLhoAvJ0bj0MUAzZSCE/KEsVjz2Z
+	HmRm0HSIxOYcfwz9cwvy8XaRWF2bOvGSbwax8zyLRxe02JrZaUpE2d3/Lfxg2CzrNSPgXTbE6de8s
+	TDEnAgmzU/CTVaaGvpAujl8cqIdtKAVQ+aj5zEVVqzNj48aBcdbwvv6fsUmjLxal81afs7qynjS6V
+	yP0dYKKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5ISn-00000009cl1-0Hac;
-	Mon, 28 Oct 2024 05:38:49 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1t5J5J-00000009huO-1lxM;
+	Mon, 28 Oct 2024 06:18:37 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5IOM-00000009bPN-09VW;
-	Mon, 28 Oct 2024 05:34:15 +0000
-X-UUID: 42ee152294ee11ef9048ed6ed365623b-20241027
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=+r+fAd4vNxm6/AO4W7MSpl4pT+vNd9ypdUN5u8/jpXI=;
-	b=KKxCKzpaPa0DMu/QOTU6D89wY616DjvHHWd6PXk+ar/ie44CkkEfAj0ZruHJhapZegwxghsvF4VUudGQ9AELcEbmqXxztjRTMdheInnISG0JKByk3hyd5JSuf1Hhl90IEYIe98bKVsD05sES0PBMn+twPsO4BfvQt4fF/t765u4=;
-X-CID-CACHE: Type:Local,Time:202410272220-07,HitQuantity:1
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.42,REQID:5cdec392-1bce-42a4-a2de-8a841452209b,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:b0fcdc3,CLOUDID:9150342e-a7a0-4b06-8464-80be82133975,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|-5,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 42ee152294ee11ef9048ed6ed365623b-20241027
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1390433694; Sun, 27 Oct 2024 22:34:11 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 28 Oct 2024 13:34:09 +0800
-Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 28 Oct 2024 13:34:09 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=dQ7chN3EN4kA6gJJf0rFHJ+jvrNFZQV72Sh6b7y7rfKYEdqhfLUy7UGqFaF+o+OrWl87nBdSf99rshelJa7h9ribZbTKCdp01Z+UjMLg0V1Qh0r0nhObdrb+5Hs9kFRNf4CH1VgzWFDtB1NBbLRaaHadWsj3mMUg9J/IXS5obbPfq1PV0Lxz6uV0ZSEcDWjhcZILEJNHEOyjQgvfx+dn5gk1qhxzw0rhLvUQmgUBN/A7Bnil4Dj8uHeUKoYjnTL0u/V00uMjI2bq8GvthRtmcHbWHLcJPWeFeAyqTBM6P0YNnTHIpivjxqkffiiTQks9zfBWavV4zCgzfO9tBMdW7A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+r+fAd4vNxm6/AO4W7MSpl4pT+vNd9ypdUN5u8/jpXI=;
- b=RflnaROGh/aipkJ8TPBHRdFVksZ1z1Uy2FcamhsfDhqXjgDOK6maUlmrYt31lj7lRqWGajzTd4tWhUxScIG1LURCo8nxt/uTSi30pc8h9IaYL2euYLxmbrJ3baFGd8VqkDitOX5L0dI2sWqr5QHaP8TO6+lWt5hjl/l2Kmc6LxT6mTXqm1n6RmiaM7RJVa0Aw/FdexViUsIlw6hBdYVly+Gd5ZJ+s211Qz95jEG23aCuRnuzK5rzwA9eGsbr98L6ScA4Il7Xtg7S2Du9rDdPob7sRL//+iut0aMYoJGqgimt07zGj9TXME+Dj9OusodhZcDQcfgL9EqyrEjxeBJktw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	id 1t5J3J-00000009hjR-3Nbr
+	for linux-mediatek@lists.infradead.org;
+	Mon, 28 Oct 2024 06:16:36 +0000
+Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-539ebb5a20aso3860232e87.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 27 Oct 2024 23:16:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+r+fAd4vNxm6/AO4W7MSpl4pT+vNd9ypdUN5u8/jpXI=;
- b=IX/O8pFRpPxaKuPOGK9eKwH7Xgrh4L1M62JiUUQKY09Jzwmai9+Y2SUQ0jllSxLMDTlf+2aJmuFfmY51e2hTtchzPlrQIciNo3H1BFPQu7Ifn2dMv54i2uvVmLPLaatzzbqXu7/pwVHsx02tyUrUD2XIrCqgd0WsGmJ0lVi+tGE=
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
- by SEYPR03MB8204.apcprd03.prod.outlook.com (2603:1096:101:1aa::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8093.18; Mon, 28 Oct
- 2024 05:34:04 +0000
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::9ce6:1e85:c4a7:2a54]) by TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::9ce6:1e85:c4a7:2a54%7]) with mapi id 15.20.8093.021; Mon, 28 Oct 2024
- 05:34:04 +0000
-From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-To: "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>,
-	"christian.koenig@amd.com" <christian.koenig@amd.com>, "mchehab@kernel.org"
-	<mchehab@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"robh@kernel.org" <robh@kernel.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	=?utf-8?B?U2h1LWhzaWFuZyBZYW5nICjmpYroiJLnv5Qp?=
-	<Shu-hsiang.Yang@mediatek.com>
-CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"yunkec@chromium.org" <yunkec@chromium.org>, "linaro-mm-sig@lists.linaro.org"
-	<linaro-mm-sig@lists.linaro.org>, "linux-media@vger.kernel.org"
-	<linux-media@vger.kernel.org>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, =?utf-8?B?WWF5YSBDaGFuZyAo5by16ZuF5riFKQ==?=
-	<Yaya.Chang@mediatek.com>, Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	=?utf-8?B?VGVkZHkgQ2hlbiAo6Zmz5Lm+5YWDKQ==?= <Teddy.Chen@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "hidenorik@chromium.org"
-	<hidenorik@chromium.org>, =?utf-8?B?U2h1bi1ZaSBXYW5nICjnjovpoIblhIQp?=
-	<Shun-Yi.Wang@mediatek.com>
-Subject: Re: [PATCH v1 08/10] media: platform: mediatek: add isp_7x state ctrl
-Thread-Topic: [PATCH v1 08/10] media: platform: mediatek: add isp_7x state
- ctrl
-Thread-Index: AQHbGj2y1UKRq3h+wU6S0U6tpTQ9lbKbwYOA
-Date: Mon, 28 Oct 2024 05:34:04 +0000
-Message-ID: <ec7f2fe029cfebc06e047f9f91f8e37c671a8ceb.camel@mediatek.com>
-References: <20241009111551.27052-1-Shu-hsiang.Yang@mediatek.com>
-	 <20241009111551.27052-9-Shu-hsiang.Yang@mediatek.com>
-In-Reply-To: <20241009111551.27052-9-Shu-hsiang.Yang@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|SEYPR03MB8204:EE_
-x-ms-office365-filtering-correlation-id: 7ebab8d9-1453-4b6e-d2f1-08dcf7122295
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|376014|7416014|366016|38070700018;
-x-microsoft-antispam-message-info: =?utf-8?B?alhDdFVYclhBZkcvTFAyL2ZZWTJ1Ukl3cStLeTUzc0xiVDhxb0NoMGQ0RFl1?=
- =?utf-8?B?aVptWVMvdG9IM1pwL091QkY2dk45aVVqbGQzdmFLV2ZnYTRhcWhoQ0hlV3VI?=
- =?utf-8?B?VytzaEEveldyN21lcFhvRWdtd2FCbDk2WVVoMjgyell3VS9PaHU4Y0RCb2E0?=
- =?utf-8?B?Q1lBZTVjVUdJenpEV3doYTFwY0FRU0YwY1dPSjB5ZmdIb01UcGRFZlNPVGdn?=
- =?utf-8?B?a3JBTHh2YVZSLzdWUm1sQnNVYzN0amlUNWJDS1ROSHdXTytlSkhxZDNqZmFm?=
- =?utf-8?B?WnZzUU9wV210bExkaUJWaE50Nld6ekMyeW1zV3NtdkVCU1Y0NVJSMTJxaWNx?=
- =?utf-8?B?dTlTeWVpd01QZjVabWx3UWJCczlQR0FraUNrMnpwWG1SaDdDLzZML253ZTRI?=
- =?utf-8?B?OGpyTXBCaEgvaXE3QldmNEZnNC9DVFRiZ3lWT0JOUUdDUldzY25jSVR3MTdB?=
- =?utf-8?B?Qlh5cWdyRnFTczAvcURlQTZqeHovTHdQN0JybC8wSUtTL2ZZdlpRemJTVWc5?=
- =?utf-8?B?ZjdxQ1pKODhSWXhqd3JXMytwWWpDMUNPWjJ4MktXMGpPL2tCTkdvanJoYmlV?=
- =?utf-8?B?c2VxbkV4UHRJZThFU3NoV2t2YkUzcExyZHRCang1VEpZSUFobGJMM2ltVnZT?=
- =?utf-8?B?cXo4S0J5T2c3RTB4aHpDNWJaRmM0NDUwL3JNa3RZc1RXdWlPVTRpVDZYS0lq?=
- =?utf-8?B?M0loTmJIeEJpeEFYbUhPWEpUbit1QXdJRjRzYXJmd3VWd2dkU0szT3EyMnZj?=
- =?utf-8?B?TmN5MGF5S2VtWDdMVUJEMlJFcWhLR21Uc3RXOEQ2RFh3N0lPVzlxY3J1WGNS?=
- =?utf-8?B?d2U1Nkc0Y0tzZlZFV3orc3hSbG1WSENyWUJiaUJVRjhEc1AxMTEwVXIxc1Zp?=
- =?utf-8?B?cHVCbk1Ed2Nhd0tRSytJcmNVWWtEazFyUGp4Q0doUE1yd0JlWFVzTmhXZ3VN?=
- =?utf-8?B?dHd5ZHVIbk5vUklPZFNVRWduWUlDZ3crbFBLQk9sTm1oRnVwaXFaWXlIYWpr?=
- =?utf-8?B?NkZlQjZ2RSt0UE9Ndy9qU2FDamtjRG00SzIwVlc3M0s3THpMNDJmL1UyaTM5?=
- =?utf-8?B?NzRrVWdtblVjbndscmNRSE4wRGlIUnNqdmVsaEx1dUVxS2prb2QzMVFBZURM?=
- =?utf-8?B?cGNjTUh1TFB1eTBDNEt3bEg2THZIaUdZOVpYUi9LUEF2NGZETmF0Rkx0M1Qr?=
- =?utf-8?B?MCtOMFhsczNYVGFoRWpCb1pCMUJNbG9ZK3FXWnI2K0NsVzZEUDkxUUxWakpL?=
- =?utf-8?B?K3Y5WE9lak92V3RZR0NhbmdtSDdnemxhTlZPbmh0eENsRmo0aFo1KzhNKzIx?=
- =?utf-8?B?WWR5YTk3QjE5Q1V0eml0K09DR0RoMDVZb2RtUEw5RHZPRDNVYnNIUFlCclBo?=
- =?utf-8?B?ek5rclZ2SEtmQ0YwVDBEeDVPVEExaTNsTlhlSnEvVFhiVXRMenZIeFVaWlpI?=
- =?utf-8?B?NUhRNDJQQmhZYm1rTDFTZUNDbHI1UEtGa214OHZ6NGJmREJZczc3WmRFc1JS?=
- =?utf-8?B?WEtqQ3pqK1hjOGNjNFkrQ2VRRDZxMStJVmR3VUxsakZRaFh4bmFFc3Q4NzZ3?=
- =?utf-8?B?azlodTlYemtQQ1pkMy9oYWYxWUpRVUh2VUdFVUVHSUhWOUdnUjdjaCtLdUNV?=
- =?utf-8?B?RmxKaWhFZTJOVFZ5YVlBeFY1TC94T1Q1VkwvSnhPYnptRW43c1hQZWFJK1Bt?=
- =?utf-8?B?Ym1wWVFudUoxZmNBdEhzOGdpQ1kzRXBnbTlELzlYV0JveTBoTlJLQ3h5dGRq?=
- =?utf-8?B?bFVmSERkMHVMMjhtYUVzYTk0QlZ6L1ZNZEplNWFNK2xDeVFBdisvaUsxYzdP?=
- =?utf-8?Q?VEtmfwKxVrIWJzXJc13XE8WUNwh210wwQLyLs=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(7416014)(366016)(38070700018);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?cmJtOUo2RWd5Yk4vSDc1eVVPMm84OExYNk1qMStDZENZWTNIdHdsOU5rMzQ4?=
- =?utf-8?B?WWhOUVN6VUFCaEU4dldCc051NTFYL2JhY01IVFZFb2pBRllYUmQ4eDRDaWMv?=
- =?utf-8?B?dEovd1Q1VThBU0ZWOEFYUHVISGFSZ0h5YlA5RE9jSnh2VXh2ZWhTNTM5bzJC?=
- =?utf-8?B?NUdxOFM5NWVUZEVLUENsakNUYVViaHFsc1FYZklXazdaQmtXZGRXUjlCVkE3?=
- =?utf-8?B?Nzk5UTJzUnR1S1h2RTJ4Z1J0SWRTVDhmOUZxbXFGSE52b2lodE5JeDloRjVN?=
- =?utf-8?B?M1BkR0ZNSlh6WlJkMTd3V2NGQXFUS3pCRElPU3hEZEowWnAxTUFIR1dLYkda?=
- =?utf-8?B?eXNiRTNuYVBCOTJKKy9QUmh1R29mOFRINS9rMmdBQVo5bmpmRGJ4bTJNc3Zj?=
- =?utf-8?B?MEJodFdERGxHNFVScHdYdTFSL2VKdnkwSmdkVlVDNzJuLzd0aGRrTjVOTXR5?=
- =?utf-8?B?cUo3NDBqdzROWmhhWVVNOVIvcjUzL3VJdWxFSlo0YWpENVdkcCtjWFQ4ZU4w?=
- =?utf-8?B?ekhidW1Za3dESGpyRHdlbWt3T1F4MG4yaUZhVkorbW9LcDRCUTlDb3lnd2xB?=
- =?utf-8?B?TGFwWkdzUVl5dkFzeXcveHRNUlh6Y3MzbG5QY2VpT2E3RUhPMWJQbmtPYmNs?=
- =?utf-8?B?ZitFNVRqbVBVWVN6aDJoTG93Y1JhOEw2Q2xGd2ZGaHVqQTJsWGJtSkVVVklF?=
- =?utf-8?B?d2ZWS0l2aHBqVFh6anExbkdlVElxZHpjd1RyTWlhLzFKY1pZNXVnOWhGcU1t?=
- =?utf-8?B?OW9ESmdjdEhXRG9mVHpndFBBMWd5d0JDQVRkVERFR0F3c0N2a1lIRjR4QU52?=
- =?utf-8?B?SEYyWE5wNTNRR1FqNnFiOEFhUjVybXI5Wi96RWRQK0FSNnVVYVhNU2x1cmp5?=
- =?utf-8?B?UnpaOEc4YXRIU1cyMjBvWjR0TTJuMThaaW9FaktHWk40TEp2YkhGZWlmQnlZ?=
- =?utf-8?B?dHBlWXpiNkl3Yjluamt5Um9VN21wa1RyRlJ2bGl0TXVVV2ZoamVYUldydGlQ?=
- =?utf-8?B?WGw1UjhsQVBvN1BidHZtUSs5M2xvVGJidzNwanNpazdpTWUyYktxUm05akRM?=
- =?utf-8?B?ZVdCZDhGNExRK1I3NkNzbDBJOFFBUFI1ejJVc0NPZlZsYzNJVTFZanZEaG1J?=
- =?utf-8?B?ZW1jTTNaNVFMUmQ1L3pUWlJqRjNEYnNBTHRMT05mcTFia21HNVNVajQzL3Fz?=
- =?utf-8?B?aHRWcUJ3QmlHN2w2TmpFb2xLQ3dMK1hMVEJkYkRFMmhFSkNTNTVZbFUyODZD?=
- =?utf-8?B?MXhVUFZLSVpPRk9SU3dWMEE0YmN0OTdqa1JZZ3NoaFR1MURTaGNRODZza2VE?=
- =?utf-8?B?MzZNbFYxVWMvRnlJKzZMWGxjUVNmL3lJOUxJZGM1YUMwb2hIM1hnT0lta0dk?=
- =?utf-8?B?ZmJaNlRmUU9IeXpOcUovckJaZGZNMm95ZHBPbHlNemNoK1JPSXNxSk9IWWNj?=
- =?utf-8?B?WVo5ZWVoUUFhdnhsVStlZm5PemdzbUd3alVRVlNjV2N1S2p6WEdwWTUrZUtX?=
- =?utf-8?B?TW9OcXMvVVVVQzhncXBmb1hWZlpYUXZkME9DUlFibFpHQ1BwNUpjWWlCRFdw?=
- =?utf-8?B?SzIwWFF3LzFYMC9pc01xNXpNWjBnak4ra0VxK2VuQjh4clZiVXpONkN0RkRT?=
- =?utf-8?B?NFRSNkNna0gyQTh6UVhQTVZ0K1czZmp1TTdXWDhPQU9FWVlKUXRJUXRqNTFD?=
- =?utf-8?B?RUV4Um9NOEpURnFXWkthN01zdHZqV21CL2VpRS9PMVpKcld4aVMzZm9ERFVR?=
- =?utf-8?B?RW5PdE5RTjhET3p0U3JJK2lrVG5MZWRTSmpjdzFWck14RUY5UU5OTmxwbjFC?=
- =?utf-8?B?QmFzV0MzcXV4c1RzSUJZWlNRdkdUWVhSQ21GT0R4K1FVSlBpTTNTM05ScGQ3?=
- =?utf-8?B?d3RjcnAydnFuR1BNdzRmRWUwL2U1VkVIWmpsWVlmaU56aVJOeEJKLzlhSGdG?=
- =?utf-8?B?ai9SMU9LcFVKbzZic2E1Szl0UGNCdy9CRWZ6VEpzVVJtYnZzZ296ZWp1RG9v?=
- =?utf-8?B?MXkxYUNhb2NDUlZPbEkzbzNaMyt4T3NGR1plMGh5N04zdExxS3Z1QlJFdkcv?=
- =?utf-8?B?YnBBS1J4cXdCT0k3eXNmV1cyazQ0eXNXeGQyd3o5THFQMGhNSHZYRjRQWkhE?=
- =?utf-8?B?UUt5NnY5RkxQS1RhYkVNVXhpNVovOFlGczM0VGhXMjIwUG05ck9zdHozRjlV?=
- =?utf-8?B?d3c9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <C9983BAF160D6F48A2FF98640BB5F23B@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=chromium.org; s=google; t=1730096191; x=1730700991; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Ce0zNBQeVdRQ8Ne1/EW2HUiLxw/YLpcNrQUx0YR1py8=;
+        b=Khh5of8xh8RnSg1Fymi2AHY4E0io2FSET3Wz1rb8yFthhmcgEVYAsCkPcyJQjVabml
+         XH5nnagvjzW8lTTnIDTun9ovTMDVBILJ+3TnkDEMRjjkmdz3hvBoRl37shElmV4XeS6j
+         HdFwRQCqfKLVEija0UYahd8KSmKkhr2gKuS8Q=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730096191; x=1730700991;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Ce0zNBQeVdRQ8Ne1/EW2HUiLxw/YLpcNrQUx0YR1py8=;
+        b=hUjnTJiPtS3LQkq7A8Fqha3NouzppFVxDRjB0hNlzEEl9IRXDgnJcHqEzDrckl2wcO
+         7qoPNOAB44x9A01iZXW+vb1GIvvUP1aYol47qnoOEa5ooLTU91/uF82+tY7RNbWXT9nv
+         sjTZgInMTYajRieMEuYV0BfpgBTT5+7Zm8hr+mszygnmBjtuYErGFDMZwKI/ns+pplNN
+         usuvOCslec1BFs+JhUi92Lu3vWH4cqvTshZH5OlpNyqhm+faxkjrH88fG3lHkw3FEJbs
+         tTCqZaePFtYhUbFyhddWglpl2xEFUI2lUZqSopUCmkh9pEIBOo9vqBfEkQZvp8mXyNkM
+         aEuA==
+X-Forwarded-Encrypted: i=1; AJvYcCVYjwl3rln1dK4ZCjKbIDA/9xbiYyZzKV/cGK6FVnf2SDUSm06MjbFu9AeyN6DUpvBofxF2Z37ADYi2150g4g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxcuCWKIdWfRpSWrLdMLOxs8y5XVL+brHUPOKsxxBS4zmatmEQF
+	csXqcdlPbz+2NRPGwMfAotlziblnyGOfNON7BANO3JaJjPqradiETdN9jgMO6CrVrl7VORwpwGi
+	li1myGLmrAO/jLQB+GfseBDCNIoKzleW7YC0I
+X-Google-Smtp-Source: AGHT+IHecNhW/jutuL0nvEERsRSalPbI5tTsLoadKR/QpcprzkyZd5Vj5cqxvO8NeO94kw/nockw3+sBHAAyshfpxAA=
+X-Received: by 2002:a05:6512:3e25:b0:536:7b74:ef50 with SMTP id
+ 2adb3069b0e04-53b348cfa43mr2434156e87.18.1730096191168; Sun, 27 Oct 2024
+ 23:16:31 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7ebab8d9-1453-4b6e-d2f1-08dcf7122295
-X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Oct 2024 05:34:04.0866
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 01rOdJDcsggFdYjAcqT+Jwjkkf2HuxuiuM6eQOt2xq8UFkSaciR1flafOZdjEY/kgitFL4ToBzo2iLPYlild+g==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR03MB8204
+References: <20241024092608.431581-1-karl.li@mediatek.com> <20241024092608.431581-4-karl.li@mediatek.com>
+ <083c8f7b-0969-4ca3-8a91-35f5767c5f32@collabora.com>
+In-Reply-To: <083c8f7b-0969-4ca3-8a91-35f5767c5f32@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 28 Oct 2024 14:16:19 +0800
+Message-ID: <CAGXv+5Fw+qZhTTgJq0QdiQHgiQP2ByR1tgae2+k4erx+0fp61g@mail.gmail.com>
+Subject: Re: [PATCH 3/3] mailbox: mediatek: Add mtk-apu-mailbox driver
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: "Karl.Li" <karl.li@mediatek.com>, Jassi Brar <jassisinghbrar@gmail.com>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Chungying Lu <chungying.lu@mediatek.com>, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241027_223414_119765_33CA4424 
-X-CRM114-Status: UNSURE (   9.12  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241027_231633_862699_FD6F90FC 
+X-CRM114-Status: GOOD (  48.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -225,21 +92,471 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIFNodS1oc2lhbmc6DQoNCk9uIFdlZCwgMjAyNC0xMC0wOSBhdCAxOToxNSArMDgwMCwgU2h1
-LWhzaWFuZyBZYW5nIHdyb3RlOg0KPiBJbnRyb2R1Y2VzIHN0YXRlIG1hbmFnZW1lbnQgYW5kIGRl
-YnVnZ2luZyBtZWNoYW5pc21zIGZvciB0aGUgTWVkaWFUZWsNCj4gSVNQNy54IGNhbXN5cyBwbGF0
-Zm9ybS4gU3RhdGUgbWFuYWdlbWVudCBlc3RhYmxpc2hlcyBjb250cm9sIG92ZXIgSVNQDQo+IG9w
-ZXJhdGlvbnMgYW5kIGV2ZW50cywgZGVmaW5pbmcgZGlzdGluY3Qgc3RhdGVzIGZvciByZXF1ZXN0
-IGhhbmRsaW5nLA0KPiBzZW5zb3IgY29udHJvbCwgYW5kIGZyYW1lIHN5bmNocm9uaXphdGlvbiwg
-ZW5zdXJpbmcgZXZlbnQgcHJvY2Vzc2luZy4NCj4gVGhlIGRlYnVnZ2luZyBtZWNoYW5pc20gZW5z
-dXJlcyBzdGFibGUgb3BlcmF0aW9uIGFuZCB0aW1lbHkgZGF0YQ0KPiBjb2xsZWN0aW9uIGR1cmlu
-ZyBhbm9tYWxpZXMuDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBTaHUtaHNpYW5nIFlhbmcgPFNodS1o
-c2lhbmcuWWFuZ0BtZWRpYXRlay5jb20+DQo+IC0tLQ0KDQpbc25pcF0NCg0KPiArDQo+ICtlbnVt
-IE1US19DQU1TWVNfRU5HSU5FX1RZUEUgew0KPiArCUNBTVNZU19FTkdJTkVfUkFXLA0KPiArCUNB
-TVNZU19FTkdJTkVfTVJBVywNCj4gKwlDQU1TWVNfRU5HSU5FX0NBTVNWLA0KPiArCUNBTVNZU19F
-TkdJTkVfU0VOSU5GLA0KDQpPbmx5IENBTVNZU19FTkdJTkVfUkFXIGlzIHVzZWQsIHNvIGl0J3Mg
-bm90IG5lY2Vzc2FyeSB0byBkZWZpbmUgTVRLX0NBTVNZU19FTkdJTkVfVFlQRSBiZWNhdXNlIG9u
-bHkgb25lIHR5cGUuDQpDQU1TWVNfRU5HSU5FX1JBVyBjb3VsZCBhbHNvIGJlIGRyb3BwZWQgYmVj
-YXVzZSBvbmx5IHRoaXMgdHlwZSBzbyBpdCdzIG5vdCBuZWNlc3NhcnkgdG8gZGVmaW5lIGl0Lg0K
-DQpSZWdhcmRzLA0KQ0sNCg0KPiArfTsNCj4gKw0K
+On Thu, Oct 24, 2024 at 7:13=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 24/10/24 11:25, Karl.Li ha scritto:
+> > From: Karl Li <karl.li@mediatek.com>
+> >
+> > Add mtk-apu-mailbox driver to support the communication with
+> > APU remote microprocessor.
+> >
+> > Also, the mailbox hardware contains extra spare (scratch) registers
+> > that other hardware blocks use to communicate through.
+> > Expose these with custom mtk_apu_mbox_(read|write)() functions.
+> >
+> > Signed-off-by: Karl Li <karl.li@mediatek.com>
+> > ---
+> >   drivers/mailbox/Kconfig                 |   9 +
+> >   drivers/mailbox/Makefile                |   2 +
+> >   drivers/mailbox/mtk-apu-mailbox.c       | 222 +++++++++++++++++++++++=
++
+> >   include/linux/mailbox/mtk-apu-mailbox.h |  20 +++
+> >   4 files changed, 253 insertions(+)
+> >   create mode 100644 drivers/mailbox/mtk-apu-mailbox.c
+> >   create mode 100644 include/linux/mailbox/mtk-apu-mailbox.h
+> >
+> > diff --git a/drivers/mailbox/Kconfig b/drivers/mailbox/Kconfig
+> > index 6fb995778636..2338e08a110a 100644
+> > --- a/drivers/mailbox/Kconfig
+> > +++ b/drivers/mailbox/Kconfig
+> > @@ -240,6 +240,15 @@ config MTK_ADSP_MBOX
+> >             between processors with ADSP. It will place the message to =
+share
+> >         buffer and will access the ipc control.
+> >
+> > +config MTK_APU_MBOX
+> > +     tristate "MediaTek APU Mailbox Support"
+> > +     depends on ARCH_MEDIATEK || COMPILE_TEST
+> > +     help
+> > +       Say yes here to add support for the MediaTek APU Mailbox
+> > +       driver. The mailbox implementation provides access from the
+> > +       application processor to the MediaTek AI Processing Unit.
+> > +       If unsure say N.
+> > +
+> >   config MTK_CMDQ_MBOX
+> >       tristate "MediaTek CMDQ Mailbox Support"
+> >       depends on ARCH_MEDIATEK || COMPILE_TEST
+> > diff --git a/drivers/mailbox/Makefile b/drivers/mailbox/Makefile
+> > index 3c3c27d54c13..6b6dcc78d644 100644
+> > --- a/drivers/mailbox/Makefile
+> > +++ b/drivers/mailbox/Makefile
+> > @@ -53,6 +53,8 @@ obj-$(CONFIG_STM32_IPCC)    +=3D stm32-ipcc.o
+> >
+> >   obj-$(CONFIG_MTK_ADSP_MBOX) +=3D mtk-adsp-mailbox.o
+> >
+> > +obj-$(CONFIG_MTK_APU_MBOX)   +=3D mtk-apu-mailbox.o
+> > +
+> >   obj-$(CONFIG_MTK_CMDQ_MBOX) +=3D mtk-cmdq-mailbox.o
+> >
+> >   obj-$(CONFIG_ZYNQMP_IPI_MBOX)       +=3D zynqmp-ipi-mailbox.o
+> > diff --git a/drivers/mailbox/mtk-apu-mailbox.c b/drivers/mailbox/mtk-ap=
+u-mailbox.c
+> > new file mode 100644
+> > index 000000000000..b347ebd34ef7
+> > --- /dev/null
+> > +++ b/drivers/mailbox/mtk-apu-mailbox.c
+> > @@ -0,0 +1,222 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +/*
+> > + * Copyright (c) 2024 MediaTek Inc.
+> > + */
+> > +
+> > +#include <asm/io.h>
+> > +#include <linux/bits.h>
+> > +#include <linux/interrupt.h>
+> > +#include <linux/mailbox_controller.h>
+> > +#include <linux/mailbox/mtk-apu-mailbox.h>
+> > +#include <linux/platform_device.h>
+> > +
+> > +#define INBOX                (0x0)
+> > +#define OUTBOX               (0x20)
+> > +#define INBOX_IRQ    (0xc0)
+> > +#define OUTBOX_IRQ   (0xc4)
+> > +#define INBOX_IRQ_MASK       (0xd0)
+> > +
+> > +#define SPARE_OFF_START      (0x40)
+> > +#define SPARE_OFF_END        (0xB0)
+> > +
+> > +struct mtk_apu_mailbox {
+> > +     struct device *dev;
+> > +     void __iomem *regs;
+> > +     struct mbox_controller controller;
+>
+> struct mbox_controller mbox;
+>
+> ...it's shorter and consistent with at least other MTK mailbox drivers.
+>
+> > +     u32 msgs[MSG_MBOX_SLOTS];
+>
+> Just reuse struct mtk_apu_mailbox_msg instead.....
+>
+> > +};
+> > +
+> > +struct mtk_apu_mailbox *g_mbox;
+>
+> That global struct must disappear - and if you use the mailbox API correc=
+tly
+> it's even simple.
+>
+> Also, you want something like....
+>
+> static inline struct mtk_apu_mailbox *get_mtk_apu_mailbox(struct mbox_con=
+troller *mbox)
+> {
+>         return container_of(mbox, struct mtk_apu_mailbox, mbox);
+> }
+>
+> > +
+> > +static irqreturn_t mtk_apu_mailbox_irq_top_half(int irq, void *dev_id)
+> > +{
+> static irqreturn_t mtk_apu_mailbox_irq(int irq, void *data)
+> {
+>         struct mbox_chan *chan =3D data;
+>         struct mtk_apu_mailbox =3D get_mtk_apu_mailbox(chan->mbox);
+>
+> > +     struct mtk_apu_mailbox *mbox =3D dev_id;
+> > +     struct mbox_chan *link =3D &mbox->controller.chans[0];
+> > +     int i;
+> > +
+> > +     for (i =3D 0; i < MSG_MBOX_SLOTS; i++)
+> > +             mbox->msgs[i] =3D readl(mbox->regs + OUTBOX + i * sizeof(=
+u32));
+> > +
+> > +     mbox_chan_received_data(link, &mbox->msgs);
+> > +
+> > +     return IRQ_WAKE_THREAD;
+> > +}
+> > +
+> > +static irqreturn_t mtk_apu_mailbox_irq_btm_half(int irq, void *dev_id)
+>
+> ....mtk_apu_mailbox_irq_thread(...)
+>
+> > +{
+> > +     struct mtk_apu_mailbox *mbox =3D dev_id;
+> > +     struct mbox_chan *link =3D &mbox->controller.chans[0];
+> > +
+> > +     mbox_chan_received_data_bh(link, &mbox->msgs);
+>
+> I don't think that you really need this _bh variant, looks more like you =
+wanted
+> to have two callbacks instead of one.
+>
+> You can instead have one callback and vary functionality based based on r=
+eading
+> a variable to decide what to actually do inside. Not a big deal.
+
+The problem is that they need something with different semantics.
+mbox_chan_received_data() is atomic only.
+
+> > +     writel(readl(mbox->regs + OUTBOX_IRQ), mbox->regs + OUTBOX_IRQ);
+> > +
+> > +     return IRQ_HANDLED;
+> > +}
+> > +
+> > +static int mtk_apu_mailbox_send_data(struct mbox_chan *chan, void *dat=
+a)
+> > +{
+> > +     struct mtk_apu_mailbox *mbox =3D container_of(chan->mbox,
+> > +                                                 struct mtk_apu_mailbo=
+x,
+> > +                                                 controller);
+> > +     struct mtk_apu_mailbox_msg *msg =3D data;
+> > +     int i;
+> > +
+> > +     if (msg->send_cnt <=3D 0 || msg->send_cnt > MSG_MBOX_SLOTS) {
+> > +             dev_err(mbox->dev, "%s: invalid send_cnt %d\n", __func__,=
+ msg->send_cnt);
+> > +             return -EINVAL;
+> > +     }
+> > +
+> > +     /*
+> > +      *      Mask lowest "send_cnt-1" interrupts bits, so the interrup=
+t on the other side
+> > +      *      triggers only after the last data slot is written (sent).
+> > +      */
+> > +     writel(GENMASK(msg->send_cnt - 2, 0), mbox->regs + INBOX_IRQ_MASK=
+);
+> > +     for (i =3D 0; i < msg->send_cnt; i++)
+> > +             writel(msg->data[i], mbox->regs + INBOX + i * sizeof(u32)=
+);
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static bool mtk_apu_mailbox_last_tx_done(struct mbox_chan *chan)
+> > +{
+> > +     struct mtk_apu_mailbox *mbox =3D container_of(chan->mbox,
+> > +                                                 struct mtk_apu_mailbo=
+x,
+> > +                                                 controller);
+> > +
+> > +     return readl(mbox->regs + INBOX_IRQ) =3D=3D 0;
+> > +}
+> > +
+> > +static const struct mbox_chan_ops mtk_apu_mailbox_ops =3D {
+> > +     .send_data =3D mtk_apu_mailbox_send_data,
+> > +     .last_tx_done =3D mtk_apu_mailbox_last_tx_done,
+> > +};
+> > +
+> > +/**
+> > + * mtk_apu_mbox_write - Write value to specifice mtk_apu_mbox spare re=
+gister.
+> > + * @val: Value to be written.
+> > + * @offset: Offset of the spare register.
+> > + *
+> > + * Return: 0 if successful
+> > + *      negative value if error happened
+> > + */
+> > +int mtk_apu_mbox_write(u32 val, u32 offset)
+> > +{
+> > +     if (!g_mbox) {
+> > +             pr_err("mtk apu mbox was not initialized, stop writing re=
+gister\n");
+> > +             return -ENODEV;
+> > +     }
+> > +
+> > +     if (offset < SPARE_OFF_START || offset >=3D SPARE_OFF_END) {
+> > +             dev_err(g_mbox->dev, "Invalid offset %d for mtk apu mbox =
+spare register\n", offset);
+> > +             return -EINVAL;
+> > +     }
+> > +
+> > +     writel(val, g_mbox->regs + offset);
+>
+> There's something odd in what you're doing here, why would you ever need
+> a function that performs a writel just like that? What's the purpose?
+>
+> What are you writing to the spare registers?
+> For which reason?
+
+I'll leave the explaining to Karl, but based on internal reviews for the
+previous generation, it looked like passing values to/from the MCU.
+
+> I think you can avoid (read this as: you *have to* avoid) having such a
+> function around.
+
+Again, during the previous round of internal reviews, I had thought
+about modeling these as extra mbox channels. I may have even asked
+about this on IRC.
+
+The problem is that it doesn't really have mbox semantics. They are
+just shared registers with no send/receive notification. So at the
+very least, there's nothing that will trigger a reception. I suppose
+we could make the .peek_data op trigger RX, but that's a really
+convoluted way to read just a register.
+
+The other option would be to have a syscon / custom exported regmap?
+
+> > +     return 0;
+> > +}
+> > +EXPORT_SYMBOL_NS(mtk_apu_mbox_write, MTK_APU_MAILBOX);
+> > +
+> > +/**
+> > + * mtk_apu_mbox_read - Read value to specifice mtk_apu_mbox spare regi=
+ster.
+> > + * @offset: Offset of the spare register.
+> > + * @val: Pointer to store read value.
+> > + *
+> > + * Return: 0 if successful
+> > + *      negative value if error happened
+> > + */
+> > +int mtk_apu_mbox_read(u32 offset, u32 *val)
+> > +{
+> > +     if (!g_mbox) {
+> > +             pr_err("mtk apu mbox was not initialized, stop reading re=
+gister\n");
+> > +             return -ENODEV;
+> > +     }
+> > +
+> > +     if (offset < SPARE_OFF_START || offset >=3D SPARE_OFF_END) {
+> > +             dev_err(g_mbox->dev, "Invalid offset %d for mtk apu mbox =
+spare register\n", offset);
+> > +             return -EINVAL;
+> > +     }
+> > +
+> > +     *val =3D readl(g_mbox->regs + offset);
+> > +
+>
+> Same goes for this one.
+>
+> > +     return 0;
+> > +}
+> > +EXPORT_SYMBOL_NS(mtk_apu_mbox_read, MTK_APU_MAILBOX);
+> > +
+> > +static int mtk_apu_mailbox_probe(struct platform_device *pdev)
+> > +{
+> > +     struct device *dev =3D &pdev->dev;
+> > +     struct mtk_apu_mailbox *mbox;
+> > +     int irq =3D -1, ret =3D 0;
+> > +
+> > +     mbox =3D devm_kzalloc(dev, sizeof(*mbox), GFP_KERNEL);
+> > +     if (!mbox)
+> > +             return -ENOMEM;
+> > +
+> > +     mbox->dev =3D dev;
+> > +     platform_set_drvdata(pdev, mbox);
+> > +
+>
+> Please move the platform_get_irq call here or anyway before registering t=
+he
+> mbox controller: in case anything goes wrong, devm won't have to unregist=
+er
+> the mbox afterwards because it never got registered in the first place.
+
+To clarify, you mean _just_ platform_get_irq() and not request_irq as
+well.
+
+> > +     mbox->regs =3D devm_platform_ioremap_resource(pdev, 0);
+> > +     if (IS_ERR(mbox->regs))
+> > +             return PTR_ERR(mbox->regs);
+> > +
+> > +     mbox->controller.txdone_irq =3D false;
+> > +     mbox->controller.txdone_poll =3D true;
+> > +     mbox->controller.txpoll_period =3D 1;
+> > +     mbox->controller.ops =3D &mtk_apu_mailbox_ops;
+> > +     mbox->controller.dev =3D dev;
+> > +     /*
+> > +      * Here we only register 1 mbox channel.
+> > +      * The remaining channels are used by other modules.
+>
+> What other modules? I don't really see any - so please at least explain t=
+hat in the
+> commit description.
+>
+> > +      */
+> > +     mbox->controller.num_chans =3D 1;
+> > +     mbox->controller.chans =3D devm_kcalloc(dev, mbox->controller.num=
+_chans,
+> > +                                           sizeof(*mbox->controller.ch=
+ans),
+> > +                                           GFP_KERNEL);
+> > +     if (!mbox->controller.chans)
+> > +             return -ENOMEM;
+> > +
+> > +     ret =3D devm_mbox_controller_register(dev, &mbox->controller);
+> > +     if (ret)
+> > +             return ret;
+> > +
+> > +     irq =3D platform_get_irq(pdev, 0);
+> > +     if (irq < 0)
+> > +             return irq;
+> > +
+> > +     ret =3D devm_request_threaded_irq(dev, irq, mtk_apu_mailbox_irq_t=
+op_half,
+> > +                                     mtk_apu_mailbox_irq_btm_half, IRQ=
+F_ONESHOT,
+> > +                                     dev_name(dev), mbox);
+>
+> pass mbox->chans to the isr
+>
+> > +     if (ret)
+> > +             return dev_err_probe(dev, ret, "Failed to request IRQ\n")=
+;
+> > +
+> > +     g_mbox =3D mbox;
+> > +
+> > +     dev_dbg(dev, "registered mtk apu mailbox\n");
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static void mtk_apu_mailbox_remove(struct platform_device *pdev)
+> > +{
+> > +     g_mbox =3D NULL;
+> > +}
+> > +
+> > +static const struct of_device_id mtk_apu_mailbox_of_match[] =3D {
+> > +     { .compatible =3D "mediatek,mt8188-apu-mailbox" },
+> > +     { .compatible =3D "mediatek,mt8196-apu-mailbox" },
+>
+> Just mediatek,mt8188-apu-mailbox is fine; you can allow mt8196=3D=3Dmt818=
+8 in the
+> binding instead.
+>
+> > +     {}
+> > +};
+> > +MODULE_DEVICE_TABLE(of, mtk_apu_mailbox_of_match);
+> > +
+> > +static struct platform_driver mtk_apu_mailbox_driver =3D {
+> > +     .probe =3D mtk_apu_mailbox_probe,
+> > +     .remove =3D mtk_apu_mailbox_remove,
+>
+> You don't need this remove callback, since g_mbox has to disappear :-)
+>
+> > +     .driver =3D {
+> > +             .name =3D "mtk-apu-mailbox",
+> > +             .of_match_table =3D mtk_apu_mailbox_of_match,
+> > +     },
+> > +};
+> > +
+> > +module_platform_driver(mtk_apu_mailbox_driver);
+> > +MODULE_LICENSE("GPL");
+> > +MODULE_DESCRIPTION("MediaTek APU Mailbox Driver");
+> > diff --git a/include/linux/mailbox/mtk-apu-mailbox.h b/include/linux/ma=
+ilbox/mtk-apu-mailbox.h
+> > new file mode 100644
+> > index 000000000000..d1457d16ce9b
+> > --- /dev/null
+> > +++ b/include/linux/mailbox/mtk-apu-mailbox.h
+> > @@ -0,0 +1,20 @@
+> > +/* SPDX-License-Identifier: GPL-2.0 */
+> > +/*
+> > + * Copyright (c) 2024 MediaTek Inc.
+> > + *
+> > + */
+> > +
+> > +#ifndef __MTK_APU_MAILBOX_H__
+> > +#define __MTK_APU_MAILBOX_H__
+> > +
+> > +#define MSG_MBOX_SLOTS       (8)
+> > +
+> > +struct mtk_apu_mailbox_msg {
+> > +     int send_cnt;
+>
+> u8 data_cnt;
+>
+> > +     u32 data[MSG_MBOX_SLOTS];
+>
+> With hardcoded slots, what happens when we get a new chip in the future t=
+hat
+> supports more slots?
+
+Seems like we can make it a flexible array member? But the problem then
+becomes how does the client know what the maximum length is. Or maybe
+it should already know given it's tied to a particular platform.
+
+In any case it becomes:
+
+    struct mtk_apu_mailbox_msg {
+        u8 data_size;
+        u8 data[] __counted_by(data_size);
+    };
+
+This can't be allocated on the stack if `data_size` isn't a compile
+time constant though; but again it shouldn't be a problem given the
+message size is tied to the client & its platform and should be
+constant anyway.
+
+The controller should just error out if the message is larger than
+what it can atomically send.
+
+
+ChenYu
+
+> Please think about this now and make the implementation flexible before t=
+hat
+> happens because, at a later time, it'll be harder.
+>
+> Regards,
+> Angelo
+>
+> > +};
+> > +
+> > +int mtk_apu_mbox_write(u32 val, u32 offset);
+> > +int mtk_apu_mbox_read(u32 offset, u32 *val);
+> > +
+> > +#endif /* __MTK_APU_MAILBOX_H__ */
+>
+>
 
