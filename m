@@ -4,91 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B85DD13588
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2024 07:32:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FA2AD13588
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2024 09:11:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=vQpKY05JOYjPURTPx5+mIgiP69yD+/zLK9ykR+kpvfU=; b=KNhb7I3OoZsNPP1/NADMv2GE1W
-	Y0KyC7k9uVBiUZ9WyowNb3x1hxIaKI5teARW/wg3CpUfzT6xMsrMl8B0B1EO9Er1MVC25uK0Be8cO
-	V5ok3qFJUSPjtxuwcDznyvt1dV0lpN0/wokGkVz/RtF8aDe/M5vFJUmDkq35g857yF4d/LZyHGW5q
-	Fmh86bC5/0XZ/NwmXILt48Ws85wkgjmku2aJ2yrMpHfv7jmHesX9El798nP7kqpl03Dc9kdHZqVku
-	35vb52MjT41ZGgVCYErWeBZkO2QDMfYHIqv1QUOuwkUDl+RZ45s9gDSbFZKRWTMYIni+s/LzHa1aU
-	B9dDDb/g==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JodzDkl4omwUoYGD9Glgt2sBUWZ35+s2CteaIYqLqcI=; b=WcEZ2jsDSS9XceFIHpIDI03ZDV
+	EIOHn/dQN13GZGmvLvQatPCepw4ju27DT9b/3IFHsZ/eVQWC2kKuQk8J9GudwqUKgX3KGZ4htZRgi
+	qoAmJ2N9koYdJNGjSnvuqpq1OrjDK0eO61/AxedkrzFrWEF1E0fOlzvu49RX02prVAEqDGzyNE7x3
+	jxqmYAj3oXw/3cK5G7TxU0ikdPojaTyDa+lm80gBP7HASn9/GKYHwuzUi3oRNrv4oqR1JgqSCsXWB
+	Jx6N0z9SwirS4tcZHGJQjM3G52usIQ52FGVLj6AqhuH3ZZqf9IU7iF0pAaqZoScOPbe8lJxm+faHf
+	xiUzZa6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5KFD-00000009sNB-1XlH;
-	Mon, 28 Oct 2024 07:32:55 +0000
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+	id 1t5LmZ-0000000ABjN-0ZgA;
+	Mon, 28 Oct 2024 09:11:27 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5KD3-00000009rfS-4AVL;
-	Mon, 28 Oct 2024 07:30:45 +0000
-Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-207115e3056so32335925ad.2;
-        Mon, 28 Oct 2024 00:30:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1730100640; x=1730705440; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=vQpKY05JOYjPURTPx5+mIgiP69yD+/zLK9ykR+kpvfU=;
-        b=Al3o7m49B6PBmzzFF8uNKig9aMsc9NaiRYA7Yfby3AX8EUlG2/9eFVHh74wwW1Ztvb
-         MbRMvYMqCOXv6sRyIOf8gnLv7iEXkKnt7gI+OTyXuRK/Cd8PKmxUWlYqncglBNNtkxqx
-         /zNV84hL4sDY3mO4bjjO7CCsS0A+2DJ0y2AhF6UY1kKqL/e6n4pYH3fh8BEUtYKqeJt5
-         6UhLT+gTmGs0oj5pybC0Jl5DHxApaz9fYSprQ+foUOaMdEso+W/5oAL2dFi/tEB23sIY
-         srOkEvIo1fnem8qLPcTNyytMbpqSSIexXJrjd4if0RSK/IxhvK9lYp7acn17PrOLO5JF
-         FfYw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730100640; x=1730705440;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=vQpKY05JOYjPURTPx5+mIgiP69yD+/zLK9ykR+kpvfU=;
-        b=pqAOVYO26MaoClh8eRgTLV3++Baz5UyaTS2jnKE2SWn2H3e+n8mpWW7UKQ/SWi6Tnm
-         OYv661HYzuhLryAdV6lJHe74YBtAHblixVx8MzwzPeAdHUWPAQUhAnqH7LdHl6P/UV0l
-         K4NXNBUOpzkRRh1xMu0x9lNdtgmQ5llsPZyGAdf3gne8f96jHj+GlCkRM8mnj3iRP4s3
-         5yTlm0z3EPJQtgWCJJXpxhRBW+thTCwyM1txAvpCnrCMDAWHzuBPykt0Wa0GKnxbUt52
-         idbDrAYBCJG8ZElNLM2J+PjOFOVc2rmhtq9P9u0Usifzm7Xcsh3zDfBZ9ka6octns78a
-         HI4Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUfjahFTQFZmmiN2cBBzRAXXGvUd4DXsFi/pPEkW0AoyygTVqLQX192cLclQXvrZ/UV+rwfISlr+6jasez2w6mu@lists.infradead.org, AJvYcCWk27Q4dFwljThRsP+REzQSshbq49RXlLFRZxolFQS7W73igcAMacYQXCQQIPRocun4xKIBfhwRWyF9mY18JpQ=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzu+e9NlUj/BoO2sXsFagCpjx1lBSZqBPfmBTe6pfjxk+qC9xFN
-	UxpuEfdWzvMYhOYfHJJT5jQub6Cma7PFPs7q9quMaSHiFvP/KMhB
-X-Google-Smtp-Source: AGHT+IG6Z7wprymZITZX9ht6+gTXW4oYosIHVkICug2xUmTPYybbwDluebNPlHjwGju13EkHTSJBCw==
-X-Received: by 2002:a17:903:41c4:b0:20c:6b11:deef with SMTP id d9443c01a7336-210c6c3692dmr101371385ad.48.1730100640505;
-        Mon, 28 Oct 2024 00:30:40 -0700 (PDT)
-Received: from localhost ([2402:7500:488:6621:2441:dc7a:ff1b:984a])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-210bc08883esm45645735ad.301.2024.10.28.00.30.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Oct 2024 00:30:40 -0700 (PDT)
-From: wojackbb@gmail.com
-To: netdev@vger.kernel.org
-Cc: chandrashekar.devegowda@intel.com,
-	chiranjeevi.rapolu@linux.intel.com,
-	haijun.liu@mediatek.com,
-	m.chetan.kumar@linux.intel.com,
-	ricardo.martinez@linux.intel.com,
-	loic.poulain@linaro.org,
-	ryazanov.s.a@gmail.com,
-	johannes@sipsolutions.net,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	linux-arm-kernel@lists.infradead.org,
-	angelogioacchino.delregno@collabora.com,
-	linux-mediatek@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	Jack Wu <wojackbb@gmail.com>
-Subject: [PATCH] [net] net: wwan: t7xx: Change PM_AUTOSUSPEND_MS to 5000
-Date: Mon, 28 Oct 2024 15:30:15 +0800
-Message-Id: <20241028073015.692794-1-wojackbb@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	id 1t5Lkw-0000000ABRU-3ACX;
+	Mon, 28 Oct 2024 09:09:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1730106583;
+	bh=qbDABT2Z+Hm3SckfMFDCYI4eg+29z9RV470Z0JIO1Ow=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=FZJFkmy/CZGDMoWGPLr/Imi9VzeOfV6jRL+DNCZklfPNZiSGYd7vmJqrQLGfak9vx
+	 KywcSbX/zh6R4+mF4LJNWNuIFrRoa7tSSdtfEXioffKbYT65raQctoNBD50jrI6nBH
+	 BA6Kx3oW5YPXbbgJTEO0nTv+i1AMJozDcQtcQSxzT2jlumQuO0ZI4TQHmLm4Su0Tu+
+	 HziNnpKLd0OvenQqLTK3DLxyMUBBv07oDbQLsjN6a0ota0qufqzzubluruEPHWH7O2
+	 1UtWwLBI9rzrLbj/80MdIkrmdi7gLvqFZf/PxNokDVBQ38hauTqxlvOIA6zoCRLi9m
+	 BJMnYxeERYhzQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 476BC17E10FC;
+	Mon, 28 Oct 2024 10:09:43 +0100 (CET)
+Message-ID: <edafc004-999d-4ace-8f0e-1b8c711423eb@collabora.com>
+Date: Mon, 28 Oct 2024 10:09:42 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] drm/mediatek: Switch to
+ for_each_child_of_node_scoped()
+To: Javier Carrasco <javier.carrasco.cruz@gmail.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Alexandre Mergnat <amergnat@baylibre.com>, CK Hu <ck.hu@mediatek.com>,
+ "Jason-JH.Lin" <jason-jh.lin@mediatek.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20241011-mtk_drm_drv_memleak-v1-0-2b40c74c8d75@gmail.com>
+ <20241011-mtk_drm_drv_memleak-v1-2-2b40c74c8d75@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20241011-mtk_drm_drv_memleak-v1-2-2b40c74c8d75@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241028_003042_100911_D2FAA5CA 
-X-CRM114-Status: GOOD (  10.37  )
+X-CRM114-CacheID: sfid-20241028_020947_018459_48AC3AAF 
+X-CRM114-Status: UNSURE (   6.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,42 +82,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jack Wu <wojackbb@gmail.com>
+Il 11/10/24 21:21, Javier Carrasco ha scritto:
+> Introduce the scoped variant of the loop to automatically release the
+> child node when it goes out of scope, which is more robust than the
+> non-scoped variant, and accounts for new early exits that could be added
+> in the future.
+> 
+> Signed-off-by: Javier Carrasco <javier.carrasco.cruz@gmail.com>
 
-Because optimizing the power consumption of t7XX,
-change auto suspend time to 5000.
-
-The Tests uses a script to loop through the power_state
-of t7XX.
-(for example: /sys/bus/pci/devices/0000\:72\:00.0/power_state)
-
-* If Auto suspend is 20 seconds,
-  test script show power_state have 0~5% of the time was in D3 state
-  when host don't have data packet transmission.
-
-* Changed auto suspend time to 5 seconds,
-  test script show power_state have 50%~80% of the time was in D3 state
-  when host don't have data packet transmission.
-
-Signed-off-by: Jack Wu <wojackbb@gmail.com>
----
- drivers/net/wwan/t7xx/t7xx_pci.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/wwan/t7xx/t7xx_pci.c b/drivers/net/wwan/t7xx/t7xx_pci.c
-index e556e5bd49ab..dcadd615a025 100644
---- a/drivers/net/wwan/t7xx/t7xx_pci.c
-+++ b/drivers/net/wwan/t7xx/t7xx_pci.c
-@@ -48,7 +48,7 @@
- #define T7XX_INIT_TIMEOUT		20
- #define PM_SLEEP_DIS_TIMEOUT_MS		20
- #define PM_ACK_TIMEOUT_MS		1500
--#define PM_AUTOSUSPEND_MS		20000
-+#define PM_AUTOSUSPEND_MS		5000
- #define PM_RESOURCE_POLL_TIMEOUT_US	10000
- #define PM_RESOURCE_POLL_STEP_US	100
- 
--- 
-2.34.1
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
