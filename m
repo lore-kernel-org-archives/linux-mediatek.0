@@ -4,69 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D707BD33986
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2024 14:05:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CD3AD33994
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2024 15:02:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kb4LdJWW6f8y1GhUSlZL6T9c+Ow9/VMDwR8sFapd1nA=; b=F8BJFVTDw6+w0dZByXOPnT6mYs
-	Oz395YZ70DKm9yG0uDno7+N6idKaXBaWHQIbMlr2sF317mIn5nTdCp5EvECpnhOc/GiHJ+axqVF9j
-	+vMWRwQRrkfQNJSLC0j1Hu904kVTI5aAj+UXGL31EwSbHdYd06THHLDN3sLx18pRxSLRo6N4M+uAM
-	has5yilNlP3Gn31yFhMmvqqxGuv+HIqWHZSNBeorER6EbHiU0LUINEqxsYRn5binR3t63eePWgA9N
-	m/E6mxRZfweeTwhNKIk3FTgu7QTCZkeMmt7lhh+Szp7BeCM5LDd9c6QVJ2egOKS/tL+vT3dM20DOr
-	I8nfowow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oPAcTY2IJ3Jwsohx3QQn9jafhPwYw4TiHZjQIB0PHSA=; b=Kh0xkCu273zb5+zZ/5508M4FRG
+	KtdWuPhQGz8afO2Q4V7bhIcUlK+1G9tK6Hu6hNfaEWPGdM+l2sJNubTzwIrw/12NKvR+pUvdv2ekc
+	tlZNpGvqhSXBszhyCKZTysnKMAEqStG68cGjjyZ2wWwA8rSFm6fDcwztEQwWizSSuTjwL8QEXBAZW
+	yl6q4z4Yr68qjtMi+04ScKCeEmilK9uX+Gl8OZr3dsFKtPU6dPsri11JuXyPRBphCbs10lIzFFFfO
+	jI9V4x2Jmp2fWRnlX1qiK+7fdWeBtNZT5H2rEBfqxHPmqer3XZ2jfRjesEeFP2qsNWylazgUHzMa5
+	NzTgTX2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5QNH-0000000B2Oq-3r8e;
-	Mon, 28 Oct 2024 14:05:39 +0000
+	id 1t5RG0-0000000BE80-0TVE;
+	Mon, 28 Oct 2024 15:02:12 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5QKX-0000000B1g0-3wuK;
-	Mon, 28 Oct 2024 14:02:51 +0000
+	id 1t5Qgq-0000000B79M-3ZvL;
+	Mon, 28 Oct 2024 14:25:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1730124166;
-	bh=GARURTPO3rxpQXzZwj7FF8BdkvH2AjtCyCh0MqYT5vA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=BPKqAkDEwKSvzgI+d7NCdISq1yOm+4PmPcY/g1FvCeseJW1LI6xksrH7ivDzwWxY5
-	 sGqELxzRCfM4QwZcJkbonBxQkoQj/0zgG6NAKf4D5lL0u+4YE4Zr6yPVJkdfC0F3VL
-	 nwDEgq5fKNXFTNu4mJ/ZslyE8VgdhNLc7PcFvjAgUFw94CbWQWUPZRceD9j4Y/mBkt
-	 vfsLrVEOK56FqOR7pbYISoTvp5pHgDj4+zTYPHuwwWsxIRcL4FYFG93xlG0NR4USg7
-	 wV0JoYWq/+kUZY0slHTCCObmYSLpNOygG0WBNM207xU/wdum4dvi5nzqxu21z5TPhL
-	 l/sjPvx8i1Z4g==
-Received: from notapiano (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1730125551;
+	bh=nzbeRC8p1ugu2E5p8U1ZLC9i2WJ4DpBmxiovMdzFjB0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=psHnpBDlyIoBue1qxNZAsRNdEq3/bomzXLFpsQqv596QTFtpBWUyraULO2IdN96QB
+	 cCbtO1QYndaTTUmE8lIYyBkkuFT9wpBKp5LRdmqGrJCLzbC5P7701Lx2nTBxYq57NK
+	 +UbFvMsaciTgHHdCMFY11UxXlG09/t8oG5WFyYfbEoBwL6g07cztXCk/WYL1AllBnp
+	 NSoq6ptWRSCoSG8Q7l2MkvL17MfjaG4b8j2IDslzbVq6wYS55TARY+rpvnjuFj66aO
+	 29uOmaPygiFgSw4cdh5F9zW5MXeczWQmEFCdIFniBcLsuyLOFFs27Bvg41wGh9S0S7
+	 YonAhjR0T++3g==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 321DF17E3613;
-	Mon, 28 Oct 2024 15:02:44 +0100 (CET)
-Date: Mon, 28 Oct 2024 10:02:41 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Sean Wang <sean.wang@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Bamvor Jian Zhang <bamv2005@gmail.com>,
-	Shuah Khan <shuah@kernel.org>
-Cc: kernel@collabora.com, linux-mediatek@lists.infradead.org,
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kselftest@vger.kernel.org, kernelci@lists.linux.dev
-Subject: Re: [PATCH RFC v2 0/5] Verify bias functionality for pinctrl_paris
- driver through new gpio test
-Message-ID: <cda91b70-7179-49b5-9207-3fa3a1aaa4d5@notapiano>
-References: <20241025-kselftest-gpio-set-get-config-v2-0-040d748840bb@collabora.com>
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 899EB17E35FC;
+	Mon, 28 Oct 2024 15:25:50 +0100 (CET)
+Message-ID: <20c793fb-cfdf-4c05-a421-3eb623ff6df0@collabora.com>
+Date: Mon, 28 Oct 2024 15:25:49 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/4] ASoC: dt-bindings: mediatek,mt8188-mt6359: Add adsp
+ and dai-link properties
+To: Fei Shao <fshao@chromium.org>, Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Mark Brown <broonie@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Liam Girdwood
+ <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh@kernel.org>, Trevor Wu <trevor.wu@mediatek.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-sound@vger.kernel.org
+References: <20241025104548.1220076-1-fshao@chromium.org>
+ <20241025104548.1220076-2-fshao@chromium.org>
+ <5vmfh2nkxtpzt2vk4j6ghro7z5stoyvry3enzoqepg6hjxqrho@fofs5cwa2iqq>
+ <CAC=S1njPjtvhsc+voNK447wbQmRiN0xVDi-jgOmba4NLRiNi0Q@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <CAC=S1njPjtvhsc+voNK447wbQmRiN0xVDi-jgOmba4NLRiNi0Q@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20241025-kselftest-gpio-set-get-config-v2-0-040d748840bb@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241028_070250_201523_ACCDEC36 
-X-CRM114-Status: GOOD (  30.54  )
+X-CRM114-CacheID: sfid-20241028_072553_120957_4456BE50 
+X-CRM114-Status: GOOD (  37.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,115 +83,130 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 25, 2024 at 03:45:35PM -0400, Nícolas F. R. A. Prado wrote:
-> This series was motivated by the regression fixed by 166bf8af9122
-> ("pinctrl: mediatek: common-v2: Fix broken bias-disable for
-> PULL_PU_PD_RSEL_TYPE"). A bug was introduced in the pinctrl_paris driver
-> which prevented certain pins from having their bias configured.
+Il 28/10/24 12:10, Fei Shao ha scritto:
+> On Mon, Oct 28, 2024 at 4:54â€¯AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
+>>
+>> On Fri, Oct 25, 2024 at 06:44:41PM +0800, Fei Shao wrote:
+>>> Add "mediatek,adsp" property for the ADSP handle if ADSP is enabled on
+>>> the platform.
+>>
+>> We see this from the diff.
+>>
+>>> Add "mediatek,dai-link" property for the required DAI links to configure
+>>> sound card.
+>>
+>> We see this from the diff.
+>>
+>>>
+>>> Both properties are commonly used in the MediaTek sound card driver.
+>>
+>> If they are used, why suddenly they are needed? What changed?
 > 
-> Running this test on the mt8195-tomato platform with the test plan
-> included below[1] shows the test passing with the fix applied, but failing
-> without the fix:
+> Nothing has changed. These should have been added altogether when the
+> binding was first introduced. This patch is to fill the gaps and fix
+> dtbs_check warnings, like I mentioned in the cover letter.
+> I can add a line in the commit message saying it's to fix the warning
+> in addition to the cover letter, if that's preferred.
 > 
-> With fix:
->   $ ./gpio-setget-config.py
->   TAP version 13
->   # Using test plan file: ./google,tomato.yaml
->   1..3
->   ok 1 pinctrl_paris.34.pull-up
->   ok 2 pinctrl_paris.34.pull-down
->   ok 3 pinctrl_paris.34.disabled
->   # Totals: pass:3 fail:0 xfail:0 xpass:0 skip:0 error:0
+>>
+>>>
+>>> Signed-off-by: Fei Shao <fshao@chromium.org>
+>>> ---
+>>>
+>>>   .../bindings/sound/mediatek,mt8188-mt6359.yaml         | 10 ++++++++++
+>>>   1 file changed, 10 insertions(+)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
+>>> index f94ad0715e32..701cedfa38d2 100644
+>>> --- a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
+>>> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
+>>> @@ -29,6 +29,16 @@ properties:
+>>>       $ref: /schemas/types.yaml#/definitions/phandle
+>>>       description: The phandle of MT8188 ASoC platform.
+>>>
+>>> +  mediatek,adsp:
+>>> +    $ref: /schemas/types.yaml#/definitions/phandle
+>>> +    description: The phandle of MT8188 ADSP platform.
+>>
+>> And what is the difference between ASoC and ADSP platforms? What are
+>> they used for?
 > 
-> Without fix:
->   $ ./gpio-setget-config.py
->   TAP version 13
->   # Using test plan file: ./google,tomato.yaml
->   1..3
->   # Bias doesn't match: Expected pull-up, read pull-down.
->   not ok 1 pinctrl_paris.34.pull-up
->   ok 2 pinctrl_paris.34.pull-down
->   # Bias doesn't match: Expected disabled, read pull-down.
->   not ok 3 pinctrl_paris.34.disabled
->   # Totals: pass:1 fail:2 xfail:0 xpass:0 skip:0 error:0
+> I'm not a MediaTek or audio folks, and I'm afraid that I'm not the
+> best person to explain the details accurately in front of experts on
+> the list... I know it's an audio DSP but that explains nothing.
+> MediaTek didn't provide a meaningful explanation in the tree or
+> commits, and I want to avoid adding additional but likely misleading
+> descriptions from someone who doesn't have enough knowledge,
+> potentially causing even more confusing situations in the future.
+> Plus, the same changes were accepted as-is in the past, so I assumed
+> they might be self-explanatory to people who are familiar with the
+> matter.
 > 
-> In order to achieve this, the first three patches expose bias
-> configuration through the GPIO API in the MediaTek pinctrl drivers,
-> notably, pinctrl_paris, patch 4 extends the gpio-mockup-cdev utility for
-> use by patch 5, and patch 5 introduces a new GPIO kselftest that takes a
-> test plan in YAML, which can be tailored per-platform to specify the
-> configurations to test, and sets and gets back each pin configuration to
-> verify that they match and thus that the driver is behaving as expected.
-> 
-> Since the GPIO uAPI only allows setting the pin configuration, getting
-> it back is done through pinconf-pins in the pinctrl debugfs folder.
-> 
-> The test currently only verifies bias but it would be easy to extend to
-> verify other pin configurations.
-> 
-> The test plan YAML file can be customized for each use-case and is
-> platform-dependant. For that reason, only an example is included in
-> patch 3 and the user is supposed to provide their test plan. That said,
-> the aim is to collect test plans for ease of use at [2].
-> 
-> [1] This is the test plan used for mt8195-tomato:
-> 
-> - label: "pinctrl_paris"
->   tests:
->   # Pin 34 has type MTK_PULL_PU_PD_RSEL_TYPE and is unused.
->   # Setting bias to MTK_PULL_PU_PD_RSEL_TYPE pins was fixed by
->   # 166bf8af9122 ("pinctrl: mediatek: common-v2: Fix broken bias-disable for PULL_PU_PD_RSEL_TYPE")
->   - pin: 34
->     bias: "pull-up"
->   - pin: 34
->     bias: "pull-down"
->   - pin: 34
->     bias: "disabled"
-> 
-> [2] https://github.com/kernelci/platform-test-parameters
-> 
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> ---
-> Changes in v2:
-> - Added patches 2 and 3 enabling the extra GPIO pin configurations on
->   the other mediatek drivers: pinctrl-moore and pinctrl-mtk-common
-> - Tweaked function name in patch 1:
->   mtk_pinconf_set -> mtk_paris_pin_config_set,
->   to make it clear it is not a pinconf_ops
-> - Adjusted commit message to make it clear the current support is
->   limited to pins supported by the EINT controller
-> - Link to v1: https://lore.kernel.org/r/20240909-kselftest-gpio-set-get-config-v1-0-16a065afc3c1@collabora.com
-> 
-> ---
-> Nícolas F. R. A. Prado (5):
->       pinctrl: mediatek: paris: Expose more configurations to GPIO set_config
->       pinctrl: mediatek: moore: Expose more configurations to GPIO set_config
->       pinctrl: mediatek: common: Expose more configurations to GPIO set_config
 
-I forgot to mention that I don't have hardware that uses the moore or the common
-drivers, so I'm not able to runtime test patches 2 and 3. So help with that is
-appreciated.
+The Audio DSP is a Tensilica HiFi-5 DSP, and it's a block that is - hardware
+speaking - separated from the rest of the Audio interfaces of the SoC.
 
-Thanks,
-Nícolas
+The whole sound subsystem can work either with or without the DSP, in the sense
+that the DSP itself can remain unpowered and completely unconfigured if its
+functionality is not desired - hence, this is a board specific configuration:
+if the board wants to use the DSP, we use the DSP - otherwise, we just don't.
 
->       selftest: gpio: Add wait flag to gpio-mockup-cdev
->       selftest: gpio: Add a new set-get config test
+Regarding the two "platforms", in short:
+"mediatek,platform" -> Audio Front End (AFE)
+"mediatek,adsp" -> Audio DSP
+
+Now, you can either link the AFE DAIs to the I2S
+
+As for "mediatek,platform" - that's used to link the Analog Front End (AFE) as
+the DAI Link platform (so the path is direct to/from DL/UL DAIs to AFE) or the
+ADSP one as the DAI Link platform (so that the path is to/from DL/UL DAIs to
+DSP to AFE), but that - of course - still requires an AFE, otherwise you cannot
+get the audio out of the speakers or in from the mic anyway.
+
+>>
+>>> +
+>>> +  mediatek,dai-link:
+>>> +    $ref: /schemas/types.yaml#/definitions/string-array
+>>> +    description:
+>>> +      A list of the desired dai-links in the sound card. Each entry is a
+>>> +      name defined in the machine driver.
+>>
+>> The list is provided below. I don't understand why do you need it. Your
+>> msg is pretty useless - you describe what you do, instead of why.
 > 
->  drivers/pinctrl/mediatek/pinctrl-moore.c           | 283 +++++++++++----------
->  drivers/pinctrl/mediatek/pinctrl-mtk-common.c      |  48 ++--
->  drivers/pinctrl/mediatek/pinctrl-paris.c           |  26 +-
->  tools/testing/selftests/gpio/Makefile              |   2 +-
->  tools/testing/selftests/gpio/gpio-mockup-cdev.c    |  14 +-
->  .../gpio-set-get-config-example-test-plan.yaml     |  15 ++
->  .../testing/selftests/gpio/gpio-set-get-config.py  | 183 +++++++++++++
->  7 files changed, 395 insertions(+), 176 deletions(-)
-> ---
-> base-commit: a39230ecf6b3057f5897bc4744a790070cfbe7a8
-> change-id: 20240906-kselftest-gpio-set-get-config-6e5bb670c1a5
+> I think this is used to explicitly list the intermediate but hidden
+> DAIs, but again, there's not much info about them unless MediaTek can
+> explain more details and why they need a vendor property for this.
 > 
-> Best regards,
-> -- 
-> Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
+Yes, this is used for exactly that... but I believe that we can deprecate this
+now that we have support for the "standard" `audio-routing` property and for the
+DAI Link nodes (examples that you can find in current device trees are mm-dai-link,
+hs-playback-dai-link, or any other subnode of the sound card).
+
+Specifically, those subnodes *do* require a "link-name" property, which *does*
+effectively contain the same DAI Link names as the ones that are inside of the
+"mediatek,dai-link" property.
+
+On MT8195, you can find both the subnodes and the mediatek,dai-link - yes - but
+that was done to retain compatibility of the device tree with old drivers (so,
+an unusual case of new device tree on old kernel).
+
+Finally, I believe that we can avoid adding that "mediatek,dai-link" property
+to the MT8188 binding, and rely on:
+  1. Whatever is provided in struct snd_soc_card for that device; and
+  2. Whatever is provided in device trees as dai link subnodes, which would
+     restrict N.1 as that's anyway describing card prelinks.
+
+Cheers,
+Angelo
+
+> Regards,
+> Fei
 > 
+>>
+>> Best regards,
+>> Krzysztof
+>>
+
 
