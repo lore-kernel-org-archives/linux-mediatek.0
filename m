@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D65B3D2AB1B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 10:52:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 469FDD2AB1C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 10:52:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9/KolqS0YYWQP0oixitj94Pxcm9KCNLC3CIXSUPwlb4=; b=U79qDnJu5B1lMf
-	Nh2vHhljZD18KJoJ1b7cNqsQ5jhTkL60OAXW7msYxicTdC5LHmYpfFPK02aXjrLG02Rg1Jlu66uQU
-	TDcP1ASWkFZ+YNk8HSn59ymJBZ4tgFFJvEs5j09nYyUDlua46GFYETqJIBnNVPy0cAuX+IujpFMlX
-	grqr6ysfNpbmZIp2gcX4zDKq1i5zoM3R9S48yWefuCu6YkLkzdTB1qLOtmCuYuiw1tlTpCtxn1mm7
-	mTtBBoXmzKEEa772HbG8Eg12dgrllv/A5YpnskNofwVLXVvr9fQxWenhS7/fMg06Ka4QY3FcSK8Xe
-	zuOHHTEY9k/gV325MQfA==;
+	List-Owner; bh=JG70TegBMj/ibFZUxIkrxShKc87NYQy7WkHukok4xoE=; b=3goKcK1d0b+Nqp
+	brHbdzLPDTkTA0R4Xic2xPLO2ivugYsM+VOF9scsG1a7iplYs9sdwAWpLE76f7Q2S8waFKM7fgECF
+	xVRxvGVHa1A9xPWmU3rSZQOKorwMiPb6/1dx8FQYmKTWIpMf4SlSu9BI5wcl/ZkWQHg/xNGdPgYqc
+	UEubNG/9ImkgWpm44xoV+HMXcwcfipLVSMvofnuqcIaO0uzgEPPP/tg0agjxMzdMEn2FNtV8A9y6F
+	3YoZ3SuYoWLTW7idvI3ZckE4rqiiG1WPOJlB0+KitsFtW/hQWAYoIohUdL4wUra5cCRoZ9Q9g0yN2
+	Qj4+IorUDhH4qR+dDWKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5jpn-0000000E73i-2pzr;
-	Tue, 29 Oct 2024 10:52:23 +0000
-Received: from mxout4.routing.net ([2a03:2900:1:a::9])
+	id 1t5jpo-0000000E73x-0YE4;
+	Tue, 29 Oct 2024 10:52:24 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5jdc-0000000E46Y-21m3;
+	id 1t5jde-0000000E48L-0eN3;
 	Tue, 29 Oct 2024 10:39:51 +0000
 Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout4.routing.net (Postfix) with ESMTP id 1F899100947;
-	Tue, 29 Oct 2024 10:39:45 +0000 (UTC)
+	by mxout2.routing.net (Postfix) with ESMTP id BC3EE60644;
+	Tue, 29 Oct 2024 10:39:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1730198385;
+	s=20200217; t=1730198388;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=9/KolqS0YYWQP0oixitj94Pxcm9KCNLC3CIXSUPwlb4=;
-	b=wxhqG3QsBQclIRalcvgxZPfIZNd/HWojdWrKBZkxleWOwndX59kkgdiGg8ilZKyChTGlwd
-	CUU+65n493IfSzS5XSYBOiYJA5AK18ttW2xIEbx1kzkRNCmKBW+hzPUfYOzw8eipST/Qeh
-	2pYhUx41BJJlkaHfvWhG9aFsUqX03So=
+	bh=JG70TegBMj/ibFZUxIkrxShKc87NYQy7WkHukok4xoE=;
+	b=O7new4Pb2Nq6S/vobN0VL74FAHFkpDjBzr9klQ48cO3crw0XnNIn0QXbRTpIJYLfOwmVvw
+	YFUFVqyTMXHc0lm3SMYaHGAggtgH0gMjgu4HW0aLZ+u/0JGQDBzPkgJKsAmS6fh4kC/DmF
+	KiIbm7wfOG71mCl7nfo12HGPcF77GN4=
 Received: from frank-u24.. (fttx-pool-80.245.73.173.bambit.de [80.245.73.173])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 7FA053600D8;
-	Tue, 29 Oct 2024 10:39:44 +0000 (UTC)
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 24BBF3600D8;
+	Tue, 29 Oct 2024 10:39:48 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [RFC v1 03/14] arm64: dts: mediatek: mt7988: add labels for usb nodes
-Date: Tue, 29 Oct 2024 11:39:22 +0100
-Message-ID: <20241029103937.45852-4-linux@fw-web.de>
+Subject: [RFC v1 09/14] arm64: dts: mediatek: mt7988: extend efuse node
+Date: Tue, 29 Oct 2024 11:39:28 +0100
+Message-ID: <20241029103937.45852-10-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241029103937.45852-1-linux@fw-web.de>
 References: <20241029103937.45852-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: e21543fd-2459-4976-ab15-093cffde658a
+X-Mail-ID: 8e66c03e-5b0a-4db8-be5a-f6e0180b4bd9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_033948_700895_F5234149 
-X-CRM114-Status: UNSURE (   9.98  )
+X-CRM114-CacheID: sfid-20241029_033950_411269_30D12C87 
+X-CRM114-Status: UNSURE (   7.18  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,35 +78,43 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Add Labels to allow easier referencing in dtsi and board dts.
+Add subnodes for efuse containing calibration data for lvts and phys.
 
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
- arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-index 0aa789da5592..6d2ea317f9b2 100644
+index 7371cd80a4ff..ed8ce1e6f68b 100644
 --- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-@@ -250,7 +250,7 @@ i2c2: i2c@11005000 {
- 			status = "disabled";
+@@ -330,6 +330,25 @@ efuse: efuse@11f50000 {
+ 			reg = <0 0x11f50000 0 0x1000>;
+ 			#address-cells = <1>;
+ 			#size-cells = <1>;
++
++			cpufreq_calibration: calib@278 {
++				reg = <0x278 0x1>;
++			};
++			lvts_calibration: calib@918 {
++				reg = <0x918 0x28>;
++			};
++			phy_calibration_p0: calib@940 {
++				reg = <0x940 0x10>;
++			};
++			phy_calibration_p1: calib@954 {
++				reg = <0x954 0x10>;
++			};
++			phy_calibration_p2: calib@968 {
++				reg = <0x968 0x10>;
++			};
++			phy_calibration_p3: calib@97c {
++				reg = <0x97c 0x10>;
++			};
  		};
  
--		usb@11190000 {
-+		ssusb0: usb@11190000 {
- 			compatible = "mediatek,mt7988-xhci", "mediatek,mtk-xhci";
- 			reg = <0 0x11190000 0 0x2e00>,
- 			      <0 0x11193e00 0 0x0100>;
-@@ -264,7 +264,7 @@ usb@11190000 {
- 			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck", "xhci_ck";
- 		};
- 
--		usb@11200000 {
-+		ssusb1: usb@11200000 {
- 			compatible = "mediatek,mt7988-xhci", "mediatek,mtk-xhci";
- 			reg = <0 0x11200000 0 0x2e00>,
- 			      <0 0x11203e00 0 0x0100>;
+ 		clock-controller@15000000 {
 -- 
 2.43.0
 
