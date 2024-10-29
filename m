@@ -4,88 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37FBFD2AB13
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 09:58:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29575D2AB1C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 10:31:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zRN2Q2s1tXUlBpPwz2Gezq5YzOvyUe388g/hG6wINCo=; b=eavKJ4hVBHQfR5vT4i383rHREa
-	IadqM48T+e4WRhX/fLuqJexNJcWx6p29BURHjrFBycPnLeRNF9UPY7lOpj1riPkcHdG4j+3ajSZWg
-	joOmpXk6+BkkQQ57o1BDyrVlItHeEUajG/ZCtMMsf/tHv3Mh1YNBbcuoHxrO/w7xTfCGq/fnpb5BO
-	5cC3cXA2FOOTMyfclfN6RsphEqWX2LLUoCU6xY6KEOY8OwDl6BMV2Bi0+VQHxy/H5YM0FxYLm8bvi
-	L97kg+Yc09m04tvVrYdDj4hgFYsg/YC+Tx+bEul1YhnP1YWCn9BDHnWNvV6S0uTtDvVZildRYQRMq
-	9J1WQ8Iw==;
+	bh=dP0KAMyVWS6Yj9qu9bHMDh95jkCq6kFe5y2/InwDUyI=; b=3BzsbThVCtXlEhlbnqupkdx+Pg
+	8taaJ+4KCPG1xBYbseI8o0pYc4MDWMapTydaZ+ydtuPKjkkss24A6iZGH/nAWYI9hJuqZyu8JsqmD
+	JkQ/wv0Jz+cxL7Ap80oubhwhYfraTjoH6JNMCL09sUGBIFEV+8s8VDZ2QHjzjfq0o0Be16d3wxUGL
+	Op6uKnkcO5mA93lxNidj54lJYkxLd75wOsRAJ2U+JwhHCCpGfRQ5EOEgZIs8zJdc85MJzevaCadB1
+	qjqwqoSQmvuCak6RZ4+YdKnx87krDWzN1Pul6VIraYe3IfWJXzg9sA60pop8Yz6GOKah+dJj+EXEN
+	g26JMEdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5izK-0000000Dx1u-3lyS;
-	Tue, 29 Oct 2024 09:58:10 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1t5jVn-0000000E2fC-2A60;
+	Tue, 29 Oct 2024 10:31:43 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5ivb-0000000Dvs0-0yTC
+	id 1t5j3Y-0000000DyD4-0OeY
 	for linux-mediatek@lists.infradead.org;
-	Tue, 29 Oct 2024 09:54:21 +0000
-Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-20e6981ca77so56079135ad.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 29 Oct 2024 02:54:18 -0700 (PDT)
+	Tue, 29 Oct 2024 10:02:33 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-20cdda5cfb6so49869785ad.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 29 Oct 2024 03:02:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1730195658; x=1730800458; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1730196151; x=1730800951; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=zRN2Q2s1tXUlBpPwz2Gezq5YzOvyUe388g/hG6wINCo=;
-        b=NSIwfYSMdeHOtU1wU0QXHvu3gvojh6URbJlE15InZGHdBLzvJPxS+xL5d+TXlkmcrc
-         a5k17L1y5LN8Fn9Ev8qhptPN3o5k0WYXuLdwWLMFF1mWRKzvX0U+beZm7LnE41v7/Uyq
-         HUpivP3VAf/rxbFNm3AiSD7DFGWWBHE0GO3/U=
+        bh=dP0KAMyVWS6Yj9qu9bHMDh95jkCq6kFe5y2/InwDUyI=;
+        b=Bxx+o7Uu+cdxTGrvAtbr9EZPFL1XtxBfOPpYhqBfL73jcRo0ltBLrxjnxRfiriiNO1
+         XmlEq5FAH/Rij6Iw8bNfKjW+yYQSBPts4kHWOsJDS3Ni0m72hnjHIYKMzNqx60COzJew
+         BV3i/lE7RJHgQVDQXlSVMGIwu/h3wcZMAGiUY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730195658; x=1730800458;
+        d=1e100.net; s=20230601; t=1730196151; x=1730800951;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=zRN2Q2s1tXUlBpPwz2Gezq5YzOvyUe388g/hG6wINCo=;
-        b=VM7tGfxz0rb985K9KTaiNukJhA1pq9dmDXY+YgspKctAeZpt4nXnawCKyO5Z9b5JDQ
-         3wEOIC4NyjG7lrMl4ul7zRFtZHdFnK8r3Z1uMQjgX8n9kRh4aLHNZuO6ztb9MU1WVs2K
-         CxRgEddIofI2DtNMzQsuib7HpwyvwWwVbaCY23IhCjGthwxDThB2LgAzRkoC46lHlCdJ
-         f2nPZVpbTB6EEcZKctYvyRVAX79tTlBSVNh7YNUIxuv3NyrQ/2rU4Hm3H+eOaDYI77A8
-         AaslpcLZNsdCPtiI4PVvwEy0aYz6OtJGoO7P+kcwGIwFpLU7/4Ordocm3SPqnJtJhhg4
-         C0JQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWHxgBcxwvQDsYPTUOTgl7swMJ5d8sEsKr71x+b8GGLaB8EMQiNhn9LH5xK/0WjUHrMDldoEjYv6HuMfI3FVg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzahoKgnFQiRX7AGGhL01KaDLSvkeCF/ZrmfG+qooA9AVA7DNM4
-	k9+sxXIcQaxGYzRVo3SdEMkWMweE5RuiMhXLggaSOnMSPV9RVFB8wDSyw0y8Fw==
-X-Google-Smtp-Source: AGHT+IGJKLBeHml2mgw0fqam5oO7OYmdphXyqZ72BkhYs4KBfI3AcNJBCtRzWfdnOR4KM6obA5v1sA==
-X-Received: by 2002:a17:903:2289:b0:20b:7ec0:ee21 with SMTP id d9443c01a7336-210c68cf5a9mr165968125ad.19.1730195657831;
-        Tue, 29 Oct 2024 02:54:17 -0700 (PDT)
+        bh=dP0KAMyVWS6Yj9qu9bHMDh95jkCq6kFe5y2/InwDUyI=;
+        b=u98fbN3Z7tP3woRIH+udTDm7hZ5RYzznv8PW0pX/Rd0J6nB2Hx8HrbX1/0ZUbNQTGL
+         CJg91peFsyEMGm3Lswl9DEjc23Ry/F5erxQ9Jt+d6PwdrBWupMv/ngmGNvHNJwzeJgwB
+         bh7MQRmNQokDy7tP6kY86yH3Ii0zsIQViUBg1IppCj9k7W8gJwRuBij3PA1LFTq1UwVM
+         a6kvIxOt+4arGmVML9NwOorgLH/jIiopXJivFTIysXFbh1Jyl8eWaNehxH7MiaYcXW6c
+         0BBVpeQd3hRDwxTazy9LFIJw/l3xHBNM4iMpTZ7qFmAMWaorTSR6JQxseHyQ+iYzuuJQ
+         2+9Q==
+X-Forwarded-Encrypted: i=1; AJvYcCX135XmtAUhAJnGFT/2l7Nvmh0y0y0OOFJQoVCGRH+lelIcRlLYgDxhoZ5n+XJ6owZV4H3XF9/zcWCV7i0Wkg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwH5M7slfDDzotc/NmAjAAxpuW8JEKaA9EjdZ/0/fd+ff7iOXym
+	RdUlvq6tyFGKF3r3HvBUM0zKEK9l8JL0QEp/xCxAUmAwvIncqcQsrOjvGQjaBA==
+X-Google-Smtp-Source: AGHT+IEVCUvA4kLgKRzZ3vDr/KBHeqsWpmQJtKxeUYRTf/PK4hHx+6K7t3YF7nEmIdBRHb+IdCV2Zw==
+X-Received: by 2002:a17:902:c411:b0:202:28b1:9f34 with SMTP id d9443c01a7336-210c6d3c766mr153604875ad.56.1730196150884;
+        Tue, 29 Oct 2024 03:02:30 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:1fef:f494:7cba:476])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-210bc02efb1sm62901235ad.221.2024.10.29.02.54.14
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-210bc04532csm62785665ad.254.2024.10.29.03.02.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Oct 2024 02:54:17 -0700 (PDT)
+        Tue, 29 Oct 2024 03:02:30 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH] drm/bridge: it6505: Fix inverted reset polarity
-Date: Tue, 29 Oct 2024 17:54:10 +0800
-Message-ID: <20241029095411.657616-1-wenst@chromium.org>
+Subject: [PATCH] arm64: dts: mediatek: mt8186-corsola: Fix IT6505 reset line polarity
+Date: Tue, 29 Oct 2024 18:02:25 +0800
+Message-ID: <20241029100226.660263-1-wenst@chromium.org>
 X-Mailer: git-send-email 2.47.0.163.g1226f6d8fa-goog
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_025419_303663_8B01A5D0 
-X-CRM114-Status: GOOD (  14.66  )
+X-CRM114-CacheID: sfid-20241029_030232_181446_43E8EA09 
+X-CRM114-Status: GOOD (  15.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,64 +91,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The IT6505 bridge chip has a active low reset line. Since it is a
-"reset" and not an "enable" line, the GPIO should be asserted to
-put it in reset and deasserted to bring it out of reset during
-the power on sequence.
+The reset line of the IT6505 bridge chip is active low, not active high.
+It was incorrectly inverted in the device tree as the implementation at
+the time incorrectly inverted the polarity in its driver, due to a prior
+device having an inline inverting level shifter.
 
-The polarity was inverted when the driver was first introduced, likely
-because the device family that was targeted had an inverting level
-shifter on the reset line.
+Fix the polarity now while the external display pipeline is incomplete,
+thereby avoiding any impact to running systems.
 
-The MT8186 Corsola devices already have the IT6505 in their device tree,
-but the whole display pipeline is actually disabled and won't be enabled
-until some remaining issues are sorted out. The other known user is
-the MT8183 Kukui / Jacuzzi family; their device trees currently do not
-have the IT6505 included.
+A matching fix for the driver should be included if this change is
+backported.
 
-Fix the polarity in the driver while there are no actual users.
-
-Fixes: b5c84a9edcd4 ("drm/bridge: add it6505 driver")
+Fixes: 8855d01fb81f ("arm64: dts: mediatek: Add MT8186 Krabby platform based Tentacruel / Tentacool")
 Cc: <stable@vger.kernel.org>
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/gpu/drm/bridge/ite-it6505.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+The matching driver change can be found at
 
-diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge/ite-it6505.c
-index 7502a5f81557..df7ecdf0f422 100644
---- a/drivers/gpu/drm/bridge/ite-it6505.c
-+++ b/drivers/gpu/drm/bridge/ite-it6505.c
-@@ -2618,9 +2618,9 @@ static int it6505_poweron(struct it6505 *it6505)
- 	/* time interval between OVDD and SYSRSTN at least be 10ms */
- 	if (pdata->gpiod_reset) {
- 		usleep_range(10000, 20000);
--		gpiod_set_value_cansleep(pdata->gpiod_reset, 0);
--		usleep_range(1000, 2000);
- 		gpiod_set_value_cansleep(pdata->gpiod_reset, 1);
-+		usleep_range(1000, 2000);
-+		gpiod_set_value_cansleep(pdata->gpiod_reset, 0);
- 		usleep_range(25000, 35000);
- 	}
+    https://lore.kernel.org/all/20241029095411.657616-1-wenst@chromium.org/
+
+ arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
+index e3b58641f2c9..43c83620e479 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
+@@ -422,7 +422,7 @@ it6505dptx: dp-bridge@5c {
+ 		#sound-dai-cells = <0>;
+ 		ovdd-supply = <&mt6366_vsim2_reg>;
+ 		pwr18-supply = <&pp1800_dpbrdg_dx>;
+-		reset-gpios = <&pio 177 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&pio 177 GPIO_ACTIVE_LOW>;
  
-@@ -2651,7 +2651,7 @@ static int it6505_poweroff(struct it6505 *it6505)
- 	disable_irq_nosync(it6505->irq);
- 
- 	if (pdata->gpiod_reset)
--		gpiod_set_value_cansleep(pdata->gpiod_reset, 0);
-+		gpiod_set_value_cansleep(pdata->gpiod_reset, 1);
- 
- 	if (pdata->pwr18) {
- 		err = regulator_disable(pdata->pwr18);
-@@ -3205,7 +3205,7 @@ static int it6505_init_pdata(struct it6505 *it6505)
- 		return PTR_ERR(pdata->ovdd);
- 	}
- 
--	pdata->gpiod_reset = devm_gpiod_get(dev, "reset", GPIOD_OUT_LOW);
-+	pdata->gpiod_reset = devm_gpiod_get(dev, "reset", GPIOD_OUT_HIGH);
- 	if (IS_ERR(pdata->gpiod_reset)) {
- 		dev_err(dev, "gpiod_reset gpio not found");
- 		return PTR_ERR(pdata->gpiod_reset);
+ 		ports {
+ 			#address-cells = <1>;
 -- 
 2.47.0.163.g1226f6d8fa-goog
 
