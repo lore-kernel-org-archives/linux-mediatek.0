@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72959D2AB1B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 10:52:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB272D2AB1D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 10:53:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jEn9e3Gmbg9qm+aCkqjz6Xik1WTOU1GWAXvr6sZyRfw=; b=EULL7W+2lgG7Sg
-	L0ig+zHnu/kSpc6VoeuljaPeAKuMCfmYR9/J0EdFDuQWSrwaMfjvRB3xNkQfUrImu4ctr2K4iyBSv
-	hUlyTraIw8A16FiaeYyQIsNzUkbM8nog1q7MMDi1I0FA86osRz5KGAKkGywurqvdb5kQwSd+YZvN6
-	T10X/BtjBC7WuxnUUCZjhONDd8eKLuJc4vojE5OfBZwYzOxYJR/ynmD9uaUDFiC1qhWGJeHXAeHts
-	cti4h3Ez+qmQc2aMECeBS8ygXYhv8GYkgJv4/cK++9RlapmRMCSZCRxyzdi6osAF+g794YH2pc9Kd
-	CVJoD5z/QrsGYPD5UBvg==;
+	List-Owner; bh=aj7eM8Vxd38nB8gdBiCUpncW4jumVYClCzr//il3Z6s=; b=CGUHxKQykzj5bc
+	xY0/OUV9J3M6SPwHTuTnv+KW9gB4r/aBCdMxJ6UklmD3pTEO+rMRCgwyXUD+KtWu1y7f9WJbXwSsf
+	10Cf6q+erTW9PRD1FIjJ5nydfTD9GNLXI8wUumyy2ud9ABkiAzWGQKUQ2JS3bIbz4wApKbEbOmwxm
+	BUDumD9+DZDTCSr6P3rh1G7Lthf6I1geJrDyU1uTOI0gSoMdN5+xxiPfyudz8JOxzgrod2BHl4Fxm
+	FZOd/8LQsDpa7M2ZCNvci9d4Ybl8LgkFh6zrp5RO565x43YBBV5kVrHvUgiuYl5KGHK+JySR8qdCv
+	AsjxPXXxe9QI9jH2o+JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5jq8-0000000E7BE-2Kku;
-	Tue, 29 Oct 2024 10:52:44 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1t5jqU-0000000E7Jz-3Xuu;
+	Tue, 29 Oct 2024 10:53:06 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5jdg-0000000E49O-0FAB;
-	Tue, 29 Oct 2024 10:39:53 +0000
+	id 1t5jdg-0000000E49h-2Zgr;
+	Tue, 29 Oct 2024 10:39:54 +0000
 Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout1.routing.net (Postfix) with ESMTP id 6089E4051F;
-	Tue, 29 Oct 2024 10:39:49 +0000 (UTC)
+	by mxout2.routing.net (Postfix) with ESMTP id 388BA60654;
+	Tue, 29 Oct 2024 10:39:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1730198389;
+	s=20200217; t=1730198391;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=jEn9e3Gmbg9qm+aCkqjz6Xik1WTOU1GWAXvr6sZyRfw=;
-	b=rgXTN+tw5vVYbKuWd3PhDQ9ddTNeXR+wn/nFeZXjY1dUiOswiYa+quyZNCwJjJUkmdMLOP
-	tPoZxDPErukR3B5bELwZW4DLxz/bddvxu+aJ2t4JUwGbVqguNQeFcLHVLEu+BsnIuuwMKq
-	3fvSxMQ0tOvpVB+GbGR3axQDl24wqPs=
+	bh=aj7eM8Vxd38nB8gdBiCUpncW4jumVYClCzr//il3Z6s=;
+	b=JZR4PGidZvahbe0z6LVkkp9GrNSUQqT+yFOOveWLYYIAUwEswz0uY5C7RNxNp941CZKqI+
+	tsKEKsG5hwwvzssAqGGrHxKjpQEJu0MXJjXZvMS2G8m1D0zmhvKb8QrGO+/7G5955IEcbj
+	2I5YtCgjes/s5pVE5Kg/pSW1PM715z4=
 Received: from frank-u24.. (fttx-pool-80.245.73.173.bambit.de [80.245.73.173])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id BE91636037C;
-	Tue, 29 Oct 2024 10:39:48 +0000 (UTC)
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 99D1C3600D8;
+	Tue, 29 Oct 2024 10:39:50 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [RFC v1 10/14] arm64: dts: mediatek: mt7988: add lvts node
-Date: Tue, 29 Oct 2024 11:39:29 +0100
-Message-ID: <20241029103937.45852-11-linux@fw-web.de>
+Subject: [RFC v1 13/14] arm64: dts: mediatek: mt7988: add mcu-sys node for cpu
+Date: Tue, 29 Oct 2024 11:39:32 +0100
+Message-ID: <20241029103937.45852-14-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241029103937.45852-1-linux@fw-web.de>
 References: <20241029103937.45852-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: 9cfe9d8b-db7c-4981-b57d-3a085ddbeb43
+X-Mail-ID: 0665e2ca-e3cb-4b98-9c67-28aac8f7ecb4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_033952_270451_DA645B42 
-X-CRM114-Status: UNSURE (   9.67  )
+X-CRM114-CacheID: sfid-20241029_033952_845788_12CBFAD9 
+X-CRM114-Status: UNSURE (   8.74  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,51 +78,30 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Add Low Voltage Thermal Sensor (LVTS) node for mt7988 SoC.
+Add mcu-sys node which is used later as clock-controller for cpus.
 
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
- arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-index ed8ce1e6f68b..de9a9ff2edd8 100644
+index 7721d2ec06ee..e037854666c1 100644
 --- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-@@ -4,6 +4,7 @@
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/phy/phy.h>
- #include <dt-bindings/pinctrl/mt65xx.h>
-+#include <dt-bindings/reset/mediatek,mt7988-resets.h>
- 
- / {
- 	compatible = "mediatek,mt7988a";
-@@ -103,6 +104,7 @@ infracfg: clock-controller@10001000 {
- 			compatible = "mediatek,mt7988-infracfg", "syscon";
- 			reg = <0 0x10001000 0 0x1000>;
- 			#clock-cells = <1>;
-+			#reset-cells = <1>;
- 		};
- 
- 		topckgen: clock-controller@1001b000 {
-@@ -268,6 +270,17 @@ i2c2: i2c@11005000 {
+@@ -210,6 +210,12 @@ pwm: pwm@10048000 {
  			status = "disabled";
  		};
  
-+		lvts: lvts@1100a000 {
-+			compatible = "mediatek,mt7988-lvts-ap";
-+			#thermal-sensor-cells = <1>;
-+			reg = <0 0x1100a000 0 0x1000>;
-+			clocks = <&infracfg CLK_INFRA_26M_THERM_SYSTEM>;
-+			interrupts = <GIC_SPI 138 IRQ_TYPE_LEVEL_HIGH>;
-+			resets = <&infracfg MT7988_INFRA_RST1_THERM_CTRL_SWRST>;
-+			nvmem-cells = <&lvts_calibration>;
-+			nvmem-cell-names = "lvts-calib-data-1";
++		mcusys: mcusys@100e0000 {
++			compatible = "mediatek,mt7988-mcusys", "syscon";
++			reg = <0 0x100e0000 0 0x1000>;
++			#clock-cells = <1>;
 +		};
 +
- 		ssusb0: usb@11190000 {
- 			compatible = "mediatek,mt7988-xhci", "mediatek,mtk-xhci";
- 			reg = <0 0x11190000 0 0x2e00>,
+ 		serial0: serial@11000000 {
+ 			compatible = "mediatek,mt7988-uart", "mediatek,mt6577-uart";
+ 			reg = <0 0x11000000 0 0x100>;
 -- 
 2.43.0
 
