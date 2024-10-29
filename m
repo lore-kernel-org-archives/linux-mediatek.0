@@ -4,79 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29575D2AB1C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 10:31:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 589E6D2AB1C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 10:48:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=dP0KAMyVWS6Yj9qu9bHMDh95jkCq6kFe5y2/InwDUyI=; b=3BzsbThVCtXlEhlbnqupkdx+Pg
-	8taaJ+4KCPG1xBYbseI8o0pYc4MDWMapTydaZ+ydtuPKjkkss24A6iZGH/nAWYI9hJuqZyu8JsqmD
-	JkQ/wv0Jz+cxL7Ap80oubhwhYfraTjoH6JNMCL09sUGBIFEV+8s8VDZ2QHjzjfq0o0Be16d3wxUGL
-	Op6uKnkcO5mA93lxNidj54lJYkxLd75wOsRAJ2U+JwhHCCpGfRQ5EOEgZIs8zJdc85MJzevaCadB1
-	qjqwqoSQmvuCak6RZ4+YdKnx87krDWzN1Pul6VIraYe3IfWJXzg9sA60pop8Yz6GOKah+dJj+EXEN
-	g26JMEdA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=dthOVvsNfRXr3q3blWKOOHKAo/CHNI++jDGd6dc/psE=; b=vceQ8TyOOYSb+i
+	h2VGxR0RyWB2IwrmnA5ELIrGpXr25jjhyLKUzlR3rEPbvAS6KEaLBdPSh6Lodu4q0gVI9b3VPn0dW
+	OGjqqCQFNqvCExiqnR/g1GMUJ3a09JJ3PMwD0cr3tz4I/oLk3w6Uam/mG5QnV4lAYPSCYm3d79FBr
+	iIsgowDMCi62bsNZ6MQKQZQWgaPbk6QGTe/3y4fYPr4Q9XUi1ry6hQmvdSFbknBAn5qlZDnUcWOph
+	rCZShsJOW7sQ/8VWX9MG8MzaQRe6ZQyO/tFcPNjBDg8+aDRRBSQ3n+qDg1tiPiGB2zIue27UVkP3P
+	HWI3KH6+ewh8N7iXA6+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5jVn-0000000E2fC-2A60;
-	Tue, 29 Oct 2024 10:31:43 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1t5jlt-0000000E5yI-1LPO;
+	Tue, 29 Oct 2024 10:48:21 +0000
+Received: from mxout3.routing.net ([2a03:2900:1:a::8])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5j3Y-0000000DyD4-0OeY
-	for linux-mediatek@lists.infradead.org;
-	Tue, 29 Oct 2024 10:02:33 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-20cdda5cfb6so49869785ad.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 29 Oct 2024 03:02:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1730196151; x=1730800951; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=dP0KAMyVWS6Yj9qu9bHMDh95jkCq6kFe5y2/InwDUyI=;
-        b=Bxx+o7Uu+cdxTGrvAtbr9EZPFL1XtxBfOPpYhqBfL73jcRo0ltBLrxjnxRfiriiNO1
-         XmlEq5FAH/Rij6Iw8bNfKjW+yYQSBPts4kHWOsJDS3Ni0m72hnjHIYKMzNqx60COzJew
-         BV3i/lE7RJHgQVDQXlSVMGIwu/h3wcZMAGiUY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730196151; x=1730800951;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=dP0KAMyVWS6Yj9qu9bHMDh95jkCq6kFe5y2/InwDUyI=;
-        b=u98fbN3Z7tP3woRIH+udTDm7hZ5RYzznv8PW0pX/Rd0J6nB2Hx8HrbX1/0ZUbNQTGL
-         CJg91peFsyEMGm3Lswl9DEjc23Ry/F5erxQ9Jt+d6PwdrBWupMv/ngmGNvHNJwzeJgwB
-         bh7MQRmNQokDy7tP6kY86yH3Ii0zsIQViUBg1IppCj9k7W8gJwRuBij3PA1LFTq1UwVM
-         a6kvIxOt+4arGmVML9NwOorgLH/jIiopXJivFTIysXFbh1Jyl8eWaNehxH7MiaYcXW6c
-         0BBVpeQd3hRDwxTazy9LFIJw/l3xHBNM4iMpTZ7qFmAMWaorTSR6JQxseHyQ+iYzuuJQ
-         2+9Q==
-X-Forwarded-Encrypted: i=1; AJvYcCX135XmtAUhAJnGFT/2l7Nvmh0y0y0OOFJQoVCGRH+lelIcRlLYgDxhoZ5n+XJ6owZV4H3XF9/zcWCV7i0Wkg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwH5M7slfDDzotc/NmAjAAxpuW8JEKaA9EjdZ/0/fd+ff7iOXym
-	RdUlvq6tyFGKF3r3HvBUM0zKEK9l8JL0QEp/xCxAUmAwvIncqcQsrOjvGQjaBA==
-X-Google-Smtp-Source: AGHT+IEVCUvA4kLgKRzZ3vDr/KBHeqsWpmQJtKxeUYRTf/PK4hHx+6K7t3YF7nEmIdBRHb+IdCV2Zw==
-X-Received: by 2002:a17:902:c411:b0:202:28b1:9f34 with SMTP id d9443c01a7336-210c6d3c766mr153604875ad.56.1730196150884;
-        Tue, 29 Oct 2024 03:02:30 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:1fef:f494:7cba:476])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-210bc04532csm62785665ad.254.2024.10.29.03.02.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Oct 2024 03:02:30 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1t5jdb-0000000E46b-2ysk;
+	Tue, 29 Oct 2024 10:39:49 +0000
+Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
+	by mxout3.routing.net (Postfix) with ESMTP id 5DDAD61645;
+	Tue, 29 Oct 2024 10:39:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1730198386;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=dthOVvsNfRXr3q3blWKOOHKAo/CHNI++jDGd6dc/psE=;
+	b=ln4NT4jPhsriKEo6oFajE03/kX5+a1YyRQ055Tt5u/KzoncMfGcBi3QWu1pd4OSWaV2Zdz
+	Q1NPtC+1CK4RN7BKYrk+G+2Tsz5jhxxPcRGn+8yvVdP6jOMlfgWsb7zU6hPWMcrbm8fTLV
+	XijqEvCSy0z2QV1qIvMJ8lwEoqNL9K8=
+Received: from frank-u24.. (fttx-pool-80.245.73.173.bambit.de [80.245.73.173])
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id AEDE63600D8;
+	Tue, 29 Oct 2024 10:39:45 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH] arm64: dts: mediatek: mt8186-corsola: Fix IT6505 reset line polarity
-Date: Tue, 29 Oct 2024 18:02:25 +0800
-Message-ID: <20241029100226.660263-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.47.0.163.g1226f6d8fa-goog
+Subject: [RFC v1 05/14] arm64: dts: mediatek: mt7988: add label for pwm node
+Date: Tue, 29 Oct 2024 11:39:24 +0100
+Message-ID: <20241029103937.45852-6-linux@fw-web.de>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241029103937.45852-1-linux@fw-web.de>
+References: <20241029103937.45852-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-Mail-ID: 2f832f17-7fb7-415a-b55d-2c417a14bb51
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_030232_181446_43E8EA09 
-X-CRM114-Status: GOOD (  15.14  )
+X-CRM114-CacheID: sfid-20241029_033948_016345_D2F5C08D 
+X-CRM114-Status: UNSURE (   9.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,45 +72,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The reset line of the IT6505 bridge chip is active low, not active high.
-It was incorrectly inverted in the device tree as the implementation at
-the time incorrectly inverted the polarity in its driver, due to a prior
-device having an inline inverting level shifter.
+From: Frank Wunderlich <frank-w@public-files.de>
 
-Fix the polarity now while the external display pipeline is incomplete,
-thereby avoiding any impact to running systems.
+Add Label to allow easier referencing in dtsi and board dts.
 
-A matching fix for the driver should be included if this change is
-backported.
-
-Fixes: 8855d01fb81f ("arm64: dts: mediatek: Add MT8186 Krabby platform based Tentacruel / Tentacool")
-Cc: <stable@vger.kernel.org>
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
-The matching driver change can be found at
-
-    https://lore.kernel.org/all/20241029095411.657616-1-wenst@chromium.org/
-
- arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi | 2 +-
+ arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-index e3b58641f2c9..43c83620e479 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-@@ -422,7 +422,7 @@ it6505dptx: dp-bridge@5c {
- 		#sound-dai-cells = <0>;
- 		ovdd-supply = <&mt6366_vsim2_reg>;
- 		pwr18-supply = <&pp1800_dpbrdg_dx>;
--		reset-gpios = <&pio 177 GPIO_ACTIVE_HIGH>;
-+		reset-gpios = <&pio 177 GPIO_ACTIVE_LOW>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+index e5e7951b24f8..0425aec8dacb 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+@@ -159,7 +159,7 @@ mux {
+ 			};
+ 		};
  
- 		ports {
- 			#address-cells = <1>;
+-		pwm@10048000 {
++		pwm: pwm@10048000 {
+ 			compatible = "mediatek,mt7988-pwm";
+ 			reg = <0 0x10048000 0 0x1000>;
+ 			clocks = <&infracfg CLK_INFRA_66M_PWM_BCK>,
 -- 
-2.47.0.163.g1226f6d8fa-goog
+2.43.0
 
 
