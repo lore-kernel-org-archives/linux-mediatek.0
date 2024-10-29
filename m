@@ -4,63 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2087D2AB1D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 10:53:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ED06D2AB23
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 11:47:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CkpUh/XPSwiAqciWUfYgDTDUp1kYHTLS66y+Kq607kQ=; b=Ay/L801+4Hb0vE
-	DN/9HxTceEVPlQKTpN8C+AJFvUEksB18krm5FEIDxDw+aAZPfe5yKoV7pHt3+amYrv26GAW9EjawF
-	UbiRMBmeg3OAYYJmtlWyNtlLnxlqfLH54f8ecHt2J7XPBlMV+XoKuFLcJY4TU8VCGoz/8ss+K+8/e
-	f6vrbOI4TmLzRTtcOhOQQaOzt9iPMnxOkNzb7T0LG97PVV3UbN7y6d3Qc4K7QZJ/0DlkQ3dEWkwHg
-	CKvo6qiOFwVQ+pn5naZyDpB7N6MdZ3dVC5elVsmT/CJ/37es6liE+k79DS2ShQvpxcJnKn7xQX1U2
-	seTUXwPSNNaaUjSFi6Sw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0505nJjQERl8lxM/9PvfVg4f+qO1mzi84QJZy2KWoxQ=; b=H0DBki5l52QWG+uwIJqsVOgiPZ
+	dK9m+KwqUZ0RAp1Pb+ZzRbgcVsOZYEr4Qv6gUMik223m0HSKOs5ASL1zwH0Ut9Ptq9UmQ0Nq7hJg8
+	qGYGKlXhyvND4mgOL3lwVY/xltd8yDhrB5JBjTh6/mv3gvY2K5O0WkUobG3Sy1ZebtuNYNpbRKDqH
+	UoCaiM/OJLdjPc3fwehRdmyCe45Py84EyxndGYZttsJBlYdHklzL7qrM1p61v09GOVSydvF+E1JJ8
+	VDEb88bkImRcI/Cxg5AoXs595/dhtzCMBPXDF93HtOPXhvLZGZ/rME6B6/TlYz9j0CGKGIdlY2e4A
+	NB2tpZiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5jr0-0000000E7YD-34Gp;
-	Tue, 29 Oct 2024 10:53:38 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1t5khG-0000000EHaW-0Ezv;
+	Tue, 29 Oct 2024 11:47:38 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5jdi-0000000E4BP-3Mkb;
-	Tue, 29 Oct 2024 10:39:56 +0000
-Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout1.routing.net (Postfix) with ESMTP id C62984070F;
-	Tue, 29 Oct 2024 10:39:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1730198391;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CkpUh/XPSwiAqciWUfYgDTDUp1kYHTLS66y+Kq607kQ=;
-	b=DdGus3Q3+7b7nRhcxiapQHFi9SiYsFuppqE5lcCPIJte2EFFmye6Kiuut6MfiYzJ/ew/iZ
-	nQN2FCFfQOSENatE2fEZTsHmEQagyl2E/wq290kUOCiIt8YV+TgdqgFtg3MDeMar0RP469
-	RHOLWWLpcoH23Onh4hSkpopH0Z5PFE0=
-Received: from frank-u24.. (fttx-pool-80.245.73.173.bambit.de [80.245.73.173])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 327F136037C;
-	Tue, 29 Oct 2024 10:39:51 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [RFC v1 14/14] arm64: dts: mediatek: mt7988: add operating-points
-Date: Tue, 29 Oct 2024 11:39:33 +0100
-Message-ID: <20241029103937.45852-15-linux@fw-web.de>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20241029103937.45852-1-linux@fw-web.de>
-References: <20241029103937.45852-1-linux@fw-web.de>
+	id 1t5kA0-0000000ECjC-0kkM
+	for linux-mediatek@lists.infradead.org;
+	Tue, 29 Oct 2024 11:13:18 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-2e2e87153a3so3795927a91.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 29 Oct 2024 04:13:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1730200395; x=1730805195; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=0505nJjQERl8lxM/9PvfVg4f+qO1mzi84QJZy2KWoxQ=;
+        b=B0fXJfXbZQNZ/QSTZEYthrTBUqPSvrzh50ttYHOGRL4BkuJoDucxtjJhNzkVL8I4Ko
+         lYpOzI7truezeA6ovVzRBm6CP/pm28PQ+dC5Nf/TLijQPidPFS85wlxd9K/7NsECSA3O
+         f9oaSms4jKKZvr7KV8rA7fQ6lJOu5XQ1rkvAI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730200395; x=1730805195;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=0505nJjQERl8lxM/9PvfVg4f+qO1mzi84QJZy2KWoxQ=;
+        b=bOldR8y5eJmrctJQLUjaaxyr6rbNjxRYUoGtaIlY2EUhZ3AAwEjv1oonS3LWeC/2yU
+         At0fB2Qhf26t8i81Yaqi2uR0GBxPLs1UugyQfiu7AtczpRLGWniW3Wt0xjFV5WZfbABW
+         gmumaZgeS5PNaNj5h1jCT4Jw8pR4GJIEURSNJSCU9sliWc+Y/jtkVxR2xCpIq1Wh2Akl
+         BUUnF7fSX5yiJuuSpCeMHd/pWTrbinZ6nSyDWDr1w3a0urLfmP5zC2ZCtL6MeEmYDZew
+         jwLBZZH9oo7OxxgTLUVp2ko/feL+bkriOVOjTTzJqeJmGO5CjyVAfS5X7b+/TCEWwGql
+         kHag==
+X-Forwarded-Encrypted: i=1; AJvYcCUV2wtljahqPanx3j0Wvg5WDHzZPp97iObQaO95B8atRjZLd0luExT2NxG1ceVgFeDygFN4m5ti2yEmDEwKIA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxwq34F7yQvR3onF1/t8rjcR5T9WAH/zVlD3ySvHt6gTI9ifE/o
+	H6ldzX0elyhYXuMRFleOdBLJacJY+56KLq/F63w953+PKpTQhzbjpYJmXVw7mw==
+X-Google-Smtp-Source: AGHT+IGrd9l1GlM2L8PMQ11t9vsR3WqEyNxK+9h4vC9b0I7xJAWHJVP8EBwRriK40RxJRSAsNNrEQQ==
+X-Received: by 2002:a17:90a:68ce:b0:2e2:a8dd:9bb5 with SMTP id 98e67ed59e1d1-2e8f105e834mr12056484a91.12.1730200395327;
+        Tue, 29 Oct 2024 04:13:15 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:1fef:f494:7cba:476])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2e8e3572e69sm9280776a91.16.2024.10.29.04.13.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 29 Oct 2024 04:13:14 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	=?UTF-8?q?Ville=20Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>
+Subject: [PATCH] drm/mediatek: Drop dependency on ARM
+Date: Tue, 29 Oct 2024 19:13:07 +0800
+Message-ID: <20241029111309.737263-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.47.0.163.g1226f6d8fa-goog
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: 72750c8e-3dcc-4bb0-bbdf-e9206e8bffeb
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_033955_020102_A1634F84 
-X-CRM114-Status: UNSURE (   8.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241029_041316_269997_2F0035DC 
+X-CRM114-Status: GOOD (  14.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,98 +92,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+The recent attempt to make the MediaTek DRM driver build for non-ARM
+compile tests made the driver unbuildable for arm64 platforms. Since
+this is used on both ARM and arm64 platforms, just drop the dependency
+on ARM.
 
-Add operating points defining frequency/voltages of cpu cores.
-
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Fixes: d2db0b8fd70b ("drm/mediatek: Allow build with COMPILE_TEST=y")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 45 +++++++++++++++++++++--
- 1 file changed, 41 insertions(+), 4 deletions(-)
+It looks like the culprit commit was merged through the drm-misc tree.
+So please merge this on top ASAP.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-index e037854666c1..25669d498617 100644
---- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-@@ -16,32 +16,69 @@ cpus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
- 
--		cpu@0 {
-+		cpu0: cpu@0 {
- 			compatible = "arm,cortex-a73";
- 			reg = <0x0>;
- 			device_type = "cpu";
- 			enable-method = "psci";
-+			clocks = <&mcusys CLK_MCU_ARM_DIV_SEL>,
-+				 <&topckgen CLK_TOP_XTAL>;
-+			clock-names = "cpu", "intermediate";
-+			operating-points-v2 = <&cluster0_opp>;
- 		};
- 
--		cpu@1 {
-+		cpu1: cpu@1 {
- 			compatible = "arm,cortex-a73";
- 			reg = <0x1>;
- 			device_type = "cpu";
- 			enable-method = "psci";
-+			clocks = <&mcusys CLK_MCU_ARM_DIV_SEL>,
-+				 <&topckgen CLK_TOP_XTAL>;
-+			clock-names = "cpu", "intermediate";
-+			operating-points-v2 = <&cluster0_opp>;
- 		};
- 
--		cpu@2 {
-+		cpu2: cpu@2 {
- 			compatible = "arm,cortex-a73";
- 			reg = <0x2>;
- 			device_type = "cpu";
- 			enable-method = "psci";
-+			clocks = <&mcusys CLK_MCU_ARM_DIV_SEL>,
-+				 <&topckgen CLK_TOP_XTAL>;
-+			clock-names = "cpu", "intermediate";
-+			operating-points-v2 = <&cluster0_opp>;
- 		};
- 
--		cpu@3 {
-+		cpu3: cpu@3 {
- 			compatible = "arm,cortex-a73";
- 			reg = <0x3>;
- 			device_type = "cpu";
- 			enable-method = "psci";
-+			clocks = <&mcusys CLK_MCU_ARM_DIV_SEL>,
-+				 <&topckgen CLK_TOP_XTAL>;
-+			clock-names = "cpu", "intermediate";
-+			operating-points-v2 = <&cluster0_opp>;
-+		};
-+
-+		cluster0_opp: opp-table-0 {
-+			compatible = "operating-points-v2";
-+			opp-shared;
-+			opp00 {
-+				opp-hz = /bits/ 64 <800000000>;
-+				opp-microvolt = <850000>;
-+			};
-+			opp01 {
-+				opp-hz = /bits/ 64 <1100000000>;
-+				opp-microvolt = <850000>;
-+			};
-+			opp02 {
-+				opp-hz = /bits/ 64 <1500000000>;
-+				opp-microvolt = <850000>;
-+			};
-+			opp03 {
-+				opp-hz = /bits/ 64 <1800000000>;
-+				opp-microvolt = <900000>;
-+			};
- 		};
- 	};
- 
+ drivers/gpu/drm/mediatek/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/Kconfig
+index 2e0e7c4079b6..f496e6cfdfe0 100644
+--- a/drivers/gpu/drm/mediatek/Kconfig
++++ b/drivers/gpu/drm/mediatek/Kconfig
+@@ -2,7 +2,7 @@
+ config DRM_MEDIATEK
+ 	tristate "DRM Support for Mediatek SoCs"
+ 	depends on DRM
+-	depends on (ARCH_MEDIATEK && ARM) || COMPILE_TEST
++	depends on ARCH_MEDIATEK || COMPILE_TEST
+ 	depends on COMMON_CLK
+ 	depends on HAVE_ARM_SMCCC || COMPILE_TEST
+ 	depends on OF
 -- 
-2.43.0
+2.47.0.163.g1226f6d8fa-goog
 
 
