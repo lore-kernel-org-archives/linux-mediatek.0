@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEEEED5B16F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 09:10:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37FBFD2AB13
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 09:58:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hpAfK6tyrvwMS8L2PbzrGqnbfuzjHJrlMvInkHIHnZI=; b=wYJjl2+fn1kI/KlhOvJrimDhiO
-	WYrov5Dcvhw2Gk3b4V8s0PAiYw58jrQHomnMcWpGe/bL6P2k1bokZ2XxSbt+igmzhL0ORs1fmdySl
-	vMqdDzgXCr/6SOyc16KcOJK+yCVDLpzW0F4RBKAK8MiTQabhWVOIIF2+fvvdj61WtTiipgmkHiphz
-	4WGieM9CedCst7O07eoiuCz3Qqfu4vaQWb2BSw+LxtaTYn00/4jydxSTVaCehsLYiNLuyAuXUrpVD
-	sQaqFxHBswNjwoMU69lftD3WColsmNYWYDX/ZO8+OouUEPU6m7Vku6W/adk+fd5zjV96Jx/o3thQt
-	8MbYicSw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zRN2Q2s1tXUlBpPwz2Gezq5YzOvyUe388g/hG6wINCo=; b=eavKJ4hVBHQfR5vT4i383rHREa
+	IadqM48T+e4WRhX/fLuqJexNJcWx6p29BURHjrFBycPnLeRNF9UPY7lOpj1riPkcHdG4j+3ajSZWg
+	joOmpXk6+BkkQQ57o1BDyrVlItHeEUajG/ZCtMMsf/tHv3Mh1YNBbcuoHxrO/w7xTfCGq/fnpb5BO
+	5cC3cXA2FOOTMyfclfN6RsphEqWX2LLUoCU6xY6KEOY8OwDl6BMV2Bi0+VQHxy/H5YM0FxYLm8bvi
+	L97kg+Yc09m04tvVrYdDj4hgFYsg/YC+Tx+bEul1YhnP1YWCn9BDHnWNvV6S0uTtDvVZildRYQRMq
+	9J1WQ8Iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5iEs-0000000DpVd-3aWq;
-	Tue, 29 Oct 2024 09:10:10 +0000
-Received: from relay8-d.mail.gandi.net ([2001:4b98:dc4:8::228])
+	id 1t5izK-0000000Dx1u-3lyS;
+	Tue, 29 Oct 2024 09:58:10 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5i8u-0000000DoVH-0pNn;
-	Tue, 29 Oct 2024 09:04:02 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id C68791BF204;
-	Tue, 29 Oct 2024 09:03:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1730192635;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=hpAfK6tyrvwMS8L2PbzrGqnbfuzjHJrlMvInkHIHnZI=;
-	b=WkhI/DVqn/dDgEGXg5ze24s00SnuWWK8bmgYFAQaSQSgHS/3+b0O5sNNKTStjAxR/jf+4h
-	0o6b25F5CM6hzS4ApkL7rjJteF/3WsvIXr9Is7v7RNPDr1hM6SgZtytzIUP4gZ5dtlEpLg
-	COgrRCbWe5DTxWzSVRzksGVJyb597rnqQCl5AJLLhtHIb4htqmGNuaCLmKvnbildk9oQPe
-	IqjYlYEsv6PJq4Tpe9bBIT7sk8n1gJbWFWN3kIUiX2Dd+Sk2UHidAD1P51iPnXfsSARzVl
-	nu+FDRAug3FdoWJxDLz5FVgjrXmtG+m82/IUNQdOKDRvvPwaBoAqjYk9s9Gx2w==
-Date: Tue, 29 Oct 2024 10:03:47 +0100
-From: Herve Codina <herve.codina@bootlin.com>
-To: Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig@baylibre.com>
-Cc: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>, Joel
- Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- Christophe Leroy <christophe.leroy@csgroup.eu>, Qiang Zhao
- <qiang.zhao@nxp.com>, Hitomi Hasegawa <hasegawa-hitomi@fujitsu.com>,
- Huisong Li <lihuisong@huawei.com>, Linus Walleij <linusw@kernel.org>, Imre
- Kaloz <kaloz@openwrt.org>, Karol Gugala <kgugala@antmicro.com>, Mateusz
- Holenko <mholenko@antmicro.com>, Gabriel Somlo <gsomlo@gmail.com>, Yinbo
- Zhu <zhuyinbo@loongson.cn>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Conor
- Dooley <conor.dooley@microchip.com>, Daire McNamara
- <daire.mcnamara@microchip.com>, Krzysztof Kozlowski
- <krzysztof.kozlowski@linaro.org>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konradybcio@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Alim Akhtar <alim.akhtar@samsung.com>, Thierry Reding
- <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- Nishanth Menon <nm@ti.com>, Santosh Shilimkar <ssantosh@kernel.org>, Michal
- Simek <michal.simek@amd.com>, Andy Shevchenko
- <andriy.shevchenko@linux.intel.com>, Duje =?UTF-8?B?TWloYW5vdmnEhw==?=
- <duje.mihanovic@skole.hr>, Mark Brown <broonie@kernel.org>, David Wu
- <david.wu@rock-chips.com>, Jianqun Xu <jay.xu@rock-chips.com>, Jay
- Buddhabhatti <jay.buddhabhatti@amd.com>, Radhey Shyam Pandey
- <radhey.shyam.pandey@amd.com>, Izhar Ameer Shaikh
- <izhar.ameer.shaikh@amd.com>, Naman Trivedi Manojbhai
- <naman.trivedimanojbhai@amd.com>, linux-arm-kernel@lists.infradead.org,
- soc@lists.linux.dev, linux-aspeed@lists.ozlabs.org,
- linux-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- loongarch@lists.linux.dev, linux-mediatek@lists.infradead.org,
- linux-riscv@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- linux-tegra@vger.kernel.org, linux-pm@vger.kernel.org
-Subject: Re: [PATCH] soc: Switch back to struct platform_driver::remove()
-Message-ID: <20241029100347.542b56d4@bootlin.com>
-In-Reply-To: <20241029074859.509587-2-u.kleine-koenig@baylibre.com>
-References: <20241029074859.509587-2-u.kleine-koenig@baylibre.com>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+	id 1t5ivb-0000000Dvs0-0yTC
+	for linux-mediatek@lists.infradead.org;
+	Tue, 29 Oct 2024 09:54:21 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-20e6981ca77so56079135ad.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 29 Oct 2024 02:54:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1730195658; x=1730800458; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=zRN2Q2s1tXUlBpPwz2Gezq5YzOvyUe388g/hG6wINCo=;
+        b=NSIwfYSMdeHOtU1wU0QXHvu3gvojh6URbJlE15InZGHdBLzvJPxS+xL5d+TXlkmcrc
+         a5k17L1y5LN8Fn9Ev8qhptPN3o5k0WYXuLdwWLMFF1mWRKzvX0U+beZm7LnE41v7/Uyq
+         HUpivP3VAf/rxbFNm3AiSD7DFGWWBHE0GO3/U=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730195658; x=1730800458;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=zRN2Q2s1tXUlBpPwz2Gezq5YzOvyUe388g/hG6wINCo=;
+        b=VM7tGfxz0rb985K9KTaiNukJhA1pq9dmDXY+YgspKctAeZpt4nXnawCKyO5Z9b5JDQ
+         3wEOIC4NyjG7lrMl4ul7zRFtZHdFnK8r3Z1uMQjgX8n9kRh4aLHNZuO6ztb9MU1WVs2K
+         CxRgEddIofI2DtNMzQsuib7HpwyvwWwVbaCY23IhCjGthwxDThB2LgAzRkoC46lHlCdJ
+         f2nPZVpbTB6EEcZKctYvyRVAX79tTlBSVNh7YNUIxuv3NyrQ/2rU4Hm3H+eOaDYI77A8
+         AaslpcLZNsdCPtiI4PVvwEy0aYz6OtJGoO7P+kcwGIwFpLU7/4Ordocm3SPqnJtJhhg4
+         C0JQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWHxgBcxwvQDsYPTUOTgl7swMJ5d8sEsKr71x+b8GGLaB8EMQiNhn9LH5xK/0WjUHrMDldoEjYv6HuMfI3FVg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzahoKgnFQiRX7AGGhL01KaDLSvkeCF/ZrmfG+qooA9AVA7DNM4
+	k9+sxXIcQaxGYzRVo3SdEMkWMweE5RuiMhXLggaSOnMSPV9RVFB8wDSyw0y8Fw==
+X-Google-Smtp-Source: AGHT+IGJKLBeHml2mgw0fqam5oO7OYmdphXyqZ72BkhYs4KBfI3AcNJBCtRzWfdnOR4KM6obA5v1sA==
+X-Received: by 2002:a17:903:2289:b0:20b:7ec0:ee21 with SMTP id d9443c01a7336-210c68cf5a9mr165968125ad.19.1730195657831;
+        Tue, 29 Oct 2024 02:54:17 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:1fef:f494:7cba:476])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-210bc02efb1sm62901235ad.221.2024.10.29.02.54.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 29 Oct 2024 02:54:17 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	stable@vger.kernel.org
+Subject: [PATCH] drm/bridge: it6505: Fix inverted reset polarity
+Date: Tue, 29 Oct 2024 17:54:10 +0800
+Message-ID: <20241029095411.657616-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.47.0.163.g1226f6d8fa-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-GND-Sasl: herve.codina@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_020400_531235_91EBEF61 
-X-CRM114-Status: GOOD (  12.53  )
+X-CRM114-CacheID: sfid-20241029_025419_303663_8B01A5D0 
+X-CRM114-Status: GOOD (  14.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,30 +100,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Uwe,
+The IT6505 bridge chip has a active low reset line. Since it is a
+"reset" and not an "enable" line, the GPIO should be asserted to
+put it in reset and deasserted to bring it out of reset during
+the power on sequence.
 
-On Tue, 29 Oct 2024 08:48:58 +0100
-Uwe Kleine-König <u.kleine-koenig@baylibre.com> wrote:
+The polarity was inverted when the driver was first introduced, likely
+because the device family that was targeted had an inverting level
+shifter on the reset line.
 
-> After commit 0edb555a65d1 ("platform: Make platform_driver::remove()
-> return void") .remove() is (again) the right callback to implement for
-> platform drivers.
-> 
-> Convert all platform drivers below drivers/soc to use .remove(), with
-> the eventual goal to drop struct platform_driver::remove_new(). As
-> .remove() and .remove_new() have the same prototypes, conversion is done
-> by just changing the structure member name in the driver initializer.
-> 
-> On the way do a few whitespace changes to make indention consistent.
-> 
-> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@baylibre.com>
-> ---
-...
->  drivers/soc/fsl/qe/qmc.c                    | 2 +-
->  drivers/soc/fsl/qe/tsa.c                    | 2 +-
+The MT8186 Corsola devices already have the IT6505 in their device tree,
+but the whole display pipeline is actually disabled and won't be enabled
+until some remaining issues are sorted out. The other known user is
+the MT8183 Kukui / Jacuzzi family; their device trees currently do not
+have the IT6505 included.
 
-Acked-by: Herve Codina <herve.codina@bootlin.com> # for fsl/qe/{qmc,tsa}.c
+Fix the polarity in the driver while there are no actual users.
 
-Best regards,
-Hervé
+Fixes: b5c84a9edcd4 ("drm/bridge: add it6505 driver")
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ drivers/gpu/drm/bridge/ite-it6505.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge/ite-it6505.c
+index 7502a5f81557..df7ecdf0f422 100644
+--- a/drivers/gpu/drm/bridge/ite-it6505.c
++++ b/drivers/gpu/drm/bridge/ite-it6505.c
+@@ -2618,9 +2618,9 @@ static int it6505_poweron(struct it6505 *it6505)
+ 	/* time interval between OVDD and SYSRSTN at least be 10ms */
+ 	if (pdata->gpiod_reset) {
+ 		usleep_range(10000, 20000);
+-		gpiod_set_value_cansleep(pdata->gpiod_reset, 0);
+-		usleep_range(1000, 2000);
+ 		gpiod_set_value_cansleep(pdata->gpiod_reset, 1);
++		usleep_range(1000, 2000);
++		gpiod_set_value_cansleep(pdata->gpiod_reset, 0);
+ 		usleep_range(25000, 35000);
+ 	}
+ 
+@@ -2651,7 +2651,7 @@ static int it6505_poweroff(struct it6505 *it6505)
+ 	disable_irq_nosync(it6505->irq);
+ 
+ 	if (pdata->gpiod_reset)
+-		gpiod_set_value_cansleep(pdata->gpiod_reset, 0);
++		gpiod_set_value_cansleep(pdata->gpiod_reset, 1);
+ 
+ 	if (pdata->pwr18) {
+ 		err = regulator_disable(pdata->pwr18);
+@@ -3205,7 +3205,7 @@ static int it6505_init_pdata(struct it6505 *it6505)
+ 		return PTR_ERR(pdata->ovdd);
+ 	}
+ 
+-	pdata->gpiod_reset = devm_gpiod_get(dev, "reset", GPIOD_OUT_LOW);
++	pdata->gpiod_reset = devm_gpiod_get(dev, "reset", GPIOD_OUT_HIGH);
+ 	if (IS_ERR(pdata->gpiod_reset)) {
+ 		dev_err(dev, "gpiod_reset gpio not found");
+ 		return PTR_ERR(pdata->gpiod_reset);
+-- 
+2.47.0.163.g1226f6d8fa-goog
+
 
