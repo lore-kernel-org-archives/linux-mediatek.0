@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B7C7D2AB1C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0E18D2AB1B
 	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 10:52:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
@@ -12,54 +12,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nAG53wtz8oKYi+8ALTcdS4fgknUjRs99/WlbWTdaX44=; b=c1F8EdWU0aN4/N
-	L3Kvsv9dVDDOLn4p7hMo2ywhK+FhPbSZpR1fyIgByiYkvvFcGCfomfKe6jhWAynbenSEHfCUkrSM9
-	fdlsujpLRMzFrx72V0+bqtHHZobR2Fj1WkzX7/kMvclh7PyFmAUmQP9BvftE9NAim6XFpVLDcqLm9
-	WVzwB+VtUv/GECwkSOXcQhN1WEkSQnvwvQXXev98UnNrdezgqbzi1ifFmWJUiEAYHnoFAnmMmCpBv
-	Cew3M32PcidGnU1v2Ey+tqARQ/AFgnTzQqQV5rz1E2bTtnzr4B1s9sZXkEXSh5hyqD8EAkiwMCXUq
-	LvI49c1bbLfhYQxfisUQ==;
+	List-Owner; bh=Rr/RtGMj3Fh0ffteWCfc3vtYrbzu7rRjjzNkbSx1+lc=; b=UJzhCgI43IMDkx
+	oR4WKTLMW93CFlZyEzACmkpcoG/gZ07xNKKtL8C00JN9i8hvCdi8MAZUY3zER6LHbVhJaDAM+4LXW
+	CR/64GDZiWkekozgY3ZooHPWLPqz+xK0ewp1fxUzgN7/Qp3R4Q4WYb+V9yRnA3h8hrrpP24q2UnN9
+	xRI5arkDOVjAghS4IG6lYncW9SaXCnxZBK/u9phGCf60/VRpOi6q2XbvCSM45qba1tzOJw1+lPSXm
+	1+VvPBvXDUC9sAqJiGhmtKBE9o8RWX3tO6DYhRveFcyYBaI/vzj/eyU2EozfbMex4p/VLeFLSwTEU
+	oIzWYTHLhE5eBdH99xLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5jpR-0000000E6w4-2biD;
-	Tue, 29 Oct 2024 10:52:01 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+	id 1t5jpS-0000000E6wP-09zO;
+	Tue, 29 Oct 2024 10:52:02 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5jdb-0000000E46a-45jQ;
+	id 1t5jdc-0000000E46e-20Wd;
 	Tue, 29 Oct 2024 10:39:51 +0000
 Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout2.routing.net (Postfix) with ESMTP id E4F226021B;
-	Tue, 29 Oct 2024 10:39:43 +0000 (UTC)
+	by mxout4.routing.net (Postfix) with ESMTP id F0DB41012C7;
+	Tue, 29 Oct 2024 10:39:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1730198384;
+	s=20200217; t=1730198387;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=nAG53wtz8oKYi+8ALTcdS4fgknUjRs99/WlbWTdaX44=;
-	b=HgHT8SI09081mzFVgeTV1W1ugGCj+0n4BbNumhT3MdzQKQ4LDcRecnUcaWn1q7o2IIo4kB
-	VhVmP7ThXSu53Ra5zNkM9CkqvzGxeUN2KSvzYx/PZ1iClattoa0jnfnkWTe+yITDmPH1Zg
-	1UnjUyB5SLIDpH/3vNImObPZS3MmAbc=
+	bh=Rr/RtGMj3Fh0ffteWCfc3vtYrbzu7rRjjzNkbSx1+lc=;
+	b=DX7MikwG3UfzTaI+ImYeReqWJdNVaytkwMIlzU6VMC8g5XsXV86QM9VOrQPAfc2XfIyUEQ
+	+8b+MvqqUYSzDOAR+Q0rJ8+V5kDi05P+ANMlETITcf5ybN4XQOt6ZqTXcUVyNUFYiA3RaV
+	OLg0/32ts/XgmyUCDYPflW9fmZOadN8=
 Received: from frank-u24.. (fttx-pool-80.245.73.173.bambit.de [80.245.73.173])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 4D6C936037C;
-	Tue, 29 Oct 2024 10:39:43 +0000 (UTC)
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 5D87E36056E;
+	Tue, 29 Oct 2024 10:39:46 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [RFC v1 01/14] arm64: dts: mediatek: mt7988: add missing label for apmixedsys
-Date: Tue, 29 Oct 2024 11:39:20 +0100
-Message-ID: <20241029103937.45852-2-linux@fw-web.de>
+Subject: [RFC v1 06/14] arm64: dts: mediatek: mt7988: add label for efuse
+Date: Tue, 29 Oct 2024 11:39:25 +0100
+Message-ID: <20241029103937.45852-7-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241029103937.45852-1-linux@fw-web.de>
 References: <20241029103937.45852-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: 08f7d28b-29f0-426f-acbe-c3b9b6e7ff85
+X-Mail-ID: 99ba07da-9a11-4cff-ac8b-29daa2217353
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_033948_330085_04DC6F82 
-X-CRM114-Status: GOOD (  10.06  )
+X-CRM114-CacheID: sfid-20241029_033948_689754_E142ADEA 
+X-CRM114-Status: UNSURE (   9.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,18 +86,18 @@ Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-index 46969577c87a..5b93c2c843e0 100644
+index 0425aec8dacb..777067b326b2 100644
 --- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-@@ -100,7 +100,7 @@ watchdog: watchdog@1001c000 {
- 			#reset-cells = <1>;
+@@ -285,7 +285,7 @@ clock-controller@11f40000 {
+ 			#clock-cells = <1>;
  		};
  
--		clock-controller@1001e000 {
-+		apmixedsys: clock-controller@1001e000 {
- 			compatible = "mediatek,mt7988-apmixedsys";
- 			reg = <0 0x1001e000 0 0x1000>;
- 			#clock-cells = <1>;
+-		efuse@11f50000 {
++		efuse: efuse@11f50000 {
+ 			compatible = "mediatek,mt7988-efuse", "mediatek,efuse";
+ 			reg = <0 0x11f50000 0 0x1000>;
+ 			#address-cells = <1>;
 -- 
 2.43.0
 
