@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F385D2AB1C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 10:53:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE77CD2AB1C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 10:53:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/I+n4zk0HprnXJxl1E8/AMoicAPVbZXERfZKvFjQfOo=; b=FLnVihPCKR6azK
-	2HV3Dqad5q5E1v85QMUphobJzf+FkLQOt3VlVqHmRahqjnAoE8/KWVO5riDU9JUMpXW+5Wd/u+PnR
-	oChvjYzkiD9Tk9SzPM4AOSK6pz5YplUnxEGhBJAGEi27RHdyBu1ueEISyyRMQoW6C2cYoxDiM13xw
-	O/gdqQKngBAu4r7V4Jrc5pBpOVuOMgOGupZBgQlQIKFnFGKXRVUbWEqQ09LEThzMVAbbOfnPZvqdR
-	1/H+RtVGJ4FNy93fsKXEiqWQo9/h2okpYY4OPzto2gzsvOvBP/clSlct+0WRwoH0RG8yQByQGBiI+
-	KZFzh9B/4Iysn2zsIRyA==;
+	List-Owner; bh=kA2523qYUhUEFCv+YtsYoSs5yMA+mmGNCd9m9PrUL0M=; b=umxn/OcYiIWGpr
+	YnSnH2VsZD+7mTWciyasJ9tqEdw/8nkUCFIGOt5wZRhkpeQ4pdaBaCKsHknFv66n2cRrVO0vBMpf6
+	w6Haw34NJ3jGb64FMzqzg0nk2V7oqFzDVE30DXZ5/x0Qi7tqkNgG3WPNT6AV+RErTYQJE36rDoLAv
+	G2iX0iYAFwFDT/EKr3omjEjtT6PC0eQ4BGdxJZuvTacf4h2KIsyR+5e+bLNDB0chBiHjn2zZvkpvx
+	LiXJTv76f+52p6SxZY8XKvTymmJ+ry3Kd6mz/MMDq0EP0kUcAtcNISq457uIM+AGssDoJGXqT90XS
+	bJh1z7X2cvgSkZKor/5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5jqf-0000000E7Ow-0AIL;
-	Tue, 29 Oct 2024 10:53:17 +0000
+	id 1t5jqo-0000000E7TC-3nti;
+	Tue, 29 Oct 2024 10:53:26 +0000
 Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5jdg-0000000E49m-2kHc;
-	Tue, 29 Oct 2024 10:39:54 +0000
+	id 1t5jdh-0000000E49z-04AD;
+	Tue, 29 Oct 2024 10:39:55 +0000
 Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout4.routing.net (Postfix) with ESMTP id 87C271014E7;
-	Tue, 29 Oct 2024 10:39:47 +0000 (UTC)
+	by mxout4.routing.net (Postfix) with ESMTP id 9752B101578;
+	Tue, 29 Oct 2024 10:39:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1730198387;
+	s=20200217; t=1730198390;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=/I+n4zk0HprnXJxl1E8/AMoicAPVbZXERfZKvFjQfOo=;
-	b=p8ODP3DhUBjIU4148EQGvGksboZwH87pbNhDCIoGrwDjRk/90VbNWMXSKltBFKYvxXGmWF
-	ryzsf5j4SFqE8DYLaxHo0rbIIvTL1EZQBNo0ddg9qVTQ+KmWPG376+Y5Dtxml/I0/UEb+O
-	FF9fyWPoAz2nuUsx326bR+w6eL9rkUA=
+	bh=kA2523qYUhUEFCv+YtsYoSs5yMA+mmGNCd9m9PrUL0M=;
+	b=OYXEJ4mQ/JPue8n7aKICB4zAyGO2GX9YXOOe8gq7FUECVLqCt/BaMKGg1wMS0x+ArP0Ses
+	tluatSuxlWqX6PlDa/qZ0VA/1W7F8lTlSllihDhaqfH8kJGUjxGv9lkYh1dV4x9xPNcJgS
+	RN/QtOI9Qq9j0IWETYaEBjgns3VGT1s=
 Received: from frank-u24.. (fttx-pool-80.245.73.173.bambit.de [80.245.73.173])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id F3F1B3600D8;
-	Tue, 29 Oct 2024 10:39:46 +0000 (UTC)
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 0694C36037C;
+	Tue, 29 Oct 2024 10:39:50 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [RFC v1 07/14] arm64: dts: mediatek: mt7988: add mmc support
-Date: Tue, 29 Oct 2024 11:39:26 +0100
-Message-ID: <20241029103937.45852-8-linux@fw-web.de>
+Subject: [RFC v1 12/14] arm64: dts: mediatek: mt7988: add reserved memory
+Date: Tue, 29 Oct 2024 11:39:31 +0100
+Message-ID: <20241029103937.45852-13-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241029103937.45852-1-linux@fw-web.de>
 References: <20241029103937.45852-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: b606b4ef-e6a3-4657-86e5-a5b31fbcf146
+X-Mail-ID: a95d1809-21ad-4521-bf01-ef6152e9e13d
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_033952_869632_5869C2FD 
-X-CRM114-Status: UNSURE (   9.02  )
+X-CRM114-CacheID: sfid-20241029_033953_411980_9B30E3CA 
+X-CRM114-Status: UNSURE (   8.85  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,46 +78,36 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Add devicetree node for MMC controller.
+Add memory range handled by ATF to not be touched by linux kernel.
 
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
- arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-index 777067b326b2..639c307b9984 100644
+index a3a7deda35a5..7721d2ec06ee 100644
 --- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-@@ -278,6 +278,28 @@ ssusb1: usb@11200000 {
- 			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck", "xhci_ck";
- 		};
+@@ -81,6 +81,18 @@ reg_3p3v: regulator-3p3v {
+ 		regulator-always-on;
+ 	};
  
-+		mmc0: mmc@11230000 {
-+			compatible = "mediatek,mt7988-mmc";
-+			reg = <0 0x11230000 0 0x1000>,
-+			      <0 0x11D60000 0 0x1000>;
-+			interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&infracfg CLK_INFRA_MSDC400>,
-+				 <&infracfg CLK_INFRA_MSDC2_HCK>,
-+				 <&infracfg CLK_INFRA_66M_MSDC_0_HCK>,
-+				 <&infracfg CLK_INFRA_133M_MSDC_0_HCK>;
-+			assigned-clocks = <&topckgen CLK_TOP_EMMC_250M_SEL>,
-+					  <&topckgen CLK_TOP_EMMC_400M_SEL>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_NET1PLL_D5_D2>,
-+						 <&apmixedsys CLK_APMIXED_MSDCPLL>;
-+			clock-names = "source",
-+				      "hclk",
-+				      "axi_cg",
-+				      "ahb_cg";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
++	reserved-memory {
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
 +
- 		clock-controller@11f40000 {
- 			compatible = "mediatek,mt7988-xfi-pll";
- 			reg = <0 0x11f40000 0 0x1000>;
++		/* 320 KiB reserved for ARM Trusted Firmware (BL31 and BL32) */
++		secmon_reserved: secmon@43000000 {
++			reg = <0 0x43000000 0 0x50000>;
++			no-map;
++		};
++	};
++
+ 	soc {
+ 		compatible = "simple-bus";
+ 		ranges;
 -- 
 2.43.0
 
