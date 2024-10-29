@@ -4,89 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3E76D5B85D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 00:59:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 724E1D5B840
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 01:25:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=18M5G6gmC2uJZssfsnK5gMVxO3whYHwKOs0IPtJ1EAc=; b=V/uxKz9kz3/c80J0FA0MHfNVX9
-	FX0scC1Toc74fMkrIPrs02DPkvFHZTGw6Sw77DTCtGlp5DjYpjhYSpUIcBN7xlkKnfKbHdsvkey0n
-	df1/rQ+xCi/MVTMTAPi7HM/6ykQeNur3b1VxLfWDHZJg6c9VCDK251j1KWQKUTdd5UpEYv5UVbumS
-	luRtGQbfF7KFs0vcAXBGvZDgKb0WOc61f+NC9+zZBzdwlytdTiVtgjZWFm1vmIIa+ai4GfDcqx4ex
-	iMmuJtSxXi3guQ54JjaAanTUeMEcs2/ccuYI2Tp8qR62yCgcgUOueDX7ipmJhJ+f7GdJ2ZTG0gU3d
-	nSpcOY3w==;
+	bh=7NqPbYxXVoStVB+VHiCxCoEHhw26j77NLuPqeD7DmUU=; b=d0YrYuHaAqSIaBBJZSE430d4v9
+	01zNpC/H6S+xa+e/bmvM/NZ1oSlKQFWdADlb4U0DqG+IpgyuYAQXN25HeXfX8Uu01F9x1S4w0p0Fw
+	8ENqSxOUTdo342UZraz2dcst6cE0EhJkyHg2WhAklPS+fSW4puSzuu6nNOogBOKbrComzN9V7b1a0
+	RLWxLUXoJRnZUPMV877EtVMIPBcGcViZWVrftME+tWSmBJzYpr0owJT1n2sV7C7c1WnvdPLGTSTi7
+	hH7OQtat0cEUisaj2uo96Jne+N/OcUCUPT9Az/XpsWl2ZSZ1q4TL8OwbBX9uyz4hpuTCn9qqIQA+9
+	/yWZhkGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5aa8-0000000CnqI-1tgq;
-	Tue, 29 Oct 2024 00:59:36 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1t5azc-0000000Cr4H-1Zx2;
+	Tue, 29 Oct 2024 01:25:56 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5aYU-0000000Cndc-3t7W;
-	Tue, 29 Oct 2024 00:57:56 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-4316e9f4a40so50292965e9.2;
-        Mon, 28 Oct 2024 17:57:54 -0700 (PDT)
+	id 1t5atN-0000000CqKh-2tz4;
+	Tue, 29 Oct 2024 01:19:30 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-4315abed18aso47267885e9.2;
+        Mon, 28 Oct 2024 18:19:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1730163473; x=1730768273; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1730164768; x=1730769568; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=18M5G6gmC2uJZssfsnK5gMVxO3whYHwKOs0IPtJ1EAc=;
-        b=bS4t37cHc6mrOzr7ncN4OXDmoIQxakzJZiLzHzbgbxrYAPjLtIyfO9VEAHRqk1lY0g
-         fyy9qmhlj0FObC1dIhhyk98lGQSoBi5mNEVl2B2A//GAUBGIbnY+IE0uodZ7KhRH4cfz
-         gJjWMqjKvVUWDumtwg5a8ZGM0G5EHX34jlbhxWSt5yAbYOo9CRiIVPZDiRo4MdXXMPs2
-         kVKgK367ES69BvuLVZG/xcY9huBfNIHNnBMvdlsoqGMAEvAlmZ4QdBhJRkywI7xcaKUU
-         soYBhKsaZPOQicw6aUBS+PsQ5Rp83Nvoj4zhGtiX6WR8YlY/FBqJ1/ZYTlAy7GPc+S4p
-         FsCg==
+        bh=7NqPbYxXVoStVB+VHiCxCoEHhw26j77NLuPqeD7DmUU=;
+        b=fUtNEoDIVsZyDrugLnRevNhPOMzjo44hym5U67iTea7Yi15onA88BMLPYVOS1+kJnW
+         D3HcEDsk839tVcm1YQcyn67ul9H9eQnYdRdU4+ZUZvuvO37fyI5rqN9QESoHqkPY+1dl
+         OlROqGjT6IAriM2Eo+tJ5S0dp5m1qQfnV2S7BBwYB/hIhNA5Sy17Ll1nYhEXoicCA3gZ
+         3+loCL23jNosPveo/04iT0JmTFzsciwgrgJQLG/GT0LVpuTbcCbnAEjanTPYIOXDW4rv
+         rVBzV6hj9SjSFqTOXW7WNSGj0tCB9pOpSMTTgH7Va6KzLtSk+9AgeceBnx5JG7kmsyjl
+         ONxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730163473; x=1730768273;
+        d=1e100.net; s=20230601; t=1730164768; x=1730769568;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=18M5G6gmC2uJZssfsnK5gMVxO3whYHwKOs0IPtJ1EAc=;
-        b=bGVSXqR5dswL3Q5wcMmOd6pm0dDq0OG779MU9OWUF3+9jWQmJgo7K8UtEI1CJbRRoI
-         nGAODLR8HNfR0gDN4xt/OxpjmavNrxOMBaFPal0JIeT2Hw00OUb/9EXCiRul8rkhezYs
-         /Wg3ADWU6xHzExlSOcPuYX2Whd+RmZuIf56bmoqrln0xVvaF5VfhTuF4ebGuvh77Om1u
-         BOrVctKsFzepbZNvF9uSIx2nhXzHA2hR/MelXda8RM4Zecq6IqLiBN1+S25i7aa6S602
-         mxrZ60QNhP/Ljv42WbxsooLnYyFuIRMqEswQkFixbMD4se0csbLU0OjrO+EtTeelCPyW
-         1d7Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVmjlJw/GsCkQVTrlmZdfeS1flVn1oi1sA6G0YI0swhGnQAAnHrDjNOdnPbyrR6bsIjGGA9lcWi9ByJXxIz41Kw@lists.infradead.org, AJvYcCWo10Sz61tyW11zEfKCBoczVyWqX/d1i6I8mHpRumlXTF2QZ6xHJ8tAWjF6PDIaKbBMzIt2nFPPjIEhvodbb7A=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxcviCdrFs2fNooN2ZoVfF4sv/cW+qCA4K4LwMSY9fzsw0jnoyH
-	EfrZXAezMHf1o8/pbb2/67PYfmnF+VEjRVis3c0jHg8P2/UdIUz5
-X-Google-Smtp-Source: AGHT+IEDznCPCf6wq2CmGJYXSoKXPyBjdKEg5qpjuhcayRcrcniC1z1J2mBHun/cnOqlR0goHC+pPw==
-X-Received: by 2002:a5d:5cce:0:b0:37d:446a:9e60 with SMTP id ffacd0b85a97d-38060ffe8cbmr7494789f8f.0.1730163473057;
-        Mon, 28 Oct 2024 17:57:53 -0700 (PDT)
+        bh=7NqPbYxXVoStVB+VHiCxCoEHhw26j77NLuPqeD7DmUU=;
+        b=LrgtuTT+2STIGgg9yWgi5Ka2ObAFhrHp6wBxlGgiDu9QCJTrH3/FfEpSTXt9TFWLtg
+         dTPY7Dx3O7OKEwk929Ot1JaQEDry/ugw6ovh2XEDBMQdb5iX3O6hw7BcgY4PHddP2zv4
+         W7mtQGTUZ0ajiSz8cbJzwGv6vVu5wvSfNiR6CUbYqS72m/+DHQ+QLxk+jNJINMV0TcxU
+         M5sJizWktVGXllEP7qH5P9kMVU7QsI0R6COUO+AYN1eDU2dkS69Mv15EYBC3sPGK/7KW
+         UgDP3D14qwhfGaO88QZDggAC09eRI+0T9ABx1/ATFVuhHVisQZZR6O4fn/Xoi60WLtTn
+         Vyxw==
+X-Forwarded-Encrypted: i=1; AJvYcCWGPPAr+mj98gELv9DQv7IgPSnEERxhqOgBWFwBzZTdP7AwgBh+Jow5Poo73H8P/+kYbo8T+GdBdZcMy4rXPp1n@lists.infradead.org, AJvYcCWO1EQpIvdYk5uNoUAadeI3ZRC8ELpAlTWRbjtZNCwRWtwolnTuRTzFb7kwTpeyzWkSazKr5paWMZpbTW8OurE=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyGtR/UM0RI2Nr4hEr7wRFAuxKN2vTraBmHF4lG+z3AAxd9v+x0
+	/FQoC9iN4ViiKs47rCp8xkaOXuWJS705IU5WZ8Z2DHbMhJo6rVZ5
+X-Google-Smtp-Source: AGHT+IGh9hDA6CEELzgUa44edYR6yHqgHJb+fWAXCUGYTW3Jt1sdl1iGkGNeWV7z4UjUW1sl8AlI6g==
+X-Received: by 2002:a05:600c:350b:b0:431:44fe:fd9a with SMTP id 5b1f17b1804b1-4319acb8a7cmr84141915e9.19.1730164767820;
+        Mon, 28 Oct 2024 18:19:27 -0700 (PDT)
 Received: from [192.168.0.2] ([69.6.8.124])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38058b70d50sm10974443f8f.76.2024.10.28.17.57.50
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38058b1333bsm10920565f8f.14.2024.10.28.18.19.25
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 28 Oct 2024 17:57:51 -0700 (PDT)
-Message-ID: <11e25027-6987-4c88-ac06-c1ba60c0d113@gmail.com>
-Date: Tue, 29 Oct 2024 02:58:16 +0200
+        Mon, 28 Oct 2024 18:19:27 -0700 (PDT)
+Message-ID: <e825de58-c75c-412b-8ec8-f5792f480a51@gmail.com>
+Date: Tue, 29 Oct 2024 03:19:51 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [net-next v2] net: wwan: t7xx: reset device if suspend fails
-To: Jinjian Song <jinjian.song@fibocom.com>,
- chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
+Subject: Re: [PATCH] [net] net: wwan: t7xx: Change PM_AUTOSUSPEND_MS to 5000
+To: wojackbb@gmail.com, netdev@vger.kernel.org
+Cc: chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
  haijun.liu@mediatek.com, m.chetan.kumar@linux.intel.com,
  ricardo.martinez@linux.intel.com, loic.poulain@linaro.org,
  johannes@sipsolutions.net, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com
-Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
- linux-doc@vger.kernel.org, angelogioacchino.delregno@collabora.com,
- linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com,
- corbet@lwn.net, linux-mediatek@lists.infradead.org, helgaas@kernel.org,
- danielwinkler@google.com, korneld@google.com
-References: <20241022084348.4571-1-jinjian.song@fibocom.com>
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ angelogioacchino.delregno@collabora.com, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com
+References: <20241028073015.692794-1-wojackbb@gmail.com>
 Content-Language: en-US
 From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
-In-Reply-To: <20241022084348.4571-1-jinjian.song@fibocom.com>
+In-Reply-To: <20241028073015.692794-1-wojackbb@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241028_175755_002402_C20B45C8 
-X-CRM114-Status: GOOD (  16.66  )
+X-CRM114-CacheID: sfid-20241028_181929_766057_BD3A0E65 
+X-CRM114-Status: GOOD (  15.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,43 +98,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Jinjian,
+Hello Jack,
 
-On 22.10.2024 11:43, Jinjian Song wrote:
-> If driver fails to set the device to suspend, it means that the
-> device is abnormal. In this case, reset the device to recover
-> when PCIe device is offline.
+On 28.10.2024 09:30, wojackbb@gmail.com wrote:
+> From: Jack Wu <wojackbb@gmail.com>
+> 
+> Because optimizing the power consumption of t7XX,
+> change auto suspend time to 5000.
+> 
+> The Tests uses a script to loop through the power_state
+> of t7XX.
+> (for example: /sys/bus/pci/devices/0000\:72\:00.0/power_state)
+> 
+> * If Auto suspend is 20 seconds,
+>    test script show power_state have 0~5% of the time was in D3 state
+>    when host don't have data packet transmission.
+> 
+> * Changed auto suspend time to 5 seconds,
+>    test script show power_state have 50%~80% of the time was in D3 state
+>    when host don't have data packet transmission.
 
-Is it a reproducible or a speculative issue? Does the fix recover modem 
-from a problematic state?
+What negative outcomes of putting the modem into the suspended state? 
+Out of curiosity, is the chipset capable to comeback from the suspended 
+state on receiving data from a network?
 
-Anyway we need someone more familiar with this hardware (Intel or 
-MediaTek engineer) to Ack the change to make sure we are not going to 
-put a system in a more complicated state.
-
-> Signed-off-by: Jinjian Song <jinjian.song@fibocom.com>
+> Signed-off-by: Jack Wu <wojackbb@gmail.com>
 > ---
-> V2:
->   * Add judgment, reset when device is offline
-> ---
->   drivers/net/wwan/t7xx/t7xx_pci.c | 4 ++++
->   1 file changed, 4 insertions(+)
+>   drivers/net/wwan/t7xx/t7xx_pci.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
 > diff --git a/drivers/net/wwan/t7xx/t7xx_pci.c b/drivers/net/wwan/t7xx/t7xx_pci.c
-> index e556e5bd49ab..4f89a353588b 100644
+> index e556e5bd49ab..dcadd615a025 100644
 > --- a/drivers/net/wwan/t7xx/t7xx_pci.c
 > +++ b/drivers/net/wwan/t7xx/t7xx_pci.c
-> @@ -427,6 +427,10 @@ static int __t7xx_pci_pm_suspend(struct pci_dev *pdev)
->   	iowrite32(T7XX_L1_BIT(0), IREG_BASE(t7xx_dev) + ENABLE_ASPM_LOWPWR);
->   	atomic_set(&t7xx_dev->md_pm_state, MTK_PM_RESUMED);
->   	t7xx_pcie_mac_set_int(t7xx_dev, SAP_RGU_INT);
-> +	if (pci_channel_offline(pdev)) {
-> +		dev_err(&pdev->dev, "Device offline, reset to recover\n");
-> +		t7xx_reset_device(t7xx_dev, PLDR);
-> +	}
->   	return ret;
->   }
+> @@ -48,7 +48,7 @@
+>   #define T7XX_INIT_TIMEOUT		20
+>   #define PM_SLEEP_DIS_TIMEOUT_MS		20
+>   #define PM_ACK_TIMEOUT_MS		1500
+> -#define PM_AUTOSUSPEND_MS		20000
+> +#define PM_AUTOSUSPEND_MS		5000
+>   #define PM_RESOURCE_POLL_TIMEOUT_US	10000
+>   #define PM_RESOURCE_POLL_STEP_US	100
+>   
 
---
-Sergey
 
