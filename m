@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3535D2AB1B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 10:51:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B923D2AB1C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 10:51:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=siS4Ij/9KFfzlVXtrs88d9k+J5svJ3v1XrN4lg+fWhM=; b=egAXiPDcA8n/25
-	4HwiG2S5cMRXNhLLqknlADPMl1l3jUw0n+6dwLrDDXc7RuJzIr0tJUXBUOjxYjc02l/ZMAshI2O2o
-	3QXOS0nrXQ28kiPShFtxOLby/c/lFqK80EsCCDzqUXyN7wd4huGbPlejvFjy3KZr+yzAaEO5MWjwK
-	UIv3xmqZvwbWuEP7rUOg8PzdspcKWC2uJPlo9V/CV6Del1ENaHGdKXW0u3Mvit3H34RCQeLKTEnlN
-	Mr4MnwZVDqcdvoETZ2XfINhT2phUJ6rr3RgMHoF19YogT9fi1j+yu89+USQRTrocxHiKQioCZSmzf
-	Fu9GHvQZOezE6jM4UL2A==;
+	List-Owner; bh=6MnpLRRV6D0qYtjvT6N/RJ0yKKwRAeg0UPLRteadPcE=; b=1989S20V0m/b3c
+	dZIOLZ/boWMDULM7+cstZ1+VhDxDllCWJ6r6RQ0jugo/fakJhhNcDL/KnYryt2iUiV9TDv6O6Tcss
+	J66MNLC84uKiCvPXLKnOfKQ+LsY9jRCerP98S8VgYlCyN/4D/D6IsgkyXEdcI0shQlmUKznn7zP3G
+	YjfJwyyM+KqV8Jkq3HfrP+Bo/FGIRsqJZgLPxnlruejZgXYgX70Ow2PcyXg3nCv5uWT+xVyuii8fb
+	O6u93+AqvPWfjbN6MXTWlRVx/0NYf5UQivTp2Dba+kVfGZIVPCVVQ+ZEalxGTkjLqa/SrZgLs3nUB
+	SkF5QyCmXmtr8RrLMSBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5jp6-0000000E6nO-0Dcx;
+	id 1t5jp6-0000000E6nc-1oi6;
 	Tue, 29 Oct 2024 10:51:40 +0000
 Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5jdb-0000000E46X-3g6M;
+	id 1t5jdc-0000000E46Z-2oPY;
 	Tue, 29 Oct 2024 10:39:50 +0000
 Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout1.routing.net (Postfix) with ESMTP id 840354045F;
-	Tue, 29 Oct 2024 10:39:44 +0000 (UTC)
+	by mxout1.routing.net (Postfix) with ESMTP id B1765404FD;
+	Tue, 29 Oct 2024 10:39:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1730198384;
+	s=20200217; t=1730198385;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=siS4Ij/9KFfzlVXtrs88d9k+J5svJ3v1XrN4lg+fWhM=;
-	b=u0XgfU04tzoXWArG3S64Qjmpqi8GKyM3rJkkQvzk74md7Em82v7uynqJFWeBo1YGdA8GCy
-	/PvY7aKFVl5rDTeB38du3nEDfqBpAOkkfNk5l2AoSBiHEIPm+rLHsp2yoSijzZoc6hiP4Z
-	uoZtw6QMiPXhnKHKx5c95dwn85Ryzt4=
+	bh=6MnpLRRV6D0qYtjvT6N/RJ0yKKwRAeg0UPLRteadPcE=;
+	b=V2Ag1/d+nJ1XUQFIviC60Y2T9ospo5AwymtxtY4KMs8gVFNhcBo2LCVJGfSsiF8/pNKtVa
+	JpNag7NrLDI65v14QLPUoZxURi4U0ns/PLJiPz6xiVEC7jq/AzvYUT9mrVhKEz9zH/IcGv
+	CFlUi/I1B1FNvRr52ehFfqNw7bsN+fE=
 Received: from frank-u24.. (fttx-pool-80.245.73.173.bambit.de [80.245.73.173])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id E22293603D0;
-	Tue, 29 Oct 2024 10:39:43 +0000 (UTC)
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 1B0B036037C;
+	Tue, 29 Oct 2024 10:39:45 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [RFC v1 02/14] arm64: dts: mediatek: mt7988: add labels for i2c nodes
-Date: Tue, 29 Oct 2024 11:39:21 +0100
-Message-ID: <20241029103937.45852-3-linux@fw-web.de>
+Subject: [RFC v1 04/14] arm64: dts: mediatek: mt7988: add serial labels
+Date: Tue, 29 Oct 2024 11:39:23 +0100
+Message-ID: <20241029103937.45852-5-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241029103937.45852-1-linux@fw-web.de>
 References: <20241029103937.45852-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: 4603ef82-d7cf-4f9f-9a19-43186a268245
+X-Mail-ID: 6858e22b-58d2-40a1-a28f-cb0b77144b8b
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_033948_126559_E76443C1 
-X-CRM114-Status: UNSURE (   9.24  )
+X-CRM114-CacheID: sfid-20241029_033948_873779_719F7B97 
+X-CRM114-Status: UNSURE (   8.93  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,36 +86,36 @@ Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-index 5b93c2c843e0..0aa789da5592 100644
+index 6d2ea317f9b2..e5e7951b24f8 100644
 --- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-@@ -211,7 +211,7 @@ serial@11000200 {
+@@ -178,7 +178,7 @@ pwm@10048000 {
  			status = "disabled";
  		};
  
--		i2c@11003000 {
-+		i2c0: i2c@11003000 {
- 			compatible = "mediatek,mt7981-i2c";
- 			reg = <0 0x11003000 0 0x1000>,
- 			      <0 0x10217080 0 0x80>;
-@@ -224,7 +224,7 @@ i2c@11003000 {
+-		serial@11000000 {
++		serial0: serial@11000000 {
+ 			compatible = "mediatek,mt7988-uart", "mediatek,mt6577-uart";
+ 			reg = <0 0x11000000 0 0x100>;
+ 			interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
+@@ -189,7 +189,7 @@ serial@11000000 {
  			status = "disabled";
  		};
  
--		i2c@11004000 {
-+		i2c1: i2c@11004000 {
- 			compatible = "mediatek,mt7981-i2c";
- 			reg = <0 0x11004000 0 0x1000>,
- 			      <0 0x10217100 0 0x80>;
-@@ -237,7 +237,7 @@ i2c@11004000 {
+-		serial@11000100 {
++		serial1: serial@11000100 {
+ 			compatible = "mediatek,mt7988-uart", "mediatek,mt6577-uart";
+ 			reg = <0 0x11000100 0 0x100>;
+ 			interrupts = <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
+@@ -200,7 +200,7 @@ serial@11000100 {
  			status = "disabled";
  		};
  
--		i2c@11005000 {
-+		i2c2: i2c@11005000 {
- 			compatible = "mediatek,mt7981-i2c";
- 			reg = <0 0x11005000 0 0x1000>,
- 			      <0 0x10217180 0 0x80>;
+-		serial@11000200 {
++		serial2: serial@11000200 {
+ 			compatible = "mediatek,mt7988-uart", "mediatek,mt6577-uart";
+ 			reg = <0 0x11000200 0 0x100>;
+ 			interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>;
 -- 
 2.43.0
 
