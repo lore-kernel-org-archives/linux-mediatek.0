@@ -4,59 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD49CD2AB1B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 10:48:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3535D2AB1B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 10:51:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=M1NzIDk/zjZn+p9F0pg3KmI2reD3ofe4GIXlaqHK0ds=; b=MKf4dAlAVJWOBR
-	HnbbrIln31He+srXV6ofVf3+ZJ0qW4T/4dclgbuYPQ61pk9p/ZMbCYnIZfEhxlMKwwRp5uZNFSVer
-	i5xFVM70xaSeJxlFmrCS5O1Q8L0SipqWY5xHBIa5CnuxbWY5g3u5cOfFUH1BtTpefkHEUXGOb54b7
-	L6lj3w3vR14QXsDxBq/MR2yIXdHSu+szR/3LnJNyPzBOp1h9l/p/SEGh/Yzjyc/ft2/1EniijEzc2
-	Kmup+A7YQGsmXQpwGn4yGneDgqQpue/QCZfUCIK3/4enQImxFCsCTnB+XoU+hsMvNCtjgMIuOVTg9
-	UoSZZkOAJnetJXzlOQHw==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=siS4Ij/9KFfzlVXtrs88d9k+J5svJ3v1XrN4lg+fWhM=; b=egAXiPDcA8n/25
+	4HwiG2S5cMRXNhLLqknlADPMl1l3jUw0n+6dwLrDDXc7RuJzIr0tJUXBUOjxYjc02l/ZMAshI2O2o
+	3QXOS0nrXQ28kiPShFtxOLby/c/lFqK80EsCCDzqUXyN7wd4huGbPlejvFjy3KZr+yzAaEO5MWjwK
+	UIv3xmqZvwbWuEP7rUOg8PzdspcKWC2uJPlo9V/CV6Del1ENaHGdKXW0u3Mvit3H34RCQeLKTEnlN
+	Mr4MnwZVDqcdvoETZ2XfINhT2phUJ6rr3RgMHoF19YogT9fi1j+yu89+USQRTrocxHiKQioCZSmzf
+	Fu9GHvQZOezE6jM4UL2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5jlt-0000000E5yY-2lmC;
-	Tue, 29 Oct 2024 10:48:21 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1t5jp6-0000000E6nO-0Dcx;
+	Tue, 29 Oct 2024 10:51:40 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5jdb-0000000E46W-2LPR;
-	Tue, 29 Oct 2024 10:39:49 +0000
+	id 1t5jdb-0000000E46X-3g6M;
+	Tue, 29 Oct 2024 10:39:50 +0000
 Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout3.routing.net (Postfix) with ESMTP id 4D0CD61620;
-	Tue, 29 Oct 2024 10:39:43 +0000 (UTC)
+	by mxout1.routing.net (Postfix) with ESMTP id 840354045F;
+	Tue, 29 Oct 2024 10:39:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1730198383;
+	s=20200217; t=1730198384;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=M1NzIDk/zjZn+p9F0pg3KmI2reD3ofe4GIXlaqHK0ds=;
-	b=HpbWarL4vYFyplMfLBsstBRfZ1NyTw3Fw9nqnTPn/W7mZE9LkovSRMSbS3kvNxsEA+5Xt0
-	+Le5S8v7T5GycCoXmUBjZ+Z3X0y0s1pp5Zsd1kiTlb978XU2N534PxFiUDLBw476MbOSmh
-	nYi1tX2JzIG0T/+criCQRfmB+fNXeD8=
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=siS4Ij/9KFfzlVXtrs88d9k+J5svJ3v1XrN4lg+fWhM=;
+	b=u0XgfU04tzoXWArG3S64Qjmpqi8GKyM3rJkkQvzk74md7Em82v7uynqJFWeBo1YGdA8GCy
+	/PvY7aKFVl5rDTeB38du3nEDfqBpAOkkfNk5l2AoSBiHEIPm+rLHsp2yoSijzZoc6hiP4Z
+	uoZtw6QMiPXhnKHKx5c95dwn85Ryzt4=
 Received: from frank-u24.. (fttx-pool-80.245.73.173.bambit.de [80.245.73.173])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 896653600D8;
-	Tue, 29 Oct 2024 10:39:42 +0000 (UTC)
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id E22293603D0;
+	Tue, 29 Oct 2024 10:39:43 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [RFC v1 00/14] Add some mt7988 DTS labels and new nodes
-Date: Tue, 29 Oct 2024 11:39:19 +0100
-Message-ID: <20241029103937.45852-1-linux@fw-web.de>
+Subject: [RFC v1 02/14] arm64: dts: mediatek: mt7988: add labels for i2c nodes
+Date: Tue, 29 Oct 2024 11:39:21 +0100
+Message-ID: <20241029103937.45852-3-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241029103937.45852-1-linux@fw-web.de>
+References: <20241029103937.45852-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mail-ID: 1dafb263-a617-4e48-b72c-736ee605b004
+X-Mail-ID: 4603ef82-d7cf-4f9f-9a19-43186a268245
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_033947_785516_009C1E1B 
-X-CRM114-Status: UNSURE (   7.63  )
+X-CRM114-CacheID: sfid-20241029_033948_126559_E76443C1 
+X-CRM114-Status: UNSURE (   9.24  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,30 +78,44 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-This series adds some missing labels and new nodes to mt7988 DTS.
+Add Labels to allow easier referencing in dtsi and board dts.
 
-If wanted i can squash the coommits adding labels to have less patches,
-but for first review i let them separate.
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+ arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Frank Wunderlich (14):
-  arm64: dts: mediatek: mt7988: add missing label for apmixedsys
-  arm64: dts: mediatek: mt7988: add labels for i2c nodes
-  arm64: dts: mediatek: mt7988: add labels for usb nodes
-  arm64: dts: mediatek: mt7988: add serial labels
-  arm64: dts: mediatek: mt7988: add label for pwm node
-  arm64: dts: mediatek: mt7988: add label for efuse
-  arm64: dts: mediatek: mt7988: add mmc support
-  arm64: dts: mediatek: mt7988: add fixed regulators for 1v8 and 3v3
-  arm64: dts: mediatek: mt7988: extend efuse node
-  arm64: dts: mediatek: mt7988: add lvts node
-  arm64: dts: mediatek: mt7988: add thermal-zone
-  arm64: dts: mediatek: mt7988: add reserved memory
-  arm64: dts: mediatek: mt7988: add mcu-sys node for cpu
-  arm64: dts: mediatek: mt7988: add operating-points
-
- arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 196 ++++++++++++++++++++--
- 1 file changed, 181 insertions(+), 15 deletions(-)
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+index 5b93c2c843e0..0aa789da5592 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+@@ -211,7 +211,7 @@ serial@11000200 {
+ 			status = "disabled";
+ 		};
+ 
+-		i2c@11003000 {
++		i2c0: i2c@11003000 {
+ 			compatible = "mediatek,mt7981-i2c";
+ 			reg = <0 0x11003000 0 0x1000>,
+ 			      <0 0x10217080 0 0x80>;
+@@ -224,7 +224,7 @@ i2c@11003000 {
+ 			status = "disabled";
+ 		};
+ 
+-		i2c@11004000 {
++		i2c1: i2c@11004000 {
+ 			compatible = "mediatek,mt7981-i2c";
+ 			reg = <0 0x11004000 0 0x1000>,
+ 			      <0 0x10217100 0 0x80>;
+@@ -237,7 +237,7 @@ i2c@11004000 {
+ 			status = "disabled";
+ 		};
+ 
+-		i2c@11005000 {
++		i2c2: i2c@11005000 {
+ 			compatible = "mediatek,mt7981-i2c";
+ 			reg = <0 0x11005000 0 0x1000>,
+ 			      <0 0x10217180 0 0x80>;
 -- 
 2.43.0
 
