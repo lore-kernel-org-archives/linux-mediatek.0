@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 558B4D5B87D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 06:34:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1937DD1356B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 06:38:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UsYTzojEX30wfMIaOpkwuYocqyIvlDaDd/JUKraXL+M=; b=3bmN4IJHQtR8VJp03mUqSvOJzM
-	0AOb2s50MJEDx2QtyjSL+DnCSDKpvYmaT4C1EvgxHPb1G7qEto/RpwCzBZSXzniDYyCv0YY3BQzhl
-	jj9T5ma5oEXrMJ/lUSRBK33TANSPHpM49aC1o3FSWXaTTZ0HJWlXU0ldrjhSlyx+pXuEy6Dme0pv0
-	VydTnrEP+1VhByxfIU02XPuugnqtS5pIlVMrR0Lu+5Ypjqxbvryc2DfwykT4WjjdZcxZqVNFTWZHx
-	eAhOxn+b7I7Jss5q/eqBUx/ybHtUybrMhnDLK+LU3O5D3udpH6vSbAAdQWqkSGvrifWwQKZoCibsO
-	j7evlDAA==;
+	bh=Fy3tvS5cTaOSYVsOba4zgadnOe1UE3zNpJJng2Nai5s=; b=4EjZ2lSG9nSS88qbAfGksFQZgM
+	bz9W5YFJ+bvLoaRg5W9sZGBIgJrN+BM1tTrFYakVmiapJ7549xglsZqDiD/j0HCFQtVCLd+EJzdbY
+	UvwWyu2xJOKdTqWkVz/upYFmNkiG96QR7ZTD9JgsauzO50mV6uFrbs0Bepz3kX+LcJ3rq/IQUNark
+	4pOD7g/yGHnlZKQhmfBb1w5tLIdNsD0WuVpZQk1tTy2AOwFqiqR9Edc+mOxE1C9ePD9NhxiE+ST1h
+	8RducFBYXSemJvf90vS9RGvhJW0DWOEIcGWgVhp50f5bTh81y6+RAkvIEegNVSHOwpKSvoR52DmeX
+	I9nRxRxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5foR-0000000DNSP-1oFV;
-	Tue, 29 Oct 2024 06:34:43 +0000
+	id 1t5fsA-0000000DNzY-0O0l;
+	Tue, 29 Oct 2024 06:38:34 +0000
 Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5fmo-0000000DNKQ-2vEQ;
-	Tue, 29 Oct 2024 06:33:04 +0000
+	id 1t5fpe-0000000DNfw-41BB;
+	Tue, 29 Oct 2024 06:36:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 807A6A41384;
-	Tue, 29 Oct 2024 06:31:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57384C4CECD;
-	Tue, 29 Oct 2024 06:32:55 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id AE34AA4144A;
+	Tue, 29 Oct 2024 06:34:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB41BC4CEE3;
+	Tue, 29 Oct 2024 06:35:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730183581;
-	bh=oi8HPczJPQ2s/SYDLMYe92wXwT9sG8C3R0uxFmB4LGo=;
+	s=k20201202; t=1730183757;
+	bh=uA9DtpHsaaw4aJ5j/ZBnH/JfArY2z5mmvy4OnUx8YrU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=uq48FAJZK+gt71hYrLRMptK9T/tbNaBTeS2ZV2wvv9W8CevFSIx+3x2/HW7wmmYgH
-	 7iweC+oDZeDrJm90FQYsgec3rSpPLgTwPxRy7ZwbDNLtYm6QVlC30NQHtb63K95W+0
-	 srf7nOenmF/nmnHRmFqK3HMmbnOSXYn8Mzic6JKSH6QmJN/+W9o92VRM1ofhNNB9kl
-	 hd/Ks0TLgo5X67os3D7Ct2j2E1jzwdAXZ9oTEYwG5laKSJZ0KNYZP0WycTMmSE47Hy
-	 5KtHAPzt20RNjKwRIlD4f0Rn+G04JMcFJ6BuiTUkOF09EweJuCMikvS28rUHFwokdN
-	 QIhXq5OYUOiNw==
-Message-ID: <dc8c3bb0-e462-4286-9060-c54fcc10c186@kernel.org>
-Date: Tue, 29 Oct 2024 07:32:53 +0100
+	b=qXVnYPEfpnMU1LeBFN7iKmIRiOVK+FH/Sb92vdU6OI2nacWdbvVwfCQGlsUCPhVzw
+	 SSY47GC6oC2J6HPda3Hi6sUNw3D8pQWAZ+QHvz7+8iVwRAmzpYrOr9137uxD2gVRK2
+	 rDPLJaYsc/TL0Az/VnFVxyl+niU+KmqYqsBG+LaRdZC6M6wmsX4e2UXsc+KZQLvOdQ
+	 39gOScq0A0KSj/81t7zHxeGk8bSCixiuwLfs6DgsY3nNdMVRV7xTsU6b9L0oA2NGUT
+	 +AnhniCdgPfbHqokStGkD4H65f3RvAjKdwmZQC6RgUISJCMvAIE1iO/GucFF0i1gE/
+	 e59DMDDnULgOQ==
+Message-ID: <05ee7331-c582-49ff-9f4e-2eee13f3a429@kernel.org>
+Date: Tue, 29 Oct 2024 07:35:50 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/4] memory: mtk-smi: mt8188: Add SMI clamp function
+Subject: Re: [PATCH 4/4] reset: mediatek: Add reset control driver for SMI
 To: =?UTF-8?B?RnJpZGF5IFlhbmcgKOadqOmYsyk=?= <Friday.Yang@mediatek.com>,
  "robh@kernel.org" <robh@kernel.org>,
  "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
@@ -60,9 +60,9 @@ Cc: "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
  "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
  "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 References: <20240821082845.11792-1-friday.yang@mediatek.com>
- <20240821082845.11792-4-friday.yang@mediatek.com>
- <25b487b7-63e0-402d-a0a2-ed9d03e82630@kernel.org>
- <cdbac20d7a49ff2fbd3e6d4f24ae441ffbe87f05.camel@mediatek.com>
+ <20240821082845.11792-5-friday.yang@mediatek.com>
+ <ce9a7ea1-67bc-42b8-836d-11932dcf3790@kernel.org>
+ <2ef870eb2f654667723f7f2d38e7532a7d3cfc84.camel@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -108,12 +108,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <cdbac20d7a49ff2fbd3e6d4f24ae441ffbe87f05.camel@mediatek.com>
+In-Reply-To: <2ef870eb2f654667723f7f2d38e7532a7d3cfc84.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241028_233302_887613_57E19A92 
-X-CRM114-Status: GOOD (  17.39  )
+X-CRM114-CacheID: sfid-20241028_233559_357891_1EC6593D 
+X-CRM114-Status: GOOD (  28.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,85 +129,260 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 24/10/2024 03:29, Friday Yang (杨阳) wrote:
-> On Wed, 2024-08-21 at 11:00 +0200, Krzysztof Kozlowski wrote:
+> On Wed, 2024-08-21 at 10:58 +0200, Krzysztof Kozlowski wrote:
 >>  	 
 >> External email : Please do not click links or open attachments until
 >> you have verified the sender or the content.
 >>  On 21/08/2024 10:26, friday.yang wrote:
->>> In order to avoid handling glitch signal when MTCMOS on/off, SMI
->> need
->>> clamp and reset operation. Parse power reset settings for LARBs
->> which
->>> need to reset. Register genpd callback for SMI LARBs and apply
->> reset
->>> operations in the callback.
+>>> Add a reset-controller driver for performing reset management of
+>>> SMI LARBs on MediaTek platform. This driver uses the regmap
+>>> frameworks to actually implement the various reset functions
+>>> needed when SMI LARBs apply clamp operations.
+>>
+>> How does this depend on memory controller patches? Why is this
+>> grouped
+>> in one patchset?
+>>
+> 
+> How about changing it like this,
+> patchset1:
+> (1)SMI reset control driver
+> (2)SMI reset bindings
+> patchset2
+> (1)SMI driver
+> (2)SMI bindings
+> 
 >>>
 >>> Signed-off-by: friday.yang <friday.yang@mediatek.com>
 >>> ---
->>>  drivers/memory/mtk-smi.c | 148
->> ++++++++++++++++++++++++++++++++++++++-
->>>  1 file changed, 146 insertions(+), 2 deletions(-)
+>>>  drivers/reset/Kconfig              |   9 ++
+>>>  drivers/reset/Makefile             |   1 +
+>>>  drivers/reset/reset-mediatek-smi.c | 152
+>> +++++++++++++++++++++++++++++
+>>>  3 files changed, 162 insertions(+)
+>>>  create mode 100644 drivers/reset/reset-mediatek-smi.c
 >>>
+>>> diff --git a/drivers/reset/Kconfig b/drivers/reset/Kconfig
+>>> index 67bce340a87e..e984a5a332f1 100644
+>>> --- a/drivers/reset/Kconfig
+>>> +++ b/drivers/reset/Kconfig
+>>> @@ -154,6 +154,15 @@ config RESET_MESON_AUDIO_ARB
+>>>    This enables the reset driver for Audio Memory Arbiter of
+>>>    Amlogic's A113 based SoCs
+>>>  
+>>> +config RESET_MTK_SMI
+>>> +bool "MediaTek SMI Reset Driver"
+>>> +depends on MTK_SMI
 >>
->> ...
+>> compile test
+> 
+> Thanks, I will fix it to 'depends on MTK_SMI || COMPILE_TEST'
+> 
 >>
+>>> +help
+>>> +  This option enables the reset controller driver for MediaTek
+>> SMI.
+>>> +  This reset driver is responsible for managing the reset signals
+>>> +  for SMI larbs. Say Y if you want to control reset signals for
+>>> +  MediaTek SMI larbs. Otherwise, say N.
 >>> +
->>> +static int mtk_smi_larb_parse_reset_info(struct mtk_smi_larb
->> *larb)
+>>>  config RESET_NPCM
+>>>  bool "NPCM BMC Reset Driver" if COMPILE_TEST
+>>>  default ARCH_NPCM
+>>> diff --git a/drivers/reset/Makefile b/drivers/reset/Makefile
+>>> index 27b0bbdfcc04..241777485b40 100644
+>>> --- a/drivers/reset/Makefile
+>>> +++ b/drivers/reset/Makefile
+>>> @@ -22,6 +22,7 @@ obj-$(CONFIG_RESET_LPC18XX) += reset-lpc18xx.o
+>>>  obj-$(CONFIG_RESET_MCHP_SPARX5) += reset-microchip-sparx5.o
+>>>  obj-$(CONFIG_RESET_MESON) += reset-meson.o
+>>>  obj-$(CONFIG_RESET_MESON_AUDIO_ARB) += reset-meson-audio-arb.o
+>>> +obj-$(CONFIG_RESET_MTK_SMI) += reset-mediatek-smi.o
+>>>  obj-$(CONFIG_RESET_NPCM) += reset-npcm.o
+>>>  obj-$(CONFIG_RESET_NUVOTON_MA35D1) += reset-ma35d1.o
+>>>  obj-$(CONFIG_RESET_PISTACHIO) += reset-pistachio.o
+>>> diff --git a/drivers/reset/reset-mediatek-smi.c
+>> b/drivers/reset/reset-mediatek-smi.c
+>>> new file mode 100644
+>>> index 000000000000..ead747e80ad5
+>>> --- /dev/null
+>>> +++ b/drivers/reset/reset-mediatek-smi.c
+>>> @@ -0,0 +1,152 @@
+>>> +// SPDX-License-Identifier: GPL-2.0
+>>> +/*
+>>> + * Reset driver for MediaTek SMI module
+>>> + *
+>>> + * Copyright (C) 2024 MediaTek Inc.
+>>> + */
+>>> +
+>>> +#include <linux/mfd/syscon.h>
+>>> +#include <linux/module.h>
+>>> +#include <linux/of.h>
+>>> +#include <linux/platform_device.h>
+>>> +#include <linux/regmap.h>
+>>> +#include <linux/reset-controller.h>
+>>> +
+>>> +#include <dt-bindings/reset/mt8188-resets.h>
+>>> +
+>>> +#define to_mtk_smi_reset_data(_rcdev)\
+>>> +container_of(_rcdev, struct mtk_smi_reset_data, rcdev)
+>>> +
+>>> +struct mtk_smi_larb_reset {
+>>> +unsigned int offset;
+>>> +unsigned int value;
+>>> +};
+>>> +
+>>> +static const struct mtk_smi_larb_reset rst_signal_mt8188[] = {
+>>> +[MT8188_SMI_RST_LARB10]= { 0xC, BIT(0) }, /* larb10 */
+>>> +[MT8188_SMI_RST_LARB11A]= { 0xC, BIT(0) }, /* larb11a */
+>>> +[MT8188_SMI_RST_LARB11C]= { 0xC, BIT(0) }, /* larb11c */
+>>> +[MT8188_SMI_RST_LARB12]= { 0xC, BIT(8) }, /* larb12 */
+>>> +[MT8188_SMI_RST_LARB11B]= { 0xC, BIT(0) }, /* larb11b */
+>>> +[MT8188_SMI_RST_LARB15]= { 0xC, BIT(0) }, /* larb15 */
+>>> +[MT8188_SMI_RST_LARB16B]= { 0xA0, BIT(4) }, /* larb16b */
+>>> +[MT8188_SMI_RST_LARB17B]= { 0xA0, BIT(4) }, /* larb17b */
+>>> +[MT8188_SMI_RST_LARB16A]= { 0xA0, BIT(4) }, /* larb16a */
+>>> +[MT8188_SMI_RST_LARB17A]= { 0xA0, BIT(4) }, /* larb17a */
+>>> +};
+>>> +
+>>> +struct mtk_smi_larb_plat {
+>>> +const struct mtk_smi_larb_reset*reset_signal;
+>>> +const unsigned intlarb_reset_nr;
+>>> +};
+>>> +
+>>> +struct mtk_smi_reset_data {
+>>> +const struct mtk_smi_larb_plat *larb_plat;
+>>> +struct reset_controller_dev rcdev;
+>>> +struct regmap *regmap;
+>>> +};
+>>> +
+>>> +static const struct mtk_smi_larb_plat mtk_smi_larb_mt8188 = {
+>>> +.reset_signal = rst_signal_mt8188,
+>>> +.larb_reset_nr = ARRAY_SIZE(rst_signal_mt8188),
+>>> +};
+>>> +
+>>> +static int mtk_smi_larb_reset(struct reset_controller_dev *rcdev,
+>> unsigned long id)
 >>> +{
->>> +struct device_node *reset_node;
->>> +struct device *dev = larb->dev;
+>>> +struct mtk_smi_reset_data *data = to_mtk_smi_reset_data(rcdev);
+>>> +const struct mtk_smi_larb_plat *larb_plat = data->larb_plat;
+>>> +const struct mtk_smi_larb_reset *larb_rst = larb_plat-
+>>> reset_signal + id;
 >>> +int ret;
 >>> +
->>> +/* only larb with "resets" need to get reset setting */
->>> +reset_node = of_parse_phandle(dev->of_node, "resets", 0);
->>
->> Nope, you do not parse rasets.
-> 
-> 1.If I need to use the Linux reset control framework, 'resets' is the
-> required property.
-
-And you never parse it directly. Find me existing examples of this, if
-you disagree.
-
-> 2.'reset-names' give the list of reset signal name strings sorted in
-> the same order as the 'resets' property. SMI driver will use 'reset-
-> names' to match reset signal names with reset specifiers.
-
-?
-
-> 3.Not all SMI larbs need to apply reset operations, only SMI larbs
-> which may have bus glitch issues need this. Just to confirm if this
-> larb support reset function.
-
-?
-
-Really, read kernel API about reset framework first.
-
-> 
->>
->>> +if (!reset_node)
->>> +return 0;
->>> +of_node_put(reset_node);
+>>> +ret = regmap_set_bits(data->regmap, larb_rst->offset, larb_rst-
+>>> value);
+>>> +if (ret)
+>>> +return ret;
+>>> +ret = regmap_clear_bits(data->regmap, larb_rst->offset, larb_rst-
+>>> value);
 >>> +
->>> +larb->rst_con = devm_reset_control_get(dev, "larb_rst");
+>>> +return ret;
+>>> +}
+>>> +
+>>> +static int mtk_smi_larb_reset_assert(struct reset_controller_dev
+>> *rcdev, unsigned long id)
+>>> +{
+>>> +struct mtk_smi_reset_data *data = to_mtk_smi_reset_data(rcdev);
+>>> +const struct mtk_smi_larb_plat *larb_plat = data->larb_plat;
+>>> +const struct mtk_smi_larb_reset *larb_rst = larb_plat-
+>>> reset_signal + id;
+>>> +int ret;
+>>> +
+>>> +ret = regmap_set_bits(data->regmap, larb_rst->offset, larb_rst-
+>>> value);
+>>> +if (ret)
+>>> +dev_err(rcdev->dev, "[%s] Failed to shutdown larb %d\n", __func__,
+>> ret);
+>>> +
+>>> +return ret;
+>>> +}
+>>> +
+>>> +static int mtk_smi_larb_reset_deassert(struct reset_controller_dev
+>> *rcdev, unsigned long id)
+>>> +{
+>>> +struct mtk_smi_reset_data *data = to_mtk_smi_reset_data(rcdev);
+>>> +const struct mtk_smi_larb_plat *larb_plat = data->larb_plat;
+>>> +const struct mtk_smi_larb_reset *larb_rst = larb_plat-
+>>> reset_signal + id;
+>>> +int ret;
+>>> +
+>>> +ret = regmap_clear_bits(data->regmap, larb_rst->offset, larb_rst-
+>>> value);
+>>> +if (ret)
+>>> +dev_err(rcdev->dev, "[%s] Failed to reopen larb %d\n", __func__,
+>> ret);
+>>> +
+>>> +return ret;
+>>> +}
+>>> +
+>>> +static const struct reset_control_ops mtk_smi_reset_ops = {
+>>> +.reset= mtk_smi_larb_reset,
+>>> +.assert= mtk_smi_larb_reset_assert,
+>>> +.deassert= mtk_smi_larb_reset_deassert,
+>>> +};
+>>> +
+>>> +static int mtk_smi_reset_probe(struct platform_device *pdev)
+>>> +{
+>>> +struct device *dev = &pdev->dev;
+>>> +const struct mtk_smi_larb_plat *larb_plat =
+>> of_device_get_match_data(dev);
+>>> +struct device_node *np = dev->of_node, *reset_node;
+>>> +struct mtk_smi_reset_data *data;
+>>> +struct regmap *regmap;
+>>> +
+>>> +data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
+>>> +if (!data)
+>>> +return -ENOMEM;
+>>> +
+>>> +reset_node = of_parse_phandle(np, "mediatek,larb-rst-syscon", 0);
+>>> +if (!reset_node)
 >>
->> Where are the bindings? Why do you add undocumented properties? How
->> possible this passes dtbs_check???
+>> This looks just wrong. This looks like a child of whatever phandle
+>> points here.
+>>
+>> Why do you create MMIO-using node as not MMIO?
 >>
 > 
-> This is not the new added property in SMI larb DT node.
-> It is the reset signal name which is inclued in 'reset-names'.
-> Just like this:
+> This is the definition for imgsys1_dip_top and imgsys1_dip_top_rst.
+> SMI reset controller driver parse the 'mediatek,larb-rst-syscon'
+> to get the 'imgsys1_dip_top' device node and regmap.
+> Then SMI driver could read and write the register by the regmap
+> to apply reset operations here.
+> 
+> 	imgsys1_dip_top: clock-controller@15110000 {
+> 		compatible = "mediatek,mt8188-imgsys1-dip-top";
+> 		reg = <0 0x15110000 0 0x1000>;
+> 		#clock-cells = <1>;
+> 	};
+> 
+> 	imgsys1_dip_top_rst: reset-controller0 {
+> 		compatible = "mediatek,smi-reset-mt8188";
+> 		#reset-cells = <1>;
+> 		mediatek,larb-rst-syscon = <&imgsys1_dip_top>;
 
-$ git grep larb_rst
-No such property, so how this could be "not the new added"?
-
-If you keep responding with some random or irrelevant responses, this
-won't work. This is really poor way to upstream. I suggest first perform
-extensive internal review which would point out all such trivial issues.
+This is obviously incorrect DTS code. Run standard checks on your DTS
+code first.
 
 
+> 	};
+> 	
+> 	larb10: smi@15120000{
+> 		resets = <&imgsys1_dip_top_rst MT8188_SMI_RST_LARB10>;
+> 		reset-names = "larb_rst";
+> 	};
+> 
+> I am not so sure the meaning "MMIO-using" here. 
+
+You pretend that something is MMIO but you do not use it as MMIO.
+
+Anyway, this was 2 months ago, I lost all the context, all the emails
+and I am not going back.
+
+Respond to feedback in reasonable time, if you want to keep discussion
+going.
+
+All this is so far: NAK
 
 Best regards,
 Krzysztof
