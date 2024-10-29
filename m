@@ -4,65 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4050D2AB3C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 13:04:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54CF9D2AB3F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 13:33:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GGBrW6s1iDZGgAw1vKKsS6IoQiQB5AZQ9VznYANSAto=; b=oGneRj0SNsGK0u/h4GGjdrqa2G
-	UmlLpBlYTrvampzN5m19d43GbD0ig2YdguoVFBmKw2WgnW/NTflpQZXoOJyBj/fR3IAooZtXyEkdN
-	a5Cp9/CGxri6YeG0FFih5KuJuVHfOj+P8SOnn8xIQMMLijPLXYdCAnufy70IkqjjerfMrJpSM2ETU
-	LvRt02lXIMlE5NEndluTPK0APP7A/TRc3jzOIPgdDAKcA3QYiZcI8UaSo5/4zeQf6chXKaSPmadlc
-	X3KUi1FcJ0UnJWgIDxR52Nv6IYubKauTqM1xONWAeopn91ud55AQRv+EyFg1o8t5VS4XjUatnl6cK
-	Qq4y4Oiw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XJWWAlbK3RGH62xYDNUolseEBDgD9daFHgHjr2LGsKI=; b=x1OT9z3HBj381IfZbmw2droh7+
+	eXKmRFIlVZSvO4xh4t4e0BgAxn3hUXaFk1AoSmzM34d6Y3wyrkuCjClgo/QvlZDUY4qq9YLQWi6Ym
+	MejAofSVM+QS5JOq1Nkdh5pYyl6x27OZvd2zPDrJmdRZ5Lir3dAzvS2ZXE4UFKMaI9/4/X/RHcqXi
+	bDl4TF4Uy7F3jWZS3vTf0nR/vSO9f5/GDlN47xomt6c+f0vzSLVz4NUwMb9KOvLT0J6Xv2d1n/hjq
+	0bP48mJAtevIjU2pumwfiJ5W7TYM+drOSLE3x1dgJ6ysNMmnycbPpy/M6rJqSidznwfJExWpoOm2t
+	rTeCTUUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5ltu-0000000EVxU-3NHl;
-	Tue, 29 Oct 2024 13:04:46 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1t5mLU-0000000EaOT-0jQP;
+	Tue, 29 Oct 2024 13:33:16 +0000
+Received: from dggsgout12.his.huawei.com ([45.249.212.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5lAN-0000000ENeI-1zty;
-	Tue, 29 Oct 2024 12:17:44 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E56125C5C81;
-	Tue, 29 Oct 2024 12:16:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4FA1DC4CECD;
-	Tue, 29 Oct 2024 12:17:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730204262;
-	bh=tDkCaSGHNwLmvBZ1sIOYlpYZET0YJNWlUhpzReHjttw=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Ce2LSR3SW+LRk8THt1OeL4bpr+mNwqDl0mPzdmsISqGfIPtUBe83bur1Ygs9dJ35w
-	 gx7NWDaEaKeESZzZkQ6ceNbW8LH4F7CM8EVuuvqXEg8mYx56v7TyktNXWbNA+RNJD+
-	 UCbD7hvACBiZs/27X7JKPOnKPmlK4Fo4HWGoMmV88DbK0vkfGhLU6XmMIjh9ugU1Y2
-	 UOjHMRMTrHnj0cK8pmjYH+jO2UK+iSQRor3dhhpeG7TRcLCwIeXsSUEL2bcHOZlIMB
-	 JidWfF7VevZwn89oYrl0wFKIeuWx740m7iSZOUlq0c7Bjyd3SSfuMUc3dgqfkCUIWH
-	 CcjSTnP6TlpWw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 29 Oct 2024 13:17:10 +0100
-Subject: [PATCH net-next 2/2] net: airoha: Simplify Tx napi logic
+	id 1t5m5X-0000000EXd8-1yu5;
+	Tue, 29 Oct 2024 13:17:10 +0000
+Received: from mail.maildlp.com (unknown [172.19.163.216])
+	by dggsgout12.his.huawei.com (SkyGuard) with ESMTP id 4Xd9kQ2Q3xz4f3jdY;
+	Tue, 29 Oct 2024 21:16:14 +0800 (CST)
+Received: from mail02.huawei.com (unknown [10.116.40.128])
+	by mail.maildlp.com (Postfix) with ESMTP id 05D071A018C;
+	Tue, 29 Oct 2024 21:16:32 +0800 (CST)
+Received: from huaweicloud.com (unknown [10.84.45.119])
+	by APP4 (Coremail) with SMTP id gCh0CgBHIoYs4CBni_QeAQ--.56221S4;
+	Tue, 29 Oct 2024 21:16:31 +0800 (CST)
+From: Yang Yingliang <yangyingliang@huaweicloud.com>
+To: jassisinghbrar@gmail.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	yangyingliang@huawei.com,
+	bobo.shaobowang@huawei.com
+Subject: [PATCH] mailbox: mtk-cmdq: fix wrong use of sizeof in cmdq_get_clocks()
+Date: Tue, 29 Oct 2024 21:16:28 +0800
+Message-ID: <20241029131628.1610-1-yangyingliang@huaweicloud.com>
+X-Mailer: git-send-email 2.46.0.windows.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20241029-airoha-en7581-tx-napi-work-v1-2-96ad1686b946@kernel.org>
-References: <20241029-airoha-en7581-tx-napi-work-v1-0-96ad1686b946@kernel.org>
-In-Reply-To: <20241029-airoha-en7581-tx-napi-work-v1-0-96ad1686b946@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
- Mark Lee <Mark-MC.Lee@mediatek.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: gCh0CgBHIoYs4CBni_QeAQ--.56221S4
+X-Coremail-Antispam: 1UD129KBjvdXoWrtw43CrykGF4xJFWxury5XFb_yoWftFc_ZF
+	1UAryxWryUAF1fJwnxta13Ja9Fvrn8uFs2kr9a93sxW347Zry5Ar1DWr4Fvw47WrWDKrW3
+	Aa1ktr18Jw1xCjkaLaAFLSUrUUUUbb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUIcSsGvfJTRUUUbzAYFVCjjxCrM7AC8VAFwI0_Gr0_Xr1l1xkIjI8I6I8E6xAIw20E
+	Y4v20xvaj40_Wr0E3s1l1IIY67AEw4v_Jr0_Jr4l8cAvFVAK0II2c7xJM28CjxkF64kEwV
+	A0rcxSw2x7M28EF7xvwVC0I7IYx2IY67AKxVW7JVWDJwA2z4x0Y4vE2Ix0cI8IcVCY1x02
+	67AKxVW8Jr0_Cr1UM28EF7xvwVC2z280aVAFwI0_GcCE3s1l84ACjcxK6I8E87Iv6xkF7I
+	0E14v26rxl6s0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40E
+	x7xfMcIj6xIIjxv20xvE14v26r1j6r18McIj6I8E87Iv67AKxVWUJVW8JwAm72CE4IkC6x
+	0Yz7v_Jr0_Gr1lF7xvr2IYc2Ij64vIr41lc7CjxVAaw2AFwI0_Jw0_GFyl42xK82IYc2Ij
+	64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x
+	8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r1q6r43MIIYrxkI7VAKI48JMIIF0xvE
+	2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I0E14v26r1j6r4UMIIF0xvE42
+	xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF
+	7I0E14v26r4j6r4UJbIYCTnIWIevJa73UjIFyTuYvjxUF1v3UUUUU
+X-CM-SenderInfo: 51dqw5xlqjzxhdqjqx5xdzvxpfor3voofrz/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_051743_638148_B6EE01FD 
-X-CRM114-Status: GOOD (  15.44  )
+X-CRM114-CacheID: sfid-20241029_061647_786598_2329A603 
+X-CRM114-Status: UNSURE (   9.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,129 +85,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Simplify Tx napi logic relying just on the packet index provided by
-completion queue indicating the completed packet that can be removed
-from the Tx DMA ring.
-This is a preliminary patch to add Qdisc offload for airoha_eth driver.
+From: Yang Yingliang <yangyingliang@huawei.com>
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+It should be size of the struct clk_bulk_data, not data pointer pass to
+devm_kcalloc().
+
+Fixes: aa1609f571ca ("mailbox: mtk-cmdq: Dynamically allocate clk_bulk_data structure")
+Signed-off-by: Yang Yingliang <yangyingliang@huawei.com>
 ---
- drivers/net/ethernet/mediatek/airoha_eth.c | 73 +++++++++++++++++-------------
- 1 file changed, 41 insertions(+), 32 deletions(-)
+ drivers/mailbox/mtk-cmdq-mailbox.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/mediatek/airoha_eth.c b/drivers/net/ethernet/mediatek/airoha_eth.c
-index 6cd8901ed38f0640a8a8f72174c120668b364045..6c683a12d5aa52dd9d966df123509075a989c0b3 100644
---- a/drivers/net/ethernet/mediatek/airoha_eth.c
-+++ b/drivers/net/ethernet/mediatek/airoha_eth.c
-@@ -1670,8 +1670,12 @@ static int airoha_qdma_tx_napi_poll(struct napi_struct *napi, int budget)
- 	irq_queued = FIELD_GET(IRQ_ENTRY_LEN_MASK, status);
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index 4bff73532085..9c43ed9bdd37 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -584,7 +584,7 @@ static int cmdq_get_clocks(struct device *dev, struct cmdq *cmdq)
+ 	struct clk_bulk_data *clks;
  
- 	while (irq_queued > 0 && done < budget) {
--		u32 qid, last, val = irq_q->q[head];
-+		u32 qid, val = irq_q->q[head];
-+		struct airoha_qdma_desc *desc;
-+		struct airoha_queue_entry *e;
- 		struct airoha_queue *q;
-+		u32 index, desc_ctrl;
-+		struct sk_buff *skb;
+ 	cmdq->clocks = devm_kcalloc(dev, cmdq->pdata->gce_num,
+-				    sizeof(cmdq->clocks), GFP_KERNEL);
++				    sizeof(*cmdq->clocks), GFP_KERNEL);
+ 	if (!cmdq->clocks)
+ 		return -ENOMEM;
  
- 		if (val == 0xff)
- 			break;
-@@ -1681,9 +1685,7 @@ static int airoha_qdma_tx_napi_poll(struct napi_struct *napi, int budget)
- 		irq_queued--;
- 		done++;
- 
--		last = FIELD_GET(IRQ_DESC_IDX_MASK, val);
- 		qid = FIELD_GET(IRQ_RING_IDX_MASK, val);
--
- 		if (qid >= ARRAY_SIZE(qdma->q_tx))
- 			continue;
- 
-@@ -1691,46 +1693,53 @@ static int airoha_qdma_tx_napi_poll(struct napi_struct *napi, int budget)
- 		if (!q->ndesc)
- 			continue;
- 
-+		index = FIELD_GET(IRQ_DESC_IDX_MASK, val);
-+		if (index >= q->ndesc)
-+			continue;
-+
- 		spin_lock_bh(&q->lock);
- 
--		while (q->queued > 0) {
--			struct airoha_qdma_desc *desc = &q->desc[q->tail];
--			struct airoha_queue_entry *e = &q->entry[q->tail];
--			u32 desc_ctrl = le32_to_cpu(desc->ctrl);
--			struct sk_buff *skb = e->skb;
--			u16 index = q->tail;
-+		if (!q->queued)
-+			goto unlock;
- 
--			if (!(desc_ctrl & QDMA_DESC_DONE_MASK) &&
--			    !(desc_ctrl & QDMA_DESC_DROP_MASK))
--				break;
-+		desc = &q->desc[index];
-+		desc_ctrl = le32_to_cpu(desc->ctrl);
- 
--			q->tail = (q->tail + 1) % q->ndesc;
--			q->queued--;
-+		if (!(desc_ctrl & QDMA_DESC_DONE_MASK) &&
-+		    !(desc_ctrl & QDMA_DESC_DROP_MASK))
-+			goto unlock;
- 
--			dma_unmap_single(eth->dev, e->dma_addr, e->dma_len,
--					 DMA_TO_DEVICE);
-+		e = &q->entry[index];
-+		skb = e->skb;
- 
--			WRITE_ONCE(desc->msg0, 0);
--			WRITE_ONCE(desc->msg1, 0);
-+		dma_unmap_single(eth->dev, e->dma_addr, e->dma_len,
-+				 DMA_TO_DEVICE);
-+		memset(e, 0, sizeof(*e));
-+		WRITE_ONCE(desc->msg0, 0);
-+		WRITE_ONCE(desc->msg1, 0);
-+		q->queued--;
- 
--			if (skb) {
--				u16 queue = skb_get_queue_mapping(skb);
--				struct netdev_queue *txq;
-+		/* completion ring can report out-of-order indexes if hw QoS
-+		 * is enabled and packets with different priority are queued
-+		 * to same DMA ring. Take into account possible out-of-order
-+		 * reports incrementing DMA ring tail pointer
-+		 */
-+		while (q->tail != q->head && !q->entry[q->tail].dma_addr)
-+			q->tail = (q->tail + 1) % q->ndesc;
- 
--				txq = netdev_get_tx_queue(skb->dev, queue);
--				netdev_tx_completed_queue(txq, 1, skb->len);
--				if (netif_tx_queue_stopped(txq) &&
--				    q->ndesc - q->queued >= q->free_thr)
--					netif_tx_wake_queue(txq);
-+		if (skb) {
-+			u16 queue = skb_get_queue_mapping(skb);
-+			struct netdev_queue *txq;
- 
--				dev_kfree_skb_any(skb);
--				e->skb = NULL;
--			}
-+			txq = netdev_get_tx_queue(skb->dev, queue);
-+			netdev_tx_completed_queue(txq, 1, skb->len);
-+			if (netif_tx_queue_stopped(txq) &&
-+			    q->ndesc - q->queued >= q->free_thr)
-+				netif_tx_wake_queue(txq);
- 
--			if (index == last)
--				break;
-+			dev_kfree_skb_any(skb);
- 		}
--
-+unlock:
- 		spin_unlock_bh(&q->lock);
- 	}
- 
-
 -- 
-2.47.0
+2.33.0
 
 
