@@ -4,86 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 724E1D5B840
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 01:25:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A45A5D5B840
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2024 02:10:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7NqPbYxXVoStVB+VHiCxCoEHhw26j77NLuPqeD7DmUU=; b=d0YrYuHaAqSIaBBJZSE430d4v9
-	01zNpC/H6S+xa+e/bmvM/NZ1oSlKQFWdADlb4U0DqG+IpgyuYAQXN25HeXfX8Uu01F9x1S4w0p0Fw
-	8ENqSxOUTdo342UZraz2dcst6cE0EhJkyHg2WhAklPS+fSW4puSzuu6nNOogBOKbrComzN9V7b1a0
-	RLWxLUXoJRnZUPMV877EtVMIPBcGcViZWVrftME+tWSmBJzYpr0owJT1n2sV7C7c1WnvdPLGTSTi7
-	hH7OQtat0cEUisaj2uo96Jne+N/OcUCUPT9Az/XpsWl2ZSZ1q4TL8OwbBX9uyz4hpuTCn9qqIQA+9
-	/yWZhkGw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9zxNMXwPCBjYW69Zb32ChS7Lih5KnlHYyLjDjWcKxkQ=; b=uiviUsQWoqQMAd5NibUb58lPhP
+	/xy5ZXEw69WwHBQJnl9xvv7ZpTHx/dqjMuegLU4y9yBX7pb+fsMEDamS3GQjZHxzwZIQT7iLvNVkr
+	5hjQxe3oYwJH8yRmzjAJSROwPN7gv11iLotW2SIM1LJnlQ5IslKHR3hyOWsatxF3RIQ4IbENLXfjC
+	fYx1qFLpxN2A6MGgl8j7i7kSOhbS6w3j4Wvjhn/jZbPHK98s2uO3YJURPelkxi610wpicsB1bzycq
+	8pJMcTiS+6iwl0YUPvjX2P/wC/P3LYo52Iir9QVQwp2+oXuS2w3d5WQYji0t3ywGJywzhYjTIKeZv
+	ftrzX3AA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5azc-0000000Cr4H-1Zx2;
-	Tue, 29 Oct 2024 01:25:56 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1t5bgw-0000000CwDW-1P01;
+	Tue, 29 Oct 2024 02:10:42 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5atN-0000000CqKh-2tz4;
-	Tue, 29 Oct 2024 01:19:30 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-4315abed18aso47267885e9.2;
-        Mon, 28 Oct 2024 18:19:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1730164768; x=1730769568; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=7NqPbYxXVoStVB+VHiCxCoEHhw26j77NLuPqeD7DmUU=;
-        b=fUtNEoDIVsZyDrugLnRevNhPOMzjo44hym5U67iTea7Yi15onA88BMLPYVOS1+kJnW
-         D3HcEDsk839tVcm1YQcyn67ul9H9eQnYdRdU4+ZUZvuvO37fyI5rqN9QESoHqkPY+1dl
-         OlROqGjT6IAriM2Eo+tJ5S0dp5m1qQfnV2S7BBwYB/hIhNA5Sy17Ll1nYhEXoicCA3gZ
-         3+loCL23jNosPveo/04iT0JmTFzsciwgrgJQLG/GT0LVpuTbcCbnAEjanTPYIOXDW4rv
-         rVBzV6hj9SjSFqTOXW7WNSGj0tCB9pOpSMTTgH7Va6KzLtSk+9AgeceBnx5JG7kmsyjl
-         ONxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730164768; x=1730769568;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=7NqPbYxXVoStVB+VHiCxCoEHhw26j77NLuPqeD7DmUU=;
-        b=LrgtuTT+2STIGgg9yWgi5Ka2ObAFhrHp6wBxlGgiDu9QCJTrH3/FfEpSTXt9TFWLtg
-         dTPY7Dx3O7OKEwk929Ot1JaQEDry/ugw6ovh2XEDBMQdb5iX3O6hw7BcgY4PHddP2zv4
-         W7mtQGTUZ0ajiSz8cbJzwGv6vVu5wvSfNiR6CUbYqS72m/+DHQ+QLxk+jNJINMV0TcxU
-         M5sJizWktVGXllEP7qH5P9kMVU7QsI0R6COUO+AYN1eDU2dkS69Mv15EYBC3sPGK/7KW
-         UgDP3D14qwhfGaO88QZDggAC09eRI+0T9ABx1/ATFVuhHVisQZZR6O4fn/Xoi60WLtTn
-         Vyxw==
-X-Forwarded-Encrypted: i=1; AJvYcCWGPPAr+mj98gELv9DQv7IgPSnEERxhqOgBWFwBzZTdP7AwgBh+Jow5Poo73H8P/+kYbo8T+GdBdZcMy4rXPp1n@lists.infradead.org, AJvYcCWO1EQpIvdYk5uNoUAadeI3ZRC8ELpAlTWRbjtZNCwRWtwolnTuRTzFb7kwTpeyzWkSazKr5paWMZpbTW8OurE=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyGtR/UM0RI2Nr4hEr7wRFAuxKN2vTraBmHF4lG+z3AAxd9v+x0
-	/FQoC9iN4ViiKs47rCp8xkaOXuWJS705IU5WZ8Z2DHbMhJo6rVZ5
-X-Google-Smtp-Source: AGHT+IGh9hDA6CEELzgUa44edYR6yHqgHJb+fWAXCUGYTW3Jt1sdl1iGkGNeWV7z4UjUW1sl8AlI6g==
-X-Received: by 2002:a05:600c:350b:b0:431:44fe:fd9a with SMTP id 5b1f17b1804b1-4319acb8a7cmr84141915e9.19.1730164767820;
-        Mon, 28 Oct 2024 18:19:27 -0700 (PDT)
-Received: from [192.168.0.2] ([69.6.8.124])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38058b1333bsm10920565f8f.14.2024.10.28.18.19.25
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 28 Oct 2024 18:19:27 -0700 (PDT)
-Message-ID: <e825de58-c75c-412b-8ec8-f5792f480a51@gmail.com>
-Date: Tue, 29 Oct 2024 03:19:51 +0200
+	id 1t5bgt-0000000CwCU-3dSM;
+	Tue, 29 Oct 2024 02:10:41 +0000
+X-UUID: f9439e9e959a11ef9048ed6ed365623b-20241028
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=9zxNMXwPCBjYW69Zb32ChS7Lih5KnlHYyLjDjWcKxkQ=;
+	b=QEaj7KydGUhLAKlkeeb1fbsfSA3lBfm6BfmCH/sp8PpzkR+FR3vR8Et9DqlIBq18YzI7vdiybWL1fMi6FtfaSHhxsR7kJu1fMZ44XC/YZXhPHhrmeXgGd/nYhYTucPlaqAWaL7g04ahVMne3Tj6iumjCX4L+GOhXqTJY9TOIgew=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.42,REQID:55f55fb6-9703-40cd-a3b6-d36e9342fc1a,IP:0,U
+	RL:0,TC:0,Content:-20,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-20
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:29d95548-ca13-40ea-8070-fa012edab362,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: f9439e9e959a11ef9048ed6ed365623b-20241028
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <defa.li@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 433074756; Mon, 28 Oct 2024 19:10:31 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 28 Oct 2024 19:10:28 -0700
+Received: from mbjsdccf07.gcn.mediatek.inc (10.15.20.246) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 29 Oct 2024 10:10:27 +0800
+From: mtk25126 <defa.li@mediatek.com>
+To: Alexandre Belloni <alexandre.belloni@bootlin.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-i3c@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<wsd_upstream@mediatek.com>, <mingchang.jia@mediatek.com>,
+	<yuhan.wei@mediatek.com>, <hao.lin@mediatek.com>, mtk25126
+	<defa.li@mediatek.com>
+Subject: [PATCH] i3c: Remove redundant lock in i3c_device_uevent
+Date: Tue, 29 Oct 2024 10:09:40 +0800
+Message-ID: <20241029020950.31053-1-defa.li@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] [net] net: wwan: t7xx: Change PM_AUTOSUSPEND_MS to 5000
-To: wojackbb@gmail.com, netdev@vger.kernel.org
-Cc: chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
- haijun.liu@mediatek.com, m.chetan.kumar@linux.intel.com,
- ricardo.martinez@linux.intel.com, loic.poulain@linaro.org,
- johannes@sipsolutions.net, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
- angelogioacchino.delregno@collabora.com, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com
-References: <20241028073015.692794-1-wojackbb@gmail.com>
-Content-Language: en-US
-From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
-In-Reply-To: <20241028073015.692794-1-wojackbb@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241028_181929_766057_BD3A0E65 
-X-CRM114-Status: GOOD (  15.80  )
+X-CRM114-CacheID: sfid-20241028_191039_978655_12EA3514 
+X-CRM114-Status: GOOD (  10.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,47 +86,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Jack,
+We encountered the following lockdep warning.
+The i3c_master_register function recursively acquires &i3cbus->lock twice,
+which may cause a deadlock. 
 
-On 28.10.2024 09:30, wojackbb@gmail.com wrote:
-> From: Jack Wu <wojackbb@gmail.com>
-> 
-> Because optimizing the power consumption of t7XX,
-> change auto suspend time to 5000.
-> 
-> The Tests uses a script to loop through the power_state
-> of t7XX.
-> (for example: /sys/bus/pci/devices/0000\:72\:00.0/power_state)
-> 
-> * If Auto suspend is 20 seconds,
->    test script show power_state have 0~5% of the time was in D3 state
->    when host don't have data packet transmission.
-> 
-> * Changed auto suspend time to 5 seconds,
->    test script show power_state have 50%~80% of the time was in D3 state
->    when host don't have data packet transmission.
+Remove the logic of obtaining i3cbus->lock when using the i3c_device_uevent
+function to obtain the i3c_device_info structure.
 
-What negative outcomes of putting the modem into the suspended state? 
-Out of curiosity, is the chipset capable to comeback from the suspended 
-state on receiving data from a network?
+============================================
+WARNING: possible recursive locking detected
+6.11.0-mainline
+--------------------------------------------
+init/1 is trying to acquire lock:
+f1ffff80a6a40dc0 (&i3cbus->lock){++++}-{3:3}, at: i3c_bus_normaluse_lock
 
-> Signed-off-by: Jack Wu <wojackbb@gmail.com>
-> ---
->   drivers/net/wwan/t7xx/t7xx_pci.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/wwan/t7xx/t7xx_pci.c b/drivers/net/wwan/t7xx/t7xx_pci.c
-> index e556e5bd49ab..dcadd615a025 100644
-> --- a/drivers/net/wwan/t7xx/t7xx_pci.c
-> +++ b/drivers/net/wwan/t7xx/t7xx_pci.c
-> @@ -48,7 +48,7 @@
->   #define T7XX_INIT_TIMEOUT		20
->   #define PM_SLEEP_DIS_TIMEOUT_MS		20
->   #define PM_ACK_TIMEOUT_MS		1500
-> -#define PM_AUTOSUSPEND_MS		20000
-> +#define PM_AUTOSUSPEND_MS		5000
->   #define PM_RESOURCE_POLL_TIMEOUT_US	10000
->   #define PM_RESOURCE_POLL_STEP_US	100
->   
+but task is already holding lock:
+f1ffff80a6a40dc0 (&i3cbus->lock){++++}-{3:3}, at: i3c_master_register
+
+other info that might help us debug this:
+ Possible unsafe locking scenario:
+
+       CPU0
+       ----
+  lock(&i3cbus->lock);
+  lock(&i3cbus->lock);
+
+ *** DEADLOCK ***
+
+ May be due to missing lock nesting notation
+
+2 locks held by init/1:
+ #0: fcffff809b6798f8 (&dev->mutex){....}-{3:3}, at: __driver_attach
+ #1: f1ffff80a6a40dc0 (&i3cbus->lock){++++}-{3:3}, at: i3c_master_register
+
+stack backtrace:
+CPU: 6 UID: 0 PID: 1 Comm: init
+Call trace:
+ dump_backtrace+0xfc/0x17c
+ show_stack+0x18/0x28
+ dump_stack_lvl+0x40/0xc0
+ dump_stack+0x18/0x24
+ print_deadlock_bug+0x388/0x390
+ __lock_acquire+0x18bc/0x32ec
+ lock_acquire+0x134/0x2b0
+ down_read+0x50/0x19c
+ i3c_bus_normaluse_lock+0x14/0x24
+ i3c_device_get_info+0x24/0x58
+ i3c_device_uevent+0x34/0xa4
+ dev_uevent+0x310/0x384
+ kobject_uevent_env+0x244/0x414
+ kobject_uevent+0x14/0x20
+ device_add+0x278/0x460
+ device_register+0x20/0x34
+ i3c_master_register_new_i3c_devs+0x78/0x154
+ i3c_master_register+0x6a0/0x6d4
+ mtk_i3c_master_probe+0x3b8/0x4d8
+ platform_probe+0xa0/0xe0
+ really_probe+0x114/0x454
+ __driver_probe_device+0xa0/0x15c
+ driver_probe_device+0x3c/0x1ac
+ __driver_attach+0xc4/0x1f0
+ bus_for_each_dev+0x104/0x160
+ driver_attach+0x24/0x34
+ bus_add_driver+0x14c/0x294
+ driver_register+0x68/0x104
+ __platform_driver_register+0x20/0x30
+ init_module+0x20/0xfe4
+ do_one_initcall+0x184/0x464
+ do_init_module+0x58/0x1ec
+ load_module+0xefc/0x10c8
+ __arm64_sys_finit_module+0x238/0x33c
+ invoke_syscall+0x58/0x10c
+ el0_svc_common+0xa8/0xdc
+ do_el0_svc+0x1c/0x28
+ el0_svc+0x50/0xac
+ el0t_64_sync_handler+0x70/0xbc
+ el0t_64_sync+0x1a8/0x1ac
+
+Signed-off-by: mtk25126 <defa.li@mediatek.com>
+---
+ drivers/i3c/master.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/i3c/master.c b/drivers/i3c/master.c
+index 6f3eb710a75d..bb8a8bf0c4c7 100644
+--- a/drivers/i3c/master.c
++++ b/drivers/i3c/master.c
+@@ -282,7 +282,8 @@ static int i3c_device_uevent(const struct device *dev, struct kobj_uevent_env *e
+ 	struct i3c_device_info devinfo;
+ 	u16 manuf, part, ext;
+ 
+-	i3c_device_get_info(i3cdev, &devinfo);
++	if (i3cdev->desc)
++		devinfo = i3cdev->desc->info;
+ 	manuf = I3C_PID_MANUF_ID(devinfo.pid);
+ 	part = I3C_PID_PART_ID(devinfo.pid);
+ 	ext = I3C_PID_EXTRA_INFO(devinfo.pid);
+-- 
+2.46.0
 
 
