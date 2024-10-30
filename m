@@ -4,87 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBDD1D7497E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2024 07:34:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73078D7495E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2024 07:35:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:From:Date:Reply-To:To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HFItFkm7xxlGReyd+CKxgiNteBFqPMNGPEXfruG+1LA=; b=nuANPinRJQ/8+RnhhF84dYHelR
-	/g6oN0rWR+ybN9Q9TfDCx24gQAQzLdQdzJIxuT3qnqZePp3BZbmqkyM63zf/7x1A5aCLhLfi+R6V9
-	d3TGY0odv7Zo6FpXGh3qYSafn+tPgwTWYWjSYfuT3vR5SFXJOg0cMR6Y+oOAj7yUBbPMH0f1RiGy8
-	7BUWt/959vwWMFK0NJJXPMemW153F/gq1125POp9osoHNY3ckcLBMDvUp4wbKhZNV8/llmqYAMcka
-	kp3tBsgAoXAlHrkYPC93btwahtPqaj9lWtFj6qsVWF0W+9HtcGRXz5zu9o/la3bsn/jZIAPt+LiMg
-	OF1ZlVYA==;
+	bh=WwEZskytNCIxQggG34Kcvzn/h7WxM+KE0ZJz42WQe0A=; b=SXX9xI92ANuHVueKWWZbdRFf3q
+	C6FlodVABVVRaaHVsrn07BPn1isUX9kQ8iK0K28EJ9o2cH/+IePl7iLgnzrOx9cmAdowjsKoxiGc0
+	jPhzqXp1eEu44U1RH1b4HUuFw9zjfsD1UNVy2kExxe9w1NtQtZOPFqQg2qoxjNi8yFtj0DmpZqQj/
+	MIZnzdn+tvh7AK+ynduQXEp6A3E12MlH1rMB6H01uFE/g4e57v5HI7iR1u1rRzmrnRmxoZ8o6hsuz
+	GI65gUe1T+bb2iTV0Si0UpZ+K/mPYbh0eccFl8CrAKw8ZBowAzM0FTpTd1kgIcXZZ7EXujPICuJ+5
+	v+gVNYuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t63E9-0000000H9q9-3GC3;
-	Wed, 30 Oct 2024 07:34:49 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1t63ET-0000000H9wZ-0bpI;
+	Wed, 30 Oct 2024 07:35:09 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t63Bc-0000000H9NQ-2UTd
+	id 1t63DQ-0000000H9iU-1wSu
 	for linux-mediatek@lists.infradead.org;
-	Wed, 30 Oct 2024 07:32:14 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-37d4fd00574so334596f8f.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 30 Oct 2024 00:32:12 -0700 (PDT)
+	Wed, 30 Oct 2024 07:34:05 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-43193678216so48687375e9.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 30 Oct 2024 00:34:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1730273531; x=1730878331; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1730273643; x=1730878443; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=HFItFkm7xxlGReyd+CKxgiNteBFqPMNGPEXfruG+1LA=;
-        b=C9nWL8j6MKjgUf8yssI7QUBauRHy0XcVCciu6aX370TrVfauABWQRLGa8VYQq1ly77
-         55ppwyCMmwI9ayMchm+ibrEcoLNmLbQPXMYS4aBnGagSCo12T1h207TAE5r1lHWu9gDN
-         H97CLGvQ8LfYXTGmMmDJMMFE1m0Awy7g4TjZAbrPBV4tBhRG+MovaZoXeP0uHmzs54Ma
-         ZaJ9WanlupgrxYQZfE31FEOAECLphtYhtdLTUHzRtH82m1r8DKXEs8644blxIsdeIBKT
-         LkMpOJdNNGzD9cKYAl+djlR8yFI61aqdnKryS9BMAAaITGuprGlvIgm+gUmY9BNmtj6r
-         p/jw==
+         :subject:cc:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=WwEZskytNCIxQggG34Kcvzn/h7WxM+KE0ZJz42WQe0A=;
+        b=nnTLQwTW7Kis1L/g9eXeCx0SS70sq/xM18zy0I1iKwSO1Z1OawjS0nGdEweBcbWmOk
+         UYY4tUFzqKmGugBqsXB6UuCCXJInnwblN/3UGzIl1nEl5XkEM68vp7zcPgoKykp2pbHx
+         CY/pfKMyQU4nOmqLeDBO8ivw5W6SdfcTm51I8RlbrkT7Mjo4D4Go20qXqIE20L+lA7P8
+         WIm+lpytRp7sUF0cdGTilnHwCj59yAFFs2ogogLUDWzBjbDtJiTfgO5w8ZIOhOOttmwu
+         OyscrKpxfpcFiPGvpfDUcuskoQXYxBG7kH/uU3+C1SaZLiS5WAI+Ik8oVrOD/iq0Ueg2
+         M6FA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730273531; x=1730878331;
+        d=1e100.net; s=20230601; t=1730273643; x=1730878443;
         h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :subject:cc:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=HFItFkm7xxlGReyd+CKxgiNteBFqPMNGPEXfruG+1LA=;
-        b=ks8jusNB6lF6K99QihhDrgafGf4uGzVxKIRw9GcZtZ6Jkpol/WFKJRCc+XtVc8wUuC
-         msg5e/k7JL1sCdzzsHDHUkRA5Cfd9T5MdN2OQxw0z7wsCf2rGplJDLqpDW6nfGsokQhj
-         mmZAU/pKF4wZJw4wxl+Oz2kOLC/WCeXGTA/Tr8Wp2PGE78NFA5kD0V2Vrich6wSTvQhl
-         VDzkfaBolttnzZV6BvHE9ArLiM/mCV315V00YXPFvzhTmJjUdeL4m0IQ0W4UX6Jtuzbm
-         HDZps4Hj8vvwga3HoYRmKg2DvF4kApY8nd3qDGJbRjlDc4VWV4jQ/NyKcoruMV1/hEQs
-         JDcQ==
-X-Forwarded-Encrypted: i=1; AJvYcCW+7i4PwIX6P7WExUKe5/sqQNtHQ8FcbQ5akQVhd93CdsEJcjOqIQHWf0DclU1i3BkqhRgNORwJoaXAdUoyzw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz5hm/Sr98/K9dOKWOL1ICfnfO3bClD9cNCZ3208jb5A2YyU58N
-	2lMGW2HweqmqjU4gGVykmJlXcNE2aR+eKvP6GPeDGFxPpTOAVqeERcvfdaO49wA=
-X-Google-Smtp-Source: AGHT+IE6ED3eAQ5A9DCGC3XuLYb92IN+MGup7zF2u95nFYke47sqJfEa/gMWC7gX4SrjKhKfIq9wmA==
-X-Received: by 2002:a5d:5e05:0:b0:37d:3f81:153f with SMTP id ffacd0b85a97d-3817d622612mr3826629f8f.17.1730273530893;
-        Wed, 30 Oct 2024 00:32:10 -0700 (PDT)
+        bh=WwEZskytNCIxQggG34Kcvzn/h7WxM+KE0ZJz42WQe0A=;
+        b=IHxVguBRWQdqcK4KIyhcfFUQGsAVSY9lDV1YZOOQvgUIly06JJq9fFTGoq+NgPZQbg
+         68XnpZhtwXLegpgHv5gwlLIPNYIM5PdAWaG3gAPSoHf8Dhz+H0iiW4pCl+uiZzL65A+7
+         sLDvBViitQTAWe2df3RJbdO3LReSEfTJb8bWhx/tW/Gg6Z21i61S/Ra0Z0UfJXo2ZeoT
+         7oxIFp00dWukIQVDchVD+6JgjmxJUM1pI4jTZNDB/hh1emTxRDTzEmxukwbL+4v9PjGQ
+         0wWpyyTROXKvwzwzGHuQktQUy1VFMp3f5p7ocl4EmcK+JEO/aipm/YHjZ7Bno2C9O7tJ
+         NZfw==
+X-Forwarded-Encrypted: i=1; AJvYcCWkslZP9C1ZTQ61DAxVw4/3jPFv+hwBIe4xbXEknd4LjXJIxnsdyuX+PE+rvdZXiNFZAOYIySa5RG1Ajj3S/g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyxNwOwD1GeH3Tt7AIJEo/mWKKiDxyM1cimKm6jSWT/4WKU9/cm
+	myxmSWzHQkpU/qWILLA0vr+AiHtCByuMns90tGVS5V7sI3SDD8osSOrTVjxC5y8=
+X-Google-Smtp-Source: AGHT+IFvSeQlKDXZ2TaznWZQry6qmvVUbv1vCSFsNuf03fMgrDansChUa9SPu6uyHlj1+Orbp7RrSg==
+X-Received: by 2002:a05:600c:4ecb:b0:42e:75a6:bb60 with SMTP id 5b1f17b1804b1-4319acb8fcbmr123819465e9.19.1730273642534;
+        Wed, 30 Oct 2024 00:34:02 -0700 (PDT)
 Received: from localhost (p50915d2d.dip0.t-ipconnect.de. [80.145.93.45])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38058b9294dsm14542597f8f.105.2024.10.30.00.32.10
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-431bd99eab4sm12468095e9.44.2024.10.30.00.34.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 30 Oct 2024 00:32:10 -0700 (PDT)
-Date: Wed, 30 Oct 2024 08:32:09 +0100
+        Wed, 30 Oct 2024 00:34:02 -0700 (PDT)
+Date: Wed, 30 Oct 2024 08:34:01 +0100
 From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lee Jones <lee@kernel.org>, linux-mediatek@lists.infradead.org, 
 	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	upstream@airoha.com, benjamin.larsson@genexis.eu, ansuelsmth@gmail.com, 
 	linux-pwm@vger.kernel.org
-Subject: Re: [PATCH v9 6/6] pwm: airoha: Add support for EN7581 SoC
-Message-ID: <bf5lpb3dwfywzgnbcel6de57ick7hfzxfaovyqrt7juif6tgp7@sdmugrua6t3c>
+Subject: Re: [PATCH v9 0/6] Add mfd, pinctrl and pwm support to EN7581 SoC
+Message-ID: <t7i6lkx5oedjma6uauiygnvbgzixnsqmolmkse3j2qiy5znf7t@kfozote6mm2k>
 References: <20241023-en7581-pinctrl-v9-0-afb0cbcab0ec@kernel.org>
- <20241023-en7581-pinctrl-v9-6-afb0cbcab0ec@kernel.org>
+ <CACRpkdaEQYBim8TuDCCw15QDUWhHC-VqhGq1Le7eOd76k56zwQ@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="zrrgadsxh7nw5d7s"
+	protocol="application/pgp-signature"; boundary="56rk2czsrrb44okr"
 Content-Disposition: inline
-In-Reply-To: <20241023-en7581-pinctrl-v9-6-afb0cbcab0ec@kernel.org>
+In-Reply-To: <CACRpkdaEQYBim8TuDCCw15QDUWhHC-VqhGq1Le7eOd76k56zwQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241030_003212_712763_67E17CC1 
-X-CRM114-Status: GOOD (  47.01  )
+X-CRM114-CacheID: sfid-20241030_003404_543704_40F16B5F 
+X-CRM114-Status: GOOD (  15.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,541 +98,52 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---zrrgadsxh7nw5d7s
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+--56rk2czsrrb44okr
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v9 6/6] pwm: airoha: Add support for EN7581 SoC
+Subject: Re: [PATCH v9 0/6] Add mfd, pinctrl and pwm support to EN7581 SoC
 MIME-Version: 1.0
 
-Hello,
+Hello Linus,
 
-On Wed, Oct 23, 2024 at 01:20:06AM +0200, Lorenzo Bianconi wrote:
-> From: Benjamin Larsson <benjamin.larsson@genexis.eu>
+On Tue, Oct 29, 2024 at 11:03:14PM +0100, Linus Walleij wrote:
+> On Wed, Oct 23, 2024 at 1:21=E2=80=AFAM Lorenzo Bianconi <lorenzo@kernel.=
+org> wrote:
 >=20
-> Introduce driver for PWM module available on EN7581 SoC.
+> > Introduce airoha-mfd driver in order to load pinctrl and pwm drivers for
+> > EN7581 SoC. airoha-mfd is needed since both pinctrl and pwm drivers
+> > needs to access the same memory block (gpio memory region) to configure
+> > {gio,irq}_chip and pwm functionalities respectively, so model them as
+> > childs of a parent mfd driver.
 >=20
-> Signed-off-by: Benjamin Larsson <benjamin.larsson@genexis.eu>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  drivers/pwm/Kconfig      |  11 ++
->  drivers/pwm/Makefile     |   1 +
->  drivers/pwm/pwm-airoha.c | 386 +++++++++++++++++++++++++++++++++++++++++=
-++++++
->  3 files changed, 398 insertions(+)
->=20
-> diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
-> index 0915c1e7df16d451e987dcc5f10e0b57edc32ee1..99aa87136c272555c10102590=
-fcf9f911161c3d3 100644
-> --- a/drivers/pwm/Kconfig
-> +++ b/drivers/pwm/Kconfig
-> @@ -54,6 +54,17 @@ config PWM_ADP5585
->  	  This option enables support for the PWM function found in the Analog
->  	  Devices ADP5585.
-> =20
-> +config PWM_AIROHA
-> +	tristate "Airoha PWM support"
-> +	depends on ARCH_AIROHA || COMPILE_TEST
-> +	depends on OF
-> +	select REGMAP_MMIO
-> +	help
-> +	  Generic PWM framework driver for Airoha SoC.
-> +
-> +	  To compile this driver as a module, choose M here: the module
-> +	  will be called pwm-airoha.
-> +
->  config PWM_APPLE
->  	tristate "Apple SoC PWM support"
->  	depends on ARCH_APPLE || COMPILE_TEST
-> diff --git a/drivers/pwm/Makefile b/drivers/pwm/Makefile
-> index 9081e0c0e9e09713fe05479c257eebe5f02b91e9..fbf7723d845807fd1e2893c6e=
-a4f736785841b0d 100644
-> --- a/drivers/pwm/Makefile
-> +++ b/drivers/pwm/Makefile
-> @@ -2,6 +2,7 @@
->  obj-$(CONFIG_PWM)		+=3D core.o
->  obj-$(CONFIG_PWM_AB8500)	+=3D pwm-ab8500.o
->  obj-$(CONFIG_PWM_ADP5585)	+=3D pwm-adp5585.o
-> +obj-$(CONFIG_PWM_AIROHA)	+=3D pwm-airoha.o
->  obj-$(CONFIG_PWM_APPLE)		+=3D pwm-apple.o
->  obj-$(CONFIG_PWM_ATMEL)		+=3D pwm-atmel.o
->  obj-$(CONFIG_PWM_ATMEL_HLCDC_PWM)	+=3D pwm-atmel-hlcdc.o
-> diff --git a/drivers/pwm/pwm-airoha.c b/drivers/pwm/pwm-airoha.c
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..658884852e7ad7a76ff499879=
-eda9c50dfc5f745
-> --- /dev/null
-> +++ b/drivers/pwm/pwm-airoha.c
-> @@ -0,0 +1,386 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright 2022 Markus Gothe <markus.gothe@genexis.eu>
-> + *
-> + *  Limitations:
-> + *  - No disable bit, so a disabled PWM is simulated by setting duty_cyc=
-le to 0
-> + *  - Only 8 concurrent waveform generators are available for 8 combinat=
-ions of
-> + *    duty_cycle and period. Waveform generators are shared between 16 G=
-PIO
-> + *    pins and 17 SIPO GPIO pins.
-> + *  - Supports only normal polarity.
-> + *  - On configuration the currently running period is completed.
+> OK someone has to merge this and I suggest that I merge patches 1-5
+> (all bindings and the pinctrl driver) since the different bindings have
+> dependencies between them.
 
-Maybe I already asked before: Is there a public manual? If so, please
-add a link here.
+Fine for me.
 
-> + */
-> +
-> +#include <linux/bitfield.h>
-> +#include <linux/err.h>
-> +#include <linux/io.h>
-> +#include <linux/iopoll.h>
-> +#include <linux/mfd/syscon.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/pwm.h>
-> +#include <linux/gpio.h>
-> +#include <linux/bitops.h>
-> +#include <linux/regmap.h>
-> +#include <asm/div64.h>
-> +
-> +#define REG_SGPIO_LED_DATA		0x0024
-> +#define SGPIO_LED_DATA_SHIFT_FLAG	BIT(31)
-> +#define SGPIO_LED_DATA_DATA		GENMASK(16, 0)
-> +
-> +#define REG_SGPIO_CLK_DIVR		0x0028
-> +#define REG_SGPIO_CLK_DIVR_MASK		GENMASK(1, 0)
-> +#define REG_SGPIO_CLK_DLY		0x002c
-> +
-> +#define REG_SIPO_FLASH_MODE_CFG		0x0030
-> +#define SERIAL_GPIO_FLASH_MODE		BIT(1)
-> +#define SERIAL_GPIO_MODE_74HC164	BIT(0)
-> +
-> +#define REG_GPIO_FLASH_PRD_SET(_n)	(0x003c + ((_n) << 2))
-> +#define GPIO_FLASH_PRD_MASK(_n)		GENMASK(15 + ((_n) << 4), ((_n) << 4))
-> +
-> +#define REG_GPIO_FLASH_MAP(_n)		(0x004c + ((_n) << 2))
-> +#define GPIO_FLASH_SETID_MASK(_n)	GENMASK(2 + ((_n) << 2), ((_n) << 2))
-> +#define GPIO_FLASH_EN(_n)		BIT(3 + ((_n) << 2))
-> +
-> +#define REG_SIPO_FLASH_MAP(_n)		(0x0054 + ((_n) << 2))
-> +
-> +#define REG_CYCLE_CFG_VALUE(_n)		(0x0098 + ((_n) << 2))
-> +#define WAVE_GEN_CYCLE_MASK(_n)		GENMASK(7 + ((_n) << 3), ((_n) << 3))
-> +
-> +#define PWM_NUM_BUCKETS			8
-> +
-> +struct airoha_pwm_bucket {
-> +	/* Bitmask of PWM channels using this bucket */
-> +	u64 used;
-> +	u64 period_ns;
-> +	u64 duty_ns;
-> +};
-> +
-> +struct airoha_pwm {
-> +	struct regmap *regmap;
-> +
-> +	struct device_node *np;
-> +	u64 initialized;
-> +
-> +	struct airoha_pwm_bucket bucket[PWM_NUM_BUCKETS];
-> +};
-> +
-> +/*
-> + * The first 16 GPIO pins, GPIO0-GPIO15, are mapped into 16 PWM channels=
-, 0-15.
-> + * The SIPO GPIO pins are 17 pins which are mapped into 17 PWM channels,=
- 16-32.
-> + * However, we've only got 8 concurrent waveform generators and can ther=
-efore
-> + * only use up to 8 different combinations of duty cycle and period at a=
- time.
-> + */
-> +#define PWM_NUM_GPIO	16
-> +#define PWM_NUM_SIPO	17
-> +
-> +/* The PWM hardware supports periods between 4 ms and 1 s */
-> +#define PERIOD_MIN_NS	(4 * NSEC_PER_MSEC)
-> +#define PERIOD_MAX_NS	(1 * NSEC_PER_SEC)
-> +/* It is represented internally as 1/250 s between 1 and 250 */
-> +#define PERIOD_MIN	1
-> +#define PERIOD_MAX	250
-> +/* Duty cycle is relative with 255 corresponding to 100% */
-> +#define DUTY_FULL	255
+> Then Uwe can merge patch 6/6 (the pwm driver).
 
-Please add proper namespacing to these constants, some of these make a
-more generic impression than justified. (i.e. add a common prefix like
-"AIROHA_PWM_")
+The pwm patch needs some more love, we can handle that separately then.
 
-> +static int airoha_pwm_get_generator(struct airoha_pwm *pc, u64 duty_ns,
-> +				    u64 period_ns)
-> +{
-> +	int i;
-> +
-> +	for (i =3D 0; i < ARRAY_SIZE(pc->bucket); i++) {
-> +		if (!pc->bucket[i].used)
-> +			continue;
-> +
-> +		if (duty_ns =3D=3D pc->bucket[i].duty_ns &&
-> +		    period_ns =3D=3D pc->bucket[i].period_ns)
-> +			return i;
-> +
-> +		/*
-> +		 * Unlike duty cycle zero, which can be handled by
-> +		 * disabling PWM, a generator is needed for full duty
-> +		 * cycle but it can be reused regardless of period
-> +		 */
-> +		if (duty_ns =3D=3D DUTY_FULL && pc->bucket[i].duty_ns =3D=3D DUTY_FULL)
-
-I wonder: The PWM supports periods starting at 4ms, but 255 is the
-maximal value for duty_ns? Isn't that a misnomer and is about
-duty_ticks?
-
-> +			return i;
-> +	}
-> +
-> +	return -1;
-> +}
-> +
-> +static void airoha_pwm_release_bucket_config(struct airoha_pwm *pc,
-> +					     unsigned int hwpwm)
-> +{
-> +	int i;
-> +
-> +	for (i =3D 0; i < ARRAY_SIZE(pc->bucket); i++)
-> +		pc->bucket[i].used &=3D ~BIT_ULL(hwpwm);
-> +}
-> +
-> +static int airoha_pwm_consume_generator(struct airoha_pwm *pc,
-> +					u64 duty_ns, u64 period_ns,
-> +					unsigned int hwpwm)
-> +{
-> +	int id =3D airoha_pwm_get_generator(pc, duty_ns, period_ns);
-> +
-> +	if (id < 0) {
-> +		int i;
-> +
-> +		/* find an unused waveform generator */
-> +		for (i =3D 0; i < ARRAY_SIZE(pc->bucket); i++) {
-> +			if (!(pc->bucket[i].used & ~BIT_ULL(hwpwm))) {
-> +				id =3D i;
-> +				break;
-> +			}
-> +		}
-> +	}
-
-I think airoha_pwm_get_generator could return an unused generator, then
-you don't need to loop twice over all buckets. Just an idea, not sure
-this becomes considerably faster or easier to understand.
-
-> +	if (id >=3D 0) {
-> +		airoha_pwm_release_bucket_config(pc, hwpwm);
-> +		pc->bucket[id].used |=3D BIT_ULL(hwpwm);
-> +		pc->bucket[id].period_ns =3D period_ns;
-> +		pc->bucket[id].duty_ns =3D duty_ns;
-> +	}
-> +
-> +	return id;
-> +}
-> +
-> +static int airoha_pwm_sipo_init(struct airoha_pwm *pc)
-> +{
-> +	u32 val;
-> +
-> +	if (!(pc->initialized >> PWM_NUM_GPIO))
-> +		return 0;
-> +
-> +	regmap_clear_bits(pc->regmap, REG_SIPO_FLASH_MODE_CFG,
-> +			  SERIAL_GPIO_MODE_74HC164);
-> +
-> +	/* Configure shift register timings, use 32x divisor */
-> +	regmap_write(pc->regmap, REG_SGPIO_CLK_DIVR,
-> +		     FIELD_PREP(REG_SGPIO_CLK_DIVR_MASK, 0x3));
-> +
-> +	/*
-> +	 * The actual delay is clock + 1.
-> +	 * Notice that clock delay should not be greater
-> +	 * than (divisor / 2) - 1.
-> +	 * Set to 0 by default. (aka 1)
-> +	 */
-> +	regmap_write(pc->regmap, REG_SGPIO_CLK_DLY, 0x0);
-> +
-> +	/*
-> +	 * It it necessary to after muxing explicitly shift out all
-> +	 * zeroes to initialize the shift register before enabling PWM
-> +	 * mode because in PWM mode SIPO will not start shifting until
-> +	 * it needs to output a non-zero value (bit 31 of led_data
-> +	 * indicates shifting in progress and it must return to zero
-> +	 * before led_data can be written or PWM mode can be set)
-> +	 */
-> +	if (regmap_read_poll_timeout(pc->regmap, REG_SGPIO_LED_DATA, val,
-> +				     !(val & SGPIO_LED_DATA_SHIFT_FLAG), 10,
-> +				     200 * USEC_PER_MSEC))
-> +		return -ETIMEDOUT;
-> +
-> +	regmap_clear_bits(pc->regmap, REG_SGPIO_LED_DATA, SGPIO_LED_DATA_DATA);
-> +	if (regmap_read_poll_timeout(pc->regmap, REG_SGPIO_LED_DATA, val,
-> +				     !(val & SGPIO_LED_DATA_SHIFT_FLAG), 10,
-> +				     200 * USEC_PER_MSEC))
-> +		return -ETIMEDOUT;
-> +
-> +	/* Set SIPO in PWM mode */
-> +	regmap_set_bits(pc->regmap, REG_SIPO_FLASH_MODE_CFG,
-> +			SERIAL_GPIO_FLASH_MODE);
-> +
-> +	return 0;
-> +}
-> +
-> +static void airoha_pwm_calc_bucket_config(struct airoha_pwm *pc, int ind=
-ex,
-> +					  u64 duty_ns, u64 period_ns)
-> +{
-> +	u32 period, duty, mask, val;
-
-Please use duty_ns for values in nanoseconds and duty_ticks (or
-something similar) for values in clock ticks consistently.
-
-> +	u64 tmp;
-> +
-> +	tmp =3D duty_ns * DUTY_FULL;
-
-This might overflow. =3D> Use mul_u64_u64_div_u64() or a suitable cousin
-of it.
-
-> +	duty =3D clamp_val(div64_u64(tmp, period_ns), 0, DUTY_FULL);
-> +	tmp =3D period_ns * 25;
-> +	period =3D clamp_val(div64_u64(tmp, 100000000), PERIOD_MIN, PERIOD_MAX);
-
-Huh, we already know that period_ns >=3D PERIOD_MIN_NS =3D 4000000, so
-period is >=3D PERIOD_MIN =3D 1 already. So the lower bound part of that
-clamping is not needed. (And it looks wrong because you're not supposed
-to round up.) Ditto for the duty_clamp, tmp/period_ns will never be less
-than 0.
-
-> +	/* Configure frequency divisor */
-> +	mask =3D WAVE_GEN_CYCLE_MASK(index % 4);
-> +	val =3D (period << __ffs(mask)) & mask;
-
-FIELD_PREP please.
-
-> +	regmap_update_bits(pc->regmap, REG_CYCLE_CFG_VALUE(index / 4),
-> +			   mask, val);
-> +
-> +	/* Configure duty cycle */
-> +	duty =3D ((DUTY_FULL - duty) << 8) | duty;
-
-Please use proper defines for the bit fields and then use FIELD_PREP
-here instead of shifts with an explicit number as RHS.
-
-> +	mask =3D GPIO_FLASH_PRD_MASK(index % 2);
-> +	val =3D (duty << __ffs(mask)) & mask;
-> +	regmap_update_bits(pc->regmap, REG_GPIO_FLASH_PRD_SET(index / 2),
-> +			   mask, val);
-> +}
-> +
-> +static void airoha_pwm_config_flash_map(struct airoha_pwm *pc,
-> +					unsigned int hwpwm, int index)
-> +{
-> +	u32 addr, mask, val;
-> +
-> +	if (hwpwm < PWM_NUM_GPIO) {
-> +		addr =3D REG_GPIO_FLASH_MAP(hwpwm / 8);
-> +	} else {
-> +		addr =3D REG_SIPO_FLASH_MAP(hwpwm / 8);
-> +		hwpwm -=3D PWM_NUM_GPIO;
-> +	}
-> +
-> +	if (index < 0) {
-> +		/*
-> +		 * Change of waveform takes effect immediately but
-> +		 * disabling has some delay so to prevent glitching
-> +		 * only the enable bit is touched when disabling
-
-Together with "No disable bit, so a disabled PWM is simulated by setting
-duty_cycle to 0" from the Limitations paragraph above I don't understand
-that. And if disabling has some delay but reconfiguration doesn't, it
-would give a more consistent behaviour to configure a duty_cycle =3D 0
-here?
-
-> +		 */
-> +		regmap_clear_bits(pc->regmap, addr, GPIO_FLASH_EN(hwpwm % 8));
-> +		return;
-> +	}
-> +
-> +	mask =3D GPIO_FLASH_SETID_MASK(hwpwm % 8);
-> +	val =3D ((index & 7) << __ffs(mask)) & mask;
-> +	regmap_update_bits(pc->regmap, addr, mask, val);
-> +	regmap_set_bits(pc->regmap, addr, GPIO_FLASH_EN(hwpwm % 8));
-> +}
-> +
-> +static int airoha_pwm_config(struct airoha_pwm *pc, struct pwm_device *p=
-wm,
-> +			     u64 duty_ns, u64 period_ns)
-> +{
-> +	int index =3D -1;
-
-This initialisation isn't needed.
-
-> +	index =3D airoha_pwm_consume_generator(pc, duty_ns, period_ns,
-> +					     pwm->hwpwm);
-> +	if (index < 0)
-> +		return -EBUSY;
-> +
-> +	if (!(pc->initialized & BIT_ULL(pwm->hwpwm)) &&
-> +	    pwm->hwpwm >=3D PWM_NUM_GPIO)
-> +		airoha_pwm_sipo_init(pc);
-> +
-> +	if (index >=3D 0) {
-
-After the return above index >=3D 0 is always true.
-
-> +		airoha_pwm_calc_bucket_config(pc, index, duty_ns, period_ns);
-> +		airoha_pwm_config_flash_map(pc, pwm->hwpwm, index);
-> +	} else {
-> +		airoha_pwm_config_flash_map(pc, pwm->hwpwm, index);
-> +		airoha_pwm_release_bucket_config(pc, pwm->hwpwm);
-> +	}
-> +
-> +	pc->initialized |=3D BIT_ULL(pwm->hwpwm);
-> +
-> +	return 0;
-> +}
-> +
-> +static void airoha_pwm_disable(struct pwm_chip *chip, struct pwm_device =
-*pwm)
-> +{
-> +	struct airoha_pwm *pc =3D pwmchip_get_drvdata(chip);
-> +
-> +	/* Disable PWM and release the waveform */
-
-s/waveform/bucket/ ?
-
-> +	airoha_pwm_config_flash_map(pc, pwm->hwpwm, -1);
-> +	airoha_pwm_release_bucket_config(pc, pwm->hwpwm);
-> +
-> +	pc->initialized &=3D ~BIT_ULL(pwm->hwpwm);
-> +	if (!(pc->initialized >> PWM_NUM_GPIO))
-> +		regmap_clear_bits(pc->regmap, REG_SIPO_FLASH_MODE_CFG,
-> +				  SERIAL_GPIO_FLASH_MODE);
-> +}
-> +
-> +static int airoha_pwm_apply(struct pwm_chip *chip, struct pwm_device *pw=
-m,
-> +			    const struct pwm_state *state)
-> +{
-> +	struct airoha_pwm *pc =3D pwmchip_get_drvdata(chip);
-> +	u64 duty =3D state->enabled ? state->duty_cycle : 0;
-> +	u64 period =3D state->period;
-> +
-> +	/* Only normal polarity is supported */
-> +	if (state->polarity =3D=3D PWM_POLARITY_INVERSED)
-> +		return -EINVAL;
-> +
-> +	if (!state->enabled) {
-> +		airoha_pwm_disable(chip, pwm);
-> +		return 0;
-> +	}
-> +
-> +	if (period < PERIOD_MIN_NS)
-> +		return -EINVAL;
-> +
-> +	if (period > PERIOD_MAX_NS)
-> +		period =3D PERIOD_MAX_NS;
-
-If you ask me, don't check the nanosecond values, but convert them to
-ticks and check only then. That feels more natural.
-
-> +	return airoha_pwm_config(pc, pwm, duty, period);
-> +}
-> +
-> +static int airoha_pwm_get_state(struct pwm_chip *chip, struct pwm_device=
- *pwm,
-> +				struct pwm_state *state)
-> +{
-> +	struct airoha_pwm *pc =3D pwmchip_get_drvdata(chip);
-> +	int i;
-> +
-> +	/* find hwpwm in waveform generator bucket */
-> +	for (i =3D 0; i < ARRAY_SIZE(pc->bucket); i++) {
-> +		if (pc->bucket[i].used & BIT_ULL(pwm->hwpwm)) {
-> +			state->enabled =3D pc->initialized & BIT_ULL(pwm->hwpwm);
-> +			state->polarity =3D PWM_POLARITY_NORMAL;
-> +			state->period =3D pc->bucket[i].period_ns;
-> +			state->duty_cycle =3D pc->bucket[i].duty_ns;
-> +			break;
-> +		}
-> +	}
-
-Is it worth to maintain the information about index of the used bucket
-for a given pwm_device in airoha_pwm to save a few loops?
-
-> +	if (i =3D=3D ARRAY_SIZE(pc->bucket))
-> +		state->enabled =3D false;
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct pwm_ops airoha_pwm_ops =3D {
-> +	.get_state =3D airoha_pwm_get_state,
-> +	.apply =3D airoha_pwm_apply,
-
-I'm a big fan of consistency, so you can make me a bit more happy if you
-define airoha_pwm_get_state() before airoha_pwm_apply() or switch the
-order here. (The latter is slightly preferred as this matches the order
-of their definition in struct pwm_ops.)
-
-> +};
-> +
-> +static int airoha_pwm_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev =3D &pdev->dev;
-> +	struct airoha_pwm *pc;
-> +	struct pwm_chip *chip;
-> +
-> +	chip =3D devm_pwmchip_alloc(dev, PWM_NUM_GPIO + PWM_NUM_SIPO,
-> +				  sizeof(*pc));
-> +	if (IS_ERR(chip))
-> +		return PTR_ERR(chip);
-> +
-> +	chip->ops =3D &airoha_pwm_ops;
-> +	pc =3D pwmchip_get_drvdata(chip);
-> +	pc->np =3D dev->of_node;
-
-=2Enp is a write only struct member and so can be dropped.
-
-> +
-> +	pc->regmap =3D device_node_to_regmap(dev->parent->of_node);
-> +	if (IS_ERR(pc->regmap))
-> +		return PTR_ERR(pc->regmap);
-> +
-> +	return devm_pwmchip_add(&pdev->dev, chip);
-
-Please add error messages to .probe() using dev_err_probe().
-
-> +}
-
-Best regards
+Best regards and thanks,
 Uwe
 
---zrrgadsxh7nw5d7s
+--56rk2czsrrb44okr
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmch4PYACgkQj4D7WH0S
-/k7LbAf9Fo37Np82ysJ0fxX1NWb/5j2EmlCbY9Z3gbto0DZ7lEu0U8zlhXFtSjV9
-Y3da4yz/a0Sz0lTUE3CIsjs4O/ipnIII7cILDB7phRlZhjNt+YxOeRUdX3A6yZdG
-RN01b19OdC214Sa2zk+or4Kvfutw+bz+ZaOVKZJ+D7l+y0TWGsKCmg4a9zspo6kh
-wfucvuCo8ZBpeWVlJDy6FDSqqylmASlWu1t54LIpUdQowI2M8NwmUvpR6N5azlsO
-wycrSRPbptc1MYx3jTGjPxkJTHqZc1zOJFxucvHiU8zLl+v0qMmOkf6bhgPh0AKT
-SBfBCwKSLbGcD3L8IlVlOTwFCoKfBw==
-=hKzh
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmch4WYACgkQj4D7WH0S
+/k5D1QgAjbBhIuEEliXD8FforKpez8jJ1PxkBpkZubAbNImwSpOpOGraTpIwdy94
++Mp7owHDJULSYRibBSz9vASz1ULu+LElGQSTtfO/FMdo4fxZhS8mNWJmso3GgbfB
+6sf83Ou6IPy0V9RZS06z92en0jFa296T66+U+eQRcMvgZRZnL0R7Aqhm9acidZFS
+kTzQw7fKIpqi5t07aAeQxKZWZ8Ag8hPwQdEECSpzJedn8c9yRaop1swgJ5X46Gs4
+NZMYuepIpatIVEfog8i/NzV/AQpy99nlQfLpt7nbPQk+o0gINALiBGe7bGzZMDNj
+27futyysj3wJ/nuiDdGOnZtazOm71Q==
+=pz6h
 -----END PGP SIGNATURE-----
 
---zrrgadsxh7nw5d7s--
+--56rk2czsrrb44okr--
 
