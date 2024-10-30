@@ -4,69 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E05ADD6B6C4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2024 19:32:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BE4CD6B6DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2024 21:37:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=7nZyeOT+wnKPsXEpGH2Hj04pEnZpEJwO4AgsBqz0YpE=; b=J4KWbaaJLONw9wK/GBpc2RvuSv
-	vLRgBPNMCYwiK/NHGymnCkOL1Bs6d3wCf2a3/ofTN8aNqVCMEza2cSaQKf77AseqENEVug2d8afLh
-	ZaETJYYKVprTx7yY9NFyEbb63ONIZesjaRm3pH0OsqTXt4kStJjY37wtFVrGgdBdZ0jFmLMj0kw+M
-	1sJXZsYNZ63s4/tli+8k5v4jMurqxYCH1ZpKTIik2K5mzeTCambc3VZAV74Gl43rv5NH0NaDqJyHH
-	BsR7DUfaOX0izIxCCs1qZpqOMF4j3o7hFHwSnCL0LOkHDXtoRf+8Vj4dusuBcnp3Ukd6HUyZuaRXK
-	PUwBE6Ew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NyNMPjO7MMUd6ojdX9/UDWNYw2O+FoxGF7IwqpNjl2U=; b=TACNJxlwGGvoge/LuIbC6BD5/A
+	GyzjqMd0aXZ7erGTOW3Uu8VnC7eNRS+LPODydt3JKL2poZ00CGfnt7+FgfJG+y7fhBeamems5mCcU
+	oXGY3Zzmyw/nBgHAoc4VcSQNOBIl3yCYIY7G+Ne8oF9R5xrNyGmTvfzzh1pKhQIHEQQ1g6WgAOqen
+	2N76lO6AaUVm9+/hLIJ8mi2t/RGuhBeOOs7XngZKQMO6m6jYHMPs+lodI8CIaP6YwlDPrj6eWfwjy
+	M0BQj6tlWbGiEwb8NbmRlSL6NYRDXuhPcFShsoWd9UJSKj2aSYUMEQD2FLmzjopZSzzoyC/P+jbIw
+	IgSoX+Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6EQN-00000001Xyi-2zi0;
-	Wed, 30 Oct 2024 19:32:11 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1t6GNQ-00000001rvW-40gA;
+	Wed, 30 Oct 2024 21:37:16 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6EOj-00000001Xsm-0lPq;
-	Wed, 30 Oct 2024 19:30:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 040065C4A69;
-	Wed, 30 Oct 2024 19:29:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2CB77C4CECE;
-	Wed, 30 Oct 2024 19:30:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730316626;
-	bh=CoYyKlKmOSKxrPKi0zvjVFMgQHG2rxkSbzEovk3fD3k=;
-	h=From:Date:Subject:To:Cc:From;
-	b=j+kSn8N8k3flee47m87qzOJaPDUCR9IfqmjO9FEAy/f27KSHYnbdC7ggeRRYypUKM
-	 +HBafMda4IfNG63cAttYics2sYs75QKFq8FnVod2yIeH5PnPXxvwmAavtidx+i7/IF
-	 1S2LlVmUmpADapAoy1QWkNWFHLGeMjz1Xgor3FP2JtGvVgeodI8QKJHf36GBy7sjav
-	 Oh7SVqWovdKCFJgMm/dxKXjg7d3X9Vg9u2V2MiqJPilnGos/BU2xM+Qr2/o7lBUxib
-	 aLYdF2ls1Y6537wEnR/hl2Z3+9NVqE5dWNkzl2ISt5aBtz+OnUn6bNQKHlyJcbIthS
-	 o8BNqF092VAiw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 30 Oct 2024 20:29:55 +0100
-Subject: [PATCH net-next] net: dsa: mt7530: Add TBF qdisc offload support
+	id 1t6GLk-00000001rV7-1gcY;
+	Wed, 30 Oct 2024 21:35:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=NyNMPjO7MMUd6ojdX9/UDWNYw2O+FoxGF7IwqpNjl2U=; b=6ODvVexGP24auXYynC9wLkGhzw
+	Ij5b5N2p3PUMIHkDOtE4nr8am56jtAaFUhmf/2F9T8z891JnfVvg327KEtn58HBHyEZ050bRc/cTP
+	08HGvuZ+j1tH62+k+BM0/SYAdhM+Lp5LpgXMRSsVm2j+A2zLM7zJCLN+myVyboiCPnAk=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1t6GLP-00BjTa-At; Wed, 30 Oct 2024 22:35:11 +0100
+Date: Wed, 30 Oct 2024 22:35:11 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Sky Huang <SkyLake.Huang@mediatek.com>
+Cc: Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Simon Horman <horms@kernel.org>, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Steven Liu <Steven.Liu@mediatek.com>
+Subject: Re: [PATCH net-next 1/5] net: phy: mediatek: Re-organize MediaTek
+ ethernet phy drivers
+Message-ID: <cd2f249b-6257-4692-ac2f-93252534cff4@lunn.ch>
+References: <20241030103554.29218-1-SkyLake.Huang@mediatek.com>
+ <20241030103554.29218-2-SkyLake.Huang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20241030-mt7530-tc-offload-v1-1-f7eeffaf3d9e@kernel.org>
-X-B4-Tracking: v=1; b=H4sIADKJImcC/x2MQQqAIBAAvxJ7TlhNCfpKdAhba6EyNCIQ/97Sa
- ZjDTIFMiSnD0BRI9HDmeIrotgG/zedKihdxMGisxg7VcfdOcHsVQ9jjvCh0ZNBaqx0iSHclCvz
- +z3Gq9QM2CB49YwAAAA==
-X-Change-ID: 20241030-mt7530-tc-offload-05e204441500
-To: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>, 
- Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
- Florian Fainelli <f.fainelli@gmail.com>, 
- Vladimir Oltean <olteanv@gmail.com>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241030103554.29218-2-SkyLake.Huang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241030_123029_687726_C1D9B2C0 
-X-CRM114-Status: GOOD (  15.04  )
+X-CRM114-CacheID: sfid-20241030_143532_458620_631F3450 
+X-CRM114-Status: GOOD (  11.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,125 +79,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce port_setup_tc callback in mt7530 dsa driver in order to enable
-dsa ports rate shaping via hw Token Bucket Filter (TBF) for hw switched
-traffic. Enable hw TBF just for EN7581 SoC for the moment.
+On Wed, Oct 30, 2024 at 06:35:50PM +0800, Sky Huang wrote:
+> From: "SkyLake.Huang" <skylake.huang@mediatek.com>
+> 
+> Re-organize MediaTek ethernet phy driver files and get ready to integrate
+> some common functions and add new 2.5G phy driver.
+> mtk-ge.c: MT7530 Gphy on MT7621 & MT7531 Gphy
+> mtk-ge-soc.c: Built-in Gphy on MT7981 & Built-in switch Gphy on MT7988
+> mtk-2p5ge.c: Planned for built-in 2.5G phy on MT7988
+> 
+> Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
+> ---
+> No change since commit:
+> https://lore.kernel.org/netdev/20241004102413.5838-2-SkyLake.Huang@mediatek.com/
+> 
+> Andrew Lunn has already reviewed this.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/dsa/mt7530.c | 54 ++++++++++++++++++++++++++++++++++++++++++++++++
- drivers/net/dsa/mt7530.h | 12 +++++++++++
- 2 files changed, 66 insertions(+)
+You should append the Reviewed-by: Andrew Lunn <andrew@lunn.ch> to the
+commit message, just before your Signed-off-by:. Taking the patches
+out of a series like this should not invalidate a Reviewed-by, so long
+as you don't make any changes to the patch.
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index d84ee1b419a614dda5f440e6571cff5f4f27bf21..0adf69ac8827cd66cdc44f9bc43d27ab8acb785c 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -21,6 +21,7 @@
- #include <linux/gpio/consumer.h>
- #include <linux/gpio/driver.h>
- #include <net/dsa.h>
-+#include <net/pkt_cls.h>
- 
- #include "mt7530.h"
- 
-@@ -3146,6 +3147,58 @@ mt753x_conduit_state_change(struct dsa_switch *ds,
- 	mt7530_rmw(priv, MT753X_MFC, MT7530_CPU_EN | MT7530_CPU_PORT_MASK, val);
- }
- 
-+static int mt753x_tc_setup_qdisc_tbf(struct mt7530_priv *priv, int port,
-+				     struct tc_tbf_qopt_offload *qopt)
-+{
-+	struct tc_tbf_qopt_offload_replace_params *p = &qopt->replace_params;
-+	u32 rate = 0;
-+
-+	switch (qopt->command) {
-+	case TC_TBF_REPLACE:
-+		rate = div_u64(p->rate.rate_bytes_ps, 1000) << 3; /* kbps */
-+		fallthrough;
-+	case TC_TBF_DESTROY: {
-+		u32 val, tick;
-+
-+		mt7530_rmw(priv, MT7530_GERLCR, EGR_BC_MASK,
-+			   EGR_BC_CRC_IPG_PREAMBLE);
-+
-+		/* if rate is greater than 10Mbps tick is 1/32 ms,
-+		 * 1ms otherwise
-+		 */
-+		tick = rate > 10000 ? 2 : 7;
-+		val = FIELD_PREP(ERLCR_CIR_MASK, (rate >> 5)) |
-+		      FIELD_PREP(ERLCR_EXP_MASK, tick) |
-+		      ERLCR_TBF_MODE_MASK |
-+		      FIELD_PREP(ERLCR_MANT_MASK, 0xf);
-+		if (rate)
-+			val |= ERLCR_EN_MASK;
-+		mt7530_write(priv, MT7530_ERLCR_P(port), val);
-+		break;
-+	}
-+	default:
-+		return -EOPNOTSUPP;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt753x_setup_tc(struct dsa_switch *ds, int port,
-+			   enum tc_setup_type type, void *type_data)
-+{
-+	struct mt7530_priv *priv = ds->priv;
-+
-+	if (priv->id != ID_EN7581)
-+		return -EOPNOTSUPP;
-+
-+	switch (type) {
-+	case TC_SETUP_QDISC_TBF:
-+		return mt753x_tc_setup_qdisc_tbf(priv, port, type_data);
-+	default:
-+		return -EOPNOTSUPP;
-+	}
-+}
-+
- static int mt7988_setup(struct dsa_switch *ds)
- {
- 	struct mt7530_priv *priv = ds->priv;
-@@ -3193,6 +3246,7 @@ const struct dsa_switch_ops mt7530_switch_ops = {
- 	.get_mac_eee		= mt753x_get_mac_eee,
- 	.set_mac_eee		= mt753x_set_mac_eee,
- 	.conduit_state_change	= mt753x_conduit_state_change,
-+	.port_setup_tc		= mt753x_setup_tc,
- };
- EXPORT_SYMBOL_GPL(mt7530_switch_ops);
- 
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 6ad33a9f6b1dff3a423baa668a8a2ca158f72b91..9467f2a3f2bca45b3fce3bace2b3b3205158c4bd 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -248,6 +248,18 @@ enum mt7530_vlan_egress_attr {
- #define  AGE_UNIT_MAX			0xfff
- #define  AGE_UNIT(x)			(AGE_UNIT_MASK & (x))
- 
-+#define MT7530_ERLCR_P(x)		(0x1040 + ((x) * 0x100))
-+#define  ERLCR_CIR_MASK			GENMASK(31, 16)
-+#define  ERLCR_EN_MASK			BIT(15)
-+#define  ERLCR_EXP_MASK			GENMASK(11, 8)
-+#define  ERLCR_TBF_MODE_MASK		BIT(7)
-+#define  ERLCR_MANT_MASK		GENMASK(6, 0)
-+
-+#define MT7530_GERLCR			0x10e0
-+#define  EGR_BC_MASK			GENMASK(7, 0)
-+#define  EGR_BC_CRC			0x4	/* crc */
-+#define  EGR_BC_CRC_IPG_PREAMBLE	0x18	/* crc + ipg + preamble */
-+
- /* Register for port STP state control */
- #define MT7530_SSP_P(x)			(0x2000 + ((x) * 0x100))
- #define  FID_PST(fid, state)		(((state) & 0x3) << ((fid) * 2))
+    Andrew
 
 ---
-base-commit: 668d663989c77fcb2a92748645e4c394b03d5988
-change-id: 20241030-mt7530-tc-offload-05e204441500
-
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+pw-bot: cr
 
 
