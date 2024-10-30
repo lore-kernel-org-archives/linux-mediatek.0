@@ -4,91 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2BEBD6B6BC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2024 18:34:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E05ADD6B6C4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2024 19:32:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UpRP2MsIVMkQvKjqAp60xM5OFj18JwlP60eDqeYPxhc=; b=WV4DeLAzA0CpnqnWDFc4yL3JZn
-	gIF2MD0hHGAMYDaA3cT0n3ofefLOEhUxAv7ZAW2D9H4kvQgbVyrt6oXFjQVbrxucUqdRrG/zk1LB3
-	jTXHnN1VhQ7qwUe5laulyu99xG1uV3CufbZwtKoqiiVHRF4fr694Zw1oJ6STn4L46b7ozZMMxpoAo
-	N33VJeNxCphFKNDV7d0+rN6H87UtaSzYIquM+hrwwNCH3lQSsvSWJWNbYc3QwfsdybYPN1htAnnIE
-	oWlN+iq8p3tTmABgF8MJ8T8ZlSnucMAx0RnHT0L8vUQUKUaXWJkzp1S3IvVIJmc6HSnTtABHjNqGO
-	xNocvZqQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7nZyeOT+wnKPsXEpGH2Hj04pEnZpEJwO4AgsBqz0YpE=; b=J4KWbaaJLONw9wK/GBpc2RvuSv
+	vLRgBPNMCYwiK/NHGymnCkOL1Bs6d3wCf2a3/ofTN8aNqVCMEza2cSaQKf77AseqENEVug2d8afLh
+	ZaETJYYKVprTx7yY9NFyEbb63ONIZesjaRm3pH0OsqTXt4kStJjY37wtFVrGgdBdZ0jFmLMj0kw+M
+	1sJXZsYNZ63s4/tli+8k5v4jMurqxYCH1ZpKTIik2K5mzeTCambc3VZAV74Gl43rv5NH0NaDqJyHH
+	BsR7DUfaOX0izIxCCs1qZpqOMF4j3o7hFHwSnCL0LOkHDXtoRf+8Vj4dusuBcnp3Ukd6HUyZuaRXK
+	PUwBE6Ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6DWq-00000001RX5-1gIW;
-	Wed, 30 Oct 2024 18:34:48 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1t6EQN-00000001Xyi-2zi0;
+	Wed, 30 Oct 2024 19:32:11 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6DVA-00000001RHH-2H5i;
-	Wed, 30 Oct 2024 18:33:05 +0000
-Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-37d3ecad390so816431f8f.1;
-        Wed, 30 Oct 2024 11:33:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1730313182; x=1730917982; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=UpRP2MsIVMkQvKjqAp60xM5OFj18JwlP60eDqeYPxhc=;
-        b=bHrQR3571Mj32cviLZCYfBd7LIbN4RiAGt2K4M4pusf+eD5Fs92H+rUYvHM659d3aN
-         ON0kj5s+BFV26msEw83CNvKljUDrPoKACrl/2tyvSZ8bQoZtos5U4j5uxr9UsEebDPkt
-         86+g88c2A6p03lAB6Gn2pd4oQkbAL9l5+M3uMNVwj4If4XXC5Tw50j44s+PI2+zHL2Fh
-         dxq7KUPfRHKcI4UU3mLU0g6nK3BWpgHxMfj6WY6OYlQ0Pn0y5Axk0tvtH+e/XGknfWJ5
-         E67lkCSlWdREchUHdCvcUxXS7qT+xEXQy3mxbPIO5Di/3niWFkWLxmfc/lKA5jGl3qKE
-         Ho5Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730313182; x=1730917982;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=UpRP2MsIVMkQvKjqAp60xM5OFj18JwlP60eDqeYPxhc=;
-        b=G73evvH5UiYuAP1UBaKtHj+LcKWaPz5MpYJsODm1f8OnyA+eWay41uVee5TfmQz4kV
-         vBB2ZNeuIAvIUXN2jCkBStiZwdnD27ytpj3N88fagiemtVAIY9hUzBdC1HEttvBjuzLJ
-         4a4a8GkYUHCPXIdkMttsIW2ajljaFn1e20N+2yVhOvKYG8uP9j3W79lQoExvHgRIEtjK
-         UDn+CgxmpuHf+/KNuEyYdY9ZYwyWuB2Mk1cZ9jVNVfrGMVo8f9X0DoRtakv/O0pGJxy2
-         OWvfODjokbOWK0CgZ9rxs7du/k6NpVWDDIPnWIuzfJJOhidZTulahQlXWAbLkSN1qIPe
-         FyWw==
-X-Forwarded-Encrypted: i=1; AJvYcCV9HQQ+5WRrqhx9Ig2f2SXUUAzmBortanUFYTf3y/i9G4LADKvzqovsvauMvLp1LFMfk5h8HdSN97jS6Dcm1KtS@lists.infradead.org, AJvYcCXOkAVvlya/IDc39OfHyrBwoEe5T1hdQK0L/J6zSdSnW77WEgXnLONAsvu9Hn+TcLu2+jEURbY0F2etcWmezwQ=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzPAl/EfP6bWmXFi1NtzZJ+4CTTveXzOejLf1xWtJmLoR7yIf5v
-	kv0TXp/8Wqo2bQHGfL6h3+vSe7fSX8ANbjOmqg+CC4AJ+TAWl50Y
-X-Google-Smtp-Source: AGHT+IGUMEiJ5yqJQbqO4xA7/aA59KAvngIQZIC7OTI5GXqXyrK5y8mDR/1ooulIWDi8IfTeYR0uyA==
-X-Received: by 2002:a5d:688b:0:b0:374:c613:7c58 with SMTP id ffacd0b85a97d-381b97c08fbmr2847327f8f.29.1730313181936;
-        Wed, 30 Oct 2024 11:33:01 -0700 (PDT)
-Received: from [192.168.0.2] ([69.6.8.124])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38058b71221sm15888748f8f.68.2024.10.30.11.32.59
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 30 Oct 2024 11:33:01 -0700 (PDT)
-Message-ID: <e37b9baa-51e5-48f9-a15d-521f29ce5f9c@gmail.com>
-Date: Wed, 30 Oct 2024 20:33:26 +0200
+	id 1t6EOj-00000001Xsm-0lPq;
+	Wed, 30 Oct 2024 19:30:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 040065C4A69;
+	Wed, 30 Oct 2024 19:29:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2CB77C4CECE;
+	Wed, 30 Oct 2024 19:30:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1730316626;
+	bh=CoYyKlKmOSKxrPKi0zvjVFMgQHG2rxkSbzEovk3fD3k=;
+	h=From:Date:Subject:To:Cc:From;
+	b=j+kSn8N8k3flee47m87qzOJaPDUCR9IfqmjO9FEAy/f27KSHYnbdC7ggeRRYypUKM
+	 +HBafMda4IfNG63cAttYics2sYs75QKFq8FnVod2yIeH5PnPXxvwmAavtidx+i7/IF
+	 1S2LlVmUmpADapAoy1QWkNWFHLGeMjz1Xgor3FP2JtGvVgeodI8QKJHf36GBy7sjav
+	 Oh7SVqWovdKCFJgMm/dxKXjg7d3X9Vg9u2V2MiqJPilnGos/BU2xM+Qr2/o7lBUxib
+	 aLYdF2ls1Y6537wEnR/hl2Z3+9NVqE5dWNkzl2ISt5aBtz+OnUn6bNQKHlyJcbIthS
+	 o8BNqF092VAiw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Wed, 30 Oct 2024 20:29:55 +0100
+Subject: [PATCH net-next] net: dsa: mt7530: Add TBF qdisc offload support
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [net-next v2] net: wwan: t7xx: reset device if suspend fails
-To: Jinjian Song <jinjian.song@fibocom.com>,
- chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
- haijun.liu@mediatek.com, m.chetan.kumar@linux.intel.com,
- ricardo.martinez@linux.intel.com, loic.poulain@linaro.org,
- johannes@sipsolutions.net, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com
-Cc: angelogioacchino.delregno@collabora.com, corbet@lwn.net,
- danielwinkler@google.com, helgaas@kernel.org, korneld@google.com,
- linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, netdev@vger.kernel.org,
- Linas Vepstas <linasvepstas@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>
-References: <20241022084348.4571-1-jinjian.song@fibocom.com>
- <20241029034657.6937-1-jinjian.song@fibocom.com>
-Content-Language: en-US
-From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
-In-Reply-To: <20241029034657.6937-1-jinjian.song@fibocom.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20241030-mt7530-tc-offload-v1-1-f7eeffaf3d9e@kernel.org>
+X-B4-Tracking: v=1; b=H4sIADKJImcC/x2MQQqAIBAAvxJ7TlhNCfpKdAhba6EyNCIQ/97Sa
+ ZjDTIFMiSnD0BRI9HDmeIrotgG/zedKihdxMGisxg7VcfdOcHsVQ9jjvCh0ZNBaqx0iSHclCvz
+ +z3Gq9QM2CB49YwAAAA==
+X-Change-ID: 20241030-mt7530-tc-offload-05e204441500
+To: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>, 
+ Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
+ Florian Fainelli <f.fainelli@gmail.com>, 
+ Vladimir Oltean <olteanv@gmail.com>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241030_113304_628263_E84F72E1 
-X-CRM114-Status: GOOD (  26.99  )
+X-CRM114-CacheID: sfid-20241030_123029_687726_C1D9B2C0 
+X-CRM114-Status: GOOD (  15.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,89 +81,125 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jinjian,
+Introduce port_setup_tc callback in mt7530 dsa driver in order to enable
+dsa ports rate shaping via hw Token Bucket Filter (TBF) for hw switched
+traffic. Enable hw TBF just for EN7581 SoC for the moment.
 
-On 29.10.2024 05:46, Jinjian Song wrote:
-> From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
->> On 22.10.2024 11:43, Jinjian Song wrote:
->>> If driver fails to set the device to suspend, it means that the
->>> device is abnormal. In this case, reset the device to recover
->>> when PCIe device is offline.
->>
->> Is it a reproducible or a speculative issue? Does the fix recover 
->> modem from a problematic state?
->>
->> Anyway we need someone more familiar with this hardware (Intel or 
->> MediaTek engineer) to Ack the change to make sure we are not going to 
->> put a system in a more complicated state.
-> 
-> Hi Sergey,
-> 
-> This is a very difficult issue to replicate onece occured and fixed.
-> 
-> The issue occured when driver and device lost the connection. I have
-> encountered this problem twice so far:
-> 1. During suspend/resume stress test, there was a probabilistic D3L2
-> time sequence issue with the BIOS, result in PCIe link down, driver
-> read and write the register of device invalid, so suspend failed.
-> This issue was eventually fixed in the BIOS and I was able to restore
-> it through the reset module after reproducing the problem.
-> 
-> 2. During idle test, the modem probabilistic hang up, result in PCIe
-> link down, driver read and write the register of device invalid, so
-> suspend failed. This issue was eventually fiex in device modem firmware
-> by adjust a certain power supply voltage, and reset modem as a workround
-> to restore when the MBIM port command timeout in userspace applycations.
-> 
-> Hardware reset modem to recover was discussed with MTK, and they said
-> that if we don't want to keep the on-site problem location in case of
-> suspend failure, we can use the recover solution.
-> Both the ocurred issues result in the PCIe link issue, driver can't read 
-> and writer the register of WWAN device, so I want to add this path
-> to restore, hardware reset modem can recover modem, but using the 
-> pci_channle_offline() as the judgment is my inference.
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/dsa/mt7530.c | 54 ++++++++++++++++++++++++++++++++++++++++++++++++
+ drivers/net/dsa/mt7530.h | 12 +++++++++++
+ 2 files changed, 66 insertions(+)
 
-Thank you for the clarification. Let me summarize what I've understood 
-from the explanation:
-a) there were hardware (firmware) issues,
-b) issues already were solved,
-c) issues were not directly related to the device suspension procedure,
-d) you want to implement a backup plan to make the modem support robust.
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index d84ee1b419a614dda5f440e6571cff5f4f27bf21..0adf69ac8827cd66cdc44f9bc43d27ab8acb785c 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -21,6 +21,7 @@
+ #include <linux/gpio/consumer.h>
+ #include <linux/gpio/driver.h>
+ #include <net/dsa.h>
++#include <net/pkt_cls.h>
+ 
+ #include "mt7530.h"
+ 
+@@ -3146,6 +3147,58 @@ mt753x_conduit_state_change(struct dsa_switch *ds,
+ 	mt7530_rmw(priv, MT753X_MFC, MT7530_CPU_EN | MT7530_CPU_PORT_MASK, val);
+ }
+ 
++static int mt753x_tc_setup_qdisc_tbf(struct mt7530_priv *priv, int port,
++				     struct tc_tbf_qopt_offload *qopt)
++{
++	struct tc_tbf_qopt_offload_replace_params *p = &qopt->replace_params;
++	u32 rate = 0;
++
++	switch (qopt->command) {
++	case TC_TBF_REPLACE:
++		rate = div_u64(p->rate.rate_bytes_ps, 1000) << 3; /* kbps */
++		fallthrough;
++	case TC_TBF_DESTROY: {
++		u32 val, tick;
++
++		mt7530_rmw(priv, MT7530_GERLCR, EGR_BC_MASK,
++			   EGR_BC_CRC_IPG_PREAMBLE);
++
++		/* if rate is greater than 10Mbps tick is 1/32 ms,
++		 * 1ms otherwise
++		 */
++		tick = rate > 10000 ? 2 : 7;
++		val = FIELD_PREP(ERLCR_CIR_MASK, (rate >> 5)) |
++		      FIELD_PREP(ERLCR_EXP_MASK, tick) |
++		      ERLCR_TBF_MODE_MASK |
++		      FIELD_PREP(ERLCR_MANT_MASK, 0xf);
++		if (rate)
++			val |= ERLCR_EN_MASK;
++		mt7530_write(priv, MT7530_ERLCR_P(port), val);
++		break;
++	}
++	default:
++		return -EOPNOTSUPP;
++	}
++
++	return 0;
++}
++
++static int mt753x_setup_tc(struct dsa_switch *ds, int port,
++			   enum tc_setup_type type, void *type_data)
++{
++	struct mt7530_priv *priv = ds->priv;
++
++	if (priv->id != ID_EN7581)
++		return -EOPNOTSUPP;
++
++	switch (type) {
++	case TC_SETUP_QDISC_TBF:
++		return mt753x_tc_setup_qdisc_tbf(priv, port, type_data);
++	default:
++		return -EOPNOTSUPP;
++	}
++}
++
+ static int mt7988_setup(struct dsa_switch *ds)
+ {
+ 	struct mt7530_priv *priv = ds->priv;
+@@ -3193,6 +3246,7 @@ const struct dsa_switch_ops mt7530_switch_ops = {
+ 	.get_mac_eee		= mt753x_get_mac_eee,
+ 	.set_mac_eee		= mt753x_set_mac_eee,
+ 	.conduit_state_change	= mt753x_conduit_state_change,
++	.port_setup_tc		= mt753x_setup_tc,
+ };
+ EXPORT_SYMBOL_GPL(mt7530_switch_ops);
+ 
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index 6ad33a9f6b1dff3a423baa668a8a2ca158f72b91..9467f2a3f2bca45b3fce3bace2b3b3205158c4bd 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -248,6 +248,18 @@ enum mt7530_vlan_egress_attr {
+ #define  AGE_UNIT_MAX			0xfff
+ #define  AGE_UNIT(x)			(AGE_UNIT_MASK & (x))
+ 
++#define MT7530_ERLCR_P(x)		(0x1040 + ((x) * 0x100))
++#define  ERLCR_CIR_MASK			GENMASK(31, 16)
++#define  ERLCR_EN_MASK			BIT(15)
++#define  ERLCR_EXP_MASK			GENMASK(11, 8)
++#define  ERLCR_TBF_MODE_MASK		BIT(7)
++#define  ERLCR_MANT_MASK		GENMASK(6, 0)
++
++#define MT7530_GERLCR			0x10e0
++#define  EGR_BC_MASK			GENMASK(7, 0)
++#define  EGR_BC_CRC			0x4	/* crc */
++#define  EGR_BC_CRC_IPG_PREAMBLE	0x18	/* crc + ipg + preamble */
++
+ /* Register for port STP state control */
+ #define MT7530_SSP_P(x)			(0x2000 + ((x) * 0x100))
+ #define  FID_PST(fid, state)		(((state) & 0x3) << ((fid) * 2))
 
-If got it right, then I would like to recommend to implement a generic 
-error handling solution for the PCIe interface. You can check this 
-document: Documentation/PCI/pci-error-recovery.rst
+---
+base-commit: 668d663989c77fcb2a92748645e4c394b03d5988
+change-id: 20241030-mt7530-tc-offload-05e204441500
 
-Suddenly, I am not an expert in the PCIe link recovery procedure, so 
-I've CCed this message to PCI subsystem maintainers. I hope they can 
-suggest a conceptually correct way to handle these cases.
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
->>> Signed-off-by: Jinjian Song <jinjian.song@fibocom.com>
->>> ---
->>> V2:
->>>   * Add judgment, reset when device is offline
->>> ---
->>>   drivers/net/wwan/t7xx/t7xx_pci.c | 4 ++++
->>>   1 file changed, 4 insertions(+)
->>>
->>> diff --git a/drivers/net/wwan/t7xx/t7xx_pci.c b/drivers/net/wwan/ 
->>> t7xx/t7xx_pci.c
->>> index e556e5bd49ab..4f89a353588b 100644
->>> --- a/drivers/net/wwan/t7xx/t7xx_pci.c
->>> +++ b/drivers/net/wwan/t7xx/t7xx_pci.c
->>> @@ -427,6 +427,10 @@ static int __t7xx_pci_pm_suspend(struct pci_dev 
->>> *pdev)
->>>       iowrite32(T7XX_L1_BIT(0), IREG_BASE(t7xx_dev) + 
->>> ENABLE_ASPM_LOWPWR);
->>>       atomic_set(&t7xx_dev->md_pm_state, MTK_PM_RESUMED);
->>>       t7xx_pcie_mac_set_int(t7xx_dev, SAP_RGU_INT);
->>> +    if (pci_channel_offline(pdev)) {
->>> +        dev_err(&pdev->dev, "Device offline, reset to recover\n");
->>> +        t7xx_reset_device(t7xx_dev, PLDR);
->>> +    }
->>>       return ret;
->>>   }
-
---
-Sergey
 
