@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BE4CD6B6DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2024 21:37:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A435D6B6DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2024 21:48:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NyNMPjO7MMUd6ojdX9/UDWNYw2O+FoxGF7IwqpNjl2U=; b=TACNJxlwGGvoge/LuIbC6BD5/A
-	GyzjqMd0aXZ7erGTOW3Uu8VnC7eNRS+LPODydt3JKL2poZ00CGfnt7+FgfJG+y7fhBeamems5mCcU
-	oXGY3Zzmyw/nBgHAoc4VcSQNOBIl3yCYIY7G+Ne8oF9R5xrNyGmTvfzzh1pKhQIHEQQ1g6WgAOqen
-	2N76lO6AaUVm9+/hLIJ8mi2t/RGuhBeOOs7XngZKQMO6m6jYHMPs+lodI8CIaP6YwlDPrj6eWfwjy
-	M0BQj6tlWbGiEwb8NbmRlSL6NYRDXuhPcFShsoWd9UJSKj2aSYUMEQD2FLmzjopZSzzoyC/P+jbIw
-	IgSoX+Xw==;
+	bh=Eaav/kHiULYtRFO7qGHqUzM2GyuXCQUp8En/mARPwCQ=; b=a9cc4KrfufKSAPR/krE8ite342
+	T5m79OdpWkhOjDdiwxUUtZ2SvKzaB0DJ/eWhk+v+HqY7yPfcnPYZmdiLh5skZ1zlWOXGLrAcdHdIQ
+	HABUX1m1Nx3OENDkiZESbH+zjcsE8HIfxJAdYZpudjXwYJq7wtgS8WbQYU/9rtygCT3Qx63lN7oCM
+	QEg0AXGgRQQ5ZYEk6CUjbHOhCMPM/Y402SnBN3WFozXv4hqTdoVOfZWDYrCHqjk0KUS+naG6Aayh4
+	Kh7k3HsXXHJ6ZXXMK4rh3SyIjZxON13QtKw9uYdeliLi4ewgO8hTKeAkokImyAo+BX2XNW6ZVDab4
+	thLrseyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6GNQ-00000001rvW-40gA;
-	Wed, 30 Oct 2024 21:37:16 +0000
+	id 1t6GYW-00000001vSh-0Fki;
+	Wed, 30 Oct 2024 21:48:44 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6GLk-00000001rV7-1gcY;
-	Wed, 30 Oct 2024 21:35:34 +0000
+	id 1t6GWq-00000001v5j-2b2g;
+	Wed, 30 Oct 2024 21:47:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=NyNMPjO7MMUd6ojdX9/UDWNYw2O+FoxGF7IwqpNjl2U=; b=6ODvVexGP24auXYynC9wLkGhzw
-	Ij5b5N2p3PUMIHkDOtE4nr8am56jtAaFUhmf/2F9T8z891JnfVvg327KEtn58HBHyEZ050bRc/cTP
-	08HGvuZ+j1tH62+k+BM0/SYAdhM+Lp5LpgXMRSsVm2j+A2zLM7zJCLN+myVyboiCPnAk=;
+	bh=Eaav/kHiULYtRFO7qGHqUzM2GyuXCQUp8En/mARPwCQ=; b=EKYDfn3Vh58p9C5n1lAe40Lvqf
+	ucFYM5n2r+44VJfBuIUPFlcpOTPfwsyXCjnQX9eaegFSdB4v4LkAe5m1ur3BuhS9bT5jjp3qf0Ffk
+	kpaQjznr4/fcD0MP0DPukyvCULZA2pTqtP9rT+KPXq9goFjH8pZaBjua6XOujBirCyjE=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1t6GLP-00BjTa-At; Wed, 30 Oct 2024 22:35:11 +0100
-Date: Wed, 30 Oct 2024 22:35:11 +0100
+	id 1t6GWd-00BjVC-67; Wed, 30 Oct 2024 22:46:47 +0100
+Date: Wed, 30 Oct 2024 22:46:47 +0100
 From: Andrew Lunn <andrew@lunn.ch>
 To: Sky Huang <SkyLake.Huang@mediatek.com>
 Cc: Heiner Kallweit <hkallweit1@gmail.com>,
@@ -53,18 +53,18 @@ Cc: Heiner Kallweit <hkallweit1@gmail.com>,
 	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Steven Liu <Steven.Liu@mediatek.com>
-Subject: Re: [PATCH net-next 1/5] net: phy: mediatek: Re-organize MediaTek
- ethernet phy drivers
-Message-ID: <cd2f249b-6257-4692-ac2f-93252534cff4@lunn.ch>
+Subject: Re: [PATCH net-next 2/5] net: phy: mediatek: Move LED helper
+ functions into mtk phy lib
+Message-ID: <7cb014a6-ec64-4482-b85c-44f29760d186@lunn.ch>
 References: <20241030103554.29218-1-SkyLake.Huang@mediatek.com>
- <20241030103554.29218-2-SkyLake.Huang@mediatek.com>
+ <20241030103554.29218-3-SkyLake.Huang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241030103554.29218-2-SkyLake.Huang@mediatek.com>
+In-Reply-To: <20241030103554.29218-3-SkyLake.Huang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241030_143532_458620_631F3450 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20241030_144700_676892_63889064 
+X-CRM114-Status: GOOD (  11.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,30 +79,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 30, 2024 at 06:35:50PM +0800, Sky Huang wrote:
-> From: "SkyLake.Huang" <skylake.huang@mediatek.com>
-> 
-> Re-organize MediaTek ethernet phy driver files and get ready to integrate
-> some common functions and add new 2.5G phy driver.
-> mtk-ge.c: MT7530 Gphy on MT7621 & MT7531 Gphy
-> mtk-ge-soc.c: Built-in Gphy on MT7981 & Built-in switch Gphy on MT7988
-> mtk-2p5ge.c: Planned for built-in 2.5G phy on MT7988
-> 
-> Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
-> ---
-> No change since commit:
-> https://lore.kernel.org/netdev/20241004102413.5838-2-SkyLake.Huang@mediatek.com/
-> 
-> Andrew Lunn has already reviewed this.
+> +void mtk_phy_leds_state_init(struct phy_device *phydev)
+> +{
+> +	int i;
+> +
+> +	for (i = 0; i < 2; ++i)
+> +		phydev->drv->led_hw_control_get(phydev, i, NULL);
+> +}
 
-You should append the Reviewed-by: Andrew Lunn <andrew@lunn.ch> to the
-commit message, just before your Signed-off-by:. Taking the patches
-out of a series like this should not invalidate a Reviewed-by, so long
-as you don't make any changes to the patch.
+This does appear to be the same as what it is replacing, but it also
+seems odd.
+
+Why is an init function doing a get? I assume it is to do with setting
+priv->led_state? But led_state is not used in setting *rules, which is
+what led_hw_control_get() is all about. So maybe in a follow up patch,
+move the actual init code out of led_hw_control_get()?
+
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
     Andrew
-
----
-pw-bot: cr
-
 
