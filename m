@@ -4,85 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73078D7495E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2024 07:35:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CDBCD7495E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2024 07:42:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:From:Date:Reply-To:To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Subject:Cc:To:
+	From:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WwEZskytNCIxQggG34Kcvzn/h7WxM+KE0ZJz42WQe0A=; b=SXX9xI92ANuHVueKWWZbdRFf3q
-	C6FlodVABVVRaaHVsrn07BPn1isUX9kQ8iK0K28EJ9o2cH/+IePl7iLgnzrOx9cmAdowjsKoxiGc0
-	jPhzqXp1eEu44U1RH1b4HUuFw9zjfsD1UNVy2kExxe9w1NtQtZOPFqQg2qoxjNi8yFtj0DmpZqQj/
-	MIZnzdn+tvh7AK+ynduQXEp6A3E12MlH1rMB6H01uFE/g4e57v5HI7iR1u1rRzmrnRmxoZ8o6hsuz
-	GI65gUe1T+bb2iTV0Si0UpZ+K/mPYbh0eccFl8CrAKw8ZBowAzM0FTpTd1kgIcXZZ7EXujPICuJ+5
-	v+gVNYuw==;
+	bh=F/obSxVgLXYAZ3S4bATKBujgO8U8oWR6WSGb4BNz1Rc=; b=GGE9QhnEQ04Ce/9PzET2c9ZiKB
+	ZGa2VONcmBmipXDBvlmGfbZXhaeCrQDjOYC07cSQYV1xtPiQ9QXzXIaQdkjyB3BJRlCnip4gFTaeE
+	6amgH8ipvd8Q3QfsmkqiBdnbBcaKRpp5by/qS6HFM8AiVv1q+o4GJAD6gD3ZCpmm5rPB4CcB0pKs4
+	mRa8bfJrLmCyIN9zo8521RwMnmOpRVZWS5ghfwJbGvscfg6uVzXEgl3cMaYZU/yUO7ij/zssab85o
+	0ETBhJaLTmo3HDwhLwWreLYSSUC7p6iJteokNWA7FkjtvjjOFzLvt9l3AAyCyFtIKjvpkLyX2Lp9I
+	BU3k+0bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t63ET-0000000H9wZ-0bpI;
-	Wed, 30 Oct 2024 07:35:09 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1t63LZ-0000000HB2l-0DSo;
+	Wed, 30 Oct 2024 07:42:29 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t63DQ-0000000H9iU-1wSu
-	for linux-mediatek@lists.infradead.org;
-	Wed, 30 Oct 2024 07:34:05 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-43193678216so48687375e9.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 30 Oct 2024 00:34:04 -0700 (PDT)
+	id 1t63LW-0000000HB0o-0T6n;
+	Wed, 30 Oct 2024 07:42:27 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-431688d5127so59495555e9.0;
+        Wed, 30 Oct 2024 00:42:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1730273643; x=1730878443; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=WwEZskytNCIxQggG34Kcvzn/h7WxM+KE0ZJz42WQe0A=;
-        b=nnTLQwTW7Kis1L/g9eXeCx0SS70sq/xM18zy0I1iKwSO1Z1OawjS0nGdEweBcbWmOk
-         UYY4tUFzqKmGugBqsXB6UuCCXJInnwblN/3UGzIl1nEl5XkEM68vp7zcPgoKykp2pbHx
-         CY/pfKMyQU4nOmqLeDBO8ivw5W6SdfcTm51I8RlbrkT7Mjo4D4Go20qXqIE20L+lA7P8
-         WIm+lpytRp7sUF0cdGTilnHwCj59yAFFs2ogogLUDWzBjbDtJiTfgO5w8ZIOhOOttmwu
-         OyscrKpxfpcFiPGvpfDUcuskoQXYxBG7kH/uU3+C1SaZLiS5WAI+Ik8oVrOD/iq0Ueg2
-         M6FA==
+        d=gmail.com; s=20230601; t=1730274144; x=1730878944; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:subject:cc:to:from:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=F/obSxVgLXYAZ3S4bATKBujgO8U8oWR6WSGb4BNz1Rc=;
+        b=P1g/JVyqQKVc6cbdtc4UsyuegJUf/P1Or3TVWm7b+eiU+pXpsaY2FxpHYvXL3nRWQT
+         /tQ0+5okPA2cvZwGs4ywPtaQejXawQqG9zyKcWmVBvqpzLtqmHSW+zRpqW7O9uw7eR+o
+         DSLVJ+omIsIjbB73PnkCSlaio4IxVc8mLOo1p6XR8bTxZGY4aQKFHyb5pRT38mFvfuoK
+         M3ir61wDfnUsjoT7uRY9riwzAuaA/BIonHMZEWwOM32sFrbguGCfodRpTSA6+BbUMOAl
+         5zCsc6JDMrNaDO3s8SwgEWklvt73Cuo7omano9h9C8X+jngubXDCyox/xusjoahqx80K
+         T1Uw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730273643; x=1730878443;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=WwEZskytNCIxQggG34Kcvzn/h7WxM+KE0ZJz42WQe0A=;
-        b=IHxVguBRWQdqcK4KIyhcfFUQGsAVSY9lDV1YZOOQvgUIly06JJq9fFTGoq+NgPZQbg
-         68XnpZhtwXLegpgHv5gwlLIPNYIM5PdAWaG3gAPSoHf8Dhz+H0iiW4pCl+uiZzL65A+7
-         sLDvBViitQTAWe2df3RJbdO3LReSEfTJb8bWhx/tW/Gg6Z21i61S/Ra0Z0UfJXo2ZeoT
-         7oxIFp00dWukIQVDchVD+6JgjmxJUM1pI4jTZNDB/hh1emTxRDTzEmxukwbL+4v9PjGQ
-         0wWpyyTROXKvwzwzGHuQktQUy1VFMp3f5p7ocl4EmcK+JEO/aipm/YHjZ7Bno2C9O7tJ
-         NZfw==
-X-Forwarded-Encrypted: i=1; AJvYcCWkslZP9C1ZTQ61DAxVw4/3jPFv+hwBIe4xbXEknd4LjXJIxnsdyuX+PE+rvdZXiNFZAOYIySa5RG1Ajj3S/g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyxNwOwD1GeH3Tt7AIJEo/mWKKiDxyM1cimKm6jSWT/4WKU9/cm
-	myxmSWzHQkpU/qWILLA0vr+AiHtCByuMns90tGVS5V7sI3SDD8osSOrTVjxC5y8=
-X-Google-Smtp-Source: AGHT+IFvSeQlKDXZ2TaznWZQry6qmvVUbv1vCSFsNuf03fMgrDansChUa9SPu6uyHlj1+Orbp7RrSg==
-X-Received: by 2002:a05:600c:4ecb:b0:42e:75a6:bb60 with SMTP id 5b1f17b1804b1-4319acb8fcbmr123819465e9.19.1730273642534;
-        Wed, 30 Oct 2024 00:34:02 -0700 (PDT)
-Received: from localhost (p50915d2d.dip0.t-ipconnect.de. [80.145.93.45])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-431bd99eab4sm12468095e9.44.2024.10.30.00.34.01
+        d=1e100.net; s=20230601; t=1730274144; x=1730878944;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:subject:cc:to:from:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=F/obSxVgLXYAZ3S4bATKBujgO8U8oWR6WSGb4BNz1Rc=;
+        b=RzxlxRKGT0ceWrq7T1k/MKoAL1dOrbqjs60nWAbwXwVron0ewHgpBA1BYcscEOFmt0
+         Jd4YS23xYCQuXWIie0hYtQZelvioiaIrsk+oM9RRuYFXJFiDa68+aMma0HT+Y+RneGe+
+         /FcjrTv49SoPaSRqOtKfcDcYmgptzjZT2EQ2HOcD7C1dP+wS/fXP8MIUVukcN8bXtixq
+         mK/Y3GYdUTeCp1j8XWEKhBJscMXehOK5gyXSOCmUon56Ujc+1D849fj7ztour+WxfEf9
+         HnncDkuVAfTDmJXSmwtG0hlFjX8vWASZ8w6aHnAExBYEt90BelSa6RKODmh4lTlSWe6P
+         0k5w==
+X-Forwarded-Encrypted: i=1; AJvYcCV0DObWBfennYLxnZZ4JMH8ZYPVHXboqeN6ywN5sWtO2t/H8YiuL+kcz4cYRrzX23tCQQa4RUGdIp905nKDGpo=@lists.infradead.org, AJvYcCVm1qY34KMa90cZlGJkqMjy+b1TSX+2Zsp0JWP1tl39RajBvNJQqoCb2bCvgcLOVZj1VS32rlRLgQXuzTk4zYWm@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx9QIMDVVMw7fNL8QNS1VLzx51hWNydAtike88ewNugM6aVfYfi
+	Yai3SlHtr8PsQ39/6oVUiak0rcuKXTOz/xwCvHqYF+mPfHkA8DVn
+X-Google-Smtp-Source: AGHT+IETsV7UXMLp399BinpD0w900qG3hOgbxpUxgRBwxez5FYrcNIGJm85eQ9FYoXQ64YlW1Wx4Ow==
+X-Received: by 2002:a05:600c:4fd3:b0:431:60d0:9088 with SMTP id 5b1f17b1804b1-4319ac9acedmr136064005e9.13.1730274143634;
+        Wed, 30 Oct 2024 00:42:23 -0700 (PDT)
+Received: from Ansuel-XPS. (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-431bd91096asm12658425e9.13.2024.10.30.00.42.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 30 Oct 2024 00:34:02 -0700 (PDT)
-Date: Wed, 30 Oct 2024 08:34:01 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lee Jones <lee@kernel.org>, linux-mediatek@lists.infradead.org, 
-	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	upstream@airoha.com, benjamin.larsson@genexis.eu, ansuelsmth@gmail.com, 
-	linux-pwm@vger.kernel.org
+        Wed, 30 Oct 2024 00:42:23 -0700 (PDT)
+Message-ID: <6721e35f.050a0220.b8d65.2cd0@mx.google.com>
+X-Google-Original-Message-ID: <ZyHjXKFEqqbkJkHz@Ansuel-XPS.>
+Date: Wed, 30 Oct 2024 08:42:20 +0100
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lee Jones <lee@kernel.org>, linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
+	benjamin.larsson@genexis.eu, linux-pwm@vger.kernel.org
 Subject: Re: [PATCH v9 0/6] Add mfd, pinctrl and pwm support to EN7581 SoC
-Message-ID: <t7i6lkx5oedjma6uauiygnvbgzixnsqmolmkse3j2qiy5znf7t@kfozote6mm2k>
 References: <20241023-en7581-pinctrl-v9-0-afb0cbcab0ec@kernel.org>
  <CACRpkdaEQYBim8TuDCCw15QDUWhHC-VqhGq1Le7eOd76k56zwQ@mail.gmail.com>
+ <t7i6lkx5oedjma6uauiygnvbgzixnsqmolmkse3j2qiy5znf7t@kfozote6mm2k>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="56rk2czsrrb44okr"
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <CACRpkdaEQYBim8TuDCCw15QDUWhHC-VqhGq1Le7eOd76k56zwQ@mail.gmail.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <t7i6lkx5oedjma6uauiygnvbgzixnsqmolmkse3j2qiy5znf7t@kfozote6mm2k>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241030_003404_543704_40F16B5F 
-X-CRM114-Status: GOOD (  15.59  )
+X-CRM114-CacheID: sfid-20241030_004226_175763_A46A8011 
+X-CRM114-Status: GOOD (  18.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,53 +103,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, Oct 30, 2024 at 08:34:01AM +0100, Uwe Kleine-König wrote:
+> Hello Linus,
+> 
+> On Tue, Oct 29, 2024 at 11:03:14PM +0100, Linus Walleij wrote:
+> > On Wed, Oct 23, 2024 at 1:21 AM Lorenzo Bianconi <lorenzo@kernel.org> wrote:
+> > 
+> > > Introduce airoha-mfd driver in order to load pinctrl and pwm drivers for
+> > > EN7581 SoC. airoha-mfd is needed since both pinctrl and pwm drivers
+> > > needs to access the same memory block (gpio memory region) to configure
+> > > {gio,irq}_chip and pwm functionalities respectively, so model them as
+> > > childs of a parent mfd driver.
+> > 
+> > OK someone has to merge this and I suggest that I merge patches 1-5
+> > (all bindings and the pinctrl driver) since the different bindings have
+> > dependencies between them.
+> 
+> Fine for me.
+> 
+> > Then Uwe can merge patch 6/6 (the pwm driver).
+> 
+> The pwm patch needs some more love, we can handle that separately then.
+> 
 
---56rk2czsrrb44okr
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v9 0/6] Add mfd, pinctrl and pwm support to EN7581 SoC
-MIME-Version: 1.0
+Thanks for the feedback, so I assume we will detach the DT and PWM
+driver from this driver and handle it separately.
 
-Hello Linus,
-
-On Tue, Oct 29, 2024 at 11:03:14PM +0100, Linus Walleij wrote:
-> On Wed, Oct 23, 2024 at 1:21=E2=80=AFAM Lorenzo Bianconi <lorenzo@kernel.=
-org> wrote:
->=20
-> > Introduce airoha-mfd driver in order to load pinctrl and pwm drivers for
-> > EN7581 SoC. airoha-mfd is needed since both pinctrl and pwm drivers
-> > needs to access the same memory block (gpio memory region) to configure
-> > {gio,irq}_chip and pwm functionalities respectively, so model them as
-> > childs of a parent mfd driver.
->=20
-> OK someone has to merge this and I suggest that I merge patches 1-5
-> (all bindings and the pinctrl driver) since the different bindings have
-> dependencies between them.
-
-Fine for me.
-
-> Then Uwe can merge patch 6/6 (the pwm driver).
-
-The pwm patch needs some more love, we can handle that separately then.
-
-Best regards and thanks,
-Uwe
-
---56rk2czsrrb44okr
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmch4WYACgkQj4D7WH0S
-/k5D1QgAjbBhIuEEliXD8FforKpez8jJ1PxkBpkZubAbNImwSpOpOGraTpIwdy94
-+Mp7owHDJULSYRibBSz9vASz1ULu+LElGQSTtfO/FMdo4fxZhS8mNWJmso3GgbfB
-6sf83Ou6IPy0V9RZS06z92en0jFa296T66+U+eQRcMvgZRZnL0R7Aqhm9acidZFS
-kTzQw7fKIpqi5t07aAeQxKZWZ8Ag8hPwQdEECSpzJedn8c9yRaop1swgJ5X46Gs4
-NZMYuepIpatIVEfog8i/NzV/AQpy99nlQfLpt7nbPQk+o0gINALiBGe7bGzZMDNj
-27futyysj3wJ/nuiDdGOnZtazOm71Q==
-=pz6h
------END PGP SIGNATURE-----
-
---56rk2czsrrb44okr--
+-- 
+	Ansuel
 
