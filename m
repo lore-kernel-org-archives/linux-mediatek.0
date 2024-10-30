@@ -4,87 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86242D7494F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2024 00:23:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2A9ED74955
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2024 01:37:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g97qSBk0nfVaTQ4nSQz7mm5l86i31AAhLyCvLjCxnwg=; b=NMiFpAVJtvyzyP/M1Z1XE+WtZC
-	PVl4w8syRHPJe2I780xLykbtKqq2+95jH1S+IprmVYlnezc91w4XpLWaHjdVgQQSCdfzeyJiPKUYE
-	bPIm9RDdwn8iO02oT0Ofzpl4cdZPgP5SllUxvJuPJxi646tWVnIir4zpCHuJjJQyQhCrPoQDPmOa+
-	816XsHEp46CzruOxEA/FPbo48XsvyptZFUb+ABC6f7cBKXqP3TVQ+tfyhpzU47qh4bGyUXdEpPzfk
-	77+Cp1yB4HGk0IagbXTTUNJZRDNrB6BOy+RluFlC7yjkpYyPHugv/VCj1hf+kxJ+eRhDbfWMvpHdu
-	3q+P/T2Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ayZ15KMuy8YT+MalqR6y/T6iKNCjhQrVgR1kRLPQd8c=; b=RKY+0CArUDtcmo/IV48M6SJTWB
+	cfZM+lgfvTCZAmPtlDfKyqq/OY7CS9tsEyJ6icm6sfbbT1sjik8tSQQxjb531NNFBddgqZcCqam1w
+	MX15nC0NWsVI22i4xQCxmuQcEugiie8S4o9oUPfXyika5TDyG53W9JR4F2+1nJKUny/4y8IUuVgXp
+	tww6/tGkUqIi1waZnth+zctU4SoM9Vzr932/0Uw16072eU8ZMpyBuBfItZih2uEcbsDbaP/byqIGT
+	7y1szJNL6LBW8FvTT3FL+PK9NDIYNN2xetInX/DWuaWH6NvlJYV+b6Iv0/gQwAFGAuQ5lEfb2XCBc
+	z2aSbeqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5wUl-0000000GK5t-2p7D;
-	Wed, 30 Oct 2024 00:23:31 +0000
-Received: from pi.codeconstruct.com.au ([203.29.241.158] helo=codeconstruct.com.au)
+	id 1t5xeM-0000000GQog-1KCM;
+	Wed, 30 Oct 2024 01:37:30 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t5wUi-0000000GK54-3kMm;
-	Wed, 30 Oct 2024 00:23:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=codeconstruct.com.au; s=2022a; t=1730247801;
-	bh=g97qSBk0nfVaTQ4nSQz7mm5l86i31AAhLyCvLjCxnwg=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=di+ZrdRmCd/lQns/8eExuvjbnZpOwlfJZqQhT0vk6A4dWQSREGaSjYA1NUpuSXq/9
-	 zLOKIqOjor7p9tE0dyGfw4ybWiryzyo+iipRVF2kM5VpPdFA3d+3Ou9jXOVP2gRjYg
-	 nxhaMgbcn/2U32y5829iQGbhb4KxNznUA2+K/2a0+EQ2SswvR0VQC5IX3R2gM1Hc5H
-	 qIqUDA2Y9Sx6OWg9iXKjz7Q61ZLM8qzV89E79bImydBlZ3cYU8OsnRBo4eKdTRLt29
-	 HKUqM1u67bcl+f74e72B6y7/Ev8hL3bEW1/AqAaeVkze+VI+uRfQfKCa7B551KThzG
-	 ud9Ehgxe8s9Jw==
-Received: from [192.168.68.112] (ppp118-210-190-243.adl-adc-lon-bras34.tpg.internode.on.net [118.210.190.243])
-	by mail.codeconstruct.com.au (Postfix) with ESMTPSA id A1A9067E6D;
-	Wed, 30 Oct 2024 08:23:10 +0800 (AWST)
-Message-ID: <3c7893f5186f0c6d64c063dc0a609ec8d6c8bcf1.camel@codeconstruct.com.au>
-Subject: Re: [PATCH] soc: Switch back to struct platform_driver::remove()
-From: Andrew Jeffery <andrew@codeconstruct.com.au>
-To: Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>, 
-	Arnd Bergmann
-	 <arnd@arndb.de>, Olof Johansson <olof@lixom.net>
-Cc: Joel Stanley <joel@jms.id.au>, Christophe Leroy
- <christophe.leroy@csgroup.eu>, Herve Codina <herve.codina@bootlin.com>, 
- Qiang Zhao <qiang.zhao@nxp.com>, Hitomi Hasegawa
- <hasegawa-hitomi@fujitsu.com>, Huisong Li <lihuisong@huawei.com>, Linus
- Walleij <linusw@kernel.org>, Imre Kaloz <kaloz@openwrt.org>, Karol Gugala
- <kgugala@antmicro.com>, Mateusz Holenko <mholenko@antmicro.com>, Gabriel
- Somlo <gsomlo@gmail.com>, Yinbo Zhu <zhuyinbo@loongson.cn>, Matthias
- Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Conor Dooley
- <conor.dooley@microchip.com>, Daire McNamara
- <daire.mcnamara@microchip.com>, Krzysztof Kozlowski
- <krzysztof.kozlowski@linaro.org>, Bjorn Andersson <andersson@kernel.org>, 
- Konrad Dybcio <konradybcio@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Alim Akhtar <alim.akhtar@samsung.com>,  Thierry Reding
- <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- Nishanth Menon <nm@ti.com>,  Santosh Shilimkar <ssantosh@kernel.org>,
- Michal Simek <michal.simek@amd.com>, Andy Shevchenko
- <andriy.shevchenko@linux.intel.com>, Duje =?UTF-8?Q?Mihanovi=C4=87?=
- <duje.mihanovic@skole.hr>, Mark Brown <broonie@kernel.org>, David Wu
- <david.wu@rock-chips.com>, Jianqun Xu <jay.xu@rock-chips.com>, Jay
- Buddhabhatti <jay.buddhabhatti@amd.com>, Radhey Shyam Pandey
- <radhey.shyam.pandey@amd.com>,  Izhar Ameer Shaikh
- <izhar.ameer.shaikh@amd.com>, Naman Trivedi Manojbhai
- <naman.trivedimanojbhai@amd.com>,  linux-arm-kernel@lists.infradead.org,
- soc@lists.linux.dev,  linux-aspeed@lists.ozlabs.org,
- linux-kernel@vger.kernel.org,  linuxppc-dev@lists.ozlabs.org,
- loongarch@lists.linux.dev,  linux-mediatek@lists.infradead.org,
- linux-riscv@lists.infradead.org,  linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org,  linux-samsung-soc@vger.kernel.org,
- linux-tegra@vger.kernel.org,  linux-pm@vger.kernel.org
-Date: Wed, 30 Oct 2024 10:53:09 +1030
-In-Reply-To: <20241029074859.509587-2-u.kleine-koenig@baylibre.com>
-References: <20241029074859.509587-2-u.kleine-koenig@baylibre.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.46.4-2 
+	id 1t5xeJ-0000000GQnl-30qW;
+	Wed, 30 Oct 2024 01:37:28 +0000
+X-UUID: 83027e6a965f11ef82ff63e91e7eb18c-20241029
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ayZ15KMuy8YT+MalqR6y/T6iKNCjhQrVgR1kRLPQd8c=;
+	b=hu+QhaOMh3IrLFvqwZd/WEKxQXvaXr35Q6m6glSUKLb8MU7+YwppaOrtOtu4bu77qjYEXHKM35HhCjdgDq+mfplwXiJFN7OocYsuGrRT4moiMukxDMVblVD97LLqwYnz2SnfodyqcahZJn7KXaK1FwyHG1LUl8K0kpc5aDBLR28=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.42,REQID:43822764-7bbe-461b-9c05-62db18d8433a,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:d67642e7-cb6b-4a59-bfa3-98f245b4912e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 83027e6a965f11ef82ff63e91e7eb18c-20241029
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
+	(envelope-from <karl.li@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1705292847; Tue, 29 Oct 2024 18:37:23 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 30 Oct 2024 09:37:20 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 30 Oct 2024 09:37:20 +0800
+From: Karl.Li <karl.li@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Karl Li <Karl.Li@mediatek.com>,
+	Chungying Lu <chungying.lu@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<chien-chih.tseng@mediatek.com>, <andy.teng@mediatek.com>, Karl Li
+	<karl.li@mediatek.com>
+Subject: [PATCH v2 0/1] Add MediaTek APU SMC call Definition
+Date: Wed, 30 Oct 2024 09:35:27 +0800
+Message-ID: <20241030013533.855696-1-karl.li@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241029_172329_145776_4BE8AF19 
-X-CRM114-Status: GOOD (  20.21  )
+X-CRM114-CacheID: sfid-20241029_183727_797098_42D98763 
+X-CRM114-Status: UNSURE (   9.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,52 +87,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2024-10-29 at 08:48 +0100, Uwe Kleine-K=C3=B6nig wrote:
-> After commit 0edb555a65d1 ("platform: Make platform_driver::remove()
-> return void") .remove() is (again) the right callback to implement
-> for
-> platform drivers.
->=20
-> Convert all platform drivers below drivers/soc to use .remove(), with
-> the eventual goal to drop struct platform_driver::remove_new(). As
-> .remove() and .remove_new() have the same prototypes, conversion is
-> done
-> by just changing the structure member name in the driver initializer.
->=20
-> On the way do a few whitespace changes to make indention consistent.
->=20
-> Signed-off-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@baylibre.com>
-> ---
-> Hello,
->=20
-> I did a single patch for all of drivers/soc. While I usually prefer
-> to
-> do one logical change per patch, this seems to be overengineering
-> here
-> as the individual changes are really trivial and shouldn't be much in
-> the way for stable backports.
->=20
-> There is no dedicated maintainer for all of drivers/soc, but I'd
-> expect
-> it to be ok to be picked up by the arm soc team.
->=20
-> This is based on today's next, if conflicts arise when you apply it
-> at
-> some later time and don't want to resolve them, feel free to just
-> drop
-> the changes to the conflicting files. I'll notice and followup at a
-> later time then. Or ask me for a fixed resend.
->=20
-> Best regards
-> Uwe
->=20
-> =C2=A0drivers/soc/aspeed/aspeed-lpc-ctrl.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 | 2 +-
-> =C2=A0drivers/soc/aspeed/aspeed-lpc-snoop.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 | 2 +-
-> =C2=A0drivers/soc/aspeed/aspeed-p2a-ctrl.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 | 2 +-
-> =C2=A0drivers/soc/aspeed/aspeed-uart-routing.c=C2=A0=C2=A0=C2=A0 | 2 +-
+From: Karl Li <karl.li@mediatek.com>
 
-Acked-by: Andrew Jeffery <andrew@codeconstruct.com.au> # aspeed
+Based on tag: next-20241029, linux-next/master
+
+Hello,
+
+This patch introduces the SMC calls for MediaTek APU.
+
+The start and stop sequences of the APU microprocessor are managed within the ARM Trusted Firmware (ATF), which requires a secure and reliable communication channel to issue commands from the non-secure world. This patch adds the necessary infrastructure to issue these SMC calls, ensuring that the APU can be securely managed by the system's software.
+
+Please review and provide feedback.
+
+Best regards
+
+---
+
+Changes in v2:
+
+- Move header file to include/linux/firmware/mediatek/
+- Rename header file name to mtk-apu.h
+- Update define macro name to __MEDIATEK
+
+Karl Li (1):
+  soc: mediatek: Add command for APU SMC call
+
+ include/linux/firmware/mediatek/mtk-apu.h | 32 +++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
+ create mode 100644 include/linux/firmware/mediatek/mtk-apu.h
+
+-- 
+2.18.0
+
 
