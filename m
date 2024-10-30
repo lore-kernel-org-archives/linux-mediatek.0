@@ -4,84 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC52AD2AB2C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2024 09:21:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3573D5CC82
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2024 10:03:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nXB58CuEgVXls1f+iMFYqhB7nNGt0EfBseEbWcPVD0k=; b=bN/zJkzeDnUjmad0Y9/njiDD4e
-	6RScIT++GQiRaGAbmqLK0fWLhRqFGVU3IB99/kC1aqFwX0Q0j/o3rXumDCh9o9/lAprmBHRoBvGEo
-	Hskc9e7RfJaJMK3FNyLntjT9d+MkFTUXrwwLGNS4ifKMk2Y0UeUO908uoazeXTZEl5MVU/XHNptAf
-	0FKW7nRA25BuNRYmSLhPqpEHGKAjXQWY59LeNc29h9HfjSVoDSjGytuZzEX9rlDBnpjp3TMT/RwxJ
-	K3D4qu3r6KdUSSEDXUbBeaRkW30r4fbyNKwebxXJVZIAqGt5Qoj5HVI9t0zDc2oBnpGCGUAVZzAWR
-	M2CGCTxQ==;
+	bh=iGqrgvqdsygpPt5o2JbcWPHpoKlMxM1VXeT/riCMvAU=; b=glzXsI9pU8iP0OHej27HRnuAvA
+	dxGo05G+v4FewmiDPEBBk1In1mSEz19keBKOIj/VBGzOXW246F931xz7aLE0fB1pSEE2VE4wiqtM8
+	WadXG2CZ6npAuPS4ezPP4hO5g0UQrkSMFkIL2EBVS63TJZFyE2I2fL+1NTQjzXrudJ4jbnpSvtsaV
+	CsgLbebCfYC44nFudv64nWGmqD5sJsPFSkvTxpgCf+LhVcRrEQ8s0E1tsUHOPnWwDGzUZExwRUf6j
+	L5qJxgk5kbnrAnkbOgM75i2v/Szq6JBtIsJkHBwdgl4lF3KDiQzNxfErmPKLPCAb9jjMFGzBL97Qs
+	sEjs2PJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t64tY-0000000HNgo-1xNd;
-	Wed, 30 Oct 2024 09:21:40 +0000
-Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
+	id 1t65Xa-0000000HUZU-3UAv;
+	Wed, 30 Oct 2024 10:03:02 +0000
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t64tU-0000000HNgC-1r3r
+	id 1t65UB-0000000HTYt-1gjC
 	for linux-mediatek@lists.infradead.org;
-	Wed, 30 Oct 2024 09:21:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=leemhuis.info; s=he214686; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:From:
-	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:In-Reply-To:
-	References; bh=nXB58CuEgVXls1f+iMFYqhB7nNGt0EfBseEbWcPVD0k=; t=1730280096;
-	x=1730712096; b=lVmgVWMnhkrJ8FDr1rac6HURNSgymuyMktRUONRWDXLDCQeXwvGsCwtdGP4OX
-	jp3ElyHVH58M/beh8dGh/eZd4HMUQaL/KgvRZxa6XKO+gkAyuf4qaEa2lrdIDCsQNNvyhAJF2BESs
-	xiNQHoic4CNt3umkalfIQz/K81lW9ZhG9juo50A557wCseiovr+RbOx6X+LvMgqvvTxsu0vXrO/Em
-	L06Clfw2LVcUr0F2YGzS5NNVgmrWDfE9gFew93sjsuhLBWt22fN6vq0aDRR6CjwJIRWm3w5GHKTfT
-	zpFupgVai7KsrHcCDAIcbTB9puKmaYhTO7d1gWmtOESn+QmbQA==;
-Received: from [2a02:8108:8980:2478:8cde:aa2c:f324:937e]; authenticated
-	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	id 1t64tK-0006fj-Q4; Wed, 30 Oct 2024 10:21:26 +0100
-Message-ID: <75f671b6-ce2a-4404-b662-2c9c7d28a598@leemhuis.info>
-Date: Wed, 30 Oct 2024 10:21:25 +0100
+	Wed, 30 Oct 2024 09:59:33 +0000
+Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-2fb3c3d5513so57949501fa.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 30 Oct 2024 02:59:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1730282369; x=1730887169; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=iGqrgvqdsygpPt5o2JbcWPHpoKlMxM1VXeT/riCMvAU=;
+        b=Xx9NFe7+cLGtM/VOOEqsz2eP1NIMPEVeYtIzB1w1AQCfgMbd50D3pMfG1kSxyDdunJ
+         qc6pS6fZKqlwm7gSaXThPyZu31ufa9CtLsCYiK/gz23aQTvFLh66uBoCPIw+4aMSKFE2
+         UK6m93o0Xe+MbfLZKioev8GTdE7KBF4HBIp1RHI080TD6RvDKli3jj6+z6qtivC0KlfD
+         wi6dc+wdtq28CrfBe1jlgkDdbXEovLvdMU4K8ytoVs6Qp4Mx4FY9fTkfRCDKSOha49ZV
+         2SkIwdOmpcDg3pCG6KWRT3eFhdp/f4m4X8KnIFNLtLsaNlOOEGrS50vOzjKyiB4xxZsh
+         zIQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730282369; x=1730887169;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=iGqrgvqdsygpPt5o2JbcWPHpoKlMxM1VXeT/riCMvAU=;
+        b=fvtkixlchD+TvSgvTJ0jSskzXAZfj9Jw1Vy0VWEn2rpHi8EZyv0VkqGfQju/AfFXro
+         OkO/dXGV516fV88a+ZjlVaPp6edS2APqI5LmVS0yppWdpDU2mCWOycQzq9BLm7emTyON
+         HeQ6XvG+GHA8r4Ie2yGhKLjGEgeWPRvGSAJbfj5rpDw90OUnnlJXdSwZrN2BrnVVuPJG
+         PmXK8ccrU8ovKYttcZvOT9QOIJ8a21QaLd/VClVMDHF4cIxfucLYLkAosPU4zeN+IiHJ
+         4/OViNSnc1WUVhjV9wNm0vZrxG8ZyhHYSd+DcWoOKmGFcCT2YriIeOflki1xxoGLfrsF
+         oYsw==
+X-Forwarded-Encrypted: i=1; AJvYcCX6N4lu8eBxlHeXjQKeR8EiDu42Z0Z6U7lHlMm2UCpCWHMEAthROZWKcHRf5V2q+AdCQmKeWrqhBg8MVsqb4g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzR2HTzG8ItNxsZuSZDAPUBvWMMuAGC52saHrMicF/0ayy9G0fD
+	6372GsuXVA8SCfohumTqLJmxraGPZC1ICkjv5JQw2Rl7YBWcCRsyTIrn7XkkZ83KG2AVxrSfz4s
+	8vefLXRNTalb3+10Utc3J9unJl/rMyskoiHml5A==
+X-Google-Smtp-Source: AGHT+IFXXru1w4O79YJkokUSqsK/b534bxUSW6ND+qFP6cPz7SAaoo8kaTOyVhT0eJkbzZjAu8dBjmQDQZeoweMx2/g=
+X-Received: by 2002:a2e:b895:0:b0:2fa:d354:1435 with SMTP id
+ 38308e7fff4ca-2fcbddfa6admr66447451fa.0.1730282368618; Wed, 30 Oct 2024
+ 02:59:28 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] Bluetooth: btmtk: Remove resetting mt7921 before
- downloading the fw
-To: "luiz.dentz@gmail.com" <luiz.dentz@gmail.com>,
- =?UTF-8?B?Q2hyaXMgTHUgKOmZuOeomuazkyk=?= <Chris.Lu@mediatek.com>,
- =?UTF-8?B?SGFvIFFpbiAo56em5rWpKQ==?= <Hao.Qin@mediatek.com>
-Cc: "marc.payne@mdpsys.co.uk" <marc.payne@mdpsys.co.uk>,
- "marcel@holtmann.org" <marcel@holtmann.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-bluetooth@vger.kernel.org" <linux-bluetooth@vger.kernel.org>,
- =?UTF-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?= <Deren.Wu@mediatek.com>,
- "johan.hedberg@gmail.com" <johan.hedberg@gmail.com>,
- =?UTF-8?B?U3RldmUgTGVlICjmnY7oppboqqAp?= <steve.lee@mediatek.com>,
- Sean Wang <Sean.Wang@mediatek.com>, =?UTF-8?B?QWFyb24gSG91ICjkvq/kv4rku7Ap?=
- <Aaron.Hou@mediatek.com>, Takashi Iwai <tiwai@suse.de>,
- Linux regressions mailing list <regressions@lists.linux.dev>
-References: <20240822052310.25220-1-hao.qin@mediatek.com>
- <ZuB3omUkdUHLggYu@mdpsys.co.uk>
- <790e542aa9d08c7efeee6ef298fce2a87d8035e4.camel@mediatek.com>
- <ZuneSM4SvyUFX86j@mdpsys.co.uk>
- <9bfbbf24ac2480d94d3455f7e33e4b5502b38ced.camel@mediatek.com>
- <CABBYNZKYsL9jcF2n9TsA1BjU-CjXOdXu7MDLP9Sz_Ly8hBAf1w@mail.gmail.com>
- <c01e6dfa730dd10a7d4dba60fe31e82b9c296b37.camel@mediatek.com>
- <Zuyk1c6Gkxx3G0PB@mdpsys.co.uk>
- <f9e8688ebe559e10c019d0cbab4e8b1f5a7d2339.camel@mediatek.com>
- <ff502f63-2d87-4dee-a893-cce53353df8b@leemhuis.info>
- <87iktk4d9l.wl-tiwai@suse.de>
-From: Thorsten Leemhuis <regressions@leemhuis.info>
-Content-Language: en-US, de-DE
-In-Reply-To: <87iktk4d9l.wl-tiwai@suse.de>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1730280096;2649c48f;
-X-HE-SMSGID: 1t64tK-0006fj-Q4
+References: <20241023-en7581-pinctrl-v9-0-afb0cbcab0ec@kernel.org> <CACRpkdaEQYBim8TuDCCw15QDUWhHC-VqhGq1Le7eOd76k56zwQ@mail.gmail.com>
+In-Reply-To: <CACRpkdaEQYBim8TuDCCw15QDUWhHC-VqhGq1Le7eOd76k56zwQ@mail.gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Wed, 30 Oct 2024 10:59:17 +0100
+Message-ID: <CACRpkdYshPusdA7bDW2y8H_wp-Fm3N-YCsY1_Qn=dZqRiFy12w@mail.gmail.com>
+Subject: Re: [PATCH v9 0/6] Add mfd, pinctrl and pwm support to EN7581 SoC
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lee Jones <lee@kernel.org>, 
+	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <ukleinek@kernel.org>, 
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	upstream@airoha.com, benjamin.larsson@genexis.eu, ansuelsmth@gmail.com, 
+	linux-pwm@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241030_022136_680137_B8B5F2FC 
-X-CRM114-Status: GOOD (  20.97  )
+X-CRM114-CacheID: sfid-20241030_025931_591409_0C1D7920 
+X-CRM114-Status: GOOD (  13.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,84 +97,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Thorsten here, the Linux kernel's regression tracker. Top-posting
-for once, to make this easily accessible to everyone.
+On Tue, Oct 29, 2024 at 11:03=E2=80=AFPM Linus Walleij <linus.walleij@linar=
+o.org> wrote:
+> On Wed, Oct 23, 2024 at 1:21=E2=80=AFAM Lorenzo Bianconi <lorenzo@kernel.=
+org> wrote:
+>
+> > Introduce airoha-mfd driver in order to load pinctrl and pwm drivers fo=
+r
+> > EN7581 SoC. airoha-mfd is needed since both pinctrl and pwm drivers
+> > needs to access the same memory block (gpio memory region) to configure
+> > {gio,irq}_chip and pwm functionalities respectively, so model them as
+> > childs of a parent mfd driver.
+>
+> OK someone has to merge this and I suggest that I merge patches 1-5
+> (all bindings and the pinctrl driver) since the different bindings have
+> dependencies between them.
 
-I'm a bit lost here, but maybe I'm missing something.
+OK I have now merged patches 1-5 to the pinctrl tree.
 
-Luiz, can you help out here? Is there a reason why this patch is not
-making any process?
+Please iterate patch 6 with the PWM people so Uwe can merge
+it when finished.
 
-Chris Lu and/or Hao Qin: Can you maybe help out as well as well and help
-with resolving some open questions that might or might not be relevant
-(see below).
-
-From Takashi reply, the bugzilla ticket he linked to, and the mail from
-the MediaTek folks
-(https://lore.kernel.org/lkml/12a344e25b31ec00fe8b57814d43fcb166e71be5.camel@mediatek.com/
-) it from the outside looks like this patch should really be merged
-rather sooner that later as it fixes regressions for some people.
-Afaics it should get a "Fixes: ccfc8948d7e4d9 ("Bluetooth: btusb:
-mediatek: reset the controller before downloading the fw")" tag, as it's
-afaics that commit that causes the regression that is known since more
-than three months now
-(https://lore.kernel.org/all/ZsTh7Jyug7MbZsLE@mdpsys.co.uk/ ).
-
-But note, it seems it does not fix the regression completely according
-to Marc's testing.
-https://lore.kernel.org/all/ZuCB98DSdtKCgxaL@mdpsys.co.uk/
-
-Marc: Is that still how things are with current mainline?
-
-Ciao, Thorsten
-
-
-On 22.10.24 12:56, Takashi Iwai wrote:
-> On Mon, 14 Oct 2024 11:29:40 +0200,
-> Linux regression tracking (Thorsten Leemhuis) wrote:
->>
->> On 20.09.24 08:27, Chris Lu (陸稚泓) wrote:
->>> On Thu, 2024-09-19 at 23:25 +0100, marc.payne@mdpsys.co.uk wrote:
->>>>  	 
->>>> External email : Please do not click links or open attachments until
->>>> you have verified the sender or the content.
->>>>  Hi Chris and Luiz,
->>>>
->>>> What were your thoughts on the findings in my email dated 18th
->>>> September?
->>>
->>> Thanks for your suggestion.
->>>
->>> I've prepared the same environment (Kernel v6.11 + MT7921AUN dongle) to
->>> reproduce the issue, collected necessary logs locally and also
->>> initiated an internal discussion to clarify the root cause of this
->>> symptom. We'll review the changes between two firmware
->>> (20230526/20231109) if it's a bug or not.
->>>
->>> It may take some time to investigate. I'll let you know if there is any
->>> progress.
->>
->> Just wondering: Chris Lu, and Marc, what's the status here? From here it
->> looks like there was no progress to fix this regression for a while, but
->> it's easy to miss something, that's why I ask.
->>
->> Ciao, Thorsten
-> 
-> FWIW, the similar bug was reported for the recent 6.11.x kernel on
-> openSUSE Tumbleweed, and this patch was confirmed to work around the
-> crash at boot:
->   https://bugzilla.suse.com/show_bug.cgi?id=1231599
-> 
-> It'd be great if you can go ahead and merge the proper fix to the
-> upstream.
-> 
-> Let me know if you have another patch to test.  Then I can create a
-> test kernel package and ask the bug reporter for testing.
-> 
-> 
-> thanks,
-> 
-> Takashi
-> 
-
+Yours,
+Linus Walleij
 
