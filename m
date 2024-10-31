@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5EABD767E9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2024 17:16:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2C90D767E9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2024 17:25:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FthgIjAqLOLHlW+bbPCASseCj6Y1lbUXeoQ5RfEPC2g=; b=k42GA6hwA9g2H82maVRHZvgnP6
-	TOKXtdacdR/ZohjjuF11aOsC5ooQmUrXCgXIzaqdXhAOZxb6+rWl//gupWyXjEj5ni/eCJ83s+lbm
-	tqzOJqYuSKF0kcQ/pk49Q0nVn+oHpS8M6hc/419tJsWROPie0wQ2wYvDv9jT6//ePdtyh7TOHyM3+
-	+yQEOawd2rY6bJDtUXAOV9PH0nT09Cnmv9/gc3j6iNH/Q9gBuuUctY9OcJbO2mefUIT73v1/LIHX7
-	IAlc5EBW21LgIgv+lwzal/qX15LM4oPsBg0wbCHNPGcPoDMlUF7bE4SxF672efaU6r+yGJoGMJr9i
-	U/2TxPsA==;
+	bh=yuVL5XevAlSQZiTVvR3V3r/+5ebo7kY9AfDcEkuoaT4=; b=iWyPe/sbiWsLNkh8HX+effXvg/
+	XMTIZRFvyayV2w1Q+SxVoA5KeKevJz03UFNjRSuk4bxEUfMBAOhTxaBtpab0Oc4STToBvG6ZlqOJT
+	jtDwVLd+jev0YsbGUStQ3NlxZGOBjLfG8xg8qUVYg/GUSAqHw/TQzBWQ/9bcOnU7OmgD5t94c0td+
+	gwkwFvXAeDQ9KboiGUAOIxOXRtibkzjF8e41lfHlXUDpZkqLnz82JKuj2CwX/oI9iL5tgHAUXJIzS
+	naHlpYUCkaMn+VENhcZar3eTVHZAHG+Y4mvwATQaOMQZEqp7xzm8jxxk/p8oq5SBMo9beyRkkRsBR
+	gV+7YFoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6YmA-00000004Jky-2hDn;
-	Thu, 31 Oct 2024 17:16:02 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+	id 1t6Yuz-00000004KyC-2YZX;
+	Thu, 31 Oct 2024 17:25:09 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6Ym7-00000004JjW-0ZAo
+	id 1t6Ynb-00000004K0V-2iid
 	for linux-mediatek@lists.infradead.org;
-	Thu, 31 Oct 2024 17:16:00 +0000
-Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-2fb6110c8faso12930391fa.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 31 Oct 2024 10:15:57 -0700 (PDT)
+	Thu, 31 Oct 2024 17:17:35 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-37d4c1b1455so819263f8f.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 31 Oct 2024 10:17:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=broadcom.com; s=google; t=1730394956; x=1730999756; darn=lists.infradead.org;
+        d=broadcom.com; s=google; t=1730395050; x=1730999850; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=FthgIjAqLOLHlW+bbPCASseCj6Y1lbUXeoQ5RfEPC2g=;
-        b=bYOIJg5eCTI1X6If7+0bWF830Gny1siKlj/C9BiXj6Tz3XOWLRm2fOrbDWwd+D7Mza
-         MuxwZN2vCZQBIF5CBvsLbqSKwpWwShl47kfoBjW+pAc9gBU8Z4PYDSg7xkeVzoVv3Ycg
-         l4Tb66CqZO9HHsiRDwjNyAWTNxcijmJSk5JXU=
+        bh=yuVL5XevAlSQZiTVvR3V3r/+5ebo7kY9AfDcEkuoaT4=;
+        b=G6K2BDxkil5eV/VOcLz16EUtcptxmXd7Q9Q0qxpi+ZTTZb653YoTEXSGkx8INxoKVv
+         UERVhLAvi17s+bSaVm4FJuAq/L2tgZKdOQ/39yvEivz3votNjSmEXdWs8ZxWvnQXTb4T
+         pgctyaOFZIrWF2EtkwI+tfLhAcxMOn/XwmEYI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730394956; x=1730999756;
+        d=1e100.net; s=20230601; t=1730395050; x=1730999850;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=FthgIjAqLOLHlW+bbPCASseCj6Y1lbUXeoQ5RfEPC2g=;
-        b=k0Rj7t+HpaZY2SbB7JP2lUs5XSRRe4EeDaA3Hlca8CQ36B5AgdCY9ycsNBWL/xLUJu
-         QE+6jhpvpNP1XR5uWkCEietRhBt6hC+jHjTH1OR/IIdP/gJ61xPhVN3ztXIoR4z52W1+
-         krT5J53HJtXVO+/mT9UwZaHTXQRVnQJxzFzokzB/3Zp6aEbnzduvFAb63JkhlKw0VsUx
-         4nJQIsBjqgC4CF/SbnASh0wK9OiCrru82c7VbTMgLnkqOxDotW57vCvnfchHemQaKhje
-         HcSEdlP72DRxhHBZjrITz4nLKPhX8fVDc4zUXs0UQ8n6XIrghHcvUsqDhKkPk/peLEO2
-         bW3Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWANAEFDJRGejr0+oZA8gMZmcB3MEPrAuUDE7ESNKx0awwQTcX0wiCi4SD1iMv+z1Ug+8IKdF7o6Ngza+a+sw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz8FDzD93sGNQdfv8HkU5PEidcjMWt1Ktt9x2d92jjv31er6KeN
-	gFxYYroL0/HvH/cv0IdKq9V9H/PAmFvWfgwPEWT3902NsGDtsKCX+OFUEeLz+Q==
-X-Google-Smtp-Source: AGHT+IH9MeS0Ax989nuL+76nnyjmZEpJ6kAlmbQ9fbTl6gSc7YUojU8nnLTZuojFuuIYn0X+UAcr8A==
-X-Received: by 2002:a05:651c:1504:b0:2fb:5014:abf9 with SMTP id 38308e7fff4ca-2fcbe04f0bamr96395301fa.31.1730394954583;
-        Thu, 31 Oct 2024 10:15:54 -0700 (PDT)
+        bh=yuVL5XevAlSQZiTVvR3V3r/+5ebo7kY9AfDcEkuoaT4=;
+        b=ZKSr5VevgoNxozIFpHLtQ7QSMpsnEZmWOdESm+JHE9Oms31XpYIXOO6FjCQCGQbtQM
+         o1b59Lirm7x+1oi82w8xBnioYrCQuismc783uU/e2zW57u1aJ48/bbujHLDcZOSSm5fS
+         mUbZ3Fdd3wZRlO4QJ2/qIY5j6tcsU0SgCjm3SPGK7SFMo4EIgUrkuT4/YgH25Uk0y9sK
+         HHffhAYnx0NUPo3kA9Ri5j+28t9/lGQsoQ90gsLNbjFUkFz58wVgNETyFuTg57j97G17
+         ZFM+xlWlt9tS3udiy/9cL8aGvA75mDMZwBKCpq/unczITaGK7e1kaX7FIM8k2Ij67yCk
+         hGtg==
+X-Forwarded-Encrypted: i=1; AJvYcCV6KyKd0DBI9wEc+F9/WZEedTKCep4wWbYDHoPTfsayrJdETlXcQfLfnvo798ebtJbCdj7hl3c5k6s2lOLd8A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YziAxJtFUKP0ksAn0eJU4Tx32kz+9+jRCOQF0R7PAbKENgeaYum
+	p0tC+h7KkFVRLqf0Oj5tMRgpvrkKuCalKlY8v5elj8kvJfi7Xa67E6PIomEk3A==
+X-Google-Smtp-Source: AGHT+IFjT29yi5SX0dw1nHhzoYLJGP+01L3NL5a3fZUFudXflNMBcjs32Cnleu5VTb7EMdHUUlSccA==
+X-Received: by 2002:a05:6000:ac1:b0:37d:3280:203a with SMTP id ffacd0b85a97d-381b7057644mr5887676f8f.10.1730395049620;
+        Thu, 31 Oct 2024 10:17:29 -0700 (PDT)
 Received: from [10.67.48.245] ([192.19.223.252])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4327d69845csm32794345e9.47.2024.10.31.10.15.44
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-381c10b7c08sm2713960f8f.17.2024.10.31.10.17.19
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 31 Oct 2024 10:15:53 -0700 (PDT)
-Message-ID: <d9c01354-853c-459b-9da4-3c1d77102749@broadcom.com>
-Date: Thu, 31 Oct 2024 10:15:38 -0700
+        Thu, 31 Oct 2024 10:17:28 -0700 (PDT)
+Message-ID: <5ab60ad8-5625-41d3-b20a-4137a8f4c19a@broadcom.com>
+Date: Thu, 31 Oct 2024 10:17:17 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [resend PATCH 1/2] dim: make dim_calc_stats() inputs const
- pointers
+Subject: Re: [resend PATCH 2/2] dim: pass dim_sample to net_dim() by reference
 To: Caleb Sander Mateos <csander@purestorage.com>,
  Andrew Lunn <andrew+netdev@lunn.ch>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -103,6 +102,7 @@ Cc: intel-wired-lan@lists.osuosl.org, linux-arm-kernel@lists.infradead.org,
  linux-rdma@vger.kernel.org, netdev@vger.kernel.org,
  oss-drivers@corigine.com, virtualization@lists.linux.dev
 References: <20241031002326.3426181-1-csander@purestorage.com>
+ <20241031002326.3426181-2-csander@purestorage.com>
 Content-Language: en-US
 From: Florian Fainelli <florian.fainelli@broadcom.com>
 Autocrypt: addr=florian.fainelli@broadcom.com; keydata=
@@ -137,13 +137,12 @@ Autocrypt: addr=florian.fainelli@broadcom.com; keydata=
  MIlnaE6V0U8f5zNHB7Y46yJjjYT/Ds1TJo3pvwevDWPvv6rdBeV07D9s43frUS6xYd1uFxHC
  7dZYWJjZmyUf5evr1W1gCgwLXG0PEi9n3qmz1lelQ8lSocmvxBKtMbX/OKhAfuP/iIwnTsww
  95A2SaPiQZA51NywV8OFgsN0ITl2PlZ4Tp9hHERDe6nQCsNI/Us=
-In-Reply-To: <20241031002326.3426181-1-csander@purestorage.com>
+In-Reply-To: <20241031002326.3426181-2-csander@purestorage.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241031_101559_305304_719D2A5C 
-X-CRM114-Status: UNSURE (   6.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241031_101733_979184_4B674D0B 
+X-CRM114-Status: GOOD (  11.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,12 +158,43 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 10/30/24 17:23, Caleb Sander Mateos wrote:
-> Make the start and end arguments to dim_calc_stats() const pointers
-> to clarify that the function does not modify their values.
+> net_dim() is currently passed a struct dim_sample argument by value.
+> struct dim_sample is 24 bytes. Since this is greater 16 bytes, x86-64
+> passes it on the stack. All callers have already initialized dim_sample
+> on the stack, so passing it by value requires pushing a duplicated copy
+> to the stack. Either witing to the stack and immediately reading it, or
+> perhaps dereferencing addresses relative to the stack pointer in a chain
+> of push instructions, seems to perform quite poorly.
+> 
+> In a heavy TCP workload, mlx5e_handle_rx_dim() consumes 3% of CPU time,
+> 94% of which is attributed to the first push instruction to copy
+> dim_sample on the stack for the call to net_dim():
+> // Call ktime_get()
+>    0.26 |4ead2:   call   4ead7 <mlx5e_handle_rx_dim+0x47>
+> // Pass the address of struct dim in %rdi
+>         |4ead7:   lea    0x3d0(%rbx),%rdi
+> // Set dim_sample.pkt_ctr
+>         |4eade:   mov    %r13d,0x8(%rsp)
+> // Set dim_sample.byte_ctr
+>         |4eae3:   mov    %r12d,0xc(%rsp)
+> // Set dim_sample.event_ctr
+>    0.15 |4eae8:   mov    %bp,0x10(%rsp)
+> // Duplicate dim_sample on the stack
+>   94.16 |4eaed:   push   0x10(%rsp)
+>    2.79 |4eaf1:   push   0x10(%rsp)
+>    0.07 |4eaf5:   push   %rax
+> // Call net_dim()
+>    0.21 |4eaf6:   call   4eafb <mlx5e_handle_rx_dim+0x6b>
+> 
+> To allow the caller to reuse the struct dim_sample already on the stack,
+> pass the struct dim_sample by reference to net_dim().
 > 
 > Signed-off-by: Caleb Sander Mateos <csander@purestorage.com>
 
-Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com>
+Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com> 
+#bcm{sysport,genet}.c
+
+Thanks!
 -- 
 Florian
 
