@@ -4,59 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6500D767F1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2024 17:25:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0783D767F6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2024 18:22:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:CC:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KiKI67UhXbYKoP9AKaDP+SpWLvcVFNqyksY5P+mdC2A=; b=WOPXnFy1PElMR/+HRu93oSoSs0
-	Wn2o6hqujferfJb48sNAOafpgjo3aAcHROAL2kbZ+kv1ZE42T1KLD9jsRxC49JuVWCPmoMwN5sRFD
-	qpEGA+zgP4Xde3jcUFKNjcs0GKl2VoSBcJ/hHDspsGyQda7kZyXJQRBncbuQlZ5EXzKDBZ5AV7ltl
-	9HUYbKh5hxRgZy/wuJf6nxRdoK6TOQWkzioUv1591idZDiKAmYn970N3xtnH7s3koyRDGMZHf+Iw1
-	5KdvQuyux9glXCpo4/OWzyk/P+AmuPTfNz+3ofHf9Nr7R+Ba49CrlzF4/NLj7c0cISUE8KOAP3LJ9
-	HFolxzFw==;
+	bh=W9ptO2AWHJvDBqBcplJ9x7hVH9AqEur0XDGEUTb8INw=; b=VuqULo+WLnSwU5SxoqtRlblDEG
+	NUPgVVz8LVJRrUgfAvkKHo1r5gyINtd+ze4Nq0TUFQvbf0auTU2dMXipZhzulUbcik2xPbrTN58/0
+	T/DRLSzxWhBlIUnDhUYEXoeyQ3hvI/Yn2naIlyrUZ1sy9WEvyS9yg+fARlko056VOhliE6VY2SOYj
+	RGuXhTMwvHILMrtWZFNjOLtlKCW9HjiupH4YOlRkgBQmvMeTh2Q1uZsCAOyHrdT2eI5U1r6rsaprL
+	WHMV89pQW7MlJ5xI0OYPmECc1p6zjqgU0kY8PiU8yw2CriuoMFv2JIUow+jie2TMEU44dtGLIJS+7
+	eavFlcZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6YvJ-00000004LAN-49Kn;
-	Thu, 31 Oct 2024 17:25:29 +0000
-Received: from relay3-d.mail.gandi.net ([217.70.183.195])
+	id 1t6Zor-00000004UZA-0itt;
+	Thu, 31 Oct 2024 18:22:53 +0000
+Received: from smtp-fw-9106.amazon.com ([207.171.188.206])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6Yuq-00000004KwC-0BwU;
-	Thu, 31 Oct 2024 17:25:01 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 0433260007;
-	Thu, 31 Oct 2024 17:24:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1730395496;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=KiKI67UhXbYKoP9AKaDP+SpWLvcVFNqyksY5P+mdC2A=;
-	b=PUunbCFrG/Z9WuONmUXFWmILS0BsqKio5QLZgvp+0cn5wg9UixGX2+FR3Jp8CpCNl7nIyA
-	hYplzYL+1S/GVqzMbFZAZF33TLBNdcG/YkJG9xCp/mQQlpOTWHCg/dDTwqUrRzH99MEdwv
-	+iKsd+7TC4iKQAOiNZPm4QyWRbnalcpxhiejxXOi8IHOMFB6+hQ5R0GveSp2pvj3rsaOzY
-	vAa1Apqt8D6sZ4gPStvuiwpvfEPp2s1DsPr/Nemo0NoziseZlMpmBNGLzBqpSQcYDXQOdF
-	xsm7yDOrDn+tvwpLPs136v32XIeNRjFRP2MaEr39DmZHTQ2akIGw1RxciKV+uQ==
-Date: Thu, 31 Oct 2024 18:24:55 +0100
-From: Alexandre Belloni <alexandre.belloni@bootlin.com>
-To: shunxi zhang <ot_shunxi.zhang@mediatek.com>
-Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	lee@kernel.org, linux-kernel@vger.kernel.org,
-	linux-rtc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/1] rtc: mediatek: Add mt6685 RTC driver
-Message-ID: <20241031172455faa7688a@mail.local>
-References: <20241031135807.31605-1-ot_shunxi.zhang@mediatek.com>
+	id 1t6Zok-00000004UVZ-2FxC;
+	Thu, 31 Oct 2024 18:22:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
+  t=1730398966; x=1761934966;
+  h=from:to:cc:date:message-id:references:in-reply-to:
+   content-transfer-encoding:mime-version:subject;
+  bh=W9ptO2AWHJvDBqBcplJ9x7hVH9AqEur0XDGEUTb8INw=;
+  b=klTDZuQafHDrXWKV3LgvT3Y24efrV45jzRPVATk04cip+hThIXAmaViG
+   wixXL+1dXsLHiNCUyqwtHGlS0PB7SL298Zmzz44xHDgaKOkzPP4HwscGq
+   GpRuHQ3E5WFYNXeR/tB8iHHoY9yqm536zRbxGOnnh+/tT38cwngjQcHsS
+   o=;
+X-IronPort-AV: E=Sophos;i="6.11,247,1725321600"; 
+   d="scan'208";a="771897177"
+Subject: RE: [resend PATCH 1/2] dim: make dim_calc_stats() inputs const pointers
+Thread-Topic: [resend PATCH 1/2] dim: make dim_calc_stats() inputs const pointers
+Received: from pdx4-co-svc-p1-lb2-vlan2.amazon.com (HELO smtpout.prod.us-east-1.prod.farcaster.email.amazon.dev) ([10.25.36.210])
+  by smtp-border-fw-9106.sea19.amazon.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Oct 2024 18:22:33 +0000
+Received: from EX19MTAEUA002.ant.amazon.com [10.0.10.100:61073]
+ by smtpin.naws.eu-west-1.prod.farcaster.email.amazon.dev [10.0.2.199:2525] with esmtp (Farcaster)
+ id 5b69f371-b19a-4292-b4a0-5c7f596b7e5d; Thu, 31 Oct 2024 18:22:32 +0000 (UTC)
+X-Farcaster-Flow-ID: 5b69f371-b19a-4292-b4a0-5c7f596b7e5d
+Received: from EX19D005EUA001.ant.amazon.com (10.252.50.159) by
+ EX19MTAEUA002.ant.amazon.com (10.252.50.126) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.34;
+ Thu, 31 Oct 2024 18:22:31 +0000
+Received: from EX19D022EUA002.ant.amazon.com (10.252.50.201) by
+ EX19D005EUA001.ant.amazon.com (10.252.50.159) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.35;
+ Thu, 31 Oct 2024 18:22:31 +0000
+Received: from EX19D022EUA002.ant.amazon.com ([fe80::7f87:7d63:def0:157d]) by
+ EX19D022EUA002.ant.amazon.com ([fe80::7f87:7d63:def0:157d%3]) with mapi id
+ 15.02.1258.034; Thu, 31 Oct 2024 18:22:31 +0000
+From: "Kiyanovski, Arthur" <akiyano@amazon.com>
+To: Florian Fainelli <florian.fainelli@broadcom.com>, Caleb Sander Mateos
+	<csander@purestorage.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Brett
+ Creeley" <brett.creeley@amd.com>, Broadcom internal kernel review list
+	<bcm-kernel-feedback-list@broadcom.com>, Christophe Leroy
+	<christophe.leroy@csgroup.eu>, Claudiu Manoil <claudiu.manoil@nxp.com>,
+	"Arinzon, David" <darinzon@amazon.com>, "David S. Miller"
+	<davem@davemloft.net>, Doug Berger <opendmb@gmail.com>, Eric Dumazet
+	<edumazet@google.com>, =?utf-8?B?RXVnZW5pbyBQw6lyZXo=?=
+	<eperezma@redhat.com>, Felix Fietkau <nbd@nbd.name>, Geetha sowjanya
+	<gakula@marvell.com>, hariprasad <hkelam@marvell.com>, Jakub Kicinski
+	<kuba@kernel.org>, Jason Wang <jasowang@redhat.com>, Jonathan Corbet
+	<corbet@lwn.net>, Leon Romanovsky <leon@kernel.org>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Louis Peens <louis.peens@corigine.com>, Mark Lee
+	<Mark-MC.Lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	Michael Chan <michael.chan@broadcom.com>, "Michael S. Tsirkin"
+	<mst@redhat.com>, "Dagan, Noam" <ndagan@amazon.com>, Paolo Abeni
+	<pabeni@redhat.com>, Przemek Kitszel <przemyslaw.kitszel@intel.com>, "Roy
+ Pledge" <Roy.Pledge@nxp.com>, "Bshara, Saeed" <saeedb@amazon.com>, "Saeed
+ Mahameed" <saeedm@nvidia.com>, Sean Wang <sean.wang@mediatek.com>, "Shannon
+ Nelson" <shannon.nelson@amd.com>, "Agroskin, Shay" <shayagr@amazon.com>,
+	Simon Horman <horms@kernel.org>, Subbaraya Sundeep <sbhatta@marvell.com>,
+	Sunil Goutham <sgoutham@marvell.com>, Tal Gilboa <talgi@nvidia.com>, "Tariq
+ Toukan" <tariqt@nvidia.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+	Vladimir Oltean <vladimir.oltean@nxp.com>, Xuan Zhuo
+	<xuanzhuo@linux.alibaba.com>
+CC: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-doc@vger.kernel.org"
+	<linux-doc@vger.kernel.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linuxppc-dev@lists.ozlabs.org"
+	<linuxppc-dev@lists.ozlabs.org>, "linux-rdma@vger.kernel.org"
+	<linux-rdma@vger.kernel.org>, "netdev@vger.kernel.org"
+	<netdev@vger.kernel.org>, "oss-drivers@corigine.com"
+	<oss-drivers@corigine.com>, "virtualization@lists.linux.dev"
+	<virtualization@lists.linux.dev>
+Thread-Index: AQHbKys/FLYzAvitdkSVBoM6s5J6lrKhGqwAgAARw2A=
+Date: Thu, 31 Oct 2024 18:22:15 +0000
+Deferred-Delivery: Thu, 31 Oct 2024 18:21:26 +0000
+Message-ID: <7bf7d713339e4854bfcb80c866aa55fe@amazon.com>
+References: <20241031002326.3426181-1-csander@purestorage.com>
+ <d9c01354-853c-459b-9da4-3c1d77102749@broadcom.com>
+In-Reply-To: <d9c01354-853c-459b-9da4-3c1d77102749@broadcom.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.106.101.5]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241031135807.31605-1-ot_shunxi.zhang@mediatek.com>
-X-GND-Sasl: alexandre.belloni@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241031_102500_270181_A0DB36FB 
-X-CRM114-Status: UNSURE (   7.32  )
+X-CRM114-CacheID: sfid-20241031_112246_643150_73B64E38 
+X-CRM114-Status: UNSURE (   7.16  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,19 +128,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 31/10/2024 21:58:02+0800, shunxi zhang wrote:
-> +/* we map HW YEA 0 (2000) to 1968 not 1970 because 2000 is the leap year */
-> +#define RTC_MIN_YEAR            1968
-> +#define RTC_BASE_YEAR           1900
-> +#define RTC_NUM_YEARS           128
-> +#define RTC_MIN_YEAR_OFFSET     (RTC_MIN_YEAR - RTC_BASE_YEAR)
-
-I will not take another driver with this. mt6397 needs to be fixed
-first.
-
-
--- 
-Alexandre Belloni, co-owner and COO, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+T24gMTAvMzAvMjQgMTc6MjMsIENhbGViIFNhbmRlciBNYXRlb3Mgd3JvdGU6DQo+IE1ha2UgdGhl
+IHN0YXJ0IGFuZCBlbmQgYXJndW1lbnRzIHRvIGRpbV9jYWxjX3N0YXRzKCkgY29uc3QgcG9pbnRl
+cnMgdG8gDQo+IGNsYXJpZnkgdGhhdCB0aGUgZnVuY3Rpb24gZG9lcyBub3QgbW9kaWZ5IHRoZWly
+IHZhbHVlcy4NCj4NCj4gU2lnbmVkLW9mZi1ieTogQ2FsZWIgU2FuZGVyIE1hdGVvcyA8Y3NhbmRl
+ckBwdXJlc3RvcmFnZS5jb20+DQoNClJldmlld2VkLWJ5OiBBcnRodXIgS2l5YW5vdnNraSA8YWtp
+eWFub0BhbWF6b24uY29tPg0KDQpUaGFua3MsDQpBcnRodXINCg==
 
