@@ -4,88 +4,181 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35565E68974
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2024 10:53:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7797BD74959
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2024 13:09:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L2/PPaAetYxmKzv3sgVnjzcQ59oLRc0dcwRBbTXacjU=; b=fnur4jeZ7lvGK8JTMASvaTYhv1
-	+aIIlgWr2Wsnz33bOdhQRMiqFWKIUZRykkIVJG8/cODjCX13jaFBoJJAbd2MNe0NIBINLNOWVEz+M
-	M2n+hNfWNKLPTxD1SkwfMFTnlFPK+U6dyUurOXAv9alI2KydLlCLdPVL5HCaELSpQEpadBrfet/3A
-	qEO+n6h/f4Hoc5wY4nv+kDCWs6IfH4O/vbyroRkiv4zdD0Hm8Qhmy9kVoV0YlauciTm8rtGr11swe
-	yQtF97N6zwlHI52RsJyPSyWErg+P/lm7DTf4hoj6Uc1m8CFcALNJentK/3sPeDV+aH+XSZKY20E2S
-	pvQgIPgg==;
+	bh=hdLzqf/yTk55heKa4L26mVR5RIL4KsJIu5JPiJiDxC8=; b=gll+/B6fHeF3ZhMuo4Esn5pNEE
+	6vPKh4Sv2mgR3dYfozKA5ZkaIn+ddD0x2c6Ac7Y+l7v35FbPZoRAlcS2dnCeSOSND0pEhy//yLmhb
+	LZcult0i1Bg26llJNBQ0UQlGQLBnXFhB/G0XljmabKGXcMvTdoBwHwkzpevMf+/VUm+n86hEoof5E
+	ld2R6TR01tivIlNkbtGDk0FaLjtcgzUpXZbSlvetpNgHN6Ae8LUOz/jwJtQSTYZ0FJJMZc3l6ezBW
+	zerkQe07lpYgSq3B/Ed4FVvmVNw1vgEDZ8QBT4sk+h2BwmEsj4dDqLc/z1VAhdNZ1CeJDRvQQmol9
+	XIxMYE6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6Snh-00000003JXv-41Rg;
-	Thu, 31 Oct 2024 10:53:13 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1t6UvL-00000003dSB-0f19;
+	Thu, 31 Oct 2024 13:09:15 +0000
+Received: from mail-bn8nam12on20716.outbound.protection.outlook.com ([2a01:111:f403:2418::716] helo=NAM12-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6Snf-00000003JXD-1FkS
-	for linux-mediatek@lists.infradead.org;
-	Thu, 31 Oct 2024 10:53:13 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-431548bd1b4so6357245e9.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 31 Oct 2024 03:53:10 -0700 (PDT)
+	id 1t6UcP-00000003azX-2hkW;
+	Thu, 31 Oct 2024 12:49:52 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=DZjHI1FvPSv5cooUrudqbiCqI6Vvh5e+sYVhIJHhzuKhInAIUAOP8lGJliGMLoujxgLYuF0E5PcSf0XszAlA6pmxyn/ec9NAZriAWrxpeiNogOWJGO+bZ2nIlpiBRDZYGeASiDRmWWhe5E+hK3Kx+j4fHc/83UTwiZoVETJA6On2TZ/iJ7a9+IbMAq5ZdWy6k/5wO3q8FAg5FG7nN/ZixJgdp5WH/K/8jFn4xcDg2kBO4gBTlDIog8FV+5RnCQEEYvXubB/92D0fYcnkAkww29+itII8BiY9nrF9vu6Jvn/BDUGFavUkz4y6bGlg/tVJAt75oJE4CZdq6fu8bTwShg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=hdLzqf/yTk55heKa4L26mVR5RIL4KsJIu5JPiJiDxC8=;
+ b=LM4+K1qKLlq6+MN2U7iQZzfTMDZ3V3UjfA9PTgVXlvPDCxAn8Eg/t58gocrZGruMJzTow/tgxIldJgL51VBW57z1T86KB4EYvkTRaZUva6B/Daihhs6WDsxyoO6Il25A3m44I751jrRLr+10vrm0lQUWPOH3DCNEX9jGDYb/j1+mJFcdUgK8AvmPe4F2JH+vyh2sHlDeGRaZ1W7eMI9PmwVxmzMWiS70hCvAaZiBUd1V8PX65uFPCJJJvbyObqWRg1xTcXvWcvC6fU1j7npjp7l6CLvef/HNv2y7RrwX20tX1UpVfc2WyhFx5F78VpPoRxJSnIt3rvFZ+2ZPOQK9Ig==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
+ dkim=pass header.d=corigine.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1730371989; x=1730976789; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=L2/PPaAetYxmKzv3sgVnjzcQ59oLRc0dcwRBbTXacjU=;
-        b=qixzCubEMkycuvLArSqC2CeuBDPZoj/GqHvO7o9zEXuhr83ZwAXE8/vhIw5k5cl7dF
-         U5i4sfvIbt7vXfKZnoidEg1c0yooDFEuCY8kp5wymtqayH1KYxHQ0Q2pTwIislT/6TXq
-         N1ugbgP4qJpBWO/VQrXvyA8sh5bVua4j55EX/QCaROYW6ab6+Vy67hXgBzDIboafBD9u
-         aqyYJC82OT0XuJgsFi+7oalE4HYSpXFGJSBGANdhrOc8r6arjxwLk7cT9todju5QPWxB
-         QmLU+M0TP53cc3UKdJaVKoFGopoZ6dgxUrD11vI2GEoE1UsYW2+frFkia2VOGnNI8L2I
-         ckgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730371989; x=1730976789;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=L2/PPaAetYxmKzv3sgVnjzcQ59oLRc0dcwRBbTXacjU=;
-        b=Axcx7hok62xvLCiqzoLjpJw/UEUFeGgPvURMTT2Hhu3W5lLnGMxz9ds8CxsBLraf+T
-         RH8bWfQgB1/kOsXThQFYFzvDlVlEOcChdWtM49wt3ONoy0p0R7EfcHRym7Jl8/fYtFvE
-         kr6HKPfx8ITINju9nP1bbo5B+xnAmifr7LzNt6EROb9VdWX6Pd3JKfCEewllriqStXPH
-         RnwQYA0zLw4LY5w9rvSl45ArdwrQDevlqMSo6QLsAxizsxl/FiX2qCU/3N+NX6q1WYLi
-         iaOPSEQgyWytHvgAF6DEHUxORIni+4C6rZlx2qAx5UjvD9qgIq0Om9iG12M8WVLeYKRA
-         MqBg==
-X-Forwarded-Encrypted: i=1; AJvYcCXTBTUUwQJ5QXFd8TGpkhQ2BOTBYYU1QBkLHdI/a26mnZgtjs6PRjLLYCcBKb9ETavsM+fS8BQPf0CnYNCnPg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxnCdHPswUDx5RX9AfL00RLu6ZD3SmH1vUk48xb6pTTc8c7PQzp
-	KwRAYsuS29dD05l7Tex99KL5KeYUg+z8oFKJfhsNyBTNg2CyrVTN9hNlbKlpfpc=
-X-Google-Smtp-Source: AGHT+IEj2PmCrm+rjaPGqCqvTA61rjlM2smHZN2BDqZGjYKUG6p+9lHCct26bf+Hc89r3OBtcRNNrg==
-X-Received: by 2002:a05:6000:ccd:b0:37d:2edd:b731 with SMTP id ffacd0b85a97d-380611639f9mr12661409f8f.30.1730371989006;
-        Thu, 31 Oct 2024 03:53:09 -0700 (PDT)
-Received: from localhost (p50915d2d.dip0.t-ipconnect.de. [80.145.93.45])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-381c10b7c1esm1764015f8f.12.2024.10.31.03.53.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 31 Oct 2024 03:53:08 -0700 (PDT)
-Date: Thu, 31 Oct 2024 11:53:07 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-To: Benjamin Larsson <benjamin.larsson@genexis.eu>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lee Jones <lee@kernel.org>, linux-mediatek@lists.infradead.org, 
-	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	upstream@airoha.com, ansuelsmth@gmail.com, linux-pwm@vger.kernel.org
-Subject: Re: [PATCH v9 6/6] pwm: airoha: Add support for EN7581 SoC
-Message-ID: <ljpgey6oqeisnhnf3zojnmczxvpduabj6cgf3utef3oic2k27e@r5sbpdxwzghs>
-References: <20241023-en7581-pinctrl-v9-0-afb0cbcab0ec@kernel.org>
- <20241023-en7581-pinctrl-v9-6-afb0cbcab0ec@kernel.org>
- <bf5lpb3dwfywzgnbcel6de57ick7hfzxfaovyqrt7juif6tgp7@sdmugrua6t3c>
- <184f8707-0b4b-474a-b2d4-b54a3438f4a3@genexis.eu>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="wg4oaapc6iokbp6v"
+ d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=hdLzqf/yTk55heKa4L26mVR5RIL4KsJIu5JPiJiDxC8=;
+ b=VlNzCXWx3K5bDL+6v2udxSkE5ZadCwXCXbfxFi0qxBFVRXwYwCwyIkrXLIxMK8pPguxoSDwTlrZ2B7M7+CtuRfcwKBv3BbHJgooclb7TXLlpqLA/fKFPthCsfaiRIELDLBCRzdOmHH/qT9i8SrgSuMbG2bTjRw4+quFe90oH+VM=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=corigine.com;
+Received: from BL0PR13MB4403.namprd13.prod.outlook.com (2603:10b6:208:1c4::8)
+ by MW5PR13MB5414.namprd13.prod.outlook.com (2603:10b6:303:195::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8093.24; Thu, 31 Oct
+ 2024 12:49:31 +0000
+Received: from BL0PR13MB4403.namprd13.prod.outlook.com
+ ([fe80::bbcb:1c13:7639:bdc0]) by BL0PR13MB4403.namprd13.prod.outlook.com
+ ([fe80::bbcb:1c13:7639:bdc0%6]) with mapi id 15.20.8114.020; Thu, 31 Oct 2024
+ 12:49:31 +0000
+Date: Thu, 31 Oct 2024 14:49:10 +0200
+From: Louis Peens <louis.peens@corigine.com>
+To: Caleb Sander Mateos <csander@purestorage.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Arthur Kiyanovski <akiyano@amazon.com>,
+	Brett Creeley <brett.creeley@amd.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Christophe Leroy <christophe.leroy@csgroup.eu>,
+	Claudiu Manoil <claudiu.manoil@nxp.com>,
+	David Arinzon <darinzon@amazon.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Doug Berger <opendmb@gmail.com>, Eric Dumazet <edumazet@google.com>,
+	Eugenio =?iso-8859-1?Q?P=E9rez?= <eperezma@redhat.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Geetha sowjanya <gakula@marvell.com>,
+	hariprasad <hkelam@marvell.com>, Jakub Kicinski <kuba@kernel.org>,
+	Jason Wang <jasowang@redhat.com>, Jonathan Corbet <corbet@lwn.net>,
+	Leon Romanovsky <leon@kernel.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mark Lee <Mark-MC.Lee@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Michael Chan <michael.chan@broadcom.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Noam Dagan <ndagan@amazon.com>, Paolo Abeni <pabeni@redhat.com>,
+	Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+	Roy Pledge <Roy.Pledge@nxp.com>, Saeed Bishara <saeedb@amazon.com>,
+	Saeed Mahameed <saeedm@nvidia.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Shannon Nelson <shannon.nelson@amd.com>,
+	Shay Agroskin <shayagr@amazon.com>, Simon Horman <horms@kernel.org>,
+	Subbaraya Sundeep <sbhatta@marvell.com>,
+	Sunil Goutham <sgoutham@marvell.com>, Tal Gilboa <talgi@nvidia.com>,
+	Tariq Toukan <tariqt@nvidia.com>,
+	Tony Nguyen <anthony.l.nguyen@intel.com>,
+	Vladimir Oltean <vladimir.oltean@nxp.com>,
+	Xuan Zhuo <xuanzhuo@linux.alibaba.com>,
+	intel-wired-lan@lists.osuosl.org,
+	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linuxppc-dev@lists.ozlabs.org, linux-rdma@vger.kernel.org,
+	netdev@vger.kernel.org, oss-drivers@corigine.com,
+	virtualization@lists.linux.dev
+Subject: Re: [resend PATCH 2/2] dim: pass dim_sample to net_dim() by reference
+Message-ID: <ZyN8xpq5C36Tg9rz@LouisNoVo>
+References: <20241031002326.3426181-1-csander@purestorage.com>
+ <20241031002326.3426181-2-csander@purestorage.com>
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <184f8707-0b4b-474a-b2d4-b54a3438f4a3@genexis.eu>
+In-Reply-To: <20241031002326.3426181-2-csander@purestorage.com>
+X-ClientProxiedBy: JNAP275CA0002.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:4c::7)
+ To BL0PR13MB4403.namprd13.prod.outlook.com (2603:10b6:208:1c4::8)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL0PR13MB4403:EE_|MW5PR13MB5414:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7a7b7130-47b6-4d73-28b3-08dcf9aa76a5
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|376014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?c/Ftqv0wIKpMdlsyPPggGsb7wRuRQa5trC96IOtdxBDmhGFKAbqcQFqvaIb7?=
+ =?us-ascii?Q?2JuP/PgXEEe7fxfG3TffUAgUUL8uVS+6enUYEUNoIVFfuf8Edc8W/AeEA0qf?=
+ =?us-ascii?Q?4FhtWceoFK8LwnuxSu+La3ElbEvF7o25uAfHUG2skCqZi1c3Rq75B8JbVtRs?=
+ =?us-ascii?Q?gbhTeac4/lI/fI4Zu9aI+cdm8fvgi6Axt3LmlLHw7a1yepsnky/WfUNCh3qz?=
+ =?us-ascii?Q?1Abfurf4eGHrOjmO/mWXCZKsZAbmv9F6eEzKqgV0/U8mvHqQDypxjEw5yVN0?=
+ =?us-ascii?Q?GqHv8n3/+MpgatBQb2P0a25thp3OfTcN0f3u6klat32WmuRojJj3Nghh3Gnq?=
+ =?us-ascii?Q?1guUQ2QW9LEBMF6vIpTrpBj9JesUupj/9HgQ5WT8pMTkBdRwCtKIsrFUfCFt?=
+ =?us-ascii?Q?JQJQtLZeshuoDJLkfIPRvoB+p9Plev/QetAN5k/Fewi9D+cI0+mmIiiHL5Vr?=
+ =?us-ascii?Q?v4VkMdFfs2+0aBY2TXK+EfHo9z6wPMYzRHoaaYP8sH9+Ac4xWqGWrqLPfU9i?=
+ =?us-ascii?Q?cmH2iCOvV6kN/PXLUpwCWJDtNnslD74sV4mEU/B0+1DaBYD/DbPUbufjtIba?=
+ =?us-ascii?Q?qY7Jt6JkIZ3ULH65TAs5wJ7bAbmp17SaFdMV7aT7hmwML56+WxOWuYRas+kO?=
+ =?us-ascii?Q?llPNkHjgL74PC9GS8I7ZIAeY/q94kz7zA1YbE0Kj/QJhvsSnc9B4XvhSeb7+?=
+ =?us-ascii?Q?X5DX6zDxuoLaXJ7+G77IDuovN8l+7ue3RvPZu81z9jBWuay6V7rK6It3p+Zo?=
+ =?us-ascii?Q?D6JzsHz4VWpBihU8aV/yRRLcfsBvD2XcaP1zM837SOUEj2zyQcL73bpNFivp?=
+ =?us-ascii?Q?68JxdWnL6bXYDPsb7XiUJUB/ECEfUs2XYEg+v0+/e0uUNGg8o2CEZNGc8eSS?=
+ =?us-ascii?Q?LXPe7Cv2TBYnw7J7Ynyie3tZjX82+Zph5ezss8WECOu+nL+BNJp9RksMy246?=
+ =?us-ascii?Q?X/TS18JRy0kieeQtfwQh9UNP2VgVmpaX9vA+7/vmoqjf1Z8yia6RQLtYT3RP?=
+ =?us-ascii?Q?BnX6PB5HSaF/uJtwfVZAq2Rlci/EmnRLoFkeR/Iz8YEJOR67kLnRLdh0cHvL?=
+ =?us-ascii?Q?n8UH3ZAodeASBDLvP47H/A1RJGqZPUCrDaylKPYuJgNdcv6xuUSHTUvIQekO?=
+ =?us-ascii?Q?oVYW+CXydXd/ryUmj3yixSCQdPirWtdKv/rWTDFU2+G8EV7Ayo+JDbXjv39n?=
+ =?us-ascii?Q?ZCaDUjddukJpvnAAYkqazPyU7s+1+nl7Cvw+olLboqcOBLG+Aoluf1jaWpgB?=
+ =?us-ascii?Q?3I8Xlh0E/lJNLqQZs/C9f+CD3AOvGIp+zoFaaQJGjPXNqd5yVRu4d2ng0NEq?=
+ =?us-ascii?Q?AmpDEnTdN15ux5rXqlRlJIzp?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BL0PR13MB4403.namprd13.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(7416014)(376014);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?V6yYCgQPIOt5l6NIDak0QlxNjmeokJDdNd8W5TbwD9NnrRZWDia2NrDrAUlb?=
+ =?us-ascii?Q?vf7eSGPXFj9xlf+cA5KtmTCW7hCY6p1f+Cr6I6NOVA7A9b9hukA2GSrrzeKk?=
+ =?us-ascii?Q?mtcFEAsGZJ46tvJGs9snHGyMb2/2Lk+WVEgYLbf+KMHK9bq9kuXkGo/shQUx?=
+ =?us-ascii?Q?hTJTzTMAFYAvMllI014CKVK3ATgYCxUwlLEf5p93n7zSuGLQs90oPWQ3uBrS?=
+ =?us-ascii?Q?LMO3VlwFi8OlrnkUwA1QLm6zZMFeZ2qbg0+PmuEXmHqJ6GQ9/qCSRCNPvakt?=
+ =?us-ascii?Q?CCw4wAFmNgOEbd7YCs1xUX+po0XEX2gBUk4s/Z9pTzOAWfSFqaznrxkB3Mhm?=
+ =?us-ascii?Q?JUIMxrnmCo7jzyIybyeAzFx3WUMMz7v6R2KebePcPa9w2GkMV1IiHYUncKfn?=
+ =?us-ascii?Q?zbQpHtjvsgE5xvCm5/m6NDhZWKmBxXcjo05Lyr5n1o/6vGbb/CXThgCsUQzw?=
+ =?us-ascii?Q?IT9IxPe3Sk1VayWf9kVOIjEgJoxJp0QG/GpWhHS4g8S5n4WYvCEHG/lq5YUH?=
+ =?us-ascii?Q?zEfhKTvuQYyY5OcZu4cejQo62vY6NFtCfvtTCtRU6vqQWy1+Awu/cWp3W/4L?=
+ =?us-ascii?Q?XXEoDNW8phtt4XxOOadjxHE/hAQvabPyI75MLjbD9LvFknhac+UKY5ELBqHO?=
+ =?us-ascii?Q?ckGoTsKKvE8bcMIQhbznl42LIZDzm2wFEjIRZWUzJGro3O628zvnlnDyo8ao?=
+ =?us-ascii?Q?oaQEPkUgE9WSeW8FULciCNUD9majMrLUy4dwg/PSEXod5vCoQ9ka+FUpWHsR?=
+ =?us-ascii?Q?EF7m45FRiW1MdMonshPaZzP4JMZKNtopj2sfXY26pnIpPekkj/D0uC+M5Ih3?=
+ =?us-ascii?Q?t95i3rLOB5spGs/2S6i8Or19a/jGReuQHPKdV0jfdux5B7pMjeZNBX9Ko3Jb?=
+ =?us-ascii?Q?DM9To0sP8dqSgJmG6GP5VUEj9qLmF1jgW+eYfN4xptGmcqkxPonmuhqjzVJL?=
+ =?us-ascii?Q?NxIMErde+YdvHNegDN+1hUGlEI3LBIDDVBkH5b1PDlQA3+ZOtZSuD7GowVp2?=
+ =?us-ascii?Q?iFDXmZjdsmM/TrC3cd+ILsP8BRL/aZroPkylnGq3vd9z5p58TLEAD/w01Ok/?=
+ =?us-ascii?Q?HA/FDZTeiFXHfNBdhnmGgmixWqNIRODsMB+kRmGwZzlhhcaW2UrG9zUeCH2t?=
+ =?us-ascii?Q?wByWzsuHLdduL+76v4rlcuCd8WleD64WHnSJOW2W/iapVjZ0RksVIBZdQxsH?=
+ =?us-ascii?Q?8+r9EF3eREYvQGdVxiOlyToNXFww10VQYiMFEnsMJufwHn581HENn8a+yy2l?=
+ =?us-ascii?Q?aZ/GPcHfTvNRo7bAE9+PjGOdR0JnTOZbjYTglx+7Mz+lAKoC1yybHKt0PSPJ?=
+ =?us-ascii?Q?DkO435CeQKN0RnER30EFnnWeNbJRtg0YdyaeMglBVkbZHUVNBQcheuS1WkRi?=
+ =?us-ascii?Q?lpyTw66qSZkUwH/MHojlrhtSPAoWWzG5l+4CeU+6419s7rBgy4mc1xqfKZAJ?=
+ =?us-ascii?Q?eIJOT5Ng+0aTJsp4USvy9fW0UIHOs4ochHEUaPIy+1IlSxiew2ckONSgk7v+?=
+ =?us-ascii?Q?oXoDWXI2PG3kGT+Yp2zXOoet4vjN5ANXwCBbIrAZ8qFAeLgI8EQQ4VLk/1FU?=
+ =?us-ascii?Q?jOwyhvuHMsx9WtQXdD2kU2G2F/0M5rumEagjMTfBycz7uTwNv1vfo/L2Da40?=
+ =?us-ascii?Q?lw=3D=3D?=
+X-OriginatorOrg: corigine.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7a7b7130-47b6-4d73-28b3-08dcf9aa76a5
+X-MS-Exchange-CrossTenant-AuthSource: BL0PR13MB4403.namprd13.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Oct 2024 12:49:31.6106
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: R9f61Zk4LrodHYoH2hHLXBcixOq58vk40qQ75o2Z67QVpoPEmysiKuVpUjaKTeNU0uQYc1oZCHX12oWVdAigbTquI/oSQF4t1w1aQgWQvy0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW5PR13MB5414
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241031_035311_343812_041BAFC1 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20241031_054941_798057_F2B9B741 
+X-CRM114-Status: GOOD (  20.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,46 +193,126 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, Oct 30, 2024 at 06:23:26PM -0600, Caleb Sander Mateos wrote:
+> net_dim() is currently passed a struct dim_sample argument by value.
+> struct dim_sample is 24 bytes. Since this is greater 16 bytes, x86-64
+> passes it on the stack. All callers have already initialized dim_sample
+> on the stack, so passing it by value requires pushing a duplicated copy
+> to the stack. Either witing to the stack and immediately reading it, or
+> perhaps dereferencing addresses relative to the stack pointer in a chain
+> of push instructions, seems to perform quite poorly.
+> 
+> In a heavy TCP workload, mlx5e_handle_rx_dim() consumes 3% of CPU time,
+> 94% of which is attributed to the first push instruction to copy
+> dim_sample on the stack for the call to net_dim():
+> // Call ktime_get()
+>   0.26 |4ead2:   call   4ead7 <mlx5e_handle_rx_dim+0x47>
+> // Pass the address of struct dim in %rdi
+>        |4ead7:   lea    0x3d0(%rbx),%rdi
+> // Set dim_sample.pkt_ctr
+>        |4eade:   mov    %r13d,0x8(%rsp)
+> // Set dim_sample.byte_ctr
+>        |4eae3:   mov    %r12d,0xc(%rsp)
+> // Set dim_sample.event_ctr
+>   0.15 |4eae8:   mov    %bp,0x10(%rsp)
+> // Duplicate dim_sample on the stack
+>  94.16 |4eaed:   push   0x10(%rsp)
+>   2.79 |4eaf1:   push   0x10(%rsp)
+>   0.07 |4eaf5:   push   %rax
+> // Call net_dim()
+>   0.21 |4eaf6:   call   4eafb <mlx5e_handle_rx_dim+0x6b>
+> 
+> To allow the caller to reuse the struct dim_sample already on the stack,
+> pass the struct dim_sample by reference to net_dim().
+> 
+> Signed-off-by: Caleb Sander Mateos <csander@purestorage.com>
+> ---
+>  Documentation/networking/net_dim.rst                   |  2 +-
+>  drivers/net/ethernet/amazon/ena/ena_netdev.c           |  2 +-
+>  drivers/net/ethernet/broadcom/bcmsysport.c             |  2 +-
+>  drivers/net/ethernet/broadcom/bnxt/bnxt.c              |  4 ++--
+>  drivers/net/ethernet/broadcom/genet/bcmgenet.c         |  2 +-
+>  drivers/net/ethernet/freescale/enetc/enetc.c           |  2 +-
+>  drivers/net/ethernet/hisilicon/hns3/hns3_enet.c        |  4 ++--
+>  drivers/net/ethernet/intel/ice/ice_txrx.c              |  4 ++--
+>  drivers/net/ethernet/intel/idpf/idpf_txrx.c            |  4 ++--
+>  drivers/net/ethernet/marvell/octeontx2/nic/otx2_txrx.c |  2 +-
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c            |  4 ++--
+>  drivers/net/ethernet/mellanox/mlx5/core/en_txrx.c      |  4 ++--
+>  drivers/net/ethernet/netronome/nfp/nfd3/dp.c           |  4 ++--
+>  drivers/net/ethernet/netronome/nfp/nfdk/dp.c           |  4 ++--
+>  drivers/net/ethernet/pensando/ionic/ionic_txrx.c       |  2 +-
+>  drivers/net/virtio_net.c                               |  2 +-
+>  drivers/soc/fsl/dpio/dpio-service.c                    |  2 +-
+>  include/linux/dim.h                                    |  2 +-
+>  lib/dim/net_dim.c                                      | 10 +++++-----
+>  19 files changed, 31 insertions(+), 31 deletions(-)
+> 
+--- snip --
 
---wg4oaapc6iokbp6v
-Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v9 6/6] pwm: airoha: Add support for EN7581 SoC
-MIME-Version: 1.0
+> diff --git a/drivers/net/ethernet/netronome/nfp/nfd3/dp.c b/drivers/net/ethernet/netronome/nfp/nfd3/dp.c
+> index d215efc6cad0..f1c6c47564b1 100644
+> --- a/drivers/net/ethernet/netronome/nfp/nfd3/dp.c
+> +++ b/drivers/net/ethernet/netronome/nfp/nfd3/dp.c
+> @@ -1177,11 +1177,11 @@ int nfp_nfd3_poll(struct napi_struct *napi, int budget)
+>  			pkts = r_vec->rx_pkts;
+>  			bytes = r_vec->rx_bytes;
+>  		} while (u64_stats_fetch_retry(&r_vec->rx_sync, start));
+>  
+>  		dim_update_sample(r_vec->event_ctr, pkts, bytes, &dim_sample);
+> -		net_dim(&r_vec->rx_dim, dim_sample);
+> +		net_dim(&r_vec->rx_dim, &dim_sample);
+>  	}
+>  
+>  	if (r_vec->nfp_net->tx_coalesce_adapt_on && r_vec->tx_ring) {
+>  		struct dim_sample dim_sample = {};
+>  		unsigned int start;
+> @@ -1192,11 +1192,11 @@ int nfp_nfd3_poll(struct napi_struct *napi, int budget)
+>  			pkts = r_vec->tx_pkts;
+>  			bytes = r_vec->tx_bytes;
+>  		} while (u64_stats_fetch_retry(&r_vec->tx_sync, start));
+>  
+>  		dim_update_sample(r_vec->event_ctr, pkts, bytes, &dim_sample);
+> -		net_dim(&r_vec->tx_dim, dim_sample);
+> +		net_dim(&r_vec->tx_dim, &dim_sample);
+>  	}
+>  
+>  	return pkts_polled;
+>  }
+>  
+> diff --git a/drivers/net/ethernet/netronome/nfp/nfdk/dp.c b/drivers/net/ethernet/netronome/nfp/nfdk/dp.c
+> index dae5af7d1845..ebeb6ab4465c 100644
+> --- a/drivers/net/ethernet/netronome/nfp/nfdk/dp.c
+> +++ b/drivers/net/ethernet/netronome/nfp/nfdk/dp.c
+> @@ -1287,11 +1287,11 @@ int nfp_nfdk_poll(struct napi_struct *napi, int budget)
+>  			pkts = r_vec->rx_pkts;
+>  			bytes = r_vec->rx_bytes;
+>  		} while (u64_stats_fetch_retry(&r_vec->rx_sync, start));
+>  
+>  		dim_update_sample(r_vec->event_ctr, pkts, bytes, &dim_sample);
+> -		net_dim(&r_vec->rx_dim, dim_sample);
+> +		net_dim(&r_vec->rx_dim, &dim_sample);
+>  	}
+>  
+>  	if (r_vec->nfp_net->tx_coalesce_adapt_on && r_vec->tx_ring) {
+>  		struct dim_sample dim_sample = {};
+>  		unsigned int start;
+> @@ -1302,11 +1302,11 @@ int nfp_nfdk_poll(struct napi_struct *napi, int budget)
+>  			pkts = r_vec->tx_pkts;
+>  			bytes = r_vec->tx_bytes;
+>  		} while (u64_stats_fetch_retry(&r_vec->tx_sync, start));
+>  
+>  		dim_update_sample(r_vec->event_ctr, pkts, bytes, &dim_sample);
+> -		net_dim(&r_vec->tx_dim, dim_sample);
+> +		net_dim(&r_vec->tx_dim, &dim_sample);
+>  	}
+>  
+>  	return pkts_polled;
+>  }
+--- snip ---
 
-Hello Benjamin,
+Hi Caleb. Looks like a fair enough update to me in general, but I am not an
+expert on 'dim'. For the corresponding nfp driver changes feel free to add:
 
-On Wed, Oct 30, 2024 at 11:14:41AM +0100, Benjamin Larsson wrote:
-> On 2024-10-30 08:32, Uwe Kleine-K=F6nig wrote:
-> > > +	/* Configure frequency divisor */
-> > > +	mask =3D WAVE_GEN_CYCLE_MASK(index % 4);
-> > > +	val =3D (period << __ffs(mask)) & mask;
-> > FIELD_PREP please.
->=20
-> Per my understanding FIELD_PREP only work on compile time constants.
-
-Then please create an alternative macro with the same semantic that also
-works when the mask isn't known at compile time instead of open coding
-the same concept several times.
-
-Best regards
-Uwe
-
---wg4oaapc6iokbp6v
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmcjYZAACgkQj4D7WH0S
-/k5i+Qf/QUXWMBOT0BMZ7vYNOddtUYFZcRph+Cgv/55I6yp0wo0c8gGiYBTgjdls
-BZkBjvIPurO3QEZd8dGjcYFSDkJFCfuikUofKD7RQ4wWxRsfmY88TBsztrkfqbg2
-aIjBeZlp3n3SyIQ4lsQV9HdMzUGvITEGLBN3k8cbmaZyfZU08CN9n6hmZN1EwduZ
-+yQtVPlDRq2k7jUiTTLbRcSqb6ngR8FajPEP+s+vYXawI8a43BIBVHZzt80AXfkG
-NZTgD+fW8qmB4uUevfuVq8+yw5cTAGrTxkjh/fMNsIArbA5bNdVBUKLhTrUvMHTI
-NK5mFlK9MFcl5mK6ETI1KgnKNHa75Q==
-=lv66
------END PGP SIGNATURE-----
-
---wg4oaapc6iokbp6v--
+Signed-off-by: Louis Peens <louis.peens@corigine.com>
 
