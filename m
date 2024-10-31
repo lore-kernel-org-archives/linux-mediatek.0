@@ -4,181 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7797BD74959
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2024 13:09:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25657D74959
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2024 13:37:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hdLzqf/yTk55heKa4L26mVR5RIL4KsJIu5JPiJiDxC8=; b=gll+/B6fHeF3ZhMuo4Esn5pNEE
-	6vPKh4Sv2mgR3dYfozKA5ZkaIn+ddD0x2c6Ac7Y+l7v35FbPZoRAlcS2dnCeSOSND0pEhy//yLmhb
-	LZcult0i1Bg26llJNBQ0UQlGQLBnXFhB/G0XljmabKGXcMvTdoBwHwkzpevMf+/VUm+n86hEoof5E
-	ld2R6TR01tivIlNkbtGDk0FaLjtcgzUpXZbSlvetpNgHN6Ae8LUOz/jwJtQSTYZ0FJJMZc3l6ezBW
-	zerkQe07lpYgSq3B/Ed4FVvmVNw1vgEDZ8QBT4sk+h2BwmEsj4dDqLc/z1VAhdNZ1CeJDRvQQmol9
-	XIxMYE6w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VA2D/3s3T/BEXi5y4Fa4JGpA6vR01kfLSIvpX9EDjM0=; b=KB6cmysXaPY+on
+	rJDgn7VDKzlkELxB+9j4OuBoJwqCF50VCcI9zof62A1tNa/ftagUInIR0z6pJuZw4mEdlk9za3b4J
+	jUlIkWm0em8dCseuTbgBgIhScaarJbaod7gif1U6NtbiZ0O8oIdCsQL8tmgiqS62NYpZ3c39FUet0
+	40awrbQ2HXc+7QV6XWHC4mmR3weeWTL1G4n7Endr8o/B0UG2jvN/ZzKg0pVYGfatcR3JbWwY6qEsa
+	l4e0rRbsxm81n6AIlB5EGYoxzPEIRda7bDeJ5P+HcI1f4GyOWa4rrV1OVSkoXetL3DMGuJBjs/Jbm
+	ckFtY/pyYzvyTnONZ9xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6UvL-00000003dSB-0f19;
-	Thu, 31 Oct 2024 13:09:15 +0000
-Received: from mail-bn8nam12on20716.outbound.protection.outlook.com ([2a01:111:f403:2418::716] helo=NAM12-BN8-obe.outbound.protection.outlook.com)
+	id 1t6VN1-00000003hPk-0M3h;
+	Thu, 31 Oct 2024 13:37:51 +0000
+Received: from giant.ash.relay.mailchannels.net ([23.83.222.68])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6UcP-00000003azX-2hkW;
-	Thu, 31 Oct 2024 12:49:52 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=DZjHI1FvPSv5cooUrudqbiCqI6Vvh5e+sYVhIJHhzuKhInAIUAOP8lGJliGMLoujxgLYuF0E5PcSf0XszAlA6pmxyn/ec9NAZriAWrxpeiNogOWJGO+bZ2nIlpiBRDZYGeASiDRmWWhe5E+hK3Kx+j4fHc/83UTwiZoVETJA6On2TZ/iJ7a9+IbMAq5ZdWy6k/5wO3q8FAg5FG7nN/ZixJgdp5WH/K/8jFn4xcDg2kBO4gBTlDIog8FV+5RnCQEEYvXubB/92D0fYcnkAkww29+itII8BiY9nrF9vu6Jvn/BDUGFavUkz4y6bGlg/tVJAt75oJE4CZdq6fu8bTwShg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=hdLzqf/yTk55heKa4L26mVR5RIL4KsJIu5JPiJiDxC8=;
- b=LM4+K1qKLlq6+MN2U7iQZzfTMDZ3V3UjfA9PTgVXlvPDCxAn8Eg/t58gocrZGruMJzTow/tgxIldJgL51VBW57z1T86KB4EYvkTRaZUva6B/Daihhs6WDsxyoO6Il25A3m44I751jrRLr+10vrm0lQUWPOH3DCNEX9jGDYb/j1+mJFcdUgK8AvmPe4F2JH+vyh2sHlDeGRaZ1W7eMI9PmwVxmzMWiS70hCvAaZiBUd1V8PX65uFPCJJJvbyObqWRg1xTcXvWcvC6fU1j7npjp7l6CLvef/HNv2y7RrwX20tX1UpVfc2WyhFx5F78VpPoRxJSnIt3rvFZ+2ZPOQK9Ig==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=corigine.com; dmarc=pass action=none header.from=corigine.com;
- dkim=pass header.d=corigine.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=corigine.onmicrosoft.com; s=selector2-corigine-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hdLzqf/yTk55heKa4L26mVR5RIL4KsJIu5JPiJiDxC8=;
- b=VlNzCXWx3K5bDL+6v2udxSkE5ZadCwXCXbfxFi0qxBFVRXwYwCwyIkrXLIxMK8pPguxoSDwTlrZ2B7M7+CtuRfcwKBv3BbHJgooclb7TXLlpqLA/fKFPthCsfaiRIELDLBCRzdOmHH/qT9i8SrgSuMbG2bTjRw4+quFe90oH+VM=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=corigine.com;
-Received: from BL0PR13MB4403.namprd13.prod.outlook.com (2603:10b6:208:1c4::8)
- by MW5PR13MB5414.namprd13.prod.outlook.com (2603:10b6:303:195::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8093.24; Thu, 31 Oct
- 2024 12:49:31 +0000
-Received: from BL0PR13MB4403.namprd13.prod.outlook.com
- ([fe80::bbcb:1c13:7639:bdc0]) by BL0PR13MB4403.namprd13.prod.outlook.com
- ([fe80::bbcb:1c13:7639:bdc0%6]) with mapi id 15.20.8114.020; Thu, 31 Oct 2024
- 12:49:31 +0000
-Date: Thu, 31 Oct 2024 14:49:10 +0200
-From: Louis Peens <louis.peens@corigine.com>
-To: Caleb Sander Mateos <csander@purestorage.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Arthur Kiyanovski <akiyano@amazon.com>,
-	Brett Creeley <brett.creeley@amd.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Christophe Leroy <christophe.leroy@csgroup.eu>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	David Arinzon <darinzon@amazon.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Doug Berger <opendmb@gmail.com>, Eric Dumazet <edumazet@google.com>,
-	Eugenio =?iso-8859-1?Q?P=E9rez?= <eperezma@redhat.com>,
-	Felix Fietkau <nbd@nbd.name>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Geetha sowjanya <gakula@marvell.com>,
-	hariprasad <hkelam@marvell.com>, Jakub Kicinski <kuba@kernel.org>,
-	Jason Wang <jasowang@redhat.com>, Jonathan Corbet <corbet@lwn.net>,
-	Leon Romanovsky <leon@kernel.org>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mark Lee <Mark-MC.Lee@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Michael Chan <michael.chan@broadcom.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Noam Dagan <ndagan@amazon.com>, Paolo Abeni <pabeni@redhat.com>,
-	Przemek Kitszel <przemyslaw.kitszel@intel.com>,
-	Roy Pledge <Roy.Pledge@nxp.com>, Saeed Bishara <saeedb@amazon.com>,
-	Saeed Mahameed <saeedm@nvidia.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Shannon Nelson <shannon.nelson@amd.com>,
-	Shay Agroskin <shayagr@amazon.com>, Simon Horman <horms@kernel.org>,
-	Subbaraya Sundeep <sbhatta@marvell.com>,
-	Sunil Goutham <sgoutham@marvell.com>, Tal Gilboa <talgi@nvidia.com>,
-	Tariq Toukan <tariqt@nvidia.com>,
-	Tony Nguyen <anthony.l.nguyen@intel.com>,
-	Vladimir Oltean <vladimir.oltean@nxp.com>,
-	Xuan Zhuo <xuanzhuo@linux.alibaba.com>,
-	intel-wired-lan@lists.osuosl.org,
-	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linuxppc-dev@lists.ozlabs.org, linux-rdma@vger.kernel.org,
-	netdev@vger.kernel.org, oss-drivers@corigine.com,
-	virtualization@lists.linux.dev
-Subject: Re: [resend PATCH 2/2] dim: pass dim_sample to net_dim() by reference
-Message-ID: <ZyN8xpq5C36Tg9rz@LouisNoVo>
-References: <20241031002326.3426181-1-csander@purestorage.com>
- <20241031002326.3426181-2-csander@purestorage.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241031002326.3426181-2-csander@purestorage.com>
-X-ClientProxiedBy: JNAP275CA0002.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:4c::7)
- To BL0PR13MB4403.namprd13.prod.outlook.com (2603:10b6:208:1c4::8)
+	id 1t6VL0-00000003h72-3Y54
+	for linux-mediatek@lists.infradead.org;
+	Thu, 31 Oct 2024 13:35:49 +0000
+X-Sender-Id: hostingeremail|x-authuser|arinc.unal@arinc9.com
+Received: from relay.mailchannels.net (localhost [127.0.0.1])
+	by relay.mailchannels.net (Postfix) with ESMTP id 6D3752C1A39
+	for <linux-mediatek@lists.infradead.org>; Thu, 31 Oct 2024 13:35:44 +0000 (UTC)
+Received: from uk-fast-smtpout9.hostinger.io (trex-9.trex.outbound.svc.cluster.local [100.103.140.206])
+	(Authenticated sender: hostingeremail)
+	by relay.mailchannels.net (Postfix) with ESMTPA id A5BCE2C13FA
+	for <linux-mediatek@lists.infradead.org>; Thu, 31 Oct 2024 13:35:43 +0000 (UTC)
+ARC-Seal: i=1; s=arc-2022; d=mailchannels.net; t=1730381743; a=rsa-sha256;
+	cv=none;
+	b=miTxGnrZ9Jvp8YxNgAOtAiwYNRzqfUhHuc1jF0s1FXA3xAFYBK1310neFMjxhokazG9fxs
+	1lLrSSkIoIP1VLoCQXyMVKcO/VRUXrEyg+V90vHAiTNV+1rkYNmyS5T3FxdLFXdIpMBWI0
+	ypcFJ2VPbgln8L2FfnKjbraE2XxvZ6kSeq+tJ1km7ag1gQyT14Fw1KmLxZJEYxVJgJqd28
+	STDMwAkMAkGdNiW9pdyaJO0fH/DuuiGj/TDrV07VhPrpDl8IuELoY1/s0s17r30ry9hzmw
+	HafN03AaQ36rm9I3g3oOYmNxUBhZr1n9yVMT7XPQpXY5RhHuaPVVCBES4M48jg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mailchannels.net;
+	s=arc-2022; t=1730381743;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:dkim-signature;
+	bh=VA2D/3s3T/BEXi5y4Fa4JGpA6vR01kfLSIvpX9EDjM0=;
+	b=Xm9oiRyWzzju5a3XgqtIELxw0cwjqKIgMb5D9BJmEkHWFXxyyEMfPH/hlLLCNTZ6Kz1wzw
+	amhkdaFkR4an6VUpxxz9qmtq4LxCXgjymMgic+3T8cQVMK3KoVeZO4ZEfgoy742K6zDJwN
+	KjMCgzy95XDqrkOmwJejXX9nczQ9YjblAlOsiJbBxFDpdYfqhzrsKiBcVLviaBoCAiEJm2
+	09zCrUtWp6q4SZMW94JQqj1xzRW7TqmbcRhU2NbbfVyaSPf9aHFxkC66xTA/6NUy7iREMU
+	taRdsBNxuGTPn4B5gqYJ+VvxWEP8GTk4rjFdgbKtbITnTC2FC849+J8dFVaKpg==
+ARC-Authentication-Results: i=1;
+	rspamd-77cfccfb8-2nmmb;
+	auth=pass smtp.auth=hostingeremail smtp.mailfrom=arinc.unal@arinc9.com
+X-Sender-Id: hostingeremail|x-authuser|arinc.unal@arinc9.com
+X-MC-Relay: Neutral
+X-MailChannels-SenderId: hostingeremail|x-authuser|arinc.unal@arinc9.com
+X-MailChannels-Auth-Id: hostingeremail
+X-Stretch-Minister: 1c7c3ad6754345e0_1730381744173_1559386052
+X-MC-Loop-Signature: 1730381744173:2466791738
+X-MC-Ingress-Time: 1730381744173
+Received: from uk-fast-smtpout9.hostinger.io (uk-fast-smtpout9.hostinger.io
+ [31.220.23.89])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
+	by 100.103.140.206 (trex/7.0.2);
+	Thu, 31 Oct 2024 13:35:44 +0000
+Message-ID: <d2776a19-5176-4ce4-9306-273ec7cda0a6@arinc9.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com;
+	s=hostingermail-a; t=1730381741;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=VA2D/3s3T/BEXi5y4Fa4JGpA6vR01kfLSIvpX9EDjM0=;
+	b=XZ93d0EpvzYzHqsXjJbn3ujqnNXJ6i58bnSgHu+5Vj7mGJdKWQxTLBlxpOs+cHwM2O/Q9v
+	GcaVm8Ha71r5FMWxOUY13wv3gKPvU7eeGaSKfCmNZA9CT6PfodxwJoJryqNRu+eSwXld8e
+	naB/9gn4qYMM4MqG6oYcZBEuxVVIJvWpZ3rAI6LXHHCG3EmPMxYkUqT8cISnd4z1E2ynMI
+	R367UCo5Y0YcG2k+KtUa4K5dslTBvxIZpbjk7HzRAIVIl1YxHKgmPBDchgwnJKHGcUyk/2
+	+yWH3IjIhcuHu/8+/OAxAZBQEvg3ml71p3YbcKHVqNsjSsq3JvICJC85i/SBRw==
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL0PR13MB4403:EE_|MW5PR13MB5414:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7a7b7130-47b6-4d73-28b3-08dcf9aa76a5
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|376014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?c/Ftqv0wIKpMdlsyPPggGsb7wRuRQa5trC96IOtdxBDmhGFKAbqcQFqvaIb7?=
- =?us-ascii?Q?2JuP/PgXEEe7fxfG3TffUAgUUL8uVS+6enUYEUNoIVFfuf8Edc8W/AeEA0qf?=
- =?us-ascii?Q?4FhtWceoFK8LwnuxSu+La3ElbEvF7o25uAfHUG2skCqZi1c3Rq75B8JbVtRs?=
- =?us-ascii?Q?gbhTeac4/lI/fI4Zu9aI+cdm8fvgi6Axt3LmlLHw7a1yepsnky/WfUNCh3qz?=
- =?us-ascii?Q?1Abfurf4eGHrOjmO/mWXCZKsZAbmv9F6eEzKqgV0/U8mvHqQDypxjEw5yVN0?=
- =?us-ascii?Q?GqHv8n3/+MpgatBQb2P0a25thp3OfTcN0f3u6klat32WmuRojJj3Nghh3Gnq?=
- =?us-ascii?Q?1guUQ2QW9LEBMF6vIpTrpBj9JesUupj/9HgQ5WT8pMTkBdRwCtKIsrFUfCFt?=
- =?us-ascii?Q?JQJQtLZeshuoDJLkfIPRvoB+p9Plev/QetAN5k/Fewi9D+cI0+mmIiiHL5Vr?=
- =?us-ascii?Q?v4VkMdFfs2+0aBY2TXK+EfHo9z6wPMYzRHoaaYP8sH9+Ac4xWqGWrqLPfU9i?=
- =?us-ascii?Q?cmH2iCOvV6kN/PXLUpwCWJDtNnslD74sV4mEU/B0+1DaBYD/DbPUbufjtIba?=
- =?us-ascii?Q?qY7Jt6JkIZ3ULH65TAs5wJ7bAbmp17SaFdMV7aT7hmwML56+WxOWuYRas+kO?=
- =?us-ascii?Q?llPNkHjgL74PC9GS8I7ZIAeY/q94kz7zA1YbE0Kj/QJhvsSnc9B4XvhSeb7+?=
- =?us-ascii?Q?X5DX6zDxuoLaXJ7+G77IDuovN8l+7ue3RvPZu81z9jBWuay6V7rK6It3p+Zo?=
- =?us-ascii?Q?D6JzsHz4VWpBihU8aV/yRRLcfsBvD2XcaP1zM837SOUEj2zyQcL73bpNFivp?=
- =?us-ascii?Q?68JxdWnL6bXYDPsb7XiUJUB/ECEfUs2XYEg+v0+/e0uUNGg8o2CEZNGc8eSS?=
- =?us-ascii?Q?LXPe7Cv2TBYnw7J7Ynyie3tZjX82+Zph5ezss8WECOu+nL+BNJp9RksMy246?=
- =?us-ascii?Q?X/TS18JRy0kieeQtfwQh9UNP2VgVmpaX9vA+7/vmoqjf1Z8yia6RQLtYT3RP?=
- =?us-ascii?Q?BnX6PB5HSaF/uJtwfVZAq2Rlci/EmnRLoFkeR/Iz8YEJOR67kLnRLdh0cHvL?=
- =?us-ascii?Q?n8UH3ZAodeASBDLvP47H/A1RJGqZPUCrDaylKPYuJgNdcv6xuUSHTUvIQekO?=
- =?us-ascii?Q?oVYW+CXydXd/ryUmj3yixSCQdPirWtdKv/rWTDFU2+G8EV7Ayo+JDbXjv39n?=
- =?us-ascii?Q?ZCaDUjddukJpvnAAYkqazPyU7s+1+nl7Cvw+olLboqcOBLG+Aoluf1jaWpgB?=
- =?us-ascii?Q?3I8Xlh0E/lJNLqQZs/C9f+CD3AOvGIp+zoFaaQJGjPXNqd5yVRu4d2ng0NEq?=
- =?us-ascii?Q?AmpDEnTdN15ux5rXqlRlJIzp?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BL0PR13MB4403.namprd13.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(7416014)(376014);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?V6yYCgQPIOt5l6NIDak0QlxNjmeokJDdNd8W5TbwD9NnrRZWDia2NrDrAUlb?=
- =?us-ascii?Q?vf7eSGPXFj9xlf+cA5KtmTCW7hCY6p1f+Cr6I6NOVA7A9b9hukA2GSrrzeKk?=
- =?us-ascii?Q?mtcFEAsGZJ46tvJGs9snHGyMb2/2Lk+WVEgYLbf+KMHK9bq9kuXkGo/shQUx?=
- =?us-ascii?Q?hTJTzTMAFYAvMllI014CKVK3ATgYCxUwlLEf5p93n7zSuGLQs90oPWQ3uBrS?=
- =?us-ascii?Q?LMO3VlwFi8OlrnkUwA1QLm6zZMFeZ2qbg0+PmuEXmHqJ6GQ9/qCSRCNPvakt?=
- =?us-ascii?Q?CCw4wAFmNgOEbd7YCs1xUX+po0XEX2gBUk4s/Z9pTzOAWfSFqaznrxkB3Mhm?=
- =?us-ascii?Q?JUIMxrnmCo7jzyIybyeAzFx3WUMMz7v6R2KebePcPa9w2GkMV1IiHYUncKfn?=
- =?us-ascii?Q?zbQpHtjvsgE5xvCm5/m6NDhZWKmBxXcjo05Lyr5n1o/6vGbb/CXThgCsUQzw?=
- =?us-ascii?Q?IT9IxPe3Sk1VayWf9kVOIjEgJoxJp0QG/GpWhHS4g8S5n4WYvCEHG/lq5YUH?=
- =?us-ascii?Q?zEfhKTvuQYyY5OcZu4cejQo62vY6NFtCfvtTCtRU6vqQWy1+Awu/cWp3W/4L?=
- =?us-ascii?Q?XXEoDNW8phtt4XxOOadjxHE/hAQvabPyI75MLjbD9LvFknhac+UKY5ELBqHO?=
- =?us-ascii?Q?ckGoTsKKvE8bcMIQhbznl42LIZDzm2wFEjIRZWUzJGro3O628zvnlnDyo8ao?=
- =?us-ascii?Q?oaQEPkUgE9WSeW8FULciCNUD9majMrLUy4dwg/PSEXod5vCoQ9ka+FUpWHsR?=
- =?us-ascii?Q?EF7m45FRiW1MdMonshPaZzP4JMZKNtopj2sfXY26pnIpPekkj/D0uC+M5Ih3?=
- =?us-ascii?Q?t95i3rLOB5spGs/2S6i8Or19a/jGReuQHPKdV0jfdux5B7pMjeZNBX9Ko3Jb?=
- =?us-ascii?Q?DM9To0sP8dqSgJmG6GP5VUEj9qLmF1jgW+eYfN4xptGmcqkxPonmuhqjzVJL?=
- =?us-ascii?Q?NxIMErde+YdvHNegDN+1hUGlEI3LBIDDVBkH5b1PDlQA3+ZOtZSuD7GowVp2?=
- =?us-ascii?Q?iFDXmZjdsmM/TrC3cd+ILsP8BRL/aZroPkylnGq3vd9z5p58TLEAD/w01Ok/?=
- =?us-ascii?Q?HA/FDZTeiFXHfNBdhnmGgmixWqNIRODsMB+kRmGwZzlhhcaW2UrG9zUeCH2t?=
- =?us-ascii?Q?wByWzsuHLdduL+76v4rlcuCd8WleD64WHnSJOW2W/iapVjZ0RksVIBZdQxsH?=
- =?us-ascii?Q?8+r9EF3eREYvQGdVxiOlyToNXFww10VQYiMFEnsMJufwHn581HENn8a+yy2l?=
- =?us-ascii?Q?aZ/GPcHfTvNRo7bAE9+PjGOdR0JnTOZbjYTglx+7Mz+lAKoC1yybHKt0PSPJ?=
- =?us-ascii?Q?DkO435CeQKN0RnER30EFnnWeNbJRtg0YdyaeMglBVkbZHUVNBQcheuS1WkRi?=
- =?us-ascii?Q?lpyTw66qSZkUwH/MHojlrhtSPAoWWzG5l+4CeU+6419s7rBgy4mc1xqfKZAJ?=
- =?us-ascii?Q?eIJOT5Ng+0aTJsp4USvy9fW0UIHOs4ochHEUaPIy+1IlSxiew2ckONSgk7v+?=
- =?us-ascii?Q?oXoDWXI2PG3kGT+Yp2zXOoet4vjN5ANXwCBbIrAZ8qFAeLgI8EQQ4VLk/1FU?=
- =?us-ascii?Q?jOwyhvuHMsx9WtQXdD2kU2G2F/0M5rumEagjMTfBycz7uTwNv1vfo/L2Da40?=
- =?us-ascii?Q?lw=3D=3D?=
-X-OriginatorOrg: corigine.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7a7b7130-47b6-4d73-28b3-08dcf9aa76a5
-X-MS-Exchange-CrossTenant-AuthSource: BL0PR13MB4403.namprd13.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Oct 2024 12:49:31.6106
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: fe128f2c-073b-4c20-818e-7246a585940c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: R9f61Zk4LrodHYoH2hHLXBcixOq58vk40qQ75o2Z67QVpoPEmysiKuVpUjaKTeNU0uQYc1oZCHX12oWVdAigbTquI/oSQF4t1w1aQgWQvy0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW5PR13MB5414
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next] net: dsa: mt7530: Add TBF qdisc offload support
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
+ <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20241030-mt7530-tc-offload-v1-1-f7eeffaf3d9e@kernel.org>
+ <a66528bd-37cb-46b2-90e5-37b10dfa9c78@arinc9.com>
+ <ZyM5CPfQYHc_Eolh@lore-desk>
+Content-Language: en-US
+From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+In-Reply-To: <ZyM5CPfQYHc_Eolh@lore-desk>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Date: Thu, 31 Oct 2024 13:35:39 +0000 (UTC)
+X-CM-Analysis: v=2.4 cv=ZLWFmm7b c=1 sm=1 tr=0 ts=672387ad a=aGj/nXfi4qz2iMxz7h0kJQ==:117 a=aGj/nXfi4qz2iMxz7h0kJQ==:17 a=IkcTkHD0fZMA:10 a=M51BFTxLslgA:10 a=LYXDv5rQIZ189asnIbQA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+X-CM-Envelope: MS4xfCfguuhZl9jj8TTlQ0BBGoVE4NCQHUKSMlnIjPUdQpeXnVRPJJIzY/PL1QnOcPwa9fEB9GoRLsmv6tlPeU1OUnQUyhOnssZj8K/3Jqf/y8j6GvIWThU9 6tNuW6h+uxTgOqQnS9GrVdB0FQUTsyIRpdf9//BYkD3Y1DubfPHmlWJBH+B9NeMUgXZdGlyryRWRtK1p2x2iUK/NRGLEK3MVHixjsSzi6BVTJ9oFC7Bymcnp jRStttJLp7W4KlV1OGSmqHM1vr5MxOGbxKKPaTQ7ErI60Tv2+vEYZDk+QXMAqzZs3VFeUUNxuydKwCv98dbMhdFdFr7Qv1xXDWlP/oncRWURJrBh7vhy77Qy 64jbcJph/3Lypl+8Y3Xh4pQE2igSoIQyyK3m6f18gUb1g/ReIlLXMvh59y8cXe6NYCgAnoALEgrX9Z0x5cYvsdqifryrK9jYPjYHJJud/dLJWyb2YnqswX8a SJD4+BitVvWpeMuzq+P3wQzAZMmFAHvJVGHmRb+QsSXW5re1D7GbTgoX3vvXBSnprKM5RQf8iSZBFbQPFN6OAHRH7vnkTf9C7mCu3gm7sNL9QlR8z6HEsCFV PwZ8JaOcXr/qVujUKBsqlZI5sl8aAwyrPfdJ99rCtAqMY5hU7GYRzGotqr6ZPHh7a0AWjGSpWfuVNJpPRRLjEcqRusArVz2Tj5uRtSBdqZP4ecpV96ueywVV 0zhzQK/Uzk8=
+X-AuthUser: arinc.unal@arinc9.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241031_054941_798057_F2B9B741 
-X-CRM114-Status: GOOD (  20.90  )
+X-CRM114-CacheID: sfid-20241031_063547_269609_805721CC 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -193,126 +125,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 30, 2024 at 06:23:26PM -0600, Caleb Sander Mateos wrote:
-> net_dim() is currently passed a struct dim_sample argument by value.
-> struct dim_sample is 24 bytes. Since this is greater 16 bytes, x86-64
-> passes it on the stack. All callers have already initialized dim_sample
-> on the stack, so passing it by value requires pushing a duplicated copy
-> to the stack. Either witing to the stack and immediately reading it, or
-> perhaps dereferencing addresses relative to the stack pointer in a chain
-> of push instructions, seems to perform quite poorly.
+On 31/10/2024 11:00, Lorenzo Bianconi wrote:
+>> On 30/10/2024 22:29, Lorenzo Bianconi wrote:
+>>> Introduce port_setup_tc callback in mt7530 dsa driver in order to enable
+>>> dsa ports rate shaping via hw Token Bucket Filter (TBF) for hw switched
+>>> traffic. Enable hw TBF just for EN7581 SoC for the moment.
+>>
+>> Is this because you didn't test it on the other models? Let me know if
+>> that's the case and I'll test it.
 > 
-> In a heavy TCP workload, mlx5e_handle_rx_dim() consumes 3% of CPU time,
-> 94% of which is attributed to the first push instruction to copy
-> dim_sample on the stack for the call to net_dim():
-> // Call ktime_get()
->   0.26 |4ead2:   call   4ead7 <mlx5e_handle_rx_dim+0x47>
-> // Pass the address of struct dim in %rdi
->        |4ead7:   lea    0x3d0(%rbx),%rdi
-> // Set dim_sample.pkt_ctr
->        |4eade:   mov    %r13d,0x8(%rsp)
-> // Set dim_sample.byte_ctr
->        |4eae3:   mov    %r12d,0xc(%rsp)
-> // Set dim_sample.event_ctr
->   0.15 |4eae8:   mov    %bp,0x10(%rsp)
-> // Duplicate dim_sample on the stack
->  94.16 |4eaed:   push   0x10(%rsp)
->   2.79 |4eaf1:   push   0x10(%rsp)
->   0.07 |4eaf5:   push   %rax
-> // Call net_dim()
->   0.21 |4eaf6:   call   4eafb <mlx5e_handle_rx_dim+0x6b>
-> 
-> To allow the caller to reuse the struct dim_sample already on the stack,
-> pass the struct dim_sample by reference to net_dim().
-> 
-> Signed-off-by: Caleb Sander Mateos <csander@purestorage.com>
-> ---
->  Documentation/networking/net_dim.rst                   |  2 +-
->  drivers/net/ethernet/amazon/ena/ena_netdev.c           |  2 +-
->  drivers/net/ethernet/broadcom/bcmsysport.c             |  2 +-
->  drivers/net/ethernet/broadcom/bnxt/bnxt.c              |  4 ++--
->  drivers/net/ethernet/broadcom/genet/bcmgenet.c         |  2 +-
->  drivers/net/ethernet/freescale/enetc/enetc.c           |  2 +-
->  drivers/net/ethernet/hisilicon/hns3/hns3_enet.c        |  4 ++--
->  drivers/net/ethernet/intel/ice/ice_txrx.c              |  4 ++--
->  drivers/net/ethernet/intel/idpf/idpf_txrx.c            |  4 ++--
->  drivers/net/ethernet/marvell/octeontx2/nic/otx2_txrx.c |  2 +-
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c            |  4 ++--
->  drivers/net/ethernet/mellanox/mlx5/core/en_txrx.c      |  4 ++--
->  drivers/net/ethernet/netronome/nfp/nfd3/dp.c           |  4 ++--
->  drivers/net/ethernet/netronome/nfp/nfdk/dp.c           |  4 ++--
->  drivers/net/ethernet/pensando/ionic/ionic_txrx.c       |  2 +-
->  drivers/net/virtio_net.c                               |  2 +-
->  drivers/soc/fsl/dpio/dpio-service.c                    |  2 +-
->  include/linux/dim.h                                    |  2 +-
->  lib/dim/net_dim.c                                      | 10 +++++-----
->  19 files changed, 31 insertions(+), 31 deletions(-)
-> 
---- snip --
+> yep, exactly. I have tested it just on EN7581 since I do not have any other
+> boards for testing at the moment. If you confirm it works on other SoCs too,
+> I can remove the limitation.
 
-> diff --git a/drivers/net/ethernet/netronome/nfp/nfd3/dp.c b/drivers/net/ethernet/netronome/nfp/nfd3/dp.c
-> index d215efc6cad0..f1c6c47564b1 100644
-> --- a/drivers/net/ethernet/netronome/nfp/nfd3/dp.c
-> +++ b/drivers/net/ethernet/netronome/nfp/nfd3/dp.c
-> @@ -1177,11 +1177,11 @@ int nfp_nfd3_poll(struct napi_struct *napi, int budget)
->  			pkts = r_vec->rx_pkts;
->  			bytes = r_vec->rx_bytes;
->  		} while (u64_stats_fetch_retry(&r_vec->rx_sync, start));
->  
->  		dim_update_sample(r_vec->event_ctr, pkts, bytes, &dim_sample);
-> -		net_dim(&r_vec->rx_dim, dim_sample);
-> +		net_dim(&r_vec->rx_dim, &dim_sample);
->  	}
->  
->  	if (r_vec->nfp_net->tx_coalesce_adapt_on && r_vec->tx_ring) {
->  		struct dim_sample dim_sample = {};
->  		unsigned int start;
-> @@ -1192,11 +1192,11 @@ int nfp_nfd3_poll(struct napi_struct *napi, int budget)
->  			pkts = r_vec->tx_pkts;
->  			bytes = r_vec->tx_bytes;
->  		} while (u64_stats_fetch_retry(&r_vec->tx_sync, start));
->  
->  		dim_update_sample(r_vec->event_ctr, pkts, bytes, &dim_sample);
-> -		net_dim(&r_vec->tx_dim, dim_sample);
-> +		net_dim(&r_vec->tx_dim, &dim_sample);
->  	}
->  
->  	return pkts_polled;
->  }
->  
-> diff --git a/drivers/net/ethernet/netronome/nfp/nfdk/dp.c b/drivers/net/ethernet/netronome/nfp/nfdk/dp.c
-> index dae5af7d1845..ebeb6ab4465c 100644
-> --- a/drivers/net/ethernet/netronome/nfp/nfdk/dp.c
-> +++ b/drivers/net/ethernet/netronome/nfp/nfdk/dp.c
-> @@ -1287,11 +1287,11 @@ int nfp_nfdk_poll(struct napi_struct *napi, int budget)
->  			pkts = r_vec->rx_pkts;
->  			bytes = r_vec->rx_bytes;
->  		} while (u64_stats_fetch_retry(&r_vec->rx_sync, start));
->  
->  		dim_update_sample(r_vec->event_ctr, pkts, bytes, &dim_sample);
-> -		net_dim(&r_vec->rx_dim, dim_sample);
-> +		net_dim(&r_vec->rx_dim, &dim_sample);
->  	}
->  
->  	if (r_vec->nfp_net->tx_coalesce_adapt_on && r_vec->tx_ring) {
->  		struct dim_sample dim_sample = {};
->  		unsigned int start;
-> @@ -1302,11 +1302,11 @@ int nfp_nfdk_poll(struct napi_struct *napi, int budget)
->  			pkts = r_vec->tx_pkts;
->  			bytes = r_vec->tx_bytes;
->  		} while (u64_stats_fetch_retry(&r_vec->tx_sync, start));
->  
->  		dim_update_sample(r_vec->event_ctr, pkts, bytes, &dim_sample);
-> -		net_dim(&r_vec->tx_dim, dim_sample);
-> +		net_dim(&r_vec->tx_dim, &dim_sample);
->  	}
->  
->  	return pkts_polled;
->  }
---- snip ---
+Seems to be working fine on MT7530. As we have tested this on the oldest
+and newest models that use this switching IP, I'm going to assume it will
+work on the other models as well. You can remove the limitation. Also,
+please change MT7530_ERLCR_P and MT7530_GERLCR to MT753X_ERLCR_P and
+MT753X_GERLCR.
 
-Hi Caleb. Looks like a fair enough update to me in general, but I am not an
-expert on 'dim'. For the corresponding nfp driver changes feel free to add:
+tc qdisc add dev lan4 root tbf rate 10mbit burst 10kb latency 50ms
 
-Signed-off-by: Louis Peens <louis.peens@corigine.com>
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-5.00   sec  5.88 MBytes  9.85 Mbits/sec    4             sender
+[  5]   0.00-5.00   sec  5.50 MBytes  9.23 Mbits/sec                  receiver
+
+tc qdisc del dev lan4 root
+
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-5.00   sec   469 MBytes   786 Mbits/sec    0             sender
+[  5]   0.00-5.00   sec   468 MBytes   785 Mbits/sec                  receiver
+
+tc qdisc add dev lan4 root tbf rate 11mbit burst 10kb latency 50ms
+
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-5.00   sec  6.38 MBytes  10.7 Mbits/sec    6             sender
+[  5]   0.00-5.00   sec  6.00 MBytes  10.1 Mbits/sec                  receiver
+
+tc qdisc del dev lan4 root
+
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-5.00   sec   467 MBytes   783 Mbits/sec    0             sender
+[  5]   0.00-5.00   sec   466 MBytes   783 Mbits/sec                  receiver
+
+tc qdisc add dev lan4 root tbf rate 11mbit burst 10kb latency 50ms
+tc qdisc replace dev lan4 root tbf rate 10mbit burst 10kb latency 50ms
+
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-5.00   sec  5.88 MBytes  9.85 Mbits/sec    4             sender
+[  5]   0.00-5.00   sec  5.50 MBytes  9.23 Mbits/sec                  receiver
+
+Arınç
 
