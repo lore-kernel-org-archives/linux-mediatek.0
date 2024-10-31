@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADCEDD767D6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2024 14:33:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79F47D767D8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2024 14:37:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pFLi7sXfxk+XCHwdBr/DCPBnP9ObDHkez7dZLEKcBpk=; b=pcW69of4HqQ64W51SMjUKLqb5M
-	QRLg8Fji8F/FeGsbSTRuIEIks/4YSXXPa+8qgFos0Uva9jIATFX3gmsjlrL7gTwinDjMKi4FUKs0R
-	iqRbMKjfGhyZEEjUM4IctsAYlMAlCuUIVjetuudI2IpzGMyAVNJXo43dRe/DKdBy+R4XxxUTH/LKj
-	ZQ2l/acae2pfPf8FOm0PW/EKweBjVMjLZvlL9APD1pyirwhKALzpYEI9OB0koDO++BL+NcA5MZLbM
-	yMtD6t8HIfKzVeK29tmaQdaLaOnoR7FvhYc3vS0hembqQhk/fo3pFVUM6QWkNNT8cv+HcCQUxvj1+
-	sDsDRDdw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=oeula+DtfhgaWzx5M6Nob2ysji59Y5ECNtbv0GomXHw=; b=JoinfCR0dgFXjptiPNrMQJDa0V
+	OkdtpZbcnqUbRrWUb75Nc0Io696UqWxlsfmo6JMOUFfsl/EYrnPdLwzEGj7tQnUBd8eJcxsD2nSZg
+	SS2QLqaxUwo6gcyzhCu7JbRc6eA+GBiVsIPiP67zRSpMrDfsK6dnNbLW10i3CLBLV2AbzCKM8coge
+	mo8ZMMYmMRQbBnysnU9gNYe0urnKw7pTZzi1n8B9JUzsZpUH+3Sa0d8x0hE+AiR/J7LwMzB/V5JWH
+	ct9NHDHNHumnXG5NKQmblzN0Tc0y6O4VFzXiHuykUPd4ZVDkI7L/jdtRiooHQsv2LAMEYRZhR3pq2
+	bVZ9Ksqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6WEy-00000003p6f-289h;
-	Thu, 31 Oct 2024 14:33:36 +0000
+	id 1t6WIF-00000003pnJ-2Qzg;
+	Thu, 31 Oct 2024 14:36:59 +0000
 Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6W9B-00000003o4W-1FsT;
-	Thu, 31 Oct 2024 14:27:39 +0000
+	id 1t6WAA-00000003oHi-2zfg;
+	Thu, 31 Oct 2024 14:28:40 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 4ABBFA4427A;
-	Thu, 31 Oct 2024 14:25:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15B5FC4DE00;
-	Thu, 31 Oct 2024 14:19:41 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 5A2B7A44218;
+	Thu, 31 Oct 2024 14:26:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2D6A1C4CED3;
+	Thu, 31 Oct 2024 14:28:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730384382;
-	bh=kvu/pNOvG5FZT1n14j6qWW3Zde2m2OO4VVYELDoWxLA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=hweOotzgnuI9+0LQv5EEgRrxW1sbD7PYRwnhXQ/oob00uYp/8wQSBdNsbmXLoXW3z
-	 w0PNTun9kUlvk0MSVq1qwYyN+9KrsnxZFcAVXxv6zyZvSMPnAwyWciEu56CspyATly
-	 7doJePMC60ihjAdOCbqyWeNP1ieKEk3SkJd97lkUxxfv5L3ScubAaqT3avOKvWpmS6
-	 C/hxgxp40ZbOQFdQiH8GhrIym7r/SIm+3CEffsSrZLWklQCN7bt8mCw8xrpgH2zJ/x
-	 /UwyJts0qWVgyk+FB05Dp3M04QH8SnHM7wYRdlHuHF2yta/160nHRhPEp1xJe3m0cc
-	 V3Nd12DRz+moQ==
-Date: Thu, 31 Oct 2024 15:19:39 +0100
+	s=k20201202; t=1730384917;
+	bh=CaYEF7X5I1GwZVHjJ3svy21SD6o+b4obPuUVTVBlPB8=;
+	h=From:Date:Subject:To:Cc:From;
+	b=OdDIYEW5Q9ZFcC3DhB2TkUXh8M7gBaaMmyD6SSXalM5rdbslk3tn5R2NgJUBWCD+x
+	 07FV/uL/IsERrmYXog4SEg3HTScus/Gtd3s/eFvQs4R5ug8b5Sc/3hUEN3usXDT3yj
+	 6alDSnZxp1hGU7OQ4QtjfDAFFXfW96+pJFwHr9spiUqfkix7A2uwPieNdJI0BniWXZ
+	 fWutmBAsH+6tNdN9lRYVDF7YcqdEfLsO74IDh/+Er5DkM8fRXwwTZlwEuETSrNRnPN
+	 4dvgaZ9JoCeEP8Q0PUr/eV0GiGRsaVd0o4KK9oTW++3jpDl1jmBawFH1F1jUdPk5Cv
+	 q9Q4ZrBpwkBug==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-Cc: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next] net: dsa: mt7530: Add TBF qdisc offload support
-Message-ID: <ZyOR-w_KtIXk0ug6@lore-desk>
-References: <20241030-mt7530-tc-offload-v1-1-f7eeffaf3d9e@kernel.org>
- <a66528bd-37cb-46b2-90e5-37b10dfa9c78@arinc9.com>
- <ZyM5CPfQYHc_Eolh@lore-desk>
- <d2776a19-5176-4ce4-9306-273ec7cda0a6@arinc9.com>
+Date: Thu, 31 Oct 2024 15:28:18 +0100
+Subject: [PATCH net-next v2] net: dsa: mt7530: Add TBF qdisc offload
+ support
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ysKMVCDzL0oWX2I+"
-Content-Disposition: inline
-In-Reply-To: <d2776a19-5176-4ce4-9306-273ec7cda0a6@arinc9.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20241031-mt7530-tc-offload-v2-1-cb242ad954a0@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAGUI2cC/32NQQrDIBBFrxJmXctolNCueo+ShcSZRJrGoiItw
+ bvX5gBdfd6H//4OiaKnBNduh0jFJx+2BurUwbTYbSbhXWNQqLTEHsUzD6ZFnkRgXoN1Ag0p1Fp
+ Lgwht94rE/n0472Pjxacc4ue4KPLX/rMVKaTggYjZcu8udHtQ3Gg9hzjDWGv9AiyW6Y2zAAAA
+X-Change-ID: 20241030-mt7530-tc-offload-05e204441500
+To: =?utf-8?q?Ar=C4=B1n=C3=A7_=C3=9CNAL?= <arinc.unal@arinc9.com>, 
+ Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
+ Florian Fainelli <f.fainelli@gmail.com>, 
+ Vladimir Oltean <olteanv@gmail.com>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241031_072737_572678_1A6E1E07 
-X-CRM114-Status: GOOD (  20.87  )
+X-CRM114-CacheID: sfid-20241031_072838_899582_D1278175 
+X-CRM114-Status: GOOD (  14.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,94 +82,128 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Introduce port_setup_tc callback in mt7530 dsa driver in order to enable
+dsa ports rate shaping via hw Token Bucket Filter (TBF) for hw switched
+traffic.
 
---ysKMVCDzL0oWX2I+
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+Changes in v2:
+- remove device id limitation and allow tbf qdisc configuration on each mt7530
+  compliant devices
+- rename MT7530_ERLCR_P in MT753X_ERLCR_P and MT7530_GERLCR in
+  MT753X_GERLCR
+- Link to v1: https://lore.kernel.org/r/20241030-mt7530-tc-offload-v1-1-f7eeffaf3d9e@kernel.org
+---
+ drivers/net/dsa/mt7530.c | 49 ++++++++++++++++++++++++++++++++++++++++++++++++
+ drivers/net/dsa/mt7530.h | 12 ++++++++++++
+ 2 files changed, 61 insertions(+)
 
-> On 31/10/2024 11:00, Lorenzo Bianconi wrote:
-> > > On 30/10/2024 22:29, Lorenzo Bianconi wrote:
-> > > > Introduce port_setup_tc callback in mt7530 dsa driver in order to e=
-nable
-> > > > dsa ports rate shaping via hw Token Bucket Filter (TBF) for hw swit=
-ched
-> > > > traffic. Enable hw TBF just for EN7581 SoC for the moment.
-> > >=20
-> > > Is this because you didn't test it on the other models? Let me know if
-> > > that's the case and I'll test it.
-> >=20
-> > yep, exactly. I have tested it just on EN7581 since I do not have any o=
-ther
-> > boards for testing at the moment. If you confirm it works on other SoCs=
- too,
-> > I can remove the limitation.
->=20
-> Seems to be working fine on MT7530. As we have tested this on the oldest
-> and newest models that use this switching IP, I'm going to assume it will
-> work on the other models as well. You can remove the limitation. Also,
-> please change MT7530_ERLCR_P and MT7530_GERLCR to MT753X_ERLCR_P and
-> MT753X_GERLCR.
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index d84ee1b419a614dda5f440e6571cff5f4f27bf21..086b8b3d5b40f776815967492914bd46a04b6886 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -21,6 +21,7 @@
+ #include <linux/gpio/consumer.h>
+ #include <linux/gpio/driver.h>
+ #include <net/dsa.h>
++#include <net/pkt_cls.h>
+ 
+ #include "mt7530.h"
+ 
+@@ -3146,6 +3147,53 @@ mt753x_conduit_state_change(struct dsa_switch *ds,
+ 	mt7530_rmw(priv, MT753X_MFC, MT7530_CPU_EN | MT7530_CPU_PORT_MASK, val);
+ }
+ 
++static int mt753x_tc_setup_qdisc_tbf(struct dsa_switch *ds, int port,
++				     struct tc_tbf_qopt_offload *qopt)
++{
++	struct tc_tbf_qopt_offload_replace_params *p = &qopt->replace_params;
++	struct mt7530_priv *priv = ds->priv;
++	u32 rate = 0;
++
++	switch (qopt->command) {
++	case TC_TBF_REPLACE:
++		rate = div_u64(p->rate.rate_bytes_ps, 1000) << 3; /* kbps */
++		fallthrough;
++	case TC_TBF_DESTROY: {
++		u32 val, tick;
++
++		mt7530_rmw(priv, MT753X_GERLCR, EGR_BC_MASK,
++			   EGR_BC_CRC_IPG_PREAMBLE);
++
++		/* if rate is greater than 10Mbps tick is 1/32 ms,
++		 * 1ms otherwise
++		 */
++		tick = rate > 10000 ? 2 : 7;
++		val = FIELD_PREP(ERLCR_CIR_MASK, (rate >> 5)) |
++		      FIELD_PREP(ERLCR_EN_MASK, !!rate) |
++		      FIELD_PREP(ERLCR_EXP_MASK, tick) |
++		      ERLCR_TBF_MODE_MASK |
++		      FIELD_PREP(ERLCR_MANT_MASK, 0xf);
++		mt7530_write(priv, MT753X_ERLCR_P(port), val);
++		break;
++	}
++	default:
++		return -EOPNOTSUPP;
++	}
++
++	return 0;
++}
++
++static int mt753x_setup_tc(struct dsa_switch *ds, int port,
++			   enum tc_setup_type type, void *type_data)
++{
++	switch (type) {
++	case TC_SETUP_QDISC_TBF:
++		return mt753x_tc_setup_qdisc_tbf(ds, port, type_data);
++	default:
++		return -EOPNOTSUPP;
++	}
++}
++
+ static int mt7988_setup(struct dsa_switch *ds)
+ {
+ 	struct mt7530_priv *priv = ds->priv;
+@@ -3193,6 +3241,7 @@ const struct dsa_switch_ops mt7530_switch_ops = {
+ 	.get_mac_eee		= mt753x_get_mac_eee,
+ 	.set_mac_eee		= mt753x_set_mac_eee,
+ 	.conduit_state_change	= mt753x_conduit_state_change,
++	.port_setup_tc		= mt753x_setup_tc,
+ };
+ EXPORT_SYMBOL_GPL(mt7530_switch_ops);
+ 
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index 6ad33a9f6b1dff3a423baa668a8a2ca158f72b91..448200689f492dcb73ef056d7284090c1c662e67 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -248,6 +248,18 @@ enum mt7530_vlan_egress_attr {
+ #define  AGE_UNIT_MAX			0xfff
+ #define  AGE_UNIT(x)			(AGE_UNIT_MASK & (x))
+ 
++#define MT753X_ERLCR_P(x)		(0x1040 + ((x) * 0x100))
++#define  ERLCR_CIR_MASK			GENMASK(31, 16)
++#define  ERLCR_EN_MASK			BIT(15)
++#define  ERLCR_EXP_MASK			GENMASK(11, 8)
++#define  ERLCR_TBF_MODE_MASK		BIT(7)
++#define  ERLCR_MANT_MASK		GENMASK(6, 0)
++
++#define MT753X_GERLCR			0x10e0
++#define  EGR_BC_MASK			GENMASK(7, 0)
++#define  EGR_BC_CRC			0x4	/* crc */
++#define  EGR_BC_CRC_IPG_PREAMBLE	0x18	/* crc + ipg + preamble */
++
+ /* Register for port STP state control */
+ #define MT7530_SSP_P(x)			(0x2000 + ((x) * 0x100))
+ #define  FID_PST(fid, state)		(((state) & 0x3) << ((fid) * 2))
 
-ack, thx for testing. I will fix it in v2.
+---
+base-commit: 157a4881225bd0af5444aab9510e7b6da28f2469
+change-id: 20241030-mt7530-tc-offload-05e204441500
 
-Regards,
-Lorenzo
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
->=20
-> tc qdisc add dev lan4 root tbf rate 10mbit burst 10kb latency 50ms
->=20
-> [ ID] Interval           Transfer     Bitrate         Retr
-> [  5]   0.00-5.00   sec  5.88 MBytes  9.85 Mbits/sec    4             sen=
-der
-> [  5]   0.00-5.00   sec  5.50 MBytes  9.23 Mbits/sec                  rec=
-eiver
->=20
-> tc qdisc del dev lan4 root
->=20
-> [ ID] Interval           Transfer     Bitrate         Retr
-> [  5]   0.00-5.00   sec   469 MBytes   786 Mbits/sec    0             sen=
-der
-> [  5]   0.00-5.00   sec   468 MBytes   785 Mbits/sec                  rec=
-eiver
->=20
-> tc qdisc add dev lan4 root tbf rate 11mbit burst 10kb latency 50ms
->=20
-> [ ID] Interval           Transfer     Bitrate         Retr
-> [  5]   0.00-5.00   sec  6.38 MBytes  10.7 Mbits/sec    6             sen=
-der
-> [  5]   0.00-5.00   sec  6.00 MBytes  10.1 Mbits/sec                  rec=
-eiver
->=20
-> tc qdisc del dev lan4 root
->=20
-> [ ID] Interval           Transfer     Bitrate         Retr
-> [  5]   0.00-5.00   sec   467 MBytes   783 Mbits/sec    0             sen=
-der
-> [  5]   0.00-5.00   sec   466 MBytes   783 Mbits/sec                  rec=
-eiver
->=20
-> tc qdisc add dev lan4 root tbf rate 11mbit burst 10kb latency 50ms
-> tc qdisc replace dev lan4 root tbf rate 10mbit burst 10kb latency 50ms
->=20
-> [ ID] Interval           Transfer     Bitrate         Retr
-> [  5]   0.00-5.00   sec  5.88 MBytes  9.85 Mbits/sec    4             sen=
-der
-> [  5]   0.00-5.00   sec  5.50 MBytes  9.23 Mbits/sec                  rec=
-eiver
->=20
-> Ar=C4=B1n=C3=A7
-
---ysKMVCDzL0oWX2I+
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZyOR+wAKCRA6cBh0uS2t
-rGGrAP43x9ir/OC4Nuio7b+xx3gu7hiiiMPEZ1q8QZZQfNE+cwD/V1qt3XVM+x3Q
-oN0FLzDtJ8l0dGS2xaSdjjTcL/hnpwU=
-=WgBX
------END PGP SIGNATURE-----
-
---ysKMVCDzL0oWX2I+--
 
