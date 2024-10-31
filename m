@@ -4,89 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CE39E6F063
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Nov 2024 14:28:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76063E6F063
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Nov 2024 15:01:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xDypH/qw5wQR/LwFJJEG6yEgwj2L2NnuQUbw+c8OVnw=; b=ljGd0KP0ZJfResSiaygiOr+FcR
-	L3yulksfXlx352ANGQIRDqaHjGGAwlm4G+kdObDOzueQEj+H/v/qddHbDkZAqOTrI8tlDvm3sI+Mf
-	j6SMWCIaD0Hwlb+F2yQjE8iACUi3hcQHFlPX1/aDM9I9rQ7eOTpCPVoENV156loAatq/It2baKz7i
-	aptqj3KLKLBGcWmZIaBNHDcxyIQYQXqfxIkfUq2aPmD8Fno5FlSmdor6gQSs6pt7hL2yGHuc28TqB
-	hBjCjduvuOxcTD7smsF6ObPiE9oQY6t3HFGcbwMbvI6UPexmk9u5+qPeJiFpP05Vp9OCCOd/vpk6j
-	oqIj/odQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=b6UJYXV9+k4ACdSuwQwR+p+e80s+hiAJs+JIBhod+Tk=; b=22a0bNgLnqHdhL
+	oBpVdKvj+VVYrl56WlXEZVWlInSw5+j6b7/tGjet8FTp9aEdmrbCULsfmXzE/+T347vwKiZ55pSCy
+	Kdy0v5roKX2jNuYbdE8zXuC0cwMOscioIA8XCK2k4IW7rn2pf6uo/q2ijsHEcWvGCpmEml6k0yjpJ
+	faFA5Nv/HcNCoZamBUx3A12gcVpe/7YwTHoKmtA8/221TOQi8wv5NlX+utW/D/2zKeocez4KkXxV5
+	kicwtDMiXEiSWUUzifpUO2v3fg8XeEXfAQ2IIQaxY1g8ZOVPpTgnUuvbpmrvNj+bbPF+/N+9GIeqW
+	GsD0ikleKdu79Y+Zrt+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6sdQ-00000007L2T-1BVL;
-	Fri, 01 Nov 2024 14:28:20 +0000
-Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
+	id 1t6t9I-00000007QwN-0mrX;
+	Fri, 01 Nov 2024 15:01:16 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6sXe-00000007Jlb-2q64
-	for linux-mediatek@lists.infradead.org;
-	Fri, 01 Nov 2024 14:22:25 +0000
+	id 1t6s4Y-00000007Elp-2o1u;
+	Fri, 01 Nov 2024 13:52:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=leemhuis.info; s=he214686; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:From:
-	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:In-Reply-To:
-	References; bh=xDypH/qw5wQR/LwFJJEG6yEgwj2L2NnuQUbw+c8OVnw=; t=1730470942;
-	x=1730902942; b=NICgHsoevvLOPG9cJZ6uBBLXvxHq/z+rpu+5VMfl6tczkMOj2zuDbBuK8DzFd
-	gIHQPXFHv9582ce2C4NRJqHYEAjt/qwx9/gcRv+gl3p7sxB7Yw0HEX7IxqFPJA8Mmu55H21B1u3hj
-	OJZdc/cv6Udfh6OM9oJ6+ccyrTPcEFqHoVwWd2U84Tg8YelDJDv8evaGqVQmGkGLtL/DAbmIUxrEl
-	G+EPgeQ80OtCADHY4LzGo+ppiMAG4U5cFSjLuEekdNKZTJVxMluYiyPSz8n5AXX3iTATCuVyhCAIB
-	ZunvW+MuxiwpMd54rtco734jCJp3wDd0jYvV+lw/PxIAmiEuHg==;
-Received: from [2a02:8108:8980:2478:87e9:6c79:5f84:367d]; authenticated
-	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	id 1t6sXW-0003Mv-6m; Fri, 01 Nov 2024 15:22:14 +0100
-Message-ID: <643d8055-5a9f-4f5b-865b-830d33651dfe@leemhuis.info>
-Date: Fri, 1 Nov 2024 15:22:13 +0100
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:References;
+	bh=b6UJYXV9+k4ACdSuwQwR+p+e80s+hiAJs+JIBhod+Tk=; b=pgKWv9Cf81vRcMg1GRniFUZQAk
+	pt1BlErw/VKWnm/wvXLGw98p57UF2lX1RHt5xInQMmwkIJjcaUiPFT91O0Do7V+MTlZm1r/ln+710
+	7ZkNpNV6VcOE7oM0DY6ne9jXyK0do85NIfcvv8bVsEvntahaxNJecwvMSdMLhV22ap2+1emPIW9Lg
+	DLebLEZ0Znq9DzDSBm+WX2stfzl5LNtq6JD3yXFsJHlJ/Wj8cm6qeKSqXUMoKQp7tI8pd+Jdj1Ea9
+	2XYsged/CUogs+nO1/nNMSdXP8x2QEq/NfsixmIJ/ZVvNKRWT/GrJTvu9c2X/YkRhIEasFGs99RnH
+	8+37H1TQ==;
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1t6s4V-0000000AhD3-00X5;
+	Fri, 01 Nov 2024 13:52:16 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 45B865C6114;
+	Thu, 31 Oct 2024 17:03:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A22B9C4CED0;
+	Thu, 31 Oct 2024 17:04:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1730394269;
+	bh=76iIYi9r6xA6vX/KYVnYOqiJXABJE4PH5Kls9Mk0HhA=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=U9Jh5sKjWEqDOVKayvj3wQwuDJJY8KF5B2A8ixi/Ps8E1ZDGak7rpwREw0Hb+frDS
+	 9ErlaLmaNxrHr0/EEVzIcXx+jV/DePCv4pSxHHTKytCy15uxP7wX6XVwpxeqopCrUj
+	 ngkwfhz44fe+2al5EplKqBqC++32wAzrr+McXt0gYqKkuJv92uZQ4tC2wQGEhGagb+
+	 k8xASwiFxc4orbWOIuuOsS1wUwIziv7rSnBABK67Bm0GXmsnTSKCNJksCj708EctuW
+	 +oWIBZSgtuMB1lraiAXVnN1COw6Uu3+fTDf4LEgJ37/HI5v1BVelKl25dR7iF6yaF/
+	 vG940zFG7emDA==
+Date: Thu, 31 Oct 2024 12:04:28 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Jinjian Song <jinjian.song@fibocom.com>
+Cc: ryazanov.s.a@gmail.com, chandrashekar.devegowda@intel.com,
+	chiranjeevi.rapolu@linux.intel.com, haijun.liu@mediatek.com,
+	m.chetan.kumar@linux.intel.com, ricardo.martinez@linux.intel.com,
+	loic.poulain@linaro.org, johannes@sipsolutions.net,
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, angelogioacchino.delregno@collabora.com,
+	bhelgaas@google.com, corbet@lwn.net, danielwinkler@google.com,
+	korneld@google.com, linasvepstas@gmail.com,
+	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	matthias.bgg@gmail.com, netdev@vger.kernel.org
+Subject: Re: [net-next v2] net: wwan: t7xx: reset device if suspend fails
+Message-ID: <20241031170428.GA1249507@bhelgaas>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] Bluetooth: btmtk: Remove resetting mt7921 before
- downloading the fw
-To: "luiz.dentz@gmail.com" <luiz.dentz@gmail.com>,
- "tiwai@suse.de" <tiwai@suse.de>
-Cc: "marcel@holtmann.org" <marcel@holtmann.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-bluetooth@vger.kernel.org" <linux-bluetooth@vger.kernel.org>,
- =?UTF-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?= <Deren.Wu@mediatek.com>,
- "regressions@lists.linux.dev" <regressions@lists.linux.dev>,
- "johan.hedberg@gmail.com" <johan.hedberg@gmail.com>,
- =?UTF-8?B?U3RldmUgTGVlICjmnY7oppboqqAp?= <steve.lee@mediatek.com>,
- "marc.payne@mdpsys.co.uk" <marc.payne@mdpsys.co.uk>,
- Sean Wang <Sean.Wang@mediatek.com>, =?UTF-8?B?QWFyb24gSG91ICjkvq/kv4rku7Ap?=
- <Aaron.Hou@mediatek.com>, =?UTF-8?B?Q2hyaXMgTHUgKOmZuOeomuazkyk=?=
- <Chris.Lu@mediatek.com>, =?UTF-8?B?SGFvIFFpbiAo56em5rWpKQ==?=
- <Hao.Qin@mediatek.com>
-References: <20240822052310.25220-1-hao.qin@mediatek.com>
- <ZuB3omUkdUHLggYu@mdpsys.co.uk>
- <790e542aa9d08c7efeee6ef298fce2a87d8035e4.camel@mediatek.com>
- <ZuneSM4SvyUFX86j@mdpsys.co.uk>
- <9bfbbf24ac2480d94d3455f7e33e4b5502b38ced.camel@mediatek.com>
- <CABBYNZKYsL9jcF2n9TsA1BjU-CjXOdXu7MDLP9Sz_Ly8hBAf1w@mail.gmail.com>
- <c01e6dfa730dd10a7d4dba60fe31e82b9c296b37.camel@mediatek.com>
- <Zuyk1c6Gkxx3G0PB@mdpsys.co.uk>
- <f9e8688ebe559e10c019d0cbab4e8b1f5a7d2339.camel@mediatek.com>
- <ff502f63-2d87-4dee-a893-cce53353df8b@leemhuis.info>
- <87iktk4d9l.wl-tiwai@suse.de>
- <75f671b6-ce2a-4404-b662-2c9c7d28a598@leemhuis.info>
- <d0f70e662f5e9329cff43f92a5c191601cc599f1.camel@mediatek.com>
- <0a988691-8c18-4dca-ac78-94e36a9b8b37@leemhuis.info>
- <f3c6f6f857d19c867941c86c644042fa195621ac.camel@mediatek.com>
-From: Thorsten Leemhuis <regressions@leemhuis.info>
-Content-Language: en-MW
-In-Reply-To: <f3c6f6f857d19c867941c86c644042fa195621ac.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1730470942;07fe7e4f;
-X-HE-SMSGID: 1t6sXW-0003Mv-6m
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241031130930.5583-1-jinjian.song@fibocom.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241101_072222_901394_E8BE35EA 
-X-CRM114-Status: GOOD (  63.16  )
+X-CRM114-CacheID: sfid-20241101_135215_487509_8082812D 
+X-CRM114-Status: GOOD (  43.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,260 +92,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi. Top-posting for once, to make this easily accessible to everyone.
+On Thu, Oct 31, 2024 at 09:09:30PM +0800, Jinjian Song wrote:
+> From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
+> > On 29.10.2024 05:46, Jinjian Song wrote:
+> > > From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
+> > > > On 22.10.2024 11:43, Jinjian Song wrote:
+> > > > > If driver fails to set the device to suspend, it means that the
+> > > > > device is abnormal. In this case, reset the device to recover
+> > > > > when PCIe device is offline.
+> > > > 
+> > > > Is it a reproducible or a speculative issue? Does the fix
+> > > > recover modem from a problematic state?
+> > > > 
+> > > > Anyway we need someone more familiar with this hardware (Intel
+> > > > or MediaTek engineer) to Ack the change to make sure we are not
+> > > > going to put a system in a more complicated state.
+> > > 
+> > > This is a very difficult issue to replicate onece occured and fixed.
+> > > 
+> > > The issue occured when driver and device lost the connection. I have
+> > > encountered this problem twice so far:
+> > > 1. During suspend/resume stress test, there was a probabilistic D3L2
+> > > time sequence issue with the BIOS, result in PCIe link down, driver
+> > > read and write the register of device invalid, so suspend failed.
+> > > This issue was eventually fixed in the BIOS and I was able to restore
+> > > it through the reset module after reproducing the problem.
+> > > 
+> > > 2. During idle test, the modem probabilistic hang up, result in PCIe
+> > > link down, driver read and write the register of device invalid, so
+> > > suspend failed. This issue was eventually fiex in device modem firmware
+> > > by adjust a certain power supply voltage, and reset modem as a workround
+> > > to restore when the MBIM port command timeout in userspace applycations.
+> > > 
+> > > Hardware reset modem to recover was discussed with MTK, and they said
+> > > that if we don't want to keep the on-site problem location in case of
+> > > suspend failure, we can use the recover solution.
+> > > Both the ocurred issues result in the PCIe link issue, driver can't
+> > > read and writer the register of WWAN device, so I want to add this
+> > > path
+> > > to restore, hardware reset modem can recover modem, but using the
+> > > pci_channle_offline() as the judgment is my inference.
+> > 
+> > Thank you for the clarification. Let me summarize what I've understood
+> > from the explanation:
+> > a) there were hardware (firmware) issues,
+> > b) issues already were solved,
+> > c) issues were not directly related to the device suspension procedure,
+> > d) you want to implement a backup plan to make the modem support robust.
+> > 
+> > If got it right, then I would like to recommend to implement a generic
+> > error handling solution for the PCIe interface. You can check this
+> > document: Documentation/PCI/pci-error-recovery.rst
+> 
+> Yes, got it right.
+> I want to identify the scenario and then recover by reset device,
+> otherwise suspend failure will aways prevent the system from suspending
+> if it occurs.
 
-Thx for the insights, but it feels like this is not the complete story.
-From Takashi's mail earlier in the thread it appears to me that there is
-a regression that the patch at the start of the thread fixes:
-https://lore.kernel.org/all/87iktk4d9l.wl-tiwai@suse.de/
+If a PCIe link goes down here's my understanding of what happens:
 
-So it appears to me (please correct me if I'm wrong, which I might be)
-there is some regression that must be fixed independently of any
-firmware changes; not sure, maybe it's a different regression that the
-one Marc saw.
+  - Writes to the device are silently dropped.
 
-I just don't know what's the best way forward to resolve the regresson.
-A revert of the culprit? The patch at the start of this thread?
-Something else?
+  - Reads from the device return ~0 (PCI_POSSIBLE_ERROR()).
 
-Takashi, Luiz, can you help me out here? I guess I otherwise soon will
-have to involve higher level maintainers to sort this out (e.g. the -net
-maintainers and/or Linus).
+  - If the device is in a slot and pciehp is enabled, a Data Link
+    Layer State Changed interrupt will cause pciehp_unconfigure_device()
+    to detach the driver and remove the pci_dev.
 
-Ciao, Thorsten
+  - If AER is enabled, a failed access to the device will cause an AER
+    interrupt.  If the driver has registered pci_error_handlers, the
+    driver callbacks will be called, and based on what the driver
+    returns, the PCI core may reset the device.
 
-On 01.11.24 08:11, Chris Lu (陸稚泓) wrote:
-> Hi Thorsten,
-> 
-> On Wed, 2024-10-30 at 12:29 +0100, Thorsten Leemhuis wrote:
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->> 
->> 
->> On 30.10.24 12:03, Chris Lu (陸稚泓) wrote:
->> > 
->> > Let me recap and update the status of this problem.
->> 
->> Many thx!
->> 
->> > Marc feedback that he has some problem with MT7921AUN usb module.
->> > Originally, we thought it was caused by the change "Fixes:
->> > ccfc8948d7e4d9 ("Bluetooth: btusb: mediatek: reset the controller
->> > before downloading the fw")". The change is mainly for MT7922, we
->> > found some problem with MT7921 on specific platform internally. As
->> > a result, Hao sent another patch to remove MT7921 from that
->> > rule(Bluetooth: btmtk: Remove resetting mt7921 before downloading
->> > the fw).
->> > 
->> > However, Marc also mentioned that BT is able to work if changing
->> > back
->> > to an old firmware bin. Based on the clue, we found it was caused
->> > by a
->> > firmware change that specific MT7921 model will not able to setup
->> > successfully. (In fact, we didn't expect that MT7921AUN can be get
->> > by
->> > normal user.)
->> > 
->> > Since we can't predict which model user use and Luiz also suggests
->> > MediaTek to fix it if that model can work before, we have prepared
->> > a
->> > solution. I've verified the solution locally that MT7921AUN model
->> > can
->> > work normally on Ubuntu PC. It will be a firmware modification. We
->> > plan
->> > to submit new firmware with this modification in 2024 Nov.
->> 
->> Great, but due to the kernel's "no regressions" rule this is mostly
->> irrelevant, as the regression must be fixed in a way that does not
->> require users to change their firmware.
->> 
-> 
-> Marc's module(MT7921AUN) is not working is due to a change in specific
-> firmware uploaded last year and we plan to revert that in the next
-> firmware release. Since it's related to controller's behavior, it's
-> quite hard to cover in software side.
-> Additionally, MT7921AUN is an external usb dongle. MediaTek official PC
-> project doesn't use this type of MT7921 model. We uses another type for
-> PC projects that it can be guaranteed bluetooth works normally with any
-> firmware we upload to Kernel. As a result, we believe the impact is
-> minimal to general user.
-> 
->> So is any such solution in sight? Or should we just revert
->> ccfc8948d7e4d9 and any related follow up patches for now? Or would
->> that
->> just cause regressions for other users?
->> 
-> 
-> Actually, it's not related to ccfc8948d7e4d9 which make bluetooth can't
-> setup normally if using MT7921AUN model + mismatched firmware. We
-> thought it was the same issue in the beginning, but it's not eventually
-> after getting more and more clue/logs.
-> I think we can keep the change because it's necessary to the change
-> submitter-Hao's project.
-> 
-> Chris Lu
-> 
->> Ciao, Thorsten
->> 
->> > On Wed, 2024-10-30 at 10:21 +0100, Thorsten Leemhuis wrote:
->> > > External email : Please do not click links or open attachments
->> > > until
->> > > you have verified the sender or the content.
->> > > 
->> > > 
->> > > Hi, Thorsten here, the Linux kernel's regression tracker. Top-
->> > > posting
->> > > for once, to make this easily accessible to everyone.
->> > > 
->> > > I'm a bit lost here, but maybe I'm missing something.
->> > > 
->> > > Luiz, can you help out here? Is there a reason why this patch is
->> > > not
->> > > making any process?
->> > > 
->> > > Chris Lu and/or Hao Qin: Can you maybe help out as well as well
->> > > and
->> > > help
->> > > with resolving some open questions that might or might not be
->> > > relevant
->> > > (see below).
->> > > 
->> > > From Takashi reply, the bugzilla ticket he linked to, and the
->> > > mail
->> > > from
->> > > the MediaTek folks
->> > > (
->> > > 
-> https://lore.kernel.org/lkml/12a344e25b31ec00fe8b57814d43fcb166e71be5.camel@mediatek.com/
->> > > ) it from the outside looks like this patch should really be
->> > > merged
->> > > rather sooner that later as it fixes regressions for some people.
->> > > Afaics it should get a "Fixes: ccfc8948d7e4d9 ("Bluetooth: btusb:
->> > > mediatek: reset the controller before downloading the fw")" tag,
->> > > as
->> > > it's
->> > > afaics that commit that causes the regression that is known since
->> > > more
->> > > than three months now
->> > > (https://lore.kernel.org/all/ZsTh7Jyug7MbZsLE@mdpsys.co.uk/ ).
->> > > 
->> > > But note, it seems it does not fix the regression completely
->> > > according
->> > > to Marc's testing.
->> > > https://lore.kernel.org/all/ZuCB98DSdtKCgxaL@mdpsys.co.uk/
->> > > 
->> > > Marc: Is that still how things are with current mainline?
->> > > 
->> > > Ciao, Thorsten
->> > > 
->> > > 
->> > > On 22.10.24 12:56, Takashi Iwai wrote:
->> > > > On Mon, 14 Oct 2024 11:29:40 +0200,
->> > > > Linux regression tracking (Thorsten Leemhuis) wrote:
->> > > > > 
->> > > > > On 20.09.24 08:27, Chris Lu (陸稚泓) wrote:
->> > > > > > On Thu, 2024-09-19 at 23:25 +0100, marc.payne@mdpsys.co.uk
->> > > > > > wrote:
->> > > > > > > 
->> > > > > > > External email : Please do not click links or open
->> > > > > > > attachments until
->> > > > > > > you have verified the sender or the content.
->> > > > > > >  Hi Chris and Luiz,
->> > > > > > > 
->> > > > > > > What were your thoughts on the findings in my email dated
->> > > > > > > 18th
->> > > > > > > September?
->> > > > > > 
->> > > > > > Thanks for your suggestion.
->> > > > > > 
->> > > > > > I've prepared the same environment (Kernel v6.11 +
->> > > > > > MT7921AUN
->> > > > > > dongle) to
->> > > > > > reproduce the issue, collected necessary logs locally and
->> > > > > > also
->> > > > > > initiated an internal discussion to clarify the root cause
->> > > > > > of
->> > > > > > this
->> > > > > > symptom. We'll review the changes between two firmware
->> > > > > > (20230526/20231109) if it's a bug or not.
->> > > > > > 
->> > > > > > It may take some time to investigate. I'll let you know if
->> > > > > > there is any
->> > > > > > progress.
->> > > > > 
->> > > > > Just wondering: Chris Lu, and Marc, what's the status here?
->> > > > > From
->> > > > > here it
->> > > > > looks like there was no progress to fix this regression for a
->> > > > > while, but
->> > > > > it's easy to miss something, that's why I ask.
->> > > > > 
->> > > > > Ciao, Thorsten
->> > > > 
->> > > > FWIW, the similar bug was reported for the recent 6.11.x kernel
->> > > > on
->> > > > openSUSE Tumbleweed, and this patch was confirmed to work
->> > > > around
->> > > > the
->> > > > crash at boot:
->> > > > 
->> > > > 
-> https://urldefense.com/v3/__https://bugzilla.suse.com/show_bug.cgi?id=1231599__;!!CTRNKA9wMg0ARbw!jYyH2oubBEtIKXmKl9cI2rrmK-7kSdaiIJQ8xH4NZa5i5YCTQDHaoOxCBhMgdAAY6ROIPAoPwbOV-LNeMRJBlR6u-As$
->> > > > 
->> > > > It'd be great if you can go ahead and merge the proper fix to
->> > > > the
->> > > > upstream.
->> > > > 
->> > > > Let me know if you have another patch to test.  Then I can
->> > > > create a
->> > > > test kernel package and ask the bug reporter for testing.
->> > > > 
->> > > > 
->> > > > thanks,
->> > > > 
->> > > > Takashi
->> > > > 
->> > > 
->> > > 
->> > 
->> > ************* MEDIATEK Confidentiality Notice ********************
->> > The information contained in this e-mail message (including any
->> > attachments) may be confidential, proprietary, privileged, or
->> > otherwise
->> > exempt from disclosure under applicable laws. It is intended to be
->> > conveyed only to the designated recipient(s). Any use,
->> > dissemination,
->> > distribution, printing, retaining or copying of this e-mail
->> > (including its
->> > attachments) by unintended recipient(s) is strictly prohibited and
->> > may
->> > be unlawful. If you are not an intended recipient of this e-mail,
->> > or believe
->> > that you have received this e-mail in error, please notify the
->> > sender
->> > immediately (by replying to this e-mail), delete any and all copies
->> > of
->> > this e-mail (including any attachments) from your system, and do
->> > not
->> > disclose the content of this e-mail to any other person. Thank you!
->> > 
->> 
->> 
-> 
-> ************* MEDIATEK Confidentiality Notice
->  ********************
-> The information contained in this e-mail message (including any 
-> attachments) may be confidential, proprietary, privileged, or otherwise
-> exempt from disclosure under applicable laws. It is intended to be 
-> conveyed only to the designated recipient(s). Any use, dissemination, 
-> distribution, printing, retaining or copying of this e-mail (including its 
-> attachments) by unintended recipient(s) is strictly prohibited and may 
-> be unlawful. If you are not an intended recipient of this e-mail, or believe
->  
-> that you have received this e-mail in error, please notify the sender 
-> immediately (by replying to this e-mail), delete any and all copies of 
-> this e-mail (including any attachments) from your system, and do not
-> disclose the content of this e-mail to any other person. Thank you!
-> 
+The pciehp and AER interrupts are *asynchronous* to link down events
+and to any driver access to the device, so they may be delayed an
+arbitrary amount of time.
 
+Both interrupt paths may lead to the device being marked as "offline".
+Obviously this is asynchronous with respect to the driver.
+
+> > > > > +++ b/drivers/net/wwan/t7xx/t7xx_pci.c
+> > > > > @@ -427,6 +427,10 @@ static int __t7xx_pci_pm_suspend(struct
+> > > > > pci_dev *pdev)
+> > > > >       iowrite32(T7XX_L1_BIT(0), IREG_BASE(t7xx_dev) +
+> > > > > ENABLE_ASPM_LOWPWR);
+> > > > >       atomic_set(&t7xx_dev->md_pm_state, MTK_PM_RESUMED);
+> > > > >       t7xx_pcie_mac_set_int(t7xx_dev, SAP_RGU_INT);
+> > > > > +    if (pci_channel_offline(pdev)) {
+> > > > > +        dev_err(&pdev->dev, "Device offline, reset to recover\n");
+> > > > > +        t7xx_reset_device(t7xx_dev, PLDR);
+> > > > > +    }
+
+This looks like an unreliable way to detect issues.  It only works if
+AER is enabled, and the device is only marked "offline" some arbitrary
+length of time *after* a driver access to the device has failed.
+
+You can't reliably detect errors on writes to the device.
+
+You can only reliably detect errors on reads from the device by
+looking for PCI_POSSIBLE_ERROR().  Obviously ~0 might be a valid value
+to read from some registers, so you need device-specific knowledge to
+know whether ~0 is valid or indicates an error.
+
+If AER or DPC are enabled, the driver can be *notified* about read
+errors and some write errors via pci_error_handlers, but the
+notification is long after the error.
+
+Bjorn
 
