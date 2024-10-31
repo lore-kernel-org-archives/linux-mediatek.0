@@ -4,112 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0556E68956
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2024 07:25:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3894E6895B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2024 08:14:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lZlmnnd6VY4iWOEJN3fR2oAOuKekDnzf7D9Hkfh3i4s=; b=YK0ThpQvxYacsT
-	SueFj1EfkWZxGgTLpad5FmND9yf1nKtYZB/tQhXL7DP7BCT8R3VfX1RSZFm8phkGiRwqafR+KjRJw
-	yoIjebB5fyLW8pJ9xQRLUBCy4ZDV8KK1v+E5wzMJIAZlt2a8lRCukBgNGt7SFiRjP8pE43L32nfNi
-	FFNVLkUsCoa9cINi9omeqw+n5HQ3G1mXI+31ZIdfh7mQjl/lTHfDetu9HYP6ezyo10Beh0P0kFEkZ
-	7Uq6LYpV7qfmKWBE/OU1sGnhFXDZFp0xSgpV8Qu8wHBmqc1TvblfCWni5Tn9Sf0t68vHdnS83Rpfq
-	RJV4QY1gVa5Lys9DKhTw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=e3iIIsHdt0hU8MfSeZgGRpSJ44GLBXxPqNvTCuiOI5A=; b=4qrDMRI37Zl8O5hUwjYyTIY6Cn
+	PuczAMDFjO9kDmthlXKFCDU7/8UUm6vB7yigiA6eutO3HtDApT+YoCbvcIYn5T+HWfgvHWReAxfZ4
+	sAyTrUBp+UfroPCPI0ptrcHuZ6TkXu7Uq17oIlWE6r+pdHc5dG97lzWBD9FGMhRmFGzwrhc6zol8K
+	VKLaRKo68BnsBKs6PFpa4EwQUkhQaJ0OinP5K298dho0tdsARYfyDu0tcPgO6ZShHTJlgK5Zh4trs
+	qAC7EzsWA91nafCdX41BfvtRsqe4H1onc8Nnqk97/gJyOBRJWF/mNXZz9/LDQv1x1Fwrov4UGWhU3
+	5O3nur4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6PYd-00000002ntL-04vy;
-	Thu, 31 Oct 2024 07:25:27 +0000
-Received: from iguana.tulip.relay.mailchannels.net ([23.83.218.253])
+	id 1t6QKB-00000002uQV-2jp7;
+	Thu, 31 Oct 2024 08:14:35 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6PKQ-00000002luI-0wCI
-	for linux-mediatek@lists.infradead.org;
-	Thu, 31 Oct 2024 07:10:47 +0000
-X-Sender-Id: hostingeremail|x-authuser|arinc.unal@arinc9.com
-Received: from relay.mailchannels.net (localhost [127.0.0.1])
-	by relay.mailchannels.net (Postfix) with ESMTP id 3AA3E843F5D
-	for <linux-mediatek@lists.infradead.org>; Thu, 31 Oct 2024 07:10:37 +0000 (UTC)
-Received: from nl-srv-smtpout9.hostinger.io (100-105-127-150.trex-nlb.outbound.svc.cluster.local [100.105.127.150])
-	(Authenticated sender: hostingeremail)
-	by relay.mailchannels.net (Postfix) with ESMTPA id 92403843F5C
-	for <linux-mediatek@lists.infradead.org>; Thu, 31 Oct 2024 07:10:36 +0000 (UTC)
-ARC-Seal: i=1; s=arc-2022; d=mailchannels.net; t=1730358636; a=rsa-sha256;
-	cv=none;
-	b=eCBeoSfPNKd5k6kTsV20/6WJLMtjxG//MRgibokHOC89/1VxikmGNvI01P5l7O+KwnI9wB
-	EDEHHKkAbUtZmPVqz/IbSn8MTfDY9z/OcbXfgST1wNv/WyHxt2xbdwMQAmxC0ZviX0TPqx
-	ucxMnpl6/vO4nb5eADxHYnhiBNcNjE7PTU1dXUOKkg7JBGxS10q6xWYEbuoQhBGeZnQzTN
-	Dur5ciNxMiYR6Z9HmTAnLAxYiM96uOVtgZBdg5jfd8JGFzqR7S+ORL8u76tQy254GVIQgh
-	9ju9lvWWu33EKWor0aGHnixqNDsN7rzoxumxAT4Ia2JBVgcTZih5OmT2Bcn+xQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mailchannels.net;
-	s=arc-2022; t=1730358636;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:dkim-signature;
-	bh=lZlmnnd6VY4iWOEJN3fR2oAOuKekDnzf7D9Hkfh3i4s=;
-	b=CIoT4cmKjQsL5aJML9ITBs8E9LUbrFJSCH1ArvTQjxNRVyyHiIdI3h16IWy/F86Q2diyJE
-	/wlQukNCejG3miT7ndVm9Rd/yYk/lfr6gwSQjiKSXPlRZkjc41STkhb0+mwgC6Sn0awWqU
-	2LUxDbL2FMune+letWm5yEiT4wo9Rpj4Nl5EasqjGvcF9B1r/QKxfCwLzffJG6RpTEuAIX
-	8oKt85sRP28IuV0dKAwJlsLgWC0cdvGij7Hc0WT0u5zM1VPG6wlpqx+Q9blvEXKmeFTf43
-	MSyytH50ZhWlI3jQFNgzCTeUFgO/8A2s3D6CoxyJaXMSoiNUFy2wzUiZ0vQM9A==
-ARC-Authentication-Results: i=1;
-	rspamd-65cf4487d9-78pkv;
-	auth=pass smtp.auth=hostingeremail smtp.mailfrom=arinc.unal@arinc9.com
-X-Sender-Id: hostingeremail|x-authuser|arinc.unal@arinc9.com
-X-MC-Relay: Neutral
-X-MailChannels-SenderId: hostingeremail|x-authuser|arinc.unal@arinc9.com
-X-MailChannels-Auth-Id: hostingeremail
-X-Rock-Ski: 4fdeb15c1600dbb5_1730358637066_1126691184
-X-MC-Loop-Signature: 1730358637066:2712884508
-X-MC-Ingress-Time: 1730358637065
-Received: from nl-srv-smtpout9.hostinger.io (nl-srv-smtpout9.hostinger.io
- [45.87.82.133])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
-	by 100.105.127.150 (trex/7.0.2);
-	Thu, 31 Oct 2024 07:10:37 +0000
-Message-ID: <a66528bd-37cb-46b2-90e5-37b10dfa9c78@arinc9.com>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com;
-	s=hostingermail-a; t=1730358634;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=lZlmnnd6VY4iWOEJN3fR2oAOuKekDnzf7D9Hkfh3i4s=;
-	b=NRoo+kQ7pFbuPT6z5Cb6S84fbfJOOj5qAwFha52OFrJ0JExn7Ku/fTJnZajCq05w9LZP8e
-	ZLYX0yKjmNbdDVHUMzA3vuRhsyB4Bl3ghIiolEItiM2nEx7ufCGnuGKkBOtrpSDtV0jJhS
-	gJMAYQwb/16d3o2JYOnr5GDD529wd194SZBEXJNL/baBcZr10Wj1AsSaSJCRjbtySuiwCq
-	iNOW34RKx+CkvPABdc6xFqXjI0sGc7kVAsy+3/VZOWW0IgUv/SDgT9BnhDFLYyN+NHyCGq
-	7nl8LYDpOdFTBZoyU8jjJdDPMvdxqD0UOcYlCOPU3k1yuvsnXZ/6RjZgj1OOzA==
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1t6Q6G-00000002sf3-1gGJ;
+	Thu, 31 Oct 2024 08:00:13 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 77D70A43D54;
+	Thu, 31 Oct 2024 07:58:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B6E2C4CED3;
+	Thu, 31 Oct 2024 08:00:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1730361610;
+	bh=e3iIIsHdt0hU8MfSeZgGRpSJ44GLBXxPqNvTCuiOI5A=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=M0I08RCdez8G0E5woyLMg+7nH8n1if0hCokbc43feCFXLjAP1iiginHANInomDPat
+	 orlS1Kpim6rQZdnR9H7sLn3HWkXIbCvVkfOff5aOPqi3rneD/rRc3qCHl5LoEhhm5u
+	 m/VYHtAXB/Pa4Mgqvcnc8lu9et9aqE+Z6DNOThN/LYPh7XVG1CLtH00r0ecvVcTtKf
+	 9jG3sDwezSomJcC9zPsnk5zWX6CzXiLwiShF4HsTU1Q7zkA1J/Mi0dSNYFe46nYK8X
+	 918eyfWUHHAMsnBIAZGjdl6OOyVDF3P9MWgfS8m9efdA0PpockdhNyNN4Pe6qapQBy
+	 3WZkflGpFjsFw==
+Date: Thu, 31 Oct 2024 09:00:08 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
+Cc: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH net-next] net: dsa: mt7530: Add TBF qdisc offload support
-To: Lorenzo Bianconi <lorenzo@kernel.org>,
- Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
- <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+Message-ID: <ZyM5CPfQYHc_Eolh@lore-desk>
 References: <20241030-mt7530-tc-offload-v1-1-f7eeffaf3d9e@kernel.org>
-Content-Language: en-GB
-From: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>
-In-Reply-To: <20241030-mt7530-tc-offload-v1-1-f7eeffaf3d9e@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Date: Thu, 31 Oct 2024 07:10:32 +0000 (UTC)
-X-CM-Analysis: v=2.4 cv=OKJ13jaB c=1 sm=1 tr=0 ts=67232d6a a=aGj/nXfi4qz2iMxz7h0kJQ==:117 a=aGj/nXfi4qz2iMxz7h0kJQ==:17 a=IkcTkHD0fZMA:10 a=M51BFTxLslgA:10 a=9B2793jWSBC_Fij88T4A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
-X-CM-Envelope: MS4xfJ/GJC6qZKiYCkaiLF9+RV7BmCKM+DnqGuxt3BbelWGFn+juo5V5ssnDAaI+gp5DQHingWLNsB0HgKjnqdqhTgjkwp4qIyLGG/wdcqJ4BQRi7RjE1ymL lOcInGjafAnmffS0+G4chgWYc66e1U4H7UzEzNUKqECwBBY3NMfJ1ChNB5ycVPZnlpswfylUf5lRSNLso1zbtFSQHJZXc1Z0ZlKpAn0HCoWUwWOz70ogd2WD wOr6NVCO23sJdZ9TB4CusHjf+LtX/l3OK6WrDLJCpwD97SlAJ3LssZTVGAH+Uc99M+X5Z43IrCh6YTXESUO+/rjOv1RF/iAQCKRmdELy4h9AYTI5C1j+PhaT Hzo9oY7tEWiDKave1F8Z6sVLxT0m2EcLLIbH/5QGdRLOmqf1RUQ0kMahrobTAsqrgQjrhQhCCMIesvNsriv/ngI3FTy/YVAYfgE1x2lxDDgeIMfMbB1nl19Y WLa5MyppkVUF9KwmytVWGtbe5Jm7UjJvpRKTj+EagFqHR3fLULdGSR4p8MVAqc/bU3JoF/i23WlSynRTDb6ivQYgDBzXPXMPSqEW44iyxS+qcxSnhFVlCZiU B/LfTiwwYS4CQVvPKuC9EIX5Ax1t9Vhkdcd83JXnUi07BbOy8S2WW6+m87wZWll6D83OvkG66K0MfFLg4zsk5Gqb2FnDDLJIGNJVwVIfRUhZoaT42TdpzlgC FtXE4thUHvE=
-X-AuthUser: arinc.unal@arinc9.com
+ <a66528bd-37cb-46b2-90e5-37b10dfa9c78@arinc9.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="CRyyJPZZJWWbrdrI"
+Content-Disposition: inline
+In-Reply-To: <a66528bd-37cb-46b2-90e5-37b10dfa9c78@arinc9.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241031_001046_570479_2769CD5B 
-X-CRM114-Status: UNSURE (   4.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241031_010012_703102_4992F157 
+X-CRM114-Status: GOOD (  13.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,13 +81,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30/10/2024 22:29, Lorenzo Bianconi wrote:
-> Introduce port_setup_tc callback in mt7530 dsa driver in order to enable
-> dsa ports rate shaping via hw Token Bucket Filter (TBF) for hw switched
-> traffic. Enable hw TBF just for EN7581 SoC for the moment.
 
-Is this because you didn't test it on the other models? Let me know if
-that's the case and I'll test it.
+--CRyyJPZZJWWbrdrI
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Arınç
+> On 30/10/2024 22:29, Lorenzo Bianconi wrote:
+> > Introduce port_setup_tc callback in mt7530 dsa driver in order to enable
+> > dsa ports rate shaping via hw Token Bucket Filter (TBF) for hw switched
+> > traffic. Enable hw TBF just for EN7581 SoC for the moment.
+>=20
+> Is this because you didn't test it on the other models? Let me know if
+> that's the case and I'll test it.
+
+yep, exactly. I have tested it just on EN7581 since I do not have any other
+boards for testing at the moment. If you confirm it works on other SoCs too,
+I can remove the limitation.
+
+Regards,
+Lorenzo
+
+>=20
+> Ar=C4=B1n=C3=A7
+
+--CRyyJPZZJWWbrdrI
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZyM5BwAKCRA6cBh0uS2t
+rJU8AP9azI73svyRHG9RCHfUeyWXViqHMnwQqtgO+m4YcEk0NQD/RabxUzVWEZIN
+1FkIS7NJ9hfIsvxHuZ9X16moqYkPeQM=
+=QqDa
+-----END PGP SIGNATURE-----
+
+--CRyyJPZZJWWbrdrI--
 
