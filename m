@@ -4,65 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8040D767E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2024 16:40:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ABC2D767E2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2024 16:40:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AEowa1BGxJRJDoNZFSHVwpom7t2ky7a7Y5A/KgH/Rl4=; b=J/kHMp8cnO3T27PaYycxzdbQCp
-	/6jBHkthmLzvWcoSloodDuIh1gAKYFUbZzp5ecjMtkKiLDVCTboVrpq1rEdnL29o1Vnp5gd6cdpak
-	NlB/wH5nzTG2bMUrNtiFCFQDCF1yQbPqXdaAipXYFVJv6H7wpn6B9qIbY8ZFr/xjYDdcAG2WkovxF
-	R/UrgZNmkAO3qgyOz44kwId9KM0SxvsOgsBD4+wHD+2stKVfM1WNfSeDNLKZL97VGYNwTg0/sIzx8
-	XrTAwkmvSgxSGMfbVlQNFhurlI8ijFQg6elHh085R1Pq5ySfE74DQzdztEsjYl56L7OUDFZ/sHou6
-	qYz0zRzA==;
+	bh=EsWxAPwzhm+kE3jyBcpSUlB88WUSWYtu8shw9eN3f+I=; b=skvgx2VnP+NwY1kl5nyg8ZD0jM
+	gVRDgXsJuN0zH899BdZANFQZL5m/0xJVY0XcEzaz7h+VZ4mD6m9koBKb7VwrBJjmBLkQV9oA2QbsB
+	rby7LeRby/wsv4oLt0yifmn0HKYex7lmZ76eLGqqpvvoXlQWlPo5hJtkRXYFnIM1/bGu4DIf66BLd
+	obLvgefQJCJhT9N4VylkjKYUR8C2tBdW8ELQZYDtLpq0K+03DRpRtno3OtTiSzk7paIanltTK0pNN
+	zJvEl8A/RIoHUIlqsGvfzEdFuxN57P7NmJBoA8Jd2e5f5bNWds1wCFrlSFvSkXuAbMIdBHREAYwLR
+	DPtqKKLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6YDa-00000004DVI-1tQ7;
-	Thu, 31 Oct 2024 16:40:18 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1t6YDl-00000004Dfj-1ypy;
+	Thu, 31 Oct 2024 16:40:29 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6Y46-00000004Br8-3WWS
-	for linux-mediatek@lists.infradead.org;
-	Thu, 31 Oct 2024 16:30:32 +0000
+	id 1t6Y68-00000004C8v-2i8B;
+	Thu, 31 Oct 2024 16:32:38 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 9ADEFA444E5;
-	Thu, 31 Oct 2024 16:28:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A7F4C4FE9A;
-	Thu, 31 Oct 2024 16:30:29 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 0789EA445D7;
+	Thu, 31 Oct 2024 16:30:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1296CC4AF64;
+	Thu, 31 Oct 2024 16:25:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730392229;
-	bh=ZXBF7o1DU/u2gVhKvgQebECF10px7gSAY3FADYfcdc8=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=CynCgUCpt88MiXoqUPckju7looJCJfS5sf9Gdph8cQRE4o5U5R/XVnEzVm5ws/ELb
-	 DshKYEZNMXKHsZCxgn38mwipVoSLcui2bGHsJqWPhDKVQg5sf0uyDJTATDB7TCBiuD
-	 EUSzFwtYjdQlI8hrdcLZZf/22+pXoa3holTMl22mVV2FL/6gAw74RZrQUwMUff81LW
-	 d/zAMmGy+sdaaQhY0GPTHTMoYYjzvtMAH8pmjXKs8jr/IIOIJ1xe8u/RNP9bRH+/O9
-	 9PznXDJqyAer3/a1V0r7h666DEcyfr6zuFmG+2rYPkyHCkoY7ZYxAGXWHKsSaptwna
-	 eB5P0FH4o1i+w==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 34276380AC0A;
-	Thu, 31 Oct 2024 16:30:38 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH] Bluetooth: btusb: Add new VID/PID 0489/e111 for MT7925
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <173039223674.2016510.14253158346346704661.git-patchwork-notify@kernel.org>
-Date: Thu, 31 Oct 2024 16:30:36 +0000
-References: <20241026031818.14719-1-hao.qin@mediatek.com>
-In-Reply-To: <20241026031818.14719-1-hao.qin@mediatek.com>
-To: Hao Qin <hao.qin@mediatek.com>
-Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
- sean.wang@mediatek.com, deren.Wu@mediatek.com, aaron.hou@mediatek.com,
- chris.lu@mediatek.com, steve.lee@mediatek.com,
- linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+	s=k20201202; t=1730391916;
+	bh=kOzU4sWaB8Z+MTN4eCgKLw2cHRT9ijWtixUXAnUmrkU=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=t32C6N4seQsMZw8/8OYb3lpIsZd1hFHGoeWntGbPiFss9dtTp1gVTsiP2D265EW4Y
+	 pFUaQMb9ggqGzl/Hj+1bAwpkBO0TnOgmmaolQCghuoQCKUEbDTLHdj1CaXIIYgeE9T
+	 QDN7L6PxJcU6+pYftOuAo6hyt/GPVMe8tquGeGMpEexn8WDeY9/+ciL3RK5gAJwNYw
+	 gc7g+Y+RfM/ogalnMFkaLs4INKpK0ECG97OL0ATNRKacfbPor71kKWEu5FYgGd7sHM
+	 y1td18RUcsJgC9kzu3t/lABQPwEuFGYMH6kVYMLITxCYJznPIrk8jhzGcQf8/gG1SJ
+	 WIayZYm7etZJg==
+From: Lee Jones <lee@kernel.org>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>, 
+ Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, 
+ Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ jason-ch chen <Jason-ch.Chen@mediatek.com>, 
+ Chen Zhong <chen.zhong@mediatek.com>, Flora Fu <flora.fu@mediatek.com>, 
+ Alexandre Mergnat <amergnat@baylibre.com>, 
+ Yassine Oudjana <yassine.oudjana@gmail.com>
+Cc: Yassine Oudjana <y.oudjana@protonmail.com>, linux-input@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org
+In-Reply-To: <20241018081050.23592-5-y.oudjana@protonmail.com>
+References: <20241018081050.23592-1-y.oudjana@protonmail.com>
+ <20241018081050.23592-5-y.oudjana@protonmail.com>
+Subject: Re: (subset) [PATCH 4/6] mfd: mt6397: Add initial support for
+ MT6328
+Message-Id: <173039191181.1807167.5693334391101093863.b4-ty@kernel.org>
+Date: Thu, 31 Oct 2024 16:25:11 +0000
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241031_093031_053966_D1271D84 
-X-CRM114-Status: UNSURE (   7.50  )
+X-CRM114-CacheID: sfid-20241031_093236_754691_597AB80F 
+X-CRM114-Status: UNSURE (   7.36  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,67 +86,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This patch was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
-
-On Sat, 26 Oct 2024 11:18:18 +0800 you wrote:
-> Add VID 0489 & PID e111 for MediaTek MT7925 USB Bluetooth chip.
+On Fri, 18 Oct 2024 11:10:46 +0300, Yassine Oudjana wrote:
+> The MT6328 PMIC is commonly used with the MT6735 SoC. Add initial
+> support for this PMIC.
 > 
-> The information in /sys/kernel/debug/usb/devices about the Bluetooth
-> device is listed as the below.
 > 
-> T:  Bus=02 Lev=02 Prnt=02 Port=04 Cnt=02 Dev#=  4 Spd=480  MxCh= 0
-> D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-> P:  Vendor=0489 ProdID=e111 Rev= 1.00
-> S:  Manufacturer=MediaTek Inc.
-> S:  Product=Wireless_Device
-> S:  SerialNumber=000000000
-> C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-> A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-> I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-> E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-> I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-> I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-> I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-> I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-> I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-> I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-> I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-> I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-> E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
-> E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
-> 
-> [...]
 
-Here is the summary with links:
-  - Bluetooth: btusb: Add new VID/PID 0489/e111 for MT7925
-    https://git.kernel.org/bluetooth/bluetooth-next/c/cfa2ae730336
+Applied, thanks!
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+[4/6] mfd: mt6397: Add initial support for MT6328
+      commit: 6e31bb8d3a63bb2c3efab2fb6bcfccac677a4581
 
+--
+Lee Jones [李琼斯]
 
 
