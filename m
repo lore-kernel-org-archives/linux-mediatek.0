@@ -4,82 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 587CCE674B1
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Nov 2024 07:59:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7DD7E674B5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Nov 2024 08:22:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v3scpQG8rDPy7dccdvb0ggPZwR6YQSFTzxlSNspAAiI=; b=X+PRtMo0ObsTpDIqqzOCGAJ8oU
-	lckAGZigpKggG6pM4GyD02XoCT1CnvEq19J1c/wTQLeOmoZ0hAoPUazQblq3llrnEQftKbLs1QEZu
-	FJfTBdDGcgM8JltCuk3w+Jm02ZHA3rMmMUrfKI5DIYo3Ch1CGBhgtbt8wdQ9WPCtI6rvVpY8ePEVa
-	SQcvHOWzEHdBXOz2yw2aOF3PVz/rcATRXY5rJAlsMj8yYhjcvgtkNSoXCuOgCip2eU4sDXbwgnKQh
-	2xeTxNhYAl/3nU1Zrt2ZH0FXq5nATeh8FU8aF9FjO31wlVqsCvthvtTUJNNuYwU1XpKCmDIxpOycG
-	MMbkXzqQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=p21M7mko/v90TFPnykxFUlxJZuzWC05tCWN+cJswq1Q=; b=4oBRRAxjXuSiF5RQGZZOXZEe20
+	6VE28Z0bji77mIQpoCXG27GJco+tMdRbFAVgPPRJt16XE1mgN4DstdR37aEtV8KsB86j4RspfF4BU
+	zKMZSx9j7KYGf59tJ2drsqWdnhIJ1u45HDR4k24fAPK/h6rF48cP3HmMwba6OrCIdIJ3zs7IN4iau
+	SRmgeOBe/A40nocgtLm9VUKWJFEmhbMk1RBDp6O8EflLVP6HaaBjgyhR6UahlCdBdKldwzlY2aFtb
+	ulJJ1G7EhIgOIGABGWSh6qYOBWwVxcsdkhwRVljZXbNDh7ee7KS55SlOySOdWUnCL4RoAwEF4ZKW7
+	GN3oUYZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6mZO-00000006BsJ-1Ovr;
-	Fri, 01 Nov 2024 07:59:46 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1t6mv3-00000006Flh-1caA;
+	Fri, 01 Nov 2024 08:22:09 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6mUy-00000006BIX-0Nu4
+	id 1t6mmA-00000006Dsj-3c8q
 	for linux-mediatek@lists.infradead.org;
-	Fri, 01 Nov 2024 07:55:14 +0000
-Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-539f72c8fc1so2890301e87.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 01 Nov 2024 00:55:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1730447710; x=1731052510; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=v3scpQG8rDPy7dccdvb0ggPZwR6YQSFTzxlSNspAAiI=;
-        b=DnEskZ/yB2A5jHvzJR5xlRHsS8spCyFl9qnwFbJGE4P6ElDCfoMrVX0kvUsPTE7B0Q
-         5SZIbEcdCxe5uwwnlrKPFORn3+Y/C4CZ7z+R0KGuUwKitVXkwNPPPowjxqlzcbyOt09z
-         lLdTe6z08AIp/nTwHqYm6CDMOPF/XX8mFzqW0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730447710; x=1731052510;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=v3scpQG8rDPy7dccdvb0ggPZwR6YQSFTzxlSNspAAiI=;
-        b=qeU0KxFguNPfJe7t2MMbQVBxBsF1JnSjtbeMCzUj5Ffqra+VRk1scqN/DavH2eM8cp
-         6HEu29fPtUWS9uw3Wjn4/fSm6sKp5hJPtMsaIxmNbCnFSml9YFWMbsV/EbfZrhS5kTDo
-         XWfiCzDXaPxhwyJZ76/3WPqXMqrU5mjs1V0Npvyd6WyXom4kwf8kVlN0wn8RDG73jPQl
-         EIUdh+T78BsqIqPxe2Ppf3CCPtnoQcShp/uhABqfGmeX1WayM8AJUgdjaaPl+L2LNisb
-         krXk1qpCLFnoZwB8LSMLtmk773HRKJBwh5Tdn33wxEmS/Ag8bf9lcERRUzIokchqNefp
-         JVvQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU0i6I2998LUWWVqRncm6gsIlnHYhnmawqHdvFEcYRIWgsZmOem8uObbcYQw2Z5gGYfknvcXu7STasqAwnKaw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzBHzAx7Ik3rTGDcVp57I/iyC0R9lYplwM3eOv7aglscGBkdztM
-	yPLP37MhPCUF4gzZ35Wzr0w+nQuDzzCMhpP2Y7rwe73/eJuZt7rflsRdgOiIad5lkKAbexI2Y81
-	DNj22ukxtaL7WlA1CqJqEK8Jx/HRIwShY6yx6
-X-Google-Smtp-Source: AGHT+IFHp5ntUs0OfBYXAIVSOME07Jq9csDSpjBoDIGPyzJBlFKUtiIHFZznKS39Z4EjVqTm/HlKSNuPkafVheMa5iY=
-X-Received: by 2002:a05:6512:3e1a:b0:539:ff5a:7ea5 with SMTP id
- 2adb3069b0e04-53b7ecdea88mr6015521e87.15.1730447710300; Fri, 01 Nov 2024
- 00:55:10 -0700 (PDT)
+	Fri, 01 Nov 2024 08:13:00 +0000
+X-UUID: 17e0c85a982911ef9048ed6ed365623b-20241101
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=p21M7mko/v90TFPnykxFUlxJZuzWC05tCWN+cJswq1Q=;
+	b=h0GFmca9jhqQRvV7KAlK7oHjAxkdGwJ4lku7xJ1eA/tr/e4V6r8HQk8Z/wiutdoqEGg0fgXxWb4th+eEipcrpCIYXlQDpLJ8JBNGirItDTFxyoyCDBgDd20Mj+Y0N5Y9/lRv/P6IMKVVFqWYF/ZnBzp12p8WN5JvMRNpJLL/wr0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.42,REQID:1a06ff58-24c6-4f04-9fc2-44606e61f8cc,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:48ac6107-7990-429c-b1a0-768435f03014,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 17e0c85a982911ef9048ed6ed365623b-20241101
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <mingyen.hsieh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 465993681; Fri, 01 Nov 2024 01:12:53 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Fri, 1 Nov 2024 16:12:50 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 1 Nov 2024 16:12:50 +0800
+From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
+	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Michael.Lo@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
+	<km.lin@mediatek.com>, <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>,
+	<posh.sun@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7925: fix get wrong chip cap from incorrect pointer
+Date: Fri, 1 Nov 2024 16:12:49 +0800
+Message-ID: <20241101081249.27834-1-mingyen.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20241025-kselftest-gpio-set-get-config-v2-0-040d748840bb@collabora.com>
- <20241025-kselftest-gpio-set-get-config-v2-3-040d748840bb@collabora.com>
-In-Reply-To: <20241025-kselftest-gpio-set-get-config-v2-3-040d748840bb@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 1 Nov 2024 15:54:58 +0800
-Message-ID: <CAGXv+5H9OTCn033yoi6oxxRKG1G=vbrBK+aw+ZWwGPWbn=uWuA@mail.gmail.com>
-Subject: Re: [PATCH RFC v2 3/5] pinctrl: mediatek: common: Expose more
- configurations to GPIO set_config
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
-Cc: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Bamvor Jian Zhang <bamv2005@gmail.com>, Shuah Khan <shuah@kernel.org>, kernel@collabora.com, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kselftest@vger.kernel.org, kernelci@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241101_005512_168552_649D99AD 
-X-CRM114-Status: GOOD (  23.70  )
+X-CRM114-CacheID: sfid-20241101_011258_930835_9CF9D0F9 
+X-CRM114-Status: UNSURE (   8.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,159 +88,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Oct 26, 2024 at 5:16=E2=80=AFAM N=C3=ADcolas F. R. A. Prado
-<nfraprado@collabora.com> wrote:
->
-> Currently the set_config callback in the gpio_chip registered by the
-> pinctrl-mtk-common driver only supports configuring a single parameter
-> on specific pins (the input debounce of the EINT controller, on pins
-> that support it), even though many other configurations are already
-> implemented and available through the pinctrl API for configuration of
-> pins by the Devicetree and other drivers.
->
-> Expose all configurations currently implemented through the GPIO API so
-> they can also be set from userspace, which is particularly useful to
-> allow testing them from userspace.
+From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-Missing signed-off-by?
+Use tlv instead of skb, because using skb will get invalid data
+with wrong offset.
 
-Otherwise,
+Fixes: 86c051f2c418 ("wifi: mt76: mt7925: enabling MLO when the firmware supports it")
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index 0c2a2337c313..9b6aff463063 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -823,7 +823,7 @@ mt7925_mcu_get_nic_capability(struct mt792x_dev *dev)
+ 			mt7925_mcu_parse_phy_cap(dev, tlv->data);
+ 			break;
+ 		case MT_NIC_CAP_CHIP_CAP:
+-			memcpy(&dev->phy.chip_cap, (void *)skb->data, sizeof(u64));
++			memcpy(&dev->phy.chip_cap, (void *)tlv->data, sizeof(u64));
+ 			break;
+ 		case MT_NIC_CAP_EML_CAP:
+ 			mt7925_mcu_parse_eml_cap(dev, tlv->data);
+-- 
+2.45.2
 
-> ---
->  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 48 ++++++++++++++++-----=
-------
->  1 file changed, 28 insertions(+), 20 deletions(-)
->
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinc=
-trl/mediatek/pinctrl-mtk-common.c
-> index 91edb539925a49b4302866b9ac36f580cc189fb5..7f9764b474c4e7d0d4c3d6e54=
-2bdb7df0264daec 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> @@ -62,13 +62,12 @@ static unsigned int mtk_get_port(struct mtk_pinctrl *=
-pctl, unsigned long pin)
->                         << pctl->devdata->port_shf;
->  }
->
-> -static int mtk_pmx_gpio_set_direction(struct pinctrl_dev *pctldev,
-> -                       struct pinctrl_gpio_range *range, unsigned offset=
-,
-> -                       bool input)
-> +static int mtk_common_pin_set_direction(struct mtk_pinctrl *pctl,
-> +                                       unsigned int offset,
-> +                                       bool input)
->  {
->         unsigned int reg_addr;
->         unsigned int bit;
-> -       struct mtk_pinctrl *pctl =3D pinctrl_dev_get_drvdata(pctldev);
->
->         reg_addr =3D mtk_get_port(pctl, offset) + pctl->devdata->dir_offs=
-et;
->         bit =3D BIT(offset & pctl->devdata->mode_mask);
-> @@ -86,6 +85,15 @@ static int mtk_pmx_gpio_set_direction(struct pinctrl_d=
-ev *pctldev,
->         return 0;
->  }
->
-> +static int mtk_pmx_gpio_set_direction(struct pinctrl_dev *pctldev,
-> +                       struct pinctrl_gpio_range *range, unsigned int of=
-fset,
-> +                       bool input)
-> +{
-> +       struct mtk_pinctrl *pctl =3D pinctrl_dev_get_drvdata(pctldev);
-> +
-> +       return mtk_common_pin_set_direction(pctl, offset, input);
-> +}
-> +
->  static void mtk_gpio_set(struct gpio_chip *chip, unsigned offset, int va=
-lue)
->  {
->         unsigned int reg_addr;
-> @@ -363,12 +371,11 @@ static int mtk_pconf_set_pull_select(struct mtk_pin=
-ctrl *pctl,
->         return 0;
->  }
->
-> -static int mtk_pconf_parse_conf(struct pinctrl_dev *pctldev,
-> +static int mtk_pconf_parse_conf(struct mtk_pinctrl *pctl,
->                 unsigned int pin, enum pin_config_param param,
-> -               enum pin_config_param arg)
-> +               u32 arg)
->  {
->         int ret =3D 0;
-> -       struct mtk_pinctrl *pctl =3D pinctrl_dev_get_drvdata(pctldev);
->
->         switch (param) {
->         case PIN_CONFIG_BIAS_DISABLE:
-> @@ -381,15 +388,15 @@ static int mtk_pconf_parse_conf(struct pinctrl_dev =
-*pctldev,
->                 ret =3D mtk_pconf_set_pull_select(pctl, pin, true, false,=
- arg);
->                 break;
->         case PIN_CONFIG_INPUT_ENABLE:
-> -               mtk_pmx_gpio_set_direction(pctldev, NULL, pin, true);
-> +               mtk_common_pin_set_direction(pctl, pin, true);
->                 ret =3D mtk_pconf_set_ies_smt(pctl, pin, arg, param);
->                 break;
->         case PIN_CONFIG_OUTPUT:
->                 mtk_gpio_set(pctl->chip, pin, arg);
-> -               ret =3D mtk_pmx_gpio_set_direction(pctldev, NULL, pin, fa=
-lse);
-> +               ret =3D mtk_common_pin_set_direction(pctl, pin, false);
->                 break;
->         case PIN_CONFIG_INPUT_SCHMITT_ENABLE:
-> -               mtk_pmx_gpio_set_direction(pctldev, NULL, pin, true);
-> +               mtk_common_pin_set_direction(pctl, pin, true);
->                 ret =3D mtk_pconf_set_ies_smt(pctl, pin, arg, param);
->                 break;
->         case PIN_CONFIG_DRIVE_STRENGTH:
-> @@ -421,7 +428,7 @@ static int mtk_pconf_group_set(struct pinctrl_dev *pc=
-tldev, unsigned group,
->         int i, ret;
->
->         for (i =3D 0; i < num_configs; i++) {
-> -               ret =3D mtk_pconf_parse_conf(pctldev, g->pin,
-> +               ret =3D mtk_pconf_parse_conf(pctl, g->pin,
->                         pinconf_to_config_param(configs[i]),
->                         pinconf_to_config_argument(configs[i]));
->                 if (ret < 0)
-> @@ -870,19 +877,20 @@ static int mtk_gpio_set_config(struct gpio_chip *ch=
-ip, unsigned offset,
->         struct mtk_pinctrl *pctl =3D gpiochip_get_data(chip);
->         const struct mtk_desc_pin *pin;
->         unsigned long eint_n;
-> -       u32 debounce;
-> +       enum pin_config_param param =3D pinconf_to_config_param(config);
-> +       u32 arg =3D pinconf_to_config_argument(config);
->
-> -       if (pinconf_to_config_param(config) !=3D PIN_CONFIG_INPUT_DEBOUNC=
-E)
-> -               return -ENOTSUPP;
-> +       if (param =3D=3D PIN_CONFIG_INPUT_DEBOUNCE) {
-> +               pin =3D pctl->devdata->pins + offset;
-> +               if (pin->eint.eintnum =3D=3D NO_EINT_SUPPORT)
-> +                       return -EINVAL;
->
-> -       pin =3D pctl->devdata->pins + offset;
-> -       if (pin->eint.eintnum =3D=3D NO_EINT_SUPPORT)
-> -               return -EINVAL;
-> +               eint_n =3D pin->eint.eintnum;
->
-> -       debounce =3D pinconf_to_config_argument(config);
-> -       eint_n =3D pin->eint.eintnum;
-> +               return mtk_eint_set_debounce(pctl->eint, eint_n, arg);
-> +       }
->
-> -       return mtk_eint_set_debounce(pctl->eint, eint_n, debounce);
-> +       return mtk_pconf_parse_conf(pctl, offset, param, arg);
->  }
->
->  static const struct gpio_chip mtk_gpio_chip =3D {
->
-> --
-> 2.47.0
->
->
 
