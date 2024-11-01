@@ -4,87 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA7E4E6F06C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Nov 2024 15:32:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED9A9E6F084
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Nov 2024 19:35:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ngedgEzPtFUspqedLiAiTsBOM7mquusH+8XohKPtoA4=; b=QUVtwrAsKJt4Bij0jdrq4v/UQc
-	N5E6uRdbWUoNLw0+3wrr5T5/lqoYhiMZNP7pUGCsryTBGEE9uc/yuvcvlcxf/nJjDT9YW/V4q0c/c
-	15H2PIG27VmwDg1GCFKrLXu35KpyLCKHizQ7xK/0SRo5k8f1R28i/skYJslvSBu4uwuOokjQz7wH9
-	+DtuamukeP/a13hsIj/mH/R1KgHXrR7/aAekBF3XEnOOlcrkfoqY8DAFwq7L6aMc16D04wHHYMiRm
-	PUZQCVCe1nIkvODP+cv9JXjeQwoLyFS04Kftfke7/7hu/zkRn2ln/4GhobnOjNDPPROUEPNIE/fX1
-	BwcW89Gg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Sa/HhTUDVpk4NXfCGGmyvJmpwzaluhlGU0TChrjB+bo=; b=Q2Ih/WZdCj25nOk96j6sWGnduL
+	V47000p5fA/Y/o/rW7uyEJhdyB99qpJDrCbycHe6qSBmH45QE7F8L/aijQpjIjWz605LGp2pCSKd6
+	g8AywbeQsSvehlP+CclL2+jmJHSalZI6ECOqn0aCP6G2CXa9spda7xYzfKsuNqF9WDiueMTf825WA
+	kbJJoecHkfDw+cyDGgFmbuiSkMOsq0Fkc1TJrEgTBygZd8vP4QHUpawWnTpF2vjc1M1VMJqvu2Dnr
+	Ck7StA+b3YSWqJfF1i0zlSZiVWsmxi3PnnBZ6o+mQtilnRX7JQ4oLrnmhLLm4T2uCM0Hm2LVMy5Cn
+	RUTR8GQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6tdq-00000007VyQ-2gcr;
-	Fri, 01 Nov 2024 15:32:50 +0000
-Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142])
+	id 1t6xQZ-00000008961-3a4j;
+	Fri, 01 Nov 2024 19:35:23 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6tSa-00000007ULy-3btn;
-	Fri, 01 Nov 2024 15:21:14 +0000
-Received: by mail-il1-x142.google.com with SMTP id e9e14a558f8ab-3a4e48b61fcso6838815ab.2;
-        Fri, 01 Nov 2024 08:21:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1730474471; x=1731079271; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=ngedgEzPtFUspqedLiAiTsBOM7mquusH+8XohKPtoA4=;
-        b=VYelO3je9BP4ALsa90ac5jQNQ14nccv4u03D371NGoQpwLAC1uQdyzL9uWPO60LYIR
-         6zJohmxrIgxvmDzMp74IFALk26fvrxoLb40I2b4gaxo5HuhJb4EjBRpnQKDuoUVWGM4p
-         RPPN0EsM/L2jVCcA8y8+w75Dm25werBqq6Z+h3gW/V1ebCDBPcsslm79tZZuVWxRgHkD
-         ENWEIx8LEJAXUHHTze+QtYRckTULDr305oFLcyNXLIE4mjWBZhDJAT0BJRLC50w2r2eN
-         kL9iO7/GYP1KzM20nbOZQj04qKaVunui3BtEiTP2fMSckcdYobVmsBgwBgmDt+XlVVdv
-         eu0w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730474471; x=1731079271;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ngedgEzPtFUspqedLiAiTsBOM7mquusH+8XohKPtoA4=;
-        b=LTPsE225eEJKcTwpzOH3nxnnIbjBG0u9oUNn4CvtO+6WyYc71QuRcwgOm8SyVgh+Tt
-         wFsBuQ3SiAmOOdO3p7wU6B0PsNLZHxPzYTX2tWXgc5i8bAIY0cspTvwzPj3tZAXTyS4P
-         Golf5wlL9XJiX7e/g4xTFNF61VHRAXj1GeCEPYsMq4pKvz9NXEoVdgAtEo31VPTuT32K
-         Wo5hmpITPs9lAaE66elbKBVGoRT7UQoKdiUiqeF5bardB0suLXg8aMGFQ4pdrYU5WMNz
-         KkWGFsGXMMYJyTGyFOMOu58h4B94vBlULyJlGofRssrXXmIv78s5es+pNm1sB7Vr+72P
-         SaOg==
-X-Forwarded-Encrypted: i=1; AJvYcCU58ubu+PKLtwLeTji7nfyUFhD9J7RJUNRMCXM/Iw0H3/RSs4esQFSl25IflLBAX+8JfARJuUrea0Mkg6xOpTye@lists.infradead.org, AJvYcCWD8/uDvtbspIFUcEFIhw3qw2JDYg7c2x4EY2Q1il3a4F4Szhsgzn8lOpyipLkkR4QqHYvhcCkij+fWKaNieuI=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwszWmJ8tZmMi7f4iqvp1dvVI9tDIiUahZl48ju+p03TwWaiqsD
-	eLOzL6IrxEWlwMa+9JkQyUCZkNUnMYRBoiRUz6se0j08/pxK2os3
-X-Google-Smtp-Source: AGHT+IF2U9BgKTbgcIgkIdNNc5MCBypK+I6PPlj1q0iCr1DVpME5Hw3ZQRMs2YqWQEHPBENfAh26jQ==
-X-Received: by 2002:a05:6e02:16cb:b0:3a6:b0d0:ee2d with SMTP id e9e14a558f8ab-3a6b0d0f518mr32706795ab.9.1730474471110;
-        Fri, 01 Nov 2024 08:21:11 -0700 (PDT)
-Received: from localhost.localdomain (host-36-23.ilcul54.champaign.il.us.clients.pavlovmedia.net. [68.180.36.23])
-        by smtp.gmail.com with ESMTPSA id e9e14a558f8ab-3a6a99cc4c9sm8890215ab.46.2024.11.01.08.21.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Nov 2024 08:21:10 -0700 (PDT)
-From: Gax-c <zichenxie0106@gmail.com>
-To: mripard@kernel.org,
-	dave.stevenson@raspberrypi.com,
-	kernel-list@raspberrypi.com,
-	maarten.lankhorst@linux.intel.com,
-	tzimmermann@suse.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	mwen@igalia.com
-Cc: dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1t6xIK-000000087Ig-25ij;
+	Fri, 01 Nov 2024 19:26:53 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 88B595C5A4A;
+	Fri,  1 Nov 2024 19:26:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 691F2C4CED1;
+	Fri,  1 Nov 2024 19:26:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1730489211;
+	bh=Sa/HhTUDVpk4NXfCGGmyvJmpwzaluhlGU0TChrjB+bo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=SaFXkfUuVpXBA4XRS/CsNDgnVARbi2alUSb+Hi/XtJC1GKki1zmHwC/kEqPNARka3
+	 9A8fYPfozklJGgLPZ2Dk7KQbLBQTUftc76f5NWJF8nfXehWeNU8NtYmxAWbSXJfFWi
+	 H/KN35oAasjjbOuYK9HMZI3TK6h68sKN2QJJNH1ZIgJWT9oyLceeERvCkBX+JFo5ji
+	 QUPRvx+waOf0+Gs6+GQQQ0LNiCHD6GdNfjU15c0Hd2Tx4CgIis6LL4602aCUmdOyy4
+	 GuJcEublpLssP2OKfyLFXaTvkVpaAza+PmxCx0JeSEftPfqu8JO5YyRy2y0y005DDz
+	 HIHZCCTxXvtEg==
+Date: Fri, 1 Nov 2024 19:26:41 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Liam Girdwood <lgirdwood@gmail.com>, Phong LE <ple@baylibre.com>,
+	Inki Dae <inki.dae@samsung.com>,
+	Seung-Woo Kim <sw0312.kim@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	Zichen Xie <zichenxie0106@gmail.com>
-Subject: [PATCH] drm/vc4: cast calculation to __u64 in vc4_dumb_fixup_args()
-Date: Fri,  1 Nov 2024 10:20:46 -0500
-Message-Id: <20241101152045.8469-1-zichenxie0106@gmail.com>
-X-Mailer: git-send-email 2.25.1
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH RFC v2 2/7] ASoC: hdmi-codec: move no_capture_mute to
+ struct hdmi_codec_pdata
+Message-ID: <e57aa9c7-1a35-4ed3-94c7-f3acd3293b6d@sirena.org.uk>
+References: <20241101-drm-bridge-hdmi-connector-v2-0-739ef9addf9e@linaro.org>
+ <20241101-drm-bridge-hdmi-connector-v2-2-739ef9addf9e@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Xe2LhHWxNYWP+TP/"
+Content-Disposition: inline
+In-Reply-To: <20241101-drm-bridge-hdmi-connector-v2-2-739ef9addf9e@linaro.org>
+X-Cookie: We read to say that we have read.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241101_082112_927627_6148334C 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20241101_122652_644960_35A97AE5 
+X-CRM114-Status: GOOD (  12.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,34 +103,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Zichen Xie <zichenxie0106@gmail.com>
 
-Like commit b0b0d811eac6 ("drm/mediatek: Fix coverity issue with
-unintentional integer overflow"), directly multiply args->pitch and
-args->height may lead to integer overflow. Add a cast to avoid it.
+--Xe2LhHWxNYWP+TP/
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Fixes: 3d7637423be8 ("drm/vc4: bo: Split out Dumb buffers fixup")
-Signed-off-by: Zichen Xie <zichenxie0106@gmail.com>
----
- drivers/gpu/drm/vc4/vc4_drv.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On Fri, Nov 01, 2024 at 12:19:03PM +0200, Dmitry Baryshkov wrote:
+> The no_capture_mute flag might differ from platform to platform,
+> especially in the case of the wrapping implementations, like the
+> upcoming DRM HDMI Codec framework. Move the flag next to all other flags
+> in struct hdmi_codec_pdata.
 
-diff --git a/drivers/gpu/drm/vc4/vc4_drv.c b/drivers/gpu/drm/vc4/vc4_drv.c
-index c133e96b8aca..ac02afc3acc5 100644
---- a/drivers/gpu/drm/vc4/vc4_drv.c
-+++ b/drivers/gpu/drm/vc4/vc4_drv.c
-@@ -69,8 +69,8 @@ int vc4_dumb_fixup_args(struct drm_mode_create_dumb *args)
- 	if (args->pitch < min_pitch)
- 		args->pitch = min_pitch;
- 
--	if (args->size < args->pitch * args->height)
--		args->size = args->pitch * args->height;
-+	if (args->size < (__u64)args->pitch * args->height)
-+		args->size = (__u64)args->pitch * args->height;
- 
- 	return 0;
- }
--- 
-2.25.1
+Acked-by: Mark Brown <broonie@kernel.org>
 
+--Xe2LhHWxNYWP+TP/
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmclK3AACgkQJNaLcl1U
+h9AmVwf/dWfRKRI7gD3AqmFK1DexdVqm2bNZhFPhh2L1LOQy2vXI7nvVt/2acOos
+2JHf3BYuLSIWMThTjkBKh173OCY3MTjzfkZIXRpsK6c7DuqPKLvJSakMt7/bWzvI
+fb7j49YV7k/kD7rEZBGA6cm4UTMLe9STpUG3fyNqIBBWEtnxZmGLR99iBXiM+m5R
+PoqILxDPVsroDHtz5xX/rUOxM6Fj9vG8TRgkfdHLvRdOjmYQxDD67WiUJKH8RSJ+
+li+pH4COp9QU4likh9C3pYaLUEZ4s8Jm9boYt2IZtt66rnGl8vsAjoSW8LOnKlQM
+3gmYAtofdaWiOHyS73Z1FO3Eu1quBw==
+=ZSKp
+-----END PGP SIGNATURE-----
+
+--Xe2LhHWxNYWP+TP/--
 
