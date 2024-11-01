@@ -4,88 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87042E6748F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Nov 2024 00:26:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CB22E67493
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Nov 2024 01:53:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yANkLDlzSL43/hAXZpZR6vsEzAnivYrHjeOWQqdIjJk=; b=JPg+IxuUq/pKb2R2lgp8hzVSBq
-	QG9SAeeiNIisSKOIVg55uuf1AWqSz7kgEsIizbi8vPOQFKunclVEpNfGKhn2YHCRzhvMcNOuyZuQ4
-	nZQDUrO0zlMqQfgiYL0/3aNEYn2oFrYWTKIX9hZC+HIDg5D+MwLrWS8fAQsv2Z4E8yoDGBJbomcf+
-	4KpKOAtfh7SQNQKs5k3zMzf/PG4l8Q9JAOWHoBBrp4wpEI7mVJ28Af1hc6lw039U1iufbU6bWbcep
-	UsxGhIl7vOUWcIG7+8Nn7d9sWSnld3XNaALPgJWZ7hrc5xQTCxGYOOPS0yJJCKwFLYEjnxw7JGsXn
-	86TFnfRw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zawj+nQkJIKTPKzueNaTx4vatHNfGjr+Nht902MSMPY=; b=LCWD9NkMKI28/8/Qkmf8Vf57DU
+	OGWKJONfvY68DvyRZKrKZx+4DE4zhkntWvdRit/iAE3ur8jHBioaLUDG2vFb+OgZy0GJiE4T5kFP2
+	jHL3BbOuJoPmqNyXvRyI8qQdeyC/5/HjvYKGteJ9iaaxGpjcWqT/vKCtzsX4NktA6yzrnMELZEcO5
+	9g8zUfv7slIcZt3qAlVav6/jteOTEIXLn9yOZr8A34uAeZjv2TTsMBrJ0s0Wukyb+ZuSsGG7TYq1S
+	U69T0qbCkH5op9VWxkD7er8rWP+1mYecAAVbOiz7+z9RR+25qEZOH6DmXEC3slGuXjfeEkmLaTnCk
+	x8PqT+1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6fUz-00000005IFI-29TP;
-	Fri, 01 Nov 2024 00:26:45 +0000
-Received: from mgamail.intel.com ([198.175.65.14])
+	id 1t6gr4-00000005UQY-0hQ0;
+	Fri, 01 Nov 2024 01:53:38 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6fTG-00000005Hj4-1jjz;
-	Fri, 01 Nov 2024 00:25:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1730420698; x=1761956698;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=HgGI0MztuDXM0kkbhNu/WK25UzLMgeMemdDEF+M6Yis=;
-  b=WSjca7tWvSzF1h3IliouvoyXuMmtM9cCCPfJwQ8sWdn1tkN+72jveYg5
-   kQzcUmrSXbpIHDgtnTXoIzOGyBesyt+KGgMStbfj4gxBj9bRC9mbs3mSL
-   8ssVbscLcobFpAXFlXVpdXDCYti7f+UYF6xvthH2n6fkdN7qA2GCUzxaK
-   0rV6m+UqfSd8u+yq/JySCmeQPPvlwzaoWG4lj8ccNmriftKnuSZQ6eNut
-   +EloYR3TXefV6kuuiBKYFHS1xienOvgdGnicNHrPXqdbvVywEbGeVmfnu
-   92GAUvavw7wWbIz6/ywyrGI36N8P79zn8r63vaNL/cPPnXkrTA1cUTCpa
-   g==;
-X-CSE-ConnectionGUID: 7TkBM3UUQMq13HsbRvC8xg==
-X-CSE-MsgGUID: 39pjs5cMRLqexgBzCrMNyw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11242"; a="33988277"
-X-IronPort-AV: E=Sophos;i="6.11,248,1725346800"; 
-   d="scan'208";a="33988277"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Oct 2024 17:24:56 -0700
-X-CSE-ConnectionGUID: RzYv7uP7THeQKpbmmHYBZA==
-X-CSE-MsgGUID: 96x6eHVSQbyORU8dcMijjw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,248,1725346800"; 
-   d="scan'208";a="82323066"
-Received: from lkp-server01.sh.intel.com (HELO a48cf1aa22e8) ([10.239.97.150])
-  by fmviesa006.fm.intel.com with ESMTP; 31 Oct 2024 17:24:52 -0700
-Received: from kbuild by a48cf1aa22e8 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1t6fT7-000gsN-2M;
-	Fri, 01 Nov 2024 00:24:49 +0000
-Date: Fri, 1 Nov 2024 08:24:12 +0800
-From: kernel test robot <lkp@intel.com>
-To: Sky Huang <SkyLake.Huang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Simon Horman <horms@kernel.org>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org,
-	Steven Liu <Steven.Liu@mediatek.com>,
-	"SkyLake.Huang" <skylake.huang@mediatek.com>
-Subject: Re: [PATCH net-next 4/5] net: phy: mediatek: Integrate read/write
- page helper functions
-Message-ID: <202411010814.EOjx8juJ-lkp@intel.com>
-References: <20241030103554.29218-5-SkyLake.Huang@mediatek.com>
+	id 1t6gpN-00000005U2u-0Brj;
+	Fri, 01 Nov 2024 01:51:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id B5312A42F8A;
+	Fri,  1 Nov 2024 01:49:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F491C4CEC3;
+	Fri,  1 Nov 2024 01:51:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1730425912;
+	bh=tXK/7nqEpwz2TcEyr9H3mzOgohqDogAx76vxMxbvd20=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=giePI72i0ulqtcYect1ACj6IjNTtFq11gtGGGDS10PTzrDbuMANqy2C7koOyY4MoX
+	 TyYEIyqb6kDK03T5RzErUONt3rkAnq68pxw9pEIFM0RxNzeJOF/vHRf1jVt158GSBD
+	 ZCTinTZdoX1PYLqNI162lCItV6TcRLOKS8/ZuCSy//cgC1jTXFVCgLcobop94A8kVu
+	 FutP1QoF8A23WAnEKEMmm+6uwo+hvRaU+faLnlFlkWbMk2fL98h1lFjPDvg6z3pIcy
+	 AFWxeUPMRaqAttCWKnPYX+pWDduC0j27xgteBFU2YqfB+rK5MjeyJXEoPPF8fTND6t
+	 J6+pi14D1Pgjg==
+Date: Thu, 31 Oct 2024 18:51:50 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: wojackbb@gmail.com
+Cc: netdev@vger.kernel.org, chandrashekar.devegowda@intel.com,
+ chiranjeevi.rapolu@linux.intel.com, haijun.liu@mediatek.com,
+ m.chetan.kumar@linux.intel.com, ricardo.martinez@linux.intel.com,
+ loic.poulain@linaro.org, ryazanov.s.a@gmail.com, johannes@sipsolutions.net,
+ davem@davemloft.net, edumazet@google.com, pabeni@redhat.com,
+ linux-arm-kernel@lists.infradead.org,
+ angelogioacchino.delregno@collabora.com,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com
+Subject: Re: [PATCH] [net] net: wwan: t7xx: Change PM_AUTOSUSPEND_MS to 5000
+Message-ID: <20241031185150.6ef22ce0@kernel.org>
+In-Reply-To: <20241028073015.692794-1-wojackbb@gmail.com>
+References: <20241028073015.692794-1-wojackbb@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241030103554.29218-5-SkyLake.Huang@mediatek.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241031_172458_569489_4A5AFB70 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20241031_185153_186891_5DC0C65B 
+X-CRM114-Status: UNSURE (   9.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,33 +77,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sky,
+On Mon, 28 Oct 2024 15:30:15 +0800 wojackbb@gmail.com wrote:
+> Because optimizing the power consumption of t7XX,
+> change auto suspend time to 5000.
+> 
+> The Tests uses a script to loop through the power_state
+> of t7XX.
+> (for example: /sys/bus/pci/devices/0000\:72\:00.0/power_state)
+> 
+> * If Auto suspend is 20 seconds,
+>   test script show power_state have 0~5% of the time was in D3 state
+>   when host don't have data packet transmission.
+> 
+> * Changed auto suspend time to 5 seconds,
+>   test script show power_state have 50%~80% of the time was in D3 state
+>   when host don't have data packet transmission.
 
-kernel test robot noticed the following build errors:
-
-[auto build test ERROR on net-next/main]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Sky-Huang/net-phy-mediatek-Re-organize-MediaTek-ethernet-phy-drivers/20241030-184043
-base:   net-next/main
-patch link:    https://lore.kernel.org/r/20241030103554.29218-5-SkyLake.Huang%40mediatek.com
-patch subject: [PATCH net-next 4/5] net: phy: mediatek: Integrate read/write page helper functions
-config: i386-randconfig-004-20241101 (https://download.01.org/0day-ci/archive/20241101/202411010814.EOjx8juJ-lkp@intel.com/config)
-compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241101/202411010814.EOjx8juJ-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202411010814.EOjx8juJ-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> ld: drivers/net/phy/mediatek/mtk-ge.o:(.data+0xb4): undefined reference to `mtk_phy_read_page'
->> ld: drivers/net/phy/mediatek/mtk-ge.o:(.data+0xb8): undefined reference to `mtk_phy_write_page'
-   ld: drivers/net/phy/mediatek/mtk-ge.o:(.data+0x1c8): undefined reference to `mtk_phy_read_page'
-   ld: drivers/net/phy/mediatek/mtk-ge.o:(.data+0x1cc): undefined reference to `mtk_phy_write_page'
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+I'm going to drop this from PW while we wait for your reply to Sergey
+If the patch is still good after answering his questions please update
+the commit message and resend with a [net-next] tag (we use [net] to
+designate fixes for current release and stable)
 
