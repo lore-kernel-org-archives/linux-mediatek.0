@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 488AAE6F06D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Nov 2024 15:32:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 506A2E6F06F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Nov 2024 15:32:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=epRFOHNij3h5S8KJYQr26l3Lp2Hi6cjPFcirUI7Ac90=; b=rscm8bkkZpHnWgYVNxoXFACPAW
-	5vQKmQl1eLWfDSsVMX0XbVU+pY4e6YLV3CbGjS/JmoeXKd9ceRc083S83YhzvIOpbVOuAxB9IcOGV
-	svIyNb9X0CKGEtSpbZv/wOdHAzAzsyD9bcZ+7JDiMLAtFUnrcsYR7DwIn6SC+eKMFYfZ22V49EDSY
-	5mc1+Wo4hPYhKDEU/YVJBUUi68nn4XZTxHONyywuCyL6h3ps+de95BdW8OKmVM0zMKO/iHrRKrwJt
-	SDGWXbfmgJLZEIEM17t/iQsqwXHOnwmbViN9fii1atFfC2/VJ6oiR6Ey9lmlBV2XGaBVL7oxQyZIK
-	c5547iSA==;
+	bh=JBIbDS3b2Cy/hxqzSSKFPym1A4g1588e/7Asf0Evx88=; b=WcZAKP4qJvBXtX/h/4J/f7AMlk
+	BShIE36MZo2+7rxp9f0vq3a34gre5+2NAJDV3TMoHc4cOSjcZ9VcTkuq6g6tCT78DPd+ri2zf2MX+
+	GlYQQlI26zFoAGz4ObgJKKAMln4MKalSi8eIlCt3v22VSJ2uM/CxP42wti/dkVQfRAaPO8Tz1g3Zi
+	sgsMFHz+2m3hDjEgLaeMeBsTPdn0MFmkGyPaIutA4WjGGE7+jotd5P4zOR4fUohML+bAPPAlP13yj
+	50n3148Yg4Dt/Xb+8pDMsrbJW995KdHikV0/aD0YGb37blRrrMllbqbbKx1iZrjokm+BL8BPYm80r
+	+KYmxJmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6tdm-00000007Vtk-04af;
-	Fri, 01 Nov 2024 15:32:46 +0000
+	id 1t6tdp-00000007Vx5-0pJt;
+	Fri, 01 Nov 2024 15:32:49 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t6tSD-00000007UH4-2tff;
-	Fri, 01 Nov 2024 15:20:51 +0000
+	id 1t6tSN-00000007UIy-1DGT;
+	Fri, 01 Nov 2024 15:21:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1730474448;
-	bh=uJk5zksfhouWGMoFsDHDsI8Z9+bLS8yFcfshC7rakqQ=;
+	s=mail; t=1730474457;
+	bh=/+TZMp3OuOQDQDtXHRy7fu88xK0qHPfQkGlXJfyTdTg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=GHyfIKEDrY9ML7tc9WCoIGPV47OSQFh43C05dV6KkyoR6m2vo/doP7LNAIMTbDxM9
-	 lchuGR8FMvGxcFHI67T8ePKCcrz/tgfjG2mAf416JOUKyR4DETOMlXjELTslVjtgxe
-	 Ca1GmZ3hTnK3ZM1YU0FBUErPV8Ok5XVwuw36FTOJau+K0H1D3S+G8YKlSoiliNndN1
-	 069IdUG0fbbInN/Lh7wR2N7uvDGxyRloossaANu+xllQPESC2rX2gEXaiEb+oE7PGe
-	 e4IYfiDV9psVm5fQVqzYPNM0r/9DAxrslLtSPedoPpO51e8XuJmWP44buY9i75RHAB
-	 AExaN4igeGs1w==
+	b=WUTyXX9KAWFb3gX0LpNpPH6GX48WVZPnDO9ivRGy5nGMOGP4ZIBLd7lSW7KDolK+L
+	 Bjsp1W/eLD4Fgi2GLyJfQMYOtyPgbKF8cTktz18YKwOaKxQ/+KRidryUZPVwyE1E8a
+	 iRRyPWU23/+E2LZi+LAlUp3OuKz8tbqrDnRa8cf29cmCdM+MIpqJuGRSm6qRFyuU+K
+	 URN5dZ1roRwUmx+adiOtj5sv9e6/3I6p++hW/5dmseozw/mPNnL+vzyxa6GhMCMsK5
+	 WrqxyGzlj1z3MDGgkZPcMC6+hY0f3AYvKDQuklWwO1deJ9ggSvQx4nAWQN/jwDDfHB
+	 tvh8D2Bc1mCqQ==
 Received: from [192.168.1.214] (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6298517E0F7A;
-	Fri,  1 Nov 2024 16:20:45 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3445217E0F85;
+	Fri,  1 Nov 2024 16:20:54 +0100 (CET)
 From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Fri, 01 Nov 2024 11:20:23 -0400
-Subject: [PATCH 1/4] net: dt-bindings: dwmac: Introduce
- mediatek,mac-wol-noninverted
+Date: Fri, 01 Nov 2024 11:20:26 -0400
+Subject: [PATCH 4/4] arm64: dts: mediatek: Add mediatek,mac-wol-noninverted
+ to ethernet nodes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20241101-mediatek-mac-wol-noninverted-v1-1-75b81808717a@collabora.com>
+Message-Id: <20241101-mediatek-mac-wol-noninverted-v1-4-75b81808717a@collabora.com>
 References: <20241101-mediatek-mac-wol-noninverted-v1-0-75b81808717a@collabora.com>
 In-Reply-To: <20241101-mediatek-mac-wol-noninverted-v1-0-75b81808717a@collabora.com>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -71,8 +71,8 @@ Cc: kernel@collabora.com, netdev@vger.kernel.org,
  =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241101_082049_924660_BE9B0F0D 
-X-CRM114-Status: GOOD (  11.76  )
+X-CRM114-CacheID: sfid-20241101_082059_498166_47F6D7E8 
+X-CRM114-Status: GOOD (  10.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,56 +87,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mediatek,mac-wol property, as described, was intended to indicate
-that the MAC supports Wake-On-LAN (WOL) and that it should be used
-instead of the PHY WOL. However, the driver code currently handles it
-backwards: setting up PHY WOL when the property is present and vice
-versa.
-
-In order to rectify the property's handling while still maintaining
-backwards compatibility, introduce a new property to indicate that the
-mediatek,mac-wol property should be handled as it is described, not
-inverted, and make it required for new DTs.
+Add the newly introduced and now required mediatek,mac-wol-noninverted
+property to the dwmac ethernet nodes and invert the presence of the
+mediatek,mac-wol property to make it align with the description on the
+binding and maintain the current behavior.
 
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
- Documentation/devicetree/bindings/net/mediatek-dwmac.yaml | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt2712-evb.dts                   | 2 ++
+ arch/arm64/boot/dts/mediatek/mt8195-demo.dts                  | 2 ++
+ arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts        | 2 +-
+ arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts | 2 ++
+ arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts         | 2 +-
+ 5 files changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-index ed9d845f600804964e0000dd4354898673fafe08..0f20c4e09e79ff722d53a364825da29bd6323c31 100644
---- a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-@@ -125,6 +125,15 @@ properties:
-       3. the inside clock, which be sent to MAC, will be inversed in RMII case when
-          the reference clock is from MAC.
+diff --git a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+index c84c47c1352fba49d219fb8ace17a74953927fdc..09760a0784bfb59511ea64fb44b7aeb66326f81b 100644
+--- a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+@@ -115,6 +115,8 @@ &eth {
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-0 = <&eth_default>;
+ 	pinctrl-1 = <&eth_sleep>;
++	mediatek,mac-wol-noninverted;
++	mediatek,mac-wol;
+ 	status = "okay";
  
-+  mediatek,mac-wol-noninverted:
-+    type: boolean
-+    description:
-+      Previously the driver parsed the mediatek,mac-wol property backwards,
-+      enabling the PHY WOL when the property was present, and vice versa. That
-+      behavior is kept for backwards compatility, but newer DTs should specify
-+      this property to have the driver handle the mediatek,mac-wol property as
-+      it is described in this binding.
-+
-   mediatek,mac-wol:
-     type: boolean
-     description:
-@@ -140,6 +149,7 @@ required:
-   - clock-names
-   - phy-mode
-   - mediatek,pericfg
-+  - mediatek,mac-wol-noninverted
+ 	mdio {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+index 31d424b8fc7cedef65489392eb279b7fd2194a4a..f48baa0b7dcbb95816517b7e501d87e39ac63a2d 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+@@ -109,6 +109,8 @@ &eth {
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-0 = <&eth_default_pins>;
+ 	pinctrl-1 = <&eth_sleep_pins>;
++	mediatek,mac-wol-noninverted;
++	mediatek,mac-wol;
+ 	status = "okay";
  
- unevaluatedProperties: false
+ 	mdio {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+index 5f16fb82058056cf8cf6318c9fc373601bd6eb60..290fcdce1c9f49c475403fa4aa7a0911605d4abd 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+@@ -177,7 +177,7 @@ &eth {
+ 	snps,reset-gpio = <&pio 93 GPIO_ACTIVE_HIGH>;
+ 	snps,reset-delays-us = <0 10000 10000>;
+ 	mediatek,tx-delay-ps = <2030>;
+-	mediatek,mac-wol;
++	mediatek,mac-wol-noninverted;
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-0 = <&eth_default_pins>;
+ 	pinctrl-1 = <&eth_sleep_pins>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts b/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
+index e2e75b8ff91880711c82f783c7ccbef4128b7ab4..ebd0deb4e9ec1d67182c7602203e4fa1a0fb1c0c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
+@@ -271,6 +271,8 @@ &eth {
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-0 = <&eth_default_pins>;
+ 	pinctrl-1 = <&eth_sleep_pins>;
++	mediatek,mac-wol-noninverted;
++	mediatek,mac-wol;
+ 	status = "okay";
  
-@@ -181,4 +191,5 @@ examples:
-         snps,rxpbl = <1>;
-         snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
-         snps,reset-delays-us = <0 10000 10000>;
-+        mediatek,mac-wol-noninverted;
-     };
+ 	mdio {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+index 14ec970c4e491fbd69bf2800639abf726d47589a..a541d4fb9621c55f789d55a1eb985030827b158b 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+@@ -179,7 +179,7 @@ &eth {
+ 	pinctrl-0 = <&eth_default_pins>;
+ 	pinctrl-1 = <&eth_sleep_pins>;
+ 	mediatek,tx-delay-ps = <2030>;
+-	mediatek,mac-wol;
++	mediatek,mac-wol-noninverted;
+ 	snps,reset-gpio = <&pio 93 GPIO_ACTIVE_HIGH>;
+ 	snps,reset-delays-us = <0 20000 100000>;
+ 	status = "okay";
 
 -- 
 2.47.0
