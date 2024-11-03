@@ -4,92 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7AC0D11194
-	for <linux-mediatek@archiver.kernel.org>; Sun,  3 Nov 2024 22:04:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4B3AD11186
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 00:16:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vJJUevNe9GvVm+0On8RuMBavqwvRAie7DrYUh8hFkvM=; b=uMR8ReOKfV5BCbIuzZdXpZ5Qa+
-	zgcw8MWTb32iyvAgziJZ5eaKrgSP55b15fXprCXyGHyKY4H4ZbmaifPIp7CZ+wTF8zWCLuYKnxSNf
-	c/X8HbX5zZMbefXEXb4XaPwoyU5GIWzPZqnjYRblJPzSbh5N6dhhTSuOAXgwDqrWExCqJ9oxlV0G+
-	subSmkVyOceMGOmYLHT80IaghETHzEkxzJIx4GvNnpXYufLlgKf6qzBonA4smVIL7qjoW4SqRtsxB
-	c3zlgDLcfCvI6x83MKY+dBTCbupmnraMCuTwzH1mN9bEaeX690eJqHhwJSCxl8xTdWo8h7RAWIRYk
-	XXKaIG/w==;
+	bh=vbZ+uzGqdW4hX03Xi3d7fgtT2grFuBySNiXCV4fiIF8=; b=G57DOA4FR7FneltKBTJqSJe/sN
+	wAZbiu6ffpH6OHgwkAY5tSplOU+ZYrZZCXcL46jjOax/jKHHCO7E52QxDFD4XX/eK3cwkAG/ceglo
+	FXJ76gUmJ2fxt1GkbgBfd80J86yaZNMQSr206nGIE6asUwaKP2q+0FzWWbrFKq2R2roZ75+QyPWtg
+	MCxX5BmFugDDdAqqxF4UbjvvCf5anrbxGE+Ns/Edb6gcWfQ8sUTBLtZVhnXnbY3oAGjbFRQn0UyFz
+	mnhxtMUJoG82lYxBR9zoyd53JcbGWWiiltAVNFECleR/KQfFhxEv/9tpIjjsZrFpaJtKhhdmor6yW
+	sMO4SB3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7ihe-0000000C6pY-0as2;
-	Sun, 03 Nov 2024 22:04:10 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1t7klI-0000000CIKh-0J6T;
+	Mon, 04 Nov 2024 00:16:04 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7ifu-0000000C6dY-0LF6;
-	Sun, 03 Nov 2024 22:02:23 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-4314fa33a35so27950685e9.1;
-        Sun, 03 Nov 2024 14:02:21 -0800 (PST)
+	id 1t7jQz-0000000CCVy-2ULx
+	for linux-mediatek@lists.infradead.org;
+	Sun, 03 Nov 2024 22:51:06 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-2e2b71fd16fso353240a91.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 03 Nov 2024 14:51:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1730671340; x=1731276140; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=vJJUevNe9GvVm+0On8RuMBavqwvRAie7DrYUh8hFkvM=;
-        b=foF72GNAjkq8UM0oatE0ygIuvXDJdR+HVD5OMT1hW/JWpH2A1kxUkFT3nTZ47o/xGu
-         VmZVLCdpS9QG+td1obZ94obZM/uvkN85NMZC42bKalF7vFh/fvrzHYGVlE5ytknL+uax
-         GxWNBnEFaJPF07DIP7U7QvQciHJAQ+qoct05MTSq5myBJAaTEwDr5e6ekJLldxBGRQCk
-         4xdte3lLlq8U9rPOoKDIH6hXWcoi/PFCT9aacz6oWoIj/liL2wi8dv1liBecG4DtbxUG
-         33re7Qc1HV1K1jZj6fgzp1dXfFD8xkaBBaK0dBG3Y0fa9jzOboq/CIEpc+K6A7cgwKxi
-         jwbw==
+        d=purestorage.com; s=google2022; t=1730674259; x=1731279059; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=vbZ+uzGqdW4hX03Xi3d7fgtT2grFuBySNiXCV4fiIF8=;
+        b=dBBjIAUsMyC6EvwgLCWETeU25TiM1ylSbqZo74I2tAB+Di1H5KZB944yDey2bvZRgj
+         3JBX8HCCwdQs+a8cMxUG9E4W3MFNQhDAxXym79N/dkiLKQs6dE1S0Sn344lgKf9k1qhn
+         OClAH2k2HaGUo7AjZkmtLQlNHvNtUg4ttUCPqUJ2KRwBn+E24ob0Gf3EDzPTJomKyXXY
+         Si2kOiw3hrm20vxkhSLfAncWasidwZ6ZMfwTHDUKGES8IG94os2aiBXsZkLmJYjCMA3P
+         f5OmKMZFq4OgqFZINBo5GpHU970j7g3JiHq65umIZdVY1zQFNTHorQ5S2ahFGryqq/uX
+         m9aw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730671340; x=1731276140;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=vJJUevNe9GvVm+0On8RuMBavqwvRAie7DrYUh8hFkvM=;
-        b=MHn2olAFpTOPu25z5Vt1Ve3qTz7QHwkL5qoNv/IC4BCAvlXEPyLkrWaeKqUO93SLVy
-         DEp9e/Zs9vk0krTQOiR74Dh1MUp1dU+HkZndiun1kdWmO1QrGD5E9Py6qtWJAPMEZEBR
-         0qeZSwbzcZZjIS1xmyBMo4VdPr1MApmapnLUpUfVS5bE27bfvYJKWwX757sBoimxp5Mm
-         61y06kkoQy7V/2i4bFWWn9Ws2q/vPBrodznzHcRYKpDqVDtY48wI63vvuMTbUkV1q0cu
-         3Difi1leZ3nyfkSXeb3jNQXYOSYQY9dxvzkrM9tEtzJlX16ZCfQygK5g6lY/bz3SCNNS
-         K45g==
-X-Forwarded-Encrypted: i=1; AJvYcCULSP+HFT6B14T56+lI64HiORb/Uh/L1f4oMl86s0Eg3t0z/MitCdnnoKzdWmIRCK9LxB/q58vanBh9ArXdR/iI@lists.infradead.org, AJvYcCWc9hlInuxjhEhA7e/lo3Wj4N85fohmlyaXnKAOJDpzPUaKEldF2UYsEDmwCuk9bQernmMz1vZIB44qCyNG0A0=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw0yhk2PIBkjrZ+mKVIlM4qNg3CzDcUs5T8ATkmPRsUiO3ZXTa8
-	z+0AhWfLRAzH40Qs6RXJBJI1tz1fVsIJMWBG3+OSwy9otUwLpsl9
-X-Google-Smtp-Source: AGHT+IEuwfDX9hrStVj6im/q6cc6AdiNOutRjb+QmjbCLyXWPWbUdJn2VcL5jeZB6ik+bwlrR6183w==
-X-Received: by 2002:a05:600c:3c97:b0:431:2b66:44f7 with SMTP id 5b1f17b1804b1-431bb9decf2mr178244385e9.31.1730671339509;
-        Sun, 03 Nov 2024 14:02:19 -0800 (PST)
-Received: from [192.168.0.2] ([69.6.8.124])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-431bd9aa83asm164499165e9.31.2024.11.03.14.02.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 03 Nov 2024 14:02:18 -0800 (PST)
-Message-ID: <1657857c-7761-4fea-aad2-f26c69473895@gmail.com>
-Date: Mon, 4 Nov 2024 00:02:45 +0200
+        d=1e100.net; s=20230601; t=1730674259; x=1731279059;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=vbZ+uzGqdW4hX03Xi3d7fgtT2grFuBySNiXCV4fiIF8=;
+        b=VAts3BX5SV2fGbRaiTW7UJUUhyJT+XvfG1Sof4kXwk17C/9b2kCvuXW4No6GETRk7e
+         uvXPY1UaulpchFky/D1y98vzhGNdxclXgKAIYDsdecvelvlGPOxXP9IOFjImlrY7JZHM
+         K/O088nPaGuT4cqgNx0LrQtXKwPeJbdgdBF1jzRuw1vdHoeNTy3Z+fn4Jb6Cf/ePgsRg
+         0LNIoiGBeoK8U2gRZN0lxBeSNENVr5A8QRMEGyJkLfKKBlSx9yP40EsgKeyVc7aZmtx3
+         PJkXS8xCBYzIO4iEldvgg891Sw1gnm15kOC7VLrahvxLrEnJGFiBoB6qVzoPWgQh/T92
+         Q1wQ==
+X-Forwarded-Encrypted: i=1; AJvYcCX33b2o4qktAL75AVw+TrYqTwsloJbnJXKHKDDmCZrnpEGFZhevgX9ogxtNoJU8/MPMHrGBezn/aNQS/QLfbQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzqJkZvIbdF/NmpGEf8+y7kvv6wqSHJEoaAiAg1mYZXyIY32Nw5
+	5lvUKjLwVH5754qesKFxSPI0gLnVJUBJ0ujzeu6lrAzzj8iCGcAKcTXT0GtwUzMiHz8sWHj9BeQ
+	fgX8hk+i+AeevN0rDbBvKxo+DcUkE87z4y+eP+w==
+X-Google-Smtp-Source: AGHT+IFUl1GCcoqWHoZYbz+qEG71KEMvn1Im+9ZYr+neR/oxPoOmgzFQQqZYN0kcHlFEkQf/7jeXNqXwpJVr9GMXuU8=
+X-Received: by 2002:a17:90a:e511:b0:2e2:e139:447d with SMTP id
+ 98e67ed59e1d1-2e8f0d62425mr14589494a91.0.1730674259424; Sun, 03 Nov 2024
+ 14:50:59 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [net-next v2] net: wwan: t7xx: reset device if suspend fails
-To: linasvepstas@gmail.com, Bjorn Helgaas <helgaas@kernel.org>
-Cc: Jinjian Song <jinjian.song@fibocom.com>,
- chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
- haijun.liu@mediatek.com, m.chetan.kumar@linux.intel.com,
- ricardo.martinez@linux.intel.com, loic.poulain@linaro.org,
- johannes@sipsolutions.net, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, angelogioacchino.delregno@collabora.com,
- bhelgaas@google.com, corbet@lwn.net, danielwinkler@google.com,
- korneld@google.com, linux-arm-kernel@lists.infradead.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- netdev@vger.kernel.org
-References: <20241031130930.5583-1-jinjian.song@fibocom.com>
- <20241031170428.GA1249507@bhelgaas>
- <CAHrUA36X2cMZ4WNtRO7NoLaupBNfecLLxDfSVZ4mZzbzHiDjRA@mail.gmail.com>
-Content-Language: en-US
-From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
-In-Reply-To: <CAHrUA36X2cMZ4WNtRO7NoLaupBNfecLLxDfSVZ4mZzbzHiDjRA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20241031002326.3426181-1-csander@purestorage.com>
+ <20241031002326.3426181-2-csander@purestorage.com> <20241103122138.6d0d62f6@kernel.org>
+In-Reply-To: <20241103122138.6d0d62f6@kernel.org>
+From: Caleb Sander <csander@purestorage.com>
+Date: Sun, 3 Nov 2024 14:50:48 -0800
+Message-ID: <CADUfDZpBfwGJwhUHCZk8AgZDY0QP3j2dEUHZfC1VkR+75jj2WA@mail.gmail.com>
+Subject: Re: [resend PATCH 2/2] dim: pass dim_sample to net_dim() by reference
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Arthur Kiyanovski <akiyano@amazon.com>, Brett Creeley <brett.creeley@amd.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+	Christophe Leroy <christophe.leroy@csgroup.eu>, Claudiu Manoil <claudiu.manoil@nxp.com>, 
+	David Arinzon <darinzon@amazon.com>, "David S. Miller" <davem@davemloft.net>, 
+	Doug Berger <opendmb@gmail.com>, Eric Dumazet <edumazet@google.com>, 
+	=?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>, 
+	Felix Fietkau <nbd@nbd.name>, Florian Fainelli <florian.fainelli@broadcom.com>, 
+	Geetha sowjanya <gakula@marvell.com>, hariprasad <hkelam@marvell.com>, 
+	Jason Wang <jasowang@redhat.com>, Jonathan Corbet <corbet@lwn.net>, Leon Romanovsky <leon@kernel.org>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Louis Peens <louis.peens@corigine.com>, 
+	Mark Lee <Mark-MC.Lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Michael Chan <michael.chan@broadcom.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
+	Noam Dagan <ndagan@amazon.com>, Paolo Abeni <pabeni@redhat.com>, 
+	Przemek Kitszel <przemyslaw.kitszel@intel.com>, Roy Pledge <Roy.Pledge@nxp.com>, 
+	Saeed Bishara <saeedb@amazon.com>, Saeed Mahameed <saeedm@nvidia.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Shannon Nelson <shannon.nelson@amd.com>, 
+	Shay Agroskin <shayagr@amazon.com>, Simon Horman <horms@kernel.org>, 
+	Subbaraya Sundeep <sbhatta@marvell.com>, Sunil Goutham <sgoutham@marvell.com>, 
+	Tal Gilboa <talgi@nvidia.com>, Tariq Toukan <tariqt@nvidia.com>, 
+	Tony Nguyen <anthony.l.nguyen@intel.com>, Vladimir Oltean <vladimir.oltean@nxp.com>, 
+	Xuan Zhuo <xuanzhuo@linux.alibaba.com>, intel-wired-lan@lists.osuosl.org, 
+	linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linuxppc-dev@lists.ozlabs.org, linux-rdma@vger.kernel.org, 
+	netdev@vger.kernel.org, oss-drivers@corigine.com, 
+	virtualization@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241103_140222_167649_850140C1 
-X-CRM114-Status: GOOD (  39.75  )
+X-CRM114-CacheID: sfid-20241103_145101_820624_E9C163B4 
+X-CRM114-Status: GOOD (  12.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,144 +117,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Bjorn, Linas,
+On Sun, Nov 3, 2024 at 12:21=E2=80=AFPM Jakub Kicinski <kuba@kernel.org> wr=
+ote:
+>
+> On Wed, 30 Oct 2024 18:23:26 -0600 Caleb Sander Mateos wrote:
+> > In a heavy TCP workload, mlx5e_handle_rx_dim() consumes 3% of CPU time,
+> > 94% of which is attributed to the first push instruction to copy
+> > dim_sample on the stack for the call to net_dim():
+>
+> Change itself looks fine, so we can apply, but this seems surprising.
+> Are you sure this is not just some measurement problem?
+> Do you see 3% higher PPS with this change applied?
 
-many thanks for clarifying this tricky topic! Hope this information can 
-serve a good starting point for Jinjian to develop a proper solution for 
-that case.
+Agreed, this bottleneck surprised me too. But the CPU profiles clearly
+point to this push instruction in mlx5e_handle_rx_dim() being very
+hot. My best explanation is that the 2- and 4-byte stores followed
+immediately by 8-byte loads from the same addresses cannot be
+pipelined effectively. The loads must wait for the stores to complete
+before reading back the values they wrote. Ideally the compiler would
+recognize that the struct dim_sample local variable is only used to
+pass to net_dim() and avoid duplicating it. I guess passing large
+structs by value in C is not very common, so there probably isn't as
+much effort put into optimizing it.
+With the patches applied, the CPU time spent in mlx5e_handle_rx_dim()
+(excluding children) drops from 3.14% to 0.08%. Unfortunately, there
+are other bottlenecks in the system and 1% variation in the throughput
+is typical, so the patches don't translate into a clear 3% increase in
+throughput.
 
-On 03.11.2024 03:24, Linas Vepstas wrote:
-> Top-post reply.
-> 
-> What Bjorn says is exactly right. Just one clarifying remark: When PCI
-> error recovery was designed, it was envisioned for high-end,
-> high-availability servers so that they could reset a failing device
-> without forcing a reboot of the OS.  Concepts like suspend/resume did
-> not perturb even the unconscious sleep of the engineers. Thus,
-> stepping through error recovery during suspend would be novel,
-> untested, and perhaps prone to confusion. The error recovery procedure
-> is trying to reset the device into a fully-powered-on,
-> fully-functional and connected state. This might be problematic if the
-> suspend has already walked half-way through power-down. The fact that
-> error recovery might run a very long fraction of a second after the
-> error is detected further complicates things. The fact that error
-> recovery  usually has the driver fully reinitializing the device,
-> including reloading the firmware, could be a problem if the firmware
-> is not in RAM or is sitting on a suspended block device. So it all
-> could be an adventure.
-> 
-> As to testing: I asked one of the guys in the lab how he did it, and
-> he said he would brush a metal wire against the PCI pins. I winced.
-> But I guess it's cleaner than pouring coffee on it. Later we developed
-> a software tool to artificially inject errors.
-> 
-> On Fri, Nov 1, 2024 at 8:52 AM Bjorn Helgaas <helgaas@kernel.org> wrote:
->> On Thu, Oct 31, 2024 at 09:09:30PM +0800, Jinjian Song wrote:
->>> From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
->>>> On 29.10.2024 05:46, Jinjian Song wrote:
->>>>> From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
->>>>>> On 22.10.2024 11:43, Jinjian Song wrote:
->>>>>>> If driver fails to set the device to suspend, it means that the
->>>>>>> device is abnormal. In this case, reset the device to recover
->>>>>>> when PCIe device is offline.
->>>>>>
->>>>>> Is it a reproducible or a speculative issue? Does the fix
->>>>>> recover modem from a problematic state?
->>>>>>
->>>>>> Anyway we need someone more familiar with this hardware (Intel
->>>>>> or MediaTek engineer) to Ack the change to make sure we are not
->>>>>> going to put a system in a more complicated state.
->>>>>
->>>>> This is a very difficult issue to replicate onece occured and fixed.
->>>>>
->>>>> The issue occured when driver and device lost the connection. I have
->>>>> encountered this problem twice so far:
->>>>> 1. During suspend/resume stress test, there was a probabilistic D3L2
->>>>> time sequence issue with the BIOS, result in PCIe link down, driver
->>>>> read and write the register of device invalid, so suspend failed.
->>>>> This issue was eventually fixed in the BIOS and I was able to restore
->>>>> it through the reset module after reproducing the problem.
->>>>>
->>>>> 2. During idle test, the modem probabilistic hang up, result in PCIe
->>>>> link down, driver read and write the register of device invalid, so
->>>>> suspend failed. This issue was eventually fiex in device modem firmware
->>>>> by adjust a certain power supply voltage, and reset modem as a workround
->>>>> to restore when the MBIM port command timeout in userspace applycations.
->>>>>
->>>>> Hardware reset modem to recover was discussed with MTK, and they said
->>>>> that if we don't want to keep the on-site problem location in case of
->>>>> suspend failure, we can use the recover solution.
->>>>> Both the ocurred issues result in the PCIe link issue, driver can't
->>>>> read and writer the register of WWAN device, so I want to add this
->>>>> path
->>>>> to restore, hardware reset modem can recover modem, but using the
->>>>> pci_channle_offline() as the judgment is my inference.
->>>>
->>>> Thank you for the clarification. Let me summarize what I've understood
->>>> from the explanation:
->>>> a) there were hardware (firmware) issues,
->>>> b) issues already were solved,
->>>> c) issues were not directly related to the device suspension procedure,
->>>> d) you want to implement a backup plan to make the modem support robust.
->>>>
->>>> If got it right, then I would like to recommend to implement a generic
->>>> error handling solution for the PCIe interface. You can check this
->>>> document: Documentation/PCI/pci-error-recovery.rst
->>>
->>> Yes, got it right.
->>> I want to identify the scenario and then recover by reset device,
->>> otherwise suspend failure will aways prevent the system from suspending
->>> if it occurs.
->>
->> If a PCIe link goes down here's my understanding of what happens:
->>
->>    - Writes to the device are silently dropped.
->>
->>    - Reads from the device return ~0 (PCI_POSSIBLE_ERROR()).
->>
->>    - If the device is in a slot and pciehp is enabled, a Data Link
->>      Layer State Changed interrupt will cause pciehp_unconfigure_device()
->>      to detach the driver and remove the pci_dev.
->>
->>    - If AER is enabled, a failed access to the device will cause an AER
->>      interrupt.  If the driver has registered pci_error_handlers, the
->>      driver callbacks will be called, and based on what the driver
->>      returns, the PCI core may reset the device.
->>
->> The pciehp and AER interrupts are *asynchronous* to link down events
->> and to any driver access to the device, so they may be delayed an
->> arbitrary amount of time.
->>
->> Both interrupt paths may lead to the device being marked as "offline".
->> Obviously this is asynchronous with respect to the driver.
->>
->>>>>>> +++ b/drivers/net/wwan/t7xx/t7xx_pci.c
->>>>>>> @@ -427,6 +427,10 @@ static int __t7xx_pci_pm_suspend(struct
->>>>>>> pci_dev *pdev)
->>>>>>>        iowrite32(T7XX_L1_BIT(0), IREG_BASE(t7xx_dev) +
->>>>>>> ENABLE_ASPM_LOWPWR);
->>>>>>>        atomic_set(&t7xx_dev->md_pm_state, MTK_PM_RESUMED);
->>>>>>>        t7xx_pcie_mac_set_int(t7xx_dev, SAP_RGU_INT);
->>>>>>> +    if (pci_channel_offline(pdev)) {
->>>>>>> +        dev_err(&pdev->dev, "Device offline, reset to recover\n");
->>>>>>> +        t7xx_reset_device(t7xx_dev, PLDR);
->>>>>>> +    }
->>
->> This looks like an unreliable way to detect issues.  It only works if
->> AER is enabled, and the device is only marked "offline" some arbitrary
->> length of time *after* a driver access to the device has failed.
->>
->> You can't reliably detect errors on writes to the device.
->>
->> You can only reliably detect errors on reads from the device by
->> looking for PCI_POSSIBLE_ERROR().  Obviously ~0 might be a valid value
->> to read from some registers, so you need device-specific knowledge to
->> know whether ~0 is valid or indicates an error.
->>
->> If AER or DPC are enabled, the driver can be *notified* about read
->> errors and some write errors via pci_error_handlers, but the
->> notification is long after the error.
-
---
-Sergey
+Best,
+Caleb
 
