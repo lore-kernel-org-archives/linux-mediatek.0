@@ -4,87 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3579ED1118C
-	for <linux-mediatek@archiver.kernel.org>; Sun,  3 Nov 2024 20:21:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC58FD1118C
+	for <linux-mediatek@archiver.kernel.org>; Sun,  3 Nov 2024 21:02:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8Ukc+M8CZYwlrpkjWIRwsZhzje/hVh2caYXefeqy6UU=; b=ranIz8dgPicOsN82HQ/gFcfHpr
-	vP76YAeDVrAPAiXN8wkl5IidQtfGfMKGpTbP03H5z8d9TcPFmLUO0z3OJOc0MjJE/SDbT+pjMxoy+
-	jFaIaragUJGSHZx4W60Z7oh5OT/lp6g1QPqnl6RSJfKPAV4u8yj4GHEscJqjFKeYQZtsX+BcKh9qi
-	EiV40nOU8r+fG3F70gcpZ8kOBmzrEwbeA1CHiolldOwFc11hCWfeevLkYPCCsMGsbZRtLhl5Vd7+U
-	6r2ge2fgO5X7RjZcgs3Koh4c22xL4TJR1Byykla5yN4aUxPvXTyNupZw7MBDlVKiLr03z0vx9Ke2r
-	fkl9iAPw==;
+	bh=JUsKDV5dqV96b7D8Z93Tufo2CdOkGjE+eqUl38SJ3J8=; b=xWRo7IHlFoYZLRiZUS1EaGdiU1
+	vR3Pq1lWJVZTRrPqs/bXvbhlgAhUO36N8n6xYyaqtCsbf/ouu+e2/SCjZjZhg6bVtHVmfjUSOctf3
+	WqBoiT/LsCkus87fSmixBTSptVLaCIOCraMUzKyNjmpJgVsXLyR2QjT7eduFsOmzc6IQ+slUFB8dl
+	0OJ96Zjq7X+qhYWlDnQe5mL0UqZaV+5pa+oeSj/UlUhjMiP1oA38fwP6TJvT/mf3JI5JRgjop7ugH
+	7qCYY4FjakpURz0QZJCOahApqWNRx4ATjrgXX+wkdRN4Hf4m36dZ/Glja6ezDUcVc/xDtfwLle69D
+	kGJw7wow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7h6Y-0000000BzBG-3LeB;
-	Sun, 03 Nov 2024 20:21:46 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1t7hji-0000000C2GK-3ixa;
+	Sun, 03 Nov 2024 21:02:14 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7h6V-0000000BzAe-2fIj;
-	Sun, 03 Nov 2024 20:21:44 +0000
+	id 1t7hi0-0000000C1si-2Zpd;
+	Sun, 03 Nov 2024 21:00:30 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id D59F8A41CBB;
-	Sun,  3 Nov 2024 20:19:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD122C4CECD;
-	Sun,  3 Nov 2024 20:21:39 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 8B056A41E33;
+	Sun,  3 Nov 2024 20:58:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7961CC4CED3;
+	Sun,  3 Nov 2024 21:00:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730665301;
-	bh=8Ukc+M8CZYwlrpkjWIRwsZhzje/hVh2caYXefeqy6UU=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=hbPRZL054fJi30LppOH0pHtwRISF1ZSCdVrUtYIu0ppNa8ioEdfJ/dm3YYfLz3NtM
-	 FDDzikzL4fj4/2tA7J1E2L9mrUIuRitDbxRchOPRHLYcpY+eVOIJJUF/2sw3Nv+KC/
-	 MkKYL5CoKKRrOmeBncDVf/hgEJBxRSJtwv+KWf1H5OACVRVjFtm4ZhiLiklw82+0AM
-	 m+Qj20+jgyR1zDpVDBdBJVbyxI0vaXCMLviA7xAjCakdiPWw7LkGP1wzsNIVt0xcPl
-	 p/Kmu0WgZ75pRzFzZgf6IDZpKyq49AkrdXRhOn5GT7MpWMd7DiNlI4obZ4xpQ3JFue
-	 qRzwHjaAGgKpw==
-Date: Sun, 3 Nov 2024 12:21:38 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Caleb Sander Mateos <csander@purestorage.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Arthur Kiyanovski
- <akiyano@amazon.com>, Brett Creeley <brett.creeley@amd.com>, Broadcom
- internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
- Christophe Leroy <christophe.leroy@csgroup.eu>, Claudiu Manoil
- <claudiu.manoil@nxp.com>, David Arinzon <darinzon@amazon.com>, "David S.
- Miller" <davem@davemloft.net>, Doug Berger <opendmb@gmail.com>, Eric
- Dumazet <edumazet@google.com>, Eugenio =?UTF-8?B?UMOpcmV6?=
- <eperezma@redhat.com>, Felix Fietkau <nbd@nbd.name>, Florian Fainelli
- <florian.fainelli@broadcom.com>, Geetha sowjanya <gakula@marvell.com>,
- hariprasad <hkelam@marvell.com>, Jason Wang <jasowang@redhat.com>, Jonathan
- Corbet <corbet@lwn.net>, Leon Romanovsky <leon@kernel.org>, Lorenzo
- Bianconi <lorenzo@kernel.org>, Louis Peens <louis.peens@corigine.com>, Mark
- Lee <Mark-MC.Lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Michael Chan <michael.chan@broadcom.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, Noam Dagan <ndagan@amazon.com>, Paolo Abeni
- <pabeni@redhat.com>, Przemek Kitszel <przemyslaw.kitszel@intel.com>, Roy
- Pledge <Roy.Pledge@nxp.com>, Saeed Bishara <saeedb@amazon.com>, Saeed
- Mahameed <saeedm@nvidia.com>, Sean Wang <sean.wang@mediatek.com>, Shannon
- Nelson <shannon.nelson@amd.com>, Shay Agroskin <shayagr@amazon.com>, Simon
- Horman <horms@kernel.org>, Subbaraya Sundeep <sbhatta@marvell.com>, Sunil
- Goutham <sgoutham@marvell.com>, Tal Gilboa <talgi@nvidia.com>, Tariq Toukan
- <tariqt@nvidia.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, Vladimir
- Oltean <vladimir.oltean@nxp.com>, Xuan Zhuo <xuanzhuo@linux.alibaba.com>,
- intel-wired-lan@lists.osuosl.org, linux-arm-kernel@lists.infradead.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linuxppc-dev@lists.ozlabs.org,
- linux-rdma@vger.kernel.org, netdev@vger.kernel.org,
- oss-drivers@corigine.com, virtualization@lists.linux.dev
-Subject: Re: [resend PATCH 2/2] dim: pass dim_sample to net_dim() by
- reference
-Message-ID: <20241103122138.6d0d62f6@kernel.org>
-In-Reply-To: <20241031002326.3426181-2-csander@purestorage.com>
-References: <20241031002326.3426181-1-csander@purestorage.com>
-	<20241031002326.3426181-2-csander@purestorage.com>
+	s=k20201202; t=1730667627;
+	bh=4C8C8egVXHHPt9+3j41NEQ0VIgG4HvQ9pgQ+iqbD97I=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=a9sf8l5GhAVXrZ9kCg1EK1L9HzgRkc29lMLTp6Z2wPR3LiFlH2wwe5MFGKcFmGMjE
+	 HLeMYbsFLH2qFcE7UYIBmNR+rRQTmNLw4go8JJzc2cUC/ik9h+Quw2e+8I8Z6VODCI
+	 KlKMTa2ikVGJthHB0EkZL9NP5RWzmm/r/vO0v5BQIWC0l4CDTVnsLfjcX2JgOkTlnM
+	 g+iv0wyE3H8h5Xhc/JvPEjr2/PWEz2pVAsVlIXiwHb70UI8v+q8TcjGDcV1dseb3MQ
+	 tNEIsUaGd3KP9DmciGQolGttt9wwEFLcV+0tWlm8x3yPjia2zx21aF53sQxu62vrGH
+	 NqHZW066umzQQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33DAB38363C3;
+	Sun,  3 Nov 2024 21:00:37 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v2] net: dsa: mt7530: Add TBF qdisc offload
+ support
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <173066763598.3253460.11329332225402731134.git-patchwork-notify@kernel.org>
+Date: Sun, 03 Nov 2024 21:00:35 +0000
+References: <20241031-mt7530-tc-offload-v2-1-cb242ad954a0@kernel.org>
+In-Reply-To: <20241031-mt7530-tc-offload-v2-1-cb242ad954a0@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: arinc.unal@arinc9.com, daniel@makrotopia.org, dqfext@gmail.com,
+ sean.wang@mediatek.com, andrew@lunn.ch, f.fainelli@gmail.com,
+ olteanv@gmail.com, davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241103_122143_771682_29A875DC 
-X-CRM114-Status: UNSURE (   7.92  )
+X-CRM114-CacheID: sfid-20241103_130028_737690_FA1E4CDD 
+X-CRM114-Status: UNSURE (   6.96  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,12 +79,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 30 Oct 2024 18:23:26 -0600 Caleb Sander Mateos wrote:
-> In a heavy TCP workload, mlx5e_handle_rx_dim() consumes 3% of CPU time,
-> 94% of which is attributed to the first push instruction to copy
-> dim_sample on the stack for the call to net_dim():
+Hello:
 
-Change itself looks fine, so we can apply, but this seems surprising.
-Are you sure this is not just some measurement problem?
-Do you see 3% higher PPS with this change applied?
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Thu, 31 Oct 2024 15:28:18 +0100 you wrote:
+> Introduce port_setup_tc callback in mt7530 dsa driver in order to enable
+> dsa ports rate shaping via hw Token Bucket Filter (TBF) for hw switched
+> traffic.
+> 
+> Tested-by: Arınç ÜNAL <arinc.unal@arinc9.com>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next,v2] net: dsa: mt7530: Add TBF qdisc offload support
+    https://git.kernel.org/netdev/net-next/c/2e570cd187e3
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
