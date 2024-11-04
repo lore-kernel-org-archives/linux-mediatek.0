@@ -4,66 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA3E1D1BDFD
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 21:39:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B606D1BDFF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 21:42:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ge7cZ9ZbzoR8ao8b7oGum7vK7hHAW59mt0jCVyFPlis=; b=zUDHMlIjWM0VSWhq+jxP0Zi7zK
-	dcrOYhpZK5oSrGRttjIw1E5h4QxaNA9nTpNp0kRlGlJ1J33e9dZmhXI163e42Wt7JhC+qibhA4ozV
-	b0UqksvSAzInpZ40377jsrvBiK73ZgiZTxuNXeREEeQw7kAk6/vtmUERpfLcGIPJlbazQBptTnMDi
-	YgCxS/sA0IiwNXjBpdq6nakfaHYMKMUdJSJjJwgGBEFiFIK5dHyIaucEesu4N1/ZzvK0n1LOWpxZk
-	Jvm6kU8JAjFPwfCKY5ZTG4Pervg6bA3owGmH0Lx0mgwHTvCetZsggGThi/I0EAGa/myXODNcYlk5k
-	+yj2X4fg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DXDa4pJRXXSF53bW6sg5r+RrA4H/A0V2XZTYAKAhegw=; b=EtqRbvVoJizKY930GwXGttNKxL
+	07pnAxQend/+0g8uGINvqDnVB9e2GlZEVSoMk7c5SqIXc+U6PeRIG04AO1disS/Ro+zGubZIKD5Wh
+	EfnYOPiYC8551HSL4W1qUy/GiB1MoCID9PbF8lnSULdLaIi/PtUH+VnCF7TGNeuHAzAm7x9874/Mr
+	HMPoCYdsGVTtkM8J3+Oh6Pxsk0oeCW8R24/bsolmx75KrX+cJ9FY5lzBVjn8E5lMDMgeiZ/q3Xq4H
+	P84CfG53ULjMSbEsYHMdorjvoO9FERXehCZ5gVwHltFGUOGFuab85B7fBX/4E0ivwr1BU8duqindZ
+	r5JK76MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t84mv-0000000FC5G-055S;
-	Mon, 04 Nov 2024 21:39:05 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1t84qH-0000000FCV8-3eZD;
+	Mon, 04 Nov 2024 21:42:33 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t84NC-0000000F7Lf-2FFs;
-	Mon, 04 Nov 2024 21:12:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 401875C55C5;
-	Mon,  4 Nov 2024 21:11:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6AC93C4CECE;
-	Mon,  4 Nov 2024 21:12:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730754749;
-	bh=Ge7cZ9ZbzoR8ao8b7oGum7vK7hHAW59mt0jCVyFPlis=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QnVXECTHl2d+Yh8Hee++kEQr98gw8XdgecRqVNdWREggQWAkBRHHq7B8eZ4HV0mdH
-	 t6eKgu5p8k3PhjbmfHlxy9Y5SDAFP/uUtmYVT1tEecHuzlvH6eXKLoQ7CN6OJXHGzD
-	 1LoYsgokBL0q1187pOGSqiMTVkxknbFkKn94l7jvdl+2v71UuaCRXi0QydVJdlNrOg
-	 yluv3wPSNWyJalJ9p4K+PoTHsEtFAOTIohOuBD9+ZYHA6fHLwRTX9MIM3/8Y/GaIx1
-	 5HZ6HHZBvIisEMb8CI+TwDRFVwSf28+Nx4XHOMkwvV4LnJNQNXFsLR4umfUnIblTLt
-	 ZPFOLsOEYz+dg==
-Date: Mon, 4 Nov 2024 21:12:24 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Nicolas Belin <nbelin@baylibre.com>, linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v1 1/1] ASoc: mediatek: mt8365: Don't use "proxy" headers
-Message-ID: <d7bf7863-fd24-4f8e-8cd0-d84867a997bb@sirena.org.uk>
-References: <20241031102725.2447711-1-andriy.shevchenko@linux.intel.com>
- <ZykbMlshvlwCaeGJ@smile.fi.intel.com>
+	id 1t84QU-0000000F8AN-1uHk;
+	Mon, 04 Nov 2024 21:15:55 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-43169902057so36518375e9.0;
+        Mon, 04 Nov 2024 13:15:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1730754952; x=1731359752; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=DXDa4pJRXXSF53bW6sg5r+RrA4H/A0V2XZTYAKAhegw=;
+        b=m0hsLNhPSoQahPfQabGCYNt2wVGCMc0jK/9lHm50Jhzc6pjEU+aI9w4aiLYveEKbSp
+         1Z1qTOCqRqME/QmWbuDfGq+T0VcE+QZFxixNxv5zq2JWfn1LYJHORI3MsUaVNSIkkUeK
+         5niSuSS1G3DGDH1z+9uX+5aVvpqwtLeP5iaNYkpBF+Q6A6ogVAtVoKILF079Fz+knSEh
+         mEclkWyeLyX8bkQABABwWk286Qvavs+fOHvOXmvnWeuT9o9ci9yP+fxFQwXriWNWmNhc
+         CNZKnaLQYd71hislFIWTWHOwJIS9pi7bJwLoEd6TNVXyJ4aCTSYPNw8lQ163DkLcrOm8
+         bt/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730754952; x=1731359752;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=DXDa4pJRXXSF53bW6sg5r+RrA4H/A0V2XZTYAKAhegw=;
+        b=CTeGqP4VZzKp0Z3JfHdJf9EchS4sP+PcLyuTYo/fzwUZzn6NEfPzSA2X+QWirAex6I
+         /cQZauhLDRnX8f2mTbviTJmWM3xyr2ZY9LSv3kBNF2AHZBg3cR6HlfeRsG82zmduPDFx
+         0UoYc8Cut5Cbt7zSqWJ/znZMLk7uMSOesYxie14xrAD5gL7ntco5uMmgzqktYc3rnrHu
+         GBGiKn9HFCRDs4dW5hdKLDolTkRhkCOesp8/6Xu2nkXCivHRCawObepJSy4qZZj3hH6N
+         4o8H2n1RCWoF06rmCRIW1oBn9YTHNB57xcDXqheuXCTsAwTGzix8V+Lvi2+XVfz6ul6E
+         ucBQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUMKd+vyf/YhScMq77KbpeRPzWcy29QfI7CDDL9eVkYJq3CHc0Z47gp8Lp5exY/HOko0jl9vDPy1EsWoKTl7ak=@lists.infradead.org, AJvYcCXn9IrGxkeqMArDX27+XyrBbJ2NKoA4C+EyRMI+UXGjdlEc29ScepOhhL3bVqRYoH1MlBjtXFPEmofV/0st8SRH@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw28Om88e62nQYlDbmwJ18i1TUKcB+ZAcqNx+R6BJLA96nm9uHj
+	gc8nXBFvJ0nelPJCbnTJ5kAXRuAgEVbg8nj1tbVVu3M/++A8u082
+X-Google-Smtp-Source: AGHT+IEFhX8r7t2wnhakUur8cbvnOFOryn45oEMeOTW1QXqNNbQOndMdabsi1v2egkHAs2YMkWfzwQ==
+X-Received: by 2002:a05:600c:1c29:b0:431:588a:4498 with SMTP id 5b1f17b1804b1-431bb985df9mr186940475e9.14.1730754952179;
+        Mon, 04 Nov 2024 13:15:52 -0800 (PST)
+Received: from [192.168.0.2] ([69.6.8.124])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4327d5e7c9asm169928695e9.21.2024.11.04.13.15.48
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 04 Nov 2024 13:15:50 -0800 (PST)
+Message-ID: <8d7b1c5b-346f-4d81-a06a-809690dd4c87@gmail.com>
+Date: Mon, 4 Nov 2024 23:16:17 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="JSrXVVE4KL1bPTNt"
-Content-Disposition: inline
-In-Reply-To: <ZykbMlshvlwCaeGJ@smile.fi.intel.com>
-X-Cookie: The meek are contesting the will.
+User-Agent: Mozilla Thunderbird
+Subject: Re: [net-next v8 0/3] net: wwan: t7xx: Add t7xx debug ports
+To: Jinjian Song <jinjian.song@fibocom.com>,
+ chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
+ haijun.liu@mediatek.com, m.chetan.kumar@linux.intel.com,
+ ricardo.martinez@linux.intel.com, loic.poulain@linaro.org,
+ johannes@sipsolutions.net, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com
+Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ linux-doc@vger.kernel.org, angelogioacchino.delregno@collabora.com,
+ linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com,
+ corbet@lwn.net, linux-mediatek@lists.infradead.org, helgaas@kernel.org,
+ danielwinkler@google.com, korneld@google.com, andrew+netdev@lunn.ch,
+ horms@kernel.org
+References: <20241104094436.466861-1-jinjian.song@fibocom.com>
+Content-Language: en-US
+From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
+In-Reply-To: <20241104094436.466861-1-jinjian.song@fibocom.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241104_131230_654447_B3B75B3A 
-X-CRM114-Status: GOOD (  11.19  )
+X-CRM114-CacheID: sfid-20241104_131554_528456_458ACC71 
+X-CRM114-Status: UNSURE (   5.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,34 +103,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 04.11.2024 11:44, Jinjian Song wrote:
+> Add support for t7xx WWAN device to debug by ADB (Android Debug Bridge)
+> port and MTK MIPCi (Modem Information Process Center) port.
+> 
+> Application can use ADB (Android Debug Bridge) port to implement
+> functions (shell, pull, push ...) by ADB protocol commands.
+> 
+> Application can use MIPC (Modem Information Process Center) port
+> to debug antenna tuner or noise profiling through this MTK modem
+> diagnostic interface.
 
---JSrXVVE4KL1bPTNt
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Well done, Jinjian! For the whole series:
 
-On Mon, Nov 04, 2024 at 09:06:26PM +0200, Andy Shevchenko wrote:
-> On Thu, Oct 31, 2024 at 12:27:25PM +0200, Andy Shevchenko wrote:
-> > Update header inclusions to follow IWYU (Include What You Use)
-> > principle.
-
-> Hmm... I think we are waiting for somebody to Ack / review this change?
-
-Yes.
-
---JSrXVVE4KL1bPTNt
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmcpOLcACgkQJNaLcl1U
-h9A+Xgf8DL0xbsC9QTvJ6PRG9kwZT0mqrDxTEqD2aa7uKL/BWe/4iYsDhzva68pJ
-kMULqD+2acYoXMapAq5yXLcHKceCj0yGRUegY3xin06Qn5mxAIqq/+kUXwSYxHZ6
-GRZcB6QZZYIjuxMGbSFBbFYIU/yar28WL1JWFDoE8uLljBz0LeW2RHEqRgro6FnZ
-pXqcXsV9o7gruTH+FWeQukJ6yc2bun7IA2UQRrtFSW43u4lKNNv2IIweXu2hcek6
-lCq0OTQSDcK3wwTOKivjHm2e61Rxz0XWwrnHD4+94UZiGmvUITQWEeyBpgkZ72w1
-/UfnNCQ32IQc9tb3VECJdVgZekfXtA==
-=xe2s
------END PGP SIGNATURE-----
-
---JSrXVVE4KL1bPTNt--
+Reviewed-by: Sergey Ryazanov <ryazanov.s.a@gmail.com>
 
