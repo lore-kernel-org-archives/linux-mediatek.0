@@ -4,58 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA0E0D132B4
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 11:47:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E436D132B6
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 11:51:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=F6dYAwZ9/bdrvlhmbF4tqEkTAK8jQxmDHhN0h53JYs4=; b=g2Vs3Yov20UNMRyR+Lm4gHXFMz
-	43Hel8h8LuZfvLocmGfvGTjOnAESX8O7CQsA/35H1cvEIs8eD9RUTYoncjyWaRwEOMpyuiF/xR3YR
-	vsDH9KaBoUSpsnWCvAu0GhX5ikDI8jTF3cw1JX4ZlFmCcTo61K8hhtyN4vfnAKHMKnQ7tOwFwlryO
-	g7FM/GtMilC1rOmRr6Ux+21vNMruY7kHVVlGcyUYIfedEMFtFpdDFZ5P72Q0WN1sngcQSQ7hgc2RJ
-	6sIT9gWmIqUSrl6MQ7+dQrEoLiz+Hagx0S9HWlUhddOQZCZjBcXdyjMDZa7uXoKe1tWrCxjqA8xPz
-	azZzzTQA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GNNHcPh53GlmRIChWetBGuOyl34GuFpr3NhhkEn7244=; b=3mrHrACS79Yxh4
+	KvYGK7FectNvUfsaISvcW/8WA+dNWeZgsFlFEoPwrx8eK+57yNpvFzg3wV6V+91X9CFlgk+rDZy/y
+	j9Q6ZHJdkIg6OMzSKfG0T8SzhJNEDTDK92l8hHdNBfk9vhUXOHNOdvyG+Nh9D3W/cCEG6KCgSvcFX
+	f8P8Uv4tTau3oykySIKFu03IFFl0WUVv1KVSwyGL5zm/fAyUE3x+zWWrLCEssQ2caaRlgGGzFdfZu
+	z4x5aW5lS9Bz4AI9JSnrOSiDNQtknYw9JcqgVlQxL2F72WPQG+k/gEA6bRMK2Pkp4hl6+vytGQitV
+	JAiFg7gRawe9SuPipXkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7vYq-0000000Dahd-3GNl;
-	Mon, 04 Nov 2024 11:47:56 +0000
-Received: from szxga04-in.huawei.com ([45.249.212.190])
+	id 1t7vcH-0000000DbSR-0B4i;
+	Mon, 04 Nov 2024 11:51:29 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7vOF-0000000DYfp-0WzY;
-	Mon, 04 Nov 2024 11:37:06 +0000
-Received: from mail.maildlp.com (unknown [172.19.163.17])
-	by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4XhqC51bcnz2Fb27;
-	Mon,  4 Nov 2024 19:35:13 +0800 (CST)
-Received: from kwepemg200008.china.huawei.com (unknown [7.202.181.35])
-	by mail.maildlp.com (Postfix) with ESMTPS id BEE361A0188;
-	Mon,  4 Nov 2024 19:36:51 +0800 (CST)
-Received: from huawei.com (10.90.53.73) by kwepemg200008.china.huawei.com
- (7.202.181.35) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Mon, 4 Nov
- 2024 19:36:51 +0800
-From: Jinjie Ruan <ruanjinjie@huawei.com>
-To: <rafael@kernel.org>, <viresh.kumar@linaro.org>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <hector.yuan@mediatek.com>,
-	<lukasz.luba@arm.com>, <qperret@google.com>, <linux-pm@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-CC: <ruanjinjie@huawei.com>
-Subject: [PATCH v2] PM: EM: Fix wrong return value in mtk_cpufreq_get_cpu_power()
-Date: Mon, 4 Nov 2024 19:36:15 +0800
-Message-ID: <20241104113615.1397410-1-ruanjinjie@huawei.com>
-X-Mailer: git-send-email 2.34.1
+	id 1t7vTp-0000000DZhZ-2dZx;
+	Mon, 04 Nov 2024 11:42:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1730720564;
+	bh=IfHGhqvt+TX0g3VwnO2/tu+CWRL4qJkPNdnSO85GnTQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=QL/3fVI0EQP4vYoK/Qlxs1yjMe2KxtZdB5fWsgzSV9wD7O8SMcMaG5Ua3ehbaTWSr
+	 Ixb7OpvGeeJcRGsNifTGpV9CAQX1/3z7WtnmDXrJZOEz4gcOWX2iJC2pAyc0R1FpVr
+	 C3MUtTXlghEemTNAQqX3coRfoeIFbmljpR6tmwqFOWpzM+kIaoeStfmZU/HNjjVGeg
+	 hBjoNwsfgDzoDeJPJeBItvULqqwgzP99OZ1pv1X5TIyHMvOywXbwGv8ThsmTNZb18K
+	 DBAmhByUMt/pb4VgYkZiyG+icw+HtYFsAK8TttzO7nI0CTirA4HksdRMygyLTW63rp
+	 Zg5Xx/BgsmIeQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7C9E417E3601;
+	Mon,  4 Nov 2024 12:42:43 +0100 (CET)
+Message-ID: <47154bc7-5e52-4d2c-ba30-730758bf1901@collabora.com>
+Date: Mon, 4 Nov 2024 12:42:43 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/2] PCI: mediatek-gen3: Add support for setting
+ max-link-speed limit
+To: =?UTF-8?B?Smlhbmp1biBXYW5nICjnjovlu7rlhpsp?= <Jianjun.Wang@mediatek.com>,
+ "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>
+References: <20240918081307.51264-1-angelogioacchino.delregno@collabora.com>
+ <20240918081307.51264-2-angelogioacchino.delregno@collabora.com>
+ <744a8362065b0c75178c3e0d402ea4932cb1fc96.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <744a8362065b0c75178c3e0d402ea4932cb1fc96.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.90.53.73]
-X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
- kwepemg200008.china.huawei.com (7.202.181.35)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241104_033659_351884_35771E14 
-X-CRM114-Status: GOOD (  13.11  )
+X-CRM114-CacheID: sfid-20241104_034245_850426_6C57754D 
+X-CRM114-Status: GOOD (  24.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,41 +73,183 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: "robh@kernel.org" <robh@kernel.org>, Ryder Lee <Ryder.Lee@mediatek.com>, "kw@linux.com" <kw@linux.com>, "lpieralisi@kernel.org" <lpieralisi@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "bhelgaas@google.com" <bhelgaas@google.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "kernel@collabora.com" <kernel@collabora.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_cpufreq_get_cpu_power() return 0 if the policy is NULL. Then in
-em_create_perf_table(), the later zero check for power is not invalid
-as power is uninitialized. As Lukasz suggested, it must return -EINVAL when
-the 'policy' is not found. So return -EINVAL to fix it.
+Il 04/11/24 09:22, Jianjun Wang (王建军) ha scritto:
+> Hi Angelo,
+> 
+> Thanks for your patch.
+> 
+> On Wed, 2024-09-18 at 10:13 +0200, AngeloGioacchino Del Regno wrote:
+>> Add support for respecting the max-link-speed devicetree property,
+>> forcing a maximum speed (Gen) for a PCI-Express port.
+>>
+>> Since the MediaTek PCIe Gen3 controllers also expose the maximum
+>> supported link speed in the PCIE_BASE_CFG register, if property
+>> max-link-speed is specified in devicetree, validate it against the
+>> controller capabilities and proceed setting the limitations only
+>> if the wanted Gen is lower than the maximum one that is supported
+>> by the controller itself (otherwise it makes no sense!).
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <
+>> angelogioacchino.delregno@collabora.com>
+>> ---
+>>   drivers/pci/controller/pcie-mediatek-gen3.c | 55
+>> ++++++++++++++++++++-
+>>   1 file changed, 53 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c
+>> b/drivers/pci/controller/pcie-mediatek-gen3.c
+>> index 66ce4b5d309b..8d4b045633da 100644
+>> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+>> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+>> @@ -28,7 +28,11 @@
+>>   
+>>   #include "../pci.h"
+>>   
+>> +#define PCIE_BASE_CFG_REG		0x14
+>> +#define PCIE_BASE_CFG_SPEED		GENMASK(15, 8)
+>> +
+>>   #define PCIE_SETTING_REG		0x80
+>> +#define PCIE_SETTING_GEN_SUPPORT	GENMASK(14, 12)
+>>   #define PCIE_PCI_IDS_1			0x9c
+>>   #define PCI_CLASS(class)		(class << 8)
+>>   #define PCIE_RC_MODE			BIT(0)
+>> @@ -125,6 +129,9 @@
+>>   
+>>   struct mtk_gen3_pcie;
+>>   
+>> +#define PCIE_CONF_LINK2_CTL_STS		0x10b0
+> 
+> Maybe it's better to use: (PCIE_CFG_OFFSET_ADDR + 0xb0).
+> 
 
-Cc: stable@vger.kernel.org
-Fixes: 4855e26bcf4d ("cpufreq: mediatek-hw: Add support for CPUFREQ HW")
-Suggested-by: Lukasz Luba <lukasz.luba@arm.com>
-Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
----
-v2:
-- Fix the driver instead of em_create_perf_table() as suggested.
-- Update the commit message.
-- Add Suggested-by.
----
- drivers/cpufreq/mediatek-cpufreq-hw.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Makes sense.
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq-hw.c b/drivers/cpufreq/mediatek-cpufreq-hw.c
-index 8925e096d5b9..aeb5e6304542 100644
---- a/drivers/cpufreq/mediatek-cpufreq-hw.c
-+++ b/drivers/cpufreq/mediatek-cpufreq-hw.c
-@@ -62,7 +62,7 @@ mtk_cpufreq_get_cpu_power(struct device *cpu_dev, unsigned long *uW,
- 
- 	policy = cpufreq_cpu_get_raw(cpu_dev->id);
- 	if (!policy)
--		return 0;
-+		return -EINVAL;
- 
- 	data = policy->driver_data;
- 
--- 
-2.34.1
+>> +#define PCIE_CONF_LINK2_LCR2_LINK_SPEED	GENMASK(3, 0)
+>> +
+>>   /**
+>>    * struct mtk_gen3_pcie_pdata - differentiate between host
+>> generations
+>>    * @power_up: pcie power_up callback
+>> @@ -160,6 +167,7 @@ struct mtk_msi_set {
+>>    * @phy: PHY controller block
+>>    * @clks: PCIe clocks
+>>    * @num_clks: PCIe clocks count for this port
+>> + * @max_link_speed: Maximum link speed (PCIe Gen) for this port
+>>    * @irq: PCIe controller interrupt number
+>>    * @saved_irq_state: IRQ enable state saved at suspend time
+>>    * @irq_lock: lock protecting IRQ register access
+>> @@ -180,6 +188,7 @@ struct mtk_gen3_pcie {
+>>   	struct phy *phy;
+>>   	struct clk_bulk_data *clks;
+>>   	int num_clks;
+>> +	u8 max_link_speed;
+>>   
+>>   	int irq;
+>>   	u32 saved_irq_state;
+>> @@ -381,11 +390,27 @@ static int mtk_pcie_startup_port(struct
+>> mtk_gen3_pcie *pcie)
+>>   	int err;
+>>   	u32 val;
+>>   
+>> -	/* Set as RC mode */
+>> +	/* Set as RC mode and set controller PCIe Gen speed
+>> restriction, if any */
+>>   	val = readl_relaxed(pcie->base + PCIE_SETTING_REG);
+>>   	val |= PCIE_RC_MODE;
+>> +	if (pcie->max_link_speed) {
+>> +		val &= ~PCIE_SETTING_GEN_SUPPORT;
+>> +
+>> +		/* Can enable link speed support only from Gen2 onwards
+>> */
+>> +		if (pcie->max_link_speed >= 2)
+>> +			val |= FIELD_PREP(PCIE_SETTING_GEN_SUPPORT,
+>> +					  GENMASK(pcie->max_link_speed
+>> - 2, 0));
+>> +	}
+>>   	writel_relaxed(val, pcie->base + PCIE_SETTING_REG);
+>>   
+>> +	/* Set Link Control 2 (LNKCTL2) speed restriction, if any */
+>> +	if (pcie->max_link_speed) {
+>> +		val = readl_relaxed(pcie->base +
+>> PCIE_CONF_LINK2_CTL_STS);
+>> +		val &= ~PCIE_CONF_LINK2_LCR2_LINK_SPEED;
+>> +		val |= FIELD_PREP(PCIE_CONF_LINK2_LCR2_LINK_SPEED,
+>> pcie->max_link_speed);
+>> +		writel_relaxed(val, pcie->base +
+>> PCIE_CONF_LINK2_CTL_STS);
+>> +	}
+>> +
+>>   	/* Set class code */
+>>   	val = readl_relaxed(pcie->base + PCIE_PCI_IDS_1);
+>>   	val &= ~GENMASK(31, 8);
+>> @@ -1004,9 +1029,21 @@ static void mtk_pcie_power_down(struct
+>> mtk_gen3_pcie *pcie)
+>>   	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets,
+>> pcie->phy_resets);
+>>   }
+>>   
+>> +static int mtk_pcie_get_controller_max_link_speed(struct
+>> mtk_gen3_pcie *pcie)
+>> +{
+>> +	u32 val;
+>> +	int ret;
+>> +
+>> +	val = readl_relaxed(pcie->base + PCIE_BASE_CFG_REG);
+>> +	val = FIELD_GET(PCIE_BASE_CFG_SPEED, val);
+>> +	ret = fls(val);
+>> +
+>> +	return ret > 0 ? ret : -EINVAL;
+>> +}
+>> +
+>>   static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
+>>   {
+>> -	int err;
+>> +	int err, max_speed;
+>>   
+>>   	err = mtk_pcie_parse_port(pcie);
+>>   	if (err)
+>> @@ -1031,6 +1068,20 @@ static int mtk_pcie_setup(struct mtk_gen3_pcie
+>> *pcie)
+>>   	if (err)
+>>   		return err;
+>>   
+>> +	err = of_pci_get_max_link_speed(pcie->dev->of_node);
+>> +	if (err > 0) {
+>> +		/* Get the maximum speed supported by the controller */
+>> +		max_speed =
+>> mtk_pcie_get_controller_max_link_speed(pcie);
+>> +
+>> +		/* Set max_link_speed only if the controller supports
+>> it */
+>> +		if (max_speed >= 0 && max_speed <= err) {
+>> +			pcie->max_link_speed = err;
+> 
+> Do we need to set it to max_speed? Since the hardware only supports
+> speeds lower than max_speed.
+> 
+
+The controller's default value is already "max speed" (all Gen supported)
+so... no, we take action only if DT says to apply a limit.
+
+Cheers,
+Angelo
+
+> Thanks.
+> 
+>> +			dev_dbg(pcie->dev,
+>> +				"Max controller link speed Gen%d,
+>> override to Gen%u",
+>> +				max_speed, pcie->max_link_speed);
+>> +		}
+>> +	}
+>> +
+>>   	/* Try link up */
+>>   	err = mtk_pcie_startup_port(pcie);
+>>   	if (err)
+
 
 
