@@ -4,61 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A826D132B5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 11:39:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA0E0D132B4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 11:47:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dwoXow54u06CVIvSsGRRqSvWrbRYrQCG24cFC8sy2Xw=; b=J5PPu8J8PGOSi8XwagefBu4cYN
-	QfV1bcYbJLjgLdiGUP0ciYhuro/Vss3p3dRDwQUgTgUzsYOtTvOd2WizdpyjaCL/0gFUbCJkz9UFL
-	jZL5ARMeaKeZAXuTRXjzkbGcJN2C58sQdWsd6GGsOTlpd031VPk10LtcLmL0yx49EZaGAOd1ToxeS
-	5dFCKyAgx+iKjLMQ1NQh6I/nFQIRTBq/+BfNM5PmRKzYB4kQklP1GPO7anPMMhK/3jiirqjlDFtKo
-	vwe2Cv+hs9hqUv+UzGbmDKQN6gLvC7R9FAeDYAjwtpHNTIgq0I8y+iRYPMTBq7MqBqiPGE3plM41A
-	BLKAwimA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=F6dYAwZ9/bdrvlhmbF4tqEkTAK8jQxmDHhN0h53JYs4=; b=g2Vs3Yov20UNMRyR+Lm4gHXFMz
+	43Hel8h8LuZfvLocmGfvGTjOnAESX8O7CQsA/35H1cvEIs8eD9RUTYoncjyWaRwEOMpyuiF/xR3YR
+	vsDH9KaBoUSpsnWCvAu0GhX5ikDI8jTF3cw1JX4ZlFmCcTo61K8hhtyN4vfnAKHMKnQ7tOwFwlryO
+	g7FM/GtMilC1rOmRr6Ux+21vNMruY7kHVVlGcyUYIfedEMFtFpdDFZ5P72Q0WN1sngcQSQ7hgc2RJ
+	6sIT9gWmIqUSrl6MQ7+dQrEoLiz+Hagx0S9HWlUhddOQZCZjBcXdyjMDZa7uXoKe1tWrCxjqA8xPz
+	azZzzTQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7vQL-0000000DZ6w-1LH8;
-	Mon, 04 Nov 2024 11:39:09 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1t7vYq-0000000Dahd-3GNl;
+	Mon, 04 Nov 2024 11:47:56 +0000
+Received: from szxga04-in.huawei.com ([45.249.212.190])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7vEF-0000000DVoy-3hvz;
-	Mon, 04 Nov 2024 11:26:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1730719598;
-	bh=bF7hHsF3nFkMIP/dp3aAmjmr+zxCA1jW5rykrtwikWY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=WA0LE1LvkSo8o5z422v06LGKzz6D6c08A0MdbOyw99zKPEXCeOPFGTeQ3FbkNe1n2
-	 wQos9MoF71wgcquR4rknI8mX5OOw2GJ3DCWhp/fS/u5jq1eJFNYQ7PvkQrXDTQTF6/
-	 9yjF0L7JcEL+DwZal6250r//yABrQ7DF8qZVlkrAbChISGWyLsnL1rsZQe0rD1QtcD
-	 nV/xR1J6nSk48u1f0mSokRYhM2wSf+l6pZnPmmBhas8EredjYRpI0v13WWAqKQqlfT
-	 E84JXYPDXJJ+nCIuPrMdKp2xIpi20unIia+Fx05zbs8/e40WklBjItOxBkwUoHJaH1
-	 /A2dqfwrkvpAg==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D8CBA17E3600;
-	Mon,  4 Nov 2024 12:26:37 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: arm-soc <arm@kernel.org>,
-	soc <soc@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [GIT,PULL,2/2] MediaTek driver updates for v6.13
-Date: Mon,  4 Nov 2024 12:26:21 +0100
-Message-ID: <20241104112625.161365-2-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.46.1
-In-Reply-To: <20241104112625.161365-1-angelogioacchino.delregno@collabora.com>
-References: <20241104112625.161365-1-angelogioacchino.delregno@collabora.com>
+	id 1t7vOF-0000000DYfp-0WzY;
+	Mon, 04 Nov 2024 11:37:06 +0000
+Received: from mail.maildlp.com (unknown [172.19.163.17])
+	by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4XhqC51bcnz2Fb27;
+	Mon,  4 Nov 2024 19:35:13 +0800 (CST)
+Received: from kwepemg200008.china.huawei.com (unknown [7.202.181.35])
+	by mail.maildlp.com (Postfix) with ESMTPS id BEE361A0188;
+	Mon,  4 Nov 2024 19:36:51 +0800 (CST)
+Received: from huawei.com (10.90.53.73) by kwepemg200008.china.huawei.com
+ (7.202.181.35) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Mon, 4 Nov
+ 2024 19:36:51 +0800
+From: Jinjie Ruan <ruanjinjie@huawei.com>
+To: <rafael@kernel.org>, <viresh.kumar@linaro.org>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <hector.yuan@mediatek.com>,
+	<lukasz.luba@arm.com>, <qperret@google.com>, <linux-pm@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+CC: <ruanjinjie@huawei.com>
+Subject: [PATCH v2] PM: EM: Fix wrong return value in mtk_cpufreq_get_cpu_power()
+Date: Mon, 4 Nov 2024 19:36:15 +0800
+Message-ID: <20241104113615.1397410-1-ruanjinjie@huawei.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.90.53.73]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ kwepemg200008.china.huawei.com (7.202.181.35)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241104_032640_112893_925AC4A6 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20241104_033659_351884_35771E14 
+X-CRM114-Status: GOOD (  13.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,56 +70,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit 9852d85ec9d492ebef56dc5f229416c925758edc:
+mtk_cpufreq_get_cpu_power() return 0 if the policy is NULL. Then in
+em_create_perf_table(), the later zero check for power is not invalid
+as power is uninitialized. As Lukasz suggested, it must return -EINVAL when
+the 'policy' is not found. So return -EINVAL to fix it.
 
-  Linux 6.12-rc1 (2024-09-29 15:06:19 -0700)
+Cc: stable@vger.kernel.org
+Fixes: 4855e26bcf4d ("cpufreq: mediatek-hw: Add support for CPUFREQ HW")
+Suggested-by: Lukasz Luba <lukasz.luba@arm.com>
+Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+---
+v2:
+- Fix the driver instead of em_create_perf_table() as suggested.
+- Update the commit message.
+- Add Suggested-by.
+---
+ drivers/cpufreq/mediatek-cpufreq-hw.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git tags/mtk-soc-for-v6.13
-
-for you to fetch changes up to a1643ae9b3e3364edbb6cf285c5f2cf5d60336e6:
-
-  soc: mediatek: mtk-svs: Call of_node_put(np) only once in svs_get_subsys_device() (2024-10-21 16:00:52 +0200)
-
-----------------------------------------------------------------
-MediaTek soc driver updates for v6.13
-
-This adds support for the MT8188 SoC in the MediaTek Regulator
-Coupler driver, allowing stable GPU DVFS on this chip;
-
-Moreover, this adds a new MediaTek DVFS Resource Collector (DVFSRC)
-driver, allowing to enable other drivers (interconnect, regulator)
-which can now communicate with the DVFSRC hardware.
-
-Last but not least, this includes some cleanups for the CMDQ Helper
-and MediaTek SVS drivers
-
-----------------------------------------------------------------
-AngeloGioacchino Del Regno (4):
-      dt-bindings: soc: mediatek: Add DVFSRC bindings for MT8183 and MT8195
-      soc: mediatek: Add MediaTek DVFS Resource Collector (DVFSRC) driver
-      soc: mediatek: mtk-cmdq: Move mask build and append to function
-      soc: mediatek: mtk-cmdq: Move cmdq_instruction init to declaration
-
-Markus Elfring (1):
-      soc: mediatek: mtk-svs: Call of_node_put(np) only once in svs_get_subsys_device()
-
-Pablo Sun (1):
-      soc: mediatek: mediatek-regulator-coupler: Support mt8188
-
- .../soc/mediatek/mediatek,mt8183-dvfsrc.yaml       |  83 ++++
- drivers/soc/mediatek/Kconfig                       |  11 +
- drivers/soc/mediatek/Makefile                      |   1 +
- drivers/soc/mediatek/mtk-cmdq-helper.c             | 230 ++++-----
- drivers/soc/mediatek/mtk-dvfsrc.c                  | 545 +++++++++++++++++++++
- drivers/soc/mediatek/mtk-regulator-coupler.c       |   1 +
- drivers/soc/mediatek/mtk-svs.c                     |   4 +-
- include/linux/soc/mediatek/dvfsrc.h                |  36 ++
- include/linux/soc/mediatek/mtk_sip_svc.h           |   3 +
- 9 files changed, 787 insertions(+), 127 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml
- create mode 100644 drivers/soc/mediatek/mtk-dvfsrc.c
- create mode 100644 include/linux/soc/mediatek/dvfsrc.h
+diff --git a/drivers/cpufreq/mediatek-cpufreq-hw.c b/drivers/cpufreq/mediatek-cpufreq-hw.c
+index 8925e096d5b9..aeb5e6304542 100644
+--- a/drivers/cpufreq/mediatek-cpufreq-hw.c
++++ b/drivers/cpufreq/mediatek-cpufreq-hw.c
+@@ -62,7 +62,7 @@ mtk_cpufreq_get_cpu_power(struct device *cpu_dev, unsigned long *uW,
+ 
+ 	policy = cpufreq_cpu_get_raw(cpu_dev->id);
+ 	if (!policy)
+-		return 0;
++		return -EINVAL;
+ 
+ 	data = policy->driver_data;
+ 
+-- 
+2.34.1
 
 
