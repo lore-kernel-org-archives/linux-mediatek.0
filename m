@@ -4,75 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D90B2D132BB
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 12:42:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D848D132BE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 12:57:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=bbWlYjiYcuefwp8MaCoji92pWxYDGQ1qGL/F2vYEiGk=; b=o6lMSuYwFzLvHPU/lxATgLs/7V
-	+pxUL4SFwiiEqxCpZHJirzVDDEFMzqsggzWLas1rn7oKkOxU09m6qtrQiB/dzidcCcjc6UQ4C2Z6g
-	Ml2AjXecfw6EiYZaH+aW55biw5KqeXhrvS41vc3eW0+sz+Be9gBgM6UTiaJXpx2uFDMo6nCAGy0Gu
-	f0OldOk/0EQdCu1BaR60tUWikX+x85ssGux7sCGY1yxr2uVz2u2c0zoHxtfw4zU1/b7xyrXbtRW/m
-	Hz8Zc636EiIwMZzTWB4gUtMG9wzYS/MM9RXph9tGvsIWZH1FuZldNXtz54xsbmAtr19ILHewimN/k
-	TvsIUh1w==;
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FUT2MUhoOe9iu2p2kd8BI2aLF+LB/mKyYJdsiPsn1AE=; b=b9e5VWdkJUEZ2xKeoijyXJaV9X
+	kmAU15TVCSHKNIRpFYPel2lLzKSZ2IoK0H0xhQbsbkCRQN/e0JSb2PTO276KTk0dl1Prw9eUlUeoA
+	qWFYOPX4BzZLJKTfCryZdj8P3c/sIYE8l+1C1zEurm+e/6qITmkaY8pxCoaUvlAMFfgS6NTyQYMCz
+	MQ15x2QzVrAH9V2K8YfXv+aYj6DHiPRa0IGcRAD1eJKbkbH4tHIjyGUabfu+iqRzRq/mwRZBa9dbp
+	MkxWj39F/WMELxLMySp/DWA+G3JXbpEZoGqDNe7dgD7ZgSwMkp46hA7RmgzOdpTRYYRYiXJ7Gp6G/
+	1xbhCqlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7wQ4-0000000Dj3w-416y;
-	Mon, 04 Nov 2024 12:42:56 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1t7wdw-0000000DlF0-1V8o;
+	Mon, 04 Nov 2024 12:57:16 +0000
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7wOS-0000000Dilg-1MTm
-	for linux-mediatek@bombadil.infradead.org;
-	Mon, 04 Nov 2024 12:41:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=bbWlYjiYcuefwp8MaCoji92pWxYDGQ1qGL/F2vYEiGk=; b=l9LXo4LbPeRLWh3Py4b8GcP+tx
-	bXXKYDB5XLhn+BIHX3/U1ovOq8Gime5ozHQI+YSkx+Z9JJs1GWxuVSdAn2uz52tLrOk7B0Lcu384G
-	FrVIivCYmH6dKPEp8+0ramB40+Dby45fx4iyhBz2cbumwCHP8pkVlZs70XFT7ofrVn6EGrIbYhQay
-	vZv34EU/Abr9ysa/A/WhnsktbRKIaZ98Wh+/VP5jT/wW4NKtykjpozsAmd8SPREMM+RkF7p6bC7At
-	lApeBq7FkhXqjIIW44GxJv3SVJiH2cyu5uV8yQzAtcRH9Y61uHvcF+uX80ggcMkagt75vxvXq2xAe
-	Oy1yfHew==;
-Received: from nyc.source.kernel.org ([147.75.193.91])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7wOP-0000000BKPd-08zS
+	id 1t7wcE-0000000Dkzz-2qNX
 	for linux-mediatek@lists.infradead.org;
-	Mon, 04 Nov 2024 12:41:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 8048BA42EF1;
-	Mon,  4 Nov 2024 12:39:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A9655C4CED2;
-	Mon,  4 Nov 2024 12:41:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730724069;
-	bh=HUZRVqiCqIrgTa00GuAmGvhav56zInoweQzJ+8ji5V4=;
-	h=From:To:Cc:Subject:Date:From;
-	b=tKWGsS9erAqZ/C1fDYLoPetAt0+dBpZyYQlmWDxjix8nF8MOd619CMpc2S3tXpYga
-	 rrOs+mLQ6hM7tk7lRXYx1sZWEbVYYWohx2LW7B2MtRiUkOaFDb9El5gACfbxrc4n//
-	 oH39A3FAsdiYa8LddiA61uttrfVi2QY6af0mVIS62egEm9KQmc6hH7SRRVfngU0CqT
-	 dEhRw8zgbBxNGk+B04WRMvc1InAju1uyUXtuT2Kaoad9lbH0nax+VQMZHERntiDsy+
-	 +Lsmy9KkfpReixwfB09FkdRYmrfrht7YY1rNrvreLaTRjuq+7r4QQx8+TUoojK2hJs
-	 PrtF1Djn1aD+w==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: David Airlie <airlied@linux.ie>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Javier Carrasco <javier.carrasco.cruz@gmail.com>
-Subject: [GIT PULL] mediatek drm next for 6.13
-Date: Mon,  4 Nov 2024 12:41:03 +0000
-Message-Id: <20241104124103.8041-1-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.34.1
+	Mon, 04 Nov 2024 12:55:32 +0000
+Received: by mail-pj1-x102d.google.com with SMTP id 98e67ed59e1d1-2e56df894d4so3243767a91.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 04 Nov 2024 04:55:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1730724929; x=1731329729; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=FUT2MUhoOe9iu2p2kd8BI2aLF+LB/mKyYJdsiPsn1AE=;
+        b=I7ds9tkDuqu4jJ5BhU0UUHPciVmyBBbcSmlILoKcylQtKTAW46Hu0X+6iloyjlhxc+
+         iPgPtJjVS8wkgsH2j3RN6XNRqWRLbq5Vp/gOWvRBpnaX9MdvdrevwJzyyw9YkU/eVMHC
+         MsbC4LtKbXpwOl7FpXhf/ApZZMa+OBCO9uYUM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730724929; x=1731329729;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=FUT2MUhoOe9iu2p2kd8BI2aLF+LB/mKyYJdsiPsn1AE=;
+        b=s3v3VCxs6jpiF1Omnli6Bo0zbcQxY9XtL0auuK55CNAmcdwVEUl6HrNvx+3N6YOfjU
+         64vPbL+r6N3w1J7Ssl5zSe6iz103xOVU6klD+DOctJv3++Yxf0cac9H14tAydyWaF8jM
+         F8AkUSWJNTHyOHSwyjRCn8EkNYTBri4LZzm9nMnJPgBMfiBOrhp97V4RUMtvjv/3NYMw
+         4LDiY18S23stiNKV7nTUqT8Jtc6TgRZPKY6RcuiYBqbEy6qAFtES5MerGosv6RpJJIYq
+         YjluTNdmAyXSjIxm4LI8CpCdn5mWhoa6VMNQgGLVcCT/BzB3XfmHXpfzHwlOuwQf05rj
+         dYyQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVTScvf61gloVa4ocOs++LpDZkBXsIpkNPaBwwexGHKRdQv2VIoxG86o+6PXED5ocntVXuRYUsJvfW05cuX/g==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy1IM+ksMGlpNv8toWhAO1OzR3MpR3mX6xxNi/iC7fWS4HAp0Xr
+	aTfqaY+g4TUA3x1Ab7R69XP7NnVrmWMaVuEbSkCJtGSqPJRWf8pGgmZ/bBU2+g==
+X-Google-Smtp-Source: AGHT+IGw2My2dH4dIXYJt5UAfh9QheTuaxvz/yW07aa/c8zRoSfhpBhW/1Yv0E1txryL8w9UJYPxAg==
+X-Received: by 2002:a17:90b:250a:b0:2e9:5e21:24f7 with SMTP id 98e67ed59e1d1-2e95e21257cmr10927134a91.38.1730724929339;
+        Mon, 04 Nov 2024 04:55:29 -0800 (PST)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:f5f8:ffa1:d9e0:6eab])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2e93daacb4dsm7534611a91.24.2024.11.04.04.55.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 04 Nov 2024 04:55:28 -0800 (PST)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ stable@vger.kernel.org
+In-Reply-To: <20241029095411.657616-1-wenst@chromium.org>
+References: <20241029095411.657616-1-wenst@chromium.org>
+Subject: Re: [PATCH] drm/bridge: it6505: Fix inverted reset polarity
+Message-Id: <173072492636.262894.11094550143215575349.b4-ty@chromium.org>
+Date: Mon, 04 Nov 2024 20:55:26 +0800
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241104_124113_318450_AAB17AA3 
-X-CRM114-Status: UNSURE (   7.66  )
+X-CRM114-CacheID: sfid-20241104_045530_785427_C8EAAF82 
+X-CRM114-Status: UNSURE (   9.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,64 +100,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dave & Daniel:
 
-This includes:
+On Tue, 29 Oct 2024 17:54:10 +0800, Chen-Yu Tsai wrote:
+> The IT6505 bridge chip has a active low reset line. Since it is a
+> "reset" and not an "enable" line, the GPIO should be asserted to
+> put it in reset and deasserted to bring it out of reset during
+> the power on sequence.
+> 
+> The polarity was inverted when the driver was first introduced, likely
+> because the device family that was targeted had an inverting level
+> shifter on the reset line.
+> 
+> [...]
 
-1. Add support for OF graphs
-2. Fix child node refcount handling and use scoped
+Applied, thanks!
 
-Regards,
-Chun-Kuang.
+[1/1] drm/bridge: it6505: Fix inverted reset polarity
+      commit: c5f3f21728b069412e8072b8b1d0a3d9d3ab0265
 
-The following changes since commit 9852d85ec9d492ebef56dc5f229416c925758edc:
+Best regards,
+-- 
+Chen-Yu Tsai <wenst@chromium.org>
 
-  Linux 6.12-rc1 (2024-09-29 15:06:19 -0700)
-
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-6.13
-
-for you to fetch changes up to fd620fc25d88a1e490eaa9f72bc31962be1b4741:
-
-  drm/mediatek: Switch to for_each_child_of_node_scoped() (2024-11-04 12:23:15 +0000)
-
-----------------------------------------------------------------
-Mediatek DRM Next for Linux 6.13
-
-1. Add support for OF graphs
-2. Fix child node refcount handling and use scoped
-
-----------------------------------------------------------------
-AngeloGioacchino Del Regno (2):
-      dt-bindings: display: mediatek: Add OF graph support for board path
-      drm/mediatek: Implement OF graphs support for display paths
-
-Javier Carrasco (2):
-      drm/mediatek: Fix child node refcount handling in early exit
-      drm/mediatek: Switch to for_each_child_of_node_scoped()
-
- .../bindings/display/mediatek/mediatek,aal.yaml    |  40 ++++
- .../bindings/display/mediatek/mediatek,ccorr.yaml  |  21 ++
- .../bindings/display/mediatek/mediatek,color.yaml  |  22 ++
- .../bindings/display/mediatek/mediatek,dither.yaml |  22 ++
- .../bindings/display/mediatek/mediatek,dpi.yaml    |  25 +-
- .../bindings/display/mediatek/mediatek,dsc.yaml    |  24 ++
- .../bindings/display/mediatek/mediatek,dsi.yaml    |  27 ++-
- .../bindings/display/mediatek/mediatek,ethdr.yaml  |  22 ++
- .../bindings/display/mediatek/mediatek,gamma.yaml  |  19 ++
- .../bindings/display/mediatek/mediatek,merge.yaml  |  23 ++
- .../bindings/display/mediatek/mediatek,od.yaml     |  22 ++
- .../bindings/display/mediatek/mediatek,ovl-2l.yaml |  22 ++
- .../bindings/display/mediatek/mediatek,ovl.yaml    |  22 ++
- .../display/mediatek/mediatek,postmask.yaml        |  21 ++
- .../bindings/display/mediatek/mediatek,rdma.yaml   |  22 ++
- .../bindings/display/mediatek/mediatek,ufoe.yaml   |  21 ++
- drivers/gpu/drm/mediatek/mtk_disp_drv.h            |   1 +
- drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c    |  43 +++-
- drivers/gpu/drm/mediatek/mtk_dpi.c                 |  21 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c             | 256 ++++++++++++++++++++-
- drivers/gpu/drm/mediatek/mtk_drm_drv.h             |   2 +-
- drivers/gpu/drm/mediatek/mtk_dsi.c                 |  14 +-
- 22 files changed, 685 insertions(+), 27 deletions(-)
 
