@@ -4,66 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD4F0D132C0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 13:21:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35AB7D132BF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 13:21:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LNU2JpZX/eVQkXUoGnr/S3jjls/U0OlNS3uYWAIOpxw=; b=g54nBdW6Wq1Ae8olYWV8pDvD6W
-	qGkRyl/kd+tv/vOA/BKI0y6SyIhWdTA2120W6Lvld1IfxqCt7FS4lHSFE9pz9YBvdQgC8Fw/ksknx
-	TWVhuZMi6yVdDekBmFbnDr3Ims1KMeuTgVrjpD0NOY9KjynNUEywqrBYRXpZVmPgk8qB3P1sDRH97
-	9iINPfhKrED9D68AgMwx4wikp/KzGVwSxXFR41h1LTxlrSidp5Fu89Frpcjn2OEoG+MZT2gI3yhCn
-	WbavFdZ28XBDS5k8tidZkxJTE9dR56H2CwNC8omv/LvzJBZGPRazcFbOp495hWA0Drx2FBR6RySqY
-	/kb3nyiA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uyuQl4If6PgIXdcSHju38Abi0PGTAXYJUn1ddS+07qs=; b=wVW9O6zqpXF1cin0+hoKzSZ2ZI
+	RFHF/CfDhs3BnWwQiR4latEizX/vYBo1PfaWHJAGMVUkrX1JRIzYDgkNfmKtuklLuktX39okU7yVW
+	dsDfncWGxb83nHBr9Cgma5/LcSTk+k8tnqZq0L1LkIYe2q4DcXK2hMnkkso+/3A03YQGbm5nrIzjr
+	UzMJ14ToRrUQOnhOBV0q68Dhfi8lKCFyjHUS3uEKSPpzawrDxapTQWAcZjJRpooxX6I6oQ7dmDWkF
+	SbmibNnP1m0Xrn1hxQ4o5hlCwQ8mCd/tYk5uwqXDA/Jc+iQLJHya0/27469BAILqitmyvCD1zm5bH
+	kyCGWGTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7x0u-0000000DpO0-3CG6;
-	Mon, 04 Nov 2024 13:21:00 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1t7x0v-0000000DpO8-0RXs;
+	Mon, 04 Nov 2024 13:21:01 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7wz9-0000000Dorv-2ZOe;
-	Mon, 04 Nov 2024 13:19:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1730726349;
-	bh=1PkamZZykZ77sMp0GI5lTUolLioO7jIOn5iTrhpoK+g=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jdqx5P3z8eit/2sxGG3RKvQuELfZyqNVAmJ7fow9TZRN9AIX0RMG/E9y64pnky2kz
-	 H9BPYhVUzu9yxTT9gD0Mmwi7kFvfSBVmHjFSYn/A5MaLdiwybosLQkNEPRVfiEvNSC
-	 R0LJ9BmPla8JVosjXDLfoPIi+Z/sODWMcmZNYyHsb5llDoYdWITCoihpyGtafxo4yD
-	 mKOA1yMsivY5G9X4wOiOcfCui9dtRPGalZn2aMYXUiuw2I+WHbyZRRmye9/QCWIS15
-	 /C7ijWHXG/e6+mPTti8Zqy+EGF+pW3lzQYumh8S8GgojldzfQr1LRVEPf1RAHYPgn8
-	 vhJFq/8IKXUlQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 642C217E3620;
-	Mon,  4 Nov 2024 14:19:09 +0100 (CET)
-Message-ID: <bbaa0c8f-9702-4252-a674-e46fb51f0a2a@collabora.com>
-Date: Mon, 4 Nov 2024 14:19:09 +0100
+	id 1t7wzO-0000000DowF-1yCi
+	for linux-mediatek@lists.infradead.org;
+	Mon, 04 Nov 2024 13:19:27 +0000
+X-UUID: 66a1092c9aaf11ef82ff63e91e7eb18c-20241104
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=uyuQl4If6PgIXdcSHju38Abi0PGTAXYJUn1ddS+07qs=;
+	b=cnvNVFxqszDb7vpYT31CDZITLuRJ8Ust555nqiTq9oA0Y73R/S3IGcRw7KRpe5n+sjGftQdd0qdFMFQOBaNa+nfTDEQGyMD9mrz7Jh0P1k0nZAQM6oU1XcL3mB3eimT8S+4KkxS4/x/LJjZrxK1v5Q/NYfCO8EdJxs7ft6pKpLw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.42,REQID:55ef87f7-959f-4d81-b425-c9b2de464698,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:26e7a948-ca13-40ea-8070-fa012edab362,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-UUID: 66a1092c9aaf11ef82ff63e91e7eb18c-20241104
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <jiande.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1434789691; Mon, 04 Nov 2024 06:19:20 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 4 Nov 2024 05:19:17 -0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 4 Nov 2024 21:19:17 +0800
+From: Jiande Lu <jiande.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Chris Lu <chris.lu@mediatek.com>,
+	Deren Wu <deren.Wu@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>, Steve
+ Lee <steve.lee@mediatek.com>, linux-bluetooth
+	<linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Jiande Lu <jiande.lu@mediatek.com>
+Subject: [PATCH] Bluetooth: btusb: Add new HWIDs for MT7925
+Date: Mon, 4 Nov 2024 21:19:04 +0800
+Message-ID: <20241104131904.30447-1-jiande.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/4] arm64: dts: mediatek: mt8183-kukui-jacuzzi: Drop
- pp3300_panel voltage settings
-To: Chen-Yu Tsai <wenst@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20241030070224.1006331-1-wenst@chromium.org>
- <20241030070224.1006331-2-wenst@chromium.org>
- <CAGXv+5HVy41qee6kwVUeLV_DfA0=wk2X77kv81rBKAZDGE6mww@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAGXv+5HVy41qee6kwVUeLV_DfA0=wk2X77kv81rBKAZDGE6mww@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241104_051911_831516_D9325035 
-X-CRM114-Status: GOOD (  18.47  )
+X-CRM114-CacheID: sfid-20241104_051926_570064_5B1C3EBF 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,69 +88,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/11/24 14:00, Chen-Yu Tsai ha scritto:
-> On Wed, Oct 30, 2024 at 3:02 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
->>
->> The pp3300_panel fixed regulator is just a load switch. It does not have
->> any regulating capabilities. Thus having voltage constraints on it is
->> wrong.
->>
->> Remove the voltage constraints.
->>
->> Fixes: cabc71b08eb5 ("arm64: dts: mt8183: Add kukui-jacuzzi-damu board")
->> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> 
-> I see that the other three patches were merged and included in the pull
-> request, but not this one. Were there any concerns?
-> 
+Add below HWIDs for MediaTek MT7925 USB Bluetooth chip.
+VID 0x0489, PID 0xe14f
+VID 0x0489, PID 0xe150
+VID 0x0489, PID 0xe151
 
-Sorry I forgot to actually provide an explanation for that - yes, I do have some
-comment about this one.
+Patch has been tested successfully and controller is recognized
+device pair successfully.
 
-Despite this being a load switch, it's still switching power from regulator A to
-target device X, so this is technically still providing 3.3V to device X.
+MT7925 module bring up message as below.
+Bluetooth: Core ver 2.22
+Bluetooth: HCI device and connection manager initialized
+Bluetooth: HCI socket layer initialized
+Bluetooth: L2CAP socket layer initialized
+Bluetooth: SCO socket layer initialized
+Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20240816133202
+Bluetooth: hci0: Device setup in 286558 usecs
+Bluetooth: hci0: HCI Enhanced Setup Synchronous
+Connection command is advertised, but not supported.
+Bluetooth: hci0: AOSP extensions version v1.00
+Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+Bluetooth: BNEP filters: protocol multicast
+Bluetooth: BNEP socket layer initialized
+Bluetooth: MGMT ver 1.22
+Bluetooth: RFCOMM TTY layer initialized
+Bluetooth: RFCOMM socket layer initialized
+Bluetooth: RFCOMM ver 1.11
 
-Think about how a "regular" full-fledged regulator works: you can (sometimes) set
-a voltage, and then you can ENABLE the VOUT for said regulator (/rail): this kind
-of "load switch" does exactly the same as the ENABLE switch for a full-fledged
-regulator.
+Signed-off-by: Jiande Lu <jiande.lu@mediatek.com>
+---
+ drivers/bluetooth/btusb.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-So, this is switching on and off a power rail that is derived from a source rail,
-practically creating... well, a "new" rail, with...
-
-  VIN=somewhere-3.3v,
-  VOUT=somewhere-still-3.3v
-
-Any objections/doubts/etc? :-)
-
-P.S.: I'm writing fast, sorry if anything appears unclear, feel free to shoot more
-       questions in case :-)
-
-Cheers,
-Angelo
-
-> 
-> ChenYu
-> 
->> ---
->>   arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi | 2 --
->>   1 file changed, 2 deletions(-)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
->> index 783c333107bc..7bbafe926558 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
->> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
->> @@ -35,8 +35,6 @@ pp1800_mipibrdg: pp1800-mipibrdg {
->>          pp3300_panel: pp3300-panel {
->>                  compatible = "regulator-fixed";
->>                  regulator-name = "pp3300_panel";
->> -               regulator-min-microvolt = <3300000>;
->> -               regulator-max-microvolt = <3300000>;
->>                  pinctrl-names = "default";
->>                  pinctrl-0 = <&pp3300_panel_pins>;
->>
->> --
->> 2.47.0.163.g1226f6d8fa-goog
->>
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 6dc5a7e76558..77b8500f8e9b 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -658,6 +658,12 @@ static const struct usb_device_id quirks_table[] = {
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x0489, 0xe139), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x0489, 0xe14f), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x0489, 0xe150), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x0489, 0xe151), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x13d3, 0x3602), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x13d3, 0x3603), .driver_info = BTUSB_MEDIATEK |
+-- 
+2.45.2
 
 
