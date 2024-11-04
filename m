@@ -4,58 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46F48D132C0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 13:16:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD4F0D132C0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 13:21:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FUfVjhnhfs7U9Y5jmTlGSXQXztb0HinmxH0nNDtVtTI=; b=up3iU+LR+BB3Wb
-	vB0E8fC8WsIp1h9fhLs5H6abdn9G6yYniXWCswN8+0QzK5kz6H206DOfTO5Z63ijVFUBjqfTNjxqo
-	IWg1wKwYOytF+jqfwg0gYrKtJz1TUIzcLEAPI6Fph+pOi1UJzQYWuyJmhRipvuh/0B82lfDfmLXvF
-	deqCi6OQgtlfc7AZWAzK4yI7wds2GZ+NiV+CVi4DgH+meD3UN+adlKnRCWRJNUdH1PQHavCXqaoUR
-	c3hdomXyGohMbFFcyKPU7eQBSLArSgOVVtplXkdp62tBOFWB6GRa403egks0V8d8APVioN4nWgYXV
-	P17jCNzWLfBGaI49IszQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LNU2JpZX/eVQkXUoGnr/S3jjls/U0OlNS3uYWAIOpxw=; b=g54nBdW6Wq1Ae8olYWV8pDvD6W
+	qGkRyl/kd+tv/vOA/BKI0y6SyIhWdTA2120W6Lvld1IfxqCt7FS4lHSFE9pz9YBvdQgC8Fw/ksknx
+	TWVhuZMi6yVdDekBmFbnDr3Ims1KMeuTgVrjpD0NOY9KjynNUEywqrBYRXpZVmPgk8qB3P1sDRH97
+	9iINPfhKrED9D68AgMwx4wikp/KzGVwSxXFR41h1LTxlrSidp5Fu89Frpcjn2OEoG+MZT2gI3yhCn
+	WbavFdZ28XBDS5k8tidZkxJTE9dR56H2CwNC8omv/LvzJBZGPRazcFbOp495hWA0Drx2FBR6RySqY
+	/kb3nyiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7wwE-0000000DoDM-00ke;
-	Mon, 04 Nov 2024 13:16:10 +0000
+	id 1t7x0u-0000000DpO0-3CG6;
+	Mon, 04 Nov 2024 13:21:00 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7vb3-0000000DbC4-3n93;
-	Mon, 04 Nov 2024 11:50:15 +0000
+	id 1t7wz9-0000000Dorv-2ZOe;
+	Mon, 04 Nov 2024 13:19:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1730721012;
-	bh=nj/c1dA8VqkoUIukvT2VQyD6AGQGr8wLOJTvFTd9PVk=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=b9dhOiFLDvAr4phSZu89cBgulvoYky2FpUx0AgHB+pchjTFQmc5nY6amU+KeicdYk
-	 H41oKSWZ7M8o25NRO9xwHueultYm6K4vW+i5eOInbOCAQf4d7ErpTWcUqoS5W4Yoir
-	 oNomBqtpxOqGC34t/JL+SxwY5DJNUxslsvq9v1W40jioEroDA7Xq/E/nyXYrma4psr
-	 xGGN7QK9AUslY7vFXrpBcCIrOdIvwa7wBoooIubphmJEjO+ensbOG73ZVD8X6//B4n
-	 bxDjWyU6OhKQiiYffJyFe93MnrvEG9Oi+l45H+27G39U8xaf7zt6T6bsR/XcIX4Yg2
-	 Fg5ccoehzA4lQ==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1730726349;
+	bh=1PkamZZykZ77sMp0GI5lTUolLioO7jIOn5iTrhpoK+g=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=jdqx5P3z8eit/2sxGG3RKvQuELfZyqNVAmJ7fow9TZRN9AIX0RMG/E9y64pnky2kz
+	 H9BPYhVUzu9yxTT9gD0Mmwi7kFvfSBVmHjFSYn/A5MaLdiwybosLQkNEPRVfiEvNSC
+	 R0LJ9BmPla8JVosjXDLfoPIi+Z/sODWMcmZNYyHsb5llDoYdWITCoihpyGtafxo4yD
+	 mKOA1yMsivY5G9X4wOiOcfCui9dtRPGalZn2aMYXUiuw2I+WHbyZRRmye9/QCWIS15
+	 /C7ijWHXG/e6+mPTti8Zqy+EGF+pW3lzQYumh8S8GgojldzfQr1LRVEPf1RAHYPgn8
+	 vhJFq/8IKXUlQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E4C0D17E3613;
-	Mon,  4 Nov 2024 12:50:11 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: linux-pci@vger.kernel.org
-Subject: [PATCH v4 2/2] PCI: mediatek-gen3: Add support for restricting link width
-Date: Mon,  4 Nov 2024 12:49:35 +0100
-Message-ID: <20241104114935.172908-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.46.1
-In-Reply-To: <20241104114935.172908-1-angelogioacchino.delregno@collabora.com>
-References: <20241104114935.172908-1-angelogioacchino.delregno@collabora.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 642C217E3620;
+	Mon,  4 Nov 2024 14:19:09 +0100 (CET)
+Message-ID: <bbaa0c8f-9702-4252-a674-e46fb51f0a2a@collabora.com>
+Date: Mon, 4 Nov 2024 14:19:09 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/4] arm64: dts: mediatek: mt8183-kukui-jacuzzi: Drop
+ pp3300_panel voltage settings
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20241030070224.1006331-1-wenst@chromium.org>
+ <20241030070224.1006331-2-wenst@chromium.org>
+ <CAGXv+5HVy41qee6kwVUeLV_DfA0=wk2X77kv81rBKAZDGE6mww@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <CAGXv+5HVy41qee6kwVUeLV_DfA0=wk2X77kv81rBKAZDGE6mww@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241104_035014_352993_99F15464 
-X-CRM114-Status: GOOD (  14.44  )
+X-CRM114-CacheID: sfid-20241104_051911_831516_D9325035 
+X-CRM114-Status: GOOD (  18.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,91 +75,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kw@linux.com, ryder.lee@mediatek.com, robh@kernel.org, lpieralisi@kernel.org, linux-kernel@vger.kernel.org, jianjun.wang@mediatek.com, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, bhelgaas@google.com, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for restricting the port's link width by specifying
-the num-lanes devicetree property in the PCIe node.
+Il 04/11/24 14:00, Chen-Yu Tsai ha scritto:
+> On Wed, Oct 30, 2024 at 3:02 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
+>>
+>> The pp3300_panel fixed regulator is just a load switch. It does not have
+>> any regulating capabilities. Thus having voltage constraints on it is
+>> wrong.
+>>
+>> Remove the voltage constraints.
+>>
+>> Fixes: cabc71b08eb5 ("arm64: dts: mt8183: Add kukui-jacuzzi-damu board")
+>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> 
+> I see that the other three patches were merged and included in the pull
+> request, but not this one. Were there any concerns?
+> 
 
-The setting is done in the GEN_SETTINGS register (in the driver
-named as PCIE_SETTING_REG), where each set bit in [11:8] activates
-a set of lanes (from bits 11 to 8 respectively, x16/x8/x4/x2).
+Sorry I forgot to actually provide an explanation for that - yes, I do have some
+comment about this one.
 
-Reviewed-by: Fei Shao <fshao@chromium.org>
-Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/pci/controller/pcie-mediatek-gen3.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+Despite this being a load switch, it's still switching power from regulator A to
+target device X, so this is technically still providing 3.3V to device X.
 
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index c27beef75079..fa7f36a0284d 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -32,6 +32,7 @@
- #define PCIE_BASE_CFG_SPEED		GENMASK(15, 8)
- 
- #define PCIE_SETTING_REG		0x80
-+#define PCIE_SETTING_LINK_WIDTH		GENMASK(11, 8)
- #define PCIE_SETTING_GEN_SUPPORT	GENMASK(14, 12)
- #define PCIE_PCI_IDS_1			0x9c
- #define PCI_CLASS(class)		(class << 8)
-@@ -168,6 +169,7 @@ struct mtk_msi_set {
-  * @clks: PCIe clocks
-  * @num_clks: PCIe clocks count for this port
-  * @max_link_speed: Maximum link speed (PCIe Gen) for this port
-+ * @num_lanes: Number of PCIe lanes for this port
-  * @irq: PCIe controller interrupt number
-  * @saved_irq_state: IRQ enable state saved at suspend time
-  * @irq_lock: lock protecting IRQ register access
-@@ -189,6 +191,7 @@ struct mtk_gen3_pcie {
- 	struct clk_bulk_data *clks;
- 	int num_clks;
- 	u8 max_link_speed;
-+	u8 num_lanes;
- 
- 	int irq;
- 	u32 saved_irq_state;
-@@ -401,6 +404,14 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
- 			val |= FIELD_PREP(PCIE_SETTING_GEN_SUPPORT,
- 					  GENMASK(pcie->max_link_speed - 2, 0));
- 	}
-+	if (pcie->num_lanes) {
-+		val &= ~PCIE_SETTING_LINK_WIDTH;
-+
-+		/* Zero means one lane, each bit activates x2/x4/x8/x16 */
-+		if (pcie->num_lanes > 1)
-+			val |= FIELD_PREP(PCIE_SETTING_LINK_WIDTH,
-+					  GENMASK(fls(pcie->num_lanes >> 2), 0));
-+	};
- 	writel_relaxed(val, pcie->base + PCIE_SETTING_REG);
- 
- 	/* Set Link Control 2 (LNKCTL2) speed restriction, if any */
-@@ -838,6 +849,7 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
- 	struct device *dev = pcie->dev;
- 	struct platform_device *pdev = to_platform_device(dev);
- 	struct resource *regs;
-+	u32 num_lanes;
- 
- 	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "pcie-mac");
- 	if (!regs)
-@@ -883,6 +895,14 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
- 		return pcie->num_clks;
- 	}
- 
-+	ret = of_property_read_u32(dev->of_node, "num-lanes", &num_lanes);
-+	if (ret == 0) {
-+		if (num_lanes == 0 || num_lanes > 16 || (num_lanes != 1 && num_lanes % 2))
-+			dev_warn(dev, "Invalid num-lanes, using controller defaults\n");
-+		else
-+			pcie->num_lanes = num_lanes;
-+	}
-+
- 	return 0;
- }
- 
--- 
-2.46.1
+Think about how a "regular" full-fledged regulator works: you can (sometimes) set
+a voltage, and then you can ENABLE the VOUT for said regulator (/rail): this kind
+of "load switch" does exactly the same as the ENABLE switch for a full-fledged
+regulator.
+
+So, this is switching on and off a power rail that is derived from a source rail,
+practically creating... well, a "new" rail, with...
+
+  VIN=somewhere-3.3v,
+  VOUT=somewhere-still-3.3v
+
+Any objections/doubts/etc? :-)
+
+P.S.: I'm writing fast, sorry if anything appears unclear, feel free to shoot more
+       questions in case :-)
+
+Cheers,
+Angelo
+
+> 
+> ChenYu
+> 
+>> ---
+>>   arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi | 2 --
+>>   1 file changed, 2 deletions(-)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+>> index 783c333107bc..7bbafe926558 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+>> @@ -35,8 +35,6 @@ pp1800_mipibrdg: pp1800-mipibrdg {
+>>          pp3300_panel: pp3300-panel {
+>>                  compatible = "regulator-fixed";
+>>                  regulator-name = "pp3300_panel";
+>> -               regulator-min-microvolt = <3300000>;
+>> -               regulator-max-microvolt = <3300000>;
+>>                  pinctrl-names = "default";
+>>                  pinctrl-0 = <&pp3300_panel_pins>;
+>>
+>> --
+>> 2.47.0.163.g1226f6d8fa-goog
+>>
 
 
