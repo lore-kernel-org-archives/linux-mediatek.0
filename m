@@ -4,76 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35AB7D132BF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 13:21:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C981D132C1
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 13:21:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=uyuQl4If6PgIXdcSHju38Abi0PGTAXYJUn1ddS+07qs=; b=wVW9O6zqpXF1cin0+hoKzSZ2ZI
-	RFHF/CfDhs3BnWwQiR4latEizX/vYBo1PfaWHJAGMVUkrX1JRIzYDgkNfmKtuklLuktX39okU7yVW
-	dsDfncWGxb83nHBr9Cgma5/LcSTk+k8tnqZq0L1LkIYe2q4DcXK2hMnkkso+/3A03YQGbm5nrIzjr
-	UzMJ14ToRrUQOnhOBV0q68Dhfi8lKCFyjHUS3uEKSPpzawrDxapTQWAcZjJRpooxX6I6oQ7dmDWkF
-	SbmibNnP1m0Xrn1hxQ4o5hlCwQ8mCd/tYk5uwqXDA/Jc+iQLJHya0/27469BAILqitmyvCD1zm5bH
-	kyCGWGTg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bAYbSq5mlU7adPkgvorpMNMhcx0QaHzk2bxUeWeRhik=; b=jLrafxBFvCaLdb6OQgBgOVMF7l
+	A8WZ+Y8uTdr3q6y+OsDoCB6tYFcyegUgRUWUk1c5EidX8b0jFlOyB1EUR4+FLIMFeTsll7MbI/Izb
+	tMu3nczBZpQDUINaJs3K8CTRv5IG48sKJeL5xV0RF1DvZ+uruwZe4JSfDZzlZPvWNxDua7R5TkOxr
+	74ASTTAX2z4+rf7FayxXXWcrOf5XiRBga1CfbKppas65P/GEnGmmonXvI+ghzEdlTREwOGkNhy6H0
+	nASgEBgfTKIiX34hey7v8Lwgy5m5VJLGIHEQY9BaHih4D+YRWdj6b20V+hm7N98hLD26SEroe3yIw
+	XhU3aUPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7x0v-0000000DpO8-0RXs;
-	Mon, 04 Nov 2024 13:21:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1t7x0w-0000000DpPs-30aS;
+	Mon, 04 Nov 2024 13:21:02 +0000
+Received: from mail-pl1-f175.google.com ([209.85.214.175])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7wzO-0000000DowF-1yCi
-	for linux-mediatek@lists.infradead.org;
-	Mon, 04 Nov 2024 13:19:27 +0000
-X-UUID: 66a1092c9aaf11ef82ff63e91e7eb18c-20241104
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=uyuQl4If6PgIXdcSHju38Abi0PGTAXYJUn1ddS+07qs=;
-	b=cnvNVFxqszDb7vpYT31CDZITLuRJ8Ust555nqiTq9oA0Y73R/S3IGcRw7KRpe5n+sjGftQdd0qdFMFQOBaNa+nfTDEQGyMD9mrz7Jh0P1k0nZAQM6oU1XcL3mB3eimT8S+4KkxS4/x/LJjZrxK1v5Q/NYfCO8EdJxs7ft6pKpLw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.42,REQID:55ef87f7-959f-4d81-b425-c9b2de464698,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:b0fcdc3,CLOUDID:26e7a948-ca13-40ea-8070-fa012edab362,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
-X-UUID: 66a1092c9aaf11ef82ff63e91e7eb18c-20241104
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <jiande.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1434789691; Mon, 04 Nov 2024 06:19:20 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Mon, 4 Nov 2024 05:19:17 -0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Mon, 4 Nov 2024 21:19:17 +0800
-From: Jiande Lu <jiande.lu@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Chris Lu <chris.lu@mediatek.com>,
-	Deren Wu <deren.Wu@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>, Steve
- Lee <steve.lee@mediatek.com>, linux-bluetooth
-	<linux-bluetooth@vger.kernel.org>, linux-kernel
-	<linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Jiande Lu <jiande.lu@mediatek.com>
-Subject: [PATCH] Bluetooth: btusb: Add new HWIDs for MT7925
-Date: Mon, 4 Nov 2024 21:19:04 +0800
-Message-ID: <20241104131904.30447-1-jiande.lu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1t7x0j-0000000DpKV-2oCz;
+	Mon, 04 Nov 2024 13:20:50 +0000
+Received: by mail-pl1-f175.google.com with SMTP id d9443c01a7336-20ce5e3b116so32012075ad.1;
+        Mon, 04 Nov 2024 05:20:49 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730726448; x=1731331248;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=bAYbSq5mlU7adPkgvorpMNMhcx0QaHzk2bxUeWeRhik=;
+        b=Aa2mwizsoTlzMAda8+G78Xsc9XdttTuIR0K1vWYk71BEefwcBlwbt+i/DJJkhDEgW1
+         L//c0SxKeqnZ0SHPNZbej/YvOQEK4DkJu++1dUURsFh8P5mNMyeQh/qwKqrV079fmQkC
+         2na7KiP4X8W8e1MJBxw+lUVVOQUw8iLuiXcPwqiAhl4gCyrAYC7t9PbA9eWH9SWUWO2+
+         cKvMipw2EJh9MAoBzD69iJwH01/+nRHNMpHB8+4QCK1WLftyswVCbER7CvjXANSJnwhI
+         eGDqRWbMoN6wyXfen1xcM3kp69B73ckCSfmHvDTnuybkBX+HbmCeVGt/uNllkt8ZqB2u
+         SLbQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWkyzp7iiBt4kRAruqkE4d5ts4MWHwpyQDRK8sxa0gmTfQcRwggDJqEAMu83vRdKRuKhp1OaCCvEHfDZXhvOpYj@lists.infradead.org, AJvYcCXciTH+MHHuw51CxHRr1rxgXoj3hA9OQlcTIiXBB/iB0pdnO0k7gBGYa2/AycCGJ0f3PUOoomTt7PhGeYdX3RA=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyioPeYI5Fxpbs18KDVc4I8fdWiGB/BaO+hgIGYgB9jeupUFSFV
+	PB1fSaaPtFSjITn2N7bfjf2aQTXEE6E9j4F4Ss4YwpmXg19rY9a28O5cx9z1
+X-Google-Smtp-Source: AGHT+IFPbiyTwQNpyLarXOasgjJJbddopeoCOOsJvaCh85ieSNwN3SrqIlcdYNIvZeGmYFnzFxul9w==
+X-Received: by 2002:a17:902:ce8c:b0:20c:e262:2560 with SMTP id d9443c01a7336-2111b0078bdmr151908315ad.50.1730726448397;
+        Mon, 04 Nov 2024 05:20:48 -0800 (PST)
+Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2e93db18128sm7460203a91.36.2024.11.04.05.20.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 04 Nov 2024 05:20:47 -0800 (PST)
+Date: Mon, 4 Nov 2024 22:20:46 +0900
+From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v4 2/2] PCI: mediatek-gen3: Add support for restricting
+ link width
+Message-ID: <20241104132046.GA2504924@rocinante>
+References: <20241104114935.172908-1-angelogioacchino.delregno@collabora.com>
+ <20241104114935.172908-3-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241104114935.172908-3-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241104_051926_570064_5B1C3EBF 
-X-CRM114-Status: UNSURE (   9.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241104_052049_729098_1DFC1F74 
+X-CRM114-Status: GOOD (  11.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,59 +76,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: robh@kernel.org, ryder.lee@mediatek.com, linux-pci@vger.kernel.org, lpieralisi@kernel.org, linux-kernel@vger.kernel.org, jianjun.wang@mediatek.com, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, bhelgaas@google.com, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add below HWIDs for MediaTek MT7925 USB Bluetooth chip.
-VID 0x0489, PID 0xe14f
-VID 0x0489, PID 0xe150
-VID 0x0489, PID 0xe151
+Hello,
 
-Patch has been tested successfully and controller is recognized
-device pair successfully.
+> +	ret = of_property_read_u32(dev->of_node, "num-lanes", &num_lanes);
+> +	if (ret == 0) {
+> +		if (num_lanes == 0 || num_lanes > 16 || (num_lanes != 1 && num_lanes % 2))
+> +			dev_warn(dev, "Invalid num-lanes, using controller defaults\n");
+> +		else
+> +			pcie->num_lanes = num_lanes;
+> +	}
+> +
+>  	return 0;
+>  }
 
-MT7925 module bring up message as below.
-Bluetooth: Core ver 2.22
-Bluetooth: HCI device and connection manager initialized
-Bluetooth: HCI socket layer initialized
-Bluetooth: L2CAP socket layer initialized
-Bluetooth: SCO socket layer initialized
-Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20240816133202
-Bluetooth: hci0: Device setup in 286558 usecs
-Bluetooth: hci0: HCI Enhanced Setup Synchronous
-Connection command is advertised, but not supported.
-Bluetooth: hci0: AOSP extensions version v1.00
-Bluetooth: BNEP (Ethernet Emulation) ver 1.3
-Bluetooth: BNEP filters: protocol multicast
-Bluetooth: BNEP socket layer initialized
-Bluetooth: MGMT ver 1.22
-Bluetooth: RFCOMM TTY layer initialized
-Bluetooth: RFCOMM socket layer initialized
-Bluetooth: RFCOMM ver 1.11
+If you were to handle non-zero return value as an error here, perhaps the
+property has not been set, then we could reduce the indentation here.
 
-Signed-off-by: Jiande Lu <jiande.lu@mediatek.com>
----
- drivers/bluetooth/btusb.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+Something like this, perhaps?
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 6dc5a7e76558..77b8500f8e9b 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -658,6 +658,12 @@ static const struct usb_device_id quirks_table[] = {
- 						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x0489, 0xe139), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x0489, 0xe14f), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x0489, 0xe150), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x0489, 0xe151), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x13d3, 0x3602), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x13d3, 0x3603), .driver_info = BTUSB_MEDIATEK |
--- 
-2.45.2
+  ret = of_property_read_u32(dev->of_node, "num-lanes", &num_lanes);
+  if (ret) {
+          dev_err(dev, "Failed to read num-lanes: %d\n", ret);
+          return ret;
+  }
+  
+  if (!num_lanes || num_lanes > 16 || (num_lanes != 1 && num_lanes % 2))
+  	dev_warn(dev, "Invalid num-lanes, using controller defaults\n");
+  else
+  	pcie->num_lanes = num_lanes;
 
+Does this make sense here?  Thoughts?
+
+	Krzysztof
 
