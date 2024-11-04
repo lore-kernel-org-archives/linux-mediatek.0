@@ -4,64 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65C18D132AA
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 10:45:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46D8FD132B2
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 11:31:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z2IRjvdHUlI4leV+2qgsEkivhyX3eTg7nzED/eiQ5BE=; b=UKDyr3rs+o1XIW
-	pjCxRwzHptRlFsdHPuWlTzs+nRrhka8aS1M02Yf7wJSPF7molT8dbtJnEEShmNMLfyttyaVc5R9mo
-	yfhzfxINRlj3tklCKYQ4zCwxgzS1XdevgwHq7H+sVjbDW9iU3wKm6teFV0+A029v5mdPk4LwiMDvz
-	YujdJHqiiEe8Xxc2srcA4kqtGTjstZsrbeBkXwYV63sX3A380tw6BmuHT79l9Mmt3KFzTuPMp4w8w
-	BBRYTGXG278mPQNz9pyivAIeAOj6K3qA75iucfXIgm26AKhUsCfdH+daCxtD9lJKbfaRo6OyGZFFe
-	C6wtB5AW8qbDPXxSD+VA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lNJzNaryy4kHU8DxIjF6Clb4qY33tjCs9DMZRXUgfDk=; b=JPPbufzFfxg3UxO+mYOXyXRb3P
+	NgAi2juraFtsXCBFlqIchPqoiNjzABx81ErrWYN/42lF4PfxBC3BzLx1LkqZVxdHzP41YrjPZgrIT
+	9VmdrOq5PAyn0dpkiO34LNfRph4ATACrMszM06qpnc2BHdkjp/qE0Xfyw7bNzQ785bZjWtb0DcQga
+	yh2d5dikOw+lhuKFFHaO2vt3jrzHP0D0sBQ10/JkE0dpq5ch5u+NkEs6xOF9rhhKarfL8Tdef+zlz
+	b5oxMrYMH1fxJaxe8g2rPYDslgJH4Sz9s2Yl9EkdFEKFh949DmzRuQ01P9sq+JgyYZ/L4MzVYx6Ql
+	nffyIr8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7uab-0000000DM3K-0QtM;
-	Mon, 04 Nov 2024 10:45:41 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1t7vIb-0000000DWwj-1ynm;
+	Mon, 04 Nov 2024 11:31:09 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7uYt-0000000DLoQ-0XBH;
-	Mon, 04 Nov 2024 10:43:56 +0000
+	id 1t7uAd-0000000DIU7-45t1;
+	Mon, 04 Nov 2024 10:18:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1730717033;
-	bh=jSAdqX1Ad8ImwxDLwbjTUxB6CFLUWZ3Ps8wu2h3Cl7s=;
+	s=mail; t=1730715530;
+	bh=/BqvSMpzIqUrh5h8PydNqYZk+71Ku8Hj2PODCROFwpI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SpaJntKC9FuJVx0pEuryCi2LC8GpnietV2/bSAJXucHXphnfb2OJZqdM0liwOWWFg
-	 cncW2y312i2LFTQCZCLwFAt5gn9Y/SHw64xMYrtdg4IWs+Z3/B01/rf4kNHOY+QmsC
-	 lO31XX9KjRGhQI9IoARW95qZ++THuNKj/BMQerbmLZm+wLr5PaPUFBTyB43yKHKOPt
-	 Rhpjdg+/zmPvaXZVyk7RAf8JEByaeA2Txrc/xATxLoHKzYpYrO2CIA+P0te/6szCpM
-	 dU8XPyqVJGBoc89OcICgJ7k6oFpY/JUk4NV6anlr5CgKEi8LNyvs1yjlPV3HTOOpr/
-	 xq2ybN6LyVQsA==
+	b=CzWRbvj8/pyD1ZMGCxhxWd7tLZTkAJdm6ZqhdISZcqc3Of8hl7ClnfCJ9uNK29czu
+	 8qjJMjbf5L1ZAhAoNZhFfL4kdMsaSg9XYJfqUABwQgaFVEG+buPWl+uSMrhcDucnC6
+	 40Pwfvei/3WemTpOZRCRDi5GAo797qNEvZbbmNK2z1plwGdxckWhjdGvKeCL2/NrbR
+	 npqhZAEk5SIfyr4ksowGlfrFu9YBIvHaQnNNdjM81FCfLBf/QIg9GZBoLxaH29gpdg
+	 Yf8V060wqDVEK0istqFXnnYmQmJbF6pncJ9H/QfhC+m0LrITeVLX/LiYYc35E3RNFt
+	 drkQCwiPEF9KQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DEB3917E35D3;
-	Mon,  4 Nov 2024 11:43:52 +0100 (CET)
-Message-ID: <9351c903-8141-4721-a352-776215afbfa1@collabora.com>
-Date: Mon, 4 Nov 2024 11:43:52 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4C1D017E1541;
+	Mon,  4 Nov 2024 11:18:49 +0100 (CET)
+Message-ID: <9a1ce320-e1ce-4d2f-a8d1-7680155ef71f@collabora.com>
+Date: Mon, 4 Nov 2024 11:18:48 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/2] PCI: mediatek-gen3: Add support for restricting
- link width
-To: =?UTF-8?B?Smlhbmp1biBXYW5nICjnjovlu7rlhpsp?= <Jianjun.Wang@mediatek.com>,
- "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>
-References: <20240918081307.51264-1-angelogioacchino.delregno@collabora.com>
- <20240918081307.51264-3-angelogioacchino.delregno@collabora.com>
- <9e56fbe0b1a388b4e0da20cca53e157f51288916.camel@mediatek.com>
+Subject: Re: [PATCH 0/4] net: stmmac: dwmac-mediatek: Fix inverted logic for
+ mediatek,mac-wol
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Biao Huang <biao.huang@mediatek.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>
+Cc: kernel@collabora.com, netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
+References: <20241101-mediatek-mac-wol-noninverted-v1-0-75b81808717a@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <9e56fbe0b1a388b4e0da20cca53e157f51288916.camel@mediatek.com>
+In-Reply-To: <20241101-mediatek-mac-wol-noninverted-v1-0-75b81808717a@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241104_024355_349750_1354FFAE 
-X-CRM114-Status: GOOD (  24.70  )
+X-CRM114-CacheID: sfid-20241104_021852_210097_354FDD2E 
+X-CRM114-Status: GOOD (  18.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,142 +82,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "robh@kernel.org" <robh@kernel.org>, Ryder Lee <Ryder.Lee@mediatek.com>, "kw@linux.com" <kw@linux.com>, "lpieralisi@kernel.org" <lpieralisi@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "bhelgaas@google.com" <bhelgaas@google.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "kernel@collabora.com" <kernel@collabora.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/11/24 09:56, Jianjun Wang (王建军) ha scritto:
-> Hi Angelo,
-> 
-> Thanks for your patch.
-> 
-> On Wed, 2024-09-18 at 10:13 +0200, AngeloGioacchino Del Regno wrote:
->> Add support for restricting the port's link width by specifying
->> the num-lanes devicetree property in the PCIe node.
->>
->> The setting is done in the GEN_SETTINGS register (in the driver
->> named as PCIE_SETTING_REG), where each set bit in [11:8] activates
->> a set of lanes (from bits 11 to 8 respectively, x16/x8/x4/x2).
->>
->> Signed-off-by: AngeloGioacchino Del Regno <
->> angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/pci/controller/pcie-mediatek-gen3.c | 20
->> ++++++++++++++++++++
->>   1 file changed, 20 insertions(+)
->>
->> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c
->> b/drivers/pci/controller/pcie-mediatek-gen3.c
->> index 8d4b045633da..8dd2e5135b01 100644
->> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
->> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
->> @@ -32,6 +32,7 @@
->>   #define PCIE_BASE_CFG_SPEED		GENMASK(15, 8)
->>   
->>   #define PCIE_SETTING_REG		0x80
->> +#define PCIE_SETTING_LINK_WIDTH		GENMASK(11, 8)
->>   #define PCIE_SETTING_GEN_SUPPORT	GENMASK(14, 12)
->>   #define PCIE_PCI_IDS_1			0x9c
->>   #define PCI_CLASS(class)		(class << 8)
->> @@ -168,6 +169,7 @@ struct mtk_msi_set {
->>    * @clks: PCIe clocks
->>    * @num_clks: PCIe clocks count for this port
->>    * @max_link_speed: Maximum link speed (PCIe Gen) for this port
->> + * @num_lanes: Number of PCIe lanes for this port
->>    * @irq: PCIe controller interrupt number
->>    * @saved_irq_state: IRQ enable state saved at suspend time
->>    * @irq_lock: lock protecting IRQ register access
->> @@ -189,6 +191,7 @@ struct mtk_gen3_pcie {
->>   	struct clk_bulk_data *clks;
->>   	int num_clks;
->>   	u8 max_link_speed;
->> +	u8 num_lanes;
->>   
->>   	int irq;
->>   	u32 saved_irq_state;
->> @@ -401,6 +404,14 @@ static int mtk_pcie_startup_port(struct
->> mtk_gen3_pcie *pcie)
->>   			val |= FIELD_PREP(PCIE_SETTING_GEN_SUPPORT,
->>   					  GENMASK(pcie->max_link_speed
->> - 2, 0));
->>   	}
->> +	if (pcie->num_lanes) {
->> +		val &= ~PCIE_SETTING_LINK_WIDTH;
->> +
->> +		/* Zero means one lane, each bit activates x2/x4/x8/x16
->> */
->> +		if (pcie->num_lanes > 1)
->> +			val |= FIELD_PREP(PCIE_SETTING_LINK_WIDTH,
->> +					  GENMASK(pcie->num_lanes >> 1,
->> 0));
-> 
-> It should be GENMASK(fls(pcie->num_lanes) - 2, 0).
+Il 01/11/24 16:20, Nícolas F. R. A. Prado ha scritto:
+> This series fixes the inverted handling of the mediatek,mac-wol DT
+> property while keeping backward compatibility. It does so by introducing
+> a new property on patch 1 and updating the driver to handle it on patch
+> 2. Patch 3 adds this property on the Genio 700 EVK DT, where this issue
+> was noticed, to get WOL working on that platform. Patch 4 adds the new
+> property on all DTs with the MediaTek DWMAC ethernet node enabled
+> and inverts the presence of mediatek,mac-wol to maintain the
+> current behavior and have it match the description in the binding.
 > 
 
-You're right in that there's a mistake in that one, and I see it now,
-but I don't get why this should be "fls(...) - 2".
+Actually, I'm sure that all of these boards *do* need MAC WOL and *not* PHY WOL.
 
-The datasheet says that "LinkWidths" is
+The only one I'm unsure about is MT2712, but that's an evaluation board and not
+a retail product with "that kind of diffusion".
 
-Bit 8 = x2 supported
-Bit 9 = x4 supported
-Bit 10 = x8 supported
-Bit 11 = x16 supported
-
-pcie->num_lanes can be set to either 2, 4, 8 or 16.
-
-2>>2 = 0   -> fls(0) == 0 (after field_prep/genmask: bit 8)
-4>>2 = 1   -> fls(1) == 1 (after field_prep/genmask: bit 9 to 8)
-8>>2 = 2   -> fls(2) == 2 (after field_prep/genmask: bit 10 to 8)
-16>>2 = 4  -> fls(4) == 3 (after field_prep/genmask: bit 11 to 8)
-
-So, this should be
-	GENMASK(fls(pcie->num_lanes >> 2), 0)
-
-Right? :-)
-
-In which case, should I send a new version, or can you fix that while
-applying? I'd really appreciate the latter due to lack of time.
+I think you can just fix the bug in the driver without getting new properties
+and such. One commit, two lines.
 
 Cheers,
 Angelo
 
-> Thanks.
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> ---
+> Nícolas F. R. A. Prado (4):
+>        net: dt-bindings: dwmac: Introduce mediatek,mac-wol-noninverted
+>        net: stmmac: dwmac-mediatek: Handle non-inverted mediatek,mac-wol
+>        arm64: dts: mediatek: mt8390-genio-700-evk: Enable ethernet MAC WOL
+>        arm64: dts: mediatek: Add mediatek,mac-wol-noninverted to ethernet nodes
 > 
->> +	};
->>   	writel_relaxed(val, pcie->base + PCIE_SETTING_REG);
->>   
->>   	/* Set Link Control 2 (LNKCTL2) speed restriction, if any */
->> @@ -838,6 +849,7 @@ static int mtk_pcie_parse_port(struct
->> mtk_gen3_pcie *pcie)
->>   	struct device *dev = pcie->dev;
->>   	struct platform_device *pdev = to_platform_device(dev);
->>   	struct resource *regs;
->> +	u32 num_lanes;
->>   
->>   	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM,
->> "pcie-mac");
->>   	if (!regs)
->> @@ -883,6 +895,14 @@ static int mtk_pcie_parse_port(struct
->> mtk_gen3_pcie *pcie)
->>   		return pcie->num_clks;
->>   	}
->>   
->> +	ret = of_property_read_u32(dev->of_node, "num-lanes",
->> &num_lanes);
->> +	if (ret == 0) {
->> +		if (num_lanes == 0 || num_lanes > 16 || (num_lanes != 1
->> && num_lanes % 2))
->> +			dev_warn(dev, "Invalid num-lanes, using
->> controller defaults\n");
->> +		else
->> +			pcie->num_lanes = num_lanes;
->> +	}
->> +
->>   	return 0;
->>   }
->>   
-
+>   Documentation/devicetree/bindings/net/mediatek-dwmac.yaml     | 11 +++++++++++
+>   arch/arm64/boot/dts/mediatek/mt2712-evb.dts                   |  2 ++
+>   arch/arm64/boot/dts/mediatek/mt8195-demo.dts                  |  2 ++
+>   arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dts         |  1 +
+>   arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts        |  2 +-
+>   arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts |  2 ++
+>   arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts         |  2 +-
+>   drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c          |  9 ++++++---
+>   8 files changed, 26 insertions(+), 5 deletions(-)
+> ---
+> base-commit: c88416ba074a8913cf6d61b789dd834bbca6681c
+> change-id: 20241101-mediatek-mac-wol-noninverted-198c6c404536
+> 
+> Best regards,
 
 
 
