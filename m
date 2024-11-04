@@ -4,77 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DE9FD132D7
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 15:04:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27EC2D132DD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 15:04:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eaYc2LVDsAE+818bdTnM3o6tmWXWgzcFVg9WXd40wow=; b=avtmBhpQkl/9EK2d9mPwP5EYzK
-	CHh14aFe70FFyhKw8Qdq/ti3Wn8lS7+SIeKLcj3gM8idEEa5k/Ps57Re+u/FwBM3OE82c++b8YJGt
-	1J3lMAmxGGeYcdX0ev37go5K4Wr1wyAOxJidMs6YJOuvYNo18SIy2jRm8JER99RCZFVMIJpPC232p
-	g1da9zKvTJEXYiMH/ykhwGe4EDO2ciug1dY922bgBS2oDalfY7A/6L8CxR6J+CbMdhpmYqaRWlxL3
-	bZ+XKGEwl3w17WnpbdcW0VugdlYxWCC1aVNDwasotPbnNJ0O40wy6M1Vd4zKzJcnB7Zcm3giPPu1t
-	A34y6Nkw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=wL3aJ4YgoHQx51/oO0lGR3G+JG5M0wbwEKmePjrNr0E=; b=WsZJ9W78HqglCc+O9EZ3WLtfNg
+	Zo32eIJeNoxsxxSvvNuiQA4Ac1KAc2p0yjuAfD+ibnMHyYvd9IweWzda2DpxuzWd4tJWgxzTrBBIY
+	Wz9yje/UM1HhSozLjXzsmvdVZLSqpTHMwG68ExTSZL+r/nFQZbawVz8Aj8VyVlOviY7ucQ6MOd8el
+	mmP2/z4ZtbWYrBMqwA4S82lMr0AHlCp+Q7Nd+EvmgcjggR/tvfJttuaDT0kguf1CkKFITJmN22oOJ
+	iqr4PjCHPhUxqRCEkn364hg77vzgimlOF5Js877EqWLW4J0h4HFUSuod2OkEnsKsWh4k8Iq9tOkPp
+	58uHNxvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7yd7-0000000E99d-00iZ;
-	Mon, 04 Nov 2024 15:04:33 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1t7yd9-0000000E9As-01Bb;
+	Mon, 04 Nov 2024 15:04:35 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7yLn-0000000E6rE-3gAl;
-	Mon, 04 Nov 2024 14:46:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1730731597;
-	bh=OuS/4i+oygUwsdbc+DVGxua1yWNGYXVWyfGEWNFamiw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lTSHtLS836wcVaZJDpm8Yf8qGI47kjv7/IUuPAG4uEwoXmnGr4LDmIN2uQk2Iv82m
-	 Sm178fUyf/ZN8sJLsAA7CvSLgf48cQnCFrVbdors/KoZ1eCTtw4ktA/s/eA6d4ynYF
-	 OrpfuFm+okUH1/UIcJNuasDi4zp1oYo8hqDKZAnRQceI1Fba9HH6pBRRyygKWkuxdl
-	 xRXOUCV6dj8n0bzWIZdH6oqV12rZSeKcW6sXSjzBSNVH1N86162i8PGA5pHbMen/e9
-	 yG3hm8vszU5yTpruquqB0J5+PqIppIXloKC69s6VLbQEJBzlcFvgXe1rsM0kA5VYve
-	 msFOR5HntBqDA==
-Received: from notapiano (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1F2AF17E3696;
-	Mon,  4 Nov 2024 15:46:35 +0100 (CET)
-Date: Mon, 4 Nov 2024 09:46:33 -0500
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Biao Huang <biao.huang@mediatek.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, kernel@collabora.com,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH 0/4] net: stmmac: dwmac-mediatek: Fix inverted logic for
- mediatek,mac-wol
-Message-ID: <c6fec04a-7eed-4c61-85bf-a11542df441b@notapiano>
-References: <20241101-mediatek-mac-wol-noninverted-v1-0-75b81808717a@collabora.com>
- <9a1ce320-e1ce-4d2f-a8d1-7680155ef71f@collabora.com>
+	id 1t7yYT-0000000E8So-24qm
+	for linux-mediatek@lists.infradead.org;
+	Mon, 04 Nov 2024 14:59:46 +0000
+X-UUID: 6bfae2729abd11ef9048ed6ed365623b-20241104
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=wL3aJ4YgoHQx51/oO0lGR3G+JG5M0wbwEKmePjrNr0E=;
+	b=cbKUqh6wHVcmGDUj+JHwde/5LZhQiB8xCZ/93fvsrpFB2c7k5v4aaXuPDRZnaUEYEZSxyYraqO9nxJPke+Xo2YjZyu1Hmx3RpN6h1hfy3D5kC/EnVf6K+BaYd2cjK/6jkZDRw69o/vKxe7A2fUoozREa7wkNETJagFEKK6o4cEc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.42,REQID:d7cb3868-ab05-4648-8097-b30c0d0af6ad,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:15a7aa48-ca13-40ea-8070-fa012edab362,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:1,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 6bfae2729abd11ef9048ed6ed365623b-20241104
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
+	(envelope-from <jiande.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1491411446; Mon, 04 Nov 2024 07:59:42 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 4 Nov 2024 22:59:39 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 4 Nov 2024 22:59:39 +0800
+From: Jiande Lu <jiande.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Chris Lu <chris.lu@mediatek.com>,
+	Deren Wu <deren.Wu@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>, Steve
+ Lee <steve.lee@mediatek.com>, linux-bluetooth
+	<linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Jiande Lu <jiande.lu@mediatek.com>
+Subject: [PATCH v2] Bluetooth: btusb: Add 3 HWIDs for MT7925
+Date: Mon, 4 Nov 2024 22:59:31 +0800
+Message-ID: <20241104145931.5019-1-jiande.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <9a1ce320-e1ce-4d2f-a8d1-7680155ef71f@collabora.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241104_064640_091982_04D888EA 
-X-CRM114-Status: GOOD (  23.44  )
+X-CRM114-CacheID: sfid-20241104_065945_564098_8459BB66 
+X-CRM114-Status: GOOD (  10.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,38 +87,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 04, 2024 at 11:18:48AM +0100, AngeloGioacchino Del Regno wrote:
-> Il 01/11/24 16:20, Nícolas F. R. A. Prado ha scritto:
-> > This series fixes the inverted handling of the mediatek,mac-wol DT
-> > property while keeping backward compatibility. It does so by introducing
-> > a new property on patch 1 and updating the driver to handle it on patch
-> > 2. Patch 3 adds this property on the Genio 700 EVK DT, where this issue
-> > was noticed, to get WOL working on that platform. Patch 4 adds the new
-> > property on all DTs with the MediaTek DWMAC ethernet node enabled
-> > and inverts the presence of mediatek,mac-wol to maintain the
-> > current behavior and have it match the description in the binding.
-> > 
-> 
-> Actually, I'm sure that all of these boards *do* need MAC WOL and *not* PHY WOL.
-> 
-> The only one I'm unsure about is MT2712, but that's an evaluation board and not
-> a retail product with "that kind of diffusion".
-> 
-> I think you can just fix the bug in the driver without getting new properties
-> and such. One commit, two lines.
+Add below HWIDs for MediaTek MT7925 USB Bluetooth chip.
+VID 0x0489, PID 0xe14f
+VID 0x0489, PID 0xe150
+VID 0x0489, PID 0xe151
 
-Alright, since you're sure all the boards need MAC WOL this is simpler: I can
-just fix the driver handling, and also update all the DTs to make sure they use
-MAC WOL. (Right now some are enabling PHY WOL, mt8395-genio-1200-evk.dts and
-mt8395-radxa-nio-12l.dts, while the others are enabling the MAC WOL)
+Patch has been tested successfully and controller is recognized
+device pair successfully.
 
-The MT2712 EVB currently enables MAC WOL, so even though you're not sure about
-that one, I think it makes sense to keep the current behavior ie add the
-mediatek,mac-wol property just like for the others, so it keeps using MAC WOL.
+MT7925 module bring up message as below.
+Bluetooth: Core ver 2.22
+Bluetooth: HCI device and connection manager initialized
+Bluetooth: HCI socket layer initialized
+Bluetooth: L2CAP socket layer initialized
+Bluetooth: SCO socket layer initialized
+Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20240816133202
+Bluetooth: hci0: Device setup in 286558 usecs
+Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
+Bluetooth: hci0: AOSP extensions version v1.00
+Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+Bluetooth: BNEP filters: protocol multicast
+Bluetooth: BNEP socket layer initialized
+Bluetooth: MGMT ver 1.22
+Bluetooth: RFCOMM TTY layer initialized
+Bluetooth: RFCOMM socket layer initialized
+Bluetooth: RFCOMM ver 1.11
 
-I'll wait a couple days in case there are more comments and then I'll send v2
-with those changes.
+v2: update commit message.
 
-Thanks,
-Nícolas
+Signed-off-by: Jiande Lu <jiande.lu@mediatek.com>
+---
+ drivers/bluetooth/btusb.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 6dc5a7e76558..77b8500f8e9b 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -658,6 +658,12 @@ static const struct usb_device_id quirks_table[] = {
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x0489, 0xe139), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x0489, 0xe14f), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x0489, 0xe150), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x0489, 0xe151), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x13d3, 0x3602), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x13d3, 0x3603), .driver_info = BTUSB_MEDIATEK |
+-- 
+2.45.2
+
 
