@@ -4,68 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B2EFD132AA
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 10:34:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65C18D132AA
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2024 10:45:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rPdM8zS/6EGRcTeT8TDzHQft4VCigiCiOOcC42fW7HE=; b=oCIo5Xrv9s72IflM++P39FSFWR
-	FnQPlE4rSB/cpvBUTqPUTFvmXgFcVoILdE18YymoZ1Yu7s79fXZwrhflWHPX7W7rtScs47Jm+/0KG
-	oDtZ8IC1M0XTU04/xj3V0+/0UzoCZrSZ9plQFz3sM+9UV8Ym/J23Kze82SwpGOr2HdNb9G9O567Rd
-	hxfYfStWd5Mf92rBz2T8Rmt00fZePjBBaFLdVfRGROW1ft/8fmZhRAse6r1g3ayfsiGiBlSXSdUPV
-	TzfBQZldnQFQwR1gYN70gsgrSbLmCq5k8lEtrlv+ZNTfN0bGXhxlxP9waVaAPAeFzlp9cAZh7KO/1
-	meSwlX/g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Z2IRjvdHUlI4leV+2qgsEkivhyX3eTg7nzED/eiQ5BE=; b=UKDyr3rs+o1XIW
+	pjCxRwzHptRlFsdHPuWlTzs+nRrhka8aS1M02Yf7wJSPF7molT8dbtJnEEShmNMLfyttyaVc5R9mo
+	yfhzfxINRlj3tklCKYQ4zCwxgzS1XdevgwHq7H+sVjbDW9iU3wKm6teFV0+A029v5mdPk4LwiMDvz
+	YujdJHqiiEe8Xxc2srcA4kqtGTjstZsrbeBkXwYV63sX3A380tw6BmuHT79l9Mmt3KFzTuPMp4w8w
+	BBRYTGXG278mPQNz9pyivAIeAOj6K3qA75iucfXIgm26AKhUsCfdH+daCxtD9lJKbfaRo6OyGZFFe
+	C6wtB5AW8qbDPXxSD+VA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7uPR-0000000DKQ8-2GCa;
-	Mon, 04 Nov 2024 10:34:09 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t7uNg-0000000DK81-1fgo;
-	Mon, 04 Nov 2024 10:32:22 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 583E4FEC;
-	Mon,  4 Nov 2024 02:32:47 -0800 (PST)
-Received: from [10.57.88.110] (unknown [10.57.88.110])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 7FB933F66E;
-	Mon,  4 Nov 2024 02:32:12 -0800 (PST)
-Message-ID: <6b5b4f25-0f42-4f83-b6b5-82c1adbefe83@arm.com>
-Date: Mon, 4 Nov 2024 10:32:10 +0000
+	id 1t7uab-0000000DM3K-0QtM;
+	Mon, 04 Nov 2024 10:45:41 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1t7uYt-0000000DLoQ-0XBH;
+	Mon, 04 Nov 2024 10:43:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1730717033;
+	bh=jSAdqX1Ad8ImwxDLwbjTUxB6CFLUWZ3Ps8wu2h3Cl7s=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=SpaJntKC9FuJVx0pEuryCi2LC8GpnietV2/bSAJXucHXphnfb2OJZqdM0liwOWWFg
+	 cncW2y312i2LFTQCZCLwFAt5gn9Y/SHw64xMYrtdg4IWs+Z3/B01/rf4kNHOY+QmsC
+	 lO31XX9KjRGhQI9IoARW95qZ++THuNKj/BMQerbmLZm+wLr5PaPUFBTyB43yKHKOPt
+	 Rhpjdg+/zmPvaXZVyk7RAf8JEByaeA2Txrc/xATxLoHKzYpYrO2CIA+P0te/6szCpM
+	 dU8XPyqVJGBoc89OcICgJ7k6oFpY/JUk4NV6anlr5CgKEi8LNyvs1yjlPV3HTOOpr/
+	 xq2ybN6LyVQsA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DEB3917E35D3;
+	Mon,  4 Nov 2024 11:43:52 +0100 (CET)
+Message-ID: <9351c903-8141-4721-a352-776215afbfa1@collabora.com>
+Date: Mon, 4 Nov 2024 11:43:52 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] iommu: Switch back to struct platform_driver::remove()
-To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
- Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>
-Cc: Hector Martin <marcan@marcan.st>, Sven Peter <sven@svenpeter.dev>,
- Alyssa Rosenzweig <alyssa@rosenzweig.io>, Rob Clark <robdclark@gmail.com>,
- Yong Wu <yong.wu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Tomasz Jeznach <tjeznach@rivosinc.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, Palmer Dabbelt
- <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Jason Gunthorpe <jgg@ziepe.ca>, Nicolin Chen <nicolinc@nvidia.com>,
- Michael Shavit <mshavit@google.com>, Mostafa Saleh <smostafa@google.com>,
- Lu Baolu <baolu.lu@linux.intel.com>,
- Georgi Djakov <quic_c_gdjako@quicinc.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, asahi@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev,
- linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org
-References: <20241104064650.799122-2-u.kleine-koenig@baylibre.com>
-From: Robin Murphy <robin.murphy@arm.com>
-Content-Language: en-GB
-In-Reply-To: <20241104064650.799122-2-u.kleine-koenig@baylibre.com>
+Subject: Re: [PATCH v3 2/2] PCI: mediatek-gen3: Add support for restricting
+ link width
+To: =?UTF-8?B?Smlhbmp1biBXYW5nICjnjovlu7rlhpsp?= <Jianjun.Wang@mediatek.com>,
+ "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>
+References: <20240918081307.51264-1-angelogioacchino.delregno@collabora.com>
+ <20240918081307.51264-3-angelogioacchino.delregno@collabora.com>
+ <9e56fbe0b1a388b4e0da20cca53e157f51288916.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <9e56fbe0b1a388b4e0da20cca53e157f51288916.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241104_023220_552684_25CE2C5A 
-X-CRM114-Status: GOOD (  27.40  )
+X-CRM114-CacheID: sfid-20241104_024355_349750_1354FFAE 
+X-CRM114-Status: GOOD (  24.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,206 +73,142 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: "robh@kernel.org" <robh@kernel.org>, Ryder Lee <Ryder.Lee@mediatek.com>, "kw@linux.com" <kw@linux.com>, "lpieralisi@kernel.org" <lpieralisi@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "bhelgaas@google.com" <bhelgaas@google.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "kernel@collabora.com" <kernel@collabora.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2024-11-04 6:46 am, Uwe Kleine-König wrote:
-> After commit 0edb555a65d1 ("platform: Make platform_driver::remove()
-> return void") .remove() is (again) the right callback to implement for
-> platform drivers.
+Il 04/11/24 09:56, Jianjun Wang (王建军) ha scritto:
+> Hi Angelo,
 > 
-> Convert all platform drivers below drivers/iommu to use .remove(), with
-> the eventual goal to drop struct platform_driver::remove_new(). As
-> .remove() and .remove_new() have the same prototypes, conversion is done
-> by just changing the structure member name in the driver initializer.
+> Thanks for your patch.
+> 
+> On Wed, 2024-09-18 at 10:13 +0200, AngeloGioacchino Del Regno wrote:
+>> Add support for restricting the port's link width by specifying
+>> the num-lanes devicetree property in the PCIe node.
+>>
+>> The setting is done in the GEN_SETTINGS register (in the driver
+>> named as PCIE_SETTING_REG), where each set bit in [11:8] activates
+>> a set of lanes (from bits 11 to 8 respectively, x16/x8/x4/x2).
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <
+>> angelogioacchino.delregno@collabora.com>
+>> ---
+>>   drivers/pci/controller/pcie-mediatek-gen3.c | 20
+>> ++++++++++++++++++++
+>>   1 file changed, 20 insertions(+)
+>>
+>> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c
+>> b/drivers/pci/controller/pcie-mediatek-gen3.c
+>> index 8d4b045633da..8dd2e5135b01 100644
+>> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+>> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+>> @@ -32,6 +32,7 @@
+>>   #define PCIE_BASE_CFG_SPEED		GENMASK(15, 8)
+>>   
+>>   #define PCIE_SETTING_REG		0x80
+>> +#define PCIE_SETTING_LINK_WIDTH		GENMASK(11, 8)
+>>   #define PCIE_SETTING_GEN_SUPPORT	GENMASK(14, 12)
+>>   #define PCIE_PCI_IDS_1			0x9c
+>>   #define PCI_CLASS(class)		(class << 8)
+>> @@ -168,6 +169,7 @@ struct mtk_msi_set {
+>>    * @clks: PCIe clocks
+>>    * @num_clks: PCIe clocks count for this port
+>>    * @max_link_speed: Maximum link speed (PCIe Gen) for this port
+>> + * @num_lanes: Number of PCIe lanes for this port
+>>    * @irq: PCIe controller interrupt number
+>>    * @saved_irq_state: IRQ enable state saved at suspend time
+>>    * @irq_lock: lock protecting IRQ register access
+>> @@ -189,6 +191,7 @@ struct mtk_gen3_pcie {
+>>   	struct clk_bulk_data *clks;
+>>   	int num_clks;
+>>   	u8 max_link_speed;
+>> +	u8 num_lanes;
+>>   
+>>   	int irq;
+>>   	u32 saved_irq_state;
+>> @@ -401,6 +404,14 @@ static int mtk_pcie_startup_port(struct
+>> mtk_gen3_pcie *pcie)
+>>   			val |= FIELD_PREP(PCIE_SETTING_GEN_SUPPORT,
+>>   					  GENMASK(pcie->max_link_speed
+>> - 2, 0));
+>>   	}
+>> +	if (pcie->num_lanes) {
+>> +		val &= ~PCIE_SETTING_LINK_WIDTH;
+>> +
+>> +		/* Zero means one lane, each bit activates x2/x4/x8/x16
+>> */
+>> +		if (pcie->num_lanes > 1)
+>> +			val |= FIELD_PREP(PCIE_SETTING_LINK_WIDTH,
+>> +					  GENMASK(pcie->num_lanes >> 1,
+>> 0));
+> 
+> It should be GENMASK(fls(pcie->num_lanes) - 2, 0).
+> 
 
-I dont see any major concern with doing it this way. FWIW,
+You're right in that there's a mistake in that one, and I see it now,
+but I don't get why this should be "fls(...) - 2".
 
-Acked-by: Robin Murphy <robin.murphy@arm.com>
+The datasheet says that "LinkWidths" is
 
-> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@baylibre.com>
-> ---
-> Hello,
+Bit 8 = x2 supported
+Bit 9 = x4 supported
+Bit 10 = x8 supported
+Bit 11 = x16 supported
+
+pcie->num_lanes can be set to either 2, 4, 8 or 16.
+
+2>>2 = 0   -> fls(0) == 0 (after field_prep/genmask: bit 8)
+4>>2 = 1   -> fls(1) == 1 (after field_prep/genmask: bit 9 to 8)
+8>>2 = 2   -> fls(2) == 2 (after field_prep/genmask: bit 10 to 8)
+16>>2 = 4  -> fls(4) == 3 (after field_prep/genmask: bit 11 to 8)
+
+So, this should be
+	GENMASK(fls(pcie->num_lanes >> 2), 0)
+
+Right? :-)
+
+In which case, should I send a new version, or can you fix that while
+applying? I'd really appreciate the latter due to lack of time.
+
+Cheers,
+Angelo
+
+> Thanks.
 > 
-> I did a single patch for all of drivers/iommu. While I usually prefer to
-> do one logical change per patch, this seems to be overengineering here
-> as the individual changes are really trivial and shouldn't be much in
-> the way for stable backports. But I'll happily split the patch if you
-> prefer it split.
-> 
-> This is based on today's next, if conflicts arise when you apply it at
-> some later time and don't want to resolve them, feel free to just drop
-> the changes to the conflicting files. I'll notice and followup at a
-> later time then. Or ask me for a fixed resend. (Having said that, I
-> recommend b4 am -3 + git am -3 which should resolve most conflicts just
-> fine.)
-> 
-> Best regards
-> Uwe
-> 
->   drivers/iommu/apple-dart.c                  | 2 +-
->   drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c | 2 +-
->   drivers/iommu/arm/arm-smmu/arm-smmu.c       | 2 +-
->   drivers/iommu/arm/arm-smmu/qcom_iommu.c     | 4 ++--
->   drivers/iommu/ipmmu-vmsa.c                  | 2 +-
->   drivers/iommu/msm_iommu.c                   | 2 +-
->   drivers/iommu/mtk_iommu.c                   | 2 +-
->   drivers/iommu/mtk_iommu_v1.c                | 2 +-
->   drivers/iommu/omap-iommu.c                  | 2 +-
->   drivers/iommu/riscv/iommu-platform.c        | 2 +-
->   drivers/iommu/sprd-iommu.c                  | 2 +-
->   11 files changed, 12 insertions(+), 12 deletions(-)
-> 
-> diff --git a/drivers/iommu/apple-dart.c b/drivers/iommu/apple-dart.c
-> index eb1e62cd499a..c5bde50d1c42 100644
-> --- a/drivers/iommu/apple-dart.c
-> +++ b/drivers/iommu/apple-dart.c
-> @@ -1352,7 +1352,7 @@ static struct platform_driver apple_dart_driver = {
->   		.pm			= pm_sleep_ptr(&apple_dart_pm_ops),
->   	},
->   	.probe	= apple_dart_probe,
-> -	.remove_new = apple_dart_remove,
-> +	.remove	= apple_dart_remove,
->   };
->   
->   module_platform_driver(apple_dart_driver);
-> diff --git a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-> index 826db8894fb7..efbc78bffd33 100644
-> --- a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-> +++ b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-> @@ -4679,7 +4679,7 @@ static struct platform_driver arm_smmu_driver = {
->   		.suppress_bind_attrs	= true,
->   	},
->   	.probe	= arm_smmu_device_probe,
-> -	.remove_new = arm_smmu_device_remove,
-> +	.remove	= arm_smmu_device_remove,
->   	.shutdown = arm_smmu_device_shutdown,
->   };
->   module_driver(arm_smmu_driver, platform_driver_register,
-> diff --git a/drivers/iommu/arm/arm-smmu/arm-smmu.c b/drivers/iommu/arm/arm-smmu/arm-smmu.c
-> index 8321962b3714..4e9bb9f4c4bd 100644
-> --- a/drivers/iommu/arm/arm-smmu/arm-smmu.c
-> +++ b/drivers/iommu/arm/arm-smmu/arm-smmu.c
-> @@ -2372,7 +2372,7 @@ static struct platform_driver arm_smmu_driver = {
->   		.suppress_bind_attrs    = true,
->   	},
->   	.probe	= arm_smmu_device_probe,
-> -	.remove_new = arm_smmu_device_remove,
-> +	.remove = arm_smmu_device_remove,
->   	.shutdown = arm_smmu_device_shutdown,
->   };
->   module_platform_driver(arm_smmu_driver);
-> diff --git a/drivers/iommu/arm/arm-smmu/qcom_iommu.c b/drivers/iommu/arm/arm-smmu/qcom_iommu.c
-> index b98a7a598b89..9ce2fe50b22c 100644
-> --- a/drivers/iommu/arm/arm-smmu/qcom_iommu.c
-> +++ b/drivers/iommu/arm/arm-smmu/qcom_iommu.c
-> @@ -759,7 +759,7 @@ static struct platform_driver qcom_iommu_ctx_driver = {
->   		.of_match_table	= ctx_of_match,
->   	},
->   	.probe	= qcom_iommu_ctx_probe,
-> -	.remove_new = qcom_iommu_ctx_remove,
-> +	.remove	= qcom_iommu_ctx_remove,
->   };
->   
->   static bool qcom_iommu_has_secure_context(struct qcom_iommu_dev *qcom_iommu)
-> @@ -931,7 +931,7 @@ static struct platform_driver qcom_iommu_driver = {
->   		.pm		= &qcom_iommu_pm_ops,
->   	},
->   	.probe	= qcom_iommu_device_probe,
-> -	.remove_new = qcom_iommu_device_remove,
-> +	.remove	= qcom_iommu_device_remove,
->   };
->   
->   static int __init qcom_iommu_init(void)
-> diff --git a/drivers/iommu/ipmmu-vmsa.c b/drivers/iommu/ipmmu-vmsa.c
-> index ff55b8c30712..074daf1aac4e 100644
-> --- a/drivers/iommu/ipmmu-vmsa.c
-> +++ b/drivers/iommu/ipmmu-vmsa.c
-> @@ -1159,6 +1159,6 @@ static struct platform_driver ipmmu_driver = {
->   		.pm = pm_sleep_ptr(&ipmmu_pm),
->   	},
->   	.probe = ipmmu_probe,
-> -	.remove_new = ipmmu_remove,
-> +	.remove = ipmmu_remove,
->   };
->   builtin_platform_driver(ipmmu_driver);
-> diff --git a/drivers/iommu/msm_iommu.c b/drivers/iommu/msm_iommu.c
-> index 989e0869d805..ce40f0a419ea 100644
-> --- a/drivers/iommu/msm_iommu.c
-> +++ b/drivers/iommu/msm_iommu.c
-> @@ -838,6 +838,6 @@ static struct platform_driver msm_iommu_driver = {
->   		.of_match_table = msm_iommu_dt_match,
->   	},
->   	.probe		= msm_iommu_probe,
-> -	.remove_new	= msm_iommu_remove,
-> +	.remove		= msm_iommu_remove,
->   };
->   builtin_platform_driver(msm_iommu_driver);
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index c45313c43b9e..72b68d037b95 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -1794,7 +1794,7 @@ MODULE_DEVICE_TABLE(of, mtk_iommu_of_ids);
->   
->   static struct platform_driver mtk_iommu_driver = {
->   	.probe	= mtk_iommu_probe,
-> -	.remove_new = mtk_iommu_remove,
-> +	.remove	= mtk_iommu_remove,
->   	.driver	= {
->   		.name = "mtk-iommu",
->   		.of_match_table = mtk_iommu_of_ids,
-> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-> index ee4e55b6b190..480e57ea6635 100644
-> --- a/drivers/iommu/mtk_iommu_v1.c
-> +++ b/drivers/iommu/mtk_iommu_v1.c
-> @@ -745,7 +745,7 @@ static const struct dev_pm_ops mtk_iommu_v1_pm_ops = {
->   
->   static struct platform_driver mtk_iommu_v1_driver = {
->   	.probe	= mtk_iommu_v1_probe,
-> -	.remove_new = mtk_iommu_v1_remove,
-> +	.remove	= mtk_iommu_v1_remove,
->   	.driver	= {
->   		.name = "mtk-iommu-v1",
->   		.of_match_table = mtk_iommu_v1_of_ids,
-> diff --git a/drivers/iommu/omap-iommu.c b/drivers/iommu/omap-iommu.c
-> index 3f72aef8bd5b..b8ced5d0581c 100644
-> --- a/drivers/iommu/omap-iommu.c
-> +++ b/drivers/iommu/omap-iommu.c
-> @@ -1285,7 +1285,7 @@ static const struct of_device_id omap_iommu_of_match[] = {
->   
->   static struct platform_driver omap_iommu_driver = {
->   	.probe	= omap_iommu_probe,
-> -	.remove_new = omap_iommu_remove,
-> +	.remove	= omap_iommu_remove,
->   	.driver	= {
->   		.name	= "omap-iommu",
->   		.pm	= &omap_iommu_pm_ops,
-> diff --git a/drivers/iommu/riscv/iommu-platform.c b/drivers/iommu/riscv/iommu-platform.c
-> index da336863f152..382ba2841849 100644
-> --- a/drivers/iommu/riscv/iommu-platform.c
-> +++ b/drivers/iommu/riscv/iommu-platform.c
-> @@ -81,7 +81,7 @@ static const struct of_device_id riscv_iommu_of_match[] = {
->   
->   static struct platform_driver riscv_iommu_platform_driver = {
->   	.probe = riscv_iommu_platform_probe,
-> -	.remove_new = riscv_iommu_platform_remove,
-> +	.remove = riscv_iommu_platform_remove,
->   	.driver = {
->   		.name = "riscv,iommu",
->   		.of_match_table = riscv_iommu_of_match,
-> diff --git a/drivers/iommu/sprd-iommu.c b/drivers/iommu/sprd-iommu.c
-> index a2f4ffe6d949..e84806eee281 100644
-> --- a/drivers/iommu/sprd-iommu.c
-> +++ b/drivers/iommu/sprd-iommu.c
-> @@ -531,7 +531,7 @@ static struct platform_driver sprd_iommu_driver = {
->   		.suppress_bind_attrs = true,
->   	},
->   	.probe	= sprd_iommu_probe,
-> -	.remove_new = sprd_iommu_remove,
-> +	.remove	= sprd_iommu_remove,
->   };
->   module_platform_driver(sprd_iommu_driver);
->   
-> base-commit: c88416ba074a8913cf6d61b789dd834bbca6681c
+>> +	};
+>>   	writel_relaxed(val, pcie->base + PCIE_SETTING_REG);
+>>   
+>>   	/* Set Link Control 2 (LNKCTL2) speed restriction, if any */
+>> @@ -838,6 +849,7 @@ static int mtk_pcie_parse_port(struct
+>> mtk_gen3_pcie *pcie)
+>>   	struct device *dev = pcie->dev;
+>>   	struct platform_device *pdev = to_platform_device(dev);
+>>   	struct resource *regs;
+>> +	u32 num_lanes;
+>>   
+>>   	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM,
+>> "pcie-mac");
+>>   	if (!regs)
+>> @@ -883,6 +895,14 @@ static int mtk_pcie_parse_port(struct
+>> mtk_gen3_pcie *pcie)
+>>   		return pcie->num_clks;
+>>   	}
+>>   
+>> +	ret = of_property_read_u32(dev->of_node, "num-lanes",
+>> &num_lanes);
+>> +	if (ret == 0) {
+>> +		if (num_lanes == 0 || num_lanes > 16 || (num_lanes != 1
+>> && num_lanes % 2))
+>> +			dev_warn(dev, "Invalid num-lanes, using
+>> controller defaults\n");
+>> +		else
+>> +			pcie->num_lanes = num_lanes;
+>> +	}
+>> +
+>>   	return 0;
+>>   }
+>>   
+
+
 
 
