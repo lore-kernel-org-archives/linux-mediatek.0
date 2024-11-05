@@ -4,105 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03C86D31765
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2024 16:44:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78164D31769
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2024 17:31:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OsgC3GUt52fG7g3FJ6lyd/7Hq8DIyDZOCFrlqdAN2z8=; b=Tl8N25p81LhZDuPS7imBUR89R+
-	dIezQxZhIQFyla4cFNR1WewWNyN6IiUtczuz/Td9ddJoRNllieaTmbwZF7Tm4yWDx+3c32djelVNy
-	gPf+FxB9x9BsXYCrMk1Rtj/NH2yofze8rYZr6qm0Iump/dtGOzjTcSttTUId/mSRq0tfcx7h36I2I
-	9v0m88TvV1OGlFfcN6UmZpVXbzHFgbyyf1gaQil9c/ZerRb8NY9C/j7gCQPzRfpplvib/eAlO5Kgv
-	OcnPro2BluKh/zNMCTt/6Moe0ybkhITq9YwHOiP/otvmXgPkV+PClxQMie9gAAO2FNdTC9J/NOYud
-	p2cXzuGQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=oljPsmb6PyVhBGxuhwl4CovfkcoBjJyPZ3dxtEYJ5q4=; b=PPUv0n4NSwE792
+	9cinC+FPjJuHZCZOgt6CSdJIqhDD/RHIvJ/HrZ1GeIooiEFNe7BcqSCv4U8GZJb+DuScEiT+UFlZW
+	ma9cIbkNHhLM3icDJR1X3o2IBzXG1YAnWcRfcNWP0cJtsIeohJN+Ex2cuntqdQsT6E69FtrevGHIZ
+	PQmZ8K0BKsHP6QncZooeTlEZIZ51oB8qRdORjMUgHWf690lk3bpeS4Q6YkGf7tSj2XeAqBzn42rTa
+	qKPf4xmvdWmmji2gFGKBxKBxBFf9v9ZmbWWerwJ3n+yefRrgdYR5JX5FYVz9mAQAktmHjV/qkapCM
+	/YP50PLwUqVTVUkST34g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8Mf0-000000005jc-3T2I;
-	Tue, 05 Nov 2024 16:44:06 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1t8NOO-00000000DTK-3quk;
+	Tue, 05 Nov 2024 17:31:00 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8MBw-000000000HI-1OX9;
-	Tue, 05 Nov 2024 16:14:06 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-539ee1acb86so5706416e87.0;
-        Tue, 05 Nov 2024 08:14:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1730823241; x=1731428041; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:mail-followup-to:message-id:subject:cc:to
-         :from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=OsgC3GUt52fG7g3FJ6lyd/7Hq8DIyDZOCFrlqdAN2z8=;
-        b=g9LZduL+X1+RkGq+xMAxxtCwN+dliZGTkAV1IddX/aTjXkB2xkU7zX6QgzdrFOmXkK
-         D9F4qgT5p7xUW176BSxiFe4RXOTb17e+eYd1Z42MpvHjyHhnQgAW1F4Sq9+505MrE5Lm
-         B5gGM83LHl3aEJ7fjXQka1DavPpT/7RitM03oy4vZav70LRMvq6VvX/whlVYnoJr08dG
-         H6lL4aG4rsElUVLQZ4arzvJktIbse0zaCLIP+VaaE88By9eVA8elnlyASAJMLTyNpIXN
-         e0RR7getqmxNAkzW6qNhFE4QV06KAWefDP/UssQzyUKN8Qs/9nO95XoFwywoVBinHDQk
-         Lt2w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730823241; x=1731428041;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:mail-followup-to:message-id:subject:cc:to
-         :from:date:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=OsgC3GUt52fG7g3FJ6lyd/7Hq8DIyDZOCFrlqdAN2z8=;
-        b=GnsFR3SJnjVm84/0Rm5zOyQFXOc2o6HsEdZ+gZ4B35etrRoHnxF6Ds8lZxu3efjrDE
-         lterVlbt5Pj5+3njmNaT5mljtAuYtJe0YK765uFiarfx9L7dRvsePlOrH+/oaB3x9q+9
-         95rY02FJ32S/JiP5u/JAf1areNpLhw1efeL5DdEHZokXu4hexGm5RZMhnr+rVSRqIEAT
-         EXDP8thGcPUWadi79fn+icLNyiKWPp4zTm1r60GLlliN313CF/hhpMTpw7UMSuq1Nw/2
-         m5MCQoujFTrv1NBN8xKWIKHtrXF3ORdEzGQSDv4hAqhBj8dHDyrV+TMi4FR0959N0dL0
-         zmMg==
-X-Forwarded-Encrypted: i=1; AJvYcCUeTG06cM+C/Y9vYPDxQ6X80z8HNLNsNk9GBy+hN6ckovmkc9b/nkr6Hz1VwSCnYRYyIq5JpjyjAfAU1GJsDMgi@lists.infradead.org, AJvYcCVYsq/Ao+Lw0dP/ftSA4QOdg3+a1Jd6ln6ASHf/m59IjZlma0PBpyMCeE+AVFs+wR33AgRJ5qUSQO8XPMPZcvQ=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxWO0wP6CbUO54XUD4xqtqGNxUHOMx6UCt36uQPVnjeYfd8VK2o
-	qyIRYxXck0TwBEGlsGBM0ygMaIfqJlYOApGvSr8Mx86CA3+nEUZ1
-X-Google-Smtp-Source: AGHT+IF8BLVkWOaws14kIJqjSIzF39hKa71k2p8OWLa7ITtzulUErFMEpSbUuonylZ3cZrDAMvQP+w==
-X-Received: by 2002:a05:6512:3a95:b0:53b:1fe4:3fb9 with SMTP id 2adb3069b0e04-53d65e2474fmr7828089e87.49.1730823240757;
-        Tue, 05 Nov 2024 08:14:00 -0800 (PST)
-Received: from localhost ([94.19.228.143])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53c7bdcc073sm2168565e87.212.2024.11.05.08.13.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 Nov 2024 08:14:00 -0800 (PST)
-Date: Tue, 5 Nov 2024 19:13:59 +0300
-From: Andrey Skvortsov <andrej.skvortzov@gmail.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
+	id 1t8NGb-00000000CAR-0n4O;
+	Tue, 05 Nov 2024 17:22:58 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id E44A95C4A89;
+	Tue,  5 Nov 2024 17:22:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 40B07C4CED1;
+	Tue,  5 Nov 2024 17:22:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1730827376;
+	bh=zvORLLKvLulrWcA4oBGbbnyMDidVWOv949NeC6tWnAI=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=mgLLV1rYaK4NSUvwU8HUu+uY2sk/iLccv6x0HEZ3C/4GIC2IKZKNxUxtVvFBv0gOm
+	 6Qf0GKQ+LtlWolM6z/6H4Bq+BXV63UTpm6Jxrk6ZjFhZeY2UOt+wBLNprG7k15UKTZ
+	 c0l2IbGJrylHWqfK8kTtB/hbsUiHPDU0PKn2BvNGBTNEP9BhZQlqRXr5I/XjDka7WP
+	 GmiR1JSv6NpFrcjDIe0Gyb1vRl5oQF432oHAn7Dsr+LpGZEd9NoQF0Wc1FVgv90BiK
+	 9TU34deY3A6C9jNM4+YM0adRUoUSzbJyaC8LmGlulGYawiqnOS01XRXWYjtRGBX1xP
+	 muE70Tfv2SpzA==
+Date: Tue, 5 Nov 2024 11:22:54 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wolfram Sang <wsa@kernel.org>, Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, chrome-platform@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Douglas Anderson <dianders@chromium.org>,
-	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v10 5/7] i2c: of-prober: Add GPIO support to simple
- helpers
-Message-ID: <ZypER5bqLAlH7VxK@skv.local>
-Mail-Followup-To: Andrey Skvortsov <andrej.skvortzov@gmail.com>,
-	Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh@kernel.org>,
-	Saravana Kannan <saravanak@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wolfram Sang <wsa@kernel.org>, Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, chrome-platform@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Douglas Anderson <dianders@chromium.org>,
-	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	linux-i2c@vger.kernel.org
-References: <20241030072229.1013235-1-wenst@chromium.org>
- <20241030072229.1013235-6-wenst@chromium.org>
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Christian Marangi <ansuelsmth@gmail.com>, linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
+	Hui Ma <hui.ma@airoha.com>
+Subject: Re: [PATCH v2] PCI: mediatek-gen3: Avoid PCIe resetting via
+ PCIE_RSTB for Airoha EN7581 SoC
+Message-ID: <20241105172254.GA1447085@bhelgaas>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20241030072229.1013235-6-wenst@chromium.org>
+In-Reply-To: <20241104-pcie-en7581-rst-fix-v2-1-ffe5839c76d8@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241105_081404_401201_972FECE7 
-X-CRM114-Status: GOOD (  25.88  )
+X-CRM114-CacheID: sfid-20241105_092257_339784_C76C741F 
+X-CRM114-Status: GOOD (  32.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,103 +80,153 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24-10-30 15:22, Chen-Yu Tsai wrote:
-> Add GPIO support to the simple helpers for the I2C OF component prober.
-> Components that the prober intends to probe likely require their
-> regulator supplies be enabled, and GPIOs be toggled to enable them or
-> bring them out of reset before they will respond to probe attempts.
-> Regulator supplies were handled in the previous patch.
-> 
-> The assumption is that the same class of components to be probed are
-> always connected in the same fashion with the same regulator supply
-> and GPIO. The names may vary due to binding differences, but the
-> physical layout does not change.
-> 
-> This supports at most one GPIO pin. The user must specify the GPIO name,
-> the polarity, and the amount of time to wait after the GPIO is toggled.
-> Devices with more than one GPIO pin likely require specific power
-> sequencing beyond what generic code can easily support.
-> 
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> Reviewed-by: Douglas Anderson <dianders@chromium.org>
-> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+On Mon, Nov 04, 2024 at 11:00:05PM +0100, Lorenzo Bianconi wrote:
+> Airoha EN7581 has a hw bug asserting/releasing PCIE_PE_RSTB signal
+> causing occasional PCIe link down issues. In order to overcome the
+> problem, PCIE_RSTB signals are not asserted/released during device probe or
+> suspend/resume phase and the PCIe block is reset using REG_PCI_CONTROL
+> (0x88) and REG_RESET_CONTROL (0x834) registers available via the clock
+> module.
+> Introduce flags field in the mtk_gen3_pcie_pdata struct in order to
+> specify per-SoC capabilities.
+
+Add blank lines between paragraphs so we know where they end.
+
+Where does this alternate way of doing reset (using REG_PCI_CONTROL
+and REG_RESET_CONTROL) happen?  Why isn't there something in this
+patch to use that alternate method at the same points where
+PCIE_PE_RSTB is used?
+
+If we don't need to assert reset for Airoha EN7581, why do we need to
+do it for the other SoCs?
+
+> Tested-by: Hui Ma <hui.ma@airoha.com>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > ---
-
-> diff --git a/include/linux/i2c-of-prober.h b/include/linux/i2c-of-prober.h
-> index df95aa6ad90e..a232f3cbb252 100644
-> --- a/include/linux/i2c-of-prober.h
-> +++ b/include/linux/i2c-of-prober.h
-> @@ -85,6 +85,7 @@ int i2c_of_probe_component(struct device *dev, const struct i2c_of_probe_cfg *cf
->   *
->   * The following helpers are provided:
->   * * i2c_of_probe_simple_enable()
-> + * * i2c_of_probe_simple_cleanup_early()
->   * * i2c_of_probe_simple_cleanup()
->   */
->  
-> @@ -92,14 +93,31 @@ int i2c_of_probe_component(struct device *dev, const struct i2c_of_probe_cfg *cf
->   * struct i2c_of_probe_simple_opts - Options for simple I2C component prober callbacks
->   * @res_node_compatible: Compatible string of device node to retrieve resources from.
->   * @supply_name: Name of regulator supply.
-> + * @gpio_name: Name of GPIO. NULL if no GPIO line is used. Empty string ("") if GPIO
-> + *	       line is unnamed.
->   * @post_power_on_delay_ms: Delay after regulators are powered on. Passed to msleep().
-> + * @post_gpio_config_delay_ms: Delay after GPIO is configured. Passed to msleep().
-> + * @gpio_assert_to_enable: %true if GPIO should be asserted, i.e. set to logical high,
-> + *			   to enable the component.
-> + *
-> + * This describes power sequences common for the class of components supported by the
-> + * simple component prober:
-> + * * @gpio_name is configured to the non-active setting according to @gpio_assert_to_enable.
-> + * * @supply_name regulator supply is enabled.
-> + * * Wait for @post_power_on_delay_ms to pass.
-> + * * @gpio_name is configured to the active setting according to @gpio_assert_to_enable.
-> + * * Wait for @post_gpio_config_delay_ms to pass.
->   */
->  struct i2c_of_probe_simple_opts {
->  	const char *res_node_compatible;
->  	const char *supply_name;
-> +	const char *gpio_name;
->  	unsigned int post_power_on_delay_ms;
-> +	unsigned int post_gpio_config_delay_ms;
-> +	bool gpio_assert_to_enable;
-
-This header is missing '#include <linux/types.h>' for bool
-type. Otherwise compilation may fail with following error:
-
-```
-./include/linux/i2c-of-prober.h:117:9: error: unknown type name ‘bool’
-  117 |         bool gpio_assert_to_enable;
-      |         ^~~~
-./include/linux/i2c-of-prober.h:12:1: note: ‘bool’ is defined in header ‘<stdbool.h>’; this is probably fixable by adding ‘#include <stdbool.h>’
-   11 | #include <linux/kconfig.h>
-  +++ |+#include <stdbool.h>
-   12 |
-```
-
->  };
->  
-> +struct gpio_desc;
->  struct regulator;
->  
->  struct i2c_of_probe_simple_ctx {
-> @@ -107,9 +125,11 @@ struct i2c_of_probe_simple_ctx {
->  	const struct i2c_of_probe_simple_opts *opts;
->  	/* private: internal fields for helpers. */
->  	struct regulator *supply;
-> +	struct gpio_desc *gpiod;
->  };
->  
->  int i2c_of_probe_simple_enable(struct device *dev, struct device_node *bus_node, void *data);
-> +void i2c_of_probe_simple_cleanup_early(struct device *dev, void *data);
->  void i2c_of_probe_simple_cleanup(struct device *dev, void *data);
->  
->  extern struct i2c_of_probe_ops i2c_of_probe_simple_ops;
-> -- 
-> 2.47.0.163.g1226f6d8fa-goog
+> Changes in v2:
+> - introduce flags field in mtk_gen3_pcie_flags struct instead of adding
+>   reset callback
+> - fix the leftover case in mtk_pcie_suspend_noirq routine
+> - add more comments
+> - Link to v1: https://lore.kernel.org/r/20240920-pcie-en7581-rst-fix-v1-1-1043fb63ffc9@kernel.org
+> ---
+>  drivers/pci/controller/pcie-mediatek-gen3.c | 59 ++++++++++++++++++++---------
+>  1 file changed, 41 insertions(+), 18 deletions(-)
 > 
+> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+> index 66ce4b5d309bb6d64618c70ac5e0a529e0910511..8e4704ff3509867fc0ff799e9fb99e71e46756cd 100644
+> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> @@ -125,10 +125,18 @@
+>  
+>  struct mtk_gen3_pcie;
+>  
+> +enum mtk_gen3_pcie_flags {
+> +	SKIP_PCIE_RSTB	= BIT(0), /* skip PCIE_RSTB signals configuration
+> +				   * during device probing or suspend/resume
+> +				   * phase in order to avoid hw bugs/issues.
+> +				   */
+> +};
+> +
+>  /**
+>   * struct mtk_gen3_pcie_pdata - differentiate between host generations
+>   * @power_up: pcie power_up callback
+>   * @phy_resets: phy reset lines SoC data.
+> + * @flags: pcie device flags.
+>   */
+>  struct mtk_gen3_pcie_pdata {
+>  	int (*power_up)(struct mtk_gen3_pcie *pcie);
+> @@ -136,6 +144,7 @@ struct mtk_gen3_pcie_pdata {
+>  		const char *id[MAX_NUM_PHY_RESETS];
+>  		int num_resets;
+>  	} phy_resets;
+> +	u32 flags;
+>  };
+>  
+>  /**
+> @@ -402,22 +411,33 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
+>  	val |= PCIE_DISABLE_DVFSRC_VLT_REQ;
+>  	writel_relaxed(val, pcie->base + PCIE_MISC_CTRL_REG);
+>  
+> -	/* Assert all reset signals */
+> -	val = readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
+> -	val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
+> -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> -
+>  	/*
+> -	 * Described in PCIe CEM specification sections 2.2 (PERST# Signal)
+> -	 * and 2.2.1 (Initial Power-Up (G3 to S0)).
+> -	 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
+> -	 * for the power and clock to become stable.
+> +	 * Airoha EN7581 has a hw bug asserting/releasing PCIE_PE_RSTB signal
+> +	 * causing occasional PCIe link down. In order to overcome the issue,
+> +	 * PCIE_RSTB signals are not asserted/released at this stage and the
+> +	 * PCIe block is reset using REG_PCI_CONTROL (0x88) and
+> +	 * REG_RESET_CONTROL (0x834) registers available via the clock module.
+>  	 */
+> -	msleep(100);
+> -
+> -	/* De-assert reset signals */
+> -	val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB);
+> -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> +	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
+> +		/* Assert all reset signals */
+> +		val = readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
+> +		val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
+> +		       PCIE_PE_RSTB;
+> +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> +
+> +		/*
+> +		 * Described in PCIe CEM specification sections 2.2 (PERST# Signal)
+> +		 * and 2.2.1 (Initial Power-Up (G3 to S0)).
+> +		 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
+> +		 * for the power and clock to become stable.
 
--- 
-Best regards,
-Andrey Skvortsov
+Blank line between paragraphs.
+
+> +		 */
+> +		msleep(PCIE_T_PVPERL_MS);
+> +
+> +		/* De-assert reset signals */
+> +		val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
+> +			 PCIE_PE_RSTB);
+> +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> +	}
+>  
+>  	/* Check if the link is up or not */
+>  	err = readl_poll_timeout(pcie->base + PCIE_LINK_STATUS_REG, val,
+> @@ -1160,10 +1180,12 @@ static int mtk_pcie_suspend_noirq(struct device *dev)
+>  		return err;
+>  	}
+>  
+> -	/* Pull down the PERST# pin */
+> -	val = readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
+> -	val |= PCIE_PE_RSTB;
+> -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> +	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
+> +		/* Pull down the PERST# pin */
+> +		val = readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
+> +		val |= PCIE_PE_RSTB;
+> +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> +	}
+>  
+>  	dev_dbg(pcie->dev, "entered L2 states successfully");
+>  
+> @@ -1214,6 +1236,7 @@ static const struct mtk_gen3_pcie_pdata mtk_pcie_soc_en7581 = {
+>  		.id[2] = "phy-lane2",
+>  		.num_resets = 3,
+>  	},
+> +	.flags = SKIP_PCIE_RSTB,
+>  };
+>  
+>  static const struct of_device_id mtk_pcie_of_match[] = {
+> 
+> ---
+> base-commit: 3102ce10f3111e4c3b8fb233dc93f29e220adaf7
+> change-id: 20240920-pcie-en7581-rst-fix-8161658c13c4
+> 
+> Best regards,
+> -- 
+> Lorenzo Bianconi <lorenzo@kernel.org>
+> 
 
