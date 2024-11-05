@@ -4,76 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9A8CD12663
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2024 08:49:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06DBAD12663
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2024 09:02:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gcU6PozuCPu9FYvIDE2uLOOUp6AETnyh7mULKCxSOMQ=; b=ND3ceE8L30F6DyJ6F5PvMCM/qp
-	hq3wPXEfrFmfmY8h4mXtdEd5Y+rPV+dKi9Nr1RypM15uewinpS7J29ZMkmqevbgE2QulT5pusSrHu
-	XZOGrTERSRLoAcbTyIxGzKsYmzac+zHj1Y1Sec//IlEop0vCrUMmKXbWK9gKsMfS/vQVYkBtTkDKI
-	7A/+af0n33Tjl9FYTxWw0vVyCLXGTBHaF2naSU5xAt6sov6Edewd7jfOagzUZTX2r7V+wsXdHmr2o
-	ZL7bFfI8S15r49u8NYZQHH2GCp1WdvIpPCtue+20UDKtB2qhQ8/ME0JAGV9lYPqFzhA2hcEzgtijV
-	yDUsbQbA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=djQbbob5DRcgyzgtrmCeJK9wCGVRn3M70o+CkFeCAc0=; b=fAXbB8Y3WDuD6b
+	g98EnXGDIO9sq9VQvtsXWVYvVO/JbtTn3koZjgAM9IEtMn4IWwCM67KP/ebyv3DYZL5fdFgUHtLnh
+	YBZWjpfMn40nGDZrir7Q+LA2k8fnJki3q78Lel4Haoaghb8SOZq9kRbly8UNQuUIAebxxpKbSKKeH
+	dQQxM21iJCnIpYgRQfVOk+oNIo/9yEK9d/JQVWFAZPZxlermi8+ORRSwsvdU1Yw3iCBue5Y83UD7P
+	xQrjNLldTUN1eNQvKoDsgofGE5xai2dhGi5awlfhXbowlKadQaMJIGLY0nNQeFF1LXotga9BMlVdP
+	QKH+1+gGoGhkQvbpnTdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8FFQ-0000000GOjz-3RtH;
-	Tue, 05 Nov 2024 08:49:12 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1t8FSc-0000000GQmL-30Pz;
+	Tue, 05 Nov 2024 09:02:50 +0000
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8FFP-0000000GOjG-02Cc
+	id 1t8FSK-0000000GQcE-0TEW
 	for linux-mediatek@lists.infradead.org;
-	Tue, 05 Nov 2024 08:49:12 +0000
-X-UUID: d0a2d1869b5211ef82ff63e91e7eb18c-20241105
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:Message-ID; bh=gcU6PozuCPu9FYvIDE2uLOOUp6AETnyh7mULKCxSOMQ=;
-	b=l3K0Q9lX6QSoD2uE+c61uvkkGnwNfXYF08K5DjPLwPoFaefbphv3OLJaj+7/+MDyNx/RFtha9j8srKer/K1qVGoicg7f+TnkNqU1o7W+Yk50yDKEV/FHLcXE8zNEh1it0wODee2XlodnZ1ImUaBHvwdfzYnsze58a9RpH26oC48=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.42,REQID:0e5b6c6f-7a49-4f18-b366-cd0b8a16bab6,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:b0fcdc3,CLOUDID:1f1595e7-cb6b-4a59-bfa3-98f245b4912e,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: d0a2d1869b5211ef82ff63e91e7eb18c-20241105
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
-	(envelope-from <macpaul.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1463501613; Tue, 05 Nov 2024 01:49:06 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 5 Nov 2024 00:49:03 -0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
- Transport; Tue, 5 Nov 2024 16:49:03 +0800
-Message-ID: <b70f15ef-aa99-e284-9238-6e7b327e2237@mediatek.com>
-Date: Tue, 5 Nov 2024 16:49:01 +0800
+	Tue, 05 Nov 2024 09:02:33 +0000
+Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-7f3f1849849so171965a12.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 05 Nov 2024 01:02:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1730797351; x=1731402151; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=djQbbob5DRcgyzgtrmCeJK9wCGVRn3M70o+CkFeCAc0=;
+        b=lpyeEORl8udmjWqnUg6BnidOsCfCZk0WtarVLTiVnl9w1OPGjTRgVogX8qoea2x0U2
+         fxCpwaEhrpWRBb0J8wyisMUOPiGSBZ6rSYBKdoCXOHT63ugonev6ZeTuOiTcRWrFxZz3
+         R8TJA0oUC5M2Wf/Q18ITt8FPcICc9xIJfSj/4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730797351; x=1731402151;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=djQbbob5DRcgyzgtrmCeJK9wCGVRn3M70o+CkFeCAc0=;
+        b=lNxP9BMxS7nAcdNmsmNly0BzU5owtprDAy8YyHs6LY0rOR+4SzWyoLAzHJCYi3qhup
+         OTiTo/6OncYFg3err6QLWiCvkx70jQwUo6LGJv+tSFQH09T57lv67SwsscO97rTHpMN0
+         Hf5qGPPtyt1E4Bj9rEI0IUf+FJhs8cuXhom6cfQolilHacfCKVyh81HA8bZOtPBbg7i5
+         om2xm9tI6hn40lhnNy+TbKY6wi0eui4FHsFYTeyYBzooVtvD+pi9HmxXxCVbaWdL7xUD
+         UDvmJheQLbfNSA2P2bEtiLI3F4O/ND8o+lHSXemI6mIEzzQLVys6depttZfIweQXCVkS
+         31aw==
+X-Forwarded-Encrypted: i=1; AJvYcCWJSHEjQ23rxeuZEw8nUww4OZ+Xue1d/VlnA7Vk4jukYLIjfyZ0vRARqEPZByTHiOzs8c1bgM/K4MTp2rdEdA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyxtwNNE4/fl1PglbvEqCdhXyxESfoGb/agQwfbjulxeEDA6pbJ
+	65i3jZ+5OEh8Hdu3e0kDMTp0XlzzIdSBjaT3iyVpB5gbQOftOM01K9nJtw7zUA==
+X-Google-Smtp-Source: AGHT+IH1k+zMqS05NS5QvavH+ykcILKALPqruVdecenHRtfW6dG9qXj72cxb37tXkc0AOy3qeQYb5g==
+X-Received: by 2002:a17:90a:bc87:b0:2d3:da6d:8330 with SMTP id 98e67ed59e1d1-2e92ce32e36mr25501301a91.4.1730797350795;
+        Tue, 05 Nov 2024 01:02:30 -0800 (PST)
+Received: from fshao-p620.tpe.corp.google.com ([2401:fa00:1:10:20ee:3712:ce0b:1ed7])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2110570ad54sm72591315ad.111.2024.11.05.01.02.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 05 Nov 2024 01:02:30 -0800 (PST)
+From: Fei Shao <fshao@chromium.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Subject: [PATCH v2] dt-bindings: display: mediatek: dp: Reference common DAI properties
+Date: Tue,  5 Nov 2024 17:00:28 +0800
+Message-ID: <20241105090207.3892242-1-fshao@chromium.org>
+X-Mailer: git-send-email 2.47.0.277.g8800431eea-goog
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH] WHENCE: Add sof-tolg for mt8195
-Content-Language: en-US
-To: yr.yang <yr.yang@mediatek.com>, <linux-firmware@kernel.org>
-CC: <linux-mediatek@lists.infradead.org>, <shawnku@google.com>,
-	<ao.tang@mediatek.com>, Bear Wang <bear.wang@mediatek.com>, Pablo Sun
-	<pablo.sun@mediatek.com>
-References: <20241105071549.17476-1-yr.yang@mediatek.com>
- <20241105071549.17476-2-yr.yang@mediatek.com>
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-In-Reply-To: <20241105071549.17476-2-yr.yang@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241105_004911_093810_4483C4CC 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20241105_010232_204412_DBBE9350 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,39 +81,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The MediaTek DP hardware supports audio and exposes a DAI, so the
+'#sound-dai-cells' property is needed for describing the DAI links.
 
+Reference the dai-common.yaml schema to allow '#sound-dai-cells' to be
+used, and filter out non-DP compatibles as MediaTek eDP in the same
+binding doesn't support audio.
 
-On 11/5/24 15:12, yr.yang wrote:
-> mediatek: Add sof-tolg for mt8195
-> 
-> Signed-off-by: yr.yang <yr.yang@mediatek.com>
-                  ^^^^^^^
-Please use git config --global user.name to set your full name here.
-Do not use the same abbreviation as your email address.
-We'd like to know how to spell your name correctly. :)
+This fixes dtbs_check error:
+  '#sound-dai-cells' does not match any of the regexes: 'pinctrl-[0-9]+'
 
-> ---
->   WHENCE | 3 +++
->   1 file changed, 3 insertions(+)
-> 
-> diff --git a/WHENCE b/WHENCE
-> index 691291c3..dfa5ea70 100644
-> --- a/WHENCE
-> +++ b/WHENCE
-> @@ -7529,6 +7529,9 @@ File: mediatek/sof/sof-mt8195.ldc
->   File: mediatek/sof-tplg/sof-mt8195-mt6359-rt1019-rt5682.tplg
->   Version: v0.4.2
->   
-> +File: mediatek/sof-tplg/sof-mt8195-mt6359-max98390-rt5682.tplg
-> +Version: v0.4.3
-> +
->   Licence: Redistributable. See LICENCE.mediatek for details.
->   
->   --------------------------------------------------------------------------
+Signed-off-by: Fei Shao <fshao@chromium.org>
+---
 
-Thanks
-Macpaul Lin
+Changes in v2:
+- reference to dai-common.yaml since the hardware exposes DAI
+  and update to `unevaluatedProperties: false`
+- update commit message
+
+ .../display/mediatek/mediatek,dp.yaml         | 19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+index 2aef1eb32e11..75ce92f4a5fd 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+@@ -42,6 +42,9 @@ properties:
+   interrupts:
+     maxItems: 1
+ 
++  '#sound-dai-cells':
++    const: 0
++
+   ports:
+     $ref: /schemas/graph.yaml#/properties/ports
+     properties:
+@@ -85,7 +88,21 @@ required:
+   - ports
+   - max-linkrate-mhz
+ 
+-additionalProperties: false
++allOf:
++  - $ref: /schemas/sound/dai-common.yaml#
++  - if:
++      not:
++        properties:
++          compatible:
++            contains:
++              enum:
++                - mediatek,mt8188-dp-tx
++                - mediatek,mt8195-dp-tx
++    then:
++      properties:
++        '#sound-dai-cells': false
++
++unevaluatedProperties: false
+ 
+ examples:
+   - |
+-- 
+2.47.0.277.g8800431eea-goog
+
 
