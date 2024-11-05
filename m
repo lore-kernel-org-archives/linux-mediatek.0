@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 410EED2B92E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2024 14:33:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EC79D2B933
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2024 14:36:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PI7z63OR91PlrcEz1o6lgZvcp/UHgdtNFWgUjX44diU=; b=VLYdmkC2/GKBzNSWO1NqOFUpwS
-	DSlAvR9BHg5sx11iBf44og9Yke+sc0C5Gel0yqVNn2yph9EMgzEDC/n2FpvPgUJEdTJiLMQRy27Rx
-	EMyUiN42XiSUQe1o8047j0PDKRm+CluEI0RL297zVN1FPI2tT/wpkrApEYGLApG4KtqHnrFFvt6AR
-	Fm4+jUghYJ07o/tczu3s3S2s/oDNDa5sdwavhvF8DyJurjg/rmoTdSfFfvEeamJKHam8/gcloSDTE
-	uVSIuTAlSzu0mkD5l13wr+weh+CVgsyJXIqV6qJwhhIYUv8qsFWPR8SLVNsyelvKvkfHhsK1FV5Qa
-	r1qsuCrw==;
+	bh=J7i6bfzxTUwTjVm56C1ZM67jMKriadwTwRNk0sb2ca4=; b=AJmJh+WzI5/WHoDq7WZ+uW3Xn+
+	RBJ1RHIZxUXfalGoo+6omz6+MYzMrvIuJU7Foz1AD2cqquEZXmm9QMu9/SZqu1gWYo5Ghsg0lN0DX
+	tMTuwg50hDDEt0OHEdD+PsXVRjwZ2+p9bge6ZZNG36UtN6mRrY4e4ll3jzlxbDH4/A6Kej999wjMz
+	LtCVSeAoBnk/KcIzSNhfPBbDw5XPutFpkfzCVRfRYbvWXK0uFM+hsgiNhp5B7sxHSoElqj0u6NNyR
+	XcqdU8xtcwBjZ86M8/2XJQFscv4hqktLwz0W1pWyhvyfUatK3uvkv1JCceGaSHoOZq66SZffh7/7v
+	BVmwrMvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8KcA-0000000HHsK-146O;
-	Tue, 05 Nov 2024 14:33:02 +0000
+	id 1t8Kfy-0000000HJ45-2ob1;
+	Tue, 05 Nov 2024 14:36:58 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8KWW-0000000HGVc-23vG;
-	Tue, 05 Nov 2024 14:27:14 +0000
+	id 1t8KeC-0000000HIfn-33sA;
+	Tue, 05 Nov 2024 14:35:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7EE775C4C0E;
-	Tue,  5 Nov 2024 14:26:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6D3CC4CED0;
-	Tue,  5 Nov 2024 14:27:10 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5C5765C53DD;
+	Tue,  5 Nov 2024 14:34:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F6DDC4CED0;
+	Tue,  5 Nov 2024 14:35:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730816831;
-	bh=H9lnLtemQ/eUrm6ZowUvs0U4ycXB0QN6ws8h/hIo9/c=;
+	s=k20201202; t=1730817307;
+	bh=GzXTzvTNdEFEvbs3vOmKlQenO+9sg1FizpOvjE0B7tI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Ogheu//NIDOF8rIG04kMJnc8LFupeuSjfNXm5VShLhda4WRd4NVbJXKt4bczFS3mj
-	 FupDNUsOy7m41/xyyPuPM+vkL6JTwzVUmImMQWikHeQZaB0KRKZfEYuBJ4XicDAwAX
-	 AsMigEk1+Q728CPS52aYB6Oc3b10XMSFg57tWEYwbpKq1PA1K5xdveK45YZ9C9O6FW
-	 2owv2l+weBf2rBtzNawO1P737eFBC7v250BWjA1jaqbVThDaGiLsgGcT9FTNK6HMQp
-	 TmyBka1xWcHVWrC72ot5uxqJYbB2xB+Y6GOiohoj5aM7IWH4/RHENfyLQ0/hcuU4AW
-	 NAzSFvX/q1pvQ==
-Date: Tue, 5 Nov 2024 08:27:08 -0600
+	b=DNS80Tvv78J/0XiKXz32MCfQ1gMlSIb4S2IrPsli6ERQEw8owhylWB2jDKFcKN3LS
+	 XMv9bqdLMqAfwzsf26akE4PrHlmIVr+XI3+a6+uS6+fwG+VnPBWjokm/aChor3mdfi
+	 BLj0+mE2gPFjaszrFSNOxbZz3Q3WTgIkvxgVq11fGqzZp/6rRz2vJJvBh8t5hZNYcO
+	 +PqHkZNHGkqhFrAlEZbP9h1drCTn2F6WUDK+fkj+vUtGUzxg0PiJwHLxQzRBbvwN8p
+	 4NYfGo934fPMjs+M17YS30Nz/zRFz8AZmWuvqslJDRfeuNvmIt2PX6YTy1eBOcW0dv
+	 gYS5tqJguxQVw==
+Date: Tue, 5 Nov 2024 08:35:05 -0600
 From: "Rob Herring (Arm)" <robh@kernel.org>
 To: Fei Shao <fshao@chromium.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+Cc: Mark Brown <broonie@kernel.org>, linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Conor Dooley <conor+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Trevor Wu <trevor.wu@mediatek.com>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH v2] dt-bindings: display: mediatek: dp: Reference common
- DAI properties
-Message-ID: <173081682847.3210195.439507232582613661.robh@kernel.org>
-References: <20241105090207.3892242-1-fshao@chromium.org>
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2] ASoC: dt-bindings: mediatek,mt8188-mt6359: Add
+ mediatek,adsp property
+Message-ID: <173081730525.3220913.16778335543851389759.robh@kernel.org>
+References: <20241105091246.3944946-1-fshao@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241105090207.3892242-1-fshao@chromium.org>
+In-Reply-To: <20241105091246.3944946-1-fshao@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241105_062712_853738_D629DE69 
-X-CRM114-Status: GOOD (  14.03  )
+X-CRM114-CacheID: sfid-20241105_063508_839196_BE49FCBF 
+X-CRM114-Status: GOOD (  19.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,27 +79,41 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 05 Nov 2024 17:00:28 +0800, Fei Shao wrote:
-> The MediaTek DP hardware supports audio and exposes a DAI, so the
-> '#sound-dai-cells' property is needed for describing the DAI links.
+On Tue, 05 Nov 2024 17:11:36 +0800, Fei Shao wrote:
+> On some MediaTek SoCs, an Audio DSP (ADSP) is integrated as a separate
+> hardware block that leverages Sound Open Firmware (SOF) and provides
+> additional audio functionalities. This hardware is optional, and the
+> audio subsystem will still function normally when it's not present.
 > 
-> Reference the dai-common.yaml schema to allow '#sound-dai-cells' to be
-> used, and filter out non-DP compatibles as MediaTek eDP in the same
-> binding doesn't support audio.
+> To enable ADSP support, a 'mediatek,adsp' property is required in the
+> sound card node to pass the ADSP phandle. This allows AFE to link to
+> ADSP when the sound card is probed.
+> 
+> MT8188 has ADSP integrated, so add the 'mediatek,adsp' property to
+> allow using it in the audio subsystem.
 > 
 > This fixes dtbs_check error:
->   '#sound-dai-cells' does not match any of the regexes: 'pinctrl-[0-9]+'
+>   Unevaluated properties are not allowed ('mediatek,adsp' was
+>   unexpected)
 > 
 > Signed-off-by: Fei Shao <fshao@chromium.org>
 > ---
+> This patch is based on a previous [v1] series.
+> This is sent as an individual patch in v2 because the other patches in
+> the [v1] series are either invalid or for different purpose in different
+> binding, so I think it'd be better to send them separately.
+> 
+> [v1]:
+> https://lore.kernel.org/all/20241025104548.1220076-2-fshao@chromium.org/
 > 
 > Changes in v2:
-> - reference to dai-common.yaml since the hardware exposes DAI
->   and update to `unevaluatedProperties: false`
+> - drop `mediatek,dai-link` vendor property because its goal can be
+>   achieved by using the existing `audio-routing`
+> - update property description
 > - update commit message
 > 
->  .../display/mediatek/mediatek,dp.yaml         | 19 ++++++++++++++++++-
->  1 file changed, 18 insertions(+), 1 deletion(-)
+>  .../devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml  | 7 +++++++
+>  1 file changed, 7 insertions(+)
 > 
 
 Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
