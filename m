@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EC79D2B933
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2024 14:36:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6912D2C114
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2024 15:00:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J7i6bfzxTUwTjVm56C1ZM67jMKriadwTwRNk0sb2ca4=; b=AJmJh+WzI5/WHoDq7WZ+uW3Xn+
-	RBJ1RHIZxUXfalGoo+6omz6+MYzMrvIuJU7Foz1AD2cqquEZXmm9QMu9/SZqu1gWYo5Ghsg0lN0DX
-	tMTuwg50hDDEt0OHEdD+PsXVRjwZ2+p9bge6ZZNG36UtN6mRrY4e4ll3jzlxbDH4/A6Kej999wjMz
-	LtCVSeAoBnk/KcIzSNhfPBbDw5XPutFpkfzCVRfRYbvWXK0uFM+hsgiNhp5B7sxHSoElqj0u6NNyR
-	XcqdU8xtcwBjZ86M8/2XJQFscv4hqktLwz0W1pWyhvyfUatK3uvkv1JCceGaSHoOZq66SZffh7/7v
-	BVmwrMvA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mvIYeSFCxY/3x3hewUHt9HGpdJeJf41GmvTvIB+PyOk=; b=mJXAdDkdERsfv4x3HKP0D0mdeN
+	CDblj33to0+BXmtb79WsdrcWk6MeeLGPm6bfcQq6sZCZiAfkjNaff8NI+oCqVGXV2gGe9qOp/b0hx
+	ta6vNIerkMoktJFd8ycS0ujRVfWV0NaRhBZc4CAtCAhPNMGRKFV2rbeJwczTLEv3NNIVawxaHGsu1
+	O1rihj+ZkEta0yNywlGeTNYlTpAUYK/7pVxUhlYWXx61GPvTqcPaBS9OYluQSEXHhMzEAyQS8r/Gm
+	JJq/okaD/hFYvkV9pGE4/RIPkcVrE8harwTZoDHsEDb2RGHpZ3MJZNc7ZFRmubiYi8+vWeASPRPuT
+	nkBH+Zug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8Kfy-0000000HJ45-2ob1;
-	Tue, 05 Nov 2024 14:36:58 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1t8L2j-0000000HMW8-1WIn;
+	Tue, 05 Nov 2024 15:00:29 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8KeC-0000000HIfn-33sA;
-	Tue, 05 Nov 2024 14:35:10 +0000
+	id 1t8L2g-0000000HMVF-1OJH
+	for linux-mediatek@lists.infradead.org;
+	Tue, 05 Nov 2024 15:00:27 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5C5765C53DD;
-	Tue,  5 Nov 2024 14:34:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F6DDC4CED0;
-	Tue,  5 Nov 2024 14:35:07 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id F0B545C54D8;
+	Tue,  5 Nov 2024 14:59:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6B0CAC4CED3;
+	Tue,  5 Nov 2024 15:00:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730817307;
-	bh=GzXTzvTNdEFEvbs3vOmKlQenO+9sg1FizpOvjE0B7tI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=DNS80Tvv78J/0XiKXz32MCfQ1gMlSIb4S2IrPsli6ERQEw8owhylWB2jDKFcKN3LS
-	 XMv9bqdLMqAfwzsf26akE4PrHlmIVr+XI3+a6+uS6+fwG+VnPBWjokm/aChor3mdfi
-	 BLj0+mE2gPFjaszrFSNOxbZz3Q3WTgIkvxgVq11fGqzZp/6rRz2vJJvBh8t5hZNYcO
-	 +PqHkZNHGkqhFrAlEZbP9h1drCTn2F6WUDK+fkj+vUtGUzxg0PiJwHLxQzRBbvwN8p
-	 4NYfGo934fPMjs+M17YS30Nz/zRFz8AZmWuvqslJDRfeuNvmIt2PX6YTy1eBOcW0dv
-	 gYS5tqJguxQVw==
-Date: Tue, 5 Nov 2024 08:35:05 -0600
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Fei Shao <fshao@chromium.org>
-Cc: Mark Brown <broonie@kernel.org>, linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Trevor Wu <trevor.wu@mediatek.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2] ASoC: dt-bindings: mediatek,mt8188-mt6359: Add
- mediatek,adsp property
-Message-ID: <173081730525.3220913.16778335543851389759.robh@kernel.org>
-References: <20241105091246.3944946-1-fshao@chromium.org>
+	s=k20201202; t=1730818825;
+	bh=/9BD+CG6bSek+ioiWxHqTFIK5p/sQQ/tH1AmkfFf3ZE=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=Mt597LT9WCoUDcaiiiK4a+Zhxa+8KKaBnc07eS4+66f8j43BPV9rg6IE1hH9IjEvl
+	 i919IF23/Lo5axnIsepR3qC8DmBTA4DtP3/JWzEDyeJdq7X1u8FZbl7vfgZvNV242l
+	 hoWF7lbfMK778FYqEr0KiaJiH3vB11TfN7qkNNUkGHvUaU3yyR3AJr+TvtbGFQq+0d
+	 VLgxrzFs2Y8RtkiK4AlDzU1nmlx58WYQPu9T50U6PuJe10zN2WWPXBxqn1KTiQvgMz
+	 4dx11EAp54/r2Zz/0hqlwZH44T5vGMTXLvwZar2vYgQRaLfdtXzF0ZV8Tp/dbEtvcT
+	 Kfn9uo2zhsg9A==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 70C8D3809A80;
+	Tue,  5 Nov 2024 15:00:35 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241105091246.3944946-1-fshao@chromium.org>
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH v2] Bluetooth: btusb: Add 3 HWIDs for MT7925
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <173081883399.584547.12555123272395386451.git-patchwork-notify@kernel.org>
+Date: Tue, 05 Nov 2024 15:00:33 +0000
+References: <20241104145931.5019-1-jiande.lu@mediatek.com>
+In-Reply-To: <20241104145931.5019-1-jiande.lu@mediatek.com>
+To: Jiande Lu <jiande.lu@mediatek.com>
+Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
+ sean.wang@mediatek.com, chris.lu@mediatek.com, deren.Wu@mediatek.com,
+ aaron.hou@mediatek.com, steve.lee@mediatek.com,
+ linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241105_063508_839196_BE49FCBF 
-X-CRM114-Status: GOOD (  19.86  )
+X-CRM114-CacheID: sfid-20241105_070026_435001_6DD52427 
+X-CRM114-Status: UNSURE (   7.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,44 +78,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello:
 
-On Tue, 05 Nov 2024 17:11:36 +0800, Fei Shao wrote:
-> On some MediaTek SoCs, an Audio DSP (ADSP) is integrated as a separate
-> hardware block that leverages Sound Open Firmware (SOF) and provides
-> additional audio functionalities. This hardware is optional, and the
-> audio subsystem will still function normally when it's not present.
-> 
-> To enable ADSP support, a 'mediatek,adsp' property is required in the
-> sound card node to pass the ADSP phandle. This allows AFE to link to
-> ADSP when the sound card is probed.
-> 
-> MT8188 has ADSP integrated, so add the 'mediatek,adsp' property to
-> allow using it in the audio subsystem.
-> 
-> This fixes dtbs_check error:
->   Unevaluated properties are not allowed ('mediatek,adsp' was
->   unexpected)
-> 
-> Signed-off-by: Fei Shao <fshao@chromium.org>
-> ---
-> This patch is based on a previous [v1] series.
-> This is sent as an individual patch in v2 because the other patches in
-> the [v1] series are either invalid or for different purpose in different
-> binding, so I think it'd be better to send them separately.
-> 
-> [v1]:
-> https://lore.kernel.org/all/20241025104548.1220076-2-fshao@chromium.org/
-> 
-> Changes in v2:
-> - drop `mediatek,dai-link` vendor property because its goal can be
->   achieved by using the existing `audio-routing`
-> - update property description
-> - update commit message
-> 
->  .../devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml  | 7 +++++++
->  1 file changed, 7 insertions(+)
-> 
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+On Mon, 4 Nov 2024 22:59:31 +0800 you wrote:
+> Add below HWIDs for MediaTek MT7925 USB Bluetooth chip.
+> VID 0x0489, PID 0xe14f
+> VID 0x0489, PID 0xe150
+> VID 0x0489, PID 0xe151
+> 
+> Patch has been tested successfully and controller is recognized
+> device pair successfully.
+> 
+> [...]
+
+Here is the summary with links:
+  - [v2] Bluetooth: btusb: Add 3 HWIDs for MT7925
+    https://git.kernel.org/bluetooth/bluetooth-next/c/408ec48013da
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
