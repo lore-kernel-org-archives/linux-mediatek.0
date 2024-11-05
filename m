@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FF36D3E760
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2024 20:59:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E400BD3E774
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2024 21:35:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=TQPCUdMCx39m0ZTNjhnYCaHxFkfeIc8TU+p5IJ3tkMk=; b=m9/WV9OFrCibJk
-	UgZNNE36Ot4W5bLy1jndJE9EDCRnNCC7WvUqXt/0g1E8aq5p853LOhfAwBhn/BJ+PSF/eYrr3AAQA
-	2MKAKLGCYuRffbmmaAD41S8X6x9XwkGzLCQbXCrrqCk+Kd+u0u5dh9JtJRiaGgUNZM6rG3tDICg0A
-	4Haepzhr4cPBLlTBK/vErXE/G925VtRYS/GeObZuXXZ7S3PJrBX7Q1OPYrvB0zTcjygxLO2dP3Vbh
-	R77v/66iM9DJ//F7NrmlzfiTHmGzgAXu28jvtZt/OGaPF9TeQD4R0wKbXpb3NyUB2uTDI1+wgRsyp
-	4aSKz2WwhsDFvIDFhhXA==;
+	List-Owner; bh=RiIH1HYwsImzEJ3i20lQJhzXuSrrqWNiCzP/sbG0lmQ=; b=eo9JqBgmLXJXms
+	MHnZOW86ISo2EjJmEWPaM9IPWdbwKhMraXSvDFq8uILMQhz1aTLXIHES/MejNFzaR6Ii8S3qoZXcS
+	G1EXspHzs/REMwke99lutXDF5myz4CBhW3Lgc9oq+Kdq2QhsNzqrK/hnYM8OT7pjAwNOeSMOT6VeV
+	IHaRyr5yojk4D+1CXZF2bX+UfyDzrpOcbO8tzKE/mIJo743XW/tmMKkuMP7E8sSliU36bl7570Vd8
+	EdCpKaLgtaYipvpxwd/xA2/RdlYlTf77WTkEfmc1CJjNJ/f2StNDpRR0gsOP77Sp0GswcNN0k3ZyA
+	F7DCpAsP+w4KYtA+8rCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8QeI-00000000o0p-1PW0;
-	Tue, 05 Nov 2024 20:59:38 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1t8RD1-00000000se6-1mJC;
+	Tue, 05 Nov 2024 21:35:31 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8QcZ-00000000nj6-3AoK;
-	Tue, 05 Nov 2024 20:57:53 +0000
+	id 1t8RBG-00000000sOS-3UdT;
+	Tue, 05 Nov 2024 21:33:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id DA119A4166A;
-	Tue,  5 Nov 2024 20:55:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5854CC4CECF;
-	Tue,  5 Nov 2024 20:57:50 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 65F7E5C4D0F;
+	Tue,  5 Nov 2024 21:32:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9BE83C4CECF;
+	Tue,  5 Nov 2024 21:33:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730840270;
-	bh=DYfBBj3JaDu67bf4HxYtGzC1oE1D8X/KxacexvlRTs8=;
+	s=k20201202; t=1730842421;
+	bh=gmEfvmYRrOEhveo9TzLIdRgKJt2TtDdbk0WfhRNwuI8=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=EEGT/NDigZAvieG+NbZ8bVmafnVdv5lQeTu46psHu8LRVQRAKknpPRZj7ox36oM+a
-	 QKCPkZYpWKK474piUG0cn5aVOARWAqhjMFdLIcPR0BVAhlStmLCNxfpXTHfB3FkpsQ
-	 aPZcOQQ+eU9bk+xj1gemiNL3JxKskhArqKP8OtrwLAIvMzRynQ7UMEHJlTI96+dm7g
-	 diX1CzAbC0FSW/Z8/wJAR08KPjX33v6jNGRFT5oF9xE1kg2dB1tthQlhZ9ISslpwgo
-	 Z7p5trRutiezgh5W7pXT6zX02+PhE11Wn9bU2gN6jIwiMlQ1nr31LkuzKDsecu3jPD
-	 fKv0Nsq6LrHaQ==
-Date: Tue, 5 Nov 2024 14:57:48 -0600
+	b=LpTsH1qXgUEO/6AX3Gjk6Gez6UQYdz2/PVOr2RWndY80oROZTmtVVLyukEQQ77FkS
+	 KZdPmSwEsWysVQqbIbK3pfo3x3WeJztIjavT9TKoFMAxuSnYN1vLhLfunkCgNhOGFs
+	 8rHH+ay6kDRpx4WPWuexRXrXypaAWMx7HQO+GZ9Lry6Oovht9hYbKFeeJWBtRl7WE4
+	 qfsTLJIVzIX3mMhTk1J2Vq5a6MPp3oEdBsGgyJ6mDjuE7PGEFxDdjQ7AIFxjAj1Syp
+	 G3cBczYSaetEPKeLpDib+9v1H0fpvLSLhg/Snmui41Dqpk+Vmr0oE6oWM5f5q9W1xM
+	 wbdONkM9kF1Tw==
+Date: Tue, 5 Nov 2024 15:33:39 -0600
 From: Bjorn Helgaas <helgaas@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Christian Marangi <ansuelsmth@gmail.com>, linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
-	Hui Ma <hui.ma@airoha.com>
-Subject: Re: [PATCH v2] PCI: mediatek-gen3: Avoid PCIe resetting via
- PCIE_RSTB for Airoha EN7581 SoC
-Message-ID: <20241105205748.GA1484220@bhelgaas>
+Cc: linux-pci@vger.kernel.org, ryder.lee@mediatek.com,
+	jianjun.wang@mediatek.com, lpieralisi@kernel.org, kw@linux.com,
+	robh@kernel.org, bhelgaas@google.com,
+	linux-mediatek@lists.infradead.org, lorenzo.bianconi83@gmail.com,
+	linux-arm-kernel@lists.infradead.org,
+	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org,
+	nbd@nbd.name, dd@embedd.com, upstream@airoha.com,
+	angelogioacchino.delregno@collabora.com,
+	Jim Quinlan <james.quinlan@broadcom.com>,
+	Krishna Chaitanya Chundru <quic_krichai@quicinc.com>,
+	Vidya Sagar <vidyas@nvidia.com>,
+	Shashank Babu Chinta Venkata <quic_schintav@quicinc.com>
+Subject: Re: [PATCH v4 4/4] PCI: mediatek-gen3: Add Airoha EN7581 support
+Message-ID: <20241105213339.GA1487624@bhelgaas>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZypgYOn7dcYIoW4i@lore-desk>
+In-Reply-To: <aca00bd672ee576ad96d279414fc0835ff31f637.1720022580.git.lorenzo@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241105_125752_148396_28A7FFFE 
-X-CRM114-Status: GOOD (  18.70  )
+X-CRM114-CacheID: sfid-20241105_133342_963246_534934AB 
+X-CRM114-Status: GOOD (  13.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,56 +79,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 05, 2024 at 07:13:52PM +0100, Lorenzo Bianconi wrote:
-> > On Mon, Nov 04, 2024 at 11:00:05PM +0100, Lorenzo Bianconi wrote:
-> > > Airoha EN7581 has a hw bug asserting/releasing PCIE_PE_RSTB signal
-> > > causing occasional PCIe link down issues. In order to overcome the
-> > > problem, PCIE_RSTB signals are not asserted/released during device probe or
-> > > suspend/resume phase and the PCIe block is reset using REG_PCI_CONTROL
-> > > (0x88) and REG_RESET_CONTROL (0x834) registers available via the clock
-> > > module.
-> > > Introduce flags field in the mtk_gen3_pcie_pdata struct in order to
-> > > specify per-SoC capabilities.
-> > 
-> > Where does this alternate way of doing reset (using REG_PCI_CONTROL
-> > and REG_RESET_CONTROL) happen?  Why isn't there something in this
-> > patch to use that alternate method at the same points where
-> > PCIE_PE_RSTB is used?
-> 
-> REG_RESET_CONTROL (0x834) is already asserted/released in the following flow:
-> 
-> mtk_pcie_en7581_power_up() -> reset_control_bulk_deassert() -> en7523_reset_update()
-> https://github.com/torvalds/linux/blob/master/drivers/clk/clk-en7523.c#L470
-> 
-> REG_PCI_CONTROL (0x88) is already asserted/released in the following flow:
-> mtk_pcie_en7581_power_up() -> clk_bulk_enable() -> en7581_pci_enable()
-> https://github.com/torvalds/linux/blob/master/drivers/clk/clk-en7523.c#L385
+[+cc Jim, Krishna, Vidya, Shashank]
 
-So IIUC, you're saying that on EN7581, the PCI hierarchy is reset by
-the soc->power_up() callback, mtk_pcie_en7581_power_up(), via
-REG_PCI_CONTROL and REG_RESET_CONTROL.
+On Wed, Jul 03, 2024 at 06:12:44PM +0200, Lorenzo Bianconi wrote:
+> Introduce support for Airoha EN7581 PCIe controller to mediatek-gen3
+> PCIe controller driver.
 
-I assume the hierarchy is also reset by the non-EN7581 .power_up()
-callback, mtk_pcie_power_up()?
+> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
 
-And prior to this patch, we reset the hierarchy *again* in
-mtk_pcie_startup_port() via PCIE_RST_CTRL_REG, but this causes
-occasional "link down" issues because of a EN7581 hardware defect.
+> +#define PCIE_EQ_PRESET_01_REG		0x100
+> +#define PCIE_VAL_LN0_DOWNSTREAM		GENMASK(6, 0)
+> +#define PCIE_VAL_LN0_UPSTREAM		GENMASK(14, 8)
+> +#define PCIE_VAL_LN1_DOWNSTREAM		GENMASK(22, 16)
+> +#define PCIE_VAL_LN1_UPSTREAM		GENMASK(30, 24)
+> ...
 
-So for EN7581, this patch skips the PCIE_RST_CTRL_REG reset in
-mtk_pcie_startup_port().
+> +static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
+> +{
+> ...
 
-.power_up() and mtk_pcie_startup_port() are used both at probe time
-and in mtk_pcie_resume_noirq().  So after this patch, I assume:
+> +	val = FIELD_PREP(PCIE_VAL_LN0_DOWNSTREAM, 0x47) |
+> +	      FIELD_PREP(PCIE_VAL_LN1_DOWNSTREAM, 0x47) |
+> +	      FIELD_PREP(PCIE_VAL_LN0_UPSTREAM, 0x41) |
+> +	      FIELD_PREP(PCIE_VAL_LN1_UPSTREAM, 0x41);
+> +	writel_relaxed(val, pcie->base + PCIE_EQ_PRESET_01_REG);
 
-  - EN7581 resets the hierarchy once at probe and resume instead of
-    twice.
+This looks like it might be for the Lane Equalization Control
+registers (PCIe r6.0, sec 7.7.3.4)?
 
-  - Non-EN7581 resets the hierarchy twice at probe and resume.
+I would expect those values (0x47, 0x41) to be related to the platform
+design, so maybe not completely determined by the SoC itself?  Jim and
+Krishna have been working on DT schema for the equalization values,
+which seems like the right place for them:
 
-I assume I'm missing something (maybe mtk_pcie_power_up() doesn't
-actually reset the hierarchy?) because I don't see why we would reset
-the hierarchy twice for either controller.
+https://lore.kernel.org/linux-pci/20241018182247.41130-2-james.quinlan@broadcom.com/
+https://lore.kernel.org/r/77d3a1a9-c22d-0fd3-5942-91b9a3d74a43@quicinc.com
+
+Maybe that would be applicable here as well?  It would at least be
+nice to use a common #define for the Lane Equalization Control
+register offset from the capability base.
+
+Although I see that no such #define exists in pci_regs.h, so I guess
+there's nothing to do here yet.
+
+The only users of equalization settings I could find so far are:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/pci/controller/dwc/pcie-tegra194.c?id=v6.11#n832
+  https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/pci/controller/dwc/pcie-qcom-common.c?id=v6.12-rc1#n11
+  https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/pci/controller/pcie-mediatek-gen3.c?id=v6.12-rc1#n909
 
 Bjorn
 
