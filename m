@@ -4,71 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38F65D3177B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2024 18:17:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E47FAD3177F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2024 18:27:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PLt1Ng3h3DOybqZ9j6JAkI9vGXELqWVzuQskNeMkCyU=; b=HS7ANoyLiRj+SSvI9hBCuY34+4
-	AM1sn5Xo+Tw5RWI0Xy5jr9z88XgAr0MBUYUnbWCQrwcaFZnRdtIsc95J9kb7v73khvqlfoJF3D8TG
-	Yl+YSQirvFrC+Ao+S9J+W2ROV2zbirnW3JkUKuk3MkllmDp6qPm5hS0e3nEK5oHckFgjR3KaxXBbA
-	i4yrwCADXbX3mOmH465PZ2Tyl/LWQzrVuSct4brs4lDBi0FkpoM9ZwLnwSio7xMVvWItKwxcqu8dI
-	VryT4VvnXzKThdxA/a99dwG4gAxiMRbz7eiME8lXr2wu6zmbQ6GITpCfASTgtz5KQuBitm4VY0EBQ
-	khUf3Lhg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nNULnuma14COqUngEc7X+vkKAjiZWym3skCS5oc9EOQ=; b=oiGIj5HEXaI40KB65IIpo04o3Z
+	NpdXnk5TkBGurf/1YUeJ2Ts2PZy28oo8ZSD8xSwRiWx2gwktBJ7rQissSOkn8gRapHiRfaGOJy6o/
+	XO4lt24xhiygBrRnqxC9NJaHiPgAQTlxxD+sjDjQ5rUYyFznpqCuVrQG2v0EO8Y5Z7YM8rBGETant
+	Y2oaEJeFFEw9x44GHQL6a73Gs7FtZtMr8j7m1juyWAEx0s9nBrrjz3QbULEGvZxSC8y4E9KoV1/JB
+	6Hh5UxLEh2jCjssoSXORrWPGCM9AlOmJDkXzxppvcQq+XUg7VH2PyNwxFVuE0ijxYYThK2wvpTIb3
+	Jt0Ui54g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8O6z-00000000Ldk-0vrS;
-	Tue, 05 Nov 2024 18:17:05 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1t8OH3-00000000MwJ-2Dcy;
+	Tue, 05 Nov 2024 18:27:29 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8O3w-00000000LA7-28qf;
-	Tue, 05 Nov 2024 18:14:07 +0000
+	id 1t8O5O-00000000LPB-1b0F;
+	Tue, 05 Nov 2024 18:15:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E3BBE5C53DF;
-	Tue,  5 Nov 2024 18:13:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BFD60C4CED1;
-	Tue,  5 Nov 2024 18:13:54 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 85ECEA43809;
+	Tue,  5 Nov 2024 18:13:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 134CEC4CECF;
+	Tue,  5 Nov 2024 18:15:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730830435;
-	bh=Xen1diBQCGTGkPai9ifyoSgzJwfYP1crTTlWxSXYi88=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=SqSCKavngCVgtakBFoK/QNvcJ95y8UC2eRzb2nESbNueDZokzXwbZhNU6eXkXGDIE
-	 PmbAaOwf33zXa3RPAIQnzyiJ/RiZlzbVC8kX/ByVVWiUEFrmMENr1ZX06kWa3OFlg7
-	 Dxy3Zp/ruYbsfdTCbPXEoHeuxSMzhwAASoZQsAD0LDuFY37y2oDkVl1cjET1dPJl3e
-	 fnnWCUK7WOyKctQABU15LbyG4ZhFemim+6MEvOW22b9MnmvDzR93XHU/oPnWhfVZmZ
-	 HjVV7nGe3krmgq14Iv5e6kwqk/FdaL1XQuitcu87xe1YT4s9mi1uK45zfPkinl4CBy
-	 Scj+bvKXgmu7w==
-Date: Tue, 5 Nov 2024 19:13:52 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Christian Marangi <ansuelsmth@gmail.com>, linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
-	Hui Ma <hui.ma@airoha.com>
-Subject: Re: [PATCH v2] PCI: mediatek-gen3: Avoid PCIe resetting via
- PCIE_RSTB for Airoha EN7581 SoC
-Message-ID: <ZypgYOn7dcYIoW4i@lore-desk>
-References: <20241104-pcie-en7581-rst-fix-v2-1-ffe5839c76d8@kernel.org>
- <20241105172254.GA1447085@bhelgaas>
+	s=k20201202; t=1730830525;
+	bh=4kEDw3mpTS72uH6/guigCdvq4B9391RyXxfp1ONslIg=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=o4EjHN3KIWyxO4EVu77Ic7n63NEXUNIJOI1UTcN1WeMkCroMfUSvNcEIl3R0tYTWW
+	 FvD7rzQpq9VH/Oym9sZReWhFOtlQQeijfLMpa/h1niRTILkqYAbwUbVZqXvg2K3ijM
+	 5RzBf9MAczmhIg0o+v88USk+hLM3L+dBl60ff0SvpnXvfJPFosYglnxc78Atu9Gov6
+	 AMklzazp6+h4RtriKf8HcN/RuSgIr7L5BegqYxcbbkp4T0EcsYAmyeerjF12oX1Tm7
+	 Dig+4rIo1CaleamLq358AQsipcjvqX8bCQkQjPNfQth6lAetRASKf0bONDg1N+/710
+	 /XY8RTqTlTOGg==
+From: Mark Brown <broonie@kernel.org>
+To: Fei Shao <fshao@chromium.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
+ Trevor Wu <trevor.wu@mediatek.com>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-sound@vger.kernel.org
+In-Reply-To: <20241105091246.3944946-1-fshao@chromium.org>
+References: <20241105091246.3944946-1-fshao@chromium.org>
+Subject: Re: [PATCH v2] ASoC: dt-bindings: mediatek,mt8188-mt6359: Add
+ mediatek,adsp property
+Message-Id: <173083052155.94172.6768091589461565148.b4-ty@kernel.org>
+Date: Tue, 05 Nov 2024 18:15:21 +0000
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="vqWK8aRdzgQTTEkC"
-Content-Disposition: inline
-In-Reply-To: <20241105172254.GA1447085@bhelgaas>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-9b746
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241105_101356_691001_BF67E73D 
-X-CRM114-Status: GOOD (  38.35  )
+X-CRM114-CacheID: sfid-20241105_101526_541670_BDFF57EF 
+X-CRM114-Status: GOOD (  13.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,204 +77,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, 05 Nov 2024 17:11:36 +0800, Fei Shao wrote:
+> On some MediaTek SoCs, an Audio DSP (ADSP) is integrated as a separate
+> hardware block that leverages Sound Open Firmware (SOF) and provides
+> additional audio functionalities. This hardware is optional, and the
+> audio subsystem will still function normally when it's not present.
+> 
+> To enable ADSP support, a 'mediatek,adsp' property is required in the
+> sound card node to pass the ADSP phandle. This allows AFE to link to
+> ADSP when the sound card is probed.
+> 
+> [...]
 
---vqWK8aRdzgQTTEkC
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Applied to
 
-> On Mon, Nov 04, 2024 at 11:00:05PM +0100, Lorenzo Bianconi wrote:
-> > Airoha EN7581 has a hw bug asserting/releasing PCIE_PE_RSTB signal
-> > causing occasional PCIe link down issues. In order to overcome the
-> > problem, PCIE_RSTB signals are not asserted/released during device prob=
-e or
-> > suspend/resume phase and the PCIe block is reset using REG_PCI_CONTROL
-> > (0x88) and REG_RESET_CONTROL (0x834) registers available via the clock
-> > module.
-> > Introduce flags field in the mtk_gen3_pcie_pdata struct in order to
-> > specify per-SoC capabilities.
->=20
-> Add blank lines between paragraphs so we know where they end.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-ack, I will fix it in v2.
+Thanks!
 
->=20
-> Where does this alternate way of doing reset (using REG_PCI_CONTROL
-> and REG_RESET_CONTROL) happen?  Why isn't there something in this
-> patch to use that alternate method at the same points where
-> PCIE_PE_RSTB is used?
+[1/1] ASoC: dt-bindings: mediatek,mt8188-mt6359: Add mediatek,adsp property
+      commit: ed4bcfbcf45d02fa81c77cff86e914d71c1b3c1f
 
-REG_RESET_CONTROL (0x834) is already asserted/released in the following flo=
-w:
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-mtk_pcie_en7581_power_up() -> reset_control_bulk_deassert() -> en7523_reset=
-_update()
-https://github.com/torvalds/linux/blob/master/drivers/clk/clk-en7523.c#L470
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-REG_PCI_CONTROL (0x88) is already asserted/released in the following flow:
-mtk_pcie_en7581_power_up() -> clk_bulk_enable() -> en7581_pci_enable()
-https://github.com/torvalds/linux/blob/master/drivers/clk/clk-en7523.c#L385
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
->=20
-> If we don't need to assert reset for Airoha EN7581, why do we need to
-> do it for the other SoCs?
+Thanks,
+Mark
 
-I guess the other SoCs (mtk ones) do not have the same hw issue with
-PCIE_PE_RSTB (but I am not sure about it).
-
-Regards,
-Lorenzo
-
->=20
-> > Tested-by: Hui Ma <hui.ma@airoha.com>
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > ---
-> > Changes in v2:
-> > - introduce flags field in mtk_gen3_pcie_flags struct instead of adding
-> >   reset callback
-> > - fix the leftover case in mtk_pcie_suspend_noirq routine
-> > - add more comments
-> > - Link to v1: https://lore.kernel.org/r/20240920-pcie-en7581-rst-fix-v1=
--1-1043fb63ffc9@kernel.org
-> > ---
-> >  drivers/pci/controller/pcie-mediatek-gen3.c | 59 ++++++++++++++++++++-=
---------
-> >  1 file changed, 41 insertions(+), 18 deletions(-)
-> >=20
-> > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/=
-controller/pcie-mediatek-gen3.c
-> > index 66ce4b5d309bb6d64618c70ac5e0a529e0910511..8e4704ff3509867fc0ff799=
-e9fb99e71e46756cd 100644
-> > --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> > @@ -125,10 +125,18 @@
-> > =20
-> >  struct mtk_gen3_pcie;
-> > =20
-> > +enum mtk_gen3_pcie_flags {
-> > +	SKIP_PCIE_RSTB	=3D BIT(0), /* skip PCIE_RSTB signals configuration
-> > +				   * during device probing or suspend/resume
-> > +				   * phase in order to avoid hw bugs/issues.
-> > +				   */
-> > +};
-> > +
-> >  /**
-> >   * struct mtk_gen3_pcie_pdata - differentiate between host generations
-> >   * @power_up: pcie power_up callback
-> >   * @phy_resets: phy reset lines SoC data.
-> > + * @flags: pcie device flags.
-> >   */
-> >  struct mtk_gen3_pcie_pdata {
-> >  	int (*power_up)(struct mtk_gen3_pcie *pcie);
-> > @@ -136,6 +144,7 @@ struct mtk_gen3_pcie_pdata {
-> >  		const char *id[MAX_NUM_PHY_RESETS];
-> >  		int num_resets;
-> >  	} phy_resets;
-> > +	u32 flags;
-> >  };
-> > =20
-> >  /**
-> > @@ -402,22 +411,33 @@ static int mtk_pcie_startup_port(struct mtk_gen3_=
-pcie *pcie)
-> >  	val |=3D PCIE_DISABLE_DVFSRC_VLT_REQ;
-> >  	writel_relaxed(val, pcie->base + PCIE_MISC_CTRL_REG);
-> > =20
-> > -	/* Assert all reset signals */
-> > -	val =3D readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
-> > -	val |=3D PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
-> > -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> > -
-> >  	/*
-> > -	 * Described in PCIe CEM specification sections 2.2 (PERST# Signal)
-> > -	 * and 2.2.1 (Initial Power-Up (G3 to S0)).
-> > -	 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
-> > -	 * for the power and clock to become stable.
-> > +	 * Airoha EN7581 has a hw bug asserting/releasing PCIE_PE_RSTB signal
-> > +	 * causing occasional PCIe link down. In order to overcome the issue,
-> > +	 * PCIE_RSTB signals are not asserted/released at this stage and the
-> > +	 * PCIe block is reset using REG_PCI_CONTROL (0x88) and
-> > +	 * REG_RESET_CONTROL (0x834) registers available via the clock module.
-> >  	 */
-> > -	msleep(100);
-> > -
-> > -	/* De-assert reset signals */
-> > -	val &=3D ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RS=
-TB);
-> > -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> > +	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
-> > +		/* Assert all reset signals */
-> > +		val =3D readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
-> > +		val |=3D PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
-> > +		       PCIE_PE_RSTB;
-> > +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> > +
-> > +		/*
-> > +		 * Described in PCIe CEM specification sections 2.2 (PERST# Signal)
-> > +		 * and 2.2.1 (Initial Power-Up (G3 to S0)).
-> > +		 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
-> > +		 * for the power and clock to become stable.
->=20
-> Blank line between paragraphs.
->=20
-> > +		 */
-> > +		msleep(PCIE_T_PVPERL_MS);
-> > +
-> > +		/* De-assert reset signals */
-> > +		val &=3D ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
-> > +			 PCIE_PE_RSTB);
-> > +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> > +	}
-> > =20
-> >  	/* Check if the link is up or not */
-> >  	err =3D readl_poll_timeout(pcie->base + PCIE_LINK_STATUS_REG, val,
-> > @@ -1160,10 +1180,12 @@ static int mtk_pcie_suspend_noirq(struct device=
- *dev)
-> >  		return err;
-> >  	}
-> > =20
-> > -	/* Pull down the PERST# pin */
-> > -	val =3D readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
-> > -	val |=3D PCIE_PE_RSTB;
-> > -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> > +	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
-> > +		/* Pull down the PERST# pin */
-> > +		val =3D readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
-> > +		val |=3D PCIE_PE_RSTB;
-> > +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-> > +	}
-> > =20
-> >  	dev_dbg(pcie->dev, "entered L2 states successfully");
-> > =20
-> > @@ -1214,6 +1236,7 @@ static const struct mtk_gen3_pcie_pdata mtk_pcie_=
-soc_en7581 =3D {
-> >  		.id[2] =3D "phy-lane2",
-> >  		.num_resets =3D 3,
-> >  	},
-> > +	.flags =3D SKIP_PCIE_RSTB,
-> >  };
-> > =20
-> >  static const struct of_device_id mtk_pcie_of_match[] =3D {
-> >=20
-> > ---
-> > base-commit: 3102ce10f3111e4c3b8fb233dc93f29e220adaf7
-> > change-id: 20240920-pcie-en7581-rst-fix-8161658c13c4
-> >=20
-> > Best regards,
-> > --=20
-> > Lorenzo Bianconi <lorenzo@kernel.org>
-> >=20
-
---vqWK8aRdzgQTTEkC
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZypgYAAKCRA6cBh0uS2t
-rPhYAP9axhSDdzxRbZRh8iXInGX5fkpcShFz0VS//r43s9MZfgEAoiTiyWcze16t
-KArG5YUlc0vzQp3pjMwBStrRVcFhVQA=
-=qiMV
------END PGP SIGNATURE-----
-
---vqWK8aRdzgQTTEkC--
 
