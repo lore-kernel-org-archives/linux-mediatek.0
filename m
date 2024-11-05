@@ -4,81 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDF85D1CA3B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2024 07:16:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75982D1266B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2024 08:44:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zAcG4U16bKQFhsKkGG7xv5CA4zm+IXs3PR2YUVCjODs=; b=oH8OajPilynCLXekJ/EfEqoQhN
-	uJU52gC2OXHFK2tCFWbfq74jA87BQLH1zbusqnH4zpYRczgLMjRQ4C5FFDXyD2+j+Ua9E5/Y/Haf+
-	V+oBEj1AJ9Fo+aTfB5Jc/sASNr1xJkYJ5fKilx2Mb+Spq8k5rl5TQrRSXf81C5KLnewh8EfLhYU/T
-	rV1pF+GTufj3BmfD0dPnvRxDGou6opfxdIXMB127chdZQNN0AaASqKlolsrGB3CIKw0mlUlRUkGwz
-	61f7Y2WztcPzJuIHWk6j6nNlpybXZyykSrSc6bxZ+irItUlWSFPFcewjLoIdi0BSnzzVkrTcNqoK0
-	GgstnxnQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lhWA1Zm5K5V9AUpbNbivvhJf5lb3uP79dyebOF/LcSo=; b=EaAbZi6Dr+Z+mAwqSxtBnRnBZ1
+	SokMzXDKhUTdjgweYErtZALGSPVYmj0LJ6C155NZjyVeUcCnhMAiJni2ELn/n7Wrgd9F//2UqW9Pp
+	88xg1sChIo2CiaKAsyBkz7XZYg1WDk+nNOlxz9n+77YVpEWCG4TaVuK6VtvetA9n+NMMZZj7G2Hh5
+	SdlspvZsIX53xjpbP/3rWbKPLE+8HSFFvMjj5o5xv5Og12wErX+XKmMqGKDMNjBlAcz+xMABBgdh0
+	+WKsWKf4Mfimc5iGe8hDA63FcROhp95W0c8JHZ8FVLJr3weWD2D+XOssG2VUWZD7T66zqotgmXJqi
+	zJK9Bnlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8DnN-0000000GAPx-2lCv;
-	Tue, 05 Nov 2024 07:16:09 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1t8FBD-0000000GNzY-26Gl;
+	Tue, 05 Nov 2024 08:44:51 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8DnH-0000000GANu-0ILV
-	for linux-mediatek@lists.infradead.org;
-	Tue, 05 Nov 2024 07:16:07 +0000
-X-UUID: ce18d1849b4511ef9048ed6ed365623b-20241105
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=zAcG4U16bKQFhsKkGG7xv5CA4zm+IXs3PR2YUVCjODs=;
-	b=O870lpWyidL/WFC6DsVKeL6nyWmMqPC8Ff26N89qbLwZJm8myZtOVC0uQLB6IWBaKvrr3u1g47Ul8zUgboR1hHiYQhqQBqC5XDrygpG2AGeYzLDaDeV30xUV/wRtfFtlNwLvZuJSLDQi1wr+O1fgVz+We+8eSffC1P3vpKeAozw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.42,REQID:fca3ed21-6f8a-4c79-8d06-57bb0c21ba6d,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:b0fcdc3,CLOUDID:5bccb548-ca13-40ea-8070-fa012edab362,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: ce18d1849b4511ef9048ed6ed365623b-20241105
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <yr.yang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1414321162; Tue, 05 Nov 2024 00:15:58 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Tue, 5 Nov 2024 15:15:52 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Tue, 5 Nov 2024 15:15:52 +0800
-From: yr.yang <yr.yang@mediatek.com>
-To: <linux-firmware@kernel.org>
-CC: <linux-mediatek@lists.infradead.org>, <shawnku@google.com>
-Subject: pull request: linux-firmware: Add sof-tplg for mt8195
-Date: Tue, 5 Nov 2024 15:12:52 +0800
-Message-ID: <20241105071549.17476-1-yr.yang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	id 1t8F8L-0000000GNLf-4AQm;
+	Tue, 05 Nov 2024 08:41:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8ABD75C4CA6;
+	Tue,  5 Nov 2024 08:41:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A480CC4CECF;
+	Tue,  5 Nov 2024 08:41:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1730796113;
+	bh=lcjUZiRno1Ml7Eu7/D4qbMfW+RtMrSIyM4fBtwM/V5k=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=izHqV7RdRft0K8i6MdXxnu9z1rs+gBkcvH/vO/rAOV8A+N905pP/iTkhGfgnYmjYp
+	 EhT5KRvfR8lhtWKzLnrCYVTjncgNhQAHpNw8BAiqY2uBdVlLAxp0ZY4rTTYaTsIsDW
+	 Q5tg42pDJt9NaZBI57nB5e0u3iSYMc5DE23o9km8=
+Date: Tue, 5 Nov 2024 09:41:35 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: "Haowei Cheng(Harvey)" <harvey.cheng@fibocom.com>
+Cc: "chunfeng.yun@mediatek.com" <chunfeng.yun@mediatek.com>,
+	"linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Subject: Re: 0001-usb-mtu3-fix-panic-in-mtu3_gadget_wakeup.patch
+Message-ID: <2024110512-popcorn-germless-01be@gregkh>
+References: <SEZPR02MB54953820B2A9EEBD807D0ED18E512@SEZPR02MB5495.apcprd02.prod.outlook.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--1.568900-8.000000
-X-TMASE-MatchedRID: /IY58nGWDe4eMlyElPeCGC0x8J2DopENXXbpPagZMfcR34ro7k23nZgC
-	Mlq+sZ+fKyIRzcIhtVlwE7IPDDg1SB8TzIzimOwPlpYqKNmWxsHZs3HUcS/scCq2rl3dzGQ1Gpe
-	evGsoI5fxYVW9Dt9xPAALbFkH3VDIHvkNQnA1c2mCCcS+AMQypYLqKlN9pJTaQGswJytg1/k5cF
-	bcyjLLWi3d7VyUb1gvvvfQgwBZV59pp55fZDlsr34cY/B7JqXaYZ1R7NXn0MdBmmCXcKyFFH7cG
-	d19dSFd
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--1.568900-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: E4CA96BD09B3A63677EE62CB0E07DB498613047871E9C7BE21BD98C91B753EBC2000:8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <SEZPR02MB54953820B2A9EEBD807D0ED18E512@SEZPR02MB5495.apcprd02.prod.outlook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241104_231603_138797_5A48F650 
-X-CRM114-Status: UNSURE (   6.54  )
+X-CRM114-CacheID: sfid-20241105_004154_116412_765C1FCF 
+X-CRM114-Status: UNSURE (   6.87  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,28 +71,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit 8dbcf94bfc68bdb1c6df3a42762b275557095558:
+On Mon, Nov 04, 2024 at 05:54:43PM +0000, Haowei Cheng(Harvey) wrote:
+> 
 
-  Merge branch 'robot/patch-0-1729102102' into 'main' (2024-10-17 15:40:04 +0000)
 
-are available in the Git repository at:
+For some reason you only attached a patch, please send it properly so we
+can actually review and apply it if needed.
 
-  https://github.com/mtk13576/sof_tplg adspsof
+thanks,
 
-for you to fetch changes up to 7fbd03699a95b0624f26da4dbb00019669b9bed9:
-
-  WHENCE: Add sof-tolg for mt8195 (2024-11-05 14:43:15 +0800)
-
-----------------------------------------------------------------
-YR Yang (1):
-      mediatek: Add sof-tolg for mt8195
-
-yr.yang (1):
-      WHENCE: Add sof-tolg for mt8195
-
- WHENCE                                                   |   3 +++
- mediatek/sof-tplg/sof-mt8195-mt6359-max98390-rt5682.tplg | Bin 0 -> 16191 bytes
- 2 files changed, 3 insertions(+)
- create mode 100644 mediatek/sof-tplg/sof-mt8195-mt6359-max98390-rt5682.tplg
-
+greg k-h
 
