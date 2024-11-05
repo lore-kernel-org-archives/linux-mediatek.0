@@ -4,91 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75F70D33A20
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2024 18:45:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FF36D3E760
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2024 20:59:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q/5k2rLKTo7KgnD4BR9+2dIjyjzlQVVkq8ThtV9wFto=; b=kEPZZkGhoo62UCm4dIljDZKPpu
-	4fR2VKltT7TAMOFRUl0p/iXJ6Z8mEo+ayVhaOmnsNhert6cu8xiE5sxGqsNfB7yDP2TJqj7TucJ4a
-	nBPWQgc23G2QtpW1ctoHkZxcIQiHH1FXVy213sfj983sWCKlOLdUlPJcIJM2gjwu3l0RJO30cyta2
-	zcM2uA50acFBuj+5O60lV7gJ7IbE7ipWOu7wz1jchwFh+f9t5J6brW2pUT8rrqi9hxCvb5gCdvIwU
-	VvhLj4rrewGDNvVS0pRSwhtRlUk/Hcp2nQJMg2KMGrrDz4Ib4KLDCUiSlJKkiMEHK2Q4jRwSW9AK9
-	EDwXwE2A==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=TQPCUdMCx39m0ZTNjhnYCaHxFkfeIc8TU+p5IJ3tkMk=; b=m9/WV9OFrCibJk
+	UgZNNE36Ot4W5bLy1jndJE9EDCRnNCC7WvUqXt/0g1E8aq5p853LOhfAwBhn/BJ+PSF/eYrr3AAQA
+	2MKAKLGCYuRffbmmaAD41S8X6x9XwkGzLCQbXCrrqCk+Kd+u0u5dh9JtJRiaGgUNZM6rG3tDICg0A
+	4Haepzhr4cPBLlTBK/vErXE/G925VtRYS/GeObZuXXZ7S3PJrBX7Q1OPYrvB0zTcjygxLO2dP3Vbh
+	R77v/66iM9DJ//F7NrmlzfiTHmGzgAXu28jvtZt/OGaPF9TeQD4R0wKbXpb3NyUB2uTDI1+wgRsyp
+	4aSKz2WwhsDFvIDFhhXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8OY0-00000000R2v-13Z6;
-	Tue, 05 Nov 2024 18:45:00 +0000
-Received: from mail-il1-x135.google.com ([2607:f8b0:4864:20::135])
+	id 1t8QeI-00000000o0p-1PW0;
+	Tue, 05 Nov 2024 20:59:38 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8OVi-00000000QBL-0K61
-	for linux-mediatek@lists.infradead.org;
-	Tue, 05 Nov 2024 18:42:44 +0000
-Received: by mail-il1-x135.google.com with SMTP id e9e14a558f8ab-3a4d1633df9so19650895ab.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 05 Nov 2024 10:42:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=rivosinc-com.20230601.gappssmtp.com; s=20230601; t=1730832156; x=1731436956; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Q/5k2rLKTo7KgnD4BR9+2dIjyjzlQVVkq8ThtV9wFto=;
-        b=MzHOhaibyZhL6RpROdjkZWnt2KBGOyUm0RgOlT5FIyhsYtvh98fz1/oLNV8L52VKul
-         HtiOUlDruj9+XkS8BdpDuBcxuePmSHpz4VAU9TCAhYO0lchn5goZ7sH5qNtdQsi8FS16
-         f5IoTV2sw2Bf330uj3sYS4TIgd3KksH9m45ErvLIt6pnt1Oz4ncKPBhAhpFBCDe70rMy
-         BF+6x4o8R72qZ7KV+Yl0QCJyT24P7sQrLG/maADC5f5jFvk04My68/lZhzDu8bHB2JFQ
-         hlwuSXJsYD+ntsE+cOm5q1ZKNlLyV1/mmhZxkAtjd7+3HdJZuXttGcqC/DxVyVOM5aKK
-         oQmQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730832156; x=1731436956;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Q/5k2rLKTo7KgnD4BR9+2dIjyjzlQVVkq8ThtV9wFto=;
-        b=fozZwXWd1hnR6HWby6vvn+qDNCsXNHIVMt9Pm34I3j9BVB/36WAOGxaPB5QDJRzZXZ
-         iN9ohPRSL9PMaaTNyc5K1GX/bFYxlVnhoS2heSLazL44HU5Oq3o3e3AyPJngnW+cRP3+
-         TlJRZOutnVO7DQC9pRRYI/HcRrh/TJcOQmG13L515qcBAYrZsMnfOln8U5KPJSrosdR4
-         WKodhTlmbze5ahppF230u0ZIBaa/rhJ4boLZwzasJlzgcHvEO3wAuOmP/RaYzUDnMrCS
-         uAr5kg8/sO2TTICmy9Mkz/nvd899KQIx73dE6ooPmfnJ/tOeqf09IlMHoN+i46Wev2fV
-         9P2Q==
-X-Forwarded-Encrypted: i=1; AJvYcCU4ivpz0Vp1kPjJiPhHrtMOWffoDYGwbmLsuQx25UubuBnW+suNKPDIDlMMHsFnzzdos/m6gDRFlXUJWagoLw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yynu8Skf5mhV8hyadhTbYO1KaJhklPyvgXkHWCwNehr0P0lJ9Bb
-	P4oZrPB44dkZZnjwYWBFJVNhaP2vUFj9mHSXIA2vhBZdJTd44EjWaFLmaWUMkwLD+UPjpU8/e2f
-	0wPBo2JB6TCXeVkJZcSSw9vOi0fpN/pxo8EppWw==
-X-Google-Smtp-Source: AGHT+IHafiE56RLycAX61PwBNuvy4TPzSnAPrcXkk0qt/3LnY4O4q/UmngQM9Vlm/dj0VEmvvCeNfFq4tqlEFF5LAvc=
-X-Received: by 2002:a05:6e02:152e:b0:3a6:b445:dc9c with SMTP id
- e9e14a558f8ab-3a6b445decemr144631815ab.3.1730832155951; Tue, 05 Nov 2024
- 10:42:35 -0800 (PST)
+	id 1t8QcZ-00000000nj6-3AoK;
+	Tue, 05 Nov 2024 20:57:53 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id DA119A4166A;
+	Tue,  5 Nov 2024 20:55:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5854CC4CECF;
+	Tue,  5 Nov 2024 20:57:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1730840270;
+	bh=DYfBBj3JaDu67bf4HxYtGzC1oE1D8X/KxacexvlRTs8=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=EEGT/NDigZAvieG+NbZ8bVmafnVdv5lQeTu46psHu8LRVQRAKknpPRZj7ox36oM+a
+	 QKCPkZYpWKK474piUG0cn5aVOARWAqhjMFdLIcPR0BVAhlStmLCNxfpXTHfB3FkpsQ
+	 aPZcOQQ+eU9bk+xj1gemiNL3JxKskhArqKP8OtrwLAIvMzRynQ7UMEHJlTI96+dm7g
+	 diX1CzAbC0FSW/Z8/wJAR08KPjX33v6jNGRFT5oF9xE1kg2dB1tthQlhZ9ISslpwgo
+	 Z7p5trRutiezgh5W7pXT6zX02+PhE11Wn9bU2gN6jIwiMlQ1nr31LkuzKDsecu3jPD
+	 fKv0Nsq6LrHaQ==
+Date: Tue, 5 Nov 2024 14:57:48 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Christian Marangi <ansuelsmth@gmail.com>, linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
+	Hui Ma <hui.ma@airoha.com>
+Subject: Re: [PATCH v2] PCI: mediatek-gen3: Avoid PCIe resetting via
+ PCIE_RSTB for Airoha EN7581 SoC
+Message-ID: <20241105205748.GA1484220@bhelgaas>
 MIME-Version: 1.0
-References: <20241104064650.799122-2-u.kleine-koenig@baylibre.com> <6b5b4f25-0f42-4f83-b6b5-82c1adbefe83@arm.com>
-In-Reply-To: <6b5b4f25-0f42-4f83-b6b5-82c1adbefe83@arm.com>
-From: Tomasz Jeznach <tjeznach@rivosinc.com>
-Date: Tue, 5 Nov 2024 10:42:25 -0800
-Message-ID: <CAH2o1u77TViePZ2eh+FY7oQXxFAp+SEVM38ROP1uKfeMZ9E7hg@mail.gmail.com>
-Subject: Re: [PATCH] iommu: Switch back to struct platform_driver::remove()
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@baylibre.com>, 
-	Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Hector Martin <marcan@marcan.st>, 
-	Sven Peter <sven@svenpeter.dev>, Alyssa Rosenzweig <alyssa@rosenzweig.io>, 
-	Rob Clark <robdclark@gmail.com>, Yong Wu <yong.wu@mediatek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Paul Walmsley <paul.walmsley@sifive.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
-	Albert Ou <aou@eecs.berkeley.edu>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Jason Gunthorpe <jgg@ziepe.ca>, Nicolin Chen <nicolinc@nvidia.com>, Michael Shavit <mshavit@google.com>, 
-	Mostafa Saleh <smostafa@google.com>, Lu Baolu <baolu.lu@linux.intel.com>, 
-	Georgi Djakov <quic_c_gdjako@quicinc.com>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, asahi@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev, 
-	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZypgYOn7dcYIoW4i@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241105_104238_710076_B45B6236 
-X-CRM114-Status: GOOD (  11.89  )
+X-CRM114-CacheID: sfid-20241105_125752_148396_28A7FFFE 
+X-CRM114-Status: GOOD (  18.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,36 +80,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> > diff --git a/drivers/iommu/riscv/iommu-platform.c b/drivers/iommu/riscv/iommu-platform.c
-> > index da336863f152..382ba2841849 100644
-> > --- a/drivers/iommu/riscv/iommu-platform.c
-> > +++ b/drivers/iommu/riscv/iommu-platform.c
-> > @@ -81,7 +81,7 @@ static const struct of_device_id riscv_iommu_of_match[] = {
-> >
-> >   static struct platform_driver riscv_iommu_platform_driver = {
-> >       .probe = riscv_iommu_platform_probe,
-> > -     .remove_new = riscv_iommu_platform_remove,
-> > +     .remove = riscv_iommu_platform_remove,
-> >       .driver = {
-> >               .name = "riscv,iommu",
-> >               .of_match_table = riscv_iommu_of_match,
-> > diff --git a/drivers/iommu/sprd-iommu.c b/drivers/iommu/sprd-iommu.c
-> > index a2f4ffe6d949..e84806eee281 100644
-> > --- a/drivers/iommu/sprd-iommu.c
-> > +++ b/drivers/iommu/sprd-iommu.c
-> > @@ -531,7 +531,7 @@ static struct platform_driver sprd_iommu_driver = {
-> >               .suppress_bind_attrs = true,
-> >       },
-> >       .probe  = sprd_iommu_probe,
-> > -     .remove_new = sprd_iommu_remove,
-> > +     .remove = sprd_iommu_remove,
-> >   };
-> >   module_platform_driver(sprd_iommu_driver);
-> >
-> > base-commit: c88416ba074a8913cf6d61b789dd834bbca6681c
->
+On Tue, Nov 05, 2024 at 07:13:52PM +0100, Lorenzo Bianconi wrote:
+> > On Mon, Nov 04, 2024 at 11:00:05PM +0100, Lorenzo Bianconi wrote:
+> > > Airoha EN7581 has a hw bug asserting/releasing PCIE_PE_RSTB signal
+> > > causing occasional PCIe link down issues. In order to overcome the
+> > > problem, PCIE_RSTB signals are not asserted/released during device probe or
+> > > suspend/resume phase and the PCIe block is reset using REG_PCI_CONTROL
+> > > (0x88) and REG_RESET_CONTROL (0x834) registers available via the clock
+> > > module.
+> > > Introduce flags field in the mtk_gen3_pcie_pdata struct in order to
+> > > specify per-SoC capabilities.
+> > 
+> > Where does this alternate way of doing reset (using REG_PCI_CONTROL
+> > and REG_RESET_CONTROL) happen?  Why isn't there something in this
+> > patch to use that alternate method at the same points where
+> > PCIE_PE_RSTB is used?
+> 
+> REG_RESET_CONTROL (0x834) is already asserted/released in the following flow:
+> 
+> mtk_pcie_en7581_power_up() -> reset_control_bulk_deassert() -> en7523_reset_update()
+> https://github.com/torvalds/linux/blob/master/drivers/clk/clk-en7523.c#L470
+> 
+> REG_PCI_CONTROL (0x88) is already asserted/released in the following flow:
+> mtk_pcie_en7581_power_up() -> clk_bulk_enable() -> en7581_pci_enable()
+> https://github.com/torvalds/linux/blob/master/drivers/clk/clk-en7523.c#L385
 
-Thanks, LGTM for iommu/riscv part of the patch.
+So IIUC, you're saying that on EN7581, the PCI hierarchy is reset by
+the soc->power_up() callback, mtk_pcie_en7581_power_up(), via
+REG_PCI_CONTROL and REG_RESET_CONTROL.
 
-Reviewed-by: Tomasz Jeznach <tjeznach@rivosinc.com>
+I assume the hierarchy is also reset by the non-EN7581 .power_up()
+callback, mtk_pcie_power_up()?
+
+And prior to this patch, we reset the hierarchy *again* in
+mtk_pcie_startup_port() via PCIE_RST_CTRL_REG, but this causes
+occasional "link down" issues because of a EN7581 hardware defect.
+
+So for EN7581, this patch skips the PCIE_RST_CTRL_REG reset in
+mtk_pcie_startup_port().
+
+.power_up() and mtk_pcie_startup_port() are used both at probe time
+and in mtk_pcie_resume_noirq().  So after this patch, I assume:
+
+  - EN7581 resets the hierarchy once at probe and resume instead of
+    twice.
+
+  - Non-EN7581 resets the hierarchy twice at probe and resume.
+
+I assume I'm missing something (maybe mtk_pcie_power_up() doesn't
+actually reset the hierarchy?) because I don't see why we would reset
+the hierarchy twice for either controller.
+
+Bjorn
 
