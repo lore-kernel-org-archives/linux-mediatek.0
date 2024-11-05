@@ -4,65 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C154D2C11B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2024 15:00:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46A67D2B94E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2024 15:46:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rBoUfMyPxqwPFaikmd4iEQcy/AgVwrpmivkKz5IC/Fk=; b=xs1mpT/alXZB9W5lFt3RpgqhRf
-	r2J7zNYmC00GXbI6P3AsOhUqSSraajzqX1IuHkaEyYzMvyKfp+3urAryTOj7dKmJj3N5zFhpcpWee
-	01WJ5Kk9F0TER84QlBPhk+Dy0Gvw8a0TAjwL0DrMWxLgQcIXWlyg0RH2CVjwDg1RAOBvCtdhkkS3M
-	VNwJ0JszcBROHO3M0LCpX5fwkEMCOD2ODB+jZcdUQg/0y76u9FGY6FC/FjljjPfQr43xFKRa1HyqO
-	U+Eec8P9n43SZR9B7hAAcc45ZyuNESz/I1DT4kGJM/Q4HsXEucIoWPYnB+OI8oHTTAa6PAD2XyQa+
-	MaQ3L/Jw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HBLsfZDP9XEHM79ztSmUAr63z/6xw7Kd0kuMacswMm0=; b=wlqaROHqr2abPgmfRkFdiknoGK
+	L7khXaFDfVvsk+rWDsxWw9nkeJj+OsyGEd6EZVK90Fr6+oFJHUdca4vwBSc/42yDm6hdwV7Kf5mk2
+	C/d4+SfvNKkEyqrFL0qry6dVUryv+E49Wf+w+FYF6bLt8qNLvXy5KLRHVmnirjMDncCiHBfoOWfMP
+	hYBY/KjflxOw+dQKJxgUUG7hwXKBk+3DSxTngwkFuPwjzB9xWnOO7REgL8hu+y4j7aiUtUjg5Y+UI
+	eeqUNRz/ZdA11tN+DmZaDrFkaeoz2Xwvw5GUe82ZZp7IKcnozRORlgLDNcZsbytrgJKsZph+ARxJ9
+	TL3AWq5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8L2j-0000000HMW3-0CDa;
-	Tue, 05 Nov 2024 15:00:29 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1t8Ll6-0000000HTLW-41j6;
+	Tue, 05 Nov 2024 15:46:21 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8L2f-0000000HMV0-3JUP
-	for linux-mediatek@lists.infradead.org;
-	Tue, 05 Nov 2024 15:00:27 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 779645C4B18;
-	Tue,  5 Nov 2024 14:59:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E60B0C4CECF;
-	Tue,  5 Nov 2024 15:00:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730818823;
-	bh=hwtMV9Qj3NKD2N3GDsqgdxIXuPb/uUtnEmMIN4rXi2k=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=qdv91sWHFUwZk0VDjArFin6owvheOMzHKOnwxIFrw3vvJcan/FZ9GJbFp7wDe4t92
-	 Bm9IwdTW1Wd3KB1kxKJOZaGB158an2xiYd2WZx9SX2ojduoHYaNyAkbeFQtMPcJthd
-	 a5NBkeZKF699UHFDUkT7CdSxWpDnNBDtfyDYA8M5grMc2dUQ4a0HURSttyTK7vlIA/
-	 jK8Zb3wC+8la2sQEPdvmoELTfCy7+HQVcAY/LZdbnVNBlKZtHdNOjGZoBo+UqSHvjq
-	 1LERG76VYgx9OLQof0vMvV/Jvid0wOaMbn2pWz2yDX1xe3DMJLTOHg+fv3ftMY2FsS
-	 wFltS6PoZUdHw==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EADA83809A80;
-	Tue,  5 Nov 2024 15:00:33 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1t8KP4-0000000HEyn-2fWd;
+	Tue, 05 Nov 2024 14:19:32 +0000
+X-UUID: f2f5aac89b8011ef82ff63e91e7eb18c-20241105
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=HBLsfZDP9XEHM79ztSmUAr63z/6xw7Kd0kuMacswMm0=;
+	b=P4nyIybGLfxxN0YskyS2g11CBN7q3n0WdIGMc+5E5t7l+VLfigaNdLF69U1Tuh6/8k/Isgm/olzquSyLzWhwMjRwd+PDDRgKx9sf824xPFjOd1akAGO80ZXMo8tUJDOLHF+pwPtsH8OZ8N1x52e2qdXHQlTr9HoImFhxpKXYR/k=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.42,REQID:bb1231c4-557c-4dce-ba9f-17f340bf9f36,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:4daf98e7-cb6b-4a59-bfa3-98f245b4912e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: f2f5aac89b8011ef82ff63e91e7eb18c-20241105
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <skylake.huang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 816249531; Tue, 05 Nov 2024 07:19:20 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 5 Nov 2024 22:19:17 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 5 Nov 2024 22:19:17 +0800
+From: Sky Huang <SkyLake.Huang@mediatek.com>
+To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>, "David S. Miller"
+	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Daniel Golle
+	<daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
+	<SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Simon
+ Horman <horms@kernel.org>, <linux-kernel@vger.kernel.org>,
+	<netdev@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+CC: Steven Liu <Steven.Liu@mediatek.com>, Sky Huang
+	<skylake.huang@mediatek.com>
+Subject: [PATCH net-next v2 0/5] Re-organize MediaTek ethernet phy drivers and propose mtk-phy-lib
+Date: Tue, 5 Nov 2024 22:19:06 +0800
+Message-ID: <20241105141911.13326-1-SkyLake.Huang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH] Bluetooth: btusb: Add new HWIDs for MT7925
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <173081883249.584547.18341653514811903582.git-patchwork-notify@kernel.org>
-Date: Tue, 05 Nov 2024 15:00:32 +0000
-References: <20241104131904.30447-1-jiande.lu@mediatek.com>
-In-Reply-To: <20241104131904.30447-1-jiande.lu@mediatek.com>
-To: Jiande Lu <jiande.lu@mediatek.com>
-Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
- sean.wang@mediatek.com, chris.lu@mediatek.com, deren.Wu@mediatek.com,
- aaron.hou@mediatek.com, steve.lee@mediatek.com,
- linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241105_070026_053129_5FB9E4A2 
-X-CRM114-Status: UNSURE (   7.27  )
+X-CRM114-CacheID: sfid-20241105_061930_705887_CE3F147C 
+X-CRM114-Status: UNSURE (   9.77  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,30 +91,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+From: Sky Huang <skylake.huang@mediatek.com>
 
-This patch was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+This patchset comes from patch 1/9, 3/9, 4/9, 5/9 and 7/9 of:
+https://lore.kernel.org/netdev/20241004102413.5838-1-SkyLake.Huang@mediatek.com/
 
-On Mon, 4 Nov 2024 21:19:04 +0800 you wrote:
-> Add below HWIDs for MediaTek MT7925 USB Bluetooth chip.
-> VID 0x0489, PID 0xe14f
-> VID 0x0489, PID 0xe150
-> VID 0x0489, PID 0xe151
-> 
-> Patch has been tested successfully and controller is recognized
-> device pair successfully.
-> 
-> [...]
+This patchset changes MediaTek's ethernet phy's folder structure and
+integrates helper functions, including LED & token ring manipulation,
+into mtk-phy-lib.
 
-Here is the summary with links:
-  - Bluetooth: btusb: Add new HWIDs for MT7925
-    https://git.kernel.org/bluetooth/bluetooth-next/c/408ec48013da
+Signed-off-by: Sky Huang <skylake.huang@mediatek.com>
+---
+Change in v2:
+- Add correct Reviewed-by tag in each patch.
+---
+SkyLake.Huang (5):
+  net: phy: mediatek: Re-organize MediaTek ethernet phy drivers
+  net: phy: mediatek: Move LED helper functions into mtk phy lib
+  net: phy: mediatek: Improve readability of mtk-phy-lib.c's
+    mtk_phy_led_hw_ctrl_set()
+  net: phy: mediatek: Integrate read/write page helper functions
+  net: phy: mediatek: add MT7530 & MT7531's PHY ID macros
 
-You are awesome, thank you!
+ MAINTAINERS                                   |   6 +-
+ drivers/net/phy/Kconfig                       |  17 +-
+ drivers/net/phy/Makefile                      |   3 +-
+ drivers/net/phy/mediatek/Kconfig              |  26 ++
+ drivers/net/phy/mediatek/Makefile             |   4 +
+ .../mtk-ge-soc.c}                             | 298 ++----------------
+ .../phy/{mediatek-ge.c => mediatek/mtk-ge.c}  |  31 +-
+ drivers/net/phy/mediatek/mtk-phy-lib.c        | 270 ++++++++++++++++
+ drivers/net/phy/mediatek/mtk.h                |  89 ++++++
+ 9 files changed, 437 insertions(+), 307 deletions(-)
+ create mode 100644 drivers/net/phy/mediatek/Kconfig
+ create mode 100644 drivers/net/phy/mediatek/Makefile
+ rename drivers/net/phy/{mediatek-ge-soc.c => mediatek/mtk-ge-soc.c} (83%)
+ rename drivers/net/phy/{mediatek-ge.c => mediatek/mtk-ge.c} (82%)
+ create mode 100644 drivers/net/phy/mediatek/mtk-phy-lib.c
+ create mode 100644 drivers/net/phy/mediatek/mtk.h
+
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.45.2
 
 
