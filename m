@@ -4,76 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FC65D44D5E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2024 13:37:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57205D44D5C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2024 13:46:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S/fydsM2O5CxZlPZ86HFX2vV5UFv4fQGWtN0bNA59As=; b=k7WRJ+mD9RRMyE8aLCFUTUA+y5
-	h3hC5KX8yadySw5DkhrYi+0nOvGWZv9kj0uqa80X55D0FjqO3mc4Clhbq8ddZfeVwmCpsuemTLyvR
-	UTIJFLWDweMjeW2gnu1uWcy6Xbp1tG5dMz2gpb9ut8ENanJGL53l7QlTyRdCvfzbVCKmdfdL/M+8M
-	CDlY7iS3LV1uQhfq4d7ekMD/b0G8PfRhMHFv+BZS1VYZxz/0QUXWxFFqa/WGQuicQLOS0PGEb3lwy
-	HXC5p+NPh5FPFJPT1WNHgEVCQvVW+BjnsJz3odfZIYhiJXXivx6ZkvR+S3VG09NopFCpQuvEhhlD1
-	ymdFQIpw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yquc1pkSmkMrAJj2ZpnsB16hp5c977D4E2q6n4j0fMI=; b=ibWsquc0mG9qensuDSINKb08lv
+	4PaW8JdZ65HYlgahLUzS4hYHncH2Fin2LRXVmWLhACgPJWnK6Lg2K13srwT/8de3tcTh0eYQREEu5
+	tiMJn1QeTFV4rSrLiGQ/AkY5JMWhGAGwUmxWgcSDn7cEn70sYjtcSgTwMqnUkdeqJQImDdXXZDDxP
+	lB8+eBAqowhXdE7HmgO/mtbouW00gRkBz2QnVDHRdCLu/8ny+EQv/pn7nUSZLSRHljyhApfGc7uio
+	FNbgR7jfIS3ktAkh7A0hWBLo8cbSI4Ls6BVNhKK02JX7GxIYYuuCzAqVGTEtXhTnkdTu2yAAxsbyZ
+	6lRxioJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8gDt-00000003RZ6-2khS;
-	Wed, 06 Nov 2024 13:37:25 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1t8gMR-00000003TRd-0KUO;
+	Wed, 06 Nov 2024 13:46:15 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8fiL-00000003LkC-19nK;
-	Wed, 06 Nov 2024 13:04:57 +0000
-Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 0B6BA475;
-	Wed,  6 Nov 2024 14:04:34 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1730898275;
-	bh=682rZ4W8M3E5mVOEB3/2mrEAAw15OgHnlpXKz526rA0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=iF+f2JrOf8LKiTjHV1UChMRbmf6ckq9rA1BPUFp1xg1DRGXF+rkuI5950BTGfwpL+
-	 Yu4AWc7mmgpAU2nekPMMSN1CPfv8fof6p/lUxd1J/aU5O1aWQByo6hUgRFK9fVFltt
-	 vI+mieU5JY7lKw6pBcmWAlmuai8Wap7Qb23EoTFI=
-Date: Wed, 6 Nov 2024 15:04:37 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: CK Hu =?utf-8?B?KOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-Cc: "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>,
-	"christian.koenig@amd.com" <christian.koenig@amd.com>,
-	"mchehab@kernel.org" <mchehab@kernel.org>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"robh@kernel.org" <robh@kernel.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"krzk+dt@kernel.org" <krzk+dt@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Shu-hsiang Yang =?utf-8?B?KOaliuiIkue/lCk=?= <Shu-hsiang.Yang@mediatek.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"yunkec@chromium.org" <yunkec@chromium.org>,
-	"linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>,
-	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	Yaya Chang =?utf-8?B?KOW8tembhea4hSk=?= <Yaya.Chang@mediatek.com>,
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	Teddy Chen =?utf-8?B?KOmZs+S5vuWFgyk=?= <Teddy.Chen@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"hidenorik@chromium.org" <hidenorik@chromium.org>,
-	Shun-Yi Wang =?utf-8?B?KOeOi+mghuWEhCk=?= <Shun-Yi.Wang@mediatek.com>
-Subject: Re: [PATCH v1 10/10] uapi: linux: add mediatek isp_7x camsys user api
-Message-ID: <20241106130437.GA16791@pendragon.ideasonboard.com>
-References: <20241009111551.27052-1-Shu-hsiang.Yang@mediatek.com>
- <20241009111551.27052-11-Shu-hsiang.Yang@mediatek.com>
- <ff96b314cdd3d52a14a5e91f79ec3097d04c4380.camel@mediatek.com>
+	id 1t8fwI-00000003Ocs-245b;
+	Wed, 06 Nov 2024 13:19:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1730899152;
+	bh=Y2kuF1y/NzxzZSdECkHXDyEvhGwvQEEzHrCK+JiFvvM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=UN0qJRIDf4u6ncttlCK8iOruGkwAbwef2x9WrpUy9FNLFlitXgFWepwQ+0TNStCA0
+	 13oClNhi0cghSZgnpcGa+2XyB6g9s3LyaNFRlZhV6HkLtzV+YCp52WkYxl+6rhhJ0l
+	 tjtRNaEbm8uNuSELwvJFR6floWAkbKrolFLAgKLuUay+ZcKMeiuJgKKh/U9qhOpIcB
+	 rkjiU2uzTUJkhN0PFi/gL27q/pxy0ynZHQfdtYZkwdzNFucQmnzAhbQVAbg6nom+8h
+	 8s79lL/sp4rZ/N9q3pLpX6MTjtfsqF0QeGUcM090msrFrOTiCOXkrwGRYulYL2lsjI
+	 bD9TJoq+mZCyA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D9BD917E3624;
+	Wed,  6 Nov 2024 14:19:11 +0100 (CET)
+Message-ID: <eb0a7307-de25-47b1-aaed-032c7734ec70@collabora.com>
+Date: Wed, 6 Nov 2024 14:19:11 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <ff96b314cdd3d52a14a5e91f79ec3097d04c4380.camel@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/2] dt-bindings: arm: mediatek: Add MT8188 Lenovo
+ Chromebook Duet (11", 9)
+To: Fei Shao <fshao@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Conor Dooley <conor+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20241105093222.4055774-1-fshao@chromium.org>
+ <20241105093222.4055774-2-fshao@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20241105093222.4055774-2-fshao@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_050449_461113_166A2D56 
-X-CRM114-Status: GOOD (  14.67  )
+X-CRM114-CacheID: sfid-20241106_051914_715602_294AB7A4 
+X-CRM114-Status: GOOD (  13.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,54 +78,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 14, 2024 at 05:56:40AM +0000, CK Hu (胡俊光) wrote:
-> Hi, Shu-hsiang:
+Il 05/11/24 10:30, Fei Shao ha scritto:
+> Add entries for the MT8188-based Chromebook "Ciri", also known as
+> Lenovo Chromebook Duet (11", 9).
 > 
-> On Wed, 2024-10-09 at 19:15 +0800, Shu-hsiang Yang wrote:
-> > Add UAPI for MediaTek ISP platform, providing user-space
-> > interfaces for the new camsys driver.
-> > 
-> > Signed-off-by: Shu-hsiang Yang <Shu-hsiang.Yang@mediatek.com>
-> > ---
+> This device features a detachable design with touchscreen, detachable
+> keyboard and USI 2.0 Stylus support, and has 8 SKUs to accommodate the
+> combinations of second-source components.
 > 
-> [snip]
-> 
-> > +
-> > +/* MTK ISP camsys controls */
-> > +#define V4L2_CID_MTK_CAM_USED_ENGINE_LIMIT	(V4L2_CID_USER_MTK_CAM_BASE + 1)
-> > +#define V4L2_CID_MTK_CAM_BIN_LIMIT		(V4L2_CID_USER_MTK_CAM_BASE + 2)
-> > +#define V4L2_CID_MTK_CAM_FRZ_LIMIT		(V4L2_CID_USER_MTK_CAM_BASE + 3)
-> > +#define V4L2_CID_MTK_CAM_RESOURCE_PLAN_POLICY	(V4L2_CID_USER_MTK_CAM_BASE + 4)
-> > +#define V4L2_CID_MTK_CAM_USED_ENGINE		(V4L2_CID_USER_MTK_CAM_BASE + 5)
-> > +#define V4L2_CID_MTK_CAM_BIN			(V4L2_CID_USER_MTK_CAM_BASE + 6)
-> > +#define V4L2_CID_MTK_CAM_FRZ			(V4L2_CID_USER_MTK_CAM_BASE + 7)
-> > +#define V4L2_CID_MTK_CAM_USED_ENGINE_TRY	(V4L2_CID_USER_MTK_CAM_BASE + 8)
-> > +#define V4L2_CID_MTK_CAM_BIN_TRY		(V4L2_CID_USER_MTK_CAM_BASE + 9)
-> > +#define V4L2_CID_MTK_CAM_FRZ_TRY		(V4L2_CID_USER_MTK_CAM_BASE + 10)
-> > +#define V4L2_CID_MTK_CAM_PIXEL_RATE		(V4L2_CID_USER_MTK_CAM_BASE + 11)
-> > +#define V4L2_CID_MTK_CAM_FEATURE		(V4L2_CID_USER_MTK_CAM_BASE + 12)
-> > +#define V4L2_CID_MTK_CAM_SYNC_ID		(V4L2_CID_USER_MTK_CAM_BASE + 13)
-> > +#define V4L2_CID_MTK_CAM_RAW_PATH_SELECT	(V4L2_CID_USER_MTK_CAM_BASE + 14)
-> > +#define V4L2_CID_MTK_CAM_HSF_EN			(V4L2_CID_USER_MTK_CAM_BASE + 15)
-> > +#define V4L2_CID_MTK_CAM_PDE_INFO		(V4L2_CID_USER_MTK_CAM_BASE + 16)
-> > +#define V4L2_CID_MTK_CAM_MSTREAM_EXPOSURE	(V4L2_CID_USER_MTK_CAM_BASE + 17)
-> > +#define V4L2_CID_MTK_CAM_RAW_RESOURCE_CALC	(V4L2_CID_USER_MTK_CAM_BASE + 18)
-> > +#define V4L2_CID_MTK_CAM_TG_FLASH_CFG		(V4L2_CID_USER_MTK_CAM_BASE + 19)
-> > +#define V4L2_CID_MTK_CAM_RAW_RESOURCE_UPDATE	(V4L2_CID_USER_MTK_CAM_BASE + 20)
-> > +#define V4L2_CID_MTK_CAM_CAMSYS_HW_MODE		(V4L2_CID_USER_MTK_CAM_BASE + 21)
-> > +
-> 
-> Please give introduction of how to use these user space interface.
+> Signed-off-by: Fei Shao <fshao@chromium.org>
 
-I'm very, very *not* thrilled by all this. It looks like a big pile of
-hacks really. Every single parameter used by those controls needs to be
-clearly documented, including explaining how they are used, in order for
-us to review the API. I suspect that many of the parameters should
-instead be handled through the ISP parameters buffers, or be controlled
-from standard V4L2 APIs.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
--- 
-Regards,
 
-Laurent Pinchart
+> ---
+> 
+> (no changes since v1)
+> 
+>   Documentation/devicetree/bindings/arm/mediatek.yaml | 13 +++++++++++++
+>   1 file changed, 13 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> index 1d4bb50fcd8d..4b68f0baf010 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> @@ -307,6 +307,19 @@ properties:
+>             - enum:
+>                 - mediatek,mt8186-evb
+>             - const: mediatek,mt8186
+> +      - description: Google Ciri (Lenovo Chromebook Duet (11", 9))
+> +        items:
+> +          - enum:
+> +              - google,ciri-sku0
+> +              - google,ciri-sku1
+> +              - google,ciri-sku2
+> +              - google,ciri-sku3
+> +              - google,ciri-sku4
+> +              - google,ciri-sku5
+> +              - google,ciri-sku6
+> +              - google,ciri-sku7
+> +          - const: google,ciri
+> +          - const: mediatek,mt8188
+>         - items:
+>             - enum:
+>                 - mediatek,mt8188-evb
+
+
 
