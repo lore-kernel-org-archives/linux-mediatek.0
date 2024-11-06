@@ -4,89 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBA44D59F75
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2024 22:14:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E554D59F7E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2024 22:42:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YB3xeY071IgcEnEiq3AVPEiyG5ZVXfdzV1Ck//Skg7M=; b=HIgVD5x8k8ITAftu++At/S2bNC
-	BX/rQY3uIh99GpokdKI7SF6wFgRx3w33KbJv+xy1J7vMsasz1QfKfGcaZ2Wx6WMWDBNkR/8v9dM+7
-	YI+7jiswSyGpgaGHHPDXLpdMnoPmK2v5EAuc2KYGZsp3bJlnxwSm4t5nzqZHftaGpcMRiX7AT0pv4
-	1vjvb8MyB5uYJy5Ju2K9JHmdfYjtSpAw6J5tIi7qbjX3xyfUOssbus3gdNIA/baEJ0Vy/b3ihJNUF
-	s4E9vaJKn4LTFdx112i6xYkOKJ3BKPeTObdj33gmuQrD2IO9IujDFXBwtU56tWK6SeAkpXEiwfdXy
-	leRt2ieg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nJEoJh2QRk5GndV8ElnJR8cUvxNLG7pbrbdAi0c+Uos=; b=kUzPslFyrAXx3bYJSm2ybAPvx0
+	6IkHE01q/5U3Fmy/2TvTcPcWiYkQgVRY7IBBwVKEJSPbAZ+DnD4E7GYLF3H2etlmfFnnIST6Qwm/I
+	4ZvjCTkdOfx3E70tmkoFGNlAe2xNzW3nLX/q5uU6QcRq3u15aLBCSPI+HWO8gRiqE9XYqPYD4C9cJ
+	pbXcLCCMsG/ivvQRPkyRpxyYLUE/lPR7xOT+L7w++TOQaLcDXkcXjtnnWTfZDxszOmy9c6/6YdrJP
+	yU+EW+0Fh+DBjsc3J3/x6HA51leyOIrOsGb9+9Rq37g0lZj8itHxG/EQWKRg8+Oo+5GNT6TD97jM5
+	pP93wqQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8oI8-00000004t2T-3hQv;
-	Wed, 06 Nov 2024 22:14:20 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1t8ojG-00000004xfW-30y7;
+	Wed, 06 Nov 2024 22:42:22 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8oGO-00000004snH-16Iu;
-	Wed, 06 Nov 2024 22:12:34 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-43155abaf0bso2973645e9.0;
-        Wed, 06 Nov 2024 14:12:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1730931150; x=1731535950; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=YB3xeY071IgcEnEiq3AVPEiyG5ZVXfdzV1Ck//Skg7M=;
-        b=OguKIDAbAzdxsUwNs1xdNTzxbmbyluMLQ8Q2F4WkH/7NxrFENWp7s/9TOqQkJxLGj/
-         oHNFrs2zf3TC4gMLTjhqjoGDOcakgvLQXnZJRXBEpeW44swCO7JT4oLmAuexasaXmc5W
-         Hx8r2+YTNGjObXIXMHcU0z+eeTNR1G8jKRbvou8vL2K0qsXCaAHJ2BoYv6o+iN6gRaEY
-         mkiTGmaadWDcPCamafBLQS8ZAZ3xktonD2XAXGtXkLb3Lg1a2X5PzGVbN28DeO63L8DR
-         DH2il+Y7mnn8pwdVS1ObuuzG+xRi3lzTrohUcpME8Hda0GT/9IZJ6jEUsRMhtQcvms/+
-         jQZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730931150; x=1731535950;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=YB3xeY071IgcEnEiq3AVPEiyG5ZVXfdzV1Ck//Skg7M=;
-        b=jKbPZF45pXDnz0UwifhL2TJd0S0obERNsolQb9bkWyEMoKw+cWan6BFtg6iu2FkGGn
-         asUwtS4rr6fjBvLehJpxBt79+N8YGkpUsKwaoVE3TZgZTSIbeVm2wlBqeVcuGqQuqrzv
-         1SQPmMqP82J+9yEMQOm6dg3l1HIb/B4MPbVV/WdEHbZ+uRhOOigeD+/yQTU+sIy4YGAl
-         fnUymaKcfbLrNTC3+vg1M0aJMkIlMTwPcQhz7mFDbzt+wXIbKOysQ+zqTQ9MlBze1qzV
-         5OF5HNlZKte/8lnGU2Z67tZVlxFJzAjqDbzak6YTYTsNvSAURMrMPREJa22z2JYcA6a0
-         bHZg==
-X-Forwarded-Encrypted: i=1; AJvYcCUTPcBh8lMnYjdb21X3j+Ndw9pvX4FvjxFq7lohtVObRzL86oXafpbWznU6KasHu9S67Yt9X08GF3ur1aF7tek=@lists.infradead.org, AJvYcCXpLDIDYlT3OSGOGebitkSkBMgqKu7y9fia8yAH+DtRYTAfQ9yliOR3SzHqD9NFU1B7HrXPv37mOqbq/v1G6CEA@lists.infradead.org
-X-Gm-Message-State: AOJu0YzVWfjQEG807xkEXP8o4o6nu9AeT904vuoBFDiXq7gLnx9Qn18/
-	JvGBKoF7JidB75abBxL+DiFbKEUX233NSZqGECbI7P1UB1bjl8+8
-X-Google-Smtp-Source: AGHT+IFfw5uAMtdU1Om11dpYAnWEuvswlrvP8MXiZx6I0NsIQwFcLiPX5mXS4Yxg1s/Iptb9rEr+Hw==
-X-Received: by 2002:a05:6000:4009:b0:37d:4e80:516 with SMTP id ffacd0b85a97d-381c7a5f773mr18655654f8f.34.1730931150127;
-        Wed, 06 Nov 2024 14:12:30 -0800 (PST)
-Received: from [192.168.0.2] ([69.6.8.124])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-381c113e771sm20526409f8f.81.2024.11.06.14.12.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 06 Nov 2024 14:12:28 -0800 (PST)
-Message-ID: <3d17cd64-46c5-427f-b24f-9091546e2edf@gmail.com>
-Date: Thu, 7 Nov 2024 00:12:56 +0200
+	id 1t8ohU-00000004xR2-1Tf7;
+	Wed, 06 Nov 2024 22:40:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 886CAA445C2;
+	Wed,  6 Nov 2024 22:38:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C94ADC4CECD;
+	Wed,  6 Nov 2024 22:40:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1730932831;
+	bh=zlGCzVAGRGtkQDBPcQQg/UhnzVd+u1CKmbHht0FUdm4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Ejqg1IDHwzlcXm+gTVfHyG/fH9dn2aye1emFSVwYUpLaRVBns6ZFdN+jTqji92nya
+	 wNQ8OtReYzup80Z6PZqSGQrtWd5UQzSLLE20QAcOrK8hj36qEdKBDwf+F5g45svYtZ
+	 iJeMOJ19xgjWFFl2DmzcFcGF2pMeb/wBmIvFyFDK770WA4yBTnl7QWhm7sRWWLgZ9p
+	 46AHtzrmU3TgQdA+CkQnW9tLM7ai2LBbo+FCgDYU3HG2Q/v+6dQQ6kln27zonzGsOr
+	 B3URqqckrkan9d5iqjFR2+Jas0sW+GHEmAVYWMXYXtGXMyrbGyd+K+faKSkFK/oP7m
+	 u1um5ZFqX0uQg==
+Date: Wed, 6 Nov 2024 23:40:28 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: linux-pci@vger.kernel.org, ryder.lee@mediatek.com,
+	jianjun.wang@mediatek.com, lpieralisi@kernel.org, kw@linux.com,
+	robh@kernel.org, bhelgaas@google.com,
+	linux-mediatek@lists.infradead.org, lorenzo.bianconi83@gmail.com,
+	linux-arm-kernel@lists.infradead.org,
+	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org,
+	nbd@nbd.name, dd@embedd.com, upstream@airoha.com,
+	angelogioacchino.delregno@collabora.com
+Subject: Re: [PATCH v4 4/4] PCI: mediatek-gen3: Add Airoha EN7581 support
+Message-ID: <ZyvwXHMRz0kI0J5O@lore-desk>
+References: <aca00bd672ee576ad96d279414fc0835ff31f637.1720022580.git.lorenzo@kernel.org>
+ <20241106203219.GA1530199@bhelgaas>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] [net] net: wwan: t7xx: Change PM_AUTOSUSPEND_MS to 5000
-To: =?UTF-8?B?5ZCz6YC86YC8?= <wojackbb@gmail.com>
-Cc: Jakub Kicinski <kuba@kernel.org>, netdev@vger.kernel.org,
- chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
- haijun.liu@mediatek.com, m.chetan.kumar@linux.intel.com,
- ricardo.martinez@linux.intel.com, loic.poulain@linaro.org,
- johannes@sipsolutions.net, davem@davemloft.net, edumazet@google.com,
- pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
- angelogioacchino.delregno@collabora.com, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com
-References: <20241028073015.692794-1-wojackbb@gmail.com>
- <20241031185150.6ef22ce0@kernel.org>
- <CAAQ7Y6an8ZkxYpJehd8cBRPHjqyQofc6A4QdPzM_dhh1Sn0nng@mail.gmail.com>
-Content-Language: en-US
-From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
-In-Reply-To: <CAAQ7Y6an8ZkxYpJehd8cBRPHjqyQofc6A4QdPzM_dhh1Sn0nng@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="ICCrOV43i12jfSvz"
+Content-Disposition: inline
+In-Reply-To: <20241106203219.GA1530199@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_141232_326954_C09ACF9C 
-X-CRM114-Status: GOOD (  14.03  )
+X-CRM114-CacheID: sfid-20241106_144032_554625_18C4D31B 
+X-CRM114-Status: GOOD (  25.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,57 +78,148 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Jack,
 
-On 06.11.2024 13:10, 吳逼逼 wrote:
-> If the PCIE connection remains in the D0 state, It will consume more power.
+--ICCrOV43i12jfSvz
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-True. Keeping device active causes battery drainage and the idea to put 
-inactive device into the power saving mode is clear. My question was not 
-about power consumption. I am trying to understand what other 
-consequences of keeping modem suspended. More specifically, how the 
-suspend mode influences user data communication?
+> On Wed, Jul 03, 2024 at 06:12:44PM +0200, Lorenzo Bianconi wrote:
+> > Introduce support for Airoha EN7581 PCIe controller to mediatek-gen3
+> > PCIe controller driver.
+> > ...
+>=20
+> > +static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
+> > +{
+> > +	struct device *dev =3D pcie->dev;
+> > +	int err;
+> > +	u32 val;
+> > +
+> > +	/*
+> > +	 * Wait for the time needed to complete the bulk assert in
+> > +	 * mtk_pcie_setup for EN7581 SoC.
+> > +	 */
+> > +	mdelay(PCIE_EN7581_RESET_TIME_MS);
 
-> Receiving or sending data will cause PCIE to change D3 Cold to D0 state.
+Hi Bjorn,
 
-Am I understand it correctly that even receiving IP packets on downlink 
-will cause PCIe link re-activation?
+>=20
+> It looks wrong to me to do the assert and deassert in different
+> places:
+>=20
+>   mtk_pcie_setup
+>     reset_control_bulk_assert(pcie->phy_resets)        <--
+>     mtk_pcie_en7581_power_up
+>       mdelay(PCIE_EN7581_RESET_TIME_MS)
+>       reset_control_bulk_deassert(pcie->phy_resets)    <--
+>       mdelay(PCIE_EN7581_RESET_TIME_MS)
+>=20
+> That makes the code hard to understand.
 
+The phy reset line was already asserted running reset_control_assert() in
+mtk_pcie_setup() and de-asserted running reset_control_deassert() in
+mtk_pcie_power_up() before adding EN7581 support. Moreover, EN7581 requires
+to run phy_init()/phy_power_on() before de-asserting the phy reset lines.
+I guess I can add a comment to make it more clear. Agree?
 
-I am concerned about a TCP connection that can be idle for a long period 
-of time. For example, an established SSH connection can stay idle for 
-minutes. If I connected to a server and execute something like this:
+>=20
+> > +	err =3D phy_init(pcie->phy);
+> > +	if (err) {
+> > +		dev_err(dev, "failed to initialize PHY\n");
+> > +		return err;
+> > +	}
+> > +
+> > +	err =3D phy_power_on(pcie->phy);
+> > +	if (err) {
+> > +		dev_err(dev, "failed to power on PHY\n");
+> > +		goto err_phy_on;
+> > +	}
+> > +
+> > +	err =3D reset_control_bulk_deassert(pcie->soc->phy_resets.num_resets,=
+ pcie->phy_resets);
+> > +	if (err) {
+> > +		dev_err(dev, "failed to deassert PHYs\n");
+> > +		goto err_phy_deassert;
+> > +	}
+> > +
+> > +	/*
+> > +	 * Wait for the time needed to complete the bulk de-assert above.
+> > +	 * This time is specific for EN7581 SoC.
+> > +	 */
+> > +	mdelay(PCIE_EN7581_RESET_TIME_MS);
+> > +
+> > +	pm_runtime_enable(dev);
+> > +	pm_runtime_get_sync(dev);
+> > +
+>=20
+> > +	err =3D clk_bulk_prepare(pcie->num_clks, pcie->clks);
+> > +	if (err) {
+> > +		dev_err(dev, "failed to prepare clock\n");
+> > +		goto err_clk_prepare;
+> > +	}
+> > +
+> > +	val =3D FIELD_PREP(PCIE_VAL_LN0_DOWNSTREAM, 0x47) |
+> > +	      FIELD_PREP(PCIE_VAL_LN1_DOWNSTREAM, 0x47) |
+> > +	      FIELD_PREP(PCIE_VAL_LN0_UPSTREAM, 0x41) |
+> > +	      FIELD_PREP(PCIE_VAL_LN1_UPSTREAM, 0x41);
+> > +	writel_relaxed(val, pcie->base + PCIE_EQ_PRESET_01_REG);
+> > +
+> > +	val =3D PCIE_K_PHYPARAM_QUERY | PCIE_K_QUERY_TIMEOUT |
+> > +	      FIELD_PREP(PCIE_K_PRESET_TO_USE_16G, 0x80) |
+> > +	      FIELD_PREP(PCIE_K_PRESET_TO_USE, 0x2) |
+> > +	      FIELD_PREP(PCIE_K_FINETUNE_MAX, 0xf);
+> > +	writel_relaxed(val, pcie->base + PCIE_PIPE4_PIE8_REG);
+>=20
+> Why is this equalization stuff in the middle between
+> clk_bulk_prepare() and clk_bulk_enable()?  Is the split an actual
+> requirement, or could we use clk_bulk_prepare_enable() here, like we
+> do in mtk_pcie_power_up()?
 
-user@host$ sleep 20 && echo "Done"
+Nope, we can replace clk_bulk_enable() with clk_bulk_prepare_enable() and
+remove clk_bulk_prepare() in mtk_pcie_en7581_power_up() since we actually
+implements just enable callback for EN7581 in clk-en7523.c.
 
-Will I eventually see the "Done" message or will the autosuspended modem 
-effectively block any incoming traffic? And how long does it take for 
-the modem to wake up and deliver a downlink packet to the host? Have you 
-measured StDev change?
+>=20
+> If the split is required, a comment about why would be helpful.
+>=20
+> > +	err =3D clk_bulk_enable(pcie->num_clks, pcie->clks);
+> > +	if (err) {
+> > +		dev_err(dev, "failed to prepare clock\n");
+> > +		goto err_clk_enable;
+> > +	}
+>=20
+> Per https://lore.kernel.org/r/ZypgYOn7dcYIoW4i@lore-desk,
+> REG_PCI_CONTROL is asserted/deasserted here by en7581_pci_enable().
 
-> Jakub Kicinski <kuba@kernel.org> 於 2024年11月1日 週五 上午9:51寫道：
->>
->> On Mon, 28 Oct 2024 15:30:15 +0800 wojackbb@gmail.com wrote:
->>> Because optimizing the power consumption of t7XX,
->>> change auto suspend time to 5000.
->>>
->>> The Tests uses a script to loop through the power_state
->>> of t7XX.
->>> (for example: /sys/bus/pci/devices/0000\:72\:00.0/power_state)
->>>
->>> * If Auto suspend is 20 seconds,
->>>    test script show power_state have 0~5% of the time was in D3 state
->>>    when host don't have data packet transmission.
->>>
->>> * Changed auto suspend time to 5 seconds,
->>>    test script show power_state have 50%~80% of the time was in D3 state
->>>    when host don't have data packet transmission.
->>
->> I'm going to drop this from PW while we wait for your reply to Sergey
->> If the patch is still good after answering his questions please update
->> the commit message and resend with a [net-next] tag (we use [net] to
->> designate fixes for current release and stable)
+correct
 
---
-Sergey
+>=20
+> Is this where PERST# is asserted?  If so, a comment to that effect
+> would be helpful.  Where is PERST# deasserted?  Where are the required
+> delays before deassert done?
+
+I can add a comment in en7581_pci_enable() describing the PERST issue for
+EN7581. Please note we have a 250ms delay in en7581_pci_enable() after
+configuring REG_PCI_CONTROL register.
+
+https://github.com/torvalds/linux/blob/master/drivers/clk/clk-en7523.c#L396
+
+Regards,
+Lorenzo
+
+>=20
+> Bjorn
+
+--ICCrOV43i12jfSvz
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZyvwXAAKCRA6cBh0uS2t
+rEp6AQCtSYy3YAUzds8hvCM6UpvkI2xTYG22JsIAv0MIYQIuXgEA0T+smyZrSC8l
+SWuzngL5C7nN60iXccYVAU+/Lr2MsAs=
+=FAIL
+-----END PGP SIGNATURE-----
+
+--ICCrOV43i12jfSvz--
 
