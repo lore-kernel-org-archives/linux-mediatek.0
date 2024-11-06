@@ -4,63 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AF90D44D5C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2024 13:52:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68B8BD44D6F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2024 14:01:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8nObiL/xV5PweP4Pq0IstHPE+IZR2yrzLVjQ95NGox0=; b=oOxsCZpr7PPTKV
-	XoHxEHWMd8o8F4yJ5UWF6+yN3FDQPbyafV3Lnad2mhB/plhrupCUkRnP0sWqKN2yX0a6wogqTQrse
-	x7FjVu/6Cfj9ceBpvx6LC4enSs/9R3yW4bsOD04m5fysoavJ/v40vLHuM1L3WSGVJPfNk1uCjb72K
-	P1cChKYM9K2kYq2ecb9bY9YRC3769sVrYC4J6bDZmuT3xkD3XdJUO97HZTwvt6S80ge4Umfo2RwBT
-	qlNQZIg8o4nBtipKYiz5/6P3D9nnBMkSiX5dYdjRem8hRQIUrocpZ6OaUF6K1xQ1Wd5EBzfvOn5PE
-	01EMwPv96JA9szdrzE1Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ns1m01mlBn0TEXlYPEz7IqH4BJxD81zb8MxCwYwjObU=; b=lfIKtdZRIwGpGDxZtRscCfCFtK
+	La8DOHh8rwP5E3DrTDmEvYxVduyimGP50mq3XS3v9jOZS3tXXKJNWGT/rVm5cXSKhxpa6dA/mfUFF
+	AtedKcomch9Gj3cynSfDMVy2pQZxHu3uDHYWmzSpAv+hhqZtBEL8bHwS9l/Tjj8qkIZzSOKbTuAG4
+	273EKQHrF6CzSzDUztzmpSozkUq+866c8Rxyr6/KvJH/EzSKiDChPRx0Loz41CVoWfvxtqsejcz84
+	kbGex3VhSzP3HFGt6chXQXtwz1/7CNxmSPk/ZVp3nRUAaSvui9plb0/lihcdQyyWpk24Vx+pKCtjz
+	661Ja+WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8gSF-00000003UoT-41cy;
-	Wed, 06 Nov 2024 13:52:15 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1t8gan-00000003WYu-1JnD;
+	Wed, 06 Nov 2024 14:01:05 +0000
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8g6G-00000003Q6m-0sPI;
-	Wed, 06 Nov 2024 13:29:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1730899770;
-	bh=fVNkLpFzLkJsXQDVFwWhgGwWb8WzrbwjQ1RM/7ZwYPg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=AVJoO+oeMmm6+03UpFQIcu/uxg08bLNLx3b7YD2da7REpGSSjwKsSCYY9orX7+GLa
-	 +lEPCi5Wa3UjHuyTQuDiE+qUuIRHPefudnng2qA5oVp/NObxK2okD+nu4KW8raVwPA
-	 Ru8ku58XniWkPi0/f3AH5ZQWfPm8IubNRnTdIpf6hLESLuGRLYi+JWSnfpZVjLvNv3
-	 yUiYriF2uZhLxtpG2jl9rLQGmPoNkO94ickQYhoKkW3SKLeefU54klvGizPyMFKC1Y
-	 cvWPhVTrnbzVACKrdK2tBGK/iDvOp1fE7KTDaA71YrmhLbk27D95OmIbHk7DuuFDQe
-	 oMQtWCMeVGMJg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C6A2F17E3637;
-	Wed,  6 Nov 2024 14:29:29 +0100 (CET)
-Message-ID: <e2e41af9-ed09-4ac5-9481-e605d1340b3d@collabora.com>
-Date: Wed, 6 Nov 2024 14:29:29 +0100
+	id 1t8gLo-00000003TKs-15k1
+	for linux-mediatek@lists.infradead.org;
+	Wed, 06 Nov 2024 13:45:37 +0000
+Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-2fb5014e2daso61863421fa.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 06 Nov 2024 05:45:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1730900733; x=1731505533; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ns1m01mlBn0TEXlYPEz7IqH4BJxD81zb8MxCwYwjObU=;
+        b=XwbLveN0Vrx97pwYOwNKDv/VdAAqqsAnK3vFVU3tt3KVyjH1Xf5LJ0WRuqH4z0okv9
+         Yf174qeee2SFZIy0lQ33qG/4dHgQJdFXKIe/MmqVfzVK8irtutGkmB8At5CN3znpSD4c
+         7dnvdEch/pnRBfepKkJZ3zZR1y8S7Av84c75V/k4/4Wbvg2EZUHsqrK8eUSND+0Lu5GC
+         q2Lx7p5UzLmNHLZO+3T1PD3KeR65jPP3a2/aZ0tFiD9j+OgCHEG+HEBGig9zx5BUEPdd
+         vsrdHzO+ZpBX/HXaLRIhWj31kgMQlyxSbN2Mt/yt2iTJuo6oc+BNJnBLcDrcousLhvVU
+         Om9A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730900733; x=1731505533;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ns1m01mlBn0TEXlYPEz7IqH4BJxD81zb8MxCwYwjObU=;
+        b=gWjcRTh/+ANKla8BVqOl0L5RcOBfVSpCptQ2YOtMPN6vEZwfxLBEYpPNw6ZDu1VLqL
+         bjtMw5Tqjkym+XneklxGIudilpQicl7r+UY0qYVM6HnMRJtydKDT0MMexmS01XPPT9hc
+         WnkQMjCruvArt7sTgVhk/wf0SYLDpqDEO0Edfu6DBxGAqcXLrtVUyKZ6p7/TSNIUj+hZ
+         jtsu3wq0YqsVwdlDLvcmoYSDJ8/g3FPLNZFt5ldG62OmZRMx0abIeTjivstuYAhMZEF9
+         JRgdPvQHINhxXNsvmxDGcfI0nx2KnKj1DauG4vuKoqmXI5ndR+0DOqW+75QMjyPyvcl6
+         KXcA==
+X-Forwarded-Encrypted: i=1; AJvYcCUQ37hLDgHGZKa5ISMzCPAxLi3q2eXA/U9UUeilXIfWsqO0oUbvSe2fRRHiMftF7gtEY3xozDVAJ3Eg//bGSg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxz8Lc+20v2qyp9i+rANE3qUjodJw9C3ihnKBI2995rNyDKoN90
+	TSWHrwsGNJEAK/C+EolXNnpO3ny4SHreWfp7X95zlbrOmUcSv+dJUFVKmIZsbtX+ckg8oaaaeeM
+	xdE2rGO9/GtpWHzZ5aGROZMJ6Z/vJjZ9IU50VUQ==
+X-Google-Smtp-Source: AGHT+IHvynIL7AAsGHjP0xg8VCy9NFb8IBkKD896d3DxIuwUkQ972HHVN3qYlfPKYVhD5LyxxH0ykk/nP4raab/ulSQ=
+X-Received: by 2002:a05:651c:19ab:b0:2ef:243b:6dce with SMTP id
+ 38308e7fff4ca-2fedb770dfdmr103418931fa.10.1730900733100; Wed, 06 Nov 2024
+ 05:45:33 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/2] PCI: mediatek-gen3: Add support for restricting
- link width
-To: =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>
-References: <20241104114935.172908-1-angelogioacchino.delregno@collabora.com>
- <20241104114935.172908-3-angelogioacchino.delregno@collabora.com>
- <20241104132046.GA2504924@rocinante>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241104132046.GA2504924@rocinante>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20241023-en7581-pinctrl-v9-0-afb0cbcab0ec@kernel.org>
+ <20241023-en7581-pinctrl-v9-4-afb0cbcab0ec@kernel.org> <173088099542.3237297.18018729158887853624.b4-ty@kernel.org>
+ <ZyssJpR7xwbMzUsm@lore-desk> <20241106110046.GR1807686@google.com>
+In-Reply-To: <20241106110046.GR1807686@google.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Wed, 6 Nov 2024 14:45:21 +0100
+Message-ID: <CACRpkdbf4Pb+n-F-K-JaUvytwCGUHHh8d2rYP4A9KgVTzqSnGw@mail.gmail.com>
+Subject: Re: (subset) [PATCH v9 4/6] dt-bindings: mfd: Add support for Airoha
+ EN7581 GPIO System Controller
+To: Lee Jones <lee@kernel.org>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <ukleinek@kernel.org>, 
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	upstream@airoha.com, benjamin.larsson@genexis.eu, ansuelsmth@gmail.com, 
+	linux-pwm@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_052932_442688_2F265E7B 
-X-CRM114-Status: GOOD (  18.17  )
+X-CRM114-CacheID: sfid-20241106_054536_334342_45ED6016 
+X-CRM114-Status: GOOD (  16.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,70 +97,76 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, ryder.lee@mediatek.com, linux-pci@vger.kernel.org, lpieralisi@kernel.org, linux-kernel@vger.kernel.org, jianjun.wang@mediatek.com, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, bhelgaas@google.com, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/11/24 14:20, Krzysztof Wilczyński ha scritto:
-> 
-> Hello,
-> 
->> +	ret = of_property_read_u32(dev->of_node, "num-lanes", &num_lanes);
->> +	if (ret == 0) {
->> +		if (num_lanes == 0 || num_lanes > 16 || (num_lanes != 1 && num_lanes % 2))
->> +			dev_warn(dev, "Invalid num-lanes, using controller defaults\n");
->> +		else
->> +			pcie->num_lanes = num_lanes;
->> +	}
->> +
->>   	return 0;
->>   }
-> 
-> If you were to handle non-zero return value as an error here, perhaps the
-> property has not been set, then we could reduce the indentation here.
-> 
-> Something like this, perhaps?
-> 
->    ret = of_property_read_u32(dev->of_node, "num-lanes", &num_lanes);
->    if (ret) {
->            dev_err(dev, "Failed to read num-lanes: %d\n", ret);
->            return ret;
->    }
->    
->    if (!num_lanes || num_lanes > 16 || (num_lanes != 1 && num_lanes % 2))
->    	dev_warn(dev, "Invalid num-lanes, using controller defaults\n");
->    else
->    	pcie->num_lanes = num_lanes;
-> 
-> Does this make sense here?  Thoughts?
-> 
-> 	Krzysztof
+On Wed, Nov 6, 2024 at 12:00=E2=80=AFPM Lee Jones <lee@kernel.org> wrote:
+> On Wed, 06 Nov 2024, Lorenzo Bianconi wrote:
+>
+> > On Nov 06, Lee Jones wrote:
+> > > On Wed, 23 Oct 2024 01:20:04 +0200, Lorenzo Bianconi wrote:
+> > > > Add support for Airoha EN7581 GPIO System Controller which provide =
+a
+> > > > register map for controlling the GPIO, pinctrl and PWM of the SoC v=
+ia
+> > > > dedicated pinctrl and pwm child nodes.
+> > > >
+> > > >
+> > >
+> > > Applied, thanks!
+> > >
+> > > [4/6] dt-bindings: mfd: Add support for Airoha EN7581 GPIO System Con=
+troller
+> > >       commit: f49f37f3cfe1482d4dc77d26f3e8c38eab630d52
+> > >
+> > > --
+> > > Lee Jones [=E6=9D=8E=E7=90=BC=E6=96=AF]
+> > >
+> >
+> > Hi Lee,
+> >
+> > according to my understanding this patch has been already applied by Li=
+nus
+> > here:
+> >
+> > https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.gi=
+t/commit/?h=3Ddevel&id=3D50dedb1eb1e6755ccab55f6140916c2d192be765
+>
+> An interesting choice.  Linus?
 
+Yes I suggested that I merge patches 1-5 on oct 29 and applied the
+day after:
+https://lore.kernel.org/linux-gpio/CACRpkdYshPusdA7bDW2y8H_wp-Fm3N-YCsY1_Qn=
+=3DdZqRiFy12w@mail.gmail.com/
 
-Sorry I've just seen this email.
+It's because the bindings are dependent on each other, this one patch has:
 
-There's a problem here: this property has to be optional - and if you change that
-to return like that, you're breaking compatibility with older device trees, which
-are not specifying any "num-lanes" property.
++  pinctrl:
++    type: object
++    $ref: /schemas/pinctrl/airoha,en7581-pinctrl.yaml
++    description:
++      Child node definition for EN7581 Pin controller
++
++  pwm:
++    type: object
++    $ref: /schemas/pwm/airoha,en7581-pwm.yaml
++    description:
++      Child node definition for EN7581 PWM controller
 
-Please remember that of_property_read_u32() returns:
-  - 0 on success
-  - -EINVAL if the property does not exist
-  - -ENODATA or -EOVERFLOW
+Those refs will explode unless the two others are merged at the same
+time.
 
-Please either keep the error checking like I wrote, or alternatively you can do..
+Usually we merge the whole shebang through MFD but this one felt
+different because there is no actual MFD driver, just using simple-mfd.
 
-ret = of_property_read_u32(...)
-if (ret != -EINVAL) {
-	dev_err(dev, "Failed to read num-lanes: %d\n", ret);
-	return ret;
-} else {
-	if (num_lanes == 0 || ..... etc etc)
-		dev_warn()
-	else
-		pcie->num_lanes = num_lanes
-}
+In hindsight I should probs not have been so trigger happy and give
+some more time for this to settle... Merge window stress I guess. :/
 
-Cheers,
-Angelo
+It's fine to apply textually identical patches to two trees though as
+git will sort
+that out so technically it's no big deal, you can keep it applied if you
+want.
+
+Yours,
+Linus Walleij
 
