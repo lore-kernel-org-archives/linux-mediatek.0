@@ -4,74 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00617D44D7F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2024 15:21:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D4F6D59F53
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2024 16:22:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/JTfVzE7ndYuEakwvhQQZl5z6a3t9taLOo0NBJcHY7E=; b=KVODF1nJ1UYomPgQQTryO4PViY
-	+9HY/B2PfnuP3KMyDv6CbA58D9OW4d/xwr7SdoQHotiegFIF+mDT0yRAhUQOJZkmZE2yr+oaEC5Q/
-	y8t8pnotnprNSx09+5b/mr0omn71jN1Z75XEW0g5Jb1tYB40mxFI6p/O83pcbbabyUMlpS21WJSq+
-	KUio+TXhIiLaPyyRty3n3L8v288ZH6AwOkBZSubHXYlpelxn7BWpBodvv4gfGbSmsNGaaEbl+Amoz
-	xUrx6rgTWBWhdSMFjInt8rE0ftqL/RoH8SvFxVmVY+UhbBieRFa3Mdm9eoUXjq63Rt2pbu7Sg42lS
-	zeqXCQYA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iRksn2dUlyxiQY8SsSzJ+k2N22EHq4iZeBjynZBsjnQ=; b=uQhE683p9Hw7uD1qmPcva7eanl
+	A0zXxVeepo5fZr/2EVTIqYGwefMDQbUYMF1/1QU3ZpQj9z86X62p/S54ktd0MlgOKaDxc4CG4Tyb9
+	7qbSD7cAuI18lzluQhTlZ8xBOto4RrdxEeuhGXzUxbTWA137YsTowmgvf6AYk41BJFaMHRmQ2bL9P
+	I13w+g00hqh2NIVg7vY6lidF5/zzYdR58gPKniplGJrnyO/FIYLSZFkbmoWbOyw7he8rrpsX6BmVF
+	iL7wLfhXrQDP7Id0zXD8+o0Y5J8D0x23GmRQmPS2k6PYDRenger/d+EG2By07bKDTWxO0kLNQsgaa
+	0q5MColA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8hr4-00000003n2Y-43IS;
-	Wed, 06 Nov 2024 15:21:58 +0000
-Received: from relay2-d.mail.gandi.net ([2001:4b98:dc4:8::222])
+	id 1t8inb-000000040uz-1oKV;
+	Wed, 06 Nov 2024 16:22:27 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8hpL-00000003mj8-0Z5z;
-	Wed, 06 Nov 2024 15:20:13 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 1FA5040007;
-	Wed,  6 Nov 2024 15:20:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1730906404;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=/JTfVzE7ndYuEakwvhQQZl5z6a3t9taLOo0NBJcHY7E=;
-	b=p0boApFJ2BQaNnPJoTPYhTIQcDUiL0yp0cf/5Mfg/Lg8eAGgJWouOQxt08pXVChraVKmVE
-	yMdCzM4IzDXjH5FTAx4kg6RUbZoHAvWU+RDShCaHkGUs4xFNeR+mP4+jciQnjwUqjdon7c
-	zLtPuwOaFgI4bCNn/WV3M+58QoLgoZsIqo8lTMSxKiZtrnuM8r+7Au6TkxSCCS3Fzuz4pB
-	dh1d7351wPofXtKRRCjbHFou6KiLG/LIrmMRZg4EIL8ckN2jm/UL1ef/7+aNDRACni7C/x
-	dUtT1M+3EIo7zsh0CNeUsCni0XdTx3P2KBEV0ruyonUKRNRap6khEp7xPfzD8g==
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: SkyLake Huang (=?utf-8?B?6buD5ZWf5r6k?=) <SkyLake.Huang@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-  "linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>,
-  "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>,  "acelan.kao@canonical.com"
- <acelan.kao@canonical.com>,  "chengminglin@mxic.com.tw"
- <chengminglin@mxic.com.tw>,  "mika.westerberg@linux.intel.com"
- <mika.westerberg@linux.intel.com>,  "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,  "matthias.bgg@gmail.com"
- <matthias.bgg@gmail.com>,  "daniel@makrotopia.org"
- <daniel@makrotopia.org>,  "vigneshr@ti.com" <vigneshr@ti.com>,
-  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-  "richard@nod.at" <richard@nod.at>
-Subject: Re: [RFC PATCH nand/next 0/4] mtd: nand: spi: Add CASN page support
-In-Reply-To: <e8c1ea093943141b431d8eb3ed3831c50601dfb1.camel@mediatek.com>
-	("SkyLake Huang =?utf-8?B?KOm7g+WVn+a+pCkiJ3M=?= message of "Mon, 28 Oct
- 2024 15:25:59
-	+0000")
-References: <20241020132722.20565-1-SkyLake.Huang@mediatek.com>
-	<e8c1ea093943141b431d8eb3ed3831c50601dfb1.camel@mediatek.com>
-User-Agent: mu4e 1.12.1; emacs 29.4
-Date: Wed, 06 Nov 2024 16:20:02 +0100
-Message-ID: <87ses4jsnx.fsf@bootlin.com>
+	id 1t8ikY-000000040OM-3lB3;
+	Wed, 06 Nov 2024 16:19:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=iRksn2dUlyxiQY8SsSzJ+k2N22EHq4iZeBjynZBsjnQ=; b=XN9UEv20YjYFCljP87EAFs6m7W
+	IHXMmKKdxArReUb359DJLKSM4vEoyXzl7VtO0bRnoCDrG+6VZ/h9acwsCFwrncYruVE3q+p8Gthna
+	6cuOCIJA5v+S8QPUvRpIyuIwBsDH551uD2D8CFqR8QDFEo3M1aMwkFbyw8CBLw7jvUHM=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1t8ikJ-00CMAP-55; Wed, 06 Nov 2024 17:19:03 +0100
+Date: Wed, 6 Nov 2024 17:19:03 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	upstream@airoha.com
+Subject: Re: [net-next PATCH v3 3/3] net: phy: Add Airoha AN8855 Internal
+ Switch Gigabit PHY
+Message-ID: <8e5fd144-2325-43ff-b2b8-92d7f5910392@lunn.ch>
+References: <20241106122254.13228-1-ansuelsmth@gmail.com>
+ <20241106122254.13228-4-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-GND-Sasl: miquel.raynal@bootlin.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241106122254.13228-4-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_072011_344776_BD4B3196 
-X-CRM114-Status: UNSURE (   7.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241106_081918_954184_F8A779FE 
+X-CRM114-Status: GOOD (  15.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,37 +82,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+> +static const u8 dsa_r50ohm_table[] = {
+> +	127, 127, 127, 127, 127, 127, 127, 127, 127, 127,
+> +	127, 127, 127, 127, 127, 127, 127, 126, 122, 117,
+> +	112, 109, 104, 101,  97,  94,  90,  88,  84,  80,
+> +	78,  74,  72,  68,  66,  64,  61,  58,  56,  53,
+> +	51,  48,  47,  44,  42,  40,  38,  36,  34,  32,
+> +	31,  28,  27,  24,  24,  22,  20,  18,  16,  16,
+> +	14,  12,  11,   9
+> +};
+> +
+> +static int en8855_get_r50ohm_val(struct device *dev, const char *calib_name,
+> +				 u8 *dest)
+> +{
+> +	u32 shift_sel, val;
+> +	int ret;
+> +	int i;
+> +
+> +	ret = nvmem_cell_read_u32(dev, calib_name, &val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	shift_sel = FIELD_GET(AN8855_SWITCH_EFUSE_R50O, val);
+> +	for (i = 0; i < ARRAY_SIZE(dsa_r50ohm_table); i++)
+> +		if (dsa_r50ohm_table[i] == shift_sel)
+> +			break;
 
-Hello,
+Is an exact match expected? Should this be >= so the nearest match is
+found?
 
-On 28/10/2024 at 15:25:59 GMT, SkyLake Huang (=E9=BB=83=E5=95=9F=E6=BE=A4) =
-<SkyLake.Huang@mediatek.com> wrote:
+> +
+> +	if (i < 8 || i >= ARRAY_SIZE(dsa_r50ohm_table))
+> +		*dest = dsa_r50ohm_table[25];
+> +	else
+> +		*dest = dsa_r50ohm_table[i - 8];
+> +
+> +	return 0;
+> +}
+> +
+> +static int an8855_probe(struct phy_device *phydev)
+> +{
+> +	struct device *dev = &phydev->mdio.dev;
+> +	struct device_node *node = dev->of_node;
+> +	struct air_an8855_priv *priv;
+> +	int ret;
+> +
+> +	/* If we don't have a node, skip get calib */
+> +	if (!node)
+> +		return 0;
 
-> On Sun, 2024-10-20 at 21:27 +0800, Sky Huang wrote:
->> From: "Sky Huang" <skylake.huang@mediatek.com>
->>=20
->> Hi, this is Qi-Ze Huang(Sky Huang) from MediaTek. On our router
->> platforms
->> chips, we have to quality lots of SPI-NAND devices and are eager for
->> a standard so that we don't need to maintain trivial flash ID table
->> anymore. I also noticed a talk in 2019 Embedded Linux Conference,
->> Memory Technology Devices: what's new, which mentioned "ONFI for
->> SPI-NANDs? Maybe, maybe not".
->>=20
->> So earlier this year, I proposed a bold idea, CASN page (Common
->> Attributes
->> for SPI-NAND). I worked together with top 3 SPI-NAND market share
->> flash
->> vendors and other vendors to integrate CASN page on their SPI-NAND
->> devices
->> including but not limited to:
->>=20
-> gentle ping
+phydev->priv will be a NULL pointer, causing problems in
+an8855_config_init()
 
-I had a look at it, it is interesting but I have some questions and need
-to come back to it. Unfortunately I was a bit busy these days. Sorry for
-the delay.
-
-Thanks,
-Miqu=C3=A8l
+	Andrew
 
