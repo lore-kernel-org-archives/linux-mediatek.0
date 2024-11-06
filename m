@@ -4,112 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 441ECD59F5E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2024 18:25:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6A85D59F60
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2024 18:49:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rOz51ybN174/NE4VmqTygjrL3+d/cxjHeOuIyEPAqt4=; b=ltQOizEOibUY41/0ZtwzLMD6xL
-	ssydnb3Y1o+oQlOj6cu/tzwCymaxWzVtrDlZyV8oGUYFOyZdmH6Lk42KPwUSVEMW4BBfDs8X9Rbor
-	OFr9GspVhlp61aeW8rRc7xLhcZOG8f5TQImeTtz5ycvwAjQJYozEU3s7XbHYJtOeab/nDjSOrnb+m
-	z4m7MVSWaTH9tM0Xx/TuJTiAr2kMgqnkYgPvVxORaPNnvuXxUemO8Wanb/gidimG+5TssTJp9VxDK
-	116Tnkehm03E4160VQ8J+7W4FfyArz8naFWCxKslg/rFF3qUWPuV8WMisdThl4lzJBIR1mbLNEHkE
-	nWeQFklw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:References:In-Reply-To:
+	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=li6C8f3t3SYbgMpO/kXts/p8GR96Pv4j3k0vjuIusI8=; b=VaXjpzjhNFA5rBbn8iOjqkj0aw
+	XPmlhVG+MX+gG1mIXiarPTH76MVEf7VDfuf6BKpb0y/xupYyyGN5z9L4rcR2OGK+CmfkzKlFUEZzi
+	iuPLeQvWm+xN+mkRTWGP6X67ul1vN6DLQdfqoQnMtdyAbe61pdOloWgjWJLGocW1NhqzBZsHLq22J
+	Q+4WSVdrpvyFJ7FcPri5Fi0TO8yR/Kwsac4kg9SItWHfDlf81EGfuUDHiB1x1KKzf1b0ZVeHgsctq
+	4AJCeysAdfiVOwaRnkuAnFFycEnRneCdfVO2CUAeRUbqIc1jwX92KMkEy+qH3oPj5JZY5twrbCVGm
+	zUYiNc0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8kiT-00000004Kqv-1Car;
-	Wed, 06 Nov 2024 18:25:17 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1t8l6D-00000004Okm-27vg;
+	Wed, 06 Nov 2024 18:49:49 +0000
+Received: from mout.gmx.net ([212.227.15.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8kgg-00000004KUR-2Z1F;
-	Wed, 06 Nov 2024 18:23:28 +0000
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4A6Fqx9Q013161;
-	Wed, 6 Nov 2024 18:22:59 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	rOz51ybN174/NE4VmqTygjrL3+d/cxjHeOuIyEPAqt4=; b=Il0fUvoIGwYf8Sg7
-	/rZgXUsXQBt/b/6vFRnfEkqzWo4bYbsivw1f9w+ApMtviPOBdibb5MPlUuVhUlWp
-	9ka8gbVJs/uSpw0HuEc5HsDZVfr68o9j+CHN54mtmeAv4PXJTslxWXq7rzacjhA2
-	outhJLqMNO/qo8c7ZLvjLO4JJZGFEUsd9RsIRq6kzW9eoeLyl8WOc9Luiz78FgVy
-	3Z+pwc7m4kbMEVcaeDmSXCwPmBtOoEs/wyz4GKnzldBGhLht3K3Y+cq9sjFxM50+
-	CESTh1m7pigB9pd+aP2R0wK1PLhtMCNdhBNSQrNAG2sM3VrnInlzK09FJCmWJV6o
-	BZkLrA==
-Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 42qp2ruvt7-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 06 Nov 2024 18:22:59 +0000 (GMT)
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
-	by NALASPPMTA03.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 4A6IMwst030379
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 6 Nov 2024 18:22:58 GMT
-Received: from [10.48.242.250] (10.49.16.6) by nalasex01a.na.qualcomm.com
- (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Wed, 6 Nov 2024
- 10:22:57 -0800
-Message-ID: <5c6a887c-db74-44b4-9d8c-2e412f938b47@quicinc.com>
-Date: Wed, 6 Nov 2024 10:22:56 -0800
+	id 1t8l69-00000004Oju-3V5i;
+	Wed, 06 Nov 2024 18:49:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1730918976; x=1731523776; i=frank-w@public-files.de;
+	bh=li6C8f3t3SYbgMpO/kXts/p8GR96Pv4j3k0vjuIusI8=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:In-Reply-To:References:Date:cc:
+	 content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=Zhtz1ZjVOmW/RaDQV1THforkPHmN56+jsPkuY3IO1PPsj/x9Q4EUztT+4gSGdPlN
+	 pxX3XQpdtgF8z0wKMxWd4/I4oJP2h5GWmzRvrjHF31uxkQJwHJubWH3gP5fKsl2d+
+	 IeFUhPdNC7Fjk/0hQjCeOsKy3QpZsmxcvjPEEYOAA05dbHyr0MvDv/CgnqyH/+qQl
+	 zMgoBWtQlNKg+OUmDT9rVWWo7rHMCTPBTlWPl1q2x4AGut2QE4hALIaj2Io1Rmbjd
+	 j5PQfJZLqx9MzxcACE8upxBzeJjEHgDevlO3iclRpceERarm1IKOZRCya7kN6rOJD
+	 UtJ/AxWNeLjtq0Fwow==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.145.66] ([217.61.145.66]) by
+ trinity-msg-rest-gmx-gmx-live-c75c5fb4b-p29nc (via HTTP); Wed, 6 Nov 2024
+ 18:49:35 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] wifi: Switch back to struct platform_driver::remove()
-To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
-        Kalle
- Valo <kvalo@kernel.org>
-CC: Jeff Johnson <jjohnson@kernel.org>, Jiri Slaby <jirislaby@kernel.org>,
-        Nick Kossifidis <mickflemm@gmail.com>,
-        Luis Chamberlain <mcgrof@kernel.org>,
-        =?UTF-8?Q?Toke_H=C3=B8iland-J=C3=B8rgensen?= <toke@toke.dk>,
-        Loic Poulain
-	<loic.poulain@linaro.org>,
-        Arend van Spriel <arend.vanspriel@broadcom.com>,
-        Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-        Ryder
- Lee <ryder.lee@mediatek.com>,
-        Shayne Chen <shayne.chen@mediatek.com>,
-        Sean
- Wang <sean.wang@mediatek.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Andy
- Shevchenko <andriy.shevchenko@linux.intel.com>,
-        Peter Chiu
-	<chui-hao.chiu@mediatek.com>,
-        Breno Leitao <leitao@debian.org>,
-        "Russell King
- (Oracle)" <rmk+kernel@armlinux.org.uk>,
-        <linux-wireless@vger.kernel.org>, <ath10k@lists.infradead.org>,
-        <ath11k@lists.infradead.org>, <wcn36xx@lists.infradead.org>,
-        <brcm80211@lists.linux.dev>, <brcm80211-dev-list.pdl@broadcom.com>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>
-References: <20241106170706.38922-2-u.kleine-koenig@baylibre.com>
-From: Jeff Johnson <quic_jjohnson@quicinc.com>
-Content-Language: en-US
-In-Reply-To: <20241106170706.38922-2-u.kleine-koenig@baylibre.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.49.16.6]
-X-ClientProxiedBy: nalasex01c.na.qualcomm.com (10.47.97.35) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: T1aSXxpDUQsJs2sd2RbFf2FLmhPdtqyi
-X-Proofpoint-ORIG-GUID: T1aSXxpDUQsJs2sd2RbFf2FLmhPdtqyi
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
- definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0 clxscore=1011
- bulkscore=0 priorityscore=1501 impostorscore=0 lowpriorityscore=0
- mlxlogscore=999 suspectscore=0 spamscore=0 mlxscore=0 phishscore=0
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2409260000 definitions=main-2411060143
+Message-ID: <trinity-ef654aa8-f10a-4195-82c8-65b3ea654c7b-1730918975868@trinity-msg-rest-gmx-gmx-live-c75c5fb4b-p29nc>
+From: frank-w@public-files.de
+To: angelogioacchino.delregno@collabora.com, robh+dt@kernel.org,
+ matthias.bgg@gmail.com
+Cc: krzk+dt@kernel.org, conor+dt@kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, daniel@makrotopia.org, linux@fw-web.de,
+ leith@bade.nz
+Subject: Aw: Re: Aw: [PATCH v3 1/2] arm64: dts: mt7986: add dtbs with
+ applied overlays for bpi-r3
+Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <CAPDEroWUeR3iUFnjVr6WFLg3=dkML+5cbRPph9bj64F=zc1UWA@mail.gmail.com>
+Importance: normal
+References: <20240608080530.9436-1-linux@fw-web.de>
+ <20240608080530.9436-2-linux@fw-web.de>
+ <trinity-82c94d49-2a78-4470-83cd-3c6747e01849-1719434738199@3c-app-gmx-bs52>
+ <726f2ed3-675f-45e8-94f0-d392181e7f92@collabora.com>
+ <951E802C-1B53-45C4-B3E6-4A3400F47214@public-files.de>
+ <CAPDEroWUeR3iUFnjVr6WFLg3=dkML+5cbRPph9bj64F=zc1UWA@mail.gmail.com>
+Date: Wed, 6 Nov 2024 18:49:35 +0000
+Sensitivity: Normal
+X-Priority: 3
+X-UI-CLIENT-META-MAIL-DROP: W10=
+X-Provags-ID: V03:K1:04HA3rCBFobkKgyJv3PRzaWDTdIiPv8aXPTy1/iJeSgOHSEJUK9hCVHSD0wn2SSqhizMD
+ BevU1VpOn8iWFu/s07qAKuNevpeLaJKGWlDCyOby34HfK6pyfLyeR2LuHLLwv1u3hD14BDfsaTQ7
+ kcgvrKBmvIignRFMW2hYJ0/V+ejxxM7rUvgx0uWEWJ1J7EYsmMiDtxAguxMXnlwE+0Hwp7rKP1DH
+ brAeezdmDRhJwcVWEjT6xhVcGyV5ppFuTdkON75qlQpJLixEaU+BLwbWQy7+/egEPEisDSCI83ft
+ 3aH8fcxuhZD6XsiVXbZKih+kPSNPKBuu0O9/un9YC37QVP3QMYPwryNmXpBQClS4u8=
+UI-OutboundReport: notjunk:1;M01:P0:yLAILKCPSGk=;y4s2SKxblFf6I2c5Hh1WGxagP2c
+ s3/HJr7M4R7iAGmMq7wRDbectAnOyqDRVNxXS6Xzt3QKbnwWpBSqY9uKvjn2bw1sci1ZyiVUT
+ SjV85xR1mL1AxO6MTboC/ZaEeSdM+3Mk29biW/Ub8ZFeVxLR2sQYti0w8jMlnaJnJy2aQvo/v
+ 6VMyrzcAceMplQ2fa59EyVxw0HusL6QoVLxm2q1nNL1CWLPZyzS9Stw6jJlONtIogHah1slco
+ tTQWnfNCmeAd00R/SPxPgMWW1+M61D1snxM8r8RNiCIIKPDOcQMXiR71F79LZ57uLJ4bfGECj
+ fS0/quA302g+2RZRHfEhi9MReQ+gqmWDzFS356kdkNOHXtCJS2OT2BntjC++Dlr4cD4BwxrNI
+ t2km0ERAAngZR6sR5qfAjQlrgcBxjYxd4wbvNkjSU/ejtwocRKsFT41W+6+7uMzsJzroj7Vs7
+ xPo9fmkTCG++dSTjMtk0koV/2pwtUoowt8+il1W2+8Yeru1LLvNbIHZH+Z2LFBreBUgXz4tYs
+ LEf212+L/Bz4dP3ofsE+su1Za2YLt/hdd5TDy5T9ooimfTcc+sjMdUctNyhwqiQH1aG8yqtpN
+ 06aXaiDnjxP7VXBTSEo3JuM8AE8c1KnsgPV2BJ2RPSiCdXUt1/ZSGEPfc62WLzVNfzbYANABU
+ lMC1LJdN9+3XCAYmkHNinhbT/qUKhDWzeD1E3f+wBA==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_102326_779409_AB9CF739 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20241106_104946_258749_62448D44 
+X-CRM114-Status: UNSURE (   4.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,26 +101,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/6/2024 9:07 AM, Uwe Kleine-König wrote:
-> After commit 0edb555a65d1 ("platform: Make platform_driver::remove()
-> return void") .remove() is (again) the right callback to implement for
-> platform drivers.
-> 
-> Convert all platform drivers below drivers/net/wireless to use
-> .remove(), with the eventual goal to drop struct
-> platform_driver::remove_new(). As .remove() and .remove_new() have the
-> same prototypes, conversion is done by just changing the structure
-> member name in the driver initializer.
-> 
-> En passant several whitespace changes are done to make indentation
-> consistent in the struct initializers.
-> 
-> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@baylibre.com>
+Hi
 
-I'll let Kalle make the decision if he wants to take this patch into wireless
-or if he'd prefer that the parts that have driver-specific projects be split
-out separately. If he'll take it as-is, for drivers/net/wireless/ath/*:
+any new state on this??
 
-Acked-by: Jeff Johnson <quic_jjohnson@quicinc.com>
+https://patchwork.kernel.org/project/linux-mediatek/patch/20240608080530.9436-2-linux@fw-web.de/
 
+regards Frank
 
