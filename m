@@ -4,67 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07917D44D57
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2024 12:38:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CFBDD44D54
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2024 12:40:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=syhoxRXbUlwbHZydJCqciiC5oWyLOG8yVgrGl7kOOY4=; b=0FH3p5rEmJTjaIH4cRiqvAb+0f
-	L9Tof74osUpbbFDCr8g/h+L+hXqdfWGv/XlUP0gWUya3e4G/5+4lo855rbLNN9Fuf9R2GXjrzC5bo
-	UqaWkAWGKCoDwBdGH4X8JZrwpfOTNuvfoUPDESkwmUfND10cypn+MC3aJvB3iTs0a9yeJC4UHg7g+
-	St7apXUB+r4uXeo54ePNiMHuorLLjL3iijZHQOw4CU8mpnjYZXFc/FhSP4lT90whLtNtAf9vf5A1X
-	AOBmNn8BDl8+t2EZu5hvkLIvTsAj4/kGAww2wSa+JEQ/t/mNAOt+/kBHYDF36rZCGb5BhVt1GCGzi
-	i6BgTYsg==;
+	bh=7GJ5E8z9IAG02tIa6zRu8hniKsaqoJVZeW93ACvhTNk=; b=L5rrA+yHc5PajDRbNKq2w+jggj
+	V5X/ECiDtkYhLR2SsdSVXoGXuvG5oTxcwNlBMSSe5FPdKfGPGmNuHIECZwYsy4+3gp0tbUBHyUuV6
+	M1DTZpPAO/NJfkuAdCJdYbcdZmOtTjHmmBiE5b7xPjwxb7Nl5vy0bdxt/6D1Vj9SH/tvLgzgj3z42
+	4xsvEjG6VuSu8d4qq0DFea+zPMJ+QyGLMoB6atEGH3HAjKY53fWUnH8vM/yiLlKriyOA4mcSRSWQl
+	X2MDVzCk1Hzo+vnHajuc2oQtCGrgQyIW2org0Xgv/Dhc6M3fljgckViZwsMZsyxkaiEv6lYUo5WKv
+	DROTJ5pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8fJ0-00000003FP7-3vdb;
-	Wed, 06 Nov 2024 12:38:38 +0000
+	id 1t8fL1-00000003G92-2imw;
+	Wed, 06 Nov 2024 12:40:43 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8fBo-00000003CW3-3cNT;
-	Wed, 06 Nov 2024 12:31:14 +0000
+	id 1t8fBq-00000003CWW-2nKe;
+	Wed, 06 Nov 2024 12:31:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1730896269;
-	bh=LVZC9YpZah6uXDvJdeHUW9uz3cIFHxVPayrxERGQ/I0=;
+	s=mail; t=1730896273;
+	bh=A90cgTlUFFZc5KiS7CX3bzI9MZt05fj3oUZ7b1bgZxA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=XEqlfwZ35IDW+CM5840xi/LD0qYJrHKIGHuIVbIsTh6Sw52PI1eiH8Es99IGl8rhy
-	 u43JHdoQEQyTpfylBX+9WGP35+zI9XUgVHgak+iPomNEL0ZDR0CEes4N5+tQxfUHHY
-	 h2QrXuYVoTj+tmZd+WWWBOnAKh7suJNA85m2ssCek89nraACcwbsXmsi3Z6e+USA3L
-	 DUkBqk9JFYKgmqcddpKHTBlrH7BeqqRpN5lhhyDb7Rl1sci4sZ5TlvAU4lTUYrHsYp
-	 yXdNEN2AfuU9d10dIAVuI18Sdw7Gyv0WRW/2vjfJIKQyBsU1/3NkwPrVT8DsTZUvlD
-	 xpbFEKjrlg/xQ==
+	b=NyTq7xisbYlabWUUc2K6qfI2wmbfSFW3KysBoZPNfPboGrQNmJk9AZRBVzMofpnYg
+	 FuK93OA5HA3VEPgysk6Gu7wOzc3tmnUnEcT+H7PKR+iBYtrD6e7a0Tp8U9gZSUBEdD
+	 f3/YBkGJPcL4P2dK+wbxFuWgEK2UHpmC3dI7Z4AmYFMmvAorQfSO4CwVFMXJkqpq/C
+	 /cbJOc1ufSCCmMDFSUlexp6/LXd3m5iAuGki2yHxGWsPAhOLzj0LCt6WGQmEGRev5z
+	 rkqxrbszgEAji/rmNeIqa8CJx4nCD51II/TI29DicPLOy550PMnsul9qLff86pwgkv
+	 FvU6E7Vvb6VIQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3DA0517E3626;
-	Wed,  6 Nov 2024 13:31:09 +0100 (CET)
-Message-ID: <8f07284d-f5c8-4de3-85d8-ef87e58842d5@collabora.com>
-Date: Wed, 6 Nov 2024 13:31:08 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C7A7817E3629;
+	Wed,  6 Nov 2024 13:31:12 +0100 (CET)
+Message-ID: <2bd7a02d-c5bc-4926-8aee-0eed6eb490a2@collabora.com>
+Date: Wed, 6 Nov 2024 13:31:12 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] watchdog: mediatek: Add support for MT6735
- TOPRGU/WDT
+Subject: Re: [PATCH v2 1/2] watchdog: mediatek: Fix mtk_wdt_restart
 To: Yassine Oudjana <y.oudjana@protonmail.com>,
  Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
  <linux@roeck-us.net>, Matthias Brugger <matthias.bgg@gmail.com>
 Cc: linux-watchdog@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 References: <20241106104738.195968-1-y.oudjana@protonmail.com>
- <20241106104738.195968-3-y.oudjana@protonmail.com>
+ <20241106104738.195968-2-y.oudjana@protonmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241106104738.195968-3-y.oudjana@protonmail.com>
+In-Reply-To: <20241106104738.195968-2-y.oudjana@protonmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_043113_121474_2F81868D 
-X-CRM114-Status: UNSURE (   6.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241106_043114_906670_F610CDDF 
+X-CRM114-Status: GOOD (  16.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,11 +78,53 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 06/11/24 11:47, Yassine Oudjana ha scritto:
-> Add support for the Top Reset Generation Unit/Watchdog Timer found on
-> MT6735.
+> Clear the IRQ enable bit of WDT_MODE before asserting software reset
+> in order to make TOPRGU issue a system reset signal instead of an IRQ.
 > 
+> Fixes: a44a45536f7b ("watchdog: Add driver for Mediatek watchdog")
 > Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
 
+I'd be more comfortable with a title like:
+
+watchdog: mediatek: Make sure system reset gets asserted in mtk_wdt_restart()
+
+or along those lines, saying what's this commit about, because a generic
+"fix" doesn't really mean anything...
+
+About the commit description - that's good.
+Btw, I wonder if maintainers can fix the title without you sending a v3...
+
+Anyway - you can get my:
+
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Cheers!
+Angelo
+
+> ---
+>   drivers/watchdog/mtk_wdt.c | 6 ++++++
+>   1 file changed, 6 insertions(+)
+> 
+> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+> index c35f85ce8d69c..e2d7a57d6ea2e 100644
+> --- a/drivers/watchdog/mtk_wdt.c
+> +++ b/drivers/watchdog/mtk_wdt.c
+> @@ -225,9 +225,15 @@ static int mtk_wdt_restart(struct watchdog_device *wdt_dev,
+>   {
+>   	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdt_dev);
+>   	void __iomem *wdt_base;
+> +	u32 reg;
+>   
+>   	wdt_base = mtk_wdt->wdt_base;
+>   
+> +	/* Enable reset in order to issue a system reset instead of an IRQ */
+> +	reg = readl(wdt_base + WDT_MODE);
+> +	reg &= ~WDT_MODE_IRQ_EN;
+> +	writel(reg | WDT_MODE_KEY, wdt_base + WDT_MODE);
+> +
+>   	while (1) {
+>   		writel(WDT_SWRST_KEY, wdt_base + WDT_SWRST);
+>   		mdelay(5);
+
 
 
