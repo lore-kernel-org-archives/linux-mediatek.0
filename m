@@ -4,63 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFF7DD59F72
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2024 20:35:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34AC3D59F73
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2024 21:04:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=mbhU5u76CLOOGN/GOKDUc7hnrmQiVYMKws8rURDatl4=; b=WQP0nPrfe9Z9BX
-	rgdE2TOBLo9pa/8Rez7wKzDZFfxXJO2Yxyr5JXaQI2kUbRhYyKBOH0sgNKJlJx5bWPfyW3Qp9aQpm
-	D+YoEeKQHMd3EgfmEz+VS+0HKN1kwXS41f/O65I/EWrHtwa+qJWQTXyE+8ovW72KxnXJ/SFn+bf/u
-	eWi/ygrii5YVHdZcQIUMYCztgFYpj0edfU8IVCV3LMAxFfKsDIIWDIL6sdvrUvzMj4+t+1TnEHggV
-	9FdDs7TFe39hN9riaRxzMMuvWX6lQQx2jN3CEyzoj7lznV5h3MT8MRzB7qfubn8hCVunFr5jQsLvX
-	ptnLFMfibf00woQR24cQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=FCqhcREoWezk1bptt5InwAGRjoq8AME0oZulSzRglA0=; b=Byt1S+WpsJKm3IX+2unmNp/9hf
+	jYjmYjS/tjQs+aqFbD8qoux36cKCMDeeWjwhzQWSbxCtlK1vTwEPZF8VpV7EgoQSCxigH9NZUX2xT
+	0Rh5NvWx72yxzp0uw6QsywA4OcfI9OFP5/Y/VjxN0K07lG9d0Vrn6lSc61ZfM0f87O1KfBvvsJV+h
+	vtdTvIYWcDOba96DyisdpfQm5LdXgtVlE14uvVmENS/Wb9JqnlNbEx+79AMoKGTfNSBOjO9Hv6JN8
+	IxGcHw9j99iUhhX/t+aUB0WD0S+XEsVSa4SastUN4UgeuelBt6oJJ+9whaxLFPuN2HToinLMv6M/q
+	Q/QRB1Qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8mk3-00000004h7o-2H9T;
-	Wed, 06 Nov 2024 20:35:03 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1t8nCG-00000004kzd-0AuW;
+	Wed, 06 Nov 2024 21:04:12 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8mhS-00000004gjK-3WJ1;
-	Wed, 06 Nov 2024 20:32:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id A9D4EA443C8;
-	Wed,  6 Nov 2024 20:30:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15120C4CEC6;
-	Wed,  6 Nov 2024 20:32:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730925141;
-	bh=1Ei0xMRvJVGpNZKZ8Xu5z8oPwa6biKFwhQZaFWCaniQ=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=tZg0J0eWyw29z9TlF5Dh4E6EQ5oPdCcO4Zz1/6he+K+beNXrwI5BYmOKhVX2TOsrL
-	 mAyajLN3o73Gvjnr3Ma+elCxVC6Ow693XoGe6S09/upNh68DhL/lmhJqnTnr1eaG2P
-	 vB982vUHSfGzwhi6hvbBmebGg7uoHTS6frYohB/PiF7IdB2PrwT1NTwcKUypN5ZWST
-	 +bDlMwFqgxqC0QYaudNUVdGHgRqi8jjbiJge483v+BpQXxLaXN5QcNCgttY6SgPyc+
-	 Q2BqAfBJ/xs1a9unoAlhKJDasaC2HI3NH5YOpLHp2NM7XuhVOU6VscBy9lyURxzNsn
-	 f8j4/RaEtgLGA==
-Date: Wed, 6 Nov 2024 14:32:19 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-pci@vger.kernel.org, ryder.lee@mediatek.com,
-	jianjun.wang@mediatek.com, lpieralisi@kernel.org, kw@linux.com,
-	robh@kernel.org, bhelgaas@google.com,
-	linux-mediatek@lists.infradead.org, lorenzo.bianconi83@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org,
-	nbd@nbd.name, dd@embedd.com, upstream@airoha.com,
-	angelogioacchino.delregno@collabora.com
-Subject: Re: [PATCH v4 4/4] PCI: mediatek-gen3: Add Airoha EN7581 support
-Message-ID: <20241106203219.GA1530199@bhelgaas>
+	id 1t8nAW-00000004ko0-03XE;
+	Wed, 06 Nov 2024 21:02:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1730926940;
+	bh=DLZ+xT7FS54/kaVDeqPCFh6lOCpCqzZIMMnQ9XE6XMs=;
+	h=From:Date:Subject:To:Cc:From;
+	b=ocOJjefKZmTy6knNbSNW/ZiMuNCvnESs2KF1Q1Py5pKtFGxtABGwYk6Y+Z9Tm0ryo
+	 qa/efwBBYcmCLhThgvifgngBCqjbq1zQfool60Cv8Wz/6/KH0FioQVNgWLLjDp8U7h
+	 /brvxEiCvZQQWA7QcTHPAsBqluJsBOU34CWWj2tXPfinx+iXyae9QJzoZmj1q2hRW6
+	 34eJnXd1UWSzEUDFE4h4NcCXD0QcQR95y3Volpk7dF8tViwftbBMRwfelUM9XdgZ4J
+	 z2zXaETUFgJVR2MHr2RjxOHPE1Z/M0QPNe6ZDQnxy9MaT0Uejoh4aep9+4MGalBtEk
+	 vLT+fIFkuoy6Q==
+Received: from [192.168.1.51] (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 529FF17E3786;
+	Wed,  6 Nov 2024 22:02:18 +0100 (CET)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Date: Wed, 06 Nov 2024 16:01:45 -0500
+Subject: [PATCH] arm64: dts: mediatek: mt8186: Move wakeup to MTU3 to get
+ working suspend
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <aca00bd672ee576ad96d279414fc0835ff31f637.1720022580.git.lorenzo@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20241106-mt8186-suspend-with-usb-wakeup-v1-1-07734a4c8236@collabora.com>
+X-B4-Tracking: v=1; b=H4sIADjZK2cC/x3NwQqDMAyA4VeRnBdo6nTiq4wd4owzjNXS2CmI7
+ 76y43f5/wNMkopBXx2Q5KumSyigSwXPmcNLUMdi8M5fiVyLn7WjrkXLFiWMuOk6Y7YBN35Ljsg
+ 1i3Dj6eYGKJGYZNL9P7g/zvMHw+83JHAAAAA=
+X-Change-ID: 20241106-mt8186-suspend-with-usb-wakeup-a3aeea52170b
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Wojciech Macek <wmacek@google.com>, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_123223_031125_6AD4C51E 
-X-CRM114-Status: GOOD (  17.17  )
+X-CRM114-CacheID: sfid-20241106_130224_258159_98FB88C9 
+X-CRM114-Status: GOOD (  11.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,100 +82,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 03, 2024 at 06:12:44PM +0200, Lorenzo Bianconi wrote:
-> Introduce support for Airoha EN7581 PCIe controller to mediatek-gen3
-> PCIe controller driver.
-> ...
+The current DT has the wakeup-source and mediatek,syscon-wakeup
+properties in the XHCI nodes, which configures USB wakeup after powering
+down the XHCI hardware block. However, since the XHCI controller is
+behind an MTU3 (USB3 DRD controller), the MTU3 only gets powered down
+after USB wakeup has been configured, causing the system to detect a
+wakeup, and results in broken suspend support as the system resumes
+immediately.
 
-> +static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
-> +{
-> +	struct device *dev = pcie->dev;
-> +	int err;
-> +	u32 val;
-> +
-> +	/*
-> +	 * Wait for the time needed to complete the bulk assert in
-> +	 * mtk_pcie_setup for EN7581 SoC.
-> +	 */
-> +	mdelay(PCIE_EN7581_RESET_TIME_MS);
+Move the wakeup properties to the MTU3 nodes so that USB wakeup is only
+enabled after the MTU3 has powered down.
 
-It looks wrong to me to do the assert and deassert in different
-places:
+With this change in place, it is possible to suspend and resume, and
+also to wakeup through USB, as tested on the Google Steelix (Lenovo 300e
+Yoga Chromebook Gen 4).
 
-  mtk_pcie_setup
-    reset_control_bulk_assert(pcie->phy_resets)        <--
-    mtk_pcie_en7581_power_up
-      mdelay(PCIE_EN7581_RESET_TIME_MS)
-      reset_control_bulk_deassert(pcie->phy_resets)    <--
-      mdelay(PCIE_EN7581_RESET_TIME_MS)
+Fixes: f6c3e61c5486 ("arm64: dts: mediatek: mt8186: Add MTU3 nodes")
+Reported-by: Wojciech Macek <wmacek@google.com>
+Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8186.dtsi | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-That makes the code hard to understand.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+index d3c3c2a40adcdf439a1c74586c35cf63a1c7cb30..b91f88ffae0e8b81b70269ea2d058b016a50232b 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
+@@ -1577,6 +1577,8 @@ ssusb0: usb@11201000 {
+ 			#address-cells = <2>;
+ 			#size-cells = <2>;
+ 			ranges;
++			wakeup-source;
++			mediatek,syscon-wakeup = <&pericfg 0x420 2>;
+ 			status = "disabled";
+ 
+ 			usb_host0: usb@11200000 {
+@@ -1590,8 +1592,6 @@ usb_host0: usb@11200000 {
+ 					 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_XHCI>;
+ 				clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck", "xhci_ck";
+ 				interrupts = <GIC_SPI 294 IRQ_TYPE_LEVEL_HIGH 0>;
+-				mediatek,syscon-wakeup = <&pericfg 0x420 2>;
+-				wakeup-source;
+ 				status = "disabled";
+ 			};
+ 		};
+@@ -1643,6 +1643,8 @@ ssusb1: usb@11281000 {
+ 			#address-cells = <2>;
+ 			#size-cells = <2>;
+ 			ranges;
++			wakeup-source;
++			mediatek,syscon-wakeup = <&pericfg 0x424 2>;
+ 			status = "disabled";
+ 
+ 			usb_host1: usb@11280000 {
+@@ -1656,8 +1658,6 @@ usb_host1: usb@11280000 {
+ 					 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_XHCI>;
+ 				clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck","xhci_ck";
+ 				interrupts = <GIC_SPI 324 IRQ_TYPE_LEVEL_HIGH 0>;
+-				mediatek,syscon-wakeup = <&pericfg 0x424 2>;
+-				wakeup-source;
+ 				status = "disabled";
+ 			};
+ 		};
 
-> +	err = phy_init(pcie->phy);
-> +	if (err) {
-> +		dev_err(dev, "failed to initialize PHY\n");
-> +		return err;
-> +	}
-> +
-> +	err = phy_power_on(pcie->phy);
-> +	if (err) {
-> +		dev_err(dev, "failed to power on PHY\n");
-> +		goto err_phy_on;
-> +	}
-> +
-> +	err = reset_control_bulk_deassert(pcie->soc->phy_resets.num_resets, pcie->phy_resets);
-> +	if (err) {
-> +		dev_err(dev, "failed to deassert PHYs\n");
-> +		goto err_phy_deassert;
-> +	}
-> +
-> +	/*
-> +	 * Wait for the time needed to complete the bulk de-assert above.
-> +	 * This time is specific for EN7581 SoC.
-> +	 */
-> +	mdelay(PCIE_EN7581_RESET_TIME_MS);
-> +
-> +	pm_runtime_enable(dev);
-> +	pm_runtime_get_sync(dev);
-> +
+---
+base-commit: 5b913f5d7d7fe0f567dea8605f21da6eaa1735fb
+change-id: 20241106-mt8186-suspend-with-usb-wakeup-a3aeea52170b
 
-> +	err = clk_bulk_prepare(pcie->num_clks, pcie->clks);
-> +	if (err) {
-> +		dev_err(dev, "failed to prepare clock\n");
-> +		goto err_clk_prepare;
-> +	}
-> +
-> +	val = FIELD_PREP(PCIE_VAL_LN0_DOWNSTREAM, 0x47) |
-> +	      FIELD_PREP(PCIE_VAL_LN1_DOWNSTREAM, 0x47) |
-> +	      FIELD_PREP(PCIE_VAL_LN0_UPSTREAM, 0x41) |
-> +	      FIELD_PREP(PCIE_VAL_LN1_UPSTREAM, 0x41);
-> +	writel_relaxed(val, pcie->base + PCIE_EQ_PRESET_01_REG);
-> +
-> +	val = PCIE_K_PHYPARAM_QUERY | PCIE_K_QUERY_TIMEOUT |
-> +	      FIELD_PREP(PCIE_K_PRESET_TO_USE_16G, 0x80) |
-> +	      FIELD_PREP(PCIE_K_PRESET_TO_USE, 0x2) |
-> +	      FIELD_PREP(PCIE_K_FINETUNE_MAX, 0xf);
-> +	writel_relaxed(val, pcie->base + PCIE_PIPE4_PIE8_REG);
+Best regards,
+-- 
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-Why is this equalization stuff in the middle between
-clk_bulk_prepare() and clk_bulk_enable()?  Is the split an actual
-requirement, or could we use clk_bulk_prepare_enable() here, like we
-do in mtk_pcie_power_up()?
-
-If the split is required, a comment about why would be helpful.
-
-> +	err = clk_bulk_enable(pcie->num_clks, pcie->clks);
-> +	if (err) {
-> +		dev_err(dev, "failed to prepare clock\n");
-> +		goto err_clk_enable;
-> +	}
-
-Per https://lore.kernel.org/r/ZypgYOn7dcYIoW4i@lore-desk,
-REG_PCI_CONTROL is asserted/deasserted here by en7581_pci_enable().
-
-Is this where PERST# is asserted?  If so, a comment to that effect
-would be helpful.  Where is PERST# deasserted?  Where are the required
-delays before deassert done?
-
-Bjorn
 
