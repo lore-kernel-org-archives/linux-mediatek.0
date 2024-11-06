@@ -4,58 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE695D44D54
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2024 11:46:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F64BD44D55
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2024 11:52:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kkzLaSae52UuqsoJEc/MkAHf/7nI2oM6ay3zhyqh1R0=; b=ZlwprAPbLMGAxlBs8na+uSZD4m
-	AK202wk3sUQepFMDgPfTC3WEFfuXhgpRuf6DNfjVIWeCA1AiiEgdOKQA89FbnHZPBsRW5WpREPj/q
-	K1d5fNtFGt3TcUl3bcxb3Hg8dqWBgxu8CKl8HNP3GC8y5oU7djMqGszQv1m07+G8znxS389lhbiwy
-	ZkJKD/EWGeYLjFnEA/k5mGnDTu6zLS4O+nYWcgeqU43oNQS4r2v18Zxuetw5gsO2JlkETIlp3oQ9x
-	BfAfbfI2N75xiLJW46jecPoq4ximEJ2E+uvi2lgu3iyMtUIJeBeJKY5B9yHqDio8j3GSOa/pte9Iu
-	ZFneY6cg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tRLusN6rgDqB2bfvpgOy4+ToaGWw07Y+deIwDLRLoI0=; b=NqgfeaSv0bQuw2BoIpIK3DlEGG
+	z9ourg9QMp4L5L8WnIYbmb9KsNkB/u1vDPAYqS1d1Tk/Ot45Pmcj8RdgZBAiGRYwB+aj8JsTrQ9Rk
+	BaNCY0q04wUMWaa8AM8ks30K+BbDNO1wwfxiKglmUJ1jZd3j8gdRJBI3PxCIFilHv7AVgqp1rUAvv
+	grioiSX4Qldg04cnuDlCTCXhvH44EkdbobknVcQwYh7vK0h5V439ldEs8tscAOIjHzy960sNPlcwD
+	AUPH3Q5yD/2k8wNe2/T6Uag9Dch2+iXHE2nFtlzxVKgjM/r7ZMhaf2gNaUZi0lT192cmj99FxCuY7
+	U6cxLLpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8eUo-00000002yck-3LOk;
-	Wed, 06 Nov 2024 11:46:46 +0000
-Received: from mail-40138.protonmail.ch ([185.70.40.138])
+	id 1t8eaH-000000030YP-0RiZ;
+	Wed, 06 Nov 2024 11:52:25 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8dZw-00000002nrt-2HEo
-	for linux-mediatek@lists.infradead.org;
-	Wed, 06 Nov 2024 10:48:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1730890078; x=1731149278;
-	bh=kkzLaSae52UuqsoJEc/MkAHf/7nI2oM6ay3zhyqh1R0=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector:List-Unsubscribe:List-Unsubscribe-Post;
-	b=Cy8eQt3i+sVmuzrwQUbkZo+3V9QU37BBbArhTMO+ocXEiL0ZFAebfWSsf1pH/gFYf
-	 itas4urWbas5hv2fE7L78PfbkEpDBIeZjYjTcqmfIAezQlUrP++XjhPnoy1Z3vyWB7
-	 AmkK04GCPFMtdkq05wip74al1LhTcwoMIT9rAN4CUroo5SjF9RYBsqth1RgvaO6/ZJ
-	 j6GCYxgUUmsmWtA3xejmU5abmxovcOxub+p9ADzFOI+Sc4KZG7Vpby0vPbivXMhK2/
-	 XEL2IsSm422a979gS6V6KIXDMpgI+D/cOYWjUb0RGw1fNKlUidqIQWU9h8ZnGK3oqG
-	 AsszMpn32hc6w==
-Date: Wed, 06 Nov 2024 10:47:55 +0000
-To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-From: Yassine Oudjana <y.oudjana@protonmail.com>
-Cc: Yassine Oudjana <y.oudjana@protonmail.com>, linux-watchdog@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 2/2] watchdog: mediatek: Add support for MT6735 TOPRGU/WDT
-Message-ID: <20241106104738.195968-3-y.oudjana@protonmail.com>
-In-Reply-To: <20241106104738.195968-1-y.oudjana@protonmail.com>
-References: <20241106104738.195968-1-y.oudjana@protonmail.com>
-Feedback-ID: 6882736:user:proton
-X-Pm-Message-ID: 8b289141cd324fdc2ef6f752e18c3d797afabfa6
+	id 1t8dmP-00000002rCK-3gYv;
+	Wed, 06 Nov 2024 11:00:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8126B5C5861;
+	Wed,  6 Nov 2024 11:00:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B958C4CECD;
+	Wed,  6 Nov 2024 11:00:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1730890852;
+	bh=ZC3QCMHYErbSGzgV1QmL7jUEKIIt60BFfDB2EWuwths=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XUuSuoZMX5ra6tDJFX+mApy0pqlZxrP3Zzekuvj8cLxvq44zpJ8HVyneLV8nb9tcd
+	 599f0HCcAK8+DQ8syHeX/ve13OcssEiszKpKnBzpfXq4om3rA8ZFxaOusDddsp61UB
+	 QRpc1TMz3GH2ym4bs/eOorsMwF2o8qW7fG6Lzef5oL34qvLPcwCTlIgKmE9B5JgynG
+	 LcEqyHWuomlShygX59Xu4OdjMQMh6mN+P+i82ojlKSJ13mi+IbRiO4x/9EmUB+JnDX
+	 7tFVz1Lt1ZPNtm74MTOegeKD94UN/Qm3yeOtFHlSm6GgK7RPnTHQU+KvpiC91X4QL8
+	 OWfnY94Tq8t5g==
+Date: Wed, 6 Nov 2024 11:00:46 +0000
+From: Lee Jones <lee@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	upstream@airoha.com, benjamin.larsson@genexis.eu,
+	ansuelsmth@gmail.com, linux-pwm@vger.kernel.org
+Subject: Re: (subset) [PATCH v9 4/6] dt-bindings: mfd: Add support for Airoha
+ EN7581 GPIO System Controller
+Message-ID: <20241106110046.GR1807686@google.com>
+References: <20241023-en7581-pinctrl-v9-0-afb0cbcab0ec@kernel.org>
+ <20241023-en7581-pinctrl-v9-4-afb0cbcab0ec@kernel.org>
+ <173088099542.3237297.18018729158887853624.b4-ty@kernel.org>
+ <ZyssJpR7xwbMzUsm@lore-desk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <ZyssJpR7xwbMzUsm@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_024800_826043_DD574638 
-X-CRM114-Status: UNSURE (   7.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241106_030053_991345_6CEA5443 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,47 +84,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the Top Reset Generation Unit/Watchdog Timer found on
-MT6735.
+On Wed, 06 Nov 2024, Lorenzo Bianconi wrote:
 
-Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
----
- drivers/watchdog/mtk_wdt.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+> On Nov 06, Lee Jones wrote:
+> > On Wed, 23 Oct 2024 01:20:04 +0200, Lorenzo Bianconi wrote:
+> > > Add support for Airoha EN7581 GPIO System Controller which provide a
+> > > register map for controlling the GPIO, pinctrl and PWM of the SoC via
+> > > dedicated pinctrl and pwm child nodes.
+> > > 
+> > > 
+> > 
+> > Applied, thanks!
+> > 
+> > [4/6] dt-bindings: mfd: Add support for Airoha EN7581 GPIO System Controller
+> >       commit: f49f37f3cfe1482d4dc77d26f3e8c38eab630d52
+> > 
+> > --
+> > Lee Jones [李琼斯]
+> > 
+> 
+> Hi Lee,
+> 
+> according to my understanding this patch has been already applied by Linus
+> here:
+> 
+> https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git/commit/?h=devel&id=50dedb1eb1e6755ccab55f6140916c2d192be765
 
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index e2d7a57d6ea2e..91d110646e16f 100644
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -10,6 +10,7 @@
-  */
-=20
- #include <dt-bindings/reset/mt2712-resets.h>
-+#include <dt-bindings/reset/mediatek,mt6735-wdt.h>
- #include <dt-bindings/reset/mediatek,mt6795-resets.h>
- #include <dt-bindings/reset/mt7986-resets.h>
- #include <dt-bindings/reset/mt8183-resets.h>
-@@ -87,6 +88,10 @@ static const struct mtk_wdt_data mt2712_data =3D {
- =09.toprgu_sw_rst_num =3D MT2712_TOPRGU_SW_RST_NUM,
- };
-=20
-+static const struct mtk_wdt_data mt6735_data =3D {
-+=09.toprgu_sw_rst_num =3D MT6735_TOPRGU_RST_NUM,
-+};
-+
- static const struct mtk_wdt_data mt6795_data =3D {
- =09.toprgu_sw_rst_num =3D MT6795_TOPRGU_SW_RST_NUM,
- };
-@@ -489,6 +494,7 @@ static int mtk_wdt_resume(struct device *dev)
- static const struct of_device_id mtk_wdt_dt_ids[] =3D {
- =09{ .compatible =3D "mediatek,mt2712-wdt", .data =3D &mt2712_data },
- =09{ .compatible =3D "mediatek,mt6589-wdt" },
-+=09{ .compatible =3D "mediatek,mt6735-wdt", .data =3D &mt6735_data },
- =09{ .compatible =3D "mediatek,mt6795-wdt", .data =3D &mt6795_data },
- =09{ .compatible =3D "mediatek,mt7986-wdt", .data =3D &mt7986_data },
- =09{ .compatible =3D "mediatek,mt7988-wdt", .data =3D &mt7988_data },
---=20
-2.47.0
+An interesting choice.  Linus?
 
-
+-- 
+Lee Jones [李琼斯]
 
