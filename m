@@ -4,70 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34AC3D59F73
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2024 21:04:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBA44D59F75
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2024 22:14:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=FCqhcREoWezk1bptt5InwAGRjoq8AME0oZulSzRglA0=; b=Byt1S+WpsJKm3IX+2unmNp/9hf
-	jYjmYjS/tjQs+aqFbD8qoux36cKCMDeeWjwhzQWSbxCtlK1vTwEPZF8VpV7EgoQSCxigH9NZUX2xT
-	0Rh5NvWx72yxzp0uw6QsywA4OcfI9OFP5/Y/VjxN0K07lG9d0Vrn6lSc61ZfM0f87O1KfBvvsJV+h
-	vtdTvIYWcDOba96DyisdpfQm5LdXgtVlE14uvVmENS/Wb9JqnlNbEx+79AMoKGTfNSBOjO9Hv6JN8
-	IxGcHw9j99iUhhX/t+aUB0WD0S+XEsVSa4SastUN4UgeuelBt6oJJ+9whaxLFPuN2HToinLMv6M/q
-	Q/QRB1Qw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YB3xeY071IgcEnEiq3AVPEiyG5ZVXfdzV1Ck//Skg7M=; b=HIgVD5x8k8ITAftu++At/S2bNC
+	BX/rQY3uIh99GpokdKI7SF6wFgRx3w33KbJv+xy1J7vMsasz1QfKfGcaZ2Wx6WMWDBNkR/8v9dM+7
+	YI+7jiswSyGpgaGHHPDXLpdMnoPmK2v5EAuc2KYGZsp3bJlnxwSm4t5nzqZHftaGpcMRiX7AT0pv4
+	1vjvb8MyB5uYJy5Ju2K9JHmdfYjtSpAw6J5tIi7qbjX3xyfUOssbus3gdNIA/baEJ0Vy/b3ihJNUF
+	s4E9vaJKn4LTFdx112i6xYkOKJ3BKPeTObdj33gmuQrD2IO9IujDFXBwtU56tWK6SeAkpXEiwfdXy
+	leRt2ieg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8nCG-00000004kzd-0AuW;
-	Wed, 06 Nov 2024 21:04:12 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1t8oI8-00000004t2T-3hQv;
+	Wed, 06 Nov 2024 22:14:20 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8nAW-00000004ko0-03XE;
-	Wed, 06 Nov 2024 21:02:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1730926940;
-	bh=DLZ+xT7FS54/kaVDeqPCFh6lOCpCqzZIMMnQ9XE6XMs=;
-	h=From:Date:Subject:To:Cc:From;
-	b=ocOJjefKZmTy6knNbSNW/ZiMuNCvnESs2KF1Q1Py5pKtFGxtABGwYk6Y+Z9Tm0ryo
-	 qa/efwBBYcmCLhThgvifgngBCqjbq1zQfool60Cv8Wz/6/KH0FioQVNgWLLjDp8U7h
-	 /brvxEiCvZQQWA7QcTHPAsBqluJsBOU34CWWj2tXPfinx+iXyae9QJzoZmj1q2hRW6
-	 34eJnXd1UWSzEUDFE4h4NcCXD0QcQR95y3Volpk7dF8tViwftbBMRwfelUM9XdgZ4J
-	 z2zXaETUFgJVR2MHr2RjxOHPE1Z/M0QPNe6ZDQnxy9MaT0Uejoh4aep9+4MGalBtEk
-	 vLT+fIFkuoy6Q==
-Received: from [192.168.1.51] (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 529FF17E3786;
-	Wed,  6 Nov 2024 22:02:18 +0100 (CET)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Wed, 06 Nov 2024 16:01:45 -0500
-Subject: [PATCH] arm64: dts: mediatek: mt8186: Move wakeup to MTU3 to get
- working suspend
+	id 1t8oGO-00000004snH-16Iu;
+	Wed, 06 Nov 2024 22:12:34 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-43155abaf0bso2973645e9.0;
+        Wed, 06 Nov 2024 14:12:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1730931150; x=1731535950; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=YB3xeY071IgcEnEiq3AVPEiyG5ZVXfdzV1Ck//Skg7M=;
+        b=OguKIDAbAzdxsUwNs1xdNTzxbmbyluMLQ8Q2F4WkH/7NxrFENWp7s/9TOqQkJxLGj/
+         oHNFrs2zf3TC4gMLTjhqjoGDOcakgvLQXnZJRXBEpeW44swCO7JT4oLmAuexasaXmc5W
+         Hx8r2+YTNGjObXIXMHcU0z+eeTNR1G8jKRbvou8vL2K0qsXCaAHJ2BoYv6o+iN6gRaEY
+         mkiTGmaadWDcPCamafBLQS8ZAZ3xktonD2XAXGtXkLb3Lg1a2X5PzGVbN28DeO63L8DR
+         DH2il+Y7mnn8pwdVS1ObuuzG+xRi3lzTrohUcpME8Hda0GT/9IZJ6jEUsRMhtQcvms/+
+         jQZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730931150; x=1731535950;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=YB3xeY071IgcEnEiq3AVPEiyG5ZVXfdzV1Ck//Skg7M=;
+        b=jKbPZF45pXDnz0UwifhL2TJd0S0obERNsolQb9bkWyEMoKw+cWan6BFtg6iu2FkGGn
+         asUwtS4rr6fjBvLehJpxBt79+N8YGkpUsKwaoVE3TZgZTSIbeVm2wlBqeVcuGqQuqrzv
+         1SQPmMqP82J+9yEMQOm6dg3l1HIb/B4MPbVV/WdEHbZ+uRhOOigeD+/yQTU+sIy4YGAl
+         fnUymaKcfbLrNTC3+vg1M0aJMkIlMTwPcQhz7mFDbzt+wXIbKOysQ+zqTQ9MlBze1qzV
+         5OF5HNlZKte/8lnGU2Z67tZVlxFJzAjqDbzak6YTYTsNvSAURMrMPREJa22z2JYcA6a0
+         bHZg==
+X-Forwarded-Encrypted: i=1; AJvYcCUTPcBh8lMnYjdb21X3j+Ndw9pvX4FvjxFq7lohtVObRzL86oXafpbWznU6KasHu9S67Yt9X08GF3ur1aF7tek=@lists.infradead.org, AJvYcCXpLDIDYlT3OSGOGebitkSkBMgqKu7y9fia8yAH+DtRYTAfQ9yliOR3SzHqD9NFU1B7HrXPv37mOqbq/v1G6CEA@lists.infradead.org
+X-Gm-Message-State: AOJu0YzVWfjQEG807xkEXP8o4o6nu9AeT904vuoBFDiXq7gLnx9Qn18/
+	JvGBKoF7JidB75abBxL+DiFbKEUX233NSZqGECbI7P1UB1bjl8+8
+X-Google-Smtp-Source: AGHT+IFfw5uAMtdU1Om11dpYAnWEuvswlrvP8MXiZx6I0NsIQwFcLiPX5mXS4Yxg1s/Iptb9rEr+Hw==
+X-Received: by 2002:a05:6000:4009:b0:37d:4e80:516 with SMTP id ffacd0b85a97d-381c7a5f773mr18655654f8f.34.1730931150127;
+        Wed, 06 Nov 2024 14:12:30 -0800 (PST)
+Received: from [192.168.0.2] ([69.6.8.124])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-381c113e771sm20526409f8f.81.2024.11.06.14.12.27
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 06 Nov 2024 14:12:28 -0800 (PST)
+Message-ID: <3d17cd64-46c5-427f-b24f-9091546e2edf@gmail.com>
+Date: Thu, 7 Nov 2024 00:12:56 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] [net] net: wwan: t7xx: Change PM_AUTOSUSPEND_MS to 5000
+To: =?UTF-8?B?5ZCz6YC86YC8?= <wojackbb@gmail.com>
+Cc: Jakub Kicinski <kuba@kernel.org>, netdev@vger.kernel.org,
+ chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
+ haijun.liu@mediatek.com, m.chetan.kumar@linux.intel.com,
+ ricardo.martinez@linux.intel.com, loic.poulain@linaro.org,
+ johannes@sipsolutions.net, davem@davemloft.net, edumazet@google.com,
+ pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ angelogioacchino.delregno@collabora.com, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com
+References: <20241028073015.692794-1-wojackbb@gmail.com>
+ <20241031185150.6ef22ce0@kernel.org>
+ <CAAQ7Y6an8ZkxYpJehd8cBRPHjqyQofc6A4QdPzM_dhh1Sn0nng@mail.gmail.com>
+Content-Language: en-US
+From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
+In-Reply-To: <CAAQ7Y6an8ZkxYpJehd8cBRPHjqyQofc6A4QdPzM_dhh1Sn0nng@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Message-Id: <20241106-mt8186-suspend-with-usb-wakeup-v1-1-07734a4c8236@collabora.com>
-X-B4-Tracking: v=1; b=H4sIADjZK2cC/x3NwQqDMAyA4VeRnBdo6nTiq4wd4owzjNXS2CmI7
- 76y43f5/wNMkopBXx2Q5KumSyigSwXPmcNLUMdi8M5fiVyLn7WjrkXLFiWMuOk6Y7YBN35Ljsg
- 1i3Dj6eYGKJGYZNL9P7g/zvMHw+83JHAAAAA=
-X-Change-ID: 20241106-mt8186-suspend-with-usb-wakeup-a3aeea52170b
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Wojciech Macek <wmacek@google.com>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_130224_258159_98FB88C9 
-X-CRM114-Status: GOOD (  11.31  )
+X-CRM114-CacheID: sfid-20241106_141232_326954_C09ACF9C 
+X-CRM114-Status: GOOD (  14.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,76 +101,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The current DT has the wakeup-source and mediatek,syscon-wakeup
-properties in the XHCI nodes, which configures USB wakeup after powering
-down the XHCI hardware block. However, since the XHCI controller is
-behind an MTU3 (USB3 DRD controller), the MTU3 only gets powered down
-after USB wakeup has been configured, causing the system to detect a
-wakeup, and results in broken suspend support as the system resumes
-immediately.
+Hello Jack,
 
-Move the wakeup properties to the MTU3 nodes so that USB wakeup is only
-enabled after the MTU3 has powered down.
+On 06.11.2024 13:10, 吳逼逼 wrote:
+> If the PCIE connection remains in the D0 state, It will consume more power.
 
-With this change in place, it is possible to suspend and resume, and
-also to wakeup through USB, as tested on the Google Steelix (Lenovo 300e
-Yoga Chromebook Gen 4).
+True. Keeping device active causes battery drainage and the idea to put 
+inactive device into the power saving mode is clear. My question was not 
+about power consumption. I am trying to understand what other 
+consequences of keeping modem suspended. More specifically, how the 
+suspend mode influences user data communication?
 
-Fixes: f6c3e61c5486 ("arm64: dts: mediatek: mt8186: Add MTU3 nodes")
-Reported-by: Wojciech Macek <wmacek@google.com>
-Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8186.dtsi | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+> Receiving or sending data will cause PCIE to change D3 Cold to D0 state.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-index d3c3c2a40adcdf439a1c74586c35cf63a1c7cb30..b91f88ffae0e8b81b70269ea2d058b016a50232b 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-@@ -1577,6 +1577,8 @@ ssusb0: usb@11201000 {
- 			#address-cells = <2>;
- 			#size-cells = <2>;
- 			ranges;
-+			wakeup-source;
-+			mediatek,syscon-wakeup = <&pericfg 0x420 2>;
- 			status = "disabled";
- 
- 			usb_host0: usb@11200000 {
-@@ -1590,8 +1592,6 @@ usb_host0: usb@11200000 {
- 					 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_XHCI>;
- 				clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck", "xhci_ck";
- 				interrupts = <GIC_SPI 294 IRQ_TYPE_LEVEL_HIGH 0>;
--				mediatek,syscon-wakeup = <&pericfg 0x420 2>;
--				wakeup-source;
- 				status = "disabled";
- 			};
- 		};
-@@ -1643,6 +1643,8 @@ ssusb1: usb@11281000 {
- 			#address-cells = <2>;
- 			#size-cells = <2>;
- 			ranges;
-+			wakeup-source;
-+			mediatek,syscon-wakeup = <&pericfg 0x424 2>;
- 			status = "disabled";
- 
- 			usb_host1: usb@11280000 {
-@@ -1656,8 +1658,6 @@ usb_host1: usb@11280000 {
- 					 <&infracfg_ao CLK_INFRA_AO_SSUSB_TOP_P1_XHCI>;
- 				clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck","xhci_ck";
- 				interrupts = <GIC_SPI 324 IRQ_TYPE_LEVEL_HIGH 0>;
--				mediatek,syscon-wakeup = <&pericfg 0x424 2>;
--				wakeup-source;
- 				status = "disabled";
- 			};
- 		};
+Am I understand it correctly that even receiving IP packets on downlink 
+will cause PCIe link re-activation?
 
----
-base-commit: 5b913f5d7d7fe0f567dea8605f21da6eaa1735fb
-change-id: 20241106-mt8186-suspend-with-usb-wakeup-a3aeea52170b
 
-Best regards,
--- 
-Nícolas F. R. A. Prado <nfraprado@collabora.com>
+I am concerned about a TCP connection that can be idle for a long period 
+of time. For example, an established SSH connection can stay idle for 
+minutes. If I connected to a server and execute something like this:
 
+user@host$ sleep 20 && echo "Done"
+
+Will I eventually see the "Done" message or will the autosuspended modem 
+effectively block any incoming traffic? And how long does it take for 
+the modem to wake up and deliver a downlink packet to the host? Have you 
+measured StDev change?
+
+> Jakub Kicinski <kuba@kernel.org> 於 2024年11月1日 週五 上午9:51寫道：
+>>
+>> On Mon, 28 Oct 2024 15:30:15 +0800 wojackbb@gmail.com wrote:
+>>> Because optimizing the power consumption of t7XX,
+>>> change auto suspend time to 5000.
+>>>
+>>> The Tests uses a script to loop through the power_state
+>>> of t7XX.
+>>> (for example: /sys/bus/pci/devices/0000\:72\:00.0/power_state)
+>>>
+>>> * If Auto suspend is 20 seconds,
+>>>    test script show power_state have 0~5% of the time was in D3 state
+>>>    when host don't have data packet transmission.
+>>>
+>>> * Changed auto suspend time to 5 seconds,
+>>>    test script show power_state have 50%~80% of the time was in D3 state
+>>>    when host don't have data packet transmission.
+>>
+>> I'm going to drop this from PW while we wait for your reply to Sergey
+>> If the patch is still good after answering his questions please update
+>> the commit message and resend with a [net-next] tag (we use [net] to
+>> designate fixes for current release and stable)
+
+--
+Sergey
 
