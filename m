@@ -4,70 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F8CBD5D680
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 18:01:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD90ED5D689
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 19:56:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fmnOEj5dXMMf0PRnH3f6x/+FCcnYmXYqjRS29botuwQ=; b=isMdSDPWbEZOQE6XpQeHy/5hmB
-	3ZVPLi3reqk+0fcJRzrKMAMZsah2jzc2u2I88Z8nSB+S8AYY6lCcNy9XEQQHgLHPcYN2uEQIDj0Di
-	2nSLpayuZbXdkilVLI4Cf4X2Me4Ud/0O4uRA0BhzSMxE19OGQaf/JP6+9i+dJyNbrmb4aApon6cGB
-	lFXYAxYCJRZushf9sT3o6EiH0qEX4gNOeqg8yI+PPdoFI+wDdnN1wQ3WDl6wal5y3a4CNGrxGUAqZ
-	FZjMsOUgRZVyKawKESpfeKpLiNHYAXnzLEjZQpOYgCuB1rn5hV62tWX5SZPrm9gJNWnMSszW5X8Xd
-	gd9FqUTA==;
+	bh=Og9wlVgM0BRB/j4S7Y/C7oTbSr+qBDG27Kjm/ghy3Ok=; b=EgednljDc+Tp2qqimNwF7XAZto
+	pXgSV6vBWd7eReq40VxTQfi40Ac83fZ4TUgkZJVeFNntRK65q8w/1UiF+8K8/lplKeIVi2Xxb9521
+	YzEU8zhOW44aaQCy3fRxrBpaLpxPHGTzdSOFtBQd2PNukh0XKSeXW5ZtynAbloQcy6qc+I/jP/WrS
+	azuDvLTkKFmRqeu6tzb4AD9LDBtQ8y9/bde+rXXURXGCgNh8+b6KZ0U5NZJhcadIxGtUxEmPWc725
+	Oy6ypNrcJLdSNGNGE0gkT1VvAw3Rr//gzcmt+iprLDKKaiaESjTrlQWHdFa+9d8By+U03lrYXFnMT
+	tw20w7EA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t96pC-00000007t1L-3rAg;
-	Thu, 07 Nov 2024 18:01:42 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1t98c2-00000008A68-3HLR;
+	Thu, 07 Nov 2024 19:56:14 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t95Vs-00000007fzp-4BCu;
-	Thu, 07 Nov 2024 16:37:42 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 6F7C5A44895;
-	Thu,  7 Nov 2024 16:35:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7414BC4CECC;
-	Thu,  7 Nov 2024 16:37:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730997458;
-	bh=LOjqdLJXd4OpI4uxoxe81wuTDGMChDa9G9O5Hv18mqc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=j7JZeh+IeOQECb17zMO1os2mGY6G+f6EoIue5B4gZosgSMwIpCGGbBLQ+Uj44FyKB
-	 kx2qRP2QsXarPtPq83HZfuTIw0oKgoaMBvwTFSaytiqZWeSv9ynVCkznF7QUw2+nA0
-	 KRMDLUUIwF19Qe5it6+LiYDv99TmVVPvhyWScNXKhZh+1Nn+T/pSEnJbq2SJdbPQSG
-	 P6DAdIN3UVCP7BqNE5tZmty2KfOibSFfVi4HKOpbQncHTKGzJlZQaCGa4uUND3i9j5
-	 FoJsKWmfl8SLKxBEMX1OKtRDkamva2Bbpq0y7jEtNi41LT0qPcfpT0v+fkriLLNU2G
-	 foC8On6Dsg00A==
-Date: Thu, 7 Nov 2024 17:37:36 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
+	id 1t98JE-00000008691-0Iul;
+	Thu, 07 Nov 2024 19:36:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=Og9wlVgM0BRB/j4S7Y/C7oTbSr+qBDG27Kjm/ghy3Ok=; b=LQU8o3dXx5z9lZiPBXtlL/1gzl
+	yemHNPGMs6a+zViyFH+wxslUR8myQcH8aI0ArJ9yXMfMxtm39gQpQrmj1pDqErBqTrlvwnuyBnGCh
+	BZOBNb5stNeRXrEHkJGLcp++t1sGOcf8uta7/5YZ+tObpjrfGQxZtvjpOF5/R7mcNhrk=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1t98J1-00CV5w-6i; Thu, 07 Nov 2024 20:36:35 +0100
+Date: Thu, 7 Nov 2024 20:36:35 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Cc: Christian Marangi <ansuelsmth@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 3/3] PCI: mediatek-gen3: Move reset/assert callbacks in
- .power_up()
-Message-ID: <Zyzs0E6c6FZNK6j9@lore-desk>
-References: <ZyzmFyRYDHX0W6bB@lore-desk>
- <20241107162136.GA1618287@bhelgaas>
+	"AngeloGioacchino Del Regno," <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	upstream@airoha.com
+Subject: Re: [net-next PATCH v3 2/3] net: dsa: Add Airoha AN8855 5-Port
+ Gigabit DSA Switch driver
+Message-ID: <75495b79-65fb-4a70-a937-36f969280ce6@lunn.ch>
+References: <20241106122254.13228-1-ansuelsmth@gmail.com>
+ <20241106122254.13228-3-ansuelsmth@gmail.com>
+ <4318897e-0f1a-42c7-8f20-065dc690a112@wanadoo.fr>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="jWe0TsNLQ5QwO6hz"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241107162136.GA1618287@bhelgaas>
+In-Reply-To: <4318897e-0f1a-42c7-8f20-065dc690a112@wanadoo.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241107_083741_238611_3725259B 
-X-CRM114-Status: GOOD (  15.98  )
+X-CRM114-CacheID: sfid-20241107_113648_145250_863A419D 
+X-CRM114-Status: UNSURE (   8.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,64 +85,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+> > +enum an8855_stp_state {
+> > +	AN8855_STP_DISABLED = 0,
+> > +	AN8855_STP_BLOCKING = 1,
+> > +	AN8855_STP_LISTENING = 1,
+> 
+> Just wondering if this 0, 1, *1*, 2, 3 was intentional?
 
---jWe0TsNLQ5QwO6hz
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+There are some devices which don't differentiate between blocking and
+listening.  If this is true, then maybe:
 
-On Nov 07, Bjorn Helgaas wrote:
-> On Thu, Nov 07, 2024 at 05:08:55PM +0100, Lorenzo Bianconi wrote:
-> > > On Thu, Nov 07, 2024 at 02:50:55PM +0100, Lorenzo Bianconi wrote:
-> > > > In order to make the code more readable, move phy and mac reset lin=
-es
-> > > > assert/de-assert configuration in .power_up callback
-> > > > (mtk_pcie_en7581_power_up/mtk_pcie_power_up).
-> > ...
->=20
-> > > Is there a requirement that the PHY and MAC reset ordering be
-> > > different for EN7581 vs other chips?
-> > >=20
-> > > EN7581:
-> > >=20
-> > >   assert PHY reset
-> > >   assert MAC reset
-> > >   power on PHY
-> > >   deassert PHY reset
-> > >   deassert MAC reset
-> > >=20
-> > > others:
-> > >=20
-> > >   assert PHY reset
-> > >   assert MAC reset
-> > >   deassert PHY reset
-> > >   power on PHY
-> > >   deassert MAC reset
-> > >=20
-> > > Is there one order that would work for both?
-> >=20
-> > EN7581 requires to run phy_init()/phy_power_on() before deassert PHY re=
-set
-> > lines.
->=20
-> And the other chips require the PHY power-on to be *after* deasserting
-> PHY reset?
++enum an8855_stp_state {
++	AN8855_STP_DISABLED = 0,
++	AN8855_STP_BLOCKING = 1,
++	AN8855_STP_LISTENING = AN8855_STP_BLOCKING,
 
-I am not sure about it, this is the only Airoha device I have.
+Which saves a comment.
 
-Regards,
-Lorenzo
-
---jWe0TsNLQ5QwO6hz
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZyzs0AAKCRA6cBh0uS2t
-rOdGAP9wZ3x/72rt3z5VA+CvmxyOE+smiIxqdLcxqQ5DYJYKKQD+OzuuGmCFKK6b
-otItaue3hFQPfCMyI9kM/cMtpP5dYQI=
-=M/rn
------END PGP SIGNATURE-----
-
---jWe0TsNLQ5QwO6hz--
+	Andrew
 
