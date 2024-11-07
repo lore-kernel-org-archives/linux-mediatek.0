@@ -4,75 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92ED1D5AE68
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 06:18:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 740D1D5AE6B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 07:00:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AI1Yg0EmBpFMmxHSDUGtFYEFGBNXtvmAM+kcA7qGUgg=; b=iB0P76449JSQRWSj6PtgQC7p0M
-	kN3XJ2CV7LtfqZoFg0xttAB3nab7/5z/D3VuL/GmVJmJZN116FRQUij36b/qlHUK1hsMSgiEYO+2l
-	fZL6cc3VdbR16JcwJqG0RyFWoGxBqCJNmBly5n296iyu+OmRfEDNoqGnk+sM4q835L065pJb7z5sY
-	t8H7UuAhhsOnoHWymnV71rhm7z+qTOMUbW1ypEJRIXDjeKo+ODEBgSUyo/BImiaGthrG5zPjf8Z+R
-	1f8yYLBYOY07oZZqHcoyXyoPrf7V4QbYcVXpvJTX1kw/reklCnzTLFHJ6yNhnXt7KT9Qu+sDVY8aH
-	D5IlTo1w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=V02Q+hBZd7IKoOvbggj5lIvd5lTBVFB0kCkzN1VjvB0=; b=hS2KoDfnZNg40oePZAP7aAYE1s
+	uzmxA1+zNPc3Hk83mi4d9+EkRWNLZjHuhNNjlRVfT9kqERJT9DUUzxoEhr1QHEXGrJv/Dip2d4Dv/
+	P6VAFYG97woiA6WMEmqXMmXJVaPYygJB1E7ZuDYQn93uFp3/LWgOIiWezEczofiGnku+YpiEHHIv1
+	srURQnkO9msq48eqKn3s0D7VTchRbi0q/FNvKtL8LvK0FprYt7w9hsTz6vHpKjaLfW/k85pDbCSee
+	j6R9TLIGKAyRj0XgAQBqX55o3jCd4f47grdHQ3f6dwg20bmJAfYEXL9SgGq4Sp1YoUMZ5ilQL2aVd
+	nNjExUiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8vqq-00000005p6N-0tfD;
-	Thu, 07 Nov 2024 06:18:40 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1t8wVi-00000005v51-1W1N;
+	Thu, 07 Nov 2024 07:00:54 +0000
+Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8vn4-00000005oLS-2gxY
+	id 1t8wTx-00000005usp-2K9I
 	for linux-mediatek@lists.infradead.org;
-	Thu, 07 Nov 2024 06:14:48 +0000
-X-UUID: 94d269ea9ccf11ef82ff63e91e7eb18c-20241106
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=AI1Yg0EmBpFMmxHSDUGtFYEFGBNXtvmAM+kcA7qGUgg=;
-	b=hW5IAWEmalGps4BbzWgcIgFtk8M0xsYMVsb+CWmxB9TP5eulSX0e7MidnAgRA1LZ0bUtpM7TL3uHMNJtx86nfgsPxxSihKsUelVpjDqWLMDE/LB58VU+GAeqM29hSzLAjAQ7BvCa2ns0SphlwYE50jA21LRSu30RqzdU36UVlR4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.42,REQID:4ad6629b-0bdd-4f7d-bcde-97dc92930043,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:b0fcdc3,CLOUDID:edb5a8ca-91e6-4060-9516-6ba489b4e2dc,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 94d269ea9ccf11ef82ff63e91e7eb18c-20241106
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 783213337; Wed, 06 Nov 2024 23:14:44 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 7 Nov 2024 14:14:41 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 7 Nov 2024 14:14:41 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Michael.Lo@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
-	<km.lin@mediatek.com>, <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>,
-	<posh.sun@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Leon Yen <leon.yen@mediatek.com>, Ming
- Yen Hsieh <mingyen.hsieh@mediatek.com>
-Subject: [PATCH v3] wifi :mt76: mt7921: introduce CSA support
-Date: Thu, 7 Nov 2024 14:14:40 +0800
-Message-ID: <20241107061440.6545-1-mingyen.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	Thu, 07 Nov 2024 06:59:08 +0000
+Received: by mail-ua1-x92a.google.com with SMTP id a1e0cc1a2514c-84fc7b58d4dso233091241.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 06 Nov 2024 22:59:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1730962744; x=1731567544; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=V02Q+hBZd7IKoOvbggj5lIvd5lTBVFB0kCkzN1VjvB0=;
+        b=B7Bl08sMKpZmG/bZ3MxBqd1tp1uDnxMfHTL/xHMhTwBGefu8gjoyQ24IRFg4V1angQ
+         6y4MFs8jci/O9c34MZAaGck4krZ/5Cy1nY6OxDyw/eHzOUyQz/ocdOAWgl8oq6Eankdp
+         tC0n+mp+/U+W8z5cuQtXBrjrqHKBuQ2uk+U8w=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730962744; x=1731567544;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=V02Q+hBZd7IKoOvbggj5lIvd5lTBVFB0kCkzN1VjvB0=;
+        b=TMNjCYBoShjWq9i61Yls1j/TGoVufLXzawVhDNVY6oxjqAT5i1cMLFrjHfkYucVFwd
+         DpG5Ci03xnAVqbdVT3UgxgHmliIreg+me/9LQgu4uai7twNRb+3CGFLqnxxUcJ6KZ1xr
+         ctO+UcY9x7hkoBQd9203NsEtaeiI4s8exxFAdB2SKpVwQUbnjDwu9Obm8puWDV/IFxNe
+         5hWXPEeYOe14lT3X3UnQQJ06ond1OGTB2DCkDwZwUDPHhgo9lXB8fQEqq2vcmdgKMC1y
+         wkfbWAEShCD1iVCsJaJOVtbQHUS8rBmwT2xJxZa7LAb9CWdxxET9QMMSVSdKC5fFyLQn
+         z4Rg==
+X-Forwarded-Encrypted: i=1; AJvYcCWBeXeF/xJBCr/c6NX46479I/0QZtRv4OofZ+V+Zrg9dcqPcYe0WKGtq0nK/sn0LOEstIvRkkOfiSoWm2L/QA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzbD2sSFh89FPbpTxg8Gpt85VuZAJRAncfCF8TAQC5uQyTCyn7O
+	zJjYT3n/uMIAQX14jVPy5rJYTHkbrQueMnsloaTzeO8MNU+X/0QBw4DaYJlVRdg8933Q9RaH/SU
+	=
+X-Google-Smtp-Source: AGHT+IFrs0tgI+ug8NSY9MZ82XNgBfWimmllnctO8B9+lFcVSLKZNuVobZdrGUShr+e0tnEdw2zswg==
+X-Received: by 2002:a05:6102:41a2:b0:4a4:78a3:34f6 with SMTP id ada2fe7eead31-4aada1c82dbmr14230137.16.1730962743165;
+        Wed, 06 Nov 2024 22:59:03 -0800 (PST)
+Received: from mail-vk1-f177.google.com (mail-vk1-f177.google.com. [209.85.221.177])
+        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-4aa9efeed0asm145562137.26.2024.11.06.22.59.01
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 06 Nov 2024 22:59:02 -0800 (PST)
+Received: by mail-vk1-f177.google.com with SMTP id 71dfb90a1353d-50d32d82bd8so255922e0c.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 06 Nov 2024 22:59:01 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCXl/6qug7kf6+865EFbBPGkriOkC7bVcvb6t7dgaGgDK81b+quNVocyJ8aJJ+QA+39MeNANm4kpDg/ffwYiLQ==@lists.infradead.org
+X-Received: by 2002:a05:6102:c0d:b0:4a4:9363:b84c with SMTP id
+ ada2fe7eead31-4aada0603aemr55330137.6.1730962741133; Wed, 06 Nov 2024
+ 22:59:01 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
+References: <20241105093222.4055774-1-fshao@chromium.org> <20241105093222.4055774-3-fshao@chromium.org>
+ <b66dbf9e-b35b-482c-9eb7-112ef1f398d6@collabora.com>
+In-Reply-To: <b66dbf9e-b35b-482c-9eb7-112ef1f398d6@collabora.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Thu, 7 Nov 2024 14:58:25 +0800
+X-Gmail-Original-Message-ID: <CAC=S1ngozo11g1vF2jnHjTLcNmP8tOMsQhK+LR0QWqoeXwSJjg@mail.gmail.com>
+Message-ID: <CAC=S1ngozo11g1vF2jnHjTLcNmP8tOMsQhK+LR0QWqoeXwSJjg@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: Introduce MT8188 Geralt
+ platform based Ciri
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_221446_721350_0401CF52 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20241106_225905_674547_22C3F343 
+X-CRM114-Status: GOOD (  42.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,246 +101,793 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Leon Yen <leon.yen@mediatek.com>
+On Wed, Nov 6, 2024 at 9:19=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 05/11/24 10:30, Fei Shao ha scritto:
+> > Introduce MT8188-based Chromebook Ciri, also known commercially as
+> > Lenovo Chromebook Duet (11", 9).
+> >
+> > Ciri is a detachable device based on the Geralt design, where Geralt is
+> > the codename for the MT8188 platform. Ciri offers 8 SKUs to accommodate
+> > different combinations of second-source components, including:
+> > - audio codecs (RT5682S and ES8326)
+> > - speaker amps (TAS2563 and MAX98390)
+> > - MIPI-DSI panels (BOE nv110wum-l60 and IVO t109nw41)
+> >
+> > Signed-off-by: Fei Shao <fshao@chromium.org>
+> > ---
+> >
+> > Changes in v2:
+> > - remove invalid or undocumented properties
+> >      e.g. mediatek,dai-link, maxim,dsm_param_name etc.
+> > - remove touchscreen as the driver is not yet accepted in upstream
+> > - update sound DAI link node name to match the binding
+> > - add missing pinctrls in audio codec nodes
+> >
+> >   arch/arm64/boot/dts/mediatek/Makefile         |    8 +
+> >   .../dts/mediatek/mt8188-geralt-ciri-sku0.dts  |   11 +
+> >   .../dts/mediatek/mt8188-geralt-ciri-sku1.dts  |   60 +
+> >   .../dts/mediatek/mt8188-geralt-ciri-sku2.dts  |   56 +
+> >   .../dts/mediatek/mt8188-geralt-ciri-sku3.dts  |   15 +
+> >   .../dts/mediatek/mt8188-geralt-ciri-sku4.dts  |   43 +
+> >   .../dts/mediatek/mt8188-geralt-ciri-sku5.dts  |   73 +
+> >   .../dts/mediatek/mt8188-geralt-ciri-sku6.dts  |   69 +
+> >   .../dts/mediatek/mt8188-geralt-ciri-sku7.dts  |   47 +
+> >   .../boot/dts/mediatek/mt8188-geralt-ciri.dtsi |  397 +++++
+> >   .../boot/dts/mediatek/mt8188-geralt.dtsi      | 1492 ++++++++++++++++=
++
+> >   11 files changed, 2271 insertions(+)
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sk=
+u0.dts
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sk=
+u1.dts
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sk=
+u2.dts
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sk=
+u3.dts
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sk=
+u4.dts
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sk=
+u5.dts
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sk=
+u6.dts
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sk=
+u7.dts
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri.dt=
+si
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+> >
+[...]
 
-Add CSA (Channel Switch Announcement) related implementation
-in collaboration with mac80211 to deal with dynamic channel
-switching.
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri.dtsi b/arc=
+h/arm64/boot/dts/mediatek/mt8188-geralt-ciri.dtsi
+> > new file mode 100644
+> > index 000000000000..62c8a37a4c3d
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri.dtsi
+> > @@ -0,0 +1,397 @@
+> > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> > +/*
+> > + * Copyright 2023 Google LLC
+> > + */
+> > +/dts-v1/;
+> > +#include "mt8188-geralt.dtsi"
+> > +
+> > +/delete-node/ &pp3300_edp_disp;
+> > +
+> > +&aud_etdm_hp_on {
+> > +     pins-mclk {
+> > +             pinmux =3D <PINMUX_GPIO114__FUNC_O_I2SO2_MCK>;
+> > +     };
+> > +};
+> > +
+> > +&aud_etdm_hp_off {
+> > +     pins-mclk {
+> > +             pinmux =3D <PINMUX_GPIO114__FUNC_B_GPIO114>;
+> > +             bias-pull-down;
+> > +             input-enable;
+> > +     };
+> > +};
+> > +
+> > +&aud_etdm_spk_on {
+> > +     pins-bus {
+> > +             drive-strength =3D <8>;
+> > +     };
+> > +};
+> > +
+> > +/* Ciri's TDP design target is 90 degrees */
+>
+> ...and there's only Ciri in this submission, so move that to -geralt.dtsi
 
-Signed-off-by: Leon Yen <leon.yen@mediatek.com>
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
----
-v2:
-  - update subject format.
-v3:
-  - modification and adjustment related to mt792x MLO arch.
----
- .../net/wireless/mediatek/mt76/mt7921/main.c  | 98 +++++++++++++++++++
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |  1 +
- drivers/net/wireless/mediatek/mt76/mt792x.h   |  6 ++
- .../net/wireless/mediatek/mt76/mt792x_core.c  | 14 +++
- 4 files changed, 119 insertions(+)
+In response to the "there's only Ciri, so move to / don't declare
+unused stuff in -geralt.dtsi" and similar comments - I'll adjust each
+of the mentioned lines.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 573a2cd7fe45..7e04edac7f1b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -338,6 +338,9 @@ mt7921_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
- 	vif->driver_flags |= IEEE80211_VIF_BEACON_FILTER;
- 	if (phy->chip_cap & MT792x_CHIP_CAP_RSSI_NOTIFY_EVT_EN)
- 		vif->driver_flags |= IEEE80211_VIF_SUPPORTS_CQM_RSSI;
-+
-+	INIT_WORK(&mvif->csa_work, mt7921_csa_work);
-+	timer_setup(&mvif->csa_timer, mt792x_csa_timer, 0);
- out:
- 	mt792x_mutex_release(dev);
- 
-@@ -1341,6 +1344,9 @@ static int
- mt7921_add_chanctx(struct ieee80211_hw *hw,
- 		   struct ieee80211_chanctx_conf *ctx)
- {
-+	struct mt792x_dev *dev = mt792x_hw_dev(hw);
-+
-+	dev->new_ctx = ctx;
- 	return 0;
- }
- 
-@@ -1348,6 +1354,10 @@ static void
- mt7921_remove_chanctx(struct ieee80211_hw *hw,
- 		      struct ieee80211_chanctx_conf *ctx)
- {
-+	struct mt792x_dev *dev = mt792x_hw_dev(hw);
-+
-+	if (dev->new_ctx == ctx)
-+		dev->new_ctx = NULL;
- }
- 
- static void
-@@ -1398,6 +1408,89 @@ static void mt7921_mgd_complete_tx(struct ieee80211_hw *hw,
- 	mt7921_abort_roc(mvif->phy, mvif);
- }
- 
-+static int mt7921_switch_vif_chanctx(struct ieee80211_hw *hw,
-+				     struct ieee80211_vif_chanctx_switch *vifs,
-+				     int n_vifs,
-+				     enum ieee80211_chanctx_switch_mode mode)
-+{
-+	return mt792x_assign_vif_chanctx(hw, vifs->vif, vifs->link_conf,
-+					 vifs->new_ctx);
-+}
-+
-+void mt7921_csa_work(struct work_struct *work)
-+{
-+	struct mt792x_vif *mvif;
-+	struct mt792x_dev *dev;
-+	struct ieee80211_vif *vif;
-+	int ret;
-+
-+	mvif = (struct mt792x_vif *)container_of(work, struct mt792x_vif,
-+						csa_work);
-+	dev = mvif->phy->dev;
-+	vif = container_of((void *)mvif, struct ieee80211_vif, drv_priv);
-+
-+	mt792x_mutex_acquire(dev);
-+	ret = mt76_connac_mcu_uni_set_chctx(mvif->phy->mt76, &mvif->bss_conf.mt76,
-+					    dev->new_ctx);
-+	mt792x_mutex_release(dev);
-+
-+	ieee80211_chswitch_done(vif, !ret, 0);
-+}
-+
-+static int mt7921_pre_channel_switch(struct ieee80211_hw *hw,
-+				     struct ieee80211_vif *vif,
-+				     struct ieee80211_channel_switch *chsw)
-+{
-+	if (vif->type != NL80211_IFTYPE_STATION || !vif->cfg.assoc)
-+		return -EOPNOTSUPP;
-+
-+	/* Avoid beacon loss due to the CAC(Channel Availability Check) time
-+	 * of the AP.
-+	 */
-+	if (!cfg80211_chandef_usable(hw->wiphy, &chsw->chandef,
-+				     IEEE80211_CHAN_RADAR))
-+		return -EOPNOTSUPP;
-+
-+	return 0;
-+}
-+
-+static void mt7921_channel_switch(struct ieee80211_hw *hw,
-+				  struct ieee80211_vif *vif,
-+				  struct ieee80211_channel_switch *chsw)
-+{
-+	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
-+	u16 beacon_interval = vif->bss_conf.beacon_int;
-+
-+	mvif->csa_timer.expires = TU_TO_EXP_TIME(beacon_interval * chsw->count);
-+	add_timer(&mvif->csa_timer);
-+}
-+
-+static void mt7921_abort_channel_switch(struct ieee80211_hw *hw,
-+					struct ieee80211_vif *vif,
-+					struct ieee80211_bss_conf *link_conf)
-+{
-+	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
-+
-+	del_timer_sync(&mvif->csa_timer);
-+	cancel_work_sync(&mvif->csa_work);
-+}
-+
-+static void mt7921_channel_switch_rx_beacon(struct ieee80211_hw *hw,
-+					    struct ieee80211_vif *vif,
-+					    struct ieee80211_channel_switch *chsw)
-+{
-+	struct mt792x_dev *dev = mt792x_hw_dev(hw);
-+	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
-+	u16 beacon_interval = vif->bss_conf.beacon_int;
-+
-+	if (cfg80211_chandef_identical(&chsw->chandef,
-+				       &dev->new_ctx->def) &&
-+				       chsw->count) {
-+		mod_timer(&mvif->csa_timer,
-+			  TU_TO_EXP_TIME(beacon_interval * chsw->count));
-+	}
-+}
-+
- const struct ieee80211_ops mt7921_ops = {
- 	.tx = mt792x_tx,
- 	.start = mt7921_start,
-@@ -1457,6 +1550,11 @@ const struct ieee80211_ops mt7921_ops = {
- 	.unassign_vif_chanctx = mt792x_unassign_vif_chanctx,
- 	.mgd_prepare_tx = mt7921_mgd_prepare_tx,
- 	.mgd_complete_tx = mt7921_mgd_complete_tx,
-+	.switch_vif_chanctx = mt7921_switch_vif_chanctx,
-+	.pre_channel_switch = mt7921_pre_channel_switch,
-+	.channel_switch = mt7921_channel_switch,
-+	.abort_channel_switch = mt7921_abort_channel_switch,
-+	.channel_switch_rx_beacon = mt7921_channel_switch_rx_beacon,
- };
- EXPORT_SYMBOL_GPL(mt7921_ops);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index 16c89815c0b8..e5f83fd3cc5d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -273,6 +273,7 @@ int mt7921_mcu_uni_rx_ba(struct mt792x_dev *dev,
- 			 bool enable);
- void mt7921_scan_work(struct work_struct *work);
- void mt7921_roc_work(struct work_struct *work);
-+void mt7921_csa_work(struct work_struct *work);
- int mt7921_mcu_uni_bss_ps(struct mt792x_dev *dev, struct ieee80211_vif *vif);
- void mt7921_coredump_work(struct work_struct *work);
- int mt7921_get_txpwr_info(struct mt792x_dev *dev, struct mt7921_txpwr *txpwr);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
-index ab12616ec2b8..041b3d5232b2 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-@@ -133,6 +133,9 @@ struct mt792x_vif {
- 	struct mt792x_phy *phy;
- 	u16 valid_links;
- 	u8 deflink_id;
-+
-+	struct work_struct csa_work;
-+	struct timer_list csa_timer;
- };
- 
- struct mt792x_phy {
-@@ -235,6 +238,8 @@ struct mt792x_dev {
- 	enum environment_cap country_ie_env;
- 	u32 backup_l1;
- 	u32 backup_l2;
-+
-+	struct ieee80211_chanctx_conf *new_ctx;
- };
- 
- static inline struct mt792x_bss_conf *
-@@ -364,6 +369,7 @@ void mt792x_set_tsf(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		    u64 timestamp);
- void mt792x_tx_worker(struct mt76_worker *w);
- void mt792x_roc_timer(struct timer_list *timer);
-+void mt792x_csa_timer(struct timer_list *timer);
- void mt792x_flush(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		  u32 queues, bool drop);
- int mt792x_assign_vif_chanctx(struct ieee80211_hw *hw,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-index 042aa8d1b6e7..66a864086021 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-@@ -288,6 +288,14 @@ void mt792x_roc_timer(struct timer_list *timer)
- }
- EXPORT_SYMBOL_GPL(mt792x_roc_timer);
- 
-+void mt792x_csa_timer(struct timer_list *timer)
-+{
-+	struct mt792x_vif *mvif = from_timer(mvif, timer, csa_timer);
-+
-+	ieee80211_queue_work(mvif->phy->mt76->hw, &mvif->csa_work);
-+}
-+EXPORT_SYMBOL_GPL(mt792x_csa_timer);
-+
- void mt792x_flush(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		  u32 queues, bool drop)
- {
-@@ -329,6 +337,11 @@ void mt792x_unassign_vif_chanctx(struct ieee80211_hw *hw,
- 	mctx->bss_conf = NULL;
- 	mvif->bss_conf.mt76.ctx = NULL;
- 	mutex_unlock(&dev->mt76.mutex);
-+
-+	if (vif->bss_conf.csa_active) {
-+		del_timer_sync(&mvif->csa_timer);
-+		cancel_work_sync(&mvif->csa_work);
-+	}
- }
- EXPORT_SYMBOL_GPL(mt792x_unassign_vif_chanctx);
- 
-@@ -651,6 +664,7 @@ int mt792x_init_wiphy(struct ieee80211_hw *hw)
- 	ieee80211_hw_set(hw, SUPPORTS_DYNAMIC_PS);
- 	ieee80211_hw_set(hw, SUPPORTS_VHT_EXT_NSS_BW);
- 	ieee80211_hw_set(hw, CONNECTION_MONITOR);
-+	ieee80211_hw_set(hw, CHANCTX_STA_CSA);
- 
- 	if (dev->pm.enable)
- 		ieee80211_hw_set(hw, CONNECTION_MONITOR);
--- 
-2.45.2
+My intention was to clearly describe the differences between Ciri and
+the proto hardware, but I understand and also agree with your point
+that these deltas should be introduced only when a real product
+utilizes them.
+I will follow this approach in the next revision.
 
+>
+> > +&cpu_little0_alert0 {
+> > +     temperature =3D <90000>;
+> > +     hysteresis =3D <2000>;
+> > +     type =3D "passive";
+> > +};
+> > +
+> > +&cpu_little1_alert0 {
+> > +     temperature =3D <90000>;
+> > +     hysteresis =3D <2000>;
+> > +     type =3D "passive";
+> > +};
+> > +
+> > +&cpu_little2_alert0 {
+> > +     temperature =3D <90000>;
+> > +     hysteresis =3D <2000>;
+> > +     type =3D "passive";
+> > +};
+> > +
+> > +&cpu_little3_alert0 {
+> > +     temperature =3D <90000>;
+> > +     hysteresis =3D <2000>;
+> > +     type =3D "passive";
+> > +};
+> > +
+> > +&cpu_big0_alert0 {
+> > +     temperature =3D <90000>;
+> > +     hysteresis =3D <2000>;
+> > +     type =3D "passive";
+> > +};
+> > +
+> > +&cpu_big1_alert0 {
+> > +     temperature =3D <90000>;
+> > +     hysteresis =3D <2000>;
+> > +     type =3D "passive";
+> > +};
+> > +
+> > +&dp_intf0 {
+> > +     /delete-node/ port;
+>
+> Just don't add dp_intf0 if there's none, instead of removing the port her=
+e.
+>
+> > +};
+> > +
+> > +&dsi_panel {
+> > +     compatible =3D "boe,nv110wum-l60", "himax,hx83102";
+>
+> Move this to each SKU dts file.
+
+Will do.
+
+>
+> > +};
+> > +
+> > +&edp_tx {
+> > +     /delete-node/ ports;
+> > +     /delete-node/ aux-bus;
+> > +};
+> > +
+> > +&i2c0 {
+> > +     /delete-node/ audio-codec@1a;
+> > +     /delete-node/ amplifier@3a;
+> > +     /delete-node/ amplifier@3b;
+>
+> No board ever uses those three nodes, because it's all Ciri and nothing e=
+lse.
+> Just never declare these in -geralt.dtsi and never delete them here.
+>
+> > +
+> > +     rt5682s: audio-codec@1a {
+> > +             compatible =3D "realtek,rt5682s";
+> > +             reg =3D <0x1a>;
+> > +             interrupts-extended =3D <&pio 108 IRQ_TYPE_EDGE_BOTH>;
+> > +             pinctrl-names =3D "default";
+> > +             pinctrl-0 =3D <&audio_codec_pins>;
+> > +             #sound-dai-cells =3D <1>;
+> > +
+> > +             AVDD-supply =3D <&mt6359_vio18_ldo_reg>;
+> > +             DBVDD-supply =3D <&mt6359_vio18_ldo_reg>;
+> > +             LDO1-IN-supply =3D <&mt6359_vio18_ldo_reg>;
+> > +             MICVDD-supply =3D <&pp3300_s3>;
+> > +             realtek,jd-src =3D <1>;
+> > +     };
+> > +};
+> > +
+> > +&i2c2 {
+> > +     status =3D "disabled";
+>
+> ...and if there's no i2c2, just don't add it to -geralt.dtsi in the first=
+ place...
+> but I believe that you just wanted to avoid probing the device that you d=
+eclared
+> in -geralt.dtsi on this bus, so you can either remove the nodes for all o=
+f the
+> unused i2c busses in your board designs, or you can keep them but remove =
+all of
+> the devices that aren't actually there.
+>
+> It's your choice in the end, but disabling this here doesn't make much se=
+nse imo.
+
+I think I'll follow the latter to describe the pinctrl and clock
+frequency of the i2c buses, so future board DT (if any) can just focus
+on declaring the devices on the bus.
+
+>
+> > +};
+> > +
+> > +&i2c_tunnel {
+> > +     /delete-node/ sbs-battery@b;
+>
+> Since nothing ever uses sbs-battery@b, just remove sbs-battery@b entirely
+> from -geralt.dtsi instead of deleting it here.
+>
+> Non-Ciri boards, if any, will define the @b one if necessary in their own
+> dts/dtsi file(s).
+>
+> > +
+> > +     battery: sbs-battery@f {
+> > +             compatible =3D "sbs,sbs-battery";
+> > +             reg =3D <0xf>;
+> > +             sbs,i2c-retry-count =3D <2>;
+> > +             sbs,poll-retry-count =3D <1>;
+> > +     };
+> > +};
+> > +
+> > +&max98390_38 {
+> > +     sound-name-prefix =3D "Front Right";
+>
+> Move to -geralt.dtsi
+>
+> > +};
+> > +
+> > +&max98390_39 {
+> > +     sound-name-prefix =3D "Front Left";
+>
+> ditto
+>
+> > +};
+> > +
+> > +&mipi_tx_config0 {
+> > +     drive-strength-microamp =3D <5200>;
+> > +};
+> > +
+> > +&mmc1 {
+> > +     status =3D "disabled";
+>
+> Why are you configuring mmc1 in -geralt.dtsi if no board uses it at all?
+
+This is for the SD cards, though Ciri didn't adopt that in the end...
+I'll remove it.
+
+>
+> > +};
+> > +
+> > +&mt6359_vm18_ldo_reg {
+> > +     regulator-min-microvolt =3D <1800000>;
+> > +     regulator-max-microvolt =3D <1900000>;
+> > +     regulator-microvolt-offset =3D <100000>;
+> > +};
+> > +
+> > +&sound {
+> > +     compatible =3D "mediatek,mt8188-rt5682s";
+> > +     model =3D "mt8188_m98390_5682";
+> > +
+> > +     audio-routing =3D
+> > +             "ETDM1_OUT", "ETDM_SPK_PIN",
+> > +             "ETDM2_OUT", "ETDM_HP_PIN",
+> > +             "ETDM1_IN", "ETDM_SPK_PIN",
+> > +             "ETDM2_IN", "ETDM_HP_PIN",
+> > +             "ADDA Capture", "MTKAIF_PIN",
+> > +             "Headphone Jack", "HPOL",
+> > +             "Headphone Jack", "HPOR",
+> > +             "IN1P", "Headset Mic",
+> > +             "Left Spk", "Front Left BE_OUT",
+> > +             "Right Spk", "Front Right BE_OUT";
+>
+> Please move compatible, model and audio-routing to SKU0 (and also copy th=
+at to
+> SKU3): as you're continuously overriding it in all other SKUs, having it =
+here
+> can only confuse people...
+
+I agree. I'll update it.
+
+>
+> > +     status =3D "okay";
+> > +
+> > +     dai-link-0 {
+> > +             dai-format =3D "i2s";
+>
+> ...and move dai-format to -geralt.dtsi.
+>
+> > +     };
+> > +
+> > +     dai-link-1 {
+> > +             dai-format =3D "i2s";
+> > +             codec {
+> > +                     sound-dai =3D <&max98390_38>,
+> > +                                 <&max98390_39>;
+> > +             };
+> > +     };
+> > +
+> > +     dai-link-2 {
+> > +             codec {
+> > +                     sound-dai =3D <&rt5682s 0>;
+> > +             };
+> > +     };
+> > +
+> > +     dai-link-3 {
+> > +             codec {
+> > +                     sound-dai =3D <&rt5682s 0>;
+> > +             };
+> > +     };
+> > +};
+> > +
+> > +&spi1 {
+> > +     pinctrl-names =3D "default", "sleep";
+> > +     pinctrl-0 =3D <&spi1_pins_default>;
+> > +     pinctrl-1 =3D <&spi1_pins_sleep>;
+>
+> Also move this to -geralt.dtsi, it's even the same pins...!
+> P.S.: Of course, move the spi1_pins_sleep to -geralt.dtsi as well.
+>
+> > +     num-cs =3D <1>;
+> > +     #address-cells =3D <1>;
+> > +     #size-cells =3D <0>;
+>
+> ...address and size cells, but no children nodes?
+
+Oh because the Himax touchscreen was removed in v2... I'll drop them.
+
+>
+> > +};
+> > +
+> > +&pio {
+>
+> ..snip..
+>
+> > +
+> > +     touchscreen_rst: touchscreen-rst-pins {
+> > +             pins-tchscr-rst {
+> > +                     pinmux =3D <PINMUX_GPIO5__FUNC_B_GPIO5>;
+> > +                     output-high;
+> > +             };
+> > +     };
+>
+> touchscreen_rst is unused - either use it or remove it.
+
+Will do.
+
+>
+> > +
+> > +     spi1_pins_default: spi1-default-pins {
+> > +             pins-bus {
+> > +                     pinmux =3D <PINMUX_GPIO75__FUNC_O_SPIM1_CSB>,
+> > +                              <PINMUX_GPIO76__FUNC_O_SPIM1_CLK>,
+> > +                              <PINMUX_GPIO77__FUNC_B0_SPIM1_MOSI>,
+> > +                              <PINMUX_GPIO78__FUNC_B0_SPIM1_MISO>;
+> > +                     bias-disable;
+> > +                     drive-strength =3D <10>;
+> > +             };
+> > +     };
+> > +
+> > +     spi1_pins_sleep: spi1-sleep-pins {
+> > +             pins-bus {
+> > +                     pinmux =3D <PINMUX_GPIO75__FUNC_B_GPIO75>,
+> > +                              <PINMUX_GPIO76__FUNC_B_GPIO76>,
+> > +                              <PINMUX_GPIO77__FUNC_B_GPIO77>,
+> > +                              <PINMUX_GPIO78__FUNC_B_GPIO78>;
+> > +                     bias-pull-down;
+> > +                     input-enable;
+> > +             };
+> > +     };
+> > +};
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch/arm=
+64/boot/dts/mediatek/mt8188-geralt.dtsi
+> > new file mode 100644
+> > index 000000000000..0d33ae82f0eb
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+> > @@ -0,0 +1,1492 @@
+> > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> > +/*
+> > + * Copyright (C) 2022 MediaTek Inc.
+> > + */
+> > +/dts-v1/;
+> > +#include <dt-bindings/gpio/gpio.h>
+> > +#include "mt8188.dtsi"
+> > +#include "mt6359.dtsi"
+> > +
+> > +/ {
+> > +     aliases {
+> > +             i2c0 =3D &i2c0;
+> > +             i2c1 =3D &i2c1;
+> > +             i2c2 =3D &i2c2;
+> > +             i2c3 =3D &i2c3;
+> > +             i2c4 =3D &i2c4;
+> > +             i2c5 =3D &i2c5;
+> > +             i2c6 =3D &i2c6;
+> > +             mmc0 =3D &mmc0;
+> > +             mmc1 =3D &mmc1;
+> > +             serial0 =3D &uart0;
+> > +     };
+> > +
+> > +     backlight_lcd0: backlight-lcd0 {
+> > +             compatible =3D "pwm-backlight";
+> > +             brightness-levels =3D <0 1023>;
+> > +             default-brightness-level =3D <576>;
+> > +             enable-gpios =3D <&pio 1 GPIO_ACTIVE_HIGH>;
+> > +             num-interpolated-steps =3D <1023>;
+> > +             power-supply =3D <&ppvar_sys>;
+> > +             pwms =3D <&disp_pwm0 0 500000>;
+> > +     };
+> > +
+> > +     chosen {
+> > +             stdout-path =3D "serial0:115200n8";
+> > +     };
+> > +
+> > +     dmic-codec {
+> > +             compatible =3D "dmic-codec";
+> > +             num-channels =3D <2>;
+> > +             wakeup-delay-ms =3D <100>;
+> > +     };
+> > +
+> > +     memory@40000000 {
+> > +             device_type =3D "memory";
+>
+>                 /* The size will be filled in by the bootloader */
+>                 reg =3D <0 0x40000000 0 0>;
+
+Acknowledged.
+
+>
+>
+> > +             reg =3D <0 0x40000000 0 0x80000000>;
+> > +     };
+> > +
+>
+> ..snip..
+>
+> > +
+> > +&disp_dsi0 {
+> > +     #address-cells =3D <1>;
+> > +     #size-cells =3D <0>;
+> > +     status =3D "okay";
+> > +
+> > +     dsi_panel: panel@0 {
+> > +             compatible =3D "boe,tv110c9m-ll3";
+>
+> Remove the compatible string, then add a comment (93 cols, it's ok in one=
+ line):
+>
+> /* Compatible string for different panels can be found in each device dts=
+ */
+
+Acknowledged.
+
+>
+> > +             reg =3D <0>;
+> > +             enable-gpios =3D <&pio 25 GPIO_ACTIVE_HIGH>;
+> > +             pinctrl-names =3D "default";
+> > +             pinctrl-0 =3D <&mipi_dsi_pins>;
+> > +
+> > +             backlight =3D <&backlight_lcd0>;
+> > +             avdd-supply =3D <&ppvar_mipi_disp_avdd>;
+> > +             avee-supply =3D <&ppvar_mipi_disp_avee>;
+> > +             pp1800-supply =3D <&mt6359_vm18_ldo_reg>;
+> > +             rotation =3D <270>;
+> > +
+> > +             status =3D "okay";
+> > +
+> > +             port {
+> > +                     dsi_panel_in: endpoint {
+> > +                             remote-endpoint =3D <&dsi_out>;
+> > +                     };
+> > +             };
+> > +     };
+> > +
+> > +     port {
+> > +             dsi_out: endpoint {
+> > +                     remote-endpoint =3D <&dsi_panel_in>;
+> > +             };
+> > +     };
+> > +};
+> > +
+> > +&disp_pwm0 {
+> > +     pinctrl-names =3D "default";
+> > +     pinctrl-0 =3D <&disp_pwm0_pins>;
+> > +     status =3D "okay";
+> > +};
+> > +
+> > +&disp_pwm1 {
+> > +     pinctrl-names =3D "default";
+> > +     pinctrl-0 =3D <&disp_pwm1_pins>;
+> > +};
+> > +
+> > +&dp_intf0 {
+> > +     port {
+> > +             dp_intf0_out: endpoint {
+> > +                     remote-endpoint =3D <&edp_in>;
+> > +             };
+> > +     };
+> > +};
+> > +
+> > +&dp_intf1 {
+> > +     status =3D "okay";
+> > +
+> > +     port {
+> > +             dp_intf1_out: endpoint {
+> > +                     remote-endpoint =3D <&dptx_in>;
+> > +             };
+> > +     };
+> > +};
+> > +
+> > +&dp_tx {
+> > +     pinctrl-names =3D "default";
+> > +     pinctrl-0 =3D <&dp_tx_hpd>;
+> > +     #sound-dai-cells =3D <0>;
+> > +     status =3D "okay";
+> > +
+> > +     ports {
+> > +             #address-cells =3D <1>;
+> > +             #size-cells =3D <0>;
+> > +
+> > +             port@0 {
+> > +                     reg =3D <0>;
+> > +                     dptx_in: endpoint {
+> > +                             remote-endpoint =3D <&dp_intf1_out>;
+> > +                     };
+> > +             };
+> > +
+> > +             port@1 {
+> > +                     reg =3D <1>;
+> > +                     dptx_out: endpoint {
+> > +                             data-lanes =3D <0 1 2 3>;
+> > +                     };
+> > +             };
+> > +     };
+> > +};
+> > +
+> > +&edp_tx {
+> > +     pinctrl-names =3D "default";
+> > +     pinctrl-0 =3D <&edp_tx_hpd>;
+> > +
+> > +     ports {
+> > +             #address-cells =3D <1>;
+> > +             #size-cells =3D <0>;
+> > +
+> > +             port@0 {
+> > +                     reg =3D <0>;
+> > +                     edp_in: endpoint {
+> > +                             remote-endpoint =3D <&dp_intf0_out>;
+> > +                     };
+> > +             };
+> > +
+> > +             port@1 {
+> > +                     reg =3D <1>;
+> > +                     edp_out: endpoint {
+> > +                             data-lanes =3D <0 1 2 3>;
+> > +                             remote-endpoint =3D <&edp_panel_in>;
+> > +                     };
+> > +             };
+> > +     };
+> > +
+> > +     /*
+> > +      * Geralt also supports eDP OLED panels, which control panel
+> > +      * brightness via the AUX channel and don't require PWM pin
+> > +      * control.
+> > +      * This is an auxiliary panel path for hardware layout
+> > +      * validation and demonstration, so it's disabled by default.
+> > +      * Boards adopting MIPI-DSI panels may not have this path.
+> > +      **/
+>
+> There's no board using this: please remove edp_tx entirely, as this is
+> only adding lines to this device tree for no useful reason.
+>
+> If a board with that appears, you can reintroduce this here, or if it is
+> a single board, you can add that in the board dts.
+
+Acknowledged.
+
+>
+> > +     aux-bus {
+> > +             edp_panel: panel {
+> > +                     compatible =3D "lg,lp120up1";
+> > +                     pinctrl-names =3D "default";
+> > +                     pinctrl-0 =3D <&edp_bl_en>;
+> > +                     power-supply =3D <&pp3300_edp_disp>;
+> > +                     status =3D "disabled";
+> > +
+> > +                     port {
+> > +                             edp_panel_in: endpoint {
+> > +                                     remote-endpoint =3D <&edp_out>;
+> > +                             };
+> > +                     };
+> > +             };
+> > +     };
+> > +};
+> > +
+>
+> ..snip..
+> > +     edp_bl_en: edp-bl-en-pins {
+> > +             pins-ap-disp-bklten {
+> > +                     pinmux =3D <PINMUX_GPIO1__FUNC_B_GPIO1>;
+> > +                     output-low;
+> > +             };
+> > +     };
+> > +
+> > +     edp_disp_en: edp-disp-en-pins {
+> > +             pins-en-pp3300-edp-disp {
+> > +                     pinmux =3D <PINMUX_GPIO27__FUNC_B_GPIO27>;
+> > +                     output-low;
+> > +             };
+> > +     };
+> > +
+> > +     edp_tx_hpd: edp-tx-hpd-pins {
+> > +             pins-dp-tx-hpd {
+> > +                     pinmux =3D <PINMUX_GPIO17__FUNC_I0_EDP_TX_HPD>;
+> > +             };
+> > +     };
+>
+> After removing the always disabled edp nodes, you can also remove these p=
+ins
+> as they are then unused.
+
+Will do.
+
+>
+> > +
+> > +     gsc_int: gsc-int-pins {
+> > +             pins-gsc-ap-int-odl {
+> > +                     pinmux =3D <PINMUX_GPIO0__FUNC_B_GPIO0>;
+> > +                     input-enable;
+> > +             };
+> > +     };
+> > +
+>
+> ..snip..
+>
+> > +&pmic {
+> > +     interrupts-extended =3D <&pio 222 IRQ_TYPE_LEVEL_HIGH>;
+> > +};
+> > +
+> > +&scp {
+>
+> Is this SCP-dual or SCP?
+> I see SCP, but I also see a SCP-Dual memory region... what's going on her=
+e?
+>
+> Of course, the SCP-Dual won't work if you don't override the compatible s=
+tring...
+
+To clarify, the second SCP core is used for MIPI camera in downstream,
+and I deliberately only describe the first SCP core here since the MTK
+camera ISP driver isn't in upstream at the moment.
+I had a fixup patch for removing the scp-dual reserved memory region,
+but likely it was missing during the rebase... let me check again if
+it can be removed, just in case there's firmware protecting the region
+and the kernel shouldn't access it.
+
+>
+> > +     firmware-name =3D "mediatek/mt8188/scp.img";
+> > +     memory-region =3D <&scp_mem>;
+> > +     pinctrl-names =3D "default";
+> > +     pinctrl-0 =3D <&scp_pins>;
+> > +     status =3D "okay";
+> > +
+> > +     cros-ec-rpmsg {
+> > +             compatible =3D "google,cros-ec-rpmsg";
+> > +             mediatek,rpmsg-name =3D "cros-ec-rpmsg";
+> > +     };
+> > +};
+> > +
+> > +&sound {
+> > +     compatible =3D "mediatek,mt8188-nau8825";
+> > +     model =3D "mt8188_m98390_8825";
+> > +     pinctrl-names =3D "aud_etdm_hp_on",
+> > +                     "aud_etdm_hp_off",
+> > +                     "aud_etdm_spk_on",
+> > +                     "aud_etdm_spk_off",
+> > +                     "aud_mtkaif_on",
+> > +                     "aud_mtkaif_off";
+>
+>         pinctrl-names =3D "aud_etdm_hp_on", "aud_etdm_hp_off",
+>                         "aud_etdm_spk_on", "aud_etdm_spk_off",
+>                         "aud_mtkaif_on", "aud_mtkaif_off";
+
+Acked.
+
+>
+> > +     pinctrl-0 =3D <&aud_etdm_hp_on>;
+> > +     pinctrl-1 =3D <&aud_etdm_hp_off>;
+> > +     pinctrl-2 =3D <&aud_etdm_spk_on>;
+> > +     pinctrl-3 =3D <&aud_etdm_spk_off>;
+> > +     pinctrl-4 =3D <&aud_mtkaif_on>;
+> > +     pinctrl-5 =3D <&aud_mtkaif_off>;
+>
+> Add a comment:
+>
+>         /* The audio-routing is defined in each board dts */
+>
+> > +     audio-routing =3D "ETDM1_OUT", "ETDM_SPK_PIN",
+> > +                     "ETDM2_OUT", "ETDM_HP_PIN",
+> > +                     "ETDM1_IN", "ETDM_SPK_PIN",
+> > +                     "ETDM2_IN", "ETDM_HP_PIN",
+> > +                     "ADDA Capture", "MTKAIF_PIN",
+> > +                     "Headphone Jack", "HPOL",
+> > +                     "Headphone Jack", "HPOR",
+> > +                     "MIC", "Headset Mic",
+> > +                     "Left Spk", "Front Left BE_OUT",
+> > +                     "Right Spk", "Front Right BE_OUT",
+> > +                     "Rear Left Spk", "Rear Left BE_OUT",
+> > +                     "Rear Right Spk", "Rear Right BE_OUT";
+> > +
+>
+> ...and remove the audio-routing from this dtsi; it's anyway being
+> overridden by the -ciri.dtsi devicetree...
+
+Acknowledged, and thanks for all the feedback here.
+
+Regards,
+Fei
+
+>
+> > +     mediatek,adsp =3D <&adsp>;
+> > +
+> > +     status =3D "okay";
+> > +
+> > +     dai-link-0 {
+> > +             link-name =3D "ETDM1_IN_BE";
+> > +             dai-format =3D "dsp_b";
+> > +             mediatek,clk-provider =3D "cpu";
+> > +     };
+> > +
+> > +     dai-link-1 {
+> > +             link-name =3D "ETDM1_OUT_BE";
+> > +             dai-format =3D "dsp_b";
+> > +             mediatek,clk-provider =3D "cpu";
+> > +
+> > +             codec {
+> > +                     sound-dai =3D <&max98390_38>,
+> > +                                 <&max98390_39>,
+> > +                                 <&max98390_3a>,
+> > +                                 <&max98390_3b>;
+> > +             };
+> > +     };
+> > +
+> > +     dai-link-2 {
+> > +             link-name =3D "ETDM2_IN_BE";
+> > +             mediatek,clk-provider =3D "cpu";
+> > +
+> > +             codec {
+> > +                     sound-dai =3D <&nau8825>;
+> > +             };
+> > +     };
+> > +
+> > +     dai-link-3 {
+> > +             link-name =3D "ETDM2_OUT_BE";
+> > +             mediatek,clk-provider =3D "cpu";
+> > +
+> > +             codec {
+> > +                     sound-dai =3D <&nau8825>;
+> > +             };
+> > +     };
+> > +
+> > +     dai-link-4 {
+> > +             link-name =3D "DPTX_BE";
+> > +
+> > +             codec {
+> > +                     sound-dai =3D <&dp_tx>;
+> > +             };
+> > +     };
+> > +};
+> > +
+>
+> Cheers,
+> Angelo
+>
 
