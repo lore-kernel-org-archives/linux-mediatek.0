@@ -4,57 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7864D43349
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 11:42:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C12C9D43358
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 12:21:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZlIBFOsYN9kU93kG4tpJYbrFXMYNlrQHqo4dDcDZtRA=; b=uy1TVNunrkEkHufKv2y1xPi2EH
-	iy0zpHRFV5Hjzh3f4ERcTXO1SKFqx9SoQMd9yIA6VUoB/M01tGJ+l5I6yiVEwsycjmlT63evQnQ92
-	i4LZlqpdx0i1j6yKqAs0tMdKeiv6YAV6YthJ1lgqG4m/hDIFUtFIJJMzyg2TzaxAFe7c31ylUcImL
-	4A+iR5EgKSh87tIig3/lZMQCBK5XA8uNt99ERq9GtnQn0YV/mNyYTpTXRsGK7KWQZAkgxWU7kbA73
-	jUUqemEvJnNzIQkiZaj31zauYRa4bhkYmZGgqnJzRuxwFz8j5i3/0d2xtX+fyFAG20mYH1EBD0a5i
-	3uHYMBHA==;
+	bh=f25RUPk9TIy6xzkE9UQQNfXoMOgGWKchZrGCuX5T+4g=; b=fDsfE7f5F5WlRbYmA8lQZ12VFO
+	Gcf+vDZUEeqaiDQ7QkUa2l6HPs7mvoQNA9j+79XFQgnRJLNMNUWSS+qo8WMYuaiMel00vEJvpfcyE
+	RqSK/Cub8hQ5GEkk2tMEVfCBp6zmEwKBp6H/vGXOho1hrYkf5R6K0bzrXOF1/slLFBh7TU6KUbzAZ
+	UILhkLW+cnn5tAPQW2Abv8SvwyvU+mm/e5IsZoTo+HW+FugPTMG9z8JZjT04IwKG2wKns/pZtpdbb
+	qVWXVmMIDvDJCp0s3pugZzwFGvgUYeGHxa+zvrRjf9aP/NLJTq1BxlmyQiv4gIqTTyyAQkrjBh0Ff
+	srebq0pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t90ua-00000006mJu-2Y88;
-	Thu, 07 Nov 2024 11:42:52 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
+	id 1t91Vr-00000006uCr-154r;
+	Thu, 07 Nov 2024 12:21:23 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t90rm-00000006llp-09xB;
-	Thu, 07 Nov 2024 11:39:59 +0000
-Received: from mail.maildlp.com (unknown [172.19.88.194])
-	by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Xkg6D11v4z10N3T;
-	Thu,  7 Nov 2024 19:37:24 +0800 (CST)
-Received: from kwepemg200008.china.huawei.com (unknown [7.202.181.35])
-	by mail.maildlp.com (Postfix) with ESMTPS id B867D1401F3;
-	Thu,  7 Nov 2024 19:39:45 +0800 (CST)
-Received: from huawei.com (10.90.53.73) by kwepemg200008.china.huawei.com
- (7.202.181.35) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Thu, 7 Nov
- 2024 19:39:45 +0800
-From: Jinjie Ruan <ruanjinjie@huawei.com>
-To: <rafael@kernel.org>, <viresh.kumar@linaro.org>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <hector.yuan@mediatek.com>,
-	<linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: <ruanjinjie@huawei.com>
-Subject: [PATCH v2 RESEND] cpufreq: mediatek-hw: Fix wrong return value in mtk_cpufreq_get_cpu_power()
-Date: Thu, 7 Nov 2024 19:38:41 +0800
-Message-ID: <20241107113841.989475-1-ruanjinjie@huawei.com>
-X-Mailer: git-send-email 2.34.1
+	id 1t91N9-00000006svU-06V9;
+	Thu, 07 Nov 2024 12:12:24 +0000
+X-UUID: 89d815309d0111ef82ff63e91e7eb18c-20241107
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=f25RUPk9TIy6xzkE9UQQNfXoMOgGWKchZrGCuX5T+4g=;
+	b=mI0Z6m0zJSqAV0PBE8srzcTyXLw/k+mRI3/l26o7DJdV9h8hsj4u7nIfcctN3rhFRm9+rI9IpvtVlSwm8liIp05Ea4LNhrlfG4M4pPOoMcueu3mSvTlAQw1783bIGbr7AP94CmFLPiP8U18RGdfNubPWc2rSgReUOIOmTzS6L0Y=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.42,REQID:cfe723f0-5b32-4764-870f-d8161dae428e,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:9134c81b-4f51-4e1d-bb6a-1fd98b6b19d2,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:5,IP:nil,UR
+	L:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
+	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 89d815309d0111ef82ff63e91e7eb18c-20241107
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+	(envelope-from <andy-ld.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 399948039; Thu, 07 Nov 2024 05:12:20 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 7 Nov 2024 20:12:17 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 7 Nov 2024 20:12:17 +0800
+From: Andy-ld Lu <andy-ld.lu@mediatek.com>
+To: <angelogioacchino.delregno@collabora.com>, <ulf.hansson@linaro.org>,
+	<matthias.bgg@gmail.com>, <wenbin.mei@mediatek.com>
+CC: <linux-mmc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Andy-ld Lu <andy-ld.lu@mediatek.com>
+Subject: [PATCH v2] mmc: mtk-sd: Fix error handle of probe function
+Date: Thu, 7 Nov 2024 20:11:21 +0800
+Message-ID: <20241107121215.5201-1-andy-ld.lu@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-Originating-IP: [10.90.53.73]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- kwepemg200008.china.huawei.com (7.202.181.35)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241107_033958_283119_62AB928A 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20241107_041223_100527_51C0A582 
+X-CRM114-Status: GOOD (  12.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,42 +83,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_cpufreq_get_cpu_power() return 0 if the policy is NULL. Then in
-em_create_perf_table(), the later zero check for power is not invalid
-as power is uninitialized. As Lukasz suggested, it must return -EINVAL when
-the 'policy' is not found. So return -EINVAL to fix it.
+In the probe function, it goes to 'release_mem' label and returns after
+some procedure failure. But if the clocks (partial or all) have been
+enabled previously, they would not be disabled in msdc_runtime_suspend,
+since runtime PM is not yet enabled for this case.
 
-Cc: stable@vger.kernel.org
-Fixes: 4855e26bcf4d ("cpufreq: mediatek-hw: Add support for CPUFREQ HW")
-Reviewed-by: Lukasz Luba <lukasz.luba@arm.com>
-Suggested-by: Lukasz Luba <lukasz.luba@arm.com>
-Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
----
-v2 -> v2 RESEND:
-- Update the commit subject and Cc Viresh.
-- Add Reviewed-by.
-v2:
-- Fix the driver instead of em_create_perf_table() as suggested.
-- Update the commit message.
-- Add Suggested-by.
----
- drivers/cpufreq/mediatek-cpufreq-hw.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+That cause mmc related clocks always on during system suspend and block
+suspend flow. Below log is from a SDCard issue of MT8196 chromebook, it
+returns -ETIMEOUT while polling clock stable in the msdc_ungate_clock()
+and probe failed, but the enabled clocks could not be disabled anyway.
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq-hw.c b/drivers/cpufreq/mediatek-cpufreq-hw.c
-index 8925e096d5b9..aeb5e6304542 100644
---- a/drivers/cpufreq/mediatek-cpufreq-hw.c
-+++ b/drivers/cpufreq/mediatek-cpufreq-hw.c
-@@ -62,7 +62,7 @@ mtk_cpufreq_get_cpu_power(struct device *cpu_dev, unsigned long *uW,
+[  129.059253] clk_chk_dev_pm_suspend()
+[  129.350119] suspend warning: msdcpll is on
+[  129.354494] [ck_msdc30_1_sel : enabled, 1, 1, 191999939,   ck_msdcpll_d2]
+[  129.362787] [ck_msdcpll_d2   : enabled, 1, 1, 191999939,         msdcpll]
+[  129.371041] [ck_msdc30_1_ck  : enabled, 1, 1, 191999939, ck_msdc30_1_sel]
+[  129.379295] [msdcpll         : enabled, 1, 1, 383999878,          clk26m]
+
+Add a new 'release_clk' label and reorder the error handle functions to
+make sure the clocks be disabled after probe failure.
+
+Fixes: ffaea6ebfe9c ("mmc: mtk-sd: Use readl_poll_timeout instead of open-coded polling")
+Fixes: 7a2fa8eed936 ("mmc: mtk-sd: use devm_mmc_alloc_host")
+Signed-off-by: Andy-ld Lu <andy-ld.lu@mediatek.com>
+---
+Changes in v2:
+- Add the relevant fixes tags.
+
+---
+ drivers/mmc/host/mtk-sd.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index a2750a45c1b7..022526a1f754 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -3007,7 +3007,7 @@ static int msdc_drv_probe(struct platform_device *pdev)
+ 	ret = msdc_ungate_clock(host);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Cannot ungate clocks!\n");
+-		goto release_mem;
++		goto release_clk;
+ 	}
+ 	msdc_init_hw(host);
  
- 	policy = cpufreq_cpu_get_raw(cpu_dev->id);
- 	if (!policy)
--		return 0;
-+		return -EINVAL;
- 
- 	data = policy->driver_data;
- 
+@@ -3017,14 +3017,14 @@ static int msdc_drv_probe(struct platform_device *pdev)
+ 					     GFP_KERNEL);
+ 		if (!host->cq_host) {
+ 			ret = -ENOMEM;
+-			goto release_mem;
++			goto release;
+ 		}
+ 		host->cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+ 		host->cq_host->mmio = host->base + 0x800;
+ 		host->cq_host->ops = &msdc_cmdq_ops;
+ 		ret = cqhci_init(host->cq_host, mmc, true);
+ 		if (ret)
+-			goto release_mem;
++			goto release;
+ 		mmc->max_segs = 128;
+ 		/* cqhci 16bit length */
+ 		/* 0 size, means 65536 so we don't have to -1 here */
+@@ -3064,9 +3064,10 @@ static int msdc_drv_probe(struct platform_device *pdev)
+ end:
+ 	pm_runtime_disable(host->dev);
+ release:
+-	platform_set_drvdata(pdev, NULL);
+ 	msdc_deinit_hw(host);
++release_clk:
+ 	msdc_gate_clock(host);
++	platform_set_drvdata(pdev, NULL);
+ release_mem:
+ 	if (host->dma.gpd)
+ 		dma_free_coherent(&pdev->dev,
 -- 
-2.34.1
+2.46.0
 
 
