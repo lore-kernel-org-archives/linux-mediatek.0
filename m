@@ -4,90 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC612D5AE47
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 02:39:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF5B6D5AE60
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 05:15:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KlaRlsbWa9QBV1x6rBKVkn8hsbr939+cyL9yhztPz9Q=; b=W3MJNjQ29YniauGnZvBfkJHOC7
-	eKw3sPEUgGtE5Dn5F9ZmNG9SjvqCCAliewe/+jDpnKx16pPsYqezNFliULkOerf0xtNtYBfcO9p28
-	PSgnbtQmrZK/0x64L3/xSxj03wvpOytRP+UqDcIRoGGE97M5ggUD/3vZ4tmvQDGCcJpNMp0XI78Li
-	MMf+jzPmBa1LgqjyOC9W7ckh9f719eUZyo7teiuWAZqk8xjvALxjMM8IU23R9fW1Ka132im0fRLkp
-	d57snLkPstJSemynYpiWcbboidJ5zZEfmOwivB5Ywj9PcnddzNZGTuYKLsf17NtQT3syJjQntNW/o
-	lfv5LGww==;
+	bh=koTQ6hfT5fyI87ugo8rs9BX65rNb6aDCCXL057hSGYI=; b=vuv1wLOZ/cXYuMHRoEKtiWP5N3
+	+P6/U2EQ4n+T2Tke3wLWjmaUb6OU//d/XdNnSIlm4Q8xs0QByuTW1gRRLwjQoHeMAbtuT7epmz5Lw
+	VXN6ZW5w9WgGapMqR2K8eGY0LSORt2Bi2ZsovfFOX3kxxn4rpdWUextWGJuhL9ZpNbIaw8OFRCAjy
+	gnUqj2qyZLWF1Gg3o98hb0O+YjIPc056TwCBjN7KXZBEJxS6n5dOHM1Cq/QqGvwAX0d5+PLFtc9ct
+	F8EjTqeTDKVSgnQjJ3+/HYHlzf896fcX3NRfZvk7jrwvfpvNoRT/CxsRP2STehFzfJigBadTHd/WW
+	K9QDY4pQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8sR3-00000005TOC-37HC;
-	Thu, 07 Nov 2024 02:39:49 +0000
-Received: from mgamail.intel.com ([192.198.163.12])
+	id 1t8urs-00000005gqd-34OT;
+	Thu, 07 Nov 2024 05:15:40 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8sPI-00000005TAy-2ydb;
-	Thu, 07 Nov 2024 02:38:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1730947080; x=1762483080;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=0Rbco+fVVE+WKrntisQUqv4Xf3VKHufAddMWQTy1UOo=;
-  b=b88BPL1OXAeFkHx3vGH/GJplaYf2ZPQQ1iYMqCDbGRY0tYqgNlWdSYhf
-   rQbPCDEzc0D7QgNDozjWzag8WOHNgWHRSUSUCSkglacue5j0Y2qypY79+
-   jZUjP9Zi8pIeBxp19Ve4KRghExdYwcVGhD9E5RwJ6FOwiJvsXupyxgfr2
-   jxWC68ta3nPd8gldcUSsnDgWZYoIw/MRrLTiXhwAADxKnXBdmI9cNRGMi
-   ZO4tfuQBWEvGYXX93t7D+ZaW9fjuvVftnHmM9x8RsvwmIbIK4shSt+NQ8
-   bd05FtZunSSQP6Nl5JJF+v9/XPgDHsFdMWBSChUBy+IxyC+h884Hw2rRW
-   Q==;
-X-CSE-ConnectionGUID: gL/pVVwiQpOPS8QFoz7g+A==
-X-CSE-MsgGUID: 9PaJPAAMSBqcHKLnGVEkUA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11248"; a="34695259"
-X-IronPort-AV: E=Sophos;i="6.11,264,1725346800"; 
-   d="scan'208";a="34695259"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Nov 2024 18:37:54 -0800
-X-CSE-ConnectionGUID: H0tfHc/KTCOBcpT2EROUpg==
-X-CSE-MsgGUID: Y25ZMZNcQteAno0NZmlSgw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,264,1725346800"; 
-   d="scan'208";a="90004633"
-Received: from lkp-server01.sh.intel.com (HELO a48cf1aa22e8) ([10.239.97.150])
-  by orviesa004.jf.intel.com with ESMTP; 06 Nov 2024 18:37:49 -0800
-Received: from kbuild by a48cf1aa22e8 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1t8sP4-000phm-2P;
-	Thu, 07 Nov 2024 02:37:46 +0000
-Date: Thu, 7 Nov 2024 10:37:32 +0800
-From: kernel test robot <lkp@intel.com>
-To: Christian Marangi <ansuelsmth@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, upstream@airoha.com
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	netdev@vger.kernel.org
-Subject: Re: [net-next PATCH v3 3/3] net: phy: Add Airoha AN8855 Internal
- Switch Gigabit PHY
-Message-ID: <202411071000.uL10bu3r-lkp@intel.com>
-References: <20241106122254.13228-4-ansuelsmth@gmail.com>
+	id 1t8uq9-00000005gaX-0aiX;
+	Thu, 07 Nov 2024 05:13:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id CE58BA4216B;
+	Thu,  7 Nov 2024 05:11:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB757C4CECC;
+	Thu,  7 Nov 2024 05:13:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1730956431;
+	bh=XU5d9EvYNAXm7syZXOkrkzihF12wfuon3QHGq0L5hjE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=OJQiW6TbRLQTAUf/tFxceEc5Fq13cvElbCVuIPf4YGliOYyFlGGoRo+CVjFVbbutx
+	 6pg58vCsg06SZM0wXGQU6JjpR9F011lGD1d6nVhKjC/jVyPpHqrWWu7WxJLYWN6u8v
+	 fZsa4dNddcFBEKpP+D1OHlsn8CTCb+a3wL6s6QR0=
+Date: Thu, 7 Nov 2024 06:13:32 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: "Haowei Cheng(Harvey)" <harvey.cheng@fibocom.com>
+Cc: "chunfeng.yun@mediatek.com" <chunfeng.yun@mediatek.com>,
+	"linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Subject: Re: =?utf-8?B?5Zue5aSN?= =?utf-8?Q?=3A?=
+ 0001-usb-mtu3-fix-panic-in-mtu3_gadget_wakeup.patch
+Message-ID: <2024110735-entertain-parish-7b45@gregkh>
+References: <SEZPR02MB54953820B2A9EEBD807D0ED18E512@SEZPR02MB5495.apcprd02.prod.outlook.com>
+ <2024110512-popcorn-germless-01be@gregkh>
+ <SEZPR02MB5495A8637098B92CDEBBFC6C8E532@SEZPR02MB5495.apcprd02.prod.outlook.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20241106122254.13228-4-ansuelsmth@gmail.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <SEZPR02MB5495A8637098B92CDEBBFC6C8E532@SEZPR02MB5495.apcprd02.prod.outlook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_183800_788741_B2B9C82D 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20241106_211353_265239_082F3A68 
+X-CRM114-Status: GOOD (  10.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,127 +74,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Christian,
+On Wed, Nov 06, 2024 at 07:39:59PM +0000, Haowei Cheng(Harvey) wrote:
+> Hi greg k-h，
+> 
+> We found during development that when there are data packets to be sent on the USB RNDIS network card,
+>  unplugging the USB cable will trigger a certain probability of system warning or panic.
+> We observed that the mtu3_gadget_wakeup function uses the usleep_range_state function,
+> which has certain scenario limitations. Therefore, we made this optimization.
 
-kernel test robot noticed the following build warnings:
+Please do not top-post :(
 
-[auto build test WARNING on net-next/main]
+Just resend your patch properly, in a format that we can apply it in,
+and we will be glad to review and discuss it that way.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Christian-Marangi/dt-bindings-net-dsa-Add-Airoha-AN8855-Gigabit-Switch-documentation/20241106-203624
-base:   net-next/main
-patch link:    https://lore.kernel.org/r/20241106122254.13228-4-ansuelsmth%40gmail.com
-patch subject: [net-next PATCH v3 3/3] net: phy: Add Airoha AN8855 Internal Switch Gigabit PHY
-config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20241107/202411071000.uL10bu3r-lkp@intel.com/config)
-compiler: clang version 19.1.3 (https://github.com/llvm/llvm-project ab51eccf88f5321e7c60591c5546b254b6afab99)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241107/202411071000.uL10bu3r-lkp@intel.com/reproduce)
+Look for thousands of examples on the lists for how to do this, as well
+as the documentation in the kernel tree itself which explains this in
+way-too-much detail.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202411071000.uL10bu3r-lkp@intel.com/
+thanks,
 
-All warnings (new ones prefixed by >>):
-
-   In file included from drivers/net/phy/air_an8855.c:6:
-   In file included from include/linux/phy.h:16:
-   In file included from include/linux/ethtool.h:18:
-   In file included from include/linux/if_ether.h:19:
-   In file included from include/linux/skbuff.h:17:
-   In file included from include/linux/bvec.h:10:
-   In file included from include/linux/highmem.h:8:
-   In file included from include/linux/cacheflush.h:5:
-   In file included from arch/x86/include/asm/cacheflush.h:5:
-   In file included from include/linux/mm.h:2213:
-   include/linux/vmstat.h:504:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
-     504 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
-         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
-     505 |                            item];
-         |                            ~~~~
-   include/linux/vmstat.h:511:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
-     511 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
-         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
-     512 |                            NR_VM_NUMA_EVENT_ITEMS +
-         |                            ~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/vmstat.h:518:36: warning: arithmetic between different enumeration types ('enum node_stat_item' and 'enum lru_list') [-Wenum-enum-conversion]
-     518 |         return node_stat_name(NR_LRU_BASE + lru) + 3; // skip "nr_"
-         |                               ~~~~~~~~~~~ ^ ~~~
-   include/linux/vmstat.h:524:43: warning: arithmetic between different enumeration types ('enum zone_stat_item' and 'enum numa_stat_item') [-Wenum-enum-conversion]
-     524 |         return vmstat_text[NR_VM_ZONE_STAT_ITEMS +
-         |                            ~~~~~~~~~~~~~~~~~~~~~ ^
-     525 |                            NR_VM_NUMA_EVENT_ITEMS +
-         |                            ~~~~~~~~~~~~~~~~~~~~~~
->> drivers/net/phy/air_an8855.c:137:6: warning: variable 'val' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
-     137 |         if (saved_page >= 0)
-         |             ^~~~~~~~~~~~~~~
-   drivers/net/phy/air_an8855.c:139:45: note: uninitialized use occurs here
-     139 |         ret = phy_restore_page(phydev, saved_page, val);
-         |                                                    ^~~
-   drivers/net/phy/air_an8855.c:137:2: note: remove the 'if' if its condition is always true
-     137 |         if (saved_page >= 0)
-         |         ^~~~~~~~~~~~~~~~~~~~
-     138 |                 val = __phy_read(phydev, AN8855_PHY_EXT_REG_14);
-   drivers/net/phy/air_an8855.c:133:9: note: initialize the variable 'val' to silence this warning
-     133 |         int val;
-         |                ^
-         |                 = 0
->> drivers/net/phy/air_an8855.c:155:6: warning: variable 'ret' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
-     155 |         if (saved_page >= 0) {
-         |             ^~~~~~~~~~~~~~~
-   drivers/net/phy/air_an8855.c:164:46: note: uninitialized use occurs here
-     164 |         return phy_restore_page(phydev, saved_page, ret);
-         |                                                     ^~~
-   drivers/net/phy/air_an8855.c:155:2: note: remove the 'if' if its condition is always true
-     155 |         if (saved_page >= 0) {
-         |         ^~~~~~~~~~~~~~~~~~~~
-   drivers/net/phy/air_an8855.c:152:9: note: initialize the variable 'ret' to silence this warning
-     152 |         int ret;
-         |                ^
-         |                 = 0
-   6 warnings generated.
-
-
-vim +137 drivers/net/phy/air_an8855.c
-
-   129	
-   130	static int an8855_get_downshift(struct phy_device *phydev, u8 *data)
-   131	{
-   132		int saved_page;
-   133		int val;
-   134		int ret;
-   135	
-   136		saved_page = phy_select_page(phydev, AN8855_PHY_PAGE_EXTENDED_1);
- > 137		if (saved_page >= 0)
-   138			val = __phy_read(phydev, AN8855_PHY_EXT_REG_14);
-   139		ret = phy_restore_page(phydev, saved_page, val);
-   140		if (ret)
-   141			return ret;
-   142	
-   143		*data = val & AN8855_PHY_EXT_REG_14 ? DOWNSHIFT_DEV_DEFAULT_COUNT :
-   144						      DOWNSHIFT_DEV_DISABLE;
-   145	
-   146		return 0;
-   147	}
-   148	
-   149	static int an8855_set_downshift(struct phy_device *phydev, u8 cnt)
-   150	{
-   151		int saved_page;
-   152		int ret;
-   153	
-   154		saved_page = phy_select_page(phydev, AN8855_PHY_PAGE_EXTENDED_1);
- > 155		if (saved_page >= 0) {
-   156			if (cnt != DOWNSHIFT_DEV_DISABLE)
-   157				ret = __phy_set_bits(phydev, AN8855_PHY_EXT_REG_14,
-   158						     AN8855_PHY_EN_DOWN_SHFIT);
-   159			else
-   160				ret = __phy_clear_bits(phydev, AN8855_PHY_EXT_REG_14,
-   161						       AN8855_PHY_EN_DOWN_SHFIT);
-   162		}
-   163	
-   164		return phy_restore_page(phydev, saved_page, ret);
-   165	}
-   166	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+greg k-h
 
