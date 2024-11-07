@@ -4,68 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5786D59F7F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2024 23:42:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2667DD29FA5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 01:02:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	bh=yhxHGEnvGLmfUODCKVKEKhm6OSCVAv0A1JJ/Xcrv8yI=; b=Kfzpdq764UhLQUDIPK3iMKt/6U
-	G0UDwOwRqzgcZYGZVIIfC5ztdEoeSszmuQegZMp8aS9nT9TJ/VD9kSmqTUok/GxWTXPle+rVqcb1o
-	tu7yOubJPTeBqpkfw7N0rLA8UDdr0UWCV+e7XgrvEn2TFVfmb4ZtF+h8J5xzc9gnrmX+3snTKZx8L
-	W/8DqfW8pNKbzfDExDHmjY3DIyPj1lB9Z+TNQepJls0N3Dbv1K3Ei443oZmsopAh2uBr9/65+m7EV
-	zFG2mGSedYyIq8iLM55mbIwp/eQu2vOm+HJCvf4kpnvkB0PMgRZYQA16FcsaFKDJS5vwq6eld5zZo
-	WGXeblag==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3es5RRP8wDvjlZykvA3iGHnHUcsAvyoChZWhO3H3jMo=; b=nnW2YHYqSPIDatG9LE9H+ZvjU8
+	kCDzFwQI+8gfy1P9qGD6tat11f517xG2UUl9cr52KLZRzaST6rNp0WPGjYKnEsFjc0AT1q1sLdmaG
+	IBSDrQfCNoEyVmIVL11i6K/cpEmp+636pHlooWDzftCtUM6W5FMuNpmSlORJNZ0VyYI0ZXS3w23yQ
+	+Llo2gOhpoSthK4G9kCgRY+GE1Jm8sy0ToYkvLifCdVUcgvD2/1IrPeknnEKdRXyyq4DTj+8+b6dq
+	IGJQjOrUm36aXz+3R4Mkc7eg0KTTtI5xtuGyTQaWpi7JdJV+xnt0xveftwC2NrqulgS4qMefAxeZg
+	/1+0FzDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8pf6-000000054mK-33q7;
-	Wed, 06 Nov 2024 23:42:08 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1t8quL-00000005DoL-3323;
+	Thu, 07 Nov 2024 01:01:57 +0000
+Received: from mgamail.intel.com ([192.198.163.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8pdM-000000054XX-32mf;
-	Wed, 06 Nov 2024 23:40:22 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id DA502A4010F;
-	Wed,  6 Nov 2024 23:38:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 39A07C4CEC6;
-	Wed,  6 Nov 2024 23:40:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730936419;
-	bh=CkGGHWsAOzlrkCRfO25nUXeUnK9cjDfpzkgHRPsMsIg=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=LJZfy4fXE8rdCT9INnntdHrIliXU/wiigikdb2LujfIuesFsgHjxQacPtd6you21Q
-	 5Y7Yq4TF9YYqG8XiRSVdf4xoiGHQSJxL6kzX6hT1bL8OXTgyALmIv3efDZqzX3zKk4
-	 m3dN0/rRI5irRke7cbgk+YVHfvLnvhzkj2BaLSOuVa/bZxWU+8SELp/Pkk5nDZxy+r
-	 aCAh6AbGsuWqGIvnSaPFNUDtCm++/yfcMOrjan7A1imB1XBf38NWcyRX/AWfWXZu5w
-	 K3O609rN1a/bDnTxVfYv/xWremg0FuQU2/6hksnP7x06KwTVTMOXyFCdGerrU6/jYP
-	 tAY0B4jm2cRxA==
-Date: Wed, 6 Nov 2024 17:40:18 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Jim Quinlan <jim2101024@gmail.com>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, linux-pci@vger.kernel.org,
-	ryder.lee@mediatek.com, jianjun.wang@mediatek.com,
-	lpieralisi@kernel.org, kw@linux.com, robh@kernel.org,
-	bhelgaas@google.com, linux-mediatek@lists.infradead.org,
-	lorenzo.bianconi83@gmail.com, linux-arm-kernel@lists.infradead.org,
-	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org,
-	nbd@nbd.name, dd@embedd.com, upstream@airoha.com,
-	angelogioacchino.delregno@collabora.com,
-	Jim Quinlan <james.quinlan@broadcom.com>,
-	Krishna Chaitanya Chundru <quic_krichai@quicinc.com>,
-	Vidya Sagar <vidyas@nvidia.com>,
-	Shashank Babu Chinta Venkata <quic_schintav@quicinc.com>
-Subject: Re: [PATCH v4 4/4] PCI: mediatek-gen3: Add Airoha EN7581 support
-Message-ID: <20241106234018.GA1581562@bhelgaas>
+	id 1t8quI-00000005Dnl-4B2q;
+	Thu, 07 Nov 2024 01:01:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1730941315; x=1762477315;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=8LZPvUCN9C3yUR3J6KQF9rZje6rFNhSf2IWdy4LztfM=;
+  b=QbRbxW6R9Ei/Poc8Rr/cBlAe1pibBRY4d8UUhSWLxTM3CdUwunKyBqGF
+   t6+SJHIcRu+C6ukHOJMuMRGgkKpjnO7TjLaVpehxx8zjm7uL0NRCJF10e
+   Ptt6EwsjsVdrM1Pi+0Ll5mM/ml2lfgsgRu9F0BXo6qDoM33uTzSK6k0fj
+   N826NnSAb0YvvSr6Cs4IY/Sw1Fl6kjW9F794nvxfD0+rKIGdeW768R08d
+   2zM0tYZR5FjgtiNjEEh6tApnMYBxvMzvjLCsevw8M9T4c/1XcPlTFzyzx
+   B/aEdtE7dNgQ6npWwfn/Xr6jzeAEW6u7LtB+KlpTbOUIk+/Mh28X7pks9
+   Q==;
+X-CSE-ConnectionGUID: Ydm33zfmRR6TUM7RwYtfPQ==
+X-CSE-MsgGUID: ToOtmcbcSkq36Y6ZJwilLA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11248"; a="30868872"
+X-IronPort-AV: E=Sophos;i="6.11,264,1725346800"; 
+   d="scan'208";a="30868872"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Nov 2024 17:01:48 -0800
+X-CSE-ConnectionGUID: w39IjmtKRLq/XpI8W46YJw==
+X-CSE-MsgGUID: tU/9JlygSBWKwC5v93+JRQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,264,1725346800"; 
+   d="scan'208";a="88828063"
+Received: from lkp-server01.sh.intel.com (HELO a48cf1aa22e8) ([10.239.97.150])
+  by fmviesa003.fm.intel.com with ESMTP; 06 Nov 2024 17:01:44 -0800
+Received: from kbuild by a48cf1aa22e8 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1t8qu6-000pb4-12;
+	Thu, 07 Nov 2024 01:01:42 +0000
+Date: Thu, 7 Nov 2024 09:01:17 +0800
+From: kernel test robot <lkp@intel.com>
+To: Yassine Oudjana <y.oudjana@protonmail.com>,
+	Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Andy Teng <andy.teng@mediatek.com>
+Cc: oe-kbuild-all@lists.linux.dev,
+	Yassine Oudjana <y.oudjana@protonmail.com>,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v7 7/7] pinctrl: mediatek: Add MT6735 pinctrl driver
+Message-ID: <202411070804.SS4EF03K-lkp@intel.com>
+References: <20241106100741.173825-8-y.oudjana@protonmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CANCKTBuxKA8JdfYMCcGS=CpyuXGiLz1NdereCjqo-_2Er3Pfww@mail.gmail.com>
+In-Reply-To: <20241106100741.173825-8-y.oudjana@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_154020_919690_CB9878F2 
-X-CRM114-Status: GOOD (  29.21  )
+X-CRM114-CacheID: sfid-20241106_170155_076796_0F1852B7 
+X-CRM114-Status: GOOD (  12.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,75 +97,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 06, 2024 at 06:00:08PM -0500, Jim Quinlan wrote:
-> On Tue, Nov 5, 2024 at 4:33 PM Bjorn Helgaas <helgaas@kernel.org> wrote:
-> > On Wed, Jul 03, 2024 at 06:12:44PM +0200, Lorenzo Bianconi wrote:
-> > > Introduce support for Airoha EN7581 PCIe controller to mediatek-gen3
-> > > PCIe controller driver.
-> >
-> > > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> >
-> > > +#define PCIE_EQ_PRESET_01_REG                0x100
-> > > +#define PCIE_VAL_LN0_DOWNSTREAM              GENMASK(6, 0)
-> > > +#define PCIE_VAL_LN0_UPSTREAM                GENMASK(14, 8)
-> > > +#define PCIE_VAL_LN1_DOWNSTREAM              GENMASK(22, 16)
-> > > +#define PCIE_VAL_LN1_UPSTREAM                GENMASK(30, 24)
-> > > ...
-> >
-> > > +static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
-> > > +{
-> > > ...
-> >
-> > > +     val = FIELD_PREP(PCIE_VAL_LN0_DOWNSTREAM, 0x47) |
-> > > +           FIELD_PREP(PCIE_VAL_LN1_DOWNSTREAM, 0x47) |
-> > > +           FIELD_PREP(PCIE_VAL_LN0_UPSTREAM, 0x41) |
-> > > +           FIELD_PREP(PCIE_VAL_LN1_UPSTREAM, 0x41);
-> > > +     writel_relaxed(val, pcie->base + PCIE_EQ_PRESET_01_REG);
-> 
-> Not sure it is worth the trouble to define fields.  In fact, you are
-> already combining fields (rec+trans) so why not go further and just
-> write each lane as a u16?
-> >
-> > This looks like it might be for the Lane Equalization Control
-> > registers (PCIe r6.0, sec 7.7.3.4)?
-> >
-> > I would expect those values (0x47, 0x41) to be related to the platform
-> > design, so maybe not completely determined by the SoC itself?  Jim and
-> > Krishna have been working on DT schema for the equalization values,
-> > which seems like the right place for them:
-> >
-> > https://lore.kernel.org/linux-pci/20241018182247.41130-2-james.quinlan@broadcom.com/
-> > https://lore.kernel.org/r/77d3a1a9-c22d-0fd3-5942-91b9a3d74a43@quicinc.com
-> >
-> > Maybe that would be applicable here as well?  It would at least be
-> > nice to use a common #define for the Lane Equalization Control
-> > register offset from the capability base.
-> 
-> FWIW, these registers are HwInit/RO.  In our (Broadcom) case we have
-> to write them using an internal register block that is not visible in
-> the config space.  In other words, we do not use the cap offset.
+Hi Yassine,
 
-Good point.  It looks like they're a mix of HwInit/RsvdP and
-Hwinit/RO.  RsvdP is for writes, so I guess the config space registers
-must be write-once and subsequently read-only until reset.  In any
-case, mtk is using an internal register block as well, so a cap offset
-wouldn't be useful.
+kernel test robot noticed the following build errors:
 
-Maybe it would still be worthwhile to define the fields themselves in
-pci_regs.h so we can someday have common code to parse the DT
-properties and assemble them.  Although I suppose there's no
-requirement that the registers in the internal block even be laid out
-the same as the config space register.
+[auto build test ERROR on linusw-pinctrl/devel]
+[also build test ERROR on linusw-pinctrl/for-next robh/for-next linus/master v6.12-rc6 next-20241106]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-> > Although I see that no such #define exists in pci_regs.h, so I guess
-> > there's nothing to do here yet.
-> >
-> > The only users of equalization settings I could find so far are:
-> >
-> >   https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/pci/controller/dwc/pcie-tegra194.c?id=v6.11#n832
-> >   https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/pci/controller/dwc/pcie-qcom-common.c?id=v6.12-rc1#n11
-> >   https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/pci/controller/pcie-mediatek-gen3.c?id=v6.12-rc1#n909
-> >
-> > Bjorn
-> >
+url:    https://github.com/intel-lab-lkp/linux/commits/Yassine-Oudjana/dt-bindings-pinctrl-mediatek-mt6779-pinctrl-Pull-pinctrl-node-changes-from-MT6795-document/20241106-181127
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git devel
+patch link:    https://lore.kernel.org/r/20241106100741.173825-8-y.oudjana%40protonmail.com
+patch subject: [PATCH v7 7/7] pinctrl: mediatek: Add MT6735 pinctrl driver
+config: arm64-randconfig-002-20241107 (https://download.01.org/0day-ci/archive/20241107/202411070804.SS4EF03K-lkp@intel.com/config)
+compiler: aarch64-linux-gcc (GCC) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241107/202411070804.SS4EF03K-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202411070804.SS4EF03K-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> aarch64-linux-ld: drivers/pinctrl/mediatek/pinctrl-mt6735.o:(.data+0xa0): undefined reference to `mtk_paris_pinctrl_pm_ops'
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
