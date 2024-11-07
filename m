@@ -4,63 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2A58D43379
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 16:55:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17442D5D674
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 17:54:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=ayIrx1XrjOsCWld35EEmZX7uFjzAN1pNLoPdBYxtnq4=; b=4xB/q6nBOIZ8t3
-	Z7ibh9XP6HLt/TWukd3+AAFuoFOiZYVModsPw/nCR1Xk+ZLOsmG8f2Hfm/zVEPL/A+3hfnVjamc7h
-	KEa+Lb83PLmroGlmrhMqe5Ns+/tAb38YAN4VP0IV9eCiH3QaR/KBQGXaS7/sNylpW0T3fQn+hzr7Z
-	iPYC+UHcndPEVp+7SmefQOYX2k+uvhA4edRNIYotAljC7f+psA8Rhl4fVlrkU+eAKqArCdtoK21xP
-	Vsz6Z4TNu03fVL5CPw/467Tanx4UZEHXnWbvRbOdHU2YmVkhr3sx0nTo76ylO/bk72dax/xNnf6qe
-	Usya5T+NpgZ7V+wVPhWA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:Cc:To:References:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cdgcV6wo3982K6zQ+QcgyGnlNupSEkHhyOdc+H7ya3w=; b=RIfrLMrY4ZqcdppxQ8KwpVjn4z
+	eDGOkngT15hGBqVkTpaItVcFFdP5OVM23Vr0dY11lGiTiNTWTJt32rm9zQIHqFquKqOnVM12CJxvJ
+	a+KubXCRf28jrLMPEViaSPFsCQJzZTwRZHLRmHosnObv+Cho64rQqEydRYSsKfI4KJkCDKHTcnUyo
+	xd4WgtlZ4V7uayLnQOZC6AdvOOapWjd3saGTrp9WFZ67oXJE1dh4ohn9IfnZ4/gnjDuaSmWQsf29W
+	hWOz3YoX9xlMqDfKEljy0njXXzlSE0iZ95b2IQVHb13kz6xkMCIDLo7VMfeo3dLyDoA3wfvs5Qotk
+	U0kTiKcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t95md-00000007jEC-2vUe;
-	Thu, 07 Nov 2024 16:54:59 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1t96hp-00000007rz4-413S;
+	Thu, 07 Nov 2024 17:54:05 +0000
+Received: from smtp-16.smtpout.orange.fr ([80.12.242.16] helo=smtp.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t95eP-00000007hUG-06Un;
-	Thu, 07 Nov 2024 16:46:30 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 131A5A448BF;
-	Thu,  7 Nov 2024 16:44:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 595F2C4CECC;
-	Thu,  7 Nov 2024 16:46:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730997987;
-	bh=GZHWeP89CUKrAe3MvpLoueZH/R99ojWtvbeyFfi7yj8=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=Dql3DcdiSw6/w7rk8GoAlnLI5jh2cZBXjjhWoLwNBf+/GdHMPonOD9UzeB4iCMyTF
-	 lAmTyLyimvHtMztSWzboGnqigMuXV3j6FQzHwJ+ShPSCkovNPd0L74a3vaynKnR+2n
-	 UQi7zJzODcelksrznG50+NHfaFiKvM305FehRCXCm8edyq8AupKpqqsrDL60T5cq4B
-	 GlFZBItAKrfRPuhIOspE+Q6hcdqDgASwQlJjJrbsJrk5qH8SeU5jyqhmQzCEKgbfgg
-	 tb4RVylua4obd8Wgh2FBkSoFMHUC959fBxncGWpklUukNZwBYhugy02bU5/vbL6yiD
-	 7Fs8zgD+Mm8JQ==
-Date: Thu, 7 Nov 2024 10:46:24 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-pci@vger.kernel.org, ryder.lee@mediatek.com,
-	jianjun.wang@mediatek.com, lpieralisi@kernel.org, kw@linux.com,
-	robh@kernel.org, bhelgaas@google.com,
-	linux-mediatek@lists.infradead.org, lorenzo.bianconi83@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org,
-	nbd@nbd.name, dd@embedd.com, upstream@airoha.com,
-	angelogioacchino.delregno@collabora.com
-Subject: Re: [PATCH v4 4/4] PCI: mediatek-gen3: Add Airoha EN7581 support
-Message-ID: <20241107164624.GA1618716@bhelgaas>
+	id 1t96hl-00000007ryD-3Q5d;
+	Thu, 07 Nov 2024 17:54:04 +0000
+Received: from [192.168.1.37] ([90.11.132.44])
+	by smtp.orange.fr with ESMTPA
+	id 96hdtNA5ljpcy96hdtxdSs; Thu, 07 Nov 2024 18:53:58 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1731002038;
+	bh=cdgcV6wo3982K6zQ+QcgyGnlNupSEkHhyOdc+H7ya3w=;
+	h=Message-ID:Date:MIME-Version:From:Subject:To;
+	b=OyqtHaea2fjLJu0H/uOFpRuDkMdy4/RBnhtlN+dvZY0oouNgU++MeW7A2UyeKd73T
+	 KQTySv04bVQEoVMjE6VGH61YVW1zlLSdYfeq9wJFE82Jtjc23iNzrGWCTvQXcu8/o7
+	 7YdowhKH0jxZWzj2I/jTomCm7+WUU0m7vzqE/HcYa5fx/2B1p7Yeoy4bIaJMnvqpjc
+	 uo9EyePb9gFbaz8KAvpk+gR7h/GjNdO3bnWxvHPpiZwglSOBd9h6FbYhCy65CwZhdu
+	 fJsrdoZP4sZgscMOz96BUjhPDgl9KL59akPQ3eGO5MYoRyDklOm1LkTNz+AJoNqGj/
+	 lPorkANdFP9NQ==
+X-ME-Helo: [192.168.1.37]
+X-ME-Auth: bWFyaW9uLmphaWxsZXRAd2FuYWRvby5mcg==
+X-ME-Date: Thu, 07 Nov 2024 18:53:58 +0100
+X-ME-IP: 90.11.132.44
+Message-ID: <4318897e-0f1a-42c7-8f20-065dc690a112@wanadoo.fr>
+Date: Thu, 7 Nov 2024 18:53:53 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZyzpGSyAVe6bz9H2@lore-desk>
+User-Agent: Mozilla Thunderbird
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Subject: Re: [net-next PATCH v3 2/3] net: dsa: Add Airoha AN8855 5-Port
+ Gigabit DSA Switch driver
+References: <20241106122254.13228-1-ansuelsmth@gmail.com>
+ <20241106122254.13228-3-ansuelsmth@gmail.com>
+Content-Language: en-US, fr-FR
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Christian Marangi <ansuelsmth@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean
+ <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Russell King <linux@armlinux.org.uk>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "AngeloGioacchino Del Regno," <angelogioacchino.delregno@collabora.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, upstream@airoha.com
+In-Reply-To: <20241106122254.13228-3-ansuelsmth@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241107_084629_223728_17B448A5 
-X-CRM114-Status: GOOD (  36.31  )
+X-CRM114-CacheID: sfid-20241107_095402_395748_873853C3 
+X-CRM114-Status: GOOD (  26.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,60 +87,259 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 07, 2024 at 05:21:45PM +0100, Lorenzo Bianconi wrote:
-> On Nov 07, Bjorn Helgaas wrote:
-> > On Thu, Nov 07, 2024 at 08:39:43AM +0100, Lorenzo Bianconi wrote:
-> > > > On Wed, Nov 06, 2024 at 11:40:28PM +0100, Lorenzo Bianconi wrote:
-> > > > > > On Wed, Jul 03, 2024 at 06:12:44PM +0200, Lorenzo Bianconi wrote:
-> > > > > > > Introduce support for Airoha EN7581 PCIe controller to mediatek-gen3
-> > > > > > > PCIe controller driver.
-> > > > > > > ...
-> > 
-> > > > > > Is this where PERST# is asserted?  If so, a comment to that effect
-> > > > > > would be helpful.  Where is PERST# deasserted?  Where are the required
-> > > > > > delays before deassert done?
-> > > > > 
-> > > > > I can add a comment in en7581_pci_enable() describing the PERST issue for
-> > > > > EN7581. Please note we have a 250ms delay in en7581_pci_enable() after
-> > > > > configuring REG_PCI_CONTROL register.
-> > > > > 
-> > > > > https://github.com/torvalds/linux/blob/master/drivers/clk/clk-en7523.c#L396
-> > > > 
-> > > > Does that 250ms delay correspond to a PCIe mandatory delay, e.g.,
-> > > > something like PCIE_T_PVPERL_MS?  I think it would be nice to have the
-> > > > required PCI delays in this driver if possible so it's easy to verify
-> > > > that they are all covered.
-> > > 
-> > > IIRC I just used the delay value used in the vendor sdk. I do not
-> > > have a strong opinion about it but I guess if we move it in the
-> > > pcie-mediatek-gen3 driver, we will need to add it in each driver
-> > > where this clock is used. What do you think?
-> > 
-> > I don't know what the 250ms delay is for.  If it is for a required PCI
-> > delay, we should use the relevant standard #define for it, and it
-> > should be in the PCI controller driver.  Otherwise it's impossible to
-> > verify that all the drivers are doing the correct delays.
+Le 06/11/2024 à 13:22, Christian Marangi a écrit :
+> Add Airoha AN8855 5-Port Gigabit DSA switch.
 > 
-> ack, fine to me. Do you prefer to keep 250ms after clk_bulk_prepare_enable()
-> in mtk_pcie_en7581_power_up() or just use PCIE_T_PVPERL_MS (100)?
-> I can check if 100ms works properly.
+> The switch is also a nvmem-provider as it does have EFUSE to calibrate
+> the internal PHYs.
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> ---
 
-It's not clear to me where the relevant events are for these chips.
+Hi,
 
-Do you have access to the PCIe CEM spec?  The diagram in r6.0, sec
-2.2.1, is helpful.  It shows the required timings for Power Stable,
-REFCLK Stable, PERST# deassert, etc.
+...
 
-Per sec 2.11.2, PERST# must be asserted for at least 100us (T_PERST),
-PERST# must be asserted for at least 100ms after Power Stable
-(T_PVPERL), and PERST# must be asserted for at least 100us after
-REFCLK Stable.
+> +#include <linux/bitfield.h>
+> +#include <linux/ethtool.h>
+> +#include <linux/etherdevice.h>
+> +#include <linux/gpio/consumer.h>
+> +#include <linux/if_bridge.h>
+> +#include <linux/iopoll.h>
+> +#include <linux/mdio.h>
+> +#include <linux/netdevice.h>
+> +#include <linux/of_mdio.h>
+> +#include <linux/of_net.h>
+> +#include <linux/of_platform.h>
+> +#include <linux/nvmem-provider.h>
 
-It would be helpful if we could tell by reading the source where some
-of these critical events happen, and that the relevant delays are
-there.  For example, if PERST# is asserted/deasserted by
-"clk_enable()" or similar, it's not at all obvious from the code, so
-we should have a comment to that effect.
+Could be moved a few lines above to keep order.
 
-Bjorn
+> +#include <linux/phylink.h>
+> +#include <linux/regmap.h>
+> +#include <net/dsa.h>
+...
+
+> +static int an8855_port_fdb_dump(struct dsa_switch *ds, int port,
+> +				dsa_fdb_dump_cb_t *cb, void *data)
+> +{
+> +	struct an8855_priv *priv = ds->priv;
+> +	struct an8855_fdb _fdb = {  };
+
+Should it but reseted in the do loop below, instead of only once here?
+
+> +	int banks, count = 0;
+> +	u32 rsp;
+> +	int ret;
+> +	int i;
+> +
+> +	mutex_lock(&priv->reg_mutex);
+> +
+> +	/* Load search port */
+> +	ret = regmap_write(priv->regmap, AN8855_ATWD2,
+> +			   FIELD_PREP(AN8855_ATWD2_PORT, port));
+> +	if (ret)
+> +		goto exit;
+> +	ret = an8855_fdb_cmd(priv, AN8855_ATC_MAT(AND8855_FDB_MAT_MAC_PORT) |
+> +			     AN8855_FDB_START, &rsp);
+> +	if (ret < 0)
+> +		goto exit;
+> +
+> +	do {
+> +		/* From response get the number of banks to read, exit if 0 */
+> +		banks = FIELD_GET(AN8855_ATC_HIT, rsp);
+> +		if (!banks)
+> +			break;
+> +
+> +		/* Each banks have 4 entry */
+> +		for (i = 0; i < 4; i++) {
+> +			count++;
+> +
+> +			/* Check if bank is present */
+> +			if (!(banks & BIT(i)))
+> +				continue;
+> +
+> +			/* Select bank entry index */
+> +			ret = regmap_write(priv->regmap, AN8855_ATRDS,
+> +					   FIELD_PREP(AN8855_ATRD_SEL, i));
+> +			if (ret)
+> +				break;
+> +			/* wait 1ms for the bank entry to be filled */
+> +			usleep_range(1000, 1500);
+> +			an8855_fdb_read(priv, &_fdb);
+> +
+> +			if (!_fdb.live)
+> +				continue;
+> +			ret = cb(_fdb.mac, _fdb.vid, _fdb.noarp, data);
+> +			if (ret < 0)
+> +				break;
+> +		}
+> +
+> +		/* Stop if reached max FDB number */
+> +		if (count >= AN8855_NUM_FDB_RECORDS)
+> +			break;
+> +
+> +		/* Read next bank */
+> +		ret = an8855_fdb_cmd(priv, AN8855_ATC_MAT(AND8855_FDB_MAT_MAC_PORT) |
+> +				     AN8855_FDB_NEXT, &rsp);
+> +		if (ret < 0)
+> +			break;
+> +	} while (true);
+> +
+> +exit:
+> +	mutex_unlock(&priv->reg_mutex);
+> +	return ret;
+> +}
+
+...
+
+> +	ret = regmap_set_bits(priv->regmap, AN8855_RG_RATE_ADAPT_CTRL_0,
+> +			      AN8855_RG_RATE_ADAPT_RX_BYPASS |
+> +			      AN8855_RG_RATE_ADAPT_TX_BYPASS |
+> +			      AN8855_RG_RATE_ADAPT_RX_EN |
+> +			      AN8855_RG_RATE_ADAPT_TX_EN);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* Disable AN if not in autoneg */
+> +	ret = regmap_update_bits(priv->regmap, AN8855_SGMII_REG_AN0, BMCR_ANENABLE,
+> +				 neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED ? BMCR_ANENABLE :
+> +									      0);
+
+Should 'ret' be tested here?
+
+> +
+> +	if (interface == PHY_INTERFACE_MODE_SGMII &&
+> +	    neg_mode == PHYLINK_PCS_NEG_INBAND_DISABLED) {
+> +		ret = regmap_set_bits(priv->regmap, AN8855_PHY_RX_FORCE_CTRL_0,
+> +				      AN8855_RG_FORCE_TXC_SEL);
+> +		if (ret)
+> +			return ret;
+> +	}
+
+...
+
+> +	priv->ds = devm_kzalloc(&mdiodev->dev, sizeof(*priv->ds), GFP_KERNEL);
+> +	if (!priv->ds)
+> +		return -ENOMEM;
+> +
+> +	priv->ds->dev = &mdiodev->dev;
+> +	priv->ds->num_ports = AN8855_NUM_PORTS;
+> +	priv->ds->priv = priv;
+> +	priv->ds->ops = &an8855_switch_ops;
+> +	mutex_init(&priv->reg_mutex);
+
+devm_mutex_init() to slightly simplify the remove function?
+
+> +	priv->ds->phylink_mac_ops = &an8855_phylink_mac_ops;
+> +
+> +	priv->pcs.ops = &an8855_pcs_ops;
+> +	priv->pcs.neg_mode = true;
+> +	priv->pcs.poll = true;
+> +
+> +	ret = an8855_sw_register_nvmem(priv);
+> +	if (ret)
+> +		return ret;
+> +
+> +	dev_set_drvdata(&mdiodev->dev, priv);
+> +
+> +	return dsa_register_switch(priv->ds);
+> +}
+> +
+> +static void
+> +an8855_sw_remove(struct mdio_device *mdiodev)
+> +{
+> +	struct an8855_priv *priv = dev_get_drvdata(&mdiodev->dev);
+> +
+> +	dsa_unregister_switch(priv->ds);
+> +	mutex_destroy(&priv->reg_mutex);
+> +}
+> +
+> +static const struct of_device_id an8855_of_match[] = {
+> +	{ .compatible = "airoha,an8855" },
+> +	{ /* sentinel */ },
+
+Ending comma is usually not needed after a terminator.
+
+> +};
+> +
+> +static struct mdio_driver an8855_mdio_driver = {
+> +	.probe = an8855_sw_probe,
+> +	.remove = an8855_sw_remove,
+> +	.mdiodrv.driver = {
+> +		.name = "an8855",
+> +		.of_match_table = an8855_of_match,
+> +	},
+> +};
+
+...
+
+> +#define	  AN8855_VA0_VTAG_EN		BIT(10) /* Per VLAN Egress Tag Control */
+> +#define	  AN8855_VA0_IVL_MAC		BIT(5) /* Independent VLAN Learning */
+> +#define	  AN8855_VA0_VLAN_VALID		BIT(0) /* VLAN Entry Valid */
+> +#define AN8855_VAWD1			0x10200608
+> +#define	  AN8855_VA1_PORT_STAG		BIT(1)
+> +
+> +/* Same register map of VAWD0 */
+
+Not sure to follow. AN8855_VAWD0 above is 0x10200604, not 0x10200618
+
+> +#define AN8855_VARD0			0x10200618
+> +
+> +enum an8855_vlan_egress_attr {
+> +	AN8855_VLAN_EGRESS_UNTAG = 0,
+> +	AN8855_VLAN_EGRESS_TAG = 2,
+> +	AN8855_VLAN_EGRESS_STACK = 3,
+> +};
+> +
+> +/* Register for port STP state control */
+> +#define AN8855_SSP_P(x)			(0x10208000 + ((x) * 0x200))
+> +#define	 AN8855_FID_PST			GENMASK(1, 0)
+> +
+> +enum an8855_stp_state {
+> +	AN8855_STP_DISABLED = 0,
+> +	AN8855_STP_BLOCKING = 1,
+> +	AN8855_STP_LISTENING = 1,
+
+Just wondering if this 0, 1, *1*, 2, 3 was intentional?
+
+> +	AN8855_STP_LEARNING = 2,
+> +	AN8855_STP_FORWARDING = 3
+> +};
+> +
+> +/* Register for port control */
+> +#define AN8855_PCR_P(x)			(0x10208004 + ((x) * 0x200))
+> +#define	  AN8855_EG_TAG			GENMASK(29, 28)
+> +#define	  AN8855_PORT_PRI		GENMASK(26, 24)
+> +#define	  AN8855_PORT_TX_MIR		BIT(20)
+> +#define	  AN8855_PORT_RX_MIR		BIT(16)
+> +#define	  AN8855_PORT_VLAN		GENMASK(1, 0)
+> +
+> +enum an8855_port_mode {
+> +	/* Port Matrix Mode: Frames are forwarded by the PCR_MATRIX members. */
+> +	AN8855_PORT_MATRIX_MODE = 0,
+> +
+> +	/* Fallback Mode: Forward received frames with ingress ports that do
+> +	 * not belong to the VLAN member. Frames whose VID is not listed on
+> +	 * the VLAN table are forwarded by the PCR_MATRIX members.
+> +	 */
+> +	AN8855_PORT_FALLBACK_MODE = 1,
+> +
+> +	/* Check Mode: Forward received frames whose ingress do not
+> +	 * belong to the VLAN member. Discard frames if VID ismiddes on the
+> +	 * VLAN table.
+> +	 */
+> +	AN8855_PORT_CHECK_MODE = 1,
+
+Just wondering if this 0, 1, *1*, 3 was intentional?
+
+> +
+> +	/* Security Mode: Discard any frame due to ingress membership
+> +	 * violation or VID missed on the VLAN table.
+> +	 */
+> +	AN8855_PORT_SECURITY_MODE = 3,
+> +};
+...
+
+CJ
 
