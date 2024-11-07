@@ -4,85 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2667DD29FA5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 01:02:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1A6CD29FA5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 02:09:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3es5RRP8wDvjlZykvA3iGHnHUcsAvyoChZWhO3H3jMo=; b=nnW2YHYqSPIDatG9LE9H+ZvjU8
-	kCDzFwQI+8gfy1P9qGD6tat11f517xG2UUl9cr52KLZRzaST6rNp0WPGjYKnEsFjc0AT1q1sLdmaG
-	IBSDrQfCNoEyVmIVL11i6K/cpEmp+636pHlooWDzftCtUM6W5FMuNpmSlORJNZ0VyYI0ZXS3w23yQ
-	+Llo2gOhpoSthK4G9kCgRY+GE1Jm8sy0ToYkvLifCdVUcgvD2/1IrPeknnEKdRXyyq4DTj+8+b6dq
-	IGJQjOrUm36aXz+3R4Mkc7eg0KTTtI5xtuGyTQaWpi7JdJV+xnt0xveftwC2NrqulgS4qMefAxeZg
-	/1+0FzDQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3W5PDY06+vGKIgs/nnc6DCcFazFeqkExG65rOZ8TJMY=; b=XlFI+unJ99TxpZaniinGwZ0PFn
+	pVOUQvq4IGr+Qn8nwFXuLDD9rnyypB41V4uqZxYfNIgaL9UnnorhBL9Ut8sVCjzxkUd5NXDNADYyT
+	INtmwY0aA0hsfyY75zd6EiHoXibT+xe7WGoPsohDs8GXRIsLpMw0gbbx06VySKKoA1OQYTu35VtI5
+	Zj+Rk1hP4BMoyMX+H5WnUj37zMtdmlqxWq5P/7+d1c8kecM5SXij1TMUpwNbuOVQ6B98B0y8bb8Gq
+	XQ0eg73GB1iVOnTDVIjPRR/y5c/rZOBUmAGOhEmfYksgvOM1mOCnsSMIhgnQGq8mFtPlZlnaUnuHr
+	YXZ56B2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8quL-00000005DoL-3323;
-	Thu, 07 Nov 2024 01:01:57 +0000
-Received: from mgamail.intel.com ([192.198.163.15])
+	id 1t8rxw-00000005PlM-2VgH;
+	Thu, 07 Nov 2024 02:09:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8quI-00000005Dnl-4B2q;
-	Thu, 07 Nov 2024 01:01:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1730941315; x=1762477315;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=8LZPvUCN9C3yUR3J6KQF9rZje6rFNhSf2IWdy4LztfM=;
-  b=QbRbxW6R9Ei/Poc8Rr/cBlAe1pibBRY4d8UUhSWLxTM3CdUwunKyBqGF
-   t6+SJHIcRu+C6ukHOJMuMRGgkKpjnO7TjLaVpehxx8zjm7uL0NRCJF10e
-   Ptt6EwsjsVdrM1Pi+0Ll5mM/ml2lfgsgRu9F0BXo6qDoM33uTzSK6k0fj
-   N826NnSAb0YvvSr6Cs4IY/Sw1Fl6kjW9F794nvxfD0+rKIGdeW768R08d
-   2zM0tYZR5FjgtiNjEEh6tApnMYBxvMzvjLCsevw8M9T4c/1XcPlTFzyzx
-   B/aEdtE7dNgQ6npWwfn/Xr6jzeAEW6u7LtB+KlpTbOUIk+/Mh28X7pks9
-   Q==;
-X-CSE-ConnectionGUID: Ydm33zfmRR6TUM7RwYtfPQ==
-X-CSE-MsgGUID: ToOtmcbcSkq36Y6ZJwilLA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11248"; a="30868872"
-X-IronPort-AV: E=Sophos;i="6.11,264,1725346800"; 
-   d="scan'208";a="30868872"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Nov 2024 17:01:48 -0800
-X-CSE-ConnectionGUID: w39IjmtKRLq/XpI8W46YJw==
-X-CSE-MsgGUID: tU/9JlygSBWKwC5v93+JRQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,264,1725346800"; 
-   d="scan'208";a="88828063"
-Received: from lkp-server01.sh.intel.com (HELO a48cf1aa22e8) ([10.239.97.150])
-  by fmviesa003.fm.intel.com with ESMTP; 06 Nov 2024 17:01:44 -0800
-Received: from kbuild by a48cf1aa22e8 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1t8qu6-000pb4-12;
-	Thu, 07 Nov 2024 01:01:42 +0000
-Date: Thu, 7 Nov 2024 09:01:17 +0800
-From: kernel test robot <lkp@intel.com>
-To: Yassine Oudjana <y.oudjana@protonmail.com>,
-	Sean Wang <sean.wang@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Teng <andy.teng@mediatek.com>
-Cc: oe-kbuild-all@lists.linux.dev,
-	Yassine Oudjana <y.oudjana@protonmail.com>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v7 7/7] pinctrl: mediatek: Add MT6735 pinctrl driver
-Message-ID: <202411070804.SS4EF03K-lkp@intel.com>
-References: <20241106100741.173825-8-y.oudjana@protonmail.com>
+	id 1t8rcQ-00000005L2y-0XoZ;
+	Thu, 07 Nov 2024 01:47:31 +0000
+X-UUID: 3c152f429caa11ef82ff63e91e7eb18c-20241106
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=3W5PDY06+vGKIgs/nnc6DCcFazFeqkExG65rOZ8TJMY=;
+	b=bYSeO+W50cK/AvrjmSKscoWuKjivWQPfkz4a+5Af9bVyl27r8gXfGIuckiyXrMAv9sPSuAA5QZMdbpSfNu/e6WYzP0Tz9XRqWGJb4W5xAWq9wkGWjOC3S5yf8HdkmMlDiJh4s14wNgWg4Y1y59r83hmLs/hfyFEzu9nzrm2B+0k=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.42,REQID:76c221fb-589e-4816-969d-0102980664cc,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:7cc1ac06-6ce0-4172-9755-bd2287e50583,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 3c152f429caa11ef82ff63e91e7eb18c-20241106
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
+	(envelope-from <andy-ld.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 47324642; Wed, 06 Nov 2024 18:47:23 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 7 Nov 2024 09:47:19 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 7 Nov 2024 09:47:19 +0800
+From: Andy-ld Lu <andy-ld.lu@mediatek.com>
+To: <angelogioacchino.delregno@collabora.com>, <ulf.hansson@linaro.org>,
+	<matthias.bgg@gmail.com>, <wenbin.mei@mediatek.com>
+CC: <linux-mmc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Andy-ld Lu <andy-ld.lu@mediatek.com>
+Subject: [PATCH] mmc: mtk-sd: Fix error handle of probe function
+Date: Thu, 7 Nov 2024 09:47:07 +0800
+Message-ID: <20241107014714.24981-1-andy-ld.lu@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241106100741.173825-8-y.oudjana@protonmail.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--8.332800-8.000000
+X-TMASE-MatchedRID: OLc6pRZQUVIxZlmZjLleZjPDkSOzeDWWq6/EYzBxkJgifM7JMNHW6xnH
+	32sG9jpsk6w8yr9UCBOnpDsu3n08UYjHxngndevxjNvYZHpO13fRfRfl2l4F3mtl3YYsdIHcBtM
+	QoGDRYEdfcTZ8crFLktWHvGFXsGeXsEBAuoaUqK/il2r2x2PwtQrefVId6fzVYdn5x3tXIpc7Qm
+	s3AC7auwWJQuk93Z8PIHSszW9OO9ONBnVioBmwYZ4CIKY/Hg3AGdQnQSTrKGPEQdG7H66TyF82M
+	XkEdQ770NH2Sv6E5SYne4LyJjwYxKLlHqJF1Ux2JFezMmuBWhtUQBzN9bOMTg==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--8.332800-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 3EFFC2BAA1189F12C483A8F0D241AC66204B4ABBF44944DC8F2C2D7C342F09702000:8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_170155_076796_0F1852B7 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20241106_174730_202122_DF8C6841 
+X-CRM114-Status: GOOD (  11.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,34 +95,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yassine,
+In the probe function, it goes to 'release_mem' label and returns after
+some procedure failure. But if the clocks (partial or all) have been
+enabled previously, they would not be disabled in msdc_runtime_suspend,
+since runtime PM is not yet enabled for this case.
 
-kernel test robot noticed the following build errors:
+That cause mmc related clocks always on during system suspend and block
+suspend flow. Below log is from a SDCard issue of MT8196 chromebook, it
+returns -ETIMEOUT while polling clock stable in the msdc_ungate_clock()
+and probe failed, but the enabled clocks could not be disabled anyway.
 
-[auto build test ERROR on linusw-pinctrl/devel]
-[also build test ERROR on linusw-pinctrl/for-next robh/for-next linus/master v6.12-rc6 next-20241106]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+[  129.059253] clk_chk_dev_pm_suspend()
+[  129.350119] suspend warning: msdcpll is on
+[  129.354494] [ck_msdc30_1_sel : enabled, 1, 1, 191999939,   ck_msdcpll_d2]
+[  129.362787] [ck_msdcpll_d2   : enabled, 1, 1, 191999939,         msdcpll]
+[  129.371041] [ck_msdc30_1_ck  : enabled, 1, 1, 191999939, ck_msdc30_1_sel]
+[  129.379295] [msdcpll         : enabled, 1, 1, 383999878,          clk26m]
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Yassine-Oudjana/dt-bindings-pinctrl-mediatek-mt6779-pinctrl-Pull-pinctrl-node-changes-from-MT6795-document/20241106-181127
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git devel
-patch link:    https://lore.kernel.org/r/20241106100741.173825-8-y.oudjana%40protonmail.com
-patch subject: [PATCH v7 7/7] pinctrl: mediatek: Add MT6735 pinctrl driver
-config: arm64-randconfig-002-20241107 (https://download.01.org/0day-ci/archive/20241107/202411070804.SS4EF03K-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241107/202411070804.SS4EF03K-lkp@intel.com/reproduce)
+Add a new 'release_clk' label and reorder the error handle functions to
+make sure the clocks be disabled after probe failure.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202411070804.SS4EF03K-lkp@intel.com/
+Signed-off-by: Andy-ld Lu <andy-ld.lu@mediatek.com>
+---
+ drivers/mmc/host/mtk-sd.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-All errors (new ones prefixed by >>):
-
->> aarch64-linux-ld: drivers/pinctrl/mediatek/pinctrl-mt6735.o:(.data+0xa0): undefined reference to `mtk_paris_pinctrl_pm_ops'
-
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index a2750a45c1b7..022526a1f754 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -3007,7 +3007,7 @@ static int msdc_drv_probe(struct platform_device *pdev)
+ 	ret = msdc_ungate_clock(host);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Cannot ungate clocks!\n");
+-		goto release_mem;
++		goto release_clk;
+ 	}
+ 	msdc_init_hw(host);
+ 
+@@ -3017,14 +3017,14 @@ static int msdc_drv_probe(struct platform_device *pdev)
+ 					     GFP_KERNEL);
+ 		if (!host->cq_host) {
+ 			ret = -ENOMEM;
+-			goto release_mem;
++			goto release;
+ 		}
+ 		host->cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+ 		host->cq_host->mmio = host->base + 0x800;
+ 		host->cq_host->ops = &msdc_cmdq_ops;
+ 		ret = cqhci_init(host->cq_host, mmc, true);
+ 		if (ret)
+-			goto release_mem;
++			goto release;
+ 		mmc->max_segs = 128;
+ 		/* cqhci 16bit length */
+ 		/* 0 size, means 65536 so we don't have to -1 here */
+@@ -3064,9 +3064,10 @@ static int msdc_drv_probe(struct platform_device *pdev)
+ end:
+ 	pm_runtime_disable(host->dev);
+ release:
+-	platform_set_drvdata(pdev, NULL);
+ 	msdc_deinit_hw(host);
++release_clk:
+ 	msdc_gate_clock(host);
++	platform_set_drvdata(pdev, NULL);
+ release_mem:
+ 	if (host->dma.gpd)
+ 		dma_free_coherent(&pdev->dev,
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.46.0
+
 
