@@ -4,119 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5D13D5AE7D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 10:10:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FCD9D3E787
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 10:21:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0mWxqHY0qzteNKyUaRYx4c3+OBLGt8Tt5MupYOj8mb4=; b=cmhu1Kf99oPNM1Q9l8DjLn3ykE
-	Qs4gOzCAe9uZW3nkGbzyjoOjoz/AORiiECeQMPhMOTNqMwGvTzSJUDGP4DT78m2z84mUL1ycJJC+V
-	4P8Ep7gA6Yt1GmK0AWhaZ2f43yOZ+y+3Hg0ZnK9Dxk0JzME1WBS4uAawpOee/8/aOznCmO4QNH0WL
-	Acvaytp8EeTORsjfrH7wHI2GvOSEK9lKYyYYDwM6qGvTaVrvYC3rXTR+dE8pdf5CinA6+4fasxY7D
-	lOJ/i7tRTgY3MvrV4+GIrSS4OgoK3afWlsC5eOmof6az4tCQkW5TyHwPavtnkzzNWFzw3U6QN4jKy
-	rEQNtHkQ==;
+	bh=6pEMRGidtdwO6FvYtRBzMsrDmpDGnl3AsUrIEMjv+yo=; b=NrJ6qRDaf/EfwGMLHUuxFRRUOq
+	bWYjJxjQFsICZHuUzcXmxXLqVc1/sU7K2EEYs8okGApVYhWMlyQQu1pl4Vt3ookhDrRB0sDugX/UY
+	iZNOVfuv60fMI3A7YS2+hpnL4EcOhk2n8vRLgFu1d4bhWoY+ybnztEKBYYcVc5AFq5BapG3NTwLf4
+	9FzsHnPpSd4jVNtxBK06XAMsAj6fxq1YXLbCnwjkElxrnEdynlotByw1U74aKs02HvHpa7rUkvth4
+	707vxcJIi0FE0LtDXQHoLkN5vEpTcpZ9gGxC1JVoUQsDnvOhqZknvzy8FG6P8iSHx0CquQ54MfRmY
+	vqot+svQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8zTE-00000006Pmm-3FSE;
-	Thu, 07 Nov 2024 10:10:32 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1t8zdZ-00000006Rn4-0fY5;
+	Thu, 07 Nov 2024 10:21:13 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8zKN-00000006O5i-0N7w;
-	Thu, 07 Nov 2024 10:01:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id D0BDBA435D9;
-	Thu,  7 Nov 2024 09:59:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5FA20C4CECC;
-	Thu,  7 Nov 2024 10:01:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1730973681;
-	bh=kZpnoeo+yOi6IwHGZQ6A9p+1Cx22KzYBk6XOMAh7Phk=;
+	id 1t8zWS-00000006QW9-3lzv;
+	Thu, 07 Nov 2024 10:13:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1730974430;
+	bh=qGL+owtZbc1lnLogLE8XlKsc16UpGYGBcPFpDTZdqk8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oJtqxUS4FXmDdr1yfaBhzU6v24y9OW2HxGiEoHdouDekEi/I3KzujWaWJgTRMFQcT
-	 e0pkdBSaq/+iRrDPQy1sFtsyt5TlyxjPkknnjoru/NXTEYQ2VZXavCPdV2ncG7XpCm
-	 dqyHAZQE8Y7rdHUJJACt0AuJ7aGUTwgvj4WaHhPleu+18c05ut/D9bzIEUCWW/b2YW
-	 345yZCgo0MO4jyYGpqtdaKwpr1iSYbvt9Jb3YiyTIiPcoqsHjGoAZSik4TuztdWHKv
-	 roxt/Uqf/1KfcWuXwcj/TFeI853KRhgs54trIvSgipCyWIW8rYLs0EcIRSxFjlGQOZ
-	 xxHILT/8TPxMA==
-Message-ID: <d3890b5e-26e1-46ef-81ba-5427892517bf@kernel.org>
-Date: Thu, 7 Nov 2024 11:01:14 +0100
+	b=PMIS4rejvUGx/AV6FPb0rxG6CIyLbGVPSXwSi7+sIZiYQHrjVICYMJVtJXOtTPAdH
+	 6u8ODv5ojFaKj2YGjTQM2PyZqe2HxzMi6lv6BHSjkPAGGkqZwWXlpmUq6/T18/6l7u
+	 UwcaaBQmEoDd6HDAYJgG2L0teyNoKRleZe44H2lfPHEDqOxAL5Wi7L7QLGYin/Ty9p
+	 ueGV0nEaVFr2TKjIHKGo6dEfbqfTNa+iG7Rj9YyTwYNfaQHJeYdFde4zdIOXnWG0lM
+	 Gj3286ptUSdpdcucpF/tFxLhAodvljsUWC0U8/ASc8ypnlF3tukG1lTBnT+UR+ZhGR
+	 8xB1kl4GiTHAg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DF58717E14FB;
+	Thu,  7 Nov 2024 11:13:49 +0100 (CET)
+Message-ID: <c7c5e802-3df8-4218-865f-81a207c517cd@collabora.com>
+Date: Thu, 7 Nov 2024 11:13:49 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] wifi: Switch back to struct platform_driver::remove()
-To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
- Kalle Valo <kvalo@kernel.org>
-Cc: Jeff Johnson <jjohnson@kernel.org>, Nick Kossifidis
- <mickflemm@gmail.com>, Luis Chamberlain <mcgrof@kernel.org>,
- =?UTF-8?Q?Toke_H=C3=B8iland-J=C3=B8rgensen?= <toke@toke.dk>,
- Loic Poulain <loic.poulain@linaro.org>,
- Arend van Spriel <arend.vanspriel@broadcom.com>, Felix Fietkau
- <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Peter Chiu <chui-hao.chiu@mediatek.com>, Breno Leitao <leitao@debian.org>,
- "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
- linux-wireless@vger.kernel.org, ath10k@lists.infradead.org,
- ath11k@lists.infradead.org, wcn36xx@lists.infradead.org,
- brcm80211@lists.linux.dev, brcm80211-dev-list.pdl@broadcom.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20241106170706.38922-2-u.kleine-koenig@baylibre.com>
+Subject: Re: [v2,1/1] i2c: mediatek: add runtime PM operations and bus
+ regulator control
+To: Zoie Lin <zoie.lin@mediatek.com>, Qii Wang <qii.wang@mediatek.com>,
+ Andi Shyti <andi.shyti@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, teddy.chen@mediatek.com
+References: <20241106125212.27362-1-zoie.lin@mediatek.com>
+ <20241106125212.27362-2-zoie.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-From: Jiri Slaby <jirislaby@kernel.org>
-Autocrypt: addr=jirislaby@kernel.org; keydata=
- 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
-In-Reply-To: <20241106170706.38922-2-u.kleine-koenig@baylibre.com>
+In-Reply-To: <20241106125212.27362-2-zoie.lin@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241107_020123_273256_682E8128 
-X-CRM114-Status: UNSURE (   8.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241107_021353_162594_580B9F47 
+X-CRM114-Status: GOOD (  22.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,27 +78,176 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06. 11. 24, 18:07, Uwe Kleine-König wrote:
-> After commit 0edb555a65d1 ("platform: Make platform_driver::remove()
-> return void") .remove() is (again) the right callback to implement for
-> platform drivers.
+Il 06/11/24 13:52, Zoie Lin ha scritto:
+> This commit introduces support for runtime PM operations in
+> the I2C driver, enabling runtime suspend and resume functionality.
 > 
-> Convert all platform drivers below drivers/net/wireless to use
-> .remove(), with the eventual goal to drop struct
-> platform_driver::remove_new(). As .remove() and .remove_new() have the
-> same prototypes, conversion is done by just changing the structure
-> member name in the driver initializer.
+> Although in the most platforms, the bus power of i2c are always
+> on, some platforms disable the i2c bus power in order to meet
+> low power request.
 > 
-> En passant several whitespace changes are done to make indentation
-> consistent in the struct initializers.
-...
->   drivers/net/wireless/ath/ath5k/ahb.c                   |  8 ++++----
+> This implementation includes bus regulator control to facilitate
+> proper handling of the bus power based on platform requirements.
+> 
+> Signed-off-by: Zoie Lin <zoie.lin@mediatek.com>
+> ---
+>   drivers/i2c/busses/i2c-mt65xx.c | 77 ++++++++++++++++++++++++++++-----
+>   1 file changed, 65 insertions(+), 12 deletions(-)
+> 
+> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> index 5bd342047d59..4209daec1efa 100644
+> --- a/drivers/i2c/busses/i2c-mt65xx.c
+> +++ b/drivers/i2c/busses/i2c-mt65xx.c
 
-For the above:
+..snip..
 
-Acked-by: Jiri Slaby <jirislaby@kernel.org>
+> @@ -1370,6 +1373,40 @@ static int mtk_i2c_parse_dt(struct device_node *np, struct mtk_i2c *i2c)
+>   	return 0;
+>   }
+>   
+> +static int mtk_i2c_runtime_suspend(struct device *dev)
+> +{
+> +	struct mtk_i2c *i2c = dev_get_drvdata(dev);
+> +
+> +	clk_bulk_disable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+> +	if (i2c->adap.bus_regulator)
+> +		regulator_disable(i2c->adap.bus_regulator);
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_i2c_runtime_resume(struct device *dev)
+> +{
+> +	int ret = 0;
+> +	struct mtk_i2c *i2c = dev_get_drvdata(dev);
 
--- 
-js
-suse labs
+	struct mtk_i2c *i2c = dev_get_drvdata(dev);
+	int ret;
+
+> +
+> +	if (i2c->adap.bus_regulator) {
+> +		ret = regulator_enable(i2c->adap.bus_regulator);
+> +		if (ret) {
+> +			dev_err(dev, "enable regulator failed!\n");
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	ret = clk_bulk_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+> +	if (ret) {
+> +		if (i2c->adap.bus_regulator)
+> +			regulator_disable(i2c->adap.bus_regulator);
+> +		return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+>   static int mtk_i2c_probe(struct platform_device *pdev)
+>   {
+>   	int ret = 0;
+> @@ -1472,13 +1509,18 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+>   		}
+>   	}
+>   
+> -	ret = clk_bulk_prepare_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+> +	ret = clk_bulk_prepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
+>   	if (ret) {
+> -		dev_err(&pdev->dev, "clock enable failed!\n");
+>   		return ret;
+>   	}
+> +
+> +	platform_set_drvdata(pdev, i2c);
+> +
+> +	ret = mtk_i2c_runtime_resume(i2c->dev);
+> +	if (ret < 0)
+> +		goto err_clk_bulk_unprepare;
+>   	mtk_i2c_init_hw(i2c);
+> -	clk_bulk_disable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+> +	mtk_i2c_runtime_suspend(i2c->dev);
+>   
+>   	ret = devm_request_irq(&pdev->dev, irq, mtk_i2c_irq,
+>   			       IRQF_NO_SUSPEND | IRQF_TRIGGER_NONE,
+> @@ -1486,19 +1528,22 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+>   	if (ret < 0) {
+>   		dev_err(&pdev->dev,
+>   			"Request I2C IRQ %d fail\n", irq);
+> -		goto err_bulk_unprepare;
+> +		goto err_clk_bulk_unprepare;
+>   	}
+> +	pm_runtime_set_autosuspend_delay(&pdev->dev, 1000);
+
+You had comments from me and from Andi on this delay, and you completely ignored
+both of us.
+
+We're still waiting for an answer to our question.
+
+
+> +	pm_runtime_use_autosuspend(&pdev->dev);
+> +	pm_runtime_enable(&pdev->dev);
+
+devm_pm_runtime_enable() please.
+
+>   
+>   	i2c_set_adapdata(&i2c->adap, i2c);
+>   	ret = i2c_add_adapter(&i2c->adap);
+>   	if (ret)
+> -		goto err_bulk_unprepare;
+> -
+> -	platform_set_drvdata(pdev, i2c);
+> +		goto err_pm_runtime_disable;
+>   
+>   	return 0;
+>   
+> -err_bulk_unprepare:
+> +err_pm_runtime_disable:
+> +	pm_runtime_disable(&pdev->dev);
+> +err_clk_bulk_unprepare:
+>   	clk_bulk_unprepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
+>   
+>   	return ret;
+> @@ -1510,6 +1555,7 @@ static void mtk_i2c_remove(struct platform_device *pdev)
+>   
+>   	i2c_del_adapter(&i2c->adap);
+>   
+> +	pm_runtime_disable(&pdev->dev);
+>   	clk_bulk_unprepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
+>   }
+>   
+> @@ -1518,6 +1564,10 @@ static int mtk_i2c_suspend_noirq(struct device *dev)
+>   	struct mtk_i2c *i2c = dev_get_drvdata(dev);
+>   
+>   	i2c_mark_adapter_suspended(&i2c->adap);
+> +
+> +	if (!pm_runtime_status_suspended(dev))
+> +		mtk_i2c_runtime_suspend(dev);
+> +
+>   	clk_bulk_unprepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
+>   
+>   	return 0;
+> @@ -1536,7 +1586,8 @@ static int mtk_i2c_resume_noirq(struct device *dev)
+>   
+>   	mtk_i2c_init_hw(i2c);
+>   
+> -	clk_bulk_disable(I2C_MT65XX_CLK_MAX, i2c->clocks);
+> +	if (pm_runtime_status_suspended(dev))
+> +		mtk_i2c_runtime_suspend(dev);
+
+You want to resume, not to suspend, in a resume handler.
+
+>   
+>   	i2c_mark_adapter_resumed(&i2c->adap);
+>   
+> @@ -1546,6 +1597,8 @@ static int mtk_i2c_resume_noirq(struct device *dev)
+>   static const struct dev_pm_ops mtk_i2c_pm = {
+>   	NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_i2c_suspend_noirq,
+>   				  mtk_i2c_resume_noirq)
+> +	SET_RUNTIME_PM_OPS(mtk_i2c_runtime_suspend, mtk_i2c_runtime_resume,
+> +			   NULL)
+>   };
+>   
+>   static struct platform_driver mtk_i2c_driver = {
+
+
+
 
