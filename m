@@ -4,62 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BC5CD5AE61
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 05:17:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E461BD5AE60
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 05:30:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OZuRUaeq2SVIUcbqz41Eky50lEh8bbVD+B44rIfT5/4=; b=Q5KeaDkDEGLuBTJSzFE/ayS1bz
-	axnw89yemFDRLdw76MTYhSwkqomIVsaAj3X9aqBNWi7eCqPR2YTqcffB3gYXdO2QIYCNlHzkDXgQ2
-	sxRKQNaYd4/ZNcb5cIrruusVvJzgQckF4wkJHxaILFSEzxeDhvs0ekMDN98lF5M9gpu3sZL0SQX8v
-	7Sj5RUnjaRvGMLOFQtnAyOH/TJHkDAOnds3Zh0jEYaf8D9A292BL+mYqlSy68FFhXCDZKWUCMSFUy
-	rNOYKE/Y0qDwFOkJ+MkbqECbu6wC/LlQ8InlpNUWhvTk77B2eV5zMJFZ0x4iwlMatzbsscCIpyXIi
-	dumP8wgw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=BmwFuwWjNPLPNCJb3pEwS6rU69b498swzwDmiyKrQjU=; b=ya0izRYj062mG6P4alweuZze8r
+	4fclb8sXKnG9jvMfttTidJuRJE8sBill/Ey0YbI/EKCcBFXtCT2phBBjfwbj+Za8rn8FBUXGo6UvT
+	ndTQYpiNYp9sqFeXKMpT9DWG5rjfu+86ybzKoogE7M4OixiCJ/rJeN/krpPyubLGKpUVFOYu9gFIj
+	FCf9E0RgQR7wgx6ydjm0kdaIZZBzhKnKRcP62Ad2JtwZy65J/yU2WX4z5ieBXbNXpBhiHFBtcQPM8
+	el50Dg417+zsbRAku0xpYVoQ9WKCmp8YrTlujoWqE9QfD9+Ob8pQL7U126pMBTWXle7einb6svz1b
+	jdKWPP7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8utZ-00000005h3t-1eBp;
-	Thu, 07 Nov 2024 05:17:25 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1t8v63-00000005iNo-3bGZ;
+	Thu, 07 Nov 2024 05:30:19 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8ur6-00000005gja-0xXx;
-	Thu, 07 Nov 2024 05:14:53 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id F2A7AA41FBD;
-	Thu,  7 Nov 2024 05:12:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2EB45C4CECC;
-	Thu,  7 Nov 2024 05:14:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1730956490;
-	bh=iWGb3Yl9quIHI+wNbOzG+7sm0t9ullzXkfB6TkNObxk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qDg32I1IACZtoMDuRxAlSPTrcanjkn58Pdda3Y5Q0sOeVXZ+/Cf7Z0XKPE2V9OQRu
-	 HJLL3kvWSROiS31MQwIuhUFSJtd56pm7i/LJqdEqXkPZBUGC9DmHdXO5y4J1G3h9Mc
-	 eQn3PAdfGFffix5yG/t+uCgicuNo1hge1I2d1Wz4=
-Date: Thu, 7 Nov 2024 06:14:31 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: "Haowei Cheng(Harvey)" <harvey.cheng@fibocom.com>
-Cc: "chunfeng.yun@mediatek.com" <chunfeng.yun@mediatek.com>,
-	"linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Subject: Re: =?utf-8?B?5Zue5aSN?= =?utf-8?Q?=3A?=
- 0001-usb-mtu3-fix-panic-in-mtu3_gadget_wakeup.patch
-Message-ID: <2024110735-lunacy-salvation-684c@gregkh>
-References: <SEZPR02MB54953820B2A9EEBD807D0ED18E512@SEZPR02MB5495.apcprd02.prod.outlook.com>
- <2024110512-popcorn-germless-01be@gregkh>
- <SEZPR02MB5495A8637098B92CDEBBFC6C8E532@SEZPR02MB5495.apcprd02.prod.outlook.com>
+	id 1t8v60-00000005iMd-3B9T
+	for linux-mediatek@lists.infradead.org;
+	Thu, 07 Nov 2024 05:30:18 +0000
+X-UUID: 5b6ac6269cc911ef82ff63e91e7eb18c-20241106
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=BmwFuwWjNPLPNCJb3pEwS6rU69b498swzwDmiyKrQjU=;
+	b=EoDJf+AS0qC+LbU/T8X/zYUu0Z2F4/YPsGlIF6sHJVnrGYVZDKQhpd+C5ukJcroDxMb8EtBJlJTWETm9m7+AN3MtWEoQw3ApJwuUIp7KhNSEkFYSHnudR3UxuHA5n2YNtl1G0v/8T3Y3W14Wok749jlvp/rMx/UrLf1CNtQ4+HM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.42,REQID:2441967a-d27d-4b4e-806e-3f982376453b,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:fcf8a7ca-91e6-4060-9516-6ba489b4e2dc,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 5b6ac6269cc911ef82ff63e91e7eb18c-20241106
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <mingyen.hsieh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1141786323; Wed, 06 Nov 2024 22:30:10 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 7 Nov 2024 13:30:08 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 7 Nov 2024 13:30:08 +0800
+From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
+	<Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Michael.Lo@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
+	<km.lin@mediatek.com>, <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>,
+	<posh.sun@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7925: fix the invalid ip address for arp offload
+Date: Thu, 7 Nov 2024 13:30:05 +0800
+Message-ID: <20241107053005.10558-1-mingyen.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <SEZPR02MB5495A8637098B92CDEBBFC6C8E532@SEZPR02MB5495.apcprd02.prod.outlook.com>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_211452_358765_1762CD6E 
-X-CRM114-Status: UNSURE (   8.59  )
+X-CRM114-CacheID: sfid-20241106_213016_842741_2E0A6B5E 
+X-CRM114-Status: UNSURE (   8.35  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,17 +88,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 06, 2024 at 07:39:59PM +0000, Haowei Cheng(Harvey) wrote:
-> Hi greg k-h，
-> 
-> We found during development that when there are data packets to be sent on the USB RNDIS network card,
+From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-Also, wait, why in the world are you using RNDIS when it is documented
-to be an insecure and broken protocol?  Do you really trust both sides
-of that connection?  If so, that's fine, but if not, please do not use
-that protocol at all.
+The wrong ieee80211_vif will lead to get invalid ip address and
+the correct ieee80211_vif can be obtained from ieee80211_bss_conf.
 
-thanks,
+Fixes: 147324292979 ("wifi: mt76: mt7925: add link handling in the BSS_CHANGED_ARP_FILTER handler")
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-greg k-h
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index b43617dbd5fd..123a585098e3 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -123,10 +123,8 @@ EXPORT_SYMBOL_GPL(mt7925_mcu_regval);
+ int mt7925_mcu_update_arp_filter(struct mt76_dev *dev,
+ 				 struct ieee80211_bss_conf *link_conf)
+ {
+-	struct ieee80211_vif *mvif = container_of((void *)link_conf->vif,
+-						  struct ieee80211_vif,
+-						  drv_priv);
+ 	struct mt792x_bss_conf *mconf = mt792x_link_conf_to_mconf(link_conf);
++	struct ieee80211_vif *mvif = link_conf->vif;
+ 	struct sk_buff *skb;
+ 	int i, len = min_t(int, mvif->cfg.arp_addr_cnt,
+ 			   IEEE80211_BSS_ARP_ADDR_LIST_LEN);
+-- 
+2.25.1
+
 
