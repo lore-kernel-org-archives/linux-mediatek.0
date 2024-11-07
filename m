@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDA93D5AE6F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 07:46:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 890C9D5AE6F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 07:49:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SLobudUPRJu3yO+WgY5nbSK+JQEjFbZ/4gXbodXRIpU=; b=xY2yto7Ljr1ZjQPOiNOvjUXyGn
-	DuWuwvolzuh0BA6xaLkoxUCx+jX9iRbvAncuANgLP65nKghUDC+kL2A/aQQe+WCYCVvisZqmUsz3m
-	LPDZbVjPbClU1F83F9iRgoyw1Gm+HNvo7TqJgkytAfYgfvFVEaNkQkBrA55uvi9w4hREYCurrRj0o
-	Ao4RZFerf4CB4YJqjktoPDtVCyf8caRP1YhkjdsV91vjbgOOpzD+28F0CPNjzS5+IvE7wgpx0/Kmg
-	bOVnEIT5e1LxGzSsNiNAKv7J1QZXj0+0yNZ4SV5V/omq/ry9cojMObNAaOcq3T+frvVCzQM8qOJsY
-	3Ps+9xLA==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=P6nhnWHkTe0aK3cteSOkx0hGeeXinyaWKFsIxztRYHY=; b=X2ruSvxbCXjYU37uPJQKxz1DaN
+	MHGGYizy7VVyh0HRo8lOanVgP4v8Q6HpSL8OIVKRR3eKkhJhgHkaqIx6ER2YLNKiRjOJA+RnlCQoR
+	xeOAMZNG/EDxSIRMeXcNlD2v9IZ9g68r3o2urM6wITGn5cGscH4oWR63yYY49LVzz5U3AA9It6t6m
+	kqj5jTgMoOzvv1JiUFDP20dw8oQF7ol1V/bibfG6yROgXDzhSA3kRj17q3wsPp0blyh/WaOxULhAp
+	6XER2Ute8xwacnGowSwh+GPP45C4cTPUyStMFNEM6zG11S9yEQsSjgNTY1YAJ/Px8xQT4/yu7mWUi
+	TgQ3LUUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8xDa-000000061nD-2A69;
-	Thu, 07 Nov 2024 07:46:14 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1t8xH0-000000062JR-1GGV;
+	Thu, 07 Nov 2024 07:49:46 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8xDX-000000061mA-1om0;
-	Thu, 07 Nov 2024 07:46:13 +0000
-X-UUID: 58fafd769cdc11ef82ff63e91e7eb18c-20241107
+	id 1t8xDZ-000000061mY-28jj;
+	Thu, 07 Nov 2024 07:46:16 +0000
+X-UUID: 5a1e27789cdc11ef9048ed6ed365623b-20241107
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=SLobudUPRJu3yO+WgY5nbSK+JQEjFbZ/4gXbodXRIpU=;
-	b=BUp1DtqwDQpT8ca2Q0oG+7n/29tpLZQ+53q/PkwqX1f1H8v/9GjC0vvnmFZblCsyIQQIIZXKRndIp8TqczwKONl8pW1PBJEtbkbSMYeJi9g+tXazsvTrkCgvYGNUhf8K5LN1AXY3kZxZ/R0d1QO9h8rp0Z19WC6ebY4vhPZzXmQ=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=P6nhnWHkTe0aK3cteSOkx0hGeeXinyaWKFsIxztRYHY=;
+	b=ZfDqI3W9FdnNdHdgnjFQmzG8L4IhwXuukOI7+cMaJX2zGD0ULcmxL/Hkz9m5FS0IFKRAEL9tfmlsS42MbU/OYCnpjQGp6l+ZMl4wtDbu8n7LATynjAWMbbVqLrStQ/YQiNrn28PVkZ9P4G808d6jQT92C7L8T/lNQXqCvy5xWVg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.42,REQID:6444fddc-46d3-49df-8dc7-f24abb118730,IP:0,U
+X-CID-O-INFO: VERSION:1.1.42,REQID:4778ea90-3e8c-4215-afb1-2b8596c30301,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:b0fcdc3,CLOUDID:854caaca-91e6-4060-9516-6ba489b4e2dc,B
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:138cb206-6ce0-4172-9755-bd2287e50583,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 58fafd769cdc11ef82ff63e91e7eb18c-20241107
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 5a1e27789cdc11ef9048ed6ed365623b-20241107
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1735101752; Thu, 07 Nov 2024 00:46:07 -0700
+	with ESMTP id 1304198900; Thu, 07 Nov 2024 00:46:09 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Thu, 7 Nov 2024 15:46:04 +0800
+ 15.2.1118.26; Thu, 7 Nov 2024 15:46:05 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Thu, 7 Nov 2024 15:46:03 +0800
+ 15.2.1118.26 via Frontend Transport; Thu, 7 Nov 2024 15:46:04 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
 	<nfraprado@collabora.com>, Sebastian Fricke <sebastian.fricke@collabora.com>,
@@ -61,23 +61,36 @@ To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
 	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
 	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
 CC: Hsin-Yi Wang <hsinyi@chromium.org>, Chen-Yu Tsai <wenst@chromium.org>,
-	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, Steve
- Cho <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
+	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, "Steve
+ Cho" <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
 	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3 0/6] media: mediatek: vcodec: support h264 extend vsi
-Date: Thu, 7 Nov 2024 15:45:54 +0800
-Message-ID: <20241107074603.31998-1-yunfei.dong@mediatek.com>
+Subject: [PATCH v3 1/3] media: mediatek: vcodec: remove vsi operation in common interface
+Date: Thu, 7 Nov 2024 15:45:55 +0800
+Message-ID: <20241107074603.31998-2-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20241107074603.31998-1-yunfei.dong@mediatek.com>
+References: <20241107074603.31998-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--6.150100-8.000000
+X-TMASE-MatchedRID: UFXUgs0G7u/htVvI3rIgyY+YSzwl92XTwx0jRRxcQfMnzvR+mP3cvgk2
+	ecCxHxhdshXHqIHwr0wGsCk+mmsGRJCoy9iDotiwFp8tduyF+iBYN1akkye0qPNhzIgXtFJVX5k
+	t8ijSRLIUy0YoPaAASl11dHY6nDsGXHEPHmpuRH0URSScn+QSXt0H8LFZNFG71sULACB0qRK8FE
+	DfecR4i3YpmCAV0AYyzd3HN2Iv2RTt1G06NHcbvB96cH1vMelJlExlQIQeRG0=
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--6.150100-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: B9AE9D02DF058FC51028548F9F793B23C6FA6C42CAD5B603040DDE67E9C449AB2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_234611_506626_5932BE18 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20241106_234613_587893_9957C5B6 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,37 +105,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The working buffer address start and end are calculated in kernel
-side currently, the address end can't be calculated if the driver
-only getting the address file handle, not the real physical address.
-Need to send the extended vsi to firmware to calculate the address
-end.
+Extend struct video shared information (vsi) to send different
+parameters to scp for mt8188 architecture is changed.
+Remove vsi related operation in common interface to make sure the
+interface can be called by extended and non extended architecture
+at the same time. The new extended interfaces with new vsi will
+be introduced in later patches.
 
-Re-construct some interface and add configuration to support extend
-and non extend driver at the same time. Needn't to parse nal info for
-extended architecture.
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
-This patch series depends on:
-[1] https://patchwork.kernel.org/project/linux-mediatek/cover/20241012064333.27269-1-yunfei.dong@mediatek.com
+ .../vcodec/decoder/vdec/vdec_h264_req_multi_if.c    | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
----
-compared with v2:
-- squash patch 2/3/4 together
-- re-write commit message for patch 1
-
-compared with v1:
-- combine some pathes together for patch 2
-- re-write patch 4
----
-Yunfei Dong (3):
-  media: mediatek: vcodec: remove vsi operation in common interface
-  media: mediatek: vcodec: support extended h264 decode
-  media: mediatek: vcodec: add description for vsi struct
-
- .../vcodec/decoder/mtk_vcodec_dec_drv.h       |   2 +
- .../decoder/vdec/vdec_h264_req_multi_if.c     | 505 +++++++++++++++++-
- 2 files changed, 482 insertions(+), 25 deletions(-)
-
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
+index 732d78f63e5a..851a8490b828 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
+@@ -171,9 +171,9 @@ struct vdec_h264_slice_inst {
+ };
+ 
+ static int vdec_h264_slice_fill_decode_parameters(struct vdec_h264_slice_inst *inst,
+-						  struct vdec_h264_slice_share_info *share_info)
++						  struct vdec_h264_slice_share_info *share_info,
++						  struct vdec_h264_slice_lat_dec_param *slice_param)
+ {
+-	struct vdec_h264_slice_lat_dec_param *slice_param = &inst->vsi->h264_slice_params;
+ 	const struct v4l2_ctrl_h264_decode_params *dec_params;
+ 	const struct v4l2_ctrl_h264_scaling_matrix *src_matrix;
+ 	const struct v4l2_ctrl_h264_sps *sps;
+@@ -266,9 +266,6 @@ static int get_vdec_sig_decode_parameters(struct vdec_h264_slice_inst *inst)
+ 	mtk_vdec_h264_get_ref_list(b0_reflist, v4l2_b0_reflist, reflist_builder.num_valid);
+ 	mtk_vdec_h264_get_ref_list(b1_reflist, v4l2_b1_reflist, reflist_builder.num_valid);
+ 
+-	memcpy(&inst->vsi_ctx.h264_slice_params, slice_param,
+-	       sizeof(inst->vsi_ctx.h264_slice_params));
+-
+ 	return 0;
+ }
+ 
+@@ -608,7 +605,8 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ 	lat_buf->vb2_v4l2_src = &src_buf_info->m2m_buf.vb;
+ 	v4l2_m2m_buf_copy_metadata(&src_buf_info->m2m_buf.vb, &lat_buf->ts_info, true);
+ 
+-	err = vdec_h264_slice_fill_decode_parameters(inst, share_info);
++	err = vdec_h264_slice_fill_decode_parameters(inst, share_info,
++						     &inst->vsi->h264_slice_params);
+ 	if (err)
+ 		goto err_free_fb_out;
+ 
+@@ -749,6 +747,9 @@ static int vdec_h264_slice_single_decode(void *h_vdec, struct mtk_vcodec_mem *bs
+ 	if (err)
+ 		goto err_free_fb_out;
+ 
++	memcpy(&inst->vsi_ctx.h264_slice_params, &inst->h264_slice_param,
++	       sizeof(inst->vsi_ctx.h264_slice_params));
++
+ 	buf = (unsigned char *)bs->va;
+ 	nal_start_idx = mtk_vdec_h264_find_start_code(buf, bs->size);
+ 	if (nal_start_idx < 0) {
 -- 
 2.46.0
 
