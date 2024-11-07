@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FCD9D3E787
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 10:21:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B2E1D35E5D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 10:43:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6pEMRGidtdwO6FvYtRBzMsrDmpDGnl3AsUrIEMjv+yo=; b=NrJ6qRDaf/EfwGMLHUuxFRRUOq
-	bWYjJxjQFsICZHuUzcXmxXLqVc1/sU7K2EEYs8okGApVYhWMlyQQu1pl4Vt3ookhDrRB0sDugX/UY
-	iZNOVfuv60fMI3A7YS2+hpnL4EcOhk2n8vRLgFu1d4bhWoY+ybnztEKBYYcVc5AFq5BapG3NTwLf4
-	9FzsHnPpSd4jVNtxBK06XAMsAj6fxq1YXLbCnwjkElxrnEdynlotByw1U74aKs02HvHpa7rUkvth4
-	707vxcJIi0FE0LtDXQHoLkN5vEpTcpZ9gGxC1JVoUQsDnvOhqZknvzy8FG6P8iSHx0CquQ54MfRmY
-	vqot+svQ==;
+	bh=0KSHsMKeAaP2NyytT4cGNT2lzMnqZuAvu8V5wHhb+MQ=; b=WQ9iG1Per+1Xo1a8VGhwl4oxBt
+	Vf0vfjhhIRkvof09fkqbF4MukMYv1wzP1ONPxxRRSLb0POWeeahz1XDl+QIOm3jY8NUX23XYs83WJ
+	sfa8dud+XhwumCNZrUBnnn8qoCiWpzYMCJdjgZ3w2kkms4LbUK8Hw5+nmJp6dwAPCFbSyALLgpF1P
+	iBIyGbPBzjEriqhwrK0W7JfdmBWX6MdedBwTcEPneN2t8hu306B4MAgQut5BMGTtfN2+jaBwqY/99
+	JiUZdbReRoTKnb9D6/Bvp399WFisfpXoEv40Xai0e/52jk6egGusSQT8XkjkYhHM0EPhhlzki/qs6
+	p6fDW1TQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8zdZ-00000006Rn4-0fY5;
-	Thu, 07 Nov 2024 10:21:13 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1t8zz6-00000006X33-12Nf;
+	Thu, 07 Nov 2024 10:43:28 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8zWS-00000006QW9-3lzv;
-	Thu, 07 Nov 2024 10:13:54 +0000
+	id 1t8ztR-00000006VUx-0ZJm;
+	Thu, 07 Nov 2024 10:37:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1730974430;
-	bh=qGL+owtZbc1lnLogLE8XlKsc16UpGYGBcPFpDTZdqk8=;
+	s=mail; t=1730975855;
+	bh=jRvsshBvtU/WBgIHhfAeu/Lb0e0oxCz8G6yAfOku9p0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PMIS4rejvUGx/AV6FPb0rxG6CIyLbGVPSXwSi7+sIZiYQHrjVICYMJVtJXOtTPAdH
-	 6u8ODv5ojFaKj2YGjTQM2PyZqe2HxzMi6lv6BHSjkPAGGkqZwWXlpmUq6/T18/6l7u
-	 UwcaaBQmEoDd6HDAYJgG2L0teyNoKRleZe44H2lfPHEDqOxAL5Wi7L7QLGYin/Ty9p
-	 ueGV0nEaVFr2TKjIHKGo6dEfbqfTNa+iG7Rj9YyTwYNfaQHJeYdFde4zdIOXnWG0lM
-	 Gj3286ptUSdpdcucpF/tFxLhAodvljsUWC0U8/ASc8ypnlF3tukG1lTBnT+UR+ZhGR
-	 8xB1kl4GiTHAg==
+	b=dh7LiPnQl8luK4lXoov3CcdVUIXDM0d4+LzuIqO0dFGeYrmNwA2HtxutzHJ6Yoa9m
+	 VoFOSZIHtd9yzP3ssnHOBGW+p4DPeBQds+FUXwJC1EPurG6JCbmTTvbptIRVn6Eu1s
+	 EIz5obxv8S5gMR+NYZZYdMMkWcsQD0l6tUHPqJOxNCsOhKwjjgk3TDE2K4sPiKs12A
+	 LiV62UIWXOc0yRHa307dOKLCsZdCqJblBYz/KrjEn6hyTip8Hw2fbKFu4ota9klOwj
+	 slQiT/OqZQDXVKopjaUodcWkuZZW8HVn+6u8yZkeL8Vi4Tgd2/UDJYh4TUjUNYu0tA
+	 nBvmKjihEomvw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DF58717E14FB;
-	Thu,  7 Nov 2024 11:13:49 +0100 (CET)
-Message-ID: <c7c5e802-3df8-4218-865f-81a207c517cd@collabora.com>
-Date: Thu, 7 Nov 2024 11:13:49 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0700917E35CB;
+	Thu,  7 Nov 2024 11:37:34 +0100 (CET)
+Message-ID: <59f4bcc1-c752-4f2f-8e55-349cc2432b8a@collabora.com>
+Date: Thu, 7 Nov 2024 11:37:34 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [v2,1/1] i2c: mediatek: add runtime PM operations and bus
- regulator control
-To: Zoie Lin <zoie.lin@mediatek.com>, Qii Wang <qii.wang@mediatek.com>,
- Andi Shyti <andi.shyti@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, teddy.chen@mediatek.com
-References: <20241106125212.27362-1-zoie.lin@mediatek.com>
- <20241106125212.27362-2-zoie.lin@mediatek.com>
+Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: Introduce MT8188 Geralt
+ platform based Ciri
+To: Fei Shao <fshao@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20241105093222.4055774-1-fshao@chromium.org>
+ <20241105093222.4055774-3-fshao@chromium.org>
+ <b66dbf9e-b35b-482c-9eb7-112ef1f398d6@collabora.com>
+ <CAC=S1ngozo11g1vF2jnHjTLcNmP8tOMsQhK+LR0QWqoeXwSJjg@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241106125212.27362-2-zoie.lin@mediatek.com>
+In-Reply-To: <CAC=S1ngozo11g1vF2jnHjTLcNmP8tOMsQhK+LR0QWqoeXwSJjg@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241107_021353_162594_580B9F47 
-X-CRM114-Status: GOOD (  22.82  )
+X-CRM114-CacheID: sfid-20241107_023737_394942_1ADAAFA1 
+X-CRM114-Status: GOOD (  26.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,176 +79,156 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/11/24 13:52, Zoie Lin ha scritto:
-> This commit introduces support for runtime PM operations in
-> the I2C driver, enabling runtime suspend and resume functionality.
+Il 07/11/24 07:58, Fei Shao ha scritto:
+> On Wed, Nov 6, 2024 at 9:19 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Il 05/11/24 10:30, Fei Shao ha scritto:
+>>> Introduce MT8188-based Chromebook Ciri, also known commercially as
+>>> Lenovo Chromebook Duet (11", 9).
+>>>
+>>> Ciri is a detachable device based on the Geralt design, where Geralt is
+>>> the codename for the MT8188 platform. Ciri offers 8 SKUs to accommodate
+>>> different combinations of second-source components, including:
+>>> - audio codecs (RT5682S and ES8326)
+>>> - speaker amps (TAS2563 and MAX98390)
+>>> - MIPI-DSI panels (BOE nv110wum-l60 and IVO t109nw41)
+>>>
+>>> Signed-off-by: Fei Shao <fshao@chromium.org>
+>>> ---
+>>>
+>>> Changes in v2:
+>>> - remove invalid or undocumented properties
+>>>       e.g. mediatek,dai-link, maxim,dsm_param_name etc.
+>>> - remove touchscreen as the driver is not yet accepted in upstream
+>>> - update sound DAI link node name to match the binding
+>>> - add missing pinctrls in audio codec nodes
+>>>
+>>>    arch/arm64/boot/dts/mediatek/Makefile         |    8 +
+>>>    .../dts/mediatek/mt8188-geralt-ciri-sku0.dts  |   11 +
+>>>    .../dts/mediatek/mt8188-geralt-ciri-sku1.dts  |   60 +
+>>>    .../dts/mediatek/mt8188-geralt-ciri-sku2.dts  |   56 +
+>>>    .../dts/mediatek/mt8188-geralt-ciri-sku3.dts  |   15 +
+>>>    .../dts/mediatek/mt8188-geralt-ciri-sku4.dts  |   43 +
+>>>    .../dts/mediatek/mt8188-geralt-ciri-sku5.dts  |   73 +
+>>>    .../dts/mediatek/mt8188-geralt-ciri-sku6.dts  |   69 +
+>>>    .../dts/mediatek/mt8188-geralt-ciri-sku7.dts  |   47 +
+>>>    .../boot/dts/mediatek/mt8188-geralt-ciri.dtsi |  397 +++++
+>>>    .../boot/dts/mediatek/mt8188-geralt.dtsi      | 1492 +++++++++++++++++
+>>>    11 files changed, 2271 insertions(+)
+>>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku0.dts
+>>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku1.dts
+>>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku2.dts
+>>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku3.dts
+>>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku4.dts
+>>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku5.dts
+>>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku6.dts
+>>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku7.dts
+>>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri.dtsi
+>>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+>>>
+> [...]
 > 
-> Although in the most platforms, the bus power of i2c are always
-> on, some platforms disable the i2c bus power in order to meet
-> low power request.
+
+[...]
+
+>>> +&pmic {
+>>> +     interrupts-extended = <&pio 222 IRQ_TYPE_LEVEL_HIGH>;
+>>> +};
+>>> +
+>>> +&scp {
+>>
+>> Is this SCP-dual or SCP?
+>> I see SCP, but I also see a SCP-Dual memory region... what's going on here?
+>>
+>> Of course, the SCP-Dual won't work if you don't override the compatible string...
 > 
-> This implementation includes bus regulator control to facilitate
-> proper handling of the bus power based on platform requirements.
+> To clarify, the second SCP core is used for MIPI camera in downstream,
+> and I deliberately only describe the first SCP core here since the MTK
+> camera ISP driver isn't in upstream at the moment.
+> I had a fixup patch for removing the scp-dual reserved memory region,
+> but likely it was missing during the rebase... let me check again if
+> it can be removed, just in case there's firmware protecting the region
+> and the kernel shouldn't access it.
 > 
-> Signed-off-by: Zoie Lin <zoie.lin@mediatek.com>
-> ---
->   drivers/i2c/busses/i2c-mt65xx.c | 77 ++++++++++++++++++++++++++++-----
->   1 file changed, 65 insertions(+), 12 deletions(-)
+
+Hmm... but the second SCP core can still be brought up, even if the MIPI Camera
+driver is not upstreamed yet, right?
+
+That shouldn't cause lockups and/or other kinds of bad behavior, and should
+bring up a core and just never use it, without any particular issues.
+
+If we can enable the secondary core, let's just go for it.. as that will help
+specifying the exact memory layout of this board (and failing to do that may
+create some other issues, that's why I'm proposing to enable that even if it
+is not really used in this case).
+
+What do you think? :-)
+
+>>
+>>> +     firmware-name = "mediatek/mt8188/scp.img";
+>>> +     memory-region = <&scp_mem>;
+>>> +     pinctrl-names = "default";
+>>> +     pinctrl-0 = <&scp_pins>;
+>>> +     status = "okay";
+>>> +
+>>> +     cros-ec-rpmsg {
+>>> +             compatible = "google,cros-ec-rpmsg";
+>>> +             mediatek,rpmsg-name = "cros-ec-rpmsg";
+>>> +     };
+>>> +};
+>>> +
+>>> +&sound {
+>>> +     compatible = "mediatek,mt8188-nau8825";
+>>> +     model = "mt8188_m98390_8825";
+>>> +     pinctrl-names = "aud_etdm_hp_on",
+>>> +                     "aud_etdm_hp_off",
+>>> +                     "aud_etdm_spk_on",
+>>> +                     "aud_etdm_spk_off",
+>>> +                     "aud_mtkaif_on",
+>>> +                     "aud_mtkaif_off";
+>>
+>>          pinctrl-names = "aud_etdm_hp_on", "aud_etdm_hp_off",
+>>                          "aud_etdm_spk_on", "aud_etdm_spk_off",
+>>                          "aud_mtkaif_on", "aud_mtkaif_off";
 > 
-> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-> index 5bd342047d59..4209daec1efa 100644
-> --- a/drivers/i2c/busses/i2c-mt65xx.c
-> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> Acked.
+> 
+>>
+>>> +     pinctrl-0 = <&aud_etdm_hp_on>;
+>>> +     pinctrl-1 = <&aud_etdm_hp_off>;
+>>> +     pinctrl-2 = <&aud_etdm_spk_on>;
+>>> +     pinctrl-3 = <&aud_etdm_spk_off>;
+>>> +     pinctrl-4 = <&aud_mtkaif_on>;
+>>> +     pinctrl-5 = <&aud_mtkaif_off>;
+>>
+>> Add a comment:
+>>
+>>          /* The audio-routing is defined in each board dts */
+>>
+>>> +     audio-routing = "ETDM1_OUT", "ETDM_SPK_PIN",
+>>> +                     "ETDM2_OUT", "ETDM_HP_PIN",
+>>> +                     "ETDM1_IN", "ETDM_SPK_PIN",
+>>> +                     "ETDM2_IN", "ETDM_HP_PIN",
+>>> +                     "ADDA Capture", "MTKAIF_PIN",
+>>> +                     "Headphone Jack", "HPOL",
+>>> +                     "Headphone Jack", "HPOR",
+>>> +                     "MIC", "Headset Mic",
+>>> +                     "Left Spk", "Front Left BE_OUT",
+>>> +                     "Right Spk", "Front Right BE_OUT",
+>>> +                     "Rear Left Spk", "Rear Left BE_OUT",
+>>> +                     "Rear Right Spk", "Rear Right BE_OUT";
+>>> +
+>>
+>> ...and remove the audio-routing from this dtsi; it's anyway being
+>> overridden by the -ciri.dtsi devicetree...
+> 
+> Acknowledged, and thanks for all the feedback here.
+> 
 
-..snip..
+You're welcome :-)
 
-> @@ -1370,6 +1373,40 @@ static int mtk_i2c_parse_dt(struct device_node *np, struct mtk_i2c *i2c)
->   	return 0;
->   }
->   
-> +static int mtk_i2c_runtime_suspend(struct device *dev)
-> +{
-> +	struct mtk_i2c *i2c = dev_get_drvdata(dev);
-> +
-> +	clk_bulk_disable(I2C_MT65XX_CLK_MAX, i2c->clocks);
-> +	if (i2c->adap.bus_regulator)
-> +		regulator_disable(i2c->adap.bus_regulator);
-> +
-> +	return 0;
-> +}
-> +
-> +static int mtk_i2c_runtime_resume(struct device *dev)
-> +{
-> +	int ret = 0;
-> +	struct mtk_i2c *i2c = dev_get_drvdata(dev);
-
-	struct mtk_i2c *i2c = dev_get_drvdata(dev);
-	int ret;
-
-> +
-> +	if (i2c->adap.bus_regulator) {
-> +		ret = regulator_enable(i2c->adap.bus_regulator);
-> +		if (ret) {
-> +			dev_err(dev, "enable regulator failed!\n");
-> +			return ret;
-> +		}
-> +	}
-> +
-> +	ret = clk_bulk_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
-> +	if (ret) {
-> +		if (i2c->adap.bus_regulator)
-> +			regulator_disable(i2c->adap.bus_regulator);
-> +		return ret;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
->   static int mtk_i2c_probe(struct platform_device *pdev)
->   {
->   	int ret = 0;
-> @@ -1472,13 +1509,18 @@ static int mtk_i2c_probe(struct platform_device *pdev)
->   		}
->   	}
->   
-> -	ret = clk_bulk_prepare_enable(I2C_MT65XX_CLK_MAX, i2c->clocks);
-> +	ret = clk_bulk_prepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
->   	if (ret) {
-> -		dev_err(&pdev->dev, "clock enable failed!\n");
->   		return ret;
->   	}
-> +
-> +	platform_set_drvdata(pdev, i2c);
-> +
-> +	ret = mtk_i2c_runtime_resume(i2c->dev);
-> +	if (ret < 0)
-> +		goto err_clk_bulk_unprepare;
->   	mtk_i2c_init_hw(i2c);
-> -	clk_bulk_disable(I2C_MT65XX_CLK_MAX, i2c->clocks);
-> +	mtk_i2c_runtime_suspend(i2c->dev);
->   
->   	ret = devm_request_irq(&pdev->dev, irq, mtk_i2c_irq,
->   			       IRQF_NO_SUSPEND | IRQF_TRIGGER_NONE,
-> @@ -1486,19 +1528,22 @@ static int mtk_i2c_probe(struct platform_device *pdev)
->   	if (ret < 0) {
->   		dev_err(&pdev->dev,
->   			"Request I2C IRQ %d fail\n", irq);
-> -		goto err_bulk_unprepare;
-> +		goto err_clk_bulk_unprepare;
->   	}
-> +	pm_runtime_set_autosuspend_delay(&pdev->dev, 1000);
-
-You had comments from me and from Andi on this delay, and you completely ignored
-both of us.
-
-We're still waiting for an answer to our question.
-
-
-> +	pm_runtime_use_autosuspend(&pdev->dev);
-> +	pm_runtime_enable(&pdev->dev);
-
-devm_pm_runtime_enable() please.
-
->   
->   	i2c_set_adapdata(&i2c->adap, i2c);
->   	ret = i2c_add_adapter(&i2c->adap);
->   	if (ret)
-> -		goto err_bulk_unprepare;
-> -
-> -	platform_set_drvdata(pdev, i2c);
-> +		goto err_pm_runtime_disable;
->   
->   	return 0;
->   
-> -err_bulk_unprepare:
-> +err_pm_runtime_disable:
-> +	pm_runtime_disable(&pdev->dev);
-> +err_clk_bulk_unprepare:
->   	clk_bulk_unprepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
->   
->   	return ret;
-> @@ -1510,6 +1555,7 @@ static void mtk_i2c_remove(struct platform_device *pdev)
->   
->   	i2c_del_adapter(&i2c->adap);
->   
-> +	pm_runtime_disable(&pdev->dev);
->   	clk_bulk_unprepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
->   }
->   
-> @@ -1518,6 +1564,10 @@ static int mtk_i2c_suspend_noirq(struct device *dev)
->   	struct mtk_i2c *i2c = dev_get_drvdata(dev);
->   
->   	i2c_mark_adapter_suspended(&i2c->adap);
-> +
-> +	if (!pm_runtime_status_suspended(dev))
-> +		mtk_i2c_runtime_suspend(dev);
-> +
->   	clk_bulk_unprepare(I2C_MT65XX_CLK_MAX, i2c->clocks);
->   
->   	return 0;
-> @@ -1536,7 +1586,8 @@ static int mtk_i2c_resume_noirq(struct device *dev)
->   
->   	mtk_i2c_init_hw(i2c);
->   
-> -	clk_bulk_disable(I2C_MT65XX_CLK_MAX, i2c->clocks);
-> +	if (pm_runtime_status_suspended(dev))
-> +		mtk_i2c_runtime_suspend(dev);
-
-You want to resume, not to suspend, in a resume handler.
-
->   
->   	i2c_mark_adapter_resumed(&i2c->adap);
->   
-> @@ -1546,6 +1597,8 @@ static int mtk_i2c_resume_noirq(struct device *dev)
->   static const struct dev_pm_ops mtk_i2c_pm = {
->   	NOIRQ_SYSTEM_SLEEP_PM_OPS(mtk_i2c_suspend_noirq,
->   				  mtk_i2c_resume_noirq)
-> +	SET_RUNTIME_PM_OPS(mtk_i2c_runtime_suspend, mtk_i2c_runtime_resume,
-> +			   NULL)
->   };
->   
->   static struct platform_driver mtk_i2c_driver = {
-
-
+Cheers,
+Angelo
 
 
