@@ -4,84 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B012AD5AE6B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 07:56:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19820D5AE72
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 08:36:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z5KIa5+EjcYXaQtJ5CUKjRCce+Nn4x5tsG3QRpALwRQ=; b=SSlbz0vPYdVV+GieLPk3iVHEkt
-	dq7n0PYA8CDQXCs7fGafgBfbJR8isxulQxkegKpb9o0b7RPZAgXtlmy5JsgMXLDyvPGzQncmzgklw
-	vQ7eyVh4TEOuT/7kIId3fcpZv0NztqeowZMfmLtm86w65km8REkNDxmS/VhJ+IdcMDW68PpyacwTa
-	hSnWTUA8B6uKxUdo+yJQjNBuO/EpWn+osPfgxKt5oWQMUTcO5slM2Mk+Vytya+WPRa6R/a9Nb36TU
-	xFg9J94gdCeEcNGi7DWT6hKUZxVIJpM3g0oHOTQxDh07AM4gCNICvJL2ugyArIRQgA77lk/faIZTU
-	9DAnyzNw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZoHtGBbIT7cejHYPy7w5YjJwSa89U1o7+v8ap+q+GxE=; b=ayjyNFBtRSYAA1FQLJ5eLie/2b
+	oCX07w9EpRlJIomyHVv1+NP21mAoiLbm+2UumbuiK1L3p/a/Eg5WwoXg7SuLapj7JhtSIH5Yk2ZTK
+	JcF/gw6L7Xuv+mczR6xqUp/T/iQPUl4LpgmchajtBYTqTAJMaweLFgoEnu6T6oN9EyaAHLJKQm2L8
+	BziKc49JW4Wmdl8TlrrpIXLzAtkOHCQO1Qyr843vg7BGfqTXLCofFutO6KDwWuWcn8kLKk0MuzsGe
+	VKL1J7uBjcqvTSnB0CA2/JS2+0QPfyOj74aDfTJHK0rqnoAVMPeWBvwjGNFD/zuKvasshdI+fVqhB
+	DkPS3kYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8xNq-000000063KU-2Sk1;
-	Thu, 07 Nov 2024 07:56:50 +0000
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+	id 1t8y0B-000000068eM-46Qi;
+	Thu, 07 Nov 2024 08:36:27 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8xGd-000000062F3-3CM4
-	for linux-mediatek@lists.infradead.org;
-	Thu, 07 Nov 2024 07:49:25 +0000
-Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-539f53973fdso591803e87.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 06 Nov 2024 23:49:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1730965762; x=1731570562; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Z5KIa5+EjcYXaQtJ5CUKjRCce+Nn4x5tsG3QRpALwRQ=;
-        b=DbRQLiTPmmm06fdQSTVOLfl3EXzcH/nOipS1V77hLFehB3Y1p7O8ZEuQgi7UQelX+5
-         nVdMVEhteCleJbnGrjjN4LrmIx5B48qKHaUbg8VtIkJ4FXPNfB9fy3INzWkmjZRxzUKM
-         pmtAJJEFx+pMZDTrhmA1QoHZhg1UdOLxZOTCU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730965762; x=1731570562;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Z5KIa5+EjcYXaQtJ5CUKjRCce+Nn4x5tsG3QRpALwRQ=;
-        b=NE/ol5GppNjK5WstALdZsRAR14I32aXmMn11hI0EEM7m4ppOKL55hL3xtmP38/LtQo
-         ogatkpyDZ0l+TdSnmBENfVhPEsmnm4j9q2lQeRESnsuwXU+ZV5WvMPUPNTZDhGNyub2R
-         UHJAyLRbJVdJ/2e42zG4SHGd32gBcB2YWhAMizjuEIWrHYg7n0WQhvXKjBd/Oj/HQG6O
-         tIDhBWWXF9jOyUxBYjz70fw3ET+OM+n0/D/J7ZaDMwS9b2K6cFA6FbADebrLhLaaCrTu
-         IgU38F6agCm6XJugtevmEOUbIVrsWx6KJL7gD9TXKW9h4+Smkg+HAnMX8mu6u74DmRjm
-         pj1w==
-X-Forwarded-Encrypted: i=1; AJvYcCUMnnfpuY+Ofz59C/3wlto9SSQOyROy5AXQUDq/mPKWdIQCwB44/SIDDmWgzNEIUb/zD3OogfYXopjjt4+s5A==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy5R8uBKhs46eVD5W9mnuKqsHpP7rHkpff3mUOaLoeedbyNVmGY
-	CE8/prxMH8YgKHClkSfwN7kB4D/wjqDQi4RqG0iPwlV7N2aiT6ZFqL0RAWEwHKRrmtGRXOnoUP3
-	poPBfQtXQ4Js26QTIOjoiuMKNN6+hm5jbdC0w
-X-Google-Smtp-Source: AGHT+IGxn2pSbneZDHgWnWUCDZaUop/6c6chaGYhHrU991goYLF9CZhKqopx6hRuSSwvbSM+DLDtcwV7tpySQOVxgHc=
-X-Received: by 2002:a05:6512:1086:b0:539:fcaa:d0ca with SMTP id
- 2adb3069b0e04-53d81971b63mr724012e87.13.1730965761512; Wed, 06 Nov 2024
- 23:49:21 -0800 (PST)
+	id 1t8xyP-000000068BI-0KpK;
+	Thu, 07 Nov 2024 08:34:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2CC135C46D1;
+	Thu,  7 Nov 2024 08:33:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B21BC4CECC;
+	Thu,  7 Nov 2024 08:34:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1730968475;
+	bh=ekfKStdaRvxQJ8LnLOTxDNbCdjD/Ffnq9L/mjy1VY3E=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=AAXJaD3UZ0pIe5Zb+H5PrAOqqYxl+hu6sVhz+/a5gLCVgRToujV+i7YZbM5Ne2n92
+	 RoVevRrtY6vgO16does91zknKuqf7n5KmWhIjTNuK6rUSbFQr4SKQg2W0gDLgg0lYr
+	 ZxWE9YwKZHxw2vlDeO75a2U6amknWfLro6LBf1LA=
+Date: Thu, 7 Nov 2024 09:14:19 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: "Haowei Cheng(Harvey)" <harvey.cheng@fibocom.com>
+Cc: "chunfeng.yun@mediatek.com" <chunfeng.yun@mediatek.com>,
+	"linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Subject: Re: =?utf-8?B?5Zue5aSNOiDlm57lpI0=?= =?utf-8?Q?=3A?=
+ 0001-usb-mtu3-fix-panic-in-mtu3_gadget_wakeup.patch
+Message-ID: <2024110705-manmade-nullify-b95b@gregkh>
+References: <SEZPR02MB54953820B2A9EEBD807D0ED18E512@SEZPR02MB5495.apcprd02.prod.outlook.com>
+ <2024110512-popcorn-germless-01be@gregkh>
+ <SEZPR02MB5495A8637098B92CDEBBFC6C8E532@SEZPR02MB5495.apcprd02.prod.outlook.com>
+ <2024110735-lunacy-salvation-684c@gregkh>
+ <SEZPR02MB5495C6CAF78EC669F65CD6398E5C2@SEZPR02MB5495.apcprd02.prod.outlook.com>
 MIME-Version: 1.0
-References: <20241107074603.31998-1-yunfei.dong@mediatek.com> <20241107074603.31998-4-yunfei.dong@mediatek.com>
-In-Reply-To: <20241107074603.31998-4-yunfei.dong@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 7 Nov 2024 15:49:10 +0800
-Message-ID: <CAGXv+5F3+65gTsmz7Dzrm3QchmKnTECAGzLwJW9uT5aM_jLeMw@mail.gmail.com>
-Subject: Re: [PATCH v3 3/3] media: mediatek: vcodec: add description for vsi struct
-To: Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: =?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	Sebastian Fricke <sebastian.fricke@collabora.com>, 
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>, 
-	Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
-	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <SEZPR02MB5495C6CAF78EC669F65CD6398E5C2@SEZPR02MB5495.apcprd02.prod.outlook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241106_234923_813672_25D7EBFD 
-X-CRM114-Status: UNSURE (   8.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241107_003437_192588_234F3512 
+X-CRM114-Status: GOOD (  12.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,15 +75,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 7, 2024 at 3:46=E2=80=AFPM Yunfei Dong <yunfei.dong@mediatek.co=
-m> wrote:
->
-> If the video shared information (vsi) is changed accidentally,
-> will leading to play h264 bitstream fail if the firmware won't
-> be changed at the same time. Marking the shared struct with
-> "shared interface with firmware".
->
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+A: http://en.wikipedia.org/wiki/Top_post
+Q: Were do I find info about this thing called top-posting?
+A: Because it messes up the order in which people normally read text.
+Q: Why is top-posting such a bad thing?
+A: Top-posting.
+Q: What is the most annoying thing in e-mail?
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+A: No.
+Q: Should I include quotations after my reply?
+
+http://daringfireball.net/2007/07/on_top
+
+On Thu, Nov 07, 2024 at 07:47:14AM +0000, Haowei Cheng(Harvey) wrote:
+> Hi greg k-h,
+>    We have configured the USB RNDIS port protocol by default on the product and conducted extensive stress testing and validation.
+
+Where are the RNDIS stress testing and validation tests?  What host did
+you use for this testing, Linux or Windows?
+
+> This issue was discovered during compatibility verification, and after making clear modifications to the API usage,
+> the issue has not been reproduced in subsequent tests.
+
+I do not understand what you mean by this, sorry.
+
+Again, you need to submit this patch properly if you wish to have it
+applied...
+
+thanks,
+
+greg k-h
 
