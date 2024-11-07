@@ -4,63 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19820D5AE72
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 08:36:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09794D5AE75
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2024 09:01:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZoHtGBbIT7cejHYPy7w5YjJwSa89U1o7+v8ap+q+GxE=; b=ayjyNFBtRSYAA1FQLJ5eLie/2b
-	oCX07w9EpRlJIomyHVv1+NP21mAoiLbm+2UumbuiK1L3p/a/Eg5WwoXg7SuLapj7JhtSIH5Yk2ZTK
-	JcF/gw6L7Xuv+mczR6xqUp/T/iQPUl4LpgmchajtBYTqTAJMaweLFgoEnu6T6oN9EyaAHLJKQm2L8
-	BziKc49JW4Wmdl8TlrrpIXLzAtkOHCQO1Qyr843vg7BGfqTXLCofFutO6KDwWuWcn8kLKk0MuzsGe
-	VKL1J7uBjcqvTSnB0CA2/JS2+0QPfyOj74aDfTJHK0rqnoAVMPeWBvwjGNFD/zuKvasshdI+fVqhB
-	DkPS3kYg==;
+	bh=ij/Pkc68/tMvKFouIIkQzd6NRGM3PpJwsMpduvSrW6c=; b=fVCI0Q1rHkJnpp96k3e6G2yt5v
+	WPE3A44+d68NEla9VX63eruyh25M9d5QVJv6DpysaX0IuaeqCKBxJEFSR9H5TZJwTigGtcV/mlsP7
+	A0CMnAcZmiLT7OFoZQ5LNJG5CWOaJM9D0+yhdL4hEKhhH8f6qVwtcmEJBuxsWhtyiYVa+XODf573U
+	LowS8EmIzpv70x0JB/BX9wkl1vKe3baUiobayDSMpNBXVRoKhQBDyOXmUaVR0PQjbh9OijZXQgK1x
+	FdmVGSD+GGEb1105mSVFhvNzKL1lEkg07+ZO9sKC108q8VZdAWje2/qXi35bPNM5jqO/6Dq4yKO5k
+	ozC8UyCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8y0B-000000068eM-46Qi;
-	Thu, 07 Nov 2024 08:36:27 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1t8yOY-00000006EW1-2WTT;
+	Thu, 07 Nov 2024 09:01:38 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t8xyP-000000068BI-0KpK;
-	Thu, 07 Nov 2024 08:34:38 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2CC135C46D1;
-	Thu,  7 Nov 2024 08:33:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B21BC4CECC;
-	Thu,  7 Nov 2024 08:34:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1730968475;
-	bh=ekfKStdaRvxQJ8LnLOTxDNbCdjD/Ffnq9L/mjy1VY3E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AAXJaD3UZ0pIe5Zb+H5PrAOqqYxl+hu6sVhz+/a5gLCVgRToujV+i7YZbM5Ne2n92
-	 RoVevRrtY6vgO16does91zknKuqf7n5KmWhIjTNuK6rUSbFQr4SKQg2W0gDLgg0lYr
-	 ZxWE9YwKZHxw2vlDeO75a2U6amknWfLro6LBf1LA=
-Date: Thu, 7 Nov 2024 09:14:19 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: "Haowei Cheng(Harvey)" <harvey.cheng@fibocom.com>
-Cc: "chunfeng.yun@mediatek.com" <chunfeng.yun@mediatek.com>,
-	"linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Subject: Re: =?utf-8?B?5Zue5aSNOiDlm57lpI0=?= =?utf-8?Q?=3A?=
- 0001-usb-mtu3-fix-panic-in-mtu3_gadget_wakeup.patch
-Message-ID: <2024110705-manmade-nullify-b95b@gregkh>
-References: <SEZPR02MB54953820B2A9EEBD807D0ED18E512@SEZPR02MB5495.apcprd02.prod.outlook.com>
- <2024110512-popcorn-germless-01be@gregkh>
- <SEZPR02MB5495A8637098B92CDEBBFC6C8E532@SEZPR02MB5495.apcprd02.prod.outlook.com>
- <2024110735-lunacy-salvation-684c@gregkh>
- <SEZPR02MB5495C6CAF78EC669F65CD6398E5C2@SEZPR02MB5495.apcprd02.prod.outlook.com>
+	id 1t8xDa-000000061mz-0oM4;
+	Thu, 07 Nov 2024 07:46:15 +0000
+X-UUID: 5a80ceaa9cdc11ef9048ed6ed365623b-20241107
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ij/Pkc68/tMvKFouIIkQzd6NRGM3PpJwsMpduvSrW6c=;
+	b=IruzngkeGkEaiwPhu8PKxFmoWr8q+ndImzLzRTAutGWW6aHgEQ5akzkykRl9kIlASOH+1mN+hM1T+8wivsSSXiV5wAwJvJfZR4JQ/wcuED3qhFzYuQEpf4Hft7yHCwFqL2P3ryf7y6MX0IevojcOtOSSwg5NXcurv/xxP1yQCmY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.42,REQID:f2823831-3167-4f25-9575-95be6c3bd3a7,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:78aac41b-4f51-4e1d-bb6a-1fd98b6b19d2,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 5a80ceaa9cdc11ef9048ed6ed365623b-20241107
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 536070109; Thu, 07 Nov 2024 00:46:09 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Thu, 7 Nov 2024 15:46:07 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Thu, 7 Nov 2024 15:46:06 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Sebastian Fricke <sebastian.fricke@collabora.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>
+CC: Hsin-Yi Wang <hsinyi@chromium.org>, Chen-Yu Tsai <wenst@chromium.org>,
+	Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, "Steve
+ Cho" <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v3 3/3] media: mediatek: vcodec: add description for vsi struct
+Date: Thu, 7 Nov 2024 15:45:57 +0800
+Message-ID: <20241107074603.31998-4-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20241107074603.31998-1-yunfei.dong@mediatek.com>
+References: <20241107074603.31998-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <SEZPR02MB5495C6CAF78EC669F65CD6398E5C2@SEZPR02MB5495.apcprd02.prod.outlook.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--4.830300-8.000000
+X-TMASE-MatchedRID: qT9V7Qri98/4Q348LKfXODTV/B1Uu+XCVF5mUd6sIMbfUZT83lbkEFYL
+	5En8iw1cYK2MeoqGYrsTf/L7yykBhRgHZ8655DOPFEUknJ/kEl7dB/CxWTRRu3aDLLDbFMGF0UT
+	/dQxOY20mHAOqHmr56RRj6h8FWziDnwc2O+AmjnI5/p3swc1Qyd8iVj83f8BmXC985TxzPD5yCf
+	lkZIkD29G2RxJZVcZ6hJVRlkc0uv5GBXoeyrLHXVBo425nomviD2TeXwRpghwOIqZ2uUSDWA==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--4.830300-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 4012359CA539B8B849F8ECBF0882470F25AB36637C77F575576BC230D5F7D4F42000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241107_003437_192588_234F3512 
-X-CRM114-Status: GOOD (  12.39  )
+X-CRM114-CacheID: sfid-20241106_234614_261947_5643FB5A 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,34 +105,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A: http://en.wikipedia.org/wiki/Top_post
-Q: Were do I find info about this thing called top-posting?
-A: Because it messes up the order in which people normally read text.
-Q: Why is top-posting such a bad thing?
-A: Top-posting.
-Q: What is the most annoying thing in e-mail?
+If the video shared information (vsi) is changed accidentally,
+will leading to play h264 bitstream fail if the firmware won't
+be changed at the same time. Marking the shared struct with
+"shared interface with firmware".
 
-A: No.
-Q: Should I include quotations after my reply?
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+ .../mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c    | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-http://daringfireball.net/2007/07/on_top
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
+index d0aecd9621d9..661ea84b6621 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
+@@ -30,6 +30,7 @@ enum vdec_h264_core_dec_err_type {
+ 
+ /**
+  * struct vdec_h264_slice_lat_dec_param  - parameters for decode current frame
++ *        (shared interface with firmware)
+  *
+  * @sps:		h264 sps syntax parameters
+  * @pps:		h264 pps syntax parameters
+@@ -48,7 +49,7 @@ struct vdec_h264_slice_lat_dec_param {
+ };
+ 
+ /**
+- * struct vdec_h264_slice_info - decode information
++ * struct vdec_h264_slice_info - decode information (shared interface with firmware)
+  *
+  * @nal_info:		nal info of current picture
+  * @timeout:		Decode timeout: 1 timeout, 0 no timeout
+@@ -72,7 +73,7 @@ struct vdec_h264_slice_info {
+ 
+ /**
+  * struct vdec_h264_slice_vsi - shared memory for decode information exchange
+- *        between SCP and Host.
++ *        between SCP and Host (shared interface with firmware).
+  *
+  * @wdma_err_addr:		wdma error dma address
+  * @wdma_start_addr:		wdma start dma address
+-- 
+2.46.0
 
-On Thu, Nov 07, 2024 at 07:47:14AM +0000, Haowei Cheng(Harvey) wrote:
-> Hi greg k-h,
->    We have configured the USB RNDIS port protocol by default on the product and conducted extensive stress testing and validation.
-
-Where are the RNDIS stress testing and validation tests?  What host did
-you use for this testing, Linux or Windows?
-
-> This issue was discovered during compatibility verification, and after making clear modifications to the API usage,
-> the issue has not been reproduced in subsequent tests.
-
-I do not understand what you mean by this, sorry.
-
-Again, you need to submit this patch properly if you wish to have it
-applied...
-
-thanks,
-
-greg k-h
 
