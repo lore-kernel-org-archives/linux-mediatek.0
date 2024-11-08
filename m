@@ -4,62 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C230D5E14C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Nov 2024 09:54:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 780B7D5E15E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Nov 2024 11:25:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w1UGDLfzBd48caEF/4T14qGMWvTrOfwILUW8bbDPzfo=; b=102+DnKVnlZk6/XAZR8C1hu4BZ
-	qd4mRigQAyoP5A+qFXT2rthly/3WuTz5bNRY33NMu55y2FKrl4lKDY1bmqGkJztXgxqTi2zLafnCV
-	dskcxNHSwZL359Dao3VClc/RRdQ7czisV5dUgQ7+s9kycyv8vY5xIYosBrVkqKNfGWZD8EtY7hg6H
-	n+q2aH0knI/CCKMsmwbBaAWus6Aw4DJcS+PQY/1zOmQbOehsyLvvMdoCZsnWD9kwiMWkw4KgPIzO8
-	m2uiQmBHOYCsd3WUHTMeOXuycrK3FbfGJl+8pnTKH65yOOaewoLaapP+9iM5rh/SVwJ86sg8dgvmt
-	fL+khUqA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Subject:Cc:To:
+	From:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+D8vZegrH9yIdYiz0FSD9MNRGwL9EkUqYzbNsOs/U7A=; b=unooOrgAKb6kQbuvTTqRmhzsOw
+	XIv8k9sC23QHpRhPrZSypjhcJGOYB2fzYKPXfOirWMX2lMUO80ipprbanDJ6GkBDLSljs1a4xwyUD
+	UxAsQKNd/q2io4wy3i8qwy0rRlof31ZnxQlW3UR2L4YHOFQlqmihqsCbr46OcXAeJ6R+lm0QK1Ems
+	BKt3XIsG/7wyu5NS0/+PSAruYR2yfjF4IgQnV/KRHAOclcTFtBI5d6puyVkwIFQKySS/I3y/+P7wl
+	apCw837oEt9NdSGYOT53OBjecGkqqtxojqFbcXWzzqegmY7RbQkx664iMVS7eEKHycNZWk215bLoy
+	QimJuv4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9Lgw-0000000A1Pj-42pp;
-	Fri, 08 Nov 2024 09:54:10 +0000
-Received: from mx3.molgen.mpg.de ([141.14.17.11])
+	id 1t9N6v-0000000AKzw-191r;
+	Fri, 08 Nov 2024 11:25:05 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9Lgt-0000000A1OY-3BYA
-	for linux-mediatek@lists.infradead.org;
-	Fri, 08 Nov 2024 09:54:09 +0000
-Received: from [192.168.0.2] (unknown [95.90.242.139])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: pmenzel)
-	by mx.molgen.mpg.de (Postfix) with ESMTPSA id DCDD5600AA6A1;
-	Fri, 08 Nov 2024 10:53:47 +0100 (CET)
-Message-ID: <c81aa403-499b-4639-88a0-887575731d39@molgen.mpg.de>
-Date: Fri, 8 Nov 2024 10:53:46 +0100
+	id 1t9MI7-0000000A7it-0jLM;
+	Fri, 08 Nov 2024 10:32:37 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-4315839a7c9so18093015e9.3;
+        Fri, 08 Nov 2024 02:32:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1731061953; x=1731666753; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:subject:cc:to:from:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=+D8vZegrH9yIdYiz0FSD9MNRGwL9EkUqYzbNsOs/U7A=;
+        b=GRsX1o6w47b8dcdZuBppMbTLuVDk9pm/HMLuecXJWTD/TxvGxy0ImVQ32qcqR2VVMf
+         Zl5VDcSva1Z/unwvJq8T95FJdhe0O4b9Xw3hzsNGZorbot1hIkYY/Gi4xZeIwxM/favb
+         jwTbCSDa2AEy6SmUB3toj//SaKY4fIfEj49SzfY23pXFhsON5JYYkN0BWaVA2G4TVKBU
+         o0rv8n3pN6NaRdrDnVCaePgwWuRp5nhADMO4hz1IyriebBFZlZ0XZlDGKuOwlxCv2uSg
+         VNOo/CqMXaiGPiQXYOB7sPsQcDx0GlcoOOPjEmYZGpwgq5+Pd3GwAT0YEHB2U4Bu+Q8D
+         deVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1731061953; x=1731666753;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:subject:cc:to:from:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=+D8vZegrH9yIdYiz0FSD9MNRGwL9EkUqYzbNsOs/U7A=;
+        b=un9EhMbnYPF5hiGMibicYIdT8+Iah1yX2tHA8W4JarkK0lvaahxPtJtyEPVJ2b+Dhh
+         DMI0i+2TvouwIHNBXdpkPhhU3310olXS2LkvGZPP66AYn8QQHncIZiCwBue+g8vbTAx/
+         fTj1a/GcW5VWdNLD8A/T04UYUGYx9cWbdM4FVMHQmx3NqfEIdEQJ8JuEexTDGC169kWX
+         MU5rCrU8Y/bM30WkoZY8eMmVKaugRYZQMgpL8ffxuTzrsQqZOObcIi6irZZUnyusoVJI
+         jCHJqL862R/J/It/xpHpDAluCy3LenF9BkjDxUNihNwefE6uEFXXa5ffY5t7HsSQxcdL
+         i2vg==
+X-Forwarded-Encrypted: i=1; AJvYcCV9+lvxqjJUlUiPbdNQ3+0t0melwE4hjFHpoxh9wNVXp5D/ExaNrd/y/1o0hGOzoTGnfJSAR3uHtyhdXTDPkuU=@lists.infradead.org, AJvYcCXmv8GvLBe9N7xivlYVuHwhIGUnvHWEE1B1K3vXnOwuIgRGpWB6d+LlWOkOXN5yk1ITUWIhDMjH0hflDgv9H/c/@lists.infradead.org
+X-Gm-Message-State: AOJu0YzX17g3b/l5pkEBgYo4H4Y8RFIL+nSsQbaSlO+MDA7SiVki+5Dj
+	EKm28ESIkh3gJ3390uUuhpZGJXjINzAKHqWUtKrD076kxaSotDMy
+X-Google-Smtp-Source: AGHT+IE3C6MenK86u+gyHcdGWTkHdT9bSmorvzGgc5cR9/kKCrxrVGkOIgWKFRagg6d/LTdxX87eoA==
+X-Received: by 2002:a05:600c:5488:b0:431:9397:9ac9 with SMTP id 5b1f17b1804b1-432b7507c16mr15281755e9.15.1731061952869;
+        Fri, 08 Nov 2024 02:32:32 -0800 (PST)
+Received: from Ansuel-XPS. (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-432aa6b35c0sm97887395e9.16.2024.11.08.02.32.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 08 Nov 2024 02:32:32 -0800 (PST)
+Message-ID: <672de8c0.050a0220.a7227.c2c7@mx.google.com>
+X-Google-Original-Message-ID: <Zy3ovEx0IELRttrI@Ansuel-XPS.>
+Date: Fri, 8 Nov 2024 11:32:28 +0100
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	"AngeloGioacchino Del Regno," <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	upstream@airoha.com
+Subject: Re: [net-next PATCH v3 2/3] net: dsa: Add Airoha AN8855 5-Port
+ Gigabit DSA Switch driver
+References: <20241106122254.13228-1-ansuelsmth@gmail.com>
+ <20241106122254.13228-3-ansuelsmth@gmail.com>
+ <4318897e-0f1a-42c7-8f20-065dc690a112@wanadoo.fr>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] linux-firmware: update firmware for mediatek bluetooth
- chip (MT7920)
-To: =?UTF-8?B?Q2hyaXMgTHUgKOmZuOeomuazkyk=?= <Chris.Lu@mediatek.com>
-Cc: marcel@holtmann.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- =?UTF-8?B?QWxsYW4gV2FuZyAo546L5a625YGJKQ==?= <Allan.Wang@mediatek.com>,
- linux-bluetooth@vger.kernel.org, ben@decadent.org.uk,
- linux-firmware@kernel.org, Johan Hedberg <johan.hedberg@gmail.com>,
- =?UTF-8?B?U3RldmUgTGVlICjmnY7oppboqqAp?= <steve.lee@mediatek.com>,
- Sean Wang <Sean.Wang@mediatek.com>, =?UTF-8?B?QWFyb24gSG91ICjkvq/kv4rku7Ap?=
- <Aaron.Hou@mediatek.com>, jwboyer@kernel.org, dwmw2@infradead.org
-References: <20241108082515.19817-1-chris.lu@mediatek.com>
- <46444b60-2d1a-45c2-9a96-8352d1879516@molgen.mpg.de>
- <024285d0deb37c1444b1aaa4cba64542fe4ac844.camel@mediatek.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <024285d0deb37c1444b1aaa4cba64542fe4ac844.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <4318897e-0f1a-42c7-8f20-065dc690a112@wanadoo.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241108_015407_947491_5F5C8359 
-X-CRM114-Status: GOOD (  13.42  )
+X-CRM114-CacheID: sfid-20241108_023235_246526_44C5BB69 
+X-CRM114-Status: GOOD (  36.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,37 +110,286 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear Chris,
-
-
-Thank you for your quick reply
-
-Am 08.11.24 um 10:25 schrieb Chris Lu (é™¸ç¨šæ³“):
-
-> I'll send a v2 to update commit message based on your suggestions.
-
-You are quick, and I got it already.
-
-> On Fri, 2024-11-08 at 09:37 +0100, Paul Menzel wrote:
-
-[â€¦]
-
->> Itâ€™d be great if you added a change-log.
->>
-> We'll updates the firmware with Wi-Fi module at the same time if either
-> of modules has any fix need to be upstream.
+On Thu, Nov 07, 2024 at 06:53:53PM +0100, Christophe JAILLET wrote:
+> Le 06/11/2024 à 13:22, Christian Marangi a écrit :
+> > Add Airoha AN8855 5-Port Gigabit DSA switch.
+> > 
+> > The switch is also a nvmem-provider as it does have EFUSE to calibrate
+> > the internal PHYs.
+> > 
+> > Signed-off-by: Christian Marangi <ansuelsmth-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> > ---
 > 
-> It's a routine update to MT7920 Bluetooth side.
+> Hi,
+> 
+> ...
+> 
+> > +#include <linux/bitfield.h>
+> > +#include <linux/ethtool.h>
+> > +#include <linux/etherdevice.h>
+> > +#include <linux/gpio/consumer.h>
+> > +#include <linux/if_bridge.h>
+> > +#include <linux/iopoll.h>
+> > +#include <linux/mdio.h>
+> > +#include <linux/netdevice.h>
+> > +#include <linux/of_mdio.h>
+> > +#include <linux/of_net.h>
+> > +#include <linux/of_platform.h>
+> > +#include <linux/nvmem-provider.h>
+> 
+> Could be moved a few lines above to keep order.
+> 
+> > +#include <linux/phylink.h>
+> > +#include <linux/regmap.h>
+> > +#include <net/dsa.h>
+> ...
+> 
+> > +static int an8855_port_fdb_dump(struct dsa_switch *ds, int port,
+> > +				dsa_fdb_dump_cb_t *cb, void *data)
+> > +{
+> > +	struct an8855_priv *priv = ds->priv;
+> > +	struct an8855_fdb _fdb = {  };
+> 
+> Should it but reseted in the do loop below, instead of only once here?
+>
 
-So, this time, there are no Bluetooth fixes, only for Wi-Fi?
+Common practice is to fill EVERY value in _fdb to not have to reset, but
+yes just as extra caution, I will move the define in the for loop.
 
->>> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
->>> ---
->>>    WHENCE                                   |   2 +-
->>>    mediatek/BT_RAM_CODE_MT7961_1a_2_hdr.bin | Bin 493809 -> 493809 bytes
->>>    2 files changed, 1 insertion(+), 1 deletion(-)
+> > +	int banks, count = 0;
+> > +	u32 rsp;
+> > +	int ret;
+> > +	int i;
+> > +
+> > +	mutex_lock(&priv->reg_mutex);
+> > +
+> > +	/* Load search port */
+> > +	ret = regmap_write(priv->regmap, AN8855_ATWD2,
+> > +			   FIELD_PREP(AN8855_ATWD2_PORT, port));
+> > +	if (ret)
+> > +		goto exit;
+> > +	ret = an8855_fdb_cmd(priv, AN8855_ATC_MAT(AND8855_FDB_MAT_MAC_PORT) |
+> > +			     AN8855_FDB_START, &rsp);
+> > +	if (ret < 0)
+> > +		goto exit;
+> > +
+> > +	do {
+> > +		/* From response get the number of banks to read, exit if 0 */
+> > +		banks = FIELD_GET(AN8855_ATC_HIT, rsp);
+> > +		if (!banks)
+> > +			break;
+> > +
+> > +		/* Each banks have 4 entry */
+> > +		for (i = 0; i < 4; i++) {
+> > +			count++;
+> > +
+> > +			/* Check if bank is present */
+> > +			if (!(banks & BIT(i)))
+> > +				continue;
+> > +
+> > +			/* Select bank entry index */
+> > +			ret = regmap_write(priv->regmap, AN8855_ATRDS,
+> > +					   FIELD_PREP(AN8855_ATRD_SEL, i));
+> > +			if (ret)
+> > +				break;
+> > +			/* wait 1ms for the bank entry to be filled */
+> > +			usleep_range(1000, 1500);
+> > +			an8855_fdb_read(priv, &_fdb);
+> > +
+> > +			if (!_fdb.live)
+> > +				continue;
+> > +			ret = cb(_fdb.mac, _fdb.vid, _fdb.noarp, data);
+> > +			if (ret < 0)
+> > +				break;
+> > +		}
+> > +
+> > +		/* Stop if reached max FDB number */
+> > +		if (count >= AN8855_NUM_FDB_RECORDS)
+> > +			break;
+> > +
+> > +		/* Read next bank */
+> > +		ret = an8855_fdb_cmd(priv, AN8855_ATC_MAT(AND8855_FDB_MAT_MAC_PORT) |
+> > +				     AN8855_FDB_NEXT, &rsp);
+> > +		if (ret < 0)
+> > +			break;
+> > +	} while (true);
+> > +
+> > +exit:
+> > +	mutex_unlock(&priv->reg_mutex);
+> > +	return ret;
+> > +}
+> 
+> ...
+> 
+> > +	ret = regmap_set_bits(priv->regmap, AN8855_RG_RATE_ADAPT_CTRL_0,
+> > +			      AN8855_RG_RATE_ADAPT_RX_BYPASS |
+> > +			      AN8855_RG_RATE_ADAPT_TX_BYPASS |
+> > +			      AN8855_RG_RATE_ADAPT_RX_EN |
+> > +			      AN8855_RG_RATE_ADAPT_TX_EN);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* Disable AN if not in autoneg */
+> > +	ret = regmap_update_bits(priv->regmap, AN8855_SGMII_REG_AN0, BMCR_ANENABLE,
+> > +				 neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED ? BMCR_ANENABLE :
+> > +									      0);
+> 
+> Should 'ret' be tested here?
+> 
 
-Kind regards,
+Sorry forgot to add.
 
-Paul
+> > +
+> > +	if (interface == PHY_INTERFACE_MODE_SGMII &&
+> > +	    neg_mode == PHYLINK_PCS_NEG_INBAND_DISABLED) {
+> > +		ret = regmap_set_bits(priv->regmap, AN8855_PHY_RX_FORCE_CTRL_0,
+> > +				      AN8855_RG_FORCE_TXC_SEL);
+> > +		if (ret)
+> > +			return ret;
+> > +	}
+> 
+> ...
+> 
+> > +	priv->ds = devm_kzalloc(&mdiodev->dev, sizeof(*priv->ds), GFP_KERNEL);
+> > +	if (!priv->ds)
+> > +		return -ENOMEM;
+> > +
+> > +	priv->ds->dev = &mdiodev->dev;
+> > +	priv->ds->num_ports = AN8855_NUM_PORTS;
+> > +	priv->ds->priv = priv;
+> > +	priv->ds->ops = &an8855_switch_ops;
+> > +	mutex_init(&priv->reg_mutex);
+> 
+> devm_mutex_init() to slightly simplify the remove function?
+> 
+
+Wonder if there is a variant also for dsa_unregister_switch. That
+would effectively remove the need for a remove function.
+
+> > +	priv->ds->phylink_mac_ops = &an8855_phylink_mac_ops;
+> > +
+> > +	priv->pcs.ops = &an8855_pcs_ops;
+> > +	priv->pcs.neg_mode = true;
+> > +	priv->pcs.poll = true;
+> > +
+> > +	ret = an8855_sw_register_nvmem(priv);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	dev_set_drvdata(&mdiodev->dev, priv);
+> > +
+> > +	return dsa_register_switch(priv->ds);
+> > +}
+> > +
+> > +static void
+> > +an8855_sw_remove(struct mdio_device *mdiodev)
+> > +{
+> > +	struct an8855_priv *priv = dev_get_drvdata(&mdiodev->dev);
+> > +
+> > +	dsa_unregister_switch(priv->ds);
+> > +	mutex_destroy(&priv->reg_mutex);
+> > +}
+> > +
+> > +static const struct of_device_id an8855_of_match[] = {
+> > +	{ .compatible = "airoha,an8855" },
+> > +	{ /* sentinel */ },
+> 
+> Ending comma is usually not needed after a terminator.
+> 
+> > +};
+> > +
+> > +static struct mdio_driver an8855_mdio_driver = {
+> > +	.probe = an8855_sw_probe,
+> > +	.remove = an8855_sw_remove,
+> > +	.mdiodrv.driver = {
+> > +		.name = "an8855",
+> > +		.of_match_table = an8855_of_match,
+> > +	},
+> > +};
+> 
+> ...
+> 
+> > +#define	  AN8855_VA0_VTAG_EN		BIT(10) /* Per VLAN Egress Tag Control */
+> > +#define	  AN8855_VA0_IVL_MAC		BIT(5) /* Independent VLAN Learning */
+> > +#define	  AN8855_VA0_VLAN_VALID		BIT(0) /* VLAN Entry Valid */
+> > +#define AN8855_VAWD1			0x10200608
+> > +#define	  AN8855_VA1_PORT_STAG		BIT(1)
+> > +
+> > +/* Same register map of VAWD0 */
+> 
+> Not sure to follow. AN8855_VAWD0 above is 0x10200604, not 0x10200618
+> 
+
+Confusing comment. The meaning here is not "same register" but same
+register fields aka bits and mask for the register are the same of
+..604.
+
+> > +#define AN8855_VARD0			0x10200618
+> > +
+> > +enum an8855_vlan_egress_attr {
+> > +	AN8855_VLAN_EGRESS_UNTAG = 0,
+> > +	AN8855_VLAN_EGRESS_TAG = 2,
+> > +	AN8855_VLAN_EGRESS_STACK = 3,
+> > +};
+> > +
+> > +/* Register for port STP state control */
+> > +#define AN8855_SSP_P(x)			(0x10208000 + ((x) * 0x200))
+> > +#define	 AN8855_FID_PST			GENMASK(1, 0)
+> > +
+> > +enum an8855_stp_state {
+> > +	AN8855_STP_DISABLED = 0,
+> > +	AN8855_STP_BLOCKING = 1,
+> > +	AN8855_STP_LISTENING = 1,
+> 
+> Just wondering if this 0, 1, *1*, 2, 3 was intentional?
+> 
+
+Yes blocking and listening is the same, I will follow suggestion by
+Andrew and make blocking = listening.
+
+> > +	AN8855_STP_LEARNING = 2,
+> > +	AN8855_STP_FORWARDING = 3
+> > +};
+> > +
+> > +/* Register for port control */
+> > +#define AN8855_PCR_P(x)			(0x10208004 + ((x) * 0x200))
+> > +#define	  AN8855_EG_TAG			GENMASK(29, 28)
+> > +#define	  AN8855_PORT_PRI		GENMASK(26, 24)
+> > +#define	  AN8855_PORT_TX_MIR		BIT(20)
+> > +#define	  AN8855_PORT_RX_MIR		BIT(16)
+> > +#define	  AN8855_PORT_VLAN		GENMASK(1, 0)
+> > +
+> > +enum an8855_port_mode {
+> > +	/* Port Matrix Mode: Frames are forwarded by the PCR_MATRIX members. */
+> > +	AN8855_PORT_MATRIX_MODE = 0,
+> > +
+> > +	/* Fallback Mode: Forward received frames with ingress ports that do
+> > +	 * not belong to the VLAN member. Frames whose VID is not listed on
+> > +	 * the VLAN table are forwarded by the PCR_MATRIX members.
+> > +	 */
+> > +	AN8855_PORT_FALLBACK_MODE = 1,
+> > +
+> > +	/* Check Mode: Forward received frames whose ingress do not
+> > +	 * belong to the VLAN member. Discard frames if VID ismiddes on the
+> > +	 * VLAN table.
+> > +	 */
+> > +	AN8855_PORT_CHECK_MODE = 1,
+> 
+> Just wondering if this 0, 1, *1*, 3 was intentional?
+> 
+
+Nope a typo. Thanks for noticing this.
+
+> > +
+> > +	/* Security Mode: Discard any frame due to ingress membership
+> > +	 * violation or VID missed on the VLAN table.
+> > +	 */
+> > +	AN8855_PORT_SECURITY_MODE = 3,
+> > +};
+> ...
+> 
+> CJ
+
+-- 
+	Ansuel
 
