@@ -2,56 +2,56 @@ Return-Path: <linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.in
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0235D5E145
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Nov 2024 08:30:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 215B3D5E149
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Nov 2024 09:32:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=9DrjPiPUW8Vq0Fq2OHdlswmyE/zjgE3XAh25mS/Cocs=; b=MlQW5Dkk0kf18usiNPanTI88Db
-	f6aAIG8twj2dBQB1cz07RCkeZI5f4Qj5XJRAj1D+knKf8PoOBU+dwnsSrIWvwMPOCZ9rB4KIA3ac+
-	hucDn11+qEMdro7ERz9P7OyRJigDmllPu9ChlQcObAFXNC1xwyj9HTgbjS9ijrShKfhQqr2/Qagej
-	Htx2lZxcrwjxU8gW6YryshefuvY38hvetTJO5gTEO/Lr9F2+lIaxZnrUerk/cKWfvnQtRbnTPkw9F
-	wjZ0nM69/vad60HjB7X1/NSwp8F0Yv6TTmx6njE9KQfkd3fRXNoH3UCrUYrk5+hSfmyv/ECR0tCvB
-	Shw1gu6Q==;
+	bh=TsPAI+Vd93AwISAoLMlWj5txUWxQU1N33rDaYXLE43o=; b=RXzGSguULN203k7KI7q5mGnslo
+	n6NP4qL+F1cSmKm4g0QTBaPwEVm7dAYAS1Rve697TGYvAOaqcmdXLevS3pwcteKcgPR+k36fLoRkZ
+	j7nVpI9KjjSGbMe2+CFMB4eqIxv+ZCaEie/TWOQgVs9YT1dDhAdQrd+e4WxZu3PGRc3PfP+2KXN+9
+	rF3jgGNlfLk6t2CCr3iiR1maU1osGAsAgl4LocmMFZ1mS/QJDzs4YnRbH/D55n73eS44e3kbvYqQJ
+	OfjOsakiOx81exvJ7b08Fw/9OSaCAfngpdpfllPks8DLtVwEllypt6PdPOdg/4S6/TEpe+vwBDjOd
+	gAABaxfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9KOM-00000009mG0-33BL;
-	Fri, 08 Nov 2024 08:30:54 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1t9LLx-00000009xv3-0w0h;
+	Fri, 08 Nov 2024 09:32:29 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9KJF-00000009lTf-14cd
+	id 1t9LLm-00000009xru-0jfk
 	for linux-mediatek@lists.infradead.org;
-	Fri, 08 Nov 2024 08:25:45 +0000
-X-UUID: 016b50c29dab11ef82ff63e91e7eb18c-20241108
+	Fri, 08 Nov 2024 09:32:26 +0000
+X-UUID: 554d20729db411ef9048ed6ed365623b-20241108
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=9DrjPiPUW8Vq0Fq2OHdlswmyE/zjgE3XAh25mS/Cocs=;
-	b=TKp0odCOTfBQnXAEcO6DIKv3wtE/R6421/B1ziU106O9q5lTJVt0YqMPbrIWSfBAEqGWT3vssb84Nb65497Mg7nb9M7xEqiUziv/2NoiSxbZxRdgzjUhqlLfEryCDfk2FeplUUu0B7oUfftgCy6v4nvoSC7BQeF3KZJMtAGlehw=;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=TsPAI+Vd93AwISAoLMlWj5txUWxQU1N33rDaYXLE43o=;
+	b=mB1gydtylCj06UtrIOjkIrKtwDAjgOCC/gGEtnYCv/zNmZ0hI6XyilgUYEIy8zYqEBsET2qu5OTg49vAtKachOhCf5qufqcKH96NpiGB7ZT4rTEy7ntE+m6r5tZY14V5mRDMNwTg+hSsVTqvyIYlXqXClFpG7CBm59vmiNvxoiQ=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.42,REQID:ac11ba19-8aa6-4ff6-b33d-6c501c3fa71c,IP:0,U
+X-CID-O-INFO: VERSION:1.1.42,REQID:d4aa9b40-b4b8-4e6e-bd0c-137824576234,IP:0,U
 	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
 	:release,TS:-5
-X-CID-META: VersionHash:b0fcdc3,CLOUDID:9846d51b-4f51-4e1d-bb6a-1fd98b6b19d2,B
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:9861d61b-4f51-4e1d-bb6a-1fd98b6b19d2,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
 	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:1,OSI:0,OSA:0,AV:0,LES:1,
 	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,OSH|NGT
 X-CID-BAS: 2,OSH|NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 016b50c29dab11ef82ff63e91e7eb18c-20241108
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+X-UUID: 554d20729db411ef9048ed6ed365623b-20241108
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
 	(envelope-from <chris.lu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 714671750; Fri, 08 Nov 2024 01:25:26 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+	with ESMTP id 738430629; Fri, 08 Nov 2024 02:32:12 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 8 Nov 2024 16:25:19 +0800
+ 15.2.1118.26; Fri, 8 Nov 2024 17:32:04 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 8 Nov 2024 16:25:19 +0800
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Fri, 8 Nov 2024 17:32:04 +0800
 From: Chris Lu <chris.lu@mediatek.com>
 To: Josh Boyer <jwboyer@kernel.org>, David Woodhouse <dwmw2@infradead.org>,
 	Ben Hutchings <ben@decadent.org.uk>, Marcel Holtmann <marcel@holtmann.org>,
@@ -62,13 +62,13 @@ CC: Sean Wang <sean.wang@mediatek.com>, Allan Wang <allan.wang@mediatek.com>,
 	<linux-firmware@kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>,
 	linux-mediatek <linux-mediatek@lists.infradead.org>, Chris Lu
 	<chris.lu@mediatek.com>
-Subject: [PATCH v1] linux-firmware: update firmware for mediatek bluetooth chip (MT7920)
-Date: Fri, 8 Nov 2024 16:25:15 +0800
-Message-ID: <20241108082515.19817-1-chris.lu@mediatek.com>
+Subject: [PATCH v2] mediatek MT7920: update bluetooth firmware to 20241104091246
+Date: Fri, 8 Nov 2024 17:32:01 +0800
+Message-ID: <20241108093201.29835-1-chris.lu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Spam-Note: CRM114 run bypassed due to message size (999424 bytes)
+X-Spam-Note: CRM114 run bypassed due to message size (999439 bytes)
 X-Spam-Score: -2.1 (--)
 X-Spam-Report: Spam detection software, running on the system "bombadil.infradead.org",
  has NOT identified this incoming email as spam.  The original
@@ -78,13 +78,29 @@ X-Spam-Report: Spam detection software, running on the system "bombadil.infradea
  
  Content preview:  Update binary firmware for MT7920 BT devices. File: mediatek/BT_RAM_CODE_MT7961_1a_2_hdr.bin
     Version: 20241104091246 Signed-off-by: Chris Lu <chris.lu@mediatek.com> ---
-    WHENCE | 2 +- mediatek/BT_RAM_CODE_MT7961_1a_2_hdr.bin | Bin 493809 -> 493809
-    bytes 2 files changed, 1 insertion(+), 1 deletion(-) 
+    v2: -Change title --- WHENCE | 2 +- mediatek/BT_RAM_CODE_MT7961_1a_2_hdr.bin
+    | Bin 493809 -> 493809 bytes 2 files changed, 1 insertion(+), 1 deletio [...]
+    
  
  Content analysis details:   (-2.1 points, 5.0 required)
  
   pts rule name              description
  ---- ---------------------- --------------------------------------------------
+  0.0 RCVD_IN_VALIDITY_CERTIFIED_BLOCKED RBL: ADMINISTRATOR NOTICE: The
+                             query to Validity was blocked.  See
+                             https://knowledge.validity.com/hc/en-us/articles/20961730681243
+                              for more information.
+                        [216.200.240.185 listed in sa-trusted.bondedsender.org]
+  0.0 RCVD_IN_VALIDITY_SAFE_BLOCKED RBL: ADMINISTRATOR NOTICE: The query to
+                              Validity was blocked.  See
+                             https://knowledge.validity.com/hc/en-us/articles/20961730681243
+                              for more information.
+                             [216.200.240.185 listed in sa-accredit.habeas.com]
+  0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The query to
+                              Validity was blocked.  See
+                             https://knowledge.validity.com/hc/en-us/articles/20961730681243
+                              for more information.
+                           [216.200.240.185 listed in bl.score.senderscore.com]
  -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
  -0.0 SPF_PASS               SPF: sender matches SPF record
  -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
@@ -95,21 +111,6 @@ X-Spam-Report: Spam detection software, running on the system "bombadil.infradea
  -0.1 DKIM_VALID             Message has at least one valid DKIM or DK signature
  -1.9 BAYES_00               BODY: Bayes spam probability is 0 to 1%
                              [score: 0.0000]
-  0.0 RCVD_IN_VALIDITY_SAFE_BLOCKED RBL: ADMINISTRATOR NOTICE: The query to
-                              Validity was blocked.  See
-                             https://knowledge.validity.com/hc/en-us/articles/20961730681243
-                              for more information.
-                             [216.200.240.184 listed in sa-accredit.habeas.com]
-  0.0 RCVD_IN_VALIDITY_CERTIFIED_BLOCKED RBL: ADMINISTRATOR NOTICE: The
-                             query to Validity was blocked.  See
-                             https://knowledge.validity.com/hc/en-us/articles/20961730681243
-                              for more information.
-                        [216.200.240.184 listed in sa-trusted.bondedsender.org]
-  0.0 RCVD_IN_VALIDITY_RPBL_BLOCKED RBL: ADMINISTRATOR NOTICE: The query to
-                              Validity was blocked.  See
-                             https://knowledge.validity.com/hc/en-us/articles/20961730681243
-                              for more information.
-                           [216.200.240.184 listed in bl.score.senderscore.com]
   0.0 UNPARSEABLE_RELAY      Informational: message has unparseable relay lines
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -131,6 +132,9 @@ File: mediatek/BT_RAM_CODE_MT7961_1a_2_hdr.bin
 Version: 20241104091246
 
 Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+---
+v2:
+ -Change title
 ---
  WHENCE                                   |   2 +-
  mediatek/BT_RAM_CODE_MT7961_1a_2_hdr.bin | Bin 493809 -> 493809 bytes
