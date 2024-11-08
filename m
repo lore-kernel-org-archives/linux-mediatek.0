@@ -4,105 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3E5ED64060
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Nov 2024 16:32:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E85AD64063
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Nov 2024 16:36:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3tUwRMCHHdqZVRtxZCk5aPJdbR5inXLEUzSQYIspWM0=; b=lG7tHtvPtPQ/wbMp14TYtsvljo
-	Yp331RYsqSKT7w49euo7LBEyCwS8dN7fx/iGfZKNWqCqcy/SdxikeVQ38npO40FB9vgHuH9Tn0wUe
-	19nGwx8VIDJ0hmZA6H4dV1fcF7DXwcew2y0HwTB/BmqX/VJGSB5tzuWNpEQz9f3pZuit+RI/zQ0Ct
-	iT9wr75G9wLaFgKz/xylz0mjwvMxdT6Ue7AxOyBb5oW8YTtvg6KmXhhtDOXeCYITu4sf8MVYkaQeI
-	jtLkC0hFYhAaPsVQVjWei8kVmR4o7yxXPYkS5abdVQn29qESq6FOojOEgUKf0wUWmdAyaGTmsvxQf
-	LXYyy5iA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	bh=5y71AULIWipzOUve2Y05XFsuP7Ru4OVeHPR1RL+xc70=; b=Ni3vXlVXnmt1qq6AKl1goeEzjE
+	MY6d63MrPn3PeE5gO2OnaO49Z3ae7/mvECQHzWx7CLs+5B9G1MXYblS9R1LvvPWfnqJ+JyDh6ih5O
+	o9wGfMhMCoZV98q1k8LVKMe4HJ2ihht35ij8gQhW8ANPbFE3GF8YyFFhkq2+kRh2ZGZsYf/wcLZdd
+	b6ihKHkx4uxUyYiyb5dzrvWqkDeSG2cDmMLqsnCDOwcweJlNXmU4ZIDgdMHNMDuWyWw7AU7H5R+OV
+	cNgw+QwNIIceE7V9CbUWwPcW9WOAodrsQsngwtZwhKahavuJD7zg1v+gSvdcK+MwARK/enBnbf0+b
+	F7unhufw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9RuF-0000000BDfB-1We9;
-	Fri, 08 Nov 2024 16:32:19 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1t9Ryd-0000000BG39-1tgU;
+	Fri, 08 Nov 2024 16:36:51 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9QzX-0000000B2gl-3ycJ;
-	Fri, 08 Nov 2024 15:33:45 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-539fb49c64aso3584128e87.0;
-        Fri, 08 Nov 2024 07:33:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1731080021; x=1731684821; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references
-         :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=3tUwRMCHHdqZVRtxZCk5aPJdbR5inXLEUzSQYIspWM0=;
-        b=HP0fd5MzBUmr7XDEmwuKUGWPxW4OnlKPL29C+IILN8VhKl1uwpeFaA0GtT5gfOkFz2
-         mrtTBd+O5pymnua/rDOGm8Nu5FbBwnGQQrOkWfJ7yADVAaX523COkF0Nke+50pS4bdpo
-         aAeNPSixjYVpQyj3v0soJoY5DNkADtGLhcJRsR/j+qbPRS1DAGMta9n3cETZFYMweVyc
-         hMPqMsTvI6sn/DXcjRdehNNGIxwrrxIcnMy/aMz8/ZgbJneoxZ7H78elIpRTwBvozGhK
-         5PjAu0Y5LsNyGmGc8rOFD3RdN6LQqz3ukRNyWS1TCwgTuRRVtiLiLxRC9Qkf3t3gSj9V
-         fVDw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731080021; x=1731684821;
-        h=in-reply-to:content-disposition:mime-version:references
-         :mail-followup-to:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=3tUwRMCHHdqZVRtxZCk5aPJdbR5inXLEUzSQYIspWM0=;
-        b=e3bjsvScx3YSTZbD25PX3qjpZutixPciu/2oDvosDjA+xVO1TW7cK0c9vvpvTqgwOS
-         M/6/9qxK/kZw6SidZN5CL/s6t5YzQVpBraw6eg74oZ85sBJ+KVXfKXlPxFfDIfA76Ri2
-         rhNepVliRIaSdcMyrbghfod5+u+onh0QZbF7G8OG0nF/F9G7G8kTtGKA2oXKgDItn57k
-         MxLynBN5qmDiDLvR1tW1vclOowNdMlBzMARwrzfqZUHQffoWY9RneyCE0FugjyyLYuoE
-         0hPRRxdtNa1h2i+0My5Rm2ZQA05AodqyvZR1MyFmcqa+1qZtOtoqskFCVHsvo/h1zrQS
-         nAhw==
-X-Forwarded-Encrypted: i=1; AJvYcCWOR2n9uWPdcysvvPwStIBWAzW3qT6mH/N4uXFPp0p2UmbvNIkananp8robJDo/k1gGO38u/xBsssYfK3JLbs30@lists.infradead.org, AJvYcCWr1Kxpu17cNRZ1Q5Dxuwn+8k72R612X5GggrGqGb0uYjFY1Rmfh728nH81tOrFOQTovykWbGLODYZqV1ykxOU=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwMbDI+LIeRG7DOAK0D69/6fi8jTK+weAG4ofG4pY3FJRI6Pp6i
-	P1vMpsrH0+VxVpK28dlhrW/3N5/VRbTFlx5p+r+Lfe2VNmRxR2A8
-X-Google-Smtp-Source: AGHT+IH6QlPf0c6ztccp5zye1I+rJwIhnxrhIVUrE/U2zUAMlS2cVf9rlvp4D1Xd2iX5jOQ4HGOkBw==
-X-Received: by 2002:a05:6512:3084:b0:539:8a50:6ee8 with SMTP id 2adb3069b0e04-53d862f84cdmr2869650e87.57.1731080020655;
-        Fri, 08 Nov 2024 07:33:40 -0800 (PST)
-Received: from localhost ([94.19.228.143])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53d82678474sm662970e87.42.2024.11.08.07.33.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 08 Nov 2024 07:33:40 -0800 (PST)
-Date: Fri, 8 Nov 2024 18:33:37 +0300
-From: Andrey Skvortsov <andrej.skvortzov@gmail.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wolfram Sang <wsa@kernel.org>, Rob Herring <robh@kernel.org>,
-	Saravana Kannan <saravanak@google.com>,
-	Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, chrome-platform@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Douglas Anderson <dianders@chromium.org>,
-	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	linux-i2c@vger.kernel.org
-Subject: Re: [PATCH v11 5/7] i2c: of-prober: Add GPIO support to simple
- helpers
-Message-ID: <Zy4vUQj26-rkXrgk@skv.local>
-Mail-Followup-To: Andrey Skvortsov <andrej.skvortzov@gmail.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wolfram Sang <wsa@kernel.org>, Rob Herring <robh@kernel.org>,
-	Saravana Kannan <saravanak@google.com>,
-	Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, chrome-platform@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Douglas Anderson <dianders@chromium.org>,
-	Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	linux-i2c@vger.kernel.org
-References: <20241106093335.1582205-1-wenst@chromium.org>
- <20241106093335.1582205-6-wenst@chromium.org>
+	id 1t9RvZ-0000000BEcE-0jiI;
+	Fri, 08 Nov 2024 16:33:46 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 2C61FA43F7B;
+	Fri,  8 Nov 2024 16:31:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87664C4CED3;
+	Fri,  8 Nov 2024 16:33:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1731083619;
+	bh=Xy9SXkJxDKG4wi0f9Sva0OdceC+je7kXOaR1Fvhuk4Q=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=lv9ltHn0wFgSpHXb8kslpVm8PArdkSIuQuJE5snpS1yI2IVOWksdVjn8nUo7aykjq
+	 VF3j8ToVG0p5CUcoMmdui72l9m+UABLLU+2fviSDfOQwzw5La16QIau1UGD1TpY+4m
+	 Wpgfwsi2SUAzEOunb8IhHZWjJIgl9vK6FWbxUZVcMGXhWZOD2FFiNqROABA2M8BsdU
+	 J/bByy2pPBtM+wRvtPfQkEjUNJ9VdOlrD/PdgKJiBhCPEc1AJnHa9yeTVQbni7lfhR
+	 BWx5efRqQx6QPf/CAKmr07g17TCcFAyzUDRXIa7NPlqjO3g5NUbd9/6zcb01tNejWM
+	 nV2w2n4JvRklQ==
+Date: Fri, 8 Nov 2024 10:33:38 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Hui Ma =?utf-8?B?KOmprOaFpyk=?= <Hui.Ma@airoha.com>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
+	"linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+	Ryder Lee <Ryder.Lee@mediatek.com>,
+	Jianjun Wang =?utf-8?B?KOeOi+W7uuWGmyk=?= <Jianjun.Wang@mediatek.com>,
+	"lpieralisi@kernel.org" <lpieralisi@kernel.org>,
+	"kw@linux.com" <kw@linux.com>, "robh@kernel.org" <robh@kernel.org>,
+	"bhelgaas@google.com" <bhelgaas@google.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"lorenzo.bianconi83@gmail.com" <lorenzo.bianconi83@gmail.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"krzysztof.kozlowski+dt@linaro.org" <krzysztof.kozlowski+dt@linaro.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"nbd@nbd.name" <nbd@nbd.name>, "dd@embedd.com" <dd@embedd.com>,
+	upstream <upstream@airoha.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: =?utf-8?B?5Zue5aSNOiBbUEFUQw==?= =?utf-8?Q?H?= v4 4/4] PCI:
+ mediatek-gen3: Add Airoha EN7581 support
+Message-ID: <20241108163338.GA1663274@bhelgaas>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20241106093335.1582205-6-wenst@chromium.org>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <KL1PR03MB6350EF22DE289B293D34FD6FFF5D2@KL1PR03MB6350.apcprd03.prod.outlook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241108_073344_010341_2CABF19B 
-X-CRM114-Status: GOOD (  15.29  )
+X-CRM114-CacheID: sfid-20241108_083341_902197_B9FEBE79 
+X-CRM114-Status: GOOD (  46.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,39 +84,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24-11-06 17:33, Chen-Yu Tsai wrote:
-> Add GPIO support to the simple helpers for the I2C OF component prober.
-> Components that the prober intends to probe likely require their
-> regulator supplies be enabled, and GPIOs be toggled to enable them or
-> bring them out of reset before they will respond to probe attempts.
-> Regulator supplies were handled in the previous patch.
+On Fri, Nov 08, 2024 at 01:23:35AM +0000, Hui Ma (马慧) wrote:
+> > On Thu, Nov 07, 2024 at 05:21:45PM +0100, Lorenzo Bianconi wrote:
+> > > On Nov 07, Bjorn Helgaas wrote:
+> > > > On Thu, Nov 07, 2024 at 08:39:43AM +0100, Lorenzo Bianconi wrote:
+> > > > > > On Wed, Nov 06, 2024 at 11:40:28PM +0100, Lorenzo Bianconi wrote:
+> > > > > > > > On Wed, Jul 03, 2024 at 06:12:44PM +0200, Lorenzo Bianconi wrote:
+> > > > > > > > > Introduce support for Airoha EN7581 PCIe controller to 
+> > > > > > > > > mediatek-gen3 PCIe controller driver.
+> > > > > > > > > ...
+> > > > 
+> > > > > > > > Is this where PERST# is asserted?  If so, a comment to 
+> > > > > > > > that effect would be helpful.  Where is PERST# deasserted?  
+> > > > > > > > Where are the required delays before deassert done?
+> > > > > > > 
+> > > > > > > I can add a comment in en7581_pci_enable() describing the 
+> > > > > > > PERST issue for EN7581. Please note we have a 250ms delay in 
+> > > > > > > en7581_pci_enable() after configuring REG_PCI_CONTROL register.
+> > > > > > > 
+> > > > > > > https://github.com/torvalds/linux/blob/master/drivers/clk/cl
+> > > > > > > k-en7523.c#L396
+> > > > > > 
+> > > > > > Does that 250ms delay correspond to a PCIe mandatory delay, 
+> > > > > > e.g., something like PCIE_T_PVPERL_MS?  I think it would be 
+> > > > > > nice to have the required PCI delays in this driver if 
+> > > > > > possible so it's easy to verify that they are all covered.
+> > > > > 
+> > > > > IIRC I just used the delay value used in the vendor sdk. I
+> > > > > do not have a strong opinion about it but I guess if we move
+> > > > > it in the pcie-mediatek-gen3 driver, we will need to add it
+> > > > > in each driver where this clock is used. What do you think?
+> > > > 
+> > > > I don't know what the 250ms delay is for.  If it is for a required 
+> > > > PCI delay, we should use the relevant standard #define for it, and 
+> > > > it should be in the PCI controller driver.  Otherwise it's 
+> > > > impossible to verify that all the drivers are doing the correct delays.
+> > > 
+> > > ack, fine to me. Do you prefer to keep 250ms after 
+> > > clk_bulk_prepare_enable() in mtk_pcie_en7581_power_up() or just use PCIE_T_PVPERL_MS (100)?
+> > > I can check if 100ms works properly.
+> > 
+> > It's not clear to me where the relevant events are for these chips.
+> > 
+> > Do you have access to the PCIe CEM spec?  The diagram in r6.0, sec 
+> > 2.2.1, is helpful.  It shows the required timings for Power Stable, 
+> > REFCLK Stable, PERST# deassert, etc.
+> > 
+> > Per sec 2.11.2, PERST# must be asserted for at least 100us (T_PERST), 
+> > PERST# must be asserted for at least 100ms after Power Stable 
+> > (T_PVPERL), and PERST# must be asserted for at least 100us after 
+> > REFCLK Stable.
+> > 
+> > It would be helpful if we could tell by reading the source where some 
+> > of these critical events happen, and that the relevant delays are 
+> > there.  For example, if PERST# is asserted/deasserted by 
+> > "clk_enable()" or similar, it's not at all obvious from the code, so 
+> > we should have a comment to that effect.
 > 
-> The assumption is that the same class of components to be probed are
-> always connected in the same fashion with the same regulator supply
-> and GPIO. The names may vary due to binding differences, but the
-> physical layout does not change.
-> 
-> This supports at most one GPIO pin. The user must specify the GPIO name,
-> the polarity, and the amount of time to wait after the GPIO is toggled.
-> Devices with more than one GPIO pin likely require specific power
-> sequencing beyond what generic code can easily support.
-> 
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> Reviewed-by: Douglas Anderson <dianders@chromium.org>
-> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> >I reviewed the vendor sdk and it just do something like in clk_enable():
+> >
+> >	...
+> >	val = readl(0x88);
+> >	writel(val | BIT(16) | BIT(29) | BIT(26), 0x88);
+> >	/*wait link up*/
+> >	mdelay(1000);
+> >	...
+> >
+> >@Hui.Ma: is it fine use msleep(100) (so PCIE_T_PVPERL_MS) instead
+> >of msleep(1000) (so PCIE_LINK_RETRAIN_TIMEOUT_MS)?
+>
+> 	I think msleep(1000) will be safer, because some device won't
+> 	link up with msleep(100).
 
-> ---
-> Changes since v10:
-> - Added include of linux/types.h for |bool|
+Do you have details about this?  I guess it only hurts mediatek, but
+increasing the minimum time to bring up a PCI hierarchy by almost an
+entire second is a pretty big deal.
 
-Tested-by: Andrey Skvortsov <andrej.skvortzov@gmail.com>
+If this delay corresponds to the required T_PVPERL delay and 100ms
+isn't enough for some endpoints, those endpoints should fail with many
+host controllers, not just mediatek, so I would suspect the mediatek
+controller or a certain platform, not the endpoint itself.
 
-Patches 1-5 from this patchset were successfully tested with hardware
-prober for i2c magnetometer on PinePhone on next-20241107. [1]
+If this corresponds to T_PVPERL and mediatek needs longer, I would
+document that by using "PCIE_T_PVPERL_MS * 10" and adding a comment
+about why (affected platform/device, hardware erratum, etc).
 
-1. https://github.com/AndreySV/linux-stable/commits/in-kernel-i2c-hwprober-magnetometer/
+Bottom line, I don't really care what the value is, but I *would* like
+to be able to read pcie-mediatek-gen3.c and see the point where PCI
+power is stable, a delay of at least T_PVPERL, and where PERST# is
+deasserted because that's the main timing requirement on software.
 
--- 
-Best regards,
-Andrey Skvortsov
+Bjorn
 
