@@ -4,73 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CCC6D5E145
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Nov 2024 08:52:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E86D6D5E147
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Nov 2024 09:00:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Hu0/FhjKhA/lis5ZBlmGPYb3eKmuShEvoOlYSx3peuI=; b=JJOjypy/+aI4j5AnSFl9nju86t
-	TXzO5fCmdFlknbdv6PM/jMCKUo1vv/m9sK2ZyexZt0501hX+1D3LBBASXEo6Gn7evbjy1gLwW9xWZ
-	s/gYK9NU7lCtRSO0nn/HJ8g2xu+/2m3l4MTMtzs/hNIIhhsoIH9KY+ibShMzTmPgY9doZGocOkRpi
-	5Cbj6ljk9fMETd0GTLDJ7/okDBptstwUWodmWxNBw342KmKs4fectcdm20tHCo+DXALqu0RCix9RN
-	EKQkAL+6McmVEK3uxAZ8m4pfjgXsyRe6fyO1+H8qvGjPDj6Co6PY+0qnL+TqIpaRw6tdh4THTwQf+
-	nrbo9RJw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Jn4O6dAFhRWSkdopZSjz9bVFMMN5fWU7rVDU9QgsliU=; b=sN9iPxdFfJtYXXaezmhA1Uaut0
+	0GKNsHZKUN/LFZwlOM61k4j5pyEFtJ4L3al5MUJ+jgtP3TGaX+EY08LMPEYXmTQVQcexlNfr+rbrI
+	dr1Ei9oaKREZvZ2czpAxnBrbfgvAH/RvYLmP0EeLTgvbV9134rSqFTPoE8TbtIgm5d3kH99ktbETf
+	EcHRiwjwN64D+ClyzNJ7Ch+TS71Wg5+jI2g2RBccMWbbKVlChtARQ0AwIeNbw/V6/A86AN0zbrQjN
+	TUkvCjvBsL+aG3a49L4KG0WSajSBLQDk19+htF4sV3yrau93UjnSTesVma+/LSO/Frw08vatdr7Ir
+	fa00RDZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9KjN-00000009qnT-0Pg5;
-	Fri, 08 Nov 2024 08:52:37 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1t9Kqc-00000009sN7-3KCn;
+	Fri, 08 Nov 2024 09:00:06 +0000
+Received: from mx3.molgen.mpg.de ([141.14.17.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9KWv-00000009oXi-1qwR;
-	Fri, 08 Nov 2024 08:39:46 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id A5B3DA45192;
-	Fri,  8 Nov 2024 08:37:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6248C4CECD;
-	Fri,  8 Nov 2024 08:39:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1731055184;
-	bh=UlGOyf95Tqv2jGt1kj9WSLI/Dth3v1V/vK03dzxrLyM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=iBfTwJwa3yInD3+o2R/DhrWukhY1pwYWzi5G24em5fKoeeHX5cotFNEQwqiCKBng5
-	 PErfUmjfsILTjzIlSWNVgePHtqw5Ixap4/e7QDI0qvLt9RWRM1vGXUeKWTDpViKtn5
-	 62XlMfmVIaUMqJZEQdogbDqGnSks9+9XjgGFaLJErFl4dAu5urihuS8Po4B4ArTHW0
-	 /2Z2Gak+9mXLnwyq3E0qPOiFgKL/MghovcmFB00Q4EXY2/PucqXH4wO6FEe69aRZBT
-	 sMkyiHFL3MCrsXUVNMKhNTrnqkD5pSbO5hziaold0L9yBEiLMLCH/L+6cW6JzGUuSt
-	 Z5vSnVpQhH1Yg==
-Date: Fri, 8 Nov 2024 09:39:41 +0100
-From: "lorenzo@kernel.org" <lorenzo@kernel.org>
-To: Jianjun Wang =?utf-8?B?KOeOi+W7uuWGmyk=?= <Jianjun.Wang@mediatek.com>
-Cc: "helgaas@kernel.org" <helgaas@kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
-	"manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>,
-	"robh@kernel.org" <robh@kernel.org>, "kw@linux.com" <kw@linux.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"bhelgaas@google.com" <bhelgaas@google.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>,
-	Ryder Lee <Ryder.Lee@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>
-Subject: Re: [PATCH 3/3] PCI: mediatek-gen3: Move reset/assert callbacks in
- .power_up()
-Message-ID: <Zy3OTQ5CwPqtaeLU@lore-desk>
-References: <20241107-pcie-en7581-fixes-v1-3-af0c872323c7@kernel.org>
- <20241107152705.GA1614612@bhelgaas>
- <ZyzmFyRYDHX0W6bB@lore-desk>
- <5c04ba80ef7a280bf2925282173802a8b2f40f3a.camel@mediatek.com>
+	id 1t9Kf6-00000009ppc-20sP;
+	Fri, 08 Nov 2024 08:48:14 +0000
+Received: from [192.168.0.2] (unknown [95.90.242.139])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: pmenzel)
+	by mx.molgen.mpg.de (Postfix) with ESMTPSA id 13754600AA6A5;
+	Fri, 08 Nov 2024 09:48:01 +0100 (CET)
+Message-ID: <9954d66f-7e1c-4df3-a600-f82139ea9e5b@molgen.mpg.de>
+Date: Fri, 8 Nov 2024 09:48:00 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="uae1GSDO0BCp98kB"
-Content-Disposition: inline
-In-Reply-To: <5c04ba80ef7a280bf2925282173802a8b2f40f3a.camel@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3] Bluetooth: btusb: Add MT7925 support for ID
+ 0x13d3:0x3608
+To: wangyuli@uniontech.com, hello@felixjara.me
+Cc: marcel@holtmann.org, luiz.dentz@gmail.com, johan.hedberg@gmail.com,
+ matthias.bgg@gmail.com, linux-bluetooth@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, guanwentao@uniontech.com,
+ zhanjun@uniontech.com, aaron.ma@canonical.com
+References: <D3E1285F7DBFAB3E+20241108082418.187499-1-wangyuli@uniontech.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <D3E1285F7DBFAB3E+20241108082418.187499-1-wangyuli@uniontech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241108_003945_639190_6076835A 
-X-CRM114-Status: GOOD (  32.92  )
+X-CRM114-CacheID: sfid-20241108_004812_691019_CF3C22AB 
+X-CRM114-Status: GOOD (  13.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,165 +68,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Dear Wang, dear Félix,
 
---uae1GSDO0BCp98kB
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-> On Thu, 2024-11-07 at 17:08 +0100, Lorenzo Bianconi wrote:
-> > > On Thu, Nov 07, 2024 at 02:50:55PM +0100, Lorenzo Bianconi wrote:
-> > > > In order to make the code more readable, move phy and mac reset
-> > > > lines
-> > > > assert/de-assert configuration in .power_up callback
-> > > > (mtk_pcie_en7581_power_up/mtk_pcie_power_up).
-> > > >=20
-> > > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > > > ---
-> > > >  drivers/pci/controller/pcie-mediatek-gen3.c | 24
-> > > > ++++++++++++++++--------
-> > > >  1 file changed, 16 insertions(+), 8 deletions(-)
-> > > >=20
-> > > > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c
-> > > > b/drivers/pci/controller/pcie-mediatek-gen3.c
-> > > > index
-> > > > 8c8c733a145634cdbfefd339f4a692f25a6e24de..c0127d0fb4f059b9f9e8163
-> > > > 60130e183e8f0e990 100644
-> > > > --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> > > > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> > > > @@ -867,6 +867,13 @@ static int mtk_pcie_en7581_power_up(struct
-> > > > mtk_gen3_pcie *pcie)
-> > > >  	int err;
-> > > >  	u32 val;
-> > > > =20
-> > > > +	/*
-> > > > +	 * The controller may have been left out of reset by the
-> > > > bootloader
-> > > > +	 * so make sure that we get a clean start by asserting resets
-> > > > here.
-> > > > +	 */
-> > > > +	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets,
-> > > > +				  pcie->phy_resets);
-> > > > +	reset_control_assert(pcie->mac_reset);
-> > >=20
-> > > Add blank line here.
-> >=20
-> > ack, I will fix it.
-> >=20
-> > >=20
-> > > >  	/*
-> > > >  	 * Wait for the time needed to complete the bulk assert in
-> > > >  	 * mtk_pcie_setup for EN7581 SoC.
-> > > > @@ -941,6 +948,15 @@ static int mtk_pcie_power_up(struct
-> > > > mtk_gen3_pcie *pcie)
-> > > >  	struct device *dev =3D pcie->dev;
-> > > >  	int err;
-> > > > =20
-> > > > +	/*
-> > > > +	 * The controller may have been left out of reset by the
-> > > > bootloader
-> > > > +	 * so make sure that we get a clean start by asserting resets
-> > > > here.
-> > > > +	 */
-> > > > +	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets,
-> > > > +				  pcie->phy_resets);
-> > > > +	reset_control_assert(pcie->mac_reset);
-> > > > +	usleep_range(10, 20);
-> > >=20
-> > > Unrelated to this patch, but since you're moving it, do you know
-> > > what
-> > > this delay is for?  Can we add a #define and a spec citation for
-> > > it?
-> >=20
-> > I am not sure about it, this was already there.
-> > @Jianjun Wang: any input on it?
->=20
-> This delay is used to ensure the reset is effective. A delay of 10us
-> should be sufficient in this scenario.
+Am 08.11.24 um 09:24 schrieb WangYuli:
+> From: Félix Jara <hello@felixjara.me>
+> 
+> Add compatibility Bluetooth device MT7925 for Asus UM5606 with
+> ID 13d3:3608.
+> 
+> The device info from /sys/kernel/debug/usb/devices as below.
+> 
+> T:  Bus=03 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
+> D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+> P:  Vendor=13d3 ProdID=3608 Rev= 1.00
+> S:  Manufacturer=MediaTek Inc.
+> S:  Product=Wireless_Device
+> S:  SerialNumber=000000000
+> C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+> A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+> I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+> E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+> E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+> I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+> I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+> I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+> I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+> I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+> I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+> I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+> I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+> I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+> E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+> E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+> 
+> Tested in Asus Zenbook S 16 UM5606XA
+> 
+> Co-developed-by: Félix Jara <hello@felixjara.me>
+> Signed-off-by: Félix Jara <hello@felixjara.me>
+> Tested-by: Félix Jara <hello@felixjara.me>
+> Link: https://github.com/openSUSE/kernel/pull/10
+> Signed-off-by: WangYuli <wangyuli@uniontech.com>
 
-ack, so we can introduce a marco like:
+Should there be a space in your name: Wang Yuli?
 
-#define PCIE_RESET_TIME_US	10
-=2E..
+> ---
+>   drivers/bluetooth/btusb.c | 5 +++++
+>   1 file changed, 5 insertions(+)
+> 
+> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+> index e9534fbc92e3..2175a09e21be 100644
+> --- a/drivers/bluetooth/btusb.c
+> +++ b/drivers/bluetooth/btusb.c
+> @@ -645,6 +645,11 @@ static const struct usb_device_id quirks_table[] = {
+>   	{ USB_DEVICE(0x13d3, 0x3608), .driver_info = BTUSB_MEDIATEK |
+>   						     BTUSB_WIDEBAND_SPEECH },
+>   
+> +	/* MediaTek MT7925 Bluetooth devices */
+> +	{ USB_DEVICE(0x13d3, 0x3608), .driver_info = BTUSB_MEDIATEK |
+> +						     BTUSB_WIDEBAND_SPEECH |
+> +						     BTUSB_VALID_LE_STATES },
 
-usleep_range(PCIE_RESET_TIME_US, 2 * PCIE_RESET_TIME_US);
+There is already an entry for 13d3:3608. Should only 
+BTUSB_VALID_LE_STATES be added? Please update the commit message 
+(summary and body) accordingly.
 
-what do you think?
+> +
+>   	/* Additional Realtek 8723AE Bluetooth devices */
+>   	{ USB_DEVICE(0x0930, 0x021d), .driver_info = BTUSB_REALTEK },
+>   	{ USB_DEVICE(0x13d3, 0x3394), .driver_info = BTUSB_REALTEK },
 
-Regards,
-Lorenzo
 
->=20
-> >=20
-> > >=20
-> > > Is there a requirement that the PHY and MAC reset ordering be
-> > > different for EN7581 vs other chips?
-> > >=20
-> > > EN7581:
-> > >=20
-> > >   assert PHY reset
-> > >   assert MAC reset
-> > >   power on PHY
-> > >   deassert PHY reset
-> > >   deassert MAC reset
-> > >=20
-> > > others:
-> > >=20
-> > >   assert PHY reset
-> > >   assert MAC reset
-> > >   deassert PHY reset
-> > >   power on PHY
-> > >   deassert MAC reset
-> > >=20
-> > > Is there one order that would work for both?
-> >=20
-> > EN7581 requires to run phy_init()/phy_power_on() before deassert PHY
-> > reset
-> > lines.
-> >=20
-> > Regards,
-> > Lorenzo
-> >=20
-> > >=20
-> > > >  	/* PHY power on and enable pipe clock */
-> > > >  	err =3D reset_control_bulk_deassert(pcie->soc-
-> > > > >phy_resets.num_resets, pcie->phy_resets);
-> > > >  	if (err) {
-> > > > @@ -1013,14 +1029,6 @@ static int mtk_pcie_setup(struct
-> > > > mtk_gen3_pcie *pcie)
-> > > >  	 * counter since the bulk is shared.
-> > > >  	 */
-> > > >  	reset_control_bulk_deassert(pcie->soc->phy_resets.num_resets,
-> > > > pcie->phy_resets);
-> > > > -	/*
-> > > > -	 * The controller may have been left out of reset by the
-> > > > bootloader
-> > > > -	 * so make sure that we get a clean start by asserting resets
-> > > > here.
-> > > > -	 */
-> > > > -	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets,
-> > > > pcie->phy_resets);
-> > > > -
-> > > > -	reset_control_assert(pcie->mac_reset);
-> > > > -	usleep_range(10, 20);
-> > > > =20
-> > > >  	/* Don't touch the hardware registers before power up */
-> > > >  	err =3D pcie->soc->power_up(pcie);
-> > > >=20
-> > > > --=20
-> > > > 2.47.0
-> > > >=20
+Kind regards,
 
---uae1GSDO0BCp98kB
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZy3OTQAKCRA6cBh0uS2t
-rJxpAP9ZXmnP7lu21ic9O/cS1HIr4Nc/+7vYc54mxu50fzCzqwEA0VgHyeIHISW/
-ELjp8Qmv2Hot9OAiCuWq98qkpHzsQwE=
-=pefi
------END PGP SIGNATURE-----
-
---uae1GSDO0BCp98kB--
+Paul
 
