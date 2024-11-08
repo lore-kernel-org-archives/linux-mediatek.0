@@ -4,98 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 780B7D5E15E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Nov 2024 11:25:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4396D5E15A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Nov 2024 11:31:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Subject:Cc:To:
-	From:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+D8vZegrH9yIdYiz0FSD9MNRGwL9EkUqYzbNsOs/U7A=; b=unooOrgAKb6kQbuvTTqRmhzsOw
-	XIv8k9sC23QHpRhPrZSypjhcJGOYB2fzYKPXfOirWMX2lMUO80ipprbanDJ6GkBDLSljs1a4xwyUD
-	UxAsQKNd/q2io4wy3i8qwy0rRlof31ZnxQlW3UR2L4YHOFQlqmihqsCbr46OcXAeJ6R+lm0QK1Ems
-	BKt3XIsG/7wyu5NS0/+PSAruYR2yfjF4IgQnV/KRHAOclcTFtBI5d6puyVkwIFQKySS/I3y/+P7wl
-	apCw837oEt9NdSGYOT53OBjecGkqqtxojqFbcXWzzqegmY7RbQkx664iMVS7eEKHycNZWk215bLoy
-	QimJuv4w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Zzx/IL5RTlRXAUlm7aE1cyPKAoKq+HPrNZMkAfHxSCs=; b=idY+lfbU76J2PTRhHx8sPIham4
+	NrtIEVXAXITjy549EGlIt7t1bOiSLgmQy0d1ShZaCaEuEZK5YNDDN2wIkD6pNnsnONXkT/Uowlle1
+	RLUFZ26Kpta3Zk9DtMLGro6cT6nktIvZq8EclhTkntAceh50x0LfUZtrTPWggJzK9ytuUWIa+Z3Xv
+	iswL1YUZwOk9EZFjIY55nWYeV73GoJlHtmshuIzs5CwdUkRFHei2500a94ZaK2alPkVtP4hLJFiSh
+	6EH/ldGy32giLCg0yQp8hQDbzlhNafJDWumggPqPqdSXbO6qyEyiw+Q6Av0h/K7h1gZFlMZTEQh+Z
+	ECYTeUPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9N6v-0000000AKzw-191r;
-	Fri, 08 Nov 2024 11:25:05 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1t9NCe-0000000ALrx-2vl2;
+	Fri, 08 Nov 2024 11:31:00 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9MI7-0000000A7it-0jLM;
-	Fri, 08 Nov 2024 10:32:37 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-4315839a7c9so18093015e9.3;
-        Fri, 08 Nov 2024 02:32:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1731061953; x=1731666753; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:subject:cc:to:from:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=+D8vZegrH9yIdYiz0FSD9MNRGwL9EkUqYzbNsOs/U7A=;
-        b=GRsX1o6w47b8dcdZuBppMbTLuVDk9pm/HMLuecXJWTD/TxvGxy0ImVQ32qcqR2VVMf
-         Zl5VDcSva1Z/unwvJq8T95FJdhe0O4b9Xw3hzsNGZorbot1hIkYY/Gi4xZeIwxM/favb
-         jwTbCSDa2AEy6SmUB3toj//SaKY4fIfEj49SzfY23pXFhsON5JYYkN0BWaVA2G4TVKBU
-         o0rv8n3pN6NaRdrDnVCaePgwWuRp5nhADMO4hz1IyriebBFZlZ0XZlDGKuOwlxCv2uSg
-         VNOo/CqMXaiGPiQXYOB7sPsQcDx0GlcoOOPjEmYZGpwgq5+Pd3GwAT0YEHB2U4Bu+Q8D
-         deVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731061953; x=1731666753;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:subject:cc:to:from:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=+D8vZegrH9yIdYiz0FSD9MNRGwL9EkUqYzbNsOs/U7A=;
-        b=un9EhMbnYPF5hiGMibicYIdT8+Iah1yX2tHA8W4JarkK0lvaahxPtJtyEPVJ2b+Dhh
-         DMI0i+2TvouwIHNBXdpkPhhU3310olXS2LkvGZPP66AYn8QQHncIZiCwBue+g8vbTAx/
-         fTj1a/GcW5VWdNLD8A/T04UYUGYx9cWbdM4FVMHQmx3NqfEIdEQJ8JuEexTDGC169kWX
-         MU5rCrU8Y/bM30WkoZY8eMmVKaugRYZQMgpL8ffxuTzrsQqZOObcIi6irZZUnyusoVJI
-         jCHJqL862R/J/It/xpHpDAluCy3LenF9BkjDxUNihNwefE6uEFXXa5ffY5t7HsSQxcdL
-         i2vg==
-X-Forwarded-Encrypted: i=1; AJvYcCV9+lvxqjJUlUiPbdNQ3+0t0melwE4hjFHpoxh9wNVXp5D/ExaNrd/y/1o0hGOzoTGnfJSAR3uHtyhdXTDPkuU=@lists.infradead.org, AJvYcCXmv8GvLBe9N7xivlYVuHwhIGUnvHWEE1B1K3vXnOwuIgRGpWB6d+LlWOkOXN5yk1ITUWIhDMjH0hflDgv9H/c/@lists.infradead.org
-X-Gm-Message-State: AOJu0YzX17g3b/l5pkEBgYo4H4Y8RFIL+nSsQbaSlO+MDA7SiVki+5Dj
-	EKm28ESIkh3gJ3390uUuhpZGJXjINzAKHqWUtKrD076kxaSotDMy
-X-Google-Smtp-Source: AGHT+IE3C6MenK86u+gyHcdGWTkHdT9bSmorvzGgc5cR9/kKCrxrVGkOIgWKFRagg6d/LTdxX87eoA==
-X-Received: by 2002:a05:600c:5488:b0:431:9397:9ac9 with SMTP id 5b1f17b1804b1-432b7507c16mr15281755e9.15.1731061952869;
-        Fri, 08 Nov 2024 02:32:32 -0800 (PST)
-Received: from Ansuel-XPS. (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-432aa6b35c0sm97887395e9.16.2024.11.08.02.32.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 08 Nov 2024 02:32:32 -0800 (PST)
-Message-ID: <672de8c0.050a0220.a7227.c2c7@mx.google.com>
-X-Google-Original-Message-ID: <Zy3ovEx0IELRttrI@Ansuel-XPS.>
-Date: Fri, 8 Nov 2024 11:32:28 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	"AngeloGioacchino Del Regno," <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [net-next PATCH v3 2/3] net: dsa: Add Airoha AN8855 5-Port
- Gigabit DSA Switch driver
-References: <20241106122254.13228-1-ansuelsmth@gmail.com>
- <20241106122254.13228-3-ansuelsmth@gmail.com>
- <4318897e-0f1a-42c7-8f20-065dc690a112@wanadoo.fr>
+	id 1t9MaJ-0000000ACX5-0kCT;
+	Fri, 08 Nov 2024 10:51:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=Zzx/IL5RTlRXAUlm7aE1cyPKAoKq+HPrNZMkAfHxSCs=; b=SMfXSqzLYmMvB3rxzas60FjnYr
+	SsDWSyznsasSQB+r2eQSO6MdMgdMtLLfR9Ia/U+ApWZiJfxktejNiawnhVJ6NdBw8dZLV2JVoKkHY
+	iAwiIym8O7Sfk5gkIK+vLxrlbtBcrqMHxw3kR+I/SvbfxK5uJ9+V6kkAo6Mz0cYbfwhh90g3qmhcw
+	S9fdLu9831la0ZnquRoIBn+Y4HiR8w3+VWVfY+inki2Tc0mvdYhlO676MfqaDfihvdd5k//xx/lRy
+	xnlSrVTFvNmpeAl+Wphs9eFTg7++/iWwbIn1LP9oNXLZfWbU5LKoRfw80kvxQtfgc9ASkwUl+xOEH
+	G8ncGW0g==;
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1t9Ma7-0000000CHgR-1W4Y;
+	Fri, 08 Nov 2024 10:51:20 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 1D002A41DDE;
+	Fri,  8 Nov 2024 10:49:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E1600C4CED2;
+	Fri,  8 Nov 2024 10:50:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1731063059;
+	bh=dk1mu5lTqhAoWaUh/fvmV70El26cHpvXmwS6kDk07AQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=KtGpet/SFgaXzrIBIP4cB2KDeG3SXOcEEkf6H5HkrK/cyY7Drw51ToCAmBwpUX7Gp
+	 9VY1ztHsK6rUEBUHuZimo26lPWBv+i0XNdOxFCKpXJHacu4dXkNvjYx6zAuisLXKi1
+	 FX/3v9/Z5KLV7vbmkmVM0FISHrinSqZSFRd4w6IPbYKx7s27sPFOvN1zQgHSwzIuCW
+	 Ewlh+lS3Ro7BBPvl42UZiUefkqg5qoIDnJdL4bLXWn/cicLtZOrqkRF/CkfCQ7QUKc
+	 jhRx4K1An3Ws18+qK4umaPSLAZKc54oROYsTCA4EZ5Gt8PRq1foCzMXA8b6+T8x33k
+	 w+hmdDJnFmANw==
+Message-ID: <12ac2212-e176-4d39-85fe-c7afa16dc822@kernel.org>
+Date: Fri, 8 Nov 2024 11:50:50 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] memory: Switch back to struct platform_driver::remove()
+To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+Cc: Markus Mayer <mmayer@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Santosh Shilimkar <ssantosh@kernel.org>, Paul Cercueil
+ <paul@crapouillou.net>, Yong Wu <yong.wu@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Roger Quadros <rogerq@kernel.org>, Tony Lindgren <tony@atomide.com>,
+ Lukasz Luba <lukasz.luba@arm.com>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Konrad Dybcio <konradybcio@kernel.org>, Georgi Djakov <djakov@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-omap@vger.kernel.org, linux-pm@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-tegra@vger.kernel.org
+References: <1a44c5fc95616d64157d2f4a55f460476d382554.1730987047.git.ukleinek@kernel.org>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
+ FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJgPO8PBQkUX63hAAoJEBuTQ307
+ QWKbBn8P+QFxwl7pDsAKR1InemMAmuykCHl+XgC0LDqrsWhAH5TYeTVXGSyDsuZjHvj+FRP+
+ gZaEIYSw2Yf0e91U9HXo3RYhEwSmxUQ4Fjhc9qAwGKVPQf6YuQ5yy6pzI8brcKmHHOGrB3tP
+ /MODPt81M1zpograAC2WTDzkICfHKj8LpXp45PylD99J9q0Y+gb04CG5/wXs+1hJy/dz0tYy
+ iua4nCuSRbxnSHKBS5vvjosWWjWQXsRKd+zzXp6kfRHHpzJkhRwF6ArXi4XnQ+REnoTfM5Fk
+ VmVmSQ3yFKKePEzoIriT1b2sXO0g5QXOAvFqB65LZjXG9jGJoVG6ZJrUV1MVK8vamKoVbUEe
+ 0NlLl/tX96HLowHHoKhxEsbFzGzKiFLh7hyboTpy2whdonkDxpnv/H8wE9M3VW/fPgnL2nPe
+ xaBLqyHxy9hA9JrZvxg3IQ61x7rtBWBUQPmEaK0azW+l3ysiNpBhISkZrsW3ZUdknWu87nh6
+ eTB7mR7xBcVxnomxWwJI4B0wuMwCPdgbV6YDUKCuSgRMUEiVry10xd9KLypR9Vfyn1AhROrq
+ AubRPVeJBf9zR5UW1trJNfwVt3XmbHX50HCcHdEdCKiT9O+FiEcahIaWh9lihvO0ci0TtVGZ
+ MCEtaCE80Q3Ma9RdHYB3uVF930jwquplFLNF+IBCn5JRzsFNBFVDXDQBEADNkrQYSREUL4D3
+ Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
+ MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
+ OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
+ GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
+ 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
+ YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
+ 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
+ BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
+ JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
+ 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
+ YpsFAmA872oFCRRflLYACgkQG5NDfTtBYpvScw/9GrqBrVLuJoJ52qBBKUBDo4E+5fU1bjt0
+ Gv0nh/hNJuecuRY6aemU6HOPNc2t8QHMSvwbSF+Vp9ZkOvrM36yUOufctoqON+wXrliEY0J4
+ ksR89ZILRRAold9Mh0YDqEJc1HmuxYLJ7lnbLYH1oui8bLbMBM8S2Uo9RKqV2GROLi44enVt
+ vdrDvo+CxKj2K+d4cleCNiz5qbTxPUW/cgkwG0lJc4I4sso7l4XMDKn95c7JtNsuzqKvhEVS
+ oic5by3fbUnuI0cemeizF4QdtX2uQxrP7RwHFBd+YUia7zCcz0//rv6FZmAxWZGy5arNl6Vm
+ lQqNo7/Poh8WWfRS+xegBxc6hBXahpyUKphAKYkah+m+I0QToCfnGKnPqyYIMDEHCS/RfqA5
+ t8F+O56+oyLBAeWX7XcmyM6TGeVfb+OZVMJnZzK0s2VYAuI0Rl87FBFYgULdgqKV7R7WHzwD
+ uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
+ 7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
+ 5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
+In-Reply-To: <1a44c5fc95616d64157d2f4a55f460476d382554.1730987047.git.ukleinek@kernel.org>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <4318897e-0f1a-42c7-8f20-065dc690a112@wanadoo.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241108_023235_246526_44C5BB69 
-X-CRM114-Status: GOOD (  36.77  )
+X-CRM114-CacheID: sfid-20241108_105115_046939_900F2F4A 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,286 +147,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 07, 2024 at 06:53:53PM +0100, Christophe JAILLET wrote:
-> Le 06/11/2024 à 13:22, Christian Marangi a écrit :
-> > Add Airoha AN8855 5-Port Gigabit DSA switch.
-> > 
-> > The switch is also a nvmem-provider as it does have EFUSE to calibrate
-> > the internal PHYs.
-> > 
-> > Signed-off-by: Christian Marangi <ansuelsmth-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> > ---
+On 07/11/2024 15:57, Uwe Kleine-KÃ¶nig wrote:
+> After commit 0edb555a65d1 ("platform: Make platform_driver::remove()
+> return void") .remove() is (again) the right callback to implement for
+> platform drivers.
 > 
-> Hi,
+> Convert all platform drivers below drivers/memory to use .remove(), with
+> the eventual goal to drop struct platform_driver::remove_new(). As
+> .remove() and .remove_new() have the same prototypes, conversion is done
+> by just changing the structure member name in the driver initializer.
 > 
-> ...
+> A few white space changes are included to make indention consistent.
 > 
-> > +#include <linux/bitfield.h>
-> > +#include <linux/ethtool.h>
-> > +#include <linux/etherdevice.h>
-> > +#include <linux/gpio/consumer.h>
-> > +#include <linux/if_bridge.h>
-> > +#include <linux/iopoll.h>
-> > +#include <linux/mdio.h>
-> > +#include <linux/netdevice.h>
-> > +#include <linux/of_mdio.h>
-> > +#include <linux/of_net.h>
-> > +#include <linux/of_platform.h>
-> > +#include <linux/nvmem-provider.h>
-> 
-> Could be moved a few lines above to keep order.
-> 
-> > +#include <linux/phylink.h>
-> > +#include <linux/regmap.h>
-> > +#include <net/dsa.h>
-> ...
-> 
-> > +static int an8855_port_fdb_dump(struct dsa_switch *ds, int port,
-> > +				dsa_fdb_dump_cb_t *cb, void *data)
-> > +{
-> > +	struct an8855_priv *priv = ds->priv;
-> > +	struct an8855_fdb _fdb = {  };
-> 
-> Should it but reseted in the do loop below, instead of only once here?
->
+> Signed-off-by: Uwe Kleine-KÃ¶nig <u.kleine-koenig@baylibre.com>
 
-Common practice is to fill EVERY value in _fdb to not have to reset, but
-yes just as extra caution, I will move the define in the for loop.
+Thank you for the patch.
+It is too late in the cycle for me to pick it up. I will take it after
+the merge window.
 
-> > +	int banks, count = 0;
-> > +	u32 rsp;
-> > +	int ret;
-> > +	int i;
-> > +
-> > +	mutex_lock(&priv->reg_mutex);
-> > +
-> > +	/* Load search port */
-> > +	ret = regmap_write(priv->regmap, AN8855_ATWD2,
-> > +			   FIELD_PREP(AN8855_ATWD2_PORT, port));
-> > +	if (ret)
-> > +		goto exit;
-> > +	ret = an8855_fdb_cmd(priv, AN8855_ATC_MAT(AND8855_FDB_MAT_MAC_PORT) |
-> > +			     AN8855_FDB_START, &rsp);
-> > +	if (ret < 0)
-> > +		goto exit;
-> > +
-> > +	do {
-> > +		/* From response get the number of banks to read, exit if 0 */
-> > +		banks = FIELD_GET(AN8855_ATC_HIT, rsp);
-> > +		if (!banks)
-> > +			break;
-> > +
-> > +		/* Each banks have 4 entry */
-> > +		for (i = 0; i < 4; i++) {
-> > +			count++;
-> > +
-> > +			/* Check if bank is present */
-> > +			if (!(banks & BIT(i)))
-> > +				continue;
-> > +
-> > +			/* Select bank entry index */
-> > +			ret = regmap_write(priv->regmap, AN8855_ATRDS,
-> > +					   FIELD_PREP(AN8855_ATRD_SEL, i));
-> > +			if (ret)
-> > +				break;
-> > +			/* wait 1ms for the bank entry to be filled */
-> > +			usleep_range(1000, 1500);
-> > +			an8855_fdb_read(priv, &_fdb);
-> > +
-> > +			if (!_fdb.live)
-> > +				continue;
-> > +			ret = cb(_fdb.mac, _fdb.vid, _fdb.noarp, data);
-> > +			if (ret < 0)
-> > +				break;
-> > +		}
-> > +
-> > +		/* Stop if reached max FDB number */
-> > +		if (count >= AN8855_NUM_FDB_RECORDS)
-> > +			break;
-> > +
-> > +		/* Read next bank */
-> > +		ret = an8855_fdb_cmd(priv, AN8855_ATC_MAT(AND8855_FDB_MAT_MAC_PORT) |
-> > +				     AN8855_FDB_NEXT, &rsp);
-> > +		if (ret < 0)
-> > +			break;
-> > +	} while (true);
-> > +
-> > +exit:
-> > +	mutex_unlock(&priv->reg_mutex);
-> > +	return ret;
-> > +}
-> 
-> ...
-> 
-> > +	ret = regmap_set_bits(priv->regmap, AN8855_RG_RATE_ADAPT_CTRL_0,
-> > +			      AN8855_RG_RATE_ADAPT_RX_BYPASS |
-> > +			      AN8855_RG_RATE_ADAPT_TX_BYPASS |
-> > +			      AN8855_RG_RATE_ADAPT_RX_EN |
-> > +			      AN8855_RG_RATE_ADAPT_TX_EN);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	/* Disable AN if not in autoneg */
-> > +	ret = regmap_update_bits(priv->regmap, AN8855_SGMII_REG_AN0, BMCR_ANENABLE,
-> > +				 neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED ? BMCR_ANENABLE :
-> > +									      0);
-> 
-> Should 'ret' be tested here?
-> 
+Best regards,
+Krzysztof
 
-Sorry forgot to add.
-
-> > +
-> > +	if (interface == PHY_INTERFACE_MODE_SGMII &&
-> > +	    neg_mode == PHYLINK_PCS_NEG_INBAND_DISABLED) {
-> > +		ret = regmap_set_bits(priv->regmap, AN8855_PHY_RX_FORCE_CTRL_0,
-> > +				      AN8855_RG_FORCE_TXC_SEL);
-> > +		if (ret)
-> > +			return ret;
-> > +	}
-> 
-> ...
-> 
-> > +	priv->ds = devm_kzalloc(&mdiodev->dev, sizeof(*priv->ds), GFP_KERNEL);
-> > +	if (!priv->ds)
-> > +		return -ENOMEM;
-> > +
-> > +	priv->ds->dev = &mdiodev->dev;
-> > +	priv->ds->num_ports = AN8855_NUM_PORTS;
-> > +	priv->ds->priv = priv;
-> > +	priv->ds->ops = &an8855_switch_ops;
-> > +	mutex_init(&priv->reg_mutex);
-> 
-> devm_mutex_init() to slightly simplify the remove function?
-> 
-
-Wonder if there is a variant also for dsa_unregister_switch. That
-would effectively remove the need for a remove function.
-
-> > +	priv->ds->phylink_mac_ops = &an8855_phylink_mac_ops;
-> > +
-> > +	priv->pcs.ops = &an8855_pcs_ops;
-> > +	priv->pcs.neg_mode = true;
-> > +	priv->pcs.poll = true;
-> > +
-> > +	ret = an8855_sw_register_nvmem(priv);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	dev_set_drvdata(&mdiodev->dev, priv);
-> > +
-> > +	return dsa_register_switch(priv->ds);
-> > +}
-> > +
-> > +static void
-> > +an8855_sw_remove(struct mdio_device *mdiodev)
-> > +{
-> > +	struct an8855_priv *priv = dev_get_drvdata(&mdiodev->dev);
-> > +
-> > +	dsa_unregister_switch(priv->ds);
-> > +	mutex_destroy(&priv->reg_mutex);
-> > +}
-> > +
-> > +static const struct of_device_id an8855_of_match[] = {
-> > +	{ .compatible = "airoha,an8855" },
-> > +	{ /* sentinel */ },
-> 
-> Ending comma is usually not needed after a terminator.
-> 
-> > +};
-> > +
-> > +static struct mdio_driver an8855_mdio_driver = {
-> > +	.probe = an8855_sw_probe,
-> > +	.remove = an8855_sw_remove,
-> > +	.mdiodrv.driver = {
-> > +		.name = "an8855",
-> > +		.of_match_table = an8855_of_match,
-> > +	},
-> > +};
-> 
-> ...
-> 
-> > +#define	  AN8855_VA0_VTAG_EN		BIT(10) /* Per VLAN Egress Tag Control */
-> > +#define	  AN8855_VA0_IVL_MAC		BIT(5) /* Independent VLAN Learning */
-> > +#define	  AN8855_VA0_VLAN_VALID		BIT(0) /* VLAN Entry Valid */
-> > +#define AN8855_VAWD1			0x10200608
-> > +#define	  AN8855_VA1_PORT_STAG		BIT(1)
-> > +
-> > +/* Same register map of VAWD0 */
-> 
-> Not sure to follow. AN8855_VAWD0 above is 0x10200604, not 0x10200618
-> 
-
-Confusing comment. The meaning here is not "same register" but same
-register fields aka bits and mask for the register are the same of
-..604.
-
-> > +#define AN8855_VARD0			0x10200618
-> > +
-> > +enum an8855_vlan_egress_attr {
-> > +	AN8855_VLAN_EGRESS_UNTAG = 0,
-> > +	AN8855_VLAN_EGRESS_TAG = 2,
-> > +	AN8855_VLAN_EGRESS_STACK = 3,
-> > +};
-> > +
-> > +/* Register for port STP state control */
-> > +#define AN8855_SSP_P(x)			(0x10208000 + ((x) * 0x200))
-> > +#define	 AN8855_FID_PST			GENMASK(1, 0)
-> > +
-> > +enum an8855_stp_state {
-> > +	AN8855_STP_DISABLED = 0,
-> > +	AN8855_STP_BLOCKING = 1,
-> > +	AN8855_STP_LISTENING = 1,
-> 
-> Just wondering if this 0, 1, *1*, 2, 3 was intentional?
-> 
-
-Yes blocking and listening is the same, I will follow suggestion by
-Andrew and make blocking = listening.
-
-> > +	AN8855_STP_LEARNING = 2,
-> > +	AN8855_STP_FORWARDING = 3
-> > +};
-> > +
-> > +/* Register for port control */
-> > +#define AN8855_PCR_P(x)			(0x10208004 + ((x) * 0x200))
-> > +#define	  AN8855_EG_TAG			GENMASK(29, 28)
-> > +#define	  AN8855_PORT_PRI		GENMASK(26, 24)
-> > +#define	  AN8855_PORT_TX_MIR		BIT(20)
-> > +#define	  AN8855_PORT_RX_MIR		BIT(16)
-> > +#define	  AN8855_PORT_VLAN		GENMASK(1, 0)
-> > +
-> > +enum an8855_port_mode {
-> > +	/* Port Matrix Mode: Frames are forwarded by the PCR_MATRIX members. */
-> > +	AN8855_PORT_MATRIX_MODE = 0,
-> > +
-> > +	/* Fallback Mode: Forward received frames with ingress ports that do
-> > +	 * not belong to the VLAN member. Frames whose VID is not listed on
-> > +	 * the VLAN table are forwarded by the PCR_MATRIX members.
-> > +	 */
-> > +	AN8855_PORT_FALLBACK_MODE = 1,
-> > +
-> > +	/* Check Mode: Forward received frames whose ingress do not
-> > +	 * belong to the VLAN member. Discard frames if VID ismiddes on the
-> > +	 * VLAN table.
-> > +	 */
-> > +	AN8855_PORT_CHECK_MODE = 1,
-> 
-> Just wondering if this 0, 1, *1*, 3 was intentional?
-> 
-
-Nope a typo. Thanks for noticing this.
-
-> > +
-> > +	/* Security Mode: Discard any frame due to ingress membership
-> > +	 * violation or VID missed on the VLAN table.
-> > +	 */
-> > +	AN8855_PORT_SECURITY_MODE = 3,
-> > +};
-> ...
-> 
-> CJ
-
--- 
-	Ansuel
 
