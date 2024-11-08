@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABE40D5E15E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Nov 2024 11:32:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2404ED5E15E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Nov 2024 11:53:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZSxeVaPlRH4R/1jmcFUVY/CzYVAx0pe3ADP7c3aPo+8=; b=s2WJGMZYuevDT9yj+TNkkql1kN
-	bGXVr6B9fWcDP+b2irBFr+311Ht0RtlpiuFKStPLovHTnyBhitTOnsGkefwGYP6z8/zmrvWeJeG5a
-	51Y/dT9gWxAtiAJd21iDfq8CPyzz5pZl4V0E6MBUIKuDxfeE6XCCRjtfjizf9qgHBMag+Ao0wimWO
-	y732pOo4ROCxURQ2DcpEwtG8CPc9/Kol4Y/OPLBs3990gktiFmkG3RMYCjKaAvDiICJAnvesDdfvc
-	F3GmgD6NkWRvMIFQXqh3mHuJhQUFMtzp6ECBKtyVe4QjkQ75GDigrzWqsXIHh4blsTUrsBdZYBWDT
-	9SuoqKJg==;
+	bh=XulOllBIkuytFC+Y8jjBL4AZiw+lKhgqpGZMJSaBx5k=; b=DdKwVc08hpWbdeRBNSoMT5yzNX
+	PhfYk/Ghjmib4xWHk4d9Kl9qvz7kdTpu2tmDg2OsJ3bv2dAkj1ufwu57imrRYIG34rz+/uY2lZZTN
+	x/kqXOHuvEqQM+nOO4ybjHoTWz94ssMMwM+yIUtwI1TQP7sQVUYm/ilo4qLVn5Kib0mzcy5X2BjQD
+	hzJVYg+BrYX6nAWnac2iaMhkrrS0YUuokGXr0iXzbkpJGz22RP5ZswwanHapcnVdeUVkhpAjLuIWE
+	0ghz9X5YSKczy7VMg0elCYaPhpSV66v+03MaL3bAkHEbuTGuHBd8FXcf2X8TYm6KSahglFRfj9En2
+	/SZPYaNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9NEN-0000000AM5C-2Mox;
-	Fri, 08 Nov 2024 11:32:47 +0000
+	id 1t9NXu-0000000AQ5E-3gno;
+	Fri, 08 Nov 2024 11:52:58 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9Mct-0000000ACk6-1znO;
-	Fri, 08 Nov 2024 10:54:33 +0000
+	id 1t9Ms5-0000000AIDj-1PNB;
+	Fri, 08 Nov 2024 11:09:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
 	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=ZSxeVaPlRH4R/1jmcFUVY/CzYVAx0pe3ADP7c3aPo+8=; b=davprMUwoZuw9s1xZM2hywGQxR
-	icVbkLwClj9aguIEBU9TkSS33HOsACjshGeh4aC9gDW+QMwzd8LArSJGbeH2D/AlZBlRvFYo85/zg
-	iw6mu+jZk0Era68MYkpt4cB9kSM5Z2rIyMCB+uKivuGHFBoiUTZoKeujzGJnGdkTMl+voC+O2QQv+
-	q3g3OvvHEASdwLMGN0SLWIhAJEV89kOR86jIFH8cp37qNzz3HYnFxFdMa1CEGYEUuOVZX0CK3fzdz
-	g+Nzap66O20sc2E/4hWoiJHA+EenRc6hupDPl0B7r7PPVhAJV4s6ThatZndV8sLGfCZrN5c2pVLry
-	hMd3oVnQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:60982)
+	bh=XulOllBIkuytFC+Y8jjBL4AZiw+lKhgqpGZMJSaBx5k=; b=c1xowD7s4OuJURB6/lfb3SpnaM
+	WCf+aB8UmNdac55vpex+o8Z4RQxK3FPf7BaUvS3r9k4rnVslK0z49jwLb/WjuUCazjE78wGNNcQUg
+	U+i9FcmUCfXGvWlFZcYTXhbH5QEcuEQ2BlyxacYunkZSSOpiiTYje7VyI7PZYl+xIUls7OsGhYEcE
+	SOjOS2pZ1DhtQv8jGu5HWWtkQH3/E2DHnEdNnZyoFKKgoF9pALFMgjUsgGY9QM1wUpUaMa20JI0fb
+	qGDoN0d4LJmWqcP22iXd73XqPWk92zq073ALIAv2fKHzkJkRt4jqD5EhycRwy3VBshLroYG63IjGr
+	X85XvVKA==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:43764)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <linux@armlinux.org.uk>)
-	id 1t9Maf-0004wK-1a;
-	Fri, 08 Nov 2024 10:51:46 +0000
+	id 1t9Mrt-0004yj-0n;
+	Fri, 08 Nov 2024 11:09:33 +0000
 Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
 	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1t9Mab-0002DN-1v;
-	Fri, 08 Nov 2024 10:51:41 +0000
-Date: Fri, 8 Nov 2024 10:51:41 +0000
+	id 1t9Mrq-0002ER-17;
+	Fri, 08 Nov 2024 11:09:30 +0000
+Date: Fri, 8 Nov 2024 11:09:30 +0000
 From: "Russell King (Oracle)" <linux@armlinux.org.uk>
 To: Christian Marangi <ansuelsmth@gmail.com>
 Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
@@ -66,18 +66,18 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	upstream@airoha.com
-Subject: Re: [net-next PATCH v3 2/3] net: dsa: Add Airoha AN8855 5-Port
- Gigabit DSA Switch driver
-Message-ID: <Zy3tPeWCHOH-CMoy@shell.armlinux.org.uk>
+Subject: Re: [net-next PATCH v3 3/3] net: phy: Add Airoha AN8855 Internal
+ Switch Gigabit PHY
+Message-ID: <Zy3xaviqqT6X8Ows@shell.armlinux.org.uk>
 References: <20241106122254.13228-1-ansuelsmth@gmail.com>
- <20241106122254.13228-3-ansuelsmth@gmail.com>
+ <20241106122254.13228-4-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241106122254.13228-3-ansuelsmth@gmail.com>
+In-Reply-To: <20241106122254.13228-4-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241108_025403_543616_BDA599F7 
-X-CRM114-Status: GOOD (  17.44  )
+X-CRM114-CacheID: sfid-20241108_030945_407390_D6B633C8 
+X-CRM114-Status: GOOD (  14.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,106 +92,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 06, 2024 at 01:22:37PM +0100, Christian Marangi wrote:
-> +static int an8855_port_enable(struct dsa_switch *ds, int port,
-> +			      struct phy_device *phy)
+On Wed, Nov 06, 2024 at 01:22:38PM +0100, Christian Marangi wrote:
+> +/* MII Registers Page 1 */
+> +#define AN8855_PHY_EXT_REG_14			0x14
+> +#define   AN8855_PHY_EN_DOWN_SHFIT		BIT(4)
+
+Shouldn't "AN8855_PHY_EN_DOWN_SHFIT" be "AN8855_PHY_EN_DOWN_SHIFT"
+(notice the I and F are swapped) ?
+
+> +static int an8855_get_downshift(struct phy_device *phydev, u8 *data)
 > +{
+> +	int saved_page;
+> +	int val;
 > +	int ret;
 > +
-> +	ret = an8855_port_set_status(ds->priv, port, true);
+> +	saved_page = phy_select_page(phydev, AN8855_PHY_PAGE_EXTENDED_1);
+> +	if (saved_page >= 0)
+> +		val = __phy_read(phydev, AN8855_PHY_EXT_REG_14);
+> +	ret = phy_restore_page(phydev, saved_page, val);
 > +	if (ret)
 > +		return ret;
+
+This function is entirely broken.
+
+phy_restore_page() will return "val" if everything went successfully,
+so here you end up returning "val" via this very return statement
+without executing any further code in the function. The only time
+further code will be executed is if "val" was successfully read as
+zero.
+
+Please use the helpers provided:
+
+	ret = phy_read_paged(phydev, AN8855_PHY_PAGE_EXTENDED_1,
+			     AN8855_PHY_EXT_REG_14);
+	if (ret < 0)
+		return ret;
+
+ret now contains what you're using as "val" below. No need to open code
+phy_read_paged().
+
 > +
-> +	if (dsa_is_user_port(ds, port))
-> +		phy_support_asym_pause(phy);
+> +	*data = val & AN8855_PHY_EXT_REG_14 ? DOWNSHIFT_DEV_DEFAULT_COUNT :
+> +					      DOWNSHIFT_DEV_DISABLE;
 
-This is unnecessary if you've set the phylink capabilities correctly
-because phylink_bringup_phy() will setup the PHY accordingly.
+Here, the test is against the register number rather than the bit that
+controls downshift. Shouldn't AN8855_PHY_EXT_REG_14 be
+AN8855_PHY_EN_DOWN_SH(F)I(F)T ?
 
-> +static u32 en8855_get_phy_flags(struct dsa_switch *ds, int port)
+> +static int an8855_set_downshift(struct phy_device *phydev, u8 cnt)
 > +{
-> +	struct an8855_priv *priv = ds->priv;
-> +
-> +	/* PHY doesn't need calibration */
-> +	if (!priv->phy_require_calib)
-> +		return 0;
-> +
-> +	/* Use BIT(0) to signal calibration needed */
-> +	return BIT(0);
-
-This should be a #define somewhere that preferably includes the PHY
-name so we have an idea in future which PHY driver is going to be
-making use of this random bit.
-
-> +static struct phylink_pcs *
-> +an8855_phylink_mac_select_pcs(struct phylink_config *config,
-> +			      phy_interface_t interface)
-> +{
-> +	struct dsa_port *dp = dsa_phylink_to_port(config);
-> +	struct an8855_priv *priv = dp->ds->priv;
-> +
-> +	switch (interface) {
-> +	case PHY_INTERFACE_MODE_SGMII:
-> +	case PHY_INTERFACE_MODE_2500BASEX:
-> +		return &priv->pcs;
-> +	default:
-> +		return NULL;
-> +	}
-> +}
-> +
-> +static void
-> +an8855_phylink_mac_config(struct phylink_config *config, unsigned int mode,
-> +			  const struct phylink_link_state *state)
-> +{
-> +	struct dsa_port *dp = dsa_phylink_to_port(config);
-> +	struct dsa_switch *ds = dp->ds;
-> +	struct an8855_priv *priv;
-> +	int port = dp->index;
-> +
-> +	priv = ds->priv;
-> +
-> +	switch (port) {
-> +	case 0:
-> +	case 1:
-> +	case 2:
-> +	case 3:
-> +	case 4:
-> +		return;
-> +	case 5:
-> +		break;
-> +	default:
-> +		dev_err(ds->dev, "unsupported port: %d", port);
-> +		return;
-> +	}
-
-	if (port != 5) {
-		if (port > 5)
-			dev_err(ds->dev, "unsupported port: %d", port);
-		return;
-	}
-
-is simpler, no?
-
-> +static int an8855_pcs_config(struct phylink_pcs *pcs, unsigned int neg_mode,
-> +			     phy_interface_t interface,
-> +			     const unsigned long *advertising,
-> +			     bool permit_pause_to_mac)
-> +{
-> +	struct an8855_priv *priv = container_of(pcs, struct an8855_priv, pcs);
-> +	u32 val;
+> +	int saved_page;
 > +	int ret;
 > +
-> +	switch (interface) {
-> +	case PHY_INTERFACE_MODE_RGMII:
-> +		return 0;
+> +	saved_page = phy_select_page(phydev, AN8855_PHY_PAGE_EXTENDED_1);
+> +	if (saved_page >= 0) {
+> +		if (cnt != DOWNSHIFT_DEV_DISABLE)
+> +			ret = __phy_set_bits(phydev, AN8855_PHY_EXT_REG_14,
+> +					     AN8855_PHY_EN_DOWN_SHFIT);
+> +		else
+> +			ret = __phy_clear_bits(phydev, AN8855_PHY_EXT_REG_14,
+> +					       AN8855_PHY_EN_DOWN_SHFIT);
+> +	}
+> +
+> +	return phy_restore_page(phydev, saved_page, ret);
 
-This shouldn't happen. First, in an8855_phylink_mac_select_pcs(), you
-don't return a PCS in this mode. Second, phylink is highly unlikely to
-switch from SGMII/2500baseX to RGMII mode. Third, in commit
-486dc391ef43 ("net: phylink: allow mac_select_pcs() to remove a PCS")
-will ensure that if phylink does do such a switch, because
-an8855_phylink_mac_select_pcs() returns NULL for RGMII, these PCS
-functions will never be called for RGMII modes.
+This entire thing can be simplified to:
+
+	u16 ds = cnt != DOWNSHIFT_DEV_DISABLE ? AN8855_PHY_EN_DOWN_SHFIT: 0;
+
+	return phy_modify_paged(phydev, AN8855_PHY_PAGE_EXTENDED_1,
+				AN8855_PHY_EXT_REG_14, AN8855_PHY_EN_DOWN_SHFIT,
+				ds);
 
 Thanks.
 
