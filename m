@@ -4,76 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7DEFD6409C
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Nov 2024 01:32:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4499D5E360
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Nov 2024 09:22:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c+Mddxw0nycH3NL+gNk+Txaw/a5wM8smB6XZ54DJeqQ=; b=pGVATVFXfAGjDPHvqBGetX7p8h
-	QMnBB7HDaduz5jIJaPtd/5oj1pNEwhO2956QmSyB9U3IJw8tGntGD1qYo/kZgNsFjVBjyjR5TNg+2
-	ijxkvF4c8432Kz995lRw9In0ZCI/GLbwMuuyQVM+1Vp5j+47J0DI5slKBo7hR9bZw1bIXocXQMVzN
-	6305/6cAn8FOPcxQU6WutVSRcabX9oqfH6yfKzDmKUP6f6P9e/Jo/3BijDY7hRWY/35DPfgk+kx+w
-	dNz9uhqz8POfSXlU8BvEVMqBp+HrS9NbS5ft6d1rjUXothCVVcNaK2VloqERMlh4ekkaVm2LAa+FN
-	FU7H9Vow==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=OF5SCwPrDcmkoojWBdBsivPVEi1IDZLFgt7fAIEnaTc=; b=25vz6ss489J640B6LxMI1mHhIr
+	4oit7+VoBGHQUJ1X7RFMDi7lqbRGqVye2fzNGPL/4EECfEQDUbfIB0iq9J6mi3GmAHLjZI3mTauAD
+	0iS5eecJeW4cM8VKjzjae4DmFu7hBTe3DttH2nlmExlz7Oz/4YOyOHmY9F82fc5mqcN+VZaRwtk3e
+	tkdoI5mnCl8izYYQ11C+TLFUHz2xtWaeRSY5YSDeCcY+07mpBdBekz3JuUx3v4+/DrKAfVLl3xsS4
+	3V/BmdajfQMUY11CraVpCN5FXVhiMeHdtl3Nx4gpPVNnxfN50tAiNcvzswBEkSwrlFbAqe6S1zW3L
+	LoPD2naQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9aKY-0000000CRsT-1eQm;
-	Sat, 09 Nov 2024 01:32:02 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1t9hfl-0000000CyTR-2UyO;
+	Sat, 09 Nov 2024 09:22:25 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9Yya-0000000CILD-2Hf3;
-	Sat, 09 Nov 2024 00:05:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=c+Mddxw0nycH3NL+gNk+Txaw/a5wM8smB6XZ54DJeqQ=; b=TtMCBMFcQjQSW2xZE7aYwAcvvU
-	OVSj90eVQOXERJywz2aNaXd+XUuuqm16LwbCszwvLxbszgWk75I483u5Hhsdo7vERKZyBGMx/HaNE
-	xdxVVofVVbf9628hz7ECQgre2H+V1WkJPMwcP+tlnkvP174+9kVcHkyC2Ij7SMAzPDLNrcrtLiUoB
-	JT7rw8IX1FrlVFHvqbau3itX2uNfMhptWKmjtPTwfId5mY+R15hqFCRKYWLhP6cjNKF1NxAnhijGr
-	+Hp5yB2+zBQQvmePZe5M+36Qg8RfHIfiV8xDNAFwHWHNLKnbH3OcpZkd/l3fGZBPF1oqcLl4iMa7M
-	vQTsWBdA==;
-Received: from dfw.source.kernel.org ([139.178.84.217])
-	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9YyW-0000000CP1H-1R2O;
-	Sat, 09 Nov 2024 00:05:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 1B4B85C59ED;
-	Sat,  9 Nov 2024 00:04:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 780DAC4CECD;
-	Sat,  9 Nov 2024 00:05:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1731110706;
-	bh=+4fxxGmLXgCRdQeWWK38mQCO3w85tyvAuFsjP1DNG7A=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=IWQEG8O+6qk2aUsaF4fKzZHzlRNZS7Z0mxte8F9Wcf6ugVTwQLoN72UEBiRC6gMGy
-	 ZffpVQPnP+EL5hJkIp+mQURF5Xno0OqX5hfM/6hWsbSgH3G5LJYJa7XlpjRT8Qqqa2
-	 rK4dFQ36MVTM0ZO0krYbo8LC859OYA35OuGBI1bT9y6KwrtvH23lEm9Y4bXSEFbqY3
-	 kJe107rhcaoPX/me1mTCLuNpwtLZe6CGFg6xqCagifpuFEfFjSkAwhguVIGO83kjWd
-	 afSr8aunRrm593AxsjJRYEwvuZOGnOuARcrqoyDqxDCsWnJL9qCaWLsTZLt2FI+0Gu
-	 Ctt6SZv66LqLg==
-From: Mark Brown <broonie@kernel.org>
-To: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, 
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
- Tang Bin <tangbin@cmss.chinamobile.com>
-Cc: linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20241025090938.3480-1-tangbin@cmss.chinamobile.com>
-References: <20241025090938.3480-1-tangbin@cmss.chinamobile.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8183: Remove unnecessary variable
- assignments
-Message-Id: <173111070418.137066.13301486224854553399.b4-ty@kernel.org>
-Date: Sat, 09 Nov 2024 00:05:04 +0000
+	id 1t9hfh-0000000CyRi-2JcX;
+	Sat, 09 Nov 2024 09:22:23 +0000
+X-UUID: 17021ba69e7c11efa216b1d71e6e1362-20241109
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.38,REQID:e45ddae5-ffbd-47ae-b380-f8425b9c0cf3,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:82c5f88,CLOUDID:bb0a940dd6dc7d1943b6e6fdaf5ba797,BulkI
+	D:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,URL:0
+	,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:
+	NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 17021ba69e7c11efa216b1d71e6e1362-20241109
+Received: from mail.kylinos.cn [(10.44.16.175)] by mailgw.kylinos.cn
+	(envelope-from <zhangheng@kylinos.cn>)
+	(Generic MTA)
+	with ESMTP id 1099126974; Sat, 09 Nov 2024 17:22:07 +0800
+Received: from mail.kylinos.cn (localhost [127.0.0.1])
+	by mail.kylinos.cn (NSMail) with SMTP id E45B0E0080FF;
+	Sat,  9 Nov 2024 17:22:06 +0800 (CST)
+X-ns-mid: postfix-672F29BE-15679110
+Received: from kylin-pc.. (unknown [172.25.130.133])
+	by mail.kylinos.cn (NSMail) with ESMTPA id 2FC3BE0080FF;
+	Sat,  9 Nov 2024 17:22:03 +0800 (CST)
+From: zhangheng <zhangheng@kylinos.cn>
+To: corbet@lwn.net,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: linux-doc@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	zhangheng <zhangheng@kylinos.cn>
+Subject: [PATCH 4/4] docs: driver-api: firmware_loader: Convert to platform remove callback returning void
+Date: Sat,  9 Nov 2024 17:22:02 +0800
+Message-ID: <20241109092202.4040669-1-zhangheng@kylinos.cn>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-9b746
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241109_000513_287686_F65C7E86 
-X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-CacheID: sfid-20241109_012221_930271_9CA7CA61 
+X-CRM114-Status: UNSURE (   9.29  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,38 +83,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 25 Oct 2024 17:09:38 +0800, Tang Bin wrote:
-> In the function mt8183_dai_i2s_register, the variable
-> 'ret' is redundant, thus remove it.
-> 
-> 
+The .remove() callback for a platform driver returns an int which makes
+many driver authors wrongly assume it's possible to do error handling by
+returning an error code. However the value returned is (mostly) ignored
+and this typically results in resource leaks. To improve here there is a
+quest to make the remove callback return void.
 
-Applied to
+Trivially convert the mediatek drm drivers from always returning zero in
+the remove callback to the void returning variant.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+Signed-off-by: zhangheng <zhangheng@kylinos.cn>
+---
+ Documentation/driver-api/firmware/fw_upload.rst | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Thanks!
-
-[1/1] ASoC: mediatek: mt8183: Remove unnecessary variable assignments
-      commit: f3c889745cd3500bcbce6f6c8cb7e343f067ac18
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+diff --git a/Documentation/driver-api/firmware/fw_upload.rst b/Documentat=
+ion/driver-api/firmware/fw_upload.rst
+index edf1d0c5e7c3..b339265655ee 100644
+--- a/Documentation/driver-api/firmware/fw_upload.rst
++++ b/Documentation/driver-api/firmware/fw_upload.rst
+@@ -69,13 +69,12 @@ function calls firmware_upload_unregister() such as::
+ 		return 0;
+ 	}
+=20
+-	static int m10bmc_sec_remove(struct platform_device *pdev)
++	static void m10bmc_sec_remove(struct platform_device *pdev)
+ 	{
+ 		struct m10bmc_sec *sec =3D dev_get_drvdata(&pdev->dev);
+=20
+ 		firmware_upload_unregister(sec->fwl);
+ 		kfree(sec->fw_name);
+-		return 0;
+ 	}
+=20
+ firmware_upload_register
+--=20
+2.45.2
 
 
