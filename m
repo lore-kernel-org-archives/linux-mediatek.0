@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A993D5E375
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Nov 2024 15:21:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BA1DD5E373
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Nov 2024 15:23:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M6Zla5ZKOb62SarLRgKgI6y77r/jSiZOU0W1xzRUrws=; b=Ko+J6lnfSiJ53kxArDmKWMzF7y
-	RDtaZL1y6x2mpGzrjre6PQEQDO7NwFa++M0RJePf16r2oB17SVw1TOc1/2xNxi6mx6Bpoz5kVcUwH
-	8tvv4Zl1SjAnmW/ZJxXoiMoT2cYB/wL/DH67kMTvZgRw1lGu+w77pazkx0bPvoF0i0wB4uxBnh8cf
-	hXEJ7EqZiNS8TzH6IrTRjUrRkkPUGDA7JPrdBem7TvBO6Ty+53lt5Fw2kFxIXES/BDhy/si2VfZSM
-	OauPSdj9EJaPHQxwagOX2a3zatB8A/3syIfBNgeTCAZjlW82YROZXd96VuKIcejXpoI+Q1jO4OeQF
-	0wa2kpXw==;
+	bh=rYoftX9MYsgzzu/6rGSN6nv7vYU7xKCcdFz3gJAEJiU=; b=gWjOGEbm2SViyDpgwyaHgiislZ
+	b3P/cPj/Da/ra9mQgFntWuT1Yt8ssTiXq4KTDQjPB+/b91ohq7TENZ6T7Oy0VCV+1go9dkvOzfMtw
+	wnNFowBIjPuJ2yKuWFNsseuH6ur4405tocCtMJlvp+2FwCTiH4S9vtErGYhNblxIXEuoEYfWxa3A7
+	gB79I4EF+9Xjs6ff4wcIofeeqgy/OAYZtmOnVqMii0U6vKLyUpkWLOAw69mpXVYgxZhNsBbqPq9ck
+	hQ9QXiGYZqawXkLx8wq0WM4TkAQnIVz2pY7HendTdHhV9RhtUsXhuFoUpvLuLKY6otrCg8UoHrsNP
+	gPX5HsIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9nHM-0000000DYAY-15hN;
-	Sat, 09 Nov 2024 15:21:36 +0000
+	id 1t9nJ5-0000000DYJh-10tN;
+	Sat, 09 Nov 2024 15:23:23 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9nDt-0000000DXdm-1iDu;
-	Sat, 09 Nov 2024 15:18:02 +0000
+	id 1t9nDv-0000000DXeS-3B3F;
+	Sat, 09 Nov 2024 15:18:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1731165479;
-	bh=eLx0mv3l0t8dDseyOxotcA8WePZEOhSvmmm8Mnw0iNE=;
+	s=mail; t=1731165482;
+	bh=VbPbfj2ctRAP7owi1u+FSVqiTAv43zAlTWjFAzykWdw=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=qJ8ZKYZxmmnZiHe56sAIWXftljzD5x88KjNm1b6nES+TogWK5noUiQlOYrahcvqXq
-	 Gau64MLdkhHL72g393CjhbW7MNNS92Orb+VVOqCCqQWloVsvOELuLE5nBzkoPzr2qj
-	 PyD7ocZ2CGbkiulK2TKgw7Ny3xwBcwW47DcXGpECHdri+0CJPMl7LCjlljMmhFvNEo
-	 zP58izllyVEQnKXl0mf4eKqCPAlhC/ROIvJJy2LkhHLfhHlGjR1VTmgioKQnW8y++W
-	 YQwPCNTOoN9yxWoMNipCtzM7nFDnBTCdUl1DDaqGBeAa/cK9fN2KMjXGsA/lWWRwHP
-	 8y4/ir22ssN5g==
+	b=AQuz4r6DCtf2noiphodcPsyMjNhCWHzC7OFaf3i0doW0h5QhpRcI6cL+Y2nx4lWqs
+	 Rvn14k7+Lw5R0yVAYo2ZGZ1QDIMwMZLxboBq7jtDCazRoUia85r/A1pm7T8tD+9uZ4
+	 /TCm9A4U26ctmSavimZ3TiEJ6rQLzfYZaBUtuR/CzSwG+NK6pMM0ZpHwcCXWcD5Hb6
+	 Tni2tec56rPYJSooYXTXc70jIAHKDXkeuAcLJEI4j/c92ztlQCIyR6kC4fH6OCkj6k
+	 gRbHHB+SGjVHxONCkO/rPiLLU6PkVD8mx5OzbKAMiVXIpEfgA66ZpRRBPIek4VQYXb
+	 Mp0cki2sj0JTA==
 Received: from [192.168.1.63] (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6C05117E3696;
-	Sat,  9 Nov 2024 16:17:56 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B06E717E36C6;
+	Sat,  9 Nov 2024 16:17:59 +0100 (CET)
 From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Sat, 09 Nov 2024 10:16:32 -0500
-Subject: [PATCH v2 1/2] net: stmmac: dwmac-mediatek: Fix inverted handling
- of mediatek,mac-wol
+Date: Sat, 09 Nov 2024 10:16:33 -0500
+Subject: [PATCH v2 2/2] arm64: dts: mediatek: Set mediatek,mac-wol on DWMAC
+ node for all boards
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20241109-mediatek-mac-wol-noninverted-v2-1-0e264e213878@collabora.com>
+Message-Id: <20241109-mediatek-mac-wol-noninverted-v2-2-0e264e213878@collabora.com>
 References: <20241109-mediatek-mac-wol-noninverted-v2-0-0e264e213878@collabora.com>
 In-Reply-To: <20241109-mediatek-mac-wol-noninverted-v2-0-0e264e213878@collabora.com>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -73,8 +73,9 @@ Cc: kernel@collabora.com, netdev@vger.kernel.org,
  =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241109_071801_619347_09BA6F4B 
-X-CRM114-Status: GOOD (  12.06  )
+X-CRM114-CacheID: sfid-20241109_071803_963128_3F1BEE9D 
+X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,33 +90,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mediatek,mac-wol property is being handled backwards to what is
-described in the binding: it currently enables PHY WOL when the property
-is present and vice versa. Invert the driver logic so it matches the
-binding description.
+Due to the mediatek,mac-wol property previously being handled backwards
+by the dwmac-mediatek driver, its use in the DTs seems to have been
+inconsistent.
 
-Fixes: fd1d62d80ebc ("net: stmmac: replace the use_phy_wol field with a flag")
+Now that the driver has been fixed, correct this description. All the
+currently upstream boards support MAC WOL, so add the mediatek,mac-wol
+property to the missing ones.
+
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
- drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt2712-evb.dts                   | 1 +
+ arch/arm64/boot/dts/mediatek/mt8195-demo.dts                  | 1 +
+ arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts | 1 +
+ 3 files changed, 3 insertions(+)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-index f8ca81675407ade786f2b9a38c63511a0b7fb705..c9636832a570a211a53f9480b0a8aec56509199f 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-@@ -589,9 +589,9 @@ static int mediatek_dwmac_common_data(struct platform_device *pdev,
+diff --git a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+index c84c47c1352fba49d219fb8ace17a74953927fdc..0449686bd06ba17c5798aafdfb3fa071fca7e2f2 100644
+--- a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+@@ -115,6 +115,7 @@ &eth {
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-0 = <&eth_default>;
+ 	pinctrl-1 = <&eth_sleep>;
++	mediatek,mac-wol;
+ 	status = "okay";
  
- 	plat->mac_interface = priv_plat->phy_mode;
- 	if (priv_plat->mac_wol)
--		plat->flags |= STMMAC_FLAG_USE_PHY_WOL;
--	else
- 		plat->flags &= ~STMMAC_FLAG_USE_PHY_WOL;
-+	else
-+		plat->flags |= STMMAC_FLAG_USE_PHY_WOL;
- 	plat->riwt_off = 1;
- 	plat->maxmtu = ETH_DATA_LEN;
- 	plat->host_dma_width = priv_plat->variant->dma_bit_mask;
+ 	mdio {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+index 31d424b8fc7cedef65489392eb279b7fd2194a4a..c12684e8c449b2d7b3b3a79086925bfe5ae0d8f8 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+@@ -109,6 +109,7 @@ &eth {
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-0 = <&eth_default_pins>;
+ 	pinctrl-1 = <&eth_sleep_pins>;
++	mediatek,mac-wol;
+ 	status = "okay";
+ 
+ 	mdio {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts b/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
+index e2e75b8ff91880711c82f783c7ccbef4128b7ab4..4985b65925a9ed10ad44a6e58b9657a9dd48751f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
+@@ -271,6 +271,7 @@ &eth {
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-0 = <&eth_default_pins>;
+ 	pinctrl-1 = <&eth_sleep_pins>;
++	mediatek,mac-wol;
+ 	status = "okay";
+ 
+ 	mdio {
 
 -- 
 2.47.0
