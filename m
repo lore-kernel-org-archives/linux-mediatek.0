@@ -4,71 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD3C0D64070
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Nov 2024 17:26:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7DEFD6409C
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Nov 2024 01:32:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tYZrDcE7I1HFzbqCHDXhx+d8qBGIhXOz/Pay6a/54ts=; b=OBUanviS1H2L17FfcIeAGPjAWf
-	naEk0q9JDlWMSYXWjWlQYCJf975PAU7gAL4DTKw8DH8XVX5v//k0Qel4Zjmfsvlsh0/3JmCmkK73G
-	nP2cYjT3ZCJ/0yvhlVut6sjpxfI4LOJJYbBI4EXL6TVvyg4Mw4DdGIbTxLDSwrQ9Yq+w9wG5BnupN
-	46qHTF+p3axXEIpsO7t+3/UTAtdnyN38ZA0ipCXFbuasuJeJDNY+coF221l7Ps1D8f3k5KJF6/QAx
-	DcfFZ6WlXj5eK9bK+eD7+ynVbV7Mvt2TCTsxhk8k3SFHTS5JyotOgpKS7tFb/OWcbOKdhgA+sYx4D
-	MRuR09LQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=c+Mddxw0nycH3NL+gNk+Txaw/a5wM8smB6XZ54DJeqQ=; b=pGVATVFXfAGjDPHvqBGetX7p8h
+	QMnBB7HDaduz5jIJaPtd/5oj1pNEwhO2956QmSyB9U3IJw8tGntGD1qYo/kZgNsFjVBjyjR5TNg+2
+	ijxkvF4c8432Kz995lRw9In0ZCI/GLbwMuuyQVM+1Vp5j+47J0DI5slKBo7hR9bZw1bIXocXQMVzN
+	6305/6cAn8FOPcxQU6WutVSRcabX9oqfH6yfKzDmKUP6f6P9e/Jo/3BijDY7hRWY/35DPfgk+kx+w
+	dNz9uhqz8POfSXlU8BvEVMqBp+HrS9NbS5ft6d1rjUXothCVVcNaK2VloqERMlh4ekkaVm2LAa+FN
+	FU7H9Vow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9Skd-0000000BNyz-3NKC;
-	Fri, 08 Nov 2024 17:26:27 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1t9aKY-0000000CRsT-1eQm;
+	Sat, 09 Nov 2024 01:32:02 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9SiB-0000000BNUz-18yQ;
-	Fri, 08 Nov 2024 17:23:56 +0000
+	id 1t9Yya-0000000CILD-2Hf3;
+	Sat, 09 Nov 2024 00:05:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=c+Mddxw0nycH3NL+gNk+Txaw/a5wM8smB6XZ54DJeqQ=; b=TtMCBMFcQjQSW2xZE7aYwAcvvU
+	OVSj90eVQOXERJywz2aNaXd+XUuuqm16LwbCszwvLxbszgWk75I483u5Hhsdo7vERKZyBGMx/HaNE
+	xdxVVofVVbf9628hz7ECQgre2H+V1WkJPMwcP+tlnkvP174+9kVcHkyC2Ij7SMAzPDLNrcrtLiUoB
+	JT7rw8IX1FrlVFHvqbau3itX2uNfMhptWKmjtPTwfId5mY+R15hqFCRKYWLhP6cjNKF1NxAnhijGr
+	+Hp5yB2+zBQQvmePZe5M+36Qg8RfHIfiV8xDNAFwHWHNLKnbH3OcpZkd/l3fGZBPF1oqcLl4iMa7M
+	vQTsWBdA==;
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1t9YyW-0000000CP1H-1R2O;
+	Sat, 09 Nov 2024 00:05:15 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E50695C5B33;
-	Fri,  8 Nov 2024 17:23:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B54ABC4CECD;
-	Fri,  8 Nov 2024 17:23:53 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1B4B85C59ED;
+	Sat,  9 Nov 2024 00:04:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 780DAC4CECD;
+	Sat,  9 Nov 2024 00:05:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1731086634;
-	bh=6zKQlRn0Es/TKeDFmAQ35oAz8kwkdvS9qyL+rTAPFhw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QBD6MBtKY3GZVRw49enM8QsMZfEiWtuHqSv4AceulD2+HrEJLAnsaI9WMrCl3EB3V
-	 6CR+wE51/iuWuBHlFdhnnyOZDRdI4zbh/CW7FNXbAA50ThB+C/CYb2Oaq3VlnawrTK
-	 xmrSF2ubuhPAGd7Ks6FgMe2cwTE4r+DJu3FKwrPR8k/oNqfIFUnqMCz+z8k1T1cXzn
-	 /IdBdqr6c4JFV+dsm9YywGm64fpJJmb5po6XeRBwYZeRoQhadf9bDuxoEdQm5Bc6CY
-	 lXSLehNuVh5RhS/9E136m6EZZJxzMBBlDL2azR48I/LCxgc7OTY2+TZXsQCy+WkvGZ
-	 GAiFiZ88dKNSQ==
-Date: Fri, 8 Nov 2024 18:23:50 +0100
-From: "lorenzo@kernel.org" <lorenzo@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Jianjun Wang =?utf-8?B?KOeOi+W7uuWGmyk=?= <Jianjun.Wang@mediatek.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
-	"manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>,
-	"robh@kernel.org" <robh@kernel.org>, "kw@linux.com" <kw@linux.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"bhelgaas@google.com" <bhelgaas@google.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>,
-	Ryder Lee <Ryder.Lee@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>
-Subject: Re: [PATCH 3/3] PCI: mediatek-gen3: Move reset/assert callbacks in
- .power_up()
-Message-ID: <Zy5JJuAsxPqEos4I@lore-desk>
-References: <Zy5EjY_oQaRbb5MY@lore-desk>
- <20241108171710.GA1667022@bhelgaas>
+	s=k20201202; t=1731110706;
+	bh=+4fxxGmLXgCRdQeWWK38mQCO3w85tyvAuFsjP1DNG7A=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=IWQEG8O+6qk2aUsaF4fKzZHzlRNZS7Z0mxte8F9Wcf6ugVTwQLoN72UEBiRC6gMGy
+	 ZffpVQPnP+EL5hJkIp+mQURF5Xno0OqX5hfM/6hWsbSgH3G5LJYJa7XlpjRT8Qqqa2
+	 rK4dFQ36MVTM0ZO0krYbo8LC859OYA35OuGBI1bT9y6KwrtvH23lEm9Y4bXSEFbqY3
+	 kJe107rhcaoPX/me1mTCLuNpwtLZe6CGFg6xqCagifpuFEfFjSkAwhguVIGO83kjWd
+	 afSr8aunRrm593AxsjJRYEwvuZOGnOuARcrqoyDqxDCsWnJL9qCaWLsTZLt2FI+0Gu
+	 Ctt6SZv66LqLg==
+From: Mark Brown <broonie@kernel.org>
+To: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, 
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+ Tang Bin <tangbin@cmss.chinamobile.com>
+Cc: linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20241025090938.3480-1-tangbin@cmss.chinamobile.com>
+References: <20241025090938.3480-1-tangbin@cmss.chinamobile.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8183: Remove unnecessary variable
+ assignments
+Message-Id: <173111070418.137066.13301486224854553399.b4-ty@kernel.org>
+Date: Sat, 09 Nov 2024 00:05:04 +0000
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="mpRtWSJTYmJLObDx"
-Content-Disposition: inline
-In-Reply-To: <20241108171710.GA1667022@bhelgaas>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-9b746
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241108_092355_428351_2424A8DB 
-X-CRM114-Status: GOOD (  27.33  )
+X-CRM114-CacheID: sfid-20241109_000513_287686_F65C7E86 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,84 +89,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, 25 Oct 2024 17:09:38 +0800, Tang Bin wrote:
+> In the function mt8183_dai_i2s_register, the variable
+> 'ret' is redundant, thus remove it.
+> 
+> 
 
---mpRtWSJTYmJLObDx
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Applied to
 
-On Nov 08, Bjorn Helgaas wrote:
-> On Fri, Nov 08, 2024 at 06:04:13PM +0100, lorenzo@kernel.org wrote:
-> > > On Fri, Nov 08, 2024 at 09:39:41AM +0100, lorenzo@kernel.org wrote:
-> > > > > On Thu, 2024-11-07 at 17:08 +0100, Lorenzo Bianconi wrote:
-> > > > > > > On Thu, Nov 07, 2024 at 02:50:55PM +0100, Lorenzo Bianconi wr=
-ote:
-> > > > > > > > In order to make the code more readable, move phy and mac
-> > > > > > > > reset lines assert/de-assert configuration in .power_up
-> > > > > > > > callback (mtk_pcie_en7581_power_up/mtk_pcie_power_up).
-> > >=20
-> > > > > > > > +	/*
-> > > > > > > > +	 * The controller may have been left out of reset by the
-> > > > > > > > bootloader
-> > > > > > > > +	 * so make sure that we get a clean start by asserting re=
-sets
-> > > > > > > > here.
-> > > > > > > > +	 */
-> > > > > > > > +	reset_control_bulk_assert(pcie->soc->phy_resets.num_reset=
-s,
-> > > > > > > > +				  pcie->phy_resets);
-> > > > > > > > +	reset_control_assert(pcie->mac_reset);
-> > > > > > > > +	usleep_range(10, 20);
-> > > > > > >=20
-> > > > > > > Unrelated to this patch, but since you're moving it, do you
-> > > > > > > know what this delay is for?  Can we add a #define and a spec
-> > > > > > > citation for it?
-> > > > > >=20
-> > > > > > I am not sure about it, this was already there.  @Jianjun Wang:
-> > > > > > any input on it?
-> > > > >=20
-> > > > > This delay is used to ensure the reset is effective. A delay of
-> > > > > 10us should be sufficient in this scenario.
-> > > >=20
-> > > > ack, so we can introduce a marco like:
-> > > >=20
-> > > > #define PCIE_RESET_TIME_US	10
-> > > > ...
-> > > >=20
-> > > > usleep_range(PCIE_RESET_TIME_US, 2 * PCIE_RESET_TIME_US);
-> > >=20
-> > > Unless this corresponds to a value specified by the PCIe base spec
-> > > or CEM spec, this macro should be internal to
-> > > pcie-mediatek-gen3.c.
-> >=20
-> > My plan is to add it in pcie-mediatek-gen3.c. Do you think
-> > PCIE_RESET_TIME_US is too generic?
->=20
-> It's generic, but so are most of the other #defines in
-> pcie-mediatek-gen3.c, so I'd follow suit.
->=20
-> Connect it to language in the MediaTek spec if possible, i.e., if the
-> spec names this parameter, try to use the same name.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-unfortunately I do not have any mediatek spec documentation available.
+Thanks!
 
-@Jianjun Wang: is PCIE_RESET_TIME_US fine for you or according to the avail=
-able
-documentation?
+[1/1] ASoC: mediatek: mt8183: Remove unnecessary variable assignments
+      commit: f3c889745cd3500bcbce6f6c8cb7e343f067ac18
 
-Regards,
-Lorenzo
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
---mpRtWSJTYmJLObDx
-Content-Type: application/pgp-signature; name="signature.asc"
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
------BEGIN PGP SIGNATURE-----
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZy5JJgAKCRA6cBh0uS2t
-rJXaAQC/Sv0ltwvrKgZw6OyUcbyAk4/sBfF7IaiTfIisVDVn7gD8DwX7b6kQV/DZ
-fdWM8kWpF/9QWlKmCpHxYbkyemdxqw4=
-=M7P9
------END PGP SIGNATURE-----
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
---mpRtWSJTYmJLObDx--
+Thanks,
+Mark
+
 
