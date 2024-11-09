@@ -4,70 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A345DD5E375
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Nov 2024 15:28:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14EC8D5E376
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Nov 2024 16:32:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xl/6Nd33TzAD/3SkRfyJ8EH/YfnNuSgrwFN+Fhe734U=; b=ghQ/O5R6e9/utq+OAdjab1MKCI
-	ufwQgV1et03p82d427R3dvaiea6HIeNp2V1uIK838VHbMhpKTeHHyGE4ECTBXiTt9cye+3/Y03QIg
-	CPEObAyK6304wVyINj3pdX+TVt6eEHQDX2TuQDpZKlXFclx2i6Ag2pOT9qnoU+Ako7/I3y0/OoyUL
-	1YmE3Mwbun5+gFoIVGGzQ0J4ZOPmrsWuaeoYTLV3hdb9xff4+TbgHwRf10gfR9Ey0O0kD93jtiSA7
-	DLNFQW+tI/ImuQP0znhCg8Mz3TQYdQ3ngjdw9nc7mSc9L7tj0cCl48G0XqZPmdosOezPJ3K1ppehN
-	GpSmkU8A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+HFu6d4lO7rqvd9CtGtNgYr/2KPNT3OuXCo4vOZrFRY=; b=RhiURa06xy7m9ZTz3XP+BR/3wn
+	oucKMaJoaZXDXecX8H9gKuC52pNeHRzW+Migp0QypqRTdrFLCBLTiODCwvpWpQRTGzHkv89ZjOXkj
+	FJfhzWsZU/h4rBBK7T5CQe/sQ9i7UvX2cdf337LN5wLphNEraG+TEtW6gzCRxUjl5e9PAf6NscglJ
+	cUse7tJegAP1gbur35ARa3q0EGKIonlF1nEp3jDvsYwJLCZCNLeMkvUEQAeQBeDkmcf75mPJ8L8hg
+	rGeJHCCS0krWIFtv76xfPx5vpK07gONzyWq02h0lAwdBY/9V+j5KsXhaf2pQQyInUuy7TuIh9/2bO
+	FvUfVxHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9nNj-0000000DYiJ-3D60;
-	Sat, 09 Nov 2024 15:28:11 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1t9oO3-0000000DeEO-3KIx;
+	Sat, 09 Nov 2024 16:32:35 +0000
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1t9nLy-0000000DYZ2-1ajE;
-	Sat, 09 Nov 2024 15:26:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1731165980;
-	bh=C2Fu967BHeELtFrqODTzmYpCvZ5v2z8G/kwBzGgDw+4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fNGukyW9cXlI5Me5NYcTub74uTNzYhzKxvGR92Pe0/y7V+RLnTESg08QeiXLF9esi
-	 vI5cC09w0mrhryCs7vuCsjJheM9NCHjMjRcdRL4fRduv2RzP6DeDNebvMyp1uTBAmu
-	 ZClu81a4fVOQy9t8LaOd7l9ptYQW1oEBexJaafHHC+LhjAjDnkoO0aolxdPXaWp4YI
-	 TJxkS7rCscphXs3c+/P8LiqWxZ2t0C8Yq/3giiFj1EIgIMPfotDMzth20mWzSMhBAP
-	 wGeXj2JvuWvJSy3wHvIESHMZ6iGRlclA5qO++vWcGiuA+7AeimDAzn6mggMe63PF/A
-	 ie3FZQcz9f2Vw==
-Received: from notapiano (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1FFE817E35FA;
-	Sat,  9 Nov 2024 16:26:17 +0100 (CET)
-Date: Sat, 9 Nov 2024 10:26:15 -0500
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Hsin-Te Yuan <yuanhsinte@chromium.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] thermal/drivers/mediatek/lvts_thermal: Switch to
- IMMEDIATE_MODE
-Message-ID: <a641e6b8-0078-4910-9826-a088e69b734d@notapiano>
-References: <20241108-lvts-v1-1-eee339c6ca20@chromium.org>
- <CAGXv+5EOcg0pQxj=iOn_ff8-t6pyGKwemA9mdn=VCpxg6Uzt+g@mail.gmail.com>
+	id 1t9oMI-0000000De5q-0Q2L;
+	Sat, 09 Nov 2024 16:30:47 +0000
+Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-20cbcd71012so37616925ad.3;
+        Sat, 09 Nov 2024 08:30:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1731169845; x=1731774645; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=+HFu6d4lO7rqvd9CtGtNgYr/2KPNT3OuXCo4vOZrFRY=;
+        b=du9SAHPH2RjDJRJfW2MDlqnRWFvOx9jR1kTRW4G4vnWvrEb1ATHTmXtysISyDC1SiB
+         +65wx0zg4S7+olzFGQDuKSoyDCcJ4tRW23c1/FBIJzua6wulHJe05ucozEuuCXzrH1yC
+         N5zai3J/GCLnCjQxmkBwgB9Y/6XEo0umrOTAJOG84fDx0WsZIdCGedK6shOiNik5ciXZ
+         8aURaWcKanbCQeYkvu5Bvso6AnvnmgY1Mh6ABubVObrJBDy44CLXRFdMuihey8cnZEl9
+         HIp+rQhDudD67JjqxaLJNvvZO+nlBaPglgEoCJUM6HcN6iV1b4w2/OJt1waxf42RLUat
+         C9gw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1731169845; x=1731774645;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=+HFu6d4lO7rqvd9CtGtNgYr/2KPNT3OuXCo4vOZrFRY=;
+        b=d8KnNiTgqbwNQJxpBFjEUdDsdR20+kGUNQx/DDjyXcv2gRJxyddg1/vBJbmpzoyhDc
+         1z5AUNEPM9cWKN75nPEn+gBMfsPe2sroiikNk3LiC8Nn0n35aSp8X7TROiqt1Q3zFH2j
+         xgZnZc7ygcCbz77v8jmcaEQYUDIgZLwIKkC6AKYl7+7Jl104jiWF0S4gPS2YWt0zktMM
+         6WIB/OUQgplKAl/2EITBHGaAEW5k77LmzaRynmORxR1M89fTILsYw7FCTIhAcVl+Dp3R
+         svWP/dCWOJC0GcRnRWxXCXVfge2gw1xthUAjk0rpA/97bTjIoBw4fcZWabQf3zC/D/EN
+         dCSA==
+X-Forwarded-Encrypted: i=1; AJvYcCUFJgxQizFVS0vEmBSlS3gr5Kn34U4v2w6oa+TvjAWoM7u6XvhnjyHJaXXyBzn1KJW75ktXAay3bWVm40a+qB99@lists.infradead.org, AJvYcCXly+7OBxv5rh/uE9xUAHJI3lwewfpFg69vgJPqRaUR8OF4y3pUqtlzjMT5Vqn+YDs2VPtWpyEP/vrByscJWEY=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy07EqgnsmA8JK+MbJQM2SL24rikZe0B79RNdF3nAIHd9mK5X83
+	ABLjb/uxO4NZd79nlsrkJ7cJg1hLsnUeD3mdBWJHr9OI1C2EK/2Q
+X-Google-Smtp-Source: AGHT+IGGs2S0yCDvHRz6lhphL26+ZgfU8grAgZs942pwHOPtldd6rtgtD1s1xn3JASfB0aCkY4pxLg==
+X-Received: by 2002:a17:902:ea10:b0:210:fce4:11db with SMTP id d9443c01a7336-21183517ca8mr100546255ad.22.1731169844727;
+        Sat, 09 Nov 2024 08:30:44 -0800 (PST)
+Received: from [192.168.1.3] (ip68-4-215-93.oc.oc.cox.net. [68.4.215.93])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-21177e6a3f4sm47858475ad.234.2024.11.09.08.30.42
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 09 Nov 2024 08:30:43 -0800 (PST)
+Message-ID: <3be2547e-d987-4987-9d75-30bf81cfe6cd@gmail.com>
+Date: Sat, 9 Nov 2024 08:30:40 -0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] memory: Switch back to struct platform_driver::remove()
+To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Markus Mayer <mmayer@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Santosh Shilimkar <ssantosh@kernel.org>, Paul Cercueil
+ <paul@crapouillou.net>, Yong Wu <yong.wu@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Roger Quadros <rogerq@kernel.org>, Tony Lindgren <tony@atomide.com>,
+ Lukasz Luba <lukasz.luba@arm.com>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Konrad Dybcio <konradybcio@kernel.org>, Georgi Djakov <djakov@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-omap@vger.kernel.org, linux-pm@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-tegra@vger.kernel.org
+References: <1a44c5fc95616d64157d2f4a55f460476d382554.1730987047.git.ukleinek@kernel.org>
+Content-Language: en-US
+From: Florian Fainelli <f.fainelli@gmail.com>
+In-Reply-To: <1a44c5fc95616d64157d2f4a55f460476d382554.1730987047.git.ukleinek@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5EOcg0pQxj=iOn_ff8-t6pyGKwemA9mdn=VCpxg6Uzt+g@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241109_072622_584543_8B18F949 
-X-CRM114-Status: GOOD (  13.55  )
+X-CRM114-CacheID: sfid-20241109_083046_164225_0F748E97 
+X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,27 +113,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 08, 2024 at 04:21:07PM +0800, Chen-Yu Tsai wrote:
-> On Fri, Nov 8, 2024 at 2:51 PM Hsin-Te Yuan <yuanhsinte@chromium.org> wrote:
-> >
-> > Currently, MT8192 cannot suspend with FILTERED_MODE. Switch to
-> > IMMEDIATE_MODE will fix this.
 
-Do you mean that the whole MT8192 SoC is not able to enter system suspend? I
-just tested that on a fairly recent linux-next and it was working without a
-problem. We need more context here.
 
-> >
+On 11/7/2024 6:57 AM, Uwe Kleine-König wrote:
+> After commit 0edb555a65d1 ("platform: Make platform_driver::remove()
+> return void") .remove() is (again) the right callback to implement for
+> platform drivers.
 > 
-> Probably should have a Fixes tag.
+> Convert all platform drivers below drivers/memory to use .remove(), with
+> the eventual goal to drop struct platform_driver::remove_new(). As
+> .remove() and .remove_new() have the same prototypes, conversion is done
+> by just changing the structure member name in the driver initializer.
 > 
-> Also, Nicolas previously reported that the threshold interrupts don't
-> work with the immediate mode [1], which is why filtered mode was used
-> in the final version.
+> A few white space changes are included to make indention consistent.
+> 
+> Signed-off-by: Uwe Kleine-König <u.kleine-koenig@baylibre.com>
 
-Indeed. I suppose it would be possible to configure immediate mode only during
-suspend if this is really the problem.
+For the brcmstb driver:
 
-Thanks,
-Nícolas
+Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com>
+-- 
+Florian
+
 
