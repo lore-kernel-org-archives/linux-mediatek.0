@@ -4,56 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D91AAD3ABF4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 20:49:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A196FD3ABF6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 21:02:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1JK9Kr+GCqzwxAexfpzkOKsF3faosyxxsDPxmghl8gg=; b=sm2SgUBA54tPQky59/WUbVkFNk
-	m89+5WjFZfNXL22pMsNTq0aJHNW4VktCUNRvEl4yB2CcRMmRy71OsuYARGQfisGXJmurCPbi+0SHx
-	9Ah9m7KWhnQ74Gt2eSwtWfOX52wPAVzknQjcZi1As7nHoLrg4SKniqSToZrxCNUfyZPLsUe84nYRl
-	44azZFNA5JokhLX/bCn01WekS0xN49IS/BBfnR3gFceqETEk3LrY+WbYifAkVOv+l7bTW1KsscTgG
-	MlxUomtI2UCuewrDsZAo50fqzC5DKBRP6mr/bElEQ2k+XzxrufKfA+vhMdFcQ7ey9XZ677YBHtg5L
-	UQAW+e7A==;
+	bh=8FJxCy9nRJVtXfCTsU3KXy5JjuHCmavURmafpMWip8Y=; b=GsrbzwEBSu2Z2bhJYZJ1VeeDJD
+	sd5D8MjOcraOMUYueu1FsvbZj0vpWgwaD5oeBiJIGdo7a5VuMLZBDhrlFTXCAn2CN+s30M2w0Egsp
+	iHObtyFOD5HrVoPfeBAF2qSwQDd2lyC2Qyna5rHtgR6IdhfwdDMCXrahpAvL4eptlmTtxcWcYxFFL
+	X0bC7dyi/YoaNsycxkW9YvMxPlFX/2Gi5CYXukbUpbSij9twFLWJB5TkiSL2b5IhMP2GWlHp3M5hs
+	M51MtMkqlTEFnoacjyjvXGELB0ipXKbAdQu3DIjzCo3d3xltiwcjNhsuFYVcky+jCVht1Wc2AHZ0Q
+	mLt/qPqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAbLT-00000001Ezh-3hol;
-	Mon, 11 Nov 2024 20:49:11 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tAbYD-00000001I54-1qMO;
+	Mon, 11 Nov 2024 21:02:21 +0000
+Received: from mail-wm1-f41.google.com ([209.85.128.41])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAbAk-00000001DXI-3r5v;
-	Mon, 11 Nov 2024 20:38:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id ABF34A40928;
-	Mon, 11 Nov 2024 20:36:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D41CC4CECF;
-	Mon, 11 Nov 2024 20:38:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1731357485;
-	bh=KwaHLfJUIhXroumjHZ4bZlkQwpn6earNMC5wOJS8F3o=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=s+ImfXkPI1O4CAQC7LGmSngp4INKqyeJCveS2DSuVJVX1UgzHimen+i0RyVKBvEk6
-	 hQN4Z9wDYJzrqvLNKWD7+hhjC761myQjPqeqfGAb9PwqGcW0JzjQF8UtGdneSpGBho
-	 qitioKlKlvo5kwuGk61r6IeO/Ve+XjrpQkXg+xWY1vizwq/d7F2ZpCLLBMUKfQMqWK
-	 bYiq2qedk57RKVeHa6XzX+cOI7Qsjr2GqkiJ17Jwl/dCS77Foo2Qhla7+yuLsWyC/+
-	 3A8d2XysWw8y7QiUgl3smDorGRCHuTQ+0t54NHPTGgJqXGgciIoN6HKu0R7Il42VPM
-	 t12XXSrSSZFCg==
-Date: Mon, 11 Nov 2024 14:38:03 -0600
-From: Rob Herring <robh@kernel.org>
-To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [PATCH] dt-bindings: spi: add compatibles for mt7988
-Message-ID: <20241111203803.GA1917413-robh@kernel.org>
-References: <20241109105029.52748-1-linux@fw-web.de>
+	id 1tAbJu-00000001Er3-002I;
+	Mon, 11 Nov 2024 20:47:35 +0000
+Received: by mail-wm1-f41.google.com with SMTP id 5b1f17b1804b1-4315eeb2601so62350235e9.2;
+        Mon, 11 Nov 2024 12:47:32 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1731358051; x=1731962851;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=8FJxCy9nRJVtXfCTsU3KXy5JjuHCmavURmafpMWip8Y=;
+        b=h4sTlXFeX1847MPqU0Q2LatRi4ZyDnso5SVPsakHtdqa3gV7ZcBo+baZYnsavPF4FC
+         1bl2AO669MjcI9+zgLWNzXs+qxACeSsh4xtv0t887seI5nqWJj1eFTFEs0zviHd70KmT
+         pEE98ELUUvV5b+NGtPLvy4Qno9/XohKsok1S/+FKwMpg0CQgKxMBbK3B/f3C7xgLVM00
+         uP4gbekc/CjXtcXhsT1azYCnrRViIp54I5C6NOhc8uUi2PA9g9ouMd0CAD26kFBuw77N
+         BkcSUpHvd85JmPCJXqZsqzicmpKG7Ar91v/Jzq72lcnKz+VqQq5/OPjIU6sUHh5ws1Xv
+         Lu0Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVYZReK26O2BDWllUeXwqTTee0kIvtr0IoZ9uNFnVehMB6nnVk0nkL++rwikjOpt2owDXqyDLpK+kZDRAzAgYJm@lists.infradead.org, AJvYcCWI1tb2SzT0bsMMV9nVUsgwTvEQaWNQ+RBzqMCB0wPaoPL3Yz74nMyTXCCbmo4DTfM3aDFCTEqm2HdCmYLaJ74=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwHNujCn1KS6Ff6P7b0TNeazhS3RctQbFnxeOfaO/vqOwCIXAv8
+	ZC++3EQBAF9GPqajvSvHvS9TJ6++z2BLOA8CfsKRbsxdeMlX9Lj3
+X-Google-Smtp-Source: AGHT+IFI2E55Rc3mQG84xqyhIN5Toyfc2naC+drFE80OuMZoOLBtHsrsaeYFSq9y+fXhLMa9XRR2xg==
+X-Received: by 2002:a5d:6c6b:0:b0:382:5af:e996 with SMTP id ffacd0b85a97d-38205afeae9mr2197479f8f.46.1731358051094;
+        Mon, 11 Nov 2024 12:47:31 -0800 (PST)
+Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-381ed987d33sm13946207f8f.43.2024.11.11.12.47.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 11 Nov 2024 12:47:30 -0800 (PST)
+Date: Tue, 12 Nov 2024 05:47:26 +0900
+From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+To: Jianjun Wang =?utf-8?B?KOeOi+W7uuWGmyk=?= <Jianjun.Wang@mediatek.com>
+Subject: Re: [PATCH v4 1/2] PCI: mediatek-gen3: Add support for setting
+ max-link-speed limit
+Message-ID: <20241111204726.GA2193665@rocinante>
+References: <20241104114935.172908-1-angelogioacchino.delregno@collabora.com>
+ <20241104114935.172908-2-angelogioacchino.delregno@collabora.com>
+ <D5DF0QIO2UZQ.29U999LYCC05M@rocinante>
+ <f8ca0f82-2851-40d9-983b-2a143b44263a@collabora.com>
+ <20241104132512.GC2504924@rocinante>
+ <c5385db34878763ba7df3711a514e4332418cbbd.camel@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241109105029.52748-1-linux@fw-web.de>
+In-Reply-To: <c5385db34878763ba7df3711a514e4332418cbbd.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241111_123807_043162_55474E5E 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20241111_124734_063101_35CCDF67 
+X-CRM114-Status: GOOD (  11.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,35 +80,27 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Leilk Liu <leilk.liu@mediatek.com>, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: "robh@kernel.org" <robh@kernel.org>, Ryder Lee <Ryder.Lee@mediatek.com>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "lpieralisi@kernel.org" <lpieralisi@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "bhelgaas@google.com" <bhelgaas@google.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "kernel@collabora.com" <kernel@collabora.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Nov 09, 2024 at 11:50:28AM +0100, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> MT7988 has 2 different spi controllers. Add their compatibles.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->  Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-> index e1f5bfa4433c..ed17815263a8 100644
-> --- a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-> +++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-> @@ -35,6 +35,8 @@ properties:
->            - enum:
->                - mediatek,mt7981-spi-ipm
->                - mediatek,mt7986-spi-ipm
-> +              - mediatek,mt7988-spi-quad
-> +              - mediatek,mt7988-spi-single
->                - mediatek,mt8188-spi-ipm
->            - const: mediatek,spi-ipm
+Hello,
 
-Does the fallback make sense for both? Is there some common subset of 
-functionality where they are the same?
+[...]
+> This patch may need more discussion. I have replied in the previous
+> version:
+> 
+> https://lore.kernel.org/linux-pci/7e220693f076c84cc1bc3d91e797580b320b4598.camel@mediatek.com/T/#m1b9f2d26a228712b6b9d02eba11d8063862772c1
+> 
+> Should we wait longer before applying this patch?
 
-Rob
+We can drop the series, and it's not yet too lat to do so, if you believe
+this would break devices like the one you tested the changes on.
+
+> Do you have any suggestions? I can provide more logs or test results if
+> needed. Sorry for the inconvenience.
+
+AngeloGioacchino, have you seen the reply (see the link above) from Jianjun?
+
+	Krzysztof
 
