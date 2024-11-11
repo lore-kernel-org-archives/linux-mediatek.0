@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEAB7D3ABDC
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 935FAD3ABDA
 	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 17:57:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
@@ -12,46 +12,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0Okwg137E+WmcLluBLQ6H9l9KczMVszee4vGZWHXW4w=; b=05Iw4mNZBT3Fiyru+O3BsDcjwe
-	zIY6MxhUXZ3YjboRQgVKAPfB5mp2iMeTwmUeDxrTeWPgw9oa54ZAoRgoIRsBz+r3aGZMKmC+Xofpn
-	kokGA51EBiQ9QyemKtYP55SZIbC06cianJgtpKbC+txUGCKnfkyg6j4Jwbqf+mlPGiJCZDZw+c498
-	zua7gCrJiM8XjiDhL1F9fXExdBkJzyozrZCaOk8k9wFRqioRbJrRMW3hBS5Nfb9MTgB33tQy7BFyI
-	4DqbcCdYAJTC7VmnyDbDsCzRQMrW60aXBWqMxQJLpNjQnqXwNOA1CL6c8w7Uz/o92a4daUb9vXulA
-	4dLsBRXQ==;
+	bh=MWg4o1fSag5CPkLJL8QjYA2cB+he/rMzoNvj7WSilXA=; b=ubXbZ5TnGL0b/QaN3Pdvnru6ox
+	SHYFMH3VTzDaz7E6Wu+2LGmS2h/xBEf2gXKGhSyGRjAxEmTdN0kvQ8pGOoXr9iE5OpKHnM+J4njqy
+	N6cJ7lK+vLe1qe3C7F3i7uSMDZqN/OhqsvsHilP2T0yRZUWmRC5EE/HGRCqFvmrY6z/cZYRkXlbbB
+	r63fx3dLtmcb+Zu6o/XhyD2qn0GMZ1r5d6LJ3Iv5QkJvv2VMkgdF3Z/7zSjJVKFX7/DbJiUITLnKD
+	n34J0lsRfuUJQHLJIzWEmK6jjwjZp/xPS4Wdq0XHmDSdZ6ouV4l1P8k0SRYmPXrw2iI/9MBpsj7Xa
+	xsdWD5Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAYfa-00000000ntA-45Hf;
+	id 1tAYfa-00000000nsu-2iKG;
 	Mon, 11 Nov 2024 17:57:46 +0000
 Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAYWp-00000000mGf-0PjR;
+	id 1tAYWp-00000000mGc-0049;
 	Mon, 11 Nov 2024 17:48:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 8ACAAA417E6;
+	by nyc.source.kernel.org (Postfix) with ESMTP id 427F2A401A5;
 	Mon, 11 Nov 2024 17:46:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 7E462C4CED4;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 3BD31C4CED7;
 	Mon, 11 Nov 2024 17:48:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1731347318;
-	bh=9AGnp6ItSWGEIvcEPYHznGFKAqdl+UeCsmI5khCjdS4=;
+	bh=fuQ00GAi9j38VTJ+Mk4loS5qcVMhkxws4U8+NkGhafM=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=c2yPXxfUHlgwnZrp7qGKCLwqQZc+L/+2ddJpo751E4RCy8EIs4Ij7Ka8P3CxN0rgM
-	 JV0JkMFh83ttQ4ajP/K3Q87yt+g5CZWBQOxj8AAE0SBeXg6T4NHcHE3Gb9bybL/smS
-	 uPpgH6DjmDqUljRvBXspip4Pc9w3ocTEseJn4X9indc3hcj/s/jdwoGWT+l5TruKrx
-	 sUzNvn3eLVILCLlS+ImDoqSZa5Iv7xX5k8Q78jUk5BhSGh3M0+tf2nozGfxZ+Y9CG0
-	 +2L/1YOD6Ul71mcvdcHaYeGyAHaIvVAiXaUYUzh7pA4PMa5wbuU40lwG1LL9h0ejxp
-	 +vxbc+hVknnBw==
+	b=IJKSMR23utkGbtJsEmrf3ChMvfo7qg1qtUzv5kPI1oEcHbSDuTrcSy+QB0oN3imyd
+	 6V2ZtWKHMYKU52mDsFWkLGTO2sHibSXgRRaEDO9UGrKkb7oK9dc2KIvvX8DO3F5jxC
+	 NFUGAluwBDdaE7X1nR1f7tjBBlGuPjUOF1nhPl7mFrQmGQEg0yQ/t7rOMQbt91iQNb
+	 ls2MeMG3f0vLOPoVlXcG/66lDtsAJK/2GRLPF5fCO/lXeelnGK3OqIu7Yim9+BUz7Q
+	 KQt9E1jg7uP/1EzUQmZrsmx9ml/ahUduvJs9IO+Celr7MBtm/KncaYRp0TPsB8d5gB
+	 KamMRcYIOokEQ==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 745DCD3ABDC;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C932D3ABDA;
 	Mon, 11 Nov 2024 17:48:38 +0000 (UTC)
 From: Manivannan Sadhasivam via B4 Relay <devnull+manivannan.sadhasivam.linaro.org@kernel.org>
-Date: Mon, 11 Nov 2024 23:18:34 +0530
-Subject: [PATCH 5/5] scsi: ufs: pltfrm: Dellocate HBA during
- ufshcd_pltfrm_remove()
+Date: Mon, 11 Nov 2024 23:18:31 +0530
+Subject: [PATCH 2/5] scsi: ufs: qcom: Only free platform MSIs when ESI is
+ enabled
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20241111-ufs_bug_fix-v1-5-45ad8b62f02e@linaro.org>
+Message-Id: <20241111-ufs_bug_fix-v1-2-45ad8b62f02e@linaro.org>
 References: <20241111-ufs_bug_fix-v1-0-45ad8b62f02e@linaro.org>
 In-Reply-To: <20241111-ufs_bug_fix-v1-0-45ad8b62f02e@linaro.org>
 To: Alim Akhtar <alim.akhtar@samsung.com>, 
@@ -78,25 +78,24 @@ Cc: linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
  Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
  stable@vger.kernel.org
 X-Mailer: b4 0.14.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=858;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1761;
  i=manivannan.sadhasivam@linaro.org; h=from:subject:message-id;
- bh=Ni+UMeWf+BGon+9C+5L79ezS+b3LAVE2IIekW3iQ9ww=;
- b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBnMkNz9MkYBdX398GAmfAQsbBw3ppRcumSjtutx
- sOoQ3zoTZSJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCZzJDcwAKCRBVnxHm/pHO
- 9VkjB/49ADTQJu1nV/d8/ynBuBn+ItayJXBzyHg85nSVkxMlnER5vFjUX6+uT2sZalqVXL/QI8o
- 3OX7c+Wq8TTYC69nVWpjgtcBWy0B/ppoGuhVdk62pN1guua37AURco5SSqzjrJCBheHwQJkTa+s
- uIoNZuFlJhQT/wAUu/f6zmX6aMToz3Cz4NLYPC3mkyhLlZQ2CMY7lvqpRmVpFkGb8EZVcOc1RP6
- q1BB36FdG4dvO5e3jqx/ALyfnfapbycjFzXYZHXu9CNyUlesnt/Eglfz9XvclcQIzpgusXtqRxW
- 3+zVfvcoGPZP1DfDfFedH8LuL2Ykimb6v6PRL7/ry3dN066b
+ bh=EbvyeMTjnnXzYsrb6hiWc8REw/zP3a1kZd0DUfTawxw=;
+ b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBnMkNzWH2qACCnRiu+0ZVgDwFBCU0StL7JZgEET
+ u7l9pbT9CSJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCZzJDcwAKCRBVnxHm/pHO
+ 9S7JB/90TEoS/+sDZO0X0MjP4rilFN/QiPGEBYP/qeEnMEreebOIEx2KZBTyGtPoSlH0U11whee
+ h/cQ4BaWi8qJs7uxTqoKKez1yUb2SynV7Xdd2KNrBAl1cdbbKsCE0Se33qic7aRVq7Nooh5mcAQ
+ hGW6jj2UyKiNeTsdwsaYTIMx2Jde6PpwKv90WjQXQxunrwVt/yv3+o0/CJObO4HXIBZy9n4f0Cv
+ OwaEBqBG3UdbwwewFV22V93QQ2gn5pS+WQnQiS3G6aM78r2N50xoSWOLQEN2Q4iIYH5bpMNR4TE
+ f1m2EtfA79wWzq2cuV/irM5AZmWRP3LqXGP9NZApfm7jXMzT
 X-Developer-Key: i=manivannan.sadhasivam@linaro.org; a=openpgp;
  fpr=C668AEC3C3188E4C611465E7488550E901166008
 X-Endpoint-Received: by B4 Relay for
  manivannan.sadhasivam@linaro.org/default with auth_id=185
 X-Original-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241111_094843_363583_B49D5AB1 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241111_094843_318024_BD4CFBF1 
+X-CRM114-Status: GOOD (  12.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,28 +113,54 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 
-This will ensure that the scsi host is cleaned up properly using
-scsi_host_dev_release(). Otherwise, it may lead to memory leaks.
+Otherwise, it will result in a NULL pointer dereference as below:
 
-Cc: stable@vger.kernel.org # 4.4
-Fixes: 03b1781aa978 ("[SCSI] ufs: Add Platform glue driver for ufshcd")
+Unable to handle kernel NULL pointer dereference at virtual address 0000000000000008
+Call trace:
+ mutex_lock+0xc/0x54
+ platform_device_msi_free_irqs_all+0x14/0x20
+ ufs_qcom_remove+0x34/0x48 [ufs_qcom]
+ platform_remove+0x28/0x44
+ device_remove+0x4c/0x80
+ device_release_driver_internal+0xd8/0x178
+ driver_detach+0x50/0x9c
+ bus_remove_driver+0x6c/0xbc
+ driver_unregister+0x30/0x60
+ platform_driver_unregister+0x14/0x20
+ ufs_qcom_pltform_exit+0x18/0xb94 [ufs_qcom]
+ __arm64_sys_delete_module+0x180/0x260
+ invoke_syscall+0x44/0x100
+ el0_svc_common.constprop.0+0xc0/0xe0
+ do_el0_svc+0x1c/0x28
+ el0_svc+0x34/0xdc
+ el0t_64_sync_handler+0xc0/0xc4
+ el0t_64_sync+0x190/0x194
+
+Cc: stable@vger.kernel.org # 6.3
+Fixes: 519b6274a777 ("scsi: ufs: qcom: Add MCQ ESI config vendor specific ops")
 Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 ---
- drivers/ufs/host/ufshcd-pltfrm.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/ufs/host/ufs-qcom.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/ufs/host/ufshcd-pltfrm.c b/drivers/ufs/host/ufshcd-pltfrm.c
-index b8dadd0a2f4c..505572d4fa87 100644
---- a/drivers/ufs/host/ufshcd-pltfrm.c
-+++ b/drivers/ufs/host/ufshcd-pltfrm.c
-@@ -534,6 +534,7 @@ void ufshcd_pltfrm_remove(struct platform_device *pdev)
+diff --git a/drivers/ufs/host/ufs-qcom.c b/drivers/ufs/host/ufs-qcom.c
+index ecdfff2456e3..1bcc538ef8af 100644
+--- a/drivers/ufs/host/ufs-qcom.c
++++ b/drivers/ufs/host/ufs-qcom.c
+@@ -1843,10 +1843,12 @@ static int ufs_qcom_probe(struct platform_device *pdev)
+ static void ufs_qcom_remove(struct platform_device *pdev)
+ {
+ 	struct ufs_hba *hba =  platform_get_drvdata(pdev);
++	struct ufs_qcom_host *host = ufshcd_get_variant(hba);
  
- 	pm_runtime_get_sync(&pdev->dev);
+ 	pm_runtime_get_sync(&(pdev)->dev);
  	ufshcd_remove(hba);
-+	ufshcd_dealloc_host(hba);
- 	pm_runtime_disable(&pdev->dev);
- 	pm_runtime_put_noidle(&pdev->dev);
+-	platform_device_msi_free_irqs_all(hba->dev);
++	if (host->esi_enabled)
++		platform_device_msi_free_irqs_all(hba->dev);
  }
+ 
+ static const struct of_device_id ufs_qcom_of_match[] __maybe_unused = {
 
 -- 
 2.25.1
