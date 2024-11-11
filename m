@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 935FAD3ABDA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 17:57:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C609D3ABDA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 17:59:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MWg4o1fSag5CPkLJL8QjYA2cB+he/rMzoNvj7WSilXA=; b=ubXbZ5TnGL0b/QaN3Pdvnru6ox
-	SHYFMH3VTzDaz7E6Wu+2LGmS2h/xBEf2gXKGhSyGRjAxEmTdN0kvQ8pGOoXr9iE5OpKHnM+J4njqy
-	N6cJ7lK+vLe1qe3C7F3i7uSMDZqN/OhqsvsHilP2T0yRZUWmRC5EE/HGRCqFvmrY6z/cZYRkXlbbB
-	r63fx3dLtmcb+Zu6o/XhyD2qn0GMZ1r5d6LJ3Iv5QkJvv2VMkgdF3Z/7zSjJVKFX7/DbJiUITLnKD
-	n34J0lsRfuUJQHLJIzWEmK6jjwjZp/xPS4Wdq0XHmDSdZ6ouV4l1P8k0SRYmPXrw2iI/9MBpsj7Xa
-	xsdWD5Xw==;
+	bh=6VuqMGEjorW3U0VSuEH2udcD/yIeKObZ0VvADteNWSM=; b=tWoEkbF70tyWoywqHmP+/r8wZs
+	B0/FB+5TwoiH/8qIOi+CpXHUcAT5ToxabQdXGTSxS/1tXkopClz3V6epImgO0wVjEvXxVNHMqDFCu
+	KJmC35M9hcY0iCzfyXZIgsW2q+NKuW97jbkbiT99qlx2XigvGNL5aq+JN0o7iSGhESjK5dLGaF64R
+	pO4k0IIXJqBdaJm3+iiJJonpe0Rcfc5w0lgSdqSC4rR+ktHVoL8WpkhkhzHR3SvKsc4gOz9pI1cWp
+	CbszJr56RU/do6og84kUQWA/SOHjsqgdHmk1g7QgbKJMo0ssPhqcirnSZleQUdBFqftQ5hr45qTjU
+	umsay4Bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAYfa-00000000nsu-2iKG;
-	Mon, 11 Nov 2024 17:57:46 +0000
+	id 1tAYhL-00000000oE3-0fn5;
+	Mon, 11 Nov 2024 17:59:35 +0000
 Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAYWp-00000000mGc-0049;
+	id 1tAYWp-00000000mGe-0PTo;
 	Mon, 11 Nov 2024 17:48:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 427F2A401A5;
+	by nyc.source.kernel.org (Postfix) with ESMTP id 64F7FA417D1;
 	Mon, 11 Nov 2024 17:46:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 3BD31C4CED7;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 4A457C4CED8;
 	Mon, 11 Nov 2024 17:48:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1731347318;
-	bh=fuQ00GAi9j38VTJ+Mk4loS5qcVMhkxws4U8+NkGhafM=;
+	bh=SOb/svMnfBE70UmgHVHZ83yrAm9N4yanjEVLe7239+w=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=IJKSMR23utkGbtJsEmrf3ChMvfo7qg1qtUzv5kPI1oEcHbSDuTrcSy+QB0oN3imyd
-	 6V2ZtWKHMYKU52mDsFWkLGTO2sHibSXgRRaEDO9UGrKkb7oK9dc2KIvvX8DO3F5jxC
-	 NFUGAluwBDdaE7X1nR1f7tjBBlGuPjUOF1nhPl7mFrQmGQEg0yQ/t7rOMQbt91iQNb
-	 ls2MeMG3f0vLOPoVlXcG/66lDtsAJK/2GRLPF5fCO/lXeelnGK3OqIu7Yim9+BUz7Q
-	 KQt9E1jg7uP/1EzUQmZrsmx9ml/ahUduvJs9IO+Celr7MBtm/KncaYRp0TPsB8d5gB
-	 KamMRcYIOokEQ==
+	b=M5CWUkTPz6OCGVKJrWrNKk807OEF7xTW55Hzjum0MoXapsNyhMtWBgyfaQAM9zbia
+	 Pc85xmSY+LdvIsx4joB7hU0G9CHWpjFrblQUw3B10SC2lKsuxjt3AgyMkgh+ZRa3I5
+	 ZRCXOfupZIW9ImxPU7fv+k2ILaZtquhUWx0RH3zzUbogxMq5qLtrvHZqr0KQg99HOp
+	 h8un79+lAFofx6e5DGK8p5XlNJCJL0AnIZsxegWSB4WR41cZUud+99s2UuH71DZMc9
+	 YFNhuYvtpnv2M8bWe07UCV9L9FhqbcaZuvadMykzp0Ygu+uhinSxok0VOQBHywANcq
+	 3x3//wvZfh2Jg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C932D3ABDA;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3F521D3ABDC;
 	Mon, 11 Nov 2024 17:48:38 +0000 (UTC)
 From: Manivannan Sadhasivam via B4 Relay <devnull+manivannan.sadhasivam.linaro.org@kernel.org>
-Date: Mon, 11 Nov 2024 23:18:31 +0530
-Subject: [PATCH 2/5] scsi: ufs: qcom: Only free platform MSIs when ESI is
- enabled
+Date: Mon, 11 Nov 2024 23:18:32 +0530
+Subject: [PATCH 3/5] scsi: ufs: pltfrm: Disable runtime PM during removal
+ of glue drivers
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20241111-ufs_bug_fix-v1-2-45ad8b62f02e@linaro.org>
+Message-Id: <20241111-ufs_bug_fix-v1-3-45ad8b62f02e@linaro.org>
 References: <20241111-ufs_bug_fix-v1-0-45ad8b62f02e@linaro.org>
 In-Reply-To: <20241111-ufs_bug_fix-v1-0-45ad8b62f02e@linaro.org>
 To: Alim Akhtar <alim.akhtar@samsung.com>, 
@@ -78,24 +78,24 @@ Cc: linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
  Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
  stable@vger.kernel.org
 X-Mailer: b4 0.14.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1761;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6985;
  i=manivannan.sadhasivam@linaro.org; h=from:subject:message-id;
- bh=EbvyeMTjnnXzYsrb6hiWc8REw/zP3a1kZd0DUfTawxw=;
- b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBnMkNzWH2qACCnRiu+0ZVgDwFBCU0StL7JZgEET
- u7l9pbT9CSJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCZzJDcwAKCRBVnxHm/pHO
- 9S7JB/90TEoS/+sDZO0X0MjP4rilFN/QiPGEBYP/qeEnMEreebOIEx2KZBTyGtPoSlH0U11whee
- h/cQ4BaWi8qJs7uxTqoKKez1yUb2SynV7Xdd2KNrBAl1cdbbKsCE0Se33qic7aRVq7Nooh5mcAQ
- hGW6jj2UyKiNeTsdwsaYTIMx2Jde6PpwKv90WjQXQxunrwVt/yv3+o0/CJObO4HXIBZy9n4f0Cv
- OwaEBqBG3UdbwwewFV22V93QQ2gn5pS+WQnQiS3G6aM78r2N50xoSWOLQEN2Q4iIYH5bpMNR4TE
- f1m2EtfA79wWzq2cuV/irM5AZmWRP3LqXGP9NZApfm7jXMzT
+ bh=Sy95crq9tnc13krDmPxLc+XJOqVK0Wt1rbOYDput31Q=;
+ b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBnMkNzB9iz8QMXyNpVEgtQ5ZelZO076jLLXfkRg
+ asZo5G3GWeJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCZzJDcwAKCRBVnxHm/pHO
+ 9RINB/4kKYhPEGlh+z0oVskBAUcdG9Do5O49lzzdpQb16Q/tr4H5kvW/5giR5D8w2zt3YsvXW/x
+ p5impfVanaunnhCfFnIqm6yQJFWS0xmUbA67bZU7f60uMmSBnU8pRYH7w1gagJ7KygOGopeOrDL
+ JsCxxoWOy6rJWkYDOw0syS0hs/GhzQa3wptkQ6aarRLAfHwVNq7yzOt09V/GXcgBxCz3BXjE9mG
+ hI8H7Vsz3A3z6iqmNYp+H9Jngpy5EJUk7fccNVJqA1lUegiCAow+2pKXjCEjgKXv41S5pbHFUlT
+ wRSw+JWjdzoHJ2DETem066mlrMXITAspkAfuXdcDbcyF9JgO
 X-Developer-Key: i=manivannan.sadhasivam@linaro.org; a=openpgp;
  fpr=C668AEC3C3188E4C611465E7488550E901166008
 X-Endpoint-Received: by B4 Relay for
  manivannan.sadhasivam@linaro.org/default with auth_id=185
 X-Original-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241111_094843_318024_BD4CFBF1 
-X-CRM114-Status: GOOD (  12.36  )
+X-CRM114-CacheID: sfid-20241111_094843_412861_DBBD2F87 
+X-CRM114-Status: GOOD (  16.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,54 +113,188 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 
-Otherwise, it will result in a NULL pointer dereference as below:
+When the UFSHCD platform glue drivers are removed, runtime PM should be
+disabled using pm_runtime_disable() to balance the enablement done in
+ufshcd_pltfrm_init(). This is also reported by PM core when the glue driver
+is removed and inserted again:
 
-Unable to handle kernel NULL pointer dereference at virtual address 0000000000000008
-Call trace:
- mutex_lock+0xc/0x54
- platform_device_msi_free_irqs_all+0x14/0x20
- ufs_qcom_remove+0x34/0x48 [ufs_qcom]
- platform_remove+0x28/0x44
- device_remove+0x4c/0x80
- device_release_driver_internal+0xd8/0x178
- driver_detach+0x50/0x9c
- bus_remove_driver+0x6c/0xbc
- driver_unregister+0x30/0x60
- platform_driver_unregister+0x14/0x20
- ufs_qcom_pltform_exit+0x18/0xb94 [ufs_qcom]
- __arm64_sys_delete_module+0x180/0x260
- invoke_syscall+0x44/0x100
- el0_svc_common.constprop.0+0xc0/0xe0
- do_el0_svc+0x1c/0x28
- el0_svc+0x34/0xdc
- el0t_64_sync_handler+0xc0/0xc4
- el0t_64_sync+0x190/0x194
+ufshcd-qcom 1d84000.ufshc: Unbalanced pm_runtime_enable!
 
-Cc: stable@vger.kernel.org # 6.3
-Fixes: 519b6274a777 ("scsi: ufs: qcom: Add MCQ ESI config vendor specific ops")
+So disable runtime PM using a new helper API ufshcd_pltfrm_remove(), that
+also takes care of removing ufshcd. This helper should be called during the
+remove() stage of glue drivers.
+
+Cc: stable@vger.kernel.org # 3.12
+Fixes: 62694735ca95 ("[SCSI] ufs: Add runtime PM support for UFS host controller driver")
 Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 ---
- drivers/ufs/host/ufs-qcom.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/ufs/host/cdns-pltfrm.c        |  4 +---
+ drivers/ufs/host/tc-dwc-g210-pltfrm.c |  4 +---
+ drivers/ufs/host/ufs-exynos.c         |  2 +-
+ drivers/ufs/host/ufs-hisi.c           |  4 +---
+ drivers/ufs/host/ufs-mediatek.c       |  4 +---
+ drivers/ufs/host/ufs-qcom.c           |  2 +-
+ drivers/ufs/host/ufs-renesas.c        |  4 +---
+ drivers/ufs/host/ufs-sprd.c           |  4 +---
+ drivers/ufs/host/ufshcd-pltfrm.c      | 13 +++++++++++++
+ drivers/ufs/host/ufshcd-pltfrm.h      |  1 +
+ 10 files changed, 22 insertions(+), 20 deletions(-)
 
-diff --git a/drivers/ufs/host/ufs-qcom.c b/drivers/ufs/host/ufs-qcom.c
-index ecdfff2456e3..1bcc538ef8af 100644
---- a/drivers/ufs/host/ufs-qcom.c
-+++ b/drivers/ufs/host/ufs-qcom.c
-@@ -1843,10 +1843,12 @@ static int ufs_qcom_probe(struct platform_device *pdev)
- static void ufs_qcom_remove(struct platform_device *pdev)
+diff --git a/drivers/ufs/host/cdns-pltfrm.c b/drivers/ufs/host/cdns-pltfrm.c
+index 66811d8d1929..b31aa8411151 100644
+--- a/drivers/ufs/host/cdns-pltfrm.c
++++ b/drivers/ufs/host/cdns-pltfrm.c
+@@ -307,9 +307,7 @@ static int cdns_ufs_pltfrm_probe(struct platform_device *pdev)
+  */
+ static void cdns_ufs_pltfrm_remove(struct platform_device *pdev)
  {
- 	struct ufs_hba *hba =  platform_get_drvdata(pdev);
-+	struct ufs_qcom_host *host = ufshcd_get_variant(hba);
- 
- 	pm_runtime_get_sync(&(pdev)->dev);
- 	ufshcd_remove(hba);
--	platform_device_msi_free_irqs_all(hba->dev);
-+	if (host->esi_enabled)
-+		platform_device_msi_free_irqs_all(hba->dev);
+-	struct ufs_hba *hba =  platform_get_drvdata(pdev);
+-
+-	ufshcd_remove(hba);
++	ufshcd_pltfrm_remove(pdev);
  }
  
- static const struct of_device_id ufs_qcom_of_match[] __maybe_unused = {
+ static const struct dev_pm_ops cdns_ufs_dev_pm_ops = {
+diff --git a/drivers/ufs/host/tc-dwc-g210-pltfrm.c b/drivers/ufs/host/tc-dwc-g210-pltfrm.c
+index a3877592604d..113e0ef7b2cf 100644
+--- a/drivers/ufs/host/tc-dwc-g210-pltfrm.c
++++ b/drivers/ufs/host/tc-dwc-g210-pltfrm.c
+@@ -76,10 +76,8 @@ static int tc_dwc_g210_pltfm_probe(struct platform_device *pdev)
+  */
+ static void tc_dwc_g210_pltfm_remove(struct platform_device *pdev)
+ {
+-	struct ufs_hba *hba =  platform_get_drvdata(pdev);
+-
+ 	pm_runtime_get_sync(&(pdev)->dev);
+-	ufshcd_remove(hba);
++	ufshcd_pltfrm_remove(pdev);
+ }
+ 
+ static const struct dev_pm_ops tc_dwc_g210_pltfm_pm_ops = {
+diff --git a/drivers/ufs/host/ufs-exynos.c b/drivers/ufs/host/ufs-exynos.c
+index 5867e6338562..953103b69e2c 100644
+--- a/drivers/ufs/host/ufs-exynos.c
++++ b/drivers/ufs/host/ufs-exynos.c
+@@ -1961,7 +1961,7 @@ static void exynos_ufs_remove(struct platform_device *pdev)
+ 	struct exynos_ufs *ufs = ufshcd_get_variant(hba);
+ 
+ 	pm_runtime_get_sync(&(pdev)->dev);
+-	ufshcd_remove(hba);
++	ufshcd_pltfrm_remove(pdev);
+ 
+ 	phy_power_off(ufs->phy);
+ 	phy_exit(ufs->phy);
+diff --git a/drivers/ufs/host/ufs-hisi.c b/drivers/ufs/host/ufs-hisi.c
+index 5ee73ff05251..501609521b26 100644
+--- a/drivers/ufs/host/ufs-hisi.c
++++ b/drivers/ufs/host/ufs-hisi.c
+@@ -576,9 +576,7 @@ static int ufs_hisi_probe(struct platform_device *pdev)
+ 
+ static void ufs_hisi_remove(struct platform_device *pdev)
+ {
+-	struct ufs_hba *hba =  platform_get_drvdata(pdev);
+-
+-	ufshcd_remove(hba);
++	ufshcd_pltfrm_remove(pdev);
+ }
+ 
+ static const struct dev_pm_ops ufs_hisi_pm_ops = {
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index 9a5919434c4e..512b4e43787c 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -1869,10 +1869,8 @@ static int ufs_mtk_probe(struct platform_device *pdev)
+  */
+ static void ufs_mtk_remove(struct platform_device *pdev)
+ {
+-	struct ufs_hba *hba =  platform_get_drvdata(pdev);
+-
+ 	pm_runtime_get_sync(&(pdev)->dev);
+-	ufshcd_remove(hba);
++	ufshcd_pltfrm_remove(pdev);
+ }
+ 
+ #ifdef CONFIG_PM_SLEEP
+diff --git a/drivers/ufs/host/ufs-qcom.c b/drivers/ufs/host/ufs-qcom.c
+index 1bcc538ef8af..38732dd48331 100644
+--- a/drivers/ufs/host/ufs-qcom.c
++++ b/drivers/ufs/host/ufs-qcom.c
+@@ -1846,7 +1846,7 @@ static void ufs_qcom_remove(struct platform_device *pdev)
+ 	struct ufs_qcom_host *host = ufshcd_get_variant(hba);
+ 
+ 	pm_runtime_get_sync(&(pdev)->dev);
+-	ufshcd_remove(hba);
++	ufshcd_pltfrm_remove(pdev);
+ 	if (host->esi_enabled)
+ 		platform_device_msi_free_irqs_all(hba->dev);
+ }
+diff --git a/drivers/ufs/host/ufs-renesas.c b/drivers/ufs/host/ufs-renesas.c
+index 8711e5cbc968..b3a5fc2d44e7 100644
+--- a/drivers/ufs/host/ufs-renesas.c
++++ b/drivers/ufs/host/ufs-renesas.c
+@@ -390,9 +390,7 @@ static int ufs_renesas_probe(struct platform_device *pdev)
+ 
+ static void ufs_renesas_remove(struct platform_device *pdev)
+ {
+-	struct ufs_hba *hba = platform_get_drvdata(pdev);
+-
+-	ufshcd_remove(hba);
++	ufshcd_pltfrm_remove(pdev);
+ }
+ 
+ static struct platform_driver ufs_renesas_platform = {
+diff --git a/drivers/ufs/host/ufs-sprd.c b/drivers/ufs/host/ufs-sprd.c
+index d8b165908809..e455890cf7d4 100644
+--- a/drivers/ufs/host/ufs-sprd.c
++++ b/drivers/ufs/host/ufs-sprd.c
+@@ -427,10 +427,8 @@ static int ufs_sprd_probe(struct platform_device *pdev)
+ 
+ static void ufs_sprd_remove(struct platform_device *pdev)
+ {
+-	struct ufs_hba *hba =  platform_get_drvdata(pdev);
+-
+ 	pm_runtime_get_sync(&(pdev)->dev);
+-	ufshcd_remove(hba);
++	ufshcd_pltfrm_remove(pdev);
+ }
+ 
+ static const struct dev_pm_ops ufs_sprd_pm_ops = {
+diff --git a/drivers/ufs/host/ufshcd-pltfrm.c b/drivers/ufs/host/ufshcd-pltfrm.c
+index 1f4f30d6cb42..bad5b1303eb6 100644
+--- a/drivers/ufs/host/ufshcd-pltfrm.c
++++ b/drivers/ufs/host/ufshcd-pltfrm.c
+@@ -524,6 +524,19 @@ int ufshcd_pltfrm_init(struct platform_device *pdev,
+ }
+ EXPORT_SYMBOL_GPL(ufshcd_pltfrm_init);
+ 
++/**
++ * ufshcd_pltfrm_remove - Remove ufshcd platform
++ * @pdev: pointer to Platform device handle
++ */
++void ufshcd_pltfrm_remove(struct platform_device *pdev)
++{
++	struct ufs_hba *hba =  platform_get_drvdata(pdev);
++
++	ufshcd_remove(hba);
++	pm_runtime_disable(&pdev->dev);
++}
++EXPORT_SYMBOL_GPL(ufshcd_pltfrm_remove);
++
+ MODULE_AUTHOR("Santosh Yaragnavi <santosh.sy@samsung.com>");
+ MODULE_AUTHOR("Vinayak Holikatti <h.vinayak@samsung.com>");
+ MODULE_DESCRIPTION("UFS host controller Platform bus based glue driver");
+diff --git a/drivers/ufs/host/ufshcd-pltfrm.h b/drivers/ufs/host/ufshcd-pltfrm.h
+index df387be5216b..3017f8e8f93c 100644
+--- a/drivers/ufs/host/ufshcd-pltfrm.h
++++ b/drivers/ufs/host/ufshcd-pltfrm.h
+@@ -31,6 +31,7 @@ int ufshcd_negotiate_pwr_params(const struct ufs_host_params *host_params,
+ void ufshcd_init_host_params(struct ufs_host_params *host_params);
+ int ufshcd_pltfrm_init(struct platform_device *pdev,
+ 		       const struct ufs_hba_variant_ops *vops);
++void ufshcd_pltfrm_remove(struct platform_device *pdev);
+ int ufshcd_populate_vreg(struct device *dev, const char *name,
+ 			 struct ufs_vreg **out_vreg, bool skip_current);
+ 
 
 -- 
 2.25.1
