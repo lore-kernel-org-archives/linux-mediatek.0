@@ -4,98 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92DEBD3ABDC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 18:01:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FB64D3ABE0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 18:14:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NtcD4vDBdIEc6kqx9Lu6ty03JmOyslcZDRLkcEX0aQA=; b=mVFPuRBVqsjoF0hDbaZlt0kL6R
-	VoAkR6ombLKIhFlTaNurW/gaf2/Gse+45NAhkXWtVwr17GcHbP0iANpf1GPUWkebYk3wipxYgGy+u
-	x55PQXdwYpXKrrq3C5awehvPMUBFW+W4ZKVjhZHW2AzV15foXsqnHLG8tUKlN7CEdouC9WJXP0Pzp
-	xrQ1zYuqgUXfmVGjpcNs1i4b0iJfmV55dGknQ5If5kDLYqP+wXtQ+zBr2NdtZoBQyvLEKxeFuaTcu
-	AqOlh6I18JRaasG8vGW9r1GZ/FzzK8d2sY+XQYjkYyMzr9hTzlaTdn8Z1v+5RboksncUC27URd612
-	GvAse98A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=PcG5Ghtfgj5GW/5qfLw7yewkg+yGj/V/bjMocxCMdSQ=; b=zhaE5HekM+8hkEPFZfRLI6+2MF
+	C4kyYYiwx3HVg+iW2liGfh46DbNNUcvwbFyhrVS9XS/yX7VXnCSyTaBnx2typf3XQZuW59NP/Jvol
+	DM5JSODQ482/uiyAuY4gDQrFUAZRB/Mz+TEMzotQSQ9/7GbP/Xy4XghX/RaNVBBDlP8XmiL5b1tPw
+	3U3QHD9b4Iuny9w4WBngm5tzwGjkZBxHcbJkZNLdycYlCvjNyCMeEw/0Ps0CfnKFUatN0IJhdPwIb
+	MO8qd0f6CUmrwW8SEn47tAsJ8TfHQtCf6YbQGVagZrJkJ2PEUT9NxeE2O2UINBvfSz22b53UMBlKy
+	OLc1Ehtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAYj5-00000000oUW-2Ywm;
-	Mon, 11 Nov 2024 18:01:23 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tAYw9-00000000ryI-4Awh;
+	Mon, 11 Nov 2024 18:14:54 +0000
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAYWp-00000000mGd-0OoI;
-	Mon, 11 Nov 2024 17:48:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 583485C5BE8;
-	Mon, 11 Nov 2024 17:47:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 643CFC4CEDB;
-	Mon, 11 Nov 2024 17:48:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1731347318;
-	bh=oDE7Z60Sda7MtMa9I9XNVVTr3fEGh1yrGGrVYaCcTKc=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=RhG6k+OwUJC1t04TSz4zO7clZcsLk+DpR5jn7nvioxg06YPsK4iWc7sahrq8Nojv7
-	 9ntUEWatyace+HXfuyaax4YvyNZ7h26d07FlcWa+DuJBYdBMV5fOjmcMFzUIcfFkN4
-	 u25OJptbScTaVk0T7nIhXlm30rgVGG0UA1Oud0msyhRqH5oGHO3HsRJROFL/QCMFMo
-	 TJfRzl5Q8PtablDqvQiRMYA+L2C76O3PejEgJ1wn/1E/5ReqM23pkiLSolPd/IVopK
-	 nUcSl2xQMwNDRmcuIwOKAln0H2gkXy5k2Oa090ie7n7n1n0v5Fkv/CYL3IkMujzT2E
-	 cv1i0UIsWz9og==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 56F31D3ABD8;
-	Mon, 11 Nov 2024 17:48:38 +0000 (UTC)
-From: Manivannan Sadhasivam via B4 Relay <devnull+manivannan.sadhasivam.linaro.org@kernel.org>
-Date: Mon, 11 Nov 2024 23:18:33 +0530
-Subject: [PATCH 4/5] scsi: ufs: pltfrm: Drop PM runtime reference count
- after ufshcd_remove()
+	id 1tAYw6-00000000rxP-2nEA;
+	Mon, 11 Nov 2024 18:14:52 +0000
+Received: by mail-pf1-x42e.google.com with SMTP id d2e1a72fcca58-71e52582cf8so3757310b3a.2;
+        Mon, 11 Nov 2024 10:14:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1731348889; x=1731953689; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=PcG5Ghtfgj5GW/5qfLw7yewkg+yGj/V/bjMocxCMdSQ=;
+        b=LISpr0g7AfJkcCwdrhTXPxREa+t2tA5a5WVM4v7xfd3ZAXPu29ofFWvOTnD2F6c07S
+         vP+oSCkTFCXuvznU9zmC9kGuDfEG/DKnhVAqeBCSsO+lTpuROMf6dsys27VkIFTJPhd/
+         Qm+56ZriENmlAwfUMjMBLw2+Y9YC93onRtiA5zvFB2i9Y8kUG6NpZ6vi6RAq9hwo09No
+         lCg+78qG/VxVSbuQn4TmKjRRiQj1IOIjVyeV9KVJNA7DfMtR5ltWeYEv6kOczgMAmrR2
+         /98ApTIgxPybEP++lYzIBpRfwyL2ABw/ctkQPvJGgKkAoazFFM/1vGL7rF8z5p+tTdqB
+         /TIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1731348889; x=1731953689;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=PcG5Ghtfgj5GW/5qfLw7yewkg+yGj/V/bjMocxCMdSQ=;
+        b=rFmLF+jNYcZI+/bw7G19OwR++WDXMLSGkC/c00JM0dqA21S/nQX12yC7itHM1swLYx
+         sPpum7VEGvZqlnWlD5ERBEgkuYq9q6ioDE3b67+oAtY/drcCTrPYB7HkdY0ABoTSAWFk
+         VgfRkweVJEoMvhKP3PlanbbU/zDbCuqlMIMccj83jyjQ5Fhxnc632fm0eR0/egcyFmvb
+         DFhmfkPRSsk0cRfHchuAwLrigXAlMgbND1gEWck3v+6r0ZTdpJsTMQj6z/8r0Ke0UONL
+         4QSPIlNR7GzkyqCOyr/vpJnGorVyNlZEGiok2LkB7F8SesZwQCm8N0F/FQ/DqOVtMJob
+         74kg==
+X-Forwarded-Encrypted: i=1; AJvYcCUJ70Q1iTWKQ38XU7xGz6CEcZHYFXokj8bG8ig1zrRskEQRonRJXSVa9b7DDdL1D6t10KQLVj1UQiCnD01BA1w/@lists.infradead.org, AJvYcCXDy4kARmkkIcljJnGieXQO7mFQdWoJbRqoxuFmKrxOfFAscYSo0pVoKukVgUczX+6+acTETdu65G/iO6sOcsE=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxFh6fAevF8YmL0Rvv6GSklk3KjHUnBQcXNwUMFgOyLKN0fT4ZO
+	4fw0hJuHxsybVpsV8JaLzF8m8QWB+bKdUz+/WVFhWo/f/eZnnO0r
+X-Google-Smtp-Source: AGHT+IHRY0yX/5Z9BgqASQU4ZZ39SI5JUr83H/XUjHQ21anzAVa6uoUX7kOFpkJY9khvsfngWxmH4g==
+X-Received: by 2002:a05:6a20:a10e:b0:1db:ebf4:2cb8 with SMTP id adf61e73a8af0-1dc22b38e98mr19023560637.38.1731348888950;
+        Mon, 11 Nov 2024 10:14:48 -0800 (PST)
+Received: from Emma ([2401:4900:1c94:38cd:5054:ff:fe53:2787])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7f41f5d9460sm7537614a12.35.2024.11.11.10.14.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 11 Nov 2024 10:14:48 -0800 (PST)
+From: Karan Sanghavi <karansanghvi98@gmail.com>
+Date: Mon, 11 Nov 2024 18:14:43 +0000
+Subject: [PATCH] drm/mediatek: Initialize pointer before use to avoid
+ undefiend behaviour
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20241111-ufs_bug_fix-v1-4-45ad8b62f02e@linaro.org>
-References: <20241111-ufs_bug_fix-v1-0-45ad8b62f02e@linaro.org>
-In-Reply-To: <20241111-ufs_bug_fix-v1-0-45ad8b62f02e@linaro.org>
-To: Alim Akhtar <alim.akhtar@samsung.com>, 
- Avri Altman <avri.altman@wdc.com>, Bart Van Assche <bvanassche@acm.org>, 
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>, 
- "Martin K. Petersen" <martin.petersen@oracle.com>, 
- Mike Bi <mikebi@micron.com>, Bean Huo <beanhuo@micron.com>, 
- =?utf-8?q?Thomas_Wei=C3=9Fschuh?= <linux@weissschuh.net>, 
- Luca Porzio <lporzio@micron.com>, Asutosh Das <quic_asutoshd@quicinc.com>, 
- Can Guo <quic_cang@quicinc.com>, Pedro Sousa <pedrom.sousa@synopsys.com>, 
- Krzysztof Kozlowski <krzk@kernel.org>, Peter Wang <peter.wang@mediatek.com>, 
- Stanley Jhu <chu.stanley@gmail.com>, 
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, 
- Orson Zhai <orsonzhai@gmail.com>, 
- Baolin Wang <baolin.wang@linux.alibaba.com>, 
- Chunyan Zhang <zhang.lyra@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
+Message-Id: <20241111-uninitializedpointer1601557-v1-1-7d03668e8141@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAJJJMmcC/x3MQQqDMBBG4avIrBtIotG2VxEXxkzrDzJKYoso3
+ t3g232bd1DiCE70Lg6K/EfCLBnmUdAw9vJlhZBNVtvK5NRPIFjRT9g5LDNk5WhqbZxr1OupS99
+ Y52sfKB+WyB9s973tzvMCtI1RQm0AAAA=
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Santosh Y <santoshsy@gmail.com>, Namjae Jeon <linkinjeon@gmail.com>
-Cc: linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-renesas-soc@vger.kernel.org, 
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
- stable@vger.kernel.org
-X-Mailer: b4 0.14.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3829;
- i=manivannan.sadhasivam@linaro.org; h=from:subject:message-id;
- bh=A6udAVAOGCzcxAfO6FoxgGhhFbo2oCHyG4WxttE28E8=;
- b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBnMkNzOShxk1jlTg40JZj4jvQfsj5GfK53lnNIi
- ZOY7wXm8qWJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCZzJDcwAKCRBVnxHm/pHO
- 9T/OB/4sbcr9eWAA6RiaVVP/+LULxj5QJg3KHy4v2BNhRXeZOONM48cElO2R0XYZjzS27ZonXgh
- kgHDoLaBxehlHMSnxjlYr62Qlmu2LuKcjRD+O23Eo6yxjhvXyggQK6ed9XJkMPNabDFJwbQ69Kq
- OW+2NT539Mc6iR4H8uKZx1oTvEdgHjMxeDwWLOl17vpqLu1Ox88OILTTHeEl4KGqDLnUmddrV79
- Zzya0F92nny+pVesqZD3ro8KyzXMco+GIc+k2YTwQmPgn9CvLInsQzVKjGW94stZ8bRWcOYUmUu
- uZUBJLAza5JxTRgweA1wVS23jdCS6EdWIApaMfCASCOl+LTJ
-X-Developer-Key: i=manivannan.sadhasivam@linaro.org; a=openpgp;
- fpr=C668AEC3C3188E4C611465E7488550E901166008
-X-Endpoint-Received: by B4 Relay for
- manivannan.sadhasivam@linaro.org/default with auth_id=185
-X-Original-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+ Alexandre Mergnat <amergnat@baylibre.com>, 
+ Sui Jingfeng <sui.jingfeng@linux.dev>, CK Hu <ck.hu@mediatek.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Shuah Khan <skhan@linuxfoundation.org>, 
+ Karan Sanghavi <karansanghvi98@gmail.com>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1731348885; l=1580;
+ i=karansanghvi98@gmail.com; s=20241017; h=from:subject:message-id;
+ bh=2TXJ1EmXXe6JGcHq0islC06ZuiS7W6be+KOSVMPiOMY=;
+ b=XnSsGvh9arXwU0TzFneIvfBvnhGG3ywcwXCrVXSmtOIjjRf655y5J6qAlm7chmE39XOFBDzZe
+ nUFfZpHEs26DRSdOnEKnl4vOjiv5k/rnxZz0tZkMGvmD1Uwys+tKhXs
+X-Developer-Key: i=karansanghvi98@gmail.com; a=ed25519;
+ pk=UAcbefT1C06npNVDJHdgpPqTm4WE9IhaA1fmJb3A37Y=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241111_094843_312958_6A85842B 
-X-CRM114-Status: GOOD (  13.74  )
+X-CRM114-CacheID: sfid-20241111_101450_743679_58C5114C 
+X-CRM114-Status: GOOD (  13.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,111 +104,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: manivannan.sadhasivam@linaro.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Initialize the pointer with NULL as mtk_drm_of_get_ddp_ep_cid
+function might return before assigning value to next pointer
+but yet further dereference to next can lead to some undefined
+behavior as it may point to some invalid location.
 
-During the remove stage of glue drivers, some of them are incrementing the
-reference count using pm_runtime_get_sync(), before removing the ufshcd
-using ufshcd_remove(). But they are not dropping that reference count after
-ufshcd_remove() to balance the refcount.
-
-So drop the reference count by calling pm_runtime_put_noidle() after
-ufshcd_remove(). Since the behavior is applicable to all glue drivers, move
-the PM handling to ufshcd_pltfrm_remove().
-
-Cc: stable@vger.kernel.org # 3.12
-Fixes: 62694735ca95 ("[SCSI] ufs: Add runtime PM support for UFS host controller driver")
-Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Fixes: 4c932840db1d ("drm/mediatek: Implement OF graphs support for display paths")
+Signed-off-by: Karan Sanghavi <karansanghvi98@gmail.com>
 ---
- drivers/ufs/host/tc-dwc-g210-pltfrm.c | 1 -
- drivers/ufs/host/ufs-exynos.c         | 1 -
- drivers/ufs/host/ufs-mediatek.c       | 1 -
- drivers/ufs/host/ufs-qcom.c           | 1 -
- drivers/ufs/host/ufs-sprd.c           | 1 -
- drivers/ufs/host/ufshcd-pltfrm.c      | 2 ++
- 6 files changed, 2 insertions(+), 5 deletions(-)
+Coverity Message:
+CID 1601557: (#1 of 1): Uninitialized pointer read (UNINIT)
+3. uninit_use: Using uninitialized value next.
 
-diff --git a/drivers/ufs/host/tc-dwc-g210-pltfrm.c b/drivers/ufs/host/tc-dwc-g210-pltfrm.c
-index 113e0ef7b2cf..c6f8565ede21 100644
---- a/drivers/ufs/host/tc-dwc-g210-pltfrm.c
-+++ b/drivers/ufs/host/tc-dwc-g210-pltfrm.c
-@@ -76,7 +76,6 @@ static int tc_dwc_g210_pltfm_probe(struct platform_device *pdev)
-  */
- static void tc_dwc_g210_pltfm_remove(struct platform_device *pdev)
- {
--	pm_runtime_get_sync(&(pdev)->dev);
- 	ufshcd_pltfrm_remove(pdev);
- }
- 
-diff --git a/drivers/ufs/host/ufs-exynos.c b/drivers/ufs/host/ufs-exynos.c
-index 953103b69e2c..6dedcc8b22b4 100644
---- a/drivers/ufs/host/ufs-exynos.c
-+++ b/drivers/ufs/host/ufs-exynos.c
-@@ -1960,7 +1960,6 @@ static void exynos_ufs_remove(struct platform_device *pdev)
- 	struct ufs_hba *hba =  platform_get_drvdata(pdev);
- 	struct exynos_ufs *ufs = ufshcd_get_variant(hba);
- 
--	pm_runtime_get_sync(&(pdev)->dev);
- 	ufshcd_pltfrm_remove(pdev);
- 
- 	phy_power_off(ufs->phy);
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index 512b4e43787c..c834d38921b6 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -1869,7 +1869,6 @@ static int ufs_mtk_probe(struct platform_device *pdev)
-  */
- static void ufs_mtk_remove(struct platform_device *pdev)
- {
--	pm_runtime_get_sync(&(pdev)->dev);
- 	ufshcd_pltfrm_remove(pdev);
- }
- 
-diff --git a/drivers/ufs/host/ufs-qcom.c b/drivers/ufs/host/ufs-qcom.c
-index 38732dd48331..91127fb17186 100644
---- a/drivers/ufs/host/ufs-qcom.c
-+++ b/drivers/ufs/host/ufs-qcom.c
-@@ -1845,7 +1845,6 @@ static void ufs_qcom_remove(struct platform_device *pdev)
- 	struct ufs_hba *hba =  platform_get_drvdata(pdev);
- 	struct ufs_qcom_host *host = ufshcd_get_variant(hba);
- 
--	pm_runtime_get_sync(&(pdev)->dev);
- 	ufshcd_pltfrm_remove(pdev);
- 	if (host->esi_enabled)
- 		platform_device_msi_free_irqs_all(hba->dev);
-diff --git a/drivers/ufs/host/ufs-sprd.c b/drivers/ufs/host/ufs-sprd.c
-index e455890cf7d4..d220978c2d8c 100644
---- a/drivers/ufs/host/ufs-sprd.c
-+++ b/drivers/ufs/host/ufs-sprd.c
-@@ -427,7 +427,6 @@ static int ufs_sprd_probe(struct platform_device *pdev)
- 
- static void ufs_sprd_remove(struct platform_device *pdev)
- {
--	pm_runtime_get_sync(&(pdev)->dev);
- 	ufshcd_pltfrm_remove(pdev);
- }
- 
-diff --git a/drivers/ufs/host/ufshcd-pltfrm.c b/drivers/ufs/host/ufshcd-pltfrm.c
-index bad5b1303eb6..b8dadd0a2f4c 100644
---- a/drivers/ufs/host/ufshcd-pltfrm.c
-+++ b/drivers/ufs/host/ufshcd-pltfrm.c
-@@ -532,8 +532,10 @@ void ufshcd_pltfrm_remove(struct platform_device *pdev)
- {
- 	struct ufs_hba *hba =  platform_get_drvdata(pdev);
- 
-+	pm_runtime_get_sync(&pdev->dev);
- 	ufshcd_remove(hba);
- 	pm_runtime_disable(&pdev->dev);
-+	pm_runtime_put_noidle(&pdev->dev);
- }
- EXPORT_SYMBOL_GPL(ufshcd_pltfrm_remove);
- 
+Coverity Link:
+https://scan7.scan.coverity.com/#/project-view/10043/11354?selectedIssue=1601557
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 9a8ef8558da9..bc06c664e80f 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -900,7 +900,7 @@ static int mtk_drm_of_ddp_path_build_one(struct device *dev, enum mtk_crtc_path
+ 					 const unsigned int **out_path,
+ 					 unsigned int *out_path_len)
+ {
+-	struct device_node *next, *prev, *vdo = dev->parent->of_node;
++	struct device_node *next = NULL, *prev, *vdo = dev->parent->of_node;
+ 	unsigned int temp_path[DDP_COMPONENT_DRM_ID_MAX] = { 0 };
+ 	unsigned int *final_ddp_path;
+ 	unsigned short int idx = 0;
+
+---
+base-commit: 6d59cab07b8d74d0f0422b750038123334f6ecc2
+change-id: 20241111-uninitializedpointer1601557-9803b725b6bd
+
+Best regards,
 -- 
-2.25.1
-
+Karan Sanghavi <karansanghvi98@gmail.com>
 
 
