@@ -4,80 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BC9BD12D7F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 07:52:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE896D2E9C3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 08:55:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CKS2ivMfGZwRbgqnCIUlWddkSsDm0WEsgdFK/5SEzuo=; b=NRvsj8TNp4YYXyFlD4T52ryoD4
-	nVjCU92iEazvEsNyIeyeRcR3cvyv3JIJ/uWKLlrdAwefxcGY0CXnKcPoRpgmU716Y9KDXYpD2Hbz+
-	KvIA8fjgIRy/A2wsC8eldGsOT31vZVY//IDw86Fc4/yE0kbsMKOasJF71PoeBuWlCkpdXTwr99kQe
-	0YnbaSldxrMf6RzfsKbQdgjwEtYqCFtf2tzKM2VPIrt80efN/6QqA43tPH6LFG9n8Y4ErdbxppBGI
-	sQFxgkAWZU7p+PyVuRgdx0+2Ckc3HO7CL+wpNqFhk6IjNk89Y2gf6KZ1MYx1V22pA3gk1TmdXk+Ql
-	YiZ0jCVA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5F4rAbapCjtRK+5E3cd9kMWPwT8eNM90FXJAZ2gUrmc=; b=jNVKF8duPUxAbLDtlrFDPIFUYV
+	zy+S5CrQQOS+Ebhlb3Mkz/txE4h7tceroiS9c4CMbTX7/NHl3qIyEveIr3cc7M33whK6LVo7ZpLZa
+	o6dq8pdiUPQv/FbURv03zqr0M2CNy23oZPAgknbah8FYEALYMCv2Xev0Mujw7uozXI0Rgm4WlY5vu
+	AaGjUnxGkIvdyfsPk/GoKLwSIld7SGjY0dZJTzBt+HuiEB3YPL6Exyy77rABM8tERsk5HvEd14gGe
+	bDjf6O3mdgKX+pKWKe7Ap3iSw1lMtDfbhX2pvOMi5dr7Jz3nALTBblaUpRC2ePb5IV6uANUOLMje5
+	3xuwDzng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAPDk-0000000GiFx-1pjO;
-	Mon, 11 Nov 2024 07:52:24 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1tAQDF-0000000Guw2-2huS;
+	Mon, 11 Nov 2024 08:55:57 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAPDh-0000000GiFH-39uM
-	for linux-mediatek@lists.infradead.org;
-	Mon, 11 Nov 2024 07:52:23 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-539e13375d3so4838577e87.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 10 Nov 2024 23:52:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1731311539; x=1731916339; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=CKS2ivMfGZwRbgqnCIUlWddkSsDm0WEsgdFK/5SEzuo=;
-        b=irDDtwo/nROOuK7BvZPIf7NYi884zEhGwakWqZHFNohUf5TyipT1nlDed3/Ov9OJLr
-         CclhBYq2R6zrd98kalHIz4hCaZtqjOQuXKfQ03DHkvWpjk2wk2FZioKYxZzoNdf8e+pc
-         Dfw/RTjEh0jQRZZFFOmboSJXWWC22GNyx0mto=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731311539; x=1731916339;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=CKS2ivMfGZwRbgqnCIUlWddkSsDm0WEsgdFK/5SEzuo=;
-        b=V858HlukTFxVw5wX4gAcgVh9LrtDKsyZMxHG6NrIt1Um2E13DU8RKOurZRYpJwAIZr
-         HR4Z+FWEm0ZhKvvweLMTNwiawRD1R3U4Aix2ctitWqEysgbuyBhl6hJmrRroNTduYWUm
-         qp1NefrBG94yknFQ2KCzq92/vgSjzjoVW6qLhaPSS0UJ+xhZFcr6bXaSB+KwmI7Msy8c
-         hmbohplPtkdvxCs1Mz+8/mWkwpdxSM2T4zuXCp4GAsKZj7HTRpS0b6US7cEDcx5z6ctF
-         pJpGVl6+6i9MqcO7PFB+Eir6BTCsh4dgniwlcc9TofQFDm4gzaOPN1HUrypnza7iOuKI
-         6sGw==
-X-Forwarded-Encrypted: i=1; AJvYcCUN9mHdXq8qi6HFmrWCnmiro2e4HUUK0uIFV8IiMULgiyBTGp4KQRznqRkNvK3swACc8KBinDhym0QBy8PrGA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YybVUS7g5K6vuLEElRks1qgz4giUZVPWXtHtBmo1iZS+6+ipA1y
-	DT/yWdOLXK6tYzi2Rn415I+T4S8MeHgTTkkc5AgCM4ihy1MIXsswMFLl45F6WgT93McM4VAa2Jp
-	WKP0k0I/jrVrEf65owY15oKXFxwWlwjrjND5p
-X-Google-Smtp-Source: AGHT+IGRHfTP9Kqq9mD5swqZoNxYRg8klYW5cXpLbVdWWLihAGznsqQ/hB9z7H/R/X3QaXj3PIOAVkGZbB37Lx2K3FM=
-X-Received: by 2002:a05:6512:2214:b0:539:530e:9de5 with SMTP id
- 2adb3069b0e04-53d862798damr4078071e87.56.1731311538956; Sun, 10 Nov 2024
- 23:52:18 -0800 (PST)
+	id 1tAQ8J-0000000GtJI-2SsP;
+	Mon, 11 Nov 2024 08:51:00 +0000
+X-UUID: 09c79594a00a11ef82ff63e91e7eb18c-20241111
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=5F4rAbapCjtRK+5E3cd9kMWPwT8eNM90FXJAZ2gUrmc=;
+	b=QAmYd0nCfOuPJZe7seXjTcC0geKFkwYljm2hIcafUFXFoBnHsAAx6H7sW+8mLfd0BsHRP0Vkf8+FLH+G9kHpq3jRI5dXzoRwa+OLkPEYyAObDs3HQqvgC6UgHW5ibbdkblsUlukcRj7yy7To4P0k5UrThwZ0DoAsVhMc3DlAvh8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.42,REQID:98a7e783-683b-4f82-ac40-67fe49182872,IP:0,U
+	RL:0,TC:0,Content:0,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:1610f51b-4f51-4e1d-bb6a-1fd98b6b19d2,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:5,IP:nil,UR
+	L:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
+	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: 09c79594a00a11ef82ff63e91e7eb18c-20241111
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+	(envelope-from <andy-ld.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1476798627; Mon, 11 Nov 2024 01:50:44 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Mon, 11 Nov 2024 16:50:41 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Mon, 11 Nov 2024 16:50:41 +0800
+From: Andy-ld Lu <andy-ld.lu@mediatek.com>
+To: <angelogioacchino.delregno@collabora.com>, <matthias.bgg@gmail.com>,
+	<ulf.hansson@linaro.org>, <wenbin.mei@mediatek.com>,
+	<mengqi.zhang@mediatek.com>
+CC: <linux-mmc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Andy-ld Lu <andy-ld.lu@mediatek.com>
+Subject: [PATCH] mmc: mtk-sd: Fix MMC_CAP2_CRYPTO flag setting
+Date: Mon, 11 Nov 2024 16:49:31 +0800
+Message-ID: <20241111085039.26527-1-andy-ld.lu@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-References: <20241111074030.25673-1-ot_cathy.xu@mediatek.com>
-In-Reply-To: <20241111074030.25673-1-ot_cathy.xu@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 11 Nov 2024 15:52:07 +0800
-Message-ID: <CAGXv+5GC1zoTnSQueDOtH8JRB6R5cg6mBMzAoRTsWPKVWAxGyQ@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: mediatek: Add pinctrl driver
-To: ot907280 <ot_cathy.xu@mediatek.com>
-Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
-	sean.wang@kernel.org, linus.walleij@linaro.org, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	Guodong Liu <guodong.liu@mediatek.corp-partner.google.com>, 
-	Guodong Liu <guodong.liu@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241110_235222_085754_5D44493B 
-X-CRM114-Status: UNSURE (   7.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241111_005052_226611_4F23D3FA 
+X-CRM114-Status: GOOD (  11.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,20 +84,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 11, 2024 at 3:40=E2=80=AFPM ot907280 <ot_cathy.xu@mediatek.com>=
- wrote:
->
-> From: Guodong Liu <guodong.liu@mediatek.corp-partner.google.com>
->
-> Add pinctrl driver for mt8196
->
-> Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
-> Cathy Xu <ot_cathy.xu@mediatek.com>
+Currently, the MMC_CAP2_CRYPTO flag is set by default for eMMC hosts.
+However, this flag should not be set for hosts that do not support inline
+encryption.
 
-No tag?
+The 'crypto' clock, as described in the documentation, is used for data
+encryption and decryption. Therefore, only hosts that are configured with
+this 'crypto' clock should have the MMC_CAP2_CRYPTO flag set.
 
-Please rewrite the subject as "pinctrl: mediatek: Add support for MT8196".
-The current subject is too broad.
+Fixes: 7b438d0377fb ("mmc: mtk-sd: add Inline Crypto Engine clock control")
+Fixes: ed299eda8fbb ("mmc: mtk-sd: fix devm_clk_get_optional usage")
+Signed-off-by: Andy-ld Lu <andy-ld.lu@mediatek.com>
+---
+ drivers/mmc/host/mtk-sd.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-ChenYu
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 022526a1f754..efb0d2d5716b 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -2907,7 +2907,8 @@ static int msdc_drv_probe(struct platform_device *pdev)
+ 		host->crypto_clk = devm_clk_get_optional(&pdev->dev, "crypto");
+ 		if (IS_ERR(host->crypto_clk))
+ 			return PTR_ERR(host->crypto_clk);
+-		mmc->caps2 |= MMC_CAP2_CRYPTO;
++		else if (host->crypto_clk)
++			mmc->caps2 |= MMC_CAP2_CRYPTO;
+ 	}
+ 
+ 	host->irq = platform_get_irq(pdev, 0);
+-- 
+2.46.0
+
 
