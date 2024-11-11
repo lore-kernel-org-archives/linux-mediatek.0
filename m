@@ -4,92 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E067DD2E9C3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 09:21:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A9CBD2E9C8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 09:26:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G1NHMjoXKjtbg5sRxyu6N/9CkX3GVAUgbgcVP3E+wC4=; b=SIyo9Yrd5RzDEl
-	7zk0PzAvs56OvCFCTKRNoL06uSJ/+blJdMKcev9A8clBp+eGOB5Qu93Ie2JxyN3xSVtRXHO7ga9y/
-	7flDILjkEzbS0+SxSgsorULED65S0Jrivjjif5TbkGoLwbwv0dGEcp5omdMJ4JPROg+BvGCVkXsnl
-	bNbKWkv8TRYLzvVxILbvN5ZsGbE8AdZ4LaL3RjINOS/48SUJ8c+cPvZIEp8NniEyx+XrtqfSLYoe2
-	iKW8Q+HS6IEFBMVcfWfCcwuiJ91KoCHSu14Fd7SUWJcuj1pYRdRWzrHa4h4q77AgLh7OIgsSFIgpE
-	O/Z5c9SldaSOGwUZN+rQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=16u+npe4MbHHsmpZ08MOYgrA6j2B46LPWEmoqUuH2IU=; b=0Bqplxax1sCVZSKT0PWvrxypUq
+	/dD7Qjs0UEEVwcZGcWwD8gcDYbZcn2E/oTRcBkSfvcELonQKQtMKR6edzhQfQCpXLrv6QRi2BMtNn
+	J2h/11rima+2hkd8CHW22sW0p5ohGpdaWq+4rI/wqfFOLERV8nhCKzeOOEFr72ilW69uuw4rBclDu
+	cG7+cOLeR4VlqvpFumCucPmTM8quhzAsEEMdGwcU7WdM1daabDl5GKorUvHrGCHxrpP6jO4zxTi6F
+	LNgmVSuwDiL7OHpoF33UTKwqjzh67/DGlGCEb08rjauRUCKF0/SLH1WxZ8nCv5+DUHjhAoz4XNjh/
+	LiPYDxWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAQcG-0000000H58m-3Lqg;
-	Mon, 11 Nov 2024 09:21:48 +0000
-Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
+	id 1tAQgQ-0000000H5Wl-0rbq;
+	Mon, 11 Nov 2024 09:26:06 +0000
+Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAQcD-0000000H587-1E7n
+	id 1tAQgN-0000000H5W3-0zYF
 	for linux-mediatek@lists.infradead.org;
-	Mon, 11 Nov 2024 09:21:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=leemhuis.info; s=he214686; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:From:Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:
-	Content-Type:Content-Transfer-Encoding:Content-ID:Content-Description:
-	In-Reply-To:References; bh=G1NHMjoXKjtbg5sRxyu6N/9CkX3GVAUgbgcVP3E+wC4=;
-	t=1731316905; x=1731748905; b=IZtDKGxsCpYJujAvglKYIrmBWJZOmjaqXQJHyuaUZLmrAIQ
-	M6SAsnTCq46gqRs40tqO2tSuIYYHhzezIK/fnaCSDRjXw93PxyXxFV9WglhEUQMav4TGYUM2msphB
-	xh0POz04LLaAJmiImkk9NGyGquEvDoeKuYuD9fUH7yRlK3X0GKU+7SFpz6iem2YN6dAo0gquD/WIU
-	thPzIRblc9ZiDTir2r5avDsedPrTuhpAw0tViRhYzOuLmQtSiHlZ+Kr5xutsnFRRiTZvGVYUmpCc3
-	gwiR7WSgeT1uVeDKsR/Y8rSd7S/RYsifiLXCIS41wzmbakZ3EQrJx6RFwHgKetbA==;
-Received: from [2a02:8108:8980:2478:87e9:6c79:5f84:367d]; authenticated
-	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	id 1tAQc6-0007Mx-TH; Mon, 11 Nov 2024 10:21:38 +0100
-Message-ID: <746e7fa8-41ba-483f-a674-2121fa0ea2d8@leemhuis.info>
-Date: Mon, 11 Nov 2024 10:21:38 +0100
+	Mon, 11 Nov 2024 09:26:04 +0000
+Received: by mail-ot1-x32b.google.com with SMTP id 46e09a7af769-718061440e2so105239a34.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 11 Nov 2024 01:26:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1731317161; x=1731921961; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=16u+npe4MbHHsmpZ08MOYgrA6j2B46LPWEmoqUuH2IU=;
+        b=gOjyytuy1WZKjHHIpYKlJquNeqhvuoBWZXL9Q5hF7Ohcl5KKxD/cNdksDzNRjOo59O
+         CoSFPXf+3NpyzR9uFkAmoVcDS/wASPU4kcFudAsaKyQLFSmVUa2+ucVL+4R/GgGA3R17
+         WvQgJIDyZkZ6/G6l3F1aT0M7qp5z7W/UvyeJAbZKg2NpJvGVWaJw9E94M2Ho9e9Hs1+Y
+         EF5ou4KypVKiPFt2iUXA79P9Bvjatbr3VsiOgdsOsHcjdx2/i6JjyFyz0Z6iUCOATTFO
+         6jCT0e//OeqOwgy0lQJwpHMQMSLrmSqIG+6EciTqKjBifLm/AHQH65AwIoyT3gSsf7up
+         28cg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1731317161; x=1731921961;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=16u+npe4MbHHsmpZ08MOYgrA6j2B46LPWEmoqUuH2IU=;
+        b=JVf56sDEBVYwBv42YREuXyi/WnvMJjKo+5H1RdRNURc64kEpgou1aMsoGytLYLplUS
+         YF5ZlTIXa5SA1uj3IZ3EAl2pADLAAZOtwnOmbtVTqo30haVIiYgyaS2MH88sPZS9BVga
+         7s+C3xPhVcLwhiHZcqAi8+XatMelhG9mqbcxIXGvQwUF1nYrB8iuOpNxb2XOkuiCP2aP
+         ZoyGFOYbAOPmSobQoBKFMWxvSUkB0fSG2KjHfP/YjxRl/iyCu+8SxCHNnJ7L0p7ZwMpz
+         2rJeKnhmxb19bV5JysFjo8Smj1zGqaFE0zqs65bh43IFV6vULv7h459eZVKvVJxYu2Cf
+         ym1g==
+X-Forwarded-Encrypted: i=1; AJvYcCV/4e12i+7BKcJ/0rhtMqzgEOBkgvGPLkOhBAdjllKdSOYJ6OR4Hw1QsdPFAYtzBZwi2O+obdRIf+ohBl8Fcg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxI0+0pbi+19TEWSIsCd1984Jcz+3eCEyyTeTxwh/7UHjv6f5xH
+	FTBwARZI13fWEsT3JjD1JHXQOE916VJeXT4CgXBi/0aJcYauT6LIwvKhUH1nlJIgZmjcV9dm3Vo
+	l6kpu05wl+W/PYKCIE7eSbNsi/pwBV2JqgwNu/A==
+X-Google-Smtp-Source: AGHT+IEbddWaWnCjkmvVli+HftqZUgfuRo1RHD4WnRBKP26ug1MHqgXnTsC6sGlZxqlzp2/8eme4zlIKL3HJtTUpKNM=
+X-Received: by 2002:a05:6830:d87:b0:718:ffc:9445 with SMTP id
+ 46e09a7af769-71a1c1f11b8mr2581183a34.2.1731317160303; Mon, 11 Nov 2024
+ 01:26:00 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] Bluetooth: btmtk: Remove resetting mt7921 before
- downloading the fw
-To: Takashi Iwai <tiwai@suse.de>
-Cc: "luiz.dentz@gmail.com" <luiz.dentz@gmail.com>,
- "marcel@holtmann.org" <marcel@holtmann.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-bluetooth@vger.kernel.org" <linux-bluetooth@vger.kernel.org>,
- =?UTF-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?= <Deren.Wu@mediatek.com>,
- "regressions@lists.linux.dev" <regressions@lists.linux.dev>,
- "johan.hedberg@gmail.com" <johan.hedberg@gmail.com>,
- =?UTF-8?B?U3RldmUgTGVlICjmnY7oppboqqAp?= <steve.lee@mediatek.com>,
- "marc.payne@mdpsys.co.uk" <marc.payne@mdpsys.co.uk>,
- Sean Wang <Sean.Wang@mediatek.com>, =?UTF-8?B?QWFyb24gSG91ICjkvq/kv4rku7Ap?=
- <Aaron.Hou@mediatek.com>, =?UTF-8?B?Q2hyaXMgTHUgKOmZuOeomuazkyk=?=
- <Chris.Lu@mediatek.com>, =?UTF-8?B?SGFvIFFpbiAo56em5rWpKQ==?=
- <Hao.Qin@mediatek.com>
-References: <20240822052310.25220-1-hao.qin@mediatek.com>
- <ZuB3omUkdUHLggYu@mdpsys.co.uk>
- <790e542aa9d08c7efeee6ef298fce2a87d8035e4.camel@mediatek.com>
- <ZuneSM4SvyUFX86j@mdpsys.co.uk>
- <9bfbbf24ac2480d94d3455f7e33e4b5502b38ced.camel@mediatek.com>
- <CABBYNZKYsL9jcF2n9TsA1BjU-CjXOdXu7MDLP9Sz_Ly8hBAf1w@mail.gmail.com>
- <c01e6dfa730dd10a7d4dba60fe31e82b9c296b37.camel@mediatek.com>
- <Zuyk1c6Gkxx3G0PB@mdpsys.co.uk>
- <f9e8688ebe559e10c019d0cbab4e8b1f5a7d2339.camel@mediatek.com>
- <ff502f63-2d87-4dee-a893-cce53353df8b@leemhuis.info>
- <87iktk4d9l.wl-tiwai@suse.de>
- <75f671b6-ce2a-4404-b662-2c9c7d28a598@leemhuis.info>
- <d0f70e662f5e9329cff43f92a5c191601cc599f1.camel@mediatek.com>
- <0a988691-8c18-4dca-ac78-94e36a9b8b37@leemhuis.info>
- <f3c6f6f857d19c867941c86c644042fa195621ac.camel@mediatek.com>
- <643d8055-5a9f-4f5b-865b-830d33651dfe@leemhuis.info>
- <87ttcqt0hx.wl-tiwai@suse.de>
-From: "Linux regression tracking (Thorsten Leemhuis)"
- <regressions@leemhuis.info>
-Content-Language: en-MW
-In-Reply-To: <87ttcqt0hx.wl-tiwai@suse.de>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1731316905;6bc4de3e;
-X-HE-SMSGID: 1tAQc6-0007Mx-TH
+References: <20241021072626.15102-1-xiazhengqiao@huaqin.corp-partner.google.com>
+In-Reply-To: <20241021072626.15102-1-xiazhengqiao@huaqin.corp-partner.google.com>
+From: Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
+Date: Mon, 11 Nov 2024 17:25:49 +0800
+Message-ID: <CADYyEwQjDUALxi482d=KTY4Jt1zpbByPQXjF9YR4hu-3Qd-u0w@mail.gmail.com>
+Subject: Re: [PATCH v3 RESEND 0/4] arm64: dts: mediatek: Add MT8186 Chinchou
+To: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+	wenst@chromium.org, hsinyi@chromium.org, sean.wang@mediatek.com
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241111_012145_660332_FCA4A684 
-X-CRM114-Status: GOOD (  50.12  )
+X-CRM114-CacheID: sfid-20241111_012603_296069_DFE0601E 
+X-CRM114-Status: GOOD (  15.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,299 +89,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: Linux regressions mailing list <regressions@lists.linux.dev>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02.11.24 11:04, Takashi Iwai wrote:
-> On Fri, 01 Nov 2024 15:22:13 +0100,
-> Thorsten Leemhuis wrote:
->>
->> Thx for the insights, but it feels like this is not the complete story.
->> From Takashi's mail earlier in the thread it appears to me that there is
->> a regression that the patch at the start of the thread fixes:
->> https://lore.kernel.org/all/87iktk4d9l.wl-tiwai@suse.de/
->>
->> So it appears to me (please correct me if I'm wrong, which I might be)
->> there is some regression that must be fixed independently of any
->> firmware changes; not sure, maybe it's a different regression that the
->> one Marc saw.
-> 
-> That's hard to judge, unfortunately.  The only fact is that 6.11 and
-> 6.12-rc are still buggy and fail to boot due to the kernel Oops from
-> Mediatek BT stuff.  The patch
->   https://lore.kernel.org/all/20240822052310.25220-1-hao.qin@mediatek.com/
-> seems working around it, but it doesn't mean that this is the right
-> fix, either.
-> 
-> My wild guess is that there are substantial problems at btmtk stuff
-> about the firmware management.  It blocks unbinding if something goes
-> wrong, and this bug surfaced casually due to another change.
-> 
->> I just don't know what's the best way forward to resolve the regresson.
->> A revert of the culprit? The patch at the start of this thread?
->> Something else?
-> 
-> Either a revert of the firmware or the patch that triggered the issue
-> would be helpful as a temporary workaround, yes.  We need a quick
-> duct-tape coverage, then fix the fundamental failure.
+Hi all,
 
-I agree, but seems everybody else sees it differently or does not care
-enough to do anything about it.
+These patches have not been reviewed for more than two weeks. Please
+review them.
 
-Or is some firmware update that fixes things within reach by now?
-Assuming here that the firmware is the only problem here (not sure at
-all if that is the case), as users never should be expected to update
-the firmware to fix a regression caused by a kernel change.
+thanks
 
->> Takashi, Luiz, can you help me out here? I guess I otherwise soon will
->> have to involve higher level maintainers to sort this out (e.g. the -net
->> maintainers and/or Linus).
-> I can build a test kernel and ask the reporter for testing if once
-> something is provided, of course.  Just ping me.
-
-Hmmm. Given the above I wonder if it would be good if you could make the
-reporter test a kernel with the revert and see if that helps -- and if
-it does then consider submitting that (with Linus and the -net
-maintainers in CC) to see if that gets anybody into action.
-
-Ciao, Thorsten
-
->> On 01.11.24 08:11, Chris Lu (陸稚泓) wrote:
->>> Hi Thorsten,
->>>
->>> On Wed, 2024-10-30 at 12:29 +0100, Thorsten Leemhuis wrote:
->>>> External email : Please do not click links or open attachments until
->>>> you have verified the sender or the content.
->>>>
->>>>
->>>> On 30.10.24 12:03, Chris Lu (陸稚泓) wrote:
->>>>>
->>>>> Let me recap and update the status of this problem.
->>>>
->>>> Many thx!
->>>>
->>>>> Marc feedback that he has some problem with MT7921AUN usb module.
->>>>> Originally, we thought it was caused by the change "Fixes:
->>>>> ccfc8948d7e4d9 ("Bluetooth: btusb: mediatek: reset the controller
->>>>> before downloading the fw")". The change is mainly for MT7922, we
->>>>> found some problem with MT7921 on specific platform internally. As
->>>>> a result, Hao sent another patch to remove MT7921 from that
->>>>> rule(Bluetooth: btmtk: Remove resetting mt7921 before downloading
->>>>> the fw).
->>>>>
->>>>> However, Marc also mentioned that BT is able to work if changing
->>>>> back
->>>>> to an old firmware bin. Based on the clue, we found it was caused
->>>>> by a
->>>>> firmware change that specific MT7921 model will not able to setup
->>>>> successfully. (In fact, we didn't expect that MT7921AUN can be get
->>>>> by
->>>>> normal user.)
->>>>>
->>>>> Since we can't predict which model user use and Luiz also suggests
->>>>> MediaTek to fix it if that model can work before, we have prepared
->>>>> a
->>>>> solution. I've verified the solution locally that MT7921AUN model
->>>>> can
->>>>> work normally on Ubuntu PC. It will be a firmware modification. We
->>>>> plan
->>>>> to submit new firmware with this modification in 2024 Nov.
->>>>
->>>> Great, but due to the kernel's "no regressions" rule this is mostly
->>>> irrelevant, as the regression must be fixed in a way that does not
->>>> require users to change their firmware.
->>>>
->>>
->>> Marc's module(MT7921AUN) is not working is due to a change in specific
->>> firmware uploaded last year and we plan to revert that in the next
->>> firmware release. Since it's related to controller's behavior, it's
->>> quite hard to cover in software side.
->>> Additionally, MT7921AUN is an external usb dongle. MediaTek official PC
->>> project doesn't use this type of MT7921 model. We uses another type for
->>> PC projects that it can be guaranteed bluetooth works normally with any
->>> firmware we upload to Kernel. As a result, we believe the impact is
->>> minimal to general user.
->>>
->>>> So is any such solution in sight? Or should we just revert
->>>> ccfc8948d7e4d9 and any related follow up patches for now? Or would
->>>> that
->>>> just cause regressions for other users?
->>>>
->>>
->>> Actually, it's not related to ccfc8948d7e4d9 which make bluetooth can't
->>> setup normally if using MT7921AUN model + mismatched firmware. We
->>> thought it was the same issue in the beginning, but it's not eventually
->>> after getting more and more clue/logs.
->>> I think we can keep the change because it's necessary to the change
->>> submitter-Hao's project.
->>>
->>> Chris Lu
->>>
->>>> Ciao, Thorsten
->>>>
->>>>> On Wed, 2024-10-30 at 10:21 +0100, Thorsten Leemhuis wrote:
->>>>>> External email : Please do not click links or open attachments
->>>>>> until
->>>>>> you have verified the sender or the content.
->>>>>>
->>>>>>
->>>>>> Hi, Thorsten here, the Linux kernel's regression tracker. Top-
->>>>>> posting
->>>>>> for once, to make this easily accessible to everyone.
->>>>>>
->>>>>> I'm a bit lost here, but maybe I'm missing something.
->>>>>>
->>>>>> Luiz, can you help out here? Is there a reason why this patch is
->>>>>> not
->>>>>> making any process?
->>>>>>
->>>>>> Chris Lu and/or Hao Qin: Can you maybe help out as well as well
->>>>>> and
->>>>>> help
->>>>>> with resolving some open questions that might or might not be
->>>>>> relevant
->>>>>> (see below).
->>>>>>
->>>>>> From Takashi reply, the bugzilla ticket he linked to, and the
->>>>>> mail
->>>>>> from
->>>>>> the MediaTek folks
->>>>>> (
->>>>>>
->>> https://lore.kernel.org/lkml/12a344e25b31ec00fe8b57814d43fcb166e71be5.camel@mediatek.com/
->>>>>> ) it from the outside looks like this patch should really be
->>>>>> merged
->>>>>> rather sooner that later as it fixes regressions for some people.
->>>>>> Afaics it should get a "Fixes: ccfc8948d7e4d9 ("Bluetooth: btusb:
->>>>>> mediatek: reset the controller before downloading the fw")" tag,
->>>>>> as
->>>>>> it's
->>>>>> afaics that commit that causes the regression that is known since
->>>>>> more
->>>>>> than three months now
->>>>>> (https://lore.kernel.org/all/ZsTh7Jyug7MbZsLE@mdpsys.co.uk/ ).
->>>>>>
->>>>>> But note, it seems it does not fix the regression completely
->>>>>> according
->>>>>> to Marc's testing.
->>>>>> https://lore.kernel.org/all/ZuCB98DSdtKCgxaL@mdpsys.co.uk/
->>>>>>
->>>>>> Marc: Is that still how things are with current mainline?
->>>>>>
->>>>>> Ciao, Thorsten
->>>>>>
->>>>>>
->>>>>> On 22.10.24 12:56, Takashi Iwai wrote:
->>>>>>> On Mon, 14 Oct 2024 11:29:40 +0200,
->>>>>>> Linux regression tracking (Thorsten Leemhuis) wrote:
->>>>>>>>
->>>>>>>> On 20.09.24 08:27, Chris Lu (陸稚泓) wrote:
->>>>>>>>> On Thu, 2024-09-19 at 23:25 +0100, marc.payne@mdpsys.co.uk
->>>>>>>>> wrote:
->>>>>>>>>>
->>>>>>>>>> External email : Please do not click links or open
->>>>>>>>>> attachments until
->>>>>>>>>> you have verified the sender or the content.
->>>>>>>>>>  Hi Chris and Luiz,
->>>>>>>>>>
->>>>>>>>>> What were your thoughts on the findings in my email dated
->>>>>>>>>> 18th
->>>>>>>>>> September?
->>>>>>>>>
->>>>>>>>> Thanks for your suggestion.
->>>>>>>>>
->>>>>>>>> I've prepared the same environment (Kernel v6.11 +
->>>>>>>>> MT7921AUN
->>>>>>>>> dongle) to
->>>>>>>>> reproduce the issue, collected necessary logs locally and
->>>>>>>>> also
->>>>>>>>> initiated an internal discussion to clarify the root cause
->>>>>>>>> of
->>>>>>>>> this
->>>>>>>>> symptom. We'll review the changes between two firmware
->>>>>>>>> (20230526/20231109) if it's a bug or not.
->>>>>>>>>
->>>>>>>>> It may take some time to investigate. I'll let you know if
->>>>>>>>> there is any
->>>>>>>>> progress.
->>>>>>>>
->>>>>>>> Just wondering: Chris Lu, and Marc, what's the status here?
->>>>>>>> From
->>>>>>>> here it
->>>>>>>> looks like there was no progress to fix this regression for a
->>>>>>>> while, but
->>>>>>>> it's easy to miss something, that's why I ask.
->>>>>>>>
->>>>>>>> Ciao, Thorsten
->>>>>>>
->>>>>>> FWIW, the similar bug was reported for the recent 6.11.x kernel
->>>>>>> on
->>>>>>> openSUSE Tumbleweed, and this patch was confirmed to work
->>>>>>> around
->>>>>>> the
->>>>>>> crash at boot:
->>>>>>>
->>>>>>>
->>> https://urldefense.com/v3/__https://bugzilla.suse.com/show_bug.cgi?id=1231599__;!!CTRNKA9wMg0ARbw!jYyH2oubBEtIKXmKl9cI2rrmK-7kSdaiIJQ8xH4NZa5i5YCTQDHaoOxCBhMgdAAY6ROIPAoPwbOV-LNeMRJBlR6u-As$
->>>>>>>
->>>>>>> It'd be great if you can go ahead and merge the proper fix to
->>>>>>> the
->>>>>>> upstream.
->>>>>>>
->>>>>>> Let me know if you have another patch to test.  Then I can
->>>>>>> create a
->>>>>>> test kernel package and ask the bug reporter for testing.
->>>>>>>
->>>>>>>
->>>>>>> thanks,
->>>>>>>
->>>>>>> Takashi
->>>>>>>
->>>>>>
->>>>>>
->>>>>
->>>>> ************* MEDIATEK Confidentiality Notice ********************
->>>>> The information contained in this e-mail message (including any
->>>>> attachments) may be confidential, proprietary, privileged, or
->>>>> otherwise
->>>>> exempt from disclosure under applicable laws. It is intended to be
->>>>> conveyed only to the designated recipient(s). Any use,
->>>>> dissemination,
->>>>> distribution, printing, retaining or copying of this e-mail
->>>>> (including its
->>>>> attachments) by unintended recipient(s) is strictly prohibited and
->>>>> may
->>>>> be unlawful. If you are not an intended recipient of this e-mail,
->>>>> or believe
->>>>> that you have received this e-mail in error, please notify the
->>>>> sender
->>>>> immediately (by replying to this e-mail), delete any and all copies
->>>>> of
->>>>> this e-mail (including any attachments) from your system, and do
->>>>> not
->>>>> disclose the content of this e-mail to any other person. Thank you!
->>>>>
->>>>
->>>>
->>>
->>> ************* MEDIATEK Confidentiality Notice
->>>  ********************
->>> The information contained in this e-mail message (including any 
->>> attachments) may be confidential, proprietary, privileged, or otherwise
->>> exempt from disclosure under applicable laws. It is intended to be 
->>> conveyed only to the designated recipient(s). Any use, dissemination, 
->>> distribution, printing, retaining or copying of this e-mail (including its 
->>> attachments) by unintended recipient(s) is strictly prohibited and may 
->>> be unlawful. If you are not an intended recipient of this e-mail, or believe
->>>  
->>> that you have received this e-mail in error, please notify the sender 
->>> immediately (by replying to this e-mail), delete any and all copies of 
->>> this e-mail (including any attachments) from your system, and do not
->>> disclose the content of this e-mail to any other person. Thank you!
->>>
->>
-> 
-> 
-
+Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
+=E4=BA=8E2024=E5=B9=B410=E6=9C=8821=E6=97=A5=E5=91=A8=E4=B8=80 15:27=E5=86=
+=99=E9=81=93=EF=BC=9A
+>
+> This is v3 of the MT8186 Chromebook device tree series to support
+> MT8186 chinchou platform. It is based on the "corsola" design.
+> It includes chinchou and chinchou360, including LTE, stylus,
+> touchscreen combinations.
+>
+> Changes in v3:
+> - Add a patch to change codec in pmic (in mt8186-corsola.dtsi) to audio-c=
+odec
+> - Link to v2: https://lore.kernel.org/all/20241018091135.17075-1-xiazheng=
+qiao@huaqin.corp-partner.google.com/
+>
+> Changes in v2:
+> - Modify location of "const: google,chinchou-sku17" in mediatek.yaml
+> - rename "pin-report" to "pin-report-pins"
+> - add "vcc33-supply" and "vcc33-supply"
+> - rename "cbj-sleeve-gpio" to "cbj-sleeve-gpios"
+> - modify subnode of sound
+> - Link to v1: https://lore.kernel.org/all/172900161180.733089.89635437453=
+85219831.robh@kernel.org/
+>
+> Zhengqiao Xia (4):
+>   dt-bindings: arm: mediatek: Add MT8186 Chinchou Chromebook
+>   arm64: dts: mediatek: Add MT8186 Chinchou Chromebooks
+>   arm64: dts: mediatek: Add exton node for DP bridge
+>   arm64: dts: mediatek: Modify audio codec name for pmic
+>
+>  .../devicetree/bindings/arm/mediatek.yaml     |  28 ++
+>  arch/arm64/boot/dts/mediatek/Makefile         |   3 +
+>  .../mediatek/mt8186-corsola-chinchou-sku0.dts |  18 +
+>  .../mediatek/mt8186-corsola-chinchou-sku1.dts |  35 ++
+>  .../mt8186-corsola-chinchou-sku16.dts         |  29 ++
+>  .../dts/mediatek/mt8186-corsola-chinchou.dtsi | 321 ++++++++++++++++++
+>  .../boot/dts/mediatek/mt8186-corsola.dtsi     |   8 +-
+>  7 files changed, 441 insertions(+), 1 deletion(-)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-=
+sku0.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-=
+sku1.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-=
+sku16.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.=
+dtsi
+>
+> --
+> 2.17.1
+>
 
