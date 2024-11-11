@@ -4,64 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C252CD3ABFC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 22:15:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B268D3ABCF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 23:00:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LObrxn3R4XtlprnERAFFhmw2ApkNAoiNEB3fkoJZITE=; b=dO+sS0r+ephnQg0t0vBY9rlBRC
-	Cyk9/6G8RFd5TrPZgksRovGeNnahW03BYGP8ABXjJkxlT2A3HT2rGeL8qQdMmOVgAlM68EDN7d1zH
-	X4KU0asHKYnQViCfBd5WsM6uVW09PlmqDsu11cWyxAbqIdLWtFRp/ia5bPmnDYWHPwjwcPFCIpSrb
-	RFKoWfpc51gq328uGTJQDPFBiwRZZf92HQvlTL6JXYx6/Ga7pgioBwOeabRWOsi8zpP19MOrISQzo
-	z+qbmQjwkACmAMhG0q32YBrF5VwEdSUcLvhu0Nrf0CsCLTMrZ00+vX6wqTilwAEZ7zmD7Ax6zkcIW
-	LZ9dgysQ==;
+	bh=h1tJIqCgWeq9KnSLGyhg/d7DuKyd1LAar9bWTYe6j9Y=; b=E6mwdpV+FYI1AWAtzs6/JRwl2/
+	G4c5GuK9FQfIEdFmoK0KVCr0A18U/PeIzn51/L4JkYeqTYY5GkzloiwKwLs3AowB6mrj40VfecCLJ
+	Wt10CA2Xy9RdnOFij59+kccpsOgzeYIq75BgdqoWXSu9/xHpzTySl89YsOZLRVU4Lv09vsMBS4WFO
+	WM99PILYsmQHbjl9siFSl/KWW7T2vc7uOk6UpYmLca+9QKB65Ky3XWbAPhb87RhiVbRQzxJF0eyYi
+	XQCjIdB2b+pZ6AOggTchzJJj7levyRpNeIZXd6XiAeccFdBEKbWVB01qdkE7LQq0kUpRgJ8nZmFDC
+	mtmjtdmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAchT-00000001Tb4-0h5Y;
-	Mon, 11 Nov 2024 22:15:59 +0000
-Received: from relay9-d.mail.gandi.net ([217.70.183.199])
+	id 1tAdOv-00000001ZvR-3mIu;
+	Mon, 11 Nov 2024 23:00:53 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAbac-00000001IbV-3ekY;
-	Mon, 11 Nov 2024 21:04:52 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 8DBEDFF807;
-	Mon, 11 Nov 2024 21:04:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1731359088;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=LObrxn3R4XtlprnERAFFhmw2ApkNAoiNEB3fkoJZITE=;
-	b=MAVkRchXggZBxDxPHd6AZX2qiAifA7ijtIEZo1438VSGrVZamdo414JKLILgKBS/E/GudL
-	K7eJdXQd1BSX/kXpLhu1oVKxXHBbkvOgEoz/kbVdeotMDe4m8cF5zmI6vGXN0p6bgGZJLq
-	bd4f8CJKP9ALVDp7JfHogGIhiVdXK7sTK58s0XJMRqgUnRkAcxaGzoLe3EF4rj8dCSmHu3
-	JF/WmZq+GxWgyj08XEoGRTnZHBaGYeZmv4qvAkYslCF4qKufG5VBQC6HFSUhFjf4t3cylk
-	xRsBYTHFsNO17OAdY17sdmGz6dpSn66m3NsZTyNJV9/BR6Lmzr/pBPLTm5jHyQ==
-Date: Mon, 11 Nov 2024 22:04:44 +0100
-From: Alexandre Belloni <alexandre.belloni@bootlin.com>
-To: lee@kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-	matthias.bgg@gmail.com, eddie.huang@mediatek.com,
-	sean.wang@mediatek.com, sen.chu@mediatek.com,
-	macpaul.lin@mediatek.com, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org,
-	kernel@collabora.com
-Subject: Re: (subset) [PATCH v1 0/3] rtc: mt6359: Cleanup and support
- start-year property
-Message-ID: <173135898216.3303301.4242491728556386052.b4-ty@bootlin.com>
-References: <20240923100010.97470-1-angelogioacchino.delregno@collabora.com>
+	id 1tAcNl-00000001QT7-2PFm;
+	Mon, 11 Nov 2024 21:55:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 50D4CA40A22;
+	Mon, 11 Nov 2024 21:53:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB0FFC4CECF;
+	Mon, 11 Nov 2024 21:55:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1731362136;
+	bh=Ulbt4wtJrj0rI8CCkCKH2MYB/lSP1izaiuAWB+R5AAw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=PG1YbClYCgPJFMl42r3GRpF8dyrEDfjWHxsCTW4uWM/fk5P9+Erj8yhmYkZxHu/QG
+	 9HFsD4yg9KkRPSsnkdUY01psgxfcB/RV3snn15Pw0dmj+5T3vAVeafD/AhctT9lmLS
+	 MVXBWEF3Kyuj3jGQhPr3+Q7G59OuZYnrebBvIW8cIQjgz0C1PetFpqBk5Hch/xYSDY
+	 /5288fShDBpc1vTup8g8MIrz1T1Yo522ixrq4oHD4QKLOjPWHheNEp/6hZvfrAOgIV
+	 FNTKjvSsp4hLiA4Nk2AFF3cl6kLcAflBn59RCkOMiyXw6kOEflubamwnhf5TjDb3EI
+	 6jz6o8uTGAVjg==
+Date: Mon, 11 Nov 2024 15:55:33 -0600
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Yassine Oudjana <y.oudjana@protonmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-arm-kernel@lists.infradead.org,
+	Andy Teng <andy.teng@mediatek.com>,
+	Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Yassine Oudjana <yassine.oudjana@gmail.com>,
+	devicetree@vger.kernel.org, linux-gpio@vger.kernel.org
+Subject: Re: [PATCH v7 6/7] dt-bindings: pinctrl: mediatek,mt6779-pinctrl:
+ Add bindings for MT6735 pin controller
+Message-ID: <173136213324.2011108.6481544003216572759.robh@kernel.org>
+References: <20241106100741.173825-1-y.oudjana@protonmail.com>
+ <20241106100741.173825-7-y.oudjana@protonmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240923100010.97470-1-angelogioacchino.delregno@collabora.com>
-X-GND-Sasl: alexandre.belloni@bootlin.com
+In-Reply-To: <20241106100741.173825-7-y.oudjana@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241111_130451_070930_53CB40EE 
-X-CRM114-Status: GOOD (  11.51  )
+X-CRM114-CacheID: sfid-20241111_135537_698093_5AFEB032 
+X-CRM114-Status: UNSURE (   9.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,28 +82,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 23 Sep 2024 12:00:07 +0200, AngeloGioacchino Del Regno wrote:
-> This series adds support for the start-year property and removes the
-> custom handling of the RTC_MIN_YEAR_OFFSET (which is, effectively, doing
-> the exact same).
+
+On Wed, 06 Nov 2024 10:09:20 +0000, Yassine Oudjana wrote:
+> Add DT bindings for the MT6735 pin controller.
 > 
-> The start_secs timestamp was set to match the previous one from the
-> custom behavior so that there is no time drift on any device after
-> applying this.
+> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+> ---
+>  .../pinctrl/mediatek,mt6779-pinctrl.yaml      |   39 +
+>  MAINTAINERS                                   |    6 +
+>  .../pinctrl/mediatek,mt6735-pinfunc.h         | 1148 +++++++++++++++++
+>  3 files changed, 1193 insertions(+)
+>  create mode 100644 include/dt-bindings/pinctrl/mediatek,mt6735-pinfunc.h
 > 
-> [...]
 
-Applied, thanks!
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
-[2/3] rtc: mt6359: Add RTC hardware range and add support for start-year
-      https://git.kernel.org/abelloni/c/34bbdc12d04e
-[3/3] rtc: mt6359: Use RTC_TC_DOW hardware register for wday
-      https://git.kernel.org/abelloni/c/d6f471a74790
-
-Best regards,
-
--- 
-Alexandre Belloni, co-owner and COO, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
 
