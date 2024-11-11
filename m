@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A8A1D3ABDA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 17:54:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEAB7D3ABDC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 17:57:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gPXChQtKvaQ6iLw3YfPfwlBuinAY1ycTD3ULqLXD9mg=; b=epkLFW6YCuQeJOPU/r26CXVw9W
-	G/G7zHtf+FV35q4D1trCXMJiGWSinGBA0Mv3N+3QlGRPW1ajsNpyF8FEWKmKpGj8LCDbk7AJSBaw5
-	LAZg/RLdmMGZ7SQx7VipUGlmgekz28ZGk8KszkXKZaPYMYykmzKv9YfBTGOJfPseOGu0dA318Rgif
-	DrpAbwlE+CwbpaSfQPod8ZU3rGY2iX3UjitdNsQVc8trD4ndIFL+JYV8xWRYiD79Xdax1N/aUnd+K
-	x/2bCW2gKHbHFNngXfJop4nwXDW+wR9K03rOnS467mgWAsxIOdABcWQLai+PYJklh9wGtvK3PM11c
-	IXCox9Yw==;
+	bh=0Okwg137E+WmcLluBLQ6H9l9KczMVszee4vGZWHXW4w=; b=05Iw4mNZBT3Fiyru+O3BsDcjwe
+	zIY6MxhUXZ3YjboRQgVKAPfB5mp2iMeTwmUeDxrTeWPgw9oa54ZAoRgoIRsBz+r3aGZMKmC+Xofpn
+	kokGA51EBiQ9QyemKtYP55SZIbC06cianJgtpKbC+txUGCKnfkyg6j4Jwbqf+mlPGiJCZDZw+c498
+	zua7gCrJiM8XjiDhL1F9fXExdBkJzyozrZCaOk8k9wFRqioRbJrRMW3hBS5Nfb9MTgB33tQy7BFyI
+	4DqbcCdYAJTC7VmnyDbDsCzRQMrW60aXBWqMxQJLpNjQnqXwNOA1CL6c8w7Uz/o92a4daUb9vXulA
+	4dLsBRXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAYc6-00000000nLW-0UFQ;
-	Mon, 11 Nov 2024 17:54:10 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tAYfa-00000000ntA-45Hf;
+	Mon, 11 Nov 2024 17:57:46 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAYWo-00000000mGb-4BqO;
-	Mon, 11 Nov 2024 17:48:44 +0000
+	id 1tAYWp-00000000mGf-0PjR;
+	Mon, 11 Nov 2024 17:48:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 19BDD5C5BDF;
-	Mon, 11 Nov 2024 17:47:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 28C54C4CED5;
+	by nyc.source.kernel.org (Postfix) with ESMTP id 8ACAAA417E6;
+	Mon, 11 Nov 2024 17:46:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 7E462C4CED4;
 	Mon, 11 Nov 2024 17:48:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1731347318;
-	bh=G69FHYexPwpw/irD51I+oJah3BCb6iFaLGhHwlC23Sc=;
+	bh=9AGnp6ItSWGEIvcEPYHznGFKAqdl+UeCsmI5khCjdS4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=C0C9bmDUJRRt3wJShhZ/CieKiCh5u0nABPCkvnDz8pS8l+fmwfewTXgapxgC5xugY
-	 ZdOeu2hOBqVt/SQ57N8KR68elYetPbhdOvFDNOTlSVwXKPz+Z1TZiIM6BpINDMp3Sb
-	 6CTgY+7UkK2o7yYOpahHvnyPF7eUNuACqUStjDsnYCzLl+VxoySmVeOhv23/MzMgkL
-	 fHFL6VDhNIQGjbdARxv4//iGhgeTtJ2KiAQNVbZnY4/a7mWoxy4BlQamWmzJAO5+qb
-	 0QlXzFvU3ioPxVKSIrpJ/0Xp+uoJJLgxcpAwCgOzlfcdRLo0GlvV3en2rM5z4R1mvy
-	 sjcOmwxV41YUA==
+	b=c2yPXxfUHlgwnZrp7qGKCLwqQZc+L/+2ddJpo751E4RCy8EIs4Ij7Ka8P3CxN0rgM
+	 JV0JkMFh83ttQ4ajP/K3Q87yt+g5CZWBQOxj8AAE0SBeXg6T4NHcHE3Gb9bybL/smS
+	 uPpgH6DjmDqUljRvBXspip4Pc9w3ocTEseJn4X9indc3hcj/s/jdwoGWT+l5TruKrx
+	 sUzNvn3eLVILCLlS+ImDoqSZa5Iv7xX5k8Q78jUk5BhSGh3M0+tf2nozGfxZ+Y9CG0
+	 +2L/1YOD6Ul71mcvdcHaYeGyAHaIvVAiXaUYUzh7pA4PMa5wbuU40lwG1LL9h0ejxp
+	 +vxbc+hVknnBw==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 17CA0D3ABD8;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 745DCD3ABDC;
 	Mon, 11 Nov 2024 17:48:38 +0000 (UTC)
 From: Manivannan Sadhasivam via B4 Relay <devnull+manivannan.sadhasivam.linaro.org@kernel.org>
-Date: Mon, 11 Nov 2024 23:18:30 +0530
-Subject: [PATCH 1/5] scsi: ufs: core: Cancel RTC work during
- ufshcd_remove()
+Date: Mon, 11 Nov 2024 23:18:34 +0530
+Subject: [PATCH 5/5] scsi: ufs: pltfrm: Dellocate HBA during
+ ufshcd_pltfrm_remove()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20241111-ufs_bug_fix-v1-1-45ad8b62f02e@linaro.org>
+Message-Id: <20241111-ufs_bug_fix-v1-5-45ad8b62f02e@linaro.org>
 References: <20241111-ufs_bug_fix-v1-0-45ad8b62f02e@linaro.org>
 In-Reply-To: <20241111-ufs_bug_fix-v1-0-45ad8b62f02e@linaro.org>
 To: Alim Akhtar <alim.akhtar@samsung.com>, 
@@ -78,24 +78,25 @@ Cc: linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
  Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
  stable@vger.kernel.org
 X-Mailer: b4 0.14.1
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1553;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=858;
  i=manivannan.sadhasivam@linaro.org; h=from:subject:message-id;
- bh=DVIcv3/NWxzqjqTgGie8L2Gx0Ep0Cnv9hngTv71tWI8=;
- b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBnMkNyuWNNeuyqHW6wHJWBMDDSw07Unxl6usmOR
- ufHW4bxRbuJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCZzJDcgAKCRBVnxHm/pHO
- 9T95CACMdtOCvpWHJK1lxW2m+V6GbLEuNbAD0lZ2wBw1SXofplwVCWGJdvi40XW/5/caHDa4p3V
- 8cl5LFsw29z6p0n6ZwMC4Fl2nQjs3S8M+frDwLyelMKBvzuuhqIKf1bp8oJZC8e8q7I3i/+hBbc
- g0a3GvGZaTFNACN7v88ROg0J9CvhylTTeAWC5gTWLOF/dIr+6AUP+8VTPa9v+zTeGaCibMJvN0e
- P632FxzWqbrUCP6X/NUCeptORHwrSlkmUtMK3pLku6vxzQRpDtM1l/S4o8ktUdVsglUmtXnzCNW
- Ix2pNkxM4jEkVNJqrZ9ceWl40kPLs2qa2Tg09M7wbBDHLane
+ bh=Ni+UMeWf+BGon+9C+5L79ezS+b3LAVE2IIekW3iQ9ww=;
+ b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBnMkNz9MkYBdX398GAmfAQsbBw3ppRcumSjtutx
+ sOoQ3zoTZSJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCZzJDcwAKCRBVnxHm/pHO
+ 9VkjB/49ADTQJu1nV/d8/ynBuBn+ItayJXBzyHg85nSVkxMlnER5vFjUX6+uT2sZalqVXL/QI8o
+ 3OX7c+Wq8TTYC69nVWpjgtcBWy0B/ppoGuhVdk62pN1guua37AURco5SSqzjrJCBheHwQJkTa+s
+ uIoNZuFlJhQT/wAUu/f6zmX6aMToz3Cz4NLYPC3mkyhLlZQ2CMY7lvqpRmVpFkGb8EZVcOc1RP6
+ q1BB36FdG4dvO5e3jqx/ALyfnfapbycjFzXYZHXu9CNyUlesnt/Eglfz9XvclcQIzpgusXtqRxW
+ 3+zVfvcoGPZP1DfDfFedH8LuL2Ykimb6v6PRL7/ry3dN066b
 X-Developer-Key: i=manivannan.sadhasivam@linaro.org; a=openpgp;
  fpr=C668AEC3C3188E4C611465E7488550E901166008
 X-Endpoint-Received: by B4 Relay for
  manivannan.sadhasivam@linaro.org/default with auth_id=185
 X-Original-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241111_094843_254002_39A6F63A 
-X-CRM114-Status: GOOD (  10.37  )
+X-CRM114-CacheID: sfid-20241111_094843_363583_B49D5AB1 
+X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,45 +114,28 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 
-Currently, RTC work is only cancelled during __ufshcd_wl_suspend(). When
-ufshcd is removed in ufshcd_remove(), RTC work is not cancelled. Due to
-this, any further trigger of the RTC work after ufshcd_remove() would
-result in a NULL pointer dereference as below:
+This will ensure that the scsi host is cleaned up properly using
+scsi_host_dev_release(). Otherwise, it may lead to memory leaks.
 
-Unable to handle kernel NULL pointer dereference at virtual address 00000000000002a4
-Workqueue: events ufshcd_rtc_work
-Call trace:
- _raw_spin_lock_irqsave+0x34/0x8c
- pm_runtime_get_if_active+0x24/0xb4
- ufshcd_rtc_work+0x124/0x19c
- process_scheduled_works+0x18c/0x2d8
- worker_thread+0x144/0x280
- kthread+0x11c/0x128
- ret_from_fork+0x10/0x20
-
-Since RTC work accesses the ufshcd internal structures, it should be cancelled
-when ufshcd is removed. So do that in ufshcd_remove(), as per the order in
-ufshcd_init().
-
-Cc: stable@vger.kernel.org # 6.8
-Fixes: 6bf999e0eb41 ("scsi: ufs: core: Add UFS RTC support")
+Cc: stable@vger.kernel.org # 4.4
+Fixes: 03b1781aa978 ("[SCSI] ufs: Add Platform glue driver for ufshcd")
 Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 ---
- drivers/ufs/core/ufshcd.c | 1 +
+ drivers/ufs/host/ufshcd-pltfrm.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index f5846598d80e..cc2555333512 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -10225,6 +10225,7 @@ void ufshcd_remove(struct ufs_hba *hba)
- 	ufs_hwmon_remove(hba);
- 	ufs_bsg_remove(hba);
- 	ufs_sysfs_remove_nodes(hba->dev);
-+	cancel_delayed_work_sync(&hba->ufs_rtc_update_work);
- 	blk_mq_destroy_queue(hba->tmf_queue);
- 	blk_put_queue(hba->tmf_queue);
- 	blk_mq_free_tag_set(&hba->tmf_tag_set);
+diff --git a/drivers/ufs/host/ufshcd-pltfrm.c b/drivers/ufs/host/ufshcd-pltfrm.c
+index b8dadd0a2f4c..505572d4fa87 100644
+--- a/drivers/ufs/host/ufshcd-pltfrm.c
++++ b/drivers/ufs/host/ufshcd-pltfrm.c
+@@ -534,6 +534,7 @@ void ufshcd_pltfrm_remove(struct platform_device *pdev)
+ 
+ 	pm_runtime_get_sync(&pdev->dev);
+ 	ufshcd_remove(hba);
++	ufshcd_dealloc_host(hba);
+ 	pm_runtime_disable(&pdev->dev);
+ 	pm_runtime_put_noidle(&pdev->dev);
+ }
 
 -- 
 2.25.1
