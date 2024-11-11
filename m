@@ -4,95 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FB64D3ABE0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 18:14:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74751D3ABF0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 19:04:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=PcG5Ghtfgj5GW/5qfLw7yewkg+yGj/V/bjMocxCMdSQ=; b=zhaE5HekM+8hkEPFZfRLI6+2MF
-	C4kyYYiwx3HVg+iW2liGfh46DbNNUcvwbFyhrVS9XS/yX7VXnCSyTaBnx2typf3XQZuW59NP/Jvol
-	DM5JSODQ482/uiyAuY4gDQrFUAZRB/Mz+TEMzotQSQ9/7GbP/Xy4XghX/RaNVBBDlP8XmiL5b1tPw
-	3U3QHD9b4Iuny9w4WBngm5tzwGjkZBxHcbJkZNLdycYlCvjNyCMeEw/0Ps0CfnKFUatN0IJhdPwIb
-	MO8qd0f6CUmrwW8SEn47tAsJ8TfHQtCf6YbQGVagZrJkJ2PEUT9NxeE2O2UINBvfSz22b53UMBlKy
-	OLc1Ehtw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KzVPifvp+iOa3Bg8cKfqMmkzoZgJjO8HG4nRsmMmkk8=; b=xE/VrPme2fugsQAxVX5UzzG+3V
+	244wJJ0xhBk7QL3GUvywxqZSPukO2bIajsaLsNRAaYmeqJnj+12ZX/+EaAp09BiIjSABZAqQcXcbp
+	07U2B4xxf+oliVyBB6lfhiFyNYNRVDRzGgMPcoWQJptmz56pbNRCl7RY05jntFNRieB6KkQKwT3CB
+	Z7BLAOwywb97Z0bGPylPAvuqNGEeheXtD9sM6ye3Eklda1rk3gykMcQRLdYW69ceTXb0ew98/z0Oc
+	PWi1QAveu9l7FK+ddsfvOQMzCKyQt5z+AxJZo5d2Ar5FruDo0q2Iv24fu+JcwXgmuL/gHDyVmj7xp
+	y5WHqvww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAYw9-00000000ryI-4Awh;
-	Mon, 11 Nov 2024 18:14:54 +0000
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+	id 1tAZi5-00000000zxO-1a3m;
+	Mon, 11 Nov 2024 19:04:25 +0000
+Received: from mout.gmx.net ([212.227.17.22])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAYw6-00000000rxP-2nEA;
-	Mon, 11 Nov 2024 18:14:52 +0000
-Received: by mail-pf1-x42e.google.com with SMTP id d2e1a72fcca58-71e52582cf8so3757310b3a.2;
-        Mon, 11 Nov 2024 10:14:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1731348889; x=1731953689; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=PcG5Ghtfgj5GW/5qfLw7yewkg+yGj/V/bjMocxCMdSQ=;
-        b=LISpr0g7AfJkcCwdrhTXPxREa+t2tA5a5WVM4v7xfd3ZAXPu29ofFWvOTnD2F6c07S
-         vP+oSCkTFCXuvznU9zmC9kGuDfEG/DKnhVAqeBCSsO+lTpuROMf6dsys27VkIFTJPhd/
-         Qm+56ZriENmlAwfUMjMBLw2+Y9YC93onRtiA5zvFB2i9Y8kUG6NpZ6vi6RAq9hwo09No
-         lCg+78qG/VxVSbuQn4TmKjRRiQj1IOIjVyeV9KVJNA7DfMtR5ltWeYEv6kOczgMAmrR2
-         /98ApTIgxPybEP++lYzIBpRfwyL2ABw/ctkQPvJGgKkAoazFFM/1vGL7rF8z5p+tTdqB
-         /TIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731348889; x=1731953689;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=PcG5Ghtfgj5GW/5qfLw7yewkg+yGj/V/bjMocxCMdSQ=;
-        b=rFmLF+jNYcZI+/bw7G19OwR++WDXMLSGkC/c00JM0dqA21S/nQX12yC7itHM1swLYx
-         sPpum7VEGvZqlnWlD5ERBEgkuYq9q6ioDE3b67+oAtY/drcCTrPYB7HkdY0ABoTSAWFk
-         VgfRkweVJEoMvhKP3PlanbbU/zDbCuqlMIMccj83jyjQ5Fhxnc632fm0eR0/egcyFmvb
-         DFhmfkPRSsk0cRfHchuAwLrigXAlMgbND1gEWck3v+6r0ZTdpJsTMQj6z/8r0Ke0UONL
-         4QSPIlNR7GzkyqCOyr/vpJnGorVyNlZEGiok2LkB7F8SesZwQCm8N0F/FQ/DqOVtMJob
-         74kg==
-X-Forwarded-Encrypted: i=1; AJvYcCUJ70Q1iTWKQ38XU7xGz6CEcZHYFXokj8bG8ig1zrRskEQRonRJXSVa9b7DDdL1D6t10KQLVj1UQiCnD01BA1w/@lists.infradead.org, AJvYcCXDy4kARmkkIcljJnGieXQO7mFQdWoJbRqoxuFmKrxOfFAscYSo0pVoKukVgUczX+6+acTETdu65G/iO6sOcsE=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxFh6fAevF8YmL0Rvv6GSklk3KjHUnBQcXNwUMFgOyLKN0fT4ZO
-	4fw0hJuHxsybVpsV8JaLzF8m8QWB+bKdUz+/WVFhWo/f/eZnnO0r
-X-Google-Smtp-Source: AGHT+IHRY0yX/5Z9BgqASQU4ZZ39SI5JUr83H/XUjHQ21anzAVa6uoUX7kOFpkJY9khvsfngWxmH4g==
-X-Received: by 2002:a05:6a20:a10e:b0:1db:ebf4:2cb8 with SMTP id adf61e73a8af0-1dc22b38e98mr19023560637.38.1731348888950;
-        Mon, 11 Nov 2024 10:14:48 -0800 (PST)
-Received: from Emma ([2401:4900:1c94:38cd:5054:ff:fe53:2787])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7f41f5d9460sm7537614a12.35.2024.11.11.10.14.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 11 Nov 2024 10:14:48 -0800 (PST)
-From: Karan Sanghavi <karansanghvi98@gmail.com>
-Date: Mon, 11 Nov 2024 18:14:43 +0000
-Subject: [PATCH] drm/mediatek: Initialize pointer before use to avoid
- undefiend behaviour
+	id 1tAZeZ-00000000zH0-0I3G;
+	Mon, 11 Nov 2024 19:00:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1731351635; x=1731956435; i=frank-w@public-files.de;
+	bh=KzVPifvp+iOa3Bg8cKfqMmkzoZgJjO8HG4nRsmMmkk8=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:Date:In-Reply-To:References:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=MKcVCczT0LrVOyHtFxP6kLVEyg9Rr1DOfg6dN97+eLgdVgfXSbbOnfGXL1iKXBZ0
+	 rHAaRovRfKpQNZGMSya3G3Dv5TxiU+75oDJFhacN/Rxg2cEl0HXP/GYix8bKjWJ4M
+	 6gdr2JSpVTgy5Dr2pBKRgdfOPBZmg5D18sn3t9RH1xp/RH1VRplnf0051FoPN5jXf
+	 PnhewIyAfYQDpXChudBkazHUfPhknM7/2B6Qs0ylrCskhmoi7GKCa8gMj7vj+GNaz
+	 WHJhAINo5m0iF/ECPlrbAnzZCX4DOScoSfkV3UHEE+qj1eY5Qo9aYq3Xw4Kb5EadF
+	 s+i/HtgRthArqrIJsg==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.144.196] ([217.61.144.196]) by
+ trinity-msg-rest-gmx-gmx-live-67cd9ff8f8-qxw8q (via HTTP); Mon, 11 Nov 2024
+ 19:00:35 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20241111-uninitializedpointer1601557-v1-1-7d03668e8141@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAJJJMmcC/x3MQQqDMBBG4avIrBtIotG2VxEXxkzrDzJKYoso3
- t3g232bd1DiCE70Lg6K/EfCLBnmUdAw9vJlhZBNVtvK5NRPIFjRT9g5LDNk5WhqbZxr1OupS99
- Y52sfKB+WyB9s973tzvMCtI1RQm0AAAA=
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Alexandre Mergnat <amergnat@baylibre.com>, 
- Sui Jingfeng <sui.jingfeng@linux.dev>, CK Hu <ck.hu@mediatek.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- Shuah Khan <skhan@linuxfoundation.org>, 
- Karan Sanghavi <karansanghvi98@gmail.com>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1731348885; l=1580;
- i=karansanghvi98@gmail.com; s=20241017; h=from:subject:message-id;
- bh=2TXJ1EmXXe6JGcHq0islC06ZuiS7W6be+KOSVMPiOMY=;
- b=XnSsGvh9arXwU0TzFneIvfBvnhGG3ywcwXCrVXSmtOIjjRf655y5J6qAlm7chmE39XOFBDzZe
- nUFfZpHEs26DRSdOnEKnl4vOjiv5k/rnxZz0tZkMGvmD1Uwys+tKhXs
-X-Developer-Key: i=karansanghvi98@gmail.com; a=ed25519;
- pk=UAcbefT1C06npNVDJHdgpPqTm4WE9IhaA1fmJb3A37Y=
+Message-ID: <trinity-090addc5-80b8-4d9f-8f01-ed2c519e0d3d-1731351635476@trinity-msg-rest-gmx-gmx-live-67cd9ff8f8-qxw8q>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: ot_cathy.xu@mediatek.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, sean.wang@kernel.org,
+ linus.walleij@linaro.org
+Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ guodong.liu@mediatek.corp-partner.google.com, guodong.liu@mediatek.com
+Subject: Aw: [PATCH] pinctrl: mediatek: Add pinctrl driver
+Content-Type: text/plain; charset=UTF-8
+Importance: normal
+Date: Mon, 11 Nov 2024 19:00:35 +0000
+Sensitivity: Normal
+In-Reply-To: <20241111074030.25673-1-ot_cathy.xu@mediatek.com>
+References: <20241111074030.25673-1-ot_cathy.xu@mediatek.com>
+X-Priority: 3
+X-UI-CLIENT-META-MAIL-DROP: W10=
+X-Provags-ID: V03:K1:Ozjf8sg7sz1HlEchb8Y+cG4HP+g7ZDiilByq1d+03bVEVcgQ9K0XMDkll7rll0qLgITIE
+ ZRXCP79R5bR4FbrOFYRZFZV24agGu9MeLINTAn+IiWWWtWN7bdcpMLeou+bBIyEIf18xDIMpdrSV
+ G3dap+gsWMuJOy6FmOc0oMSmNYmRTOUPBZAysz2YfIMAr96RStSuZ1aDYZ2pRlu8hQIUsjxFRQrb
+ 35pp50DzueMKPBgbh3ePBTnmVlvS3E+h9tq0NieKZMB7PhJ9imgyFutu1wujwBvHLr1RblmMq5ad
+ TjxYsWottylZQLn3jZljR2jUTMsb7Lcs1Ihwkv+dnMn/TcO/611KbYA3CrJ7SS8BGg=
+UI-OutboundReport: notjunk:1;M01:P0:Cxp8uh7T7Lo=;8fe5xqojxII002tLFune4TqJJoC
+ gZkvtiBWOB2zgESItk/7vPr7m3XzF2906z9pRMI+TK6cyBsvNgiOqrCW5kD2Bz1ayu4yTC77a
+ wjDpBWy4/v3bnRX0CgV2KB63aa2VhoN7l8NY8IMwAoA/gX/7GDUDivS5eICyGpV08NU6amwCK
+ zCC/UGQoY+JloFmJn07M6MU94UyI3Yec2h1+47MzTMQdDlCi4QxOB7JEUgKeYXAQhJXPC42N2
+ pcsGbAE/RuOPh+s5UgI5gdibRK/2DID+Z5Mm78BDJY8R46SZnFV+ru6524RtJ6hL4lAZTwTjI
+ qtyYKz3RxzSzdQ1QdwqIKmPDXWDhlM1z3YWArCqZ59C9Y56C0hkclxjWOHV3YyXYS8jz9IQMd
+ N7Kj69kG9VIiN93AuUr0pgh0anLqchRMW4oTs0NClgJCJHD5VnApKmq905mHYLt8r6wG5NCda
+ u4xK4y/MyzX5YvQTAXF8wbqz/HprgVVVgurjCPAXGEnuWlY1zhmb3swsjTzmwU1zbZIMe1e5V
+ m8k8wPJW8hnif912XQ8QEnPsvmgI9Y/Gw6c5zSRpPsZif3byyilT9TU3qc/BtC7cWcc8JPaYk
+ kLv8uCNffBBxhnD3YWdhDYLfuWB1rFpbbP+9+zY6J0rPjsz945B2wDzenafTxjIQj+OFIvdN6
+ oACatyGTpNh3R0vFBa4q230qNfQiy2PLyGbywWq41w==
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241111_101450_743679_58C5114C 
-X-CRM114-Status: GOOD (  13.13  )
+X-CRM114-CacheID: sfid-20241111_110047_426648_4BA015FD 
+X-CRM114-Status: UNSURE (   4.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,44 +97,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Initialize the pointer with NULL as mtk_drm_of_get_ddp_ep_cid
-function might return before assigning value to next pointer
-but yet further dereference to next can lead to some undefined
-behavior as it may point to some invalid location.
+&gt; Gesendet: Montag, 11. November 2024 um 08:40
+&gt; Von: ot907280 <ot_cathy.xu@mediatek.com>
+&gt; Betreff: [PATCH] pinctrl: mediatek: Add pinctrl driver
+&gt;
+&gt; From: Guodong Liu <guodong.liu@mediatek.corp-partner.google.com>
+&gt;
+&gt; Add pinctrl driver for mt8196
 
-Fixes: 4c932840db1d ("drm/mediatek: Implement OF graphs support for display paths")
-Signed-off-by: Karan Sanghavi <karansanghvi98@gmail.com>
----
-Coverity Message:
-CID 1601557: (#1 of 1): Uninitialized pointer read (UNINIT)
-3. uninit_use: Using uninitialized value next.
+Hi
 
-Coverity Link:
-https://scan7.scan.coverity.com/#/project-view/10043/11354?selectedIssue=1601557
----
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+you should add your SoC to commit-/patch-title too.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 9a8ef8558da9..bc06c664e80f 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -900,7 +900,7 @@ static int mtk_drm_of_ddp_path_build_one(struct device *dev, enum mtk_crtc_path
- 					 const unsigned int **out_path,
- 					 unsigned int *out_path_len)
- {
--	struct device_node *next, *prev, *vdo = dev->parent->of_node;
-+	struct device_node *next = NULL, *prev, *vdo = dev->parent->of_node;
- 	unsigned int temp_path[DDP_COMPONENT_DRM_ID_MAX] = { 0 };
- 	unsigned int *final_ddp_path;
- 	unsigned short int idx = 0;
-
----
-base-commit: 6d59cab07b8d74d0f0422b750038123334f6ecc2
-change-id: 20241111-uninitializedpointer1601557-9803b725b6bd
-
-Best regards,
--- 
-Karan Sanghavi <karansanghvi98@gmail.com>
-
+regards Frank
+</guodong.liu@mediatek.corp-partner.google.com></ot_cathy.xu@mediatek.com>
 
