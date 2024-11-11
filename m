@@ -4,71 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A196FD3ABF6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 21:02:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41391D3ABFA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 21:43:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8FJxCy9nRJVtXfCTsU3KXy5JjuHCmavURmafpMWip8Y=; b=GsrbzwEBSu2Z2bhJYZJ1VeeDJD
-	sd5D8MjOcraOMUYueu1FsvbZj0vpWgwaD5oeBiJIGdo7a5VuMLZBDhrlFTXCAn2CN+s30M2w0Egsp
-	iHObtyFOD5HrVoPfeBAF2qSwQDd2lyC2Qyna5rHtgR6IdhfwdDMCXrahpAvL4eptlmTtxcWcYxFFL
-	X0bC7dyi/YoaNsycxkW9YvMxPlFX/2Gi5CYXukbUpbSij9twFLWJB5TkiSL2b5IhMP2GWlHp3M5hs
-	M51MtMkqlTEFnoacjyjvXGELB0ipXKbAdQu3DIjzCo3d3xltiwcjNhsuFYVcky+jCVht1Wc2AHZ0Q
-	mLt/qPqg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Date:References:In-Reply-To:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6aJ7+7tAZ00QWBqGIx3TLXHhs8RBVJf18eC8WQggc1I=; b=TQKpfXkHflpX7j0SX6BZwLbKRv
+	UKogj/HASBzqGwDRGeiDMRevXPfb38xv24axWfgNMPbv1uzjCswyrs5Br4UFLstXQiJSFA/QPQbm3
+	kNAI1yuxVJf9HQYWGcUDihtPLqGlRRwEKPiUJWITxXO2o3rjUBTGzMhXnFqaWftBm0q6u0jhNGgRn
+	H0cU5XltqSyhm6ce/gskDQ6znwXAIpFF+II63zxEcfrP39ot+fWJjvoXoSLw3akY84Y8d3CAbR2/F
+	RdI3p0PMG9kjc95om8Bv/NuBLXb6bUk6YtQn0Sg52K7jNIsPDVWt2JGhyG2/ORZNRHdSI+DaW61sF
+	s4I3d0lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAbYD-00000001I54-1qMO;
-	Mon, 11 Nov 2024 21:02:21 +0000
-Received: from mail-wm1-f41.google.com ([209.85.128.41])
+	id 1tAcBw-00000001OiK-3im3;
+	Mon, 11 Nov 2024 21:43:24 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAbJu-00000001Er3-002I;
-	Mon, 11 Nov 2024 20:47:35 +0000
-Received: by mail-wm1-f41.google.com with SMTP id 5b1f17b1804b1-4315eeb2601so62350235e9.2;
-        Mon, 11 Nov 2024 12:47:32 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731358051; x=1731962851;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=8FJxCy9nRJVtXfCTsU3KXy5JjuHCmavURmafpMWip8Y=;
-        b=h4sTlXFeX1847MPqU0Q2LatRi4ZyDnso5SVPsakHtdqa3gV7ZcBo+baZYnsavPF4FC
-         1bl2AO669MjcI9+zgLWNzXs+qxACeSsh4xtv0t887seI5nqWJj1eFTFEs0zviHd70KmT
-         pEE98ELUUvV5b+NGtPLvy4Qno9/XohKsok1S/+FKwMpg0CQgKxMBbK3B/f3C7xgLVM00
-         uP4gbekc/CjXtcXhsT1azYCnrRViIp54I5C6NOhc8uUi2PA9g9ouMd0CAD26kFBuw77N
-         BkcSUpHvd85JmPCJXqZsqzicmpKG7Ar91v/Jzq72lcnKz+VqQq5/OPjIU6sUHh5ws1Xv
-         Lu0Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVYZReK26O2BDWllUeXwqTTee0kIvtr0IoZ9uNFnVehMB6nnVk0nkL++rwikjOpt2owDXqyDLpK+kZDRAzAgYJm@lists.infradead.org, AJvYcCWI1tb2SzT0bsMMV9nVUsgwTvEQaWNQ+RBzqMCB0wPaoPL3Yz74nMyTXCCbmo4DTfM3aDFCTEqm2HdCmYLaJ74=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwHNujCn1KS6Ff6P7b0TNeazhS3RctQbFnxeOfaO/vqOwCIXAv8
-	ZC++3EQBAF9GPqajvSvHvS9TJ6++z2BLOA8CfsKRbsxdeMlX9Lj3
-X-Google-Smtp-Source: AGHT+IFI2E55Rc3mQG84xqyhIN5Toyfc2naC+drFE80OuMZoOLBtHsrsaeYFSq9y+fXhLMa9XRR2xg==
-X-Received: by 2002:a5d:6c6b:0:b0:382:5af:e996 with SMTP id ffacd0b85a97d-38205afeae9mr2197479f8f.46.1731358051094;
-        Mon, 11 Nov 2024 12:47:31 -0800 (PST)
-Received: from localhost (fpd11144dd.ap.nuro.jp. [209.17.68.221])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-381ed987d33sm13946207f8f.43.2024.11.11.12.47.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 11 Nov 2024 12:47:30 -0800 (PST)
-Date: Tue, 12 Nov 2024 05:47:26 +0900
-From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
-To: Jianjun Wang =?utf-8?B?KOeOi+W7uuWGmyk=?= <Jianjun.Wang@mediatek.com>
-Subject: Re: [PATCH v4 1/2] PCI: mediatek-gen3: Add support for setting
- max-link-speed limit
-Message-ID: <20241111204726.GA2193665@rocinante>
-References: <20241104114935.172908-1-angelogioacchino.delregno@collabora.com>
- <20241104114935.172908-2-angelogioacchino.delregno@collabora.com>
- <D5DF0QIO2UZQ.29U999LYCC05M@rocinante>
- <f8ca0f82-2851-40d9-983b-2a143b44263a@collabora.com>
- <20241104132512.GC2504924@rocinante>
- <c5385db34878763ba7df3711a514e4332418cbbd.camel@mediatek.com>
+	id 1tAcAA-00000001OPp-3G9h;
+	Mon, 11 Nov 2024 21:41:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Date:
+	References:In-Reply-To:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Sender:Reply-To:Content-ID:Content-Description;
+	bh=6aJ7+7tAZ00QWBqGIx3TLXHhs8RBVJf18eC8WQggc1I=; b=W0xcLwgQQZxQEet6iiCqRKkxv5
+	QOUA/L5eVvcpRrCTtQL+7xfA+Fq0Q5EAqfcmbgj2tnHKw+wAFiRerb9ckslD4aItysVG4ANv85paI
+	9hYVnB5TMV2bZn6L9L+9Ym38b8nl0ypAUz4kU3DbEtomSy2uE4Y9OwtCkZ9v6VVOZYzHUyDNmS/jt
+	phulTgLdFqpAzW0BFNBf9YCkSZKUCr32+wQgn2yDcwO1Fpmv+SOJHFdnh6g3GDINS76pJKGPNj4zI
+	BNQ5C0ptloSScFdG/Zx+qCZRRzjQD37MADxZCnlxQx4wOkVQJbfPs3fvaitw1qaOCZFBjr68Jhsu+
+	asSO6NnA==;
+Received: from mout.gmx.net ([212.227.17.21])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tAcA6-0000000Cvm2-14gX;
+	Mon, 11 Nov 2024 21:41:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1731361279; x=1731966079; i=frank-w@public-files.de;
+	bh=6aJ7+7tAZ00QWBqGIx3TLXHhs8RBVJf18eC8WQggc1I=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:In-Reply-To:References:Date:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=JakcHvMDEcpFlELbXSTKoXlcb5SwyEHL0MxwTh+Z/5lArev21g99vCVHIKJVKack
+	 wVGZNxyhco+frD3tEdR/Tb27phfJjAL/lOjK2a3R0UTOgz1m9Tqc1l3Gu7lm6fbK9
+	 KLzJzWeYTEiEENUG8eLQuqkXmFVrslUzL01S5U20PDqwEOdI/6dq7pjN+As3Uw7SJ
+	 KY94cHFUFy2txQWC4lfIgp5SGT0HxtOqF0JA6y9WCOhx/Vs+1YD0yAAD9IHUts403
+	 CLoPotKo3JiKLJ4SovYkGtc0TNVfiHfRDfs7qGmUuXA/QS3kVujmKJYa0IOQheWQm
+	 muFvbbsfYxAP/RMeKA==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.144.196] ([217.61.144.196]) by
+ trinity-msg-rest-gmx-gmx-live-67cd9ff8f8-qxw8q (via HTTP); Mon, 11 Nov 2024
+ 21:41:19 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <c5385db34878763ba7df3711a514e4332418cbbd.camel@mediatek.com>
+Message-ID: <trinity-57bdaab7-5f4f-463d-9657-377ccfe7df25-1731361278993@trinity-msg-rest-gmx-gmx-live-67cd9ff8f8-qxw8q>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: robh@kernel.org, linux@fw-web.de
+Cc: broonie@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ leilk.liu@mediatek.com, linux-spi@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Aw: Re: [PATCH] dt-bindings: spi: add compatibles for mt7988
+Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20241111203803.GA1917413-robh@kernel.org>
+Importance: normal
+References: <20241109105029.52748-1-linux@fw-web.de>
+ <20241111203803.GA1917413-robh@kernel.org>
+Date: Mon, 11 Nov 2024 21:41:19 +0000
+Sensitivity: Normal
+X-Priority: 3
+X-UI-CLIENT-META-MAIL-DROP: W10=
+X-Provags-ID: V03:K1:lhWuv2tYMHpt7DO7Z/Dm56Q7NZVx3nihPbPFXJJSEf5DPtX75eGDbSyV4XaE9W5I2YcGW
+ WKtcggTre7VQtvMYnR0+UCnrmrQqQ4YDQglMCWGW0SLXrWdy0kNMJqDC8k2ifbJmS6+Aiw42glBb
+ z88/SvPlEczxqExLblIRyHVbcn9fPdCDh7zMIG3OFQKqUjJufbGxQl/jVL2LZwbFd1nRejHbCcPP
+ myMMaooIhnQZZjzPlOpCrf5jc+WwQ2Kvve7SGPImdsQqzVSYYUUT5aWX/CmTaW9npY63ELcrMwfu
+ jRG5SbNgmAWLsy9JZImnJh43koRoozoCZ0Z7vVBrYArvOeMMjdFlUcJs5VeXi6IEXc=
+UI-OutboundReport: notjunk:1;M01:P0:2iLa3uBn1KI=;niY7MlI2EUB5Nlxhv6aaM1TMYCo
+ 55wGD8AOhwrMB31IDL4MsTkyZk1d9UybNK9Z34MaSrpVRzXjE6VH7YrMG+UBgghcJc5zmK+Af
+ 4VgYUDbUQ3bMAmF4mBX5W1dZ7ugyfOcOYsdPoZvycG0k308wrinC/IloXV1/fBDiodJ0mtTK/
+ SavEaYcVK9pyhEBo4jm7F4wVeazCuvCaArYi/trYAtCo4CPb8RsDYLmX2wmM9Tt3d4CAmpW0Q
+ kqd0mR6GnsnLAvd3bm4Gu+wZLWXlIcFORGVwC1WIXFsh4PHqbPulLmVkqnVqmlzRFPV2ZzUpM
+ z2ch847wRtPVyehjJajW7ofxfvPV/Twev297EDbF6jq3yEr01HYOIWrzB/PUB5SD/uBGlK49/
+ UCDocskb7i9mpjTB78NA63q2pGop5l6JLhn0GLGulLEFYLEw9Yd3Lr8kvychbpQu9tYJo+d8s
+ krnaQh1Lpc/I2fHYq+6T3Aqc2sTxhL7/NnBH0fIt1Duoiw0RfV6WgAwWs6GUwq2XbcypIIkZA
+ h0c+6h0fjpaREmRQoV1VmoTyJ4J6bfkFP3Tx/eZhHApLduWQxSlPorx5vMdy0br0+TfNhqueV
+ JiApG+yF5EUWqOc/DIkMJ4nVBOeKufHUeSW/1urz8s4j8y+nRyZUt9Szxy0fY7d25gyiy+xr+
+ c/2j4p6lSFwRQB4S1HcTESkgSk0S1weiffTTgTUKUw==
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241111_124734_063101_35CCDF67 
-X-CRM114-Status: GOOD (  11.11  )
+X-CRM114-CacheID: sfid-20241111_214130_655200_FFF2BA89 
+X-CRM114-Status: UNSURE (   7.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,27 +109,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "robh@kernel.org" <robh@kernel.org>, Ryder Lee <Ryder.Lee@mediatek.com>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "lpieralisi@kernel.org" <lpieralisi@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "bhelgaas@google.com" <bhelgaas@google.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "kernel@collabora.com" <kernel@collabora.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+&gt; Gesendet: Montag, 11. November 2024 um 21:38
+&gt; Von: "Rob Herring" <robh@kernel.org>
+&gt; An: "Frank Wunderlich" <linux@fw-web.de>
+&gt; CC: "Mark Brown" <broonie@kernel.org>, "Krzysztof Kozlowski" <krzk+dt=
+@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Matthias Brugger" <ma=
+tthias.bgg@gmail.com>, "AngeloGioacchino Del Regno" <angelogioacchino.delr=
+egno@collabora.com>, "Frank Wunderlich" <frank-w@public-files.de>, "Leilk =
+Liu" <leilk.liu@mediatek.com>, linux-spi@vger.kernel.org, devicetree@vger.=
+kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead=
+.org, linux-mediatek@lists.infradead.org
+&gt; Betreff: Re: [PATCH] dt-bindings: spi: add compatibles for mt7988
+&gt;
+&gt; On Sat, Nov 09, 2024 at 11:50:28AM +0100, Frank Wunderlich wrote:
+&gt; &gt; From: Frank Wunderlich <frank-w@public-files.de>
+&gt; &gt;
+&gt; &gt; MT7988 has 2 different spi controllers. Add their compatibles.
+&gt; &gt;
+&gt; &gt; Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+&gt; &gt; ---
+&gt; &gt;  Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml =
+| 2 ++
+&gt; &gt;  1 file changed, 2 insertions(+)
+&gt; &gt;
+&gt; &gt; diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-=
+mt65xx.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.ya=
+ml
+&gt; &gt; index e1f5bfa4433c..ed17815263a8 100644
+&gt; &gt; --- a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.=
+yaml
+&gt; &gt; +++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.=
+yaml
+&gt; &gt; @@ -35,6 +35,8 @@ properties:
+&gt; &gt;            - enum:
+&gt; &gt;                - mediatek,mt7981-spi-ipm
+&gt; &gt;                - mediatek,mt7986-spi-ipm
+&gt; &gt; +              - mediatek,mt7988-spi-quad
+&gt; &gt; +              - mediatek,mt7988-spi-single
+&gt; &gt;                - mediatek,mt8188-spi-ipm
+&gt; &gt;            - const: mediatek,spi-ipm
+&gt;
+&gt; Does the fallback make sense for both? Is there some common subset of
+&gt; functionality where they are the same?
 
-[...]
-> This patch may need more discussion. I have replied in the previous
-> version:
-> 
-> https://lore.kernel.org/linux-pci/7e220693f076c84cc1bc3d91e797580b320b4598.camel@mediatek.com/T/#m1b9f2d26a228712b6b9d02eba11d8063862772c1
-> 
-> Should we wait longer before applying this patch?
+currently they work only with the fallback compatible, but we see in SDK t=
+hat there are 2 types...in SDK non-soc specific compatibles are used which=
+ was rejected last time.
 
-We can drop the series, and it's not yet too lat to do so, if you believe
-this would break devices like the one you tested the changes on.
-
-> Do you have any suggestions? I can provide more logs or test results if
-> needed. Sorry for the inconvenience.
-
-AngeloGioacchino, have you seen the reply (see the link above) from Jianjun?
-
-	Krzysztof
+&gt; Rob
+&gt; </frank-w@public-files.de></frank-w@public-files.de></leilk.liu@media=
+tek.com></frank-w@public-files.de></angelogioacchino.delregno@collabora.co=
+m></matthias.bgg@gmail.com></conor+dt@kernel.org></krzk+dt@kernel.org></br=
+oonie@kernel.org></linux@fw-web.de></robh@kernel.org>
 
