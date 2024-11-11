@@ -4,74 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27A5FD3ABD1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 16:58:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7D99D3ABDC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 17:52:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ujrPAFzGlh6R3Y9ea5i0yU3srRobyUointe1vIGDfEM=; b=uS6UZi2HXOGDvFB3Pls3prkIb1
-	xVhF10HIpdCK7TZu700DoR9Lv5nxh5pZR5/unH2YEhqLZSbIMHuzDdiSaEet5R9A3DFuo7r37Fmjg
-	CgE4id1bbPBykGrKPtJareVmNnXIgYtf68GBI7a1GpMGebFO95eoRQKB0CalKMIb153nR1FzgS4WJ
-	aV6vQ2bRPeXkrkEl+43X5osezIZ1uIU1xDetYD0QCuttNKYYuiTf4k/ZzkiSa+wi7eBy16wXfaJ7D
-	k4AJQwdwTROkNOXqENJn0QcH0+cDnM0YvSFV4PFbfboW/v8T9SUQJJC6u0eSItDV7tXXvCWO/CSLG
-	rBu4C87A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=aLaeXdYA8Tifno2xkiLCPGQlN6waci0Dwn7kcxqgAN0=; b=SVdxxBj/+aMzFackof7fKfRecQ
+	AzGXZ+Wids8c+mxtiBm2ZM1YjmFYoV2EOHERf45VZYLRWCs8rflQC8QtEeREYMEOVedSHR98bCzaL
+	ZhzZX94w4eIgIFWLKNjyUcXMellRo05TKZaCl39Ax1zUoJHYGV1a1lhcv4mzxDNeRos+9wwnhFCw3
+	neTaEmNPcs6cb6lxBpn/cBl7/KHGT/Oi7aKnrJUSMYq+CAV0GgSQGp97A8pEVB5Evp0vc26pBk7RK
+	vmduP7MsGxgiSX1pMdZJRZmFtoBFBXmcb1u0ua2Q/sp76/5xcBTOdDXnFXYhVb0UBd0lUU3yj6s6C
+	Q0LSHPSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAXjm-00000000eFU-0qT3;
-	Mon, 11 Nov 2024 16:58:02 +0000
+	id 1tAYaL-00000000my9-3inQ;
+	Mon, 11 Nov 2024 17:52:21 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAXdQ-00000000dHo-3cbd;
-	Mon, 11 Nov 2024 16:51:30 +0000
+	id 1tAYWp-00000000mGa-017g;
+	Mon, 11 Nov 2024 17:48:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 664FA5C06C0;
-	Mon, 11 Nov 2024 16:50:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49836C4CECF;
-	Mon, 11 Nov 2024 16:51:23 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 013A55C5BD9;
+	Mon, 11 Nov 2024 17:47:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 143CEC4CECF;
+	Mon, 11 Nov 2024 17:48:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1731343887;
-	bh=xsTBACz35DuVfvJ2nfBri71Zv06IBtqdNgFneESDmWE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=kUHL+oSzBDGxagLpoqTwLI49QBEK+/rlOA5HYofVHGmHvdxe96FyjWp8Vj+mYIiv1
-	 J3FxAaxhrO06O+SudaXeTCb1GPXm2HcHQvzNfgb+dNQirCDKcfIdndnn1UtPhKVJkL
-	 SATk2EnO1+6EicQpiqVzuoFjTk+Q9JoISNQXd1vJQ6mfOepGw81rsR526c0L4jnlE3
-	 8bEE03TxIBws8MRZUpGlcirTOAQSU9zCzWyP0ocJz9TxfiAbGp/rSsxo12RyN503cn
-	 VQOsFFBg94gbm19rUaEYL5x/yAPfrKul+DlAFFTkkSxXRFwDvuddVZnjTzjTKMHwcN
-	 QPF9ZqwKu3I2g==
-Date: Mon, 11 Nov 2024 16:51:20 +0000
-From: Lee Jones <lee@kernel.org>
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	upstream@airoha.com, benjamin.larsson@genexis.eu,
-	ansuelsmth@gmail.com, linux-pwm@vger.kernel.org
-Subject: Re: (subset) [PATCH v9 4/6] dt-bindings: mfd: Add support for Airoha
- EN7581 GPIO System Controller
-Message-ID: <20241111165120.GD8552@google.com>
-References: <20241023-en7581-pinctrl-v9-0-afb0cbcab0ec@kernel.org>
- <20241023-en7581-pinctrl-v9-4-afb0cbcab0ec@kernel.org>
- <173088099542.3237297.18018729158887853624.b4-ty@kernel.org>
- <ZyssJpR7xwbMzUsm@lore-desk>
- <20241106110046.GR1807686@google.com>
- <CACRpkdbf4Pb+n-F-K-JaUvytwCGUHHh8d2rYP4A9KgVTzqSnGw@mail.gmail.com>
+	s=k20201202; t=1731347318;
+	bh=Y+khpFiawXKLU/+l8e747ZP6KaaIIh+gTXQA+EIkgkY=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=gfD79ezbyqAT5rvKeu/bcNk+MqWjLhBgv82QIF/tIbz1tWRuHXO2hqhXMblEdVPjh
+	 uLWSskpTn0NmbCS8ovAvPJNwmOCD+sEvFuY5H39CXkmtdFWd5YC2nEieNxQRc/I99o
+	 U7IQ0t8lfGL6a9x7XtdAvZul3zH6DbCJ4SHk4BNHxN4qMgByWrPQNh+GNmgGwLVMFW
+	 5kFUqPoQTKfdsOEBglpmjDw8gP+n70gDwcBkSKANJClp4+04sSwRjT77we8vHjhqgq
+	 0YvS2zBf6EmIbdDpX54lBKmW1z/IT8syb8Ns1cZ4VY6Zjr0qNNt+7l5WToJMnaGMYb
+	 cYYNgkm1oOPEg==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EF3C7D3ABD9;
+	Mon, 11 Nov 2024 17:48:37 +0000 (UTC)
+From: Manivannan Sadhasivam via B4 Relay <devnull+manivannan.sadhasivam.linaro.org@kernel.org>
+Subject: [PATCH 0/5] scsi: ufs: Bug fixes for ufs core and platform drivers
+Date: Mon, 11 Nov 2024 23:18:29 +0530
+Message-Id: <20241111-ufs_bug_fix-v1-0-45ad8b62f02e@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CACRpkdbf4Pb+n-F-K-JaUvytwCGUHHh8d2rYP4A9KgVTzqSnGw@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAG1DMmcC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIxNDINAtTSuOTypNj0/LrNA1SzE0TzO2TExLTDRRAuooKEoFCoNNi46trQU
+ ADEBy810AAAA=
+To: Alim Akhtar <alim.akhtar@samsung.com>, 
+ Avri Altman <avri.altman@wdc.com>, Bart Van Assche <bvanassche@acm.org>, 
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>, 
+ "Martin K. Petersen" <martin.petersen@oracle.com>, 
+ Mike Bi <mikebi@micron.com>, Bean Huo <beanhuo@micron.com>, 
+ =?utf-8?q?Thomas_Wei=C3=9Fschuh?= <linux@weissschuh.net>, 
+ Luca Porzio <lporzio@micron.com>, Asutosh Das <quic_asutoshd@quicinc.com>, 
+ Can Guo <quic_cang@quicinc.com>, Pedro Sousa <pedrom.sousa@synopsys.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, Peter Wang <peter.wang@mediatek.com>, 
+ Stanley Jhu <chu.stanley@gmail.com>, 
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, 
+ Orson Zhai <orsonzhai@gmail.com>, 
+ Baolin Wang <baolin.wang@linux.alibaba.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Santosh Y <santoshsy@gmail.com>, Namjae Jeon <linkinjeon@gmail.com>
+Cc: linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-renesas-soc@vger.kernel.org, 
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+ stable@vger.kernel.org
+X-Mailer: b4 0.14.1
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1532;
+ i=manivannan.sadhasivam@linaro.org; h=from:subject:message-id;
+ bh=Y+khpFiawXKLU/+l8e747ZP6KaaIIh+gTXQA+EIkgkY=;
+ b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBnMkNyVRymijja4WYsMTq3UufBBioidTEf49F/G
+ g6j4UfgEmiJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCZzJDcgAKCRBVnxHm/pHO
+ 9d0jB/449IToaB9ZcYdJONBd23MdNRpN9XTjoQ3UaKzzkCrBwemdD8ACugH5wLUaPzsStvYYt3C
+ 6oYkky5KzIlqwZMoQVr4rSs7t0C+05tD/fKah7PQkWE2sWw6qy5weu7aZdzMMLT4eewC1jVW+OJ
+ 6sDx7OKs23eLysMs5PpefkS/XDYDkowgBvPz0f1E11UQDoA4Ra1Wd84CkcdyqTh0XDMC0EV4D0p
+ fGBOBK0Tpegsz2LI686Q6vrLJQBtn6pZNWAx2GHhNxEGbg97Rg5kF/7FtcnvVdgcDc0CDrxeyOu
+ HAIwSVg9lV19dgsYP/y7m/iTY4qce8LrwLtHgy5oTwjONKG5
+X-Developer-Key: i=manivannan.sadhasivam@linaro.org; a=openpgp;
+ fpr=C668AEC3C3188E4C611465E7488550E901166008
+X-Endpoint-Received: by B4 Relay for
+ manivannan.sadhasivam@linaro.org/default with auth_id=185
+X-Original-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241111_085129_006894_42FEC0C9 
-X-CRM114-Status: GOOD (  22.33  )
+X-CRM114-CacheID: sfid-20241111_094843_236165_E112F376 
+X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,74 +108,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: manivannan.sadhasivam@linaro.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 06 Nov 2024, Linus Walleij wrote:
+Hi,
 
-> On Wed, Nov 6, 2024 at 12:00 PM Lee Jones <lee@kernel.org> wrote:
-> > On Wed, 06 Nov 2024, Lorenzo Bianconi wrote:
-> >
-> > > On Nov 06, Lee Jones wrote:
-> > > > On Wed, 23 Oct 2024 01:20:04 +0200, Lorenzo Bianconi wrote:
-> > > > > Add support for Airoha EN7581 GPIO System Controller which provide a
-> > > > > register map for controlling the GPIO, pinctrl and PWM of the SoC via
-> > > > > dedicated pinctrl and pwm child nodes.
-> > > > >
-> > > > >
-> > > >
-> > > > Applied, thanks!
-> > > >
-> > > > [4/6] dt-bindings: mfd: Add support for Airoha EN7581 GPIO System Controller
-> > > >       commit: f49f37f3cfe1482d4dc77d26f3e8c38eab630d52
-> > > >
-> > > > --
-> > > > Lee Jones [李琼斯]
-> > > >
-> > >
-> > > Hi Lee,
-> > >
-> > > according to my understanding this patch has been already applied by Linus
-> > > here:
-> > >
-> > > https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git/commit/?h=devel&id=50dedb1eb1e6755ccab55f6140916c2d192be765
-> >
-> > An interesting choice.  Linus?
-> 
-> Yes I suggested that I merge patches 1-5 on oct 29 and applied the
-> day after:
-> https://lore.kernel.org/linux-gpio/CACRpkdYshPusdA7bDW2y8H_wp-Fm3N-YCsY1_Qn=dZqRiFy12w@mail.gmail.com/
-> 
-> It's because the bindings are dependent on each other, this one patch has:
-> 
-> +  pinctrl:
-> +    type: object
-> +    $ref: /schemas/pinctrl/airoha,en7581-pinctrl.yaml
-> +    description:
-> +      Child node definition for EN7581 Pin controller
-> +
-> +  pwm:
-> +    type: object
-> +    $ref: /schemas/pwm/airoha,en7581-pwm.yaml
-> +    description:
-> +      Child node definition for EN7581 PWM controller
-> 
-> Those refs will explode unless the two others are merged at the same
-> time.
-> 
-> Usually we merge the whole shebang through MFD but this one felt
-> different because there is no actual MFD driver, just using simple-mfd.
-> 
-> In hindsight I should probs not have been so trigger happy and give
-> some more time for this to settle... Merge window stress I guess. :/
-> 
-> It's fine to apply textually identical patches to two trees though as
-> git will sort
-> that out so technically it's no big deal, you can keep it applied if you
-> want.
+This series has several bug fixes that I encountered when the ufs-qcom driver
+was removed and inserted back. But the fixes are applicable to other platform
+glue drivers as well.
 
-It's okay.  Life will be easier for everyone if I remove it.
+This series is tested on Qcom RB5 development board based on SM8250 SoC.
 
+Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+---
+Manivannan Sadhasivam (5):
+      scsi: ufs: core: Cancel RTC work during ufshcd_remove()
+      scsi: ufs: qcom: Only free platform MSIs when ESI is enabled
+      scsi: ufs: pltfrm: Disable runtime PM during removal of glue drivers
+      scsi: ufs: pltfrm: Drop PM runtime reference count after ufshcd_remove()
+      scsi: ufs: pltfrm: Dellocate HBA during ufshcd_pltfrm_remove()
+
+ drivers/ufs/core/ufshcd.c             |  1 +
+ drivers/ufs/host/cdns-pltfrm.c        |  4 +---
+ drivers/ufs/host/tc-dwc-g210-pltfrm.c |  5 +----
+ drivers/ufs/host/ufs-exynos.c         |  3 +--
+ drivers/ufs/host/ufs-hisi.c           |  4 +---
+ drivers/ufs/host/ufs-mediatek.c       |  5 +----
+ drivers/ufs/host/ufs-qcom.c           |  7 ++++---
+ drivers/ufs/host/ufs-renesas.c        |  4 +---
+ drivers/ufs/host/ufs-sprd.c           |  5 +----
+ drivers/ufs/host/ufshcd-pltfrm.c      | 16 ++++++++++++++++
+ drivers/ufs/host/ufshcd-pltfrm.h      |  1 +
+ 11 files changed, 29 insertions(+), 26 deletions(-)
+---
+base-commit: 59b723cd2adbac2a34fc8e12c74ae26ae45bf230
+change-id: 20241111-ufs_bug_fix-6d17f39afaa4
+
+Best regards,
 -- 
-Lee Jones [李琼斯]
+Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+
+
 
