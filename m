@@ -4,83 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1732D12D6E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 04:25:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9F26D12D71
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2024 05:35:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=knhfiz6v1X/Y5Phw5qTTBL8KQ/Mw5RIdq1X0vCWMUt0=; b=fhGmXmCcgkpyKBYPZWa0VbfaeR
-	UkrOiTk2zbm02wGsuuaTkxIel1qQVPzjxx+3Weuz3z1JiVCpb+VQhT3mxBMGn5l3EOxbAFVs7UgEP
-	e1nRv0O9UjTkf3gcAhygIOQwT3UafwR/wGlzyz0CxuYHHEhRVfiOFITYuoOmwm2lCD4ls/Vtf+dgT
-	UCwARZZNXwa0FxGs9p/Hqn2v1sc0BIOR2LSbFZvVubLetQgDSihPCQbeb1ydRpNuTG5CAsKS53WzU
-	5D52OEvejWFLLnQmT6jAsO4qCHhgYH3yxuQr0XaIUUf+UMwRimCd0jNEjK9PAxdo5DiaAMD7+ePdT
-	TtUsVv7A==;
+	bh=r0qJC1SezqBQynGrNDWaqH2I8fe34n0nk3C9hPlNSJA=; b=uteaTeF0Hk7ReAmULCjCLpnxqq
+	Iz6OBZSKkp7ZUK4gHG0UiSK0ywnxsTyLN6OPVKN3+GQ5wfdUZ+u1ub1bobVCj0jvejHejbnarIgx4
+	J0uc4OJMobfkjgSyu9xqzGpSGlr7R2Wbn1AlNRmIOpewZvKiFj1HuoQIxup2lMTipVelUALZau0W5
+	sRqq7lmjvyBBcMLWlTKoNBH+mWz66WOHZgG2slnrpp8dVyj1Pu2D4pvVOEhRCoDl47Et6ZbkXgQCf
+	DxO+FBu4u8jvJhgYm1p+BRRRtUgq60DaKbNCCPwngeko/Oiy+X92iFBZa8VWPHBQLZy2jQtT8P9n1
+	n6qvGmXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tALzp-0000000GJe4-2Reb;
-	Mon, 11 Nov 2024 04:25:49 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1tAN4q-0000000GPBy-2QpM;
+	Mon, 11 Nov 2024 05:35:04 +0000
+Received: from smtpbgeu2.qq.com ([18.194.254.142])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tALq5-0000000GIeH-2u4U
-	for linux-mediatek@lists.infradead.org;
-	Mon, 11 Nov 2024 04:15:48 +0000
-Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-20c8c50fdd9so34470855ad.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 10 Nov 2024 20:15:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1731298544; x=1731903344; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=knhfiz6v1X/Y5Phw5qTTBL8KQ/Mw5RIdq1X0vCWMUt0=;
-        b=Qh3h3k2Q2SZheWR/HAiz/YXNFc1ru7VHSZh4UmMLhdosh1asbtI5buNv3YwNMu4GVp
-         jOwzU6XQsM0iJkL9OM6jvFgNewJSQz9E8uliYoi5paFpXywXTpZ2y8PHdzuaGpgPBycw
-         /KhJ/2QCPH8k0dK+NdTTbRsVzQb3nfp2ZKVOk/B2ohgqcLq80zZtsVBpsmLl2rCKmIp4
-         qA8IPhZU+1OZS4EhkFUbzFzFUql2NAla7gWPzkmjwuNDvL7+IRMNhGlv9A9YIKUP5/nT
-         fpuqrJTv8kbFGr0j5y6QwpJ4Eun83G5NKFLoa9M3/zHAz7yF/BtPVXz0HU4dU51vDW0g
-         DBRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731298544; x=1731903344;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=knhfiz6v1X/Y5Phw5qTTBL8KQ/Mw5RIdq1X0vCWMUt0=;
-        b=K0+HAEOkl8BBcbViQGTrruqx/4T5CvyEqDxBoh05uKbGWsS/6tWZBI87OxQvYMWfoa
-         8lmZoD6IMSNxMTvpyFaoJV+Ndl9YZ86SN5RrGOzwVuYx7dxjbTeOg7slDa4XhRSKoNK/
-         GNRfgrD/h2xonbHjLR8AW+0cwtMFIusC4YsjAcSaMNFAFrX1Hx1MLeAXQR4MiDlJ3mVi
-         PoZPgdGb865j0/3oPWLQFwyagvGhicgh0NS5+9EdxSHw/WYXHh8i5bCXgmjmHsy31JGM
-         +8X1uEWRZEiNe7PKs/pV59SbeBim6Ko1HHdL+SEgCwroRc0BPvMfotKw5G5VViFG8nzf
-         U7Lg==
-X-Forwarded-Encrypted: i=1; AJvYcCXl10/GObZCVPNTZQU9i/eiBwB6htdxk5a43a44q7Eyqif7PXS6r5lVC0wjmXTq8m8V2Jscay8HO9qSpY0KzQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxzZ47fB3eSg8LUVy6CGI3qgpgyN1biDN99vusLTt0DJTxActth
-	fNZBSQUHzdMH6flgD/jKFoTRqCj6DUF/7wApVeA9QQcZURd6c+Sa3p5SxUAKAm0=
-X-Google-Smtp-Source: AGHT+IHxCb9wscTjmGmnrU/ke01iamppePTNlMCSebsPTr/XCYGY/bNBzPupEwPaf2R5gdgxQNJBBw==
-X-Received: by 2002:a17:902:d486:b0:211:74be:c09b with SMTP id d9443c01a7336-211821ae0e7mr198879005ad.12.1731298544156;
-        Sun, 10 Nov 2024 20:15:44 -0800 (PST)
-Received: from localhost ([122.172.86.146])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2e9a5fd1a9fsm7577101a91.37.2024.11.10.20.15.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 10 Nov 2024 20:15:42 -0800 (PST)
-Date: Mon, 11 Nov 2024 09:45:40 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Jinjie Ruan <ruanjinjie@huawei.com>
-Cc: rafael@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, hector.yuan@mediatek.com,
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 RESEND] cpufreq: mediatek-hw: Fix wrong return value
- in mtk_cpufreq_get_cpu_power()
-Message-ID: <20241111041540.7pfksjopw7qfupsx@vireshk-i7>
-References: <20241107113841.989475-1-ruanjinjie@huawei.com>
+	id 1tAN30-0000000GOyO-18wN;
+	Mon, 11 Nov 2024 05:33:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=uniontech.com;
+	s=onoh2408; t=1731303140;
+	bh=r0qJC1SezqBQynGrNDWaqH2I8fe34n0nk3C9hPlNSJA=;
+	h=Message-ID:Date:MIME-Version:Subject:To:From;
+	b=edBauzF4+psN00yGCWd2hhRKKGZjoCLM+XP/4Vk/wT24xfIM2jXvn069w9epgAQUt
+	 85bfX/4dTuk0HkQwTOQDvkw+xDeaDVSschC8OeCFR0Up3YtvxOz09Y8aN8WA0Z+WdU
+	 2FKvun9iHGLJvDrBVjFe6CfJKjDLq3VIVs4RZ/eg=
+X-QQ-mid: bizesmtpsz15t1731303113tpcbqo
+X-QQ-Originating-IP: LqKdR6A/9tP/7Zdlo1TgGaooe3XoVAUEqK6adang8j8=
+Received: from [10.20.53.22] ( [113.57.152.160])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Mon, 11 Nov 2024 13:31:51 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 1
+X-BIZMAIL-ID: 16417097256222115542
+Message-ID: <0356012E12D9C4F2+d5bf77f1-6baa-4e02-b9d4-52fc49997f32@uniontech.com>
+Date: Mon, 11 Nov 2024 13:31:50 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241107113841.989475-1-ruanjinjie@huawei.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3] Bluetooth: btusb: Add MT7925 support for ID
+ 0x13d3:0x3608
+To: Paul Menzel <pmenzel@molgen.mpg.de>, hello@felixjara.me
+Cc: marcel@holtmann.org, luiz.dentz@gmail.com, johan.hedberg@gmail.com,
+ matthias.bgg@gmail.com, linux-bluetooth@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, guanwentao@uniontech.com,
+ zhanjun@uniontech.com, aaron.ma@canonical.com
+References: <D3E1285F7DBFAB3E+20241108082418.187499-1-wangyuli@uniontech.com>
+ <9954d66f-7e1c-4df3-a600-f82139ea9e5b@molgen.mpg.de>
+Content-Language: en-US
+From: WangYuli <wangyuli@uniontech.com>
+Autocrypt: addr=wangyuli@uniontech.com; keydata=
+ xjMEZoEsiBYJKwYBBAHaRw8BAQdAyDPzcbPnchbIhweThfNK1tg1imM+5kgDBJSKP+nX39DN
+ IVdhbmdZdWxpIDx3YW5neXVsaUB1bmlvbnRlY2guY29tPsKJBBMWCAAxFiEEa1GMzYeuKPkg
+ qDuvxdofMEb0C+4FAmaBLIgCGwMECwkIBwUVCAkKCwUWAgMBAAAKCRDF2h8wRvQL7g0UAQCH
+ 3mrGM0HzOaARhBeA/Q3AIVfhS010a0MZmPTRGVfPbwD/SrncJwwPAL4GiLPEC4XssV6FPUAY
+ 0rA68eNNI9cJLArOOARmgSyJEgorBgEEAZdVAQUBAQdA88W4CTLDD9fKwW9PB5yurCNdWNS7
+ VTL0dvPDofBTjFYDAQgHwngEGBYIACAWIQRrUYzNh64o+SCoO6/F2h8wRvQL7gUCZoEsiQIb
+ DAAKCRDF2h8wRvQL7sKvAP4mBvm7Zn1OUjFViwkma8IGRGosXAvMUFyOHVcl1RTgFQEAuJkU
+ o9ERi7qS/hbUdUgtitI89efbY0TVetgDsyeQiwU=
+In-Reply-To: <9954d66f-7e1c-4df3-a600-f82139ea9e5b@molgen.mpg.de>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="------------prXwvg4jx33S8hv2mv5kSAoR"
+X-QQ-SENDSIZE: 520
+Feedback-ID: bizesmtpsz:uniontech.com:qybglogicsvrgz:qybglogicsvrgz8a-1
+X-QQ-XMAILINFO: OeS8HGsJZnO5WQ/8ZQ6BffBFbGR9UrRzTYv+R+oNPOkwgdfqFMgDdSHX
+	Wy44DZAinLznguz1eM/svs+91IHgk2ocBVP4edgAKN9n3sjftJ7tXT3SoGSiWtODeBL0EuY
+	h6n8z9f/WAOwhhBUBw0Xkc1rHpekXnyUA2nLykOIY/50BJd/Fv3WhYntwO621a7jXwJ6feU
+	2eqdh8i1Lt4+Vqg9Qmb79fUWiYdccjP6MvtxG2Q5/H7+IVl4P0+raXgxSiY50dMKhSWblun
+	iu/iwkgUShjjnwUjOuFpckKVgNfC2NYX637ZW68WuLqL+S82IamEA2eaDhsuiN8PmhC7rZ+
+	JVaIqsiCEhZDR1aFKqUDBtI8lnZTjTcB0Pefv7Rz9ls3a2d5RqfoDmnHsQEpGo1M8t/ozz/
+	+rX6xhdYr65yOMXM5K3uCIK+Hfl8E28AMrSozBvVA0ELoLOwSgDwkKLrdnsMZxPr3KsGTV8
+	vDlQIkLznlOZm6vPPXNsoaBZpL0RsbOgtR47nohl48VnRaqgqeiKvOb1sKHpvXRHMT3krJZ
+	lszzyEBeehKq3KtSRVnVxcYD+3H9ZVvVWvniA74bJjYMOH/2JKD2bfbuspKXvhJx81Cvubo
+	huwLOsTaxxuXVGgvr+xbpuGgxYqmtehEEQEZsG3lrwLw16vx+mXvsGxV58PNgXQYcVL4gaA
+	CnX2LGbDZwr5sTpcG9hYFMRpxcRuLbCqdT3G/8n9dQNS28i5GgsaLsDt5G7m3uO4IGOSMZB
+	r/MWneSbPbBfWJ+ICcVqkp2jR4rZjtcxYNVgSUzMPHGo103r1FdCd/sroUnm/iMdp62ZP0n
+	X+j25k76mv7CPMHcjVK7YIWx5dvIWkx8su17duxLxYdB7c25dMm20oMERQMfBaGxzAn0NF+
+	mvRHQoJ8FLhHaMLySq3njzY8vONHeBtqSM89z9k7++MwNCQpGw7622KS+z5iIDGsQemvXmj
+	7obgyivlYYNDEmZmJlK7hBc1tLmdsuTGPuKi8g0pLF0NvEF4M33gC/5HN1CUY+NOU6/mrnv
+	jDJlfsfOYVl2zuzpP85ozdB37O2yGxJHBPB8PYj992l61tC91GvTi9pP8DLue7cfw0C6sri
+	fVmZKLAcx57Ax6iWRJfxvH32ThKSrfi8FS1K8IwCGJZ
+X-QQ-XMRINFO: Nq+8W0+stu50PRdwbJxPCL0=
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241110_201545_798066_94B20D00 
-X-CRM114-Status: GOOD (  15.47  )
+X-CRM114-CacheID: sfid-20241110_213310_776596_FFA43D92 
+X-CRM114-Status: GOOD (  13.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,31 +108,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 07-11-24, 19:38, Jinjie Ruan wrote:
-> mtk_cpufreq_get_cpu_power() return 0 if the policy is NULL. Then in
-> em_create_perf_table(), the later zero check for power is not invalid
-> as power is uninitialized. As Lukasz suggested, it must return -EINVAL when
-> the 'policy' is not found. So return -EINVAL to fix it.
-> 
-> Cc: stable@vger.kernel.org
-> Fixes: 4855e26bcf4d ("cpufreq: mediatek-hw: Add support for CPUFREQ HW")
-> Reviewed-by: Lukasz Luba <lukasz.luba@arm.com>
-> Suggested-by: Lukasz Luba <lukasz.luba@arm.com>
-> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
-> ---
-> v2 -> v2 RESEND:
-> - Update the commit subject and Cc Viresh.
-> - Add Reviewed-by.
-> v2:
-> - Fix the driver instead of em_create_perf_table() as suggested.
-> - Update the commit message.
-> - Add Suggested-by.
-> ---
->  drivers/cpufreq/mediatek-cpufreq-hw.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--------------prXwvg4jx33S8hv2mv5kSAoR
+Content-Type: multipart/mixed; boundary="------------dFU7eN00AXop4PhYtPWk9804";
+ protected-headers="v1"
+From: WangYuli <wangyuli@uniontech.com>
+To: Paul Menzel <pmenzel@molgen.mpg.de>, hello@felixjara.me
+Cc: marcel@holtmann.org, luiz.dentz@gmail.com, johan.hedberg@gmail.com,
+ matthias.bgg@gmail.com, linux-bluetooth@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, guanwentao@uniontech.com,
+ zhanjun@uniontech.com, aaron.ma@canonical.com
+Message-ID: <d5bf77f1-6baa-4e02-b9d4-52fc49997f32@uniontech.com>
+Subject: Re: [PATCH v3] Bluetooth: btusb: Add MT7925 support for ID
+ 0x13d3:0x3608
+References: <D3E1285F7DBFAB3E+20241108082418.187499-1-wangyuli@uniontech.com>
+ <9954d66f-7e1c-4df3-a600-f82139ea9e5b@molgen.mpg.de>
+In-Reply-To: <9954d66f-7e1c-4df3-a600-f82139ea9e5b@molgen.mpg.de>
 
-Applied. Thanks.
+--------------dFU7eN00AXop4PhYtPWk9804
+Content-Type: multipart/mixed; boundary="------------lc09SF6AgsylcJLktEewo2W5"
 
--- 
-viresh
+--------------lc09SF6AgsylcJLktEewo2W5
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
+
+T24gMjAyNC8xMS84IDE2OjQ4LCBQYXVsIE1lbnplbCB3cm90ZToNCg0KPg0KPiBTaG91bGQg
+dGhlcmUgYmUgYSBzcGFjZSBpbiB5b3VyIG5hbWU6IFdhbmcgWXVsaT8NCj4NCk5vIG5lZWQg
+Oi0pDQoNCj4NCj4gVGhlcmUgaXMgYWxyZWFkeSBhbiBlbnRyeSBmb3IgMTNkMzozNjA4LiAN
+Cg0KU29ycnkuIEkndmUgYmVlbiB3b3JraW5nIG9uIHRoaXMgcGF0Y2ggaW4gdGhlIGJsdWV0
+b290aC1uZXh0IGJyYW5jaCBvZiANCnRoZSBibHVldG9vdGgtbmV4dCByZXBvc2l0b3J5LiBb
+MV0NCg0KU28gSSBkaWQgbm90IG5vdGljZSB0aGUgbmV3IGNoYW5nZXMgdG8gdGhpcyBmaWxl
+Lg0KDQoNClsxXSANCmdpdDovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVs
+L2dpdC9ibHVldG9vdGgvYmx1ZXRvb3RoLW5leHQuZ2l0DQoNCg0KPiBTaG91bGQgb25seSBC
+VFVTQl9WQUxJRF9MRV9TVEFURVMgYmUgYWRkZWQ/UGxlYXNlIHVwZGF0ZSB0aGUgY29tbWl0
+IA0KPiBtZXNzYWdlIChzdW1tYXJ5IGFuZCBib2R5KSBhY2NvcmRpbmdseS4NCg0KDQpObyBu
+ZWVkIG5vdy4NCg0KQmVjYXVzZSBvZiBjb21taXQgMGZlYzY1NmQwOGFhICgiQmx1ZXRvb3Ro
+OiBidHVzYjogSW52ZXJ0IExFIFN0YXRlIGZsYWcgDQp0byBzZXQgaW52YWxpZCByYXRoZXIg
+dGhlbiB2YWxpZCIpDQoNCj4NCj4NCj4gS2luZCByZWdhcmRzLA0KPg0KPiBQYXVsDQo+DQot
+LSANCldhbmdZdWxpDQo=
+--------------lc09SF6AgsylcJLktEewo2W5
+Content-Type: application/pgp-keys; name="OpenPGP_0xC5DA1F3046F40BEE.asc"
+Content-Disposition: attachment; filename="OpenPGP_0xC5DA1F3046F40BEE.asc"
+Content-Description: OpenPGP public key
+Content-Transfer-Encoding: quoted-printable
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+xjMEZoEsiBYJKwYBBAHaRw8BAQdAyDPzcbPnchbIhweThfNK1tg1imM+5kgDBJSK
+P+nX39DNIVdhbmdZdWxpIDx3YW5neXVsaUB1bmlvbnRlY2guY29tPsKJBBMWCAAx
+FiEEa1GMzYeuKPkgqDuvxdofMEb0C+4FAmaBLIgCGwMECwkIBwUVCAkKCwUWAgMB
+AAAKCRDF2h8wRvQL7g0UAQCH3mrGM0HzOaARhBeA/Q3AIVfhS010a0MZmPTRGVfP
+bwD/SrncJwwPAL4GiLPEC4XssV6FPUAY0rA68eNNI9cJLArOOARmgSyJEgorBgEE
+AZdVAQUBAQdA88W4CTLDD9fKwW9PB5yurCNdWNS7VTL0dvPDofBTjFYDAQgHwngE
+GBYIACAWIQRrUYzNh64o+SCoO6/F2h8wRvQL7gUCZoEsiQIbDAAKCRDF2h8wRvQL
+7sKvAP4mBvm7Zn1OUjFViwkma8IGRGosXAvMUFyOHVcl1RTgFQEAuJkUo9ERi7qS
+/hbUdUgtitI89efbY0TVetgDsyeQiwU=3D
+=3DBlkq
+-----END PGP PUBLIC KEY BLOCK-----
+
+--------------lc09SF6AgsylcJLktEewo2W5--
+
+--------------dFU7eN00AXop4PhYtPWk9804--
+
+--------------prXwvg4jx33S8hv2mv5kSAoR
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+wnsEABYIACMWIQRrUYzNh64o+SCoO6/F2h8wRvQL7gUCZzGWxgUDAAAAAAAKCRDF2h8wRvQL7jrY
+AP44VowUFBFTdi66/4qb7/KoyXwbptsn0Z/hGY/znCZe9QD/VSCt3lW4A+uVQRZokLhP9L9NwtxA
+dBpfl8jCbQSqeg8=
+=ey4H
+-----END PGP SIGNATURE-----
+
+--------------prXwvg4jx33S8hv2mv5kSAoR--
 
