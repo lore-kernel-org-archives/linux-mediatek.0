@@ -4,112 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3409D41D6E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2024 08:41:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03A27D41D6E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2024 08:47:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=C6QofcCdQmsLqvy2bS7OgsAFd+Nwlz5uz8nWM8QdfQg=; b=TI2VWba0/WNsc3sjqixVa4F68I
-	iDIfcNKXIevH4mdmHRH4AnFQQs/WQGQEwuVq5kb4sy4PaqJdWnfvlI9ublAKH93Vz7izz9MAEcbgj
-	uNdiBS1Xw/B2g4pBs7HDxj05eY8Ut+Tbd7MSOGOv36Bsn6GVy8GM3eQztNJFQThbv+0p4Ad4rK1Wo
-	fV2eB3kgLqoRWv7JhrxT8PKM2QmKfySokjd+iP2y6Y65DG8wFpoW7Fszyx36EPpQh9PU+OBspmCbT
-	uj5hh2zlSIwIhqCkTWT8df9nl7QSHe2iFOl1oXS8EBUH5dla3OnNq4umUk2/QVWFp37g/upOtewDJ
-	Im3Fp72Q==;
+	bh=9yQRQ1YMpsHYjVPXBs5cui/BYg5AqvlMAVHEJfqzNMU=; b=JdEik2MbSiYFR2PZ2Gtvd9oncl
+	k9N8wtMWMSswEAiyH4dK1aS/aQENCMoj9fFX9QH/hiXxV4NyvHBghIgceWkIfR9UhaDfsMJ3bxL4S
+	sKZL+SegLQTgEaoBAni9+/AVidRs2ry7wVqP1FBIBNLGlJWt+YlL2aAmtgjCYNt3EDSFDNi4xbxA0
+	MW1PbhOT8FCTHCSk5J805PtfYPV0mrsCnB4/v4Hk1pkwiPLNjw4l4c450lQ20DZrSh0s21LVtaQfR
+	pTPt1vwM6Fp7c+UTc0DQgBAvKT3smn4w1Fse6XkR/rxz1ATBSRxSRxzWkPLjv4YrGD/tY4PmjT7HK
+	XFck2oXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAmSi-00000002fkK-44GD;
-	Tue, 12 Nov 2024 08:41:24 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1tAmY9-00000002h8s-04HB;
+	Tue, 12 Nov 2024 08:47:01 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAmNS-00000002efa-0MwR
+	id 1tAmQl-00000002fKg-36KI
 	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Nov 2024 08:36:00 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-43155afca99so35510815e9.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 12 Nov 2024 00:35:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1731400556; x=1732005356; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=C6QofcCdQmsLqvy2bS7OgsAFd+Nwlz5uz8nWM8QdfQg=;
-        b=UAXqF/2nQDNy8qBRsrrjzplRgilenqgiSH6k7mwE7q4bjEHornO310Kg6h+aMFHJRC
-         EhopHmsdYWnP/kWeAbUZIzl+DjeGjv8CLZ9yRawKln8lAgPzGR/qRMACSMFKumMduSBM
-         rT+u5TTRD6JxhKNo6ruxD3D0kDdcxqMvBTfqwUzDbIttOYOCgr/aecNY2Uc2D8oECAxm
-         pLARKDJ/WWL8OwGgko0WSViLXBlKkYJV9F0cnKTecI4ItbJ7rPgoGEF4xpEfg/nfr4o3
-         4DNzqYGC60drBErWrvL+EmtNgoJQ3S2a0RtMFAiwGJ+eCOkXYMyJUM66N6XegSGYTnqv
-         DucA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731400556; x=1732005356;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=C6QofcCdQmsLqvy2bS7OgsAFd+Nwlz5uz8nWM8QdfQg=;
-        b=VdbO2wo/AbdUzWmodarXex93WAB4Yc1jzYbPnMJq4CjfL7Ka6iuEd2pYNv9SOpCyQ+
-         /60Ottfa/umfbD9gHpGFBewUCJktvfkuDh15/4V/kdqTKV4SggzNXLMY6FcEJIFG+NZb
-         8sFs+Z4Aa4fgPPmmrOnsoK7YZBgxQokhHZY6+RikOUiraocrbfWbF/Q1b1XuliN99QbW
-         JV3mcp2oqOGJ7hKMKInesw71FZw+WvCrXHF15DuqccbAZLgh92AhrtTgqFOJ1yNmCCH2
-         Of4pI3HIa5wf4ZqE4ECU1fAYvrNJ2Bab2CoQx2Y3XqyRWRe5f/NWLmPoVFS0353RLKre
-         Brqg==
-X-Forwarded-Encrypted: i=1; AJvYcCUfephewsJK+5aMw7HZnVEgSh0gX6nRXrW9MAyBAcGDRJ+fKJrakmw1n2u4KLEtXajAIRQVnn2rHGAluPONyA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxpSgGTag+ALcVDeJ2jAzvqVSEbvDkqvs6e9AUNFEMU1CZ9VeTO
-	9dNoRg1+/6VKi06tk/xQtV6xiooZztpblCmBLqDuZ93IexhdVwOBVGmS+ku+1WE=
-X-Google-Smtp-Source: AGHT+IGW+y3BR7dFB04YA4ES3C1lW4o7kCU2hloqBgpq+LKWd/AQDkgHN2jgVjcYHfhMS3JEIGnWwQ==
-X-Received: by 2002:a05:600c:4690:b0:431:5226:1633 with SMTP id 5b1f17b1804b1-432b744ef66mr130754775e9.6.1731400555594;
-        Tue, 12 Nov 2024 00:35:55 -0800 (PST)
-Received: from localhost (p509159f1.dip0.t-ipconnect.de. [80.145.89.241])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-432aa523a0esm233176195e9.0.2024.11.12.00.35.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Nov 2024 00:35:55 -0800 (PST)
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-To: Sudeep Holla <sudeep.holla@arm.com>
-Cc: Cristian Marussi <cristian.marussi@arm.com>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	Brian Norris <briannorris@chromium.org>,
-	Julius Werner <jwerner@chromium.org>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Gabriel Somlo <somlo@cmu.edu>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Dinh Nguyen <dinguyen@kernel.org>,
-	Michal Simek <michal.simek@amd.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Stefan Wahren <wahrenst@gmx.net>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Jay Buddhabhatti <jay.buddhabhatti@amd.com>,
-	Ronak Jain <ronak.jain@amd.com>,
-	Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
-	Praveen Teja Kundanala <praveen.teja.kundanala@amd.com>,
-	arm-scmi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	chrome-platform@lists.linux.dev,
-	imx@lists.linux.dev,
-	linux-riscv@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	qemu-devel@nongnu.org,
-	linux-rpi-kernel@lists.infradead.org
-Subject: [PATCH] firmware: Switch back to struct platform_driver::remove()
-Date: Tue, 12 Nov 2024 09:35:20 +0100
-Message-ID: <36974feb6035201d53384557259ec72fe311053b.1731397962.git.u.kleine-koenig@baylibre.com>
-X-Mailer: git-send-email 2.45.2
+	Tue, 12 Nov 2024 08:39:25 +0000
+X-UUID: 9b2fef1ea0d111ef82ff63e91e7eb18c-20241112
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=9yQRQ1YMpsHYjVPXBs5cui/BYg5AqvlMAVHEJfqzNMU=;
+	b=usHQ2deB05xSWL1vycCXtG3O74TzNs4n5hkKwVE9z9Rzzh4ed8p7iT1B8q5Bbp29jTwx0srmxLiFrUQ6kOiOuC04OnqVYL6c3LyoW9VpePV4asl1d83+vZXJs5BhBg7lCQY36SY5JbNRB0+lgjXCXH0ZrRnPhBtR41pltS9pu20=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.42,REQID:32090e5d-9c5a-4f15-af30-f57b8903ae60,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:b0fcdc3,CLOUDID:bd93041c-4f51-4e1d-bb6a-1fd98b6b19d2,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULN,TF_CID_SPAM_SNR
+X-UUID: 9b2fef1ea0d111ef82ff63e91e7eb18c-20241112
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <meichia.chiu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 615404004; Tue, 12 Nov 2024 01:39:18 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Tue, 12 Nov 2024 16:39:16 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Tue, 12 Nov 2024 16:39:16 +0800
+From: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
+To: Johannes Berg <johannes@sipsolutions.net>
+CC: Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	MeiChia Chiu <MeiChia.Chiu@mediatek.com>, Peter Chiu
+	<chui-hao.chiu@mediatek.com>
+Subject: [PATCH v2] wifi: mac80211: Support EHT 1024 aggregation size in TX
+Date: Tue, 12 Nov 2024 16:38:46 +0800
+Message-ID: <20241112083846.32063-1-MeiChia.Chiu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=7555; i=u.kleine-koenig@baylibre.com; h=from:subject:message-id; bh=Mu/o9Qv5X4vFA1jVqoDuiGcIFYCOHs8UofluQ4+eEKY=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBnMxNYRTU/Z/YcH9oKPyjD1Bi3PtTwnTXisZzZA y+s+3m+Wv2JATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZzMTWAAKCRCPgPtYfRL+ TnzXB/wIb7KWzpl9KhF1WQm264Rj2ne8x5AR+YU2GkZbmy5FZrtPt6HXJuJgBDULzpxixsmxIJF VlvB5dKowmesjkiHP1AFIiR2D9fWHM+CZMEFlqVCJGrdEQrW9D+UmULcTNI3XB222G4b7YLFHM0 ed5WNuOnohzkIvJSnXdnFm/sx4bu902DDKuNLJAvDs03YbVOb2skn28UEl0B7lXZ76AcJCc3CkS wV70cKyYkGbRAjHgBNtbZcxR/2sZ1BL6KTlE4IXgb8MxxwahMWg2nbcdW/xI3OHYzt0LTeREnhL 2dc2WNr0WcclVbruKzpBOsuQEfd3vxFF7Hm2ApRGzKe6CE3/
-X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241112_003558_184849_20E1A2DB 
-X-CRM114-Status: GOOD (  19.20  )
+X-CRM114-CacheID: sfid-20241112_003923_814744_47547426 
+X-CRM114-Status: GOOD (  21.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,195 +85,326 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-After commit 0edb555a65d1 ("platform: Make platform_driver::remove()
-return void") .remove() is (again) the right callback to implement for
-platform drivers.
+Support EHT 1024 aggregation size in TX
 
-Convert all platform drivers below drivers/firmware to use .remove(),
-with the eventual goal to drop struct platform_driver::remove_new(). As
-.remove() and .remove_new() have the same prototypes, conversion is done
-by just changing the structure member name in the driver initializer.
+The 1024 agg size for RX is supported but not for TX.
+This patch adds this support and refactors common parsing logics for
+addbaext in both process_addba_resp and process_addba_req into a
+function.
 
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@baylibre.com>
+Reviewed-by: Shayne Chen <shayne.chen@mediatek.com>
+Reviewed-by: Money Wang <money.wang@mediatek.com>
+Co-developed-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
+
 ---
-Hello,
+v2:
+1. Update the commit message and title
+2. Refactor the common parts into a function
+---
+ include/linux/ieee80211.h  |   2 +
+ net/mac80211/agg-rx.c      | 102 ++++++++++++++++++++++++-------------
+ net/mac80211/agg-tx.c      |  27 ++++++----
+ net/mac80211/ht.c          |   2 +-
+ net/mac80211/ieee80211_i.h |  10 +++-
+ 5 files changed, 95 insertions(+), 48 deletions(-)
 
-I did a single patch for all of drivers/firmware. While I usually prefer
-to do one logical change per patch, this seems to be overengineering
-here as the individual changes are really trivial and shouldn't be much
-in the way for stable backports.
-
-There is no dedicated maintainer for drivers/firmware, maybe Sudeep as
-biggest committer there can take it? Or would it be sensible to split
-this patch?
-
-This is based on yesterday's next, if conflicts arise when you apply it
-at some later time and don't want to resolve them, feel free to just
-drop the changes to the conflicting files. I'll notice and followup at a
-later time then. Or ask me for a fixed resend. (Having said that, I
-recommend b4 am -3 + git am -3 which should resolve most conflicts just
-fine.)
-
-Best regards
-Uwe
-
- drivers/firmware/arm_scmi/driver.c            | 2 +-
- drivers/firmware/arm_scpi.c                   | 2 +-
- drivers/firmware/google/coreboot_table.c      | 2 +-
- drivers/firmware/imx/imx-dsp.c                | 2 +-
- drivers/firmware/microchip/mpfs-auto-update.c | 2 +-
- drivers/firmware/mtk-adsp-ipc.c               | 2 +-
- drivers/firmware/qemu_fw_cfg.c                | 2 +-
- drivers/firmware/raspberrypi.c                | 2 +-
- drivers/firmware/stratix10-rsu.c              | 2 +-
- drivers/firmware/stratix10-svc.c              | 2 +-
- drivers/firmware/xilinx/zynqmp.c              | 2 +-
- 11 files changed, 11 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/firmware/arm_scmi/driver.c b/drivers/firmware/arm_scmi/driver.c
-index 1f53ca1f87e3..1b5fb2c4ce86 100644
---- a/drivers/firmware/arm_scmi/driver.c
-+++ b/drivers/firmware/arm_scmi/driver.c
-@@ -3333,7 +3333,7 @@ static struct platform_driver scmi_driver = {
- 		   .dev_groups = versions_groups,
- 		   },
- 	.probe = scmi_probe,
--	.remove_new = scmi_remove,
-+	.remove = scmi_remove,
- };
+diff --git a/include/linux/ieee80211.h b/include/linux/ieee80211.h
+index 456bca45ff05..05dedc45505c 100644
+--- a/include/linux/ieee80211.h
++++ b/include/linux/ieee80211.h
+@@ -1445,6 +1445,8 @@ struct ieee80211_mgmt {
+ 					__le16 status;
+ 					__le16 capab;
+ 					__le16 timeout;
++					/* followed by BA Extension */
++					u8 variable[];
+ 				} __packed addba_resp;
+ 				struct{
+ 					u8 action_code;
+diff --git a/net/mac80211/agg-rx.c b/net/mac80211/agg-rx.c
+index fe7eab4b681b..2e2408774e88 100644
+--- a/net/mac80211/agg-rx.c
++++ b/net/mac80211/agg-rx.c
+@@ -170,28 +170,75 @@ static void sta_rx_agg_reorder_timer_expired(struct timer_list *t)
+ 	rcu_read_unlock();
+ }
  
- static struct dentry *scmi_debugfs_init(void)
-diff --git a/drivers/firmware/arm_scpi.c b/drivers/firmware/arm_scpi.c
-index f4d47577f83e..87c323de17b9 100644
---- a/drivers/firmware/arm_scpi.c
-+++ b/drivers/firmware/arm_scpi.c
-@@ -1049,7 +1049,7 @@ static struct platform_driver scpi_driver = {
- 		.dev_groups = versions_groups,
- 	},
- 	.probe = scpi_probe,
--	.remove_new = scpi_remove,
-+	.remove = scpi_remove,
- };
- module_platform_driver(scpi_driver);
+-static void ieee80211_add_addbaext(struct ieee80211_sub_if_data *sdata,
+-				   struct sk_buff *skb,
+-				   const struct ieee80211_addba_ext_ie *req,
+-				   u16 buf_size)
++void ieee80211_add_addbaext(struct sk_buff *skb,
++			    const u8 req_addba_ext_data,
++			    u16 buf_size)
+ {
+-	struct ieee80211_addba_ext_ie *resp;
++	struct ieee80211_addba_ext_ie *addba_ext;
+ 	u8 *pos;
  
-diff --git a/drivers/firmware/google/coreboot_table.c b/drivers/firmware/google/coreboot_table.c
-index 208652a8087c..882db32e51be 100644
---- a/drivers/firmware/google/coreboot_table.c
-+++ b/drivers/firmware/google/coreboot_table.c
-@@ -220,7 +220,7 @@ MODULE_DEVICE_TABLE(of, coreboot_of_match);
+ 	pos = skb_put_zero(skb, 2 + sizeof(struct ieee80211_addba_ext_ie));
+ 	*pos++ = WLAN_EID_ADDBA_EXT;
+ 	*pos++ = sizeof(struct ieee80211_addba_ext_ie);
+-	resp = (struct ieee80211_addba_ext_ie *)pos;
+-	resp->data = req->data & IEEE80211_ADDBA_EXT_NO_FRAG;
++	addba_ext = (struct ieee80211_addba_ext_ie *)pos;
  
- static struct platform_driver coreboot_table_driver = {
- 	.probe = coreboot_table_probe,
--	.remove_new = coreboot_table_remove,
-+	.remove = coreboot_table_remove,
- 	.driver = {
- 		.name = "coreboot_table",
- 		.acpi_match_table = ACPI_PTR(cros_coreboot_acpi_match),
-diff --git a/drivers/firmware/imx/imx-dsp.c b/drivers/firmware/imx/imx-dsp.c
-index 01c8ef14eaec..ed79e823157a 100644
---- a/drivers/firmware/imx/imx-dsp.c
-+++ b/drivers/firmware/imx/imx-dsp.c
-@@ -180,7 +180,7 @@ static struct platform_driver imx_dsp_driver = {
- 		.name = "imx-dsp",
- 	},
- 	.probe = imx_dsp_probe,
--	.remove_new = imx_dsp_remove,
-+	.remove = imx_dsp_remove,
- };
- builtin_platform_driver(imx_dsp_driver);
+-	resp->data |= u8_encode_bits(buf_size >> IEEE80211_ADDBA_EXT_BUF_SIZE_SHIFT,
+-				     IEEE80211_ADDBA_EXT_BUF_SIZE_MASK);
++	addba_ext->data = IEEE80211_ADDBA_EXT_NO_FRAG;
++	if (req_addba_ext_data)
++		addba_ext->data &= req_addba_ext_data;
++
++	addba_ext->data |=
++		u8_encode_bits(buf_size >> IEEE80211_ADDBA_EXT_BUF_SIZE_SHIFT,
++			       IEEE80211_ADDBA_EXT_BUF_SIZE_MASK);
++}
++
++u8 ieee80211_retrieve_addba_ext_data(struct sta_info *sta,
++				     struct ieee80211_mgmt *mgmt,
++				     size_t len, u16 *buf_size,
++				     bool is_req)
++{
++	struct ieee802_11_elems *elems;
++	int ext_elem_len;
++	u8 buf_size_1k, data = 0;
++
++	if (!sta->sta.deflink.he_cap.has_he)
++		return 0;
++
++	if (is_req)
++		ext_elem_len = len - offsetof(struct ieee80211_mgmt,
++			       u.action.u.addba_req.variable);
++	else
++		ext_elem_len = len - offsetof(struct ieee80211_mgmt,
++			       u.action.u.addba_resp.variable);
++
++	if (ext_elem_len <= 0)
++		return 0;
++
++	elems = ieee802_11_parse_elems(is_req ?
++				       mgmt->u.action.u.addba_req.variable :
++				       mgmt->u.action.u.addba_resp.variable,
++				       ext_elem_len, true, NULL);
++
++	if (elems && !elems->parse_error && elems->addba_ext_ie) {
++		data = elems->addba_ext_ie->data;
++
++		if (!sta->sta.deflink.eht_cap.has_eht || !buf_size)
++			goto free;
++
++		buf_size_1k = u8_get_bits(elems->addba_ext_ie->data,
++					  IEEE80211_ADDBA_EXT_BUF_SIZE_MASK);
++		*buf_size |= (u16)buf_size_1k <<
++			     IEEE80211_ADDBA_EXT_BUF_SIZE_SHIFT;
++	}
++free:
++	kfree(elems);
++
++	return data;
+ }
  
-diff --git a/drivers/firmware/microchip/mpfs-auto-update.c b/drivers/firmware/microchip/mpfs-auto-update.c
-index 0f7ec8848202..38a03698cec9 100644
---- a/drivers/firmware/microchip/mpfs-auto-update.c
-+++ b/drivers/firmware/microchip/mpfs-auto-update.c
-@@ -458,7 +458,7 @@ static struct platform_driver mpfs_auto_update_driver = {
- 		.name = "mpfs-auto-update",
- 	},
- 	.probe = mpfs_auto_update_probe,
--	.remove_new = mpfs_auto_update_remove,
-+	.remove = mpfs_auto_update_remove,
- };
- module_platform_driver(mpfs_auto_update_driver);
+ static void ieee80211_send_addba_resp(struct sta_info *sta, u8 *da, u16 tid,
+ 				      u8 dialog_token, u16 status, u16 policy,
+ 				      u16 buf_size, u16 timeout,
+-				      const struct ieee80211_addba_ext_ie *addbaext)
++				      const u8 req_addba_ext_data)
+ {
+ 	struct ieee80211_sub_if_data *sdata = sta->sdata;
+ 	struct ieee80211_local *local = sdata->local;
+@@ -223,8 +270,8 @@ static void ieee80211_send_addba_resp(struct sta_info *sta, u8 *da, u16 tid,
+ 	mgmt->u.action.u.addba_resp.timeout = cpu_to_le16(timeout);
+ 	mgmt->u.action.u.addba_resp.status = cpu_to_le16(status);
  
-diff --git a/drivers/firmware/mtk-adsp-ipc.c b/drivers/firmware/mtk-adsp-ipc.c
-index fdb083f42ebf..2b79371c61c9 100644
---- a/drivers/firmware/mtk-adsp-ipc.c
-+++ b/drivers/firmware/mtk-adsp-ipc.c
-@@ -132,7 +132,7 @@ static struct platform_driver mtk_adsp_ipc_driver = {
- 		.name = "mtk-adsp-ipc",
- 	},
- 	.probe = mtk_adsp_ipc_probe,
--	.remove_new = mtk_adsp_ipc_remove,
-+	.remove = mtk_adsp_ipc_remove,
- };
- builtin_platform_driver(mtk_adsp_ipc_driver);
+-	if (sta->sta.deflink.he_cap.has_he && addbaext)
+-		ieee80211_add_addbaext(sdata, skb, addbaext, buf_size);
++	if (sta->sta.deflink.he_cap.has_he)
++		ieee80211_add_addbaext(skb, req_addba_ext_data, buf_size);
  
-diff --git a/drivers/firmware/qemu_fw_cfg.c b/drivers/firmware/qemu_fw_cfg.c
-index 85c525745b31..d58da3e4500a 100644
---- a/drivers/firmware/qemu_fw_cfg.c
-+++ b/drivers/firmware/qemu_fw_cfg.c
-@@ -757,7 +757,7 @@ MODULE_DEVICE_TABLE(acpi, fw_cfg_sysfs_acpi_match);
+ 	ieee80211_tx_skb(sdata, skb);
+ }
+@@ -233,7 +280,7 @@ void __ieee80211_start_rx_ba_session(struct sta_info *sta,
+ 				     u8 dialog_token, u16 timeout,
+ 				     u16 start_seq_num, u16 ba_policy, u16 tid,
+ 				     u16 buf_size, bool tx, bool auto_seq,
+-				     const struct ieee80211_addba_ext_ie *addbaext)
++				     const u8 addba_ext_data)
+ {
+ 	struct ieee80211_local *local = sta->sdata->local;
+ 	struct tid_ampdu_rx *tid_agg_rx;
+@@ -419,7 +466,7 @@ void __ieee80211_start_rx_ba_session(struct sta_info *sta,
+ 	if (tx)
+ 		ieee80211_send_addba_resp(sta, sta->sta.addr, tid,
+ 					  dialog_token, status, 1, buf_size,
+-					  timeout, addbaext);
++					  timeout, addba_ext_data);
+ }
  
- static struct platform_driver fw_cfg_sysfs_driver = {
- 	.probe = fw_cfg_sysfs_probe,
--	.remove_new = fw_cfg_sysfs_remove,
-+	.remove = fw_cfg_sysfs_remove,
- 	.driver = {
- 		.name = "fw_cfg",
- 		.of_match_table = fw_cfg_sysfs_mmio_match,
-diff --git a/drivers/firmware/raspberrypi.c b/drivers/firmware/raspberrypi.c
-index 18cc34987108..7ecde6921a0a 100644
---- a/drivers/firmware/raspberrypi.c
-+++ b/drivers/firmware/raspberrypi.c
-@@ -406,7 +406,7 @@ static struct platform_driver rpi_firmware_driver = {
- 	},
- 	.probe		= rpi_firmware_probe,
- 	.shutdown	= rpi_firmware_shutdown,
--	.remove_new	= rpi_firmware_remove,
-+	.remove		= rpi_firmware_remove,
- };
- module_platform_driver(rpi_firmware_driver);
+ void ieee80211_process_addba_request(struct ieee80211_local *local,
+@@ -428,9 +475,7 @@ void ieee80211_process_addba_request(struct ieee80211_local *local,
+ 				     size_t len)
+ {
+ 	u16 capab, tid, timeout, ba_policy, buf_size, start_seq_num;
+-	struct ieee802_11_elems *elems = NULL;
+-	u8 dialog_token;
+-	int ies_len;
++	u8 dialog_token, addba_ext_data;
  
-diff --git a/drivers/firmware/stratix10-rsu.c b/drivers/firmware/stratix10-rsu.c
-index e20cee9c2d32..1ea39a0a76c7 100644
---- a/drivers/firmware/stratix10-rsu.c
-+++ b/drivers/firmware/stratix10-rsu.c
-@@ -802,7 +802,7 @@ static void stratix10_rsu_remove(struct platform_device *pdev)
+ 	/* extract session parameters from addba request frame */
+ 	dialog_token = mgmt->u.action.u.addba_req.dialog_token;
+@@ -443,28 +488,13 @@ void ieee80211_process_addba_request(struct ieee80211_local *local,
+ 	tid = (capab & IEEE80211_ADDBA_PARAM_TID_MASK) >> 2;
+ 	buf_size = (capab & IEEE80211_ADDBA_PARAM_BUF_SIZE_MASK) >> 6;
  
- static struct platform_driver stratix10_rsu_driver = {
- 	.probe = stratix10_rsu_probe,
--	.remove_new = stratix10_rsu_remove,
-+	.remove = stratix10_rsu_remove,
- 	.driver = {
- 		.name = "stratix10-rsu",
- 		.dev_groups = rsu_groups,
-diff --git a/drivers/firmware/stratix10-svc.c b/drivers/firmware/stratix10-svc.c
-index 528f37417aea..c5c78b869561 100644
---- a/drivers/firmware/stratix10-svc.c
-+++ b/drivers/firmware/stratix10-svc.c
-@@ -1271,7 +1271,7 @@ static void stratix10_svc_drv_remove(struct platform_device *pdev)
+-	ies_len = len - offsetof(struct ieee80211_mgmt,
+-				 u.action.u.addba_req.variable);
+-	if (ies_len) {
+-		elems = ieee802_11_parse_elems(mgmt->u.action.u.addba_req.variable,
+-					       ies_len, true, NULL);
+-		if (!elems || elems->parse_error)
+-			goto free;
+-	}
+-
+-	if (sta->sta.deflink.eht_cap.has_eht && elems && elems->addba_ext_ie) {
+-		u8 buf_size_1k = u8_get_bits(elems->addba_ext_ie->data,
+-					     IEEE80211_ADDBA_EXT_BUF_SIZE_MASK);
+-
+-		buf_size |= buf_size_1k << IEEE80211_ADDBA_EXT_BUF_SIZE_SHIFT;
+-	}
++	addba_ext_data = ieee80211_retrieve_addba_ext_data(sta, mgmt,
++							   len, &buf_size,
++							   true);
  
- static struct platform_driver stratix10_svc_driver = {
- 	.probe = stratix10_svc_drv_probe,
--	.remove_new = stratix10_svc_drv_remove,
-+	.remove = stratix10_svc_drv_remove,
- 	.driver = {
- 		.name = "stratix10-svc",
- 		.of_match_table = stratix10_svc_drv_match,
-diff --git a/drivers/firmware/xilinx/zynqmp.c b/drivers/firmware/xilinx/zynqmp.c
-index cdb565c41119..720fa8b5d8e9 100644
---- a/drivers/firmware/xilinx/zynqmp.c
-+++ b/drivers/firmware/xilinx/zynqmp.c
-@@ -2118,6 +2118,6 @@ static struct platform_driver zynqmp_firmware_driver = {
- 		.dev_groups = zynqmp_firmware_groups,
- 	},
- 	.probe = zynqmp_firmware_probe,
--	.remove_new = zynqmp_firmware_remove,
-+	.remove = zynqmp_firmware_remove,
- };
- module_platform_driver(zynqmp_firmware_driver);
-
-base-commit: 6d59cab07b8d74d0f0422b750038123334f6ecc2
+ 	__ieee80211_start_rx_ba_session(sta, dialog_token, timeout,
+ 					start_seq_num, ba_policy, tid,
+-					buf_size, true, false,
+-					elems ? elems->addba_ext_ie : NULL);
+-free:
+-	kfree(elems);
++					buf_size, true, false, addba_ext_data);
+ }
+ 
+ void ieee80211_manage_rx_ba_offl(struct ieee80211_vif *vif,
+diff --git a/net/mac80211/agg-tx.c b/net/mac80211/agg-tx.c
+index 04cb45cfb310..775b3a2df9a5 100644
+--- a/net/mac80211/agg-tx.c
++++ b/net/mac80211/agg-tx.c
+@@ -58,23 +58,24 @@
+  * complete.
+  */
+ 
+-static void ieee80211_send_addba_request(struct ieee80211_sub_if_data *sdata,
+-					 const u8 *da, u16 tid,
++static void ieee80211_send_addba_request(struct sta_info *sta, u16 tid,
+ 					 u8 dialog_token, u16 start_seq_num,
+ 					 u16 agg_size, u16 timeout)
+ {
++	struct ieee80211_sub_if_data *sdata = sta->sdata;
+ 	struct ieee80211_local *local = sdata->local;
+ 	struct sk_buff *skb;
+ 	struct ieee80211_mgmt *mgmt;
+ 	u16 capab;
+ 
+-	skb = dev_alloc_skb(sizeof(*mgmt) + local->hw.extra_tx_headroom);
+-
++	skb = dev_alloc_skb(sizeof(*mgmt) +
++			    2 + sizeof(struct ieee80211_addba_ext_ie) +
++			    local->hw.extra_tx_headroom);
+ 	if (!skb)
+ 		return;
+ 
+ 	skb_reserve(skb, local->hw.extra_tx_headroom);
+-	mgmt = ieee80211_mgmt_ba(skb, da, sdata);
++	mgmt = ieee80211_mgmt_ba(skb, sta->sta.addr, sdata);
+ 
+ 	skb_put(skb, 1 + sizeof(mgmt->u.action.u.addba_req));
+ 
+@@ -93,6 +94,9 @@ static void ieee80211_send_addba_request(struct ieee80211_sub_if_data *sdata,
+ 	mgmt->u.action.u.addba_req.start_seq_num =
+ 					cpu_to_le16(start_seq_num << 4);
+ 
++	if (sta->sta.deflink.he_cap.has_he)
++		ieee80211_add_addbaext(skb, 0, agg_size);
++
+ 	ieee80211_tx_skb_tid(sdata, skb, tid, -1);
+ }
+ 
+@@ -460,8 +464,11 @@ static void ieee80211_send_addba_with_timeout(struct sta_info *sta,
+ 	sta->ampdu_mlme.addba_req_num[tid]++;
+ 	spin_unlock_bh(&sta->lock);
+ 
+-	if (sta->sta.deflink.he_cap.has_he) {
++	if (sta->sta.deflink.eht_cap.has_eht) {
+ 		buf_size = local->hw.max_tx_aggregation_subframes;
++	} else if (sta->sta.deflink.he_cap.has_he) {
++		buf_size = min_t(u16, local->hw.max_tx_aggregation_subframes,
++				 IEEE80211_MAX_AMPDU_BUF_HE);
+ 	} else {
+ 		/*
+ 		 * We really should use what the driver told us it will
+@@ -473,9 +480,8 @@ static void ieee80211_send_addba_with_timeout(struct sta_info *sta,
+ 	}
+ 
+ 	/* send AddBA request */
+-	ieee80211_send_addba_request(sdata, sta->sta.addr, tid,
+-				     tid_tx->dialog_token, tid_tx->ssn,
+-				     buf_size, tid_tx->timeout);
++	ieee80211_send_addba_request(sta, tid, tid_tx->dialog_token,
++				     tid_tx->ssn, buf_size, tid_tx->timeout);
+ 
+ 	WARN_ON(test_and_set_bit(HT_AGG_STATE_SENT_ADDBA, &tid_tx->state));
+ }
+@@ -970,6 +976,9 @@ void ieee80211_process_addba_resp(struct ieee80211_local *local,
+ 	amsdu = capab & IEEE80211_ADDBA_PARAM_AMSDU_MASK;
+ 	tid = u16_get_bits(capab, IEEE80211_ADDBA_PARAM_TID_MASK);
+ 	buf_size = u16_get_bits(capab, IEEE80211_ADDBA_PARAM_BUF_SIZE_MASK);
++
++	ieee80211_retrieve_addba_ext_data(sta, mgmt, len, &buf_size, false);
++
+ 	buf_size = min(buf_size, local->hw.max_tx_aggregation_subframes);
+ 
+ 	txq = sta->sta.txq[tid];
+diff --git a/net/mac80211/ht.c b/net/mac80211/ht.c
+index 1c2b7dd8976a..32390d8a9d75 100644
+--- a/net/mac80211/ht.c
++++ b/net/mac80211/ht.c
+@@ -379,7 +379,7 @@ void ieee80211_ba_session_work(struct wiphy *wiphy, struct wiphy_work *work)
+ 				       sta->ampdu_mlme.tid_rx_manage_offl))
+ 			__ieee80211_start_rx_ba_session(sta, 0, 0, 0, 1, tid,
+ 							IEEE80211_MAX_AMPDU_BUF_HT,
+-							false, true, NULL);
++							false, true, 0);
+ 
+ 		if (test_and_clear_bit(tid + IEEE80211_NUM_TIDS,
+ 				       sta->ampdu_mlme.tid_rx_manage_offl))
+diff --git a/net/mac80211/ieee80211_i.h b/net/mac80211/ieee80211_i.h
+index 7dcb46120abc..22da0558389b 100644
+--- a/net/mac80211/ieee80211_i.h
++++ b/net/mac80211/ieee80211_i.h
+@@ -2111,14 +2111,20 @@ int ieee80211_send_smps_action(struct ieee80211_sub_if_data *sdata,
+ 			       const u8 *bssid, int link_id);
+ bool ieee80211_smps_is_restrictive(enum ieee80211_smps_mode smps_mode_old,
+ 				   enum ieee80211_smps_mode smps_mode_new);
+-
++void ieee80211_add_addbaext(struct sk_buff *skb,
++			    const u8 req_addba_ext_data,
++			    u16 buf_size);
++u8 ieee80211_retrieve_addba_ext_data(struct sta_info *sta,
++				     struct ieee80211_mgmt *mgmt,
++				     size_t len, u16 *buf_size,
++				     bool is_req);
+ void __ieee80211_stop_rx_ba_session(struct sta_info *sta, u16 tid,
+ 				    u16 initiator, u16 reason, bool stop);
+ void __ieee80211_start_rx_ba_session(struct sta_info *sta,
+ 				     u8 dialog_token, u16 timeout,
+ 				     u16 start_seq_num, u16 ba_policy, u16 tid,
+ 				     u16 buf_size, bool tx, bool auto_seq,
+-				     const struct ieee80211_addba_ext_ie *addbaext);
++				     const u8 addba_ext_data);
+ void ieee80211_sta_tear_down_BA_sessions(struct sta_info *sta,
+ 					 enum ieee80211_agg_stop_reason reason);
+ void ieee80211_process_delba(struct ieee80211_sub_if_data *sdata,
 -- 
 2.45.2
 
