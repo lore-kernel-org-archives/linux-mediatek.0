@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBDD6D32D81
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E77DD42BBF
 	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2024 18:50:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,70 +12,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oxgsDspc5q1Jni5adG0LIm1mb6Zw1UKHydszhDw5eao=; b=Mea1z1RjTaTgCSi/hvEJrLS5Yi
-	DzTvkS/GdrkvnrmoG5kkQe2NLDWACNnH9P8IvOfinMmU8+2D0gnq/9qTZXk/dHFCAfNtI/bAI5Y+9
-	vHeOqHSxh9PygXdiF0FyOGrdPItp2mWUouL1NYS4xcZJdUR3LSTkmpXmIUXQ725dBMoDLQVMbLb1H
-	Plsz3xDWkSzH0bD9d2ZzAnXBvPivifN73zEw/xMUHLkJehGUg74uddzY7QGJH7r0uUbV9QZW6c2ef
-	PsCmAVRZcH6LdzYvuv6zZMEdzBX/w+75idFmPqdj22oSzuKnOGiay5DCJ+ZGZrdqlcpsHlvZsjkDE
-	BrB5cTjw==;
+	bh=cnJQV6SIrBEYfUH3huctmXM4bbWNUyEeoT62a05aBcE=; b=ldOUhykTUO7xSuB0nHIutj/jx9
+	qO8D1T3LCWe3hudsmVigaElpoFVcUS0pc07HHrUaU8EbJlMKhGyySAVnLodUv1lKR8laMBNT7bnWR
+	lFnlpajS3uqnOfSh12fwonJkUEZeFE3pItQogyls6rcsSWRa6xs+0ddpAyYBXxl/KTm4CYpaITAn+
+	1VJS878dsRTV8l3YElpheGhBwkjgoRHmdvKnDhB+eqWbwz1oRqfpjOoIBWLo7D8HcSmbSr2XG8+pg
+	czSgWkhdasKm70+VuJWyIzOAaFvazyKdYo/EXBAoNB7SFoKK+zZtDQfaMJOJngYEKcoUe8UXUnm2Q
+	id9vAcyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAvyB-00000004cGF-3jps;
+	id 1tAvyB-00000004cG7-2PhV;
 	Tue, 12 Nov 2024 18:50:31 +0000
-Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAvsK-00000004b8P-44sc
+	id 1tAvsG-00000004b6j-340E
 	for linux-mediatek@lists.infradead.org;
-	Tue, 12 Nov 2024 18:44:30 +0000
-Received: by mail-yb1-xb33.google.com with SMTP id 3f1490d57ef6-e28fa2807eeso5765244276.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 12 Nov 2024 10:44:28 -0800 (PST)
+	Tue, 12 Nov 2024 18:44:25 +0000
+Received: by mail-yw1-x112a.google.com with SMTP id 00721157ae682-6e3cdbc25a0so60324387b3.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 12 Nov 2024 10:44:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1731437067; x=1732041867; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1731437063; x=1732041863; darn=lists.infradead.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=oxgsDspc5q1Jni5adG0LIm1mb6Zw1UKHydszhDw5eao=;
-        b=M8TRGJ5sxnbJTCaCYcASKMsJ/pU7u0E+q/Thr3c41tJU+cx6Xuu0EPpXuTF4INCp4v
-         aVzfQdpP1ACqhJ9NbVSZ2AFcZxBEtsuPGm+wA89J8nN1PHY/a/ScTKpczKPYWyZMf23c
-         AnCXPG0DkLPBf3cROi4u3UBY19yeAiXaBaNeZl2ZDwM+GqqpMGJOxsC8kEdYpLn60jjA
-         2QpSafh34vw63dIelN0yvxZubVcov6OeC/XtkXiHW7wS9qQ0vfIl4DRPAbDgMhLp+NM6
-         SIAhP/7+zC6ilSpn3Af9uKPTdbu5M8h1ccvXzFAtfx2k0trVneJ6Kba0OBAlnfBkd9qF
-         FWRA==
+        bh=cnJQV6SIrBEYfUH3huctmXM4bbWNUyEeoT62a05aBcE=;
+        b=jfW6/b+m8wkpr3F8hPOwDYO2b4A2h+7oYRozjFB6dl3BlX4WklbI1NRgnWGa4u0bzD
+         1dDgdnlK5HmeE03llEpx4h8ETgfAWwJzTvjY9Qd3nRUXTTnYj+vrlpbirw+f8fcZ0e9Z
+         uTV57BEs8EWLGs1daP2UiESaVjZiTAiAgz5Kwass7j9O6tPqMW/74/UeM0ZsurgV93aw
+         eHNVD4ggR2ulJMrXGe+bzOU5a7Hb0HhuTFoI/+0VQodLCE4Cz3fGgHdIy9HPSA2DQtp3
+         nCaYf6uQwg8nAxSJ5wkXmZKxogdvEjM877J+mMfTT0WhiN74oibgGmSnN3PL0uxGQdho
+         Eohg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731437067; x=1732041867;
+        d=1e100.net; s=20230601; t=1731437063; x=1732041863;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=oxgsDspc5q1Jni5adG0LIm1mb6Zw1UKHydszhDw5eao=;
-        b=OUJrm/E8fOnpYhjUSE9d94twyt+BGfAplNjG5V33bg0SKQly3N9FAw/qYVvzl6pWR9
-         5oZ2FqmXSLN+Fq62kud04cQgqyTvW3xQkzHrQJ1EMRZgqT9S0eLgdYwNklOUGzPbm9TE
-         5SaRJSQ+utllPG32f7clLx0kKfok1tbFmj+gtNEIYHNeN4WcCEjYB8AVtRM6LmwzA7yA
-         Hf7ZbcwB+oORjKoXR520VRRjlMeSM2EoV3nMBwcD+a/QsEzLEL7Ksdxj6S/ZGFpgou5g
-         3t5SFbv4QDMMgi5GNFiiHJzoigQR7RGq+DO3JRcI9/HCqDuCxY8Ndkw+cOZsBdQ9WUnR
-         XqMw==
-X-Forwarded-Encrypted: i=1; AJvYcCVnHUa7rAzeYcli8Ilt2hN8K/BPWotPVyN/bVJgRp8rLGY4iGH0V0nY076fgdmhSZ3EI1gFApLt7JTXJKZB9g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwJN36X0pwUs5vHyeOcIokGTqxhoRiHCWTLHsQemWekUcAH4jcd
-	y1eaYANX6Pj5cQblUFvn3Is+E/OSqEMqdjitv32dNIHuDrzJh4vqarVqtF86fhrXdO4m70KZnr0
-	1cf8gbQtDacWBn1jNVU0swTpP1r8HJBi2YJWUorE6z9L2Pbgp
-X-Google-Smtp-Source: AGHT+IFMWgRdxZRJtK+Lo3CBpB+VX1bBIjkAiyKqAQn28lKpDNF2wtZFNkKRtCi41qnWunWXbKSXnRp5CfqY5x5v/NA=
-X-Received: by 2002:a05:690c:887:b0:6ea:7e37:8cc3 with SMTP id
- 00721157ae682-6ecb31b89b0mr847947b3.2.1731437067438; Tue, 12 Nov 2024
- 10:44:27 -0800 (PST)
+        bh=cnJQV6SIrBEYfUH3huctmXM4bbWNUyEeoT62a05aBcE=;
+        b=JxYWd6K2JN5DobZucz4F6m4RockK9N6JSoheFOqHWB/CvWGqTrpW3id0H0w4S6nXgo
+         dv89pk2adsw5xjo/j2Gf2RTPsNDDV93xl9N6IMzoILHe+E8eFtlrvj96nch7pxZwGnfv
+         uWLF7DH2k0kZqxnq6Skal3u3xXXzwGuq1CoGmCvMI5GZzITpLtfLcdUgEr/9IHVS89ab
+         70hQlT1CRn0vdPCFAs49SlPqDAVvk/o5QK/SGWGpCz/vhT/qenkzwNTXIjSMVPZoqj+z
+         T3yMZz1kY6oBNjVHShmVPyHhpFhJ1rDrJ4PpRN/DKk4hNwSNuxkJ3MgjZwrZKahQLWhB
+         k8Aw==
+X-Forwarded-Encrypted: i=1; AJvYcCXqy/d/okTYC8ExaPcGyskeHVk18V8cZ8dWuiIoYHiluJ/Ofrdjc9Tm4pmE4oJX8nejhkE4/3s52aStOuldfg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxd9GjQgd78/MLfVgz8VglBBXqj4XvwWJvwXYwsmKd3nJiJYHmt
+	RgEnl7uhEB89dpPtcYODztvL9TT71GzRIsaw9O55ajrb76LsX+ttHIreJqIfc4UTOf8gr2VsWuh
+	cA9fKEk1x9socembzFfe7dLk8g+V8veOvm8TggSiiNEegYKzz
+X-Google-Smtp-Source: AGHT+IF6cpXW9+0uAdL1AcqfGK/UqMHI+Wl5nRA87bwUhFwtmph6r68HcLuRG/ke7CBRwoAUdGOvA7rO7EOcH7M2vUo=
+X-Received: by 2002:a05:690c:6f8f:b0:6ea:7c46:8c23 with SMTP id
+ 00721157ae682-6eaddfb0191mr188491367b3.35.1731437063141; Tue, 12 Nov 2024
+ 10:44:23 -0800 (PST)
 MIME-Version: 1.0
-References: <20241111085039.26527-1-andy-ld.lu@mediatek.com>
-In-Reply-To: <20241111085039.26527-1-andy-ld.lu@mediatek.com>
+References: <20241107121215.5201-1-andy-ld.lu@mediatek.com>
+In-Reply-To: <20241107121215.5201-1-andy-ld.lu@mediatek.com>
 From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Tue, 12 Nov 2024 19:43:51 +0100
-Message-ID: <CAPDyKFopLrZ2Pn66m-CtjDGOEZyiZ+_i8TnnD4KSHpFqCTN7eg@mail.gmail.com>
-Subject: Re: [PATCH] mmc: mtk-sd: Fix MMC_CAP2_CRYPTO flag setting
+Date: Tue, 12 Nov 2024 19:43:47 +0100
+Message-ID: <CAPDyKFoe3rv49oQ+qAF9fq41S3XwKO6dhg7uhgb1ho7nApDrbw@mail.gmail.com>
+Subject: Re: [PATCH v2] mmc: mtk-sd: Fix error handle of probe function
 To: Andy-ld Lu <andy-ld.lu@mediatek.com>
 Cc: angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, 
-	wenbin.mei@mediatek.com, mengqi.zhang@mediatek.com, linux-mmc@vger.kernel.org, 
+	wenbin.mei@mediatek.com, linux-mmc@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241112_104429_038288_EF85EA62 
-X-CRM114-Status: GOOD (  19.50  )
+X-CRM114-CacheID: sfid-20241112_104424_777355_5A02D1D3 
+X-CRM114-Status: GOOD (  22.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,18 +90,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 11 Nov 2024 at 09:50, Andy-ld Lu <andy-ld.lu@mediatek.com> wrote:
+On Thu, 7 Nov 2024 at 13:12, Andy-ld Lu <andy-ld.lu@mediatek.com> wrote:
 >
-> Currently, the MMC_CAP2_CRYPTO flag is set by default for eMMC hosts.
-> However, this flag should not be set for hosts that do not support inline
-> encryption.
+> In the probe function, it goes to 'release_mem' label and returns after
+> some procedure failure. But if the clocks (partial or all) have been
+> enabled previously, they would not be disabled in msdc_runtime_suspend,
+> since runtime PM is not yet enabled for this case.
 >
-> The 'crypto' clock, as described in the documentation, is used for data
-> encryption and decryption. Therefore, only hosts that are configured with
-> this 'crypto' clock should have the MMC_CAP2_CRYPTO flag set.
+> That cause mmc related clocks always on during system suspend and block
+> suspend flow. Below log is from a SDCard issue of MT8196 chromebook, it
+> returns -ETIMEOUT while polling clock stable in the msdc_ungate_clock()
+> and probe failed, but the enabled clocks could not be disabled anyway.
 >
-> Fixes: 7b438d0377fb ("mmc: mtk-sd: add Inline Crypto Engine clock control")
-> Fixes: ed299eda8fbb ("mmc: mtk-sd: fix devm_clk_get_optional usage")
+> [  129.059253] clk_chk_dev_pm_suspend()
+> [  129.350119] suspend warning: msdcpll is on
+> [  129.354494] [ck_msdc30_1_sel : enabled, 1, 1, 191999939,   ck_msdcpll_d2]
+> [  129.362787] [ck_msdcpll_d2   : enabled, 1, 1, 191999939,         msdcpll]
+> [  129.371041] [ck_msdc30_1_ck  : enabled, 1, 1, 191999939, ck_msdc30_1_sel]
+> [  129.379295] [msdcpll         : enabled, 1, 1, 383999878,          clk26m]
+>
+> Add a new 'release_clk' label and reorder the error handle functions to
+> make sure the clocks be disabled after probe failure.
+>
+> Fixes: ffaea6ebfe9c ("mmc: mtk-sd: Use readl_poll_timeout instead of open-coded polling")
+> Fixes: 7a2fa8eed936 ("mmc: mtk-sd: use devm_mmc_alloc_host")
 > Signed-off-by: Andy-ld Lu <andy-ld.lu@mediatek.com>
 
 This didn't apply on fixes the branch, but only on next. That said, I
@@ -114,24 +126,57 @@ Thanks and kind regards
 Uffe
 
 
+
 > ---
->  drivers/mmc/host/mtk-sd.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+> Changes in v2:
+> - Add the relevant fixes tags.
+>
+> ---
+>  drivers/mmc/host/mtk-sd.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
 >
 > diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 022526a1f754..efb0d2d5716b 100644
+> index a2750a45c1b7..022526a1f754 100644
 > --- a/drivers/mmc/host/mtk-sd.c
 > +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -2907,7 +2907,8 @@ static int msdc_drv_probe(struct platform_device *pdev)
->                 host->crypto_clk = devm_clk_get_optional(&pdev->dev, "crypto");
->                 if (IS_ERR(host->crypto_clk))
->                         return PTR_ERR(host->crypto_clk);
-> -               mmc->caps2 |= MMC_CAP2_CRYPTO;
-> +               else if (host->crypto_clk)
-> +                       mmc->caps2 |= MMC_CAP2_CRYPTO;
+> @@ -3007,7 +3007,7 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>         ret = msdc_ungate_clock(host);
+>         if (ret) {
+>                 dev_err(&pdev->dev, "Cannot ungate clocks!\n");
+> -               goto release_mem;
+> +               goto release_clk;
 >         }
+>         msdc_init_hw(host);
 >
->         host->irq = platform_get_irq(pdev, 0);
+> @@ -3017,14 +3017,14 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>                                              GFP_KERNEL);
+>                 if (!host->cq_host) {
+>                         ret = -ENOMEM;
+> -                       goto release_mem;
+> +                       goto release;
+>                 }
+>                 host->cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
+>                 host->cq_host->mmio = host->base + 0x800;
+>                 host->cq_host->ops = &msdc_cmdq_ops;
+>                 ret = cqhci_init(host->cq_host, mmc, true);
+>                 if (ret)
+> -                       goto release_mem;
+> +                       goto release;
+>                 mmc->max_segs = 128;
+>                 /* cqhci 16bit length */
+>                 /* 0 size, means 65536 so we don't have to -1 here */
+> @@ -3064,9 +3064,10 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>  end:
+>         pm_runtime_disable(host->dev);
+>  release:
+> -       platform_set_drvdata(pdev, NULL);
+>         msdc_deinit_hw(host);
+> +release_clk:
+>         msdc_gate_clock(host);
+> +       platform_set_drvdata(pdev, NULL);
+>  release_mem:
+>         if (host->dma.gpd)
+>                 dma_free_coherent(&pdev->dev,
 > --
 > 2.46.0
 >
