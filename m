@@ -4,75 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB3E2D42B85
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2024 14:56:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8416DD42B85
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2024 14:58:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UlOhPUq2RmnDLqQhWNbJaCu28fxeScVH0/hYL8NJhaY=; b=sEvI7yJ/2ayYicUlxGI3n/DrfB
-	zRCbpq4HRTnNrQs4+pGA32zOBzFK8PMFgm1gZ5vZyfMsdFQsVwoiR/7K2/W/yfGTVF+jqdNd0k/2M
-	BV0DEv/MV+V23LhdbCDTwYIWhZ8oSaUxcEq5S1tpIhqqGGReUP6y9cvBLPvC6iommwReAWiE9xBi0
-	SlMY9MvEOoCvkxDmjxI7uhwgMJhwLkM4sXR2iWOXBHe0DGTpz9zQ2UTC+w3fKEOORvOHfp39owYcZ
-	AVpu6DmuY99zRGaJDQv+GNVZcN39ofHrkjYfoh8UzsXssN1n23VvUF9G2zWa0Vtoda36vl9jrYiK7
-	wmscmAEg==;
+	bh=5U7EE1N72jYpLIg8Fj0M/UmGtlM1TOXxGedfthEm/LU=; b=FS0f4k/KvX8LOf5AzF1H6QZ0sc
+	fssW2aNpBl9ib6NinpYOXhFOY7D5nsHc8/w4u+JF+wLqgtMFzTxv0pWnBJZpqRzhR/qwtAouiaENX
+	LyM9vTzSgECLgNKrXM93NCGoC4LLqyN93YnkTozT7kGP0rnmAkOqMc6tp9ds5SJVu86Gqt1zKo+CX
+	YeoN5k8cbMtG2JBMbtSnCNtJMPI1hSe2RLJUzS8tGdYVaYh0VNCu5ribPh1FVsS8mvqwvZdy7ySZK
+	Jeh8GJpgPoD+TMBHF31MDT4jmWPQt0G6ZFtRmw3iRACapNl76sW5zgVAb/ecp3gBwBMaiFXJ9C59L
+	TsSg1NmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAsJi-00000003qX8-063f;
-	Tue, 12 Nov 2024 14:56:30 +0000
+	id 1tAsLh-00000003r4W-0t7J;
+	Tue, 12 Nov 2024 14:58:33 +0000
 Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tAs8A-00000003nr2-2yT7;
-	Tue, 12 Nov 2024 14:44:36 +0000
+	id 1tAsJI-00000003qOg-3szJ;
+	Tue, 12 Nov 2024 14:56:06 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 95361A41CD9;
-	Tue, 12 Nov 2024 14:42:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D8B7C4CED0;
-	Tue, 12 Nov 2024 14:44:30 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id B913FA41CEA;
+	Tue, 12 Nov 2024 14:54:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6C12EC4CED0;
+	Tue, 12 Nov 2024 14:56:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1731422673;
-	bh=EjPK34+AC2Pfhya/hAO/+gef3LLKikFCHohkMhTY3fI=;
+	s=k20201202; t=1731423363;
+	bh=sjtOX4U8btZ+pX6YU8B2jICTN2PT+V0pityV9K3OEgc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=uQkBdyJIPNx6GWYU+T7x82rGzvF8PeuQfl+zs/tOQRDrp2LJbaCDsytTuAlUH0nKQ
-	 CrX2QB6TyMhise0BmTtJRqJrEqwTUYLiVqRKSdXW8kTwoM5jYxXrY9mtWd73RAmiu7
-	 sXIhil1Q71nmi0K7oCMXIt8/aSH3EMQJuRs/RLsPuxJfNYmamJXsHZjRZYlLafXb1q
-	 nXE/pO6NON06KK6vDHDkJBqa2QPHDH/Isva5SRn4c2+qPRcGBZ5Yh6fG1JOZOKQI45
-	 MGy11AdgoqVsSGitWcvmduyYXmzKW+UEbGvYdnWMyWg4itCsl3YzwMhegY+dty5nZ6
-	 h7LyGhAFVB9Ig==
-Date: Tue, 12 Nov 2024 14:44:27 +0000
-From: Lee Jones <lee@kernel.org>
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
+	b=KG/3GkRi+PzBfH0bPRDfobz/mT6+gCk2ZgvEyfYWyaNYDoNZb+9U60lRz9cdNT+e6
+	 nHGX3+wQnkZ+H8qTc+YFS+CzEHgCK/Ls29Bxb4S+iXjJ5ssiJ2XixMHOqrZGSuzbFe
+	 Ksy8hqJ0fytWVXguZLHlZemeCQbrhv7ePNflyzZrpBk3+waNIp9vWKDHeB3jp1P0c9
+	 Yyz3tVLv5kDfVS8jksqk5yiJq3atGT/9huj2YjQf/vvqbshjBQCYyRH4TPOIqQ2Rdn
+	 BKicNTOAMNcj0XpM6nr1j7nDm5T1LJKWb+A5/nEHUysh9o5K6NjtbkonT1Ps8dFfGc
+	 GSUBBhWMM8Jrg==
+Date: Tue, 12 Nov 2024 08:56:01 -0600
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Paolo Abeni <pabeni@redhat.com>, Andrew Lunn <andrew@lunn.ch>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-mediatek@lists.infradead.org,
+	Conor Dooley <conor+dt@kernel.org>, netdev@vger.kernel.org,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	linux-arm-kernel@lists.infradead.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, upstream@airoha.com,
+	"David S. Miller" <davem@davemloft.net>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	upstream@airoha.com, benjamin.larsson@genexis.eu,
-	ansuelsmth@gmail.com, linux-pwm@vger.kernel.org
-Subject: Re: (subset) [PATCH v9 4/6] dt-bindings: mfd: Add support for Airoha
- EN7581 GPIO System Controller
-Message-ID: <20241112144427.GI8552@google.com>
-References: <20241023-en7581-pinctrl-v9-0-afb0cbcab0ec@kernel.org>
- <20241023-en7581-pinctrl-v9-4-afb0cbcab0ec@kernel.org>
- <173088099542.3237297.18018729158887853624.b4-ty@kernel.org>
- <ZyssJpR7xwbMzUsm@lore-desk>
- <20241106110046.GR1807686@google.com>
- <CACRpkdbf4Pb+n-F-K-JaUvytwCGUHHh8d2rYP4A9KgVTzqSnGw@mail.gmail.com>
- <20241111165120.GD8552@google.com>
+	Vladimir Oltean <olteanv@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Jakub Kicinski <kuba@kernel.org>, linux-kernel@vger.kernel.org,
+	Eric Dumazet <edumazet@google.com>, devicetree@vger.kernel.org,
+	Heiner Kallweit <hkallweit1@gmail.com>
+Subject: Re: [net-next PATCH v4 1/3] dt-bindings: net: dsa: Add Airoha AN8855
+ Gigabit Switch documentation
+Message-ID: <173142336068.894176.10211231485154959915.robh@kernel.org>
+References: <20241108132511.18801-1-ansuelsmth@gmail.com>
+ <20241108132511.18801-2-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20241111165120.GD8552@google.com>
+In-Reply-To: <20241108132511.18801-2-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241112_064434_902553_B8BA752A 
-X-CRM114-Status: GOOD (  24.79  )
+X-CRM114-CacheID: sfid-20241112_065605_052500_03A3ECC5 
+X-CRM114-Status: GOOD (  12.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,77 +84,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 11 Nov 2024, Lee Jones wrote:
 
-> On Wed, 06 Nov 2024, Linus Walleij wrote:
+On Fri, 08 Nov 2024 14:24:14 +0100, Christian Marangi wrote:
+> Add Airoha AN8855 5 port Gigabit Switch documentation.
 > 
-> > On Wed, Nov 6, 2024 at 12:00 PM Lee Jones <lee@kernel.org> wrote:
-> > > On Wed, 06 Nov 2024, Lorenzo Bianconi wrote:
-> > >
-> > > > On Nov 06, Lee Jones wrote:
-> > > > > On Wed, 23 Oct 2024 01:20:04 +0200, Lorenzo Bianconi wrote:
-> > > > > > Add support for Airoha EN7581 GPIO System Controller which provide a
-> > > > > > register map for controlling the GPIO, pinctrl and PWM of the SoC via
-> > > > > > dedicated pinctrl and pwm child nodes.
-> > > > > >
-> > > > > >
-> > > > >
-> > > > > Applied, thanks!
-> > > > >
-> > > > > [4/6] dt-bindings: mfd: Add support for Airoha EN7581 GPIO System Controller
-> > > > >       commit: f49f37f3cfe1482d4dc77d26f3e8c38eab630d52
-> > > > >
-> > > > > --
-> > > > > Lee Jones [李琼斯]
-> > > > >
-> > > >
-> > > > Hi Lee,
-> > > >
-> > > > according to my understanding this patch has been already applied by Linus
-> > > > here:
-> > > >
-> > > > https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git/commit/?h=devel&id=50dedb1eb1e6755ccab55f6140916c2d192be765
-> > >
-> > > An interesting choice.  Linus?
-> > 
-> > Yes I suggested that I merge patches 1-5 on oct 29 and applied the
-> > day after:
-> > https://lore.kernel.org/linux-gpio/CACRpkdYshPusdA7bDW2y8H_wp-Fm3N-YCsY1_Qn=dZqRiFy12w@mail.gmail.com/
-> > 
-> > It's because the bindings are dependent on each other, this one patch has:
-> > 
-> > +  pinctrl:
-> > +    type: object
-> > +    $ref: /schemas/pinctrl/airoha,en7581-pinctrl.yaml
-> > +    description:
-> > +      Child node definition for EN7581 Pin controller
-> > +
-> > +  pwm:
-> > +    type: object
-> > +    $ref: /schemas/pwm/airoha,en7581-pwm.yaml
-> > +    description:
-> > +      Child node definition for EN7581 PWM controller
-> > 
-> > Those refs will explode unless the two others are merged at the same
-> > time.
-> > 
-> > Usually we merge the whole shebang through MFD but this one felt
-> > different because there is no actual MFD driver, just using simple-mfd.
-> > 
-> > In hindsight I should probs not have been so trigger happy and give
-> > some more time for this to settle... Merge window stress I guess. :/
-> > 
-> > It's fine to apply textually identical patches to two trees though as
-> > git will sort
-> > that out so technically it's no big deal, you can keep it applied if you
-> > want.
+> The switch node requires an additional mdio node to describe each internal
+> PHY absolute address on the bus.
 > 
-> It's okay.  Life will be easier for everyone if I remove it.
+> Calibration values might be stored in switch EFUSE and internal PHY
+> might need to be calibrated, in such case, airoha,ext-surge needs to be
+> enabled and relative NVMEM cells needs to be defined in nvmem-layout
+> node.
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>  .../bindings/net/dsa/airoha,an8855.yaml       | 242 ++++++++++++++++++
+>  1 file changed, 242 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/dsa/airoha,an8855.yaml
+> 
 
-Okay, I dropped it from my tree.
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
-Next time I would like a say/opportunity to Ack please.
-
--- 
-Lee Jones [李琼斯]
 
