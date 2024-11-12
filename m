@@ -4,84 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B0D8D32D9A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2024 11:51:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB3E2D42B85
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2024 14:56:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QX8VQevkwijnt5AdrotptL17b7KyPVmceIz0nqzmyMs=; b=4BCLfZ3vY1IWcZvfz8G2PYmG9f
-	/crw3mCbP/f+MuUmteo7M+qNIp9eT73tisx3E8QtqYBe0/7rQDWtiq8uCHFIh4CYofPnl7GyNz/EU
-	pr8FfwxQ+WajPFn9uLXpy5dsg/DA/TZxdJnvnKq1sEFIA1MupfuWhAlItVCB1mfSK95vWdDLUwoEZ
-	M1dwdJvCnuFC63WrCXv+NlEcQpF2R3IZ0oWnj6UxO4E8/6lVlLC09ryDEALgGQly5sSbfQzBF0Pn2
-	XT3WLzLFHrKinMLjSPUnT4im5+jJU4igIK2muSk2GF0/llG8Ej+4Re2E4kmFJcPR+wH6I9wQDClrm
-	I4xLLh6A==;
+	bh=UlOhPUq2RmnDLqQhWNbJaCu28fxeScVH0/hYL8NJhaY=; b=sEvI7yJ/2ayYicUlxGI3n/DrfB
+	zRCbpq4HRTnNrQs4+pGA32zOBzFK8PMFgm1gZ5vZyfMsdFQsVwoiR/7K2/W/yfGTVF+jqdNd0k/2M
+	BV0DEv/MV+V23LhdbCDTwYIWhZ8oSaUxcEq5S1tpIhqqGGReUP6y9cvBLPvC6iommwReAWiE9xBi0
+	SlMY9MvEOoCvkxDmjxI7uhwgMJhwLkM4sXR2iWOXBHe0DGTpz9zQ2UTC+w3fKEOORvOHfp39owYcZ
+	AVpu6DmuY99zRGaJDQv+GNVZcN39ofHrkjYfoh8UzsXssN1n23VvUF9G2zWa0Vtoda36vl9jrYiK7
+	wmscmAEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tApQi-00000003INI-22ls;
-	Tue, 12 Nov 2024 11:51:32 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tAsJi-00000003qX8-063f;
+	Tue, 12 Nov 2024 14:56:30 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tApFB-00000003Fxz-02Ld;
-	Tue, 12 Nov 2024 11:39:38 +0000
+	id 1tAs8A-00000003nr2-2yT7;
+	Tue, 12 Nov 2024 14:44:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 163C9A4196D;
-	Tue, 12 Nov 2024 11:37:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6627CC4CECD;
-	Tue, 12 Nov 2024 11:39:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1731411575;
-	bh=LG7RZyrQQCMMftiyBGThQS+gGDQCRxNRxi5jzF0rtMU=;
+	by nyc.source.kernel.org (Postfix) with ESMTP id 95361A41CD9;
+	Tue, 12 Nov 2024 14:42:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D8B7C4CED0;
+	Tue, 12 Nov 2024 14:44:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1731422673;
+	bh=EjPK34+AC2Pfhya/hAO/+gef3LLKikFCHohkMhTY3fI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=vknOjlpo6yb1Vp6IvyGWB9fU+5x7MozaZPEx5An53FahQpTAnNO5K4ounXAy8oTiB
-	 TMyhmIa3vhWYr8Y70CpG7AqAsJ6Muua1r2mtSVbGPeuPR0Yb5JXd60v2VL3pSHRStQ
-	 uWb9VIFmeHvu95V7xCVSAH9p70B6Adjzvh7A37xU=
-Date: Tue, 12 Nov 2024 12:39:32 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>
-Cc: Sudeep Holla <sudeep.holla@arm.com>,
-	Cristian Marussi <cristian.marussi@arm.com>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	Brian Norris <briannorris@chromium.org>,
-	Julius Werner <jwerner@chromium.org>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
+	b=uQkBdyJIPNx6GWYU+T7x82rGzvF8PeuQfl+zs/tOQRDrp2LJbaCDsytTuAlUH0nKQ
+	 CrX2QB6TyMhise0BmTtJRqJrEqwTUYLiVqRKSdXW8kTwoM5jYxXrY9mtWd73RAmiu7
+	 sXIhil1Q71nmi0K7oCMXIt8/aSH3EMQJuRs/RLsPuxJfNYmamJXsHZjRZYlLafXb1q
+	 nXE/pO6NON06KK6vDHDkJBqa2QPHDH/Isva5SRn4c2+qPRcGBZ5Yh6fG1JOZOKQI45
+	 MGy11AdgoqVsSGitWcvmduyYXmzKW+UEbGvYdnWMyWg4itCsl3YzwMhegY+dty5nZ6
+	 h7LyGhAFVB9Ig==
+Date: Tue, 12 Nov 2024 14:44:27 +0000
+From: Lee Jones <lee@kernel.org>
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Gabriel Somlo <somlo@cmu.edu>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Dinh Nguyen <dinguyen@kernel.org>,
-	Michal Simek <michal.simek@amd.com>,
-	Stefan Wahren <wahrenst@gmx.net>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Jay Buddhabhatti <jay.buddhabhatti@amd.com>,
-	Ronak Jain <ronak.jain@amd.com>,
-	Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>,
-	Praveen Teja Kundanala <praveen.teja.kundanala@amd.com>,
-	arm-scmi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, chrome-platform@lists.linux.dev,
-	imx@lists.linux.dev, linux-riscv@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, qemu-devel@nongnu.org,
-	linux-rpi-kernel@lists.infradead.org
-Subject: Re: [PATCH] firmware: Switch back to struct platform_driver::remove()
-Message-ID: <2024111223-gizzard-scabby-eb98@gregkh>
-References: <36974feb6035201d53384557259ec72fe311053b.1731397962.git.u.kleine-koenig@baylibre.com>
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	upstream@airoha.com, benjamin.larsson@genexis.eu,
+	ansuelsmth@gmail.com, linux-pwm@vger.kernel.org
+Subject: Re: (subset) [PATCH v9 4/6] dt-bindings: mfd: Add support for Airoha
+ EN7581 GPIO System Controller
+Message-ID: <20241112144427.GI8552@google.com>
+References: <20241023-en7581-pinctrl-v9-0-afb0cbcab0ec@kernel.org>
+ <20241023-en7581-pinctrl-v9-4-afb0cbcab0ec@kernel.org>
+ <173088099542.3237297.18018729158887853624.b4-ty@kernel.org>
+ <ZyssJpR7xwbMzUsm@lore-desk>
+ <20241106110046.GR1807686@google.com>
+ <CACRpkdbf4Pb+n-F-K-JaUvytwCGUHHh8d2rYP4A9KgVTzqSnGw@mail.gmail.com>
+ <20241111165120.GD8552@google.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <36974feb6035201d53384557259ec72fe311053b.1731397962.git.u.kleine-koenig@baylibre.com>
+In-Reply-To: <20241111165120.GD8552@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241112_033937_131959_9B19FA81 
-X-CRM114-Status: GOOD (  15.92  )
+X-CRM114-CacheID: sfid-20241112_064434_902553_B8BA752A 
+X-CRM114-Status: GOOD (  24.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,30 +87,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 12, 2024 at 09:35:20AM +0100, Uwe Kleine-K�nig wrote:
-> After commit 0edb555a65d1 ("platform: Make platform_driver::remove()
-> return void") .remove() is (again) the right callback to implement for
-> platform drivers.
-> 
-> Convert all platform drivers below drivers/firmware to use .remove(),
-> with the eventual goal to drop struct platform_driver::remove_new(). As
-> .remove() and .remove_new() have the same prototypes, conversion is done
-> by just changing the structure member name in the driver initializer.
-> 
-> Signed-off-by: Uwe Kleine-K�nig <u.kleine-koenig@baylibre.com>
-> ---
-> Hello,
-> 
-> I did a single patch for all of drivers/firmware. While I usually prefer
-> to do one logical change per patch, this seems to be overengineering
-> here as the individual changes are really trivial and shouldn't be much
-> in the way for stable backports.
-> 
-> There is no dedicated maintainer for drivers/firmware, maybe Sudeep as
-> biggest committer there can take it? Or would it be sensible to split
-> this patch?
+On Mon, 11 Nov 2024, Lee Jones wrote:
 
-I'll just take it now, thanks!
+> On Wed, 06 Nov 2024, Linus Walleij wrote:
+> 
+> > On Wed, Nov 6, 2024 at 12:00 PM Lee Jones <lee@kernel.org> wrote:
+> > > On Wed, 06 Nov 2024, Lorenzo Bianconi wrote:
+> > >
+> > > > On Nov 06, Lee Jones wrote:
+> > > > > On Wed, 23 Oct 2024 01:20:04 +0200, Lorenzo Bianconi wrote:
+> > > > > > Add support for Airoha EN7581 GPIO System Controller which provide a
+> > > > > > register map for controlling the GPIO, pinctrl and PWM of the SoC via
+> > > > > > dedicated pinctrl and pwm child nodes.
+> > > > > >
+> > > > > >
+> > > > >
+> > > > > Applied, thanks!
+> > > > >
+> > > > > [4/6] dt-bindings: mfd: Add support for Airoha EN7581 GPIO System Controller
+> > > > >       commit: f49f37f3cfe1482d4dc77d26f3e8c38eab630d52
+> > > > >
+> > > > > --
+> > > > > Lee Jones [李琼斯]
+> > > > >
+> > > >
+> > > > Hi Lee,
+> > > >
+> > > > according to my understanding this patch has been already applied by Linus
+> > > > here:
+> > > >
+> > > > https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git/commit/?h=devel&id=50dedb1eb1e6755ccab55f6140916c2d192be765
+> > >
+> > > An interesting choice.  Linus?
+> > 
+> > Yes I suggested that I merge patches 1-5 on oct 29 and applied the
+> > day after:
+> > https://lore.kernel.org/linux-gpio/CACRpkdYshPusdA7bDW2y8H_wp-Fm3N-YCsY1_Qn=dZqRiFy12w@mail.gmail.com/
+> > 
+> > It's because the bindings are dependent on each other, this one patch has:
+> > 
+> > +  pinctrl:
+> > +    type: object
+> > +    $ref: /schemas/pinctrl/airoha,en7581-pinctrl.yaml
+> > +    description:
+> > +      Child node definition for EN7581 Pin controller
+> > +
+> > +  pwm:
+> > +    type: object
+> > +    $ref: /schemas/pwm/airoha,en7581-pwm.yaml
+> > +    description:
+> > +      Child node definition for EN7581 PWM controller
+> > 
+> > Those refs will explode unless the two others are merged at the same
+> > time.
+> > 
+> > Usually we merge the whole shebang through MFD but this one felt
+> > different because there is no actual MFD driver, just using simple-mfd.
+> > 
+> > In hindsight I should probs not have been so trigger happy and give
+> > some more time for this to settle... Merge window stress I guess. :/
+> > 
+> > It's fine to apply textually identical patches to two trees though as
+> > git will sort
+> > that out so technically it's no big deal, you can keep it applied if you
+> > want.
+> 
+> It's okay.  Life will be easier for everyone if I remove it.
 
-greg k-h
+Okay, I dropped it from my tree.
+
+Next time I would like a say/opportunity to Ack please.
+
+-- 
+Lee Jones [李琼斯]
 
