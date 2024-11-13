@@ -4,76 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55CEBD41C24
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Nov 2024 09:28:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0033D41C25
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Nov 2024 09:31:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w8zv/+EtvPDl4iLKTrR8mENbJ+nooaSf7+TWV4HSKjU=; b=u1A74Qiqt4Y6dAnbUIpO+P62cH
-	XxgeT8QMLOMvsOmwiPIzdb6SU4wXaMgLY4nAQgPQdZK/DcFgDez+A09tgexqtv6CY1kiExTdVIba4
-	vXik/P8Wb2F84BezfkLkhVU/i8X8bw3Fasg2QHFtZGQXviT8/gthLuXZmzZ07r6XBcU/6/4XMIboN
-	R08yHqXCTS04Crl8EazqNaT+XyMnnhJUWcKCnBcT0cj/PE+9u5wSU06EjKsl6yimLpeAAx803Dchn
-	NmDlet3ymWYGOz/7crEx1QLc5dhN9mGINLpJicq0cPoOmQ5f2KG/ieyYLjzjtZeFENs8ubTNcyS9R
-	z0wUobXg==;
+	bh=VooU2wXF08gsoZizQN3exgzVfcM43JAbvlqEVgt6ito=; b=bowOJhU35ndvDtiyQjMSh8Mgui
+	pvXgj14XK1uW9LfyRiZV741TmCfB5YGMAN1z16cDy6WqU2LHFYmpIiMczoTXHtsB+90kFHcim77ON
+	eOWMaYh4DcbI1qM6z7CDZGIVoaN2XIqYJ7TE6SqWI0G/ExkFG6jS2Qy+/9hXe0VWyJat0ORH/WUR7
+	cjic9ldznzF9MWIVReTIARS8PsI+SOua2HC2NuyXwoHOD1IQvdwsLyp5kL8cX9xXDVgGTZUZ+LcDP
+	V4wnl4JMxOyqXXqcinErgnPpjWb2Tarz5SFL2qN0TCH33hhLNIiGm3af2ERWBVXjpnSeD9OTVY/rk
+	BnHc/2Yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tB9fc-00000006FCF-1JON;
-	Wed, 13 Nov 2024 09:28:16 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1tB9j6-00000006FhR-3PgC;
+	Wed, 13 Nov 2024 09:31:52 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tB9eu-00000006F3n-0sYb;
-	Wed, 13 Nov 2024 09:27:34 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-539eb97f26aso6514960e87.2;
-        Wed, 13 Nov 2024 01:27:31 -0800 (PST)
+	id 1tB9g4-00000006FJ0-0WIA;
+	Wed, 13 Nov 2024 09:28:45 +0000
+Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-37d3e8d923fso4713933f8f.0;
+        Wed, 13 Nov 2024 01:28:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1731490050; x=1732094850; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1731490122; x=1732094922; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=w8zv/+EtvPDl4iLKTrR8mENbJ+nooaSf7+TWV4HSKjU=;
-        b=IskDvYtwyNuM69uEOUGH/V1vB45rhJ60HptymJrZadxfRL9Quc0AL6/xVeQ9i4+p3V
-         UQvlcVtuoxLqMKw2CA7zg2VzK7Yg7MwQoPxc5ngypI02WQmSWMLHxe31SVKcoKdSPzk3
-         sX4WfhTczaRo6AhqVBAsRd2RsG2mtELervI+fpYs1eLM35c8bZ0EgIveAQ/8UIwi7Yhx
-         LRgzZME8jy1/4bpvnektcHTZS7U9Yv+7ihEHZ0GZ/LNfgzd/ZSjpwCFpisgtPs2csycU
-         +2HCepoHWqiANBJHsWslWgT2oRmqAU9mGns2LLQeIDcBOIgk8nEPKZ3cad5NOygkZNDs
-         W+qw==
+        bh=VooU2wXF08gsoZizQN3exgzVfcM43JAbvlqEVgt6ito=;
+        b=bvdFftrTI5kL2rtycUjaUCZVCXXpUqMFO4v5Ly1YstLc6RKdA4kdriirqzyj1Cd1fe
+         X4Ps2ClCQrQQZkmX5SXB4X2gTxPYBqjgMQIOXyIwWG2D8z4RTcS9xYxA24u9Lh0CUhAR
+         DG16h+WHeQmtJ5JA8NYFWMvLoxhsKa12Ion0WlGISK2EbGf8ZQkRgRtiMxS2h/PfKiT7
+         0wY9G57rl46n2ArD31ToYDscEHP5euoYCXu7nXmX0zLXId4sSbm79O70ob+iNcYlT6We
+         zk4UQ8eE0CVvDsKJ40jrzJ2ToPatUuQKVBUObmAWqCxc0W3YrxfO17LEHK7B6ZlfcNZi
+         VQAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731490050; x=1732094850;
+        d=1e100.net; s=20230601; t=1731490122; x=1732094922;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=w8zv/+EtvPDl4iLKTrR8mENbJ+nooaSf7+TWV4HSKjU=;
-        b=gKVHK91KM0LUuKPYmgSf2+jFJI6475zH/b44/75EpCtYD1kGnDDlZz0Rtt9gmK+7sf
-         h2DgXlvCBTIIMH/p539vFJCby4bH3F1VT9H1QFUJXTa5GGcfBCpx43LB9DmKtpPQCNvA
-         UyL7QHLxno6Kb5V11wb0XkmZgwFLmga1oqMfBt19qv8a4aC9QrdkWSSj/rzqyLGXTmjh
-         V3d6CEAGn7hcl/bZfWoy6OxpVdJfGltqM3e7nGv0eaPPgMuPMK3EKRPHXawid6Ugi0Za
-         nmFuptrQvE8AnLksFOTtgIg+dt0V9+Q+x/sJHdMyR4vcRzwnep/if1vZGWT0rPHP8U8q
-         uQdg==
-X-Forwarded-Encrypted: i=1; AJvYcCWfrcWYXy6exHvB2KzvQBh+RprKzbplALiPmaQNXG6w2k0yxZoazOX3M7CWii8JxQY3diShB5g1YbEOIJm7K/A=@lists.infradead.org, AJvYcCXnsAzsWYbXwsdU/VzwQtZK2L1ykRGZEZZHO9XPw/Lii2V5qkLnsCLX0/Jgs4KJAHxxx8N9Vn4g6WU4taHQpvRB@lists.infradead.org
-X-Gm-Message-State: AOJu0YwFzijcrbPoMSPg8lPIT7FA5+jh7UmuH+mO2eQHCDpqxpfs9Wco
-	1aTGenNxiA8SdOAkAstrWsP6j491fIaqdsjBE7HMirdg1XbPbLjF
-X-Google-Smtp-Source: AGHT+IH4kaf5AxpGoCViV0kDdMWdOuK9r53gscvJr87yYf1RYZoMo9AThmQkuPHpTA8VhgJ/CpG7gg==
-X-Received: by 2002:a05:6512:3d90:b0:539:e6bf:ca97 with SMTP id 2adb3069b0e04-53d9a411b22mr3111468e87.32.1731490049525;
-        Wed, 13 Nov 2024 01:27:29 -0800 (PST)
+        bh=VooU2wXF08gsoZizQN3exgzVfcM43JAbvlqEVgt6ito=;
+        b=uH5vhO+yG7X71O5FQnMZVvd3mQFqvquTVkyPCBDbPI8W2RHYGYOKXAVbo5m1oGtHRZ
+         rkP8M9zPAbiSPcfereLTThLvKw2lQHPanB21msPIYYxLu/RWrvIKenglE5cEdeLiBcTK
+         6STa9KneWMZVJMOHg2j3bYfs4pYMelcTsTQK6LkVVK7WKBmjhMG8xe1czz9OUt6YBNLT
+         ecEZe8O/29p/PuJvtQGIHFyxQIsZs3CqhQTHQUNMygcd/zJgzHZylc7YZVz7dhDEbjjs
+         0S2z8OBoZKnLpcHmi58MIOT7kWswAU3aG6gO4/LKrI6qrq8rpSExqNWuuJ/cdo8Un+oJ
+         fxbQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVf7d1zsSu1R+7WpgozV1TH5rXhn9wUOAT1w3Sl9Ja2UQrr04m/vUa7v2MCD8+QPERL/dObjyNISwEF4jubYj4=@lists.infradead.org, AJvYcCXhDwhFbAE3gNeGI8Vi3vlUs/dmTy6UMheGbdlr3y4RC7gTAMl1Jqln1rIwwRMjvqSGJjI8jOGB3NZdgEwc0UZj@lists.infradead.org
+X-Gm-Message-State: AOJu0YwA9xeiosbkbp3c8cRBoriuTK4RLv9GskZb2ymNaDjSe5lYSsDy
+	Dt7ZajKBlzuamcmW5zvd+b1T6pp1ZwP1uWwsPuAIrPSBvjEphQES
+X-Google-Smtp-Source: AGHT+IGF06dW7OECuZFVwev0bFuqIFYDdI5y7t4wdgF74L2BSPJbImbwya7BDf1kWP9PvKTtR3HSVg==
+X-Received: by 2002:a05:6000:1569:b0:37c:d162:8297 with SMTP id ffacd0b85a97d-381f188589cmr16014735f8f.47.1731490122195;
+        Wed, 13 Nov 2024 01:28:42 -0800 (PST)
 Received: from [192.168.2.177] ([207.188.162.240])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-53d826a9d65sm2162105e87.216.2024.11.13.01.27.25
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-381ed97cd97sm17738938f8f.27.2024.11.13.01.28.39
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 13 Nov 2024 01:27:27 -0800 (PST)
-Message-ID: <e086b522-1406-4bd0-9f47-5a5c16905495@gmail.com>
-Date: Wed, 13 Nov 2024 10:27:24 +0100
+        Wed, 13 Nov 2024 01:28:41 -0800 (PST)
+Message-ID: <5a668114-2ae6-4217-9614-b690c0870849@gmail.com>
+Date: Wed, 13 Nov 2024 10:28:39 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH -next] PCI: mediatek-gen3: Remove unneeded semicolon
-To: Yang Li <yang.lee@linux.alibaba.com>,
- angelogioacchino.delregno@collabora.com, kw@linux.com
-Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Abaci Robot <abaci@linux.alibaba.com>
-References: <20241111010935.20208-1-yang.lee@linux.alibaba.com>
+Subject: Re: [PATCH RESEND v4] arm64: dts: mt8183: set DMIC one-wire mode on
+ Damu
+To: Hsin-Te Yuan <yuanhsinte@chromium.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20241113-damu-v4-1-6911b69610dd@chromium.org>
 Content-Language: en-US, ca-ES, es-ES
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; keydata=
@@ -119,12 +122,12 @@ Autocrypt: addr=matthias.bgg@gmail.com; keydata=
  +zFJv9fVUpo/bjePOL4PMP1y+PYrp4PmPmRwoklBpy1ep8m8XURv46fGUHUEIsTwPWs2Q87k
  7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprtJG8GNNzMOD4cQ82T
  a7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SPHxUCQ9Y1Y/Ct
-In-Reply-To: <20241111010935.20208-1-yang.lee@linux.alibaba.com>
+In-Reply-To: <20241113-damu-v4-1-6911b69610dd@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241113_012732_288975_8122C87A 
-X-CRM114-Status: GOOD (  13.62  )
+X-CRM114-CacheID: sfid-20241113_012844_205192_21135D74 
+X-CRM114-Status: GOOD (  15.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -141,34 +144,54 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 11/11/2024 02:09, Yang Li wrote:
-> This patch removes an redundant semicolon.
+On 13/11/2024 09:16, Hsin-Te Yuan wrote:
+> From: Hsin-Yi Wang <hsinyi@chromium.org>
 > 
-> ./drivers/pci/controller/pcie-mediatek-gen3.c:414:2-3: Unneeded
-> semicolon
+> Sets DMIC one-wire mode on Damu.
 > 
-> Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-> Closes: https://bugzilla.openanolis.cn/show_bug.cgi?id=11789
-> Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
+> Fixes: cabc71b08eb5 ("arm64: dts: mt8183: Add kukui-jacuzzi-damu board")
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
 > ---
->   drivers/pci/controller/pcie-mediatek-gen3.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+> Changes in v4:
+> - Add Reviewed-by tag back, which is dropped in v3
+> - Link to v3: https://lore.kernel.org/r/20241009-damu-v3-1-1294c8e16829@chromium.org
 > 
-> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-> index f333afb92a21..be52e3a123ab 100644
-> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> @@ -411,7 +411,7 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
->   		if (pcie->num_lanes > 1)
->   			val |= FIELD_PREP(PCIE_SETTING_LINK_WIDTH,
->   					  GENMASK(fls(pcie->num_lanes >> 2), 0));
-> -	};
-> +	}
->   	writel_relaxed(val, pcie->base + PCIE_SETTING_REG);
+> Changes in v3:
+> - Add missing Sign-off-by tag
+> - Link to v2: https://lore.kernel.org/r/20240910-one-wire-v2-1-2bb40d5a3cf8@chromium.org
+> 
+> Changes in v2:
+> - Add fixes tag
+> - Link to v1: https://lore.kernel.org/r/20240910-one-wire-v1-1-d25486a6ba6d@chromium.org
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts | 4 ++++
+>   1 file changed, 4 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
+> index 0b45aee2e29953b6117b462034a00dff2596b9ff..06a689feff52945d141d196d439cba034f25fdf6 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
+> @@ -26,6 +26,10 @@ &touchscreen {
+>   	hid-descr-addr = <0x0001>;
+>   };
 >   
->   	/* Set Link Control 2 (LNKCTL2) speed restriction, if any */
+> +&mt6358codec {
+> +	mediatek,dmic-mode = <1>; /* one-wire */
+> +};
+> +
+>   &qca_wifi {
+>   	qcom,ath10k-calibration-variant = "GO_DAMU";
+>   };
+> 
+> ---
+> base-commit: 75b607fab38d149f232f01eae5e6392b394dd659
+> change-id: 20241009-damu-a3f2f3478409
+> 
+> Best regards,
 
 
