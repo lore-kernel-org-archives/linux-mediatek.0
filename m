@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0683D65C79
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Nov 2024 11:38:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 016EBD65C7C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Nov 2024 11:40:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0zj1BZnoh5gNPltKySrJ6UNz/AFkiYwyLoXtKOFp+ok=; b=sLeQHMU9rvJDw4JLRaU9lRdy/O
-	FThCnplv+UyutNVPvREEspM7EADok1AowRkonz4P6EEZdM0yMJZyT3WjqAurECKqqKun7xl5ACWzg
-	ffbma1c3mdWxZaKp7sP4wzcHM0k/JBC5rswPql1D/v5nmnyZVHNATwcyJi+SDxsLHn1YOJMj6kegl
-	doqAMHO/s3bLjDkthEZMbdgZ5pc2V99+7VQApeYLxxi2+hDqUMUxGnP55bb5hlDeX98JkgtUIK1Qz
-	+G/cziu9/qM5RDXa5MJwhuCR6S0I0kSX10+4b3GJZF5kR4uiuScSj2mfR+Tks1y/OWrFSXNR629Gt
-	S7VHVvOQ==;
+	bh=rOmmSPqwvrMane0VDjw1J57j9KssTwl7LT/TZJ/NpNk=; b=a5BvOAUvup5GansemQ1l86KDuF
+	pGf5lYzK6cjGXftbTUxhayCYbuqs5y11vp4NC+hfFrTedz9M8CjMGyt4LE55vCQDmVt/UkaV0rI3m
+	BslF70B9xoswT0H2bgrG1pzNbXVkLkwlWp1xXXyEQSnURtY/5HZ9MwSFK2VAc0CIyb1QvcTqSrNv2
+	RIV//mboqSRH/FZh2CMM+cZ1LkiFv0v16iM1oHNJajad8lVcDVIuBqH0bjttKrYsstnkV11aIH0K+
+	LU+L3WMgI7127MDKKo8Y8Hv2MaY1uOIC4HSduELRBpnjQfD/iGSu2r0QuzZbWX2uTDAazKsuoTnNb
+	Ex07p9rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBYBE-00000009l1j-3MCC;
-	Thu, 14 Nov 2024 11:38:32 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tBYD2-00000009lIX-44bK;
+	Thu, 14 Nov 2024 11:40:24 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBXDh-00000009ZER-21OF;
+	id 1tBXDl-00000009ZFX-3qRI;
 	Thu, 14 Nov 2024 10:37:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1731580620;
-	bh=r0zfEM+44u3mW0HVdYOX0ErXs9/LS1lzZr3IPLxucp8=;
+	s=mail; t=1731580624;
+	bh=aLsZjA2n5qBFWKwV+QQGM/W8zsubVjefSPXaeUYJ6nE=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SODZKS7whgHUDhpHncSi3sdUkr6sedYtd4Zj3gUHgz4gDBJKCBDYpeV2ShdES7f9n
-	 0N/eELQDnQvpZU1iIGyu21yggduhO8wSRel9/EC8ymzZTAY3TIIsHIRI/VacqOe0iQ
-	 EMDUomAdgBIY0vvAJ0zMqRuZsnhfFmV83cFq/tsE9BQ9TuJtH+39TnK+0FHDH8K/Qi
-	 dsslLBYYypPj4jiTQp+iaYis4LS6/NhVBryXt8NS7DBiGE4O7rJPntbOOLZ70OAHuE
-	 gMdAt8gBe8TgcO1JidPdS+qF/6VtLEERCFYoeAyVarYdHI01F35FWXquR5lnfXjT5l
-	 OVsddY+bZKaFw==
+	b=MZ8PMwaUwWCHjh+bqwUoeNZUvuxw0kYBeT8BG7DuQpIZuQjiPIz04S3Fh9nTmmXoH
+	 BA8ZPRin4DJ1gbeQwcH1rBby6MyGZBV8I7J53HSMErzdtQ9D/KXzI6XIp5XPnDkycm
+	 qcSLuboGD5XZZlh0zkzvJgkmI6fkyxbNJDB13AamYjOr2wWHiytgkbzQMmsuo9N55A
+	 NBJPXx1cg+TN5rB/Q8WzpVr3pfjqcDIGEkq4fxfTcxXd1Y4mj5hMAxykB/vVW5djme
+	 l/spAntWdVWmFMMIlVcQIZkDvlRBHK3ykQe6m1WUjEypE7rRUAqEaHVlV5/+ZHDwr3
+	 u/nxPsRLwFi0g==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5368417E35EA;
-	Thu, 14 Nov 2024 11:36:59 +0100 (CET)
-Message-ID: <8ba8d8be-8858-425b-99bd-b1fd063b2cf9@collabora.com>
-Date: Thu, 14 Nov 2024 11:36:59 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 792B317E35FF;
+	Thu, 14 Nov 2024 11:37:03 +0100 (CET)
+Message-ID: <654b951c-1c69-485a-88dc-0c662172ac74@collabora.com>
+Date: Thu, 14 Nov 2024 11:37:03 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 6/7] platform/chrome: Introduce device tree hardware
- prober
+Subject: Re: [PATCH v11 2/7] of: base: Add
+ for_each_child_of_node_with_prefix()
 To: Chen-Yu Tsai <wenst@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, Wolfram Sang <wsa@kernel.org>
 Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
@@ -60,15 +60,16 @@ Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
  Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
  linux-i2c@vger.kernel.org, Andrey Skvortsov <andrej.skvortzov@gmail.com>
 References: <20241106093335.1582205-1-wenst@chromium.org>
- <20241106093335.1582205-7-wenst@chromium.org>
+ <20241106093335.1582205-3-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241106093335.1582205-7-wenst@chromium.org>
+In-Reply-To: <20241106093335.1582205-3-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241114_023701_713490_E5116FC5 
-X-CRM114-Status: GOOD (  23.00  )
+X-CRM114-CacheID: sfid-20241114_023706_157799_FD55D3E2 
+X-CRM114-Status: UNSURE (   7.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,44 +85,15 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 06/11/24 10:33, Chen-Yu Tsai ha scritto:
-> Some devices are designed and manufactured with some components having
-> multiple drop-in replacement options. These components are often
-> connected to the mainboard via ribbon cables, having the same signals
-> and pin assignments across all options. These may include the display
-> panel and touchscreen on laptops and tablets, and the trackpad on
-> laptops. Sometimes which component option is used in a particular device
-> can be detected by some firmware provided identifier, other times that
-> information is not available, and the kernel has to try to probe each
-> device.
+> There are cases where drivers would go through child device nodes and
+> operate on only the ones whose node name starts with a given prefix.
 > 
-> This change attempts to make the "probe each device" case cleaner. The
-> current approach is to have all options added and enabled in the device
-> tree. The kernel would then bind each device and run each driver's probe
-> function. This works, but has been broken before due to the introduction
-> of asynchronous probing, causing multiple instances requesting "shared"
-> resources, such as pinmuxes, GPIO pins, interrupt lines, at the same
-> time, with only one instance succeeding. Work arounds for these include
-> moving the pinmux to the parent I2C controller, using GPIO hogs or
-> pinmux settings to keep the GPIO pins in some fixed configuration, and
-> requesting the interrupt line very late. Such configurations can be seen
-> on the MT8183 Krane Chromebook tablets, and the Qualcomm sc8280xp-based
-> Lenovo Thinkpad 13S.
-> 
-> Instead of this delicate dance between drivers and device tree quirks,
-> this change introduces a simple I2C component prober. For any given
-> class of devices on the same I2C bus, it will go through all of them,
-> doing a simple I2C read transfer and see which one of them responds.
-> It will then enable the device that responds.
-> 
-> This requires some minor modifications in the existing device tree.
-> The status for all the device nodes for the component options must be
-> set to "fail-needs-probe". This makes it clear that some mechanism is
-> needed to enable one of them, and also prevents the prober and device
-> drivers running at the same time.
+> Provide a helper for these users. This will mainly be used in a
+> subsequent patch that implements a hardware component prober for I2C
+> busses.
 > 
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> Acked-by: Tzung-Bi Shih <tzungbi@kernel.org>
-> Reviewed-by: Douglas Anderson <dianders@chromium.org>
+> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
