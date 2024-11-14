@@ -4,69 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53744D65C78
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Nov 2024 11:23:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D7B0D65C79
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Nov 2024 11:30:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c1ywcfO9i+71hVtdY/0qw/C0oczY0VIwKb/fx6QJHw4=; b=NcICRNJyes13MH8t80+PKmIG3u
-	CxGver2mGbNTwaIFT7KyPhj3/pG8BtIfGmUVoSv3vzlNwWZHwqdvZcgLTdR4huXVJVyPF7dVSu8It
-	bkRE/HVcZalB2QdXC9ku0lcsi2O0zfrzt2wyC30b+IFSbOv65BMrHDflzL1iE3AlexSsYtw4RNHmC
-	wbnttD3ejIi3VSVMOrqu0opnfn3jN27dLK08cLz4MSCuVPwmy4uwpE7Zj1GjmKV0q0I984wb/1FRi
-	7JchQh9lWSjJeiPoX9nsG1dPt+r2Zset6JMcR5rmUo9xI7d/ABXWzavRWuWOKFNscs/phxCtGYcRy
-	cWN4KmwA==;
+	bh=JwAKdypYDhqItAtoLXP9Xzn4cU81fG62oSG3WelyEqY=; b=IUUHcgmpwM42sLsLEaOMlHMH43
+	fWOZ/ZTCc8ayuTj/fTZ5JQkh07b5MLajvpFWVkAMg2GV2FLP+BVVdtILo0Q9wfIg+/jWdDqNBe4PQ
+	XnqMJs6ZUUtVZ12SgibUZCCAu2SWEpeY+AoHFBxu04/AR+c97KjFH+Lly4/5uy5RqlzknTXd/kPmU
+	vfxPGyF6oCYGiSNlD9qMNeFhYGXmB4UVfWb25Hvi7FI2efWNx5wHz2sCPUYC6CyO2K+EAL/aDIwEw
+	e3dDk9ANiCfIWBsZaE13+RtY6tULmuTyf0jnrh9JYH5DX5471/UkJsvLGqSzgVmv3N2oJc45Hr0u6
+	OK85uoIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBXwZ-00000009iRZ-18P2;
-	Thu, 14 Nov 2024 11:23:23 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tBY3p-00000009jZO-3uEL;
+	Thu, 14 Nov 2024 11:30:53 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBX5W-00000009XMl-35OS;
-	Thu, 14 Nov 2024 10:28:36 +0000
+	id 1tBXDg-00000009ZEO-3gcT;
+	Thu, 14 Nov 2024 10:37:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1731580111;
-	bh=jwgoRarckGp4IApZV/vwQhGXTbYx/T8btKhE/KN4R5c=;
+	s=mail; t=1731580619;
+	bh=4woJSjD/ZDXAHhgz8oC1hGFxBo/MsEypfEZsBUh6mx0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=KmBePFObGzJgBODqO4RvBUcOJ3Ht5iDtLOxqgfoEDG5hoURFynp5E3MajsZ2TC7ps
-	 rN03pIh0Ij7fD/1jernHXeJUZdHyjrc7zVGnvzrfw/TSxtYZEjvlhpKxJPgS+1J9Xq
-	 4ILH3JweUJkbhrTeWaYhubsFiiIssUIEbrVzEr3EqRW5oBoftdrhDyBAisqQt3QwD+
-	 rR18lOY1T3VHCa7B0H2qLA52bDaNm556QDJJqfQEVjb9n2gdTjjtXaPztTqYbDq0jv
-	 tTEFuz0oUf1kqUc1KEKdOnN12bsFKS1WoRsTNeiczLV00cjjIR3VHZB6qEGD/X98A1
-	 KlS0yuWkQtyBw==
+	b=P+kTLKbg57gyQVaXkta4Dj+WKEOhnH+Jhn9iXfY/zNkla/x8gmn+uHPygWV0009PX
+	 OUGe7FevFwQ9rljN6atba5fEscFRs9OBr7ucSebdYrnOvU7I6+TC9DAo65WNF0LNEq
+	 pyvXn29QioNxi82F6G8i6AaMnI4YbY0xShr0lzqixIWXZP/UFr6cYm8OikdQ/yNku0
+	 Sg+xTnWGN4RmxPq76dvhJgG9BNSilXFTM08jY/GlNTBvYR8ABf9VwKIbiGSJJuwPia
+	 hCPIM6+Qt7mMTc56kIhpOGJ6XeTgGAIi2H7tDR3haa5WWKMtbo4S2ssNv+1gLo/5EL
+	 lAqb1LvqlZ85Q==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B1A1F17E35E0;
-	Thu, 14 Nov 2024 11:28:30 +0100 (CET)
-Message-ID: <6583e7a8-f4dd-4670-83dc-73ad4c5f208f@collabora.com>
-Date: Thu, 14 Nov 2024 11:28:30 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5419717E35E9;
+	Thu, 14 Nov 2024 11:36:58 +0100 (CET)
+Message-ID: <1246d672-4370-4db7-b4d0-368524809435@collabora.com>
+Date: Thu, 14 Nov 2024 11:36:57 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] thermal/drivers/mediatek/lvts_thermal: Switch to
- IMMEDIATE_MODE
-To: Daniel Lezcano <daniel.lezcano@linaro.org>,
- Hsin-Te Yuan <yuanhsinte@chromium.org>, "Rafael J. Wysocki"
- <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?=
- <nfraprado@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20241108-lvts-v1-1-eee339c6ca20@chromium.org>
- <02bbfb8c-817c-447a-92b9-bd03d76b66b1@linaro.org>
+Subject: Re: [PATCH v11 7/7] arm64: dts: mediatek: mt8173-elm-hana: Mark
+ touchscreens and trackpads as fail
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Wolfram Sang <wsa@kernel.org>
+Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
+ Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>,
+ chrome-platform@lists.linux.dev, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>,
+ Johan Hovold <johan@kernel.org>, Jiri Kosina <jikos@kernel.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ linux-i2c@vger.kernel.org, Andrey Skvortsov <andrej.skvortzov@gmail.com>,
+ stable+noautosel@kernel.org
+References: <20241106093335.1582205-1-wenst@chromium.org>
+ <20241106093335.1582205-8-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <02bbfb8c-817c-447a-92b9-bd03d76b66b1@linaro.org>
+In-Reply-To: <20241106093335.1582205-8-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241114_022834_956139_41C99649 
-X-CRM114-Status: GOOD (  14.74  )
+X-CRM114-CacheID: sfid-20241114_023701_133090_1AF47DA1 
+X-CRM114-Status: UNSURE (   8.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,79 +85,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 14/11/24 09:13, Daniel Lezcano ha scritto:
-> On 08/11/2024 07:46, Hsin-Te Yuan wrote:
->> Currently, MT8192 cannot suspend with FILTERED_MODE. Switch to
->> IMMEDIATE_MODE will fix this.
+Il 06/11/24 10:33, Chen-Yu Tsai ha scritto:
+> Instead of having them all available, mark them all as "fail-needs-probe"
+> and have the implementation try to probe which one is present.
 > 
-> Given the comments and the different changes related to the filtered and immediate 
-> modes, I won't apply the patch until this is clearly sorted out.
+> Also remove the shared resource workaround by moving the pinctrl entry
+> for the trackpad interrupt line back into the individual trackpad nodes.
 > 
+> Cc: <stable+noautosel@kernel.org> # Needs accompanying new driver to work
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Reviewed-by: Douglas Anderson <dianders@chromium.org>
 
-Thanks - indeed do not apply this for now.
-
-If this has been broken for a year, one or two more weeks ain't gonna be a
-show stopper, as long as we can come to a proper fix during that time, instead
-of yet another compromise.
-
-Anyway....
-
-We discussed about that internally and we do suspect that there might be some
-interrupt that is getting erroneously enabled, never handled, and constantly
-firing because.. well, it was never handled, so... :-)
-
-Nicolas is looking into this issue, and I really hope that we can come to a
-conclusion that will make us switch back all of the SoCs to filtered mode
-instead, as there indeed are some advantages in using that.
-
-Cheers,
-Angelo
-
->> Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
->> ---
->>   drivers/thermal/mediatek/lvts_thermal.c | 3 ---
->>   1 file changed, 3 deletions(-)
->>
->> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/ 
->> lvts_thermal.c
->> index 
->> 1997e91bb3be94a3059db619238aa5787edc7675..daad52f14fc03d0c4131f2ffdf3eb6b49a4a43d0 100644
->> --- a/drivers/thermal/mediatek/lvts_thermal.c
->> +++ b/drivers/thermal/mediatek/lvts_thermal.c
->> @@ -1541,7 +1541,6 @@ static const struct lvts_ctrl_data 
->> mt8192_lvts_mcu_data_ctrl[] = {
->>           },
->>           VALID_SENSOR_MAP(1, 1, 0, 0),
->>           .offset = 0x0,
->> -        .mode = LVTS_MSR_FILTERED_MODE,
->>       },
->>       {
->>           .lvts_sensor = {
->> @@ -1552,7 +1551,6 @@ static const struct lvts_ctrl_data 
->> mt8192_lvts_mcu_data_ctrl[] = {
->>           },
->>           VALID_SENSOR_MAP(1, 1, 0, 0),
->>           .offset = 0x100,
->> -        .mode = LVTS_MSR_FILTERED_MODE,
->>       },
->>       {
->>           .lvts_sensor = {
->> @@ -1567,7 +1565,6 @@ static const struct lvts_ctrl_data 
->> mt8192_lvts_mcu_data_ctrl[] = {
->>           },
->>           VALID_SENSOR_MAP(1, 1, 1, 1),
->>           .offset = 0x200,
->> -        .mode = LVTS_MSR_FILTERED_MODE,
->>       }
->>   };
->>
->> ---
->> base-commit: 906bd684e4b1e517dd424a354744c5b0aebef8af
->> change-id: 20241108-lvts-f7beb36efc59
->>
->> Best regards,
-> 
-> 
-
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
