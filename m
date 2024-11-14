@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 016EBD65C7C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Nov 2024 11:40:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EB8BD65C7C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Nov 2024 11:42:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rOmmSPqwvrMane0VDjw1J57j9KssTwl7LT/TZJ/NpNk=; b=a5BvOAUvup5GansemQ1l86KDuF
-	pGf5lYzK6cjGXftbTUxhayCYbuqs5y11vp4NC+hfFrTedz9M8CjMGyt4LE55vCQDmVt/UkaV0rI3m
-	BslF70B9xoswT0H2bgrG1pzNbXVkLkwlWp1xXXyEQSnURtY/5HZ9MwSFK2VAc0CIyb1QvcTqSrNv2
-	RIV//mboqSRH/FZh2CMM+cZ1LkiFv0v16iM1oHNJajad8lVcDVIuBqH0bjttKrYsstnkV11aIH0K+
-	LU+L3WMgI7127MDKKo8Y8Hv2MaY1uOIC4HSduELRBpnjQfD/iGSu2r0QuzZbWX2uTDAazKsuoTnNb
-	Ex07p9rw==;
+	bh=Og10cQ2AKXwLHtpmBqpI3IKqC/LwCXYrdUjyv4hhwO4=; b=Y5N2AGffWOlEHPhdjBgey6c6jx
+	0iyXZAKjpbhhQXRO/E1ajuHgOh3qfvN3IxVPSLeNa8h8n5Vdu5ZPo/vfiT7wpTnSVwF8XxKzm7yQL
+	swMA10neaxpsyo6JrMizyzV+iOYKARfgqv/XjAhGaeA6kz2wE95PyHPI2qiLeaYr3HJmnQz8YwlGr
+	MOkO3BSTKM1TmOSoGeV0g2GUO3/L9uTgUyxc982qA5DRiSM+RLclDgU1VWxwK8ikCM+v5wfPJxC8W
+	TgM1Nz8IYEfWg+oQUrB3S4lYb7/g7B47LQyCxO0Wu/HzNF34Ans5soMV5Uku9iddbqfg5Wgu7fcvc
+	ZwKJ8vPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBYD2-00000009lIX-44bK;
-	Thu, 14 Nov 2024 11:40:24 +0000
+	id 1tBYEr-00000009lZV-0jdb;
+	Thu, 14 Nov 2024 11:42:17 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBXDl-00000009ZFX-3qRI;
-	Thu, 14 Nov 2024 10:37:07 +0000
+	id 1tBXDn-00000009ZGK-2Npz;
+	Thu, 14 Nov 2024 10:37:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1731580624;
-	bh=aLsZjA2n5qBFWKwV+QQGM/W8zsubVjefSPXaeUYJ6nE=;
+	s=mail; t=1731580626;
+	bh=7z7DS9Ubxs1hLpEVtRZIePudtqICDZaRxk+SoI9jC08=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MZ8PMwaUwWCHjh+bqwUoeNZUvuxw0kYBeT8BG7DuQpIZuQjiPIz04S3Fh9nTmmXoH
-	 BA8ZPRin4DJ1gbeQwcH1rBby6MyGZBV8I7J53HSMErzdtQ9D/KXzI6XIp5XPnDkycm
-	 qcSLuboGD5XZZlh0zkzvJgkmI6fkyxbNJDB13AamYjOr2wWHiytgkbzQMmsuo9N55A
-	 NBJPXx1cg+TN5rB/Q8WzpVr3pfjqcDIGEkq4fxfTcxXd1Y4mj5hMAxykB/vVW5djme
-	 l/spAntWdVWmFMMIlVcQIZkDvlRBHK3ykQe6m1WUjEypE7rRUAqEaHVlV5/+ZHDwr3
-	 u/nxPsRLwFi0g==
+	b=f50kCmH46IKuu7T6njlBeu25xb7nVvZOhSuqs7pdQWqbyVAbg4mBC31HldF37Hx0i
+	 iT71kExscNycwFwduSWzVli9UGV1w17KLLmrZHxDXGrx0xb4ORhH4mSzeDJ0ozoh8J
+	 sYc7T5xG34QNwTaYHIr1Ph1f6pcANgEPJDMfvvpSTk9MI14iwwwQQ7RHUek1ivnnxw
+	 AgqpViiKZPWUKgxmacI5opFIEgoytWlCh5m23VTFPLy2chSndbaYncp/S+Mrhv0nvZ
+	 kKBk2wscAqKV4c0IuuR48uj00e6CIU+h4JiaMLzuljnkoYcljdt2gGPh+C7VwISQin
+	 PSv6i3KBTVkaA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 792B317E35FF;
-	Thu, 14 Nov 2024 11:37:03 +0100 (CET)
-Message-ID: <654b951c-1c69-485a-88dc-0c662172ac74@collabora.com>
-Date: Thu, 14 Nov 2024 11:37:03 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9AEA817E35E9;
+	Thu, 14 Nov 2024 11:37:05 +0100 (CET)
+Message-ID: <bbbf291f-7a6f-4fab-9ff2-fe221460d18a@collabora.com>
+Date: Thu, 14 Nov 2024 11:37:05 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 2/7] of: base: Add
- for_each_child_of_node_with_prefix()
+Subject: Re: [PATCH v11 1/7] of: dynamic: Add of_changeset_update_prop_string
 To: Chen-Yu Tsai <wenst@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, Wolfram Sang <wsa@kernel.org>
 Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
@@ -60,15 +59,15 @@ Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
  Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
  linux-i2c@vger.kernel.org, Andrey Skvortsov <andrej.skvortzov@gmail.com>
 References: <20241106093335.1582205-1-wenst@chromium.org>
- <20241106093335.1582205-3-wenst@chromium.org>
+ <20241106093335.1582205-2-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241106093335.1582205-3-wenst@chromium.org>
+In-Reply-To: <20241106093335.1582205-2-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241114_023706_157799_FD55D3E2 
-X-CRM114-Status: UNSURE (   7.83  )
+X-CRM114-CacheID: sfid-20241114_023707_808193_E2911A59 
+X-CRM114-Status: UNSURE (   7.91  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,12 +84,11 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 06/11/24 10:33, Chen-Yu Tsai ha scritto:
-> There are cases where drivers would go through child device nodes and
-> operate on only the ones whose node name starts with a given prefix.
+> Add a helper function to add string property updates to an OF changeset.
+> This is similar to of_changeset_add_prop_string(), but instead of adding
+> the property (and failing if it exists), it will update the property.
 > 
-> Provide a helper for these users. This will mainly be used in a
-> subsequent patch that implements a hardware component prober for I2C
-> busses.
+> This shall be used later in the DT hardware prober.
 > 
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 > Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
