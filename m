@@ -4,89 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC8FAD68B39
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Nov 2024 16:48:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 348C0D6A226
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Nov 2024 18:54:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ealwXs685A+zK5u5kLK86p59/a8hIners/cLaM399gU=; b=2ZIP7yQ5VM8lm9qgdph9K39too
-	in4nMpP19w/cAXeRdn+NzGbU6XuYfKTS7IlWYq6o2m/fW7Ajb9RLQ2o+zyVA7SB17LL4CoHCj10gT
-	HUN6MBf1dYCrBDwXGynzSts8l0HFQtZQC6aMEBgTlmUgzqWyYvXi2ngJL6qdy+j+iO8yY3nBtDGdF
-	iUrNG/6ldI3h8fVwcbLWwMUuCDgrgNenLdekV+14wiL8yx8YYR+y5/G5Tpwcj8T78xDC731plJW0x
-	DVoZoICaLdVmUC6ghmrToRbnZexli+TiOjeeQRD4TcF14YrAKehwqcm7v7TFKGIxSkzTQlcU71Kul
-	8iuJoPcw==;
+	bh=F+act8H8vBI0kssh+d2SqywPLeFhuuqkPtiKdY3nWas=; b=imgZurlL2J01t8rIJ9ZsDO22WB
+	/H6q/EZ57zisNZ426dUeqjjxvMOt27b491VGKoD7tZaW4Kao/FlqUYhAkDeUbJJVo5TcxxmlDGVhn
+	UJL4mt96VVjFvlKn0PI2fY3VW8p6jdX0ZEL3Mt2+dhfw5A6c1sA+XkStMrEez+46Yw5/+wmojHSMv
+	aUL9vMsR8G1U45aLKWW/4XtB5Zd2Wga5/6xAeKDrpFDN0UZu8dYmEuJh+wjX51kyjHYjVxz6GZFbN
+	duPWtYDZuZRQGurn/fKYzvTQ6ylvJjc330VIDxcvAnZ0tdaMYoHcHWIuDNVh4FGypblOSlZ4x/gXw
+	e/76EZfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBd10-00000000CI5-39lL;
-	Thu, 14 Nov 2024 16:48:18 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1tBezV-00000000XSO-0yzS;
+	Thu, 14 Nov 2024 18:54:53 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBd0y-00000000CGN-2uxD
-	for linux-mediatek@lists.infradead.org;
-	Thu, 14 Nov 2024 16:48:18 +0000
-Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-37d3e8d923fso624032f8f.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 14 Nov 2024 08:48:16 -0800 (PST)
+	id 1tBeya-00000000XHi-1sba;
+	Thu, 14 Nov 2024 18:53:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=F+act8H8vBI0kssh+d2SqywPLeFhuuqkPtiKdY3nWas=; b=Q3hnrySJxpyM9RHt/1VjpPFa90
+	+770ZIVtEe+h4X9JIVhsl6mYjHadQCn6RN2Co0Fzo+nxBmfzDOW8UoAiXsdPUAji/b38SMdhuTWUW
+	/c6G+tHXdR6tPn13yxsL23Km+iHpRoNqB/DlPsWhZkvtCgs8HKtTMhX7A3PgxHOLOA4FK4gIl8QDW
+	qZqexfNN2GOKF7Xgar5SM5NtBPejqy8iVQTDmxV6c1UC0IvAPGpWHf0J55QCmLJR9lNMUE7h8odvQ
+	ORn2yPYl5Z6bdloeQPPAEZFd/UQh1+MqsCBXQ//7rn4H92YmjYft2WZemoBjebXPfzgUQck3WJ0+l
+	EjpX28jA==;
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	by desiato.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
+	id 1tBeyX-000000009Ub-05DY;
+	Thu, 14 Nov 2024 18:53:54 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-43155abaf0bso9174165e9.0;
+        Thu, 14 Nov 2024 10:53:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1731602895; x=1732207695; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1731610429; x=1732215229; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=ealwXs685A+zK5u5kLK86p59/a8hIners/cLaM399gU=;
-        b=K39rUhz74CKBlz8ZDoevQ+gyoP06asDAvBFByG/0ruYUK3p9WbwnPEClAk02A+BGLl
-         v4N4bEQg2SF7iFy7ZEAhRtNsoBx0FCiajzuZ6P2v5GMRhLhFQH9xsyIIc5vi8/dUSxbh
-         TQOrCkGwUkiVspEGUurebsnb2m09FHYl2ustDQSye+O+g0zn+elylTb6DDPH34VGABKJ
-         gtOyYAVxvR/TIzdcPqw0qxGw5oBtZ33sSRmJLtkwSI9XLsl24pt+UERy+AnTfixdeO+g
-         Ynwl2hi1v/VXvjLpkIboLYHCcCF+pv8SLYecLrwwXFgALVDXYDmZSyibFweVD3Y0MwWJ
-         VWpA==
+        bh=F+act8H8vBI0kssh+d2SqywPLeFhuuqkPtiKdY3nWas=;
+        b=krEALQD1cDvDXHx1M4kbIYvUMRpS5VEdYyHNyqLPCj0EjAKeXHS+G1YevbUMp1feC5
+         11w9tclXBTwd4Mxy0WlMbQwbII+FtDhCmd8JVykC65NH0yHTeNkyO63aFDJZD6EWFya+
+         ckc2wCm26dQjB3iVW3f4RumhcbrNjJ4IWyZ+86lFYSiAKN3L/dArJC0LleGnrJ2V4zkf
+         h/byFdOD1Z6Ac1Pwh9XV61m6b3fD3tES5x41WRyWHg3CQkdfxQd+SAIX/+datZVpiROd
+         UvYY5ELMk5m19hrHfYNRHUXUK5hCvP7WwvhXAg1hhgd2uDBnF9AtcN2+9fN0xRpzqIrZ
+         +Bog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731602895; x=1732207695;
+        d=1e100.net; s=20230601; t=1731610429; x=1732215229;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ealwXs685A+zK5u5kLK86p59/a8hIners/cLaM399gU=;
-        b=uNKXm5EA53mPncLM0NszyhFKEWebm9D77Lb+waz3OhYXFFYsEpA001itslLgE8Gd3x
-         QGNREAPeR0bij68eCqn617jEmjBMGVxUl0k+DB9u0HQIp/32z8UEgjOSYTHaKzKPZPG1
-         nZYeFLjKnTqLx1I9zRt1qpIYq1NcSBWiscdZaoPDyWqBae78ZHqli/KHgCpBbk8lIATq
-         tQVBW8LTxd1FoxATdw2fAD2OLsobGro0Mnc0KY3E7vDTZTdI4qYf4fbdoLscWmLeWyMA
-         x+rKdf0uYDRL11OwoVXM5CDSJwXo7WnQSiNqireQvm5MMzQ4TxLPwI40lYh+yUldMV5t
-         iBGg==
-X-Forwarded-Encrypted: i=1; AJvYcCXFr0igpcvNmcqn4u6ZQPvH3+6+zzvA91TXfr2hunkwnWMx6TRKqMZqqtw1NFrCtRluQfHzhRg0xU+smVmwNQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyU0nfCxe0hQpXpmop3Y7/FwnPz2KB/v88UR1YgZPh7LcukeSOg
-	hgdAyAU6voWe1/pAOxPSlUysu/F8fbTYOGl2Y6+VbuSNl2w1ZNfXyFhgER6NpKo=
-X-Google-Smtp-Source: AGHT+IFY8H5SgkG88VtbSy4kDvEfqE/tRQqcxDt4UhQNvLRP81KqjYrY5H5jsgGdVrIr0/hEpuWb/Q==
-X-Received: by 2002:a05:6000:2c2:b0:37d:633a:b361 with SMTP id ffacd0b85a97d-381f188c996mr20281965f8f.51.1731602894641;
-        Thu, 14 Nov 2024 08:48:14 -0800 (PST)
-Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-382221845c7sm734913f8f.107.2024.11.14.08.48.13
+        bh=F+act8H8vBI0kssh+d2SqywPLeFhuuqkPtiKdY3nWas=;
+        b=spNukcaaiK43vMXGeU0cxRUY6XxX/d0FhlYpK73WA1ouJP4fiTuL/CuE5CZnGGPsyK
+         yfaErHediyPAi2hwTozStNHFNoDs1NVoa9KrSaxhrNUCg+LZnZ9fGwjtzJ4s9/u93yPt
+         eSUhaUxjkjFXF005RztZHLnJO42k7sHEJPDmgnwixJDtBg7UsLVL8yyZPAVkcyUCsPny
+         zR7cxkmtpGzwvZWb7KXNjF1g2hVylFegSz3DbCRuDqtbVpajar+92lFEgrMCg9jXFhR7
+         6gI+LXAmGrMxnUsrTG4Rr1TjfXRtAYkI0kLu24yYuYovY6PHIlMKLrvTyY/L2rqazQuo
+         FYtg==
+X-Forwarded-Encrypted: i=1; AJvYcCWklt8ti6AsrE6XKNX6No+JZBg0ckGY+ssMX4laBO1Y1RfKKwUNEvQcuOmzVbX4H+PdVn+9KnwiiGlO/a3eEqDm@lists.infradead.org, AJvYcCXbuaCl8LYdiHPNtPNf5wrV/HInLjkfGGP/A6RQn/f+oWtCA+nwItOCMHGfuV6hLAHB2PUvkEpLqn8D3qhp+UY=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyt6ioAu8wz83O9wzSYavsOagP5sE07OJKfOW2GA+TOkjluI+ql
+	9AUXAvNMc4HO/L7iq11Z9rzoNc4EZ1dCN5M+yqzQIm8tXc9EEPc1
+X-Google-Smtp-Source: AGHT+IELUfVKeMhRwtzYKmzZRv1LYcmCpcb3hbTxVOGXrsYtHnsfVttlc2lV8lA+TvnfMtpATpXodQ==
+X-Received: by 2002:a05:6000:1785:b0:37c:d244:bdb1 with SMTP id ffacd0b85a97d-3821851c6a4mr2752224f8f.26.1731610428830;
+        Thu, 14 Nov 2024 10:53:48 -0800 (PST)
+Received: from [192.168.0.2] ([69.6.8.124])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3821adbbc44sm2208283f8f.45.2024.11.14.10.53.46
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 14 Nov 2024 08:48:14 -0800 (PST)
-Message-ID: <5dd2d2a3-6eff-45fb-8af8-593945235dd3@linaro.org>
-Date: Thu, 14 Nov 2024 17:48:13 +0100
+        Thu, 14 Nov 2024 10:53:48 -0800 (PST)
+Message-ID: <6835fde6-0863-49e8-90e8-be88e86ef346@gmail.com>
+Date: Thu, 14 Nov 2024 20:54:20 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v14] thermal/drivers/mediatek/auxadc_thermal: expose all
- thermal sensors
-To: Hsin-Te Yuan <yuanhsinte@chromium.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- James Lo <james.lo@mediatek.com>, Michael Kao <michael.kao@mediatek.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Ben Tseng <ben.tseng@mediatek.com>
-References: <20241025-auxadc_thermal-v14-1-96ab5b60c02e@chromium.org>
+Subject: Re: [net-next,v2] [PATCH net-next v2] net: wwan: t7xx: Change
+ PM_AUTOSUSPEND_MS to 5000
+To: wojackbb@gmail.com
+Cc: netdev@vger.kernel.org, chandrashekar.devegowda@intel.com,
+ chiranjeevi.rapolu@linux.intel.com, haijun.liu@mediatek.com,
+ m.chetan.kumar@linux.intel.com, ricardo.martinez@linux.intel.com,
+ loic.poulain@linaro.org, johannes@sipsolutions.net, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ linux-arm-kernel@lists.infradead.org,
+ angelogioacchino.delregno@collabora.com, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com
+References: <20241114102002.481081-1-wojackbb@gmail.com>
 Content-Language: en-US
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20241025-auxadc_thermal-v14-1-96ab5b60c02e@chromium.org>
+From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
+In-Reply-To: <20241114102002.481081-1-wojackbb@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241114_084816_741174_96200045 
-X-CRM114-Status: GOOD (  41.79  )
+X-CRM114-CacheID: sfid-20241114_185353_259461_010B78B2 
+X-CRM114-Status: GOOD (  17.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,262 +114,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello Jack,
 
-Hi,
-
-On 25/10/2024 14:05, Hsin-Te Yuan wrote:
-> From: James Lo <james.lo@mediatek.com>
+On 14.11.2024 12:20, wojackbb@gmail.com wrote:
+> From: Jack Wu <wojackbb@gmail.com>
 > 
-> Previously, the driver only supported reading the temperature from all
-> sensors and returning the maximum value. This update adds another
-> get_temp ops to support reading the temperature from each sensor
-> separately.
+> Because optimizing the power consumption of t7XX,
+> change auto suspend time to 5000.
 > 
-> Especially, some thermal zones registered by this patch are needed by
-> MT8183 since those thermal zones are necessary for mtk-svs driver.
+> The Tests uses a script to loop through the power_state
+> of t7XX.
+> (for example: /sys/bus/pci/devices/0000\:72\:00.0/power_state)
+> 
+> * If Auto suspend is 20 seconds,
+>    test script show power_state have 0~5% of the time was in D3 state
+>    when host don't have data packet transmission.
+> 
+> * Changed auto suspend time to 5 seconds,
+>    test script show power_state have 50%~80% of the time was in D3 state
+>    when host don't have data packet transmission.
+> 
+> We tested Fibocom FM350 and our products using the t7xx and they all
+> benefited from this.
 
-The DT for the mt8183 describes the sensor id = 0 as the CPU. On this, 
-there is a cooling device with trip points.
+Possible negative outcomes for data transmission still need 
+clarification. Let me repeat it here.
 
-The driver registers the id=0 as an aggregator for the sensors which 
-overloads the CPU thermal zone above.
+On 06.11.2024 13:10, 吳逼逼 wrote:
+> Receiving or sending data will cause PCIE to change D3 Cold to D0 state.
 
-Why do you need to aggregate all the sensors to retrieve the max value ?
-
-They are all contributing differently to the heat and they should be 
-tied with their proper cooling device.
-
-I don't think the thermal configuration is correct and I suggest to fix 
-this aggregator by removing it.
+Am I understand it correctly that receiving IP packets on downlink will 
+cause PCIe link re-activation?
 
 
+I am concerned about a TCP connection that can be idle for a long period 
+of time. For example, an established SSH connection can stay idle for 
+minutes. If I connected to a server and execute something like this:
 
-> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
-> Signed-off-by: James Lo <james.lo@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+user@host$ sleep 20 && echo "Done"
+
+Will I eventually see the "Done" message or will the autosuspended modem 
+effectively block any incoming traffic? And how long does it take for 
+the modem to wake up and deliver a downlink packet to the host? Have you 
+measured StDev change?
+
+> Signed-off-by: Jack Wu <wojackbb@gmail.com>
 > ---
-> Changes in v14:
-> - Remove redundant error message.
-> - Link to v13: https://lore.kernel.org/r/20241025-auxadc_thermal-v13-1-a5231c52dccb@chromium.org
-> 
-> Changes in v13:
-> - Make subject and commit message more clear.
-> - Make error message more clear.
-> - Link to v12: https://lore.kernel.org/r/20241016-auxadc_thermal-v12-1-c0433e9f61af@chromium.org
-> 
-> Changes in v12:
-> - Remove unnecessary check and unused variable assignment in mtk_read_sensor_temp.
-> - Add more about what this patch achieves in the commit message.
-> - Link to v11: https://lore.kernel.org/r/20240809-auxadc_thermal-v11-1-af36cc74f3a3@chromium.org
-> 
-> Changes in V11:
->      - Rebase on kernel v6.11-rc2
->      - Use mtk_thermal_temp_is_valid in mtk_read_sensor_temp just like
->        mtk_thermal_bank_temperature
->      - Change the error handling of devm_thermal_of_zone_register return
->        value
->      - link to V10: https://lore.kernel.org/lkml/20220519101044.16765-1-james.lo@mediatek.com/
-> 
-> Changes in V10:
->      - Rebase to kernel-v5.18-rc7
->      - Resend
-> 
-> Changes in V9:
->      - Rebase to kernel-v5.14-rc1
->      - Bind raw_to_mcelsius_v1 or raw_to_mcelsius_v2 to compatible
->        data of struct mtk_thermal_data
->      - Remove duplicate struct 'mtk_thermal_bank'
->      - Remove unnecessary if condition check
->      - Return error if any thermal zone fail to register
-> 
-> Changes in V8:
->      - Rebase to kernel-v5.13-rc1
->      - Resend
-> 
-> Changes in v7:
->      - Fix build error in v6.
-> 
-> Changes in v6:
->      - Rebase to kernel-5.11-rc1.
->      - [1/3]
->          - add interrupts property.
->      - [2/3]
->          - add the Tested-by in the commit message.
->      - [3/3]
->          - use the mt->conf->msr[id] instead of conf->msr[id] in the
->            _get_sensor_temp and mtk_thermal_bank_temperature.
->          - remove the redundant space in _get_sensor_temp and
->            mtk_read_sensor_temp.
->          - change kmalloc to dev_kmalloc in mtk_thermal_probe.
-> 
-> Changes in v5:
->      - Rebase to kernel-5.9-rc1.
->      - Revise the title of cover letter.
->      - Drop "[v4,7/7] thermal: mediatek: use spinlock to protect PTPCORESEL"
->      - [2/2]
->          -  Add the judgement to the version of raw_to_mcelsius.
-> 
-> Changes in v4:
->      - Rebase to kernel-5.6-rc1.
->      - [1/7]
->          - Squash thermal zone settings in the dtsi from [v3,5/8]
->            arm64: dts: mt8183: Increase polling frequency for CPU thermal zone.
->          - Remove the property of interrupts and mediatek,hw-reset-temp.
->      - [2/7]
->          - Correct commit message.
->      - [4/7]
->          - Change the target temperature to the 80C and change the commit message.
->      - [6/7]
->          - Adjust newline alignment.
->          - Fix the judgement on the return value of registering thermal zone.
-> 
-> Changes in v3:
->      - Rebase to kernel-5.5-rc1.
->      - [1/8]
->          - Update sustainable power of cpu, tzts1~5 and tztsABB.
->      - [7/8]
->          - Bypass the failure that non cpu_thermal sensor is not find in thermal-zones
->            in dts, which is normal for mt8173, so prompt a warning here instead of
->            failing.
-> 
->      Return -EAGAIN instead of -EACCESS on the first read of sensor that
->          often are bogus values. This can avoid following warning on boot:
-> 
->            thermal thermal_zone6: failed to read out thermal zone (-13)
-> 
-> Changes in v2:
->      - [1/8]
->          - Add the sustainable-power,trips,cooling-maps to the tzts1~tztsABB.
->      - [4/8]
->          - Add the min opp of cpu throttle.
+> V2:
+>   * supplementary commit information
 > ---
-> 
 > ---
->   drivers/thermal/mediatek/auxadc_thermal.c | 70 +++++++++++++++++++++++++++----
->   1 file changed, 62 insertions(+), 8 deletions(-)
+>   drivers/net/wwan/t7xx/t7xx_pci.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
-> index 9ee2e7283435acfcbb1a956303b6122a08affecc..9a9079d559a3abe9e3823f744d4c9a159a8666bd 100644
-> --- a/drivers/thermal/mediatek/auxadc_thermal.c
-> +++ b/drivers/thermal/mediatek/auxadc_thermal.c
-> @@ -847,7 +847,8 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
+> diff --git a/drivers/net/wwan/t7xx/t7xx_pci.c b/drivers/net/wwan/t7xx/t7xx_pci.c
+> index e556e5bd49ab..dcadd615a025 100644
+> --- a/drivers/net/wwan/t7xx/t7xx_pci.c
+> +++ b/drivers/net/wwan/t7xx/t7xx_pci.c
+> @@ -48,7 +48,7 @@
+>   #define T7XX_INIT_TIMEOUT		20
+>   #define PM_SLEEP_DIS_TIMEOUT_MS		20
+>   #define PM_ACK_TIMEOUT_MS		1500
+> -#define PM_AUTOSUSPEND_MS		20000
+> +#define PM_AUTOSUSPEND_MS		5000
+>   #define PM_RESOURCE_POLL_TIMEOUT_US	10000
+>   #define PM_RESOURCE_POLL_STEP_US	100
 >   
->   static int mtk_read_temp(struct thermal_zone_device *tz, int *temperature)
->   {
-> -	struct mtk_thermal *mt = thermal_zone_device_priv(tz);
-> +	struct mtk_thermal_bank *bank = thermal_zone_device_priv(tz);
-> +	struct mtk_thermal *mt = bank->mt;
->   	int i;
->   	int tempmax = INT_MIN;
->   
-> @@ -866,10 +867,41 @@ static int mtk_read_temp(struct thermal_zone_device *tz, int *temperature)
->   	return 0;
->   }
->   
-> +static int mtk_read_sensor_temp(struct thermal_zone_device *tz, int *temperature)
-> +{
-> +	struct mtk_thermal_bank *bank = thermal_zone_device_priv(tz);
-> +	struct mtk_thermal *mt = bank->mt;
-> +	const struct mtk_thermal_data *conf = mt->conf;
-> +	int id = bank->id - 1;
-> +	int temp = INT_MIN;
-> +	u32 raw;
-> +
-> +	raw = readl(mt->thermal_base + conf->msr[id]);
-> +
-> +	temp = mt->raw_to_mcelsius(mt, id, raw);
-> +
-> +	/*
-> +	 * The first read of a sensor often contains very high bogus
-> +	 * temperature value. Filter these out so that the system does
-> +	 * not immediately shut down.
-> +	 */
-> +
-> +	if (unlikely(!mtk_thermal_temp_is_valid(temp)))
-> +		return -EAGAIN;
-> +
-> +	*temperature = temp;
-> +
-> +	return 0;
-> +}
-> +
->   static const struct thermal_zone_device_ops mtk_thermal_ops = {
->   	.get_temp = mtk_read_temp,
->   };
->   
-> +static const struct thermal_zone_device_ops mtk_thermal_sensor_ops = {
-> +	.get_temp = mtk_read_sensor_temp,
-> +};
-> +
->   static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
->   				  u32 apmixed_phys_base, u32 auxadc_phys_base,
->   				  int ctrl_id)
-> @@ -1199,6 +1231,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
->   	u64 auxadc_phys_base, apmixed_phys_base;
->   	struct thermal_zone_device *tzdev;
->   	void __iomem *apmixed_base, *auxadc_base;
-> +	struct mtk_thermal_bank *tz;
->   
->   	mt = devm_kzalloc(&pdev->dev, sizeof(*mt), GFP_KERNEL);
->   	if (!mt)
-> @@ -1285,14 +1318,35 @@ static int mtk_thermal_probe(struct platform_device *pdev)
->   			mtk_thermal_init_bank(mt, i, apmixed_phys_base,
->   					      auxadc_phys_base, ctrl_id);
->   
-> -	tzdev = devm_thermal_of_zone_register(&pdev->dev, 0, mt,
-> -					      &mtk_thermal_ops);
-> -	if (IS_ERR(tzdev))
-> -		return PTR_ERR(tzdev);
-> +	for (i = 0; i <= mt->conf->num_sensors; i++) {
-> +		tz = devm_kmalloc(&pdev->dev, sizeof(*tz), GFP_KERNEL);
-> +		if (!tz)
-> +			return -ENOMEM;
-> +
-> +		tz->mt = mt;
-> +		tz->id = i;
-> +
-> +		tzdev = devm_thermal_of_zone_register(&pdev->dev, i,
-> +						      tz, (i == 0) ?
-> +						      &mtk_thermal_ops
-> +						      : &mtk_thermal_sensor_ops);
-> +
-> +		if (IS_ERR(tzdev)) {
-> +			ret = PTR_ERR(tzdev);
-> +			if (ret == -ENODEV) {
-> +				dev_warn(&pdev->dev,
-> +					 "Can't find thermal zone for sensor %d; sensor skipped.\n", i);
-> +				continue;
-> +			}
-> +			return dev_err_probe(&pdev->dev, ret,
-> +					     "Failed to register thermal zone %d.\n", i);
-> +		}
->   
-> -	ret = devm_thermal_add_hwmon_sysfs(&pdev->dev, tzdev);
-> -	if (ret)
-> -		dev_warn(&pdev->dev, "error in thermal_add_hwmon_sysfs");
-> +		ret = devm_thermal_add_hwmon_sysfs(&pdev->dev, tzdev);
-> +		if (ret)
-> +			dev_warn(&pdev->dev,
-> +				 "Sensor %d: Error in thermal_add_hwmon_sysfs: %d\n", i, ret);
-> +	}
->   
->   	return 0;
->   }
-> 
-> ---
-> base-commit: b589839414be04b2b37e4bf6f84af576c99faf64
-> change-id: 20240809-auxadc_thermal-9be338ec8b1c
-> 
-> Best regards,
 
-
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
 
