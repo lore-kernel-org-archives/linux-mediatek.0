@@ -4,81 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49F46D6A228
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Nov 2024 19:23:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CF42D6A22F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Nov 2024 20:52:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YzByLoX8jakLRN0ny7u3dNWNxuSp8DM6Ql4ZxjAEOtw=; b=Q/CI/VI96l0JPtOLugOsegEFz6
-	0YAz+pkOuA4nVZDjDJvq61Md02DFW80NwalJ5nI7w94hgh9iK5xzIdtGJ417RR4yWrwPeNigxSWvc
-	FfcTX6icVLzl78ua4rUfiWYqkDy9csucWwxDN7jTxDSO3+EXRvSSP55iGJ9F++zBhJadeG4yYtG7z
-	Qkb+VcNrS3V0KIGuTesx6+y4d/V0gjHrCkT3HCjN6cmmW4aJIL7kjRs8KOuRjtG6aLTEdkKkQBPgl
-	+GvwIOTFsemHbZUnE4o5CrJfNrGCac6OpdGEQMb1EFjLSlCF4gNwE8VDtPGmn8lfWdPbl/6jMsgjP
-	R879PKlQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hkKa0UC9NnJxDCNd5n0CnVfMEOJpPjjfOMw26wn6Vhw=; b=fsnEabigxeJ8SezWRPrBLnvcpy
+	ZehmCceuS6zOQYYlE2CC2Ogn66Qah3UHQzJi/qQBIxpVqDDmDtP1EM/HgRCOxRVOGymM/Q72wJMvU
+	qEYEw9zbNlKLGi7TUos6lsObHcYGpgKntzCOHJykh9gT9Ok2MPZ47NWfNsBapKrPQFeauRkLdbT7o
+	S85WjDD6gWN1HVXPd5kZ/RNK/1DotB5LRvuB1kSkjAyjjV0ByMdCD6tOEPMXr1u/cKTJu/l1C1XvF
+	AU7iuz4c5NeyDQYpyViUrIaDRUedGJOFt+s00sx2e10D4hBALxkckAOGa7WN+HgBPIu4v+tdJyxnr
+	Wq3tDhIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBfRS-00000000bcl-0VQ5;
-	Thu, 14 Nov 2024 19:23:46 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tBgph-00000000nuf-0ltx;
+	Thu, 14 Nov 2024 20:52:53 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBfQW-00000000bTf-27PW;
-	Thu, 14 Nov 2024 19:22:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1731612164;
-	bh=JRi8xKxGuuE+b0jHJ+Vql53V2Sw0uR0okGWsErcdffQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Yqkehs3TrUIuXJhUJQV0HpIYhnyj2ep62TqiK6605+0AuNb+Ie3PObfpQ3qgk5Bdu
-	 PLhwrXLEWqQEHPdM3en8D8z79kKxPxDDh4M+C4yC6aNxeJio+hyvyZ0aN/ixk6rNJb
-	 UduvP3x+5asy+/QrE7Qu36caEXlA+Y5GJ5lFJnX5it8BERejomH5Blxmm5kCsL9Bjh
-	 RVp28VQ1E3WeOVM+o3m8a4OiFpHPx8EWEfx9BH//KOLwhpoBlIqsM+uwZcb+v4tdsj
-	 MNlj22eoru+8XGoTvwzC5bk00i+mITI1XejHZc8ZlBAb0Nl7FYt0t3FqRY7ws0+rxo
-	 WqQvyaW17HrXQ==
-Received: from notapiano (pool-100-2-116-133.nycmny.fios.verizon.net [100.2.116.133])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6856D17E377C;
-	Thu, 14 Nov 2024 20:22:40 +0100 (CET)
-Date: Thu, 14 Nov 2024 14:22:38 -0500
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Michael Walle <mwalle@kernel.org>, kernel@collabora.com,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Biao Huang <biao.huang@mediatek.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
-	Andrew Halaney <ahalaney@redhat.com>,
-	Simon Horman <horms@kernel.org>
-Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: Set mediatek,mac-wol on
- DWMAC node for all boards
-Message-ID: <d441b614-0b71-410f-af4e-30cb164d9cd5@notapiano>
-References: <20241109-mediatek-mac-wol-noninverted-v2-0-0e264e213878@collabora.com>
- <20241109-mediatek-mac-wol-noninverted-v2-2-0e264e213878@collabora.com>
- <bdbfb1db-1291-4f95-adc9-36969bb51eb4@collabora.com>
+	id 1tBgok-00000000nnK-1zmk;
+	Thu, 14 Nov 2024 20:51:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 9E70AA419F9;
+	Thu, 14 Nov 2024 20:49:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B2D5C4CECD;
+	Thu, 14 Nov 2024 20:51:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1731617513;
+	bh=hkKa0UC9NnJxDCNd5n0CnVfMEOJpPjjfOMw26wn6Vhw=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=BDbQGtm0WeAvVnAzLRV1Ix+gPEb5jGN7UcnFuLOTK/bTYCxRTehoH08ARVilP9jb3
+	 ueOk7RtrmEcSd2zHCbFty/RfiGwC0+gsMsF6RykmSqLaniKWDsELecF3MuQUpgmdcJ
+	 DOnWSokngHLLHbYHjqWqlK2qi/0mv9Wip2q5BC7jz0vyGis9l1ofE6/uDSDKf5HNI8
+	 Uc7CSJhlihBuFpPkpOgvUbY64h+5d4KmE2dQPmm9xdb1H7J3g+RhQ8EJcsUyM1kHHX
+	 Zk3uQ8bXLJayhLNGQwB2kkpqlNRQpIGdmLAxRe+7BsPEdqzcGkA678KTarXvA9MnTU
+	 /aeDfKdaKFULw==
+Message-ID: <6c4bdf9e5a09aa8c2c49c69a6ccdac99.sboyd@kernel.org>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <bdbfb1db-1291-4f95-adc9-36969bb51eb4@collabora.com>
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <89ad840e7a484eaf4727470824acfe0fdc60fcef.1729871146.git.christophe.jaillet@wanadoo.fr>
+References: <89ad840e7a484eaf4727470824acfe0fdc60fcef.1729871146.git.christophe.jaillet@wanadoo.fr>
+Subject: Re: [PATCH] clk: mediatek: mt6735-apmixedsys: Fix an error handling path in clk_mt6735_apmixed_probe()
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Christophe JAILLET <christophe.jaillet@wanadoo.fr>, linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Christophe JAILLET <christophe.jaillet@wanadoo.fr>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Yassine Oudjana <y.oudjana@protonmail.com>
+Date: Thu, 14 Nov 2024 12:51:51 -0800
+User-Agent: alot/0.12.dev1+gaa8c22fdeedb
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241114_112248_698272_47C07779 
-X-CRM114-Status: GOOD (  23.79  )
+X-CRM114-CacheID: sfid-20241114_125154_578966_4B5DF7F9 
+X-CRM114-Status: UNSURE (   8.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,99 +71,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 14, 2024 at 10:26:34AM +0100, AngeloGioacchino Del Regno wrote:
-> Il 09/11/24 16:16, Nícolas F. R. A. Prado ha scritto:
-> > Due to the mediatek,mac-wol property previously being handled backwards
-> > by the dwmac-mediatek driver, its use in the DTs seems to have been
-> > inconsistent.
-> > 
-> > Now that the driver has been fixed, correct this description. All the
-> > currently upstream boards support MAC WOL, so add the mediatek,mac-wol
-> > property to the missing ones.
-> > 
-> > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> > ---
-> >   arch/arm64/boot/dts/mediatek/mt2712-evb.dts                   | 1 +
-> >   arch/arm64/boot/dts/mediatek/mt8195-demo.dts                  | 1 +
-> >   arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts | 1 +
-> >   3 files changed, 3 insertions(+)
-> > 
-> 
-> ..snip..
-> 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> > index 31d424b8fc7cedef65489392eb279b7fd2194a4a..c12684e8c449b2d7b3b3a79086925bfe5ae0d8f8 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-> > @@ -109,6 +109,7 @@ &eth {
-> >   	pinctrl-names = "default", "sleep";
-> >   	pinctrl-0 = <&eth_default_pins>;
-> >   	pinctrl-1 = <&eth_sleep_pins>;
-> > +	mediatek,mac-wol;
-> 
-> The demo board has the same WoL capability as the EVK, so you can avoid adding the
-> mac-wol property here.
+Quoting Christophe JAILLET (2024-10-25 08:46:08)
+> If an error occurs after a successful mtk_alloc_clk_data(),
+> mtk_free_clk_data() should be called, as already done in the .remove()
+> function.
+>=20
+> Switch to mtk_devm_alloc_clk_data() in order to fix the memory leak in the
+> probe function, and simplify the remove function.
+>=20
+> Fixes: 43c04ed79189 ("clk: mediatek: Add drivers for MediaTek MT6735 main=
+ clock and reset drivers")
+> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+> ---
 
-Not sure I follow... If we omit the property here it will use PHY WOL instead,
-while the genio 1200 EVK has the property, so it will be using MAC WOL, so
-they're already the same and omitting will make them behave differently...
-
-Let me recap to make sure we're all on the same page:
-
-This was the WOL configuration for each board before this series:
-MAC mt2712-evb.dts
-MAC mt8195-demo.dts
-PHY mt8395-genio-1200-evk.dts
-MAC mt8395-kontron-3-5-sbc-i1200.dts
-PHY mt8395-radxa-nio-12l.dts
-PHY mt8390-genio-700-evk.dts
-
-After patch 1, they all get inverted:
-PHY mt2712-evb.dts
-PHY mt8195-demo.dts
-MAC mt8395-genio-1200-evk.dts
-PHY mt8395-kontron-3-5-sbc-i1200.dts
-MAC mt8395-radxa-nio-12l.dts
-MAC mt8390-genio-700-evk.dts
-
-And after patch 2, the remaining PHY ones are set to MAC:
-MAC mt2712-evb.dts
-MAC mt8195-demo.dts
-MAC mt8395-genio-1200-evk.dts
-MAC mt8395-kontron-3-5-sbc-i1200.dts
-MAC mt8395-radxa-nio-12l.dts
-MAC mt8390-genio-700-evk.dts
-
-The only board I have in hands and am able to test is mt8390-genio-700-evk.dts,
-which requires MAC WOL to work. For the others, your feedback on v1 was that
-they should all be set to MAC WOL. Except for mt2712, which you were not sure
-about, but it was already set to MAC WOL so we're keeping the same behavior.
-
-That's how we got to adding mediatek,mac-wol to mt8195-demo.dts,
-mt8395-kontron-3-5-sbc-i1200.dts and mt2712-evb.dts. Let me know if there has
-been some misunderstanding.
-
-Thanks,
-Nícolas
-
-> 
-> >   	status = "okay";
-> >   	mdio {
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts b/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
-> > index e2e75b8ff91880711c82f783c7ccbef4128b7ab4..4985b65925a9ed10ad44a6e58b9657a9dd48751f 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
-> > @@ -271,6 +271,7 @@ &eth {
-> >   	pinctrl-names = "default", "sleep";
-> >   	pinctrl-0 = <&eth_default_pins>;
-> >   	pinctrl-1 = <&eth_sleep_pins>;
-> > +	mediatek,mac-wol;
-> 
-> I'm mostly sure that Kontron's i1200 works the same as the EVK in regards to WoL.
-> 
-> Michael, I recall you worked on this board - can you please confirm?
-> 
-> Thanks,
-> Angelo
-> 
+Applied to clk-next
 
