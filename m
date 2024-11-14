@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C9B1D65C7C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Nov 2024 11:36:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0683D65C79
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Nov 2024 11:38:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4Uv6YevP3+i7SC/MW8Jubo2mFXKKkdr9rTp5SyBc0IQ=; b=gj8zQiMKH7u8g/fzjUNXqduwyO
-	RF/pX2gIVVFNhx1hVBOoMF+0iW5TnSolGtSnWvvrktIENRBYJ+hD1WuAmcsoqgwFMoABl5TJooDkM
-	ujBVgxawRj7+Pq02ccrkjyXCPgYm2uHx1Ne3tZVZP8AFF3MlVodOlPABHihepqDrvtXYP5V74Ooj0
-	YtLAcqUVSu2g0Qif1sXd/qk60h4VLTABLDWJHcbCe4L44KUhHB/PdJONq3nCBn65aWEi3rCQnQZA1
-	Ia62GITmHw9JJWqqqnupr0V/w+UaIpURux8ZncH+aEdzlBCeSpHDhRpbmecyyvzslrIJCiCuriqk8
-	E99Fr/qw==;
+	bh=0zj1BZnoh5gNPltKySrJ6UNz/AFkiYwyLoXtKOFp+ok=; b=sLeQHMU9rvJDw4JLRaU9lRdy/O
+	FThCnplv+UyutNVPvREEspM7EADok1AowRkonz4P6EEZdM0yMJZyT3WjqAurECKqqKun7xl5ACWzg
+	ffbma1c3mdWxZaKp7sP4wzcHM0k/JBC5rswPql1D/v5nmnyZVHNATwcyJi+SDxsLHn1YOJMj6kegl
+	doqAMHO/s3bLjDkthEZMbdgZ5pc2V99+7VQApeYLxxi2+hDqUMUxGnP55bb5hlDeX98JkgtUIK1Qz
+	+G/cziu9/qM5RDXa5MJwhuCR6S0I0kSX10+4b3GJZF5kR4uiuScSj2mfR+Tks1y/OWrFSXNR629Gt
+	S7VHVvOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBY9L-00000009kbf-3svi;
-	Thu, 14 Nov 2024 11:36:35 +0000
+	id 1tBYBE-00000009l1j-3MCC;
+	Thu, 14 Nov 2024 11:38:32 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBXDk-00000009ZFF-2A12;
-	Thu, 14 Nov 2024 10:37:06 +0000
+	id 1tBXDh-00000009ZER-21OF;
+	Thu, 14 Nov 2024 10:37:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1731580623;
-	bh=T/MDxXbZUP4sk05s7ha+rYRhJRWLrDhV5t3FMFK3PwY=;
+	s=mail; t=1731580620;
+	bh=r0zfEM+44u3mW0HVdYOX0ErXs9/LS1lzZr3IPLxucp8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=cu6Bt1vAqlZr74pho2O4Qktzq0W86Mxr3EmRPxMsPIWK22YQBdbprcn09HtrlJ4By
-	 lq0H0aLC1WoLdQJTr2PX5V6aLPZ7vXxjEZ8heIUJFxYeGpzxhDFx0DySXkpLjuugkQ
-	 nEwub/Wn6Xwn6ljuks3v8yYG539Tlq5iBOXU1idwQJ2dSoiMHf4P6DX4rpGmR4w0ml
-	 +0QPVt5HMIW5tPzBrFmaDXw+hKOLLOOY5Uu1VynSQexy24FwQJBUrxxndTjH43vzKD
-	 zecZjxyYdvrI2OFuobuNucz9dKzU01CIS9mVJ3QoUa5+Hw9knAO4wVIY29I4/j+ONb
-	 VgiLv0ik93STQ==
+	b=SODZKS7whgHUDhpHncSi3sdUkr6sedYtd4Zj3gUHgz4gDBJKCBDYpeV2ShdES7f9n
+	 0N/eELQDnQvpZU1iIGyu21yggduhO8wSRel9/EC8ymzZTAY3TIIsHIRI/VacqOe0iQ
+	 EMDUomAdgBIY0vvAJ0zMqRuZsnhfFmV83cFq/tsE9BQ9TuJtH+39TnK+0FHDH8K/Qi
+	 dsslLBYYypPj4jiTQp+iaYis4LS6/NhVBryXt8NS7DBiGE4O7rJPntbOOLZ70OAHuE
+	 gMdAt8gBe8TgcO1JidPdS+qF/6VtLEERCFYoeAyVarYdHI01F35FWXquR5lnfXjT5l
+	 OVsddY+bZKaFw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 45DF117E35FC;
-	Thu, 14 Nov 2024 11:37:02 +0100 (CET)
-Message-ID: <d0d07673-389c-49de-bdd1-4c5a697ec332@collabora.com>
-Date: Thu, 14 Nov 2024 11:37:02 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5368417E35EA;
+	Thu, 14 Nov 2024 11:36:59 +0100 (CET)
+Message-ID: <8ba8d8be-8858-425b-99bd-b1fd063b2cf9@collabora.com>
+Date: Thu, 14 Nov 2024 11:36:59 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 3/7] i2c: Introduce OF component probe function
+Subject: Re: [PATCH v11 6/7] platform/chrome: Introduce device tree hardware
+ prober
 To: Chen-Yu Tsai <wenst@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, Wolfram Sang <wsa@kernel.org>
 Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
@@ -59,15 +60,15 @@ Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
  Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
  linux-i2c@vger.kernel.org, Andrey Skvortsov <andrej.skvortzov@gmail.com>
 References: <20241106093335.1582205-1-wenst@chromium.org>
- <20241106093335.1582205-4-wenst@chromium.org>
+ <20241106093335.1582205-7-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241106093335.1582205-4-wenst@chromium.org>
+In-Reply-To: <20241106093335.1582205-7-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241114_023704_860569_0AB571AE 
-X-CRM114-Status: GOOD (  23.15  )
+X-CRM114-CacheID: sfid-20241114_023701_713490_E5116FC5 
+X-CRM114-Status: GOOD (  23.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,19 +108,19 @@ Il 06/11/24 10:33, Chen-Yu Tsai ha scritto:
 > Lenovo Thinkpad 13S.
 > 
 > Instead of this delicate dance between drivers and device tree quirks,
-> this change introduces a simple I2C component probe function. For a
-> given class of devices on the same I2C bus, it will go through all of
-> them, doing a simple I2C read transfer and see which one of them responds.
+> this change introduces a simple I2C component prober. For any given
+> class of devices on the same I2C bus, it will go through all of them,
+> doing a simple I2C read transfer and see which one of them responds.
 > It will then enable the device that responds.
 > 
-> This requires some minor modifications in the existing device tree. The
-> status for all the device nodes for the component options must be set
-> to "fail-needs-probe". This makes it clear that some mechanism is
+> This requires some minor modifications in the existing device tree.
+> The status for all the device nodes for the component options must be
+> set to "fail-needs-probe". This makes it clear that some mechanism is
 > needed to enable one of them, and also prevents the prober and device
 > drivers running at the same time.
 > 
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> Acked-by: Tzung-Bi Shih <tzungbi@kernel.org>
 > Reviewed-by: Douglas Anderson <dianders@chromium.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
