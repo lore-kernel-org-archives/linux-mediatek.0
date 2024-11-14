@@ -4,70 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1961CD65C71
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Nov 2024 11:02:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47641D65C6C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Nov 2024 11:05:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O/hM3Xe6ebcHyhSWXKtKzNcA6anNbAqyNsJQstyv1KE=; b=KgRm65A2LyMv2Am8drLCCnVBTT
-	O5Tlwba2JoNb60ETVsiVNvSJlZzR7Q27s4AreberP3adyroKbuBh7rkNxiJerUFcbAr4aoyjpdgSc
-	VGKKSCIP/fEaVvNuCesefhOu91fAnChkiIbJt5U6jLj/roPnq1XmhMViFwE/eXHuinL2DIjZHB5K4
-	KZKw/p3vT9oj8k8OhMYIK2XJBydLp4d0MZmj6a5WVdA8/3sFgsQVISeh/IUj+/iIFqS8dTSx5XXIc
-	goCu3YvSq2Ofjr893mnVmV1orPHjOucvs7pDL8JQelGXhPnDTD54JvI/rJ6r4JFPkeAGABUi0sFGL
-	dWFsS10w==;
+	bh=97buAnNKpjE7K7t8ciNQcmldyfYzzBRNkIIjEo3x2a4=; b=g1OLsVAywapG1HUGmK6i1UYPR/
+	D9jdZjNIHa7yc60qpy1FqsoOCvpK6u4sIEWR2RwvOYB9oURMO7kSxoUhQ5gOcO/fzleXukEZmoM4d
+	Vs4cX1M/wg99KVFpJ7JrgYbXLTHS3NpVNTIkkt7lg/o6u04zPOTM4auomyBUvtfrXI6BMuSKqKir1
+	mhhiDljB0s2vBjJwdIMXvUQy2fjR8ZJ4WZ0CxFM3JwKqNHMavCGyut6J7OMij9Lf1Gw+CHJ/z1tyh
+	2SdB1oVHQudDH8hpruLUDQ4lRU1bPeky5GVefIY2/feEdnI5eV37fUreQT7u9m+9Tl53Wpnz36xQa
+	jlfFWZwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBXbs-00000009dzw-2uDv;
-	Thu, 14 Nov 2024 11:02:00 +0000
+	id 1tBXfY-00000009eot-18JA;
+	Thu, 14 Nov 2024 11:05:48 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBWnG-00000009TdQ-1usY;
-	Thu, 14 Nov 2024 10:09:44 +0000
+	id 1tBWsb-00000009Uuv-0faS;
+	Thu, 14 Nov 2024 10:15:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1731578979;
-	bh=9v6T4QnJhlT/14lqewz/cD7UXZzr+tXru8yYkQINeKM=;
+	s=mail; t=1731579310;
+	bh=BDRlZ1ycBCD+bjuZg/SwSLSTmoyMuj7OjThlUTsmJHI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=QN3yrM/1yu5g47zkJ/FfUbjcTcLmmfgIou7kCZ7fGHGXkyu0gNJVGpKtEpKKgRGPB
-	 uLQGRIsFJqjoaWbMeX94cb5K9L2bT/HLvQVNR/oy8FKmP/+RSH8JhUitgGOrytj8cq
-	 /e5PfCXFDEYWz4VgV4JADh4OjsWg+DngvI8pgSZOqSCBMgSeW3Faq5tDvcLtwqbsDg
-	 L9VCKxiB+PMxH4BR/vYeUy25aOdOQsr2Vjtpc4Spt8kGT4w3lqr4cQr23sNP5qeDP8
-	 u8xidXMdDh0h8y3XMfkUxgZCQF9LoqBIWDJ6BD/QcJfY3cywF2IZqAQpHWR+Z9wAjk
-	 enE2TA4HpZ4LA==
+	b=EUbp6U8gYbjbmAz90H6csJSmUy+Ed5NAgHo2qxm/riuc1qY/DZBTR7sRCtDeRM5lc
+	 lvdeHFmG49a2LZWUuFUOHzPmVpgm0fyFPiyS/4zrw1R1i+C+e0jYsNMPLwoYx9k5Au
+	 wCSwd9dC0/59YxZD/RiTh13wTlzOxuyqZj30XAhK4urUs7efoVrBRc0u1oWUAz/66M
+	 73n8y9COblMdMhpFw6IVBGen7o397YqPq+2JC+89P/wKfNNUohBF3r8BR7nYFmsHgy
+	 NNDrCfkV0Bx16eMx/iCSt6oU4mSDggga5pdZEVwCBi2YRgC/euiaFtNwvrWqpoM2nK
+	 7qWImVMBaJ/1w==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 003D017E35D3;
-	Thu, 14 Nov 2024 11:09:38 +0100 (CET)
-Message-ID: <545b6db8-c7d7-4a28-a040-12088f9002df@collabora.com>
-Date: Thu, 14 Nov 2024 11:09:38 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3F6DC17E35D8;
+	Thu, 14 Nov 2024 11:15:10 +0100 (CET)
+Message-ID: <d67ead02-8502-4d71-bb5d-38b80c103e3d@collabora.com>
+Date: Thu, 14 Nov 2024 11:15:09 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: Introduce MT8188 Geralt
- platform based Ciri
-To: Fei Shao <fshao@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20241105093222.4055774-1-fshao@chromium.org>
- <20241105093222.4055774-3-fshao@chromium.org>
- <b66dbf9e-b35b-482c-9eb7-112ef1f398d6@collabora.com>
- <CAC=S1ngozo11g1vF2jnHjTLcNmP8tOMsQhK+LR0QWqoeXwSJjg@mail.gmail.com>
- <59f4bcc1-c752-4f2f-8e55-349cc2432b8a@collabora.com>
- <CAC=S1nhhfwHU5K5ZyUhZBhvz38LOZGLnGN-Rc1ZAup_VTfkpvA@mail.gmail.com>
- <CAC=S1nj5PVJ=zwZiBLoOCHzsspaRw9ddAH_dXfPayD=LyW5wNA@mail.gmail.com>
+Subject: Re: [PATCH v4 3/3] media: mediatek: vcodec: add description for vsi
+ struct
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+ =?UTF-8?Q?N=C3=ADcolas_F_=2E_R_=2E_A_=2E_Prado?= <nfraprado@collabora.com>,
+ Sebastian Fricke <sebastian.fricke@collabora.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Nathan Hebert <nhebert@chromium.org>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Chen-Yu Tsai <wenst@chromium.org>,
+ Fritz Koenig <frkoenig@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20241108034019.20064-1-yunfei.dong@mediatek.com>
+ <20241108034019.20064-4-yunfei.dong@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <CAC=S1nj5PVJ=zwZiBLoOCHzsspaRw9ddAH_dXfPayD=LyW5wNA@mail.gmail.com>
+In-Reply-To: <20241108034019.20064-4-yunfei.dong@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241114_020942_734988_3F3278B8 
-X-CRM114-Status: GOOD (  34.89  )
+X-CRM114-CacheID: sfid-20241114_021513_482307_FC4D00C3 
+X-CRM114-Status: UNSURE (   7.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,112 +87,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/11/24 08:10, Fei Shao ha scritto:
-> On Fri, Nov 8, 2024 at 12:11 PM Fei Shao <fshao@chromium.org> wrote:
->>
->> On Thu, Nov 7, 2024 at 6:37 PM AngeloGioacchino Del Regno
->> <angelogioacchino.delregno@collabora.com> wrote:
->>>
->>> Il 07/11/24 07:58, Fei Shao ha scritto:
->>>> On Wed, Nov 6, 2024 at 9:19 PM AngeloGioacchino Del Regno
->>>> <angelogioacchino.delregno@collabora.com> wrote:
->>>>>
->>>>> Il 05/11/24 10:30, Fei Shao ha scritto:
->>>>>> Introduce MT8188-based Chromebook Ciri, also known commercially as
->>>>>> Lenovo Chromebook Duet (11", 9).
->>>>>>
->>>>>> Ciri is a detachable device based on the Geralt design, where Geralt is
->>>>>> the codename for the MT8188 platform. Ciri offers 8 SKUs to accommodate
->>>>>> different combinations of second-source components, including:
->>>>>> - audio codecs (RT5682S and ES8326)
->>>>>> - speaker amps (TAS2563 and MAX98390)
->>>>>> - MIPI-DSI panels (BOE nv110wum-l60 and IVO t109nw41)
->>>>>>
->>>>>> Signed-off-by: Fei Shao <fshao@chromium.org>
->>>>>> ---
-> [...]
->>>>>> +&pmic {
->>>>>> +     interrupts-extended = <&pio 222 IRQ_TYPE_LEVEL_HIGH>;
->>>>>> +};
->>>>>> +
->>>>>> +&scp {
->>>>>
->>>>> Is this SCP-dual or SCP?
->>>>> I see SCP, but I also see a SCP-Dual memory region... what's going on here?
->>>>>
->>>>> Of course, the SCP-Dual won't work if you don't override the compatible string...
->>>>
->>>> To clarify, the second SCP core is used for MIPI camera in downstream,
->>>> and I deliberately only describe the first SCP core here since the MTK
->>>> camera ISP driver isn't in upstream at the moment.
->>>> I had a fixup patch for removing the scp-dual reserved memory region,
->>>> but likely it was missing during the rebase... let me check again if
->>>> it can be removed, just in case there's firmware protecting the region
->>>> and the kernel shouldn't access it.
->>>>
->>>
->>> Hmm... but the second SCP core can still be brought up, even if the MIPI Camera
->>> driver is not upstreamed yet, right?
->>
->> Well, that's true... and it should pave the way for validating the
->> driver with the upstreamed DT whenever that becomes available.
->>
->>>
->>> That shouldn't cause lockups and/or other kinds of bad behavior, and should
->>> bring up a core and just never use it, without any particular issues.
->>>
->>> If we can enable the secondary core, let's just go for it.. as that will help
->>> specifying the exact memory layout of this board (and failing to do that may
->>> create some other issues, that's why I'm proposing to enable that even if it
->>> is not really used in this case).
->>>
->>> What do you think? :-)
->>>
->>
->> Sure, that sounds good to me, too.
->> I started only with the essential DT bits to ensure the device can
->> boot, which it does, so I guess it's time to bring that back. I'll
->> incorporate that in v3.
->> I plan to fix up the single SCP core node to SCP-dual directly, so
->> please let me know if you prefer seeing that as an individual patch on
->> top (either option works for me).
->>
+Il 08/11/24 04:40, Yunfei Dong ha scritto:
+> If the video shared information (vsi) is changed accidentally,
+> will leading to play h264 bitstream fail if the firmware won't
+> be changed at the same time. Marking the shared struct with
+> "shared interface with firmware".
 > 
-> In fact, I noticed that it seems to require modifying mt8188.dtsi (and
-> potentially mt8390-genio-700-evk.dts) to support the second SCP core,
-> but I want to avoid doing so in this series if possible to keep this
-> as a pure new .dts introduction (if that makes sense).
-> 
-> I can think of 3 options here:
-> 1. I resend this series *with* the single SCP core enabled in
-> -geralt.dtsi. And then I send a follow-up series to introduce the
-> second SCP core and update the affected .dts{,i}.
-> 2. I resend this series *without* any SCP cores in -geralt.dtsi. And
-> then I send a follow-up series to introduce both of the SCP cores at
-> once, and update the affected .dts{,i}.
-> 3. I delete the parent (mt8188) scp declaration and re-describe the
-> dual-core SCP structure in -geralt.dtsi. This avoids touching
-> mt8188.dtsi and mt8390-genio-700-evk but leaves the dual-core SCP
-> stuff exclusively to geralt/ciri. I don't know if MT8390 wants to
-> utilize the second SCP core or not.
-> 
-> I guess (3) is less likely what we want down the line, but that's just
-> for reference. Any preference/suggestion?
-> 
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
-I want to verify with MediaTek whether the Genio 700 EVK can make use of the
-dual-core SCP first, as it is highly possible that it indeed can and, if that
-is the case, counting that any product development would be anyway based on
-the EVK.... we will probably never see single-core SCP in MT8188 devicetrees
-ever again.
-
-Please send the Geralt/Ciri devicetrees without SCP support for now, so that
-we can get the vast majority of the code upstream - which anyway is likely
-95% of what you have right now... then I will either notify you for how to
-proceed with the SCP (especially if I come to a conclusion before you send
-the new series), or I will just send the SCP DT series on my own.
-
-Cheers,
-Angelo
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
