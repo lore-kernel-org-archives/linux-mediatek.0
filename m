@@ -4,58 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B120D6A22D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Nov 2024 20:55:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8642D6DDC6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Nov 2024 03:23:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Cc:From:Subject:
-	References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:Content-Type:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ESt7B0hIxd1hLIVW0eUcxPEDQNtVKZOVOyMn6TkpMyI=; b=p0oYeMCf9rr5KvG/zpT5/9FA1T
-	TlpaMfEQ6tEwZxuSpYz5QweWGw6vWRBh4DOfjNh+ZdRBhLtgGx+4bempYVCb0ZWlVyqTGsmzTRdoe
-	bUGYGRDOisM4nnxK9tE/UjtnpZsValAMNq4Wq6ahkhwYZftaWUUA8inYQsaRHkDn5RKvo850+MEqe
-	CHhDw1PhWojdF4TSyrHjIV3DS5vh8A2Rx0Y7GZ0ZvydJR/YK0HTq/tc5CLSXQoHBBjoasQmbbSX98
-	rhpXdRJ6Mj/cp0p/MTX900eBlxlOwTE5UyQGgLQrLk2BSBI5cCbeGU55lS3FGQ+hIs2s7k0Jz/ofH
-	XG09n0Bw==;
+	bh=W4dhbkJNMvW0DmenN+A6Mts0TXTqO556j9EErgHA5W8=; b=CTUr6fQIRTM5WQr8NawA0BKwmE
+	aUYQUroQUeXFYUO5k2q2K43XTJOwDlwLAbCHjeSosIABed3HVsd23kOnBgQYWKR3PACxvmqpca7jk
+	dzyOwB8RtRNmWkfXkLXVBamljlX2jldNDGjmubNWaKE7GGdH/XqkgCD4/EX6kyLocvvGUzyJsRv2z
+	owPk9v6BIDGbihHSP2w4xP9w6KZsnV+BDrW9aqa9iiFccJA8M6RVkuAtUBiqY4unzL2wpbknSvLtL
+	z7C1BbQwp0iQ6eIYwr2V0YCG4UStHweQ6dVggVg4GahP2umEtHjkqhQAGDgb1KOxFiyH68W6al+rd
+	MMXBQwgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBgse-00000000oWl-0yjr;
-	Thu, 14 Nov 2024 20:55:56 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tBmvI-00000001TVF-3dVf;
+	Fri, 15 Nov 2024 03:23:04 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBgqv-00000000o8a-3idS;
-	Thu, 14 Nov 2024 20:54:10 +0000
+	id 1tBmuL-00000001TGg-3Wss;
+	Fri, 15 Nov 2024 03:22:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 38064A41B7B;
-	Thu, 14 Nov 2024 20:52:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4F2AC4CECD;
-	Thu, 14 Nov 2024 20:54:08 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id BAAAAA41DC4;
+	Fri, 15 Nov 2024 03:20:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E8D0C4CECD;
+	Fri, 15 Nov 2024 03:22:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1731617648;
-	bh=ESt7B0hIxd1hLIVW0eUcxPEDQNtVKZOVOyMn6TkpMyI=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=JSxljZa1jdN9RcYVX67Q3CyiIjQMq0fupvVPR9XDJK0NnBOm1HmW1WwhDa0t+MzX7
-	 2nwnhwMuYYC64gBFcFaE0SX6W74ZSlOA1+kguGXNUhB707EQ0BFGUEvFL5jfojIqRu
-	 CkeZUDSg/BvItq6vVSn1vSeVkjBkjET9sAwB2nd8unsGnKs6jsnYULGzj5lxgbYqUh
-	 q9oOcm/nflw7y3PexST4LP7XDlZ19eYxgsUBqSeJn8nTW8aoKfM9cGd6uIexQq+wrF
-	 3tmL15Awb96qE2WR7+WCyPsI04WXOa5CRzvUsPGXU90qdmcgjhfKt/As/vSNXsWrCm
-	 tW+eYDB25X3+g==
-Message-ID: <7088d73b2dacb174319015e7df2ec399.sboyd@kernel.org>
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1731640924;
+	bh=hbfvdurmQjEVxYb6k7AOAGgfnneezr5EVZ7PBjoghW0=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=lhpdQXWrz/EBT1Qf7tnSUwgb1Wk5EF1S5pJliSXTPUUFsTk/J5ZbUjY5p60gu5EKH
+	 y/fQLTC8qBgENpQ1tSnpmOrwcaveVVYzeeTY+rWcwt3tuDICjfC2G95Wd1xHuq9Zh3
+	 IHcNWdCfbhxRANZwlWF6FiLAvrdEGazO+lUaBDGhxi2sqdbjRdCUcnDaT0NMfDTyrg
+	 aZo5nhDiFKBXWEC4XCcPuGgN7QKipi3iroYA21u4jABCqHiuAMbTa/7O8earrfK52y
+	 JMQw8i4CaxOqY6iijDAC4mCqrARM2JZDNyCuorVxNSCxo/zVl0HawOGebv0MdT0NWt
+	 a/1d+DVKifdSA==
+Date: Thu, 14 Nov 2024 19:22:02 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiner Kallweit
+ <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, upstream@airoha.com
+Subject: Re: [net-next PATCH v5 3/4] net: dsa: Add Airoha AN8855 5-Port
+ Gigabit DSA Switch driver
+Message-ID: <20241114192202.215869ed@kernel.org>
+In-Reply-To: <20241112204743.6710-4-ansuelsmth@gmail.com>
+References: <20241112204743.6710-1-ansuelsmth@gmail.com>
+	<20241112204743.6710-4-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20241106111402.200940-2-y.oudjana@protonmail.com>
-References: <20241106111402.200940-1-y.oudjana@protonmail.com> <20241106111402.200940-2-y.oudjana@protonmail.com>
-Subject: Re: [PATCH v2 1/2] dt-bindings: clock: mediatek: Add bindings for MT6735 syscon clock and reset controllers
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: Yassine Oudjana <y.oudjana@protonmail.com>, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Conor Dooley <conor.dooley@microchip.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Conor Dooley <conor+dt@kernel.org>, Daniel Golle <daniel@makrotopia.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Lukas Bulwahn <lukas.bulwahn@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>, Sam Shih <sam.shih@mediatek.com>, Yassine Oudjana <y.oudjana@protonmail.com>
-Date: Thu, 14 Nov 2024 12:54:06 -0800
-User-Agent: alot/0.12.dev1+gaa8c22fdeedb
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241114_125409_985767_0D4EE735 
-X-CRM114-Status: UNSURE (   5.96  )
+X-CRM114-CacheID: sfid-20241114_192206_015713_67292AD3 
+X-CRM114-Status: UNSURE (   6.81  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -71,15 +82,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Yassine Oudjana (2024-11-06 03:14:30)
-> Add device tree bindings for syscon clock and reset controllers (IMGSYS,
-> MFGCFG, VDECSYS and VENCSYS).
->=20
-> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> Acked-by: Conor Dooley <conor.dooley@microchip.com>
-> ---
+On Tue, 12 Nov 2024 21:47:26 +0100 Christian Marangi wrote:
+> +	MIB_DESC(1, 0x00, "TxDrop"),
+> +	MIB_DESC(1, 0x04, "TxCrcErr"),
 
-Applied to clk-next
+What is a CRC Tx error :o 
+Just out of curiosity, not saying its worng.
+
+> +	MIB_DESC(1, 0x08, "TxUnicast"),
+> +	MIB_DESC(1, 0x0c, "TxMulticast"),
+> +	MIB_DESC(1, 0x10, "TxBroadcast"),
+> +	MIB_DESC(1, 0x14, "TxCollision"),
+
+Why can't these be rtnl stats, please keep in mind that we ask that
+people don't duplicate in ethtool -S what can be exposed via standard
+stats
+
+> +	MIB_DESC(1, 0x18, "TxSingleCollision"),
+> +	MIB_DESC(1, 0x1c, "TxMultipleCollision"),
+> +	MIB_DESC(1, 0x20, "TxDeferred"),
+> +	MIB_DESC(1, 0x24, "TxLateCollision"),
+> +	MIB_DESC(1, 0x28, "TxExcessiveCollistion"),
+> +	MIB_DESC(1, 0x2c, "TxPause"),
+> +	MIB_DESC(1, 0x30, "TxPktSz64"),
+> +	MIB_DESC(1, 0x34, "TxPktSz65To127"),
+> +	MIB_DESC(1, 0x38, "TxPktSz128To255"),
+> +	MIB_DESC(1, 0x3c, "TxPktSz256To511"),
+> +	MIB_DESC(1, 0x40, "TxPktSz512To1023"),
+> +	MIB_DESC(1, 0x44, "TxPktSz1024To1518"),
+> +	MIB_DESC(1, 0x48, "TxPktSz1519ToMax"),
+
+we have standard stats for rmon, too
+
+> +	MIB_DESC(2, 0x4c, "TxBytes"),
+> +	MIB_DESC(1, 0x54, "TxOversizeDrop"),
+> +	MIB_DESC(2, 0x58, "TxBadPktBytes"),
+> +	MIB_DESC(1, 0x80, "RxDrop"),
+> +	MIB_DESC(1, 0x84, "RxFiltering"),
+> +	MIB_DESC(1, 0x88, "RxUnicast"),
+> +	MIB_DESC(1, 0x8c, "RxMulticast"),
+> +	MIB_DESC(1, 0x90, "RxBroadcast"),
+> +	MIB_DESC(1, 0x94, "RxAlignErr"),
+> +	MIB_DESC(1, 0x98, "RxCrcErr"),
+> +	MIB_DESC(1, 0x9c, "RxUnderSizeErr"),
+> +	MIB_DESC(1, 0xa0, "RxFragErr"),
+> +	MIB_DESC(1, 0xa4, "RxOverSzErr"),
+> +	MIB_DESC(1, 0xa8, "RxJabberErr"),
+> +	MIB_DESC(1, 0xac, "RxPause"),
+> +	MIB_DESC(1, 0xb0, "RxPktSz64"),
+> +	MIB_DESC(1, 0xb4, "RxPktSz65To127"),
+> +	MIB_DESC(1, 0xb8, "RxPktSz128To255"),
+> +	MIB_DESC(1, 0xbc, "RxPktSz256To511"),
+> +	MIB_DESC(1, 0xc0, "RxPktSz512To1023"),
+> +	MIB_DESC(1, 0xc4, "RxPktSz1024To1518"),
+> +	MIB_DESC(1, 0xc8, "RxPktSz1519ToMax"),
+> +	MIB_DESC(2, 0xcc, "RxBytes"),
+> +	MIB_DESC(1, 0xd4, "RxCtrlDrop"),
+> +	MIB_DESC(1, 0xd8, "RxIngressDrop"),
+> +	MIB_DESC(1, 0xdc, "RxArlDrop"),
+> +	MIB_DESC(1, 0xe0, "FlowControlDrop"),
+> +	MIB_DESC(1, 0xe4, "WredDrop"),
+> +	MIB_DESC(1, 0xe8, "MirrorDrop"),
+> +	MIB_DESC(2, 0xec, "RxBadPktBytes"),
+> +	MIB_DESC(1, 0xf4, "RxsFlowSamplingPktDrop"),
+> +	MIB_DESC(1, 0xf8, "RxsFlowTotalPktDrop"),
+> +	MIB_DESC(1, 0xfc, "PortControlDrop"),
+-- 
+pw-bot: cr
 
