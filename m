@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A4C9D6DDD5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Nov 2024 05:54:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4F44D6DDD5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Nov 2024 05:57:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bIOBHjftDf5Qy/xWJ8efU/VTXnH/XUlMEk3vPPl1KoA=; b=QUMkWMYq5xA/1iJx+qvk1TQ7wn
-	S4TELdmHZlcNWo6aIxSJfHz06w38ea6xlMlvKdiyOCgJX4jRCYkiHSAMD7UDpeNHOIO/y88F+H6Tz
-	dniyKrn+Z/gJvoC1PO+YQrJV0s144zi82r2PrvhnOXCt7oTewAEDg9c7BYSEg78NgmJ9vZdgM9Mbk
-	MCY0e4zK9AQax2eKZQtt5uEzy7T/E4pZK+zkzLzZmqviqh9LOqL/AWZ8ow5yWLirA7DI4hbCeWohI
-	TIUx7TwvcoY2am99r1j55vq9b+EBpo2f8p3n+tun67nskRHopCSBUneNY+jtnPZY6Axd/Tt7pi6rB
-	25BVHjGQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EEon9YhSebcr8Ls+lkZ0E1cfq+bsm+y5LjyGUhL+MUg=; b=4I4oBNg6J6YVlSRtUqZcmB1YlB
+	qfCw1wU0JWTWKjIKNkUFYG5j+r0IBYqWhelZI/HZBHIBTprBoyowHdoCisez/wpNFr4Tq6dlj9W67
+	GSqE7SL9dQoOP98uSL5RwwlM/+hGTKFV92XciWzi6WBh80qC052oNBlJQ6t79M2EGkHwn2/Kz4SSq
+	wiYfF2AauuGkr1Mpk/dIZnOfY6lsMkiUt2syKjJLxcm8q3vLKh3801MwqP2B0Dtf+MbxysIppLuO+
+	LF+ybvNJyKY62s9l16LJ9o6kTS6xILCOBzl21945q88lE1l+CMeqPD9VJylbanPf5ulIdRpVAd6F4
+	bK4iIOeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBpHL-00000001iQO-2mYI;
-	Fri, 15 Nov 2024 05:53:59 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tBpKl-00000001izo-3q1t;
+	Fri, 15 Nov 2024 05:57:31 +0000
+Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBpEd-00000001hsj-2h2r;
-	Fri, 15 Nov 2024 05:51:12 +0000
-X-UUID: 993cdee2a31511ef82ff63e91e7eb18c-20241114
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=bIOBHjftDf5Qy/xWJ8efU/VTXnH/XUlMEk3vPPl1KoA=;
-	b=ot7gBJnw+6TgvcV+Og/NMQ4+Yrf1g2v/rea1whjNKXk4oH02Ayb+eBKlu8gr4TO6c6DZeW7RQNK+W7Bb+FZIugwQVDYr1tQ2yuW3uvCD4k/pWloFKrKup3wHwDYCEKFQm2IEGNUPAPg7nXt86rHoWN4YiG+I3ssHTm8eEhvURTk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.43,REQID:1f9fa8e9-2c0e-4d21-b00a-d196065324f1,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:ce19b8a,CLOUDID:efdf174f-a2ae-4b53-acd4-c3dc8f449198,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0,EDM:-3,IP
-	:nil,URL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 993cdee2a31511ef82ff63e91e7eb18c-20241114
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 994618139; Thu, 14 Nov 2024 22:51:03 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Fri, 15 Nov 2024 13:51:01 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Fri, 15 Nov 2024 13:51:00 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Sebastian Fricke <sebastian.fricke@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>,
-	Daniel Almeida <daniel.almeida@collabora.com>
-CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
-	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei
- Dong <yunfei.dong@mediatek.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v5 2/3] media: mediatek: vcodec: support extended h264 decode
-Date: Fri, 15 Nov 2024 13:50:47 +0800
-Message-ID: <20241115055056.29917-3-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20241115055056.29917-1-yunfei.dong@mediatek.com>
-References: <20241115055056.29917-1-yunfei.dong@mediatek.com>
+	id 1tBpJp-00000001irR-47Xz
+	for linux-mediatek@lists.infradead.org;
+	Fri, 15 Nov 2024 05:56:35 +0000
+Received: by mail-oa1-x34.google.com with SMTP id 586e51a60fabf-28893cc3acdso254543fac.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 14 Nov 2024 21:56:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1731650192; x=1732254992; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=EEon9YhSebcr8Ls+lkZ0E1cfq+bsm+y5LjyGUhL+MUg=;
+        b=3YrHHICJyOlde46+2dH2CJdLNUy2KW1oIwkEINQW7o9IdicxfVow9ICcw1J7SYnfRJ
+         /SoYi0dMMrkR1XHKRQ1dQglJS7vyhTihKfr5mGLEuoC4VUpCiMHS9A+MKYToAXj697GB
+         3Ga1tMzsuqAqgSo7KHYzCc86rsQC2aMVL9qWWeIVhVMCwHo/MOD1eGxJQynurZBJuG2v
+         O/3OTw7w/FQwHbXlU8M1fvEN0YYrQJCanGhABjJ9MNwiF1cfN0FYSspZMEwlSVU4Z6/p
+         oLMWhkOKITKqiIbT2UXNhLOQcSwcUDUvyCFqCZoJ95X72Id7vaAkHyFWkMU7qatOLXa4
+         OZZg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1731650192; x=1732254992;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=EEon9YhSebcr8Ls+lkZ0E1cfq+bsm+y5LjyGUhL+MUg=;
+        b=LKGD48rPsNUk4d1BuhvlcQFKiYxci8ZlCITRsSEXF2vkzVujKjVL9cbYy/c4eDoeub
+         WFP4WsXTvmXyzUcG3bHvBOsgysQ59Bpy6jQzNduYXz7hYb/LD4almUevCgRB5MSmCoBz
+         hnudR/kEQdsjdVaoAvM128PRPbjp6T+/rU4ZFiFcVs/YVzsrmq00WbTPYL7tkQfVLox2
+         EGR9PavXkuoU0WSWNMfIcpWOS5a+4HLhq9lB05usoHhxIl4GbllM9wc+RDB/ZZDgfudM
+         rb41K+1JhgjQNAKad9Ze0oteQw3jo4qir1BiyKxmx5ptwBXaYO2cqREisD5i2cES8qUN
+         xUSQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWeQG1QGXGZbEU5gb26kfAIb3G5AhL/WQC+nCahlzKiE5BQePHFsgGtjAASKOxHEEQvgcr55SKBtS1dM5G5Og==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzQAPSK6hXTfC8zIeoZhk0vPbXVzDc6OA7BGtumSoVGnubR/ryt
+	b8BZt3pKZNHd+tMW8d/V/Bnpw/FDcz+6wB9pejSoAgJAUZMfFEAGYb+R7hCqqX9XVHm94yS2wuA
+	+aIksbiLPvhLhhV2pigb6Hp6A0lnq7NBelWx/uw==
+X-Google-Smtp-Source: AGHT+IEDCi8gqOCQs+w/MG+ETP1PE9P2c39BEwvFmbY43FtQGyeeMUP5wlqywx5zBkhOysn841MY+p5Fcc0dPlD28wQ=
+X-Received: by 2002:a05:6870:aa8e:b0:296:966:6f5c with SMTP id
+ 586e51a60fabf-2962e0a692dmr356818fac.12.1731650192184; Thu, 14 Nov 2024
+ 21:56:32 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20241021072626.15102-1-xiazhengqiao@huaqin.corp-partner.google.com>
+ <20241021072626.15102-3-xiazhengqiao@huaqin.corp-partner.google.com>
+In-Reply-To: <20241021072626.15102-3-xiazhengqiao@huaqin.corp-partner.google.com>
+From: Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
+Date: Fri, 15 Nov 2024 13:56:21 +0800
+Message-ID: <CADYyEwRt4mPeofe5FvO32HZ0ObzS4n5NgM3hfjnykDUSrJ8dyg@mail.gmail.com>
+Subject: Re: [PATCH v3 RESEND 2/4] arm64: dts: mediatek: Add MT8186 Chinchou Chromebooks
+To: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+	wenst@chromium.org, hsinyi@chromium.org, sean.wang@mediatek.com, 
+	Doug Anderson <dianders@google.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241114_215111_716229_E74DB1FC 
-X-CRM114-Status: GOOD (  20.91  )
+X-CRM114-CacheID: sfid-20241114_215634_050303_8D6B4BD4 
+X-CRM114-Status: GOOD (  15.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,712 +94,492 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The address end of working buffer can't be calculated directly with buffer
-size in kernel for some special architecture. Adding new extend vsi_ex to
-calculate the address end in firmware.
-Adding capability to separate extend and non extend driver for different
-platform.
-At last, hardware can parse the syntax to get nal information in firmware
-for extend architecture, needn't to parse it again in kernel.
+Hi
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../vcodec/decoder/mtk_vcodec_dec_drv.h       |   2 +
- .../decoder/vdec/vdec_h264_req_multi_if.c     | 571 ++++++++++++++++--
- 2 files changed, 514 insertions(+), 59 deletions(-)
+No one has responded to this patch for two weeks. Please help to review it.
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-index ac568ed14fa2..a0bb23962209 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-@@ -17,6 +17,7 @@
- 
- #define IS_VDEC_LAT_ARCH(hw_arch) ((hw_arch) >= MTK_VDEC_LAT_SINGLE_CORE)
- #define IS_VDEC_INNER_RACING(capability) ((capability) & MTK_VCODEC_INNER_RACING)
-+#define IS_VDEC_SUPPORT_EX(capability) ((capability) & MTK_VDEC_IS_SUPPORT_EX)
- 
- enum mtk_vcodec_dec_chip_name {
- 	MTK_VDEC_INVAL = 0,
-@@ -42,6 +43,7 @@ enum mtk_vdec_format_types {
- 	MTK_VDEC_FORMAT_HEVC_FRAME = 0x1000,
- 	MTK_VCODEC_INNER_RACING = 0x20000,
- 	MTK_VDEC_IS_SUPPORT_10BIT = 0x40000,
-+	MTK_VDEC_IS_SUPPORT_EX = 0x80000,
- };
- 
- /*
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-index ab192ce0b851..21ddc6d6f1ba 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
-@@ -128,6 +128,83 @@ struct vdec_h264_slice_share_info {
- 	u16 nal_info;
- };
- 
-+/*
-+ * struct vdec_h264_slice_mem - memory address and size (shared interface with firmware)
-+ */
-+struct vdec_h264_slice_mem {
-+	union {
-+		u64 buf;
-+		u64 dma_addr;
-+	};
-+	union {
-+		size_t size;
-+		u64 dma_addr_end;
-+	};
-+};
-+
-+/**
-+ * struct vdec_h264_slice_fb - frame buffer for decoding (shared interface with firmware)
-+ *
-+ * @y:  current y buffer address info
-+ * @c:  current c buffer address info
-+ */
-+struct vdec_h264_slice_fb {
-+	struct vdec_h264_slice_mem y;
-+	struct vdec_h264_slice_mem c;
-+};
-+
-+/**
-+ * struct vdec_h264_slice_info_ex - extend decode information (shared interface with firmware)
-+ *
-+ * @wdma_end_addr_offset:	offset from buffer start
-+ * @nal_info:		nal info of current picture
-+ * @timeout:		Decode timeout: 1 timeout, 0 no timeout
-+ * @reserved:		reserved
-+ * @vdec_fb_va:	VDEC frame buffer struct virtual address
-+ * @crc:		Used to check whether hardware's status is right
-+ */
-+struct vdec_h264_slice_info_ex {
-+	u64 wdma_end_addr_offset;
-+	u16 nal_info;
-+	u16 timeout;
-+	u32 reserved;
-+	u64 vdec_fb_va;
-+	u32 crc[8];
-+};
-+
-+/**
-+ * struct vdec_h264_slice_vsi_ex - extend shared memory for decode information exchange
-+ *        between SCP and Host (shared interface with firmware).
-+ *
-+ * @bs:		input buffer info
-+ * @fb:		current y/c buffer
-+ *
-+ * @ube:		ube buffer
-+ * @trans:		transcoded buffer
-+ * @row_info:		row info buffer
-+ * @err_map:		err map buffer
-+ * @slice_bc:		slice buffer
-+ *
-+ * @mv_buf_dma:	HW working motion vector buffer
-+ * @dec:		decode information (AP-R, VPU-W)
-+ * @h264_slice_params:	decode parameters for hw used
-+ */
-+struct vdec_h264_slice_vsi_ex {
-+	/* LAT dec addr */
-+	struct vdec_h264_slice_mem bs;
-+	struct vdec_h264_slice_fb fb;
-+
-+	struct vdec_h264_slice_mem ube;
-+	struct vdec_h264_slice_mem trans;
-+	struct vdec_h264_slice_mem row_info;
-+	struct vdec_h264_slice_mem err_map;
-+	struct vdec_h264_slice_mem slice_bc;
-+
-+	struct vdec_h264_slice_mem mv_buf_dma[H264_MAX_MV_NUM];
-+	struct vdec_h264_slice_info_ex dec;
-+	struct vdec_h264_slice_lat_dec_param h264_slice_params;
-+};
-+
- /**
-  * struct vdec_h264_slice_inst - h264 decoder instance
-  *
-@@ -136,10 +213,10 @@ struct vdec_h264_slice_share_info {
-  * @pred_buf:		HW working prediction buffer
-  * @mv_buf:		HW working motion vector buffer
-  * @vpu:		VPU instance
-- * @vsi:		vsi used for lat
-- * @vsi_core:		vsi used for core
-+ * @vsi_ex:		extend vsi used for lat
-+ * @vsi_core_ex:	extend vsi used for core
-  *
-- * @vsi_ctx:		Local VSI data for this decoding context
-+ * @vsi_ctx_ex:	Local extend vsi data for this decoding context
-  * @h264_slice_param:	the parameters that hardware use to decode
-  *
-  * @resolution_changed:resolution changed
-@@ -156,10 +233,18 @@ struct vdec_h264_slice_inst {
- 	struct mtk_vcodec_mem pred_buf;
- 	struct mtk_vcodec_mem mv_buf[H264_MAX_MV_NUM];
- 	struct vdec_vpu_inst vpu;
--	struct vdec_h264_slice_vsi *vsi;
--	struct vdec_h264_slice_vsi *vsi_core;
--
--	struct vdec_h264_slice_vsi vsi_ctx;
-+	union {
-+		struct {
-+			struct vdec_h264_slice_vsi *vsi;
-+			struct vdec_h264_slice_vsi *vsi_core;
-+			struct vdec_h264_slice_vsi vsi_ctx;
-+		};
-+		struct {
-+			struct vdec_h264_slice_vsi_ex *vsi_ex;
-+			struct vdec_h264_slice_vsi_ex *vsi_core_ex;
-+			struct vdec_h264_slice_vsi_ex vsi_ctx_ex;
-+		};
-+	};
- 	struct vdec_h264_slice_lat_dec_param h264_slice_param;
- 
- 	unsigned int resolution_changed;
-@@ -168,6 +253,9 @@ struct vdec_h264_slice_inst {
- 
- 	struct v4l2_h264_dpb_entry dpb[16];
- 	bool is_field_bitstream;
-+
-+	int (*decode)(void *h_vdec, struct mtk_vcodec_mem *bs,
-+		      struct vdec_fb *unused, bool *res_chg);
- };
- 
- static int vdec_h264_slice_fill_decode_parameters(struct vdec_h264_slice_inst *inst,
-@@ -389,62 +477,143 @@ static void vdec_h264_slice_get_crop_info(struct vdec_h264_slice_inst *inst,
- 		       cr->left, cr->top, cr->width, cr->height);
- }
- 
--static int vdec_h264_slice_init(struct mtk_vcodec_dec_ctx *ctx)
-+static void vdec_h264_slice_setup_lat_buffer_ex(struct vdec_h264_slice_inst *inst,
-+						struct mtk_vcodec_mem *bs,
-+						struct vdec_lat_buf *lat_buf)
- {
--	struct vdec_h264_slice_inst *inst;
--	int err, vsi_size;
-+	struct mtk_vcodec_mem *mem;
-+	int i;
- 
--	inst = kzalloc(sizeof(*inst), GFP_KERNEL);
--	if (!inst)
--		return -ENOMEM;
-+	inst->vsi_ex->bs.dma_addr = (u64)bs->dma_addr;
-+	inst->vsi_ex->bs.size = bs->size;
- 
--	inst->ctx = ctx;
-+	for (i = 0; i < H264_MAX_MV_NUM; i++) {
-+		mem = &inst->mv_buf[i];
-+		inst->vsi_ex->mv_buf_dma[i].dma_addr = mem->dma_addr;
-+		inst->vsi_ex->mv_buf_dma[i].size = mem->size;
-+	}
-+	inst->vsi_ex->ube.dma_addr = lat_buf->ctx->msg_queue.wdma_addr.dma_addr;
-+	inst->vsi_ex->ube.size = lat_buf->ctx->msg_queue.wdma_addr.size;
- 
--	inst->vpu.id = SCP_IPI_VDEC_LAT;
--	inst->vpu.core_id = SCP_IPI_VDEC_CORE;
--	inst->vpu.ctx = ctx;
--	inst->vpu.codec_type = ctx->current_codec;
--	inst->vpu.capture_type = ctx->capture_fourcc;
-+	inst->vsi_ex->row_info.dma_addr = 0;
-+	inst->vsi_ex->row_info.size = 0;
- 
--	err = vpu_dec_init(&inst->vpu);
--	if (err) {
--		mtk_vdec_err(ctx, "vdec_h264 init err=%d", err);
--		goto error_free_inst;
-+	inst->vsi_ex->err_map.dma_addr = lat_buf->wdma_err_addr.dma_addr;
-+	inst->vsi_ex->err_map.size = lat_buf->wdma_err_addr.size;
-+
-+	inst->vsi_ex->slice_bc.dma_addr = lat_buf->slice_bc_addr.dma_addr;
-+	inst->vsi_ex->slice_bc.size = lat_buf->slice_bc_addr.size;
-+
-+	inst->vsi_ex->trans.dma_addr_end = inst->ctx->msg_queue.wdma_rptr_addr;
-+	inst->vsi_ex->trans.dma_addr = inst->ctx->msg_queue.wdma_wptr_addr;
-+}
-+
-+static int vdec_h264_slice_setup_core_buffer_ex(struct vdec_h264_slice_inst *inst,
-+						struct vdec_h264_slice_share_info *share_info,
-+						struct vdec_lat_buf *lat_buf)
-+{
-+	struct mtk_vcodec_mem *mem;
-+	struct mtk_vcodec_dec_ctx *ctx = inst->ctx;
-+	struct vb2_v4l2_buffer *vb2_v4l2;
-+	struct vdec_fb *fb;
-+	u64 y_fb_dma, c_fb_dma = 0;
-+	int i;
-+
-+	fb = ctx->dev->vdec_pdata->get_cap_buffer(ctx);
-+	if (!fb) {
-+		mtk_vdec_err(ctx, "fb buffer is NULL");
-+		return -EBUSY;
- 	}
- 
--	vsi_size = round_up(sizeof(struct vdec_h264_slice_vsi), VCODEC_DEC_ALIGNED_64);
--	inst->vsi = inst->vpu.vsi;
--	inst->vsi_core =
--		(struct vdec_h264_slice_vsi *)(((char *)inst->vpu.vsi) + vsi_size);
--	inst->resolution_changed = true;
--	inst->realloc_mv_buf = true;
-+	y_fb_dma = (u64)fb->base_y.dma_addr;
-+	if (ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes == 1)
-+		c_fb_dma =
-+			y_fb_dma + inst->ctx->picinfo.buf_w * inst->ctx->picinfo.buf_h;
-+	else
-+		c_fb_dma = (u64)fb->base_c.dma_addr;
- 
--	mtk_vdec_debug(ctx, "lat struct size = %d,%d,%d,%d vsi: %d\n",
--		       (int)sizeof(struct mtk_h264_sps_param),
--		       (int)sizeof(struct mtk_h264_pps_param),
--		       (int)sizeof(struct vdec_h264_slice_lat_dec_param),
--		       (int)sizeof(struct mtk_h264_dpb_info),
--		       vsi_size);
--	mtk_vdec_debug(ctx, "lat H264 instance >> %p, codec_type = 0x%x",
--		       inst, inst->vpu.codec_type);
-+	mtk_vdec_debug(ctx, "[h264-core] y/c addr = 0x%llx 0x%llx", y_fb_dma, c_fb_dma);
- 
--	ctx->drv_handle = inst;
--	return 0;
-+	inst->vsi_core_ex->fb.y.dma_addr = y_fb_dma;
-+	inst->vsi_core_ex->fb.y.size = ctx->picinfo.fb_sz[0];
-+	inst->vsi_core_ex->fb.c.dma_addr = c_fb_dma;
-+	inst->vsi_core_ex->fb.c.size = ctx->picinfo.fb_sz[1];
- 
--error_free_inst:
--	kfree(inst);
--	return err;
-+	inst->vsi_core_ex->dec.vdec_fb_va = (unsigned long)fb;
-+	inst->vsi_core_ex->dec.nal_info = share_info->nal_info;
-+
-+	inst->vsi_core_ex->ube.dma_addr = lat_buf->ctx->msg_queue.wdma_addr.dma_addr;
-+	inst->vsi_core_ex->ube.size = lat_buf->ctx->msg_queue.wdma_addr.size;
-+
-+	inst->vsi_core_ex->err_map.dma_addr = lat_buf->wdma_err_addr.dma_addr;
-+	inst->vsi_core_ex->err_map.size = lat_buf->wdma_err_addr.size;
-+
-+	inst->vsi_core_ex->slice_bc.dma_addr = lat_buf->slice_bc_addr.dma_addr;
-+	inst->vsi_core_ex->slice_bc.size = lat_buf->slice_bc_addr.size;
-+
-+	inst->vsi_core_ex->row_info.dma_addr = 0;
-+	inst->vsi_core_ex->row_info.size = 0;
-+
-+	inst->vsi_core_ex->trans.dma_addr = share_info->trans_start;
-+	inst->vsi_core_ex->trans.dma_addr_end = share_info->trans_end;
-+
-+	for (i = 0; i < H264_MAX_MV_NUM; i++) {
-+		mem = &inst->mv_buf[i];
-+		inst->vsi_core_ex->mv_buf_dma[i].dma_addr = mem->dma_addr;
-+		inst->vsi_core_ex->mv_buf_dma[i].size = mem->size;
-+	}
-+
-+	vb2_v4l2 = v4l2_m2m_next_dst_buf(ctx->m2m_ctx);
-+	v4l2_m2m_buf_copy_metadata(&lat_buf->ts_info, vb2_v4l2, true);
-+
-+	return 0;
- }
- 
--static void vdec_h264_slice_deinit(void *h_vdec)
-+static int vdec_h264_slice_core_decode_ex(struct vdec_lat_buf *lat_buf)
- {
--	struct vdec_h264_slice_inst *inst = h_vdec;
-+	int err, timeout;
-+	struct mtk_vcodec_dec_ctx *ctx = lat_buf->ctx;
-+	struct vdec_h264_slice_inst *inst = ctx->drv_handle;
-+	struct vdec_h264_slice_share_info *share_info = lat_buf->private_data;
-+	struct vdec_vpu_inst *vpu = &inst->vpu;
- 
--	vpu_dec_deinit(&inst->vpu);
--	vdec_h264_slice_free_mv_buf(inst);
--	vdec_msg_queue_deinit(&inst->ctx->msg_queue, inst->ctx);
-+	mtk_vdec_debug(ctx, "[h264-core] vdec_h264 core decode");
-+	memcpy(&inst->vsi_core_ex->h264_slice_params, &share_info->h264_slice_params,
-+	       sizeof(share_info->h264_slice_params));
- 
--	kfree(inst);
-+	err = vdec_h264_slice_setup_core_buffer_ex(inst, share_info, lat_buf);
-+	if (err)
-+		goto vdec_dec_end;
-+
-+	vdec_h264_slice_fill_decode_reflist(inst, &inst->vsi_core_ex->h264_slice_params,
-+					    share_info);
-+	err = vpu_dec_core(vpu);
-+	if (err) {
-+		mtk_vdec_err(ctx, "core decode err=%d", err);
-+		goto vdec_dec_end;
-+	}
-+
-+	/* wait decoder done interrupt */
-+	timeout = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
-+					       WAIT_INTR_TIMEOUT_MS, MTK_VDEC_CORE);
-+	if (timeout)
-+		mtk_vdec_err(ctx, "core decode timeout: pic_%d", ctx->decoded_frame_cnt);
-+	inst->vsi_core_ex->dec.timeout = !!timeout;
-+
-+	vpu_dec_core_end(vpu);
-+	mtk_vdec_debug(ctx, "pic[%d] crc: 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x",
-+		       ctx->decoded_frame_cnt,
-+		       inst->vsi_core_ex->dec.crc[0], inst->vsi_core_ex->dec.crc[1],
-+		       inst->vsi_core_ex->dec.crc[2], inst->vsi_core_ex->dec.crc[3],
-+		       inst->vsi_core_ex->dec.crc[4], inst->vsi_core_ex->dec.crc[5],
-+		       inst->vsi_core_ex->dec.crc[6], inst->vsi_core_ex->dec.crc[7]);
-+
-+vdec_dec_end:
-+	vdec_msg_queue_update_ube_rptr(&lat_buf->ctx->msg_queue, share_info->trans_end);
-+	ctx->dev->vdec_pdata->cap_to_disp(ctx, !!err, lat_buf->src_buf_req);
-+	mtk_vdec_debug(ctx, "core decode done err=%d", err);
-+	ctx->decoded_frame_cnt++;
-+	return 0;
- }
- 
- static int vdec_h264_slice_core_decode(struct vdec_lat_buf *lat_buf)
-@@ -559,6 +728,127 @@ static void vdec_h264_insert_startcode(struct mtk_vcodec_dec_dev *vcodec_dev, un
- 	(*bs_size) += 4;
- }
- 
-+static int vdec_h264_slice_lat_decode_ex(void *h_vdec, struct mtk_vcodec_mem *bs,
-+					 struct vdec_fb *fb, bool *res_chg)
-+{
-+	struct vdec_h264_slice_inst *inst = h_vdec;
-+	struct vdec_vpu_inst *vpu = &inst->vpu;
-+	struct mtk_video_dec_buf *src_buf_info;
-+	int err, timeout = 0;
-+	unsigned int data[2];
-+	struct vdec_lat_buf *lat_buf;
-+	struct vdec_h264_slice_share_info *share_info;
-+
-+	if (vdec_msg_queue_init(&inst->ctx->msg_queue, inst->ctx,
-+				vdec_h264_slice_core_decode_ex,
-+				sizeof(*share_info)))
-+		return -ENOMEM;
-+
-+	/* bs NULL means flush decoder */
-+	if (!bs) {
-+		vdec_msg_queue_wait_lat_buf_full(&inst->ctx->msg_queue);
-+		return vpu_dec_reset(vpu);
-+	}
-+
-+	if (inst->is_field_bitstream)
-+		return -EINVAL;
-+
-+	lat_buf = vdec_msg_queue_dqbuf(&inst->ctx->msg_queue.lat_ctx);
-+	if (!lat_buf) {
-+		mtk_vdec_debug(inst->ctx, "failed to get lat buffer");
-+		return -EAGAIN;
-+	}
-+	share_info = lat_buf->private_data;
-+	src_buf_info = container_of(bs, struct mtk_video_dec_buf, bs_buffer);
-+
-+	lat_buf->src_buf_req = src_buf_info->m2m_buf.vb.vb2_buf.req_obj.req;
-+	v4l2_m2m_buf_copy_metadata(&src_buf_info->m2m_buf.vb, &lat_buf->ts_info, true);
-+
-+	err = vdec_h264_slice_fill_decode_parameters(inst, share_info,
-+						     &inst->vsi_ex->h264_slice_params);
-+	if (err)
-+		goto err_free_fb_out;
-+
-+	vdec_h264_insert_startcode(inst->ctx->dev, bs->va, &bs->size,
-+				   &share_info->h264_slice_params.pps);
-+
-+	*res_chg = inst->resolution_changed;
-+	if (inst->resolution_changed) {
-+		mtk_vdec_debug(inst->ctx, "- resolution changed -");
-+		if (inst->realloc_mv_buf) {
-+			err = vdec_h264_slice_alloc_mv_buf(inst, &inst->ctx->picinfo);
-+			inst->realloc_mv_buf = false;
-+			if (err)
-+				goto err_free_fb_out;
-+		}
-+		inst->resolution_changed = false;
-+	}
-+
-+	vdec_h264_slice_setup_lat_buffer_ex(inst, bs, lat_buf);
-+	mtk_vdec_debug(inst->ctx, "lat:trans(0x%llx 0x%lx) err:0x%llx",
-+		       inst->vsi_ex->ube.dma_addr, (unsigned long)inst->vsi_ex->ube.size,
-+		       inst->vsi_ex->err_map.dma_addr);
-+
-+	mtk_vdec_debug(inst->ctx, "slice(0x%llx 0x%lx) rprt((0x%llx 0x%llx))",
-+		       inst->vsi_ex->slice_bc.dma_addr, (unsigned long)inst->vsi_ex->slice_bc.size,
-+		       inst->vsi_ex->trans.dma_addr, inst->vsi_ex->trans.dma_addr_end);
-+
-+	err = vpu_dec_start(vpu, data, 2);
-+	if (err) {
-+		mtk_vdec_debug(inst->ctx, "lat decode err: %d", err);
-+		goto err_free_fb_out;
-+	}
-+
-+	share_info->trans_end = inst->ctx->msg_queue.wdma_addr.dma_addr +
-+		inst->vsi_ex->dec.wdma_end_addr_offset;
-+
-+	share_info->trans_start = inst->ctx->msg_queue.wdma_wptr_addr;
-+	share_info->nal_info = inst->vsi_ex->dec.nal_info;
-+
-+	if (IS_VDEC_INNER_RACING(inst->ctx->dev->dec_capability)) {
-+		memcpy(&share_info->h264_slice_params, &inst->vsi_ex->h264_slice_params,
-+		       sizeof(share_info->h264_slice_params));
-+		vdec_msg_queue_qbuf(&inst->ctx->msg_queue.core_ctx, lat_buf);
-+	}
-+
-+	/* wait decoder done interrupt */
-+	timeout = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
-+					       WAIT_INTR_TIMEOUT_MS, MTK_VDEC_LAT0);
-+	if (timeout)
-+		mtk_vdec_err(inst->ctx, "lat decode timeout: pic_%d", inst->slice_dec_num);
-+	inst->vsi_ex->dec.timeout = !!timeout;
-+
-+	err = vpu_dec_end(vpu);
-+	if (err == SLICE_HEADER_FULL || err == TRANS_BUFFER_FULL) {
-+		if (!IS_VDEC_INNER_RACING(inst->ctx->dev->dec_capability))
-+			vdec_msg_queue_qbuf(&inst->ctx->msg_queue.lat_ctx, lat_buf);
-+		inst->slice_dec_num++;
-+		mtk_vdec_err(inst->ctx, "lat dec fail: pic_%d err:%d", inst->slice_dec_num, err);
-+		return -EINVAL;
-+	}
-+
-+	share_info->trans_end = inst->ctx->msg_queue.wdma_addr.dma_addr +
-+		inst->vsi_ex->dec.wdma_end_addr_offset;
-+
-+	vdec_msg_queue_update_ube_wptr(&lat_buf->ctx->msg_queue, share_info->trans_end);
-+
-+	if (!IS_VDEC_INNER_RACING(inst->ctx->dev->dec_capability)) {
-+		memcpy(&share_info->h264_slice_params, &inst->vsi_ex->h264_slice_params,
-+		       sizeof(share_info->h264_slice_params));
-+		vdec_msg_queue_qbuf(&inst->ctx->msg_queue.core_ctx, lat_buf);
-+	}
-+	mtk_vdec_debug(inst->ctx, "dec num: %d lat crc: 0x%x 0x%x 0x%x", inst->slice_dec_num,
-+		       inst->vsi_ex->dec.crc[0], inst->vsi_ex->dec.crc[1],
-+		       inst->vsi_ex->dec.crc[2]);
-+
-+	inst->slice_dec_num++;
-+	return 0;
-+err_free_fb_out:
-+	vdec_msg_queue_qbuf(&inst->ctx->msg_queue.lat_ctx, lat_buf);
-+	mtk_vdec_err(inst->ctx, "slice dec number: %d err: %d", inst->slice_dec_num, err);
-+	return err;
-+}
-+
- static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 				      struct vdec_fb *fb, bool *res_chg)
- {
-@@ -704,18 +994,17 @@ static int vdec_h264_slice_lat_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 	return err;
- }
- 
--static int vdec_h264_slice_single_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
--					 struct vdec_fb *unused, bool *res_chg)
-+static int vdec_h264_slice_single_decode_ex(void *h_vdec, struct mtk_vcodec_mem *bs,
-+					    struct vdec_fb *unused, bool *res_chg)
- {
- 	struct vdec_h264_slice_inst *inst = h_vdec;
- 	struct vdec_vpu_inst *vpu = &inst->vpu;
- 	struct mtk_video_dec_buf *src_buf_info, *dst_buf_info;
- 	struct vdec_fb *fb;
--	unsigned char *buf;
- 	unsigned int data[2], i;
- 	u64 y_fb_dma, c_fb_dma;
- 	struct mtk_vcodec_mem *mem;
--	int err, nal_start_idx;
-+	int err;
- 
- 	/* bs NULL means flush decoder */
- 	if (!bs)
-@@ -735,6 +1024,96 @@ static int vdec_h264_slice_single_decode(void *h_vdec, struct mtk_vcodec_mem *bs
- 	mtk_vdec_debug(inst->ctx, "[h264-dec] [%d] y_dma=%llx c_dma=%llx",
- 		       inst->ctx->decoded_frame_cnt, y_fb_dma, c_fb_dma);
- 
-+	inst->vsi_ctx_ex.bs.dma_addr = (u64)bs->dma_addr;
-+	inst->vsi_ctx_ex.bs.size = bs->size;
-+	inst->vsi_ctx_ex.fb.y.dma_addr = y_fb_dma;
-+	inst->vsi_ctx_ex.fb.c.dma_addr = c_fb_dma;
-+	inst->vsi_ctx_ex.dec.vdec_fb_va = (u64)(uintptr_t)fb;
-+
-+	v4l2_m2m_buf_copy_metadata(&src_buf_info->m2m_buf.vb,
-+				   &dst_buf_info->m2m_buf.vb, true);
-+	err = get_vdec_sig_decode_parameters(inst);
-+	if (err)
-+		goto err_free_fb_out;
-+
-+	memcpy(&inst->vsi_ctx_ex.h264_slice_params, &inst->h264_slice_param,
-+	       sizeof(inst->vsi_ctx_ex.h264_slice_params));
-+
-+	*res_chg = inst->resolution_changed;
-+	if (inst->resolution_changed) {
-+		mtk_vdec_debug(inst->ctx, "- resolution changed -");
-+		if (inst->realloc_mv_buf) {
-+			err = vdec_h264_slice_alloc_mv_buf(inst, &inst->ctx->picinfo);
-+			inst->realloc_mv_buf = false;
-+			if (err)
-+				goto err_free_fb_out;
-+		}
-+		inst->resolution_changed = false;
-+
-+		for (i = 0; i < H264_MAX_MV_NUM; i++) {
-+			mem = &inst->mv_buf[i];
-+			inst->vsi_ctx_ex.mv_buf_dma[i].dma_addr = mem->dma_addr;
-+		}
-+	}
-+
-+	memcpy(inst->vpu.vsi, &inst->vsi_ctx_ex, sizeof(inst->vsi_ctx_ex));
-+	err = vpu_dec_start(vpu, data, 2);
-+	if (err)
-+		goto err_free_fb_out;
-+
-+	/* wait decoder done interrupt */
-+	err = mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
-+					   WAIT_INTR_TIMEOUT_MS, MTK_VDEC_CORE);
-+	if (err)
-+		mtk_vdec_err(inst->ctx, "decode timeout: pic_%d", inst->ctx->decoded_frame_cnt);
-+
-+	inst->vsi_ex->dec.timeout = !!err;
-+	err = vpu_dec_end(vpu);
-+	if (err)
-+		goto err_free_fb_out;
-+
-+	memcpy(&inst->vsi_ctx_ex, inst->vpu.vsi, sizeof(inst->vsi_ctx_ex));
-+	mtk_vdec_debug(inst->ctx, "pic[%d] crc: 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x",
-+		       inst->ctx->decoded_frame_cnt,
-+		       inst->vsi_ctx_ex.dec.crc[0], inst->vsi_ctx_ex.dec.crc[1],
-+		       inst->vsi_ctx_ex.dec.crc[2], inst->vsi_ctx_ex.dec.crc[3],
-+		       inst->vsi_ctx_ex.dec.crc[4], inst->vsi_ctx_ex.dec.crc[5],
-+		       inst->vsi_ctx_ex.dec.crc[6], inst->vsi_ctx_ex.dec.crc[7]);
-+
-+	inst->ctx->decoded_frame_cnt++;
-+	return 0;
-+
-+err_free_fb_out:
-+	mtk_vdec_err(inst->ctx, "dec frame number: %d err: %d", inst->ctx->decoded_frame_cnt, err);
-+	return err;
-+}
-+
-+static int vdec_h264_slice_single_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
-+					 struct vdec_fb *unused, bool *res_chg)
-+{
-+	struct vdec_h264_slice_inst *inst = h_vdec;
-+	struct vdec_vpu_inst *vpu = &inst->vpu;
-+	struct mtk_video_dec_buf *src_buf_info, *dst_buf_info;
-+	struct vdec_fb *fb;
-+	unsigned char *buf;
-+	unsigned int data[2], i;
-+	u64 y_fb_dma, c_fb_dma;
-+	struct mtk_vcodec_mem *mem;
-+	int err, nal_start_idx;
-+
-+	/* bs NULL means flush decoder */
-+	if (!bs)
-+		return vpu_dec_reset(vpu);
-+
-+	fb = inst->ctx->dev->vdec_pdata->get_cap_buffer(inst->ctx);
-+	src_buf_info = container_of(bs, struct mtk_video_dec_buf, bs_buffer);
-+	dst_buf_info = container_of(fb, struct mtk_video_dec_buf, frame_buffer);
-+
-+	y_fb_dma = fb ? (u64)fb->base_y.dma_addr : 0;
-+	c_fb_dma = fb ? (u64)fb->base_c.dma_addr : 0;
-+	mtk_vdec_debug(inst->ctx, "[h264-dec] [%d] y_dma=%llx c_dma=%llx",
-+		       inst->ctx->decoded_frame_cnt, y_fb_dma, c_fb_dma);
-+
- 	inst->vsi_ctx.dec.bs_buf_addr = (u64)bs->dma_addr;
- 	inst->vsi_ctx.dec.bs_buf_size = bs->size;
- 	inst->vsi_ctx.dec.y_fb_dma = y_fb_dma;
-@@ -807,21 +1186,95 @@ static int vdec_h264_slice_single_decode(void *h_vdec, struct mtk_vcodec_mem *bs
- 	return err;
- }
- 
-+static int vdec_h264_slice_init(struct mtk_vcodec_dec_ctx *ctx)
-+{
-+	struct vdec_h264_slice_inst *inst;
-+	int err, vsi_size;
-+	unsigned char *temp;
-+
-+	inst = kzalloc(sizeof(*inst), GFP_KERNEL);
-+	if (!inst)
-+		return -ENOMEM;
-+
-+	inst->ctx = ctx;
-+
-+	inst->vpu.id = SCP_IPI_VDEC_LAT;
-+	inst->vpu.core_id = SCP_IPI_VDEC_CORE;
-+	inst->vpu.ctx = ctx;
-+	inst->vpu.codec_type = ctx->current_codec;
-+	inst->vpu.capture_type = ctx->capture_fourcc;
-+
-+	err = vpu_dec_init(&inst->vpu);
-+	if (err) {
-+		mtk_vdec_err(ctx, "vdec_h264 init err=%d", err);
-+		goto error_free_inst;
-+	}
-+
-+	if (IS_VDEC_SUPPORT_EX(ctx->dev->dec_capability)) {
-+		vsi_size = sizeof(struct vdec_h264_slice_vsi_ex);
-+
-+		vsi_size = round_up(vsi_size, VCODEC_DEC_ALIGNED_64);
-+		inst->vsi_ex = inst->vpu.vsi;
-+		temp = (unsigned char *)inst->vsi_ex;
-+		inst->vsi_core_ex = (struct vdec_h264_slice_vsi_ex *)(temp + vsi_size);
-+
-+		if (inst->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_PURE_SINGLE_CORE)
-+			inst->decode = vdec_h264_slice_single_decode_ex;
-+		else
-+			inst->decode = vdec_h264_slice_lat_decode_ex;
-+	} else {
-+		vsi_size = sizeof(struct vdec_h264_slice_vsi);
-+
-+		vsi_size = round_up(vsi_size, VCODEC_DEC_ALIGNED_64);
-+		inst->vsi = inst->vpu.vsi;
-+		temp = (unsigned char *)inst->vsi;
-+		inst->vsi_core = (struct vdec_h264_slice_vsi *)(temp + vsi_size);
-+
-+		if (inst->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_PURE_SINGLE_CORE)
-+			inst->decode = vdec_h264_slice_single_decode;
-+		else
-+			inst->decode = vdec_h264_slice_lat_decode;
-+	}
-+	inst->resolution_changed = true;
-+	inst->realloc_mv_buf = true;
-+
-+	mtk_vdec_debug(ctx, "lat struct size = %d,%d,%d,%d vsi: %d\n",
-+		       (int)sizeof(struct mtk_h264_sps_param),
-+		       (int)sizeof(struct mtk_h264_pps_param),
-+		       (int)sizeof(struct vdec_h264_slice_lat_dec_param),
-+		       (int)sizeof(struct mtk_h264_dpb_info),
-+		       vsi_size);
-+	mtk_vdec_debug(ctx, "lat H264 instance >> %p, codec_type = 0x%x",
-+		       inst, inst->vpu.codec_type);
-+
-+	ctx->drv_handle = inst;
-+	return 0;
-+
-+error_free_inst:
-+	kfree(inst);
-+	return err;
-+}
-+
-+static void vdec_h264_slice_deinit(void *h_vdec)
-+{
-+	struct vdec_h264_slice_inst *inst = h_vdec;
-+
-+	vpu_dec_deinit(&inst->vpu);
-+	vdec_h264_slice_free_mv_buf(inst);
-+	vdec_msg_queue_deinit(&inst->ctx->msg_queue, inst->ctx);
-+
-+	kfree(inst);
-+}
-+
- static int vdec_h264_slice_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 				  struct vdec_fb *unused, bool *res_chg)
- {
- 	struct vdec_h264_slice_inst *inst = h_vdec;
--	int ret;
- 
- 	if (!h_vdec)
- 		return -EINVAL;
- 
--	if (inst->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_PURE_SINGLE_CORE)
--		ret = vdec_h264_slice_single_decode(h_vdec, bs, unused, res_chg);
--	else
--		ret = vdec_h264_slice_lat_decode(h_vdec, bs, unused, res_chg);
--
--	return ret;
-+	return inst->decode(h_vdec, bs, unused, res_chg);
- }
- 
- static int vdec_h264_slice_get_param(void *h_vdec, enum vdec_get_param_type type,
--- 
-2.46.0
+thanks
 
+Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com>
+=E4=BA=8E2024=E5=B9=B410=E6=9C=8821=E6=97=A5=E5=91=A8=E4=B8=80 15:27=E5=86=
+=99=E9=81=93=EF=BC=9A
+>
+> MT8186 chinchou, known as ASUS Chromebook CZ12 Flip (CZ1204F)
+> and CZ12(CZ1204C), is a MT8186 based laptop.
+> It is based on the "corsola" design.It includes chinchou and chinchou360,
+> including LTE, stylus, touchscreen combinations.
+>
+> Signed-off-by: Zhengqiao Xia <xiazhengqiao@huaqin.corp-partner.google.com=
+>
+> ---
+>  arch/arm64/boot/dts/mediatek/Makefile         |   3 +
+>  .../mediatek/mt8186-corsola-chinchou-sku0.dts |  18 +
+>  .../mediatek/mt8186-corsola-chinchou-sku1.dts |  35 ++
+>  .../mt8186-corsola-chinchou-sku16.dts         |  29 ++
+>  .../dts/mediatek/mt8186-corsola-chinchou.dtsi | 321 ++++++++++++++++++
+>  5 files changed, 406 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-=
+sku0.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-=
+sku1.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-=
+sku16.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.=
+dtsi
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/=
+mediatek/Makefile
+> index 8fd7b2bb7a15..0db7770e8907 100644
+> --- a/arch/arm64/boot/dts/mediatek/Makefile
+> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> @@ -55,6 +55,9 @@ dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-kukui-kodama-sk=
+u32.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-kukui-krane-sku0.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-kukui-krane-sku176.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8183-pumpkin.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-chinchou-sku0.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-chinchou-sku1.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-chinchou-sku16.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-magneton-sku393216.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-magneton-sku393217.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8186-corsola-magneton-sku393218.dtb
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dt=
+s b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts
+> new file mode 100644
+> index 000000000000..5d012bc4ff0d
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku0.dts
+> @@ -0,0 +1,18 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright 2024 Google LLC
+> + */
+> +
+> +/dts-v1/;
+> +#include "mt8186-corsola-chinchou.dtsi"
+> +
+> +/ {
+> +       model =3D "Google chinchou CZ1104CM2A/CZ1204CM2A";
+> +       compatible =3D "google,chinchou-sku0", "google,chinchou-sku2",
+> +                       "google,chinchou-sku4", "google,chinchou-sku5",
+> +                       "google,chinchou", "mediatek,mt8186";
+> +};
+> +
+> +&gpio_keys {
+> +       status =3D "disabled";
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dt=
+s b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts
+> new file mode 100644
+> index 000000000000..c18f473f6a0f
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku1.dts
+> @@ -0,0 +1,35 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright 2024 Google LLC
+> + */
+> +
+> +/dts-v1/;
+> +#include "mt8186-corsola-chinchou.dtsi"
+> +
+> +/ {
+> +       model =3D "Google chinchou CZ1104FM2A/CZ1204FM2A/CZ1104CM2A/CZ120=
+4CM2A";
+> +       compatible =3D "google,chinchou-sku1", "google,chinchou-sku17",
+> +                       "google,chinchou-sku3", "google,chinchou-sku6",
+> +                       "google,chinchou-sku7", "google,chinchou-sku20",
+> +                       "google,chinchou-sku22", "google,chinchou-sku23",
+> +                       "google,chinchou", "mediatek,mt8186";
+> +};
+> +
+> +&gpio_keys {
+> +       status =3D "disabled";
+> +};
+> +
+> +&i2c1 {
+> +       i2c-scl-internal-delay-ns =3D <10000>;
+> +
+> +       touchscreen: touchscreen@41 {
+> +               compatible =3D "ilitek,ili2901";
+> +               reg =3D <0x41>;
+> +               interrupts-extended =3D <&pio 12 IRQ_TYPE_LEVEL_LOW>;
+> +               pinctrl-names =3D "default";
+> +               pinctrl-0 =3D <&touchscreen_pins>;
+> +               reset-gpios =3D <&pio 60 GPIO_ACTIVE_LOW>;
+> +               vccio-supply =3D <&pp1800_tchscr_report_disable>;
+> +               vcc33-supply =3D <&pp3300_z2>;
+> +       };
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.d=
+ts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts
+> new file mode 100644
+> index 000000000000..eb377de1fcde
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou-sku16.dts
+> @@ -0,0 +1,29 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright 2024 Google LLC
+> + */
+> +
+> +/dts-v1/;
+> +#include "mt8186-corsola-chinchou.dtsi"
+> +
+> +/ {
+> +       model =3D "Google chinchou CZ1104FM2A/CZ1204FM2A";
+> +       compatible =3D "google,chinchou-sku16", "google,chinchou-sku18",
+> +                       "google,chinchou-sku19", "google,chinchou-sku21",
+> +                       "google,chinchou", "mediatek,mt8186";
+> +};
+> +
+> +&i2c1 {
+> +       i2c-scl-internal-delay-ns =3D <10000>;
+> +
+> +       touchscreen: touchscreen@41 {
+> +               compatible =3D "ilitek,ili2901";
+> +               reg =3D <0x41>;
+> +               interrupts-extended =3D <&pio 12 IRQ_TYPE_LEVEL_LOW>;
+> +               pinctrl-names =3D "default";
+> +               pinctrl-0 =3D <&touchscreen_pins>;
+> +               reset-gpios =3D <&pio 60 GPIO_ACTIVE_LOW>;
+> +               vccio-supply =3D <&pp1800_tchscr_report_disable>;
+> +               vcc33-supply =3D <&pp3300_z2>;
+> +       };
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi b/=
+arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
+> new file mode 100644
+> index 000000000000..389f8b66e968
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-chinchou.dtsi
+> @@ -0,0 +1,321 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright 2024 Google LLC
+> + */
+> +
+> +/dts-v1/;
+> +#include "mt8186-corsola.dtsi"
+> +
+> +/ {
+> +       /delete-node/ speaker-codec;
+> +
+> +       pp1000_edpbrdg: regulator-pp1000-edpbrdg {
+> +               compatible =3D "regulator-fixed";
+> +               regulator-name =3D "pp1000_edpbrdg";
+> +               pinctrl-names =3D "default";
+> +               pinctrl-0 =3D <&en_pp1000_edpbrdg>;
+> +               enable-active-high;
+> +               regulator-boot-on;
+> +               gpio =3D <&pio 29 GPIO_ACTIVE_HIGH>;
+> +               vin-supply =3D <&pp3300_z2>;
+> +       };
+> +
+> +       pp1800_edpbrdg_dx: regulator-pp1800-edpbrdg-dx {
+> +               compatible =3D "regulator-fixed";
+> +               regulator-name =3D "pp1800_edpbrdg_dx";
+> +               pinctrl-names =3D "default";
+> +               pinctrl-0 =3D <&en_pp1800_edpbrdg>;
+> +               enable-active-high;
+> +               regulator-boot-on;
+> +               gpio =3D <&pio 30 GPIO_ACTIVE_HIGH>;
+> +               vin-supply =3D <&mt6366_vio18_reg>;
+> +       };
+> +
+> +       pp3300_edp_dx: regulator-pp3300-edp-dx {
+> +               compatible =3D "regulator-fixed";
+> +               regulator-name =3D "pp3300_edp_dx";
+> +               pinctrl-names =3D "default";
+> +               pinctrl-0 =3D <&en_pp3300_edpbrdg>;
+> +               enable-active-high;
+> +               regulator-boot-on;
+> +               gpio =3D <&pio 31 GPIO_ACTIVE_HIGH>;
+> +               vin-supply =3D <&pp3300_z2>;
+> +       };
+> +
+> +       pp1800_tchscr_report_disable: regulator-pp1800-tchscr-report-disa=
+ble {
+> +               compatible =3D "regulator-fixed";
+> +               regulator-name =3D "pp1800_tchscr_report_disable";
+> +               pinctrl-names =3D "default";
+> +               regulator-boot-on;
+> +               pinctrl-0 =3D <&touch_pin_report>;
+> +               gpio =3D <&pio 37 GPIO_ACTIVE_LOW>;
+> +       };
+> +};
+> +
+> +&dsi_out {
+> +       remote-endpoint =3D <&anx7625_in>;
+> +};
+> +
+> +&i2c0 {
+> +       clock-frequency =3D <400000>;
+> +
+> +       anx_bridge: anx7625@58 {
+> +               compatible =3D "analogix,anx7625";
+> +               reg =3D <0x58>;
+> +               pinctrl-names =3D "default";
+> +               pinctrl-0 =3D <&anx7625_pins>;
+> +               enable-gpios =3D <&pio 96 GPIO_ACTIVE_HIGH>;
+> +               reset-gpios =3D <&pio 98 GPIO_ACTIVE_HIGH>;
+> +               vdd10-supply =3D <&pp1000_edpbrdg>;
+> +               vdd18-supply =3D <&pp1800_edpbrdg_dx>;
+> +               vdd33-supply =3D <&pp3300_edp_dx>;
+> +               analogix,lane0-swing =3D /bits/ 8 <0x70 0x30>;
+> +               analogix,lane1-swing =3D /bits/ 8 <0x70 0x30>;
+> +
+> +               ports {
+> +                       #address-cells =3D <1>;
+> +                       #size-cells =3D <0>;
+> +
+> +                       port@0 {
+> +                               reg =3D <0>;
+> +
+> +                               anx7625_in: endpoint {
+> +                                       remote-endpoint =3D <&dsi_out>;
+> +                                       data-lanes =3D <0 1 2 3>;
+> +                               };
+> +                       };
+> +
+> +                       port@1 {
+> +                               reg =3D <1>;
+> +
+> +                               anx7625_out: endpoint {
+> +                                       remote-endpoint =3D <&panel_in>;
+> +                               };
+> +                       };
+> +               };
+> +
+> +               aux-bus {
+> +                       panel: panel {
+> +                               compatible =3D "edp-panel";
+> +                               power-supply =3D <&pp3300_disp_x>;
+> +                               backlight =3D <&backlight_lcd0>;
+> +
+> +                               port {
+> +                                       panel_in: endpoint {
+> +                                               remote-endpoint =3D <&anx=
+7625_out>;
+> +                                       };
+> +                               };
+> +                       };
+> +               };
+> +       };
+> +};
+> +
+> +&i2c2 {
+> +       /delete-node/ trackpad@15;
+> +
+> +       touchpad@15 {
+> +               compatible =3D "hid-over-i2c";
+> +               reg =3D <0x15>;
+> +               interrupts-extended =3D <&pio 11 IRQ_TYPE_LEVEL_LOW>;
+> +               post-power-on-delay-ms =3D <10>;
+> +               hid-descr-addr =3D <0x0001>;
+> +               vdd-supply =3D <&pp3300_s3>;
+> +               wakeup-source;
+> +       };
+> +};
+> +
+> +&i2c5 {
+> +       clock-frequency =3D <400000>;
+> +       /delete-node/ codec@1a;
+> +
+> +       rt5650: rt5650@1a {
+> +               compatible =3D "realtek,rt5650";
+> +               reg =3D <0x1a>;
+> +               avdd-supply =3D <&mt6366_vio18_reg>;
+> +               cpvdd-supply =3D <&mt6366_vio18_reg>;
+> +               pinctrl-names =3D "default";
+> +               pinctrl-0 =3D <&rt1019p_pins_default>;
+> +               cbj-sleeve-gpios =3D <&pio 150 GPIO_ACTIVE_HIGH>;
+> +               interrupt-parent =3D <&pio>;
+> +               interrupts =3D <17 IRQ_TYPE_EDGE_BOTH>;
+> +               #sound-dai-cells =3D <0>;
+> +               realtek,dmic1-data-pin =3D <2>;
+> +               realtek,jd-mode =3D <2>;
+> +       };
+> +};
+> +
+> +&i2c_tunnel {
+> +       /delete-node/ sbs-battery@b;
+> +
+> +       battery: sbs-battery@f {
+> +               compatible =3D "sbs,sbs-battery";
+> +               reg =3D <0xf>;
+> +               sbs,i2c-retry-count =3D <2>;
+> +               sbs,poll-retry-count =3D <1>;
+> +       };
+> +};
+> +
+> +&keyboard_controller {
+> +       keypad,num-columns =3D <15>;
+> +
+> +       function-row-physmap =3D <
+> +               MATRIX_KEY(0x00, 0x02, 0)        /* T1 */
+> +               MATRIX_KEY(0x03, 0x02, 0)        /* T2 */
+> +               MATRIX_KEY(0x02, 0x02, 0)        /* T3 */
+> +               MATRIX_KEY(0x01, 0x02, 0)        /* T4 */
+> +               MATRIX_KEY(0x03, 0x04, 0)        /* T5 */
+> +               MATRIX_KEY(0x02, 0x04, 0)        /* T6 */
+> +               MATRIX_KEY(0x01, 0x04, 0)        /* T7 */
+> +               MATRIX_KEY(0x02, 0x09, 0)        /* T8 */
+> +               MATRIX_KEY(0x01, 0x09, 0)        /* T9 */
+> +               MATRIX_KEY(0x00, 0x04, 0)        /* T10 */
+> +               MATRIX_KEY(0x00, 0x01, 0)        /* T11 */
+> +               MATRIX_KEY(0x01, 0x05, 0)        /* T12 */
+> +       >;
+> +
+> +       linux,keymap =3D <
+> +               CROS_STD_MAIN_KEYMAP
+> +               MATRIX_KEY(0x00, 0x02, KEY_BACK)           /* T1 */
+> +               MATRIX_KEY(0x03, 0x02, KEY_REFRESH)        /* T2 */
+> +               MATRIX_KEY(0x02, 0x02, KEY_ZOOM)           /* T3 */
+> +               MATRIX_KEY(0x01, 0x02, KEY_SCALE)          /* T4 */
+> +               MATRIX_KEY(0x03, 0x04, KEY_SYSRQ)          /* T5 */
+> +               MATRIX_KEY(0x02, 0x04, KEY_BRIGHTNESSDOWN) /* T6 */
+> +               MATRIX_KEY(0x01, 0x04, KEY_BRIGHTNESSUP)   /* T7 */
+> +               MATRIX_KEY(0x02, 0x09, KEY_MUTE)           /* T8 */
+> +               MATRIX_KEY(0x01, 0x09, KEY_VOLUMEDOWN)     /* T9 */
+> +               MATRIX_KEY(0x00, 0x04, KEY_VOLUMEUP)       /* T10 */
+> +               MATRIX_KEY(0x00, 0x01, KEY_MICMUTE)        /* T11 */
+> +               MATRIX_KEY(0x01, 0x05, KEY_CONTROLPANEL)   /* T12 */
+> +               MATRIX_KEY(0x03, 0x05, KEY_PREVIOUSSONG)   /* T13 */
+> +               MATRIX_KEY(0x00, 0x09, KEY_PLAYPAUSE)      /* T14 */
+> +               MATRIX_KEY(0x00, 0x0b, KEY_NEXTSONG)       /* T15 */
+> +               MATRIX_KEY(0x03, 0x00, KEY_LEFTMETA)       /* Search*/
+> +               MATRIX_KEY(0x01, 0x0e, KEY_LEFTCTRL)       /* Left Contro=
+l*/
+> +               MATRIX_KEY(0x06, 0x0d, KEY_LEFTALT)        /* Left ALT*/
+> +               MATRIX_KEY(0x03, 0x0e, KEY_RIGHTCTRL)      /* Right Contr=
+ol*/
+> +               MATRIX_KEY(0x06, 0x0a, KEY_BACKSLASH)      /* BACKSLASH*/
+> +       >;
+> +};
+> +
+> +&mmc1_pins_default {
+> +       pins-clk {
+> +               drive-strength =3D <MTK_DRIVE_8mA>;
+> +       };
+> +
+> +       pins-cmd-dat {
+> +               drive-strength =3D <MTK_DRIVE_8mA>;
+> +       };
+> +};
+> +
+> +&mmc1_pins_uhs {
+> +       pins-clk {
+> +               drive-strength =3D <MTK_DRIVE_8mA>;
+> +       };
+> +
+> +       pins-cmd-dat {
+> +               drive-strength =3D <MTK_DRIVE_8mA>;
+> +       };
+> +};
+> +
+> +&pen_insert {
+> +       wakeup-event-action =3D <EV_ACT_ANY>;
+> +};
+> +
+> +&pio {
+> +       anx7625_pins: anx7625-pins {
+> +               pins-int {
+> +                       pinmux =3D <PINMUX_GPIO9__FUNC_GPIO9>;
+> +                       input-enable;
+> +                       bias-disable;
+> +               };
+> +
+> +               pins-reset {
+> +                       pinmux =3D <PINMUX_GPIO98__FUNC_GPIO98>;
+> +                       output-low;
+> +               };
+> +
+> +               pins-power-en {
+> +                       pinmux =3D <PINMUX_GPIO96__FUNC_GPIO96>;
+> +                       output-low;
+> +               };
+> +       };
+> +
+> +       en_pp1000_edpbrdg: pp1000-edpbrdg-en-pins {
+> +               pins-vreg-en {
+> +                       pinmux =3D <PINMUX_GPIO29__FUNC_GPIO29>;
+> +                       output-low;
+> +               };
+> +       };
+> +
+> +       en_pp1800_edpbrdg: pp1800-edpbrdg-en-pins {
+> +               pins-vreg-en {
+> +                       pinmux =3D <PINMUX_GPIO30__FUNC_GPIO30>;
+> +                       output-low;
+> +               };
+> +       };
+> +
+> +       en_pp3300_edpbrdg: pp3300-edpbrdg-en-pins {
+> +               pins-vreg-en {
+> +                       pinmux =3D <PINMUX_GPIO31__FUNC_GPIO31>;
+> +                       output-low;
+> +               };
+> +       };
+> +
+> +       touch_pin_report: pin-report-pins {
+> +               pins-touch-en {
+> +                       pinmux =3D <PINMUX_GPIO37__FUNC_GPIO37>;
+> +                       output-low;
+> +               };
+> +       };
+> +};
+> +
+> +&sound {
+> +       compatible =3D "mediatek,mt8186-mt6366-rt5650-sound";
+> +       model =3D "mt8186_rt5650";
+> +       mediatek,adsp =3D <&adsp>;
+> +
+> +       audio-routing =3D
+> +               "Headphone", "HPOL",
+> +               "Headphone", "HPOR",
+> +               "IN1P", "Headset Mic",
+> +               "IN1N", "Headset Mic",
+> +               "Speakers", "SPOL",
+> +               "Speakers", "SPOR",
+> +               "HDMI1", "TX";
+> +
+> +       hs-playback-dai-link {
+> +               codec {
+> +                       sound-dai =3D <&rt5650>;
+> +               };
+> +       };
+> +
+> +       hs-capture-dai-link {
+> +               codec {
+> +                       sound-dai =3D <&rt5650>;
+> +               };
+> +       };
+> +
+> +       spk-share-dai-link {
+> +       };
+> +
+> +       spk-hdmi-playback-dai-link {
+> +               codec {
+> +                       sound-dai =3D <&it6505dptx>;
+> +               };
+> +       };
+> +};
+> +
+> +&touchscreen_pins {
+> +       /delete-node/ pins-report-sw;
+> +};
+> +
+> +&wifi_enable_pin {
+> +       pins-wifi-enable {
+> +               pinmux =3D <PINMUX_GPIO51__FUNC_GPIO51>;
+> +       };
+> +};
+> +
+> +&wifi_pwrseq {
+> +       reset-gpios =3D <&pio 51 GPIO_ACTIVE_LOW>;
+> +};
+> --
+> 2.17.1
+>
 
