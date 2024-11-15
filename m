@@ -4,70 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48C3DD6DDEA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Nov 2024 09:16:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6362FD6DDEC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Nov 2024 09:27:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/fDwDNM7o8FXIhZ37SVln/r0aKzC8vbsyhHAxKHRvSc=; b=gIzbjykSoqUvnK7Ey86JS6p5Vx
-	1qg/qeZ/kZW+nfK/KJBUViaD1yF15vR+dEzCZEQT/NyWlnvSoHvxab1undJNP8FQOmwB5Zd6Hb+I5
-	euX6QgRetT+TcKW1jUh1iN36vpT2R6nyU0zE35MQtOF14stYQcB2jaI41BxpFX/FgJiD8fu9xpWb6
-	KLSs12q/YlXmNgwpd5ndD6KmjlC1jXLkJwKVUnu6SRYbRKtBZqGFcsHHPrb4wYLfvUAbI23qB1eys
-	ORce8gqP5nQCM6S08nswVyoHrYcF3eq7Mf2dxw1q1n8XnbHXvLpiQg9RWtHZuOh1W6xdHnc0UVfS4
-	odIbomzg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NfnL8m/bej8ZDJjxsNFRt4XV2jjXbOwsdTV/H8z0v4E=; b=LjHuGIEhToU1EG1L4NJEsddq8r
+	FBqGB/K7ViJea6ZgttHUrkFSURuo2HC6qDE6kiq9OgyVoX4D8rh3O1OAQxOfTtP2EQ1wvA3Nr60G7
+	utKMsaLU52C81jKWSg/EwMuqhO/lWS6fKI7IpDIeALqCgdC74lcslKN0ltPIuTySslKR3i/ihyTtC
+	R/F7WuhmVdV3nrgrISiogtyIV1wAAINmHNovHQs/O4uWqW9iG5/afUdI6bz3qB2sBL5Y6NXd/gC63
+	wD13BgDhqCxcLxCVh61NkFWwm5R33zOMtr9rnqJZ4Nv6jwwkRnluecbhjjdW4tMQw6Qd95gTXdxdD
+	iF9rpEgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBsR3-000000029vT-0jN1;
-	Fri, 15 Nov 2024 09:16:13 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tBsbp-00000002BvS-23e7;
+	Fri, 15 Nov 2024 09:27:21 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tBsQ6-000000029mF-1y88;
-	Fri, 15 Nov 2024 09:15:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 3BE0EA42558;
-	Fri, 15 Nov 2024 09:13:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42AB1C4CECF;
-	Fri, 15 Nov 2024 09:15:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1731662112;
-	bh=JGcQJOfvTUFJj/MD2Hu4QlmPKdgk9EdvvQsKVG943GQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UghehhMvUJ5PBZM8CrNVwIFy42gb08UP6dc0/9g2YGdqdREUxGWlj12E1EGdUUVPF
-	 uJFPsXWpSbxPIhvHFlmimdk6iP1KNt0fqFSkjXNKYP2pgiL+bPNfYpC3wLCpTb7Web
-	 EU2qGkQs4zIggLYPL1g3bNap5ezDYxfSOS/xxxqGm06CNxzM8Z8BQjK+UK2gzbLI+J
-	 HclkiEy+zyTvy5GbJlG05s4qwrf9R2LRDGNZuR0BVnlC0EsmPbSirMVhledONdtGjN
-	 FQxCBSbA/legB2u5Z6L15iNfUHOVTClLWuvxY6bhyDgyPsc1bmd7aRGc3WNJ39vQi3
-	 Ps8e8KNwg5YXA==
-Date: Fri, 15 Nov 2024 10:15:07 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2 3/4] PCI: mediatek-gen3: Move reset/assert callbacks
- in .power_up()
-Message-ID: <ZzcRG3OInXZ2TP-Z@lore-rh-laptop>
-References: <20241109-pcie-en7581-fixes-v2-0-0ea3a4af994f@kernel.org>
- <20241109-pcie-en7581-fixes-v2-3-0ea3a4af994f@kernel.org>
- <20241115090231.nwmxl6acspxqflpc@thinkpad>
+	id 1tBsat-00000002Bln-1W8F;
+	Fri, 15 Nov 2024 09:26:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1731662781;
+	bh=Guw0XR5d0BgTLqHT6YoapFxf8RK2MKtxRUr39yYdodE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=dk/ckOrE/DWFWJW2vFRsRgMJ4FhMTQHBkF0Bi4nB+DpsWTTjAmh9Q9kjgGJH7cQDu
+	 9lwZwx4FUcJ3AgkXiTSlKhM4aK+cvrd8ghAok0SA0WFCWI+UP3qk1dNVoFRyNCmHKI
+	 lzn4f3P+bsYz0ekZ4OJAnrTTo30iuGgyIIqXEmTaQg05KbQOKuT9Nx7qLpNJJVNlSn
+	 cYCZYf4afyyG1Jy5Tb1XqEMf2k3ieULQd1mI/gBeQrpGVS/LQv83IL64YbqE6PPJ3z
+	 0DUFF9OpXm3FyEe3ZgRRqSihuGp6Vxn/nMYcGkC8XwXIeJEUa27WVZWZkmJX6SdZom
+	 7bgfL8C5k/7SA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8C76117E35D1;
+	Fri, 15 Nov 2024 10:26:20 +0100 (CET)
+Message-ID: <c681604b-d439-4815-b1d9-ad435b85b5be@collabora.com>
+Date: Fri, 15 Nov 2024 10:26:19 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="SrMGir1++zYv7uQM"
-Content-Disposition: inline
-In-Reply-To: <20241115090231.nwmxl6acspxqflpc@thinkpad>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: Set mediatek,mac-wol on
+ DWMAC node for all boards
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: Michael Walle <mwalle@kernel.org>, kernel@collabora.com,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Biao Huang <biao.huang@mediatek.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
+ Andrew Halaney <ahalaney@redhat.com>, Simon Horman <horms@kernel.org>
+References: <20241109-mediatek-mac-wol-noninverted-v2-0-0e264e213878@collabora.com>
+ <20241109-mediatek-mac-wol-noninverted-v2-2-0e264e213878@collabora.com>
+ <bdbfb1db-1291-4f95-adc9-36969bb51eb4@collabora.com>
+ <d441b614-0b71-410f-af4e-30cb164d9cd5@notapiano>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <d441b614-0b71-410f-af4e-30cb164d9cd5@notapiano>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241115_011514_682757_ABCF6694 
-X-CRM114-Status: GOOD (  26.38  )
+X-CRM114-CacheID: sfid-20241115_012623_552646_7F2373CE 
+X-CRM114-Status: GOOD (  25.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,137 +90,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 14/11/24 20:22, Nícolas F. R. A. Prado ha scritto:
+> On Thu, Nov 14, 2024 at 10:26:34AM +0100, AngeloGioacchino Del Regno wrote:
+>> Il 09/11/24 16:16, Nícolas F. R. A. Prado ha scritto:
+>>> Due to the mediatek,mac-wol property previously being handled backwards
+>>> by the dwmac-mediatek driver, its use in the DTs seems to have been
+>>> inconsistent.
+>>>
+>>> Now that the driver has been fixed, correct this description. All the
+>>> currently upstream boards support MAC WOL, so add the mediatek,mac-wol
+>>> property to the missing ones.
+>>>
+>>> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+>>> ---
+>>>    arch/arm64/boot/dts/mediatek/mt2712-evb.dts                   | 1 +
+>>>    arch/arm64/boot/dts/mediatek/mt8195-demo.dts                  | 1 +
+>>>    arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts | 1 +
+>>>    3 files changed, 3 insertions(+)
+>>>
+>>
+>> ..snip..
+>>
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+>>> index 31d424b8fc7cedef65489392eb279b7fd2194a4a..c12684e8c449b2d7b3b3a79086925bfe5ae0d8f8 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
+>>> @@ -109,6 +109,7 @@ &eth {
+>>>    	pinctrl-names = "default", "sleep";
+>>>    	pinctrl-0 = <&eth_default_pins>;
+>>>    	pinctrl-1 = <&eth_sleep_pins>;
+>>> +	mediatek,mac-wol;
+>>
+>> The demo board has the same WoL capability as the EVK, so you can avoid adding the
+>> mac-wol property here.
+> 
+> Not sure I follow... If we omit the property here it will use PHY WOL instead,
+> while the genio 1200 EVK has the property, so it will be using MAC WOL, so
+> they're already the same and omitting will make them behave differently...
+> 
+> Let me recap to make sure we're all on the same page:
+> 
+> This was the WOL configuration for each board before this series:
+> MAC mt2712-evb.dts
+> MAC mt8195-demo.dts
+> PHY mt8395-genio-1200-evk.dts
+> MAC mt8395-kontron-3-5-sbc-i1200.dts
+> PHY mt8395-radxa-nio-12l.dts
+> PHY mt8390-genio-700-evk.dts
+> 
+> After patch 1, they all get inverted:
+> PHY mt2712-evb.dts
+> PHY mt8195-demo.dts
+> MAC mt8395-genio-1200-evk.dts
+> PHY mt8395-kontron-3-5-sbc-i1200.dts
+> MAC mt8395-radxa-nio-12l.dts
+> MAC mt8390-genio-700-evk.dts
+> 
+> And after patch 2, the remaining PHY ones are set to MAC:
+> MAC mt2712-evb.dts
+> MAC mt8195-demo.dts
+> MAC mt8395-genio-1200-evk.dts
+> MAC mt8395-kontron-3-5-sbc-i1200.dts
+> MAC mt8395-radxa-nio-12l.dts
+> MAC mt8390-genio-700-evk.dts
+> 
+> The only board I have in hands and am able to test is mt8390-genio-700-evk.dts,
+> which requires MAC WOL to work. For the others, your feedback on v1 was that
+> they should all be set to MAC WOL. Except for mt2712, which you were not sure
+> about, but it was already set to MAC WOL so we're keeping the same behavior.
+> 
+> That's how we got to adding mediatek,mac-wol to mt8195-demo.dts,
+> mt8395-kontron-3-5-sbc-i1200.dts and mt2712-evb.dts. Let me know if there has
+> been some misunderstanding.
+> 
 
---SrMGir1++zYv7uQM
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+No, it's me getting confused about the current status - and I'm sorry about that.
 
-> On Sat, Nov 09, 2024 at 10:28:39AM +0100, Lorenzo Bianconi wrote:
-> > In order to make the code more readable, move phy and mac reset lines
-> > assert/de-assert configuration in .power_up() callback
-> > (mtk_pcie_en7581_power_up()/mtk_pcie_power_up()).
-> >=20
->=20
-> I don't understand how moving the code (duplicting it also) makes the cod=
-e more
-> readable. Could you please explain?
+So just ignore me saying "we can avoid adding" - we can't.
+This commit is definitely needed.
 
-Hi Manivannan,
+Cheers,
+Angelo
 
-this has been requested by Bjorn in
-https://patchwork.kernel.org/project/linux-pci/patch/aca00bd672ee576ad96d27=
-9414fc0835ff31f637.1720022580.git.lorenzo@kernel.org/#26110282
+> Thanks,
+> Nícolas
+> 
+>>
+>>>    	status = "okay";
+>>>    	mdio {
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts b/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
+>>> index e2e75b8ff91880711c82f783c7ccbef4128b7ab4..4985b65925a9ed10ad44a6e58b9657a9dd48751f 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts
+>>> @@ -271,6 +271,7 @@ &eth {
+>>>    	pinctrl-names = "default", "sleep";
+>>>    	pinctrl-0 = <&eth_default_pins>;
+>>>    	pinctrl-1 = <&eth_sleep_pins>;
+>>> +	mediatek,mac-wol;
+>>
+>> I'm mostly sure that Kontron's i1200 works the same as the EVK in regards to WoL.
+>>
+>> Michael, I recall you worked on this board - can you please confirm?
+>>
+>> Thanks,
+>> Angelo
+>>
 
->=20
-> > Introduce PCIE_MTK_RESET_TIME_US macro for the time needed to
-> > complete PCIe reset on MediaTek controller.
-> >=20
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > ---
-> >  drivers/pci/controller/pcie-mediatek-gen3.c | 28 ++++++++++++++++++++-=
--------
-> >  1 file changed, 20 insertions(+), 8 deletions(-)
-> >=20
-> > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/=
-controller/pcie-mediatek-gen3.c
-> > index 8c8c733a145634cdbfefd339f4a692f25a6e24de..1ad93d2407810ba873d9a16=
-da96208b3cc0c3011 100644
-> > --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> > @@ -120,6 +120,9 @@
-> > =20
-> >  #define MAX_NUM_PHY_RESETS		3
-> > =20
-> > +/* Time in us needed to complete PCIe reset on MediaTek controller */
->=20
-> No need of this comment. Macro name itself is explanatory.
 
-ack, I will fix it.
 
-Regards,
-Lorenzo
-
->=20
-> - Mani
->=20
-> > +#define PCIE_MTK_RESET_TIME_US		10
-> > +
-> >  /* Time in ms needed to complete PCIe reset on EN7581 SoC */
-> >  #define PCIE_EN7581_RESET_TIME_MS	100
-> > =20
-> > @@ -867,6 +870,14 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen=
-3_pcie *pcie)
-> >  	int err;
-> >  	u32 val;
-> > =20
-> > +	/*
-> > +	 * The controller may have been left out of reset by the bootloader
-> > +	 * so make sure that we get a clean start by asserting resets here.
-> > +	 */
-> > +	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets,
-> > +				  pcie->phy_resets);
-> > +	reset_control_assert(pcie->mac_reset);
-> > +
-> >  	/*
-> >  	 * Wait for the time needed to complete the bulk assert in
-> >  	 * mtk_pcie_setup for EN7581 SoC.
-> > @@ -941,6 +952,15 @@ static int mtk_pcie_power_up(struct mtk_gen3_pcie =
-*pcie)
-> >  	struct device *dev =3D pcie->dev;
-> >  	int err;
-> > =20
-> > +	/*
-> > +	 * The controller may have been left out of reset by the bootloader
-> > +	 * so make sure that we get a clean start by asserting resets here.
-> > +	 */
-> > +	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets,
-> > +				  pcie->phy_resets);
-> > +	reset_control_assert(pcie->mac_reset);
-> > +	usleep_range(PCIE_MTK_RESET_TIME_US, 2 * PCIE_MTK_RESET_TIME_US);
-> > +
-> >  	/* PHY power on and enable pipe clock */
-> >  	err =3D reset_control_bulk_deassert(pcie->soc->phy_resets.num_resets,=
- pcie->phy_resets);
-> >  	if (err) {
-> > @@ -1013,14 +1033,6 @@ static int mtk_pcie_setup(struct mtk_gen3_pcie *=
-pcie)
-> >  	 * counter since the bulk is shared.
-> >  	 */
-> >  	reset_control_bulk_deassert(pcie->soc->phy_resets.num_resets, pcie->p=
-hy_resets);
-> > -	/*
-> > -	 * The controller may have been left out of reset by the bootloader
-> > -	 * so make sure that we get a clean start by asserting resets here.
-> > -	 */
-> > -	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets, pcie->phy=
-_resets);
-> > -
-> > -	reset_control_assert(pcie->mac_reset);
-> > -	usleep_range(10, 20);
-> > =20
-> >  	/* Don't touch the hardware registers before power up */
-> >  	err =3D pcie->soc->power_up(pcie);
-> >=20
-> > --=20
-> > 2.47.0
-> >=20
->=20
-> --=20
-> =E0=AE=AE=E0=AE=A3=E0=AE=BF=E0=AE=B5=E0=AE=A3=E0=AF=8D=E0=AE=A3=E0=AE=A9=
-=E0=AF=8D =E0=AE=9A=E0=AE=A4=E0=AE=BE=E0=AE=9A=E0=AE=BF=E0=AE=B5=E0=AE=AE=
-=E0=AF=8D
-
---SrMGir1++zYv7uQM
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZzcRGAAKCRA6cBh0uS2t
-rIZRAP9lkLZ21zAHZX2cmYhCDHsB3Dka4V3SIPgL3D0ExpmzTgEAoZVmGhfQHuM2
-iBl8NcVaLGfGiQ8tT+Uf+4pk+FqFTgw=
-=ZgWM
------END PGP SIGNATURE-----
-
---SrMGir1++zYv7uQM--
 
