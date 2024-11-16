@@ -4,93 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06231D68BE3
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Nov 2024 03:24:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7FCCD68BDF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Nov 2024 08:20:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XAFnqKkSwcF2bp8hcz0pbKeIV30/71cmFE96nXVmuJo=; b=H+BW//A0W7c7UoaI3Y5vdSWPo2
-	RxhixE1eBEWcNM0r4u+b/zfhvLe0XupgvaQvrPMQu7NPGLyV0svi5j+6FgFmomk6c5bzIPi67bLMz
-	1D3V96LT+7ERmUZoguRbLfwKnURISDjY/HiYiJnF9cYR/VbWs8Q3Tm/hF5TXlTTZZRaTirLa9xkj/
-	dy+R5aHfrUukk+CRLQ+drLjUvEn2S7Nyi4gZmAUtX3t59tSCYEpDmj4ZgBGxTrslUIdkY63FkW4da
-	cbdA+NlplYqGMEodiBy6gaPpxBFbnWslkE2X3vaCcEbzBvhOob4ahMVGww2Q9EMGVd/tI3Xb5oBEO
-	4BrEQZzg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=WQwSj5xR6nGvYCDQCoo3nhUMZFjcatPrNfcvO7y5U9U=; b=GwMLmtkyXSSDHt
+	bM/8L3KfmvPb3PixnRo7+0tlU3Xa2Ub1ywFoAz9FOtPa1nITNNXW2wCIfYTHiU9jcxHdLfhzt5u+r
+	aYMCcJkmNWODr3t0akEx7Lp3ajXOipZYVUE8Kag5KzhZC1FXyF1TMMfRk5e7k94wBf8Y/E6bBCLZc
+	LKYxYUyim9hNo2PjkpSwHD6gJ6DCtGrRwsf1zDdw6ARoKpkK/kDoUe+WElX8QbRapYyATsWQMU0iw
+	Wz/YtyeEeQq1NCB7YJJBROHGboNiFGKpSNK/gw6/1dSWkn0VSbN/sF5pGQXB8IUMLtB8pbiVECSXA
+	Sz5xMsbxRZLWmY2636Og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tC9Qa-00000004sVn-0RLD;
-	Sat, 16 Nov 2024 03:24:52 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1tCE2P-00000005DJm-21Ol;
+	Sat, 16 Nov 2024 08:20:13 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tC9JZ-00000004r9N-1W8v;
-	Sat, 16 Nov 2024 03:17:38 +0000
-X-UUID: 5212d382a3c911ef9048ed6ed365623b-20241115
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=XAFnqKkSwcF2bp8hcz0pbKeIV30/71cmFE96nXVmuJo=;
-	b=i8Yrs08il9zHxGXEZAMSEWq/+BpLs8D8V8JGJxaS0VKL8hR+9kzTT/jWAmPdjgLaeX/vbrRoKPjUKmxigCO6rmv0zv137bg8H7I49VIu74WCh1eUqsFE13XUy1ULB4vWfia0mIwsWJUSGkTeeMRG+DSHWqqftoqpATkQ4ctPYNA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.43,REQID:b2b53400-7c3b-4b9b-b5b3-997f1ba6f03e,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:ce19b8a,CLOUDID:92edb85c-f18b-4d56-b49c-93279ee09144,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0,EDM:-3,IP
-	:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
-	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 5212d382a3c911ef9048ed6ed365623b-20241115
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <yunfei.dong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1799958950; Fri, 15 Nov 2024 20:17:33 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 16 Nov 2024 11:17:28 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 16 Nov 2024 11:17:27 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
-	<nfraprado@collabora.com>, Sebastian Fricke <sebastian.fricke@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil
-	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
-	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>,
-	Daniel Almeida <daniel.almeida@collabora.com>
-CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
-	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, "Yunfei
- Dong" <yunfei.dong@mediatek.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v7 3/5] media: mediatek: vcodec: remove media request checking
-Date: Sat, 16 Nov 2024 11:17:17 +0800
-Message-ID: <20241116031724.15694-4-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20241116031724.15694-1-yunfei.dong@mediatek.com>
-References: <20241116031724.15694-1-yunfei.dong@mediatek.com>
+	id 1tCE1S-00000005D33-2HsX;
+	Sat, 16 Nov 2024 08:19:15 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 4AA9A5C4A76;
+	Sat, 16 Nov 2024 08:18:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7BBA0C4CEC3;
+	Sat, 16 Nov 2024 08:19:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1731745153;
+	bh=ZPcVkadjDBIH9KyjVVtehzPEyudewRBoJZnsUiPtHcs=;
+	h=From:Subject:Date:To:Cc:From;
+	b=l1ukALJLq9djPcjX4RZX6DMrZfpGgYA09IdhhK6+OGzRNAWhBAYxuUwR8TkLIWtFH
+	 WrcgAkmJjiUqu3r1inlGlPL3/7NlwBASO3o+yn/e2lsLIawTCLuwQKfXZvyj0e7WM5
+	 3K57zhPE7Q1ILvzovVtOpgja7vLQE09/xfq/cIzkk+MQ+q9DQCrgDswoCqOGfXTPp3
+	 MUkrXzCIUfJZXl6dQxjzNazcDuhZCe9lEGc0JN6vaMqx0r1MkXp8AL77GXJUchvN5s
+	 nFPnp2wwKEvo7BtDIASih/0/TdE9mtX4C+z1gaNT/iY4JHUjUnB/TE2/q2EN/LgCO2
+	 4Lzqrl6Ovd+4Q==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH v3 0/6] PCI: mediatek-gen3: mtk_pcie_en7581_power_up() code
+ refactoring
+Date: Sat, 16 Nov 2024 09:18:21 +0100
+Message-Id: <20241116-pcie-en7581-fixes-v3-0-f7add3afc27e@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--10.511500-8.000000
-X-TMASE-MatchedRID: s1WpmjjDH4dmcP5F4hatbcnlbo5l7mGFBLtx+64GFanjsTquy0JRi4ma
-	Qfsqx1XAWKuGHPyQzf64VxGFQBNJeCY0eULsNBXlHPYwOJi6PLlu95mt47DzNlfXgfL55inv3oz
-	JRX7b4NmFKg32b+87J0iJiJhvpf+911/bObp3yCgSEYfcJF0pRX0tCKdnhB589yM15V5aWpj6C0
-	ePs7A07SQvY0ueKrc1jwY/IrEBx9e6DRg6XX9fFprHtTGfESU7RckC8ZNwvw0=
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--10.511500-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 33CBB420F46111ACF58A0B40F4B635AB9D396A27EC0949270CFDDDFE1F29847D2000:8
-X-MTK: N
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAE1VOGcC/33NQQ7CIBAF0KuYWYuBoUhx5T2MC0KHlmhoA4Zom
+ t5d2pUmxuX/k/9mhkwpUIbTboZEJeQwxhrkfgdusLEnFrqaATk2QnDNJheIUdSqFcyHJ2WG5qi
+ 48h1KJaHupkTboc4u15qHkB9jem0viljbf1oRjDPruWs1SpROn2+UIt0PY+ph5Qp+EuYXgZXgZ
+ KVtrDem8V/Esixv6F0A+PYAAAA=
+X-Change-ID: 20241107-pcie-en7581-fixes-296505fd2353
+To: Ryder Lee <ryder.lee@mediatek.com>, 
+ Jianjun Wang <jianjun.wang@mediatek.com>, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+ Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>
+Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241115_191737_628327_1699222B 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20241116_001914_632015_E94CE9A8 
+X-CRM114-Status: UNSURE (   7.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,76 +87,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Setting the buffer status to error if the media request of
-each source buffer is NULL, then schedule the work to process
-again in case of access NULL pointer.
+Minor fixes and code refactoring in mtk_pcie_en7581_power_up() routine
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../mediatek/vcodec/decoder/mtk_vcodec_dec.c    |  6 ++----
- .../vcodec/decoder/mtk_vcodec_dec_stateless.c   | 17 +++++------------
- 2 files changed, 7 insertions(+), 16 deletions(-)
+Changes in v3:
+- add trivial patches 5/6 and 6/6 to the series
+- rename err_clk_init in err_clk_prepare_enable
+- fix commit log for patches 2/6 and 3/6
+- Link to v2: https://lore.kernel.org/r/20241109-pcie-en7581-fixes-v2-0-0ea3a4af994f@kernel.org
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-index 2ccdffbadcda..b16572d5cf54 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-@@ -912,10 +912,8 @@ void vb2ops_vdec_stop_streaming(struct vb2_queue *q)
- 					src_buf->vb2_buf.req_obj.req;
- 
- 				v4l2_m2m_buf_done(src_buf, VB2_BUF_STATE_ERROR);
--				if (req) {
--					v4l2_ctrl_request_complete(req, &ctx->ctrl_hdl);
--					media_request_manual_complete(req);
--				}
-+				v4l2_ctrl_request_complete(req, &ctx->ctrl_hdl);
-+				media_request_manual_complete(req);
- 			}
- 		}
- 		return;
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-index 1e11c08d708f..dd6ee694382e 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-@@ -264,10 +264,8 @@ static void mtk_vdec_stateless_cap_to_disp(struct mtk_vcodec_dec_ctx *ctx, int e
- 		mtk_v4l2_vdec_err(ctx, "dst buffer is NULL");
- 	}
- 
--	if (src_buf_req) {
--		v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
--		media_request_manual_complete(src_buf_req);
--	}
-+	v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
-+	media_request_manual_complete(src_buf_req);
- }
- 
- static struct vdec_fb *vdec_get_cap_buffer(struct mtk_vcodec_dec_ctx *ctx)
-@@ -356,10 +354,7 @@ static void mtk_vdec_worker(struct work_struct *work)
- 			  ctx->id, bs_src->va, &bs_src->dma_addr, bs_src->size, vb2_src);
- 	/* Apply request controls. */
- 	src_buf_req = vb2_src->req_obj.req;
--	if (src_buf_req)
--		v4l2_ctrl_request_setup(src_buf_req, &ctx->ctrl_hdl);
--	else
--		mtk_v4l2_vdec_err(ctx, "vb2 buffer media request is NULL");
-+	v4l2_ctrl_request_setup(src_buf_req, &ctx->ctrl_hdl);
- 
- 	ret = vdec_if_decode(ctx, bs_src, NULL, &res_chg);
- 	if (ret && ret != -EAGAIN) {
-@@ -378,10 +373,8 @@ static void mtk_vdec_worker(struct work_struct *work)
- 	if (!IS_VDEC_LAT_ARCH(dev->vdec_pdata->hw_arch) ||
- 	    ctx->current_codec == V4L2_PIX_FMT_VP8_FRAME) {
- 		v4l2_m2m_buf_done_and_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx, state);
--		if (src_buf_req) {
--			v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
--			media_request_manual_complete(src_buf_req);
--		}
-+		v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
-+		media_request_manual_complete(src_buf_req);
- 	} else {
- 		if (ret != -EAGAIN) {
- 			v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
+Changes in v2:
+- added trivial patch 4/4
+- improved commit logs and comments
+- introduced PCIE_MTK_RESET_TIME_US macro
+- Link to v1: https://lore.kernel.org/r/20241107-pcie-en7581-fixes-v1-0-af0c872323c7@kernel.org
+
+---
+Lorenzo Bianconi (6):
+      PCI: mediatek-gen3: Add missing reset_control_deassert() for mac_rst in mtk_pcie_en7581_power_up()
+      PCI: mediatek-gen3: rely on clk_bulk_prepare_enable() in mtk_pcie_en7581_power_up()
+      PCI: mediatek-gen3: Move reset/assert callbacks in .power_up()
+      PCI: mediatek-gen3: Add comment about initialization order in mtk_pcie_en7581_power_up()
+      PCI: mediatek-gen3: Add reset delay in mtk_pcie_en7581_power_up()
+      PCI: mediatek-gen3: rely on msleep() in mtk_pcie_en7581_power_up()
+
+ drivers/clk/clk-en7523.c                    |  1 -
+ drivers/pci/controller/pcie-mediatek-gen3.c | 60 +++++++++++++++++++----------
+ 2 files changed, 39 insertions(+), 22 deletions(-)
+---
+base-commit: ac9626f643ea9cde795811d924388fa49f2c4c0c
+change-id: 20241107-pcie-en7581-fixes-296505fd2353
+
+Best regards,
 -- 
-2.46.0
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
