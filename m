@@ -4,62 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B40B2D68BDC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Nov 2024 13:14:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11A8AD68BDC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Nov 2024 13:15:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=tzKsLoqS+f2oaO0q+njlCY4YyzBcsusLXBar5P2xdBk=; b=J7wCyJIycL/Oq03ee5uUP0XSFe
-	ggm+SmbAn9Y5XMwFV0DqMXUlCzG/JsGNQZOMMSOf+ajVJQHJKMieeazEtI6nXh1NJXwa2Y67+WJMw
-	fIMdyz747+EQwuqCLiKknKXWY/iOPLq9HvtVOn/M+xNbHF9rk9Z4bu7+O39ih05aabsJ5X1olj+j3
-	g2oX+kRPT0bN5nZSwQVrVH0BCCjHkSPDvyGnOKsQh+lzEBqHlO3jJhgFAJumB6LwZSwfp7acHQQ8o
-	uu54Docu+hlNF+8QAvfNkntqcyil9KPCO9koaH301Y5oQtpJYlgGNvLZycpouZi/vKYZhbjMnmRkh
-	0tYePFsg==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
+	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5S600OQ5nFPGkJIjgZj3AtisZep3gO6DhgEu5beaHtE=; b=LvZfIxZaONrWYmnZ/zcjHqeFvk
+	6sDDdPxu/igwqJL3USe20m9z9O9LvADV6hoEIN6VJNLfaFLw0Gjo2oQ5/eoun3mMykmnUC+m188+G
+	iK7Cv2lHtsPEPgCf5FvOkXeE7ko9Of62f2skpQcimLJod3ljuwMF1xe8s8GfBbfeITrz8tnzgFy7n
+	dz7eNhf2qz2DewpT3/3SeTzJuuqX0os9x3/w4TUWbyUPsj6jf3zYqOTr6t14/qPCAyV8z+0cSWvvJ
+	u43+pw5IxnkDZOO+I4Kf0zWlAWw2DPis5ebgBP3kdxUavmgy2T9m0W34TVTTixs1c5YXBWC1aUYGz
+	c43YEOoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCIdD-00000005d4F-0yLn;
-	Sat, 16 Nov 2024 13:14:31 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1tCIe7-00000005dKo-0rLE;
+	Sat, 16 Nov 2024 13:15:27 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCIcG-00000005cpg-2Wwk;
-	Sat, 16 Nov 2024 13:13:33 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-4314c4cb752so13548555e9.2;
-        Sat, 16 Nov 2024 05:13:32 -0800 (PST)
+	id 1tCIcH-00000005cpk-2sAs;
+	Sat, 16 Nov 2024 13:13:34 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-43163667f0eso4767585e9.0;
+        Sat, 16 Nov 2024 05:13:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1731762811; x=1732367611; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:from:to:cc:subject:date:message-id:reply-to;
-        bh=tzKsLoqS+f2oaO0q+njlCY4YyzBcsusLXBar5P2xdBk=;
-        b=EWBSK5mgaykQr+Tgf1pX7d1Md4kqB4q6lPFUVAKxB+Uea00yPBg/T7bvulippEcPx0
-         WUFn3VcZVVt3tttXoGB1Zdo7HvCnjv2jAsFtUD4Bsvnx8aMCKhh8YP1E7mfyUZ6OMfmI
-         ozeYc4bQfV+u9NtNQI7jAMEP5zunsaRj6Lo7cTJceHCFtuE6Rw43+WrSfd3+Ch/+tRph
-         MACTPJdNN9PLGN8rtY6AY+wHomXiAhIUFM0sGVEe9BbLJL5EmOmydjjuprYm5xW9w/xx
-         BuC+xZRbJRf0jG4bGxCy9DUXyuHRpVJT3VWn5uCgCNZJvkMEOkiU5LSKCkJ7bluTofFc
-         IOfQ==
+        d=gmail.com; s=20230601; t=1731762812; x=1732367612; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=5S600OQ5nFPGkJIjgZj3AtisZep3gO6DhgEu5beaHtE=;
+        b=RPJNqpAvvk9xIZjPRfhUuXXiTIWJCQ+u3tNuwCeEhhm5fPx3bm9qEzLs0xj+W/E7OM
+         TxIr8McMpEAamkXCQI9VeezFCIKP0QTFtlmcrc4lxqIhaDUsPIQNj8dvJyMBCOv/D8qY
+         FNr/sdCN/m7VU8XrvMjKj3WnKiKL6mLgxDdUH9rMZCQEMd9wjMSgFkUB4miiPuFSMYWj
+         asO7r19BePDi5NZN1XPmUUui3NA8KG3qe5oQcbgJQQ5SLNnOf6kI65+U+jKItKLwu2T/
+         q+INRxUMYgO3tgj0yUOzBPaaMoZjwaxl8tNg+rQaoTo11bO7K2Va2msNFVtpW0jPaFfq
+         xBUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731762811; x=1732367611;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=tzKsLoqS+f2oaO0q+njlCY4YyzBcsusLXBar5P2xdBk=;
-        b=vXOmyAWnSYNlbo2asbPLGJ4rM+IgR4RWEYpmS4QM4PukME3NFOnWZOInLfiKl/77nU
-         vqy7tfhp6fsaew/bVsrvnfRwd5br84mY/NMtG3COa/5Bf5tQOVB3xh/uVfiaier1Mtm0
-         nYmbjcWaA+AzhhXgA2ZisseJkZa9sOlWG5GVemC4glWwFdfbfWFT93skwEJi8wdsh6AS
-         DkeMAi75MMpcI4SH2iNDnJPL+n0t9D7dZBn/VPJr1YWTlL2hmE7oBPgRkWw0R+zvOwQX
-         dSCaBuw+zldmjLlZ5S5YYki6WDq/DhAisD4tlwQFEuVZ0igj23hXFjERIrYnGQhjkaum
-         ua9g==
-X-Forwarded-Encrypted: i=1; AJvYcCUHeMxkbXgCbX5spTnDm9duzf0E+akWz+gqahS6KVFljh9dFo9KLZQicLD0rczxI0fKvuDgue2YpIdZrm+pv7o=@lists.infradead.org, AJvYcCWgxVi//oeh8WOBb8ZfMso29XwisuTcjKtPZHLCEQpSw7pXjsLkGkPG2yKs7o4c3khdfZtuEWrnUkZ14lbEd9gI@lists.infradead.org
-X-Gm-Message-State: AOJu0YwFEAoGq+pP0K1lNwZRraATb1F8r1b2+IHLbLu/b6f80yQrWk4a
-	QIs6pNkaBrLhPth5Ih0pPHFXP2V2Bm9FMlwHQBBS8RKrKmaw7Q25
-X-Google-Smtp-Source: AGHT+IHKgxdnXc6kEl2B/inj2A/5CrmhjcYAgt6JHY3c9dX4n4YbiGY6Z4z8dNL6tW3Mt9/w9f8u3Q==
-X-Received: by 2002:a05:600c:4452:b0:42c:de34:34c1 with SMTP id 5b1f17b1804b1-432df7178e0mr56576705e9.2.1731762810605;
-        Sat, 16 Nov 2024 05:13:30 -0800 (PST)
+        d=1e100.net; s=20230601; t=1731762812; x=1732367612;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=5S600OQ5nFPGkJIjgZj3AtisZep3gO6DhgEu5beaHtE=;
+        b=nUSbQFXPLQwo7QVIA1lvW5A1s0vStCbInCCJamvCMGBF18MthXWQ/1Z1i5TDhQnFAm
+         /ylyGFYwzYUhgfpzlxXQbFamk00ec4S4inatphuT8z8cWMxETW/DA0TP+E+o2FMLhGga
+         k4EkWH81vhIUcx1oK0SlG0FXWNZEyw/v1wo/Hm4kuqxVys43pk3s+RijLZsDO0c6QpXH
+         T+/tBOSpEFUW5opYrgGpVXSVyNZSVsWHnU4NL6uj1xqARVyvHTERVRBFjRqvp1W1Ql6E
+         wOkg9lJBx6H2btmdmOU/9zsNhrNNfVzUSn6Sv3qG6RncRyJDux5X1YRHHWGAQYEdRZ1+
+         Vbkg==
+X-Forwarded-Encrypted: i=1; AJvYcCUtTgg9/Rl4d2qZ/m3Av23/4v5tgbLagY6FF4MVQmXDmSxp4lCxu8f69XuhnayITBDMc+AQonIPtJkDvc/B20o=@lists.infradead.org, AJvYcCVlzxG7lhHTGdbfb1PZJe+xshP4FZ+dK2Ptu9fnQt6Ka6oHPWbKQsBFv73C0gQ1ssK6T3bTMc9kGohjcFxjIJMz@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw0xa8b06omnpfVqRDP2r2K6eO851VsjdurPREUjf+Bqna7ujas
+	KTrOJ9xhlFN01eorhOmRVgOyuZ327pkEJDUYyzgOQdc85KTGJ97q
+X-Google-Smtp-Source: AGHT+IEPsaR+6e5r/v93HgKGecv+hspAsvfCMy3BdQXtK9fCxOVvt+14+FJzR41Vt6epI2YQyINaJw==
+X-Received: by 2002:a05:600c:5021:b0:42c:bf94:f9a6 with SMTP id 5b1f17b1804b1-432df77a991mr46347325e9.26.1731762811932;
+        Sat, 16 Nov 2024 05:13:31 -0800 (PST)
 Received: from localhost.localdomain (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-432dab7206csm87459595e9.7.2024.11.16.05.13.29
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-432dab7206csm87459595e9.7.2024.11.16.05.13.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 16 Nov 2024 05:13:30 -0800 (PST)
+        Sat, 16 Nov 2024 05:13:31 -0800 (PST)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Christian Marangi <ansuelsmth@gmail.com>,
 	Andrew Lunn <andrew@lunn.ch>,
@@ -82,15 +84,17 @@ To: Christian Marangi <ansuelsmth@gmail.com>,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	upstream@airoha.com
-Subject: [net-next PATCH v6 0/4] net: dsa: Add Airoha AN8855 support
-Date: Sat, 16 Nov 2024 14:12:45 +0100
-Message-ID: <20241116131257.51249-1-ansuelsmth@gmail.com>
+Subject: [net-next PATCH v6 1/4] net: dsa: add devm_dsa_register_switch()
+Date: Sat, 16 Nov 2024 14:12:46 +0100
+Message-ID: <20241116131257.51249-2-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20241116131257.51249-1-ansuelsmth@gmail.com>
+References: <20241116131257.51249-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241116_051332_640937_CECE561F 
-X-CRM114-Status: GOOD (  16.78  )
+X-CRM114-CacheID: sfid-20241116_051333_725961_9A939AAD 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,95 +109,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This small series add the initial support for the Airoha AN8855 Switch.
+Some DSA driver can be simplified if devres takes care of unregistering
+the DSA switch. This permits to effectively drop the remove OP from
+driver that just execute the dsa_unregister_switch() and nothing else.
 
-It's a 5 port Gigabit Switch with SGMII/HSGMII upstream port.
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
+ include/net/dsa.h |  1 +
+ net/dsa/dsa.c     | 19 +++++++++++++++++++
+ 2 files changed, 20 insertions(+)
 
-This is starting to get in the wild and there are already some router
-having this switch chip.
-
-It's conceptually similar to mediatek switch but register and bits
-are different. And there is that massive Hell that is the PCS
-configuration.
-Saddly for that part we have absolutely NO documentation currently.
-
-There is this special thing where PHY needs to be calibrated with values
-from the switch efuse. (the thing have a whole cpu timer and MCU)
-
-Changes v6:
-- Drop standard MIB and handle with ethtool OPs (as requested by Jakub)
-- Cosmetic: use bool instead of 0 or 1
-Changes v5:
-- Add devm_dsa_register_switch() patch
-- Add Reviewed-by tag for DT patch
-Changes v4:
-- Set regmap readable_table static (mute compilation warning)
-- Add support for port_bridge flags (LEARNING, FLOOD)
-- Reset fdb struct in fdb_dump
-- Drop support_asym_pause in port_enable
-- Add define for get_phy_flags
-- Fix bug for port not inititially part of a bridge
-  (in an8855_setup the port matrix was always cleared but
-   the CPU port was never initially added)
-- Disable learning and flood for user port by default
-- Set CPU port to flood and learning by default
-- Correctly AND force duplex and flow control in an8855_phylink_mac_link_up
-- Drop RGMII from pcs_config
-- Check ret in "Disable AN if not in autoneg"
-- Use devm_mutex_init
-- Fix typo for AN8855_PORT_CHECK_MODE
-- Better define AN8855_STP_LISTENING = AN8855_STP_BLOCKING
-- Fix typo in AN8855_PHY_EN_DOWN_SHIFT
-- Use paged helper for PHY
-- Skip calibration in config_init if priv not defined
-Changes v3:
-- Out of RFC
-- Switch PHY code to select_page API
-- Better describe masks and bits in PHY driver for ADC register
-- Drop raw values and use define for mii read/write
-- Switch to absolute PHY address
-- Replace raw values with mask and bits for pcs_config
-- Fix typo for ext-surge property name
-- Drop support for relocating Switch base PHY address on the bus
-Changes v2:
-- Drop mutex guard patch
-- Drop guard usage in DSA driver
-- Use __mdiobus_write/read
-- Check return condition and return errors for mii read/write
-- Fix wrong logic for EEE
-- Fix link_down (don't force link down with autoneg)
-- Fix forcing speed on sgmii autoneg
-- Better document link speed for sgmii reg
-- Use standard define for sgmii reg
-- Imlement nvmem support to expose switch EFUSE
-- Rework PHY calibration with the use of NVMEM producer/consumer
-- Update DT with new NVMEM property
-- Move aneg validation for 2500-basex in pcs_config
-- Move r50Ohm table and function to PHY driver
-
-Christian Marangi (4):
-  net: dsa: add devm_dsa_register_switch()
-  dt-bindings: net: dsa: Add Airoha AN8855 Gigabit Switch documentation
-  net: dsa: Add Airoha AN8855 5-Port Gigabit DSA Switch driver
-  net: phy: Add Airoha AN8855 Internal Switch Gigabit PHY
-
- .../bindings/net/dsa/airoha,an8855.yaml       |  242 ++
- MAINTAINERS                                   |   11 +
- drivers/net/dsa/Kconfig                       |    9 +
- drivers/net/dsa/Makefile                      |    1 +
- drivers/net/dsa/an8855.c                      | 2233 +++++++++++++++++
- drivers/net/dsa/an8855.h                      |  694 +++++
- drivers/net/phy/Kconfig                       |    5 +
- drivers/net/phy/Makefile                      |    1 +
- drivers/net/phy/air_an8855.c                  |  268 ++
- include/net/dsa.h                             |    1 +
- net/dsa/dsa.c                                 |   19 +
- 11 files changed, 3484 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/net/dsa/airoha,an8855.yaml
- create mode 100644 drivers/net/dsa/an8855.c
- create mode 100644 drivers/net/dsa/an8855.h
- create mode 100644 drivers/net/phy/air_an8855.c
-
+diff --git a/include/net/dsa.h b/include/net/dsa.h
+index 72ae65e7246a..c703d5dc3fb0 100644
+--- a/include/net/dsa.h
++++ b/include/net/dsa.h
+@@ -1355,6 +1355,7 @@ static inline void dsa_tag_generic_flow_dissect(const struct sk_buff *skb,
+ 
+ void dsa_unregister_switch(struct dsa_switch *ds);
+ int dsa_register_switch(struct dsa_switch *ds);
++int devm_dsa_register_switch(struct device *dev, struct dsa_switch *ds);
+ void dsa_switch_shutdown(struct dsa_switch *ds);
+ struct dsa_switch *dsa_switch_find(int tree_index, int sw_index);
+ void dsa_flush_workqueue(void);
+diff --git a/net/dsa/dsa.c b/net/dsa/dsa.c
+index 5a7c0e565a89..5cf1bac367ca 100644
+--- a/net/dsa/dsa.c
++++ b/net/dsa/dsa.c
+@@ -1544,6 +1544,25 @@ int dsa_register_switch(struct dsa_switch *ds)
+ }
+ EXPORT_SYMBOL_GPL(dsa_register_switch);
+ 
++static void devm_dsa_unregister_switch(void *data)
++{
++	struct dsa_switch *ds = data;
++
++	dsa_unregister_switch(ds);
++}
++
++int devm_dsa_register_switch(struct device *dev, struct dsa_switch *ds)
++{
++	int err;
++
++	err = dsa_register_switch(ds);
++	if (err)
++		return err;
++
++	return devm_add_action_or_reset(dev, devm_dsa_unregister_switch, ds);
++}
++EXPORT_SYMBOL_GPL(dsa_register_switch);
++
+ static void dsa_switch_remove(struct dsa_switch *ds)
+ {
+ 	struct dsa_switch_tree *dst = ds->dst;
 -- 
 2.45.2
 
