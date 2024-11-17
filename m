@@ -4,66 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76088D68BF9
-	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Nov 2024 11:46:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBE39D68BFA
+	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Nov 2024 13:29:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=mvRYbzWmy3Az0rIC9boe0S3YngFvnXy/0X+eihz5OIs=; b=DdzR8DPQEJFvbNU1bXaCWboBlD
-	uL5dR7HjOAPuFnIs0ugAoRxCFysSjTjjXXcih/eQg+mMS1bCif+7xjr35Sh28KbwUA3ugfze7oJaN
-	XkAEe+fEMz/hIG1mYxn14m/8Q3Pw12ZGv9FzWlPBJZsSfu9UwurBTE91wzHukroyfR+x6CKsCvGlC
-	IcCvrWqc//tbcFTTiFVHwjV7aXUFBEUc9OTpLZjwVkwhLOFeYrS0C+1v3SWHwrhbv1fQeccxPNIZv
-	ny/UP45l+N5DvN1OLF2scHBkymF1+fvecRkLgjyfua1qYaaG8CqA8JQtFDz6sjlgqWFf9LhhPyVob
-	/c4scw7A==;
+	bh=1XAbIa3hm+HJbfWZ3CE+oQUW9aIaBQsvmTiCcfqd4QU=; b=I5spzsprWflVxLKWO5CKhLU5JQ
+	/0aW51gREb7a+OkW/iZPiKomvRjKo1VRp5GVt9l2Dn3sPULK09SK7UAsLn9uDtkiK+TGc67kn88c8
+	aDBi98MXBf4MmzqkgIODMle3osYMeQIDYx0NhldvvzA6IKT3cYuNMvDPDqVk3gwynDOuN0Okq8GFx
+	UeD5voCT5jSAo/zw5AyFApqb7UxkhHiiprMqLeQbZlO3NA8R2onmmLgvowUe8RGQ83mqrjEN/9rTh
+	I13tcBMmsgHCPm62UuNdVD6UWHoY55RbtZDnzlz3SP2cgK3AMMmB3BnfPavHntEtJleOvXEYF84+C
+	IHSnvVEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCdjo-00000007Fna-1XAb;
-	Sun, 17 Nov 2024 11:46:44 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tCfLU-00000007NID-33Yf;
+	Sun, 17 Nov 2024 13:29:44 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCdir-00000007Fj4-1x0c;
-	Sun, 17 Nov 2024 11:45:46 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 15E22A40D50;
-	Sun, 17 Nov 2024 11:43:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6FD8FC4CED8;
-	Sun, 17 Nov 2024 11:45:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1731843943;
-	bh=WaUpZJgl59YzipJ0kAPa5ZUnQ2h5lltdWBavhDkQf0M=;
-	h=From:To:Cc:Subject:Date:From;
-	b=eGUEgnSVL17XsKDEl+xI+13lYs6hsEHSWhiTNo9PwYvPuuuII/oTVCsODqD2h82Vy
-	 stqkD9tA+NibANaR0xiIO40MYVJJntPO9nJycF2HhgVzjp2qFhCf66bQ11h3I6CDIE
-	 4mT4PIQ8/aR74+2/pP4xiR674pcGWEoVnx1RyKyucAVDZ0NPCo/u2q9nESfOVPnStv
-	 KA3KIyEAc908v4q1nWIYnhjTGG6//y1gEuzjXJJPk+NI+eeI44gyoVuGN9ElNv/IXc
-	 hCOFH4CsnVKRhg441fDQyWLn4wcQtcU6gtLmWMna7NKGii/1MSixpqS/fQash9tRAB
-	 afPTnVMN371wg==
-From: Kees Cook <kees@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Kees Cook <kees@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	linux-mediatek@lists.infradead.org,
-	linux-gpio@vger.kernel.org,
+	id 1tCfKX-00000007N4b-433c;
+	Sun, 17 Nov 2024 13:28:47 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-382423f4082so336608f8f.3;
+        Sun, 17 Nov 2024 05:28:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1731850124; x=1732454924; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to;
+        bh=1XAbIa3hm+HJbfWZ3CE+oQUW9aIaBQsvmTiCcfqd4QU=;
+        b=F3S7flrYg8z9eOlJnI19n8Cg9pLSRUvEvropVUCmQxf0C7VR/56ocB89s5XjKj6CGK
+         safLgeQhfBfzpoTjeU7zumQ4lMu1YWsWp8bKWWw7AWT6k7UdWA3RO40BBhgVzQl4TcqZ
+         LlREHs8BVCKjGYRtKd1PQEqcyikCfGLxau4sw4sI5D9mmXMVEGjdoHgw92HZoH0EdMm9
+         HZcZeTSTtjhcEEpPiMu6uamJO1mwPD0eTkr7pMxsvXsHZG4h1CY90HHP3fxhBarwU0ez
+         m2TyrwlBcmD3jvY/NiSvID/dkwcQrlpZKpW4w8UxfiDpdKMshLmj6FK63rdSVBSes6Sh
+         WNQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1731850124; x=1732454924;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=1XAbIa3hm+HJbfWZ3CE+oQUW9aIaBQsvmTiCcfqd4QU=;
+        b=Hsp9Ybz5/swrlNF+VI0+JR6UhE4gcJb3rUE3ozeZJcfKgmq2rXikDg3EvhTYmaKj7H
+         G/ZF3e0LZXMM6WFfVKZgSLYMjxH1kGfuaEzDzKyi6stlD5aGaRVKWabc64gNiCRzlbL6
+         adoIpXinGoEIzogWE9UnxQZFO/lt5XzPlfZW/vZPUVjQvjAdEgBgutUIq4qyGqgqJG6O
+         cHpuP8WDmPBjWgmOU6lBfmiQmj6NAhx/ni5CjL7HYAW8uyniDETUqtWcat7PESEnCX0m
+         qPZHg9av6W++8A1vTRchRwONL/1n+FcAf0v6m0fl5Qw3gbTbnEQHvMMKDC62NLEzcAp7
+         D3cA==
+X-Forwarded-Encrypted: i=1; AJvYcCVsFz0j/6WpXMJlOgk2MT5cwbwJpCOpgaFBvpouTjBn2nKgM5xL1FiZBTqbECJ6xw3t4qH5ahhsYfJ6ZTxuIaHx@lists.infradead.org, AJvYcCXgjAB/Mxn0VJxqFEahQypIHvF9L0lSzlhAQMDLHBv/9VBi5ER6UdFNEDq5J3oGd1GGITPSqSBxj7P80S4yoQM=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxRwcb+Yyxn5o1bA660IFoELJlW3R2odecABmtqlGuLSyRDEIZQ
+	iVOy37Jriptec3mTWivFePgnpAX1AMjSBSWuNM7i25qc9NvrZb2I
+X-Google-Smtp-Source: AGHT+IE2PiBZR31XHy+Sv2+wwjB5HCtxiAG5Tfaf9sjkvJjlS9c96ZY5wFNopklt0SylBWZ3yIrb7g==
+X-Received: by 2002:a5d:5887:0:b0:382:42c3:83cc with SMTP id ffacd0b85a97d-38242c38557mr1136107f8f.45.1731850123618;
+        Sun, 17 Nov 2024 05:28:43 -0800 (PST)
+Received: from localhost.localdomain (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-38229b6e2fasm6282015f8f.40.2024.11.17.05.28.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 17 Nov 2024 05:28:43 -0800 (PST)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Christian Marangi <ansuelsmth@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-hardening@vger.kernel.org
-Subject: [PATCH] pinctrl: airoha: Use unsigned long for bit search
-Date: Sun, 17 Nov 2024 03:45:38 -0800
-Message-Id: <20241117114534.work.292-kees@kernel.org>
-X-Mailer: git-send-email 2.34.1
+	linux-mediatek@lists.infradead.org,
+	netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	upstream@airoha.com
+Subject: [net-next PATCH v7 0/4] net: dsa: Add Airoha AN8855 support
+Date: Sun, 17 Nov 2024 14:27:55 +0100
+Message-ID: <20241117132811.67804-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2769; i=kees@kernel.org; h=from:subject:message-id; bh=WaUpZJgl59YzipJ0kAPa5ZUnQ2h5lltdWBavhDkQf0M=; b=owGbwMvMwCVmps19z/KJym7G02pJDOmW15OY+ArTEmyFrWfl7Re2OJn69UpMy3EDQ1cXuRt13 1MnzHrWUcrCIMbFICumyBJk5x7n4vG2Pdx9riLMHFYmkCEMXJwCMBHpI4wM3yJmvOF8+Y0h59rR 30xq5pGlQnqPBbZ8Leuqvnynb4FyGsM/mwsHM21iXz3xTfm8uUg6+Feka63IqT1HHFTnzA5c6b+ UGQA=
-X-Developer-Key: i=kees@kernel.org; a=openpgp; fpr=A5C3F68F229DD60F723E6E138972F4DFDC6DC026
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241117_034545_635352_C7A13E36 
-X-CRM114-Status: GOOD (  11.51  )
+X-CRM114-CacheID: sfid-20241117_052846_024196_94BD6EF6 
+X-CRM114-Status: GOOD (  16.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,68 +105,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Instead of risking alignment problems and causing (false positive) array
-bound warnings when casting a u32 to (64-bit) unsigned long, just use a
-native unsigned long for doing bit searches. Avoids warning with GCC 15's
--Warray-bounds -fdiagnostics-details:
+This small series add the initial support for the Airoha AN8855 Switch.
 
-In file included from ../include/linux/bitmap.h:11,
-                 from ../include/linux/cpumask.h:12,
-                 from ../arch/x86/include/asm/paravirt.h:21,
-                 from ../arch/x86/include/asm/irqflags.h:80,
-                 from ../include/linux/irqflags.h:18,
-                 from ../include/linux/spinlock.h:59,
-                 from ../include/linux/irq.h:14,
-                 from ../include/linux/irqchip/chained_irq.h:10,
-                 from ../include/linux/gpio/driver.h:8,
-                 from ../drivers/pinctrl/mediatek/pinctrl-airoha.c:11:
-In function 'find_next_bit',
-    inlined from 'airoha_irq_handler' at ../drivers/pinctrl/mediatek/pinctrl-airoha.c:2394:3:
-../include/linux/find.h:65:23: error: array subscript 'long unsigned int[0]' is partly outside array bounds of 'u32[1]' {aka 'unsigned int[1]'} [-Werror=array-bounds=]
-   65 |                 val = *addr & GENMASK(size - 1, offset);
-      |                       ^~~~~
-../drivers/pinctrl/mediatek/pinctrl-airoha.c: In function 'airoha_irq_handler':
-../drivers/pinctrl/mediatek/pinctrl-airoha.c:2387:21: note: object 'status' of size 4
- 2387 |                 u32 status;
-      |                     ^~~~~~
+It's a 5 port Gigabit Switch with SGMII/HSGMII upstream port.
 
-Signed-off-by: Kees Cook <kees@kernel.org>
----
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Sean Wang <sean.wang@kernel.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-gpio@vger.kernel.org
----
- drivers/pinctrl/mediatek/pinctrl-airoha.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+This is starting to get in the wild and there are already some router
+having this switch chip.
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-airoha.c b/drivers/pinctrl/mediatek/pinctrl-airoha.c
-index 7692e6d9b871..547a798b71c8 100644
---- a/drivers/pinctrl/mediatek/pinctrl-airoha.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-airoha.c
-@@ -2384,15 +2384,16 @@ static irqreturn_t airoha_irq_handler(int irq, void *data)
- 
- 	for (i = 0; i < ARRAY_SIZE(irq_status_regs); i++) {
- 		struct gpio_irq_chip *girq = &pinctrl->gpiochip.chip.irq;
--		u32 status;
-+		u32 regmap;
-+		unsigned long status;
- 		int irq;
- 
- 		if (regmap_read(pinctrl->regmap, pinctrl->gpiochip.status[i],
--				&status))
-+				&regmap))
- 			continue;
- 
--		for_each_set_bit(irq, (unsigned long *)&status,
--				 AIROHA_PIN_BANK_SIZE) {
-+		status = regmap;
-+		for_each_set_bit(irq, &status, AIROHA_PIN_BANK_SIZE) {
- 			u32 offset = irq + i * AIROHA_PIN_BANK_SIZE;
- 
- 			generic_handle_irq(irq_find_mapping(girq->domain,
+It's conceptually similar to mediatek switch but register and bits
+are different. And there is that massive Hell that is the PCS
+configuration.
+Saddly for that part we have absolutely NO documentation currently.
+
+There is this special thing where PHY needs to be calibrated with values
+from the switch efuse. (the thing have a whole cpu timer and MCU)
+
+Changes v7:
+- Fix devm_dsa_register_switch wrong export symbol
+Changes v6:
+- Drop standard MIB and handle with ethtool OPs (as requested by Jakub)
+- Cosmetic: use bool instead of 0 or 1
+Changes v5:
+- Add devm_dsa_register_switch() patch
+- Add Reviewed-by tag for DT patch
+Changes v4:
+- Set regmap readable_table static (mute compilation warning)
+- Add support for port_bridge flags (LEARNING, FLOOD)
+- Reset fdb struct in fdb_dump
+- Drop support_asym_pause in port_enable
+- Add define for get_phy_flags
+- Fix bug for port not inititially part of a bridge
+  (in an8855_setup the port matrix was always cleared but
+   the CPU port was never initially added)
+- Disable learning and flood for user port by default
+- Set CPU port to flood and learning by default
+- Correctly AND force duplex and flow control in an8855_phylink_mac_link_up
+- Drop RGMII from pcs_config
+- Check ret in "Disable AN if not in autoneg"
+- Use devm_mutex_init
+- Fix typo for AN8855_PORT_CHECK_MODE
+- Better define AN8855_STP_LISTENING = AN8855_STP_BLOCKING
+- Fix typo in AN8855_PHY_EN_DOWN_SHIFT
+- Use paged helper for PHY
+- Skip calibration in config_init if priv not defined
+Changes v3:
+- Out of RFC
+- Switch PHY code to select_page API
+- Better describe masks and bits in PHY driver for ADC register
+- Drop raw values and use define for mii read/write
+- Switch to absolute PHY address
+- Replace raw values with mask and bits for pcs_config
+- Fix typo for ext-surge property name
+- Drop support for relocating Switch base PHY address on the bus
+Changes v2:
+- Drop mutex guard patch
+- Drop guard usage in DSA driver
+- Use __mdiobus_write/read
+- Check return condition and return errors for mii read/write
+- Fix wrong logic for EEE
+- Fix link_down (don't force link down with autoneg)
+- Fix forcing speed on sgmii autoneg
+- Better document link speed for sgmii reg
+- Use standard define for sgmii reg
+- Imlement nvmem support to expose switch EFUSE
+- Rework PHY calibration with the use of NVMEM producer/consumer
+- Update DT with new NVMEM property
+- Move aneg validation for 2500-basex in pcs_config
+- Move r50Ohm table and function to PHY driver
+
+Christian Marangi (4):
+  net: dsa: add devm_dsa_register_switch()
+  dt-bindings: net: dsa: Add Airoha AN8855 Gigabit Switch documentation
+  net: dsa: Add Airoha AN8855 5-Port Gigabit DSA Switch driver
+  net: phy: Add Airoha AN8855 Internal Switch Gigabit PHY
+
+ .../bindings/net/dsa/airoha,an8855.yaml       |  242 ++
+ MAINTAINERS                                   |   11 +
+ drivers/net/dsa/Kconfig                       |    9 +
+ drivers/net/dsa/Makefile                      |    1 +
+ drivers/net/dsa/an8855.c                      | 2233 +++++++++++++++++
+ drivers/net/dsa/an8855.h                      |  693 +++++
+ drivers/net/phy/Kconfig                       |    5 +
+ drivers/net/phy/Makefile                      |    1 +
+ drivers/net/phy/air_an8855.c                  |  267 ++
+ include/net/dsa.h                             |    1 +
+ net/dsa/dsa.c                                 |   19 +
+ 11 files changed, 3482 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/net/dsa/airoha,an8855.yaml
+ create mode 100644 drivers/net/dsa/an8855.c
+ create mode 100644 drivers/net/dsa/an8855.h
+ create mode 100644 drivers/net/phy/air_an8855.c
+
 -- 
-2.34.1
+2.45.2
 
 
