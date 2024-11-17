@@ -4,82 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F85BD68BE2
-	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Nov 2024 05:26:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76088D68BF9
+	for <linux-mediatek@archiver.kernel.org>; Sun, 17 Nov 2024 11:46:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=1VW7Eea+1GT6H8MpnapiTmJLeEwFPnQEnPcJgx9UmgI=; b=Js8+JyUYkqzK94RtKujerHALhi
-	RB6sDC4X0gQgtklNRtsMlpk1i8QnTKwm39G7CBbs9VvmvWlITNwU7B3S0ic+M1Rl7teHNINZKBpnG
-	54qFYJqwJOatV1GQvQ38Sy6+WunTAAoleYB7qVYWvIGd3AhdfS6eIFUtzKu/Nt52E1UkHkAJLTjEa
-	5DFruhrjOSAOvpDmnwBxbqTHKwyKWQlPU1vHVLcGnSxMWHTZ/qCT/bDgYS84mPob8SQHjmAe+Tns/
-	XU9xxLVtrCCYmj65DbvgV06PRfTL6QkZTCHLZYOjYadly0KtJUZCPJEYfyxtz21nwWhQR/slXR6O+
-	E11gx4sA==;
+	bh=mvRYbzWmy3Az0rIC9boe0S3YngFvnXy/0X+eihz5OIs=; b=DdzR8DPQEJFvbNU1bXaCWboBlD
+	uL5dR7HjOAPuFnIs0ugAoRxCFysSjTjjXXcih/eQg+mMS1bCif+7xjr35Sh28KbwUA3ugfze7oJaN
+	XkAEe+fEMz/hIG1mYxn14m/8Q3Pw12ZGv9FzWlPBJZsSfu9UwurBTE91wzHukroyfR+x6CKsCvGlC
+	IcCvrWqc//tbcFTTiFVHwjV7aXUFBEUc9OTpLZjwVkwhLOFeYrS0C+1v3SWHwrhbv1fQeccxPNIZv
+	ny/UP45l+N5DvN1OLF2scHBkymF1+fvecRkLgjyfua1qYaaG8CqA8JQtFDz6sjlgqWFf9LhhPyVob
+	/c4scw7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCXnZ-00000006qGR-3XEd;
-	Sun, 17 Nov 2024 05:26:13 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1tCdjo-00000007Fna-1XAb;
+	Sun, 17 Nov 2024 11:46:44 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCXmd-00000006qBR-2PlX
-	for linux-mediatek@lists.infradead.org;
-	Sun, 17 Nov 2024 05:25:17 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-71e681bc315so2192764b3a.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 16 Nov 2024 21:25:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=nigauri-org.20230601.gappssmtp.com; s=20230601; t=1731821114; x=1732425914; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=1VW7Eea+1GT6H8MpnapiTmJLeEwFPnQEnPcJgx9UmgI=;
-        b=0/r1pXph5UIw5IsqIJRsgat8a9WZ8PX5FaI4STqOS4+sYDqfaowK9FVDRUXBH8KcYR
-         Iv+mq86RZ4jWHQRBlU9UMDMjYvm2BbUPU9raaj/F5nNyiQ2YFg+yJvoSYCCJJ6+dRtpA
-         xhW0Mcc0ZmGpwe3vLXe7vZ+NDy87EK/kzAVPubXivoOyHum0g6HAMy/RJ44Yj58sgfhb
-         BDp81WrLo5BwItNcFEZ+oVSBP5EpsveFaN4VthWoElx5rIpCGqJVNsAdZq2ia5asnbek
-         vSOd0TzHDUxCMsZRpJVTY8DG9UwF9YT8UXqzyZbP8lxsOK9HPhs7GW/aG8NCWFwfuZuM
-         NoSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731821114; x=1732425914;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=1VW7Eea+1GT6H8MpnapiTmJLeEwFPnQEnPcJgx9UmgI=;
-        b=H4o5Tz9bmr3RhKK+18xAztXQL+ehN5kvXA94mDnBAbRgdiVarN0zzUPuPtSIu+70hz
-         BM76rYFQW9ncVVsek4ytdAYJPj42Iu3K2XqKyLAFmiMC8J3D3wdaxWQDQE8i1GPlFwdx
-         0G/EVu3wQ0sV91Ij5Ww+sTPpmUApu3PAVdTXdteCygHyBhzyNPtnY2cRCHyFQXoCWjEg
-         JaePYvywiQnCAFog7O+wqT248widpSTIEtM0L7gdXxqn6TxyoGrJXlDtzlA9c79ntkIH
-         Pess6JAuobFZQNcOjc5e6XB9mbODVTOD8e2omTT4lkkHQ7syA/PaMt8a1AaHR8VHVjwq
-         y/CA==
-X-Forwarded-Encrypted: i=1; AJvYcCWJt1REwC/0u2lm3R8gtNXgjViX01XnpliVNUV9DKS4ywtCP4N20JxMLltlfmf7XCPmofYSLq3nuJHSA0M3dQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyK39otsICUrbsLjBCC8NrG5UOUuLb6Oc9qUHRhyBcZ5idi9j0s
-	FGdu+sUTMCeCWhamLlaxbSaEcoE0eXOVzgTviKWmgivASppqiQ+i/OPESZHb
-X-Google-Smtp-Source: AGHT+IGIKhBFzH/0EKB/6b5lM8SAr8TWxF0Njpp5ye0c++OJX5e0IdyZKNZw2hCNJzCUyGgKB+BcJg==
-X-Received: by 2002:a05:6a00:10cd:b0:724:7843:4cf3 with SMTP id d2e1a72fcca58-7247843508dmr13674357b3a.0.1731821113905;
-        Sat, 16 Nov 2024 21:25:13 -0800 (PST)
-Received: from localhost ([2405:6581:5360:1800:96f6:cb09:e09e:fe02])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-724771e1a69sm3956170b3a.141.2024.11.16.21.25.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 16 Nov 2024 21:25:13 -0800 (PST)
-From: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
-To: Johan Hovold <johan@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1tCdir-00000007Fj4-1x0c;
+	Sun, 17 Nov 2024 11:45:46 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 15E22A40D50;
+	Sun, 17 Nov 2024 11:43:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6FD8FC4CED8;
+	Sun, 17 Nov 2024 11:45:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1731843943;
+	bh=WaUpZJgl59YzipJ0kAPa5ZUnQ2h5lltdWBavhDkQf0M=;
+	h=From:To:Cc:Subject:Date:From;
+	b=eGUEgnSVL17XsKDEl+xI+13lYs6hsEHSWhiTNo9PwYvPuuuII/oTVCsODqD2h82Vy
+	 stqkD9tA+NibANaR0xiIO40MYVJJntPO9nJycF2HhgVzjp2qFhCf66bQ11h3I6CDIE
+	 4mT4PIQ8/aR74+2/pP4xiR674pcGWEoVnx1RyKyucAVDZ0NPCo/u2q9nESfOVPnStv
+	 KA3KIyEAc908v4q1nWIYnhjTGG6//y1gEuzjXJJPk+NI+eeI44gyoVuGN9ElNv/IXc
+	 hCOFH4CsnVKRhg441fDQyWLn4wcQtcU6gtLmWMna7NKGii/1MSixpqS/fQash9tRAB
+	 afPTnVMN371wg==
+From: Kees Cook <kees@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Kees Cook <kees@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
 	linux-mediatek@lists.infradead.org,
-	Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
-Subject: [PATCH] gnss: mtk: Simplify return variables in mtk_set_active and mtk_set_standby
-Date: Sun, 17 Nov 2024 14:25:01 +0900
-Message-ID: <20241117052501.1138926-1-iwamatsu@nigauri.org>
-X-Mailer: git-send-email 2.45.2
+	linux-gpio@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-hardening@vger.kernel.org
+Subject: [PATCH] pinctrl: airoha: Use unsigned long for bit search
+Date: Sun, 17 Nov 2024 03:45:38 -0800
+Message-Id: <20241117114534.work.292-kees@kernel.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2769; i=kees@kernel.org; h=from:subject:message-id; bh=WaUpZJgl59YzipJ0kAPa5ZUnQ2h5lltdWBavhDkQf0M=; b=owGbwMvMwCVmps19z/KJym7G02pJDOmW15OY+ArTEmyFrWfl7Re2OJn69UpMy3EDQ1cXuRt13 1MnzHrWUcrCIMbFICumyBJk5x7n4vG2Pdx9riLMHFYmkCEMXJwCMBHpI4wM3yJmvOF8+Y0h59rR 30xq5pGlQnqPBbZ8Leuqvnynb4FyGsM/mwsHM21iXz3xTfm8uUg6+Feka63IqT1HHFTnzA5c6b+ UGQA=
+X-Developer-Key: i=kees@kernel.org; a=openpgp; fpr=A5C3F68F229DD60F723E6E138972F4DFDC6DC026
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241116_212515_647885_226BCC0A 
-X-CRM114-Status: UNSURE (   9.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241117_034545_635352_C7A13E36 
+X-CRM114-Status: GOOD (  11.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,46 +78,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Simply return directly instead of assign the return value.
+Instead of risking alignment problems and causing (false positive) array
+bound warnings when casting a u32 to (64-bit) unsigned long, just use a
+native unsigned long for doing bit searches. Avoids warning with GCC 15's
+-Warray-bounds -fdiagnostics-details:
 
-Signed-off-by: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
+In file included from ../include/linux/bitmap.h:11,
+                 from ../include/linux/cpumask.h:12,
+                 from ../arch/x86/include/asm/paravirt.h:21,
+                 from ../arch/x86/include/asm/irqflags.h:80,
+                 from ../include/linux/irqflags.h:18,
+                 from ../include/linux/spinlock.h:59,
+                 from ../include/linux/irq.h:14,
+                 from ../include/linux/irqchip/chained_irq.h:10,
+                 from ../include/linux/gpio/driver.h:8,
+                 from ../drivers/pinctrl/mediatek/pinctrl-airoha.c:11:
+In function 'find_next_bit',
+    inlined from 'airoha_irq_handler' at ../drivers/pinctrl/mediatek/pinctrl-airoha.c:2394:3:
+../include/linux/find.h:65:23: error: array subscript 'long unsigned int[0]' is partly outside array bounds of 'u32[1]' {aka 'unsigned int[1]'} [-Werror=array-bounds=]
+   65 |                 val = *addr & GENMASK(size - 1, offset);
+      |                       ^~~~~
+../drivers/pinctrl/mediatek/pinctrl-airoha.c: In function 'airoha_irq_handler':
+../drivers/pinctrl/mediatek/pinctrl-airoha.c:2387:21: note: object 'status' of size 4
+ 2387 |                 u32 status;
+      |                     ^~~~~~
+
+Signed-off-by: Kees Cook <kees@kernel.org>
 ---
- drivers/gnss/mtk.c | 14 ++------------
- 1 file changed, 2 insertions(+), 12 deletions(-)
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Sean Wang <sean.wang@kernel.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-gpio@vger.kernel.org
+---
+ drivers/pinctrl/mediatek/pinctrl-airoha.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gnss/mtk.c b/drivers/gnss/mtk.c
-index c62b1211f4fe4e..be20f6d6470736 100644
---- a/drivers/gnss/mtk.c
-+++ b/drivers/gnss/mtk.c
-@@ -24,25 +24,15 @@ struct mtk_data {
- static int mtk_set_active(struct gnss_serial *gserial)
- {
- 	struct mtk_data *data = gnss_serial_get_drvdata(gserial);
--	int ret;
+diff --git a/drivers/pinctrl/mediatek/pinctrl-airoha.c b/drivers/pinctrl/mediatek/pinctrl-airoha.c
+index 7692e6d9b871..547a798b71c8 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-airoha.c
++++ b/drivers/pinctrl/mediatek/pinctrl-airoha.c
+@@ -2384,15 +2384,16 @@ static irqreturn_t airoha_irq_handler(int irq, void *data)
  
--	ret = regulator_enable(data->vcc);
--	if (ret)
--		return ret;
--
--	return 0;
-+	return regulator_enable(data->vcc);
- }
+ 	for (i = 0; i < ARRAY_SIZE(irq_status_regs); i++) {
+ 		struct gpio_irq_chip *girq = &pinctrl->gpiochip.chip.irq;
+-		u32 status;
++		u32 regmap;
++		unsigned long status;
+ 		int irq;
  
- static int mtk_set_standby(struct gnss_serial *gserial)
- {
- 	struct mtk_data *data = gnss_serial_get_drvdata(gserial);
--	int ret;
+ 		if (regmap_read(pinctrl->regmap, pinctrl->gpiochip.status[i],
+-				&status))
++				&regmap))
+ 			continue;
  
--	ret = regulator_disable(data->vcc);
--	if (ret)
--		return ret;
--
--	return 0;
-+	return regulator_disable(data->vcc);
- }
+-		for_each_set_bit(irq, (unsigned long *)&status,
+-				 AIROHA_PIN_BANK_SIZE) {
++		status = regmap;
++		for_each_set_bit(irq, &status, AIROHA_PIN_BANK_SIZE) {
+ 			u32 offset = irq + i * AIROHA_PIN_BANK_SIZE;
  
- static int mtk_set_power(struct gnss_serial *gserial,
+ 			generic_handle_irq(irq_find_mapping(girq->domain,
 -- 
-2.45.2
+2.34.1
 
 
