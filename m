@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39231D6DDF9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Nov 2024 06:52:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29EFFD6DDC4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Nov 2024 06:53:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Bjk60j8JgfPJ9Kqu8EUeIPF/ifeNVAEm8DnqEc7lNis=; b=dqxtpAHYwE0NFaRDiXw4DCG6CT
-	2s3FRP1zyDB8v5K5mNiUbasqHkGLmYYbUD4WksXzhypUeVplzLfbhoKySPVJSUondvvUbxjZJM3fi
-	esQRF0bugG6CphE+07B/djQUKz4L8d3/csxn6yy3xQhBqxgc9ijKY/cGhJUKQi3jruFBUAHKqD1x4
-	rletUOe2nlp7eTibwHD+zpX6pU/q7L7FL+8uQ5K1CdRbM8JtbpBubiRxyR4RQQGigSzgDw3kprhfX
-	NQT8iW+j/zx593y8xpp3ceJzG/eBCcr8ME1I0vROjVfBsdwYvbgawnM3tV4tSgCJgK2mrfHnMaBqj
-	VRb8nsbA==;
+	bh=Y7CDREibPzZN7M7Wf0J3Ae7Hg12UEkxqiy5h9D2e/VA=; b=nnZsAa7Evh118VBRob5nwfK4z7
+	9TN9FHmA1nuPFcX0esUkqxPRTjOiqj0DcDn5o5PVWqSaucqJ0EKvkwmhIGLSlzp1yHXyauSYnak2N
+	XIqhtDvSCeRKmAqyw6aDWNQGdaiiY2lw19tnjEbnnX9/0LmbKbRfUO1+pds0V68ZBmLULl8HhgiQ/
+	z3f4NcsvUnT4cZXxe/fomQ4Eyn0Vu8vW7cJPmziJfnPFma7Jeb/V5rcy5YiPugt1Y6Ufz4cT21/N+
+	iQSgLww6n6OEERBhSwjopEk1jR5DMwxTvJSGPz0Wja3NMSosN3RcI36tmzwB4VK9kIpBwWIImMI+C
+	fLVF+EUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCvcx-00000008ZaY-1ZgO;
-	Mon, 18 Nov 2024 06:52:51 +0000
+	id 1tCvdr-00000008ZkS-1MMa;
+	Mon, 18 Nov 2024 06:53:47 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tCvZM-00000008Ysz-3Fni;
-	Mon, 18 Nov 2024 06:49:10 +0000
+	id 1tCvZm-00000008Z0c-44U0;
+	Mon, 18 Nov 2024 06:49:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1731912547;
-	bh=zAyH4l+W0XzT3+JqlBBg5UyJnzilg1n4gn9fyjQmO1w=;
+	s=mail; t=1731912573;
+	bh=Ul40GVnC8fMJpggrKRkggKnbsiidAZ2bzmqtOkj/wi0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oV1KzgsKIo6AaQqvLsV3ismvKgoR0s72ZCDc4W2O7S/fxkX6b12mY6f6pfGZKehJH
-	 xwhYkz1BmOf1kB2MS0epf7TF2WpJx8un5VfAsY1FWmwc9WSimiugI3PZ7Ph4ImVMXO
-	 bRwUzUNdsIb0Ibn8BJ04gJVqJkUTCHMxHY84MT1pWAWJv6+fi7n0SVG+bPYnlCZsYV
-	 5wZ/GNubAcTjrGVOx3HKl8gi0A0AEFxQ3Wr9cunUQcSCz56MDOPB8kyS95sMSeDwqg
-	 Hq8dPp0yIFe/CcfgOcUdfiF4r63m7i9KINSJ3vjLizAEP7H2mvI8KHvX1yGm8Fc24X
-	 yoDTP2okjTkgQ==
+	b=NVfbl4UVQ3/et0vosbqYCNoRN3n/enogc/hoLE4mIwendojGxO2hiFltimkfbwk+e
+	 poQWMli3exiTD7AWAlJewRlmAulSRxD5K4N6BVdkg93Mr+T8jI2A8hqXdKvnAPYwhO
+	 o2gfdcJlyxmU3hs0qXU0GIBojctHEqYbVOeyjTxk0cxCsvzqRPl8BhSHwBOWzFF2RI
+	 7VzQ+CKtuHcKyeTUNQ2Ox5rUo3B89SnGvsY04rjHuu7vkgOJlt5VbIduct+wcNaH3S
+	 K9FzpwrqlovaLEWBcESe/bUqoXhH+jgiE95KYskG4LJy6zD8sb0aBEP06i6xp7FNyv
+	 sYr0eVj1TToHw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B0AC117E1250;
-	Mon, 18 Nov 2024 07:49:06 +0100 (CET)
-Message-ID: <f7d69dca-1af6-43f0-b764-38be32aaecd7@collabora.com>
-Date: Mon, 18 Nov 2024 07:49:06 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C2F8C17E1232;
+	Mon, 18 Nov 2024 07:49:32 +0100 (CET)
+Message-ID: <b0cdf6aa-18ca-4645-b0e0-44c7581018b4@collabora.com>
+Date: Mon, 18 Nov 2024 07:49:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/6] PCI: mediatek-gen3: Add missing
- reset_control_deassert() for mac_rst in mtk_pcie_en7581_power_up()
+Subject: Re: [PATCH v3 6/6] PCI: mediatek-gen3: rely on msleep() in
+ mtk_pcie_en7581_power_up()
 To: Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee
  <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>,
  Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -61,15 +61,15 @@ To: Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee
 Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org
 References: <20241116-pcie-en7581-fixes-v3-0-f7add3afc27e@kernel.org>
- <20241116-pcie-en7581-fixes-v3-1-f7add3afc27e@kernel.org>
+ <20241116-pcie-en7581-fixes-v3-6-f7add3afc27e@kernel.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241116-pcie-en7581-fixes-v3-1-f7add3afc27e@kernel.org>
+In-Reply-To: <20241116-pcie-en7581-fixes-v3-6-f7add3afc27e@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241117_224908_996769_9AA6E1FC 
-X-CRM114-Status: UNSURE (   7.30  )
+X-CRM114-CacheID: sfid-20241117_224935_193782_9F12F280 
+X-CRM114-Status: UNSURE (   5.73  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,14 +86,11 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 16/11/24 09:18, Lorenzo Bianconi ha scritto:
-> Even if this is not a real issue since Airoha EN7581 SoC does not require
-> the mac reset line, add missing reset_control_deassert() for mac reset
-> line in mtk_pcie_en7581_power_up() callback.
+> Since mtk_pcie_en7581_power_up() runs in non-atomic context, rely on
+> msleep() routine instead of mdelay().
 > 
-> Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
 
 
