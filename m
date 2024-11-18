@@ -4,93 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC6F3D591A9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Nov 2024 18:36:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E9A4D591B2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Nov 2024 20:07:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NutJMTMGBpGlg6jc4CAOpY+tUMerhneIWFgqOFsouME=; b=X6e8QEpjOx13gY/dbAs+6FMmp8
-	Sn07FlQZ4+qWu4Sqv3M0qvzTmt/HBPaUit4W1nRxSfYxsznHZEHZKNWpMXwwORtkvjQ2vYpcH6ztc
-	ADMeCizDHNzhNaV92lvC3+RYlA9LQ1uGo6PlOnj+Kyp9bDWnVRg0eAM4V5H2CJnz31e/FZhnp7uzY
-	BsYLiSQOGTPdHZpn4eIH7sP4pa1q60gRm1td3DDGAyclaCs/FA07Tzo32x7Iov/lq0Z5aHT7xL9PG
-	3FM2v3ZoHhKYey5jTgJoIaOEscd7aGaGn8e2QAlu22LAKRwtVlcBctr8OKvi7cVdTmgG9H5bpxrLe
-	IvRq47SA==;
+	bh=ndSoR+0OhUwkKwnTH5YxnYyz2I37z5cHRZE/CYVXZMA=; b=jgbo0h0co8HR+tvya6REiq5q+L
+	lt6rQon62ftK+Pk/WMNAScJOc1i1CIHVDaTTO7RbtnPMTUBz6v/nzluCYxCguCbQ6qg/DxAmENNHO
+	jibQAra3T9yz8CBMoYMXjbFphxmlQ/x11rvW8mfdSS0M+IWTihTj+GSrANQTlDVCyn7SWxrvU6fJB
+	wJNxaa9SGzqwr8zu8GiRZnY9cmRpKQWq2VqDp03CmgevKHop0vfK2fhmokb/1DB3A4EnhY2S4nmB1
+	fdxoeDKCkltPGRA+bMH/R4YjGC7OAYMe3ADVtHg25/8Tqs4/ahS96EK+vqYglX7OwdIpeF8XjwZ+l
+	78c4RexQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tD6bn-0000000AMR5-0hEB;
-	Mon, 18 Nov 2024 18:36:23 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1tD82C-0000000AXRg-25xL;
+	Mon, 18 Nov 2024 20:07:44 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tD6ar-0000000AMI1-1V8R;
-	Mon, 18 Nov 2024 18:35:26 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-382378f359dso1491221f8f.1;
-        Mon, 18 Nov 2024 10:35:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1731954923; x=1732559723; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=NutJMTMGBpGlg6jc4CAOpY+tUMerhneIWFgqOFsouME=;
-        b=UrrS0yJtzqdAlhW+Yyd4yxhdtT4G+MsAG4vdUuQp9kWeATo/iyFQGQJbxaTmCsO+CZ
-         6Wz6Ii1sO69iYXOs+OCXmVC+9HepTrZCVVaI4mRU4J2JCMBGvEJBzXbVbVn19mFEZ0jx
-         0wxW3lEVjfEirmXzg/mhn/e5wfWKgPEOMpSeSEjQqjsEeDRx3zgKvKZasVkbq2cgfMub
-         YYenpXxxEetBufd6dv+cauiIzvks/Yg/chgOsQO498JAI01IDRUfQxA3wLtBEWmXQTWM
-         kuehlIFCEGhg+mhJSnx8K5T8+6BYyYuGNk4K7AGtgS342ipHi2s2DIRhay8D/3CbLEec
-         TzEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731954923; x=1732559723;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=NutJMTMGBpGlg6jc4CAOpY+tUMerhneIWFgqOFsouME=;
-        b=wW2lV4M3fv0QueFS3smfhT6T0gC58/K4noWxsChNZjWrf/DQLjds+TS7aqhm9Jf+QF
-         /HEfM7jWa3ApI0Jdg+J9OJjageWgjIizPdAROMYrZ84CI/5y74/ohIdoroGN/9YSyQE7
-         +yc9QE/9W9mNQz0/y1F/e8i72cCMs50cvhNWt96ei9G0ifZ7O+RKxOTaR9mHurw0RSn9
-         LlVD8OabIxUZQNO1p7JX1dxzhw+JMg74ntfVuZ5JoSMs9V/9UyKl5N09wm5/4Prnhor5
-         CqDM+lmS2Frarrdng9C5m3uw97AN3mqWSq/F1MWiAIgQJoz3O1OEYvYm77r3D6YY9PjX
-         lbAA==
-X-Forwarded-Encrypted: i=1; AJvYcCVcjRrABgSWH9P4NUwHXmW43AvdxG1ohzUUCsfU18p0FVvccYF7btXI4EOX/9WG60uxwX5MjLzMVQfkvZCwbHVj@lists.infradead.org, AJvYcCXhsk4bOW7lehPacPYpDo7GfdSQf/Z9jOFO00x2DvDQmJYfIPGYLmzSRkdpD/TNPdAL2cOv9Pml1NLyzmB4JF8=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwE3JQ2G7aUKV9wwOYR5jzMUb2nVLZQ5WeMea7JfxvhvMKOOUqs
-	ZAVP5ZSIApQSnWj2yozr3uwSCnEMN3/4f3dqnk0pzHwW8+8EL71r
-X-Google-Smtp-Source: AGHT+IFjKnwL+BAcS4FvmCWrXf++f05PwJmlO/bTN95oll3IN9DWzzjQsayZ7u1F458KkypWbgNafg==
-X-Received: by 2002:a5d:47a4:0:b0:37d:46fa:d1d3 with SMTP id ffacd0b85a97d-38225a931abmr11496928f8f.34.1731954923402;
-        Mon, 18 Nov 2024 10:35:23 -0800 (PST)
-Received: from Ansuel-XPS. (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3821ae161b5sm13816130f8f.74.2024.11.18.10.35.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Nov 2024 10:35:22 -0800 (PST)
-Message-ID: <673b88ea.5d0a0220.17b04a.bc4b@mx.google.com>
-X-Google-Original-Message-ID: <ZzuI5vA-PUWpe5CR@Ansuel-XPS.>
-Date: Mon, 18 Nov 2024 19:35:18 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
+	id 1tD81G-0000000AXK5-0kSm;
+	Mon, 18 Nov 2024 20:06:47 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 47504A41BEA;
+	Mon, 18 Nov 2024 20:04:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E787C4CECC;
+	Mon, 18 Nov 2024 20:06:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1731960404;
+	bh=BZLFINsMS8pPfEa2wS5Xd+1akLeYv9BQloWJ6y92+qs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=p8xchKHWTiB7DLpXpMZ/rokpIHqbjnduyfTKuCNXQEAf8AeSOLePjc+Vz+G2TUAL4
+	 bpBKb6XqAuQNCqFX71br72A+J0DklZhUq/degpMQJQGgb2vb8XA6KKCowg04xS8aP9
+	 9GTvY56pB99209v+dvdbbNjXAb79yBrula6Js7cz390kTxZLT+qxkPy1pYX0HGQq6c
+	 0QVFz2Ighd7iypAIMlF7glyswIWxYg32oKez0Dq9SDXou1+K7vLbJeBLnVe1HGSK2L
+	 kQArLC61iaOrvMcnTbSZeEkWLfCv6VWoAqoktmiFSkES/ka9EAobpzLoBIWgMGz1Qn
+	 quba2HIWN95Sw==
+Date: Mon, 18 Nov 2024 13:06:41 -0700
+From: Nathan Chancellor <nathan@kernel.org>
+To: Arnd Bergmann <arnd@kernel.org>
+Cc: Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Nick Desaulniers <ndesaulniers@google.com>,
+	Bill Wendling <morbo@google.com>,
+	Justin Stitt <justinstitt@google.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Sebastian Fricke <sebastian.fricke@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [net-next PATCH v7 0/4] net: dsa: Add Airoha AN8855 support
-References: <20241117132811.67804-1-ansuelsmth@gmail.com>
- <20241118144859.4hwgpxtql5fplcyt@skbuf>
+	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
+Subject: Re: [PATCH] media: mediatek: vcodec: mark
+ vdec_vp9_slice_map_counts_eob_coef noinline
+Message-ID: <20241118200641.GA768549@thelio-3990X>
+References: <20241018151448.3694052-1-arnd@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241118144859.4hwgpxtql5fplcyt@skbuf>
+In-Reply-To: <20241018151448.3694052-1-arnd@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241118_103525_393864_23126999 
-X-CRM114-Status: GOOD (  18.52  )
+X-CRM114-CacheID: sfid-20241118_120646_336389_62090608 
+X-CRM114-Status: GOOD (  23.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,31 +85,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 18, 2024 at 04:48:59PM +0200, Vladimir Oltean wrote:
-> Hi Christian,
+On Fri, Oct 18, 2024 at 03:14:42PM +0000, Arnd Bergmann wrote:
+> From: Arnd Bergmann <arnd@arndb.de>
 > 
-> On Sun, Nov 17, 2024 at 02:27:55PM +0100, Christian Marangi wrote:
-> > This small series add the initial support for the Airoha AN8855 Switch.
-> > 
-> > It's a 5 port Gigabit Switch with SGMII/HSGMII upstream port.
-> > 
-> > This is starting to get in the wild and there are already some router
-> > having this switch chip.
-> > 
-> > It's conceptually similar to mediatek switch but register and bits
-> > are different. And there is that massive Hell that is the PCS
-> > configuration.
-> > Saddly for that part we have absolutely NO documentation currently.
-> > 
-> > There is this special thing where PHY needs to be calibrated with values
-> > from the switch efuse. (the thing have a whole cpu timer and MCU)
+> With KASAN enabled, clang fails to optimize the inline version of
+> vdec_vp9_slice_map_counts_eob_coef() properly, leading to kilobytes
+> of temporary values spilled to the stack:
 > 
-> Have you run the scripts in tools/testing/selftests/drivers/net/dsa/?
-> Could you post the results?
+> drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c:1526:12: error: stack frame size (2160) exceeds limit (2048) in 'vdec_vp9_slice_update_prob' [-Werror,-Wframe-larger-than]
+> 
+> This seems to affect all versions of clang including the latest (clang-20),
+> but the degree of stack overhead is different per release.
+> 
+> Marking the function as noinline_for_stack is harmless here and avoids
+> the problem completely.
+> 
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
-Any test in particular? I'm working on adding correct support for them
-in OpenWrt. Should I expect some to fail?
+Unfortunately, I have seen no moment on my upstream report and this
+warning is breaking allmodconfig builds because of -Werror. Can this be
+applied as a workaround for now (preferrably with a Cc: stable on it)?
 
--- 
-	Ansuel
+Reviewed-by: Nathan Chancellor <nathan@kernel.org>
+
+> ---
+> I have not come to a conclusion on how exactly clang fails to do this
+> right, but can provide the .config and/or preprocessed source files
+> and command line if we think this should be fixed in clang.
+> ---
+>  .../mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c         | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+> index eea709d93820..47c302745c1d 100644
+> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+> @@ -1188,7 +1188,8 @@ static int vdec_vp9_slice_setup_lat(struct vdec_vp9_slice_instance *instance,
+>  	return ret;
+>  }
+>  
+> -static
+> +/* clang stack usage explodes if this is inlined */
+> +static noinline_for_stack
+>  void vdec_vp9_slice_map_counts_eob_coef(unsigned int i, unsigned int j, unsigned int k,
+>  					struct vdec_vp9_slice_frame_counts *counts,
+>  					struct v4l2_vp9_frame_symbol_counts *counts_helper)
+> -- 
+> 2.39.5
+> 
 
