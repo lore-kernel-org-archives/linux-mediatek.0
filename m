@@ -4,86 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F9BAD591AA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Nov 2024 17:41:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC6F3D591A9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Nov 2024 18:36:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1tIib4eNH4Bj55ytCO2SrDsnedFwF9aGSQvLrHzbjSk=; b=LMGhhWgroOs2PmXkDtqgIM0YAg
-	CYqkItADfMXnyqSlFMwuuVXjaN0FYv3O7KjYKWjBfmkP9xZesN4GZfIjvgqOTepwsTHMLz6uTfmPC
-	IE1+UMmYz1uy9zO+p8sTrCh7nNyq7rtkUcfkdhn8KaF8x0NI7bV1A6k7Fdixdwh7NKINDbKaxU2Aj
-	lUu8Z2gOkZvsrH8Tk5R49OnecwzesZEcOuY8Usj2DD2e+2UFUzZFVBpOjj9Wrp2Q9mFa0mQgQ0onF
-	ThY1dAdfe1dYYyI7FhiVVEjeAAngd44+OCJggPy1Ygy1Ii4vhoYP5PhO6XPUhSQe818+vyGaUdE1P
-	qplKSIYA==;
+	bh=NutJMTMGBpGlg6jc4CAOpY+tUMerhneIWFgqOFsouME=; b=X6e8QEpjOx13gY/dbAs+6FMmp8
+	Sn07FlQZ4+qWu4Sqv3M0qvzTmt/HBPaUit4W1nRxSfYxsznHZEHZKNWpMXwwORtkvjQ2vYpcH6ztc
+	ADMeCizDHNzhNaV92lvC3+RYlA9LQ1uGo6PlOnj+Kyp9bDWnVRg0eAM4V5H2CJnz31e/FZhnp7uzY
+	BsYLiSQOGTPdHZpn4eIH7sP4pa1q60gRm1td3DDGAyclaCs/FA07Tzo32x7Iov/lq0Z5aHT7xL9PG
+	3FM2v3ZoHhKYey5jTgJoIaOEscd7aGaGn8e2QAlu22LAKRwtVlcBctr8OKvi7cVdTmgG9H5bpxrLe
+	IvRq47SA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tD5ka-0000000AEvo-11Of;
-	Mon, 18 Nov 2024 17:41:24 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1tD6bn-0000000AMR5-0hEB;
+	Mon, 18 Nov 2024 18:36:23 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tD5jc-0000000AEo3-3by2
-	for linux-mediatek@lists.infradead.org;
-	Mon, 18 Nov 2024 17:40:27 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-43168d9c6c9so39215325e9.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 18 Nov 2024 09:40:24 -0800 (PST)
+	id 1tD6ar-0000000AMI1-1V8R;
+	Mon, 18 Nov 2024 18:35:26 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-382378f359dso1491221f8f.1;
+        Mon, 18 Nov 2024 10:35:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1731951623; x=1732556423; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=1tIib4eNH4Bj55ytCO2SrDsnedFwF9aGSQvLrHzbjSk=;
-        b=PNGldatg9asndfeO44dlNRI1QYRxASrXMSSGwyl+tv4JNvlq+6JTfWCOtJS5oJ/l+j
-         ZPnY4sXJQqTwmF2y0XGNWrioPl4Ru3BkidfE66OM0DLyVGI+MemnLZmDDUrLiFXdvD6H
-         sSJAcEWqYnKdEP0cJTuFOdtjuJ+UKaMbEmXamq/AoJAG6WcLPaj3lRax3/bOOY3WFXPF
-         m4N2GkwPhQLQdb2cQEsE3ceh6xz4fPAcc1wcDeZJPDbimTE0jb5PuZVWNuTxeG43LvAc
-         lZBC4z/WxMLpJtAkq9xKbM4umdymBJV7ipRmX8p0f9I6ZMpxYY/z8VDsdRHD13Hh6pq+
-         FiHA==
+        d=gmail.com; s=20230601; t=1731954923; x=1732559723; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=NutJMTMGBpGlg6jc4CAOpY+tUMerhneIWFgqOFsouME=;
+        b=UrrS0yJtzqdAlhW+Yyd4yxhdtT4G+MsAG4vdUuQp9kWeATo/iyFQGQJbxaTmCsO+CZ
+         6Wz6Ii1sO69iYXOs+OCXmVC+9HepTrZCVVaI4mRU4J2JCMBGvEJBzXbVbVn19mFEZ0jx
+         0wxW3lEVjfEirmXzg/mhn/e5wfWKgPEOMpSeSEjQqjsEeDRx3zgKvKZasVkbq2cgfMub
+         YYenpXxxEetBufd6dv+cauiIzvks/Yg/chgOsQO498JAI01IDRUfQxA3wLtBEWmXQTWM
+         kuehlIFCEGhg+mhJSnx8K5T8+6BYyYuGNk4K7AGtgS342ipHi2s2DIRhay8D/3CbLEec
+         TzEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731951623; x=1732556423;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+        d=1e100.net; s=20230601; t=1731954923; x=1732559723;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=1tIib4eNH4Bj55ytCO2SrDsnedFwF9aGSQvLrHzbjSk=;
-        b=S7Me+zLOd9A9GujXOWjp86zXG/4VUS+KXYnAmUuEIay1ucdXTvnOyD2l5UHzmYqpl8
-         w53B9iHkHsuka2wlt4N2/004DEYVsXAdRjP+cGCgayInt4ivwhqrQ93oc3coFtK+vDaS
-         1yv9sU2OPpCwR2+/qirRCyALN4ubuI+59OIYz4xhMAu2T34J9Qm7QB3egNPHBfB4N1Gm
-         nufapqyF3st2lzABhQECk32RZi4h5qmVS8QWKL7WiNYRvIXRCngbGsAjC9rBAQCkJf5Q
-         Ld8IQ53TvDXFXuUQZuePTTTeraIFi979+zbHJOEae6K581lPStaVO/bnv7qbnIg8LaS8
-         BTsQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX6mC9JyHLIkqtRTthIjj6kJVoeD6UcZKG8ZEzz0Xw/aoh4YnPVKmyNNeWvVNP48IEIRiwkT48i/aW7peJL6g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxYqZnXeYZ0qaEumf5I0fCW0mmUdofs7zZfMNsdsQTfAJxQeQax
-	QmfYXCQFlj0fA1auExipOPqKhGToPOgVN+uHNX0Gk7rX9saBXgmgHRBnRebYAp0=
-X-Google-Smtp-Source: AGHT+IF3nj2yHydrx7Ks+n+zytE68ZdQxoMq1sSNeM0Nynyzk3P/uHdIYwyssSFKYkQ+6vZqXuvURA==
-X-Received: by 2002:a05:600c:198c:b0:431:55bf:fe4 with SMTP id 5b1f17b1804b1-432df78a99emr105241745e9.24.1731951622735;
-        Mon, 18 Nov 2024 09:40:22 -0800 (PST)
-Received: from localhost (p509159f1.dip0.t-ipconnect.de. [80.145.89.241])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-432da298760sm166249345e9.37.2024.11.18.09.40.21
+        bh=NutJMTMGBpGlg6jc4CAOpY+tUMerhneIWFgqOFsouME=;
+        b=wW2lV4M3fv0QueFS3smfhT6T0gC58/K4noWxsChNZjWrf/DQLjds+TS7aqhm9Jf+QF
+         /HEfM7jWa3ApI0Jdg+J9OJjageWgjIizPdAROMYrZ84CI/5y74/ohIdoroGN/9YSyQE7
+         +yc9QE/9W9mNQz0/y1F/e8i72cCMs50cvhNWt96ei9G0ifZ7O+RKxOTaR9mHurw0RSn9
+         LlVD8OabIxUZQNO1p7JX1dxzhw+JMg74ntfVuZ5JoSMs9V/9UyKl5N09wm5/4Prnhor5
+         CqDM+lmS2Frarrdng9C5m3uw97AN3mqWSq/F1MWiAIgQJoz3O1OEYvYm77r3D6YY9PjX
+         lbAA==
+X-Forwarded-Encrypted: i=1; AJvYcCVcjRrABgSWH9P4NUwHXmW43AvdxG1ohzUUCsfU18p0FVvccYF7btXI4EOX/9WG60uxwX5MjLzMVQfkvZCwbHVj@lists.infradead.org, AJvYcCXhsk4bOW7lehPacPYpDo7GfdSQf/Z9jOFO00x2DvDQmJYfIPGYLmzSRkdpD/TNPdAL2cOv9Pml1NLyzmB4JF8=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwE3JQ2G7aUKV9wwOYR5jzMUb2nVLZQ5WeMea7JfxvhvMKOOUqs
+	ZAVP5ZSIApQSnWj2yozr3uwSCnEMN3/4f3dqnk0pzHwW8+8EL71r
+X-Google-Smtp-Source: AGHT+IFjKnwL+BAcS4FvmCWrXf++f05PwJmlO/bTN95oll3IN9DWzzjQsayZ7u1F458KkypWbgNafg==
+X-Received: by 2002:a5d:47a4:0:b0:37d:46fa:d1d3 with SMTP id ffacd0b85a97d-38225a931abmr11496928f8f.34.1731954923402;
+        Mon, 18 Nov 2024 10:35:23 -0800 (PST)
+Received: from Ansuel-XPS. (93-34-91-161.ip49.fastwebnet.it. [93.34.91.161])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3821ae161b5sm13816130f8f.74.2024.11.18.10.35.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Nov 2024 09:40:22 -0800 (PST)
-Date: Mon, 18 Nov 2024 18:40:21 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lee Jones <lee@kernel.org>, linux-mediatek@lists.infradead.org, 
-	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	upstream@airoha.com, benjamin.larsson@genexis.eu, linux-pwm@vger.kernel.org
-Subject: Re: [PATCH v10] pwm: airoha: Add support for EN7581 SoC
-Message-ID: <kpbylpee46nmxxvzxfbylscfafrlkpzjt37lkfdt4vtoq3qvfc@5v7khvwwohty>
-References: <20241103-en7581-pinctrl-v10-1-1990fb6996a0@kernel.org>
- <673b47ae.df0a0220.2187ad.bc2a@mx.google.com>
+        Mon, 18 Nov 2024 10:35:22 -0800 (PST)
+Message-ID: <673b88ea.5d0a0220.17b04a.bc4b@mx.google.com>
+X-Google-Original-Message-ID: <ZzuI5vA-PUWpe5CR@Ansuel-XPS.>
+Date: Mon, 18 Nov 2024 19:35:18 +0100
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	upstream@airoha.com
+Subject: Re: [net-next PATCH v7 0/4] net: dsa: Add Airoha AN8855 support
+References: <20241117132811.67804-1-ansuelsmth@gmail.com>
+ <20241118144859.4hwgpxtql5fplcyt@skbuf>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="5bt3c2qqssojeolk"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <673b47ae.df0a0220.2187ad.bc2a@mx.google.com>
+In-Reply-To: <20241118144859.4hwgpxtql5fplcyt@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241118_094025_159064_0B18E956 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20241118_103525_393864_23126999 
+X-CRM114-Status: GOOD (  18.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,42 +105,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Nov 18, 2024 at 04:48:59PM +0200, Vladimir Oltean wrote:
+> Hi Christian,
+> 
+> On Sun, Nov 17, 2024 at 02:27:55PM +0100, Christian Marangi wrote:
+> > This small series add the initial support for the Airoha AN8855 Switch.
+> > 
+> > It's a 5 port Gigabit Switch with SGMII/HSGMII upstream port.
+> > 
+> > This is starting to get in the wild and there are already some router
+> > having this switch chip.
+> > 
+> > It's conceptually similar to mediatek switch but register and bits
+> > are different. And there is that massive Hell that is the PCS
+> > configuration.
+> > Saddly for that part we have absolutely NO documentation currently.
+> > 
+> > There is this special thing where PHY needs to be calibrated with values
+> > from the switch efuse. (the thing have a whole cpu timer and MCU)
+> 
+> Have you run the scripts in tools/testing/selftests/drivers/net/dsa/?
+> Could you post the results?
 
---5bt3c2qqssojeolk
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Subject: Re: [PATCH v10] pwm: airoha: Add support for EN7581 SoC
-MIME-Version: 1.0
+Any test in particular? I'm working on adding correct support for them
+in OpenWrt. Should I expect some to fail?
 
-Hello,
-
-On Mon, Nov 18, 2024 at 02:56:58PM +0100, Christian Marangi wrote:
-> since you gave revision for v9, any news with this? Is everything good
-> now? It's sad if this last piece doesn't get through after all this
-> efforts with the previous series :(
-
-I'm sorry. I still have your patch on my radar, my todo list is just too
-long to give feedback on a short-term basis. See
-https://patchwork.ozlabs.org/project/linux-pwm/list/ for parts of my
-queue.
-
-Best regards
-Uwe
-
---5bt3c2qqssojeolk
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmc7fAIACgkQj4D7WH0S
-/k6GNAf/Uv0TP2XG1eM5gVUAzPsO8nIbVqSQu0qVstgU2m0w4fwe4Sf5ikqykVsD
-jeYs+uIgK1r055ifeUSf32mcXOb5nW1GPob8stTVfViOL0diAuv4d88kPzGnDi/D
-vn+BwCd2pOi6dGopB+ZqtajsRasx7NNFvTf8ZRcq5V0/kpElLAcLQLjAJZGigjbt
-a9d1Y1lnBUk+GeCg1rLvNDo5MPkL1t0xcRZgxr6qp+VVGBuO2SsL2IpW/eZz9HU+
-M+evGLlT8hwlrNoBgZQ5vGvfZtda51JmcHTiF9b28iZC3pOnws8QiXpmznPlVhDN
-5Jp1+kkmy5YbonA6ZlI/SncX7LzzKw==
-=eBCO
------END PGP SIGNATURE-----
-
---5bt3c2qqssojeolk--
+-- 
+	Ansuel
 
