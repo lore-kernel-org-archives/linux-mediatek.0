@@ -4,93 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D9ABD6004C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 07:39:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A693AD60079
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 08:16:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Gc03VgYQIOfXdNIZNxM20U/iHVBib0CYjcHbGag74lQ=; b=qj0jkoG/VCMopRVvee691SlojF
-	a25749/s5MOFVJl2N0ThZd/xFkNp4wMHofhVNmU+gOEPeA8R31U5Rb0QmMsBywDmAnsKM1SBweDfO
-	FrjR8cYIVEBqysaaAjqK6LpWIAQ0WdGZ/4mbn7T8CvPWQFBKDpCsIJWqEhvN7T2MMIDRZnmQnAZIB
-	ilxxdMwrbCJjftJwPZReVENaMfTM3726vYfnL7POwZd4G45wX33BSMzQYnDVsBcvraIoEILI7fAVF
-	0jHIRdfkmWPaAoHBmC+ejY4fspMriMnWGANwb84qF5KkcNKCZJvx6Gi6mkoeRpqZxZISwknfuWcNJ
-	rjAsmPow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nVX7RkSMCWqEzuoSHbqp8RLQVffpCyQRTHH1DBr09w4=; b=nYtc7kYCoeJSCD/V4qbXdveGzR
+	EIF/3zi9lHjg9VHnzeyeQ43yc876QAaalzD+8mGQrZv0UevN7rN3tJQqXf3CAgsVyfmMnx6hW0/9+
+	Wnz7cOrdBeq4bXS+pSgE1d4A8RuoTLLD0t44y4RI6qQ5x8FEtt5PNN3LNj5TpmCJFUC3gfj1lHk68
+	iOuDxFA5yw8Sw499v1aekQFeZ3lNSpq43+u8MK0vxMEgFVn6vw1DXLxgdOUC8k+FIdq2bVtuhxt2H
+	n7jZNvbDJkx3rnFCRttwdSlaJzkSR5KWQ/ZBASTJ0HbgnTcyU3STic4v1yg8wZRY7ycPEWzLk1a6M
+	J82gyFog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDIpc-0000000Bema-3lW1;
-	Tue, 19 Nov 2024 07:39:28 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1tDJPk-0000000BjFV-2g7y;
+	Tue, 19 Nov 2024 08:16:48 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDIpZ-0000000Belh-23ib
-	for linux-mediatek@lists.infradead.org;
-	Tue, 19 Nov 2024 07:39:27 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-aa20944ce8cso913911266b.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 18 Nov 2024 23:39:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1732001963; x=1732606763; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Gc03VgYQIOfXdNIZNxM20U/iHVBib0CYjcHbGag74lQ=;
-        b=g+CK+JQ3umvghorZCU+Mlm2lumehLZlWRfzQfWQs5k/plspNqla1PYL2E/Hv0edNk7
-         wLj+L1dG4tzzPLq9Bf8m8bggYpamb6HmRRVhtFjAoyvnmPkvsZG2txKSgTWChDMxvocf
-         GuVEq1XcRBRErUlWg5f0KLYc1L3+5R3r/mPig=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732001963; x=1732606763;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Gc03VgYQIOfXdNIZNxM20U/iHVBib0CYjcHbGag74lQ=;
-        b=XsCF61083PKnpudgLffq2/mmCkYWobHZoJwavRbCj5YSNOq7B0HrkfO3dGQHZ1ghYS
-         ZKKzCLB0g6tLMlvhLS80b8wJzuTxxPjQ+oXsodYe+FEl5MhAzE+lCTQ+SgZCyorYamKO
-         ghGT6rAIoOx7bPnGq5tMzyIXjNhIj6mYNHaZBX6wDDdIhLIu1krYCw4v8rw9ZMyNO/Dg
-         O0kUhQRGZzEH5EG36kzPqmDd+1TDAzRt4dDEyggRuJKbEhjxmQmiUSSsslkhqa5lrj3k
-         RH1UYAjnavKTl7qSqIy0UoCX7eD8gm8XowqaPdsrL8YOjIm5pMb8C3qIdHY7o4Sbb+aJ
-         Y1Iw==
-X-Forwarded-Encrypted: i=1; AJvYcCVWaVjC9TQbuXucr7vYopU2LdwTmIjUxB8K22dY+DCKSz4uV1/AA15SkSbW8LgqgNJZrTY4SsVTdLfd1BhCYg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzDQYOPD5f2iLa37EMuwerNroU7mK7J3BkeG/O/ln8YpDyemk9j
-	BGs+Of6hSIA5a6gufKCKnUr+tADpgyUTORfJ9b/bBMOVLmb4OeHkBzpVwuQ0TeLHtVE02sISefP
-	t2w==
-X-Google-Smtp-Source: AGHT+IETsa4zf0sQ8iNWyy62Czl2jzIeEDM/zV5smuCDGoLgSCyVz8pd2c6rlr0DQHCdUUgbYBZP7Q==
-X-Received: by 2002:a17:907:3fa0:b0:a9e:c4df:e3c9 with SMTP id a640c23a62f3a-aa4c7e7c2bamr187163966b.24.1732001963386;
-        Mon, 18 Nov 2024 23:39:23 -0800 (PST)
-Received: from mail-ed1-f46.google.com (mail-ed1-f46.google.com. [209.85.208.46])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa20df26c52sm615955766b.18.2024.11.18.23.39.21
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 18 Nov 2024 23:39:22 -0800 (PST)
-Received: by mail-ed1-f46.google.com with SMTP id 4fb4d7f45d1cf-5cfc18d5259so4047a12.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 18 Nov 2024 23:39:21 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCWtS06dcluYWU0zswEN1Bf8dobdbQ4cVjTR4TBN9JACZInmwy/0iADmyAnfzDvB8kAjPDk7duSbDjNGkT/ylA==@lists.infradead.org
-X-Received: by 2002:a50:eb07:0:b0:5cf:c33b:c1eb with SMTP id
- 4fb4d7f45d1cf-5cfe19be25bmr29406a12.3.1732001961040; Mon, 18 Nov 2024
- 23:39:21 -0800 (PST)
+	id 1tDJOn-0000000Bj7h-1hxD;
+	Tue, 19 Nov 2024 08:15:50 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9037A5C3F98;
+	Tue, 19 Nov 2024 08:15:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E9CD0C4CECF;
+	Tue, 19 Nov 2024 08:15:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1732004148;
+	bh=ejBrNZZPHW9XhE6WU+WW7+dWvdcRTPCPgQ6keHGeN8Y=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XMqtFtQMQ7GJofz2J1aN+IQ8uJX2UE4HAUA443syTNnq6pNXp1NwWZb9+3HTRYbnS
+	 4GeVy4YKnB4gMVTyLk1enflzHoqzDpoyUKuPsF6P0JUsCefkkRxIeXtHxpHU80Rb/W
+	 oOI1rdKrjVWGWBw1yb+A51Knat6r4STg2kdCPQQqDYsw8176RZMnem9QkKSDDeBx2L
+	 9T91sno/xAFl15q+oPDsHvXm/hhC8sq4uEL54uMPwROROHZ+cJezsniWOk2JX1YOql
+	 HsJPfHElGMj58qHJCawxtN468ji3lyXZM3xbVY8pxMPG+r8j77klXtWvF725qoCQbn
+	 nsU57w3VxIVIw==
+Date: Tue, 19 Nov 2024 09:15:45 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Cc: Christian Marangi <ansuelsmth@gmail.com>, linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
+	Hui Ma <hui.ma@airoha.com>
+Subject: Re: [PATCH v3] PCI: mediatek-gen3: Avoid PCIe resetting via
+ PCIE_RSTB for Airoha EN7581 SoC
+Message-ID: <ZzxJMbWkV1OELEID@lore-desk>
+References: <20241113-pcie-en7581-rst-fix-v3-1-23c5082335f7@kernel.org>
 MIME-Version: 1.0
-References: <20241025-auxadc_thermal-v14-1-96ab5b60c02e@chromium.org> <5dd2d2a3-6eff-45fb-8af8-593945235dd3@linaro.org>
-In-Reply-To: <5dd2d2a3-6eff-45fb-8af8-593945235dd3@linaro.org>
-From: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Date: Tue, 19 Nov 2024 15:38:44 +0800
-X-Gmail-Original-Message-ID: <CAHc4DNKSsrdSjqunhk+oyWw_+oKY9BgzPcqag5QrmLJqjVsE1Q@mail.gmail.com>
-Message-ID: <CAHc4DNKSsrdSjqunhk+oyWw_+oKY9BgzPcqag5QrmLJqjVsE1Q@mail.gmail.com>
-Subject: Re: [PATCH v14] thermal/drivers/mediatek/auxadc_thermal: expose all
- thermal sensors
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Hsin-Te Yuan <yuanhsinte@chromium.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pm@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, James Lo <james.lo@mediatek.com>, 
-	Michael Kao <michael.kao@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
-	Ben Tseng <ben.tseng@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="oWqVrS/inJW1ZEom"
+Content-Disposition: inline
+In-Reply-To: <20241113-pcie-en7581-rst-fix-v3-1-23c5082335f7@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241118_233925_551293_B049BF21 
-X-CRM114-Status: GOOD (  50.61  )
+X-CRM114-CacheID: sfid-20241119_001549_538522_847353F9 
+X-CRM114-Status: GOOD (  29.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,306 +81,182 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 15, 2024 at 12:48=E2=80=AFAM Daniel Lezcano
-<daniel.lezcano@linaro.org> wrote:
->
->
-> Hi,
->
-> On 25/10/2024 14:05, Hsin-Te Yuan wrote:
-> > From: James Lo <james.lo@mediatek.com>
-> >
-> > Previously, the driver only supported reading the temperature from all
-> > sensors and returning the maximum value. This update adds another
-> > get_temp ops to support reading the temperature from each sensor
-> > separately.
-> >
-> > Especially, some thermal zones registered by this patch are needed by
-> > MT8183 since those thermal zones are necessary for mtk-svs driver.
->
-> The DT for the mt8183 describes the sensor id =3D 0 as the CPU. On this,
-> there is a cooling device with trip points.
->
-> The driver registers the id=3D0 as an aggregator for the sensors which
-> overloads the CPU thermal zone above.
->
-> Why do you need to aggregate all the sensors to retrieve the max value ?
->
-> They are all contributing differently to the heat and they should be
-> tied with their proper cooling device.
->
-> I don't think the thermal configuration is correct and I suggest to fix
-> this aggregator by removing it.
->
->
->
- As far as I know the thermal design of Mediatek's board is based on
-the highest temperature of the whole board. Also, removing the
-aggregator will break all the boards using this driver.
-By the way, I heard that baylibre is working on multi-sensor
-aggregation support, which can be the alternative solution for the
-aggregator in this driver, but that should be another story and is
-unrelated to this patch.
 
-> > Signed-off-by: Michael Kao <michael.kao@mediatek.com>
-> > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> > Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
-> > Signed-off-by: James Lo <james.lo@mediatek.com>
-> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> > Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
-> > ---
-> > Changes in v14:
-> > - Remove redundant error message.
-> > - Link to v13: https://lore.kernel.org/r/20241025-auxadc_thermal-v13-1-=
-a5231c52dccb@chromium.org
-> >
-> > Changes in v13:
-> > - Make subject and commit message more clear.
-> > - Make error message more clear.
-> > - Link to v12: https://lore.kernel.org/r/20241016-auxadc_thermal-v12-1-=
-c0433e9f61af@chromium.org
-> >
-> > Changes in v12:
-> > - Remove unnecessary check and unused variable assignment in mtk_read_s=
-ensor_temp.
-> > - Add more about what this patch achieves in the commit message.
-> > - Link to v11: https://lore.kernel.org/r/20240809-auxadc_thermal-v11-1-=
-af36cc74f3a3@chromium.org
-> >
-> > Changes in V11:
-> >      - Rebase on kernel v6.11-rc2
-> >      - Use mtk_thermal_temp_is_valid in mtk_read_sensor_temp just like
-> >        mtk_thermal_bank_temperature
-> >      - Change the error handling of devm_thermal_of_zone_register retur=
-n
-> >        value
-> >      - link to V10: https://lore.kernel.org/lkml/20220519101044.16765-1=
--james.lo@mediatek.com/
-> >
-> > Changes in V10:
-> >      - Rebase to kernel-v5.18-rc7
-> >      - Resend
-> >
-> > Changes in V9:
-> >      - Rebase to kernel-v5.14-rc1
-> >      - Bind raw_to_mcelsius_v1 or raw_to_mcelsius_v2 to compatible
-> >        data of struct mtk_thermal_data
-> >      - Remove duplicate struct 'mtk_thermal_bank'
-> >      - Remove unnecessary if condition check
-> >      - Return error if any thermal zone fail to register
-> >
-> > Changes in V8:
-> >      - Rebase to kernel-v5.13-rc1
-> >      - Resend
-> >
-> > Changes in v7:
-> >      - Fix build error in v6.
-> >
-> > Changes in v6:
-> >      - Rebase to kernel-5.11-rc1.
-> >      - [1/3]
-> >          - add interrupts property.
-> >      - [2/3]
-> >          - add the Tested-by in the commit message.
-> >      - [3/3]
-> >          - use the mt->conf->msr[id] instead of conf->msr[id] in the
-> >            _get_sensor_temp and mtk_thermal_bank_temperature.
-> >          - remove the redundant space in _get_sensor_temp and
-> >            mtk_read_sensor_temp.
-> >          - change kmalloc to dev_kmalloc in mtk_thermal_probe.
-> >
-> > Changes in v5:
-> >      - Rebase to kernel-5.9-rc1.
-> >      - Revise the title of cover letter.
-> >      - Drop "[v4,7/7] thermal: mediatek: use spinlock to protect PTPCOR=
-ESEL"
-> >      - [2/2]
-> >          -  Add the judgement to the version of raw_to_mcelsius.
-> >
-> > Changes in v4:
-> >      - Rebase to kernel-5.6-rc1.
-> >      - [1/7]
-> >          - Squash thermal zone settings in the dtsi from [v3,5/8]
-> >            arm64: dts: mt8183: Increase polling frequency for CPU therm=
-al zone.
-> >          - Remove the property of interrupts and mediatek,hw-reset-temp=
-.
-> >      - [2/7]
-> >          - Correct commit message.
-> >      - [4/7]
-> >          - Change the target temperature to the 80C and change the comm=
-it message.
-> >      - [6/7]
-> >          - Adjust newline alignment.
-> >          - Fix the judgement on the return value of registering thermal=
- zone.
-> >
-> > Changes in v3:
-> >      - Rebase to kernel-5.5-rc1.
-> >      - [1/8]
-> >          - Update sustainable power of cpu, tzts1~5 and tztsABB.
-> >      - [7/8]
-> >          - Bypass the failure that non cpu_thermal sensor is not find i=
-n thermal-zones
-> >            in dts, which is normal for mt8173, so prompt a warning here=
- instead of
-> >            failing.
-> >
-> >      Return -EAGAIN instead of -EACCESS on the first read of sensor tha=
-t
-> >          often are bogus values. This can avoid following warning on bo=
-ot:
-> >
-> >            thermal thermal_zone6: failed to read out thermal zone (-13)
-> >
-> > Changes in v2:
-> >      - [1/8]
-> >          - Add the sustainable-power,trips,cooling-maps to the tzts1~tz=
-tsABB.
-> >      - [4/8]
-> >          - Add the min opp of cpu throttle.
-> > ---
-> >
-> > ---
-> >   drivers/thermal/mediatek/auxadc_thermal.c | 70 ++++++++++++++++++++++=
-+++++----
-> >   1 file changed, 62 insertions(+), 8 deletions(-)
-> >
-> > diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/therma=
-l/mediatek/auxadc_thermal.c
-> > index 9ee2e7283435acfcbb1a956303b6122a08affecc..9a9079d559a3abe9e3823f7=
-44d4c9a159a8666bd 100644
-> > --- a/drivers/thermal/mediatek/auxadc_thermal.c
-> > +++ b/drivers/thermal/mediatek/auxadc_thermal.c
-> > @@ -847,7 +847,8 @@ static int mtk_thermal_bank_temperature(struct mtk_=
-thermal_bank *bank)
-> >
-> >   static int mtk_read_temp(struct thermal_zone_device *tz, int *tempera=
-ture)
-> >   {
-> > -     struct mtk_thermal *mt =3D thermal_zone_device_priv(tz);
-> > +     struct mtk_thermal_bank *bank =3D thermal_zone_device_priv(tz);
-> > +     struct mtk_thermal *mt =3D bank->mt;
-> >       int i;
-> >       int tempmax =3D INT_MIN;
-> >
-> > @@ -866,10 +867,41 @@ static int mtk_read_temp(struct thermal_zone_devi=
-ce *tz, int *temperature)
-> >       return 0;
-> >   }
-> >
-> > +static int mtk_read_sensor_temp(struct thermal_zone_device *tz, int *t=
-emperature)
-> > +{
-> > +     struct mtk_thermal_bank *bank =3D thermal_zone_device_priv(tz);
-> > +     struct mtk_thermal *mt =3D bank->mt;
-> > +     const struct mtk_thermal_data *conf =3D mt->conf;
-> > +     int id =3D bank->id - 1;
-> > +     int temp =3D INT_MIN;
-> > +     u32 raw;
-> > +
-> > +     raw =3D readl(mt->thermal_base + conf->msr[id]);
-> > +
-> > +     temp =3D mt->raw_to_mcelsius(mt, id, raw);
-> > +
-> > +     /*
-> > +      * The first read of a sensor often contains very high bogus
-> > +      * temperature value. Filter these out so that the system does
-> > +      * not immediately shut down.
-> > +      */
-> > +
-> > +     if (unlikely(!mtk_thermal_temp_is_valid(temp)))
-> > +             return -EAGAIN;
-> > +
-> > +     *temperature =3D temp;
-> > +
-> > +     return 0;
-> > +}
-> > +
-> >   static const struct thermal_zone_device_ops mtk_thermal_ops =3D {
-> >       .get_temp =3D mtk_read_temp,
-> >   };
-> >
-> > +static const struct thermal_zone_device_ops mtk_thermal_sensor_ops =3D=
- {
-> > +     .get_temp =3D mtk_read_sensor_temp,
-> > +};
-> > +
-> >   static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
-> >                                 u32 apmixed_phys_base, u32 auxadc_phys_=
-base,
-> >                                 int ctrl_id)
-> > @@ -1199,6 +1231,7 @@ static int mtk_thermal_probe(struct platform_devi=
-ce *pdev)
-> >       u64 auxadc_phys_base, apmixed_phys_base;
-> >       struct thermal_zone_device *tzdev;
-> >       void __iomem *apmixed_base, *auxadc_base;
-> > +     struct mtk_thermal_bank *tz;
-> >
-> >       mt =3D devm_kzalloc(&pdev->dev, sizeof(*mt), GFP_KERNEL);
-> >       if (!mt)
-> > @@ -1285,14 +1318,35 @@ static int mtk_thermal_probe(struct platform_de=
-vice *pdev)
-> >                       mtk_thermal_init_bank(mt, i, apmixed_phys_base,
-> >                                             auxadc_phys_base, ctrl_id);
-> >
-> > -     tzdev =3D devm_thermal_of_zone_register(&pdev->dev, 0, mt,
-> > -                                           &mtk_thermal_ops);
-> > -     if (IS_ERR(tzdev))
-> > -             return PTR_ERR(tzdev);
-> > +     for (i =3D 0; i <=3D mt->conf->num_sensors; i++) {
-> > +             tz =3D devm_kmalloc(&pdev->dev, sizeof(*tz), GFP_KERNEL);
-> > +             if (!tz)
-> > +                     return -ENOMEM;
-> > +
-> > +             tz->mt =3D mt;
-> > +             tz->id =3D i;
-> > +
-> > +             tzdev =3D devm_thermal_of_zone_register(&pdev->dev, i,
-> > +                                                   tz, (i =3D=3D 0) ?
-> > +                                                   &mtk_thermal_ops
-> > +                                                   : &mtk_thermal_sens=
-or_ops);
-> > +
-> > +             if (IS_ERR(tzdev)) {
-> > +                     ret =3D PTR_ERR(tzdev);
-> > +                     if (ret =3D=3D -ENODEV) {
-> > +                             dev_warn(&pdev->dev,
-> > +                                      "Can't find thermal zone for sen=
-sor %d; sensor skipped.\n", i);
-> > +                             continue;
-> > +                     }
-> > +                     return dev_err_probe(&pdev->dev, ret,
-> > +                                          "Failed to register thermal =
-zone %d.\n", i);
-> > +             }
-> >
-> > -     ret =3D devm_thermal_add_hwmon_sysfs(&pdev->dev, tzdev);
-> > -     if (ret)
-> > -             dev_warn(&pdev->dev, "error in thermal_add_hwmon_sysfs");
-> > +             ret =3D devm_thermal_add_hwmon_sysfs(&pdev->dev, tzdev);
-> > +             if (ret)
-> > +                     dev_warn(&pdev->dev,
-> > +                              "Sensor %d: Error in thermal_add_hwmon_s=
-ysfs: %d\n", i, ret);
-> > +     }
-> >
-> >       return 0;
-> >   }
-> >
-> > ---
-> > base-commit: b589839414be04b2b37e4bf6f84af576c99faf64
-> > change-id: 20240809-auxadc_thermal-9be338ec8b1c
-> >
-> > Best regards,
->
->
-> --
-> <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software for AR=
-M SoCs
->
-> Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-> <http://twitter.com/#!/linaroorg> Twitter |
-> <http://www.linaro.org/linaro-blog/> Blog
+--oWqVrS/inJW1ZEom
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> Airoha EN7581 has a hw bug asserting/releasing PCIE_PE_RSTB signal
+> causing occasional PCIe link down issues. In order to overcome the
+> problem, PCIE_RSTB signals are not asserted/released during device probe =
+or
+> suspend/resume phase and the PCIe block is reset using REG_PCI_CONTROL
+> (0x88) and REG_RESET_CONTROL (0x834) registers available in the clock
+> module running clk_bulk_prepare_enable in mtk_pcie_en7581_power_up().
+>=20
+> Introduce flags field in the mtk_gen3_pcie_pdata struct in order to
+> specify per-SoC capabilities.
+>=20
+> Tested-by: Hui Ma <hui.ma@airoha.com>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+
+Hi Jianjun and Bjorn,
+
+any news about this patch? Thanks in advance.
+
+Regards,
+Lorenzo
+
+> ---
+> Changes in v3:
+> - cosmetics
+> - Link to v2: https://lore.kernel.org/r/20241104-pcie-en7581-rst-fix-v2-1=
+-ffe5839c76d8@kernel.org
+>=20
+> Changes in v2:
+> - introduce flags field in mtk_gen3_pcie_flags struct instead of adding
+>   reset callback
+> - fix the leftover case in mtk_pcie_suspend_noirq routine
+> - add more comments
+> - Link to v1: https://lore.kernel.org/r/20240920-pcie-en7581-rst-fix-v1-1=
+-1043fb63ffc9@kernel.org
+> ---
+>  drivers/pci/controller/pcie-mediatek-gen3.c | 60 ++++++++++++++++++++---=
+------
+>  1 file changed, 42 insertions(+), 18 deletions(-)
+>=20
+> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/co=
+ntroller/pcie-mediatek-gen3.c
+> index 16a55711a7f3bdc8d6620029e3d2cfdd40b537b7..443072adb9b52a6934a5d1e38=
+eb6fca5f86a1e13 100644
+> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> @@ -128,10 +128,18 @@
+> =20
+>  struct mtk_gen3_pcie;
+> =20
+> +enum mtk_gen3_pcie_flags {
+> +	SKIP_PCIE_RSTB	=3D BIT(0), /* skip PCIE_RSTB signals configuration
+> +				   * during device probing or suspend/resume
+> +				   * phase in order to avoid hw bugs/issues.
+> +				   */
+> +};
+> +
+>  /**
+>   * struct mtk_gen3_pcie_pdata - differentiate between host generations
+>   * @power_up: pcie power_up callback
+>   * @phy_resets: phy reset lines SoC data.
+> + * @flags: pcie device flags.
+>   */
+>  struct mtk_gen3_pcie_pdata {
+>  	int (*power_up)(struct mtk_gen3_pcie *pcie);
+> @@ -139,6 +147,7 @@ struct mtk_gen3_pcie_pdata {
+>  		const char *id[MAX_NUM_PHY_RESETS];
+>  		int num_resets;
+>  	} phy_resets;
+> +	u32 flags;
+>  };
+> =20
+>  /**
+> @@ -405,22 +414,34 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pc=
+ie *pcie)
+>  	val |=3D PCIE_DISABLE_DVFSRC_VLT_REQ;
+>  	writel_relaxed(val, pcie->base + PCIE_MISC_CTRL_REG);
+> =20
+> -	/* Assert all reset signals */
+> -	val =3D readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
+> -	val |=3D PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
+> -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> -
+>  	/*
+> -	 * Described in PCIe CEM specification sections 2.2 (PERST# Signal)
+> -	 * and 2.2.1 (Initial Power-Up (G3 to S0)).
+> -	 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
+> -	 * for the power and clock to become stable.
+> +	 * Airoha EN7581 has a hw bug asserting/releasing PCIE_PE_RSTB signal
+> +	 * causing occasional PCIe link down. In order to overcome the issue,
+> +	 * PCIE_RSTB signals are not asserted/released at this stage and the
+> +	 * PCIe block is reset configuting REG_PCI_CONTROL (0x88) and
+> +	 * REG_RESET_CONTROL (0x834) registers available in the clock module
+> +	 * running clk_bulk_prepare_enable in mtk_pcie_en7581_power_up().
+>  	 */
+> -	msleep(100);
+> -
+> -	/* De-assert reset signals */
+> -	val &=3D ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB=
+);
+> -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> +	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
+> +		/* Assert all reset signals */
+> +		val =3D readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
+> +		val |=3D PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
+> +		       PCIE_PE_RSTB;
+> +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> +
+> +		/*
+> +		 * Described in PCIe CEM specification sections 2.2 (PERST# Signal)
+> +		 * and 2.2.1 (Initial Power-Up (G3 to S0)).
+> +		 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
+> +		 * for the power and clock to become stable.
+> +		 */
+> +		msleep(PCIE_T_PVPERL_MS);
+> +
+> +		/* De-assert reset signals */
+> +		val &=3D ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
+> +			 PCIE_PE_RSTB);
+> +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> +	}
+> =20
+>  	/* Check if the link is up or not */
+>  	err =3D readl_poll_timeout(pcie->base + PCIE_LINK_STATUS_REG, val,
+> @@ -1179,10 +1200,12 @@ static int mtk_pcie_suspend_noirq(struct device *=
+dev)
+>  		return err;
+>  	}
+> =20
+> -	/* Pull down the PERST# pin */
+> -	val =3D readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
+> -	val |=3D PCIE_PE_RSTB;
+> -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> +	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
+> +		/* Pull down the PERST# pin */
+> +		val =3D readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
+> +		val |=3D PCIE_PE_RSTB;
+> +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> +	}
+> =20
+>  	dev_dbg(pcie->dev, "entered L2 states successfully");
+> =20
+> @@ -1233,6 +1256,7 @@ static const struct mtk_gen3_pcie_pdata mtk_pcie_so=
+c_en7581 =3D {
+>  		.id[2] =3D "phy-lane2",
+>  		.num_resets =3D 3,
+>  	},
+> +	.flags =3D SKIP_PCIE_RSTB,
+>  };
+> =20
+>  static const struct of_device_id mtk_pcie_of_match[] =3D {
+>=20
+> ---
+> base-commit: ff80d707f3cb5e8d9ec0739e0e5ed42dea179125
+> change-id: 20240920-pcie-en7581-rst-fix-8161658c13c4
+>=20
+> Best regards,
+> --=20
+> Lorenzo Bianconi <lorenzo@kernel.org>
+>=20
+
+--oWqVrS/inJW1ZEom
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZzxJMQAKCRA6cBh0uS2t
+rODiAQCGocPFNzuQfGPZrdtN1u3PEY2gdZEL4k92plmNdYqaFwD/YOgoQZifIClN
+PzTooz0Twz8NFgekhlISf3wT485sFwk=
+=oXff
+-----END PGP SIGNATURE-----
+
+--oWqVrS/inJW1ZEom--
 
