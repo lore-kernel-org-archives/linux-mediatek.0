@@ -4,103 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8E77D6C281
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 18:29:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13EB2D6C29A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 20:52:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TjjEcmv2liyk/XEk1ss5lodHgFTZTAwHIgNTYP/SyTw=; b=DloghkH4ESdvUV18ivPUqjjSdH
-	rgsB9AlqcMYXF1YodQTQhG8Uk0JSZw9IiJU8wx6xNmmbLvJFlEwGpWtDoE8xBFahF6OtR/puRuLw/
-	qUKZ4bjmcPqhyTPC7wbClMZ40kJfKa2wjdRzJRow0dkYuu5/aJ7Aov7rcpR06ce0IkfQd1KvcswZ/
-	gfYuBENjMRadWD9VPWWrkc5JO/Q2kBNj8SrCTlMPR5qhEU0CL55CcaeglABAk7RJsTkM6Vhc/H5X8
-	WyRUDEhAKvKMRFSfhblQaFHaFIqmLBzh2Hu+iSWL6Fo687zuMP6xwOO8aRltnnFYjPaCszSU3weRm
-	67oI9otw==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bvz/gfV5hegsB67+wYe6NZutT+xBUxA0o67sJeT8dEw=; b=2M6X27U+Js90dF631D1NMI5NoI
+	tLGbGuMto9Df6eVYwKzqR9b/CiMut5A0bgYk9XvaGaArwqy1g900tPIJX8bA3tnhjZrPDlC72LyuB
+	QAvxcoEMXQLF+S6XINSH1OJO+7r3cgmaQZl6rYxfbvytfW90f9fN97kd6Ps2o7gKebMIvkXfl8XgA
+	AXxrOKKr5u8fmTawduMPXV/zxHuGO96IYGFGPKscCqd4VkA9qSJbzX3BI/mthq/o/xoeKPCqVYP0b
+	+dRKWu6fPhOlxhgPuahwvOl1Qg5asL6FDRKpC3En2dK3EPf7ioPRo/WCOy/lSuOcZSKOGm/kp1Pza
+	s+JaFZeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDSyL-0000000DODj-3vAd;
-	Tue, 19 Nov 2024 18:29:09 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
-	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDSyH-0000000DOCm-3sRn
-	for linux-mediatek@lists.infradead.org;
-	Tue, 19 Nov 2024 18:29:08 +0000
-Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-3824aef833bso1581272f8f.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 19 Nov 2024 10:29:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1732040943; x=1732645743; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=TjjEcmv2liyk/XEk1ss5lodHgFTZTAwHIgNTYP/SyTw=;
-        b=h4NXqiSUZwQLZUbCr4f9N7V57Rt+CKHZTgfPmiC5swvI57iy++gmpzH6GhBQFjNymq
-         VWGgNWKa2WMvXwGxKxrZqlmCOD2qlIJtOfcCqdPW+1jCMGKjBfjnYavGszKvPeFA1AhX
-         UeAzukvb3JdLDWS6jcho9MsHDzsK97YjrgUrWD+yBAJ9ZdGvBo564qfGBmuHRYW33Cqy
-         Fr5IDzr4xeDXj+XXGvB8/TDTjAPWsc0kGb6G13EUy8kS4d+5rz5mSjgHtQTzAzjvsLCM
-         GLFLoPeDzKCJzICPyOTDpBVBZWT4A3vbwkK36dk96kuGQmPgi/8arNIPjja0zo+mrZob
-         6OVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732040943; x=1732645743;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=TjjEcmv2liyk/XEk1ss5lodHgFTZTAwHIgNTYP/SyTw=;
-        b=p151w9c4RuVXWNoL8z5D5Hv/ngPiYuXa2OcbalRkP2B4VfYSlg+d2+cbRFksBDMm7w
-         prQ4laYsEPvtTjjZlYWZkweAjKyIFA3K+gitcmKv/+2je5sLWBIhQfzTfyCBiLSpYiZR
-         De2Kl/hnTjE4gF9msJGLtHKkeEpTnFixWloKJfh6QPXZ24HOdLUW4FQcVRmDAJNHRjso
-         XC5/uhitvoNLG3ZIU1i2a8qURkN75C4mn3KhgXSKv3xjWd/vkX1/t0O9pfmYmxeh6nfg
-         wU+sQuvLaezhnxDv7PRLQzJ77kVUF+73Bv4E/d7W98mSmEsJaE1XPUTfkGexW5cP6J2l
-         oZLg==
-X-Forwarded-Encrypted: i=1; AJvYcCXORga1LIgUuragxF87V00cNG06xpv8tADFj/f06p/ajKhk/RsynQQ6AWCtb0QyM1NutNbk7GZxKWFZo7DdrA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwDK+XT4nSHyLl+pOrrj849yXv7VhekA0fHoSmssjix6JIz83Z9
-	LH/LrVWAkCc4nSX755WBB2R5EpoABGxOJTXMk+6HLS7r147cmOXnIaagIf/lG68=
-X-Google-Smtp-Source: AGHT+IFnY/REEdmz7YD1WEr3CSS+CDWUtex9JzX1ZdzW4zdq0+PcYDiFyHyYLuR7W7cpAOYMYdli5w==
-X-Received: by 2002:a5d:6c62:0:b0:382:40cc:5057 with SMTP id ffacd0b85a97d-38240cc530dmr8023061f8f.8.1732040943004;
-        Tue, 19 Nov 2024 10:29:03 -0800 (PST)
-Received: from localhost (p509159f1.dip0.t-ipconnect.de. [80.145.89.241])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38244220183sm7893379f8f.99.2024.11.19.10.29.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Nov 2024 10:29:02 -0800 (PST)
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-To: "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>
-Cc: Pedro Sousa <pedrom.sousa@synopsys.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Peter Griffin <peter.griffin@linaro.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Peter Wang <peter.wang@mediatek.com>,
-	Stanley Jhu <chu.stanley@gmail.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Bart Van Assche <bvanassche@acm.org>,
-	Andrew Halaney <ahalaney@redhat.com>,
-	Nitin Rawat <quic_nitirawa@quicinc.com>,
-	Can Guo <quic_cang@quicinc.com>,
-	linux-scsi@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org
-Subject: [PATCH] scsi: ufs: Switch back to struct platform_driver::remove()
-Date: Tue, 19 Nov 2024 19:28:56 +0100
-Message-ID: <20241119182856.55743-2-u.kleine-koenig@baylibre.com>
-X-Mailer: git-send-email 2.45.2
+	id 1tDVDP-0000000DlHZ-2kOh;
+	Tue, 19 Nov 2024 20:52:51 +0000
+Received: from bout3.ijzerbout.nl ([136.144.140.114])
+	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
+	id 1tDVCS-0000000Dl8A-3EqI;
+	Tue, 19 Nov 2024 20:51:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ijzerbout.nl; s=key;
+	t=1732049502; bh=C4BPLPJf9+eOsNRffuQEGy06zHXU0e7gd8uZYO3GxZ4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ZhATvMrhufPP4JA3s0Ain7Jln5ZbYsVKrYtAthtk4lXwbZFzFMNzdkKkQ9NleUXz1
+	 PXZ5gw9zkmA8qRFKdySdfvc+Cv1dGvZ7apJwfrgjCoKsPpiaezD334ADRDaOG89yXQ
+	 EzFSpQ9K4TLHObZwv+oaDg9xhZfcj3CfTsbzHtA/L/DZ2t8gPdsNWAFOgseiK/xnlF
+	 zeH28p4yzix80MQzFQfCcGplpuowZK3Yicku5cCHPl9OhrSZV08TcSA3tMV1Rck+Qp
+	 cNiCyjFMfYsQyjLrduF5uTeI3O6og5UTpsmb2z0gDW6qgwfQPyk5F+4Pb+U6Ry9mSt
+	 8NY7fdFnPlKk38x1QWyRwX5zZeW+A5UjMqp/myzY7xl4L1N8i3gtuogtyVI7HdfHsQ
+	 qFMgju8hHApMNg8zH/Vx/cQXZ2lKwIqTGDgezJVwJizLmomVkn+MabQiDGR4ousf4r
+	 xlyCQSITQWejsntuwkYhOaFUiB4Lg/t5vwstsP5j2j2kZKUuCgrwxvO8VmBrY19e2X
+	 lQYDagwNHL6qbwfPAZo8RL9gCyLi1kY0I3xaUfyyp8CTrFAB8I32sOGbKEmv5KHxer
+	 svwOTs4n68sI0c7yN8KUsAqM1VurOKDwEdf32M18WwwsgPac/rGWKVWSGiaLZpb1WA
+	 88CcjKS0tZgp22eLl96Grgno=
+Received: from [IPV6:2a10:3781:99:1:1ac0:4dff:fea7:ec3a] (racer.ijzerbout.nl [IPv6:2a10:3781:99:1:1ac0:4dff:fea7:ec3a])
+	by bout3.ijzerbout.nl (Postfix) with ESMTPSA id 5713816029D;
+	Tue, 19 Nov 2024 21:51:42 +0100 (CET)
+Message-ID: <72410501-657b-40ec-b959-a736c913c486@ijzerbout.nl>
+Date: Tue, 19 Nov 2024 21:51:39 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6400; i=u.kleine-koenig@baylibre.com; h=from:subject; bh=7EkmoYAIwgLMOya3DiDGaKKRi9eJcRdqgo7aEZsiTP4=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBnPNjp6LSiAa1I5FOmgMRNs6RRlpfp1I+WXQ5Jy kT+1b+r+OmJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCZzzY6QAKCRCPgPtYfRL+ TpXpB/0e48BSclKJNk79t2QAL7ya486g/ZENqVkbV84wvxtryeeYwTupocnq00111eq5K0/DmGn 5N4obnl0Yz0e3KeGMA7JfzxJvPrPYGOGz28YyBN6Sd3hOEd6ySenM2sNKhrDFRa+ryLgbBtM+0r t1goFmLAz1bCbMLKdKob3arBzK0CJUYeBB/jgaipkO2eqyCWlNSt+pteiri4uI2flz9pqWJALQL QXPOzQck5OYwjzyutjQCb/e5xiDGpJriITfqlnsNsdFM2WKgrZ/R+MvqLn6nnyNroBHFtNX80WU 7OIgmZQqPyjlHlnMRJJPpcenrvoEatHfp2PJ/iqzncWGiZ5D
-X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] i3c: Use i3cdev->desc->info instead of calling
+ i3c_device_get_info() to avoid deadlock
+To: mtk25126 <defa.li@mediatek.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-i3c@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ wsd_upstream@mediatek.com, mingchang.jia@mediatek.com,
+ yuhan.wei@mediatek.com, hao.lin@mediatek.com
+References: <20241107132549.25439-1-defa.li@mediatek.com>
+Content-Language: en-US
+From: Kees Bakker <kees@ijzerbout.nl>
+In-Reply-To: <20241107132549.25439-1-defa.li@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241119_102906_226628_85D70E1D 
-X-CRM114-Status: GOOD (  19.34  )
+X-CRM114-CacheID: sfid-20241119_125153_232632_4F8534C1 
+X-CRM114-Status: GOOD (  17.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,167 +80,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-After commit 0edb555a65d1 ("platform: Make platform_driver::remove()
-return void") .remove() is (again) the right callback to implement for
-platform drivers.
-
-Convert all platform drivers below drivers/ufs to use .remove(), with
-the eventual goal to drop struct platform_driver::remove_new(). As
-.remove() and .remove_new() have the same prototypes, conversion is done
-by just changing the structure member name in the driver initializer.
-
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@baylibre.com>
----
-Hello,
-
-I did a single patch for all of drivers/ufs. While I usually prefer to
-do one logical change per patch, this seems to be overengineering here
-as the individual changes are really trivial and shouldn't be much in
-the way for stable backports. But I'll happily split the patch if you
-prefer it split. Also if you object the indentation stuff, I can rework
-that.
-
-This is based on today's next, if conflicts arise when you apply it at
-some later time and don't want to resolve them, feel free to just drop
-the changes to the conflicting files. I'll notice and followup at a
-later time then. Or ask me for a fixed resend. (Having said that, I
-recommend b4 am -3 + git am -3 which should resolve most conflicts just
-fine.)
-
-Best regards
-Uwe
-
- drivers/ufs/host/cdns-pltfrm.c        | 2 +-
- drivers/ufs/host/tc-dwc-g210-pltfrm.c | 2 +-
- drivers/ufs/host/ti-j721e-ufs.c       | 2 +-
- drivers/ufs/host/ufs-exynos.c         | 2 +-
- drivers/ufs/host/ufs-hisi.c           | 2 +-
- drivers/ufs/host/ufs-mediatek.c       | 2 +-
- drivers/ufs/host/ufs-qcom.c           | 2 +-
- drivers/ufs/host/ufs-renesas.c        | 2 +-
- drivers/ufs/host/ufs-sprd.c           | 2 +-
- 9 files changed, 9 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/ufs/host/cdns-pltfrm.c b/drivers/ufs/host/cdns-pltfrm.c
-index 66811d8d1929..c80f770a6285 100644
---- a/drivers/ufs/host/cdns-pltfrm.c
-+++ b/drivers/ufs/host/cdns-pltfrm.c
-@@ -321,7 +321,7 @@ static const struct dev_pm_ops cdns_ufs_dev_pm_ops = {
- 
- static struct platform_driver cdns_ufs_pltfrm_driver = {
- 	.probe	= cdns_ufs_pltfrm_probe,
--	.remove_new = cdns_ufs_pltfrm_remove,
-+	.remove = cdns_ufs_pltfrm_remove,
- 	.driver	= {
- 		.name   = "cdns-ufshcd",
- 		.pm     = &cdns_ufs_dev_pm_ops,
-diff --git a/drivers/ufs/host/tc-dwc-g210-pltfrm.c b/drivers/ufs/host/tc-dwc-g210-pltfrm.c
-index a3877592604d..9bfaa36cc898 100644
---- a/drivers/ufs/host/tc-dwc-g210-pltfrm.c
-+++ b/drivers/ufs/host/tc-dwc-g210-pltfrm.c
-@@ -89,7 +89,7 @@ static const struct dev_pm_ops tc_dwc_g210_pltfm_pm_ops = {
- 
- static struct platform_driver tc_dwc_g210_pltfm_driver = {
- 	.probe		= tc_dwc_g210_pltfm_probe,
--	.remove_new	= tc_dwc_g210_pltfm_remove,
-+	.remove		= tc_dwc_g210_pltfm_remove,
- 	.driver		= {
- 		.name	= "tc-dwc-g210-pltfm",
- 		.pm	= &tc_dwc_g210_pltfm_pm_ops,
-diff --git a/drivers/ufs/host/ti-j721e-ufs.c b/drivers/ufs/host/ti-j721e-ufs.c
-index 250c22df000d..21214e5d5896 100644
---- a/drivers/ufs/host/ti-j721e-ufs.c
-+++ b/drivers/ufs/host/ti-j721e-ufs.c
-@@ -83,7 +83,7 @@ MODULE_DEVICE_TABLE(of, ti_j721e_ufs_of_match);
- 
- static struct platform_driver ti_j721e_ufs_driver = {
- 	.probe	= ti_j721e_ufs_probe,
--	.remove_new = ti_j721e_ufs_remove,
-+	.remove = ti_j721e_ufs_remove,
- 	.driver	= {
- 		.name   = "ti-j721e-ufs",
- 		.of_match_table = ti_j721e_ufs_of_match,
-diff --git a/drivers/ufs/host/ufs-exynos.c b/drivers/ufs/host/ufs-exynos.c
-index 6548f7a8562f..c4098011c4b4 100644
---- a/drivers/ufs/host/ufs-exynos.c
-+++ b/drivers/ufs/host/ufs-exynos.c
-@@ -2166,7 +2166,7 @@ static const struct dev_pm_ops exynos_ufs_pm_ops = {
- 
- static struct platform_driver exynos_ufs_pltform = {
- 	.probe	= exynos_ufs_probe,
--	.remove_new = exynos_ufs_remove,
-+	.remove = exynos_ufs_remove,
- 	.driver	= {
- 		.name	= "exynos-ufshc",
- 		.pm	= &exynos_ufs_pm_ops,
-diff --git a/drivers/ufs/host/ufs-hisi.c b/drivers/ufs/host/ufs-hisi.c
-index 5ee73ff05251..494f593702a3 100644
---- a/drivers/ufs/host/ufs-hisi.c
-+++ b/drivers/ufs/host/ufs-hisi.c
-@@ -590,7 +590,7 @@ static const struct dev_pm_ops ufs_hisi_pm_ops = {
- 
- static struct platform_driver ufs_hisi_pltform = {
- 	.probe	= ufs_hisi_probe,
--	.remove_new = ufs_hisi_remove,
-+	.remove = ufs_hisi_remove,
- 	.driver	= {
- 		.name	= "ufshcd-hisi",
- 		.pm	= &ufs_hisi_pm_ops,
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index 06ab1e5e8b6f..6fc848d0ada8 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -1962,7 +1962,7 @@ static const struct dev_pm_ops ufs_mtk_pm_ops = {
- 
- static struct platform_driver ufs_mtk_pltform = {
- 	.probe      = ufs_mtk_probe,
--	.remove_new = ufs_mtk_remove,
-+	.remove = ufs_mtk_remove,
- 	.driver = {
- 		.name   = "ufshcd-mtk",
- 		.pm     = &ufs_mtk_pm_ops,
-diff --git a/drivers/ufs/host/ufs-qcom.c b/drivers/ufs/host/ufs-qcom.c
-index 3b592492e152..d2b8d97b480e 100644
---- a/drivers/ufs/host/ufs-qcom.c
-+++ b/drivers/ufs/host/ufs-qcom.c
-@@ -1897,7 +1897,7 @@ static const struct dev_pm_ops ufs_qcom_pm_ops = {
- 
- static struct platform_driver ufs_qcom_pltform = {
- 	.probe	= ufs_qcom_probe,
--	.remove_new = ufs_qcom_remove,
-+	.remove = ufs_qcom_remove,
- 	.driver	= {
- 		.name	= "ufshcd-qcom",
- 		.pm	= &ufs_qcom_pm_ops,
-diff --git a/drivers/ufs/host/ufs-renesas.c b/drivers/ufs/host/ufs-renesas.c
-index 3ff97112e1f6..f404019dc5d9 100644
---- a/drivers/ufs/host/ufs-renesas.c
-+++ b/drivers/ufs/host/ufs-renesas.c
-@@ -404,7 +404,7 @@ static void ufs_renesas_remove(struct platform_device *pdev)
- 
- static struct platform_driver ufs_renesas_platform = {
- 	.probe	= ufs_renesas_probe,
--	.remove_new = ufs_renesas_remove,
-+	.remove = ufs_renesas_remove,
- 	.driver	= {
- 		.name	= "ufshcd-renesas",
- 		.of_match_table	= of_match_ptr(ufs_renesas_of_match),
-diff --git a/drivers/ufs/host/ufs-sprd.c b/drivers/ufs/host/ufs-sprd.c
-index d8b165908809..b1ffb9b05fa7 100644
---- a/drivers/ufs/host/ufs-sprd.c
-+++ b/drivers/ufs/host/ufs-sprd.c
-@@ -442,7 +442,7 @@ static const struct dev_pm_ops ufs_sprd_pm_ops = {
- 
- static struct platform_driver ufs_sprd_pltform = {
- 	.probe = ufs_sprd_probe,
--	.remove_new = ufs_sprd_remove,
-+	.remove = ufs_sprd_remove,
- 	.driver = {
- 		.name = "ufshcd-sprd",
- 		.pm = &ufs_sprd_pm_ops,
-
-base-commit: 414c97c966b69e4a6ea7b32970fa166b2f9b9ef0
--- 
-2.45.2
+Op 07-11-2024 om 14:25 schreef mtk25126:
+> From: Defa Li <defa.li@mediatek.com>
+>
+> A deadlock may happen since the i3c_master_register() acquires
+> &i3cbus->lock twice. See the log below.
+> Use i3cdev->desc->info instead of calling i3c_device_info() to
+> avoid acquiring the lock twice.
+>
+> v2:
+>    - Modified the title and commit message
+>
+> ============================================
+> WARNING: possible recursive locking detected
+> 6.11.0-mainline
+> --------------------------------------------
+> init/1 is trying to acquire lock:
+> f1ffff80a6a40dc0 (&i3cbus->lock){++++}-{3:3}, at: i3c_bus_normaluse_lock
+>
+> but task is already holding lock:
+> f1ffff80a6a40dc0 (&i3cbus->lock){++++}-{3:3}, at: i3c_master_register
+>
+> other info that might help us debug this:
+>   Possible unsafe locking scenario:
+>
+>         CPU0
+>         ----
+>    lock(&i3cbus->lock);
+>    lock(&i3cbus->lock);
+>
+>   *** DEADLOCK ***
+>
+>   May be due to missing lock nesting notation
+>
+> 2 locks held by init/1:
+>   #0: fcffff809b6798f8 (&dev->mutex){....}-{3:3}, at: __driver_attach
+>   #1: f1ffff80a6a40dc0 (&i3cbus->lock){++++}-{3:3}, at: i3c_master_register
+>
+> stack backtrace:
+> CPU: 6 UID: 0 PID: 1 Comm: init
+> Call trace:
+>   dump_backtrace+0xfc/0x17c
+>   show_stack+0x18/0x28
+>   dump_stack_lvl+0x40/0xc0
+>   dump_stack+0x18/0x24
+>   print_deadlock_bug+0x388/0x390
+>   __lock_acquire+0x18bc/0x32ec
+>   lock_acquire+0x134/0x2b0
+>   down_read+0x50/0x19c
+>   i3c_bus_normaluse_lock+0x14/0x24
+>   i3c_device_get_info+0x24/0x58
+>   i3c_device_uevent+0x34/0xa4
+>   dev_uevent+0x310/0x384
+>   kobject_uevent_env+0x244/0x414
+>   kobject_uevent+0x14/0x20
+>   device_add+0x278/0x460
+>   device_register+0x20/0x34
+>   i3c_master_register_new_i3c_devs+0x78/0x154
+>   i3c_master_register+0x6a0/0x6d4
+>   mtk_i3c_master_probe+0x3b8/0x4d8
+>   platform_probe+0xa0/0xe0
+>   really_probe+0x114/0x454
+>   __driver_probe_device+0xa0/0x15c
+>   driver_probe_device+0x3c/0x1ac
+>   __driver_attach+0xc4/0x1f0
+>   bus_for_each_dev+0x104/0x160
+>   driver_attach+0x24/0x34
+>   bus_add_driver+0x14c/0x294
+>   driver_register+0x68/0x104
+>   __platform_driver_register+0x20/0x30
+>   init_module+0x20/0xfe4
+>   do_one_initcall+0x184/0x464
+>   do_init_module+0x58/0x1ec
+>   load_module+0xefc/0x10c8
+>   __arm64_sys_finit_module+0x238/0x33c
+>   invoke_syscall+0x58/0x10c
+>   el0_svc_common+0xa8/0xdc
+>   do_el0_svc+0x1c/0x28
+>   el0_svc+0x50/0xac
+>   el0t_64_sync_handler+0x70/0xbc
+>   el0t_64_sync+0x1a8/0x1ac
+>
+> Signed-off-by: Defa Li <defa.li@mediatek.com>
+> ---
+>   drivers/i3c/master.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/i3c/master.c b/drivers/i3c/master.c
+> index 6f3eb710a75d..bb8a8bf0c4c7 100644
+> --- a/drivers/i3c/master.c
+> +++ b/drivers/i3c/master.c
+> @@ -282,7 +282,8 @@ static int i3c_device_uevent(const struct device *dev, struct kobj_uevent_env *e
+>   	struct i3c_device_info devinfo;
+>   	u16 manuf, part, ext;
+>   
+> -	i3c_device_get_info(i3cdev, &devinfo);
+> +	if (i3cdev->desc)
+> +		devinfo = i3cdev->desc->info;
+Now you have left devinfo unitialized if i3cdev->desc == NULL
+You have to figure out what to do in that case.
+>   	manuf = I3C_PID_MANUF_ID(devinfo.pid);
+>   	part = I3C_PID_PART_ID(devinfo.pid);
+>   	ext = I3C_PID_EXTRA_INFO(devinfo.pid);
 
 
