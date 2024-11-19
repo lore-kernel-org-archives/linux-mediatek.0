@@ -4,82 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98234D60CFA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Nov 2024 22:58:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00011D60D03
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 01:02:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x1MrAjucewY12Q379yzg+ry5RVZKlVViQuKVvFxefR8=; b=rE+7uyDZ/nQM2BxeTTUfMsBVzo
-	NXozz2cZjHqn9IrO8kOR26MZLreKffipTZqXWKi0gtByCRQmWuislfzaE+57/12CQMw4viRaT3HHn
-	gXGIcCd4UGSoDsKWwiBNc82psbnRBc6n6kDI30YcmFOsNcm4k2XhHsesFqk4nfi2q11gZ9Cklc+io
-	fRRyZMuldvO61riLaZX1533yCxFTlvuXDBEY+zD9s92FO6fnUGZMABD5df010vFYELLt5bfmQQVTS
-	6mMbuFZN5YVgUjbarMbr90IMbQH8bKUcMIOKPByF+WW3D2UZQoQhdUXJCkhgSAWpKDXZtopuRkS5z
-	eVJaUr1w==;
+	bh=1Dy+y/Sg7BxkuaJRt8lN8ekR1rY4pdHsedbh1qGx8MM=; b=hwMq1XOvwapwNT633uvhbppOLs
+	CsQvSoHrSCr3wlD4w+3+lkr15orVwvkM23o/U3POQr6AqEtYNGhsqqhXOwj4gxv+pIDT6CfwSABBk
+	vAxGGHxG7ycafVregsidovJrH+FCvUzNJOGVEw+4NefVNGGidJi0hVCdVe2zgMleZKJQDG47NCqcH
+	0PGxWbfaroL7btJaoOaFg8vRhPcr+VCald6Xr3YXmT/3VJyRQ4oCXL7ypVCg2S5qRGjBmRJM6ecpl
+	N/N3eqRQ9rMikRwfJ9Hx2y/qHxZvXAep6p0lx/Ipb7KiRo6zccFoE/Rd6vu5FG5PJ3p7aEojOLvzL
+	yRPjPCrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDAhM-0000000Anpo-20uk;
-	Mon, 18 Nov 2024 22:58:24 +0000
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
+	id 1tDCdD-0000000B065-3xiu;
+	Tue, 19 Nov 2024 01:02:15 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDAhK-0000000Anp2-0mAu
-	for linux-mediatek@lists.infradead.org;
-	Mon, 18 Nov 2024 22:58:23 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id 38308e7fff4ca-2fb49510250so33543841fa.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 18 Nov 2024 14:58:21 -0800 (PST)
+	id 1tDCcH-0000000Azv7-4BTu;
+	Tue, 19 Nov 2024 01:01:19 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-4314fa33a35so40325485e9.1;
+        Mon, 18 Nov 2024 17:01:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1731970700; x=1732575500; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=x1MrAjucewY12Q379yzg+ry5RVZKlVViQuKVvFxefR8=;
-        b=bDU/r5I9Ed5LWytylSbdan5CrFrK39OYkn5cZ8k3jAgbuHb/hJthvr28Lu4AjYSyGG
-         j6/L9y3true0U63s4rQRsP18nTCkWvCsmfhIeP7TTUUMkWp2KCFuAReGLZrnm68Gg4/e
-         oA+HimVs9J41J5sbpwL4kDxfZ3z7WnjpIAjP7qTYtTH+jMQtsiJLpfiXzE6EAwM2GPbG
-         FJvda4fU5mHbZg3d3PHN24bKe2nvFKfK3uoLHWXDe/lVtjONB7DTdDySRjfyomlPc/Vn
-         jLla05Ycy3L0Ov+ulstF7KXQK8pntiu0rY12SiyRPEaTnYfWuAOGD5KTSmEAJGl18rw/
-         ctPQ==
+        d=gmail.com; s=20230601; t=1731978076; x=1732582876; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=1Dy+y/Sg7BxkuaJRt8lN8ekR1rY4pdHsedbh1qGx8MM=;
+        b=loEPPHnDpWTSz8YzMXu3m7+20lBcDu59cL7VnJCWv3mG+t8J3UVMbgAC8Jjzim4id4
+         td6DhATlMybQndTC8DEQoEkxrceb0z/Rs6Db/361sf+Hf2fDAcAzrAmzT1M5QaAWOhAI
+         R6Ch/czTQy5TtNNhP6jqLGN2oxla6wGDZHykfGdIHYnCrl+u7QWDVpOUyTDRba+x5AnE
+         loWmUISOdDhwwUIkwpxPY1kWHx5juVLcrUWzFNUOdCvwUEvvueKVSKa+2r5SdVJwVcCV
+         faIcCOrvvNMFKJBBQ/XtVhrDV2KlkXUIDcKbubECkZvi8Vr2oFZXOOnucQ93O/1kPt+4
+         KeWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731970700; x=1732575500;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=x1MrAjucewY12Q379yzg+ry5RVZKlVViQuKVvFxefR8=;
-        b=eWwXbPaJeUje777iQaJt84NpusKruNIJNS+0rbR21hgBn7gwnHfTBy3n4oB5N+OZb5
-         NDDXE4oDPYjqdz0HlGQSXzr68dwD9LBXLE2jAjAHCJRDRDc9EFBSa7M1n5GtMzOsbf6w
-         n39+P1d5nP7zsIaYM8+MeS2zIjtvZe/rQnXVp2s/TPw5l6hxFKCkK3I9tcoo/uHqTxBL
-         TkXumoLCGH5fQtFytUcwoJ/mvecSiZNJ7Z8fgLskkYfWSSxEhKDYxBUztxmGnd1K6T2F
-         EXfWv2VDQM2ynU4ND8F0TAmA4j/M+wvwF2nqZLFpvzj4LzfelGy1uoU7xLGdVQ+/zJse
-         Luhg==
-X-Forwarded-Encrypted: i=1; AJvYcCVvKeMGMjye6jNSFhoXFK1oubIkHJrVfQd+0tIn6Jp0jOZeDiWHb/efOHcgTxDwHdZizoWx2lW0BgjTYJVIcw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwpEK3c5F5GErJeeHuVS3CKJcbe4TTDbuwkCCqWhfwF54cUIq4s
-	xjNMOaAptNS2O1CiAEh0ySB48YgcLu++x5meKlkTxJlLBVErdZV4aJb6Qzs+0YBCOXO3XQeTqSc
-	Z4TQ40gmU0G80KLfsJ5s1vo7juHBipkzWNX5Z7A==
-X-Google-Smtp-Source: AGHT+IEFiYb4rFpuGVaBbq8epNGwPhP6IH9nm6hyP3jkslxVQLOCjV/16xaXHTQ8qSTvbVzxGCpcSv4sYGDo3Nb1YqM=
-X-Received: by 2002:a05:651c:1b05:b0:2ff:4ce0:d268 with SMTP id
- 38308e7fff4ca-2ff6064e25fmr63970731fa.2.1731970700292; Mon, 18 Nov 2024
- 14:58:20 -0800 (PST)
+        d=1e100.net; s=20230601; t=1731978076; x=1732582876;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=1Dy+y/Sg7BxkuaJRt8lN8ekR1rY4pdHsedbh1qGx8MM=;
+        b=PDNHG8yUq0d4DnU8HbaeXdBSQtcuLD1JvNMUkGGMp5UVVtLl1O7cdih9CUhhwihKaV
+         gR6GEH37O2jfUQwX1I3Xx4js29Bq+kUfncsWLbX1myzdydjTYzSuL0Zgqy2uZ44IcBgh
+         arJrHYcHFgc0vUBkEPM74URaCWR28skzj/CXTBu0j3OEZ9DnojOTOiKmhUGRhyOpL/Yj
+         +I5/0OXUHgS5NkL/fbZIol4JKl7eskjdaO9Fr+Tp0jlnZ412lrY3nk2hAP4KeEpw+DGP
+         YJKrrlERnB7tfcGsUJVOVgu7+aeQpvXEGXLjVgwOGk9/DzAiG4CZ9kWEXBvgmtMyIerF
+         mX2g==
+X-Forwarded-Encrypted: i=1; AJvYcCUyNXPkJEdm3Fwlvb3vkCi2jc2PXUWsJH9OjVHXOtnJ7ZI7Ev2uUo6rttlBwql6ZqplYB6coWUS6KBtrihw84E6@lists.infradead.org, AJvYcCWoKDBdhq7QaEkYqG4KTbjJ4UGjGPrwWqUqvy8ffoEw8CMcMi5Uv8HjfhKsYct6ifuktwFDmTKQ6Nt4vEhrRgc=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxk2nrgTNvsq0BzM/hL4R80OpxJRL637r9k05T9Oycuuy0ACoY5
+	HuSayM8ogjxTG7na/d3hsnxR5I1AJJp/LksXgIyX+vVoNcHFuMPu
+X-Google-Smtp-Source: AGHT+IEizM8QYmdo4n+yxWV+vTQ5NKdtCjht1TWjEzKwHsEwScR3M5pGs6mWJKIG4P+ZrrDw5YPuqw==
+X-Received: by 2002:a05:600c:190c:b0:431:55af:a230 with SMTP id 5b1f17b1804b1-432df798ea0mr108474025e9.33.1731978075857;
+        Mon, 18 Nov 2024 17:01:15 -0800 (PST)
+Received: from [192.168.0.2] ([69.6.8.124])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-432dab76dafsm172723215e9.10.2024.11.18.17.01.12
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 18 Nov 2024 17:01:14 -0800 (PST)
+Message-ID: <7e5e2bda-e80d-46ec-816a-613c5808222e@gmail.com>
+Date: Tue, 19 Nov 2024 03:01:47 +0200
 MIME-Version: 1.0
-References: <20241117114534.work.292-kees@kernel.org>
-In-Reply-To: <20241117114534.work.292-kees@kernel.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 18 Nov 2024 23:58:09 +0100
-Message-ID: <CACRpkdaBErgRrFDWu2FSrnX9Hr=PnHvfccLgAzhOOwTdXuRjTg@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: airoha: Use unsigned long for bit search
-To: Kees Cook <kees@kernel.org>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-hardening@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [net-next,v2] [PATCH net-next v2] net: wwan: t7xx: Change
+ PM_AUTOSUSPEND_MS to 5000
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: wojackbb@gmail.com, netdev@vger.kernel.org,
+ chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
+ haijun.liu@mediatek.com, m.chetan.kumar@linux.intel.com,
+ ricardo.martinez@linux.intel.com, loic.poulain@linaro.org,
+ johannes@sipsolutions.net, davem@davemloft.net, edumazet@google.com,
+ pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ angelogioacchino.delregno@collabora.com, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com
+References: <20241114102002.481081-1-wojackbb@gmail.com>
+ <6835fde6-0863-49e8-90e8-be88e86ef346@gmail.com>
+ <20241115152153.5678682f@kernel.org>
+Content-Language: en-US
+From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
+In-Reply-To: <20241115152153.5678682f@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241118_145822_222605_04223385 
-X-CRM114-Status: UNSURE (   9.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241118_170118_038333_EB123877 
+X-CRM114-Status: GOOD (  13.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,42 +102,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Nov 17, 2024 at 12:45=E2=80=AFPM Kees Cook <kees@kernel.org> wrote:
+On 16.11.2024 01:21, Jakub Kicinski wrote:
+> On Thu, 14 Nov 2024 20:54:20 +0200 Sergey Ryazanov wrote:
+>>> We tested Fibocom FM350 and our products using the t7xx and they all
+>>> benefited from this.
+>>
+>> Possible negative outcomes for data transmission still need
+>> clarification. Let me repeat it here.
+>>
+>> On 06.11.2024 13:10, 吳逼逼 wrote:
+>>> Receiving or sending data will cause PCIE to change D3 Cold to D0 state.
+>>
+>> Am I understand it correctly that receiving IP packets on downlink will
+>> cause PCIe link re-activation?
+>>
+>>
+>> I am concerned about a TCP connection that can be idle for a long period
+>> of time. For example, an established SSH connection can stay idle for
+>> minutes. If I connected to a server and execute something like this:
+>>
+>> user@host$ sleep 20 && echo "Done"
+>>
+>> Will I eventually see the "Done" message or will the autosuspended modem
+>> effectively block any incoming traffic? And how long does it take for
+>> the modem to wake up and deliver a downlink packet to the host? Have you
+>> measured StDev change?
+> 
+> He's decreasing the sleep timer from 20 to 5 sec, both of which
+> are very high for networking, anyway. You appear to be questioning
+> autosuspend itself but it seems to have been added 2 years ago already.
+> 
+> What am I missing?
 
-> Instead of risking alignment problems and causing (false positive) array
-> bound warnings when casting a u32 to (64-bit) unsigned long, just use a
-> native unsigned long for doing bit searches. Avoids warning with GCC 15's
-> -Warray-bounds -fdiagnostics-details:
->
-> In file included from ../include/linux/bitmap.h:11,
->                  from ../include/linux/cpumask.h:12,
->                  from ../arch/x86/include/asm/paravirt.h:21,
->                  from ../arch/x86/include/asm/irqflags.h:80,
->                  from ../include/linux/irqflags.h:18,
->                  from ../include/linux/spinlock.h:59,
->                  from ../include/linux/irq.h:14,
->                  from ../include/linux/irqchip/chained_irq.h:10,
->                  from ../include/linux/gpio/driver.h:8,
->                  from ../drivers/pinctrl/mediatek/pinctrl-airoha.c:11:
-> In function 'find_next_bit',
->     inlined from 'airoha_irq_handler' at ../drivers/pinctrl/mediatek/pinc=
-trl-airoha.c:2394:3:
-> ../include/linux/find.h:65:23: error: array subscript 'long unsigned int[=
-0]' is partly outside array bounds of 'u32[1]' {aka 'unsigned int[1]'} [-We=
-rror=3Darray-bounds=3D]
->    65 |                 val =3D *addr & GENMASK(size - 1, offset);
->       |                       ^~~~~
-> ../drivers/pinctrl/mediatek/pinctrl-airoha.c: In function 'airoha_irq_han=
-dler':
-> ../drivers/pinctrl/mediatek/pinctrl-airoha.c:2387:21: note: object 'statu=
-s' of size 4
->  2387 |                 u32 status;
->       |                     ^~~~~~
->
-> Signed-off-by: Kees Cook <kees@kernel.org>
+Some possible funny side-effect of sleeping with this chipset. Like 
+loosing network connection and dropping TCP sessions. I hope that 20 
+seconds was putted on purpose.
 
-Patch applied, thanks Kees!
+Suddenly, I don't have this modem at hand and want to be sure that we 
+are not going to receive a stream of bug reports.
 
-Yours,
-Linus Walleij
+--
+Sergey
 
