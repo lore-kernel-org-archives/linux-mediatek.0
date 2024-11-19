@@ -4,95 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37185D44153
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 12:47:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40559D44157
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 13:07:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k5/gaiAv8h6HJm8JV5izVAzWfhwGHsfvkAT3QjKySqk=; b=dzKcuyJEX50UPS+f4ruaiWC+JJ
-	SLlU1THUDy6zEkKEyf6igBFVLR+mGmCxe1ue63ORR21GArcc5JHs7XFHUNJN8Eu14pi+veft0Wzxp
-	Og3m57lqi6rYkyY5Kalx2C67Q6St1aoC/eqFZ7OH4EeG4KQ1DIq4sRGx4Hk/nS6c+/EQlF93jQ4Yw
-	Y+JtLc81jJq0A+LiMnhyQGeg+BHtmLBiH6q5sX5ddNvSdnTxLnV1hG706atpX5NBe6nQNIwQ2VwwY
-	YKyDn5rprDvtQxDbZWgFwDOIzE0uUPJgPB+W3d/7SX7zRz9bP3PJgnzI8UhDvmUWAn1ht7tsH0gLa
-	Gv9gnOwQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=r5SnbOSPJM2xbQk5uUW2SdrCV3aSiK5t/lke9tIy5ZM=; b=MKasMjwMRqz91L
+	zb25/+Lz+n9+hNafg4py5r1ReViqHDL3mjnEgQafg+rlYkmUERSqCz8w2y5kGBAJZEHbmbSaR7Zy5
+	L4tSOpzWnKkk7BTcBglKxgGdb8iV1QxsE5zFr9/Db2KxNxSmkOOluYKtVhwKFuW7HBYWvJ8j+WurT
+	ibXXoAj+6NH8U5aRFrnPlVgsiTLcR9ZPHAJJmqlbVW6QKzmczaaJvCWmiC2XX11aIEHRDpK/4jdHn
+	wVV9MCHjtDial+3wStbC95IQcWEZYQWj0VLS3Vk6ahZFsdo0WADjaOoPTGGyhEowrQ8uLqVYa1xKo
+	WOr5zpI6KR6PzDcMvpWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDNdL-0000000CPMR-14vY;
-	Tue, 19 Nov 2024 12:47:07 +0000
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+	id 1tDNxG-0000000CSmH-1f6S;
+	Tue, 19 Nov 2024 13:07:42 +0000
+Received: from mail-lj1-f170.google.com ([209.85.208.170])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDNcP-0000000CPEz-0hOM;
-	Tue, 19 Nov 2024 12:46:10 +0000
-Received: by mail-ed1-x531.google.com with SMTP id 4fb4d7f45d1cf-5cfc035649bso3484927a12.2;
-        Tue, 19 Nov 2024 04:46:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1732020368; x=1732625168; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=k5/gaiAv8h6HJm8JV5izVAzWfhwGHsfvkAT3QjKySqk=;
-        b=UPXODAbYzUk2TKzA3mz0IECKSNwgVSfkfoqvaTYSsQekwO55i3CRU5HBYgHIf4+9E7
-         XrqFgadkOAQOfC7e4h/rfW2Q6WcggHakmTMbw2BSMt6OCx1+UinmRTh5hgnAtbqBp6Lk
-         mHXHJnZ/O+rqDO2hGqQ1cjYATIxeipbAMLAFEO5nnn9UCZ8vWlejSxd7lbVbZBOPAtL8
-         6CcxcevyV52rNpUwbue3HKbLz1iD/U0eAQKnZCsW/R8K3s4WGIp1uSIYu9KpDyADrTLF
-         XyBnsm40p5BEFmZa1s8dk+xD2WMlGYKuF2H7pLUwk8vBkoWYCPKWkvaEuT0ppL+ertOc
-         bHkQ==
+	id 1tDNvh-0000000CSRw-1DHC;
+	Tue, 19 Nov 2024 13:06:06 +0000
+Received: by mail-lj1-f170.google.com with SMTP id 38308e7fff4ca-2fb5014e2daso26590001fa.0;
+        Tue, 19 Nov 2024 05:06:04 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732020368; x=1732625168;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=k5/gaiAv8h6HJm8JV5izVAzWfhwGHsfvkAT3QjKySqk=;
-        b=kp208foyjD+xL8QYlgd0EwpK+xTcXRutYGGt9GU7YvDem2ieJo5usDUtF4IQK4owDm
-         5DenIpYZhEo7CpySacIuLIkDjg5IgnkdYWzezlV5q4pa0C1SFXWOQ9aQnBsrOH6gG8eX
-         7tciVj2sahHnKexcokEfi/nLBIx/aK+ZkLpDlw8hPBDaLR0cxlAv0/fozTK01/R2SftK
-         KI+18hiwGRKsjrU8yR0umwy9MWsdoAG5EN0zUIwZqoXlyCfice62yWs8cYn/NjFvRr9T
-         GcvM1dFMZpcGQqf8qv2CxY1FcOZX7vHpi357xr1HA5Bg28MY/6cXWM9gMPRBs7gXl0nS
-         mIlQ==
-X-Forwarded-Encrypted: i=1; AJvYcCW9ly2fS6EUwa5nyIuGSZiUfexzPmEoTIUUbqYlqPqxU0SyxiZ+8TZUTjWJ0lSaCwOFoZyeKjGO11wOQ8fEWzo=@lists.infradead.org, AJvYcCWYrn3XIZI/puE+7bQlREkotSjyc/QB/lBOuYHT5fsMxiwX2/IESjARaMjYm3pNy1tns0q1kgtAL+fMPgDpugs7@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw/7AgmwmJotvsfrVKLvcqRNgEU8UfoAMsq4nC/4TPQ1JoTCnM5
-	lbpOJBj3nj09ADmInHXjMkNqx1ZGp1E/8Co5RdrRR0tTqprzrSpd
-X-Google-Smtp-Source: AGHT+IHCYZ3NKhKPZWjj2AvexgxpQZKs0aHkGi3venZoVOafZ13nTepAJ8dEvaexbzt3d9JyKwNwfg==
-X-Received: by 2002:a05:6402:268e:b0:5cf:bcce:7422 with SMTP id 4fb4d7f45d1cf-5cfbcce7560mr6787204a12.6.1732020367487;
-        Tue, 19 Nov 2024 04:46:07 -0800 (PST)
-Received: from Ansuel-XPS. ([62.19.98.53])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5cfcb3edce9sm1966351a12.35.2024.11.19.04.46.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Nov 2024 04:46:07 -0800 (PST)
-Message-ID: <673c888f.a70a0220.26ea38.88b1@mx.google.com>
-X-Google-Original-Message-ID: <ZzyIi1Bsz5djjEGX@Ansuel-XPS.>
-Date: Tue, 19 Nov 2024 13:46:03 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Paolo Abeni <pabeni@redhat.com>
-Cc: Vladimir Oltean <olteanv@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [net-next PATCH v7 0/4] net: dsa: Add Airoha AN8855 support
-References: <20241117132811.67804-1-ansuelsmth@gmail.com>
- <20241118144859.4hwgpxtql5fplcyt@skbuf>
- <673b88ea.5d0a0220.17b04a.bc4b@mx.google.com>
- <f8c50ee6-a3d7-45eb-9c11-8018cc4043cb@redhat.com>
+        d=1e100.net; s=20230601; t=1732021561; x=1732626361;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :reply-to:in-reply-to:references:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=r5SnbOSPJM2xbQk5uUW2SdrCV3aSiK5t/lke9tIy5ZM=;
+        b=w95RELE+0nDSecZriPzutDPYkFy/mxo37Gn78M2tlk1nDdYnXeG0yr0/DXTh/H8C7J
+         e+jIYTzpL4o7DGcUXNu/guUsNkZ63VYaxrEQIe7GzdaAUfSDucnh2auuLEbUYNHYJybd
+         /hCIVJWqbkwaFIMb6iRYEDlKf9sGr9kUhow6mOhADwGoQ2ypMoGXVtnArBWD8A6VV5hX
+         ck51/qnAMYCH8mCPzltCL4TI0QfSGdXq5/izkpbykBtZoOQ20EgWjC6uUyFADhYppB7L
+         0qnxQlGu5sY9MhbMVFEF03yqhHpFNhS1JHeN60UIccx2W4JTcGjzsJRj+enOtyU/3oq8
+         ZiXA==
+X-Forwarded-Encrypted: i=1; AJvYcCVfI0iG5kOItmHwKLu+CW8wDed2peifygU1TBiq8nwk0aZVKw8f3coa4m4ak/rn4HTGaR8i5LOD2dKUurT6SdBL@lists.infradead.org, AJvYcCWlIn3FMVlIjNSC0tEpzBUMw6W0ZpKcewqf/e9Jh+cT4iK64CCklDl4+tEdUxwZii4HS+2VBW4OQEt9FJ/nHXk=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyHLSdanxRmibyhBWRzFBJbfdOq3lNhNyLHiBGX92JSzGPC0CBY
+	X1Fwm4WnCelqo0tNtHynmAVP4rx8+HbihtIbEePwhVY2ycDGrCLsrlA2DKMw
+X-Google-Smtp-Source: AGHT+IFRSTz1dh+uLST2WRk1SId0URyEzSlJ6HSvWi/q0vYP7Gmvz1Oo+juT0CA+A5d2p2fuLdvgPQ==
+X-Received: by 2002:a05:651c:1542:b0:2fb:5014:c998 with SMTP id 38308e7fff4ca-2ff606e4b3emr87636821fa.28.1732021561201;
+        Tue, 19 Nov 2024 05:06:01 -0800 (PST)
+Received: from mail-lj1-f172.google.com (mail-lj1-f172.google.com. [209.85.208.172])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-2ff6996869asm12170831fa.68.2024.11.19.05.05.54
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 19 Nov 2024 05:05:55 -0800 (PST)
+Received: by mail-lj1-f172.google.com with SMTP id 38308e7fff4ca-2fb3da341c9so27931981fa.2;
+        Tue, 19 Nov 2024 05:05:54 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCU1q7j/LtR8KfJAuLMbxEHTTufz8SE3EEcj1uZrbuzy++VqciNvTHMKlLapA6viZZqE2jlFf6nqAQKFdY5OpZAG@lists.infradead.org, AJvYcCVdPz/7h4xww07bYB5V5gcTOGv+ytdZ1bFzLUMF6V1i9zfszGAH9IAoFVCsgqkPmRqvYanOCX1XKnr1D2W3Pcg=@lists.infradead.org
+X-Received: by 2002:a05:651c:1582:b0:2f7:4cf1:d6b1 with SMTP id
+ 38308e7fff4ca-2ff606226a5mr76184521fa.1.1732021553921; Tue, 19 Nov 2024
+ 05:05:53 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <f8c50ee6-a3d7-45eb-9c11-8018cc4043cb@redhat.com>
+References: <6f0297ba884c670d604232c2861347940082c8e6.1732004078.git.u.kleine-koenig@baylibre.com>
+In-Reply-To: <6f0297ba884c670d604232c2861347940082c8e6.1732004078.git.u.kleine-koenig@baylibre.com>
+From: Chen-Yu Tsai <wens@csie.org>
+Date: Tue, 19 Nov 2024 22:05:42 +0900
+X-Gmail-Original-Message-ID: <CAGb2v66f6WEYYVm+UQzmz_V87Vqt4BSUkoW5S_qqr_arczc6ug@mail.gmail.com>
+Message-ID: <CAGb2v66f6WEYYVm+UQzmz_V87Vqt4BSUkoW5S_qqr_arczc6ug@mail.gmail.com>
+Subject: Re: [PATCH] mailbox: Switch back to struct platform_driver::remove()
+To: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+Cc: Jassi Brar <jassisinghbrar@gmail.com>, Shawn Guo <shawnguo@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Michal Simek <michal.simek@amd.com>, linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241119_044609_202097_07A891B6 
-X-CRM114-Status: GOOD (  20.84  )
+X-CRM114-CacheID: sfid-20241119_050605_323767_17251D25 
+X-CRM114-Status: GOOD (  22.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,44 +93,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: wens@csie.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 19, 2024 at 12:10:19PM +0100, Paolo Abeni wrote:
-> On 11/18/24 19:35, Christian Marangi wrote:
-> > On Mon, Nov 18, 2024 at 04:48:59PM +0200, Vladimir Oltean wrote:
-> >> On Sun, Nov 17, 2024 at 02:27:55PM +0100, Christian Marangi wrote:
-> >>> This small series add the initial support for the Airoha AN8855 Switch.
-> >>>
-> >>> It's a 5 port Gigabit Switch with SGMII/HSGMII upstream port.
-> >>>
-> >>> This is starting to get in the wild and there are already some router
-> >>> having this switch chip.
-> >>>
-> >>> It's conceptually similar to mediatek switch but register and bits
-> >>> are different. And there is that massive Hell that is the PCS
-> >>> configuration.
-> >>> Saddly for that part we have absolutely NO documentation currently.
-> >>>
-> >>> There is this special thing where PHY needs to be calibrated with values
-> >>> from the switch efuse. (the thing have a whole cpu timer and MCU)
-> >>
-> >> Have you run the scripts in tools/testing/selftests/drivers/net/dsa/?
-> >> Could you post the results?
-> > 
-> > Any test in particular? I'm working on adding correct support for them
-> > in OpenWrt. Should I expect some to fail?
-> 
-> Unfortunatelly this landed on netdev too close to the merge window. I'll
-> unable to apply it on time and process the net-next PR as expected even
-> if it would receive ack from the DSA crew right now.
-> 
-> @Christian, you will have to repost it after the merge window.
+On Tue, Nov 19, 2024 at 5:17=E2=80=AFPM Uwe Kleine-K=C3=B6nig
+<u.kleine-koenig@baylibre.com> wrote:
 >
+> After commit 0edb555a65d1 ("platform: Make platform_driver::remove()
+> return void") .remove() is (again) the right callback to implement for
+> platform drivers.
+>
+> Convert all platform drivers below drivers/mailbox to use .remove(),
+> with the eventual goal to drop struct platform_driver::remove_new(). As
+> .remove() and .remove_new() have the same prototypes, conversion is done
+> by just changing the structure member name in the driver initializer.
+>
+> Make a few indentions consistent while touching these struct
+> initializers.
+>
+> Signed-off-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@baylibre.com>
+> ---
+> Hello,
+>
+> I did a single patch for all of drivers/mailbox. While I usually prefer
+> to do one logical change per patch, this seems to be overengineering
+> here as the individual changes are really trivial and shouldn't be much
+> in the way for stable backports. But I'll happily split the patch if you
+> prefer it split.
+>
+> This is based on today's next, if conflicts arise when you apply it at
+> some later time and don't want to resolve them, feel free to just drop
+> the changes to the conflicting files. I'll notice and followup at a
+> later time then. Or ask me for a fixed resend.
+>
+> Best regards
+> Uwe
+>
+>  drivers/mailbox/bcm-flexrm-mailbox.c    | 2 +-
+>  drivers/mailbox/bcm-pdc-mailbox.c       | 2 +-
+>  drivers/mailbox/imx-mailbox.c           | 2 +-
+>  drivers/mailbox/mailbox-test.c          | 4 ++--
+>  drivers/mailbox/mtk-cmdq-mailbox.c      | 2 +-
+>  drivers/mailbox/qcom-apcs-ipc-mailbox.c | 2 +-
+>  drivers/mailbox/qcom-ipcc.c             | 2 +-
+>  drivers/mailbox/stm32-ipcc.c            | 2 +-
 
-It's ok, just any timeframe? Guess 2 weeks till net-next reopens? (just
-to put a remainder on the calendar so I won't forget)
 
--- 
-	Ansuel
+>  drivers/mailbox/sun6i-msgbox.c          | 4 ++--
+
+Acked-by: Chen-Yu Tsai <wens@csie.org>
+
+>  drivers/mailbox/tegra-hsp.c             | 2 +-
+>  drivers/mailbox/zynqmp-ipi-mailbox.c    | 2 +-
+>  11 files changed, 13 insertions(+), 13 deletions(-)
+>
 
