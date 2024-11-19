@@ -4,106 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE338D60D1B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 10:33:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18F0ED44141
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 11:03:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=93tHMoq61etCefqeI7/L8ZHaQMS3jaPhjtyND24xOo0=; b=EehPxFfZnb1Xv32dhd0X/reArs
-	lGf4F1cP41QOu04ypqxVjwCJ6bl0XutRultsHNWF1u4Cuv6u35KEZQQaHRpGY5Gv70db9x5XYaxdB
-	I0iF38A5DtGEbp7z7ZhsA0HX3xeik5swkRmREeLcCaRnEhszpzfLvsN22aiI3mx96eAUhR6l8jdds
-	fR+cuOLszwF9Y0IDEOlCdrTBDSIwecgOI2QXp1RQbGlsEBklgm3B+b2Uf8bfDnaFvsE6goWVb0nkq
-	Gz/KP447gLQnWe7SazncH5OHY3PKAGJE2F1tTUAv5YdOPhNycSo+PqX7TquxtN4L/l8uwQl7AXJUx
-	X3GHZVlQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=B4EERbWf+tNb39pmHBN5FMOodac7gvgp3/YRQaVUVFw=; b=DJ0mwKYwlezhre2ed3NknlobWu
+	mq0Klbg75Pe79wS2+s9J+mea7Oldaf3wmkYAUjgv/dvG3uXKW217v0Ap731kLvnDwqjqXhWUBqFVz
+	1YrYNefO9HSLCNfazOj5MFqZCz+emi1DdzSQviSOs8+ENr9CKeRKdth5mU8meilaXbaaYJnm66Mlu
+	F8olXmQ13OULGVaFHkURyFOfo5ZdN9DkqzblVgBKZeB9GUclAVh98d0J6X9iLkx+CVxPwMVoFsT2/
+	EUeaVUApuYbFPsPV8pwNTeFmJMRqhH2ymoQ/dDsv5gyT+1b23FtNyFox8QSqLXkHFlwCzH9GF1gwY
+	onEq4hUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDLY4-0000000C4Zh-3naX;
-	Tue, 19 Nov 2024 10:33:32 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1tDM1G-0000000C9vD-3cme;
+	Tue, 19 Nov 2024 11:03:42 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDLKc-0000000C15r-34Xb;
-	Tue, 19 Nov 2024 10:19:39 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-a9a6acac4c3so124380966b.0;
-        Tue, 19 Nov 2024 02:19:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1732011577; x=1732616377; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=93tHMoq61etCefqeI7/L8ZHaQMS3jaPhjtyND24xOo0=;
-        b=JOocquu7cd4COSd8JwAQqc+ajdvD2JulSfGIQGUNUH/HqdadlrVuQAU0ky9OBuSaBt
-         sTG7xci5OnRFJcJkNjV+U034dpRSDY4efyv8rPbIqR3GPnYBWI/Rn9mYLQehUr1hBqP1
-         1NH+f/lLDvDudHUcCdk0bljfyQBnz5JykdQgLFze7sYbwRLHNx/tO19g4I5qt8F7aGcM
-         oecJB4qw2+c64gSn/2RaFhYN9pIaPYM/nurZgwr8MXhoLzsolE5KNYZy7Q2+XiwafRms
-         O74b4aspOEvC1YbwIvI0ht4g2IOuIgCaTEQhnnR/J90x0fb6+MNcGjqaallbKMFb4aEi
-         JCUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732011577; x=1732616377;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=93tHMoq61etCefqeI7/L8ZHaQMS3jaPhjtyND24xOo0=;
-        b=bvwAKbT2tX4n8A3qWqjbBPc2hkDV//0JrZYenBnpCp6s1I4s5eXGNOJsm+Z0cjwUpx
-         YJTx7UUfW3q7oz7lEPwzDpcQSrTrSoy6hY8nbtPAaEJeq07DIj+HxorXpdND0wL+Q3UV
-         tOHKxk7ui8ksZvZu/pPnXOcv84kyRJibWvmSk6v6+tl/1HLQ+kfwYP2CQZwwsScJRYG6
-         bif8DH+AVyLX1VfjADNjlM697u7m25vaE+rOGyy3QEGOTThhSsLj/MWeXYTgVyjKjvAl
-         jm4xUJoxTaG5iT/Zv/HESoEwvH239eVneYRH4yNchEPjzJpkto8XXY4kwIqs3gEICUbw
-         L3kg==
-X-Forwarded-Encrypted: i=1; AJvYcCWu0DaK0JNGHYvKoWNRcwe16xmBMtBNwNjnYw7Jnt9wqliuTi7YlYiMP69v1UxKQV0RU0RJSJXtznecr6DJ/tox@lists.infradead.org, AJvYcCXwIxrCsT74FhH894C5G22CaUdcmdi5f78VnOUPZ7gac0RqMLJ3uYqF3CnJm6EiFwNIGDnBxdZfiNECjVNVmd4=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwO3z/5893DexJJu/PfCDQx9gaPWBXDEON5N8SaJ584maugJOnl
-	HvX6tyJMwILiqWnPCgCLaN9AgPcLSrceitsWzXHeL7IAd/BlKg4V
-X-Google-Smtp-Source: AGHT+IHFjm7z288du+sLPkPh9NWZ67RgYD8wK05AuA3EyPac75+11d1DSFwwXFLi3Yq64iVpPPRciw==
-X-Received: by 2002:a17:907:a4e:b0:a99:c9a4:a4d5 with SMTP id a640c23a62f3a-aa483482762mr1446252966b.29.1732011576580;
-        Tue, 19 Nov 2024 02:19:36 -0800 (PST)
-Received: from corebook.localdomain (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa20e081574sm634875566b.179.2024.11.19.02.19.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Nov 2024 02:19:36 -0800 (PST)
-From: Eric Woudstra <ericwouds@gmail.com>
-To: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Simon Horman <horms@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	Pablo Neira Ayuso <pablo@netfilter.org>,
-	Jozsef Kadlecsik <kadlec@netfilter.org>,
-	Jiri Pirko <jiri@resnulli.us>,
-	Ivan Vecera <ivecera@redhat.com>,
-	Roopa Prabhu <roopa@nvidia.com>,
-	Nikolay Aleksandrov <razor@blackwall.org>,
+	id 1tDM0J-0000000C9gU-3jVG;
+	Tue, 19 Nov 2024 11:02:45 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1732014158; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=JpbNWO2S0DYM4KQM5jhFKm9aDqOnS1/bBXm2Rma7kdxv6xaAj81D5igv4QsIvgM6pi36V7N25hZDk4sYYDE9qThsehQOnc57LyBK9d9Le/ZUnw0ee1efWhqblpn05yUHWMPYOw5Be8qZhhjmmsiyNPwUm1ux3C20X/+zq12FQs8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1732014158; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=B4EERbWf+tNb39pmHBN5FMOodac7gvgp3/YRQaVUVFw=; 
+	b=ZikEhzYsqIsF4/9NRHE4nF2LsYZDPPNTDr+NEAzyLpw1xm5233/Qbp8dPS0aSfg7d7yq2b3m7Uo5KSdX/SFQreHAMpqVYJ+jTiZ/4IlXNPESuhpYr8SyiIpsq48YTHqNZldWKjZF7LsM2Y+LtK6LGKCih6cc/89sTFAsIwupVvk=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.fricke@collabora.com;
+	dmarc=pass header.from=<sebastian.fricke@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1732014158;
+	s=zohomail; d=collabora.com; i=sebastian.fricke@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=B4EERbWf+tNb39pmHBN5FMOodac7gvgp3/YRQaVUVFw=;
+	b=ZoqYUmXkfrdvq11oc3VWeR2fUxq1YlBQ7ErRVQwhMvyIECXA4dfCqJfCP67XcQ9l
+	MUrikgJgMgjuFyUy7U9uYXzr0ij4yfG2LQOayMNtko8crZsOFCCTUZKlccjQ1czXiQt
+	LVPuFNdNLpCI2O9IO/V02MeDCX2sHoTSZmgBzgqY=
+Received: by mx.zohomail.com with SMTPS id 1732014156496249.50679082277054;
+	Tue, 19 Nov 2024 03:02:36 -0800 (PST)
+Date: Tue, 19 Nov 2024 12:02:26 +0100
+From: Sebastian Fricke <sebastian.fricke@collabora.com>
+To: Nathan Chancellor <nathan@kernel.org>
+Cc: Arnd Bergmann <arnd@kernel.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	David Ahern <dsahern@kernel.org>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Joe Damato <jdamato@fastly.com>,
-	Alexander Lobakin <aleksander.lobakin@intel.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"Frank Wunderlich" <frank-w@public-files.de>,
-	Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	netfilter-devel@vger.kernel.org,
-	coreteam@netfilter.org,
-	bridge@lists.linux.dev,
+	Arnd Bergmann <arnd@arndb.de>,
+	Nick Desaulniers <ndesaulniers@google.com>,
+	Bill Wendling <morbo@google.com>,
+	Justin Stitt <justinstitt@google.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Eric Woudstra <ericwouds@gmail.com>
-Subject: [PATCH RFC v2 net-next 14/14] netfilter: nft_flow_offload: Add bridgeflow to nft_flow_offload_eval()
-Date: Tue, 19 Nov 2024 11:19:06 +0100
-Message-ID: <20241119101906.862680-15-ericwouds@gmail.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241119101906.862680-1-ericwouds@gmail.com>
-References: <20241119101906.862680-1-ericwouds@gmail.com>
+	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
+Subject: Re: [PATCH] media: mediatek: vcodec: mark
+ vdec_vp9_slice_map_counts_eob_coef noinline
+Message-ID: <20241119110226.dbd54clp46klvjl5@basti-XPS-13-9310>
+References: <20241018151448.3694052-1-arnd@kernel.org>
+ <20241118200641.GA768549@thelio-3990X>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Disposition: inline
+In-Reply-To: <20241118200641.GA768549@thelio-3990X>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241119_021938_770444_63CD12D8 
-X-CRM114-Status: GOOD (  19.75  )
+X-CRM114-CacheID: sfid-20241119_030243_978067_1AFF550D 
+X-CRM114-Status: GOOD (  19.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,199 +91,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Edit nft_flow_offload_eval() to make it possible to handle a flowtable of
-the nft bridge family.
+Hey Nathan,
 
-Use nft_flow_offload_bridge_init() to fill the flow tuples. It uses
-nft_dev_fill_bridge_path() in each direction.
+On 18.11.2024 13:06, Nathan Chancellor wrote:
+>On Fri, Oct 18, 2024 at 03:14:42PM +0000, Arnd Bergmann wrote:
+>> From: Arnd Bergmann <arnd@arndb.de>
+>>
+>> With KASAN enabled, clang fails to optimize the inline version of
+>> vdec_vp9_slice_map_counts_eob_coef() properly, leading to kilobytes
+>> of temporary values spilled to the stack:
+>>
+>> drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c:1526:12: error: stack frame size (2160) exceeds limit (2048) in 'vdec_vp9_slice_update_prob' [-Werror,-Wframe-larger-than]
+>>
+>> This seems to affect all versions of clang including the latest (clang-20),
+>> but the degree of stack overhead is different per release.
+>>
+>> Marking the function as noinline_for_stack is harmless here and avoids
+>> the problem completely.
+>>
+>> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+>
+>Unfortunately, I have seen no moment on my upstream report and this
+>warning is breaking allmodconfig builds because of -Werror. Can this be
+>applied as a workaround for now (preferrably with a Cc: stable on it)?
+>
+>Reviewed-by: Nathan Chancellor <nathan@kernel.org>
 
-Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
----
- net/netfilter/nft_flow_offload.c | 144 +++++++++++++++++++++++++++++--
- 1 file changed, 139 insertions(+), 5 deletions(-)
+I'll handle it asap, it will be part of 6.13
 
-diff --git a/net/netfilter/nft_flow_offload.c b/net/netfilter/nft_flow_offload.c
-index ed0e9b499971..b17a3ef79852 100644
---- a/net/netfilter/nft_flow_offload.c
-+++ b/net/netfilter/nft_flow_offload.c
-@@ -196,6 +196,131 @@ static bool nft_flowtable_find_dev(const struct net_device *dev,
- 	return found;
- }
- 
-+static int nft_dev_fill_bridge_path(struct flow_offload *flow,
-+				    struct nft_flowtable *ft,
-+				    const struct nft_pktinfo *pkt,
-+				    enum ip_conntrack_dir dir,
-+				    const struct net_device *src_dev,
-+				    const struct net_device *dst_dev,
-+				    unsigned char *src_ha,
-+				    unsigned char *dst_ha)
-+{
-+	struct flow_offload_tuple_rhash *th = flow->tuplehash;
-+	struct net_device_path_stack stack;
-+	struct net_device_path_ctx ctx = {};
-+	struct nft_forward_info info = {};
-+	int i, j = 0;
-+
-+	for (i = th[dir].tuple.encap_num - 1; i >= 0 ; i--) {
-+		if (info.num_encaps >= NF_FLOW_TABLE_ENCAP_MAX)
-+			return -1;
-+
-+		if (th[dir].tuple.in_vlan_ingress & BIT(i))
-+			continue;
-+
-+		info.encap[info.num_encaps].id = th[dir].tuple.encap[i].id;
-+		info.encap[info.num_encaps].proto = th[dir].tuple.encap[i].proto;
-+		info.num_encaps++;
-+
-+		if (th[dir].tuple.encap[i].proto == htons(ETH_P_PPP_SES))
-+			continue;
-+
-+		if (ctx.num_vlans >= NET_DEVICE_PATH_VLAN_MAX)
-+			return -1;
-+		ctx.vlan[ctx.num_vlans].id = th[dir].tuple.encap[i].id;
-+		ctx.vlan[ctx.num_vlans].proto = th[dir].tuple.encap[i].proto;
-+		ctx.num_vlans++;
-+	}
-+	ctx.dev = src_dev;
-+	ether_addr_copy(ctx.daddr, dst_ha);
-+
-+	if (dev_fill_bridge_path(&ctx, &stack) < 0)
-+		return -1;
-+
-+	nft_dev_path_info(&stack, &info, dst_ha, &ft->data);
-+
-+	if (!info.indev || info.indev != dst_dev)
-+		return -1;
-+
-+	th[!dir].tuple.iifidx = info.indev->ifindex;
-+	for (i = info.num_encaps - 1; i >= 0; i--) {
-+		th[!dir].tuple.encap[j].id = info.encap[i].id;
-+		th[!dir].tuple.encap[j].proto = info.encap[i].proto;
-+		if (info.ingress_vlans & BIT(i))
-+			th[!dir].tuple.in_vlan_ingress |= BIT(j);
-+		j++;
-+	}
-+	th[!dir].tuple.encap_num = info.num_encaps;
-+
-+	th[dir].tuple.mtu = dst_dev->mtu;
-+	ether_addr_copy(th[dir].tuple.out.h_source, src_ha);
-+	ether_addr_copy(th[dir].tuple.out.h_dest, dst_ha);
-+	th[dir].tuple.out.ifidx = info.outdev->ifindex;
-+	th[dir].tuple.out.hw_ifidx = info.hw_outdev->ifindex;
-+	th[dir].tuple.xmit_type = FLOW_OFFLOAD_XMIT_DIRECT;
-+
-+	return 0;
-+}
-+
-+static int nft_flow_offload_bridge_init(struct flow_offload *flow,
-+					const struct nft_pktinfo *pkt,
-+					enum ip_conntrack_dir dir,
-+					struct nft_flowtable *ft)
-+{
-+	struct ethhdr *eth = eth_hdr(pkt->skb);
-+	struct flow_offload_tuple *tuple;
-+	const struct net_device *out_dev;
-+	const struct net_device *in_dev;
-+	struct pppoe_hdr *phdr;
-+	struct vlan_hdr *vhdr;
-+	int err, i = 0;
-+
-+	in_dev = nft_in(pkt);
-+	if (!in_dev || !nft_flowtable_find_dev(in_dev, ft))
-+		return -1;
-+
-+	out_dev = nft_out(pkt);
-+	if (!out_dev || !nft_flowtable_find_dev(out_dev, ft))
-+		return -1;
-+
-+	tuple =  &flow->tuplehash[!dir].tuple;
-+
-+	if (skb_vlan_tag_present(pkt->skb)) {
-+		tuple->encap[i].id = skb_vlan_tag_get(pkt->skb);
-+		tuple->encap[i].proto = pkt->skb->vlan_proto;
-+		i++;
-+	}
-+	switch (pkt->skb->protocol) {
-+	case htons(ETH_P_8021Q):
-+		vhdr = (struct vlan_hdr *)skb_network_header(pkt->skb);
-+		tuple->encap[i].id = ntohs(vhdr->h_vlan_TCI);
-+		tuple->encap[i].proto = pkt->skb->protocol;
-+		i++;
-+		break;
-+	case htons(ETH_P_PPP_SES):
-+		phdr = (struct pppoe_hdr *)skb_network_header(pkt->skb);
-+		tuple->encap[i].id = ntohs(phdr->sid);
-+		tuple->encap[i].proto = pkt->skb->protocol;
-+		i++;
-+		break;
-+	}
-+	tuple->encap_num = i;
-+
-+	err = nft_dev_fill_bridge_path(flow, ft, pkt, !dir, out_dev, in_dev,
-+				       eth->h_dest, eth->h_source);
-+	if (err < 0)
-+		return err;
-+
-+	memset(tuple->encap, 0, sizeof(tuple->encap));
-+
-+	err = nft_dev_fill_bridge_path(flow, ft, pkt, dir, in_dev, out_dev,
-+				       eth->h_source, eth->h_dest);
-+	if (err < 0)
-+		return err;
-+
-+	return 0;
-+}
-+
- static void nft_dev_forward_path(struct nf_flow_route *route,
- 				 const struct nf_conn *ct,
- 				 enum ip_conntrack_dir dir,
-@@ -306,6 +431,7 @@ static void nft_flow_offload_eval(const struct nft_expr *expr,
- {
- 	struct nft_flow_offload *priv = nft_expr_priv(expr);
- 	struct nf_flowtable *flowtable = &priv->flowtable->data;
-+	bool routing = (flowtable->type->family != NFPROTO_BRIDGE);
- 	struct tcphdr _tcph, *tcph = NULL;
- 	struct nf_flow_route route = {};
- 	enum ip_conntrack_info ctinfo;
-@@ -359,14 +485,20 @@ static void nft_flow_offload_eval(const struct nft_expr *expr,
- 		goto out;
- 
- 	dir = CTINFO2DIR(ctinfo);
--	if (nft_flow_route(pkt, ct, &route, dir, priv->flowtable) < 0)
--		goto err_flow_route;
-+	if (routing) {
-+		if (nft_flow_route(pkt, ct, &route, dir, priv->flowtable) < 0)
-+			goto err_flow_route;
-+	}
- 
- 	flow = flow_offload_alloc(ct);
- 	if (!flow)
- 		goto err_flow_alloc;
- 
--	flow_offload_route_init(flow, &route);
-+	if (routing)
-+		flow_offload_route_init(flow, &route);
-+	else
-+		if (nft_flow_offload_bridge_init(flow, pkt, dir, priv->flowtable) < 0)
-+			goto err_flow_route;
- 
- 	if (tcph) {
- 		ct->proto.tcp.seen[0].flags |= IP_CT_TCP_FLAG_BE_LIBERAL;
-@@ -419,8 +551,10 @@ static void nft_flow_offload_eval(const struct nft_expr *expr,
- err_flow_add:
- 	flow_offload_free(flow);
- err_flow_alloc:
--	dst_release(route.tuple[dir].dst);
--	dst_release(route.tuple[!dir].dst);
-+	if (routing) {
-+		dst_release(route.tuple[dir].dst);
-+		dst_release(route.tuple[!dir].dst);
-+	}
- err_flow_route:
- 	clear_bit(IPS_OFFLOAD_BIT, &ct->status);
- out:
--- 
-2.45.2
+Regards,
+Sebastian
 
+>
+>> ---
+>> I have not come to a conclusion on how exactly clang fails to do this
+>> right, but can provide the .config and/or preprocessed source files
+>> and command line if we think this should be fixed in clang.
+>> ---
+>>  .../mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c         | 3 ++-
+>>  1 file changed, 2 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+>> index eea709d93820..47c302745c1d 100644
+>> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+>> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+>> @@ -1188,7 +1188,8 @@ static int vdec_vp9_slice_setup_lat(struct vdec_vp9_slice_instance *instance,
+>>  	return ret;
+>>  }
+>>
+>> -static
+>> +/* clang stack usage explodes if this is inlined */
+>> +static noinline_for_stack
+>>  void vdec_vp9_slice_map_counts_eob_coef(unsigned int i, unsigned int j, unsigned int k,
+>>  					struct vdec_vp9_slice_frame_counts *counts,
+>>  					struct v4l2_vp9_frame_symbol_counts *counts_helper)
+>> --
+>> 2.39.5
+>>
+>
 
