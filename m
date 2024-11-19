@@ -4,90 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00011D60D03
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 01:02:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6127AD60D0B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 01:45:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1Dy+y/Sg7BxkuaJRt8lN8ekR1rY4pdHsedbh1qGx8MM=; b=hwMq1XOvwapwNT633uvhbppOLs
-	CsQvSoHrSCr3wlD4w+3+lkr15orVwvkM23o/U3POQr6AqEtYNGhsqqhXOwj4gxv+pIDT6CfwSABBk
-	vAxGGHxG7ycafVregsidovJrH+FCvUzNJOGVEw+4NefVNGGidJi0hVCdVe2zgMleZKJQDG47NCqcH
-	0PGxWbfaroL7btJaoOaFg8vRhPcr+VCald6Xr3YXmT/3VJyRQ4oCXL7ypVCg2S5qRGjBmRJM6ecpl
-	N/N3eqRQ9rMikRwfJ9Hx2y/qHxZvXAep6p0lx/Ipb7KiRo6zccFoE/Rd6vu5FG5PJ3p7aEojOLvzL
-	yRPjPCrw==;
+	bh=dU/X1LVj2zCJb7w3XKJiyRzUCWkgqM4B+4P6fFRGIhE=; b=WaqdD/LMhHc7VHoIQGnLm5I1Oo
+	FHlA7F3aHWFa+xJlItzoSFsBt+iKqzuqI5zGlwWlzBzr3ZHdDv5i4zMqh/pC9X0sxAh6S/0m5SeXj
+	58NFGFv/UK803X5v9RoMxlp+Q59A+u0viEXLDcJfX0rRwiMDG6IVwo+jQSA6cpxv+K2vKP53pJiQs
+	ePVIhIoq41eddZKIaS68M+cjBOB9LzT3JigWP4hkiks2vujQAtYCgnapZu21++T1gkT2+kAY20GiL
+	aAp3Fq7ApFpR4USdXSF8GFSIbIvZ6vXi20FRQazVTUAogmO2e9h8Cxx2NKDbiDA1I0WXiK1q5vlrj
+	0swQAtUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDCdD-0000000B065-3xiu;
-	Tue, 19 Nov 2024 01:02:15 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1tDDJW-0000000B6D8-2GF2;
+	Tue, 19 Nov 2024 01:45:58 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDCcH-0000000Azv7-4BTu;
-	Tue, 19 Nov 2024 01:01:19 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-4314fa33a35so40325485e9.1;
-        Mon, 18 Nov 2024 17:01:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1731978076; x=1732582876; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=1Dy+y/Sg7BxkuaJRt8lN8ekR1rY4pdHsedbh1qGx8MM=;
-        b=loEPPHnDpWTSz8YzMXu3m7+20lBcDu59cL7VnJCWv3mG+t8J3UVMbgAC8Jjzim4id4
-         td6DhATlMybQndTC8DEQoEkxrceb0z/Rs6Db/361sf+Hf2fDAcAzrAmzT1M5QaAWOhAI
-         R6Ch/czTQy5TtNNhP6jqLGN2oxla6wGDZHykfGdIHYnCrl+u7QWDVpOUyTDRba+x5AnE
-         loWmUISOdDhwwUIkwpxPY1kWHx5juVLcrUWzFNUOdCvwUEvvueKVSKa+2r5SdVJwVcCV
-         faIcCOrvvNMFKJBBQ/XtVhrDV2KlkXUIDcKbubECkZvi8Vr2oFZXOOnucQ93O/1kPt+4
-         KeWg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731978076; x=1732582876;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=1Dy+y/Sg7BxkuaJRt8lN8ekR1rY4pdHsedbh1qGx8MM=;
-        b=PDNHG8yUq0d4DnU8HbaeXdBSQtcuLD1JvNMUkGGMp5UVVtLl1O7cdih9CUhhwihKaV
-         gR6GEH37O2jfUQwX1I3Xx4js29Bq+kUfncsWLbX1myzdydjTYzSuL0Zgqy2uZ44IcBgh
-         arJrHYcHFgc0vUBkEPM74URaCWR28skzj/CXTBu0j3OEZ9DnojOTOiKmhUGRhyOpL/Yj
-         +I5/0OXUHgS5NkL/fbZIol4JKl7eskjdaO9Fr+Tp0jlnZ412lrY3nk2hAP4KeEpw+DGP
-         YJKrrlERnB7tfcGsUJVOVgu7+aeQpvXEGXLjVgwOGk9/DzAiG4CZ9kWEXBvgmtMyIerF
-         mX2g==
-X-Forwarded-Encrypted: i=1; AJvYcCUyNXPkJEdm3Fwlvb3vkCi2jc2PXUWsJH9OjVHXOtnJ7ZI7Ev2uUo6rttlBwql6ZqplYB6coWUS6KBtrihw84E6@lists.infradead.org, AJvYcCWoKDBdhq7QaEkYqG4KTbjJ4UGjGPrwWqUqvy8ffoEw8CMcMi5Uv8HjfhKsYct6ifuktwFDmTKQ6Nt4vEhrRgc=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxk2nrgTNvsq0BzM/hL4R80OpxJRL637r9k05T9Oycuuy0ACoY5
-	HuSayM8ogjxTG7na/d3hsnxR5I1AJJp/LksXgIyX+vVoNcHFuMPu
-X-Google-Smtp-Source: AGHT+IEizM8QYmdo4n+yxWV+vTQ5NKdtCjht1TWjEzKwHsEwScR3M5pGs6mWJKIG4P+ZrrDw5YPuqw==
-X-Received: by 2002:a05:600c:190c:b0:431:55af:a230 with SMTP id 5b1f17b1804b1-432df798ea0mr108474025e9.33.1731978075857;
-        Mon, 18 Nov 2024 17:01:15 -0800 (PST)
-Received: from [192.168.0.2] ([69.6.8.124])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-432dab76dafsm172723215e9.10.2024.11.18.17.01.12
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 18 Nov 2024 17:01:14 -0800 (PST)
-Message-ID: <7e5e2bda-e80d-46ec-816a-613c5808222e@gmail.com>
-Date: Tue, 19 Nov 2024 03:01:47 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [net-next,v2] [PATCH net-next v2] net: wwan: t7xx: Change
- PM_AUTOSUSPEND_MS to 5000
-To: Jakub Kicinski <kuba@kernel.org>
+	id 1tDDIZ-0000000B5zM-3DNx;
+	Tue, 19 Nov 2024 01:45:00 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 21A16A42162;
+	Tue, 19 Nov 2024 01:43:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98427C4CECC;
+	Tue, 19 Nov 2024 01:44:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1731980698;
+	bh=Z/txLvl4Yc8TUyGQzPm6CNP9JhRwBWqdG1jlFr/G05U=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=mzdPWv8O3YLS4zPylsi73dd4hK17RL310ZjbTLYXmccEirAGDjvq60xaR4g1/23Dz
+	 xFRAt+bAHGiqpS6zYtrZVnOSa5NM+u1h+7/mHRwSIxrDxVJsQo3lZZHwF2Dkm/LnaC
+	 rr+210O6vQpnDA+0+5VaFVESxlzQdIv2MZFYLAcsd7IyKucUY8vgxpHCxfsPQuDDAn
+	 3dLy7wcXePMnrgiYg750wOShf7CxbS9QrgQYqE73sDkqjpdA/j39urb+MiD7hYr3jd
+	 ZXu5DTxiBk7S8Rf9QLOtmFJjdPnEN47syrhvUuLvPAqI8zHW1/8lplv6YSpSL2k8+F
+	 bzsZhhHVfmAyQ==
+Date: Mon, 18 Nov 2024 17:44:56 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Sergey Ryazanov <ryazanov.s.a@gmail.com>
 Cc: wojackbb@gmail.com, netdev@vger.kernel.org,
  chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
  haijun.liu@mediatek.com, m.chetan.kumar@linux.intel.com,
  ricardo.martinez@linux.intel.com, loic.poulain@linaro.org,
  johannes@sipsolutions.net, davem@davemloft.net, edumazet@google.com,
  pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
- angelogioacchino.delregno@collabora.com, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com
+ angelogioacchino.delregno@collabora.com,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com
+Subject: Re: [net-next,v2] [PATCH net-next v2] net: wwan: t7xx: Change
+ PM_AUTOSUSPEND_MS to 5000
+Message-ID: <20241118174456.463c2817@kernel.org>
+In-Reply-To: <7e5e2bda-e80d-46ec-816a-613c5808222e@gmail.com>
 References: <20241114102002.481081-1-wojackbb@gmail.com>
- <6835fde6-0863-49e8-90e8-be88e86ef346@gmail.com>
- <20241115152153.5678682f@kernel.org>
-Content-Language: en-US
-From: Sergey Ryazanov <ryazanov.s.a@gmail.com>
-In-Reply-To: <20241115152153.5678682f@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+	<6835fde6-0863-49e8-90e8-be88e86ef346@gmail.com>
+	<20241115152153.5678682f@kernel.org>
+	<7e5e2bda-e80d-46ec-816a-613c5808222e@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241118_170118_038333_EB123877 
-X-CRM114-Status: GOOD (  13.39  )
+X-CRM114-CacheID: sfid-20241118_174459_869544_41922F20 
+X-CRM114-Status: GOOD (  12.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,45 +80,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16.11.2024 01:21, Jakub Kicinski wrote:
-> On Thu, 14 Nov 2024 20:54:20 +0200 Sergey Ryazanov wrote:
->>> We tested Fibocom FM350 and our products using the t7xx and they all
->>> benefited from this.
->>
->> Possible negative outcomes for data transmission still need
->> clarification. Let me repeat it here.
->>
->> On 06.11.2024 13:10, 吳逼逼 wrote:
->>> Receiving or sending data will cause PCIE to change D3 Cold to D0 state.
->>
->> Am I understand it correctly that receiving IP packets on downlink will
->> cause PCIe link re-activation?
->>
->>
->> I am concerned about a TCP connection that can be idle for a long period
->> of time. For example, an established SSH connection can stay idle for
->> minutes. If I connected to a server and execute something like this:
->>
->> user@host$ sleep 20 && echo "Done"
->>
->> Will I eventually see the "Done" message or will the autosuspended modem
->> effectively block any incoming traffic? And how long does it take for
->> the modem to wake up and deliver a downlink packet to the host? Have you
->> measured StDev change?
+On Tue, 19 Nov 2024 03:01:47 +0200 Sergey Ryazanov wrote:
+> > He's decreasing the sleep timer from 20 to 5 sec, both of which
+> > are very high for networking, anyway. You appear to be questioning
+> > autosuspend itself but it seems to have been added 2 years ago already.
+> > 
+> > What am I missing?  
 > 
-> He's decreasing the sleep timer from 20 to 5 sec, both of which
-> are very high for networking, anyway. You appear to be questioning
-> autosuspend itself but it seems to have been added 2 years ago already.
+> Some possible funny side-effect of sleeping with this chipset. Like 
+> loosing network connection and dropping TCP sessions. I hope that 20 
+> seconds was putted on purpose.
 > 
-> What am I missing?
+> Suddenly, I don't have this modem at hand and want to be sure that we 
+> are not going to receive a stream of bug reports.
 
-Some possible funny side-effect of sleeping with this chipset. Like 
-loosing network connection and dropping TCP sessions. I hope that 20 
-seconds was putted on purpose.
-
-Suddenly, I don't have this modem at hand and want to be sure that we 
-are not going to receive a stream of bug reports.
-
---
-Sergey
+Power saving is always tricky, but they say they tested. I think we
+should give it a go, worst case - it will be an easy revert.
 
