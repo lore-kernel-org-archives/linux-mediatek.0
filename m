@@ -4,79 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A78A3D4922B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 16:38:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9C4FD6207F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 17:44:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=hZTh8rx5jaZIu1JmpI1tEkcFD/loPvXAusXPhPMmzCQ=; b=2eQ
-	cGcJa7BQOwBMAi/7AshFLg/MKkevi8fjPnp/wbh+InqWAYWy8Im7eqIsK4YC/0Gi3ac/6TaMQCzPW
-	B9NjULXayTScW57eHsWatfyRHFFKglvpLSG5/tU/6vLC5gKupkpr4Aqbf7BPWBSHkI5YjXkAjXZJf
-	9/YWJC3Du1VPGqOiLIU06BtKAq6ZHcKm/LNxbf5e3VlqUC0IvjALal8hB5grH17CuJkwbi8zGPGcy
-	eVxlDW3IKL8JLxe7jiOVSn4mw4n/1DpkuR27dRDdJ9GswdPTloUf11twwvvumNZ/YRzEtUBulVOLa
-	eWEld4YwqW0+mRszeq68K+Mbebxr/Cw==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=K0RXe7OY4ND4a9c8hoc0IFt67SoT99sFnUyI6dvppj0=; b=KDKIXm9ChSYnH4
+	u4USrtDpB5PWFEt6JCB9xtew+vC3fhO2YO1O0McNn+tjrlmeddl3rC7r7hPGRkSdtqd/1WB64vwbn
+	y+ZIsogdFOmOgJLxodgaruJRPuGKK00VNmzX4z5vK1QtvwvHYaI5PDppf3DxnkQ4zwnQWAOWviMfK
+	r0oe1uyQXRT8iQXRzOWDJdveKHuHn14tHIvpcatMii+nbAikTKUMAtATRhtobvtYJqDeXoykLmjfz
+	4Yq+igVxGuRodeJc3eKgdJQjBuICwUOptdpO+65P1w4BD2KnxqX5FZWQ7qJBfnFXOfvKrmWGJIdmS
+	yYnQn32T69Q7xUpdYCmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDREu-0000000D3By-1qsB;
-	Tue, 19 Nov 2024 16:38:08 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1tDSHV-0000000DFtT-1Yxc;
+	Tue, 19 Nov 2024 17:44:53 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDRDx-0000000D2wq-1Kfp;
-	Tue, 19 Nov 2024 16:37:10 +0000
-X-UUID: 821b8c54a69411ef9048ed6ed365623b-20241119
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=hZTh8rx5jaZIu1JmpI1tEkcFD/loPvXAusXPhPMmzCQ=;
-	b=eOqDrsvoXTr/gXyZ80o8bgCtG8w4FM0cs9z1zaoIrIy3nuY62RhH454pShgpz4qH7kXP55HiXfBHeSz6/w4+rhtHBLzUPoXYuDpc47Yjne5KdalE5a85NCWCnxe2YWzjsxcmenJZ+gS4l2OYXU0+E8NUnn2rw3Ju8bTJPP+XRpU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.44,REQID:339b7bfe-a0fe-4a43-ac07-1ac09a7a5884,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:464815b,CLOUDID:572ee55c-f18b-4d56-b49c-93279ee09144,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
-	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 821b8c54a69411ef9048ed6ed365623b-20241119
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1426992218; Tue, 19 Nov 2024 09:37:03 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Wed, 20 Nov 2024 00:37:00 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Wed, 20 Nov 2024 00:37:00 +0800
-From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Subject: [PATCH v2] drm/mediatek: Move mtk_crtc_finish_page_flip() to ddp_cmdq_cb()
-Date: Wed, 20 Nov 2024 00:36:58 +0800
-Message-ID: <20241119163658.31405-1-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1tDSGZ-0000000DFod-1ITA;
+	Tue, 19 Nov 2024 17:43:56 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 832CBA42D84;
+	Tue, 19 Nov 2024 17:42:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7F7E3C4CECF;
+	Tue, 19 Nov 2024 17:43:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1732038233;
+	bh=DfqCGNefCcKmP6DPPWDli0AleKCJ/UH5pUDeWYvOCU8=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=Q3XwbMrWKLIBZkrrWAhuCIyZYPIqgRBVVzGZwOeWGcf9RjiG/R+oMyT4RY/17sem3
+	 /dkAIPreUYkERepr+D9OZ+PlniGxBnhcXfJ2dMHVVKMR3EvVGCYsSNUqciKoLDR6c7
+	 WUOv4nhKYijmdATwZas5eejTBdDVEPKiFwkAq+BfVqD+jQ5J62Ro1Lt/R1KYqcqOVw
+	 8GwkREL9vYX+8Zt2kLp5lYhARdrb21j/T3Ce5lO1IS3menJv/I3upwGOmW1DjYcqdl
+	 l3uUPyLdJZdaXlg4Pnq8LhULpFXqFgo17R9K392y11NBYX7yOJL988Z68n+V7fku6K
+	 roJl6CkXRB/CQ==
+Date: Tue, 19 Nov 2024 11:43:50 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Christian Marangi <ansuelsmth@gmail.com>, linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, upstream@airoha.com,
+	Hui Ma <hui.ma@airoha.com>
+Subject: Re: [PATCH v3] PCI: mediatek-gen3: Avoid PCIe resetting via
+ PCIE_RSTB for Airoha EN7581 SoC
+Message-ID: <20241119174350.GA2269929@bhelgaas>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--8.676900-8.000000
-X-TMASE-MatchedRID: 8X2PBhRYyqJSa+wzDj9ksangbqTYC4GHt07/cudGAnu6pZ/o2Hu2YQTm
-	MKJk1G078AKeCfcnVWUQ3Uikp7+aiv+rTYoF7KeeL3ulviDkcK0kMBkEieOjZqpEew2E+iO0CV5
-	GGxwE9Vw/rxdBgA9yKjyPpWYsRYoZAM0/G7XUdePil2r2x2PwtWKaLwu81+avv8D7QPW2jo9SXT
-	dIhjp97ZbQdE1tv0FOgDLqnrRlXrZ8nn9tnqel2DsAVzN+Ov/sdkdKgE1mb6Vc4GDdqUVFL4VfS
-	4blFaAN8O+qXv6oinTxvX8/wgJcbw==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--8.676900-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: 422B217728EE5DF2CA476245A65AC1711B409E304104063999E2915D8500F1402000:8
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZzxJMbWkV1OELEID@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241119_083709_359580_D0D9A558 
-X-CRM114-Status: GOOD (  13.02  )
+X-CRM114-CacheID: sfid-20241119_094355_473172_B571D8D9 
+X-CRM114-Status: GOOD (  32.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,92 +77,159 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Nancy
- Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Shawn Sung <shawn.sung@mediatek.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_crtc_finish_page_flip() is used to notify userspace that a
-page flip has been completed, allowing userspace to free the frame
-buffer of the last frame and commit the next frame.
+On Tue, Nov 19, 2024 at 09:15:45AM +0100, Lorenzo Bianconi wrote:
+> > Airoha EN7581 has a hw bug asserting/releasing PCIE_PE_RSTB signal
+> > causing occasional PCIe link down issues. In order to overcome the
+> > problem, PCIE_RSTB signals are not asserted/released during device probe or
+> > suspend/resume phase and the PCIe block is reset using REG_PCI_CONTROL
+> > (0x88) and REG_RESET_CONTROL (0x834) registers available in the clock
+> > module running clk_bulk_prepare_enable in mtk_pcie_en7581_power_up().
+> > 
+> > Introduce flags field in the mtk_gen3_pcie_pdata struct in order to
+> > specify per-SoC capabilities.
+> > 
+> > Tested-by: Hui Ma <hui.ma@airoha.com>
+> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> 
+> Hi Jianjun and Bjorn,
+> 
+> any news about this patch? Thanks in advance.
 
-In MediaTek's hardware design for configuring display hardware by using
-GCE, `DRM_EVENT_FLIP_COMPLETE` should be notified to userspace after
-GCE has finished configuring all display hardware settings for each
-atomic_commit().
+The v6.13 merge window is open now, so we will merge new content for
+v6.14 soon after v6.13-rc1 is tagged, which will probably be Dec 1.
 
-Currently, mtk_crtc_finish_page_flip() cannot guarantee that GCE has
-configured all the display hardware settings of the last frame.
-Therefore, to increase the accuracy of the timing for notifying
-`DRM_EVENT_FLIP_COMPLETE` to userspace, mtk_crtc_finish_page_flip()
-should be moved to ddp_cmdq_cb().
+> > ---
+> > Changes in v3:
+> > - cosmetics
+> > - Link to v2: https://lore.kernel.org/r/20241104-pcie-en7581-rst-fix-v2-1-ffe5839c76d8@kernel.org
+> > 
+> > Changes in v2:
+> > - introduce flags field in mtk_gen3_pcie_flags struct instead of adding
+> >   reset callback
+> > - fix the leftover case in mtk_pcie_suspend_noirq routine
+> > - add more comments
+> > - Link to v1: https://lore.kernel.org/r/20240920-pcie-en7581-rst-fix-v1-1-1043fb63ffc9@kernel.org
+> > ---
+> >  drivers/pci/controller/pcie-mediatek-gen3.c | 60 ++++++++++++++++++++---------
+> >  1 file changed, 42 insertions(+), 18 deletions(-)
+> > 
+> > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+> > index 16a55711a7f3bdc8d6620029e3d2cfdd40b537b7..443072adb9b52a6934a5d1e38eb6fca5f86a1e13 100644
+> > --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+> > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> > @@ -128,10 +128,18 @@
+> >  
+> >  struct mtk_gen3_pcie;
+> >  
+> > +enum mtk_gen3_pcie_flags {
+> > +	SKIP_PCIE_RSTB	= BIT(0), /* skip PCIE_RSTB signals configuration
+> > +				   * during device probing or suspend/resume
+> > +				   * phase in order to avoid hw bugs/issues.
+> > +				   */
+> > +};
+> > +
+> >  /**
+> >   * struct mtk_gen3_pcie_pdata - differentiate between host generations
+> >   * @power_up: pcie power_up callback
+> >   * @phy_resets: phy reset lines SoC data.
+> > + * @flags: pcie device flags.
+> >   */
+> >  struct mtk_gen3_pcie_pdata {
+> >  	int (*power_up)(struct mtk_gen3_pcie *pcie);
+> > @@ -139,6 +147,7 @@ struct mtk_gen3_pcie_pdata {
+> >  		const char *id[MAX_NUM_PHY_RESETS];
+> >  		int num_resets;
+> >  	} phy_resets;
+> > +	u32 flags;
+> >  };
+> >  
+> >  /**
+> > @@ -405,22 +414,34 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
+> >  	val |= PCIE_DISABLE_DVFSRC_VLT_REQ;
+> >  	writel_relaxed(val, pcie->base + PCIE_MISC_CTRL_REG);
+> >  
+> > -	/* Assert all reset signals */
+> > -	val = readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
+> > -	val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
+> > -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> > -
+> >  	/*
+> > -	 * Described in PCIe CEM specification sections 2.2 (PERST# Signal)
+> > -	 * and 2.2.1 (Initial Power-Up (G3 to S0)).
+> > -	 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
+> > -	 * for the power and clock to become stable.
+> > +	 * Airoha EN7581 has a hw bug asserting/releasing PCIE_PE_RSTB signal
+> > +	 * causing occasional PCIe link down. In order to overcome the issue,
+> > +	 * PCIE_RSTB signals are not asserted/released at this stage and the
+> > +	 * PCIe block is reset configuting REG_PCI_CONTROL (0x88) and
+> > +	 * REG_RESET_CONTROL (0x834) registers available in the clock module
+> > +	 * running clk_bulk_prepare_enable in mtk_pcie_en7581_power_up().
+> >  	 */
+> > -	msleep(100);
+> > -
+> > -	/* De-assert reset signals */
+> > -	val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB);
+> > -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> > +	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
+> > +		/* Assert all reset signals */
+> > +		val = readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
+> > +		val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
+> > +		       PCIE_PE_RSTB;
+> > +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> > +
+> > +		/*
+> > +		 * Described in PCIe CEM specification sections 2.2 (PERST# Signal)
+> > +		 * and 2.2.1 (Initial Power-Up (G3 to S0)).
+> > +		 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
+> > +		 * for the power and clock to become stable.
+> > +		 */
+> > +		msleep(PCIE_T_PVPERL_MS);
+> > +
+> > +		/* De-assert reset signals */
+> > +		val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
+> > +			 PCIE_PE_RSTB);
+> > +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> > +	}
+> >  
+> >  	/* Check if the link is up or not */
+> >  	err = readl_poll_timeout(pcie->base + PCIE_LINK_STATUS_REG, val,
+> > @@ -1179,10 +1200,12 @@ static int mtk_pcie_suspend_noirq(struct device *dev)
+> >  		return err;
+> >  	}
+> >  
+> > -	/* Pull down the PERST# pin */
+> > -	val = readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
+> > -	val |= PCIE_PE_RSTB;
+> > -	writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> > +	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
+> > +		/* Pull down the PERST# pin */
+> > +		val = readl_relaxed(pcie->base + PCIE_RST_CTRL_REG);
+> > +		val |= PCIE_PE_RSTB;
+> > +		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
+> > +	}
+> >  
+> >  	dev_dbg(pcie->dev, "entered L2 states successfully");
+> >  
+> > @@ -1233,6 +1256,7 @@ static const struct mtk_gen3_pcie_pdata mtk_pcie_soc_en7581 = {
+> >  		.id[2] = "phy-lane2",
+> >  		.num_resets = 3,
+> >  	},
+> > +	.flags = SKIP_PCIE_RSTB,
+> >  };
+> >  
+> >  static const struct of_device_id mtk_pcie_of_match[] = {
+> > 
+> > ---
+> > base-commit: ff80d707f3cb5e8d9ec0739e0e5ed42dea179125
+> > change-id: 20240920-pcie-en7581-rst-fix-8161658c13c4
+> > 
+> > Best regards,
+> > -- 
+> > Lorenzo Bianconi <lorenzo@kernel.org>
+> > 
 
-Fixes: 7f82d9c43879 ("drm/mediatek: Clear pending flag when cmdq packet is done")
-Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_crtc.c | 27 +++++++++++++++++----------
- 1 file changed, 17 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
-index eb0e1233ad04..0d57863c075a 100644
---- a/drivers/gpu/drm/mediatek/mtk_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
-@@ -109,15 +109,19 @@ static void mtk_crtc_finish_page_flip(struct mtk_crtc *mtk_crtc)
- static void mtk_drm_finish_page_flip(struct mtk_crtc *mtk_crtc)
- {
- 	unsigned long flags;
-+	struct drm_crtc *crtc = &mtk_crtc->base;
-+	struct mtk_drm_private *priv = crtc->dev->dev_private;
- 
- 	drm_crtc_handle_vblank(&mtk_crtc->base);
- 
--	spin_lock_irqsave(&mtk_crtc->config_lock, flags);
--	if (!mtk_crtc->config_updating && mtk_crtc->pending_needs_vblank) {
--		mtk_crtc_finish_page_flip(mtk_crtc);
--		mtk_crtc->pending_needs_vblank = false;
-+	if (priv->data->shadow_register) {
-+		spin_lock_irqsave(&mtk_crtc->config_lock, flags);
-+		if (!mtk_crtc->config_updating && mtk_crtc->pending_needs_vblank) {
-+			mtk_crtc_finish_page_flip(mtk_crtc);
-+			mtk_crtc->pending_needs_vblank = false;
-+		}
-+		spin_unlock_irqrestore(&mtk_crtc->config_lock, flags);
- 	}
--	spin_unlock_irqrestore(&mtk_crtc->config_lock, flags);
- }
- 
- static void mtk_crtc_destroy(struct drm_crtc *crtc)
-@@ -284,10 +288,8 @@ static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
- 	state = to_mtk_crtc_state(mtk_crtc->base.state);
- 
- 	spin_lock_irqsave(&mtk_crtc->config_lock, flags);
--	if (mtk_crtc->config_updating) {
--		spin_unlock_irqrestore(&mtk_crtc->config_lock, flags);
-+	if (mtk_crtc->config_updating)
- 		goto ddp_cmdq_cb_out;
--	}
- 
- 	state->pending_config = false;
- 
-@@ -315,10 +317,15 @@ static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
- 		mtk_crtc->pending_async_planes = false;
- 	}
- 
--	spin_unlock_irqrestore(&mtk_crtc->config_lock, flags);
--
- ddp_cmdq_cb_out:
- 
-+	if (mtk_crtc->pending_needs_vblank) {
-+		mtk_crtc_finish_page_flip(mtk_crtc);
-+		mtk_crtc->pending_needs_vblank = false;
-+	}
-+
-+	spin_unlock_irqrestore(&mtk_crtc->config_lock, flags);
-+
- 	mtk_crtc->cmdq_vblank_cnt = 0;
- 	wake_up(&mtk_crtc->cb_blocking_queue);
- }
--- 
-2.43.0
 
 
