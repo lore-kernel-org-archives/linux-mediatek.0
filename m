@@ -4,77 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9EACD44177
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 15:55:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A78A3D4922B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 16:38:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DyRxPuRzp7MtuHBFSujz/tG1Z1/nbHP5FzWRe5C7ltM=; b=p3fW8IAvlLUemLDegx6EP0vm51
-	hza85ogUeOcIRhUvCZu/krl4vhwlZ1gYUK66ElA8pDN0BG1a2aBlnxMX3p5FtnXTXVbNeJRowFwwi
-	znSRpfMX8MYUTVg6XyOvVluZWm3TRpOywjt6WFvbX+wzbITgv1o8qbNxV5BQLIstWqRfB6I6pkgoO
-	2G1JwquyzFfgQghiWX/8Q3t7vNRKwuM9lXm4ZiS/F/aGEH8TZ6YkzfluqwhK881cAuwRwK5Mm8OWd
-	ZusQE6L5sf8uL964hOCRWp+vfn7JJz7JJl1i4iU3wRahoIpP4yXstK6UOxcaJ7ciEKO/lXCjvTHx5
-	FugC34MQ==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=hZTh8rx5jaZIu1JmpI1tEkcFD/loPvXAusXPhPMmzCQ=; b=2eQ
+	cGcJa7BQOwBMAi/7AshFLg/MKkevi8fjPnp/wbh+InqWAYWy8Im7eqIsK4YC/0Gi3ac/6TaMQCzPW
+	B9NjULXayTScW57eHsWatfyRHFFKglvpLSG5/tU/6vLC5gKupkpr4Aqbf7BPWBSHkI5YjXkAjXZJf
+	9/YWJC3Du1VPGqOiLIU06BtKAq6ZHcKm/LNxbf5e3VlqUC0IvjALal8hB5grH17CuJkwbi8zGPGcy
+	eVxlDW3IKL8JLxe7jiOVSn4mw4n/1DpkuR27dRDdJ9GswdPTloUf11twwvvumNZ/YRzEtUBulVOLa
+	eWEld4YwqW0+mRszeq68K+Mbebxr/Cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDQZO-0000000CwiH-3b0Z;
-	Tue, 19 Nov 2024 15:55:14 +0000
-Received: from mgamail.intel.com ([192.198.163.18])
+	id 1tDREu-0000000D3By-1qsB;
+	Tue, 19 Nov 2024 16:38:08 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDQYC-0000000CwQM-3Cy6;
-	Tue, 19 Nov 2024 15:54:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1732031641; x=1763567641;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=oerxtD3nEVi4XTue4l49odCUQx6jpGjoapzMXc667oY=;
-  b=ObhXSfh5lk3os5WfofSNwb5vPvxol17J3NKW2bVIeVyWxbMf+hhTke/8
-   haOctIkri33i/NaI2t2xi1q0p2ryv8jX4ynsPN1RSlK9rUac4xZPqYaDN
-   +LZM5kWKBSeGraFlUdZf7xuph1mpPkgo94zkLNI5MkWIl6xtUF9E2CTTq
-   yhn1LP8I4o29qDM7Z+OyvOX0TLJvInUMcaLtgy19wH1PFbrAcWcMNkE0C
-   tLN4hHdYFhmJENrI/oBZqEIB946tpUU7yndISlMm9bGgtf+3M7ad7gDEB
-   iXTOLF0Hs9NTMe467vGoAl9rIxPZAsNZGH1dVcH7IymfNvoS0hE0LqypO
-   Q==;
-X-CSE-ConnectionGUID: CjIJ6p00SPWFE4bdpv/vYA==
-X-CSE-MsgGUID: swVnlp5JSh2+uv2HquqXwg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11261"; a="31420438"
-X-IronPort-AV: E=Sophos;i="6.12,166,1728975600"; 
-   d="scan'208";a="31420438"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
-  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Nov 2024 07:53:59 -0800
-X-CSE-ConnectionGUID: 2vowImP2Qoe5lB+Anw/K8Q==
-X-CSE-MsgGUID: brq/mmlnTOm8eWaPpVdyzQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,166,1728975600"; 
-   d="scan'208";a="89535173"
-Received: from kuha.fi.intel.com ([10.237.72.152])
-  by orviesa010.jf.intel.com with SMTP; 19 Nov 2024 07:53:57 -0800
-Received: by kuha.fi.intel.com (sSMTP sendmail emulation); Tue, 19 Nov 2024 17:53:55 +0200
-Date: Tue, 19 Nov 2024 17:53:55 +0200
-From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-To: Wolfram Sang <wsa+renesas@sang-engineering.com>
-Cc: linux-kernel@vger.kernel.org,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 14/15] usb: typec: tcpci_mt6370: don't include
- 'pm_wakeup.h' directly
-Message-ID: <Zzy0kz54bW3Xe0Al@kuha.fi.intel.com>
-References: <20241118072917.3853-1-wsa+renesas@sang-engineering.com>
- <20241118072917.3853-15-wsa+renesas@sang-engineering.com>
+	id 1tDRDx-0000000D2wq-1Kfp;
+	Tue, 19 Nov 2024 16:37:10 +0000
+X-UUID: 821b8c54a69411ef9048ed6ed365623b-20241119
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=hZTh8rx5jaZIu1JmpI1tEkcFD/loPvXAusXPhPMmzCQ=;
+	b=eOqDrsvoXTr/gXyZ80o8bgCtG8w4FM0cs9z1zaoIrIy3nuY62RhH454pShgpz4qH7kXP55HiXfBHeSz6/w4+rhtHBLzUPoXYuDpc47Yjne5KdalE5a85NCWCnxe2YWzjsxcmenJZ+gS4l2OYXU0+E8NUnn2rw3Ju8bTJPP+XRpU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.44,REQID:339b7bfe-a0fe-4a43-ac07-1ac09a7a5884,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:464815b,CLOUDID:572ee55c-f18b-4d56-b49c-93279ee09144,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
+	RL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,
+	SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 821b8c54a69411ef9048ed6ed365623b-20241119
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1426992218; Tue, 19 Nov 2024 09:37:03 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Wed, 20 Nov 2024 00:37:00 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1118.26 via Frontend Transport; Wed, 20 Nov 2024 00:37:00 +0800
+From: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Subject: [PATCH v2] drm/mediatek: Move mtk_crtc_finish_page_flip() to ddp_cmdq_cb()
+Date: Wed, 20 Nov 2024 00:36:58 +0800
+Message-ID: <20241119163658.31405-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241118072917.3853-15-wsa+renesas@sang-engineering.com>
+Content-Type: text/plain
+X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-AS-Result: No-10--8.676900-8.000000
+X-TMASE-MatchedRID: 8X2PBhRYyqJSa+wzDj9ksangbqTYC4GHt07/cudGAnu6pZ/o2Hu2YQTm
+	MKJk1G078AKeCfcnVWUQ3Uikp7+aiv+rTYoF7KeeL3ulviDkcK0kMBkEieOjZqpEew2E+iO0CV5
+	GGxwE9Vw/rxdBgA9yKjyPpWYsRYoZAM0/G7XUdePil2r2x2PwtWKaLwu81+avv8D7QPW2jo9SXT
+	dIhjp97ZbQdE1tv0FOgDLqnrRlXrZ8nn9tnqel2DsAVzN+Ov/sdkdKgE1mb6Vc4GDdqUVFL4VfS
+	4blFaAN8O+qXv6oinTxvX8/wgJcbw==
+X-TM-AS-User-Approved-Sender: No
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--8.676900-8.000000
+X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
+X-TM-SNTS-SMTP: 422B217728EE5DF2CA476245A65AC1711B409E304104063999E2915D8500F1402000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241119_075400_809160_A529951A 
-X-CRM114-Status: GOOD (  14.98  )
+X-CRM114-CacheID: sfid-20241119_083709_359580_D0D9A558 
+X-CRM114-Status: GOOD (  13.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,37 +88,92 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Nancy
+ Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Shawn Sung <shawn.sung@mediatek.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 18, 2024 at 08:29:13AM +0100, Wolfram Sang wrote:
-> The header clearly states that it does not want to be included directly,
-> only via 'device.h'. 'platform_device.h' works equally well. Remove the
-> direct inclusion.
-> 
-> Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+mtk_crtc_finish_page_flip() is used to notify userspace that a
+page flip has been completed, allowing userspace to free the frame
+buffer of the last frame and commit the next frame.
 
-Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+In MediaTek's hardware design for configuring display hardware by using
+GCE, `DRM_EVENT_FLIP_COMPLETE` should be notified to userspace after
+GCE has finished configuring all display hardware settings for each
+atomic_commit().
 
-> ---
->  drivers/usb/typec/tcpm/tcpci_mt6370.c | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/drivers/usb/typec/tcpm/tcpci_mt6370.c b/drivers/usb/typec/tcpm/tcpci_mt6370.c
-> index 9cda1005ef01..bc5fd2557e6f 100644
-> --- a/drivers/usb/typec/tcpm/tcpci_mt6370.c
-> +++ b/drivers/usb/typec/tcpm/tcpci_mt6370.c
-> @@ -11,7 +11,6 @@
->  #include <linux/mod_devicetable.h>
->  #include <linux/module.h>
->  #include <linux/platform_device.h>
-> -#include <linux/pm_wakeup.h>
->  #include <linux/pm_wakeirq.h>
->  #include <linux/regmap.h>
->  #include <linux/regulator/consumer.h>
-> -- 
-> 2.39.2
+Currently, mtk_crtc_finish_page_flip() cannot guarantee that GCE has
+configured all the display hardware settings of the last frame.
+Therefore, to increase the accuracy of the timing for notifying
+`DRM_EVENT_FLIP_COMPLETE` to userspace, mtk_crtc_finish_page_flip()
+should be moved to ddp_cmdq_cb().
 
+Fixes: 7f82d9c43879 ("drm/mediatek: Clear pending flag when cmdq packet is done")
+Signed-off-by: Jason-JH.Lin <jason-jh.lin@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_crtc.c | 27 +++++++++++++++++----------
+ 1 file changed, 17 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
+index eb0e1233ad04..0d57863c075a 100644
+--- a/drivers/gpu/drm/mediatek/mtk_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
+@@ -109,15 +109,19 @@ static void mtk_crtc_finish_page_flip(struct mtk_crtc *mtk_crtc)
+ static void mtk_drm_finish_page_flip(struct mtk_crtc *mtk_crtc)
+ {
+ 	unsigned long flags;
++	struct drm_crtc *crtc = &mtk_crtc->base;
++	struct mtk_drm_private *priv = crtc->dev->dev_private;
+ 
+ 	drm_crtc_handle_vblank(&mtk_crtc->base);
+ 
+-	spin_lock_irqsave(&mtk_crtc->config_lock, flags);
+-	if (!mtk_crtc->config_updating && mtk_crtc->pending_needs_vblank) {
+-		mtk_crtc_finish_page_flip(mtk_crtc);
+-		mtk_crtc->pending_needs_vblank = false;
++	if (priv->data->shadow_register) {
++		spin_lock_irqsave(&mtk_crtc->config_lock, flags);
++		if (!mtk_crtc->config_updating && mtk_crtc->pending_needs_vblank) {
++			mtk_crtc_finish_page_flip(mtk_crtc);
++			mtk_crtc->pending_needs_vblank = false;
++		}
++		spin_unlock_irqrestore(&mtk_crtc->config_lock, flags);
+ 	}
+-	spin_unlock_irqrestore(&mtk_crtc->config_lock, flags);
+ }
+ 
+ static void mtk_crtc_destroy(struct drm_crtc *crtc)
+@@ -284,10 +288,8 @@ static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
+ 	state = to_mtk_crtc_state(mtk_crtc->base.state);
+ 
+ 	spin_lock_irqsave(&mtk_crtc->config_lock, flags);
+-	if (mtk_crtc->config_updating) {
+-		spin_unlock_irqrestore(&mtk_crtc->config_lock, flags);
++	if (mtk_crtc->config_updating)
+ 		goto ddp_cmdq_cb_out;
+-	}
+ 
+ 	state->pending_config = false;
+ 
+@@ -315,10 +317,15 @@ static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
+ 		mtk_crtc->pending_async_planes = false;
+ 	}
+ 
+-	spin_unlock_irqrestore(&mtk_crtc->config_lock, flags);
+-
+ ddp_cmdq_cb_out:
+ 
++	if (mtk_crtc->pending_needs_vblank) {
++		mtk_crtc_finish_page_flip(mtk_crtc);
++		mtk_crtc->pending_needs_vblank = false;
++	}
++
++	spin_unlock_irqrestore(&mtk_crtc->config_lock, flags);
++
+ 	mtk_crtc->cmdq_vblank_cnt = 0;
+ 	wake_up(&mtk_crtc->cb_blocking_queue);
+ }
 -- 
-heikki
+2.43.0
+
 
