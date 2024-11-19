@@ -4,102 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 513E7D62067
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 09:56:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 469F6D60D1B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 10:20:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xUe7R8XKsYNv0mClyqfH8J2phEvtwivmUTM75Fl3Sl8=; b=VASbu8MnJzNPNdODNeNCJqOles
-	Na7CwU9Pyf99jNCnINv9oPE6819s9ckakEwxzexyBNNeNNtVGQV7qIRvXLW2DivmbcUzpS5s/O/zp
-	cFbzWNjmAWHOpklKMoZYpmEEoDVWzNzqp90vF2eycfbU5lPv/PghlurK7EPkVOa1niRQV7Xokjbwr
-	R+L6aBIf2SQxMRqimComv8J7JZvHLjF1OZCIvi3BE48Ky7IvaAti0+I72JXsrcxPZWaL6MsbSF/m0
-	g7Tmd+ud+DS4QVU33IE8pHhs+WN448qeJ88Ca3Pd6icDyRF/1CLavP5UNpjAdTvkpmGORVNrYFy42
-	QRhdDg8g==;
+	bh=yO7sxQUafAYucRUkN2IjUq6IUra83MUQ/OQ0OsuEu30=; b=QWmxbvXKTQEpBl21Fi1D4Cuwgw
+	mnMVkjRGvsjAc9cUHEUSkfb9CaQWQZdX32V6oUbzez3jTA4h97H2VDrxZwufYcmUciJVm4OUvPsnI
+	WVZp1ehEmWCpvxIXHWqO9bmt0GDNEZZke1ANX/GNAjJAnWGaw45uwvzFALdbtK4O+5TpkFd4bEbSy
+	xQMGSv4rYVzWlLNE+9raY2T6HmSgr43Bbb9vYkR2jaOxKmRkBjSE1loQMz5ruUAabggL7w+//pcpW
+	wEimkjFnZNJ1o13KwquhVYUo3GoMP53hA06jmQiP4ILTmoNPBWywOw+2twdkRcrRQOFpHzMlH9Uwn
+	5wm5hIcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDKyT-0000000BxrI-13CF;
-	Tue, 19 Nov 2024 09:56:45 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1tDLLJ-0000000C1HX-1063;
+	Tue, 19 Nov 2024 10:20:21 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDKyQ-0000000Bxqi-1F6d;
-	Tue, 19 Nov 2024 09:56:43 +0000
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4AJ7j9vW023070;
-	Tue, 19 Nov 2024 09:56:21 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	cc:content-transfer-encoding:date:from:message-id:mime-version
-	:subject:to; s=qcppdkim1; bh=xUe7R8XKsYNv0mClyqfH8J2phEvtwivmUTM
-	75Fl3Sl8=; b=XmwM+75yx8vwq362E0EAxe7Nj8gbnArVN1vp5vnt7LcQ0CLfxQD
-	4gRrw6SNCoGu6DvWkB0s8qwF0w0RKUO7npp3O/V42s4kVZ8Op55YhONH7rtv6PzN
-	lRbiYgNnfpKmh/8cWRm8KfSuJzJkS/IaMiK91NG6y2wT1LiYsgpuAEawVSboFePC
-	hFQB4J/+cxWSrp0UytIgPAkRmnlVhXTn4eDAOIo9MhnycR7/gaQEn/vtuEq5kDAV
-	l1BMde0/Wbfjoq3VRsm2b/8tBfn6fDHea+ycaRk7iiVes78VqCKgOa1x54r+A/UF
-	hh8kyJi9fTp1QFGDZ0iqGEEriv3C9CXx43g==
-Received: from aptaippmta01.qualcomm.com (tpe-colo-wan-fw-bordernet.qualcomm.com [103.229.16.4])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4308y623up-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 19 Nov 2024 09:56:20 +0000 (GMT)
-Received: from pps.filterd (APTAIPPMTA01.qualcomm.com [127.0.0.1])
-	by APTAIPPMTA01.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTP id 4AJ9uJsm002711;
-	Tue, 19 Nov 2024 09:56:19 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by APTAIPPMTA01.qualcomm.com (PPS) with ESMTPS id 42xmfkpvgr-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 19 Nov 2024 09:56:18 +0000
-Received: from APTAIPPMTA01.qualcomm.com (APTAIPPMTA01.qualcomm.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 4AJ9uIhG002706;
-	Tue, 19 Nov 2024 09:56:18 GMT
-Received: from cbsp-sh-gv.ap.qualcomm.com (CBSP-SH-gv.ap.qualcomm.com [10.231.249.68])
-	by APTAIPPMTA01.qualcomm.com (PPS) with ESMTPS id 4AJ9uIe3002705
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 19 Nov 2024 09:56:18 +0000
-Received: by cbsp-sh-gv.ap.qualcomm.com (Postfix, from userid 393357)
-	id CA91640BED; Tue, 19 Nov 2024 17:56:16 +0800 (CST)
-From: Ziqi Chen <quic_ziqichen@quicinc.com>
-To: quic_cang@quicinc.com, bvanassche@acm.org, mani@kernel.org,
-        beanhuo@micron.com, avri.altman@wdc.com, junwoo80.lee@samsung.com,
-        martin.petersen@oracle.com, quic_ziqichen@quicinc.com,
-        quic_nguyenb@quicinc.com, quic_nitirawa@quicinc.com,
-        quic_rampraka@quicinc.com
-Cc: linux-scsi@vger.kernel.org, Peter Wang <peter.wang@mediatek.com>,
-        Alim Akhtar <alim.akhtar@samsung.com>,
-        "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        John Garry <john.g.garry@oracle.com>,
-        Johannes Thumshirn <johannes.thumshirn@wdc.com>,
-        Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-        Andrew Halaney <ahalaney@redhat.com>,
-        Maramaina Naresh <quic_mnaresh@quicinc.com>,
-        linux-kernel@vger.kernel.org (open list),
-        linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek),
-        linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek)
-Subject: [PATCH v3] scsi: ufs: core: Add ufshcd_send_bsg_uic_cmd() for UFS BSG
-Date: Tue, 19 Nov 2024 17:56:04 +0800
-Message-Id: <20241119095613.121385-1-quic_ziqichen@quicinc.com>
-X-Mailer: git-send-email 2.34.1
+	id 1tDLKL-0000000C0xb-07rW;
+	Tue, 19 Nov 2024 10:19:22 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-aa20944ce8cso939393766b.0;
+        Tue, 19 Nov 2024 02:19:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1732011559; x=1732616359; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=yO7sxQUafAYucRUkN2IjUq6IUra83MUQ/OQ0OsuEu30=;
+        b=NQSSD1CtVkKecW//3XfTSKePMuWtOjkThE8t+gLy+TAYgqjSbeA1llgqrmUHVfxT3q
+         f8fX3Bv7wgoqTzghbO3eFH7UzEbD4zMs10FNTI29/IqVaF0Zq4mXmjaJjvGG6LulVon5
+         +J1JxYgzQ8dMqs0UOutoVRfRFjhovNAYh1b4TNmuNej/VFkKEVPPgaaShJ936N9PvmS4
+         JEbsq1moaKwoWXaqg7jrexBIPNdQHnfl1T+tor8s/FoS7oLfok7kpxGEn6n4ihI9jdqn
+         wNJtC7kbkzVrA+RUboKchzFNvIOS+GCg9Ec3woPLO57jSJhuaujlpCel7mr27Sf+fmDt
+         JcDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1732011559; x=1732616359;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=yO7sxQUafAYucRUkN2IjUq6IUra83MUQ/OQ0OsuEu30=;
+        b=SNUJkxFXB5+pKbajqQw6uND+p06g+HUA5x+BY/LbCejlsnfnUaTAa8cCe76W8RJTHB
+         45XLsMMuXRX//DCd6hssn/oen0Mpgx8GUE7WyhyuOks4DEqaTH7EceAJEAabKPjXgAYs
+         cvm7Av8WwwTTYu9SaDqt5g3F4GQokKq6fZ43FLRJTLlEXw+TgY6QkESlFfVQLLaaM3wF
+         xiW7xTDeRk8vcNOQMp4SDu4E8PGwFCW6OGElRTm8ILFbtrqwAYfD7BN68Z+d0WLwTWvt
+         SFNH+WkUFTiw4RI+oMqzAgJ+FTj1ECOKyjTKtQdRBYx26pQCa1ZhqXVMVZoLfMQu7tou
+         YK1w==
+X-Forwarded-Encrypted: i=1; AJvYcCU4gPltlVVesJ+zIcjLjOFetmuGBmZQYgpRlOfRq/IrNaDfW0N3hBg3PWfxFg3o+NYF+ZqGsfwRiejfV1xWaoGA@lists.infradead.org, AJvYcCWYYlloaQfqjOBZMtmuSEU9NdPhaTe3uBCtBfZnLxO2jPXB9P4FXmmmoNnS1sFbuXZ2/sR5X3eDTR+5ISK8sQM=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyDZ0eCfuEleQOpGdG3px9o992xbclOgGvslsA/3N4LjUuEsKcI
+	tFqkDbXZwZuLcFD8v9OpAMtDAZkF2ZHKcygRELXo8fT1Sdocqm9V
+X-Google-Smtp-Source: AGHT+IHfClA1OO+Sq3mruClnwoe/BR7xI+sjeG3UEZ/v9gqMrSpB7FHcIFZ2f2w6kLP2kZj+vPyc1w==
+X-Received: by 2002:a17:907:97c9:b0:a99:facf:cfc with SMTP id a640c23a62f3a-aa4c7e48f63mr248549566b.17.1732011558440;
+        Tue, 19 Nov 2024 02:19:18 -0800 (PST)
+Received: from corebook.localdomain (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa20e081574sm634875566b.179.2024.11.19.02.19.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 19 Nov 2024 02:19:17 -0800 (PST)
+From: Eric Woudstra <ericwouds@gmail.com>
+To: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Simon Horman <horms@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	Pablo Neira Ayuso <pablo@netfilter.org>,
+	Jozsef Kadlecsik <kadlec@netfilter.org>,
+	Jiri Pirko <jiri@resnulli.us>,
+	Ivan Vecera <ivecera@redhat.com>,
+	Roopa Prabhu <roopa@nvidia.com>,
+	Nikolay Aleksandrov <razor@blackwall.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	David Ahern <dsahern@kernel.org>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Joe Damato <jdamato@fastly.com>,
+	Alexander Lobakin <aleksander.lobakin@intel.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"Frank Wunderlich" <frank-w@public-files.de>,
+	Daniel Golle <daniel@makrotopia.org>
+Cc: netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	netfilter-devel@vger.kernel.org,
+	coreteam@netfilter.org,
+	bridge@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Eric Woudstra <ericwouds@gmail.com>
+Subject: [PATCH RFC v2 net-next 00/14] bridge-fastpath and related improvements
+Date: Tue, 19 Nov 2024 11:18:52 +0100
+Message-ID: <20241119101906.862680-1-ericwouds@gmail.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-QCInternal: smtphost
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: thBaN9mIu8qL1VUAK4TurLRrwtF8AqJz
-X-Proofpoint-ORIG-GUID: thBaN9mIu8qL1VUAK4TurLRrwtF8AqJz
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
- definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
- spamscore=0 clxscore=1011 malwarescore=0 priorityscore=1501 mlxscore=0
- mlxlogscore=999 impostorscore=0 bulkscore=0 suspectscore=0 phishscore=0
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2409260000 definitions=main-2411190070
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241119_015642_338950_A51ADA7B 
-X-CRM114-Status: GOOD (  17.61  )
+X-CRM114-CacheID: sfid-20241119_021921_066629_EBC49AEA 
+X-CRM114-Status: GOOD (  20.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,111 +115,148 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-User layer applications can send UIC GET/SET commands via the BSG
-framework, and if the user layer application sends a UIC SET command
-to the PA_PWRMODE attribute, a power mode change shall be initiated
-in UniPro and two interrupts shall be triggered if the power mode is
-successfully changed, i.e., UIC Command Completion interrupt and UIC
-Power Mode interrupt.
+This patchset makes it possible to set up a software fastpath between
+bridged interfaces. This also creates the possibility to have a hardware
+offloaded fastpath between bridged interfaces.
 
-The current UFS BSG code calls ufshcd_send_uic_cmd() directly, with
-which the second interrupt, i.e., UIC Power Mode interrupt, shall be
-treated as unhandled interrupt. In addition, after the UIC command is
-completed, user layer application has to poll UniPro and/or M-PHY state
-machine to confirm the power mode change is finished.
+To set up the fastpath with offloading, add this extra flowtable:
 
-Add a new wrapper function ufshcd_send_bsg_uic_cmd() and call it from
-ufs_bsg_request() so that if a UIC SET command is targeting the PA_PWRMODE
-attribute it can be redirected to ufshcd_uic_pwr_ctrl().
+table bridge filter {
+        flowtable fb {
+                hook ingress priority filter
+                devices = { lan0, lan1, lan2, lan3, lan4, wlan0, wlan1 }
+                flags offload
+        }
+        chain forward {
+                type filter hook forward priority filter; policy accept;
+		ct state established flow add @fb
+        }
+}
 
-Fixes: e77044c5a842 ("scsi: ufs-bsg: Add support for uic commands in ufs_bsg_request()")
-Signed-off-by: Can Guo <quic_cang@quicinc.com>
-Signed-off-by: Ziqi Chen <quic_ziqichen@quicinc.com>
-Reviewed-by: Bean Huo <beanhuo@micron.com>
-Reviewed-by: Avri Altman <avri.altman@wdc.com>
-Reviewed-by: Peter Wang <peter.wang@mediatek.com>
----
-V2 -> V3: Added Fixes tag
-V1 -> V2: Rebased on Linux 6.13
----
- drivers/ufs/core/ufs_bsg.c     |  2 +-
- drivers/ufs/core/ufshcd-priv.h |  1 +
- drivers/ufs/core/ufshcd.c      | 36 ++++++++++++++++++++++++++++++++++
- 3 files changed, 38 insertions(+), 1 deletion(-)
+Creating a separate fastpath for bridges.
 
-diff --git a/drivers/ufs/core/ufs_bsg.c b/drivers/ufs/core/ufs_bsg.c
-index 433d0480391e..6c09d97ae006 100644
---- a/drivers/ufs/core/ufs_bsg.c
-+++ b/drivers/ufs/core/ufs_bsg.c
-@@ -170,7 +170,7 @@ static int ufs_bsg_request(struct bsg_job *job)
- 		break;
- 	case UPIU_TRANSACTION_UIC_CMD:
- 		memcpy(&uc, &bsg_request->upiu_req.uc, UIC_CMD_SIZE);
--		ret = ufshcd_send_uic_cmd(hba, &uc);
-+		ret = ufshcd_send_bsg_uic_cmd(hba, &uc);
- 		if (ret)
- 			dev_err(hba->dev, "send uic cmd: error code %d\n", ret);
- 
-diff --git a/drivers/ufs/core/ufshcd-priv.h b/drivers/ufs/core/ufshcd-priv.h
-index 7aea8fbaeee8..9ffd94ddf8c7 100644
---- a/drivers/ufs/core/ufshcd-priv.h
-+++ b/drivers/ufs/core/ufshcd-priv.h
-@@ -84,6 +84,7 @@ int ufshcd_read_string_desc(struct ufs_hba *hba, u8 desc_index,
- 			    u8 **buf, bool ascii);
- 
- int ufshcd_send_uic_cmd(struct ufs_hba *hba, struct uic_command *uic_cmd);
-+int ufshcd_send_bsg_uic_cmd(struct ufs_hba *hba, struct uic_command *uic_cmd);
- 
- int ufshcd_exec_raw_upiu_cmd(struct ufs_hba *hba,
- 			     struct utp_upiu_req *req_upiu,
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index e338867bc96c..c01f4b0c1b4f 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -4319,6 +4319,42 @@ static int ufshcd_uic_pwr_ctrl(struct ufs_hba *hba, struct uic_command *cmd)
- 	return ret;
- }
- 
-+/**
-+ * ufshcd_send_bsg_uic_cmd - Send UIC commands requested via BSG layer and retrieve the result
-+ * @hba: per adapter instance
-+ * @uic_cmd: UIC command
-+ *
-+ * Return: 0 only if success.
-+ */
-+int ufshcd_send_bsg_uic_cmd(struct ufs_hba *hba, struct uic_command *uic_cmd)
-+{
-+	int ret;
-+
-+	if (hba->quirks & UFSHCD_QUIRK_BROKEN_UIC_CMD)
-+		return 0;
-+
-+	ufshcd_hold(hba);
-+
-+	if (uic_cmd->argument1 == UIC_ARG_MIB(PA_PWRMODE) &&
-+	    uic_cmd->command == UIC_CMD_DME_SET) {
-+		ret = ufshcd_uic_pwr_ctrl(hba, uic_cmd);
-+		goto out;
-+	}
-+
-+	mutex_lock(&hba->uic_cmd_mutex);
-+	ufshcd_add_delay_before_dme_cmd(hba);
-+
-+	ret = __ufshcd_send_uic_cmd(hba, uic_cmd);
-+	if (!ret)
-+		ret = ufshcd_wait_for_uic_cmd(hba, uic_cmd);
-+
-+	mutex_unlock(&hba->uic_cmd_mutex);
-+
-+out:
-+	ufshcd_release(hba);
-+	return ret;
-+}
-+
- /**
-  * ufshcd_uic_change_pwr_mode - Perform the UIC power mode chage
-  *				using DME_SET primitives.
+         forward fastpath bypass
+ .----------------------------------------.
+/                                          \
+|                        IP - forwarding    |
+|                       /                \  v
+|                      /                  wan ...
+|                     /
+|                     |
+|                     |
+|                   brlan.1
+|                     |
+|    +-------------------------------+
+|    |           vlan 1              |
+|    |                               |
+|    |     brlan (vlan-filtering)    |
+|    +---------------+               |
+|    |  DSA-SWITCH   |               |
+|    |               |    vlan 1     |
+|    |               |      to       |
+|    |   vlan 1      |   untagged    |
+|    +---------------+---------------+
+.         /                   \
+ ------>lan0                 wlan1
+        .  ^                 ^
+        .  |                 |
+        .  \_________________/
+        .  bridge fastpath bypass
+        .
+        ^
+     vlan 1 tagged packets
+
+While testing direct transmit in the software forward-fastpath, it is
+useful to enslave the wan interface to another bridge, brwan. This will
+make sure both directions of the software forward-fastpath use direct
+transmit.
+
+To have the ability to handle xmit direct with outgoing encaps in the
+bridge fastpass bypass, we need to be able to handle them without going
+through vlan/pppoe devices. So I've applied, amended and squashed wenxu's
+patchset. This patch also makes it possible to egress from vlan-filtering
+brlan to lan0 with vlan tagged packets, if the bridge master port is doing
+the vlan tagging, instead of the vlan-device. Without this patch, this is
+not possible in the bridge-fastpath and also not in the forward-fastpath,
+as seen in the figure above.
+
+There are also some more fixes for filling in the forward path. These
+fixes also apply to for the forward-fastpath. They include handling
+DEV_PATH_MTK_WDMA in nft_dev_path_info(). There are now 2 patches for
+avoiding ingress_vlans bit set for bridged dsa user ports and foreign
+(dsa) ports.
+
+Another patch introduces DEV_PATH_BR_VLAN_KEEP_HW, needed for the
+bridge-fastpath only.
+
+Conntrack bridge only tracks untagged and 802.1q. To make the bridge
+fastpath experience more similar to the forward fastpath experience,
+I've added double vlan, pppoe and pppoe-in-q tagged packets to bridge
+conntrack and to bridge filter chain.
+
+I am sending RFC v2 as I previously only owned a dsa device. I now have
+obtained a switchdev supporting SWITCHDEV_OBJ_ID_PORT_VLAN, and found
+there was more to do to handle the ingress_vlans bit and corresponding
+vlan encap.
+
+Changes in v2:
+- Introduce DEV_PATH_BR_VLAN_KEEP_HW for use in the bridge-fastpath only.
+   It is needed for switchdevs supporting SWITCHDEV_OBJ_ID_PORT_VLAN.
+- Different approach for handling BR_VLFLAG_ADDED_BY_SWITCHDEV in
+   br_vlan_fill_forward_path_mode() for foreign devices. Introduce
+   SWITCHDEV_F_NO_FOREIGN, BR_VLFLAG_TAGGING_BY_SWITCHDEV and
+   br_switchdev_port_vlan_no_foreign_add(). The latter function can be
+   used to make sure the vlan was added to a switchdev native device.
+   When that fails, adding the vlan with br_switchdev_port_vlan_add()
+   means it was added to a switchdev foreign device.
+- Clear ingress_vlans bit and corresponding encap for dsa user ports.
+- Add check for ingress_vlans bit to nft_dev_fill_bridge_path().
+- Adapted cover letter description to make clear the patches apply
+   to software fastpath, making hardware-offloaded fastpath possible.
+- Fixed clang error for vlan_hdr * and struct ppp_hdr * by adding block.
+- Updated !CONFIG_BRIDGE_VLAN_FILTERING version of
+   br_vlan_fill_forward_path_pvid().
+- Removed erroneous check netif_is_bridge_master(ctx->dev) from
+   dev_fill_bridge_path().
+- Cosmetic changes.
+
+Eric Woudstra (14):
+  netfilter: nf_flow_table_offload: Add nf_flow_encap_push() for xmit
+    direct
+  netfilter: bridge: Add conntrack double vlan and pppoe
+  netfilter: nft_chain_filter: Add bridge double vlan and pppoe
+  bridge: br_vlan_fill_forward_path_pvid: Add port to port
+  bridge: br_fill_forward_path add port to port
+  net: core: dev: Add dev_fill_bridge_path()
+  netfilter :nf_flow_table_offload: Add nf_flow_rule_bridge()
+  netfilter: nf_flow_table_inet: Add nf_flowtable_type flowtable_bridge
+  netfilter: nft_flow_offload: Add NFPROTO_BRIDGE to validate
+  netfilter: nft_flow_offload: Add DEV_PATH_MTK_WDMA to
+    nft_dev_path_info()
+  netfilter: nft_flow_offload: No ingress_vlan forward info for dsa user
+    port
+  bridge: No DEV_PATH_BR_VLAN_UNTAG_HW for dsa foreign
+  bridge: Introduce DEV_PATH_BR_VLAN_KEEP_HW for bridge-fastpath
+  netfilter: nft_flow_offload: Add bridgeflow to nft_flow_offload_eval()
+
+ include/linux/netdevice.h                  |   3 +
+ include/net/netfilter/nf_flow_table.h      |   3 +
+ include/net/switchdev.h                    |   1 +
+ net/bridge/br_device.c                     |  23 ++-
+ net/bridge/br_private.h                    |   5 +
+ net/bridge/br_switchdev.c                  |  15 ++
+ net/bridge/br_vlan.c                       |  29 +++-
+ net/bridge/netfilter/nf_conntrack_bridge.c |  88 +++++++++--
+ net/core/dev.c                             |  66 ++++++--
+ net/netfilter/nf_flow_table_inet.c         |  13 ++
+ net/netfilter/nf_flow_table_ip.c           |  96 +++++++++++-
+ net/netfilter/nf_flow_table_offload.c      |  13 ++
+ net/netfilter/nft_chain_filter.c           |  20 ++-
+ net/netfilter/nft_flow_offload.c           | 166 +++++++++++++++++++--
+ net/switchdev/switchdev.c                  |   2 +-
+ 15 files changed, 490 insertions(+), 53 deletions(-)
+
 -- 
-2.34.1
+2.45.2
 
 
