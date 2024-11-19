@@ -4,91 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 927CED6C29F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 21:40:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3248D6C2B4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 22:10:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lkxeQUfNljLvLRiRZhalC+n4lyNit8qK2o0nRa/RK2k=; b=zS4mB+oi9anwwqGOLKbJHyhsDo
-	fi0SyE7xuU3unVTKavLUJQH4eDUcM8H/lpxo1N1r8gc6UsO+syFj5j+p+4d5b4VONBWp0hA7gsgdy
-	AdQrDZq8qc45Z7rVQCSL1rwGWkh2IAjEFqlOX9eJuP8qIWpSidQuUDKESEvLuDsEdUFOrG30IoDdu
-	tkNg9ac9dX9wyuFPL424PJWOfe0v1JtM917Sh3jfVBcFhDLE1kBO2xFfpFlE6qi3dKuG7Bl6tFKCR
-	ci3GxNvmSC4CelW1L5ePmxpqZjwniruOBAn2QsVRnBp82qtf8Ee3FcKCEW6ZYpxZ740hUuMx/8daR
-	MmqRxqng==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=guu0qtnO7AC41sSsrUKZUbeI4MLPFFd6TNCHnTLLH+M=; b=gChqMza19rGF+kF/Dr8lchISul
+	z8rMjA1DikOyEUX6wNtY3anD2exQV+AOPFCfqXOpzD+bVC79KtkU55KHjY50O8P13+SGgasQThS1O
+	PrztL+huDc5j5KTb93V+OU47yDB6eoQNsis6HtUw9t8nxPb3vsjQI6LxF6H2EDQc4+w8AFoJgjpT8
+	IcxmtErLH9+yWC8E2Qn5fdcmoKRBPvPxH3VSrXMtJAkSorfOh0cDTDp9Pinfa3jIfY3XoC0s24tzg
+	pGhVmKZaj4rMDQ7dG5nSWi0SS6cBqSp9vFVDT4y3f4pirJXB6+4jN/ePUJB4pbEjbV4iEMfRfVHFQ
+	eNiTthiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDVxs-0000000DpWv-2kg4;
-	Tue, 19 Nov 2024 21:40:52 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1tDWQ2-0000000DrwK-3El5;
+	Tue, 19 Nov 2024 22:09:58 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDVxq-0000000DpW5-1f4l
-	for linux-mediatek@lists.infradead.org;
-	Tue, 19 Nov 2024 21:40:51 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-3823f1ed492so116186f8f.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 19 Nov 2024 13:40:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1732052448; x=1732657248; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=lkxeQUfNljLvLRiRZhalC+n4lyNit8qK2o0nRa/RK2k=;
-        b=cLWkZPxdJRGJJ9m/iINzIfYMd8Y7fa05fWg2cuBOoj0b1T/SfTynhxDuryyrGL2R8i
-         EZTUA8nnFVXvQhDo18rzU4UCb+qm57XJD1QdycI0whxUQ4RG0e4CPTSg3Dcr78ojoWBU
-         HmJaLW7XJrDDKLC1PUGrKh9x2NTd1WsadARSDdw8lLGN+1Qj2MPNEaBAsWfKrOCWPq+8
-         dOnUEOClXyFgeOB4ZtBgVRUT3v6Lfdm8gHauZ2z2ClymnqlE9PGrpgq6HaV3daGKxIPO
-         qqIwPPZ/CAC3833GQh9uA9nF96DjLP9456Gcp6OeC796eusgDh5cBBV/cIA0a4KmBZHE
-         fQtA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732052448; x=1732657248;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=lkxeQUfNljLvLRiRZhalC+n4lyNit8qK2o0nRa/RK2k=;
-        b=w4Qd/wVH5YaXGvIUELuiXPVOeHP/Jq3fzLdE/4BTaJMtNkeo3nDJjqILEUD+goifVJ
-         cXAULANwoLywM5NJthFDhZKHs1CA1Sm7p9epgKaujS2DRtF0O0GngqhzMYK4FXUiP9wn
-         fqwkO1dP3DJ/n1nAUru55MzuL8APCO2UDzRU0uViWHHTYCPEwEVFSHH27PCY4oDGoKaV
-         DHiwe3+lWZtnrpDESZnkKoHe5FQGETfwS+vAniB2DAHsiKBTec5JNkrj6Fgr0L2NYIM2
-         ph6tmziPTvCDCvYoiELjQdsPNweCLccZkKDE4nwthz6Iw08o8P/fwJy8sy2lHAYm+Skt
-         CQLA==
-X-Forwarded-Encrypted: i=1; AJvYcCVvwU8Bj0rUjlIK8Tkw8algBZ8m2eLkkJjTAvvmq0peAXzCRgpsciChTVmSHkDpa//t+hwVfMO7NCSgOaWYtA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywzp/bhP5RMzJmKmUDogmty6Xc226nSwlnEdDrgUcdGHATXKVEZ
-	Z9kRFwgjHdK6SwxJ+WAYAEkvZe5D6Cg2j2niOaqSc7r4ZAlzXHr7Ug09QAExH1w=
-X-Google-Smtp-Source: AGHT+IG6bv5/VShXyjrdqEjy+T/UO+kLOX7JIB5cP3VCGPfmzISuivqKLJjNxAIIX4ocGdqh24oTtw==
-X-Received: by 2002:a5d:5f91:0:b0:37d:47eb:b586 with SMTP id ffacd0b85a97d-3824cb30e45mr4340383f8f.4.1732052447252;
-        Tue, 19 Nov 2024 13:40:47 -0800 (PST)
-Received: from [192.168.10.46] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-382549055f2sm366236f8f.16.2024.11.19.13.40.46
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 19 Nov 2024 13:40:46 -0800 (PST)
-Message-ID: <cfca677b-bc74-49bb-a031-6f52629edd2b@linaro.org>
-Date: Tue, 19 Nov 2024 22:40:45 +0100
+	id 1tDWP7-0000000Drqr-0HbG;
+	Tue, 19 Nov 2024 22:09:02 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 9773C5C58BE;
+	Tue, 19 Nov 2024 22:08:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EA888C4CECF;
+	Tue, 19 Nov 2024 22:08:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1732054140;
+	bh=j7oi2RpEsC+JLluTl0fzDl1uvevxNhnsim4ubAK8WLo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=tV62R8QJ6WWU75mdOAwk0fcyrp4DliyUCgFAyi2MZi0mE9S+7+jKgd6TEblvFBgZV
+	 NU2wNVp/rqjLRGW6roxNBhvdGsbif1B6lUc7+vsFm/hWFmS/5wiHMHeEzY/NElqVnW
+	 CfbEabHz5bJ/e4H7pEnXZ7Y0cG7b8SBhmBf/wYabr09ZQf9xIx5j7Ti2MVMKegCpez
+	 U/4srwFMWtsZJtNcH4iJ/1upgrYWqkRAGAAetb6VivmueMod4MNFsYbaSEVoOoWN5c
+	 qK6i236EULfpDXwfuPjUzcgntAmhRhpT4Vun1xba0CNqtEtylihAf6G/wbmfa7rkfN
+	 VwuZI13vly7eQ==
+Date: Tue, 19 Nov 2024 23:08:57 +0100
+From: Andi Shyti <andi.shyti@kernel.org>
+To: Zoie Lin =?utf-8?B?KOael+emueWmoSk=?= <Zoie.Lin@mediatek.com>
+Cc: "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+	Qii Wang =?utf-8?B?KOeOi+eQqik=?= <Qii.Wang@mediatek.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	Teddy Chen =?utf-8?B?KOmZs+S5vuWFgyk=?= <Teddy.Chen@mediatek.com>, "linux-i2c@vger.kernel.org" <linux-i2c@vger.kernel.org>, 
+	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: Re: [v2,1/1] i2c: mediatek: add runtime PM operations and bus
+ regulator control
+Message-ID: <yi4ir6znmqjxvrbcbwnioxkdqyhsv74iwlridwh3nn7wmaat56@nqbqaa5zjil3>
+References: <20241106125212.27362-1-zoie.lin@mediatek.com>
+ <20241106125212.27362-2-zoie.lin@mediatek.com>
+ <c7c5e802-3df8-4218-865f-81a207c517cd@collabora.com>
+ <d1744ec6c7dbd63b128fa0cada2622dead9cb95b.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v14] thermal/drivers/mediatek/auxadc_thermal: expose all
- thermal sensors
-To: Hsin-Te Yuan <yuanhsinte@chromium.org>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- James Lo <james.lo@mediatek.com>, Michael Kao <michael.kao@mediatek.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Ben Tseng <ben.tseng@mediatek.com>
-References: <20241025-auxadc_thermal-v14-1-96ab5b60c02e@chromium.org>
- <5dd2d2a3-6eff-45fb-8af8-593945235dd3@linaro.org>
- <CAHc4DNKSsrdSjqunhk+oyWw_+oKY9BgzPcqag5QrmLJqjVsE1Q@mail.gmail.com>
-Content-Language: en-US
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <CAHc4DNKSsrdSjqunhk+oyWw_+oKY9BgzPcqag5QrmLJqjVsE1Q@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <d1744ec6c7dbd63b128fa0cada2622dead9cb95b.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241119_134050_450292_B6F2273A 
-X-CRM114-Status: GOOD (  20.27  )
+X-CRM114-CacheID: sfid-20241119_140901_146513_34FA1671 
+X-CRM114-Status: GOOD (  18.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,68 +79,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 19/11/2024 08:38, Hsin-Te Yuan wrote:
-> On Fri, Nov 15, 2024 at 12:48 AM Daniel Lezcano
-> <daniel.lezcano@linaro.org> wrote:
->>
->>
->> Hi,
->>
->> On 25/10/2024 14:05, Hsin-Te Yuan wrote:
->>> From: James Lo <james.lo@mediatek.com>
->>>
->>> Previously, the driver only supported reading the temperature from all
->>> sensors and returning the maximum value. This update adds another
->>> get_temp ops to support reading the temperature from each sensor
->>> separately.
->>>
->>> Especially, some thermal zones registered by this patch are needed by
->>> MT8183 since those thermal zones are necessary for mtk-svs driver.
->>
->> The DT for the mt8183 describes the sensor id = 0 as the CPU. On this,
->> there is a cooling device with trip points.
->>
->> The driver registers the id=0 as an aggregator for the sensors which
->> overloads the CPU thermal zone above.
->>
->> Why do you need to aggregate all the sensors to retrieve the max value ?
->>
->> They are all contributing differently to the heat and they should be
->> tied with their proper cooling device.
->>
->> I don't think the thermal configuration is correct and I suggest to fix
->> this aggregator by removing it.
->>
->>
->>
->   As far as I know the thermal design of Mediatek's board is based on
-> the highest temperature of the whole board. Also, removing the
-> aggregator will break all the boards using this driver.
+Hi Zoie,
 
-AFAICT, it is not a thermal design but a thermal configuration.
+...
 
-What is the rational of using power numbers related to the CPU but 
-aggregate all temperatures as an input to the governor ?
+> > > @@ -1486,19 +1528,22 @@ static int mtk_i2c_probe(struct
+> > > platform_device *pdev)
+> > >       if (ret < 0) {
+> > >               dev_err(&pdev->dev,
+> > >                       "Request I2C IRQ %d fail\n", irq);
+> > > -             goto err_bulk_unprepare;
+> > > +             goto err_clk_bulk_unprepare;
+> > >       }
+> > > +     pm_runtime_set_autosuspend_delay(&pdev->dev, 1000);
+> > 
+> > You had comments from me and from Andi on this delay, and you
+> > completely ignored
+> > both of us.
+> > 
+> > We're still waiting for an answer to our question.
+> 
+> I am sorry for any confusion caused by my previous response.
+> The response to your question was included in the cover letter, which
+> might not have been very noticeable.
+>  
+> The delay before runtime_put_autosuspend() actually executes
+> mtk_i2c_runtime_suspend() depends on the frequency of I2C usage by the
+> devices attached to this bus. A 1000ms delay is a balanced value for
+> latency and power metrics based on the MTK platform.
 
-And for example, the mt8173 has 4 banks and 4 sensors per banks, so 16 
-sensors. And they are all grouped together under the thermal zone 
-"cpu-thermal" with the cpu cooling device.
+Still you need to make it clear in the code. Please add a good
+comment to describe why this delay is needed and where this 1000
+has been found.
 
-So if the GPU is getting hot, we cool down the CPU ?
+This is a constant that is not written in the datasheet, please
+report how you have achieved this result. I want to avoid
+arbitrary numbers inherited from the development phase.
 
-
-> By the way, I heard that baylibre is working on multi-sensor
-> aggregation support, which can be the alternative solution for the
-> aggregator in this driver, but that should be another story and is
-> unrelated to this patch.
-
-Right.
-
-
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+Thanks,
+Andi
 
