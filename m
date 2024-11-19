@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A475D60D1B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 10:27:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6601AD60D1B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Nov 2024 10:28:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D6bOSx9F0JYNp5qomZcy7h/raSRvVGKNY4mEoIJa6U4=; b=4yHA5CkvffEgK5L9DfbnxTz0fN
-	uPZk+ploekGh1QK6jBpX4LsZSUqFbAiBqAebsXRJWCgG8cPbQHD4FW8sX/p4xQoECbobR1maoESyq
-	BZGTU/thUEO9zD8f3RHUYUTYKRfT6GacGHNQd0g/jaqyhxglX7hPUcfFkmnjwV+tmjzG659SAspTc
-	BVyYHBDCV8/ihyhvVBhp9A6BdHJiTeke6x9QSHtjzFl463Sj1bL5LNBQjxEMPukyk1Ub0I10Th7+R
-	YGVVfH8N3ejURdwepmFJobIduiRgnJJch76IJLx3itZv68yg70UHlNjpePfltBKeiKkcu8SCSc0bB
-	0tq4eVeQ==;
+	bh=3u3z/3aqnlj2QKTkwMuuz0nzsflPHuugQE1+9CzpwS8=; b=pgL6FHuYXSeJkZrBGblBOqUuiF
+	wvrkycC0qOKfBQD9sIDWXQFOzbP9YDQ4rKz5aMEleucSP1HEKPhKvh3w7D7oB7EwUHfHz/bNuxdi1
+	hrHuWiVsj1RRn0pSRV/DJq6p9JyNFK5QqB44kvgHx0E9DqQNCwMdRw1+Fk1eHV7AthY0/ZnsXWaqK
+	piNZjVEjAXBXcNPoBH4x52lqJ+d3TICPhmon6AISzktZJBzN07h61G+pVve2gpOVEfVPEo6cImj80
+	+Ns5prgGWsQ/+kjiL0cPVwdC3EWC5ZcSd0x6FGOD35eqY67KQRRhFxr8VPdf7BsvMO0V4/sz5xQDm
+	lZb8vrnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDLSZ-0000000C3I0-2a4L;
-	Tue, 19 Nov 2024 10:27:51 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1tDLTT-0000000C3Uv-29UV;
+	Tue, 19 Nov 2024 10:28:47 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDLKV-0000000C12e-127B;
-	Tue, 19 Nov 2024 10:19:32 +0000
-Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-5ceca0ec4e7so784723a12.0;
-        Tue, 19 Nov 2024 02:19:30 -0800 (PST)
+	id 1tDLKW-0000000C133-3474;
+	Tue, 19 Nov 2024 10:19:33 +0000
+Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-539fb49c64aso4245511e87.0;
+        Tue, 19 Nov 2024 02:19:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1732011569; x=1732616369; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1732011570; x=1732616370; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=D6bOSx9F0JYNp5qomZcy7h/raSRvVGKNY4mEoIJa6U4=;
-        b=OWTHLu4YCwa+ShepimCOa8eduFyiHYGbTw7zVmhvHLrT62bJUNzbUXEBgkHvXCXzqy
-         8K7Ld/h1BizV2Ay+hHsEWsD2o17fCTUwTCm6/KmIlSg3xb7DKXxxkKWMRi7J7VofJB+l
-         7aVB2hCUpesCy/5RDgGIZzcOBWA04tJfnsV7H/4udWl+MHhL2IdL0zq08xrXwAtcWdDP
-         N9w/uoMeUSpLoYcURKqGLaxZJZmVN87J0xqCDfMRJ4yEwVOnBidT82Dy6ED7iKfUzR2W
-         rVHCQVWXyXQ0GvjLaGsvBUYz18XoUoM8D7scDxd0FXQSbPzzf1t6kh5IgCB8mp93Hj3E
-         oK4A==
+        bh=3u3z/3aqnlj2QKTkwMuuz0nzsflPHuugQE1+9CzpwS8=;
+        b=I71wXhw0BiSfYNzWGGTNo7H1Jzug0a3hZrsryw0lZN+Cg7Ytx7L8Ni8tfrUMdHBvHh
+         effNKDprx4A0PU+219AchW/ThZ0uuEjA+e/EOuuuHrsh6e7t3wfVQNVeG0vCc6VDAmjv
+         k8GINAubwnd4sJt47HIaOcdMFKPEKBjw8W+FvY8e8DDeWCuUYQfRh2j+GP5HW/eZOO00
+         Q2+Rev1pWFUMxM5/pXPgmmGbb7OM3yIgYTqC6JX4GpoCPaYUN6YAjHVbD9VkVSCv8+vN
+         ioiRS3IlVB03YZiZKfLYoAICLuCNplyZ92HrcuuDj3uTNE+S4YU50tjrAuPwqINtNPSQ
+         j/gA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732011569; x=1732616369;
+        d=1e100.net; s=20230601; t=1732011570; x=1732616370;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=D6bOSx9F0JYNp5qomZcy7h/raSRvVGKNY4mEoIJa6U4=;
-        b=uCNIFjvuJMqoEJCy4apLIpruxZ898B7LswLwd1s3E5WUNy75qjHZqmKL+6vvXcGypI
-         ioUNyUNGkAp3nYrbg/+szmNh9QN0TGGmp59lQ9poddlku/IcxS2wityplm4JEEpFqXKw
-         dzvrkaNZpIgD8pnF05lSQRdwNLqe/XTLgC7v4T1aK63Q+WdZe8gqxQxjlt78dZQk4XPK
-         CHylbNgebHaNh8wHjHzbgLOgJIFw/YtM8ZQhj2pRGYziMZZgaZiGzMJAG1VluOVlNLAW
-         Z4A1mjTPuEcvO+RnAR1xZmZfWjRhdL6694JE9Jp6c8pBvso5i1HB/Nrf/eqREuwzeSwE
-         MQQQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU88rozoJ6mwgjK9wfkoqPSBZTkBdmM9PDVhvx5bll3d64wnUtSw6vStJS/EDXU/0LUiL+dA5UckAg+3NxiB0Y=@lists.infradead.org, AJvYcCWavmLiFmaGHQ73eNkvpN+PyEscO1P6sHSFUjKq4gDLz+gVbIK83/Pa2ka4tC2ln2PDTj1WUSYzh123v+Vy0vf0@lists.infradead.org
-X-Gm-Message-State: AOJu0YwYZLRTEoG7lHf/xOxSJ1Mn6R9/DnqzYkBOWSvPVbhJ5o/C7JMR
-	QJ6OV/Lzr0ptXbAduwDQBOn9OTLwwchV5xCd/7Zpjv6O+jhkXtKJ
-X-Google-Smtp-Source: AGHT+IG4oWs8UOYUh0SfCm6s9PZ7edWvV+3g/BCD/rQGn8EB4n9k2Znl8dCuVvZlTq+Io1pQtKbeBw==
-X-Received: by 2002:a17:907:2682:b0:a99:fa01:2b72 with SMTP id a640c23a62f3a-aa483489f31mr1130230666b.33.1732011569157;
-        Tue, 19 Nov 2024 02:19:29 -0800 (PST)
+        bh=3u3z/3aqnlj2QKTkwMuuz0nzsflPHuugQE1+9CzpwS8=;
+        b=TMWT1juVAXmi6upwjUwKhqq+idsxRkwe/9R1L4zyd21r4KE+qka2yZSL7g5unhaKQm
+         qYSSbSEJnC+1MXndlB75fWRq8S2Coe4wStrz2H8wKp+cyKdjXQ250Z2Fym4pV7ghwyrO
+         pjha/xWNwsW0T27yP9G3a5sxxPXC2Urx0OI0PsxX8o9VOEjLa2bYBuQdufn8EPVyGflO
+         rkoAR2jtaBcW17kz0+UdYGScKiebuqegltIFVKXcha6B/atgkwWwCVGAT2HJqFtNzA41
+         o7TXIxvyXl9FnXLsWWUr+wMzh/Dllc5rXIJE1h1Kmp4LHJNnh55Db+Vo6LYwh6H82OLJ
+         YkeQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUFugoRDvG5hDh8YDcJ8+lcLi6Vt16CuEq2oBhVHZsvqdk0bbCKsQVS4ZhydtKMhitD/P/L4czjw1uT1XwBJvQ=@lists.infradead.org, AJvYcCXyJHHRkW5LN7iTFCRNyEfJSOkU/KP4BUs2VQOrrjwjbefbpsLzvjWEpQ94n7GtevSDy0sU1XidyfTq5fEX2B9L@lists.infradead.org
+X-Gm-Message-State: AOJu0YwE7gLV/Y+yJSNu5zKchblDqfCH+UuR86bJefwrTNyf8461ptqM
+	HkCt7R+CjfhLxDBlPACGK5UTBWBsZ1ZxVHd0KR3N9dEb8D0VJvIn
+X-Google-Smtp-Source: AGHT+IGkiRcx+4ntGYaz++MVtIBeL1R2ddFZ1Ewy1ZLQRMvnRephj/zyQ1UBYhWvJx/x9a4afZDUfw==
+X-Received: by 2002:a05:6512:3044:b0:533:c9d:a01f with SMTP id 2adb3069b0e04-53dab29527fmr10641351e87.4.1732011570368;
+        Tue, 19 Nov 2024 02:19:30 -0800 (PST)
 Received: from corebook.localdomain (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa20e081574sm634875566b.179.2024.11.19.02.19.28
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa20e081574sm634875566b.179.2024.11.19.02.19.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Nov 2024 02:19:28 -0800 (PST)
+        Tue, 19 Nov 2024 02:19:29 -0800 (PST)
 From: Eric Woudstra <ericwouds@gmail.com>
 To: "David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
@@ -93,17 +93,17 @@ Cc: netdev@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Eric Woudstra <ericwouds@gmail.com>
-Subject: [PATCH RFC v2 net-next 08/14] netfilter: nf_flow_table_inet: Add nf_flowtable_type flowtable_bridge
-Date: Tue, 19 Nov 2024 11:19:00 +0100
-Message-ID: <20241119101906.862680-9-ericwouds@gmail.com>
+Subject: [PATCH RFC v2 net-next 09/14] netfilter: nft_flow_offload: Add NFPROTO_BRIDGE to validate
+Date: Tue, 19 Nov 2024 11:19:01 +0100
+Message-ID: <20241119101906.862680-10-ericwouds@gmail.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20241119101906.862680-1-ericwouds@gmail.com>
 References: <20241119101906.862680-1-ericwouds@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241119_021931_281026_CEB1F9D2 
-X-CRM114-Status: GOOD (  12.65  )
+X-CRM114-CacheID: sfid-20241119_021932_770412_BA7A46CF 
+X-CRM114-Status: GOOD (  12.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,57 +118,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This will allow a flowtable to be added to the nft bridge family.
+Need to add NFPROTO_BRIDGE to nft_flow_offload_validate() to support
+the bridge-fastpath.
 
 Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
 ---
- net/netfilter/nf_flow_table_inet.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ net/netfilter/nft_flow_offload.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/net/netfilter/nf_flow_table_inet.c b/net/netfilter/nf_flow_table_inet.c
-index b0f199171932..80b238196f29 100644
---- a/net/netfilter/nf_flow_table_inet.c
-+++ b/net/netfilter/nf_flow_table_inet.c
-@@ -65,6 +65,16 @@ static int nf_flow_rule_route_inet(struct net *net,
- 	return err;
- }
+diff --git a/net/netfilter/nft_flow_offload.c b/net/netfilter/nft_flow_offload.c
+index cdf1771906b8..cce4c5980ed5 100644
+--- a/net/netfilter/nft_flow_offload.c
++++ b/net/netfilter/nft_flow_offload.c
+@@ -421,7 +421,8 @@ static int nft_flow_offload_validate(const struct nft_ctx *ctx,
  
-+static struct nf_flowtable_type flowtable_bridge = {
-+	.family		= NFPROTO_BRIDGE,
-+	.init		= nf_flow_table_init,
-+	.setup		= nf_flow_table_offload_setup,
-+	.action		= nf_flow_rule_bridge,
-+	.free		= nf_flow_table_free,
-+	.hook		= nf_flow_offload_inet_hook,
-+	.owner		= THIS_MODULE,
-+};
-+
- static struct nf_flowtable_type flowtable_inet = {
- 	.family		= NFPROTO_INET,
- 	.init		= nf_flow_table_init,
-@@ -97,6 +107,7 @@ static struct nf_flowtable_type flowtable_ipv6 = {
+ 	if (ctx->family != NFPROTO_IPV4 &&
+ 	    ctx->family != NFPROTO_IPV6 &&
+-	    ctx->family != NFPROTO_INET)
++	    ctx->family != NFPROTO_INET &&
++	    ctx->family != NFPROTO_BRIDGE)
+ 		return -EOPNOTSUPP;
  
- static int __init nf_flow_inet_module_init(void)
- {
-+	nft_register_flowtable_type(&flowtable_bridge);
- 	nft_register_flowtable_type(&flowtable_ipv4);
- 	nft_register_flowtable_type(&flowtable_ipv6);
- 	nft_register_flowtable_type(&flowtable_inet);
-@@ -109,6 +120,7 @@ static void __exit nf_flow_inet_module_exit(void)
- 	nft_unregister_flowtable_type(&flowtable_inet);
- 	nft_unregister_flowtable_type(&flowtable_ipv6);
- 	nft_unregister_flowtable_type(&flowtable_ipv4);
-+	nft_unregister_flowtable_type(&flowtable_bridge);
- }
- 
- module_init(nf_flow_inet_module_init);
-@@ -118,5 +130,6 @@ MODULE_LICENSE("GPL");
- MODULE_AUTHOR("Pablo Neira Ayuso <pablo@netfilter.org>");
- MODULE_ALIAS_NF_FLOWTABLE(AF_INET);
- MODULE_ALIAS_NF_FLOWTABLE(AF_INET6);
-+MODULE_ALIAS_NF_FLOWTABLE(AF_BRIDGE);
- MODULE_ALIAS_NF_FLOWTABLE(1); /* NFPROTO_INET */
- MODULE_DESCRIPTION("Netfilter flow table mixed IPv4/IPv6 module");
+ 	return nft_chain_validate_hooks(ctx->chain, hook_mask);
 -- 
 2.45.2
 
