@@ -4,75 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 003B6D6C2BF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Nov 2024 10:14:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D039ED63931
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Nov 2024 11:50:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Rund3eXE33gunWroliBrDttepEeQJ9PST86ln98CDmg=; b=Id+P8+b7hQk3Z+h8bpqWoQYapO
-	NkkJUSdvN6u9bPuuX+y5n8xSXlwjq0szTo+G9q3EKFcBENEOIhzANgL4vV8JuJOSDfCWfbSpuDEWd
-	7D62v4CaKnn31weP6q85slMcr2lh/bpygM7oxOiDgVfBBzpySadRmvlRAYkufikHAWLkDd+wmj1jt
-	QGrQ7ptsr8qvLoo1qNlIWxpeHyfPRmQic5kGt+NIikGDp0S16gVyuR/HirGHxGBKrXAW6oH/pdo0k
-	W1IOQX47L7UO9R7x0UuBdOl2C0YU1yLcL5YUGqTzDPkfAIDyvaT60pAOv4g19kJ2TNjb9CZcKs2f2
-	3WGtxiTg==;
+	bh=nA4pfz6CcEM0WUOP2bKwDBYOVU5151cbLFo1bsNyX1g=; b=U0ijez2+/j1xz5baXMTVbeBUfB
+	YriEtt0y1j09jUET+hW+xaaLqkpd3eSIF+/NjwYEynmXtBSv6feAxX7vF+6y5Oc947DxAAGYhucZG
+	QmNT1+ieRtUlvF5kqB9fhx7Bfl825W5REDqFKNeVmP5oyLx1SwWQnGMWA6//vbHfSjvfvb9Evgr+a
+	8i72+nENuLZ/0O/iNLuxAlUzeLcsLL5jlKX8tVSAZwDD+suTwhcGZVD2h81dDItCLzClgltadGDMn
+	Ps4PxJ1NNLS7CtVLFSug9cDhTnKz+t+5flaDB7+Yi2QyWvi3WIBBBT1N/N81h3g1FaIybtGgzyBrV
+	vnIcwazg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDhjb-0000000F24G-0ACh;
-	Wed, 20 Nov 2024 10:14:55 +0000
-Received: from relay3-d.mail.gandi.net ([2001:4b98:dc4:8::223])
+	id 1tDjEX-0000000FELG-3SjE;
+	Wed, 20 Nov 2024 11:50:57 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tDhic-0000000F1rn-3wKr;
-	Wed, 20 Nov 2024 10:13:56 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id E611E6000F;
-	Wed, 20 Nov 2024 10:13:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1732097632;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Rund3eXE33gunWroliBrDttepEeQJ9PST86ln98CDmg=;
-	b=DsZxB6BaaT/0Ww5LZyO6h+V9XleVnpsXjDfY5zxvRIDAwQW65PwtYmnLLAljfjYyKGqlgp
-	bDLfpZ0E5Izwtgcvl3CS26oT6kV64zOBR2tL8huPCdjRhieUxdgmx0U64xscJhvY/qhmHT
-	6DWzyH79UKH5SDm8+Gb24BHpLaImXVuG9GI39rx4uFGHD+GwvM2scmQf1yVUbVttX8ociB
-	+YxLVHELGy/vnzGmEfR7uxMvGxsGHrs8Qqs7yoJO7GnNhOffwe3+kocUgQF8b2CI5HD0si
-	V8tyweBYu8Aty8g6hVSki1wddilYdWjwsg9QU3+m+G2Xz3OxrtsktTnlz6frOw==
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: SkyLake Huang (=?utf-8?B?6buD5ZWf5r6k?=) <SkyLake.Huang@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-  "linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>,
-  "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>,  "acelan.kao@canonical.com"
- <acelan.kao@canonical.com>,  "chengminglin@mxic.com.tw"
- <chengminglin@mxic.com.tw>,  "mika.westerberg@linux.intel.com"
- <mika.westerberg@linux.intel.com>,  "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,  Steven Liu
- <steven.liu@mediatek.com>,  "matthias.bgg@gmail.com"
- <matthias.bgg@gmail.com>,  "daniel@makrotopia.org"
- <daniel@makrotopia.org>,  "vigneshr@ti.com" <vigneshr@ti.com>,
-  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-  "richard@nod.at" <richard@nod.at>
-Subject: Re: [RFC PATCH nand/next 0/4] mtd: nand: spi: Add CASN page support
-In-Reply-To: <9880b3b2f71afd1b020c393fd5d4c0c5673df187.camel@mediatek.com>
-	("SkyLake Huang =?utf-8?B?KOm7g+WVn+a+pCkiJ3M=?= message of "Wed, 20 Nov
- 2024 07:24:28
-	+0000")
-References: <20241020132722.20565-1-SkyLake.Huang@mediatek.com>
-	<87jzd0zuc0.fsf@bootlin.com>
-	<9880b3b2f71afd1b020c393fd5d4c0c5673df187.camel@mediatek.com>
-User-Agent: mu4e 1.12.7; emacs 29.4
-Date: Wed, 20 Nov 2024 11:13:48 +0100
-Message-ID: <87ldxew6ub.fsf@bootlin.com>
+	id 1tDjDa-0000000FEBE-2Zpm;
+	Wed, 20 Nov 2024 11:50:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1732103396;
+	bh=JbVhUtQoKVg89Tsfa9Ry4aZkEgusELoLUSeDUejcENk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=c0XuMoN3Cyu1rTyR06g651e9hHrLWtE/+NH614uMOD1VnfLYtZ8isi8gx5Bm0LJZl
+	 mpIbVBSICMNcvsiRHD7Tk0ytPXyJH3pSzPYq3avtY0Y4W3WbEOxDpBq/kt6lBCFa0/
+	 erAjZS3md7iC2ktoMzZZMiDc7JYgNyZGSzi5DjIAahrvpm78ob6fI6bZwcXYdiTLjI
+	 rykXIYMncptLr5bt8VR+d4R0z/3df3CdCuLg2q2VLjOchCd9jMA2dV1WjjzRU8/b6m
+	 yXMex9UmupDRKz6yvLM6cCmPHxI8xd87NRCwsEognwNNeXUDtZGn8DbGu09M4qRd1k
+	 Kvf1bsvLOcQ8w==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EDFF017E3631;
+	Wed, 20 Nov 2024 12:49:55 +0100 (CET)
+Message-ID: <e32620d5-48f9-4290-9a5e-2d3e3eed0dfa@collabora.com>
+Date: Wed, 20 Nov 2024 12:49:55 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-GND-Sasl: miquel.raynal@bootlin.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/2] memory: mtk-smi: mt8188: Add SMI clamp function
+To: Friday Yang <friday.yang@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20241120063701.8194-1-friday.yang@mediatek.com>
+ <20241120063701.8194-3-friday.yang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20241120063701.8194-3-friday.yang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241120_021355_267836_A9141724 
-X-CRM114-Status: GOOD (  28.53  )
+X-CRM114-CacheID: sfid-20241120_034959_006696_6367ABDF 
+X-CRM114-Status: GOOD (  36.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,145 +79,407 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20/11/2024 at 07:24:28 GMT, SkyLake Huang (=E9=BB=83=E5=95=9F=E6=BE=A4) =
-<SkyLake.Huang@mediatek.com> wrote:
+Il 20/11/24 07:36, Friday Yang ha scritto:
+> In order to avoid handling glitch signal when MTCMOS on/off, SMI need
+> clamp and reset operation. Parse power reset settings for LARBs which
+> need to reset. Register genpd callback for SMI LARBs and apply reset
+> operations in the callback.
+> 
+> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
+> ---
+>   drivers/memory/mtk-smi.c | 175 ++++++++++++++++++++++++++++++++++++++-
+>   1 file changed, 171 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> index 2bc034dff691..c7119f655350 100644
+> --- a/drivers/memory/mtk-smi.c
+> +++ b/drivers/memory/mtk-smi.c
+> @@ -10,15 +10,21 @@
+>   #include <linux/err.h>
+>   #include <linux/io.h>
+>   #include <linux/iopoll.h>
+> +#include <linux/mfd/syscon.h>
+>   #include <linux/module.h>
+>   #include <linux/of.h>
+>   #include <linux/of_platform.h>
+>   #include <linux/platform_device.h>
+> +#include <linux/pm_domain.h>
+>   #include <linux/pm_runtime.h>
+> +#include <linux/regmap.h>
+> +#include <linux/reset.h>
+> +#include <linux/reset-controller.h>
+>   #include <linux/soc/mediatek/mtk_sip_svc.h>
+>   #include <soc/mediatek/smi.h>
+>   #include <dt-bindings/memory/mt2701-larb-port.h>
+>   #include <dt-bindings/memory/mtk-memory-port.h>
+> +#include <dt-bindings/reset/mt8188-resets.h>
+>   
+>   /* SMI COMMON */
+>   #define SMI_L1LEN			0x100
+> @@ -36,6 +42,13 @@
+>   #define SMI_DCM				0x300
+>   #define SMI_DUMMY			0x444
+>   
+> +#define SMI_COMMON_CLAMP_EN		0x3c0
+> +#define SMI_COMMON_CLAMP_EN_SET		0x3c4
+> +#define SMI_COMMON_CLAMP_EN_CLR		0x3c8
+> +#define SMI_COMMON_CLAMP_MASK(inport)	BIT(inport)
+> +
+> +#define SMI_SUB_COMM_INPORT_NR		(8)
+> +
+>   /* SMI LARB */
+>   #define SMI_LARB_SLP_CON                0xc
+>   #define SLP_PROT_EN                     BIT(0)
+> @@ -134,6 +147,7 @@ struct mtk_smi_larb_gen {
+>   	unsigned int			larb_direct_to_common_mask;
+>   	unsigned int			flags_general;
+>   	const u8			(*ostd)[SMI_LARB_PORT_NR_MAX];
+> +	const u8			*clamp_port;
+>   };
+>   
+>   struct mtk_smi {
+> @@ -150,6 +164,7 @@ struct mtk_smi {
+>   };
+>   
+>   struct mtk_smi_larb { /* larb: local arbiter */
+> +	struct device			*dev;
+>   	struct mtk_smi			smi;
+>   	void __iomem			*base;
+>   	struct device			*smi_common_dev; /* common or sub-common dev */
+> @@ -157,6 +172,10 @@ struct mtk_smi_larb { /* larb: local arbiter */
+>   	int				larbid;
+>   	u32				*mmu;
+>   	unsigned char			*bank;
+> +	struct regmap			*sub_comm_syscon;
+> +	u8				sub_comm_inport;
+> +	struct notifier_block		nb;
+> +	struct reset_control		*rst_con;
+>   };
+>   
+>   static int
+> @@ -377,6 +396,19 @@ static const u8 mtk_smi_larb_mt8195_ostd[][SMI_LARB_PORT_NR_MAX] = {
+>   	[28] = {0x1a, 0x0e, 0x0a, 0x0a, 0x0c, 0x0e, 0x10,},
+>   };
+>   
+> +static const u8 mtk_smi_larb_clamp_port_mt8188[] = {
 
-> On Mon, 2024-11-18 at 11:53 +0100, Miquel Raynal wrote:
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>=20
->>=20
->> On 20/10/2024 at 21:27:18 +08, Sky Huang <SkyLake.Huang@mediatek.com>
->> wrote:
->>=20
->> > From: "Sky Huang" <skylake.huang@mediatek.com>
->> >=20
->> > Hi, this is Qi-Ze Huang(Sky Huang) from MediaTek. On our router
->> > platforms
->> > chips, we have to quality lots of SPI-NAND devices and are eager
->> > for
->> > a standard so that we don't need to maintain trivial flash ID table
->> > anymore. I also noticed a talk in 2019 Embedded Linux Conference,
->> > Memory Technology Devices: what's new, which mentioned "ONFI for
->> > SPI-NANDs? Maybe, maybe not".
->> >=20
->> > So earlier this year, I proposed a bold idea, CASN page (Common
->> > Attributes
->> > for SPI-NAND). I worked together with top 3 SPI-NAND market share
->> > flash
->> > vendors and other vendors to integrate CASN page on their SPI-NAND
->> > devices
->> > including but not limited to:
->> > [ESMT]
->> > F50L1G41LB
->> > F50L2G41KA
->> >=20
->> > [Etron]
->> > EM73C044VCF-H
->> > EM73D044VCO-H
->> > EM73E044VCE-H
->> > EM73F044VCA-H
->> >=20
->> > [GigaDevice]
->> > GD5F1GM7UE
->> > GD5F1GQ5UEYIG
->> > GD5F2GM7UE
->> > GD5F2GQ5UEYIG
->> > GD5F4GM8UE
->> > GD5F4GQ6UEYIG
->> >=20
->> > [Macronix (MXIC)]
->> > MX35LF1GE4ABZ4IG
->> >=20
->> > [Winbond]
->> > W25N01GV
->> > W25N01KV
->> > W25N02KV
->> > W25N04KV
->> >=20
->> > A document of CASN is hosted on github(
->> > https://urldefense.com/v3/__https://github.com/mtk-openwrt/__;!!CTRNKA=
-9wMg0ARbw!j_TES7dJ_An-9wtyQqWgGBE9ovPnUA-tDNlZ-pGpUdYv4gphzW4v54Fal8i_nLwSm=
-PAzK9ApgSBG1XQ_mREdTS0ZwrBWRA$
->> > doc/blob/main/CASN%20Page%20Introduction.pdf) So I'll try to keep
->> > it
->> > simple here.
->> >=20
->> > With CASN page, we don't need to maintain SPI-NAND flash ID table
->> > anymore.
->> > Currently, it's integrated in 3.3V SPI-NANDs of small density and
->> > it's not
->> > JEDEC standard yet. But it should be able to handle 1.8V and can be
->> > easily
->> > integrated by flash vendors.
->> >=20
->> > I believe this idea and implementation have room for improvement.
->> > Hope to
->> > hear you open source community's comments soon.
->>=20
->> I think this is a bright initiative. I'd welcome some standardisation
->> on
->> the discovery indeed.
->>=20
->> But to be really useful, I believe this table must be really
->> complete,
->> otherwise ID's will remain. For instance SDR/DDR modes are not
->> entirely
->> defined as we already have mixed modes. There is also no information
->> about what maximum frequencies can be used with each operation.=20
->
-> Maximum frequencies are limited by SPI controller's max freq now, I
-> guess?
+You can just set these to BIT(x) directly, like:
 
-No, this is just the PCB/controller limitation. But there are chips with
-frequency limitations depending on the type of command (see for instance
-Winbond AC timings tables for DDR capable devices).
+	[MT8188_SMI_RST_LARB10] = BIT(0),
 
->> As
->> another example, there is no read retry information.
-> What will retry information look like?
+so that you can check if there's actually a supported/valid clamp port in function
+mtk_smi_larb_parse_clamp_info() - check below for comments in that function.
 
-Number of retry modes, how to enable retry mode (which is maybe
-standardized per manufacturer, in this case we can just get the right
-hook from the manufacturer information, but otherwise if there are
-differences inside production lines from a single manufacturer, we'll
-still need either a table or some extension of CASN.
+Note that you are declaring SMI_SUB_COMM_INPORT_NR = 8 and this means that there
+are a maximum of 8 ports, with each port having its own BIT, starting from BIT 0
+and ending at BIT 7 (so [7:0]).
 
->> Nor anything about
->> the fact that the on-die ECC engine might not be disabled.
-> As far as I know, only SkyHigh's SPI-NAND's ECC engine can't be
-> disabled since its on-die ECC engine contains randomizer.
+This means that we have a maximum of 8 bits here, so even if you assign BIT(x) it
+all still fits in a u8! :-)
 
-Randomizer and ECC engine are two different things, there are many raw
-NAND controllers with a programmable ECC engine *and* randomizer. They
-just choose to hide the controls.
+> +	[MT8188_SMI_RST_LARB10]		= 1,
+> +	[MT8188_SMI_RST_LARB11A]	= 2,
+> +	[MT8188_SMI_RST_LARB11C]	= 3,
+> +	[MT8188_SMI_RST_LARB12]		= 0,
+> +	[MT8188_SMI_RST_LARB11B]	= 2,
+> +	[MT8188_SMI_RST_LARB15]		= 1,
+> +	[MT8188_SMI_RST_LARB16B]	= 2,
+> +	[MT8188_SMI_RST_LARB17B]	= 3,
+> +	[MT8188_SMI_RST_LARB16A]	= 2,
+> +	[MT8188_SMI_RST_LARB17A]	= 3,
+> +};
+> +
+>   static const struct mtk_smi_larb_gen mtk_smi_larb_mt2701 = {
+>   	.port_in_larb = {
+>   		LARB0_PORT_OFFSET, LARB1_PORT_OFFSET,
+> @@ -423,6 +455,7 @@ static const struct mtk_smi_larb_gen mtk_smi_larb_mt8188 = {
+>   	.flags_general	            = MTK_SMI_FLAG_THRT_UPDATE | MTK_SMI_FLAG_SW_FLAG |
+>   				      MTK_SMI_FLAG_SLEEP_CTL | MTK_SMI_FLAG_CFG_PORT_SEC_CTL,
+>   	.ostd		            = mtk_smi_larb_mt8188_ostd,
+> +	.clamp_port                 = mtk_smi_larb_clamp_port_mt8188,
+>   };
+>   
+>   static const struct mtk_smi_larb_gen mtk_smi_larb_mt8192 = {
+> @@ -472,6 +505,60 @@ static void mtk_smi_larb_sleep_ctrl_disable(struct mtk_smi_larb *larb)
+>   	writel_relaxed(0, larb->base + SMI_LARB_SLP_CON);
+>   }
+>   
+> +static int mtk_smi_larb_clamp_protect_enable(struct device *dev)
+> +{
+> +	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
+> +	int ret;
+> +
+> +	/* sub_comm_syscon could be NULL if larb directly linked to SMI common */
+> +	if (!larb->sub_comm_syscon)
+> +		return -EINVAL;
+> +
+> +	ret = regmap_write(larb->sub_comm_syscon, SMI_COMMON_CLAMP_EN_SET,
+> +			   SMI_COMMON_CLAMP_MASK(larb->sub_comm_inport));
+> +	if (ret)
+> +		dev_err(dev, "Unable to enable clamp, inport %d, ret %d\n",
+> +			larb->sub_comm_inport, ret);
+> +
+> +	return ret;
+> +}
+> +
+> +static int mtk_smi_larb_clamp_protect_disble(struct device *dev)
 
-Today it is SkyHigh. What about tomorrow?
+typo: mtk_smi_larb_clamp_protect_disable
 
-> There are some reserved fields. We can handle above requirements in
-> CASN V1.2 or V2. But may I ask what's the purpose of involving above
-> information in CASN? Are there any practical application scenarios?
+> +{
+> +	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
+> +	int ret;
+> +
+> +	/* sub_comm_syscon could be NULL if larb directly linked to SMI common */
+> +	if (!larb->sub_comm_syscon)
+> +		return -EINVAL;
+> +
+> +	ret = regmap_write(larb->sub_comm_syscon, SMI_COMMON_CLAMP_EN_CLR,
+> +			   SMI_COMMON_CLAMP_MASK(larb->sub_comm_inport));
+> +	if (ret)
+> +		dev_err(dev, "Unable to disable clamp, inport %d, ret %d\n",
+> +			larb->sub_comm_inport, ret);
+> +
+> +	return ret;
+> +}
 
-You claim you want to replace the ID tables. These tables are filled
-with all the relevant data to make the chips supported in Linux. If one
-of these fields is missing from CASN, it means we need to keep the
-tables. So it kind of defeats the CASN purpose. Yes we may have dynamic
-vendor hooks to adapt these parameters "on the fly", but we still need
-internal tables for that.
+...but anyway, I would rather do it like that:
 
->> Overall I think this is an interesting initiative but I would like it
->> to
->> be more advanced.
-> Agree.
->
->> Is there a plan on getting this standardized through
->> eg. a JEDEC spec?
->>=20
->> Thanks,
->> Miqu=C3=A8l
-> Yes. We're working on it. But it will take some time. Your opinions
-> mean a lot to CASN page standardisation.
+static int mtk_smi_larb_clamp_protect_enable(struct device *dev, bool enable)
+{
+	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
+	u32 reg;
+	int ret;
 
-Thanks,
-Miqu=C3=A8l
+	/* sub_comm_syscon could be NULL if larb directly linked to SMI common */
+	if (!larb->sub_comm_syscon)
+		return -EINVAL;
+
+	reg = enable ? SMI_COMMON_CLAMP_EN_SET : SMI_COMMON_CLAMP_EN_CLR;
+
+	ret = regmap_write(larb->sub_comm_syscon, reg,
+			   SMI_COMMON_CLAMP_MASK(larb->sub_comm_inport));
+	if (ret) {
+		dev_err(dev, "Unable to %s clamp for input port %d: %d\n",
+			enable ? "enable" : "disable",
+			larb->sub_comm_inport, ret);
+		return ret;
+	}
+
+	return 0;
+}
+
+...and then call it like
+ret = mtk_smi_larb_clamp_protect_enable(dev, true);
+
+or
+
+ret = mtk_smi_larb_clamp_protect_enable(dev, false);
+
+> +
+> +static int mtk_smi_genpd_callback(struct notifier_block *nb,
+> +				  unsigned long flags, void *data)
+> +{
+> +	struct mtk_smi_larb *larb = container_of(nb, struct mtk_smi_larb, nb);
+> +	struct device *dev = larb->dev;
+> +
+> +	if (flags == GENPD_NOTIFY_PRE_ON || flags == GENPD_NOTIFY_PRE_OFF) {
+> +		/* disable related SMI sub-common port */
+> +		mtk_smi_larb_clamp_protect_enable(dev);
+> +	} else if (flags == GENPD_NOTIFY_ON) {
+> +		/* enable related SMI sub-common port */
+> +		reset_control_reset(larb->rst_con);
+> +		mtk_smi_larb_clamp_protect_disble(dev);
+> +	}
+> +
+> +	return NOTIFY_OK;
+> +}
+> +
+>   static int mtk_smi_device_link_common(struct device *dev, struct device **com_dev)
+>   {
+>   	struct platform_device *smi_com_pdev;
+> @@ -528,6 +615,66 @@ static int mtk_smi_dts_clk_init(struct device *dev, struct mtk_smi *smi,
+>   	return ret;
+>   }
+>   
+> +static int mtk_smi_larb_parse_clamp_info(struct mtk_smi_larb *larb)
+> +{
+> +	struct device *dev = larb->dev;
+> +	const struct mtk_smi_larb_gen *larb_gen = larb->larb_gen;
+> +	struct device_node *smi_node;
+> +	struct of_phandle_args args;
+> +	int ret, index;
+> +
+> +	/* Only SMI LARBs located in camera and image subsys need to
+> +	 * apply clamp and reset operation, others can be skipped.
+> +	 */
+> +	ret = of_parse_phandle_with_fixed_args(dev->of_node,
+> +					       "resets", 1, 0, &args);
+> +	if (ret)
+> +		return 0;
+> +
+> +	smi_node = of_parse_phandle(dev->of_node, "mediatek,smi", 0);
+> +	if (!smi_node)
+> +		return -EINVAL;
+> +
+> +	index = args.args[0];
+> +	larb->sub_comm_inport = larb_gen->clamp_port[index];
+> +	larb->sub_comm_syscon = device_node_to_regmap(smi_node);
+> +	of_node_put(smi_node);
+
+If you declare BIT(x) as clamp_ports, or if your clamp_ports start from 1,
+anything that is not more than 0 is something that was not declared, and
+this means that you can then error check:
+
+if (!larb->sub_comm_inport)
+	return dev_err_probe(dev, -EINVAL, "Unknown clamp port for larb %d\n", index);
+
+> +
+> +	if (IS_ERR(larb->sub_comm_syscon) ||
+> +	    larb->sub_comm_inport >= SMI_SUB_COMM_INPORT_NR) {
+> +		larb->sub_comm_syscon = NULL;
+> +		return -EINVAL;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_smi_larb_parse_reset_info(struct mtk_smi_larb *larb)
+> +{
+> +	struct device *dev = larb->dev;
+> +	int ret;
+> +
+> +	/* Only SMI LARBs located in camera and image subsys need to
+> +	 * apply clamp and reset operation, others can be skipped.
+> +	 */
+> +	if (!of_find_property(dev->of_node, "resets", NULL))
+> +		return 0;
+
+You don't have to manually check whether 'resets' exists or not - that's already
+done (devm_)reset_control_get in a way, as that will return -ENOENT if there is
+no 'reset-names' property. Check the comments down there....
+
+> +
+> +	larb->rst_con = devm_reset_control_get(dev, "larb");
+> +	if (IS_ERR(larb->rst_con))
+> +		return dev_err_probe(dev, PTR_ERR(larb->rst_con),
+> +				     "Can not get larb reset controller\n");
+> +
+> +	larb->nb.notifier_call = mtk_smi_genpd_callback;
+> +	ret = dev_pm_genpd_add_notifier(dev, &larb->nb);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to add genpd callback %d\n", ret);
+> +		return -EINVAL;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+>   static int mtk_smi_larb_probe(struct platform_device *pdev)
+>   {
+>   	struct mtk_smi_larb *larb;
+> @@ -538,6 +685,7 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+>   	if (!larb)
+>   		return -ENOMEM;
+>   
+> +	larb->dev = dev;
+>   	larb->larb_gen = of_device_get_match_data(dev);
+>   	larb->base = devm_platform_ioremap_resource(pdev, 0);
+>   	if (IS_ERR(larb->base))
+> @@ -554,15 +702,29 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+>   	if (ret < 0)
+>   		return ret;
+>   
+> -	pm_runtime_enable(dev);
+
+	ret = mtk_smi_larb_parse_reset_optional(larb);
+
+Choose between:
+
+	if (ret == 0) {
+		ret = mtk_smi_larb_parse_smi_clamp(larb);
+		if (ret) {
+			dev_err_probe(dev, ret, "Failed to get SMI clamp\n");
+			goto err_link_remove;
+		}
+	} else if (ret != -ENOENT) {
+		dev_err_probe(dev, ret, "Cannot get larb resets\n");
+		goto err_link_remove;
+	} else {
+		/*
+		 * Only SMI LARBs located in camera and image subsys need to apply
+		 * clamp and reset operation. For the others, resets are optional.
+		 */
+		ret = 0;
+	}
+
+and...
+
+	if (ret && ret != -ENOENT) {
+		dev_err_probe .....
+	} else if (ret) {
+		/* only smi larbs .... */
+		ret = 0;
+	} else {
+		ret = mtk_smi_larb_parse_smi_clamp .....
+	}
+
+whatever you like the most.
+
+> +	/* find sub common to clamp larb for ISP software reset */
+> +	ret = mtk_smi_larb_parse_clamp_info(larb);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to get clamp setting for larb\n");
+> +		goto err_link_remove;
+> +	}
+> +
+> +	ret = mtk_smi_larb_parse_reset_info(larb);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to get power setting for larb\n");
+> +		goto err_link_remove;
+> +	}
+> +
+>   	platform_set_drvdata(pdev, larb);
+>   	ret = component_add(dev, &mtk_smi_larb_component_ops);
+>   	if (ret)
+> -		goto err_pm_disable;
+> +		goto err_link_remove;
+> +
+> +	pm_runtime_enable(dev);
+> +
+>   	return 0;
+>   
+> -err_pm_disable:
+> -	pm_runtime_disable(dev);
+> +err_link_remove:
+>   	device_link_remove(dev, larb->smi_common_dev);
+>   	return ret;
+>   }
+> @@ -686,6 +848,10 @@ static const struct mtk_smi_common_plat mtk_smi_common_mt8188_vpp = {
+>   	.init     = mtk_smi_common_mt8195_init,
+>   };
+>   
+> +static const struct mtk_smi_common_plat mtk_smi_sub_common_mt8188 = {
+> +	.type     = MTK_SMI_GEN2_SUB_COMM,
+
+...no gals in MT8188?!
+
+Cheers,
+Angelo
+
+> +};
+> +
+>   static const struct mtk_smi_common_plat mtk_smi_common_mt8192 = {
+>   	.type     = MTK_SMI_GEN2,
+>   	.has_gals = true,
+> @@ -729,6 +895,7 @@ static const struct of_device_id mtk_smi_common_of_ids[] = {
+>   	{.compatible = "mediatek,mt8186-smi-common", .data = &mtk_smi_common_mt8186},
+>   	{.compatible = "mediatek,mt8188-smi-common-vdo", .data = &mtk_smi_common_mt8188_vdo},
+>   	{.compatible = "mediatek,mt8188-smi-common-vpp", .data = &mtk_smi_common_mt8188_vpp},
+> +	{.compatible = "mediatek,mt8188-smi-sub-common", .data = &mtk_smi_sub_common_mt8188},
+>   	{.compatible = "mediatek,mt8192-smi-common", .data = &mtk_smi_common_mt8192},
+>   	{.compatible = "mediatek,mt8195-smi-common-vdo", .data = &mtk_smi_common_mt8195_vdo},
+>   	{.compatible = "mediatek,mt8195-smi-common-vpp", .data = &mtk_smi_common_mt8195_vpp},
+
+
 
