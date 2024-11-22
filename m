@@ -4,86 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE2A3D75E21
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Nov 2024 10:54:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECBE8D75E25
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Nov 2024 11:23:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=61ry4edPNxCuNRBy1IwrZKEtdY25zzE8aRAKjDIlzek=; b=XHACnlxW0j4p8iSN8jqVJLTQlS
-	diIYOKW+vTH2qHHmjd2hH7yB+7dJgAbXXJoEu7D7ACg9GSCTfQL6sOjqCJxs2GyfMG29Nr3qbRLh8
-	Spa5C6vYeTzQHDFrKjDIxNclcJs2tJH7LQ3XOUzX48Zxjq+s2DofKQiVvWacaa6QxM283rLzBS5XK
-	rNU6Jp/LuO9R4uYD/GM6b4h/GnoDYU7kCX08tMIYLQ954HNxI8+AR3AcGlhR5YHqS6KIW3sGNrGx+
-	1wJS5WVBCbaHMRWvvQspTMiNfZuc5dpl5T8i5bipnoYku6a7ytgqZWUj5BCUciUa+Ps0WqULiXJ21
-	R/b1ClmA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=j5gH9zDSzaih4pOGopejO7qtA5hzriiM7ueX3uOK70w=; b=innS4krfCL1VV0Q5N56UxIPnNE
+	BFAFV9GWOcv7X7m1yfIViAvxHtnzg6TF1o1XxnY9rjCvgrh330+ANSAANknTEWxqFydq4BUPfGKDR
+	TZhX0p0KIXo0bIBBgoNbqCHSPOM4i/V9EXOkdTiwfElpNimj/VtIDuGdM2sQKVIlfRUaRPWHfk71L
+	Gqp12Nf0EmmUUeG/Tc5ddeIl7tsX/6EGkMtQGnpWqFcPne+K4VWPQgJixsefrUUJPgadNFnzJRbxK
+	lVMGouU0zxKszsivABBlhw4DhhlMzsyq0sOZSFqfzj7ci6ypTGMfNxX34cuv1Jy4HGXcNZwQ7bwXt
+	XtevqBfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tERIV-00000002HoB-3lSW;
-	Fri, 22 Nov 2024 10:53:59 +0000
-Received: from mout.web.de ([212.227.15.3])
+	id 1tERku-00000002MKJ-00Cc;
+	Fri, 22 Nov 2024 11:23:20 +0000
+Received: from mgamail.intel.com ([192.198.163.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tERHX-00000002Hgs-2BWm;
-	Fri, 22 Nov 2024 10:53:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1732272765; x=1732877565; i=markus.elfring@web.de;
-	bh=61ry4edPNxCuNRBy1IwrZKEtdY25zzE8aRAKjDIlzek=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
-	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
-	 cc:content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=bUZEEQseerSEZWaPJwWTIDOlfNrOCV3Br06vAdhWk8Ahince6V3c8HeN7M7zCr8d
-	 oIMIY8qr5LHOjyAJzAq/9SmX+KamYKYDmXliRT2Nsxo/d1sgYG8yWcIib9Pvsak03
-	 Sp4r9Hz+pNnwlp8Lh0SIL2V3Uf+Drfy9izBTnPowU0JZVWg7aCBCJVipSqzJviqbF
-	 sEXC9flSFQ2gsUxy8V8ZIoPqQSUONV4Pat6rZVAH0ZQt+rSrBZC1l3r672AhrYfXo
-	 IKZEz6jJpm659neg4DfvkenC7yPfF/kVsXBjHLygKRqS4sFW/z9zbPHvDQkwNQs9m
-	 rIGvfCznSFBoQlP8Cw==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.88.95]) by smtp.web.de (mrweb006
- [213.165.67.108]) with ESMTPSA (Nemesis) id 1MBB86-1tR43H2250-00DcBn; Fri, 22
- Nov 2024 11:52:45 +0100
-Message-ID: <ac730eec-e447-495b-8637-9c11a268e371@web.de>
-Date: Fri, 22 Nov 2024 11:52:44 +0100
+	id 1tERkn-00000002MI8-2x5a;
+	Fri, 22 Nov 2024 11:23:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1732274594; x=1763810594;
+  h=from:to:cc:subject:in-reply-to:references:date:
+   message-id:mime-version;
+  bh=GJHZMDI2iJk8tkr/3YVQpA8tfSP7IWp9w/OqAk1Hxik=;
+  b=SNwVswVS8ELltXxLW+GcfhyIU1AJwu1vMiC7+bedffpsvCmVvN0EcQBu
+   fZ/DtAUu+f6OQXTq5rTdVfAuz77/nUy9XwhkII/QMz4KsvPmM/cj9+H72
+   jQCQAMFq+XS6u/rxlMpCjeC7PvWEJG+/2iVUIBLX0IKyPSTH7o9XxNG2H
+   VYYHf0D2kKPg41W/X81XAC2yJZZIntKm31d4t4qdqtytuivnOWDALv7C8
+   MXXBxJ4Jd9SbLtOc3Xtj17kdJth/4gFN9EsnkEPjY+hOq0NMn03Y2FHeg
+   3tseGZJk9zXtwTOQgnUqDXaPUpZc0iboSTcU132+SFWuwVCYUphX6QqY8
+   w==;
+X-CSE-ConnectionGUID: 8khXGulmQhqLmp3FNetw7g==
+X-CSE-MsgGUID: si0wVRYoQ9+5m57tRz70ow==
+X-IronPort-AV: E=McAfee;i="6700,10204,11263"; a="43074367"
+X-IronPort-AV: E=Sophos;i="6.12,175,1728975600"; 
+   d="scan'208";a="43074367"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Nov 2024 03:23:12 -0800
+X-CSE-ConnectionGUID: 6Krw7KkLR6GVn5UaKuPNZg==
+X-CSE-MsgGUID: jti2QNpMQ/SNkFZUHXuDdg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,175,1728975600"; 
+   d="scan'208";a="90532328"
+Received: from jkrzyszt-mobl2.ger.corp.intel.com (HELO localhost) ([10.245.246.157])
+  by orviesa009-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Nov 2024 03:23:00 -0800
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Andrzej Hajda
+ <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>,
+ Robert Foss <rfoss@kernel.org>, Laurent Pinchart
+ <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst
+ <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Jaroslav Kysela <perex@perex.cz>, Takashi
+ Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown
+ <broonie@kernel.org>, Phong LE <ple@baylibre.com>, Inki Dae
+ <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin
+ Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Russell King
+ <linux@armlinux.org.uk>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp
+ Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?=
+ <heiko@sntech.de>, Andy
+ Yan <andy.yan@rock-chips.com>, Alain Volmat <alain.volmat@foss.st.com>,
+ Raphael Gallais-Pou <rgallaispou@gmail.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v4 3/7] drm/connector: implement generic HDMI codec helpers
+In-Reply-To: <20241122-drm-bridge-hdmi-connector-v4-3-b4d69d6e3bd9@linaro.org>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20241122-drm-bridge-hdmi-connector-v4-0-b4d69d6e3bd9@linaro.org>
+ <20241122-drm-bridge-hdmi-connector-v4-3-b4d69d6e3bd9@linaro.org>
+Date: Fri, 22 Nov 2024 13:22:53 +0200
+Message-ID: <87ed33zf5e.fsf@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Zhu Jun <zhujun2@cmss.chinamobile.com>, linux-sound@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>
-Cc: LKML <linux-kernel@vger.kernel.org>
-References: <20241122055231.3463-1-zhujun2@cmss.chinamobile.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8188: Add error handling in
- mtk_dai_etdm_enable_mclk
-Content-Language: en-GB
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <20241122055231.3463-1-zhujun2@cmss.chinamobile.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:GmQzr0ZnmJWTazBDBy9rLexiwHSkJuYvSOIIwQYIV1b4dUiK32W
- 0lZqoDO/cwLrprsNuikXcVG8dtpPZ6s4woy2SO5ZD+mEKkX/IreYmNW80TTBlV/7ZNRZKDD
- KijEbz77zkmaHzk+moXi/fWVvT4mEOH9G6OvvwT2KlIx8jR7lFSSDN+4KSikVpdtYsFkGIV
- LGsx96eadnHg8MlkQ8bhw==
-UI-OutboundReport: notjunk:1;M01:P0:aPeuCtx77M4=;/kQ1N/2tkJDzcS7IbzBA/UrOpng
- zlnmRmyp1ExMEhtEoZ8JfKGRZB+BTgjqexBpEfRDZTVlACb/pY4+2QTsfymAKC+f9koPc0CT+
- 5lelUS5DZc4GS6mntxa9sRYpPJELdd46FbcsRqly3erV8VR8TPLj6ha+UwpWaLJGWpNIigM4o
- YDOzk8ryFn9xg39MCr/XCc2DslRk0vMExmZaHRMe6wMp4ETnyHj1eOe+RRkcC2eDk04CvV8do
- LDZWhaqfHKJKUSaZ0J3JyZ7bGKIbKMiVzZod84WXTN1EWP9DKjyKtjOGAfiqW8AjLFHU9w8de
- 3w+9Z5jHXnxS8ybNtvRmsK/pGUHz2J0d2xTbzVFBHoFjg08Cd2akMUuQD5uY66zEM/yjUrenN
- mmSDC19dQUw+sZ5WJxejvduMEXOAnFFqgkkDJzaA91rfn3JRqu18Zxy491NG9VZH2S65LjeoS
- B4Ej/pk5xvR59d5VxL7wKiEa4fLB0npL8aKs+LQWg0eLnEGHROHLjGxWuw2+8YoMALGOzFTmy
- Lzdpbka274mgYEinuaby9RmcWr32YpCueWokCNIOBQ0rGHFuNT/XMRYwrXPQHWisPMrya21aV
- o/znJOZrjSAZRFk2YfgGGqRa+tlUSRl3EcpAZs3xDduFMZzpfJbPqDSlPrGYOIcZdS5FcqrxP
- trQIXskPY4KD1GB8szZcok4XjhBcHKE8epikn+NWk5h8W65eu7g56mr3Ywp/4CflpwCPwI/lD
- 2mrAW+rWvLb45d3/KeviOtbfzePk346/r5Lp9UBwskkc+qsTl44SGEwjAbZ0ta1PNU4utVlgM
- UPZfvTz9qYBEPbw6UxVylwxF7oULqPVAREOF9Jzo7cy+qrfi9qzad/TCsq9Jm0u4ivC2yoZBC
- UBYqzU+ukc9YZfx2M+/8uVO5mugeDInuGat36F3WWPHPO3Xr7OrDfK+HJCfm7yhIb5SFo8H6H
- LhFxz4QEEd/Z5xCi57g9JbogIeiDI+xyDeppl2g90k7LmUWIYOZZi/cvPc36YYpEiZ615EvvZ
- odibG/HhU9bUHGsJ3yzKJmF7FWQ5MJxKKALNYZ+Wc4DzUKK056LGHfIEmiUKKESvWLbSxFq1m
- P483EiiAc=
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241122_025259_922247_EA6F6951 
-X-CRM114-Status: UNSURE (   4.55  )
+X-CRM114-CacheID: sfid-20241122_032313_790394_38174011 
+X-CRM114-Status: UNSURE (   9.73  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,17 +105,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Introduce error handling in mtk_dai_etdm_enable_mclk to ensure that
-> the function returns immediately if mt8188_afe_set_clk_rate fails.
+On Fri, 22 Nov 2024, Dmitry Baryshkov <dmitry.baryshkov@linaro.org> wrote:
+> diff --git a/drivers/gpu/drm/drm_internal.h b/drivers/gpu/drm/drm_internal.h
+> index b2b6a8e49dda46f1cb3b048ef7b28356dd3aaa4e..8ed58e482fac4662b659276e8bc17690e1fdb9b7 100644
+> --- a/drivers/gpu/drm/drm_internal.h
+> +++ b/drivers/gpu/drm/drm_internal.h
+> @@ -280,4 +280,9 @@ void drm_framebuffer_print_info(struct drm_printer *p, unsigned int indent,
+>  				const struct drm_framebuffer *fb);
+>  void drm_framebuffer_debugfs_init(struct drm_device *dev);
+>  
+> +/* drm_connector_hdmi_codec.c */
+> +
+> +int drm_connector_hdmi_codec_init(struct drm_connector *connector);
+> +void drm_connector_hdmi_codec_cleanup(struct drm_connector *connector);
+> +
+>  #endif /* __DRM_INTERNAL_H__ */
 
-* I suggest to append parentheses to function names.
+Better fit in drm_crtc_internal.h or drm_crtc_helper_internal.h?
 
-* How do you think about to add any tags (like =E2=80=9CFixes=E2=80=9D and=
- =E2=80=9CCc=E2=80=9D) accordingly?
-  https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/=
-Documentation/process/submitting-patches.rst?h=3Dv6.12#n145
+Maybe we could use an internal header inside display/. Or just 1:1
+drm_foo_internal.h for every drm_foo.c to keep things simple and have
+fewer interdependencies.
 
+BR,
+Jani.
 
-Regards,
-Markus
+-- 
+Jani Nikula, Intel
 
