@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7203AE6ADE8
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Nov 2024 09:07:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD5F5E6ADEB
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Nov 2024 09:11:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yZTqoEwTktGmXK3Qx5NYMXzlUej11tS8qvukucVyF4s=; b=TL+9SlnoQj3ggGVRnSuHfFKM1z
-	6+yaW1+2Yb5NSLcQoiH+tTylSCKTP4ML8qRMn08VX6bNn7taKTlhv/2fbbeMLWWiVhxxsHCYt1KY7
-	RYbcSnuZaGD6CCXlSbJFUfXBq2tt8dc+Et0UhojD5TSQpjEHLBEmpQbfKdZWNG0p9G+u8fzsQKF+k
-	soFBBwlqHFp+jdQmxaDk84XrsmDWx5ROLdSJ32Q9bh/+137SCdBj99WafOuhjeCSjtM/Hm/+KV7O6
-	AQyIXd6nQ62mfiEwSo6yCXOnwxIoa/Mt/Y6xs/3wJKBY4W837KcevE9upBRRVj1kRfc4HP7s00iC3
-	iLWSs/fQ==;
+	bh=rKjam0B/w5hfD9V6wh4VdWDXNhOxELwdpw95PhwOCuE=; b=N5Cpxz/NZx3XGFErFOCLCdGQU+
+	RpX/3ESStScnfoDH6TOqSaAEqQQ7T1siq3yRE5H+ou8h74wBEw0HWPwrNKd7fgR6d6XQ00/sk/FLu
+	HWX2TKsMtaAu3h0Ci5g18r8OSA2w3Gfhv7owx/Y4ntu/STKGfNiH6vcq4TevmcCRJhuss39+omPpE
+	ukZNKD571FGWUXpG9IvJfGqpkTXSMM83M5gM2wDIQlek4r1aTlV+h9glvcLmgvkE7n9bKzNrgps5n
+	1i18mvgOzEcDMa0v5pfp/U8AWyb1HXmYKTuijgCCFvT3oJYDcNkYeXOwnAjpWEcJ1jWRExPtXwIox
+	WiweDMsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tEm6Y-0000000409h-22WG;
-	Sat, 23 Nov 2024 09:07:02 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1tEmAv-000000040pH-1fPm;
+	Sat, 23 Nov 2024 09:11:33 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tEm6W-0000000408J-36uu
+	id 1tEm9y-000000040hl-0mov
 	for linux-mediatek@lists.infradead.org;
-	Sat, 23 Nov 2024 09:07:01 +0000
-Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-7245a9d0e92so3265629b3a.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 23 Nov 2024 01:07:00 -0800 (PST)
+	Sat, 23 Nov 2024 09:10:35 +0000
+Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-7248c1849bdso3011458b3a.3
+        for <linux-mediatek@lists.infradead.org>; Sat, 23 Nov 2024 01:10:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1732352820; x=1732957620; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1732353033; x=1732957833; darn=lists.infradead.org;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=yZTqoEwTktGmXK3Qx5NYMXzlUej11tS8qvukucVyF4s=;
-        b=EPXqdUcwZJCe3KVLSBP/fL7p3mJhAPvyLcBF/zEubBdzpcZEW8r//Ost1Gy/AUuYrD
-         5kYKz0Y1MOxONkvy8JMeOE5vfqO9I2tE+f+WxhwdF3dnlADbIbLjlypSb3beq58ZyhzF
-         mVbAi0EI/vTv3MGexI0iZ1La+734h+Fyrr13DTVGFK5FHLmqdT6LbE6qbckh4DOeJcB2
-         FEcR6L3GvLlZeXS3AXAYknoucBMh4bMXtN7AHEGNJDGQN7BtjKPmHFpGDwEDfntvQC8w
-         nJaaJH2Kwp7XUmSITTGbiAjK42cyfUQFViVpzOEIF1mqDipsSWbRwVkHtuvT9DmlbE7X
-         2n7w==
+        bh=rKjam0B/w5hfD9V6wh4VdWDXNhOxELwdpw95PhwOCuE=;
+        b=Rcgn4tfpHwYkko7o8dhYD+T1WNFX3qkVNhBivLqTTakgeDrYMnsPvh07WRrcpqnxir
+         I049wseSpOCBWsB/jKO+drnR+dyf2YMjofoHknldpu97srPpBoevRMRGjn3RU76boXZ1
+         BXN14fKy66tFrUd882Y/aiGCG8cK8c1fRMRXR74qGAiXZzNpD24yZYzwt1BGD2R7dkhy
+         yNcCO0YV++kyrLapruB3DzuokygVG6l6fLsmOrm2JzoHXgsy5HXcvqgoWAjia711fUyj
+         I7iDDulp8zbihp+mCUR4PidtGzFQAHfdajxKE6n2yf5bibsro8fcG3I3fTZ+2YP/wH+w
+         9cew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732352820; x=1732957620;
+        d=1e100.net; s=20230601; t=1732353033; x=1732957833;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=yZTqoEwTktGmXK3Qx5NYMXzlUej11tS8qvukucVyF4s=;
-        b=NHzCjW++BnO4/VnBHjGmQKaY4pNwFv137SrMUPWkfK3DA311QsGSxuOVFV+jru2GDG
-         CLn8bKDXLX2j5KIG6fAT3kPPdR1X0Ivm12JzMebkMbFCB/aOTXaOn7dzygAEmDCIxAkv
-         DxDx8YNrPd7hT6n8b9m7JFT2B0g6UHUM5YJsmziw4kN7xAOE/jpGqWlfRxvlNsONDCZ4
-         L6q21GwZXmJOvsid1ifWfjXs8APYM6rbEWCMmHzDQT1yO0sto+eEKHbqLCrRkvYnb6JT
-         sqp457xg2kehDKt0dlEOW7LhrUungtHq5SFHHWobgurnFbWI1XJzXcXpwjmSxK0WcdSN
-         /SOw==
-X-Forwarded-Encrypted: i=1; AJvYcCWFVcetJcTQg9GH/yC1qvwyNFimfLk/Y1zCR+iCKJCZS0OuRmiKShPpKUOu2hXnn8KdXJPviz/KZW39KTeccg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwNGdMG48z+MQhkWsCgx6YtDeyyk/3yX+HaLw4KDU45Q3cKC9Co
-	YDG5nvP4LMCoo7cN3bSw+y2XX6DV9ML7mYXEMBZgDBH9YNFRP4ita6mkd4MQKg==
-X-Gm-Gg: ASbGncu62XQ1lai4xJywVh/GByzuZxqZSGMZHvWZT+iEhlJCqEt7NSJtHJJi1aIHltW
-	XITmKE6WZhvxX9573WNtaOYeAYZbNVOrG3cMBKXAdzFLXnwgrNoEuh776wio1V4EqYpca+CGCyt
-	1O6enE+cW2b3emM4gb7GgAF1Bd2yOOpXDxhiP0lu8c71OugPWopnU9rGCSdMyTcZImygsJ0JzpD
-	NXr5QviWst4xZ6NfOqo3RyyFQfg/kdS7klX6AEN8fnJKdY/OFsfH/e/igs5y7KaHA==
-X-Google-Smtp-Source: AGHT+IEpLHPVaJh+gwdLw83uetAfenPlalM1R5vdNmWHzoapvFpd0b11woYH7NFKGd9VPGuqxv2wQg==
-X-Received: by 2002:a05:6a00:3ccc:b0:71e:64fe:965f with SMTP id d2e1a72fcca58-724df666260mr9268664b3a.20.1732352819705;
-        Sat, 23 Nov 2024 01:06:59 -0800 (PST)
+        bh=rKjam0B/w5hfD9V6wh4VdWDXNhOxELwdpw95PhwOCuE=;
+        b=Rnj3txtKSvKr83FVFW4NYMpxdErPKWpHmz+jf6xzvSj4qUNinqFeB+KsQbN40AOVOi
+         +J7rm/xaIZXRtmh9xKxP9qBOq1IhDH+oT27UZi2C4p9GMiE+IIObvdE2riVE9GT4i7E5
+         s9N9yxb6eM4IE7HkNcsAOr2zNOyG7TFCsirHmtHOafLV4sQicS8btQePerwRFfWeBgW8
+         PXYekUfIXFRZ8E+GCONbHJ702KpVujcItU4RufzF54SczyiTZFE0EbP8PTAdmtkWKEqA
+         x0/tXEFAw48LFNGRRMmuGpl1bXgi/4NHN9BAsgKsSSSgOdHOk8WHW7v64IRHxP98n6CJ
+         sqtg==
+X-Forwarded-Encrypted: i=1; AJvYcCVbcgymiw7IUrIIbIpOT+0CTTC9nrEPa1K+gtBM1z+iiwZWb9da2J+AH7AoaRYSNn9swo1PxyOfdVHxMjBoeQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YygOwVnttRbWay1nFaU/4aSq4f3gFqc+jYtJhbx2zLRwz8kyDMY
+	K79wxoT0693XnhFfbA0iLoyts0eSgax0o1kV0UgSCTok/hhURVi7Y7byGJRdGQ==
+X-Gm-Gg: ASbGnctO3k8vdp82wG/wVkCExWbbbWvUKqZPmBe+yZCgrK50wHUuSHhXmBlaefzssDx
+	2BMyobRHRDPgD9uBFc7MnvveF5aHF2RKprbTl1s31MBuakqEgoDd1H6nayx3l0RV8ebDztHcrDB
+	bGWp3c3FGwpZVoFzotPkAgN4iymG1QcxZGQ4yVLRR2H4TCE0w8ql0dzDn3Y/esdq2aYu5zIeTfA
+	v7Osul/eK2ybFnbWol5XH+n53h6phJLNVuhRPjEfLXE85mtl6OkaZNcbMmyYfWwIw==
+X-Google-Smtp-Source: AGHT+IHj2ihR3OTEsdM875zHnE9nbqW0UuK2wW3/aojdIeu60uxcPJQ+XX/fzZd0wj3T8K2tm2vwLg==
+X-Received: by 2002:a17:90a:d40b:b0:2ea:5dcf:6f5d with SMTP id 98e67ed59e1d1-2eb0e528054mr7801274a91.16.1732353033351;
+        Sat, 23 Nov 2024 01:10:33 -0800 (PST)
 Received: from thinkpad ([2409:40f2:101e:13d7:85cf:a1c4:6490:6f75])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-724de55503bsm2966517b3a.142.2024.11.23.01.06.54
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2eb0cd35e98sm2942936a91.0.2024.11.23.01.10.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 23 Nov 2024 01:06:58 -0800 (PST)
-Date: Sat, 23 Nov 2024 14:36:50 +0530
+        Sat, 23 Nov 2024 01:10:32 -0800 (PST)
+Date: Sat, 23 Nov 2024 14:40:26 +0530
 From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: Ryder Lee <ryder.lee@mediatek.com>,
@@ -82,19 +82,19 @@ Cc: Ryder Lee <ryder.lee@mediatek.com>,
 	Stephen Boyd <sboyd@kernel.org>, linux-pci@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org
-Subject: Re: [PATCH v4 3/6] PCI: mediatek-gen3: Move reset/assert callbacks
- in .power_up()
-Message-ID: <20241123090650.imccksnmovmt2pps@thinkpad>
+Subject: Re: [PATCH v4 5/6] PCI: mediatek-gen3: Add reset delay in
+ mtk_pcie_en7581_power_up()
+Message-ID: <20241123091026.qxoeb2qye7kcwikj@thinkpad>
 References: <20241118-pcie-en7581-fixes-v4-0-24bb61703ad7@kernel.org>
- <20241118-pcie-en7581-fixes-v4-3-24bb61703ad7@kernel.org>
+ <20241118-pcie-en7581-fixes-v4-5-24bb61703ad7@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20241118-pcie-en7581-fixes-v4-3-24bb61703ad7@kernel.org>
+In-Reply-To: <20241118-pcie-en7581-fixes-v4-5-24bb61703ad7@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241123_010700_850320_D23C5747 
-X-CRM114-Status: GOOD (  23.02  )
+X-CRM114-CacheID: sfid-20241123_011034_241113_1090E033 
+X-CRM114-Status: GOOD (  22.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,16 +109,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 18, 2024 at 09:04:55AM +0100, Lorenzo Bianconi wrote:
-> In order to make the code more readable, the reset_control_bulk_assert()
-> for PHY reset lines is moved to make it pair with
-> reset_control_bulk_deassert() in mtk_pcie_power_up() and
-> mtk_pcie_en7581_power_up(). The same change is done for
-> reset_control_assert() used to assert MAC reset line.
+On Mon, Nov 18, 2024 at 09:04:57AM +0100, Lorenzo Bianconi wrote:
+> Airoha EN7581 has a hw bug asserting/releasing PCIE_PE_RSTB signal
+> causing occasional PCIe link down issues. In order to overcome the
+> problem, PCIe block is reset using REG_PCI_CONTROL (0x88) and
+> REG_RESET_CONTROL (0x834) registers available in the clock module
+> running clk_bulk_prepare_enable in mtk_pcie_en7581_power_up().
+> In order to make the code more readable, move the wait for the time
+> needed to complete the PCIe reset from en7581_pci_enable() to
+> mtk_pcie_en7581_power_up().
+> Reduce reset timeout from 250ms to PCIE_T_PVPERL_MS (100ms).
 > 
-> Introduce PCIE_MTK_RESET_TIME_US macro for the time needed to
-> complete PCIe reset on MediaTek controller.
-> 
+
+and this reduced timeout has no impact on the behavior? If so, it'd be good to
+state it explicitly. But this information can be added while applying the patch,
+so no need to resend just for this.
+
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
@@ -127,68 +133,40 @@ Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 - Mani
 
 > ---
->  drivers/pci/controller/pcie-mediatek-gen3.c | 27 +++++++++++++++++++--------
->  1 file changed, 19 insertions(+), 8 deletions(-)
+>  drivers/clk/clk-en7523.c                    | 1 -
+>  drivers/pci/controller/pcie-mediatek-gen3.c | 7 +++++++
+>  2 files changed, 7 insertions(+), 1 deletion(-)
 > 
+> diff --git a/drivers/clk/clk-en7523.c b/drivers/clk/clk-en7523.c
+> index 22fbea61c3dcc05e63f8fa37e203c62b2a6fe79e..bf9d9594bef8a54316e28e56a1642ecb0562377a 100644
+> --- a/drivers/clk/clk-en7523.c
+> +++ b/drivers/clk/clk-en7523.c
+> @@ -393,7 +393,6 @@ static int en7581_pci_enable(struct clk_hw *hw)
+>  	       REG_PCI_CONTROL_PERSTOUT;
+>  	val = readl(np_base + REG_PCI_CONTROL);
+>  	writel(val | mask, np_base + REG_PCI_CONTROL);
+> -	msleep(250);
+>  
+>  	return 0;
+>  }
 > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-> index 3cfcb45d31508142d28d338ff213f70de9b4e608..2b80edd4462ad4e9f2a5d192db7f99307113eb8a 100644
+> index e4f890a73cb8ada7423301fa7a9acc3e177d0cad..f47c0f2995d94ea99bf41146657bd90b87781a7c 100644
 > --- a/drivers/pci/controller/pcie-mediatek-gen3.c
 > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> @@ -125,6 +125,8 @@
->  
->  #define MAX_NUM_PHY_RESETS		3
->  
-> +#define PCIE_MTK_RESET_TIME_US		10
-> +
->  /* Time in ms needed to complete PCIe reset on EN7581 SoC */
->  #define PCIE_EN7581_RESET_TIME_MS	100
->  
-> @@ -912,6 +914,14 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
->  	int err;
->  	u32 val;
+> @@ -980,6 +980,13 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
+>  		goto err_clk_prepare_enable;
+>  	}
 >  
 > +	/*
-> +	 * The controller may have been left out of reset by the bootloader
-> +	 * so make sure that we get a clean start by asserting resets here.
+> +	 * Airoha EN7581 performs PCIe reset via clk callabacks since it has a
+> +	 * hw issue with PCIE_PE_RSTB signal. Add wait for the time needed to
+> +	 * complete the PCIe reset.
 > +	 */
-> +	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets,
-> +				  pcie->phy_resets);
-> +	reset_control_assert(pcie->mac_reset);
+> +	msleep(PCIE_T_PVPERL_MS);
 > +
->  	/*
->  	 * Wait for the time needed to complete the bulk assert in
->  	 * mtk_pcie_setup for EN7581 SoC.
-> @@ -986,6 +996,15 @@ static int mtk_pcie_power_up(struct mtk_gen3_pcie *pcie)
->  	struct device *dev = pcie->dev;
->  	int err;
+>  	return 0;
 >  
-> +	/*
-> +	 * The controller may have been left out of reset by the bootloader
-> +	 * so make sure that we get a clean start by asserting resets here.
-> +	 */
-> +	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets,
-> +				  pcie->phy_resets);
-> +	reset_control_assert(pcie->mac_reset);
-> +	usleep_range(PCIE_MTK_RESET_TIME_US, 2 * PCIE_MTK_RESET_TIME_US);
-> +
->  	/* PHY power on and enable pipe clock */
->  	err = reset_control_bulk_deassert(pcie->soc->phy_resets.num_resets, pcie->phy_resets);
->  	if (err) {
-> @@ -1070,14 +1089,6 @@ static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
->  	 * counter since the bulk is shared.
->  	 */
->  	reset_control_bulk_deassert(pcie->soc->phy_resets.num_resets, pcie->phy_resets);
-> -	/*
-> -	 * The controller may have been left out of reset by the bootloader
-> -	 * so make sure that we get a clean start by asserting resets here.
-> -	 */
-> -	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets, pcie->phy_resets);
-> -
-> -	reset_control_assert(pcie->mac_reset);
-> -	usleep_range(10, 20);
->  
->  	/* Don't touch the hardware registers before power up */
->  	err = pcie->soc->power_up(pcie);
+>  err_clk_prepare_enable:
 > 
 > -- 
 > 2.47.0
