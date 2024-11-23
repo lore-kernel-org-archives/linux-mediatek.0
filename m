@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D75DBE66882
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Nov 2024 19:46:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEF54E66882
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Nov 2024 19:48:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:Date:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7u3M3w02LezEjOptMF8hHSnJFAOyRfYUWSJ4V7C/EzM=; b=MpFRJdBTj8NCYzSbjw9Xv6QWsS
-	oG5kv2APDxRe7/H7RYGUeQgOJKo5QXtPA7ZU+Hcx+AZVregqt1t/CP27GDOwJVFHA7F8QlxQCaN1l
-	Jyuq2+vOU3AIBcAzNZcsFPVS42ukOxACN3+ZHQ5kLl4KLYs1mFnE32fJKL05tr97uWOShAX1+8FSe
-	GnuGP6LNpLh9qqkPCcirqeTVEhJx/KSVl7SOEud1Gu0HIeoyuwMWkMkGjrdCLwgtJl8+IQ9G0UDpu
-	foWzB30PKSufeNIzyMuLu/guLy02/5cvM0KhMECbuoRscS5DlXPFXp6BmgYEE7eX1aq/4Z7VCq7W9
-	RnKyO3oQ==;
+	bh=KlPy/CGqNCGcU4xj6O8ddrlXpc7JHUlfmC6njU1qc/s=; b=VtjnhwJ+huqSeIMBQSs62278bJ
+	AxCVzZzgf0pQigsH2YnHuJrhPhgya734RyuSmKE+qMxxWNJLhC3AonTMqoBSz3LjSrEcWo4eNxWr+
+	Yl+SAEp86mSYJGeGtgs3nvMjpnpDrZxz3pJfFDoqMOh+nM36e3w7Za65ChqUzvZPRLocueqgwrpdH
+	XJxOf8ShsF+dNW6T7kYsJ3VemUdH7ieaM/yhJjW6kJl/y95YD8a9Ugg3skCpAhZCDy1/ApwMWRzxW
+	ToHhHL3KZA4svJSFlnjo98uX0K5/ZcUhZj5bVSHFYx9IePHRzaX0Qk8CuxMnf3rk9M4yEu0svw9u9
+	tTGaXP0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tEw5n-00000004oAR-45Ts;
-	Sat, 23 Nov 2024 19:46:55 +0000
-Received: from fgw22-7.mail.saunalahti.fi ([62.142.5.83])
+	id 1tEw7K-00000004oPK-43jV;
+	Sat, 23 Nov 2024 19:48:30 +0000
+Received: from fgw20-7.mail.saunalahti.fi ([62.142.5.81])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tEw4t-00000004o2m-3efo
+	id 1tEw6X-00000004oHi-1RdR
 	for linux-mediatek@lists.infradead.org;
-	Sat, 23 Nov 2024 19:46:01 +0000
+	Sat, 23 Nov 2024 19:47:42 +0000
 Received: from localhost (88-113-25-143.elisa-laajakaista.fi [88.113.25.143])
-	by fgw21.mail.saunalahti.fi (Halon) with ESMTP
-	id 8b65e59b-a9d3-11ef-8881-005056bdd08f;
-	Sat, 23 Nov 2024 21:45:53 +0200 (EET)
+	by fgw23.mail.saunalahti.fi (Halon) with ESMTP
+	id cada6636-a9d3-11ef-a0f6-005056bdfda7;
+	Sat, 23 Nov 2024 21:47:38 +0200 (EET)
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Sat, 23 Nov 2024 21:45:51 +0200
+Date: Sat, 23 Nov 2024 21:47:37 +0200
 To: Javier Carrasco <javier.carrasco.cruz@gmail.com>
 Cc: Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
@@ -46,18 +46,18 @@ Cc: Pavel Machek <pavel@ucw.cz>, Lee Jones <lee@kernel.org>,
 	linux-leds@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH 13/18] leds: pca963x: switch to
+Subject: Re: [PATCH 11/18] leds: max77650: switch to
  device_for_each_child_node_scoped()
-Message-ID: <Z0Iw77gpGgIE6fLT@surfacebook.localdomain>
+Message-ID: <Z0IxWdV8ZWhJ5Pp4@surfacebook.localdomain>
 References: <20240927-leds_device_for_each_child_node_scoped-v1-0-95c0614b38c8@gmail.com>
- <20240927-leds_device_for_each_child_node_scoped-v1-13-95c0614b38c8@gmail.com>
+ <20240927-leds_device_for_each_child_node_scoped-v1-11-95c0614b38c8@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240927-leds_device_for_each_child_node_scoped-v1-13-95c0614b38c8@gmail.com>
+In-Reply-To: <20240927-leds_device_for_each_child_node_scoped-v1-11-95c0614b38c8@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241123_114600_070496_35C0A2B1 
-X-CRM114-Status: GOOD (  13.94  )
+X-CRM114-CacheID: sfid-20241123_114741_547064_52FF3232 
+X-CRM114-Status: GOOD (  12.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,7 +72,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fri, Sep 27, 2024 at 01:21:04AM +0200, Javier Carrasco kirjoitti:
+Fri, Sep 27, 2024 at 01:21:02AM +0200, Javier Carrasco kirjoitti:
 > Switch to device_for_each_child_node_scoped() to simplify the code by
 > removing the need for calls to fwnode_handle_put() in the error paths.
 > 
@@ -80,38 +80,25 @@ Fri, Sep 27, 2024 at 01:21:04AM +0200, Javier Carrasco kirjoitti:
 > without the required call to fwnode_handle_put().
 > 
 > After switching to the scoped variant, there is no longer need for a
-> jump to 'err', as an immediate return is possible.
+> jump to 'err_node_out', as an immediate return is possible.
 
 ...
 
->  		if (ret || reg >= chipdef->n_leds) {
->  			dev_err(dev, "Invalid 'reg' property for node %pfw\n",
->  				child);
-> -			ret = -EINVAL;
-> -			goto err;
+>  		rv = fwnode_property_read_u32(child, "reg", &reg);
+> -		if (rv || reg >= MAX77650_LED_NUM_LEDS) {
+> -			rv = -EINVAL;
+> -			goto err_node_put;
+> -		}
+> +		if (rv || reg >= MAX77650_LED_NUM_LEDS)
 > +			return -EINVAL;
->  		}
 
-I'm not sure how interpret this message, but the problem here is the shadowing
-of the original error code. Hence I would split this:
+Again (yes, I know that is original issue, but with your series applied
+it may be nicely resolved), shadowing error code. Should be
 
-		if (ret)
-			return ret; // possibly return dev_err_probe() with another message
-		if (reg >= chipdef->n_leds)
-			return dev_err_probe(dev, -EINVAL, "Invalid 'reg' property for node %pfw\n",
-					     child);
-
-...
-
->  		if (ret) {
->  			dev_err(dev, "Failed to register LED for node %pfw\n",
->  				child);
-> -			goto err;
-> +			return ret;
-
-			return dev_err_probe(...);
-
->  		}
+		if (rv)
+			return rv;
+		if (reg >= MAX77650_LED_NUM_LEDS)
+			return -EINVAL;
 
 -- 
 With Best Regards,
