@@ -4,82 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4BEBE6ADE7
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Nov 2024 07:10:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E2FFE6ADD5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Nov 2024 09:06:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=of66qC7qugkiFYiLOj7X/DHcAAfucvWSwJFAEVz9WNw=; b=SlIQqiezgmvc6S6IObBE4Nplo9
-	7IrIpnUM4uxBYz0JoPUBjsCz8vRy6FjMggw46HugbNLuSsw4ncAccaxJRreQwPo/bKUZrOYUo4TV1
-	GvS0gIMh+83dYAUOiZrohrPycYmCcvtVV8ov5Xxp5EI5bLl19NHSVkD0bcUlUQAdYVNftjybXTm1n
-	sYjmgOmbX4TC/TjWr7AM0g09SxZ75nucOh+Fjv5cDcCFXLo2UIRy5aG8B55kjtQFzS4Dj6EqExgDU
-	y+/hlBHb1x738iNRubp1NlbOC+TaAxOMyqb8HL0HUeSJKZDO3gkPFWz1qkClVv3a7ugwhmu1kSaok
-	Og/fmp/w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xZiVNGou0sUPR+VUZtEVpUsLh0jpbMmext51WC1uOek=; b=lMOFDdmS2eYF4GWFWILFBVLP3B
+	/NUoE7R5h+k5KGfctnCUUsX/wV1rIIyJtYjkjUafBp7CzlDr07QhnTLfFpQJQ63GxN8Mj85EAKJuL
+	b8XJgtk9chUMjUL4LVj2zRpL+0GA7PzDNy1YbI4WLHn8ujG57kcDIEzYHZiR8/J+aB9iSZRBtBPnl
+	OaE11QLeTmIpzaYjjj/30ipHPG13Da09ma5vhoH8y/aHgrub7ws1TyUcNVWfzuMVchPLLlsrkxdVF
+	yFVsid1U/FYHKdQaJmdbSZJ1OBWBaJWoR4GNr5rN79+4YaFY12wXT2AFsxOR/hpkwEF9xIWu5GlE7
+	RueHcqog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tEkHx-00000003sbb-1yf2;
-	Sat, 23 Nov 2024 07:10:41 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1tEm5a-00000003zu0-1RTd;
+	Sat, 23 Nov 2024 09:06:02 +0000
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tEkHu-00000003sb7-1bN6;
-	Sat, 23 Nov 2024 07:10:39 +0000
-X-UUID: 08a735e8a96a11ef82ff63e91e7eb18c-20241123
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=of66qC7qugkiFYiLOj7X/DHcAAfucvWSwJFAEVz9WNw=;
-	b=Rol3+5rXBZ3kQSOzhKw9IQbt7Z5T129RQdbhWeZDI6lCDUoW4hDcTjApF1d5baqbz9+LllkFIJa5TTiVBZK1wc0qnyIzlRE8fFe0asXf8PSw1NX6gzO7hs76RYZyMuZxYBck8yFcyKWYwMIqzS5YionQb6qeUUpmLzJ25SR62c0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.44,REQID:074d739a-f8ab-4977-a1c3-b8bbb23a186d,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:464815b,CLOUDID:8563aca0-f395-4dfc-8188-ce2682df7fd8,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0,EDM:-3,IP:nil,U
-	RL:11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 08a735e8a96a11ef82ff63e91e7eb18c-20241123
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
-	(envelope-from <andy-ld.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1006171550; Sat, 23 Nov 2024 00:10:34 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1118.26; Sat, 23 Nov 2024 15:10:30 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1118.26 via Frontend Transport; Sat, 23 Nov 2024 15:10:30 +0800
-From: Andy-ld Lu <andy-ld.lu@mediatek.com>
-To: <ulf.hansson@linaro.org>, <angelogioacchino.delregno@collabora.com>,
-	<matthias.bgg@gmail.com>, <wenbin.mei@mediatek.com>
-CC: <linux-mmc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Andy-ld Lu <andy-ld.lu@mediatek.com>
-Subject: [PATCH] mmc: mtk-sd: Add support for ignoring cmd response CRC
-Date: Sat, 23 Nov 2024 15:09:05 +0800
-Message-ID: <20241123071006.14294-1-andy-ld.lu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	id 1tEm5X-00000003zsT-3m0Q
+	for linux-mediatek@lists.infradead.org;
+	Sat, 23 Nov 2024 09:06:01 +0000
+Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-724f74d6457so173239b3a.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 23 Nov 2024 01:05:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1732352759; x=1732957559; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=xZiVNGou0sUPR+VUZtEVpUsLh0jpbMmext51WC1uOek=;
+        b=GdiUXVrDK8aGY53Rfw2AgomWvZutleNHfJ/P28MfA4TNjmBnVdAxURU150rm4GrraM
+         dpKkDMkXGmfjvMkDYr2a+/R0N/md3hO8fC/HzwU+MplvOWLJaaphe53ppuusUoTA1fRu
+         bwIokPPzLJI3jT/xz6k1Ifkin+jFoQnLnVbyoJzVjnVyQiR83MslJ13XgUQE4lwQ+6dg
+         tfbFSLXfUpraH7BjWj5dyHAF7ogwnbi3wUfTr+13nLexnvuSWykvW4axFFl7cKC0EJIL
+         mb5KoltQ1r0zh2T8yqXl80MwoKLDERyG8hBUk+MFRpbyQdeF+cJ3LF162lR5LGGKzKTI
+         zsvQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1732352759; x=1732957559;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=xZiVNGou0sUPR+VUZtEVpUsLh0jpbMmext51WC1uOek=;
+        b=QyJCvxBs7pV4/1OaFXDwQ6gSZWHnKqo7CFlwoTK7USCz0zMl+eDoDTzTZ0hmNscSOS
+         7M6KKxzIv9mBTbk68UXA2KAtBM94RP20EsgUT3EbHoGZpm5gH3bjba78VFjsqmYaPnZ1
+         CK8prPLqF7E1+v8ANnXhdmxhzq4/2c1gIKsKfidYdA5fTTI1rjUoy83LX3fRptjMIFsE
+         hrUsoh5Qr8IGHhKp595kx0JCmcwvKACy1Kn3WAHZb0O3ta/DaXZdRexIyfJOXpv65Iww
+         gP5d59PyIivtCF1HSC0IoWm8fIEhnrUrPHXDT88HeJelG1lW2eG5vs55GDjfJ04bfdC8
+         CR/w==
+X-Forwarded-Encrypted: i=1; AJvYcCVrc5Yfg0PO98mBefzMCXDyHoncqNavXSAe298l9ERFtHDJ+3jeZGWlc/SLVYTtVkZhdW3oyarCoc6GYJUslw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyQkDxLIaZvUL+zsn4tNO8uwqghiJiRB3WDidAR+MsKY43dmmAN
+	eF7fjkElcol3/8fOsPAWfAb5nHaq2QTPmR7K+ENzYyFMkuG/tYG7pbUPsmob5A==
+X-Gm-Gg: ASbGncu/4meaKHvAr/eaJl+00xYPVA9paumMnEykT8IN6MTYvsHN6MLJV+0GsQK5H5r
+	3fJTR1n6h3uf1JZRQc8ZA7GabJvc5iDquDpv1jHlncQT3OuoGhxLlf9SyTIzs/x23YEdVtv1Hw+
+	0L+pfgaxi+Oq64mxzTgmetYFMF3CmorTJEJrd/If/eoJ8eu5ss4P3CIDeCEMevegYEdXIQAWcCN
+	+ZiWn9KKyHTUAYHbzocntGeqszPNMOFcdbapf5MPyXdgb4tdh7kEFsJRjt84ygC8Q==
+X-Google-Smtp-Source: AGHT+IGmEszMNhZtwje0Xvl4SgF09bMp9/3Vg2UfRxuTgmP2VK0VjGMW/4vV+mCtT1R8tU+WzR0uag==
+X-Received: by 2002:a05:6a00:244e:b0:724:591e:ea20 with SMTP id d2e1a72fcca58-724df66d881mr7872246b3a.14.1732352758798;
+        Sat, 23 Nov 2024 01:05:58 -0800 (PST)
+Received: from thinkpad ([2409:40f2:101e:13d7:85cf:a1c4:6490:6f75])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-724de532db3sm2877085b3a.93.2024.11.23.01.05.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 23 Nov 2024 01:05:58 -0800 (PST)
+Date: Sat, 23 Nov 2024 14:35:49 +0530
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org
+Subject: Re: [PATCH v4 2/6] PCI: mediatek-gen3: rely on
+ clk_bulk_prepare_enable() in mtk_pcie_en7581_power_up()
+Message-ID: <20241123090549.epzrv5o2i5q2mgz7@thinkpad>
+References: <20241118-pcie-en7581-fixes-v4-0-24bb61703ad7@kernel.org>
+ <20241118-pcie-en7581-fixes-v4-2-24bb61703ad7@kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-TM-AS-Product-Ver: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-AS-Result: No-10--6.109900-8.000000
-X-TMASE-MatchedRID: Q3t+gDEGl+H7W7/9wscjdRuZoNKc6pl+ju+GX08gELBKda7Cp9A+Rm7T
-	iYn7+ZHjXers26Xj0FAkAzbREWz9m28aeniRmKw1H5YQyOg71ZZMkOX0UoduuQqiCYa6w8tv8rK
-	/0wUyv6DwLx34aly34aojHM/WIuK90rly6TajiUnuykw7cfAoIHE01tKb2rARmyiLZetSf8mfop
-	0ytGwvXiq2rl3dzGQ1HN3C0owwdL7VUQqweXw1HiKsnV6jwqhAS8V3+ghPHP094nqACUbvaA==
-X-TM-AS-User-Approved-Sender: No
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--6.109900-8.000000
-X-TMASE-Version: SMEX-14.0.0.3152-9.1.1006-23728.005
-X-TM-SNTS-SMTP: D2E444064FAB0EB55E14C3A892E9AA8715E06345789FCC8F6A380B8EA7050E592000:8
+In-Reply-To: <20241118-pcie-en7581-fixes-v4-2-24bb61703ad7@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241122_231038_563435_96B7CBB0 
-X-CRM114-Status: GOOD (  14.92  )
+X-CRM114-CacheID: sfid-20241123_010559_949875_5D48495D 
+X-CRM114-Status: GOOD (  16.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,83 +109,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The current process flow does not handle MMC requests that are indicated
-to ignore the command response CRC. For instance, cmd12 and cmd48 from
-mmc_cqe_recovery() are marked to ignore CRC, but they are not matched to
-the appropriate response type in msdc_cmd_find_resp(). As a result, they
-are defaulted to 'MMC_RSP_NONE', which means no response is expected.
+On Mon, Nov 18, 2024 at 09:04:54AM +0100, Lorenzo Bianconi wrote:
+> Replace clk_bulk_prepare() and clk_bulk_enable() with
+> clk_bulk_prepare_enable() in mtk_pcie_en7581_power_up() routine.
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-This commit adds a new flag 'MMC_RSP_R1B_NO_CRC' to work alongside the
-existing 'MMC_RSP_R1_NO_CRC' for the following process flow. It fixes the
-response type setting in msdc_cmd_find_resp() and adds the logic to ignore
-CRC in msdc_cmd_done().
+Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 
-Signed-off-by: Andy-ld Lu <andy-ld.lu@mediatek.com>
----
- drivers/mmc/host/mtk-sd.c | 11 +++++++++--
- include/linux/mmc/core.h  |  1 +
- 2 files changed, 10 insertions(+), 2 deletions(-)
+- Mani
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index efb0d2d5716b..5d669f985a82 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -1097,11 +1097,13 @@ static inline u32 msdc_cmd_find_resp(struct msdc_host *host,
- 	u32 resp;
- 
- 	switch (mmc_resp_type(cmd)) {
--		/* Actually, R1, R5, R6, R7 are the same */
-+	/* Actually, R1, R5, R6, R7 are the same */
- 	case MMC_RSP_R1:
-+	case MMC_RSP_R1_NO_CRC:
- 		resp = 0x1;
- 		break;
- 	case MMC_RSP_R1B:
-+	case MMC_RSP_R1B_NO_CRC:
- 		resp = 0x7;
- 		break;
- 	case MMC_RSP_R2:
-@@ -1305,6 +1307,7 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
- {
- 	bool done = false;
- 	bool sbc_error;
-+	bool ignore_crc = false;
- 	unsigned long flags;
- 	u32 *rsp;
- 
-@@ -1329,6 +1332,10 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
- 		return true;
- 	rsp = cmd->resp;
- 
-+	if (mmc_resp_type(cmd) == MMC_RSP_R1_NO_CRC ||
-+	    mmc_resp_type(cmd) == MMC_RSP_R1B_NO_CRC)
-+		ignore_crc = true;
-+
- 	sdr_clr_bits(host->base + MSDC_INTEN, cmd_ints_mask);
- 
- 	if (cmd->flags & MMC_RSP_PRESENT) {
-@@ -1351,7 +1358,7 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
- 			 * CRC error.
- 			 */
- 			msdc_reset_hw(host);
--		if (events & MSDC_INT_RSPCRCERR) {
-+		if (events & MSDC_INT_RSPCRCERR && !ignore_crc) {
- 			cmd->error = -EILSEQ;
- 			host->error |= REQ_CMD_EIO;
- 		} else if (events & MSDC_INT_CMDTMO) {
-diff --git a/include/linux/mmc/core.h b/include/linux/mmc/core.h
-index 56972bd78462..076e1c71a07e 100644
---- a/include/linux/mmc/core.h
-+++ b/include/linux/mmc/core.h
-@@ -66,6 +66,7 @@ struct mmc_command {
- 
- /* Can be used by core to poll after switch to MMC HS mode */
- #define MMC_RSP_R1_NO_CRC	(MMC_RSP_PRESENT|MMC_RSP_OPCODE)
-+#define MMC_RSP_R1B_NO_CRC	(MMC_RSP_PRESENT|MMC_RSP_OPCODE|MMC_RSP_BUSY)
- 
- #define mmc_resp_type(cmd)	((cmd)->flags & (MMC_RSP_PRESENT|MMC_RSP_136|MMC_RSP_CRC|MMC_RSP_BUSY|MMC_RSP_OPCODE))
- 
+> ---
+>  drivers/pci/controller/pcie-mediatek-gen3.c | 14 +++-----------
+>  1 file changed, 3 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+> index 4d1c797a32c236faf79428eb8a83708e9c4f21d8..3cfcb45d31508142d28d338ff213f70de9b4e608 100644
+> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> @@ -948,12 +948,6 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
+>  	pm_runtime_enable(dev);
+>  	pm_runtime_get_sync(dev);
+>  
+> -	err = clk_bulk_prepare(pcie->num_clks, pcie->clks);
+> -	if (err) {
+> -		dev_err(dev, "failed to prepare clock\n");
+> -		goto err_clk_prepare;
+> -	}
+> -
+>  	val = FIELD_PREP(PCIE_VAL_LN0_DOWNSTREAM, 0x47) |
+>  	      FIELD_PREP(PCIE_VAL_LN1_DOWNSTREAM, 0x47) |
+>  	      FIELD_PREP(PCIE_VAL_LN0_UPSTREAM, 0x41) |
+> @@ -966,17 +960,15 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
+>  	      FIELD_PREP(PCIE_K_FINETUNE_MAX, 0xf);
+>  	writel_relaxed(val, pcie->base + PCIE_PIPE4_PIE8_REG);
+>  
+> -	err = clk_bulk_enable(pcie->num_clks, pcie->clks);
+> +	err = clk_bulk_prepare_enable(pcie->num_clks, pcie->clks);
+>  	if (err) {
+>  		dev_err(dev, "failed to prepare clock\n");
+> -		goto err_clk_enable;
+> +		goto err_clk_prepare_enable;
+>  	}
+>  
+>  	return 0;
+>  
+> -err_clk_enable:
+> -	clk_bulk_unprepare(pcie->num_clks, pcie->clks);
+> -err_clk_prepare:
+> +err_clk_prepare_enable:
+>  	pm_runtime_put_sync(dev);
+>  	pm_runtime_disable(dev);
+>  	reset_control_assert(pcie->mac_reset);
+> 
+> -- 
+> 2.47.0
+> 
+
 -- 
-2.34.1
-
+மணிவண்ணன் சதாசிவம்
 
