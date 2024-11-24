@@ -4,71 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDE8BE66887
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Nov 2024 13:46:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 970F1D75E5D
+	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Nov 2024 20:39:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JAl5m+9Vq+Rcujzmv5XeUVeeXGxvrch6XL3O41oD4sY=; b=0+hp7peIndHIT/3N0HZLSVosQF
-	m/x7gEFwB5kcygnLb6qr09AiFc5eH2uDrhG9J+Acs92Fwk1yNTqJ7vqZoVv85oIzWP/qFT1L4DzKY
-	FdXQMYoW9OKeoXrrYRQZxHNFzNGfIMu1yxxF87ojuELGxlsEXY0vPyp2Z6wxePsxlBOiiFcZ7fsoj
-	IYb7KjIEWZ+6AUNulAwuNIHoIVvxGFUB4QiqMCfSUQiQ5BGFX06vFGD+3KLaZJ12gFB8Lz0su9Jtw
-	xA2TS7iUfH0fNORAekTto3TsaKFPc28zg6tbKZ5bcxgqEkph2nJqpD3ZHuqpk1Nptf8lEtODIbZrk
-	BUEnmQRg==;
+	bh=ywMSe1q/965v+eVkcNyBvT1Ac5yKe2OMwFLssD4KmtM=; b=afRin/IwnOYtGhOP4mEZS4Sv/N
+	VC3TUk/qsZJyTqdigtyruI8fgDwHj4JRSVv7tp9c15nKI6MxuLUDO3FJmTWzT4D3VYuyesXU0jl52
+	e2+Lflt0xlqKPomOsyQjY2wo023DaSquKr5InUisebhTiVlSR3TxNC+ZVBxkiXzMlnkLTpLKlEbXP
+	PEWzTRE5f1k5uCtA+/VK/2QtrH8BYjsqGmVRdIOoxNxSYnVwNW6jbQgoijNgscRqKrZ/4uGnmZRww
+	U7oaKHbTkojxCsS7vrwSp/Z5TKq4kz/KQcbcFrBX130LbhKUP3XaorKLOVKQaI5Fwm8tCLBZc80wg
+	HbuwgW4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFCwS-00000005yxB-3jUp;
-	Sun, 24 Nov 2024 13:46:24 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tFJOS-00000006cvV-19u0;
+	Sun, 24 Nov 2024 20:39:44 +0000
+Received: from mout.gmx.net ([212.227.17.22])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFCvU-00000005yoA-2NV7;
-	Sun, 24 Nov 2024 13:45:25 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 76ED45C56E7;
-	Sun, 24 Nov 2024 13:44:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7FF18C4CED1;
-	Sun, 24 Nov 2024 13:45:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1732455923;
-	bh=XNh2g6Fx3GlucFkXDpJPfkHQBtoGBgthc0diP7QZqwk=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=GUROZ1tITitUj+JFWMTlnw3mveoMJKiggd+uhqKYRwIkiN4An/43Yazctm8p8fmmW
-	 dSmkFYihsDD37kmyXGZnha68RPshCG0Kh1F2MjgDnFMphO7eFUZXkWHqjUH59C4/9E
-	 Zw2GkxKxHIGm1qU3d9RBpR+RPpCA/3VNQmI9lABJs7bgjOQsXS82WfcuC9V0wIgjlP
-	 6Zo60YCuVzNlXugFknWZglRGi+NR7rGsKO1sK+RYeN7Q2ZY5B2zHLtJvWZlo8C/ySo
-	 1qIOWI9nnQ2we7TakFk/9jE38zIZwlrBOPzbmkrO+sVtrh5LQNuGRL7G0jndPDJ9hw
-	 qbHH5NchRv0bA==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Hao Qin <hao.qin@mediatek.com>,
-	Luiz Augusto von Dentz <luiz.von.dentz@intel.com>,
-	Sasha Levin <sashal@kernel.org>,
-	marcel@holtmann.org,
-	luiz.dentz@gmail.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-bluetooth@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.11 83/87] Bluetooth: btusb: Add new VID/PID 0489/e111 for MT7925
-Date: Sun, 24 Nov 2024 08:39:01 -0500
-Message-ID: <20241124134102.3344326-83-sashal@kernel.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20241124134102.3344326-1-sashal@kernel.org>
-References: <20241124134102.3344326-1-sashal@kernel.org>
+	id 1tFJOO-00000006cuU-3TqA;
+	Sun, 24 Nov 2024 20:39:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmx.de;
+	s=s31663417; t=1732480764; x=1733085564; i=zillerbaer@gmx.de;
+	bh=ywMSe1q/965v+eVkcNyBvT1Ac5yKe2OMwFLssD4KmtM=;
+	h=X-UI-Sender-Class:Date:From:To:Cc:Subject:Message-ID:In-Reply-To:
+	 References:MIME-Version:Content-Type:Content-Transfer-Encoding:cc:
+	 content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=UA139x6LtD0mAH7hsre7jh4hbLsV6B8Znrsa401xiAzPdGkO0Mi9rvVfSGsBvc6Z
+	 AgoSpIdHp7hKKrz4cVPfOJfTZ8H5SEipWIsyxBKLIUG5onbQvVJ9hlTECvWjhI6wH
+	 IIGGXT6k+hRK9OrXbgQTalCNJFKyrPYz+FMak1P5fKDPqHwmJFytO9zWg93CHhWNA
+	 +nKgYEnEurQjukAudlWBR4U+EoTFg1GEFWYwMNJNs16V4kSamp5GvZVROjl83BnTQ
+	 I36oucGiZ54Eain4YJlr6il9akOY4/jxH90Pdl+ZwFoiPOJeXgUEzUzDy1HXKC45y
+	 PoIchL3VQWNcQyIKcg==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from book ([91.14.228.167]) by mail.gmx.net (mrgmx104
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1MqaxU-1u1cce0YwS-00hooB; Sun, 24
+ Nov 2024 21:39:24 +0100
+Date: Sun, 24 Nov 2024 21:38:53 +0100
+From: Jens Ziller <zillerbaer@gmx.de>
+To: "CK Hu (=?UTF-8?B?6IOh5L+K5YWJ?=)" <ck.hu@mediatek.com>
+Cc: "Shuijing Li (=?UTF-8?B?5p2O5rC06Z2Z?=)" <Shuijing.Li@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, "Jitao Shi (
+ =?UTF-8?B?55+z6K6w5rab?=)" <jitao.shi@mediatek.com>, "daniel@ffwll.ch"
+ <daniel@ffwll.ch>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, "airlied@gmail.com"
+ <airlied@gmail.com>, "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2] mediatek: dsi: Correct calculation formula of PHY
+ Timing
+Message-ID: <20241124213853.06c1bd33@book>
+In-Reply-To: <4b9e27b50417d60eb32cd0ec782778f652656909.camel@mediatek.com>
+References: <20240412031208.30688-1-shuijing.li@mediatek.com>
+	<20241027143219.56e7b4d0@schleppi.lan>
+	<4b9e27b50417d60eb32cd0ec782778f652656909.camel@mediatek.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.41; aarch64-unknown-linux-gnu)
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.11.10
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:HkxXrXpOsattdDkhnrvYIdDinULQaFyrzUNAc2LDZpldEAhh+QJ
+ bcuyHSa9BctP5nW+CrrhqtpstoObhJC2BKZlM99618KZgz0Pdu4YB9h38uM12SDex9IanhP
+ nmRL2B8Y4XX8HXWrotB3/24rdxEqY2vlNASTAY82INLUWEUEVj6zTC2JrsvAWYOlc0dkVvr
+ m2PdAfPWnwsjvyhtmONHw==
+UI-OutboundReport: notjunk:1;M01:P0:n9Y+PD3R9fI=;eQeqCGU5HdIPEZHFNsrJg8AN+ZU
+ e2coRFOYFkdl+aawOf/hSbyCuA2KiPAWJLnMTbusXyJhbgN633JGIoxbRqlpM7SppyioJzrOc
+ zRPglEpPwedoY2jQ/fMGHQqhKOwFb9cBm0YEGhPEMmfpGis2hlBL8daveaZg2mwQpdBmbwBbG
+ OrE3pnb4gtnkFIuJ0eljVzijD76tkQhSL7S67AID1twSAIuUYnaiUtFimXXn1iyi9AITIeODq
+ Hep9f0xvQKAZb2zXgG2FJgeYDospSq/ul4GewqRbVQV68xSVigu2ftxEVRPBfHBlGodwMcskB
+ JVLDwPekaSR6q6O6EQ3luqzOna8OX4XbqxFS5iNe+4vypv+CQxvz90iRIxuTkfpcIk9EMyalz
+ yc+d9di7GZrBrgrDS/Fb2cscN0au0bqeFIlhaEGLO2Y2pYBOsi05y7oWNd6slMFdBGaiUYp+I
+ gw5tydx08xnlysd5Iv6DuPXpjzk9PmSdFTFqz5OTPDuKqXmfkQY4oFf1epDEZWf9rKP2lnjXo
+ 7PG0knnQiU96VtmVSqt3IZ6BOe3VmQMA7fCSC/cxMgOlV8DZ5yQR27wYO/ir50xrQckV05jax
+ Rq+IQtsvGpMEJ+LyXt8wf8naPkMP//RVJtehxHIoi4vqssF/ytm20MzYjPuAUfcmsOCdi+4AQ
+ Kg897K0eHX9TovfyE2fJgNZNAkdHkiXNAbCRmq8wE32TTV4w0LZBRqT0cyiN2VCq2k5+L+I8g
+ Mq1dJyKkR+rfBby42dzog0rdfuSSABqag1MwpJKvovzUPwMyw0SGM+Y1SWRuWSZihGDCPSnSd
+ GSGarkalNWIrYA0tw58WCXGcXfwla2wn2gnyNJCZFYT8wXy1x1fvF9FySCJjpXo4nUM2DvoN0
+ pJdvGhoCa1PyJymk2nJVomhgQuMxWyOxe36bPZ4I1D//BIUv0XgpeQ3sT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241124_054524_691322_9738C437 
-X-CRM114-Status: UNSURE (   9.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241124_123941_161471_95292867 
+X-CRM114-Status: GOOD (  27.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,76 +105,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hao Qin <hao.qin@mediatek.com>
+Am Thu, 21 Nov 2024 03:50:02 +0000
+schrieb CK Hu (=E8=83=A1=E4=BF=8A=E5=85=89) <ck.hu@mediatek.com>:
 
-[ Upstream commit faa5fd605d2081b6c9fa2355b59582d4ccd24b16 ]
+> Hi, Shuijing:
+>=20
+> On Sun, 2024-10-27 at 14:32 +0100, Jens Ziller wrote:
+> > External email : Please do not click links or open attachments
+> > until you have verified the sender or the content.
+> >=20
+> >=20
+> > Am Fri, 12 Apr 2024 11:11:39 +0800
+> > schrieb Shuijing Li <shuijing.li@mediatek.com>:
+> >=20
+> > > This patch correct calculation formula of PHY timing.
+> > > The spec define HS-PREPARE should be from 40ns+4*UI(44ns) to
+> > > 85ns+6*UI(91ns). But current duration is 88ns and is near the
+> > > boundary. So this patch make the duration to 64ns so it is near
+> > > the safe range.
+> >=20
+> > Hi Shuijing,
+> >=20
+> > with this patch the panel in the Tentacruel ASUS Chromebook CM14
+> > (CM1402F) flickers. There are 1 or 2 times per second a black panel.
+> > Stable Kernel 6.11.5 and mainline 6.12-rc4 works only when I reverse
+> > this patch. There's a bug inside. Can you please check that?
+>=20
+> Please help Jens to fix this bug.
+> Otherwise, I've to revert this patch.
+>
+> Regards,
+> CK
 
-Add VID 0489 & PID e111 for MediaTek MT7925 USB Bluetooth chip.
+I'am not be able to fix that. This patch must be reverted that the
+actual kernel runs on my Chromebook. Please revert this patch.
 
-The information in /sys/kernel/debug/usb/devices about the Bluetooth
-device is listed as the below.
+Regards
+Jens
 
-T:  Bus=02 Lev=02 Prnt=02 Port=04 Cnt=02 Dev#=  4 Spd=480  MxCh= 0
-D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=0489 ProdID=e111 Rev= 1.00
-S:  Manufacturer=MediaTek Inc.
-S:  Product=Wireless_Device
-S:  SerialNumber=000000000
-C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
-
-Signed-off-by: Hao Qin <hao.qin@mediatek.com>
-Signed-off-by: Luiz Augusto von Dentz <luiz.von.dentz@intel.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/bluetooth/btusb.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index b8c4b0a26d449..cc29b35dbb437 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -691,6 +691,8 @@ static const struct usb_device_id quirks_table[] = {
- 						     BTUSB_VALID_LE_STATES },
- 
- 	/* Additional MediaTek MT7925 Bluetooth devices */
-+	{ USB_DEVICE(0x0489, 0xe111), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x0489, 0xe113), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH |
- 						     BTUSB_VALID_LE_STATES },
--- 
-2.43.0
+>=20
+> >=20
+> > Best regards
+> > Jens
+> >=20
+> > >=20
+> > > Signed-off-by: Shuijing Li <shuijing.li@mediatek.com>
+> > > ---
+> > > Changes in v2:
+> > > Add a commit to describe the improvements to this patch in detail,
+> > > per suggestion frome previous thread:
+> > > https://urldefense.com/v3/__https://patchwork.kernel.org/project/linu=
+x-mediatek/patch/20240315072945.19502-1-shuijing.li@mediatek.com/__;!!CTRNK=
+A9wMg0ARbw!nA3Auuq2W3qyf3a8OtzDvLICN_xfq5zUozp_-Wo7Q4jR9l6qKlxiWNC4TZPXQa8W=
+08veWhokHyRrvCodcpg$
+> > > ---
+> > >  drivers/gpu/drm/mediatek/mtk_dsi.c | 33
+> > > +++++++++++++++--------------- 1 file changed, 17 insertions(+),
+> > > 16 deletions(-)
+> > >=20
+> > > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > > b/drivers/gpu/drm/mediatek/mtk_dsi.c index
+> > > a2fdfc8ddb15..d1bd7d671880 100644 ---
+> > > a/drivers/gpu/drm/mediatek/mtk_dsi.c +++
+> > > b/drivers/gpu/drm/mediatek/mtk_dsi.c @@ -235,22 +235,23 @@ static
+> > > void mtk_dsi_phy_timconfig(struct mtk_dsi *dsi) u32 data_rate_mhz
+> > > =3D DIV_ROUND_UP(dsi->data_rate, 1000000); struct mtk_phy_timing
+> > > *timing =3D &dsi->phy_timing;
+> > >=20
+> > > -     timing->lpx =3D (60 * data_rate_mhz / (8 * 1000)) + 1;
+> > > -     timing->da_hs_prepare =3D (80 * data_rate_mhz + 4 * 1000) /
+> > > 8000;
+> > > -     timing->da_hs_zero =3D (170 * data_rate_mhz + 10 * 1000) /
+> > > 8000 + 1 -
+> > > -                          timing->da_hs_prepare;
+> > > -     timing->da_hs_trail =3D timing->da_hs_prepare + 1;
+> > > -
+> > > -     timing->ta_go =3D 4 * timing->lpx - 2;
+> > > -     timing->ta_sure =3D timing->lpx + 2;
+> > > -     timing->ta_get =3D 4 * timing->lpx;
+> > > -     timing->da_hs_exit =3D 2 * timing->lpx + 1;
+> > > -
+> > > -     timing->clk_hs_prepare =3D 70 * data_rate_mhz / (8 * 1000);
+> > > -     timing->clk_hs_post =3D timing->clk_hs_prepare + 8;
+> > > -     timing->clk_hs_trail =3D timing->clk_hs_prepare;
+> > > -     timing->clk_hs_zero =3D timing->clk_hs_trail * 4;
+> > > -     timing->clk_hs_exit =3D 2 * timing->clk_hs_trail;
+> > > +     timing->lpx =3D (80 * data_rate_mhz / (8 * 1000)) + 1;
+> > > +     timing->da_hs_prepare =3D (59 * data_rate_mhz + 4 * 1000) /
+> > > 8000 + 1;
+> > > +     timing->da_hs_zero =3D (163 * data_rate_mhz + 11 * 1000) /
+> > > 8000 + 1 -
+> > > +             timing->da_hs_prepare;
+> > > +     timing->da_hs_trail =3D (78 * data_rate_mhz + 7 * 1000) / 8000
+> > > + 1; +
+> > > +     timing->ta_go =3D 4 * timing->lpx;
+> > > +     timing->ta_sure =3D 3 * timing->lpx / 2;
+> > > +     timing->ta_get =3D 5 * timing->lpx;
+> > > +     timing->da_hs_exit =3D (118 * data_rate_mhz / (8 * 1000)) + 1;
+> > > +
+> > > +     timing->clk_hs_prepare =3D (57 * data_rate_mhz / (8 * 1000)) +
+> > > 1;
+> > > +     timing->clk_hs_post =3D (65 * data_rate_mhz + 53 * 1000) /
+> > > 8000 + 1;
+> > > +     timing->clk_hs_trail =3D (78 * data_rate_mhz + 7 * 1000) /
+> > > 8000 + 1;
+> > > +     timing->clk_hs_zero =3D (330 * data_rate_mhz / (8 * 1000)) + 1
+> > > -
+> > > +             timing->clk_hs_prepare;
+> > > +     timing->clk_hs_exit =3D (118 * data_rate_mhz / (8 * 1000)) +
+> > > 1;
+> > >=20
+> > >       timcon0 =3D timing->lpx | timing->da_hs_prepare << 8 |
+> > >                 timing->da_hs_zero << 16 | timing->da_hs_trail <<
+> > > 24;
+> >=20
+> >=20
 
 
