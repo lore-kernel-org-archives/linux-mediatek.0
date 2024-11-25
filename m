@@ -4,95 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD1D9D58067
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Nov 2024 11:32:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9539D58068
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Nov 2024 11:51:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QMIy+2ZGZlYbGjuPDyKFDMT/8RFkHAkPW/l+lHB1Ssg=; b=QOeZBk1TbISbcoc0qBEd/j23Iq
-	NZR6v5+f21semMgdRwXBeB3FHtMvCBqJZX7Cd3eaFgLK6ouE/jGvw8XHHiEyIRcuEFy/Z+qkKfXJP
-	B6vrxManTFDO1GMF1EWfsAr7/49ODTJKvTJxCKjrHp6cP0jxpyfpKuObnVbMTmTrVJ67HRqUMv9Ll
-	UIsPCNrPLZ+m1J2BYGrdadBzRbvb9jEgVTTiNh6YZTZ9uyVPvjRUVj0oc8QzdJMT1N5QeJVJQQFiC
-	RQeG8sktV5Jkqkli/szqCXO9veyzXBf8uksehrlxHqNg1XBzAktJngHW/vrbSEUWdwPlmpydRLCfh
-	wy/t800Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3e2VpkWq82vaaKzbwsn8oz6ppxvBe9Csm8kj7t6lq7c=; b=w+kzQuMtTk1/UkuDpCgcQfABNM
+	FqigdtCTnu/nHHJCW2gwMTuZGCsoHdsdmCCPWJN8TzBv8YV4Rz3l5jKoQRaQ2QRq5r4uzjoBbExEu
+	E4G6oBsHSywoSdn7uwIRlmqDuvHRRLmA908E1ApObnh+3CE5B8vdLiuGukCUNmQ6j6taA94UgBMwc
+	YV/6GIhnOiaqO7m6FUXhYKk8tR/qh6cQnwnktRpebzr724EoWrbFL8Wwr95kI4dfyOj3pId+m8OfD
+	NlFyP3CDaLTFbMIUaUSYonUphxYs9fuStXjEsvncCmcL+/SRLbQ2Rrjj3O8M+WteTSiFz+bOFkLCf
+	cNHoKjkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFXKF-00000007tzQ-3Ox9;
-	Mon, 25 Nov 2024 11:32:19 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1tFXcT-00000007wGu-3fms;
+	Mon, 25 Nov 2024 11:51:09 +0000
+Received: from mgamail.intel.com ([198.175.65.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFXKD-00000007ty8-0M6q
-	for linux-mediatek@lists.infradead.org;
-	Mon, 25 Nov 2024 11:32:18 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-43497839b80so12379975e9.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 25 Nov 2024 03:32:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1732534335; x=1733139135; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=QMIy+2ZGZlYbGjuPDyKFDMT/8RFkHAkPW/l+lHB1Ssg=;
-        b=nqI+xPhtKhWBQjEroY4RClBhDefNQgmN83W0In6n++hBLxm8LpifQHfRVp41emC6Jw
-         JmoDysGczJV3PbByYYVAL41fCF7X7KY+PnIA3p9Xc/ZB/9dy/AeXzkxKMZtE+Fddkmzu
-         iobe/O+gFzuAzYgFEitQMJ+nKFTkyjuIz5C7qIkxCFH6CiDE49SLrUGrOriQZstIyaXI
-         HtUTJk9Yl8WVBuOOhfZM3DafqkhfKSUzqHtrVe5Xz5puHfL+arE7KSyog+FuW7Ero9rd
-         TcNiiOdA8O8C07ESMR60RpHp/XnVrbE+f8QD4+MF4y8jKxBWVhThWNrjxY6JamNK+UBQ
-         HZlA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732534335; x=1733139135;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=QMIy+2ZGZlYbGjuPDyKFDMT/8RFkHAkPW/l+lHB1Ssg=;
-        b=l1r0nV5XTXO5tNm3l7pVAo/KS3/aNN9KcXLnHYV3C93jYzsAQJrY7RZowUH/U2ElBu
-         JE6dv+xvFrziK9GEPjf4zXPNBlAUUxBYlYvp8skGAnhqSVo4HwfZLAQNT2nr9tmD70An
-         KvuFDsbK6vDQSMNVZYVJQwaTu3Bft/0qvO+ZBhty8+gIXobecw4o5YrAwU7GjKLn8U4/
-         po1fV/o2oqbq98WPU+8Va3ZViA2eWGSaGDH8Knhnz+Ey194Do962Zbbk6BvCIz362CaF
-         i8zzGxONNNVekKWSSUtmvlYPnwL8vLuluErXa3tVXANDdsunW5uJWc0VxutuNKumB8cZ
-         zVlw==
-X-Forwarded-Encrypted: i=1; AJvYcCWmu0W6t+5pV3c5hv4YBnsYl8Gp2dsipUlU/2uVMTd1iqb6gO4l48L6zYceHEIdvL490XBCjaIcpyu5Ho4Smw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw6EA6RAvptpiKM44e7W0Ou6rxPN+MojQQZPHqEhfO3qT0K3w63
-	53D/fdsN/YIXWZT+6sJ83TZyK8W4qbf4L1EFaAsrXt4ITKAA4flg3zw6vG9Wmgw=
-X-Gm-Gg: ASbGncsRP1pSzCs3aFeUm20nTIqQ27Mbf/konkAW7UEflkE9AjbWbknN92V+bQ3fnyC
-	lcHxOaoKVcyNQhyS+YDH/SFxStLPgKMskSUL00PhQUZPcEHlovNj4RXa6RABTPSfw7QsiLF31fN
-	lmRo/Nml5bIrqaAiOGnwd2ciGepX/N17URabSBS1YbgaXlpEui5gAJy9X1SG3R9gGuxw4GqnPkY
-	TyTCurMT2mEHLOXcr0F+6I75ynoAiff7YWeJPAEz8IBmzOHt+vc0JX/jxWNpZLW1OKUbjSSQ2fg
-	TWTsh3Ru0cOFgw==
-X-Google-Smtp-Source: AGHT+IFS+7K0lEJaKeykwcJTAWzQZ4yXS8JJlRIPKoQmKX+XT9czJ5uZIfuXu4QgSvNX8SY83S/kkw==
-X-Received: by 2002:a7b:c7da:0:b0:434:9499:9e87 with SMTP id 5b1f17b1804b1-4349499a073mr49405845e9.25.1732534335055;
-        Mon, 25 Nov 2024 03:32:15 -0800 (PST)
-Received: from [192.168.0.172] (88-127-185-239.subs.proxad.net. [88.127.185.239])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fbc3dfasm10487119f8f.76.2024.11.25.03.32.13
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 25 Nov 2024 03:32:14 -0800 (PST)
-Message-ID: <dad2ecb7-e624-49c2-a7d5-0ff53b6a1686@baylibre.com>
-Date: Mon, 25 Nov 2024 12:32:13 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1tFXbW-00000007w7d-3eaO;
+	Mon, 25 Nov 2024 11:50:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1732535410; x=1764071410;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=kSYSImDUvkzfXkaqiB+cnw9SCsDTqsyLlK3fME3dMxw=;
+  b=oK2s4pmc7e3mcsFPPhrImrQlACtQ/wOlSupU6f/GgP/vo9Hbua37WkWi
+   H8swLdxYBTkZqiWThIJ49YHzliFgY9LQHMIziBtew3I38OAhvE4CXEv48
+   smx2jKNfUo63/lrs/w7Dk8YpZCp93fcyPd0wCrn0mBHknng2Y/MNPszSy
+   9i3Wiuf64J28ZyvgPy2K6IGBaeJC9aUgd8G/kpPO9rGy3dlBxUDXuIp1d
+   9wc5GASGMLAiRhASehAtChvWYrAE7u1AdTPdJu+pRisNK/86yBzrQMjq5
+   9GKIrAMc4lDbwKATs4NS8mJNCtf0KwYSftGBw3iorx+vUvqHwsKIAVNu3
+   w==;
+X-CSE-ConnectionGUID: rQIhfVxkRIOF+hxoSMMkDg==
+X-CSE-MsgGUID: lopzR6epQcK6qSSBN3RLcg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11266"; a="44017393"
+X-IronPort-AV: E=Sophos;i="6.12,182,1728975600"; 
+   d="scan'208";a="44017393"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Nov 2024 03:50:08 -0800
+X-CSE-ConnectionGUID: mhL5UBfPSYuWDQnQLKUlgw==
+X-CSE-MsgGUID: 6j3M5iBBQp6hsk0gnibVaQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,182,1728975600"; 
+   d="scan'208";a="91589894"
+Received: from smile.fi.intel.com ([10.237.72.154])
+  by fmviesa010.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Nov 2024 03:50:05 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.98)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1tFXbO-00000000joT-27qB;
+	Mon, 25 Nov 2024 13:50:02 +0200
+Date: Mon, 25 Nov 2024 13:50:02 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Mark Brown <broonie@kernel.org>, Nicolas Belin <nbelin@baylibre.com>,
+	linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Subject: Re: [PATCH v1 1/1] ASoc: mediatek: mt8365: Don't use "proxy" headers
-To: Mark Brown <broonie@kernel.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Nicolas Belin <nbelin@baylibre.com>, linux-sound@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <Z0RkaqfID9v0age_@smile.fi.intel.com>
 References: <20241031102725.2447711-1-andriy.shevchenko@linux.intel.com>
  <ZykbMlshvlwCaeGJ@smile.fi.intel.com>
  <d7bf7863-fd24-4f8e-8cd0-d84867a997bb@sirena.org.uk>
-Content-Language: en-US
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <d7bf7863-fd24-4f8e-8cd0-d84867a997bb@sirena.org.uk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+ <dad2ecb7-e624-49c2-a7d5-0ff53b6a1686@baylibre.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <dad2ecb7-e624-49c2-a7d5-0ff53b6a1686@baylibre.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241125_033217_115567_3D056DF1 
-X-CRM114-Status: UNSURE (   8.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20241125_035010_948274_8A5EF307 
+X-CRM114-Status: GOOD (  14.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,24 +96,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Andy.
-
-Actually, after test it, "linux/of_gpio.h" isn't needed at all anymore.
-
-That mean all added include in this patch aren't required.
-
-
-On 04/11/2024 22:12, Mark Brown wrote:
-> On Mon, Nov 04, 2024 at 09:06:26PM +0200, Andy Shevchenko wrote:
->> On Thu, Oct 31, 2024 at 12:27:25PM +0200, Andy Shevchenko wrote:
->>> Update header inclusions to follow IWYU (Include What You Use)
->>> principle.
+On Mon, Nov 25, 2024 at 12:32:13PM +0100, Alexandre Mergnat wrote:
+> Hello Andy.
 > 
->> Hmm... I think we are waiting for somebody to Ack / review this change?
+> Actually, after test it, "linux/of_gpio.h" isn't needed at all anymore.
 > 
-> Yes.
+> That mean all added include in this patch aren't required.
+
+Do you mean the driver doesn't not use types from types.h or dev_*() macros
+from dev_printk.h? I don't believe this, sorry.
+
+Basically what you are trying to say is "let's move of_gpio.h implicit
+includes to become something else's problem". It's not what this patch
+intended to do.
+
+> On 04/11/2024 22:12, Mark Brown wrote:
+> > On Mon, Nov 04, 2024 at 09:06:26PM +0200, Andy Shevchenko wrote:
+> > > On Thu, Oct 31, 2024 at 12:27:25PM +0200, Andy Shevchenko wrote:
+> > > > Update header inclusions to follow IWYU (Include What You Use)
+> > > > principle.
+> > 
+> > > Hmm... I think we are waiting for somebody to Ack / review this change?
+> > 
+> > Yes.
 
 -- 
-Regards,
-Alexandre
+With Best Regards,
+Andy Shevchenko
+
+
 
