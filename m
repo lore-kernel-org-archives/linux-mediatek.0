@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35EC5D5806E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Nov 2024 12:05:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69304D5806E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Nov 2024 12:06:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=19cHZxR6TPJYFNcVXHasVfnpFCJVOtcnfayKu/4H3Kg=; b=d2MHwXU50gz4U9NWxG8WJYJxck
-	WTb6B9ZeGYKfIQTqcFpwNwjuXAfCC8w7O0AhPtvDH02aafJqD5/6ep1lXqx/bB6NeSpwlKUpd3vQu
-	Yb3ERsOKAg3OVX2+wkDOc1ZAFPdJcOwgqvk+fTKTDjaAcMbeM2NW8CUzkwoSeA/Nnz2xgYgbIda/c
-	LGu4yLhyAHsu+GGxuA6hMSX0yCNPDxKKb0amFcY4oMnb6TGm8EZ93Iemq0Xv5VymvBt59G8i5Breh
-	ThQhjzZPtJ0irFo548Wm9JrP3BdOTjmCPU+I0meGV+bHnG2dY9uYrnL6syzzfluogJM4RK7duKywl
-	IlZNuAaQ==;
+	bh=19cHZxR6TPJYFNcVXHasVfnpFCJVOtcnfayKu/4H3Kg=; b=JE+bHtwsQcudMJWFekzMXfcM8Q
+	/zbd177Zlbz5r/h7BrF2fnEb+P+NwnUfg/7Mce4JNnu28dwRAURIS7rCxhAiHGuLYDzaiTscgJTDS
+	xzC5+IWxUtZ6kI5kGaB/FbfgT2lUwmPcsV9Qf+Ee46b9bVXl8+B397Tsx9Tg4sXwLzogs7pOPBkcN
+	NvkO+OHlZxY8ARKNooKYDIFfTYjq/aQipOzkX/2Tnep63sQ7CnUIml7QQ3QbKKsYt2/VwCKV+ORxS
+	CdGUz0c2oqd+XSyH9pvZ41Hu5KVTR2oh1iygJqk3xA6ABftO50fdcF1echxygQOBP4oqL9+aK40l8
+	90KwY0zQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFXqB-00000007y2B-115K;
-	Mon, 25 Nov 2024 12:05:19 +0000
+	id 1tFXr6-00000007yCH-1xsv;
+	Mon, 25 Nov 2024 12:06:16 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFXpC-00000007xse-2hJN;
-	Mon, 25 Nov 2024 12:04:20 +0000
+	id 1tFXpG-00000007xt6-0elD;
+	Mon, 25 Nov 2024 12:04:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1732536256;
+	s=mail; t=1732536260;
 	bh=efeNB/rKqi3tpa04/LtQ2JCpX8cpJMScuUTG9pnf4Z8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=GCRAvJGpPGX26CoTYnsb2eoDBqZi5XJcZfpbBt7jCBQgV5rCx8NJgGxqWL1x8CoD+
-	 9Gf2I8UIZ8vin/e+DlEWH6A1D4j3HWv3SpatgZ2zoBgNT4cGdFBfZXSqSXQZc8PIzA
-	 WOv/LE56HrsqMqpvhDtLP+GewLrfTWmoSlQdYxvmU2wPGxuZOMq8a52k/xor0zL4Lh
-	 zYyHKNEaFYb+WjBSGEfgRm4oTcwo2Ca5waMI/i/MoQ8lzRfmi2WJ774dW76W/BWTdK
-	 bs1T27300oMLKYnRFz7gCbL79f/P93Zy2EoliEY0QjPYi98n1cMGWT/qMdqB+E8ZSR
-	 JuERgB62fFkfQ==
+	b=oZRmCsGYOdveIcb8wwttSsU6Wlj1roQjWzv2TWzf2vXlfQzSuk05qbe+TOnseUF5n
+	 g4V9rctEtM5879qAXAl1JtSuEtvxFNUvVUolmEKKOqoI3bWTwDoDGFt6y1a2XZyEI5
+	 EMr8aLDFViRzbg8Wf9sJeu9f8HCzTQVCqQoQtNA5doFIIbhdm4ud8z2N/EEHPRR4tO
+	 UYl+6EsrK27JpO8dFzADaQE4BZwLXl1l2AnDsBFmtUd1Lbf3i0ZhY8WTDhgAwaWxFi
+	 3K6zcdOX7Ol43nTyc6Q449i3BpUrwCjvXwPWPAfix5u7EEBs7I7LONdUxU9HYYD1gG
+	 zM8qO5O2zKVTQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3F48017E3624;
-	Mon, 25 Nov 2024 13:04:16 +0100 (CET)
-Message-ID: <1986c5d3-c897-4218-8a60-02ec69c28ae9@collabora.com>
-Date: Mon, 25 Nov 2024 13:04:15 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1223B17E3626;
+	Mon, 25 Nov 2024 13:04:20 +0100 (CET)
+Message-ID: <a9353ff0-ff29-474d-bfbe-4275d7eb36e8@collabora.com>
+Date: Mon, 25 Nov 2024 13:04:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 2/2] arm64: dts: mediatek: mt8186: Add Starmie device
@@ -66,8 +66,8 @@ In-Reply-To: <CAJrw_jnER6ozh+TiD=nw-DJWf78DKFy-PEVezv-H4ArTrXHS9A@mail.gmail.com
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241125_040418_978234_449EC09B 
-X-CRM114-Status: GOOD (  23.40  )
+X-CRM114-CacheID: sfid-20241125_040422_483687_5DD04B90 
+X-CRM114-Status: GOOD (  23.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
