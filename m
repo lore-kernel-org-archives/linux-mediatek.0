@@ -4,62 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2A1FD58066
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Nov 2024 11:25:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD1D9D58067
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Nov 2024 11:32:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T9GHpg2FMCfcg+9Fy52A9M5ISeOJ+/Qgh8fihHG0vC8=; b=0Kul2A+km5BBD4SeZJu9pT/YlL
-	SthM3lHTyawhcNrgkSUpvGBbfBXM/Zj9UebpU9nmB74w93QxO4P2065HTjuPcMxZhk9EeoOofTqqk
-	xrEnsqIt+P5sVssNIgjQMSmSYIWMOfLfbDrjxNQAfBwv8cREAeLFZVv/vTtOJ5bKnnPoraEJb6+Ur
-	doQQukVwQf1p2WIr2di4OVCt6DDpkqh8fbt2etlnKGyAUskSyccEO2T9Qv1gBYIEMngX8JM5ezH0o
-	rBqm3PXI0EK/9u+Fi1O4lEKrJPbldunr0hYFW4eX0ty+rApB/JryE9TAG9c7xlMC0cQJRi5m6LUpJ
-	2D7yT58g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QMIy+2ZGZlYbGjuPDyKFDMT/8RFkHAkPW/l+lHB1Ssg=; b=QOeZBk1TbISbcoc0qBEd/j23Iq
+	NZR6v5+f21semMgdRwXBeB3FHtMvCBqJZX7Cd3eaFgLK6ouE/jGvw8XHHiEyIRcuEFy/Z+qkKfXJP
+	B6vrxManTFDO1GMF1EWfsAr7/49ODTJKvTJxCKjrHp6cP0jxpyfpKuObnVbMTmTrVJ67HRqUMv9Ll
+	UIsPCNrPLZ+m1J2BYGrdadBzRbvb9jEgVTTiNh6YZTZ9uyVPvjRUVj0oc8QzdJMT1N5QeJVJQQFiC
+	RQeG8sktV5Jkqkli/szqCXO9veyzXBf8uksehrlxHqNg1XBzAktJngHW/vrbSEUWdwPlmpydRLCfh
+	wy/t800Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFXDM-00000007shb-3HYP;
-	Mon, 25 Nov 2024 11:25:12 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1tFXKF-00000007tzQ-3Ox9;
+	Mon, 25 Nov 2024 11:32:19 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFXCM-00000007sVt-31OW;
-	Mon, 25 Nov 2024 11:24:12 +0000
-Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B8A206B5;
-	Mon, 25 Nov 2024 12:23:47 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1732533827;
-	bh=9XSrtMyvUrSDpVncOK3Cu4eq7Kbx4R6lVGbVFgG8+ic=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lNUv0XCSX8ExKTvjC7nk7Ekdpied3X/jF7Sv5GUef6pfX26pFLYWQNkKixsEbYaCc
-	 lZlC5tKn+Ke+8XtcFpuiXX3yOAKUYjQpj1XP/sD5FzDhWDWoFwV3g+dt5CQDOu2v3/
-	 7Edm0c1XkhgXFe9E+ewgTLFZDRjFFnyYB0AcFb3w=
-Date: Mon, 25 Nov 2024 13:24:00 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Julien Stephan <jstephan@baylibre.com>
-Cc: Andy Hsieh <andy.hsieh@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v7 2/5] dt-bindings: media: add mediatek ISP3.0 camsv
-Message-ID: <20241125112400.GQ19381@pendragon.ideasonboard.com>
-References: <20241121-add-mtk-isp-3-0-support-v7-0-b04dc9610619@baylibre.com>
- <20241121-add-mtk-isp-3-0-support-v7-2-b04dc9610619@baylibre.com>
+	id 1tFXKD-00000007ty8-0M6q
+	for linux-mediatek@lists.infradead.org;
+	Mon, 25 Nov 2024 11:32:18 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-43497839b80so12379975e9.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 25 Nov 2024 03:32:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1732534335; x=1733139135; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=QMIy+2ZGZlYbGjuPDyKFDMT/8RFkHAkPW/l+lHB1Ssg=;
+        b=nqI+xPhtKhWBQjEroY4RClBhDefNQgmN83W0In6n++hBLxm8LpifQHfRVp41emC6Jw
+         JmoDysGczJV3PbByYYVAL41fCF7X7KY+PnIA3p9Xc/ZB/9dy/AeXzkxKMZtE+Fddkmzu
+         iobe/O+gFzuAzYgFEitQMJ+nKFTkyjuIz5C7qIkxCFH6CiDE49SLrUGrOriQZstIyaXI
+         HtUTJk9Yl8WVBuOOhfZM3DafqkhfKSUzqHtrVe5Xz5puHfL+arE7KSyog+FuW7Ero9rd
+         TcNiiOdA8O8C07ESMR60RpHp/XnVrbE+f8QD4+MF4y8jKxBWVhThWNrjxY6JamNK+UBQ
+         HZlA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1732534335; x=1733139135;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=QMIy+2ZGZlYbGjuPDyKFDMT/8RFkHAkPW/l+lHB1Ssg=;
+        b=l1r0nV5XTXO5tNm3l7pVAo/KS3/aNN9KcXLnHYV3C93jYzsAQJrY7RZowUH/U2ElBu
+         JE6dv+xvFrziK9GEPjf4zXPNBlAUUxBYlYvp8skGAnhqSVo4HwfZLAQNT2nr9tmD70An
+         KvuFDsbK6vDQSMNVZYVJQwaTu3Bft/0qvO+ZBhty8+gIXobecw4o5YrAwU7GjKLn8U4/
+         po1fV/o2oqbq98WPU+8Va3ZViA2eWGSaGDH8Knhnz+Ey194Do962Zbbk6BvCIz362CaF
+         i8zzGxONNNVekKWSSUtmvlYPnwL8vLuluErXa3tVXANDdsunW5uJWc0VxutuNKumB8cZ
+         zVlw==
+X-Forwarded-Encrypted: i=1; AJvYcCWmu0W6t+5pV3c5hv4YBnsYl8Gp2dsipUlU/2uVMTd1iqb6gO4l48L6zYceHEIdvL490XBCjaIcpyu5Ho4Smw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw6EA6RAvptpiKM44e7W0Ou6rxPN+MojQQZPHqEhfO3qT0K3w63
+	53D/fdsN/YIXWZT+6sJ83TZyK8W4qbf4L1EFaAsrXt4ITKAA4flg3zw6vG9Wmgw=
+X-Gm-Gg: ASbGncsRP1pSzCs3aFeUm20nTIqQ27Mbf/konkAW7UEflkE9AjbWbknN92V+bQ3fnyC
+	lcHxOaoKVcyNQhyS+YDH/SFxStLPgKMskSUL00PhQUZPcEHlovNj4RXa6RABTPSfw7QsiLF31fN
+	lmRo/Nml5bIrqaAiOGnwd2ciGepX/N17URabSBS1YbgaXlpEui5gAJy9X1SG3R9gGuxw4GqnPkY
+	TyTCurMT2mEHLOXcr0F+6I75ynoAiff7YWeJPAEz8IBmzOHt+vc0JX/jxWNpZLW1OKUbjSSQ2fg
+	TWTsh3Ru0cOFgw==
+X-Google-Smtp-Source: AGHT+IFS+7K0lEJaKeykwcJTAWzQZ4yXS8JJlRIPKoQmKX+XT9czJ5uZIfuXu4QgSvNX8SY83S/kkw==
+X-Received: by 2002:a7b:c7da:0:b0:434:9499:9e87 with SMTP id 5b1f17b1804b1-4349499a073mr49405845e9.25.1732534335055;
+        Mon, 25 Nov 2024 03:32:15 -0800 (PST)
+Received: from [192.168.0.172] (88-127-185-239.subs.proxad.net. [88.127.185.239])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fbc3dfasm10487119f8f.76.2024.11.25.03.32.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 25 Nov 2024 03:32:14 -0800 (PST)
+Message-ID: <dad2ecb7-e624-49c2-a7d5-0ff53b6a1686@baylibre.com>
+Date: Mon, 25 Nov 2024 12:32:13 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20241121-add-mtk-isp-3-0-support-v7-2-b04dc9610619@baylibre.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 1/1] ASoc: mediatek: mt8365: Don't use "proxy" headers
+To: Mark Brown <broonie@kernel.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Nicolas Belin <nbelin@baylibre.com>, linux-sound@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20241031102725.2447711-1-andriy.shevchenko@linux.intel.com>
+ <ZykbMlshvlwCaeGJ@smile.fi.intel.com>
+ <d7bf7863-fd24-4f8e-8cd0-d84867a997bb@sirena.org.uk>
+Content-Language: en-US
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <d7bf7863-fd24-4f8e-8cd0-d84867a997bb@sirena.org.uk>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241125_032410_897005_6186DA50 
-X-CRM114-Status: GOOD (  22.68  )
+X-CRM114-CacheID: sfid-20241125_033217_115567_3D056DF1 
+X-CRM114-Status: UNSURE (   8.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,159 +107,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Julien,
+Hello Andy.
 
-Thank you for the patch.
+Actually, after test it, "linux/of_gpio.h" isn't needed at all anymore.
 
-On Thu, Nov 21, 2024 at 09:53:16AM +0100, Julien Stephan wrote:
-> From: Phi-bang Nguyen <pnguyen@baylibre.com>
+That mean all added include in this patch aren't required.
+
+
+On 04/11/2024 22:12, Mark Brown wrote:
+> On Mon, Nov 04, 2024 at 09:06:26PM +0200, Andy Shevchenko wrote:
+>> On Thu, Oct 31, 2024 at 12:27:25PM +0200, Andy Shevchenko wrote:
+>>> Update header inclusions to follow IWYU (Include What You Use)
+>>> principle.
 > 
-> This adds the bindings, for the ISP3.0 camsv module embedded in
-> some Mediatek SoC, such as the mt8365
+>> Hmm... I think we are waiting for somebody to Ack / review this change?
 > 
-> Signed-off-by: Phi-bang Nguyen <pnguyen@baylibre.com>
-> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
-> ---
->  .../bindings/media/mediatek,mt8365-camsv.yaml      | 109 +++++++++++++++++++++
->  MAINTAINERS                                        |   1 +
->  2 files changed, 110 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8365-camsv.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8365-camsv.yaml
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..fdd07675645917fbcd692606c836efd07e50ac0c
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek,mt8365-camsv.yaml
-> @@ -0,0 +1,109 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +# Copyright (c) 2023 MediaTek, BayLibre
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/mediatek,mt8365-camsv.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek CAMSV 3.0
-> +
-> +maintainers:
-> +  - Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> +  - Julien Stephan <jstephan@baylibre.com>
-> +  - Andy Hsieh <andy.hsieh@mediatek.com>
-> +
-> +description:
-> +  The CAMSV is a video capture device that includes a DMA engine connected to
-> +  the SENINF CSI-2 receivers. The number of CAMSVs depend on the SoC model.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt8365-camsv
-> +
-> +  reg:
-> +    items:
-> +      - description: camsv base
-> +      - description: img0 base
-> +      - description: tg base
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    items:
-> +      - description: cam clock
-> +      - description: camtg clock
-> +      - description: camsv clock
-> +
-> +  clock-names:
-> +    items:
-> +      - const: cam
-> +      - const: camtg
-> +      - const: camsv
-> +
-> +  iommus:
-> +    maxItems: 1
-> +
-> +  ports:
-> +    $ref: /schemas/graph.yaml#/properties/ports
-> +
-> +    properties:
-> +      port@0:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +        description: Connection to the SENINF output
-> +
-> +    required:
-> +      - port@0
-> +
-> +required:
-> +  - compatible
-> +  - interrupts
-> +  - clocks
-> +  - clock-names
-> +  - power-domains
-> +  - iommus
-> +  - ports
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/clock/mediatek,mt8365-clk.h>
-
-I would sort the headers alphabetically.
-
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-
-> +    #include <dt-bindings/memory/mediatek,mt8365-larb-port.h>
-> +    #include <dt-bindings/power/mediatek,mt8365-power.h>
-> +
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        camsv@15050000 {
-> +            compatible = "mediatek,mt8365-camsv";
-> +            reg = <0 0x15050000 0 0x0040>,
-> +                  <0 0x15050208 0 0x0020>,
-> +                  <0 0x15050400 0 0x0100>;
-> +            interrupts = <GIC_SPI 186 IRQ_TYPE_LEVEL_LOW>;
-> +            clocks = <&camsys CLK_CAM>,
-> +                     <&camsys CLK_CAMTG>,
-> +                     <&camsys CLK_CAMSV0>;
-> +            clock-names = "cam", "camtg", "camsv";
-> +            iommus = <&iommu M4U_PORT_CAM_IMGO>;
-> +            power-domains = <&spm MT8365_POWER_DOMAIN_CAM>;
-> +
-> +            ports {
-> +                #address-cells = <1>;
-> +                #size-cells = <0>;
-> +                port@0 {
-> +                    reg = <0>;
-> +                    camsv1_endpoint: endpoint {
-> +                        remote-endpoint = <&seninf_camsv1_endpoint>;
-> +                    };
-> +                };
-> +            };
-> +        };
-> +    };
-> +...
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 242c54c88a4a22fc0cbe5c4fc5d7b0d0f84b329e..6147629405c8d40b00c4755a4ee27a746b26f782 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -14570,6 +14570,7 @@ M:	Laurent Pinchart <laurent.pinchart@ideasonboard.com>
->  M:	Julien Stephan <jstephan@baylibre.com>
->  M:	Andy Hsieh <andy.hsieh@mediatek.com>
->  S:	Supported
-> +F:	Documentation/devicetree/bindings/media/mediatek,mt8365-camsv.yaml
->  F:	Documentation/devicetree/bindings/media/mediatek,mt8365-seninf.yaml
->  
->  MEDIATEK SMI DRIVER
+> Yes.
 
 -- 
 Regards,
-
-Laurent Pinchart
+Alexandre
 
