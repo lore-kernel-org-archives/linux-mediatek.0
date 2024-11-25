@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0493AD3B7F8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Nov 2024 10:17:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31BAED3B7FB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Nov 2024 10:17:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nFEisarEAGDUDjXFoCu+t0IDnmIBUm72XkHEoSvtvic=; b=xotpIFel4K4j+MtZK3R6Ny9JYf
-	QHiL4WkbfQM5FKzEZL05JXjJVO9uMNulkV1SKEPD9vwapBOlNn55732zZud4kP5Io7KBN8N+Apgrq
-	YVykFO9i4cnE16YsRqvkO0EwO2MOgsICj2Ugt33BQ1Pl3sMSHnBeTQqP7vXy2W45TlhcnasP0tEz0
-	JmWhVWSBNcsjgg989Q2Qa8a7HVKd8jbErnkpuaJel1TsMP0WwhfKlALHuO2fvvf1IFDY7VEtfcDxC
-	pXmrtUDnO2kAw80dJOJYs2xWbUf3hFwmiwkgbXICCLMrYj33jidRB7iADX6tk75gcfbiNDCZHmCa2
-	HXqVds6g==;
+	bh=N/U591jDR61jTaBydM13/5UfJskFc+l7AdDJHwvu6Cg=; b=Pr/qOuRRyFk7YYJFNKUcWtNLlF
+	/3HKE5gr4XXRo0FYmbWjMLdyyR3K1JG0V7BKuK5lcKiHSYrhq+5gtR0Uw8d1BhrSY9Qat8yFxDD0s
+	bHiFfJCcDMWCSXOPPX23UeifhWuHqdjUxL5g6VqwVIS3Cr/QZ+yt2m8Sfdg1Rrf9vQL+nWUvNBjJr
+	ezlGcQjJEdpTGKSKlQiMg7lI4R1eIWUjv+meNtofS/V4hTw1YwhnNSJaxWPvc5vgr39inpvu2C8qd
+	6w0SgyxOw74/soEOKwOMpLXrca7csJ+kva4xamh4KBZ3AiGpMCe8XRL5XycW3r5HXjCJHHGgkYb4Z
+	Xn2PF5rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFW9o-00000007hgS-0zfq;
-	Mon, 25 Nov 2024 10:17:28 +0000
+	id 1tFWA3-00000007i2A-3MRL;
+	Mon, 25 Nov 2024 10:17:46 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFVZy-00000007bxe-2BKX;
-	Mon, 25 Nov 2024 09:40:28 +0000
+	id 1tFVln-00000007ef9-2o88;
+	Mon, 25 Nov 2024 09:52:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1732527623;
-	bh=d9COl/HNryGOtsnndDDZCpiMYa8ON1Clq6F2gVqRaWE=;
+	s=mail; t=1732528357;
+	bh=2tS8FIGs5XfE/2qFIHTISjAC2cAm3XxgBs/cPNnw7kI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=iqaRCXmAPGiFTo1xKAHvs4MZJXM3fxG9nD+pGnOJH7t3F8fOjFY1lGQaL8bKiloKf
-	 ZdPABCbAi2V2rifIE0bqa0vz0fP8elp3cdd7f/HN9SAXqMUBeGahFmPOuoFmKyjy3a
-	 plnUOVhIR9yAiBt2DMkkop93hprpv1YhrmQB8cOXVfHfG06To05w69kjaWHUFq9oXS
-	 FqkF9KSjpOacEuIf9Tsga2hDnDt0P6BK8EwICMxz86CDJi7vro+JIKolJkPLzI/23H
-	 l2fp8cnzDXAeg/gEYfUt2HIJp13OUUrgHH8sBH8TCvJQDAa5QG5V+XwC5dFGk3nb1U
-	 KpR10zPAMkeew==
+	b=qP6Pk+LCYgDMpAulcmdEP+3T1YaUinBnS5Q/YXyUtee5d1kafzYxViIItesWz5ywp
+	 Lj5lB9+CLm221BhmLUGC7qAXN1mGMcry8/KkzOHY8fcmD9Z+aOwe/o9RiEdWrpKd8y
+	 lf7MubkhsxMmQBb0z/p376R+eZPuEvCihD7+VCsc24fHCywctPYXvykTy7q7jtKQpb
+	 cgtHD59rIUdVrLyd53PTEQ/7bB35w3gN11AyAbX5+oYjITIoJ+IXtskiXoBfbfI4Qp
+	 A+LFiXEMMzPqTKJod654CsxwgEuVin5Tqovg2VhRLJS7MKC4IZ7pTt+OIfoLGSkN00
+	 LHGAZ6qci66Ng==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2B51017E1411;
-	Mon, 25 Nov 2024 10:40:23 +0100 (CET)
-Message-ID: <03b5a671-e0c0-4d18-a103-e7f0ab18e20e@collabora.com>
-Date: Mon, 25 Nov 2024 10:40:22 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 79B6A17E14D5;
+	Mon, 25 Nov 2024 10:52:37 +0100 (CET)
+Message-ID: <dbe132d3-94bf-4801-8d52-167cb2074038@collabora.com>
+Date: Mon, 25 Nov 2024 10:52:36 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 7/7] drm/mediatek: Introduce HDMI/DDC v2 for
- MT8195/MT8188
-To: Maxime Ripard <mripard@kernel.org>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
- simona@ffwll.ch, maarten.lankhorst@linux.intel.com, tzimmermann@suse.de,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, ck.hu@mediatek.com, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- kernel@collabora.com
-References: <20241120124512.134278-1-angelogioacchino.delregno@collabora.com>
- <20241120124512.134278-8-angelogioacchino.delregno@collabora.com>
- <20241122-cobra-of-authentic-discourse-e2c5b6@houat>
+Subject: Re: [PATCH v11 7/7] arm64: dts: mediatek: mt8173-elm-hana: Mark
+ touchscreens and trackpads as fail
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Wolfram Sang <wsa@kernel.org>,
+ chrome-platform@lists.linux.dev, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>,
+ linux-i2c@vger.kernel.org, stable+noautosel@kernel.org
+References: <20241106093335.1582205-1-wenst@chromium.org>
+ <20241106093335.1582205-8-wenst@chromium.org>
+ <1246d672-4370-4db7-b4d0-368524809435@collabora.com>
+ <CAGXv+5H8YwiTyk1eMSwPLuGw5sQxec4n8OKR-Qa5wz8QGH4h9w@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20241122-cobra-of-authentic-discourse-e2c5b6@houat>
+In-Reply-To: <CAGXv+5H8YwiTyk1eMSwPLuGw5sQxec4n8OKR-Qa5wz8QGH4h9w@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241125_014026_762875_63304684 
-X-CRM114-Status: GOOD (  11.57  )
+X-CRM114-CacheID: sfid-20241125_015239_873647_344BD92A 
+X-CRM114-Status: GOOD (  11.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,30 +81,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/11/24 10:20, Maxime Ripard ha scritto:
-> Hi,
-> 
-> On Wed, Nov 20, 2024 at 01:45:12PM +0100, AngeloGioacchino Del Regno wrote:
->> Add support for the newer HDMI-TX (Encoder) v2 and DDC v2 IPs
->> found in MediaTek's MT8195, MT8188 SoC and their variants, and
->> including support for display modes up to 4k60 and for HDMI
->> Audio, as per the HDMI 2.0 spec.
+Il 25/11/24 09:01, Chen-Yu Tsai ha scritto:
+> On Thu, Nov 14, 2024 at 6:36 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
 >>
->> HDCP and CEC functionalities are also supported by this hardware,
->> but are not included in this commit.
+>> Il 06/11/24 10:33, Chen-Yu Tsai ha scritto:
+>>> Instead of having them all available, mark them all as "fail-needs-probe"
+>>> and have the implementation try to probe which one is present.
+>>>
+>>> Also remove the shared resource workaround by moving the pinctrl entry
+>>> for the trackpad interrupt line back into the individual trackpad nodes.
+>>>
+>>> Cc: <stable+noautosel@kernel.org> # Needs accompanying new driver to work
+>>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+>>> Reviewed-by: Douglas Anderson <dianders@chromium.org>
 >>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > 
-> Just a heads-up, you should really be using the new HDMI helpers, it'll
-> remove a lot of boilerplate and potential bugs.
+> Hi Angelo,
 > 
-> Maxime
+> Could Wolfram also take this patch instead of it having to wait another cycle?
+> 
+> 
+> Thanks
+> ChenYu
 
-Hmm... the state helper you mean? Or the inflight series from Dmitry?
 
-In any case... yeah, you're right, let me check which helpers I can use: that's
-going to be done for v2 :-)
+Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Thanks!
+Yes
+
+Thanks,
 Angelo
 
