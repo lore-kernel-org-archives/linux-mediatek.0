@@ -4,73 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47DD3D3B7C1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 09:52:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 560E9D3B7CA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 09:58:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NrLGh+CTlg7gUakpbBIvXlLpDiBrQBZ4gHSH/rh0gBc=; b=O1I/b1TNhBcWWPr2xmVSMRoD4b
-	6MM3wHXZeZuZSHzBm6Up8c/tHe8PfWkZ97cN9s/Fkp71//dXpgWMNCamNOb6d8Ty5IA4vP38NMmk4
-	pyHw1ybnzOAFEGv2pmREhtpUMeHoNPUIDwOn0a/FGllX3TTQSn07S5vttueg/HqWRgsKbvcV/pwO3
-	ncCSG2JV5Bz4adJafChknRKFmzFjPvlqrqa1tRKgofpJMf0ykjQoIrhqlGc/UE4IulAai0xOwE9VA
-	bg/CV6+nAGu+RRzAJIRXLSho7N5zsFtQ7x6aCvPQ1YVV3WZbvT7FLYBbVnvwb0vbkYMFmjOCqHyZ0
-	oc9U8zdQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/Mk54wWOTxtnUjWD4fc+DJyfim3lSux+/TbFhyd5wc4=; b=TIFBHic8u7jkSDAF265oZyv/bn
+	RQihFnHVqb7xPXbU7zWvZwv0jrcaUe5xjUc4Qzk9JoUvV0hM/HytUm+tuU2OKO11/V6IbkaAaIAFp
+	F3+dwWi54k9Ep//y8l/eeCDcUgj5ZxDtZuqsLQRG2EVKfQ4kF0fkQGjj3WwZk7SXhhj34AfFnkCRr
+	knZbFr5CyVCuZzHNIOgbsqNz80Fholi6gM8KA9TjNlt7fQhCpDSJh6KfLXYLXvGEXNYU59rvVZRzj
+	9ZsNH5Qg8Ygxe1fkAVDaimOGfX/rEUpbdIIFmxUiTinp8np3kDK9RXWMkF4WHgm/KWEKEuBomiQIq
+	l2/b9Vhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFsFN-0000000ADwm-1LG3;
-	Tue, 26 Nov 2024 09:52:41 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1tFsLJ-0000000AEg0-221o;
+	Tue, 26 Nov 2024 09:58:49 +0000
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFs6v-0000000ACPV-3cNo;
-	Tue, 26 Nov 2024 09:43:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1732614236;
-	bh=rYvgffP7WJsxBoyO5PEpR5F9aHAYnGMAwwh2irwZ6Ts=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=EzEvnnbuupFz6kFdVUF7t3YOGdGh8XlfBbdmD590tYE07dgB0LmqHSHUf54V39Cmr
-	 SVK9+hS61HsXwPfQz4QGWucQGG+bLKHkOUrbDyM69VtdrO6XFC8rMc+NRzzNWzg75t
-	 BuwcZjPdZHCVuDS65Y0FeYvOEGSHCCYVeZqVcee2WC8+XkrU3h4zAottyZvpj+im4z
-	 2fZx49YLYmLDhKceEjRCie09NgwCaXB/wiulZLNKkZVjQLcwJYdY5Y9bK2UVrBeqOt
-	 juAoUh+K6nenpke6UjUcjHBgn9+qx2sTdLX8Nkb9fTdOD9t7SfTxxt5wGpXYeeUUnO
-	 kFgBSumoPxPcg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 97A8017E1524;
-	Tue, 26 Nov 2024 10:43:55 +0100 (CET)
-Message-ID: <600f9d78-bdc8-4133-bb43-06d798bcd543@collabora.com>
-Date: Tue, 26 Nov 2024 10:43:55 +0100
+	id 1tFsKH-0000000AESS-3CSo
+	for linux-mediatek@lists.infradead.org;
+	Tue, 26 Nov 2024 09:57:47 +0000
+Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-21290973bcbso51838295ad.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 26 Nov 2024 01:57:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1732615064; x=1733219864; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=/Mk54wWOTxtnUjWD4fc+DJyfim3lSux+/TbFhyd5wc4=;
+        b=VMtaxMF7mNlmyyNZuwUj4yDBS/dLP/j9YO6tnbBoTx6I4INjjaSxLN8M8pWoolWzrR
+         W6oukLXINElx08sBa1xWVhxZ5QNAxPv4VWZUvWjqLtHsS4EeI+4QHt4Ca5pJ8uMvMCYU
+         9OLEhcN2W9D35uCiB/lA9a+6fk5IoqNcwUIUA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1732615064; x=1733219864;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=/Mk54wWOTxtnUjWD4fc+DJyfim3lSux+/TbFhyd5wc4=;
+        b=h7JDihDycccKcCozpNrUYqLXTtdW8yq80YYepBBH+1bYoO1rqIDNrwAgh9Uj6lacIs
+         NNcGUT3yEz1u2v6AjUJRB+5SjaKzbbnXPwlFqX95N03sjMwL8iAr3R+9/Ny4DlBRD0SC
+         YnICLvds+eLjdVmRiu+oVdjdYprtnVE4MjxiUZgOqOoTXr/EHCuxBlrxYorb9WhbBLn0
+         Ca4xBFtexSmcAvmQtwTubYkm9paiwUz5OBlfGggfigraDMu61yK8jc9ZmQhZeJ9tS/vU
+         jIoICL9Acp+47gmVgX17r8WxBxh0i2vxlkYbXwi1hqOXfsJ7OH5Ol34rriBUdTRAnyAY
+         Gyhg==
+X-Forwarded-Encrypted: i=1; AJvYcCX8SN4faJGM4n9cfglxcWX6Krot70zYQAH/6PyMa7aqGB8RY9oYSckWn86l5pVTQgS0qJNFIEiWgkJsB1fMiA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxhsA7y4kil6qYrvWS69CapjqJEiD++o5PvFjnS7fTRTX9wHneW
+	enEngxGCfpU4ck6XX3vUDE5ObG9x4daKTaZ2B/P4KQnRJBtm9/ClZlsCp3JQmWFEThWcoVhGD2R
+	Lpw==
+X-Gm-Gg: ASbGncuQPi8cQVhMufrRWfcWkfFtnSAUlsu1UsZrKXRioM1yBJiaAZVqvHTylKymNk3
+	P7hs9E5gw5tr6e6010pkHi3diGKznzdn+ph1UQEKb1rcoBi7bkI2/GLf0b+RbuQCWw4I8PbbjiR
+	eJRgOsnXzRin0E/Eg9HzAgvgoQH/oLHDjhsMqVAc+vSYFaPj+ChIaSRP4tZJn4jTDiOcY/QO12t
+	LU4SAILOAm0GzkDb7dMQwijKlkunaeWM7QE6uqK1MZM2U29UsIZeZzN2cPJh/PII3jhokLDlpVP
+	hH7XCzcDMg==
+X-Google-Smtp-Source: AGHT+IFSDVH3rH4UFp5xBcT+SP0jqNRzEoGUEI6ov6sZL9QTnujK3nAAwyk2B7XeTcH6vPgj3iPXZg==
+X-Received: by 2002:a17:903:228d:b0:211:f335:aba with SMTP id d9443c01a7336-2129f5790edmr273271445ad.31.1732615064355;
+        Tue, 26 Nov 2024 01:57:44 -0800 (PST)
+Received: from yuanhsinte-p620-1.tpe.corp.google.com ([2401:fa00:1:10:a3c8:df68:1f94:539c])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2129db890b7sm80908485ad.9.2024.11.26.01.57.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 26 Nov 2024 01:57:43 -0800 (PST)
+From: Hsin-Te Yuan <yuanhsinte@chromium.org>
+Date: Tue, 26 Nov 2024 17:57:40 +0800
+Subject: [PATCH RESEND v4] arm64: dts: mt8183: set DMIC one-wire mode on
+ Damu
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] thermal/drivers/mediatek/lvts: Disable monitor mode
- during suspend
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Alexandre Mergnat <amergnat@baylibre.com>,
- Balsam CHIHI <bchihi@baylibre.com>
-Cc: kernel@collabora.com, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Hsin-Te Yuan <yuanhsinte@chromium.org>,
- Chen-Yu Tsai <wenst@chromium.org>, =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?=
- <bero@baylibre.com>, "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
- stable@vger.kernel.org
-References: <20241125-mt8192-lvts-filtered-suspend-fix-v1-0-42e3c0528c6c@collabora.com>
- <20241125-mt8192-lvts-filtered-suspend-fix-v1-1-42e3c0528c6c@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20241125-mt8192-lvts-filtered-suspend-fix-v1-1-42e3c0528c6c@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20241126-damu-v4-1-e746eec2cb52@chromium.org>
+X-B4-Tracking: v=1; b=H4sIAJObRWcC/72PMW/DIBSE/0rEXCoeYAyZMjRrh3asMoB5xAw2E
+ U5oosj/vcRD1ahZunS8p7vv3V3JhDniRNarK8lY4hTTWIV8WpGut+MeafRVE864BMYM9XY4USs
+ CD0K2WjJDqvWQMcTzgvkgb9v37esL2dV7yGmgxz6j/YYwA4ymEelnzEgLp0C5c5L5xoou6E3X1
+ 0w8Dc8p72/oPk7HlC9LwSKWB/ddiqgI4EZ2GkFpbu4RtxpFPsrJmmu1cS04rxqufr3+Fz+A+OF
+ XBsApo4B5/2BH8/cdu3mevwCVSffi5gEAAA==
+X-Change-ID: 20241009-damu-a3f2f3478409
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Hsin-Te Yuan <yuanhsinte@chromium.org>
+X-Mailer: b4 0.15-dev-2a633
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241126_014358_041741_BF97DE1C 
-X-CRM114-Status: GOOD (  24.67  )
+X-CRM114-CacheID: sfid-20241126_015745_792306_CD3D596E 
+X-CRM114-Status: GOOD (  10.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,114 +105,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/11/24 22:20, Nícolas F. R. A. Prado ha scritto:
-> When configured in filtered mode, the LVTS thermal controller will
-> monitor the temperature from the sensors and trigger an interrupt once a
-> thermal threshold is crossed.
-> 
-> Currently this is true even during suspend and resume. The problem with
-> that is that when enabling the internal clock of the LVTS controller in
-> lvts_ctrl_set_enable() during resume, the temperature reading can glitch
-> and appear much higher than the real one, resulting in a spurious
-> interrupt getting generated.
-> 
-> Disable the temperature monitoring and give some time for the signals to
-> stabilize during suspend in order to prevent such spurious interrupts.
-> 
-> Cc: stable@vger.kernel.org
-> Reported-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
-> Closes: https://lore.kernel.org/all/20241108-lvts-v1-1-eee339c6ca20@chromium.org/
-> Fixes: 8137bb90600d ("thermal/drivers/mediatek/lvts_thermal: Add suspend and resume")
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> ---
->   drivers/thermal/mediatek/lvts_thermal.c | 36 +++++++++++++++++++++++++++++++--
->   1 file changed, 34 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-> index 1997e91bb3be94a3059db619238aa5787edc7675..a92ff2325c40704adc537af6995b34f93c3b0650 100644
-> --- a/drivers/thermal/mediatek/lvts_thermal.c
-> +++ b/drivers/thermal/mediatek/lvts_thermal.c
-> @@ -860,6 +860,32 @@ static int lvts_ctrl_init(struct device *dev, struct lvts_domain *lvts_td,
->   	return 0;
->   }
->   
-> +static void lvts_ctrl_monitor_enable(struct device *dev, struct lvts_ctrl *lvts_ctrl, bool enable)
-> +{
-> +	/*
-> +	 * Bitmaps to enable each sensor on filtered mode in the MONCTL0
-> +	 * register.
-> +	 */
-> +	u32 sensor_filt_bitmap[] = { BIT(0), BIT(1), BIT(2), BIT(3) };
-> +	u32 sensor_map = 0;
-> +	int i;
-> +
-> +	if (lvts_ctrl->mode != LVTS_MSR_FILTERED_MODE)
-> +		return;
-> +
+From: Hsin-Yi Wang <hsinyi@chromium.org>
 
-That's easier and shorter:
+Sets DMIC one-wire mode on Damu.
 
-static void lvts_ctrl_monitor_enable( .... )
-{
-	/* Bitmap to enable each sensor on filtered mode in the MONCTL0 register */
-	const u32 sensor_map = GENMASK(3, 0);
+Fixes: cabc71b08eb5 ("arm64: dts: mt8183: Add kukui-jacuzzi-damu board")
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Hsin-Te Yuan <yuanhsinte@chromium.org>
+---
+Changes in v4:
+- Add Reviewed-by tag back, which is dropped in v3
+- Link to v3: https://lore.kernel.org/r/20241009-damu-v3-1-1294c8e16829@chromium.org
 
-	if (lvts_ctrl->mode != LVTS_MSR_FILTERED_MODE)
-		return;
+Changes in v3:
+- Add missing Sign-off-by tag
+- Link to v2: https://lore.kernel.org/r/20240910-one-wire-v2-1-2bb40d5a3cf8@chromium.org
 
-	/* Bits 0-3: Sensing points - Bit 9: Single point access flow */
-	if (enable)
-		writel(sensor_map | BIT(9), LVTS_MONCTL0(lvts_ctrl->base));
-	else
-		writel(BIT(9), LVTS_MONCTL0 ....
-}
+Changes in v2:
+- Add fixes tag 
+- Link to v1: https://lore.kernel.org/r/20240910-one-wire-v1-1-d25486a6ba6d@chromium.org
+---
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
+index 65860b33c01fe832f3a4b2e21d24ea6b4f0cba2b..3935d83a047e0827b6feddceb3e4dcb4fc3407cc 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
+@@ -26,6 +26,10 @@ &touchscreen {
+ 	hid-descr-addr = <0x0001>;
+ };
+ 
++&mt6358codec {
++	mediatek,dmic-mode = <1>; /* one-wire */
++};
++
+ &qca_wifi {
+ 	qcom,ath10k-calibration-variant = "GO_DAMU";
+ };
 
-Cheers,
-Angelo
+---
+base-commit: 7eef7e306d3c40a0c5b9ff6adc9b273cc894dbd5
+change-id: 20241009-damu-a3f2f3478409
 
-> +	if (enable) {
-> +		lvts_for_each_valid_sensor(i, lvts_ctrl)
-> +			sensor_map |= sensor_filt_bitmap[i];
-> +	}
-> +
-> +	/*
-> +	 * Bits:
-> +	 *      9: Single point access flow
-> +	 *    0-3: Enable sensing point 0-3
-> +	 */
-> +	writel(sensor_map | BIT(9), LVTS_MONCTL0(lvts_ctrl->base));
-> +}
-> +
->   /*
->    * At this point the configuration register is the only place in the
->    * driver where we write multiple values. Per hardware constraint,
-> @@ -1381,8 +1407,11 @@ static int lvts_suspend(struct device *dev)
->   
->   	lvts_td = dev_get_drvdata(dev);
->   
-> -	for (i = 0; i < lvts_td->num_lvts_ctrl; i++)
-> +	for (i = 0; i < lvts_td->num_lvts_ctrl; i++) {
-> +		lvts_ctrl_monitor_enable(dev, &lvts_td->lvts_ctrl[i], false);
-> +		usleep_range(100, 200);
->   		lvts_ctrl_set_enable(&lvts_td->lvts_ctrl[i], false);
-> +	}
->   
->   	clk_disable_unprepare(lvts_td->clk);
->   
-> @@ -1400,8 +1429,11 @@ static int lvts_resume(struct device *dev)
->   	if (ret)
->   		return ret;
->   
-> -	for (i = 0; i < lvts_td->num_lvts_ctrl; i++)
-> +	for (i = 0; i < lvts_td->num_lvts_ctrl; i++) {
->   		lvts_ctrl_set_enable(&lvts_td->lvts_ctrl[i], true);
-> +		usleep_range(100, 200);
-> +		lvts_ctrl_monitor_enable(dev, &lvts_td->lvts_ctrl[i], true);
-> +	}
->   
->   	return 0;
->   }
-> 
+Best regards,
+-- 
+Hsin-Te Yuan <yuanhsinte@chromium.org>
 
 
