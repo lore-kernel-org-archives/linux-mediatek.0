@@ -4,76 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DE8DD5A6E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 04:37:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 846B1D5A6E2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 04:53:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eHAWaib+jGrJBZBZh5EnoY+Myh/wsDs7WnzVFDUkGnw=; b=xShlMnPW3sv4PY
-	i2RWiBakohqrHTexK09OS+TD+MSztGbuzzj8RcjPtbiyzE/5Zq1ViqZD8xtNFAgEXdF3J10yoqeEU
-	SWU3xHdnOwAAt9sL4o8KqwD6yIUY3G58kjxYEp0sob5mKaHjhsjSf6jcgbrF9khH/MhjSinBupW2v
-	a592hMmD9OfrnBDeLmfIMadKzRn8tvnxtyrD7cXBuOSf1c5KZGjOlb5uNcemw7nUMeReJ79Q4wg0n
-	wH5EK8+LzsWqHnzmB4+3a6WNPKix6QW9IqcJsNyW8gO9o0HWSswLcAmA5YijVQ7yu3sK/XAindV7W
-	87KGPmZay8VtY/c2UuDw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:From:To:Date:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=AIM9G46Lewbfr7gTOPpDDjFQJKkuhMHWUdwgeo5jv2s=; b=1L/FEiV5bCl8CZa6pwSllrv8ye
+	D58231yOs01eq9Ix8lLuliKGugawUnpLyuSRg/txyUYLUV5nJhHcxF4JSmNqE0+ttCGdiRJFAmb0R
+	YlLjRvdNwBSGfRkH2fMr5U2YHVJftAus3MfnTo54JEP6X5iR1qWV1RYnoIi6I6OM/D++aBCKU935F
+	edTW2qf05Rvy9dT98/Oxe0Wv1TsBVRRad9zkMoXZp1DbvaScrsclDxyJp6G0zhnlC94f2iXSnu/Iv
+	A48qxHNCtKkinghjA04zKNwDMokJKdhw3731YaLY4Nmoza37JmKTeTOlqBgFCCLa4G4SQ9vHT6pZo
+	caDM16IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFnKG-00000009cOQ-2RjF;
-	Tue, 26 Nov 2024 04:37:24 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1tFnZX-00000009dGX-499C;
+	Tue, 26 Nov 2024 04:53:11 +0000
+Received: from mail-4022.proton.ch ([185.70.40.22])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFnJI-00000009cGh-2YOa;
-	Tue, 26 Nov 2024 04:36:25 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E87625C5CA6;
-	Tue, 26 Nov 2024 04:35:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C917EC4CED3;
-	Tue, 26 Nov 2024 04:36:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1732595782;
-	bh=n248E6cQcbmvG8TJRwSTTgSI3ENxL08+73ZTFK+rZTc=;
-	h=References:In-Reply-To:Reply-To:From:Date:Subject:To:Cc:From;
-	b=dRO0XKyBjn5Sm3VWOtwEUo+mqxF3CJpxJhf7SGeFt3aAk0EY1RLRSSLYDcV4UFsqa
-	 DQbM3IKx+Zh1bZb5C99QSgnqGNG6HFZ+zkcHa0aWVGnSu9mZW9yses0V9y5LpQ9x+d
-	 H6qZFutUXdVT0TyU/A1nxrNzHhMhXjyqsV4s2lPnXsV2/c0cS8yPD+EiZfCgYN7PTl
-	 kDT29DR1x3H7PmDXixZxEOplD1Y6m6TaNHPhsSZd/BN6NgDnelC9wOaaC38z5ivMTL
-	 8D6M99i+s6d6EXL2pGV9QDalRNAGgfJFkD1RbLpxmaQJGDf5qwqitKLRBROHcdY5/T
-	 kn4+2MCFbgxUQ==
-Received: by mail-lj1-f172.google.com with SMTP id 38308e7fff4ca-2ffc80318c9so14356291fa.2;
-        Mon, 25 Nov 2024 20:36:22 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCWkraFJOPlbkRaAsDqbmQ9WkMc0pc0Q6y8mGfZPAXK01bO/yWbkovxBb7k9ditLSfubSdbhW1AymKNmrUd1YjEz@lists.infradead.org, AJvYcCXCWuifydo6tS1nZYVTNK/VzuxgUHp1nUw4r7DaLOJDXx4SqS+hBy5ZG9oXfmcE1wPPTEdJai6nGpq1bvCfmSs=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzya/EhDm78eDVDuA927rRrzky9CbF29O9ytp6rjH8K/zbZgR2e
-	jKw4oOh8ge9nFzwq9+ruW0XOas1W50br84QSszJxdUwBTWjAayFeIhUkI17I7w1FVYo4aZYimVD
-	Ys/dHz146lOyz2CDSaPPXQdy98oc=
-X-Google-Smtp-Source: AGHT+IHMAT53tm+g3nrPUDVGLRawbIHJgSk3HrbNUkSwnVRCsvyn/bk3pAQYfMYGomGQd/Wz+5r8KSfUblsBUM7L9ck=
-X-Received: by 2002:a05:651c:1987:b0:2ff:bae5:90fe with SMTP id
- 38308e7fff4ca-2ffbae5952bmr34535991fa.13.1732595781097; Mon, 25 Nov 2024
- 20:36:21 -0800 (PST)
+	id 1tFnZU-00000009dG3-2EU5
+	for linux-mediatek@lists.infradead.org;
+	Tue, 26 Nov 2024 04:53:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=monroe.io;
+	s=protonmail; t=1732596783; x=1732855983;
+	bh=AIM9G46Lewbfr7gTOPpDDjFQJKkuhMHWUdwgeo5jv2s=;
+	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector:
+	 List-Unsubscribe:List-Unsubscribe-Post;
+	b=BTzIZ1i+w+Qek8LkJZ8KTdZc3YrHMmLqez+q1QnnCTWSeC76rmA/m/aYzXZHayjRT
+	 BiGb5olZV3rZwSKHvjn2dArD0d3L7G3aLlElYwBtwP7kBe9kwCkiL70f1ayFFvXP7U
+	 sQFuHc2aga344twHxm0GzFQF38ACAN1LePFmXMEFK6DOVW/Ss9Srfgf+AhRccPVGVX
+	 WHvRvvkYRMZQXZF2msr6DBV+i/1HYrMBmJJBv127kDwec/+lOGjRQ06VgbmRGaJBTq
+	 JbDrdQG95XdXuAuXOCxPZWHibiGsDlMk6xlWzMTXN+ULWUqiX9HbROUG4nfW4njK/q
+	 hmwMDoAPidY9g==
+Date: Tue, 26 Nov 2024 04:52:58 +0000
+To: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes.berg@intel.com>
+From: Chad Monroe <chad@monroe.io>
+Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, Chad Monroe <chad@monroe.io>
+Subject: [PATCH] wifi: mt76: mt7915: exclude tx backoff time from airtime
+Message-ID: <026380cec180261956b983cbdb009605867bcd8d.1732596478.git.chad@monroe.io>
+Feedback-ID: 9731019:user:proton
+X-Pm-Message-ID: 0bef503ef34258a0a7a67823071503228d0c0792
 MIME-Version: 1.0
-References: <20241125082130.2390310-1-wmacek@chromium.org> <20241125082130.2390310-2-wmacek@chromium.org>
- <20241125-snowcap-sulphate-34944bd70cf3@spud>
-In-Reply-To: <20241125-snowcap-sulphate-34944bd70cf3@spud>
-From: Chen-Yu Tsai <wens@kernel.org>
-Date: Tue, 26 Nov 2024 12:36:08 +0800
-X-Gmail-Original-Message-ID: <CAGb2v655Bfx44XBPH24FKuEFTJ3ngjbAPEpNBn5vyLZfNGKt+Q@mail.gmail.com>
-Message-ID: <CAGb2v655Bfx44XBPH24FKuEFTJ3ngjbAPEpNBn5vyLZfNGKt+Q@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] dt-bindings: arm: mediatek: Add MT8186 Starmie Chromebooks
-To: Conor Dooley <conor@kernel.org>
-Cc: Wojciech Macek <wmacek@chromium.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, 
-	Rafal Milecki <rafal@milecki.pl>, Hsin-Yi Wang <hsinyi@chromium.org>, 
-	Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241125_203624_731592_0ACAF598 
-X-CRM114-Status: GOOD (  18.09  )
+X-CRM114-CacheID: sfid-20241125_205309_187322_B7A13852 
+X-CRM114-Status: UNSURE (   7.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,71 +65,120 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: wens@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 26, 2024 at 2:34=E2=80=AFAM Conor Dooley <conor@kernel.org> wro=
-te:
->
-> On Mon, Nov 25, 2024 at 08:21:28AM +0000, Wojciech Macek wrote:
-> > Add an entry for the MT8186 based Starmie Chromebooks, also known as th=
-e
-> > ASUS Chromebook Enterprise CM30 Detachable (CM3001). The device is
-> > a tablet style chromebook.
-> >
-> > Signed-off-by: Wojciech Macek <wmacek@chromium.org>
-> > ---
-> >
-> > Changelog v2-v1:
-> >  - Fixed items/const bidings description in mediatek.yaml
-> >
-> >  Documentation/devicetree/bindings/arm/mediatek.yaml | 13 +++++++++++++
-> >  1 file changed, 13 insertions(+)
-> >
-> > diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Docu=
-mentation/devicetree/bindings/arm/mediatek.yaml
-> > index 1d4bb50fcd8d9..6191a5320c148 100644
-> > --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> > +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> > @@ -263,6 +263,19 @@ properties:
-> >            - const: google,steelix-sku196608
-> >            - const: google,steelix
-> >            - const: mediatek,mt8186
-> > +      - description: Google Starmie (ASUS Chromebook Enterprise CM30 (=
-CM3001))
-> > +        items:
-> > +          - const: google,starmie-sku0
-> > +          - const: google,starmie-sku2
-> > +          - const: google,starmie-sku3
->
-> Compatible order here is back to making little sense. Why is the oldest
-> SKU, in both cases, appearing first?
+This helps to make STA airtime counters more accurate.
 
-FWIW the SKU number has no particular ordering. They were released together=
-.
-SKU denotes different configurations (memory, storage, touchscreen and othe=
-r
-component options). OOTH revisions would actually have chronological meanin=
-g.
+Signed-off-by: Chad Monroe <chad@monroe.io>
+Suggested-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/init.c | 9 +++++++++
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c  | 9 +++++++--
+ drivers/net/wireless/mediatek/mt76/mt7915/mmio.c | 2 ++
+ drivers/net/wireless/mediatek/mt76/mt7915/regs.h | 7 +++++++
+ 4 files changed, 25 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net=
+/wireless/mediatek/mt76/mt7915/init.c
+index 6bef96e3d2a3..faa1bc8359d9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -512,6 +512,15 @@ mt7915_mac_init_band(struct mt7915_dev *dev, u8 band)
+ =09mt76_clear(dev, MT_WF_RMAC_MIB_AIRTIME4(band),
+ =09=09   MT_WF_RMAC_MIB_QOS23_BACKOFF);
+=20
++=09/* clear backoff time for Tx duration */
++=09mt76_clear(dev, MT_WTBLOFF_TOP_ACR(band),
++=09=09   MT_WTBLOFF_TOP_ADM_BACKOFFTIME);
++
++=09/* exclude estimated backoff time for Tx duration on MT7915 */
++=09if (is_mt7915(&dev->mt76))
++=09=09mt76_set(dev, MT_AGG_ATCR0(band),
++=09=09=09   MT_AGG_ATCR_MAC_BFF_TIME_EN);
++
+ =09/* clear backoff time and set software compensation for OBSS time */
+ =09mask =3D MT_WF_RMAC_MIB_OBSS_BACKOFF | MT_WF_RMAC_MIB_ED_OFFSET;
+ =09set =3D FIELD_PREP(MT_WF_RMAC_MIB_OBSS_BACKOFF, 0) |
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/=
+wireless/mediatek/mt76/mt7915/mcu.c
+index 87d0dd040001..35af41b5bad6 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -3150,8 +3150,13 @@ int mt7915_mcu_get_chan_mib_info(struct mt7915_phy *=
+phy, bool chan_switch)
+ =09res =3D (struct mt7915_mcu_mib *)(skb->data + offs_cc);
+=20
+ #define __res_u64(s) le64_to_cpu(res[s].data)
+-=09/* subtract Tx backoff time from Tx duration */
+-=09cc_tx =3D is_mt7915(&dev->mt76) ? __res_u64(1) - __res_u64(4) : __res_u=
+64(1);
++=09/* subtract Tx backoff time from Tx duration for MT7915 */
++=09if (is_mt7915(&dev->mt76)) {
++=09=09u64 backoff =3D (__res_u64(4) & 0xffff) * 79;  /* 16us + 9us * 7 */
++=09=09cc_tx =3D __res_u64(1) - backoff;
++=09} else {
++=09=09cc_tx =3D __res_u64(1);
++=09}
+=20
+ =09if (chan_switch)
+ =09=09goto out;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net=
+/wireless/mediatek/mt76/mt7915/mmio.c
+index 44e112b8b5b3..530182e20ce2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+@@ -138,6 +138,7 @@ static const u32 mt7915_offs[] =3D {
+ =09[AGG_ACR0]=09=09=3D 0x084,
+ =09[AGG_ACR4]=09=09=3D 0x08c,
+ =09[AGG_MRCR]=09=09=3D 0x098,
++=09[AGG_ATCR0]=09=09=3D 0x0ec,
+ =09[AGG_ATCR1]=09=09=3D 0x0f0,
+ =09[AGG_ATCR3]=09=09=3D 0x0f4,
+ =09[LPON_UTTR0]=09=09=3D 0x080,
+@@ -212,6 +213,7 @@ static const u32 mt7916_offs[] =3D {
+ =09[AGG_ACR0]=09=09=3D 0x054,
+ =09[AGG_ACR4]=09=09=3D 0x05c,
+ =09[AGG_MRCR]=09=09=3D 0x068,
++=09[AGG_ATCR0]=09=09=3D 0x1a4,
+ =09[AGG_ATCR1]=09=09=3D 0x1a8,
+ =09[AGG_ATCR3]=09=09=3D 0x080,
+ =09[LPON_UTTR0]=09=09=3D 0x360,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net=
+/wireless/mediatek/mt76/mt7915/regs.h
+index 89ac8e6707b8..c5ec63a25a42 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
+@@ -66,6 +66,7 @@ enum offs_rev {
+ =09AGG_ACR0,
+ =09AGG_ACR4,
+ =09AGG_MRCR,
++=09AGG_ATCR0,
+ =09AGG_ATCR1,
+ =09AGG_ATCR3,
+ =09LPON_UTTR0,
+@@ -254,6 +255,9 @@ enum offs_rev {
+ #define MT_WTBLOFF_TOP_RSCR_RCPI_MODE=09GENMASK(31, 30)
+ #define MT_WTBLOFF_TOP_RSCR_RCPI_PARAM=09GENMASK(25, 24)
+=20
++#define MT_WTBLOFF_TOP_ACR(_band)=09MT_WTBLOFF_TOP(_band, 0x010)
++#define MT_WTBLOFF_TOP_ADM_BACKOFFTIME=09BIT(29)
++
+ /* ETBF: band 0(0x820ea000), band 1(0x820fa000) */
+ #define MT_WF_ETBF_BASE(_band)=09=09((_band) ? 0x820fa000 : 0x820ea000)
+ #define MT_WF_ETBF(_band, ofs)=09=09(MT_WF_ETBF_BASE(_band) + (ofs))
+@@ -505,6 +509,9 @@ enum offs_rev {
+ #define MT_AGG_MRCR_RTS_FAIL_LIMIT=09=09GENMASK(11, 7)
+ #define MT_AGG_MRCR_TXCMD_RTS_FAIL_LIMIT=09GENMASK(28, 24)
+=20
++#define MT_AGG_ATCR0(_band)=09=09=09MT_WF_AGG(_band, __OFFS(AGG_ATCR0))
++#define MT_AGG_ATCR_MAC_BFF_TIME_EN=09BIT(30)
++
+ #define MT_AGG_ATCR1(_band)=09=09MT_WF_AGG(_band, __OFFS(AGG_ATCR1))
+ #define MT_AGG_ATCR3(_band)=09=09MT_WF_AGG(_band, __OFFS(AGG_ATCR3))
+=20
+--=20
+2.39.5
 
 
-ChenYu
-
-> > +          - const: google,starmie
-> > +          - const: mediatek,mt8186
-> > +      - description: Google Starmie (ASUS Chromebook Enterprise CM30 (=
-CM3001))
-> > +        items:
-> > +          - const: google,starmie-sku1
-> > +          - const: google,starmie-sku4
-> > +          - const: google,starmie
-> > +          - const: mediatek,mt8186
-> >        - description: Google Steelix (Lenovo 300e Yoga Chromebook Gen 4=
-)
-> >          items:
-> >            - enum:
-> > --
-> > 2.47.0.371.ga323438b13-goog
-> >
 
