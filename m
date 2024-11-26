@@ -4,87 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F878D3B9A4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 15:24:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D34AAD65536
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2024 17:51:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EywgxkrTN2xkW7W98GxF9WmLUXMyuExpTDsIr7nON3k=; b=gV/QQNZSerblZJApQkbINrPHEi
-	lvW7W4atZEdV4day2rEJ1kFm1XPYbMMg1EOzAJs9QuLnjgxn/WBUlt9UFHVO14KkVVJhujXlCBSIh
-	OTYo3LMgak33tv2tocAAkNWNl2krJpPji2uzfBB+29fmxKySX8uNp71Yyi1/QbLqmN2m78MWY57/3
-	3SPf8XITE+NeWPuvnx/Lx5wAoeyVud2BQqQXv35tdCIsNu5MzWsV6ueCtoFbC8Xb9SLqx/gOvem1P
-	ZnlnOqNJVF4NlzJqZxU4WOXpIPy8IySYMd29Hm2kH7iT1SzX0Fudtn2BxGQR6FlIm9XjeDzUjHeDp
-	wyrZknjA==;
+	bh=7a0yhj6QHkjpYBYzL3gmUx19ySy020CjtvZ7PizgCbw=; b=Z+Bv1oD9/PkA8jqnr1bQXKqqjU
+	OulGZK9G55rQnEBGVxoDEr1AAFG88hJsiyGTwTNP5Tmls/Kn7ZhHYU7OfBe1D6YhqH33+q/TCkePr
+	6FSj08pqs4d5JaJKvp3RMSTXm/3L0r3a74DMn2y2lUZBldKeyWrDGlz5K+mJbnB2OCoXWzA8dxWRp
+	Kcf0u5Bswbjdtr+sFop8ssWh2Ipk9MeBNlGNAbGytY5FLCqMwkbgojOAv9I4t9wyFvL9/x0NxVUq1
+	zjmnONn0B0ZQrbZgojnzlqrEZcL3aa6F0htj+x6J3uka6NTcVS7yaZhUArdoWOxmUpm+RLUor7H+I
+	0l6AlDBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFxQF-0000000Azde-31Zj;
-	Tue, 26 Nov 2024 15:24:15 +0000
-Received: from mgamail.intel.com ([198.175.65.17])
+	id 1tFzjA-0000000BM4f-30cg;
+	Tue, 26 Nov 2024 17:51:56 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tFxPA-0000000AzTu-1nbI;
-	Tue, 26 Nov 2024 15:23:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1732634588; x=1764170588;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=BRSfxCCbOwhi2VADRh6D9j6oW5F0hLtYWnvHVw2D4Ok=;
-  b=dx+nGmh866NMJ10Tg1nsKlLBgD3mDDZzwdoWfw/kZhdxYzIpG2tadKTz
-   afUGkC9SUjB+yg3FbweK70maJyKCz1l5G3m0OCILxELlr2oMkGzLG+MXf
-   I2YSlZkSQ5xcmtSDJ7rtfHUI7uEMkwTvDiEq5V/aA7idOTbvSO726/Ldy
-   912qZVQx2InkEDrH0uMdhzgB2ljuCi69sVXjPzhiD1wbAiTMh+LpIBMp4
-   RWgiCXITUoyLs4ecIyWULgI8VjwUFvywVNzScsPfpvQ4dZLmw76ayD5eC
-   KlJh4F46wzSeMleBE60Yu4HRTJmideCgcGO+/T9YYZjX5TzD3itFc58/x
-   w==;
-X-CSE-ConnectionGUID: bN/DnmHBRCis1XImq85/uA==
-X-CSE-MsgGUID: IPn98drzRX275jdsspmc2g==
-X-IronPort-AV: E=McAfee;i="6700,10204,11268"; a="32859267"
-X-IronPort-AV: E=Sophos;i="6.12,186,1728975600"; 
-   d="scan'208";a="32859267"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
-  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Nov 2024 07:23:07 -0800
-X-CSE-ConnectionGUID: uzI9OrRkRESc0LNpJIAMGg==
-X-CSE-MsgGUID: QH5wPg5HS+SufPvb1ivXHw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,186,1728975600"; 
-   d="scan'208";a="122496182"
-Received: from smile.fi.intel.com ([10.237.72.154])
-  by orviesa002.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Nov 2024 07:23:04 -0800
-Received: from andy by smile.fi.intel.com with local (Exim 4.98)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1tFxP3-00000001JiU-3m2Z;
-	Tue, 26 Nov 2024 17:23:01 +0200
-Date: Tue, 26 Nov 2024 17:23:01 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Mark Brown <broonie@kernel.org>, Nicolas Belin <nbelin@baylibre.com>,
-	linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	id 1tFziC-0000000BLzr-3Ynd;
+	Tue, 26 Nov 2024 17:50:57 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id C7AD15C5BD8;
+	Tue, 26 Nov 2024 17:50:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2D032C4CED0;
+	Tue, 26 Nov 2024 17:50:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1732643455;
+	bh=1DHm33+nWlMW/ddeJDObXBwfsVPCV4BRLDeq6xv2wko=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ZqZyTvwhXugY0c+2UWdmDVxUgh7efgeOon4J4wUR5uRQQm2ZEqtDgEhkFBQFGECct
+	 MkLhICN7p0cfzrPw1ctoTKxvtHXqfY2im98LWnrF9iA+IMy6p4e/b0HAK7533EPxVq
+	 IJMUh0a3EJmAAzqdHeA/Xhy1cOJq2Lue6UR7WDZaudS8c3QdBO7jgBIM80G2fvhJKu
+	 k70cw/W4kWIAdR0QgCGyKkYSUWafRF9JfYdwQYqcuw97EoLl5PE7FooZQVF90P6d1S
+	 +XK4eF9d17hvPqgtYTQu5PpZWsK0RIXspm/jkjwBpmsvoLZjn/nqPyURKLMuJaeIOQ
+	 Jb1LJjV/eyyJA==
+Date: Tue, 26 Nov 2024 17:50:50 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Chen-Yu Tsai <wens@kernel.org>
+Cc: Wojciech Macek <wmacek@chromium.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v1 1/1] ASoc: mediatek: mt8365: Don't use "proxy" headers
-Message-ID: <Z0Xn1fMvuwR4KQbb@smile.fi.intel.com>
-References: <20241031102725.2447711-1-andriy.shevchenko@linux.intel.com>
- <ZykbMlshvlwCaeGJ@smile.fi.intel.com>
- <d7bf7863-fd24-4f8e-8cd0-d84867a997bb@sirena.org.uk>
- <dad2ecb7-e624-49c2-a7d5-0ff53b6a1686@baylibre.com>
- <Z0RkaqfID9v0age_@smile.fi.intel.com>
- <ed50c130-076c-4697-9f11-fe602c7ca03d@baylibre.com>
- <49fa1677-db35-497b-afae-caa5dccf3747@baylibre.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chen-Yu Tsai <wenst@chromium.org>, Rafal Milecki <rafal@milecki.pl>,
+	Hsin-Yi Wang <hsinyi@chromium.org>,
+	Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 1/2] dt-bindings: arm: mediatek: Add MT8186 Starmie
+ Chromebooks
+Message-ID: <20241126-angles-unequal-3578ea6bb01b@spud>
+References: <20241125082130.2390310-1-wmacek@chromium.org>
+ <20241125082130.2390310-2-wmacek@chromium.org>
+ <20241125-snowcap-sulphate-34944bd70cf3@spud>
+ <CAGb2v655Bfx44XBPH24FKuEFTJ3ngjbAPEpNBn5vyLZfNGKt+Q@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="a8AIRgZYs3rO0/Bl"
 Content-Disposition: inline
-In-Reply-To: <49fa1677-db35-497b-afae-caa5dccf3747@baylibre.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <CAGb2v655Bfx44XBPH24FKuEFTJ3ngjbAPEpNBn5vyLZfNGKt+Q@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20241126_072308_513732_187127D0 
-X-CRM114-Status: GOOD (  23.53  )
+X-CRM114-CacheID: sfid-20241126_095056_976050_CB6D28BB 
+X-CRM114-Status: GOOD (  20.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,44 +83,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 26, 2024 at 11:37:26AM +0100, Alexandre Mergnat wrote:
-> On 26/11/2024 11:29, Alexandre Mergnat wrote:
-> > On 25/11/2024 12:50, Andy Shevchenko wrote:
-> > > On Mon, Nov 25, 2024 at 12:32:13PM +0100, Alexandre Mergnat wrote:
 
-...
+--a8AIRgZYs3rO0/Bl
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> > > > Actually, after test it, "linux/of_gpio.h" isn't needed at all anymore.
-> > > > 
-> > > > That mean all added include in this patch aren't required.
-> > > Do you mean the driver doesn't not use types from types.h or dev_*() macros
-> > > from dev_printk.h? I don't believe this, sorry.
-> > 
-> > > 
-> > > Basically what you are trying to say is "let's move of_gpio.h implicit
-> > > includes to become something else's problem". It's not what this patch
-> > > intended to do.
-> > 
-> > I'm just saying that I've test a build/boot with "linux/of_gpio.h" removed and without all
-> > include added in you patch. My understand is "linux/of_gpio.h" act as proxy
-> > for the includes added in your patch, my first idea was "if I remove it, build should fail cause
-> > of lack of other includes". I can understand these missing includes are mandatory, that
-> > probably means there is another proxy header ?
-> > Maybe my test isn't consistent because it isn't possible to clear all proxy ?
-> > 
-> > If that's the case, consider my review-by.
+On Tue, Nov 26, 2024 at 12:36:08PM +0800, Chen-Yu Tsai wrote:
+> On Tue, Nov 26, 2024 at 2:34=E2=80=AFAM Conor Dooley <conor@kernel.org> w=
+rote:
+> >
+> > On Mon, Nov 25, 2024 at 08:21:28AM +0000, Wojciech Macek wrote:
+> > > Add an entry for the MT8186 based Starmie Chromebooks, also known as =
+the
+> > > ASUS Chromebook Enterprise CM30 Detachable (CM3001). The device is
+> > > a tablet style chromebook.
+> > >
+> > > Signed-off-by: Wojciech Macek <wmacek@chromium.org>
+> > > ---
+> > >
+> > > Changelog v2-v1:
+> > >  - Fixed items/const bidings description in mediatek.yaml
+> > >
+> > >  Documentation/devicetree/bindings/arm/mediatek.yaml | 13 +++++++++++=
+++
+> > >  1 file changed, 13 insertions(+)
+> > >
+> > > diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Do=
+cumentation/devicetree/bindings/arm/mediatek.yaml
+> > > index 1d4bb50fcd8d9..6191a5320c148 100644
+> > > --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> > > +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> > > @@ -263,6 +263,19 @@ properties:
+> > >            - const: google,steelix-sku196608
+> > >            - const: google,steelix
+> > >            - const: mediatek,mt8186
+> > > +      - description: Google Starmie (ASUS Chromebook Enterprise CM30=
+ (CM3001))
+> > > +        items:
+> > > +          - const: google,starmie-sku0
+> > > +          - const: google,starmie-sku2
+> > > +          - const: google,starmie-sku3
+> >
+> > Compatible order here is back to making little sense. Why is the oldest
+> > SKU, in both cases, appearing first?
+>=20
+> FWIW the SKU number has no particular ordering. They were released togeth=
+er.
+> SKU denotes different configurations (memory, storage, touchscreen and ot=
+her
+> component options). OOTH revisions would actually have chronological mean=
+ing.
 
-> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+I see, that's fine then I suppose.
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-Thank you!
-Mark, would be enough to apply the change?
+Cheers,
+Conor.
 
-> > I've validated some include manually. Are you using a script to parse
-> > the file and raise all necessary "linux/*" include ?
+--a8AIRgZYs3rO0/Bl
+Content-Type: application/pgp-signature; name="signature.asc"
 
--- 
-With Best Regards,
-Andy Shevchenko
+-----BEGIN PGP SIGNATURE-----
 
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ0YKegAKCRB4tDGHoIJi
+0v3ZAP9s6/k+4zLgrMT7vndOHggRKcA/mY2xxhRmyiJtJNDvgwEAhWO7UfTEpvj4
+HibsduIJN6ZIFYDBYKi7+ZDbhZUKqQI=
+=cu+D
+-----END PGP SIGNATURE-----
 
+--a8AIRgZYs3rO0/Bl--
 
